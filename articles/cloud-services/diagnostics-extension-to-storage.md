@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 17430330d068fb55b45f073afecb8ba348286cb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e16d77c36f382e72d5e9902b07afbbec50b6876
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77472670"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723249"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>在 Azure 儲存體中儲存和檢視診斷資料
-除非您將診斷資料傳輸至 Microsoft Azure 儲存體模擬器或 Azure 儲存體，否則不會永久儲存診斷資料。 一旦位於儲存體，即可利用其中一個可用的工具進行檢視。
+診斷資料不會永久儲存，除非您將它傳送至 Microsoft Azure 儲存體模擬器或 Azure 儲存體。 一旦位於儲存體，即可利用其中一個可用的工具進行檢視。
 
 ## <a name="specify-a-storage-account"></a>指定儲存體帳戶
 您可指定您要在 ServiceConfiguration.cscfg 檔案中使用的儲存體帳戶。 帳戶資訊會定義為組態設定中的連接字串。 下列範例顯示在 Visual Studio 中為新的雲端服務專案建立的預設連接字串：
@@ -33,12 +33,12 @@ ms.locfileid: "77472670"
 
 | 資料來源 | 儲存體格式 |
 | --- | --- |
-| Azure 記錄 |資料表 |
+| Azure 記錄 |Table |
 | IIS 7.0 記錄 |Blob |
-| Azure 診斷基礎結構記錄 |資料表 |
+| Azure 診斷基礎結構記錄 |Table |
 | 失敗要求追蹤記錄 |Blob |
-| Windows 事件記錄檔 |資料表 |
-| 效能計數器 |資料表 |
+| Windows 事件記錄檔 |Table |
+| 效能計數器 |Table |
 | 損毀傾印 |Blob |
 | 自訂錯誤記錄 |Blob |
 

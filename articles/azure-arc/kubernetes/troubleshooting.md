@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 針對已啟用 Arc 的 Kubernetes 叢集常見問題進行疑難排解。
 keywords: Kubernetes, Arc, Azure, 容器
-ms.openlocfilehash: 1527f8d4ca06c2deaf4ce18b73bfdb515dcadc63
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 404516778255409d56dd5c3a7d1fd96711cc981f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725579"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723668"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>已啟用 Azure Arc 的 Kubernetes 疑難排解 (預覽)
 
@@ -69,9 +69,9 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-所有 Pod 應會將 `STATUS` 顯示為 `Running`，而 `READY` 應為 `3/3` 或 `2/2`。 擷取記錄並描述傳回 `Error` 或 `CrashLoopBackOff` 的 Pod。
+所有 Pod 應會將 `STATUS` 顯示為 `Running`，而 `READY` 應為 `3/3` 或 `2/2`。 擷取記錄並描述傳回 `Error` 或 `CrashLoopBackOff` 的 Pod。 如果這些 pod 中有任何一個卡在 `Pending` 狀態，可能是因為叢集節點上的資源不足所造成。 相應[增加您](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#resizing-a-cluster)的叢集會讓這些 pod 轉換成 `Running` 狀態。
 
-## <a name="unable-to-connect-my-kubernetes-cluster-to-azure"></a>無法將 Kubernetes 叢集連線到 Azure
+## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>將 Kubernetes 叢集連接到 Azure Arc
 
 將叢集連線到 Azure 需要存取 Azure 訂用帳戶，以及對目標叢集的 `cluster-admin` 存取權。 如果無法連線到叢集，或沒有足夠的權限，上線將會失敗。
 
@@ -99,8 +99,6 @@ $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
-
-There was a problem with connect-agent deployment. Please run 'kubectl -n azure-arc logs -l app.kubernetes.io/component=connect-agent -c connect-agent' to debug the error.
 ```
 
 ## <a name="configuration-management"></a>設定管理
@@ -158,4 +156,11 @@ kind: List
 metadata:
   resourceVersion: ""
   selfLink: ""
+```
+## <a name="monitoring"></a>監視
+
+容器的 Azure 監視器需要在具有特殊許可權的模式下執行 DaemonSet。 若要成功設定標準 Charmed Kubernetes 叢集以進行監視，請執行下列命令：
+
+```console
+juju config kubernetes-worker allow-privileged=true
 ```

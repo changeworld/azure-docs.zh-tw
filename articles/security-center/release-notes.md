@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: 7bec65867373293ff06a2295f08a05db6ffaa480
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c7df035aec199953bdf9a6bd56262af70a5a77e7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653829"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723957"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -43,7 +43,7 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 
 ### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>資產清查-您資產安全性狀態的強大新觀點
 
-安全性中心的資產清查提供了一種方式，可讓您查看已連線到「安全性中心」之資源的安全性狀態。
+安全性中心的資產清查 (目前處於預覽狀態) 提供方法來查看您已連線至「安全性中心」之資源的安全性狀態。
 
 安全中心會定期分析 Azure 資源的安全性狀態，以找出潛在的安全性弱點。 接著，它會提供有關如何補救這些弱點的建議。 當任何資源有未處理的建議時，它們會出現在清查中。
 

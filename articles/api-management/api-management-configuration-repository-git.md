@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 183a3561a7c01d8f0911a70846384cf8ebc7dd9c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fb252ac0b4863138fb2a9c3008dc6475bc988e5f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254838"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723940"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 儲存和設定 API 管理服務組態
 
@@ -82,7 +82,7 @@ ms.locfileid: "86254838"
 
 下列範例會使用來自 [Git for Windows](https://www.git-scm.com/downloads) 的 Git Bash 工具，但是您可以使用任何您已熟悉的 Git 工具。
 
-在想要的資料夾中開啟 Git 工具，然後執行下列命令，使用 Azure 入口網站提供的命令，將 git 存放庫複製到本機電腦。
+在所需的資料夾中開啟 Git 工具，然後執行下列命令，使用 Azure 入口網站所提供的命令，將 Git 存放庫複製到您的本機電腦。
 
 ```
 git clone https://{name}.scm.azure-api.net/
@@ -146,7 +146,7 @@ git push
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>本機 Git 儲存機制的檔案和資料夾結構參考
 
-本機 git 儲存機制中的檔案和資料夾包含服務執行個體的相關組態資訊。
+本機 Git 存放庫中的檔案和資料夾包含服務實例的設定資訊。
 
 | Item | 描述 |
 | --- | --- |

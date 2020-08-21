@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 0880f697ceea9c10a070ede0a73235022ce0529d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: f02f8c0c5aabc48e7b9966898028485a4687f413
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220284"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723073"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>部署 Azure AD 應用程式 Proxy，以安全地存取 Azure Active Directory Domain Services 受控網域中的內部應用程式
 
@@ -113,7 +113,7 @@ Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount 
 
 ## <a name="next-steps"></a>後續步驟
 
-使用與 Azure AD DS 整合的 Azure AD 應用程式 Proxy，發行應用程式供使用者存取。 如需詳細資訊，請參閱 [使用 Azure AD 應用程式 Proxy 發佈應用程式](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)。
+使用與 Azure AD DS 整合的 Azure AD 應用程式 Proxy，發行應用程式供使用者存取。 如需詳細資訊，請參閱 [使用 Azure AD 應用程式 Proxy 發佈應用程式](../active-directory/manage-apps/application-proxy-add-on-premises-application.md)。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

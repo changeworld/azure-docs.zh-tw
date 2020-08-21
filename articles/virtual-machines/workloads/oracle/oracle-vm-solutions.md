@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: rogardle
-ms.openlocfilehash: 4489aae873c3fa4153974209074e14959307c772
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c22c5fa9c1a1680734a8cf5d8f4079e8c7b5c5f7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690335"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723411"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle VM 映像及其部署
 
@@ -118,7 +118,7 @@ Oracle 資料庫通常需要較高的記憶體和 IO。 基於這個理由，建
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
 
-Oracle Real Application Clusters (Oracle RAC) 是用來在內部部署的多節點叢集組態中，減少發生單一節點錯誤的機率。 它依賴以下兩個內部部署技術，而這兩個技術並非大規模公用雲端環境的原生技術︰網路多點傳送和共用磁碟。 若您的資料庫解決方案需要位在 Azure 中的 Oracle RAC，則您會需要第三方軟體才能啟用這些技術。 如需 Oracle RAC 的詳細資訊，請參閱 [FlashGrid SkyCluster 頁面](https://www.flashgrid.io/oracle-rac-in-azure/)。
+Oracle Real Application Clusters (Oracle RAC) 是用來在內部部署的多節點叢集組態中，減少發生單一節點錯誤的機率。 它依賴以下兩個內部部署技術，而這兩個技術並非大規模公用雲端環境的原生技術︰網路多點傳送和共用磁碟。 如果您的資料庫解決方案需要 Azure 中的 Oracle RAC，您需要有協力廠商軟體才能啟用這些技術。 如需 Oracle RAC 的詳細資訊，請參閱 [FlashGrid SkyCluster 頁面](https://www.flashgrid.io/oracle-rac-in-azure/)。
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性和災害復原考量
 

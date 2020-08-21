@@ -2,17 +2,17 @@
 title: 在 Azure 應用程式閘道上啟用端對端 TLS
 description: 本文將簡介應用程式閘道端對端 TLS 支援。
 services: application-gateway
-author: amsriva
+author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 5/13/2020
+ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: 1986955c7135cb9296937392b23635ae62d8d9f7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3d714b579bebb096745a47410da3f8f458e27161
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962096"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723294"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>應用程式閘道的 TLS 終止和端對端 TLS 概觀
 
@@ -30,7 +30,7 @@ ms.locfileid: "85962096"
 若要設定 TLS 終止，必須將 TLS/SSL 憑證新增至接聽程式，讓應用程式閘道能夠根據 TLS/SSL 通訊協定規格來衍生對稱金鑰。 接下來，對稱金鑰可以用來加密和解密傳送至閘道的流量。 TLS/SSL 憑證必須採用「個人資訊交換」(PFX) 格式。 此檔案格式可允許將私密金鑰匯出，而應用程式閘道需要這個匯出的金鑰來執行流量的加密和解密。
 
 > [!IMPORTANT] 
-> 請注意，接聽程式上的憑證需要上傳整個憑證鏈。 
+> 接聽程式上的憑證需要從 CA、中繼和分葉憑證 (根憑證上傳整個憑證連結，) 以建立信任鏈。 
 
 
 > [!NOTE] 
@@ -68,7 +68,7 @@ ms.locfileid: "85962096"
 
 對於應用程式閘道和 WAF v2 SKU，TLS 原則只會套用至前端流量，並在後端伺服器提供所有加密，如此，在交握期間就有權選取特定的加密和 TLS 版本。
 
-應用程式閘道只會與允許以應用程式閘道列出其憑證的後端伺服器通訊，或其憑證由知名的 CA 授權單位簽署，且憑證的 CN 符合 HTTP 後端設定中的主機名稱。 其中包括受信任的 Azure 服務，例如 Azure App Service/Web Apps 和 Azure API 管理。
+應用程式閘道只會與這些後端伺服器通訊，這些後端伺服器的 [允許] 列出其憑證與應用程式閘道，或其憑證是由知名的 CA 授權單位所簽署，而憑證的 CN 符合 HTTP 後端設定中的主機名稱。 其中包括受信任的 Azure 服務，例如 Azure App Service/Web Apps 和 Azure API 管理。
 
 如果後端集區中的成員未由知名的 CA 授權單位簽署其憑證，則後端集區中每個已啟用端對端 TLS 的執行個體都必須進行憑證設定，以支援安全通訊。 新增憑證可確保應用程式閘道只會與已知的後端執行個體通訊。 這會進而保護端對端通訊。
 
@@ -80,9 +80,9 @@ ms.locfileid: "85962096"
 
 在此範例中，會使用端對端 TLS，將使用 TLS1.2 的要求路由傳送至 Pool1 中的後端伺服器。
 
-## <a name="end-to-end-tls-and-allow-listing-of-certificates"></a>端對端 TLS 並允許列出憑證
+## <a name="end-to-end-tls-and-allow-listing-of-certificates"></a>端對端 TLS 和允許的憑證清單
 
-應用程式閘道只會與有允許向應用程式閘道列出其憑證的已知後端實例進行通訊。 端對端 TLS 設定程序在使用的應用程式閘道版本方面有一些差異。 下一節會個別加以說明。
+應用程式閘道只會與已知的後端實例通訊，這些實例的憑證可與應用程式閘道一起列出。 端對端 TLS 設定程序在使用的應用程式閘道版本方面有一些差異。 下一節會個別加以說明。
 
 ## <a name="end-to-end-tls-with-the-v1-sku"></a>v1 SKU 的端對端 TLS
 
@@ -90,7 +90,7 @@ ms.locfileid: "85962096"
 
 針對 HTTPS 健康情況探查，應用程式閘道 v1 SKU 會使用要上傳至 HTTP 設定且完全相符的驗證憑證 (後端伺服器憑證的公開金鑰，而不是根憑證)。
 
-接著只允許連接到已知和允許的後端。 健康情況探查會將其餘後端視為狀況不良。 自我簽署憑證僅供測試之用，並不建議用於生產工作負載。 如先前的步驟所述，這類憑證必須符合應用程式閘道的允許清單，才能加以使用。
+接著只允許連接至已知和允許的後端。 健康情況探查會將其餘後端視為狀況不良。 自我簽署憑證僅供測試之用，並不建議用於生產工作負載。 這類憑證必須如先前步驟所述，與應用程式閘道一起列出，才能使用。
 
 > [!NOTE]
 > 受信任的 Azure 服務 (例如 Azure App Service) 不需進行驗證和信任根憑證設定。 依預設會將其視為受信任。
@@ -111,7 +111,7 @@ ms.locfileid: "85962096"
 
 - 除了根憑證相符之外，應用程式閘道 v2 也會驗證後端 HTTP 設定中所指定的「主機」設定是否符合後端伺服器 TLS/SSL 憑證所出示的通用名稱 (CN)。 嘗試與後端建立 TLS 連線時，應用程式閘道 v2 會將「伺服器名稱指示」(SNI) 延伸模組設定為後端 HTTP 設定中所指定的「主機」。
 
-- 如果選擇 [**從後端目標挑選主機名稱**]，而不是後端 HTTP 設定中的 [主機] 欄位，則 SNI 標頭一律會設定為後端集區 FQDN，而後端伺服器 TLS/SSL 憑證上的 CN 必須符合其 FQDN。 此案例不支援具有 IP 的後端集區成員。
+- 如果選擇 **來自後端目標的挑選主機名稱** ，而不是後端 HTTP 設定中的主機欄位，則 SNI 標頭一律設定為後端集區 FQDN，且後端伺服器 TLS/SSL 憑證上的 CN 必須符合其 FQDN。 此案例不支援具有 IP 的後端集區成員。
 
 - 根憑證是一個來自後端伺服器憑證的 Base64 編碼根憑證。
 
@@ -138,10 +138,10 @@ ms.locfileid: "85962096"
 狀況 | v1 | v2 |
 | --- | --- | --- |
 | TLS 交握期間的 SNI (server_name) 標頭 (FQDN) | 設定為後端集區中的 FQDN。 依據 [RFC 6066](https://tools.ietf.org/html/rfc6066)，SNI 主機名稱中不允許常值 IPv4 和 IPv6 位址。 <br> **注意：** 後端集區中的 FQDN 應透過 DNS 解析為後端伺服器的 IP 位址 (公用或私人) | SNI 標頭 (server_name) 會設定為從連結至 HTTP 設定 (如已設定) 的自訂探查中的主機名稱，否則，依序會設為 HTTP 設定中指定的主機名稱，或後端集區中指定的 FQDN。 優先順序是自訂探查 > HTTP 設定 > 後端集區。 <br> **注意：** 如果 HTTP 設定和自訂探查中設定的主機名稱不同，則根據優先順序，SNI 將會設定為自訂探查中的主機名稱。
-| 如果後端集區位址為 IP 位址 (v1)，或自訂探查主機名稱設定為 IP 位址 (v2) | 將不會設定 SNI (server_name)。 <br> **注意：** 在此情況下，後端伺服器應該能夠傳回預設/fallback 憑證，而這應允許在 [驗證憑證] 下的 HTTP 設定中列出。 如果後端伺服器中未設定任何預設/後援憑證，而且需要 SNI，則伺服器可能會重設連線，並將導致探查失敗 | 依照先前所述的優先順序，如果以 IP 位址作為主機名稱，則不會根據 [RFC 6066](https://tools.ietf.org/html/rfc6066) 設定 SNI。 <br> **注意：** 如果未設定任何自訂探查，且未在 HTTP 設定或後端集區上設定主機名稱，則在 v2 探查中也不會設定 SNI |
+| 如果後端集區位址為 IP 位址 (v1)，或自訂探查主機名稱設定為 IP 位址 (v2) | 將不會設定 SNI (server_name)。 <br> **注意：** 在此情況下，後端伺服器應該可以傳回預設/回溯憑證，這應該會在 [驗證憑證] 下的 [HTTP 設定] 中列出。 如果後端伺服器中未設定任何預設/後援憑證，而且需要 SNI，則伺服器可能會重設連線，並將導致探查失敗 | 依照先前所述的優先順序，如果以 IP 位址作為主機名稱，則不會根據 [RFC 6066](https://tools.ietf.org/html/rfc6066) 設定 SNI。 <br> **注意：** 如果未設定任何自訂探查，且未在 HTTP 設定或後端集區上設定主機名稱，則在 v2 探查中也不會設定 SNI |
 
 > [!NOTE] 
-> 如果未設定自訂探查，則應用程式閘道會以下列格式傳送預設探查-/ \<protocol\> /127.0.0.1： \<port\> /。 以預設 HTTPS 探查為例，會以 https://127.0.0.1:443/ 的格式傳送。 請注意，此處所述的 127.0.0.1 僅作為 HTTP 主機標頭使用，根據 RFC 6066，將不會作為 SNI 標頭使用。 如需健康情況探查錯誤的詳細資訊，請參閱[後端健康情況疑難排解指南](application-gateway-backend-health-troubleshooting.md)。
+> 如果未設定自訂探查，則應用程式閘道會以下列格式傳送預設探查 \<protocol\> ：：//127.0.0.1： \<port\> /。 以預設 HTTPS 探查為例，會以 https://127.0.0.1:443/ 的格式傳送。 請注意，此處所述的 127.0.0.1 僅作為 HTTP 主機標頭使用，根據 RFC 6066，將不會作為 SNI 標頭使用。 如需健康情況探查錯誤的詳細資訊，請參閱[後端健康情況疑難排解指南](application-gateway-backend-health-troubleshooting.md)。
 
 #### <a name="for-live-traffic"></a>即時流量
 

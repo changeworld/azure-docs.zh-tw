@@ -2,17 +2,17 @@
 title: 設定用來處理資料的 Azure 函式
 titleSuffix: Azure Digital Twins
 description: 瞭解如何建立可存取並由數位 twins 觸發的 Azure 函數。
-author: cschormann
-ms.author: cschorm
+author: baanders
+ms.author: baanders
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ab013a310997f43d1019d849e87c0cf1b0d151ee
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: f371f52b0a110afeef6f3f72fb459b30842f77eb
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661090"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723702"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>連接 Azure Functions apps 以處理資料
 

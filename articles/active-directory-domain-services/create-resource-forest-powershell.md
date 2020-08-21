@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 893085179c27ce88c3e310170715e2f83a59ddc7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506323"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723158"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>使用 Azure PowerShell 建立對內部部署網域 Azure Active Directory Domain Services 資源樹系和輸出樹系信任
 
@@ -36,7 +36,7 @@ ms.locfileid: "88506323"
 > [!IMPORTANT]
 > 受控網域資源樹系目前不支援 Azure HDInsight 或 Azure 檔案儲存體。 預設的受控網域使用者樹系支援這兩個額外的服務。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文章，您需要下列資源和權限：
 
@@ -148,15 +148,15 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 1. 使用 Azure VPN 或 Azure ExpressRoute 連線，建立將內部部署網路連線到 Azure 的混合式連線能力。 混合式網路設定已超出本檔的範圍，而且可能已存在於您的環境中。 如需特定案例的詳細資訊，請參閱下列文章：
 
-    * [Azure 站對站 VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
-    * [Azure ExpressRoute 總覽](/azure/expressroute/expressroute-introduction)。
+    * [Azure 站對站 VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)。
+    * [Azure ExpressRoute 總覽](../expressroute/expressroute-introduction.md)。
 
     > [!IMPORTANT]
     > 如果您直接建立受控網域虛擬網路的連線，請使用個別的閘道子網。 請勿在受控網域的子網中建立閘道。
 
 1. 若要管理受控網域，您可以建立管理 VM、將它加入受控網域，以及安裝所需的 AD DS 管理工具。
 
-    部署受控網域資源樹系時，請 [建立 Windows SERVER VM](https://docs.microsoft.com/azure/active-directory-domain-services/join-windows-vm) ，然後 [安裝核心 AD DS 管理工具](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-management-vm) ，以安裝所需的管理工具。 等到成功部署網域之後，再將管理 VM 加入受控網域，直到完成下列其中一個步驟。
+    部署受控網域資源樹系時，請 [建立 Windows SERVER VM](./join-windows-vm.md) ，然後 [安裝核心 AD DS 管理工具](./tutorial-create-management-vm.md) ，以安裝所需的管理工具。 等到成功部署網域之後，再將管理 VM 加入受控網域，直到完成下列其中一個步驟。
 
 1. 驗證內部部署網路與 Azure 虛擬網路之間的網路連線能力。
 
@@ -260,7 +260,7 @@ Add-AaddsResourceForestTrust `
 1. 使用遠端桌面和您的受控網域系統管理員認證，連接到已加入受控網域資源樹系的 Windows Server VM。 如果您收到網路層級驗證 (NLA) 錯誤，請檢查您所使用的使用者帳戶不是網域使用者帳戶。
 
     > [!TIP]
-    > 若要安全地連線到已加入 Azure AD Domain Services 的 Vm，您可以在支援的 Azure 區域中使用 [Azure 堡壘主機服務](https://docs.microsoft.com/azure/bastion/bastion-overview) 。
+    > 若要安全地連線到已加入 Azure AD Domain Services 的 Vm，您可以在支援的 Azure 區域中使用 [Azure 堡壘主機服務](../bastion/bastion-overview.md) 。
 
 1. 開啟命令提示字元，然後使用 `whoami` 命令來顯示目前已驗證使用者的辨別名稱：
 
@@ -286,7 +286,7 @@ Add-AaddsResourceForestTrust `
 1. 使用遠端桌面和您的受控網域系統管理員認證，連接到已加入受控網域資源樹系的 Windows Server VM。 如果您收到網路層級驗證 (NLA) 錯誤，請檢查您所使用的使用者帳戶不是網域使用者帳戶。
 
     > [!TIP]
-    > 若要安全地連線到已加入 Azure AD Domain Services 的 Vm，您可以在支援的 Azure 區域中使用 [Azure 堡壘主機服務](https://docs.microsoft.com/azure/bastion/bastion-overview) 。
+    > 若要安全地連線到已加入 Azure AD Domain Services 的 Vm，您可以在支援的 Azure 區域中使用 [Azure 堡壘主機服務](../bastion/bastion-overview.md) 。
 
 1. 開啟 **Windows 設定**，然後搜尋並選取 [網路和共用中心]。
 1. 選擇 [變更進階共用] 設定選項。

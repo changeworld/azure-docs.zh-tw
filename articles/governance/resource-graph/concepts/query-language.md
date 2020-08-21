@@ -1,14 +1,14 @@
 ---
 title: 了解查詢語言
 description: 描述 Resource Graph 資料表，以及可與 Azure Resource Graph 搭配使用的可用 Kusto 資料類型、運算子和函式。
-ms.date: 08/03/2020
+ms.date: 08/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: b59811ecd877b9b2e22a43c00329ed7d02dfb97d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: ea274c349c968852b77f3c3f2d39637f91484335
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541816"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723429"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查詢語言
 
@@ -24,7 +24,7 @@ Azure Resource Graph 查詢語言支援多個運算子與函式。 每個都是�
 
 ## <a name="resource-graph-tables"></a>Resource Graph 資料表
 
-Resource Graph 會針對它所儲存的資料，提供有關 Azure Resource Manager 資源類型及其屬性的多個資料表。 這些資料表可以與 `join` 或 `union` 運算子搭配使用，以取得相關資源類型中的屬性。 以下是 Resource Graph 中可用的資料表清單：
+Resource Graph 針對其儲存的資料，提供數個數據表，Azure Resource Manager 資源類型和其屬性。 這些資料表可以與 `join` 或 `union` 運算子搭配使用，以取得相關資源類型中的屬性。 以下是 Resource Graph 中可用的資料表清單：
 
 |Resource Graph 資料表 |描述 |
 |---|---|
@@ -66,10 +66,10 @@ Resources
 
 ## <a name="resource-graph-custom-language-elements"></a>Resource Graph 自訂語言元素
 
-### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>共用查詢語法（預覽）
+### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a> (預覽) 的共用查詢語法
 
-您可以直接在 Resource Graph 查詢中存取[共用查詢](../tutorials/create-share-query.md)，做為預覽功能。 此案例可讓您建立標準查詢做為共用查詢並加以重複使用。 若要在 Resource Graph 查詢內呼叫共用查詢，請使用 `{{shared-query-uri}}` 語法。 共用查詢的 URI 是該查詢的 [**設定**] 頁面上共用查詢的_資源識別碼_。 在此範例中，我們的共用查詢 URI 是 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS` 。
-此 URI 會指向訂用帳戶、資源群組，以及要在另一個查詢中參考之共用查詢的完整名稱。 此查詢與在[教學課程：建立和共用查詢](../tutorials/create-share-query.md)中建立的查詢相同。
+作為預覽功能，您可以直接在 Resource Graph 查詢中存取 [共用查詢](../tutorials/create-share-query.md) 。 此案例可讓您建立標準查詢作為共用查詢並重複使用。 若要在 Resource Graph 查詢內呼叫共用查詢，請使用 `{{shared-query-uri}}` 語法。 共用查詢的 URI 是該查詢之 [**設定**] 頁面上的共用查詢_資源識別碼_。 在此範例中，我們的共用查詢 URI 為 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS` 。
+此 URI 會指向訂用帳戶、資源群組，以及我們想要在另一個查詢中參考之共用查詢的完整名稱。 這項查詢與在 [教學課程：建立和共用查詢](../tutorials/create-share-query.md)中建立的查詢相同。
 
 > [!NOTE]
 > 您無法將參考共用查詢的查詢儲存為共用查詢。
@@ -82,9 +82,9 @@ Resources
 {{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
 ```
 
-範例2：在較大的查詢中包含共用查詢
+範例2：將共用查詢包含在較大的查詢中
 
-此查詢會先使用共用查詢，然後使用 `limit` 進一步限制結果。
+此查詢會先使用共用查詢，然後再使用 `limit` 進一步限制結果。
 
 ```kusto
 {{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
@@ -93,7 +93,7 @@ Resources
 
 ## <a name="supported-kql-language-elements"></a>支援的 KQL 語言元素
 
-Resource Graph 支援所有 KQL [資料類型](/azure/kusto/query/scalar-data-types/)、[純量函式](/azure/kusto/query/scalarfunctions)、[純量運算子](/azure/kusto/query/binoperators)和[彙總函式](/azure/kusto/query/any-aggfunction)。 Resource Graph 支援特定的[表格式運算子](/azure/kusto/query/queries)，其中有些具有不同的行為。
+Resource Graph 支援 KQL [資料類型](/azure/kusto/query/scalar-data-types/)、純量 [函數](/azure/kusto/query/scalarfunctions)、純量 [運算子](/azure/kusto/query/binoperators)和 [彙總函式](/azure/kusto/query/any-aggfunction)的子集。 Resource Graph 支援特定的[表格式運算子](/azure/kusto/query/queries)，其中有些具有不同的行為。
 
 ### <a name="supported-tabulartop-level-operators"></a>支援的表格式/最上層運算子
 
@@ -120,11 +120,11 @@ Resource Graph 支援所有 KQL [資料類型](/azure/kusto/query/scalar-data-ty
 
 ## <a name="query-scope"></a>查詢範圍
 
-查詢傳回資源的訂閱範圍取決於存取 Resource Graph 的方法。 Azure CLI 和 Azure PowerShell 會根據授權使用者的內容，填入要包含在要求中的訂用帳戶清單。 您可以分別針對每個訂閱和**訂**用帳戶參數手動**定義訂閱清單**。
-在 REST API 和所有其他 Sdk 中，包含資源的訂閱清單必須明確定義為要求的一部分。
+查詢所傳回之資源的訂用帳戶範圍，取決於存取 Resource Graph 的方法。 Azure CLI 和 Azure PowerShell 根據授權使用者的內容，填入要包含在要求中的訂用帳戶清單。 您可以為每個訂用 **帳戶和** 訂用帳戶參數分別手動定義 **訂** 用帳戶清單。
+在 REST API 和所有其他 Sdk 中，包含資源的訂用帳戶清單必須明確定義為要求的一部分。
 
-做為**預覽**，REST API 版本會 `2020-04-01-preview` 新增屬性，以將查詢範圍限定于[管理群組](../../management-groups/overview.md)。 此預覽 API 也會讓訂用帳戶屬性成為選擇性。 如果管理群組或訂用帳戶清單都未定義，則查詢範圍就是已驗證使用者可以存取的所有資源。 新的 `managementGroupId` 屬性會採用管理群組識別碼，這與管理群組的名稱不同。
-當 `managementGroupId` 指定時，會包含或指定之管理群組階層的前5000訂用帳戶中的資源。 `managementGroupId`不能與同時使用 `subscriptions` 。
+作為 **預覽**版本，REST API 版本會 `2020-04-01-preview` 新增屬性，以將查詢的範圍設為 [管理群組](../../management-groups/overview.md)。 此預覽 API 也會讓訂用帳戶屬性成為選擇性的。 如果未定義管理群組或訂用帳戶清單，則查詢範圍即為已驗證的使用者可以存取的所有資源。 新的 `managementGroupId` 屬性會採用管理群組識別碼，與管理群組的名稱不同。
+當您 `managementGroupId` 指定時，會包含在指定的管理群組階層中或下的前5000訂用帳戶中的資源。 `managementGroupId` 無法與相同的時間使用 `subscriptions` 。
 
 範例：查詢名為「我的管理群組」（識別碼為 ' myMG '）之管理群組階層內的所有資源。
 

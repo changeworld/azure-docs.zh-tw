@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 32993ba41a612ccf0f02a242ed610feab2fac78f
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640730"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723855"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的資料收集規則) 
 資料收集規則 (DCR) 定義進入 Azure 監視器的資料，並指定應該傳送或儲存資料的位置。 本文概述資料收集規則，包括其內容和結構，以及您可以如何建立和使用它們。
@@ -28,7 +28,7 @@ ms.locfileid: "88640730"
 
 | 元件 | 描述 |
 |:---|:---|
-| 資料來源 | 監視資料的唯一來源，其本身的格式和方法會公開其資料。 資料來源的範例包括 Windows 事件記錄檔、效能計數器和 syslog。 每個資料來源都符合如下所述的特定資料來源類型。 |
+| 資料來源 | 監視資料的唯一來源，其本身的格式和公開其資料的方法。 資料來源的範例包括 Windows 事件記錄檔、效能計數器和 syslog。 每個資料來源都符合如下所述的特定資料來源類型。 |
 | 串流 | 唯一的控制碼，描述將轉換並架構化為一種類型的一組資料來源。 每個資料來源都需要一個或多個資料流程，而一個資料流程可能會由多個資料來源使用。 資料流程中的所有資料來源都會共用一個通用的架構。 例如，當您想要將特定資料來源傳送到相同 Log Analytics 工作區中的多個資料表時，請使用多個資料流程。 |
 | Destinations | 應傳送資料的目的地集合。 範例包括 Log Analytics 工作區、Azure 監視器計量和 Azure 事件中樞。 | 
 | 資料流程 | 應將哪些資料流程傳送至哪些目的地的定義。 | 
@@ -44,7 +44,7 @@ ms.locfileid: "88640730"
 |:---|:---|
 | 擴充功能 | 以 VM 延伸模組為基礎的資料來源 |
 | performanceCounters | 適用于 Windows 和 Linux 的效能計數器 |
-| syslog | Linux 虛擬機器上的 Syslog 事件 |
+| syslog | Linux 上的 Syslog 事件 |
 | windowsEventLogs | Windows 事件記錄檔 |
 
 
@@ -54,14 +54,14 @@ ms.locfileid: "88640730"
 | 限制 | 值 |
 |:---|:---|
 | 資料來源數目上限 | 10 |
-| 效能中的最大計數器規範 | 100 |
-| SysLog 中的設備名稱上限 | 20 |
-| EventLog 中的最大 XPath 查詢 | 100 |
-| 資料流程上限 | 10 |
-| 資料流程上限 | 10 |
+| 效能計數器中的計數器規範數目上限 | 100 |
+| Syslog 中的設備名稱數目上限 | 20 |
+| 事件記錄檔中的 XPath 查詢數目上限 | 100 |
+| 資料流程數目上限 | 10 |
+| 資料流程數目上限 | 10 |
 | 擴充功能的最大數目 | 10 |
 | 延伸模組設定的大小上限 | 32 Kb |
-| 最大 Log Analytics 工作區 | 10 |
+| Log Analytics 工作區的數目上限 | 10 |
 
 
 ## <a name="create-a-dcr"></a>建立 DCR
@@ -83,8 +83,7 @@ ms.locfileid: "88640730"
   - 從 cron 設備收集 Debug、Critical 和緊急事件。
   - 從 syslog 設備收集警示、重大和緊急事件。
 - Destinations
-  - 將所有資料傳送至名為 centralTeamWorkspace 的 Log Analytics 工作區。
-  - 將效能資料傳送至目前訂用帳戶中 Azure 監視器計量。
+  - 將所有資料傳送至名為 centralWorkspace 的 Log Analytics 工作區。
 
 ```json
 {
@@ -157,7 +156,7 @@ ms.locfileid: "88640730"
             ]
           },
           {
-            "name": "sylogBase",
+            "name": "syslogBase",
             "streams": [
               "Microsoft-Syslog"
             ],

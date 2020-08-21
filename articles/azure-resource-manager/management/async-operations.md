@@ -2,14 +2,14 @@
 title: 非同步作業的狀態
 description: 描述如何在 Azure 中追蹤非同步作業。 其會顯示您用來取得長時間執行作業狀態的值。
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68a00e50c7d3e0da757ee7a3a09274c5f1dbecad
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718419"
+ms.locfileid: "88723447"
 ---
 # <a name="track-asynchronous-azure-operations"></a>追蹤非同步 Azure 作業
 
@@ -31,7 +31,7 @@ ms.locfileid: "88718419"
 
 取得201或202回應碼之後，您就可以開始監視操作的狀態。
 
-## <a name="use-url-to-monitor-status"></a>使用 URL 監視狀態
+## <a name="url-to-monitor-status"></a>監視狀態的 URL
 
 有兩種不同的方式可以監視非同步作業的狀態。 您可以檢查從原始要求傳回的標頭值，以判斷正確的方法。 首先，尋找：
 
@@ -45,7 +45,9 @@ ms.locfileid: "88718419"
 
 ## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation 要求和回應
 
-如果您有來自 `Azure-AsyncOperation` 標頭值的 url，請將 GET 要求傳送至該 url。 使用的值 `Retry-After` 來排程檢查狀態的頻率。 回應屬性可能會不同，但一律會包含非同步作業的狀態。
+如果您有來自 `Azure-AsyncOperation` 標頭值的 url，請將 GET 要求傳送至該 url。 使用的值 `Retry-After` 來排程檢查狀態的頻率。 您將會取得指出作業狀態的回應物件。 使用 URL 檢查作業的狀態時，會傳回不同的回應 `Location` 。 如需位置 URL 回應的詳細資訊，請參閱 [) 之後使用位置和重試建立儲存體帳戶 (202 ](#create-storage-account-202-with-location-and-retry-after)。
+
+回應屬性可能會不同，但一律會包含非同步作業的狀態。
 
 ```json
 {

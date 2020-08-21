@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 5091edbf9138cb8ff03df193dcbeed692aaf13e3
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612396"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723923"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>針對 Azure 數位 Twins 進行疑難排解：診斷記錄
 
@@ -49,7 +49,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
     
 4. 儲存新設定。 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="顯示診斷設定頁面和要新增之按鈕的螢幕擷取畫面":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="顯示診斷設定頁面的螢幕擷取畫面，其中使用者已填入診斷設定名稱，並針對 [類別目錄詳細資料] 和 [目的地詳細資料] 選取了一些核取方塊。[儲存] 按鈕會反白顯示。":::
 
 新的設定大約會在 10 分鐘內生效。 之後，記錄會出現在您實例的 [ **診斷設定** ] 頁面上的已設定目標中。 
 
@@ -93,6 +93,135 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
 |  | DigitalTwins/DigitalTwins/read | 數位 Twins 依識別碼取得、取得元件、依識別碼取得關聯性、列出連入關聯性、清單關聯性 |
 |  | DigitalTwins/DigitalTwins/delete | 數位 Twins 刪除、刪除關聯性 |
 |  | DigitalTwins/DigitalTwins/action | 數位 Twins 傳送元件遙測，傳送遙測 |
+
+## <a name="log-schemas"></a>記錄架構 
+
+每個記錄類別都有一個架構，可定義該類別中事件的報告方式。 每個個別記錄專案都會儲存為文字，並格式化為 JSON blob。 下列每個記錄類型都會提供記錄檔和範例 JSON 主體中的欄位。 
+
+`ADTDigitalTwinsOperation`、 `ADTModelsOperation` 和 `ADTQueryOperation` 使用一致的 API 記錄架構， `ADTEventRoutesOperation` 有自己的個別架構。
+
+### <a name="api-log-schemas"></a>API 記錄架構
+
+這個記錄架構在 `ADTDigitalTwinsOperation` 、和上是一致的 `ADTModelsOperation` `ADTQueryOperation` 。 它包含對 Azure 數位 Twins 實例進行 API 呼叫的相關資訊。
+
+以下是 API 記錄的欄位和屬性描述。
+
+| 欄位名稱 | 資料類型 | 描述 |
+|-----|------|-------------|
+| `Time` | Datetime | 此事件發生的日期和時間（UTC） |
+| `ResourceID` | String | 事件發生所在資源的 Azure Resource Manager 資源識別碼 |
+| `OperationName` | String  | 在事件期間執行的動作類型 |
+| `OperationVersion` | String | 在事件期間使用的 API 版本 |
+| `Category` | String | 所發出的資源類型 |
+| `ResultType` | String | 事件的結果 |
+| `ResultSignature` | String | 事件的 Http 狀態碼 |
+| `ResultDescription` | String | 事件的其他詳細資料 |
+| `DurationMs` | String | 執行事件花費的時間（以毫秒為單位） |
+| `CallerIpAddress` | String | 事件的遮罩來源 IP 位址 |
+| `CorrelationId` | Guid | 客戶為事件提供的唯一識別碼 |
+| `Level` | String | 事件的記錄嚴重性 |
+| `Location` | String | 事件發生的區域 |
+| `RequestUri` | Uri | 在事件期間使用的端點 |
+
+以下是這些記錄類型的範例 JSON 主體。
+
+#### <a name="adtdigitaltwinsoperation"></a>ADTDigitalTwinsOperation
+
+```json
+{
+  "time": "2020-03-14T21:11:14.9918922Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/digitaltwins/write",
+  "operationVersion": "2020-05-31-preview",
+  "category": "DigitalTwinOperation",
+  "resultType": "Success",
+  "resultSignature": "200",
+  "resultDescription": "",
+  "durationMs": "314",
+  "callerIpAddress": "13.68.244.*",
+  "correlationId": "2f6a8e64-94aa-492a-bc31-16b9f0b16ab3",
+  "level": "4",
+  "location": "southcentralus",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-05-31-preview"
+}
+```
+
+#### <a name="adtmodelsoperation"></a>ADTModelsOperation
+
+```json
+{
+  "time": "2020-10-29T21:12:24.2337302Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/models/write",
+  "operationVersion": "2020-05-31-preview",
+  "category": "ModelsOperation",
+  "resultType": "Success",
+  "resultSignature": "201",
+  "resultDescription": "",
+  "durationMs": "935",
+  "callerIpAddress": "13.68.244.*",
+  "correlationId": "9dcb71ea-bb6f-46f2-ab70-78b80db76882",
+  "level": "4",
+  "location": "southcentralus",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-05-31-preview",
+}
+```
+
+#### <a name="adtqueryoperation"></a>ADTQueryOperation
+
+```json
+{
+  "time": "2020-12-04T21:11:44.1690031Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/query/action",
+  "operationVersion": "2020-05-31-preview",
+  "category": "QueryOperation",
+  "resultType": "Success",
+  "resultSignature": "200",
+  "resultDescription": "",
+  "durationMs": "255",
+  "callerIpAddress": "13.68.244.*",
+  "correlationId": "1ee2b6e9-3af4-4873-8c7c-1a698b9ac334",
+  "level": "4",
+  "location": "southcentralus",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-05-31-preview",
+}
+```
+
+### <a name="egress-log-schemas"></a>輸出記錄架構
+
+這是記錄的架構 `ADTEventRoutesOperation` 。 其中包含有關例外狀況的詳細資料，以及連線到 Azure 數位 Twins 實例之輸出端點的 API 作業。
+
+|欄位名稱 | 資料類型 | 描述 |
+|-----|------|-------------|
+| `Time` | Datetime | 此事件發生的日期和時間（UTC） |
+| `ResourceId` | String | 事件發生所在資源的 Azure Resource Manager 資源識別碼 |
+| `OperationName` | String  | 在事件期間執行的動作類型 |
+| `Category` | String | 所發出的資源類型 |
+| `ResultDescription` | String | 事件的其他詳細資料 |
+| `Level` | String | 事件的記錄嚴重性 |
+| `Location` | String | 事件發生的區域 |
+| `EndpointName` | String | 在 Azure 數位 Twins 中建立之輸出端點的名稱 |
+
+以下是這些記錄類型的範例 JSON 主體。
+
+#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
+
+```json
+{
+  "time": "2020-11-05T22:18:38.0708705Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/eventroutes/action",
+  "category": "EventRoutesOperation",
+  "resultDescription": "Unable to send EventGrid message to [my-event-grid.westus-1.eventgrid.azure.net] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
+  "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
+  "level": "3",
+  "location": "southcentralus",
+  "properties": {
+    "endpointName": "endpointEventGridInvalidKey"
+  }
+}
+```
 
 ## <a name="next-steps"></a>後續步驟
 

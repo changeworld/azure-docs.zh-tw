@@ -9,50 +9,66 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: cabc3d2a0f8eb3a75938d1768bb0085aab528391
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e0df3de5eadfd2cc5c00c52da5c4942b42a68b2b
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584598"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722563"
 ---
-# <a name="azure-cognitive-services-container-image-tags"></a>Azure 認知服務容器映射標籤
+# <a name="azure-cognitive-services-container-image-tags"></a>Azure 認知服務容器映射標記
 
-Azure 認知服務提供許多容器映射。 容器登錄和對應的存放庫會因容器映射而有所不同。 每個容器映射名稱都會提供多個標記。 容器映射標記是將容器映射進行版本控制的機制。 本文旨在用來列出所有認知服務容器映射及其可用標記的完整參考。
+Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放庫會在容器映射之間有所不同。 每個容器映射名稱都會提供多個標記。 容器映射標記是一種管理容器映射的機制。 本文旨在作為列出所有認知服務容器映射及其可用標記的完整參考。
 
 > [!TIP]
-> 使用時 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) ，請密切注意容器登錄、存放庫、容器映射名稱和對應標記的大小寫，因為它們會區分**大小**寫。
+> 使用時 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) ，請密切注意容器登錄、儲存機制、容器映射名稱和對應標記的大小寫，因為它們會區分 **大小**寫。
 
 ## <a name="anomaly-detector"></a>Anomaly Detector
 
-您可以在容器登錄整合中找到[異常][ad-containers]偵測器容器映射 `mcr.microsoft.com` 。 它位於存放 `azure-cognitive-services` 庫中，且名為 `anomaly-detector` 。 完整的容器映射名稱是、 `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` 。
+您可以在 container registry 整合上找到 [異常][ad-containers] 偵測器容器映射 `mcr.microsoft.com` 。 它位於存放 `azure-cognitive-services` 庫中，並命名為 `anomaly-detector` 。 完整的容器映射名稱是、 `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` 。
 
-此容器映射具有下列可用的標記：
+此容器映射有下列可用的標記：
 
-| 影像標記                    | 備忘稿 |
+| 影像標記                    | 注意 |
 |-------------------------------|:------|
 | `latest`                      |       |
 
 ## <a name="computer-vision"></a>電腦視覺
 
-您可以在容器登錄中找到[電腦視覺][cv-containers]的容器映射 `containerpreview.azurecr.io` 。 它位於存放 `microsoft` 庫中，且名為 `cognitive-services-read` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-read` 。
+您可以在容器登錄中找到 [電腦視覺][cv-containers] Read OCR 容器映射 `containerpreview.azurecr.io` 。 它位於存放 `microsoft` 庫中，並命名為 `cognitive-services-read` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-read` 。
 
-此容器映射具有下列可用的標記：
+此容器映射有下列可用的標記：
 
-| 影像標記                    | 備忘稿 |
+| 影像標記                    | 注意 |
 |-------------------------------|:------|
-| `latest`                      |       |
+| `latest ( (2.0.013250001-amd64-preview)` | •進一步減少容器的記憶體使用量。 |
+|                                          | •需要外部快取以進行多 pod 設定。 例如，設定快取的 Redis。 |
+|                                          | •修正設定 Redis 快取和 ResultExpirationPeriod = 0 時的結果遺失問題。  |
+|                                          | •移除26MB 的要求主體大小限制。 容器現在可以接受 >26MB 檔。  |
+|                                          | •將時間戳記和組建版本新增至主控台記錄。  |
+| `1.1.013050001-amd64-preview`            | * 新增了 ReadEngineConfig： ResultExpirationPeriod 容器初始化設定，以指定系統應該清除辨識結果的時間。 |
+|                                          | 設定是以小時為單位，預設值為48hr。   |
+|                                          |   此設定可以減少儲存結果的記憶體使用量，尤其是在使用容器記憶體中儲存體時。  |
+|                                          |    * 範例1。 ReadEngineConfig： ResultExpirationPeriod = 1，系統會在進程之後清除辨識結果1小時。   |
+|                                          |    * 範例2。 ReadEngineConfig： ResultExpirationPeriod = 0，系統會在結果抓取之後清除辨識結果。  |
+|                                          | 修正將不正確影像格式傳遞到系統時的500內部伺服器錯誤。 它現在會傳回400錯誤：   |
+|                                          | `{`  |
+|                                          | `"error": {`  |
+|                                          |      `"code": "InvalidImageSize",`  |
+|                                          |      `"message": "Image must be between 1024 and 209715200 bytes."`  |
+|                                          |          `}`  |
+|                                          | `}`  |
 | `1.1.011580001-amd64-preview` |       |
 | `1.1.009920003-amd64-preview` |       |
 | `1.1.009910003-amd64-preview` |       |
 
 ## <a name="face"></a>臉部
 
-您可以在容器登錄中找到[臉部][fa-containers]容器映射 `containerpreview.azurecr.io` 。 它位於存放 `microsoft` 庫中，且名為 `cognitive-services-face` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-face` 。
+[臉部][fa-containers]容器映射可在 container registry 上找到 `containerpreview.azurecr.io` 。 它位於存放 `microsoft` 庫中，並命名為 `cognitive-services-face` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-face` 。
 
-此容器映射具有下列可用的標記：
+此容器映射有下列可用的標記：
 
-| 影像標記                    | 備忘稿 |
+| 影像標記                    | 注意 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -66,11 +82,11 @@ Azure 認知服務提供許多容器映射。 容器登錄和對應的存放庫�
 
 ## <a name="form-recognizer"></a>表單辨識器
 
-您可以在 container registry 上找到[表單辨識器][fr-containers]容器映射 `containerpreview.azurecr.io` 。 它位於存放 `microsoft` 庫中，且名為 `cognitive-services-form-recognizer` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` 。
+您可以在容器登錄上找到 [表單辨識器][fr-containers] 容器映射 `containerpreview.azurecr.io` 。 它位於存放 `microsoft` 庫中，並命名為 `cognitive-services-form-recognizer` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` 。
 
-此容器映射具有下列可用的標記：
+此容器映射有下列可用的標記：
 
-| 影像標記                    | 備忘稿 |
+| 影像標記                    | 注意 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -79,11 +95,11 @@ Azure 認知服務提供許多容器映射。 容器登錄和對應的存放庫�
 
 ## <a name="language-understanding-luis"></a>語言理解 (LUIS)
 
-您可以在容器登錄整合中找到[LUIS][lu-containers]容器映射 `mcr.microsoft.com` 。 它位於存放 `azure-cognitive-services` 庫中，且名為 `luis` 。 完整的容器映射名稱是、 `mcr.microsoft.com/azure-cognitive-services/luis` 。
+[LUIS][lu-containers]容器映射可在 `mcr.microsoft.com` container registry 整合上找到。 它位於存放 `azure-cognitive-services` 庫中，並命名為 `luis` 。 完整的容器映射名稱是、 `mcr.microsoft.com/azure-cognitive-services/luis` 。
 
-此容器映射具有下列可用的標記：
+此容器映射有下列可用的標記：
 
-| 影像標記                    | 備忘稿 |
+| 影像標記                    | 注意 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.010330004-amd64-preview` |       |
@@ -97,11 +113,11 @@ Azure 認知服務提供許多容器映射。 容器登錄和對應的存放庫�
 
 ## <a name="custom-speech-to-text"></a>自訂語音轉換文字
 
-您可以在容器登錄中找到[自訂的語音轉換文字][sp-cstt]容器映射 `containerpreview.azurecr.io` 。 它位於存放 `microsoft` 庫中，且名為 `cognitive-services-custom-speech-to-text` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` 。
+您可以在 container registry 上找到 [自訂的語音轉換文字][sp-cstt] 容器映射 `containerpreview.azurecr.io` 。 它位於存放 `microsoft` 庫中，並命名為 `cognitive-services-custom-speech-to-text` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` 。
 
-此容器映射具有下列可用的標記：
+此容器映射有下列可用的標記：
 
-| 影像標記            | 備忘稿 |
+| 影像標記            | 注意 |
 |-----------------------|:------|
 | `latest`              |       |
 | `2.2.0-amd64-preview` |       |
@@ -112,22 +128,22 @@ Azure 認知服務提供許多容器映射。 容器登錄和對應的存放庫�
 
 ## <a name="custom-text-to-speech"></a>自訂文字轉換語音
 
-您可以在容器登錄中找到[自訂文字轉換語音][sp-ctts]容器映射 `containerpreview.azurecr.io` 。 它位於存放 `microsoft` 庫中，且名為 `cognitive-services-custom-text-to-speech` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` 。
+您可以在容器登錄上找到 [自訂文字轉換語音][sp-ctts] 的容器映射 `containerpreview.azurecr.io` 。 它位於存放 `microsoft` 庫中，並命名為 `cognitive-services-custom-text-to-speech` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` 。
 
-此容器映射具有下列可用的標記：
+此容器映射有下列可用的標記：
 
-| 影像標記            | 備忘稿 |
+| 影像標記            | 注意 |
 |-----------------------|:------|
 | `latest`              |       |
 | `1.3.0-amd64-preview` |       |
 
 ## <a name="speech-to-text"></a>語音轉文字
 
-[語音轉換文字][sp-stt]容器映射可在容器登錄中找到 `containerpreview.azurecr.io` 。 它位於存放 `microsoft` 庫中，且名為 `cognitive-services-speech-to-text` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` 。
+[語音轉換文字][sp-stt]容器映射可在 `containerpreview.azurecr.io` container registry 上找到。 它位於存放 `microsoft` 庫中，並命名為 `cognitive-services-speech-to-text` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` 。
 
-此容器映射具有下列可用的標記：
+此容器映射有下列可用的標記：
 
-| 影像標記                  | 備忘稿                                    |
+| 影像標記                  | 注意                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | 具有地區設定的容器映射 `en-US` 。 |
 | `2.2.0-amd64-ar-ae-preview` | 具有地區設定的容器映射 `ar-AE` 。 |
@@ -445,11 +461,11 @@ Azure 認知服務提供許多容器映射。 容器登錄和對應的存放庫�
 
 ## <a name="text-to-speech"></a>文字轉換語音
 
-[文字轉換語音][sp-tts]容器映射可在容器登錄中找到 `containerpreview.azurecr.io` 。 它位於存放 `microsoft` 庫中，且名為 `cognitive-services-text-to-speech` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` 。
+您可以在容器登錄上找到 [文字轉換語音][sp-tts] 的容器映射 `containerpreview.azurecr.io` 。 它位於存放 `microsoft` 庫中，並命名為 `cognitive-services-text-to-speech` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` 。
 
-此容器映射具有下列可用的標記：
+此容器映射有下列可用的標記：
 
-| 影像標記                                  | 備忘稿                                                                      |
+| 影像標記                                  | 注意                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | 具有地區設定和語音的容器映射 `en-US` `en-US-JessaRUS` 。        |
 | `1.3.0-amd64-ar-eg-hoda-preview`            | 具有地區設定和語音的容器映射 `ar-EG` `ar-EG-Hoda` 。            |
@@ -621,11 +637,11 @@ Azure 認知服務提供許多容器映射。 容器登錄和對應的存放庫�
 
 ## <a name="key-phrase-extraction"></a>關鍵片語擷取
 
-您可以在容器登錄整合中找到[關鍵片語擷取][ta-kp]的容器映射 `mcr.microsoft.com` 。 它位於存放 `azure-cognitive-services` 庫中，且名為 `keyphrase` 。 完整的容器映射名稱是、 `mcr.microsoft.com/azure-cognitive-services/keyphrase` 。
+您可以在 container registry 整合上找到 [關鍵片語擷取][ta-kp] 的容器映射 `mcr.microsoft.com` 。 它位於存放 `azure-cognitive-services` 庫中，並命名為 `keyphrase` 。 完整的容器映射名稱是、 `mcr.microsoft.com/azure-cognitive-services/keyphrase` 。
 
-此容器映射具有下列可用的標記：
+此容器映射有下列可用的標記：
 
-| 影像標記                    | 備忘稿 |
+| 影像標記                    | 注意 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -636,11 +652,11 @@ Azure 認知服務提供許多容器映射。 容器登錄和對應的存放庫�
 
 ## <a name="language-detection"></a>語言偵測
 
-您可以在容器登錄整合中找到[語言偵測][ta-la]的容器映射 `mcr.microsoft.com` 。 它位於存放 `azure-cognitive-services` 庫中，且名為 `language` 。 完整的容器映射名稱是、 `mcr.microsoft.com/azure-cognitive-services/language` 。
+您可以在 container registry 整合上找到 [語言偵測][ta-la] 的容器映射 `mcr.microsoft.com` 。 它位於存放 `azure-cognitive-services` 庫中，並命名為 `language` 。 完整的容器映射名稱是、 `mcr.microsoft.com/azure-cognitive-services/language` 。
 
-此容器映射具有下列可用的標記：
+此容器映射有下列可用的標記：
 
-| 影像標記                    | 備忘稿 |
+| 影像標記                    | 注意 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -651,23 +667,23 @@ Azure 認知服務提供許多容器映射。 容器登錄和對應的存放庫�
 
 ## <a name="sentiment-analysis"></a>情感分析
 
-您可以在容器登錄整合中找到[情感分析][ta-se]的容器映射 `mcr.microsoft.com` 。 它位於存放 `azure-cognitive-services` 庫中，且名為 `sentiment` 。 完整的容器映射名稱是、 `mcr.microsoft.com/azure-cognitive-services/sentiment` 。
+您可以在 container registry 整合上找到 [情感分析][ta-se] 的容器映射 `mcr.microsoft.com` 。 它位於存放 `azure-cognitive-services` 庫中，並命名為 `sentiment` 。 完整的容器映射名稱是、 `mcr.microsoft.com/azure-cognitive-services/sentiment` 。
 
-此容器映射具有下列可用的標記：
+此容器映射有下列可用的標記：
 
-| 影像標記 | 備忘稿                                         |
+| 影像標記 | 注意                                         |
 |------------|:----------------------------------------------|
 | `latest`   |                                               |
-| `3.0-en`   | 情感分析 v3 （英文）               |
-| `3.0-es`   | 情感分析 v3 （西班牙文）               |
-| `3.0-fr`   | 情感分析 v3 （法文）                |
-| `3.0-it`   | 情感分析 v3 （義大利文）               |
-| `3.0-de`   | 情感分析 v3 （德文）                |
-| `3.0-zh`   | 情感分析 v3 （簡體中文）  |
-| `3.0-zht`  | 情感分析 v3 （繁體中文） |
-| `3.0-ja`   | 情感分析 v3 （日文）              |
-| `3.0-pt`   | 情感分析 v3 （葡萄牙文）            |
-| `3.0-nl`   | 情感分析 v3 （荷蘭文）                 |
+| `3.0-en`   | 情感分析 v3 (英文)                |
+| `3.0-es`   | 情感分析 v3 (西班牙文)                |
+| `3.0-fr`   | 情感分析 v3 (法文)                 |
+| `3.0-it`   | 情感分析 v3 (義大利文)                |
+| `3.0-de`   | 情感分析 v3 (德文)                 |
+| `3.0-zh`   | 情感分析 v3 (簡體中文)   |
+| `3.0-zht`  | 情感分析 v3 (繁體中文)  |
+| `3.0-ja`   | 情感分析 v3 (日文)               |
+| `3.0-pt`   | 情感分析 v3 (葡萄牙文)             |
+| `3.0-nl`   | 情感分析 v3 (荷蘭)                  |
 | `1.1.009301-amd64-preview`    | 情感分析 v2      |
 | `1.1.008510001-amd64-preview` |       |
 | `1.1.007750002-amd64-preview` |       |

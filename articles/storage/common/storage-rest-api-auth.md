@@ -1,7 +1,7 @@
 ---
 title: 使用共用金鑰授權呼叫 REST API 作業
 titleSuffix: Discover how to call Azure Storage REST API operations with Shared Key authorization. Get detailed information about each step of the sample operation.
-description: 使用 Azure 儲存體 REST API，向使用共用金鑰授權的 Blob 儲存體提出要求。
+description: 使用 Azure 儲存體 REST API，利用共用金鑰授權對 Blob 儲存體提出要求。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,18 +10,18 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: d43df68f48273b03fa9bde9633b487d69c0834ed
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 29bec00916f4cc3683dae5b6d3065e02a3cbe10f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905375"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88724161"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>使用共用金鑰授權呼叫 REST API 作業
 
-本文說明如何呼叫 Azure 儲存體 REST Api，包括如何形成授權標頭。 它是以開發人員的觀點來撰寫，他不知道什麼是 REST，而且也不知道如何進行 REST 呼叫。 在您瞭解如何呼叫 REST 作業之後，您可以利用此知識來使用任何其他 Azure 儲存體 REST 作業。
+本文說明如何呼叫 Azure 儲存體 REST Api，包括如何形成授權標頭。 它是從不知道 REST 的開發人員觀點來撰寫，不知道如何進行 REST 呼叫。 在您瞭解如何呼叫 REST 作業之後，您可以運用此知識來使用任何其他 Azure 儲存體 REST 作業。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 範例應用程式會列出儲存體帳戶的 blob 容器。 若要試用本文中的程式碼，您需要下列項目︰
 
@@ -47,11 +47,11 @@ git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 
 ## <a name="about-rest"></a>關於 REST
 
-REST 代表*具像狀態傳輸*。 如需特定定義，請查看[維基百科](https://en.wikipedia.org/wiki/Representational_state_transfer)。
+REST 代表 *具像狀態傳輸*。 如需特定定義，請查看[維基百科](https://en.wikipedia.org/wiki/Representational_state_transfer)。
 
 REST 是一種架構，可讓您透過網際網路通訊協定（例如 HTTP/HTTPS）與服務互動。 REST 與伺服器或用戶端上執行的軟體無關。 您可以從任何支援 HTTP/HTTPS 的平臺呼叫 REST API。 您可以撰寫在 Mac、Windows、Linux、Android 手機或平板電腦、iPhone、iPod 或網站上執行的應用程式，並針對上述這些平台使用相同的 REST API。
 
-REST API 的呼叫包含由用戶端提出的要求，以及由服務傳回的回應。 在要求中，您會傳送 URL，其中包含您想要呼叫之作業的相關資訊、要採取行動的資源、任何查詢參數和標頭，以及根據所呼叫的作業（資料的承載）。 服務的回應包括狀態碼、一組回應標頭，以及根據所呼叫的作業（資料的承載）。
+REST API 的呼叫是由用戶端所提出的要求以及服務傳回的回應所組成。 在要求中，您會傳送 URL，其中包含您想要呼叫的作業、要處理的資源、任何查詢參數和標頭，以及根據呼叫的作業（資料承載）的相關資訊。 來自服務的回應包含狀態碼、一組回應標頭，以及根據呼叫的作業（資料承載）而定。
 
 ## <a name="about-the-sample-application"></a>關於範例應用程式
 
@@ -61,11 +61,11 @@ REST API 的呼叫包含由用戶端提出的要求，以及由服務傳回的�
 
 ## <a name="list-containers-operation"></a>列出容器作業
 
-檢查[ListContainers](/rest/api/storageservices/List-Containers2)作業的參考。 這項資訊可協助您瞭解要求和回應中的某些欄位來自何處。
+檢查 [ListContainers](/rest/api/storageservices/List-Containers2) 作業的參考。 這項資訊可協助您瞭解要求和回應中的某些欄位來自何處。
 
-**Request 方法**： GET。 此動詞命令是您指定作為要求物件屬性的 HTTP 方法。 視您呼叫的 API 而定，此動詞命令的其他值包括 HEAD、PUT 和 DELETE。
+**要求方法**： GET。 此動詞命令是您指定作為要求物件屬性的 HTTP 方法。 視您呼叫的 API 而定，此動詞命令的其他值包括 HEAD、PUT 和 DELETE。
 
-**要求 URI**： `https://myaccount.blob.core.windows.net/?comp=list` 。要求 URI 是從 blob 儲存體帳戶端點 `http://myaccount.blob.core.windows.net` 和資源字串建立而來 `/?comp=list` 。
+**要求 URI**： `https://myaccount.blob.core.windows.net/?comp=list` 。要求 URI 是從 blob 儲存體帳戶端點 `https://myaccount.blob.core.windows.net` 和資源字串建立 `/?comp=list` 。
 
 [URI 參數](/rest/api/storageservices/List-Containers2#uri-parameters)：呼叫 ListContainers 時，您有其他查詢參數可以使用。 其中有幾個參數是呼叫的 timeout** (以秒為單位) 以及用於篩選的 prefix**。
 
@@ -83,15 +83,15 @@ REST API 的呼叫包含由用戶端提出的要求，以及由服務傳回的�
 
 [回應狀態碼](/rest/api/storageservices/List-Containers2#status-code)**：** 告知您需要知道的任何狀態碼。 在此範例中，HTTP 狀態碼 200 表示「正常」。 如需完整的 HTTP 狀態碼清單，請參閱[狀態碼定義](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)。 若要查看儲存體 REST API 特有的錯誤碼，請參閱[常見的 REST API 錯誤碼](/rest/api/storageservices/common-rest-api-error-codes)
 
-[回應標頭](/rest/api/storageservices/List-Containers2#response-headers)**：** 這些包括*內容類型*;*x-ms-要求*識別碼，這是您傳入的要求識別碼;[ *x-ms-版本*]，表示所使用的 Blob 服務版本。和*日期*（UTC）並告訴您提出要求的時間。
+[回應標頭](/rest/api/storageservices/List-Containers2#response-headers)**：** 這些包括 *內容類型*; *x-ms-要求*識別碼，也就是您傳入的要求識別碼; *x-ms 版本*，表示所使用的 Blob 服務版本;以及 *日期*（UTC），並告訴您提出要求的時間。
 
 [回應主體](/rest/api/storageservices/List-Containers2#response-body)：這個欄位是一種 XML 結構，可提供所要求的資料。 在此範例中，回應是容器及其屬性的清單。
 
 ## <a name="creating-the-rest-request"></a>建立 REST 要求
 
-針對在生產環境中執行時的安全性，請一律使用 HTTPS，而不是 HTTP。 基於此練習的目的，您應該使用 HTTP，以便您檢視要求和回應資料。 若要檢視實際 REST 呼叫中的要求和回應資訊，您可以下載 [Fiddler](https://www.telerik.com/fiddler) 或類似的應用程式。 在 Visual Studio 解決方案中，儲存體帳戶名稱和金鑰會在類別中硬式編碼。 ListContainersAsyncREST 方法會將儲存體帳戶名稱和儲存體帳戶金鑰傳遞給用來建立 REST 要求之各種元件的方法。 在真實世界的應用程式中，儲存體帳戶名稱和金鑰會位於組態檔、環境變數，或從 Azure Key Vault 擷取而來。
+針對在生產環境中執行時的安全性，請一律使用 HTTPS 而非 HTTP。 基於此練習的目的，您應該使用 HTTP，以便您檢視要求和回應資料。 若要檢視實際 REST 呼叫中的要求和回應資訊，您可以下載 [Fiddler](https://www.telerik.com/fiddler) 或類似的應用程式。 在 Visual Studio 解決方案中，儲存體帳戶名稱和金鑰會在類別中硬式編碼。 ListContainersAsyncREST 方法會將儲存體帳戶名稱和儲存體帳戶金鑰傳遞給用來建立 REST 要求各元件的方法。 在真實世界的應用程式中，儲存體帳戶名稱和金鑰會位於組態檔、環境變數，或從 Azure Key Vault 擷取而來。
 
-在我們的範例專案中，用於建立授權標頭的程式碼位於不同的類別中。 其概念是，您可以採用整個類別，並將其新增至您自己的解決方案，並以「原樣」使用它。 授權標頭程式碼適用於對 Azure 儲存體的大部分 REST API 呼叫。
+在我們的範例專案中，用來建立授權標頭的程式碼位於不同的類別中。 其概念是，您可以採用整個類別，並將它新增至您自己的解決方案，並以「原樣」使用。 授權標頭程式碼適用於對 Azure 儲存體的大部分 REST API 呼叫。
 
 若要建立要求 (也就是 HttpRequestMessage 物件)，請移至 Program.cs 中的 ListContainersAsyncREST。 建立要求的步驟如下：
 
@@ -130,7 +130,7 @@ using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri)
 {
 ```
 
-加入和的要求標 `x-ms-date` 頭 `x-ms-version` 。 程式碼中的這個位置也就是您新增呼叫所需之任何其他要求標頭的位置。 在此範例中，沒有任何額外的標頭。 傳入額外標頭的 API 範例是設定容器 ACL 作業。 此 API 呼叫會新增名為 "x-ms-public-access" 的標頭，以及存取層級的值。
+加入和的要求標 `x-ms-date` 頭 `x-ms-version` 。 程式碼中的這個位置也就是您新增呼叫所需之任何其他要求標頭的位置。 在此範例中，沒有任何額外的標頭。 傳入額外標頭的 API 範例是設定容器 ACL 操作。 此 API 呼叫會新增名為 "x-ms-public-public-access" 的標頭，以及存取層級的值。
 
 ```csharp
 // Add the request headers for x-ms-date and x-ms-version.
@@ -153,7 +153,7 @@ httpRequestMessage.Headers.Authorization = AzureStorageAuthenticationHelper.GetA
 
 ## <a name="send-the-request"></a>傳送要求
 
-現在您已建立要求，您可以呼叫 SendAsync 方法，將它傳送給 Azure 儲存體。 檢查回應狀態碼的值是否為200，表示作業已成功。 接下來，剖析回應。 在此情況下，您會取得容器的 XML 清單。 讓我們查看用於呼叫 GetRESTRequest 方法以建立要求的程式碼，執行此要求，然後檢查容器清單的回應。
+現在您已建立要求，您可以呼叫 SendAsync 方法將它傳送至 Azure 儲存體。 檢查回應狀態碼的值是否為200，表示作業已成功。 接下來，剖析回應。 在此情況下，您會取得容器的 XML 清單。 讓我們查看用於呼叫 GetRESTRequest 方法以建立要求的程式碼，執行此要求，然後檢查容器清單的回應。
 
 ```csharp
     // Send the request.
@@ -205,7 +205,7 @@ Date: Fri, 17 Nov 2017 00:23:42 GMT
 Content-Length: 1511
 ```
 
-** (XML) 的回應主體：** 針對「列出容器」作業，這會顯示容器和其屬性的清單。
+** (XML) 的回應主體：** 針對清單容器作業，這會顯示容器和其屬性的清單。
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
@@ -267,9 +267,9 @@ Content-Length: 1511
 ## <a name="creating-the-authorization-header"></a>建立授權標頭
 
 > [!TIP]
-> Azure 儲存體現在支援 blob 和佇列的 Azure Active Directory (Azure AD) 整合。 Azure AD 可提供更簡單的 Azure 儲存體要求授權體驗。 如需使用 Azure AD 來授權 REST 作業的詳細資訊，請參閱[使用 Azure Active Directory 進行授權](/rest/api/storageservices/authorize-with-azure-active-directory)。 如需 Azure AD 與 Azure 儲存體整合的總覽，請參閱[使用 Azure Active Directory 驗證 Azure 儲存體的存取權](storage-auth-aad.md)。
+> Azure 儲存體現在支援 blob 和佇列的 Azure Active Directory (Azure AD) 整合。 Azure AD 可提供更簡單的 Azure 儲存體要求授權體驗。 如需使用 Azure AD 來授權 REST 作業的詳細資訊，請參閱使用 [Azure Active Directory 授權](/rest/api/storageservices/authorize-with-azure-active-directory)。 如需 Azure AD 與 Azure 儲存體整合的總覽，請參閱 [使用 Azure Active Directory 驗證 Azure 儲存體的存取權](storage-auth-aad.md)。
 
-有一篇文章會在概念上說明 (沒有程式碼) 如何[授權 Azure 儲存體的要求](/rest/api/storageservices/authorize-requests-to-azure-storage)。
+本文說明概念 (沒有程式碼) 如何 [授權 Azure 儲存體的要求](/rest/api/storageservices/authorize-requests-to-azure-storage)。
 
 讓我們萃取該文章的精華，並顯示程式碼。
 
@@ -279,7 +279,7 @@ Content-Length: 1511
 Authorization="SharedKey <storage account name>:<signature>"  
 ```
 
-簽章欄位是雜湊式訊息驗證碼 (HMAC)，該驗證碼是從要求建構而來並使用 SHA256 演算法進行計算，然後使用 Base64 編碼方式進行編碼。 懂了嗎？  (停止回應，您甚至還沒聽過「正式」*這個字。* ) 
+簽章欄位是雜湊式訊息驗證碼 (HMAC)，該驗證碼是從要求建構而來並使用 SHA256 演算法進行計算，然後使用 Base64 編碼方式進行編碼。 懂了嗎？  (停止回應，您還沒聽過 *這個字。* ) 
 
 此程式碼片段會顯示共用金鑰簽章字串的格式：
 
@@ -302,7 +302,7 @@ StringToSign = VERB + "\n" +
 
 大部分的上述欄位都很少使用。 對於 Blob 儲存體，您可以指定 VERB、md5、內容長度、正式標頭和正式資源。 您可以將其他欄位空白 (但放入 `\n`，讓它知道是空白的)。
 
-什麼是 CanonicalizedHeaders 和 CanonicalizedResource？ 好問題。 事實上，正式 (canonicalized) 是什麼意思？ Microsoft Word 甚至不會將它視為一個字。 以下是[維琪百科所說的標準化](https://en.wikipedia.org/wiki/Canonicalization)概念：*在電腦科學中，正規化 (有時候標準化或正規化) 是將具有一個以上可能呈現的資料轉換成「標準」、「一般」或標準格式*的程式。 一般來說，這表示取得項目 (例如正式標頭中的標頭) 清單，並將它們標準化成為所需的格式。 基本上，Microsoft 已決定格式，而您必須符合它。
+什麼是 CanonicalizedHeaders 和 CanonicalizedResource？ 好問題。 事實上，正式 (canonicalized) 是什麼意思？ Microsoft Word 甚至不會將它視為一個字。 以下是[維琪百科指出標準化](https://en.wikipedia.org/wiki/Canonicalization)的概念：*在電腦科學中，正常化 (有時候標準化或正規化) 是將具有多個可能標記法的資料轉換成「標準」、「標準」或標準格式*的程式。 一般來說，這表示取得項目 (例如正式標頭中的標頭) 清單，並將它們標準化成為所需的格式。 基本上，Microsoft 已決定格式，而您必須符合它。
 
 讓我們從這兩個正式欄位著手，因為需有它們才能建立授權標頭。
 
@@ -359,7 +359,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
 /contosorest/\ncomp:list
 ```
 
-如果您有查詢參數，此範例也會包含這些參數。 以下的程式碼也會處理其他查詢參數，以及具有多個值的查詢參數。 請記住，您要建立此程式碼來處理所有 REST Api。 您想要包含所有的可能性，即使 ListContainers 方法不需要它們。
+如果您有查詢參數，此範例也會包含這些參數。 以下的程式碼也會處理其他查詢參數，以及具有多個值的查詢參數。 請記住，您正在建立此程式碼來處理所有 REST Api。 您想要包含所有可能性，即使 ListContainers 方法不需要所有的方法。
 
 ```csharp
 private static string GetCanonicalizedResource(Uri address, string storageAccountName)
@@ -415,7 +415,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 }
 ```
 
-當您執行此程式碼時，產生的 MessageSignature 會如下列範例所示：
+當您執行此程式碼時，產生的 MessageSignature 看起來會像這個範例：
 
 ```
 GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-07-29\n/contosorest/\ncomp:list
@@ -429,11 +429,11 @@ SharedKey contosorest:Ms5sfwkA8nqTRw7Uury4MPHqM6Rj2nfgbYNvUKOa67w=
 
 AuthorizationHeader 是在張貼回應之前，放在要求標頭中的最後一個標頭。
 
-其中涵蓋您需要知道的所有專案，以便將類別結合在一起，讓您可以建立呼叫儲存體服務 REST Api 的要求。
+這涵蓋了您需要知道的一切，以建立可讓您建立呼叫儲存體服務 REST Api 要求的類別。
 
 ## <a name="example-list-blobs"></a>範例：列出 blob
 
-讓我們看看如何變更程式碼，以呼叫容器容器的清單 Blob 作業 *-1*。 這段程式碼幾乎與列出容器的程式碼完全相同，唯一的差異是 URI 和剖析回應的方式。
+讓我們看看如何變更程式碼，以呼叫容器 *容器-1*的清單 blob 作業。 這段程式碼與列出容器的程式碼幾乎完全相同，唯一的差異在於 URI 和您剖析回應的方式。
 
 如果您查看 [ListBlobs](/rest/api/storageservices/List-Blobs) 的參考文件，您會發現此方法為 GET** 且 RequestURI 為：
 
@@ -480,7 +480,7 @@ GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 05:16:48 GMT
   \nx-ms-version:2017-07-29\n/contosorest/container-1\ncomp:list\nrestype:container
 ```
 
-**Authorization 標頭：**
+**授權標頭：**
 
 ```
 SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
@@ -563,9 +563,9 @@ Content-Length: 1135
 </EnumerationResults>
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
-在本文中，您已瞭解如何對 blob 儲存體 REST API 提出要求。 在要求中，您可以在容器中抓取容器清單或 blob 清單。 您已瞭解如何建立 REST API 呼叫的授權簽章，以及如何在 REST 要求中使用它。 最後，您已瞭解如何檢查回應。
+在本文中，您已瞭解如何對 blob 儲存體 REST API 提出要求。 您可以使用要求來取得容器清單或容器中的 blob 清單。 您已瞭解如何建立 REST API 呼叫的授權簽章，以及如何在 REST 要求中使用它。 最後，您已瞭解如何檢查回應。
 
 ## <a name="next-steps"></a>後續步驟
 
