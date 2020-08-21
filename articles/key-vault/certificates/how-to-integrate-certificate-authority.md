@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 7627625a917a8f652da62d4197368f023ad8c110
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964493"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588920"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>將 Key Vault 與 DigiCert 憑證授權單位整合
 
@@ -105,7 +105,7 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 
 ```azurepowershell-interactive
 $accountId = "myDigiCertCertCentralAccountID"
-$org = New-AzureKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
+$org = New-AzKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
 $issuerName = "DigiCertCA"
 ```
@@ -131,6 +131,16 @@ Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertifica
  ![憑證屬性](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 如需詳細資訊，請參閱 [Key Vault REST API 參考中的憑證作業](/rest/api/keyvault)。 如需建立權限的相關資訊，請參閱[保存庫 - 建立或更新](/rest/api/keyvault/vaults/createorupdate)和[保存庫 - 更新存取原則](/rest/api/keyvault/vaults/updateaccesspolicy)。
+
+## <a name="frequently-asked-questions"></a>常見問題集
+
+- 我可以透過 KeyVault 產生數位憑證的萬用字元憑證嗎？ 
+   是。 這會根據您設定數位憑證帳戶的方式而定。
+- 如果要建立 EV 憑證，應該如何指定？ 
+   建立憑證時，請按一下 [進階原則組態]，然後指定憑證類型。 支援的值為：OV-SSL、EV-SSL
+- 相較於直接透過數位憑證取得憑證，透過整合來建立數位憑證是否會有時間上的延遲？
+   否。 憑證是一種驗證程序，可能需要一些時間，而且該驗證相依於 DigiCert 遵循的程序。
+
 
 ## <a name="next-steps"></a>後續步驟
 

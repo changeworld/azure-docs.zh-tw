@@ -140,9 +140,6 @@
         - name: 資源庫資料
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
-        - name: 下載筆記本
-          displayName: export
-          href: download-notebooks-data.md
 - name: 參考
   items:
     - name: 演算法和模組參考
@@ -165,5 +162,5 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
-    - name: '自訂神經網路 (Net#)'
+    - name: 自訂神經網路 (Net#)
       href: azure-ml-netsharp-reference-guide.md

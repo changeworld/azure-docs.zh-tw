@@ -283,7 +283,7 @@
             - name: 資料總管
               href: /azure/data-explorer/pricing-reserved-capacity
             - name: 磁碟儲存體
-              href: ../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+              href: ../virtual-machines/disks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
             - name: 專用主機
               href: ../virtual-machines/prepay-dedicated-hosts-reserved-instances.md?toc=/azure/cost-management-billing/toc.json
             - name: 軟體方案

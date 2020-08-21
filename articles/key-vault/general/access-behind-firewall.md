@@ -1,21 +1,21 @@
 ---
 title: 在防火牆後面存取金鑰保存庫 - Azure Key Vault | Microsoft Docs
-description: 了解如何從防火牆後面的應用程式存取 Azure 金鑰保存庫
+description: 了解必須開啟哪些連接埠、主機或 IP 位址，才能夠在防火牆後端啟用金鑰保存庫用戶端應用程式，以存取金鑰保存庫。
 services: key-vault
 author: amitbapat
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: db5c35db271f84a88fdc03f4f0178ee1c35f727e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 1ab5ae7bf9f1d13458e3bbeeec564fe642eb3303
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834317"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588723"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>在防火牆後存取 Azure 金鑰保存庫
 

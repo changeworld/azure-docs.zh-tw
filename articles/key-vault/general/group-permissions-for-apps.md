@@ -1,21 +1,21 @@
 ---
 title: 對應用程式授與 Azure 金鑰保存庫的存取權限 - Azure Key Vault | Microsoft Docs
-description: 了解如何對許多應用程式授與金鑰保存庫的存取權限
+description: 了解如何手動註冊服務主體，並使用存取控制原則提供 Azure Key Vault 的存取權，在某些情況下，這可能是必要的。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8369c507ee7a9e11969c17bbaac7c6e31892e196
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: d0607b1adb76fd32ce9f4dc9ebede92c7aa96862
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406243"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588716"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>使用存取控制原則提供 Key Vault 驗證
 

@@ -1,20 +1,20 @@
 ---
 title: Azure Key Vault - 如何以 PowerShell 使用虛刪除
-description: 以 PowerShell 程式碼片段進行虛刪除的使用案例範例
+description: 了解如何使用 Azure PowerShell 來使用 Azure Key Vault 的虛刪除功能，以允許復原金鑰保存庫和金鑰保存庫物件。
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 55e4bd20b6cc17a5cbad620d3a404d6ada41b81a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 6ec784048d2c30d215fe046ccda39ef6f8a3daa5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136468"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585537"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何使用 Key Vault 虛刪除與 PowerShell
 

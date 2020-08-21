@@ -222,7 +222,7 @@
             - name: Mv2 系列
               href: ../mv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: 限制 vCPU
-              href: constrained-vcpu.md
+              href: ../constrained-vcpu.md
         - name: 儲存體最佳化
           items:
             - name: 概觀
@@ -279,7 +279,7 @@
             - name: 什麼是 Azure 保留？
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/windows/toc.json
             - name: VM 執行個體大小彈性
-              href: reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md
         - name: Spot VM
           displayName: 'pre-empt, preempt'
           href: spot-vms.md
@@ -305,7 +305,7 @@
             - name: 什麼是 Azure 保留？
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: VM 執行個體大小彈性
-              href: reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md
     - name: 專用主機
       href: dedicated-hosts.md
     - name: 維護和更新
@@ -313,21 +313,21 @@
     - name: 磁碟儲存體
       items:
         - name: 受控磁碟簡介
-          href: managed-disks-overview.md
+          href: ../managed-disks-overview.md
         - name: 選取適用於 IaaS VM 的磁碟類型
-          href: disks-types.md
+          href: ../disks-types.md
         - name: 加密
           href: disk-encryption.md
         - name: 磁碟儲存體保留
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: 為高效能而設計
-          href: premium-storage-performance.md
+          href: ../premium-storage-performance.md
         - name: 磁碟高載
           href: disk-bursting.md
         - name: 磁碟適用的延展性目標
           href: disk-scalability-targets.md
         - name: 磁碟備份和災害復原
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: 共用磁碟
           href: disks-shared.md
         - name: 暫時性 OS 磁碟
@@ -341,7 +341,7 @@
     - name: 安全性
       items:
         - name: 安全性與原則
-          href: security-policy.md
+          href: ../security-policy.md
         - name: Azure 磁碟加密
           href: disk-encryption-overview.md
         - name: Azure 原則的安全性控制
@@ -661,7 +661,7 @@
       items:
         - name: 維修通知
           items:
-            - name: 總覽
+            - name: 概觀
               href: ../maintenance-notifications.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -671,7 +671,7 @@
               href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 維修控制
           items:
-            - name: 總覽
+            - name: 概觀
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -855,7 +855,7 @@
           displayName: Azure Resource Manager
           href: ../using-managed-disks-template-deployments.md
         - name: 啟用共用磁碟
-          href: disks-shared-enable.md
+          href: ../disks-shared-enable.md
         - name: 將 VHD 上傳到磁碟 - PowerShell
           href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: 安全地匯入/匯出磁碟 - 入口網站
@@ -863,11 +863,11 @@
         - name: 調整磁碟大小
           href: expand-os-disk.md
         - name: 使用儲存體總管管理磁碟
-          href: disks-use-storage-explorer-managed-disks.md
+          href: ../disks-use-storage-explorer-managed-disks.md
         - name: 製作磁碟的快照集
           href: snapshot-copy-managed-disk.md
         - name: 保留磁碟儲存體
-          href: disks-reserved-capacity.md
+          href: ../disks-reserved-capacity.md
         - name: 建立增量快照 - PowerShell
           href: disks-incremental-snapshots.md
         - name: 建立增量快照 - 入口網站
@@ -903,7 +903,7 @@
             - name: 啟用寫入加速器
               href: ../how-to-enable-write-accelerator.md
             - name: 使用 Ultra 磁碟
-              href: disks-enable-ultra-ssd.md
+              href: ../disks-enable-ultra-ssd.md
             - name: 基準測試磁碟
               href: disks-benchmarks.md
         - name: 尋找未連接的磁碟 - PowerShell

@@ -325,7 +325,7 @@
           href: platform/metric-chart-samples.md
         - name: 針對計量圖表進行疑難排解
           href: platform/metrics-troubleshoot.md
-    - name: 資料集合
+    - name: 資料收集
       items:
         - name: 資料收集規則
           href: platform/data-collection-rule-overview.md
@@ -358,7 +358,7 @@
             - name: 概觀
               displayname: Azure Monitor agent
               href: platform/azure-monitor-agent-overview.md
-            - name: 資料集合
+            - name: 資料收集
               displayname: 'data collection rule,Azure Monitor agent'
               href: platform/data-collection-rule-azure-monitor-agent.md
         - name: Azure 診斷擴充功能
@@ -482,16 +482,12 @@
           href: platform/autoscale-resource-log-schema.md
     - name: 警示
       items:
-        - name: 應用程式警示規則
-          items:
-            - name: 可用性
-              href: app/monitor-web-app-availability.md
-            - name: 度量警示
-              href: ./platform/alerts-log.md
         - name: 計量警示規則
           items:
             - name: 管理計量警示
               href: platform/alerts-metric.md
+            - name: 可用性
+              href: app/monitor-web-app-availability.md
             - name: 使用動態閾值
               href: platform/alerts-dynamic-thresholds.md
             - name: 許多時間序列的單一警示

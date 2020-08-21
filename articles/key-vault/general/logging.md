@@ -1,21 +1,21 @@
 ---
 title: Azure Key Vault 記錄 | Microsoft Docs
-description: 使用本教學課程來協助您開始使用 Azure 金鑰保存庫記錄。
+description: 要了解如何監視金鑰保存庫存取，您可以啟用 Azure Key Vault 記錄，以在您提供的 Azure 儲存體帳戶中儲存這方面的資訊。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9c5b07d402219907337a590e1131691fb1e24cc2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e9507525dc2c52f584bd7883a12da401b5999f50
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090581"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585911"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 記錄
 

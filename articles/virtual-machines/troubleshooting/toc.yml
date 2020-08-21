@@ -193,7 +193,7 @@
 - name: 虛擬磁碟管理問題
   items:
     - name: 概觀
-      href: ../windows/managed-disks-overview.md
+      href: ../managed-disks-overview.md
     - name: 常見問題集
       href: ../windows/faq-for-disks.md
     - name: 刪除儲存體資源時發生錯誤

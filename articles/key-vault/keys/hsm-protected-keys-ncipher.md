@@ -1,5 +1,5 @@
 ---
-title: 如何為 Azure Key Vault Azure Key Vault 產生及傳輸受 HSM 保護的金鑰
+title: 如何為 Azure 金鑰保存庫產生並傳輸受 HSM 保護的金鑰 - Azure Key Vault
 description: 使用這份文件協助您規劃、產生，並傳輸受 HSM 保護的金鑰，以搭配 Azure 金鑰保存庫使用。 也稱為 BYOK 或「攜帶您自己的金鑰」。
 services: key-vault
 author: amitbapat
@@ -7,28 +7,28 @@ manager: devtiw
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: e67769d37b45a9e1344ce6aa72bd1e60e6bfe287
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: MT
+ms.openlocfilehash: de14cf8cc79b4e1387950a2ae048da41738f5db1
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061282"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589923"
 ---
-# <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>為 Key Vault 匯入受 HSM 保護的金鑰（nCipher）
+# <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>匯入適用於 Azure Key Vault 的受 HSM 保護金鑰 (nCipher)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-為了加強保證，當您使用 Azure 金鑰保存庫時，您可以在硬體安全模組 (HSM) 中匯入或產生無需離開 HSM 界限的金鑰。 此案例通常稱為「自備金鑰」(BYOK)。 Azure Key Vault 使用 Hsm 的 nCipher nShield 系列（已驗證 FIPS 140-2 Level 2）來保護您的金鑰。
+為了加強保證，當您使用 Azure 金鑰保存庫時，您可以在硬體安全模組 (HSM) 中匯入或產生無需離開 HSM 界限的金鑰。 此案例通常稱為「自備金鑰」(BYOK)。 Azure Key Vault 使用 HSM 的 nCipher nShield 系列 (已經過 FIPS 140-2 Level 2 驗證) 來保護您的金鑰。
 
 > [!NOTE]
-> 本檔中所述的 HSM 金鑰匯入方法僅適用于 nCipher nShield 的 Hsm 系列。 如需從其他 Hsm 匯入 HSM 金鑰，[請參閱這裡](hsm-protected-keys-byok.md)。
+> 本文件中所述的 HSM 金鑰匯入方法僅適用於 HSM 的 nCipher nShield 系列。 如需從其他 HSM 匯入 HSM 金鑰，請[參閱此處](hsm-protected-keys-byok.md)。
 
 使用本主題中的資訊，協助您規劃、產生然後傳送自己受 HSM 保護的金鑰，以搭配使用 Azure 金鑰保存庫。 
 
-此功能不適用於 Azure 中國世紀。
+此功能不適用於 Azure China 21Vianet。
 
 > [!NOTE]
 > 如需 Azure 金鑰保存庫的詳細資訊，請參閱 [什麼是 Azure 金鑰保存庫？](../general/overview.md)  
@@ -38,16 +38,16 @@ ms.locfileid: "87061282"
 
 * 您可以從離線工作站產生金鑰，可減少受攻擊面。
 * 此金鑰利用金鑰交換金鑰 (KEK) 加密，且加密狀態會維持到金鑰傳輸至 Azure 金鑰保存庫 HSM 為止。 只有加密版本的金鑰會離開原始工作站。
-* 工具組會在將您的金鑰繫結至 Azure 金鑰保存庫安全世界的租用戶金鑰上設定屬性。 因此，在 Azure 金鑰保存庫 HSM 接收和解密您的金鑰之後，只有這些 HSM 可使用它。 無法匯出您的金鑰。 此系結是由 nCipher Hsm 強制執行。
-* 用來解密金鑰的金鑰互換金鑰 (KEK) 產生於 Azure 金鑰保存庫 HSM 內且不可匯出。 HSM 會強制執行使 HSM 外部沒有明確版本的 KEK。 此外，工具組包含來自 nCipher 的證明，KEK 無法匯出，而且是在 nCipher 製造的正版 HSM 內產生。
-* 此工具組包含來自 nCipher 的證明，在 nCipher 製造的正版 HSM 上也會產生 Azure Key Vault 的安全性世界。 這個證書向您證明 Microsoft 正在使用正版硬體。
+* 工具組會在將您的金鑰繫結至 Azure 金鑰保存庫安全世界的租用戶金鑰上設定屬性。 因此，在 Azure 金鑰保存庫 HSM 接收和解密您的金鑰之後，只有這些 HSM 可使用它。 無法匯出您的金鑰。 這個繫結是由 nCipher HSM 強制執行。
+* 用來解密金鑰的金鑰互換金鑰 (KEK) 產生於 Azure 金鑰保存庫 HSM 內且不可匯出。 HSM 會強制執行使 HSM 外部沒有明確版本的 KEK。 此外，工具組包含了來自 nCipher 的證明，代表 KEK 不可匯出，且產生於 nCipher 製造的正版 HSM 內部。
+* 工具組包含了來自 nCipher 的證明，代表 Azure 金鑰保存庫安全世界也產生於 nCipher 製造的正版 HSM 上。 這個證書向您證明 Microsoft 正在使用正版硬體。
 * Microsoft 會在每個地理區域使用不同的 KEK 和不同的「安全世界」。 這種區隔可確保您的金鑰只能用在您加密它時所在區域中的資料中心。 例如，來自歐洲客戶的金鑰不能在北美或亞洲的資料中心使用。
 
-## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>NCipher Hsm 和 Microsoft 服務的詳細資訊
+## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>nCipher HSM 和 Microsoft 服務的詳細資訊
 
-nCipher Security 是一家 Entrust Datacard 公司，是一般用途 HSM 市場的領導者，藉由將信任、完整性和控制提供給其業務關鍵資訊和應用程式，來為全球領導的組織提供。 nCipher 的密碼編譯解決方案可保護新興技術，也就是雲端、IoT、區塊鏈、數位付款，並協助滿足新的合規性要求，並使用全球組織所依賴的相同成熟技術來保護其敏感性資料、網路通訊和企業基礎結構的威脅。 nCipher 提供對商務關鍵應用程式的信任，確保資料的完整性，並讓客戶隨時都能獲得完全掌控。
+nCipher Security 是一家 Entrust Datacard 公司，是一般用途 HSM 市場的領導者，為全球各大領先組織提供商務關鍵資訊和應用程式所需的信賴和資料完整性和控管。 nCipher 的密碼編譯解決方案可保護新興技術，也就是雲端、IoT、區塊鏈、數位付款，並協助滿足新的合規性要求，並使用全球組織所依賴的相同成熟技術來保護其敏感性資料、網路通訊和企業基礎結構免於受到威脅。 nCipher 提供商務關鍵應用程式所需的信賴，確保資料的完整性，並讓客戶隨時都能獲得完全掌控。
 
-Microsoft 已與 nCipher 安全性共同合作，以加強 Hsm 的美工狀態。 這些增強內容可讓您取得裝載服務的典型優勢，而且不用放棄金鑰的控制權。 具體而言，這些增強內容可讓 Microsoft 管理 HSM，如此您就不必費心管理。 作為雲端服務，Azure Key Vault 在簡短通知的情況下相應增加，以符合貴組織的使用量尖峰。 同時，您的金鑰會在 Microsoft 的 Hsm 內受到保護：您可以保有金鑰生命週期的控制權，因為您會產生金鑰，並將其傳輸至 Microsoft 的 Hsm。
+Microsoft 已與 nCipher Security 合作增強 HSM 的開發狀態。 這些增強內容可讓您取得裝載服務的典型優勢，而且不用放棄金鑰的控制權。 具體而言，這些增強內容可讓 Microsoft 管理 HSM，如此您就不必費心管理。 做為雲端服務，Azure 金鑰保存庫無需通知就會相應增加，以符合組織的使用尖峰。 同時，您的金鑰也受 Microsoft 的 HSM 所保護：因為您產生金鑰並將它傳輸到 Microsoft 的 HSM，所以您保有金鑰生命週期的控制權。
 
 ## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>實作 Azure 金鑰保存庫的自備金鑰 (BYOK)
 
@@ -57,12 +57,12 @@ Microsoft 已與 nCipher 安全性共同合作，以加強 Hsm 的美工狀態�
 
 請參閱下表的必要條件清單以取得 Azure 金鑰保存庫的自備金鑰 (BYOK)。
 
-| 需求 | 詳細資訊 |
+| 需求 | 更多資訊 |
 | --- | --- |
 | Azure 訂用帳戶 |若要建立 Azure 金鑰保存庫，您需要 Azure 訂用帳戶： [註冊免費試用](https://azure.microsoft.com/pricing/free-trial/) |
 | 可支援受 HSM 保護之金鑰的 Azure 金鑰保存庫進階服務層級 |如需 Azure 金鑰保存庫的服務層級和功能的詳細資訊，請參閱 [Azure 金鑰保存庫價格](https://azure.microsoft.com/pricing/details/key-vault/) 網站。 |
-| nCipher nShield Hsm、智慧卡和支援軟體 |您必須能夠存取 nCipher 硬體安全性模組，以及 nCipher nShield Hsm 的基本操作知識。 如需相容模型的清單，請參閱[NCipher NShield 硬體安全性模組](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy)，或購買 HSM （如果沒有的話）。 |
-| 下列的硬體和軟體︰<ol><li>一個離線的 x64 工作站，其中至少有 windows 7 和 nCipher nShield 軟體的 Windows 作業系統，最低版本為11.50。<br/><br/>如果此工作站執行 Windows 7，您必須[安裝 Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>連線至網際網路且 Windows 作業系統至少為 Windows 7 的工作站，並已安裝至少為 [1.1.0 版的 Azure PowerShell](/powershell/azure/?view=azps-1.2.0) ****。</li><li>至少有 16 MB 可用空間的 USB 磁碟機或其他可攜式儲存裝置。</li></ol> |基於安全性理由，建議第一個工作站不要連線到網路。 不過，在程式設計方面並不強迫採取這項建議。<br/><br/>在接下來的指示中，此工作站稱為中斷連線的工作站。</p></blockquote><br/>此外，如果您的租用戶金鑰適用於生產網路，建議您另外使用第二個工作站來下載工具組，並上傳租用戶金鑰。 但如果只是測試，您可以直接使用第一個工作站。<br/><br/>在接下來的指示中，此第二個工作站稱為網際網路連線的工作站。</p></blockquote><br/> |
+| nCipher nShield HSM、智慧卡和支援軟體 |您必須存取 nCipher 硬體安全模組和 nCipher nShield HSM 的基本操作知識。 請參閱 [nCipher nShield 硬體安全模組](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) 以取得相容模型的清單，或者如果您沒有 HSM，請購買 HSM。 |
+| 下列的硬體和軟體︰<ol><li>離線 x64 工作站、至少為 Windows 7 的 Windows 作業系統，以及至少為 11.50 版的 nCipher nShield 軟體。<br/><br/>如果此工作站執行 Windows 7，您必須[安裝 Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>連線至網際網路且 Windows 作業系統至少為 Windows 7 的工作站，並已安裝至少為 [1.1.0 版的 Azure PowerShell](/powershell/azure/?view=azps-1.2.0) ****。</li><li>至少有 16 MB 可用空間的 USB 磁碟機或其他可攜式儲存裝置。</li></ol> |基於安全性理由，建議第一個工作站不要連線到網路。 不過，在程式設計方面並不強迫採取這項建議。<br/><br/>在接下來的指示中，此工作站稱為中斷連線的工作站。</p></blockquote><br/>此外，如果您的租用戶金鑰適用於生產網路，建議您另外使用第二個工作站來下載工具組，並上傳租用戶金鑰。 但如果只是測試，您可以直接使用第一個工作站。<br/><br/>在接下來的指示中，此第二個工作站稱為網際網路連線的工作站。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>產生金鑰並將其傳輸至 Azure 金鑰保存庫 HSM
 
@@ -110,35 +110,35 @@ KeyVault-BYOK-Tools-UnitedStates.zip
 2E8C00320400430106366A4E8C67B79015524E4EC24A2D3A6DC513CA1823B0D4
 
 ---
-**歐洲**
+**歐洲︰**
 
 KeyVault-BYOK-Tools-Europe.zip
 
 9AAA63E2E7F20CF9BB62485868754203721D2F88D300910634A32DFA1FB19E4A
 
 ---
-**太**
+**亞洲︰**
 
 KeyVault-BYOK-Tools-AsiaPacific.zip
 
 4BC14059BF0FEC562CA927AF621DF665328F8A13616F44C977388EC7121EF6B5
 
 ---
-**拉丁美洲：**
+**拉丁美洲︰**
 
 KeyVault-BYOK-Tools-LatinAmerica.zip
 
 E7DFAFF579AFE1B9732C30D6FD80C4D03756642F25A538922DD1B01A4FACB619
 
 ---
-**日本：**
+**日本︰**
 
 KeyVault-BYOK-Tools-Japan.zip
 
 3933C13CC6DC06651295ADC482B027AF923A76F1F6BF98B4D4B8E94632DEC7DF
 
 ---
-**韓國：**
+**南韓：**
 
 KeyVault-BYOK-Tools-Korea.zip
 
@@ -152,7 +152,7 @@ KeyVault-BYOK-Tools-SouthAfrica.zip
 C41060C5C0170AAAAD896DA732E31433D14CB9FC83AC3C67766F46D98620784A
 
 ---
-**阿拉伯聯合大公國**
+**阿拉伯聯合大公國：**
 
 KeyVault-BYOK-Tools-UAE.zip
 
@@ -166,7 +166,7 @@ KeyVault-BYOK-Tools-Australia.zip
 CD0FB7365053DEF8C35116D7C92D203C64A3D3EE2452A025223EEB166901C40A
 
 ---
-[**Azure Government：**](https://azure.microsoft.com/features/gov/)
+[**Azure Government:** ](https://azure.microsoft.com/features/gov/)
 
 KeyVault-BYOK-Tools-USGovCloud.zip
 
@@ -194,7 +194,7 @@ KeyVault-BYOK-Tools-Germany.zip
 5385E615880AAFC02AFD9841F7BADD025D7EE819894AA29ED3C71C3F844C45D6
 
 ---
-**德國公用：**
+**德國公眾：**
 
 KeyVault-BYOK-Tools-Germany-Public.zip
 
@@ -251,17 +251,17 @@ KeyVault-BYOK-Tools-Switzerland.zip
 
 在第二個步驟中，請在未連線到網路 (網際網路或內部網路) 的工作站上執行下列程序。
 
-### <a name="step-21-prepare-the-disconnected-workstation-with-ncipher-nshield-hsm"></a>步驟2.1：使用 nCipher nShield HSM 準備中斷連線的工作站
+### <a name="step-21-prepare-the-disconnected-workstation-with-ncipher-nshield-hsm"></a>步驟 2.1：準備使用 nCipher nShield HSM 的中斷連線工作站
 
 在 Windows 電腦上安裝 nCipher 支援軟體，然後將 nCipher nShield HSM 附加至該電腦。
 
-確定 nCipher 工具位於您的路徑（**% nfast_home% \ bin**）。 例如，輸入下列內容：
+確定 nCipher 工具位於您的路徑 ( **%nfast_home%\bin**)。 例如，輸入下列內容：
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
   ```
 
-如需詳細資訊，請參閱 nShield HSM 隨附的使用者指南。
+如需詳細資訊，請參閱 nShield HSM 內附的使用者指南。
 
 ### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>步驟 2.2：在中斷連線的工作站上安裝 BYOK 工具組
 
@@ -277,24 +277,24 @@ KeyVault-BYOK-Tools-Switzerland.zip
 
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>步驟 3.1︰將 HSM 模式變更為 I
 
-如果您使用 nCipher nShield Edge，則變更模式：1。 使用 [Mode (模式)] 按鈕來反白顯示必要的模式。 2. 在幾秒鐘之內，按住 [Clear (清除)] 按鈕幾秒鐘。 如果模式變更，新模式的 LED 會停止閃爍並保持亮。 狀態 LED 可能會不規則閃爍幾秒鐘的時間，當裝置就緒後則規則地閃爍。 否則，裝置會維持目前的模式，適當的模式 LED 會亮起。
+如果您使用 nCipher nShield Edge，若要變更模式︰1. 使用 [Mode (模式)] 按鈕來反白顯示必要的模式。 2. 在幾秒鐘之內，按住 [Clear (清除)] 按鈕幾秒鐘。 如果模式變更，新模式的 LED 會停止閃爍，並保持亮燈。 狀態 LED 可能會不規則閃爍幾秒鐘的時間，當裝置就緒後則規則地閃爍。 否則，裝置會維持目前的模式，適當的模式 LED 會亮起。
 
 ### <a name="step-32-create-a-security-world"></a>步驟 3.2：建立安全世界
 
-啟動命令提示字元，並執行 nCipher 新世界程式。
+啟動命令提示字元並執行 nCipher new-world 程式。
 
    ```cmd
     new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
    ```
 
-此程式會在 %NFAST_KMDATA%\local\world 中建立與 C:\ProgramData\nCipher\Key Management Data\local 資料夾對應的**安全園地**檔案。 您可以針對仲裁使用不同的值，但在我們的範例中，系統會提示您輸入三張空白卡片和 pin。 然後，任兩張卡片可提供安全世界的完整存取權。 這些卡片將成為新安全園地的**系統管理員卡組**。
+此程式會在 %NFAST_KMDATA%\local\world 中建立與 C:\ProgramData\nCipher\Key Management Data\local 資料夾對應的**安全園地**檔案。 您可以使用不同的值進行仲裁，但是在我們的範例中，系統會提示您輸入三個空白的卡片和其個別的 Pin 碼。 然後，任兩張卡片可提供安全世界的完整存取權。 這些卡片將成為新安全園地的**系統管理員卡組**。
 
 > [!NOTE]
 > 如果您的 HSM 不支援較新的加密套件 DLf3072s256mRijndael，您可以使用 --cipher-suite=DLf1024s160mRijndael 來取代 --cipher-suite= DLf3072s256mRijndael
 > 
-> 使用 nCipher 軟體12.50 版隨附的 new-world.exe 所建立的安全性世界與此 BYOK 程式不相容。 其中提供兩個選項：
-> 1) 將 nCipher 軟體版本降級為12.40.2，以建立新的安全世界。
-> 2) 請聯絡 nCipher 支援服務，並要求他們提供12.50 軟體版本的修補程式，這可讓您使用與此 BYOK 程式相容的12.40.2 版本 new-world.exe。
+> 使用 nCipher 軟體 12.50 版隨附的 new-world.exe 所建立的安全性世界與此 BYOK 程序不相容。 其中提供兩個選項：
+> 1) 將 nCipher 軟體版本降級為 12.40.2，以建立新的安全性世界。
+> 2) 請絡 nCipher 支援服務，並要求他們提供 12.50 軟體版本的修補程式，這可讓您使用與此 BYOK 程序相容的12.40.2 版本 new-world.exe。
 
 然後執行以下動作：
 
@@ -302,18 +302,18 @@ KeyVault-BYOK-Tools-Switzerland.zip
 
 ### <a name="step-33-change-the-hsm-mode-to-o"></a>步驟 3.3︰將 HSM 模式變更為 O
 
-如果您使用 nCipher nShield Edge，則變更模式：1。 使用 [Mode (模式)] 按鈕來反白顯示必要的模式。 2. 在幾秒鐘之內，按住 [Clear (清除)] 按鈕幾秒鐘。 如果模式變更，新模式的 LED 會停止閃爍並保持亮。 狀態 LED 可能會不規則閃爍幾秒鐘的時間，當裝置就緒後則規則地閃爍。 否則，裝置會維持目前的模式，適當的模式 LED 會亮起。
+如果您使用 nCipher nShield Edge，若要變更模式︰1. 使用 [Mode (模式)] 按鈕來反白顯示必要的模式。 2. 在幾秒鐘之內，按住 [Clear (清除)] 按鈕幾秒鐘。 如果模式變更，新模式的 LED 會停止閃爍，並保持亮燈。 狀態 LED 可能會不規則閃爍幾秒鐘的時間，當裝置就緒後則規則地閃爍。 否則，裝置會維持目前的模式，適當的模式 LED 會亮起。
 
 ### <a name="step-34-validate-the-downloaded-package"></a>步驟 3.4：驗證下載的封裝
 
 此步驟為選擇性但建議使用，以便您可以驗證下列項目：
 
-* 工具組中所包含的金鑰交換金鑰已從正版 nCipher nShield HSM 產生。
-* 工具組中所包含的安全世界雜湊已在正版 nCipher nShield HSM 中產生。
+* 工具組中包含的金鑰交換金鑰已從正版 nCipher nShield HSM 中產生。
+* 工具組中包含的安全世界雜湊已在正版 nCipher nShield HSM 中產生。
 * 金鑰交換金鑰不可匯出。
 
 > [!NOTE]
-> 若要驗證下載的套件，HSM 必須連接、開啟電源，而且必須在其上有安全性世界（例如您剛建立的封裝）。
+> 若要驗證下載的封裝，HSM 必須連線、開啟電源，而且必須在其上具有安全世界 (如同您剛才所建立的那一個)。
 
 驗證下載的封裝：
 
@@ -349,12 +349,12 @@ KeyVault-BYOK-Tools-Switzerland.zip
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-KOREA-1 -w BYOK-SecurityWorld-pkg-KOREA-1
         ```
-   * 針對南非：
+   * 南非：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-SA-1 -w BYOK-SecurityWorld-pkg-SA-1
         ```
-   * 針對阿拉伯聯合大公國：
+   * 阿拉伯聯合大公國：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UAE-1 -w BYOK-SecurityWorld-pkg-UAE-1
@@ -374,55 +374,55 @@ KeyVault-BYOK-Tools-Switzerland.zip
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-USDOD-1 -w BYOK-SecurityWorld-pkg-USDOD-1
         ```
-   * 針對加拿大：
+   * 加拿大：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-CANADA-1 -w BYOK-SecurityWorld-pkg-CANADA-1
         ```
-   * 針對德國：
+   * 德國：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-GERMANY-1 -w BYOK-SecurityWorld-pkg-GERMANY-1
         ```
-   * 針對德國公用：
+   * 德國公眾：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-GERMANY-1 -w BYOK-SecurityWorld-pkg-GERMANY-1
         ```
-   * 針對印度︰
+   * 印度︰
 
       ```azurepowershell
       "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-INDIA-1 -w BYOK-SecurityWorld-pkg-INDIA-1
       ```
-   * 針對法國：
+   * 法國：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-FRANCE-1 -w BYOK-SecurityWorld-pkg-FRANCE-1
         ```
-   * 針對英國：
+   * 英國：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UK-1 -w BYOK-SecurityWorld-pkg-UK-1
         ```
-   * 針對瑞士：
+   * 瑞士：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-SUI-1 -w BYOK-SecurityWorld-pkg-SUI-1
         ```
 
      > [!TIP]
-     > NCipher nShield software 包含 python，位於% NFAST_HOME% \ python\bin
+     > nCipher nShield 軟體包含 %NFAST_HOME%\python\bin 中的 Python
      >
      >
 2. 確認您看到下列訊息，表示驗證成功： **Result: SUCCESS**
 
-此腳本會驗證簽章者鏈，直到 nShield 根金鑰為止。 此根金鑰的雜湊內嵌於指令碼中，且其值必須為 **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**。 您也可以造訪[nCipher 網站](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation)，個別確認此值。
+此指令碼會驗證簽章者鏈結到 nShield 根金鑰。 此根金鑰的雜湊內嵌於指令碼中，且其值必須為 **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**。 您也可以造訪 [nCipher 網站](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation)以另行確認此值。
 
-您現在已經準備好建立新的金鑰。
+您現在可以開始建立新的金鑰。
 
 ### <a name="step-35-create-a-new-key"></a>步驟 3.5：建立新的金鑰
 
-使用 nCipher nShield **generatekey**程式來產生金鑰。
+使用 nCipher nShield **generatekey** 程式產生金鑰。
 
 執行下列命令來產生金鑰：
 
@@ -434,14 +434,14 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 
 * 參數 *protect* 必須如所示般設定為值 **module**。 這會建立受模組保護的金鑰。 BYOK 工具組不支援受 OCS 保護的金鑰。
 * 以任何字串值取代 **ident** 和 **plainname** 的 *contosokey* 值。 若要將系統管理負擔降至最低並減少錯誤的風險，建議您同時對兩者使用相同的值。 **ident** 值只能包含數字、破折號和小寫字母。
-* 在這個範例中，Pubexp 保留空白 (預設值)，但是您可以指定特定值。 如需詳細資訊，請參閱[nCipher 檔。](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
+* 在這個範例中，Pubexp 保留空白 (預設值)，但是您可以指定特定值。 如需詳細資訊，請參閱 [nCipher文件](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)。
 
 此命令會在您的 %NFAST_KMDATA%\local 資料夾建立名稱開頭為 **key_simple_** 的語彙基元化金鑰檔案，後面接著在命令中指定的 **ident**。 例如：**key_simple_contosokey**。 此檔案包含已加密的金鑰。
 
 在安全的位置備份此語彙基元化金鑰檔案。
 
 > [!IMPORTANT]
-> 當您稍後將您的金鑰傳輸至 Azure 金鑰保存庫時，Microsoft 就無法將此金鑰匯出給您，因此，請務必安全地備份您的金鑰和安全世界。 請聯絡[nCipher](https://www.ncipher.com/about-us/contact-us)以取得備份金鑰的指引和最佳作法。
+> 當您稍後將您的金鑰傳輸至 Azure 金鑰保存庫時，Microsoft 就無法將此金鑰匯出給您，因此，請務必安全地備份您的金鑰和安全世界。 如需備份金鑰的指導及最佳做法，請連絡 [nCipher](https://www.ncipher.com/about-us/contact-us)。
 >
 
 
@@ -485,12 +485,12 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-KOREA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-KOREA-1
    ```
-* 針對南非：
+* 南非：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SA-1
    ```
-* 針對阿拉伯聯合大公國：
+* 阿拉伯聯合大公國：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UAE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UAE-1
@@ -520,7 +520,7 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1
    ```
-* 針對德國公用：
+* 德國公眾：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1
@@ -540,7 +540,7 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
    ```
-* 針對瑞士：
+* 瑞士：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1
@@ -552,7 +552,7 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 
 此命令完成時，您會看到 **Result: SUCCESS**，而降低權限的金鑰複本會在名為 key_xferacId_\<contosokey> 的檔案中。
 
-您可以使用 nCipher nShield 公用程式，使用下列命令來檢查 ACL：
+您可使用 nCipher nShield 公用程式，以下列命令檢查 ACLS：
 
 * aclprint.py：
 
@@ -566,7 +566,7 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    ```
   當您執行這些命令時，請以您從[產生您的金鑰](#step-3-generate-your-key)步驟的**步驟 3.5：建立新的金鑰**指定的相同值取代 contosokey。
 
-### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>步驟4.2：使用 Microsoft 的金鑰交換金鑰來加密您的金鑰
+### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>步驟 4.2：使用 Microsoft 的金鑰交換金鑰來加密您的金鑰
 
 根據您的地理區域或 Azure 執行個體，執行下列其中一個命令：
 
@@ -600,12 +600,12 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-KOREA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-KOREA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
-* 針對南非：
+* 南非：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
-* 針對阿拉伯聯合大公國：
+* 阿拉伯聯合大公國：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UAE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UAE-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
@@ -635,7 +635,7 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
-* 針對德國公用：
+* 德國公眾：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
@@ -655,7 +655,7 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
-* 針對瑞士：
+* 瑞士：
 
   ```azurepowershell
   KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
@@ -684,6 +684,6 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 
 如果上傳成功，就會顯示您剛才加入之金鑰的屬性。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-您現在可以在您的金鑰保存庫中使用這個受 HSM 保護的金鑰。 如需詳細資訊，請參閱此價格與功能[比較](https://azure.microsoft.com/pricing/details/key-vault/)。
+您現在可以在您的金鑰保存庫中使用這個受 HSM 保護的金鑰。 如需詳細資訊，請參閱[本價格和功能比較](https://azure.microsoft.com/pricing/details/key-vault/)。
