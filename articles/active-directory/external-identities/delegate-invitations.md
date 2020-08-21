@@ -5,22 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/11/2020
+ms.date: 08/20/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6a2c1a9b908503ee5afc2687ebef473ffed626a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ae8bb66141e4cc4e67f1502b208cf519d37c0374
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908312"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705978"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>啟用 B2B 外部共同作業和管理誰可以邀請來賓
 
-本文說明如何啟用 Azure Active Directory (Azure AD) B2B 共同作業及判定誰可以邀請來賓。 根據預設，您目錄中的所有使用者和來賓都可以邀請來賓，即使他們未獲派系統管理員角色亦然。 外部共同作業設定可讓您針對組織中不同類型的使用者，開啟或關閉來賓邀請。 您也可以指派允許個人邀請來賓的角色，將邀請委派給個別使用者。
+本文說明如何啟用 Azure Active Directory 的 (Azure AD) B2B 共同作業、指定誰可以邀請來賓，以及判斷來賓使用者在您的 Azure AD 中擁有的許可權。 
+
+根據預設，您目錄中的所有使用者和來賓都可以邀請來賓，即使他們未獲派系統管理員角色亦然。 外部共同作業設定可讓您針對組織中不同類型的使用者，開啟或關閉來賓邀請。 您也可以指派允許個人邀請來賓的角色，將邀請委派給個別使用者。
+
+Azure AD 可讓您限制外部來賓使用者可在 Azure AD 目錄中看到的內容。 根據預設，來賓使用者會設定為有限的許可權等級，以封鎖它們列舉使用者、群組或其他目錄資源，但可讓他們看到非隱藏群組的成員資格。 新的預覽設定可讓您更進一步限制來賓存取，讓來賓只能查看自己的設定檔資訊。 
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>設定 B2B 外部共同作業設定
 
@@ -38,19 +42,38 @@ ms.locfileid: "87908312"
 1. 以租用戶系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 **Azure Active Directory**。
 3. 選取 [外部身分識別] > [外部共同作業設定]。
-6. 在 [外部共同作業設定] 頁面上，選擇您想要啟用的原則。
 
-   ![外部共同作業設定](./media/delegate-invitations/control-who-to-invite.png)
+4. 在 [ **來賓使用者存取限制 (預覽]) **中，選擇您希望來賓使用者擁有的存取層級：
 
-  - **來賓使用者權限有限**：此原則會決定您目錄中來賓的權限。 選取 [是] 以封鎖來賓執行特定目錄工作，例如列舉使用者、群組或其他目錄資源。 選取 [否]，讓來賓對於目錄資料具備與目錄中一般使用者相同的存取權。
+   > [!IMPORTANT]
+   > 短暫地，這些新的來賓使用者權限控制項將只會使用 URL 顯示 [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) 。 如需詳細資訊，請參閱 [限制來賓存取許可權 (預覽) ](https://aka.ms/exid-users-restrict-guest-permissions)。
+
+   - **來賓使用者具有與成員相同的存取權 (最內含的) **：此選項可讓來賓具有 Azure AD 資源和目錄資料的相同存取權，以做為成員使用者。
+
+   - **來賓使用者對目錄物件的屬性和成員資格具有有限的存取權**： (預設) 這項設定會封鎖來自某些目錄工作的來賓，例如列舉使用者、群組或其他目錄資源。 來賓可以看到所有非隱藏群組的成員資格。
+
+   - **來賓使用者存取權僅限於其本身目錄物件的屬性和成員資格 (限制最多的) **：使用此設定時，來賓只能存取自己的設定檔。 不允許來賓查看其他使用者的設定檔、群組或群組成員資格。
+  
+    ![來賓使用者存取限制設定](./media/delegate-invitations/guest-user-access.png)
+
+5. 在 [ **來賓邀請設定**] 下，選擇適當的設定：
+
    - **系統管理員與具備來賓邀請者角色的使用者可邀請**：若要允許系統管理員與具備「來賓邀請者」角色的使用者邀請來賓，請將此原則設定為 [是]。
+
    - **成員可邀請**：若要允許目錄的非系統管理員成員邀請來賓，請將此原則設定為 [是]。
+
    - **來賓可邀請**：若要允許來賓邀請其他來賓，請將此原則設定為 [是]。
-   - **為來賓啟用電子郵件一次性密碼 (預覽)** ：如需一次性密碼功能的詳細資訊，請參閱[電子郵件一次性密碼驗證 (預覽)](one-time-passcode.md)。
-   - **共同作業限制**：如需允許或封鎖特定網域邀請的詳細資訊，請參閱[允許或封鎖特定組織中的 B2B 使用者邀請](allow-deny-list.md)。
-   
+
+   - 為**來賓啟用電子郵件單次密碼 (Preview) **：如需單次密碼功能的詳細資訊，請參閱[電子郵件單次密碼驗證 (預覽) ](one-time-passcode.md)。
+
+   - 透過**使用者流程啟用來賓自助式註冊 (預覽) **：如需此設定的詳細資訊，請參閱[將自助註冊使用者流程新增至應用程式 (預覽) ](self-service-sign-up-user-flow.md)。
+
    > [!NOTE]
-   > 如果 [**成員可以邀請**] 設定為 [**否**]，而且 **[來賓邀請者角色中的系統管理員和使用者可以邀請**] 設定為 **[是]**，則**來賓邀請者**角色中的使用者仍然可以邀請來賓。
+   > 如果 [ **成員可以邀請** ] 設定為 [ **否** ]，而且 **[來賓邀請者角色中的使用者可以邀請** ] 設定為 **[是]**，則 **guest 邀請者** 角色中的使用者仍然可以邀請來賓。
+
+    ![來賓邀請設定](./media/delegate-invitations/guest-invite-settings.png)
+
+6. 在 [共同作業 **限制**] 下，選擇是否要允許或拒絕您指定之網域的邀請。 如需詳細資訊，請參閱[允許或封鎖對特定組織的 B2B 使用者的邀請](allow-deny-list.md)。
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>將來賓邀請者角色指派給使用者
 

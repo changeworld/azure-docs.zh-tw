@@ -1,6 +1,6 @@
 ---
 title: Azure 執行個體中繼資料服務
-description: RESTful 介面，以取得 Vm 的計算、網路和近期維護事件的相關資訊。
+description: RESTful 介面，以取得 Vm 計算、網路和近期維護事件的相關資訊。
 services: virtual-machines
 author: KumariSupriya
 manager: paulmey
@@ -11,21 +11,21 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: d0f6655d22818c119d1098bbce96ea3699a42a50
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bb9bc978e49cddab13ab1e4f7ec4f0b74d369ac1
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168128"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705838"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (IMDS) 
 
 Azure Instance Metadata Service (IMDS) 提供目前執行中虛擬機器執行個體的相關資訊，而且可用來管理和設定您的虛擬機器。
 此資訊包括 SKU、儲存體、網路設定和即將進行的維護事件。 如需可用資料的完整清單，請參閱[中繼資料 API](#metadata-apis)。
-Instance Metadata Service 適用於 VM 和虛擬機器擴展集執行個體。 其僅適用於使用 [Azure Resource Manager](/rest/api/resources/) 建立/管理的執行中 VM。
+Instance Metadata Service 可用於執行虛擬機器和虛擬機器擴展集實例。 所有 Api 都支援使用 [Azure Resource Manager](/rest/api/resources/)建立/管理的 vm。 只有證明和網路端點支援傳統 (非 ARM) Vm，而證明則只會提供有限的範圍。
 
-Azure 的 IMDS 是一種 REST 端點，可在已知的非可路由 IP 位址 (`169.254.169.254`) 中取得，它只能從 VM 內進行存取。 VM 和 IMDS 之間的通訊永遠不會離開主機。
-最佳作法是讓您的 HTTP 用戶端在查詢 IMDS 時略過 VM 中的 web proxy，並 `169.254.169.254` 將相同的視為 [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md) 。
+Azure 的 IMDS 是 REST 端點，可在已知的非可路由 IP 位址 (`169.254.169.254`) ，且只能從 VM 記憶體取。 VM 與 IMDS 之間的通訊絕不會離開主機。
+在查詢 IMDS 並將其視為相同時，最佳作法是讓您的 HTTP 用戶端略過 VM 內的 web proxy `169.254.169.254` [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md) 。
 
 ## <a name="security"></a>安全性
 
@@ -153,7 +153,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 
 ### <a name="data-output"></a>資料輸出
 
-根據預設，執行個體中繼資料服務會以 JSON 格式傳回資料 (`Content-Type: application/json`)。 不過，某些 Api 可以視需要傳回不同格式的資料。
+根據預設，執行個體中繼資料服務會以 JSON 格式傳回資料 (`Content-Type: application/json`)。 不過，某些 Api 可以傳回不同格式的資料（如有要求）。
 下表是 API 可能支援之其他資料格式的參考。
 
 API | 預設資料格式 | 其他格式
@@ -170,13 +170,13 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 ```
 
 > [!NOTE]
-> 若為/metadata/instance 中的分葉節點，則 `format=json` 無法使用。 必須明確指定這些查詢， `format=text` 因為預設格式為 json。
+> 若是/metadata/instance 中的分葉節點，則 `format=json` 無法運作。 必須明確指定這些查詢， `format=text` 因為預設格式為 json。
 
 ### <a name="versioning"></a>版本控制
 
 Instance Metadata Service 已版本化，因此在 HTTP 要求中指定 API 版本是強制的。
 
-支援的 API 版本包括： 
+支援的 API 版本為： 
 - 2017-03-01
 - 2017-04-02
 - 2017-08-01 
@@ -225,7 +225,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance"
 
 ## <a name="metadata-apis"></a>中繼資料 API
 
-Metadata Service 包含代表不同資料來源的多個 Api。
+Metadata Service 包含多個代表不同資料來源的 Api。
 
 API | 描述 | 引進的版本
 ----|-------------|-----------------------
@@ -241,7 +241,7 @@ API | 描述 | 引進的版本
 資料 | 描述 | 引進的版本
 -----|-------------|-----------------------
 azEnvironment | VM 執行所在的 Azure 環境 | 2018-10-01
-customData | 這項功能目前已停用。 當此檔可用時，我們會將其更新 | 2019-02-01
+customData | 這項功能目前已停用。 當此檔可用時，我們會更新此檔 | 2019-02-01
 isHostCompatibilityLayerVm | 識別 VM 是否在主機相容性層上執行 | 2020-06-01
 location | VM 執行所在的 Azure 區域 | 2017-04-02
 NAME | VM 的名稱 | 2017-04-02
@@ -257,8 +257,8 @@ publisher | VM 映像的發佈者 | 2017-04-02
 resourceGroupName | 虛擬機器的[資源群組](../../azure-resource-manager/management/overview.md) | 2017-08-01
 resourceId | 資源的[完整](/rest/api/resources/resources/getbyid) ID | 2019-03-11
 sku | VM 映像的特定 SKU | 2017-04-02
-securityProfile. secureBootEnabled | 識別是否在 VM 上啟用 UEFI 安全開機 | 2020-06-01
-securityProfile.virtualTpmEnabled | 識別虛擬信賴平臺模組 (TPM) 是否已在 VM 上啟用 | 2020-06-01
+securityProfile. secureBootEnabled | 識別 VM 上是否已啟用 UEFI 安全開機 | 2020-06-01
+securityProfile.virtualTpmEnabled | 識別是否在 VM 上啟用虛擬的可信賴平臺模組 (TPM)  | 2020-06-01
 storageProfile | 請參閱[儲存體設定檔](#storage-metadata) | 2019-06-01
 subscriptionId | 虛擬機器的 Azure 訂用帳戶 | 2017-08-01
 tags | 虛擬機器的[標籤](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
@@ -496,7 +496,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
 儲存體中繼資料屬於執行個體/計算/storageProfile 端點下的執行個體 API。
 其會對與 VM 相關聯的儲存體磁碟提供詳細資料。 
 
-VM 的儲存體設定檔分為三個類別：映射參考、OS 磁片和資料磁片。
+VM 的儲存體設定檔分為三種類別：映射參考、OS 磁片和資料磁片。
 
 映像參考物件包含下列作業系統映像的相關資訊：
 
@@ -625,7 +625,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 Department:IT;Environment:Test;Role:WebRole
 ```
 
-`tags` 欄位是字串，其中包含以分號分隔的標記。 如果標記本身使用分號，則此輸出可能會有問題。 如果寫入剖析器以程式設計方式將標記解壓縮，您應該依賴此 `tagsList` 欄位。 `tagsList`欄位是不含分隔符號的 JSON 陣列，因此更容易剖析。
+`tags` 欄位是字串，其中包含以分號分隔的標記。 如果標記本身使用分號，此輸出可能會造成問題。 如果將剖析器撰寫成以程式設計方式解壓縮標記，您應該依賴 `tagsList` 欄位。 此 `tagsList` 欄位是沒有分隔符號的 JSON 陣列，因此更容易剖析。
 
 **要求**
 
@@ -684,18 +684,21 @@ Nonce 是選用的 10 位數字串。 如果未提供，IMDS 會在其位置傳�
 }
 ```
 
-簽章 Blob 是以 [pkcs7](https://aka.ms/pkcs7) 簽署的文件版本。 其包含用於簽署的憑證，以及 VM 詳細資料，例如 vmId、sku、nonce、subscriptionId、文件的建立和到期時間戳記，以及關於該映像的方案資訊。 Azure Marketplace 映像才會填入方案資訊。 憑證可以從回應中擷取出來，並可用來驗證回應有效且來自 Azure。
+簽章 Blob 是以 [pkcs7](https://aka.ms/pkcs7) 簽署的文件版本。 它包含用於簽署的憑證，以及特定 VM 特定的詳細資料。 針對 ARM Vm，這包括 vmId、sku、nonce、subscriptionId、檔的建立和到期時間戳記，以及影像的方案資訊。 Azure Marketplace 映像才會填入方案資訊。 若是傳統 (非 ARM) Vm，則只保證會填入 vmId。 憑證可以從回應中擷取出來，並可用來驗證回應有效且來自 Azure。
 檔包含下欄欄位：
 
 資料 | 描述
 -----|------------
-nonce | 可選擇性地隨要求提供的字串。 如果未提供 nonce，則會使用目前的 UTC 時間戳記
-計劃 | [Azure Marketplace 的影像計畫](/rest/api/compute/virtualmachines/createorupdate#plan)。 包含方案識別碼 (名稱) 、產品影像或供應專案 (產品) 和發行者識別碼 (發行者) 。
-timestamp/createdOn | 建立已簽署檔時的 UTC 時間戳記
-timestamp/expiresOn | 簽署的檔過期時的 UTC 時間戳記
+nonce | 可選擇性隨要求提供的字串。 如果未提供任何 nonce，則會使用目前的 UTC 時間戳記
+計劃 | [Azure Marketplace 的影像方案](/rest/api/compute/virtualmachines/createorupdate#plan)。 包含方案識別碼 (名稱) 、產品影像或供應專案 (產品) ，以及發行者識別碼 (發行者) 。
+timestamp/createdOn | 建立簽署的檔時的 UTC 時間戳記
+timestamp/expiresOn | 簽署的檔到期時的 UTC 時間戳記
 vmId |  VM 的[唯一識別碼](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
 subscriptionId | 虛擬機器的 Azure 訂用帳戶，於 `2019-04-30` 引進
 sku | VM 映像的特定 SKU，於 `2019-11-01` 引進
+
+> [!NOTE]
+> 若是傳統 (非 ARM) Vm，則只保證會填入 vmId。
 
 ### <a name="sample-2-validating-that-the-vm-is-running-in-azure"></a>範例 2：驗證 VM 是在 Azure 中執行
 
@@ -745,7 +748,7 @@ Verification successful
 }
 ```
 
-請確認簽章是來自 Microsoft Azure，並檢查憑證鏈是否有錯誤。
+確認簽章是來自 Microsoft Azure，並檢查憑證鏈是否有錯誤。
 
 ```bash
 # Verify the subject name for the main certificate
@@ -787,7 +790,7 @@ Cloud | 憑證
 ## <a name="managed-identity-via-metadata-service"></a>透過 Metadata Service 的受控識別
 
 您可以在 VM 上啟用系統指派的受控識別，或可將一或多個使用者指派的受控識別指派給 VM。
-然後可以從 Instance Metadata Service 要求受控識別的權杖。 這些權杖可以用來向其他 Azure 服務（例如 Azure Key Vault）進行驗證。
+接著，您可以從 Instance Metadata Service 要求受控識別的權杖。 這些權杖可以用來向其他 Azure 服務（例如 Azure Key Vault）進行驗證。
 
 如需啟用這項功能的詳細步驟，請參閱[取得存取權杖](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)。
 
@@ -836,21 +839,21 @@ HTTP 狀態碼 | 原因
 1. 為什麼我沒有收到我的 VM 計算資訊？
    * 目前執行個體中繼資料服務僅支援使用 Azure Resource Manager 建立的執行個體。 未來可能會新增雲端服務 VM 的支援。
 1. 我在一陣子之後回過頭來透過 Azure Resource Manager 建立我的虛擬機器。 為什麼我看不到計算中繼資料資訊？
-   * 針對在 2016 年 9 月之後建立的 VM，新增[標記](../../azure-resource-manager/management/tag-resources.md)才會開始看到計算中繼資料。 針對較舊的 Vm (在 Sep 2016) 之前建立，請將擴充功能或資料磁片新增至 VM 實例 (s) 以重新整理中繼資料。
+   * 針對在 2016 年 9 月之後建立的 VM，新增[標記](../../azure-resource-manager/management/tag-resources.md)才會開始看到計算中繼資料。 針對 (在 Sep 2016) 之前建立的舊版 Vm，請將擴充功能或資料磁片新增/移除至 VM 實例 (s) 以重新整理中繼資料。
 1. 我看不到為新版本填入的所有資料
-   * 針對在 2016 年 9 月之後建立的 VM，新增[標記](../../azure-resource-manager/management/tag-resources.md)才會開始看到計算中繼資料。 針對較舊的 Vm (在 Sep 2016) 之前建立，請將擴充功能或資料磁片新增至 VM 實例 (s) 以重新整理中繼資料。
+   * 針對在 2016 年 9 月之後建立的 VM，新增[標記](../../azure-resource-manager/management/tag-resources.md)才會開始看到計算中繼資料。 針對 (在 Sep 2016) 之前建立的舊版 Vm，請將擴充功能或資料磁片新增/移除至 VM 實例 (s) 以重新整理中繼資料。
 1. 為什麼會收到錯誤 `500 Internal Server Error` 或 `410 Resource Gone` ？
-   * 以指數後置關閉系統或 [暫時性錯誤處理](/azure/architecture/best-practices/transient-faults)中所述的其他方法，重試您的要求。 如果問題持續發生，請在 VM 的 Azure 入口網站中建立支援問題。
-1. 這適用于虛擬機器擴展集實例嗎？
-   * 是中繼資料服務適用于擴展集實例。
-1. 我已更新虛擬機器擴展集中的標記，但它們不會出現在實例中，不同于單一實例 Vm 嗎？
-   * 目前擴展集的標籤只會在重新開機、重新安裝映射或對實例進行磁片變更時，向 VM 顯示。
+   * 請根據指數後置系統或 [暫時性錯誤處理](/azure/architecture/best-practices/transient-faults)中所述的其他方法，重試您的要求。 如果問題持續發生，請在 VM 的 Azure 入口網站中建立支援問題。
+1. 這是否適用于虛擬機器擴展集實例？
+   * Yes Metadata service 適用于擴展集實例。
+1. 我已更新虛擬機器擴展集中的標籤，但它們不會出現在實例中，與單一實例 Vm 不同嗎？
+   * 擴展集目前的標籤只會在重新開機、重新安裝映射或磁片變更至實例時向 VM 顯示。
 1. 為何在呼叫服務時會出現要求逾時的狀況？
-   * 中繼資料呼叫必須從指派給 VM 主要網路卡的主要 IP 位址進行。 此外，如果您已變更路由，VM 的本機路由表中必須有 169.254.169.254/32 位址的路由。
+   * 中繼資料呼叫必須從指派給 VM 主要網路卡的主要 IP 位址進行。 此外，如果您已變更路由，則在 VM 的本機路由表中必須有 169.254.169.254/32 位址的路由。
    * <details>
-        <summary>正在驗證您的路由表</summary>
+        <summary>驗證您的路由表</summary>
 
-        1. 使用類似的命令傾印您的本機路由表 `netstat -r` ，並尋找 IMDS 專案 (例如 ) ：
+        1. 使用命令（例如）傾印本機路由表 `netstat -r` ，並尋找 IMDS 專案 (例如 ) ：
             ```console
             ~$ netstat -r
             Kernel IP routing table
@@ -860,8 +863,8 @@ HTTP 狀態碼 | 原因
             169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
             172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
             ```
-        1. 確認的路由存在 `169.254.169.254` ，並記下對應的網路介面 (例如 `eth0`) 。
-        1. 傾印路由表中對應介面的介面設定 (請注意，設定檔的確切名稱可能會有所不同) 
+        1. 確認有路由存在 `169.254.169.254` ，並記下對應的網路介面 (例如 `eth0`) 。
+        1. 傾印路由表中對應介面的介面設定 (請注意設定檔的確切名稱可能會有所不同) 
             ```console
             ~$ cat /etc/netplan/50-cloud-init.yaml
             network:
@@ -876,8 +879,8 @@ HTTP 狀態碼 | 原因
                     set-name: eth0
             version: 2
             ```
-        1. 如果您使用動態 IP，請記下 MAC 位址。 如果您使用靜態 IP，您可能會注意到列出的 IP (s) 和（或） MAC 位址。
-        1. 確認介面對應至 VM 的主要 NIC 和主要 IP。 您可以藉由查看 Azure 入口網站中的網路設定，或藉由查詢 [Azure CLI](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show)，來尋找主要 NIC/IP。 請注意，如果使用 cli) ，公用和私人 Ip (和 MAC 位址。 PowerShell CLI 範例：
+        1. 如果您使用動態 IP，請注意 MAC 位址。 如果您使用靜態 IP，您可能會注意到列出的 IP (s) 和/或 MAC 位址。
+        1. 確認介面對應至 VM 的主要 NIC 和主要 IP。 您可以藉由查看 Azure 入口網站中的網路設定，或查閱 [Azure CLI](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show)來尋找主要 NIC/IP。 請注意公用和私人 Ip (以及 MAC 位址（如果使用 cli) ）。 PowerShell CLI 範例：
             ```powershell
             $ResourceGroup = '<Resource_Group>'
             $VmName = '<VM_Name>'
@@ -889,7 +892,7 @@ HTTP 狀態碼 | 原因
             }
             # Output: ipexample606 True 00-0D-3A-E4-C7-2E
             ```
-        1. 如果兩者不相符，請更新路由表，讓主要 NIC/IP 成為目標。
+        1. 如果不相符，請更新路由表，讓主要 NIC/IP 成為目標。
     </details>
 
 ## <a name="support-and-feedback"></a>支援與意見反應
@@ -897,9 +900,9 @@ HTTP 狀態碼 | 原因
 提交您的意見反應和意見 https://feedback.azure.com 。
 
 若要取得服務支援，請在 Azure 入口網站中針對您無法在長時間重試後取得中繼資料回應的 VM 建立支援問題。
-使用的 [問題類型] `Management` ，並選取 `Instance Metadata Service` 做為類別目錄。
+使用的 [問題類型] `Management` ，然後選取 `Instance Metadata Service` 做為類別目錄。
 
-![執行個體中繼資料支援](./media/instance-metadata-service/InstanceMetadata-support.png "螢幕擷取畫面：在 Instance Metadata Service 遇到問題時開啟支援案例")
+![執行個體中繼資料支援](./media/instance-metadata-service/InstanceMetadata-support.png "螢幕擷取畫面：當 Instance Metadata Service 遇到問題時開啟支援案例")
 
 ## <a name="next-steps"></a>後續步驟
 

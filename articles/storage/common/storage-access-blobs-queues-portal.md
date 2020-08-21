@@ -10,12 +10,13 @@ ms.date: 08/18/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: fea14c62afb03a6c0d9f1bf6894f02bd3fd06c7f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.custom: contperfq1
+ms.openlocfilehash: 7ab0899f49fc28d787e6b53945558709353c4512
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586965"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691440"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-or-queue-data-in-the-azure-portal"></a>選擇如何授權存取 Azure 入口網站中的 blob 或佇列資料
 

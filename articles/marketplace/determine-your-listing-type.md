@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/30/2020
-ms.openlocfilehash: 1b0846c68f6860b5c7dac9e93808088dac4f6a05
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4a27ace4e45d00a2fbb35b9e0e3e9b7c03383681
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607435"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705872"
 ---
 # <a name="determine-your-publishing-option"></a>決定您的發佈選項
 
@@ -47,9 +47,9 @@ ms.locfileid: "88607435"
 
 &#42;&#42;Microsoft 365 供應項目可免費安裝，並可透過 SaaS 供應項目作為授權服務來販售。 如需詳細資訊，請參閱[透過 Microsoft 商業市集販售 Office 365 增益集](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
 
-## <a name="choose-a-call-to-action"></a>選擇動作的呼叫
+## <a name="choose-a-listing-option"></a>挑選清單選項
 
-可用的發佈選項會提供差異化客戶參與，同時給予您潛在客戶共用和[商業市集權益](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)的存取權。 請注意與發佈選項對應的呼籲行動：
+可用的清單選項提供差異化的客戶參與，同時讓您存取潛在客戶共用和 [商業 marketplace 的權益](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)。 請注意與發行選項對應的清單選項：
 
 | **發行選項**    | **說明**  |
 | :------------------- | :-------------------|

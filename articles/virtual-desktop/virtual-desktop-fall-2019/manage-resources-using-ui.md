@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ed6587cab1e90c9b4bd4ceffa64c77fa5d8de574
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c261ea174f37de51a8fbd5b36aeb40c26d44e6a9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005698"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691389"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本部署 Windows 虛擬桌面 (傳統) 管理工具
 
@@ -83,7 +83,7 @@ ms.locfileid: "88005698"
 
 決定要同意的使用者後，請依照下列指示同意使用工具：
 
-1. 移至您的 Azure 資源，並使用您在範本中提供的名稱來選取 Azure App Services 資源 (例如 Apr3UX) 並流覽至與其相關聯的 URL;例如， <https://rdmimgmtweb-210520190304.azurewebsites.net> 。
+1. 移至您的 Azure 資源，使用您在範本中提供的名稱選取 Azure App Services 資源 (例如，Apr3UX) 並流覽至與其相關聯的 URL;例如，  `https://rdmimgmtweb-210520190304.azurewebsites.net` 。
 2. 使用適當的 Azure Active Directory 使用者帳戶登入。
 3. 若使用「全域管理員」來驗證，您現在可以選取 [代表您的組織同意]**** 核取方塊。 選取 [接受]**** 以提供同意。
 

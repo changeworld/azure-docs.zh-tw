@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/19/2020
 ms.author: b-juche
-ms.openlocfilehash: 4a54858f4a09cd62bb555a6df2c12efa2290dd69
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 20cbc9b33e567ffe306aae694bb835d95c2d861e
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653166"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88704972"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>設定 Azure NetApp Files 的 NFS 用戶端
 
-有多種 Linux 發行版本可搭配 Azure NetApp Files 使用。 本文說明兩個較常使用的環境設定： RHEL 8 和 Ubuntu 18.04。 本文所述的 NFS 用戶端設定是設定 [nfsv4.1 4.1 Kerberos 加密](configure-kerberos-encryption.md) 或 [建立雙重通訊協定磁片](create-volumes-dual-protocol.md)區時的一部分。  
+本文所述的 NFS 用戶端設定是設定 [nfsv4.1 4.1 Kerberos 加密](configure-kerberos-encryption.md) 或 [建立雙重通訊協定磁片](create-volumes-dual-protocol.md)區時的一部分。 有多種 Linux 發行版本可搭配 Azure NetApp Files 使用。 本文說明兩個較常使用的環境設定： RHEL 8 和 Ubuntu 18.04。 
 
 無論您使用哪一種 Linux 類別，都需要下列設定：
 * 設定 NTP 用戶端，以避免發生時間誤差的問題。

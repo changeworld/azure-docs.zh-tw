@@ -1,5 +1,5 @@
 ---
-title: '在 Python 中評估 ML 模型的公平 (預覽) '
+title: '在 Python (預覽版中評估 ML 模型的公平) '
 titleSuffix: Azure Machine Learning
 description: 瞭解如何在 Azure Machine Learning 中評估模型的公平
 services: machine-learning
@@ -11,29 +11,29 @@ ms.reviewer: luquinta
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ec0c39bad8a7c12822e5ebf5cd4a958aa8653050
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a0f06c2db0a5bf196ae610efadd85ef1df8defe8
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844638"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691304"
 ---
-# <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>使用 Azure Machine Learning 搭配 Fairlearn 開放原始碼套件，以評估 ML 模型的公平 (預覽) 
+# <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>使用 Azure Machine Learning 搭配 Fairlearn 開放原始碼套件，以評估 ML 模型 (預覽的公平) 
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本操作指南中，您將瞭解如何搭配 Azure Machine Learning 使用[Fairlearn](https://fairlearn.github.io/)開放原始碼 Python 套件來執行下列工作：
+在本操作指南中，您將瞭解如何使用 [Fairlearn](https://fairlearn.github.io/) 的開放原始碼 Python 套件搭配 Azure Machine Learning 來執行下列工作：
 
-* 評估模型預測的公平。 若要深入瞭解機器學習服務中的公平，請參閱[機器學習服務中的公平一文](concept-fairness-ml.md)。
-* 上傳、列出及下載 Azure Machine Learning studio 的公平評量深入解析。
-* 請參閱 Azure Machine Learning studio 中的公平評量儀表板，與您的模型 () 的公平深入解析互動。
+* 評估模型預測的公平。 若要深入瞭解機器學習服務的公平，請參閱 [機器學習服務文章中的公平](concept-fairness-ml.md)。
+* 上傳、列出及下載 Azure Machine Learning studio 中的公平評量見解。
+* 請參閱 Azure Machine Learning studio 中的公平評量儀表板，以與您的模型 () 的公平見解進行互動。
 
 >[!NOTE]
-> 公平評估並非純粹的技術練習。 **此套件可協助您評估機器學習模型的公平，但只有您可以設定和做出模型執行方式的決策。**  雖然此封裝有助於識別量化計量以評估公平，但機器學習模型的開發人員也必須執行定性分析，以評估其專屬模型的公平。
+> 公平評估並非純粹的技術練習。 **此套件可協助您評估機器學習模型的公平，但只有您可以設定和決定模型執行的方式。**  雖然此封裝有助於識別量化計量來評估公平，但機器學習模型的開發人員也必須執行定性分析，以評估其專屬模型的公平。
 
 ## <a name="azure-machine-learning-fairness-sdk"></a>Azure Machine Learning 公平 SDK 
 
-Azure Machine Learning 公平 SDK，會 `azureml-contrib-fairness` 整合 Azure Machine Learning 中的開放原始碼 Python 套件[Fairlearn](http://fairlearn.github.io)。 若要深入瞭解 Fairlearn 在 Azure Machine Learning 內的整合，請參閱這些[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)。 如需 Fairlearn 的詳細資訊，請參閱[範例指南](https://fairlearn.github.io/auto_examples/notebooks/index.html)和[範例筆記本](https://github.com/fairlearn/fairlearn/tree/master/notebooks)。 
+Azure Machine Learning 公平 SDK，會 `azureml-contrib-fairness` 在 Azure Machine Learning 內整合開放原始碼 Python 套件 [Fairlearn](http://fairlearn.github.io)。 若要深入瞭解 Azure Machine Learning 內的 Fairlearn 整合，請參閱這些 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)。 如需 Fairlearn 的詳細資訊，請參閱 [範例指南](https://fairlearn.github.io/auto_examples/) 和 [範例筆記本](https://github.com/fairlearn/fairlearn/tree/master/notebooks)。 
 
 使用下列命令來安裝 `azureml-contrib-fairness` 和 `fairlearn` 封裝：
 ```bash
@@ -43,13 +43,13 @@ pip install fairlearn==0.4.6
 
 
 
-## <a name="upload-fairness-insights-for-a-single-model"></a>上傳單一模型的公平深入解析
+## <a name="upload-fairness-insights-for-a-single-model"></a>上傳單一模型的公平見解
 
-下列範例示範如何使用公平套件，將模型公平深入解析上傳至 Azure Machine Learning，並查看 Azure Machine Learning studio 中的公平評量儀表板。
+下列範例顯示如何使用公平套件將模型公平見解上傳至 Azure Machine Learning，並查看 Azure Machine Learning studio 中的公平評量儀表板。
 
-1. 訓練 Jupyter 筆記本中的範例模型。 
+1. 將 Jupyter 筆記本中的範例模型定型。 
 
-    針對資料集，我們使用已知的成人人口普查資料集，我們會使用 `shap` (來為便利性) 載入。 基於此範例的目的，我們會將此資料集視為貸款決策問題，並假設該標籤指出每個個體是否重金換回過去的貸款。 我們將使用資料來定型預測，以預測先前看不見的個人是否會 repay 貸款。 假設模型預測是用來決定是否要為個人提供貸款。
+    針對資料集，我們使用已知的成人人口普查資料集，我們使用 (載入 `shap` 方便) 。 基於此範例的目的，我們會將此資料集視為貸款決策問題，並假設該標籤指出每個人是否重金換回過去的貸款。 我們將使用資料來訓練預測，以預測先前看不見的個人是否會 repay 貸款。 假設模型預測是用來決定是否應將某一筆貸款提供給某個人。
 
     ```python
     from sklearn.model_selection import train_test_split
@@ -119,7 +119,7 @@ pip install fairlearn==0.4.6
 
 2. 登入 Azure Machine Learning 並註冊您的模型。
    
-    公平儀表板可以與已註冊或未註冊的模型整合。 使用下列步驟在 Azure Machine Learning 中註冊您的模型：
+    公平儀表板可以與已註冊或未註冊的模型整合。 使用下列步驟，在 Azure Machine Learning 中註冊您的模型：
     ```python
     from azureml.core import Workspace, Experiment, Model
     import joblib
@@ -145,9 +145,9 @@ pip install fairlearn==0.4.6
     lr_reg_id = register_model("fairness_linear_regression", lr_predictor)
     ```
 
-3. 預先計算的公平計量。
+3. 預先計算的公平度量。
 
-    使用 Fairlearn 的套件建立儀表板字典 `metrics` 。 `_create_group_metric_set`方法的引數與儀表板的函式相似，不同之處在于機密功能會當做字典傳遞 (以確保名稱可) 使用。 呼叫這個方法時，我們也必須指定 (二元分類的預測類型) 。
+    使用 Fairlearn 的套件建立儀表板字典 `metrics` 。 `_create_group_metric_set`方法的引數類似于儀表板的函式，不同之處在于機密功能會以字典的形式傳遞 (，以確保名稱可) 。 在此情況下，我們也必須指定 (二元分類的預測類型) 在呼叫這個方法時。
 
     ```python
     #  Create a dictionary of model(s) you want to assess for fairness 
@@ -160,14 +160,14 @@ pip install fairlearn==0.4.6
                                         sensitive_features=sf,
                                         prediction_type='binary_classification')
     ```
-4. 上傳預先計算公平計量。
+4. 上傳預先計算公平度量。
     
-    現在，匯入 `azureml.contrib.fairness` 封裝以執行上傳：
+    現在，匯入 `azureml.contrib.fairness` 套件以執行上傳：
 
     ```python
     from azureml.contrib.fairness import upload_dashboard_dictionary, download_dashboard_by_upload_id
     ```
-    建立實驗，然後執行並將儀表板上傳至其中：
+    建立實驗，然後執行並上傳儀表板：
     ```python
     exp = Experiment(ws, "Test_Fairness_Census_Demo")
     print(exp)
@@ -188,32 +188,32 @@ pip install fairlearn==0.4.6
     finally:
         run.complete()
     ```
-5. 從 Azure Machine Learning studio 檢查公平儀表板
+5. 檢查 Azure Machine Learning studio 中的公平儀表板
 
-    如果您已完成先前的步驟 (將產生的公平深入解析上傳至 Azure Machine Learning) ，您可以在[Azure Machine Learning studio](https://ml.azure.com)中查看公平儀表板。 此儀表板是 Fairlearn 中提供的相同視覺效果儀表板，可讓您分析敏感性功能的子群組之間的 disparities， (例如男性與女性) 。
-    遵循下列其中一個路徑來存取 Azure Machine Learning studio 中的視覺效果儀表板：
+    如果您完成上述步驟 (上傳產生的公平見解至 Azure Machine Learning) ，您可以在 [Azure Machine Learning studio](https://ml.azure.com)中查看公平儀表板。 此儀表板是 Fairlearn 中提供的相同視覺效果儀表板，可讓您在機密功能的子群組之間分析 disparities， (例如男性與女性) 。
+    遵循下列其中一個路徑，以存取 Azure Machine Learning studio 中的視覺效果儀表板：
 
-    * ** (預覽) 的實驗窗格**
-    1. 在左窗格中選取 [**實驗**]，以查看您在 Azure Machine Learning 上執行的實驗清單。
-    1. 選取特定的實驗，以在該實驗中查看所有執行。
-    1. 選取 [執行]，然後在 [說明視覺效果儀表板] 的 [**公平**] 索引標籤。
+    * **實驗窗格 (預覽) **
+    1. 選取左窗格中的 [ **實驗** ]，以查看您在 Azure Machine Learning 上執行的實驗清單。
+    1. 選取特定實驗來查看該實驗中的所有執行。
+    1. 選取 [執行]，然後選取 [說明視覺效果] 儀表板的 [ **公平** ] 索引標籤。
 
 
     [![公平儀表板](./media/how-to-machine-learning-fairness-aml/dashboard.png)](./media/how-to-machine-learning-fairness-aml/dashboard.png#lightbox)
     
     * **模型窗格**
-    1. 如果您依照先前的步驟註冊原始模型，您可以選取左窗格中的 [**模型**] 來進行查看。
-    1. 選取模型，然後選取 [**公平**] 索引標籤，以查看 [說明視覺效果] 儀表板。
+    1. 如果您遵循先前的步驟來註冊原始模型，您可以在左窗格中選取 **模型** 來加以查看。
+    1. 選取模型，然後選取 [ **公平** ] 索引標籤，以查看 [說明視覺效果] 儀表板。
 
-    若要深入瞭解視覺效果儀表板及其包含的內容，請查看 Fairlearn 的[使用者指南](https://fairlearn.github.io/user_guide/assessment.html#fairlearn-dashboard)。
+    若要深入瞭解視覺效果儀表板及其包含的內容，請參閱 Fairlearn 的 [使用者指南](https://fairlearn.github.io/user_guide/assessment.html#fairlearn-dashboard)。
 
-## <a name="upload-fairness-insights-for-multiple-models"></a>上傳多個模型的公平深入解析
+## <a name="upload-fairness-insights-for-multiple-models"></a>針對多個模型上傳公平見解
 
-如果您想要比較多個模型，並查看其公平評量有何不同，您可以將多個模型傳遞至視覺效果儀表板，並流覽其效能公平取捨。
+如果您想要比較多個模型，並查看其公平評定有何不同，您可以傳遞多個模型至視覺效果儀表板，並流覽其效能公平取捨。
 
-1. 訓練您的模型：
+1. 定型您的模型：
     
-    除了先前的羅吉斯回歸模型，我們現在會根據支援向量機器估計工具建立第二個分類器，並使用 Fairlearn 的套件上傳公平儀表板字典 `metrics` 。 請注意，我們會略過載入和前置處理資料的步驟，直接移至模型定型階段。
+    除了先前的羅吉斯回歸模型，我們現在會根據支援向量機器估算器建立第二個分類器，並使用 Fairlearn 的套件上傳公平的儀表板字典 `metrics` 。 請注意，在此我們會略過載入和預先處理資料的步驟，並直接移至模型定型階段。
 
 
     ```python
@@ -230,7 +230,7 @@ pip install fairlearn==0.4.6
 
 2. 註冊您的模型
 
-    接下來，在 Azure Machine Learning 中註冊這兩個模型。 為了方便您在後續的方法呼叫中，請將結果儲存在字典中，這會將 `id` 已註冊模型的 `name:version` 設定 (格式) 的字串對應到預測器本身：
+    接下來，在 Azure Machine Learning 中註冊兩個模型。 為了方便起見，在後續的方法呼叫中，將結果儲存在字典中，這會將 `id` 已註冊模型的 (格式) 的字串對應 `name:version` 至預測項本身：
 
     ```python
     model_dict = {}
@@ -244,7 +244,7 @@ pip install fairlearn==0.4.6
 
 3. 在本機載入 Fairlearn 儀表板
 
-    將公平深入解析上傳至 Azure Machine Learning 之前，您可以在本機叫用的 Fairlearn 儀表板中檢查這些預測。 
+    將公平見解上傳至 Azure Machine Learning 之前，您可以在本機叫用的 Fairlearn 儀表板中檢查這些預測。 
 
 
 
@@ -262,7 +262,7 @@ pip install fairlearn==0.4.6
                     y_pred=ys_pred)
     ```
 
-3. 預先計算的公平計量。
+3. 預先計算的公平度量。
 
     使用 Fairlearn 的套件建立儀表板字典 `metrics` 。
 
@@ -276,14 +276,14 @@ pip install fairlearn==0.4.6
                                         sensitive_features=sf,
                                         prediction_type='binary_classification')
     ```
-4. 上傳預先計算公平計量。
+4. 上傳預先計算公平度量。
     
-    現在，匯入 `azureml.contrib.fairness` 封裝以執行上傳：
+    現在，匯入 `azureml.contrib.fairness` 套件以執行上傳：
 
     ```python
     from azureml.contrib.fairness import upload_dashboard_dictionary, download_dashboard_by_upload_id
     ```
-    建立實驗，然後執行並將儀表板上傳至其中：
+    建立實驗，然後執行並上傳儀表板：
     ```python
     exp = Experiment(ws, "Compare_Two_Models_Fairness_Census_Demo")
     print(exp)
@@ -306,16 +306,16 @@ pip install fairlearn==0.4.6
     ```
 
 
-    與上一節類似，您可以遵循上述其中一個路徑 (透過 Azure Machine Learning studio 中的**實驗**或**模型**) 來存取視覺效果儀表板，並根據公平和效能來比較這兩個模型。
+    類似于上一節，您可以遵循上述的其中一個路徑， (透過 Azure Machine Learning studio 中的 **實驗** 或 **模型**) 來存取視覺效果儀表板，並根據公平和效能來比較這兩個模型。
 
 
-## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>上傳 unmitigated 並降低公平深入解析
+## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>上傳 unmitigated 並減輕公平見解
 
-您可以使用 Fairlearn 的[風險降低演算法](https://fairlearn.github.io/user_guide/mitigation.html)，將其產生的緩和模型 (s) 與原始的 unmitigated 模型比較，並在比較的模型之間流覽效能/公平取捨。
+您可以使用 Fairlearn 的 [風險降低演算法](https://fairlearn.github.io/user_guide/mitigation.html)、將 (s) 所產生的緩和模型，與原始 unmitigated 模型進行比較，並在比較的模型之間導覽效能/公平取捨。
 
-為了查看示範如何使用[格線搜尋](https://fairlearn.github.io/user_guide/mitigation.html#grid-search)緩和演算法的範例 (這會建立一組具有不同公平和效能取捨的緩和模型集合) 查看此[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)。 
+若要查看示範如何使用 [方格搜尋](https://fairlearn.github.io/user_guide/mitigation.html#grid-search) 緩和演算法的範例 (使用不同的公平和效能取捨來建立緩和模型的集合) 請參閱此 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)。 
 
-在單一回合中上傳多個模型的公平深入解析，可讓您根據公平和效能來比較模型。 您可以進一步按一下模型比較圖表中顯示的任何模型，以便查看特定模型的詳細公平深入解析。
+在單一回合中上傳多個模型的公平見解，將可讓您比較與公平和效能相關的模型。 您可以進一步按一下模型比較圖中顯示的任何模型，以查看特定模型的詳細公平見解。
 
 
 [![模型比較 Fairlearn 儀表板](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png)](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png#lightbox)
@@ -325,4 +325,4 @@ pip install fairlearn==0.4.6
 
 [深入瞭解模型公平](concept-fairness-ml.md)
 
-[查看 Azure Machine Learning 的公平範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)
+[查看 Azure Machine Learning 公平範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)

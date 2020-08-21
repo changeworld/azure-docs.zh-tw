@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8d48a8a9f52c3edb4350c16a25deda9894dcdda1
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 4dd253aa5dc1b8b89b1b387a555dde416c601f9c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271153"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691491"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>使用 Azure Functions 將 API 新增至 Azure 靜態 Web Apps 預覽版
 
@@ -147,7 +147,7 @@ Visual Studio Code 可與 [Azure Functions Core Tools](../azure-functions/functi
 
     :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="使用 Visual Studio Code 來建立新的 Azure Functions":::
 
-1. 當核心工具執行時，流覽至下列 URL，以確認 API 是否正確執行： <http://localhost:7071/api/message> 。
+1. 當核心工具執行時，流覽至下列 URL，以確認 API 是否正確執行： `http://localhost:7071/api/message` 。
 
    瀏覽器中的回應看起來應該類似下列範例：
 

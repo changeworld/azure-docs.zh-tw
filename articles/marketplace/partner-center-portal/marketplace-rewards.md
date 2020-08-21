@@ -8,30 +8,30 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 702486a0728a7394d8d8febffc11b11bc113a030
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 465543e639514753bc0a6762dbbeb888d490ccd2
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606751"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705039"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
-Marketplace Rewards 在您的特定成長階段支援您，從認知活動開始，以協助您取得第一位客戶。 當您透過商業 marketplace 成長時，您可以將新的權益解除鎖定，其設計目的是要協助您轉換客戶並關閉交易。
+Marketplace Rewards 在您的特定成長階段支援您，從認知活動開始，以協助您取得第一位客戶。 當您透過 Microsoft 商業 marketplace 成長時，您可以將新的權益解除鎖定，其設計目的是要協助您轉換客戶並關閉交易。
 
 此程式會建立正面的意見反應迴圈：每個成長階段的權益都可協助您進行下一個階段，讓您可以利用 Microsoft 的現場來拓展業務給 Microsoft 客戶，並透過 Microsoft 的通路利用商業市場作為您的平臺。
 
-您的權益會視供應項目是[上市、試用或交易](../determine-your-listing-type.md#choose-a-call-to-action)而有所不同。
+您的權益會視供應項目是[上市、試用或交易](../determine-your-listing-type.md#choose-a-listing-option)而有所不同。
 
 當供應項目上線時，我們會根據您符合的資格，請 Rewards 小組成員與您聯繫。
 
-若為交易合作夥伴，當您透過市集平台拓展開單銷售，就能在每一層級解鎖更多權益。
+針對交易夥伴，當您透過商業 marketplace 平臺成長計費的銷售時，每一層都能發揮更大的效益。
 
-在線上商店中發佈的最低需求是 MPNID，因此無論 MPN 專長認證狀態或合作夥伴類型為何，所有合作夥伴都可以使用這些權益。 每位合作夥伴都能以平台的形式，透過市集拓展業務。
+在線上商店中發佈的最低需求是 MPNID，因此無論 MPN 專長認證狀態或合作夥伴類型為何，所有合作夥伴都可以使用這些權益。 每個合作夥伴都可以透過商業市場作為平臺，來拓展其業務。
 
 我們會協助您了解可供使用的資源及如何執行最佳做法，您也可以[自我檢查](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。
 
-請在 [這裡](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)檢查您對 Marketplace Rewards 計畫的資格。
+若要檢查 Marketplace Rewards 計畫的資格，請參閱合作夥伴中心中的 [Marketplace Rewards](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) 頁面。
 
 開始使用的步驟很簡單：
 

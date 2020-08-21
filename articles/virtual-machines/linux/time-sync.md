@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 4214fca9e295dc7716d8e2c069f52c719aa74697
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a122a36b14bd3c5f4912387dc98585cb89ab53b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292113"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705635"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 中的 Linux VM 時間同步
 
@@ -64,7 +64,7 @@ Azure 主機會與內部 Microsoft 時間伺服器同步，這些時間伺服器
 - NTP 為主要，其會從 NTP 伺服器取得時間。 例如，Ubuntu 16.04 LTS Marketplace 映像使用 **ntp.ubuntu.com**。
 - VMICTimeSync 服務為次要，用來將主機時間傳遞給 VM，並在 VM 暫停以進行維修後予以修正。 Azure 主機使用 Microsoft 所屬的 Stratum 1 裝置來維持時間的準確性。
 
-在較新的 Linux 發行版本中，VMICTimeSync 服務使用精確時間通訊協定 (Precision Time Protocol，PTP)，但較早的發行版本可能不支援 PTP，並將切換回 NTP 以從主機取得時間。
+在較新的 Linux 散發套件中，VMICTimeSync 服務會提供精確度時間通訊協定 (PTP) 硬體時鐘來源，但較舊的散發套件可能不會提供此時鐘來源，而且會從主機切換回 NTP 以取得時間。
 
 若要確認 NTP 正確同步，請執行 `ntpq -p` 命令。
 
@@ -112,9 +112,9 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ```
 
 
-### <a name="check-for-ptp"></a>檢查是否 PTP
+### <a name="check-for-ptp-clock-source"></a>檢查 PTP 時鐘來源
 
-在新版的 Linux 中，精確時間通訊協定 (Precision Time Protocol，PTP) 時鐘來源會當作 VMICTimeSync 提供者的一部分來提供。 在舊版的 Red Hat Enterprise Linux 或 CentOS 7.x 上，可下載 [Linux Integration Services](https://github.com/LIS/lis-next) 並用來安裝已更新的驅動程式。 使用 PTP 時，Linux 裝置的格式會是 /dev/ptp*x*。 
+在新版的 Linux 中，精確時間通訊協定 (Precision Time Protocol，PTP) 時鐘來源會當作 VMICTimeSync 提供者的一部分來提供。 在舊版的 Red Hat Enterprise Linux 或 CentOS 7.x 上，可下載 [Linux Integration Services](https://github.com/LIS/lis-next) 並用來安裝已更新的驅動程式。 當 PTP 時鐘來源可供使用時，Linux 裝置的格式會是/dev/ptp*x*。 
 
 查看哪些 PTP 時鐘來源可供使用。
 

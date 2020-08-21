@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: b1830ddef44ef33d19c953622951779632e33e71
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5a3760956dfe9a713d344fd6684d75ea240ab7de
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076737"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705719"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>設定 HDInsight 上的 Apache HBase 和 Apache Phoenix 備份和複寫
 
@@ -42,7 +42,7 @@ HDInsight 中的 HBase 會使用建立叢集時選取的預設儲存體，即 Az
 
   `wasbs://<containername>@<accountname>.blob.core.windows.net/hbase`
 
-* 在 Azure Data Lake Storage 中， `hbase` 資料夾位於布建叢集時所指定的根路徑之下。 此根路徑通常會有 `clusters` 資料夾，其中包含一個以您的 HDInsight 叢集命名的子資料夾：
+* 在 Azure Data Lake Storage 中，此資料夾位於布建叢集 `hbase` 時所指定的根路徑之下。 此根路徑通常會有 `clusters` 資料夾，其中包含一個以您的 HDInsight 叢集命名的子資料夾：
 
   `/clusters/<clusterName>/hbase`
 
@@ -56,7 +56,7 @@ HDInsight 中的 HBase 會使用建立叢集時選取的預設儲存體，即 Az
 
 ## <a name="export-then-import"></a>匯出然後匯入
 
-在來源 HDInsight 叢集上，使用[匯出公用程式](https://hbase.apache.org/book.html#export)（包含在 HBase 中）將來源資料表的資料匯出至預設連接的儲存體。 接著，您可以將匯出的資料夾複製到目的地儲存位置，然後在目的地 HDInsight 叢集上執行匯[入公用程式](https://hbase.apache.org/book.html#import)。
+在來源 HDInsight 叢集上，使用 HBase) 隨附的 [匯出公用程式](https://hbase.apache.org/book.html#export) (，將來源資料表中的資料匯出至預設連接的儲存體。 然後，您可以將匯出的資料夾複製到目的地儲存位置，然後在目的地 HDInsight 叢集上執行匯 [入公用程式](https://hbase.apache.org/book.html#import) 。
 
 若要匯出資料表資料，請先透過 SSH 連線到來源 HDInsight 叢集的前端節點，然後執行下列 `hbase` 命令：
 
@@ -96,7 +96,7 @@ hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<expo
 
 ## <a name="copy-tables"></a>複製資料表
 
-[CopyTable 公用程式](https://hbase.apache.org/book.html#copy.table)會將來源資料表中的資料（逐列）複製到現有的目的地資料表，並具有與來源相同的架構。 目的地資料表可以位於相同叢集或不同的 HBase 叢集上。 資料表名稱會區分大小寫。
+[CopyTable 公用程式](https://hbase.apache.org/book.html#copy.table)會將資料從來源資料表（資料列）複製到具有與來源相同架構的現有目的地資料表。 目的地資料表可以位於相同叢集或不同的 HBase 叢集上。 資料表名稱會區分大小寫。
 
 若要在叢集內使用 CopyTable，請透過 SSH 連線到來源 HDInsight 叢集的前端節點，然後執行下列 `hbase` 命令：
 
@@ -137,7 +137,7 @@ CopyTable 會掃描即將複製到目的地資料表的整個來源資料表內�
 
 ### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>手動收集 Apache ZooKeeper 仲裁清單
 
-當兩個 HDInsight 叢集位於相同虛擬網路時，如先前所述，系統會自動解析內部主機名稱。 若要在 VPN 閘道所連接的兩個不同虛擬網路中使用 HDInsight 叢集的 CopyTable，您必須提供仲裁中 Zookeeper 節點的主機 IP 位址。
+當兩個 HDInsight 叢集位於相同虛擬網路時，如先前所述，系統會自動解析內部主機名稱。 若要在 VPN 閘道所連線的兩個不同虛擬網路中使用 HDInsight 叢集的 CopyTable，您必須提供仲裁中 Zookeeper 節點的主機 IP 位址。
 
 若要取得仲裁主機名稱，請執行下列 curl 命令：
 
@@ -173,7 +173,7 @@ curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterNam
 
 ## <a name="snapshots"></a>快照集
 
-[快照](https://hbase.apache.org/book.html#ops.snapshots)集可讓您針對 HBase 資料存放區中的資料進行時間點備份。 快照集的額外負荷最低，幾秒就能完成，因為快照集作業實際上是擷取該瞬間儲存體中所有檔案名稱的中繼資料作業。 建立快照集時，不會真的複製任何資料。 快照集依賴 HDFS 中儲存之資料的不可變本質 ，HDFS 中的更新、刪除、插入都會以新資料表示。 您可以在同一個叢集上還原 (複製**) 快照集，或將快照集匯出至其他叢集。
+[快照](https://hbase.apache.org/book.html#ops.snapshots) 集可讓您對 HBase 資料存放區中的資料進行時間點備份。 快照集的額外負荷最低，幾秒就能完成，因為快照集作業實際上是擷取該瞬間儲存體中所有檔案名稱的中繼資料作業。 建立快照集時，不會真的複製任何資料。 快照集依賴 HDFS 中儲存之資料的不可變本質 ，HDFS 中的更新、刪除、插入都會以新資料表示。 您可以在同一個叢集上還原 (複製**) 快照集，或將快照集匯出至其他叢集。
 
 若要建立快照集，請透過 SSH 連線至 HDInsight HBase 叢集的前端節點並啟動 `hbase` Shell：
 
@@ -213,13 +213,19 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -
 hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 ```
 
-匯出快照集後，透過 SSH 連線到目的地叢集的前端節點，然後如先前所述使用 restore_snapshot 命令還原快照集。
+如果您沒有連結至來源叢集的次要 Azure 儲存體帳戶，或者您的來源叢集是內部部署叢集 (或非 HDI 叢集) ，則當您嘗試存取 HDI 叢集的儲存體帳戶時，可能會遇到授權問題。 若要解決此問題，請將金鑰指定為您的儲存體帳戶作為命令列參數，如下列範例所示。 您可以在 Azure 入口網站中取得儲存體帳戶的金鑰。
 
-快照集可提供資料表在執行 `snapshot` 命令時的完整備份。 快照集不會提供依時間執行增量快照集的功能，也不會指定要包含在快照集內的資料行系列子集。
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.myaccount.blob.core.windows.net=mykey -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```
+
+匯出快照集之後，請透過 SSH 連線到目的地叢集的前端節點，並使用前面所述的命令來還原快照集 `restore_snapshot` 。
+
+快照集可提供資料表在執行 `snapshot` 命令時的完整備份。 快照集無法讓您依時間視窗執行增量快照集，也不能指定要包含在快照集內的資料行系列的子集。
 
 ## <a name="replication"></a>複寫
 
-[HBase](https://hbase.apache.org/book.html#_cluster_replication)複寫會使用非同步機制，自動將來源叢集的交易推播到目的地叢集，而不會對來源叢集產生最少的額外負荷。 在 HDInsight 中，您可以在下列情況下設定叢集之間的複寫：
+[HBase](https://hbase.apache.org/book.html#_cluster_replication) 複寫會使用非同步機制，自動將來源叢集的交易推送至目的地叢集，並在來源叢集上使用最少量的額外負荷。 在 HDInsight 中，您可以在下列情況下設定叢集之間的複寫：
 
 * 來源和目的地叢集位於相同虛擬網路中。
 * 來源和目的地叢集位於以 VPN 閘道連線的不同虛擬網路中，且這兩個叢集都位於相同的地理位置。
