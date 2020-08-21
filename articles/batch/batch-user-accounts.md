@@ -2,24 +2,24 @@
 title: 以使用者帳戶執行工作
 description: 了解使用者帳戶的類型及其設定方式。
 ms.topic: how-to
-ms.date: 11/18/2019
+ms.date: 08/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 412947b939d95be29dde374b311776829fa12582
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142672"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719354"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>在 Batch 中的使用者帳戶執行工作
 
 > [!NOTE]
-> 本文所討論的使用者帳戶與用於遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 的使用者帳戶不同，基於安全考慮。
+> 本文所討論的使用者帳戶與基於安全性理由，用於遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 的使用者帳戶不同。
 >
 > 若要連線到透過 SSH 執行 Linux 虛擬機器設定的節點，請參閱[在 Azure 中使用 Linux VM 的遠端桌面](../virtual-machines/linux/use-remote-desktop.md)。 若要連線到透過 RDP 執行 Windows 的節點，請參閱[連線到 Windows Server VM](../virtual-machines/windows/connect-logon.md)。<br /><br />
 > 若要連線到透過 RDP 執行雲端服務設定的節點，請參閱[在 Azure 雲端服務中啟用角色的遠端桌面連線](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)。
 
-Azure Batch 中的工作一律會在使用者帳戶下執行。 根據預設，會在標準使用者帳戶中執行工作，而不需要系統管理員權限。 在某些情況下，您可能會想要設定您想要執行工作的使用者帳戶。 本文討論使用者帳戶的類型，以及如何為您的案例進行設定。
+Azure Batch 中的工作一律會在使用者帳戶下執行。 根據預設，會在標準使用者帳戶中執行工作，而不需要系統管理員權限。 在某些情況下，您可能會想要設定您想要執行工作的使用者帳戶。 本文討論使用者帳戶的類型，以及如何針對您的案例進行設定。
 
 ## <a name="types-of-user-accounts"></a>使用者帳戶的類型
 
@@ -30,11 +30,11 @@ Azure Batch 提供執行工作所需的兩種使用者帳戶類型︰
 - **具名的使用者帳戶。** 當您建立集區時，可以指定一或多個集區的具名使用者帳戶。 每個使用者帳戶都會建立在集區的每個節點上。 除了帳戶名稱之外，您會指定使用者帳戶密碼、提高權限層級，以及針對 Linux 集區指定 SSH 私密金鑰。 當您新增一項工作時，可以指定應執行該工作的具名使用者帳戶。
 
 > [!IMPORTANT]
-> Batch 服務版本 2017-01-01.4.0 導入了重大變更，要求您更新程式碼以呼叫該版本。 如果您是從較舊版本的 Batch 移轉程式碼，請注意，REST API 或 Batch 用戶端程式庫不再支援 **runElevated** 屬性。 使用工作的新 **userIdentity** 屬性來指定提高權限層級。 如果您使用其中一個用戶端程式庫，請參閱將[您的程式碼更新為最新的 batch 用戶端程式庫](#update-your-code-to-the-latest-batch-client-library)，以取得更新批次程式碼的快速指導方針。
+> Batch 服務版本 2017-01-01.4.0 導入了重大變更，要求您更新程式碼以呼叫該版本。 如果您是從較舊版本的 Batch 移轉程式碼，請注意，REST API 或 Batch 用戶端程式庫不再支援 **runElevated** 屬性。 使用工作的新 **userIdentity** 屬性來指定提高權限層級。 如果您使用其中一個用戶端程式庫，請參閱將 [您的程式碼更新至最新的 batch 用戶端程式庫](#update-your-code-to-the-latest-batch-client-library) ，以取得更新批次程式碼的快速指導方針。
 
 ## <a name="user-account-access-to-files-and-directories"></a>使用者帳戶存取檔案和目錄
 
-自動使用者帳戶和已命名的使用者帳戶都具有工作的 [工作目錄]、[共用目錄] 和 [多重實例作業] 目錄的讀取/寫入存取權。 這兩種類型的帳戶都具有啟動和作業準備工作目錄的讀取權限。
+自動使用者帳戶和命名使用者帳戶都具有工作的工作目錄、共用目錄和多重實例工作目錄的讀取/寫入存取權。 這兩種類型的帳戶都具有啟動和作業準備工作目錄的讀取權限。
 
 如果相同帳戶下執行的工作用來執行啟動工作，則工作具有啟動工作目錄的讀寫權限。 同樣地，如果相同帳戶下執行的工作用來執行作業準備工作，則工作具有作業準備工作目錄的讀寫權限。 如果是在與啟動工作或作業準備工作不同的帳戶下執行工作，則工作只有個別目錄的讀取權限。
 
@@ -49,18 +49,13 @@ Azure Batch 提供執行工作所需的兩種使用者帳戶類型︰
 
 ## <a name="auto-user-accounts"></a>自動使用者帳戶
 
-根據預設，Batch 中的工作會在自動使用者帳戶下執行，以標準使用者身分執行，沒有提高權限的存取權，並具有工作範圍。 針對工作範圍設定自動使用者規格之後，Batch 服務只會建立該工作的自動使用者帳戶。
+根據預設，工作會在自動使用者帳戶下的批次中執行，以標準使用者的形式在沒有提高許可權的情況下執行，並使用集區範圍。 集區範圍表示工作會在可供集區中任何工作使用的自動使用者帳戶下執行。 如需集區範圍的詳細資訊，請參閱以 [具有集區範圍的自動使用者的形式來執行工作](#run-a-task-as-an-auto-user-with-pool-scope)。
 
-工作範圍的替代方案是集區範圍。 當針對集區範圍設定工作的自動使用者規格時，會在集區中任何工作可用的自動使用者帳戶下執行工作。 如需集區範圍的詳細資訊，請參閱以[具有集區範圍的自動使用者身分執行工作](#run-a-task-as-an-auto-user-with-pool-scope)。
-
-預設範圍在 Windows 和 Linux 節點上有所差異︰
-
-- 在 Windows 節點上，工作根據預設會在工作範圍下執行。
-- Linux 節點一律會在集區範圍下執行。
+集區範圍的替代方案是工作範圍。 針對工作範圍設定自動使用者規格之後，Batch 服務只會建立該工作的自動使用者帳戶。
 
 自動使用者規格有四個可能的設定，其中每一個都對應至唯一的自動使用者帳戶︰
 
-- 具有工作範圍 (預設的自動使用者規格) 的非系統管理員存取權
+- 具有工作範圍的非系統管理員存取權
 - 具有工作範圍的系統管理員 (提升權限) 存取權
 - 具有集區範圍的非系統管理員存取權
 - 具有集區範圍的系統管理員存取權
@@ -75,7 +70,7 @@ Azure Batch 提供執行工作所需的兩種使用者帳戶類型︰
 > [!NOTE]
 > 只有在必要時才使用提升的存取權。 最佳做法建議授與達成所需結果所需的最低權限。 例如，如果啟動工作為目前的使用者而不是所有使用者安裝軟體，您可能會避免將提高權限的存取權授與給工作。 您可以針對集區範圍設定自動使用者規格，以及針對需要在相同帳戶中執行的所有工作 (包括啟動工作) 設定非系統管理員存取權。
 
-下列程式碼片段示範如何設定自動使用者規格。 範例會將提高權限層級設定為 `Admin`，以及將範圍設定為 `Task`。 工作範圍是預設設定，但是也包含在此作為範例。
+下列程式碼片段示範如何設定自動使用者規格。 範例會將提高權限層級設定為 `Admin`，以及將範圍設定為 `Task`。
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -90,7 +85,7 @@ taskToAdd.withId(taskId)
             .withAutoUser(new AutoUserSpecification()
                 .withElevationLevel(ElevationLevel.ADMIN))
                 .withScope(AutoUserScope.TASK));
-        .withCommandLine("cmd /c echo hello");                        
+        .withCommandLine("cmd /c echo hello");
 ```
 
 #### <a name="batch-python"></a>Batch Python
@@ -113,8 +108,8 @@ batch_client.task.add(job_id=jobid, task=task)
 
 當您指定自動使用者的集區範圍時，使用系統管理員存取權執行的所有工作，會在相同的全集區自動使用者帳戶下執行。 同樣地，不具系統管理員權限執行的工作，也會在單一的全集區自動使用者帳戶下執行。
 
-> [!NOTE] 
-> 這兩個全集區的自動使用者帳戶是不同的帳戶。 在整個集區系統管理帳戶下執行的工作，無法與標準帳戶下執行的工作共用資料，反之亦然。
+> [!NOTE]
+> 這兩個全集區的自動使用者帳戶是不同的帳戶。 在整個集區的系統管理帳戶下執行的工作，無法與在標準帳戶下執行的工作共用資料，反之亦然。
 
 在相同自動使用者帳戶下執行的優點是，工作都能與相同節點上執行的其他工作共用資料。
 
