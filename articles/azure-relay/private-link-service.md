@@ -3,12 +3,12 @@ title: 將 Azure 轉送與 Azure Private Link 服務整合
 description: 了解如何整合 Azure 轉送與 Azure Private Link 服務
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5c35f9333378a5f0b87956e8a916491d51e3cb3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317318"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719422"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>將 Azure 轉送與 Azure Private Link 整合 (預覽)
 Azure **Private Link 服務**可讓您透過虛擬網路中的私人端點，存取各 Azure 服務 (例如 Azure 轉送、Azure 服務匯流排、Azure 事件中樞、Azure 儲存體和 Azure Cosmos DB)，以及 Azure 裝載的客戶/合作夥伴服務。 如需詳細資訊，請參閱[何謂 Azure Private Link (預覽)？](../private-link/private-link-overview.md)
@@ -207,7 +207,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 3. 您應該會看見狀態變更為 [已中斷連線]。 然後，您將會看見端點從清單中消失。 
 
 ## <a name="validate-that-the-private-link-connection-works"></a>驗證私人連結連線是否正常運作
-您應該驗證私人端點的相同子網路內的資源，是否透過其私人 IP 位址連線到您的 Azure 轉送命名空間。
+您應驗證私人端點的虛擬網路內的資源是否透過其私人 IP 位址連接到您的 Azure 轉送命名空間。
 
 對於此測試，依照[在 Azure 入口網站中建立 Windows 虛擬機器](../virtual-machines/windows/quick-create-portal.md)中的步驟，建立虛擬機器
 

@@ -1,27 +1,27 @@
 ---
 title: Azure Data Factory 中的 Excel 格式
-description: 本主題描述如何在 Azure Data Factory 中處理 Excel 格式。
+description: 本主題說明如何在 Azure Data Factory 中處理 Excel 格式。
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 08/21/2020
 ms.author: jingwang
-ms.openlocfilehash: a937548c9318d98e8832720706626b74167d32d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd5e116f0c6844abeffc27820da03462c6e1cbbc
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044403"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718198"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory 中的 Excel 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-當您想要**剖析 Excel**檔案時，請遵循這篇文章。 Azure Data Factory 支援 ".xls" 和 ".xlsx"。
+當您想要 **剖析 Excel**檔案時，請遵循這篇文章。 Azure Data Factory 支援 ".xls" 和 ".xlsx"。
 
-下列連接器支援 Excel 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [Azure 檔案儲存體](connector-azure-file-storage.md)、[檔案系統](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和[SFTP](connector-sftp.md)。 它支援作為來源，但不是接收。
+下列連接器支援 Excel 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [Azure 檔案儲存體](connector-azure-file-storage.md)、 [檔案系統](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和 [SFTP](connector-sftp.md)。 它支援作為來源，但不支援接收。
 
 ## <a name="dataset-properties"></a>資料集屬性
 
@@ -29,15 +29,15 @@ ms.locfileid: "87044403"
 
 | 屬性         | 描述                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | 資料集的類型屬性必須設定為**Excel**。   | 是      |
-| location         | 檔案的位置設定。 每個以檔案為基礎的連接器在下都有自己的位置類型和支援的屬性 `location` 。 | 是      |
+| type             | 資料集的 type 屬性必須設定為 **Excel**。   | 是      |
+| location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。 | 是      |
 | sheetName        | 要讀取資料的 Excel 工作表名稱。                       | 是      |
-| range            | 給定工作表中的儲存格範圍，用來尋找選擇性資料，例如 `A3:H5` （從 a3 到 H5 的資料表）、（從 `A3` 儲存格 a3 開始的資料表）、 `A3:A3` （單一資料格）。 如果未指定，ADF 會以資料表的形式讀取整個工作表。 | 否       |
-| firstRowAsHeader | 指定是否要將給定工作表/範圍中的第一個資料列視為具有資料行名稱的標題列。<br>允許的值為**true**和**false** （預設值）。 | 否       |
-| nullValue        | 指定 null 值的字串表示。 <br>預設值為**空字串**。 | 否       |
+| range            | 給定工作表中的儲存格範圍，以找出選擇性資料，例如：<br>-未指定：從第一個非空白資料列和資料行以資料表形式讀取整份工作表<br>- `A3`：從指定的資料格開始讀取資料表、動態偵測下的所有資料列，以及右邊的所有資料行<br>- `A3:H5`：將此固定範圍讀取為數據表<br>- `A3:A3`：讀取這個單一資料格 | 否       |
+| firstRowAsHeader | 指定是否將指定工作表/範圍中的第一個資料列視為具有資料行名稱的標頭行。<br>允許的值為 **true** 和 **false** (預設) 。 | 否       |
+| nullValue        | 指定 null 值的字串表示。 <br>預設值為 **空字串**。 | 否       |
 | compression | 用來設定檔案壓縮的屬性群組。 當您想要在活動執行期間執行壓縮/解壓縮時，請設定此區段。 | 否 |
-| 類型<br/>（*低於 `compression` *） | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為**bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **snappy**或**lz4**。 表示在儲存檔案時使用。 預設值為 [未壓縮]。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"。<br>**請注意**，使用複製活動來解壓縮**ZipDeflate**檔案並寫入檔案型接收資料存放區時，會將檔案解壓縮至資料夾： `<path specified in dataset>/<folder named as source zip file>/` 。 | 不可以。  |
-| 等級<br/>（*低於 `compression` *） | 壓縮比例。 <br>允許的值為**最佳**或**最快**。<br>- **最快速：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
+| type<br/>) *下 `compression` *的 ( | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **snappy**或 **lz4**。 儲存檔案時要使用的。 預設值不會壓縮。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"。<br>**請注意** ，使用複製活動將 **ZipDeflate** 檔解壓縮 (s) 並寫入檔案型接收資料存放區時，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source zip file>/` 。 | 否。  |
+| 等級<br/>) *下 `compression` *的 ( | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速**。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
 
 以下是 Azure Blob 儲存體上的 Excel 資料集範例：
 
@@ -69,13 +69,13 @@ ms.locfileid: "87044403"
 
 如需可用來定義活動的區段和屬性完整清單，請參閱[管線](concepts-pipelines-activities.md)一文。 本節提供 Excel 來源所支援的屬性清單。
 
-### <a name="excel-as-source"></a>Excel 做為來源 
+### <a name="excel-as-source"></a>Excel 作為來源 
 
-複製活動的 [ *** \* 來源 \* *** ] 區段支援下列屬性。
+[複製活動*** \* 來源 \* *** ] 區段支援下列屬性。
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | 複製活動來源的類型屬性必須設定為**ExcelSource**。 | 是      |
+| type          | 複製活動來源的 type 屬性必須設為 **ExcelSource**。 | 是      |
 | storeSettings | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在下都有自己支援的讀取設定 `storeSettings` 。 | 否       |
 
 ```json
@@ -100,24 +100,24 @@ ms.locfileid: "87044403"
 
 ## <a name="mapping-data-flow-properties"></a>對應資料流程屬性
 
-在對應資料流程中，您可以在下列資料存放區中讀取 Excel 格式： [Azure Blob 儲存體](connector-azure-blob-storage.md#mapping-data-flow-properties)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)和[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。 您可以使用 Excel 資料集或使用[內嵌資料集](data-flow-source.md#inline-datasets)來指向 excel 檔案。
+在對應資料流程中，您可以在下列資料存放區中讀取 Excel 格式： [Azure Blob 儲存體](connector-azure-blob-storage.md#mapping-data-flow-properties)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。 您可以使用 Excel 資料集或使用 [內嵌資料集](data-flow-source.md#inline-datasets)來指向 excel 檔案。
 
 ### <a name="source-properties"></a>來源屬性
 
-下表列出 Excel 來源所支援的屬性。 您可以在 [**來源選項**] 索引標籤中編輯這些屬性。使用內嵌資料集時，您會看到與[資料集屬性](#dataset-properties)一節中所述屬性相同的其他檔案設定。
+下表列出 Excel 來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。使用內嵌資料集時，您會看到與 [ [資料集屬性](#dataset-properties) ] 區段中所述屬性相同的其他檔案設定。
 
 | 名稱                      | 描述                                                  | 必要 | 允許的值                                            | 資料流程腳本屬性         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
-| 萬用字元路徑           | 所有符合萬用字元路徑的檔案都會被處理。 覆寫資料集中所設定的資料夾和檔案路徑。 | 否       | String[]                                                  | wildcardPaths                     |
-| 分割區根路徑       | 對於已分割的檔案資料，您可以輸入資料分割根路徑，以便將分割的資料夾當做資料行來讀取 | 否       | 字串                                                    | partitionRootPath                 |
+| 萬用字元路徑           | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否       | String[]                                                  | wildcardPaths                     |
+| 分割區根路徑       | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否       | 字串                                                    | partitionRootPath                 |
 | 檔案清單             | 您的來源是否指向列出要處理之檔案的文字檔 | 否       | `true` 或 `false`                                         | fileList                          |
-| 要儲存檔案名稱的資料行 | 建立具有來原始檔案名和路徑的新資料行       | 否       | 字串                                                    | rowUrlColumn                      |
-| 完成後          | 在處理之後刪除或移動檔案。 檔案路徑從容器根目錄開始 | 否       | Delete： `true` 或`false` <br> 進入`['<from>', '<to>']` | purgeFiles <br> moveFiles         |
-| 依上次修改時間篩選   | 選擇根據上次修改檔案的時間來篩選檔案 | 否       | Timestamp                                                 | modifiedAfter <br> modifiedBefore |
+| 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行       | 否       | 字串                                                    | rowUrlColumn                      |
+| 完成後          | 在處理之後刪除或移動檔案。 從容器根目錄開始的檔案路徑 | 否       | Delete： `true` 或 `false` <br> 移動： `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
+| 依上次修改篩選   | 選擇根據上次修改檔案的時間進行篩選 | 否       | 時間戳記                                                 | modifiedAfter <br> modifiedBefore |
 
 ### <a name="source-example"></a>來源範例
 
-下圖是使用資料集模式對應資料流程中的 Excel 來源設定範例。
+下圖是使用資料集模式對應資料流程的 Excel 來源設定範例。
 
 ![Excel 來源](media/data-flow/excel-source.png)
 
@@ -146,7 +146,7 @@ source(allowSchemaDrift: true,
     firstRowAsHeader: true) ~> ExcelSourceInlineDataset
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [複製活動概觀](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)

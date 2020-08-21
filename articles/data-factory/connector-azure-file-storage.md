@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/18/2020
-ms.openlocfilehash: be12393591d534b4141594439f0409d0db331bd0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 08/21/2020
+ms.openlocfilehash: 135993a39a3b06bdabfff4a219df92d41c736a51
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522669"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718249"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Azure File Storage 複製資料，或將資料複製到 Azure File Storage
 
@@ -33,7 +33,12 @@ ms.locfileid: "88522669"
 - [GetMetadata 活動](control-flow-get-metadata-activity.md)
 - [刪除活動](delete-activity.md)
 
-具體而言，這個 Azure File Storage 連接器支援依原樣複製檔案，或使用[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs.md)來剖析/產生檔案。
+您可以將資料從 Azure File Storage 複製到任何支援的接收資料存放區，也可以將資料叢任何支援的來源資料存放區複製到 Azure File Storage。 如需複製活動作為來源和接收端支援的資料存放區清單，請參閱[支援的資料存放區和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
+
+具體而言，此 Azure 檔案儲存體連接器支援：
+
+- 使用帳戶金鑰或服務共用存取簽章 (SAS) 驗證來複製檔案。
+- 依原樣複製檔案，或使用[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs.md)來剖析/產生檔案。
 
 ## <a name="getting-started"></a>開始使用
 
@@ -43,7 +48,139 @@ ms.locfileid: "88522669"
 
 ## <a name="linked-service-properties"></a>連結服務屬性
 
-以下是針對 Azure File Storage 已連結服務支援的屬性：
+此 Azure 檔案儲存體連接器支援下列驗證類型。 如需詳細資料，請參閱對應的章節。
+
+- [帳戶金鑰驗證](#account-key-authentication)
+- [共用存取簽章驗證](#shared-access-signature-authentication)
+
+>[!NOTE]
+> 如果您使用的是具有 [舊版模型](#legacy-model)的 Azure 檔案儲存體連結服務，在 ADF 撰寫 UI 上顯示為「基本驗證」，則仍會依原樣受到支援，但建議您繼續使用新的模型。 舊版模型會透過伺服器訊息區 (SMB) 從儲存體傳輸資料或將資料傳輸到儲存體，而新的模型則使用具有較高輸送量的儲存體 SDK。 若要升級，您可以編輯連結服務，將驗證方法切換為「帳戶金鑰」或「SAS URI」;資料集或複製活動不需要變更。
+
+### <a name="account-key-authentication"></a>帳戶金鑰驗證
+
+Data Factory 支援 Azure 檔案儲存體帳戶金鑰驗證的下列屬性：
+
+| 屬性 | 描述 | 必要 |
+|:--- |:--- |:--- |
+| type | 類型屬性必須設定為：**AzureFileStorage**。 | 是 |
+| connectionString | 指定連接到 Azure 檔案儲存體所需的資訊。 <br/> 您也可以將帳戶金鑰放在 Azure Key Vault 中，並 `accountKey` 從連接字串中提取設定。 如需詳細資訊，請參閱 Azure Key Vault 文章中的下列範例和 [存放區認證](store-credentials-in-key-vault.md) 。 |是 |
+| fileShare | 指定檔案共用。 | 是 |
+| 快照集 | 如果您想要從快照集複製，請指定檔案 [共用快照](../storage/files/storage-snapshots-files.md) 集的日期。 | 否 |
+| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 您可以使用 Azure Integration Runtime 或「自我裝載 Integration Runtime」(如果您的資料存放區位於私人網路中)。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
+
+**範例︰**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>;EndpointSuffix=core.windows.net;",
+            "fileShare": "<file share name>"
+        },
+        "connectVia": {
+          "referenceName": "<name of Integration Runtime>",
+          "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**範例：將帳戶金鑰儲存在 Azure Key Vault**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
+            "fileShare": "<file share name>",
+            "accountKey": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }            
+    }
+}
+```
+
+### <a name="shared-access-signature-authentication"></a>共用存取簽章驗證
+
+共用存取簽章可提供您儲存體帳戶中資源的委派存取。 您可以使用共用存取簽章來將儲存體帳戶中物件的有限權限授與用戶端，讓該用戶端可以在一段指定時間內使用。 如需有關共用存取簽章的詳細資訊，請參閱[共用存取簽章：了解共用存取簽章模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+
+Data Factory 支援使用共用存取簽章驗證的下列屬性：
+
+| 屬性 | 描述 | 必要 |
+|:--- |:--- |:--- |
+| type | 類型屬性必須設定為：**AzureFileStorage**。 | 是 |
+| sasUri | 指定資源的共用存取簽章 URI。 <br/>將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中。 您也可以將 SAS 權杖放在 Azure Key Vault 中，以使用自動旋轉並移除權杖部分。 如需詳細資訊，請參閱下列範例，並 [將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 | 是 |
+| fileShare | 指定檔案共用。 | 是 |
+| 快照集 | 如果您想要從快照集複製，請指定檔案 [共用快照](../storage/files/storage-snapshots-files.md) 集的日期。 | 否 |
+| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 您可以使用 Azure Integration Runtime 或「自我裝載 Integration Runtime」(如果您的資料存放區位於私人網路中)。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
+
+**範例︰**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "sasUri": {
+                "type": "SecureString",
+                "value": "<SAS URI of the resource e.g. https://<accountname>.file.core.windows.net/?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>"
+            },
+            "fileShare": "<file share name>",
+            "snapshot": "<snapshot version>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**範例：將帳戶金鑰儲存在 Azure Key Vault**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "sasUri": {
+                "type": "SecureString",
+                "value": "<SAS URI of the Azure Storage resource without token e.g. https://<accountname>.file.core.windows.net/>"
+            },
+            "sasToken": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="legacy-model"></a>舊版模型
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -52,13 +189,6 @@ ms.locfileid: "88522669"
 | userid | 指定存取 Azure File Storage 的使用者成為： <br/>\- 使用 UI：指定 `AZURE\<storage name>`<br/>\- 使用 JSON：`"userid": "AZURE\\<storage name>"`。 | 是 |
 | 密碼 | 指定儲存體存取金鑰。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 您可以使用 Azure Integration Runtime 或「自我裝載 Integration Runtime」(如果您的資料存放區位於私人網路中)。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 (來源)；是 (接收) |
-
->[!IMPORTANT]
-> - 若要使用 Azure Integration Runtime 將資料複製到 Azure 檔案儲存體，請明確使用檔案儲存體的位置[建立 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，並在下列範例所示的連結服務中產生關聯。
-> - 若要在 Azure 以外使用自我裝載的 Integration Runtime，從 Azure 檔案儲存體複製資料或複製資料到 Azure 檔案儲存體，務必開啟區域網路的輸出 TCP 連接埠 445。
-
->[!TIP]
->使用 ADF UI 製作時，您可以找到建立已連結服務的「Azure 檔案儲存體」特定項目，其底下會產生 `FileServer` 類型的物件。
 
 **範例︰**
 
@@ -138,9 +268,10 @@ ms.locfileid: "88522669"
 | type                     | `storeSettings` 下的 type 屬性必須設定為 **FileServerReadSettings**。 | 是                                           |
 | 尋找要複製的檔案： |  |  |
 | 選項 1：靜態路徑<br> | 請從資料集內的指定資料夾/檔案路徑複製。 若您想要複製資料夾中的所有檔案，請另外將 `wildcardFileName` 指定為 `*`。 |  |
-| 選項 2：萬用字元<br>- wildcardFolderPath | 含有萬用字元的資料夾路徑，可用來篩選來源資料夾。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
-| 選項 2：萬用字元<br>- wildcardFileName | 在指定 folderPath/wildcardFolderPath 之下，含有萬用字元的檔案名稱，可用來篩選來源檔案。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
-| 選項 3：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向文字檔，其中包含您要複製的檔案清單，每行一個檔案，也就是在資料集中設定之路徑的相對路徑。<br/>使用此選項時，請勿指定資料集中的檔案名稱。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |否 |
+| 選項2：檔案前置詞<br>- 前置詞 | 在資料集內設定的指定檔案共用下，檔案名的前置詞，以篩選來源檔案。 系統會選取名稱開頭為的檔案 `fileshare_in_linked_service/this_prefix` 。 它會利用 Azure 檔案儲存體的服務端篩選，提供比萬用字元篩選器更佳的效能。 使用 [舊版連結服務模型](#legacy-model)時，不支援這項功能。 | 否                                                          |
+| 選項 3：萬用字元<br>- wildcardFolderPath | 含有萬用字元的資料夾路徑，可用來篩選來源資料夾。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
+| 選項 3：萬用字元<br>- wildcardFileName | 在指定 folderPath/wildcardFolderPath 之下，含有萬用字元的檔案名稱，可用來篩選來源檔案。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
+| 選項 4：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向文字檔，其中包含您要複製的檔案清單，每行一個檔案，也就是在資料集中設定之路徑的相對路徑。<br/>使用此選項時，請勿指定資料集中的檔案名稱。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |否 |
 | 其他設定： |  | |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 <br>允許的值為 **true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
 | deleteFilesAfterCompletion | 指出是否要在成功移至目的地存放區之後，從來源存放區刪除二進位檔案。 檔案刪除是針對每個檔案，因此當複製活動失敗時，您會看到部分檔案已複製到目的地並從來源刪除，其他檔案仍在來源存放區上。 <br/>這個屬性只適用于二進位複製案例，其中資料來源存放區為 Blob、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、檔案、Azure 檔案、SFTP 或 FTP。 預設值： false。 |否 |

@@ -11,19 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f76073a1ed98dcc51cf7e14219beca914b5b77a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027592"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717433"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>自助式密碼重設回寫如何在 Azure Active Directory 中運作？
 
 Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者在雲端重設其密碼，但大部分公司也會在其使用者所在處具有內部部署 Active Directory Domain Services (AD DS) 環境。 密碼回寫是透過 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) 所實現的功能，可將雲端中的密碼變更即時回寫至現有內部部署目錄。 在此設定中，當使用者在雲端使用 SSPR 來變更或重設其密碼時，更新過的密碼也會寫回內部部署 AD DS 環境
 
 > [!IMPORTANT]
-> 本概念性文章會向系統管理員說明自助式密碼重設回寫的運作方式。 如果您是已註冊自助式密碼重設的使用者，而且需要取回您的帳戶，請移至 https://aka.ms/sspr 。
+> 此概念文章會說明自助密碼重設回寫運作方式的系統管理員。 如果您是已註冊自助式密碼重設的使用者，而且需要取回您的帳戶，請移至 https://aka.ms/sspr 。
 >
 > 如果您的 IT 小組尚未啟用重設您密碼的功能，請與您的技術服務人員聯繫以取得其他協助。
 
@@ -42,12 +42,12 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 * **不需要任何輸入防火牆規則**：密碼回寫會使用「Azure 服務匯流排」轉送作為基礎通訊通道。 所有通訊都會透過連接埠 443 來輸出。
 
 > [!NOTE]
-> 內部部署 AD 中的受保護群組所包含的系統管理員帳戶無法用於密碼回寫。 系統管理員可在雲端變更其密碼，但不能使用密碼重設來重設忘記的密碼。 如需受保護群組的詳細資訊，請參閱[AD DS 中的受保護帳戶和群組](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)。
+> 內部部署 AD 中的受保護群組所包含的系統管理員帳戶無法用於密碼回寫。 系統管理員可在雲端變更其密碼，但不能使用密碼重設來重設忘記的密碼。 如需受保護群組的詳細資訊，請參閱 [AD DS 中受保護的帳戶和群組](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)。
 
 若要開始使用 SSPR 回寫，請完成下列教學課程：
 
 > [!div class="nextstepaction"]
-> [教學課程：啟用自助式密碼重設 (SSPR) 回寫](tutorial-enable-writeback.md)
+> [教學課程：啟用自助式密碼重設 (SSPR) 回寫](./tutorial-enable-sspr-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>密碼回寫的運作方式
 
@@ -66,11 +66,11 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
    * 使用者物件必須存在於 AD DS 連接器空間中。
    * 使用者物件必須連結至對應的 Metaverse (MV) 物件。
    * 使用者物件必須連結至對應的 Azure AD 連接器物件。
-   * 從 AD DS 連接器物件到 MV 的連結，必須在連結上有同步處理規則 `Microsoft.InfromADUserAccountEnabled.xxx` 。
+   * 從 AD DS 連接器物件到 MV 的連結必須在連結上有同步處理規則 `Microsoft.InfromADUserAccountEnabled.xxx` 。
 
-   當呼叫來自雲端時，同步處理引擎會使用**cloudAnchor**屬性來查閱 Azure AD 連接器空間物件。 接著，它會跟隨回到 MV 物件的連結，然後追蹤回到 AD DS 物件的連結。 因為同一個使用者可以有多個 AD DS 物件（多樹系），同步處理引擎會依賴此 `Microsoft.InfromADUserAccountEnabled.xxx` 連結來挑選正確的物件。
+   當呼叫來自雲端時，同步處理引擎會使用 **cloudAnchor** 屬性來查閱 Azure AD 連接器空間物件。 接著，它會接著連結回到 MV 物件，然後在連結之後，再回到 AD DS 物件。 因為同一個使用者可以有多個 AD DS 物件 (多樹系) ，所以同步處理引擎會依賴此 `Microsoft.InfromADUserAccountEnabled.xxx` 連結來挑選正確的物件。
 
-1. 找到使用者帳戶之後，就會嘗試直接在適當的 AD DS 樹系中重設密碼。
+1. 找到使用者帳戶之後，會嘗試在適當的 AD DS 樹系中直接重設密碼。
 1. 如果密碼設定作業成功，系統會告訴使用者其密碼已變更。
 
    > [!NOTE]
@@ -96,7 +96,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
    1. 加密密碼會放入 HTTPS 訊息中，使用 Microsoft TLS/SSL 憑證透過加密通道傳送到服務匯流排轉送。
    1. 在訊息抵達服務匯流排之後，您的內部部署代理程式會喚醒服務匯流排，並使用先前產生的強式密碼向其進行驗證。
    1. 內部部署代理程式會拾取加密訊息，然後使用私密金鑰進行解密。
-   1. 內部部署代理程式會嘗試透過 AD DS SetPassword API 來設定密碼。 此步驟可讓您在雲端中強制執行您的 AD DS 內部部署密碼原則（例如複雜度、年齡、歷程記錄和篩選）。
+   1. 內部部署代理程式會嘗試透過 AD DS SetPassword API 來設定密碼。 此步驟可讓您強制執行 AD DS 的內部部署密碼原則 (例如雲端中) 的複雜性、年齡、歷程記錄和篩選。
 * **訊息到期原則**
    * 如果訊息因內部部署服務已停止運作而停留在服務匯流排中，在數分鐘之後，它就會逾時而被移除。 讓訊息逾時並予以移除可更進一步提升安全性。
 
@@ -105,9 +105,9 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 在使用者提交密碼重設之後，重設要求會先經過數個加密步驟，然後才抵達您的內部部署環境。 這些加密步驟可確保提供最高的服務可靠性和安全性。 這些步驟的說明如下：
 
 1. **採用 2048 位元 RSA 金鑰的密碼加密**：在使用者提交要寫回到內部部署環境的密碼之後，所提交的密碼本身會以 2048 位元 RSA 金鑰加密。
-1. **採用 AES-GCM 的套件層級加密**：整個套件 (密碼 + 必要的中繼資料) 會以 AES-GCM 加密。 此加密可防止能夠直接存取基礎服務匯流排通道的任何人，都無法看到或篡改內容。
-1. **所有通訊都會透過 TLS/SSL 進行**：與服務匯流排的所有通訊都會在 SSL/TLS 通道中發生。 這個加密可保護內容，免於遭到未經授權的第三方存取。
-1. **每隔六個月自動變換金鑰**：所有金鑰都會每隔六個月，或每次在 Azure AD Connect 上停用密碼回寫，然後重新啟用，以確保最高的服務安全性和安全性。
+1. **採用 AES-GCM 的套件層級加密**：整個套件 (密碼 + 必要的中繼資料) 會以 AES-GCM 加密。 此加密可防止任何人直接存取基礎服務匯流排通道，使其無法對內容進行觀看或篡改。
+1. **所有通訊都會透過 TLS/SSL 進行**：所有與服務匯流排的通訊都發生在 SSL/TLS 通道中。 這個加密可保護內容，免於遭到未經授權的第三方存取。
+1. **每六個月自動變換金鑰**：所有金鑰會每6個月變換一次，或每次停用密碼回寫，然後在 Azure AD Connect 上重新啟用，以確保最高的服務安全性和安全性。
 
 ### <a name="password-writeback-bandwidth-usage"></a>密碼回寫頻寬使用量
 
@@ -140,7 +140,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
    * 任何系統管理員自助式強制變更密碼作業 (例如密碼到期)。
    * 任何源自[密碼重設入口網站](https://passwordreset.microsoftonline.com)的系統管理員自助式密碼重設。
    * 系統管理員從 [Azure 入口網站](https://portal.azure.com)起始的任何終端使用者密碼重設。
-   * 系統管理員從 [Microsoft Graph API Beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http) 起始的任何終端使用者密碼重設。
+   * 系統管理員從 [Microsoft Graph API Beta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta) 起始的任何終端使用者密碼重設。
 
 ## <a name="unsupported-writeback-operations"></a>不支援的回寫作業
 
@@ -149,7 +149,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 * **不支援的使用者作業**
    * 任何由終端使用者使用 PowerShell 第 1 版、第 2 版或 Microsoft Graph API 來進行的自有密碼重設。
 * **不支援的系統管理員作業**
-   * 任何由系統管理員從 PowerShell 第 1 版、第 2 版或 Microsoft Graph API 起始的終端使用者密碼重設 (支援 [Microsoft Graph API 搶鮮版 (Beta)](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http))。
+   * 任何由系統管理員從 PowerShell 第 1 版、第 2 版或 Microsoft Graph API 起始的終端使用者密碼重設 (支援 [Microsoft Graph API 搶鮮版 (Beta)](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta))。
    * 系統管理員從 [Microsoft 365 系統管理中心](https://admin.microsoft.com)起始的任何終端使用者密碼重設。
    * 任何系統管理員都無法使用密碼重設工具來重設自己的密碼以進行密碼回寫。
 
@@ -161,4 +161,4 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 若要開始使用 SSPR 回寫，請完成下列教學課程：
 
 > [!div class="nextstepaction"]
-> [教學課程：啟用自助式密碼重設 (SSPR) 回寫](tutorial-enable-writeback.md)
+> [教學課程：啟用自助式密碼重設 (SSPR) 回寫](./tutorial-enable-sspr-writeback.md)

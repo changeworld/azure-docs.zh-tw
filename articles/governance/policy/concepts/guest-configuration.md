@@ -3,12 +3,12 @@ title: 了解如何稽核虛擬機器的內容
 description: 了解 Azure 原則如何使用「來賓設定」代理程式來稽核虛擬機器內的設定。
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 21034aaae42aa4abfa6848ce22db5fa4c21a11ce
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: af913a6bb1fb7c871a7f6740a0fb2d66efa3f712
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685760"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717571"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -70,7 +70,7 @@ Azure 原則的「來賓設定」原則目前只會稽核機器內的設定。
 |Microsoft|Windows 用戶端|Windows 10|
 |OpenLogic|CentOS|7.3 和更新版本|
 |Red Hat|Red Hat Enterprise Linux|7.4-7。8|
-|Suse|SLES|12 SP3 和更新版本|
+|Suse|SLES|12 SP3-SP5|
 
 只要自訂虛擬機器映像是上表中的其中一個作業系統，「來賓設定」原則就會提供支援。
 
@@ -95,6 +95,11 @@ Azure Arc 的機器會使用內部部署網路基礎結構進行連線，以連�
 位於 Azure 外部且由 Azure Arc 連接的節點需要連線至「來賓設定」服務。 [Azure Arc 檔](../../../azure-arc/servers/overview.md)中提供的網路和 proxy 需求的詳細資料。
 
 若要與 Azure 中的「來賓設定」資源提供者通訊，機器需要在連接埠 **443** 上對 Azure 資料中心進行輸出存取。 如果 Azure 中的網路不允許輸出流量，請使用[網路安全性群組](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)規則來設定例外狀況。 [服務標籤](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" 可用於參照「來賓設定」服務。
+
+針對私人資料中心內的 Arc 連線伺服器，請使用下列模式來允許流量：
+
+- 連接埠︰只需要 TCP 443，即可存取輸出網際網路
+- 全域 URL： `*.guestconfiguration.azure.com`
 
 ## <a name="managed-identity-requirements"></a>受控識別需求
 
@@ -139,9 +144,12 @@ Azure 原則中的一項計畫可讓您依照「基準」來稽核作業系統�
 
 #### <a name="applying-configurations-using-guest-configuration"></a>使用「來賓設定」套用設定
 
-Azure 原則的最新功能會設定機器內的設定。 _Configure the time zone on Windows machines_ 這項定義會藉由設定時區來變更電腦。
+只有定義會 _設定 Windows 電腦上的時區_ ，藉由設定時區來變更電腦。 不支援在機器內部設定設定的自訂原則定義。
 
 指派以 _Configure_ 開頭的定義時，您也必須指派 _Deploy prerequisites to enable Guest Configuration Policy on Windows VMs_ 這項定義。 如果您想要，可以將這些定義合併在計畫中。
+
+> [!NOTE]
+> 內建的時區原則是唯一支援在機器內部設定設定的定義，以及不支援在機器內設定設定的自訂原則。
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>將原則指派給 Azure 外部的機器
 

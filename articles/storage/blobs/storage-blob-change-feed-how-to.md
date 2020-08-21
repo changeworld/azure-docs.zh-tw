@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: dedf1174e00f5bb75822fb720a592af86121ec2d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: baed9ef099ed818fa0967c7a3e7ab61fb4921f75
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691423"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719303"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Azure Blob 儲存體 (Preview 中處理變更摘要) 
 
@@ -22,15 +22,16 @@ ms.locfileid: "88691423"
 若要深入瞭解變更摘要，請參閱 [Azure Blob 儲存體 (Preview) 的變更 ](storage-blob-change-feed.md)摘要。
 
 > [!NOTE]
-> 變更摘要處於公開預覽狀態，可在 **westcentralus** 和 **westus2** 區域中使用。 若要深入瞭解這項功能以及已知問題和限制，請參閱 [Azure Blob 儲存體中的變更摘要支援](storage-blob-change-feed.md)。 變更摘要處理器程式庫可能會在現在與此程式庫正式推出時進行變更。
+> 變更摘要處於公開預覽狀態，可在有限區域中使用。 若要深入瞭解這項功能以及已知問題和限制，請參閱 [Azure Blob 儲存體中的變更摘要支援](storage-blob-change-feed.md)。 變更摘要處理器程式庫可能會在現在與此程式庫正式推出時進行變更。
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>取得 blob 變更摘要處理器程式庫
 
 1. 開啟命令視窗 (例如： Windows PowerShell) 。
-2. 從您的專案目錄中，安裝 **Changefeed** NuGet 套件。
+2. 從您的專案目錄中，安裝[ **Changefeed** NuGet 套件](https://www.nuget.org/packages/Azure.Storage.Blobs.ChangeFeed/)。
 
 ```console
-dotnet add package Azure.Storage.Blobs.ChangeFeed --source https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json --version 12.0.0-dev.20200604.2
+dotnet add package Azure.Storage.Blobs --version 12.5.1
+dotnet add package Azure.Storage.Blobs.ChangeFeed --version 12.0.0-preview.4
 ```
 ## <a name="read-records"></a>讀取記錄
 
@@ -117,7 +118,7 @@ public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCurso
 
 ## <a name="stream-processing-of-records"></a>記錄的串流處理
 
-您可以選擇在資料抵達時處理變更摘要記錄。 請參閱 [規格](storage-blob-change-feed.md#specifications)。 建議您每小時輪詢一次變更。
+您可以選擇在認可變更摘要時處理變更摘要記錄。 請參閱 [規格](storage-blob-change-feed.md#specifications)。 變更事件會以平均的間隔在60秒發行至變更摘要。 建議您在指定輪詢間隔時，輪詢這段期間的新變更。
 
 此範例會定期輪詢變更。  如果有變更記錄存在，此程式碼會處理這些記錄，並儲存變更摘要資料指標。 如此一來，如果進程停止後再重新開機，則應用程式可以使用資料指標來繼續進行最後一次中斷的處理記錄。 此範例會將資料指標儲存至本機應用程式佈建檔，但您的應用程式可以將它儲存為最適合您案例的任何形式。 
 
@@ -181,7 +182,7 @@ public void SaveCursor(string cursor)
 
 ## <a name="reading-records-within-a-time-range"></a>讀取時間範圍內的記錄
 
-您可以讀取落在特定時間範圍內的記錄。 此範例會逐一查看變更摘要中的所有記錄，這些記錄會在3:00 年3月的下午，和 2 2017 年 10 7 2019 月2:00，將其新增至清單，然後將該清單傳回給呼叫者。
+您可以讀取落在特定時間範圍內的記錄。 此範例會逐一查看變更摘要中的所有記錄，這些記錄會在3:00 年 3 2 2020 月的下午，2:00 以及上午 7 2020 8：00，將其新增至清單，然後將該清單傳回給呼叫者。
 
 ### <a name="selecting-segments-for-a-time-range"></a>選取時間範圍的區段
 
@@ -198,8 +199,8 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
     // Create the start and end time.  The change feed client will round start time down to
     // the nearest hour, and round endTime up to the next hour if you provide DateTimeOffsets
     // with minutes and seconds.
-    DateTimeOffset startTime = new DateTimeOffset(2017, 3, 2, 15, 0, 0, TimeSpan.Zero);
-    DateTimeOffset endTime = new DateTimeOffset(2020, 10, 7, 2, 0, 0, TimeSpan.Zero);
+    DateTimeOffset startTime = new DateTimeOffset(2020, 3, 2, 15, 0, 0, TimeSpan.Zero);
+    DateTimeOffset endTime = new DateTimeOffset(2020, 8, 7, 2, 0, 0, TimeSpan.Zero);
 
     // You can also provide just a start or end time.
     await foreach (BlobChangeFeedEvent changeFeedEvent in changeFeedClient.GetChangesAsync(

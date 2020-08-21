@@ -5,12 +5,12 @@ author: spelluru
 ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: ef469eb74c3dd7d82dec908dba8c53136df206e4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4f3b67794d1a7f3935c79c70f18b8bd4a1e0d7ef
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423417"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716617"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>允許透過私人端點存取 Azure 服務匯流排命名空間
 
@@ -46,7 +46,7 @@ Azure Private Link 服務可供透過虛擬網路中的**私人端點**存取 Az
 
 - 服務匯流排命名空間。
 - Azure 虛擬網路。
-- 虛擬網路中的子網路。 您可以使用**預設**子網。 
+- 虛擬網路中的子網路。 您可以使用 **預設** 子網。 
 - 服務匯流排命名空間和虛擬網路的擁有者或參與者權限。
 
 您的私人端點和虛擬網路必須位於相同區域。 當您使用入口網站選取私人端點的區域時，其只會自動篩選該區域中的虛擬網路。 服務匯流排命名空間可位於不同區域。 此外，私人端點會使用虛擬網路中的私人 IP 位址。
@@ -58,19 +58,19 @@ Azure Private Link 服務可供透過虛擬網路中的**私人端點**存取 Az
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 2. 在搜尋列中，鍵入 [服務匯流排]。
 3. 從清單中選取想要新增私人端點的**命名空間**。
-2. 在左側功能表上，選取 [**設定**] 底下的 [**網路**] 選項。 
+2. 在左側功能表中，選取 [**設定**] 下的 [**網路**功能] 選項。 
 
     > [!NOTE]
-    > 您只會看到**premium**命名空間的 [**網路**功能] 索引標籤。  
+    > 您只會看到**premium**命名空間的 [**網路**] 索引標籤。  
     
-    預設會選取 [**選取的網路**] 選項。 如果您未在此頁面上新增至少一個 IP 防火牆規則或虛擬網路，則可透過公用網際網路存取命名空間（使用存取金鑰）。
+    預設會選取 [ **選取的網路** ] 選項。 如果您未在此頁面上新增至少一個 IP 防火牆規則或虛擬網路，可以使用存取金鑰) ，透過公用網際網路 (存取命名空間。
 
-    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="網路頁面-預設" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="網路頁面-預設值" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
-    如果您選取 [**所有網路**] 選項，您的服務匯流排命名空間會接受來自任何 IP 位址的連接（使用存取金鑰）。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
+    如果您選取 [ **所有網路** ] 選項，則您的服務匯流排命名空間會接受來自任何 IP 位址的連線， (使用存取金鑰) 。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
 
     ![防火牆 - 已選取 [所有網路] 選項](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
-5. 若要允許透過私人端點存取命名空間，請選取頁面頂端的 [**私人端點連接**] 索引標籤
+5. 若要允許透過私人端點存取命名空間，請選取頁面頂端的 [ **私人端點連接** ] 索引標籤
 6. 選取頁面頂端的 [+ 私人端點] 按鈕。
 
     ![新增私人端點按鈕](./media/private-link-service/private-link-service-3.png)
@@ -227,14 +227,14 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 1. 若要移除私人端點連線，請在清單中加以選取，然後選取工具列上的 [移除]。 
 
     ![[移除] 按鈕](./media/private-link-service/remove-endpoint.png)
-2. 在 [刪除連線] 頁面上，選取 [是] 以確認刪除私人端點。 如果選取 [否]，則不會發生任何事。 
+2. 在 [刪除連線] 頁面上，選取 [是] 以確認刪除私人端點。 如果您選取 [否]，則不會發生任何事。 
 
     ![[刪除連線] 頁面](./media/private-link-service/delete-connection-page.png)
 3. 您應該會看見狀態變更為 [已中斷連線]。 然後，您將會看見端點從清單中消失。 
 
 ## <a name="validate-that-the-private-link-connection-works"></a>驗證私人連結連線是否正常運作
 
-您應該驗證私人端點資源相同子網路內的資源是否正透過私人 IP 位址連線到服務匯流排命名空間，且其具有正確的私人 DNS 區域整合。
+您應驗證私人端點的虛擬網路內的資源是透過私人 IP 位址連線到您的服務匯流排命名空間，而且它們具有正確的私人 DNS 區域整合。
 
 首先，依照[在 Azure 入口網站中建立 Windows 虛擬機器](../virtual-machines/windows/quick-create-portal.md)中的步驟，建立虛擬機器。
 

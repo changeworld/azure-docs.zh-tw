@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 08/11/2020
-ms.openlocfilehash: a53ac9387664aafc218f13834e0499fde417d87d
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.date: 08/20/2020
+ms.openlocfilehash: 883eede5296f3f280bf30c9a459c02a9243f9081
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566075"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719524"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure Logic Apps 中保護存取和資料
 
@@ -725,7 +725,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 * 將驗證新增至輸出要求。
 
-  當您使用以 HTTP 為基礎的觸發程序或動作來發出輸出呼叫時，例如 HTTP、HTTP + Swagger 或 Webhook，您可以將驗證新增至邏輯應用程式所傳送的要求。 例如，您可以選取下列驗證類型：
+  當您使用以 HTTP 為基礎的觸發程式或動作（例如，HTTP）時，您可以將驗證新增至您的邏輯應用程式所傳送的要求。 例如，您可以選取下列驗證類型：
 
   * [基本驗證](#basic-authentication)
 
@@ -792,7 +792,7 @@ HTTP 和 HTTPS 端點支援各種類型的驗證。 在您用來將輸出呼叫�
 | [用戶端憑證](#client-certificate-authentication) | Azure API 管理、Azure App Service、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API 管理、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
 | [原始](#raw-authentication) | Azure API 管理、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
-| [受控身分識別](#managed-identity-authentication) | Azure API 管理、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
+| [受控身分識別](#managed-identity-authentication) | Azure API 管理，Azure App 服務，Azure Functions，HTTP |
 |||
 
 <a name="basic-authentication"></a>

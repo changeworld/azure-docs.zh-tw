@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a56f7248d5782b63befc55c4215360e0f5cb52b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9f59c7bb9b3977bdff7e3fd1ab78ed6fa2e412
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338561"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717739"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>規劃 Azure Active Directory 自助式密碼重設部署
 
@@ -30,7 +30,7 @@ ms.locfileid: "84338561"
 SSPR 具有下列重要功能：
 
 * 自助式服務可讓使用者重設其過期或未過期的密碼，而不需要連絡系統管理員或技術服務人員以尋求支援。
-* [密碼回寫](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback) \(部分機器翻譯\) 能允許透過雲端管理內部部署密碼及解決帳戶鎖定。
+* [密碼回寫](./concept-sspr-writeback.md) \(部分機器翻譯\) 能允許透過雲端管理內部部署密碼及解決帳戶鎖定。
 * 密碼管理活動報告能讓系統管理員針對其組織中所發生的密碼重設和註冊活動獲得見解。
 
 此部署指南會說明如何規劃及測試 SSPR 推出。
@@ -42,7 +42,7 @@ SSPR 具有下列重要功能：
 
 ## <a name="learn-about-sspr"></a>了解 SSPR
 
-深入了解 SSPR。 請參閱[運作方式：Azure AD 自助式密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)。
+深入了解 SSPR。 請參閱[運作方式：Azure AD 自助式密碼重設](./concept-sspr-howitworks.md)。
 
 ### <a name="key-benefits"></a>主要權益
 
@@ -60,7 +60,7 @@ SSPR 具有下列重要功能：
 
 Azure Active Directory 是依使用者授權，這表示每個使用者針對其使用的功能都需要適當的授權。 我們建議針對 SSPR 使用以群組為基礎的授權。 
 
-若要比較版本和功能，以及啟用以群組或使用者為基礎的授權，請參閱[Azure AD 自助式密碼重設的授權需求](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-licensing) \(部分機器翻譯\)。
+若要比較版本和功能，以及啟用以群組或使用者為基礎的授權，請參閱[Azure AD 自助式密碼重設的授權需求](./concept-sspr-licensing.md) \(部分機器翻譯\)。
 
 如需定價的詳細資訊，請參閱 [Azure Active Directory 定價](https://azure.microsoft.com/pricing/details/active-directory/)。
 
@@ -83,10 +83,10 @@ Azure Active Directory 是依使用者授權，這表示每個使用者針對其
 | 線上課程|[在 Microsoft Azure Active Directory 中管理身分識別](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) \(英文\) 使用 SSPR 來賦予使用者現代化的受保護體驗。 請特別參閱＜[管理 Azure Active Directory 使用者和群組](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents)＞課程模組。 |
 |Pluralsight 付費課程 |[身分識別與存取管理的問題](https://www.pluralsight.com/courses/identity-access-management-issues) \(英文\) 深入了解您組織中應該注意的 IAM 與全性問題。 請特別參閱＜其他驗證方法＞課程模組。|
 | |[開始使用 Microsoft Enterprise Mobility Suite](https://www.pluralsight.com/courses/microsoft-enterprise-mobility-suite-getting-started) \(英文\) 了解以能提供驗證、授權、加密及安全行動裝置體驗的方式，將內部部署資產擴充到雲端的最佳做法。 請特別參閱＜設定 Microsoft Azure Active Directory Premium 的進階功能＞課程模組。
-|教學課程 |[完成 Azure AD 自助式密碼重設試驗推出](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) |
-| |[啟用密碼回寫](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback) |
-| |[從 Windows 10 的登入畫面重設 Azure AD 密碼](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows) \(部分機器翻譯\) |
-| 常見問題集|[密碼管理常見問題集](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) \(部分機器翻譯\) |
+|教學課程 |[完成 Azure AD 自助式密碼重設試驗推出](./tutorial-enable-sspr.md) |
+| |[啟用密碼回寫](./tutorial-enable-sspr-writeback.md) |
+| |[從 Windows 10 的登入畫面重設 Azure AD 密碼](./howto-sspr-windows.md) \(部分機器翻譯\) |
+| 常見問題集|[密碼管理常見問題集](./active-directory-passwords-faq.md) \(部分機器翻譯\) |
 
 
 ### <a name="solution-architecture"></a>方案架構
@@ -103,7 +103,7 @@ Azure Active Directory 是依使用者授權，這表示每個使用者針對其
 
 * 針對混合式使用者，SSPR 會透過 Azure AD Connect 服務將密碼回寫至內部部署 Active Directory。 
 
-注意:針對已停用[密碼雜湊同步處理 (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) 的使用者，SSPR 僅會將密碼儲存在內部部署 Active Directory。
+注意:針對已停用[密碼雜湊同步處理 (PHS)](../hybrid/whatis-phs.md) 的使用者，SSPR 僅會將密碼儲存在內部部署 Active Directory。
 
 ### <a name="best-practices"></a>最佳作法
 
@@ -141,9 +141,9 @@ Microsoft 建議組織針對 SSPR 和多重要素驗證啟用合併註冊體驗�
 
 ### <a name="plan-a-pilot"></a>規劃試驗
 
-我們建議在測試環境中進行 SSPR 的初始設定。 為組織中的使用者子集啟用 SSPR 來先以試驗群組執行。 請參閱[試驗的最佳做法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans) \(部分機器翻譯\)。
+我們建議在測試環境中進行 SSPR 的初始設定。 為組織中的使用者子集啟用 SSPR 來先以試驗群組執行。 請參閱[試驗的最佳做法](../fundamentals/active-directory-deployment-plans.md) \(部分機器翻譯\)。
 
-若要建立群組，請參閱如何[在 Azure Active Directory 中建立群組和新增成員](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal)。 
+若要建立群組，請參閱如何[在 Azure Active Directory 中建立群組和新增成員](../fundamentals/active-directory-groups-create-azure-portal.md)。 
 
 ## <a name="plan-configuration"></a>規劃設定
 
@@ -172,7 +172,7 @@ Microsoft 建議組織針對 SSPR 和多重要素驗證啟用合併註冊體驗�
 
 ### <a name="authentication-methods"></a>驗證方法
 
-啟用 SSPR 時，使用者只有在於系統管理員已啟用的驗證方法中有資料存在時，才能夠重設其密碼。 方法包括電話、Authenticator 應用程式通知、安全性問題等。如需詳細資訊，請參閱[什麼是驗證方法？](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods) \(部分機器翻譯\)。
+啟用 SSPR 時，使用者只有在於系統管理員已啟用的驗證方法中有資料存在時，才能夠重設其密碼。 方法包括電話、Authenticator 應用程式通知、安全性問題等。如需詳細資訊，請參閱[什麼是驗證方法？](./concept-authentication-methods.md) \(部分機器翻譯\)。
 
 建議使用下列驗證方法設定：
 
@@ -180,7 +180,7 @@ Microsoft 建議組織針對 SSPR 和多重要素驗證啟用合併註冊體驗�
 
 * 將 [需要重設的方法數] 設定為適合您組織的層級。 設定為一種會產生最少的摩擦，而兩種則可能會增加您的安全性狀態。 
 
-注意:使用者必須具有在 [Azure Active Directory 中的密碼原則和限制](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy) \(部分機器翻譯\) 中所設定的驗證方法。
+注意:使用者必須具有在 [Azure Active Directory 中的密碼原則和限制](./concept-sspr-policy.md) \(部分機器翻譯\) 中所設定的驗證方法。
 
 ### <a name="registration-settings"></a>註冊設定
 
@@ -196,11 +196,11 @@ Microsoft 建議組織針對 SSPR 和多重要素驗證啟用合併註冊體驗�
 
 請務必自訂技術服務人員電子郵件或 URL，以確保遇到問題的使用者可以立即取得協助。 將此選項設定為您使用者熟悉的常用技術服務人員電子郵件地址或網頁。 
 
-如需詳細資訊，請參閱[自訂 Azure AD 的自助式密碼重設功能](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization) \(部分機器翻譯\)。
+如需詳細資訊，請參閱[自訂 Azure AD 的自助式密碼重設功能](./howto-sspr-customization.md) \(部分機器翻譯\)。
 
 ### <a name="password-writeback"></a>密碼回寫
 
-**密碼回寫**是透過 [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity) 啟用，並會將雲端中的密碼重設即時回寫至現有內部部署目錄。 如需詳細資訊，請參閱[什麼是密碼回寫？](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback) \(部分機器翻譯\)
+**密碼回寫**是透過 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) 啟用，並會將雲端中的密碼重設即時回寫至現有內部部署目錄。 如需詳細資訊，請參閱[什麼是密碼回寫？](./concept-sspr-writeback.md) \(部分機器翻譯\)
 
 建議使用下列設定：
 
@@ -220,7 +220,7 @@ Microsoft 建議組織針對 SSPR 和多重要素驗證啟用合併註冊體驗�
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>具有多個身分識別管理系統的環境
 
-某些環境具有多個身分識別管理系統。 內部部署身分識別管理員 (例如 Oracle AM 和 SiteMinder) 需要與 AD 同步以取得密碼。 您可以搭配 Microsoft Identity Manager (MIM) 使用如密碼變更通知服務 (PCNS) 的工具來執行此動作。 若要尋找這種更加複雜案例的相關資訊，請參閱[在網域控制站上部署 MIM 密碼變更通知服務](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)一文。
+某些環境具有多個身分識別管理系統。 內部部署身分識別管理員 (例如 Oracle AM 和 SiteMinder) 需要與 AD 同步以取得密碼。 您可以搭配 Microsoft Identity Manager (MIM) 使用如密碼變更通知服務 (PCNS) 的工具來執行此動作。 若要尋找這種更加複雜案例的相關資訊，請參閱[在網域控制站上部署 MIM 密碼變更通知服務](/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)一文。
 
 ## <a name="plan-testing-and-support"></a>規劃測試與支援
 
@@ -228,7 +228,7 @@ Microsoft 建議組織針對 SSPR 和多重要素驗證啟用合併註冊體驗�
 
 ### <a name="plan-testing"></a>規劃測試
 
-若要確保您的部署會如預期般運作，請規劃一組測試案例以驗證實作。 若要評定測試案例，您需要具有密碼的非系統管理員測試使用者。 如果您需要建立使用者，請參閱[將新的使用者新增至 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory) \(部分機器翻譯\)。
+若要確保您的部署會如預期般運作，請規劃一組測試案例以驗證實作。 若要評定測試案例，您需要具有密碼的非系統管理員測試使用者。 如果您需要建立使用者，請參閱[將新的使用者新增至 Azure Active Directory](../fundamentals/add-users-azure-active-directory.md) \(部分機器翻譯\)。
 
 下表包含實用的測試案例，可讓您用來根據您的原則記錄組織預期的結果。
 <br>
@@ -246,7 +246,7 @@ Microsoft 建議組織針對 SSPR 和多重要素驗證啟用合併註冊體驗�
 | 從 Windows 10 已使用 Azure AD 或混合式 Azure AD 而聯結的裝置鎖定畫面重設使用者密碼| 使用者可以重設密碼 |
 | SSPR 註冊和使用狀況資料會以近乎即時的方式提供給系統管理員| 會透過稽核記錄提供 |
 
-您也可以參閱[完成 Azure AD 自助式密碼重設試驗推出](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot)。 在此教學課程中，您將在組織中啟用 SSPR 的試驗推出，並使用非系統管理員帳戶進行測試。
+您也可以參閱[完成 Azure AD 自助式密碼重設試驗推出](./tutorial-enable-sspr.md)。 在此教學課程中，您將在組織中啟用 SSPR 的試驗推出，並使用非系統管理員帳戶進行測試。
 
 ### <a name="plan-support"></a>規劃支援
 
@@ -289,20 +289,20 @@ Microsoft 建議組織針對 SSPR 和多重要素驗證啟用合併註冊體驗�
 
 **您現在已經準備好部署 SSPR！**
 
-請參閱[啟用自助式密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot#enable-self-service-password-reset)以取得設定下列領域的完整逐步指示。
+請參閱[啟用自助式密碼重設](./tutorial-enable-sspr.md#enable-self-service-password-reset)以取得設定下列領域的完整逐步指示。
 
-1. [驗證方法](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)
+1. [驗證方法](./concept-authentication-methods.md)
 
-1. [註冊設定](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined) \(部分機器翻譯\)
+1. [註冊設定](./concept-registration-mfa-sspr-combined.md) \(部分機器翻譯\)
 
 1. [通知設定](#notifications-settings)
 
-1. [自訂設定](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization) \(部分機器翻譯\)
+1. [自訂設定](./howto-sspr-customization.md) \(部分機器翻譯\)
 
-1. [內部部署整合](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback)
+1. [內部部署整合](./tutorial-enable-sspr-writeback.md)
 
 ### <a name="enable-sspr-in-windows"></a>在 Windows 中啟用 SSPR
-針對執行 Windows 7、8、8.1 及 10 的電腦，您可以[讓使用者在 Windows 登入畫面重設其密碼](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows) \(部分機器翻譯\)
+針對執行 Windows 7、8、8.1 及 10 的電腦，您可以[讓使用者在 Windows 登入畫面重設其密碼](./howto-sspr-windows.md) \(部分機器翻譯\)
 
 ## <a name="manage-sspr"></a>管理 SSPR
 
@@ -310,41 +310,41 @@ Azure AD 可以透過稽核和報告來提供 SSPR 效能的額外資訊。
 
 ### <a name="password-management-activity-reports"></a>密碼管理活動報告 
 
-您可以在 Azure 入口網站上使用預先建置的報告來測量 SSPR 效能。 如果您已適當地取得授權，則也可以建立自訂查詢。 如需詳細資訊，請參閱[Azure AD 密碼管理的報告選項](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) \(部分機器翻譯\)
+您可以在 Azure 入口網站上使用預先建置的報告來測量 SSPR 效能。 如果您已適當地取得授權，則也可以建立自訂查詢。 如需詳細資訊，請參閱[Azure AD 密碼管理的報告選項](./howto-sspr-reporting.md) \(部分機器翻譯\)
 
 > [!NOTE]
->  您必須是[全域管理員](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) \(部分機器翻譯\)，且您必須選擇加入以讓系統針對您的組織收集此資料。 若要選擇加入，您必須瀏覽 Azure 入口網站上的 [報告] 索引標籤或稽核記錄至少一次。 在那之前，系統並不會針對您的組織收集該資料。
+>  您必須是[全域管理員](../users-groups-roles/directory-assign-admin-roles.md) \(部分機器翻譯\)，且您必須選擇加入以讓系統針對您的組織收集此資料。 若要選擇加入，您必須瀏覽 Azure 入口網站上的 [報告] 索引標籤或稽核記錄至少一次。 在那之前，系統並不會針對您的組織收集該資料。
 
-針對註冊和密碼重設的稽核記錄會可供使用 30 天。 如果您公司內的安全性稽核要求更長的保留期，便必須將該記錄匯出並使用 [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-active-directory)、Splunk 或 ArcSight 之類的 SIEM 工具加以取用。
+針對註冊和密碼重設的稽核記錄會可供使用 30 天。 如果您公司內的安全性稽核要求更長的保留期，便必須將該記錄匯出並使用 [Azure Sentinel](../../sentinel/connect-azure-active-directory.md)、Splunk 或 ArcSight 之類的 SIEM 工具加以取用。
 
 ![SSPR 報告螢幕擷取畫面](./media/howto-sspr-deployment/sspr-reporting.png)
 
 ### <a name="authentication-methods--usage-and-insights"></a>驗證方法 - 使用量和見解
 
-[使用量和見解](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-methods-usage-insights) \(部分機器翻譯\) 可讓您了解 Azure MFA 和 SSPR 等功能的驗證方法在您組織中的運作情況。 此報告功能可讓您的組織了解要註冊的方法及其使用方式。
+[使用量和見解](./howto-authentication-methods-usage-insights.md) \(部分機器翻譯\) 可讓您了解 Azure MFA 和 SSPR 等功能的驗證方法在您組織中的運作情況。 此報告功能可讓您的組織了解要註冊的方法及其使用方式。
 
 ### <a name="troubleshoot"></a>疑難排解
 
-* 請參閱[針對自助式密碼重設進行疑難排解](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-troubleshoot) \(部分機器翻譯\) 
+* 請參閱[針對自助式密碼重設進行疑難排解](./active-directory-passwords-troubleshoot.md) \(部分機器翻譯\) 
 
-* 請遵循[密碼管理常見問題集](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) \(部分機器翻譯\) 
+* 請遵循[密碼管理常見問題集](./active-directory-passwords-faq.md) \(部分機器翻譯\) 
 
 ### <a name="helpful-documentation"></a>實用的文件
 
-* [驗證方法有哪些？](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)
+* [驗證方法有哪些？](./concept-authentication-methods.md)
 
-* [運作方式：Azure AD 自助式密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) \(部分機器翻譯\)
+* [運作方式：Azure AD 自助式密碼重設](./concept-sspr-howitworks.md) \(部分機器翻譯\)
 
-* [自訂 Azure AD 的自助式密碼重設功能](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization) \(部分機器翻譯\)
+* [自訂 Azure AD 的自助式密碼重設功能](./howto-sspr-customization.md) \(部分機器翻譯\)
 
-* [Azure Active Directory 中的密碼原則和限制](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)
+* [Azure Active Directory 中的密碼原則和限制](./concept-sspr-policy.md)
 
-* [什麼是密碼回寫？](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)
+* [什麼是密碼回寫？](./concept-sspr-writeback.md)
 
 ## <a name="next-steps"></a>後續步驟
 
 * 若要開始部署 SSPR，請參閱[啟用 Azure AD 自助式密碼重設](tutorial-enable-sspr.md)
 
-* [考慮實作 Azure AD 密碼保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad) \(部分機器翻譯\)
+* [考慮實作 Azure AD 密碼保護](./concept-password-ban-bad.md) \(部分機器翻譯\)
 
-* [考慮實作 Azure AD 智慧鎖定](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout) \(部分機器翻譯\)
+* [考慮實作 Azure AD 智慧鎖定](./howto-password-smart-lockout.md) \(部分機器翻譯\)

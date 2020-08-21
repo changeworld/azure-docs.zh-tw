@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 5748f758d8ac2f1723a20858920a4f261c07f938
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: a1ef0e9fe3805f1c6d4d1000a9ea70accc64f4d2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608757"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718691"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>針對無代理程式 VMware VM 遷移中的複寫問題進行疑難排解
 
@@ -59,7 +59,7 @@ ms.locfileid: "88608757"
 
    2.  開啟 Microsoft 服務 MMC 嵌入式管理單元 (執行 > services.msc) ，然後檢查「Microsoft Azure 閘道服務」是否正在執行。 如果服務已停止或未執行，請啟動服務。 或者，您可以開啟命令提示字元或 PowerShell，並執行： "Net Start asrgwy"
 
-3. 檢查 Azure Migrate 設備和快取儲存體帳戶之間的連線能力問題： 
+3. 檢查 Azure Migrate 設備和設備儲存體帳戶之間的連線能力問題： 
 
     在 Azure Migrate 設備中下載 azcopy 之後，請執行下列命令：
     
@@ -149,7 +149,7 @@ ms.locfileid: "88608757"
     
       1. [下載](https://go.microsoft.com/fwlink/?linkid=2138966) azcopy
         
-      2. 在資源群組中尋找設備儲存體帳戶。 儲存體帳戶的名稱類似 migrategwsa \* \* \* \* \* \* \* \* \* \* 。 這是上述命令中參數 [account] 的值。
+      2. 在資源群組中尋找設備儲存體帳戶。 儲存體帳戶的名稱類似 migratelsa \* \* \* \* \* \* \* \* \* \* 。 這是上述命令中參數 [account] 的值。
         
       3. 在 Azure 入口網站中搜尋您的儲存體帳戶。 確定您用來搜尋的訂用帳戶，與建立儲存體帳戶 (目標訂用帳戶) 的訂用帳戶相同。 移至 [Blob 服務] 區段中的 [容器]。 按一下 [+ 容器] 並建立容器。 將 [公用存取層級] 保留為預設選取的值。
         
@@ -226,7 +226,7 @@ _錯誤訊息：發生內部錯誤。[錯誤訊息]_
 
 下一節列出一些常見的 VMware 錯誤，以及您可以如何緩和這些錯誤。
 
-## <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>錯誤訊息：發生內部錯誤。 [伺服器拒絕連接]
+### <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>錯誤訊息：發生內部錯誤。 [伺服器拒絕連接]
 
 問題是已知的 VMware 問題，發生在 VDDK 6.7 中。 您必須停止在 Azure Migrate 設備中執行的閘道服務、 [從 VMWARE KB 下載更新](https://go.microsoft.com/fwlink/?linkid=2138889)，然後重新開機閘道服務。
 
@@ -240,33 +240,33 @@ _錯誤訊息：發生內部錯誤。[錯誤訊息]_
 1. 按 Windows + R，開啟 services.msc。 以滑鼠右鍵按一下 [Microsoft Azure Gateway Service]，然後啟動它。
 2. 或者，您可以開啟命令提示字元或 PowerShell，然後執行： Net Start asrgwy。
 
-## <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>錯誤訊息：發生內部錯誤。 [偵測到不正確快照集設定。 ']
+### <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>錯誤訊息：發生內部錯誤。 [偵測到不正確快照集設定。 ']
 
 如果您有具有多個磁片的虛擬機器，如果您從虛擬機器移除磁片，可能會遇到此錯誤。 若要修復此問題，請參閱 [這篇 VMware 文章](https://go.microsoft.com/fwlink/?linkid=2138890)中的步驟。
 
-## <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>錯誤訊息：發生內部錯誤。 [產生快照集無反應]
+### <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>錯誤訊息：發生內部錯誤。 [產生快照集無反應]
 
 當快照集產生未完成時，就會發生此問題。 發生此問題時，您可以看到 [建立快照集工作停止于95% 或 99%]。 請參閱此 [VMWARE KB](https://go.microsoft.com/fwlink/?linkid=2138969) 以解決此問題。
 
-## <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>錯誤訊息：發生內部錯誤。 [無法合併 VM 上的磁片 _[原因]_]
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>錯誤訊息：發生內部錯誤。 [無法合併 VM 上的磁片 _[原因]_]
 
 當我們在複寫週期結束時合併磁片時，操作會失敗。 請選取適當的_原因_來解決問題，以遵循[VMware KB](https://go.microsoft.com/fwlink/?linkid=2138970)中的指示。
 
 當 VMware 快照集相關的作業-建立、刪除或合併磁片失敗時，會發生下列錯誤。 遵循下一節中的指導方針來補救錯誤：
 
-## <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>錯誤訊息：發生內部錯誤。 [另一個工作已經在進行中]
+### <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>錯誤訊息：發生內部錯誤。 [另一個工作已經在進行中]
 
 當有衝突的虛擬機器工作在背景中執行，或 vCenter Server 時間內的工作時，就會發生此問題。遵循下列 [VMWARE KB](https://go.microsoft.com/fwlink/?linkid=2138891)提供的解決方案。
 
-## <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>錯誤訊息：發生內部錯誤。 [在目前狀態中不允許操作]
+### <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>錯誤訊息：發生內部錯誤。 [在目前狀態中不允許操作]
 
 當 vCenter Server 管理代理程式停止運作時，就會發生此問題。 若要解決此問題，請參閱下列 [VMWARE KB](https://go.microsoft.com/fwlink/?linkid=2138971)的解決方案。
 
-## <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>錯誤訊息：發生內部錯誤。 [快照集磁片大小無效]
+### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>錯誤訊息：發生內部錯誤。 [快照集磁片大小無效]
 
 這是已知的 VMware 問題，由 snapshot 指出的磁片大小會變成零。 遵循 [VMWARE KB](https://go.microsoft.com/fwlink/?linkid=2138972)中提供的解決方案。
 
-## <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>錯誤訊息：發生內部錯誤。 [記憶體配置失敗。 記憶體不足。]
+### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>錯誤訊息：發生內部錯誤。 [記憶體配置失敗。 記憶體不足。]
 
 當 NFC 主機緩衝區記憶體不足時，就會發生這種情況。 若要解決此問題，您必須將 VM (compute vMotion) ，移至具有可用資源的不同主機。
 

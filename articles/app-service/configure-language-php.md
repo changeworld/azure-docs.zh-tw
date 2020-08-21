@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 440815d7d24cde9708c214bf407a2dd9206a1706
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: c510d6f1cc2aa4a7e71f64e0c296e14a9896614e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642039"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717977"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 PHP 應用程式
 
@@ -408,15 +408,15 @@ echo "expose_php = Off" >> ini/setting.ini
 
 若要啟用其他延伸模組，請依照下列步驟執行：
 
-將 `bin` 目錄新增至應用程式的根目錄，並在其中放入 `.so` 擴充功能檔案 (例如 *mongodb.so*)。 請確定擴充功能與 Azure 中的 PHP 版本相容，並且與 VC9 及非執行緒安全 (nts) 相容。
+將 `bin` 目錄新增至您應用程式的根目錄，並將擴充檔案放 `.dll` 在其中 (例如 *mongodb.dll*) 。 請確定擴充功能與 Azure 中的 PHP 版本相容，並且與 VC9 及非執行緒安全 (nts) 相容。
 
 部署您的變更。
 
 依照[自訂 PHP_INI_SYSTEM 指示詞](#customize-php_ini_system-directives)中的步驟，將擴充功能新增至使用 [extension](https://www.php.net/manual/ini.core.php#ini.extension) 或 [zend_extension](https://www.php.net/manual/ini.core.php#ini.zend-extension) 指示詞的自訂 *.ini* 檔案。
 
 ```
-extension=d:\home\site\wwwroot\bin\mongodb.so
-zend_extension=d:\home\site\wwwroot\bin\xdebug.so
+extension=d:\home\site\wwwroot\bin\mongodb.dll
+zend_extension=d:\home\site\wwwroot\bin\xdebug.dll
 ```
 
 如果要讓變更生效，請重新啟動應用程式。

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 703c08cd5a884c8bfdd027b4ecf457c9e954a2dc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dcec4d0bc93433c768faf10e4520131aeecc5e77
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043413"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719184"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>使用媒體服務 v3 API 開發
 
@@ -86,7 +86,7 @@ Azure 媒體服務 v3 資源名稱 (例如資產、作業、轉換) 會受到 Az
 
 Azure 媒體服務 [Swagger 檔案](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json)中以 `x-ms-long-running-operation` 標示的作業，是長期執行作業。 
 
-如需如何追蹤非同步 Azure 作業的詳細資訊，請參閱[非同步作業](../../azure-resource-manager/management/async-operations.md#monitor-status-of-operation)。
+如需如何追蹤非同步 Azure 作業的詳細資訊，請參閱[非同步作業](../../azure-resource-manager/management/async-operations.md)。
 
 媒體服務具有下列長期執行作業：
 

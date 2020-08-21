@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
-ms.date: 05/28/2020
-ms.openlocfilehash: 7a6a672cef42eb15cbd8f2f254207e0a9d96ee33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/13/2020
+ms.openlocfilehash: 5c3586e9ba405cb5a7338b8f7f22858a238b9271
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736198"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717246"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>可供 Azure HDInsight 使用的 Apache Hadoop 元件和版本
 
@@ -43,15 +43,15 @@ Azure HDInsight 支援多個可隨時部署的 Hadoop 叢集版本。 在 2017 �
 | Apache Storm           | -             | 1.1.0                       |
 | Apache Mahout          | -             | 0.9.0+                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2.4.4         | 2.3.2、2.2.0、2.1。0         |
-| Apache Livy            | 0.5           | 0.4、0.4、0.3               |
-| Apache Kafka           | 2.1.1         | 1.1                        |
+| Apache Spark           | 2.4.4         | 2.3.2.                      |
+| Apache Livy            | 0.5           | 0.4。                        |
+| Apache Kafka           | 2.1.1         | 1.1                         |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
-> HDInsight 4.0：完全支援 Spark 2.4 和 Kafka 2.1。 不過，未提供 Spark 2.3 和 Kafka 1.1 叢集類型的服務。 HDInsight 3.6：完全支援 Spark 2.3 和 Kafka 1.1。  
+> HDInsight 4.0：完全支援 Spark 2.4 和 Kafka 2.1。 但是，不會提供 Spark 2.3 和 Kafka 1.1 叢集類型。 HDInsight 3.6：完全支援 Spark 2.3 和 Kafka 1.1。  
 
 ## <a name="check-for-current-apache-component-version-information"></a>檢查目前的 Apache 元件版本資訊
 
@@ -78,12 +78,25 @@ Azure HDInsight 支援多個可隨時部署的 Hadoop 叢集版本。 在 2017 �
 | HDInsight 版本 | VM OS | 發行日期 | 支援到期日 | 停用日期 | 高可用性 |  Azure 入口網站中的可用性 |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |是 |是 |
-| HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | 2020 年 12 月 31 日 |2020 年 12 月 31 日 |是 |是 |
+| HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日      | * 2021 年6月31日 |2021年6月31日 |是 |是 |
 
-Spark 2.1、2.2 和 Kafka 1.0 叢集支援將于2020年6月30日到期。
+* 我們即將擴充特定 HDInsight 3.6 叢集類型的支援時間範圍
+
+| 叢集類型                    | Framework 版本 | 目前的支援到期日        | 新的支援到期日 |
+|---------------------------------|-------------------|-----------------------------------|-----------------------------|
+| HDInsight 3.6 Hadoop            | 2.7.3             | 2020年12月31日                      | 2021年6月30日               |
+| HDInsight 3.6 Spark             | 2.3               | 2020年12月31日                      | 2021年6月30日               |
+| HDInsight 3.6 Spark             | 2.2               | 于2020年6月30日淘汰          |                             |
+| HDInsight 3.6 Spark             | 2.1               | 于2020年6月30日淘汰          |                             |
+| HDInsight 3.6 Kafka             | 1.1               | 2020年12月31日                      | 2021年6月30日               |
+| HDInsight 3.6 Kafka             | 1.0               | 于2020年6月30日淘汰。         |                             |
+| HDInsight 3.6 HBase             | 1.1               | 2020年12月31日                      | 2021年6月30日               |
+| HDInsight 3.6 Interactive Query | 2.1               | 2020年12月31日                      | 2021年6月30日               |
+| HDInsight 3.6 風暴             | 1.1               | 2020年12月31日                      | 2021年6月30日               |
+| HDInsight 3.6 ML 服務      | 9.3               | 2020年12月31日                      | 2020年12月31日                |
 
 > [!NOTE]
-> 叢集版本的支援到期後，可能無法透過 Azure 入口網站使用。 在某些情況下，您可以使用 Windows PowerShell [new-azhdinsightcluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)命令中的**version**參數和 .net SDK 繼續取得叢集版本，直到版本停用日期為止。
+> 叢集版本的支援到期後，可能無法透過 Azure 入口網站使用。 在某些情況下，您可以使用 Windows PowerShell [>new-azhdinsightcluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)命令中的**version**參數和 .net SDK 來繼續使用叢集版本，直到版本停用日期為止。
 
 ### <a name="retired-versions"></a>已淘汰的版本
 

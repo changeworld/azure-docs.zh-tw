@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 13ed87903845d9f8295e56f187b643d73fbfb04e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507173"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717858"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 的網路原則伺服器擴充功能來整合您的 VPN 基礎結構與 Azure MFA
 
@@ -41,7 +41,7 @@ Azure 的網路原則伺服器 (NPS) 擴充功能可讓組織使用以雲端為�
 * 建立並強制執行網路存取保護 (NAP) 用戶端健康原則，以判斷要讓裝置不受限制還是受限制地存取網路資源。
 
 * 提供強制驗證和授權的方法，以供存取具有 802.1x 功能的無線存取點及乙太網路交換器。
-  如需詳細資訊，請參閱[網路原則伺服器](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)。
+  如需詳細資訊，請參閱[網路原則伺服器](/windows-server/networking/technologies/nps/nps-top)。
 
 為了加強安全性並提供高水準的合規性，組織可以整合 NPS 與 Azure Multi-Factor Authentication 來確保使用雙步驟驗證的使用者能夠連線到 VPN 伺服器上的虛擬連接埠。 使用者若要獲得存取權，就必須提供其使用者名稱和密碼的組合以及使用者所掌握的其他資訊。 這項資訊必須是受信任且無法輕易複製的。 可以是行動電話號碼、有線電話號碼或行動裝置上的應用程式。
 
@@ -94,7 +94,7 @@ Azure 的網路原則伺服器 (NPS) 擴充功能可讓組織使用以雲端為�
 
 網路原則與存取服務可提供 RADIUS 伺服器和用戶端功能。 本文假設您已在環境中的成員伺服器或網域控制站上安裝網路原則與存取服務角色。 在本指南中，您要設定 RADIUS 以進行 VPN 設定。 在伺服器「而非」VPN 伺服器上安裝網路原則與存取服務角色。
 
-如需有關安裝網路原則與存取服務角色服務 Windows Server 2012 或更新版本的資訊，請參閱[安裝 NAP 健康原則伺服器](https://technet.microsoft.com/library/dd296890.aspx) \(英文\)。 Windows Server 2016 已淘汰 NAP。 如需 NPS 最佳做法的說明 (包括在網域控制站上安裝 NPS 的建議)，請參閱 [NPS 的最佳做法](https://technet.microsoft.com/library/cc771746) \(英文\)。
+如需有關安裝網路原則與存取服務角色服務 Windows Server 2012 或更新版本的資訊，請參閱[安裝 NAP 健康原則伺服器](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10)) \(英文\)。 Windows Server 2016 已淘汰 NAP。 如需 NPS 最佳做法的說明 (包括在網域控制站上安裝 NPS 的建議)，請參閱 [NPS 的最佳做法](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10)) \(英文\)。
 
 ### <a name="azure-mfa-license"></a>Azure MFA 授權
 
@@ -446,13 +446,13 @@ Azure Multi-Factor Authentication 記錄中的相關事件顯示如下：
 
 ![Azure Multi-Factor Authentication 記錄](./media/howto-mfa-nps-extension-vpn/image48.png)
 
-若要執行進階的疑難排解，請參閱安裝了 NPS 服務的 NPS 資料庫格式記錄檔。 記錄會建立於 _%SystemRoot%\System32\Logs_ 資料夾，並以逗號分隔文字檔的形式存在。 如需這些記錄檔的說明，請參閱[解譯 NPS 資料庫格式記錄檔](https://technet.microsoft.com/library/cc771748.aspx) \(英文\)。
+若要執行進階的疑難排解，請參閱安裝了 NPS 服務的 NPS 資料庫格式記錄檔。 記錄會建立於 _%SystemRoot%\System32\Logs_ 資料夾，並以逗號分隔文字檔的形式存在。 如需這些記錄檔的說明，請參閱[解譯 NPS 資料庫格式記錄檔](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10)) \(英文\)。
 
 這些記錄檔中的項目除非匯入到試算表或資料庫，否則將難以解譯。 您可以找到許多線上的網際網路驗證服務 (IAS) 剖析工具，以協助您解譯記錄檔。 以下是其中一個這類可下載[共享軟體應用程式](https://www.deepsoftware.com/iasviewer)的輸出：
 
 ![範例共享軟體應用程式 IAS 剖析器](./media/howto-mfa-nps-extension-vpn/image49.png)
 
-如需其他疑難排解，您可以使用通訊協定分析器，例如 Wireshark 或 [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)。 下圖來自 Wireshark，顯示 VPN 伺服器與 NPS 伺服器之間的 RADIUS 訊息。
+如需其他疑難排解，您可以使用通訊協定分析器，例如 Wireshark 或 [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide)。 下圖來自 Wireshark，顯示 VPN 伺服器與 NPS 伺服器之間的 RADIUS 訊息。
 
 ![Microsoft Message Analyzer 顯示篩選的流量](./media/howto-mfa-nps-extension-vpn/image50.png)
 

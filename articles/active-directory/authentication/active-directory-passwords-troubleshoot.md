@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ca3f4b1e1061b0ca86cc836849499b83ee055fe
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 2b5351a4729f9190e53012d32ebc361bdb6e7ca3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826514"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716379"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>針對自助式密碼重設進行疑難排解
 
@@ -27,14 +27,14 @@ ms.locfileid: "83826514"
 
 | 錯誤 | 詳細資料 | 技術詳細資訊 |
 | --- | --- | --- |
-| TenantSSPRFlagDisabled = 9 | 很抱歉，因為您的系統管理員已為貴組織停用密碼重設，此時您無法重設密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們啟用此功能。 若要深入了解，請參閱[忘記 Azure AD 密碼的說明](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password#common-problems-and-their-solutions)。 | SSPR_0009：我們已偵測到您的系統管理員尚未啟用「密碼重設」。 請連絡您的系統管理員，並要求他們為組織啟用「密碼重設」。 |
-| WritebackNotEnabled = 10 |很抱歉，因為您的系統管理員尚未為貴組織啟用必要的服務，此時您無法重設密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們檢查貴組織的設定。 若要深入了解必要的服務，請參閱[設定密碼回寫](howto-sspr-writeback.md)。 | SSPR_0010：我們已偵測到「密碼回寫」尚未啟用。 請連絡您的系統管理員，並要求他們啟用「密碼回寫」。 |
-| SsprNotEnabledInUserPolicy = 11 | 很抱歉，因為您的系統管理員尚未為貴組織設定密碼重設，此時您無法重設密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們設定密碼重設。 若要深入了解密碼重設設定，請參閱[快速入門：Azure AD 自助式密碼重設](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)。 | SSPR_0011：您的組織尚未定義密碼重設原則。 請連絡您的系統管理員，並要求他們定義密碼重設原則。 |
-| UserNotLicensed = 12 | 很抱歉，因為缺少貴組織所需要的授權，此時您無法重設密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們檢查授權指派。 若要深入了解有關授權的詳細資訊，請參閱 [Azure AD 自助式密碼重設的授權需求](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-licensing)。 | SSPR_0012：您的組織沒有執行密碼重設所需的必要授權。 請連絡您的系統管理員，並要求他們檢閱授權指派。 |
-| UserNotMemberOfScopedAccessGroup = 13 | 很抱歉，因為您的系統管理員尚未設定您的帳戶以使用密碼重設，此時您無法重設密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們設定您的帳戶以供密碼重設使用。 若要深入了解密碼重設的帳戶設定，請參閱[為使用者推出密碼重設](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-best-practices)。 | SSPR_0013：您不是已啟用密碼重設之群組的成員。 請連絡您的系統管理員，並要求加入群組。 |
-| UserNotProperlyConfigured = 14 | 很抱歉，因為缺少您帳戶所需要的資訊，此時您無法重設密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們為您重設密碼。 當您再次可以存取您的帳戶之後，必須註冊所需的資訊。 若要註冊資訊，請遵循[註冊自助式密碼重設](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-reset-register)一文。 | SSPR_0014：重設密碼所需要的其他安全性資訊。 若要繼續進行，請連絡您的系統管理員，並要求他們重設您的密碼。 當您可以存取您的帳戶之後，可在 https://aka.ms/ssprsetup 註冊其他安全性資訊。 您的系統管理員可以遵循[設定與閱讀密碼重設的驗證資料](howto-sspr-authenticationdata.md)中的步驟，將其他安全性資訊新增至您的帳戶中。 |
-| OnPremisesAdminActionRequired = 29 | 很抱歉，因為貴組織的密碼重設設定發生問題，此時無法重設密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們調查。 若要深入了解潛在問題，請參閱[疑難排解密碼回寫](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback)。 | SSPR_0029：因為您的內部部署設定發生錯誤，我們無法重設您的密碼。 請連絡您的系統管理員，並要求他們調查。 |
-| OnPremisesConnectivityError = 30 | 很抱歉，因為貴組織的連線發生問題，此時我們無法重設密碼。 現在無需採取任何動作，但如果您稍後再試，可能會解決問題。 如果問題持續發生，請連絡您的系統管理員，並要求他們調查。 若要深入了解連線問題，請參閱[針對密碼回寫連線問題進行疑難排解](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity)。 | SSPR_0030：因為您內部部署環境的連線不佳，我們無法重設您的密碼。 請連絡您的系統管理員，並要求他們調查。|
+| TenantSSPRFlagDisabled = 9 | 很抱歉，因為您的系統管理員已為貴組織停用密碼重設，此時您無法重設密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們啟用此功能。 若要深入了解，請參閱[忘記 Azure AD 密碼的說明](../user-help/active-directory-passwords-update-your-own-password.md#common-problems-and-their-solutions)。 | SSPR_0009：我們已偵測到您的系統管理員尚未啟用「密碼重設」。 請連絡您的系統管理員，並要求他們為組織啟用「密碼重設」。 |
+| WritebackNotEnabled = 10 |很抱歉，因為您的系統管理員尚未為貴組織啟用必要的服務，此時您無法重設密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們檢查貴組織的設定。 若要深入了解必要的服務，請參閱[設定密碼回寫](./tutorial-enable-sspr-writeback.md)。 | SSPR_0010：我們已偵測到「密碼回寫」尚未啟用。 請連絡您的系統管理員，並要求他們啟用「密碼回寫」。 |
+| SsprNotEnabledInUserPolicy = 11 | 很抱歉，因為您的系統管理員尚未為貴組織設定密碼重設，此時您無法重設密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們設定密碼重設。 若要深入了解密碼重設設定，請參閱[快速入門：Azure AD 自助式密碼重設](./tutorial-enable-sspr.md)。 | SSPR_0011：您的組織尚未定義密碼重設原則。 請連絡您的系統管理員，並要求他們定義密碼重設原則。 |
+| UserNotLicensed = 12 | 很抱歉，因為缺少貴組織所需要的授權，此時您無法重設密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們檢查授權指派。 若要深入了解有關授權的詳細資訊，請參閱 [Azure AD 自助式密碼重設的授權需求](./concept-sspr-licensing.md)。 | SSPR_0012：您的組織沒有執行密碼重設所需的必要授權。 請連絡您的系統管理員，並要求他們檢閱授權指派。 |
+| UserNotMemberOfScopedAccessGroup = 13 | 很抱歉，因為您的系統管理員尚未設定您的帳戶以使用密碼重設，此時您無法重設密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們設定您的帳戶以供密碼重設使用。 若要深入了解密碼重設的帳戶設定，請參閱[為使用者推出密碼重設](./howto-sspr-deployment.md)。 | SSPR_0013：您不是已啟用密碼重設之群組的成員。 請連絡您的系統管理員，並要求加入群組。 |
+| UserNotProperlyConfigured = 14 | 很抱歉，因為缺少您帳戶所需要的資訊，此時您無法重設密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們為您重設密碼。 當您再次可以存取您的帳戶之後，必須註冊所需的資訊。 若要註冊資訊，請遵循[註冊自助式密碼重設](../user-help/active-directory-passwords-reset-register.md)一文。 | SSPR_0014：重設密碼所需要的其他安全性資訊。 若要繼續進行，請連絡您的系統管理員，並要求他們重設您的密碼。 當您可以存取您的帳戶之後，可在 https://aka.ms/ssprsetup 註冊其他安全性資訊。 您的系統管理員可以遵循[設定與閱讀密碼重設的驗證資料](howto-sspr-authenticationdata.md)中的步驟，將其他安全性資訊新增至您的帳戶中。 |
+| OnPremisesAdminActionRequired = 29 | 很抱歉，因為貴組織的密碼重設設定發生問題，此時無法重設密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們調查。 若要深入了解潛在問題，請參閱[疑難排解密碼回寫](#troubleshoot-password-writeback)。 | SSPR_0029：因為您的內部部署設定發生錯誤，我們無法重設您的密碼。 請連絡您的系統管理員，並要求他們調查。 |
+| OnPremisesConnectivityError = 30 | 很抱歉，因為貴組織的連線發生問題，此時我們無法重設密碼。 現在無需採取任何動作，但如果您稍後再試，可能會解決問題。 如果問題持續發生，請連絡您的系統管理員，並要求他們調查。 若要深入了解連線問題，請參閱[針對密碼回寫連線問題進行疑難排解](#troubleshoot-password-writeback-connectivity)。 | SSPR_0030：因為您內部部署環境的連線不佳，我們無法重設您的密碼。 請連絡您的系統管理員，並要求他們調查。|
 
 ## <a name="troubleshoot-the-password-reset-configuration-in-the-azure-portal"></a>在 Azure 入口網站中，針對密碼重設設定進行疑難排解
 
@@ -75,7 +75,7 @@ ms.locfileid: "83826514"
 | 使用者在驗證其電話號碼時看到錯誤。 | 輸入的電話號碼與登記的電話號碼不符時，就會發生這個錯誤。 請確定使用者在嘗試使用電話式方法來重設密碼時，輸入了完整的電話號碼，包括區碼和國碼。 |
 | 處理要求時發生錯誤。 | 許多問題都會造成此情形，但這個錯誤通常是因為服務中斷或設定問題所導致。 如果您看到這個錯誤，而且它會影響您的業務，請連絡 Microsoft 支援服務人員以尋求其他協助。 |
 | 內部部署原則違規 | 密碼不符合內部部署的 Active Directory 密碼原則。 |
-| 密碼未遵循模糊原則 | 所使用密碼存在於[禁止的密碼清單](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad#how-are-passwords-evaluated)中，不得使用。 |
+| 密碼未遵循模糊原則 | 所使用密碼存在於[禁止的密碼清單](./concept-password-ban-bad.md#how-are-passwords-evaluated)中，不得使用。 |
 
 ## <a name="troubleshoot-password-writeback"></a>針對密碼回寫進行疑難排解
 
@@ -256,7 +256,7 @@ Azure AD Connect 需要 Active Directory **重設密碼**權限才能執行密�
 
 ## <a name="azure-ad-forums"></a>Azure AD 論壇
 
-如果您有關於 Azure AD 和自助式密碼重設的一般問題，則可在 [Microsoft 的 Azure Active Directory 問與答頁面](https://docs.microsoft.com/answers/topics/azure-active-directory.html)向社群尋求協助。 社群的成員包括工程師、產品經理、MVP 和夥伴 IT 專業人員。
+如果您有關於 Azure AD 和自助式密碼重設的一般問題，則可在 [Microsoft 的 Azure Active Directory 問與答頁面](/answers/topics/azure-active-directory.html)向社群尋求協助。 社群的成員包括工程師、產品經理、MVP 和夥伴 IT 專業人員。
 
 ## <a name="contact-microsoft-support"></a>連絡 Microsoft 支援
 
@@ -295,7 +295,7 @@ Azure AD Connect 需要 Active Directory **重設密碼**權限才能執行密�
 * [SSPR 使用哪些資料，以及您應該為使用者填入哪些資料？](howto-sspr-authenticationdata.md)
 * [哪些驗證方法可供使用者使用？](concept-sspr-howitworks.md#authentication-methods)
 * [使用 SSPR 的原則選項有哪些？](concept-sspr-policy.md)
-* [什麼是密碼回寫，且為什麼我需要了解它？](howto-sspr-writeback.md)
+* [什麼是密碼回寫，且為什麼我需要了解它？](./tutorial-enable-sspr-writeback.md)
 * [如何回報 SSPR 中的活動？](howto-sspr-reporting.md)
 * [SSPR 中的所有選項有哪些，以及它們有何意義？](concept-sspr-howitworks.md)
 * [在其他某處並未涵蓋我的問題](active-directory-passwords-faq.md)

@@ -3,12 +3,12 @@ title: 如何建立 Linux 的客體設定原則
 description: 了解如何建立 Linux 的 Azure 原則客體設定原則。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 8bf01d8f69439f7b4d60fba76de0b7abf636c274
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7510cf378bc7e2d999de122be27662a7ccf0ba92
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547715"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717535"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何建立 Linux 的客體設定原則
 
@@ -25,8 +25,7 @@ ms.locfileid: "88547715"
 > [!IMPORTANT]
 > 具有客體設定的自訂原則是一項預覽功能。
 >
-> 需要客體設定擴充功能，才能在 Azure 虛擬機器中執行稽核。 若要在所有 Linux 電腦間大規模部署擴充功能，請指派下列原則定義：
-> - [部署必要條件，以在 Linux VM 上啟用客體設定原則。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> 需要客體設定擴充功能，才能在 Azure 虛擬機器中執行稽核。 若要在所有 Linux 電腦上大規模部署擴充功能，請指派下列原則定義： `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
 
 ## <a name="install-the-powershell-module"></a>安裝 PowerShell 模組
 

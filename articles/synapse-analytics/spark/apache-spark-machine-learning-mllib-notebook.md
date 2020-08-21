@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: f31e238c705a4b03c400a38fa6eb5f42db7204b0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535020"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719337"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>使用 Apache Spark MLlib 和 Azure Synapse Analytics 來建置機器學習應用程式
 
@@ -71,7 +71,7 @@ MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公�
 
 因為未經處理資料採用 Parquet 格式，所以您可以使用 Spark 內容，直接將檔案當作資料框架提取至記憶體中。 雖然下列程式碼使用預設選項，但是您可以視需要強制對應資料類型和其他結構描述屬性。
 
-1. 執行下列幾行，將程式碼貼至新的儲存格來建立 Spark 資料框架。 這會透過開啟的資料集 API 來抓取資料。 提取所有資料會產生大約 15 億個資料列。 根據您的 Spark 集區 (預覽) 大小，未經處理資料可能太大，或花費太多時間來操作。 您可以將此資料篩選成較小的項目。 使用 start_date 和 end_date 會套用傳回月份資料的篩選準則。
+1. 執行下列幾行，將程式碼貼至新的儲存格來建立 Spark 資料框架。 這會透過開放式資料集 API 來抓取資料。 提取所有資料會產生大約 15 億個資料列。 根據您的 Spark 集區 (預覽) 大小，未經處理資料可能太大，或花費太多時間來操作。 您可以將此資料篩選成較小的項目。 下列程式碼範例會使用 start_date 和 end_date 來套用會傳回單一月份資料的篩選準則。
 
     ```python
     from azureml.opendatasets import NycTlcYellow
@@ -96,7 +96,7 @@ MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公�
     display(sampled_taxi_df)
     ```
 
-4. 根據所產生的資料集大小，以及您實驗或執行筆記本多次的需求而定，建議您在工作區中的本機快取資料集。 有三種方式可執行明確的快取：
+4. 根據所產生的資料集大小，以及您實驗或執行筆記本多次的需求而定，建議您在工作區中的本機快取資料集。 有三種方式可以執行明確的快取：
 
    - 以檔案的形式將資料框架儲存在本機
    - 將資料框架儲存為暫存資料表或檢視
@@ -126,7 +126,7 @@ ax1.set_ylabel('Counts')
 plt.suptitle('')
 plt.show()
 
-# How many passengers tip'd by various amounts
+# How many passengers tipped by various amounts
 ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])
 ax2.set_title('Tip amount by Passenger count')
 ax2.set_xlabel('Passenger count')
@@ -157,7 +157,7 @@ plt.show()
 - 透過篩選移除極端值/不正確的值。
 - 移除不需要的資料行。
 - 建立衍生自未經處理資料的新資料行，讓模型運作更有效率，有時稱為特徵化。
-- 加上標籤，因為您正在進行二元分類 (指定行程是否有小費)，因此需要將小費金額轉換成 0 或 1 的值。
+- 加上標籤-因為您正在進行二元分類 (在指定的行程中將會有秘訣) 需要將 tip 數量轉換成0或1值。
 
 ```python
 taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'rateCodeId', 'passengerCount'\
@@ -196,7 +196,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 最後一項工作，是將加上標籤的資料轉換成可依羅吉斯迴歸進行分析的格式。 羅吉斯迴歸演算法的輸入必須是一組「標籤-特性向量配對」，其中「特性向量」是代表輸入點的數字向量。 因此，我們需要將類別資料行轉換成數字。 `trafficTimeBins` 和 `weekdayString` 資料行必須轉換成整數表示。 有多種方法可以執行轉換，不過在此範例中採取的方法是「OneHotEncoding」，這是一種常見的方法。
 
 ```python
-# The sample uses an algorithm that only works with numeric features convert them so they can be consumed
+# Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
 sI1 = StringIndexer(inputCol="trafficTimeBins", outputCol="trafficTimeBinsIndex")
 en1 = OneHotEncoder(dropLast=False, inputCol="trafficTimeBinsIndex", outputCol="trafficTimeBinsVec")
 sI2 = StringIndexer(inputCol="weekdayString", outputCol="weekdayIndex")
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 現在有兩個資料框架，下一個工作是建立模型公式並對定型資料框架執行，然後針對測試資料框架進行驗證。 您應該使用不同版本的模型公式來進行實驗，以查看不同組合的影響。
 
 > [!Note]
-> 若要儲存模型，您將需要儲存體 Blob 資料參與者 Azure 角色。 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將儲存體 Blob 資料參與者 Azure 角色指派給您的 SQL Database 伺服器。 僅有具備「擁有者」權限的成員才能執行此步驟。 如需各種 Azure 內建角色，請參閱此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+> 若要儲存模型，您將需要儲存體 Blob 資料參與者 Azure 角色。 在您的儲存體帳戶底下，流覽至 (IAM) 的 [存取控制]，然後選取 [ **新增角色指派**]。 將儲存體 Blob 資料參與者 Azure 角色指派給您的 SQL Database 伺服器。 僅有具備「擁有者」權限的成員才能執行此步驟。 如需各種 Azure 內建角色，請參閱此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ```python
 ## Create a new LR object for the model
@@ -250,7 +250,7 @@ metrics = BinaryClassificationMetrics(predictionAndLabels)
 print("Area under ROC = %s" % metrics.areaUnderROC)
 ```
 
-此儲存格的輸出為
+此儲存格的輸出為：
 
 ```shell
 Area under ROC = 0.9779470729751403

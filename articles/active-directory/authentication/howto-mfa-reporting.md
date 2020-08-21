@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8584ca84efc889afebe6758e254bda845912316
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c550576a5bd762d3333aa8a533ee6106369193c3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418231"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719507"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>使用登入報告來檢閱 Azure Multi-Factor Authentication 事件
 
@@ -90,7 +90,7 @@ ms.locfileid: "87418231"
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>PowerShell 報告已註冊 MFA 的使用者
 
-首先，請確定已安裝 [MSOnline V1 PowerShell 模組](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0)。
+首先，請確定已安裝 [MSOnline V1 PowerShell 模組](/powershell/azure/active-directory/overview?view=azureadps-1.0)。
 
 識別已使用下列 Powershell 註冊 MFA 的使用者。 這組命令會排除已停用的使用者，因為這些帳戶無法針對 Azure AD 進行驗證：
 
@@ -145,8 +145,8 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 | FAILED_INVALID_EXTENSION | 分機號碼無效 | 分機號碼包含無效的字元。  允許的字元僅限數字、逗號、* 及 #。  前面還可以加上 @。 |
 | FAILED_FRAUD_CODE_ENTERED | 已輸入詐騙代碼 | 在導致系統拒絕驗證並封鎖電話號碼的通話期間，使用者已選擇回報詐騙。| 
 | FAILED_SERVER_ERROR | 無法撥打電話 | Multi-Factor Authentication 服務無法撥打電話。 |
-| FAILED_SMS_NOT_SENT | 無法傳送簡訊 | 無法傳送簡訊。 驗證遭到拒絕。 |
-| FAILED_SMS_OTP_INCORRECT | 簡訊 OTP 不正確 | 使用者從收到的簡訊所輸入一次性密碼 (OTP) 不正確。 驗證遭到拒絕。 |
+| FAILED_SMS_NOT_SENT | 無法傳送簡訊 | 無法傳送簡訊。  驗證遭到拒絕。 |
+| FAILED_SMS_OTP_INCORRECT | 簡訊 OTP 不正確 | 使用者從收到的簡訊所輸入一次性密碼 (OTP) 不正確。  驗證遭到拒絕。 |
 | FAILED_SMS_OTP_PIN_INCORRECT | 簡訊 OTP + PIN 不正確 | 使用者輸入的一次性密碼 (OTP) 及/或使用者 PIN 不正確。  驗證遭到拒絕。 |
 | FAILED_SMS_MAX_OTP_RETRY_REACHED | 已超過簡訊 OTP 嘗試次數上限 | 使用者已超過一次性密碼 (OTP) 嘗試次數上限。 |
 | FAILED_PHONE_APP_DENIED | 拒絕行動裝置應用程式 | 使用者已按下 [拒絕] 按鈕，在行動裝置應用程式中拒絕驗證。 |

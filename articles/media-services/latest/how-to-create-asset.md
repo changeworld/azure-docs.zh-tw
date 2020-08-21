@@ -15,30 +15,26 @@ ms.workload: na
 ms.date: 08/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b40c936006fa47964ef67ffda37c80eb5732bdf0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 65b0b276dcda58810f44494c14f06dd412d633f6
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653869"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719286"
 ---
 # <a name="create-an-asset"></a>建立資產
 
-本文說明如何建立媒體服務資產。  您將使用資產來保存媒體內容以進行編碼和串流處理。  若要深入瞭解媒體服務資產，請閱讀 [Azure 媒體服務 v3 中的資產](assets-concept.md)
+本文說明如何建立媒體服務資產。  您將使用資產來保存媒體內容，以進行編碼和串流處理。  若要深入了解媒體服務資產，請閱讀 [Azure 媒體服務 v3 中的資產](assets-concept.md)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-遵循 [建立媒體服務帳戶](./create-account-howto.md) 中的步驟，建立所需的媒體服務帳戶和資源群組來建立資產。
+依照[建立媒體服務帳戶](./create-account-howto.md)中的步驟來建立所需的媒體服務帳戶和資源群組，以建立資產。
 
 ## <a name="methods"></a>方法
 
 ## <a name="cli"></a>[CLI](#tab/cli/)
 
 [!INCLUDE [Create an asset with CLI](./includes/task-create-asset-cli.md)]
-
-## <a name="cli-shell"></a>[CLI Shell](#tab/clishell/)
-
-[!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>範例指令碼
 

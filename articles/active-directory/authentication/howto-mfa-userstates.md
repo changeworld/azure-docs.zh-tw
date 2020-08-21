@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d949f4b10bc6b7b592556d78edfcf02a05ec7144
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 433cfa3789aa37f4145982da97719526c0abfc47
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565769"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719490"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>啟用個別使用者的 Azure Multi-Factor Authentication 以保護登入事件
 
@@ -76,7 +76,7 @@ ms.locfileid: "88565769"
 
 1. 在開啟的快顯視窗中確認您的選取項目。
 
-當您啟用使用者之後，請透過電子郵件通知他們。 告訴使用者系統會顯示提示來要求其在下一次登入時註冊。 此外，如果您的組織使用不支援新式驗證的非瀏覽器應用程式，他們就需要建立應用程式密碼。 如需詳細資訊，請參閱 [Azure Multi-Factor Authentication 終端使用者指南](../user-help/multi-factor-authentication-end-user.md)以協助其開始使用。
+當您啟用使用者之後，請透過電子郵件通知他們。 告訴使用者系統會顯示提示來要求其在下一次登入時註冊。 此外，如果您的組織使用不支援新式驗證的非瀏覽器應用程式，他們就需要建立應用程式密碼。 如需詳細資訊，請參閱 [Azure Multi-Factor Authentication 終端使用者指南](../user-help/multi-factor-authentication-end-user-first-time.md)以協助其開始使用。
 
 ## <a name="change-state-using-powershell"></a>使用 PowerShell 變更狀態
 

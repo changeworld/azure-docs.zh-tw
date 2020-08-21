@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ede429de686dd005785b44cf5c6d9571aac5a2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117017"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717841"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用網路原則伺服器 (NPS) 擴充功能和 Azure AD 整合遠端桌面閘道基礎結構
 
 本文提供使用 Microsoft Azure 的網路原則伺服器 (NPS) 擴充功能來整合遠端桌面閘道基礎結構與 Azure Multi-Factor Authentication (MFA) 的詳細資訊。
 
-適用于 Azure 的網路原則伺服器 (NPS) 延伸模組，可讓客戶使用 Azure 的雲端式[多重要素驗證 (MFA) ](multi-factor-authentication.md)來保護遠端驗證撥入使用者服務 (RADIUS) 用戶端驗證。 此解決方案提供雙步驟驗證，以便為使用者登入和交易增加第二層安全性。
+適用于 Azure 的網路原則伺服器 (NPS) 擴充功能可讓客戶使用 Azure 以雲端為基礎的 [) MULTI-FACTOR AUTHENTICATION MFA (](./concept-mfa-howitworks.md)，來保護遠端驗證撥入消費者服務 (RADIUS) 用戶端驗證。 此解決方案提供雙步驟驗證，以便為使用者登入和交易增加第二層安全性。
 
 本文提供逐步指示，引導您使用 Azure 的 NPS 擴充功能來整合 NPS 基礎結構與 Azure MFA。 這可為嘗試登入遠端桌面閘道的使用者能夠安全地進行驗證。
 
@@ -35,11 +35,11 @@ ms.locfileid: "88117017"
 * 建立並強制執行網路存取保護 (NAP) 用戶端健康原則，以判斷要讓裝置不受限制還是受限制地存取網路資源。
 * 提供強制驗證和授權的方法，以供存取具有 802.1x 功能的無線存取點及乙太網路交換器。
 
-組織通常會使用 NPS (RADIUS) 來簡化和集中管理 VPN 原則。 不過，許多組織也會使用 NPS 來簡化和集中管理 RD 桌面連線授權原則 (RD CAP)。
+一般而言，組織會使用 NPS (RADIUS) 來簡化和集中管理 VPN 原則。 不過，許多組織也會使用 NPS 來簡化和集中管理 RD 桌面連線授權原則 (RD CAP)。
 
-組織也可以整合 NPS 與 Azure MFA 來增強安全性，並提供高層級的合規性。 這有助於確保使用者建立雙步驟驗證來登入遠端桌面閘道。 使用者若要獲得存取權，就必須提供其使用者名稱/密碼的組合以及使用者所掌握的資訊。 這項資訊必須能夠讓人信任且無法輕易複製，例如行動電話號碼、室內電話號碼、行動裝置上的應用程式等等。 RDG 目前支援從適用于2FA 的 Microsoft 驗證器應用程式方法撥打電話和推播通知。 如需支援之驗證方法的詳細資訊，請參閱[判斷您的使用者可以使用的驗證方法](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use)。
+組織也可以整合 NPS 與 Azure MFA 來增強安全性，並提供高層級的合規性。 這有助於確保使用者建立雙步驟驗證來登入遠端桌面閘道。 使用者若要獲得存取權，就必須提供其使用者名稱/密碼的組合以及使用者所掌握的資訊。 這項資訊必須能夠讓人信任且無法輕易複製，例如行動電話號碼、室內電話號碼、行動裝置上的應用程式等等。 RDG 目前支援來自適用于2FA 的 Microsoft 驗證器應用程式方法的通話和推播通知。 如需支援之驗證方法的詳細資訊，請參閱[判斷您的使用者可以使用的驗證方法](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use)。
 
-在 Azure 的 NPS 擴充功能推出之前，想要對整合式 NPS 和 Azure MFA 環境執行雙步驟驗證的客戶，必須在內部部署環境中設定和維護個別的 MFA Server，如[遠端桌面閘道和使用 RADIUS 的 Azure 多因素驗證服務器](howto-mfaserver-nps-rdg.md)中所述。
+在適用于 Azure 的 NPS 擴充功能推出之前，想要對整合式 NPS 和 Azure MFA 環境執行雙步驟驗證的客戶，必須在內部部署環境中設定及維護個別的 MFA 伺服器，如 [遠端桌面閘道和 Azure Multi-Factor Authentication Server 使用 RADIUS](howto-mfaserver-nps-rdg.md)所述。
 
 隨著 Azure 的 NPS 擴充功能推出，組織現在可以選擇要部署內部部署型 MFA 解決方案還是雲端型 MFA 解決方案，以保護 RADIUS 用戶端驗證。
 
@@ -54,7 +54,7 @@ ms.locfileid: "88117017"
 1. 遠端桌面閘道伺服器會收到遠端桌面使用者要連線到某項資源 (例如遠端桌面工作階段) 的驗證要求。 作為 RADIUS 用戶端的遠端桌面閘道伺服器，會將此要求轉換為 RADIUS Access-Request 訊息，並將此訊息傳送至 NPS 擴充功能安裝所在的 RADIUS (NPS) 伺服器。
 1. 使用者名稱和密碼組合會在 Active Directory 中進行驗證，且使用者已經過驗證。
 1. 如果 NPS 連線要求與網路原則中所指定的所有條件 (例如，一天當中的時間或群組成員資格限制) 皆能符合，NPS 擴充功能就會觸發要求，以便使用 Azure MFA 進行第二項驗證。
-1. Azure MFA 會與 Azure AD 通訊、捕獲使用者的詳細資料，並使用支援的方法執行次要驗證。
+1. Azure MFA 與 Azure AD 進行通訊、捕獲使用者的詳細資料，並使用支援的方法執行次要驗證。
 1. 成功通過 MFA 挑戰後，Azure MFA 會將結果告知 NPS 擴充功能。
 1. 安裝擴充功能的 NPS 伺服器會將 RD CAP 原則的 RADIUS Access-Accept 訊息傳送至遠端桌面閘道伺服器。
 1. 使用者便取得透過 RD 閘道存取要求之網路資源的權限。
@@ -72,10 +72,10 @@ ms.locfileid: "88117017"
 
 ### <a name="remote-desktop-services-rds-infrastructure"></a>遠端桌面服務 (RDS) 基礎結構
 
-您必須備妥中運作中的遠端桌面服務 (RDS) 基礎結構。 如果沒有，您可以使用下列快速入門範本，在 Azure 中快速建立此基礎結構：[建立遠端桌面會話集合部署](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment)。
+您必須備妥中運作中的遠端桌面服務 (RDS) 基礎結構。 如果沒有，您可以使用下列快速入門範本，在 Azure 中快速建立此基礎結構： [建立遠端桌面會話集合部署](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment)。
 
 如果您想要以手動方式快速建立內部部署 RDS 基礎結構以供測試，請遵循下列步驟來部署一個。
-**深入瞭解**：[使用 Azure 快速入門](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure)和[基本 rds 基礎結構部署](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)來部署 RDS。
+**深入瞭解**： [使用 Azure 快速入門部署 RDS](/windows-server/remote/remote-desktop-services/rds-in-azure) 和 [基本 RDS 基礎結構部署](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)。
 
 ### <a name="azure-mfa-license"></a>Azure MFA 授權
 
@@ -89,7 +89,7 @@ NPS 擴充功能需要安裝了 NPS 角色服務的 Windows Server 2008 R2 SP1 �
 
 NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存取原則健康情況服務。 此角色必須安裝於您基礎結構中的至少兩部電腦上：遠端桌面閘道和另一個成員伺服器或網域控制站。 根據預設，此角色已存在於設定為遠端桌面閘道的電腦上。  您也必須至少在另一部電腦 (例如網域控制站或成員伺服器) 上安裝 NPS 角色。
 
-如需有關安裝 NPS 角色服務 Windows Server 2012 或更舊版本的資訊，請參閱[安裝 NAP 健康原則伺服器](https://technet.microsoft.com/library/dd296890.aspx)。 如需 NPS 最佳做法的說明（包括在網域控制站上安裝 NPS 的建議），請參閱[nps 的最佳做法](https://technet.microsoft.com/library/cc771746)。
+如需有關安裝 NPS 角色服務 Windows Server 2012 或更舊版本的資訊，請參閱[安裝 NAP 健康原則伺服器](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10))。 如需 NPS 最佳做法的說明（包括在網域控制站上安裝 NPS 的建議），請參閱 [nps 的最佳作法](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10))。
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>與內部部署 Active Directory 同步的 Azure Active Directory
 
@@ -109,24 +109,24 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 在帳戶啟用 MFA 之後，您便無法登入 MFA 原則所控管的資源，除非您成功地設定受信任的裝置來作為第二個驗證要素，並使用雙步驟驗證通過驗證。
 
-遵循 [Azure Multi-factor Authentication 什麼適合我？](../user-help/multi-factor-authentication-end-user.md)中的步驟，了解及正確設定您的裝置，以便透過您的使用者帳戶進行 MFA。
+遵循 [Azure Multi-factor Authentication 什麼適合我？](../user-help/multi-factor-authentication-end-user-first-time.md)中的步驟，了解及正確設定您的裝置，以便透過您的使用者帳戶進行 MFA。
 
 > [!IMPORTANT]
-> 遠端桌面閘道的登入行為不會提供使用 Azure 多重要素驗證來輸入驗證碼的選項。 使用者帳戶必須設定為使用推播通知的電話驗證或 Microsoft Authenticator 應用程式。
+> 遠端桌面閘道的登入行為未提供使用 Azure Multi-Factor Authentication 輸入驗證碼的選項。 您必須使用推播通知，設定使用者帳戶以進行電話驗證或 Microsoft Authenticator 應用程式。
 >
-> 如果未針對使用者設定這兩種驗證方法的其中一種，他們將無法完成 Azure 多因素驗證挑戰並登入遠端桌面閘道。
+> 如果未針對使用者設定這兩種驗證方法的其中一種，他們將無法完成 Azure Multi-Factor Authentication 挑戰並登入遠端桌面閘道。
 
 ## <a name="install-and-configure-nps-extension"></a>安裝和設定 NPS 擴充功能
 
 本節會提供指示，引導您將 RDS 基礎結構設定為使用 Azure MFA 讓用戶端向遠端桌面閘道進行驗證。
 
-### <a name="acquire-azure-active-directory-tenant-id"></a>取得 Azure Active Directory 的租使用者識別碼
+### <a name="acquire-azure-active-directory-tenant-id"></a>取得 Azure Active Directory 租使用者識別碼
 
 在設定 NPS 擴充功能期間，您必須為 Azure AD 租用戶提供管理員認證和 Azure AD 識別碼。 若要取得租使用者識別碼，請完成下列步驟：
 
 1. 以 Azure 租用戶的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在 Azure 入口網站功能表中，選取 [Azure Active Directory]，或從任何頁面搜尋並選取 [Azure Active Directory]。
-1. 在 [**總覽**] 頁面上，會顯示*租使用者資訊*。 在 [*租使用者識別碼*] 旁，選取**複製**圖示，如下列範例螢幕擷取畫面所示：
+1. 在 [ **總覽** ] 頁面上會顯示 *租使用者資訊* 。 在租使用者 *識別碼*旁邊，選取 **複製** 圖示，如下列範例螢幕擷取畫面所示：
 
    ![從 Azure 入口網站取得租使用者識別碼](./media/howto-mfa-nps-extension-rdg/azure-active-directory-tenant-id-portal.png)
 
@@ -135,9 +135,9 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 在已安裝網路原則與存取服務 (NPS) 角色的伺服器上安裝 NPS 擴充功能。 這可當作您的設計的 RADIUS 伺服器。
 
 > [!IMPORTANT]
-> 請勿將 NPS 擴充功能安裝在您的遠端桌面閘道 (RDG) 伺服器上。 RDG 伺服器不會將 RADIUS 通訊協定與用戶端搭配使用，因此擴充功能無法解讀和執行 MFA。
+> 請勿在遠端桌面閘道 (RDG) server 上安裝 NPS 擴充功能。 RDG 伺服器不會搭配其用戶端使用 RADIUS 通訊協定，因此擴充功能無法解讀和執行 MFA。
 >
-> 當具有 NPS 擴充功能的 RDG 伺服器和 NPS 伺服器是不同的伺服器時，RDG 會在內部使用 NPS 與其他 NPS 伺服器交談，並使用 RADIUS 作為通訊協定來正確地進行通訊。
+> 當 RDG 伺服器和 NPS 伺服器搭配 NPS 擴充功能是不同的伺服器時，RDG 會在內部使用 NPS 來與其他 NPS 伺服器通訊，並使用 RADIUS 做為通訊協定來正確通訊。
 
 1. 下載 [NPS 擴充功能](https://aka.ms/npsmfa)。
 1. 將安裝程式可執行檔 (NpsExtnForAzureMfaInstaller.exe) 複製到 NPS 伺服器。
@@ -154,7 +154,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 * 建立自我簽署憑證
 * 讓憑證的公開金鑰與 Azure AD 的服務主體產生關聯
 * 將憑證儲存在本機電腦的存放區
-* 將憑證的私密金鑰存取權授與網路使用者
+* 將憑證的私密金鑰存取權授與給網路使用者
 * 重新啟動網路原則伺服器服務
 
 如果您想要使用您自己的憑證，就必須讓該憑證的公開金鑰與 Azure AD 的服務主體產生關聯，依此類推。
@@ -171,7 +171,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
    ![在 PowerShell 中驗證 Azure AD](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-1. 出現提示時，貼上您先前複製到剪貼簿的*租使用者識別碼*，然後按**enter**鍵。
+1. 出現提示時，貼上您先前複製到剪貼簿的 *租使用者識別碼* ，然後按 **enter**。
 
    ![在 PowerShell 中輸入租使用者識別碼](./media/howto-mfa-nps-extension-rdg/image6.png)
 
@@ -183,7 +183,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 在本節中，您可以設定遠端桌面閘道的連線授權原則和其他 RADIUS 設定。
 
-驗證流程需要在遠端桌面閘道和 NPS 延伸模組安裝所在的 NPS 伺服器之間交換 RADIUS 訊息。 這表示您必須在遠端桌面閘道和 NPS 擴充功能安裝所在的 NPS 伺服器上設定 RADIUS 用戶端設定。
+驗證流程需要在安裝 NPS 擴充功能的遠端桌面閘道和 NPS 伺服器之間交換 RADIUS 訊息。 這表示您必須在遠端桌面閘道和 NPS 擴充功能安裝所在的 NPS 伺服器上設定 RADIUS 用戶端設定。
 
 ### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>設定遠端桌面閘道連線授權原則以使用中央存放區
 
@@ -191,9 +191,9 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 1. 在 RD 閘道伺服器上，開啟 [伺服器管理員]****。
 1. 在功能表上，按一下 [工具]****，指向 [遠端桌面服務]****，然後按一下 [遠端桌面閘道管理員]****。
-1. 在 [RD 閘道管理員中，以滑鼠右鍵按一下 [ ** \[ 伺服器名稱] \] (本機) **，然後按一下 [**屬性**]。
-1. 在 [屬性] 對話方塊中，選取 [ **RD CAP 存放區**] 索引標籤。
-1. 在 [RD CAP 存放區] 索引標籤上，選取 [執行**NPS 的中央伺服器**]。 
+1. 在 [RD 閘道管理員中，以滑鼠右鍵按一下 [ ** \[ 伺服器名稱] \] ([本機) **]，然後按一下 [**屬性**]。
+1. 在 [屬性] 對話方塊中，選取 [ **RD CAP 存放區** ] 索引標籤。
+1. 在 [RD CAP 存放區] 索引標籤上，選取 [執行 **NPS 的中央伺服器**]。 
 1. 在 [輸入執行 NPS 之伺服器的名稱或 IP 位址]**** 欄位中，輸入您安裝 NPS 擴充功能之伺服器的 IP 位址或伺服器名稱。
 
    ![輸入 NPS 伺服器的名稱或 IP 位址](./media/howto-mfa-nps-extension-rdg/image10.png)
@@ -211,7 +211,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>在遠端桌面閘道 NPS 上設定 RADIUS 逾時值
 
-若要確保有時間驗證使用者的認證、執行雙步驟驗證、接收回應，以及回應 RADIUS 訊息，則必須調整 RADIUS 超時值。
+為了確保有時間驗證使用者的認證、執行雙步驟驗證、接收回應，以及回應 RADIUS 訊息，您必須調整 RADIUS 超時值。
 
 1. 在 RD 閘道伺服器上，開啟 [伺服器管理員]。 在功能表中，按一下 [工具]****，然後按一下 [網路原則伺服器]****。
 1. 在 [NPS (本機)]**** 主控台中，展開 [RADIUS 用戶端和伺服器]****，然後選取 [遠端 RADIUS 伺服器]****。
@@ -250,7 +250,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 1. 按一下 [取消]****。
 
 >[!NOTE]
-> 如需建立連線要求原則的詳細資訊，請參閱設定相同的連線[要求原則](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy)檔一文。 
+> 如需有關建立連線要求原則的詳細資訊，請參閱一文，設定相同的連線 [要求原則](/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) 檔。 
 
 ## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>在安裝 NPS 擴充功能的伺服器上設定 NPS
 
@@ -277,7 +277,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
    ![在 NPS 主控台中建立新的 RADIUS 用戶端](./media/howto-mfa-nps-extension-rdg/image17.png)
 
-1. 在 [**新增 RADIUS 用戶端**] 對話方塊中，提供易記的名稱（例如_閘道_），以及遠端桌面閘道伺服器的 IP 位址或 DNS 名稱。
+1. 在 [ **新增 RADIUS 用戶端** ] 對話方塊中，提供易記的名稱（例如 _閘道_），以及遠端桌面閘道伺服器的 IP 位址或 DNS 名稱。
 1. 在 [共用祕密]**** 和 [確認共用祕密]**** 欄位中，輸入您之前使用的相同祕密。
 
    ![設定易記名稱和 IP 或 DNS 位址](./media/howto-mfa-nps-extension-rdg/image18.png)
@@ -289,18 +289,18 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 請記住，具備 Azure MFA 擴充功能的 NPS 伺服器是連線授權原則 (CAP) 的指定中央原則存放區。 因此，您需要在 NPS 伺服器上實作 CAP，才能授權有效的連線要求。  
 
 1. 在 NPS 伺服器上，開啟 [NPS (本機)] 主控台，展開 [原則]****，然後按一下 [網路原則]****。
-1. 以滑鼠右鍵按一下 [**與其他存取伺服器**的連線]，然後按一下 [**複製原則**]。
+1. 以滑鼠右鍵按一下 [ **其他存取伺服器**的連線]，然後按一下 [ **複製原則**]。
 
-   ![複製與其他存取伺服器原則的連線](./media/howto-mfa-nps-extension-rdg/image19.png)
+   ![複製與其他存取伺服器原則的連接](./media/howto-mfa-nps-extension-rdg/image19.png)
 
 1. 以滑鼠右鍵按一下 [複製其他存取伺服器的連線]****，然後按一下 [屬性]****。
-1. 在 [**複製其他存取伺服器的連接**] 對話方塊的 [**原則名稱**] 中，輸入適當的名稱，例如_RDG_CAP_。 勾選 [**已啟用原則**]，然後選取 **[授與存取權**]。 (選擇性) 在 [網路存取伺服器類型]**** 中選取 [遠端桌面閘道]****，您也可以將它保留為 [未指定]****。
+1. 在 [ **與其他存取伺服器的連接副本** ] 對話方塊的 [ **原則名稱**] 中，輸入適當的名稱，例如 _RDG_CAP_。 勾選 [ **啟用原則**]，然後選取 **[授與存取權**]。 (選擇性) 在 [網路存取伺服器類型]**** 中選取 [遠端桌面閘道]****，您也可以將它保留為 [未指定]****。
 
-   ![將原則命名為、啟用，並授與存取權](./media/howto-mfa-nps-extension-rdg/image21.png)
+   ![命名原則、啟用和授與存取權](./media/howto-mfa-nps-extension-rdg/image21.png)
 
 1. 按一下 [條件約束]**** 索引標籤，然後勾選 [允許用戶端沒有交涉驗證方法仍然可以連線]****。
 
-   ![修改驗證方法以允許用戶端連接](./media/howto-mfa-nps-extension-rdg/image22.png)
+   ![修改驗證方法，以允許用戶端連接](./media/howto-mfa-nps-extension-rdg/image22.png)
 
 1. (選擇性) 按一下 [條件]**** 索引標籤，並新增必須符合才能授權連線的條件，例如，特定 Windows 群組中的成員資格。
 
@@ -309,7 +309,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 1. 按一下 [確定]。 當系統提示您檢視對應的說明主題時，請按一下 [否]****。
 1. 請確定新原則位於清單的頂端，已啟用原則，而且它會授與存取權。
 
-   ![將您的原則移到清單頂端](./media/howto-mfa-nps-extension-rdg/image24.png)
+   ![將您的原則移至清單頂端](./media/howto-mfa-nps-extension-rdg/image24.png)
 
 ## <a name="verify-configuration"></a>驗證組態
 
@@ -329,7 +329,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 ![顯示驗證的 Windows Phone 驗證器應用程式範例](./media/howto-mfa-nps-extension-rdg/image27.png)
 
-在使用第二種驗證方法驗證成功之後，您便已如往常一樣登入遠端桌面閘道。 不過，因為您必須在受信任的裝置上使用行動應用程式來使用次要驗證方法，所以登入處理會比其他方式更安全。
+在使用第二種驗證方法驗證成功之後，您便已如往常一樣登入遠端桌面閘道。 不過，因為您必須使用受信任裝置上的行動裝置應用程式來使用次要驗證方法，所以登入程式會比其他情況更安全。
 
 ### <a name="view-event-viewer-logs-for-successful-logon-events"></a>檢視事件檢視器記錄來找到成功的登入事件
 
@@ -345,14 +345,14 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '200'} | FL`
 * 此命令會顯示使用者符合連線授權原則需求時顯示的事件。
 
-![使用 PowerShell 來查看連線授權原則](./media/howto-mfa-nps-extension-rdg/image29.png)
+![使用 PowerShell 來查看連接授權原則](./media/howto-mfa-nps-extension-rdg/image29.png)
 
 您也可以檢視此記錄並依據事件識別碼 (300 和 200) 進行篩選。 若要查詢安全性事件檢視器記錄中的成功登入事件，請使用下列命令：
 
 * `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
 * 此命令可以在中央 NPS 或 RD 閘道伺服器上執行。
 
-![成功登入事件的範例](./media/howto-mfa-nps-extension-rdg/image30.png)
+![成功的登入事件範例](./media/howto-mfa-nps-extension-rdg/image30.png)
 
 您也可以檢視安全性記錄或網路原則與存取服務自訂檢視，如下所示：
 
@@ -374,19 +374,19 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 以下是來自 Azure MFA 記錄的相關事件：
 
-![事件檢視器中的 Azure MFA 登入範例](./media/howto-mfa-nps-extension-rdg/image34.png)
+![事件檢視器的範例 Azure MFA 登入](./media/howto-mfa-nps-extension-rdg/image34.png)
 
 若要執行進階的疑難排解選項，請參閱安裝了 NPS 服務的 NPS 資料庫格式記錄檔。 這些記錄會建立於 %SystemRoot%\System32\Logs__ 資料夾，並以逗號分隔文字檔的形式存在。
 
-如需這些記錄檔的說明，請參閱[解譯 NPS 資料庫格式記錄檔](https://technet.microsoft.com/library/cc771748.aspx)。 這些記錄檔中的項目若不匯入到試算表或資料庫，將難以解譯。 您可以在線上找到數個 IAS 剖析器來協助您解譯記錄檔。
+如需這些記錄檔的說明，請參閱[解譯 NPS 資料庫格式記錄檔](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10))。 這些記錄檔中的項目若不匯入到試算表或資料庫，將難以解譯。 您可以在線上找到數個 IAS 剖析器來協助您解譯記錄檔。
 
 下圖顯示其中一個這類可下載[共享軟體應用程式](https://www.deepsoftware.com/iasviewer)的輸出。
 
 ![範例共享軟體應用程式 IAS 剖析器](./media/howto-mfa-nps-extension-rdg/image35.png)
 
-最後，如需其他疑難排解選項，您可以使用通訊協定分析器，例如 [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)。
+最後，如需其他疑難排解選項，您可以使用通訊協定分析器，例如 [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide)。
 
-下列來自 Microsoft Message Analyzer 的影像會顯示以 RADIUS 通訊協定篩選並包含使用者名稱**CONTOSO\AliceC**的網路流量。
+以下的 Microsoft Message Analyzer 影像顯示在 RADIUS 通訊協定上篩選的網路流量，其中包含使用者名稱 **CONTOSO\AliceC**。
 
 ![Microsoft Message Analyzer 顯示篩選的流量](./media/howto-mfa-nps-extension-rdg/image36.png)
 

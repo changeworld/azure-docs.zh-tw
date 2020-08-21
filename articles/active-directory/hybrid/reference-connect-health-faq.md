@@ -16,20 +16,20 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427a09f3855d44af0206ebf1fd6183099da75f19
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b4c4b1f7aed6a188c491e6f4961442fa85744b6b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446983"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718538"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常見問題集
 本文會回答有關 Azure Active Directory (Azure AD) Connect Health 的常見問題 (FAQ)。 這些常見問題涵蓋如何使用服務的相關問題，包括計費模型、功能、限制及支援。
 
 ## <a name="general-questions"></a>一般問題
-**問：我管理多個 Azure AD 目錄。如何? 切換到具有 Azure Active Directory Premium 的？**
+**問：我管理多個 Azure AD 目錄。如何? 切換至有 Azure Active Directory Premium 的那個？**
 
-若要在不同的 Azure AD 租用戶之間切換，請在右上角選取目前登入的 [使用者名稱]****，然後選擇適當的帳戶。 如果此處未列出帳戶，請選取 [**登出**]，然後使用已啟用 Azure Active Directory Premium 的目錄的全域管理員認證來登入。
+若要在不同的 Azure AD 租用戶之間切換，請在右上角選取目前登入的 [使用者名稱]****，然後選擇適當的帳戶。 如果此處未列出帳戶，請選取 [ **登出**]，然後使用已啟用 Azure Active Directory Premium 之目錄的全域系統管理員認證來登入。
 
 **問︰Azure AD Connect Health 支援哪個版本的身分識別角色？**
 
@@ -37,9 +37,11 @@ ms.locfileid: "87446983"
 
 |角色| 作業系統/版本|
 |--|--|
-|Active Directory Federation Services (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory Federation Services (AD FS)| <ul><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> <li> Windows Server 2019  </li> </ul>|
 |Azure AD Connect | 版本 1.0.9125 或更高版本|
-|Active Directory Domain Services (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory Domain Services (AD DS)| <ul><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> <li> Windows Server 2019  </li> </ul>|
+
+不支援 Windows Server Core 安裝。
 
 請注意，服務所提供的功能可能會因為角色和作業系統而有所不同。 換句話說，並非所有作業系統版本都能使用所有功能。 如需詳細資料，請參閱功能描述。
 
@@ -103,13 +105,13 @@ ms.locfileid: "87446983"
 **問：Azure AD Connect Health 是否透過傳遞 Http Proxy 運作？**
 
 是。 若是進行中的作業，您可以將 Health 代理程式設定為使用 HTTP Proxy 來轉送輸出 HTTP 要求。
-深入瞭解設定[健全狀況代理程式的 HTTP Proxy](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)。
+深入瞭解設定 [健康情況代理程式的 HTTP Proxy](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)。
 
 如果需要在代理程式註冊期間設定 Proxy，您可能需要預先修改 Internet Explorer 的 Proxy 設定。
 
-1. 開啟 internet Explorer > [**設定**] [  >  **網際網路選項**] [連線] [  >  **Connections**  >  **LAN 設定**]。
-2. 選取 [**在您的區域網路使用 Proxy 伺服器**]。
-3. 如果您有不同的 HTTP 和 HTTPS/安全 proxy 埠，請選取 [ **Advanced** ]。
+1. 開啟 Internet Explorer >**設定**  >  **網際網路選項連線**  >  **Connections**  >  **區域網路設定**。
+2. 選取 [ **為您的 LAN 使用 Proxy 伺服器**]。
+3. 如果您有不同的 proxy 埠供 HTTP 和 HTTPS/安全使用，請選取 [ **Advanced** ]。
 
 **問：連線到 HTTP Proxy 時，Azure AD Connect Health 是否支援基本驗證？**
 
@@ -117,9 +119,9 @@ ms.locfileid: "87446983"
 
 **問：我需要開放哪些防火牆連接埠，Azure AD Connect Health 代理程式才能運作？**
 
-請參閱[需求一節](how-to-connect-health-agent-install.md#requirements)，以取得防火牆埠和其他連線需求的清單。
+請參閱 [需求一節](how-to-connect-health-agent-install.md#requirements) ，以取得防火牆埠清單和其他連線需求。
 
-**問：為什麼我會在 Azure AD Connect Health 入口網站中看到兩部名稱相同的伺服器？**
+**問：為什麼我在 Azure AD Connect Health 入口網站中看到兩部名稱相同的伺服器？**
 
 當您從伺服器移除代理程式時，系統不會自動從 Azure AD Connect Health 入口網站移除伺服器。 如果您以手動方式從伺服器移除代理程式，或移除伺服器本身，就需要以手動方式從 Azure AD Connect Health 入口網站中刪除伺服器項目。
 
@@ -133,11 +135,11 @@ ms.locfileid: "87446983"
 
 Health 代理程式會因為下列可能原因而無法註冊：
 
-* 因為防火牆封鎖流量，代理程式無法與所需端點通訊。 在 Web 應用程式 Proxy 伺服器上尤其常見。 請確定您已允許針對所需端點和連接埠的輸出通訊。 如需詳細資訊，請參閱[需求一節](how-to-connect-health-agent-install.md#requirements)。
+* 因為防火牆封鎖流量，代理程式無法與所需端點通訊。 在 Web 應用程式 Proxy 伺服器上尤其常見。 請確定您已允許針對所需端點和連接埠的輸出通訊。 如需詳細資訊，請參閱 [需求一節](how-to-connect-health-agent-install.md#requirements) 。
 * 輸出通訊會受到網路層的 TLS 檢查。 這會導致代理程式所使用的憑證遭到檢查伺服器/實體所取代，完成代理程式註冊的步驟便會失敗。
-* 使用者沒有執行代理程式註冊的存取權。 根據預設，全域系統管理員具有存取權。 您可以使用[azure 角色型存取控制（AZURE RBAC）](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) ，將存取權委派給其他使用者。
+* 使用者沒有執行代理程式註冊的存取權。 根據預設，全域系統管理員具有存取權。 您可以使用 [azure 角色型存取控制 (AZURE RBAC) ](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) 將存取權委派給其他使用者。
 
-**問：我收到「健全狀況服務資料不是最新狀態」的警示。如何? 對問題進行疑難排解？**
+**問：我收到「健全狀況服務的資料不是最新狀態」的警示。如何? 針對問題進行疑難排解？**
 
 當 Azure AD Connect Health 在過去 2 小時沒有從伺服器收到所有資料點，就會產生此警示。 [閱讀其他資訊](how-to-connect-health-data-freshness.md)。
 
@@ -150,13 +152,13 @@ Health 代理程式會因為下列可能原因而無法註冊：
 
 Azure AD Connect Health 警示會在成功情況下獲得解決。 Azure AD Connect Health 代理程式會定期偵測成功情況，並向服務回報。 對於少數幾個警示，隱藏是以時間為基礎。 也就是說，如果在警示產生的 72 小時內未觀察到相同的錯誤狀況，就會自動解決警示。
 
-**問：我收到「測試驗證要求（綜合交易）無法取得權杖」的警示。如何? 對問題進行疑難排解？**
+**問：我收到警示：「測試驗證要求 (綜合交易) 無法取得權杖」。如何? 針對問題進行疑難排解？**
 
 在健康狀態代理程式所起始的綜合交易期間，AD FS 伺服器上安裝的健康狀態代理程式無法取得權杖時，Azure AD Connect Health for AD FS 會產生警示。 健康狀態代理程式使用本機系統內容，並嘗試取得自我信賴憑證者的權杖。 這是 catch-all 測試，可確保 AD FS 處於發行權杖狀態。
 
 這項測試經常失敗，因為健康狀態代理程式無法解析 AD FS 伺服器陣列名稱。 如果 AD FS 伺服器受到網路負載平衡器保護，並且從受到負載平衡器保護的節點起始要求 (相較於不受負載平衡器保護的一般用戶端)，可能會發生此問題。 更新 "C:\Windows\System32\drivers\etc" 下的 "hosts" 檔案，使其包含 AD FS 伺服器的 IP 位址或 AD FS 伺服器陣列名稱 (例如 sts.contoso.com) 的迴圈 IP 位址 (127.0.0.1)，即可修正此問題。 新增主機檔案會讓網路呼叫短路，如此可讓健康狀態代理程式取得權杖。
 
-**問：我收到一封電子郵件，指出我的電腦未修補最近的勒索軟體攻擊。為什麼會收到這封電子郵件？**
+**問：我收到一封電子郵件，指出未針對最近的勒索軟體攻擊修補我的電腦。為什麼我會收到這封電子郵件？**
 
 Azure AD Connect Health 服務已掃描所有已監視的電腦，確保已安裝的必要修補程式。 如果至少一部電腦沒有重大修補程式，則已將電子郵件傳送給租用戶系統管理員。 下列邏輯已用來進行這項決定。
 1. 尋找電腦上安裝的所有 Hotfix。
@@ -192,10 +194,10 @@ CheckForMS17-010
 
 **問：為何系統並未產生我的 ADFS 稽核？**
 
-請使用 PowerShell Cmdlet <i>Get-AdfsProperties -AuditLevel</i> 以確保稽核記錄不是處於停用狀態。 深入瞭解[ADFS audit 記錄](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)。 請注意，若系統將進階稽核設定推送至 ADFS 伺服器，將會覆寫 auditpol.exe 的任何變更 (即使並未設定產生的應用程式)。 在此情況下，請將本機本機安全性原則設定為記錄已產生應用程式的失敗和成功項目。
+請使用 PowerShell Cmdlet <i>Get-AdfsProperties -AuditLevel</i> 以確保稽核記錄不是處於停用狀態。 深入瞭解 [ADFS audit 記錄](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)。 請注意，若系統將進階稽核設定推送至 ADFS 伺服器，將會覆寫 auditpol.exe 的任何變更 (即使並未設定產生的應用程式)。 在此情況下，請將本機本機安全性原則設定為記錄已產生應用程式的失敗和成功項目。
 
 **問：代理程式憑證何時會在到期前自動更新？**
-代理程式認證會在**6 個月**的到期日前自動更新。 如果未更新，請確定代理程式的網路連線是穩定的。 重新開機代理程式服務或更新為最新版本可能也會解決此問題。
+代理程式認證會在到期日之前的 **6 個月內** 自動更新。 如果未更新，請確定代理程式的網路連線是穩定的。 重新開機代理程式服務或更新至最新版本也可以解決此問題。
 
 
 ## <a name="related-links"></a>相關連結

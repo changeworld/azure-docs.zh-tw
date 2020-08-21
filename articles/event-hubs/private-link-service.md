@@ -3,12 +3,12 @@ title: 將 Azure 事件中樞與 Azure Private Link 服務整合
 description: 了解如何將 Azure 事件中樞與 Azure Private Link 服務整合
 ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: 8d6d5c13e1a5eab55998d3b98596ce845de104eb
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 817ec7b9256829ace61a0d1dad98f1f34683c95e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185463"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716786"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>允許透過私人端點存取 Azure 事件中樞命名空間 
 Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取各 Azure 服務 (例如 Azure 事件中樞、Azure 儲存體和 Azure Cosmos DB)，以及 Azure 裝載的客戶/合作夥伴服務。
@@ -18,11 +18,11 @@ Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取
 如需詳細資訊，請參閱[何謂 Azure Private Link？](../private-link/private-link-overview.md)
 
 > [!IMPORTANT]
-> **標準**和**專用**層都支援這項功能。 **基本**層不支援此功能。
+> **標準**層和**專用**層都支援這項功能。 **基本**層中不支援此功能。
 >
 > 啟用私人端點可防止其他 Azure 服務與事件中樞互動。  封鎖的要求包括來自其他 Azure 服務、Azure 入口網站及記錄與計量服務等等的要求。 
 > 
-> 以下是啟用私用端點時，無法存取事件中樞資源的一些服務。 請注意，清單並**不**完整。
+> 以下是啟用私人端點時，無法存取事件中樞資源的一些服務。 請注意，清單並 **不** 完整。
 >
 > - Azure 串流分析
 > - Azure IoT 中樞路由
@@ -30,7 +30,7 @@ Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取
 > - Azure Event Grid
 > - Azure 監視器 (診斷設定) 
 >
-> 作為例外狀況，您可以允許從特定信任的服務存取事件中樞資源，即使啟用了私用端點也一樣。 如需信任的服務清單，請參閱[信任的服務](#trusted-microsoft-services)。
+> 例外狀況是，即使啟用私人端點，您還是可以允許從某些受信任的服務存取事件中樞資源。 如需信任的服務清單，請參閱 [信任的服務](#trusted-microsoft-services)。
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>使用 Azure 入口網站新增私人端點
 
@@ -40,7 +40,7 @@ Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取
 
 - 事件中樞命名空間。
 - Azure 虛擬網路。
-- 虛擬網路中的子網路。 您可以使用**預設**子網。 
+- 虛擬網路中的子網路。 您可以使用 **預設** 子網。 
 - 命名空間和虛擬網路的擁有者或參與者權限。
 
 您的私人端點和虛擬網路必須位於相同區域。 當您使用入口網站選取私人端點的區域時，其只會自動篩選該區域中的虛擬網路。 您的命名空間可以位於不同區域。
@@ -53,15 +53,15 @@ Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 2. 在搜尋列中輸入**事件中樞**。
 3. 從清單中選取您要新增私人端點的**命名空間**。
-4. 在左側功能表上，選取 [**設定**] 底下的 [**網路**]。
+4. 在左側功能表的 [**設定**] 底下選取 [**網路**]。
 
     > [!NOTE]
-    > 您只會看到**標準**或**專用**命名空間的 [**網路**功能] 索引標籤。 
+    > 您只會看到標準或**專用**命名空間的 [**網路**] 索引**卷**標。 
 
-    :::image type="content" source="./media/private-link-service/selected-networks-page.png" alt-text="網路索引標籤-選取的網路選項" lightbox="./media/private-link-service/selected-networks-page.png":::    
+    :::image type="content" source="./media/private-link-service/selected-networks-page.png" alt-text="[網路] 索引標籤-選取的網路選項" lightbox="./media/private-link-service/selected-networks-page.png":::    
 
     > [!NOTE]
-    > 預設會選取 [**選取的網路**] 選項。 如果您未指定 IP 防火牆規則或新增虛擬網路，則可以透過公用網際網路存取該命名空間。 
+    > 預設會選取 [ **選取的網路** ] 選項。 如果您未指定 IP 防火牆規則或新增虛擬網路，可以透過公用網際網路來存取命名空間。 
 1. 選取頁面頂端的 [私人端點連線] 索引標籤。 
 1. 選取頁面頂端的 [+ 私人端點] 按鈕。
 
@@ -106,7 +106,7 @@ Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取
 
 [!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
 
-若要允許信任的服務存取您的命名空間，請切換至 [**網路**] 頁面上的 [**防火牆和虛擬網路**] 索引標籤，然後針對 [**允許信任的 Microsoft 服務略過此防火牆**] 選取 **[是]** 。 
+若要允許信任的服務存取您的命名空間，請切換至 [**網路**] 頁面上的 [**防火牆與虛擬網路**] 索引標籤，然後選取 [**是]** ，**允許信任的 Microsoft 服務略過此防火牆？**。 
 
 ## <a name="add-a-private-endpoint-using-powershell"></a>使用 PowerShell 新增私人端點
 下列範例會示範如何使用 Azure PowerShell 來建立私人端點連線。 其不會為您建立專用叢集。 請遵循[此文章](event-hubs-dedicated-cluster-create-portal.md)中的步驟，以建立專用的事件中樞叢集。 
@@ -222,7 +222,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 2. 選取您想要核准的**私人端點**
 3. 選取 [核准] 按鈕。
 
-    ![映像](./media/private-link-service/approve-private-endpoint.png)
+    ![核准私人端點](./media/private-link-service/approve-private-endpoint.png)
 4. 在 [核准連線] 頁面上，新增註解 (選擇性)，然後選取 [是]。 如果您選取 [否]，則不會發生任何事。 
 5. 您應該會看見清單中私人端點連線的狀態變更為 [已核准]。 
 
@@ -230,7 +230,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 1. 如果您想拒絕任何私人端點連線 (不論其為暫止要求或現有連線)，請選取該連線，然後按一下 [拒絕] 按鈕。
 
-    ![映像](./media/private-link-service/private-endpoint-reject-button.png)
+    ![拒絕私人端點](./media/private-link-service/private-endpoint-reject-button.png)
 2. 在 [拒絕連線] 頁面上，輸入註解 (選擇性)，然後選取 [是]。 如果您選取 [否]，則不會發生任何事。 
 3. 您應該會看見清單中私人端點連線的狀態變更為 [已拒絕]。 
 
@@ -242,7 +242,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="validate-that-the-private-link-connection-works"></a>驗證私人連結連線是否正常運作
 
-您應該驗證私人端點資源之相同子網路內的資源是否正透過私人 IP 位址連線到您的事件中樞命名空間，而且其具有正確的私人 DNS 區域整合。
+您應驗證私人端點的虛擬網路內的資源是透過私人 IP 位址連線到您的事件中樞命名空間，而且它們具有正確的私人 DNS 區域整合。
 
 首先，依照[在 Azure 入口網站中建立 Windows 虛擬機器](../virtual-machines/windows/quick-create-portal.md)中的步驟，建立虛擬機器。
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab69e3f4ca89e2069ff25470773e597009ec238
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 4fc459e63dd48adb49ab916c368b68cc3a1ccbaf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641070"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717025"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>規劃 Azure Multi-Factor Authentication 部署
 
@@ -74,7 +74,7 @@ Azure Multi-factor Authentication 會強制執行具有條件式存取的原則�
 
 條件式存取原則會強制註冊，要求在第一次登入時取消註冊的使用者完成註冊，這是重要的安全性考量。
 
-[Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) 會同時為 Azure Multi-Factor Authentication 案例提供註冊原則，並將風險偵測和補救原則自動化。 當身分識別遭受入侵威脅時，可建立原則來強制變更密碼，或在登入視為有所風險時要求進行 MFA，如下列[事件](../reports-monitoring/concept-risk-events.md)：
+[Azure AD Identity Protection](../identity-protection/howto-identity-protection-configure-risk-policies.md) 會同時為 Azure Multi-Factor Authentication 案例提供註冊原則，並將風險偵測和補救原則自動化。 當身分識別遭受入侵威脅時，可建立原則來強制變更密碼，或在登入視為有所風險時要求進行 MFA，如下列[事件](../identity-protection/overview-identity-protection.md)：
 
 * 認證外洩
 * 從匿名 IP 位址登入
@@ -151,7 +151,7 @@ Azure Multi-factor Authentication 會強制執行具有條件式存取的原則�
 
 ### <a name="registration-with-identity-protection"></a>使用 Identity Protection 註冊
 
-如果您的組織使用的是 Azure Active Directory Identity Protection，請[設定 MFA 註冊原則](../identity-protection/howto-mfa-policy.md)，提示使用者在下一次以互動方式登入時註冊。
+如果您的組織使用的是 Azure Active Directory Identity Protection，請[設定 MFA 註冊原則](../identity-protection/howto-identity-protection-configure-mfa-policy.md)，提示使用者在下一次以互動方式登入時註冊。
 
 ### <a name="registration-without-identity-protection"></a>不使用 Identity Protection 註冊
 
@@ -165,7 +165,7 @@ Azure Multi-factor Authentication 會強制執行具有條件式存取的原則�
 2. 使用條件式存取，對此群組強制執行多重要素驗證以存取所有資源。
 3. 定期重新評估群組成員資格，並移除已從群組註冊的使用者。
 
-您可以使用依賴 [MSOnline PowerShell 模組](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0) (英文) 的 PowerShell 命令，識別已註冊和未註冊的 Azure MFA 使用者。
+您可以使用依賴 [MSOnline PowerShell 模組](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0) (英文) 的 PowerShell 命令，識別已註冊和未註冊的 Azure MFA 使用者。
 
 #### <a name="identify-registered-users"></a>識別已註冊的使用者
 
@@ -281,7 +281,7 @@ NPS 擴充功能可作為 RADIUS 與雲端式 Azure MFA 之間的配接器，以
 
 #### <a name="implementing-your-nps-server"></a>實作 NPS 伺服器
 
-如果您有已部署且已在使用的 NPS 執行個體，請[將現有的 NPS 基礎結構與 Azure Multi-Factor Authentication 整合](howto-mfa-nps-extension.md)。 如果您是第一次設定 NPS，請參閱[網路原則伺服器 (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) 以取得相關指示。 如需疑難排解指導方針，請參閱[解決 Azure Multi-Factor Authentication NPS 擴充功能的錯誤訊息](howto-mfa-nps-extension-errors.md)一文。
+如果您有已部署且已在使用的 NPS 執行個體，請[將現有的 NPS 基礎結構與 Azure Multi-Factor Authentication 整合](howto-mfa-nps-extension.md)。 如果您是第一次設定 NPS，請參閱[網路原則伺服器 (NPS)](/windows-server/networking/technologies/nps/nps-top) 以取得相關指示。 如需疑難排解指導方針，請參閱[解決 Azure Multi-Factor Authentication NPS 擴充功能的錯誤訊息](howto-mfa-nps-extension-errors.md)一文。
 
 #### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>為未註冊 MFA 的使用者準備 NPS
 
@@ -325,7 +325,7 @@ Windows 安全性記錄和 AD FS 系統管理員記錄中的標準 AD FS 2016 �
 
 在每部 AD FS 伺服器上的 [本機電腦] [我的存放區] 中，會有名為 OU = Microsoft AD FS Azure MFA 的自我簽署 Azure MFA 憑證，其中包含憑證到期日。 請檢查每個 AD FS 伺服器上此憑證的有效期間，以判斷到期日。
 
-如果憑證的有效期間即將到期，[在每個 AD FS 伺服器](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers)上產生並驗證新的 MFA 憑證。
+如果憑證的有效期間即將到期，[在每個 AD FS 伺服器](/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers)上產生並驗證新的 MFA 憑證。
 
 下列指引會詳細說明如何在您的 AD FS 伺服器上管理 Azure MFA 憑證。 當您使用 Azure MFA 設定 AD FS 時，透過 `New-AdfsAzureMfaTenantCertificate` PowerShell Cmdlet 產生的憑證有效期間為兩年。 請在到期前更新並安裝已更新的憑證，以避免 MFA 服務中斷。
 
@@ -336,7 +336,7 @@ Windows 安全性記錄和 AD FS 系統管理員記錄中的標準 AD FS 2016 �
 1. 符合任何所需的必要條件
    1. 針對任何混合式案例部署 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md)
    1. 在針對雲端存取所發佈的任何內部部署應用程式上，部署 [Azure AD 應用程式 Proxy](../manage-apps/application-proxy.md)
-   1. 針對任何 RADIUS 驗證部署 [NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
+   1. 針對任何 RADIUS 驗證部署 [NPS](/windows-server/networking/technologies/nps/nps-top)
    1. 確保使用者已升級至支援的 Microsoft Office 版本，且已啟用新式驗證
 1. 設定所選的[驗證方法](#choose-verification-options)
 1. 定義[具名網路位置](../conditional-access/location-condition.md#named-locations)
@@ -344,7 +344,7 @@ Windows 安全性記錄和 AD FS 系統管理員記錄中的標準 AD FS 2016 �
 1. 設定[設定條件式存取原則](#create-conditional-access-policy)
 1. 設定 MFA 註冊原則
    1. [合併 MFA 和 SSPR](howto-registration-mfa-sspr-combined.md)
-   1. 使用 [Identity Protection](../identity-protection/howto-mfa-policy.md)
+   1. 使用 [Identity Protection](../identity-protection/howto-identity-protection-configure-mfa-policy.md)
 1. 傳送使用者通訊並讓使用者在此註冊：[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
 1. [追蹤已註冊的人員](#identify-non-registered-users)
 

@@ -3,18 +3,18 @@ title: 如何建立 Azure 自動化更新管理的更新部署
 description: 本文說明如何排程更新部署並檢查其狀態。
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2a81376b284e0d1df84a69b969335c0e63999a00
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4336ba272dd83ad2a35060c1c7524a564b928484
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450033"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717688"
 ---
-# <a name="how-to-deploy-updates-and-review-results"></a>如何部署更新及審查結果
+# <a name="how-to-deploy-updates-and-review-results"></a>如何部署更新和檢查結果
 
-本文說明如何排程更新部署，以及在部署完成後檢查程式。
+本文說明如何排程更新部署，並在部署完成後檢查程式。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -31,7 +31,7 @@ ms.locfileid: "87450033"
 
 1. 在您的自動化帳戶中，移至 [更新管理] 底下的 [更新管理]，然後選取 [排程更新部署]。
 
-2. 在 [**新增更新部署**] 底下的 [**名稱**] 欄位中，輸入部署的唯一名稱。
+2. 在 [ **新增更新部署**] 下的 [ **名稱** ] 欄位中，輸入部署的唯一名稱。
 
 3. 選取要進行更新部署的目標作業系統。
 
@@ -41,8 +41,10 @@ ms.locfileid: "87450033"
 
 6. 使用 [更新分類] 區域來指定產品的[[更新分類]](update-mgmt-view-update-assessments.md#work-with-update-classifications)。 針對每個產品，取消選取所有支援的更新分類，但不要取消選取要納入您更新部署中的項目。
 
-7. 使用 [包含/排除更新] 區域來選取要部署的特定更新。 [包含/排除] 頁面會依知識庫文章識別碼顯示要包含或排除的更新。
-    
+    如果您的部署只是要套用一組選取的更新，則必須在設定 **包含/排除更新** 選項時，取消選取所有預先選取的更新分類，如下一個步驟所述。 這可確保只有您已指定要 *包含* 在此部署中的更新會安裝在目的電腦上。
+
+7. 您可以使用 **包含/排除更新** 區域，在部署中新增或排除選取的更新。 在 [ **包含/排除** ] 頁面上，您可以輸入要包含或排除的 KB 文章識別碼編號。
+
    > [!IMPORTANT]
    > 請記得，排除項目會覆寫包含項目。 例如，如果您定義排除規則 `*`，更新管理即會將所有修補程式或套件從安裝中排除。 排除的修補程式仍然會顯示為從機器中遺漏。 若使用 Linux 電腦，如果您納入已排除之相依套件的套件，更新管理不會安裝主要套件。
 
@@ -51,7 +53,7 @@ ms.locfileid: "87450033"
 
 8. 選取 [排程設定]。 預設開始時間為目前時間之後的 30 分鐘。 您可以將開始時間設為 10 分鐘以後的任何時間。
 
-9. 使用 [**週期**] 欄位來指定部署是否發生一次，或使用週期性排程，然後選取 **[確定]**。
+9. 使用 [ **週期** ] 欄位來指定部署是否發生一次或使用週期性排程，然後選取 **[確定]**。
 
 10. 在 [前置指令碼 + 後置指令碼 (預覽)] 區域，選取在部署前和部署後要執行的指令碼。 若要深入了解，請參閱[管理前指令碼和後指令碼](update-mgmt-pre-post-scripts.md)。
     
@@ -74,7 +76,7 @@ ms.locfileid: "87450033"
     > [!NOTE]
     > 如果 [重新開機選項] 已設定為 [永不重新開機]，在[用來管理重新啟動的登錄機碼](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)底下所列的登錄機碼可能會造成重新開機事件。
 
-13. 當您完成設定部署排程時，請選取 [**建立**]。
+13. 當您完成部署排程的設定時，請選取 [ **建立**]。
 
     ![更新排程設定窗格](./media/update-mgmt-deploy-updates/manageupdates-schedule-win.png)
 
@@ -113,4 +115,4 @@ ms.locfileid: "87450033"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要瞭解如何建立警示來通知您有關更新部署結果，請參閱[建立更新管理的警示](update-mgmt-configure-alerts.md)。
+若要瞭解如何建立警示來通知您有關更新部署的結果，請參閱 [建立更新管理的警示](update-mgmt-configure-alerts.md)。

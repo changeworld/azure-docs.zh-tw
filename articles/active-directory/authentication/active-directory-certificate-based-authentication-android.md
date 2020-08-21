@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9760624afec111a271ae5aa0ebbe5533d6ba8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dd4c95c3c02f4b4a807b5238aa61e76ecb56e3e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680200"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716413"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上的 Azure Active Directory 憑證式驗證
 
@@ -27,7 +27,7 @@ ms.locfileid: "81680200"
 
 設定這項功能之後，就不需要在行動裝置上的特定郵件和 Microsoft Office 應用程式中，輸入使用者名稱和密碼的組合。
 
-本主題提供在 Android 裝置上設定 CBA 的需求和支援案例，以供 Office 365 Enterprise、Business、教育、美國政府、中國和德國方案中的租使用者使用者使用。
+本主題提供您在 Android 裝置上設定 CBA 的需求和支援案例，以供 Office 365 企業版、商務版、教育版、美國政府、中國和德國方案中的租使用者使用者使用。
 
 在 Office 365 US Government Defense 和 Federal 方案中，這項功能處於預覽版。
 
@@ -64,9 +64,9 @@ ADFS 權杖必須要有下列宣告，Azure Active Directory 才能撤銷用戶�
 * 在 Android 上安裝 Microsoft Authenticator 的需求。
 * 如何取得使用者憑證的指示。
 
-如需詳細資訊，請參閱[自訂 AD FS 登入頁面](https://technet.microsoft.com/library/dn280950.aspx)。
+如需詳細資訊，請參閱[自訂 AD FS 登入頁面](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn280950(v=ws.11))。
 
-某些 Office 應用程式（已啟用新式驗證）會在其要求中傳送「*提示 = 登*入」至 Azure AD。 根據預設，Azure AD 會將對 ADFS 的要求中的 '*prompt = login*' 轉譯成 '*wauth = usernamepassworduri*' （要求 Adfs 進行 U/P 驗證）和 '*wfresh = 0*' （要求 adfs 忽略 SSO 狀態並進行全新驗證）。 如果您想要啟用這些應用程式的憑證型驗證，您必須修改預設的 Azure AD 行為。 將同盟網域設定中的 [*PromptLoginBehavior*] 設定為 [*已停用*]。
+某些 Office 應用程式 (已啟用新式驗證) 將 '*prompt = login*' 傳送至其要求中的 Azure AD。 根據預設，Azure AD 會將要求中的 '*prompt = login*' 轉譯為 '*>wauth = usernamepassworduri*' (要求 Adfs 進行 U/P 驗證) 和 '*>wfresh = 0*' (要求 adfs 忽略 SSO 狀態並進行全新驗證) 。 如果您想要啟用這些應用程式的憑證型驗證，您必須修改預設的 Azure AD 行為。 將同盟網域設定中的 '*PromptLoginBehavior*' 設定為「*已停用*」。
 您可以使用 [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) Cmdlet 來執行這項工作︰
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`

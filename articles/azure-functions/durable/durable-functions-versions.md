@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4c8a536086e426a2d83d26538f9d0efe1ea63eb4
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705787"
+ms.locfileid: "88719405"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions 版本總覽
 
@@ -46,7 +46,7 @@ ms.locfileid: "88705787"
 
 在您的專案中安裝最新的2.x 版 Durable Functions 系結延伸模組。
 
-#### <a name="javascript-and-python"></a>JavaScript 和 Python
+#### <a name="javascript-python-and-powershell"></a>JavaScript、Python 和 PowerShell
 
 Durable Functions 2.x 適用于 [Azure Functions 擴充](../functions-bindings-register.md#extension-bundles)功能套件組合的2.x 版。
 

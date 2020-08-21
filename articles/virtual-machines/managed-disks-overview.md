@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: db2ee7adac19da7f7f5e1c6f60394d94dbf29ad5
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: ad7101bb61324db033f57bb25c068e1ba625ef8c
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705209"
+ms.locfileid: "88718062"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure 受控磁碟簡介
 
@@ -95,7 +95,7 @@ Azure 中有三個主要磁碟角色：資料磁碟、OS 磁碟和暫存磁碟�
 
 ### <a name="temporary-disk"></a>暫存磁碟
 
-大部分的 Vm 都包含暫存磁片，而非受控磁片。 暫存磁碟為應用程式和處理程序提供短期的儲存空間，且僅供用來儲存分頁檔之類的資料。 暫存磁碟上的資料可能會在[維護事件](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期間或當您[重新佈署 VM](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) 時遺失。 在 VM 的成功標準重新開機期間，暫存磁碟上的資料將保留。 如需沒有暫存磁片之 Vm 的詳細資訊，請參閱 [沒有本機暫存磁片的 AZURE VM 大小](../articles/virtual-machines/azure-vms-no-temp-disk.md)
+大部分的 Vm 都包含暫存磁片，而非受控磁片。 暫存磁片提供應用程式和處理常式的短期儲存空間，目的是要只儲存頁面或分頁檔等資料。 暫存磁碟上的資料可能會在[維護事件](~/articles/virtual-machines/windows/manage-availability.md?toc=/azure/virtual-machines/windows/toc.json#understand-vm-reboots---maintenance-vs-downtime)期間或當您[重新佈署 VM](~/articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json) 時遺失。 在 VM 的成功標準重新開機期間，暫存磁片上的資料將會保留。 如需沒有暫存磁片之 Vm 的詳細資訊，請參閱 [沒有本機暫存磁片的 AZURE VM 大小](~/articles/virtual-machines/azure-vms-no-temp-disk.md)
 
 在 Azure Linux VM 上，暫存磁碟通常是 /dev/sdb，而 Windows VM 上的暫存磁碟則預設為 D:。 除非您在主機上啟用加密，否則暫存磁碟不會由伺服器端加密來加密。
 

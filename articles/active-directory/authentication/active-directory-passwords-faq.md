@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eff16e0d1aa242ed4ca8b427c7af8e8defa7804
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e210a11dbcde17c8a5dfd16c46c0d3b3d5c6523
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051299"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716328"
 ---
-# <a name="self-service-password-reset-frequently-asked-questions"></a>自助式密碼重設常見問題
+# <a name="self-service-password-reset-frequently-asked-questions"></a>自助式密碼重設的常見問題
 
-以下是與自助密碼重設相關之所有事項的一些常見問題（FAQ）。
+以下是與自助式密碼重設相關的所有問題 (常見問題) 的一些常見問題。
 
-如果您有關於 Azure Active Directory (Azure AD) 和自助式密碼重設 (SSPR) 的一般問題，但在這裡找不到答案，則可以在 [Microsoft 的 Azure Active Directory 問與答頁面](https://docs.microsoft.com/answers/topics/azure-active-directory.html)向社群尋求協助。 社群的成員包括工程師、產品經理、MVP 和夥伴 IT 專業人員。
+如果您有關於 Azure Active Directory (Azure AD) 和自助式密碼重設 (SSPR) 的一般問題，但在這裡找不到答案，則可以在 [Microsoft 的 Azure Active Directory 問與答頁面](/answers/topics/azure-active-directory.html)向社群尋求協助。 社群的成員包括工程師、產品經理、MVP 和夥伴 IT 專業人員。
 
 此常見問題集分成下列各節：
 
@@ -38,7 +38,7 @@ ms.locfileid: "87051299"
 
   > **答：** 是。 只要已啟用密碼重設功能且使用者已獲得授權，他們就可以前往密碼重設註冊入口網站 (https://aka.ms/ssprsetup) ) 註冊其驗證資訊。 使用者也可以透過「存取面板」(https://myapps.microsoft.com) ) 進行註冊。 若要透過「存取面板」註冊，使用者必須選取其個人資料圖片，請選取 [設定檔]，然後選取 [註冊密碼重設] 選項。
   >
-  > 如果您啟用[合併註冊](concept-registration-mfa-sspr-combined.md)，使用者可以同時註冊 SSPR 和 Azure 多重要素驗證。
+  > 如果您啟用 [合併註冊](concept-registration-mfa-sspr-combined.md)，使用者可以同時註冊 SSPR 和 Azure Multi-Factor Authentication。
 * **問：如果針對群組啟用密碼重設，之後又決定針對所有人啟用，我的使用者需要重新註冊嗎？**
 
   > **答：** 否。 已填入驗證資料的使用者不需要重新註冊。
@@ -197,7 +197,7 @@ ms.locfileid: "87051299"
   >
 * **問：當我使用者的內部部署密碼到期時，Office 入口網站是否會通知他們？**
 
-  > **答：** 是，目前如果您使用「Active Directory 同盟服務」(AD FS)，就可以傳送通知。 如果您使用 AD FS，請依照[使用 AD FS 來傳送密碼原則宣告](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) \(機器翻譯\) 一文中的指示進行操作。 如果您使用密碼雜湊同步處理，則目前還無法傳送通知。 我們不會從內部部署目錄同步處理密碼原則，因此無法對雲端體驗發佈到期通知。 在上述任一情況下，也可以[透過 PowerShell 通知密碼即將到期的使用者](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx) \(英文\)。
+  > **答：** 是，目前如果您使用「Active Directory 同盟服務」(AD FS)，就可以傳送通知。 如果您使用 AD FS，請依照[使用 AD FS 來傳送密碼原則宣告](/windows-server/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) \(機器翻譯\) 一文中的指示進行操作。 如果您使用密碼雜湊同步處理，則目前還無法傳送通知。 我們不會從內部部署目錄同步處理密碼原則，因此無法對雲端體驗發佈到期通知。 在上述任一情況下，也可以[透過 PowerShell 通知密碼即將到期的使用者](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx) \(英文\)。
   >
   >
 * **問：是否可以防止使用者變更其密碼？**
@@ -243,7 +243,7 @@ ms.locfileid: "87051299"
 
 * **問：密碼回寫如何在幕後運作？**
 
-  > **答：** 請參閱[密碼回寫的運作方式](howto-sspr-writeback.md)一文，以了解啟用密碼回寫時會發生的情況，以及資料如何透過系統回流到您的內部部署環境。
+  > **答：** 請參閱[密碼回寫的運作方式](./tutorial-enable-sspr-writeback.md)一文，以了解啟用密碼回寫時會發生的情況，以及資料如何透過系統回流到您的內部部署環境。
   >
   >
 * **問：密碼回寫需要多久時間才會運作？是否有像是使用密碼雜湊同步處理時的同步處理延遲？**
@@ -273,7 +273,7 @@ ms.locfileid: "87051299"
   >
 * **問：密碼回寫是否安全？如何確保不會遭到駭客入侵？**
 
-  > **答：** 是，密碼回寫很安全。 若要深入了解密碼回寫服務所實作的多層安全性，請參閱[密碼回寫概觀](howto-sspr-writeback.md)一文中的[密碼回寫安全性](concept-sspr-writeback.md#password-writeback-security)一節。
+  > **答：** 是，密碼回寫很安全。 若要深入了解密碼回寫服務所實作的多層安全性，請參閱[密碼回寫概觀](./tutorial-enable-sspr-writeback.md)一文中的[密碼回寫安全性](concept-sspr-writeback.md#password-writeback-security)一節。
   >
   >
 
@@ -286,7 +286,7 @@ ms.locfileid: "87051299"
 * [SSPR 使用哪些資料，以及您應該為使用者填入哪些資料？](howto-sspr-authenticationdata.md)
 * [哪些驗證方法可供使用者使用？](concept-sspr-howitworks.md#authentication-methods)
 * [使用 SSPR 的原則選項有哪些？](concept-sspr-policy.md)
-* [什麼是密碼回寫，且為什麼我需要了解它？](howto-sspr-writeback.md)
+* [什麼是密碼回寫，且為什麼我需要了解它？](./tutorial-enable-sspr-writeback.md)
 * [如何回報 SSPR 中的活動？](howto-sspr-reporting.md)
 * [SSPR 中的所有選項有哪些，以及它們有何意義？](concept-sspr-howitworks.md)
 * [我認為有中斷。如何針對 SSPR 進行疑難排解？](active-directory-passwords-troubleshoot.md)

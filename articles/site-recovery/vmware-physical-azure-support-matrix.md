@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/實體嚴重損壞修復的支援矩陣
 description: 摘要說明使用 Azure Site Recovery 將 VMware Vm 和實體伺服器的災難復原至 Azure 的支援。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 8ffc07d38e3a04cd4cf71aaa8e80d69066f044f6
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 288cebc4d4097ff40b618e2f1976039359458ecf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607096"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719014"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -86,8 +86,8 @@ Windows 7 SP1 （含 SP1）64位 | 從 [更新彙總套件 36](https://support.m
 **作業系統** | **詳細資料**
 --- | ---
 Linux | 僅支援64位系統。 不支援32位系統。<br/><br/>每部 Linux 伺服器都應該已安裝 [linux Integration Services (.lis) 元件](https://www.microsoft.com/download/details.aspx?id=55106) 。 在測試容錯移轉/容錯移轉之後，必須在 Azure 中啟動伺服器。 如果缺少內建的 IIS 元件，請務必先安裝 [元件](https://www.microsoft.com/download/details.aspx?id=55106) ，再啟用複寫，讓機器在 Azure 中開機。 <br/><br/> Site Recovery 會協調容錯移轉以在 Azure 中執行 Linux 伺服器。 不過，Linux 廠商可能會將支援僅限於生命週期尚未結束的發行版本。<br/><br/> 在 Linux 散發套件上，僅支援屬於散發套件次要版本/更新的庫存核心。<br/><br/> 不支援升級各主要 Linux 散發套件版本的受保護機器。 若要升級，請停用複寫、升級作業系統，然後再次啟用複寫。<br/><br/> [深入瞭解](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) Azure 中的 Linux 和開放原始碼技術支援。
-Linux Red Hat Enterprise | 5.2 至5.11</b><br/> 6.1 至6.10</b> </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9](https://support.microsoft.com/help/4578241/)、 [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8.1、 [8.2](https://support.microsoft.com/help/4570609) <br/> 在執行 Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10 的伺服器上，有幾個較舊的核心沒有預先安裝的 [Linux Integration Services (.lis) 元件](https://www.microsoft.com/download/details.aspx?id=55106) 。 如果缺少內建的 IIS 元件，請務必先安裝 [元件](https://www.microsoft.com/download/details.aspx?id=55106) ，再啟用複寫，讓機器在 Azure 中開機。
-Linux：CentOS | 5.2 至5.11</b><br/> 6.1 至6.10</b><br/> 7.0 至 [7.9](https://support.microsoft.com/help/4578241/)<br/> <br/> 8.0、8.1、 [8.2](https://support.microsoft.com/help/4570609) <br/><br/> 執行 CentOS 5.2-5.11 & 6.1-6.10 的伺服器上有幾個較舊的核心沒有預先安裝的  [Linux Integration Services (的 .lis) 元件](https://www.microsoft.com/download/details.aspx?id=55106) 。 如果缺少內建的 IIS 元件，請務必先安裝 [元件](https://www.microsoft.com/download/details.aspx?id=55106) ，再啟用複寫，讓機器在 Azure 中開機。
+Linux Red Hat Enterprise | 5.2 至5.11</b><br/> 6.1 至6.10</b> </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9](https://support.microsoft.com/help/4578241/) </br> [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8.1、 [8.2](https://support.microsoft.com/help/4570609) <br/> 在執行 Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10 的伺服器上，有幾個較舊的核心沒有預先安裝的 [Linux Integration Services (.lis) 元件](https://www.microsoft.com/download/details.aspx?id=55106) 。 如果缺少內建的 IIS 元件，請務必先安裝 [元件](https://www.microsoft.com/download/details.aspx?id=55106) ，再啟用複寫，讓機器在 Azure 中開機。
+Linux：CentOS | 5.2 至5.11</b><br/> 6.1 至6.10</b><br/> </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9](https://support.microsoft.com/help/4578241/) </br> [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8.1、 [8.2](https://support.microsoft.com/help/4570609) <br/><br/> 執行 CentOS 5.2-5.11 & 6.1-6.10 的伺服器上有幾個較舊的核心沒有預先安裝的  [Linux Integration Services (的 .lis) 元件](https://www.microsoft.com/download/details.aspx?id=55106) 。 如果缺少內建的 IIS 元件，請務必先安裝 [元件](https://www.microsoft.com/download/details.aspx?id=55106) ，再啟用複寫，讓機器在 Azure 中開機。
 Ubuntu | Ubuntu 14.04 LTS server [ (檢查支援的核心版本) ](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS server [ (檢查支援的核心版本) ](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS server [ (檢查支援的核心版本) ](#ubuntu-kernel-versions);[9.36](https://support.microsoft.com/help/4578241/)支援 Ubuntu 18.4.03 (核心 5.4)  </br> Ubuntu 20.04 LTS server [ (檢查支援的核心版本) ](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 (包含所有7的支援。 *x*、8。 *x* 版本) [ (檢查支援的核心版本) ](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4、 [SP5](https://support.microsoft.com/help/4570609) [ (檢查支援的核心版本) ](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15，15 SP1 [ (檢查支援的核心版本) ](#suse-linux-enterprise-server-15-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 11 SP3。 [請務必下載設定伺服器上的最新行動代理程式安裝程式](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server)。 </br> SUSE Linux Enterprise Server 11 SP4 </br> **注意**：不支援將複寫的機器從 SUSE LINUX ENTERPRISE SERVER 11 SP3 升級至 SP4。 若要升級，請停用複寫，然後在升級之後重新啟用。 <br/>|
@@ -179,10 +179,10 @@ XFSv5 | XFS 檔案系統上的 XFSv5 功能（例如中繼資料總和檢查碼�
 主機網路 NIC 小組 | 支援 VMware VM。 <br/><br/>不支援實體機器複寫。
 主機網路 VLAN | 是。
 主機網路 IPv4 | 是。
-主機網路 IPv6 | 不知道。
-客體/伺服器網路 NIC 小組 | 不知道。
+主機網路 IPv6 | 否。
+客體/伺服器網路 NIC 小組 | 否。
 客體/伺服器網路 IPv4 | 是。
-客體/伺服器網路 IPv6 | 不知道。
+客體/伺服器網路 IPv6 | 否。
 客體/伺服器網路靜態 IP (Windows) | 是。
 客體/伺服器網路靜態 IP (Linux) | 是。 <br/><br/>VM 設定為在容錯回復時使用 DHCP。
 客體/伺服器網路多重 NIC | 是。
@@ -330,7 +330,7 @@ VM 上所有磁碟的尖峰資料變換 | 54 MB/秒
 
 ## <a name="obtain-latest-components"></a>取得最新的元件
 
-**名稱** | **說明** | **詳細資料**
+**名稱** | **描述** | **詳細資料**
 --- | --- | ---
 組態伺服器 | 已安裝在內部部署環境。<br/> 協調內部部署 VMware 伺服器或實體機器與 Azure 之間的通訊。 | - [瞭解](vmware-physical-azure-config-process-server-overview.md) 設定伺服器。<br/> - [瞭解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) 如何升級至最新版本。<br/> - [瞭解](vmware-azure-deploy-configuration-server.md) 設定伺服器的設定。
 處理序伺服器 | 預設會安裝在組態伺服器上。<br/> 接收復寫資料、以快取、壓縮和加密進行優化，然後將其傳送至 Azure。<br/> 當您的部署成長時，您可以新增額外的進程伺服器來處理更大量的複寫流量。 | - [瞭解](vmware-physical-azure-config-process-server-overview.md) 進程伺服器。<br/> - [瞭解](vmware-azure-manage-process-server.md#upgrade-a-process-server) 如何升級至最新版本。<br/> - [瞭解如何](vmware-physical-large-deployment.md#set-up-a-process-server) 設定相應放大進程伺服器。

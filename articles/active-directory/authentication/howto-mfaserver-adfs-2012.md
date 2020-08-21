@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2777675d915d99b8c0e3c2a123b24ab60d41f672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8143149332a4a493a9a4d8d4a0d403420b87f75a
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653358"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719473"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>設定 Azure Multi-Factor Authentication Server 以搭配 Windows Server 中的 AD FS 運作
 
@@ -84,7 +84,7 @@ ms.locfileid: "80653358"
 請遵循下列步驟來編輯 MultiFactorAuthenticationAdfsAdapter.config 檔案：
 
 1. 將 **UseWebServiceSdk** 節點設定為 **true**。  
-2. 將 **WebServiceSdkUrl** 的值設定為 Multi-Factor Authentication Web 服務 SDK 的 URL。 例如：*https:\/\/contoso.com/\<憑證名稱>/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*，這裡的 *\<憑證名稱>* 是您的憑證名稱。  
+2. 將 **WebServiceSdkUrl** 的值設定為 Multi-Factor Authentication Web 服務 SDK 的 URL。 例如： *HTTPs： \/ \/ Contoso.com/ \<certificatename> /MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*，其中 *\<certificatename>* 是您的憑證名稱。  
 3. 編輯 Register-MultiFactorAuthenticationAdfsAdapter.ps1 指令碼，方法是將 `-ConfigurationFilePath &lt;path&gt;` 新增至 `Register-AdfsAuthenticationProvider` 命令的結尾，其中 *&lt;path&gt;* 是 MultiFactorAuthenticationAdfsAdapter.config 檔案的完整路徑。
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>以使用者名稱和密碼設定 Web 服務 SDK
@@ -98,7 +98,7 @@ ms.locfileid: "80653358"
 
 如果您不想要使用使用者名稱和密碼，請遵循下列步驟來以用戶端憑證設定 Web 服務 SDK。
 
-1. 從執行 Web 服務 SDK 之伺服器的憑證授權單位取得用戶端憑證。 了解如何 [取得用戶端憑證](https://technet.microsoft.com/library/cc770328.aspx)。  
+1. 從執行 Web 服務 SDK 之伺服器的憑證授權單位取得用戶端憑證。 了解如何 [取得用戶端憑證](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770328(v=ws.10))。  
 2. 將用戶端憑證匯入執行 Web 服務 SDK 的伺服器上的本機電腦個人憑證存放區。 請確定憑證授權單位的公開憑證是在受信任的根憑證存放區中。  
 3. 將用戶端憑證的公開和私密金鑰匯出至 .pfx 檔案。  
 4. 將 Base64 格式的公開金鑰匯出至 .cer 檔案。  

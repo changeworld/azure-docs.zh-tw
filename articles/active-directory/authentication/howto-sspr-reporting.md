@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e3425407fdb131fb1499b2cd085fbe6d427804a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9c8557457e3a1dc7d0ed1e50da3070360b1fd76f
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035293"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717722"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD 密碼管理的報告選項
 
@@ -46,14 +46,14 @@ ms.locfileid: "87035293"
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 2. 在左側窗格中選取 [所有服務]。
 3. 在服務清單中搜尋並選取 **Azure Active Directory**。
-4. 從 [管理] 區段中選取 [**使用者**]。
-5. 從 [**使用者**] 分頁選取 [ **Audit Logs** ]。 這會顯示目錄中所有使用者發生的稽核事件。 您可以篩選此檢視，查看密碼相關的所有事件。
-6. 從窗格頂端的 [**篩選**] 功能表中，選取 [**服務**] 下拉式清單，並將它變更為 [**自助式密碼管理**] 服務類型。
+4. 從 [管理] 區段中選取 [ **使用者** ]。
+5. 選取 [**使用者**] 分頁的 [**審核記錄**]。 這會顯示目錄中所有使用者發生的稽核事件。 您可以篩選此檢視，查看密碼相關的所有事件。
+6. 從窗格頂端的 [ **篩選** ] 功能表中，選取 [ **服務** ] 下拉式清單，並將其變更為 [ **自助式密碼管理** ] 服務類型。
 7. 另可選擇您有興趣的特定 [活動]****，以進一步篩選清單。
 
 ### <a name="combined-registration"></a>合併的註冊
 
-如果您已啟用[合併註冊](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)，則會在 [**安全性**  >  **驗證方法**] 底下的 [audit 記錄檔] 中找到有關使用者活動的資訊。
+如果您已啟用[合併的註冊](./concept-registration-mfa-sspr-combined.md)，則會在**安全性**  >  **驗證方法**下找到有關 audit 記錄檔中的使用者活動資訊。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure 入口網站中報告資料行的說明
 
@@ -74,14 +74,14 @@ ms.locfileid: "87035293"
 
 ## <a name="self-service-password-management-activity-types"></a>自助式密碼管理活動類型
 
-下列活動類型會出現在 [**自助式密碼管理**] audit 事件類別目錄中：
+下列活動類型會出現在 [ **自助式密碼管理** ] audit 事件類別目錄中：
 
 * [封鎖自助式密碼重設](#activity-type-blocked-from-self-service-password-reset)：指出使用者在 24 小時內嘗試重設密碼、使用特定的閘道或驗證電話號碼，總計五次以上。
 * [變更密碼 (自助式)](#activity-type-change-password-self-service)：指出使用者自願或被迫 (因為到期) 執行密碼變更。
 * [重設密碼 (由管理員)](#activity-type-reset-password-by-admin)：指出系統管理員從 Azure 入口網站代表使用者執行密碼重設。
 * [重設密碼 (自助式)](#activity-type-reset-password-self-service)：指出使用者已從 [Azure AD 密碼重設入口網站](https://passwordreset.microsoftonline.com)成功重設其密碼。
 * [自助式密碼重設流程活動進度](#activity-type-self-serve-password-reset-flow-activity-progress)：指出使用者在密碼重設過程中經過的每個特定步驟，例如，通過特定的密碼重設驗證關卡。
-* [解除鎖定使用者帳戶（自助式）](#activity-type-unlock-a-user-account-self-service)：指出使用者已使用不重設的帳戶解除鎖定的 Active Directory 功能，成功解除鎖定其 Active Directory 帳戶，而不需從[Azure AD 密碼重設入口網站](https://passwordreset.microsoftonline.com)重設其密碼。
+* [解除鎖定使用者帳戶 (自助) ](#activity-type-unlock-a-user-account-self-service)) ：指出使用者已成功解除鎖定其 Active Directory 帳戶，而不會使用帳戶解除鎖定的 Azure AD 功能而不重設 [密碼，而](https://passwordreset.microsoftonline.com) 不需重設密碼。
 * [使用者已註冊自助式密碼重設](#activity-type-user-registered-for-self-service-password-reset)：指出使用者已根據目前指定的租用戶密碼重設原則，註冊所有必要的資訊，以便能夠重設其密碼。
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>活動類型︰封鎖自助式密碼重設
@@ -113,7 +113,7 @@ ms.locfileid: "87035293"
 下列清單詳細說明此活動︰
 
 * **活動描述**：指出系統管理員從 Azure 入口網站代表使用者執行密碼重設。
-* **活動執行者**：代表另一個使用者或系統管理員來執行密碼重設的系統管理員。 必須是密碼管理員、使用者系統管理員或技術服務管理員。
+* **活動執行者**：代表另一個使用者或系統管理員來執行密碼重設的系統管理員。 必須是密碼管理員、使用者系統管理員或技術支援中心系統管理員。
 * **活動目標**：已重設密碼的使用者。 使用者可以是一般使用者或不同的系統管理員。
 * **活動狀態**：
   * _成功_：指出系統管理員已成功重設使用者的密碼。
@@ -171,7 +171,7 @@ ms.locfileid: "87035293"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [SSPR 和 MFA 使用方式和深入解析報告](howto-authentication-methods-usage-insights.md)
+* [SSPR 和 MFA 使用方式與見解報告](howto-authentication-methods-usage-insights.md)
 * [如何完成 SSPR 成功首度發行？](howto-sspr-deployment.md)
 * [重設或變更您的密碼](../user-help/active-directory-passwords-update-your-own-password.md)。
 * [註冊自助式密碼重設](../user-help/active-directory-passwords-reset-register.md)。
@@ -179,7 +179,7 @@ ms.locfileid: "87035293"
 * [SSPR 使用哪些資料，以及您應該為使用者填入哪些資料？](howto-sspr-authenticationdata.md)
 * [哪些驗證方法可供使用者使用？](concept-sspr-howitworks.md#authentication-methods)
 * [使用 SSPR 的原則選項有哪些？](concept-sspr-policy.md)
-* [什麼是密碼回寫，且為什麼我需要了解它？](howto-sspr-writeback.md)
+* [什麼是密碼回寫，且為什麼我需要了解它？](./tutorial-enable-sspr-writeback.md)
 * [SSPR 中的所有選項有哪些，以及它們有何意義？](concept-sspr-howitworks.md)
 * [我認為有中斷。如何針對 SSPR 進行疑難排解？](active-directory-passwords-troubleshoot.md)
 * [在其他某處並未涵蓋我的問題](active-directory-passwords-faq.md)
