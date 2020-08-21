@@ -20,10 +20,8 @@
       href: index-speech-to-text.yml
     - name: 概觀
       items:
-        - name: 什麼是即時語音轉文字？
+        - name: 什麼是語音轉換文字？
           href: speech-to-text.md
-        - name: 什麼是批次語音轉文字？
-          href: batch-transcription.md
         - name: 語音辨識基本概念
           href: speech-to-text-basics.md
     - name: 快速入門
@@ -53,6 +51,8 @@
           href: how-to-select-audio-input-devices.md
         - name: 使用自動來源語言偵測
           href: how-to-automatic-language-detection.md
+        - name: 使用批次轉譯 API
+          href: batch-transcription.md
     - name: 教學課程
       items:
         - name: 以租用戶模型提高精確度
@@ -638,10 +638,12 @@
     - name: Sovereign Clouds
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: 價格和限制
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
+    - name: 配額和限制
+      href: speech-services-quotas-and-limits.md
     - name: 法規遵循
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 加密

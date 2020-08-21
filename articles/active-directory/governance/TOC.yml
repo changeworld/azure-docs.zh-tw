@@ -86,6 +86,8 @@
               href: entitlement-management-request-access.md
     - name: 存取權檢閱
       items:
+        - name: 規劃存取權檢閱部署
+          href: deploy-access-reviews.md
         - name: 存取套件
           items:
             - name: 建立存取權檢閱

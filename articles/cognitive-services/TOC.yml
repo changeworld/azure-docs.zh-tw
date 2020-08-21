@@ -19,6 +19,8 @@
       href: cognitive-services-apis-create-account.md
     - name: 使用 Azure CLI 建立新的資源
       href: cognitive-services-apis-create-account-cli.md
+    - name: 使用用戶端程式庫建立新的資源
+      href: cognitive-services-apis-create-account-client-library.md
     - name: 使用 ARM 範本建立新的資源
       displayName: Resource Manager
       href: resource-manager-template.md

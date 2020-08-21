@@ -17,11 +17,27 @@
     - name: 偵測動作、將影片錄製到媒體服務
       href: detect-motion-record-video-clips-media-services-quickstart.md
     - name: 偵測動作並發出事件
-      href: detect-motion-emit-events-quickstart.md
+      items:
+        - name: 使用直接方法呼叫
+          displayName: 'detect motion, emit events'
+          href: detect-motion-emit-events-quickstart.md
     - name: 在邊緣裝置上偵測動作、錄製影片
-      href: detect-motion-record-video-clips-edge-devices-quickstart.md
-    - name: 使用自己的模型執行 Live Video Analytics
-      href: use-your-model-quickstart.md
+      items:
+        - name: 使用直接方法呼叫
+          displayName: 'detect motion, record video on edge devices'
+          href: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - name: 使用您自己的模型分析即時影片
+      items:
+        - name: 具有 HTTP 擴充功能
+          items:
+            - name: 使用直接方法呼叫
+              displayName: 'analyze, your own model, http'
+              href: use-your-model-quickstart.md
+        - name: 具有 gRPC 擴充功能
+          items:
+            - name: 使用直接方法呼叫
+              displayName: 'analyze, your own model, grpc'
+              href: analyze-live-video-use-your-grpc-model-quickstart.md
 - name: 教學課程
   items:
     - name: 連續影片錄製
@@ -37,12 +53,16 @@
           href: use-intel-openvino-tutorial.md
 - name: 範例
   items:
-    - name: IoT Edge C# 範例上的 Live Video Analytics
+    - name: C# 直接方法範例
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+    - name: Python 直接方法範例
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python'
 - name: 概念
   items:
     - name: 媒體圖表
       href: media-graph-concept.md
+    - name: 媒體圖表擴充功能
+      href: media-graph-extension-concept.md
     - name: 影片錄製
       href: video-recording-concept.md
     - name: 影片播放
@@ -67,14 +87,18 @@
       href: playback-recordings-how-to.md
     - name: 管理錄製原則
       href: manage-recording-policy-how-to.md
-    - name: 使用您選擇的 AI 分析即時影片
-      href: analyze-with-ai-your-choice-how-to.md
     - name: 使用入口網站叫用直接方法
       href: use-azure-portal-to-invoke-direct-methods.md
     - name: 疑難排解
       href: troubleshoot-how-to.md
 - name: 參考
   items:
+    - name: HTTP 資料合約
+      href: http-data-contract.md
+    - name: gRPC 資料合約
+      href: grpc-data-contract.md
+    - name: 推斷中繼資料結構描述
+      href: inference-metadata-schema.md
     - name: 直接方法
       href: direct-methods.md
     - name: 模組對應項組態結構描述

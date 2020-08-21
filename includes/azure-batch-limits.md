@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 8d23da1c3a45ed12193dfd4c1fc2ede453fc6ac7
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.openlocfilehash: 2a35180e4c5ca26d53be135718e345f9657af6a2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323872"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88655259"
 ---
 | **Resource** | **預設限制** | **上限** |
 | --- | --- | --- |
@@ -32,4 +32,4 @@ ms.locfileid: "84323872"
 > 預設限制會根據您用來建立 Batch 帳戶的訂用帳戶類型而有所不同。 所顯示的核心配額是針對 Batch 服務模式中的 Batch 帳戶。 [檢視您 Batch 帳戶中的配額](../articles/batch/batch-quota-limit.md#view-batch-quotas)。
 
 > [!IMPORTANT]
-> 為了協助我們更有效地管理全球流感期間的產能，某些區域中新 Batch 帳戶的預設核心配額，以及某些類型的訂用帳戶，在某些情況下會從上述值範圍中縮減為零個核心。 當您建立新的 Batch 帳戶時，[檢查您的核心配額](../articles/batch/batch-quota-limit.md#view-batch-quotas) 並視需要[要求增加的核心配額](../articles/batch/batch-quota-limit.md#increase-a-quota)。 
+> 為了協助我們更有效地管理全球流感期間的產能，某些區域中新 Batch 帳戶的預設核心配額，以及某些類型的訂用帳戶，在某些情況下會從上述值範圍中縮減為零個核心。 當您建立新的 Batch 帳戶時，[檢查您的核心配額](../articles/batch/batch-quota-limit.md#view-batch-quotas) 並視需要[要求增加的核心配額](../articles/batch/batch-quota-limit.md#increase-a-quota)。 或者，考慮重新使用已具有足夠配額的 Batch 帳戶。 

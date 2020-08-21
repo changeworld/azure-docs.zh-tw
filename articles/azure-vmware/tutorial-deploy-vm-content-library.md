@@ -3,12 +3,12 @@ title: 教學課程：建立內容庫以在 Azure VMware Solution (AVS) 中部�
 description: 在這個 Azure VMware Solution (AVS) 教學課程中，您會建立內容庫以在 AVS 私人雲端中部署 VM。
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: d5f0f26293af9eb146cfb4b2f3adf47fe8cce94f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d86f9cb92dcb8a852b9b178a5e160da0d1a3a692
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079378"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612787"
 ---
 # <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution-avs"></a>教學課程：建立內容庫以在 Azure VMware Solution (AVS) 中部署 VM
 
@@ -22,7 +22,7 @@ ms.locfileid: "87079378"
 
 ## <a name="prerequisites"></a>必要條件
 
-需要使用 NSX-T 邏輯交換器區段和受控 DHCP 服務，才能完成本教學課程。  如需詳細資訊，請參閱[如何在 Azure VMWare Solution (AVS) 預覽中管理 DHCP](manage-dhcp.md)。
+需要使用 NSX-T 邏輯交換器區段和受控 DHCP 服務，才能完成本教學課程。  如需詳細資訊，請參閱[如何在 Azure VMware 解決方案 (AVS) 預覽中管理 DHCP](manage-dhcp.md)。
 
 ## <a name="create-a-content-library"></a>建立內容庫
 

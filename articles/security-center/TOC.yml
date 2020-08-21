@@ -39,6 +39,8 @@
       href: security-center-enable-data-collection.md
     - name: 設定電子郵件通知
       href: security-center-provide-security-contact-details.md
+    - name: 使用 ARM 範本建立警示的自動回應
+      href: quickstart-automation-alert.md
 - name: 教學課程
   items:
     - name: 規劃與操作指南

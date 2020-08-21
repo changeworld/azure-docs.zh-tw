@@ -168,6 +168,8 @@
       href: troubleshoot-appliance-discovery.md
     - name: 評量/相依性視覺效果疑難排解
       href: troubleshoot-assessment.md
+    - name: 針對無代理程式 VMware 遷移中的複寫問題進行疑難排解
+      href: troubleshoot-changed-block-tracking-replication.md
 - name: 資源
   items:
     - name: 雲端採用架構中的移轉

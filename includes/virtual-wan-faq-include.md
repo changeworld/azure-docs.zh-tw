@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/26/2020
+ms.date: 08/18/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c1a8fbb5558d5b9069c5b8103bca2fc3f8bcddf3
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: eec99ae353d4e5ca1bede1afef135def96207c50
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507567"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604696"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>使用者是否需要具有 SD-WAN/VPN 裝置的中樞與輪輻才能使用 Azure 虛擬 WAN？
 
@@ -119,7 +119,7 @@ ms.locfileid: "88507567"
 
 ### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>如果我使用的裝置不在虛擬 WAN 合作夥伴清單中又該如何？ 我仍可用它來連線到 Azure 虛擬 WAN VPN 嗎？
 
-是的，只要裝置支援 IPsec IKEv1 或 IKEv2 即可。 虛擬 WAN 合作夥伴協力會將裝置到 Azure VPN 端點的連線自動化。 這表示自動化的步驟，例如「分支資訊上傳」、「IPsec 與組態」和「連線」。由於您的裝置不是來自虛擬 WAN 合作夥伴生態系統，因此您必須執行繁重的工作，以手動方式取得 Azure 組態，並更新您的裝置以設定 IPsec 連線。
+是的，只要裝置支援 IPsec IKEv1 或 IKEv2 即可。 虛擬 WAN 合作夥伴協力會將裝置到 Azure VPN 端點的連線自動化。 這表示自動化的步驟，例如「分支資訊上傳」、「IPsec 和組態」和「連線」。 由於您的裝置不是來自虛擬 WAN 合作夥伴生態系統，因此必須執行繁重的工作，以手動方式取得 Azure 組態，並更新您的裝置以設定 IPsec 連線。
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>未列在產品發佈合作夥伴清單中的新合作夥伴要如何上線？
 
@@ -215,7 +215,7 @@ ms.locfileid: "88507567"
 
 是。 支援 IPsec 的網際網路連線與實體裝置，最好是我們的整合式[虛擬 WAN 夥伴](../articles/virtual-wan/virtual-wan-locations-partners.md)所提供的。 或者，您可以從慣用的裝置手動管理 Azure 的設定與連線。
 
-### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>如何在連線 (VPN、ExpressRoute 或虛擬網路) 中啟用預設路由 (0.0.0.0/0)：
+### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>如何在連線 (VPN、ExpressRoute 或虛擬網路) 中啟用預設路由 (0.0.0.0/0)？
 
 如果連線上的旗標為「啟用」，則虛擬中樞可以將學習到的預設路由傳播到虛擬網路/站對站 VPN/ExpressRoute 連線。 當使用者編輯虛擬網路連線、VPN 連線或 ExpressRoute 連線時，此旗標為可見。 根據預設，當網站或 ExpressRoute 線路連線至中樞時，會停用此旗標。 新增虛擬網路連線以將 VNet 連線到虛擬中樞時，依預設會啟用旗標。 預設路由不是源自於虛擬 WAN 中樞；如果虛擬 WAN 中樞由於在中樞內部署防火牆而學習預設路由，或其他連線的網站已啟用強制通道，則會傳播預設路由。
 
@@ -239,11 +239,11 @@ ER 對 ER 之間的傳輸一律透過全域範圍進行。 虛擬中樞閘道會
 
 ### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>虛擬 WAN 針對輸出到 Azure 的流量是否偏好透過 VPN 使用 ExpressRoute
 
-是 
+是。
 
-### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>當虛擬 WAN 中樞已連線 ExpressRoute 線路和 VPN 網站時，什麼原因會導致 VPN 連線路由優先於 ExpressRoute？
+### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-preferred-over-expressroute"></a>當虛擬 WAN 中樞已連線 ExpressRoute 線路和 VPN 網站時，什麼原因會導致 VPN 連線路由優先於 ExpressRoute？
 
-當 ExpressRoute 線路連線到虛擬中樞時，Microsoft 邊緣路由器是內部部署與 Azure 之間通訊的第一個節點。 這些邊緣路由器會與虛擬 WAN ExpressRoute 閘道通訊，進而從虛擬中樞路由器學習路由，以控制虛擬 WAN 中任何閘道之間的所有路由。 Microsoft 邊緣路由器會以優先於從內部部署所學到路由的喜好設定，處理虛擬中樞 ExpressRoute 路由。 基於任何原因，如果 VPN 連線成為虛擬中樞學習路由的主要媒體 (例如 ExpressRoute 與 VPN 之間的容錯移轉案例)，除非 VPN 網站具有較長的 AS 路徑長度，否則虛擬中樞會繼續與 ExpressRoute 閘道共用從 VPN 學習而來的路由，讓 Microsoft 邊緣路由器偏好透過內部部署路由進行 VPN 路由。 
+當 ExpressRoute 線路連線到虛擬中樞時，Microsoft Edge 路由器是內部部署與 Azure 之間通訊的第一個節點。 這些邊緣路由器會與虛擬 WAN ExpressRoute 閘道通訊，進而從虛擬中樞路由器學習路由，以控制虛擬 WAN 中任何閘道之間的所有路由。 Microsoft Edge 路由器會以優先於從內部部署所學到路由的喜好設定，處理虛擬中樞 ExpressRoute 路由。 基於任何原因，如果 VPN 連線成為虛擬中樞學習路由的主要媒體 (例如 ExpressRoute 與 VPN 之間的容錯移轉案例)，除非 VPN 網站具有較長的 AS 路徑長度，否則虛擬中樞會繼續與 ExpressRoute 閘道共用從 VPN 學習而來的路由，讓 Microsoft Edge 路由器偏好透過內部部署路由進行 VPN 路由。
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>當兩個中樞 (中樞 1 和 2) 連線，而且有連線的 ExpressRoute 線路作為兩個中樞的繫結時，連線到中樞 1 的 VNet 抵達連線到中樞 2 的 VNet 其路徑為何？
 
@@ -253,9 +253,13 @@ ER 對 ER 之間的傳輸一律透過全域範圍進行。 虛擬中樞閘道會
 
 虛擬 WAN 中樞和其閘道不支援 IPv6。 如果您的 VNet 具有 IPv6 支援，並且想要將 VNet 連線至虛擬 WAN，則此情況目前不受支援。
 
-### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>自動化各種虛擬 WAN 功能的指令碼所使用的建議 API 版本為何？
+### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>自動化各種虛擬 WAN 功能的指令碼所使用的建議 API 版本為何？
 
 需要的最低版本為 05-01-2020 (2020 年 5 月 1 日)。 
+
+### <a name="are-there-any-virtual-wan-limits"></a>是否有任何虛擬 WAN 限制？
+
+請參閱「訂用帳戶與服務限制」頁面上的[虛擬 WAN 限制](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#virtual-wan-limits)一節。
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>虛擬 WAN 類型 (基本和標準) 之間有何差異？
 

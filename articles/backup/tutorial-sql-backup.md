@@ -3,12 +3,12 @@ title: 教學課程 - 將 SQL Server 資料庫備份到 Azure
 description: 在本教學課程中，您將了解如何將執行於 Azure VM 上的 SQL Server 資料庫備份至 Azure 備份復原服務保存庫。
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.openlocfilehash: e0f3ec8e9407c97f91a7f215a6a2734a254006d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 17a8472da2595c08cb198baaf853faf110a619fa
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513290"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612447"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>在 Azure VM 中備份 SQL Server 資料庫
 
@@ -53,7 +53,7 @@ ms.locfileid: "86513290"
 * 為了探索虛擬機器上的資料庫，Azure 備份會建立帳戶 **NT SERVICE\AzureWLBackupPluginSvc**。 此帳戶用於備份和還原，且必須具有 SQL 系統管理員權限。
 * Azure 備份會利用 **NT AUTHORITY\SYSTEM** 帳戶進行資料庫探索/查詢，因此該帳戶必須在 SQL 上公開登入。
 
-如果您尚未從 Azure Marketplace 建立 SQL Server VM，您可能會收到 **UserErrorSQLNoSysadminMembership** 錯誤。 若發生此狀況，請[依照下列指示操作](backup-azure-sql-database.md#set-vm-permissions)。
+如果您尚未從 Azure Marketplace 建立 SQL Server VM，您可能會收到 **UserErrorSQLNoSysadminMembership**錯誤。 若發生此狀況，請[依照下列指示操作](backup-azure-sql-database.md#set-vm-permissions)。
 
 ### <a name="verify-database-naming-guidelines-for-azure-backup"></a>確認 Azure 備份的資料庫命名方針
 
@@ -98,7 +98,7 @@ ms.locfileid: "86513290"
 
     ![部署成功訊息](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-8. Azure 備份會探索 VM 上的所有 SQL Server 資料庫。 在探索期間，會在背景中執行下列作業：
+8. Azure 備份會探索 VM 上的所有 SQL Server 資料庫。 在探索期間，背景中會發生下列情況：
 
     * Azure 備份向用來備份工作負載的保存庫註冊 VM。 已註冊 VM 上的所有資料庫都只能備份至此保存庫。
     * Azure Backup 在 VM 上安裝 **AzureBackupWindowsWorkload** 擴充功能。 SQL 資料庫上不會安裝代理程式。
@@ -117,7 +117,7 @@ ms.locfileid: "86513290"
 
    ![選取 [設定備份]](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-2. 按一下 [設定備份]  ，[選取要備份的項目]  刀鋒視窗隨即出現。 這會列出所有已註冊的可用性群組和獨立 SQL Server。 展開資料列左邊的＞形箭號，以查看該執行個體或 Always On AG 中所有未受保護的資料庫。  
+2. 選取 [設定備份]，[選取要備份的項目] 窗格隨即出現。 這會列出所有已註冊的可用性群組和獨立 SQL Server。 展開資料列左邊的＞形箭號，以查看該執行個體或 Always On AG 中所有未受保護的資料庫。  
 
     ![顯示所有具備獨立資料庫的 SQL Server 執行個體](./media/backup-azure-sql-database/list-of-sql-databases.png)
 
@@ -129,11 +129,11 @@ ms.locfileid: "86513290"
 
      * 或者，您也可以藉由在 [自動保護]  欄的對應下拉式清單中選取 [開啟]  選項，在整個執行個體或 Always On 可用性群組上啟用自動保護。 自動保護功能不僅可一次性地在所有現有的資料庫上啟用保護，也會自動保護未來將新增至該執行個體或可用性群組的任何新資料庫。  
 
-4. 按一下 [確定]  來開啟 [備份原則]  刀鋒視窗。
+4. 選取 [確定] 來開啟 [備份原則] 窗格。
 
     ![在 Always On 可用性群組上啟用自動保護](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-5. 在 [選擇備份原則]  中選取原則，然後按一下 [確定]  。
+5. 在 [選擇備份原則] 中選取原則，然後選取 [確定]。
 
    * 選取預設原則：HourlyLogBackup。
    * 選擇之前為 SQL 建立的現有備份原則。
@@ -161,8 +161,8 @@ ms.locfileid: "86513290"
 
 若要建立備份原則：
 
-1. 在保存庫中，按一下 [備份原則]   > [新增]  。
-2. 在 [新增]  功能表中，按一下 [Azure VM 中的 SQL Server]  來定義原則類型。
+1. 在保存庫中，選取 [備份原則] > [新增]。
+2. 在 [新增] 功能表中，選取 [Azure VM 中的 SQL Server] 來定義原則類型。
 
    ![針對新備份原則選擇原則類型](./media/backup-azure-sql-database/policy-type-details.png)
 
@@ -171,7 +171,7 @@ ms.locfileid: "86513290"
 
    * 若選擇 [每日]  ，請選取備份作業的開始時間和時區。
    * 您必須執行完整備份，因為您無法關閉 [完整備份]  選項。
-   * 按一下 [完整備份]  以檢視原則。
+   * 選取 [完整備份] 以檢視原則。
    * 您無法為每日完整備份建立差異備份。
    * 若選擇 [每週]  ，請選取備份作業的開始日期 (星期幾)、時間和時區。
 
@@ -214,7 +214,7 @@ ms.locfileid: "86513290"
 ## <a name="run-an-on-demand-backup"></a>執行隨選備份
 
 1. 在復原服務保存庫中，選擇 [備份項目]。
-2. 按一下 [Azure VM 中的 SQL]。
+2. 選取 [Azure VM 中的 SQL]。
 3. 以滑鼠右鍵按一下資料庫，然後選擇 [立即備份]。
 4. 選擇 [備份類型] (完整/差異/記錄/僅複製完整) 和 [壓縮] (啟用/停用)
 5. 選取 [確定] 來開始備份。

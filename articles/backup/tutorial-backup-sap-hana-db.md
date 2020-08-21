@@ -3,12 +3,12 @@ title: 教學課程 - 將 SAP HANA 資料庫備份至 Azure VM
 description: 在本教學課程中，您將了解如何將執行於 Azure VM 上的 SAP HANA 資料庫備份至 Azure 備份復原服務保存庫。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: e892bf2b943d35728b15a9354308e149af2e478e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 3903630a657c2cf8a0b39f3e4c8fc22456097941
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810202"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611818"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教學課程：將 SAP HANA 資料庫備份至 Azure VM
 
@@ -39,7 +39,7 @@ ms.locfileid: "87810202"
 * 以根使用者身分，在安裝 HANA 的虛擬機器中執行 SAP HANA 備份設定指令碼 (預先註冊指令碼)。 [此指令碼](https://aka.ms/scriptforpermsonhana)會為 HANA 系統做好備份的準備。 請參閱[預先註冊指令碼的功能](#what-the-pre-registration-script-does)一節，以深入了解預先註冊指令碼。
 
 >[!NOTE]
->預先註冊指令碼會為在 RHEL (7.4、7.6 及 7.7) 上執行的 SAP Hana 工作負載安裝 **compat-unixODBC234**，並為 RHEL 8.1 安裝 **unixODBC**。 [此套件位於 RHEL for SAP Hana (適用於 RHEL 7 伺服器) SAP 解決方案 (RPM) 的更新服務存放庫](https://access.redhat.com/solutions/5094721) \(英文\)。  對於 Azure Marketplace RHEL 映像，存放庫是 **rhui-rhel-sap-hana-for-rhel-7-server-rhui-e4s-rpms**.
+>預先註冊指令碼會為在 RHEL (7.4、7.6 及 7.7) 上執行的 SAP Hana 工作負載安裝 **compat-unixODBC234**，並為 RHEL 8.1 安裝 **unixODBC**。 [此套件位於 RHEL for SAP Hana (適用於 RHEL 7 伺服器) SAP 解決方案 (RPM) 的更新服務存放庫](https://access.redhat.com/solutions/5094721) \(英文\)。  對於 Azure Marketplace RHEL 映像，存放庫是 **rhui-rhel-sap-hana-for-rhel-7-server-rhui-e4s-rpms**。
 
 ## <a name="set-up-network-connectivity"></a>設定網路連線
 

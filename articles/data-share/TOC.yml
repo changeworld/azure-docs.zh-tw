@@ -8,6 +8,8 @@
       href: supported-data-stores.md
 - name: 快速入門
   items:
+    - name: 建立資料共用 - Azure 入口網站
+      href: share-your-data-portal.md
     - name: 建立資料共用 - ARM 範本
       displayName: Resource Manager
       href: share-your-data-arm.md
@@ -52,6 +54,9 @@
       href: security.md
     - name: 災害復原
       href: disaster-recovery.md
+    - name: 共用 Azure 資料總管資料
+      href: /azure/data-explorer/data-share
+      maintainContext: true
 - name: 參考
   items:
     - name: .NET

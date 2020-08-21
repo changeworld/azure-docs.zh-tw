@@ -204,6 +204,8 @@
               href: ./spark/apache-spark-concepts.md
             - name: 什麼是 Delta Lake
               href: ./spark/apache-spark-what-is-delta-lake.md
+            - name: Delta Lake 功能概觀
+              href: ./spark/apache-spark-delta-lake-overview.md
             - name: Apache Spark 效能
               href: ./spark/apache-spark-performance.md
             - name: Apache Spark 自動調整行為
@@ -454,6 +456,8 @@
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: 使用適用於 Azure Synapse Analytics 的 Apache Spark 查詢 Azure Cosmos DB 分析存放區
               href: ./synapse-link/how-to-query-analytical-store-spark.md
+            - name: 使用 Apache Spark 將資料從 Synapse Link 複製到 SQL 集區
+              href: ./synapse-link/how-to-copy-to-sql-pool.md
         - name: Synapse SQL
           items:
             - name: 查詢儲存體中的資料

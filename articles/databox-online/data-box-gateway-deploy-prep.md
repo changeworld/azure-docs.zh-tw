@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 553d6f716bbb6e98aa64ef07cb80d2d6cba370b6
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 8a8b53af6e23b2dd0ff011a6bfbf99a1da427063
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561481"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611631"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>教學課程：準備部署 Azure Data Box Gateway
 
@@ -138,7 +138,7 @@ ms.locfileid: "82561481"
 2. 在 [下載映像]  圖格上，選取用來佈建 VM 的主機伺服器上對應至作業系統的虛擬裝置映像。 映像檔大約為 5.6 GB。
    
    * [VHDX (適用於 Windows Server 2012 R2 及更新版本上的 Hyper-V)](https://aka.ms/dbe-vhdx-2012)。
-   * [VMDK (適用於 VMWare ESXi 6.0、6.5 或 6.7)](https://aka.ms/dbe-vmdk)。
+   * [VMDK (適用於 VMware ESXi 6.0、6.5 或 6.7](https://aka.ms/dbe-vmdk))。
 
     ![下載 Data Box Gateway 虛擬裝置映像](media/data-box-gateway-deploy-prep/data-box-gateway-download-image.png)
 

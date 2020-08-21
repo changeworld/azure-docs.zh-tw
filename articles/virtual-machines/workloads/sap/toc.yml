@@ -1,4 +1,4 @@
-- name: 概觀
+- name: 總覽
   items:
     - name: 開始使用
       href: get-started.md
@@ -291,6 +291,8 @@
       href: azure-monitor-overview.md
     - name: 適用於 SAP 解決方案的 Azure 監視器提供者
       href: azure-monitor-providers.md
+    - name: 設定適用於 SAP 解決方案的 Azure 監視器
+      href: azure-monitor-sap-quickstart.md
     - name: 適用於 SAP 解決方案的 Azure 監視器常見問題集
       href: azure-monitor-faq.md
 - name: 參考

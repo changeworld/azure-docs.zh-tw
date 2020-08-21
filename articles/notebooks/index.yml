@@ -9,12 +9,12 @@ metadata:
   author: JoshuaPartlow
   ms.author: joshuapa
   ms.date: 06/17/2020
-  ms.openlocfilehash: 456cd23308c7258b59fa8dad628e9f09f6afc0e2
-  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+  ms.openlocfilehash: cdc98d01a4fae5e4b09af001ec65dd7a29c34c0f
+  ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/19/2020
-  ms.locfileid: "88586948"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88640271"
 landingContent:
 - title: 關於 Azure Notebooks
   linkLists:
@@ -44,11 +44,11 @@ landingContent:
     links:
     - text: 登入並設定使用者識別碼
       url: quickstart-sign-in-azure-notebooks.md
-    - text: 建立及共用筆記本
+    - text: 建立及共用 Notebook
       url: quickstart-create-share-jupyter-notebook.md
-    - text: 複製筆記本
+    - text: 複製 Notebook
       url: quickstart-clone-jupyter-notebook.md
-    - text: 遷移本機 Jupyter 筆記本
+    - text: 遷移本機 Jupyter Notebook
       url: quickstart-migrate-local-jupyter-notebook.md
     - text: 使用自訂環境建立專案
       url: quickstart-create-jupyter-notebook-project-environment.md
@@ -66,5 +66,5 @@ landingContent:
       url: create-clone-jupyter-notebooks.md
     - text: 在 Notebook 中存取雲端資料
       url: access-data-resources-jupyter-notebooks.md
-    - text: 在筆記本中安裝套件
+    - text: 在 Notebook 中安裝套件
       url: install-packages-jupyter-notebook.md

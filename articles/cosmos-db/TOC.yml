@@ -125,20 +125,26 @@
           href: partition-data.md
         - name: 綜合磁碟分割索引鍵
           href: synthetic-partition-keys.md
-    - name: 佈建的輸送量
+    - name: Capacity
       items:
         - name: 要求單位
           displayName: 'RUs, RU'
           href: request-units.md
-        - name: 佈建的輸送量簡介
-          displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
-          href: set-throughput.md
-        - name: 佈建自動調整輸送量
-          href: provision-throughput-autoscale.md
-        - name: 在自動調整和標準 (手動) 輸送量之間進行選擇
-          href: how-to-choose-offer.md
-        - name: 自動調整常見問題集
-          href: autoscale-faq.md
+        - name: 佈建的輸送量
+          items:
+            - name: 佈建的輸送量簡介
+              displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
+              href: set-throughput.md
+            - name: 佈建自動調整輸送量
+              href: provision-throughput-autoscale.md
+            - name: 在自動調整和標準 (手動) 輸送量之間進行選擇
+              href: how-to-choose-offer.md
+            - name: 自動調整常見問題集
+              href: autoscale-faq.md
+        - name: 無伺服器
+          href: serverless.md
+        - name: 在佈建的輸送量和無伺服器之間選擇
+          href: throughput-serverless.md
     - name: SQL 查詢
       items:
         - name: 開始使用
@@ -238,6 +244,9 @@
                     - name: DateTimeToTicks
                       displayName: 'DateTimeToTicks, date time to ticks, date and time functions, datetime, ticks'
                       href: sql-query-datetimetoticks.md
+                    - name: DateTimeToTimestamp
+                      displayName: 'DateTimeToTimestamp, date time to timestamp, date and time functions, datetime, timestamp'
+                      href: sql-query-datetimetotimestamp.md
                     - name: GetCurrentDateTime
                       displayName: 'GetCurrentDateTime, get current date time, date and time functions, datetime'
                       href: sql-query-getcurrentdatetime.md
@@ -247,6 +256,12 @@
                     - name: GetCurrentTimestamp
                       displayName: 'GetCurrentTimestamp, get current timestamp, timestamp, date and time functions, datetime'
                       href: sql-query-getcurrenttimestamp.md
+                    - name: TicksToDateTime
+                      displayName: 'TicksToDateTime, ticks to date time, date and time functions, datetime, ticks'
+                      href: sql-query-tickstodatetime.md
+                    - name: TimestampToDateTime
+                      displayName: 'TimestampToDateTime, timestamp to date time, date and time functions, datetime, timestamp'
+                      href: sql-query-timestamptodatetime.md
                 - name: 數學函數
                   items:
                     - name: 數學函數
@@ -953,26 +968,28 @@
           href: how-to-manage-conflicts.md
         - name: 轉換工作階段權杖格式
           href: how-to-convert-session-token.md
-    - name: 佈建的輸送量
+    - name: Capacity
       items:
-        - name: 在容器上佈建標準 (手動) 輸送量
-          displayName: 'request units, RUs, RU, collection level'
-          href: how-to-provision-container-throughput.md
-        - name: 在資料庫上佈建標準 (手動) 輸送量
-          displayName: 'request units, RUs, RU, shared throughput, database level'
-          href: how-to-provision-database-throughput.md
-        - name: 在資料庫或容器上佈建自動調整輸送量
-          displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
-          href: how-to-provision-autoscale-throughput.md
-        - name: 使用 Cosmos 容量規劃來估計每秒要求單位
-          displayName: 'request units, RUs, RU, capacity'
-          href: estimate-ru-with-capacity-planner.md
         - name: 尋找要求單位費用
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
-        - name: 使用 Azure Functions 計時器進行調整
-          displayName: 'request units, RUs, RU, timer'
-          href: scale-on-schedule.md
+        - name: 佈建的輸送量
+          items:
+            - name: 在容器上佈建標準 (手動) 輸送量
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-container-throughput.md
+            - name: 在資料庫上佈建標準 (手動) 輸送量
+              displayName: 'request units, RUs, RU, shared throughput, database level'
+              href: how-to-provision-database-throughput.md
+            - name: 在資料庫或容器上佈建自動調整輸送量
+              displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
+              href: how-to-provision-autoscale-throughput.md
+            - name: 使用 Cosmos 容量規劃來估計每秒要求單位
+              displayName: 'request units, RUs, RU, capacity'
+              href: estimate-ru-with-capacity-planner.md
+            - name: 使用 Azure Functions 計時器進行調整
+              displayName: 'request units, RUs, RU, timer'
+              href: scale-on-schedule.md
     - name: 使用容器和項目
       items:
         - name: 使用 Cosmos DB 資料

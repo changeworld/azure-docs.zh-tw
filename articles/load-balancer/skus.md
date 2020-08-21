@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 60e8a0dc93e19dfec0982080d0353466b08373de
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3509b99d1b222fc4f0bfa48effe42496c209d9ae
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586829"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654475"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer SKU
 
-Azure Load Balancer 有兩個變體或 SKU。
+Azure Load Balancer 有兩個 SKU。
 
 ## <a name="sku-comparison"></a><a name="skus"></a> SKU 比較
 
-負載平衡器支援基本和標準 SKU。 這些 SKU 的案例規模、功能、價格各不相同。 任何可在基本負載平衡器建立的案例，都可以使用標準負載平衡器來建立。
+負載平衡器支援標準和基本 SKU。 這些 SKU 的案例規模、功能、價格各不相同。 任何可在基本負載平衡器建立的案例，都可以使用標準負載平衡器來建立。
 
 若要比較並了解其中的差異，請參閱下表。 如需詳細資訊，請參閱 [Azure Standard Load Balancer 概觀](load-balancer-standard-overview.md)。
 
@@ -37,11 +37,11 @@ Azure Load Balancer 有兩個變體或 SKU。
 | **[後端集區大小](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)** | 支援最多 1000 個執行個體。 | 支援最多 300 個執行個體。 |
 | **後端集區端點** | 單一虛擬網路中的任何虛擬機器或虛擬機器擴展集。 | 在單一可用性設定組或虛擬機器擴展集中的虛擬機器。 |
 | **[健康情況探查](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
-| **[健康情況探查關閉行為](./load-balancer-custom-probe-overview.md#probedown)** | 執行個體探查關閉__和__所有探查關閉時，TCP 連線保持作用中。 | 執行個體探查關閉時，TCP 連線保持作用中。 所有探查關閉時，所有 TCP 連線都會終止。 |
+| **[健康情況探查關閉行為](./load-balancer-custom-probe-overview.md#probedown)** | 執行個體探查關閉__和__所有探查關閉時，TCP 連線保持作用中。 | 執行個體探查關閉時，TCP 連線保持作用中。 所有探查皆關閉時，所有 TCP 連線都會結束。 |
 | **可用性區域** | 輸入和輸出流量的區域備援和區域性前端。 | 無法使用 |
 | **診斷** | [Azure 監視器多維度計量](./load-balancer-standard-diagnostics.md) | [Azure 監視器記錄](./load-balancer-monitor-log.md) |
 | **HA 連接埠** | [適用於內部負載平衡器](./load-balancer-ha-ports-overview.md) | 無法使用 |
-| **預設保護** | 除非網路安全性群組允許，否則會對輸入流量關閉。 請注意，從 VNet 到內部負載平衡器的內部流量仍受允許。 | 預設為開放狀態。 網路安全性群組 (選擇性)。 |
+| **預設保護** | 除非網路安全性群組允許，否則會對輸入流量關閉。 從虛擬網路到內部負載平衡器的內部流量仍受允許。 | 預設為開放狀態。 網路安全性群組 (選擇性)。 |
 | **輸出規則** | [宣告式輸出 NAT 設定](./load-balancer-outbound-rules-overview.md) | 無法使用 |
 | **TCP 重設閒置** | [適用於任何規則](./load-balancer-tcp-reset.md) | 無法使用 |
 | **[多個前端](./load-balancer-multivip-overview.md)** | 輸入和[輸出](./load-balancer-outbound-connections.md) | 僅輸入 |
