@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: cea08022b992395862fcf75e0592efd54c805a98
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bbec605f25c2e74178bdb5c28d0a7995e4e265f1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649120"
+ms.locfileid: "88690386"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API 的驗證和授權
 
@@ -157,7 +157,7 @@ Azure Active Directory 應用程式註冊流程包含三個主要步驟。
 
 | 選擇性的查詢參數 | 描述 | 版本 |
 | --- |  --- | --- |
-| `timeout=<timeout>` | HTTP 要求執行的伺服器端逾時。 僅適用於[取得環境事件](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)和[取得環境彙總](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) API。 逾時值應採用 ISO 8601 持續期間格式 (例如 `"PT20S"`)，且應在 `1-30 s`範圍內。 預設值為 `30 s`。 | Gen1 |
+| `timeout=<timeout>` | HTTP 要求執行的伺服器端逾時。 僅適用於[取得環境事件](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability)和[取得環境彙總](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) API。 逾時值應採用 ISO 8601 持續期間格式 (例如 `"PT20S"`)，且應在 `1-30 s`範圍內。 預設值為 `30 s`。 | Gen1 |
 | `storeType=<storeType>` | 針對已啟用暖存放區的 Gen2 環境，可在或上執行查詢 `WarmStore` `ColdStore` 。 這個查詢中參數會定義應執行查詢的存放區。 如果未定義，則會在冷存放區上執行查詢。 若要查詢暖存放區，**storeType** 必須設定為 `WarmStore`。 如果未定義，則會針對冷存放區執行查詢。 | Gen2 |
 
 ## <a name="next-steps"></a>後續步驟

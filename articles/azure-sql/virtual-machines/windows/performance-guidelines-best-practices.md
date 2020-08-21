@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 56bf60eb3d80352a98025627cd448ef304f9a153
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a2ba89a9adec5443ed8ae2a10e0230874b571f46
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654169"
+ms.locfileid: "88690233"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server 效能指導方針
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -52,7 +52,7 @@ ms.locfileid: "88654169"
 
 ## <a name="vm-size-guidance"></a>VM 大小指引
 
-從收集工作負載在尖峰時間的 CPU、記憶體和儲存體輸送量需求開始。 \LogicalDisk\Disk Reads/Sec 和 \LogicalDisk\Disk Writes/Sec 效能計數器可用來收集讀取和寫入 IOPS 需求，而 \LogicalDisk\Disk Bytes/Sec 計數器可用來收集資料、記錄檔和暫存資料庫檔案的 [儲存體輸送量需求](../../../virtual-machines/windows/premium-storage-performance.md#disk-caching)。 定義尖峰的 IOPS 和輸送量需求之後，評估 VM 大小以提供容量。 例如，如果工作負載需要尖峰的 20K 讀取 IOPS 和 10K 寫入 IOPS，您可以選擇 E16s_v3 (最多 32K 已快取和 25600 未快取的 IOPS)，或 M16_s (最多 20K 已快取和 10K 未快取的 IOPS) 與 2 個 P30 磁碟。 請務必瞭解工作負載的輸送量和 IOPS 需求，因為 VM 針對 IOPS 和輸送量有不同的調整限制。<br/><br/>[DSv_3](../../../virtual-machines/dv3-dsv3-series.md) 和 [Es_v3 系列](../../../virtual-machines/ev3-esv3-series.md)是託管在具 Intel Haswell 或 Broadwell 處理器的一般用途硬體上。 [M 系列](../../../virtual-machines/m-series.md)針對最大型 SQL Server 工作負載提供最大 vCPU 計數和記憶體，並託管在具有 Skylake 處理器系列的記憶體最佳化硬體上。 這些 VM 系列支援進階儲存體，是使用主機層級讀取快取時獲得最佳效能的建議選擇。 Es_v3 和 M 系列也提供 [有限的核心大小](../../../virtual-machines/windows/constrained-vcpu.md)，可為具有較低計算和高儲存體容量需求的工作負載節省成本。 
+從收集工作負載在尖峰時間的 CPU、記憶體和儲存體輸送量需求開始。 \LogicalDisk\Disk Reads/Sec 和 \LogicalDisk\Disk Writes/Sec 效能計數器可用來收集讀取和寫入 IOPS 需求，而 \LogicalDisk\Disk Bytes/Sec 計數器可用來收集資料、記錄檔和暫存資料庫檔案的 [儲存體輸送量需求](../../../virtual-machines/premium-storage-performance.md#disk-caching)。 定義尖峰的 IOPS 和輸送量需求之後，評估 VM 大小以提供容量。 例如，如果工作負載需要尖峰的 20K 讀取 IOPS 和 10K 寫入 IOPS，您可以選擇 E16s_v3 (最多 32K 已快取和 25600 未快取的 IOPS)，或 M16_s (最多 20K 已快取和 10K 未快取的 IOPS) 與 2 個 P30 磁碟。 請務必瞭解工作負載的輸送量和 IOPS 需求，因為 VM 針對 IOPS 和輸送量有不同的調整限制。<br/><br/>[DSv_3](../../../virtual-machines/dv3-dsv3-series.md) 和 [Es_v3 系列](../../../virtual-machines/ev3-esv3-series.md)是託管在具 Intel Haswell 或 Broadwell 處理器的一般用途硬體上。 [M 系列](../../../virtual-machines/m-series.md)針對最大型 SQL Server 工作負載提供最大 vCPU 計數和記憶體，並託管在具有 Skylake 處理器系列的記憶體最佳化硬體上。 這些 VM 系列支援進階儲存體，是使用主機層級讀取快取時獲得最佳效能的建議選擇。 Es_v3 和 M 系列也提供 [有限的核心大小](../../../virtual-machines/constrained-vcpu.md)，可為具有較低計算和高儲存體容量需求的工作負載節省成本。 
 
 ## <a name="storage-guidance"></a>儲存體指引
 
@@ -85,7 +85,7 @@ Azure 虛擬機器上有三種主要的磁片類型：
 
 標示為 **D** 磁片磁碟機的暫存磁片磁碟機不會保存到 Azure Blob 儲存體。 請勿將使用者資料庫檔案或使用者交易記錄檔儲存在 **D**: 磁碟機。
 
-針對任務關鍵性 SQL Server 工作負載，將 TempDB 置於本機 SSD 的 `D:\` 磁碟機上 (在選擇正確的 VM 大小後)。 如果您從 Azure 入口網站或 Azure 快速入門範本建立 VM，並 [將 TEMP DB 放在本機磁片上](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583)，則不需要採取任何進一步的動作;在其他所有情況下，請遵循 blog 中的步驟，  [使用 ssd 來儲存 TempDB](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) ，以避免在重新開機後發生失敗。 如果本機磁碟的容量不足以供暫存資料庫大小使用，請將暫存資料庫放在存放集區 ([等量分配](../../../virtual-machines/windows/premium-storage-performance.md)在具[唯讀快取](../../../virtual-machines/windows/premium-storage-performance.md#disk-caching)的進階 SSD 磁碟上)。
+針對任務關鍵性 SQL Server 工作負載，將 TempDB 置於本機 SSD 的 `D:\` 磁碟機上 (在選擇正確的 VM 大小後)。 如果您從 Azure 入口網站或 Azure 快速入門範本建立 VM，並 [將 TEMP DB 放在本機磁片上](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583)，則不需要採取任何進一步的動作;在其他所有情況下，請遵循 blog 中的步驟，  [使用 ssd 來儲存 TempDB](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) ，以避免在重新開機後發生失敗。 如果本機磁碟的容量不足以供暫存資料庫大小使用，請將暫存資料庫放在存放集區 ([等量分配](../../../virtual-machines/premium-storage-performance.md)在具[唯讀快取](../../../virtual-machines/premium-storage-performance.md#disk-caching)的進階 SSD 磁碟上)。
 
 對於支援進階 SSD 的 VM，您也可將 TempDB 儲存在支援進階 SSD 且啟用讀取快取的磁碟上。
 

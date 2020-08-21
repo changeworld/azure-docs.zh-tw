@@ -3,17 +3,16 @@ title: 在 IoT Edge 裝置上部署即時影片分析-Azure
 description: 本文列出可協助您在 IoT Edge 裝置上部署即時影片分析的步驟。 例如，如果您有本機 Linux 電腦的存取權，以及（或）先前已建立 Azure 媒體服務帳戶，您就可以這麼做。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 26be76a46fa514917ee1c89cab7d1f112ee85431
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 774fdb440307d0df92e9735a8bdf055687f450a2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652452"
+ms.locfileid: "88684094"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 裝置上部署即時影片分析
 
 本文列出可協助您在 IoT Edge 裝置上部署即時影片分析的步驟。 例如，如果您有本機 Linux 電腦的存取權，以及（或）先前已建立 Azure 媒體服務帳戶，您就可以這麼做。
-
 
 ## <a name="prerequisites"></a>先決條件
 
@@ -23,6 +22,7 @@ ms.locfileid: "88652452"
 * [註冊 IoT Edge 裝置](../../iot-edge/how-to-register-device.md)
 * [在以 Debian 為基礎的 Linux 系統上安裝 Azure IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [建立 Azure 媒體服務帳戶](../latest/create-account-howto.md)
+
     * 使用下列其中一種區域：美國東部2、美國中部、美國中北部、日本東部、美國西部2、美國中西部、加拿大東部、英國南部、法國中部、法國南部、瑞士北部、瑞士西部和日本西部。
     * 建議您使用一般用途 v2 (GPv2) 儲存體帳戶
 
@@ -190,6 +190,7 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
+
    > [!Note]
    > 對應項屬性 **allowUnsecuredEndpoints** 會設定為 true，以供教學課程和快速入門之用。   
    在生產環境中執行時，您應該將此屬性設定為 **false** 。 這可確保應用程式會封鎖所有不安全的端點，而且為了執行圖形拓撲，將需要有效的連接認證。  
@@ -210,8 +211,8 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
 
 建立部署之後，您會返回 IoT 中樞的 [IoT Edge] 頁面。
 
-1.  選取您使用部署設定為目標的 IoT Edge 裝置，以開啟其詳細資料。
-2.  在裝置詳細資料中，確認 Blob 儲存體模組列為 [指定於部署中]** 和 [由裝置回報]**。
+1. 選取您使用部署設定為目標的 IoT Edge 裝置，以開啟其詳細資料。
+2. 在裝置詳細資料中，確認 Blob 儲存體模組列為 [指定於部署中]** 和 [由裝置回報]**。
 
 模組在裝置上啟動然後向 IoT 中樞回報可能需要一點時間。 重新整理頁面來查看更新狀態。
 狀態碼：200– OK 表示 [IoT Edge 運行](../../iot-edge/iot-edge-runtime.md) 時間狀況良好且正常運作。
@@ -247,6 +248,7 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
     ![狀態200訊息](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>後續步驟
+
 試用 [快速入門：開始使用 IoT Edge 的即時影片分析](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
 > [!TIP]

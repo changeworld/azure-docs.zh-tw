@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75f8a1f42c5d5702fdb4a588b0829636c30f80a6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 66837a0e4118695b19776972fdb4fd88a70ee561
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654611"
+ms.locfileid: "88690318"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署
 
@@ -444,7 +444,7 @@ Oracle 支援 Oracle 軟體在以 Oracle Linux 為客體 OS 的 Microsoft Azure 
 
 針對 Azure 上的 Oracle Database 檔案，支援 ext4、xfs 或 Oracle ASM 檔案系統。 所有的資料庫檔案都必須儲存於以 VHD 或受控磁碟為基礎的這些檔案系統上。 這些磁碟會掛接到 Azure VM，並且以 [Azure 分頁 Blob 儲存體](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) \(英文\) 或 [Azure 受控磁碟](../../managed-disks-overview.md)為基礎。
 
-針對 Oracle Linux UEK 核心，UEK 必須至少為第 4 版，才能支援 [Azure 進階 SSD](../../windows/premium-storage-performance.md#disk-caching)。
+針對 Oracle Linux UEK 核心，UEK 必須至少為第 4 版，才能支援 [Azure 進階 SSD](../../premium-storage-performance.md#disk-caching)。
 
 我們非常建議使用 [Azure 受控磁碟](../../managed-disks-overview.md)。 我們也非常建議針對 Oracle Database 部署使用 [Azure 進階 SSD](../../disks-types.md)。
 

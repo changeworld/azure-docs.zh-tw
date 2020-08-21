@@ -8,32 +8,32 @@ author: troy0820
 ms.author: b-trconn
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 40a915531aa58567b17a774a15504dc92770479f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 046cd30c0f93a468287c73573a3d18f4ba66221b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854219"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690216"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>建立 Azure Red Hat OpenShift 4 叢集應用程式備份
 
 在本文中，您將準備您的環境，以建立 Azure Red Hat OpenShift 4 叢集應用程式備份。 您將學習如何：
 
 > [!div class="checklist"]
-> * 設定必要條件並安裝必要的工具
+> * 設定必要條件，並安裝必要的工具
 > * 建立 Azure Red Hat OpenShift 4 應用程式備份
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 版2.6.0 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="before-you-begin"></a>開始之前
 
 ### <a name="install-velero"></a>安裝 Velero
 
-若要在您的系統上[安裝](https://velero.io/docs/master/basic-install/)Velero，請遵循建議的作業系統處理常式。
+若要在您的系統上 [安裝](https://velero.io/docs/main/basic-install/) Velero，請遵循適用于您作業系統的建議程式。
 
 ### <a name="set-up-azure-storage-account-and-blob-container"></a>設定 Azure 儲存體帳戶和 Blob 容器
 
-此步驟會在 ARO 叢集的資源群組外部建立資源群組。  此資源群組將允許備份保存，並可將應用程式還原至新叢集。
+此步驟會在 ARO 叢集的資源群組之外建立資源群組。  此資源群組可讓備份持續保存，並可將應用程式還原至新的叢集。
 
 ```bash
 AZURE_BACKUP_RESOURCE_GROUP=Velero_Backups
@@ -57,7 +57,7 @@ az storage container create -n $BLOB_CONTAINER --public-access off --account-nam
 
 ### <a name="create-service-principal"></a>建立服務主體
 
-Velero 需要備份和還原的許可權。 當您建立服務主體時，您會提供 Velero 許可權來存取您在上一個步驟中定義的資源群組。 此步驟將會取得叢集的資源群組：
+Velero 需要備份和還原的許可權。 當您建立服務主體時，您會授與 Velero 許可權，以存取您在上一個步驟中定義的資源群組。 此步驟會取得叢集的資源群組：
 
 ```bash
 export AZURE_RESOURCE_GROUP=aro-$(az aro show --name <name of cluster> --resource-group <name of resource group> | jq -r '.clusterProfile.domain')
@@ -90,7 +90,7 @@ EOF
 
 ## <a name="install-velero-on-azure-red-hat-openshift-4-cluster"></a>在 Azure Red Hat OpenShift 4 叢集上安裝 Velero
 
-此步驟會將 velero 安裝到它自己的專案中，以及使用 Velero 執行備份和還原所需的[自訂資源定義](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)。 請確定您已成功登入 Azure Red Hat OpenShift v4 叢集。
+此步驟會將 velero 安裝到自己的專案，以及使用 Velero 進行備份和還原所需的 [自訂資源定義](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) 。 請確定您已成功登入 Azure Red Hat OpenShift v4 叢集。
 
 
 ```bash
@@ -107,22 +107,22 @@ velero install \
 
 ## <a name="create-a-backup-with-velero"></a>使用 Velero 建立備份
 
-若要使用 Velero 建立應用程式備份，您必須包含此應用程式所在的命名空間。  如果您有 `nginx-example` 命名空間，而且想要在備份中包含該命名空間內的所有資源，請在終端機中執行下列命令：
+若要使用 Velero 建立應用程式備份，您必須包含此應用程式所在的命名空間。  如果您有 `nginx-example` 命名空間，而且想要在備份中包含該命名空間中的所有資源，請在終端機中執行下列命令：
 
 ```bash
 velero create backup <name of backup> --include-namespaces=nginx-example
 ```
-您可以執行下列程式來檢查備份的狀態：
+您可以執行下列動作來檢查備份的狀態：
 
 ```bash
 oc get backups -n velero <name of backup> -o yaml
 ```
 
-成功的備份將會輸出 `phase:Completed` ，而且物件將會存留在儲存體帳戶的容器中。
+成功的備份將會輸出 `phase:Completed` ，而物件將會存留在儲存體帳戶的容器中。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，已備份 Azure Red Hat OpenShift 4 叢集應用程式。 您已了解如何︰
+在本文中，Azure Red Hat OpenShift 4 叢集應用程式已備份。 您已了解如何︰
 
 > [!div class="checklist"]
 > * 使用 Velero 建立 OpenShift v4 叢集應用程式備份

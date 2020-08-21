@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: alexeyo
-ms.openlocfilehash: 86182130daf5cbb61df7a751aaeff392dd608a67
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 554dd0967979bc2457c3a9c8371152e09535381f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88662581"
+ms.locfileid: "88690131"
 ---
 # <a name="speech-services-quotas-and-limits"></a>語音服務配額和限制
 
@@ -132,7 +132,7 @@ ms.locfileid: "88662581"
   - 「配額或使用量驗證」以檢查現有的限制
 - 按 *[下一步：方案]*
 - 繼續進行要求建立
-- 在 [ *詳細資料* ] 欄位中，于 [ *描述* ] 欄位中輸入：
+- 在 [ *詳細資料* ] 索引標籤的 [ *描述* ] 欄位中輸入：
   - 請注意，要求是關於 **語音轉換文字** 配額
   - **基底** 或 **自訂** 模型
   - 您[之前收集](#have-the-required-information-ready)的 Azure 資源資訊 
@@ -184,7 +184,7 @@ ms.locfileid: "88662581"
   - 「配額或使用量驗證」以檢查現有的限制
 - 按 *[下一步：方案]*
 - 繼續進行要求建立
-- 在 [ *詳細資料* ] 欄位中，于 [ *描述* ] 欄位中輸入：
+- 在 [ *詳細資料* ] 索引標籤的 [ *描述* ] 欄位中輸入：
   - 請注意，要求是關於 **文字轉換語音** 配額
   - 您[之前收集](#prepare-the-required-information)的 Azure 資源資訊 
   - 完成輸入必要資訊，然後按一下 [*檢查 + 建立*] 索引標籤中的 [*建立*] 按鈕

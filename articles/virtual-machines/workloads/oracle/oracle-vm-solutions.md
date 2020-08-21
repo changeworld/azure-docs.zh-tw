@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: rogardle
-ms.openlocfilehash: 2201cae66aae8c2d9d106871db0d4ebbd003f361
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4489aae873c3fa4153974209074e14959307c772
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052140"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690335"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle VM 映像及其部署
 
@@ -30,7 +30,7 @@ ms.locfileid: "87052140"
 az vm image list --publisher oracle -o table --all
 ```
 
-從2020年6月起，有下列可用的映射：
+從2020年6月起，您可以使用下列映射：
 
 ```bash
 Offer                   Publisher    Sku                     Urn                                                          Version
@@ -112,7 +112,7 @@ Azure NetApp Files 的設計訴求是為了符合執行高效能工作負載 (�
 ## <a name="licensing-oracle-database--software-on-azure"></a>Azure 上的授權 Oracle Database 和軟體
 
 Microsoft Azure 是執行 Oracle Database 的授權雲端環境。 在雲端授權 Oracle 資料庫時，不適用 Oracle Core Factor 資料表。 相反地，使用已針對 Enterprise Edition 資料庫啟用超執行緒技術的 VM 時，如果已啟用超執行緒，請將兩個虛擬 CPU 計算為等同於一個 Oracle Processor 授權 (如原則文件所述)。 在[這裡](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)可以找到原則詳細資料。
-Oracle 資料庫通常需要較高的記憶體和 IO。 基於這個理由，建議針對這些工作負載使用[記憶體最佳化 VM](../../sizes-memory.md)。 若要將您的工作負載進一步最佳化，建議針對需要高記憶體、儲存體和 I/O 頻寬，但不是高核心計數的 Oracle Database 工作負載使用[限制核心虛擬 CPU](../../linux/constrained-vcpu.md)。
+Oracle 資料庫通常需要較高的記憶體和 IO。 基於這個理由，建議針對這些工作負載使用[記憶體最佳化 VM](../../sizes-memory.md)。 若要將您的工作負載進一步最佳化，建議針對需要高記憶體、儲存體和 I/O 頻寬，但不是高核心計數的 Oracle Database 工作負載使用[限制核心虛擬 CPU](../../constrained-vcpu.md)。
 
 將 Oracle 軟體和工作負載從內部部署遷移至 Microsoft Azure 時，Oracle 會提供如 [Oracle on Azure FAQ](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) 所述的授權行動性。
 

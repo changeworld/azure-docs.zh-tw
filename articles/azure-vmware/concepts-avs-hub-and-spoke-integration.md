@@ -2,13 +2,13 @@
 title: 概念-將 Azure VMware 解決方案部署整合到中樞和輪輻架構中
 description: 瞭解在 Azure 上現有或新的中樞和輪輻架構中整合 Azure VMware 解決方案部署的建議。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: a1ba75369a1d6f19ca7ae1f36107170f219f72d0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 08/20/2020
+ms.openlocfilehash: deb2756f7e83250ff58836098dc4954ec482fbda
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649579"
+ms.locfileid: "88684478"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>整合中樞和輪輻架構中的 Azure VMware 解決方案
 
@@ -28,10 +28,7 @@ ms.locfileid: "88649579"
 
 此圖顯示在 Azure 中透過 ExpressRoute 連線到內部部署和 Azure VMware 解決方案的中樞和輪輻部署範例。
 
-:::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署":::
-
-
-
+:::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" border="false":::
 
 架構具有下列主要元件：
 
@@ -64,12 +61,12 @@ ExpressRoute 連線可讓流量在內部部署、Azure VMware 解決方案和 Az
 
 * **內部部署至 Azure VMware 解決方案的流量流程**
 
-  :::image type="content" source="media/hub-spoke/on-prem-to-avs-traffic-flow.png" alt-text="內部部署至 Azure VMware 解決方案的流量流程":::
+  :::image type="content" source="media/hub-spoke/on-prem-to-avs-traffic-flow.png" alt-text="內部部署至 Azure VMware 解決方案的流量流程" border="false":::
 
 
 * **Azure VMware 解決方案至中樞 VNET 流量流程**
 
-  :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Azure VMware 解決方案至中樞虛擬網路流量流程":::
+  :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Azure VMware 解決方案至中樞虛擬網路流量流程" border="false":::
 
 
 您可以在 [Azure Vmware 解決方案產品檔](./concepts-networking.md)中找到更多有關 Azure vmware 解決方案網路和互連能力概念的詳細資料。
@@ -97,7 +94,7 @@ ExpressRoute 連線可讓流量在內部部署、Azure VMware 解決方案和 Az
 
 Azure 應用程式閘道 V1 和 V2 已透過在 Azure VMware 解決方案 Vm 上執行的 web 應用程式進行測試，以作為後端集區。 應用程式閘道目前是將 Azure VMware 解決方案 Vm 上執行的 web 應用程式公開至網際網路的唯一支援方法。 它也可以安全地將應用程式公開給內部使用者。
 
-:::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="使用網路安全性群組的第二層流量分割":::
+:::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="使用網路安全性群組的第二層流量分割" border="false":::
 
 
 ### <a name="jumpbox-and-azure-bastion"></a>Jumpbox 和 Azure 防禦
@@ -110,7 +107,7 @@ Azure 應用程式閘道 V1 和 V2 已透過在 Azure VMware 解決方案 Vm 上
 > 請勿將公用 IP 位址提供給 Jumpbox VM，或將 3389/TCP 埠公開給公用網際網路。 
 
 
-:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure 防禦中樞虛擬網路":::
+:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure 防禦中樞虛擬網路" border="false":::
 
 
 ## <a name="azure-dns-resolution-considerations"></a>Azure DNS 解析考慮

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 08/20/2020
 ms.author: wolfma
-ms.openlocfilehash: 519a9cdac678e8852bef9bd66e3fbb98278cbb3b
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: b30a314977755b94bdcfdf7526d1b9ae61fcf100
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660869"
+ms.locfileid: "88689740"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批次轉譯
 
@@ -174,7 +174,7 @@ ms.locfileid: "88660869"
 
 ### <a name="storage"></a>儲存體
 
-批次轉譯可以從網際網路 URI 讀取音訊，也可以使用 [Azure Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)來讀取音訊或寫入轉譯。
+批次轉譯可以從公開可見的網際網路 URI 讀取音訊，也可以使用 SAS URI 搭配 [Azure Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)來讀取音訊或寫入轉譯。
 
 ## <a name="batch-transcription-result"></a>批次轉譯結果
 
@@ -243,7 +243,7 @@ ms.locfileid: "88660869"
 }
 ```
 
-結果包含下列表單：
+結果包含下欄欄位：
 
 :::row:::
    :::column span="1":::
@@ -309,7 +309,8 @@ Diarization 是在一段音訊中分隔喇叭的流程。 Batch 管線支援 dia
 
 ## <a name="best-practices"></a>最佳作法
 
-批次轉譯服務可以處理大量的已提交轉譯。 您可以透過 `GET` [取得轉譯](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)上的來查詢轉譯的狀態。 在您抓取結果之後，從服務定期呼叫 [刪除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) 轉譯。 也可以將 `timeToLive` 屬性設定為合理的值，以確保最終刪除結果。
+批次轉譯服務可以處理大量的已提交轉譯。 您可以使用 [Get 轉譯](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)查詢轉譯的狀態。
+在您抓取結果之後，從服務定期呼叫 [刪除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) 轉譯。 也 `timeToLive` 可以設定屬性，以確保最終刪除結果。
 
 ## <a name="sample-code"></a>範例程式碼
 

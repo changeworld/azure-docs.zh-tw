@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 8353b7290f0e0073faf93b4ea23bcc0ba50bb89e
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: faf46a90a04e35eb041deb31913980575b1e0d28
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236466"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688040"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 中的變更摘要處理器
 
@@ -95,23 +95,23 @@ ms.locfileid: "88236466"
 
 您需針對耗用的 RU 支付費用，因為資料移入或移出 Cosmos 容器一律會耗用 RU。 您必須針對租用容器耗用的 RU 支付費用。
 
-## <a name="where-to-host-the-change-feed-processor"></a>裝載變更摘要處理器的位置
+## <a name="where-to-host-the-change-feed-processor"></a>變更摘要處理器的裝載位置
 
-變更摘要處理器可以裝載在任何支援長時間執行之進程或工作的平臺上：
+變更摘要處理器可以裝載于任何支援長時間執行之進程或工作的平臺上：
 
-* 連續執行的 [Azure WebJob](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/)。
-* [Azure 虛擬機器](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-virtual-machines)中的進程。
-* [Azure Kubernetes Service](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-kubernetes-service)中的背景工作。
+* 持續執行的 [Azure WebJob](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/)。
+* [Azure 虛擬機器](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-virtual-machines)中的進程。
+* [Azure Kubernetes Service](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)中的背景工作。
 * [ASP.NET 託管服務](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)。
 
-雖然變更摘要處理器可以在短期的環境中執行，但因為租用容器會維護狀態，所以這些環境的啟動和停止週期會增加接收通知的延遲， (因為每次啟動環境時啟動處理器的額外負荷) 。
+雖然變更摘要處理器可以在短期的環境中執行，因為租用容器會維護狀態，而這些環境的啟動和停止週期將會增加接收通知的延遲， (因為每次啟動環境時啟動處理器的額外負荷) 。
 
 ## <a name="additional-resources"></a>其他資源
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [在 GitHub 上完成範例應用程式](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 * [GitHub 上的其他使用範例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
-* [變更摘要處理器 Cosmos DB 研討會實驗室](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
+* [變更摘要處理器的 Cosmos DB 研討會實驗室](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
 
 ## <a name="next-steps"></a>後續步驟
 

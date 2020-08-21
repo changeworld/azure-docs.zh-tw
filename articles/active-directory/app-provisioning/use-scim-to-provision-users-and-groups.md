@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 70938bf1dcd06ce9936767c66ffead0f8627c5a7
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: be33841206fa30a5b4975a604af1b5d9e38551a8
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235463"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690250"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -60,7 +60,7 @@ SCIM 是兩個端點的標準化定義：/Users 端點和 /Groups 端點。 它�
 |tag|urn:ietf:params:scim:schemas:extension:2.0:CustomExtension:tag|extensionAttribute1|
 |status|作用中|isSoftDeleted (未儲存使用者的計算值)|
 
-上述定義的架構會使用下列 JSON 承載來表示。 請注意，除了應用程式所需的屬性之外，JSON 標記法還包含必要的 `id` 、 `externalId` 和 `meta` 屬性。
+上述定義的架構會使用下列 JSON 承載表示。 請注意，除了應用程式所需的屬性之外，JSON 標記法還包含必要的 `id` 、 `externalId` 和 `meta` 屬性。
 
 ```json
 {
@@ -134,7 +134,7 @@ SCIM RFC 中定義了數個端點。 您可以從 /User 端點開始著手，然
 |/Group|對群組物件執行 CRUD 作業。|
 |/ServiceProviderConfig|提供支援之 SCIM 標準功能的詳細資料，例如，支援的資源和驗證方法。|
 |/ResourceTypes|指定每個資源的相關中繼資料|
-|/Schemas|每個用戶端和服務提供者所支援的屬性集可能有所不同。 一個服務提供者可能包括 `name` 、 `title` 和 `emails` ，而另一個服務提供者則使用 `name` 、 `title` 和 `phoneNumbers` 。 結構描述端點可讓您探索支援的屬性。|
+|/Schemas|每個用戶端和服務提供者所支援的屬性集可能有所不同。 一個服務提供者可能包含 `name` 、 `title` 和 `emails` ，而另一個服務提供者則使用 `name` 、 `title` 和 `phoneNumbers` 。 結構描述端點可讓您探索支援的屬性。|
 |/Bulk|大量作業可讓您在單一作業中對大型資源物件集合執行作業 (例如，更新大型群組的成員資格)。|
 
 
@@ -153,6 +153,7 @@ SCIM RFC 中定義了數個端點。 您可以從 /User 端點開始著手，然
 * 支援根據 SCIM 通訊協定 3.4.2 小節，依識別碼和管理員查詢使用者的作業。  
 * 支援根據 SCIM 通訊協定 3.4.2 小節，依識別碼和成員查詢群組的作業。  
 * 接受以單一持有人權杖對應用程式進行 Azure AD 的驗證和授權。
+* 支援虛刪除使用者 `active=false` 及還原使用者 `active=true` 。
 
 在執行 SCIM 端點時，請遵循下列一般指導方針，以確保與 Azure AD 的相容性：
 
@@ -745,7 +746,7 @@ TLS 1.2 加密套件的最低標準：
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP 範圍
-Azure AD 布建服務目前會在 AzureActiveDirectory 和 AzureActiveDirectoryDomainServices 的 IP 範圍下運作，如 [這裡](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)所列。 工作正在進行中，只會合並到 AzureActiveDirectory 下的 IP 範圍。 
+Azure AD 布建服務目前會在 AzureActiveDirectory 和 AzureActiveDirectoryDomainServices 的 IP 範圍下運作，[如下所示。](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) 工作正在進行中，只合併至 AzureActiveDirectory 下的 IP 範圍。 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>步驟 3：建置 SCIM 端點
 
@@ -918,7 +919,7 @@ https://docs.microsoft.com/aspnet/core/fundamentals/environments)
 Azure Active Directory 查詢服務的使用者，其 `externalId` 屬性值符合 Azure AD 中使用者的 mailNickname 屬性值。 查詢會以類似於此範例的超文字傳輸通訊協定 (HTTP) 要求表示，其中，jyoung 是 Azure Active Directory 中使用者的 mailNickname 範例。
 
 >[!NOTE]
-> 這只是範例。 並非所有使用者都有 mailNickname 屬性，且使用者的值在目錄中可能不是唯一的。 此外，用於比對 (的屬性（在此案例中為 `externalId`) 可在 [Azure AD 屬性](customize-application-attributes.md)對應中設定）。
+> 這只是範例。 並非所有使用者都有 mailNickname 屬性，且使用者的值在目錄中可能不是唯一的。 此外，用來比對 (的屬性（在此案例中為 `externalId`) 可在 [Azure AD 屬性](customize-application-attributes.md)對應中進行設定）。
 
 ```
 GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
@@ -948,7 +949,7 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 
 ***範例 2.佈建使用者***
 
-如果對 web 服務的查詢回應，且 `externalId` 屬性值符合使用者的 mailNickname 屬性值，則不會傳回任何使用者，然後 Azure Active Directory 要求服務布建對應于 Azure Active Directory 中的使用者。  以下是這類要求的範例： 
+如果針對 `externalId` 屬性值符合使用者之 mailNickname 屬性值的使用者，對 web 服務之查詢的回應不會傳回任何使用者，則 Azure Active Directory 要求服務會在 Azure Active Directory 中布建對應的使用者。  以下是這類要求的範例： 
 
 ```
  POST https://.../scim/Users HTTP/1.1
@@ -1191,7 +1192,7 @@ SCIM 規格並未定義 SCIM 特有的驗證和授權機制。 其採用現有�
 |--|--|--|--|
 |使用者名稱和密碼 (Azure AD 不建議使用或加以支援)|易於實作|不安全 - [您的 Pa$$word 無關緊要](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|視個案支援資源庫應用程式。 不支援非資源庫應用程式。|
 |長時間存留的持有人權杖|長時間存留的權杖不需要有使用者存在。 在設定佈建時，管理員很容易就能使用這些權杖。|若未使用不安全的方法 (例如電子郵件)，長時間存留的權杖可能難以與管理員共用。 |支援資源庫和非資源庫應用程式。 |
-|OAuth 授權碼授與|存取權杖的存留期遠比密碼短，且具有長期持有人權杖所沒有的自動化重新整理機制。  在初始授權期間必須有實際的使用者存在，因而增加了一層責任。 |必須要有使用者存在。 如果使用者離職，權杖就會失效，而必須重新完成授權。|支援資源庫應用程式，但非資源庫應用程式。 非資源庫的支援在我們的待處理專案中。|
+|OAuth 授權碼授與|存取權杖的存留期遠比密碼短，且具有長期持有人權杖所沒有的自動化重新整理機制。  在初始授權期間必須有實際的使用者存在，因而增加了一層責任。 |必須要有使用者存在。 如果使用者離職，權杖就會失效，而必須重新完成授權。|支援資源庫應用程式，但不支援非資源庫應用程式。 非資源庫的支援在我們的待處理專案中。|
 |OAuth 用戶端認證授與|存取權杖的存留期遠比密碼短，且具有長期持有人權杖所沒有的自動化重新整理機制。 授權碼授與和用戶端認證授與會建立相同類型的存取權杖，因此，這些方法的切換對 API 而言是透明的。  佈建可以完全自動化，且可以無訊息方式要求新的權杖，而不需要使用者介入。 ||不支援資源庫和非資源庫應用程式。 我們已將支援列入待處理項目中。|
 
 > [!NOTE]
@@ -1209,7 +1210,7 @@ SCIM 規格並未定義 SCIM 特有的驗證和授權機制。 其採用現有�
 * 支援多個重新導向 URL。 管理員可從 "portal.azure.com" 和 "aad.portal.azure.com" 設定佈建。 支援多個重新導向 URL 可確保使用者可從任一入口網站授與存取權。
 * 支援多個秘密，以確保可順暢更新秘密，而不需要停機。 
 
-**長期的 OAuth 持有人權杖：** 如果您的應用程式不支援 OAuth 授權碼授與流程，您也可以產生長時間的 OAuth 持有人權杖，而不是系統管理員可用來設定布建整合。 此權杖應該是永久的，否則，當權杖過期時，佈建作業將遭到[隔離](application-provisioning-quarantine-status.md)。 此權杖的大小必須低於 1KB。  
+**長時間存留的 OAuth 持有人權杖：** 如果您的應用程式不支援 OAuth 授權碼授與流程，您也可以產生長期的 OAuth 持有人權杖，而不是系統管理員可用來設定布建整合。 此權杖應該是永久的，否則，當權杖過期時，佈建作業將遭到[隔離](application-provisioning-quarantine-status.md)。 此權杖的大小必須低於 1KB。  
 
 如需其他驗證和授權方法的相關資訊，請在 [UserVoice](https://aka.ms/appprovisioningfeaturerequest) 上告訴我們。
 

@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 24e7a1660da4dd021ef7ceb2594b4db2340cf104
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: e9b9e0b27e46c95ca4c2bc3a5c547259bada5fda
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263022"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685403"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評量/相依性視覺效果疑難排解
 
@@ -36,10 +36,10 @@ ms.locfileid: "88263022"
 找不到所需儲存體效能的 VM | 儲存體效能 (機器所需的每秒輸入/輸出作業 [IOPS] 和輸送量) 超過 Azure VM 支援。 在移轉之前，降低機器的儲存體需求。
 找不到所需網路效能的 VM | 機器需要的網路效能 (傳入/傳出) 超出 Azure VM 支援。 減少機器的網路需求。
 在指定的位置找不到 VM | 在移轉之前，使用不同的目標位置。
-一或多個不適合的磁片 | 一或多個連接至 VM 的磁片不符合 Azure 需求。的<br/><br/> Azure Migrate：伺服器評量目前不支援 Ultra SSD 磁片，並根據高階受控磁片的磁片限制來評估磁片 (32 TB) 。<br/><br/> 針對連結至 VM 的每個磁片，請確定 <) 的 Ultra SSD 磁片 (的磁片大小為 64 TB。<br/><br/> 如果不是，請在遷移至 Azure 之前先減少磁片大小，或在 Azure 中使用多個磁片，並將 [它們集中在一起](../virtual-machines/windows/premium-storage-performance.md#disk-striping) ，以取得更高的儲存體限制。 請確定 Azure [受管理的虛擬機器磁片](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)支援每個磁片所需的效能 (IOPS 和輸送量) 。
+一或多個不適合的磁片 | 一或多個連接至 VM 的磁片不符合 Azure 需求。的<br/><br/> Azure Migrate：伺服器評量目前不支援 Ultra SSD 磁片，並根據高階受控磁片的磁片限制來評估磁片 (32 TB) 。<br/><br/> 針對連結至 VM 的每個磁片，請確定 <) 的 Ultra SSD 磁片 (的磁片大小為 64 TB。<br/><br/> 如果不是，請在遷移至 Azure 之前先減少磁片大小，或在 Azure 中使用多個磁片，並將 [它們集中在一起](../virtual-machines/premium-storage-performance.md#disk-striping) ，以取得更高的儲存體限制。 請確定 Azure [受管理的虛擬機器磁片](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)支援每個磁片所需的效能 (IOPS 和輸送量) 。
 一個或多個不適用的網路介面卡。 | 在移轉之前，從機器移除未使用的網路介面卡。
 磁碟計數超過限制 | 移轉之前從機器移除未使用的磁碟。
-磁碟大小超過限制 | Azure Migrate：伺服器評量目前不支援 Ultra SSD 磁片，並根據高階磁片限制來評估磁片 (32 TB) 。<br/><br/> 不過，Azure 支援的磁片具有高達 64-TB 的大小 (Ultra SSD 磁片) 支援。 在遷移前將磁片壓縮成小於 64 TB，或在 Azure 中使用多個磁片，並將 [它們集中在一起](../virtual-machines/windows/premium-storage-performance.md#disk-striping) ，以取得更高的儲存體限制。
+磁碟大小超過限制 | Azure Migrate：伺服器評量目前不支援 Ultra SSD 磁片，並根據高階磁片限制來評估磁片 (32 TB) 。<br/><br/> 不過，Azure 支援的磁片具有高達 64-TB 的大小 (Ultra SSD 磁片) 支援。 在遷移前將磁片壓縮成小於 64 TB，或在 Azure 中使用多個磁片，並將 [它們集中在一起](../virtual-machines/premium-storage-performance.md#disk-striping) ，以取得更高的儲存體限制。
 指定的位置沒有磁碟可用 | 在移轉之前，請確定磁碟已在目標位置。
 沒有磁碟可當作指定的備援 | 磁碟應該使用評估設定 (預設為 LRS) 中定義的備援儲存體類型。
 因為發生內部錯誤，所以無法判斷磁片適用性 | 嘗試建立群組的新評估。

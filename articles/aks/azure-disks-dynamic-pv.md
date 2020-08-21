@@ -5,12 +5,12 @@ description: 瞭解如何使用 Azure 磁片，以 Azure Kubernetes Service (AKS
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 3d01b2c2098dcbe896ecaa7f854d91477eba2cab
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 06aad076836c0f6fdc59c4ed5d0116231080d15c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648763"
+ms.locfileid: "88683601"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中以動態方式建立和使用 Azure 磁碟的永續性磁碟區
 
@@ -40,7 +40,7 @@ ms.locfileid: "88648763"
     
 如果您使用其中一個預設儲存類別，則無法在建立儲存體類別之後更新磁片區大小。 若要能夠在建立儲存體類別之後更新磁片區大小，請將這一行新增 `allowVolumeExpansion: true` 至其中一個預設儲存類別，或者您可以建立自己的自訂儲存類別。 請注意，不支援減少 PVC (的大小，以避免) 資料遺失。 您可以使用命令來編輯現有的儲存類別 `kubectl edit sc` 。 
 
-例如，如果您想要使用大小為 4 TiB 的磁片，您必須建立可定義的儲存類別， `cachingmode: None` 因為磁片 [4 TiB 和更大的磁碟快取不受支援](../virtual-machines/windows/premium-storage-performance.md#disk-caching)。
+例如，如果您想要使用大小為 4 TiB 的磁片，您必須建立可定義的儲存類別， `cachingmode: None` 因為磁片 [4 TiB 和更大的磁碟快取不受支援](../virtual-machines/premium-storage-performance.md#disk-caching)。
 
 如需有關儲存體類別以及建立您自己的儲存類別的詳細資訊，請參閱 [AKS 中的應用程式的儲存體選項][storage-class-concepts]。
 

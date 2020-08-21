@@ -1,6 +1,6 @@
 ---
 title: Azure VM 大小-前幾代 |Microsoft Docs
-description: 列出 Azure 中適用于虛擬機器的前幾代大小。 列出 vCPU 數目、資料磁碟和 NIC 的相關資訊，以及此服務中各種大小之儲存體輸送量和網路頻寬的相關資訊。
+description: 列出適用于 Azure 中虛擬機器的先前可用大小層代。 列出 vCPU 數目、資料磁碟和 NIC 的相關資訊，以及此服務中各種大小之儲存體輸送量和網路頻寬的相關資訊。
 services: virtual-machines
 ms.subservice: sizes
 author: mimckitt
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 01c7d5610daa703e910fb485b5e9d945a6cdc940
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 37a687a17df266fe0589c24b392c0527e001f976
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831289"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683890"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前幾代的虛擬機器大小
 
@@ -49,7 +49,7 @@ ACU：210 - 250
 
 進階儲存體快取：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： GiB 中的 IOPS/MBps (快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬 (Mbps)  |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|
 | Standard_F1s  | 1  | 2  | 4  | 4  | 4000/32 (12)     | 3200/48   | 2/750   |
 | Standard_F2s  | 2  | 4  | 8  | 8  | 8000/64 (24)     | 6400/96   | 2/1500  |
@@ -59,7 +59,7 @@ ACU：210 - 250
 
 MBps = 每秒 10^6 位元組，而 GiB = 1024^3 位元組。
 
-<sup>1</sup> Fs 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。  如需詳細資訊，請參閱[Windows](windows/premium-storage-performance.md)或[Linux](linux/premium-storage-performance.md)的高效能設計。  
+<sup>1</sup> Fs 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。  如需詳細資訊，請參閱 [高效能 ( 的設計]。 premium-storage-performance.md) 。
 
 
 ## <a name="nvv2-series"></a>NVv2 系列
@@ -80,9 +80,9 @@ NVv2 執行個體中的每個 GPU 均隨附 GRID 授權。 此授權可讓您彈
 
 ## <a name="older-generations-of-virtual-machine-sizes"></a>較舊的虛擬機器大小層代
 
-本節提供舊版虛擬機器大小的相關資訊。 這些大小仍然受支援，但不會收到額外的容量。 有較新或替代的大小已正式推出。 請參閱[Azure 中的 Linux 虛擬機器大小](./sizes.md)，以選擇最適合您需求的 VM 大小。  
+本節提供舊版虛擬機器大小的相關資訊。 這些大小仍受支援，但不會收到額外的容量。 已正式推出較新或替代的大小。 請參閱 [Azure 中 Linux 虛擬機器的大小](./sizes.md) ，以選擇最符合您需求的 VM 大小。  
 
-如需調整 Linux VM 大小的詳細資訊，請參閱[調整 LINUX vm 的大小](linux/change-vm-size.md)。  
+如需調整 Linux VM 大小的詳細資訊，請參閱 [調整 LINUX vm 的大小](linux/change-vm-size.md)。  
 
 <br>
 
@@ -96,7 +96,7 @@ NVv2 執行個體中的每個 GPU 均隨附 GRID 授權。 此授權可讓您彈
 
 基本層大小主要適用於開發工作負載，以及其他不需要負載平衡、自動調整或記憶體高用量虛擬機器的應用程式。
 
-| 大小 - 大小\名稱 | vCPU | Memory|NIC (最大)| 暫存磁碟大小上限 | 最大 資料磁碟 (每個 1023 GB)| 最大 IOPS (每個磁碟 300) |
+| 大小 - 大小\名稱 | vCPU | 記憶體|NIC (最大)| 暫存磁碟大小上限 | 最大 資料磁碟 (每個 1023 GB)| 最大 IOPS (每個磁碟 300) |
 |---|---|---|---|---|---|---|
 | A0\Basic_A0 | 1 | 768 MB  | 2 | 20 GB  | 1  | 1x300  |
 | A1\Basic_A1 | 1 | 1.75 GB | 2 | 40 GB  | 2  | 2x300  |
@@ -169,7 +169,7 @@ A8-A11 和 H 系列大小也稱為 *計算密集型執行個體*。 執行這些
 
 ### <a name="d-series"></a>D 系列  
 
-**較新的大小建議**： [Dav4 系列](dav4-dasv4-series.md)、 [Dv4 系列](dv4-dsv4-series.md)和[Ddv4 系列](ddv4-ddsv4-series.md)
+**較新的大小建議**： [Dav4 系列](dav4-dasv4-series.md)、 [Dv4 系列](dv4-dsv4-series.md) 和 [Ddv4 系列](ddv4-ddsv4-series.md)
 
 ACU： 160-250 <sup>1</sup>
 
@@ -184,13 +184,13 @@ ACU： 160-250 <sup>1</sup>
 | Standard_D3  | 4 | 14  | 200 | 12000/187/93  | 16/16x500 | 4/2000 |
 | 標準_D4  | 8 | 28  | 400 | 24000/375/187 | 32/32x500 | 8/4000 |
 
-<sup>1</sup> VM 系列可以在下列其中一個 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz Intel Haswell® e5-2673 V3 () 或 2.3 GHz Intel® E5-2673 V4 (Broadwell)   
+<sup>1</sup> 個 VM 系列可在下列其中一項 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz Intel® e5-2673 V3 (Haswell) 或 2.3 g h z Intel® E5-2673 V4 (Broadwell)   
 
 <br>
 
 ### <a name="d-series---memory-optimized"></a>D 系列 - 記憶體已最佳化  
 
-**較新的大小建議**： [Dav4 系列](dav4-dasv4-series.md)、 [Dv4 系列](dv4-dsv4-series.md)和[Ddv4 系列](ddv4-ddsv4-series.md)
+**較新的大小建議**： [Dav4 系列](dav4-dasv4-series.md)、 [Dv4 系列](dv4-dsv4-series.md) 和 [Ddv4 系列](ddv4-ddsv4-series.md)
 
 ACU： 160-250 <sup>1</sup>
 
@@ -205,7 +205,7 @@ ACU： 160-250 <sup>1</sup>
 | 標準_D13 | 8  | 56  | 400 | 24000/375/187 | 32/32x500 | 8/4000 |
 | 標準_D14 | 16 | 112 | 800 | 48000/750/375 | 64/64x500 | 8/8000 |
 
-<sup>1</sup> VM 系列可以在下列其中一個 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz Intel Haswell® e5-2673 V3 () 或 2.3 GHz Intel® E5-2673 V4 (Broadwell)   
+<sup>1</sup> 個 VM 系列可在下列其中一項 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz Intel® e5-2673 V3 (Haswell) 或 2.3 g h z Intel® E5-2673 V4 (Broadwell)   
 
 <br>
 
@@ -217,7 +217,7 @@ ACU： 160-250 <sup>1</sup>
 
 進階儲存體快取：支援
 
-DC 系列使用最新一代的 3.7 GHz Intel E-2176g (具處理器與 SGX 技術，而且透過 Intel Turbo 加速技術，最高可達 4.7 GHz。 
+DC 系列使用最新一代的 3.7 GHz Intel E-2176g (具處理器搭配 SGX 技術，而 Intel Turbo 加速技術最高可達 4.7 GHz。 
 
 | 大小          | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大 NIC/預期的網路頻寬 (Mbps) |
 |---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
@@ -226,12 +226,12 @@ DC 系列使用最新一代的 3.7 GHz Intel E-2176g (具處理器與 SGX 技術
 
 > [!IMPORTANT]
 >
-> DC 系列 Vm 是[第2代 vm](./linux/generation-2.md#creating-a-generation-2-vm) ，只支援 `Gen2` 映射。
+> DC 系列 Vm 是 [第2代 vm](./linux/generation-2.md#creating-a-generation-2-vm) ，且僅支援 `Gen2` 映射。
 
 
 ### <a name="ds-series"></a>DS 系列  
 
-**較新的大小建議**： [Dasv4 系列](dav4-dasv4-series.md)、 [Dsv4 系列](dv4-dsv4-series.md)和[Ddsv4 系列](ddv4-ddsv4-series.md)
+**較新的大小建議**： [Dasv4 系列](dav4-dasv4-series.md)、 [Dsv4 系列](dv4-dsv4-series.md) 和 [Ddsv4 系列](ddv4-ddsv4-series.md)
 
 ACU： 160-250 <sup>1</sup>
 
@@ -239,20 +239,20 @@ ACU： 160-250 <sup>1</sup>
 
 進階儲存體快取：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： GiB 中的 IOPS/MBps (快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬 (Mbps)  |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|
 | Standard_DS1 | 1 | 3.5 | 7  | 4  | 4000/32 (43)     | 3200/32   | 2/500  |
 | Standard_DS2 | 2 | 7   | 14 | 8  | 8000/64 (86)     | 6400/64   | 2/1000 |
 | Standard_DS3 | 4 | 14  | 28 | 16 | 16000/128 (172)  | 12800/128 | 4/2000 |
 | Standard_DS4 | 8 | 28  | 56 | 32 | 32000/256 (344)  | 25600/256 | 8/4000 |
 
-<sup>1</sup> VM 系列可以在下列其中一個 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz Intel Haswell® e5-2673 V3 () 或 2.3 GHz Intel® E5-2673 V4 (Broadwell)   
+<sup>1</sup> 個 VM 系列可在下列其中一項 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz Intel® e5-2673 V3 (Haswell) 或 2.3 g h z Intel® E5-2673 V4 (Broadwell)   
 
 <br>
 
 ### <a name="ds-series---memory-optimized"></a>DS 系列 - 記憶體已最佳化  
 
-**較新的大小建議**： [Dasv4 系列](dav4-dasv4-series.md)、 [Dsv4 系列](dv4-dsv4-series.md)和[Ddsv4 系列](ddv4-ddsv4-series.md)
+**較新的大小建議**： [Dasv4 系列](dav4-dasv4-series.md)、 [Dsv4 系列](dv4-dsv4-series.md) 和 [Ddsv4 系列](ddv4-ddsv4-series.md)
 
 ACU： 160-250 <sup>1、2</sup>
 
@@ -260,15 +260,15 @@ ACU： 160-250 <sup>1、2</sup>
 
 進階儲存體快取：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： GiB 中的 IOPS/MBps (快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬 (Mbps)  |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|
 | Standard_DS11 | 2  | 14  | 28  | 8  | 8000/64 (72)     | 6400/64   | 2/1000 |
 | Standard_DS12 | 4  | 28  | 56  | 16 | 16000/128 (144)  | 12800/128 | 4/2000 |
 | Standard_DS13 | 8  | 56  | 112 | 32 | 32000/256 (288)  | 25600/256 | 8/4000 |
 | Standard_DS14 | 16 | 112 | 224 | 64 | 64000/512 (576)  | 51200/512 | 8/8000 |
 
-<sup>1</sup> DS 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。  如需詳細資訊，請參閱[Windows](windows/premium-storage-performance.md)或[Linux](linux/premium-storage-performance.md)的高效能設計。
-<sup>2</sup> VM 系列可以在下列其中一個 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz Intel Haswell® e5-2673 V3 () 或 2.3 GHz Intel® E5-2673 V4 (Broadwell)   
+<sup>1</sup> DS 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。  如需詳細資訊，請參閱 [高效能 ( 的設計]。 premium-storage-performance.md) 。
+<sup>2</sup> 個 VM 系列可在下列其中一項 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz Intel® e5-2673 V3 (Haswell) 或 2.3 GHz Intel® E5-2673 V4 (Broadwell)   
 
 <br>
 
@@ -278,7 +278,7 @@ ACU： 160-250 <sup>1、2</sup>
 
 Ls 系列使用[Intel® Xeon® 處理器 E5 v3 系列](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)，提供最多 32 個 vCPU。 Ls 系列會取得與 G/GS 系列相同的 CPU 效能，而且每個 vCPU 會有 8 GiB 的記憶體。
 
-Ls 系列不支援建立本機快取，來增加可由耐久資料磁碟達成的 IOPS。 本機磁片的高輸送量和 IOPS 讓 Ls 系列 Vm 適用于 NoSQL 存放區（例如 Apache Cassandra 和 MongoDB），其會將資料複寫到多個 Vm，以在單一 VM 失敗時達到持續性。
+Ls 系列不支援建立本機快取，來增加可由耐久資料磁碟達成的 IOPS。 本機磁片的高輸送量和 IOPS 讓 Ls 系列 Vm 適用于 NoSQL 存放區（例如 Apache Cassandra 和 MongoDB），可將資料複寫到多個 Vm，以在單一 VM 失敗時達到持續性。
 
 ACU：180 - 240
 
@@ -286,20 +286,20 @@ ACU：180 - 240
 
 進階儲存體快取：不支援
 
-| 大小 | vCPU | 記憶體 (GiB) | 暫存儲存體 (GiB) | 最大資料磁碟 | 最大暫存儲存體輸送量 (IOPS/MBps)  |  (IOPS/MBps) 的最大未快取磁片輸送量 | 最大 Nic/預期的網路頻寬 (Mbps)  |
+| 大小 | vCPU | 記憶體 (GiB) | 暫存儲存體 (GiB) | 最大資料磁碟 | 最大暫存儲存體輸送量 (IOPS/MBps)  | 最大未快取的磁片輸送量 (IOPS/MBps)  | 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|
 | Standard_L4s   | 4  | 32  | 678  | 16 | 20000/200 | 5000/125  | 2/4000  |
 | Standard_L8s   | 8  | 64  | 1388 | 32 | 40000/400 | 10000/250 | 4/8000  |
 | Standard_L16s  | 16 | 128 | 2807 | 64 | 80000/800 | 20000/500 | 8/16000 |
 | Standard_L32s &nbsp; <sup>1</sup> | 32 | 256 | 5630 | 64 | 160000/1600 | 40000/1000 | 8/20000 |
 
-Ls 系列 VM 的最大磁碟輸送量，可能會受到任何連結磁碟的數量、大小和串接所限制。 如需詳細資訊，請參閱[Windows](windows/premium-storage-performance.md)或[Linux](linux/premium-storage-performance.md)的高效能設計。
+Ls 系列 VM 的最大磁碟輸送量，可能會受到任何連結磁碟的數量、大小和串接所限制。 如需詳細資訊，請參閱 [高效能 ( 的設計]。 premium-storage-performance.md) 。
 
 <sup>1</sup> 執行個體會隔離至單一客戶專用的硬體。
 
 ### <a name="gs-series"></a>GS 系列
 
-**較新的大小建議**： [Easv4 系列](eav4-easv4-series.md)、 [Esv4 系列](ev4-esv4-series.md)、 [Edsv4 系列](edv4-edsv4-series.md)和[M 系列](m-series.md)
+**較新的大小建議**： [Easv4 系列](eav4-easv4-series.md)、 [Esv4 系列](ev4-esv4-series.md)、 [Edsv4 系列](edv4-edsv4-series.md) 和 [M 系列](m-series.md)
 
 ACU：180 - 240 <sup>1</sup>
 
@@ -315,7 +315,7 @@ ACU：180 - 240 <sup>1</sup>
 | Standard_GS4&nbsp;<sup>3</sup> | 16 | 224 | 448 | 64 | 80000/800 (2112)  | 40000/1000 | 8/16000 |
 | Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> | 32 | 448 |896 | 64 |160000/1600 (4224)  | 80000/2000 | 8/20000 |
 
-<sup>1</sup> GS 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。 如需詳細資訊，請參閱[Windows](windows/premium-storage-performance.md)或[Linux](linux/premium-storage-performance.md)的高效能設計。
+<sup>1</sup> GS 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。 如需詳細資訊，請參閱 [高效能 ( 的設計]。 premium-storage-performance.md) 。
 
 <sup>2</sup> 執行個體會隔離至單一客戶專用的硬體。
 
@@ -325,7 +325,7 @@ ACU：180 - 240 <sup>1</sup>
 
 ### <a name="g-series"></a>G 系列
 
-**較新的大小建議**： [Eav4 系列](eav4-easv4-series.md)、 [Ev4 系列](ev4-esv4-series.md)、 [Edv4 系列](edv4-edsv4-series.md)和[M 系列](m-series.md)
+**較新的大小建議**： [Eav4 系列](eav4-easv4-series.md)、 [Ev4 系列](ev4-esv4-series.md) 和 [Edv4 系列](edv4-edsv4-series.md) 與 [M 系列](m-series.md)
 
 ACU：180 - 240
 
@@ -345,9 +345,9 @@ ACU：180 - 240
 <br>
 
 ## <a name="nv-series"></a>NV 系列
-**較新的大小建議**： [NVv3 系列](nvv3-series.md)和[NVv4 系列](nvv4-series.md)
+**較新的大小建議**： [NVv3 系列](nvv3-series.md) 和 [NVv4 系列](nvv4-series.md)
 
-NV 系列虛擬機器是由 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) \(英文\) GPU 和 NVIDIA GRID 技術提供技術支援，適用於桌面加速應用程式和虛擬桌面，可供客戶將其資料或模擬視覺化。 使用者能夠在 NV 執行個體上，將其圖形密集型工作流程視覺化以獲得較佳的圖形功能，此外還能夠執行單精確度工作負載，例如編碼和轉譯。 NV 系列 Vm 也支援 Intel 2690 v3 (Haswell) Cpu。
+NV 系列虛擬機器是由 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) \(英文\) GPU 和 NVIDIA GRID 技術提供技術支援，適用於桌面加速應用程式和虛擬桌面，可供客戶將其資料或模擬視覺化。 使用者能夠在 NV 執行個體上，將其圖形密集型工作流程視覺化以獲得較佳的圖形功能，此外還能夠執行單精確度工作負載，例如編碼和轉譯。 NV 系列 Vm 也支援 Intel 2690 v3， (Haswell) Cpu。
 
 NV 執行個體中的每個 GPU 均隨附 GRID 授權。 此授權可讓您彈性地使用 NV 執行個體作為單一使用者的虛擬工作站，或讓 25 位並行使用者可以針對某個虛擬應用程式案例連線至 VM。
 

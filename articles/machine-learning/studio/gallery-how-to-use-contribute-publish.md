@@ -1,5 +1,5 @@
 ---
-title: ML Studio （傳統）： Azure AI 資源庫-Azure
+title: ML Studio (傳統) ： Azure AI 資源庫-Azure
 description: 共用及探索 Azure AI 資源庫中的分析資源等內容。 了解其他人並且自己貢獻社群。
 services: machine-learning
 ms.service: machine-learning
@@ -9,19 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 7918f684fea1092cbd7c11fade3d8f40c1e44240
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 1c03f52802881bcf4c916ce3ed438e465e574090
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431202"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691253"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>共用及探索 Azure AI 資源庫中的資源
 
-**適用物件：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio （傳統） ![ 否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 
 **[Azure AI 資源庫](https://gallery.azure.ai)** 是一個由社群驅動的網站，可用於探索及共用透過 Azure AI 建置的解決方案。
 資源庫具有各種資源，可供您開發自己的分析解決方案。
@@ -30,11 +30,10 @@ ms.locfileid: "87431202"
 
 Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表的不同資源。 它們包括：
 
-* **實驗**-資源庫包含各種已在 Azure Machine Learning Studio （傳統）中開發的實驗。 小至示範特定機器學習服務技術的快速概念證明實驗，大至用於解決複雜機器學習服務問題的完整開發解決方案，都在這些實驗的涵蓋範圍內。
+* **實驗** -資源庫包含各種已在 Azure Machine Learning Studio (傳統) 中開發的實驗。 小至示範特定機器學習服務技術的快速概念證明實驗，大至用於解決複雜機器學習服務問題的完整開發解決方案，都在這些實驗的涵蓋範圍內。
 * **教學課程**：此資源中提供了許多教學課程來引導您了解機器學習服務的技術和概念，或說明用來解決各種機器學習服務問題的進階方法。
 * **集合**：集合可讓您將用於處理特定解決方案或概念的實驗、API 和其他資源庫項目群組在一起。
-* **自訂模組**-您可以將自訂模組下載至您的 Studio （傳統）工作區，以在您自己的實驗中使用。
-* **Jupyter 筆記本**：Jupyter 筆記本可在單一的互動式畫布中納入程式碼、資料視覺效果和文件。 資源庫中的 Notebook 會提供進階機器學習服務之技術和解決方案的教學課程和詳細說明。
+* **自訂模組** -您可以將自訂模組下載到您的 Studio (傳統) 工作區，以在您自己的實驗中使用。
 
 ## <a name="discover-and-contribute"></a>探索及參與
 
@@ -49,12 +48,12 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 當您登入時，您將成為資源庫社群的成員。 您可以下載資源或發表自己的資源庫項目，以便其他人可以從您發現的解決方案中受益。
 
-您可以下載**實驗**、**自訂模組**和 **Jupyter Notebook**，用來開發自己的分析解決方案。
+您可以下載 **實驗**、 **自訂模組** ，以用於開發您自己的分析解決方案。
 您可以將**實驗**、**教學課程**和**集合**發表至資源庫。
 
-## <a name="download-experiments-modules-notebooks"></a>下載實驗、模組和 Notebook
+## <a name="download-experiments-modules"></a>下載實驗、課程模組
 
-您可以將**實驗**、**自訂模組**和**Jupyter 筆記本**下載到您自己的 Machine Learning Studio （傳統）工作區中，以用於開發您自己的解決方案。
+您可以將 **實驗**、 **自訂模組** 下載到您自己的 Machine Learning Studio (傳統) 工作區，以用於開發您自己的解決方案。
 
 若要下載中 AI 資源庫中的資源：
 
@@ -63,15 +62,15 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 ![開啟 AI 資源庫中的項目](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
-若要從 Studio （傳統）中下載資源：
+若要從 Studio 內下載資源 (傳統) ：
 
-1. 在 [Studio （傳統）] 中，選取 [**新增**]。
+1. 在 [Studio (傳統) 中，選取 [ **新增**]。
 1. 選取 [模組]****、[實驗]**** 或 [Notebook]****。
 1. 瀏覽或搜尋以尋找資源庫資源。
 1. 將滑鼠指向資源，然後選取 [在 Studio 中開啟]****。
-    ![從 Machine Learning Studio （傳統）中開啟資源庫實驗](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
+    ![從 Machine Learning Studio (傳統) 中開啟資源庫實驗 ](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
 
-當資源在您的工作區中時，您可以自訂並使用它，就像您在 Studio （傳統）中建立的任何專案一樣。
+一旦資源在您的工作區中，您就可以自訂和使用它，就像您在 Studio 中建立的任何程式 (傳統) 一樣。
 
 若要使用匯入的自訂模組：
 
@@ -81,12 +80,12 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 ## <a name="contribute-experiments"></a>發表實驗
 
-若要示範分析技術，或讓其他人快速開始使用其解決方案，您可以參與在 Studio 中開發的**實驗**（傳統）。
+若要示範分析技術，或讓其他人可以開始使用其解決方案，您可以提供在 Studio 中開發的 **實驗** (傳統) 。
 當其他人瀏覽您在資源庫中發表的項目時，您可以追蹤所發表項目的檢視次數與下載次數。
 使用者也可以加入註解，並與資料科學社群的其他成員共用您的發表項目。
 而您可以登入討論工具 (例如 Disqus)，以在您的發表項目上出現註解時獲得通知。
 
-1. 在 Studio 中開啟您的實驗（傳統）。
+1. 在 Studio (傳統) 中開啟您的實驗。
 
 1. 在實驗畫布下方的動作清單中，選取 [發佈到資源庫]****。
 
@@ -98,7 +97,7 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
    * 實驗圖表的螢幕擷取畫面
    * 資料來源和說明
    * 資料處理
-   * 特色工程
+   * 特徵設計
    * 模型描述
    * 成果和模型效能評估
 
@@ -118,14 +117,14 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 ### <a name="update-your-experiment"></a>更新您的實驗
 
-若有需要，您可以在您發佈到 Gallery 的實驗中變更工作流程 (模組、參數等等)。 在 [Machine Learning Studio （傳統）] 中，進行您想要對實驗進行的任何變更，然後再次發佈。 系統會以您所做的變更來更新發佈的實驗。
+若有需要，您可以在您發佈到 Gallery 的實驗中變更工作流程 (模組、參數等等)。 在 Machine Learning Studio (傳統) 中，進行您想要對實驗進行的任何變更，然後再次發佈。 系統會以您所做的變更來更新發佈的實驗。
 
 您可以直接在 Gallery 中變更實驗的以下任一資訊：
 
 * 實驗名稱
 * 摘要或描述
-* Tags
-* 映像
+* 標籤
+* Image
 * 可視性設定 ([公開]**** 或 [未公開]****)
 
 您也可以將實驗從 Gallery 中刪除。
@@ -151,11 +150,11 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 1. 在頁面的右上角中選取您的影像，然後選取您的名稱。
 
-1. 選取 [**新增專案**]。
+1. 選取 [新增項目]  。
 
-1. 在 [描述]**** 頁面上，針對 [項目類型]****，選取 [教學課程]**** 或 [集合]****。 輸入名稱、摘要、詳細的描述，以及有助於其他使用者找到發表項目的任何標記。 然後按一下 [下一步]。
+1. 在 [描述]**** 頁面上，針對 [項目類型]****，選取 [教學課程]**** 或 [集合]****。 輸入名稱、摘要、詳細的描述，以及有助於其他使用者找到發表項目的任何標記。 然後按一下 [下一步]  。
 
-1. 在 [映像選取]**** 頁面上，選取與發表項目一起顯示的映像。 您可以上傳您自己的映像檔，也可以選取內建映像。 選擇可能有助於使用者識別發表項目內容與用途的映像。 然後按一下 [下一步]。
+1. 在 [映像選取]**** 頁面上，選取與發表項目一起顯示的映像。 您可以上傳您自己的映像檔，也可以選取內建映像。 選擇可能有助於使用者識別發表項目內容與用途的映像。 然後按一下 [下一步]  。
 
 1. 在 [設定]**** 頁面上，針對 [可見性]****，選取您的發表項目為 [公開]**** \(任何人都可以檢視) 或 [未公開]**** \(僅限有直接連結的人員可以檢視)。
 
@@ -187,11 +186,11 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 您連同發表項目一起提交的影像用於建立圖格。 建議使用小於 500 KB 的影像，長寬比 3:2，解析度 960 &#215; 640。
 
-**我在實驗中使用的資料集會發生什麼事？資料集是否也會在資源庫中發行？**
+**我在實驗中使用的資料集會發生什麼事？資料集是否也會在資源庫中發佈？**
 
 如果您的資料集是實驗的一部分，且未透過 [匯入資料] 模組匯入，則資料集會在資源庫中發佈成為實驗的一部分。 請確定隨同您實驗發佈的資料集具有適當的授權條款。 該授權條款應該允許任何人分享與下載資料。 資源庫發表內容在 Azure [使用規定](https://azure.microsoft.com/support/legal/website-terms-of-use/)涵蓋範圍內。
 
-**我有一個使用匯入資料模組從 Azure HDInsight 或 SQL Server 提取資料的實驗。它會使用我的認證來抓取資料。我可以發佈這種實驗嗎？如何確保我的認證不會被共用？**
+**我有一個使用「匯入資料」模組的實驗，從 Azure HDInsight 或 SQL Server 提取資料。它會使用我的認證來取出資料。我可以發佈這種實驗嗎？如何確保我的認證不會共用？**
 
 目前，您無法在資源庫中發佈使用認證的實驗。
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 83208ec792f40661861dd558ac2c1a1521c1d7fb
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 6880706300597e925267dae1230a87d17cd5c028
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660964"
+ms.locfileid: "88688346"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升級至 Azure 認知搜尋 .NET SDK 11 版
 
@@ -28,6 +28,9 @@ ms.locfileid: "88660964"
 + 新的封裝名稱： `Azure.Search.Documents` 而不是 `Microsoft.Azure.Search` 。
 + 三個用戶端，而不是兩個： `SearchClient` 、 `SearchIndexClient` 、 `SearchIndexerClient`
 + 命名 Api 範圍和簡化部分工作的小型結構差異之間的差異
+
+> [!NOTE]
+> 請參閱 [**變更記錄**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) 檔，以取得 .net SDK 第11版中變更的詳細清單。
 
 ## <a name="package-and-library-consolidation"></a>封裝和程式庫合併
 
@@ -114,19 +117,23 @@ Azure 認知搜尋用戶端程式庫的每個版本都是以對應的 REST API �
 
 第11版以 [2020-06-30 搜尋服務](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/search/data-plane/Azure.Search/preview/2020-06-30/searchservice.json)為目標。 由於第11版也是從頭開始建立的新用戶端程式庫，因此大部分的開發工作都著重于版本10的相等，但有些 REST API 功能支援仍在擱置中。
 
-第11版完全支援下列物件和作業：
+11.0 版完全支援下列物件和作業：
 
 + 索引建立與管理
 + 同義字對應的建立與管理
 + 除了地理空間篩選以外，所有的查詢類型和語法 () 
 + 為 Azure 資料來源編制索引的索引子物件和作業，包括資料來源和技能集
 
+11.1 版新增下列內容：
+
++ 11.1 中新增的[FieldBuilder](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.fieldbuilder) () 
++ 在 11.1) 中加入[序列化程式屬性](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclientoptions.serializer) (，以支援自訂序列化
+
 ### <a name="pending-features"></a>暫止功能
 
-第11版尚無法使用下列版本10功能。 如果您使用這些功能，請在不受支援的情況下，保留遷移。
+第11版尚無法使用下列版本10功能。 如果您需要這些功能，請在不受支援的情況下，保留在遷移的狀態。
 
 + 地理空間類型
-+ [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) (雖然您可以使用 [此](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/tests/Samples/FieldBuilder/FieldBuilder.cs) 因應措施) 。
 + [知識存放區](knowledge-store-concept-intro.md)
 
 <a name="UpgradeSteps"></a>
@@ -176,7 +183,7 @@ Azure 認知搜尋用戶端程式庫的每個版本都是以對應的 REST API �
 
 由於程式庫和 Api 的清除變更，升級至第11版並不簡單，而且會導致您的程式碼不會再與第10版及更早版本相容的重大變更。 如需差異的完整評論，請參閱的 [變更記錄](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) 檔 `Azure.Search.Documents` 。
 
-從服務版本的角度來看，從10移至11會產生下列行為變更： 
+就服務版本更新而言，第11版中的程式碼變更與現有的功能有關 (而不只是重構) 的 Api，您會發現下列行為變更：
 
 + [BM25 排名演算法](index-ranking-similarity.md) 會以較新的技術取代先前的排名演算法。 新服務會自動使用此演算法。 針對現有的服務，您必須將參數設定為使用新的演算法。
 

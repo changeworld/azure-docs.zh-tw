@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 7af711ebe21c46663ecd8e803b0f636c34c362ee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 110d39791b3779a30e6541e77c0c6062cd51144c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076059"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688550"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>監視、診斷與疑難排解 Microsoft Azure 儲存體
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -114,7 +114,7 @@ ms.locfileid: "87076059"
 
 下圖中的圖表說明每小時計量的平均值計算如何隱藏活動中的異常高值。 每小時度量所顯示的要求率極為穩定，而每分鐘度量顯示的才是真正發生的變動起伏情況。
 
-![顯示每小時計量發生之平均的圖表，可以隱藏活動的尖峰。][3]
+![顯示每小時度量的平均發生情形如何隱藏活動尖峰的圖表。][3]
 
 本小節剩下部分說明您應該監視的度量項目及這麼做的原因。
 
@@ -344,7 +344,7 @@ catch (StorageException storageException)
 ### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>度量顯示高 AverageE2ELatency 與低 AverageServerLatency
 下圖來自 [Azure 入口網站](https://portal.azure.com)監視工具，顯示一個 **AverageE2ELatency** 遠遠高出 **AverageServerLatency** 的範例。
 
-![Azure 入口網站中的圖例，其中顯示 AverageE2ELatency 明顯高於 AverageServerLatency 的範例。][4]
+![Azure 入口網站中的圖例，顯示 AverageE2ELatency 明顯高於 AverageServerLatency 的範例。][4]
 
 儲存體服務只會計算成功要求的度量 **AverageE2ELatency**，不像 **AverageServerLatency** 會將用戶端用來傳送資料與接收儲存體服務認可所需的時間納入計算。 因此，**AverageE2ELatency** 與 **AverageServerLatency** 之間的差異可能是因為用戶端應用程式回應速度太慢，或是其他網路狀況所引起。
 
@@ -468,7 +468,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 | 來源 | 詳細程度 | 詳細程度 | 用戶端要求 ID | 作業內容 |
 | --- | --- | --- | --- | --- |
 | Microsoft Azure 儲存體 |資訊 |3 |85d077ab-… |從主要位置開始作業 (依據位置模式 PrimaryOnly)。 |
-| Microsoft Azure 儲存體 |資訊 |3 |85d077ab -… |啟動對 <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> 的同步要求 |
+| Microsoft Azure 儲存體 |資訊 |3 |85d077ab -… |啟動對 <https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Synchronous_request> 的同步要求 |
 | Microsoft Azure 儲存體 |資訊 |3 |85d077ab -… |等候回應。 |
 | Microsoft Azure 儲存體 |警告 |2 |85d077ab -… |等候回應時擲回例外狀況：遠端伺服器傳回錯誤：(403) 禁止。 |
 | Microsoft Azure 儲存體 |資訊 |3 |85d077ab -… |收到回應。 狀態碼 = 403，要求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d，Content-MD5 =，ETag = . |
@@ -503,7 +503,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 下列由儲存體用戶端程式庫所產生的用戶端記錄，說明了當用戶端找不到 Blob 所建立的容器時的問題。 此記錄內含下列儲存體作業的詳細資料：
 
-| 要求識別碼 | 作業 |
+| 要求 ID | 作業 |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** 方法用於刪除 Blob 容器。 請注意，此作業包括一個用以檢查容器是否存在的 **HEAD** 要求。 |
 | e2d06d78… |**CreateIfNotExists** 方法用於建立 Blob 容器。 請注意，此作業包括一個會檢查容器是否存在的 **HEAD** 要求。 **HEAD** 傳回 404 訊息，但持續作業。 |
@@ -723,7 +723,7 @@ Fiddler 一經啟動後，就會開始擷取本機電腦上的 HTTP 與 HTTPS �
 
 若要限制 Fiddler 所擷取的流量數量，請使用您在 [篩選器] 索引標籤中設定的篩選器。以下螢幕擷取畫面顯示只會擷取傳送至 **contosoemaildist.table.core.windows.net** 儲存體端點的流量之篩選器：
 
-![顯示篩選器的螢幕擷取畫面，只會捕獲傳送至 contosoemaildist.table.core.windows.net 儲存體端點的流量。][5]
+![顯示篩選準則的螢幕擷取畫面，只會捕捉傳送至 contosoemaildist.table.core.windows.net 儲存體端點的流量。][5]
 
 ### <a name="appendix-2-using-wireshark-to-capture-network-traffic"></a><a name="appendix-2"></a>附錄 2：使用 Wireshark 擷取網路流量
 [Wireshark](https://www.wireshark.org/) 是一項網路通訊協定工具，能幫助您針對各式各樣的網路通訊協定檢視詳細的封包資訊。
@@ -746,7 +746,7 @@ WireShark 會反白顯示任何存在 **packetlist** 視窗的錯誤。 您也�
 
 您也可以選擇應用程式層所顯示的 TCP 資料，方法是以滑鼠右鍵按一下 TCP 資料，然後選取 [Follow TCP Stream] \(追蹤 TCP 資料流\)。 當您不使用擷取篩選器而擷取到傾印時，這個方法很有用。 如需詳細資訊，請參閱 [追蹤 TCP 串流](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html)。
 
-![螢幕擷取畫面：顯示如何在應用層看到 TCP 資料時進行查看。][8]
+![顯示如何在應用層看到 TCP 資料時加以查看的螢幕擷取畫面。][8]
 
 > [!NOTE]
 > 如需有關使用 Wireshark 的詳細資訊，請參閱 [Wireshark 使用者指南](https://www.wireshark.org/docs/wsug_html_chunked)。
@@ -779,11 +779,11 @@ Microsoft Message Analyzer 內建的 **Web Proxy** 追蹤功能是依據 Fiddler
 
 下列螢幕擷取畫面顯示以**本機連結層**追蹤功能所擷取到的一些**知識性**訊息 (在 [DiagnosisTypes] 資料欄中)。 按下 [DiagnosisTypes]  資料欄中的圖示，即可顯示該訊息的詳細資料。 在以下範例中，由於伺服器並未收到來自用戶端的認可，因此重新傳送訊息 #305：
 
-![顯示範例本機連結層追蹤的螢幕擷取畫面，其中包含 DiagnosisTypes 資料行中的一些參考用訊息][9]
+![顯示在 DiagnosisTypes 資料行中有一些參考用訊息的範例本機連結層追蹤的螢幕擷取畫面][9]
 
 當您在 Microsoft Message Analyzer 中建立追蹤工作階段時，可以指定篩選器來減少追蹤所產生的雜訊。 在您定義追蹤功能的 [Capture / Trace] 頁面中，按一下 [Microsoft-Windows-NDIS-PacketCapture] 旁邊的 [設定] 連結。 下列螢幕擷取畫面顯示針對三個儲存體服務的 IP 位址進行 TCP 流量篩選的組態：
 
-![顯示設定的螢幕擷取畫面，可針對三個儲存體服務的 IP 位址篩選 TCP 流量。][10]
+![螢幕擷取畫面，顯示針對三個儲存體服務的 IP 位址篩選 TCP 流量的設定。][10]
 
 如需有關「Microsoft Message Analyzer 本機連結層」追蹤的詳細資訊，請參閱 [Microsoft-PEF-NDIS-PacketCapture 提供者](https://technet.microsoft.com/library/jj659264.aspx)。
 
