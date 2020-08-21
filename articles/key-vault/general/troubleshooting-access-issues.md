@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: f31782fb4e91b72f51d6f0550fe9010cba7ca3d6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 270e5ba1879b229fbe9f5e6c8692bd8b4e9eebc7
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585452"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688635"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>針對 Azure Key Vault 存取原則問題進行疑難排解
 
@@ -25,7 +25,7 @@ ms.locfileid: "88585452"
 當您開始調整服務時，傳送至金鑰保存庫的要求數將會增加。 這可能會增加要求的延遲，而且在極端情況下，會導致您的要求受到節流處理，進而影響服務效能。 您可以監視金鑰保存庫效能計量，並取得特定閾值的警示，請[在此深入了解](https://docs.microsoft.com/azure/key-vault/general/alert)設定監視功能的逐步指南。
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>如何為每個金鑰保存庫物件指派存取控制？ 
-您可以在這裡收到每個秘密/金鑰/憑證存取控制功能的可用性通知，[深入了解](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/.32213176-per-secret-key-certificate-access-control)
+您可以在這裡收到每個秘密/金鑰/憑證存取控制功能的可用性通知，[深入了解](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/32213176-per-secret-key-certificate-access-control)
 
 ### <a name="how-can-i-provide-key-vault-authenticate-using-access-control-policy"></a>如何使用存取控制原則來提供金鑰保存庫驗證？
 若要向 Key Vault 驗證雲端式應用程式，最簡單的方法是使用受控識別；如需詳細資訊，請參閱[使用 App Service 受控識別存取 Azure Key Vault]( https://docs.microsoft.com/azure/key-vault/general/managed-identity)。
