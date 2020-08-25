@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: cc5964bb243216233300e8616b0460b7a1a043d9
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: d8e6a4e769b08d674b355f6f88a0967316e95c63
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661532"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782323"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文字和語音翻譯的語言和區域支援
 
@@ -160,6 +160,7 @@ Translator 會偵測下列翻譯和音譯語言。
 |馬來文| `ms`        |
 |馬爾他文|   `mt`    |
 |挪威文| `nb`    |
+|普什圖文|    `ps`    |
 |波斯文|   `fa`    |
 |波蘭文|    `pl`    |
 |葡萄牙文 (巴西)|   `pt-br` |
@@ -192,23 +193,23 @@ Translator 會偵測下列翻譯和音譯語言。
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯文 | `ar` | 阿拉伯文 `Arab` | <--> | 拉丁文 `Latn` |
 | 孟加拉文  | `bn` | 孟加拉文 `Beng` | <--> | 拉丁文 `Latn` |
-| 中文 (簡體) | `zh-Hans` | 簡體中文 `Hans`| <--> | 拉丁文 `Latn` |
-| 中文 (簡體) | `zh-Hans` | 簡體中文 `Hans`| <--> | 繁體中文 `Hant`|
-| 和 SharePoint 2010 顯示的 | `zh-Hant` | 繁體中文 `Hant`| <--> | 拉丁文 `Latn` |
-| 和 SharePoint 2010 顯示的 | `zh-Hant` | 繁體中文 `Hant`| <--> | 簡體中文 `Hans` |
-| 古吉拉特文 | `gu`  | 古吉拉特文 `Gujr` | --> | 拉丁文 `Latn` |
+| 簡體中文 | `zh-Hans` | 簡體中文 `Hans`| <--> | 拉丁文 `Latn` |
+| 簡體中文 | `zh-Hans` | 簡體中文 `Hans`| <--> | 繁體中文 `Hant`|
+| 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 拉丁文 `Latn` |
+| 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 簡體中文 `Hans` |
+| 古吉拉特文 | `gu`  | 古吉拉特文 `Gujr` | <--> | 拉丁文 `Latn` |
 | Hebrew | `he` | 希伯來文 `Hebr` | <--> | 拉丁文 `Latn` |
 | Hindi | `hi` | 梵文字母 `Deva` | <--> | 拉丁文 `Latn` |
 | 日文 | `ja` | 日文 `Jpan` | <--> | 拉丁文 `Latn` |
-| 坎那達文 | `kn` | 坎那達文 `Knda` | --> | 拉丁文 `Latn` |
-| 馬來亞拉姆文 | `ml` | 馬來亞拉姆文 `Mlym` | --> | 拉丁文 `Latn` |
-| 馬拉地文 | `mr` | 梵文字母 `Deva` | --> | 拉丁文 `Latn` |
+| 坎那達文 | `kn` | 坎那達文 `Knda` | <--> | 拉丁文 `Latn` |
+| 馬來亞拉姆文 | `ml` | 馬來亞拉姆文 `Mlym` | <--> | 拉丁文 `Latn` |
+| 馬拉地文 | `mr` | 梵文字母 `Deva` | <--> | 拉丁文 `Latn` |
 | 歐迪亞文 | `or` | 歐利亞文 `Orya` | <--> | 拉丁文 `Latn` |
 | 旁遮普文 | `pa` | 古木基文 `Guru`  | <--> | 拉丁文 `Latn`  |
 | 塞爾維亞文 (斯拉夫) | `sr-Cyrl` | 斯拉夫文 `Cyrl`  | --> | 拉丁文 `Latn` |
 | 塞爾維亞文 (拉丁) | `sr-Latn` | 拉丁文 `Latn` | --> | 斯拉夫文 `Cyrl`|
-| 坦米爾文 | `ta` | 坦米爾文 `Taml` | --> | 拉丁文 `Latn` |
-| 泰盧固文 | `te` | 泰盧固文 `Telu` | --> | 拉丁文 `Latn` |
+| 坦米爾文 | `ta` | 坦米爾文 `Taml` | <--> | 拉丁文 `Latn` |
+| 泰盧固文 | `te` | 泰盧固文 `Telu` | <--> | 拉丁文 `Latn` |
 | 泰文 | `th` | 泰文 `Thai` | --> | 拉丁文 `Latn` |
 
 ### <a name="dictionary"></a>字典
@@ -341,7 +342,7 @@ Translator 會偵測下列翻譯和音譯語言。
 ### <a name="speech-to-text"></a>語音轉文字
 將語音轉換成文字，以轉譯成您選擇的文字語言。 語音轉換文字用於語音轉換文字翻譯，或用於與語音合成搭配使用的語音轉換語音翻譯。
 
-| Language    |
+| 語言    |
 |:----------- |
 |阿拉伯文|
 |粵語 (繁體中文)|
@@ -375,7 +376,7 @@ Translator 會偵測下列翻譯和音譯語言。
 ### <a name="text-to-speech"></a>文字轉換語音
 將文字轉換成語音。 文字轉換語音是用來在搭配語音轉換文字使用時，新增聲音轉換結果的聲音輸出，或語音轉換語音翻譯的輸出。 
 
-| Language    |
+| 語言    |
 |:----------- |
 |阿拉伯文|
 |保加利亞文|

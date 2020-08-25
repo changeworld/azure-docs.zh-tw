@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB 查詢語言中舍入
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 ROUND。
+title: 四捨五入 Azure Cosmos DB 查詢語言
+description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 ROUND。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: b6aac5a963d0f58a3b21b9fb0958793169a3d444
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9712aedd3d6748f3bceea67a3270b6c080cc16f2
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302112"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794282"
 ---
-# <a name="round-azure-cosmos-db"></a>ROUND （Azure Cosmos DB）
+# <a name="round-azure-cosmos-db"></a>四捨五入 (Azure Cosmos DB) 
  傳回數值，四捨五入到最接近的整數值。  
   
 ## <a name="syntax"></a>語法
@@ -34,9 +34,9 @@ ROUND(<numeric_expr>)
   
 ## <a name="remarks"></a>備註
   
-  執行的舍入運算會遵循從零開始舍入的點距離。 如果輸入是介於兩個整數之間的數值運算式，則結果會是離零最接近的整數值。  
+  執行的舍入運算會依照中間點舍入遠離零。 如果輸入是剛好介於兩個整數之間的數值運算式，則結果將會是離零的最接近整數值。 此系統函數將受益於[範圍索引](index-policy.md#includeexclude-strategy)。
   
-  |<numeric_expr>|進位|
+  |<numeric_expr>|圓形|
   |-|-|
   |-6.5000|-7|
   |-0。5|-1|
@@ -56,10 +56,6 @@ SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, 
 ```json
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
 ```  
-
-## <a name="remarks"></a>備註
-
-此系統函數將受益於[範圍索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e9c4470ea16f1840274a6fa8613822b20d6772b3
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7b867f5bcbbdc5deab2d67f356df69ee870c21f3
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310870"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142242"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>快速入門：建立 azureiotsecurity 模組對應項
 
@@ -76,7 +76,7 @@ _azureiotsecurity_ 模組對應項可透過兩種方式來建立：
 
 ## <a name="next-steps"></a>後續步驟
 
-請前往下一篇文章，以了解如何設定自訂警示...
+請前往下一篇文章，以了解如何調查安全性建議...
 
 > [!div class="nextstepaction"]
-> [設定自訂警示](quickstart-create-custom-alerts.md)
+> [調查安全性建議](quickstart-investigate-security-recommendations.md)

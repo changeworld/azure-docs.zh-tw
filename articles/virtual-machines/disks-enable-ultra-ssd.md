@@ -8,12 +8,12 @@ ms.date: 05/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: cdfee2d75d662ce9aae6b40525d907ce7ab0e2c3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4f49d4e78cd58d16627a0b6fda1957baa9f1f085
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658005"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752077"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure ultra 磁片
 
@@ -23,7 +23,7 @@ Azure ultra 磁片針對 (Vm) 的 Azure IaaS 虛擬機器提供高輸送量、�
 
 ## <a name="ga-scope-and-limitations"></a>GA 範圍和限制
 
-[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](~/includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](../../includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
 
 ## <a name="determine-vm-size-and-region-availability"></a>判斷 VM 大小和區域可用性
 
@@ -347,4 +347,4 @@ Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate 
 ```
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 [Azure Kubernetes Service (preview) 上使用 Azure ultra 磁片 ](/azure/aks/use-ultra-disks)。
+請參閱 [Azure Kubernetes Service (preview) 上使用 Azure ultra 磁片 ](../aks/use-ultra-disks.md)。

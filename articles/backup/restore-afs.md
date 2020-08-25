@@ -3,12 +3,12 @@ title: 還原 Azure 檔案共用
 description: 瞭解如何使用 Azure 入口網站從 Azure 備份所建立的還原點還原整個檔案共用或特定檔案。
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 92cc40d1a6b332ab524049322eb2d1afcb76082e
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: bb846c4615377259a1c17653cc26e96f37dc32ec
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761843"
+ms.locfileid: "88762816"
 ---
 # <a name="restore-azure-file-shares"></a>還原 Azure 檔案共用
 
@@ -162,6 +162,6 @@ ms.locfileid: "88761843"
 
     ![查看還原的詳細資料](./media/restore-afs/restore-details.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解如何 [管理 Azure 檔案共用備份](manage-afs-backup.md)。

@@ -1,17 +1,17 @@
 ---
 title: 什麼是 Azure 應用程式設定？
-description: Azure 應用程式設定服務的概觀。
+description: 閱讀 Azure 應用程式設定服務的概觀。 了解您想要使用應用程式組態的原因，以及如何使用。
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/19/2020
-ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f38b8de37e84cd8a65c5a5caadf8d3b6b71ce455
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77523470"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587067"
 ---
 # <a name="what-is-azure-app-configuration"></a>什麼是 Azure 應用程式設定？
 
@@ -53,7 +53,7 @@ Azure 應用程式組態會提供集中管理應用程式設定和功能旗標�
 
 | 程式設計語言和架構 | 如何連接 |
 |---|---|
-| .NET Core 和 ASP.NET Core | 適用於 .NET Core 的應用程式設定提供者 |
+| .NET Core 與 ASP.NET Core | 適用於 .NET Core 的應用程式設定提供者 |
 | .NET Framework 和 ASP.NET | 適用於 .NET 的應用程式設定建立器 |
 | Java Spring | 適用於 Spring Cloud 的應用程式設定用戶端 |
 | 其他 | 應用程式設定 REST API |

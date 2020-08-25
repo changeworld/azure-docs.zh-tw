@@ -3,17 +3,17 @@ title: 與連線至 Azure IoT 解決方案 (Node.js) 的 IoT 隨插即用預覽�
 description: 使用 Node.js 連線至已連接 Azure IoT 解決方案的 IoT 隨插即用預覽版裝置，並與其互動。
 author: elhorton
 ms.author: elhorton
-ms.date: 07/13/2020
+ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 511a61fb1069ce10e94e24ecd3ba6d60470ca40f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: fd65dcc9ce0be07daa5848a0ac583cf795150e47
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424438"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184732"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>快速入門：與已連線至解決方案的 IoT 隨插即用預覽版裝置互動 (Node.js)
 
@@ -33,35 +33,33 @@ IoT 隨插即用預覽版讓您無須具備基礎裝置實作的知識，即可�
 node --version
 ```
 
-執行下列命令，[透過 IoT 隨插即用支援 安裝 Node 服務 SDK](https://www.npmjs.com/package/azure-iot-digitaltwins-service)：
-
-```cmd/sh
-npm i azure-iot-digitaltwins-service
-```
-
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-執行下列命令，以取得中樞的 _IoT 中樞連接字串_。 記下此連接字串，您稍後會在本快速入門中用到：
+執行下列命令，以取得中樞的「IoT 中樞連接字串」。 記下此連接字串，您稍後會在本快速入門中用到：
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 ```
 
-執行下列命令，針對您新增至中樞的裝置取得_裝置連接字串_。 記下此連接字串，您稍後會在本快速入門中用到：
+執行下列命令，針對您新增至中樞的裝置取得_裝置連接字串_。 記下此連接字串，您稍後會在此快速入門中用到：
 
 ```azurecli-interactive
 az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output
+```
+
+### <a name="clone-the-sdk-repository-with-the-sample-code"></a>使用範例程式碼複製 SDK 存放庫
+
+服務 SDK 處於預覽狀態，因此您必須從 [Node SDK 的預覽分支](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)複製範例。 在您選擇的資料夾中開啟終端機視窗。 執行下列命令，將[適用於 Node.js 的 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-node) GitHub 存放庫的 **pnp-preview-refresh** 分支複製到下列位置：
+
+```cmd/sh
+git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
 ```
 
 ## <a name="run-the-sample-device"></a>執行範例裝置
 
 在本快速入門中，您可以使用以 Node.js 撰寫的範例控溫器裝置，作為 IoT 隨插即用裝置。 若要執行範例裝置：
 
-1. 在您選擇的資料夾中開啟終端機視窗。 執行下列命令，將[適用於 Node.js 的 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-node) GitHub 存放庫複製到下列位置：
-
-    ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node
-    ```
+1. 開啟終端機視窗，並瀏覽至本機資料夾，此資料夾中包含從 GitHub 複製的適用於 Node.js 存放庫的 Microsoft Azure IoT SDK。
 
 1. 此終端機視窗會作為您的**裝置**終端機。 移至複製存放庫的資料夾，並瀏覽至 /azure-iot-sdk-node/device/samples/pnp 資料夾。 執行下列命令以安裝所有相依性：
 
@@ -90,10 +88,10 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 1. 開啟另一個終端機視窗，作為您的**服務**終端機。 服務 SDK 處於預覽狀態，因此您必須從 [Node SDK 的預覽分支](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)複製範例：
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node -b public-preview-pnp
+    git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
     ```
 
-1. 移至這個複製存放庫分支的資料夾，並瀏覽至 /azure-iot-samples-node/digital-twins/samples/service/javascript 資料夾。 執行下列命令以安裝所有相依性：
+1. 移至這個複製存放庫分支的資料夾，並瀏覽至 /azure-iot-sdk-node/digitaltwins/samples/service/javascript 資料夾。 執行下列命令以安裝所有相依性：
 
     ```cmd/sh
     npm install
@@ -144,14 +142,14 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 
 ### <a name="update-a-writable-property"></a>更新可寫入屬性
 
-1. 在程式碼編輯器中開啟檔案 update_digital_twin_property.js。
+1. 在程式碼編輯器中開啟檔案 update_digital_twin.js。
 
 1. 檢閱範例程式碼。 您可以了解如何建立 JSON 修補程式，以更新裝置的數位分身。 在此範例中，程式碼會以值 42 取代控溫器的溫度：
 
     ```javascript
     const patch = [{
         op: 'add',
-        path: 'targetTemperature',
+        path: '/targetTemperature',
         value: '42'
       }]
     ```
@@ -159,43 +157,23 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 1. 在**服務**終端機，使用下列命令執行範例以更新屬性：
 
     ```cmd/sh
-    node update_digital_twin_property.js
-    ```
-
-1. **服務**終端機輸出會顯示已更新的裝置資訊。 捲動至 `thermostat1` 元件，以查看值為 42 的新 `targetTemperature`：
-
-    ```json
-    "modelId": "dtmi:com:example:Thermostat;1",
-        "version": 12,
-        "properties": {
-            "desired": {
-                "targetTemperature": "42",
-                "$metadata": {
-                    "$lastUpdated": "2020-07-09T13:55:50.7976985Z",
-                    "$lastUpdatedVersion": 5,
-                    "targetTemperature": {
-                        "$lastUpdated": "2020-07-09T13:55:50.7976985Z",
-                        "$lastUpdatedVersion": 5
-                    }
-                },
-                "$version": 5
-            },
-            "reported": {
-                "serialNumber": "123abc",
-                "maxTempSinceLastReboot": 32.279942997143785,
-                "targetTemperature": {
-                    "value": "42",
-                    "ac": 200,
-                    "ad": "Successfully executed patch for targetTemperature",
-                    "av": 2
-                },
+    node update_digital_twin.js
     ```
 
 1. 在您的**裝置**終端機中，您會看到裝置已接收更新：
 
     ```cmd/sh
-    Received an update for targetTemperature: 42
+    The following properties will be updated for root interface:
+    {
+      targetTemperature: {
+        value: 42,
+        ac: 200,
+        ad: 'Successfully executed patch for targetTemperature',
+        av: 2
+      }
+    }
     updated the property
+    Properties have been reported for component
     ```
 
 1. 在您的 **服務**終端機中，執行下列命令以確認屬性已更新：
@@ -207,15 +185,7 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 1. 在**服務**終端機輸出中，在 `thermostat1` 元件下的數位分身回應中，您會看到回報的更新目標溫度。 裝置可能需要一段時間才能完成更新。 重複此步驟，直到裝置處理屬性更新為止：
 
     ```json
-    "$model": "dtmi:com:example:Thermostat;1",
-    "targetTemperature": {
-      "desiredValue": 42,
-      "desiredVersion": 4,
-      "ackVersion": 4,
-      "ackCode": 200,
-      "ackDescription": "Successfully executed patch for targetTemperature",
-      "lastUpdateTime": "2020-07-09T13:55:30.5062641Z"
-    }
+    targetTemperature: 42,
     ```
 
 ### <a name="invoke-a-command"></a>叫用命令
@@ -225,6 +195,8 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 1. 移至**服務**終端機。 使用下列命令來執行範例，以叫用命令：
 
     ```cmd/sh
+    set IOTHUB_COMMAND_NAME=getMaxMinReport
+    set IOTHUB_COMMAND_PAYLOAD=commandpayload
     node invoke_command.js
     ```
 
@@ -245,7 +217,7 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 1. 在**裝置**終端機，您會看到命令已認可：
 
     ```cmd/sh
-    MaxMinReport [object Object]
+    MaxMinReport commandpayload
     Response to method 'getMaxMinReport' sent successfully.
     ```
 

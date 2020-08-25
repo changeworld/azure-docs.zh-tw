@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3aa45050286888dd8ae1d26d96c8ed02da197326
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 0cf2aa504fd7a36a55740b3a59eeb3759e67f469
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876728"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509904"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>教學課程：在 Azure Notebook 中使用個人化工具
 
@@ -623,7 +623,7 @@ Coffee count 4
 
 ## <a name="validate-new-learning-policy"></a>驗證新的學習原則
 
-返回 Azure Notebook，並繼續執行相同的迴圈，但僅進行 2,000 次反覆運算。 定期重新整理 Azure 入口網站中的計量圖表，以查看服務的總呼叫。 當您有大約 4,000 次呼叫 (每個迴圈反覆運算的排名和獎勵呼叫) 時，即完成反覆運算。
+返回 Azure Notebooks 檔案，並繼續執行相同的迴圈，但僅進行 2,000 次反覆運算。 定期重新整理 Azure 入口網站中的計量圖表，以查看服務的總呼叫。 當您有大約 4,000 次呼叫 (每個迴圈反覆運算的排名和獎勵呼叫) 時，即完成反覆運算。
 
 ```python
 # max iterations

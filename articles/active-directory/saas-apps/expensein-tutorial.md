@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 ExpenseIn 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 ExpenseIn 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 6ac8053b-a216-45d8-bf5e-ecd37d808e57
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 377499b1dd263398e1be42379f8db60e8a0477f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d0b0a6c935182737a7f207b7c7831fefcd491ea
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017494"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555292"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>教學課程：整合 ExpenseIn 與 Azure Active Directory
 
@@ -127,7 +123,15 @@ ms.locfileid: "87017494"
 
 ## <a name="configure-expensein-sso"></a>設定 ExpenseIn SSO
 
-1. 開啟新的網頁瀏覽器視窗，並以系統管理員身分登入您的 ExpenseIn 公司網站。
+1. 若要自動執行 ExpenseIn 內的設定，您必須按一下 [安裝擴充功能]**** 來安裝「我的應用程式安全登入瀏覽器擴充功能」****。
+
+    ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
+
+1. 將擴充功能新增至瀏覽器之後，按一下 [設定 ExpenseIn] 便會將您導向到 ExpenseIn 應用程式。 請從該處提供用以登入 ExpenseIn 的管理員認證。 瀏覽器擴充功能會自動為您設定應用程式，並自動執行步驟 3 到 5。
+
+    ![設定組態](common/setup-sso.png)
+
+1. 如果要手動設定 ExpenseIn，請以管理員身分登入您的 ExpenseIn 公司網站。
 
 1. 按一下頁面頂端的 [系統管理員]，然後瀏覽至 [單一登入] 並按一下 [新增提供者]。
 

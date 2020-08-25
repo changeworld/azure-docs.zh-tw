@@ -1,29 +1,29 @@
 ---
-title: 快速入門：擷取印刷文字 (OCR) - REST、C#
+title: 快速入門：使用電腦視覺 2.0 REST API OCR 作業和 C# 來擷取文字
 titleSuffix: Azure Cognitive Services
-description: 在本快速入門中，您將搭配使用電腦視覺 API 與 C# 來擷取影像中的印刷文字。
+description: 在此快速入門中，您可以使用電腦視覺 REST API OCR 搭配 C#，擷取影像中的文字。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4ce9e530f536893fe3d9753e43928cf53f9dde53
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4306b82793dd62765c07dfa808add4e16dc06be5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835386"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209176"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>快速入門：使用電腦視覺 REST API 和 C# 擷取印刷文字 (OCR)
+# <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>快速入門：使用電腦視覺 2.0 REST API OCR 作業和 C# 來擷取文字
 
-> [!NOTE]
-> 如果您要擷取英文文字，請考慮使用新的[讀取作業](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) \(部分機器翻譯\)。 目前已有 [ 快速入門](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)可供使用。 
+> [!IMPORTANT]
+> 如果您要擷取英文、荷蘭文、法文、德文、義大利文、葡萄牙文、西班牙文或簡體中文 (預覽) 的文字，建議您使用較新的[讀取作業](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)。 目前已有 [ 快速入門](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)可供使用。 
 
-在此快速入門中，您將使用電腦視覺 REST API，利用光學字元辨識 (OCR) 來擷取影像中的印刷文字。 使用 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 功能，您可以偵測影像中的印刷文字，然後將辨識出的字元擷取到電腦可使用的字元資料流中。
+在本快速入門中，您會使用電腦視覺 REST API [OCR 作業](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)功能來擷取影像中的印刷文字。 使用此作業，您可以偵測影像中的印刷文字，然後將辨識出的字元擷取到電腦可使用的字元資料流中。
 
 ## <a name="prerequisites"></a>必要條件
 

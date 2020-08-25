@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 GitHub 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 GitHub 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 8761f5ca-c57c-4a7e-bf14-ac0421bd3b5e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/17/2020
+ms.date: 08/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718d51c94d05e8e18f2b254b5e81e346a67205a1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 7153a1279785cfe79d23b2b5ba843ec9f5cd4965
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170527"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550737"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 GitHub 整合
 
@@ -139,7 +135,13 @@ ms.locfileid: "87170527"
 
 1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
-1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
+
+    ![使用者角色](./media/github-tutorial/user-role.png)
+
+    > [!NOTE]
+    > **選取角色**選項將會停用，而預設角色是所選使用者的 USER。
+
+7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-github-sso"></a>設定 GitHub SSO
 
@@ -147,11 +149,11 @@ ms.locfileid: "87170527"
 
 2. 瀏覽至 [設定]，然後按一下 [安全性]
 
-    ![設定](./media/github-tutorial/tutorial_github_config_github_03.png)
+    ![設定](./media/github-tutorial/security.png)
 
 3. 勾選 [啟用 SAML 驗證]方塊，以顯示單一登入設定欄位。 執行下列步驟：
 
-    ![設定](./media/github-tutorial/tutorial_github_config_github_13.png)
+    ![設定](./media/github-tutorial/saml-sso.png)
 
     a. 複製 [單一登入 URL] 值，並將此值貼到 Azure 入口網站的 [基本 SAML 組態] 中的 [登入 URL] 文字方塊內。
     
@@ -159,7 +161,7 @@ ms.locfileid: "87170527"
 
 4. 設定下列欄位：
 
-    ![設定](./media/github-tutorial/tutorial_github_config_github_051.png)
+    ![設定](./media/github-tutorial/configure.png)
 
     a. 在 [登入 URL] 文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
 
@@ -175,7 +177,7 @@ ms.locfileid: "87170527"
 
 5. 按一下 [測試 SAML 組態]，確認 SSO 期間沒有驗證失敗或錯誤。
 
-    ![設定](./media/github-tutorial/tutorial_github_config_github_06.png)
+    ![設定](./media/github-tutorial/test.png)
 
 6. 按一下 [儲存] 
 
@@ -192,21 +194,21 @@ ms.locfileid: "87170527"
 
 2. 按一下 [人員] 。
 
-    ![人員](./media/github-tutorial/tutorial_github_config_github_08.png "人員")
+    ![人員](./media/github-tutorial/people.png "人員")
 
 3. 按一下 [邀請成員]。
 
-    ![邀請使用者](./media/github-tutorial/tutorial_github_config_github_09.png "邀請使用者")
+    ![邀請使用者](./media/github-tutorial/invite-member.png "邀請使用者")
 
 4. 在 [邀請成員] 對話方塊頁面上，執行下列步驟：
 
     a. 在 [電子郵件] 文字方塊中，輸入 Britta Simon 帳戶的電子郵件地址。
 
-    ![邀請人員](./media/github-tutorial/tutorial_github_config_github_10.png "邀請人員")
+    ![邀請人員](./media/github-tutorial/email-box.png "邀請人員")
 
     b. 按一下 [傳送邀請]。
 
-    ![邀請人員](./media/github-tutorial/tutorial_github_config_github_11.png "邀請人員")
+    ![邀請人員](./media/github-tutorial/send-invitation.png "邀請人員")
 
     > [!NOTE]
     > Azure Active Directory 帳戶的持有者會收到一封電子郵件，並依照連結在啟用其帳戶前進行確認。

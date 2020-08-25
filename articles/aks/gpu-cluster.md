@@ -3,13 +3,15 @@ title: 在 Azure Kubernetes Service (AKS) 上使用 GPU
 description: 了解如何在 Azure Kubernetes Service (AKS) 上使用 GPU 處理高效能計算或大量圖形的工作負載
 services: container-service
 ms.topic: article
-ms.date: 03/27/2020
-ms.openlocfilehash: ed655a6809f2932bbe8e85fb1cd9fd7996cf7647
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 08/21/2020
+ms.author: jpalma
+author: palma21
+ms.openlocfilehash: d19bfac318ab2ed20d021e10b43b691b525ba897
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213176"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749133"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上使用 GPU 處理計算密集型工作負載
 
@@ -20,11 +22,11 @@ ms.locfileid: "88213176"
 
 目前，使用已啟用 GPU 的節點集區僅適用于 Linux 節點集區。
 
-## <a name="before-you-begin"></a>在您開始前
+## <a name="before-you-begin"></a>開始之前
 
 本文假設您的現有 AKS 叢集具有支援 GPU 的節點。 您的 AKS 叢集必須執行 Kubernetes 1.10 或更新版本。 如果您需要符合這些需求的 AKS 叢集，請參閱本文的第一節：[建立 AKS 叢集](#create-an-aks-cluster)。
 
-您也需要安裝並設定 Azure CLI 版本2.0.64 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也需要安裝並設定 Azure CLI 2.0.64 版版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="create-an-aks-cluster"></a>建立 AKS 叢集
 
@@ -36,7 +38,7 @@ ms.locfileid: "88213176"
 az group create --name myResourceGroup --location eastus
 ```
 
-現在，使用 [az aks create][az-aks-create] 命令來建立 AKS 叢集。 下列範例會建立單一節點大小的叢集 `Standard_NC6` ：
+現在，使用 [az aks create][az-aks-create] 命令來建立 AKS 叢集。 下列範例會建立具有單一節點大小的叢集 `Standard_NC6` ：
 
 ```azurecli-interactive
 az aks create \
@@ -54,7 +56,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="install-nvidia-device-plugin"></a>安裝 NVIDIA 裝置外掛程式
 
-您必須先為 NVIDIA 裝置外掛程式部署 DaemonSet，才可以使用節點中的 Gpu。 此 DaemonSet 會在每個節點上執行 Pod，為 GPU 提供必要的驅動程式。
+在可以使用節點中的 Gpu 之前，您必須先為 NVIDIA 裝置外掛程式部署 DaemonSet。 此 DaemonSet 會在每個節點上執行 Pod，為 GPU 提供必要的驅動程式。
 
 首先，使用 [kubectl create namespace][kubectl-create] 命令建立命名空間，例如 gpu-resources**：
 
@@ -62,7 +64,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl create namespace gpu-resources
 ```
 
-建立名為 nvidia-device-plugin-ds.yaml** 的檔案，並貼上下列 YAML 資訊清單。 此資訊清單會作為 [Kubernetes 專案的 NVIDIA 裝置外掛程式][nvidia-github]的一部分提供。
+建立名為 nvidia-device-plugin-ds.yaml** 的檔案，並貼上下列 YAML 資訊清單。 此資訊清單會作為 [Kubernetes 專案的 NVIDIA 裝置外掛程式][nvidia-github]的一部分來提供。
 
 ```yaml
 apiVersion: apps/v1
@@ -110,13 +112,72 @@ spec:
             path: /var/lib/kubelet/device-plugins
 ```
 
-現在，使用 [kubectl apply][kubectl-apply] 命令來建立 DaemonSet，並確認已成功建立 NVIDIA 裝置外掛程式，如下列範例輸出所示：
+現在，使用 [kubectl apply][kubectl-apply] 命令來建立 DaemonSet，並確認 NVIDIA 裝置外掛程式已成功建立，如下列範例輸出所示：
 
 ```console
 $ kubectl apply -f nvidia-device-plugin-ds.yaml
 
 daemonset "nvidia-device-plugin" created
 ```
+
+## <a name="use-the-aks-specialized-gpu-image-preview"></a>使用 AKS 專用 GPU 映射 (預覽) 
+
+除了這些步驟之外，AKS 還提供完整設定的 AKS 映射，其中已包含 [適用于 Kubernetes 的 NVIDIA 裝置外掛程式][nvidia-github]。
+
+> [!WARNING]
+> 您不應該使用新的 AKS 專用 GPU 映射，手動安裝叢集的 NVIDIA 裝置外掛程式 daemon 集。
+
+
+註冊 `GPUDedicatedVHDPreview` 功能：
+
+```azurecli
+az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
+```
+
+可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
+```
+
+當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+若要安裝 aks-preview CLI 擴充功能，請使用下列 Azure CLI 命令：
+
+```azurecli
+az extension add --name aks-preview
+```
+
+若要更新 aks-preview CLI 擴充功能，請使用下列 Azure CLI 命令：
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>在新的叢集上使用 AKS 專用 GPU 映射 (預覽版) 
+
+設定叢集，以在建立叢集時使用 AKS 專用 GPU 映射。 在 `--aks-custom-headers` 新叢集上使用 GPU 代理程式節點的旗標，以使用 AKS 專用 GPU 映射。
+
+```azure-cli
+az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+```
+
+如果您想要使用一般 AKS 映射來建立叢集，您可以省略自訂標記來建立叢集 `--aks-custom-headers` 。 您也可以選擇新增更多特製化的 GPU 節點集區，如下所示。
+
+
+### <a name="use-the-aks-specialized-gpu-image-on-existing-clusters-preview"></a>在現有的叢集上使用 AKS 專用 GPU 映射 (預覽版) 
+
+設定新的節點集區，以使用 AKS 專用 GPU 映射。 `--aks-custom-headers`針對新節點集區上的 GPU 代理程式節點使用旗標旗標，以使用 AKS 專用的 gpu 映射。
+
+```azure-cli
+az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+```
+
+如果您想要使用一般 AKS 映射來建立節點集區，您可以省略自訂標記來進行 `--aks-custom-headers` 。 
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>確認 GPU 可進行排程
 
@@ -188,7 +249,7 @@ Non-terminated Pods:         (9 in total)
 建立名為 samples-tf-mnist-demo.yaml** 的檔案，並貼上下列 YAML 資訊清單。 下列作業資訊清單包含 `nvidia.com/gpu: 1` 的資源限制：
 
 > [!NOTE]
-> 如果您在呼叫驅動程式時收到版本不符的錯誤（例如，CUDA 驅動程式版本不足以供 CUDA 執行階段版本使用），請參閱 NVIDIA 驅動程式矩陣相容性圖表- [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
+> 如果您在呼叫驅動程式時發生版本不符的錯誤，例如，CUDA 驅動程式版本不足以 CUDA 執行階段版本，請參閱 NVIDIA 驅動程式矩陣相容性圖表- [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1
@@ -222,7 +283,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>檢視已啟用 GPU 的工作負載狀態和輸出
 
-使用 [kubectl get jobs][kubectl-get] 命令和 `--watch` 引數監視作業進度。 這可能需要幾分鐘來執行第一次的影像提取和資料集處理。 當 [ *完成* ] 資料行顯示 *1/1*時，表示作業已成功完成。 `kubetctl --watch`使用*Ctrl + C*結束命令：
+使用 [kubectl get jobs][kubectl-get] 命令和 `--watch` 引數監視作業進度。 這可能需要幾分鐘來執行第一次的影像提取和資料集處理。 當 [ *完成* ] 資料行顯示 *1/1*時，表示作業已順利完成。 `kubetctl --watch`使用*Ctrl + C*來結束命令：
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch

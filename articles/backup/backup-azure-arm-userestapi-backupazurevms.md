@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來設定、啟動
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 48b5a8c596ec5b23d2962acb9c1f95a1d5aafbc0
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 89bf2df0b5b9279053ca8258e6d21b00e2789557
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761673"
+ms.locfileid: "88762873"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>透過 REST API 使用 Azure 備份來備份 Azure VM
 
@@ -106,7 +106,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 |名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       [確定] |
+|200 確定     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       確定 |
 
 #### <a name="example-responses-to-get-operation"></a>取得作業的範例回應
 
@@ -162,7 +162,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>啟用 Azure VM 的保護
 
-在「快取」並「識別出」相關的 VM 之後，選取要保護的原則。 若要深入了解保存庫中的現有原則，請參閱[清單原則 API](/rest/api/backup/backuppolicies/list) \(英文\)。 然後藉由參考原則名稱來選取[相關的原則](/rest/api/backup/protectionpolicies/get) \(英文\)。 若要建立原則，請參閱[建立原則教學課程](backup-azure-arm-userestapi-createorupdatepolicy.md)。 已在下列範例中選取 "DefaultPolicy"。
+在「快取」並「識別出」相關的 VM 之後，選取要保護的原則。 若要深入了解保存庫中的現有原則，請參閱[清單原則 API](/rest/api/backup/backuppolicies/list) \(英文\)。 然後藉由參考原則名稱來選取[相關的原則](/rest/api/backup/protectionpolicies/get) \(英文\)。 若要建立原則，請參閱[建立原則教學課程](backup-azure-arm-userestapi-createorupdatepolicy.md)。 下列範例中選取了 "DefaultPolicy"。
 
 啟用保護是建立「受保護的項目」的非同步 *PUT* 作業。
 
@@ -210,7 +210,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 |名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  [確定]       |
+|200 確定     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  確定       |
 |202 已接受     |         |     已接受    |
 
 ##### <a name="example-responses-to-create-protected-item-operation"></a>建立受保護專案作業的範例回應
@@ -445,9 +445,9 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 |202 已接受     |         |     已接受    |
 
 > [!IMPORTANT]
-> 為了防止意外刪除的情況，復原服務保存庫 [可使用虛刪除功能](use-restapi-update-vault-properties.md#soft-delete-state) 。 如果保存庫的虛刪除狀態設定為 [已啟用]，則刪除作業將不會立即刪除資料。 它會保留14天，然後永久清除。 客戶在這14天的期間內不會收取儲存體費用。 若要復原刪除操作，請參閱 [復原-刪除一節](#undo-the-stop-protection-and-delete-data)。
+> 為了防止意外刪除的情況，復原服務保存庫 [可使用虛刪除功能](use-restapi-update-vault-properties.md#soft-delete-state) 。 如果保存庫的虛刪除狀態設定為 [已啟用]，則刪除作業將不會立即刪除資料。 它會保留14天，然後永久清除。 客戶在這14天的期間內不會收取儲存體費用。 若要復原刪除操作，請參閱 [復原-刪除一節](#undo-the-deletion)。
 
-### <a name="undo-the-stop-protection-and-delete-data"></a>復原停止保護並刪除資料
+### <a name="undo-the-deletion"></a>復原刪除
 
 復原意外刪除類似于建立備份專案。 復原刪除之後，會保留專案，但不會觸發未來的備份。
 
@@ -466,7 +466,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 回應將遵循與[針對觸發隨選備份](#example-responses-for-on-demand-backup)所述相同的格式。 您應該追蹤結果作業，如[使用 REST API 監視作業文件](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)所述。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [從 Azure 虛擬機器備份還原資料](backup-azure-arm-userestapi-restoreazurevms.md)。
 

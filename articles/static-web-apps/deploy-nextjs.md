@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 80a38c069f937783b60ede46bc4319253798ff44
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c5afd7d912142dd8556e71ba9e0a522b2fa0da1c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431643"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684587"
 ---
 # <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>在 Azure 靜態 Web Apps 預覽版上部署伺服器轉譯的 Next.js 網站
 
@@ -57,7 +57,7 @@ ms.locfileid: "87431643"
     npm run dev
     ```
 
-瀏覽至 <http://localhost:3000> 以開啟應用程式，在此您應該會看到下列網站在您慣用的瀏覽器中開啟：
+瀏覽至 `http://localhost:3000` 以開啟應用程式，在此您應該會看到下列網站在您慣用的瀏覽器中開啟：
 
 :::image type="content" source="media/deploy-nextjs/start-nextjs-app.png" alt-text="啟動 Next.js 應用程式":::
 

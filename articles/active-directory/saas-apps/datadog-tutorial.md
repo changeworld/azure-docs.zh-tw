@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Datadog 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Datadog 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b7845bdd-7bcd-4888-84fd-2551345054ee
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/12/2020
+ms.date: 08/13/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7329c042618623806f28aacf5282e1ab6c718c5f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3bb0ad5305ccba412a403352405711be8f183a2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472283"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555921"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Datadog 整合
 
@@ -59,7 +55,7 @@ ms.locfileid: "79472283"
 1. 從結果面板中選取 [Datadog]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-datadog"></a>設定及測試 Datadog 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-datadog"></a>設定和測試 Datadog 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Datadog 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Datadog 中相關使用者之間的連結關聯性。
 
@@ -89,7 +85,7 @@ ms.locfileid: "79472283"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://app.datadoghq.com/account/login/id/<CUSTOM_IDENTIFIER>`
 
     > [!NOTE]
-    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Datadog 用戶端支援小組](mailto:xuefwu@microsoft.com)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Datadog 用戶端支援小組](mailto:support@datadoghq.com)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 1. 按一下 [檔案]  。
 
@@ -134,11 +130,11 @@ ms.locfileid: "79472283"
 
 ## <a name="configure-datadog-sso"></a>設定 Datadog SSO
 
-若要在 **Datadog** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Datadog 支援小組](mailto:xuefwu@microsoft.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Datadog** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Datadog 支援小組](mailto:support@datadoghq.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-datadog-test-user"></a>建立 Datadog 測試使用者
 
-在本節中，您會在 Datadog 中建立名為 B.Simon 的使用者。 請與 [Datadog 支援小組](mailto:xuefwu@microsoft.com)合作，以在 Datadog 平台中新增使用者。
+在本節中，您會在 Datadog 中建立名為 B.Simon 的使用者。 請與 [Datadog 支援小組](mailto:support@datadoghq.com)合作，以在 Datadog 平台中新增使用者。
 
 ## <a name="test-sso"></a>測試 SSO 
 

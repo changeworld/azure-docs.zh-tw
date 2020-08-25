@@ -9,21 +9,23 @@ ms.topic: tutorial
 ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 07/16/2020
+ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 960b59275885efd547df63febab37d2403c1c7cf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: dddb332498f41437eba77d75c38218c58b8c8379
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847699"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507109"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure Machine Learning 對大量資料執行批次推斷
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-了解如何使用 Azure Machine Learning 以非同步和平行的方式執行大量資料的批次推斷。 ParallelRunStep 提供現成的平行處理原則功能。
+本文說明如何以平行方式執行 Azure Machine Learning 模型，快速評估大量資料。 
 
-透過 ParallelRunStep，即可直接將離線推斷擴充至大型機器叢集的數 TB 結構化和非結構化資料，進而提升生產力並獲得最佳成本。
+推斷大型資料集或使用複雜的模型可能會很耗時。 `ParallelRunStep` 類別可讓您以平行方式執行程序，可能會更快取得整體結果。 即使執行單一評估相當快速，許多案例 (物件偵測、影片處理、自然語言處理等) 都牽涉到執行許多評估。 
+
+有了 `ParallelRunStep`，就可以直接將批次推斷調整到大型的電腦叢集。 這類叢集可以處理數 TB 的結構化或非結構化資料，並提升生產力和最佳化成本。
 
 您會在本文中了解下列工作：
 

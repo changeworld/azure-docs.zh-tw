@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/30/2020
+ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9f74be239bee1d6da3dfdb516c4fc410669e338d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36687f6394ef03a3fceb70c73601680dd262d90c
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020646"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245395"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>教學課程：建立 Azure 時間序列深入解析 Gen1 環境
 
@@ -37,13 +37,13 @@ ms.locfileid: "87020646"
 
 ## <a name="review-video"></a>檢閱影片
 
-### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-azure-time-series-insights-br"></a>了解如何使用「Azure IoT 解決方案加速器」產生資料並開始使用「Azure 時間序列深入解析」。 </br>
+了解如何使用「Azure IoT 解決方案加速器」產生資料並開始使用「Azure 時間序列深入解析」。
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
 ## <a name="overview"></a>概觀
 
-Azure 時間序列深入解析環境是收集及儲存裝置資料之處。 儲存資料後，[Azure 時間序列深入解析總管](time-series-quickstart.md)和 [Azure 時間序列深入解析查詢 API](/rest/api/time-series-insights/ga-query-api) 即可用來查詢及分析資料。
+Azure 時間序列深入解析環境是收集及儲存裝置資料之處。 儲存資料後，[Azure 時間序列深入解析總管](time-series-quickstart.md)和 [Azure 時間序列深入解析查詢 API](/rest/api/time-series-insights/gen1-query-api) 即可用來查詢及分析資料。
 
 Azure IoT 中樞是教學課程中所有裝置 (模擬或實體) 用來安全地連線至 Azure 雲端並傳輸資料的事件來源。
 
@@ -98,7 +98,7 @@ Azure IoT 中樞是教學課程中所有裝置 (模擬或實體) 用來安全地
 
    參數|描述
    ---|---
-   **環境名稱** | 為 Azure 時間序列深入解析環境選擇唯一的名稱。 Azure 時間序列深入解析總管和[查詢 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) 會使用這些名稱。
+   **環境名稱** | 為 Azure 時間序列深入解析環境選擇唯一的名稱。 Azure 時間序列深入解析總管和[查詢 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) 會使用這些名稱。
    **訂用帳戶** | 訂用帳戶是 Azure 資源的容器。 請選擇要建立 Azure 時間序列深入解析環境的訂用帳戶。
    **資源群組** | 資源群組是 Azure 資源的容器。 請為 Azure 時間序列深入解析環境資源選擇現有的資源群組，或建立新的群組。
    **位置** | 為 Azure 時間序列深入解析環境選擇資料中心區域。 為了避免額外延遲時間，請在與其他 IoT 資源相同的區域中建立 Azure 時間序列深入解析環境。

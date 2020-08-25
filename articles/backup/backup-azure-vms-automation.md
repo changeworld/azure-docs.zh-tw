@@ -3,12 +3,12 @@ title: 使用 PowerShell 備份和復原 Azure Vm
 description: 說明如何使用 Azure 備份搭配 PowerShell 來備份和復原 Azure Vm
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: e695fae087ca4e10a1d900a45cb02947bd5afa0b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 23ae2b5b04823bc809712190a3e1617fec65e73a
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652741"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763366"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 備份及還原 Azure Vm
 
@@ -23,7 +23,7 @@ ms.locfileid: "88652741"
 > * 套用備份原則以保護多部虛擬機器
 > * 觸發受保護虛擬機器的隨選備份作業。在備份 (或保護) 虛擬機器之前，您必須先完成[先決條件](backup-azure-arm-vms-prepare.md)來備妥保護 VM 的環境。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 * [深入瞭解](backup-azure-recovery-services-vault-overview.md) 復原服務保存庫。
 * 請[參閱](backup-architecture.md#architecture-built-in-azure-vm-backup)Azure VM 備份的架構、[瞭解](backup-azure-vms-introduction.md)備份程式，以及[審查](backup-support-matrix-iaas.md)支援、限制和必要條件。
@@ -196,7 +196,7 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 * [New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) Cmdlet 會建立 PowerShell 物件來保存備份原則資訊。
 * 排程和保留原則物件可當作 New-AzRecoveryServicesBackupProtectionPolicy Cmdlet 的輸入。
 
-根據預設，開始時間是在排程原則物件中定義。 使用下列範例將開始時間變更為所需的開始時間。 所需的開始時間也應為 UTC。 下列範例假設每日備份所需的開始時間為 01:00 AM UTC。
+根據預設，開始時間是在排程原則物件中定義。 使用下列範例將開始時間變更為所需的開始時間。 所需的開始時間也應為 UTC。 下列範例假設所需的開始時間為每日備份 01:00 AM UTC。
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -462,7 +462,7 @@ BackupManagementType        : AzureVM
 
 ### <a name="restore-the-disks"></a>還原磁碟
 
-使用 [>backup-azrecoveryservicesbackupitem 指令程式](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) ，將備份專案的資料和設定還原至復原點。 在您識別復原點之後，請使用它作為 **-RecoveryPoint** 參數的值。 在上面的範例中，**$rp[0]** 是要使用的復原點。 在接下來的範例程式碼中，**$rp[0]** 是要用來還原磁碟的復原點。
+使用 [>backup-azrecoveryservicesbackupitem 指令程式](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) ，將備份專案的資料和設定還原至復原點。 在您識別復原點之後，請使用它作為 **-RecoveryPoint** 參數的值。 在上述範例中， **$rp [0]** 是要使用的復原點。 在接下來的範例程式碼中，**$rp[0]** 是要用來還原磁碟的復原點。
 
 還原磁碟和設定資訊：
 
@@ -652,7 +652,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
     有**密碼可用**，而且也對於 OS Blob 設定加密詳細資料後，可使用下列指令碼附加磁碟。
 
-    如果來源 keyVault/密碼可供使用，則無法執行上述指令碼。
+    如果來源 keyVault/密碼已可供使用，則不需要執行上述腳本。
 
     ```powershell
         Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
@@ -680,7 +680,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
     有**金鑰/密碼可用**，而且對於 OS Blob 設定加密詳細資料後，可使用下列指令碼附加磁碟。
 
-    如果來源 keyVault/金鑰/密碼可供使用，則無法執行上述指令碼。
+    如果來源 keyVault/金鑰/密碼可供使用，則不需要執行上述腳本。
 
     ```powershell
         Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
@@ -880,6 +880,6 @@ Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc54
 Disable-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0] -VaultId $targetVault.ID
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如果您偏好使用 PowerShell 來與 Azure 資源互動，請參閱 PowerShell 文章：[部署和管理 Windows Server 的備份](backup-client-automation.md)。 如果您管理 DPM 備份，請參閱[部署及管理 DPM 的備份](backup-dpm-automation.md)一文。

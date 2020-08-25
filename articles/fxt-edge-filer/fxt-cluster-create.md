@@ -1,17 +1,17 @@
 ---
 title: 教學課程：建立 Azure FXT Edge Filer 快取叢集
-description: 如何使用 Azure FXT Edge Filer 建立混合式儲存體快取叢集
+description: 了解如何使用 Azure FXT Edge Filer 建立混合式儲存體快取叢集，以及如何登入叢集控制台來設定叢集設定。
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7a471868bac8f5e0623942c0cc1dc4af4e3881e7
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84693068"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185344"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>教學課程：建立 Azure FXT Edge Filer 叢集
 

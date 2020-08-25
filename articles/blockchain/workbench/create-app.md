@@ -1,15 +1,15 @@
 ---
 title: 建立區塊鏈應用程式 - Azure Blockchain Workbench
 description: 關於如何為 Azure Blockchain Workbench 預覽版建立區塊鏈應用程式的教學課程。
-ms.date: 10/14/2019
+ms.date: 08/24/2020
 ms.topic: tutorial
-ms.reviewer: brendal
-ms.openlocfilehash: 7be79757f506ea9fb854a248e77f0ff4f1b74f47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: ravastra
+ms.openlocfilehash: add790a069d2e0ea66d84bbd632825cf9331fd38
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073108"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88784023"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>教學課程：為 Azure Blockchain Workbench 建立區塊鏈應用程式
 
@@ -40,7 +40,7 @@ ms.locfileid: "87073108"
 
 ## <a name="configuration-file"></a>組態檔
 
-組態中繼資料會定義區塊鏈應用程式的高階工作流程和互動模型。 組態中繼資料會表示區塊鏈應用程式的工作流程階段和互動模型。
+組態中繼資料會定義區塊鏈應用程式的高階工作流程和互動模型。 組態中繼資料會表示區塊鏈應用程式的工作流程階段和互動模型。 如需組態檔內容的詳細資訊，請參閱 [Azure Blockchain Workbench 組態參考](configuration.md)。
 
 1. 在您慣用的編輯器中，建立名為 `HelloBlockchain.json` 的檔案。
 2. 新增下列 JSON 以定義區塊鏈應用程式的組態。
@@ -211,8 +211,6 @@ ms.locfileid: "87073108"
 ### <a name="workflows"></a>工作流程
 
 工作流程會定義合約的一或多個階段與動作。 在要求-回應案例中，工作流程的第一個階段 (狀態) 是要求者 (角色) 採取動作 (轉換) 來傳送要求 (函式)。 下一個階段 (狀態) 是回應者 (角色) 採取動作 (轉換) 來傳送回應 (函式)。 應用程式的工作流程可能涉及要說明合約流程所需的屬性、函式和狀態。
-
-如需組態檔內容的詳細資訊，請參閱 [Azure Blockchain Workbench 組態參考](configuration.md)。
 
 ## <a name="smart-contract-code-file"></a>智慧合約程式碼檔案
 

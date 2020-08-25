@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 2b8a5cf1bd3df1405f148c5fe84701c04a4d0c0a
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 53089fa42c536cbdc59865f80f63a77c76720e2c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658007"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752020"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>在 Azure 中可使用哪些磁碟類型？
 
@@ -26,7 +26,7 @@ Azure 受控磁片目前提供四種磁片類型，每種類型都是針對特�
 | 詳細資料 | Ultra 磁碟 | 進階 SSD | 標準 SSD | 標準 HDD |
 | ------ | ---------- | ----------- | ------------ | ------------ |
 |磁碟類型   |SSD   |SSD   |SSD   |HDD   |
-|案例   |需要大量 IO 的工作負載，例如 [SAP Hana](~/articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)、頂層資料庫 (例如 SQL、Oracle) 和其他大量交易工作負載。   |生產環境和重視效能的工作負載   |網頁伺服器、輕量使用的企業應用程式和開發/測試   |備份、不重要、存取不頻繁   |
+|案例   |需要大量 IO 的工作負載，例如 [SAP Hana](workloads/sap/hana-vm-operations-storage.md)、頂層資料庫 (例如 SQL、Oracle) 和其他大量交易工作負載。   |生產環境和重視效能的工作負載   |網頁伺服器、輕量使用的企業應用程式和開發/測試   |備份、不重要、存取不頻繁   |
 |最大磁碟大小   |65,536 GiB    |32,767 GiB    |32,767 GiB   |32,767 GiB   |
 |最大輸送量   |2,000 MB/秒    |900 MB/秒   |750 MB/秒   |500 MB/秒   |
 |最大 IOPS   |160,000    |20,000   |6,000   |2,000   |
@@ -62,7 +62,7 @@ Ultra 磁片的一些主要功能如下：
 
 ### <a name="ga-scope-and-limitations"></a>GA 範圍和限制
 
-[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](~/includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](../../includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
 
 
 如果您想要開始使用 ultra 磁片，請參閱下列主題的文章： [使用 Azure ultra 磁片](disks-enable-ultra-ssd.md)。
@@ -71,10 +71,10 @@ Ultra 磁片的一些主要功能如下：
 
 針對輸入/輸出 (IO) 工作負載大的虛擬機器 (VM)，Azure 進階 SSD 可提供高效能和低延遲的磁碟支援。 您可以將現有 VM 磁碟遷移到進階 SSD，以利用進階儲存體磁碟的速度和效能。 進階 SSD 適用於任務關鍵性的生產應用程式。 Premium Ssd 只能搭配 premium 儲存體相容的 VM 系列使用。
 
-若要深入瞭解適用于 Windows 的 Azure 中的個別 VM 類型與大小，包括符合 premium 儲存體相容的大小，請參閱 [WINDOWS VM 大小](~/articles/virtual-machines/windows/sizes.md)。 若要深入瞭解適用于 Linux 的 Azure 中的個別 VM 類型與大小，包括符合 premium 儲存體相容的大小，請參閱 [LINUX VM 大小](~/articles/virtual-machines/linux/sizes.md)。 在這些文章中，您需要檢查每個個別 VM 大小的文章，以判斷它是否符合 premium 儲存體相容性。
+若要深入瞭解適用于 Windows 或 Linux 的 Azure 中的個別 VM 類型與大小，包括符合 premium 儲存體的大小，請參閱 [azure 中虛擬機器的大小](sizes.md)。 若要深入瞭解適用于 Linux 的 Azure 中的個別 VM 類型與大小，包括符合 premium 儲存體的大小，請參閱 [azure 中虛擬機器的大小](sizes.md)。 在這些文章中，您需要檢查每個個別 VM 大小的文章，以判斷它是否符合 premium 儲存體相容性。
 
 ### <a name="disk-size"></a>磁碟大小
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 當您佈建進階儲存體磁碟時，不同於標準儲存體的是，您可獲得該磁碟的容量、IOPS 和輸送量保證。 例如，如果您建立 P50 磁碟，Azure 會為該磁碟佈建 4,095 GB 儲存體容量、7,500 IOPS 和 250 MB/秒的輸送量。 您的應用程式可以使用全部或部分的容量和效能。 進階 SSD 磁片的設計目的是要提供較低的單一位數毫秒延遲，以及上表99.9% 的時間所述的目標 IOPS 和輸送量。
 
@@ -82,7 +82,7 @@ Ultra 磁片的一些主要功能如下：
 
 進階 SSD 小於 P30 的大小現在提供磁片高載，並可將其 IOPS 高載至3500，以及最高 170 Mbps 的頻寬。 高載是自動化的，而且會根據信用系統來運作。 當磁片流量低於已布建的效能目標時，會自動在高載值區中累積點數，且當流量高載超過目標時，會自動取用點數，最高高載限制。 如果您有要取用的高載點數，則最大高載限制會定義磁片 IOPS & 頻寬的上限。 磁片高載可針對無法預期的 IO 模式變更提供更好的容錯。 您可以使用它來針對 OS 磁片開機和具有尖峰流量的應用程式，充分利用它。    
 
-預設會針對適用磁片大小的新部署啟用磁片高載支援，而不需要使用者動作。 針對適用大小的現有磁片，您可以使用下列兩個選項之一來啟用負載平衡：卸離並重新連接磁片，或停止並重新啟動連結的 VM。 當磁片連接至支援尖峰高載限制30分鐘的虛擬機器時，所有高載的適用磁片大小都會從完整的高載點數值區開始。 若要深入瞭解高載在 Azure 磁片上的運作方式，請參閱 [進階 SSD](~/articles/virtual-machines/linux/disk-bursting.md)負載平衡。 
+預設會針對適用磁片大小的新部署啟用磁片高載支援，而不需要使用者動作。 針對適用大小的現有磁片，您可以使用下列兩個選項之一來啟用負載平衡：卸離並重新連接磁片，或停止並重新啟動連結的 VM。 當磁片連接至支援尖峰高載限制30分鐘的虛擬機器時，所有高載的適用磁片大小都會從完整的高載點數值區開始。 若要深入瞭解高載在 Azure 磁片上的運作方式，請參閱 [進階 SSD](linux/disk-bursting.md)負載平衡。 
 
 ### <a name="transactions"></a>交易
 
@@ -93,7 +93,7 @@ Ultra 磁片的一些主要功能如下：
 Azure 標準 SSD 是符合成本效益的儲存體選項，已針對在較低 IOPS 層級上需要一致效能的工作負載進行最佳化。 「標準 SSD」為想要移至雲端的使用者，尤其是在於內部部署 HDD 解決方案上執行之工作負載的變異方面遇到問題的使用者，提供一個良好的入門級體驗。 相較于標準 Hdd，標準 Ssd 提供更佳的可用性、一致性、可靠性及延遲。 標準 SSD 適用於網頁伺服器、低 IOPS 應用程式伺服器、不常使用的企業應用程式及開發/測試工作負載。 如同標準 Hdd，標準 Ssd 可在所有 Azure Vm 上使用。
 
 ### <a name="disk-size"></a>磁碟大小
-[!INCLUDE [disk-storage-standard-ssd-sizes](~/includes/disk-storage-standard-ssd-sizes.md)]
+[!INCLUDE [disk-storage-standard-ssd-sizes](../../includes/disk-storage-standard-ssd-sizes.md)]
 
 標準 Ssd 的設計目的是要提供一個位數的毫秒延遲，以及上表99% 的時間內所述的最高 IOPS 和輸送量。 實際的 IOPS 和輸送量有時可能會因流量模式而有所不同。 與 HDD 磁碟相比，「標準 SSD」將可提供延遲更低的更一致效能。
 
@@ -106,7 +106,7 @@ Azure 標準 SSD 是符合成本效益的儲存體選項，已針對在較低 IO
 如果 VM 執行的工作負載不在乎延遲，Azure 標準 HDD 可以提供可靠、低成本的磁碟支援。 使用標準儲存體時，資料會儲存在硬碟 (HDD)。 相較于以 SSD 為基礎的磁片，標準 HDD 磁片的延遲、IOPS 和輸送量可能會有更廣泛的差異。 標準 HDD 磁片的設計目的，是為了在大部分 IO 作業的情況下，于20毫秒的10毫秒和讀取延遲下提供寫入延遲，不過實際效能可能會因 IO 大小和工作負載模式而異。 使用 Vm 時，您可以針對開發/測試案例和較不重要的工作負載使用標準 HDD 磁片。 標準 Hdd 可在所有 Azure 區域中使用，並可與所有 Azure Vm 搭配使用。
 
 ### <a name="disk-size"></a>磁碟大小
-[!INCLUDE [disk-storage-standard-hdd-sizes](~/includes/disk-storage-standard-hdd-sizes.md)]
+[!INCLUDE [disk-storage-standard-hdd-sizes](../../includes/disk-storage-standard-hdd-sizes.md)]
 
 ### <a name="transactions"></a>交易
 
@@ -139,7 +139,7 @@ Azure 標準 SSD 是符合成本效益的儲存體選項，已針對在較低 IO
 Azure Vm 具有可指出是否與 ultra 磁片相容的功能。 與 Ultra 磁碟相容的 VM 會在計算 VM 執行個體與區塊儲存體的縮放單位之間配置專用頻寬容量，以最佳化效能並減少延遲。 若在 VM 上新增此功能，只有在未將 Ultra 磁碟連結至該 VM 的情況下於 VM 上啟用 Ultra 磁碟功能時，才會產生保留費用。 當 Ultra 磁碟連結至與 Ultra 磁碟相容的 VM 時，就不會收取此費用。 此費用會根據在 VM 上佈建的 vCPU 計費。 
 
 > [!Note]
-> 針對 [受條件約束的核心 VM 大小](~/articles/virtual-machines/linux/constrained-vcpu.md)，保留費用是根據實際的個 vcpu 數目，而不是受限制的核心數目。 針對 Standard_E32 8s_v3，保留費用將以32核心為基礎。 
+> 針對 [受條件約束的核心 VM 大小](constrained-vcpu.md)，保留費用是根據實際的個 vcpu 數目，而不是受限制的核心數目。 針對 Standard_E32 8s_v3，保留費用將以32核心為基礎。 
 
 請參閱 [Azure 磁片定價頁面](https://azure.microsoft.com/pricing/details/managed-disks/) 以取得 ultra 磁片定價詳細資料。
 

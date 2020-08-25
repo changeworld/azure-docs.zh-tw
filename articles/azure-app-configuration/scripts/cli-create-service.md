@@ -1,7 +1,7 @@
 ---
 title: Azure CLI 指令碼範例 - 建立 Azure 應用程式組態存放區
 titleSuffix: Azure App Configuration
-description: 使用 Azure CLI 指令碼來建立 Azure 應用程式組態存放區
+description: 使用範例 Azure CLI 指令碼建立 Azure 應用程式組態存放區。 請參閱參考文章連結以了解指令碼中使用的命令。
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 17be6dee1d5077a45dd14f403ed6e2c13b1e19b1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7b3221c55cef6207ea38ac1375202acd8b8ab4f1
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494854"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588295"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>建立 Azure 應用程式設定存放區
 

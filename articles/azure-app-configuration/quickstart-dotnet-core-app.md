@@ -1,18 +1,19 @@
 ---
 title: Azure 應用程式設定搭配 .NET Core 的快速入門 | Microsoft Docs
-description: 搭配使用 Azure 應用程式設定與 .NET Core 應用程式的快速入門
+description: 在本快速入門中，您會建立 .NET Core 應用程式搭配 Azure 應用程式組態，以集中儲存和管理應用程式設定 (與您的程式碼分開)。
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7cabe5b0564ec63335800a999bebec67ec970587
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 5925d80f23052324e5512908241ed573c681d835
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856773"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590246"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>快速入門：使用應用程式設定建立 .NET Core 應用程式
 
