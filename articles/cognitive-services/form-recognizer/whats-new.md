@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 3a48511c896a3e4c677c35ca3069ff236761c444
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: b3485ebbdf9cf428b09364b73197220e02e9ffa8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724127"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751086"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
@@ -30,7 +30,7 @@ ms.locfileid: "88724127"
 - **REST API 參考可供使用** -請參閱 [2.1-preview。1參考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 
 - **除了英文以外，還支援的新語言**，現在支援下列語言：適用于 `Layout` 和 `Train Custom Model` ：英文 (EN) 、中文 (簡體)  (ZH ZH) 、荷蘭文 (NL) 、法文 (FR) 、德文 (DE) 、義大利文 () 、葡萄牙文 (PT) 和西班牙文 (ES) 。
 - **核取方塊/選取標記偵測** -表單辨識器支援偵測和解壓縮選取標記，例如核取方塊和選項按鈕。 選取標記會在中解壓縮 `Layout` ，您現在也可以使用標籤來標記和定型， `Train Custom Model`  -  _Train with Labels_以將選取專案標記的索引鍵值組解壓縮。 
-- **模型撰寫** 可讓您以單一模型識別碼撰寫和呼叫多個模型。提交檔以使用撰寫的模型識別碼進行分析時，會先執行分類步驟，將其路由至正確的自訂模型。 模型撰寫適用于 `Train Custom Model`  -  _使用標籤進行定型_。
+- **模型撰寫** 可讓您以單一模型識別碼撰寫和呼叫多個模型。 提交檔以使用撰寫的模型識別碼進行分析時，會先執行分類步驟，將其路由至正確的自訂模型。 模型撰寫適用于 `Train Custom Model`  -  _使用標籤進行定型_。
 - **模型名稱** 將易記名稱新增至自訂模型，以方便管理及追蹤。
 - **新的智慧卡預先建立的模型** ，用來解壓縮英文、語言名片的一般欄位。
 - 新的地區設定（除了 EN-US 以外）**預先建立的新地區**設定，現在可供 EN-US、半 CA、EN-GB、en-us
@@ -50,8 +50,10 @@ ms.locfileid: "88724127"
 ## <a name="july-2020"></a>2020 年 7 月
 
 ### <a name="new-features"></a>新功能
+
 * **2.0 版參考可用** 查看 v2.0 [API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) ，以及適用于 [.net](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet)、 [Python](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)、 [JAVA](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)和 [JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)的更新版 sdk。
 * **資料表增強功能和解壓縮增強功能** 包括精確度改良和資料表提取增強功能，特別是在 _不含標籤的自訂定型_中學習資料表標頭和結構的功能。 
+
 * **貨幣支援** 全域貨幣符號的偵測和解壓縮。
 * **Azure Gov** 表單辨識器現在也可在 Azure Gov 中使用。
 * **增強的安全性功能**： 
@@ -76,8 +78,8 @@ ms.locfileid: "88724127"
 * **SDK 支援表單辨識器 API 2.0 版公開預覽** 本月份我們已擴充服務支援，以包含適用于表單辨識器 v2.0 的預覽 SDK (預覽版) 版本。 使用下列連結來開始使用您選擇的語言： 
    * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet)
    * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)
-   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
-   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
+   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-python-preview)
+   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/ai-form-recognizer-readme-pre?view=azure-node-preview)
 
   新的 SDK 支援表單辨識器2.0 版 REST API 的所有功能。 例如，您可以使用或不使用標籤來定型模型，並從表單中將文字、索引鍵值組和資料表解壓縮、使用預先建立的回條服務將收據中的資料解壓縮，並使用您檔中的版面佈建服務來將文字和資料表解壓縮。 您可以透過 [Sdk 意見反應表單](https://aka.ms/FR_SDK_v1_feedback)，在 sdk 上分享您的意見反應。
  

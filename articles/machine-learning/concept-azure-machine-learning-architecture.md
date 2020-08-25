@@ -1,103 +1,127 @@
 ---
 title: 架構和重要概念
 titleSuffix: Azure Machine Learning
-description: 了解組成 Azure Machine Learning 的架構、術語、概念和工作流程。
+description: 瞭解組成 Azure Machine Learning 的架構、詞彙和概念。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: larryfr
-author: Blackmist
-ms.date: 05/13/2020
+ms.author: sgilley
+author: sdgilley
+ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 749a2366438bd1abfef4ca0cf2a195f23529d6a5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d7bad24510f74a7fadd74328e24ea22855e6fe02
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536295"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750847"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning 的運作方式：架構和概念
 
-了解 Azure Machine Learning 的架構、概念和工作流程。 服務的主要元件以及使用服務時的一般工作流程顯示在下圖中：
-
-![Azure Machine Learning 架構與工作流程](./media/concept-azure-machine-learning-architecture/workflow.png)
-
-## <a name="workflow"></a>工作流程
-
-機器學習模型工作流程一般會遵循下列順序：
-
-1. **訓練**
-    + 使用 **Python**、**R** 或視覺化設計工具來開發機器學習定型指令碼。
-    + 建立並設定**計算目標**。
-    + **提交指令碼**至設定的計算目標以在該環境中執行。 在訓練期間，可以從**資料存放區**讀取或寫入指令碼。 定型期間所產生的記錄和輸出會儲存為**工作區**中的**執行**，並群組到**實驗**底下。
-
-1. **封裝** - 找到令人滿意的回合之後，請在**模型登錄**中註冊保存的模型。
-
-1. **驗證** - **查詢實驗**取得目前和過去回合的記錄計量。 如果計量未指出所要的結果，請回到步驟 1 並逐一查看您的指令碼。
-
-1. **部署** - 開發會使用模型的評分指令碼，並**將模型部署**為 Azure 中的 **Web 服務** 或將模型部署至 **IoT Edge 裝置**。
-
-1. **監視** - 監視定型資料集與已部署模型的推斷資料之間所產生的**資料漂移**。 必要時，請回到步驟 1，以使用新的定型資料來將模型重新定型。
-
-## <a name="tools-for-azure-machine-learning"></a>適用於 Azure Machine Learning 的工具
-
-請使用下列適用於 Azure Machine Learning 的工具：
-
-> [!IMPORTANT]
-> 下列已標記的工具（預覽）目前為公開預覽狀態。
-> 預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-+  使用[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)，與任何 Python 環境中的服務互動。
-+ 使用[適用于 r 的 AZURE MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) （預覽），在任何 R 環境中與服務互動。
-+ 使用 [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)，將您的機器學習活動自動化。
-+ 使用 [Azure Machine Learning 設計工具 (預覽)](concept-designer.md) 來執行工作流程步驟，而不需要撰寫程式碼。 （[企業工作區](concept-workspace.md#upgrade)）需要使用 [設計工具]）。
-+ [Many Models Solution Accelerator](https://aka.ms/many-models) (預覽) 建置在 Azure Machine Learning 中，可讓您定型、操作及管理上百個或甚至數千個機器學習模型。
+瞭解 Azure Machine Learning 的架構和概念。
 
 > [!NOTE]
 > 雖然本文定義了 Azure Machine Learning 使用的術語與概念，但並沒有定義 Azure 平台的術語與概念。 如需有關 Azure 平台技術的詳細資訊，請參閱 [Microsoft Azure 詞彙](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)。
 
-## <a name="glossary"></a>詞彙
+## <a name="workspace"></a><a name="workspace"></a> 工作
 
-* [活動](#activities)
-* [工作區](#workspaces)
-    * [實驗](#experiments)
-        * [執行](#runs) 
-            * [回合組態](#run-configurations)
-            * [快照式](#snapshots)
-            * [Git 追蹤](#github-tracking-and-integration)
-            * [Logging](#logging)
-    * [ML 管線](#ml-pipelines)
-    * [模型](#models)
-        * [環境](#environments)
-        * [定型指令碼](#training-scripts)
-        * [估算器](#estimators)
-    * [端點](#endpoints)
-        * [Web 服務](#web-service-endpoint)
-        * [IoT 模組](#iot-module-endpoints)
-    * [資料集和資料存放區](#datasets-and-datastores)
-    * [計算目標](#compute-targets)
+:::image type="content" source="media/concept-azure-machine-learning-architecture/architecture.svg" alt-text="Azure Machine Learning 架構":::
 
-### <a name="activities"></a>活動
+[Machine learning 工作區](concept-workspace.md)是 Azure Machine Learning 的最上層資源。  工作區是集中位置：
+* 管理用於定型和部署模型的資源，例如 [計算](#compute-instance)
+* 當您使用 Azure Machine Learning 時，儲存您所建立的資產，包括：
+  * [環境](#environments)
+  * [執行](#runs)
+  * [管線](#ml-pipelines)
+  * [資料集](#datasets-and-datastores)
+  * [模型](#models)
+  * [端點](#endpoints)
 
-活動代表長時間執行的作業。 下列作業為活動範例：
+工作區包含工作區所使用的其他 Azure 資源：
 
-* 建立或刪除計算目標
-* 在計算目標上執行指令碼
++ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)：註冊您在定型期間以及在部署模型時使用的 docker 容器。 為了將成本降至最低，ACR 會 **延遲載入** ，直到建立部署映射為止。
++ [Azure 儲存體帳戶](https://azure.microsoft.com/services/storage/)：作為工作區的預設資料存放區使用。  Jupyter 與 Azure Machine Learning 計算實例搭配使用的筆記本也會儲存在這裡。
++ [Azure 應用程式見解](https://azure.microsoft.com/services/application-insights/)：儲存有關模型的監視資訊。
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)：儲存計算目標所使用的秘密，以及工作區所需的其他機密資訊。
 
-活動可透過 SDK 或 Web UI 提供通知，方便您輕鬆監視這些作業的進度。
+您可以與其他人共用工作區。
 
-### <a name="workspaces"></a>工作區
+## <a name="studio"></a>Studio
 
-[工作區](concept-workspace.md)是 Azure Machine Learning 的最上層資源。 其可以在您使用 Azure Machine Learning 時，提供集中式位置以處理您建立的所有成品。 您可以與其他人共用工作區。 如需工作區的詳細說明，請參閱[什麼是 Azure Machine Learning 工作區？](concept-workspace.md)。
+[Azure Machine Learning studio](https://ml.azure.com) 會提供您工作區中所有成品的 web 視圖。  您也可以在此入口網站中存取屬於 Azure Machine Learning 一部分的互動式工具：
+
++ [Azure Machine Learning 設計工具 (預覽) ](concept-designer.md) 在不撰寫程式碼的情況下執行工作流程步驟
++ [自動化機器學習](concept-automated-ml.md)的 Web 體驗
++ [資料標記專案](how-to-create-labeling-projects.md) ，以建立、管理及監視專案以標示您的資料
+
+##  <a name="computes"></a>計算
+
+<a name="compute-targets"></a>[計算目標](concept-compute-target.md)是執行定型腳本或裝載服務部署的電腦或一組電腦。 這個位置可能是您的本機電腦或遠端計算資源。
+
+Azure Machine Learning 導入了兩個完全受控的雲端式計算資源，可針對機器學習工作進行設定：
+
+* <a name="compute-instance"></a>**計算實例** ([computeinstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance?view=azure-ml-py)) ：計算實例是虛擬機器 (VM) ，其中包含針對機器學習服務安裝的多個工具和環境。 使用計算實例作為開發工作站，以開始執行範例筆記本，而不需要設定。 也可以用來作為定型和推斷作業的計算目標。
+* **計算** 叢集 ([amlcompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py)) ：具有多節點調整功能的 vm 叢集。 在提交作業時自動相應增加。 更適合大型作業和生產環境的計算目標。 使用作為定型計算目標或用於開發/測試部署。
+
+如需有關定型計算目標的詳細資訊，請參閱 [定型計算目標](concept-compute-target.md#train)。  如需部署計算目標的詳細資訊，請參閱 [部署目標](concept-compute-target.md#deploy)。
+
+## <a name="datasets-and-datastores"></a>資料集和資料存放區
+
+[**Azure Machine Learning 資料集**](concept-data.md#datasets)  可讓您更輕鬆地存取及使用資料。 資料集會管理各種案例中的資料，例如模型定型和管線建立。 使用 Azure Machine Learning SDK，您就可以存取基礎儲存體、探索資料，以及管理不同資料集定義的生命週期。
+
+資料集會提供可使用常用格式資料的方法，例如使用 `from_delimited_files()` 或 `to_pandas_dataframe()`。
+
+如需詳細資訊，請參閱[建立及註冊 Azure Machine Learning 資料集](how-to-create-register-datasets.md)。  如需更多使用資料集的範例，請參閱[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets-tutorial)。
+
+[**資料**](concept-data.md#datastores)存放區是 Azure 儲存體帳戶的儲存體抽象概念。 每個工作區都有預設資料存放區，而且您可以註冊額外的資料存放區。 使用 Python SDK API 或 Azure Machine Learning CLI 在資料存放區中儲存及擷取檔案。 
+
+## <a name="models"></a>模型
+
+簡單來說，模型是可接受輸入並產生輸出的一段程式碼。 建立機器學習模型牽涉到選取演算法、為它提供資料，以及 [調整超參數](how-to-tune-hyperparameters.md)。 定型是一種反覆進行的程序，可產生定型的模型，其中會封裝模型在定型程序期間學到項目。
+
+模型是由 Azure Machine Learning 中的[實驗](#experiments)[執行](#runs)所產生。 您也可以使用在 Azure Machine Learning 外部定型的模型。 然後，在工作區中 [註冊模型](#register-model) 。
+
+Azure Machine Learning 與架構無關。 在建立模型時，您可以使用任何受歡迎的機器學習架構，例如 Scikit-learn、XGBoost、PyTorch、TensorFlow 和 Chainer。
+
+如需使用 Scikit-learn-學習來定型模型的範例，請參閱 [教學課程：使用 Azure Machine Learning 將影像分類模型定型](tutorial-train-models-with-aml.md)。
+
+### <a name="model-registry"></a><a name="register-model"></a> 模型登錄
+[工作區](#workspace)  > **模型**登錄
+
+**模型**登錄可讓您追蹤 Azure Machine Learning 工作區中的所有模型。
+
+模型是透過名稱與版本來識別的。 每次註冊與現有模型名稱相同的模型時，登錄都會假設它是一個新版本。 版本會累加，新模型則會以相同的名稱來註冊。
+
+註冊模型時，您可以提供額外的中繼資料標記，然後在搜尋模型時使用這些標記。
+
+> [!TIP]
+> 已註冊的模型是組成模型的一或多個檔案所在的邏輯容器。 例如，如果您的模型儲存在多個檔案中，您可以將其註冊為 Azure Machine Learning 工作區中的單一模型。 註冊之後，您就可以下載或部署已註冊的模型，並接收所有已註冊的檔案。
+
+您無法刪除作用中部署正在使用的已註冊模型。
+
+如需模型註冊的範例，請參閱[使用 Azure Machine Learning 將映像分類模型定型](tutorial-train-models-with-aml.md)。
+
+
+### <a name="environments"></a>環境
+
+[工作區](#workspace)  > **環境**
+
+[環境](concept-environments.md)是環境的封裝，在此環境中，您的機器學習模型會定型或計分。 環境會指定訓練和評分腳本周圍的 Python 套件、環境變數和軟體設定。
+
+如需程式碼範例，請參閱 [如何使用環境](how-to-use-environments.md#manage-environments)的「管理環境」一節。
 
 ### <a name="experiments"></a>實驗
 
-實驗是從指定之指令碼的許多回合組成的群組。 它一律屬於某個工作區。 當您提交回合時，必須提供一個實驗名稱。 回合的資訊會儲存在該實驗底下。 如果提交回合並指定不存在的實驗名稱，就會自動以新指定的名稱建立一個新的實驗。
+[工作區](#workspace)  > **實驗**
+
+實驗是從指定之指令碼的許多回合組成的群組。 它一律屬於某個工作區。 當您提交回合時，必須提供一個實驗名稱。 回合的資訊會儲存在該實驗底下。 當您提交實驗時，如果名稱不存在，則會自動建立新的實驗。
 
 如需使用實驗的範例，請參閱[教學課程：進行第一個模型的定型](tutorial-1st-experiment-sdk-train.md)。
 
 ### <a name="runs"></a>執行
+
+[工作區](#workspace)  > [實驗](#experiments)  > **執行**
 
 執行是一次定型指令碼的執行。 實驗一般會包含多個執行。
 
@@ -112,73 +136,13 @@ Azure Machine Learning 會記錄所有執行，並在實驗中儲存下列資訊
 
 ### <a name="run-configurations"></a>回合組態
 
+[工作區](#workspace)  > [實驗](#experiments)  > [執行](#runs)  > **執行**設定
+
 回合組態是定義指令碼在指定的計算目標中應如何執行的一組指示。 此組態包含一組豐富的行為定義，例如是否使用現有的 Python 環境，或使用依據規格建立的 Conda 環境。
 
-回合組態可保存在檔案 (位於包含您定型指令碼的目錄內) 中，或者可以建構為記憶體內部物件並用來提交回合。
+回合設定可保存在包含定型腳本的目錄內的檔案中。   您也可以將它視為記憶體內建物件，用來提交執行。
 
 如需回合組態的範例，請參閱[選取及使用計算目標將模型定型](how-to-set-up-training-targets.md)。
-
-### <a name="snapshots"></a>快照集
-
-提交回合時，Azure Machine Learning 會將包含指令碼的目錄壓縮成 zip 檔案，然後傳送至計算目標。 接著會將 zip 檔案解壓縮並在該處執行指令碼。 Azure Machine Learning 也會將 zip 檔案以快照方式儲存在回合記錄中。 任何擁有工作區存取權的人都能瀏覽回合記錄並下載快照集。
-
-> [!NOTE]
-> [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
-
-### <a name="github-tracking-and-integration"></a>GitHub 追蹤與整合
-
-當您啟動來源目錄是本機 Git 存放庫的定型回合時，該存放庫的相關資訊會儲存在回合歷程記錄中。 這適用於使用估算器、ML 管線或指令碼執行所提交的執行。 其也適用於從 SDK 或 Machine Learning CLI 提交的執行。
-
-如需詳細資訊，請參閱 [Azure Machine Learning 的 Git 整合](concept-train-model-git-integration.md)。
-
-### <a name="logging"></a>記錄
-
-開發解決方案時，請在 Python 指令碼中使用 Azure Machine Learning Python SDK 以記錄任意計量。 在該回合之後，請查詢計量以判斷該回合是否產生您要部署的模型。
-
-### <a name="ml-pipelines"></a>ML 管線
-
-您可以使用機器學習管線來建立和管理結合多個機器學習階段的工作流程。 例如，管線可能包含資料準備、模型訓練、模型部署和推斷/評分階段。 每個階段都可以包含多個步驟，這些步驟各自都可以在各種計算目標中自動執行。 
-
-管線步驟可重複使用，如果前面步驟的輸出未變更，則可以在不重新執行前面步驟的情況下執行管線步驟。 例如，如果資料未變更，便可以在不必重新執行昂貴的資料準備步驟情況下將模型重新定型。 管線也可以讓資料科學家在分頭處理不同機器學習工作流程區域時共同作業。
-
-如需有關機器學習管線與此服務的詳細資訊，請參閱[管線和 Azure Machine Learning](concept-ml-pipelines.md)。
-
-### <a name="models"></a>模型
-
-簡單來說，模型是可接受輸入並產生輸出的一段程式碼。 機器學習服務模型的建立作業涵蓋選取演算法、提供資料給演算法，以及調整超參數。 定型是一種反覆進行的程序，可產生定型的模型，其中會封裝模型在定型程序期間學到項目。
-
-模型是由 Azure Machine Learning 中的回合所產生的。 您也可以使用在 Azure Machine Learning 外部定型的模型。 您可以在 Azure Machine Learning 工作區中註冊模型。
-
-Azure Machine Learning 與架構無關。 在建立模型時，您可以使用任何受歡迎的機器學習架構，例如 Scikit-learn、XGBoost、PyTorch、TensorFlow 和 Chainer。
-
-如需使用 Scikit-learn 和估算器來將模型定型的範例，請參閱[教學課程：使用 Azure Machine Learning 將影像分類模型定型](tutorial-train-models-with-aml.md)。
-
-**模型登錄**可記錄您 Azure Machine Learning 工作區中的所有模型。
-
-模型是透過名稱與版本來識別的。 每次註冊與現有模型名稱相同的模型時，登錄都會假設它是一個新版本。 版本會累加，新模型則會以相同的名稱來註冊。
-
-註冊模型時，您可以提供額外的中繼資料標記，然後在搜尋模型時使用這些標記。
-
-> [!TIP]
-> 已註冊的模型是組成模型的一或多個檔案所在的邏輯容器。 例如，如果您的模型儲存在多個檔案中，您可以將其註冊為 Azure Machine Learning 工作區中的單一模型。 註冊之後，您就可以下載或部署已註冊的模型，並接收所有已註冊的檔案。
-
-您無法刪除作用中部署正在使用的已註冊模型。
-
-如需模型註冊的範例，請參閱[使用 Azure Machine Learning 將映像分類模型定型](tutorial-train-models-with-aml.md)。
-
-### <a name="environments"></a>環境
-
-Azure ML 環境可用來指定設定 (Docker/Python/Spark 等等)，以供建立可重現的環境來進行資料準備、模型定型和模型服務。 這些環境是在您 Azure Machine Learning 工作區內已設定版本的受控實體，可在不同計算目標之間啟用可重現、可稽核且可攜帶的機器學習工作流程。
-
-您可以在本機計算上使用環境物件來開發您的定型指令碼、在 Azure Machine Learning Compute 上重複使用相同的環境以進行大規模的模型定型，甚至使用該相同環境來部署您的模型。 
-
-了解[如何建立和管理可重複使用的 ML 環境](how-to-use-environments.md)，以進行定型和推斷。
-
-### <a name="training-scripts"></a>將指令碼定型
-
-您可以指定包含定型指令碼與相關聯檔案的目錄，以將模型定型。 您也可以指定用來儲存定型期間所收集資訊的實驗名稱。 在定型期間，整個目錄會複製到定型環境 (計算目標)，然後啟動回合組態指定的指令碼。 目錄的快照集也會儲存在工作區中的實驗底下。
-
-如需範例，請參閱[教學課程：使用 Azure Machine Learning 將影像分類模型定型](tutorial-train-models-with-aml.md)。
 
 ### <a name="estimators"></a>估算器
 
@@ -193,15 +157,48 @@ Azure ML 環境可用來指定設定 (Docker/Python/Spark 等等)，以供建立
 * [使用 Azure Machine Learning 大規模地將 TensorFlow 模型定型並加以註冊](how-to-train-tensorflow.md)。
 * [使用 Azure Machine Learning 大規模地將 Chainer 模型定型並加以註冊](how-to-train-ml-models.md)。
 
+### <a name="snapshots"></a>快照集
+
+[工作區](#workspace)  > [實驗](#experiments)  > [執行](#runs)  > **快照**集
+
+提交回合時，Azure Machine Learning 會將包含指令碼的目錄壓縮成 zip 檔案，然後傳送至計算目標。 接著會將 zip 檔案解壓縮並在該處執行指令碼。 Azure Machine Learning 也會將 zip 檔案以快照方式儲存在回合記錄中。 任何擁有工作區存取權的人都能瀏覽回合記錄並下載快照集。
+
+
+### <a name="logging"></a>記錄
+
+開發解決方案時，請在 Python 指令碼中使用 Azure Machine Learning Python SDK 以記錄任意計量。 在該回合之後，請查詢計量以判斷該回合是否產生您要部署的模型。
+
+
+> [!NOTE]
+> [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
+
+### <a name="git-tracking-and-integration"></a>Git 追蹤與整合
+
+當您啟動來源目錄是本機 Git 存放庫的定型回合時，該存放庫的相關資訊會儲存在回合歷程記錄中。 這適用於使用估算器、ML 管線或指令碼執行所提交的執行。 其也適用於從 SDK 或 Machine Learning CLI 提交的執行。
+
+如需詳細資訊，請參閱 [Azure Machine Learning 的 Git 整合](concept-train-model-git-integration.md)。
+
+## <a name="deployment"></a>部署
+
+您會將 [已註冊的模型](#register-model) 部署為服務端點。 您需要下列元件：
+
+* **環境**。 此環境會封裝執行您的模型以進行推斷所需的相依性。
+* **評分程式碼**。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
+* **推斷**設定。 推斷設定會指定將模型當作服務執行所需的環境、輸入腳本和其他元件。
+
+如需這些元件的詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
+
 ### <a name="endpoints"></a>端點
+
+[工作區](#workspace)  > **端點**
 
 端點是指在可能裝載於雲端的 Web 服務，或在用於整合式裝置部署的 IoT 模組中將模型具現化。
 
 #### <a name="web-service-endpoint"></a>Web 服務端點
 
-將模型部署為 Web 服務時，可以在 Azure 容器執行個體、Azure Kubernetes Service 或 FPGA 上部署端點。 您可以從模型、指令碼和相關聯的檔案建立服務。 這些項目會放入基底容器映像，其內含模型的執行環境。 映像包含經過負載平衡的 HTTP 端點，可接收傳送至 Web 服務的評分要求。
+將模型部署為 Web 服務時，可以在 Azure 容器執行個體、Azure Kubernetes Service 或 FPGA 上部署端點。 您可以從模型、指令碼和相關聯的檔案建立服務。 這些會放入基底容器映射中，其中包含模型的執行環境。 映像包含經過負載平衡的 HTTP 端點，可接收傳送至 Web 服務的評分要求。
 
-如果已選擇啟用 Application Insight 遙測或模型遙測收集功能，Azure 將可以透過此功能協助您監視 Web 服務。 遙測資料只有您才能存取，而且會儲存在您的 Application Insights 與儲存體帳戶執行個體中。
+您可以啟用 Application Insights 遙測或模型遙測，以監視您的 web 服務。 您只能存取遙測資料。  它會儲存在您的 Application Insights 和儲存體帳戶實例中。
 
 如果已經啟用自動調整功能，Azure 將會自動調整您的部署。
 
@@ -214,31 +211,32 @@ Azure ML 環境可用來指定設定 (Docker/Python/Spark 等等)，以供建立
 如果您已經啟用監視功能，Azure 就會從 Azure IoT Edge 模組內部的模型收集遙測資料。 遙測資料只有您才能存取，而且會儲存在您的儲存體帳戶執行個體中。
 
 Azure IoT Edge 會確保模組正在執行，並監視裝載模組的裝置。
+. 
+## <a name="automation"></a>自動化
 
+### <a name="azure-machine-learning-cli"></a>Azure Machine Learning CLI 
 
-### <a name="compute-instance"></a><a name="compute-instance"></a>計算執行個體
+[AZURE MACHINE LEARNING CLI](reference-azure-machine-learning-cli.md)是 Azure CLI 的延伸模組，這是適用于 Azure 平臺的跨平臺命令列介面。 此延伸模組會提供命令，以將您的機器學習活動自動化。
 
-**Azure Machine Learning 計算執行個體** (先前稱為 Notebook VM) 是完全受控的雲端式工作站，其內含針對機器學習所安裝的多個工具和環境。 計算執行個體可用來作為定型作業和推斷作業的計算目標。 針對大型工作，具有多節點擴縮功能的 [Azure Machine Learning 計算叢集](how-to-set-up-training-targets.md#amlcompute)會是比較好的計算目標選擇。
+### <a name="ml-pipelines"></a>ML 管線
 
-深入了解[計算執行個體](concept-compute-instance.md)。
+您可以使用 [機器學習管線](concept-ml-pipelines.md) 來建立和管理將機器學習階段拼接在一起的工作流程。 例如，管線可能包含資料準備、模型訓練、模型部署和推斷/評分階段。 每個階段都可以包含多個步驟，這些步驟各自都可以在各種計算目標中自動執行。 
 
-### <a name="datasets-and-datastores"></a>資料集和資料存放區
+管線步驟可重複使用，如果前面步驟的輸出未變更，則可以在不重新執行前面步驟的情況下執行管線步驟。 例如，如果資料未變更，便可以在不必重新執行昂貴的資料準備步驟情況下將模型重新定型。 管線也可以讓資料科學家在分頭處理不同機器學習工作流程區域時共同作業。
 
-**Azure Machine Learning 資料集** (預覽) 可讓您更輕鬆地存取和使用資料。 資料集會管理各種案例中的資料，例如模型定型和管線建立。 使用 Azure Machine Learning SDK，您就可以存取基礎儲存體、探索資料，以及管理不同資料集定義的生命週期。
+## <a name="interacting-with-machine-learning"></a>與機器學習服務互動
 
-資料集會提供可使用常用格式資料的方法，例如使用 `from_delimited_files()` 或 `to_pandas_dataframe()`。
+> [!IMPORTANT]
+> 以下是標示 (preview) 的工具目前處於公開預覽狀態。
+> 此預覽版本會在沒有服務等級協定的情況下提供，不建議用於實際執行工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-如需詳細資訊，請參閱[建立及註冊 Azure Machine Learning 資料集](how-to-create-register-datasets.md)。  如需更多使用資料集的範例，請參閱[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets-tutorial)。
++  使用[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)，與任何 Python 環境中的服務互動。
++ 使用 [適用于 r](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (preview) 的 Azure Machine Learning SDK，在任何 R 環境中與服務互動。
++ 使用 [Azure Machine Learning 設計工具 (預覽)](concept-designer.md) 來執行工作流程步驟，而不需要撰寫程式碼。 需要 ([企業工作區](concept-workspace.md#upgrade)) 才能使用設計工具。 ) 
++ 使用 [AZURE MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) 進行自動化。
++ [Many Models Solution Accelerator](https://aka.ms/many-models) (預覽) 建置在 Azure Machine Learning 中，可讓您定型、操作及管理上百個或甚至數千個機器學習模型。
 
-**資料存放區**是 Azure 儲存體帳戶的儲存體抽象概念。 資料存放區可以使用 Azure Blob 容器或 Azure 檔案共用作為後端儲存體。 每個工作區都有預設資料存放區，而且您可以註冊額外的資料存放區。 使用 Python SDK API 或 Azure Machine Learning CLI 在資料存放區中儲存及擷取檔案。
-
-### <a name="compute-targets"></a>計算目標
-
-[計算目標](concept-compute-target.md)可讓您指定用來執行定型指令碼或裝載服務部署的計算資源。 這個位置可能是您的本機電腦或雲端式計算資源。
-
-深入了解[可用於定型和部署的計算目標](concept-compute-target.md)。
-
-### <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>後續步驟
 
 若要開始使用 Azure Machine Learning，請參閱：
 

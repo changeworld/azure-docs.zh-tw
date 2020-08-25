@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: d041bfe1187c48e5544e8933763eaf45a507a424
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9a6a56491a327d5d4eafc2c05dc2b54b137096b8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701426"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752072"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>使用 Azure 磁片保留來降低成本
 
@@ -31,7 +31,7 @@ ms.locfileid: "88701426"
 例如，假設您保留一個 P40 磁片，其中有2個 TiB 的已布建儲存體容量。 也假設您只配置兩個 P30 磁片。 在該情況下，P40 保留不會考慮 P30 耗用量，而是以隨用隨付費率支付 P30 磁片的費用。
 <br/>
 <br/>
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 ## <a name="purchase-considerations"></a>購買考量
 
@@ -55,7 +55,7 @@ ms.locfileid: "88701426"
 
 ## <a name="buy-a-disk-reservation"></a>購買磁片保留
 
-您可以透過 [Azure 入口網站](https://portal.azure.com/)購買 Azure 磁碟儲存體的保留。 您可以預先支付或使用每月付款來支付保留費用。 如需購買每月付款的詳細資訊，請參閱 [使用每月付款來購買保留](~/articles/cost-management-billing/reservations/monthly-payments-reservations.md)。
+您可以透過 [Azure 入口網站](https://portal.azure.com/)購買 Azure 磁碟儲存體的保留。 您可以預先支付或使用每月付款來支付保留費用。 如需購買每月付款的詳細資訊，請參閱 [使用每月付款來購買保留](../cost-management-billing/reservations/prepare-buy-reservation.md#buy-reservations-with-monthly-payments)。
 
 遵循下列步驟來購買保留容量：
 
@@ -103,5 +103,5 @@ ms.locfileid: "88701426"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [什麼是 Azure 保留項目？](~/articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [了解如何將您的保留折扣套用至 Azure 磁碟儲存體](~/articles/cost-management-billing/reservations/understand-disk-reservations.md)
+- [什麼是 Azure 保留項目？](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [了解如何將您的保留折扣套用至 Azure 磁碟儲存體](../cost-management-billing/reservations/understand-disk-reservations.md)

@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: a1ef0e9fe3805f1c6d4d1000a9ea70accc64f4d2
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 55e79877fb186a5ba2aece316c61f542adeda60c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718691"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796930"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>針對無代理程式 VMware VM 遷移中的複寫問題進行疑難排解
 
@@ -246,7 +246,7 @@ _錯誤訊息：發生內部錯誤。[錯誤訊息]_
 
 ### <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>錯誤訊息：發生內部錯誤。 [產生快照集無反應]
 
-當快照集產生未完成時，就會發生此問題。 發生此問題時，您可以看到 [建立快照集工作停止于95% 或 99%]。 請參閱此 [VMWARE KB](https://go.microsoft.com/fwlink/?linkid=2138969) 以解決此問題。
+當快照集產生停止回應時，就會發生此問題。 發生此問題時，您可以看到 [建立快照集工作停止于95% 或 99%]。 請參閱此 [VMWARE KB](https://go.microsoft.com/fwlink/?linkid=2138969) 以解決此問題。
 
 ### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>錯誤訊息：發生內部錯誤。 [無法合併 VM 上的磁片 _[原因]_]
 

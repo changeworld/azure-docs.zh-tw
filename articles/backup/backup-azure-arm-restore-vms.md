@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 4aca863dd4e9c418872cd67bdf54df616a7a0c5b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 66d29294d74e9fee28dd88d34f67ed3bdc4b8e7b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651143"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756481"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -65,7 +65,7 @@ Azure 備份提供數種方法來還原 VM。
     - **建立新**的：如果您想要建立新的 VM，請使用此選項。 您可以使用簡單的設定來建立 VM，或還原磁碟並建立自訂 VM。
     - **取代現有**的：如果您想要取代現有 VM 上的磁片，請使用此選項。
 
-        ![還原組態精靈](./media/backup-azure-arm-restore-vms/restore-configuration.png)
+        ![還原虛擬機器設定向導](./media/backup-azure-arm-restore-vms/restore-configuration.png)
 
 1. 為您所選的還原選項指定設定。
 
@@ -79,7 +79,7 @@ Azure 備份提供數種方法來還原 VM。
 1. 在 [虛擬網路]**** 中，選取將放置 VM 的 VNet。 與訂用帳戶相關聯的所有 VNet 均會顯示。 選取子網路。 預設會選取第一個子網路。
 1. 在 [ **預備位置**] 中，指定 VM 的儲存體帳戶。 [深入了解](#storage-accounts)。
 
-    ![還原組態精靈](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
+    ![還原設定向導-選擇還原選項](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
 1. 選取 [ **還原** ] 以觸發還原作業。
 

@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: f6085554f64c71c66587587ee03a58ee73c6639a
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 104fb177a1379d5a09dc54cf6f78c401744d697f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761758"
+ms.locfileid: "88763298"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -44,7 +44,7 @@ ms.locfileid: "88761758"
 錯誤碼： VMRestorePointInternalError
 
 如果備份時， **事件檢視器的應用程式記錄** 檔會顯示訊息錯誤的 **應用程式名稱： IaaSBcdrExtension.exe** 接著確認 VM 中設定的防毒軟體會限制備份延伸模組的執行。
-若要解決此問題，請在防毒軟體設定中排除下列目錄，然後重試備份作業。
+若要解決此問題，請將下列目錄排除在防毒軟體設定中，然後重試備份作業。
 
 * `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 * `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
@@ -90,11 +90,11 @@ ms.locfileid: "88761758"
 
 * 嘗試重新啟動/重新啟動 Windows 服務 **COM+ System Application** (從提高權限的命令提示字元 **- net start COMSysApp**)。
 * 確定 **分散式交易協調器**服務正在以**網路服務**帳戶的身分執行。 如果不是，請將其變更為以**網路服務** 帳戶的身分執行，然後重新啟動 **COM+ 系統應用程式**。
-* 如果無法重新啟動服務，請遵循下列步驟來重新安裝**分散式交易協調器**服務：
+* 如果無法重新開機服務，請遵循下列步驟來重新安裝 **分散式交易協調器** 服務：
   * 停止 MSDTC 服務
   * 開啟命令提示字元 (cmd)
-  * 執行命令 "msdtc -uninstall"
-  * 執行命令 "msdtc -install"
+  * 執行命令`msdtc -uninstall`
+  * 執行命令`msdtc -install`
   * 啟動 MSDTC 服務
 * 啟動 Windows 服務 **COM+ System Application**。 **COM+ System Application** 啟動後，請從 Azure 入口網站觸發備份作業。</ol>
 
@@ -165,7 +165,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 錯誤碼：ExtensionFailedSnapshotLimitReachedError  <br/>
 錯誤訊息：快照集作業失敗，因為部分連結的磁碟已超出快照集限制
 
-快照集作業失敗，因為部分連結的磁碟已超出快照集限制。 請完成下列疑難排解步驟，然後重試作業。
+快照集作業失敗，因為部分連結的磁碟已超出快照集限制。 請完成下列疑難排解步驟，然後重試此操作。
 
 * 刪除不需要的磁片 blob 快照集。 請小心不要刪除磁碟 blob，只須刪除快照集 blob。
 * 如果已在 VM 磁碟儲存體帳戶上啟用虛刪除，請設定虛刪除保留，讓現有的快照集小於任何時間點所允許的最大值。
@@ -183,7 +183,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 **步驟 1**：透過主機建立快照集
 
-從提升權限的 (系統管理) 命令提示字元中，執行下列命令：
+從提高許可權的 (系統管理員) 命令提示字元中，執行下列命令：
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f

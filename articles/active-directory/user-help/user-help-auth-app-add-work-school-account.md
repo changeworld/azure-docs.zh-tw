@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8f084057c8bc2d0be1e04dc1821378c9733cc050
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e003c45aa1e7d75b709b7fbf99532fb1302fcbb9
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741546"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797644"
 ---
 # <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>新增公司或學校帳戶至 Microsoft Authenticator 應用程式
 
@@ -30,7 +30,7 @@ ms.locfileid: "83741546"
 1. 在您的電腦上，移至[其他安全性驗證](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1)頁面。
 
     >[!Note]
-    >如果您未看到 [其他安全性驗證] 頁面，有可能是您的系統管理員已開啟安全性資訊 (預覽) 體驗。 若是如此，您即應依照[將安全性資訊設定為使用驗證器應用程式](security-info-setup-auth-app.md)一節中的指示操作。 若非如此，您必須連絡組織的技術支援人員以尋求協助。 如需關於安全性資訊的詳細資訊，請參閱[安全性資訊 (預覽) 概觀](user-help-security-info-overview.md)。
+    >如果您未看到 [其他安全性驗證] 頁面，有可能是您的系統管理員已開啟安全性資訊 (預覽) 體驗。 若是如此，您即應依照[將安全性資訊設定為使用驗證器應用程式](security-info-setup-auth-app.md)一節中的指示操作。 若非如此，您必須連絡組織的技術支援人員以尋求協助。 如需關於安全性資訊的詳細資訊，請參閱[安全性資訊 (預覽) 概觀](./security-info-setup-signin.md)。
 
 2. 核取 [驗證器應用程式] 旁的方塊，然後選取 [設定]。
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: rosouz
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b13585b4a839bfcf6c0645c911e98d1f1885f3ca
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b5bf7cc74a5444e5f51aaddb1d088f6b0c1e52a8
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036703"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798885"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB 適用於 MongoDB 的 API 中的變更資料流
 
@@ -21,26 +21,6 @@ Azure Cosmos DB 適用於 MongoDB 的 API 中的[變更摘要](change-feed.md)�
 
 > [!NOTE]
 > 若要使用變更資料流，請使用 Azure Cosmos DB 適用於 MongoDB 的 API 的 3.6 版或更新版本。 如果您針對較舊版本執行變更資料流範例，可能會看見 `Unrecognized pipeline stage name: $changeStream` 錯誤。
-
-## <a name="current-limitations"></a>目前的限制
-
-使用變更資料流時有下列限制︰
-
-* 輸出文件中尚未支援 `operationType` 和 `updateDescription` 屬性。
-* 目前支援 `insert`、`update` 及 `replace` 作業類型。 
-* 尚未支援刪除作業或其他事件。
-
-基於這些限制，需要 $match 階段、$project 階段，以及 fullDocument 選項，如先前範例所示。
-
-和 Azure Cosmos DB 的 SQL API 中的變更摘要不同，並沒有個別的[變更摘要處理器程式庫](change-feed-processor.md)來取用變更資料流或是需要租用容器。 目前並沒有支援使用 [Azure Functions 觸發程序](change-feed-functions.md)來處理變更資料流。
-
-## <a name="error-handling"></a>錯誤處理
-
-使用變更資料流時，支援下列錯誤碼和訊息：
-
-* **HTTP 錯誤碼 16500** - 當系統對變更資料流進行節流時，其會傳回空白頁面。
-
-* **NamespaceNotFound (OperationType 失效)** - 如果您在不存在的集合上，或是在集合已卸除時執行變更資料流，系統便會傳回 `NamespaceNotFound` 錯誤。 因為 `operationType` 屬性無法在輸出文件中傳回，系統不會傳回 `operationType Invalidate` 錯誤，而是會改為傳回 `NamespaceNotFound` 錯誤。
 
 ## <a name="examples"></a>範例
 
@@ -86,7 +66,7 @@ enumerator.Dispose();
 
 # <a name="java"></a>[Java](#tab/java)
 
-下列範例顯示如何在 JAVA 中使用變更資料流程功能，如需完整範例，請參閱此[GitHub](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-changestream/blob/master/mongostream/src/main/java/com/azure/cosmos/mongostream/App.java)存放庫。 這個範例也會示範如何使用 `resumeAfter` 方法來搜尋上次讀取的所有變更。 
+下列範例示範如何在 JAVA 中使用變更資料流程功能。如需完整的範例，請參閱此 [GitHub](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-changestream/blob/master/mongostream/src/main/java/com/azure/cosmos/mongostream/App.java)存放庫。 此範例也會示範如何使用 `resumeAfter` 方法來搜尋上次讀取的所有變更。 
 
 ```java
 Bson match = Aggregates.match(Filters.in("operationType", asList("update", "replace", "insert")));
@@ -156,15 +136,17 @@ var cursor = db.coll.watch(
 使用變更資料流時有下列限制︰
 
 * 輸出文件中尚未支援 `operationType` 和 `updateDescription` 屬性。
-* 目前支援 `insert`、`update` 及 `replace` 作業類型。 尚未支援刪除作業或其他事件。
+* 目前支援 `insert`、`update` 及 `replace` 作業類型。 但是，尚未支援刪除作業或其他事件。
 
 基於這些限制，需要 $match 階段、$project 階段，以及 fullDocument 選項，如先前範例所示。
+
+和 Azure Cosmos DB 的 SQL API 中的變更摘要不同，並沒有個別的[變更摘要處理器程式庫](change-feed-processor.md)來取用變更資料流或是需要租用容器。 目前並沒有支援使用 [Azure Functions 觸發程序](change-feed-functions.md)來處理變更資料流。
 
 ## <a name="error-handling"></a>錯誤處理
 
 使用變更資料流時，支援下列錯誤碼和訊息：
 
-* **HTTP 錯誤碼 429** - 當系統對變更資料流進行節流時，其會傳回空白頁面。
+* **HTTP 錯誤碼 16500** - 當系統對變更資料流進行節流時，其會傳回空白頁面。
 
 * **NamespaceNotFound (OperationType 失效)** - 如果您在不存在的集合上，或是在集合已卸除時執行變更資料流，系統便會傳回 `NamespaceNotFound` 錯誤。 因為 `operationType` 屬性無法在輸出文件中傳回，系統不會傳回 `operationType Invalidate` 錯誤，而是會改為傳回 `NamespaceNotFound` 錯誤。
 

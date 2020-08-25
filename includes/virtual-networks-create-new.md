@@ -9,10 +9,10 @@ ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
 ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78244959"
 ---
 ## <a name="create-the-virtual-network"></a>建立虛擬網路
@@ -27,7 +27,7 @@ ms.locfileid: "78244959"
     |------------------|-----------------------------------------------------------------|
     | **專案詳細資料**  |                                                                 |
     | 訂用帳戶     | 選取您的 Azure 訂用帳戶                                  |
-    | 資源群組   | 選取 [新建]  ，輸入 **\<resource-group-name>** ，然後選取 [確定]，或根據參數選取現有的 **\<resource-group-name>** 。 |
+    | 資源群組   | 選取 [新建]，輸入 **\<resource-group-name>** ，然後選取 [確定]，或根據參數選取現有的 **\<resource-group-name>** 。 |
     | **執行個體詳細資料** |                                                                 |
     | 名稱             | 輸入 **\<virtual-network-name>**                                    |
     | 區域           | 選取 **\<region-name>** |

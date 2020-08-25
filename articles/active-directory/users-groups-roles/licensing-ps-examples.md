@@ -1,6 +1,6 @@
 ---
-title: 群組授權的 PowerShell 和圖形範例-Azure AD |Microsoft Docs
-description: Azure Active Directory 以群組為基礎之授權的 PowerShell + Graph 範例和案例
+title: 適用于群組授權的 PowerShell 和圖形範例-Azure AD |Microsoft Docs
+description: Azure Active Directory 以群組為基礎之授權的 PowerShell + 圖形範例和案例
 services: active-directory
 keywords: Azure AD 授權
 documentationcenter: ''
@@ -14,22 +14,22 @@ ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb464f758aca33e0b6547f69e2a9cc842582ea3f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 230ccb3d10c7ba6f3abcac9d83309fd7fa3c5c3f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025212"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797678"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中以群組為基礎之授權的 PowerShell 和圖形範例
 
-以群組為基礎之授權的完整功能可透過[Azure 入口網站](https://portal.azure.com)取得，而目前的 PowerShell 和 Microsoft Graph 支援僅限於唯讀作業。 不過，還是有一些工作可以使用現有的 [MSOnline PowerShell Cmdlet](/powershell/module/msonline) 和 Microsoft Graph 來執行。 本文件會提供可行功能的範例。
+您可以透過 [Azure 入口網站](https://portal.azure.com)取得群組型授權的完整功能，而且目前的 PowerShell 和 Microsoft Graph 支援僅限於唯讀作業。 不過，還是有一些工作可以使用現有的 [MSOnline PowerShell Cmdlet](/powershell/module/msonline) 和 Microsoft Graph 來執行。 本文件會提供可行功能的範例。
 
 > [!NOTE]
-> 開始執行 Cmdlet 之前，請先確定您已先連線到您的組織，方法是執行 `Connect-MsolService`   Cmdlet。
+> 開始執行 Cmdlet 之前，請先確定您是透過執行 Cmdlet，先連接到您的組織 `Connect-MsolService`   。
 
 > [!WARNING]
-> 此程式碼是基於示範目的而提供的範例。 如果您想要在您的環境中使用它，請考慮先在小規模或個別的測試組織中進行測試。 您可能需要調整程式碼以符合您環境的特定需求。
+> 此程式碼是基於示範目的而提供的範例。 如果您想要在您的環境中使用它，請考慮在小規模或個別的測試組織中先測試它。 您可能需要調整程式碼以符合您環境的特定需求。
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>檢視指派給群組的產品授權
 
@@ -50,7 +50,7 @@ EMSPREMIUM
 > [!NOTE]
 > 此資料只會列出產品 (SKU) 資訊。 您無法列出授權中已停用的服務方案。
 
-使用下列範例，從 Microsoft Graph 取得相同的資料。
+使用下列範例來取得 Microsoft Graph 中的相同資料。
 
 ```
 GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41?$select=assignedLicenses
@@ -256,7 +256,7 @@ HTTP/1.1 200 OK
 下列指令碼可用來取得具有一或多個群組之授權錯誤的所有使用者。 此指令碼會將每位使用者的每個授權錯誤各列印在一個資料列中，以方便您清楚識別每個錯誤的來源。
 
 > [!NOTE]
-> 此腳本會列舉組織中的所有使用者，這對大型組織而言可能不是最理想的。
+> 此腳本會列舉組織中的所有使用者，對於大型組織而言可能不是最佳的。
 
 ```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
@@ -364,7 +364,7 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-此腳本會使用 SKU 識別碼做為輸入，在組織中的每個使用者上執行這些函式，在此範例中，我們對*Enterprise Mobility + Security*的授權感興趣，在我們的組織中是以 ID *contoso： EMS*來表示：
+此腳本會在組織中的每個使用者上執行這些函式，並使用 SKU 識別碼作為輸入-在此範例中，我們有興趣 *Enterprise Mobility + Security*的授權，在我們的組織中是以 ID *contoso： EMS*表示：
 
 ```powershell
 #the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your organization
@@ -388,7 +388,7 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 240622ac-b9b8-4d50-94e2-dad19a3bf4b5 contoso:EMS             True              True
 ```
 
-Graph 並沒有直接顯示結果的方式，但可以從這個 API 看到它：
+Graph 沒有直接顯示結果的方式，但您可以從這個 API 看到它：
 
 ```powershell
 GET https://graph.microsoft.com/v1.0/users/e61ff361-5baf-41f0-b2fd-380a6a5e406a?$select=licenseAssignmentStates
@@ -445,7 +445,7 @@ HTTP/1.1 200 OK
 
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>移除具有群組授權之使用者的直接授權
 
-此指令碼的目的，是要為已從群組繼承了相同授權的使用者，移除不必要的直接授權；例如，在[轉換為群組型授權](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal)的過程中進行此操作。
+此指令碼的目的，是要為已從群組繼承了相同授權的使用者，移除不必要的直接授權；例如，在[轉換為群組型授權](./licensing-groups-migrate-users.md)的過程中進行此操作。
 > [!NOTE]
 > 請務必先驗證，要移除的直接授權所啟用的服務功能，沒有比繼承的授權所啟用的功能多。 否則，移除直接授權可能會停用使用者對服務和資料的存取權。 目前無法透過 PowerShell 來檢查哪些服務是透過繼承授權來啟用，哪些則是透過直接授權來啟用。 在指令碼中，我們會指定已知從群組所繼承而來的最低層級服務，然後就此進行檢查，以確定使用者不會意外失去服務的存取權。
 
@@ -617,9 +617,9 @@ UserId                               OperationResult
 aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.
 ```
 > [!NOTE]
-> 在 `$skuId` 執行上述腳本之前，請先針對您的測試環境更新變數的值，並將其設為 `$groupId`   目標以移除直接授權。 
+> 執行上述腳本之前，請先根據您的測試環境，更新變數的值並將其設為 `$skuId` `$groupId`   目標，以移除直接授權。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解透過群組管理授權的功能集，請參閱下列文章：
 

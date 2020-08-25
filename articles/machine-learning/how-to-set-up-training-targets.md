@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ef9c578a936160379e1daabbe62b3c3fa5bdd172
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: ced05e8ccd04775df189e9dff1af1fdaa990f3b2
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723872"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751681"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>設定及使用計算目標來將模型定型 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -149,17 +149,101 @@ Azure Machine Learning Compute 可以跨回合重複使用。 計算可與工作
     az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority
     ```
 
+ ### <a name="set-up-managed-identity"></a><a id="managed-identity"></a> 設定受控識別
+
+ Azure Machine Learning 計算叢集也支援 [受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 識別，以驗證對 Azure 資源的存取，而不在您的程式碼中包含認證。 受控身分識別有兩種：
+
+* **系統指派的受控識別**會直接在 Azure Machine Learning 計算叢集上啟用。 系統指派的身分識別生命週期會直接系結至計算叢集。 如果刪除計算叢集，Azure 會自動清除 Azure AD 中的認證和身分識別。
+* **使用者指派的受控識別**是透過 Azure 受控識別服務提供的獨立 Azure 資源。 您可以將使用者指派的受控識別指派給多個資源，而且只要您需要，它就會持續保存。
+
+使用下列任何一種方式來指定計算叢集的受控識別：
+    
+* 在 studio 中，當計算叢集建立或編輯計算叢集詳細資料時，切換會 **指派受控識別** ，並指定系統指派的身分識別或使用者指派的身分識別。
+    
+* 使用 Python SDK，在布建設定 `identity_type` 中設定屬性。  
+    
+    ```python
+    # configure cluster with a system-assigned managed identity
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                            max_nodes=5,
+                                                            identity_type="SystemAssigned",
+                                                            )
+
+    # configure cluster with a user-assigned managed identity
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                            max_nodes=5,
+                                                            identity_type="UserAssigned",
+                                                            identity_id=['/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'])
+
+    cpu_cluster_name = "cpu-cluster"
+    cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
+    ```
+
+* 使用 Python SDK，在布建 `identity_type` 設定 `identity_id` 中) 屬性建立使用者指派的受控識別時，設定和 (。  
+    
+    ```python
+    # add a system-assigned managed identity
+    cpu_cluster.add_identity(identity_type="SystemAssigned")
+
+    # add a user-assigned managed identity
+    cpu_cluster.add_identity(identity_type="UserAssigned", 
+                                identity_id=['/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'])
+    ```
+    
+* 使用 CLI，在叢集建立 `assign-identity` 期間設定屬性：
+    
+    ```azurecli
+    # create a cluster with a user-assigned managed identity
+    az ml computetarget create amlcompute --name cpu-cluster --vm-size Standard_NC6 --max-nodes 5 --assign-identity '/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'
+
+    # create a cluster with a system-managed identity
+    az ml computetarget create amlcompute --name cpu-cluster --vm-size Standard_NC6 --max-nodes 5 --assign-identity '[system]'
+
+* Using the CLI, execute the following commands to assign a managed identity on an existing cluster:
+    
+    ```azurecli
+    # add a user-assigned managed identity
+    az ml computetarget amlcompute identity assign --name cpu-cluster '/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'
+
+    # add a system-assigned managed identity
+    az ml computetarget amlcompute identity assign --name cpu-cluster '[system]'
+
+> [!NOTE]
+> Azure Machine Learning compute clusters support only **one system-assigned identity** or **multiple user-assigned identities**, not both concurrently.
+> 
+> Additionally, you can assign only one managed identity from the studio.
+
+#### Managed identity usage
+
+AML defines the **default managed identity** as the system-assigned managed identity or the first user-assigned managed identity.
+
+During a run there are two applications of an identity:
+1. The system uses an identity to setup the user's storage mounts, container registry, and datastores.
+    * In this case, the system will use the default managed identity.
+
+1. The user applies an identity to access resources from within the code for a submitted run
+    
+    * In this case, the user must provide the *client_id* corresponding to the managed identity they want to use to retrieve a credential. 
+    * Alternatively, AML exposes the user-assigned identity's client id through the *DEFAULT_IDENTITY_CLIENT_ID* environment variable.
+    
+    For example, to retrieve a token for a datastore with the default managed identity:
+    
+    ```python
+    client_id = os.environ.get('DEFAULT_IDENTITY_CLIENT_ID')
+    credential = ManagedIdentityCredential(client_id=client_id)
+    token = credential.get_token('https://storage.azure.com/')
 
 
-### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure Machine Learning 計算執行個體
 
-[Azure Machine Learning 計算實例](concept-compute-instance.md) 是一種受控的計算基礎結構，可讓您輕鬆地建立單一 VM。 計算是在您的工作區區域內建立，但不同于計算叢集，無法與您工作區中的其他使用者共用實例。 此外，實例不會自動縮小。  您必須停止資源以防止持續收費。
+### <a id="instance"></a>Azure Machine Learning compute instance
 
-計算實例可以平行執行多個作業，並具有作業佇列。 
+[Azure Machine Learning compute instance](concept-compute-instance.md) is a managed-compute infrastructure that allows you to easily create a single VM. The compute is created within your workspace region, but unlike a compute cluster, an instance cannot be shared with other users in your workspace. Also the instance does not automatically scale down.  You must stop the resource to prevent ongoing charges.
 
-計算實例可以在 [虛擬網路環境](how-to-enable-virtual-network.md#compute-instance)中安全地執行工作，而不需要企業開啟 SSH 埠。 作業會在容器化環境中執行，並將您的模型相依性封裝在 Docker 容器中。 
+A compute instance can run multiple jobs in parallel and has a job queue. 
 
-1. **建立並連結**： 
+Compute instances can run jobs securely in a [virtual network environment](how-to-enable-virtual-network.md#compute-instance), without requiring enterprises to open up SSH ports. The job executes in a containerized environment and packages your model dependencies in a Docker container. 
+
+1. **Create and attach**: 
     
     ```python
     import datetime

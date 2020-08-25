@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/14/2020
+ms.date: 08/21/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4a204be0730a0ce4edcd2e343364ed8fc724430e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: cdee82ddae7f6edf43765063bb610b743dbf0121
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88655311"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88809813"
 ---
 啟用共用磁片只適用于磁片類型的子集。 目前只有 ultra 磁片和 premium Ssd 可以啟用共用磁片。 啟用共用磁片的每個受控磁片受限於下列限制，並依磁片類型組織：
 
@@ -30,7 +30,7 @@ Ultra 磁片有各自不同的限制清單，與共享磁片無關。 如需 ult
 
 ### <a name="premium-ssds"></a>進階 SSD
 
-- 目前只有美國中西部區域支援。
+- 目前只有在 [區域子集](#regional-availability)中才支援。
 - 目前僅限 Azure Resource Manager 或 SDK 支援。 
 - 只能在資料磁片（而不是 OS 磁片）上啟用。
 - 的 premium Ssd 無法使用**ReadOnly**主機快取 `maxShares>1` 。
@@ -39,5 +39,22 @@ Ultra 磁片有各自不同的限制清單，與共享磁片無關。 如需 ult
 - 使用 [鄰近位置群組 (PPG) ](../articles/virtual-machines/windows/proximity-placement-groups.md)時，共用磁片的所有虛擬機器都必須是相同 PPG 的一部分。
 - 只有基本磁碟可以與某些版本的 Windows Server 容錯移轉叢集搭配使用，如需詳細資訊，請參閱 [容錯移轉叢集硬體需求和存放裝置選項](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)。
 - 尚未提供 Azure 備份與 Azure Site Recovery 支援。
+
+#### <a name="regional-availability"></a>區域可用性
+
+只有下欄區域支援共用 premium Ssd：
+
+- 美國東部
+- 美國東部 2
+- 美國西部
+- 美國西部 2
+- 美國中西部
+- 美國中南部
+- 美國中部
+- 南韓中部
+- 加拿大中部
+- 加拿大東部
+- US Gov 維吉尼亞州
+- US Gov 亞利桑那州
 
 如果您想要嘗試共用 premium Ssd，請 [註冊以取得存取權](https://aka.ms/AzureSharedDiskGASignUp)。

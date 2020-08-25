@@ -11,21 +11,21 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b83cdf0b069eac2e46cfdd54edc11a1aa5a41075
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266112"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799038"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>使用安全性資訊重設公司或學校密碼
 
-如果您忘記公司或學校密碼、組織不曾提供密碼給您，或您的帳戶遭鎖定，您可以使用安全性資訊和行動裝置來重設公司或學校密碼。 管理員必須開啟此功能，您才能夠設定資訊和[重設您自己的密碼](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register)。
+如果您忘記公司或學校密碼、組織不曾提供密碼給您，或您的帳戶遭鎖定，您可以使用安全性資訊和行動裝置來重設公司或學校密碼。 管理員必須開啟此功能，您才能夠設定資訊和[重設您自己的密碼](./active-directory-passwords-reset-register.md)。
 
-如果您知道您的密碼，而且想要加以變更，請參閱本文的[變更您的密碼步驟](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password)一節。
+如果您知道您的密碼，並想要加以變更，請參閱本文的 [變更您的密碼步驟](#how-to-change-your-password) 一節。
 
 >[!Important]
->本文以嘗試重設忘記或未知公司或學校帳戶密碼的使用者為對象。 如果您是管理員，而且想知道如何為員工或其他使用者開啟自助式密碼重設，請參閱[部署 Azure AD 自助式密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)及其他文章。
+>本文以嘗試重設忘記或未知公司或學校帳戶密碼的使用者為對象。 如果您是管理員，而且想知道如何為員工或其他使用者開啟自助式密碼重設，請參閱[部署 Azure AD 自助式密碼重設](../authentication/howto-sspr-deployment.md)及其他文章。
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>如何將公司或學校帳戶的密碼重設或解除鎖定
 
@@ -103,7 +103,7 @@ ms.locfileid: "84266112"
 
      如果您仍無法存取帳戶，您應該連絡貴組織的系統管理員以獲得更多協助。
 
-重設密碼之後，您可能會收到一封來自「Microsoft 代表您」之類帳戶的確認電子郵件 \<*your_organization*> 。 如果您收到類似的電子郵件，但您最近並未重設密碼，則您必須立即連絡貴組織的系統管理員。
+重設密碼之後，您可能會收到來自「Microsoft 代表」等帳戶的確認電子郵件 \<*your_organization*> 。 如果您收到類似的電子郵件，但您最近並未重設密碼，則您必須立即連絡貴組織的系統管理員。
 
 ## <a name="how-to-change-your-password"></a>如何變更密碼
 
@@ -164,6 +164,6 @@ ms.locfileid: "84266112"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解[安全性資訊 (預覽) 概觀](user-help-security-info-overview.md)一文中的安全性資訊。
+- 了解[安全性資訊 (預覽) 概觀](./security-info-setup-signin.md)一文中的安全性資訊。
 
 - 如果您嘗試重新登入個人帳戶 (例如 Xbox、hotmail.com 或 outlook.com)，請試試[當您無法登入您的 Microsoft 帳戶時](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)一文中的建議。

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: fc95e988b3f89402967cdbedd06c4b945a99f99a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: HT
+ms.openlocfilehash: e5b07f8f7ae766d110c87a495a3e1623b815e526
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266248"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795978"
 ---
 # <a name="what-is-the-additional-verification-page"></a>什麼是額外驗證頁面？
 
@@ -33,7 +33,7 @@ ms.locfileid: "84266248"
 雙重要素驗證可協助防止惡意駭客偽裝成您的身分。 即使他們有您的密碼，也不太可能有您的裝置。
 
 >[!Important]
->如果您是系統管理員，且想要了解如何為您的員工或其他使用者開啟雙因素驗證，請參閱 [Azure Active Directory 驗證文件](https://docs.microsoft.com/azure/active-directory/authentication/)。 本文適用於嘗試使用公司或學校帳戶 (例如 alain@contoso.com) 進行雙重要素驗證的使用者。
+>如果您是系統管理員，且想要了解如何為您的員工或其他使用者開啟雙因素驗證，請參閱 [Azure Active Directory 驗證文件](../authentication/index.yml)。 本文適用於嘗試使用公司或學校帳戶 (例如 alain@contoso.com) 進行雙重要素驗證的使用者。
 
 ## <a name="who-decides-if-you-use-this-feature"></a>由誰決定是否使用這項功能？
 
