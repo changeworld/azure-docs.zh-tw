@@ -1,68 +1,70 @@
 ---
 title: IoT Edge 配額的即時影片分析-Azure
-description: 本文說明有關 IoT Edge 配額和限制的即時影片分析。
+description: 本文說明 IoT Edge 配額和限制的即時影片分析。
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 90141fa850c9ab3e3abbea15001249da0736ac45
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32a24079b36655bfdacd25b07d419009f5012507
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091805"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750235"
 ---
 # <a name="quotas-and-limitations"></a>配額和限制
 
-本文列舉 IoT Edge 模組上即時影片分析的配額和限制。
+本文列舉 IoT Edge 課程模組上即時影片分析的配額和限制。
 
-## <a name="maximum-period-of-disconnected-use"></a>中斷連線使用的最長期間
+## <a name="maximum-period-of-disconnected-use"></a>中斷使用的最長期間
 
-邊緣模組可以承受暫時遺失網路連線。 如果模組保持中斷連接超過36小時，它會停用任何正在執行的圖形實例，而進一步的直接方法呼叫將會遭到封鎖。
+Edge 模組可能會導致網路連線暫時中斷。 如果模組保持中斷連線超過36小時，則會停用任何正在執行的圖形實例，並會封鎖進一步的直接方法呼叫。
 
-若要將 edge 模組恢復為操作狀態，您必須還原網路連線，而且模組必須能夠成功與 Azure 媒體服務帳戶進行通訊。
+若要讓 edge 模組恢復運作狀態，您必須還原網路連線，而且模組必須能夠成功與 Azure 媒體服務帳戶進行通訊。
 
 ## <a name="maximum-number-of-graph-instances"></a>圖形實例的最大數目
 
-每個模組最多可以有1000個圖形實例（透過 GraphInstanceSet 建立）。
+每個模組最多可有1000個圖形實例， (透過 GraphInstanceSet) 建立。
 
 ## <a name="maximum-number-of-graph-topologies"></a>圖形拓撲的最大數目
 
-每個模組最多可以有50個圖形拓撲（透過 GraphTopologySet 建立）。
+每個模組最多可有50個圖表拓撲 (透過 GraphTopologySet) 建立。
 
-## <a name="limitations-on-graph-topologies-at-preview"></a>預覽時的圖形拓撲限制
+## <a name="limitations-on-graph-topologies-at-preview"></a>預覽的圖表拓撲限制
 
-在預覽版本中，不同節點的限制可以在 media graph 拓撲中連接在一起。
+在預覽版本中，您可以在 media graph 拓撲中將不同節點的限制連接在一起。
 
 * RTSP 來源
    * 每個圖形拓撲只允許一個 RTSP 來源。
 * 畫面播放速率篩選處理器
    * 必須立即從 RTSP 來源或動作偵測處理器下游。
-   * 無法用於 HTTP 擴充處理器的下游。
+   * 無法使用於 HTTP 或 gRPC 延伸模組處理器下游。
    * 無法從動作偵測處理器進行上游。
 * HTTP 擴充處理器
-   * 每個圖形拓撲最多隻能有一個此類處理器。
+   * 每個圖形拓撲最多隻能有一個這類處理器。
+* gRPC 擴充處理器
+   * 每個圖形拓撲最多隻能有一個這類處理器。
 * 動作偵測處理器
-   * 必須立即從 RTSP 來源進行下游。
-   * 每個圖形拓撲最多隻能有一個此類處理器。
-   * 無法用於 HTTP 擴充處理器的下游。
+   * 必須立即從 RTSP 來源下游。
+   * 每個圖形拓撲最多隻能有一個這類處理器。
+   * 無法使用於 HTTP 或 gRPC 擴充處理器的下游。
 * 信號閘道處理器
-   * 必須立即從 RTSP 來源進行下游。
+   * 必須立即從 RTSP 來源下游。
 * 資產接收 
    * 必須立即從 RTSP 來源或信號閘道處理器下游。
-* 檔接收
-   * 必須是來自信號閘道處理器的立即下游。
-   * 無法立即成為 HTTP 延伸模組處理器或動作偵測處理器的下游
+* 檔案接收
+   * 必須立即從信號閘道處理器立即下游。
+   * 無法立即成為 HTTP 或 gRPC 擴充處理器或動作偵測處理器的下游
 * IoT 中樞接收
-   * 不能是 IoT 中樞來源的立即下游。
+   * 無法立即成為 IoT 中樞來源的下游。
 
-如果使用 [動作偵測] 和 [篩選速率] 處理器節點，它們應該位於通向 RTSP 來源節點的相同節點鏈中。
+如果使用「動作偵測」和「篩選率」處理器節點，則這些節點應位於導向至 RTSP 來源節點的相同節點鏈中。
 
-## <a name="limitations-on-media-service-operations-at-preview"></a>預覽時的媒體服務作業限制
+## <a name="limitations-on-media-service-operations-at-preview"></a>預覽版媒體服務作業的限制
 
-在預覽版本期間，IoT Edge 上的即時影片分析不支援下列各項：
+在預覽版本時，IoT Edge 上的即時影片分析不支援下列各項：
 
-* 能夠將媒體服務帳戶從一個訂用帳戶遷移至另一個，而不會中斷。
-* 能夠以媒體服務帳戶使用一個以上的儲存體帳戶。
-* 不需要重新開機，就能動態變更模組所需屬性中的服務主體資訊。
+* 將媒體服務帳戶從一個訂用帳戶遷移至另一個訂用帳戶，而不會中斷。
+* 使用多個儲存體帳戶搭配媒體服務帳戶的能力。
+* 能夠以動態方式變更模組所需屬性中的服務主體資訊，而不需要重新開機。
 
 ## <a name="next-steps"></a>後續步驟
 

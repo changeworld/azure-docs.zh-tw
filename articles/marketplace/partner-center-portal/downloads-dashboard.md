@@ -1,31 +1,55 @@
 ---
-title: 在合作夥伴中心的 Microsoft 商業 marketplace 分析下載儀表板
-description: 瞭解如何存取您 marketplace 供應專案的下載要求。
+title: 合作夥伴中心 Azure Marketplace 上的 Microsoft 商業 marketplace 分析下載儀表板
+description: 瞭解如何存取 marketplace 供應專案的下載要求。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
+ms.topic: article
+ms.date: 08/21/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: 5b688d64641f6dd8779d699bcd1d646e40b19b87
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: f426b0466046b366655c183a9372b2468937565b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245667"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750254"
 ---
-# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>商業市集分析中的下載儀表板
+# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>下載商業 marketplace 分析中的儀表板
 
-本文提供合作夥伴中心下載儀表板的相關資訊。 此儀表板會顯示您過去30天內的下載要求清單。
+本文提供合作夥伴中心中下載儀表板的相關資訊。 此儀表板會顯示過去30天內的下載要求清單。
 
-若要存取 [下載] 儀表板，請開啟商業 Marketplace 下的 [ **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** ] 儀表板。
+若要存取下載儀表板，請開啟商業 marketplace 下的 [ **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** ] 儀表板。
 
 >[!NOTE]
 > 如需分析術語的詳細定義，請參閱[商業市集分析的常見問題集與術語](./faq-terminology.md)。
 
 ## <a name="downloads-dashboard"></a>下載儀表板
 
-[**分析**] 功能表的 [**下載**] 儀表板會顯示包含超過1000個客戶或訂單資料列之任何下載的要求。 這些資料下載將會提供30天的時間，然後將其移除。
+[**分析**] 功能表的 [**下載**] 儀表板會顯示任何下載的要求，其中包含超過1000列的客戶或訂單資料。
+
+當您要求下載的資料超過1000個數據列時，您會收到快顯通知，其中包含 **下載** 儀表板的連結。 這些資料下載將提供30天的時間，然後移除。
+
+## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>商業 marketplace 分析報表的存留期匯出
+
+在 [下載] 頁面上，終端使用者可以執行下列動作：
+
+- 採用 csv 和 tsv 格式的商用 marketplace 分析報告的存留期匯出。
+- 匯出任何日期範圍的商業 marketplace 分析報表。
+- 針對6或12個月的持續時間匯出商用 marketplace 分析報表。
+
+分析報告的存留期匯出功能支援：
+
+| 報表 | 存留期匯出 | 任何依據日期的持續時間 |
+| - | - | - |
+| 訂單 | ![綠色的核取記號](media/check-green-yes.png) | ![綠色的核取記號](media/check-green-yes.png) |
+| 客戶 | ![綠色的核取記號](media/check-green-yes.png) | ![綠色的核取記號](media/check-green-yes.png) |
+| Marketplace 見解 | ![綠色的核取記號](media/check-green-yes.png) | ![綠色的核取記號](media/check-green-yes.png) |
+| 使用方式 | ![黑色 X 標記](media/check-black-no.png) | 最多一年 |
+|
+
+使用者可以從 [下載] 區段排程非同步報表下載：
+
+[![從 [下載] 區段排程非同步下載報表](media/download-reports.png)](media/download-reports.png#lightbox)
 
 ## <a name="next-steps"></a>後續步驟
 

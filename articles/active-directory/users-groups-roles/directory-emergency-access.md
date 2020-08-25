@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9d4f293f3835e26def97aa2f52dd0c42d9137c7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a98ff68500593c644e6f0fa5eacb338ab90f5604
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421717"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795397"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理緊急存取帳戶
 
@@ -44,7 +44,7 @@ ms.locfileid: "87421717"
 設定這些帳戶時，必須符合下列需求：
 
 - 這些緊急存取帳戶不應與組織中的任何個別使用者相關聯。 請確定您的帳戶未連線至任何員工提供的行動電話、會與個別員工一同移動的硬體權杖，或其他員工專屬的認證。 此預防措施適用於需要認證時卻聯絡不到個別員工的狀況。 請務必確保任何已註冊的裝置可處於已知且安全的位置，並有多個方法可與 Azure AD 通訊。
-- 用於緊急存取帳戶的驗證機制應該與您其他管理帳戶 (包括其他緊急存取帳戶) 所使用的驗證機制不同。  例如，如果您的一般管理員登入是透過內部部署 MFA 進行，則 Azure MFA 會是不同的機制。  不過，如果 Azure MFA 是驗證管理帳戶的主要部分，請考慮採用不同的方法，例如，透過[自訂控制](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)對第三方 MFA 提供者使用條件式存取。
+- 用於緊急存取帳戶的驗證機制應該與您其他管理帳戶 (包括其他緊急存取帳戶) 所使用的驗證機制不同。  例如，如果您的一般管理員登入是透過內部部署 MFA 進行，則 Azure MFA 會是不同的機制。  不過，如果 Azure MFA 是驗證管理帳戶的主要部分，請考慮採用不同的方法，例如，透過[自訂控制](../conditional-access/controls.md)對第三方 MFA 提供者使用條件式存取。
 - 裝置或認證不得過期或處於因缺乏使用而自動清除的範圍內。  
 - 您應該為緊急存取帳戶永久保留全域管理員角色指派。 
 
@@ -74,7 +74,7 @@ ms.locfileid: "87421717"
 
 ### <a name="prerequisites"></a>Prerequisites
 
-1. [傳送 Azure AD 登入記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)至 Azure 監視器。
+1. [傳送 Azure AD 登入記錄](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)至 Azure 監視器。
 
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>取得急用帳戶的物件識別碼
 
@@ -156,5 +156,5 @@ ms.locfileid: "87421717"
 - [使用 Azure AD 新增使用者](../fundamentals/add-users-azure-active-directory.md)，並[將新使用者指派至全域管理員角色](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 - 請[註冊 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) (如果您尚未註冊)
 - [如何要求使用者使用雙步驟驗證](../authentication/howto-mfa-userstates.md)
-- 如果您使用 Microsoft 365，請[在 Microsoft 365 中設定全域管理員的額外保護。](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts)
+- 如果您使用 Microsoft 365，請[在 Microsoft 365 中為全域管理員設定額外保護](/office365/enterprise/protect-your-global-administrator-accounts)
 - [啟動全域管理員的存取權檢閱](../privileged-identity-management/pim-how-to-start-security-review.md)，並[將現有的全域管理員轉換為更具體的管理員角色](directory-assign-admin-roles.md)

@@ -10,13 +10,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: f826113abc756654fbf02e7d643b8ac1f9d9f98a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.openlocfilehash: b4cd1fefb728da797d5ff56fe833662f21630c58
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338051"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796403"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure Data Factory 中的連結服務
 
@@ -69,19 +69,19 @@ Data Factory 中的連結服務會以 JSON 格式定義如下：
 屬性 | 描述 | 必要 |
 -------- | ----------- | -------- |
 NAME | 連結服務的名稱。 請參閱 [Azure Data Factory - 命名規則](naming-rules.md)。 |  是 |
-type | 連結服務的類型。 例如：AzureStorage (資料存放區) 或 AzureBatch (計算)。 請參閱 typeProperties 的描述。 | 是 |
-typeProperties | 每個資料存放區和計算的類型屬性都不同。 <br/><br/> 如需支援的資料存放區類型及其類型屬性，請參閱本文章的[資料集類型](concepts-datasets-linked-services.md#dataset-type)表格。 請瀏覽資料存放區連接器的文章，以了解資料存放區特有的類型屬性。 <br/><br/> 如需支援的計算類型與其類型屬性，請參閱[計算連結服務](compute-linked-services.md)。 | 是 |
+type | 連結服務的類型。 例如： AzureBlobStorage (資料存放區) 或 AzureBatch (計算) 。 請參閱 typeProperties 的描述。 | 是 |
+typeProperties | 每個資料存放區和計算的類型屬性都不同。 <br/><br/> 如需支援的資料存放區類型及其類型屬性，請參閱 [連接器總覽](copy-activity-overview.md#supported-data-stores-and-formats) 文章。 請瀏覽資料存放區連接器的文章，以了解資料存放區特有的類型屬性。 <br/><br/> 如需支援的計算類型與其類型屬性，請參閱[計算連結服務](compute-linked-services.md)。 | 是 |
 connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 您可以使用 Azure Integration Runtime 或自我裝載整合執行階段 (如果您的資料存放區位於私人網路中)。 如果未指定，就會使用預設的 Azure Integration Runtime。 | 否
 
 ## <a name="linked-service-example"></a>已連結的服務範例
 
-以下連結服務是 Azure 儲存體連結服務。 請注意，類型已設為 Azure 儲存體。 Azure 儲存體連結服務的類型屬性包含連接字串。 Data Factory 服務會在執行階段使用連接字串來連線至資料存放區。
+下列連結服務是 Azure Blob 儲存體連結服務。 請注意，此類型會設定為 Azure Blob 儲存體。 Azure Blob 儲存體連結服務的類型屬性包含連接字串。 Data Factory 服務會在執行階段使用連接字串來連線至資料存放區。
 
 ```json
 {
-    "name": "AzureStorageLinkedService",
+    "name": "AzureBlobStorageLinkedService",
     "properties": {
-        "type": "AzureStorage",
+        "type": "AzureBlobStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
@@ -95,9 +95,9 @@ connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-in
 
 ## <a name="create-linked-services"></a>建立連結的服務
 
-連結的服務可以透過[管理中樞](author-management-hub.md)和參考它們的任何活動、資料集或資料流程，在 Azure Data Factory UX 中建立。
+您可以透過 [管理中樞](author-management-hub.md) 以及參考這些服務的任何活動、資料集或資料流程，在 Azure Data Factory UX 中建立連結的服務。
 
-您可以使用下列其中一個工具或 Sdk 來建立連結服務： [.NET API](quickstart-create-data-factory-dot-net.md)、 [PowerShell](quickstart-create-data-factory-powershell.md)、 [REST API](quickstart-create-data-factory-rest-api.md)、Azure Resource Manager 範本，以及 Azure 入口網站。
+您可以使用下列其中一個工具或 Sdk 來建立連結服務： [.NET API](quickstart-create-data-factory-dot-net.md)、 [PowerShell](quickstart-create-data-factory-powershell.md)、 [REST API](quickstart-create-data-factory-rest-api.md)、Azure Resource Manager 範本和 Azure 入口網站。
 
 
 ## <a name="data-store-linked-services"></a>資料存放區連結服務
