@@ -1,25 +1,25 @@
 ---
 title: 安裝混合式雲端擴充功能 (HCX)
-description: 為您的 Azure VMware 解決方案 (AVS) 私人雲端設定 VMware 混合式雲端擴充功能 (HCX) 解決方案
+description: 為您的 Azure VMware 解決方案私人雲端設定 VMware 混合式雲端擴充 (HCX) 解決方案
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: 84388c3ec53d9067df2580aabb21ca5885d154b8
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: fb8497af33b364c1d2ab475233bd2a83ef1befad
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904988"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752327"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>安裝適用於 Azure VMware 解決方案的 HCX
 
-在本文中，我們將逐步解說設定 VMWare 混合式雲端擴充功能的程式 (HCX) 解決方案，讓您的 Azure VMWare 解決方案 (AVS) 私用雲端。 HCX 可讓您透過各種內建 HCX 支援的遷移類型，將您的 VMware 工作負載遷移至雲端，以及其他已連線的網站。
+在本文中，我們將逐步解說為您的 Azure VMWare 解決方案私人雲端設定 VMWare 混合式雲端擴充 (HCX) 解決方案的程式。 HCX 可讓您將 VMware 工作負載遷移至雲端，以及透過各種內建 HCX 支援的遷移類型來進行其他已連線的網站。
 
-HCX Advanced （預設安裝）最多可支援三個網站連線 (內部部署或雲端到雲端) 。 如果需要三個以上的網站連線，客戶可以選擇透過支援啟用 HCX Enterprise 附加元件，此功能目前為預覽狀態。 HCX Enterprise 會在正式發行 (GA) 後對客戶收取額外費用，但提供[額外功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)。
+HCX Advanced （預設安裝）最多支援三個網站連線 (內部部署或雲端到雲端) 。 如果需要三個以上的網站連線，客戶可以選擇透過支援啟用 HCX Enterprise 附加元件，此功能目前為預覽狀態。 HCX Enterprise 會在正式發行 (GA) 後對客戶收取額外費用，但提供[額外功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)。
 
 
 [在開始之前](#before-you-begin)，請先仔細檢閱[軟體版本需求](#software-version-requirements)和[先決條件](#prerequisites)。 
 
-然後，我們將逐步解說所有必要的程式，以：
+接著，我們將逐步解說所有必要的程式，如下所示：
 
 > [!div class="checklist"]
 > * 部署內部部署 HCX OVA (連接器) 
@@ -27,20 +27,20 @@ HCX Advanced （預設安裝）最多可支援三個網站連線 (內部部署�
 > * 設定網路上行連結和服務網格
 > * 藉由檢查設備狀態來完成設定
 
-完成安裝之後，您可以遵循本文結尾所提供的建議後續步驟。  
+完成設定之後，您可以遵循本文最後提供的建議後續步驟。  
 
 ## <a name="before-you-begin"></a>開始之前
     
-* 請參閱基本的 AVS 軟體定義資料中心 (SDDC) [教學課程系列](tutorial-network-checklist.md)。
-* 複習並參考[VMWARE HCX 檔](https://docs.vmware.com/en/VMware-HCX/index.html)，包括 HCX 使用者指南。
-* 請參閱[使用 VMWARE HCX 遷移虛擬機器的](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)vmware 檔。
-* （選擇性）查看[VMWARE HCX 部署考慮](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)。
+* 請參閱基本的 Azure VMware 解決方案軟體定義資料中心 (SDDC) [教學課程系列](tutorial-network-checklist.md)。
+* 複習和參考 [VMWARE HCX 檔](https://docs.vmware.com/en/VMware-HCX/index.html) ，包括 HCX 使用者指南。
+* 參閱 [使用 VMWARE HCX 遷移虛擬機器的](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)vmware 檔。
+* （選擇性）查看 [VMWARE HCX 部署考慮](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)。
 * 可選檢閱 HCX 上的相關 VMware 資料，例如 HCX 上 的 VMware vSphere [部落格系列](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html)。 
-* 透過 AVS 支援通道要求 AVS HCX Enterprise 啟用。
+* 透過 Azure VMware 解決方案支援通道，要求 Azure VMware 解決方案 HCX Enterprise 啟用。
 
-當您準備使用 AVS 私用雲端 HCX 解決方案時，針對計算和儲存體資源調整工作負載的大小是必要的規劃步驟。 在初始私用雲端環境規劃過程中，解決調整大小的步驟。 
+當您準備使用 Azure VMware 解決方案私用雲端 HCX 解決方案時，調整工作負載與計算和儲存體資源的大小是個基本的規劃步驟。 在初始私用雲端環境規劃中解決調整大小步驟。 
 
-您也可以在 Azure Migrate 入口網站 (中完成 AVS 評估，以調整工作負載大小 https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) 。
+您也可以在 Azure Migrate 入口網站 (中完成 Azure VMware 解決方案評估，以調整工作負載的大小 https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) 。
 
 ## <a name="software-version-requirements"></a>軟體版本需求
 
@@ -48,46 +48,46 @@ HCX Advanced （預設安裝）最多可支援三個網站連線 (內部部署�
                                                          
 | 元件類型    | 來源環境需求    | 目的地環境需求   |
 | --- | --- | --- |
-| vCenter Server   | 5.1<br/><br/>如果使用 5.5 U1 或更早的版本，請使用獨立 HCX 使用者介面來進行 HCX 作業。  | 6.0 U2 及更高版本   |
+| vCenter Server   | 5.1<br/><br/>如果使用 5.5 U1 或更早版本，請使用獨立 HCX 使用者介面進行 HCX 作業。  | 6.0 U2 及更高版本   |
 | ESXi   | 5.0    | ESXi 6.0 及更高版本   |
-| NSX    | 針對位於來源的邏輯交換器 HCX 網路延伸模組： NSXv 6.2 + 或 NSX-T 2.4 +   | NSXv 6.2+ 或 NSX-T 2.4+<br/><br/>針對 HCX 鄰近性路由： NSXv 6.4 + (鄰近路由不支援使用 NSX-T)  |
-| vCloud Director   | 非必要 - 來源網站沒有與 vCloud Director 的互通性 | 將目的地環境與 Vcloud 進行整合主管整合時，最小值為9.1.0.2。  |
+| NSX    | 適用于來源的邏輯交換器 HCX 網路延伸模組： NSXv 6.2 + 或 NSX-T 2.4 +   | NSXv 6.2+ 或 NSX-T 2.4+<br/><br/>針對 HCX 近接路由： NSXv 6.4 + (不支援使用的相近路由-T)  |
+| vCloud Director   | 非必要 - 來源網站沒有與 vCloud Director 的互通性 | 將目的地環境與 Vcloud 進行整合 Director 整合時，最小值為9.1.0.2。  |
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* ExpressRoute Global 觸及應設定于內部部署和 AVS SDDC ExpressRoute 線路之間。
+* 您應在內部部署與 Azure VMware Solution SDDC ExpressRoute 線路之間設定 ExpressRoute Global 觸及範圍。
 
-* 所有必要的連接埠都應該在內部部署和 AVS SDDC 之間開啟 (請參閱 [VMware HCX 文件](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html))。
+* 所有必要的埠都應該在內部部署和 Azure VMware Solution SDDC 之間開啟 (請參閱 [VMWARE HCX 檔](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html)) 。
 
-* 在內部部署 HCX 管理員的一個 IP 位址，以及至少兩個 IP 位址以進行互連 (IX) 和網路延伸 (NE) 設備。
+* HCX Manager 在內部部署的一個 IP 位址，至少有兩個 IP 位址可供互連 (IX) 和網路延伸 (NE) 設備。
 
-* 內部部署 HCX IX 和 NE 設備應該能夠觸及 vCenter 和 ESXi 基礎結構。
+* 內部部署 HCX IX 和 NE 設備應能觸及 vCenter 和 ESXi 基礎結構。
 
-* 除了在 Azure 入口網站中用於 SDDC 部署的 /22 CIDR 網路位址區塊以外，若要部署 WAN 互連設備，HCX 需要 /29 區塊。 請務必將這項需求納入您的網路規劃。
+* 除了在 Azure 入口網站中用於 SDDC 部署的 /22 CIDR 網路位址區塊以外，若要部署 WAN 互連設備，HCX 需要 /29 區塊。 請務必將這項需求納入您的網路規劃中。
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>部署 VMware HCX OVA 內部部署
 
-1. 登入 AVS SDDC vCenter，然後選取 **HCX**。
+1. 登入 Azure VMware Solution SDDC vCenter，然後選取 [ **HCX**]。
 
-    ![選取 AVS vCenter 中的 HCX](./media/hybrid-cloud-extension-installation/avs-vsphere-client.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/avs-vsphere-client.png" alt-text="登入 Azure VMware Solution SDDC vCenter，然後選取 [HCX]。":::
 
-1. 在 [**管理**] 底下，選取 [**系統更新**]，然後選取 [**要求下載連結**] 以下載 VMware HCX OVA 檔案。
+1. 在 [系統 **管理**] 底下，選取 [ **系統更新** ]，然後選取 [ **要求下載] 連結** 以下載 VMware HCX OVA 檔案。
 
-    ![取得系統更新](./media/hybrid-cloud-extension-installation/administration-updates.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/administration-updates.png" alt-text="在 [系統管理] 底下，選取 [系統更新]，然後選取 [要求下載] 連結以下載 VMware HCX OVA 檔案。":::
 
-1. 接下來，移至內部部署 vCenter 並選取 OVF 範本，以部署至您的內部部署 vCenter。  
+1. 接下來，移至內部部署 vCenter，然後選取 OVF 範本以部署至您的內部部署 vCenter。  
 
-    ![選取 OVF 範本](./media/hybrid-cloud-extension-installation/select-template.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/select-template.png" alt-text="接下來，移至內部部署 vCenter，然後選取 OVF 範本以部署至您的內部部署 vCenter。":::
 
 1. 選取名稱和位置，然後選取需要部署 HCX 的資源/叢集。 然後，檢閱詳細資料和所需的資源。  
 
-    ![檢閱範本詳細資料](./media/hybrid-cloud-extension-installation/configure-template.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/configure-template.png" alt-text=" 選取名稱和位置，然後選取需要部署 HCX 的資源/叢集。然後，請參閱詳細資料和必要的資源。":::
 
 1. 檢閱授權條款，如果您同意，請選取所需的儲存體和網路。 然後選取 [下一步]。
 
 1. 在 [自訂範本] 中，輸入全部所需的資訊。 
 
-    ![自訂範本](./media/hybrid-cloud-extension-installation/customize-template.png)  
+   :::image type="content" source="media/hybrid-cloud-extension-installation/customize-template.png" alt-text="在 [自訂範本] 中，輸入所有必要的資訊。":::
 
 1. 選取 [下一步]，並驗證設定，然後選取 [完成] 以部署 HCX OVA。
 
@@ -95,49 +95,49 @@ HCX Advanced （預設安裝）最多可支援三個網站連線 (內部部署�
 
 安裝後，執行下列步驟。
 
-1. 登入位於的內部部署 HCX 管理員 `https://HCXManagerIP:9443` ，並使用您的使用者名稱和密碼來登入。 
+1. 登入內部部署 HCX 管理員 `https://HCXManagerIP:9443` ，並使用您的使用者名稱和密碼登入。 
 
    > [!IMPORTANT]
-   > 請務必包含 `9443` 埠號碼與 HCX MANAGER IP 位址。
+   > 請務必包含 `9443` HCX MANAGER IP 位址的埠號碼。
 
 1. 在 [授權] 中，輸入您的 **HCX 進階金鑰**。  
 
-    ![輸入 HCX 金鑰](./media/hybrid-cloud-extension-installation/hcx-key.png)  
+   :::image type="content" source="media/hybrid-cloud-extension-installation/hcx-key.png" alt-text="在 [授權] 中，輸入您的 HCX Advanced Key。":::
     
     > [!NOTE]
     > HCX 管理員必須有開放的網際網路存取或已設定 Proxy。
 
-1. 在**vcenter**中，如有需要，請編輯 vcenter 資訊。
+1. 在 **vcenter**中，如有需要，請編輯 vcenter 資訊。
 
-    ![設定 vCenter](./media/hybrid-cloud-extension-installation/configure-vcenter.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/configure-vcenter.png" alt-text="在 vCenter 中，如有需要，請編輯 vCenter 資訊。":::
 
 1. 在 [資料中心位置] 中，如有需要，請編輯資料中心位置。
 
-    ![資料庫位置](./media/hybrid-cloud-extension-installation/system-location.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/system-location.png" alt-text="在資料中心位置中，如有需要，請編輯資料中心位置。":::
 
 ## <a name="configure-hcx"></a>設定 HCX 
 
-1. 登入內部部署 vCenter，然後在 [**首頁**] 底下，選取 [ **HCX**]。
+1. 登入內部部署 vCenter，然後選取 [ **首頁**] 下的 [ **HCX**]。
 
-    ![VCenter 中的 HCX](./media/hybrid-cloud-extension-installation/hcx-vcenter.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/hcx-vcenter.png" alt-text="登入內部部署 vCenter，然後選取 [首頁] 下的 [HCX]。":::
 
-1. 在 [**基礎結構**] 底下，選取 [**網站配對**] [  >  **新增網站配對**]。
+1. 在 [**基礎結構**] 之下，選取 [**網站配對**] 以  >  **新增網站配對**。
 
-    ![新增網站配對](./media/hybrid-cloud-extension-installation/site-pairing.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/site-pairing.png" alt-text="在 [基礎結構] 之下，選取 [網站配對] > 新增網站配對。":::
 
-1. 輸入 [遠端 HCX URL] 或 [IP 位址]、[AVS cloudadmin 使用者名稱和密碼]，然後選取 **[連線]**。
+1. 輸入遠端 HCX URL 或 IP 位址、Azure VMware Solution cloudadmin 使用者名稱和密碼，然後選取 **[連線]**。
 
    系統會顯示連線的網站。
-   
-    ![站台連線](./media/hybrid-cloud-extension-installation/site-connection.png)
 
-1. 在 [**基礎結構**] 底下，選取 [**互連**  >  **多網站服務網格**  >  **網路設定檔**] [  >  **建立網路設定檔**]。
+   :::image type="content" source="media/hybrid-cloud-extension-installation/site-connection.png" alt-text="系統會顯示連線的網站。":::
 
-    ![建立網路設定檔](./media/hybrid-cloud-extension-installation/create-network-profile.png)
+1. 在 [**基礎結構**] 之下，選取 [**互連**  >  **多網站服務網格**  >  **網路設定檔**  >  **建立網路設定檔**]。
+
+   :::image type="content" source="media/hybrid-cloud-extension-installation/create-network-profile.png" alt-text="在 [基礎結構] 之下，選取 [互連 > 多網站服務網格 > 網路設定檔 > 建立網路設定檔]。":::
 
 1. 針對新的網路設定檔，輸入 HCX IX 和 NE IP 位址範圍 (IX 和 NE 設備) 至少需要兩個 IP 位址。
-    
-   ![輸入 IP 位址範圍](./media/hybrid-cloud-extension-installation/enter-address-ranges.png)
+
+   :::image type="content" source="media/hybrid-cloud-extension-installation/enter-address-ranges.png" alt-text="針對新的網路設定檔，輸入 HCX IX 和 NE IP 位址範圍 (IX 和 NE 設備) 至少需要兩個 IP 位址。":::
   
    > [!NOTE]
    > 網路延伸設備 (HCX-NE) 與分散式虛擬交換器 (DVS) 有一對一的關係。  
@@ -146,136 +146,136 @@ HCX Advanced （預設安裝）最多可支援三個網站連線 (內部部署�
 
 1. 輸入計算設定檔名稱，然後選取 [繼續]。  
 
-    ![建立計算設定檔](./media/hybrid-cloud-extension-installation/create-compute-profile.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/create-compute-profile.png" alt-text="輸入計算設定檔名稱，然後選取 [繼續]。":::
 
-1. 選取要啟用的服務，例如 [遷移]、[網路延伸] 或 [嚴重損壞修復]，然後選取 [**繼續**]。
+1. 選取要啟用的服務，例如 [遷移]、[網路擴充] 或 [嚴重損壞修復]，然後選取 [ **繼續**]。
 
-    ![選取服務](./media/hybrid-cloud-extension-installation/select-services.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/select-services.png" alt-text="選取要啟用的服務，例如 [遷移]、[網路擴充] 或 [嚴重損壞修復]，然後選取 [繼續]。":::
 
 1. 在 [選取服務資源] 中，選取所選 HCX 服務所應該啟用的一個或多個服務資源。 選取 [繼續]。
-    
-   ![選取服務資源](./media/hybrid-cloud-extension-installation/select-service-resources.png)
+
+   :::image type="content" source="media/hybrid-cloud-extension-installation/select-service-resources.png" alt-text="在 [選取服務資源] 中，選取要啟用所選取 HCX 服務的一或多個服務資源。選取 [繼續]。":::
   
    > [!NOTE]
    > 選取特定叢集，其中已使用 HCX 鎖定來源 VM 進行移轉。
 
 1. 選取 [資料存放區]，然後選取 [繼續]。 
       
-    選取每個用於部署 HCX 互連設備的計算和儲存體資源。 選取多個資源時，HCX 會使用第一個選取的資源，直到其容量用盡為止。  
-    
-    ![選取部署資源](./media/hybrid-cloud-extension-installation/deployment-resources.png)
+   選取每個用於部署 HCX 互連設備的計算和儲存體資源。 選取多個資源時，HCX 會使用第一個選取的資源，直到其容量用盡為止。  
+
+   :::image type="content" source="media/hybrid-cloud-extension-installation/deployment-resources.png" alt-text="選取每個計算和儲存體資源，以部署 HCX 互連設備。選取多個資源時，HCX 會使用第一個選取的資源，直到其容量用盡為止。":::
 
 1. 選取在 [網路設定檔] 中建立的管理網路設定檔，然後選取 [繼續]。  
       
-    選取可觸達 vCenter 和 ESXi 主機管理介面的網路設定檔。 如果您尚未定義這類網路設定檔，您可以在這裡建立。  
-    
-    ![選取管理網路設定檔](./media/hybrid-cloud-extension-installation/management-network-profile.png)
+   選取可觸達 vCenter 和 ESXi 主機管理介面的網路設定檔。 如果您尚未定義這類網路設定檔，您可以在這裡建立。  
+
+   :::image type="content" source="media/hybrid-cloud-extension-installation/management-network-profile.png" alt-text="選取可連線到 vCenter 和 ESXi 主機之管理介面的網路設定檔。如果您尚未定義這類網路設定檔，您可以在此建立。":::
 
 1. 選取 [網路上行連結]，然後選取 [繼續]。
       
-    選取一或多個網路設定檔，讓下列其中一個條件成立：  
-    * 可以透過此網路觸達遠端網站上的互連設備  
-    * 遠端設備可以透過此網路觸達本機互連設備。  
+   選取一或多個網路設定檔，讓下列其中一項成立：  
+   * 可以透過此網路觸達遠端網站上的互連設備  
+   * 遠端設備可以透過此網路觸達本機互連設備。  
     
-    如果您的點對點網路 (例如 Direct Connect) 不會跨多個網站共用，您可以略過此步驟，因為計算設定檔會與多個網站共用。 在這種情況下，您可以在建立互連服務網格期間覆寫和指定上行連結網路設定檔。  
-    
-    ![選取上行連結網路設定檔](./media/hybrid-cloud-extension-installation/uplink-network-profile.png)
+   如果您的點對點網路 (例如 Direct Connect) 不會跨多個網站共用，您可以略過此步驟，因為計算設定檔會與多個網站共用。 在這種情況下，您可以在建立互連服務網格期間覆寫和指定上行連結網路設定檔。  
+
+   :::image type="content" source="media/hybrid-cloud-extension-installation/uplink-network-profile.png" alt-text="選取 [網路上行]，然後選取 [繼續]。":::
 
 1. 選取 [VMotion 網路設定檔]，然後選取 [繼續]。
       
    選取可用來觸達 ESXi 主機 VMotion 介面的網路設定檔。 如果您尚未定義這類網路設定檔，您可以在這裡建立。 如果您沒有 VMotion 網路，請選取 [管理網路設定檔]。  
-    
-   ![選取 VMotion 網路設定檔](./media/hybrid-cloud-extension-installation/vmotion-network-profile.png)
 
-1. 從 [**選取 vSphere 複寫網路設定檔**] 中，選取要 ESXi 主機的 vSphere 複寫介面的網路設定檔，然後選取 [**繼續**]。
+   :::image type="content" source="media/hybrid-cloud-extension-installation/vmotion-network-profile.png" alt-text="選取 [vMotion 網路設定檔]，然後選取 [繼續]。":::
+
+1. 從 [ **選取 vSphere 複寫網路設定檔**] 中，選取網路設定檔 vSphere 的複寫介面 ESXi 主機，然後選取 [ **繼續**]。
       
    在大多數情況下，此設定檔與管理網路設定檔相同。  
-    
-   ![選取 vSphere 複寫網路設定檔](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
 
-1. 從 [**選取網路擴充功能的分散式交換器**] 中，選取您的網路上將會整合並聯機的 vm 所在的 DVS。  選取 \[繼續\]。  
-      
-    ![選取分散式虛擬交換器](./media/hybrid-cloud-extension-installation/distributed-switches.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png" alt-text="從 [選取 vSphere 複寫網路設定檔] 中，選取網路設定檔 vSphere 的複寫介面 ESXi 主機，然後選取 [繼續]。":::
 
-1. 檢查連接規則，然後選取 [**繼續**]。  
+1. 從 [ **選取網路擴充功能的分散式交換器**] 中，選取您的網路上將整合並聯機之 vm 的網路 DVS。  選取 \[繼續\]。  
 
-    ![建立計算設定檔](./media/hybrid-cloud-extension-installation/complete-compute-profile.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/distributed-switches.png" alt-text="從 [選取網路擴充功能的分散式交換器] 中，選取您的網路上將整合並聯機之 Vm 的網路 DVS。 選取 [繼續]。":::
+
+1. 請檢查連接規則，然後選取 [ **繼續**]。  
+
+   :::image type="content" source="media/hybrid-cloud-extension-installation/complete-compute-profile.png" alt-text="請檢查連接規則，然後選取 [繼續]。":::
 
 1.  選取 [完成] 以建立計算設定檔。
 
 ## <a name="configure-network-uplink"></a>設定網路上行連結
 
-此時，請在適用於網路上行連結的 AVS SDDC 中設定網路設定檔變更。
+現在，在 Azure VMware Solution SDDC 中針對網路上行連結設定網路設定檔變更。
 
-1. 登入 SDDC NSX-T 以建立新的邏輯交換器，或使用可用於內部部署和 AVS SDDC 之間網路上行的現有邏輯交換器。
+1. 登入 SDDC NSX-T 以建立新的邏輯交換器，或使用可用於內部部署與 Azure VMware Solution SDDC 之間的網路上行連結的現有邏輯交換器。
 
-1. 在可用於內部部署到 AVS SDDC 通訊的 AVS SDDC 中，建立 HCX 上行連結的網路設定檔。  
-    
-   ![建立上行連結的網路設定檔](./media/hybrid-cloud-extension-installation/network-profile-uplink.png)
+1. 在 Azure VMware Solution SDDC 中建立 HCX 上行連結的網路設定檔，可用於內部部署至 Azure VMware Solution SDDC 通訊。  
+
+   :::image type="content" source="media/hybrid-cloud-extension-installation/network-profile-uplink.png" alt-text="在 Azure VMware Solution SDDC 中建立 HCX 上行連結的網路設定檔，可用於內部部署至 Azure VMware Solution SDDC 通訊。":::
 
 1. 輸入網路設定檔的名稱，並根據所需的 L2 網路延伸模組，輸入至少 4 至 5 個可用的 IP 位址。  
-    
-   ![設定上行連結的網路設定檔](./media/hybrid-cloud-extension-installation/configure-uplink-profile.png)
 
-1. 選取 [建立] 以完成 AVS SDDC 設定
+   :::image type="content" source="media/hybrid-cloud-extension-installation/configure-uplink-profile.png" alt-text="輸入網路設定檔的名稱，並根據所需的 L2 網路延伸模組，輸入至少 4 至 5 個可用的 IP 位址。":::
+
+1. 選取 [ **建立** ] 以完成 Azure VMWARE Solution SDDC 設定
 
 ## <a name="configure-service-mesh"></a>設定服務網格
 
-此時，請在內部部署和 AVS SDDC 之間設定服務網格。
+現在在內部部署與 Azure VMware Solution SDDC 之間設定服務網格。
 
-1. 登入 AVS SDDC vCenter，然後選取 **HCX**。
+1. 登入 Azure VMware Solution SDDC vCenter，然後選取 [ **HCX**]。
 
-2. 在 [**基礎結構**] 底下，選取 [**互連**  >  **服務網格**] [  >  **建立服務網格**] 來設定在先前步驟中建立的網路和計算設定檔。    
+2. 在 [**基礎結構**] 之下，選取 [**互連**  >  **服務網格**  >  **建立服務網格**]，以設定在先前步驟中建立的網路和計算設定檔。    
+
+   :::image type="content" source="media/hybrid-cloud-extension-installation/configure-service-mesh.png" alt-text="在 [基礎結構] 之下，選取 [互連 > 服務網格 > 建立服務網格]，以設定在先前步驟中建立的網路和計算設定檔。":::
+
+3. 選取 [配對的網站] 以啟用混合式功能，然後選取 [ **繼續**]。   
+
+   :::image type="content" source="media/hybrid-cloud-extension-installation/select-paired-sites.png" alt-text="選取 [配對的網站] 以啟用混合式功能，然後選取 [繼續]。":::
+
+4. 選取來源和遠端計算設定檔以啟用混合服務，然後選取 [ **繼續**]。
       
-    ![設定服務網格](./media/hybrid-cloud-extension-installation/configure-service-mesh.png)
+   這些選項會定義資源，讓 Vm 可以使用 HCX 服務。  
 
-3. 選取 [配對的網站] 以啟用混合式功能，然後選取 [**繼續**]。   
-    
-    ![選取配對網站](./media/hybrid-cloud-extension-installation/select-paired-sites.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/enable-hybridity.png" alt-text="這些選項會定義資源，讓 Vm 可以使用 HCX 服務。":::
 
-4. 選取來源和遠端計算設定檔以啟用混合服務，然後選取 [**繼續**]。
-      
-    這些選項會定義資源，讓 Vm 可以使用 HCX 服務。  
-      
-    ![啟用混合服務](./media/hybrid-cloud-extension-installation/enable-hybridity.png)
+5. 選取要啟用的服務，然後選取 [ **繼續**]。  
 
-5. 選取要啟用的服務，然後選取 [**繼續**]。  
-      
-    ![選取 HCX 服務](./media/hybrid-cloud-extension-installation/hcx-services.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/hcx-services.png" alt-text="選取要啟用的服務，然後選取 [繼續]。":::
 
 6. 在 [進階設定 - 覆寫上行連結網路設定檔] 中選取 [繼續]。  
       
-    上行連結網路設定檔是用來連線到網路，可透過它來連線到遠端網站的互連設備。  
-      
-    ![覆寫上行連結設定檔](./media/hybrid-cloud-extension-installation/override-uplink-profiles.png)
+   上行連結網路設定檔是用來連線至網路，可透過此網路連線到遠端網站的互連設備。  
+
+   :::image type="content" source="media/hybrid-cloud-extension-installation/override-uplink-profiles.png" alt-text="上行連結網路設定檔是用來連線至網路，可透過此網路連線到遠端網站的互連設備。":::
 
 7. 選取 **[設定網路延伸設備] Scale Out**。 
-      
-    ![網路延伸模組擴增](./media/hybrid-cloud-extension-installation/network-extension-scale-out.png)
+
+   :::image type="content" source="media/hybrid-cloud-extension-installation/network-extension-scale-out.png" alt-text="選取 [設定網路延伸設備] Scale Out。":::
 
 8. 輸入對應於 DVS 交換器計數的設備計數。  
-      
-    ![設定設備計數](./media/hybrid-cloud-extension-installation/appliance-scale.png)
 
-9. 選取 [**繼續**] 跳過。  
-      
-    ![設定流量工程](./media/hybrid-cloud-extension-installation/traffic-engineering.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/appliance-scale.png" alt-text="輸入對應於 DVS 交換器計數的設備計數。":::
+
+9. 選取 [ **繼續** 跳過]。  
+
+   :::image type="content" source="media/hybrid-cloud-extension-installation/traffic-engineering.png" alt-text="選取 [繼續跳過]。":::
 
 10. 檢閱拓撲預覽，然後選取 [繼續]。 
 
 11. 輸入此服務網格的使用者易記名稱，然後選取 **[完成]** 以完成。  
-      
-    ![完成服務網格](./media/hybrid-cloud-extension-installation/complete-service-mesh.png)
 
-    如此便完成服務網格的部署和設定。  
-      
-    ![已部署服務網格](./media/hybrid-cloud-extension-installation/deployed-service-mesh.png)
+   :::image type="content" source="media/hybrid-cloud-extension-installation/complete-service-mesh.png" alt-text="完成服務網格":::
+
+   如此便完成服務網格的部署和設定。  
+
+   :::image type="content" source="media/hybrid-cloud-extension-installation/deployed-service-mesh.png" alt-text="已部署服務網格":::
 
 ## <a name="check-appliance-status"></a>檢查設備狀態
 若要檢查設備的狀態，請選取 [互連] > [設備]。 
-      
-![設備狀態](./media/hybrid-cloud-extension-installation/appliance-status.png)
+
+:::image type="content" source="media/hybrid-cloud-extension-installation/appliance-status.png" alt-text="檢查設備的狀態。":::
 
 ## <a name="next-steps"></a>後續步驟
 
-當設備互連**通道狀態**是 **UP** 且為綠色時，您就可以使用 HCX 遷移和保護 AVS VM。 請參閱 VMware 技術文件中的 [VMware HCX 文件](https://docs.vmware.com/en/VMware-HCX/index.html)和[移轉虛擬機器與 VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)。
+當設備互連通道 **狀態** 為 [已 **啟動** ] 和 [綠色] 時，您就可以使用 HCX 來遷移和保護 Azure VMware 解決方案 vm。 請參閱 VMware 技術文件中的 [VMware HCX 文件](https://docs.vmware.com/en/VMware-HCX/index.html)和[移轉虛擬機器與 VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)。

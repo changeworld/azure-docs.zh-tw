@@ -4,12 +4,12 @@ description: 瞭解 Azure 備份中的加密功能如何協助您保護您的備
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.custom: references_regions
-ms.openlocfilehash: 1350be3fb869e7b81eaba14f91aff7f0e9e3c992
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 71183e99522707737812096567d877df740c4bae
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586642"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763638"
 ---
 # <a name="encryption-in-azure-backup"></a>Azure 備份的加密
 
@@ -29,7 +29,7 @@ Azure 備份包含兩個層級的加密：
 >[!NOTE]
 >基礎結構加密目前處於有限預覽狀態，且僅適用于美國東部、US 西部2、美國中南部、US Gov 亞利桑那州和 US GOV 佛吉尼亞區域。 如果您想要在上述任何區域中使用此功能，請填寫 [此表單](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) ，並傳送電子郵件給我們 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [待用資料的 Azure 儲存體加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
 - 針對加密可能有的任何問題[AZURE 備份常見問題](backup-azure-backup-faq.md#encryption)

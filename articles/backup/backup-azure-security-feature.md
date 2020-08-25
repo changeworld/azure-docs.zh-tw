@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 備份的安全性功能，讓備份更安
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 03bbcef2ce408a1b1f5e2c2d909728d3ed8e7e19
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 170ecf364e01ba4b098da289f9d213716e74e0ee
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611240"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757025"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>利用安全性功能協助保護使用 Azure 備份的混合式備份
 
@@ -39,7 +39,7 @@ ms.locfileid: "88611240"
 
     ![Azure 入口網站瀏覽選項的螢幕擷取畫面](./media/backup-azure-security-feature/browse-to-rs-vaults.png) <br/>
 
-    復原服務保存庫清單隨即出現。 從此清單中選取保存庫。 選取的保存庫儀表板隨即開啟。
+    隨即會出現 [復原服務保存庫] 清單。 從此清單中選取保存庫。 選取的保存庫儀表板隨即開啟。
 3. 從保存庫下顯示的專案清單中，選取 [ **設定**] 下方的 [ **屬性**]。
 
     ![復原服務保存庫選項的螢幕擷取畫面](./media/backup-azure-security-feature/vault-list-properties.png)
@@ -110,7 +110,7 @@ ms.locfileid: "88611240"
 
 ## <a name="troubleshooting-errors"></a>疑難排解錯誤
 
-| 作業 | 錯誤詳細資料 | 解決方案 |
+| 作業 | 錯誤詳細資料 | 解決方法 |
 | --- | --- | --- |
 | 原則變更 |無法修改備份原則。 錯誤：由於發生內部服務錯誤 [0x29834]，導致目前的操作失敗。 請稍後再重試操作。 如果問題持續發生， 請連絡 Microsoft 支援服務。 |**原因：**<br/>當安全性設定已啟用，而您嘗試將保留範圍縮減至低於上面指定的最小值，且您使用不受支援的版本 (本文的第一個附註會指出支援的版本) 時，就會出現此錯誤。 <br/>**建議的動作：**<br/> 在此情況下，您應該將保留期限設定為高於指定的最小保留期限 (若是每日則 7 天、若是每週則 4 週、若是每月則 3 個月，若是每年則 1 年)，以繼續進行與原則有關的更新。 （選擇性）建議的方法是更新備份代理程式、Azure 備份伺服器及/或 DPM UR，以利用所有安全性更新。 |
 | 變更複雜密碼 |輸入的安全性 PIN 碼不正確。 (識別碼：100130) 請提供正確的安全性 PIN 碼以完成此作業。 |**原因：**<br/> 當您在執行重要作業 (例如變更複雜密碼) 時輸入無效或已到期的安全性 PIN 碼時，就會出現此錯誤。 <br/>**建議的動作：**<br/> 若要完成作業，您必須輸入有效的安全性 PIN 碼。 若要取得 PIN，請登入 Azure 入口網站，然後流覽至 [復原服務保存庫] > [設定] > 屬性 > 產生安全性 PIN。 請使用這個 PIN 碼來變更複雜密碼。 |

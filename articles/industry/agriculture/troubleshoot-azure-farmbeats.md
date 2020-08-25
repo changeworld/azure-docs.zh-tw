@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 110fef2dcb4c1581d49fcb776276ebd9c4ae2235
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497058"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797933"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>針對 Azure FarmBeats 進行疑難排解
 
-本文提供 Azure FarmBeats 常見問題的解決方案。 如需其他協助，請洽詢我們的[支援論壇](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats)，或傳送電子郵件到 farmbeatssupport@microsoft.com。
+本文提供 Azure FarmBeats 常見問題的解決方案。 如需其他協助，請與我們的 [Q&支援論壇](https://aka.ms/farmbeatssupport) ，或傳送電子郵件給我們 farmbeatssupport@microsoft.com 。
 
 > [!NOTE]
   > 如果您在四月期間安裝了 FarmBeats，而您的作業失敗並出現空白的錯誤訊息，表示您的安裝可能未配置任何批次配額，無法優先處理重要的健康與安全組織支援。 如需詳細資訊，請參閱 [此處](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) 。 您必須要求將 VM 配置給 Batch 帳戶，才能成功執行作業。
@@ -59,7 +59,7 @@ ms.locfileid: "86497058"
 **矯正措施**
 
 1. 移至您的 FarmBeats 資源群組。
-2. 選取**事件中樞**命名空間（"感應器-協力-eh-namespace-xxxx"），按一下 [事件中樞]，然後檢查指派給合作夥伴的事件中樞內送訊息的數目
+2. 選取 **事件中樞** 命名空間 ( 「感應器-夥伴-eh-命名空間-xxxx」 ) ，按一下 [事件中樞]，然後檢查指派給夥伴的事件中樞內的傳入訊息數目
 3. 執行下列任一步驟：
 
    - 如果「沒有內送郵件」，請連絡您的裝置合作夥伴。  
@@ -110,7 +110,7 @@ ms.locfileid: "86497058"
 > [!NOTE]
 > 所關注感應器合作夥伴的合作夥伴識別碼。
 
-3. 返回合作夥伴 API，然後選取 [**取得/ \<ID> **]。
+3. 返回至夥伴 API，然後選取 [**取得/ \<ID> **]。
 4. 指定步驟 3 中的合作夥伴識別碼，然後選取 [執行]。
 
    API 回應應具有事件中樞連接字串。
@@ -250,7 +250,7 @@ ms.locfileid: "86497058"
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel：已達連線數目上限
 
-**作業失敗訊息**：「使用者 ' ' 所達到的兩個並行流程數目上限」 \<username> 。
+**作業失敗訊息**：「使用者 ' ' 所達到的兩個並行流程的最大數目 \<username> 。」
 
 **意義**：如果作業因為已達到連線數目上限而失敗，則會在多個作業中使用相同的 Sentinel 帳戶。
 
@@ -315,38 +315,38 @@ ms.locfileid: "86497058"
 2. 選取 [App Service]。  
 3. 移至 [App Service 定價頁面](https://azure.microsoft.com/pricing/details/app-service/windows/)，然後選取適當的定價層。
 
-## <a name="weather-data-job-failures"></a>天氣資料作業失敗
+## <a name="weather-data-job-failures"></a>天氣資料工作失敗
 
-**錯誤**：您執行作業來取得天氣資料，但作業失敗
+**錯誤**：您執行工作以取得天氣資料，但作業失敗
 
-### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>收集記錄以針對天氣資料作業失敗進行疑難排解
+### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>收集記錄以針對氣象資料作業失敗進行疑難排解
 
 1. 移至 Azure 入口網站中的 FarmBeats 資源群組。
-2. 按一下屬於資源群組的 Data Factory 服務。 服務將會有「sku： Datahub」標記
+2. 按一下屬於資源群組的 Data Factory 服務。 服務將會有一個標記 "sku： Datahub"
 
 > [!NOTE]
-> 若要在資源群組中查看服務的標籤，請按一下 [編輯資料行]，然後將 [標籤] 新增至資源群組視圖
+> 若要在資源群組內查看服務的標記，請按一下 [編輯資料行]，並將 [標籤] 新增至資源群組視圖
 
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="FarmBeats 專案":::
 
-3. 在 Data factory 的 [總覽] 頁面上，按一下 [**撰寫與監視**]。 您的瀏覽器上會開啟新的索引標籤。 按一下 [**監視**]
+3. 在 Data factory 的 [總覽] 頁面上，按一下 [ **撰寫和監視**]。 您的瀏覽器會開啟新的索引標籤。 按一下 [**監視**]
 
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="FarmBeats 專案":::
 
-4. 您會看到一份管線執行清單，其中包含屬於天氣作業執行的一部分。 按一下您要為其收集記錄的作業
+4. 您會看到屬於氣象工作執行一部分的管線執行清單。 按一下您要收集記錄的作業
  
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="FarmBeats 專案":::
 
-5. 在 [管線總覽] 頁面上，您會看到活動執行的清單。 記下您想要為其收集記錄的活動的執行識別碼
+5. 在 [管線總覽] 頁面上，您會看到活動執行清單。 記下您要收集記錄的活動執行識別碼
  
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="FarmBeats 專案":::
 
-6. 回到 Azure 入口網站中的 FarmBeats 資源群組，然後按一下名為**datahublogs**的儲存體帳戶
+6. 返回至 Azure 入口網站中的 FarmBeats 資源群組，然後按一下名為**datahublogs**的儲存體帳戶
  
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="FarmBeats 專案":::
 
-7. 按一下 [**容器**]  ->  **adfjobs**。 在 [搜尋] 方塊中，輸入您在上述步驟5中記下的作業執行識別碼。
+7. 按一下 [**容器**]  ->  **adfjobs**。 在 [搜尋] 方塊中，輸入您在上述步驟5中記下的工作執行識別碼。
  
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="FarmBeats 專案":::
 
-8. 搜尋結果會包含具有作業相關記錄檔的資料夾。 下載記錄檔並將它傳送給，以 farmbeatssupport@microsoft.com 協助進行問題的偵錯工具。
+8. 搜尋結果將包含包含與工作相關之記錄檔的資料夾。 下載記錄並將其傳送至，以 farmbeatssupport@microsoft.com 協助您進行問題的偵錯工具。

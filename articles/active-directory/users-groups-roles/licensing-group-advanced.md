@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2f055a6b8f4a8876c024bdd131a6001e21004e5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 937c5dbf3417e5914a0b4285c3bb114d7499e0fb
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209462"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799055"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>使用群組來管理 Azure Active Directory 授權的案例、限制及已知問題
 
@@ -28,9 +28,9 @@ ms.locfileid: "88209462"
 
 ## <a name="usage-location"></a>使用位置
 
-並非所有位置都可使用某些 Microsoft 服務。 系統管理員必須指定使用者的 [使用位置]**** 屬性，才能將授權指派給使用者。 在 [[Azure 入口網站](https://portal.azure.com)中，您可以在 [ **使用者** &gt; **設定檔** &gt; **設定**] 中指定使用位置。
+並非所有位置都可使用某些 Microsoft 服務。 系統管理員必須指定使用者的 [使用位置]**** 屬性，才能將授權指派給使用者。 在 [Azure 入口網站](https://portal.azure.com)中，您可以在 [ **使用者** &gt; **設定檔**] &gt; **設定**中指定使用位置。
 
-如果是群組授權指派，未指定使用位置的任何使用者會繼承目錄的位置。 如果您的使用者位於多個位置，請務必在將使用者新增至具有授權的群組之前，在使用者資源中正確反映該功能。
+如果是群組授權指派，未指定使用位置的任何使用者會繼承目錄的位置。 如果您有多個位置的使用者，請務必在將使用者新增至具有授權的群組之前，在您的使用者資源中正確地反映這些使用者。
 
 > [!NOTE]
 > 群組授權指派永遠不會修改使用者現有的使用位置值。 建議您一律將使用位置設為 Azure AD 中使用者建立流程的一部分 (例如透過 AAD Connect 設定) - 確保授權指派的結果一律是正確的，且使用者不會在不允許的位置收到服務。
@@ -76,7 +76,7 @@ ms.locfileid: "88209462"
 
   因此，使用者在產品的 12 項服務中已啟用 7 項，但只對此產品使用一個授權。
 
-- 選取 *E3* 授權會顯示更多詳細資料，包括群組授權指派針對使用者啟用哪些服務的相關資訊。
+- 選取 *E3* 授權會顯示更多詳細資料，包括群組授權指派為使用者啟用哪些服務的相關資訊。
 
 ## <a name="direct-licenses-coexist-with-group-licenses"></a>直接授權與群組授權共存
 
@@ -86,21 +86,21 @@ ms.locfileid: "88209462"
 
 可以移除直接指派的授權，而不會影響繼承的授權。 假設使用者從群組繼承 Office 365 企業版 E3 授權。
 
-一開始，使用者只會從「 *E3 基本服務* 」群組繼承授權，這會啟用四個服務方案。
+一開始，使用者只會從 *E3 基本服務* 群組繼承授權，這會啟用四個服務方案。
 
-1. 選取 [ **指派** ]，直接將 E3 授權指派給使用者。 在此案例中，您準備停用 Yammer Enterprise 以外的所有服務方案。
+1. 選取 [ **指派** ]，將 E3 授權直接指派給使用者。 在此案例中，您準備停用 Yammer Enterprise 以外的所有服務方案。
 
     因此，使用者仍然只使用 E3 產品的一個授權。 但是，直接指派只會針對該使用者啟用 Yammer Enterprise 服務。 您可以查看群組成員資格所啟用的服務與直接指派。
 
 1. 使用直接指派時允許下列作業︰
 
-   - 您可以直接在使用者資源上關閉 Yammer Enterprise。 在圖中，這項服務已啟用 [開啟/關閉]**** 切換，不同於其他服務切換。 因為此服務直接在使用者上啟用，所以可以修改。
+   - Yammer Enterprise 可直接在使用者資源上關閉。 在圖中，這項服務已啟用 [開啟/關閉]**** 切換，不同於其他服務切換。 因為此服務直接在使用者上啟用，所以可以修改。
    - 其他服務也可啟用，做為直接指派授權的一部分。
    - [移除]**** 按鈕可用來移除使用者的直接授權。 您可以看到使用者現在只有繼承的群組授權，且只有原始服務保持啟用：
 
 ## <a name="managing-new-services-added-to-products"></a>管理新增至產品的新服務
 
-當 Microsoft 將新的服務新增至產品授權方案時，預設會在您已指派產品授權的所有群組中啟用。 貴組織中訂閱產品變更通知的使用者，會提早收到電子郵件，通知他們即將推出的服務新增。
+當 Microsoft 將新的服務新增至產品授權方案時，依預設會在您已指派產品授權的所有群組中啟用該服務。 您組織中已訂閱產品變更通知的使用者將會事先收到電子郵件，通知他們即將推出的服務。
 
 身為系統管理員，您可以檢閱受變更影響的所有群組，並採取動作，例如停用每個群組中的新服務。 例如，如果您建立的群組只要以用於部署的特定服務為目標，您可以返回這些群組，並確定已停用所有新增的服務。
 
@@ -128,7 +128,7 @@ ms.locfileid: "88209462"
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>使用 PowerShell 查看誰具有繼承和直接授權
 您可以使用 PowerShell 指令碼，來檢查使用者是否有直接指派或繼承自群組的授權。
 
-1. 執行 `connect-msolservice` Cmdlet 來驗證並聯機到您的組織。
+1. 執行 `connect-msolservice` Cmdlet 以驗證並聯機到您的組織。
 
 2. `Get-MsolAccountSku` 可以用來探索 Azure AD 組織中所有已布建的產品授權。
 
@@ -153,7 +153,7 @@ ms.locfileid: "88209462"
    >[!TIP]
    > 您也可以在 [目標]** 篩選中鍵入群組名稱來限定結果範圍。
 
-3. 選取清單中的專案，以查看已變更內容的詳細資料。 在 [已修改的屬性]** 下會同時列出授權指派的新舊值。
+3. 選取清單中的專案，以查看已變更之專案的詳細資料。 在 [已修改的屬性]** 下會同時列出授權指派的新舊值。
 
 下列範例顯示最近的群組授權變更，並提供詳細資料：
 
@@ -205,13 +205,13 @@ ms.locfileid: "88209462"
 
 - 群組型授權目前不支援包含其他群組的群組 (巢狀群組)。 如果您將授權套用至巢狀群組，則只有群組的直接第一層級使用者成員會套用授權。
 
-- 此功能僅能與安全性群組和 securityEnabled = TRUE 的 Microsoft 365 群組搭配使用。
+- 這項功能只能與安全性群組搭配使用，並 Microsoft 365 securityEnabled = TRUE 的群組。
 
 - [Microsoft 365 系統管理中心](https://admin.microsoft.com)目前不支援以群組為基礎的授權。 如果使用者從群組繼承授權，此授權在 Office 系統管理入口網站中會顯示為一般使用者授權。 如果您嘗試修改該授權或嘗試移除授權，入口網站會傳回錯誤訊息。 無法直接修改使用者繼承的群組授權。
 
 - 當指派或修改大型群組 (例如 100,000 個使用者) 的授權時，可能會影響效能。 具體來說，Azure AD 自動化所產生的大量變更，可能會降低 Azure AD 和內部部署系統之間目錄同步作業的效能。
 
-- 如果您使用動態群組來管理使用者的成員資格，請確認使用者是群組的一部分，如此才能指派授權。 否則，請對動態群組[檢查成員資格規則的處理狀態](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)。
+- 如果您使用動態群組來管理使用者的成員資格，請確認使用者是群組的一部分，如此才能指派授權。 否則，請對動態群組[檢查成員資格規則的處理狀態](./groups-create-rule.md)。
 
 - 在某些高負載情況下，處理群組的授權變更，或現有授權的群組成員資格變更，可能需要很長的時間。 如果您發現變更需要 24 小時以上才能將使用者數為 60K 或以下的群組大小處理完畢，請[開啟支援票證](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest)讓我們調查。 
 

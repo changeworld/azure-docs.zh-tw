@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9fb3113b02d20355e3ac9ede593bf8fc4136461
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705957"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799293"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>設定 Microsoft 365 群組的到期原則
 
@@ -110,7 +110,7 @@ User | 可以更新他們擁有的 Microsoft 365 群組<br>可以還原他們所
 
 ## <a name="how-to-retrieve-microsoft-365-group-expiration-date"></a>如何取出 Microsoft 365 群組到期日
 
-除了可讓使用者查看群組詳細資料的存取面板（包括到期日和上次更新日期）之外，Microsoft 365 群組的到期日也可以從 Microsoft Graph REST API Beta 版中取出。 expirationDateTime 已在 Microsoft Graph Beta 中啟用為群組屬性。 您可以使用 GET 要求進行抓取。 如需詳細資訊，請參閱 [此範例](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example)。
+除了可讓使用者查看群組詳細資料的存取面板（包括到期日和上次更新日期）之外，Microsoft 365 群組的到期日也可以從 Microsoft Graph REST API Beta 版中取出。 expirationDateTime 已在 Microsoft Graph Beta 中啟用為群組屬性。 您可以使用 GET 要求進行抓取。 如需詳細資訊，請參閱 [此範例](/graph/api/group-get?view=graph-rest-beta#example)。
 
 > [!NOTE]
 > 若要在存取面板上管理群組成員資格，請在 [Azure Active Directory 群組一般] 設定中，將 [限制對存取面板中群組的存取權] 設定為 [否]。
@@ -172,7 +172,7 @@ User | 可以更新他們擁有的 Microsoft 365 群組<br>可以還原他們所
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
    ```
   
-下列 Cmdlet 可用來更詳細地設定原則。 如需詳細資訊，請參閱 [PowerShell 檔](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups)。
+下列 Cmdlet 可用來更詳細地設定原則。 如需詳細資訊，請參閱 [PowerShell 檔](/powershell/module/azuread/?branch=master&view=azureadps-2.0-preview#groups)。
 
 - Get-AzureADMSGroupLifecyclePolicy
 - New-AzureADMSGroupLifecyclePolicy

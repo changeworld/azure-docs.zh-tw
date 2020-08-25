@@ -1,6 +1,6 @@
 ---
 title: 改善資料行存放區索引效能
-description: 減少記憶體需求或增加可用的記憶體，以將每個資料列群組內的資料列數目最大化。
+description: 減少記憶體需求或增加可用記憶體，以將每個資料列群組內的資料列數目最大化。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 5308599f43788b35dbe278ddbbea2253c2f94cb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85a9c758f46150c422b55c6ac5cf7e62a429c74f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211654"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797763"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化資料行存放區的資料列群組品質
 
-資料列群組品質取決於資料列群組中的資料列數目。 增加可用的記憶體可以將資料行存放區索引壓縮成每個資料列群組的資料列數目最大化。  使用這些方法來改善壓縮率和查詢資料行存放區索引的效能。
+資料列群組品質取決於資料列群組中的資料列數目。 增加可用的記憶體可將資料行存放區索引壓縮成每個資料列群組的資料列數目最大化。  使用這些方法來改善壓縮率和查詢資料行存放區索引的效能。
 
 ## <a name="why-the-rowgroup-size-matters"></a>為什麼資料列群組很重要
 
@@ -38,15 +38,15 @@ ms.locfileid: "85211654"
 
 ## <a name="rowgroups-can-get-trimmed-during-compression"></a>資料列群組可以在壓縮期間進行修剪
 
-在大量載入或資料行存放區索引重建期間，有時可用的記憶體不足，無法壓縮指定給每個資料列群組的所有資料列。 當記憶體壓力存在時，資料行存放區索引會修剪資料列群組大小，因此可成功壓縮資料行存放區。
+在大量載入或資料行存放區索引重建期間，有時可用的記憶體不足，無法壓縮指定給每個資料列群組的所有資料列。 當記憶體壓力存在時，資料行存放區索引會修剪資料列群組大小，因此壓縮至資料行存放區將會成功。
 
-當沒有足夠的記憶體可將至少10000個數據列壓縮到每個資料列群組時，將會產生錯誤。
+如果記憶體不足，無法將至少10000個數據列壓縮到每個資料列群組中，則會產生錯誤。
 
 如需有關大量載入的詳細資訊，請參閱[大量載入叢集資料行存放區索引](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何監視資料列群組品質
 
-DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats （[sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)包含與 SQL db 相符的視圖定義），它會公開有用的資訊，例如資料列群組中的資料列數目以及修剪的原因（如果有修剪的話）。
+DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 包含符合 SQL db) 的視圖定義，可公開有用的資訊，例如資料列群組中的資料列數目，以及修剪的原因（如果有調整的話）。
 
 您可以建立下列檢視，並將其作為查詢這個 DMV 以取得有關資料列群組修剪資訊的便利方法。
 
@@ -75,10 +75,13 @@ select *
 from cte;
 ```
 
+>[!TIP]
+> 為了改善 Synapse SQL 中的效能，請考慮在永久使用者資料表上使用 **sys. pdw_permanent_table_mappings** 而不是 **sys. pdw_table_mappings** 。 如需詳細資訊，請參閱 **[sys. pdw_permanent_table_mappings &#40;transact-sql&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 。
+
 trim_reason_desc 會告知是否已修剪資料列群組 (trim_reason_desc = NO_TRIM 表示沒有修剪，且資料列群組屬於最佳品質)。 下列修剪原因表示過早修剪了資料列群組：
 
-- BULKLOAD：當傳入的負載資料列批次具有少於 1 百萬個的資料列時，會使用這個修剪原因。 如果插入了多於 100,000 個資料列 (而不是插入到差異存放區)，則引擎會建立壓縮的資料列群組，但是會將修剪原因設定為大量載入。 在此案例中，請考慮增加您的批次負載，以包含更多資料列。 此外，請重新評估您的資料分割配置，以確保它不會太細微，因為資料列群組無法跨越資料分割界限。
-- MEMORY_LIMITATION：若要建立包含 1 百萬個資料列的資料列群組，引擎會需要特定數量的工作記憶體。 當載入工作階段的可用記憶體小於所需的工作記憶體時，會提前修剪資料列群組。 下列各節說明如何預估所需的記憶體，並配置更多記憶體。
+- BULKLOAD：當傳入的負載資料列批次具有少於 1 百萬個的資料列時，會使用這個修剪原因。 如果插入了多於 100,000 個資料列 (而不是插入到差異存放區)，則引擎會建立壓縮的資料列群組，但是會將修剪原因設定為大量載入。 在此案例中，請考慮增加您的批次負載以包含更多資料列。 此外，請重新評估資料分割配置，以確保資料列群組無法跨越資料分割界限時，不太細微。
+- MEMORY_LIMITATION：若要建立包含 1 百萬個資料列的資料列群組，引擎會需要特定數量的工作記憶體。 當載入工作階段的可用記憶體小於所需的工作記憶體時，會提前修剪資料列群組。 下列各節說明如何估計所需的記憶體並配置更多記憶體。
 - DICTIONARY_SIZE：這個修剪原因表示因為至少有一個字串資料行具有寬/或高基數字串而發生資料列群組修剪。 記憶體中的字典大小限制為 16 MB，且一旦達到此限制，便會壓縮資料列群組。 如果您遇到這種情況，請考慮將問題資料行隔離到單獨的資料表中。
 
 ## <a name="how-to-estimate-memory-requirements"></a>如何估計記憶體需求
@@ -91,15 +94,15 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 - 72 MB +
 - \#資料列資料行 \* \# \* 8 個位元組 +
-- \#資料 \* \# 列簡短字串-資料行 \* 32 個位元組 +
+- \#資料 \* \# 列短字串資料行 \* 32 位元組 +
 - \#長字串資料行 \* 壓縮字典 16 MB
 
 > [!NOTE]
-> 短字串資料行使用 <= 32 位元組的字串資料類型，而長字串資料行使用 > 32 位元組的字串資料類型。
+> 字串資料行使用 <= 32 位元組和長字串資料行的字串資料類型，會使用 > 32 位元組的字串資料類型。
 
 會使用專為壓縮文字的壓縮方法來壓縮長字串。 這個壓縮方法會使用字典** 來儲存文字模式。 字典的大小上限為 16 MB。 資料列群組中的每一個長字串資料行只有一個字典。
 
-如需資料行存放區記憶體需求的深入討論，請參閱影片[SYNAPSE SQL 集區調整：設定和指引](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
+如需資料行存放區記憶體需求的深入討論，請參閱影片 [SYNAPSE SQL 集區調整：設定和指引](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>減少記憶體需求的方式
 
@@ -122,9 +125,9 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 ### <a name="avoid-over-partitioning"></a>避免過度分割
 
-資料行存放區索引針對每個資料分割會建立一個或多個資料列群組。 針對 Azure Synapse 分析中的 SQL 集區，分割區數目會快速成長，因為資料已散發，而且每個散發都已分割。
+資料行存放區索引針對每個資料分割會建立一個或多個資料列群組。 針對 Azure Synapse Analytics 中的 SQL 集區，資料分割數目會快速增加，因為資料已散發，而且每個散發都已分割。
 
-如果資料表有太多資料分割，則可能沒有足夠的資料列可填滿資料列群組。 缺少資料列並不會在壓縮期間造成記憶體壓力。 但是，它會導致資料列群組無法達到最佳的資料行存放區查詢效能。
+如果資料表有太多資料分割，則可能沒有足夠的資料列可填滿資料列群組。 缺少資料列並不會在壓縮期間建立記憶體壓力。 但是，它會導致資料列群組無法達到最佳資料行存放區查詢效能。
 
 要避免過度磁碟分割的另一個原因，是有額外負荷的記憶體將資料列載入分割資料表上的資料行存放區索引。
 
@@ -165,4 +168,4 @@ DWU 大小和使用者資源類別會共同判斷有多少記憶體可供使用�
 
 ## <a name="next-steps"></a>後續步驟
 
-若要尋找更多方法來改善 SQL 集區的效能，請參閱[效能總覽](cheat-sheet.md)。
+若要尋找更多改善 SQL 集區效能的方法，請參閱 [效能總覽](cheat-sheet.md)。

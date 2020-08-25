@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 999b458985d8ab486e8dbd6bcaa48ddd9e02fc28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e460f3fd383286b1e61a979b87a9dfa09f272313
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266095"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799021"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>註冊驗證方法資訊以重設您自己的密碼
 
@@ -26,7 +26,7 @@ ms.locfileid: "84266095"
 管理員必須開啟此功能，您才可以註冊資訊和重設自己的密碼。 如果您沒有看到 [忘記密碼] 選項，就表示管理員尚未替組織開啟此功能。 如果您認為情況有誤，請連絡技術支援中心以尋求協助。
 
 >[!Important]
->本文以嘗試註冊自助式密碼重設的使用者為對象。 這表示您將能夠重設自己的工作或學校密碼（例如 alain@contoso.com ），而不需要系統管理員的協助。 如果您是管理員，而且想知道如何為員工或其他使用者開啟自助式密碼重設，請參閱[部署 Azure AD 自助式密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)及其他文章。
+>本文以嘗試註冊自助式密碼重設的使用者為對象。 這表示您將能夠重設自己的工作或學校密碼 (例如 alain@contoso.com) ，而不需要系統管理員的協助。 如果您是管理員，而且想知道如何為員工或其他使用者開啟自助式密碼重設，請參閱[部署 Azure AD 自助式密碼重設](../authentication/howto-sspr-deployment.md)及其他文章。
 
 ## <a name="set-up-your-password-reset-verification-method"></a>設定密碼重設驗證方法
 

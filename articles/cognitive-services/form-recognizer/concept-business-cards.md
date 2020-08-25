@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1c9e40738d70b6fbb9fed267a6a047d8330023b7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2fc87f08b30d648ec38d2b93e96a32d125b856be
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749274"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757909"
 ---
 # <a name="business-card-concepts"></a>名片概念
 
@@ -391,9 +391,8 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，從名片�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 遵循快速入門以開始使用 
-- [名片 API Python 快速入門](./quickstarts/python-business-cards.md)
-- 瞭解 [表單辨識器 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)
+- 遵循快速入門以開始使用 [名片 API Python 快速入門](./quickstarts/python-business-cards.md)
+- 瞭解 [表單辨識器 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
 - 深入瞭解 [表單辨識器](overview.md)
 
 

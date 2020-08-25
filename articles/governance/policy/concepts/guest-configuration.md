@@ -3,12 +3,12 @@ title: 了解如何稽核虛擬機器的內容
 description: 了解 Azure 原則如何使用「來賓設定」代理程式來稽核虛擬機器內的設定。
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: af913a6bb1fb7c871a7f6740a0fb2d66efa3f712
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717571"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756685"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -111,25 +111,16 @@ Azure Arc 的機器會使用內部部署網路基礎結構進行連線，以連�
 
 ## <a name="guest-configuration-definition-requirements"></a>來賓設定定義需求
 
-「來賓設定」所執行的每個稽核都需要兩個原則定義：**DeployIfNotExists** 定義和 **AuditIfNotExists** 定義。 **DeployIfNotExists**原則定義會管理在每部電腦上執行審核的相依性。
+來賓設定原則會使用 **AuditIfNotExists** 效果。 當指派定義時，後端服務會自動處理 `Microsoft.GuestConfiguration` Azure 資源提供者中所有需求的生命週期。
 
-**DeployIfNotExists** 原則定義會驗證並修正下列項目：
+**AuditIfNotExists**原則在電腦上符合所有需求之前，不會傳回合規性結果。 [Azure 虛擬機器的部署需求](#deploy-requirements-for-azure-virtual-machines)一節中會說明這些需求
 
-- 驗證機器是否已獲指派將要評估的設定。 如果目前沒有任何指派，請透過下列方式取得指派並備妥機器：
-  - 使用[受控識別](../../../active-directory/managed-identities-azure-resources/overview.md)向機器進行驗證
-  - 安裝最新版的 **Microsoft.GuestConfiguration** 延伸模組
-  - 安裝[驗證工具](#validation-tools)和相依性 (如有需要)
+> [!IMPORTANT]
+> 在先前的來賓設定版本中，需要有一個方案來結合 **DeployIfNoteExists** 和 **AuditIfNotExists** 定義。 不再需要**DeployIfNotExists**定義。 定義和 intiaitives 會加上標籤， `[Deprecated]` 但現有的指派仍將繼續運作。
+>
+> 需要手動步驟。 如果您先前已在類別中指派原則方案 `Guest Configuration` ，請刪除原則指派並指派新的定義。 來賓設定原則具有名稱模式，如下所示： `Audit <Windows/Linux> machines that <non-compliant condition>`
 
-如果 **DeployIfNotExists** 指派不符合規範，則可使用[補救工作](../how-to/remediate-resources.md#create-a-remediation-task)。
-
-一旦 **DeployIfNotExists** 指派符合規範，**AuditIfNotExists** 原則指派就會判斷來賓指派是否符合規範。 驗證工具會將結果提供給「來賓設定」用戶端。 用戶端會將結果轉送至「來賓延伸模組」，以便透過「來賓設定」資源提供者提供結果。
-
-「Azure 原則」會使用「來賓設定」資源提供者 **complianceStatus** 屬性在 [合規性] 節點中回報合規性。 如需詳細資訊，請參閱[取得合規性資料](../how-to/get-compliance-data.md)。
-
-> [!NOTE]
-> **AuditIfNotExists** 原則必須要有 **DeployIfNotExists** 原則，才能傳回結果。 如果沒有 **DeployIfNotExists**，**AuditIfNotExists** 原則會顯示 "0 of 0" 資源作為狀態。
-
-「來賓設定」的所有內建原則都包含在一個方案中，以聚集要在指派中使用的定義。 名為 _\[Preview\]:Audit Password security inside Linux and Windows machines_ 的內建計劃包含 18 個原則。 針對 Windows 有 6 組 **DeployIfNotExists** 和 **AuditIfNotExists**，針對 Linux 則有 3 組。 [原則定義](definition-structure.md#policy-rule)邏輯會驗證只有評估目標作業系統。
+Azure 原則使用 [來賓設定資源提供者 **>compliancestatus** ] 屬性來報告 **合規** 性節點中的合規性。 如需詳細資訊，請參閱[取得合規性資料](../how-to/get-compliance-data.md)。
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>依照業界基準來稽核作業系統設定
 

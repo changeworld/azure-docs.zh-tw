@@ -4,16 +4,16 @@ description: 在此文章中，您將了解如何從 Azure 虛擬機器復原點
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ab0722bfee0f8165971b5e3351640f0d3c00bea3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: e913fa1e609eff687b5757a566583539b32b1b8e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654152"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757144"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
-Azure 備份可從 Azure 虛擬機器 (VM) 備份 (又稱復原點) 還原 [Azure VM 和磁碟](./backup-azure-arm-restore-vms.md)。 本文說明如何從 Azure VM 備份來復原檔案和資料夾。 只有使用 Resource Manager 模型部署且受復原服務保存庫保護的 Azure VM，才能還原檔案和資料夾。
+Azure 備份可從 Azure 虛擬機器 (VM) 備份 (又稱復原點) 還原 [Azure VM 和磁碟](./backup-azure-arm-restore-vms.md)。 本文說明如何從 Azure VM 備份來復原檔案和資料夾。 只有使用 Resource Manager 模型部署且受復原服務保存庫保護的 Azure Vm，才可還原檔案和資料夾。
 
 > [!NOTE]
 > 這項功能適用於使用 Resource Manager 模型部署且受復原服務保存庫保護的 Azure VM。
@@ -68,7 +68,7 @@ Azure 備份可從 Azure 虛擬機器 (VM) 備份 (又稱復原點) 還原 [Azur
 
 當您執行可執行檔時，作業系統會掛接新磁碟區並指派磁碟機代號。 您可以使用 Windows 檔案總管或檔案總管來瀏覽這些磁碟機。 指派給磁碟區的磁碟機代號可能與原始虛擬機器為不同的代號。 不過，系統會保留磁碟區名稱。 例如，如果原始虛擬機器上的磁碟區是 "Data Disk (E:`\`)"，則可以在本機電腦上將該磁碟區連結為 "Data Disk ('任何磁碟機代號':`\`)"。 瀏覽指令碼輸出中所提及的所有磁碟區，直到找出您的檔案或資料夾為止。  
 
-   ![[檔案復原] 功能表](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
+   ![已附加的修復磁片區](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
 #### <a name="for-linux"></a>若為 Linux
 
@@ -302,7 +302,7 @@ mount [RAID Disk Path] [/mountpath]
 如果您在具有限制存取的電腦上執行腳本，請確定有下列存取權：
 
 - `download.microsoft.com`
-- 復原服務 URL (geo-name 是指復原服務保存庫所在的區域)
+- 復原服務 Url (地理名稱是指復原服務保存庫所在的區域) 
   - `https://pod01-rec2.geo-name.backup.windowsazure.com` 適用于 Azure 公用區域的 () 
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (適用於 Azure China 21Vianet)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us` (適用於 Azure US Government)
@@ -332,7 +332,7 @@ mount [RAID Disk Path] [/mountpath]
     - 請確定作業系統是 WS 2012 或更新版本。
     - 請確定已在還原伺服器中將登錄機碼設定為以下建議的設定，並務必將伺服器重新開機。 GUID 旁的編號範圍可以從 0001-0005。 在下列範例中是 0004。 瀏覽登錄機碼路徑，直到 [參數] 區段為止。
 
-    ![iscsi-reg-key-changes.png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+    ![登錄機碼變更](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
 
 ```registry
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
@@ -343,7 +343,7 @@ mount [RAID Disk Path] [/mountpath]
 
 - 如果還原伺服器是 Linux VM：
   - 在檔案 /etc/iscsi/iscsid.conf 中，將設定從：
-    - node.conn[0].timeo.noop_out_timeout = 5 變更為 node.conn[0].timeo.noop_out_timeout = 30
+    - `node.conn[0].timeo.noop_out_timeout = 5`  自 `node.conn[0].timeo.noop_out_timeout = 30`
 - 進行上述變更之後，再次執行指令碼。 進行這些變更之後，檔案復原很可能會成功。
 - 每次使用者下載指令碼時，Azure 備份會起始準備復原點以進行下載的程序。 若使用大型磁碟，此程序將需要相當長的時間。 如果有連續要求暴增，則目標準備將進入下載螺旋。 因此，建議您從入口網站/PowerShell/CLI 下載指令碼、等待 20-30 分鐘 (啟發學習法)，然後執行該指令碼。 此時，目標應該已準備好從指令碼連線。
 - 在檔案復原之後，請務必返回入口網站，並針對無法裝載磁片區的復原點選取 [ **卸載磁片** ]。 基本上，此步驟將會清除任何現有的程序/工作階段，並增加復原的機會。

@@ -3,10 +3,8 @@
 - name: 概觀
   expanded: true
   items:
-    - name: 什麼是語音服務？
+    - name: 語音服務概觀
       href: overview.md
-    - name: 免費試用語音服務
-      href: get-started.md
     - name: 語言和語音支援
       displayName: 'languages,locales,voice,gender,language code,locale,locale code,neural voice,standard voice'
       href: language-support.md

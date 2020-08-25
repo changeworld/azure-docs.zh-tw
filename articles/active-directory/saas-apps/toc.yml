@@ -1877,6 +1877,8 @@
           href: zscaler-zscloud-tutorial.md
         - name: Zwayam
           href: zwayam-tutorial.md
+        - name: Zylo
+          href: zylo-tutorial.md
 - name: 使用者佈建教學課程
   expanded: true
   items:

@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: aa9813480425d179bdd11bac6f6f944f9f65e3ab
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 78204be967bafdd7d01af4f9f286bd15347e4a9f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741971"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798035"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>從我的應用程式入口網站中登入和啟動應用程式
 
@@ -33,7 +33,7 @@ ms.locfileid: "83741971"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> 本內容適用於我的應用程式使用者。 如果您是系統管理員，可以在[應用程式管理文件](https://docs.microsoft.com/azure/active-directory/manage-apps)中找到更多關於如何設定和管理雲端式應用程式的資訊。
+> 本內容適用於我的應用程式使用者。 如果您是系統管理員，可以在[應用程式管理文件](../manage-apps/index.yml)中找到更多關於如何設定和管理雲端式應用程式的資訊。
 
 ## <a name="supported-browsers"></a>支援的瀏覽器
 
@@ -59,7 +59,7 @@ ms.locfileid: "83741971"
 
 - 請在 [最近使用] 區段中查看您最後使用的應用程式。
 
-- 在遠端時，搭配[應用程式 Proxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started) 使用內部公司 URL。
+- 在遠端時，搭配[應用程式 Proxy](../manage-apps/application-proxy.md) 使用內部公司 URL。
 
 ### <a name="to-download-and-install-the-extension"></a>下載並安裝延伸模組
 

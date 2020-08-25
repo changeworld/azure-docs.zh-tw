@@ -3,12 +3,12 @@ title: Media graph 概念-Azure
 description: Media graph 可讓您定義媒體的捕獲來源、處理方式，以及應該傳遞結果的位置。 本文提供 media graph 概念的詳細描述。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 9889c7135a23a8817f4922d3e537eb51f26cdae0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8c6775da6804b5079c89cae73d4621dd8067e90a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690675"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798834"
 ---
 # <a name="media-graph"></a>媒體圖表
 
@@ -79,11 +79,11 @@ RTSP 來源節點可讓您從 [RTSP] (伺服器內嵌媒體 https://tools.ietf.o
 
 #### <a name="http-extension-processor"></a>HTTP 擴充處理器
 
-[HTTP 擴充處理器] 節點可讓您將自己的 IoT Edge 模組連接到 media graph。 此節點會取得已解碼的影片畫面作為輸入，並將這類畫面轉送至您的模組所公開的 HTTP REST 端點。 如果需要，此節點可以向 REST 端點進行驗證。 此外，節點也有內建的影像格式器，可在將影片框架轉送至 REST 端點之前進行縮放和編碼。 Scaler 具有要保留、填補或延展的影像外觀比例的選項。 影像編碼器支援 jpeg、png 或 bmp 格式。
+[HTTP 擴充處理器] 節點可讓您將自己的 IoT Edge 模組連接到 media graph。 此節點會取得已解碼的影片畫面作為輸入，並將這類畫面轉送至您的模組所公開的 HTTP REST 端點。 如果需要，此節點可以向 REST 端點進行驗證。 此外，節點也有內建的影像格式器，可在將影片框架轉送至 REST 端點之前進行縮放和編碼。 Scaler 具有要保留、填補或延展的影像外觀比例的選項。 影像編碼器支援 JPEG、PNG 或 BMP 格式。
 
 #### <a name="grpc-extension-processor"></a>gRPC 擴充處理器
 
-GRPC 延伸模組處理器節點會以解碼的影片畫面作為輸入，並將這類畫面轉送至您的模組所公開的 gRPC 端點。 此外，節點也有內建的影像格式器，可在將影片框架轉送至 gRPC 端點之前進行縮放和編碼。 Scaler 具有要保留、填補或延展的影像外觀比例的選項。 影像編碼器支援 jpeg、png 或 bmp 格式。
+GRPC 延伸模組處理器節點會以解碼的影片畫面作為輸入，並將這類畫面轉送至您的模組所公開的 [gRPC](terminology.md#grpc) 端點。 此外，節點也有內建的影像格式器，可在將影片框架轉送至 gRPC 端點之前進行縮放和編碼。 Scaler 具有要保留、填補或延展的影像外觀比例的選項。 影像編碼器支援 jpeg、png 或 bmp 格式。
 
 #### <a name="signal-gate-processor"></a>信號閘道處理器  
 
@@ -105,7 +105,7 @@ IoT 中樞的 [訊息接收] 節點可讓您將事件發佈至 IoT Edge Hub。 I
 
 ## <a name="rules-on-the-use-of-nodes"></a>使用節點的規則
 
-如需如何在 media graph 內使用不同節點的其他規則，請參閱 [配額](quotas-limitations.md#limitations-on-graph-topologies-at-preview) 。
+如需有關如何在 media graph 內使用不同節點的其他規則，請參閱 [圖形拓撲的限制](quotas-limitations.md#limitations-on-graph-topologies-at-preview) 。
 
 ## <a name="scenarios"></a>案例
 

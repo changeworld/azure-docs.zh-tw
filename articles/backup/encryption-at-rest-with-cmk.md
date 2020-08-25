@@ -3,12 +3,12 @@ title: 使用客戶管理的金鑰來加密備份資料
 description: 瞭解 Azure 備份如何讓您使用客戶管理的金鑰 (CMK) 來加密備份資料。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: dfed3f983867568befc77d7dbc81cdde70eef9ed
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2c83350acad59e72cfabc8e40069aab46d785b63
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589600"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763111"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客戶管理的金鑰來加密備份資料
 
@@ -258,6 +258,6 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
 使用 CMK encryption 進行備份，不會對您產生任何額外的成本。 不過，您可能會繼續產生使用您的 Azure Key Vault 儲存金鑰的費用。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure 備份中的安全性功能概觀](security-overview.md)

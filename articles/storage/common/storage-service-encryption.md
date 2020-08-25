@@ -4,17 +4,17 @@ description: Azure 儲存體藉由在將資料保存到雲端之前自動加密�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 08/21/2020
+ms.date: 08/24/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a5e7060b31a936bd54dc0a1f084f823beb076044
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: fd819f0b819007611f5232d0fdfb324173d9c4b4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756804"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797916"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>待用資料的 Azure 儲存體加密
 
@@ -36,7 +36,7 @@ Azure 儲存體中的資料會以透明的方式使用256位 [AES 加密](https:
 
 ## <a name="about-encryption-key-management"></a>關於加密金鑰管理
 
-新儲存體帳戶中的資料會使用 Microsoft 管理的金鑰進行加密。 您可以依賴 Microsoft 管理的金鑰來加密您的資料，也可以使用您自己的金鑰管理加密。 如果您選擇使用自己的金鑰管理加密，您有兩個選項：
+根據預設，新儲存體帳戶中的資料會使用 Microsoft 管理的金鑰進行加密。 您可以繼續依賴 Microsoft 管理的金鑰來加密您的資料，也可以使用您自己的金鑰管理加密。 如果您選擇使用自己的金鑰管理加密，您有兩個選項。 您可以使用任一種類型的金鑰管理或兩者：
 
 - 您可以使用 Azure Key Vault 來指定 *客戶管理的金鑰* ，以用於加密和解密 Blob 儲存體和 Azure 檔案儲存體中的資料。<sup>1，2</sup> 如需客戶管理金鑰的詳細資訊，請參閱 [使用客戶管理的金鑰搭配 Azure Key Vault 管理 Azure 儲存體加密](encryption-customer-managed-keys.md)。
 - 您可以在 Blob 儲存體作業上指定 *客戶提供的金鑰* 。 對 Blob 儲存體進行讀取或寫入要求的用戶端可以在要求上包含加密金鑰，以對 blob 資料的加密和解密方式進行細微的控制。 如需客戶提供之金鑰的詳細資訊，請參閱針對 [Blob 儲存體的要求提供加密金鑰](encryption-customer-provided-keys.md)。
@@ -53,6 +53,9 @@ Azure 儲存體中的資料會以透明的方式使用256位 [AES 加密](https:
 
 <sup>1</sup> 如需有關建立支援將客戶管理的金鑰與佇列儲存體搭配使用之帳戶的詳細資訊，請參閱 [建立支援客戶管理的佇列金鑰的帳戶](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。<br />
 <sup>2</sup> 如需有關建立支援將客戶管理的金鑰與資料表儲存體搭配使用之帳戶的詳細資訊，請參閱 [建立支援資料表之客戶管理金鑰的帳戶](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
+
+> [!NOTE]
+> Microsoft 管理的金鑰會根據合規性需求適當地輪替。 如果您有特定的金鑰輪替需求，Microsoft 建議您移至客戶管理的金鑰，讓您可以自行管理和審核輪替。
 
 ## <a name="encryption-scopes-for-blob-storage-preview"></a>Blob 儲存體 (預覽) 的加密範圍
 

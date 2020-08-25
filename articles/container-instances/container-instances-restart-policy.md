@@ -1,20 +1,20 @@
 ---
-title: 執行一次工作的重新開機原則
+title: 針對執行一次的工作重新開機原則
 description: 了解如何使用 Azure Container Instances 來執行工作，該工作會執行到完成為止，例如建置、測試或映像轉譯作業。
 ms.topic: article
-ms.date: 04/15/2019
-ms.openlocfilehash: a582036ae54a0b100b768e37bcf0d952521559d9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/11/2020
+ms.openlocfilehash: 336a31a03cdc9dfdfebe79ef47b59ef90053f523
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261335"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798936"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>使用重新啟動原則執行容器化工作
 
 在 Azure Container Instances 中部署容器的簡易和快速，提供令人信服的平台，可以用來進行執行一次的工作，例如在容器執行個體中建置、測試和映像轉譯。
 
-使用可設定的重新啟動原則，您可以指定當容器的程序完成時，停止容器。 因為容器執行個體是由第二個開始計費，所以您只需支付當執行您的工作之容器執行時所使用的計算資源。
+使用可設定的重新啟動原則，您可以指定當容器的程序完成時停止容器。 因為容器執行個體是由第二個開始計費，所以您只需支付當執行您的工作之容器執行時所使用的計算資源。
 
 本文所呈現的範例是使用 Azure CLI。 您必須[在本機安裝][azure-cli-install] Azure CLI 版本 2.0.21 或更新版本，或者使用 [Azure Cloud Shell](../cloud-shell/overview.md) 中的 CLI。
 
@@ -24,9 +24,11 @@ ms.locfileid: "86261335"
 
 | 重新啟動原則   | 描述 |
 | ---------------- | :---------- |
-| `Always` | 容器群組中的容器一律會重新啟動。 這是在建立容器之際未指定重新啟動原則時，套用的**預設**設定。 |
+| `Always` | 容器群組中的容器一律會重新啟動。 這是在建立容器之際未指定重新啟動原則時，所套用的**預設**設定。 |
 | `Never` | 容器群組中的容器永不重新啟動。 容器最多執行一次。 |
-| `OnFailure` | 容器群組中的容器只會在容器中的程序執行失敗時 (當它以非零結束代碼終止時) 重新啟動。 容器執行至少一次。 |
+| `OnFailure` | 容器群組中的容器只會在容器中的處理序執行失敗時 (當它以非零結束代碼終止時) 重新啟動。 容器執行至少一次。 |
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="specify-a-restart-policy"></a>指定重新啟動原則
 
@@ -42,7 +44,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>執行至完成範例
 
-若要查看作用中的重新開機原則，請從 Microsoft [aci-wordcount][aci-wordcount-image]映射建立容器實例，然後指定 `OnFailure` 重新開機原則。 此範例容器會執行 Python 指令碼，根據預設，它會分析 Shakespeare 的 [Hamlet](http://shakespeare.mit.edu/hamlet/full.html) 的文字，將 10 個最常見的字詞寫入 STDOUT，然後結束。
+若要查看作用中的重新開機原則，請從 Microsoft [aci wordcount][aci-wordcount-image] 映射建立容器實例，並指定 `OnFailure` 重新開機原則。 此範例容器會執行 Python 指令碼，根據預設，它會分析 Shakespeare 的 [Hamlet](http://shakespeare.mit.edu/hamlet/full.html) 的文字，將 10 個最常見的字詞寫入 STDOUT，然後結束。
 
 使用下列 [az container create][az-container-create] 命令執行範例容器：
 
@@ -94,7 +96,7 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 ## <a name="next-steps"></a>後續步驟
 
-以工作為基礎的案例，例如批次處理含有數個容器的大型資料集，可以在執行時間利用自訂[環境變數](container-instances-environment-variables.md)或[命令列](container-instances-start-command.md)。
+以工作為基礎的案例（例如批次處理含有數個容器的大型資料集），可以在執行時間利用自訂 [環境變數](container-instances-environment-variables.md) 或 [命令列](container-instances-start-command.md) 。
 
 如需如何保存執行至完成之容器的輸入的詳細資訊，請參閱[使用 Azure Container Instances 來掛接 Azure 檔案共用](./container-instances-volume-azure-files.md)。
 
