@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/21/2020
-ms.openlocfilehash: ba3c7304b0ce52cb720a9e2ac7ae6cf1b5ffeeea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 08/25/2020
+ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751466"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826815"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 版本資訊
 
@@ -75,4 +75,4 @@ HDInsight 會持續改善叢集的可靠性和效能。
 
 ## <a name="known-issues"></a>已知問題
 
-嘗試從 Azure 入口網站建立 Azure HDInsight 叢集並使用公開金鑰的 SSH 驗證類型時，當使用者按一下 [ **審核 + 建立**] 時，就會發生錯誤。 入口網站中的錯誤為「不得包含來自 SSH 使用者名稱的三個連續字元」。 正在解決此問題;但是，如果您遇到此錯誤，因應措施是使用 ARM 範本建立叢集。 
+已在 Azure 入口網站中修正問題，當使用者使用公開金鑰的 SSH 驗證類型建立 Azure HDInsight 叢集時，就會遇到錯誤。 當使用者按一下 [ **審核 + 建立**] 時，他們會收到錯誤「不得包含 SSH 使用者名稱中的三個連續字元」。 已修正此問題，但您可能需要按 CTRL + F5 以載入更正的視圖，以重新整理瀏覽器快取。 解決此問題的因應措施是使用 ARM 範本建立叢集。 

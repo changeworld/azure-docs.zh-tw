@@ -3,12 +3,12 @@ title: 在 Azure VM 上管理備份的 SAP HANA 資料庫
 description: 在本文中，可了解在 Azure 虛擬機器上執行的 SAP HANA 資料庫的一般管理和監視工作。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 98dd67668d1b88a25dfa3b91174cd96730c435e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7e23ffc2fe39389725519f7b94a0fe6ffaecf69c
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049465"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826696"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>管理和監視已備份的 SAP Hana 資料庫
 
@@ -63,7 +63,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 1. 在保存庫功能表中，按一下 [備份項目]。
 2. 在 [備份項目] 中，選取執行 SAP Hana 資料庫的 VM，然後按一下 [立即備份]。
-3. 在 [**立即備份**] 中，選擇您想要執行的備份類型。 然後按一下 [確定] 。 系統會根據與此備份專案相關聯的原則來保留此備份。
+3. 在 [ **立即備份**] 中，選擇您想要執行的備份類型。 然後按一下 [確定] 。 系統會根據與此備份專案相關聯的原則來保留此備份。
 4. 監視入口網站通知。 您可以在保存庫儀表板中監視作業進度 > [備份作業] > [進行中]。 根據您的資料庫大小，建立初始備份可能需要花一點時間。
 
 ### <a name="hana-native-client-integration"></a>HANA 原生用戶端整合
@@ -129,7 +129,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 >[!NOTE]
 > 除了新的復原點以外，保留期限內的任何變更也會回溯套用。
 >
-> 增量備份原則無法用於 SAP HANA 資料庫。 這些資料庫目前不支援增量備份。
+> 增量備份原則無法用於 SAP Hana 資料庫。 這些資料庫目前不支援增量備份。
 
 ### <a name="modify-policy"></a>修改原則
 
@@ -171,7 +171,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 如果您選擇保留復原點，請記住下列詳細資料：
 
-* 所有復原點會永遠保持不變，而停止保護但保留資料時，所有清除作業都應該停止。
+* 所有復原點會永遠保持不變，而且所有的剪除都會停止保護，但保留資料。
 * 您需支付受保護執行個體和已使用儲存體的費用。 如需詳細資訊，請參閱 [Azure 備份服務定價](https://azure.microsoft.com/pricing/details/backup/)。
 * 如果您刪除資料來源，但沒有停止備份，新的備份將會失敗。
 
@@ -198,7 +198,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 ### <a name="resume-protection-for-an-sap-hana-database"></a>繼續 SAP HANA 資料庫的保護
 
-您停止保護 SAP HANA 資料庫時，如果您選取 [保留備份資料] 選項，您可以在稍後恢復保護。 如果您沒有保留已備份的資料，就無法繼續保護。
+您停止保護 SAP HANA 資料庫時，如果您選取 [保留備份資料] 選項，您可以在稍後恢復保護。 如果您未保留備份資料，則無法繼續保護。
 
 若要繼續 SAP HANA 資料庫的保護：
 
@@ -214,7 +214,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 ### <a name="upgrading-from-sdc-to-mdc-without-a-sid-change"></a>在沒有 SID 變更的情況下從 SDC 升級至 MDC
 
-瞭解如何在[從 SDC 升級至 MDC 之後](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid)，繼續備份其 SID 尚未變更的 SAP Hana 資料庫。
+瞭解如何 [在從 SDC 升級至 MDC 之後](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid)，繼續備份 SID 未變更的 SAP Hana 資料庫。
 
 ### <a name="unregister-an-sap-hana-instance"></a>取消註冊 SAP HANA 執行個體
 

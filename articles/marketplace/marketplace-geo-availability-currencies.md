@@ -7,18 +7,18 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136332"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826764"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商業市集的地理可用性和貨幣支援
 
 ## <a name="supported-geographic-locations"></a>支援的地理位置
 
-商業市集供應項目可以在 141 個地區 (以客戶帳單地址定義的地區) 購買，而交易可以用 17 種貨幣完成。 下表列出每個支援的地理位置、其[ISO 3166 2 位數的 Alpha 代碼](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)，以及指派的貨幣。
+商業市集供應項目可以在 141 個地區 (以客戶帳單地址定義的地區) 購買，而交易可以用 17 種貨幣完成。 下表列出每個支援的地理位置、其 [ISO 3166 2 位數的 Alpha 代碼](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)，以及指派的貨幣。
 
 |   國家/地區名稱               |   ISO-2   |   貨幣   |
 |-------------------------------------|-----------|--------------|
@@ -172,24 +172,31 @@ ms.locfileid: "88136332"
 
 ## <a name="how-we-convert-currency"></a>如何轉換貨幣
 
-針對所有付費供應專案類型，Isv 可以選擇以美元為單位來輸入價格，或上傳當地貨幣的價格。 以美元輸入的價格會在儲存頁面時自動轉換為當地貨幣。 合作夥伴中心使用的費率會每日更新。 Isv 可以匯出價格，並查看已轉換的對等專案。
+針對所有付費供應專案類型，您可以選擇以美元輸入價格，或以當地貨幣來上傳價格。 以美元輸入的價格會在儲存頁面時自動轉換為當地貨幣。 合作夥伴中心使用的費率會每日更新。 您可以匯出價格，並檢查已轉換的對等專案。
 
-若要在發佈之前調整任何價格，只需要匯出定價試算表、修改它，然後上傳變更。
+若要在發佈之前調整任何價格，只要匯出定價試算表、加以修改，然後將其上傳至變更。
 
 > [!NOTE]
 > 在您的方案中發佈市場價格之後，之後就無法進行變更。 若要在發佈之前確保價格正確，請匯出定價試算表，並檢閱每個市場的價格。
 
-## <a name="retrieving-currency-information-by-api"></a>依 API 正在抓取貨幣資訊
+供應專案的價格一律會以當地貨幣向客戶顯示。 您在合作夥伴中心中選取的價格會根據您在合作夥伴中心中儲存價格時的匯率，轉換成當地貨幣的客戶。 除非您重新發佈您的供應專案，否則在線上商店中向客戶顯示的價格不會變更。
 
-個別價格 (，根據其設定方式，可能會受到其儲存當天的匯率影響，) 可以使用 API 來抓取。無法進行貨幣資訊。
+Microsoft 會以當地貨幣接收客戶的款項，並以您的當地貨幣來支付費用。 Microsoft 會使用購買日的匯率，將客戶當地貨幣轉換為當地貨幣。
 
-如需如何輸入特定供應專案類型價格的詳細資訊，請參閱下列文章：
+> [!NOTE]
+> Microsoft 會使用 Microsoft 財政部兌換費率來轉換供應專案價格。
+
+## <a name="retrieving-currency-information-by-api"></a>依 API 抓取貨幣資訊
+
+個別價格 (根據其設定方式而定，可能會在其儲存當天的匯率受到 exchange 費率的影響，) 可使用 API 來取得。無法進行貨幣資訊。
+
+如需有關如何輸入特定供應專案類型價格的詳細資訊，請參閱下列文章：
 
 - [建立 Azure 應用程式供應項目](partner-center-portal/create-new-azure-apps-offer.md)
 - [建立 Azure 容器供應專案](partner-center-portal/create-azure-container-offer.md)
 - [建立 Azure 虛擬機器供應項目](partner-center-portal/azure-vm-create-offer.md)
 - [建立諮詢服務供應項目](partner-center-portal/create-consulting-service-offer.md)
-- [建立 Dynamics 365 for Customer Engagement & PowerApps 供應專案](partner-center-portal/create-new-customer-engagement-offer.md)
+- [建立 Dynamics 365 for Customer Engagement 和 PowerApps 供應項目](partner-center-portal/create-new-customer-engagement-offer.md)
 - [建立 Dynamics 365 for Operations 供應項目](partner-center-portal/create-new-operations-offer.md)
 - [建立 Dynamics 365 Business Central 供應項目](partner-center-portal/create-new-business-central-offer.md)
 - [建立 IoT Edge 模組供應項目](partner-center-portal/azure-iot-edge-module-creation.md)

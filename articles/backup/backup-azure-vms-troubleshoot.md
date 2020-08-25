@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 104fb177a1379d5a09dc54cf6f78c401744d697f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: bf2a811098138663f1b7f2acd174d6bca4aa6150
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763298"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826235"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -26,9 +26,9 @@ ms.locfileid: "88763298"
 * 確認另一個備份服務未執行。
   * 若要確保沒有快照集擴充功能問題，請[解除安裝擴充功能，以強制重新載入並重試備份](./backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)。
 * 確認 VM 具有網際網路連線。
-  * 確定另一個備份服務未執行。
+  * 請確定沒有其他備份服務正在執行。
 * 從 `Services.msc` 中，確定 **Windows Azure 客體代理程式**服務**執行中**。 如果遺漏 **Windows Azure 客體代理程式** 服務，請從[備份復原服務保存庫中的 Azure VM](./backup-azure-arm-vms-prepare.md#install-the-vm-agent)安裝該服務。
-* **事件記錄檔** 可能會顯示來自其他備份產品 (例如，Windows Server 備份)，而不是由於 Azure 備份而產生的備份失敗。 請使用下列步驟來判斷問題是否與 Azure 備份有關：
+* **事件記錄**檔可能會顯示來自其他備份產品（例如 Windows Server backup）的備份失敗，而不是因為 Azure 備份所致。 請使用下列步驟來判斷問題是否與 Azure 備份有關：
   * 如果事件來源或訊息中的項目**備份**發生錯誤，請檢查 Azure IaaS VM 備份是否成功，以及是否已使用所需的快照集類型建立還原點。
   * 如果 Azure 備份運作中，則問題可能與另一個備份解決方案有關。
   * 以下是事件檢視器錯誤 517 的範例，其中 Azure 備份正常運作，但「Windows Server 備份」失敗：<br>
@@ -71,7 +71,7 @@ ms.locfileid: "88763298"
 錯誤碼：UserErrorFsFreezeFailed <br/>
 錯誤訊息：無法凍結 VM 的一或多個掛接點以建立檔案系統一致快照集。
 
-* 使用 **umount** 命令來卸載未清除檔案系統狀態的裝置。
+* 使用 **umount** 命令卸載未清除檔案系統狀態的裝置。
 * 使用 **fsck** 命令對這些裝置執行檔案系統一致性檢查。
 * 重新裝載裝置並重試備份作業。</ol>
 
@@ -114,7 +114,7 @@ ms.locfileid: "88763298"
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
 
-新增此登錄機碼將導致不會針對 blob 快照集建立執行緒，並防止逾時。
+新增此登錄機碼會導致無法為 blob 快照集建立執行緒，並防止超時。
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - 備份擴充功能的剖析和設定失敗
 
@@ -167,12 +167,12 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 快照集作業失敗，因為部分連結的磁碟已超出快照集限制。 請完成下列疑難排解步驟，然後重試此操作。
 
-* 刪除不需要的磁片 blob 快照集。 請小心不要刪除磁碟 blob，只須刪除快照集 blob。
-* 如果已在 VM 磁碟儲存體帳戶上啟用虛刪除，請設定虛刪除保留，讓現有的快照集小於任何時間點所允許的最大值。
+* 刪除不需要的磁片 blob 快照集。 請小心不要刪除磁片 blob。 只有快照集 blob 應該刪除。
+* 如果已在 VM 磁片儲存體帳戶上啟用虛刪除，請設定虛刪除保留，讓現有的快照集小於任何時間點允許的最大值。
 * 如果已在備份的 VM 中啟用 Azure Site Recovery，請執行下列步驟：
 
   * 確定 **isanysnapshotfailed** 的值已在 /etc/azure/vmbackup.conf 設為 false
-  * 將 Azure Site Recovery 排定在不同的時間進行，使其不會與備份作業發生衝突。
+  * 請在不同的時間排程 Azure Site Recovery，使其不會與備份作業產生衝突。
 
 ### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive - 因為 VM 資源不足，所以快照集作業失敗
 

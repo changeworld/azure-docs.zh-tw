@@ -4,12 +4,12 @@ description: 如何跨 Azure 訂用帳戶和資源群組移動復原服務保存
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: b4de4c58e6a6551fa7c27db9755bb02a11700721
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 0b06b12c2bb989e4c0fc4e04440fc5f452df2da3
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755733"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827115"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 訂用帳戶和資源群組移動復原服務保存庫
 
@@ -106,7 +106,7 @@ ms.locfileid: "88755733"
 7. 選取 [ **我瞭解與移動的資源相關聯的工具和腳本在更新為使用新的資源識別碼] 選項之前將無法運作** ，然後選取 **[確定]**。
 
 > [!NOTE]
-> 不支援跨訂用帳戶備份 (RS 保存庫和受保護的 VM 位於不同訂用帳戶) 的案例。 此外，在保存庫移動作業進行期間，將無法修改從本機備援儲存體 (LRS) 到全域備援儲存體 (GRS) (反之亦然) 的儲存體備援選項。
+> 跨訂用帳戶備份 (RS 保存庫和受保護的 Vm 位於不同的訂用帳戶，) 不是支援的案例。 此外，在保存庫移動作業期間，無法修改本機冗余儲存體中的儲存體冗余選項 (LRS) 至全域冗余儲存體 (GRS) ，反之亦然。
 >
 >
 

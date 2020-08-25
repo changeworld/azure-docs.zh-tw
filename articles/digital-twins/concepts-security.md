@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 973eeebfdf9164cb50cf98ae8edc845a80a7e080
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d528ff41d8b7098e313e070dfe734960cdc89eaa
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794508"
+ms.locfileid: "88827523"
 ---
 # <a name="secure-azure-digital-twins"></a>保護 Azure 數位 Twins
 
@@ -79,7 +79,7 @@ Azure 提供下列 Azure 內建角色，以授權存取 Azure 數位 Twins 資�
 
 ## <a name="encryption-of-data-at-rest"></a>待用資料加密
 
-Azure 數位 Twins 會將待用資料和傳輸中的資料加密提供給資料中心，並在您存取資料中心時將其解密。
+Azure 數位 Twins 會將待用資料和傳輸中的資料加密提供給資料中心，並在您存取資料中心時將其解密。 這項加密會使用 Microsoft 管理的加密金鑰進行。
 
 ## <a name="next-steps"></a>後續步驟
 

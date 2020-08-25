@@ -3,12 +3,12 @@ title: 使用 DPM 和 MABS 的 Azure 資料箱進行離線備份
 description: 您可以使用 Azure 資料箱從 DPM 與 MABS 離線植入初始備份資料。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: d6305607170e02c2f6e104ff8b18011b8657947b
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 974be6d337c3376d10e09ba6211f7804c2c8cada
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762448"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824554"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>使用 DPM 和 MABS (Preview) 的 Azure 資料箱進行離線植入
 
@@ -131,7 +131,7 @@ DPM/MABS 伺服器會在系統內容中運作，因此需要將相同層級的�
     ![選擇初始線上複寫](./media/offline-backup-azure-data-box-dpm-mabs/choose-initial-online-replication.png)
 
     >[!NOTE]
-    > 因為此功能處於預覽狀態，所以無法 **使用 Microsoft 擁有的磁片** 來選取傳輸的選項 MABS v3。 [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com)如果您想要將此功能用於 MABS v3，請與我們聯繫。
+    > 因為此功能處於預覽狀態，所以無法 **使用 Microsoft 擁有的磁片** 來選取傳輸的選項。 [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com)如果您想要將此功能用於 MABS v3，請與我們聯繫。
 
 12. 出現提示時，使用具有 Azure 訂用帳戶擁有者存取權的使用者認證來登入 Azure。 成功登入之後，會顯示下列畫面：
 
@@ -234,7 +234,7 @@ DPM 伺服器上的 Microsoft Azure 備份 (MAB) 代理程式會在您的租用�
 2. 如果沒有任何其他伺服器已設定離線植入，且沒有其他任何伺服器相依於 `AzureOfflineBackup_<Azure User Id>` 應用程式，則從 Azure 入口網站 > [Azure Active Directory] > [應用程式註冊] 刪除此應用程式。
 
    > [!NOTE]
-   > 檢查應用程式 `AzureOfflineBackup_<Azure User Id>` 是否未設定任何其他離線植入，且沒有任何其他伺服器相依於此應用程式。 移至 [公開金鑰] 區段下的 [設定] > [金鑰]，其不應新增任何其他**公開金鑰**。 如需參考，請參閱下列螢幕擷取畫面：
+   > 檢查應用程式是否沒有設定 `AzureOfflineBackup_<Azure User Id>` 任何其他離線植入，也沒有其他伺服器相依于此應用程式。 移至 [公開金鑰] 區段下的 [ **設定] > 索引鍵** 。 它不應該加入任何其他的 **公開金鑰** 。 如需參考，請參閱下列螢幕擷取畫面：
    >
    > ![公開金鑰](./media/offline-backup-azure-data-box-dpm-mabs/public-keys.png)
 

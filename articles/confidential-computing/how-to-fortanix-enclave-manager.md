@@ -9,19 +9,19 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: d46354b18d5c3317cc1ed67d839feb26b7b6b5d0
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b5b0f9acc45dba81bb7653c844bb8c78a8bd29ba
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815839"
+ms.locfileid: "88826288"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>How To：使用 Fortanix 記憶體保護區管理員執行應用程式 
 
 使用[Fortanix 記憶體保護區 Manager](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.enclave_manager?tab=Overview)和[Fortanix](https://www.fortanix.com/)中的[Fortanix 節點代理](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.rte_node_agent)程式，開始在 Azure 機密運算中執行您的應用程式。
 
 
-Fortanix 是協力廠商軟體廠商，其產品和服務建置於 Azure 基礎結構之上。 其他協力廠商提供者在 Azure 上提供類似的機密計算服務，例如 [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) 和 [Scone](https://sconedocs.github.io)。  
+Fortanix 是協力廠商軟體廠商，其產品和服務建置於 Azure 基礎結構之上。 其他協力廠商提供者在 Azure 上提供類似的機密計算服務。
 
 > [!Note] 
  > 本檔所提及的產品不在 MICROSOFT 的控制之下。 MICROSOFT 只是為了方便起見而提供這項資訊，而這些非 MICROSOFT 產品的參考並不表示 MICROSOFT 的背書。
@@ -33,7 +33,7 @@ Fortanix 是協力廠商軟體廠商，其產品和服務建置於 Azure 基礎�
  如需 Fortanix 特定的支援，請加入 Fortanix 的 [ [時差](https://fortanix.com/community/) ]，並使用 channel #enclavemanager。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 1. 如果您沒有 Fortanix 記憶體保護區 Manager 帳戶，請在開始之前 [註冊](https://em.fortanix.com/auth/sign-up) 。
 1. 用來推送已轉換應用程式映射的私人 [Docker](https://docs.docker.com/) 登錄。
@@ -162,7 +162,7 @@ Fortanix EM 映射是應用程式的軟體版本或版本。 每個映射都與�
 
 若不再需要，您可以刪除資源群組、虛擬機器和相關聯的資源。 刪除資源群組將會取消註冊與您已轉換之影像相關聯的節點。 
 
-請選取虛擬機器的資源群組，然後選取 [刪除]。 確認資源群組的名稱，以完成刪除資源。
+請選取虛擬機器的資源群組，然後選取 [刪除]。 確認要完成資源刪除作業的資源群組名稱。
 
 若要刪除您所建立的 Fortanix 記憶體保護區管理員帳戶，請移至記憶體保護區管理員中的 [ [帳戶] 頁面](https://em.fortanix.com/accounts) 。 將滑鼠停留在您想要刪除的帳戶上方。 選取右上角的垂直黑色點，然後選取 [ **刪除帳戶**]。
 
@@ -174,3 +174,4 @@ Fortanix EM 映射是應用程式的軟體版本或版本。 每個映射都與�
 
 若要深入瞭解 Azure 的機密計算供應專案，請參閱 [azure 機密計算總覽](overview.md)
 
+ 瞭解如何使用 Azure 上的其他協力廠商供應專案（例如 [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) 和 [Scone](https://sconedocs.github.io)）來完成類似的工作。  

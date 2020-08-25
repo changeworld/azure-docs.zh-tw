@@ -1,6 +1,6 @@
 ---
 title: Azure 入口網站鍵盤快速鍵 | Microsoft Docs
-description: Azure 入口網站支援全域鍵盤快速鍵，可協助您執行動作、流覽和移至 Azure 入口網站中的位置。
+description: Azure 入口網站支援全域鍵盤快速鍵，以協助您執行動作、流覽和移至 Azure 入口網站中的位置。
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 7d9bc6365070c0aec96def2f55758204925fe7ba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e3f078cdaa54246d91e6bff5393171c05935d755
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205951"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826781"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure 入口網站的鍵盤快速鍵
 
-本文列出 Azure 入口網站中所有地方都能使用的鍵盤快速鍵。 個別的服務可能會擁有各自的鍵盤快速鍵。
+本文列出 Azure 入口網站中隨處運作的鍵盤快速鍵。 個別的服務可能會擁有各自的鍵盤快速鍵。
 
 ## <a name="actions"></a>動作
 
@@ -34,24 +34,28 @@ ms.locfileid: "88205951"
 |開啟 **所有服務**|G+B|
 |搜尋資源、服務及文件|G+/|
 |搜尋資源功能表項目|CTRL+/ |
-|上移選取的左邊欄專案 |ALT+Shift+向上鍵|
-|將選取的左提要欄位向下移動 |ALT+Shift+向下鍵|
+|上移選取的左方側邊欄專案 |ALT+Shift+向上鍵|
+|將選取的左方側邊欄專案向下移動 |ALT+Shift+向下鍵|
 
-## <a name="navigation"></a>巡覽
+## <a name="navigation"></a>導覽
 
 |若要進行此導覽 |按鍵 |
 | --- | --- |
 |將焦點移至命令列 |G+, |
-|在標頭和左側提要欄位之間切換焦點 | G+. |
+|切換標題和左方提要欄位之間的焦點 | G+. |
 
 ## <a name="go-to"></a>移至
 
-|前往此位置 |按鍵 |
+|移至此位置 |按鍵 |
 | --- | --- |
-|前往 **儀表板** |G+D |
-|移至 [**所有資源**]|G+A |
-|前往 **資源群組**|G+R |
-|在此位置開啟左側邊欄專案 |G+number|
+|移至 **儀表板** |G+D |
+|移至 **所有資源**|G+A |
+|移至 **資源群組**|G+R |
+|在此位置開啟左方側邊欄專案 |G+number|
+
+## <a name="keyboard-shortcuts-for-specific-pages-in-the-azure-portal"></a>Azure 入口網站中特定頁面的鍵盤快速鍵
+
+- [Azure Resource Graph 總管](../governance/resource-graph/reference/keyboard-shortcuts.md)
 
 ## <a name="next-steps"></a>後續步驟
 

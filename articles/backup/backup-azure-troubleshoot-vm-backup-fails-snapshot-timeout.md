@@ -4,12 +4,12 @@ description: 與代理程式、延伸模組及磁碟相關之 Azure 備份失敗
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 26050dfb9fdde5988fe3ae922dae5486d17f4317
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 99e175f20247058a57bb64a47465cce1ce7fbd75
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755363"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826048"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
 
@@ -119,7 +119,7 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態或未�
 建議的動作：<br>
 若要解決此問題，請移除 VM 資源群組的鎖定，並重試此作業以觸發清除動作。
 > [!NOTE]
-> 備份服務會建立與 VM 資源群組不同的資源群組，來儲存還原點集合。 建議客戶請勿鎖定建立給備份服務使用的資源群組。 備份服務建立的資源群組命名格式為：AzureBackupRG_`<Geo>`_`<number>` 例如：AzureBackupRG_northeurope_1
+> 備份服務會建立與 VM 資源群組不同的資源群組，來儲存還原點集合。 建議您不要鎖定為備份服務所建立的資源群組。 備份服務所建立之資源群組的命名格式為： AzureBackupRG_ `<Geo>` _ `<number>` 。 例如： *AzureBackupRG_northeurope_1*
 
 **步驟 1：[從還原點資源群組中移除鎖定](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **步驟 2：[清除還原點集合](#clean_up_restore_point_collection)**<br>
@@ -227,7 +227,7 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 1. 請遵循[更新 Linux VM 代理程式](../virtual-machines/extensions/update-linux-agent.md)的指示。
 
    > [!NOTE]
-   > 我們強烈建議** 您只透過散發套件存放庫更新代理程式。 我們不建議直接從 GitHub 下載代理程式程式碼，並加以更新。 如果最新的代理程式不適用於您的散發套件，請連絡散發套件支援以取得如何進行安裝的指示。 若要檢查最新的代理程式，請移至 GitHub 儲存機制中的 [Microsoft Azure Linux 代理程式 (英文)](https://github.com/Azure/WALinuxAgent/releases) 頁面。
+   > 我們強烈建議** 您只透過散發套件存放庫更新代理程式。 我們不建議直接從 GitHub 下載代理程式程式碼並加以更新。 如果最新的代理程式不適用於您的散發套件，請連絡散發套件支援以取得如何進行安裝的指示。 若要檢查最新的代理程式，請移至 GitHub 儲存機制中的 [Microsoft Azure Linux 代理程式 (英文)](https://github.com/Azure/WALinuxAgent/releases) 頁面。
 
 2. 執行下列命令，確定 Azure 代理程式正在 VM 上執行：`ps -e`
 
@@ -297,7 +297,7 @@ VM 備份仰賴發給底層儲存體帳戶的快照命令。 備份可能會失�
 
 #### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a><a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>藉由執行隨選備份來清除還原點集合
 
-移除鎖定之後，請觸發隨選備份。 此動作可確保還原點會自動清除。 此隨選作業預期第一次失敗;不過，它可確保自動清除，而不是手動刪除還原點。 清除之後，您下次排定的備份應該會成功。
+移除鎖定之後，請觸發隨選備份。 此動作可確保還原點會自動清除。 預期此隨選作業會在第一次失敗。 不過，它可確保自動清除，而不是手動刪除還原點。 清除之後，您下次排定的備份應該會成功。
 
 > [!NOTE]
 > 觸發隨選備份之後的幾個小時，就會發生自動清除。 如果您排定的備份仍然失敗，請使用[此處](#clean-up-restore-point-collection-from-azure-portal)列出的步驟，嘗試手動刪除還原點集合。
@@ -320,4 +320,4 @@ VM 備份仰賴發給底層儲存體帳戶的快照命令。 備份可能會失�
 6. 重試備份作業。
 
 > [!NOTE]
- >如果資源 (RP 集合) 有大量的還原點，則從入口網站中刪除它們可能會超時，並會失敗。 這是已知的 CRP 問題，其中所有還原點不會在規定的時間刪除而作業會逾時；不過，刪除作業通常在 2 或 3 次重試之後就會成功。
+ >如果資源 (RP 集合) 有大量的還原點，則從入口網站中刪除它們可能會超時，並會失敗。 這是已知的 CRP 問題，在此問題中，所有還原點都不會在約定時間中刪除，而且作業會超時。不過，刪除作業通常會在兩次或三次重試後成功。

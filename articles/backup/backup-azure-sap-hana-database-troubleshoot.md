@@ -3,12 +3,12 @@ title: 針對 SAP Hana 資料庫備份錯誤進行疑難排解
 description: 說明使用 Azure 備份來備份 SAP Hana 資料庫時，如何針對可能發生的常見錯誤進行疑難排解。
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 88d8f5e500c39f51e5bc1afbc2ec7804b9bc79db
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6216c39231ad17a55f0d428fe5e1f85e64cef403
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503603"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826985"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>針對 Azure 上的 SAP Hana 資料庫備份進行疑難排解
 
@@ -96,7 +96,7 @@ ms.locfileid: "86503603"
 請注意下列幾點：
 
 - 根據預設，還原的資料庫名稱會以備份項目名稱填入。 在此案例中為 h21(sdc)。
-- 將目標選取為 H11「不會」自動變更已還原的資料庫名稱。 **其應該會編輯為 h11(sdc)** 。 關於 SDC，還原的資料庫名稱將會是小寫字母的目標執行個體識別碼加上以括弧括住的 'sdc'。
+- 選取目標為 H11 時，不會自動變更還原的資料庫名稱。 **其應該會編輯為 h11(sdc)** 。 關於 SDC，還原的資料庫名稱將會是小寫字母的目標執行個體識別碼加上以括弧括住的 'sdc'。
 - 由於 SDC 只能有單一資料庫，因此您也需要按一下核取方塊，才能允許以復原點資料覆寫現有的資料庫資料。
 - Linux 會區分大小寫。 因此請小心保留大小寫。
 

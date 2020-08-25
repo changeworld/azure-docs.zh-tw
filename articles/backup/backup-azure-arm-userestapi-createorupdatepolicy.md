@@ -1,15 +1,15 @@
 ---
 title: 使用 REST API 建立備份原則
-description: 在本文中，您將瞭解如何使用 REST API 來建立和管理備份原則（排程和保留）。
+description: 在本文中，您將瞭解如何使用 REST API 來建立和管理備份原則 (排程和保留) 。
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 2fa35ed5e03ad174407e4c82fb5d4bbe69ee8131
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6a045ff1653c58a3a583b6c64941fff26f480861
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497806"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826387"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 建立 Azure 復原服務備份原則
 
@@ -129,13 +129,13 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 ```
 
 > [!IMPORTANT]
-> 排程和保留期的時間格式僅支援 DateTime。 不單獨支援 Time 格式。
+> 排程和保留期的時間格式僅支援 DateTime。 它們不支援單獨的時間格式。
 
 ## <a name="responses"></a>回應
 
 備份原則的建立/更新為[非同步作業](../azure-resource-manager/management/async-operations.md)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
-它會傳回兩個回應：在建立另一個作業時，202（已接受），然後在該作業完成時傳回200（確定）。
+它會傳回兩個回應： 202 (在建立另一個作業時接受) ，然後在該作業完成時) 200 (OK。
 
 |名稱  |類型  |描述  |
 |---------|---------|---------|

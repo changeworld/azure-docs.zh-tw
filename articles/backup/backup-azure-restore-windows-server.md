@@ -3,12 +3,12 @@ title: 使用 MARS 代理程式將檔案還原到 Windows Server
 description: 在本文中，了解如何使用 Microsoft Azure 復原服務 (MARS) 代理程式，將儲存在 Azure 中的資料還原至 Windows Server 或 Windows 電腦。
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: d9bc22204156f7562290f53db77272b9cabe6c69
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: e5158681971c5c10e813187fedb61bc0022ee9e1
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757076"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827064"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>使用 MARS 代理程式將檔案還原到 Windows Server
 
@@ -47,7 +47,7 @@ ms.locfileid: "88757076"
 
     ![[復原資料] Wizard [選取復原模式] 頁面的螢幕擷取畫面， (還原到相同的電腦) ](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
-   > 若要執行還原個別檔案與資料夾的選項，必須具備 .NET Framework 4.5.2 或更新版本。 如果您未看見 [個別檔案與資料夾] 選項，您必須先將 .NET Framework 升級至 4.5.2 版或更新版本，再重新嘗試。
+   > 若要執行還原個別檔案與資料夾的選項，必須具備 .NET Framework 4.5.2 或更新版本。 如果您沒有看到 [ **個別檔案及資料夾** ] 選項，就必須將 .NET Framework 升級至4.5.2 版或更新版本，然後再試一次。
 
    > [!TIP]
    > [個別檔案及資料夾] 選項可讓您快速存取復原點資料。 它適合用來復原個別檔案（大小總計不超過 80 GB），並在復原期間提供最多 6 MBps 的傳輸或複製速度。 [磁碟區] 選項會復原指定磁碟區中的所有備份資料。 此選項可提供更快的傳送速率 (高達 40 MBps) ，這非常適合用來復原大型資料或整個磁片區。
@@ -75,7 +75,7 @@ ms.locfileid: "88757076"
     ![[復原資料] Wizard [流覽及復原檔案] 頁面的螢幕擷取畫面 (還原到相同的電腦) -確認復原磁片區卸載](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > 如果您沒有選取 [卸載]，復原磁碟區會保持掛接 6 個小時 (從掛接後開始計算)。 不過，如果是進行中的檔案複製，掛接時間可延長至高達 24 小時。 當磁碟區處於掛接狀態時，不會執行任何備份作業。 掛接磁碟區時，任何排定要執行的備份作業都會在復原磁碟區卸載之後執行。
+    > 如果您未選取 [ **卸載**]，復原磁片區會保持掛接6個小時（從掛接時開始）。 不過，如果是進行中的檔案複製，掛接時間可延長至高達 24 小時。 當磁碟區處於掛接狀態時，不會執行任何備份作業。 掛接磁碟區時，任何排定要執行的備份作業都會在復原磁碟區卸載之後執行。
     >
 
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>使用「立即還原」將資料還原至其他電腦
@@ -138,7 +138,7 @@ ms.locfileid: "88757076"
     ![將磁片區卸載 (還原至替代電腦) ](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > 如果您沒有選取 [卸載]，復原磁碟區會保持掛接 6 個小時 (從掛接後開始計算)。 不過，如果是進行中的檔案複製，掛接時間可延長至高達 24 小時。 當磁碟區處於掛接狀態時，不會執行任何備份作業。 掛接磁碟區時，任何排定要執行的備份作業都會在復原磁碟區卸載之後執行。
+    > 如果您未選取 [ **卸載**]，復原磁片區會保持掛接6個小時（從掛接時開始）。 不過，如果是進行中的檔案複製，掛接時間可延長至高達 24 小時。 當磁碟區處於掛接狀態時，不會執行任何備份作業。 掛接磁碟區時，任何排定要執行的備份作業都會在復原磁碟區卸載之後執行。
     >
 
 ## <a name="next-steps"></a>後續步驟

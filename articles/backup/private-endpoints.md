@@ -3,12 +3,12 @@ title: 私人端點
 description: 瞭解建立 Azure 備份私用端點的程式，以及使用私人端點來協助維護資源安全性的案例。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: bbb59439677f6c7297aabbecbafeb04327f482b5
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 5c2c994b48fb2b950afb67f5c8b6d3c4f7d01e39
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762907"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826645"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 備份的私人端點
 
@@ -16,7 +16,7 @@ Azure 備份可讓您使用 [私人端點](../private-link/private-endpoint-over
 
 本文將協助您瞭解建立 Azure 備份私人端點的程式，以及使用私用端點協助維護資源安全性的案例。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - 只有在沒有任何專案已註冊至保存庫) 的 (，才能為新的復原服務保存庫建立私人端點。 因此，您必須先建立私人端點，才能嘗試保護保存庫中的任何專案。
 - 一個虛擬網路可以包含多個復原服務保存庫的私人端點。 此外，一個復原服務保存庫在多個虛擬網路中可以有私人端點。 不過，可以為保存庫建立的私人端點數目上限是12。
@@ -60,7 +60,7 @@ Azure 備份可讓您使用 [私人端點](../private-link/private-endpoint-over
 1. 系統會產生 **物件識別碼** ，也就是保存庫的受控識別。
 
     >[!NOTE]
-    >啟用之後，就不能 (停用受控識別，即使暫時) 也是如此。 停用受控身分識別可能會導致不一致的行為。
+    >啟用之後，就 **不** 能 (停用受控識別，即使暫時) 也是如此。 停用受控身分識別可能會導致不一致的行為。
 
 ## <a name="dns-changes"></a>DNS 變更
 
@@ -566,6 +566,6 @@ A. 是的，您可以使用自己的 DNS 伺服器。 不過，請確定已新�
 Q. 遵循本文中的程式之後，我是否需要在我的伺服器上執行任何額外的步驟？<br>
 A. 遵循本文中詳述的程式之後，您就不需要執行額外的工作來使用私人端點進行備份和還原。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 閱讀 [Azure 備份中的所有安全性功能](security-overview.md)

@@ -3,12 +3,12 @@ title: 使用 Azure 原則自動啟用 VM 建立的備份
 description: 本文說明如何使用 Azure 原則來針對在指定範圍內建立的所有 Vm 自動啟用備份
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: fd54c25899bc1e58a753821d2c7c2df8ff213865
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: de4923000bc842203535e03727fd532c67a8f517
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763587"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826067"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>使用 Azure 原則自動啟用 VM 建立的備份
 
@@ -52,7 +52,7 @@ ms.locfileid: "88763587"
 
 > [!NOTE]
 >
-> 建議您一次未將此原則指派給超過200個 Vm。 如果將原則指派給超過200的 Vm，它可能會導致在幾個小時之後觸發備份，而不是排程所指定的時間。
+> 建議您一次不將此原則指派給超過200個 Vm。 如果將原則指派給超過200的 Vm，可能會導致備份所觸發的時間比排程所指定的時間還要多。
 
 ## <a name="next-steps"></a>後續步驟
 

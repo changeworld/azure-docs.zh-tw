@@ -3,12 +3,12 @@ title: 刪除 Microsoft Azure 復原服務保存庫
 description: 在本文中，您將瞭解如何移除相依性，然後刪除 Azure 備份復原服務保存庫。
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: a7e922069f567a0b907c2f2cd28fe09de040cdee
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: c0b75d147abba45a745f811de5e4b8ac45088bd8
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757212"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826730"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>刪除 Azure 備份復原服務保存庫
 
@@ -123,7 +123,7 @@ ms.locfileid: "88757212"
 >如果您已刪除或遺失來源電腦，但未停止備份，則下次排定的備份將會失敗。 舊的復原點會根據原則過期，但永遠會保留最後一個復原點，直到您停止備份並刪除資料為止。 您可以遵循本節中的步驟來執行 [此動作](#delete-protected-items-on-premises)。
 
 1. 開啟 MARS 管理主控台，移至 [ **動作** ] 窗格，然後選取 [ **排程備份**]。
-2. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，然後刪除所有儲存的備份**。 然後，選取 [下一步]。
+2. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，然後刪除所有儲存的備份**。 然後，選取 [下一步]  。
 
     ![修改或停止已排程的備份。](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 

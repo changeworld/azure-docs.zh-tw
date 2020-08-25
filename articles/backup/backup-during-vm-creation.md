@@ -3,12 +3,12 @@ title: 建立 Azure VM 時啟用備份
 description: 說明當您使用 Azure 備份建立 Azure VM 時，如何啟用備份。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: c744f6aa2bef6d3d6800aa6b6dc077915fc5205b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8612061ca21b4609600f5b9822ca4f6fe3b673f1
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586693"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825948"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>建立 Azure VM 時啟用備份
 
@@ -16,7 +16,7 @@ ms.locfileid: "88586693"
 
 本文將詳細說明當您在 Azure 入口網站中建立 (VM) 的虛擬機器時，如何啟用備份。  
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - 如果您在建立 VM 時啟用備份，[請檢查](backup-support-matrix-iaas.md#supported-backup-actions)支援的作業系統。
 
@@ -60,8 +60,8 @@ ms.locfileid: "88586693"
 1. 您可以使用 RG 的預設名稱，或根據您的公司需求進行編輯。
 2. 您會在建立 VM 備份原則期間提供 RG 名稱模式作為輸入。 RG 名稱的格式應該如下： `<alpha-numeric string>* n <alpha-numeric string>` 。 ' n ' 會以從 1) 開始的整數 (取代，並在第一個 RG 已滿時用於相應放大。 一個 RG 現在最多可以有600個 Rpc。
               ![建立原則時選擇名稱](./media/backup-during-vm-creation/create-policy.png)
-3. 此模式應遵循以下的 RG 命名規則，而且總長度不應超過允許的 RG 名稱長度上限。
-    1. 資源組名只允許英數位元、句點、底線、連字號及括弧。 它們不能以句點結尾。
+3. 此模式應遵循下方的 RG 命名規則，而且總長度不應超過允許的 RG 名稱長度上限。
+    1. 資源組名只允許英數位元、句點、底線、連字號及括弧。 它們的結尾不能是句點。
     2. 資源組名最多可包含74個字元，包括 RG 名稱和尾碼。
 4. 第一個 `<alpha-numeric-string>` 是必要的，而第二個則是選擇性的。 這僅適用于您提供自訂名稱時。 如果您未在任一文字方塊中輸入任何值，則會使用預設名稱。
 5. 您可以在必要時修改原則，以編輯 RG 的名稱。 如果名稱模式變更，新的 RPs 將會建立在新的 RG 中。 不過，舊的 RPs 仍會位於舊的 RG 中且不會移動，因為 RP 集合不支援資源移動。 最後，當點數到期時，RPs 將會被垃圾收集。

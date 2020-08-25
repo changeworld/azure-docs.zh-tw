@@ -4,12 +4,12 @@ description: 本文說明如何使用備份總管執行跨保存庫、訂用帳�
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: f514f899f2db70ecb2924c2e627f3bed28e3dcad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a50b9ee05be48113221f2a12f968540bd3a00b3b
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092791"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824407"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>使用備份總管監視您的備份
 
@@ -28,7 +28,7 @@ ms.locfileid: "87092791"
 > * 備份總管目前僅適用於 Azure 虛擬機器 (VM) 資料。
 > * 備份總管可作為作業儀表板，用來檢視過去 7 天 (最大值) 內的備份相關資訊。
 > * 國家雲端目前不支援備份總管。
-> * 目前不支援自訂備份總管範本。
+> * 目前不支援自訂 Backup Explorer 範本。
 > * 我們不建議您撰寫 Azure Resource Graph 資料的自訂自動化。
 > * 目前，備份總管可讓您監視最多 1000 個訂用帳戶 (跨租用戶) 的備份。
 
@@ -78,7 +78,7 @@ ms.locfileid: "87092791"
 
 ### <a name="the-backup-not-enabled-tab"></a>未啟用備份索引標籤
 
-所有需要保護的機器均應啟用備份。 透過備份總管，備份管理員可快速識別組織中有哪些機器尚未受到備份的保護。 若要檢視這項資訊，請選取 [未啟用備份] 索引標籤。
+所有需要保護的機器均應啟用備份。 使用 Backup Explorer，備份系統管理員可以快速找出組織中尚未受備份保護的電腦。 若要檢視這項資訊，請選取 [未啟用備份] 索引標籤。
 
 [未啟用備份] 窗格會顯示一個表格，其中列出未受保護的機器。 您的組織可能會為生產機器和測試機器指派不同的標籤，或是為提供各種功能的機器指派不同的標籤。 由於各種機器需要個別的備份原則，依標籤篩選將可協助您檢視各個機器特有的資訊。 選取任何機器的名稱，即會重新導向至該機器的 [設定備份] 窗格，您可以在其中選擇要套用適當的備份原則。
 

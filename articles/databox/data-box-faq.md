@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 7d300252893a72ef6296e941f5a573a67807779f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c6b524fb76c623273c60d39f4102500664c487cb
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652571"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823976"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure 資料箱：常見問題集
 
@@ -57,7 +57,7 @@ A.  如需哪些國家/地區提供資料箱的資訊，請移至[區域可用�
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>Q. 在哪些區域中可以使用資料箱來儲存資料？
 A. 美國、西歐、北歐、法國、英國、日本、澳大利亞和加拿大內的所有區域都支援資料箱。 如需詳細資訊，請移至[區域可用性](data-box-overview.md#region-availability)。
 
-### <a name="q-how-can-i-import-my-on-premises-source-data-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>Q. 如何將內部部署來源資料匯入至不同國家/地區的 Azure 區域，或將資料從一個國家/地區的 Azure 區域匯出到不同的國家/地區？
+### <a name="q-how-can-i-import-source-data-at-my-location-in-a-particular-country-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>Q. 如何將特定國家/地區位置的來源資料匯入至不同國家/地區的 Azure 區域，或將資料從一個國家/地區的 Azure 區域匯出到不同的國家/地區？
 
 資料箱僅支援在與目的地相同的國家/地區內內嵌或輸出資料，而且不會跨越任何國際框線。 唯一的例外狀況是歐盟 (EU) 中的訂單，資料箱可以在任何歐盟國家/地區運送。
 

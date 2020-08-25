@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 66d29294d74e9fee28dd88d34f67ed3bdc4b8e7b
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 0607133f26113123f1c75d714c6c71f19cf2db63
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756481"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826509"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -17,7 +17,7 @@ ms.locfileid: "88756481"
 
 ## <a name="restore-options"></a>還原選項
 
-Azure 備份提供數種方法來還原 VM。
+Azure 備份提供數種方式來還原 VM。
 
 **還原選項** | **詳細資料**
 --- | ---
@@ -162,7 +162,7 @@ Azure 備份提供數種方法來還原 VM。
 ![還原設定](./media/backup-azure-arm-restore-vms/rest-config.png)
 
 >[!NOTE]
->次要區域中的虛擬網路必須是唯一的，且不能用於該資源群組中的任何其他 Vm。
+>次要區域中的虛擬網路必須是唯一指派的，且不能用於該資源群組中的任何其他 Vm。
 
 ![觸發還原進行中的通知](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
@@ -171,8 +171,8 @@ Azure 備份提供數種方法來還原 VM。
 
 >[!NOTE]
 >
->- 在觸發還原並且在資料傳輸階段之後，就無法取消還原作業。
->- 跨區域還原功能會還原 CMK (客戶管理的金鑰) 啟用的 Azure Vm，這些 Vm 不會備份到啟用 CMK 的復原服務保存庫中，而是在次要區域中以非 CMK 啟用的 Vm 進行備份。
+>- 在觸發還原並且在資料傳輸階段中，無法取消還原作業。
+>- 跨區域還原功能可還原 CMK (客戶管理的金鑰) 啟用的 Azure Vm，這些 Vm 不會備份到啟用 CMK 的復原服務保存庫中，而是在次要區域中以非 CMK 啟用的 Vm 進行備份。
 >- 在次要區域中還原所需的 Azure 角色與主要區域中的角色相同。
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>監視次要區域還原作業

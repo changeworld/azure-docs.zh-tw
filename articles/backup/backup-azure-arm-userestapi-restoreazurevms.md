@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來管理 Azure �
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: eef30808dddfb20d01fcb6e25a88b9a64e4445d8
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 03815cd9956e323583d6d66097e0eeaa3d492f44
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763536"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826356"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 還原 Azure 虛擬機器
 
@@ -210,7 +210,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="restore-disks"></a>還原磁碟
 
-如果需要自訂從備份資料建立 VM，您可以直接將磁片還原至所選的儲存體帳戶，並根據其需求從這些磁片建立 VM。 儲存體帳戶應位於與復原服務保存庫相同的區域中，且不應該是區域冗余。 磁片以及備份 VM 的設定 ( 「vmconfig.js開啟」 ) 將會儲存在指定的儲存體帳戶中。 [如上所述，以下](#restore-operations)提供復原磁碟的相關要求主體。
+如果需要自訂從備份資料建立 VM，您可以直接將磁片還原至所選的儲存體帳戶，並根據其需求從這些磁片建立 VM。 儲存體帳戶應位於與復原服務保存庫相同的區域中，且不應該是區域冗余。 磁片以及備份 VM ( 「vmconfig.json」 ) 的設定將會儲存在指定的儲存體帳戶中。 [如上所述，以下](#restore-operations)提供復原磁碟的相關要求主體。
 
 #### <a name="create-request-body"></a>建立要求本文
 
@@ -327,7 +327,7 @@ X-Powered-By: ASP.NET
 
 處理回應的方式應該如同[上述的還原磁碟](#responses)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需 Azure 備份 REST API 的詳細資訊，請參閱下列文件：
 

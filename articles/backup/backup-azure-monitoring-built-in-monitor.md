@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解使用 Azure 入口網站 Azure 備份�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 9a4558367d3af6858310ce4455cbf1df2a596312
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 2fae7cfdb8b316341e01d15b43811d3f0e7638ef
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763468"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827183"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>監視 Azure 備份工作負載
 
@@ -30,10 +30,10 @@ Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視�
 - Azure 工作負載備份，例如 SQL 和 SAP Hana
 - Microsoft Azure 復原服務 (MARS) 代理程式
 
-系統不會顯示 System Center Data Protection Manager (SC-DPM) Microsoft Azure 備份 Server (MABS) 中的作業。
+系統不會顯示 System Center Data Protection Manager (SC-DPM) 、Microsoft Azure 備份 Server (MABS) 中的作業。
 
 > [!NOTE]
-> Azure Vm 中的 azure 工作負載（例如 SQL 和 SAP Hana 備份）具有大量的備份作業。 例如，記錄備份可每隔15分鐘執行一次。 因此針對這類資料庫工作負載，只會顯示使用者觸發的作業。 排程的備份作業不會顯示。
+> Azure Vm 中的 azure 工作負載（例如 SQL 和 SAP Hana 備份）具有大量的備份作業。 例如，記錄備份可每隔15分鐘執行一次。 因此針對這類資料庫工作負載，只會顯示使用者觸發的作業。 未顯示已排程的備份作業。
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>復原服務保存庫中的備份警示
 
@@ -104,6 +104,6 @@ Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視�
 
 ![RS 保存庫警示 {0}](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [使用 Azure 監視器監視 Azure 備份工作負載](backup-azure-monitoring-use-azuremonitor.md)

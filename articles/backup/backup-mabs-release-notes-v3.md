@@ -1,15 +1,15 @@
 ---
 title: Microsoft Azure 備份伺服器 v3 版本資訊
-description: 本文提供 Microsoft Azure 備份 Server （MABS） v3 的已知問題和因應措施的相關資訊。
+description: 本文提供 Microsoft Azure 備份 Server (MABS) v3 的已知問題和因應措施的相關資訊。
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 1f4900bb129ee67cd75d2b793f4179e3135569a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 26d30a56b3117642678f98ba3e7927c27bfd6a69
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032556"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826611"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure 備份伺服器版本資訊
 
@@ -56,7 +56,7 @@ ms.locfileid: "87032556"
 
 1. [備份](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server#SSMSProcedure) 您的 SQL 資料庫，並解除安裝 MABS V2 (解除安裝期間，選擇此選項以保留受保護的資料)。
 2. 升級到 SQL 2017 (Enterprise).，並解除安裝報告，作為升級的一部分。
-3. [安裝](/sql/reporting-services/install-windows/install-reporting-services#install-your-report-server)SQL Server Reporting Services （SSRS）。
+3. [安裝](/sql/reporting-services/install-windows/install-reporting-services#install-your-report-server) SQL Server Reporting Services (SSRS) 。
 4. [安裝](/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS)。
 5. 使用 [SQL 2017 的 SSRS 設定](./backup-azure-microsoft-azure-backup.md#upgrade-mabs)中記錄的參數來設定報告。
 6. [安裝](backup-azure-microsoft-azure-backup.md) MABS V3。
@@ -71,40 +71,40 @@ ms.locfileid: "87032556"
 
 9. 啟動 MSDPM 服務。
 
-## <a name="after-installing-ur1-the-mabs-reports-arent-updated-with-new-rdl-files"></a>安裝 UR1 之後，MABS 報表不會以新的 RDL 檔案更新
+## <a name="after-installing-ur1-the-mabs-reports-arent-updated-with-new-rdl-files"></a>安裝 UR1 之後，MABS 報表不會更新為新的 RDL 檔案
 
-**描述**：使用 UR1 時，會修正已更新的 RDL 檔案的 MABS 報告格式問題。 新的 RDL 檔案不會自動取代為現有的檔案。
+**描述**：使用 UR1 時，會使用更新的 RDL 檔案來修正 MABS 報表格式問題。 新的 RDL 檔案不會自動取代為現有的檔案。
 
-因應**措施：若**要取代 RDL 檔案，請遵循下列步驟：
+因應**措施：若**要取代 RDL 檔案，請依照下列步驟執行：
 
-1. 在 MABS 電腦上，開啟 SQL Reporting Services Web 入口網站 URL]。
-1. 在入口網站 URL 上，DPMReports 資料夾的格式會是**`DPMReports_<GUID>`**
+1. 在 MABS 電腦上，開啟 SQL Reporting Services Web 入口網站 URL。
+1. 在 Web 入口網站 URL 上，DPMReports 資料夾的格式為 **`DPMReports_<GUID>`**
 
     >[!NOTE]
-    >一律只有一個資料夾具有此命名慣例。 如果 MABS 是從舊版升級，可能也會有另一個較舊的資料夾，但您將無法開啟它。
+    >一律只有一個資料夾具有此命名慣例。 如果 MABS 是從先前的版本升級，則可能也會有另一個較舊的資料夾，但您將無法加以開啟。
 
     ![DPMReports 資料夾](./media/backup-mabs-release-notes-v3/dpm-reports-folder.png)
 
-1. 選取並開啟 **`DPMReports_<GUID>`** 資料夾。 個別的報告檔案將會列出，如下所示。
+1. 選取並開啟 **`DPMReports_<GUID>`** 資料夾。 將會列出個別的報表檔案，如下所示。
 
     ![個別報表檔案的清單](./media/backup-mabs-release-notes-v3/individual-report-files.png)
 
-1. 選取不是以**報表**結尾的報表檔案，並以滑鼠右鍵按一下 [**選項**]，然後選取 [**管理**]。
+1. 選取不是以 **報表**結尾的報表檔案，以滑鼠右鍵按一下 **選項** ，然後選取 [ **管理**]。
 
     ![針對報表檔案選取 [管理]](./media/backup-mabs-release-notes-v3/manage-files.png)
 
-1. 在 [新增] 頁面中，選取 [**取代**] 選項，以最新的報表檔案取代檔案。
+1. 在 [新增] 頁面中，選取 [ **取代** ] 選項，將檔案取代為最新的報表檔案。
 
-    您可以在路徑中找到最新的報告檔案`<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+    您可以在路徑中找到最新的報告檔案 `<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
 
     例如：`C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
 
     ![以最新的報表檔案取代檔案](./media/backup-mabs-release-notes-v3/replace-files.png)
 
-    取代檔案之後，請確定**名稱**和**描述**都是完整的，而且不是空的。
+    取代檔案之後，請確定**名稱**和**描述**原封不動且不是空白。
 
-1. 取代檔案之後，請重新開機 MABS 服務，並使用報告檔案。
+1. 取代檔案之後，請重新開機 MABS 服務，然後使用報表檔案。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [MABS 的新功能](backup-mabs-whats-new-mabs.md)

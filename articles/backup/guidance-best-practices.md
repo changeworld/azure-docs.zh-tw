@@ -3,12 +3,12 @@ title: 指導方針和最佳做法
 description: 探索將雲端和內部部署工作負載備份至雲端的最佳做法和指導方針
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 21d3d6b8983d8ce3d0b563785423bc1e503649f3
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757586"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825574"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>將雲端和內部部署工作負載備份到雲端
 
@@ -247,13 +247,13 @@ Azure 備份服務的功能可讓您彈性地管理成本，並仍能滿足您�
 
 * Azure 備份透過電子郵件，為失敗、警告和重要作業提供 **內建的警示** 通知機制。 您可以指定要在產生警示時收到通知的個別電子郵件地址或通訊群組清單。 您也可以選擇是否要收到每個個別警示的通知，或以每小時摘要將其分組，然後獲得通知。
   * 這些警示是由服務所定義，可提供有限案例的支援-備份/還原失敗、停止保護，並保留資料/停止保護與刪除資料等等。 若要[深入瞭解](backup-azure-monitoring-built-in-monitor.md#alert-scenarios)，請參閱。
-  * 如果執行了破壞性作業（例如停止保護與刪除資料），則會引發警示，並將電子郵件傳送給訂用帳戶擁有者、系統管理員和共同管理員，即使沒有針對復原服務保存庫設定通知也是一樣。
+  * 如果執行了破壞性作業（例如停止保護與刪除資料），則會引發警示，並將電子郵件傳送給訂用帳戶擁有者、系統管理員和共同管理員，即使 **沒有** 針對復原服務保存庫設定通知也是一樣。
   * 某些工作負載可能會產生高頻率的失敗 (例如，每隔15分鐘 SQL Server) 。 為了避免在每次失敗時引發警示，會合並警示。 若要[深入瞭解](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts)，請參閱。
   * 內建警示無法自訂，而且僅限於 Azure 入口網站中定義的電子郵件。
 
 * 如果您需要 **建立自訂警示** (例如，成功的作業警示) 然後使用 Log Analytics。 在 Azure 監視器中，您可以在 Log Analytics 工作區建立自己的警示。 混合式工作負載 (DPM/MABS) 也可以將資料傳送至 LA，並使用 LA 在 Azure 備份支援的工作負載之間提供常見的警示。
 
-* 您也可以透過內建的復原服務保存庫 **活動記錄**來取得通知;不過，它支援有限的案例，並不適用于排程備份之類的作業，這會比使用活動記錄更適合資源記錄檔。 若要深入瞭解這些限制，以及您可以如何使用 Log Analytics 工作區來大規模監視和警示，以針對受 Azure 備份保護的所有工作負載，請參閱這 [篇文章](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)。
+* 您也可以透過內建的復原服務保存庫 **活動記錄**來取得通知。 不過，它支援有限的案例，並不適用于排程備份之類的作業，這會比使用活動記錄更適合資源記錄檔。 若要深入瞭解這些限制，以及您可以如何使用 Log Analytics 工作區來大規模監視和警示，以針對受 Azure 備份保護的所有工作負載，請參閱這 [篇文章](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)。
 
 ## <a name="next-steps"></a>後續步驟
 

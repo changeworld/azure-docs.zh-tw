@@ -4,12 +4,12 @@ description: 在本文中，探索 Microsoft Azure 備份 Server (MABS) 和 DPM 
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: b2994e250c37d707eee5428e83c151728f83a1ab
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 00eb064aaf549ee0d83d0cf7d9c9b47c2dc5ef78
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522924"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827200"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure 備份伺服器和 DPM-常見問題
 
@@ -23,11 +23,11 @@ ms.locfileid: "88522924"
 
 ### <a name="can-i-register-the-server-to-multiple-vaults"></a>是否可以向多個保存庫註冊伺服器？
 
-否。 只能向一個保存庫註冊 DPM 或「Azure 備份」伺服器。
+不知道。 只能向一個保存庫註冊 DPM 或「Azure 備份」伺服器。
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>可以使用 DPM 備份 Azure Stack 中的應用程式嗎？
 
-否。 雖然您可以使用 Azure 備份來保護 Azure Stack，但 Azure 備份不支援使用 DPM 來備份 Azure Stack 中的應用程式。
+不知道。 雖然您可以使用 Azure 備份來保護 Azure Stack，但 Azure 備份不支援使用 DPM 來備份 Azure Stack 中的應用程式。
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>如果我已安裝「Azure 備份」代理程式來保護檔案和資料夾，是否可以安裝 System Center DPM 將內部部署工作負載備份至 Azure？
 
@@ -65,9 +65,9 @@ ms.locfileid: "88522924"
 
 ### <a name="can-i-recover-a-sharepoint-database-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson"></a>如果使用 SQL AlwaysOn 設定 SharePoint，我是否能將 SharePoint 資料庫復原到原始位置？
 
-由於 SharePoint 資料庫是在 SQL AlwaysOn 中設定，所以除非移除可用性群組，否則無法修改它們。 因此，DPM 無法將資料庫還原到原始位置。 您可以將 SQL Server 資料庫復原到其他 SQL Server 執行個體。
+因為 SharePoint 資料庫是在 SQL AlwaysOn 中設定，所以除非移除可用性群組，否則無法修改它們。 因此，DPM 無法將資料庫還原到原始位置。 您可以將 SQL Server 資料庫復原到其他 SQL Server 執行個體。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 閱讀其他常見問題集：
 

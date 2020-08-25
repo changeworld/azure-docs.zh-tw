@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 備份的安全性功能，讓備份更安
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 170ecf364e01ba4b098da289f9d213716e74e0ee
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: a793b67b88f11988a584e3f57a296c69606cdd5f
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757025"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826900"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>利用安全性功能協助保護使用 Azure 備份的混合式備份
 
@@ -20,14 +20,14 @@ ms.locfileid: "88757025"
 - **Recovery**復原。 已刪除的備份資料會額外保留 14 天 (從刪除日期算起)。 這可確保指定時間週期內的資料復原能力，所以即使發生攻擊，也不會遺失任何資料。 而且會維護更多的復原點，以防範資料損毀。
 
 > [!NOTE]
-> 如果您使用基礎結構即服務 (IaaS) VM 備份，則不應該啟用安全性功能。 這些功能尚無法用於 IaaS VM 備份，所以啟用它們不會有任何影響。 只有當您使用下列項目，才應該啟用安全性功能︰ <br/>
+> 如果您使用基礎結構即服務 (IaaS) VM 備份，則不應啟用安全性功能。 這些功能尚無法用於 IaaS VM 備份，所以啟用它們不會有任何影響。 只有當您使用下列項目，才應該啟用安全性功能︰ <br/>
 >
 > - **Azure 備份代理程式**。 至少為代理程式 2.0.9052 版。 啟用這些功能之後，您應該升級為此版本的代理程式，以執行重要作業。 <br/>
 > - **Azure 備份伺服器**。 至少為 Azure 備份代理程式 2.0.9052 版與 Azure 備份伺服器 Update 1。 <br/>
 > - **System Center Data Protection Manager**。 至少為 Azure 備份代理程式 2.0.9052 版與 Data Protection Manager 2012 R2 UR12 或 Data Protection Manager 2016 UR2。 <br/>
 
 > [!NOTE]
-> 這些功能僅適用於復原服務保存庫。 所有新建立的復原服務保存庫預設都已經啟用這些功能。 對於現有的復原服務保存庫，使用者可使用下節中提及的步驟來啟用這些功能。 這些功能啟用之後，它們會套用至所有向保存庫註冊的復原服務代理程式電腦、Azure 備份伺服器執行個體和 Data Protection Manager 伺服器。 啟用此設定是一次性動作，啟用之後便無法停用這些功能。
+> 這些功能僅適用於復原服務保存庫。 所有新建立的復原服務保存庫預設都已經啟用這些功能。 對於現有的復原服務保存庫，使用者可使用下節中提及的步驟來啟用這些功能。 這些功能啟用之後，它們會套用至所有向保存庫註冊的復原服務代理程式電腦、Azure 備份伺服器執行個體和 Data Protection Manager 伺服器。 啟用此設定是一次性動作，而您無法在啟用這些功能之後停用這些功能。
 >
 
 ## <a name="enable-security-features"></a>啟用安全性功能
@@ -84,7 +84,7 @@ ms.locfileid: "88757025"
 
 > [!NOTE]
 >
-> 目前並未針對 DPM 和 MABS 提供安全性 PIN 碼的支援以**停止保護並刪除資料**。
+> 目前，安全性 pin 不支援使用 DPM 和 MABS 的 **刪除資料來停止保護** 。
 
 若要收到這個 PIN：
 

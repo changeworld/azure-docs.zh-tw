@@ -3,19 +3,19 @@ title: 將 SQL Server 資料庫備份到 Azure
 description: 本文說明如何將 SQL Server 備份至 Azure。 本文也將說明 SQL Server 復原。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: edcc77c98737b9f4e76ade0471d273f5e0070969
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 88ac95a3e21269ccb5ca2c0fed1c1444af2f4d11
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763417"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826917"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>關於 Azure VM 中的 SQL Server 備份
 
 [Azure 備份](backup-overview.md) 提供以串流為基礎、特製化的解決方案，以備份在 Azure vm 中執行的 SQL Server。 此解決方案符合 Azure 備份的零基礎結構備份、長期保留和集中管理的優點。 此外，它還針對 SQL Server 特別提供下列優點：
 
 1. 支援所有備份類型的工作負載感知備份-完整、差異和記錄
-2. 高達15分鐘的 RPO (具有頻繁記錄備份的復原點目標) 
+2. 15分鐘 RPO (復原點目標) 頻繁的記錄備份
 3. 時間點復原，最多可達一秒
 4. 個別資料庫層級的備份與還原
 
@@ -27,7 +27,7 @@ ms.locfileid: "88763417"
 
 * 在您指定想要保護的 SQL Server VM 並查詢此 VM 中的資料庫之後，Azure 備份服務會在此 VM 上安裝名為 `AzureBackupWindowsWorkload` 的工作負載備份擴充功能。
 * 此延伸模組是由一個協調器和一個 SQL 外掛程式所組成。 協調器負責觸發各種作業 (例如設定備份、備份和還原) 的工作流程，而外掛程式則負責實際的資料流程。
-* 為了能夠在此 VM 上探索資料庫，「Azure 備份」會建立 `NT SERVICE\AzureWLBackupPluginSvc` 帳戶。 此帳戶會用於備份和還原，且必須具備 SQL 系統管理員 (sysadmin) 權限。 `NT SERVICE\AzureWLBackupPluginSvc` 帳戶是[虛擬服務帳戶](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)，因此不需要管理密碼。 「Azure 備份」會利用 `NT AUTHORITY\SYSTEM` 帳戶來進行資料庫探索/查詢，因此這個帳戶必須是 SQL 上的公開登入帳戶。 如果您尚未從 Azure Marketplace 建立 SQL Server VM，您可能會收到 **UserErrorSQLNoSysadminMembership**錯誤。 若發生此狀況，請[依照下列指示操作](#set-vm-permissions)。
+* 為了能夠在此 VM 上探索資料庫，「Azure 備份」會建立 `NT SERVICE\AzureWLBackupPluginSvc` 帳戶。 此帳戶會用於備份和還原，且必須具備 SQL 系統管理員 (sysadmin) 權限。 此 `NT SERVICE\AzureWLBackupPluginSvc` 帳戶是 [虛擬服務帳戶](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)，因此不需要任何密碼管理。 Azure 備份使用 `NT AUTHORITY\SYSTEM` 帳戶進行資料庫探索/查詢，因此這個帳戶必須是 SQL 上的公開登入。 如果您尚未從 Azure Marketplace 建立 SQL Server VM，您可能會收到 **UserErrorSQLNoSysadminMembership**錯誤。 若發生此狀況，請[依照下列指示操作](#set-vm-permissions)。
 * 在您於選取的資料庫上觸發設定保護之後，備份服務便會為協調器設定備份排程及其他原則詳細資料，延伸模組會將這些都快取在 VM 本機。
 * 在排定的時間，協調器會與外掛程式進行通訊，然後使用 VDI 開始從 SQL Server 串流處理備份資料。  
 * 外掛程式會將資料直接傳送至復原服務保存庫，因此不需要預備位置。 「Azure 備份」服務會將資料加密並儲存在儲存體帳戶中。
@@ -35,7 +35,7 @@ ms.locfileid: "88763417"
 
   ![SQL 備份架構](./media/backup-azure-sql-database/backup-sql-overview.png)
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 開始之前，請確認下列需求：
 
@@ -148,7 +148,7 @@ catch
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [了解](backup-sql-server-database-azure-vms.md)如何備份 SQL Server 資料庫。
 * [了解](restore-sql-database-azure-vm.md)如何還原已備份的 SQL Server 資料庫。

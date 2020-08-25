@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 3d4b51445e0859fe90a81eecb95625d41009b6eb
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f2231b74034ba6cea672a7bbf68f506fce423d45
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649409"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826135"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure 資料箱磁碟：常見問題集
 
@@ -56,13 +56,13 @@ A.  若要查看目前何處可以使用資料箱磁碟，請前往[區域可用
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. 在哪些區域中可以使用資料箱磁碟來儲存資料？
 A. 美國、加拿大、澳大利亞、西歐和北歐、南韓和日本內的所有區域均支援資料箱磁碟。 只有 Azure 公用雲端區域受到支援。 Azure Government 或其他主權雲端不受支援。
 
-### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>Q. 我的資料箱磁碟在運送期間可以跨國家/區域邊界使用嗎？
-A. 資料箱磁碟是在與目的地相同的國家/區域內寄送，並不會跨越任何跨國界。 唯一的例外狀況是位於歐盟 (EU) 的訂單，該地區的磁碟可以在任何歐盟國家/區域之間運送。
+### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. 在哪些區域中可以使用資料箱磁碟來儲存資料？
+A. 美國、加拿大、澳大利亞、西歐和北歐、南韓和日本內的所有區域均支援資料箱磁碟。 只有 Azure 公用雲端區域受到支援。 Azure Government 或其他主權雲端不受支援。
 
-### <a name="q-how-can-i-import-my-on-premises-source-data-in-one-countryregion-to-an-azure-region-in-a-different-countryregion"></a>Q. 如何將一個國家/地區中的內部部署來源資料匯入至不同國家/地區的 Azure 區域？
-A. 資料箱磁碟僅支援在相同區域內內嵌資料 (commerce 界限) 。 在所有其他情況下，您可能需要採取其他動作。 
+### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>Q. 如何將位於某個國家/地區位置的來源資料匯入至不同國家/地區的 Azure 區域？
+A. 資料箱磁碟僅支援在與目的地相同的國家/地區內內嵌資料，而且不會跨越任何國際框線。 唯一的例外是歐盟 (EU) 中的訂單，資料箱磁片可以在任何歐盟國家/地區運送。
 
-例如，如果您在加拿大的內部部署資料想要移至 Azure WestUS 儲存體帳戶，則您可以透過下列方式達成：
+例如，如果您想要將位於加拿大位置的資料移至 Azure WestUS 儲存體帳戶，您可以透過下列方式達成：
 
 ### <a name="option-1"></a>選項 1： 
 

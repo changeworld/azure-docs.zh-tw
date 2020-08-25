@@ -3,12 +3,12 @@ title: 架構概觀
 description: 概略說明 Azure 備份服務所使用的架構、元件和程序。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 6da6cedc7841e31876bef8788458531b1ec375a8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1081de6b467b896bd8cc62b84c9a67c329b11e02
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652775"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824027"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 備份的架構與元件
 
@@ -134,7 +134,7 @@ Azure 備份會根據要備份的機器類型，提供不同的備份代理程�
 
 1. 當您啟用 Azure VM 的備份時，會根據您指定的排程來執行備份。
 1. 在第一次備份期間，如果 VM 正在執行，則會在 VM 上安裝備份擴充功能。
-    - 針對 Windows Vm，會安裝 VMSnapshot 延伸模組。
+    - 針對 Windows VM，系統會安裝 VMSnapshot 延伸模組。
     - 若是 Linux Vm，則會安裝 VMSnapshot Linux 擴充功能。
 1. 延伸模組會採用儲存層級的快照集。
     - 針對正在執行的 Windows Vm，備份會與 Windows 磁碟區陰影複製服務 (VSS) ，以取得 VM 的應用程式一致快照集。 依預設，備份會進行完整的 VSS 備份。 如果「備份」無法建立應用程式一致快照集，則會建立檔案一致快照集。
@@ -143,7 +143,7 @@ Azure 備份會根據要備份的機器類型，提供不同的備份代理程�
 1. 建立快照集之後，資料會傳輸至保存庫。
     - 只會複製自上次備份之後變更的資料區塊。
     - 資料不會加密。 Azure 備份可以使用 Azure 磁碟加密來備份已加密的 Azure Vm。
-    - 快照集資料可能不會立即複製到保存庫。 在尖峰時間，備份可能需要一些時間。 針對每日備份原則，VM 的總備份時間會小於24小時。
+    - 快照集資料可能不會立即複製到保存庫。 在尖峰時間，備份可能需要一些時間。 針對每日備份原則，VM 的總備份時間會小於 24 小時。
 1. 將資料傳送至保存庫之後，就會建立復原點。 根據預設，快照集會在刪除前兩天保留。 這項功能可讓您從這些快照集進行還原作業，進而減少還原時間。 它可縮短轉換和複製資料到保存庫所需的時間。 請參閱 [Azure 備份立即還原功能](./backup-instant-restore-capability.md)。
 
 您不需要明確地允許網際網路連線來備份您的 Azure Vm。

@@ -3,12 +3,12 @@ title: Data Protection Manager (DPM) 和 Microsoft Azure 備份 Server 的離線
 description: 使用 Azure 備份，您可以使用 Azure 匯入/匯出服務，將資料從網路傳送。 本文說明舊版 DPM 和 Azure 備份伺服器的離線備份工作流程。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: e986baaf6ac2943bd210761ff2194eacdee5984a
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 45518607b96848dc211c1a787ecfa85432cd842e
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261917"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826594"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM 的離線備份工作流程和 Azure 備份伺服器 (之前的版本) 
 
@@ -46,7 +46,7 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
 > * 使用 MABS 備份所有工作負載和檔案。
 
 >[!NOTE]
->Azure CSP 的訂用帳戶不支援搭配離線植入 DPM 2019 RTM 和更早的版本，以及 MABS v3 RTM 及更早版本。 仍支援透過網路進行線上備份。
+>Azure CSP 的訂用帳戶不支援搭配離線植入 DPM 2019 RTM 和較早版本，以及 MABS v3 RTM 和更早版本。 仍支援透過網路進行線上備份。
 
 ## <a name="prerequisites"></a>先決條件
 
@@ -121,7 +121,7 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
     >[!NOTE]
     > 若要尋找 Azure 使用者識別碼，請執行下列其中一個步驟：
     >
-    >* 從 Azure 連線的 PowerShell 中，執行 `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as appears in the portal"` 命令。
+    >* 從與 Azure 連線的 PowerShell 中，執行 `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as appears in the portal"` 命令。
     >* 移至登錄路徑 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;` 。
 
 1. 以滑鼠右鍵按一下上一個步驟中所新增的字串，然後選取 [ **修改**]。 在 [值] 中，提供您在步驟7中匯出之憑證的指紋。 然後選取 [確定]。

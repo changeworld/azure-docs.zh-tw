@@ -3,12 +3,12 @@ title: Azure 備份的虛刪除
 description: 瞭解如何使用 Azure 備份中的安全性功能，讓備份更安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: b3ccd944ce1f6a30b4441c205a83e71374e7aff2
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: d791b76698330cd14c56f01cf5da62c8a64bec29
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763434"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826968"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 備份的虛刪除
 
@@ -44,9 +44,9 @@ ms.locfileid: "88763434"
 ### <a name="disabling-soft-delete-using-azure-powershell"></a>使用 Azure PowerShell 停用虛刪除
 
 > [!IMPORTANT]
-> 使用 Azure PS 虛刪除所需的 Az. Az.recoveryservices 版本為 min 2.2.0。 使用 ```Install-Module -Name Az.RecoveryServices -Force``` 取得最新版本。
+> 使用 Azure PowerShell 的虛刪除所需的 Az. Az.recoveryservices 版本最少2.2.0。 使用 ```Install-Module -Name Az.RecoveryServices -Force``` 取得最新版本。
 
-若要停用，請使用 [AzRecoveryServicesVaultBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) PS Cmdlet。
+若要停用，請使用 [AzRecoveryServicesVaultBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) PowerShell Cmdlet。
 
 ```powershell
 Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable
@@ -172,12 +172,12 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>是否可以在刪除後的14天內刪除超過14天的資料？
 
-不會。 您無法強制刪除虛刪除的專案。 它們會在14天后自動刪除。 啟用這項安全性功能，以保護備份資料免于遭到意外或惡意刪除。  您應等候14天，然後再對專案執行任何其他動作。  虛刪除的專案將不會收費。  如果您需要在新保存庫的14天內重新保護標示為虛刪除的專案，請洽詢 Microsoft 支援服務。
+不知道。 您無法強制刪除虛刪除的專案。 它們會在14天后自動刪除。 啟用這項安全性功能，以保護備份資料免于遭到意外或惡意刪除。  您應等候14天，然後再對專案執行任何其他動作。  虛刪除的專案將不會收費。  如果您需要在新保存庫的14天內重新保護標示為虛刪除的專案，請洽詢 Microsoft 支援服務。
 
 ### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>是否可以在 PowerShell 或 CLI 中執行虛刪除作業？
 
 您可以使用 PowerShell 來執行虛刪除作業。 目前不支援 CLI。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 備份中的安全性功能概觀](security-overview.md)

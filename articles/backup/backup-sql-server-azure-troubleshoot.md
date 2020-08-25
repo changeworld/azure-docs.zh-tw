@@ -3,12 +3,12 @@ title: 針對 SQL Server 資料庫備份進行疑難排解
 description: 適用於在 Azure VM 上執行並使用 Azure 備份進行備份之 SQL Server 資料庫的疑難排解資訊。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 98240254a71695fa72acaf5c7f930c11d9f99cae
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 53b701e5bfae9313732f4b76a4e13b63afb3864a
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756906"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826713"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 備份針對 SQL Server 資料庫備份進行疑難排解
 
@@ -62,7 +62,7 @@ ms.locfileid: "88756906"
 
 | 嚴重性 | 描述 | 可能的原因 | 建議的動作 |
 |---|---|---|---|
-| 警告 | 此資料庫目前的設定不支援在相關聯的原則中存在特定的備份類型。 | <li>只有完整的資料庫備份作業可以在 master 資料庫上執行。 無法進行差異備份和交易記錄備份。 </li> <li>簡單復原模式中的任何資料庫都不允許備份交易記錄。</li> | 修改資料庫設定，使其支援原則中的所有備份類型。 或者，將目前的原則變更為僅包含支援的備份類型。 否則，在排定備份期間將略過不支援的備份類型，否則備份工作將會失敗以進行隨選備份。
+| 警告 | 此資料庫目前的設定不支援在相關聯的原則中存在特定的備份類型。 | <li>只有完整的資料庫備份作業可以在 master 資料庫上執行。 無法進行差異備份和交易記錄備份。 </li> <li>簡單復原模式中的任何資料庫都不允許備份交易記錄。</li> | 修改資料庫設定 sp 支援原則中的所有備份類型。 或變更目前的原則，以僅包含支援的備份類型。 否則，在排定備份期間將略過不支援的備份類型，否則備份工作將會失敗以進行隨選備份。
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 

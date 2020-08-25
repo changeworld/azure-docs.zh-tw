@@ -3,12 +3,12 @@ title: 使用 PowerShell 備份和復原 Azure Vm
 description: 說明如何使用 Azure 備份搭配 PowerShell 來備份和復原 Azure Vm
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 23ae2b5b04823bc809712190a3e1617fec65e73a
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: f5d2e10213970ce6f9d1f9c77ff8f7f4c36c3547
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763366"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826441"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 備份及還原 Azure Vm
 
@@ -23,7 +23,7 @@ ms.locfileid: "88763366"
 > * 套用備份原則以保護多部虛擬機器
 > * 觸發受保護虛擬機器的隨選備份作業。在備份 (或保護) 虛擬機器之前，您必須先完成[先決條件](backup-azure-arm-vms-prepare.md)來備妥保護 VM 的環境。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 * [深入瞭解](backup-azure-recovery-services-vault-overview.md) 復原服務保存庫。
 * 請[參閱](backup-architecture.md#architecture-built-in-azure-vm-backup)Azure VM 備份的架構、[瞭解](backup-azure-vms-introduction.md)備份程式，以及[審查](backup-support-matrix-iaas.md)支援、限制和必要條件。
@@ -96,7 +96,7 @@ ms.locfileid: "88763366"
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. 指定要使用的儲存體冗余類型;您可以使用 [本機冗余儲存體 (LRS) ](../storage/common/storage-redundancy.md) 或 [地理位置多餘的儲存體 (GRS) ](../storage/common/storage-redundancy.md)。 下列範例顯示 testvault 的 -BackupStorageRedundancy 選項設為 GeoRedundant。
+3. 指定要使用的儲存空間備援類型。 您可以使用 [本機冗余儲存體 (LRS) ](../storage/common/storage-redundancy.md) 或 [地理位置多餘的儲存體 (GRS) ](../storage/common/storage-redundancy.md)。 下列範例顯示 testvault 的 -BackupStorageRedundancy 選項設為 GeoRedundant。
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -228,7 +228,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 在定義保護原則之後，您仍然必須對項目啟用此原則。 使用 [>enable-azrecoveryservicesbackupprotection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 啟用保護。 啟用保護需要兩個物件：項目和原則。 一旦原則與保存庫相關聯，備份工作流程將依照原則排程定義的時間觸發。
 
 > [!IMPORTANT]
-> 當您同時使用 PS 來啟用多個 Vm 的備份時，請確定單一原則沒有超過100個與其相關聯的 Vm。 這是[建議的最佳做法](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy)。 目前，如果有超過 100 部 VM，但已規劃在未來新增檢查，則 PS 用戶端不會明確封鎖。
+> 使用 PowerShell 同時啟用多個 Vm 的備份時，請確定單一原則沒有超過100個與其相關聯的 Vm。 這是[建議的最佳做法](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy)。 目前，如果有超過100部 Vm，但已計畫在未來新增檢查，則 PowerShell 用戶端不會明確封鎖。
 
 下列範例會使用原則 NewPolicy 來對項目 V2VM 啟用保護。 這些範例根據 VM 是否加密以及加密的類型而有所不同。
 
@@ -315,7 +315,7 @@ Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $Ret
 #### <a name="configuring-instant-restore-snapshot-retention"></a>正在設定立即還原快照集保留期
 
 > [!NOTE]
-> 從 Az PS version 1.6.0 開始，您可以使用 PowerShell 來更新原則中的立即還原快照集保留期限
+> 從 Azure PowerShell 版本1.6.0 開始，您可以使用 PowerShell 來更新原則中的立即還原快照集保留期限
 
 ````powershell
 $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM" -VaultId $targetVault.ID
@@ -328,7 +328,7 @@ Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVau
 #### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>在快照集保留期間建立 Azure 備份資源群組
 
 > [!NOTE]
-> 從 Azure PS 版本3.7.0 開始，您可以建立和編輯建立的資源群組，以便儲存立即的快照集。
+> 從 Azure PowerShell 版本3.7.0 開始，您可以建立和編輯建立的資源群組，以便儲存立即的快照集。
 
 若要深入瞭解資源群組建立規則和其他相關的詳細資料，請參閱 [虛擬機器的 Azure 備份資源群組](./backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines) 檔。
 
@@ -385,7 +385,7 @@ TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 
 #### <a name="retain-data"></a>保留資料
 
-如果使用者想要停止保護，則可以使用 [>enable-azrecoveryservicesbackupprotection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS Cmdlet。 這將會停止已排程的備份，但直到現在為止備份的資料會永久保留。
+如果您想要停止保護，您可以使用 [>enable-azrecoveryservicesbackupprotection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PowerShell Cmdlet。 這將會停止已排程的備份，但直到現在為止備份的資料會永久保留。
 
 ````powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -Name "<backup item name>" -VaultId $targetVault.ID
@@ -481,7 +481,7 @@ $restorejob
 請提供額外的參數 **TargetResourceGroupName**以指定將作為受控磁碟還原目的地的 RG。
 
 > [!IMPORTANT]
-> 強烈建議使用 **TargetResourceGroupName** 參數來還原受控磁碟，因為這會導致效能顯著改善。 如果未指定此參數，則客戶無法從立即還原功能獲益，而且還原作業將會比較慢。 如果目的是要將受控磁片還原為非受控磁片，則請勿提供此參數，並藉由提供-RestoreAsUnmanagedDisks 參數來清除意圖。 RestoreAsUnmanagedDisks 參數可從 Az PS 3.7.0 開始使用。 在未來的版本中，您必須提供其中一個參數來取得正確的還原體驗
+> 強烈建議使用 **TargetResourceGroupName** 參數來還原受控磁碟，因為這會導致效能顯著改善。 如果未指定此參數，則您無法從立即還原功能獲益，而且還原作業將會比較慢。 如果目的是要將受控磁片還原為非受控磁片，則請勿提供此參數，並藉由提供參數來清除意圖 `-RestoreAsUnmanagedDisks` 。 您 `-RestoreAsUnmanagedDisks` 可以從 Azure PowerShell 3.7.0 開始取得參數。 在未來的版本中，必須提供這些參數的任一個，才能進行正確的還原體驗。
 >
 >
 
@@ -529,8 +529,8 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 > [!NOTE]
 >
 > 1. 需要 AzureAz 模組3.0.0 或更高版本。 <br>
-> 2. 若要從預存的磁碟建立加密的 VM，您的 Azure 角色必須具備可執行 **Microsoft.KeyVault/vaults/deploy/action** 動作的權限。 如果您的角色並沒有此權限，請使用此動作來建立自訂角色。 如需詳細資訊，請參閱 [Azure RBAC 中的自訂角色](../role-based-access-control/custom-roles.md)。 <br>
-> 3. 還原磁碟之後，現在即可取得部署範本，您可以直接用來建立新的虛擬機器。 沒有其他不同的 PS Cmdlet 可建立加密/解密的受控/非受控虛擬機器。<br>
+> 2. 若要從預存的磁碟建立加密的 VM，您的 Azure 角色必須具備可執行 **Microsoft.KeyVault/vaults/deploy/action** 動作的權限。 如果您的角色沒有此許可權，請使用此動作建立自訂角色。 如需詳細資訊，請參閱 [Azure RBAC 中的自訂角色](../role-based-access-control/custom-roles.md)。 <br>
+> 3. 還原磁碟之後，現在即可取得部署範本，您可以直接用來建立新的虛擬機器。 您不需要不同的 PowerShell Cmdlet 來建立已加密/未加密的受控/非受控 Vm。<br>
 > <br>
 
 ### <a name="create-a-vm-using-the-deployment-template"></a>使用部署範本建立 VM
@@ -880,6 +880,6 @@ Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc54
 Disable-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0] -VaultId $targetVault.ID
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如果您偏好使用 PowerShell 來與 Azure 資源互動，請參閱 PowerShell 文章：[部署和管理 Windows Server 的備份](backup-client-automation.md)。 如果您管理 DPM 備份，請參閱[部署及管理 DPM 的備份](backup-dpm-automation.md)一文。

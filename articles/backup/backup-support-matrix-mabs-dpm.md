@@ -3,12 +3,12 @@ title: MABS & System Center DPM 支援矩陣
 description: 本文摘要說明當您使用 Microsoft Azure 備份 Server (MABS) 或 System Center DPM 來備份內部部署和 Azure VM 資源時的 Azure 備份支援。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 34b15ea0752bf013d2b1e5c3a7434ff009e2d80a
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 26d9e3012749298a781cd611866bc6d0a6596979
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761333"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825217"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 備份 Server 或 System Center DPM 進行備份的支援矩陣
 
@@ -76,7 +76,7 @@ Azure 備份可以備份正在執行下列任何作業系統的 DPM/MABS 實例�
 **內部部署 DPM** | 實體伺服器/Hyper-v VM： System Center 2012 SP1 或更新版本。<br/><br/> VMware VM： System Center 2012 R2 Update 5 或更新版本。
 
 >[!NOTE]
->不支援在 Windows Server Core 或 Microsoft Hyper-v Server 上安裝 Azure 備份伺服器。
+>Windows Server Core 或 Microsoft Hyper-V Server 不支援安裝 Azure 備份伺服器。
 
 ## <a name="management-support"></a>管理支援
 

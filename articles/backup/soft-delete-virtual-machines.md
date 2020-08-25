@@ -4,12 +4,12 @@ description: 瞭解虛擬機器虛刪除如何讓備份更安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: 19de26024a6a31a213130ec419132fd7dd8134a0
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 90d55e8ed6c831adf4efaf0663d191697177ea63
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763689"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826475"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>虛擬機器的虛刪除
 
@@ -38,7 +38,7 @@ Vm 的虛刪除會保護 Vm 的備份免于非預期的刪除。 即使在刪除
    ![Azure 入口網站的螢幕擷取畫面，以虛刪除狀態的 VM](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
    > [!NOTE]
-   > 如果保存庫中有任何虛刪除的備份專案，則在該時間無法刪除保存庫。 在永久刪除備份專案之後，請嘗試刪除保存庫，而且保存庫中沒有任何已被虛刪除狀態的專案。
+   > 如果保存庫中有任何虛刪除的備份專案，則在該時間無法刪除保存庫。 請在永久刪除備份專案之後嘗試刪除保存庫，而且保存庫中沒有任何已虛刪除狀態的專案。
 
 4. 若要還原虛刪除的 VM，必須先將它取消刪除。 若要取消刪除，請選擇虛刪除的 VM，然後選取 [取消 **刪除**] 選項。
 
@@ -62,13 +62,13 @@ Vm 的虛刪除會保護 Vm 的備份免于非預期的刪除。 即使在刪除
 ## <a name="soft-delete-for-vms-using-azure-powershell"></a>使用 Azure PowerShell 的 Vm 虛刪除
 
 > [!IMPORTANT]
-> 使用 Azure PS 虛刪除所需的 Az. Az.recoveryservices 版本為 min 2.2.0。 使用 ```Install-Module -Name Az.RecoveryServices -Force``` 取得最新版本。
+> 使用 Azure PowerShell 的虛刪除所需的 Az. Az.recoveryservices 版本最少2.2.0。 使用 ```Install-Module -Name Az.RecoveryServices -Force``` 取得最新版本。
 
 如上述 Azure 入口網站所述，使用 Azure PowerShell 也是相同的步驟順序。
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>使用 Azure PowerShell 刪除備份專案
 
-使用 [>enable-azrecoveryservicesbackupprotection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS Cmdlet 刪除備份專案。
+使用 [>enable-azrecoveryservicesbackupprotection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PowerShell Cmdlet 來刪除備份專案。
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -95,7 +95,7 @@ VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
 ```
 
-然後，使用 [復原 AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS Cmdlet 來執行復原刪除作業。
+然後，使用 [AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PowerShell Cmdlet 來執行復原刪除作業。
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
@@ -116,7 +116,7 @@ AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM
 
 不建議停用此功能。 如果您打算將受保護的專案移至新的保存庫，而且在刪除和重新保護 (（例如在測試環境中）之前，您應該考慮停用虛刪除的唯一情況 ) 。如需有關如何停用虛刪除的指示，請參閱 [啟用和停](backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)用虛刪除。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 閱讀有關[虛刪除的常見問題](backup-azure-security-feature-cloud.md#frequently-asked-questions)
 - 閱讀 [Azure 備份中的所有安全性功能](security-overview.md)

@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來設定、啟動
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 89bf2df0b5b9279053ca8258e6d21b00e2789557
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: a0ad08e9fd750166f8df82a1b3a36cecd8f12f27
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762873"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826407"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>透過 REST API 使用 Azure 備份來備份 Azure VM
 
@@ -302,7 +302,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="example-request-body-for-on-demand-backup"></a>隨選備份的要求主體範例
 
-下列要求本文會定義觸發受保護項目之備份所需的屬性。 如果未指定保留期，它將會保留 30 天 (從觸發備份作業當日起算)。
+下列要求本文會定義觸發受保護項目之備份所需的屬性。 如果未指定保留期，則會在備份作業觸發程式的時間內保留30天。
 
 ```json
 {
@@ -445,7 +445,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 |202 已接受     |         |     已接受    |
 
 > [!IMPORTANT]
-> 為了防止意外刪除的情況，復原服務保存庫 [可使用虛刪除功能](use-restapi-update-vault-properties.md#soft-delete-state) 。 如果保存庫的虛刪除狀態設定為 [已啟用]，則刪除作業將不會立即刪除資料。 它會保留14天，然後永久清除。 客戶在這14天的期間內不會收取儲存體費用。 若要復原刪除操作，請參閱 [復原-刪除一節](#undo-the-deletion)。
+> 為了防止意外刪除的情況，復原服務保存庫 [可使用虛刪除功能](use-restapi-update-vault-properties.md#soft-delete-state) 。 如果保存庫的虛刪除狀態設定為 [已啟用]，則刪除作業將不會立即刪除資料。 它會保留14天，然後永久清除。 您不需支付此14天期間的儲存體費用。 若要復原刪除操作，請參閱 [復原-刪除一節](#undo-the-deletion)。
 
 ### <a name="undo-the-deletion"></a>復原刪除
 
@@ -466,7 +466,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 回應將遵循與[針對觸發隨選備份](#example-responses-for-on-demand-backup)所述相同的格式。 您應該追蹤結果作業，如[使用 REST API 監視作業文件](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)所述。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [從 Azure 虛擬機器備份還原資料](backup-azure-arm-userestapi-restoreazurevms.md)。
 
