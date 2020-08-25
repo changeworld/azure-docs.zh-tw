@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c58086a163bf558ffdc71e51e55d296e8d4d25e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12193b469b6e1f014e6c948da7b2adb370e78d4b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728583"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795339"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自訂網域名稱
 
@@ -71,9 +71,9 @@ ms.locfileid: "84728583"
 
 ### <a name="forcedelete-option"></a>ForceDelete 選項
 
-您可以 **ForceDelete**[Azure AD 管理中心](https://aad.portal.azure.com)中的網域名稱，或使用 [Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)。 這些選項會使用非同步作業，並更新所有從自訂網域名稱 (例如「user@contoso.com」) 到初始預設網域名稱 (例如「user@contoso.onmicrosoft.com」) 的參考。 
+您可以 **ForceDelete**[Azure AD 管理中心](https://aad.portal.azure.com)中的網域名稱，或使用 [Microsoft Graph API](/graph/api/domain-forcedelete?view=graph-rest-beta)。 這些選項會使用非同步作業，並更新所有從自訂網域名稱 (例如「user@contoso.com」) 到初始預設網域名稱 (例如「user@contoso.onmicrosoft.com」) 的參考。 
 
-若要在 Azure 入口網站呼叫 **ForceDelete**，您必須確保網域名稱擁有低於 1000 個參考，且必須更新或移除 [Exchange 管理中心](https://outlook.office365.com/ecp/)的所有以 Exchange 作為佈建服務的參考。 這包括 Exchange 已啟用郵件的安全性群組和分散式清單；如需詳細資訊，請參閱[移除已啟用郵件的安全性群組](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)。 此外，如果下列任一項為真，**ForceDelete** 作業就會失敗：
+若要在 Azure 入口網站呼叫 **ForceDelete**，您必須確保網域名稱擁有低於 1000 個參考，且必須更新或移除 [Exchange 管理中心](https://outlook.office365.com/ecp/)的所有以 Exchange 作為佈建服務的參考。 這包括 Exchange 已啟用郵件的安全性群組和分散式清單；如需詳細資訊，請參閱[移除已啟用郵件的安全性群組](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)。 此外，如果下列任一項為真，**ForceDelete** 作業就會失敗：
 
 * 您透過 Office 365 網域訂用帳戶服務購買網域
 * 您是合作夥伴，代表其他客戶組織進行管理
@@ -110,11 +110,11 @@ ms.locfileid: "84728583"
 
 在 Azure Active Directory 中，大部分的網域名稱管理工作也都可以使用 Microsoft PowerShell 來完成，或使用 Microsoft Graph API 以程式設計方式來完成。
 
-* [使用 PowerShell 管理 Azure AD 中的網域名稱](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
-* [網域資源類型](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0) \(英文\)
+* [使用 PowerShell 管理 Azure AD 中的網域名稱](/powershell/module/azuread/?view=azureadps-2.0#domains)
+* [網域資源類型](/graph/api/resources/domain?view=graph-rest-1.0) \(英文\)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [新增自訂網域名稱](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
-* [在 Azure AD 中的自訂網域名稱上移除 Exchange 管理中心的 Exchange 已啟用郵件安全性群組](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [使用 Microsoft Graph API 以強制刪除自訂網域名稱](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)
+* [新增自訂網域名稱](../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)
+* [在 Azure AD 中的自訂網域名稱上移除 Exchange 管理中心的 Exchange 已啟用郵件安全性群組](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)
+* [使用 Microsoft Graph API 以強制刪除自訂網域名稱](/graph/api/domain-forcedelete?view=graph-rest-beta)

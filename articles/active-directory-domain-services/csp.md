@@ -10,18 +10,18 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 42364e791711258e42883bdfcd658ba2c45ecd28
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 524e3682e39b6d9153beeef781deeb20e6ea8750
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723141"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749657"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>適用于 Azure 雲端解決方案提供者的 Azure Active Directory Domain Services 部署和管理
 
 Azure 雲端解決方案提供者 (CSP) 是適用于 Microsoft 合作夥伴的方案，可為各種 Microsoft 雲端服務提供授權頻道。 Azure CSP 使得合作夥伴能夠管理銷售、擁有計費關係、提供技術及計費支援，並成為客戶的單一連絡窗口。 此外，Azure CSP 會提供一組完整的工具，包括自助服務入口網站和隨附的 API。 這些工具使得 CSP 合作夥伴能夠輕鬆地佈建及管理 Azure 資源，以及提供客戶和其訂用帳戶的帳單。
 
-[合作夥伴中心入口網站](/azure/cloud-solution-provider/overview/partner-center-overview)是所有 Azure CSP 合作夥伴的進入點，並提供豐富的客戶管理功能、自動化處理等等。 Azure CSP 合作夥伴可以使用網頁型 UI 或使用 PowerShell 與各種 API 呼叫來使用合作夥伴中心的功能。
+[合作夥伴中心入口網站](/partner-center/azure-plan-lp)是所有 Azure CSP 合作夥伴的進入點，並提供豐富的客戶管理功能、自動化處理等等。 Azure CSP 合作夥伴可以使用網頁型 UI 或使用 PowerShell 與各種 API 呼叫來使用合作夥伴中心的功能。
 
 下圖說明 CSP 模型高層的運作方式。 在這裡，Contoso 有 Azure AD) 租使用者的 Azure Active Directory (。 它們與某個 CSP 有合作關係，該 CSP 會在其 Azure CSP 訂用帳戶中部署和管理資源。 Contoso 可能也有定期 (直接) 的 Azure 訂用帳戶，這部分是直接向 Contoso 計費。
 
@@ -33,7 +33,7 @@ CSP 合作夥伴的租使用者有三個特殊的代理程式群組：系統 *�
 
 當 CSP 合作夥伴為 Contoso 佈建 Azure CSP 訂用帳戶時，其管理專員群組即獲指派該訂用帳戶的擁有者角色。 如此一來，CSP 合作夥伴的管理專員具有代表 Contoso 佈建 Azure 資源 (例如：虛擬機器、虛擬網路以及 Azure AD Domain Services) 的必要權限。
 
-如需詳細資訊，請參閱 [Azure CSP 概觀](/azure/cloud-solution-provider/overview/azure-csp-overview)
+如需詳細資訊，請參閱 [Azure CSP 概觀](/partner-center/azure-plan-lp)
 
 ## <a name="benefits-of-using-azure-ad-ds-in-an-azure-csp-subscription"></a>在 Azure CSP 訂用帳戶中使用 Azure AD DS 的優點
 

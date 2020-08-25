@@ -4,15 +4,15 @@ description: 描述 Azure Analysis Services 中表格式 1200 和更高資料模
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 72a1a37bf240355e6bc87cbfd62b0dc2d25ce68b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503594"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749096"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支援的資料來源
 
@@ -37,7 +37,7 @@ ms.locfileid: "87503594"
 
 <a name="tab1400a">1</a> - 僅限 Tabular 1400 和更高模型。  
 <a name="azprovider">2</a> - 在表格式 1200 和更高模型中指定為「提供者」資料來源時，記憶體內部和 DirectQuery 模型都需要 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (建議)、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。  
-<a name="azsqlmanaged">3</a> -支援 Azure SQL 受控執行個體。 因為 SQL 受控執行個體在具有私人 IP 位址的 Azure VNet 中執行，所以必須在實例上啟用公用端點。 如果未啟用，則需要[內部部署資料閘道](analysis-services-gateway.md)。  
+<a name="azsqlmanaged">3</a> -支援 Azure SQL 受控執行個體。 因為 SQL 受控執行個體是在具有私人 IP 位址的 Azure VNet 內執行，所以必須在實例上啟用公用端點。 如果未啟用，則需要[內部部署資料閘道](analysis-services-gateway.md)。  
 <a name="databricks">4</a> - 目前不支援使用 Spark 連接器的 Azure Databricks。  
 <a name="gen2">5</a> - 目前不支援 ADLS Gen2 連接器，但 Azure Blob 儲存體連接器可與 ADLS Gen2 資料來源搭配使用。
 
@@ -80,7 +80,7 @@ ms.locfileid: "87503594"
 <a name="tab1400b">6</a> - 僅限表格式 1400 和更高模型。  
 <a name="sqlim">7</a> - 在表格式 1200 和更高模型中指定為「提供者」資料來源時，請指定 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (建議)、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。  
 <a name="instgw">8</a> - 如果指定 MSOLEDBSQL 作為資料提供者，則可能需要在與內部部署資料閘道相同的電腦上，下載並安裝 [Microsoft OLE DB Driver for SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server)。  
-<a name="oracle">9</a> - 您可針對表格式 1200 模型指定 Oracle Data Provider for .NET，或將其指定為表格式 1400+ 模型中的「提供者」資料來源。 如果指定為結構化資料來源，請務必[啟用 Oracle managed 提供者](#enable-oracle-managed-provider)。   
+<a name="oracle">9</a> - 您可針對表格式 1200 模型指定 Oracle Data Provider for .NET，或將其指定為表格式 1400+ 模型中的「提供者」資料來源。 如果指定為結構化資料來源，請務必 [啟用 Oracle managed provider](#enable-oracle-managed-provider)。   
 <a name="teradata">10</a> - 您可針對表格式 1200 模型指定 Teradata Data Provider for .NET，或將其指定為表格式 1400+ 模型中的「提供者」資料來源。  
 <a name="filesSP">11</a> - 不支援內部部署 SharePoint 中的檔案。
 
@@ -88,7 +88,7 @@ ms.locfileid: "87503594"
 
 ## <a name="understanding-providers"></a>了解提供者
 
-在 Visual Studio 中建立表格式 1400 和更高模型專案時，預設不會在使用 [取得資料] 連接到資料來源時指定資料提供者。 表格式 1400 和更高模型會使用 [Power Query](/power-query/power-query-what-is-power-query) 連接器來管理資料來源與 Analysis Services 之間的連接、資料查詢和混搭。 這有時候稱為「結構化」資料來源連接，其會在連接屬性設定中設定。 不過，您可在 Visual Studio 中啟用模型專案的舊版資料來源。 啟用時，您可使用 [資料表匯入精靈] 來連接到表格式 1200 和更低模型傳統上支援作為「舊版」或「提供者」資料來源的特定資料來源。 指定為提供者資料來源時，您可指定特定資料提供者及其他進階連接屬性。 例如，您可以連接到 SQL Server 資料倉儲實例，甚至是 Azure SQL Database 做為舊版的資料來源。 然後，您可選取 OLE DB Driver for SQL Server MSOLEDBSQL 資料提供者。 在此情況下，選取 OLE DB 資料提供者可透過 Power Query 連接器來提供改善的效能。 
+在 Visual Studio 中建立表格式 1400 和更高模型專案時，預設不會在使用 [取得資料] 連接到資料來源時指定資料提供者。 表格式 1400 和更高模型會使用 [Power Query](/power-query/power-query-what-is-power-query) 連接器來管理資料來源與 Analysis Services 之間的連接、資料查詢和混搭。 這有時候稱為「結構化」資料來源連接，其會在連接屬性設定中設定。 不過，您可在 Visual Studio 中啟用模型專案的舊版資料來源。 啟用時，您可使用 [資料表匯入精靈] 來連接到表格式 1200 和更低模型傳統上支援作為「舊版」或「提供者」資料來源的特定資料來源。 指定為提供者資料來源時，您可指定特定資料提供者及其他進階連接屬性。 例如，您可以連接到 SQL Server 資料倉儲實例，甚至 Azure SQL Database 作為舊版資料來源。 然後，您可選取 OLE DB Driver for SQL Server MSOLEDBSQL 資料提供者。 在此情況下，選取 OLE DB 資料提供者可透過 Power Query 連接器來提供改善的效能。 
 
 在 Visual Studio 中使用 [資料表匯入精靈] 時，與任何資料來源的連接都需要資料提供者。 系統會選取預設資料提供者。 您可視需要變更資料提供者。 您選擇的提供者類型可能取決於效能、模型是否使用記憶體內部儲存體或 DirectQuery，以及要將模型部署到哪個 Analysis Services 平台。
 
@@ -120,22 +120,22 @@ ms.locfileid: "87503594"
 
 ## <a name="oauth-credentials"></a>OAuth 認證
 
-若是1400和更高相容性層級的表格式模型使用記憶體中模式，Azure SQL Database、Azure Synapse （先前稱為 SQL 資料倉儲）、Dynamics 365 和 SharePoint 清單都支援 OAuth 認證。 Azure Analysis Services 會管理 OAuth 資料來源的權杖重新整理，以避免長時間執行的重新整理作業逾時。 若要產生有效的權杖，請使用 SSMS 來設定認證。
+針對1400和更高相容性層級的表格式模型，使用記憶體內部模式 Azure SQL Database，Azure Synapse (先前的 SQL 資料倉儲) 、Dynamics 365 和 SharePoint 清單支援 OAuth 認證。 Azure Analysis Services 會管理 OAuth 資料來源的權杖重新整理，以避免長時間執行的重新整理作業逾時。 若要產生有效的權杖，請使用 Power Query 設定認證。
 
 OAuth 認證不支援 DirectQuery 模式。
 
-## <a name="enable-oracle-managed-provider"></a>啟用 Oracle 受管理提供者
+## <a name="enable-oracle-managed-provider"></a>啟用 Oracle managed 提供者
 
 在某些情況下，對 Oracle 資料來源的 DAX 查詢可能會傳回非預期的結果。 這可能是因為資料來源連接所使用的提供者。
 
-如[瞭解提供者](#understanding-providers)一節所述，表格式模型會以*結構化*資料來源或*提供者*資料來源的形式，連接至資料來源。 針對具有指定為提供者資料來源之 Oracle 資料來源的模型，請確定指定的提供者為 .NET 的 Oracle Data Provider （DataAccess. Client）。 
+如「 [瞭解提供者](#understanding-providers) 」一節所述，表格式模型會以 *結構化* 資料來源或 *提供者* 資料來源的形式連接到資料來源。 針對已指定為提供者資料來源之 Oracle 資料來源的模型，請確定指定的提供者為 .NET (DataAccess 的 Oracle Data Provider。用戶端) 。 
 
-如果將 Oracle 資料來源指定為結構化資料來源，請啟用**MDataEngine\UseManagedOracleProvider**伺服器屬性。 設定此屬性可確保您的模型會使用建議的 Oracle Data Provider for .NET managed 提供者連接到 Oracle 資料來源。
+如果 Oracle 資料來源已指定為結構化資料來源，請啟用 **MDataEngine\UseManagedOracleProvider** 伺服器屬性。 設定這個屬性可確保您的模型使用 .NET managed 提供者的建議 Oracle Data Provider 連接到 Oracle 資料來源。
  
-若要啟用 Oracle 受管理提供者：
+若要啟用 Oracle managed 提供者：
 
 1. 在 SQL Server Management Studio 中，連接到您的伺服器。
-2. 使用下列腳本建立 XMLA 查詢。 以完整伺服器名稱取代**ServerName** ，然後執行查詢。
+2. 使用下列腳本建立 XMLA 查詢。 以完整伺服器名稱取代 **ServerName** ，然後執行查詢。
 
     ```xml
     <Alter AllowCreate="true" ObjectExpansion="ObjectProperties" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">

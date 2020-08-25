@@ -3,12 +3,12 @@ title: 管理 Azure 復原服務保存庫與伺服器
 description: 在本文中，您將瞭解如何使用復原服務保存庫總覽儀表板來監視和管理您的復原服務保存庫。
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: ee96acf624f1c313c85b21840c142e1e2d6f40d8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a34ac44e3fe8d3a0b7789b37b0b0308d42d4e3da
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654203"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756056"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>監視及管理復原服務保存庫
 
@@ -32,7 +32,7 @@ ms.locfileid: "88654203"
 
 3. 在 [所有服務]**** 對話方塊中，輸入**復原服務**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 當 [復原 **服務保存庫** ] 選項出現時，請選取它以開啟您訂用帳戶中的復原服務保存庫清單。
 
-    ![建立復原服務保存庫的步驟 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
+    ![建立復原服務保存庫的步驟1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
 4. 從保存庫清單中，選取保存庫以開啟其 **總覽** 儀表板。
 
@@ -226,7 +226,7 @@ ms.locfileid: "88654203"
 * Azure 儲存體
 * Azure 工作負載
 
-#### <a name="operation"></a>操作
+#### <a name="operation"></a>作業
 
 您可以檢視一項作業或所有作業。 您無法選取兩項或三項作業。 可用的作業如下：
 

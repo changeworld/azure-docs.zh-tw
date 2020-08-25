@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cccab009ddd5624fcc98ad6f871fe40d9540823
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: bb74fae150d4c8e5dda6978c272d358bdec6ca25
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604006"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783598"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>規劃 Azure Active Directory 存取審查部署
 
@@ -180,7 +180,7 @@ ms.locfileid: "88604006"
 
 * [整合了 Azure AD 的應用程式，可進行單一登入](../manage-apps/what-is-application-management.md) (例如 SaaS、企業營運) 。
 
-* 群組 [成員資格](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context) (同步處理至 Azure AD，或在 Azure AD 或 Office 365 中建立，包括 Microsoft 小組) 。
+* 群組 [成員資格](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (同步處理至 Azure AD，或在 Azure AD 或 Office 365 中建立，包括 Microsoft 小組) 。
 
 * 將資源群組、應用程式和網站群組 (群組、應用程式和網站的[存取套件](/entitlement-management-overview.md)，) 成單一套件來管理存取權。
 
@@ -389,7 +389,7 @@ ms.locfileid: "88604006"
 
 ## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>規劃 Azure AD 和 Azure 資源角色的評論
 
-[Privileged Identity Management (PIM) ](../privileged-identity-management/pim-configure.md) 可簡化企業在 Azure AD 中管理資源的特殊許可權存取的方式。 這會讓特殊許可權角色清單保持在 [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) 和 [Azure 資源](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) 中的較小，並提高目錄的整體安全性。
+[Privileged Identity Management (PIM) ](../privileged-identity-management/pim-configure.md) 可簡化企業在 Azure AD 中管理資源的特殊許可權存取的方式。 這會讓特殊許可權角色清單保持在 [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) 和 [Azure 資源](../../role-based-access-control/built-in-roles.md) 中的較小，並提高目錄的整體安全性。
 
 存取評論可讓審核者證明使用者是否仍然必須在角色中。 就像存取套件的存取權評論一樣，Azure AD 角色和 Azure 資源的評論也會整合到 PIM 系統管理員使用者體驗中。 建議您定期檢查下列角色指派：
 
@@ -452,9 +452,9 @@ ms.locfileid: "88604006"
 
 | 操作說明文章 | 描述 |
 | - | - |
- [建立存取權評論](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-start-security-review?toc=/azure/active-directory/governance/toc.json)| 在 PIM 中建立特殊許可權 Azure AD 角色的存取權審核 |
-| [自行審核您的存取權](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review?toc=/azure/active-directory/governance/toc.json)| 如果您指派給系統管理角色，請核准或拒絕角色的存取權 |
-| [完成存取權審核](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-complete-review?toc=/azure/active-directory/governance/toc.json)| 查看存取權檢查並套用結果 |
+ [建立存取權評論](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 在 PIM 中建立特殊許可權 Azure AD 角色的存取權審核 |
+| [自行審核您的存取權](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 如果您指派給系統管理角色，請核准或拒絕角色的存取權 |
+| [完成存取權審核](../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 查看存取權檢查並套用結果 |
 
 
 ### <a name="review-azure-resource-roles"></a>審核 Azure 資源角色
@@ -467,14 +467,14 @@ ms.locfileid: "88604006"
 
 | 操作說明文章| 描述 |
 | - | -|
-| [建立存取權評論](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-start-access-review?toc=/azure/active-directory/governance/toc.json)| 在 PIM 中建立特殊許可權 Azure 資源角色的存取權審核 |
-| [自行審核您的存取權](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-perform-access-review?toc=/azure/active-directory/governance/toc.json)| 如果您指派給系統管理角色，請核准或拒絕角色的存取權 |
-| [完成存取權審核](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-complete-access-review?toc=/azure/active-directory/governance/toc.json)| 查看存取權檢查並套用結果 |
+| [建立存取權評論](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 在 PIM 中建立特殊許可權 Azure 資源角色的存取權審核 |
+| [自行審核您的存取權](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 如果您指派給系統管理角色，請核准或拒絕角色的存取權 |
+| [完成存取權審核](../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 查看存取權檢查並套用結果 |
 
 
 ## <a name="use-the-access-reviews-api"></a>使用存取權審核 API
 
-請參閱 [GRAPH API 方法](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) 和 [角色和應用程式許可權授權檢查](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) ，以與可檢閱 oss 資源互動並加以管理。 Microsoft Graph API 中的存取權審核方法適用于應用程式和使用者內容。 在應用程式內容中執行腳本時，用來執行 API (服務主體的帳戶) 必須被授與查詢存取權評論資訊的「AccessReview」許可權。
+請參閱 [GRAPH API 方法](/graph/api/resources/accessreviews-root?view=graph-rest-beta) 和 [角色和應用程式許可權授權檢查](/graph/api/resources/accessreviews-root?view=graph-rest-beta) ，以與可檢閱 oss 資源互動並加以管理。 Microsoft Graph API 中的存取權審核方法適用于應用程式和使用者內容。 在應用程式內容中執行腳本時，用來執行 API (服務主體的帳戶) 必須被授與查詢存取權評論資訊的「AccessReview」許可權。
 
 常用的存取權審核工作，可使用圖形 API 進行存取審核來自動化：
 
@@ -519,4 +519,3 @@ ms.locfileid: "88604006"
 
 * [什麼是 Azure AD Privileged Identity Management？](../privileged-identity-management/pim-configure.md)
 
- 

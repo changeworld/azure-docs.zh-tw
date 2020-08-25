@@ -15,12 +15,12 @@ ms.date: 08/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1be8a714d57d0f84b195c9f3846964aa2bf2525b
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c2b3a838e52bb0b9f3a3be7195bd528c08e499c0
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605096"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783649"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 存取權評論中建立群組和應用程式的存取權審核
 
@@ -32,7 +32,7 @@ ms.locfileid: "88605096"
 
 本文說明如何針對群組成員或應用程式存取建立一或多個存取權審核。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - Azure AD Premium P2
 - 全域管理員或使用者管理員
@@ -158,7 +158,7 @@ ms.locfileid: "88605096"
 
 ## <a name="create-reviews-via-apis"></a>透過 API 建立檢閱
 
-您也可以使用 API 來建立存取權檢閱。 您在 Azure 入口網站中為群組和應用程式使用者的存取權檢閱所做的管理工作，也可以使用 Microsoft Graph API 來執行。 如需詳細資訊，請參閱 [Azure AD 存取審核 API 參考](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)。 如需程式碼範例，請參閱透過 [Microsoft Graph 抓取 Azure AD 存取評論的範例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)。
+您也可以使用 API 來建立存取權檢閱。 您在 Azure 入口網站中為群組和應用程式使用者的存取權檢閱所做的管理工作，也可以使用 Microsoft Graph API 來執行。 如需詳細資訊，請參閱 [Azure AD 存取審核 API 參考](/graph/api/resources/accessreviews-root?view=graph-rest-beta)。 如需程式碼範例，請參閱透過 [Microsoft Graph 抓取 Azure AD 存取評論的範例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)。
 
 ## <a name="next-steps"></a>後續步驟
 

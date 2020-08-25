@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 35cac2c05a8603313bb2bbe1bde3817dc88c6ed2
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 08/21/2020
+ms.openlocfilehash: 99b64ca8e807fcf6a142f10878d90e77e3639698
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682612"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749478"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 認知搜尋中的服務限制
 
@@ -83,8 +83,8 @@ ms.locfileid: "83682612"
 | 技能集上限為 <sup>4</sup> |3 |5 或 15 |50 |200 |200 |N/A |10 |10 |
 | 每次叫用的索引編製負載上限 |10,000 份文件 |僅限制文件上限 |僅限制文件上限 |僅限制文件上限 |僅限制文件上限 |N/A |沒有限制 |沒有限制 |
 | 排程下限 | 5 分鐘 |5 分鐘 |5 分鐘 |5 分鐘 |5 分鐘 |5 分鐘 |5 分鐘 | 5 分鐘 |
-| 執行時間上限 <sup>5</sup> | 1-3 分鐘 |24 小時 |24 小時 |24 小時 |24 小時 |N/A  |24 小時 |24 小時 |
-| 影像分析的認知搜尋技能集或 Blob 索引適用的執行時間上限 <sup>5</sup> | 3-10 分鐘 |2 小時 |2 小時 |2 小時 |2 小時 |N/A  |2 小時 |2 小時 |
+| 執行時間上限| 1-3 分鐘 |24 小時 |24 小時 |24 小時 |24 小時 |N/A  |24 小時 |24 小時 |
+| 技能集<sup>5</sup>的索引子執行時間上限 | 3-10 分鐘 |2 小時 |2 小時 |2 小時 |2 小時 |N/A  |2 小時 |2 小時 |
 | Blob 索引子︰Blob 大小上限，MB |16 |16 |128 |256 |256 |N/A  |256 |256 |
 | Blob 索引子︰從 Blob 擷取的內容字元數上限 |32,000 |64,000 |400&nbsp;萬 |800&nbsp;萬 |1600&nbsp;萬 |N/A |400&nbsp;萬 |400&nbsp;萬 |
 

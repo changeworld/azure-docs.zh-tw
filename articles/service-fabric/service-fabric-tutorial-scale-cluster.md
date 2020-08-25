@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何在 Azure 中相應放大
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d9699103f5e13301cce408d2e54f0e15780e0a35
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257099"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716872"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中調整 Service Fabric 叢集
 
@@ -833,7 +833,7 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>增加節點資源 
-建立 Service Fabric 叢集之後，您可以使用新的節點類型 (包括更新的 VM SKU 或作業系統映像) 取代原始的節點類型，垂直調整叢集節點類型 (變更節點的資源) 或將節點類型 VM 的作業系統升級。 如需詳細的資訊，請參閱[擴大 Azure Service Fabric 節點類型](service-fabric-scale-up-node-type.md)。
+建立 Service Fabric 叢集之後，您可以使用新的節點類型 (包括更新的 VM SKU 或作業系統映像) 取代原始的節點類型，垂直調整叢集節點類型 (變更節點的資源) 或將節點類型 VM 的作業系統升級。 如需詳細的資訊，請參閱[擴大 Azure Service Fabric 節點類型](service-fabric-scale-up-primary-node-type.md)。
 
 > [!IMPORTANT]
 > 請勿嘗試就地變更 VM SKU 或作業系統映像，這是一項危險的作業且不受支援。

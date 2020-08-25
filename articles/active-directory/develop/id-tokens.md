@@ -1,7 +1,7 @@
 ---
-title: Microsoft 身分識別平臺識別碼權杖 |Azure
+title: Microsoft 身分識別平臺識別碼權杖 |蔚藍
 titleSuffix: Microsoft identity platform
-description: 瞭解如何使用 Azure AD v1.0 和 Microsoft 身分識別平臺（v2.0）端點所發出的 id_tokens。
+description: 瞭解如何使用 Azure AD v1.0 和 Microsoft 身分識別平臺 (v2.0) 端點所發出的 id_tokens。
 services: active-directory
 author: hpsin
 manager: CelesteDG
@@ -14,24 +14,24 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: e242e6ce59c715cf3a9ca95523a9a9eda274407a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 66855260bd44ef83972fa251d076d0204cba32da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418911"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795234"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 身分識別平臺識別碼權杖
 
-`id_tokens`會當做[OpenID connect](v2-protocols-oidc.md) （OIDC）流程的一部分，傳送至用戶端應用程式。 這些權杖可以一併傳送或代替存取權杖，並由用戶端用來驗證使用者。
+`id_tokens` 會以 [OpenID Connect](v2-protocols-oidc.md) (OIDC) 流程的一部分傳送至用戶端應用程式。 這些權杖可以一併傳送或代替存取權杖，並由用戶端用來驗證使用者。
 
 ## <a name="using-the-id_token"></a>使用 id_token
 
-識別碼權杖應該用來驗證使用者是否為其所宣稱的身分，並取得其相關的其他實用資訊-不應將其用於授權來取代[存取權杖](access-tokens.md)。 它所提供的宣告可用於應用程式內的 UX、做為[資料庫中](#using-claims-to-reliably-identify-a-user-subject-and-object-id)的索引鍵，以及提供用戶端應用程式的存取權。  
+識別碼權杖應該用來驗證使用者是否為其所宣稱的身分，並取得有關它們的其他實用資訊-它不應該用於授權來取代 [存取權杖](access-tokens.md)。 它提供的宣告可用於應用程式內的 UX、做為 [資料庫中](#using-claims-to-reliably-identify-a-user-subject-and-object-id)的索引鍵，以及提供用戶端應用程式的存取權。  
 
 ## <a name="claims-in-an-id_token"></a>id_token 中的宣告
 
-`id_tokens`是[jwt](https://tools.ietf.org/html/rfc7519) （JSON Web 權杖），這表示它們是由標頭、承載和簽章部分所組成。 您可以使用標頭和簽章來驗證權杖的真確性，而承載則包含您用戶端所要求使用者的相關資訊。 除非另有說明，此處所列的所有 JWT 宣告都會同時出現在 v1.0 和 v2.0 權杖中。
+`id_tokens`[jwt](https://tools.ietf.org/html/rfc7519) () 的 JSON Web 權杖，這表示它們是由標頭、承載和簽章部分所組成。 您可以使用標頭和簽章來驗證權杖的真確性，而承載則包含您用戶端所要求使用者的相關資訊。 除非有注明，此處所列的所有 JWT 宣告都會出現在 v1.0 和 v2.0 權杖中。
 
 ### <a name="v10"></a>v1.0
 
@@ -60,7 +60,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 ### <a name="payload-claims"></a>承載宣告
 
-此清單會顯示預設為最 id_tokens 的 JWT 宣告（除非另有注明）。  不過，您的應用程式可以使用[選擇性宣告](active-directory-optional-claims.md)來要求 id_token 中的其他 JWT 宣告。  這些可以從宣告的範圍 `groups` ，到使用者名稱的相關資訊。
+依預設，此清單會顯示最 id_tokens 的 JWT 宣告 (但) 注明。  不過，您的應用程式可以使用 [選擇性宣告](active-directory-optional-claims.md) 來要求 id_token 中的額外 JWT 宣告。  這些範圍可以從宣告 `groups` 到使用者名稱的相關資訊。
 
 |宣告 | [格式] | 描述 |
 |-----|--------|-------------|
@@ -69,45 +69,45 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`iat` |  整數，UNIX 時間戳記 | 「發出時間 (Issued At)」表示此權杖進行驗證的時間。  |
 |`idp`|字串，通常是 STS URI | 記錄驗證權杖主體的身分識別提供者。 除非使用者帳戶與簽發者不在同一租用戶中，否則此值與簽發者宣告的值相同。 如果宣告不存在，這代表可改用 `iss` 的值。  針對在組織內容中使用的個人帳戶 (例如獲邀使用 Azure AD 租用戶的個人帳戶)，`idp` 宣告可能會是 'live.com' 或包含 Microsoft 帳戶租用戶 `9188040d-6c67-4c5b-b112-36a304b66dad` 的 STS URI。 |
 |`nbf` |  整數，UNIX 時間戳記 | "nbf" (生效時間) 宣告會識別生效時間，在此時間之前不得接受 JWT 以進行處理。|
-|`exp` |  整數，UNIX 時間戳記 | "exp" (到期時間) 宣告會識別到期時間，等於或晚於此時間都不得接受 JWT 以進行處理。  請務必注意，資源可能會在這段時間之前拒絕權杖，例如，需要變更驗證或偵測到權杖撤銷。 |
+|`exp` |  整數，UNIX 時間戳記 | "exp" (到期時間) 宣告會識別到期時間，等於或晚於此時間都不得接受 JWT 以進行處理。  請務必注意，資源可能會在這段時間之前拒絕權杖，例如，需要進行驗證變更或偵測到權杖撤銷。 |
 | `c_hash`| String |只有當識別碼權杖是隨著 OAuth 2.0 授權碼一起簽發時，代碼雜湊才會包含在識別碼權杖中。 它可用來驗證授權碼的真實性。 如需有關執行此驗證的詳細資料，請參閱 [OpenID Connect 規格](https://openid.net/specs/openid-connect-core-1_0.html)。 |
-|`at_hash`| String |只有當識別碼權杖是從 `/authorize` 具有 OAuth 2.0 存取權杖的端點發行時，存取權杖雜湊才會包含在識別碼權杖中。 它可用來驗證存取權杖的真實性。 如需有關執行此驗證的詳細資料，請參閱 [OpenID Connect 規格](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken)。 這不會在端點的識別碼權杖上傳回 `/token` 。 |
+|`at_hash`| String |只有在 `/authorize` 使用 OAuth 2.0 存取權杖從端點發出識別碼權杖時，存取權杖雜湊才會包含在識別碼權杖中。 它可用來驗證存取權杖的真實性。 如需有關執行此驗證的詳細資料，請參閱 [OpenID Connect 規格](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken)。 端點上的識別碼權杖不會傳回此識別碼 `/token` 。 |
 |`aio` | 不透明字串 | Azure AD 用來記錄資料的內部宣告，以便重複使用權杖。 應該予以忽略。|
 |`preferred_username` | String | 代表使用者的主要使用者名稱。 它可以是電子郵件地址、電話號碼或未指定格式的一般使用者名稱。 其值是可變動的，並且可能隨著時間改變。 因為此值會變動，請勿用在授權決策。 `profile`需要範圍才能接收此宣告。|
 |`email` | String | 擁有電子郵件地址的來賓帳戶預設會顯示 `email` 宣告。  應用程式可以使用 `email` [選擇性宣告](active-directory-optional-claims.md)來為受管理的使用者 (其來源租用戶和資源相同的使用者) 要求電子郵件宣告。  在 v2.0 端點上，應用程式也可以要求 `email` OpenID Connect 範圍 - 您不需要同時要求選擇性宣告和用來取得宣告的範圍。  電子郵件宣告僅支援來自使用者設定檔資訊的可定址郵件。 |
-|`name` | String | `name` 宣告會提供人類看得懂的值，用以識別權杖的主體。 此值不保證是唯一的，它是可變動的，而且設計成僅供顯示之用。 `profile`需要範圍才能接收此宣告。 |
+|`name` | String | `name` 宣告會提供人類看得懂的值，用以識別權杖的主體。 此值不保證是唯一的，而是可變動的，而且是設計成僅供顯示之用。 `profile`需要範圍才能接收此宣告。 |
 |`nonce`| String | Nonce 符合對 IDP 的原始 /authorize 要求中包含的參數。 如果不符，您的應用程式應該拒絕權杖。 |
-|`oid` | 字串，GUID | 物件在 Microsoft 身分識別系統中的不可變識別碼，在此案例為使用者帳戶。 此識別碼可跨應用程式唯一識別使用者，同一位使用者登入兩個不同的應用程式會在 `oid` 宣告中收到相同的值。 Microsoft Graph 會傳回這個識別碼做為指定使用者帳戶的 `id` 屬性。 因為 `oid` 允許多個應用程式將使用者相互關聯，所以 `profile` 必須要有範圍才能接收此宣告。 請注意，如果單一使用者存在於多個租使用者中，使用者將會在每個租使用者中包含不同的物件識別碼-它們會被視為不同的帳戶，即使使用者使用相同的認證登入每個帳戶也是一樣。 宣告 `oid` 是 GUID，無法重複使用。 |
-|`roles`| 字串陣列 | 已指派給正在登入之使用者的一組角色。 |
+|`oid` | 字串，GUID | 物件在 Microsoft 身分識別系統中的不可變識別碼，在此案例為使用者帳戶。 此識別碼可跨應用程式唯一識別使用者，同一位使用者登入兩個不同的應用程式會在 `oid` 宣告中收到相同的值。 Microsoft Graph 會傳回這個識別碼做為指定使用者帳戶的 `id` 屬性。 因為 `oid` 可讓多個應用程式與使用者相互關聯，所以 `profile` 必須要有範圍才能接收此宣告。 請注意，如果有單一使用者存在於多個租使用者中，使用者將會在每個租使用者中包含不同的物件識別碼-系統會將它們視為不同的帳戶，即使使用者以相同的認證登入每個帳戶也是一樣。 宣告 `oid` 是 GUID，無法重複使用。 |
+|`roles`| 字串的陣列 | 指派給登入之使用者的一組角色。 |
 |`rh` | 不透明字串 |Azure 用來重新驗證權杖的內部宣告。 應該予以忽略。 |
-|`sub` | 字串，GUID | 權杖判斷提示其相關資訊的主體，例如應用程式的使用者。 這個值不可變，而且無法重新指派或重複使用。 主體是成對識別碼，對於特定應用程式識別碼來說，主體是唯一的。 如果單一使用者使用兩個不同的用戶端識別碼登入兩個不同的應用程式，這些應用程式將會收到兩個不同的主體宣告值。 視您的架構和隱私權需求而定，這不一定會需要。 |
+|`sub` | String | 權杖判斷提示其相關資訊的主體，例如應用程式的使用者。 這個值不可變，而且無法重新指派或重複使用。 主體是成對識別碼，對於特定應用程式識別碼來說，主體是唯一的。 如果單一使用者使用兩個不同的用戶端識別碼登入兩個不同的應用程式，則這些應用程式將會收到兩個不同的主體宣告值。 視您的架構和隱私權需求而定，可能也不會想要這樣做。 |
 |`tid` | 字串，GUID | 代表使用者是來自哪個 Azure AD 租用戶的 GUID。 就工作和學校帳戶而言，GUID 是使用者所屬組織的不可變租用戶識別碼。 就個人帳戶而言，此值會是 `9188040d-6c67-4c5b-b112-36a304b66dad`。 `profile`需要範圍才能接收此宣告。 |
-|`unique_name` | String | 提供人類看得懂的值，用以識別權杖的主體。 這個值在任何指定的時間點都是唯一的，但是當電子郵件和其他識別碼可以重複使用時，這個值可以重新出現在其他帳戶上，因此只能用於顯示用途。 僅在 v1.0 `id_tokens` 中發出。 |
+|`unique_name` | String | 提供人類看得懂的值，用以識別權杖的主體。 這個值在任何給定的時間點都是唯一的，但是當電子郵件和其他識別碼可以重複使用時，這個值可能會重新出現在其他帳戶上，因此只能用於顯示用途。 僅在 v1.0 `id_tokens` 中發出。 |
 |`uti` | 不透明字串 | Azure 用來重新驗證權杖的內部宣告。 應該予以忽略。 |
 |`ver` | 字串，1.0 或 2.0 | 表示 id_token 的版本。 |
 
 > [!NOTE]
-> V1.0 和 v2.0 id_token 與上述範例中所見的資訊數量有所差異。 版本是以其所要求之處的端點為基礎。 雖然現有的應用程式可能會使用 Azure AD 端點，但新的應用程式應該使用 v2.0 「Microsoft 身分識別平臺」端點。
+> V1.0 和 v2.0 id_token 在上述範例中所見的資訊數量有所差異。 版本是根據其要求所在的端點。 雖然現有的應用程式可能會使用 Azure AD 端點，但新的應用程式應該使用 v2.0 「Microsoft 身分識別平臺」端點。
 >
-> - v1.0： Azure AD 端點：`https://login.microsoftonline.com/common/oauth2/authorize`
-> - v2.0： Microsoft 身分識別平臺端點：`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - 1.0 版： Azure AD 端點： `https://login.microsoftonline.com/common/oauth2/authorize`
+> - 2.0 版： Microsoft 身分識別平臺端點： `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
-### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>使用宣告來可靠地識別使用者（主旨和物件識別碼）
+### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>使用宣告來可靠地識別使用者 (主體和物件識別碼) 
 
-識別使用者時（例如，在資料庫中查閱，或決定他們擁有的許可權），請務必使用會在一段時間內保持不變且不重複的資訊。  繼承應用程式有時會使用電子郵件地址、電話號碼或 UPN 之類的欄位。  所有這些專案都可能隨著時間而改變，而且也可以在一段時間後重複使用，也就是當員工變更其名稱時，或員工的電子郵件地址符合先前的、不再存在的員工）。 因此，您的應用程式不一定要使用人類看得懂的資料來識別使用者-人類可**讀的，** 通常表示有人會讀取它，並想要加以變更。  相反地，請使用 OIDC 標準所提供的宣告，或由 Microsoft 提供的延伸模組宣告，也就是 `sub` 和 `oid` 宣告。
+找出使用者 (說，在資料庫中進行查閱，或決定他們) 的許可權時，請務必使用在一段時間內保持不變且獨一無二的資訊。  繼承應用程式有時會使用像是電子郵件地址、電話號碼或 UPN 等欄位。  這些都可以隨著時間而變更，也可以在一段時間內重複使用-當員工變更其名稱時，或將員工的電子郵件地址與先前的電子郵件地址相符，就不會再出現員工) 。 因此，您的應用程式不一定要使用人類看得懂的資料來識別使用者-人類可讀取的資料， **而是要** 變更它。  相反地，請使用 OIDC 標準所提供的宣告，或由 Microsoft 提供的擴充宣告 `sub` 和 `oid` 宣告。
 
-若要正確地儲存每位使用者的資訊，請使用 `sub` 或 `oid` 單獨（這是 guid 是唯一的），並在 `tid` 需要時用於路由或分區化。  如果您需要跨服務共用資料， `oid` + `tid` 最棒的是所有應用程式都會取得相同的 `oid` 和 `tid` 宣告給指定的使用者。  `sub`Microsoft 身分識別平臺中的宣告是「配對」-它是以權杖收件者、租使用者和使用者的組合為唯一的。  因此，針對指定使用者要求識別碼權杖的兩個應用程式將會收到不同的 `sub` 宣告，但該 `oid` 使用者的宣告相同。
+若要正確地儲存每位使用者的資訊，請使用 `sub` 或 `oid` 單獨 (因為 guid 是唯一的) ，並在 `tid` 需要時用於路由或分區化。  如果您需要在服務之間共用資料， `oid` + `tid` 最好是讓所有應用程式取得相同的 `oid` 和 `tid` 宣告給指定的使用者。  `sub`Microsoft 身分識別平臺中的宣告為「成對」-它是根據權杖收件者、租使用者和使用者的組合而定。  因此，針對指定使用者要求識別碼權杖的兩個應用程式將會收到不同的 `sub` 宣告，但該 `oid` 使用者的宣告相同。
 
 >[!NOTE]
-> 請不要使用宣告 `idp` 來儲存使用者的相關資訊，以嘗試讓租使用者之間的使用者相互關聯。  它將不會運作，因為在租使用者之間，系統會 `oid` `sub` 依設計來變更使用者的和宣告，以確保應用程式無法跨租使用者追蹤使用者。  
+> 請勿使用宣告 `idp` 來儲存使用者的相關資訊，以嘗試跨租使用者將使用者相互關聯。  它將無法在租 `oid` `sub` 使用者間依設計變更使用者的和宣告，以確保應用程式無法跨租使用者追蹤使用者。  
 >
-> 來賓案例（其中使用者位於某個租使用者中，並在另一個租使用者中進行驗證）應將使用者視為服務的全新使用者。  您在 Contoso 租使用者中的檔和許可權不應套用於 Fabrikam 租使用者中。 這很重要，可防止跨租使用者的意外資料洩漏。
+> 來賓案例（使用者位於某個租使用者中，並在另一個租使用者中進行驗證）應將使用者視為服務的新使用者。  您的 Contoso 租使用者中的檔和許可權不應套用於 Fabrikam 租使用者中。 這一點很重要，可避免跨租使用者意外資料洩漏。
 
 ## <a name="validating-an-id_token"></a>驗證 id_token
 
-驗證與 `id_token` [驗證存取權杖](access-tokens.md#validating-tokens)的第一個步驟類似-您的用戶端可以驗證正確的簽發者是否已送回權杖，而且它尚未遭到篡改。 因為 `id_tokens` 一律是 JWT 權杖，所以有許多程式庫都是用來驗證這些權杖，我們建議您使用其中一個，而不是自行執行。  請注意，只有機密的用戶端（具有密碼）才會驗證識別碼權杖。  公用應用程式（完全在您未控制的裝置或網路上執行的程式碼，例如，使用者的瀏覽器或其家用網路）不會因為驗證識別碼權杖而受益，因為惡意使用者可以攔截並編輯用於驗證權杖的金鑰。
+驗證的 `id_token` 方式類似于 [驗證存取權杖](access-tokens.md#validating-tokens) 的第一個步驟-您的用戶端可以驗證正確的簽發者是否已傳回權杖，而且該權杖並未遭到篡改。 因為 `id_tokens` 一律為 JWT 權杖，所以有許多程式庫可以驗證這些權杖，我們建議您使用其中一種程式庫，而不是自行進行。  請注意，只有機密用戶端 (具有秘密) 的用戶端應該驗證識別碼權杖。  公用應用程式 (程式碼完全在您無法控制的裝置或網路上執行，例如，使用者的瀏覽器或其家用網路) 不會因為驗證識別碼權杖而受益，因為惡意使用者可以攔截和編輯用於驗證權杖的金鑰。
 
-若要手動驗證權杖，請參閱[驗證存取權杖](access-tokens.md#validating-tokens)中的步驟詳細資料。 驗證權杖上的簽章之後，應在 id_token 中驗證下列 JWT 宣告（也可以透過您的權杖驗證程式庫來完成）：
+若要手動驗證權杖，請參閱[驗證存取權杖](access-tokens.md#validating-tokens)中的步驟詳細資料。 在驗證權杖上的簽章之後，應在 id_token 中驗證下列 JWT 宣告 (這些宣告也可以由您的權杖驗證程式庫) 進行：
 
 * 時間戳記：`iat``nbf` 和 `exp` 時間戳記應該全部落在目前時間的前後 (視情況而定)。
 * 對象：`aud` 宣告應符合您應用程式的應用程式識別碼。
@@ -115,5 +115,5 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解[存取權杖](access-tokens.md)
-* 使用[選擇性宣告](active-directory-optional-claims.md)，在您的 id_token 中自訂 JWT 宣告。
+* 瞭解 [存取權杖](access-tokens.md)
+* 使用 [選擇性宣告](active-directory-optional-claims.md)自訂您 id_token 中的 JWT 宣告。

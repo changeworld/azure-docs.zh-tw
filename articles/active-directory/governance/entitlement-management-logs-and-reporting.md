@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4756ced858210f86bb8e979705db99a563441490
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d6379f3fa41036836288ed5c75fbdaad0031da
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078182"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783809"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>在 Azure 監視器中的 Azure AD 權利管理封存記錄和報告
 
@@ -59,7 +59,7 @@ Azure AD 會將稽核事件儲存在稽核記錄中最多 30 天。 不過，您
 
 ## <a name="view-events-for-an-access-package"></a>檢視存取套件的事件  
 
-若要檢視存取套件的事件，您必須具有基礎 Azure 監視器工作區的存取權 (請參閱[管理 Azure 監視器中的記錄資料和工作區存取權](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions)以取得資訊)，並具有下列其中一個角色： 
+若要檢視存取套件的事件，您必須具有基礎 Azure 監視器工作區的存取權 (請參閱[管理 Azure 監視器中的記錄資料和工作區存取權](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions)以取得資訊)，並具有下列其中一個角色： 
 
 - 全域管理員  
 - 安全性系統管理員  
@@ -170,7 +170,7 @@ $wks | ft CustomerId, Name
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>將查詢傳送至 Log Analytics 工作區
 最後，一旦識別出工作區之後，您就可以使用 [Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-)，將 Kusto 查詢傳送至該工作區。 這些查詢會以 [Kusto 查詢語言](https://docs.microsoft.com/azure/kusto/query/)撰寫。
+)，將 Kusto 查詢傳送至該工作區。 這些查詢會以 [Kusto 查詢語言](/azure/kusto/query/)撰寫。
  
 例如，您可以從 Log Analytics 工作區擷取稽核事件記錄的日期範圍，並使用 PowerShell Cmdlet 來傳送類似下列的查詢：
  
@@ -189,5 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>後續步驟：
-- [使用 Azure 監視器活頁簿建立互動式報告](../../azure-monitor/platform/workbooks-overview.md) 
-
+- [使用 Azure 監視器活頁簿建立互動式報告](../../azure-monitor/platform/workbooks-overview.md)
