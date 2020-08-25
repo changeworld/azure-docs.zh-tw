@@ -3,12 +3,12 @@ title: 使用客戶管理的金鑰來加密備份資料
 description: 瞭解 Azure 備份如何讓您使用客戶管理的金鑰 (CMK) 來加密備份資料。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 2c83350acad59e72cfabc8e40069aab46d785b63
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 9e299095709e07d3c73c8e8c847042cc51f549dd
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763111"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827336"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客戶管理的金鑰來加密備份資料
 
@@ -23,7 +23,7 @@ Azure 備份可讓您使用客戶管理的金鑰 (CMK) 來加密備份資料，�
 - 執行備份至使用客戶管理金鑰加密的保存庫
 - 從備份還原資料
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - 這項功能可讓您 **僅加密新**的復原服務保存庫。 不支援任何包含已註冊或嘗試註冊之現有專案的保存庫。
 
@@ -60,7 +60,7 @@ Azure 備份可讓您使用客戶管理的金鑰 (CMK) 來加密備份資料，�
 Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，以存取儲存在 Azure Key Vault 中的加密金鑰。 若要為您的復原服務保存庫啟用受控識別，請遵循下列所述的步驟。
 
 >[!NOTE]
->啟用之後，就不能 (停用受控識別，即使暫時) 也是如此。 停用受控身分識別可能會導致不一致的行為。
+>啟用之後，就 **不** 能 (停用受控識別，即使暫時) 也是如此。 停用受控身分識別可能會導致不一致的行為。
 
 1. 移至您的復原服務保存庫-> 身分 **識別**
 
@@ -138,7 +138,7 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 > - 以上所述的所有步驟都已成功完成：
 >   - 復原服務保存庫的受控識別已啟用，且已獲指派必要的許可權
 >   - Azure Key Vault 已啟用虛刪除和清除保護
-> - 您要啟用 CMK 加密的復原服務保存庫沒有任何專案受到保護或註冊
+> - 您要啟用 CMK 加密的復原服務保存 **庫沒有任何** 專案受到保護或註冊
 
 確認上述各項之後，請繼續選取您保存庫的加密金鑰。
 
@@ -220,7 +220,7 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 1. 從下拉式清單中，選取您要用於還原的磁片 (s) 的 DES。 **確定您具有 DES 的存取權。**
 
 >[!NOTE]
->如果您要還原使用 Azure 磁碟加密的 VM，則無法在還原時選擇 DES。
+>如果您要還原使用 Azure 磁碟加密的 VM，就無法在還原時選擇 DES。
 
 ![使用您的金鑰將磁片加密](./media/encryption-at-rest-with-cmk/encrypt-disk-using-your-key.png)
 
@@ -240,7 +240,7 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
 ### <a name="i-tried-to-protect-an-item-to-my-vault-but-it-failed-and-the-vault-still-doesnt-contain-any-items-protected-to-it-can-i-enable-cmk-encryption-for-this-vault"></a>我已嘗試保護保存庫的專案，但失敗，而且保存庫仍未包含任何受保護的專案。 我可以為此保存庫啟用 CMK 加密嗎？
 
-否，保存庫不得在過去任何嘗試保護其任何專案。
+否，保存庫在過去必須沒有任何嘗試保護其任何專案。
 
 ### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>我有一個使用 CMK 加密的保存庫。 我稍後是否可以使用平臺管理的金鑰來還原至加密，即使我的備份專案受保護于保存庫也是一樣？
 
@@ -258,6 +258,6 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
 使用 CMK encryption 進行備份，不會對您產生任何額外的成本。 不過，您可能會繼續產生使用您的 Azure Key Vault 儲存金鑰的費用。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 備份中的安全性功能概觀](security-overview.md)

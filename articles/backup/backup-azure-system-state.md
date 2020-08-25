@@ -3,12 +3,12 @@ title: 將 Windows 系統狀態備份至 Azure
 description: 瞭解如何將 Windows Server 電腦的系統狀態備份至 Azure。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 8ce30b93ebaecec1e69c6c6a6f1064c6cdd3d0f6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263039"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824457"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>將 Windows 系統狀態備份至 Azure
 
@@ -98,7 +98,7 @@ ms.locfileid: "88263039"
 ## <a name="install-and-register-the-agent"></a>安裝和註冊代理程式
 
 > [!NOTE]
-> 透過 Azure 入口網站啟用備份的功能尚未推出。 使用 Microsoft Azure 復原服務代理程式來備份 Windows Server 系統狀態。
+> 無法透過 Azure 入口網站啟用備份。 使用 Microsoft Azure 復原服務代理程式來備份 Windows Server 系統狀態。
 >
 
 1. 在 [下載] 資料夾 (或其他儲存位置) 中找到 **MARSagentinstaller.exe** 並對其按兩下。
@@ -116,7 +116,7 @@ ms.locfileid: "88263039"
    * 將加密複雜密碼存放在安全的位置。
 
      > [!NOTE]
-     > 如果遺失或忘記複雜密碼，Microsoft 將無法協助您復原備份資料。 將檔案存放在安全的位置。 必須有此檔案才能還原備份。
+     > 如果遺失或忘記複雜密碼，Microsoft 將無法協助您復原備份資料。 將檔案存放在安全的位置。 需要還原備份。
      >
      >
 
@@ -132,7 +132,7 @@ ms.locfileid: "88263039"
 若要完成初始備份，請使用 Microsoft Azure 復原服務代理程式。
 
 > [!NOTE]
-> 您可以透過 Windows Server 2016，在 Windows Server 2008 R2 上備份系統狀態。 用戶端 SKU 不支援系統狀態備份。 [系統狀態] 不會顯示為 Windows 用戶端或 Windows Server 2008 SP2 電腦的選項。
+> 您可以透過 Windows Server 2016，在 Windows Server 2008 R2 上備份系統狀態。 用戶端 Sku 不支援系統狀態備份。 系統狀態不會顯示為 Windows 用戶端或 Windows Server 2008 SP2 電腦的選項。
 >
 >
 
@@ -152,13 +152,13 @@ ms.locfileid: "88263039"
 
 5. 選取 [ **系統狀態** ]，然後選取 **[確定]**。
 
-6. 選取 [下一步] 。
+6. 選取 [下一步]  。
 
 7. 在後續頁面中針對系統狀態備份選取所需的備份頻率和保留原則。
 
 8. 在 [確認] 頁面上，檢查資訊，然後選取 **[完成]**。
 
-9. 在嚮導完成建立備份排程之後，請選取 [ **關閉**]。
+9. 當精靈建立好備份排程時，請選取 [關閉] 。
 
 ### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>第一次備份 Windows Server 系統狀態
 
@@ -170,9 +170,9 @@ ms.locfileid: "88263039"
 
 3. 在 [**選取備份專案**] 畫面上選取 [**系統狀態**]，然後選取 [**下一步]**。
 
-4. 在 [確認] 頁面上，檢閱立即備份精靈將用於備份電腦的設定。 然後選取 [ **備份**]。
+4. 在 [確認] 頁面上，檢閱立即備份精靈將用於備份電腦的設定。 然後選取 [備份]。
 
-5. 選取 [ **關閉** ] 以關閉嚮導。 如果您在備份程序完成之前關閉精靈，精靈會繼續在背景中執行。
+5. 選取 [關閉]  即可關閉精靈。 如果您在備份程序完成之前關閉精靈，精靈會繼續在背景中執行。
     > [!NOTE]
     > MARS 代理程式會在 `SFC /verifyonly` 每個系統狀態備份之前觸發為前置檢查的一部分。 這是為了確保備份為系統狀態一部分的檔案具有對應至 Windows 版本的正確版本。 在 [本文](/windows-server/administration/windows-commands/sfc)中深入瞭解系統檔案檢查工具 (SFC) 。
     >

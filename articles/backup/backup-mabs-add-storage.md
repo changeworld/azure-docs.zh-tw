@@ -3,12 +3,12 @@ title: 在 Azure 備份伺服器中使用新式備份儲存體
 description: 了解 Azure 備份伺服器中的新功能。 本文說明如何升級您的備份伺服器安裝。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 5c7533a5ee2fc65beb86c0c803a522e0acb1df6d
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: b8620f6999c1fcb1a1e70c73fb71fcaac008d930
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762431"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825863"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>在 Azure 備份伺服器中新儲存體
 
@@ -97,7 +97,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 ## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>將舊式儲存體移轉至新式備份儲存體
 
-在安裝或升級為備份伺服器 V2，並將作業系統升級為 Windows Server 2016 之後，請將您的保護群組更新為使用新式備份儲存體。 根據預設，系統不會變更保護群組。 保護群組會繼續依照一開始的設定方式運作。
+在安裝或升級為備份伺服器 V2，並將作業系統升級為 Windows Server 2016 之後，請將您的保護群組更新為使用新式備份儲存體。 依預設，不會變更保護群組。 保護群組會繼續依照一開始的設定方式運作。
 
 您可以選擇是否將保護群組更新為使用新式備份儲存體。 若要更新保護群組，請使用保留資料選項來停止保護所有資料來源。 然後，將資料來源新增至新的保護群組。
 
@@ -127,7 +127,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 3. 在可用磁碟清單中選取您要新增的磁碟，選取 [新增]****，然後選取 [確定]****。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在安裝備份伺服器之後，請了解如何準備您的伺服器或開始保護工作負載。
 

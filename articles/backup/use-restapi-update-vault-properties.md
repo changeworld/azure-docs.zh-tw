@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來更新保存庫
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: c3f964032d10988bf7ae615eb64d3b56b99a7747
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: c68d3accfc6963d7a5eebfef128e3521b45ac886
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757297"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827251"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 復原服務保存庫設定
 
@@ -45,7 +45,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 |名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [確定]        |
+|200 確定     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | 確定        |
 
 ##### <a name="example-response"></a>範例回應
 
@@ -85,8 +85,8 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 |名稱  |必要  |類型  |描述  |
 |---------|---------|---------|---------|
-|etag     |         |   String      |  選擇性 eTag       |
-|location     |  true       |String         |   資源位置      |
+|etag     |         |   字串      |  選擇性 eTag       |
+|location     |  true       |字串         |   資源位置      |
 |properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保存庫的屬性       |
 |tags     |         | Object        |     資源標籤    |
 
@@ -109,7 +109,7 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 |名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [確定]        |
+|200 確定     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | 確定        |
 
 ##### <a name="example-response-for-the-patch-operation"></a>修補作業的回應範例
 

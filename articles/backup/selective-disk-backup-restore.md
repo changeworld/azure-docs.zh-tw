@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解使用 Azure 虛擬機器備份解決方
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: dd4691f6248099bdc4fa713c84d396adac6011fa
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 44454977a977a85b8735657a439a265467f1bcf5
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757433"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824741"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>適用于 Azure 虛擬機器的選擇性磁片備份和還原
 
@@ -190,7 +190,7 @@ az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-
 
 ## <a name="using-powershell"></a>使用 PowerShell
 
-確定您使用的是 Azure PS 版本3.7.0 或更高版本。
+確定您使用 Azure PowerShell 3.7.0 版或更高版本。
 
 ### <a name="enable-backup-with-powershell"></a>使用 PowerShell 啟用備份
 
@@ -293,5 +293,5 @@ Azure 虛擬機器備份會遵循現有的定價模型，其詳細說明請見 [
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure VM 備份的支援矩陣](backup-support-matrix-iaas.md)
+- [Azure VM 備份的支援矩陣](backup-support-matrix-iaas.md) \(部分機器翻譯\)
 - [常見問題-備份 Azure Vm](backup-azure-vm-backup-faq.md)

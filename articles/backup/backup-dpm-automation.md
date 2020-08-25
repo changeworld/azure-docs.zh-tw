@@ -3,12 +3,12 @@ title: 使用 PowerShell 備份 DPM 工作負載
 description: 了解如何使用 PowerShell 部署和管理 Data Protection Manager (DPM) 的 Azure 備份
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 8a60d1c412a36c5c2a7ca264eda524b5d5649f1a
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 1f77337c9b5b1dce73f39cff7090bb5d892c29cd
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762734"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825965"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>使用 PowerShell 部署和管理 Data Protection Manager (DPM) 伺服器的 Azure 備份
 
@@ -69,7 +69,7 @@ PowerShell 可以自動化下列設定和註冊工作：
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 
-4. 指定要使用的儲存體冗余類型;您可以使用 [本機冗余儲存體 (LRS) ](../storage/common/storage-redundancy.md) 或 [地理位置多餘的儲存體 (GRS) ](../storage/common/storage-redundancy.md)。 以下範例示範 testVault 設定為 GeoRedundant 的 BackupStorageRedundancy 選項。
+4. 指定要使用的儲存空間備援類型。 您可以使用 [本機冗余儲存體 (LRS) ](../storage/common/storage-redundancy.md) 或 [地理位置多餘的儲存體 (GRS) ](../storage/common/storage-redundancy.md)。 以下範例示範 testVault 設定為 GeoRedundant 的 BackupStorageRedundancy 選項。
 
    > [!TIP]
    > 許多 Azure 備份 Cmdlet 都需要將復原服務保存庫物件當做輸入。 基於這個理由，將備份復原服務保存庫物件儲存在變數中會是方便的做法。
@@ -111,7 +111,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 MARSAgentInstaller.exe /q
 ```
 
-這會以所有預設選項安裝代理程式。 安裝作業會在背景中進行幾分鐘。 如果您沒有指定 */nu* 選項，則安裝結束時會開啟 **Windows Update** 視窗以檢查是否有任何更新。
+這會以所有預設選項安裝代理程式。 安裝作業會在背景中進行幾分鐘。 如果您未指定 */nu* 選項， **Windows Update** 視窗會在安裝結束時開啟，以檢查是否有任何更新。
 
 代理程式會顯示在已安裝的程式清單中。 若要查看已安裝的程式清單，請移至 [控制台] > [程式] > [程式和功能]。
 
@@ -177,7 +177,7 @@ Machine registration succeeded.
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-所有修改都會對此本機 PowerShell 物件 ```$setting``` 進行，然後使用 [Set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) Cmdlet 將完整物件認可到 DPM 和 Azure 備份以加以儲存。 您必須使用 ```–Commit``` 旗標，以確保會保存所做的變更。 除非已認可，否則 Azure 備份將不會套用並使用設定。
+所有修改都會對此本機 PowerShell 物件 ```$setting``` 進行，然後使用 [Set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) Cmdlet 將完整物件認可到 DPM 和 Azure 備份以加以儲存。 您必須使用 ```–Commit``` 旗標，以確保會保存所做的變更。 除非已認可，否則 Azure 備份將不會套用及使用這些設定。
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -191,7 +191,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
 ```
 
-您也可以針對給定的一組當週天數，使用 ```-WorkHourBandwidth``` 和 ```-NonWorkHourBandwidth``` 的選項來控制頻寬使用情形。 本範例未設定任何節流。
+您也可以針對給定的一組當週天數，使用 ```-WorkHourBandwidth``` 和 ```-NonWorkHourBandwidth``` 的選項來控制頻寬使用情形。 在此範例中，我們不會設定任何節流。
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoThrottle
@@ -262,7 +262,7 @@ $MPG = Get-ModifiableProtectionGroup $PG
 3. 擷取伺服器上所有資料來源的清單。
 4. 選擇一或多個資料來源，並將它們加入至保護群組
 
-安裝 DPM 代理程式且受 DPM 伺服器管理所在的伺服器清單是使用 [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) Cmdlet 取得。 在此範例中，我們將篩選並只設定名稱為 *productionserver01* 的 PS 來進行備份。
+安裝 DPM 代理程式且受 DPM 伺服器管理所在的伺服器清單是使用 [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) Cmdlet 取得。 在此範例中，我們將篩選並只使用名稱 *productionserver01* 進行備份來設定 PowerShell。
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}

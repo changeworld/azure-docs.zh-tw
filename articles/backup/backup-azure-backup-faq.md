@@ -3,12 +3,12 @@ title: 常見問題的解答
 description: '有關以下常見問題的解答：包括復原服務保存庫、可以備份的項目、其運作方式、加密和限制等 Azure 備份功能。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 96ff7fedf0574d5eb1b7bb540ccb425f4d7e9ade
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 332b86d58e4c3f64dfbc528b4fe30399ef69d2a3
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757195"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827387"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 備份 - 常見問題集
 
@@ -43,7 +43,7 @@ ms.locfileid: "88757195"
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>我是否可以將備份資料移至另一個保存庫？
 
-否。 儲存在保存庫中的備份資料無法移至不同的保存庫。
+不知道。 儲存在保存庫中的備份資料無法移至不同的保存庫。
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>是否可以在備份之後從 GRS 變更為 LRS？
 
@@ -139,7 +139,7 @@ BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>如果我在備份作業開始後取消作業，是否會刪除已傳輸的備份資料？
 
-否。 所有在備份作業取消前傳輸到保存庫的資料都會保留在保存庫中。
+不知道。 所有在備份作業取消前傳輸到保存庫的資料都會保留在保存庫中。
 
 - Azure 備份會使用檢查點機制，在備份期間偶爾將檢查點加入至備份資料。
 - 因為備份資料中有檢查點，所以下一個備份程序才可驗證檔案的完整性。
@@ -159,13 +159,13 @@ BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>我是否可以針對備份排程和保留原則使用不同的時間？
 
-否。 保留原則僅能套用在復原點上。 例如，下圖顯示在上午 12:00 和下午 6:00 進行之備份的保留原則。
+不知道。 保留原則僅能套用在復原點上。 例如，下圖顯示在上午 12:00 和下午 6:00 進行之備份的保留原則。
 
 ![排程備份和保留](./media/backup-azure-backup-faq/Schedule.png)
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point"></a>如果備份保留了很長一段時間，是否需要較多時間才能復原較舊的資料點？
 
-否。 復原最舊或最新時間點所需的時間都相同。 每個復原點的功能就像一個完整的復原點。
+不知道。 復原最舊或最新時間點所需的時間都相同。 每個復原點的功能就像一個完整的復原點。
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>若每個復原點就像一個完整的復原點，則其是否會影響可計費的備份儲存體總數？
 
@@ -188,7 +188,7 @@ Azure 備份的儲存體架構透過最佳化儲存資料以進行快速還原�
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>還原資料時，我需要支付來自 Azure 的輸出流量嗎？
 
-否。 復原是免費的，不會向您收取輸出流量的費用。
+不知道。 復原是免費的，不會向您收取輸出流量的費用。
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>變更我的備份原則時會發生什麼狀況？
 
@@ -214,7 +214,7 @@ Azure 備份的儲存體架構透過最佳化儲存資料以進行快速還原�
 - 針對內部部署備份，會使用您在備份至 Azure 時所提供的複雜密碼來提供靜態加密。
 - 針對 Azure VM，會使用「儲存體服務加密」(SSE) 對資料進行靜態加密。
 
-Microsoft 不會解密在任何時間點所備份的資料。
+Microsoft 不會在任何時間點解密備份資料。
 
 ### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>用來加密備份資料的加密金鑰長度下限為何？
 
@@ -222,7 +222,7 @@ Microsoft Azure 復原服務 (MARS) 代理程式所使用的加密金鑰，是�
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>如果我錯置加密金鑰，則會發生什麼情況？ 我是否可以復原資料？ Microsoft 是否可以復原資料？
 
-用來加密備份資料的金鑰只存在於您的站台上。 Microsoft 不會維護 Azure 中的複本，且無法存取金鑰。 如果您忘記將金鑰放在哪裡，Microsoft 並無法復原該備份資料。
+用來加密備份資料的金鑰只存在於您的站台上。 Microsoft 不會在 Azure 中維護複本，也不會擁有金鑰的任何存取權。 如果您忘記將金鑰放在哪裡，Microsoft 並無法復原該備份資料。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: 使用 REST API 備份 Azure 檔案共用
 description: 瞭解如何使用 REST API 在復原服務保存庫中備份 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: b3d83104b699740c43b0c6506c00694c2b2ac063
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 8d2d8ed88da133986540a293185c8e37000ab87b
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757127"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824860"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>使用 Azure 備份 via Rest API 來備份 Azure 檔案共用
 
@@ -175,7 +175,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
    在我們的範例中，它是 *StorageContainer;空間AzureFiles; testvault2*
 
 >[!NOTE]
-> 一律採用回應的 name 屬性，並將它填入此要求中。 請勿以硬式編碼或建立容器名稱格式。 如果您建立或進行硬式編碼，則如果未來的容器名稱格式有所變更，API 呼叫將會失敗。
+> 一律採用回應的 name 屬性，並將它填入此要求中。 不要以硬式編碼或建立容器名稱格式。 如果您建立或進行硬式編碼，則如果未來的容器名稱格式有所變更，API 呼叫將會失敗。
 
 <br>
 

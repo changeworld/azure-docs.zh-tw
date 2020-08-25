@@ -3,12 +3,12 @@ title: 安全性功能概觀
 description: 了解 Azure 備份中的安全性功能，協助保護您的備份資料，並符合您企業的安全性需求。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: aa35f93e23a369381341aade32d877477e40e8a8
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 0354e319c82e02072a8771f9aae383bf0b6240f6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757399"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824589"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 備份中的安全性功能概觀
 

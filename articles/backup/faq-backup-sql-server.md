@@ -4,12 +4,12 @@ description: 尋找有關使用 Azure 備份備份 Azure Vm 上的 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: a5fdbb78f6d700d14c2458a8d87a4b0f9a971207
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 577f6637ebe96dcabcb1357ca09da75bd9552c30
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762839"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827234"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有關在 Azure VM 備份上執行的 SQL Server 資料庫的常見問題
 
@@ -30,7 +30,7 @@ ms.locfileid: "88762839"
 - 如果您選擇在還原期間覆寫資料庫，則下一個記錄/差異備份會失敗，而會改為觸發完整備份。
 - 如果需要完整備份以重設記錄鏈（因為資料庫復原模式變更），則會在下一個排程時自動觸發完整備份。
 
-預設會為所有使用者啟用自動修復功能;但是，如果您退出宣告它，請執行下列動作：
+預設會為所有使用者啟用自動修復功能。 但是，如果您退出宣告它，請執行下列步驟：
 
 - 在 SQL Server 實例上的 [ *C:\Program Files\Azure 工作負載 Backup\bin* ] 資料夾中，建立或編輯檔案的 **ExtensionSettingsOverrides.js** 。
 - 在 [ **ExtensionSettingsOverrides.js**] 中，設定 *{"EnableAutoHealer"： false}*。
@@ -56,11 +56,11 @@ ms.locfileid: "88762839"
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>是否可以從次要複本執行完整備份？
 
-根據 SQL 限制，您可以只在次要複本上執行「複製完整備份」;但是，不允許完整備份。
+根據 SQL 限制，您可以在次要複本上執行只複製完整備份。 但是，不允許完整備份。
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>我可以保護內部部署的可用性群組嗎？
 
-不會。 Azure 備份可保護在 Azure 中執行的 SQL Server 資料庫。 如果可用性群組 (AG) 在 Azure 和內部部署機器之間散佈，則只有在主要複本是在 Azure 中執行時，才能保護 AG。 此外，Azure 備份只會保護在與復原服務保存庫相同的 Azure 區域中執行的節點。
+不知道。 Azure 備份可保護在 Azure 中執行的 SQL Server 資料庫。 如果可用性群組 (AG) 在 Azure 和內部部署機器之間散佈，則只有在主要複本是在 Azure 中執行時，才能保護 AG。 此外，Azure 備份只會保護在與復原服務保存庫相同的 Azure 區域中執行的節點。
 
 ## <a name="can-i-protect-availability-groups-across-regions"></a>我可以跨區域保護可用性群組嗎？
 
@@ -92,7 +92,7 @@ Azure 備份復原服務保存庫可以偵測和保護與保存庫位於相同�
 
 ## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>如果我在資料庫受到保護之後變更資料庫的名稱，該怎麼辦？
 
-重新命名的資料庫會被視為新的資料庫。 如此一來，服務就會將這種情況視為找不到資料庫，且備份失敗。
+重新命名的資料庫會被視為新的資料庫。 如此一來，服務就會將這種情況視為無法找到資料庫，且備份失敗。
 
 您可以選取資料庫，此資料庫現在已重新命名並設定保護。 如果已在實例上啟用自動保護，就會自動偵測並保護重新命名的資料庫。
 
@@ -102,6 +102,6 @@ Azure 備份復原服務保存庫可以偵測和保護與保存庫位於相同�
 
   ![手動探索新加入的資料庫](./media/backup-azure-sql-database/view-newly-added-database.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何備份在 Azure VM 上 [執行的 SQL Server 資料庫](backup-azure-sql-database.md) 。

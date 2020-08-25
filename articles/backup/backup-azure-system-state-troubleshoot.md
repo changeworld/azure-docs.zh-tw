@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何針對內部部署 Windows 伺服�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: add54955def7df31f8e1688f56382067343616fe
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 56593176e705176b87cf955eb116909c1912e723
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763383"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824265"
 ---
 # <a name="troubleshoot-system-state-backup"></a>對系統狀態備份進行疑難排解
 
@@ -86,7 +86,7 @@ Get-WindowsFeature Windows-Server-Backup
 
 ### <a name="system-volume-information-permission"></a>系統磁碟區資訊許可權
 
-確定本機系統具有在安裝 Windows 的磁片區中，[ **系統磁碟區資訊** ] 資料夾的 [完整控制權]。 這通常是 **C:\System 的磁片區資訊**。 如果上述許可權的設定不正確，Windows Server backup 可能會失敗。
+確定本機系統具有在安裝 Windows 的磁片區中，[ **系統磁碟區資訊** ] 資料夾的 [完整控制權]。 這通常是 **C:\System 的磁片區資訊**。 如果上述許可權未正確設定，則 Windows Server backup 可能會失敗。
 
 ### <a name="dependent-services"></a>相依服務
 
@@ -145,6 +145,6 @@ Microsoft 軟體陰影複製提供者 (SWPRV)  | 手動
 | -- | --
 | MARS 代理程式失敗，並出現錯誤訊息：「系統狀態備份失敗，因為 EFI 系統磁碟分割已鎖定。 這可能是由協力廠商安全性或備份軟體的系統磁碟分割存取所致」 | -如果問題是由協力廠商安全性軟體所造成，則您需要洽詢防毒軟體廠商，讓他們可以允許 MARS 代理程式 <br/><br/> -如果協力廠商備份軟體正在執行，請等候它完成，然後重試一次
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需有關 Resource Manager 部署中的 Windows 系統狀態的詳細資訊，請參閱 [備份 Windows Server 系統狀態](backup-azure-system-state.md)

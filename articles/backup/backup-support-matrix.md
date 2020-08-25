@@ -4,12 +4,12 @@ description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 5871e61229277d8036727c11b42d9d7a061bad99
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 41bc06e2c63b1b35bb789636bcd269439078be70
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612515"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825183"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -135,7 +135,7 @@ Azure 備份支援傳輸中和待用資料的加密。
 
 **設定** | **限制**
 --- | ---
-**每個受保護執行個體的復原點數目上限 (電腦或工作負載)** | 9,999
+**每個受保護實例的最大復原點 (機或工作負載) ** | 9,999
 **復原點的到期時間上限** | 沒有限制
 **備份至 DPM/MABS 的頻率上限** | 每隔 15 分鐘 (SQL Server)<br/><br/> 每小時一次 (其他工作負載)
 **備份至保存庫的頻率上限** | **執行 MABS 的內部部署 Windows 電腦或 Azure VM：** 每天三次<br/><br/> **DPM/MABS：** 每天兩次<br/><br/> **Azure VM 備份：** 每天一次

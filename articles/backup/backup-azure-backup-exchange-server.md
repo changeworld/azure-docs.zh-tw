@@ -4,12 +4,12 @@ description: 了解如何使用 System Center 2012 R2 DPM 將 Exchange Server �
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: c9d54bb8e9875bcd622c5ce5343dc6f8baa3f2be
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 139741c4f721f0fd86cc585b4cfb2ed97c45b25c
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763570"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827404"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 將 Exchange Server 備份至 Azure 備份
 
@@ -62,7 +62,7 @@ ms.locfileid: "88763570"
 
    * 我想要使用磁碟進行短期保護。
    * 我想要線上保護。
-6. 按 [下一步] 。
+6. 按 [下一步]  。
 7. 如果您想要檢查 Exchange Server 資料庫的完整性，請選取 [執行 Eseutil 以檢查資料完整性] **** 選項。
 
     選取此選項之後，將會在 DPM 服務器上執行備份一致性檢查，以避免在 Exchange 伺服器上執行 **eseutil** 命令所產生的 i/o 流量。
@@ -72,7 +72,7 @@ ms.locfileid: "88763570"
    > ![eseutil 錯誤](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 按 [下一步] 。
+8. 按 [下一步]  。
 9. 選取用於 [複製備份]**** 的資料庫，然後按 [下一步]****。
 
    > [!NOTE]
@@ -120,6 +120,6 @@ ms.locfileid: "88763570"
 
     ![選擇線上複寫](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [Azure 備份常見問題集](backup-azure-backup-faq.md)

@@ -3,12 +3,12 @@ title: Azure VM 中的 SQL server 虛刪除，以及 Azure VM 工作負載中的
 description: 瞭解 Azure VM 中的 SQL server 虛刪除，以及 Azure VM 工作負載中的 SAP Hana 如何讓備份更安全。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: bf9cc2551d85c1bc663db2f9e61e2ea6895f1d23
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4e001ee460d9b7106d928da32b1620fb117c6b5a
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757467"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825166"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Azure VM 中的 SQL server 虛刪除，以及 Azure VM 工作負載中的 SAP Hana
 
@@ -17,7 +17,7 @@ Azure 備份現在會在 azure VM 中提供 SQL server 的虛刪除功能，並�
 虛[刪除](backup-azure-security-feature-cloud.md)是一項安全性功能，可協助保護備份資料（即使在刪除後）。 使用虛刪除時，即使惡意執行者刪除了資料庫的備份 (或不小心刪除了備份資料) ，備份資料仍會保留14天。 這可讓您復原該備份專案，而不會遺失任何資料。 在「虛刪除」狀態下，額外保留14天的備份資料，不會對客戶產生任何成本。
 
 >[!NOTE]
->一旦啟用訂用帳戶的預覽，就不可能只針對 SQL server 或 SAP Hana Db 停用虛刪除，同時讓相同保存庫中的虛擬機器保持啟用狀態。 您可以建立不同的保存庫以進行細微的控制。
+>針對訂用帳戶啟用預覽後，您就無法只針對 SQL server 或 SAP Hana Db 停用虛刪除，同時讓相同保存庫中的虛擬機器保持啟用狀態。 您可以建立不同的保存庫以進行細微的控制。
 
 ## <a name="steps-to-enroll-in-preview"></a>預覽版的註冊步驟
 
@@ -99,7 +99,7 @@ Azure 備份現在會在 azure VM 中提供 SQL server 的虛刪除功能，並�
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>使用 Azure PowerShell 刪除備份專案
 
-使用 [>enable-azrecoveryservicesbackupprotection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS Cmdlet 刪除備份專案。
+使用 [>enable-azrecoveryservicesbackupprotection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PowerShell Cmdlet 來刪除備份專案。
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -117,7 +117,7 @@ Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadTy
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType SQLDataBase -VaultId $myVaultID -Name AppVM1
 ```
 
-然後，使用 [復原 AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS Cmdlet 來執行復原刪除作業。
+然後，使用 [AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PowerShell Cmdlet 來執行復原刪除作業。
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force

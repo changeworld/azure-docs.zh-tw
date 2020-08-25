@@ -3,12 +3,12 @@ title: 備份 Azure 檔案服務常見問題集
 description: 在本文中，您可以針對如何使用 Azure 備份服務來保護 Azure 檔案共用的常見問題，找到相關解答。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0db30de655bfc0b98baa81a4ef20532e697fc1f8
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382707"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824724"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有關備份 Azure 檔案服務的問題
 
@@ -36,7 +36,7 @@ ms.locfileid: "87382707"
 
 ### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>為什麼我無法變更保存庫來設定檔案共用的備份？
 
-如果儲存體帳戶已向保存庫註冊，或儲存體帳戶中的其他檔案共用使用保存庫來保護，您就無法選擇變更它，因為儲存體帳戶中的所有檔案共用只能由相同的保存庫保護。 以免您想要變更保存庫時，您必須[停止保護儲存體帳戶中的所有檔案共用](manage-afs-backup.md#stop-protection-on-a-file-share)，從已連線的保存庫中[取消註冊](manage-afs-backup.md#unregister-a-storage-account)儲存體帳戶，然後選擇不同的保存庫來進行保護。
+如果儲存體帳戶已向保存庫註冊，或使用保存庫保護儲存體帳戶中的其他檔案共用，則您不會獲得變更的選項。 儲存體帳戶中的所有檔案共用只能由相同的保存庫保護。 如果您想要變更保存庫，您必須 [停止保護儲存體帳戶中的所有檔案共用](manage-afs-backup.md#stop-protection-on-a-file-share) 的連線保存庫、 [取消註冊](manage-afs-backup.md#unregister-a-storage-account) 儲存體帳戶，然後選擇不同的保存庫以進行保護。
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>可以將保存庫變更為我備份檔案共用的保存庫嗎？
 
@@ -56,7 +56,7 @@ ms.locfileid: "87382707"
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>已刪除的 Azure 檔案共用是否可以復原？
 
-如果檔案共用處於虛刪除狀態，您必須先將檔案共用取消刪除，以執行還原作業。 取消刪除作業會將檔案共用帶入作用中狀態，您可以在其中還原至任何時間點。 若要瞭解如何取消刪除您的檔案共用，請造訪[此連結](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share)，或參閱取消[刪除檔案共用腳本](./scripts/backup-powershell-script-undelete-file-share.md)。 如果已永久刪除檔案共用，您將無法還原內容和快照集。
+如果檔案共用處於已虛刪除的狀態，您必須先取消刪除檔案共用以執行還原作業。 取消刪除作業會使檔案共用處於作用中狀態，讓您可以還原到任何時間點。 若要瞭解如何取消刪除您的檔案共用，請流覽 [此連結](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share) ，或參閱取消 [刪除檔案共用腳本](./scripts/backup-powershell-script-undelete-file-share.md)。 如果檔案共用永久刪除，您將無法還原內容和快照集。
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>如果我停止保護 Azure 檔案共用，是否可以從備份還原？
 
@@ -157,4 +157,4 @@ ms.locfileid: "87382707"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [針對備份 Azure 檔案共用時的問題進行疑難排解](troubleshoot-azure-files.md)
+- [針對備份 Azure 檔案共用時發生的問題進行疑難排解](troubleshoot-azure-files.md)
