@@ -12,16 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 08/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec88d795d0e05c62f07ff415364ced651ad8f4bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: contperfq1
+ms.openlocfilehash: 956e61894113b4728760de519ad49be71ed184cc
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034607"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605010"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>什麼是 Azure AD 存取權檢閱？
 
@@ -33,22 +34,26 @@ Azure Active Directory (Azure AD) 存取權檢閱可讓組織有效地管理群�
 
 ## <a name="why-are-access-reviews-important"></a>存取權檢閱為何重要？
 
-Azure AD 可讓您在組織內部以及與外部組織 (例如，合作夥伴) 的使用者共同作業。 使用者可以加入群組、邀請來賓、連線至雲端應用程式，以及從他們的工作或個人裝置遠端工作。 由於能夠方便地運用自助式服務的能力，因此需要更好的存取管理功能。
+Azure AD 可讓您與組織內部與外部使用者共同作業。 使用者可以加入群組、邀請來賓、連線至雲端應用程式，以及從他們的工作或個人裝置遠端工作。 由於能夠方便地使用自助服務，因此需要更好的存取管理功能。
 
-- 當有新員工加入時，如何確保他們會有適當的存取權，以便發揮生產力？
-- 當有員工調動到其他小組或離職時，如何確保他們的舊有存取權會移除，特別是當此存取權涉及來賓時？
-- 多餘的存取權限可能會導致稽核後果與洩露，因為這表示公司對於存取權的控制不夠嚴謹。
+- 當有新員工加入時，如何確保他們會有所需的存取權，以便發揮生產力？
+- 當有員工調動到其他小組或離職時，如何確保會移除他們的舊有存取權？
+- 過度的存取權限可能會有資料外洩的隱憂。
+- 過度的存取權限可能會讓稽核結果顯示公司對於存取權的控制不夠嚴謹。
 - 您必須主動與資源擁有者合作，以確保他們會定期檢閱可存取其資源的使用者。
 
-## <a name="when-to-use-access-reviews"></a>何時要使用存取權檢閱？
+## <a name="when-should-you-use-access-reviews"></a>何時應使用存取權檢閱？
 
 - **太多使用者具有特殊權限角色：** 您最好檢查有多少使用者擁有管理存取權、其中有多少人是全域管理員，以及是否有任何受邀來賓或合作夥伴未在受指派執行管理工作之後移除。 您可以針對 [Azure AD 角色](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) (例如，全域管理員) 或 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) 體驗中的 [Azure 資源角色](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) (例如，使用者存取管理員)，重新認證其中的角色指派使用者。
 - **無法自動化時：** 您可以在安全性群組或 Office 365 群組上建立動態成員資格的規則，但如果 HR 資料未放在 Azure AD 中，或如果使用者在離開群組之後依然需要存取權以便訓練其接替者呢？ 這時，您就可以在該群組上建立檢閱，以確保仍需要存取權的人員應該會具有持續存取權。
 - **當群組用於新的用途時：** 如果您有要同步處理至 Azure AD 的群組，或如果您計劃讓銷售小組群組中的每個人都能使用 Salesforce 應用程式，則要求群組擁有者先檢閱群組成員資格，再將群組用於不同風險內容中的做法會很有用。
 - **資料存取權：** 對於某些資源來說，您可能必須要求 IT 以外的人定期登出，並請他們提出需要存取權的理由，以便進行稽核。
 - **為了維護原則的例外狀況清單：** 在理想的世界中，所有使用者都會遵循存取原則來安全地存取您組織的資源。 不過，有時候會有需要您視為例外狀況的商務案例。 身為 IT 系統管理員，您可以管理這項工作、免於監督原則例外狀況，並向稽核人員證明您有定期檢閱這些例外狀況。
-- **要求群組擁有者確認他們的群組中仍然需要來賓：** 員工的存取權可透過某些內部部署 IAM 來自動指派，但受邀的來賓則不行。 如果有群組賦予來賓存取商務機密內容的權限，該群組的擁有者就有責任確認其來賓仍有合理獲得存取權的商務需求。
+- **要求群組擁有者確認他們的群組中仍然需要來賓：** 員工的存取權可透過某些內部部署和存取管理 (IAM) 來自動指派，但受邀的來賓則不行。 如果有群組賦予來賓存取商務機密內容的權限，該群組的擁有者就有責任確認其來賓仍有合理獲得存取權的商務需求。
 - **反覆定期檢閱：** 您可以設定以一定的頻率 (例如，每週、每月、每季或每年) 週期性地檢閱使用者的存取權，每次檢閱開始時，檢閱者都會收到通知。 檢閱者可以透過容易使用的介面與智慧建議的協助，來核准或拒絕存取權。
+
+>[!NOTE]
+>如果您已準備好嘗試存取權檢閱，請查看[建立群組或應用程式的存取權檢閱](create-access-review.md)
 
 ## <a name="where-do-you-create-reviews"></a>在哪裡建立檢閱？
 
@@ -61,56 +66,20 @@ Azure AD 可讓您在組織內部以及與外部組織 (例如，合作夥伴) �
 | Azure AD 角色 | 指定的檢閱者</br>自我檢閱 | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure 入口網站 |
 | Azure 資源角色 | 指定的檢閱者</br>自我檢閱 | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure 入口網站 |
 
-
-## <a name="create-access-reviews"></a>建立存取權檢閱
-
-若要建立存取權檢閱，請遵循下列步驟：
-
-1. 移至 [Azure 入口網站](https://portal.azure.com)來管理存取權檢閱，並以全域管理員或使用者管理員身分登入 Azure 入口網站。
-
-1. 搜尋並選取 [Azure Active Directory]。
-
-      ![Azure 入口網站搜尋 Azure Active Directory](media/access-reviews-overview/search-azure-active-directory.png)
-
-1. 選取 **Identity Governance**。
-
-1. 在 [開始使用] 頁面上，按一下 [建立存取權檢閱] 按鈕。
-
-   ![存取權檢閱啟動頁面](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
-
-### <a name="creating-access-review-on-a-group-that-can-be-assigned-to-azure-ad-role"></a>在可指派給 Azure AD 角色的群組上建立存取權檢閱
-如果您是在最新版本的存取權檢閱上 (您的檢閱者預設會被導向至 [我的存取權])，則只有全域管理員才能在可指派角色的群組上建立存取權檢閱。 不過，如果您是在舊版的存取權檢閱上 (您的檢閱者預設會被導向至 [存取面板])，則全域管理員和使用者管理員都可以在可指派角色的群組上建立存取權檢閱。  
-
-新體驗將於 2020 年 8 月 1 日推出給所有客戶，但如果您想要更快升級，請在這裡提出要求 - [Azure AD 存取權檢閱 - 已在我的存取權註冊中更新了檢閱者體驗](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5dv-S62099HtxdeKIcgO-NUOFJaRDFDWUpHRk8zQ1BWVU1MMTcyQ1FFUi4u)。
-
-[深入了解如何將群組指派給 Azure AD 角色](https://go.microsoft.com/fwlink/?linkid=2103037)。
-
-## <a name="learn-about-access-reviews"></a>深入了解存取權檢閱
-
-若要深入了解如何建立和執行存取權檢閱，請觀看這個簡短示範：
-
->[!VIDEO https://www.youtube.com/embed/6KB3TZ8Wi40]
-
-如果您已準備好在組織中部署存取權檢閱，請遵循影片中的這些步驟，以便上架、訓練系統管理員，以及建立您的第一個存取權檢閱！
-
->[!VIDEO https://www.youtube.com/embed/X1SL2uubx9M]
-
 ## <a name="license-requirements"></a>授權需求
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 ### <a name="how-many-licenses-must-you-have"></a>您必須擁有多少個授權？
 
-請確定您目錄擁有的 Azure AD Premium P2 授權至少與將執行下列工作的員工一樣多：
+您的目錄擁有的 Azure AD Premium P2 授權數至少需要與將執行下列工作的員工一樣多：
 
 - 指派為檢閱者的成員和來賓使用者
 - 執行自我檢閱的成員和來賓使用者
 - 執行存取權檢閱的群組擁有者
 - 執行存取權檢閱的應用程式擁有者
 
-下列工作**不**需要 Azure AD Premium P2 授權：
-
-- 具有全域管理員或使用者管理員角色的使用者不需要任何授權，即可設定存取權檢閱、設定組態，或套用來自檢閱的決策。
+具有全域管理員或使用者管理員角色的使用者**不需要** Azure AD Premium P2 授權，即可設定存取權檢閱、設定組態，或套用來自檢閱的決策。
 
 至於您對於貴組織使用者指派的每個付費 Azure AD Premium P2 授權，在「外部使用者額度」下，您可以使用 Azure AD 企業對企業 (B2B) 邀請最多 5 位使用者。 這些來賓使用者也可以使用 Azure AD Premium P2 功能。 如需詳細資訊，請參閱 [Azure AD B2B 共同作業授權指引](../b2b/licensing-guidance.md)。
 

@@ -8,7 +8,14 @@
   expanded: true
   items:
     - name: 建立您的第一個靜態 Web 應用程式
-      href: getting-started.md
+      expanded: true
+      items:
+        - name: Visual Studio Code
+          href: getting-started.md
+        - name: Azure 入口網站
+          href: get-started-portal.md
+        - name: Azure CLI
+          href: get-started-cli.md
 - name: 概念
   items:
     - name: Azure Functions 的 API 支援

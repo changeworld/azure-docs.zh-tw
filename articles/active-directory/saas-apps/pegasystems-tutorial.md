@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Pega Systems 整合 | Microsoft Docs
 description: 在本教學課程中，您會了解如何設定 Azure Active Directory 與 Pega Systems 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 31acf80f-1f4b-41f1-956f-a9fbae77ee69
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: bd54466e054055ff84cd5bb2b28c5cc074ac0017
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3dd09770ef5f747f008090368c35b1f274374c5f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72026814"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549060"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>教學課程：Azure Active Directory 與 Pega Systems 整合
 
@@ -234,7 +230,7 @@ ms.locfileid: "72026814"
 
     a. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱]  方塊中，輸入 **brittasimon@\<yourcompanydomain>.\<extension>** 。 (例如，BrittaSimon@contoso.com)。
+    b. 在 [使用者名稱] 方塊中，輸入 **brittasimon@\<yourcompanydomain>.\<extension>** 。 (例如，BrittaSimon@contoso.com)。
 
     c. 選取 [顯示密碼]  ，然後記下 [密碼]  方塊中的值。
 

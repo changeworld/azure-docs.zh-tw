@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/30/2020
-ms.openlocfilehash: 999d99b0ed4701eb6758ed0bf7a71ca625e622b5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: 409f143ce67e301e3b2a973d8d2db80380fbd50e
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512086"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258674"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教學課程：使用 Azure Data Share 接受和接收資料  
 
@@ -93,47 +93,44 @@ ms.locfileid: "87512086"
 
    針對 [已收到的共用名稱]  欄位，您可以保留資料提供者所指定的預設值，也可以為已接收的共用指定新名稱。 
 
-   ![目標 Data Share 帳戶](./media/target-data-share.png "目標 Data Share 帳戶") 
-
-1. 同意使用規定並指定了共用的位置後，請選取 [接受並設定]  。 此時會建立共用訂用帳戶。
-
-   若要進行以快照集為基礎的共用，則下一個畫面會要求您選取目標儲存體帳戶作為複製資料的目的地。 
+   同意使用規定並指定了管理收到之共用的資料共用帳戶後，請選取 [接受並設定]。 此時會建立共用訂用帳戶。 
 
    ![接受選項](./media/accept-options.png "接受選項") 
 
-   如果您想要立即接受邀請，但稍後再設定目標資料存放區，請選取 [接受並稍後再設定]  。 若要稍後再繼續設定儲存體，請參閱[設定資料集對應](how-to-configure-mapping.md)頁面，以取得如何繼續設定資料共用的詳細步驟。 
+   同時會帶您前往資料共用帳戶中所接收的共用。 
 
-   若要進行就地共用，請參閱[設定資料集對應](how-to-configure-mapping.md)頁面，以取得如何繼續設定資料共用的詳細步驟。 
+   如果您不想要接受邀請，請選取 [拒絕]**。 
 
-   如果您不想要接受邀請，請選取 [拒絕]  。 
+## <a name="configure-received-share"></a>設定已接收的共用
+請遵循下列步驟來設定要接收資料的位置。
 
-## <a name="configure-storage"></a>設定儲存體
-1. 在 [目標儲存體設定]  底下，選取您想要用來接收資料的訂用帳戶、資源群組和儲存體帳戶。 
+1. 選取**資料集**索引標籤。勾選要指派目的地之資料集旁的方塊。 選取 [+ 對應至目標] 以選擇目標資料存放區。 
 
-   ![目標儲存體設定](./media/target-storage-settings.png "目標儲存體") 
+   ![對應到目標](./media/dataset-map-target.png "對應到目標") 
 
-1. 若要接收資料的定期更新，請務必啟用快照集設定。 請注意，您只會看到一個快照集設定排程 (如果資料提供者已將該設定納入資料共用)。 
+1. 選取您想要存放資料的目標資料存放區類型。 系統將會覆寫目標資料存放區中，具有相同路徑和名稱的任何資料檔案或資料表。 
 
-   ![快照集設定](./media/snapshot-settings.png "快照集設定") 
+   針對就地共用，請選取指定位置中的資料存放區。 位置是資料提供者來源資料存放區所在的 Azure 資料中心。 對應資料集之後，您可以遵循目標路徑中的連結來存取資料。
 
-1. 選取 [儲存]  。 
+   ![目標儲存體帳戶](./media/dataset-map-target-sql.png "目標儲存體") 
 
-> [!IMPORTANT]
-> 如果您要接收 SQL 型資料，而且想要將該資料接收到 SQL 型來源，請瀏覽[設定資料集對應](how-to-configure-mapping.md)操作指南，以了解如何將 SQL Server 設定為資料集的目的地。 
+1. 對於以快照集為基礎的共用，如果資料提供者已建立快照集排程來定期更新資料，也可以選取 [快照集排程] 索引標籤來啟用快照集排程。勾選快照集排程旁的方塊，然後選取 [+ 啟用]。
+
+   ![啟用快照集排程](./media/enable-snapshot-schedule.png "啟用快照集排程")
 
 ## <a name="trigger-a-snapshot"></a>觸發快照集
 這些步驟僅適用於以快照集為基礎的共用。
 
-1. 您可以在 [已接收的共用] -> [詳細資料] 索引標籤中，藉由選取 [觸發快照集]  來觸發快照集。 在這裡，您可以觸發資料的完整或累加快照集。 如果您是第一次接收來自資料提供者的資料，請選取 [完整複本]。 
+1. 您可以選取 [觸發程序快照集]及 [詳細資料] 索引標籤以觸發快照集。 在這裡，您可以觸發資料的完整或累加快照集。 如果您是第一次接收來自資料提供者的資料，請選取 [完整複本]。 
 
    ![觸發快照集](./media/trigger-snapshot.png "觸發快照集") 
 
-1. 當最後一次執行的狀態為「成功」  時，請移至目標資料存放區檢視已接收的資料。 選取 [資料集]  ，然後按一下 [目標路徑] 中的連結。 
+1. 當最後一次執行的狀態為「成功」** 時，請移至目標資料存放區檢視已接收的資料。 選取 [資料集]****，然後按一下 [目標路徑] 中的連結。 
 
    ![取用者資料集](./media/consumer-datasets.png "取用者資料集對應") 
 
 ## <a name="view-history"></a>檢視歷程記錄
-若要檢視快照集的歷程記錄，請瀏覽至 [已接收的共用] -> [歷程記錄]。 您會在這裡找到過去 60 天所有產生的快照集歷程記錄。 
+此步驟僅適用於以快照集為基礎的共用。 若要檢視快照集的記錄，請選取 [歷程記錄] 索引標籤。您會在這裡找到過去 30 天所有產生的快照集歷程記錄。 
 
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已了解如何接受和接收 Azure Data Share。 若要深入了解 Azure Data Share 概念，請繼續閱讀[概念：Azure Data Share 術語](terminology.md)。

@@ -4,16 +4,16 @@ description: 在本文中，您將瞭解如何使用 REST API 來管理 Azure �
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: aabf687fb1f21473c7239d3fab26819b2ea2bea6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: add4bdeaa202c244ce2e0e83f999f29afdca5c28
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079293"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761469"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 還原 Azure 虛擬機器
 
-一旦使用 Azure 備份完成 Azure 虛擬機器的備份，就可以從相同的備份複本還原整個 Azure 虛擬機器或磁片或檔案。 本文說明如何使用 REST API 還原 Azure VM 或磁碟。
+一旦使用 Azure 備份完成 Azure 虛擬機器的備份之後，您就可以從相同的備份複本還原整個 Azure 虛擬機器或磁片或檔案。 本文說明如何使用 REST API 還原 Azure VM 或磁碟。
 
 對於任何還原作業，您必須先識別相關的復原點。
 
@@ -25,7 +25,7 @@ ms.locfileid: "87079293"
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
 ```
 
-`{containerName}` 和 `{protectedItemName}` 的建構方式在[這裡](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)。 `{fabricName}` 是 "Azure"。
+`{containerName}` 和 `{protectedItemName}` 的建構方式在[這裡](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)。 `{fabricName}` 是 "Azure"。
 
 *GET* URI 具備所有必要參數。 不需要額外的要求內文
 
@@ -33,7 +33,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 |名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       確定  |
+|200 確定     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       [確定]  |
 
 #### <a name="example-response"></a>範例回應
 
@@ -117,7 +117,7 @@ X-Powered-By: ASP.NET
 
 ## <a name="restore-disks"></a>還原磁碟
 
-如果需要從備份資料自訂 VM 的建立，您可以將磁片還原到所選的儲存體帳戶，並根據其需求從這些磁片建立 VM。 儲存體帳戶應與復原服務保存庫位於相同的區域中，且不得區域備援。 磁片以及已備份 VM 的設定（「vmconfig.js」）將會儲存在指定的儲存體帳戶中。
+如果需要自訂從備份資料建立 VM，您可以直接將磁片還原至所選的儲存體帳戶，並根據其需求從這些磁片建立 VM。 儲存體帳戶應位於與復原服務保存庫相同的區域中，且不應該是區域冗余。 磁片以及備份 VM 的設定 ( 「vmconfig.js開啟」 ) 將會儲存在指定的儲存體帳戶中。
 
 觸發還原磁碟為 *POST* 要求。 若要深入了解還原磁碟作業，請參閱[「觸發還原」REST API](/rest/api/backup/restores/trigger)。
 
@@ -125,7 +125,7 @@ X-Powered-By: ASP.NET
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-`{containerName}` 和 `{protectedItemName}` 的建構方式在[這裡](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)。 `{fabricName}` 是 "Azure"，而 `{recoveryPointId}` 是[上述](#example-response)復原點的 `{name}` 欄位。
+`{containerName}` 和 `{protectedItemName}` 的建構方式在[這裡](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)。 `{fabricName}` 是 "Azure"，而 `{recoveryPointId}` 是[上述](#example-response)復原點的 `{name}` 欄位。
 
 ### <a name="create-request-body"></a>建立要求本文
 

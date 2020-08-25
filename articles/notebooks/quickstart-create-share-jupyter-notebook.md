@@ -1,21 +1,21 @@
 ---
 title: 在 Azure Notebooks 預覽上建立和共用 Jupyter Notebook
-description: 在 Azure Notebooks 預覽上快速建立和執行 Jupyter Notebook，並與他人共用該 Notebook。
+description: 在 Azure Notebooks 預覽上快速建立和執行 Jupyter Notebook，並與他人共用該筆記本。
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 19773a6857d58f5b6af2a02ac28a3414c51fc917
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 77575b5b9e006ac9881d03dc95509d55c53c26d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849393"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589328"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>快速入門：在 Azure Notebooks 預覽中建立和共用 Notebook
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-在本快速入門中，您會在 Azure Notebooks 上建立和執行 Jupyter Notebook，並與他人共用該 Notebook。 Jupyter 可讓您輕鬆地將 Markdown 文字、可執行檔程式碼、持續性資料、圖形和視覺效果合併在一個可共用的畫布上 (也就是 Notebook)。 Azure Notebooks 是免費的裝載服務，無需任何安裝程序，就能用來在雲端中開發和執行 Jupyter Notebooks。
+在本快速入門中，您會在 Azure Notebooks 上建立和執行 Jupyter Notebook，並與他人共用該筆記本。 Jupyter 可讓您輕鬆地將 Markdown 文字、可執行檔程式碼、持續性資料、圖形和視覺效果合併在一個可共用的畫布上 (也就是 Notebook)。 Azure Notebooks 是免費的裝載服務，無需任何安裝程序，就能用來在雲端中開發和執行 Jupyter Notebooks。
 
 ## <a name="prerequisites"></a>Prerequisites
 無。

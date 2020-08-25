@@ -1,29 +1,31 @@
 ---
-title: Azure 快速入門 - 執行 Batch 作業 - .NET
-description: 使用 Batch .NET 用戶端程式庫，從 C# 應用程式快速執行 Azure Batch 範例作業和工作。
+title: 快速入門 - 使用 .NET API 執行您的第一個 Azure Batch 作業
+description: 在本快速入門中，使用 Batch .NET 用戶端程式庫，從 C# 應用程式快速執行 Azure Batch 範例作業和工作。
 ms.topic: quickstart
-ms.date: 11/29/2018
+ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: 1163d63f8cbd6afedfb6e5323fa469059fa8021c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f17fc2103e4b8512e050d79f5a639b38d90a2a95
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117211"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511026"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>快速入門：使用 .NET API 執行您的第一個 Azure Batch 作業
 
-本快速入門會從在 Azure Batch .NET API 上建置的 C# 應用程式執行 Azure Batch 作業。 此應用程式會將數個輸入資料檔案上傳至 Azure 儲存體，然後建立 Batch 計算節點 (虛擬機器) 的「集區」。 然後，它會建立可執行「工作」的「作業」範例，以使用基本命令處理集區上的每個輸入檔案。 完成本快速入門之後，您將了解 Batch 服務的重要概念，並可準備使用更多真實的工作負載來大規模試用 Batch。
+開始使用 Azure Batch，方法是在 Azure Batch .NET API 上建置的 C# 應用程式執行作業。 此應用程式會將數個輸入資料檔案上傳至 Azure 儲存體，然後建立 Batch 計算節點 (虛擬機器) 的「集區」。 然後，它會建立可執行「工作」的「作業」範例，以使用基本命令處理集區上的每個輸入檔案。
 
-![快速入門應用程式工作流程](./media/quick-run-dotnet/sampleapp.png)
+完成本快速入門之後，您將了解 Batch 服務的重要概念，並可準備使用更多真實的工作負載來大規模試用 Batch。
 
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+![此圖顯示 Azure Batch 應用程式工作流程的概觀。](./media/quick-run-dotnet/sampleapp.png)
 
 ## <a name="prerequisites"></a>必要條件
 
-* 適用於 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更新版本](https://www.visualstudio.com/vs) \(英文\)，或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) \(英文\)。 
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* Batch 帳戶和連結的 Azure 儲存體帳戶。 若要建立這些帳戶，請參閱使用 [Azure 入口網站](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md) 的 Batch 快速入門。 
+- Batch 帳戶和連結的 Azure 儲存體帳戶。 若要建立這些帳戶，請參閱使用 [Azure 入口網站](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md) 的 Batch 快速入門。
+
+- 適用於 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更新版本](https://www.visualstudio.com/vs) \(英文\)，或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) \(英文\)。 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -60,11 +62,11 @@ private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfw
 
 若要查看執行中的 Batch 工作流程，請在 Visual Studio 中建置及執行應用程式，或是在命令列使用 `dotnet build` 和 `dotnet run` 命令。 執行此應用程式之後，檢閱程式碼以了解應用程式的每部分用途。 例如，在 Visual Studio 中：
 
-* 在 [方案總管] 中以滑鼠右鍵按一下方案，然後按一下 [建置方案]。 
+- 在 [方案總管] 中以滑鼠右鍵按一下方案，然後按一下 [建置方案]。 
 
-* 出現提示時，請確認任何 NuGet 封裝的還原。 如果您需要下載遺漏的套件，請確保已安裝 [NuGet 套件管理員](https://docs.nuget.org/consume/installing-nuget)。
+- 出現提示時，請確認任何 NuGet 封裝的還原。 如果您需要下載遺漏的套件，請確保已安裝 [NuGet 套件管理員](https://docs.nuget.org/consume/installing-nuget)。
 
-然後加以執行。 當您執行範例應用程式時，主控台輸出大致如下。 在執行期間，集區的計算節點啟動後，您會在 `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` 遇到暫停。 工作會排入佇列中，以便在第一個計算節點執行時執行。 移至 [Azure 入口網站](https://portal.azure.com)中您的 Batch 帳戶，以監視集區、計算節點、作業和工作。
+當您執行範例應用程式時，主控台輸出大致如下。 在執行期間，集區的計算節點啟動後，您會在 `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` 遇到暫停。 工作會排入佇列中，以便在第一個計算節點執行時執行。 移至 [Azure 入口網站](https://portal.azure.com)中您的 Batch 帳戶，以監視集區、計算節點、作業和工作。
 
 ```
 Sample start: 11/16/2018 4:02:54 PM
@@ -93,17 +95,16 @@ stderr:
 
 以預設設定執行應用程式時，一般的執行時間大約 5 分鐘。 初始集區設定佔用大部分的時間。 若要再次執行作業，請刪除上一次執行中的作業，而不要刪除集區。 在預先設定的集區上，此作業會在幾秒內完成。
 
-
 ## <a name="review-the-code"></a>檢閱程式碼
 
 本快速入門中的 .NET 應用程式會執行下列作業：
 
-* 將三個小型文字檔上傳至 Azure 儲存體帳戶中的 Blob 容器。 這些檔案是 Batch 所處理的輸入。
-* 建立一個集區，其中包含執行 Windows Server 的計算節點。
-* 建立一個作業和三項工作以在節點上執行。 每項工作會使用 Windows 命令列處理其中一個輸入檔案。 
-* 顯示工作所傳回的檔案。
+- 將三個小型文字檔上傳至 Azure 儲存體帳戶中的 Blob 容器。 這些檔案是 Batch 所處理的輸入。
+- 建立一個集區，其中包含執行 Windows Server 的計算節點。
+- 建立一個作業和三項工作以在節點上執行。 每項工作會使用 Windows 命令列處理其中一個輸入檔案。 
+- 顯示工作所傳回的檔案。
 
-如需詳細資訊，請參閱 `Program.cs` 檔案和後面幾節。 
+如需詳細資訊，請參閱 `Program.cs` 檔案和後面幾節。
 
 ### <a name="preliminaries"></a>準備工作
 
@@ -240,12 +241,11 @@ foreach (CloudTask task in completedtasks)
 
 應用程式會自動刪除它所建立的儲存體容器，並且為您提供用於刪除 Batch 集區和工作的選項。 即使沒有排定的作業，您仍需支付節點執行時的集區費用。 當您不再需要集區時，請將它刪除。 當您刪除集區時，節點上的所有工作輸出也會跟著刪除。
 
-若不再需要，可刪除資源群組、Batch 帳戶和儲存體帳戶。 若要在 Azure 入口網站中這麼做，請選取 Batch 帳戶的資源群組，然後按一下 [刪除資源群組]。
+若不再需要，可刪除資源群組、Batch 帳戶和儲存體帳戶。 若要在 Azure 入口網站中這麼做，請選取 Batch 帳戶的資源群組，然後按一下 [刪除資源群組]  。
 
 ## <a name="next-steps"></a>後續步驟
 
 在本快速入門中，您執行了使用 Batch .NET API 建置的小型應用程式，以建立 Batch 集區和 Batch 作業。 此作業已執行範例工作，以及下載在節點上建立的輸出。 您既然了解 Batch 服務的重要概念，即可準備使用更多真實的工作負載來大規模試用 Batch。 若要深入了解 Azure Batch，並使用真實的應用程式來逐步進行平行工作負載，請繼續進行 Batch .NET 教學課程。
-
 
 > [!div class="nextstepaction"]
 > [使用 .NET 處理平行工作負載](tutorial-parallel-dotnet.md)

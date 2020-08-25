@@ -3,17 +3,17 @@ title: 了解及使用 Azure 成本管理範圍
 description: 本文可協助您了解 Azure 中可用的計費和資源管理範圍，以及如何使用成本管理和 API 中的範圍。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/06/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: ecc442049ba63b64f951335940c312dc71985453
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 31ec2e75f9bc1bd02d097af9076c9356598a9499
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501520"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167567"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解並使用範圍
 
@@ -25,7 +25,7 @@ ms.locfileid: "87501520"
 - 計費資料，例如付款和發票
 - 雲端服務，例如成本和原則治理
 
-在範圍中，您可管理計費資料、指定付款專屬角色、檢視發票，以及進行一般帳戶管理。 計費和帳戶角色會與用於資源管理的角色 (其使用 [Azure RBAC](../../role-based-access-control/overview.md)) 分開管理。 為了清楚地區分不同範圍的意圖 (包括存取控制差異)，這些範圍分別稱為「計費範圍」和「RBAC 範圍」。
+在範圍中，您可管理計費資料、指定付款專屬角色、檢視發票，以及進行一般帳戶管理。 計費和帳戶角色會與用於資源管理的角色 (其使用 [Azure RBAC](../../role-based-access-control/overview.md)) 分開管理。 為了清楚區分不同範圍的意圖 (包括存取控制差異)，這些範圍分別稱為「計費範圍」和「RBAC 範圍」。
 
 若要深入了解範圍，請觀看[成本管理設定階層](https://www.youtube.com/watch?v=n3TLRaYJ1NY)影片。 若要觀看其他影片，請造訪[成本管理 YouTube 頻道](https://www.youtube.com/c/AzureCostManagement)。
 
@@ -61,14 +61,14 @@ Azure 支援三個範圍進行資源管理。 每個範圍都支援管理存取�
 
 - [**擁有者**](../../role-based-access-control/built-in-roles.md#owner) – 可以檢視成本及管理所有項目，包括成本配置。
 - [**參與者**](../../role-based-access-control/built-in-roles.md#contributor) – 可以檢視成本及管理所有項目，包括成本配置，但不包括存取控制。
-- [**讀者**](../../role-based-access-control/built-in-roles.md#reader) – 可以檢視所有項目，包括成本資料和配置，但無法進行任何變更。
+- [**讀者**](../../role-based-access-control/built-in-roles.md#reader) – 可以檢視所有項目，包括成本資料和設定，但無法進行任何變更。
 - [**成本管理參與者**](../../role-based-access-control/built-in-roles.md#cost-management-contributor) – 可以檢視成本、管理成本配置及檢視建議。
 - [**成本管理讀者**](../../role-based-access-control/built-in-roles.md#cost-management-reader) – 可以檢視成本資料、成本配置及檢視建議。
 
-成本管理參與者是建議的最低權限角色。 其允許人員建立及管理預算和匯出的存取權，以更有效率地監視和報告成本。 成本管理參與者也可能需要額外的角色，以支援端對端成本管理案例。 請考慮下列案例：
+成本管理參與者是建議的最低權限角色。 此角色允許人員建立及管理預算和匯出，以更有效率地監視和報告成本。 成本管理參與者也可能需要額外的角色，以支援複雜的成本管理案例。 請考慮下列案例：
 
-- **報告資源使用量** - Azure 成本管理會顯示 Azure 入口網站中的成本，其中包括使用量，因為其與完整使用量模式的成本有關。 此報告也會顯示 API 和下載費用，但是建議您深入了解 Azure 監視器中的詳細使用量計量，以取得更深入的了解。 請考慮在您需要的任何範圍上授與[監視讀取器](../../role-based-access-control/built-in-roles.md#monitoring-reader)權限，同時也可報告詳細的使用計量。
-- **在超出預算時採取行動** – 成本管理參與者也需要存取權來建立及/或管理動作群組，以便自動回應超額部分。 請考慮將[監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)授予資源群組，其中包含在超出預算限額時所要使用的動作群組。 需要所用特定服務 (例如自動化和 Azure Functions) 的其他角色，才能自動執行特定動作。
+- **報告資源使用量** – Azure 成本管理會在 Azure 入口網站中顯示成本； 其中包含使用量，因為此資訊與完整使用模式的成本有關。 此報告也會顯示 API 和下載費用，但是建議您深入了解 Azure 監視器中的詳細使用量計量，以取得更深入的了解。 請考慮在您需要的任何範圍上授與[監視讀取器](../../role-based-access-control/built-in-roles.md#monitoring-reader)權限，同時也可報告詳細的使用計量。
+- **在超出預算時採取行動** – 成本管理參與者也需要存取權來建立及管理動作群組，以便自動回應超額部分。 請考慮將[監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)授予資源群組，其中包含在超出預算限額時所要使用的動作群組。 需要所用特定服務 (例如自動化和 Azure Functions) 的其他角色，才能自動執行特定動作。
 - **排程成本資料匯出** – 成本管理參與者也需要存取權來管理儲存體帳戶，以排程將資料複製到儲存體帳戶中的匯出。 請考慮將[儲存體帳戶參與者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)授予資源群組，其中包含成本資料匯出所在的儲存體帳戶。
 - **檢視節省成本建議** – 成本管理讀者和成本管理參與者預設都有存取來「檢視」成本建議。 不過，需要個別資源的存取權，才具備對成本建議採取行動的存取權。 如果您想要對以成本為基礎的建議採取行動，請考慮授與[服務專屬角色](../../role-based-access-control/built-in-roles.md#all)。
 
@@ -95,13 +95,13 @@ EA 計費範圍支援下列角色：
 
 - **企業系統管理員** – 可以管理計費帳戶設定和存取、可以檢視所有成本，以及可管理成本配置。 例如，預算和匯出。 在函式中，EA 計費範圍與[成本管理參與者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-contributor)相同。
 - **企業唯讀使用者** – 可以檢視計費帳戶設定、成本資料和成本配置。 例如，預算和匯出。 在函式中，EA 計費範圍與[成本管理讀者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
-- **部門系統管理員** – 可以管理部門設定 (例如成本中心)，而且可以存取、檢視所有成本，以及管理成本配置。 例如，預算和匯出。  必須為部門系統管理員和唯讀使用者啟用 [DA 檢視費用] 計費帳戶設定，才能查看成本。 如果已停用 [DA 檢視費用]，部門使用者就無法查看任何層級的成本，即使他們是帳戶或訂用帳戶擁有者也一樣。
-- **部門唯讀使用者** – 可以檢視部門設定、成本資料和成本配置。 例如，預算和匯出。 如果已停用 [DA 檢視費用]，部門使用者就無法查看任何層級的成本，即使他們是帳戶或訂用帳戶擁有者也一樣。
+- **部門系統管理員** – 可以管理部門設定 (例如成本中心)，而且可以存取、檢視所有成本，以及管理成本配置。 例如，預算和匯出。  必須為部門系統管理員和唯讀使用者啟用 [DA 檢視費用] 計費帳戶設定，才能查看成本。 如果已停用 [DA 檢視費用] 選項，部門使用者就無法查看任何層級的成本，即使他們是帳戶或訂用帳戶擁有者也一樣。
+- **部門唯讀使用者** – 可以檢視部門設定、成本資料和成本配置。 例如，預算和匯出。 如果已停用 [DA 檢視費用] 選項，部門使用者就無法查看任何層級的成本，即使他們是帳戶或訂用帳戶擁有者也一樣。
 - **帳戶擁有者** – 可以管理註冊帳戶設定 (例如成本中心)、檢視所有成本，以及管理註冊帳戶的成本配置 (例如預算和匯出)。 必須為帳戶擁有者和 RBAC 使用者啟用 [AO 檢視費用] 計費帳戶設定，才能查看成本。
 
 EA 計費帳戶使用者沒有發票的直接存取權。 您可以從外部大量授權系統取得發票。
 
-Azure 訂用帳戶會嵌套在註冊帳戶之下。 計費使用者可以存取其各自範圍之下訂用帳戶和資源群組的成本資料。 他們沒有存取權可在 Azure 入口網站中查看或管理資源。 計費使用者可藉由瀏覽至 Azure 入口網站服務清單中的 [成本管理 + 計費] 來檢視成本。 然後，可以針對需要報告的特定訂用帳戶和資源群組，篩選成本。
+Azure 訂用帳戶會嵌套在註冊帳戶之下。 計費使用者可以存取其各自範圍之下訂用帳戶和資源群組的成本資料。 他們沒有存取權可在 Azure 入口網站中查看或管理資源。 使用者可藉由瀏覽至 Azure 入口網站服務清單中的 [成本管理 + 計費] 來檢視成本。 然後，可以針對需要報告的特定訂用帳戶和資源群組，篩選成本。
 
 計費使用者沒有管理群組的存取權，因為管理群組不會明確地落在特定計費帳戶之下。 必須明確地授與管理群組的存取權。 管理群組會彙總來自所有巢狀訂用帳戶的成本。 不過，只包含以使用量為基礎的購買。 不包含保留和第三方 Marketplace 供應項目等購買。 若要檢視這些成本，請使用 EA 計費帳戶。
 
@@ -133,7 +133,7 @@ Microsoft 客戶合約計費帳戶具有下列範圍：
 
     資源類型：`Microsoft.Billing/billingAccounts/invoiceSections`
 
-- **客戶** - 代表一組訂用帳戶，這些訂用帳戶與由合作夥伴納入 Microsoft 客戶合約的特定客戶相關聯。 此範圍是 CSP 專屬的。
+- **客戶** - 代表一組訂用帳戶，這些訂用帳戶與由合作夥伴納入 Microsoft 客戶合約的特定客戶相關聯。 此範圍是雲端解決方案提供者 (CSP) 所特有。
 
 與 EA 計費範圍不同，客戶合約計費帳戶「會」繫結至單一目錄，而且不能有橫跨多個 Azure AD 目錄的訂用帳戶。
 
@@ -181,9 +181,13 @@ Microsoft 客戶合約上的 CSP 與客戶支援下列範圍：
 
 只有在客戶擁有 Microsoft 客戶合約時，Azure 成本管理才支援 CSP 合作夥伴客戶。 如需尚未列於 Microsoft 客戶合約的 CSP 支援客戶，請參閱[合作夥伴中心](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)。
 
+成本管理不支援 CSP 範圍中的管理群組。 如果您有 CSP 訂用帳戶，並在成本分析中將範圍設定為管理群組，您會看到類似以下的錯誤：
+
+`Management group <ManagementGroupName> does not have any valid subscriptions`
+
 ## <a name="switch-between-scopes-in-cost-management"></a>在成本管理中的範圍之間切換
 
-Azure 入口網站中的所有成本管理檢視都會在檢視的左上方包含 [範圍] 選取膠囊。 使用該膠囊可快速變更範圍。 按一下 [範圍] 膠囊可開啟範圍選擇器。 其會顯示計費帳戶、根管理群組，以及任何未嵌套在根管理群組之下的訂用帳戶。 若要選取範圍，請按一下背景將其反白顯示，然後按一下底部的 [選取]。 若要向內切入到巢狀範圍 (例如訂用帳戶中的資源群組)，請按一下範圍名稱連結。 若要選取位於任何巢狀層級的父範圍，請按一下範圍選擇器頂端的 [選取此 &lt;scope&gt;]。
+Azure 入口網站中的所有成本管理檢視都會在檢視的左上方包含 [範圍] 選取膠囊。 使用該膠囊可快速變更範圍。 選取 [範圍] 膠囊按鈕可開啟範圍選擇器。 其會顯示計費帳戶、根管理群組，以及任何未嵌套在根管理群組之下的訂用帳戶。 若要選取範圍，請選取背景將其反白顯示，然後選取底部的 [選取]。 若要向內切入到巢狀範圍 (例如訂用帳戶中的資源群組)，請選取範圍名稱連結。 若要選取位於任何巢狀層級的父範圍，請選取範圍選擇器頂端的 [選取此 &lt;scope&gt;]。
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>識別範圍的資源識別碼
 
@@ -200,7 +204,7 @@ Azure 入口網站中的所有成本管理檢視都會在檢視的左上方包�
 
 1. 開啟 Azure 入口網站，然後瀏覽至服務清單中的 [成本管理 + 計費]。
 2. 在計費帳戶功能表中選取 [帳單設定檔]。
-3. 按一下所需帳單設定檔的名稱。
+3. 選取帳單設定檔名稱。
 4. 在帳單設定檔功能表中選取 [屬性]。
 5. 複製計費帳戶和帳單設定檔識別碼。
 6. 您的範圍是：`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
@@ -209,7 +213,7 @@ Azure 入口網站中的所有成本管理檢視都會在檢視的左上方包�
 
 1. 開啟 Azure 入口網站，然後瀏覽至服務清單中的 [成本管理 + 計費]。
 2. 在計費帳戶功能表中選取 [發票區段]。
-3. 按一下所需發票區段的名稱。
+3. 選取發票區段的名稱。
 4. 在發票區段功能表中選取 [屬性]。
 5. 複製計費帳戶和發票區段識別碼。
 6. 您的範圍是：`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
@@ -218,7 +222,7 @@ Azure 入口網站中的所有成本管理檢視都會在檢視的左上方包�
 
 1. 開啟 Azure 入口網站，然後瀏覽至服務清單中的 [成本管理 + 計費]。
 2. 在計費帳戶功能表中選取 [部門]。
-3. 按一下所需部門的名稱。
+3. 選取部門名稱。
 4. 在部門功能表中選取 [屬性]。
 5. 複製計費帳戶和部門識別碼。
 6. 您的範圍是：`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
@@ -227,7 +231,7 @@ Azure 入口網站中的所有成本管理檢視都會在檢視的左上方包�
 
 1. 開啟 Azure 入口網站，然後瀏覽至服務清單中的 [成本管理 + 計費]。
 2. 在計費帳戶功能表中，選取 [註冊帳戶]。
-3. 按一下所需註冊帳戶的名稱。
+3. 選取註冊帳戶的名稱。
 4. 在註冊帳戶功能表中選取 [屬性]。
 5. 複製計費帳戶和註冊帳戶識別碼。
 6. 您的範圍是：`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
@@ -235,7 +239,7 @@ Azure 入口網站中的所有成本管理檢視都會在檢視的左上方包�
 ### <a name="management-group"></a>管理群組
 
 1. 開啟 Azure 入口網站，然後瀏覽至服務清單中的 [管理群組]。
-2. 瀏覽至所需的管理群組。
+2. 瀏覽至管理群組。
 3. 複製資料表中的管理群組識別碼。
 4. 您的範圍是：`"/providers/Microsoft.Management/managementGroups/{id}"`
 
@@ -248,7 +252,7 @@ Azure 入口網站中的所有成本管理檢視都會在檢視的左上方包�
 ### <a name="resource-groups"></a>資源群組
 
 1. 開啟 Azure 入口網站，然後瀏覽至服務清單中的 [資源群組]。
-2. 按一下所需資源群組的名稱。
+2. 選取資源群組名稱。
 3. 在資源群組功能表中選取 [屬性]。
 4. 複製資源識別碼欄位值。
 5. 您的範圍是：`"/subscriptions/{id}/resourceGroups/{name}"`

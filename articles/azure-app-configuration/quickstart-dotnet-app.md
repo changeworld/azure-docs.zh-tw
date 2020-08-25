@@ -1,19 +1,20 @@
 ---
 title: Azure 應用程式設定搭配 .NET Framework 的快速入門 | Microsoft Docs
-description: 搭配使用 Azure 應用程式設定與 .NET Framework 應用程式的快速入門
+description: 在本文中，您會建立 .NET Framework 應用程式搭配 Azure 應用程式組態，以集中儲存和管理應用程式設定 (與您的程式碼分開)。
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: cfa89a7921751541d1044d697237946cd63cbfd8
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 6795d10950ddd7b03dfa505ab44d2f43837c9045
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732048"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590263"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式設定建立 .NET Framework 應用程式
 

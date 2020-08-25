@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: 0c28d36c7934fbbac0ddd11562c8dc237b0360ee
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8e5dcb6c9dfa08efc0889fcab779d6cb333d2330
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80678489"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507530"
 ---
 # <a name="sample-models"></a>範例模型
 
@@ -26,7 +26,7 @@ ms.locfileid: "80678489"
 
 | 名稱 | 值 |
 |-----------|:-----------|
-| [必要的 VM 大小](../how-tos/session-rest-api.md#create-a-session) | 標準 |
+| [需要的伺服器大小](../how-tos/session-rest-api.md#create-a-session) | 標準 |
 | 三角形數目 | 1870 萬 |
 | 可移動的組件數目 | 2073 |
 | 材質數目 | 94 |

@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 與 ArcGIS Enterprise 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 ArcGIS Enterprise 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 24809e9d-a4aa-4504-95a9-e4fcf484f431
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57eda7e1d5ffedf7d5b867bfa7a59850fbadaf99
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a544a98b3a9d5c2d30f95240325e91018d2f40c9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904984"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549597"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>教學課程：Azure Active Directory 與 ArcGIS Enterprise 整合
 
@@ -48,8 +43,6 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 ## <a name="scenario-description"></a>案例描述
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
-
-
 
 * ArcGIS Enterprise 支援由 **SP 和 IDP** 起始的 SSO
 * ArcGIS Enterprise 支援 **Just In Time** 使用者佈建
@@ -132,21 +125,30 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
 ### <a name="configure-arcgis-enterprise-single-sign-on"></a>設定 ArcGIS Enterprise 單一登入
 
-1. 在不同的 Web 瀏覽器視窗中，以系統管理員身分登入 ArcGIS Enterprise 公司網站。
+1. 若要自動執行 ArcGIS Enterprise 內的設定，您必須按一下 [安裝擴充功能] 來安裝「我的應用程式安全登入瀏覽器擴充功能」。
 
-2. 選取 [組織] > [編輯設定]****。
+    ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
+
+1. 將擴充功能新增至瀏覽器之後，按一下 [設定 ArcGIS Enterprise] 便會將您導向到 ArcGIS Enterprise 應用程式。 請從該處提供用以登入 ArcGIS Enterprise 的管理員認證。 瀏覽器延伸模組將會自動為您設定應用程式，並自動執行步驟 3 到 7。
+
+    ![設定組態](common/setup-sso.png)
+
+1. 如果您想要手動設定 ArcGIS Enterprise，請以管理員身分登入您的 ArcGIS Enterprise 公司網站。
+
+
+1. 選取 [組織] > [編輯設定]****。
 
     ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure1.png)
 
-3. 選取 [安全性]**** 索引標籤。
+1. 選取 [安全性]**** 索引標籤。
 
     ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure2.png)
 
-4. 向下捲動至 [透過 SAML 進行企業登入]**** 區段，然後選取 [設定企業登入]****。
+1. 向下捲動至 [透過 SAML 進行企業登入]**** 區段，然後選取 [設定企業登入]****。
 
     ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure3.png)
 
-5. 在 [設定識別提供者]**** 區段中，執行下列步驟：
+1. 在 [設定識別提供者]**** 區段中，執行下列步驟：
 
     ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure4.png)
 

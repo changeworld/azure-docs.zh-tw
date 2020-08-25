@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 11/08/2019
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4253f5bd702abd061cf1cddd4badd68c9cd5d475
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: e5b54af39401ba8c3fede4c9ad80ec8edc963b1d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582830"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213669"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>快速入門：Azure Active Directory 中的群組命名原則
 
-在本快速入門中，您將在 Azure Active Directory (Azure AD) 組織中為使用者建立的 Office 365 群組設定命名原則，以利排序和搜尋組織的群組。 例如，您可以使用命名原則來：
+在本快速入門中，您將在 Azure Active Directory (Azure AD) 組織中為使用者建立的 Microsoft 365 群組設定命名原則，以利排序和搜尋組織的群組。 例如，您可以使用命名原則來：
 
 * 傳達群組的功能、成員資格、地理區域或群組的建立者。
 * 將通訊錄中的群組分類。

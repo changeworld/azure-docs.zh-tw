@@ -1,7 +1,7 @@
 ---
 title: Azure CLI 指令碼範例 - 刪除 Azure 應用程式組態存放區
 titleSuffix: Azure App Configuration
-description: 使用 Azure CLI 指令碼來刪除 Azure 應用程式組態存放區
+description: 使用範例 Azure CLI 指令碼刪除 Azure 應用程式組態存放區。 請參閱參考文章連結以了解指令碼中使用的命令。
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ba04b1a9aefa942c862b89f853d015762579937d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e107ba9628eca384f518f7a241be5c00c278ef0a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494837"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588292"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>刪除 Azure 應用程式設定存放區
 

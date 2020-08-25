@@ -1,23 +1,23 @@
 ---
 title: 提供選擇性宣告給 Azure AD 應用程式
 titleSuffix: Microsoft identity platform
-description: 如何將自訂或額外的宣告新增至 SAML 2.0 和 JSON Web 權杖， (由 Microsoft 身分識別平臺發出的 JWT) 權杖。
+description: 如何將自訂或其他宣告新增至 SAML 2.0 和 JSON Web 權杖， (JWT) Microsoft 身分識別平臺所發出的權杖。
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/30/2020
+ms.date: 08/24/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e82f5fb868dd728d439c68943c8809c5373ae133
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ff3e2c9f989a6688e200a1c34e85ef3a22860840
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115725"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794681"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -26,7 +26,7 @@ ms.locfileid: "88115725"
 您可以使用選擇性宣告來：
 
 - 選取要包含在應用程式之權杖中的額外宣告。
-- 變更 Microsoft 身分識別平臺在權杖中傳回之特定宣告的行為。
+- 變更 Microsoft 身分識別平臺在權杖中傳回的特定宣告行為。
 - 新增和存取應用程式的自訂宣告。
 
 如需標準宣告的清單，請參閱[存取權杖](access-tokens.md)和 [id_token](id-tokens.md) 宣告文件。
@@ -59,8 +59,8 @@ ms.locfileid: "88115725"
 | `verified_secondary_email` | 源自使用者的 SecondaryAuthoritativeEmail   | JWT        |           |        |
 | `vnet`                     | VNET 規範資訊。 | JWT        |           |      |
 | `fwd`                      | IP 位址。| JWT    |   | 新增發出要求之用戶端的原始 IPv4 位址 (位於 VNET 內部時) |
-| `ctry`                     | 使用者的國家/地區 | JWT |  | Azure AD 會傳回 `ctry` 選擇性宣告 (如果有的話)，宣告的值是標準雙字母的國家/地區代碼，例如 FR、JP、SZ 等等。 |
-| `tenant_ctry`              | 資源租用戶的國家/地區 | JWT | | |
+| `ctry`                     | 使用者的國家/地區 | JWT |  | Azure AD 會傳回選用的宣告（ `ctry` 如果有的話），而欄位的值是標準的兩個字母的國家/地區代碼，例如 FR、JP、SZ 等等。 |
+| `tenant_ctry`              | 資源租使用者的國家/地區 | JWT | | 與系統 `ctry` 管理員在租使用者層級設定的不同。 也必須是標準的兩個字母值。 |
 | `xms_pdl`             | 慣用資料位置   | JWT | | 若為多地理位置租用戶，慣用的資料位置是三個字母的代碼，顯示使用者所在的地理區域。 如需詳細資訊，請參閱 [Azure AD Connect 慣用資料位置的相關文件](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md)。<br/>例如：`APC` 是指亞太地區。 |
 | `xms_pl`                   | 使用者慣用語言  | JWT ||使用者的慣用語言 (如果已設定)。 在來賓存取案例中，來源是其主租用戶。 格式化 LL-CC ("en-us")。 |
 | `xms_tpl`                  | 租用戶慣用語言| JWT | | 資源租用戶的慣用語言 (如果已設定)。 格式化 LL ("en")。 |
@@ -69,7 +69,7 @@ ms.locfileid: "88115725"
 | `acct`                | 租使用者中的使用者帳戶狀態 | JWT、SAML | | 如果使用者是租用戶的成員，則值為 `0`。 如果是來賓使用者，則值為 `1`。 |
 | `groups`| 群組宣告的選擇性格式化 |JWT、SAML| |與[應用程式資訊清單](reference-app-manifest.md)中的 GroupMembershipClaims 設定 (也必須設定) 搭配使用。 如需詳細資訊，請參閱下面的[群組宣告](#configuring-groups-optional-claims)。 如需群組宣告的詳細資訊，請參閱[如何設定群組宣告](../hybrid/how-to-connect-fed-group-claims.md)
 | `upn`                      | UserPrincipalName | JWT、SAML  |           | 雖然會自動包含此宣告，但在來賓使用者案例中，您可以將它指定為選擇性宣告來附加額外屬性，以修改其行為。  |
-| `idtyp`                    | Token 類型   | JWT 存取權杖 | 特殊：僅限僅限應用程式存取權杖 |  `app`當令牌為僅限應用程式權杖時，值為。 若要讓 API 判斷權杖是應用程式權杖或應用程式 + 使用者權杖，這是最精確的方式。|
+| `idtyp`                    | Token 類型   | JWT 存取權杖 | 特殊：只在僅限應用程式的存取權杖中 |  值是 `app` 當令牌是僅限應用程式的權杖時。 這是 API 判斷權杖是否為應用程式權杖或應用程式 + 使用者權杖的最精確方式。|
 
 ## <a name="v20-specific-optional-claims-set"></a>v2.0 特有的選擇性宣告集
 

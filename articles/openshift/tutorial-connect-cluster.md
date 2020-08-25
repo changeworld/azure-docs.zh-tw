@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: d7efe781f1ba2beb1fa7dd4fdaaad280fc789de2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 226cf29b1a94b4508a9d68f02b7400a18eba4bc2
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204740"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587849"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>教學課程：連線至 Azure Red Hat OpenShift 4 叢集
 
@@ -25,7 +25,7 @@ ms.locfileid: "82204740"
 
 在先前的教學課程中，已建立 Azure Red Hat OpenShift 叢集。 如果您尚未完成這些步驟，而且想要跟著做，請從[教學課程 1 - 建立 Azure Red Hat OpenShift 4 叢集](tutorial-create-cluster.md)開始。
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.75 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="connect-to-the-cluster"></a>連線至叢集
 
@@ -86,7 +86,7 @@ echo 'export PATH=$PATH:~/openshift' >> ~/.bashrc && source ~/.bashrc
 apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.url -o tsv)
 ```
 
-使用以下命令登入 OpenShift 叢集的 API 伺服器。 以您剛擷取的密碼取代 **\<kubeadmin 密碼>** 。
+使用以下命令登入 OpenShift 叢集的 API 伺服器。 以您剛取出的密碼取代 **\<kubeadmin password>** 。
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>

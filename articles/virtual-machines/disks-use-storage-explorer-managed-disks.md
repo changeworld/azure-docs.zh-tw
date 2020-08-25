@@ -7,18 +7,18 @@ ms.date: 09/25/2019
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 658defef93a7dffe9a0d707e128ab5d5ef382849
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9dfce7b76eed5bfc9f4979c0e3041b6c65c28422
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701425"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749385"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>使用 Azure 儲存體總管來管理 Azure 受控磁片
 
 儲存體總管1.10.0 可讓使用者上傳、下載及複製受控磁片，以及建立快照集。 由於這些額外的功能，您可以使用儲存體總管將資料從內部部署遷移至 Azure，並跨 Azure 區域遷移資料。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文，您需要下列專案：
 - Azure 訂用帳戶
@@ -132,6 +132,6 @@ ms.locfileid: "88701425"
 ## <a name="next-steps"></a>後續步驟
 
 
-瞭解如何 [使用 Azure 入口網站從 VHD 建立 VM](./windows/create-vm-specialized-portal.md)。
+瞭解如何 [使用 Azure 入口網站從 VHD 建立 VM](windows/create-vm-specialized-portal.md)。
 
-瞭解如何 [使用 Azure 入口網站將受控資料磁片連結至 WINDOWS VM](./windows/attach-managed-disk-portal.md)。
+瞭解如何 [使用 Azure 入口網站將受控資料磁片連結至 WINDOWS VM](windows/attach-managed-disk-portal.md)。

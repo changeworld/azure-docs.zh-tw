@@ -1,18 +1,18 @@
 ---
 title: Azure Bastion | Microsoft Docs
-description: 了解 Azure Bastion
+description: 了解 Azure Bastion，為您的虛擬機器提供安全且順暢的 RDP/SSH 連線，而不需要對外公開 RDP/SSH 連接埠。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
 ms.date: 01/31/2020
 ms.author: cherylmc
-ms.openlocfilehash: 299a69675eed1ba958c6d13cf447407450df2abb
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 8b27a7c2fd03ed0a80f1775465f1f1bbb44f0202
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411111"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270337"
 ---
 # <a name="what-is-azure-bastion"></a>何謂 Azure Bastion？
 

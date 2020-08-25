@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 08/12/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 3182961f928a9befc5a55fb6d58e22c74ba81089
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 3f8a43a1ff28206a4bcc5fd059f69492c83eb34d
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79473433"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224708"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用功能旗標
 
@@ -37,7 +37,7 @@ ms.locfileid: "79473433"
 
 ## <a name="set-up-feature-management"></a>設定功能管理
 
-新增 `Microsoft.FeatureManagement` NuGet 套件的參考，以利用 .NET Core 功能管理員。
+新增 `Microsoft.FeatureManagement.AspNetCore` 和 `Microsoft.FeatureManagement` NuGet 套件的參考，以利用 .NET Core 功能管理員。
     
 .NET Core 功能管理員 `IFeatureManager` 會從架構的原生組態系統取得功能旗標。 因此，您可以使用 .NET Core 所支援的組態來源 (包括本機 appsettings.json  檔或環境變數)，來定義應用程式的功能旗標。 `IFeatureManager` 會仰賴 .NET Core 相依性插入。 您可以使用標準慣例來註冊功能管理服務：
 
@@ -206,6 +206,8 @@ public class HomeController : Controller
 在 MVC 控制器中，您可以使用 `FeatureGate` 屬性來控制是要啟用整個控制器類別還是特定動作。 下列 `HomeController` 控制器必須在 `FeatureA`「開啟」  時，才能執行該控制器類別所包含的動作：
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public class HomeController : Controller
 {
@@ -216,6 +218,8 @@ public class HomeController : Controller
 下列 `Index` 動作必須在 `FeatureA`「開啟」  時才能執行：
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public IActionResult Index()
 {

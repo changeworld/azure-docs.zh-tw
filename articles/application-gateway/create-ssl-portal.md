@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/24/2020
+ms.date: 08/14/2020
 ms.author: victorh
-ms.openlocfilehash: baadd52a931a28e1502fe0da2286d541db9face4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0d0522dd2f206e02ad8b63b13a9537c049232db2
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290132"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245735"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站設定包含 TLS 終止的應用程式閘道
 
@@ -30,7 +30,7 @@ ms.locfileid: "87290132"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>登入 Azure
+## <a name="prerequisites"></a>必要條件
 
 在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站
 
@@ -259,6 +259,10 @@ Export-PfxCertificate `
     接著會顯示受保護的 IIS 網站，如下列範例所示：
 
     ![在應用程式閘道中測試基底 URL](./media/create-ssl-portal/application-gateway-iistest.png)
+
+## <a name="clean-up-resources"></a>清除資源
+
+當不再需要資源時，請刪除資源群組及所有相關資源。 若要這樣做，請選取資源群組，然後選取 [刪除資源群組]。
 
 ## <a name="next-steps"></a>後續步驟
 

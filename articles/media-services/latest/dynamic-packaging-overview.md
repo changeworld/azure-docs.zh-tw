@@ -2,7 +2,7 @@
 title: Azure 媒體服務 v3 中的動態封裝
 titleSuffix: Azure Media Services
 description: 本文能提供 Azure 媒體服務中動態封裝的概觀。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/31/2020
-ms.author: juliako
-ms.openlocfilehash: 032a3c719610d658ec32492033a04a610117643d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8a5d52f2705a04c290f1122335430c12db8d294c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489770"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604586"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒體服務 v3 中的動態封裝
 
@@ -80,8 +80,10 @@ Azure 媒體服務動態封裝僅支援 MP4 容器格式的影片和音訊檔案
 
 下列步驟示範常見的媒體服務串流工作流程，其中動態封裝會與 Azure 媒體服務中的標準編碼器一起使用。
 
-1. 上傳輸入檔，例如 QuickTime/MOV 或 MXF 檔案。 此檔案也稱為夾層檔或來源檔案。 如需支援格式的清單，請參閱[標準編碼器所支援的格式](media-encoder-standard-formats.md)。
+1. [上傳輸入檔](job-input-from-http-how-to.md)，例如 MP4、QuickTime/MOV 或其他支援的檔案格式。 此檔案也稱為夾層檔或來源檔案。 如需支援格式的清單，請參閱[標準編碼器所支援的格式](media-encoder-standard-formats.md)。
 1. 將夾層檔[編碼](#encode-to-adaptive-bitrate-mp4s)為 H.264/AAC MP4 自適性位元速率集。
+
+    如果您已經有編碼的檔案，而只想要複製和串流該檔案，請使用：[CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) 和 [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) API。 系統會建立含有串流資訊清單 (.ism 檔案) 的新 MP4 檔案。
 1. 發佈包含自適性位元速率 MP4 集的輸出資產。 您會透過建立[串流定位器](streaming-locators-concept.md)來發佈。
 1. 建置以不同格式 (HLS、MPEG-DASH 及 Smooth Streaming) 為目標的 URL。 「串流端點」會負責處理這所有不同格式的正確資訊清單和要求。
     

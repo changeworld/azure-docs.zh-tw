@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中調整您的資源 Web 應用程式、雲�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 67b041476ecc5b5da389ab1377025a94675fc42a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 710d4e1aa77f8ab3153dafc77a72eec2192cf205
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078881"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794537"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>開始在 Azure 中自動調整規模
 本文說明如何在 Microsoft Azure 入口網站中為您的資源設定自動調整規模。
@@ -22,7 +22,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 您可以在 Azure 監視器中探索適用於自動調整規模的所有資源。 如需逐步說明，請依循下列步驟：
 
-1. 開啟 [ [Azure 入口網站]。][1]
+1. 開啟 [Azure 入口網站。][1]
 1. 按一下左窗格中的 Azure 監視器圖示。
   ![開啟 Azure 監視器][2]
 1. 按一下 [自動調整規模]****，檢視適用自動調整規模的所有資源，以及其目前的自動調整狀態。
@@ -57,7 +57,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
    您現在應該會有一個調整規模設定，其會根據 CPU 使用量進行相應放大/相應縮小。
    ![根據 CPU 調整規模][8]
-1. 按一下 [儲存]。
+1. 按一下 [檔案] 。
 
 恭喜！ 您現在已成功建立第一個調整規模設定，可根據 CPU 使用量自動調整 Web 應用程式的規模。
 
@@ -112,6 +112,28 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 ![設定手動調整規模][14]
 
 您隨時都能藉由依序按一下 [啟用自動調整規模]**** 和 [儲存]****，來返回自動調整規模。
+
+## <a name="route-traffic-to-healthy-instances-app-service"></a>將流量路由傳送至狀況良好的實例 (App Service) 
+
+當您相應放大至多個實例時，App Service 可以對實例執行健康情況檢查，只將流量路由傳送至狀況良好的實例。 若要這樣做，請開啟入口網站 App Service，然後選取 [**監視**] 底下的 [**健康情況檢查**]。 選取 [ **啟用** ]，並在您的應用程式上提供有效的 URL 路徑，例如 `/health` 或 `/api/health` 。 按一下 [檔案] 。
+
+### <a name="health-check-path"></a>健康情況檢查路徑
+
+路徑必須在兩分鐘內回應，狀態碼介於200和 299 (內含) 之間。 如果路徑在兩分鐘內沒有回應，或傳回範圍之外的狀態碼，則會將實例視為「狀況不良」。 健康情況檢查會與 App Service 的驗證和授權功能整合，即使啟用了這些 microsoft.powershell.secuity 功能，系統還是會到達端點。 如果您使用自己的驗證系統，健康情況檢查路徑必須允許匿名存取。 如果網站已啟用 HTTP**s** ，則 healthcheck 會接受 HTTP**s** ，並使用該通訊協定傳送要求。
+
+健康情況檢查路徑應該會檢查應用程式的重要元件。 例如，如果您的應用程式相依于資料庫和訊息系統，則健康情況檢查端點應該會連接到這些元件。 如果應用程式無法連接至重要元件，則路徑應該會傳回500層級的回應碼，表示應用程式狀況不良。
+
+### <a name="behavior"></a>行為
+
+當提供健康情況檢查路徑時，App Service 將會偵測所有實例上的路徑。 如果在5次 ping 之後未收到成功的回應碼，該實例就會被視為「狀況不良」。 狀況不良的實例 (s) 將會從負載平衡器輪替中排除。 此外，當您相應增加或相應放大時，App Service 會偵測健康情況檢查路徑，以確保新的實例已準備好要求。
+
+其餘狀況良好的實例可能會產生更高的負載。 為了避免剩餘的實例過多，系統不會排除超過一半的實例。 例如，如果 App Service 的方案相應放大至4個實例，其中3個狀況不良，則會將最多2個從 loadbalancer 旋轉中排除。 其他2個實例 (1 狀況良好，而1個狀況不良的) 將會繼續接收要求。 在所有實例都狀況不良的最糟情況下，將不會排除任何實例。
+
+如果實例在一小時內保持不健全，則會以新的實例取代。 每小時最多隻能取代一個實例，每個 App Service 方案最多可有三個實例。
+
+### <a name="monitoring"></a>監視
+
+提供應用程式的健康情況檢查路徑之後，您可以使用 Azure 監視器來監視網站的健康情況。 從入口網站的 **健康情況檢查** 分頁，按一下頂端工具列中的 **計量** 。 這會開啟新的分頁，您可以在其中看到網站的歷程記錄健康情況狀態，以及建立新的警示規則。 如需有關監視網站的詳細資訊， [請參閱 Azure 監視器上的指南](../../app-service/web-sites-monitor.md)。
 
 ## <a name="next-steps"></a>後續步驟
 - [建立活動記錄警示以監視訂用帳戶的所有自動調整引擎作業](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

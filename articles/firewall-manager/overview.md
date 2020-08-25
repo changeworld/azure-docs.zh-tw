@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/10/2020
+ms.date: 08/18/2020
 ms.author: victorh
-ms.openlocfilehash: 0fcf1c8a3800a52e8fa8659fe4bf97e83103c79d
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b4ef35f2892925919ca9c8eda37a9b0e0d11835e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056987"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590399"
 ---
 # <a name="what-is-azure-firewall-manager"></a>什麼是 Azure 防火牆管理員？
 
@@ -85,6 +85,8 @@ Azure 防火牆管理員有下列已知問題：
 |輪輻位於與虛擬中樞不同的區域|不支援讓輪輻位於與虛擬中樞不同的區域。|正在調查<br><br>請在與中樞相同的區域中，建立每個區域的中樞和對等 VNet。|
 |已啟用私人流量篩選時的分支對分支流量|已啟用私人流量篩選時，不支援分支對分支流量。 |正在調查。<br><br>如果分支對分支連線能力很重要，則請勿保護私人流量。|
 |所有共用相同虛擬 WAN 的安全虛擬中樞，都必須位於相同的資源群組中。|此行為與現今的虛擬 WAN 中樞一致。|建立多個虛擬 WAN，以允許在不同的資源群組中建立安全虛擬中樞。|
+|大量 IP 位址新增失敗|如果您新增多個公用 IP 位址，則安全中樞防火牆會進入失敗狀態。|請以遞增方式少量增加公用 IP 位址。 例如，一次新增 10 個。|
+|應用程式規則在已設定自訂 DNS (預覽) 的安全中樞中失敗。|DNS Proxy/自訂 DNS (預覽) 無法在已設定防火牆管理 NIC 的案例中使用。 這包括安全中樞部署，以及已啟用強制通道的案例。|正在調查是否有可用的修正。|
 
 ## <a name="next-steps"></a>後續步驟
 

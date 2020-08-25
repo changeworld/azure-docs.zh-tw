@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 與 HubSpot 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 HubSpot 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 57343ccd-53ea-4e62-9e54-dee2a9562ed5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 51e27526b10bcdd74d6e2bffb8bf620d7b022aac
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68944438"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551432"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>教學課程：Azure Active Directory 與 HubSpot 整合
 
@@ -106,9 +101,9 @@ HubSpot 支援下列功能︰
 
 1. 若要在 [基本 SAML 組態]  窗格中設定「IDP 起始模式」  ，請完成下列步驟：
 
-    1. 在 [識別碼]  方塊中輸入具有下列模式的 URL：\//api.hubspot.com/login-api/v1/saml/login?portalId=\<CUSTOMER ID\>。
+    1. 在**識別碼**方塊中輸入具有下列模式的 URL：https:\//api.hubspot.com/login-api/v1/saml/login?portalId=\<CUSTOMER ID\>。
 
-    1. 在 [回覆 URL]  方塊中輸入具有下列模式的 URL：https:\//api.hubspot.com/login-api/v1/saml/acs?portalId=\<CUSTOMER ID\>。
+    1. 在**回覆 URL** 方塊中輸入具有下列模式的 URL：https:\//api.hubspot.com/login-api/v1/saml/acs?portalId=\<CUSTOMER ID\>。
 
     ![HubSpot 網域與 URL 單一登入資訊](common/idp-intiated.png)
 
@@ -183,7 +178,7 @@ HubSpot 支援下列功能︰
 
     1. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
   
-    1. 在 [使用者名稱]  方塊中，輸入 **brittasimon\@\<your-company-domain>.\<extension\>** 。 例如，**brittasimon\@contoso.com**。
+    1. 在 [使用者名稱] 方塊中，輸入 **brittasimon\@\<your-company-domain>.\<extension\>** 。 例如，**brittasimon\@contoso.com**。
 
     1. 選取 [顯示密碼]  核取方塊。 記下 [密碼]  方塊中顯示的值。
 

@@ -3,12 +3,12 @@ title: 播放多日錄製 - Azure
 description: 在本教學課程中，您將了解如何使用 Azure 媒體服務 API 來播放多日的持續影片錄製。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 52ef33e8c4380e9c21e99c4ba45b7f25f7c57780
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 19a42c61ef250fecce4503d3aed70b36d71ee3cf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433650"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649086"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>教學課程：播放多日錄製  
 
@@ -40,7 +40,7 @@ ms.locfileid: "84433650"
 
 ## <a name="run-the-sample"></a>執行範例 
 
-做為 [CVR 教學課程](continuous-video-recording-tutorial.md)的一部分，您可能已建立媒體服務帳戶。 在本教學課程中，您將需要具備該帳戶的完整 API 存取權。 您可以使用[取得存取媒體服務 API 的認證](../latest/access-api-howto.md#use-the-azure-portal)中的步驟來建立服務主體。 您應該能夠從 Azure 入口網站取得 JSON 區塊，如下所示：
+做為 [CVR 教學課程](continuous-video-recording-tutorial.md)的一部分，您可能已建立媒體服務帳戶。 在本教學課程中，您將需要具備該帳戶的完整 API 存取權。 您可以使用[取得存取媒體服務 API 的認證](../latest/access-api-howto.md?tabs=portal)中的步驟來建立服務主體。 您應該能夠從 Azure 入口網站取得 JSON 區塊，如下所示：
 
 ```
 {

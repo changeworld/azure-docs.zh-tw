@@ -1,14 +1,14 @@
 ---
 title: 快速入門：使用入口網站進行新原則指派
 description: 在本快速入門中，您會使用 Azure 入口網站建立 Azure 原則指派，以識別不符合規範的資源。
-ms.date: 03/24/2020
+ms.date: 08/17/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3a514478f3cefa49c37c3431a80b578dff480584
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb3f97ab2f8da3ff2809cb969c8442779e173983
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80240015"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548374"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>快速入門：建立原則指派以識別不相容資源
 
@@ -37,7 +37,7 @@ ms.locfileid: "80240015"
 
    :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="從 [指派] 頁面指派原則定義" border="false":::
 
-1. 在 [指派原則]  頁面上，按一下省略符號並選取管理群組或訂用帳戶來選取 [範圍]  。 選擇性地選取資源群組。 範圍會決定在哪些資源或資源群組上強制執行原則指派。 然後，按一下位於 [範圍]  分頁底部的 [選取]  。
+1. 在 [指派原則] 頁面上，選取省略符號並選取管理群組或訂用帳戶來設定 [範圍]。 選擇性地選取資源群組。 範圍會決定在哪些資源或資源群組上強制執行原則指派。 然後，使用 [範圍] 頁面底部的 [選取] 按鈕。
 
    這個範例會使用 **Contoso** 訂用帳戶。 您的訂用帳戶不同。
 
@@ -51,7 +51,7 @@ ms.locfileid: "80240015"
 
    如需可用內建原則的部分清單，請參閱 [Azure 原則範例](./samples/index.md)。
 
-1. 搜尋原則定義清單以尋找「稽核未使用受控磁碟的 VM」  定義。 按一下該原則，然後按一下 [選取]  。
+1. 搜尋原則定義清單以尋找「稽核未使用受控磁碟的 VM」  定義。 選取該原則，然後使用 [選取] 按鈕。
 
    :::image type="content" source="./media/assign-policy-portal/select-available-definition.png" alt-text="尋找正確的原則定義" border="false":::
 
@@ -60,7 +60,7 @@ ms.locfileid: "80240015"
 
 1. 讓 [建立受控識別]  保持未選取狀態。 但是，當要原則或計畫包含具有 [deployIfNotExists](./concepts/effects.md#deployifnotexists) 效果的原則時，_必須_核取此方塊。 由於本快速入門所使用的原則並未包含該效果，因此請將其保留為空白。 如需詳細資訊，請參閱[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)和[補救安全性的運作方式](./how-to/remediate-resources.md#how-remediation-security-works)。
 
-1. 按一下 [指派]  。
+1. 選取 [指派]。
 
 您現在可以識別不相容的資源，以了解環境的相容性狀態。
 

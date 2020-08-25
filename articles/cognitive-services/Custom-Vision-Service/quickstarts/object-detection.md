@@ -1,20 +1,20 @@
 ---
-title: 快速入門：使用自訂視覺 SDK 建立物件偵測
-description: 快速入門：建立專案、新增標籤、上傳影像、為您的專案定型，並使用自訂視覺 SDK 來偵測物件。
+title: 快速入門：使用自訂視覺用戶端程式庫建立物件偵測
+description: 快速入門：建立專案、新增標籤、上傳影像、為您的專案定型，並使用自訂視覺用戶端程式庫來偵測物件。
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 04/27/2020
+ms.date: 08/17/2020
 ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 9febd3a242834a930beae5130a33d230e9e83b6b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: c6b40fe7abe0b7ad4b6993b55206eabc5b4681d0
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875961"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511274"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk"></a>快速入門：使用自訂視覺 SDK 建立物件偵測專案
 
