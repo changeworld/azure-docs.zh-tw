@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21e0358e2226f93a6c7088906d1146e5e2cf740
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c0b203647bc57c7c7eb48e321895cf3b3fa7d44
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729025"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795417"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>在 Azure Active Directory 中刪除租用戶
 
@@ -85,7 +85,7 @@ ms.locfileid: "84729025"
 
    ![用於刪除訂用帳戶的 [刪除] 連結](./media/directory-delete-howto/delete-command.png)
 
-6. 選取 [刪除訂用帳戶] 以刪除訂用帳戶並接受條款及條件。 所有資料都會在三天內永久刪除。 若您改變了心意，在這三天內都可以[重新啟用訂用帳戶](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide)。
+6. 選取 [刪除訂用帳戶] 以刪除訂用帳戶並接受條款及條件。 所有資料都會在三天內永久刪除。 若您改變了心意，在這三天內都可以[重新啟用訂用帳戶](/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide)。
   
    ![仔細閱讀條款及條件](./media/directory-delete-howto/delete-terms.png)
 
@@ -97,18 +97,18 @@ ms.locfileid: "84729025"
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>我有阻擋刪除的試用版訂用帳戶
 
-有[自助式註冊產品](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide)，例如 Microsoft Power BI、Rights Management Services、Microsoft Power Apps 或 Dynamics 365，個別使用者可以透過 Office 365 註冊，這也會在您的 Azure AD 組織中建立來賓使用者以進行驗證。 這些自助產品會阻擋目錄刪除，直到產品完全從組織中刪除為止，以避免資料遺失。 只有在使用者個別註冊或被指派產品的情況下，Azure AD 系統管理員才可以將其刪除。
+有[自助式註冊產品](/office365/admin/misc/self-service-sign-up?view=o365-worldwide)，例如 Microsoft Power BI、Rights Management Services、Microsoft Power Apps 或 Dynamics 365，個別使用者可以透過 Office 365 註冊，這也會在您的 Azure AD 組織中建立來賓使用者以進行驗證。 這些自助產品會阻擋目錄刪除，直到產品完全從組織中刪除為止，以避免資料遺失。 只有在使用者個別註冊或被指派產品的情況下，Azure AD 系統管理員才可以將其刪除。
 
 自助式註冊產品的指派有兩種類型： 
 
 * 組織層級指派：Azure AD 系統管理員會將產品指派給整個組織，而使用者也可以使用此組織層級指派來主動使用此服務，即使他們不是個別獲得授權也一樣。
 * 使用者層級指派：個別使用者在自助式註冊期間基本上會將產品指派給自己，而不需要系統管理員。當組織變成由系統管理員管理 (請參閱 [系統管理員接管非受控組織](domains-admin-takeover.md))，系統管理員就可以直接將產品指派給使用者，而不需要自助式註冊。  
 
-當您開始刪除自助式註冊產品時，此動作會永久刪除資料，並移除該服務的所有使用者存取權。 個別或在組織層級獲指派供應項目的使用者，會遭到封鎖而無法登入或存取任何現有的資料。 如果您想要使用自助式註冊產品 (例如 [Microsoft Power BI 儀表板](https://docs.microsoft.com/power-bi/service-export-to-pbix)或 [Rights Management Services 原則設定](https://docs.microsoft.com/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy)) 來防止資料遺失，請確定資料已備份並儲存在其他位置。
+當您開始刪除自助式註冊產品時，此動作會永久刪除資料，並移除該服務的所有使用者存取權。 個別或在組織層級獲指派供應項目的使用者，會遭到封鎖而無法登入或存取任何現有的資料。 如果您想要使用自助式註冊產品 (例如 [Microsoft Power BI 儀表板](/power-bi/service-export-to-pbix)或 [Rights Management Services 原則設定](/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy)) 來防止資料遺失，請確定資料已備份並儲存在其他位置。
 
-如需目前可用自助式註冊產品與服務的詳細資訊，請參閱[可用的自助式程式](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)。
+如需目前可用自助式註冊產品與服務的詳細資訊，請參閱[可用的自助式程式](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)。
 
-至於試用 Office 365 訂用帳戶過期時會發生的情況 (不含付費合作夥伴/CSP、Enterprise 合約或大量授權)，請見下表。 如需 Office 365 資料保留期與訂用帳戶生命週期的詳細資訊，請參閱 [What happens to my data and access when my Office 365 for business subscription ends?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide) (當商務用 Office 365 訂閱結束時，我的資料和存取權會如何？)。
+至於試用 Office 365 訂用帳戶過期時會發生的情況 (不含付費合作夥伴/CSP、Enterprise 合約或大量授權)，請見下表。 如需 Office 365 資料保留期與訂用帳戶生命週期的詳細資訊，請參閱 [What happens to my data and access when my Office 365 for business subscription ends?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide) (當商務用 Office 365 訂閱結束時，我的資料和存取權會如何？)。
 
 產品狀態 | 資料 | 資料存取權
 ------------- | ---- | --------------
@@ -143,4 +143,4 @@ Deleted | 資料已刪除 | 使用者無法存取自助式註冊產品、檔案�
 
 ## <a name="next-steps"></a>後續步驟
 
-[Azure Active Directory 文件](https://docs.microsoft.com/azure/active-directory/)
+[Azure Active Directory 文件](../index.yml)

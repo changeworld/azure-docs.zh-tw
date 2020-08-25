@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
-ms.openlocfilehash: 91138f104c787148042b187f4cf59a60bc1448d3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c056e439deac71417ff14dcfc3f2c3c95db41946
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744422"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797661"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>設定安全性金鑰作為您的驗證方法
 
@@ -158,13 +158,13 @@ ms.locfileid: "83744422"
 
 ## <a name="additional-security-info-methods"></a>其他安全性資訊方法
 
-若要註冊安全性金鑰，必須至少再註冊一種安全性驗證方法。 如需詳細資訊，請參閱[概觀](security-info-add-update-methods-overview.md)一節。 
+若要註冊安全性金鑰，必須至少再註冊一種安全性驗證方法。 如需詳細資訊，請參閱[概觀](./security-info-setup-auth-app.md)一節。 
 
 ## <a name="next-steps"></a>後續步驟
 
 - 如需無密碼驗證方法的相關詳細資訊，請參閱 [Microsoft 的 Azure AD 開始公開預覽 FIDO2 安全性金鑰供無密碼登入](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) (英文) 部落格文章，或參閱[什麼是 Microsoft Authenticator 應用程式？](user-help-auth-app-overview.md)和 [Windows Hello 概觀](https://www.microsoft.com/windows/windows-hello)文章。
 
-- 更多 [Microsoft 相容的安全性金鑰](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)關詳細資訊。
+- 更多 [Microsoft 相容的安全性金鑰](/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)關詳細資訊。
 
 - 如果您遺失或忘記密碼，請從[密碼重設入口網站](https://passwordreset.microsoftonline.com/)或遵循[重設公司或學校密碼](active-directory-passwords-update-your-own-password.md)一文中的步驟來重設密碼。
 

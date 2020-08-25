@@ -4,12 +4,12 @@ description: 與代理程式、延伸模組及磁碟相關之 Azure 備份失敗
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: d690ed23f49d3aa3f77b88c8d57c963ae2a98682
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 26050dfb9fdde5988fe3ae922dae5486d17f4317
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611852"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755363"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
 
@@ -175,8 +175,8 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態或未�
 
 您最近的備份作業失敗，因為有現有的備份作業正在進行中。 必須等到目前的作業完成，才能啟動新的備份作業。 請確定目前正在進行的備份作業已完成，再觸發或排定其他備份作業。 若要檢查備份作業狀態，請執行下列步驟：
 
-1. 登入 Azure 入口網站，選取 [ **所有服務**]。 輸入復原服務，然後選取 [復原 **服務保存庫**]。 復原服務保存庫清單隨即出現。
-2. 在復原服務保存庫清單中，選取其中已設定備份的保存庫。
+1. 登入 Azure 入口網站，選取 [ **所有服務**]。 輸入復原服務，然後選取 [復原 **服務保存庫**]。 隨即會出現 [復原服務保存庫] 清單。
+2. 從復原服務保存庫的清單中，選取要在其中設定備份的保存庫。
 3. 在保存庫儀表板功能表上，選取 [ **備份作業** ]，以顯示所有備份作業。
    - 如果有正在進行中的備份作業，請等到該作業完成或取消備份作業。
      - 若要取消備份作業，請以滑鼠右鍵按一下備份作業，然後選取 [ **取消** ] 或 [使用 [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)]。

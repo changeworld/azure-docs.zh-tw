@@ -3,12 +3,12 @@ title: 管理及監視 Azure VM 上的 SQL Server Db
 description: 本文說明如何管理和監視在 Azure VM 上執行的 SQL Server 資料庫。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ada367e94b75c30a98bedf5848b248cadfe9acc2
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: c9d8b9b56820182f7bf7866d38d40df8f5488a7a
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659523"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756311"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和監視備份的 SQL Server 資料庫
 
@@ -16,15 +16,11 @@ ms.locfileid: "88659523"
 
 如果您尚未設定 SQL Server 資料庫的備份，請參閱 [備份 Azure vm 上的 SQL Server 資料庫](backup-azure-sql-database.md)
 
-## <a name="monitor-manual-backup-jobs-in-the-portal"></a>在入口網站中監視手動備份作業
+## <a name="monitor-backup-jobs-in-the-portal"></a>在入口網站中監視備份作業
 
-Azure 備份會在 **備份作業** 入口網站中顯示所有手動觸發的工作。 您會在此入口網站中看到的工作，包括資料庫探索和註冊，以及備份和還原作業。
+Azure 備份會在入口網站中顯示 **備份作業** 下的所有已排程和隨選作業（排程的記錄備份除外），因為它們可能非常頻繁。 您在此入口網站中看到的工作包括資料庫探索和註冊、設定備份，以及備份和還原作業。
 
 ![備份作業入口網站](./media/backup-azure-sql-database/jobs-list.png)
-
-> [!NOTE]
-> **備份作業**入口網站不會顯示已排程的備份工作。 請使用 SQL Server Management Studio 來監視已排程的備份作業，如下一節中所述。
->
 
 如需監視案例的詳細資訊，請移至 [Azure 入口網站中的 [監視](backup-azure-monitoring-built-in-monitor.md) ]，然後 [使用 Azure 監視器進行監視](backup-azure-monitoring-use-azuremonitor.md)。  
 

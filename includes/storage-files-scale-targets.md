@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: ae431d27af4a1717a32e348ba852f9b2b9fe9331
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 8034a7a520cc50b2e57e0ad26205da2e408296a1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87451287"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88760612"
 ---
 | 資源 | 標準檔案共用 | 進階檔案共用 |
 |----------|---------------|------------------------------------------|
@@ -17,7 +17,7 @@ ms.locfileid: "87451287"
 | 檔案共用大小上限 | 100 TiB*、5 TiB | 100 TiB |
 | 檔案共用中檔案的大小上限 | 1 TiB | 4 TiB |
 | 檔案共用中的檔案數目上限 | 沒有限制 | 沒有限制 |
-| 每個共用的最大 IOPS | 10,000 IOPS*、1,000 IOPS | 100,000 IOPS |
+| 每個共用的最大 IOPS | 10,000 IOPS*、1,000 IOPS 或 100 毫秒內 100 個要求 | 100,000 IOPS |
 | 每個檔案共用的預存存取原則的最大數目 | 5 | 5 |
 | 單一檔案共用的目標輸送量 | 最高 300 MiB/秒*、最高 60 MiB/秒，  | 請參閱進階檔案共用輸入和輸出值|
 | 單一檔案共用的輸出上限 | 請參閱標準檔案共用目標輸送量 | 最高 6,204 MiB/秒 |

@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解使用 Azure 入口網站 Azure 備份�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: ec0453725186ddef359f85f8c3e5554ff240d3e3
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 9a4558367d3af6858310ce4455cbf1df2a596312
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755716"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763468"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>監視 Azure 備份工作負載
 
@@ -70,7 +70,7 @@ Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視�
 - VM 備份作業失敗，因為備份的 Azure VM 已不存在
 - [合併的警示](#consolidated-alerts)
 
-上述例外狀況的設計是為了瞭解這些作業的結果 (主要是在入口網站/PS/CLI 用戶端上立即顯示使用者觸發的) 。 如此一來，使用者就可以立即察覺，不需要通知。
+上述例外狀況的設計是為了瞭解這些作業的結果 (主要是在入口網站/PS/CLI 用戶端上立即顯示的使用者觸發) 。 如此一來，使用者就可以立即察覺，不需要通知。
 
 ### <a name="alert-types"></a>警示類型
 
@@ -104,6 +104,6 @@ Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視�
 
 ![RS 保存庫警示 {0}](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [使用 Azure 監視器監視 Azure 備份工作負載](backup-azure-monitoring-use-azuremonitor.md)

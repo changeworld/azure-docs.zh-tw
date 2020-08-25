@@ -1,21 +1,21 @@
 ---
 title: 依 GitHub 動作部署容器實例
-description: 設定 GitHub 動作，將建立、推送及部署容器映射的步驟自動化至 Azure 容器實例
+description: 設定 GitHub 動作，以自動化建立、推送及部署容器映射至 Azure 容器實例的步驟
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 08/20/2020
 ms.custom: ''
-ms.openlocfilehash: fab0eff04d86428a7e3eba730373da72c903b0ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8da72d3911797e8e3a4551f2af100afb0d7ea0fb
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743995"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755002"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>設定 GitHub 動作以建立容器執行個體
 
-[Github 動作](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions)是 github 中的一套功能，可將您的軟體發展工作流程自動化，並將您的程式碼儲存在同一個位置，並在提取要求和問題上共同作業。
+[GitHub Actions](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) 是 GitHub 中的一組功能，可讓您在儲存程式碼及共同處理提取要求和問題的相同位置，自動化軟體發展工作流程。
 
-使用[部署至 Azure 容器實例](https://github.com/azure/aci-deploy)GitHub 動作，自動將容器部署至 Azure 容器實例。 動作可讓您設定容器實例的屬性，其與[az container create][az-container-create]命令中的類似。
+使用 [ [部署至 Azure 容器實例](https://github.com/azure/aci-deploy) ] GitHub 動作，將單一容器的部署自動化至 Azure 容器實例。 此動作可讓您設定容器實例的屬性，類似于 [az container create][az-container-create] 命令中的內容。
 
 本文說明如何在 GitHub 存放庫中設定工作流程，以執行下列動作：
 
@@ -23,37 +23,37 @@ ms.locfileid: "84743995"
 * 將映射推送至 Azure container registry
 * 將容器映射部署至 Azure 容器實例
 
-本文說明兩種設定工作流程的方式：
+本文說明設定工作流程的兩種方式：
 
-* 使用 [部署至 Azure 容器實例] 動作和其他動作，自行在 GitHub 存放庫中設定工作流程。  
-* 在 `az container app up` Azure CLI 中，使用 [[部署至 Azure](https://github.com/Azure/deploy-to-azure-cli-extension) ] 延伸模組中的命令。 此命令簡化了 GitHub 工作流程和部署步驟的建立。
+* [設定 github 工作流程](#configure-github-workflow) -使用 [部署至 Azure 容器實例] 動作和其他動作，在 GitHub 存放庫中建立工作流程。  
+* [使用 CLI 擴充](#use-deploy-to-azure-extension) 功能-在 `az container app up` Azure CLI 中使用 [ [部署至 Azure](https://github.com/Azure/deploy-to-azure-cli-extension) ] 延伸模組中的命令。 此命令可簡化 GitHub 工作流程的建立和部署步驟。
 
 > [!IMPORTANT]
-> 適用于 Azure 容器實例的 GitHub 動作目前為預覽狀態。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
+> Azure 容器實例的 GitHub 動作目前為預覽狀態。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* **GitHub 帳戶**-如果您還沒有帳戶，請在上建立帳戶 https://github.com 。
-* **Azure CLI** -您可以使用 Azure Cloud Shell 或本機安裝 Azure CLI 來完成 Azure CLI 步驟。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
-* **Azure container registry** -如果您沒有，請使用[Azure CLI](../container-registry/container-registry-get-started-azure-cli.md)、 [Azure 入口網站](../container-registry/container-registry-get-started-portal.md)或其他方法，在基本層中建立 azure container registry。 記下用於部署的資源群組，用於 GitHub 工作流程。
+* **GitHub 帳戶** -如果您還沒有帳戶，請建立一個帳戶 https://github.com 。
+* **Azure CLI** -您可以使用 Azure CLI 的 Azure Cloud Shell 或本機安裝來完成 Azure CLI 步驟。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
+* **Azure container registry** -如果您沒有，請使用 [Azure CLI](../container-registry/container-registry-get-started-azure-cli.md)、 [Azure 入口網站](../container-registry/container-registry-get-started-portal.md)或其他方法，在基本層中建立 azure container registry。 記下用於部署的資源群組，用於 GitHub 工作流程。
 
 ## <a name="set-up-repo"></a>設定存放庫
 
-* 針對本文中的範例，請使用 GitHub 來派生下列存放庫：https://github.com/Azure-Samples/acr-build-helloworld-node
+* 針對本文中的範例，請使用 GitHub 來派生下列存放庫： https://github.com/Azure-Samples/acr-build-helloworld-node
 
-  此存放庫包含 Dockerfile 和來源檔案，可建立小型 web 應用程式的容器映射。
+  此存放庫包含 Dockerfile 和原始程式檔，可建立小型 web 應用程式的容器映射。
 
   ![GitHub 中的 [分支] 按鈕 (醒目提示) 的螢幕擷取畫面](../container-registry/media/container-registry-tutorial-quick-build/quick-build-01-fork.png)
 
-* 請確定已為您的存放庫啟用動作。 流覽至您的分支存放庫，然後選取 [**設定**] [  >  **動作**]。 在 [動作] [**許可權**] 中，確定已選取 [**啟用此存放庫的本機和協力廠商動作**]。
+* 確定已為您的存放庫啟用動作。 流覽至您的分支存放庫，並選取 [**設定**  >  **動作**]。 在 [ **動作許可權**] 中，確定已選取 [ **啟用此存放庫的本機和協力廠商動作** ]。
 
 ## <a name="configure-github-workflow"></a>設定 GitHub 工作流程
 
 ### <a name="create-service-principal-for-azure-authentication"></a>建立 Azure 驗證的服務主體
 
-在 GitHub 工作流程中，您必須提供 Azure 認證以向 Azure CLI 進行驗證。 下列範例會建立一個服務主體，其中的參與者角色範圍設定為容器登錄的資源群組。
+在 GitHub 工作流程中，您必須提供 Azure 認證以驗證 Azure CLI。 下列範例會建立服務主體，並將參與者角色的範圍設定為容器登錄的資源群組。
 
-首先，取得資源群組的資源識別碼。 以您的群組名稱取代下列[az group show][az-group-show]命令：
+首先，取得資源群組的資源識別碼。 在下列 [az group show][az-group-show] 命令中替換您的組名：
 
 ```azurecli
 groupId=$(az group show \
@@ -61,7 +61,7 @@ groupId=$(az group show \
   --query id --output tsv)
 ```
 
-使用[az ad sp create for-rbac][az-ad-sp-create-for-rbac]來建立服務主體：
+使用 [az ad sp create-rbac][az-ad-sp-create-for-rbac] 來建立服務主體：
 
 ```azurecli
 az ad sp create-for-rbac \
@@ -87,13 +87,13 @@ az ad sp create-for-rbac \
 }
 ```
 
-儲存 JSON 輸出，因為在稍後的步驟中會用到它。 此外，請記 `clientId` 下，這是您在下一節中需要更新服務主體的。
+儲存 JSON 輸出，因為它會在稍後的步驟中使用。 此外，請記 `clientId` 下您在下一節中需要更新服務主體的。
 
 ### <a name="update-service-principal-for-registry-authentication"></a>更新登錄驗證的服務主體
 
-更新 Azure 服務主體認證，以允許容器登錄上的推送和提取許可權。 此步驟可讓 GitHub 工作流程使用服務主體來向[您的容器登錄進行驗證](../container-registry/container-registry-auth-service-principal.md)。 
+更新 Azure 服務主體認證，以允許對容器登錄的推送和提取存取權。 此步驟可讓 GitHub 工作流程使用服務主體來 [驗證您的容器](../container-registry/container-registry-auth-service-principal.md) 登錄，以及推送和提取 Docker 映射。 
 
-取得容器登錄的資源識別碼。 在下列[az acr show][az-acr-show]命令中，以您的登錄名稱取代：
+取得容器登錄的資源識別碼。 在下列 [az acr show][az-acr-show] 命令中，以您的登錄名稱取代：
 
 ```azurecli
 registryId=$(az acr show \
@@ -101,7 +101,7 @@ registryId=$(az acr show \
   --query id --output tsv)
 ```
 
-使用[az role 指派 create][az-role-assignment-create]來指派 AcrPush 角色，這會提供登錄的推送和提取存取權。 取代服務主體的用戶端識別碼：
+使用 [az role assign create][az-role-assignment-create] 來指派 AcrPush 角色，以提供登錄的推送和提取存取權。 以您的服務主體的用戶端識別碼取代：
 
 ```azurecli
 az role assignment create \
@@ -110,26 +110,26 @@ az role assignment create \
   --role AcrPush
 ```
 
-### <a name="save-credentials-to-github-repo"></a>將認證儲存至 GitHub 存放庫
+### <a name="save-credentials-to-github-repo"></a>將認證儲存到 GitHub 存放庫
 
-1. 在 GitHub UI 中，流覽至您的分支存放庫，然後選取 [**設定**] [  >  **秘密**]。 
+1. 在 GitHub UI 中，流覽至您的分支存放庫，並選取 [**設定**  >  **秘密**]。 
 
-1. 選取 [**新增密碼**]，以新增下列秘密：
+1. 選取 [ **新增密碼** ] 以新增下列秘密：
 
 |祕密  |值  |
 |---------|---------|
-|`AZURE_CREDENTIALS`     | 建立服務主體的整個 JSON 輸出 |
-|`REGISTRY_LOGIN_SERVER`   | 登錄的登入伺服器名稱（全部小寫）。 範例： *myregistry.azure.cr.io*        |
-|`REGISTRY_USERNAME`     |  `clientId`從服務主體建立的 JSON 輸出中的       |
-|`REGISTRY_PASSWORD`     |  `clientSecret`從服務主體建立的 JSON 輸出中的 |
+|`AZURE_CREDENTIALS`     | 來自服務主體建立步驟的整個 JSON 輸出 |
+|`REGISTRY_LOGIN_SERVER`   | 登錄的登入伺服器名稱 (全部小寫) 。 範例： *myregistry.azurecr.io*        |
+|`REGISTRY_USERNAME`     |  `clientId`從服務主體建立的 JSON 輸出中的。       |
+|`REGISTRY_PASSWORD`     |  `clientSecret`從服務主體建立的 JSON 輸出中的。 |
 | `RESOURCE_GROUP` | 您用來界定服務主體範圍的資源組名 |
 
 ### <a name="create-workflow-file"></a>建立工作流程檔案
 
-1. 在 GitHub UI 中，選取 [**動作**] [  >  **新增工作流程**]。
-1. 選取 [**自行設定工作流程**]。
-1. 在 [**編輯新**檔案] 中，貼上下列 YAML 內容以覆寫範例程式碼。 接受預設檔案名 `main.yml` ，或提供您選擇的檔案名。
-1. 選取 [**開始認可**]，選擇性地提供認可的簡短和擴充描述，然後選取 [**認可新**檔案]。
+1. 在 GitHub UI 中，選取 [**動作**  >  **新增工作流程**]。
+1. 選取 [ **自行設定工作流程**]。
+1. 在 [ **編輯新**檔案] 中，貼上下列 YAML 內容以覆寫範例程式碼。 接受預設檔案名 `main.yml` ，或提供您選擇的檔案名。
+1. 選取 [ **開始認可**]，選擇性地提供認可的簡短和延伸描述，然後選取 [ **認可新**檔案]。
 
 ```yml
 on: [push]
@@ -173,13 +173,13 @@ jobs:
 
 ### <a name="validate-workflow"></a>驗證工作流程
 
-在您認可工作流程檔案之後，就會觸發工作流程。 若要查看工作流程進度，請流覽至 [**動作**  >  **工作流程**]。 
+認可工作流程檔案之後，就會觸發工作流程。 若要查看工作流程進度，請流覽至 [**動作**  >  **工作流程**]。 
 
 ![查看工作流程進度](./media/container-instances-github-action/github-action-progress.png)
 
-如需查看工作流程中每個步驟的狀態和結果的相關資訊，請參閱[管理工作流程執行](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)。
+如需有關在您的工作流程中查看每個步驟的狀態和結果的詳細資訊，請參閱 [管理工作流程執行](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run) 。 如果工作流程未完成，請參閱 [查看記錄以診斷失敗](https://docs.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures)。
 
-當工作流程完成時，請執行[az container show][az-container-show]命令，以取得名為*aci sampleapp*之容器實例的相關資訊。 以您的資源組名取代： 
+當工作流程順利完成時，請執行[az container show][az-container-show]命令以取得名為*aci-sampleapp*的容器實例的相關資訊。 以您的資源組名取代： 
 
 ```azurecli
 az container show \
@@ -197,35 +197,35 @@ FQDN                                   ProvisioningState
 aci-action01.westus.azurecontainer.io  Succeeded
 ```
 
-布建實例之後，在瀏覽器中流覽至容器的 FQDN，以查看執行中的 web 應用程式。
+布建實例之後，請在瀏覽器中流覽至容器的 FQDN，以查看正在執行的 web 應用程式。
 
 ![在瀏覽器中執行 web 應用程式](./media/container-instances-github-action/github-action-container.png)
 
 ## <a name="use-deploy-to-azure-extension"></a>使用部署至 Azure 擴充功能
 
-或者，使用 Azure CLI 中的 [[部署至 Azure] 延伸](https://github.com/Azure/deploy-to-azure-cli-extension)模組來設定工作流程。 `az container app up`延伸模組中的命令會從您取得輸入參數，以設定要部署至 Azure 容器實例的工作流程。 
+或者，您也可以使用 Azure CLI 中的 [ [部署至 Azure] 延伸](https://github.com/Azure/deploy-to-azure-cli-extension) 模組來設定工作流程。 `az container app up`延伸模組中的命令會從您取得輸入參數，以設定要部署至 Azure 容器實例的工作流程。 
 
-Azure CLI 所建立的工作流程，與您可以[使用 GitHub 手動建立](#configure-github-workflow)的工作流程類似。
+Azure CLI 所建立的工作流程，類似于您可以 [使用 GitHub 手動建立](#configure-github-workflow)的工作流程。
 
 ### <a name="additional-prerequisite"></a>其他先決條件
 
-除了適用于此案例的[必要條件](#prerequisites)和存放庫[設定](#set-up-repo)之外，您還需要安裝適用于 Azure CLI 的 [**部署至 Azure] 延伸**模組。
+除了此案例的 [必要條件](#prerequisites) 和存放庫 [設定](#set-up-repo) 以外，您還需要安裝 Azure CLI 的 [  **部署至 Azure] 延伸** 模組。
 
-執行[az extension add][az-extension-add]命令來安裝擴充功能：
+執行 [az extension add][az-extension-add] 命令以安裝延伸模組：
 
 ```azurecli
 az extension add \
   --name deploy-to-azure
 ```
 
-如需尋找、安裝及管理擴充功能的相關資訊，請參閱搭配[使用擴充功能與 Azure CLI](/cli/azure/azure-cli-extensions-overview)。
+如需尋找、安裝和管理延伸模組的相關資訊，請參閱搭配 [使用擴充功能與 Azure CLI](/cli/azure/azure-cli-extensions-overview)。
 
 ### <a name="run-az-container-app-up"></a>`az container app up`執行
 
-若要執行[az container app up][az-container-app-up]命令，請至少提供：
+若要執行 [az container app up][az-container-app-up] 命令，請至少提供：
 
-* Azure container registry 的名稱，例如*myregistry*
-* GitHub 存放庫的 URL，例如`https://github.com/<your-GitHub-Id>/acr-build-helloworld-node`
+* 您的 Azure container registry 名稱，例如， *myregistry*
+* 您 GitHub 存放庫的 URL，例如 `https://github.com/<your-GitHub-Id>/acr-build-helloworld-node`
 
 範例命令：
 
@@ -237,14 +237,14 @@ az container app up \
 
 ### <a name="command-progress"></a>命令進度
 
-* 出現提示時，請提供您的 GitHub 認證，或提供[github 個人存取權杖](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)（PAT *），其*具有存放庫和*使用者*範圍來向登錄進行驗證。 如果您提供 GitHub 認證，此命令會為您建立 PAT。
+* 出現提示時，請提供您的 GitHub 認證，或提供[github 個人存取權杖](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (PAT) ，其中具有存放庫和*使用者**範圍，可*使用您的 GitHub 帳戶進行驗證。 如果您提供 GitHub 認證，此命令會為您建立 PAT。 遵循其他提示來設定工作流程。
 
-* 此命令會建立工作流程的存放庫密碼：
+* 此命令會建立工作流程的存放庫秘密：
 
   * Azure CLI 的服務主體認證
-  * 存取 Azure container registry 的認證
+  * 用來存取 Azure container registry 的認證
 
-* 在命令將工作流程檔案認可至您的存放庫之後，就會觸發工作流程。 
+* 命令將工作流程檔案認可至您的存放庫之後，就會觸發工作流程。 
 
 輸出會類似：
 
@@ -258,11 +258,29 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer.io:8080/
 ```
 
+若要在 GitHub UI 中查看每個步驟的工作流程狀態和結果，請參閱 [管理工作流程執行](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)。
+
 ### <a name="validate-workflow"></a>驗證工作流程
 
-工作流程會使用您 GitHub 存放庫的基底名稱（在此案例中為*helloworld-node*）來部署 Azure 容器實例。 在您的瀏覽器中，您可以流覽至所提供的連結，以查看執行中的 web 應用程式。 如果您的應用程式接聽8080以外的通訊埠，請在 URL 中指定。
+工作流程會使用 GitHub 存放庫的基底名稱（在此案例中為 *helloworld-node*）來部署 Azure 容器實例。 當工作流程順利完成時，執行[az container show][az-container-show]命令以取得名為*acr-helloworld-node*的容器實例的相關資訊。 以您的資源組名取代： 
 
-若要在 GitHub UI 中查看每個步驟的工作流程狀態和結果，請參閱[管理工作流程執行](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)。
+```azurecli
+az container show \
+  --resource-group <resource-group-name> \
+  --name acr-build-helloworld-node \
+  --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" \
+  --output table
+```
+
+輸出會類似：
+
+```console
+FQDN                                                   ProvisioningState
+---------------------------------                      -------------------
+acr-build-helloworld-node.westus.azurecontainer.io     Succeeded
+```
+
+布建實例之後，請在瀏覽器中流覽至容器的 FQDN，以查看正在執行的 web 應用程式。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -274,7 +292,7 @@ az container delete \
   --resource-group <resource-group-name>
 ```
 
-若要刪除資源群組和其中的所有資源，請執行[az group delete][az-group-delete]命令：
+若要刪除資源群組和其中的所有資源，請執行 [az group delete][az-group-delete] 命令：
 
 ```azurecli
 az group delete \
@@ -283,7 +301,7 @@ az group delete \
 
 ## <a name="next-steps"></a>後續步驟
 
-流覽[GitHub Marketplace](https://github.com/marketplace?type=actions)以取得更多動作來自動化您的開發工作流程
+流覽 [GitHub Marketplace](https://github.com/marketplace?type=actions) 以取得自動化開發工作流程的其他動作
 
 
 <!-- LINKS - external -->

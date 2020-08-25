@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 2c8f2d95e7e06f2fff3d8344a3fffa5b19648ede
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d7f7b0eb2c49e4abba9e12e09d70e321cc6c06f4
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88655067"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88760591"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重新開機 - 維護與停機時間
 有三種情況可能會導致 Azure 中的虛擬機器受到影響：未規劃的硬體維護、未預期的停機時間以及規劃的維護。
@@ -34,7 +34,7 @@ ms.locfileid: "88655067"
 * [將受控磁碟使用於可用性設定組中的 VM]
 * [使用排定的事件主動回應 VM 影響事件](../articles/virtual-machines/linux/scheduled-events.md)
 * [將每個應用程式層設定至不同的可用性設定組中]
-* [將負載平衡器與可用性設定組結合]
+* [將負載平衡器與可用性區域或可用性設定組結合]
 * [使用可用性區域來防禦資料中心層級的失敗]
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>使用可用性區域來防禦資料中心層級的失敗
@@ -110,7 +110,7 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 
 <!-- Link references -->
 [針對備援在可用性設定組中設定多部虛擬機器]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[將負載平衡器與可用性設定組結合]: #combine-a-load-balancer-with-availability-zones-or-sets
+[將負載平衡器與可用性區域或可用性設定組結合]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [將受控磁碟使用於可用性設定組中的 VM]: #use-managed-disks-for-vms-in-an-availability-set
 [使用可用性區域來防禦資料中心層級的失敗]: #use-availability-zones-to-protect-from-datacenter-level-failures

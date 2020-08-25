@@ -11,24 +11,24 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6cd81031f27d772912383fa050e0f946bf9964c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 454e205904b3623bdb5adc906465f01abd77092a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204654"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795604"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>透過已排序的叢集資料行存放區索引進行效能微調  
 
-當使用者在 Synapse SQL 集區中查詢資料行存放區資料表時，優化工具會檢查每個區段中所儲存的最小和最大值。  在查詢述詞界限外的區段不會從磁片讀取至記憶體。  如果要讀取的區段數目和大小總計很小，則查詢可以獲得更快的效能。   
+當使用者在 Synapse SQL 集區中查詢資料行存放區資料表時，優化工具會檢查每個區段中所儲存的最小值和最大值。  在查詢述詞範圍外的區段不會從磁片讀取到記憶體。  如果要讀取的區段數目和其總大小很小，查詢可能會獲得更快的效能。   
 
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>已排序與未排序的叢集資料行存放區索引
 
-根據預設，對於建立的每個資料表沒有索引選項，內部元件（索引產生器）會在其上建立未排序的叢集資料行存放區索引（CCI）。  每個資料行中的資料會壓縮成個別的 CCI 資料列群組區段。  每個區段的值範圍都有中繼資料，因此在查詢執行期間，不會從磁片讀取查詢述詞範圍外的區段。  CCI 提供最高層級的資料壓縮，並減少要讀取的區段大小，因此查詢的執行速度會更快。 不過，因為索引產生器不會先排序資料，再將其壓縮成區段，所以可能會發生具有重迭數值範圍的區段，因而導致查詢從磁片讀取更多區段，並花費更長的時間來完成。  
+依預設，針對每個建立的資料表（不含索引選項）， (索引產生器的內部元件) 會建立非排序的叢集資料行存放區索引 (CCI) 。  每個資料行中的資料會壓縮成個別的 CCI 資料列群組區段。  每個區段的值範圍都有中繼資料，因此在查詢執行期間，不會從磁片讀取查詢述詞範圍外的區段。  CCI 提供最高層級的資料壓縮，並減少要讀取的區段大小，讓查詢的執行速度更快。 不過，由於索引產生器不會在將資料壓縮成區段之前排序資料，因此可能會發生具有重迭值範圍的區段，而導致查詢從磁片讀取更多區段，並需要較長的時間才能完成。  
 
-建立已排序的 CCI 時，Synapse SQL 引擎會依據順序索引鍵，在記憶體中排序現有的資料，然後再將其壓縮成索引區段。  使用已排序的資料，可以減少區段重迭，讓查詢具有更有效率的區段刪除，因而提高效能，因為從磁片讀取的區段數目較小。  如果所有資料都可以一次在記憶體中進行排序，則可以避免區段重迭。  由於資料倉儲中的大型資料表，因此不會經常發生這種情況。  
+在建立已排序的 CCI 時，Synapse SQL 引擎會依順序索引鍵 (s) 將現有的資料排序，直到索引產生器將它們壓縮成索引區段為止。  使用已排序的資料時，會降低區段重迭的情況，讓查詢具有更有效率的區段刪除，從而提高效能，因為從磁片讀取的區段數目較小。  如果所有資料一次都可以在記憶體中排序，則可以避免區段重迭。  由於資料倉儲中的大型資料表，這種情況通常不會發生。  
 
-若要檢查資料行的區段範圍，請使用您的資料表名稱和資料行名稱來執行下列命令：
+若要檢查資料行的區段範圍，請以您的資料表名稱和資料行名稱執行下列命令：
 
 ```sql
 SELECT o.name, pnp.index_id, 
@@ -49,19 +49,22 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 ```
 
+>[!TIP]
+> 為了改善 Synapse SQL 中的效能，請考慮在永久使用者資料表上使用 **sys. pdw_permanent_table_mappings** 而不是 **sys. pdw_table_mappings** 。 如需詳細資訊，請參閱 **[sys. pdw_permanent_table_mappings &#40;transact-sql&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 。
+
 > [!NOTE] 
-> 在已排序的 CCI 資料表中，從相同的 DML 或資料載入作業批次產生的新資料會在該批次中排序，而資料表中的所有資料都沒有全域排序。  使用者可以重建已排序的 CCI，以排序資料表中的所有資料。  在 Synapse SQL 中，資料行存放區索引重建是一項離線作業。  針對資料分割資料表，一次重建就會執行一個資料分割。  分割區中正在重建的資料會處於「離線」狀態，且在該分割區的重建完成之前無法使用。 
+> 在已排序的 CCI 資料表中，從相同批次或資料載入作業產生的新資料會在該批次中排序，在資料表中的所有資料之間都沒有全域排序。  使用者可以重建已排序的 CCI 來排序資料表中的所有資料。  在 Synapse SQL 中，資料行存放區索引重建是一種離線作業。  如果是資料分割資料表，重建會一次執行一個資料分割。  正在重建的資料分割中的資料是「離線」且無法使用，直到該分割區的重建完成為止。 
 
 ## <a name="query-performance"></a>查詢效能
 
-排序的 CCI 中的查詢效能提升取決於查詢模式、資料大小、資料的排序程度、區段的實體結構，以及為查詢執行所選擇的 DWU 和資源類別。  在設計已排序的 CCI 資料表時，使用者應該先檢查所有這些因素，再選擇排序資料行。
+從排序的 CCI 取得的查詢效能取決於查詢模式、資料大小、資料的排序程度、區段的實體結構，以及為查詢執行選擇的 DWU 和資源類別。  在設計已排序的 CCI 資料表時，使用者應該先檢查所有這些因素，再選擇排序資料行。
 
-具有上述所有模式的查詢通常會以排序的 CCI 更快速執行。  
-1. 查詢具有相等、不相等或範圍述詞
+所有這些模式的查詢通常會以排序的 CCI 更快速執行。  
+1. 查詢有相等、不相等或範圍述詞
 1. 述詞資料行和已排序的 CCI 資料行相同。  
-1. 述詞資料行的使用順序與已排序之 CCI 資料行的資料行序數相同。  
+1. 使用述詞資料行的順序，與已排序之 CCI 資料行的資料行序數相同。  
  
-在此範例中，資料表 T1 的叢集資料行存放區索引是以 Col_C、Col_B 和 Col_A 的順序排序。
+在此範例中，資料表 T1 有叢集資料行存放區索引，以 Col_C、Col_B 和 Col_A 的順序排序。
 
 ```sql
 
@@ -70,7 +73,7 @@ ORDER (Col_C, Col_B, Col_A)
 
 ```
 
-查詢1的效能比其他三個查詢更能受益于已排序的 CCI。 
+查詢1的效能比其他三個查詢更能從已排序的 CCI 獲益。 
 
 ```sql
 -- Query #1: 
@@ -91,25 +94,25 @@ SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
 
 ## <a name="data-loading-performance"></a>資料載入效能
 
-將資料載入到已排序之 CCI 資料表的效能類似于分割資料表。  由於資料排序作業的不同，將資料載入到已排序的 CCI 資料表所需的時間可能會比未排序的 CCI 資料表長，但在排序的 CCI 之後，查詢可以更快速執行。  
+載入已排序之 CCI 資料表的資料效能與資料分割資料表類似。  由於資料排序作業的原因，將資料載入已排序的 CCI 資料表可能會花費更長的時間，但在排序的 CCI 之後，查詢的執行速度會更快。  
 
 以下是將資料載入具有不同架構之資料表的範例效能比較。
 
 ![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
 
 
-以下是 CCI 和已排序的 CCI 之間的範例查詢效能比較。
+以下是 CCI 和已排序 CCI 之間的查詢效能比較範例。
 
 ![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/occi_query_performance.png)
 
  
 ## <a name="reduce-segment-overlapping"></a>減少區段重迭
 
-重迭區段的數目取決於要排序的資料大小、可用的記憶體，以及排序的 CCI 建立期間的平行處理原則的最大程度（MAXDOP）設定。 以下是在建立已排序的 CCI 時，減少區段重迭的選項。
+重迭的區段數目取決於要排序的資料大小、可用的記憶體以及平行處理原則的最大程度 (在排序的 CCI 建立期間 MAXDOP) 設定。 以下是建立已排序的 CCI 時，減少區段重迭的選項。
 
-- 在較高的 DWU 上使用 xlargerc 資源類別，以允許更多記憶體進行資料排序，索引產生器才會將資料壓縮成區段。  一旦在索引區段中，資料的實體位置就無法變更。  區段內或跨區段不會進行任何資料排序。  
+- 在較高的 DWU 上使用 xlargerc 資源類別，可在索引產生器將資料壓縮成區段之前，允許更多的記憶體進行資料排序。  一旦在索引區段中，就無法變更資料的實體位置。  區段內或跨區段之間沒有資料排序。  
 
-- 建立具有 MAXDOP = 1 的已排序 CCI。  用於排序的 CCI 建立的每個執行緒都會在資料子集上運作，並在本機進行排序。  不同執行緒排序的資料上沒有全域排序。  使用平行線程可以縮短建立已排序之 CCI 的時間，但會產生比使用單一線程更多的重迭區段。  目前，只有在使用 CREATE TABLE AS SELECT 命令建立已排序的 CCI 資料表時，才支援 MAXDOP 選項。  透過 CREATE INDEX 或 CREATE TABLE 命令建立已排序的 CCI 不支援 MAXDOP 選項。 例如，
+- 使用 MAXDOP = 1 建立已排序的 CCI。  用於排序 CCI 建立的每個執行緒都可在資料子集上運作，並在本機進行排序。  不同執行緒排序的資料之間不會有全域排序。  使用平行線程可以減少建立已排序之 CCI 的時間，但會產生比使用單一執行緒更重迭的區段。  目前，只有在使用 CREATE TABLE AS SELECT 命令來建立已排序的 CCI 資料表時，才支援 MAXDOP 選項。  透過 CREATE INDEX 或 CREATE TABLE 命令建立已排序的 CCI 不支援 MAXDOP 選項。 例如，
 
 ```sql
 CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )
@@ -117,26 +120,26 @@ AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
 
-- 先依照排序關鍵字預先排序資料，再將它們載入資料表。
+- 在將資料載入資料表之前，依排序索引鍵 (s) 預先排序資料。
 
-以下是已排序的 CCI 資料表散發範例，其中有零個區段重迭下列建議。 已排序的 CCI 資料表是在 DWU1000c 資料庫中，透過使用 MAXDOP 1 和 xlargerc 的 20 GB 堆積資料表中的 CTAS 來建立。  CCI 會在沒有重複專案的 BIGINT 資料行上排序。  
+以下是已排序的 CCI 資料表分佈範例，其在上述建議下的零區段重迭。 已排序的 CCI 資料表是在 DWU1000c 資料庫中，透過使用 MAXDOP 1 和 xlargerc 的 20 GB 堆積資料表中的 CTAS 建立。  CCI 是在沒有重複專案的 BIGINT 資料行上排序。  
 
 ![Segment_No_Overlapping](./media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
 ## <a name="create-ordered-cci-on-large-tables"></a>在大型資料表上建立已排序的 CCI
 
-建立已排序的 CCI 是一種離線作業。  對於沒有分割區的資料表，使用者必須等到排序的 CCI 建立程式完成之後，才能存取資料。   針對資料分割資料表，由於引擎會依資料分割建立已排序的 CCI 分割區，因此，使用者仍可存取已排序的 CCI 建立不在處理中的資料。   您可以使用此選項，將在大型資料表上排序的 CCI 建立期間的停機時間降至最低： 
+建立已排序的 CCI 是一種離線作業。  針對沒有分割區的資料表，使用者必須等到排序的 CCI 建立程式完成之後，才能存取資料。   針對資料分割資料表，因為引擎會依分割區建立已排序的 CCI 分割區，所以使用者仍然可以存取排序的 CCI 建立未在進程中的資料分割。   您可以使用此選項，將在大型資料表上排序的 CCI 建立期間的停機時間降到最低： 
 
-1.    在目標大型資料表（稱為 Table_A）上建立分割區。
-2.    使用與資料表 A 相同的資料表和資料分割架構，建立空的已排序 CCI 資料表（稱為 Table_B）。
-3.    將一個資料分割從資料表 A 切換到資料表 B。
-4.    在 <上執行 ALTER INDEX <Ordered_CCI_Index> Table_B> 重建資料分割 = <Partition_ID> 在資料表 B 上重建切換的資料分割。  
-5.    針對 Table_A 中的每個資料分割，重複步驟3和4。
-6.    當所有分割區從 Table_A 切換到 Table_B 並已重建之後，請卸載 Table_A，然後將 Table_B 重新命名為 Table_A。 
+1.    在目標大型資料表上建立資料分割 (稱為 Table_A) 。
+2.    使用與資料表 A 相同的資料表和資料分割架構，建立空的已排序 CCI 資料表 (呼叫 Table_B) 。
+3.    將一個資料分割從資料表 A 切換至資料表 B。
+4.    執行 ALTER INDEX <Ordered_CCI_Index> ON <Table_B> REBUILD PARTITION = <Partition_ID 在資料表 B 上重建，以重建已切換的資料分割。  
+5.    針對 Table_A 中的每個資料分割重複步驟3和4。
+6.    一旦將所有資料分割從 Table_A 切換到 Table_B 並重建之後，請卸載 Table_A，然後將 Table_B 重新命名為 Table_A。 
 
 ## <a name="examples"></a>範例
 
-**答：若要檢查已排序的資料行和訂單序數。。**
+**答：若要檢查已排序的資料行和順序序數：**
 
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
@@ -145,7 +148,7 @@ JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
 WHERE column_store_order_ordinal <>0
 ```
 
-**B. 若要變更資料行序數、新增或移除訂單清單中的資料行，或從 CCI 變更為已排序的 CCI：**
+**B. 若要變更資料行序數，請新增或移除 order 清單中的資料行，或從 CCI 變更為排序的 CCI：**
 
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales

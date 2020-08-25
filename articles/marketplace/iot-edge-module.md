@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/15/2020
-ms.openlocfilehash: 168d343ea4582d8c19a577cedadf6f1bc3c39971
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f7a4997117c8730b767f245050caa3f3157fb6fd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607369"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750239"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模組
 
@@ -76,6 +76,5 @@ Marketplace 目前針對 IoT Edge 模組支援 [免費] 和 [自備授權 (BYOL)
 ## <a name="next-steps"></a>後續步驟
 
 - [瞭解](https://azuremarketplace.microsoft.com/sell) 商用 marketplace。
-- [在合作夥伴中心中建立 IoT Edge 模組供應專案]。
 - 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，以建立或完成您的供應項目。
-- 如需如何發佈 IoT Edge 模組供應項目的詳細資訊，請參閱[建立 IoT Edge 模組供應項目](./partner-center-portal/azure-iot-edge-module-creation.md)。
+- 在合作夥伴中心中[建立 IoT Edge 模組供應](./partner-center-portal/azure-iot-edge-module-creation.md)專案。

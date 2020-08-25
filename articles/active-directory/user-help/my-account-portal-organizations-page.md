@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: bd8b8deed2afafc22e99ac15f2bcffdf65af83c4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: bb0f0b93f3890a06f4ecbdc6cf39a173ea048940
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422433"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798171"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>從 [組織] 頁面管理已連線的組織
 
@@ -30,7 +30,7 @@ ms.locfileid: "87422433"
 - **其他組織**。 其他組織是您先前使用公司或學校帳戶登入的任何群組。 您可以隨時離開這些組織。
 
 >[!Important]
->此文章適用於嘗試更新已連線至公司或學校帳戶之組織資訊的使用者。 如果您是系統管理員，正在尋找適用於員工和其他用途的群組和使用者管理相關資訊，請參閱[企業使用者管理文件](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index)。
+>此文章適用於嘗試更新已連線至公司或學校帳戶之組織資訊的使用者。 如果您是系統管理員，正在尋找適用於員工和其他用途的群組和使用者管理相關資訊，請參閱[企業使用者管理文件](../users-groups-roles/index.yml)。
 
 ## <a name="view-your-organizations"></a>檢閱您的組織
 
@@ -61,7 +61,7 @@ ms.locfileid: "87422433"
 
 檢視您的組織之後，您可以：
 
-- 檢視或管理您的[安全性資訊](user-help-security-info-overview.md)。
+- 檢視或管理您的[安全性資訊](./security-info-setup-signin.md)。
 
 - 檢視或管理您已連線的[裝置](my-account-portal-devices-page.md)。
 
@@ -69,4 +69,4 @@ ms.locfileid: "87422433"
 
 - 檢視貴組織如何[使用您的隱私權相關資料](my-account-portal-privacy-page.md)。
 
-- 變更[我的帳戶入口網站設定](my-account-portal-settings.md)
+- 變更 [我的帳戶入口網站設定](my-account-portal-settings.md)

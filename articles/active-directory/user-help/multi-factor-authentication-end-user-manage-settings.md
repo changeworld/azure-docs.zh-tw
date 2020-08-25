@@ -12,12 +12,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e0a6c566e8e0dfb77b5899f735020d0f1facf3d1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983300"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798375"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>變更您的雙因素驗證方法和設定
 
@@ -31,10 +31,10 @@ ms.locfileid: "85983300"
 
 ## <a name="using-the-additional-security-verification-page"></a>使用 [其他安全性驗證] 頁面
 
-如果貴組織提供如何開啟和管理雙因素驗證的特定步驟，您應該先遵循這些指示。 否則，您可以從[其他安全性驗證](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time)頁面，進入您的安全性驗證方法設定。
+如果貴組織提供如何開啟和管理雙因素驗證的特定步驟，您應該先遵循這些指示。 否則，您可以從[其他安全性驗證](./multi-factor-authentication-end-user-first-time.md)頁面，進入您的安全性驗證方法設定。
 
 >[!Note]
->如果您在畫面上看到的內容，不符合本文所說明的內容，這表示您的系統管理員已開啟**安全性資訊 (預覽)** 體驗，或是貴組織已提供您自己的自訂入口網站。 如需新安全性資訊體驗的詳細資訊，請參閱[安全性資訊 (預覽) 概觀](user-help-security-info-overview.md)。 如需貴組織自訂入口網站的詳細資訊，您必須洽詢貴組織的技術支援中心。
+>如果您在畫面上看到的內容，不符合本文所說明的內容，這表示您的系統管理員已開啟**安全性資訊 (預覽)** 體驗，或是貴組織已提供您自己的自訂入口網站。 如需新安全性資訊體驗的詳細資訊，請參閱[安全性資訊 (預覽) 概觀](./security-info-setup-signin.md)。 如需貴組織自訂入口網站的詳細資訊，您必須洽詢貴組織的技術支援中心。
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>若要前往其他安全性驗證頁面
 
@@ -88,7 +88,7 @@ ms.locfileid: "85983300"
 
 1. 從 [其他安全性驗證] 頁面的 [您要如何回應？] 區段中，更新 [驗證電話] (主要行動裝置)和 [辦公室電話] 的電話號碼資訊。
 
-1. 選取 [**備用驗證電話**] 選項旁的方塊，然後輸入次要電話號碼，如果您無法存取您的主要裝置，就可以接收電話。
+1. 選取 [ **備用驗證電話** ] 選項旁的方塊，然後輸入您在無法存取主要裝置時可以接收電話的次要電話號碼。
 
 1. 選取 [儲存]。
 

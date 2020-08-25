@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: e150143e726c75d96372b11fb3d451f0dc9956bc
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 784ee418c3713cce53d7e99e30fd445e75d144da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422468"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798205"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>從 [裝置] 頁面管理已連線的裝置
 
@@ -27,7 +27,7 @@ ms.locfileid: "87422468"
 - 停用不再擁有、遺失或遭竊的裝置。
 
 >[!Important]
->此文章適用於嘗試更新已連線至公司或學校帳戶之裝置資訊的使用者。 如果您是系統管理員，正在尋找適用於員工和其他用途的裝置管理相關資訊，請參閱[裝置身分識別文件](https://docs.microsoft.com/azure/active-directory/devices/index)。
+>此文章適用於嘗試更新已連線至公司或學校帳戶之裝置資訊的使用者。 如果您是系統管理員，正在尋找適用於員工和其他用途的裝置管理相關資訊，請參閱[裝置身分識別文件](../devices/index.yml)。
 
 ## <a name="view-your-connected-devices"></a>檢視已連線裝置
 
@@ -68,7 +68,7 @@ ms.locfileid: "87422468"
 
 在檢視已連線的裝置之後，您可以：
 
-- 選取以檢視或管理您的[安全性資訊](user-help-security-info-overview.md)。
+- 選取以檢視或管理您的[安全性資訊](./security-info-setup-signin.md)。
 
 - 檢視和管理您的[組織](my-account-portal-organizations-page.md)。
 
@@ -76,7 +76,7 @@ ms.locfileid: "87422468"
 
 - 檢視您組織如何[使用您的隱私權相關資料](my-account-portal-privacy-page.md)。
 
-- 變更[我的帳戶入口網站設定](my-account-portal-settings.md)
+- 變更 [我的帳戶入口網站設定](my-account-portal-settings.md)
 
 ## <a name="related-office-content"></a>相關的 Office 內容
 

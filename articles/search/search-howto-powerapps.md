@@ -8,13 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
-ms.date: 04/25/2020
-ms.openlocfilehash: 66289c512a746a30ed8dbd3e5c2df92bea27d907
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 08/21/2020
+ms.openlocfilehash: 04434753949f0e00eaf99610199cc4997ef53caf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565834"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751050"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>教學課程：從 Power Apps 查詢認知搜尋索引
 
@@ -92,7 +92,7 @@ Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建�
 
 1. 針對 [選取]：將 `HotelName,Description,Address/City` 設定為 [預設值]、將 [必要] 設定為 [False]，並將 [可見性] 設定為 [無]。  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="版本參數中繼資料" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="選取參數中繼資料" border="true":::
 
 1. 針對 [api-version]：將 `2020-06-30` 設定為 [預設值]、將 [必要] 設定為 [True]，並將 [可見性] 設定為 [內部]。  
 

@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: f8522171fca6a88f81c3b8f0161fc382041aae1e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782561"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797797"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>參考 - IoT 中樞配額和節流
 
@@ -112,7 +112,7 @@ IoT 中樞會強制執行其他操作限制：
 | IoT Edge 自動部署<sup>1</sup> | 50每個部署的模組。 100部署 (包括每個付費 SKU 中樞) 的分層部署。 每個免費 SKU 中樞10次部署。 |
 | 對應項<sup>1</sup> | 所需屬性和報告屬性區段的大小上限為 32 KB。 標記區段的大小上限為 8 KB。 |
 | 共用存取原則 | 共用存取原則的最大數目為16。 |
-| CA 憑證 | 可以註冊的 x.509 CA 憑證數目上限為25。 |
+| x509 CA 憑證 | 可以在 IoT 中樞上註冊的 x509 CA 憑證數目上限為25。 |
 
 <sup>1</sup>「IoT 中樞」的基本層中不提供此功能。 如需詳細資訊，請參閱[如何選擇適合的 IoT 中樞](iot-hub-scaling.md)。
 
