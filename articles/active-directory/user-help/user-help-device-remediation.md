@@ -13,12 +13,12 @@ ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: b76e84f6ae2449347604ab823fde5b74d5c68f07
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: df3941c895ce67862eb53b8e96bc7a6d53c1ed02
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741003"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799412"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>「您無法從這裡完成」錯誤訊息的可能修正
 
@@ -68,6 +68,6 @@ ms.locfileid: "83741003"
 - **註冊用於工作的個人裝置。** 在組織的網路上註冊您的個人裝置，通常是手機或平板電腦。 註冊您的裝置之後，該裝置就可以存取組織的受限資源。 如需詳細資訊和逐步指示，請參閱[在貴組織的網路上註冊您的個人裝置](user-help-register-device-on-network.md)。
 
 ## <a name="next-steps"></a>後續步驟
-- [什麼是 MyApps 入口網站？](active-directory-saas-access-panel-introduction.md)
+- [什麼是 MyApps 入口網站？](./my-apps-portal-end-user-access.md)
 
 - [使用您的電話而不是您的密碼登入](user-help-auth-app-sign-in.md)

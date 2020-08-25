@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26951d5ab7552dc6c63288ce92cdb8134bd58ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 468b874ae4a19b8b5ea2a9a91a258722cef60e3a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498220"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798596"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>在 Azure Active Directory 中委派系統管理
 
@@ -38,7 +38,7 @@ ms.locfileid: "87498220"
 
 在 Azure AD 入口網站中，您可以[檢視任何角色的所有成員](directory-manage-roles-portal.md)，這可協助您快速檢查部署和委派權限。
 
-如果您有興趣委派 Azure 資源的存取權，而不是 Azure AD 中的系統管理存取權，請參閱[指派 azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+如果您想要委派 Azure 資源的存取權，而不是 Azure AD 中的系統管理存取權，請參閱 [指派 azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="delegation-planning"></a>委派規劃
 
@@ -60,7 +60,7 @@ ms.locfileid: "87498220"
 您應該評估每個工作的頻率、重要性與困難度。 這些準則是工作定義的重要層面，因為它們會左右是否應委派權限：
 
 * 您定期執行、風險有限且容易完成的工作，就是適合進行委派的絕佳候選項目。
-* 委派之前，應該先非常謹慎地考量您很少執行，但在整個組織中有很大影響且需要高技能層級的工作。 您可以改為[暫時將帳戶權限提高至必要的角色](../active-directory-privileged-identity-management-configure.md)或重新指派工作。
+* 委派之前，應該先非常謹慎地考量您很少執行，但在整個組織中有很大影響且需要高技能層級的工作。 您可以改為[暫時將帳戶權限提高至必要的角色](../privileged-identity-management/pim-configure.md)或重新指派工作。
 
 ## <a name="delegate-app-administration"></a>委派應用程式系統管理
 
@@ -100,7 +100,7 @@ Azure AD 提供一份廣泛的指南來規劃和執行關於您 Azure AD 系統�
 
 ## <a name="secure-your-administrator-roles"></a>保護您的系統管理員角色
 
-控制特殊許可權帳戶的攻擊者可能會造成重大損害，因此請先使用預設適用于所有 Azure AD 組織的[基準存取原則](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/)來保護這些帳戶（公開預覽）。 該原則會針對具特殊權限的 Azure AD 帳戶強制執行多重要素驗證。 Azure AD 基準原則涵蓋下列 Azure AD 角色：
+取得特殊許可權帳戶控制權的攻擊者可能會造成嚴重的損毀，因此，請先使用預設提供給所有 Azure AD 組織 (的 [基準存取原則](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/) ，來保護這些帳戶) 。 該原則會針對具特殊權限的 Azure AD 帳戶強制執行多重要素驗證。 Azure AD 基準原則涵蓋下列 Azure AD 角色：
 
 * 全域管理員
 * SharePoint 管理員
@@ -110,7 +110,7 @@ Azure AD 提供一份廣泛的指南來規劃和執行關於您 Azure AD 系統�
 
 ## <a name="elevate-privilege-temporarily"></a>暫時提高權限
 
-對於大部分的日常活動，並非所有使用者都需要全域管理員權限，且並非所有使用者都應永久指派全域管理員角色。 當使用者需要全域系統管理員的使用權限時，他們應該在其自己的帳戶或其他系統管理帳戶上，於 Azure AD [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) 中啟動角色指派。
+對於大部分的日常活動，並非所有使用者都需要全域管理員權限，且並非所有使用者都應永久指派全域管理員角色。 當使用者需要全域系統管理員的使用權限時，他們應該在其自己的帳戶或其他系統管理帳戶上，於 Azure AD [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 中啟動角色指派。
 
 ## <a name="next-steps"></a>後續步驟
 

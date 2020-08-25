@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Cosmos DB 中進行線上備份及隨選資料還原
-description: 本文說明自動線上備份及隨選資料還原在 Azure Cosmos DB 中的運作方式。
+description: 本文說明自動備份、隨選資料還原的運作方式、如何在 Azure Cosmos DB 中設定備份間隔和保留期。
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 8ed9e23b178b8eeefbd3c3a690491124e6901180
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ac7f27015812756a8de9736351cc1fe0e374e0c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85112917"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799501"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中進行線上備份及隨選資料還原
 
@@ -22,19 +22,17 @@ Azure Cosmos DB 會自動地定期備份您的資料。 自動備份的進行不
 
 有了 Azure Cosmos DB，不只您的資料，還有資料的備份都一併具有高度備援性，可針對區域性災害進行復原。 下列步驟顯示 Azure Cosmos DB 如何執行資料備份：
 
-* Azure Cosmos DB 會每隔 4 小時 (在任何時間點) 自動備份資料庫一次，只會儲存最新的 2 個備份。 不過，如果容器或資料庫已刪除，Azure Cosmos DB 只會將指定容器或資料庫的現有快照集保留 30 天。
+* Azure Cosmos DB 每隔4小時自動備份您的資料庫，而且在任何時間點，預設只會儲存最新的兩個備份。 如果預設間隔不足以滿足您的工作負載，您可以從 Azure 入口網站變更備份間隔和保留期限。 您可以在 Azure Cosmos 帳戶建立期間或之後變更備份設定。 如果容器或資料庫遭到刪除，Azure Cosmos DB 會保留指定容器或資料庫的現有快照集30天。
 
-* Azure Cosmos DB 會將這些備份儲存在 Azure Blob 儲存體中，而實際的資料會在 Azure Cosmos DB 中的本機位置。
+* Azure Cosmos DB 會將這些備份儲存在 Azure Blob 儲存體中，而實際的資料會位於 Azure Cosmos DB 的本機。
 
-*  若要保證低延遲，您的備份快照集會儲存在 Azure Blob 儲存體中，該區域與目前的寫入區域（或其中一個寫入區域，如果您有多宿主設定）相同。 為了從區域性災害中復原，系統會再透過異地備援儲存體 (GRS)，將 Azure Blob 儲存體中的每個備份資料快照集複寫到另一個區域。 至於會將備份複寫到哪個區域，則取決於來源區域以及與來源區域相關聯的區域配對。 若要深入了解，請參閱 [Azure 區域的異地備援配對清單](../best-practices-availability-paired-regions.md)一文。 您無法直接存取此備份。 只有在起始了備份還原時，Azure Cosmos DB 才會使用此備份。
+*  為了保證低延遲，您的備份快照集會儲存在 Azure Blob 儲存體中，與目前寫入區域 (或 **其中一個** 寫入區域相同區域，以防您有多宿主設定) 。 為了從區域性災害中復原，系統會再透過異地備援儲存體 (GRS)，將 Azure Blob 儲存體中的每個備份資料快照集複寫到另一個區域。 至於會將備份複寫到哪個區域，則取決於來源區域以及與來源區域相關聯的區域配對。 若要深入了解，請參閱 [Azure 區域的異地備援配對清單](../best-practices-availability-paired-regions.md)一文。 您無法直接存取此備份。 Azure Cosmos DB 團隊會在您透過支援要求進行要求時還原備份。
+
+   下圖顯示三個主要實體分割區都在美國西部的 Azure Cosmos 容器，會備份到美國西部的遠端 Azure Blob 儲存體帳戶，然後再複寫到美國東部：
+
+  :::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="GRS Azure 儲存體中所有 Cosmos DB 實體的定期完整備份" border="false":::
 
 * 備份的進行不會影響應用程式的效能或可用性。 Azure Cosmos DB 會在背景中執行資料備份，既不會取用任何另外佈建的輸送量 (RU)，也不會影響資料庫的效能和可用性。
-
-* 如果您不小心刪除或損毀您的資料，應該在8小時內與[Azure 支援](https://azure.microsoft.com/support/options/)聯繫，讓 Azure Cosmos DB 團隊可以協助您從備份還原資料。
-
-下圖顯示三個主要實體分割區都在美國西部的 Azure Cosmos 容器，會備份到美國西部的遠端 Azure Blob 儲存體帳戶，然後再複寫到美國東部：
-
-:::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="GRS Azure 儲存體中所有 Cosmos DB 實體的定期完整備份" border="false":::
 
 ## <a name="options-to-manage-your-own-backups"></a>可用來管理自有備份的選項
 
@@ -42,48 +40,69 @@ Azure Cosmos DB 會自動地定期備份您的資料。 自動備份的進行不
 
 * 使用 [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) 將資料定期移動到所選儲存體。
 
-* 使用 Azure Cosmos DB [變更摘要](change-feed.md)，來定期讀取完整備份以及增量變更的資料，並將資料儲存到您自己的儲存體。
+* 使用 Azure Cosmos DB [變更](change-feed.md) 摘要來定期讀取資料，以進行完整備份或增量變更，並將其儲存在您自己的儲存體中。
 
-## <a name="backup-retention-period"></a>備份保留期限
+## <a name="backup-interval-and-retention-period"></a>備份間隔和保留期限
 
-Azure Cosmos DB 會每四個小時擷取一次資料的快照集。 任何時候都只會保留最後兩個快照集。 不過，如果容器或資料庫已刪除，Azure Cosmos DB 只會將指定容器或資料庫的現有快照集保留 30 天。
+Azure Cosmos DB 會每隔4小時自動備份您的資料，並在任何時間點，儲存最新的兩個備份。 這是預設選項，且不需要任何額外成本即可提供。 如果您的工作負載中的預設備份間隔和保留期限不足，您可以變更它們。 您可以在建立 Azure Cosmos 帳戶期間，或在建立帳戶之後變更這些值。 備份設定是在 Azure Cosmos 帳戶層級設定，而且您必須在每個帳戶上進行設定。 設定帳戶的備份選項之後，就會將其套用至該帳戶內的所有容器。 您目前只能從 Azure 入口網站變更它們的備份選項。
 
-## <a name="restoring-data-from-online-backups"></a>從線上備份還原資料
+如果您不小心刪除或損毀資料，在 **建立支援要求以還原資料之前，請務必將您帳戶的備份保留期增加到至少七天。最好是在此事件的8小時內增加保留期。** 如此一來，Azure Cosmos DB 團隊有足夠的時間來還原您的帳戶。
 
-下列情況可能會意外刪除或修改資料：  
+使用下列步驟來變更現有 Azure Cosmos 帳戶的預設備份選項：
 
-* 整個 Azure Cosmos 帳戶遭到刪除
+1. 登入 [Azure 入口網站](https://portal.azure.com/)
+1. 流覽至您的 Azure Cosmos 帳戶，然後開啟 [ **備份 & 還原** ] 窗格。 視需要更新備份間隔和備份保留期限。
 
-* 一或多個 Azure Cosmos 資料庫遭到刪除
+   * **備份間隔** -這是 Azure Cosmos DB 嘗試進行資料備份的間隔。 備份需要非零的時間，而在某些情況下，可能會因為下游相依性而失敗。 Azure Cosmos DB 嘗試在設定的間隔內進行備份，但是不保證備份會在該時間間隔內完成。 您可以用小時或分鐘來設定此值。 備份間隔不能小於1小時且超過24小時。 當您變更此間隔時，新的間隔會從上次進行備份的時間開始生效。
 
-* 一或多個 Azure Cosmos 容器遭到刪除
+   * **備份保留** -它代表每個備份的保留期間。 您可以在數小時或數天內進行設定。 最小保留期間不能小於備份間隔的兩倍（以小時為單位） () ，且不能大於720小時。
 
-* 容器內的 Azure Cosmos 項目 (例如，文件) 遭到刪除或修改。 此特定案例通常稱為「資料損毀」。
+   * **保留的資料副本** -根據預設，系統會免費提供兩份資料備份複本。 如果您需要額外的複本，您必須透過 Azure 入口網站建立支援要求，並將收取額外的複本。 請參閱 [ [定價] 頁面](https://azure.microsoft.com/pricing/details/cosmos-db/) 中的 [已使用的儲存體] 區段，以瞭解其他複本的實際價格。
 
-* 共用供應項目資料庫或其內的容器遭到刪除或損毀
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="設定現有 Azure Cosmos 帳戶的備份間隔和保留期" border="true":::
 
-Azure Cosmos DB 可以在遇到上述所有情況時還原資料。 還原程序一律會建立新的 Azure Cosmos 帳戶，以容納還原的資料。 新帳戶的名稱 (若未指定) 會有此格式：`<Azure_Cosmos_account_original_name>-restored1`。 如果嘗試了多次還原，末尾的數字會遞增。 您無法將資料還原到預先建立的 Azure Cosmos 帳戶。
+如果您在帳戶建立期間設定備份選項，就可以設定 **備份原則**，也就是 **定期** 或 **連續**。 定期原則可讓您設定備份間隔和備份保留期。 持續的原則目前僅供註冊之用。 Azure Cosmos DB 團隊將會評估您的工作負載，並核准您的要求。
 
-當 Azure Cosmos 帳戶遭到刪除時，我們可以將資料還原至有相同名稱的帳戶 (前提是該帳戶名稱無人使用)。 在這種情況下，建議您不要在刪除後重新建立帳戶，因為它不僅會阻止還原的資料使用相同的名稱，還會讓探索正確的帳戶更難以還原。 
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="針對新的 Azure Cosmos 帳戶設定定期或連續備份原則" border="true":::
 
-Azure Cosmos 資料庫遭到刪除時，您可以還原整個資料庫，也可以只還原該資料庫中的部分容器。 此外，還能跨資料庫選取容器來加以還原，而且所還原的資料全都會放在新的 Azure Cosmos 帳戶中。
+## <a name="restore-data-from-an-online-backup"></a>從線上備份還原資料
 
-當容器內的一或多個項目不小心遭到刪除或變更 (即資料損毀案例)，您必須指定要還原到哪個時間點。 時間是此案例的關鍵。 因為容器處於運作狀態，所以備份仍在執行，如果您等候超過保留期間 (預設值為八小時) 才還原，系統將會覆寫備份。 在刪除的情況下，您的資料將不再儲存，因為備份週期不會覆寫它們。 針對已遭到刪除的資料庫或容器，其備份會儲存 30 天。
+在下列其中一個案例中，您可能會不小心刪除或修改您的資料：  
 
-如果您在資料庫層級佈建輸送量 (也就是一組容器會共用所佈建的輸送量)，則在此案例中，系統會在整個資料庫層級 (而非個別的容器層級) 進行備份和還原程序。 在這類案例中，您無法選取一部分的容器來還原。
+* 刪除整個 Azure Cosmos 帳戶。
 
-## <a name="migrating-data-to-the-original-account"></a>將資料遷移至原始帳戶
+* 刪除一或多個 Azure Cosmos 資料庫。
 
-資料還原的主要目標是提供方法供您復原不小心刪除或修改的任何資料。 因此，建議您先檢查所復原資料的內容，以確保所含資料符合您的預期。 然後，著手將資料遷移回到主要帳戶。 雖然您可以使用還原的帳戶做為 live 帳戶，但如果您有生產工作負載，則不是建議的選項。  
+* 刪除一或多個 Azure Cosmos 容器。
+
+* 刪除或修改 Azure Cosmos 專案 (例如，) 容器內的檔。 此特定案例通常稱為資料損毀。
+
+* 共用的供應專案資料庫或共用供應專案資料庫內的容器已刪除或損毀。
+
+Azure Cosmos DB 可以在遇到上述所有情況時還原資料。 還原時，會建立新的 Azure Cosmos 帳戶來保存還原的資料。 如果未指定新帳戶的名稱，則會具有格式 `<Azure_Cosmos_account_original_name>-restored1` 。 嘗試多個還原時，最後一個數位會遞增。 您無法將資料還原至預先建立的 Azure Cosmos 帳戶。
+
+當您不小心刪除 Azure Cosmos 帳戶時，我們可以將資料還原到具有相同名稱的新帳戶，但前提是帳戶名稱不在使用中。 因此，建議您不要在刪除帳戶之後重新建立帳戶。 因為它不僅會防止還原的資料使用相同的名稱，也會讓探索正確的帳戶從困難的情況下還原。
+
+當您不小心刪除 Azure Cosmos 資料庫時，可以還原整個資料庫或該資料庫內的容器子集。 您也可以在資料庫中選取特定的容器，並將它們還原至新的 Azure Cosmos 帳戶。
+
+當您不小心刪除或修改容器內的一或多個專案時 (資料損毀案例) ，您必須指定要還原至的時間。 如果資料損毀，時間就很重要。 因為容器是即時的，所以備份仍在執行中，因此，如果您等待超過保留期限 (預設值為8小時) 會覆寫備份。 **為了防止覆寫備份，請至少將帳戶的備份保留期增加到7天。最好是從資料損毀的8小時內增加您的保留期。**
+
+如果您不小心刪除或損毀資料，請在8小時內聯絡 [Azure 支援](https://azure.microsoft.com/support/options/) ，讓 Azure Cosmos DB 的團隊可以協助您從備份還原資料。 如此一來，Azure Cosmos DB 支援小組將擁有足夠的時間來還原您的帳戶。
+
+如果您在資料庫層級布建輸送量，此案例中的備份和還原程式會發生在整個資料庫層級，而不是在個別容器層級上。 在這種情況下，您無法選取要還原的一部分容器。
+
+## <a name="migrate-data-to-the-original-account"></a>將資料移轉至原始帳戶
+
+資料還原的主要目標是復原您不小心刪除或修改的資料。 因此，建議您先檢查所復原資料的內容，以確保所含資料符合您的預期。 稍後您可以將資料移轉回主要帳戶。 雖然您可以使用已還原的帳戶做為新的使用中帳戶，但如果您有生產工作負載，則不建議使用此選項。  
 
 下列不同方法可供您將資料遷移回到原始的 Azure Cosmos 帳戶：
 
-* 使用 [Cosmos DB 資料移轉工具](import-data.md)
-* 使用[Azure Data Factory]( ../data-factory/connector-azure-cosmos-db.md)
-* 在 Azure Cosmos DB 中使用[變更摘要](change-feed.md) 
-* 撰寫自訂程式碼
+* 使用 [Azure Cosmos DB 資料移轉工具](import-data.md)。
+* 使用 [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)。
+* 使用 Azure Cosmos DB 中的 [變更](change-feed.md) 摘要。
+* 您可以撰寫自己的自訂程式碼。
 
-請在遷移完成後立即刪除所還原的帳戶，否則會持續產生費用。
+當您遷移資料之後，請務必刪除已還原的帳戶，因為它們會產生持續性的費用。
 
 ## <a name="next-steps"></a>後續步驟
 

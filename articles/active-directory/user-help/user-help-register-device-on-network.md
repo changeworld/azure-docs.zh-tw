@@ -13,12 +13,12 @@ ms.date: 01/04/2019
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 68d7b06aa6473a99422d8cfb51f6e3a465933a0f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b59ebe0bdab66a5ce6bdb1eefe6d9ae4b47bba0c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747398"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799395"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>在組織的網路上註冊您的個人裝置
 在組織的網路上註冊您的個人裝置 (通常是手機或平板電腦)。 註冊您的裝置之後，它將能夠存取組織的受限資源。
@@ -31,9 +31,9 @@ ms.locfileid: "83747398"
 
 - Windows 會在組織的網路上註冊您的裝置。
 
-- (選擇性) 根據組織的選擇，可能會要求您透過 [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) 或[安全性資訊](user-help-security-info-overview.md)設定雙步驟驗證。
+- (選擇性) 根據組織的選擇，可能會要求您透過 [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) 或[安全性資訊](./security-info-setup-signin.md)設定雙步驟驗證。
 
-- (選擇性) 根據組織的選擇，您可能會在行動裝置管理 (例如 Microsoft Intune) 中自動註冊。 如需在 Microsoft Intune 中註冊的詳細資訊，請參閱[在 Intune 註冊您的裝置](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all)。
+- (選擇性) 根據組織的選擇，您可能會在行動裝置管理 (例如 Microsoft Intune) 中自動註冊。 如需在 Microsoft Intune 中註冊的詳細資訊，請參閱[在 Intune 註冊您的裝置](/intune-user-help/enroll-your-device-in-intune-all)。
 
 - 您將使用公司或學校帳戶的使用者名稱與密碼來完成登入程序。
 
@@ -70,6 +70,3 @@ ms.locfileid: "83747398"
 將您的個人裝置註冊到組織的網路之後，您應該能夠存取您的大部分資源。
 
 - 如果組織想要您加入您的工作裝置，請參閱[將您的工作裝置加入組織的網路](user-help-join-device-on-network.md)。
-
-
-

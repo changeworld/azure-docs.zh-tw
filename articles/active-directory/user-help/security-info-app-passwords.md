@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: e5ad882f172007e2563f832ec8eb61145cd0b36a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9de054162a59b10fbd02bed9b3e84634ee12125b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744499"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799191"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>從安全性資訊 (預覽) 頁面建立應用程式密碼
 
@@ -84,4 +84,4 @@ ms.locfileid: "83744499"
 
 ## <a name="for-more-information"></a>取得詳細資訊
 
-- 如需進一步瞭解 [安全性資訊] 頁面以及其設定方式，請參閱[安全性資訊概觀](user-help-security-info-overview.md)
+- 如需進一步瞭解 [安全性資訊] 頁面以及其設定方式，請參閱[安全性資訊概觀](./security-info-setup-signin.md)

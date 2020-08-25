@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 8519daffd8ee0ad6c12be2f40fd8030caaaf34c8
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 1c9e40738d70b6fbb9fed267a6a047d8330023b7
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724963"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749274"
 ---
 # <a name="business-card-concepts"></a>名片概念
 
@@ -69,6 +69,8 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，從名片�
 | |  | 成功：分析作業已成功。 |
 
 當 [ **狀態** ] 欄位的值為 [ **成功** ] 時，JSON 回應會包含名片理解和文字辨識結果。 名片理解結果會組織為命名域值的字典，其中每個值都包含已解壓縮的文字、正規化值、周框方塊、信賴度和對應的單字元素。 文字辨識結果會組織成行和單字的階層，其中包含文字、周框方塊和信賴資訊。
+
+![Contoso smample 結果](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>範例 JSON 輸出
 
@@ -374,7 +376,7 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，從名片�
 }
 ```
 
-遵循「 [解壓縮商務智慧卡資料](./QuickStarts/python-business-cards.md) 」快速入門，使用 Python 和 REST API 來執行名片資料解壓縮。
+遵循「 [解壓縮名片資料](./QuickStarts/python-business-cards.md) 」快速入門，使用 Python 和 REST API 來執行名片資料解壓縮。
 
 ## <a name="customer-scenarios"></a>客戶案例  
 

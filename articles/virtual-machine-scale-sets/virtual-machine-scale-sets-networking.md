@@ -1,6 +1,6 @@
 ---
 title: Azure 虛擬機器擴展集的網路
-description: 如何為 Azure 虛擬機器擴展集設定一些更先進的網路屬性。
+description: 如何設定 Azure 虛擬機器擴展集的一些更先進的網路屬性。
 author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 6113ee61d4949649b65607c0f1bd606be4edb2ac
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 91157f625b328dfc03927cf0036aea1b6040cdbf
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837154"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783717"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集的網路
 
@@ -43,28 +43,7 @@ Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR
 ```
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>具有 Azure Load Balancer 的 Azure 虛擬機器擴展集
-
-使用虛擬機器擴展集和負載平衡器時，應該考慮下列專案：
-
-* **多個虛擬機器擴展集不能使用相同的負載平衡器**。
-* **埠轉送和輸入 NAT 規則**：
-  * 每個虛擬機器擴展集都必須有輸入 NAT 規則。
-  * 建立擴展集之後，無法修改負載平衡器健全狀況探查所使用的負載平衡規則的後端埠。 若要變更埠，您可以藉由更新 Azure 虛擬機器擴展集來移除健康情況探查、更新埠，然後再次設定健康情況探查。
-  * 在負載平衡器的後端集區中使用虛擬機器擴展集時，會自動建立預設的輸入 NAT 規則。
-* **輸入 NAT 集**區：
-  * 輸入 NAT 集區是輸入 NAT 規則的集合。 其中一個輸入 NAT 集區無法支援多個虛擬機器擴展集。
-* **負載平衡規則**：
-  * 在負載平衡器後端集區中使用虛擬機器擴展集時，會自動建立預設的負載平衡規則。
-* **輸出規則**：
-  *  若要建立負載平衡規則已參考之後端集區的輸出規則，您必須先在建立輸入負載平衡規則時，將入口網站中的 **[建立隱含輸出規則]** 標示為 [**否**]。
-
-  :::image type="content" source="./media/vmsslb.png" alt-text="建立負載平衡規則" border="true":::
-
-下列方法可用於部署具有現有 Azure 負載平衡器的虛擬機器擴展集。
-
-* [使用 Azure 入口網站，設定具有現有 Azure Load Balancer 的虛擬機器擴展集](../load-balancer/configure-vm-scale-set-portal.md)。
-* [使用 Azure PowerShell，設定具有現有 Azure Load Balancer 的虛擬機器擴展集](../load-balancer/configure-vm-scale-set-powershell.md)。
-* [使用 Azure CLI，設定具有現有 Azure Load Balancer 的虛擬機器擴展集](../load-balancer/configure-vm-scale-set-cli.md)。
+請參閱 [Azure Load Balancer 和虛擬機器擴展集](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-virtual-machine-scale-sets) ，以深入瞭解如何根據您的案例，使用虛擬機器擴展集來設定您的 Standard Load Balancer。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>建立參考應用程式閘道的擴展集
 若要建立使用應用程式閘道的擴展集，請和此 ARM 範本設定中一樣，參考擴展集 ipConfigurations 區段中的應用程式閘道後端位址集區：
@@ -146,7 +125,7 @@ Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR
 ```
 
 ## <a name="public-ipv4-per-virtual-machine"></a>每個虛擬機器的公用 IPv4
-一般情況下，Azure 擴展集虛擬機器不需要自己的公用 IP 位址。 在大部分的情況下，將公用 IP 位址與負載平衡器或個別虛擬機器建立關聯 (也稱為 jumpbox) ，然後視需要將連入連線路由至擴展集虛擬機器 (例如，透過) 的輸入 NAT 規則，會比較經濟且安全。
+一般情況下，Azure 擴展集虛擬機器不需要自己的公用 IP 位址。 在大部分的情況下，將公用 IP 位址與負載平衡器或個別虛擬機器相關聯 (也稱為 jumpbox) ，然後視 (需要將連入連線路由至擴展集虛擬機器，例如透過輸入 NAT 規則) 。
 
 但是，某些情況會要求擴展集虛擬機器具備自己的公用 IP 位址。 例如遊戲，其中主控台需要直接連線至雲端虛擬機器，進而執行遊戲實體流程。 另一個範例是虛擬機器需要對另一個分散式資料庫中跨區域的虛擬機器進行外部連線。
 

@@ -3,16 +3,16 @@ title: 使用 PowerShell 將 Windows Server 備份至 Azure
 description: 在本文中，您將瞭解如何使用 PowerShell 來設定 Windows Server 或 Windows 用戶端上的 Azure 備份，以及管理備份和復原。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 0deccc49b82d4a8b81889c35174c3efa81b6d74d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: d0ae5165fc13193737ec75cf06060123ca4a13d4
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564022"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756991"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 用戶端的 Azure 備份
 
-本文說明如何使用 PowerShell 來設定 Windows Server 或 Windows 用戶端上的 Azure 備份，以及管理備份和復原。
+本文說明如何使用 PowerShell，在 Windows Server 或 Windows 用戶端上設定 Azure 備份，以及管理備份和復原。
 
 ## <a name="install-azure-powershell"></a>安裝 Azure PowerShell
 
@@ -20,17 +20,17 @@ ms.locfileid: "87564022"
 
 若要開始使用，請[安裝最新的 PowerShell 版本](/powershell/azure/install-az-ps)。
 
-## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫。
+## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
 
 下列步驟將引導您完成建立復原服務保存庫。 復原服務保存庫不同於備份保存庫。
 
-1. 如果您是第一次使用 Azure 備份，則必須使用**register-azresourceprovider** Cmdlet 向您的訂用帳戶註冊 Azure 復原服務提供者。
+1. 如果您是第一次使用 Azure 備份，就必須使用 **>register-azresourceprovider** 指令程式，向您的訂用帳戶註冊 Azure 復原服務提供者。
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-2. 復原服務保存庫是 Azure Resource Manager 資源，因此您必須將它放在資源群組中。 您可以使用現有的資源群組，或建立一個新的群組。 建立新的資源群組時，請指定資源群組的名稱和位置。  
+2. 復原服務保存庫是 Azure Resource Manager 資源，因此您必須將它放在資源群組內。 您可以使用現有的資源群組，或建立一個新的群組。 建立新的資源群組時，請指定資源群組的名稱和位置。  
 
     ```powershell
     New-AzResourceGroup –Name "test-rg" –Location "WestUS"
@@ -42,7 +42,7 @@ ms.locfileid: "87564022"
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. 指定要使用的儲存體多餘類型;您可以使用[本機的多餘儲存體 (LRS) ](../storage/common/storage-redundancy.md)或[異地多餘儲存體 (GRS) ](../storage/common/storage-redundancy.md)。 下列範例顯示*testVault*的 **-BackupStorageRedundancy**選項設定為**異地備援**。
+4. 指定要使用的儲存體冗余類型;您可以使用 [本機冗余儲存體 (LRS) ](../storage/common/storage-redundancy.md) 或 [地理位置多餘的儲存體 (GRS) ](../storage/common/storage-redundancy.md)。 下列範例顯示*testVault*的 **-BackupStorageRedundancy**選項設定為**異地備援**。
 
    > [!TIP]
    > 許多 Azure 備份 Cmdlet 都需要將復原服務保存庫物件當做輸入。 基於這個理由，將備份復原服務保存庫物件儲存在變數中會是方便的做法。
@@ -95,7 +95,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 MARSAgentInstaller.exe /q
 ```
 
-這會以所有預設選項安裝代理程式。 安裝作業會在背景中進行幾分鐘。 如果您未指定 */nu*選項，則會在安裝結束時開啟 [ **Windows Update** ] 視窗，以檢查是否有任何更新。 安裝之後，代理程式會顯示在已安裝的程式清單中。
+這會以所有預設選項安裝代理程式。 安裝作業會在背景中進行幾分鐘。 如果您未指定 */nu* 選項，則會在安裝結束時開啟 **Windows Update** 視窗，以檢查是否有任何更新。 安裝之後，代理程式會顯示在已安裝的程式清單中。
 
 若要查看已安裝的程式清單，請移至 [控制台] > [程式] > [程式和功能]。
 
@@ -117,14 +117,14 @@ MARSAgentInstaller.exe /?
 | /p:"location" |Azure 備份代理程式的安裝資料夾路徑。 |C:\Program Files\Microsoft Azure Recovery Services Agent |
 | /s:"location" |Azure 備份代理程式的快取資料夾路徑。 |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m |選擇加入 Microsoft Update |- |
-| /nu |安裝完成後，請勿檢查更新 |- |
+| /nu |安裝完成之後，請勿檢查更新 |- |
 | /d |解除安裝 Microsoft Azure 復原服務代理程式 |- |
 | /ph |Proxy 主機位址 |- |
 | /po |Proxy 主機連接埠號碼 |- |
 | /pu |Proxy 主機使用者名稱 |- |
 | /pw |Proxy 密碼 |- |
 
-## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>向復原服務保存庫註冊 Windows Server 或 Windows 用戶端電腦
+## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>將 Windows Server 或 Windows 用戶端電腦註冊到復原服務保存庫
 
 建立復原服務保存庫之後，請下載最新版本的代理程式和保存庫認證，並將它們儲存在方便的位置 (如 C:\Downloads)。
 
@@ -138,7 +138,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault1 
 > [!NOTE]
 > 在 Az 3.5.0 版中，已修正產生保存庫憑證的錯誤。 使用 Az 3.5.0 版或更高版本下載保存庫憑證。
 
-在 PowerShell 的最新 Az 模組中，因為基礎平臺的限制，所以下載保存庫認證需要自我簽署憑證。 下列範例示範如何提供自我簽署憑證，並下載保存庫認證。
+在最新的 PowerShell Az 模組中，因為基礎平臺的限制，所以下載保存庫認證需要自我簽署憑證。 下列範例示範如何提供自我簽署憑證，並下載保存庫認證。
 
 ```powershell
 $dt = $(Get-Date).ToString("M-d-yyyy")
@@ -148,7 +148,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -
 ```
 
 在 Windows Server 或 Windows 用戶端電腦上，執行 [Start-OBRegistration](/powershell/module/msonlinebackup/start-obregistration) Cmdlet 向保存庫註冊電腦。
-這也是用於備份的其他 Cmdlet，是來自 MSONLINE 模組，MARS AgentInstaller 會在安裝過程中新增此模組。
+此程式和其他用於備份的 Cmdlet 來自于 MSONLINE 模組，這是 MARS AgentInstaller 在安裝過程中新增的模組。
 
 代理程式安裝程式不會更新 $Env:P SModulePath 變數。 這表示模組自動載入會失敗。 若要解決此問題，您可以執行下列命令：
 
@@ -183,7 +183,7 @@ Machine registration succeeded.
 
 ## <a name="networking-settings"></a>網路設定
 
-若 Windows 電腦是透過 Proxy 伺服器連線到網際網路，您也可以提供 Proxy 設定給代理程式。 在此範例中，沒有 proxy 伺服器，所以我們會明確地清除任何 proxy 相關資訊。
+若 Windows 電腦是透過 Proxy 伺服器連線到網際網路，您也可以提供 Proxy 設定給代理程式。 在此範例中，沒有 proxy 伺服器，因此會明確地清除任何 proxy 相關資訊。
 
 您也可以針對給定的一組當週天數，使用 [`work hour bandwidth`] 和 [`non-work hour bandwidth`] 的選項來控制頻寬使用情形。
 
@@ -232,7 +232,7 @@ Server properties updated successfully
 
 ## <a name="back-up-files-and-folders"></a>備份檔案和資料夾
 
-Windows Server 和用戶端的所有 Azure 備份都是由原則來掌管。 此原則包含三個部分：
+Windows Server 和用戶端的所有 Azure 備份都是由原則來掌管。 原則包含三個部分：
 
 1. **備份排程** ，指定何時進行備份並與服務同步。
 2. **保留排程** 可指定要在 Azure 中保留復原點多久時間。
@@ -244,7 +244,7 @@ Windows Server 和用戶端的所有 Azure 備份都是由原則來掌管。 此
 $NewPolicy = New-OBPolicy
 ```
 
-此時，原則是空的，而且需要其他 Cmdlet 來定義要包含或排除的專案、執行備份的時間，以及將儲存備份的位置。
+目前，原則是空的，而且需要其他 Cmdlet 來定義要包含或排除的專案、執行備份的時間，以及將儲存備份的位置。
 
 ### <a name="configuring-the-backup-schedule"></a>設定備份排程
 
@@ -271,7 +271,7 @@ BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName :
 
 ### <a name="configuring-a-retention-policy"></a>設定保留原則
 
-保留原則會定義所建立備份工作的復原點保留時間長度。 使用[OBRetentionPolicy 指令程式](/powershell/module/msonlinebackup/new-obretentionpolicy)建立新的保留原則時，您可以指定備份復原點會保留 Azure 備份的天數。 以下範例將保留原則設定為七天。
+保留原則會定義所建立備份工作的復原點保留時間長度。 使用 [OBRetentionPolicy 指令程式](/powershell/module/msonlinebackup/new-obretentionpolicy) 建立新的保留原則時，您可以指定備份復原點將保留 Azure 備份的天數。 以下範例將保留原則設定為七天。
 
 ```powershell
 $RetentionPolicy = New-OBRetentionPolicy -RetentionDays 7
@@ -659,7 +659,7 @@ ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 
 ### <a name="triggering-the-restore-process"></a>觸發還原程序
 
-為了觸發還原程序，我們首先需要指定復原選項。 使用 [New-OBRecoveryOption](/powershell/module/msonlinebackup/new-obrecoveryoption) Cmdlet 可以完成這項工作。 在此範例中，假設我們想要將檔案還原至*C：\temp*。我們也假設我們想要略過已經存在於目的地資料夾*C：\temp*上的檔案。若要建立這種修復選項，請使用下列命令：
+為了觸發還原程序，我們首先需要指定復原選項。 使用 [New-OBRecoveryOption](/powershell/module/msonlinebackup/new-obrecoveryoption) Cmdlet 可以完成這項工作。 在此範例中，我們假設我們想要將檔案還原至 *C：\temp*。我們也假設我們想要跳過已存在於目的資料夾 *C：\temp*上的檔案。若要建立這類復原選項，請使用下列命令：
 
 ```powershell
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
@@ -694,7 +694,7 @@ The recovery operation completed successfully.
 * 會從電腦移除所有原則資訊，但服務中會繼續保存這些原則資訊。
 * 會移除所有備份排程，且不再進行任何備份。
 
-不過，儲存在 Azure 中的資料會保留下來，並根據您所設定的保留原則加以保留。 較舊的時間點會自動過時。
+不過，儲存在 Azure 中的資料會保持不變，並會根據您所設定的保留原則進行保留。 較舊的時間點會自動過時。
 
 ## <a name="remote-management"></a>遠端管理
 

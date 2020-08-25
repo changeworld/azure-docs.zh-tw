@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745726"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799480"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>將您的工作裝置加入組織的網路
 將您工作用的 Windows 10 裝置加入組織的網路，如此就能存取可能受限的資源。
@@ -27,9 +27,9 @@ ms.locfileid: "83745726"
 
 - Windows 會向貴組織的網路註冊您的裝置，讓您可以使用個人帳戶存取您的資源。 註冊裝置之後，Windows 接著會將您的裝置加入網路，讓您能夠使用貴組織的使用者名稱和密碼來登入並存取受限的資源。
 
-- (選擇性) 根據組織的選擇，可能會要求您透過 [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) 或[安全性資訊](user-help-security-info-overview.md)設定雙步驟驗證。
+- (選擇性) 根據組織的選擇，可能會要求您透過 [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) 或[安全性資訊](./security-info-setup-signin.md)設定雙步驟驗證。
 
-- (選擇性) 根據組織的選擇，您可能會在行動裝置管理 (例如 Microsoft Intune) 中自動註冊。 如需在 Microsoft Intune 中註冊的詳細資訊，請參閱[在 Intune 註冊您的裝置](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all)。
+- (選擇性) 根據組織的選擇，您可能會在行動裝置管理 (例如 Microsoft Intune) 中自動註冊。 如需在 Microsoft Intune 中註冊的詳細資訊，請參閱[在 Intune 註冊您的裝置](/intune-user-help/enroll-your-device-in-intune-all)。
 
 - 您將使用透過組織帳戶的自動登入來完成登入程序。
 
@@ -61,7 +61,7 @@ ms.locfileid: "83745726"
 
     ![[設定] 畫面上的帳戶](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. 選取 [存取公司或學校資源]，然後確定您看到類似**已連線到 *\<your_organization>* Azure AD** 的文字。
+2. 選取 [ **存取公司或學校**]，並確定您看到的文字顯示為 [ **已連線到 *\<your_organization>* Azure AD**]。
 
     ![具有已連線之 contoso 帳戶的 [存取公司或學校資源] 畫面](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "83745726"
 
     ![[設定] 畫面上的帳戶](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. 選取 [存取公司或學校資源]，然後確定您看到類似**已連線到 *\<your_organization>* Azure AD** 的文字。
+2. 選取 [ **存取公司或學校**]，並確定您看到的文字顯示為 [ **已連線到 *\<your_organization>* Azure AD**]。
 
     ![具有已連線之 contoso 帳戶的 [存取公司或學校資源] 畫面](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
@@ -115,4 +115,4 @@ ms.locfileid: "83745726"
 
 - 如果您的組織想要您註冊個人裝置 (例如您的手機)，請參閱[在組織的網路上註冊個人裝置](user-help-register-device-on-network.md)。
 
-- 如果貴組織是使用 Microsoft Intune 進行管理，而且您有關於註冊、登入或任何其他 Intune 相關方面的問題，請參閱 [Intune 使用者說明內容](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done)。
+- 如果貴組織是使用 Microsoft Intune 進行管理，而且您有關於註冊、登入或任何其他 Intune 相關方面的問題，請參閱 [Intune 使用者說明內容](/intune-user-help/use-managed-devices-to-get-work-done)。

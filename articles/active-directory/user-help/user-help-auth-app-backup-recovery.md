@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b13de16b2080d28d3b779921456cfb20d99f0af9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3148f8ba84674c79764d0fc69acdbc02e7a12dc4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84415970"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798987"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 應用程式備份和復原帳戶認證
 
@@ -79,28 +79,28 @@ Microsoft Authenticator 應用程式會將您的帳戶認證和相關應用程�
 
 對於個人 Microsoft 帳戶，您可輸入您的密碼以及替代電子郵件或電話號碼來證明您的身分識別。 針對公司或學校帳戶，您必須掃描帳戶提供者提供給您的 QR 代碼。
 
-### <a name="to-provide-more-verification-for-personal-accounts"></a>為個人帳戶提供更多驗證
+### <a name="to-provide-more-verification-for-personal-accounts"></a>提供更多個人帳戶驗證
 
-1. 在 Microsoft Authenticator 應用程式的 [**帳戶**] 畫面中，按一下您要復原的帳戶，以開啟該帳戶的全螢幕視圖。
+1. 在 Microsoft Authenticator 應用程式的 [ **帳戶** ] 畫面中，按一下您想要復原的帳戶，以開啟帳戶的全螢幕視圖。
 
     :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="Microsoft Authenticator 應用程式，顯示可用的帳戶磚" border="true":::
 
-1. 針對您要復原的帳戶，按 [磚]，然後按一下 [登入以進行復原] 選項。 輸入您的密碼，然後確認您的電子郵件地址或電話號碼，以做為額外的驗證。
+1. 按一下您要復原之帳戶的磚，然後按一下 [登入] 選項以進行復原。 輸入您的密碼，然後確認您的電子郵件地址或電話號碼，以做為額外的驗證。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="驗證器會提供一次性密碼作為驗證碼" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="驗證程式會將單次密碼顯示為驗證碼" border="true":::
 
-### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>為公司或學校帳戶提供更多驗證
+### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>提供更多的工作或學校帳戶驗證
 
-1. 在 Microsoft Authenticator 應用程式的 [**帳戶**] 畫面中，按一下您要復原的帳戶，以開啟該帳戶的全螢幕視圖。
+1. 在 Microsoft Authenticator 應用程式的 [ **帳戶** ] 畫面中，按一下您想要復原的帳戶，以開啟帳戶的全螢幕視圖。
 
     :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Microsoft Authenticator 應用程式，顯示可用的帳戶磚" border="true":::
 
-1. 在全螢幕視圖中，按一下 [掃描 QR 代碼以完全復原] 選項。
+1. 在全螢幕視圖中，請按一下選項來掃描 QR 代碼，以完整復原。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="驗證器會提供一次性密碼作為驗證碼" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="驗證程式會將單次密碼顯示為驗證碼" border="true":::
 
 >[!NOTE]
->如需進一步了解 QR 代碼及取得方式，請參閱[開始使用 Microsoft Authenticator 應用程式](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)或[將安全性資訊設定為使用驗證器應用程式](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app) (取決於系統管理員是否已開啟安全性資訊)。
+>如需進一步了解 QR 代碼及取得方式，請參閱[開始使用 Microsoft Authenticator 應用程式](./user-help-auth-app-download-install.md)或[將安全性資訊設定為使用驗證器應用程式](./security-info-setup-auth-app.md) (取決於系統管理員是否已開啟安全性資訊)。
 >
 >如果這是您第一次設定 Microsoft Authenticator 應用程式，系統可能會顯示提示詢問您是否允許應用程式存取您的相機 (iOS)，或是否允許應用程式拍攝相片和錄製影片 (Android)。 您必須選取 [允許]，讓驗證器應用程式能夠存取您的相機，以在下一個步驟中拍攝 QR 代碼的相片。 如果您不允許存取相機，您仍可設定驗證器應用程式，但必須手動新增代碼資訊。 如需如何手動新增代碼的相關資訊，請參閱[手動新增帳戶至應用程式](user-help-auth-app-add-account-manual.md)。
 
@@ -118,7 +118,7 @@ Microsoft Authenticator 應用程式會將您的帳戶認證和相關應用程�
 
 - **現有的 Microsoft Authenticator 帳戶**：如果您已經在 Microsoft Authenticator 應用程式中設定帳戶，則應用程式將無法復原您已備份的帳戶。 防止復原有助於確保過時資訊不會覆寫您的帳戶詳細資料。 在此情況下，您必須先從在 Microsoft Authenticator 應用程式中設定的現有帳戶移除任何現有的帳戶資訊，才可以復原您的備份。
 
-- **備份已過時**：如果您的備份資訊已過期，系統可能會要求您再次登入您的 Microsoft 復原帳戶，以重新整理資訊。 您的復原帳戶是您最初用來儲存備份的個人 Microsoft 帳戶。 如果需要登入，您會在功能表或動作列上看到一個紅點，或者您會看到一個驚嘆號圖示，提示您登入以完成從備份還原。 選取適當的圖示之後，系統會提示您再次登入以更新您的資訊。
+- **備份已過時**：如果您的備份資訊已過期，系統可能會要求您再次登入您的 Microsoft 復原帳戶，以重新整理資訊。 您的復原帳戶是您最初用來儲存備份的個人 Microsoft 帳戶。 如果需要登入，您會在功能表或動作列上看到一個紅點，或者您會看到一個驚嘆號圖示，提示您登入以完成從備份還原。 當您選取適當的圖示之後，系統會提示您重新登入以更新您的資訊。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -130,4 +130,4 @@ Microsoft Authenticator 應用程式會將您的帳戶認證和相關應用程�
 
 - [Microsoft Authenticator 應用程式常見問題集](user-help-auth-app-faq.md)
 
-- [Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/)
+- [Multi-Factor Authentication](/azure/multi-factor-authentication/)

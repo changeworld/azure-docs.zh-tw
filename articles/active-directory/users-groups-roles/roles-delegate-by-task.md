@@ -1,5 +1,5 @@
 ---
-title: 依系統管理員工作委派角色-Azure Active Directory |Microsoft Docs
+title: 依管理員工作委派角色-Azure Active Directory |Microsoft Docs
 description: 在 Azure Active Directory 中針對身分識別工作委派的角色
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bc1546566e5bb79a207899fab7418480e5cfab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 692b20bf301bbd7bf03ea1af5527e08d947b50da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117874"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798358"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中依管理工作區分的系統管理員角色
 
@@ -42,7 +42,7 @@ Task | 最低特殊權限角色 | 其他角色
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
-建立 Azure AD B2C 目錄 | 所有非來賓使用者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+建立 Azure AD B2C 目錄 | 所有非來賓使用者 ([請參閱文件](../fundamentals/users-default-permissions.md)) | 
 建立 B2C 應用程式 | 全域管理員 | 
 建立企業應用程式 | 雲端應用程式系統管理員 | 應用程式系統管理員
 建立、讀取、更新及刪除 B2C 原則 | B2C IEF 原則管理員 | 
@@ -54,17 +54,17 @@ Task | 最低特殊權限角色 | 其他角色
 建立、讀取、更新及刪除使用者屬性 | 外部識別碼使用者流程屬性管理員 | 
 建立、讀取、更新及刪除使用者 | 使用者管理員
 讀取所有設定 | 全域讀取者 | 
-讀取 B2C 稽核記錄 | 全域讀取者（[請參閱檔](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)） | 
+讀取 B2C 稽核記錄 | 全域讀取者 ([請參閱檔](../../active-directory-b2c/faq.md))  | 
 
 > [!NOTE]
-> Azure AD B2C 的全域讀取器沒有與 Azure AD 全域管理員相同的許可權。 如果您有 Azure AD B2C 全域管理員許可權，請確定您是在 Azure AD B2C 目錄中，而不是 Azure AD 目錄。
+> Azure AD B2C 全域讀取者沒有與 Azure AD 全域管理員相同的許可權。 如果您有 Azure AD B2C 全域管理員許可權，請確定您是在 Azure AD B2C 目錄中，而不是 Azure AD 目錄。
 
 ## <a name="company-branding"></a>公司商標
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 設定公司商標 | 全域管理員 | 
-讀取所有設定 | 目錄讀取器 | 預設使用者角色 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+讀取所有設定 | 目錄讀取器 | 預設使用者角色 ([請參閱文件](../fundamentals/users-default-permissions.md))
 
 ## <a name="company-properties"></a>公司屬性
 
@@ -92,25 +92,25 @@ Task | 最低特殊權限角色 | 其他角色
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
-新增或刪除服務 | 擁有者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
-套用對同步處理錯誤的修正 | 參與者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 擁有者
-設定通知 | 參與者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 擁有者
-進行設定 | 擁有者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
-設定同步處理通知 | 參與者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 擁有者
+新增或刪除服務 | 擁有者 ([請參閱文件](../hybrid/how-to-connect-health-operations.md)) | 
+套用對同步處理錯誤的修正 | 參與者 ([請參閱文件](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 擁有者
+設定通知 | 參與者 ([請參閱文件](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 擁有者
+進行設定 | 擁有者 ([請參閱文件](../hybrid/how-to-connect-health-operations.md)) | 
+設定同步處理通知 | 參與者 ([請參閱文件](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 擁有者
 讀取 ADFS 安全性報告 | 安全性讀取者 | 參與者、擁有者
-讀取所有設定 | 讀者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 參與者、擁有者
-讀取同步處理錯誤 | 讀者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 參與者、擁有者
-讀取同步處理服務 | 讀者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 參與者、擁有者
-檢視計量與警示 | 讀者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 參與者、擁有者
-檢視計量與警示 | 讀者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 參與者、擁有者
-檢視同步處理服務計量與警示 | 讀者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 參與者、擁有者
+讀取所有設定 | 讀者 ([請參閱文件](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 參與者、擁有者
+讀取同步處理錯誤 | 讀者 ([請參閱文件](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 參與者、擁有者
+讀取同步處理服務 | 讀者 ([請參閱文件](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 參與者、擁有者
+檢視計量與警示 | 讀者 ([請參閱文件](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 參與者、擁有者
+檢視計量與警示 | 讀者 ([請參閱文件](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 參與者、擁有者
+檢視同步處理服務計量與警示 | 讀者 ([請參閱文件](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 參與者、擁有者
 
 ## <a name="custom-domain-names"></a>自訂網域名稱
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 管理網域 | 全域管理員 | 
-讀取所有設定 | 目錄讀取器 | 預設使用者角色 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+讀取所有設定 | 目錄讀取器 | 預設使用者角色 ([請參閱文件](../fundamentals/users-default-permissions.md))
 
 ## <a name="domain-services"></a>網域服務
 
@@ -126,7 +126,7 @@ Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 停用裝置 | 雲端裝置管理員 | 
 啟用裝置 | 雲端裝置管理員 | 
-讀取基本設定 | 預設使用者角色 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+讀取基本設定 | 預設使用者角色 ([請參閱文件](../fundamentals/users-default-permissions.md)) | 
 讀取 BitLocker 金鑰 | 安全性讀取者 | 密碼管理員、安全性系統管理員
 
 ## <a name="enterprise-applications"></a>企業應用程式
@@ -134,25 +134,25 @@ Task | 最低特殊權限角色 | 其他角色
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 同意任何委派的權限 | 雲端應用程式系統管理員 | 應用程式管理員
-同意應用程式許可權不包括 Microsoft Graph | 雲端應用程式系統管理員 | 應用程式管理員
+同意不包含 Microsoft Graph 的應用程式許可權 | 雲端應用程式系統管理員 | 應用程式管理員
 同意 Microsoft Graph 的應用程式許可權 | 特殊權限角色管理員 | 
-同意應用程式存取自己的資料 | 預設使用者角色 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+同意應用程式存取自己的資料 | 預設使用者角色 ([請參閱文件](../fundamentals/users-default-permissions.md)) | 
 建立企業應用程式 | 雲端應用程式系統管理員 | 應用程式管理員
 管理應用程式 Proxy | 應用程式管理員 | 
 管理使用者設定 | 全域管理員 | 
 讀取群組或應用程式的存取權檢閱 | 安全性讀取者 | 安全性系統管理員、使用者管理員
-讀取所有設定 | 預設使用者角色 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
-更新企業應用程式指派 | 企業應用程式擁有者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 雲端應用程式系統管理員、應用程式系統管理員
-更新企業應用程式擁有者 | 企業應用程式擁有者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 雲端應用程式系統管理員、應用程式系統管理員
-更新企業應用程式屬性 | 企業應用程式擁有者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 雲端應用程式系統管理員、應用程式系統管理員
-更新企業應用程式佈建 | 企業應用程式擁有者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 雲端應用程式系統管理員、應用程式系統管理員
-更新企業應用程式自助 | 企業應用程式擁有者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 雲端應用程式系統管理員、應用程式系統管理員
-更新單一登入屬性 | 企業應用程式擁有者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 雲端應用程式系統管理員、應用程式系統管理員
+讀取所有設定 | 預設使用者角色 ([請參閱文件](../fundamentals/users-default-permissions.md)) | 
+更新企業應用程式指派 | 企業應用程式擁有者 ([請參閱文件](../fundamentals/users-default-permissions.md)) | 雲端應用程式系統管理員、應用程式系統管理員
+更新企業應用程式擁有者 | 企業應用程式擁有者 ([請參閱文件](../fundamentals/users-default-permissions.md)) | 雲端應用程式系統管理員、應用程式系統管理員
+更新企業應用程式屬性 | 企業應用程式擁有者 ([請參閱文件](../fundamentals/users-default-permissions.md)) | 雲端應用程式系統管理員、應用程式系統管理員
+更新企業應用程式佈建 | 企業應用程式擁有者 ([請參閱文件](../fundamentals/users-default-permissions.md)) | 雲端應用程式系統管理員、應用程式系統管理員
+更新企業應用程式自助 | 企業應用程式擁有者 ([請參閱文件](../fundamentals/users-default-permissions.md)) | 雲端應用程式系統管理員、應用程式系統管理員
+更新單一登入屬性 | 企業應用程式擁有者 ([請參閱文件](../fundamentals/users-default-permissions.md)) | 雲端應用程式系統管理員、應用程式系統管理員
 
 ## <a name="entitlement-management"></a>權利管理
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
-將資源新增至目錄 | 使用者管理員 | 透過權利管理，您可以將這項工作委派給目錄擁有者（[請參閱檔](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)）
+將資源新增至目錄 | 使用者管理員 | 使用權利管理時，您可以將此工作委派給目錄擁有者 ([請參閱檔](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)) 
 將 SharePoint Online 網站新增至目錄 | 全域管理員
 
 
@@ -165,13 +165,13 @@ Task | 最低特殊權限角色 | 其他角色
 建立、更新或刪除群組或應用程式的存取權檢閱 | 使用者管理員 | 
 管理群組到期日 | 使用者管理員 | 
 管理群組設定 | 群組管理員 | 使用者管理員 | 
-讀取所有設定 (隱藏的成員資格除外) | 目錄讀取器 | 預設使用者角色 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-讀取隱藏的成員資格 | 群組成員 | 群組擁有者、密碼管理員、Exchange 系統管理員、SharePoint 管理員、小組系統管理員、使用者系統管理員
+讀取所有設定 (隱藏的成員資格除外) | 目錄讀取器 | 預設使用者角色 ([請參閱文件](../fundamentals/users-default-permissions.md))
+讀取隱藏的成員資格 | 群組成員 | 群組擁有者、密碼管理員、Exchange 系統管理員、SharePoint 系統管理員、小組系統管理員、使用者系統管理員
 讀取具有隱藏成員資格之群組的成員資格 | 服務台系統管理員 | 使用者系統管理員、小組系統管理員
 撤銷授權 | 授權管理員 | 使用者管理員
-更新群組成員資格 | 群組擁有者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 使用者管理員
-更新群組擁有者 | 群組擁有者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 使用者管理員
-更新群組屬性 | 群組擁有者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 使用者管理員
+更新群組成員資格 | 群組擁有者 ([請參閱文件](../fundamentals/users-default-permissions.md)) | 使用者管理員
+更新群組擁有者 | 群組擁有者 ([請參閱文件](../fundamentals/users-default-permissions.md)) | 使用者管理員
+更新群組屬性 | 群組擁有者 ([請參閱文件](../fundamentals/users-default-permissions.md)) | 使用者管理員
 刪除群組 | 群組管理員 | 使用者管理員
 
 ## <a name="identity-protection"></a>身分識別保護
@@ -194,7 +194,7 @@ Task | 最低特殊權限角色 | 其他角色
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 指派授權 | 授權管理員 | 使用者管理員
-讀取所有設定 | 目錄讀取器 | 預設使用者角色 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+讀取所有設定 | 目錄讀取器 | 預設使用者角色 ([請參閱文件](../fundamentals/users-default-permissions.md))
 撤銷授權 | 授權管理員 | 使用者管理員
 試用或購買訂用帳戶 | 計費管理員 | 
 
@@ -275,7 +275,7 @@ Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 管理角色指派 | 特殊權限角色管理員 | 
 讀取 Azure AD 角色的存取權檢閱  | 安全性讀取者 | 安全性系統管理員、特殊權限角色管理員
-讀取所有設定 | 預設使用者角色 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+讀取所有設定 | 預設使用者角色 ([請參閱文件](../fundamentals/users-default-permissions.md)) | 
 
 ## <a name="security---authentication-methods"></a>安全性 - 驗證方法
 
@@ -283,7 +283,7 @@ Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 設定驗證方法 | 全域管理員 | 
 設定密碼保護 | 安全性系統管理員
-設定智慧鎖定 | 安全性系統管理員
+設定智慧型鎖定 | 安全性系統管理員
 讀取所有設定 | 全域讀取者 | 
 
 ## <a name="security---conditional-access"></a>安全性-條件式存取
@@ -342,7 +342,7 @@ Task | 最低特殊權限角色 | 其他角色
 使受限制管理員的重新整理權杖失效 (請參閱文件) | 使用者管理員 | 
 使非管理員的重新整理權杖失效 (請參閱文件) | 密碼管理員 | 使用者管理員
 使具特殊權限管理員的重新整理權杖失效 (請參閱文件) | 特殊權限驗證管理員 | 
-讀取基本設定 | 預設使用者角色（[請參閱檔](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
+讀取基本設定 | 預設使用者角色 ([請參閱檔](../fundamentals/users-default-permissions.md) | 
 為受限制的管理員重設密碼 (請參閱文件) | 使用者管理員 | 
 為非管理員重設密碼 (請參閱文件) | 密碼管理員 | 使用者管理員
 為具特殊權限的管理員重設密碼 | 特殊權限驗證管理員 | 
@@ -357,7 +357,7 @@ Task | 最低特殊權限角色 | 其他角色
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
-提交支援票證 | 服務管理員 | 應用程式系統管理員、Azure 資訊保護系統管理員、計費管理員、雲端應用程式系統管理員、合規性管理員、Dynamics 365 系統管理員、電腦分析系統管理員、Exchange 系統管理員、密碼管理員、Intune 系統管理員、商務用 Skype 系統管理員、Power BI 系統管理員、特殊許可權驗證管理員、SharePoint 系統管理員、工作場所分析管理員、小組系統管理員、使用者系統管理員
+提交支援票證 | 服務管理員 | 應用程式系統管理員、Azure 資訊保護系統管理員、計費管理員、雲端應用程式系統管理員、合規性管理員、Dynamics 365 系統管理員、電腦分析系統管理員、Exchange 系統管理員、密碼管理員、Intune 系統管理員、商務用 Skype 系統管理員、Power BI 系統管理員、特殊許可權驗證管理員、SharePoint 系統管理員、小組通訊管理員、小組系統管理員、使用者系統管理員、工作地點分析管理員
 
 ## <a name="next-steps"></a>後續步驟
 
