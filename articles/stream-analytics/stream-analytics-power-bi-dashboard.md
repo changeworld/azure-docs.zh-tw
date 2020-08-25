@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2019
-ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 8/6/2020
+ms.openlocfilehash: 5b5840c1b668e9a509f58d7edf65175f621d9e4c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314215"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794299"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>串流分析及 Power BI：適用於串流資料的即時分析儀表板
 
@@ -39,7 +39,10 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 
 2. 在左側功能表上，選取 [作業拓撲] 底下的 [輸出]。 然後，選取 [+ 新增]，接著從下拉式功能表中選擇 [Power BI]。
 
-3. 選取 [+ 新增] > [Power BI]。 然後，在表單中填入下列詳細資料，然後選取 [授權]：
+3. 選取 [+ 新增] > [Power BI]。 然後，在表單中填入下列詳細資料，然後選取 [授權] 以使用您自己的使用者 **身分** 識別來連線至 Power BI (權杖的有效時間為90天) 。 
+
+>[!NOTE]
+>針對生產作業，建議您連線以 [使用受控識別來驗證您的 Azure 串流分析作業，以 Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)。
 
    |**設定**  |**建議的值**  |
    |---------|---------|
@@ -230,3 +233,4 @@ Power BI 在重新整理過授權後，授權區域就會出現綠色警示，�
 * [串流分析輸出](stream-analytics-define-outputs.md)
 * [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [使用受控識別來驗證您的 Azure 串流分析作業，以 Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)

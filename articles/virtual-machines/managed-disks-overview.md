@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 03a7a1929e591216255c10f35d31c1a282a7e06a
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 72f68b35d171503bb07fc5e6f58a858ceea4c6cf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723277"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749686"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure 受控磁碟簡介
 
@@ -30,37 +30,37 @@ Azure 受控磁碟是由 Azure 管理並與 Azure 虛擬機器搭配使用的區
 
 ### <a name="simple-and-scalable-vm-deployment"></a>簡單且可調整的 VM 部署
 
-您可以使用受控磁碟在每個區域的一個訂用帳戶中建立最多 50,000 個同類型虛擬機器**磁碟**，這可讓您在單一訂用帳戶中建立數千部**虛擬機器**。 這項功能也可讓您使用 Marketplace 映像，在一個虛擬機器擴展集內建立最多 1,000 部虛擬機器，進一步增加[虛擬機器擴展集](~/articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)的延展性。
+您可以使用受控磁碟在每個區域的一個訂用帳戶中建立最多 50,000 個同類型虛擬機器**磁碟**，這可讓您在單一訂用帳戶中建立數千部**虛擬機器**。 這項功能也可讓您使用 Marketplace 映像，在一個虛擬機器擴展集內建立最多 1,000 部虛擬機器，進一步增加[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)的延展性。
 
 ### <a name="integration-with-availability-sets"></a>整合可用性設定組
 
-受控磁碟會與可用性設定組整合，以確定[可用性設定組中的虛擬機器](~/articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)磁碟彼此充分隔離，以避免出現單一失敗點。 磁碟會自動放置在不同的儲存體縮放單位 (戳記)。 如果因為硬體或軟體失敗造成戳記失敗，則只有磁碟在這些戳記上的 VM 執行個體才會失敗。 例如，假設您的應用程式在五個 VM 上執行，且這些 VM 位於可用性設定組中。 這些磁碟的 VM 不會全部以相同的戳記儲存，因此，如果有一個戳記失效，應用程式的其他執行個體會繼續執行。
+受控磁碟會與可用性設定組整合，以確定[可用性設定組中的虛擬機器](windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)磁碟彼此充分隔離，以避免出現單一失敗點。 磁碟會自動放置在不同的儲存體縮放單位 (戳記)。 如果因為硬體或軟體失敗造成戳記失敗，則只有磁碟在這些戳記上的 VM 執行個體才會失敗。 例如，假設您的應用程式在五個 VM 上執行，且這些 VM 位於可用性設定組中。 這些磁碟的 VM 不會全部以相同的戳記儲存，因此，如果有一個戳記失效，應用程式的其他執行個體會繼續執行。
 
 ### <a name="integration-with-availability-zones"></a>整合可用性設定組
 
-受控磁碟支援[可用性區域](~/articles/availability-zones/az-overview.md)，這是高可用性供應項目，可保護您的應用程式不受資料中心故障影響。 「可用性區域」是 Azure 地區內獨特的實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 若要確保復原，所有已啟用的地區中至少要有三個不同的區域。 使用「可用性區域」時，Azure 可提供業界最佳的 99.99% VM 執行時間 SLA。
+受控磁碟支援[可用性區域](../availability-zones/az-overview.md)，這是高可用性供應項目，可保護您的應用程式不受資料中心故障影響。 「可用性區域」是 Azure 地區內獨特的實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 若要確保復原，所有已啟用的地區中至少要有三個不同的區域。 使用「可用性區域」時，Azure 可提供業界最佳的 99.99% VM 執行時間 SLA。
 
 ### <a name="azure-backup-support"></a>Azure 備份支援
 
-為了防止發生區域災難，可使用 [Azure 備份](~/articles/backup/backup-overview.md)透過時間型備份和備份保留原則，來建立備份作業。 這可讓您隨意執行 VM 或受控磁碟的還原。 目前 Azure 備份支援的磁碟大小上限為 32 TiB。 [深入了解](~/articles/backup/backup-support-matrix-iaas.md) Azure VM 備份支援。
+為了防止發生區域災難，可使用 [Azure 備份](../backup/backup-overview.md)透過時間型備份和備份保留原則，來建立備份作業。 這可讓您隨意執行 VM 或受控磁碟的還原。 目前 Azure 備份支援的磁碟大小上限為 32 TiB。 [深入了解](../backup/backup-support-matrix-iaas.md) Azure VM 備份支援。
 
 ### <a name="granular-access-control"></a>細微的存取控制
 
-您可以使用 [Azure 角色型存取控制 (Azure RBAC)](~/articles/role-based-access-control/overview.md) 將受控磁碟的特定權限指派給一個或多個使用者。 受控磁碟公開各種不同的作業，包括讀取、寫入 (建立/更新)、刪除和擷取磁碟的[共用存取簽章 (SAS) URI](~/articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)。 您可以授權某人只能存取他份內工作所需的作業。 例如，如果您不想讓某人將受控磁碟複製到儲存體帳戶，您可以選擇不要授權存取該受控磁碟的匯出動作。 同樣地，如果您不想讓某人使用 SAS URI 來複製受控磁碟，您可以選擇不要授與有關受控磁碟的這種權限。
+您可以使用 [Azure 角色型存取控制 (Azure RBAC)](../role-based-access-control/overview.md) 將受控磁碟的特定權限指派給一個或多個使用者。 受控磁碟公開各種不同的作業，包括讀取、寫入 (建立/更新)、刪除和擷取磁碟的[共用存取簽章 (SAS) URI](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 您可以授權某人只能存取他份內工作所需的作業。 例如，如果您不想讓某人將受控磁碟複製到儲存體帳戶，您可以選擇不要授權存取該受控磁碟的匯出動作。 同樣地，如果您不想讓某人使用 SAS URI 來複製受控磁碟，您可以選擇不要授與有關受控磁碟的這種權限。
 
 ### <a name="upload-your-vhd"></a>上傳您的 vhd
 
 直接上傳可讓您輕鬆地將 vhd 轉送至 Azure 受控磁碟。 之前，您必須遵循涉入更深的程序，其中包含將您的資料暫存在儲存體帳戶中。 現在，步驟比較少。 您可以更輕鬆地將內部部署 VM 上傳至 Azure、上傳至大型受控磁碟，以及簡化備份和還原程序。 它也可讓您直接將資料上傳至受控磁碟，而不需將其附加至 VM，藉此降低成本。 您可使用直接上傳來上傳大小高達 32 TiB 的 vhd。
 
-若要了解如何將您的 vhd 轉送至 Azure，請參閱 [CLI](~/articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) 或 [PowerShell](~/articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md)文章。
+若要了解如何將您的 vhd 轉送至 Azure，請參閱 [CLI](linux/disks-upload-vhd-to-managed-disk-cli.md) 或 [PowerShell](windows/disks-upload-vhd-to-managed-disk-powershell.md)文章。
 
 ## <a name="security"></a>安全性
 
 ### <a name="private-links"></a>Private Link
 
-目前對受控磁碟的 Private Link 支援處於預覽狀態，可用於匯入或匯出網絡內部的受控磁碟。 Private Link 可讓您為未連結的受控磁碟和快照集產生時間繫結的共用存取簽章 (SAS) URI，以供您用來將資料匯出至其他區域進行區域擴充、災害復原和鑑識分析。 您也可以使用 SAS URI，直接將 VHD 從內部部署環境上傳至空白磁碟。 現在您可以利用 [Private Link](~/articles/private-link/private-link-overview.md) 來限制受控磁碟的匯出和匯入，使其只能在您的 Azure 虛擬網路內進行。 Private Link 可讓您確保資料只會在安全的 Microsoft 骨幹網路內移動。
+目前對受控磁碟的 Private Link 支援處於預覽狀態，可用於匯入或匯出網絡內部的受控磁碟。 Private Link 可讓您為未連結的受控磁碟和快照集產生時間繫結的共用存取簽章 (SAS) URI，以供您用來將資料匯出至其他區域進行區域擴充、災害復原和鑑識分析。 您也可以使用 SAS URI，直接將 VHD 從內部部署環境上傳至空白磁碟。 現在您可以利用 [Private Link](../private-link/private-link-overview.md) 來限制受控磁碟的匯出和匯入，使其只能在您的 Azure 虛擬網路內進行。 Private Link 可讓您確保資料只會在安全的 Microsoft 骨幹網路內移動。
 
-若要了解如何啟用 Private Link 以便匯入或匯出受控磁碟，請參閱 [CLI](~/articles/virtual-machines/linux/disks-export-import-private-links-cli.md) 或[入口網站](~/articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md)文章。
+若要了解如何啟用 Private Link 以便匯入或匯出受控磁碟，請參閱 [CLI](linux/disks-export-import-private-links-cli.md) 或[入口網站](disks-enable-private-links-for-import-export-portal.md)文章。
 
 ### <a name="encryption"></a>加密
 
@@ -70,12 +70,12 @@ Azure 受控磁碟是由 Azure 管理並與 Azure 虛擬機器搭配使用的區
 
 伺服器端加密提供待用加密並保護資料安全，以符合組織的安全性和合規性承諾。 在所有受控磁碟可供使用的區域中，所有受控磁碟、快照集和映像依預設都會啟用伺服器端加密。 (另一方面，暫存磁碟不會由伺服器端加密來加密，除非您在主機上啟用加密；請參閱[磁碟角色：暫存磁碟](#temporary-disk))。
 
-您可以允許 Azure 為您管理金鑰 (這些屬於平台管理的金鑰)，您也可以自行管理金鑰 (這些屬於客戶管理的金鑰)。 如需詳細資訊，請造訪 [Azure 磁碟儲存體的伺服器端加密](~/articles/virtual-machines/windows/disk-encryption.md)一文。
+您可以允許 Azure 為您管理金鑰 (這些屬於平台管理的金鑰)，您也可以自行管理金鑰 (這些屬於客戶管理的金鑰)。 如需詳細資訊，請造訪 [Azure 磁碟儲存體的伺服器端加密](windows/disk-encryption.md)一文。
 
 
 #### <a name="azure-disk-encryption"></a>Azure 磁碟加密
 
-Azure 磁碟加密可讓您加密由 IaaS 虛擬機器所使用的作業系統和資料磁碟。 此加密包含受控磁碟。 對於 Windows，磁碟機是使用業界標準的 BitLocker 加密技術來加密。 對於 Linux，磁碟是使用 DM-Crypt 技術來加密。 加密程序會與 Azure Key Vault 整合，可讓您控制和管理磁碟加密金鑰。 如需詳細資訊，請參閱[適用於 Linux VM 的 Azure 磁碟加密](~/articles/virtual-machines/linux/disk-encryption-overview.md)或[適用於 Windows VM 的 Azure 磁碟加密](~/articles/virtual-machines/windows/disk-encryption-overview.md)。
+Azure 磁碟加密可讓您加密由 IaaS 虛擬機器所使用的作業系統和資料磁碟。 此加密包含受控磁碟。 對於 Windows，磁碟機是使用業界標準的 BitLocker 加密技術來加密。 對於 Linux，磁碟是使用 DM-Crypt 技術來加密。 加密程序會與 Azure Key Vault 整合，可讓您控制和管理磁碟加密金鑰。 如需詳細資訊，請參閱[適用於 Linux VM 的 Azure 磁碟加密](linux/disk-encryption-overview.md)或[適用於 Windows VM 的 Azure 磁碟加密](windows/disk-encryption-overview.md)。
 
 ## <a name="disk-roles"></a>磁碟角色
 
@@ -95,7 +95,7 @@ Azure 中有三個主要磁碟角色：資料磁碟、OS 磁碟和暫存磁碟�
 
 ### <a name="temporary-disk"></a>暫存磁碟
 
-大部分的 Vm 都包含暫存磁片，而非受控磁片。 暫存磁片提供應用程式和處理常式的短期儲存空間，目的是要只儲存頁面或分頁檔等資料。 暫存磁碟上的資料可能會在[維護事件](~/articles/virtual-machines/windows/manage-availability.md?toc=/azure/virtual-machines/windows/toc.json#understand-vm-reboots---maintenance-vs-downtime)期間或當您[重新佈署 VM](~/articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json) 時遺失。 在 VM 的成功標準重新開機期間，暫存磁片上的資料將會保留。 如需沒有暫存磁片之 Vm 的詳細資訊，請參閱 [沒有本機暫存磁片的 AZURE VM 大小](~/articles/virtual-machines/azure-vms-no-temp-disk.md)。
+大部分的 Vm 都包含暫存磁片，而非受控磁片。 暫存磁片提供應用程式和處理常式的短期儲存空間，目的是要只儲存頁面或分頁檔等資料。 暫存磁碟上的資料可能會在[維護事件](windows/manage-availability.md?toc=/azure/virtual-machines/windows/toc.json#understand-vm-reboots---maintenance-vs-downtime)期間或當您[重新佈署 VM](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json) 時遺失。 在 VM 的成功標準重新開機期間，暫存磁片上的資料將會保留。 如需沒有暫存磁片之 Vm 的詳細資訊，請參閱 [沒有本機暫存磁片的 AZURE VM 大小](azure-vms-no-temp-disk.md)。
 
 在 Azure Linux VM 上，暫存磁碟通常是 /dev/sdb，而 Windows VM 上的暫存磁碟則預設為 D:。 除非您在主機上啟用加密，否則暫存磁碟不會由伺服器端加密來加密。
 
@@ -107,8 +107,8 @@ Azure 中有三個主要磁碟角色：資料磁碟、OS 磁碟和暫存磁碟�
 
 若要深入了解如何建立受控磁碟的快照集，請參閱下列資源︰
 
-* [在 Windows 中建立受控磁碟的快照集](~/articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [在 Linux 中建立受控磁碟的快照集](~/articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+- [在 Windows 中建立受控磁碟的快照集](windows/snapshot-copy-managed-disk.md)
+- [在 Linux 中建立受控磁碟的快照集](linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>影像
 
@@ -116,8 +116,8 @@ Azure 中有三個主要磁碟角色：資料磁碟、OS 磁碟和暫存磁碟�
 
 如需建立映像的詳細資訊，請參閱下列文章︰
 
-* [在 Azure 中如何擷取一般化 VM 的受控映像](~/articles/virtual-machines/windows/capture-image-resource.md)
-* [如何使用 Azure CLI 將 Linux 虛擬機器一般化並加以擷取](~/articles/virtual-machines/linux/capture-image.md)
+- [在 Azure 中如何擷取一般化 VM 的受控映像](windows/capture-image-resource.md)
+- [如何使用 Azure CLI 將 Linux 虛擬機器一般化並加以擷取](linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>映像與快照集的比較
 
@@ -141,7 +141,7 @@ Azure 中有三個主要磁碟角色：資料磁碟、OS 磁碟和暫存磁碟�
 
 Azure 會針對磁碟流量使用依優先順序的網路通道，其優先順序高於其他低優先順序的網路流量。 這可協助磁碟在網路爭用的情況下維持其預期的效能。 同樣地，Azure 儲存體會使用自動負載平衡來處理背景中的資源爭用和其他問題。 當您建立磁碟時，Azure 儲存體會配置所需的資源，並套用資源的主動式和回應式平衡來處理流量層級。 這可進一步確保磁碟可維持其預期的 IOPS 和輸送量目標。 您可以視需要使用 VM 層級和磁碟層級計量來追蹤效能和設定警示。
 
-請參閱我們的[高效能設計](~/articles/virtual-machines/windows/premium-storage-performance.md)一文，以了解最佳化 VM 和磁碟組態的最佳作法，以便您達到所需的效能
+請參閱我們的[高效能設計](premium-storage-performance.md)一文，以了解最佳化 VM 和磁碟組態的最佳作法，以便您達到所需的效能
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -262,6 +262,8 @@
           href: howto-read-replicas-powershell.md
     - name: 疑難排解
       items:
+        - name: 常見問題疑難排解
+          href: howto-troubleshoot-common-errors.md
         - name: 針對連線問題進行疑難排解
           href: howto-troubleshoot-common-connection-issues.md
         - name: 針對查詢效能進行疑難排解

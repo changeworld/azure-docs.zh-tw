@@ -4,10 +4,10 @@ description: 本教學課程說明如何使用 Azure WCF 轉送向外部用戶�
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: 50628073efd7114aaacfe37177d2f5beb3be3d47
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85322700"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>教學課程：使用 Azure WCF 轉送向外部用戶端公開內部部署 WCF REST 服務

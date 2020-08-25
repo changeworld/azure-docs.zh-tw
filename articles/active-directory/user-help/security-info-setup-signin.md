@@ -11,18 +11,18 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: 7de8a5bcc2f7883b00ec25e2674b1dc6bd6871c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 016e0de26bf3a9513940be161cfecf6d1c2b9d02
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747277"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798494"
 ---
 # <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>經由登入提示設定安全性資訊
 
 如果您在登入公司或學校帳戶後隨即看見設定安全性資訊的提示，您可以依照下列步驟進行設定。
 
-只有在您尚未設定組織所要求的安全性資訊時，才會看到此提示。 如果您先前已設定安全性資訊，但想要進行變更，您可以參考以方法歸類的操作說明文章，並依照其中的步驟操作。 如需詳細資訊，請參閱[新增或更新安全性資訊概觀](security-info-add-update-methods-overview.md)。
+只有在您尚未設定組織所要求的安全性資訊時，才會看到此提示。 如果您先前已設定安全性資訊，但想要進行變更，您可以參考以方法歸類的操作說明文章，並依照其中的步驟操作。 如需詳細資訊，請參閱[新增或更新安全性資訊概觀](./security-info-setup-auth-app.md)。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 

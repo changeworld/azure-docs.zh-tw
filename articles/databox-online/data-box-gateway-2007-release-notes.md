@@ -1,39 +1,39 @@
 ---
 title: Azure Stack Edge & Azure 資料箱閘道2007版本資訊 |Microsoft Docs
-description: 描述執行2007版本之 Azure Stack Edge 和資料箱閘道的重大未解決問題和解決方法。
+description: 描述執行2007版本的 Azure Stack Edge 和資料箱閘道的重大開啟問題和解決方式。
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
 ms.date: 07/14/2020
-ms.author: v-grpr
-ms.openlocfilehash: 4964454a5636120840fbdb5f3fbdd3aee30d8e74
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: twooley
+ms.openlocfilehash: f9a08cda1466dbe284a0ac3c0e34b109be236883
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531317"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783921"
 ---
-# <a name="azure-stack-edge-and-azure-data-box-gateway-2007-release-notes"></a>Azure Stack Edge 和 Azure 資料箱 Gateway 2007 版本資訊
+# <a name="azure-stack-edge-and-azure-data-box-gateway-2007-release-notes"></a>Azure Stack Edge 和 Azure 資料箱閘道2007版本資訊
 
-下列版本資訊會針對 Azure Stack Edge 和資料箱閘道的2007版本，識別重大的未解決問題和已解決的問題。
+下列版本資訊指出 Azure Stack Edge 和資料箱閘道2007版的重大未解決問題和解決的問題。
 
-版本資訊會持續更新，並在發現需要提出因應措施的重大問題時有所增補。 在您部署 Azure Stack Edge/資料箱閘道之前，請仔細檢查版本資訊中包含的資訊。
+版本資訊會持續更新，並在發現需要提出因應措施的重大問題時有所增補。 部署 Azure Stack Edge/資料箱閘道之前，請仔細檢查版本資訊中所含的資訊。
 
 此版本對應于軟體版本：
 
-- **Azure Stack Edge 2007 （1.6.1280.1667）** -KB 4566549
-- **資料箱閘道2007（1.6.1280.1667）** -KB 4566550
+- **Azure Stack Edge 2007 (1.6.1280.1667) ** -KB 4566549
+- **Data Box Gateway 2007 (1.6.1280.1667) ** -KB 4566550
 
 > [!NOTE]
-> 更新2007只能套用至所有執行軟體或更新版本之公開上市（GA）版本的裝置。
+> 更新2007只能套用至正式運作 (正式運作) 軟體版本或更新版本的所有裝置。
 
 ## <a name="whats-new"></a>新功能
 
 此版本包含下列 Bug 修正：
 
-- **上傳問題**-此版本修正由於失敗而上傳重新開機的上傳問題，可能會使上傳完成的速率變慢。 上傳主要的資料集時，可能會發生此問題，這是因為頻寬節流作用時，其大小與可用頻寬（尤其是但不限於）中的檔案很大。 這種變更可確保在重新開機指定檔案的上傳之前，有足夠的機會可供上傳完成。
+- **上傳問題** -此版本修正了上傳問題，因為失敗而上傳重新開機可能會降低上傳完成的速率。 當上傳的資料集主要包含大小相當大的檔案（相對於可用頻寬的大小很大，尤其是在頻寬節流設定為使用中時），就會發生此問題。 這項變更可確保在重新開機指定檔案的上傳之前，上傳完成有足夠的機會。
 
 此版本也包含下列更新：
 
@@ -43,7 +43,7 @@ ms.locfileid: "86531317"
 
 ## <a name="known-issues-in-this-release"></a>此版本已知的問題
 
-此版本未注明任何新問題。 所有已注明的發行問題都已從先前的版本中執行。 若要查看已知問題的清單，請移至[GA 版本中的已知問題](data-box-gateway-release-notes.md#known-issues-in-ga-release)。
+未在此版本中注明任何新問題。 所有發行的問題都已從先前的版本執行。 若要查看已知問題的清單，請移至 [GA 版本中的已知問題](data-box-gateway-release-notes.md#known-issues-in-ga-release)。
 
 ## <a name="next-steps"></a>後續步驟
 

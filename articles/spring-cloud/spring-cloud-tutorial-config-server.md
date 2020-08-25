@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: dd97932d0aaa89373636a60e793f531cda18abdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: HT
+ms.openlocfilehash: 38ef1188503d0076cfd98843f6f68c990fba7463
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091431"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762352"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>為您的服務設定 Spring Cloud Config Server 執行個體
 
@@ -146,14 +146,14 @@ Azure Spring Cloud 支援 Azure DevOps、GitHub、GitLab 和 Bitbucket，以儲�
 
     * **基本驗證**：在 [預設存放庫] 區段的 [URI] 方塊中，貼上存放庫 URI，然後選取 [驗證] (「鉛筆」圖示) 按鈕。 在 [編輯驗證] 窗格的 [驗證類型] 下拉式清單中，選取 [HTTP 基本]，然後輸入您的使用者名稱和密碼/權杖，以授與 Azure Spring Cloud 的存取權。 依序 [確定] 和 [套用]，以完成 Config Server 執行個體的設定。
 
-    ![[編輯驗證] 窗格](media/spring-cloud-tutorial-config-server/basic-auth.png)
+    ![編輯驗證窗格基本驗證](media/spring-cloud-tutorial-config-server/basic-auth.png)
     
     > [!CAUTION]
     > 某些 Git 存放庫伺服器 (例如 GitHub) 會使用*個人權杖*或*存取權杖* (例如密碼) 進行**基本驗證**。 您可以使用這種權杖作為 Azure Spring Cloud 中的密碼，因為該權杖永遠不會過期。 但對於其他 Git 存放庫伺服器 (例如 Bitbucket 和 Azure DevOps)，*存取權杖*會在一或兩個小時後過期。 這表示在搭配 Azure Spring Cloud 使用這些存放庫伺服器時，無法使用此選項。
 
     * **SSH**：在 [預設存放庫] 區段的 [URI] 方塊中，貼上存放庫 URI，然後選取 [驗證] (「鉛筆」圖示) 按鈕。 在 [編輯驗證] 窗格的 [驗證類型] 下拉式清單中，選取 [SSH]，然後輸入您的 [私密金鑰]。 您可以選擇性地指定**主機金鑰**和**主機金鑰演算法**。 請務必將您的公開金鑰包含在 Config Server 存放庫中。 依序 [確定] 和 [套用]，以完成 Config Server 執行個體的設定。
 
-    ![[編輯驗證] 窗格](media/spring-cloud-tutorial-config-server/ssh-auth.png)
+    ![編輯驗證窗格 ssh 驗證](media/spring-cloud-tutorial-config-server/ssh-auth.png)
 
 #### <a name="pattern-repository"></a>模式存放庫
 
@@ -182,6 +182,48 @@ spring:
 
 YAML 檔案中的資訊應該會顯示在 Azure 入口網站中。 選取 [套用] 以完成作業。 
 
+## <a name="using-azure-repos-for-azure-spring-cloud-configuration"></a>使用適用于 Azure 春季雲端設定的 Azure Repos
+
+Azure 春季 Cloud 可以存取公開、由 SSH 保護的 Git 存放庫，或使用 HTTP 基本驗證來保護其安全。 我們將使用最後一個選項，因為使用 Azure Repos 可以更輕鬆地建立和管理。
+
+### <a name="get-repo-url-and-credentials"></a>取得存放庫 url 和認證
+1. 在您專案的 Azure Repos 入口網站中，按一下 [複製] 按鈕：
+
+    ![複製按鈕](media/spring-cloud-tutorial-config-server/clone-button.png)
+
+1. 複製文字方塊中的複製 URL。 此 URL 通常會採用下列格式：
+
+    ```Text
+    https://<organization name>@dev.azure.com/<organization name>/<project name>/_git/<repository name>
+    ```
+
+    移除前後 `https://` 的所有專案 `dev.azure.com` ，包括 `@` 。 產生的 URL 應該採用下列格式：
+
+    ```Text
+    https://dev.azure.com/<organization name>/<project name>/_git/<repository name>
+    ```
+
+    儲存此 URL 以供下一節使用。
+
+1. 按一下 [產生 Git 認證]。 系統將會顯示使用者名稱和密碼。 儲存這些內容以供下一節使用。
+
+
+### <a name="configure-azure-spring-cloud-to-access-the-git-repository"></a>設定 Azure Spring Cloud 以存取 Git 存放庫
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+
+1. 移至 Azure Spring Cloud 的 [概觀] 頁面。
+
+1. 選取要設定的服務。
+
+1. 在 [服務] 頁面的左窗格中，選取 [ **設定**] 下的 [ **Config Server** ] 索引標籤。設定我們先前建立的存放庫：
+   - 新增您在上一節中儲存的存放庫 URL
+   - 按一下 `Authentication` 並選取 `HTTP Basic`
+   - 使用者 __名稱__ 是從上一節儲存的使用者名稱
+   - __密碼__是前一節所儲存的密碼
+   - 按一下 [套用] 並等候作業成功
+
+   ![Spring Cloud 設定伺服器](media/spring-cloud-tutorial-config-server/config-server-azure-repos.png)
 
 ## <a name="delete-your-app-configuration"></a>刪除應用程式設定
 

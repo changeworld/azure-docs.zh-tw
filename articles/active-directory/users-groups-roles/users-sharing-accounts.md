@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38b474d4b454c61b83bfb1d62230930a0b569b1d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ba22720901cf4b7505d8d5b5295ca4e0c271953f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164218"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798392"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共用帳戶
 
@@ -59,7 +59,7 @@ Azure AD 提供使用共用帳戶的新方法，可以消除這些缺點。
 * 密碼單一登入代理程式
 * [群組指派](groups-self-service-management.md)
 * 自訂密碼應用程式
-* [應用程式使用方式儀表板/報告](../active-directory-passwords-get-insights.md)
+* [應用程式使用方式儀表板/報告](../authentication/howto-sspr-reporting.md)
 * 使用者存取入口網站
 * [應用程式 proxy](../manage-apps/application-proxy.md)
 * [Active Directory 市集](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
@@ -72,10 +72,10 @@ Azure AD 提供使用共用帳戶的新方法，可以消除這些缺點。
 * 設定應用程式使用密碼單一登入 (SSO)
 * 使用[以群組為基礎的指派](groups-saasapps.md)，並選取輸入共用認證的選項
 
-使用 Azure AD，可以透過 Multi-Factor Authentication (MFA) 讓您的共用帳戶更安全 (深入了解[使用 Azure AD 保護應用程式](../authentication/concept-mfa-whichversion.md))，並可使用 [Azure AD 自助式](groups-self-service-management.md)群組管理來委派管理誰有權存取應用程式。
+使用 Azure AD，可以透過 Multi-Factor Authentication (MFA) 讓您的共用帳戶更安全 (深入了解[使用 Azure AD 保護應用程式](../authentication/concept-mfa-howitworks.md))，並可使用 [Azure AD 自助式](groups-self-service-management.md)群組管理來委派管理誰有權存取應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Active Directory 中的應用程式管理](../manage-apps/what-is-application-management.md)
-* [使用條件式存取來保護應用程式](../active-directory-conditional-access-azure-portal.md)
+* [使用條件式存取來保護應用程式](../conditional-access/overview.md)
 * [自助式群組管理/SSAA](groups-self-service-management.md)

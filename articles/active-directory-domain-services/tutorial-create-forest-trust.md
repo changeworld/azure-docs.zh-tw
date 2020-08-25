@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: a17764984e33e4312b9d81a5743d851dc14b5c05
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 24928ec4117b321cfec7177fdad40f2a3ab7a1f4
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87492151"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722716"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>教學課程：在 Azure Active Directory Domain Services 中建立內部部署網域的輸出樹系信任
 
@@ -128,7 +128,7 @@ ms.locfileid: "87492151"
 
 您應該已將 Windows Server 虛擬機器加入受控網域。 使用這部虛擬機器來測試您的內部部署使用者是否可以在虛擬機器上進行驗證。 如有需要，請[建立 Windows VM，並將其加入受控網域][join-windows-vm]。
 
-1. 使用 [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) 和您的 Azure AD DS 管理員認證，連線到已加入 Azure AD DS 資源樹系的 Windows Server VM。
+1. 使用 [Azure Bastion](../bastion/bastion-overview.md) 和您的 Azure AD DS 管理員認證，連線到已加入 Azure AD DS 資源樹系的 Windows Server VM。
 1. 開啟命令提示字元，然後使用 `whoami` 命令來顯示目前已驗證使用者的辨別名稱：
 
     ```console
@@ -150,7 +150,7 @@ ms.locfileid: "87492151"
 
 #### <a name="enable-file-and-printer-sharing"></a>啟用檔案及印表機共用
 
-1. 使用 [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) 和您的 Azure AD DS 管理員認證，連線到已加入 Azure AD DS 資源樹系的 Windows Server VM。
+1. 使用 [Azure Bastion](../bastion/bastion-overview.md) 和您的 Azure AD DS 管理員認證，連線到已加入 Azure AD DS 資源樹系的 Windows Server VM。
 
 1. 開啟 **Windows 設定**，然後搜尋並選取 [網路和共用中心]。
 1. 選擇 [變更進階共用] 設定選項。

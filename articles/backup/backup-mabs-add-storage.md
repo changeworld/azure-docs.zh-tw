@@ -3,12 +3,12 @@ title: 在 Azure 備份伺服器中使用新式備份儲存體
 description: 了解 Azure 備份伺服器中的新功能。 本文說明如何升級您的備份伺服器安裝。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: ee55355b0f2cabe97f5d2a838edcbd5cfddf44e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c7533a5ee2fc65beb86c0c803a522e0acb1df6d
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513705"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762431"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>在 Azure 備份伺服器中新儲存體
 
@@ -18,7 +18,7 @@ Azure 備份伺服器 V2 和更新版本支援 Modern Backup Storage，可節省
 > 若要使用新式備份儲存體，您必須在 Windows Server 2016 上執行備份伺服器 V2 或 V3 或在 Windows Server 2019 上執行 V3。
 > 如果您在舊版 Windows Server 上執行備份伺服器 V2，Azure 備份伺服器將無法利用新式備份儲存體。 相反地，它保護工作負載的方式會和備份伺服器 V1 一樣。 如需詳細資訊，請參閱備份伺服器版本[保護對照表](backup-mabs-protection-matrix.md)。
 >
-> 為了達到增強的備份效能，我們建議您在 Windows Server 2019 上部署 MABS v3 與分層式存放裝置。 如需設定階層式儲存區的步驟，請參閱 DPM 文章「[使用分層式儲存體設定 mb](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)」。
+> 為了達成增強的備份效能，建議您在 Windows Server 2019 上使用階層式存放裝置部署 MABS v3。 如需設定階層式存放裝置的步驟，請參閱 DPM 文章「使用階層式[存放區設定 mb](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)」。
 
 ## <a name="volumes-in-backup-server"></a>備份伺服器中的磁碟區
 
@@ -30,15 +30,15 @@ Azure 備份伺服器 V2 和更新版本支援 Modern Backup Storage，可節省
     2. 新增其他磁碟，並擴充虛擬磁碟。
     3. 在虛擬磁碟上建立磁碟區。
 3. 在備份伺服器中新增磁碟區。
-4. 設定可感知工作負載的儲存體。
+4. 設定工作負載感知的儲存體。
 
 ## <a name="create-a-volume-for-modern-backup-storage"></a>為新式備份儲存體建立磁碟區
 
 以磁碟區作為磁碟儲存體來使用備份伺服器 V2 或更新版本可協助您掌控儲存體。 磁碟區可以是單一磁碟。 不過，如果您日後想要擴充儲存體，請從使用儲存體空間所建立的磁碟中建立磁碟區。 如果您想要擴充磁碟區以供儲存備份，這麼做會有所幫助。 本節會提供最佳做法，讓您了解如何建立具有此設定的磁碟區。
 
-1. 在伺服器管理員中，選取 [檔案**和存放服務**] [  >  **磁片**區] [  >  **存放集區**] 在 [實體磁碟]**** 底下，選取 [新增儲存集區]****。
+1. 在伺服器管理員中，選取 [檔案**和存放服務**  >  **磁片**  >  **區] 儲存集區**。 在 [實體磁碟]**** 底下，選取 [新增儲存集區]****。
 
-    ![建立新的儲存集區](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
+    ![建立新的存放集區](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
 2. 在 [工作]**** 下拉式方塊中，選取 [新增虛擬磁碟]****。
 
@@ -56,7 +56,7 @@ Azure 備份伺服器 V2 和更新版本支援 Modern Backup Storage，可節省
 
     ![建立新的磁碟區](./media/backup-mabs-add-storage/mabs-add-storage-5.png)
 
-6. 在 [選取伺服器和磁碟]**** 對話方塊中，選取伺服器和新的磁碟。 然後，選取 [下一步]。
+6. 在 [選取伺服器和磁碟]**** 對話方塊中，選取伺服器和新的磁碟。 然後，選取 [下一步]  。
 
     ![選取伺服器和磁碟](./media/backup-mabs-add-storage/mabs-add-storage-6.png)
 
@@ -77,7 +77,7 @@ Azure 備份伺服器 V2 和更新版本支援 Modern Backup Storage，可節省
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-您可以使用 PowerShell Cmdlet 更新-Update-dpmdiskstorage 來設定工作負載感知存放裝置，這會在 Azure 備份伺服器上更新存放集區中的磁片區屬性。
+您可以使用 PowerShell Cmdlet Update-dpmdiskstorage 來設定工作負載感知存放裝置，以更新 Azure 備份伺服器上存放集區中磁片區的屬性。
 
 語法：
 
@@ -119,7 +119,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 若要新增磁碟儲存體：
 
-1. 在 [系統管理員主控台中，選取 [**管理**]  >  **磁碟儲存體**  >  **新增**]。
+1. 在 [系統管理員主控台中，選取 [**管理**  >  **磁碟儲存體**  >  **新增**]。
 
     ![[新增磁碟儲存體] 對話方塊](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
@@ -127,7 +127,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 3. 在可用磁碟清單中選取您要新增的磁碟，選取 [新增]****，然後選取 [確定]****。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在安裝備份伺服器之後，請了解如何準備您的伺服器或開始保護工作負載。
 

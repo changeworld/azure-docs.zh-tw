@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: cd5aaea5e7f176a0741671d4815188a5fb94830e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a08575ac118f38361d82198ccc86a09f7b2558d6
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653557"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783734"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure Machine Learning 中建立 & 使用軟體環境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -62,11 +62,6 @@ ws = Workspace.from_config()
 env = Environment.get(workspace=ws, name="AzureML-Minimal")
 ```
 
-若要修改策劃環境，必須將它複製：
-
-```python
-env = Environment.get(workspace=ws, name="AzureML-Tutorial").clone("new_env")
-```
 您可以使用下列程式碼列出策劃環境及其套件：
 
 ```python

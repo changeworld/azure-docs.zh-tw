@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b27bd52ad8794222d52d37032b0cd4fdf99f47b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f1b9e2af7cb6dd234e58218c6a33c01f321de947
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057920"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798511"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>在 Azure Active Directory 中使用 Microsoft Graph API 指派自訂管理員角色 
 
@@ -26,7 +26,7 @@ ms.locfileid: "87057920"
 
 ## <a name="required-permissions"></a>所需的權限
 
-使用全域管理員或特殊權限角色管理員帳戶，連接到您的 Azure AD 組織，以指派或移除角色。
+使用全域管理員或特殊權限角色管理員帳戶連接到您的 Azure AD 組織，以指派或移除角色。
 
 ## <a name="post-operations-on-roleassignment"></a>RoleAssignment 上的 POST 作業
 
@@ -55,7 +55,7 @@ body
 HTTP/1.1 201 Created
 ```
 
-### <a name="example-2-create-a-role-assignment-where-the-principal-or-role-definition-does-not-exist"></a>範例2：建立主體或角色定義不存在的角色指派
+### <a name="example-2-create-a-role-assignment-where-the-principal-or-role-definition-does-not-exist"></a>範例2：建立不存在主體或角色定義的角色指派
 
 POST
 
@@ -102,7 +102,7 @@ body
 HTTP/1.1 201 Created
 ```
 
-### <a name="example-4-create-an-administrative-unit-scoped-role-assignment-on-a-built-in-role-definition-which-is-not-supported"></a>範例4：在不支援的內建角色定義上建立系統管理單位範圍的角色指派
+### <a name="example-4-create-an-administrative-unit-scoped-role-assignment-on-a-built-in-role-definition-which-is-not-supported"></a>範例4：在不支援的內建角色定義上，建立管理單位範圍的角色指派
 
 POST
 
@@ -136,11 +136,11 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-系統管理單位範圍只會啟用內建角色的子集。 如需管理單位支援的內建角色清單，請參閱[這份檔](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-admin-units-assign-roles)。
+系統管理單元的範圍僅會啟用內建角色的子集。 請參閱 [這份檔](./roles-admin-units-assign-roles.md) ，以取得管理單位所支援的內建角色清單。
 
 ## <a name="get-operations-on-roleassignment"></a>RoleAssignment 上的 GET 作業
 
-### <a name="example-5-get-role-assignments-for-a-given-principal"></a>範例5：取得給定主體的角色指派
+### <a name="example-5-get-role-assignments-for-a-given-principal"></a>範例5：取得指定主體的角色指派
 
 GET
 
@@ -170,7 +170,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-### <a name="example-6-get-role-assignments-for-a-given-role-definition"></a>範例6：取得給定角色定義的角色指派。
+### <a name="example-6-get-role-assignments-for-a-given-role-definition"></a>範例6：取得指定角色定義的角色指派。
 
 GET
 
@@ -214,7 +214,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-### <a name="example-8-get-role-assignments-for-a-given-scope"></a>範例8：取得給定範圍的角色指派
+### <a name="example-8-get-role-assignments-for-a-given-scope"></a>範例8：取得指定範圍的角色指派
 
 
 GET
@@ -274,7 +274,7 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lA
 HTTP/1.1 404 Not Found
 ```
 
-### <a name="example-11-delete-a-role-assignment-between-self-and-global-administrator-role-definition"></a>範例11：刪除自助和全域管理員角色定義之間的角色指派
+### <a name="example-11-delete-a-role-assignment-between-self-and-global-administrator-role-definition"></a>範例11：刪除 self 和全域管理員角色定義之間的角色指派
 
 刪除
 
@@ -300,7 +300,7 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-我們會防止使用者刪除自己的全域管理員角色，以避免租使用者擁有零全域管理員的情況。 允許移除指派給 self 的其他角色。
+我們會防止使用者刪除自己的全域系統管理員角色，以避免租使用者的全域管理員為零的案例。 您可以移除其他指派給 self 的角色。
 
 ## <a name="next-steps"></a>後續步驟
 

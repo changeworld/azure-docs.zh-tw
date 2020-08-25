@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e8cba89abd65844d238120726572481457f27cb
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 28125ff55fe6ab3e68d56dc26a074d0498c2b413
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706148"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798426"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>在 Azure Active Directory 中限制來賓存取許可權 (預覽) 
 
@@ -50,11 +50,11 @@ Azure Active Directory (Azure AD) 可讓您限制外部來賓使用者在其組�
 
     ![Azure AD 外部共同作業設定頁面](./media/users-restrict-guest-permissions/external-collaboration-settings.png)
 
-1. 選取 [儲存]。 這些變更最多可能需要15分鐘的時間才會對來賓使用者生效。
+1. 選取 [儲存]  。 這些變更最多可能需要15分鐘的時間才會對來賓使用者生效。
 
 ## <a name="update-with-the-microsoft-graph-api"></a>使用 Microsoft Graph API 更新
 
-我們新增了新的 Microsoft Graph API，以在您的 Azure AD 組織中設定來賓許可權。 您可以建立下列 API 呼叫，以指派任何許可權層級。 此處使用的 guestUserRoleId 值是說明最受限制的來賓使用者設定。 如需使用 Microsoft Graph 設定來賓許可權的詳細資訊，請參閱 [authorizationPolicy 資源類型](https://docs.microsoft.com/graph/api/resources/authorizationpolicy)。
+我們新增了新的 Microsoft Graph API，以在您的 Azure AD 組織中設定來賓許可權。 您可以建立下列 API 呼叫，以指派任何許可權層級。 此處使用的 guestUserRoleId 值是說明最受限制的來賓使用者設定。 如需使用 Microsoft Graph 設定來賓許可權的詳細資訊，請參閱 [authorizationPolicy 資源類型](/graph/api/resources/authorizationpolicy)。
 
 ### <a name="configuring-for-the-first-time"></a>第一次設定
 
@@ -150,7 +150,7 @@ PS C:\WINDOWS\system32> Set-AzureADMSAuthorizationPolicy -GuestUserRoleId '2af84
 - 表單
 - 小組中的規劃工具
 - Planner 應用程式
-- 專案
+- Project
 - Yammer
 
 ## <a name="frequently-asked-questions-faq"></a>常見問題集 (FAQ)
@@ -168,5 +168,5 @@ Planner 和 Yammer 的已知相容性問題有哪些？ | <li>當權限設定為
 ## <a name="next-steps"></a>後續步驟
 
 - 若要深入瞭解 Azure AD 中現有的 guest 許可權，請參閱 [Azure Active Directory 中的預設使用者許可權為何？](../fundamentals/users-default-permissions.md)。
-- 若要查看限制來賓存取的 Microsoft Graph API 方法，請參閱 [authorizationPolicy 資源類型](https://docs.microsoft.com/graph/api/resources/authorizationpolicy)。
+- 若要查看限制來賓存取的 Microsoft Graph API 方法，請參閱 [authorizationPolicy 資源類型](/graph/api/resources/authorizationpolicy)。
 - 若要撤銷使用者的所有存取權，請參閱 [Azure AD 中的 [撤銷使用者存取]](users-revoke-access.md)。

@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: edbe76145c83e000c549f7e0dd89cc500e6f05f9
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b442d5dfae6596b3aea9301d86e9a7cb6d2cbb9f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741782"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799208"
 ---
 # <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>在我的應用程式入口網站上更新您的設定檔和帳戶資訊
 
@@ -33,7 +33,7 @@ ms.locfileid: "83741782"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> 本內容適用於**我的應用程式**使用者。 如果您是系統管理員，可以在[應用程式管理文件](https://docs.microsoft.com/azure/active-directory/manage-apps)中找到更多關於如何設定和管理雲端式應用程式的資訊。
+> 本內容適用於**我的應用程式**使用者。 如果您是系統管理員，可以在[應用程式管理文件](../manage-apps/index.yml)中找到更多關於如何設定和管理雲端式應用程式的資訊。
 
 ## <a name="view-your-organization-related-profile-information"></a>檢視您組織的相關設定檔資訊
 

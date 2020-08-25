@@ -4,12 +4,12 @@ description: 使用 Azure 備份和 PowerShell 來備份和還原 Azure Vm 中�
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 6bd119b743ad83bcab9f92d386a5091593f6a5c0
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 51c3aa13b088eb056e8b7dcaa2af80b83a606a54
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761316"
+ms.locfileid: "88763400"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>使用 PowerShell 備份及還原 Azure Vm 中的 SQL 資料庫
 
@@ -160,7 +160,7 @@ $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Nam
 * 使用 [>get-azrecoveryservicesbackupschedulepolicyobject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject)來查看預設的備份原則排程。
 * 您可以使用 [>get-azrecoveryservicesbackupprotectionpolicy](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) Cmdlet 來建立新的備份原則。 您可以輸入排程和保留原則物件。
 
-根據預設，開始時間是在排程原則物件中定義。 使用下列範例將開始時間變更為所需的開始時間。 所需的開始時間也應為 UTC。 下列範例假設每日備份所需的開始時間為 01:00 AM UTC。
+根據預設，開始時間是在排程原則物件中定義。 使用下列範例將開始時間變更為所需的開始時間。 所需的開始時間也應為 UTC。 下列範例假設所需的開始時間為每日備份 01:00 AM UTC。
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "MSSQL"
