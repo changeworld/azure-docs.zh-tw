@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Chatwork 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Chatwork 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0982ee1d-7ae2-415b-9e47-cfc72e1885ca
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 368b87a4abd5b55a807f7184c3a56876169b2517
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fdf9e16e5578f794d01671d391f3568eae6555cc
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293296"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586234"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-chatwork"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Chatwork 整合
 
@@ -87,7 +83,9 @@ ms.locfileid: "87293296"
     在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://www.chatwork.com/s/<TENANT_NAME>`
 
     > [!NOTE]
-    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Chatwork 用戶端支援小組](mailto:info@support.chatwork.com)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這不是真正的值。 使用您在 **Chatwork SSO 組態** 後所設定的私人登入 URL 來更新值。
+
+1. Chatwork 應用程式預期**唯一使用者識別碼**屬性值符合在 Chatwork 中註冊的電子郵件地址。 根據預設，屬性會對應至 **user.principalname**。 如果 principalname 與電子郵件地址不同，請將 **唯一使用者識別碼** 對應到 **user.mail**。
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
 
@@ -101,7 +99,7 @@ ms.locfileid: "87293296"
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 1. 在畫面頂端選取 [新增使用者]。
 1. 在 [使用者] 屬性中，執行下列步驟：
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
@@ -129,11 +127,11 @@ ms.locfileid: "87293296"
 
 ## <a name="configure-chatwork-sso"></a>設定 Chatwork SSO
 
-若要設定 **Chatwork** 端的單一登入，您必須將從 Azure 入口網站下載的 [憑證 (Base64)] 和複製的適當 URL 傳送給 [Chatwork 支援小組](mailto:info@support.chatwork.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Chatwork** 端設定單一登入，請閱讀 [Chatwork 管理員指南](https://download.chatwork.com/Chatwork_AdminGuide.pdf) 並設定 Chatwork 設定。
 
 ### <a name="create-chatwork-test-user"></a>建立 Chatwork 測試使用者
 
-在本節中，您要在 Chatwork 中建立名為 B.Simon 的使用者。 請與  [Chatwork 支援小組](mailto:info@support.chatwork.com)合作，在 Chatwork 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您要在 Chatwork 中建立名為 B.Simon 的使用者。 存取 [Chatwork 管理員指南](https://download.chatwork.com/Chatwork_AdminGuide.pdf)，並在 Chatwork 平台中新增使用者。
 
 ## <a name="test-sso"></a>測試 SSO 
 

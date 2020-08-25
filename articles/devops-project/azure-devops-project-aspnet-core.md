@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 Azure DevOps Starter 建立適用于 .NET 的 CI/CD 管線
+title: 快速入門：使用 Azure DevOps Starter 建立適用於 .NET 的 CI/CD 管線
 description: Azure DevOps 入門版可供輕鬆地開始使用 Azure。 它可協助您透過幾個簡單的步驟，在您選擇的 Azure 服務上啟動 .NET 應用程式。
 ms.prod: devops
 ms.technology: devops-cicd
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
-ms.custom: mvc
-ms.openlocfilehash: 3f0d937737cb261fb81dc4cdad3579ee593b5981
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: c434abdac19c0afd3a76256c27fc3316a8b09940
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233292"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163691"
 ---
-# <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>使用 Azure DevOps Starter 建立適用于 .NET 的 CI/CD 管線
+# <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>使用 Azure DevOps Starter 建立適用於 .NET 的 CI/CD 管線
 
-使用 DevOps Starter 為您的 .NET core 或 ASP.NET 應用程式設定持續整合（CI）和持續傳遞（CD）。 DevOps Starter 會在 Azure Pipelines 中簡化組建和發行管線的初始設定。
+使用 DevOps Starter 為您的 .NET Core 或 ASP.NET 應用程式設定持續整合 (CI) 與持續傳遞 (CD)。 DevOps Starter 可簡化 Azure Pipelines 中建置與發行管線的初始設定。
 
 如果您沒有 Azure 訂用帳戶，可以透過 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 取得一個免費的訂用帳戶。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-DevOps Starter 會在 Azure DevOps 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps 入門版也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源。
+DevOps 入門版會在 Azure DevOps 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps 入門版也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源。
 
 1. 登入 [Microsoft Azure 入口網站](https://portal.azure.com)。
 
@@ -54,9 +54,9 @@ DevOps Starter 會在 Azure DevOps 中建立 CI/CD 管線。 您可以建立新�
 
 2. 免費建立新的 **Azure DevOps 組織**或從下拉式清單中選擇現有組織。
 
-3. 選取 **Azure 訂用帳戶**，輸入 **Web 應用程式**名稱或採用預設值，然後選取 [完成]  。 幾分鐘後，DevOps Starter 部署總覽就會顯示在 Azure 入口網站中。 
+3. 選取 **Azure 訂用帳戶**，輸入 **Web 應用程式**名稱或採用預設值，然後選取 [完成]  。 在幾分鐘後，Azure 入口網站中便會顯示 DevOps 入門版部署概觀。 
 
-4. 選取 [**前往資源**] 以查看 DevOps 入門儀表板。 在右上角將 [專案]  釘選至儀表板以供快速存取。 範例應用程式已在 **Azure DevOps 組織**的存放庫中進行設定。 組建會執行，且您的應用程式會部署至 Azure。
+4. 選取 [移至資源] 以檢視 DevOps 入門版儀表板。 在右上角將 [專案]  釘選至儀表板以供快速存取。 範例應用程式已在 **Azure DevOps 組織**的存放庫中進行設定。 組建會執行，且您的應用程式會部署至 Azure。
 
 5. 儀表板可顯示您的程式碼存放庫、您的 CI/CD 管線，和您在 Azure 中的應用程式。 從右側 Azure 資源下方選取 [瀏覽]  以檢視執行中應用程式。
 
@@ -64,25 +64,25 @@ DevOps Starter 會在 Azure DevOps 中建立 CI/CD 管線。 您可以建立新�
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>認可程式碼變更並執行 CI/CD
 
-DevOps Starter 已在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要檢視存放庫並變更您應用程式的程式碼，請執行下列作業：
+DevOps 入門版會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要檢視存放庫並變更您應用程式的程式碼，請執行下列作業：
 
-1. 在 DevOps 入門儀表板的左側，選取您**主要**分支的連結。 此連結會開啟新建立 Git 存放庫的檢視。
+1. 在 DevOps Starter 儀表板的左側，選取您**主要**分支的連結。 此連結會開啟新建立 Git 存放庫的檢視。
 
 2. 在接下來的幾個步驟中，您可以使用網頁瀏覽器，直接進行和認可**主要**分支的程式碼變更。 您也可以從存放庫頁面的右上方選取 [複製]  ，以複製最愛 IDE 中的 Git 存放庫。 
 
 3. 在左側瀏覽應用程式檔案結構至 **Application/aspnet-core-dotnet-core/Pages/Index.cshtml**。
 
-4. 選取 [編輯]  ，並進行 h2 標題的變更。 例如，輸入立即**開始使用 Azure DevOps Starter** ，或進行其他變更。
+4. 選取 [編輯]  ，並進行 h2 標題的變更。 例如，鍵入**立即開始使用 Azure DevOps Starter** 或進行其他變更。
 
       ![程式碼編輯](_img/azure-devops-project-aspnet-core/codechange.png)
 
 5. 選取 [認可]  ，留下註解，然後再次選取 [認可]  。
 
-6. 在您的瀏覽器中，移至 [Azure DevOps 入門儀表板]。  您現在應該會看到正在進行中的組建。 您所做的變更會透過 CI/CD 管線自動建置及部署。
+6. 在瀏覽器中，移至 Azure DevOps Starter 儀表板。  您現在應該會看到正在進行中的組建。 您所做的變更會透過 CI/CD 管線自動建置及部署。
 
 ## <a name="examine-the-cicd-pipeline"></a>檢查 CI/CD 管線
 
-在上一個步驟中，Azure DevOps Starter 會自動設定完整的 CI/CD 管線。 瀏覽管線，並視需要進行自訂。 請採取下列步驟，讓您自己熟悉 Azure DevOps 建置和發行管線。
+在上一個步驟中，Azure DevOps Starter 已自動設定完整的 CI/CD 管線。 瀏覽管線，並視需要進行自訂。 請採取下列步驟，讓您自己熟悉 Azure DevOps 建置和發行管線。
 
 1. 在 DevOps 入門版儀表板頂端選取 [建置管線]。 此連結會開啟瀏覽器索引標籤和新專案的 Azure DevOps 建置管線。
 
@@ -101,7 +101,7 @@ DevOps Starter 已在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要�
 1. 在建置管線名稱下，選取 [記錄]  。   
 在 [記錄]  窗格中，您可以看到近期建置變更的稽核線索。  Azure Pipelines 會追蹤對建置管線進行的任何變更，且可讓您比較版本。
 
-1. 選取 [觸發程序]  。 DevOps Starter 會自動建立 CI 觸發程式，且每次對存放庫的認可都會啟動新的組建。 您可以選擇性地選擇要在 CI 程序中包含還是排除分支。
+1. 選取 [觸發程序]  。 DevOps Starter 已自動建立 CI 觸發程序，且每次對存放庫的認可都會啟動新的組建。 您可以選擇性地選擇要在 CI 程序中包含還是排除分支。
 
 1. 選取 [保留期]  。 根據案例，您可以指定原則來保留或移除特定數目的組建。
 

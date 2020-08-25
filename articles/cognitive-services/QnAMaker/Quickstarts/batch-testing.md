@@ -3,12 +3,12 @@ title: 快速入門：使用批次問題來測試知識庫
 description: 使用 QnA Maker 批次測試工具來測試 QnA Maker 資源中的知識庫，以取得預期答案、信賴分數和多回合提示。
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: 01c767a6fbea5061f644052234f7462857dd342b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: bcee98678212a3bc233c36a831f6bcde7e6ae550
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337728"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531064"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>快速入門：使用批次問題和預期答案來測試知識庫
 
@@ -16,7 +16,7 @@ ms.locfileid: "84337728"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * [建立 QnA Maker 服務](create-publish-knowledge-base.md)，或使用採用了英文版的現有服務。
 * 下載[多回合範例 `.docx` 檔案](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)
 * 下載[批次測試工具](https://aka.ms/qnamakerbatchtestingtool)，從 `.zip` 檔案擷取出可執行檔。
@@ -61,7 +61,7 @@ ms.locfileid: "84337728"
 
 ## <a name="create-batch-test-file-with-question-ids"></a>建立具有問題識別碼的批次測試檔案
 
-為了使用批次測試工具，請使用文字編輯器建立名為 `batch-test-data-1.tsv` 的檔案。 此檔案必須擁有下列資料行並以定位字元加以分隔。
+為了使用批次測試工具，請使用文字編輯器建立名為 `batch-test-data-1.tsv` 的檔案。 此檔案必須為 UTF-8 格式，且擁有下列資料行並以定位字元加以分隔。
 
 |TSV 輸入檔欄位|注意|範例|
 |--|--|--|

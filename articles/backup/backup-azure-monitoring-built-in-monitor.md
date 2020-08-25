@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解使用 Azure 入口網站 Azure 備份�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 07c22f4af08fd4032eeab91f0eada7797d04ebaa
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ec0453725186ddef359f85f8c3e5554ff240d3e3
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654118"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755716"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>監視 Azure 備份工作負載
 
@@ -95,7 +95,7 @@ Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視�
 
 > [!NOTE]
 >
-> - 如果執行了破壞性作業（例如 **停止保護與刪除資料** ），則會引發警示，並將電子郵件傳送給訂用帳戶擁有者、系統管理員和共同管理員，即使尚未針對復原服務保存庫設定通知也是一樣。
+> - 如果執行了破壞性作業（例如 **停止保護與刪除資料** ），則會引發警示，並將電子郵件傳送給訂用帳戶擁有者、系統管理員和共同管理員，即使沒有針對復原服務保存庫設定通知也是一樣。
 > - 若要設定成功作業的通知，請使用 [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace)。
 
 ## <a name="inactivating-alerts"></a>將警示

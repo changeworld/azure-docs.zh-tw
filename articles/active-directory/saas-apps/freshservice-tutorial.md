@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Freshservice 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Freshservice 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3dd22b1f-445d-45c6-8eda-30207eb9a1a8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/29/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06b52ec552434f74c56333d1afe00cde2a285418
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 9e53881d5b28b61cd220b14e02c411db53d19d36
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905392"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550991"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Freshservice 整合
 
@@ -60,7 +56,7 @@ ms.locfileid: "87905392"
 1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Freshservice**。
 1. 從結果面板選取 [Freshservice]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-freshservice"></a>設定及測試 Freshservice 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-freshservice"></a>設定和測試 Freshservice 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Freshservice 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Freshservice 中相關使用者之間的連結關聯性。
 
@@ -87,7 +83,7 @@ ms.locfileid: "87905392"
 
     a. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<democompany>.freshservice.com`
 
-    b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：`https://<democompany>.freshservice.com`
+    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<democompany>.freshservice.com`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Freshservice 用戶端支援小組](https://support.freshservice.com/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
@@ -104,7 +100,7 @@ ms.locfileid: "87905392"
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 1. 在畫面頂端選取 [新增使用者]。
 1. 在 [使用者] 屬性中，執行下列步驟：
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
@@ -132,7 +128,15 @@ ms.locfileid: "87905392"
 
 ## <a name="configure-freshservice-sso"></a>設定 FreshService SSO
 
-1. 開啟新的網頁瀏覽器視窗，並以系統管理員身分登入您的 Freshservice 公司網站。
+1. 若要自動執行 Freshservice 內的設定，您必須按一下 [安裝擴充功能]**** 來安裝「我的應用程式安全登入瀏覽器擴充功能」****。
+
+    ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
+
+1. 將擴充功能新增至瀏覽器之後，按一下 [設定 Freshservice] 便會將您導向到 Freshservice 應用程式。 請從該處提供用以登入 Freshservice 的管理員認證。 瀏覽器擴充功能會自動為您設定應用程式，並自動執行步驟 3 到 6。
+
+    ![設定組態](common/setup-sso.png)
+
+1. 如果要手動設定 Freshservice，請以管理員身分登入您的 Freshservice 公司網站。
 
 1. 在左側功能表中，按一下 [管理員]，然後在 [一般設定] 中選取 [服務台安全性]。
 

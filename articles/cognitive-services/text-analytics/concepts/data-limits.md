@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 04/27/2020
+ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 0dc79132ae75be511b53bf272e578ff0ce7a7775
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986809"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258278"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>文字分析 API 的資料和速率限制
 <a name="data-limits"></a>
@@ -31,8 +31,8 @@ ms.locfileid: "87986809"
 
 | 限制 | 值 |
 |------------------------|---------------|
-| 單一文件的大小上限 | 5,120 個字元，由 [StringInfo.LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) 進行測量。 |
-| 整體要求的大小上限 | 1 MB |
+| 單一文件的大小上限 | 5,120 個字元，由 [StringInfo.LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) 進行測量。 也適用於健康情況容器的文字分析。 |
+| 整體要求的大小上限 | 1 MB。 也適用於健康情況容器的文字分析。 |
 
 您可以在單一要求中傳送的文件數目上限取決於所使用的 API 版本和功能。
 
@@ -48,7 +48,7 @@ API 的 v3 中已變更下列限制。 超過下列限制會產生 HTTP 400 錯�
 | 關鍵片語擷取 | 10 |
 | 具名實體辨識 | 5 |
 | 實體連結 | 5 |
-
+| 健康情況容器的文字分析 | 1000 |
 #### <a name="version-2"></a>[第 2 版](#tab/version-2)
 
 | 功能 | 每個要求的文件數上限 | 
@@ -63,7 +63,7 @@ API 的 v3 中已變更下列限制。 超過下列限制會產生 HTTP 400 錯�
 
 ## <a name="rate-limits"></a>速率限制
 
-您的速率限制會隨著[定價層](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)而不同。 這些限制在兩個版本的 API 中是相同的。
+您的速率限制會隨著[定價層](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)而不同。 這些限制在兩個版本的 API 中是相同的。 這些速率限制不適用於健康情況容器的文字分析，因為沒有設定速率限制。
 
 | 層          | 每秒要求 | 每分鐘要求 |
 |---------------|---------------------|---------------------|

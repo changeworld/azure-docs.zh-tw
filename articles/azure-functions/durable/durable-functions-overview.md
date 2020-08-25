@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 8fd670104a04229ed688b365de89e2ffc22b5429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adf58b667d17393fc905fbf31261530fce88d9f8
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499376"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272343"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions 是什麼？
 
@@ -25,6 +25,7 @@ Durable Functions 目前支援下列語言：
 * **JavaScript**：只有 2.x 版的 Azure Functions 執行階段才支援。 需要 1.7.0 版的 Durable Functions 擴充功能，或更新版本。 
 * **Python**：需要 1.8.5 版的 Durable Functions 擴充功能，或更新版本。 
 * **F#** ：預先編譯的類別庫和 F# 指令碼。 只有 1.x 版的 Azure Functions 執行階段才支援 F# 指令碼。
+* **PowerShell**：Durable Functions 的支援目前處於公開預覽狀態。 只有 3.x 版的 Azure Functions 執行階段和 PowerShell 7 才支援。 需要 2.2.2 版的 Durable Functions 擴充功能，或更新版本。 目前僅支援以下模式：[函式鏈結](#chaining)、[展開傳送/傳入](#fan-in-out)、[非同步 HTTP API](#async-http)。
 
 Durable Functions 的目標是支援所有的 [Azure Functions 語言](../supported-languages.md)。 請參閱 [Durable Functions 問題清單](https://github.com/Azure/azure-functions-durable-extension/issues)，以取得最新工作狀態來支援其他語言。
 
@@ -119,6 +120,19 @@ main = df.Orchestrator.create(orchestrator_function)
 > [!NOTE]
 > Python 中的 `context` 物件代表協調流程內容。 使用協調流程內容上的 `function_context` 屬性，存取主要的 Azure Functions 內容。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+$X = Invoke-ActivityFunction -FunctionName 'F1'
+$Y = Invoke-ActivityFunction -FunctionName 'F2' -Input $X
+$Z = Invoke-ActivityFunction -FunctionName 'F3' -Input $Y
+Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
+```
+
+您可以使用 `Invoke-ActivityFunction` 命令依名稱叫用其他函式、傳遞參數，以及傳回函式輸出。 每當程式碼在沒有 `NoWait` 參數的情況下呼叫 `Invoke-ActivityFunction` 時，Durable Functions 架構便會對目前函式執行個體的進度設定檢查點。 如果處理序或虛擬機器在執行途中回收，函式執行個體便會從先前的 `Invoke-ActivityFunction` 呼叫繼續執行。 如需詳細資訊，請參閱下一節，模式 #2：展開傳送/收合傳送。
+
 ---
 
 ### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>模式 #2：展開傳送/收合傳送。
@@ -211,6 +225,30 @@ main = df.Orchestrator.create(orchestrator_function)
 展開傳送工作會散發至 `F2` 函式的多個執行個體。 此工作是使用動態的工作清單進行追蹤。 系統會呼叫 `context.task_all` API 以等候所有已呼叫的函式完成。 然後，`F2` 函式的輸出會從動態工作清單彙總起來並傳遞給 `F3` 函式。
 
 在 `context.task_all` 的 `yield` 呼叫發生的自動檢查點作業，可確保可能的中途當機或重新開機不需要重新啟動已完成的工作。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+# Get a list of work items to process in parallel.
+$WorkBatch = Invoke-ActivityFunction -FunctionName 'F1'
+
+$ParallelTasks =
+    foreach ($WorkItem in $WorkBatch) {
+        Invoke-ActivityFunction -FunctionName 'F2' -Input $WorkItem -NoWait
+    }
+
+$Outputs = Wait-ActivityFunction -Task $ParallelTasks
+
+# Aggregate all outputs and send the result to F3.
+$Total = ($Outputs | Measure-Object -Sum).Sum
+Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
+```
+
+展開傳送工作會散發至 `F2` 函式的多個執行個體。 請注意在 `F2` 函式上呼叫 `NoWait` 參數的使用方式：此參數可在活動未完成的情況下讓協調器繼續叫用 `F2`。 此工作是使用動態的工作清單進行追蹤。 系統會呼叫 `Wait-ActivityFunction` 命令以等候所有已呼叫的函式完成。 然後，`F2` 函式的輸出會從動態工作清單彙總起來並傳遞給 `F3` 函式。
+
+在 `Wait-ActivityFunction` 呼叫發生的自動檢查點作業，可確保可能的中途當機或重新開機不需要重新啟動已完成的工作。
 
 ---
 
@@ -357,6 +395,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 目前不支援監視。
+
 ---
 
 收到要求時，系統會針對該作業識別碼建立新的協調流程執行個體。 執行個體會輪詢狀態，直到符合條件且迴圈結束為止。 長期計時器可控制輪詢間隔。 接著可執行更多工作，否則協調流程可能會結束。 當 `nextCheck` 超過 `expiryTime` 時，監視器就會結束。
@@ -455,6 +497,10 @@ main = df.Orchestrator.create(orchestrator_function)
 
 若要建立長期計時器，請呼叫 `context.create_timer`。 通知則由 `context.wait_for_external_event` 接收。 接著會呼叫 `context.task_any`，以決定是要向上呈報 (先發生逾時) 還是處理核准 (逾時前收到核准)。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 目前不支援人為互動。
+
 ---
 
 外部用戶端可以使用[內建的 HTTP API](durable-functions-http-api.md#raise-event)，將事件通知傳遞至等候中的協調器函式：
@@ -501,6 +547,10 @@ async def main(client: str):
     is_approved = True
     await durable_client.raise_event(instance_id, "ApprovalEvent", is_approved)
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 目前不支援人為互動。
 
 ---
 
@@ -583,6 +633,10 @@ module.exports = df.entity(function(context) {
 
 Python 目前不支援耐久性實體。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 目前不支援耐久性實體。
+
 ---
 
 用戶端可以使用[實體用戶端繫結](durable-functions-bindings.md#entity-client)，將實體函式的「作業」排入佇列 (也稱為「訊號處理」)。
@@ -622,6 +676,10 @@ module.exports = async function (context) {
 # <a name="python"></a>[Python](#tab/python)
 
 Python 目前不支援耐久性實體。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 目前不支援耐久性實體。
 
 ---
 

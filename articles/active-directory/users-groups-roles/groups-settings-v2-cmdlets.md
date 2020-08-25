@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce3a97678dea7e7b26caa3b1b091b023eca1a555
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2da67b9996156f136aa2eddb8aa3d2b1777a554
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015692"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794553"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>適用於群組管理的 Azure Active Directory 第 2 版 Cmdlet
 
@@ -53,7 +53,7 @@ ms.locfileid: "87015692"
 現在您可以開始在模組中使用 Cmdlet。 如需有關 Azure AD 模組中各式 Cmdlet 的完整描述，請參閱 [Azure Active Directory PowerShell 第 2 版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)的線上參考文件。
 
 > [!NOTE]
-> Azure AD PowerShell Cmdlet 無法與新的 Powershell 7 搭配使用，因為它是以 .net Core 為基礎。 我們知道這是正在進行更新的過程中。 從現在開始，我們建議使用 Windows Powershell 5.x 模組，以用於 Azure AD Powershell 作業。 
+> Azure AD PowerShell Cmdlet 無法與新的 Powershell 7 搭配使用，因為它是以 .net Core 為基礎。 我們已經知道，這正在進行更新。 目前，我們建議使用 Windows Powershell 5.x 模組來 Azure AD Powershell 作業。 
 
 
 ## <a name="connect-to-the-directory"></a>連線至目錄
@@ -134,7 +134,7 @@ Cmdlet 將會傳回所連線目錄中的所有群組。
 ```
 
 > [!NOTE]
-> Azure AD PowerShell Cmdlet 實作 OData 查詢標準。 如需詳細資訊，請參閱[使用 OData 端點的 OData 系統查詢選項](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)中的 **$filter**。
+> Azure AD PowerShell Cmdlet 實作 OData 查詢標準。 如需詳細資訊，請參閱[使用 OData 端點的 OData 系統查詢選項](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)#BKMK_filter)中的 **$filter**。
 
 ## <a name="create-groups"></a>建立群組
 
@@ -174,7 +174,7 @@ Cmdlet 將會傳回所連線目錄中的所有群組。
     PS C:\Windows\system32> Set-AzureADGroup -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -Description "Intune Device Administrators"
 ```
 
-現在，如果再次發現該群組，我們會看到 Description 屬性已更新，以反映新的值：
+現在，如果我們再次發現群組，就會看到 Description 屬性已更新，以反映新的值：
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -288,7 +288,7 @@ Cmdlet 將會傳回所連線目錄中的所有群組。
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 ```
 
--ObjectId 參數是我們想要新增擁有者的群組 ObjectID，而-RefObjectId 是我們想要新增為群組擁有者的使用者或服務主體的 ObjectID。
+-ObjectId 參數是我們要新增擁有者的群組 ObjectID，而-RefObjectId 是我們想要新增為群組擁有者的使用者或服務主體的 ObjectID。
 
 若要擷取群組的擁有者，請使用 Get AzureADGroupOwner Cmdlet：
 
@@ -296,7 +296,7 @@ Cmdlet 將會傳回所連線目錄中的所有群組。
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 ```
 
-此 Cmdlet 會傳回指定群組的擁有者清單（使用者和服務主體）：
+指令程式會針對指定的群組，傳回 (使用者和服務主體) 的擁有者清單：
 
 ```powershell
     DeletionTimeStamp ObjectId                             ObjectType
@@ -322,23 +322,23 @@ Cmdlet 將會傳回所連線目錄中的所有群組。
 * postmaster
 * root
 * secure
-* 安全性
+* security
 * ssl-admin
 * webmaster
 
-## <a name="group-writeback-to-on-premises-preview"></a>群組回寫至內部部署（預覽）
+## <a name="group-writeback-to-on-premises-preview"></a>將回寫群組至內部部署 (預覽版) 
 
-現今，許多群組仍會在內部部署 Active Directory 中進行管理。 為了回應將雲端群組同步回到內部部署的要求，適用于 Azure AD 的 Office 365 群組回寫功能現已開放預覽。
+目前，有許多群組仍在內部部署 Active Directory 中進行管理。 若要回答將雲端群組同步回內部部署的要求，Azure AD 的 Office 365 群組回寫功能現在可供預覽。
 
-Office 365 群組會在雲端中建立和管理。 回寫功能可讓您將 Office 365 群組寫回至已安裝 Exchange 的 Active Directory 樹系做為通訊群組。 具有內部部署 Exchange 信箱的使用者可以從這些群組傳送和接收電子郵件。 群組回寫功能不支援 Azure AD 安全性群組或通訊群組。
+Office 365 群組是在雲端中建立和管理。 回寫功能可讓您將 Office 365 群組作為發佈群組，寫回已安裝 Exchange 的 Active Directory 樹系。 具有內部部署 Exchange 信箱的使用者可以從這些群組傳送和接收電子郵件。 群組回寫功能不支援 Azure AD 安全性群組或通訊群組。
 
-如需詳細資訊，請參閱[Azure AD Connect 同步處理服務](../hybrid/how-to-connect-syncservice-features.md)的檔。
+如需詳細資訊，請參閱 [Azure AD Connect 同步服務](../hybrid/how-to-connect-syncservice-features.md)的檔。
 
-Office 365 群組回寫是 Azure Active Directory （Azure AD）的公開預覽功能，適用于任何付費 Azure AD 授權方案。 如需有關預覽的某些法律資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
+Office 365 群組回寫是 Azure Active Directory (Azure AD) 的公開預覽功能，而且適用于任何付費的 Azure AD 授權方案。 如需有關預覽的一些法律資訊，請參閱 [Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您可以在 [Azure Active Directory Cmdlet](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)中找到更多 Azure Active Directory PowerShell 文件。
 
-* [使用 Azure Active Directory 群組來管理資源的存取權](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+* [使用 Azure Active Directory 群組管理資源的存取權](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [整合內部部署身分識別與 Azure Active Directory](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 74007f5d10d58cf9680d4531304098cabe9b6d8b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 38ae6bec99498440d7bf7e68e2d5c397e696192a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115670"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604908"
 ---
 # <a name="about-azure-key-vault-certificates"></a>關於 Azure Key Vault 憑證
 
@@ -84,7 +84,8 @@ Key Vault 憑證具有下列屬性：
 概括而言，憑證原則包含下列資訊 (其定義可在[這裡](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)找到)：  
 
 -   X509 憑證屬性：包含主體名稱、主體替代名稱，以及其他用來建立 X509 憑證要求的屬性。  
--   金鑰屬性：包含金鑰類型、金鑰長度、可匯出和 ReuseKeyOnRenewal 欄位。 這些欄位會指示金鑰保存庫如何產生金鑰。  
+-   金鑰屬性：包含金鑰類型、金鑰長度、可匯出和 ReuseKeyOnRenewal 欄位。 這些欄位會指示金鑰保存庫如何產生金鑰。 
+     - 支援的金鑰類型：RSA、RSA-HSM、EC、EC-HSM、oct (列於[此處](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)) 
 -   秘密屬性：包含用來產生秘密值的秘密屬性，例如可定址秘密的內容類型，進而擷取憑證作為秘密。  
 -   存留期動作：包含 KV 憑證的存留期動作。 每個存留期動作包含：  
 

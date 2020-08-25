@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: iainfou
-ms.openlocfilehash: 69bb61012082404dfd6488b5e0606e5966c2fcef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6f166cdcb5f3764d7b264fdb4ebc082ece4c798b
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504648"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245089"
 ---
 # <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>教學課程：針對復原或地理位置在 Azure Active Directory Domain Services (預覽) 中建立和使用複本集
 
@@ -42,11 +42,11 @@ ms.locfileid: "87504648"
     * 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶，可與內部部署目錄或僅限雲端的目錄同步。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
-* 已在您的 Azure AD 租用戶中使用複本集建立 Azure Active Directory Domain Services 受控網域並進行設定。
+* 已在您的 Azure AD 租用戶中使用 Azure Resource Manager 部署模型建立 Azure Active Directory Domain Services 受控網域並進行設定。
     * 如有需要，請[建立並設定 Azure Active Directory Domain Services 受控網域][tutorial-create-instance]。
 
     > [!IMPORTANT]
-    > 請務必建立使用複本集的受控網域。 在此預覽之前建立的現有受控網域不支援複本集。 您至少也必須使用受控網域的 *Enterprise* SKU。 如有需要，請[變更受控網域的 SKU][howto-change-sku]。
+    > 使用傳統部署模型建立的受控網域無法使用複本集。 您至少也必須使用受控網域的 *Enterprise* SKU。 如有需要，請[變更受控網域的 SKU][howto-change-sku]。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 

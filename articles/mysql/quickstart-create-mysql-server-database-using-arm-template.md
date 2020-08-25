@@ -1,18 +1,18 @@
 ---
-title: 使用 ARM 範本建立適用於 MySQL 的 Azure DB
-description: 在本文中，您將了解如何使用 Azure Resource Manager 範本，建立具有虛擬網路整合的「適用於 MySQL 的 Azure 資料庫」伺服器。
+title: 快速入門：建立適用於 MySQL 的 Azure DB - ARM 範本
+description: 在本快速入門中，您將了解如何使用 Azure Resource Manager 範本，建立具有虛擬網路整合的「適用於 MySQL 的 Azure 資料庫」伺服器。
 author: mgblythe
 ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: 72ace8a94d16b79f756c83393db2b39a1c0df714
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ed908c4711812302fffac2e1ce59d2196426b74c
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134864"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185854"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>快速入門：使用 ARM 範本來建立適用於 MySQL 伺服器的 Azure 資料庫
 

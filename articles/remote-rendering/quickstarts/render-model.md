@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b5865f2fd76c1159f7f72633362a96335af8a059
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565515"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509360"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>快速入門：使用 Unity 轉譯模型
 
@@ -84,7 +84,7 @@ git clone https://github.com/Azure/azure-remote-rendering
 
 ### <a name="create-a-session-and-view-the-default-model"></a>建立工作階段和檢視預設模型
 
-按下 Unity 的 [播放] 按鈕以啟動工作階段。 您應會在 [遊戲] 面板中檢視區的底部看到狀態文字重疊。 工作階段將會經歷一系列的狀態轉換。 處於 [啟動中] 狀態時，遠端 VM 會啟動，這需要幾分鐘的時間。 成功時，其會轉換成 [就緒] 狀態。 現在工作階段會進入 [連線中] 狀態，並於此狀態嘗試連線到該 VM 上的轉譯執行階段。 成功時，範例會轉換成 [已連線] 狀態。 此時，其會開始下載模型以進行轉譯。 由於模型的大小，下載可能需要幾分鐘的時間。 然後遠端轉譯的模型就會出現。
+按下 Unity 的 [播放] 按鈕以啟動工作階段。 您應會在 [遊戲] 面板中檢視區的底部看到狀態文字重疊。 工作階段將會經歷一系列的狀態轉換。 處於**啟動**狀態時，伺服器會啟動，這需要幾分鐘的時間。 成功時，其會轉換成 [就緒] 狀態。 現在工作階段會進入 [連線中] 狀態，並於此狀態嘗試連線到該伺服器的轉譯執行階段。 成功時，範例會轉換成 [已連線] 狀態。 此時，其會開始下載模型以進行轉譯。 由於模型的大小，下載可能需要幾分鐘的時間。 然後遠端轉譯的模型就會出現。
 
 ![範例的輸出](media/arr-sample-output.png)
 

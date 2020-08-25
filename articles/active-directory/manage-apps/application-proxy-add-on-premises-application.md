@@ -11,13 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4db0956b1a2dec7626a24de2939941c2384d6a8a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e44de0058af0210ecb42eaa4be8b55d543d66103
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080757"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212808"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取
 
@@ -32,7 +31,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 > * 將內部部署應用程式新增至 Azure AD 租用戶
 > * 確認測試使用者可以使用 Azure AD 帳戶登入應用程式
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="prerequisites"></a>先決條件
 
 若要將內部部署應用程式新增至 Azure AD，您需要：
 
@@ -235,6 +234,10 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 
 如需疑難排解，請參閱[針對應用程式 Proxy 問題和錯誤訊息進行疑難排解](application-proxy-troubleshoot.md)。
 
+## <a name="clean-up-resources"></a>清除資源
+
+如果您不再需要本教學課程中建立的所有資源，請將其刪除。
+
 ## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已讓內部部署環境準備好與應用程式 Proxy 搭配運作，然後安裝並註冊了應用程式 Proxy 連接器。 接下來，您將應用程式新增至 Azure AD 租用戶。 您已確認使用者可以使用 Azure AD 帳戶登入應用程式。
@@ -250,4 +253,4 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 您可以為應用程式設定單一登入。 使用下列連結來選擇單一登入方法，以及尋找單一登入教學課程。
 
 > [!div class="nextstepaction"]
-> [設定單一登入](what-is-single-sign-on.md#choosing-a-single-sign-on-method)
+> [設定單一登入](sso-options.md#choosing-a-single-sign-on-method)

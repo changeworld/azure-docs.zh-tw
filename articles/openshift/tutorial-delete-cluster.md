@@ -7,12 +7,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 6fdc36dbf270be61457dcd00dd1988808a80d062
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 019e40b5ce7d3feb5b2be990d5e8a648b08302b2
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030091"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587696"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>教學課程：刪除 Azure Red Hat OpenShift 4 叢集
 
@@ -26,7 +26,7 @@ ms.locfileid: "87030091"
 
 在先前的教學課程中，我們已使用 OpenShift Web 主控台建立 Azure Red Hat OpenShift 叢集並與之連線。 如果您尚未完成這些步驟，而且想要跟著做，請從[教學課程 1 - 建立 Azure Red Hat OpenShift 4 叢集](tutorial-create-cluster.md)開始。
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.75 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -40,7 +40,7 @@ az login
 
 ## <a name="delete-the-cluster"></a>選取叢集
 
-在先前的教學課程中，已設定下列變數。 
+在先前的教學課程中，已設定下列變數。
 
 ```bash
 CLUSTER=yourclustername

@@ -1,6 +1,6 @@
 ---
 title: Azure Resource Manager 範本範例 - Azure Front Door
-description: Azure Front Door 的 Azure Resource Manager 範本範例
+description: 深入了解適用於 Front Door 的 Resource Manager 範本範例，包括用來建立基本 Front Door 和設定 Front Door 速率限制的範本。
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -10,18 +10,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2020
 ms.author: sharadag
-ms.openlocfilehash: 47db565288d1bfe1f98c58536e726eb7ec55d0a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14f9cb33ce298b97ead0f6d7fbec0ad77e79a1ee
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084631"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182182"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Front Door 的 Azure Resource Manager 部署模型範本
 
 下表包含 Azure Front Door 的 Azure Resource Manager 部署模型範本連結。 
 
-| [範本] | 說明 |
+| [範本] | 描述 |
 | ---| ---|
 | [建立基本 Front Door](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-basic)| 建立具有單一後端的基本 Front Door 設定。 |
 | [建立具有多個後端和後端集區及 URL 型路由的 Front Door](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-multiple-backends)| 建立已根據 URL 路徑為後端集區中及跨後端集區的多個後端設定負載平衡的 Front Door。 |

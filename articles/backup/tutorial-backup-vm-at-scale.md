@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何建立復原服務保存�
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7a8849bba51939a0c40cba81925e1b4b4a6e3826
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372547"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263413"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>使用 Azure 入口網站備份多部虛擬機器
 
@@ -156,7 +156,7 @@ ms.locfileid: "87372547"
 
 1. 在 [myRecoveryServicesVault] 儀表板上，選取 [備份項目] 下的 [3]，開啟 [備份項目] 功能表。
 
-    ![備份項目](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
+    ![開啟備份項目功能表](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
 1. 在 [備份項目] 功能表上，選取 [Azure 虛擬機器] 開啟與保存庫相關聯的虛擬機器清單。
 
@@ -185,7 +185,7 @@ ms.locfileid: "87372547"
 
 1. 當保存庫中不再有任何項目時，選取 [刪除]。
 
-    ![選取 [停止備份] 刪除保存庫](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
+    ![選取 [刪除]](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
 
     刪除保存庫後，您將會回到復原服務保存庫的清單。
 

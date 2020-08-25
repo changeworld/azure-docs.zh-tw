@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 06/29/2020
+ms.date: 08/18/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 713e980eb84032c98ccf08c52e68dab36eadd659
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: b58a729397118b01d2ff346c0d1f09f70435efae
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513140"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604692"
 ---
-# <a name="about-azure-virtual-wan"></a>關於 Azure 虛擬 WAN
+# <a name="what-is-azure-virtual-wan"></a>什麼是 Azure 虛擬 WAN？
 
 Azure 虛擬 WAN 是一種網路服務，可將許多網路功能、安全性和路由功能結合在一起，以提供單一操作介面。 這些功能包括分支連線 (透過來自虛擬 WAN 合作夥伴裝置的連線自動化，例如 SD-WAN 或 VPN CPE)、站對站 VPN 連線、遠端使用者 VPN (點對站) 連線、私人 (ExpressRoute) 連線、雲端內連線 (虛擬網路的過渡連線)、VPN ExpressRoute 互連能力、路由、Azure 防火牆、私人連線加密。 您不需要擁有所有這些使用案例，就能開始使用虛擬 WAN。 您可以只開始使用一個使用案例，然後在網路演變時進行調整。
 
@@ -98,15 +98,15 @@ ExpressRoute 可讓您透過私人連線將內部部署網路連線至 Azure。 
 * [**無**] 狀態表示虛擬中樞並未佈建路由器。 如果虛擬 WAN 的類型是「基本」，或虛擬中樞在服務可供使用之前部署，就會發生這種情況。
 * [**失敗**] 狀態表示在具現化期間發生失敗。 若要具現化或重設路由器，您可以瀏覽至 Azure 入口網站中的虛擬中樞概觀頁面，找出 [重設路由器] 選項。
 
-每個虛擬中樞路由器最多支援 50 Gbps 的彙總輸送量。 虛擬網路連線之間的連線會假設虛擬 WAN 中的所有 VNet 上有總數為 2000 部 VM 的工作負載。
+每個虛擬中樞路由器最多支援 50 Gbps 的彙總輸送量。 虛擬網路連線之間的連線會假設連線至單一虛擬中樞的所有 VNet 上有總數為 2000 部 VM 的工作負載。
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>VPN 和 ExpressRoute 之間的傳輸連線能力
 
-虛擬 WAN 可讓 VPN 和 ExpressRoute 之間進行傳輸連線。 這表示以 VPN 連線的網站或遠端使用者可以與以 ExpressRoute 連線的網站通訊。 此外，也會隱含**分支對分支旗標**已啟用的假設。 此旗標可能位於 Azure 入口網站的 Azure 虛擬 WAN 設定中。 所有路由管理都是由虛擬中樞路由器提供，這也會啟用虛擬網路之間的傳輸連線能力。
+虛擬 WAN 可讓 VPN 和 ExpressRoute 之間進行傳輸連線。 這表示以 VPN 連線的網站或遠端使用者可以與以 ExpressRoute 連線的網站通訊。 此外，也會隱含假設**分支對分支旗標**已啟用，而且 VPN 和 ExpressRoute 連線支援 BGP。 此旗標可能位於 Azure 入口網站的 Azure 虛擬 WAN 設定中。 所有路由管理都是由虛擬中樞路由器提供，這也會啟用虛擬網路之間的傳輸連線能力。
 
 ### <a name="custom-routing"></a><a name="routing"></a>自訂路由
 
-虛擬 WAN 提供進階的路由增強功能。 能夠設定自訂路由表、使用路由關聯和傳播來最佳化虛擬網路路由、以邏輯方式將具有標籤的路由表分組，以及簡化許多網路虛擬設備或共用的服務路由案例。
+虛擬 WAN 提供進階的路由增強功能。 能夠設定自訂路由表、使用路由關聯和傳播來最佳化虛擬網路路由、以邏輯方式將具有標籤的路由表分組，以及簡化許多網路虛擬設備 (NVA) 或共用的服務路由案例。
 
 ### <a name="global-vnet-peering"></a><a name="global"></a>全域 VNet 對等互連
 
@@ -120,7 +120,7 @@ Azure 虛擬 WAN 可為 ExpressRoute 流量提供加密功能。 此技術透過
 
 如需位置資訊，請參閱[虛擬 WAN 夥伴與位置](virtual-wan-locations-partners.md)一文。
 
-## <a name="route-tables-in-basic-and-standard-virtual-wans"></a><a name="route"></a>基本和標準虛擬 WAN 中的路由表
+## <a name="route-tables-for-basic-and-standard-virtual-wans"></a><a name="route"></a>基本和標準虛擬 WAN 的路由表
 
 路由表現在具有關聯和傳播的功能。 既有的路由表是不具有這些功能的路由表。 如果您在中樞路由中有既有的路由，但想要使用新功能，請考慮下列方式：
 
@@ -131,6 +131,10 @@ Azure 虛擬 WAN 可為 ExpressRoute 流量提供加密功能。 此技術透過
 ## <a name="faq"></a><a name="faq"></a>常見問題集
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
+
+## <a name="view-the-latest-feature-updates"></a><a name="new"></a>檢視最新的功能更新
+
+訂閱 RSS 摘要，並在 [Azure 更新](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN) 頁面上查看最新的虛擬 WAN 功能更新。
 
 ## <a name="next-steps"></a>後續步驟
 

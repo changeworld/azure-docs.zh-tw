@@ -10,20 +10,20 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 05a70274e075ddda8770e57c71a7f55807cf3dcc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: how-to, devx-track-python,contperfq1
+ms.openlocfilehash: 6a37aaa2eee3151087ce33815d37bf5537578329
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182131"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782748"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本指南中，您將了解如何使用 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 定義自動化機器學習實驗的各種組態設定。 自動化機器學習服務會為您挑選演算法和超參數，並產生馬上可進行部署的模型。 有數個選項可用來設定自動化機器學習實驗。
 
-若要查看自動化機器學習實驗的範例，請參閱[教學課程：使用自動化機器學習訓練分類模型](tutorial-auto-train-models.md)或[使用雲端中的自動化機器學習來定型模型](how-to-auto-train-remote.md)。
+若要查看自動化機器學習實驗的範例，請參閱 [教學課程：使用自動化機器學習將分類模型定型](tutorial-auto-train-models.md) ，或 [使用雲端中的自動化機器學習來定型模型](how-to-auto-train-remote.md)。
 
 自動化機器學習服務中的可用設定選項：
 
@@ -39,20 +39,20 @@ ms.locfileid: "88182131"
 
 ## <a name="prerequisites"></a>必要條件
 
-在本文中，您需要： 
+針對本文，您需要 
 * Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
-* 已安裝 Azure Machine Learning Python SDK。
-    若要安裝 SDK，您可以進行下列其中一項： 
-    * 建立計算實例，它會自動安裝 SDK，並已針對 ML 工作流程預先設定。 如需詳細資訊，請參閱[什麼是 Azure Machine Learning 計算實例？](concept-compute-instance.md#managing-a-compute-instance) 。 
+* 安裝的 Azure Machine Learning Python SDK。
+    若要安裝 SDK，您可以： 
+    * 建立計算實例，此實例會自動安裝 SDK，並針對 ML 工作流程進行預先設定。 如需詳細資訊，請參閱 [什麼是 Azure Machine Learning 計算實例？](concept-compute-instance.md#managing-a-compute-instance) 。 
 
     * [自行安裝 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 請務必包含 `automl` 額外的。 
 
 ## <a name="select-your-experiment-type"></a>選取您的實驗類型
 
-在開始實驗之前，您應先決定所要解決的機器學習問題類型。 自動化機器學習服務支援、和的工作類型 `classification` `regression` `forecasting` 。 深入了解[工作類型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
+在開始實驗之前，您應先決定所要解決的機器學習問題類型。 自動化機器學習支援、和的工作類型 `classification` `regression` `forecasting` 。 深入了解[工作類型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
 
-下列程式碼會在函式 `task` 中使用參數 `AutoMLConfig` ，將實驗類型指定為 `classification` 。
+下列程式碼會使用函式 `task` 中的參數 `AutoMLConfig` ，將實驗類型指定為 `classification` 。
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -69,21 +69,21 @@ automl_config = AutoMLConfig(task = "classification")
 - 資料必須是表格形式。
 - 要預測的值 (目標資料行) 必須位於資料中。
 
-**針對遠端實驗**，必須可從遠端計算存取訓練資料。 AutoML 只會在處理遠端計算時接受[Azure Machine Learning TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 。 
+**針對遠端實驗**，必須可從遠端計算存取定型資料。 AutoML 只會在處理遠端計算時接受 [Azure Machine Learning TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 。 
 
-Azure Machine Learning 資料集會公開功能給：
+Azure Machine Learning 資料集會將功能公開至：
 
-* 輕鬆地將靜態檔案或 URL 來源中的資料傳輸至您的工作區。
-* 在雲端計算資源上執行時，將您的資料提供給訓練腳本。 如需使用類別將資料掛接至遠端計算目標的範例，請參閱如何使用[資料集進行定型](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) `Dataset` 。
+* 輕鬆地將資料從靜態檔案或 URL 來源傳送至您的工作區。
+* 在雲端計算資源上執行時，將您的資料提供給定型腳本。 如需使用類別將資料掛接至遠端計算目標的範例，請參閱如何使用 [資料集進行定型](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) `Dataset` 。
 
-下列程式碼會從 web url 建立 TabularDataset。 如需如何從其他來源（例如本機檔案和資料存放區）建立資料集的程式碼範例，請參閱[建立 TabularDatasets](how-to-create-register-datasets.md#create-a-tabulardataset) 。
+下列程式碼會從 web url 建立 TabularDataset。 如需如何從其他來源（例如本機檔案和資料存放區）建立資料集的程式碼範例，請參閱 [建立 TabularDatasets](how-to-create-register-datasets.md#create-a-tabulardataset) 。
 
 ```python
 from azureml.core.dataset import Dataset
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
 dataset = Dataset.Tabular.from_delimited_files(data)
   ```
-**針對本機計算實驗**，我們建議 pandas 資料框架，以加快處理時間。
+**針對本機計算實驗**，建議您 pandas 資料框架以加快處理時間。
 
   ```python
   import pandas as pd
@@ -96,28 +96,28 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="training-validation-and-test-data"></a>訓練、驗證和測試資料
 
-您可以直接在此函式中指定個別的**定型和驗證集** `AutoMLConfig` 。 深入瞭解如何為您的 AutoML 實驗[設定資料分割和交叉驗證](how-to-configure-cross-validation-data-splits.md)。 
+您可以直接在函式中指定個別的 **定型和驗證集** `AutoMLConfig` 。 深入瞭解如何設定 AutoML 實驗的 [資料分割和交叉驗證](how-to-configure-cross-validation-data-splits.md) 。 
 
-如果您未明確指定 `validation_data` 或 `n_cross_validation` 參數，AutoML 會套用預設技術來判斷驗證的執行方式。 這項決定取決於已指派給您的參數之資料集內的資料列數目 `training_data` 。 
+如果您未明確指定 `validation_data` 或 `n_cross_validation` 參數，AutoML 會套用預設的技巧，以決定如何執行驗證。 這項決定取決於資料集內指派給您的參數的資料列數目 `training_data` 。 
 
 |定型 &nbsp; 資料 &nbsp; 大小| 驗證技術 |
 |---|-----|
-|**大於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用定型/驗證資料分割。 預設值是將10% 的初始訓練資料集做為驗證集。 接著，該驗證集用於計量計算。
-|**小於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 適用交叉驗證方法。 預設的折迭數目取決於資料列數目。 <br> **如果資料集少於1000個數據列**，則會使用10個折迭。 <br> **如果資料列介於1000和20000之間**，則會使用三個折迭。
+|**大於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用定型/驗證資料分割。 預設值是以10% 的初始訓練資料集做為驗證集。 接著，該驗證集會用於計算度量。
+|**小於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用交叉驗證方法。 預設的折迭數目取決於資料列數。 <br> **如果資料集小於1000個數據列**，則會使用10個折迭。 <br> **如果資料列介於1000到20000之間**，則會使用三個折迭。
 
-此時，您必須提供您自己的**測試資料**來進行模型評估。 如需將您自己的測試資料帶入模型評估的程式碼範例，請參閱[此 Jupyter 筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)的**test**區段。
+目前，您需要提供自己的 **測試資料** 來進行模型評估。 如需將您自己的測試資料用於模型評估的程式碼範例，請參閱[此 Jupyter 筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)的**test**區段。
 
 ## <a name="compute-to-run-experiment"></a>要執行實驗的計算
 
-接下來，請決定要在何處訓練模型。 自動化機器學習訓練實驗可在下列計算選項上執行。 瞭解[本機和遠端計算](concept-automated-ml.md#local-remote)選項的優缺點。 
+接下來，請決定要在何處訓練模型。 自動化機器學習訓練實驗可在下列計算選項上執行。 瞭解 [本機和遠端計算](concept-automated-ml.md#local-remote) 選項的優缺點。 
 
-* 本機**電腦（** 例如本機桌面或膝上型電腦）-通常是當您有小型的資料集，而且仍在流覽階段時。 如需本機計算範例，請參閱[此筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb)。 
+* 您的 **本機** 電腦，例如本機桌上型電腦或膝上型電腦–通常是當您有小型資料集，而您仍在探索階段時。 請參閱 [此筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb) 以取得本機計算範例。 
  
-* 雲端中的**遠端**電腦- [Azure Machine Learning 受控計算](concept-compute-target.md#amlcompute)是一項受控服務，可在 Azure 虛擬機器的叢集上定型機器學習模型。 
+* 雲端中的 **遠端** 電腦- [Azure Machine Learning 受控計算](concept-compute-target.md#amlcompute) 是一項受控服務，可讓您在 Azure 虛擬機器叢集上定型機器學習模型。 
 
-    如需使用 Azure Machine Learning 受控計算的遠端範例，請參閱[此筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)。 
+    請參閱 [此筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) ，以瞭解使用 Azure Machine Learning 受控計算的遠端範例。 
 
-* Azure 訂用帳戶中的**Azure Databricks**叢集。 您可以在這裡找到更多詳細資料-[為自動化 ML 設定 Azure Databricks](how-to-configure-environment.md#azure-databricks)叢集。 如需 Azure Databricks 的筆記本範例，請參閱此 [GitHub 網站](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)。
+* Azure 訂用帳戶中的 **Azure Databricks** 叢集。 您可以在這裡找到更多詳細資料- [適用于自動化 ML 的設定 Azure Databricks](how-to-configure-environment.md#azure-databricks)叢集。 如需 Azure Databricks 的筆記本範例，請參閱此 [GitHub 網站](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)。
 
 <a name='configure-experiment'></a>
 
@@ -139,7 +139,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
        label_column_name=label,
        n_cross_validations=2)
    ```
-1. 下列範例是一種回歸實驗，設定為在60分鐘後結束，並具有五個驗證交叉折迭。
+1. 下列範例是設定為在60分鐘之後結束的回歸實驗，其中五個驗證交叉折迭。
 
    ```python
       automl_regressor = AutoMLConfig(
@@ -153,7 +153,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
    ```
 
 
-1. 預測工作需要額外的設定，請參閱[自動訓練時間序列預測模型一](how-to-auto-train-forecast.md)文，以取得詳細資料。 
+1. 預測工作需要額外的設定，如需詳細資料，請參閱 [自動定型時間序列預測模型](how-to-auto-train-forecast.md) 文章。 
 
     ```python
     time_series_settings = {
@@ -177,13 +177,13 @@ dataset = Dataset.Tabular.from_delimited_files(data)
     
 ### <a name="supported-models"></a>支援的模型
 
-自動化機器學習會在自動化和調整程式期間，嘗試不同的模型和演算法。 身為使用者，您不需要指定演算法。 
+自動化機器學習會在自動化和調整程式期間嘗試不同的模型和演算法。 身為使用者，您不需要指定演算法。 
 
-第三個工作類型 (三個不同的 `task` 參數值 `forecasting` ，並使用類似的演算法集區做為工作 `regression`) 判斷要套用的演算法清單。 請使用 `allowed_models` 或 `blocked_models` 參數，透過要包含或排除的可用模型進一步修改反覆項目。 您可以在[SupportedModels 類別](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels)上找到支援的模型清單，以進行[分類](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification)、[預測](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)和[回歸](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)。
+第三個工作類型 (三個不同的 `task` 參數值 `forecasting` ，並使用類似的演算法集區做為工作 `regression`) 判斷要套用的演算法、模型清單。 請使用 `allowed_models` 或 `blocked_models` 參數，透過要包含或排除的可用模型進一步修改反覆項目。 您可以在 [SupportedModels 類別](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) 中找到支援的模型清單，以進行 [分類](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification)、 [預測](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)和 [回歸](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)。
 
 
 ### <a name="primary-metric"></a>主要計量
-`primary metric`參數會決定要在模型定型期間用來進行優化的度量。 可選取的可用計量取決於您所選擇的工作類型，下表顯示每種工作類型的有效主要計量。
+`primary metric`參數會決定要在模型定型期間用來優化的度量。 可選取的可用計量取決於您所選擇的工作類型，下表顯示每種工作類型的有效主要計量。
 
 請在[了解自動化機器學習結果](how-to-understand-automated-ml.md)中了解這些計量的特定定義。
 
@@ -197,9 +197,9 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ### <a name="data-featurization"></a>資料特徵化
 
-在每個自動化機器學習實驗中，您的資料都會自動調整並標準化，以利易受不同規模的特徵所影響的*特定*演算法能妥善運作。 這種調整和正規化稱為特徵化。 如需更多詳細資料和程式碼範例，請參閱[AutoML 中的特徵化](how-to-configure-auto-features.md#)。 
+在每個自動化機器學習實驗中，您的資料都會自動調整並標準化，以利易受不同規模的特徵所影響的*特定*演算法能妥善運作。 此調整和正規化稱為特徵化。 如需詳細資訊和程式碼範例，請參閱 [AutoML 中的特徵化](how-to-configure-auto-features.md#) 。 
 
-在物件中設定您的實驗時 `AutoMLConfig` ，您可以啟用/停用此設定 `featurization` 。 下表顯示[AutoMLConfig 物件](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中特徵化的已接受設定。 
+在物件中設定您的實驗時 `AutoMLConfig` ，您可以啟用/停用設定 `featurization` 。 下表顯示 [AutoMLConfig 物件](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中特徵化的已接受設定。 
 
 |特徵化設定 | 描述 |
 | ------------- | ------------- |
@@ -214,13 +214,13 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ### <a name="ensemble-configuration"></a> 集團設定
 
-預設會啟用集團模型，並在 AutoML 執行中顯示為最後的執行反復專案。 目前支援**VotingEnsemble**和**StackEnsemble** 。 
+集團模型預設會啟用，並在 AutoML 執行中顯示為最終執行反復專案。 目前支援 **VotingEnsemble** 和 **StackEnsemble** 。 
 
-投票會實行使用加權平均值的軟投票。 堆疊執行會使用兩個層級的執行，其中第一層具有與投票集團相同的模型，而第二層模型用來尋找第一層中的最佳模型組合。 
+投票會執行使用加權平均值的軟投票。 堆疊的執行會使用兩個層級的實作為，第一層的模型與投票集團相同，而第二層模型則是用來從第一層找出最佳的模型組合。 
 
-如果您使用 ONNX 模型，**或**已啟用模型可解釋性，則會停用堆疊，而且只會使用投票。
+如果您使用 ONNX 模型， **或** 啟用模型可解釋性，則會停用堆疊，而且只會使用投票。
 
-您可以使用 `enable_voting_ensemble` 和布林值參數來停用集團訓練 `enable_stack_ensemble` 。
+您可以使用 `enable_voting_ensemble` 和布林值參數來停用集團定型 `enable_stack_ensemble` 。
 
 ```python
 automl_classifier = AutoMLConfig(
@@ -235,7 +235,7 @@ automl_classifier = AutoMLConfig(
         )
 ```
 
-若要改變預設集團行為，可以在物件中提供多個預設引數 `kwargs` `AutoMLConfig` 。
+若要變更預設的集團行為，可以在物件中提供多個預設引數 `kwargs` `AutoMLConfig` 。
 
 > [!IMPORTANT]
 >  下列參數不是 AutoMLConfig 類別的明確參數。 
@@ -315,20 +315,20 @@ run = experiment.submit(automl_config, show_output=True)
 |準則| description
 |----|----
 無 &nbsp; 準則 | 如果您未定義任何結束參數，實驗會繼續進行，直到您的主要計量沒有進一步的進度為止。
-經過 &nbsp; 一 &nbsp; 段 &nbsp; &nbsp; 時間之後| `experiment_timeout_minutes`在您的設定中使用，以定義您的實驗應該繼續執行的時間（以分鐘為單位）。 <br><br> 若要協助避免實驗超時失敗，至少15分鐘，或60分鐘（如果您的資料列大小超過10000000）。
-已 &nbsp; &nbsp; 達到分數 &nbsp; &nbsp;| 在 `experiment_exit_score` 達到指定的主要度量分數後，使用即完成實驗。
+經過 &nbsp; 一 &nbsp; 段 &nbsp; &nbsp; 時間之後| 在您的設定中使用， `experiment_timeout_minutes` 以定義您的實驗應該繼續執行的時間（以分鐘為單位）。 <br><br> 如果您的資料行大小超過10000000，則為避免實驗超時失敗，最少15分鐘或60分鐘。
+已 &nbsp; &nbsp; 達到分數 &nbsp; &nbsp;| `experiment_exit_score`在達到指定的主要度量分數之後，請使用完成實驗。
 
 ## <a name="explore-models-and-metrics"></a>探索模型和計量
 
 如果您使用筆記本，您可以在小工具中或以內嵌方式檢視定型結果。 請參閱[追蹤和評估模型](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs)以取得更多詳細資料。
 
-請參閱[瞭解自動化機器學習結果](how-to-understand-automated-ml.md)中的定義，以及每次執行所提供的效能圖表和計量範例。 
+請參閱 [瞭解自動化機器學習結果](how-to-understand-automated-ml.md) 中的定義，以及每次執行所提供的效能圖表和計量範例。 
 
-若要取得特徵化摘要，並瞭解哪些功能已新增至特定模型，請參閱[特徵化透明度](how-to-configure-auto-features.md#featurization-transparency)。 
+若要取得特徵化摘要，並瞭解已新增至特定模型的功能，請參閱 [特徵化透明度](how-to-configure-auto-features.md#featurization-transparency)。 
 
 ## <a name="register-and-deploy-models"></a>註冊和部署模型
 
-如需有關如何下載或註冊模型以部署至 web 服務的詳細資訊，請參閱[如何和部署模型的位置](how-to-deploy-and-where.md)。
+如需如何下載或註冊模型以部署至 web 服務的詳細資訊，請參閱 [部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 
 <a name="explain"></a>
@@ -342,7 +342,7 @@ run = experiment.submit(automl_config, show_output=True)
 如需如何在自動化機器學習以外的其他 SDK 區域中啟用模型說明和特徵重要性的一般資訊，請參閱[概念](how-to-machine-learning-interpretability.md)一文中有關於可解釋性的部分。
 
 > [!NOTE]
-> 說明用戶端目前不支援 ForecastTCN 模型。 如果將 [說明] 儀表板當做最佳模型傳回，且不支援隨選說明執行，此模型將不會傳回。
+> 說明用戶端目前不支援 ForecastTCN 模型。 如果傳回的是最佳模型，此模型將不會傳回說明儀表板，而且不支援隨選說明執行。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -350,4 +350,4 @@ run = experiment.submit(automl_config, show_output=True)
 
 + 深入了解[如何使用自動化機器學習定型迴歸模型](tutorial-auto-train-models.md)或[如何使用自動化機器學習以遠端資源定型](how-to-auto-train-remote.md)。
 
-+ 瞭解如何在[許多模型解決方案加速器](https://aka.ms/many-models)中使用 AutoML 訓練多個模型。
++ 瞭解如何在 [許多模型解決方案加速器](https://aka.ms/many-models)中使用 AutoML 來訓練多個模型。

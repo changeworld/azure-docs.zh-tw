@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 TurboRater 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 TurboRater 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: abb116b8-8024-4cc6-bc81-f32ef490ea17
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 3777cf09ec669fe3df6bca13f6960f53c689767c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0c22993baa6a9095bddba67bdc9d18a40021db6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67088281"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546384"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>教學課程：Azure Active Directory 與 TurboRater 整合
 
@@ -151,7 +147,7 @@ TurboRater 支援由 IDP 起始的單一登入 (SSO)。
 
     1. 在 [名稱]  方塊中，輸入 **BSimon**。
   
-    1. 在 [使用者名稱]  方塊中，輸入 **BSimon\@\<yourcompanydomain>.\<extension>** 。 例如 **BSimon\@contoso.com**。
+    1. 在**使用者名稱**方塊中，輸入 **BSimon\@\<yourcompanydomain>.\<extension>** 。 例如 **BSimon\@contoso.com**。
 
     1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
 

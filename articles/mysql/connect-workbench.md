@@ -1,5 +1,5 @@
 ---
-title: 使用 MySQL Workbench 連線 - 適用於 MySQL 的 Azure 資料庫
+title: 快速入門：連線 - MySQL Workbench - 適用於 MySQL 的 Azure 資料庫
 description: 本快速入門提供的步驟，可以使用 MySQL Workbench 來連線及查詢 Azure Database for MySQL 的資料。
 author: ajlam
 ms.author: andrela
@@ -7,17 +7,19 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 1e2dd26e2b954bebd7bac15991b2b5aef9def88d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1b1249fe7159e2a3a8d2a74d22f274a9766e7922
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870053"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185820"
 ---
-# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>適用於 MySQL 的 Azure 資料庫：使用 MySQL Workbench 連線並查詢資料
-本快速入門示範如何使用 MySQL Workbench 應用程式來連線到 Azure Database for MySQL。 
+# <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 MySQL Workbench 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
+
+本快速入門示範如何使用 MySQL Workbench 應用程式來連線到 Azure Database for MySQL。
 
 ## <a name="prerequisites"></a>Prerequisites
+
 本快速入門使用在以下任一指南中建立的資源作為起點︰
 - [使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-cli.md)

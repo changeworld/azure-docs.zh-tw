@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: d37fae18cd2f3e3bfad647cc176253dc6bb101ab
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b37b327a535b716bbce845cd5883e58ec5379c48
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585724"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782714"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>將 Azure Key Vault 移至另一個訂用帳戶
 
@@ -59,7 +59,9 @@ ms.locfileid: "88585724"
 
 ## <a name="procedure"></a>程序
 
-### <a name="initial-steps-moving-key-vault"></a> (移動 Key Vault 的初始步驟) 
+如果您 
+
+### <a name="moving-key-vault-to-a-new-subscription-within-the-same-tenant"></a>將 Key Vault 移至相同租使用者內的新訂用帳戶
 
 1. 登入 Azure 入口網站
 2. 瀏覽至您的金鑰保存庫
@@ -70,9 +72,9 @@ ms.locfileid: "88585724"
 7. 確認關於移動資源的警告
 8. 選取 [確定]
 
-### <a name="additional-steps-post-move"></a>移動後 (其他步驟) 
+### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>將 key vault 移至新租使用者中的訂用帳戶時的其他步驟
 
-現在您已將金鑰保存庫移至新的訂用帳戶，您必須更新租使用者識別碼，並移除舊的存取原則。 以下是 PowerShell 和 Azure CLI 中這些步驟的教學課程。
+如果您將金鑰保存庫移至新租使用者中的訂用帳戶，您需要手動更新租使用者識別碼，並移除舊的存取原則。 以下是 PowerShell 和 Azure CLI 中這些步驟的教學課程。 如果您使用 PowerShell，您可能需要執行下列 Set-azcoNtext 命令，以允許您查看目前所選範圍之外的資源。 
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription

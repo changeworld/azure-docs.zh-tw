@@ -5,14 +5,14 @@ keywords: 應用程式服務, Azure 應用程式服務, 網域對應, 網域名�
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 04/27/2020
+ms.date: 08/13/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 96a947a20a17c4dc08851824a392143ce162f186
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c301876a57b3be4a112c7df2706bf17389a5af44
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543551"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190060"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教學課程：將現有的自訂 DNS 名稱對應至 Azure App Service
 
@@ -125,11 +125,11 @@ ms.locfileid: "87543551"
 
 #### <a name="create-the-cname-record"></a>建立 CNAME 記錄
 
-將子網域對應到應用程式的預設網域名稱 (`<app_name>.azurewebsites.net`，其中 `<app_name>` 是您的應用程式的名稱)。 若要建立 `www` 子網域的 CNAME 對應，請建立兩個記錄：
+將子網域對應到應用程式的預設網域名稱 (`<app-name>.azurewebsites.net`，其中 `<app-name>` 是您的應用程式的名稱)。 若要建立 `www` 子網域的 CNAME 對應，請建立兩個記錄：
 
 | 記錄類型 | Host | 值 | 註解 |
 | - | - | - |
-| CNAME | `www` | `<app_name>.azurewebsites.net` | 對應本身的網域。 |
+| CNAME | `www` | `<app-name>.azurewebsites.net` | 對應本身的網域。 |
 | TXT | `asuid.www` | [您稍早所獲得的驗證識別碼](#get-domain-verification-id) | App Service 會存取 `asuid.<subdomain>` TXT 記錄，以驗證自訂網域的擁有權。 |
 
 新增 CNAME 和 TXT 記錄之後，DNS 記錄分頁看起來如下列範例所示：
@@ -210,7 +210,7 @@ ms.locfileid: "87543551"
 > | 記錄類型 | Host | 值 |
 > | - | - | - |
 > | A | `www` | 來自[複製應用程式的 IP 位址](#info)的 IP 位址 |
-> | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
+> | TXT | `asuid.www` | `<app-name>.azurewebsites.net` |
 >
 
 新增記錄時，DNS 記錄分頁看起來如下列範例所示：
@@ -262,9 +262,14 @@ ms.locfileid: "87543551"
 
 #### <a name="create-the-cname-record"></a>建立 CNAME 記錄
 
-新增 CNAME 記錄以將萬用字元名稱對應至應用程式的預設網域名稱 (`<app_name>.azurewebsites.net`)。
+將萬用字元名稱 `*` 對應到應用程式的預設網域名稱 (`<app-name>.azurewebsites.net`，其中 `<app-name>` 是您的應用程式的名稱)。 若要對應萬用字元名稱，請建立兩筆記錄：
 
-針對 `*.contoso.com` 網域範例，CNAME 記錄會將名稱 `*` 對應至 `<app_name>.azurewebsites.net`。
+| 記錄類型 | Host | 值 | 註解 |
+| - | - | - |
+| CNAME | `*` | `<app-name>.azurewebsites.net` | 對應本身的網域。 |
+| TXT | `asuid` | [您稍早所獲得的驗證識別碼](#get-domain-verification-id) | App Service 會存取 `asuid` TXT 記錄，以驗證自訂網域的擁有權。 |
+
+針對 `*.contoso.com` 網域範例，CNAME 記錄會將名稱 `*` 對應至 `<app-name>.azurewebsites.net`。
 
 新增 CNAME 時，DNS 記錄分頁看起來如下列範例所示：
 
@@ -272,7 +277,7 @@ ms.locfileid: "87543551"
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>在應用程式中啟用 CNAME 記錄對應
 
-您現在可以將符合萬用字元名稱的任何子網域新增至應用程式 (例如，`sub1.contoso.com` 和 `sub2.contoso.com` 符合 `*.contoso.com`)。
+您現在可以將符合萬用字元名稱的任何子網域新增至應用程式 (例如，`sub1.contoso.com` 和 `sub2.contoso.com` 均符合 `*.contoso.com`)。
 
 在 Azure 入口網站之應用程式分頁的左側導覽中，選取 [自訂網域]。
 
@@ -342,7 +347,7 @@ ms.locfileid: "87543551"
 
 ```bash 
 az webapp config hostname add \
-    --webapp-name <app_name> \
+    --webapp-name <app-name> \
     --resource-group <resource_group_name> \
     --hostname <fully_qualified_domain_name>
 ``` 
@@ -357,9 +362,9 @@ az webapp config hostname add \
 
 ```powershell  
 Set-AzWebApp `
-    -Name <app_name> `
+    -Name <app-name> `
     -ResourceGroupName <resource_group_name> ` 
-    -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net")
+    -HostNames @("<fully_qualified_domain_name>","<app-name>.azurewebsites.net")
 ```
 
 如需詳細資訊，請參閱[將自訂網域指派給 Web 應用程式](scripts/powershell-configure-custom-domain.md)。

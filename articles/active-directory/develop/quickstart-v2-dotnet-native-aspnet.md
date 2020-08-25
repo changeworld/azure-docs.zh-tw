@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 22bf7e85a48e0d138bfdbca82cf032287d982899
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
+ms.openlocfilehash: 0fc31fd397f8206f7c6f0509dd03495631dde609
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339589"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165629"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>快速入門：呼叫受 Azure 身分識別平台保護的 ASP.NET Web API
 
@@ -82,13 +82,14 @@ ms.locfileid: "85339589"
 
 ### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>將新範圍新增至 TodoListClient 的 app.config
 
-1. 開啟位於 **TodoListClient** 專案根資料夾中的 **app.config** 檔案，然後貼上剛才在 `TodoListServiceScope` 參數下針對 *TodoListService* 所註冊應用程式的**應用程式識別碼**，並取代字串 `{Enter the Application ID of your TodoListService from the app registration portal}`。
+* 開啟位於 **TodoListClient** 專案根資料夾中的 **app.config** 檔案，然後貼上剛才在 `TodoListServiceScope` 參數下針對 *TodoListService* 所註冊應用程式的**應用程式識別碼**，並取代字串 `{Enter the Application ID of your TodoListService from the app registration portal}`。
 
-   > 注意:請確定其使用下列格式：
-   >
-   > `api://{TodoListService-Application-ID}/access_as_user`
-   >
-   >(其中 {TodoListService-Application-ID} 是代表 TodoListService 應用程式識別碼的 GUID)。
+  > [!NOTE]
+  > 請確定其使用下列格式：
+  >
+  > `api://{TodoListService-Application-ID}/access_as_user`
+  >
+  >(其中 {TodoListService-Application-ID} 是代表 TodoListService 應用程式識別碼的 GUID)。
 
 ## <a name="register-the-client-app-todolistclient"></a>註冊用戶端應用程式 (TodoListClient)
 
@@ -102,15 +103,28 @@ ms.locfileid: "85339589"
    - 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `NativeClient-DotNet-TodoListClient`。
    - 將 [支援的帳戶類型] 變更為 [任何組織目錄中的帳戶]。
    - 選取 [註冊] 以建立應用程式。
-1. 從應用程式的 [概觀] 頁面，選取 [驗證] 區段。
-   - 在 [重新導向 URI] | [公用用戶端 (行動、傳統型) 的建議重新導向 URI] 區段，然後核取 **https://login.microsoftonline.com/common/oauth2/nativeclient**
-   - 選取 [儲存]。
+   
+   > [!NOTE]
+   > 在 TodoListClient 專案的 **app.config** 中，`ida:Tenant` 預設值設定為 `common`。
+   >
+   > `common` 表示您可以使用公司或學校帳戶或 Microsoft 個人帳戶登入 (因為您選取了**任何組織目錄中的帳戶**)。
+   >
+   > `organizations` 表示您可以使用公司或學校帳戶登入。
+   >
+   > `consumers` 表示您可以使用 Microsoft 個人帳戶登入。
+   >
+   
+1. 在應用程式的概觀頁面，選取 [驗證] 區段。
+   1. 在 [平台設定] 下，選取 [新增平台] 按鈕。
+   1. 若是**行動和桌面應用程式**，請選取**行動和桌面應用程式**。
+   1. 若是**重新導向 URI**，請選取 **https://login.microsoftonline.com/common/oauth2/nativeclient** 核取方塊。
+   1. 選取 [設定] 。   
 1. 選取 [API 權限] 區段
-   - 按一下 [新增權限] 按鈕，然後
-   - 選取 [我的 API] 索引標籤。
-   - 在 API 清單中選取 `AppModelv2-NativeClient-DotNet-TodoListService API`，或選取您為 Web API 輸入的名稱。
-   - 核取 **access_as_user** 權限 (如果尚未核取)。 如有需要請使用搜尋方塊。
-   - 選取 [新增權限] 按鈕
+   1. 選取 [新增權限] 按鈕。
+   1. 選取 [我的 API] 索引標籤。
+   1. 在 API 清單中選取 `AppModelv2-NativeClient-DotNet-TodoListService API`，或選取您為 Web API 輸入的名稱。
+   1. 核取 **access_as_user** 權限 (如果尚未核取)。 如有需要請使用搜尋方塊。
+   1. 選取 [新增權限] 按鈕。
 
 ### <a name="configure-your-todolistclient-project"></a>設定 *TodoListClient* 專案
 

@@ -2,24 +2,24 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: 45dad7d7b176037087e37638db380294521a8e19
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 08/17/2020
+ms.openlocfilehash: a56b95fe4f6b7005e823ebe80fd2e74ed1cf7725
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133957"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511278"
 ---
-本文提供資訊和範例程式碼，可協助您開始使用自訂視覺 SDK 與 Go 來建置物件偵測模型。 建立它之後，您就可以新增標記的區域、上傳影像、為專案定型、取得專案的已發佈預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Go 應用程式。
+本文提供資訊和範例程式碼，可協助您開始使用自訂視覺用戶端程式庫與 Go 來建置物件偵測模型。 建立它之後，您就可以新增標記的區域、上傳影像、為專案定型、取得專案的已發佈預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Go 應用程式。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 - [Go 1.8+](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>安裝自訂視覺 SDK
+## <a name="install-the-custom-vision-client-library"></a>安裝自訂視覺用戶端程式庫
 
-若要安裝適用於 Go 的自訂視覺服務 SDK，請在 PowerShell 中執行下列命令：
+若要安裝適用於 Go 的自訂視覺服務用戶端程式庫，請在 PowerShell 中執行下列命令：
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...

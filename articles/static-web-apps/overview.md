@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 47140bccc8c2a1b69f083502d031a9db6d21294e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 884aa18b1a29b1c4f1bbf1159a5d48870529c72b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835777"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565701"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>什麼是 Azure Static Web Apps 預覽？
 
@@ -32,10 +32,10 @@ Azure Static Web Apps 的工作流程是專為開發人員每天的工作流程�
 
 - **Web 裝載**，適用於像是 HTML、CSS、JavaScript 與影像等靜態內容。
 - **整合式 API**，受 Azure Functions 支援。
-- **第一方 GitHub 整合**，其中存放庫變更會觸發建置和部署。
+- **第一級 GitHub 整合**，其中存放庫變更會觸發建置和部署。
 - **全域散發**靜態內容，將內容放在更接近使用者的範圍。
 - **免費的 SSL 憑證**，會自動更新。
-- **自訂網域**\*，為您的應用程式提供品牌的自訂。
+- **自訂網域**，為您的應用程式提供品牌的自訂。
 - **無縫安全性模型**，會在呼叫 API 時使用反向 Proxy，這不需要 CORS 設定。
 - **驗證提供者整合**，有 Azure Active Directory、Facebook、Google、GitHub 和 Twitter。
 - **可自訂的授權角色定義**和指派。
@@ -44,11 +44,9 @@ Azure Static Web Apps 的工作流程是專為開發人員每天的工作流程�
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>如何使用 Static Web Apps
 
-- **建置新式 JavaScript 應用程式**，使用像是 [Angular](getting-started.md#tabpanel_CeZOj-G++Q_angular)、[React](getting-started.md#tabpanel_CeZOj-G++Q_react)、[Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/)、[Vue](getting-started.md#tabpanel_CeZOj-G++Q_vue) 的架構和程式庫，具有 [Azure Functions](apis.md) 後端。
+- **建置新式 JavaScript 應用程式**，使用像是 [Angular](getting-started.md?tabs=angular)、[React](getting-started.md?tabs=react)、[Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/)、[Vue](getting-started.md?tabs=react) 的架構和程式庫，具有 [Azure Functions](apis.md) 後端。
 - **發佈靜態網站**，使用像是 [Gatsby](publish-gatsby.md)、[Hugo](publish-hugo.md)、[VuePress](publish-vuepress.md) 的架構。
 - **部署 Web 應用程式**，使用像是 [Next.js](deploy-nextjs.md) 和 [Nuxt.js](deploy-nuxtjs.md) 的架構。
-
-\* 預覽期間不支援 Apex 網域註冊。
 
 ## <a name="next-steps"></a>後續步驟
 

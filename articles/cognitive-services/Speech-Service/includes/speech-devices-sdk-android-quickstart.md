@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: abc9a42c7ced6a71f93c00968eb825f28f720843
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc027d034c50b49044f4a350fe4d239c18060fc7
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375779"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226086"
 ---
 在本快速入門中，您將了解如何使用適用於 Android 的語音裝置 SDK 建置具備語音功能的產品，或使用它作為[交談轉譯](../conversation-transcription-service.md)裝置。
 
-本指南需要 [Azure 認知服務帳戶](../get-started.md)和語音服務資源。 如果您還沒有帳戶，可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/)來取得訂用帳戶金鑰。
+本指南需要 [Azure 認知服務帳戶](../get-started.md)和語音服務資源。
 
 範例應用程式的原始程式碼包含在「語音裝置 SDK」中。 您也可以[在 GitHub 上取得](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)該原始程式碼。
 
@@ -31,7 +31,7 @@ ms.locfileid: "87375779"
 
 - 取得[適用於語音服務的 Azure 訂用帳戶金鑰](../get-started.md)
 
-- 如果您打算使用交談轉譯，則必須使用[環形麥克風裝置](../get-speech-devices-sdk.md)，這項功能目前僅適用於 “centralus” 和 “eastasia” 區域的 "en-US" 和 "zh-CN"。 您在其中一個區域中必須具有語音金鑰，才能使用交談轉譯。
+- 如果您打算使用交談轉譯，則必須使用[環形麥克風裝置](../get-speech-devices-sdk.md)，這項功能目前僅適用於 "centralus" 和 "eastasia" 區域的 "en-US" 和 "zh-CN"。 您在其中一個區域中必須具有語音金鑰，才能使用交談轉譯。
 
 - 如果您打算使用語音服務來識別使用者語句中的意圖 (或動作)，您將需要 [Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) 訂用帳戶。 若要深入了解 LUIS 和意圖辨識，請參閱[使用 LUIS (C#) 辨識語音意圖](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。
 
@@ -126,7 +126,7 @@ ms.locfileid: "87375779"
 
    若要使用新的關鍵字，請更新 `MainActivity.java` 中的下列兩行，並將關鍵字套件複製到您的應用程式。 例如，若要使用來自關鍵字套件 kws-machine.zip 的關鍵字 'Machine'：
 
-   - 將關鍵字套件複製到 “C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\” 資料夾中。
+   - 將關鍵字套件複製到 "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\" 資料夾中。
    - 以關鍵字和套件名稱更新 `MainActivity.java`：
 
      ```java

@@ -2,16 +2,16 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
+ms.date: 08/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0cb31f5470519e33b76c6cad83d7b47972f21381
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 6705e6f1e988a836a3a9b7e7c4950510fcb2b228
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407299"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511279"
 ---
-本文說明如何開始搭配使用自訂視覺 SDK 與 Node.js 來建置物件偵測模型。 建立它之後，您就可以新增標記的區域、上傳影像、為專案定型、取得專案的已發佈預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Node.js 應用程式。
+本文說明如何開始搭配使用自訂視覺用戶端程式庫與 Node.js 來建置物件偵測模型。 建立它之後，您就可以新增標記的區域、上傳影像、為專案定型、取得專案的已發佈預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Node.js 應用程式。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -24,9 +24,9 @@ ms.locfileid: "87407299"
 [!INCLUDE [node-get-images](../../includes/node-get-images.md)]
 
 
-## <a name="install-the-custom-vision-sdk"></a>安裝自訂視覺 SDK
+## <a name="install-the-custom-vision-client-library"></a>安裝自訂視覺用戶端程式庫
 
-若要在專案中安裝適用於 Node.js 的自訂視覺服務 SDK，請使用下列命令：
+若要在專案中安裝適用於 Node.js 的自訂視覺服務用戶端程式庫，請使用下列命令：
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training

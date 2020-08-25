@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6738f598275e91ce8a811c3ef6bcc6d5dc84e0bd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbc06b657525880f22bd5fb38e902f906d438c9c
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089493"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565905"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>快速入門：建置您的第一個靜態 Web 應用程式
 
@@ -98,7 +98,7 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 :::image type="content" source="media/getting-started/next-build-button.png" alt-text="下一個組建按鈕":::
 
 > [!NOTE]
->  如果您沒有看到任何存放庫，可能需要在 GitHub 中授權 Azure Static Web Apps。 瀏覽至您的 GitHub 存放庫，並移至 [設定] > [應用程式] > [授權的 OAuth 應用程式]、選取 [Azure Static Web Apps]，然後選取 [授與]。 針對組織存放庫，您必須是組織的擁有者，才能授與權限。
+>  如果您沒有看到任何存放庫，可能需要在 GitHub 中授權 Azure Static Web Apps。 瀏覽至 [GitHub 首頁](https://github.com)，然後按一下您的帳戶影像，即可開啟下拉式功能表。 按一下 [設定]，接著按一下**應用程式 > 授權的 OAuth 應用程式 > Azure Static Web Apps**，最後選取 [授與]。 針對組織存放庫，您必須是組織的擁有者，才能授與權限。
 
 ### <a name="build"></a>Build
 

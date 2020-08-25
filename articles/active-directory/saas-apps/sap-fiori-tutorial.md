@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 SAP Fiori 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 SAP Fiori 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 77ad13bf-e56b-4063-97d0-c82a19da9d56
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 917ba9274276fec5d01a40bdf7219e8d4fee1395
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4d2f6766fa32beb9cebaa8f77c04f6865e15e14d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78897752"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543388"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SAP Fiori 整合
 
@@ -115,7 +110,7 @@ ms.locfileid: "78897752"
         /sap/bc/webdynpro/sap/sec_diag_tool (This is only to enable / disable trace)
         ```
 
-1. 在 SAP 系統 [**T01/122**] 的商務用戶端中，移至交易代碼 **SAML2**。 設定 UI 會在新的瀏覽器視窗中開啟。 在此範例中，我們使用 SAP 系統 122 的的商務用戶端。
+1. 在 SAP 系統 [**T01/122**] 的商務用戶端中，移至交易代碼 **SAML2**。 設定 UI 會在新的瀏覽器視窗中開啟。 在此範例中，我們使用 SAP 系統 122 的商務用戶端。
 
     ![SAP Fiori 商務用戶端登入頁面](./media/sapfiori-tutorial/tutorial-sapnetweaver-sapbusinessclient.png)
 

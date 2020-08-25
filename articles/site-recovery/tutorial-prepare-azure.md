@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ed517f2f6e04f60ec1c9c808f2fdf03203fb891b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0d697f2100360732666c9f5ea8050800dad154b4
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498968"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653812"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>準備 Azure 以進行內部部署災害復原至 Azure
 
@@ -94,4 +94,4 @@ ms.locfileid: "87498968"
 - 針對 Hyper-V 災害復原，[準備內部部署 Hyper-V 伺服器](hyper-v-prepare-on-premises-tutorial.md)。
 - 針對實體伺服器災害復原，[設定組態伺服器和來源環境](physical-azure-disaster-recovery.md)。
 - [了解](../virtual-network/virtual-networks-overview.md) Azure 網路。
-- [了解](../virtual-machines/windows/managed-disks-overview.md)受控磁碟。
+- [了解](../virtual-machines/managed-disks-overview.md)受控磁碟。

@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Uberflip 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Uberflip 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 754b1f5b-6694-4fd6-9e1e-9fad769c64db
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: d20c05e6ec5a413b81ede9cb4906de2595967115
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8936c2150c32a22877f9b56736ecc4b8f3424b32
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80048464"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>教學課程：Azure Active Directory 與 Uberflip 整合
 
@@ -153,7 +149,7 @@ Uberflip 支援下列功能︰
 
     1. 在 [名稱]  方塊中，輸入 **BSimon**。
   
-    1. 在 [使用者名稱]  方塊中，輸入 **BSimon\@\<yourcompanydomain>.\<extension>** 。 例如 **BSimon\@contoso.com**。
+    1. 在**使用者名稱**方塊中，輸入 **BSimon\@\<yourcompanydomain>.\<extension>** 。 例如 **BSimon\@contoso.com**。
 
     1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
 
