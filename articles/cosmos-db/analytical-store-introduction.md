@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: 3b210ea558f857d017504d07e571e94e34c0d4f6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d831d40733f9fa1d0db4c53d72de22898e493639
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037094"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795859"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>什麼是 Azure Cosmos DB 分析存放區 (預覽)？
 
@@ -134,7 +134,7 @@ Azure Cosmos DB 交易存放區無從驗證結構描述，可讓您逐一查看�
 * 分析讀取作業：從 Synapse Analytics Spark 和 SQL 無伺服器執行時間針對分析存放區執行的讀取作業。
 
 > [!NOTE]
-> Azure Cosmos DB 分析存放區在 2020 年 8 月 30 日前免費提供公開預覽。
+> Azure Cosmos DB 分析存放區目前免費提供公開預覽。
 
 分析存放區定價與交易存放區定價模式不同。 分析存放區中沒有已佈建 RU 的概念。 如需分析存放區定價模式的完整詳細資料，請參閱 [Azure Cosmos DB 定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 
@@ -144,7 +144,7 @@ Azure Cosmos DB 交易存放區無從驗證結構描述，可讓您逐一查看�
 
 分析 TTL 指出容器的資料應在分析存放區中保留的時間長度。 
 
-插入、更新、刪除操作資料會自動從交易存放區同步至分析存放區，不論交易式 TTL 組態為何。 在分析存放區中，此操作資料的保留期可由容器層級的分析 TTL 值控制，如下所示：
+如果已啟用分析存放區，則不論交易式 TTL 設定為何，運算元據的插入、更新、刪除作業都會自動從交易式存放區同步處理至分析存放區。 在分析存放區中，此操作資料的保留期可由容器層級的分析 TTL 值控制，如下所示：
 
 容器上的分析 TTL 是使用 `AnalyticalStoreTimeToLiveInSeconds` 屬性進行設定：
 
@@ -152,7 +152,7 @@ Azure Cosmos DB 交易存放區無從驗證結構描述，可讓您逐一查看�
 
 * 如果存在且值設定為 "-1"：分析存放區會保留所有歷程記錄資料，而不論交易存放區中的資料保留期。 此設定表示分析存放區具有無限的操作資料保留期
 
-* 如果存在且值設為某個正數 "n"：項目將會在交易存放區的上次修改時間 "n" 秒之後，在分析存放區中到期。 如果您想要在分析存放區中，將操作資料保留一段有限的時間，不論交易存放區中的資料保留期，都可以利用此設定。
+* 如果存在且值設為某個正數 "n"：項目將會在交易存放區的上次修改時間 "n" 秒之後，在分析存放區中到期。 如果您想要在分析存放區中將運算元據保留一段有限的時間，不論交易式存放區中的資料保留期，都可以利用這項設定
 
 考慮事項：
 *   使用分析 TTL 值啟用分析存放區之後，稍後可將其更新為其他有效的值。 

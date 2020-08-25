@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 995d621ffbabd6743d248812c88ebe7e65da24ca
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587594"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796947"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
@@ -104,8 +104,10 @@ object result = await client.GetDigitalTwin(id);
 
 此呼叫會以 JSON 字串的形式傳回對應項資料。 
 
-> [!TIP]
-> 當您使用取得對應項時，只會傳回至少已設定一次的屬性 `GetDigitalTwin` 。
+當您使用取得對應項時，只會傳回至少已設定一次的屬性 `GetDigitalTwin` 。
+
+>[!TIP]
+>`displayName`對應項的是其模型中繼資料的一部分，因此在取得對應項實例的資料時，不會顯示它。 若要查看此值，您可以 [從模型中取出](how-to-manage-model.md#retrieve-models)。
 
 若要使用單一 API 呼叫來取出多個 twins，請參閱 [*如何：查詢*](how-to-query-graph.md)對應項圖形中的查詢 API 範例。
 
@@ -164,7 +166,7 @@ object result = await client.GetDigitalTwin(id);
 數位對應項的已定義屬性會傳回為數字對應項上的最上層屬性。 不是 DTDL 定義一部分的中繼資料或系統資訊會以前置詞傳回 `$` 。 中繼資料屬性包括：
 * 此 Azure 數位 Twins 實例中數位對應項的識別碼，如下所示 `$dtId` 。
 * `$etag`，由 web 伺服器指派的標準 HTTP 欄位
-* 區段中的其他屬性 `$metadata` 。 其中包括：
+* 區段中的其他屬性 `$metadata` 。 它們包括：
     - 數位對應項之模型的 DTMI。
     - 每個可寫入屬性的同步處理狀態。 這最適用于裝置，在這種情況下，服務和裝置有可能具有發散狀態 (例如，當裝置離線時) 。 此屬性目前僅適用于連線到 IoT 中樞的實體裝置。 有了中繼資料區段中的資料之後，就可以瞭解屬性的完整狀態，以及上次修改的時間戳記。 如需同步處理狀態的詳細資訊，請參閱關於同步處理裝置狀態的 [IoT 中樞教學](../iot-hub/tutorial-device-twins.md) 課程。
     - 服務特定的中繼資料，例如來自 IoT 中樞或 Azure 數位 Twins。 

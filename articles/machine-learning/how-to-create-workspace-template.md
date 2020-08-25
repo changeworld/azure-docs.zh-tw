@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 6d1042ea21308dd0f82165c288824aaef000e36d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 05a45a2a8aeabae2b160701020e5deb89fb3aa81
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192343"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751703"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
 
@@ -34,7 +34,7 @@ ms.locfileid: "88192343"
 
 ## <a name="workspace-resource-manager-template"></a>工作區 Resource Manager 範本
 
-本檔中使用的 Azure Resource Manager 範本可在 Azure 快速入門範本 GitHub 存放庫的 [201-機器學習-先進](https://github.com/Azure/azure-quickstart-templates/blob/master/201-machine-learning-advanced/azuredeploy.json) 目錄中找到。
+本檔中使用的 Azure Resource Manager 範本，可以在 Azure 快速入門範本 GitHub 存放庫的 [201-機器學習-advanced](https://github.com/Azure/azure-quickstart-templates/blob/master/201-machine-learning-advanced/azuredeploy.json) 目錄中找到。
 
 此範本會建立下列 Azure 服務：
 
@@ -76,7 +76,7 @@ ms.locfileid: "88192343"
 
 若要部署您的範本，您必須建立資源群組。
 
-如果您偏好使用圖形化使用者介面，請參閱 [Azure 入口網站](#use-the-azure-portal) 一節。
+如果您想要使用圖形化使用者介面，請參閱 [Azure 入口網站](#use-the-azure-portal) 一節。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -92,7 +92,7 @@ New-AzResourceGroup -Name "examplegroup" -Location "eastus"
 
 ---
 
-成功建立您的資源群組之後，請使用下列命令來部署範本：
+一旦成功建立您的資源群組，請使用下列命令來部署範本：
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -117,10 +117,10 @@ New-AzResourceGroupDeployment `
 
 ---
 
-根據預設，在範本中建立的所有資源都是新的。 不過，您也可以選擇使用現有的資源。 藉由提供範本的其他參數，您可以使用現有的資源。 例如，如果您想要使用現有的儲存體帳戶，請將 **storageAccountOption** 值設為 [ **現有** ]，並在 **storageAccountName** 參數中提供儲存體帳戶的名稱。
+依預設，建立為範本一部分的所有資源都是新的。 不過，您也可以選擇使用現有的資源。 藉由提供範本的其他參數，您可以使用現有的資源。 例如，如果您想要使用現有的儲存體帳戶，請將 **storageAccountOption** 值設定為 **現有** 的，並在 **storageAccountName** 參數中提供儲存體帳戶的名稱。
 
 > [!IMPORTANT]
-> 如果您想要使用現有的 Azure 儲存體帳戶，它不能是高階帳戶， (Premium_LRS 和 Premium_GRS) 。 它也不能有階層式命名空間 (搭配 Azure Data Lake Storage Gen2) 使用。 工作區的預設儲存體帳戶不支援 premium 儲存體或階層式命名空間。
+> 如果您想要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶 (Premium_LRS 和 Premium_GRS) 。 它也不能有階層命名空間 (用於 Azure Data Lake Storage Gen2) 。 使用工作區的預設儲存體帳戶並不支援 premium 儲存體或階層命名空間。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -150,7 +150,7 @@ New-AzResourceGroupDeployment `
 
 ---
 
-## <a name="deploy-an-encrypted-workspace"></a>部署加密的工作區
+## <a name="deploy-an-encrypted-workspace"></a>部署加密工作區
 
 下列範例範本示範如何建立具有三項設定的工作區：
 
@@ -165,162 +165,54 @@ New-AzResourceGroupDeployment `
 
 > [!IMPORTANT]
 > 使用此範本之前，訂用帳戶必須符合一些特定需求：
->
-> * __Azure Machine Learning__ 應用程式必須是 Azure 訂用帳戶的「參與者」。
 > * 您必須具有包含加密金鑰的現有 Azure Key Vault。
-> * 您必須在 Azure Key Vault 中擁有存取原則，以授與「取得」、「包裝」和「解除包裝」等 __Azure Cosmos DB__ 應用程式存取權。
 > * Azure Key Vault 必須位於打算建立 Azure Machine Learning 工作區的相同區域中。
+> * 您必須指定 Azure Key Vault 的識別碼和加密金鑰的 URI。
 
-若要將 Azure Machine Learning 應用程式新增為參與者，請使用下列命令：
+若要取得此範本所需 `cmk_keyvault` (Key Vault 的識別碼) 和 `resource_cmk_uri` (金鑰 URI) 參數的值，請使用下列步驟：    
 
-1. 登入您的 Azure 帳戶，並取得您的訂用帳戶識別碼。 此訂用帳戶必須是包含 Azure Machine Learning 工作區的相同訂用帳戶。  
+1. 若要取得 Key Vault 識別碼，請使用下列命令：  
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)   
 
-    ```azurecli
-    az account list --query '[].[name,id]' --output tsv
-    ```
+    ```azurecli 
+    az keyvault show --name <keyvault-name> --query 'id' --output tsv   
+    ``` 
 
-    > [!TIP]
-    > 若要選取另一個訂用帳戶，請使用 `az account set -s <subscription name or ID>` 命令並指定訂用帳戶名稱或識別碼以進行切換。 如需訂用帳戶選取的詳細資訊，請參閱[使用多個 Azure 訂用帳戶](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell) 
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzSubscription
-    ```
-
-    > [!TIP]
-    > 若要選取另一個訂用帳戶，請使用 `Az-SetContext -SubscriptionId <subscription ID>` 命令並指定訂用帳戶名稱或識別碼以進行切換。 如需訂用帳戶選取的詳細資訊，請參閱[使用多個 Azure 訂用帳戶](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps?view=azps-4.3.0)。
-
-    ---
-
-1. 若要取得 Azure Machine Learning 應用程式的物件識別碼，請使用下列命令。 每個 Azure 訂用帳戶的值可能不同：
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzADServicePrincipal --DisplayName "Azure Machine Learning" | select-object DisplayName, Id
-    ```
-
-    ---
-    此命令會傳回物件識別碼，這是一個 GUID。
-
-1. 若要將物件識別碼新增為訂用帳戶的參與者，請使用下列命令。 取代 `<object-ID>` 為服務主體的物件識別碼。 將 `<subscription-ID>` 取代為 Azure 訂用帳戶的名稱或識別碼：
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    New-AzRoleAssignment --ObjectId <object-ID> --RoleDefinitionName "Contributor" -Scope /subscriptions/<subscription-ID>
-    ```
-
-    ---
-
-1. 若要在現有的 Azure Key Vault 中產生金鑰，請使用下列其中一個命令。 `<keyvault-name>`以金鑰保存庫的名稱取代。 取代為 `<key-name>` 要用於金鑰的名稱：
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault key create --vault-name <keyvault-name> --name <key-name> --protection software
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Add-AzKeyVaultKey -VaultName <keyvault-name> -Name <key-name> -Destination 'Software'
-    ```
+    ```azurepowershell  
+    Get-AzureRMKeyVault -VaultName '<keyvault-name>'    
+    ``` 
     --- 
 
-若要將存取原則新增至金鑰保存庫，請使用「下列命令」：
+    此命令會傳回如下值：`/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>`。  
 
-1. 若要取得 Azure Cosmos DB 應用程式的物件識別碼，請使用下列命令。 每個 Azure 訂用帳戶的值可能不同：
+1. 若要取得客戶管理金鑰的 URI 值，請使用下列命令：    
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)   
 
-    ```azurecli
-    az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
-    ```
+    ```azurecli 
+    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv  
+    ``` 
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell) 
 
-    ```azurepowershell
-    Get-AzADServicePrincipal --DisplayName "Azure Cosmos DB" | select-object DisplayName, Id
-    ```
-    ---
+    ```azurepowershell  
+    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>' 
+    ``` 
+    --- 
 
-    此命令會傳回物件識別碼，這是一個 GUID。 儲存以供稍後
+    此命令會傳回如下值：`https://mykeyvault.vault.azure.net/keys/mykey/{guid}`。 
 
-1. 若要設定原則，請使用下列命令。 將 `<keyvault-name>` 取代為現有 Azure Key Vault 的名稱。 將 `<object-ID>` 取代為先前步驟中的 GUID：
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-    
-    ```azurepowershell
-    Set-AzKeyVaultAccessPolicy -VaultName <keyvault-name> -ObjectId <object-ID> -PermissionsToKeys get, unwrapKey, wrapKey
-    ```
-    ---    
-
-若要取得此範本所需 `cmk_keyvault` (Key Vault 的識別碼) 和 `resource_cmk_uri` (金鑰 URI) 參數的值，請使用下列步驟：
-
-1. 若要取得 Key Vault 識別碼，請使用下列命令：
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault show --name <keyvault-name> --query 'id' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzureRMKeyVault -VaultName '<keyvault-name>'
-    ```
-    ---
-
-    此命令會傳回如下值：`/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>`。
-
-1. 若要取得客戶管理金鑰的 URI 值，請使用下列命令：
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>'
-    ```
-    ---
-
-    此命令會傳回如下值：`https://mykeyvault.vault.azure.net/keys/mykey/{guid}`。
-
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 建立工作區之後，即無法變更機密資料、加密、金鑰保存庫識別碼或金鑰識別碼的設定。 若要變更這些值，則必須使用新的值來建立新工作區。
 
-當您成功完成上述步驟之後，請像平常一樣部署您的範本。 若要啟用客戶管理的金鑰，請設定下列參數：
+若要允許使用客戶管理的金鑰，請在部署範本時設定下列參數：
 
 * **encryption_status** 為 [ **已啟用**]。
-* **cmk_keyvault** 至 `cmk_keyvault` 先前步驟中取得的值。
-* **resource_cmk_uri** 至 `resource_cmk_uri` 先前步驟中取得的值。
+* **cmk_keyvault** 為 `cmk_keyvault` 先前步驟中取得的值。
+* **resource_cmk_uri** 為 `resource_cmk_uri` 先前步驟中取得的值。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -351,36 +243,36 @@ New-AzResourceGroupDeployment `
 ```
 ---
 
-使用客戶管理的金鑰時，Azure Machine Learning 會建立包含 Cosmos DB 實例的次要資源群組。 如需詳細資訊，請參閱 [靜態加密-Cosmos DB](concept-enterprise-security.md#encryption-at-rest)。
+使用客戶管理的金鑰時，Azure Machine Learning 建立包含 Cosmos DB 實例的次要資源群組。 如需詳細資訊，請參閱 [靜態加密-Cosmos DB](concept-enterprise-security.md#encryption-at-rest)。
 
-您可以為資料提供的其他設定是將 **confidential_data** 參數設為 **true**。 這樣做會執行下列動作：
+您可以為資料提供的其他設定是將 **confidential_data** 參數設定為 **true**。 這樣做會執行下列動作：
 
-* 開始加密 Azure Machine Learning 計算叢集的本機暫存磁片，但前提是您尚未在您的訂用帳戶中建立任何先前的叢集。 如果您先前已在訂用帳戶中建立叢集，請開啟支援票證，讓您的計算叢集能夠加密已啟用的暫存磁片。
+* 開始加密 Azure Machine Learning 計算叢集的本機暫存磁片，提供您未在訂用帳戶中建立任何先前的叢集。 如果您先前已在訂用帳戶中建立叢集，請開啟支援票證，以針對您的計算叢集啟用暫存磁片的加密。
 * 清除執行之間的本機暫存磁片。
-* 使用 key vault，將儲存體帳戶、容器登錄和 SSH 帳戶的認證，從執行層安全地傳遞至您的計算叢集。
+* 使用 key vault，安全地將儲存體帳戶、容器登錄和 SSH 帳戶的認證從執行層傳遞至您的計算叢集。
 * 啟用 IP 篩選以確保基礎 batch 集區無法由 AzureMachineLearningService 以外的任何外部服務呼叫。
 
     > [!IMPORTANT]
     > 建立工作區之後，即無法變更機密資料、加密、金鑰保存庫識別碼或金鑰識別碼的設定。 若要變更這些值，則必須使用新的值來建立新工作區。
 
-  如需詳細資訊，請參閱 [靜態加密](concept-enterprise-security.md#encryption-at-rest)。
+  如需詳細資訊，請參閱待用 [加密](concept-enterprise-security.md#encryption-at-rest)。
 
 ## <a name="deploy-workspace-behind-a-virtual-network"></a>在虛擬網路後方部署工作區
 
-藉由將 `vnetOption` 參數值設定為 `new` 或 `existing` ，您就能夠建立虛擬網路背後的工作區所使用的資源。
+將 `vnetOption` 參數值設定為或時 `new` `existing` ，您就能夠建立虛擬網路背後的工作區所使用的資源。
 
 > [!IMPORTANT]
 > 針對 container registry，只支援 ' Premium ' sku。
 
 > [!IMPORTANT]
-> Application Insights 不支援在虛擬網路後方進行部署。
+> Application Insights 不支援在虛擬網路後方部署。
 
-### <a name="only-deploy-workspace-behind-private-endpoint"></a>僅在私人端點後方部署工作區
+### <a name="only-deploy-workspace-behind-private-endpoint"></a>只在私人端點後方部署工作區
 
-如果相關聯的資源不在虛擬網路後方，您可以將 **privateEndpointType** 參數設定為 `AutoAproval` 或， `ManualApproval` 以將工作區部署在私人端點後方。 這可以針對新的和現有的工作區來完成。 更新現有的工作區時，請以現有工作區中的資訊填入範本參數。
+如果相關聯的資源不在虛擬網路後方，您可以將 **privateEndpointType** 參數設定為 `AutoAproval` 或， `ManualApproval` 以將工作區部署到私人端點後方。 這可以針對新的和現有的工作區進行。 更新現有的工作區時，請使用現有工作區中的資訊填入範本參數。
 
 > [!IMPORTANT]
-> 使用 Azure 私人連結來建立 Azure Machine Learning 工作區的私人端點目前為公開預覽狀態。 這項功能僅適用于 **美國東部** 和 **美國西部 2** 區域。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 使用 Azure Private Link 建立 Azure Machine Learning 工作區的私人端點目前處於公開預覽狀態。 這項功能僅適用于 **美國東部** 和 **美國西部 2** 區域。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -410,7 +302,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="use-a-new-virtual-network"></a>使用新的虛擬網路
 
-若要將資源部署在新的虛擬網路後方，請將 **vnetOption** 設定為 [ **新增** ]，以及個別資源的虛擬網路設定。 下列部署示範如何使用新虛擬網路背後的儲存體帳戶資源來部署工作區。
+若要在新的虛擬網路後方部署資源，請將 **vnetOption** 設定為 [ **新增** ]，以及個別資源的虛擬網路設定。 下列部署示範如何在新的虛擬網路後方部署具有儲存體帳戶資源的工作區。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -444,7 +336,7 @@ New-AzResourceGroupDeployment `
 
 ---
 
-或者，您可以在虛擬網路背後部署多個或所有相依資源。
+或者，您可以在虛擬網路後方部署多個或所有的相依資源。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -523,7 +415,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="use-an-existing-virtual-network--resources"></a>使用現有的虛擬網路 & 資源
 
-若要部署具有現有相關聯資源的工作區，您必須將 **vnetOption** 參數設定為 **現有** 的和子網參數。 不過，在部署 **之前** ，您必須在虛擬網路中為每個資源建立服務端點。 如同新的虛擬網路部署，您可以在虛擬網路後方擁有一或所有資源。
+若要使用現有相關聯的資源來部署工作區，您必須將 **vnetOption** 參數設定為 **現有** 的，以及子網參數。 不過，在部署 **之前** ，您必須在虛擬網路中為每個資源建立服務端點。 如同新的虛擬網路部署，您可以在虛擬網路後方有一或多個資源。
 
 > [!IMPORTANT]
 > 子網應具有 `Microsoft.Storage` 服務端點
@@ -640,8 +532,8 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-1. 遵循[從自訂範本部署資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)的步驟。 當您到達 [ __選取範本__ ] 畫面時，從下拉式清單中選擇 [ **201-機器學習-先進** 的範本]。
-1. 選取 [ __選取範本__ ] 以使用範本。 根據您的部署案例，提供下列必要的資訊和任何其他參數。
+1. 遵循[從自訂範本部署資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)的步驟。 當您到達 [ __選取範本__ ] 畫面時，請從下拉式清單中選擇 [ **201-機器學習-advanced** ] 範本。
+1. 選取 [ __選取範本__ ] 以使用範本。 根據您的部署案例提供下列必要資訊和任何其他參數。
 
    * 訂用帳戶：選取要用於這些資源的 Azure 訂用帳戶。
    * 資源群組：選取或建立資源群組以包含服務。
@@ -649,7 +541,7 @@ New-AzResourceGroupDeployment `
    * 工作區名稱：要用於將建立之Azure Machine Learning 工作區的名稱。 工作區名稱必須介於 3 到 33 個字元之間。 只能包含英數字元和 '-'。
    * 位置：選取將建立資源的位置。
 1. 選取 [檢閱 + 建立]。
-1. 在 [ __審查 + 建立__ ] 畫面上，同意列出的條款及條件，然後選取 [ __建立__]。
+1. 在 [ __審核 + 建立__ ] 畫面中，同意列出的條款及條件，然後選取 [ __建立__]。
 
 如需詳細資訊，請參閱[從自訂範本部署資源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
@@ -752,11 +644,11 @@ New-AzResourceGroupDeployment `
     /subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault
     ```
 
-### <a name="virtual-network-not-linked-to-private-dns-zone"></a>未連結到私人 DNS 區域的虛擬網路
+### <a name="virtual-network-not-linked-to-private-dns-zone"></a>未連結至私人 DNS 區域的虛擬網路
 
-建立具有私人端點的工作區時，此範本會建立名為 __privatelink.api.azureml.ms__的私人 DNS 區域。 __虛擬網路連結__會自動新增到此私人 DNS 區域。 只會針對您在資源群組中建立的第一個工作區和私人端點新增連結;如果您在相同的資源群組中建立另一個具有私人端點的虛擬網路和工作區，則第二個虛擬網路可能不會新增至私人 DNS 區域。
+使用私人端點建立工作區時，此範本會建立名為 __privatelink.api.azureml.ms__的私人 DNS 區域。 __虛擬網路連結__會自動新增到此私人 DNS 區域。 只會針對您在資源群組中建立的第一個工作區和私人端點新增連結;如果您在相同的資源群組中建立另一個具有私人端點的虛擬網路和工作區，則第二個虛擬網路可能不會新增至私人 DNS 區域。
 
-若要查看私人 DNS 區域已經存在的虛擬網路連結，請使用下列 Azure CLI 命令：
+若要查看私人 DNS 區域已存在的虛擬網路連結，請使用下列 Azure CLI 命令：
 
 ```azurecli
 az network private-dns link vnet list --zone-name privatelink.api.azureml.ms --resource-group myresourcegroup
@@ -764,13 +656,13 @@ az network private-dns link vnet list --zone-name privatelink.api.azureml.ms --r
 
 若要新增包含另一個工作區和私人端點的虛擬網路，請使用下列步驟：
 
-1. 若要尋找您要新增之網路的虛擬網路識別碼，請使用下列命令：
+1. 若要尋找您想要新增之網路的虛擬網路識別碼，請使用下列命令：
 
     ```azurecli
     az network vnet show --name myvnet --resource-group myresourcegroup --query id
     ```
     
-    此命令會傳回類似 ' "/subscriptions/GUID/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet" ' 的值。 儲存此值，並在下一個步驟中使用它。
+    此命令會傳回類似于 ' "/subscriptions/GUID/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet" ' 的值。 儲存此值，並在下一個步驟中使用。
 
 2. 若要將虛擬網路連結新增至 privatelink.api.azureml.ms 私人 DNS 區域，請使用下列命令。 針對 `--virtual-network` 參數，請使用前一個命令的輸出：
 
@@ -782,4 +674,4 @@ az network private-dns link vnet list --zone-name privatelink.api.azureml.ms --r
 
 * [使用 Resource Manager 範本和 Resource Manager REST API 部署資源](../azure-resource-manager/templates/deploy-rest.md)。
 * [透過 Visual Studio 建立與部署 Azure 資源群組](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。
-* [如需與 Azure Machine Learning 相關的其他範本，請參閱 Azure 快速入門範本存放庫](https://github.com/Azure/azure-quickstart-templates)
+* [如需 Azure Machine Learning 的其他相關範本，請參閱 Azure 快速入門範本存放庫](https://github.com/Azure/azure-quickstart-templates)

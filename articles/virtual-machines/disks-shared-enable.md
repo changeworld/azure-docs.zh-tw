@@ -4,16 +4,16 @@ description: 使用共用磁片設定 Azure 受控磁片，讓您可以在多個
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 08/21/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f6b34cd93dcfabee2974bea5cf57258527df94d7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ad70aa1d044649a0ca61060fff9880d4ef1e34c1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701428"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752035"
 ---
 # <a name="enable-shared-disk"></a>啟用共用磁碟
 
@@ -21,21 +21,21 @@ ms.locfileid: "88701428"
 
 如果您要尋找已啟用共用磁片之受控磁片的概念資訊，請參閱：
 
-* 針對 Linux： [Azure 共用磁片](./linux/disks-shared.md)
+* 針對 Linux： [Azure 共用磁片](linux/disks-shared.md)
 
-* 針對 Windows： [Azure 共用磁片](./windows/disks-shared.md)
+* 針對 Windows： [Azure 共用磁片](windows/disks-shared.md)
 
 ## <a name="limitations"></a>限制
 
-[!INCLUDE [virtual-machines-disks-shared-limitations](~/includes/virtual-machines-disks-shared-limitations.md)]
+[!INCLUDE [virtual-machines-disks-shared-limitations](../../includes/virtual-machines-disks-shared-limitations.md)]
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
-共用磁片支援數個作業系統。 如需支援的作業系統，請參閱概念文章的 [Windows](~/articles/virtual-machines/windows/disks-shared.md#windows) 和 [Linux](~/articles/virtual-machines/linux/disks-shared.md#linux) 章節。
+共用磁片支援數個作業系統。 如需支援的作業系統，請參閱概念文章的 [Windows](windows/disks-shared.md#windows) 和 [Linux](linux/disks-shared.md#linux) 章節。
 
 ## <a name="disk-sizes"></a>磁碟大小
 
-[!INCLUDE [virtual-machines-disks-shared-sizes](~/includes/virtual-machines-disks-shared-sizes.md)]
+[!INCLUDE [virtual-machines-disks-shared-sizes](../../includes/virtual-machines-disks-shared-sizes.md)]
 
 ## <a name="deploy-shared-disks"></a>部署共用磁片
 
@@ -147,7 +147,7 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 使用部署共用磁片之後 `maxShares>1` ，您就可以將磁片掛接到您的一或多個 vm。
 
 > [!NOTE]
-> 如果您要部署 ultra 磁片，請確定它符合必要的需求。 如需詳細資料，請參閱 ultra 磁片文章的 [PowerShell](~/articles/virtual-machines/windows/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) 或 [CLI](~/articles/virtual-machines/linux/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) 一節。
+> 如果您要部署 ultra 磁片，請確定它符合必要的需求。 如需詳細資料，請參閱 ultra 磁片文章的 [PowerShell](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) 或 [CLI](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) 一節。
 
 ```azurepowershell-interactive
 

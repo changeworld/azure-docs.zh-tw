@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d303f8a04a9159eeb4dc5e78ef09b57f5a966c72
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: dd189db10b599c0bc6bd5a3dbae2b1bc21b53b0c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691355"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795910"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取
 
@@ -37,7 +37,7 @@ ms.locfileid: "88691355"
 * 程序、系統管理實作和知識管理
 * 技術元件，例如主機防禦、帳戶保護和身分識別管理
 
-在您關注的 Microsoft 服務中管理和報告，以此來保護特殊權限存取。 如果您有內部部署管理帳戶，請參閱[保護特殊權限存取](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)，以取得在 Active Directory 中保護內部部署和混合式特殊權限存取的指引。
+在您關注的 Microsoft 服務中管理和報告，以此來保護特殊權限存取。 如果您有內部部署管理帳戶，請參閱[保護特殊權限存取](/windows-server/identity/securing-privileged-access/securing-privileged-access)，以取得在 Active Directory 中保護內部部署和混合式特殊權限存取的指引。
 
 > [!NOTE]
 > 本文中的指引主要參照 Azure Active Directory Premium 計劃 P1 和 P2 所包含的 Azure Active Directory 功能。 Azure Active Directory Premium P2 隨附於 EMS E5 套件和 Microsoft 365 E5 套件。 本指引假設您的組織已為使用者購買 Azure AD Premium P2 授權。 如果您沒有這些授權，本指引可能有某些內容不適用於您的組織。 此外，在本文中，「全域管理員」 (或「全域管理員」) 表示與「公司系統管理員」或「租使用者系統管理員」相同的東西。
@@ -93,7 +93,7 @@ Azure AD Privileged Identity Management 隨附於 Azure AD Premium P2 或 EMS E5
 * Exchange 系統管理員
 * SharePoint 管理員
 
-如果您的組織中沒有 Azure AD Privileged Identity Management，您可以使用 [PowerShell API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)。 從全域管理員角色開始，因為全域管理員在組織訂閱的所有雲端服務上具有相同的權限。 這些權限無論在何處指派，一律授與：在 Microsoft 365 系統管理中心、Azure 入口網站，或以 Microsoft PowerShell 的 Azure AD 模組指派。
+如果您的組織中沒有 Azure AD Privileged Identity Management，您可以使用 [PowerShell API](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)。 從全域管理員角色開始，因為全域管理員在組織訂閱的所有雲端服務上具有相同的權限。 這些權限無論在何處指派，一律授與：在 Microsoft 365 系統管理中心、Azure 入口網站，或以 Microsoft PowerShell 的 Azure AD 模組指派。
 
 請移除這些角色中不再需要的任何帳戶。 然後，將指派給管理員角色的其餘帳戶分類：
 
@@ -130,7 +130,7 @@ Azure AD Privileged Identity Management 隨附於 Azure AD Premium P2 或 EMS E5
 
 * 識別具有系統管理角色的使用者，以及可供其進行管理的服務。
 * 使用 Azure AD PIM 查明組織中哪些使用者具有 Azure AD 的管理員存取權。
-* 除了在 Azure AD 中定義的角色以外，Office 365 也隨附一組您可以指派給組織使用者的管理員角色。 每個管理員角色都對應至常用的商務功能，並授權組織中的人在 [Microsoft 365 系統管理中心](https://admin.microsoft.com)執行特定的工作。 使用 Microsoft 365 系統管理中心查明組織中哪些使用者具有 Office 365 的管理員存取權，包括透過不在 Azure AD 中管理的角色。 如需詳細資訊，請參閱[關於 Office 365 系統管理員角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)和 [Office 365 的安全性做法](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)。
+* 除了在 Azure AD 中定義的角色以外，Office 365 也隨附一組您可以指派給組織使用者的管理員角色。 每個管理員角色都對應至常用的商務功能，並授權組織中的人在 [Microsoft 365 系統管理中心](https://admin.microsoft.com)執行特定的工作。 使用 Microsoft 365 系統管理中心查明組織中哪些使用者具有 Office 365 的管理員存取權，包括透過不在 Azure AD 中管理的角色。 如需詳細資訊，請參閱[關於 Office 365 系統管理員角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)和 [Office 365 的安全性做法](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)。
 * 請在組織依賴的服務中清查，例如 Azure、Intune 或 Dynamics 365。
 * 請確定您的帳戶是作為管理用途：
 
@@ -169,11 +169,11 @@ Azure AD 建議對所有使用者要求多重要素驗證 (MFA)。 務必考量�
 
 * [使用條件式存取原則的 MFA](../authentication/howto-mfa-getstarted.md) (對於組織中的所有使用者)。
 
-如果您使用 Windows Hello 企業版，則使用 Windows Hello 登入體驗可符合 MFA 需求。 如需詳細資訊，請參閱 [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport)。
+如果您使用 Windows Hello 企業版，則使用 Windows Hello 登入體驗可符合 MFA 需求。 如需詳細資訊，請參閱 [Windows Hello](/windows/uwp/security/microsoft-passport)。
 
 #### <a name="configure-identity-protection"></a>設定 Identity Protection
 
-Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，可偵測影響您組織身分識別的潛在弱點。 您可以設定自動化機制來回應這些偵測到的可疑活動，並採取適當動作加以解決。 如需詳細資訊，請參閱 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)。
+Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，可偵測影響您組織身分識別的潛在弱點。 您可以設定自動化機制來回應這些偵測到的可疑活動，並採取適當動作加以解決。 如需詳細資訊，請參閱 [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)。
 
 #### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>取得您的 Office 365 安全分數 (如果使用 Office 365)
 
@@ -193,7 +193,7 @@ Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，
 
 #### <a name="secure-on-premises-privileged-administrative-accounts-if-not-already-done"></a>保護內部部署的特殊權限系統管理帳戶 (如果尚未這麼做)
 
-如果您的 Azure Active Directory 組織與內部部署 Active Directory 同步，請遵循[安全性特殊權限存取藍圖](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)中的指引：此階段包括：
+如果您的 Azure Active Directory 組織與內部部署 Active Directory 同步，請遵循[安全性特殊權限存取藍圖](/windows-server/identity/securing-privileged-access/securing-privileged-access)中的指引：此階段包括：
 
 * 為需要進行內部部署系統管理工作的使用者建立個別的管理帳戶
 * 為 Active Directory 系統管理員部署特殊權限存取工作站
@@ -211,13 +211,13 @@ Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，
 
 #### <a name="monitor-azure-activity"></a>監視 Azure 活動
 
-「Azure 活動記錄」提供 Azure 中的訂用帳戶層級事件的記錄。 它提供關於何人建立、更新及刪除了什麼資源，以及這些事件於何時發生的資訊。 如需詳細資訊，請參閱[稽核和接收 Azure 訂用帳戶中關於重要動作的通知](../../azure-monitor/platform/quick-audit-notify-action-subscription.md)。
+「Azure 活動記錄」提供 Azure 中的訂用帳戶層級事件的記錄。 它提供關於何人建立、更新及刪除了什麼資源，以及這些事件於何時發生的資訊。 如需詳細資訊，請參閱[稽核和接收 Azure 訂用帳戶中關於重要動作的通知](../../azure-monitor/platform/alerts-activity-log.md)。
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>組織透過 Azure AD 對其他雲端應用程式的存取進行管理的其他步驟
 
 #### <a name="configure-conditional-access-policies"></a>設定條件式存取原則
 
-為內部部署和雲端託管應用程式準備條件式存取原則。 如果您有已加入使用者工作場所的裝置，請從[使用 Azure Active Directory 裝置註冊來設定內部部署條件式存取](../active-directory-device-registration-on-premises-setup.md)取得詳細資訊。
+為內部部署和雲端託管應用程式準備條件式存取原則。 如果您有已加入使用者工作場所的裝置，請從[使用 Azure Active Directory 裝置註冊來設定內部部署條件式存取](../devices/overview.md)取得詳細資訊。
 
 ## <a name="stage-3-take-control-of-admin-activity"></a>第 3 階段：掌控系統管理活動
 
@@ -255,7 +255,7 @@ Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，
 * 模擬攻擊
 * 認證竊取攻擊，例如記錄按鍵輸入、雜湊傳遞和票證傳遞
 
-您可以部署特殊權限存取工作站，以降低管理員在未經強化的桌面環境輸入認證時的風險。 如需詳細資訊，請參閱[特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)。
+您可以部署特殊權限存取工作站，以降低管理員在未經強化的桌面環境輸入認證時的風險。 如需詳細資訊，請參閱[特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)。
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>檢閱美國國家標準技術局的事件處理建議
 
@@ -279,7 +279,7 @@ Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>判斷密碼式登入通訊協定的風險 (如果使用 Exchange Online)
 
-建議找出認證遭盜用時將對組織帶來災難的所有潛在使用者。 針對這些使用者，請施行強式驗證需求，並使用 Azure AD 條件式存取，禁止他們以使用者名稱和密碼登入電子郵件。 您可以使用條件式存取來[封鎖舊式驗證](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)，也可以透過 Exchange Online 來[封鎖基本驗證](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)。
+建議找出認證遭盜用時將對組織帶來災難的所有潛在使用者。 針對這些使用者，請施行強式驗證需求，並使用 Azure AD 條件式存取，禁止他們以使用者名稱和密碼登入電子郵件。 您可以使用條件式存取來[封鎖舊式驗證](../conditional-access/block-legacy-authentication.md)，也可以透過 Exchange Online 來[封鎖基本驗證](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)。
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>完成 Office 365 角色的角色檢閱評估 (如果使用 Office 365)
 
@@ -291,7 +291,7 @@ Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，
 
 #### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>繼續保護內部部署的特殊權限系統管理帳戶
 
-如果您的 Azure Active Directory 連線至內部部署 Active Directory，請遵循[安全性特殊權限存取計劃](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)的指引：階段 2. 在這個階段，您需要：
+如果您的 Azure Active Directory 連線至內部部署 Active Directory，請遵循[安全性特殊權限存取計劃](/windows-server/identity/securing-privileged-access/securing-privileged-access)的指引：階段 2. 在這個階段，您需要：
 
 * 為所有管理員部署特殊權限存取工作站
 * 需要 MFA
@@ -314,11 +314,11 @@ Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>為 Azure AD 系統管理員角色實作 PIM
 
-透過具有 Azure AD 系統管理員角色的 Privileged Identity Management，可管理、控制及監視對 Azure 資源的存取。 使用 PIM 可縮短權限的曝光時間，並透過報告和警示更清楚了解權限的使用情形，以加強保護。 如需詳細資訊，請參閱[使用 Privileged Identity Management 管理對 Azure 資源的 RABC 存取](../../role-based-access-control/pim-azure-resource.md)。
+透過具有 Azure AD 系統管理員角色的 Privileged Identity Management，可管理、控制及監視對 Azure 資源的存取。 使用 PIM 可縮短權限的曝光時間，並透過報告和警示更清楚了解權限的使用情形，以加強保護。 如需詳細資訊，請參閱[使用 Privileged Identity Management 管理對 Azure 資源的 RABC 存取](../../role-based-access-control/best-practices.md)。
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>使用 Azure 記錄整合將相關 Azure 記錄傳送至您的 SIEM 系統
 
-Azure 記錄整合可讓您將來自 Azure 資源的未經處理記錄，整合到組織現有的安全性資訊和事件管理 (SIEM) 系統。 [Azure 記錄整合](../../security/fundamentals/azure-log-integration-overview.md)收集來自 Windows 事件檢視器的 Windows 事件，以及下列來源的 Azure 資源：
+Azure 記錄整合可讓您將來自 Azure 資源的未經處理記錄，整合到組織現有的安全性資訊和事件管理 (SIEM) 系統。 [Azure 記錄整合](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)收集來自 Windows 事件檢視器的 Windows 事件，以及下列來源的 Azure 資源：
 
 * Azure 活動記錄
 * Azure 資訊安全中心警示
@@ -332,7 +332,7 @@ Azure AD 可讓您自動建立和維護雲端應用程式 (例如 Dropbox、Sale
 
 #### <a name="integrate-information-protection"></a>整合資訊保護
 
-Microsoft Cloud App Security 可讓您調查檔案，並根據 Azure 資訊保護分類標籤來設定原則，以更完整檢視和控制雲端資料。 掃描及分類雲端中的檔案，並套用 Azure 資訊保護標籤。 如需詳細資訊，請參閱 [Azure 資訊保護整合](https://docs.microsoft.com/cloud-app-security/azip-integration)。
+Microsoft Cloud App Security 可讓您調查檔案，並根據 Azure 資訊保護分類標籤來設定原則，以更完整檢視和控制雲端資料。 掃描及分類雲端中的檔案，並套用 Azure 資訊保護標籤。 如需詳細資訊，請參閱 [Azure 資訊保護整合](/cloud-app-security/azip-integration)。
 
 #### <a name="configure-conditional-access"></a>設定條件式存取
 
@@ -340,7 +340,7 @@ Microsoft Cloud App Security 可讓您調查檔案，並根據 Azure 資訊保�
 
 #### <a name="monitor-activity-in-connected-cloud-apps"></a>監視連線的雲端應用程式中的活動
 
-建議使用 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)，以確保在連線的應用程式中也能保護使用者存取。 這項功能可保護企業存取雲端應用程式時的安全性，並保護您的管理帳戶，可讓您：
+建議使用 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)，以確保在連線的應用程式中也能保護使用者存取。 這項功能可保護企業存取雲端應用程式時的安全性，並保護您的管理帳戶，可讓您：
 
 * 擴充對雲端應用程式的可見性和控制
 * 建立存取、活動和資料共用的原則
@@ -348,7 +348,7 @@ Microsoft Cloud App Security 可讓您調查檔案，並根據 Azure 資訊保�
 * 防止資料外洩
 * 盡可能降低風險，並將威脅防護和原則強制執行自動化
 
-Cloud App Security SIEM 代理程式可整合 Cloud App Security 與您的 SIEM 伺服器，讓您集中監視 Office 365 警示和活動。 它會在您的伺服器上執行，並從 Cloud App Security 提取警示和活動，再將其串流至 SIEM 伺服器。 如需詳細資訊，請參閱 [SIEM 整合](https://docs.microsoft.com/cloud-app-security/siem)。
+Cloud App Security SIEM 代理程式可整合 Cloud App Security 與您的 SIEM 伺服器，讓您集中監視 Office 365 警示和活動。 它會在您的伺服器上執行，並從 Cloud App Security 提取警示和活動，再將其串流至 SIEM 伺服器。 如需詳細資訊，請參閱 [SIEM 整合](/cloud-app-security/siem)。
 
 ## <a name="stage-4-continue-building-defenses"></a>階段 4：繼續建立防禦
 
@@ -385,7 +385,7 @@ Cloud App Security SIEM 代理程式可整合 Cloud App Security 與您的 SIEM 
 
 #### <a name="review-users-who-have-administration-of-azure-ad-joined-devices"></a>檢閱有哪些使用者可管理已加入 Azure AD 的裝置
 
-如需詳細資訊，請參閱[如何設定已加入 Azure Active Directory 的混合式裝置](../device-management-hybrid-azuread-joined-devices-setup.md)。
+如需詳細資訊，請參閱[如何設定已加入 Azure Active Directory 的混合式裝置](../devices/hybrid-azuread-join-plan.md)。
 
 #### <a name="review-members-of-built-in-office-365-admin-roles"></a>檢閱[內建 Office 365 管理員角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)的成員
 如果您不使用 Office 365，請略過此步驟。

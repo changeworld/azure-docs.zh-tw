@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: d190d3f133c4b12b58dade878dc66755c25e1ed8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 99c5ff39820b652a33ab670e63ca709f8747c4cf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078369"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751290"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 安全性和 DevOps 最佳做法
 
@@ -47,9 +47,9 @@ ESP 適用於下列叢集類型：Apache Hadoop、Apache Spark、Apache HBase、
     |網域名稱|與 Azure AD DS 相關聯的網域名稱。|
     |網域使用者名稱|上一節在受 Azure AD DS DC 管理的網域中建立的服務帳戶，例如：`hdiadmin@contoso.onmicrosoft.com`。 此網域使用者將是這個 HDInsight 叢集的系統管理員。|
     |網域密碼|服務帳戶的密碼。|
-    |組織單位|HDInsight 叢集要搭配使用的 OU 的辨別名稱，例如：`OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`。 如果此 OU 不存在，HDInsight 叢集會嘗試使用服務帳戶的許可權來建立 OU。|
+    |組織單位|HDInsight 叢集要搭配使用的 OU 的辨別名稱，例如：`OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`。 如果此 OU 不存在，HDInsight 叢集會嘗試使用服務帳戶的許可權建立 OU。|
     |LDAPS URL|例如， `ldaps://contoso.onmicrosoft.com:636` 。|
-    |存取使用者群組|您要將其使用者同步至叢集的安全性群組，例如：`HiveUsers`。 如果要指定多個使用者群組，請以分號 (;) 來分隔。 群組必須存在於目錄中，才會建立 ESP 叢集。|
+    |存取使用者群組|您要將其使用者同步至叢集的安全性群組，例如：`HiveUsers`。 如果要指定多個使用者群組，請以分號 (;) 來分隔。 建立 ESP 叢集之前，必須先在目錄中有群組 () 。|
 
 如需詳細資訊，請參閱下列文章：
 
@@ -108,11 +108,9 @@ ESP 適用於下列叢集類型：Apache Hadoop、Apache Spark、Apache HBase、
 1. 匯入任何已備份的暫時性資料。
 1. 使用新叢集啟動工作/繼續處理。
 
-如需詳細資訊，請參閱文章：將[HDInsight 叢集升級至新版本](../hdinsight-upgrade-cluster.md)。
+如需詳細資訊，請參閱文章：將 [HDInsight 叢集升級至新版本](../hdinsight-upgrade-cluster.md)。
 
 ## <a name="patch-cluster-operating-systems"></a>修補叢集作業系統
-
-HDInsight 作為受控 Hadoop 服務，會負責修補 HDInsight 叢集所使用之 VM 的 OS。
 
 如需詳細資訊，請參閱文章： [HDInsight 的作業系統修補](../hdinsight-os-patching.md)。
 

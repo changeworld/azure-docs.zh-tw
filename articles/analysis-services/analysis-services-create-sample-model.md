@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 88ed58ea1eea80b4b890c31260fc65153377eaaa
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83697513"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>教學課程：從入口網站新增範例模型
