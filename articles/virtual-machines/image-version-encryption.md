@@ -8,28 +8,28 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 0d2b840b401dc90b332f91c93a9eda03d6643432
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 21e6dc5a975f43456a077559eebafd975cea66a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245548"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816485"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>預覽：使用客戶管理的金鑰加密映像
 
 映像庫中的映像會儲存為受控磁碟，因此會使用伺服器端加密來自動加密。 伺服器端加密使用 256 位元的 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)，這是最強的區塊編碼器之一，且符合 FIPS 140-2 規範。 如需有關基礎 Azure 受控磁碟的加密模組詳細資訊，請參閱[加密 API：新一代](/windows/desktop/seccng/cng-portal)。
 
-您可以依賴平臺管理的金鑰來加密映射、使用您自己的金鑰，也可以同時使用兩者來進行雙重加密。 如果您選擇使用自己的金鑰來管理加密，您可以指定*客戶管理的金鑰*，以用於加密和解密映像中的所有磁碟。 
+您可以依賴平臺管理的金鑰來加密您的映射、使用您自己的金鑰，也可以同時使用兩者來進行雙重加密。 如果您選擇使用自己的金鑰來管理加密，您可以指定*客戶管理的金鑰*，以用於加密和解密映像中的所有磁碟。 
 
 使用「客戶管理的金鑰」的伺服器端加密，會使用 Azure Key Vault。 您可以將[您的 RSA 金鑰](../key-vault/keys/hsm-protected-keys.md)匯入 Key Vault，或在 Azure Key Vault 中產生新的 RSA 金鑰。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-本文要求您已將磁片加密設定為用於映射。
+本文要求您已經有磁片加密集可用於您的映射。
 
-- 若只要使用客戶管理的金鑰，請參閱使用[Azure 入口網站](./windows/disks-enable-customer-managed-keys-portal.md)或[PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)，透過**伺服器端加密啟用客戶管理的金鑰**。
+- 若只要使用客戶管理的金鑰，請參閱使用[Azure 入口網站](./disks-enable-customer-managed-keys-portal.md)或[PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)**以伺服器端加密啟用客戶管理的金鑰**。
 
-- 若要使用平臺管理和客戶管理的金鑰 (進行雙重加密) ，請參閱使用[Azure 入口網站](./windows/disks-enable-double-encryption-at-rest-portal.md)或[PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md)**啟用靜態加密**。
+- 若要使用平臺管理和客戶管理的金鑰 (進行雙重加密) ，請參閱使用[Azure 入口網站](./disks-enable-double-encryption-at-rest-portal.md)或[PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md)**啟用靜態加密**。
     > [!IMPORTANT]
     > 您必須使用此連結 [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) 來存取 Azure 入口網站。 靜態加密目前不會顯示在公用 Azure 入口網站中，而不需要使用連結。
 
@@ -37,7 +37,7 @@ ms.locfileid: "88245548"
 
 使用客戶管理的金鑰來加密共用映像庫映像時，有幾個限制：  
 
-- 加密金鑰集必須與您的映射位於相同的訂用帳戶和區域中。
+- 加密金鑰集必須位於與您映射相同的訂用帳戶和區域中。
 
 - 您無法共用使用「客戶管理的金鑰」的映像。 
 
@@ -191,22 +191,22 @@ az sig image-version create \
 
 ## <a name="portal"></a>入口網站
 
-當您在入口網站中建立映射版本時，您可以使用 [ **加密** ] 索引標籤來輸入 [套用您的儲存體加密集]。
+當您在入口網站中建立映射版本時，您可以使用 [ **加密** ] 索引標籤輸入套用您的儲存體加密集。
 
 > [!IMPORTANT]
 > 若要使用雙重加密，您必須使用此連結 [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) 來存取 Azure 入口網站。 靜態加密目前不會顯示在公用 Azure 入口網站中，而不需要使用連結。
 
 
 1. 在 [建立映像版本] 頁面上，選取 [加密] 索引標籤。
-2. 在 [ **加密類型**] 中，選取 [ **使用客戶管理的金鑰進行待用加密** ] 或 [ **使用平臺管理和客戶管理的金鑰進行雙重加密**]。 
+2. 在 [ **加密類型**] 中，選取 **使用客戶管理的金鑰進行待用加密** ，或 **使用平臺管理和客戶管理的金鑰進行雙重加密**。 
 3. 為映像中的每個磁碟，從下拉式選單中選取要使用的**磁碟加密集**。 
 
 ### <a name="create-the-vm"></a>建立 VM
 
-您可以從映射版本建立 VM，並使用客戶管理的金鑰來加密磁片。 當您在入口網站中建立 VM 時，請在 [ **磁片** ] 索引標籤上，選取 [ **使用客戶管理的金鑰** 進行待用加密] 或 [ **使用平臺管理和客戶管理的金鑰進行雙重** 加密]，以進行 **加密類型**。 然後，您可以從下拉式選單中選取加密集。
+您可以從映射版本建立 VM，並使用客戶管理的金鑰來加密磁片。 當您在入口網站中建立 VM 時，請在 [**磁片**] 索引標籤上，選取 [**使用客戶管理的金鑰進行待用加密**]，或針對**加密類型****使用由平臺管理和客戶管理的金鑰進行雙重加密**。 然後，您可以從下拉式選單中選取加密集。
 
 ## <a name="next-steps"></a>後續步驟
 
 深入瞭解[伺服器端磁碟加密](./windows/disk-encryption.md)。
 
-如需有關如何提供採購方案資訊的詳細資訊，請參閱 [在建立映射時提供 Azure Marketplace 購買方案資訊](marketplace-images.md)。
+如需有關如何提供採購方案資訊的詳細資訊，請參閱 [在建立映射時提供 Azure Marketplace 採購方案資訊](marketplace-images.md)。

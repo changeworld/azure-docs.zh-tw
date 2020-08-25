@@ -1,14 +1,14 @@
 ---
 title: 了解查詢語言
 description: 描述 Resource Graph 資料表，以及可與 Azure Resource Graph 搭配使用的可用 Kusto 資料類型、運算子和函式。
-ms.date: 08/21/2020
+ms.date: 08/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea274c349c968852b77f3c3f2d39637f91484335
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 4d7ca949e9eef075adb130bb84b2617749950bec
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723429"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798545"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查詢語言
 
@@ -63,6 +63,25 @@ Resources
 
 > [!NOTE]
 > 當使用 `project` 來限制 `join` 結果時，`join` 用來使兩個資料表相關的屬性 (上述範例中的 _subscriptionId_) 必須包含在 `project` 中。
+
+## <a name="extended-properties-preview"></a><a name="extended-properties"></a>擴充屬性 (預覽) 
+
+作為 _預覽_ 功能，Resource Graph 中的某些資源類型具有其他類型相關屬性，可用於查詢超出 Azure Resource Manager 所提供的屬性。 這組值（稱為 _擴充屬性_）存在於中支援的資源類型上 `properties.extended` 。 若要查看哪些資源類型具有 _擴充屬性_，請使用下列查詢：
+
+```kusto
+Resources
+| where isnotnull(properties.extended)
+| distinct type
+| order by type asc
+```
+
+範例：取得虛擬機器計數的方式 `instanceView.powerState.code` ：
+
+```kusto
+Resources
+| where type == 'microsoft.compute/virtualmachines'
+| summarize count() by tostring(properties.extended.instanceView.powerState.code)
+```
 
 ## <a name="resource-graph-custom-language-elements"></a>Resource Graph 自訂語言元素
 
@@ -123,8 +142,7 @@ Resource Graph 支援 KQL [資料類型](/azure/kusto/query/scalar-data-types/)�
 查詢所傳回之資源的訂用帳戶範圍，取決於存取 Resource Graph 的方法。 Azure CLI 和 Azure PowerShell 根據授權使用者的內容，填入要包含在要求中的訂用帳戶清單。 您可以為每個訂用 **帳戶和** 訂用帳戶參數分別手動定義 **訂** 用帳戶清單。
 在 REST API 和所有其他 Sdk 中，包含資源的訂用帳戶清單必須明確定義為要求的一部分。
 
-作為 **預覽**版本，REST API 版本會 `2020-04-01-preview` 新增屬性，以將查詢的範圍設為 [管理群組](../../management-groups/overview.md)。 此預覽 API 也會讓訂用帳戶屬性成為選擇性的。 如果未定義管理群組或訂用帳戶清單，則查詢範圍即為已驗證的使用者可以存取的所有資源。 新的 `managementGroupId` 屬性會採用管理群組識別碼，與管理群組的名稱不同。
-當您 `managementGroupId` 指定時，會包含在指定的管理群組階層中或下的前5000訂用帳戶中的資源。 `managementGroupId` 無法與相同的時間使用 `subscriptions` 。
+作為 **預覽**版本，REST API 版本會 `2020-04-01-preview` 新增屬性，以將查詢的範圍設為 [管理群組](../../management-groups/overview.md)。 此預覽 API 也會讓訂用帳戶屬性成為選擇性的。 如果未定義管理群組或訂用帳戶清單，則查詢範圍即為已驗證的使用者可以存取的所有資源。 新的 `managementGroupId` 屬性會採用管理群組識別碼，與管理群組的名稱不同。 當您 `managementGroupId` 指定時，會包含在指定的管理群組階層中或下的前5000訂用帳戶中的資源。 `managementGroupId` 無法與相同的時間使用 `subscriptions` 。
 
 範例：查詢名為「我的管理群組」（識別碼為 ' myMG '）之管理群組階層內的所有資源。
 

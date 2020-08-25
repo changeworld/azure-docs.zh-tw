@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 322a3b4e8d362d1b751b2c016e6f7cf904f11d7e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e9384dd3865b106488dc8ec303b060736f23ded7
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752328"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797780"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>針對 Windows 中的 Azure 檔案服務問題進行疑難排解
 
@@ -369,7 +369,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ### <a name="error-the-directory-service-was-unable-to-allocate-a-relative-identifier"></a>錯誤：「目錄服務無法配置相對識別碼」
 
-如果持有 RID 主機 FSMO 角色的網域控制站無法使用，或已從網域中移除，並從備份還原，就可能會發生此錯誤碼。  確認所有網域控制站都在執行且可用。
+如果持有 RID 主機 FSMO 角色的網域控制站無法使用，或已從網域中移除，並從備份還原，就可能發生此錯誤。  確認所有網域控制站都在執行且可用。
 
 ### <a name="error-cannot-bind-positional-parameters-because-no-names-were-given"></a>錯誤： 「無法繫結位置參數，因為未指定任何名稱」
 

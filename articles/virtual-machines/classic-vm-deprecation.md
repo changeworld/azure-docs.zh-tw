@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: c1807da76fe25d31581a07706489967d6e83f748
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0b2b995a6fe4cedd14b2e4ceeddc5747ec2423cf
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505303"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88754798"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>在2023年3月1日前將 IaaS 資源遷移至 Azure Resource Manager 
 
@@ -39,6 +39,8 @@ ms.locfileid: "88505303"
 
 - 立即開始規劃您的遷移至 Azure Resource Manager。 
 
+- 建立所有受影響 Vm 的清單。 [Azure 入口網站 vm](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines)分頁上的 VM 類型「虛擬機器 (傳統) 」是訂用帳戶中所有受影響的 vm。 
+
 - [深入瞭解](./windows/migration-classic-resource-manager-overview.md) 如何將傳統 [Linux](./linux/migration-classic-resource-manager-plan.md) 和 [Windows](./windows/migration-classic-resource-manager-plan.md) vm 遷移至 Azure Resource Manager。
 
 - 如需詳細資訊，請參閱 [傳統的常見問題以 Azure Resource Manager 遷移](./migration-classic-resource-manager-faq.md)
@@ -57,5 +59,5 @@ ms.locfileid: "88505303"
 
 - [Microsoft Fast track](https://www.microsoft.com/fasttrack)： Microsoft fast track 小組可以在遷移至合格客戶時，提供技術協助。 
 
-- 如果您的公司/組織與 microsoft 合作，或與 microsoft 代表合作，例如 (雲端解決方案架構師 (CSA) 、技術客戶經理 (TAMs) # A5，請與他們合作以取得其他資源以進行遷移。 
+- 如果您的公司/組織與 Microsoft 合作，或與 microsoft 代表合作，例如 (雲端解決方案架構師 (CSA) 、技術客戶經理 (TAMs) # A5，請與他們合作以取得其他資源以進行遷移。 
 

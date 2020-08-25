@@ -4,15 +4,15 @@ description: 了解如何設定 IP 存取控制原則，以提供 Azure Cosmos �
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/31/2019
+ms.date: 08/24/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 36afc42844203436313f2a5b15975746f2acd349
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 69c39d2478ed7d488c1209c2c7e16c241c59bcef
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494350"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814173"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中設定 IP 防火牆
 
@@ -20,7 +20,7 @@ ms.locfileid: "87494350"
 
 * 從 Azure 入口網站
 * 使用 Azure Resource Manager 範本，以宣告方式進行設定
-* 藉由更新**ipRangeFilter**屬性，以程式設計方式透過 Azure CLI 或 Azure PowerShell
+* 藉由更新 **ipRangeFilter** 屬性，以程式設計方式透過 Azure CLI 或 Azure PowerShell
 
 ## <a name="configure-an-ip-firewall-by-using-the-azure-portal"></a><a id="configure-ip-policy"></a> 使用 Azure 入口網站設定 IP 防火牆
 
@@ -44,17 +44,17 @@ ms.locfileid: "87494350"
 |US Gov|52.244.48.71|
 |所有其他區域|104.42.195.92、40.76.54.131、52.176.6.30、52.169.50.45、52.187.184.26|
 
-您可以選取 [**允許來自 Azure 入口網站的存取**] 選項，以啟用存取 Azure 入口網站的要求，如下列螢幕擷取畫面所示：
+您可以選取 [ **允許從 Azure 入口網站存取** ] 選項來啟用存取 Azure 入口網站的要求，如下列螢幕擷取畫面所示：
 
 :::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="顯示如何允許存取 Azure 入口網站的螢幕擷取畫面":::
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>允許來自全球 Azure 資料中心或 Azure 中其他來源的要求
 
-如果您從不提供靜態 IP 的服務 (例如 Azure 串流分析和 Azure Functions) 存取 Azure Cosmos DB 帳戶，您仍然可以使用 IP 防火牆來限制存取。 您可以選取 [**接受來自 azure 資料中心內**的連線] 選項，從 azure 中的其他來源啟用存取，如下列螢幕擷取畫面所示：
+如果您從不提供靜態 IP 的服務 (例如 Azure 串流分析和 Azure Functions) 存取 Azure Cosmos DB 帳戶，您仍然可以使用 IP 防火牆來限制存取。 您可以選取 [ **從 azure 資料中心內接受** 連線] 選項，以啟用從 azure 中其他來源的存取，如下列螢幕擷取畫面所示：
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="顯示如何在 Azure 入口網站中開啟 [防火牆] 頁面的螢幕擷取畫面":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="顯示如何接受來自 Azure 資料中心之連線的螢幕擷取畫面":::
 
-當您啟用此選項時，系統會將 IP 位址 `0.0.0.0` 新增到允許的 ip 地址清單中。 `0.0.0.0`IP 位址會限制從 Azure 資料中心 IP 範圍對您 Azure Cosmos DB 帳戶的要求。 此設定不允許針對任何其他 IP 範圍存取您的 Azure Cosmos DB 帳戶。
+當您啟用此選項時，系統會將 IP 位址 `0.0.0.0` 新增至允許的 ip 地址清單。 `0.0.0.0`IP 位址會將要求從 Azure 資料中心 IP 範圍限制為您的 Azure Cosmos DB 帳戶。 此設定不允許針對任何其他 IP 範圍存取您的 Azure Cosmos DB 帳戶。
 
 > [!NOTE]
 > 這個選項會將防火牆設定為允許所有來自 Azure 的連線，包括來自 Azure 中所部署之其他客戶訂用帳戶的連線。 此選項所允許的 IP 清單範圍寬鬆，因而限制了防火牆原則的效果。 只有當您的要求不是來自靜態 IP 或虛擬網路中的子網路時，才使用此選項。 由於 Azure 入口網站部署於 Azure 中，因此，選擇此選項就會自動允許從 Azure 入口網站存取。
@@ -65,7 +65,7 @@ ms.locfileid: "87494350"
 
 入口網站會自動偵測用戶端 IP 位址。 它可能是您電腦的用戶端 IP 位址或網路閘道的 IP 位址。 請務必在將您的工作負載投入生產環境之前移除此 IP 位址。
 
-若要將您目前的 IP 新增至 IP 清單，請選取 [新增我目前的 IP]****。 然後選取 [儲存]  。
+若要將您目前的 IP 新增至 IP 清單，請選取 [新增我目前的 IP]****。 然後選取 [儲存]。
 
 :::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="顯示如何為目前的 IP 進行防火牆設定的螢幕擷取畫面":::
 
@@ -95,7 +95,44 @@ ms.locfileid: "87494350"
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>使用 Resource Manager 範本設定 IP 防火牆
 
-為了設定 Azure Cosmos DB 帳戶的存取控制，請確定 Resource Manager 範本指定 **ipRangeFilter** 屬性，其中含有允許的 IP 範圍清單。 如果將 IP 防火牆設定為已部署的 Cosmos 帳戶，請確保 `locations` 陣列符合目前所部署的項目。 您無法同時修改 `locations` 陣列和其他屬性。 如需 Azure Cosmos DB Azure Resource Manager 範本的詳細資訊和範例，請參閱[Azure Resource Manager Azure Cosmos DB 的範本](resource-manager-samples.md)
+若要設定 Azure Cosmos DB 帳戶的存取控制，請確定 Resource Manager 範本指定 **ipRules** 屬性，其中包含允許的 IP 範圍陣列。 如果將 IP 防火牆設定為已部署的 Cosmos 帳戶，請確保 `locations` 陣列符合目前所部署的項目。 您無法同時修改 `locations` 陣列和其他屬性。 如需 Azure Cosmos DB 的 Azure Resource Manager 範本的詳細資訊和範例，請參閱 [Azure Resource Manager Azure Cosmos DB 的範本](resource-manager-samples.md)
+
+> [!IMPORTANT]
+> **IpRules**屬性已在 API 版本2020-04-01 中引進。 先前的版本會改為公開 **ipRangeFilter** 屬性，這是以逗號分隔的 IP 位址清單。
+
+下列範例顯示如何在 API 版本2020-04-01 或更新版本中公開 **ipRules** 屬性：
+
+```json
+{
+  "type": "Microsoft.DocumentDB/databaseAccounts",
+  "name": "[variables('accountName')]",
+  "apiVersion": "2020-04-01",
+  "location": "[parameters('location')]",
+  "kind": "GlobalDocumentDB",
+  "properties": {
+    "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+    "locations": "[variables('locations')]",
+    "databaseAccountOfferType": "Standard",
+    "enableAutomaticFailover": "[parameters('automaticFailover')]",
+    "ipRules": [
+      {
+        "ipAddressOrRange": "40.76.54.131"
+      },
+      {
+        "ipAddressOrRange": "52.176.6.30"
+      },
+      {
+        "ipAddressOrRange": "52.169.50.45"
+      },
+      {
+        "ipAddressOrRange": "52.187.184.26"
+      }
+    ]
+  }
+}
+```
+
+以下是2020-04-01 之前任何 API 版本的相同範例：
 
 ```json
 {
@@ -141,7 +178,7 @@ az cosmosdb create \
 # Create a Cosmos DB account with default values and IP Firewall enabled
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
-$ipRangeFilter = "192.168.221.17,183.240.196.255,40.76.54.131"
+$ipRules = @("192.168.221.17","183.240.196.255","40.76.54.131")
 
 $locations = @(
     @{ "locationName"="West US 2"; "failoverPriority"=0; "isZoneRedundant"=False },
@@ -152,11 +189,11 @@ $locations = @(
 $CosmosDBProperties = @{
     "databaseAccountOfferType"="Standard";
     "locations"=$locations;
-    "ipRangeFilter"=$ipRangeFilter
+    "ipRules"=$ipRules
 }
 
 New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
+    -ApiVersion "2020-04-01" -ResourceGroupName $resourceGroupName `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
@@ -179,6 +216,10 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>要求來自具有已啟用 Azure Cosmos DB 之服務端點的子網路
 
 若要求來自虛擬網路中具有已啟用 Azure Cosmos DB 之服務端點的子網路，即會將虛擬網路和子網路身分識別傳送至 Azure Cosmos DB 帳戶。 這些要求沒有來源的公用 IP，因此 IP 篩選器會予以拒絕。 若要允許來自虛擬網路中特定子網路的存取，請新增[如何針對 Azure Cosmos DB 帳戶設定虛擬網路和子網路型存取](how-to-configure-vnet-service-endpoint.md)中所述的存取控制清單。 套用防火牆規則最多可能需要 15 分鐘。
+
+### <a name="private-ip-addresses-in-list-of-allowed-addresses"></a>允許地址清單中的私人 IP 位址
+
+使用包含私人 IP 位址的允許地址清單建立或更新 Azure Cosmos 帳戶將會失敗。 請確定清單中未指定任何私人 IP 位址。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 0d00f779031ec294523c861a4e9868f7cbbe790d
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606140"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817046"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>建立 Dynamics 365 Business Central 供應項目
 
@@ -182,16 +182,16 @@ ms.locfileid: "88606140"
 
 ### <a name="marketplace-images"></a>Marketplace 映像
 
-請提供供應項目的標誌和影像。 所有影像都必須是 PNG 格式。 
+提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將會使用此來建立 **小型** 標誌。 您可以選擇性地將此取代為不同的映射。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+- 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+- **Small** (48 x 48 px，選擇性) 
 
-以兩種大小上傳您的供應項目標誌：
-
-* **小型** (48 x 48 像素)
-* **大型** (216 x 216 像素)
+這些標誌可用於清單中的不同位置：
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 `https://upload.xboxlive.com` 服務。
@@ -208,7 +208,7 @@ ms.locfileid: "88606140"
 
 [市集供應項目清單的最佳做法](../gtm-offer-listing-best-practices.md)
 
-選取 **[儲存草稿]** 後再繼續。
+選取 [儲存草稿] 後再繼續。
 
 ## <a name="availability"></a>可用性
 
@@ -233,7 +233,7 @@ ms.locfileid: "88606140"
 
 然後，當準備好讓供應項目可供使用並移除預覽限制時，您將需要移除 [隱藏金鑰] 並重新發佈。
 
-選取 **[儲存草稿]** 後再繼續。
+選取 [儲存草稿] 後再繼續。
 
 ## <a name="technical-configuration"></a>技術設定
 
@@ -272,7 +272,7 @@ ms.locfileid: "88606140"
 
 此頁面可讓您設定示範 (即「試用產品」)，讓客戶在購買之前先試用您的供應項目。 深入瞭解 [什麼是試用](../what-is-test-drive.md)產品。
 
-若要啟用試用產品，請在 [供應項目設定](#test-drive) 索引標籤中，選取 [啟用試用產品] 核取方塊。若要從您的供應項目中移除試用產品，請清除此核取方塊。
+若要啟用試用產品，請在[[供應項目設定]](#test-drive) 索引標籤中，選取 [啟用試用產品] 核取方塊。若要從您的供應項目中移除試用產品，請清除此核取方塊。
 
 當您完成試用產品的設定之後，請選取 [ **儲存草稿** ]，然後再繼續。
 

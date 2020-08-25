@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 159cdef6b2c831e8c20d7249334bebac4f2061c5
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 93e7a720e9d39eca6d808c8c49b3b340226997ff
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606121"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817029"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>建立 Dynamics 365 for Customer Engagement 和 PowerApps 供應項目
 
@@ -197,12 +197,16 @@ ms.locfileid: "88606121"
 
 #### <a name="store-logos"></a>儲存標誌
 
-請提供三種像素大小的供應項目標誌：
-- **小型** (必要；48 x 48)
-- **大型** (必要；216 x 216)
-- **寬型** (選擇性；255 x 115)
+提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將會使用此來建立 **小型** 標誌。 您可以選擇性地將此取代為不同的映射。
+
+- 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+- **Small** (48 x 48 px，選擇性) 
+
+這些標誌可用於清單中的不同位置：
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
