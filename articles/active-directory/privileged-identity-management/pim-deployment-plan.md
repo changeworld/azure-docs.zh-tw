@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/06/2020
+ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14df46a921b482b182e0f17754293af37146d1e7
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 7c6537ace2caeb2f5dc25848a04aa2e0e65b31d6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783207"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815975"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -30,7 +30,7 @@ ms.locfileid: "88783207"
 >
 > ： heavy_check_mark： **Microsoft 建議**
 >
-> 這些項目屬於一般性建議，請在其適用於貴企業的特定需求時才加以實作。
+> 這些是一般建議，您應該只在適用于您特定的企業需求時才執行這些建議。
 
 ## <a name="learn-about-privileged-identity-management"></a>瞭解 Privileged Identity Management
 
@@ -100,7 +100,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>專案關係人： Azure AD 角色的 Privileged Identity Management
 
-| Name | 角色 | 動作 |
+| 名稱 | 角色 | 動作 |
 | --- | --- | --- |
 | 名稱和電子郵件 | **身分識別架構設計師或 Azure 全域系統管理員**<br/>身分識別管理小組所推派的代表人員，負責定義這項變更要如何與組織的核心身分識別管理基礎結構相配合。 | SO/R/I |
 | 名稱和電子郵件 | **服務擁有者/部門經理**<br/>單一或一組服務的 IT 擁有者所推派的代表人員。 它們是制定決策和協助為團隊推出 Privileged Identity Management 的關鍵。 | SO/R/I |
@@ -110,16 +110,16 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>專案關係人：適用于 Azure 資源角色的 Privileged Identity Management
 
-| Name | 角色 | 動作 |
+| 名稱 | 角色 | 動作 |
 | --- | --- | --- |
 | 名稱和電子郵件 | **訂用帳戶/資源擁有者**<br/>您想要部署 Privileged Identity Management 的每個訂用帳戶或資源的 IT 擁有者代表 | SO/R/I |
 | 名稱和電子郵件 | **安全性擁有者**<br/>安全性團隊所推派的代表人員，可簽字同意該規劃符合組織的安全性需求。 | SO/R |
 | 名稱和電子郵件 | **IT 支援管理員/技術服務人員**<br/>IT 支援組織所推派的代表人員，可從技術服務人員的觀點就是否能支援這項變更來提出看法。 | R/I |
 | 試驗使用者的名稱和電子郵件 | **Azure 角色使用者**<br/>作為特殊權限身分識別管理機制實作對象的一群使用者。 他們必須知道如何在 Privileged Identity Management 執行之後啟動其角色。 | I |
 
-### <a name="enable-privileged-identity-management"></a>啟用 Privileged Identity Management
+### <a name="start-using-privileged-identity-management"></a>開始使用 Privileged Identity Management
 
-在規劃過程中，您必須先遵循我們的 [開始使用 Privileged Identity Management](pim-getting-started.md) 文章來同意和啟用 Privileged Identity Management。 啟用 Privileged Identity Management 可讓您存取特別設計來協助您部署的一些功能。
+在規劃過程中，您應該遵循我們的 [開始使用 Privileged Identity Management](pim-getting-started.md) 文章來準備 Privileged Identity Management。 Privileged Identity Management 可讓您存取特別設計來協助您部署的一些功能。
 
 如果您的目標是要部署適用于 Azure 資源的 Privileged Identity Management，您應該遵循我們 [的探索 azure 資源以在 Privileged Identity Management 文章中進行管理](pim-resource-roles-discover-resources.md) 。 只有訂用帳戶和管理群組的擁有者可以探索這些資源，並將其上架到 Privileged Identity Management 上。 上線之後，PIM 功能可供所有層級的擁有者使用，包括管理群組、訂用帳戶、資源群組和資源。 如果您是全域系統管理員，嘗試部署 Azure 資源的 Privileged Identity Management，您可以提高 [存取權以管理所有 azure](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) 訂用帳戶，讓您能夠存取目錄中的所有 azure 資源以進行探索。 不過，我們建議您在使用 Privileged Identity Management 管理資源之前，先取得每個訂用帳戶擁有者的核准。
 
@@ -244,16 +244,16 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 | 角色 | 需要 MFA | 通知 | 事件票證 | 需要核准 | 核准者 | 啟動持續時間 | 永久性系統管理員 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 全域管理員 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 其他全域系統管理員 | 1 小時 | 緊急存取帳戶 |
-| Exchange 系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | None | 2 小時 | None |
-| 服務台系統管理員 | :x: | :x: | :heavy_check_mark: | :x: | None | 8 小時 | None |
+| Exchange 系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | 無 | 2 小時 | 無 |
+| 服務台系統管理員 | :x: | :x: | :heavy_check_mark: | :x: | 無 | 8 小時 | 無 |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Azure 資源角色的 Privileged Identity Management 設定
 
 | 角色 | 需要 MFA | 通知 | 需要核准 | 核准者 | 啟動持續時間 | 有效系統管理員 | 有效到期日 | 合格到期日 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 重要訂用帳戶的擁有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 訂用帳戶的其他擁有者 | 1 小時 | None | n/a | 3 個月 |
-| 較不重要訂用帳戶的使用者存取系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | None | 1 小時 | None | n/a | 3 個月 |
-| 虛擬機器參與者 | :x: | :heavy_check_mark: | :x: | None | 3 小時 | None | n/a | 6 個月 |
+| 重要訂用帳戶的擁有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 訂用帳戶的其他擁有者 | 1 小時 | 無 | n/a | 3 個月 |
+| 較不重要訂用帳戶的使用者存取系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | 無 | 1 小時 | 無 | n/a | 3 個月 |
+| 虛擬機器參與者 | :x: | :heavy_check_mark: | :x: | 無 | 3 小時 | 無 | n/a | 6 個月 |
 
 下表說明每個設定。
 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: f7a4997117c8730b767f245050caa3f3157fb6fd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 08/18/2020
+ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750239"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816247"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模組
 
@@ -40,13 +40,13 @@ IoT Edge 模組供應項目類型是一種在 IoT Edge 裝置上執行的特定�
 
 **選取正確的線上商店**
 
-IoT Edge 模組只會發佈至 Azure Marketplace，AppSource 則不適用。  如需跨線上商店的差異與目標物件的詳細資訊，請參閱 [決定您的發佈選項](determine-your-listing-type.md)。
- 
+IoT Edge 模組只會發佈至 Azure Marketplace;AppSource 不適用。 如需跨線上商店的差異與目標物件的詳細資訊，請參閱 [決定您的發佈選項](determine-your-listing-type.md)。
+
 **帳單選項**
 
 Marketplace 目前針對 IoT Edge 模組支援 [免費] 和 [自備授權 (BYOL)] 計費選項。
- 
-**發佈選項**
+
+### <a name="publishing-options"></a>發行選項
 
 在所有情況下，IoT Edge 模組都應該選取 [交易] 發佈選項。  如需有關發佈選項的更多詳細資料，請參閱[選擇發佈選項](determine-your-listing-type.md)。  
 
@@ -54,22 +54,22 @@ Marketplace 目前針對 IoT Edge 模組支援 [免費] 和 [自備授權 (BYOL)
 
 所有 Microsoft Azure Marketplace 合約和原則的條款都適用於 IoT Edge 模組供應項目。  此外，還有適用於 IoT Edge 模組的先決條件和技術需求。  
 
-**必要條件**
+### <a name="prerequisites"></a>必要條件
 
 若要將 IoT Edge 模組發佈至 Azure Marketplace，您必須滿足下列先決條件：
 
 - 存取合作夥伴中心。 如需詳細資訊，請參閱 [Azure Marketplace 和 AppSource 發行指南](marketplace-publishers-guide.md)。
-- 將您的 IoT Edge 模組裝載在 Azure Container Registry 中。 
-- 備妥您的 IoT Edge 模組中繼資料，例如 (非完整清單)： 
+- 將您的 IoT Edge 模組裝載在 Azure Container Registry 中。
+- 備妥您的 IoT Edge 模組中繼資料，例如 (非完整清單)：
     - 標題
     - 描述 (HTML 格式)
-    - 標誌影像 (PNG 格式且影像大小固定，包括 40x40px、90x90px、115x115px、255x115px)
+    - 標誌影像 (大小為 48 x 48 (選擇性) 、90 x 90 (選擇性) ，以及從 216 x 216 到 350 x 350 px，全都採用 PNG 格式) 
     - 使用規定及隱私權原則
     - 預設的模組設定 (路由、對應項所需屬性、createOptions、環境變數)
     - 文件
     - 支援連絡人
 
-**技術需求**
+### <a name="technical-requirements"></a>技術需求
 
 [準備 IoT Edge 模組技術資產](./partner-center-portal/create-iot-edge-module-asset.md)詳細說明了 IoT Edge 模組的主要技術需求，以便讓該模組通過認證並發佈於 Azure Marketplace 中。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 2ca0031d3ae9fc1347c3a8bd7bf24c2780e502a8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607452"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814717"
 ---
 # <a name="consulting-service-offers"></a>諮詢服務供應項目
 
@@ -72,40 +72,40 @@ ms.locfileid: "88607452"
 
 系統整合者合作夥伴可以針對下列20個國家/地區提交諮詢服務供應專案：
 
-| 國家/地區  |  (繼續 .。。)    |  (繼續 .。。)   |  (繼續 .。。)   |
+| 國家/地區 |  (續 )  |   (續 )  |   (續 )  |
 |---------|----------|----------|----------|
 | 澳大利亞 | 比利時 | Canada | 丹麥 |
 | 芬蘭  | 法國 | 德國  | 印度   |
 | 義大利    | 日本  |  墨西哥  |  荷蘭  |
 |  紐西蘭  |  挪威  |  波蘭  | 南非 |
 |  瑞典  | 瑞士  |  美國  | United Kingdom  |
-||
+|
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>在商業市集中註冊諮詢服務
 
-首先，在市集中[註冊](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)您的公司資訊。 如需註冊需求的完整檢查清單，請參閱[成為市集中的發行者](become-publisher.md)。 
+首先，在市集中[註冊](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)您的公司資訊。 如需註冊需求的完整檢查清單，請參閱[成為市集中的發行者](become-publisher.md)。
 
 ## <a name="prepare-your-publishing-artifacts"></a>準備您的發佈成品
 註冊前，您可以開始收集及準備相關內容，幫助您向目標客戶闡述您的服務和解決方案的價值。 
 
 |新發行者的設定  |
-|---------|
-|MPN 識別碼     |
-|公司標誌 (48 x 48、216 x 216 像素)     |
-|潛在客戶目的地     |
-||
+| - |
+| MPN 識別碼 |
+| 公司標誌 (48 x 48、216 x 216 像素) |
+| 潛在客戶目的地 |
+|
 
 |新供應項目的設定  |
-|---------|
-|供應項目名稱 (200 個字元) 和說明 (2,000 個字元)    |
-|專長認證     |
-|國家/地區可用性     |
-|參與期間     |
-|適用的產業、類別及搜尋關鍵字     |
-|產品概觀影片    |
-|螢幕擷取畫面 (最多 5 張，1280 x 720 像素)     |
-|行銷文件 (最多 3 份)     |
-||
+| - |
+| 供應項目名稱 (200 個字元) 和說明 (2,000 個字元) |
+| 專長認證  |
+| 國家/地區可用性 |
+| 參與期間  |
+| 適用的產業、類別及搜尋關鍵字 |
+| 產品概觀影片 |
+| 螢幕擷取畫面 (最多 5 張，1280 x 720 像素) |
+| 行銷文件 (最多 3 份) |
+|
 
 ## <a name="the-publishing-process"></a>發佈程序
 

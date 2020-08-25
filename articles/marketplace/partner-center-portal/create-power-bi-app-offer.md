@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 5b9752107aac1f90a67fb7c87a14492a74a124aa
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ebc3ad6957890423314bb2d8623c7b4708aed10b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604639"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815400"
 ---
 # <a name="create-a-power-bi-app-offer"></a>建立 Power BI 應用程式供應項目
 
@@ -209,13 +209,16 @@ ms.locfileid: "88604639"
 
 #### <a name="store-logos"></a>儲存標誌
 
-以兩個圖元的大小提供供應專案標誌的 PNG 檔案：
-- **小型** (48 x 48)
-- **大型** (216 x 216)
+提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將會使用此來建立 **小型** 標誌。 您可以選擇性地將此取代為不同的映射。
 
-這兩種標誌都是必要的，且會在市集清單中用於不同位置。
+- 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+- **Small** (48 x 48 px，選擇性) 
+
+這些標誌可用於清單中的不同位置：
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 

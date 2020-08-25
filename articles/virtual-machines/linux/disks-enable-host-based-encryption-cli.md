@@ -1,29 +1,29 @@
 ---
-title: 使用在主機 Azure CLI 受控磁片上的加密來啟用端對端加密
-description: 在主機上使用加密，以在您的 Azure 受控磁片上啟用端對端加密。
+title: 在主機 Azure CLI 管理的磁片上使用加密來啟用端對端加密
+description: 在主機上使用加密來啟用 Azure 受控磁片上的端對端加密。
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 9f61835887c26e41b3338286065df4ca9d05f513
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ff56654981ef69648b1fa7ad11a8681c887289f6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029003"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816961"
 ---
-# <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>在主機上使用加密來啟用端對端加密-Azure CLI
+# <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure CLI 來啟用在主機使用加密的端對端加密
 
-當您在主機上啟用加密時，儲存在 VM 主機上的資料會在待用時加密，並將流量加密至儲存體服務。 如需在主機上進行加密的概念資訊，以及其他受控磁片加密類型，請參閱[VM 資料的主機端對端](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)加密加密。
+當您在主機上啟用加密時，儲存在 VM 主機上的資料會在待用時加密，並將流量加密至儲存體服務。 如需在主機上加密以及其他受控磁片加密類型的概念資訊，請參閱 [VM 資料的主機端對端](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)加密加密。
 
 ## <a name="restrictions"></a>限制
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-### <a name="supported-regions"></a>支援的區域
+### <a name="supported-regions"></a>支援區域
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
@@ -31,15 +31,15 @@ ms.locfileid: "87029003"
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
-您也可以透過程式設計的方式找到 VM 大小。 若要瞭解如何以程式設計方式取得它們，請參閱[尋找支援的 VM 大小](#finding-supported-vm-sizes)一節。
+您也可以透過程式設計的方式找到 VM 大小。 若要瞭解如何以程式設計方式取得它們，請參閱 [尋找支援的 VM 大小](#finding-supported-vm-sizes) 一節。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-為了能夠針對您的 Vm 或虛擬機器擴展集使用主機上的加密，您必須在訂用帳戶上啟用此功能。 使用您的訂用帳戶識別碼傳送電子郵件給， encryptionAtHost@microsoft.com 以取得您的訂閱已啟用的功能。
+若要能夠針對您的 Vm 或虛擬機器擴展集使用主機加密，您必須在訂用帳戶上啟用此功能。 傳送電子郵件給 encryptionAtHost@microsoft.com 您的訂用帳戶識別碼，以取得訂用帳戶啟用的功能。
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>建立 Azure Key Vault 和 DiskEncryptionSet
 
-啟用此功能之後，您必須設定 Azure Key Vault 和 DiskEncryptionSet （如果尚未這麼做）。
+啟用此功能之後，您必須設定 Azure Key Vault 和 DiskEncryptionSet （如果尚未安裝）。
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-cli](../../../includes/virtual-machines-disks-encryption-create-key-vault-cli.md)]
 
@@ -47,7 +47,7 @@ ms.locfileid: "87029003"
 
 ### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客戶管理的金鑰，在主機上建立具有加密功能的 VM。 
 
-使用稍早建立的 DiskEncryptionSet 的資源 URI，建立具有受控磁片的 VM，以透過客戶管理的金鑰來加密作業系統和資料磁片的快取。 暫存磁片會以平臺管理的金鑰進行加密。 
+使用稍早建立的 DiskEncryptionSet 資源 URI 來建立具有受控磁片的 VM，以使用客戶管理的金鑰來加密作業系統和資料磁片的快取。 暫存磁片會使用平臺管理的金鑰進行加密。 
 
 ```azurecli
 rgName=yourRGName
@@ -73,7 +73,7 @@ az vm create -g $rgName \
 
 ### <a name="create-a-vm-with-encryption-at-host-enabled-with-platform-managed-keys"></a>使用平臺管理的金鑰，在主機上建立具有加密功能的 VM。 
 
-建立已啟用 [在主機加密] 的 VM，以使用平臺管理的金鑰來加密 OS/資料磁片和暫存磁片的快取。 
+建立已啟用「在主機加密」的 VM，以使用平臺管理的金鑰來加密作業系統/資料磁片和暫存磁片的快取。 
 
 ```azurecli
 rgName=yourRGName
@@ -92,7 +92,7 @@ az vm create -g $rgName \
 --data-disk-sizes-gb 128 128 \
 ```
 
-### <a name="update-a-vm-to-enable-encryption-at-host"></a>更新 VM 以在主機上啟用加密。 
+### <a name="update-a-vm-to-enable-encryption-at-host"></a>更新 VM 以啟用主機的加密。 
 
 ```azurecli
 rgName=yourRGName
@@ -103,7 +103,7 @@ az vm update -n $vmName \
 --set securityProfile.encryptionAtHost=true
 ```
 
-### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>在主機上檢查 VM 的加密狀態
+### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>檢查 VM 在主機上的加密狀態
 
 ```azurecli
 rgName=yourRGName
@@ -116,7 +116,7 @@ az vm show -n $vmName \
 
 ### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客戶管理的金鑰，在主機上建立具有加密功能的虛擬機器擴展集。 
 
-使用稍早建立的 DiskEncryptionSet 的資源 URI，建立具有受控磁片的虛擬機器擴展集，以透過客戶管理的金鑰來加密作業系統和資料磁片的快取。 暫存磁片會以平臺管理的金鑰進行加密。 
+使用稍早建立之 DiskEncryptionSet 的資源 URI 來建立具有受控磁片的虛擬機器擴展集，以使用客戶管理的金鑰來加密作業系統和資料磁片的快取。 暫存磁片會使用平臺管理的金鑰進行加密。 
 
 ```azurecli
 rgName=yourRGName
@@ -142,7 +142,7 @@ az vmss create -g $rgName \
 
 ### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-platform-managed-keys"></a>使用平臺管理的金鑰，在主機上建立具有加密功能的虛擬機器擴展集。 
 
-建立虛擬機器擴展集並啟用 [在主機加密]，以使用平臺管理的金鑰來加密 OS/資料磁片和暫存磁片的快取。 
+在啟用主機加密的情況下建立虛擬機器擴展集，以使用平臺管理的金鑰來加密作業系統/資料磁片和暫存磁片的快取。 
 
 ```azurecli
 rgName=yourRGName
@@ -161,7 +161,7 @@ az vmss create -g $rgName \
 --data-disk-sizes-gb 64 128 \
 ```
 
-### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>更新虛擬機器擴展集，以在主機上啟用加密。 
+### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>更新虛擬機器擴展集，以啟用主機的加密。 
 
 ```azurecli
 rgName=yourRGName
@@ -172,7 +172,7 @@ az vmss update -n $vmssName \
 --set virtualMachineProfile.securityProfile.encryptionAtHost=true
 ```
 
-### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>在主機上檢查虛擬機器擴展集的加密狀態
+### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>檢查虛擬機器擴展集的主機加密狀態
 
 ```azurecli
 rgName=yourRGName
@@ -185,9 +185,9 @@ az vmss show -n $vmssName \
 
 ## <a name="finding-supported-vm-sizes"></a>尋找支援的 VM 大小
 
-不支援舊版 VM 大小。 您可以透過下列其中一種方式來尋找支援的 VM 大小清單：
+不支援舊版 VM 大小。 您可以透過下列方式尋找支援的 VM 大小清單：
 
-呼叫[資源 SKU API](/rest/api/compute/resourceskus/list) ，並檢查 `EncryptionAtHostSupported` 功能是否設定為**True**。
+呼叫 [資源 SKU API](/rest/api/compute/resourceskus/list) ，並檢查 `EncryptionAtHostSupported` 功能是否設定為 **True**。
 
 ```json
     {
@@ -208,7 +208,7 @@ az vmss show -n $vmssName \
     }
 ```
 
-或者，呼叫[Get-azcomputeresourcesku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) PowerShell Cmdlet。
+或者，呼叫 [>get-azcomputeresourcesku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) PowerShell Cmdlet。
 
 ```powershell
 $vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 
@@ -227,8 +227,8 @@ foreach($vmSize in $vmSizes)
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-既然您已建立並設定這些資源，您可以使用它們來保護您的受控磁片。 下列連結包含範例腳本，每個都有個別的案例，可讓您用來保護受控磁片。
+現在您已建立並設定這些資源，您可以使用它們來保護受控磁片。 下列連結包含範例腳本，每個都有各自的案例，可讓您用來保護您的受控磁片。
 
 [Azure Resource Manager 範本範例](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/EncryptionAtHost)

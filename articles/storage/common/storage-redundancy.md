@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/08/2020
+ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 556d3df41b7ee66bfb2b32b8a566d7172f45e313
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 30839fac6a264ad9defb565663b28a5b12b571b5
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034459"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814513"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 儲存體備援
 
@@ -24,7 +24,7 @@ Azure 儲存體會一律儲存資料的多個複本，以保護該資料不受�
 在決定哪一種備援選項最適合案例時，請考慮較低成本與較高可用性和持久性之間的取捨。 有助於判斷應選擇何種備援選項的因素包括：  
 
 - 資料在主要區域中複寫的方式
-- 資料是否會複寫到地理上距離主要區域相當遙遠的第二個位置，以保護其不受區域性災害影響
+- 您的資料是否會複寫到地理位置距離主要區域的第二個區域，以防止區域災難
 - 若主要區域因任何理由而無法使用，則應用程式是否需要讀取存取來複寫次要區域中的資料
 
 ## <a name="redundancy-in-the-primary-region"></a>主要區域中的備援
@@ -51,7 +51,7 @@ Azure 儲存體帳戶中的資料一律會在主要區域內複寫三次。 Azur
 
 區域備援儲存體 (ZRS) 會在主要區域中將 Azure 儲存體資料同步複寫到三個 Azure 可用區域。 每個可用區域都是具備獨立的電源、冷卻和網路的不同實體位置。 ZRS 可在指定的一年中為 Azure 儲存體資料物件提供至少 99.9999999999% (12 個 9) 的持久性。
 
-透過 ZRS，即使區域無法使用，您仍然可針對讀取和寫入作業存取資料。 如果區域變得無法使用，Azure 科學家網路會更新，例如 DNS repointing。 若在更新完成之前存取資料，這些更新便可能會影響應用程式。 在為 ZRS 設計應用程式時，請遵循暫時性錯誤處理實務，包括以指數後退法實作重試原則。
+透過 ZRS，即使區域無法使用，您仍然可針對讀取和寫入作業存取資料。 如果區域變得無法使用，Azure 科學家網路更新，例如 DNS repointing。 若在更新完成之前存取資料，這些更新便可能會影響應用程式。 在為 ZRS 設計應用程式時，請遵循暫時性錯誤處理實務，包括以指數後退法實作重試原則。
 
 對使用 ZRS 儲存體帳戶發出的寫入要求會以同步方式進行。 只有在將資料寫入三個可用區域的所有複本之後，寫入作業才會成功傳回。
 
@@ -64,8 +64,8 @@ ZRS 可為資料提供優秀的效能、低延遲以及復原，即使其暫時�
 | 儲存體帳戶類型 | 支援區域 | 支援的服務 |
 |--|--|--|
 | 一般用途 V2<sup>1</sup> | 東南亞<br /> 澳大利亞東部<br /> 北歐<br />  西歐<br /> 法國中部<br /> 日本東部<br /> 南非北部<br /> 英國南部<br /> 美國中部<br /> 美國東部<br /> 美國東部 2<br /> 美國西部 2 | 區塊 Blob<br /> 分頁 blob<sup>2</sup><br /> 檔案共用 (標準)<br /> 資料表<br /> 佇列<br /> |
-| BlockBlobStorage<sup>1</sup> | 東南亞<br /> 澳大利亞東部<br /> 西歐<br /> 美國東部 | 僅限 Premium 區塊 blob |
-| FileStorage | 東南亞<br /> 澳大利亞東部<br /> 西歐<br /> 美國東部 | 僅限 Premium 檔案共用 |
+| BlockBlobStorage<sup>1</sup> | 東南亞<br /> 澳大利亞東部<br /> 西歐<br /> 美國東部 <br /> 美國西部 2| 僅限 Premium 區塊 blob |
+| FileStorage | 東南亞<br /> 澳大利亞東部<br /> 西歐<br /> 美國東部 <br /> 美國西部 2 | 僅限 Premium 檔案共用 |
 
 <sup>1</sup> ZRS 帳戶目前不支援封存層。<br />
 <sup>2</sup> 包含虛擬機器 Azure 受控磁碟的儲存體帳戶一律會使用 LRS。 Azure 非受控磁碟也應使用 LRS。 您可為使用 GRS 的 Azure 非受控磁碟建立儲存體帳戶，但不建議這種做法，因為可能會有非同步異地複寫所引發的潛在一致性問題。 受控或非受控磁碟都不支援 ZRS 或 GZRS。 如需受控磁碟的詳細資訊，請參閱 [Azure 受控磁碟定價](https://azure.microsoft.com/pricing/details/managed-disks/)。
@@ -83,9 +83,9 @@ Azure 儲存體提供兩種將資料複製到次要區域的選項：
 - **異地備援儲存體 (GRS)** 會使用 LRS 在主要區域中將資料於單一實體位置內同步複製三次。 接著其會將資料以非同步方式複製到次要區域中的單一實體位置。
 - **異地區域備援儲存體 (GZRS)** 會使用 ZRS 在主要區域中將資料同步複製到三個 Azure 可用區域。 接著其會將資料以非同步方式複製到次要區域中的單一實體位置。
 
-GRS 和 GZRS 之間主要差異是資料在主要區域中複寫的方式。 在次要位置內，資料一律會使用 LRS 以同步方式複寫三次。 次要區域中的 LRS 可保護您的資料免于硬體故障。
+GRS 和 GZRS 之間主要差異是資料在主要區域中複寫的方式。 在次要區域內，資料一律會使用 LRS 同步複寫三次。 次要區域中的 LRS 可保護您的資料免于硬體失敗。
 
-使用 GRS 或 GZRS，除非發生容錯移轉至次要區域，否則次要位置中的資料不會提供讀取或寫入存取。 如需次要位置的讀取存取，請設定儲存體帳戶使用讀取權限異地備援儲存體 (RA-GRS) 或讀取權限異地區域備援儲存體 (RS-GZRS)。 如需詳細資訊，請參閱[次要區域中的資料讀取存取](#read-access-to-data-in-the-secondary-region)。
+使用 GRS 或 GZRS 時，除非發生容錯移轉至次要區域，否則次要區域中的資料無法用於讀取或寫入存取權。 針對次要區域的讀取權限，請將儲存體帳戶設定為使用讀取權限異地冗余儲存體 (GRS) 或讀取權限地理區域冗余儲存體 (RA-GZRS) 。 如需詳細資訊，請參閱[次要區域中的資料讀取存取](#read-access-to-data-in-the-secondary-region)。
 
 若主要區域無法使用，則可選擇容錯移轉至次要區域。 在容錯移轉完成後，次要區域即會成為主要區域，且可再次讀取和寫入資料。 如需災害復原及了解如何容錯移轉至次要區域的詳細資訊，請參閱[災害復原與儲存體帳戶容錯移轉](storage-disaster-recovery-guidance.md)。
 
@@ -122,18 +122,18 @@ GRS 和 GZRS 之間主要差異是資料在主要區域中複寫的方式。 在
 
 ## <a name="read-access-to-data-in-the-secondary-region"></a>次要區域中的資料讀取存取
 
-異地備援儲存體 (使用 GRS 或 GZRS) 會將資料複寫到次要區域中的另一個實體位置，以保護其不受區域性中斷影響。 但是，該資料只有在客戶或 Microsoft 起始從主要區域容錯移轉至次要區域時，才能提供存取。 當您啟用次要區域的讀取權限時，您的資料隨時都可供讀取，包括主要區域變成無法使用的情況。 如需次要區域的讀取存取，請啟用讀取存取異地備援儲存體 (RA-GRS) 或讀取存取異地區域備援儲存體 (RA-GZRS)。
+異地備援儲存體 (使用 GRS 或 GZRS) 會將資料複寫到次要區域中的另一個實體位置，以保護其不受區域性中斷影響。 但是，該資料只有在客戶或 Microsoft 起始從主要區域容錯移轉至次要區域時，才能提供存取。 當您啟用次要區域的讀取權限時，您的資料隨時都可供讀取，包括在主要區域變成無法使用的情況下。 如需次要區域的讀取存取，請啟用讀取存取異地備援儲存體 (RA-GRS) 或讀取存取異地區域備援儲存體 (RA-GZRS)。
 
 > [!NOTE]
-> Azure 檔案儲存體不支援讀取權限異地冗余儲存體 (RA GRS) 和讀取權限異地區域冗余儲存體 (RA 切換) 。
+> Azure 檔案儲存體不支援讀取權限異地冗余儲存體 (GRS 的) 和讀取權限異地區域冗余儲存體 (GZRS) 。
 
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>針對次要區域的讀取存取設計應用程式
 
 若您已針對次要區域的讀取存取設定儲存體帳戶，即可設計應用程式，使其在主要區域因任何理由而無法使用時，完美地移動到從次要區域讀取資料。 
 
-啟用 GRS 或 RA-切換之後，次要地區可供讀取存取，讓您可以事先測試應用程式，以確保在發生中斷的情況下，它會在次要複本中正確地讀取。 如需如何針對高可用性來設計應用程式的詳細資訊，請參閱[使用異地備援來設計高可用性應用程式](geo-redundant-design.md)。
+當您啟用 GRS 或 GZRS 之後，次要地區可供讀取存取，因此您可以事先測試您的應用程式，以確保在發生中斷時能夠正確地從次要區域讀取。 如需如何針對高可用性來設計應用程式的詳細資訊，請參閱[使用異地備援來設計高可用性應用程式](geo-redundant-design.md)。
 
-啟用次要複本的讀取存取權時，您的應用程式可以從次要端點，以及從主要端點讀取。 次要端點會將 *–secondary* 尾碼附加到目前的帳戶名稱。 例如，若 Blob 儲存體主要端點是 `myaccount.blob.core.windows.net`，則次要端點便會是 `myaccount-secondary.blob.core.windows.net`。 主要和次要端點的儲存體帳戶帳戶存取金鑰為相同。
+啟用次要複本的讀取權限時，您的應用程式可以從次要端點以及從主要端點讀取。 次要端點會將 *–secondary* 尾碼附加到目前的帳戶名稱。 例如，若 Blob 儲存體主要端點是 `myaccount.blob.core.windows.net`，則次要端點便會是 `myaccount-secondary.blob.core.windows.net`。 主要和次要端點的儲存體帳戶帳戶存取金鑰為相同。
 
 ### <a name="check-the-last-sync-time-property"></a>檢查上次同步時間屬性
 

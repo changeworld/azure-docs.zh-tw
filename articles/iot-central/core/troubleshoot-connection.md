@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 98d7566d5e9339ea2ac5d81d91f1d9f8ace5b0f4
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 4c95c5eccb5ff804adeae94074136c6242678127
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719618"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816060"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>疑難排解您的裝置資料未顯示在 Azure IoT Central 中的原因
 
@@ -57,7 +57,7 @@ az set account --subscription <your-subscription-id>
 若要監視裝置所傳送的遙測，請使用下列命令：
 
 ```cmd/bash
-az iot central app monitor-events -n <app-id> -d <device-name>
+az iot central app monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 如果裝置已成功連線到 IoT Central，您會看到類似下列的輸出：
@@ -82,7 +82,7 @@ Filtering on device: device-001
 若要監視您的裝置與 IoT Central 交換的屬性更新，請使用下列預覽命令：
 
 ```cmd/bash
-az iot central app monitor-properties -n <app-id> -d <device-name>
+az iot central app monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 如果裝置成功傳送屬性更新，您會看到類似下列的輸出：
@@ -108,7 +108,7 @@ rocessorArchitecture': 'ARM', 'swVersion': '1.0.0'}
 如果您的資料未顯示在監視器上，請執行下列命令來檢查裝置的布建狀態：
 
 ```cmd/bash
-az iot central app device registration-info -n <app-id> -d <device-id>
+az iot central app device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
 下列輸出顯示封鎖連接的裝置範例：
@@ -178,13 +178,13 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 - 若要驗證遙測，請使用預覽命令：
 
     ```cmd/bash
-    az iot central app validate-messages -n <app-id> -d <device-name>
+    az iot central app validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - 若要驗證屬性更新，請使用預覽命令
 
     ```cmd/bash
-    az iot central app validate-properties -n <app-id> -d <device-name>
+    az iot central app validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
 - 如果您想要使用 GUI，請使用 IoT Central **原始資料** 視圖，以查看是否有未模型化的內容。 如果裝置正在傳送格式不正確的 JSON， **原始資料** 視圖就不會偵測到。

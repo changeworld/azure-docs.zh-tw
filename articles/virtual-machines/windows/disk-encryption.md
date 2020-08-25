@@ -8,23 +8,23 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 413ca677bc778069b92def043bf35ab7bb87b038
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 6174fbeb45c23c0ff04597305c6f65aef05bd26e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448931"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815584"
 ---
-# <a name="server-side-encryption-of-azure-disk-storage"></a>Azure 磁碟儲存體的伺服器端加密
+# <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>適用于 PowerShell 的 Azure 磁碟儲存體的伺服器端加密
 
-伺服器端加密 (SSE) 可保護您的資料安全，並協助您符合組織安全性和合規性承諾。 根據預設，SSE 會自動將您儲存在 Azure 受控磁片（OS 和資料磁片）上的資料加密，並將它保存到雲端。 
+伺服器端加密 (SSE) 可保護您的資料安全，並協助您符合組織安全性和合規性承諾。 SSE 會自動將儲存在 Azure 受控磁片上的資料加密 (OS 和資料磁片，並在將其保存到雲端時預設為) 。 
 
 Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) (可用的最強區塊編碼器之一)，以透明的方式進行加密，而且符合 FIPS 140-2 規範。 如需有關基礎 Azure 受控磁碟的加密模組詳細資訊，請參閱[密碼編譯 API：新一代](/windows/desktop/seccng/cng-portal)
 
-伺服器端加密不會影響受控磁片的效能，也不會產生額外的費用。 
+伺服器端加密不會影響受控磁片的效能，也不會產生額外的成本。 
 
 > [!NOTE]
-> 暫存磁片不是受控磁片，而且不是由 SSE 加密，除非您在主機上啟用加密。
+> 暫存磁片不是受控磁片，除非您在主機上啟用加密，否則不會使用 SSE 進行加密。
 
 ## <a name="about-encryption-key-management"></a>關於加密金鑰管理
 
@@ -34,7 +34,7 @@ Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wi
 
 ### <a name="platform-managed-keys"></a>平台管理的金鑰
 
-根據預設，受控磁碟會使用平台管理的加密金鑰。 所有寫入現有受控磁片的受控磁片、快照集、映射和資料，都會使用平臺管理的金鑰進行待用加密。
+根據預設，受控磁碟會使用平台管理的加密金鑰。 所有受控磁片、快照集、映射以及寫入現有受控磁片的資料，都會自動使用平臺管理的金鑰進行待用加密。
 
 ### <a name="customer-managed-keys"></a>客戶管理的金鑰
 
@@ -48,17 +48,17 @@ Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wi
     如果您需要解決此問題，必須[將所有資料複製到](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)完全不同且未使用客戶管理的金鑰的受控磁碟。
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
-## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>主機上的加密-VM 資料的端對端加密
+## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>VM 資料的主機端對端加密加密
 
-端對端加密會從 VM 主機開始，也就是您 VM 所配置的 Azure 伺服器。 暫存磁片上的資料、暫時 OS 磁片和保存的 OS/資料磁碟快取會儲存在該 VM 主機上。 當您啟用端對端加密時，所有的資料都會在待用時加密，並加密到儲存體服務的流量（保存時）。 端對端加密不會使用您的 VM CPU，也不會影響 VM 的效能。 
+端對端加密從 VM 主機開始，也就是您 VM 配置到的 Azure 伺服器。 暫存磁片上的資料、暫時性 OS 磁片和保存的作業系統/資料磁碟快取都會儲存在該 VM 主機上。 當您啟用端對端加密時，所有的資料都會在待用時加密，並加密至儲存體服務（保存時）。 端對端加密不會使用您 VM 的 CPU，且不會影響 VM 的效能。 
 
-當您啟用端對端加密時，暫存磁片和暫時 OS 磁片會使用平臺管理的金鑰進行待用加密。 OS 和資料磁碟快取會使用客戶管理或平臺管理的金鑰進行待用加密，視加密類型而定。 例如，如果使用客戶管理的金鑰來加密磁片，則磁片的快取會使用客戶管理的金鑰進行加密，如果磁片使用平臺管理的金鑰進行加密，則磁片的快取會使用平臺管理的金鑰進行加密。
+當您啟用端對端加密時，暫存磁片和暫時性 OS 磁片會使用平臺管理的金鑰進行待用加密。 作業系統和資料磁碟快取會使用客戶管理或平臺管理的金鑰進行待用加密，視加密類型而定。 例如，如果磁片使用客戶管理的金鑰進行加密，則會使用客戶管理的金鑰來加密磁片的快取，而且如果使用平臺管理的金鑰將磁片加密，則會使用平臺管理的金鑰來加密磁片的快取。
 
 ### <a name="restrictions"></a>限制
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-#### <a name="supported-regions"></a>支援的區域
+#### <a name="supported-regions"></a>支援區域
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
@@ -68,9 +68,9 @@ Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wi
 
 ## <a name="double-encryption-at-rest"></a>靜態加密
 
-擔心與任何特定加密演算法、執行或金鑰相關聯之風險的高安全性敏感性客戶，現在可以選擇使用平臺管理的加密金鑰，在基礎結構層使用不同的加密演算法/模式來進行額外的加密層級。 這個新的層級可以套用至持續性的 OS 和資料磁片、快照集和映射，這些全都會使用雙重加密進行待用加密。
+如果是與任何特定加密演算法、實行或金鑰相關聯的風險的高安全性敏感性客戶，現在可以選擇使用平臺管理的加密金鑰，在基礎結構層使用不同的加密演算法/模式來進行額外的加密層級。 這個新層可以套用至保存的作業系統和資料磁片、快照集和映射，這些都將使用雙重加密在待用時加密。
 
-### <a name="supported-regions"></a>支援的區域
+### <a name="supported-regions"></a>支援區域
 
 [!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
 
@@ -84,8 +84,8 @@ Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wi
 
 ## <a name="next-steps"></a>後續步驟
 
-- 透過[PowerShell](disks-enable-host-based-encryption-powershell.md)或[Azure 入口網站](disks-enable-host-based-encryption-portal.md)，在主機上使用加密來啟用端對端加密。
-- 針對使用[PowerShell](disks-enable-double-encryption-at-rest-powershell.md)或[Azure 入口網站](disks-enable-double-encryption-at-rest-portal.md)的受控磁片，啟用靜態加密。
-- 使用[PowerShell](disks-enable-customer-managed-keys-powershell.md)或[Azure 入口網站](disks-enable-customer-managed-keys-portal.md)為受控磁片啟用客戶管理的金鑰。
+- 使用 [PowerShell](disks-enable-host-based-encryption-powershell.md) 或 [Azure 入口網站](../disks-enable-host-based-encryption-portal.md)，在主機上使用加密來啟用端對端加密。
+- 使用 [PowerShell](disks-enable-double-encryption-at-rest-powershell.md) 或 [Azure 入口網站](../disks-enable-double-encryption-at-rest-portal.md)啟用受控磁片的雙重靜態加密。
+- 使用 [PowerShell](disks-enable-customer-managed-keys-powershell.md) 或 [Azure 入口網站](../disks-enable-customer-managed-keys-portal.md)為受控磁片啟用客戶管理的金鑰。
 - [探索 Azure Resource Manager 範本，以使用客戶管理的金鑰來建立加密的磁碟](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [什麼是 Azure 金鑰保存庫？](../../key-vault/general/overview.md)

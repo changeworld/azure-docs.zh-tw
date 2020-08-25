@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: dd3978ee1f371d59119e406c5f023718d57ad99b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 206f941360b5c7912db548c6d2cfdc9d3d6a41dc
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642209"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816400"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 開發人員指南
 
@@ -375,7 +375,7 @@ param([string] $myBlob)
 
 PowerShell 中有 PowerShell 設定檔的概念。 如果您不熟悉 PowerShell 設定檔，請參閱 [關於設定檔](/powershell/module/microsoft.powershell.core/about/about_profiles)。
 
-在 PowerShell 函式中，當函式應用程式啟動時，就會執行設定檔腳本。 函數應用程式會在第一次部署時啟動，並在閒置之後 ([冷啟動](#cold-start)) 。
+在 PowerShell 函式中，設定檔腳本會在第一次部署時，在應用程式中每個 PowerShell 工作者實例執行一次，並在閒置之後 ([冷啟動](#cold-start)。 藉由設定 [PSWorkerInProcConcurrencyUpperBound](#concurrency) 值來啟用平行存取時，會針對每個建立的執行時間執行設定檔腳本。
 
 當您使用工具（例如 Visual Studio Code 和 Azure Functions Core Tools）來建立函數應用程式時， `profile.ps1` 系統會為您建立預設值。 預設設定檔會保留 [在 Core Tools GitHub 存放庫中](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) ，並包含：
 
@@ -417,7 +417,10 @@ PowerShell 中有 PowerShell 設定檔的概念。 如果您不熟悉 PowerShell
 當您更新 requirements.psd1 檔案時，會在重新開機之後安裝更新的模組。
 
 > [!NOTE]
-> 受控相依性需要存取 www.powershellgallery.com 才能下載模組。 在本機執行時，請確定執行時間可以藉由新增任何必要的防火牆規則來存取此 URL。 
+> 受控相依性需要存取 www.powershellgallery.com 才能下載模組。 在本機執行時，請確定執行時間可以藉由新增任何必要的防火牆規則來存取此 URL。
+
+> [!NOTE]
+> 受控相依性目前不支援需要使用者接受授權的模組（藉由以互動方式接受授權），或在叫用 `-AcceptLicense` 時提供切換開關 `Install-Module` 。
 
 您可以使用下列應用程式設定來變更如何下載及安裝管理的相依性。 您的應用程式升級會在中開始 `MDMaxBackgroundUpgradePeriod` ，而升級程式會在大約的範圍內完成 `MDNewSnapshotCheckPeriod` 。
 
@@ -435,6 +438,7 @@ PowerShell 中有 PowerShell 設定檔的概念。 如果您不熟悉 PowerShell
 
 * `Modules`存在於函數應用程式根目錄中的資料夾。
 * `Modules`由 PowerShell 語言背景工作角色控制的資料夾路徑。
+
 
 ### <a name="function-app-level-modules-folder"></a>函數應用層級 `Modules` 資料夾
 
@@ -502,17 +506,22 @@ Write-Host $env:WEBSITE_SITE_NAME
 * 當您嘗試同時處理大量調用時。
 * 當您的函式會叫用相同函式應用程式內的其他函式時。
 
-您可以藉由將下列環境變數設定為整數值，來變更此行為：
+有幾個並行模型可讓您根據工作負載類型進行探索：
 
-```
-PSWorkerInProcConcurrencyUpperBound
-```
+* 增加 ```FUNCTIONS_WORKER_PROCESS_COUNT``` 。 這可讓您在相同實例內的多個進程中處理函式呼叫，這會造成特定的 CPU 和記憶體額外負荷。 一般而言，i/o 系結函式不會受到這項額外負荷的影響。 對於 CPU 系結函式，影響可能很重要。
 
-您可以在函數應用程式的 [應用程式](functions-app-settings.md) 設定中設定此環境變數。
+* 增加 ```PSWorkerInProcConcurrencyUpperBound``` 應用程式設定值。 這可讓您在相同的進程內建立多個空間，以大幅降低 CPU 和記憶體的負擔。
+
+您可以在函數應用程式的 [應用程式](functions-app-settings.md) 設定中設定這些環境變數。
+
+視您的使用案例而定，Durable Functions 可能會大幅改善擴充性。 若要深入瞭解，請參閱 [Durable Functions 應用程式模式](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns)。
+
+>[!NOTE]
+> 您可能會收到「因為沒有可用的空間，所以要求已排入佇列」警告，請注意這不是錯誤。 這則訊息會告知您，要求已排入佇列，並會在先前的要求完成時處理。
 
 ### <a name="considerations-for-using-concurrency"></a>使用並行的考慮
 
-PowerShell 預設為 _單一線程_ 指令碼語言。 不過，您可以在相同的進程中使用多個 PowerShell 處理常式來新增平行存取。 建立的空間數量將符合 PSWorkerInProcConcurrencyUpperBound 應用程式設定。 輸送量會受到所選方案中可用的 CPU 和記憶體數量所影響。
+PowerShell 預設為 _單一線程_ 指令碼語言。 不過，您可以在相同的進程中使用多個 PowerShell 處理常式來新增平行存取。 建立的空間數量將符合 ```PSWorkerInProcConcurrencyUpperBound``` 應用程式設定。 輸送量會受到所選方案中可用的 CPU 和記憶體數量所影響。
 
 Azure PowerShell 使用一些 _進程層級_ 的內容和狀態，以協助您避免過度輸入。 但是，如果您在函式應用程式中開啟平行存取，並叫用變更狀態的動作，最後可能會有競爭情況。 因為一個調用依賴特定狀態，而另一個調用變更了狀態，所以這些競爭條件很難進行調試。
 

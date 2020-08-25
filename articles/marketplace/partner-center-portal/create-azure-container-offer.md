@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 9196bea663d037f269316dc108f99d3f2c282ec7
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 055db043f4e695001b2ee90a47a2531284466314
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606370"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815621"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中建立 Azure 容器供應項目
 
@@ -197,16 +197,17 @@ ms.locfileid: "88606370"
 
 #### <a name="store-logos"></a>儲存標誌
 
- 請以下列四個像素的個別大小提供供應項目標誌的 PNG 檔案：
+提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將使用這個來建立 **小型** 和 **中型** 標誌。 您可以選擇性地使用不同的映射取代這些映射。
 
-- **小型** (48 x 48)
-- **中型** (90 x 90)
-- **大型** (216 x 216)
-- **寬** (255 x 115)
+- 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+- **中型** (90 x 90 px，選擇性) 
+- **Small** (48 x 48 px，選擇性) 
 
-這四個標誌都是必要的，且在市集清單中會用於不同位置。
+這些標誌可用於清單中的不同位置：
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>螢幕擷取畫面 (選擇性)
 

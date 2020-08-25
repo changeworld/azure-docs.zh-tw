@@ -1,6 +1,6 @@
 ---
 title: Azure 中 Windows VM 的已排定事件
-description: 使用 Azure Metadata Service 為您的 Windows 虛擬機器排定的事件。
+description: 針對您的 Windows 虛擬機器使用 Azure Metadata Service 的已排程事件。
 author: EricRadzikowskiMSFT
 ms.service: virtual-machines-windows
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviwer: mimckitt
-ms.openlocfilehash: 213d9fe2db148c6260a1271c3c2b22978b98a8f3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b6e877f4e4ce7b50a2e50a2925850b9f533b7f97
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508197"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814819"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 中繼資料服務：Windows VM 的已排定事件
 
@@ -42,7 +42,7 @@ ms.locfileid: "86508197"
 - [平台起始的維護](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json) (例如，主機的 VM 重新開機、即時移轉或記憶體保留更新)
 - 虛擬機器正在預期即將失敗的[效能下降主機硬體](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上執行
 - 使用者起始的維護 (例如，使用者重新啟動或重新部署 VM)
-- [現成 VM](spot-vms.md) 和[現成擴展集](../../virtual-machine-scale-sets/use-spot.md)執行個體收回。
+- [現成 VM](../spot-vms.md) 和[現成擴展集](../../virtual-machine-scale-sets/use-spot.md)執行個體收回。
 
 ## <a name="the-basics"></a>基本概念  
 
@@ -57,7 +57,7 @@ ms.locfileid: "86508197"
 - 擴展集放置群組中的所有 VM。 
 
 > [!NOTE]
-> 網狀架構控制器（FC）租使用者中所有虛擬機器（Vm）的 Scheduled Events 都會傳遞到 FC 租使用者中的所有 Vm。 FC 租使用者等同于獨立 VM、整個雲端服務、整個可用性設定組，以及 VM 擴展集（VMSS）的放置群組，而不論可用性區域的使用情形為何。 
+> 所有虛擬機器的 Scheduled Events， (網狀架構控制器中的 Vm)  (FC) 租使用者會傳遞至 FC 租使用者中的所有 Vm。 FC 租使用者等同于獨立 VM、整個雲端服務、整個可用性設定組，以及 VM 擴展集的放置群組 (VMSS) ，不論可用性區域的使用情形為何。 
 
 因此，請檢查事件中的 `Resources` 欄位以找出哪些 VM 受到影響。
 
@@ -73,8 +73,8 @@ ms.locfileid: "86508197"
 
 | 版本 | 版本類型 | 區域 | 版本資訊 | 
 | - | - | - | - | 
-| 2019-08-01 | 正式運作 | 全部 | <li> 已新增 EventSource 的支援 |
-| 2019-04-01 | 正式運作 | 全部 | <li> 已新增事件描述的支援 |
+| 2019-08-01 | 正式運作 | 全部 | <li> 新增 EventSource 的支援 |
+| 2019-04-01 | 正式運作 | 全部 | <li> 新增事件描述的支援 |
 | 2019-01-01 | 正式運作 | 全部 | <li> 已新增支援虛擬機器擴展集 EventType 'Terminate' |
 | 2017-11-01 | 正式運作 | 全部 | <li> 已新增支援現成 VM 收回 EventType 'Preempt'<br> | 
 | 2017-08-01 | 正式運作 | 全部 | <li> 已從 IaaS VM 的資源名稱中移除預留底線<br><li>強制所有要求的中繼資料標頭需求 | 
@@ -137,7 +137,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | EventStatus | 此事件的狀態。 <br><br> 值： <ul><li>`Scheduled`:此事件已排定在 `NotBefore` 屬性所指定的時間之後啟動。<li>`Started`:已啟動事件。</ul> 未曾提供 `Completed` 或類似的狀態。 當事件完成時，不會再傳回事件。
 | NotBefore| 自此之後可啟動此事件的時間。 <br><br> 範例： <br><ul><li> Mon, 19 Sep 2016 18:29:47 GMT  |
 | 描述 | 此事件的描述。 <br><br> 範例： <br><ul><li> 主機伺服器正在進行維護。 |
-| EventSource | 事件的起始端。 <br><br> 範例： <br><ul><li> `Platform`：此事件是由平臺所起始。 <li>`User`：此事件是由使用者起始。 |
+| EventSource | 事件的起始端。 <br><br> 範例： <br><ul><li> `Platform`：這個事件是由平臺所起始。 <li>`User`：這個事件是由使用者所起始。 |
 
 ### <a name="event-scheduling"></a>事件排定
 系統會根據事件類型，為每個事件在未來安排最少的時間量。 事件的 `NotBefore` 屬性會反映這個時間。 

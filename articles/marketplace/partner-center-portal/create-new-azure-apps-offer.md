@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: f62483880d2572b6487c87bbd73e0dd7033238d3
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 071d3fc972e99d61a226492350b7eee146584df6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606177"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815655"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -197,7 +197,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
-1. Title
+1. 標題
 2. 描述
 3. 實用的連結
 4. 螢幕擷取畫面
@@ -249,16 +249,17 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 #### <a name="store-logos"></a>儲存標誌
 
-請以下列三個像素大小提供供應項目標誌的 PNG 檔案：
+提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將使用這個來建立 **小型** 和 **中型** 標誌。 您可以選擇性地使用不同的映射取代這些映射。
 
-- **小型** (48 x 48)
-- **中型** (90 x 90)
-- **大型** (216 x 216)
-- **寬型** (255 x 115)
+- 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+- **中型** (90 x 90 px，選擇性) 
+- **Small** (48 x 48 px，選擇性) 
 
-全部三個標誌都是必要的，且在清單中會用於不同位置。
+這些標誌可用於清單中的不同位置：
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 

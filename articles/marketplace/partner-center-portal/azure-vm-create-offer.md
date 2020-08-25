@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 3e8822462cd7989f6bc1f051b3868d6241f591b1
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166700"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816519"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
 
@@ -116,16 +116,16 @@ ms.locfileid: "88166700"
 
 ## <a name="properties"></a>屬性
 
-在 [**屬性**] 頁面上，您可以定義用來將供應專案分組的類別，Azure Marketplace、應用程式版本，以及支援供應專案的法律合約。
+在 [ **屬性** ] 頁面上，您可以定義用來將供應專案分組 Azure Marketplace、應用程式版本，以及支援供應專案的法律合約的類別。
 
 ### <a name="category"></a>類別
 
-選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
+選取類別和子類別，以將您的供應專案放在適當的 marketplace 搜尋區域中。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
-- 至少一個和最多兩個類別，包括主要和次要類別 (選擇性) 。
-- 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
+- 至少一個和多個類別，包括主要和次要類別 (選擇性) 。
+- 每個主要和/或次要類別最多可有兩個子類別。 如果沒有任何子類別適用于您的供應專案，請選取 [ **不適用**]。
 
-請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。 虛擬機器供應專案一律會出現在 Azure Marketplace 上的 [**計算**] 類別之下。
+請參閱 [供應專案清單最佳做法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。 虛擬機器供應專案一律會出現在 Azure Marketplace 的 [ **計算** ] 類別之下。
 
 ### <a name="legal"></a>法律
 
@@ -176,7 +176,7 @@ ms.locfileid: "88166700"
 在 [供應項目清單] 頁面上，您可以定義供應項目詳細資料，例如供應項目名稱、描述、連結和連絡人。
 
 > [!NOTE]
-> 您的供應專案清單內容（例如描述、檔、螢幕擷取畫面和使用規定）不需要英文，只要供應專案的描述開頭為「此應用程式僅適用于」片語 \<non-English language> 。 您也可以針對以不同於供應項目清單內容中所使用的語言提供內容的網站，提供連結 URL。
+> 您的供應專案清單內容（例如描述、檔、螢幕擷取畫面及使用規定）不一定要使用英文，只要供應專案描述是以片語開頭，「此應用程式僅適用于」 \<non-English language> 。 您也可以針對以不同於供應項目清單內容中所使用的語言提供內容的網站，提供連結 URL。
 
 ### <a name="marketplace-details"></a>Marketplace 詳細資料
 
@@ -249,16 +249,17 @@ ms.locfileid: "88166700"
 
 #### <a name="azure-marketplace-logos"></a>Azure Marketplace 標誌
 
-請以下列四個影像尺寸，提供供應項目標誌的 PNG 檔案：
+提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將使用這個來建立 **小型** 和 **中型** 標誌。 您可以選擇性地使用不同的映射取代這些映射。
 
-- **小** (48 &times; 48 像素)
-- **中** (90 &times; 90 像素)
-- **大** (216 &times; 216 像素)
-- **寬** (255 &times; 115 像素)
+- 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+- **中型** (90 x 90 px，選擇性) 
+- **Small** (48 x 48 px，選擇性) 
 
-全部四個標誌都是必要的，而且會顯示在各種 Azure Marketplace 清單中。
+這些標誌可用於清單中的不同位置：
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
@@ -290,9 +291,9 @@ ms.locfileid: "88166700"
 
 ## <a name="plan-overview"></a>方案概觀
 
-您可以在合作夥伴中心的相同供應項目中提供各種方案選項。 供應專案至少需要一個方案 (先前稱為 SKU) ，這可能會因營收物件、Azure 區域、功能或 VM 映射而異。
+您可以在合作夥伴中心的相同供應項目中提供各種方案選項。 供應專案至少需要一個方案 (先前稱為 SKU) ，其可能因營收物件、Azure 區域、功能或 VM 映射而異。
 
-您最多可以為每個供應專案建立100方案：最多可以是私人的45。 深入瞭解[Microsoft 商業 Marketplace 私人](../private-offers.md)方案中的私用計畫。
+您最多可以為每個供應專案建立100個方案：這些供應專案的最高45個都可以是私用。 深入瞭解 [Microsoft 商業市場中私](../private-offers.md)用供應專案的私人方案。
 
 建立方案之後，選取 [方案概觀] 索引標籤以顯示：
 
@@ -358,7 +359,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 #### <a name="plan-name"></a>方案名稱
 
-當您建立方案時，這個欄位會自動填入您所提供的名稱。 這個名稱在 Azure Marketplace 上會顯示為此方案的標題。 其限制為 100 個字元。
+此欄位會自動填入您在建立方案時所提供的名稱。 這個名稱在 Azure Marketplace 上會顯示為此方案的標題。 其限制為 100 個字元。
 
 #### <a name="plan-summary"></a>方案摘要
 
@@ -374,7 +375,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 在此窗格上，您可以設定：
 
-- 此方案可供使用的市場。 必須至少有一個[市場](../marketplace-geo-availability-currencies.md)提供每個方案。
+- 此方案可供使用的市場。 每個方案都必須至少在一個 [市場](../marketplace-geo-availability-currencies.md)中提供。
 - 每小時的價格。
 - 是否要讓每個人都能看到此方案，或僅特定客戶 (私人對象) 看得到。
 
@@ -417,7 +418,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 **有限對象 (Azure 訂用帳戶識別碼)** ：使用 Azure 訂用帳戶識別碼指派可存取此私人方案的對象。 選擇性地加上您已指派的每個 Azure 訂用帳戶識別碼的描述。 如果您要匯入 CSV 試算表，請手動新增最多 10 個訂用帳戶識別碼，或最多 20,000 個識別碼。 Azure 訂用帳戶識別碼會以 GUID 表示，而且所有字母都必須是小寫。
 
 >[!Note]
->透過雲端解決方案提供者方案的轉銷商所建立的 Azure 訂用帳戶，不支援私用供應專案 (CSP) 。
+>透過雲端解決方案提供者方案 (CSP) 的轉銷商所建立的 Azure 訂用帳戶不支援私人優惠。
 
 #### <a name="hide-a-plan"></a>隱藏方案
 
@@ -464,7 +465,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 提供虛擬機器映像的磁碟版本和共用存取簽章 (SAS) URI。 為每個 VM 映像新增最多 16 個資料磁碟。 在指定的提交項目中，每個方案只提供一個新的映像版本。 映像發佈之後，您就無法進行編輯，但可以將其刪除。 刪除版本可防止新的和現有的使用者部署已刪除版本的新執行個體。
 
 - **光碟版本**：您所提供之映像的版本。
-- **SAS URI**：您的 Azure 儲存體帳戶中儲存作業系統 VHD 的位置。 若要瞭解如何取得 SAS URI，請參閱[取得 VM 映射的共用存取](get-sas-uri.md)簽章 URI。
+- **SAS URI**：您的 Azure 儲存體帳戶中儲存作業系統 VHD 的位置。 若要瞭解如何取得 SAS URI，請參閱 [取得 VM 映射的共用存取](get-sas-uri.md)簽章 URI。
 - 資料磁碟映像也是儲存在其 Azure 儲存體帳戶中的 VHD 共用存取簽章 URI。
 - 在一個方案中每次提交時僅加入一個映像。
 
@@ -528,11 +529,11 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 
 ## <a name="marketplace-examples"></a>Marketplace 範例
 
-以下是如何在 Azure Marketplace 中顯示供應專案資訊的範例：
+以下是供應專案資訊在 Azure Marketplace 中的顯示方式範例：
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-offer.png" alt-text="說明此供應專案在 Azure Marketplace 中的顯示方式。":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-offer.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
-#### <a name="call-out-descriptions"></a>向外撥說明
+#### <a name="call-out-descriptions"></a>撥出描述
 
 1. 大型標誌
 2. 價格
@@ -544,32 +545,32 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 8. 實用的連結
 9. 螢幕擷取畫面/影片
 
-<br>以下是如何在 Azure Marketplace 搜尋結果中顯示供應專案資訊的範例：
+<br>以下範例說明如何在 Azure Marketplace 搜尋結果中顯示供應專案資訊：
 
 :::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="說明這項供應專案在 Azure Marketplace 搜尋結果中的顯示方式。":::
 
-#### <a name="call-out-descriptions"></a>向外撥說明
+#### <a name="call-out-descriptions"></a>撥出描述
 
 1. 小型標誌
 2. 供應項目名稱
 3. 搜尋結果摘要
 4. 試用版
 
-<br>以下是 Azure Marketplace 計畫詳細資料的範例：
+<br>以下是 Azure Marketplace 方案詳細資料的範例：
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="說明 Azure Marketplace 方案詳細資料。":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="說明 Azure Marketplace 計畫詳細資料。":::
 
-#### <a name="call-out-descriptions"></a>向外撥說明
+#### <a name="call-out-descriptions"></a>撥出描述
 
-1. 計畫名稱和摘要
+1. 方案名稱和摘要
 2. 建議 VM 大小
 3. 規劃定價
 
-<br>以下是如何在 Azure 入口網站中顯示供應專案資訊的範例：
+<br>以下是供應專案資訊出現在 Azure 入口網站中的範例：
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="說明此供應專案在 Azure 入口網站中的顯示方式。":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="說明這項供應專案如何出現在 Azure 入口網站中。":::
 
-#### <a name="call-out-descriptions"></a>向外撥說明
+#### <a name="call-out-descriptions"></a>撥出描述
 
 1. 名稱
 2. 描述
@@ -578,9 +579,9 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 
 <br>以下是如何在 Azure 入口網站搜尋結果中顯示供應專案資訊的範例：
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="說明此供應專案在 Azure 入口網站搜尋結果中的顯示方式。":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="說明這項供應專案如何顯示在 Azure 入口網站搜尋結果中。":::
 
-#### <a name="call-out-descriptions"></a>向外撥說明
+#### <a name="call-out-descriptions"></a>撥出描述
 
 1. 小型標誌
 2. 供應項目名稱
@@ -588,9 +589,9 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 
 <br>以下是 Azure 入口網站方案詳細資料的範例：
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="說明 Azure 入口網站計畫的詳細資料。":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="說明 Azure 入口網站計畫詳細資料。":::
 
-#### <a name="call-out-descriptions"></a>向外撥說明
+#### <a name="call-out-descriptions"></a>撥出描述
 
 1. 方案名稱
 2. 方案描述

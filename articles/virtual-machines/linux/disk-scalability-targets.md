@@ -7,12 +7,12 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 33a0df73e280fc195a7ccba18c857b2ebdcbe31a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e986348c063626bd6a0b5a834854bad09d73c952
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825390"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814190"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Linux 中虛擬機器磁碟的延展性和效能目標
 
@@ -22,7 +22,7 @@ ms.locfileid: "87825390"
 
 ## <a name="managed-virtual-machine-disks"></a>受控虛擬機器磁碟
 
-以星號表示的大小目前為預覽狀態。 請參閱我們的[常見問題集](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged)，以了解在哪些區域中可以取得它們。
+以星號表示的大小目前為預覽狀態。 請參閱我們的[常見問題集](../faq-for-disks.md#new-disk-sizes-managed-and-unmanaged)，以了解在哪些區域中可以取得它們。
 
 [!INCLUDE [azure-storage-limits-vm-disks-managed](../../../includes/azure-storage-limits-vm-disks-managed.md)]
 

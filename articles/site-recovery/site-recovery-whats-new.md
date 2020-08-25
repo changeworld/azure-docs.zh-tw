@@ -3,12 +3,12 @@ title: Azure Site Recovery 的新功能
 description: 提供新功能的摘要，以及 Azure Site Recovery 服務中的最新更新。
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 09afd4416efc8e6904b7c487d5ed2f3be22db081
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 837344d10e21d20488760f6d5aa4749c039f9b07
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654815"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816944"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 最新功能
 
@@ -538,7 +538,7 @@ Azure Vm 的嚴重損壞修復會產生 VM 授權成本，以及網路和儲存�
 
 **功能** | **詳細資料**
 --- | ---
-**Linux 支援** | 針對 RedHat Enterprise Linux 6.10、CentOS 6.10 新增了支援。<br/><br/> 現在支援使用 GUID 磁碟分割表格 (GPT) 磁碟分割樣式的 Linux 型 Vm （舊版 BIOS 相容性模式）。 如需詳細資訊，請參閱 [AZURE VM 常見問題](../virtual-machines/linux/faq-for-disks.md) 。
+**Linux 支援** | 針對 RedHat Enterprise Linux 6.10、CentOS 6.10 新增了支援。<br/><br/> 現在支援使用 GUID 磁碟分割表格 (GPT) 磁碟分割樣式的 Linux 型 Vm （舊版 BIOS 相容性模式）。 如需詳細資訊，請參閱 [AZURE VM 常見問題](../virtual-machines/faq-for-disks.md) 。
 **遷移後 Vm 的嚴重損壞修復** | 支援針對遷移至 Azure 的內部部署 VMware VM 啟用次要區域的嚴重損壞修復，而不需要先卸載 VM 上的行動服務，再啟用複寫。
 **Windows Server 2008** | 支援遷移執行 Windows Server 2008 R2/2008 64 位和32位的電腦。<br/><br/> 只遷移 (複寫和容錯移轉) 。 不支援容錯回復。
 

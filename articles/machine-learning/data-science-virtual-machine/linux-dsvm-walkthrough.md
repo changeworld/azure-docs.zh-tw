@@ -8,19 +8,17 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: ed552a57e51ce9249f84bab6bb72bfe783e43edb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/17/2020
+ms.openlocfilehash: ca3cfa44bd4f757c6fbb0dd2c84d7a843f9bff36
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078105"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816213"
 ---
-# <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>在 Azure 中搭配 Linux 資料科學虛擬機器的資料科學
+# <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Azure 中的資料科學與 Ubuntu 資料科學虛擬機器
 
-本逐步解說示範如何使用 Linux 資料科學虛擬機器 (DSVM) 完成數個常見的資料科學工作。 Linux DSVM 是 Azure 提供的虛擬機器映像，其中預先安裝了一組常用於執行資料分析和機器學習服務的工具。 重要的軟體元件可在[佈建 Linux 資料科學虛擬機器](linux-dsvm-intro.md) 中找到細項。 DSVM 映像可讓使用者輕鬆地在幾分鐘內開始執行資料科學，而不需要個別安裝和設定每個工具。 如有需要，您可以輕鬆地相應擴大 DSVM，而且可在不使用時將其停止。 DSVM 既有彈性，又符合成本效益。
-
-本逐步解說所示範的資料科學工作遵循[什麼是 Team Data Science Process？](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)所述的步驟 Team Data Science Process 是資料科學的系統化方法，可協助資料科學家團隊在智慧型應用程式的建置生命週期內有效地共同作業。 資料科學程序也為資料科學提供了可反覆進行的架構供個人遵循。
+本逐步解說示範如何使用 Ubuntu 資料科學虛擬機器 (DSVM) 完成數個常見的資料科學工作。 Ubuntu DSVM 是 Azure 中可用的虛擬機器映射，預先安裝了一組常用於資料分析和機器學習的工具。 重要的軟體元件在布建 [Ubuntu 資料科學虛擬機器](./dsvm-ubuntu-intro.md)中有詳細的規定。 DSVM 映像可讓使用者輕鬆地在幾分鐘內開始執行資料科學，而不需要個別安裝和設定每個工具。 如有需要，您可以輕鬆地相應擴大 DSVM，而且可在不使用時將其停止。 DSVM 既有彈性，又符合成本效益。
 
 在本逐步解說中，我們會分析 [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) 資料集。 Spambase 是一組標示為垃圾郵件或非垃圾郵件的電子郵件。 Spambase 也包含有關電子郵件內容的一些統計資料。 我們稍後會在逐步解說中討論統計資料。
 
@@ -29,10 +27,10 @@ ms.locfileid: "87078105"
 您必須具備下列必要條件，才能使用 Linux DSVM：
 
 * **Azure 訂用帳戶**。 若要取得 Azure 訂用帳戶，請參閱[立即建立您的免費 Azure 帳戶](https://azure.microsoft.com/free/)。
-* [**Linux 資料科學虛擬機器**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 如需佈建虛擬機器的相關資訊，請參閱[佈建 Linux 資料科學虛擬機器](linux-dsvm-intro.md)。
-* [**X2Go**](https://wiki.x2go.org/doku.php)，已安裝在電腦上並已開啟 XFCE 工作階段。 如需詳細資訊，請參閱[安裝與設定 X2Go 用戶端](dsvm-ubuntu-intro.md#x2go)。
+
+* [**Ubuntu 資料科學虛擬機器**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 如需布建虛擬機器的詳細資訊，請參閱布建 [Ubuntu 資料科學虛擬機器](linux-dsvm-intro.md)。
+* [**X2Go**](https://wiki.x2go.org/doku.php)，已安裝在電腦上並已開啟 XFCE 工作階段。 如需詳細資訊，請參閱[安裝與設定 X2Go 用戶端](linux-dsvm-intro.md#x2go)。
 * 如需更流暢的捲動體驗，請在 DSVM 的 Firefox 網頁瀏覽器中，切換 `about:config` 中的 `gfx.xrender.enabled` 旗標。 [深入了解](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 也請考慮將 `mousewheel.enable_pixel_scrolling` 設定為 `False`。 [深入了解](https://support.mozilla.org/questions/981140)。
-* **Azure Machine Learning 帳戶**。 如果您還沒有帳戶，請在 [Azure Machine Learning 首頁](https://azure.microsoft.com/free/services/machine-learning//)上註冊新的帳戶。
 
 ## <a name="download-the-spambase-dataset"></a>下載 spambase 資料集
 
@@ -228,7 +226,7 @@ accuracy
 * JupyterHub
 * Rattle
 * PostgreSQL 和 SQuirreL SQL
-* SQL Server 資料倉儲
+* Azure Synapse Analytics (先前為 SQL DW)
 
 ### <a name="xgboost"></a>XGBoost
 
@@ -286,34 +284,9 @@ clf = svm.SVC()
 clf.fit(X, y)
 ```
 
-若要將模型發佈至 Azure Machine Learning：
-
-```Python
-# Publish the model.
-workspace_id = "<workspace-id>"
-workspace_token = "<workspace-token>"
-from azureml import services
-@services.publish(workspace_id, workspace_token)
-@services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
-@services.returns(int) # 0 or 1
-def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
-    inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
-    return clf.predict(inputArray)
-
-# Get some info about the resulting model.
-predictSpam.service.url
-predictSpam.service.api_key
-
-# Call the model
-predictSpam.service(1, 1, 1)
-```
-
-> [!NOTE]
-> 此選項僅適用於 Python 2.7。 Python 3.5 尚未支援此選項。 若要執行，請使用 **/anaconda/bin/python2.7**。
-
 ### <a name="jupyterhub"></a>JupyterHub
 
-DSVM 中的 Anaconda 散發套件隨附 Jupyter Notebook，此跨平台環境可用於共用 Python、R 或 Julia 程式碼和分析。 Jupyter Notebook 是透過 JupyterHub 來存取。 您可以在 HTTPs://： 8000/使用本機 Linux 使用者名稱和密碼登入 \<DSVM DNS name or IP address\> 。 JupyterHub 的所有組態檔可在 eg /etc/ jupyterhub 中找到。
+DSVM 中的 Anaconda 散發套件隨附 Jupyter Notebook，此跨平台環境可用於共用 Python、R 或 Julia 程式碼和分析。 Jupyter Notebook 是透過 JupyterHub 來存取。 您可以使用本機 Linux 使用者名稱和密碼在 HTTPs:// \<DSVM DNS name or IP address\> ： 8000/登入。 JupyterHub 的所有組態檔可在 eg /etc/ jupyterhub 中找到。
 
 > [!NOTE]
 > 若要從目前核心中的 Jupyter Notebook 使用 Python 套件管理員 (透過 `pip` 命令)，請在程式碼資料格中使用下列命令：
@@ -334,7 +307,6 @@ DSVM 上已安裝數個範例筆記本：
 
 * 範例 Python 筆記本：
   * [IntroToJupyterPython.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb)
-  * [IrisClassifierPyMLWebService](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb)
 * 範例 R 筆記本：
   * [IntroTutorialinR](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) 
 
@@ -532,9 +504,9 @@ SELECT * from data order by word_freq_3d desc;
 
 如果您想要使用 PostgreSQL 資料庫中儲存的資料執行機器學習，請考慮使用 [MADlib](https://madlib.incubator.apache.org/)。
 
-### <a name="sql-data-warehouse"></a>SQL 資料倉儲
+### <a name="azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (先前為 SQL DW)
 
-Azure SQL 資料倉儲是一種雲端架構、相應放大的資料庫，可處理巨量關聯式與非關聯式資料。 如需詳細資訊，請參閱 [什麼是 Azure SQL 資料倉儲？](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Azure Synapse Analytics 是一種以雲端為基礎的向外延展資料庫，可處理大量資料，包括關聯式和非關聯式。 如需詳細資訊，請參閱 [什麼是 Azure Synapse Analytics？](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 若要連線到資料倉儲並建立資料表，請從命令提示字元執行下列命令︰
 
@@ -567,8 +539,4 @@ GO
 
 您也可以使用 SQuirreL SQL 進行查詢。 使用 SQL Server JDBC 驅動程式，遵循類似於 PostgreSQL 的步驟。 JDBC 驅動程式位於 /usr/share/java/jdbcdrivers/sqljdbc42.jar 資料夾中。
 
-## <a name="next-steps"></a>後續步驟
 
-如需引導您完成工作的文章概觀，而這些工作構成 Azure 中的資料科學程序，請參閱 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)。
-
-如需端對端逐步解說的說明，而這些逐步解說示範 Team Data Science Process 中適用於特定案例的步驟，請參閱 [Team Data Science Process 逐步解說](../team-data-science-process/walkthroughs.md)。 這些逐步解說也示範如何將雲端和內部部署工具與服務組合成工作流程或管線，以建立智慧型應用程式。

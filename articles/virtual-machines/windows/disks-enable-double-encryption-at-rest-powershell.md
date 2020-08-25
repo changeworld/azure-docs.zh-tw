@@ -1,31 +1,31 @@
 ---
 title: Azure PowerShell-啟用靜態加密-受控磁片
-description: 使用 Azure PowerShell 為您的受控磁片資料啟用靜態加密。
+description: 使用 Azure PowerShell 為您的受控磁片資料啟用雙重加密靜態加密。
 author: roygara
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 5e70d434fcb297ff39b32a83b89a86e85fe9564f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6cb0bf9ae12169f9431cf221431f442b5870d932
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088439"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816502"
 ---
-# <a name="azure-powershell---enable-double-encryption-at-rest-on-your-managed-disks"></a>Azure PowerShell-在受控磁片上啟用靜止的雙重加密
+# <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>使用 Azure PowerShell 模組啟用受控磁片的雙重靜態加密
 
-Azure 磁碟儲存體支援適用于受控磁片的雙重靜態加密。 如需有關靜態加密和其他受控磁片加密類型的概念資訊，請參閱磁片加密一文中的[雙重加密](disk-encryption.md#double-encryption-at-rest)待用一節。
+Azure 磁碟儲存體支援受控磁片的雙重靜態加密。 如需有關靜態加密和其他受控磁片加密類型的概念資訊，請參閱磁片加密文章中的 [雙重加密靜態](disk-encryption.md#double-encryption-at-rest) 一節。
 
-## <a name="supported-regions"></a>支援的區域
+## <a name="supported-regions"></a>支援區域
 
 [!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-安裝最新的[Azure PowerShell 版本](/powershell/azure/install-az-ps)，並使用[Disconnect-azaccount](/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0)登入 Azure 帳戶。
+安裝最新的 [Azure PowerShell 版本](/powershell/azure/install-az-ps)，然後使用 [[disconnect-azaccount]](/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0)登入 Azure 帳戶。
 
 ## <a name="getting-started"></a>開始使用
 
@@ -46,7 +46,7 @@ Azure 磁碟儲存體支援適用于受控磁片的雙重靜態加密。 如需�
     $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
     ```
 
-1.  建立 DiskEncryptionSet，並將 encryptionType 設定為 EncryptionAtRestWithPlatformAndCustomerKeys。 在 Azure Resource Manager （ARM）範本中使用 API 版本**2020-05-01** 。 
+1.  建立 DiskEncryptionSet，並將 encryptionType 設定為 EncryptionAtRestWithPlatformAndCustomerKeys。 使用 Azure Resource Manager (ARM) 範本中的 API 版本 **2020-05-01** 。 
     
     ```powershell
     New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName `
@@ -70,7 +70,7 @@ Azure 磁碟儲存體支援適用于受控磁片的雙重靜態加密。 如需�
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已建立並設定這些資源，您可以使用它們來保護您的受控磁片。 下列連結包含範例腳本，每個都有個別的案例，可讓您用來保護受控磁片。
+現在您已建立並設定這些資源，您可以使用它們來保護受控磁片。 下列連結包含範例腳本，每個都有各自的案例，可讓您用來保護您的受控磁片。
 
 - [Azure PowerShell-使用伺服器端加密管理的磁片來啟用客戶管理的金鑰](disks-enable-customer-managed-keys-powershell.md)
 - [Azure Resource Manager 範本範例](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)

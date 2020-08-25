@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: b3485ebbdf9cf428b09364b73197220e02e9ffa8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: ddd1f61ada539ebb00341dd83919f1c851a0f3e1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751086"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816366"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
@@ -28,12 +28,12 @@ ms.locfileid: "88751086"
 
 
 - **REST API 參考可供使用** -請參閱 [2.1-preview。1參考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 
-- **除了英文以外，還支援的新語言**，現在支援下列語言：適用于 `Layout` 和 `Train Custom Model` ：英文 (EN) 、中文 (簡體)  (ZH ZH) 、荷蘭文 (NL) 、法文 (FR) 、德文 (DE) 、義大利文 () 、葡萄牙文 (PT) 和西班牙文 (ES) 。
+- **除了英文以外，還支援的新語言**，現在支援下列 [語言](language-support.md) ：適用于 `Layout` 和 `Train Custom Model` ：英文 (`en`) 、中文 (簡體)  () `zh-Hans` 、荷蘭文 (`nl`) 、法文 (`fr`) 、德文 (`de`) 、義大利文 () 、葡萄牙文 () `it` `pt` 和西班牙 `es` 文 () 。
 - **核取方塊/選取標記偵測** -表單辨識器支援偵測和解壓縮選取標記，例如核取方塊和選項按鈕。 選取標記會在中解壓縮 `Layout` ，您現在也可以使用標籤來標記和定型， `Train Custom Model`  -  _Train with Labels_以將選取專案標記的索引鍵值組解壓縮。 
 - **模型撰寫** 可讓您以單一模型識別碼撰寫和呼叫多個模型。 提交檔以使用撰寫的模型識別碼進行分析時，會先執行分類步驟，將其路由至正確的自訂模型。 模型撰寫適用于 `Train Custom Model`  -  _使用標籤進行定型_。
 - **模型名稱** 將易記名稱新增至自訂模型，以方便管理及追蹤。
-- **新的智慧卡預先建立的模型** ，用來解壓縮英文、語言名片的一般欄位。
-- 新的地區設定（除了 EN-US 以外）**預先建立的新地區**設定，現在可供 EN-US、半 CA、EN-GB、en-us
+- **[新的智慧卡預先建立的模型](concept-business-cards.md)** ，用來解壓縮英文、語言名片的一般欄位。
+- 新的地區設定（除了 EN-US 以外）**[預先建立的新地區](concept-receipts.md)** 設定，現在可供 EN-US、半 CA、EN-GB、en-us
 - 的**品質改進** `Layout` 、 `Train Custom Model`  -  _無標籤定型_，以及_使用標籤定型_。
 
 
@@ -43,6 +43,7 @@ ms.locfileid: "88751086"
 
 您可以在 GitHub 上取得**新的範例**。 
 - [知識提取食譜-Forms](https://github.com/microsoft/knowledge-extraction-recipes-forms)腳本會從真實的表單辨識器客戶參與收集最佳作法，並提供用於開發這些專案的可用程式碼範例、檢查清單和範例管線。 
+- [範例標籤工具](https://github.com/microsoft/OCR-Form-Tools)已更新，可支援新的2.1 版功能。 請參閱本 [快速入門](quickstarts/label-tool.md) 以瞭解如何開始使用此工具。 
 - [智慧型 Kiosk](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md)表單辨識器範例會示範如何 `Analyze Receipt` 在 `Train Custom Model`  -  _沒有標籤的情況下_進行整合和定型。
 
 

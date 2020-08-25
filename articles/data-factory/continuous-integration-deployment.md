@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 7c12cfc21668a13586d94089a7049f6f0d6066d7
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 4de682bd315eef100bdbf8dd24faa128c5b8c2a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336917"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815788"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
@@ -49,7 +49,7 @@ ms.locfileid: "87336917"
 
 1.  在提取要求經過核准並在主要分支中合併變更後，變更就會發佈到開發處理站。
 
-1.  當小組準備好要將變更部署到測試或 UAT （使用者接受度測試） factory 時，小組會前往其 Azure Pipelines 版本，並將所需的開發工廠版本部署至 UAT。 此部署會在 Azure Pipelines 工作中進行，並使用 Resource Manager 範本參數來套用適當的組態。
+1.  當小組準備好要將變更部署至測試或 UAT 時 (使用者接受度測試) factory 時，小組會進入 Azure Pipelines 版本，並將所需的開發 factory 版本部署至 UAT。 此部署會在 Azure Pipelines 工作中進行，並使用 Resource Manager 範本參數來套用適當的組態。
 
 1.  在測試處理站中驗證變更之後，請使用管線發行的下一個工作來部署到生產處理站。
 
@@ -98,7 +98,7 @@ ms.locfileid: "87336917"
 
     ![階段檢視](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  建立新的工作。 搜尋 [ **ARM 範本部署**]，然後選取 [**新增**]。
+    b.  建立新的工作。 搜尋 **ARM 範本部署**，然後選取 [ **新增**]。
 
     c.  在部署工作中，選取目標資料處理站的訂用帳戶、資源群組和位置。 視需要提供認證。
 
@@ -113,7 +113,7 @@ ms.locfileid: "87336917"
     h. 針對 [部署模式] 選取 [增量]。
 
     > [!WARNING]
-    > 如果您針對 [部署模式] 選取 [完整]，則可能刪除現有的資源，包括目標資源群組中未定義於 Resource Manager 範本內的所有資源。
+    > 在完整部署模式中，存在於資源群組中但未在新的 Resource Manager 範本中指定的資源將會被 **刪除**。 如需詳細資訊，請參閱 [Azure Resource Manager 部署模式](../azure-resource-manager/templates/deployment-modes.md)
 
     ![Data Factory 生產部署](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -583,7 +583,7 @@ ms.locfileid: "87336917"
 
 如果尚未設定 Git，則可透過 [ARM 範本] 清單中的 [匯出 ARM 範本]來存取連結的範本。
 
-## <a name="hotfix-production-environment"></a>修補程式生產環境
+## <a name="hotfix-production-environment"></a>修復生產環境
 
 如果您將處理站部署到生產環境，並發現有需要立即修正的錯誤 (bug)，但是您無法部署目前的共同作業分支，則可能需要部署 Hotfix。 這種方法也稱為快速檢修或 QFE。
 
@@ -624,7 +624,7 @@ ms.locfileid: "87336917"
 - 根據設計，Data Factory 不允許揀選認可或選擇性發佈資源。 發佈將會包含在資料處理站中進行的所有變更。
 
     - 資料處理站實體彼此相依。 例如，觸發程序取決於管線，而管線取決於資料集和其他管線。 選擇性發佈資源子集可能會導致非預期的行為和錯誤。
-    - 在少數情況下，當您需要選擇性發佈時，請考慮使用 Hotfix。 如需詳細資訊，請參閱[修補生產環境](#hotfix-production-environment)。
+    - 在少數情況下，當您需要選擇性發佈時，請考慮使用 Hotfix。 如需詳細資訊，請參閱 [修復生產環境](#hotfix-production-environment)。
 
 -   您無法從私人分支發佈。
 

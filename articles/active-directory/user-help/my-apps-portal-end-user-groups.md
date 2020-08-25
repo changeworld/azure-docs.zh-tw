@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 23b7205e63c7991368efe421d5c067e980314611
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f5804819e3a7a63120fa8c64d8df27b16608ece1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741988"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798069"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>在我的應用程式入口網站中更新您的群組資訊
 
@@ -26,7 +26,7 @@ ms.locfileid: "83741988"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->本內容適用於使用者。 如果您是系統管理員，可以在[應用程式管理文件](https://docs.microsoft.com/azure/active-directory/manage-apps)中找到更多關於如何設定和管理雲端式應用程式的資訊。
+>本內容適用於使用者。 如果您是系統管理員，可以在[應用程式管理文件](../manage-apps/index.yml)中找到更多關於如何設定和管理雲端式應用程式的資訊。
 
 ## <a name="view-your-groups-information"></a>檢視您的群組資訊
 

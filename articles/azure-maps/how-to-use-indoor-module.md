@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b9ec42620ee5ffaaf5fd79da5dabc944fc3bc422
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4bfb017bb085d22c187e8074ba4f2b026d17f442
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287083"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815941"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>使用 Azure 地圖服務室內地圖模組
 
@@ -35,26 +35,23 @@ Azure 地圖服務 Web SDK 包括「Azure 室內地圖服務」模組。 「Azur
 若要使用「Azure 室內地圖服務」模組的全球裝載 Azure 內容傳遞網路版本，請參考 HTML 檔案之 `<head>` 元素中的下列 JavaScript 和樣式表參考：
 
 ```html
-<script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
 <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
 ```
 
  或者，您可以下載「Azure 室內地圖服務」模組。 「Azure 室內地圖服務」模組包含用來存取 Azure 地圖服務各項服務的用戶端程式庫。 請遵循下列步驟，將「室內」模組安裝並載入至您的 Web 應用程式。  
   
-  1. 安裝[azure maps-室內套件](https://www.npmjs.com/package/azure-maps-indoor)。
+  1. 安裝 [azure-maps-室內套件](https://www.npmjs.com/package/azure-maps-indoor)。
   
       ```powershell
-      >npm install azure-maps-control
       >npm install azure-maps-indoor
       ```
 
   2. 在 HTML 檔案的 `<head>` 元素中，參考「Azure 室內地圖服務」模組 JavaScript 和樣式表：
 
       ```html
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+      <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.css" type="text/css" />
+      <script src="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.js"></script>
       ```
 
 ## <a name="instantiate-the-map-object"></a>將地圖物件具現化
@@ -150,7 +147,7 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
 4. 將「地圖物件」初始化。 「地圖物件」支援下列選項：
     - `Subscription key`是您的 Azure 地圖服務主要訂用帳戶金鑰。
     - `center` 定義室內地圖中心位置的緯度和經度。 如果不想提供 `bounds` 值，請提供 `center` 值。 格式應為 `center`: [-122.13315, 47.63637]。
-    - `bounds` 是用來括住地圖底圖集地圖資料的最小矩形形狀。 如果不想設定 `center` 值，請設定 `bounds` 值。 您可以呼叫[地圖底圖集清單 API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)，尋找您的地圖界限。 地圖底圖清單 API 會傳回 `bbox`，您可以剖析並指派給 `bounds`。 格式應顯示為 `bounds` ： [# west，# 南部，# 東部，# 北部]。
+    - `bounds` 是用來括住地圖底圖集地圖資料的最小矩形形狀。 如果不想設定 `center` 值，請設定 `bounds` 值。 您可以呼叫[地圖底圖集清單 API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)，尋找您的地圖界限。 地圖底圖清單 API 會傳回 `bbox`，您可以剖析並指派給 `bounds`。 格式應該會顯示為 `bounds` ： [# west、# 南部、# east、# 北部]。
     - `style` 可讓您設定背景的色彩。 若要顯示白色背景，請將 `style` 定義為「空白」。
     - `zoom` 可讓您指定地圖的最小和最大縮放層級。
 

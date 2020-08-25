@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 9e8dd4b7d7e6f0de1f3ce19238e4ab1e3cf958e1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f200fe96478e15e938899d294ecd5491d6a03206
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034173"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814385"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>什麼是適用於 Azure Cosmos DB 的 Azure Synapse Analytics (預覽)？
 
@@ -75,7 +75,7 @@ Azure Cosmos DB 分析存放區是 Azure Cosmos DB 中操作資料的資料行�
 
 ### <a name="integration-with-azure-synapse-analytics"></a><a id="synapse-link-integration"></a>與 Azure Synapse Analytics 整合
 
-有了 Synapse Link，您現在可以從 Azure Synapse Analytics 直接連線到您的 Azure Cosmos DB 容器，並存取分析存放區，而不需要個別的連接器。 Azure Synapse Analytics 目前支援 Synapse Link 搭配 [Synapse Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md) 和 [Synapse SQL 無伺服器](../synapse-analytics/sql/on-demand-workspace-overview.md)。
+有了 Synapse Link，您現在可以從 Azure Synapse Analytics 直接連線到您的 Azure Cosmos DB 容器，並存取分析存放區，而不需要個別的連接器。 Azure Synapse Analytics 目前支援 [Synapse Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md) 和 [Synapse SQL 無伺服器](../synapse-analytics/sql/on-demand-workspace-overview.md)的 Synapse 連結。
 
 您可以同時查詢 Azure Cosmos DB 分析存放區中的資料，且 Azure Synapse Analytics 支援的不同分析執行之間可互通。 不需要進行其他資料轉換來分析操作資料。 您可以使用下列各項來查詢和分析分析存放區資料：
 
@@ -122,7 +122,7 @@ Azure Cosmos DB 分析存放區是 Azure Cosmos DB 中操作資料的資料行�
 
 * 目前，只能為 (新的和現有的 Azure Cosmos DB 帳戶中) 新的容器啟用分析存放區。
 
-* 在預覽中，不支援針對已啟用 Synapse 連結的資料庫帳戶進行容器的備份和還原。 如果您有需要備份和還原功能的生產工作負載，我們建議您不要在這些資料庫帳戶上啟用 Synapse 連結。 
+* 在預覽中，針對已啟用 Synapse 連結的資料庫帳戶，不支援備份和還原容器。 如果您的生產工作負載需要備份和還原功能，建議您不要在這些資料庫帳戶上啟用 Synapse 連結。 
 
 * 使用 Synapse SQL 無伺服器存取 Azure Cosmos DB 分析存放區目前處於有限預覽階段。 若要要求存取，請寄電子郵件至 [Azure Cosmos DB 小組](mailto:cosmosdbsynapselink@microsoft.com)。
 

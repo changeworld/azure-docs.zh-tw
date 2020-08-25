@@ -1,6 +1,6 @@
 ---
-title: 使用入口網站來部署 Azure 位置 Vm
-description: 瞭解如何使用 Azure PowerShell 部署點 Vm 以節省成本。
+title: 使用入口網站部署 Azure 位置 Vm
+description: 如何使用 Azure PowerShell 部署現成的 Vm 以節省成本。
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,38 +8,38 @@ ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: ee2ff7119c229b8a0fd94be3b85863fcb1108f58
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef5fa0aafca1312480f51614a1ba1692c09a13b8
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074164"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816570"
 ---
-# <a name="deploy-spot-vms-using-the-azure-portal"></a>使用 Azure 入口網站部署點 Vm
+# <a name="deploy-spot-vms-using-the-azure-portal"></a>使用 Azure 入口網站部署現成的 Vm
 
-使用「[點 vm](spot-vms.md) 」可讓您以可觀的成本節約，利用我們未使用的容量。 Azure 基礎結構會在任何時間點回復，以找出虛擬機器的功能。 因此，針對可處理中斷的工作負載（例如批次處理作業、開發/測試環境、大型計算工作負載等），找出 Vm 很棒。
+使用現成的 [vm](../spot-vms.md) 可讓您以大幅節省的成本來利用未使用的容量。 Azure 基礎結構會在任何時間點恢復容量，以找出 Vm。 因此，找出 Vm 很適合用來處理中斷的工作負載，例如批次處理作業、開發/測試環境、大型計算工作負載等。
 
-點 Vm 的定價是以區域和 SKU 為依據的變數。 如需詳細資訊，請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定價。 如需設定最大價格的詳細資訊，請參閱[找出 vm-定價](spot-vms.md#pricing)。
+現成 Vm 的定價是根據區域和 SKU 的變數。 如需詳細資訊，請參閱 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 和 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定價。 如需設定最大價格的詳細資訊，請參閱 [找出 vm-定價](../spot-vms.md#pricing)。
 
-您可以選擇為 VM 設定您願意支付的最大價格（每小時）。 您可以使用最多5個小數位數，以美元（USD）來設定點 VM 的最大價格。 例如，此值 `0.05701` 是每小時 $0.05701 美元的最大價格。 如果您將最大價格設為 `-1` ，則不會根據價格來收回 VM。 VM 的價格將會是標準 VM 的目前價格或價格（這是較少的），只要有可用的容量和配額。
+您可以選擇針對 VM 設定您願意支付的最高價格（每小時）。 您可以使用最多5個小數位數，將位置 VM 的最大價格設定為美元 (USD) 。 例如，值的 `0.05701` 最大價格為每小時 $0.05701 美元。 如果您將最大價格設定為 `-1` ，將不會根據價格來收回 VM。 如果有可用的容量和配額，則 VM 的價格將是標準 VM 的目前價格或價格的價格。
 
-收回 VM 之後，您可以選擇是否要刪除 VM 和基礎磁片，或解除配置 VM，讓它可以稍後重新開機。
+當 VM 收回時，您可以選擇刪除 VM 和基礎磁片，或將 VM 解除配置，以便稍後重新開機。
 
 
 ## <a name="create-the-vm"></a>建立 VM
 
-建立使用點 Vm 之 VM 的程式，與[快速入門](quick-create-portal.md)中所述的步驟相同。 當您部署 VM 時，您可以選擇使用 Azure 點實例。
+建立使用點 Vm 的 VM 的程式，與 [快速入門](quick-create-portal.md)中所述的程式相同。 當您部署 VM 時，可以選擇使用 Azure 位置實例。
 
 
-在 [**基本**] 索引標籤的 [**實例詳細資料**] 區段中，[**否**] 是使用 Azure 點實例的預設值。
+在 [ **基本** ] 索引標籤的 [ **實例詳細資料** ] 區段中，[ **否** ] 是使用 Azure 位置實例的預設值。
 
-![螢幕擷取畫面：選擇 [否]，不要使用 Azure 點實例](media/spot-portal/no.png)
+![選擇 [否] 的螢幕擷取畫面，請勿使用 Azure 位置實例](media/spot-portal/no.png)
 
-您選取 **[是]**，區段會展開，而您可以選擇收回[類型和收回原則](spot-vms.md#eviction-policy)。 
+您可以選取 [ **是]**，區段會展開，而且您可以選擇收回 [類型和收回原則](../spot-vms.md#eviction-policy)。 
 
-![選擇 [是] 的螢幕擷取畫面，使用 Azure 點實例](media/spot-portal/yes.png)
+![選擇 [是] 的螢幕擷取畫面，請使用 Azure 位置實例](media/spot-portal/yes.png)
 
 
 ## <a name="next-steps"></a>後續步驟
 
-您也可以使用[PowerShell](spot-powershell.md)建立點 vm。
+您也可以使用 [PowerShell](spot-powershell.md)來建立點 vm。

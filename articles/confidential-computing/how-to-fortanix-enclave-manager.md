@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: 8996673cf8f01334e3dcd35aab8544643bd37360
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d46354b18d5c3317cc1ed67d839feb26b7b6b5d0
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88802156"
+ms.locfileid: "88815839"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>How To：使用 Fortanix 記憶體保護區管理員執行應用程式 
 
@@ -46,7 +46,6 @@ Fortanix 是協力廠商軟體廠商，其產品和服務建置於 Azure 基礎�
 1. 登入 [FORTANIX EM](https://fortanix.com)
 1. 流覽至 [ **帳戶** ] 頁面，然後選取 [ **新增帳戶** ] 以建立新的帳戶。 
     
-[!div class="mx-imgBorder"]
 ![建立帳戶](media/how-to-fortanix-enclave-manager/create-account.png)
 
 1. 建立帳戶之後，請按 [ **選取** ] 來選取新建立的帳戶。 現在我們可以開始註冊計算節點和建立應用程式。 

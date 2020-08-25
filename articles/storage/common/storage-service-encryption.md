@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: fd819f0b819007611f5232d0fdfb324173d9c4b4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1a5ed324ae109a151bf21050993bff02434410df
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797916"
+ms.locfileid: "88814445"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>待用資料的 Azure 儲存體加密
 
@@ -48,8 +48,8 @@ Azure 儲存體中的資料會以透明的方式使用256位 [AES 加密](https:
 | 加密/解密作業 | Azure | Azure | Azure |
 | 支援 Azure 儲存體服務 | 全部 | Blob 儲存體，Azure 檔案儲存體<sup>1，2</sup> | Blob 儲存體 |
 | 金鑰儲存體 | Microsoft 金鑰存放區 | Azure 金鑰保存庫 | 客戶自己的金鑰存放區 |
-| 金鑰輪替責任 | Microsoft | Customer | Customer |
-| 按鍵控制 | Microsoft | Customer | Customer |
+| 金鑰輪替責任 | Microsoft | 客戶 | 客戶 |
+| 按鍵控制 | Microsoft | 客戶 | 客戶 |
 
 <sup>1</sup> 如需有關建立支援將客戶管理的金鑰與佇列儲存體搭配使用之帳戶的詳細資訊，請參閱 [建立支援客戶管理的佇列金鑰的帳戶](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。<br />
 <sup>2</sup> 如需有關建立支援將客戶管理的金鑰與資料表儲存體搭配使用之帳戶的詳細資訊，請參閱 [建立支援資料表之客戶管理金鑰的帳戶](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
@@ -68,7 +68,7 @@ Azure 儲存體中的資料會以透明的方式使用256位 [AES 加密](https:
 建立加密範圍之後，您可以在要求上指定該加密範圍來建立容器或 blob。 如需如何建立加密範圍的詳細資訊，請參閱 [建立及管理加密範圍 (預覽) ](../blobs/encryption-scope-manage.md)。
 
 > [!NOTE]
-> 在預覽期間，讀取權限異地冗余儲存體 (GRS) 帳戶不支援加密範圍。
+> 在預覽期間，讀取權限異地冗余儲存體 (GRS) 和讀取權限異地區域冗余儲存體 (RA-GZRS) 帳戶不支援加密範圍。
 
 > [!IMPORTANT]
 > 加密範圍預覽僅供非生產環境使用。 生產環境的服務等級協定 (SLA) 目前無法使用。

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/18/2020
-ms.openlocfilehash: 8ec950ddabd3844618c878471d2e1391979e2056
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 08/25/2020
+ms.openlocfilehash: a03a141a4140ca4ac000a8e2afb8dd8f45d40662
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521367"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816588"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SFTP 伺服器複製資料或將資料複製到 SFTP 伺服器
 
@@ -64,7 +64,7 @@ SFTP 連接器支援下列活動：
 | skipHostKeyValidation | 指定是否略過主機金鑰驗證。<br/>允許的值為 *true* 和 *false* (預設) 。  | 否 |
 | hostKeyFingerprint | 指定主機金鑰的指紋。 | 是，如果 "skipHostKeyValidation" 設為 false。  |
 | authenticationType | 指定驗證類型。<br/>允許的值為 *基本* 和 *SshPublicKey*。 如需其他屬性，請參閱 [使用基本驗證](#use-basic-authentication) 一節。 如需 JSON 範例，請參閱 [使用 SSH 公開金鑰驗證](#use-ssh-public-key-authentication) 一節。 |是 |
-| connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 若要深入瞭解，請參閱「 [必要條件](#prerequisites) 」一節。 如果未指定整合執行時間，服務會使用預設 Azure Integration Runtime。 |No |
+| connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 若要深入瞭解，請參閱「 [必要條件](#prerequisites) 」一節。 如果未指定整合執行時間，服務會使用預設 Azure Integration Runtime。 |否 |
 
 ### <a name="use-basic-authentication"></a>使用基本驗證
 
@@ -112,7 +112,7 @@ SFTP 連接器支援下列活動：
 | userName | 擁有 SFTP 伺服器存取權的使用者。 |是 |
 | privateKeyPath | 指定整合執行時間可以存取之私密金鑰檔案的絕對路徑。 這僅適用于在 "connectVia" 中指定自我裝載類型的整合執行時間時。 | 請指定 `privateKeyPath` 或 `privateKeyContent`。  |
 | privateKeyContent | Base64 編碼的 SSH 私密金鑰內容。 SSH 私密金鑰的格式應該是 OpenSSH。 將此欄位標示為 SecureString，以安全地將它儲存在您的 data factory 中，或 [參考儲存在 Azure key vault 中的秘密](store-credentials-in-key-vault.md)。 | 請指定 `privateKeyPath` 或 `privateKeyContent`。 |
-| passPhrase | 如果金鑰檔受到片語的保護，請指定用來解密私密金鑰的傳遞片語或密碼。 將此欄位標示為 SecureString，以安全地將它儲存在您的 data factory 中，或 [參考儲存在 Azure key vault 中的秘密](store-credentials-in-key-vault.md)。 | 是，如果私密金鑰檔案受到通行片語的保護。 |
+| passPhrase | 如果金鑰檔或金鑰內容受到片語的保護，請指定要解密私密金鑰的密碼。 將此欄位標示為 SecureString，以安全地將它儲存在您的 data factory 中，或 [參考儲存在 Azure key vault 中的秘密](store-credentials-in-key-vault.md)。 | 是，如果私密金鑰檔案或金鑰內容是由通過片語所保護。 |
 
 > [!NOTE]
 > SFTP 連接器支援 RSA/DSA OpenSSH 金鑰。 確定您的金鑰檔案內容開頭為「-----開始 [RSA/DSA] 私密金鑰-----」。 如果私密金鑰檔案是 PPK 格式檔案，請使用 PuTTY 工具，從 PPK 轉換為 OpenSSH 格式。 
@@ -228,12 +228,12 @@ SFTP 連接器支援下列活動：
 
 | 屬性                 | 描述                                                  | 必要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | 下的 *類型* 屬性 `storeSettings` 必須設為 *SftpReadSettings*。 | Yes                                           |
+| type                     | 下的 *類型* 屬性 `storeSettings` 必須設為 *SftpReadSettings*。 | 是                                           |
 | ***找出要複製的檔案*** |  |  |
 | 選項 1：靜態路徑<br> | 從資料集內所指定的資料夾/檔案路徑複製。 若您想要複製資料夾中的所有檔案，請另外將 `wildcardFileName` 指定為 `*`。 |  |
 | 選項 2：萬用字元<br>- wildcardFolderPath | 含有萬用字元的資料夾路徑，可用來篩選來源資料夾。 <br>允許的萬用字元 `*` (符合零或多個字元) 和 `?` (符合零或單一字元) ; `^` 如果您的實際資料夾名稱包含萬用字元或此 escape 字元，請使用來進行 escape。 <br>如需更多範例，請參閱 [資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
 | 選項 2：萬用字元<br>- wildcardFileName | 在指定的 folderPath/wildcardFolderPath 下，用來篩選來源檔案的檔案名。 <br>允許的萬用字元 `*` (符合零或多個字元) 和 `?` (符合零或單一字元) ; `^` 如果您的實際資料夾名稱包含萬用字元或此 escape 字元，請使用來進行 escape。  如需更多範例，請參閱 [資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
-| 選項 3：檔案清單<br>- fileListPath | 表示複製指定的檔案集。 指向文字檔，其中包含您想要複製的檔案清單 (每行一個檔案，以及資料集) 中設定之路徑的相對路徑。<br/>當您使用此選項時，請勿在資料集中指定檔案名。 如需更多範例，請參閱檔案 [清單範例](#file-list-examples)。 |No |
+| 選項 3：檔案清單<br>- fileListPath | 表示複製指定的檔案集。 指向文字檔，其中包含您想要複製的檔案清單 (每行一個檔案，以及資料集) 中設定之路徑的相對路徑。<br/>當您使用此選項時，請勿在資料集中指定檔案名。 如需更多範例，請參閱檔案 [清單範例](#file-list-examples)。 |否 |
 | ***其他設定*** |  | |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 <br>允許的值為 *true* (預設值) 和 *false*。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
 | deleteFilesAfterCompletion | 指出是否要在成功移至目的地存放區之後，從來源存放區刪除二進位檔案。 檔案刪除是針對每個檔案，因此當複製活動失敗時，您會看到部分檔案已複製到目的地並從來源刪除，其他檔案仍在來源存放區上。 <br/>這個屬性只適用于二進位複製案例，其中資料來源存放區為 Blob、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、檔案、Azure 檔案、SFTP 或 FTP。 預設值： false。 |否 |
@@ -293,7 +293,7 @@ SFTP 連接器支援下列活動：
 | type                     | 下的 *類型* 屬性 `storeSettings` 必須設為 *SftpWriteSettings*。 | 是      |
 | copyBehavior             | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 若已指定檔案名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否       |
 | maxConcurrentConnections | 可以同時連線到儲存體存放區的連接數目。 只有當您想要限制與資料存放區的並行連接時，才需要指定值。 | 否       |
-| useTempFileRename | 指出是否要上傳至暫存檔並將它們重新命名，或直接寫入目的檔案夾或檔案位置。 根據預設，Azure Data Factory 會先寫入暫存檔，然後在上傳完成時將其重新命名。 如果您有其他處理常式寫入相同的檔案，則此順序有助於 (1) 避免可能導致檔案損毀的衝突，並 (2) 確定檔案的原始版本存在於傳輸期間。 如果您的 SFTP 伺服器不支援重新命名作業，請停用此選項，並確定您沒有對目標檔案的並行寫入。 如需詳細資訊，請參閱此表格結尾的疑難排解提示。 | 否。 預設值為 true。 |
+| useTempFileRename | 指出是否要上傳至暫存檔並將它們重新命名，或直接寫入目的檔案夾或檔案位置。 根據預設，Azure Data Factory 會先寫入暫存檔，然後在上傳完成時將其重新命名。 如果您有其他處理常式寫入相同的檔案，則此順序有助於 (1) 避免可能導致檔案損毀的衝突，並 (2) 確定檔案的原始版本存在於傳輸期間。 如果您的 SFTP 伺服器不支援重新命名作業，請停用此選項，並確定您沒有對目標檔案的並行寫入。 如需詳細資訊，請參閱此表格結尾的疑難排解提示。 | 不知道。 預設值為 true。 |
 | operationTimeout | 對 SFTP 伺服器發出的每個寫入要求在逾時之前的等待時間。預設值為 60 分鐘 (01:00:00)。|否 |
 
 >[!TIP]

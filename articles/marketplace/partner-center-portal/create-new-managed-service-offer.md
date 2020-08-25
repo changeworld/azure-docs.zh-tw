@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: 75c604df2f44e9c732fa9c2ce2093237e4e484a4
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 9ff11312b6d231927f5053868b64e0b825df371e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606064"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816978"
 ---
 # <a name="create-a-managed-service-offer"></a>建立受控服務供應項目
 
@@ -85,7 +85,7 @@ ms.locfileid: "88606064"
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
-1. Title
+1. 標題
 2. 描述
 3. 實用的連結
 4. 螢幕擷取畫面
@@ -135,18 +135,19 @@ ms.locfileid: "88606064"
 >[!NOTE]
 >如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
 
-#### <a name="marketplace-logos"></a>Marketplace 標誌
+#### <a name="store-logos"></a>儲存標誌
 
-提供四個像素大小的供應項目標誌：
+提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將使用這個來建立 **小型** 和 **中型** 標誌。 您可以選擇性地使用不同的映射取代這些映射。
 
-- **小型** (48 x 48)
-- **中型** (90 x 90)
-- **大型** (216 x 216)
-- **寬型** (255 x 115)
+- 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+- **中型** (90 x 90 px，選擇性) 
+- **Small** (48 x 48 px，選擇性) 
 
-這些標誌可用於 Azure Marketplace 中的不同位置：
+這些標誌可用於清單中的不同位置：
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 

@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: c648387547e9543c9e509344aa86285504dced7a
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 3006522f75ed732c08e453a266e660cf4c577917
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761367"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815363"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -195,6 +195,7 @@ RBAC 原則 | 不支援 | 以角色為基礎的存取控制 (Vm 上的 RBAC) 原
 -- | ---
 在複寫的 VM 上調整磁碟大小 | 在容錯移轉之前，於來源 VM 上支援。 不需要停用/重新啟用複寫。<br/><br/> 如果您在容錯移轉之後變更來源 VM，則不會擷取變更。<br/><br/> 如果您在容錯移轉之後變更 Azure VM 上的磁碟大小，Site Recovery 不會擷取變更，而容錯回復將會是原始 VM 大小。
 在複寫的 VM 上新增磁碟 | 支援
+對受保護磁片的離線變更 | 將磁片中斷連線並對它們進行離線修改需要觸發完整的重新同步處理。
 
 ## <a name="replicated-machines---storage"></a>複寫的機器 - 儲存體
 
@@ -254,6 +255,7 @@ Azure 共用磁碟 | 不支援
 - 上述限制是以我們的測試為基礎，但很明顯並未涵蓋所有可能的應用程式 I/O 組合。
 - 實際的結果會隨著應用程式 I/O 混合而有所不同。
 - 有兩個需要考量的限制：每個磁碟資料變換率和每個虛擬機器資料變換率。
+- 每個虛擬機器資料變換目前的限制為 54 MB/秒，而不論大小為何。
 
 **儲存目標** | **平均來源磁碟 I/O** |**平均來源磁碟資料變換** | **每日的來源磁碟資料變換總計**
 ---|---|---|---

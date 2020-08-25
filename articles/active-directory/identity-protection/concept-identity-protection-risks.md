@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/15/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c92994fee6de4c56257343af2ef418393b505ad
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507428"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815047"
 ---
 # <a name="what-is-risk"></a>什麼是風險？
 
@@ -39,6 +39,7 @@ Identity Protection 可讓組織存取強大的資源，以快速查看及回應
 | 風險偵測 | 描述 |
 | --- | --- |
 | 認證外洩 | 此風險偵測類型表示使用者的有效認證已洩露。 當網路罪犯入侵合法使用者的有效密碼時，他們通常會共用這些認證。 這項共用通常是藉由在黑色市場上公開張貼、貼上網站，或透過交易和銷售認證來完成。 當 Microsoft 洩漏的認證服務從深色 web、貼上網站或其他來源取得使用者認證時，系統會根據 Azure AD 使用者目前有效的認證來檢查它們，以找出有效的相符專案。 如需洩漏認證的詳細資訊，請參閱 [常見問題](#common-questions)。 |
+| 密碼噴灑 | 密碼噴灑攻擊是指以統一的暴力密碼破解方式使用一般密碼來攻擊多個使用者名稱的攻擊，以取得未經授權的存取權。 執行密碼噴灑攻擊時，會觸發此風險偵測。 |
 | Azure AD 威脅情報 | 此風險偵測類型指出指定使用者不尋常的使用者活動，或是與以 Microsoft 內部和外部威脅情報來源為基礎的已知攻擊模式一致的使用者活動。 |
 
 ### <a name="sign-in-risk"></a>登入風險
@@ -68,9 +69,9 @@ Identity Protection 可讓組織存取強大的資源，以快速查看及回應
 
 ### <a name="risk-levels"></a>風險層級
 
-Identity Protection 會將風險分類為三個層級：低、中和高。 
+身分識別保護會將風險分類成三個層級：低、中和高。 
 
-雖然 Microsoft 並未提供有關如何計算風險的特定詳細資料，但我們會假設每個層級都有更高的信心，讓使用者或登入遭到盜用。 例如，類似某個使用者的一種不熟悉登入屬性的實例，可能不像其他使用者的洩漏認證那麼危險。
+雖然 Microsoft 並未提供如何計算風險的特定詳細資料，但我們會假設每個層級針對使用者或登入遭到入侵時都具備更高的信賴度。 例如，相較於使用者的其中一個執行個體出現不熟悉的登入屬性，將認證洩漏給其他使用者的情況比較嚴重。
 
 ### <a name="leaked-credentials"></a>認證外洩
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: f8ddbc66b8e7775fa35d2407bf3aa8614fe8e835
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 03fa302d2e8aa173419912b99d60734c7a4e0356
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606164"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814259"
 ---
 # <a name="create-a-consulting-service-offer"></a>建立諮詢服務供應項目
 
@@ -101,8 +101,8 @@ ms.locfileid: "88606164"
     - 分析
     - 應用程式現代化
     - 封存
-    - AI + 機器學習服務
-    - Backup
+    - AI + 機器學習
+    - 備份
     - 巨量資料
     - 資料平台
     - 資料中心管理
@@ -110,7 +110,7 @@ ms.locfileid: "88606164"
     - 災害復原
     - 身分識別
     - 物聯網
-    - 遷移
+    - 移轉
     - 網路
     - 安全性
     - 儲存體
@@ -209,15 +209,14 @@ ms.locfileid: "88606164"
 
 #### <a name="store-logos"></a>儲存標誌
 
-請以下列每個像素大小提供供應項目標誌的 PNG 檔案：
+提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將會使用此來建立 **小型** 標誌。 您可以選擇性地將此取代為不同的映射。
 
-- **小型 (48 x 48)**
-- **大型 (216 x 216)**
+- 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+- **Small** (48 x 48 px，選擇性) 
 
-所有標誌都是必要的，且在市集清單中會用於不同位置。
+這些標誌可用於清單中的不同位置。
 
--   Azure Marketplace 搜尋結果和 Microsoft AppSource [搜尋結果] 頁面上搜尋結果中會出現小型標誌 (48 x 48 圖元) 。 
--   216 x 216 與 350 x 350 圖元之間的大型標誌 () 會出現在 Azure Marketplace 和 Microsoft AppSource 的供應專案清單頁面上。
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>螢幕擷取畫面 (選擇性)
 

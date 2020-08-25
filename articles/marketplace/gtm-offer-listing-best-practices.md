@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 7bf4860e8c42ef8aacc2e564dacd6de1a7d39149
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 19e3e356765099b83f7248a024b55c491a61b110
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607397"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816264"
 ---
 # <a name="offer-listing-best-practices"></a>陳列供應項目的最佳做法
 
@@ -54,12 +54,12 @@ Microsoft AppSource 和 Azure Marketplace 是兩個不同的線上商店，可�
 
 選取與您的供應專案和您的目標物件最相符的類別和子類別。 您可以選取：
 
-* 最多兩個 (2) 類別，包括主要和次要類別 (選擇性) 。
-* 每個主要和/或次要類別最多可有兩個 (2) 子類別。 如果未選取任何子類別，則您的供應專案只會在選取的類別上被搜尋。
+* 最多兩個類別，包括主要和次要類別 (選擇性) 。
+* 每個主要和/或次要類別最多可有兩個子類別。 如果未選取任何子類別，則您的供應專案只會在選取的類別上被搜尋。
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
-**重要： SaaS 提供和 Microsoft 365 增益集**
+#### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>重要： SaaS 提供和 Microsoft 365 增益集
 
 如需有關交易功能可能會如何影響您的供應專案在 marketplace 客戶間的查看和購買方式的特定詳細資料，請參閱 [指南（依供應專案類型](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) ）。 在 SaaS 供應專案中，供應專案的交易功能以及類別選取專案將會決定即將發佈供應專案的線上商店：
 
@@ -120,9 +120,9 @@ Microsoft AppSource 和 Azure Marketplace 是兩個不同的線上商店，可�
 ## <a name="online-store-marketing-details"></a>線上商店行銷詳細資料
 | 設定 | 最佳做法 |
 |:--- |:--- |  
-| 供應項目標誌 (PNG 格式，48&nbsp;&times;&nbsp;48)：搜尋頁面 | 針對數位媒體設計及最佳化您的標誌：<br>以 PNG 格式上傳標誌到您的供應項目搜尋頁面。 |
-| 供應項目標誌 (PNG 格式，216&nbsp;&times;&nbsp;216)：應用程式詳細資料頁面 | 針對數位媒體設計及最佳化您的標誌：<br>以 PNG 格式上傳標誌到您供應項目的應用程式詳細資料清單頁面。 |
-| 「深入了解」文件 | 在 [深入了解] 下包括支援業務與行銷資產，例如： <ul> <li> 技術白皮書、 </li> <li> 小手冊、 </li> <li> 檢查清單，或是 </li> <li> PowerPoint 簡報。</li> </ul>將所有檔案都儲存為 PDF 格式。 您此處的目標應該是教育客戶，而不是銷售產品或服務給客戶。 <br><br>將您應用程式登陸頁面的連結新增到您的所有文件，並加入 URL 參數以協助您追蹤訪客和試用。 |
+| 供應專案標誌 (PNG 格式，從216×216到 350 x 350 px) ：應用程式詳細資料頁面 | 針對數位媒體設計及最佳化您的標誌：<br>以 PNG 格式上傳標誌到您供應項目的應用程式詳細資料清單頁面。 合作夥伴中心會將其大小調整為所需的標誌大小。 |
+| 供應專案標誌 (PNG 格式，48×48圖元) ：搜尋頁面 | 合作夥伴中心將會從您上傳的大型標誌產生此標誌。 您可以選擇性地將此取代為不同的映射。 |
+| 「深入了解」文件 | 在 [深入了解] 下包括支援業務與行銷資產，例如：<ul><li>白皮書</li><li> 摺頁冊</li><li>檢查清單，或是</li><li> PowerPoint 簡報</li></ul><br>將所有檔案都儲存為 PDF 格式。 您此處的目標應該是教育客戶，而不是銷售產品或服務給客戶。<br><br>將您應用程式登陸頁面的連結新增到您的所有文件，並加入 URL 參數以協助您追蹤訪客和試用。 |
 | 影片：僅 AppSource、諮詢服務以及 SaaS 供應項目 | 最有力的影片能以敘事方式傳遞供應項目價值：<ul> <li> 將客戶 (而非您的公司) 設定為影片故事的主角。 </li> <li> 您的影片應該解決目標客戶的主要挑戰與目標。 </li> <li> 建議長度：60-90 秒。</li> <li> 在影片名稱中包含搜尋關鍵字。 </li> <li> 請考慮新增其他影片，例如操作說明、使用者入門或是客戶證言。 </li> </ul> |
 | 螢幕擷取畫面 (1280&nbsp;&times;&nbsp;720) | 新增最多五個螢幕擷取畫面：<br>在影片名稱中包含搜尋關鍵字。 |
 
@@ -141,4 +141,3 @@ Microsoft AppSource 和 Azure Marketplace 是兩個不同的線上商店，可�
 深入了解您的[商業市集權益](./gtm-your-marketplace-benefits.md)。
 
 請登入[合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，以建立及設定您的供應項目。
-

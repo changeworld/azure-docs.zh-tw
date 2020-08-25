@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 7500eddc2416a1cb705ef207930c5fe4c6f1068a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6344cb5f1a4bd52395378f97ba2848eeec336572
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604740"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817012"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>在商業市場中建立 SaaS 供應專案
 
@@ -144,7 +144,7 @@ SaaS 供應項目使用計量收費服務，支援以固定費用、每位使用
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
-1. Title
+1. 標題
 2. 描述
 3. 實用的連結
 4. 螢幕擷取畫面
@@ -282,18 +282,19 @@ Microsoft 提供標準合約範本。
 #### <a name="files-and-images"></a>檔案和影像
 
 - **檔** (必要的) -為您的供應專案新增相關的行銷檔（PDF 格式），每個供應專案至少有一份和最多三份檔。
-- **影像**  –以 PNG 格式上傳標誌影像：
+- **映射** (必要的) –有多個位置可讓您的供應專案標誌影像出現在 marketplace (的) 。 提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將使用這個來建立 **小型** 和 **中型** 標誌。 您可以選擇性地使用不同的映射取代這些映射。
 
-  - **Small** (48 x 48 圖元，必要) 
-  - **中型** (90 x 90 圖元，必要) 
-  - **大型** (216 x 216 圖元，需要) 
-  - **寬** (255 x 115 圖元)  (選擇性) 
+  - 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+  - **中型** (90 x 90 px，選擇性) 
+  - **Small** (48 x 48 px，選擇性) 
+  
+  這些標誌可用於清單中的不同位置：
 
-   這三個標誌大小會用於線上商店中的不同位置：
+   - 大型標誌會顯示在 Azure Marketplace 和 Microsoft AppSource 的供應專案清單頁面上。
+   - 當您在 Microsoft Azure 中建立新資源時，會出現「中」標誌。
+   - 小型標誌會出現在 Azure Marketplace 搜尋結果中，以及 Microsoft AppSource 的主頁面和搜尋結果頁面上。
 
-   -   Azure Marketplace 搜尋結果和 Microsoft AppSource [搜尋結果] 頁面上搜尋結果中會出現小型標誌 (48 x 48 圖元) 。 
-   -   當您在 Microsoft Azure 中建立新資源時，會出現中等標誌 (90 x 90 圖元) 。
-   -   216 x 216 與 350 x 350 圖元之間的大型標誌 () 會出現在 Azure Marketplace 和 Microsoft AppSource 的供應專案清單頁面上。
+   [!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 -  (所需) 的**螢幕擷取畫面**-新增五個螢幕擷取畫面，其中最多會示範您的供應專案，大小為 1280 x 720 圖元。 所有影像都必須是 .PNG 格式。
 - **影片** (選用) - 新增用於呈現供應項目的影片連結。 您可以使用 YouTube 和/或 Vimeo 影片的連結，這會隨著您的供應項目顯示給客戶。 您也需要輸入影片的縮圖影像，必須為 1280 x 720 像素的 PNG 格式影像。 每個供應項目最多可以顯示四支影片。

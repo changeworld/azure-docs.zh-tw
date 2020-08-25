@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 2fc87f08b30d648ec38d2b93e96a32d125b856be
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 039f7343bcef64db9ad9eae558cd3e97f3678c59
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757909"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799276"
 ---
 # <a name="business-card-concepts"></a>名片概念
 
@@ -70,7 +70,7 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，從名片�
 
 當 [ **狀態** ] 欄位的值為 [ **成功** ] 時，JSON 回應會包含名片理解和文字辨識結果。 名片理解結果會組織為命名域值的字典，其中每個值都包含已解壓縮的文字、正規化值、周框方塊、信賴度和對應的單字元素。 文字辨識結果會組織成行和單字的階層，其中包含文字、周框方塊和信賴資訊。
 
-![Contoso smample 結果](./media/business-card-results.png)
+![範例名片輸出](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>範例 JSON 輸出
 
@@ -90,8 +90,8 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，從名片�
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-    "lines": 
-         {
+                "lines": 
+                          {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
                             419.3,

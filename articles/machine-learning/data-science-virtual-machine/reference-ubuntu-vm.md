@@ -9,16 +9,16 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 247840fe4719dc83be8048826ac4defc76d7ef9d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c919e8abc55dd5cb36325ae060340c1ee147a1a0
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852220"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816298"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>參考： Ubuntu (Linux) 資料科學虛擬機器
 
-如需 Ubuntu 資料科學虛擬機器上可用的工具清單，請參閱下文。 
+請參閱下文以取得 Ubuntu 資料科學虛擬機器的可用工具清單。 
 
 ## <a name="deep-learning-libraries"></a>深度學習程式庫
 
@@ -33,7 +33,7 @@ cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
 cntk configFile=lr_bs.cntk makeMode=false command=Train
 ```
 
-如需詳細資訊，請參閱[GitHub](https://github.com/Microsoft/CNTK)和[CNTK wiki](https://github.com/Microsoft/CNTK/wiki)的 CNTK 一節。
+如需詳細資訊，請參閱 [GitHub](https://github.com/Microsoft/CNTK) 和 [CNTK wiki](https://github.com/Microsoft/CNTK/wiki)的 CNTK 一節。
 
 ### <a name="caffe"></a>Caffe
 
@@ -67,7 +67,7 @@ MXNet 是兼具效率和彈性的深入學習架構。 它在 DSVM 中包含了 
 
 NVIDIA 深度學習 GPU 訓練系統 (名為 DIGITS) 是一個可簡化常見深度學習工作的系統。 這些工作包括管理資料、設計和訓練 GPU 系統上的神經網路，以及使用進階視覺效果即時監視效能。
 
-數位會以稱為「*數位*」的服務形式提供。 啟動此服務並瀏覽至 `http://localhost:5000` 以開始使用。
+數位會以服務的形式提供，稱為 *數位*。 啟動此服務並瀏覽至 `http://localhost:5000` 以開始使用。
 
 DIGITS 也會安裝為 Conda 根環境中的 Python 模組。
 
@@ -143,7 +143,7 @@ Jupyter 筆記本伺服器已使用 Python 2、Python 3 及 R 核心進行預先
 > [!NOTE]
 > 如果您收到任何憑證警告，請繼續。
 
-您可以從任何主機存取 Jupyter Notebook 伺服器。 輸入**HTTPs:// \<VM DNS name or IP address\> ： 8000/**。
+您可以從任何主機存取 Jupyter Notebook 伺服器。 輸入 **HTTPs:// \<VM DNS name or IP address\> ： 8000/**。
 
 > [!NOTE]
 > 在佈建 VM 時，防火牆預設會開啟連接埠 8000。 
@@ -200,7 +200,7 @@ SQuirrel SQL 是一個圖形化 SQL 用戶端，可連線至多種不同的資�
 
 第一次使用之前，請設定驅動程式和資料庫別名。 JDBC 驅動程式位於 /usr/share/java/jdbcdrivers 中。
 
-如需詳細資訊，請參閱[SQUIRREL SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots)。
+如需詳細資訊，請參閱 [SQUIRREL SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots)。
 
 ### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>存取 Microsoft SQL Server 用的命令列工具
 
@@ -208,7 +208,7 @@ SQL Server 的 ODBC 驅動程式封裝也隨附兩個命令列工具：
 
 - **bcp**： bcp 工具會在 Microsoft SQL Server 實例和使用者指定格式的資料檔案之間大量複製資料。 您可以使用 bcp 工具將大量新資料列匯入 SQL Server 資料表中，或是將資料表的資料匯出成資料檔案。 若要將資料匯入資料表中，您必須使用為該資料表建立的格式檔案。 或者，您必須了解資料表的結構，以及適用於其資料行的資料類型。
 
-  如需詳細資訊，請參閱[使用 Bcp 連接](https://msdn.microsoft.com/library/hh568446.aspx)。
+  如需詳細資訊，請參閱 [使用 bcp 進行連接](https://msdn.microsoft.com/library/hh568446.aspx)。
 
 - **sqlcmd**：您可以使用 sqlcmd 工具輸入 transact-sql 語句。 您也可以在命令提示字元中輸入系統程序和指令檔。 此工具會使用 ODBC 執行 Transact-SQL 批次。
 
@@ -229,10 +229,10 @@ SQL Server 的 ODBC 驅動程式封裝也隨附兩個命令列工具：
 VM 上安裝了下列 Azure 工具：
 
 * **Azure CLI**：您可以在 azure 中使用命令列介面，透過 shell 命令來建立和管理 azure 資源。 若要開啟 Azure Tools，請輸入 **azure help**。 如需詳細資訊，請參閱 [Azure CLI 文件頁面](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。
-* **Azure 儲存體總管**： Azure 儲存體總管是一種圖形化工具，可讓您用來流覽已儲存在 azure 儲存體帳戶中的物件，以及上傳和下載 azure blob 的資料。 您可以從桌面捷徑圖示存取儲存體總管。 您也可以輸入 **StorageExplorer**，從殼層提示字元加以開啟。 您必須從 X2Go 用戶端登入，或是已設定 X11 轉寄。
-* **Azure 程式庫**：以下是一些預先安裝的程式庫。
+* **Azure 儲存體總管**： Azure 儲存體總管是一種圖形化工具，可用來流覽您儲存在 azure 儲存體帳戶中的物件，以及上傳及下載 azure blob 的資料。 您可以從桌面捷徑圖示存取儲存體總管。 您也可以輸入 **StorageExplorer**，從殼層提示字元加以開啟。 您必須從 X2Go 用戶端登入，或是已設定 X11 轉寄。
+* **Azure 程式庫**：下列是一些預先安裝的程式庫。
   
-  * **Python**： python 中的 azure 相關連結庫為*azure*、 *azureml*、 *pydocumentdb*和*pyodbc*。 透過前三個程式庫，您可以存取 Azure 儲存體服務、Azure Machine Learning 和 Azure Cosmos DB (Azure 上的 NoSQL 資料庫)。 第四個程式庫 pyodbc (以及 Microsoft ODBC Driver for SQL Server) 可讓您使用 ODBC 介面，從 Python 中存取 SQL Server、Azure SQL Database 和 Azure SQL 資料倉儲。 輸入 **pip list** 以查看所有列出的程式庫。 請務必在 Python 2.7 和 3.5 的環境中執行此命令。
+  * **Python**： python 中的 azure 相關連結庫為 *azure*、 *azureml*、 *pydocumentdb*和 *pyodbc*。 透過前三個程式庫，您可以存取 Azure 儲存體服務、Azure Machine Learning 和 Azure Cosmos DB (Azure 上的 NoSQL 資料庫)。 第四個程式庫 pyodbc (以及 Microsoft ODBC Driver for SQL Server) 可讓您使用 ODBC 介面，從 Python 中存取 SQL Server、Azure SQL Database 和 Azure SQL 資料倉儲。 輸入 **pip list** 以查看所有列出的程式庫。 請務必在 Python 2.7 和 3.5 的環境中執行此命令。
   * **R**： r 中的 Azure 相關連結庫為 AZUREML 和 RODBC。
   * **Java**︰Azure Java 程式庫清單位於 VM 上的 /dsvm/sdk/AzureSDKJava 目錄中。 關鍵的程式庫為 Azure 儲存體和管理 API、Azure Cosmos DB 和 JDBC Driver for SQL Server。  
 
@@ -242,27 +242,25 @@ VM 上安裝了下列 Azure 工具：
 
 Azure Machine Learning 是完全受控的雲端服務，讓您能夠建置、部署及共用預測性分析解決方案。 您可以在 Azure Machine Learning studio (preview) 中建立您的實驗和模型。 您可以瀏覽 [Microsoft Azure Machine Learning](https://ml.azure.com)，從資料科學虛擬機器上的網頁瀏覽器加以存取。
 
-登入 Azure Machine Learning studio 之後，您可以使用實驗畫布來建立機器學習演算法的邏輯流程。 您也可以存取裝載于 Azure Machine Learning 的 Jupyter 筆記本，並可順暢地與 Azure Machine Learning studio 中的實驗搭配使用。 
+登入 Azure Machine Learning studio 之後，您可以使用實驗畫布來建立機器學習演算法的邏輯流程。 您也可以存取裝載于 Azure Machine Learning 上的 Jupyter 筆記本，並可與 Azure Machine Learning studio 中的實驗緊密搭配運作。 
 
 讓您建置的機器學習模型能夠運作，方法是將它們包裝在 Web 服務介面中。 讓機器學習模型能夠運作，使用任何語言撰寫的用戶端就能夠從這些模型叫用預測。 如需詳細資訊，請參閱 [機器學習文件](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
 您可以也在 VM 上以 R 或 Python 建置模型，然後將其部署在 Azure Machine Learning 的生產環境中。 我們已安裝 R (**AzureML**) 和 Python (**azureml**) 的程式庫來啟用這項功能。
-
-如需如何將 R 和 Python 的模型部署到 Azure Machine Learning 的相關資訊，請參閱[您可以在資料科學虛擬機器上做的十件事](vm-do-ten-things.md)。
 
 > [!NOTE]
 > 這些指示是針對 Windows 版的資料科學虛擬機器而撰寫的。 但所提供關於將模型部署到 Azure Machine Learning 的資訊也適用於 Linux VM。
 
 ## <a name="machine-learning-tools"></a>機器學習工具
 
-VM 隨附已預先編譯且預先安裝在本機上的機器學習工具和演算法。 其中包括：
+VM 隨附已預先編譯且預先安裝在本機上的機器學習工具和演算法。 它們包括：
 
 * **Vowpal Wabbit**：快速線上學習演算法。
 * **xgboost**：提供最佳化推進式決策樹演算法的工具。
 * **Rattle**：以 R 為基礎的圖形化工具，可輕鬆地進行資料瀏覽和模組化。
 * **Python**：Anaconda Python 會與含有像是 Scikit-learn 的程式庫的機器學習演算法進行配套。 您可以使用 `pip install` 程式庫。
 * **LightGBM**︰以決策樹演算法為基礎的一種快速、分散式的高效能漸層提升架構。
-* **R**：有豐富的機器學習功能程式庫可供 R 使用。預先安裝的程式庫包括 lm、Glm、randomForest 和 rpart。 您可以執行下列命令來安裝其他程式庫：
+* **R**：有豐富的機器學習函式程式庫可供 R 使用。預先安裝的程式庫包括 lm、Glm、randomForest 和 rpart。 您可以執行下列命令來安裝其他程式庫：
 
     ```r
     install.packages(<lib name>)
@@ -334,18 +332,18 @@ rattle()
 
 1. 選取 [執行] 。
 1. 此時會出現一個對話方塊，詢問您是否要使用範例天氣資料集。 請選取 [是]**** 以載入範例。
-1. 選取 [**模型**] 索引標籤。
+1. 選取 [ **模型** ] 索引標籤。
 1. 選取 [執行]**** 以建置決策樹。
 1. 選取 [繪圖]**** 以顯示決策樹。
 1. 選取 [樹系]**** 選項，然後選取 [執行]**** 以建置隨機樹系。
 1. 選取 [評估]**** 索引標籤。
 1. 選取 [風險]**** 選項，然後選取 [執行]**** 以顯示兩個 [風險 (累積)]**** 效能繪圖。
 1. 選取 [記錄]**** 索引標籤，以顯示針對先前的作業產生的 R 程式碼。
-    (在目前版本的 Rattle 中，因為有 bug，所以您必須在 [ **#** 將**此記錄檔匯出**到記錄檔] 的前面插入一個字元。 ) 
+    (由於 Rattle 的目前版本有錯誤，因此您必須在記錄檔的文字中插入字元，然後將此記錄檔放在 [ **#** **匯出此記錄** 檔] 的前面。 ) 
 1. 選取 [匯出]**** 按鈕，將名為 weather_script.R** 的 R 指令檔儲存到主資料夾。
 
 您可以結束 Rattle 和 R。現在，您可以修改產生的 R 指令碼。 或者，您可以照原樣使用，並且隨時執行，以便重複執行在 Rattle UI 中完成的所有動作。 這是特別適合 R 初學者的方法，他們將可在簡單的圖形化介面中快速進行分析和機器學習，同時自動產生 R 程式碼來修改或學習。
 
 ## <a name="next-steps"></a>後續步驟
 
-仍有其他問題嗎？ 請考慮建立[支援票證](https://azure.microsoft.com/support/create-ticket/)。
+仍有其他問題嗎？ 請考慮建立 [支援票證](https://azure.microsoft.com/support/create-ticket/)。

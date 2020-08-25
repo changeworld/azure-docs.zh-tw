@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: bdce311efbe7e41e09a3be76562c6be752a4b5c1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 79bf5f0d6b7e3fa4735d94c7b26c1736ab25113e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606115"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816995"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>建立 Dynamics 365 for Operations 供應項目
 
@@ -21,11 +21,11 @@ ms.locfileid: "88606115"
 開始之前，請先[在合作夥伴中心建立商業市集帳戶](create-account.md) (如果您尚未有帳戶)。 請確定您已在商業市集計畫中註冊帳戶。
 
 >[!NOTE]
-> 發佈供應項目後，在合作夥伴中心對供應項目所做的編輯只會在重新發佈後於系統和店面中更新。 請於進行變更之後，確認您提交至發行集的供應項目。
+> 發佈供應專案之後，只有在您重新提交供應專案以供發行時，才會在合作夥伴中心和線上商店更新供應專案的編輯。
 
 ## <a name="create-a-new-offer"></a>建立新的供應項目
 
-1. 登入[ [合作夥伴中心]](https://partner.microsoft.com/dashboard/home)。
+1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
 2. 在左側導覽功能表中，選取 **[商業市集]**  >  [概觀]。
 3. 在 [概觀] 頁面上，選取 **[+ 新增供應項目]**  >  **[Dynamics 365 for operations]** 。
 
@@ -67,7 +67,7 @@ ms.locfileid: "88606115"
 
 #### <a name="contact-me"></a>與我連絡
 
-透過連接客戶關係管理 (CRM)系統收集客戶連絡人資訊。 系統會要求客戶提供權限，以分享客戶資訊。 這些客戶詳細資料，連同他們在您的供應項目中找到的供應項目名稱、識別碼和市集來源，都會傳送至您所設定的 CRM 系統。 如需設定 CRM 的詳細資訊，請參閱[潛在客戶管理](#customer-leads)一節。
+透過連接客戶關係管理 (CRM) 系統收集客戶連絡人資訊。 系統會要求客戶提供權限，以分享客戶資訊。 這些客戶詳細資料，連同他們在您的供應項目中找到的供應項目名稱、識別碼和市集來源，都會傳送至您所設定的 CRM 系統。 如需設定 CRM 的詳細資訊，請參閱[潛在客戶管理](#customer-leads)一節。
 
 ### <a name="test-drive"></a>試用產品
 
@@ -193,12 +193,16 @@ ms.locfileid: "88606115"
 
 #### <a name="store-logos"></a>儲存標誌
 
-提供兩個像素大小的供應項目標誌：
+提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將會使用此來建立 **小型** 標誌。 您可以選擇性地將此取代為不同的映射。
 
-- **小型** (48 x 48)
-- **大型** (216 x 216)
+- 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+- **Small** (48 x 48 px，選擇性) 
+
+這些標誌可用於清單中的不同位置：
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 

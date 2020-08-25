@@ -1,22 +1,22 @@
 ---
-title: Azure CLI-使用 SSE 受控磁片啟用客戶管理的金鑰
+title: Azure CLI-使用 SSE 管理的磁片來啟用客戶管理的金鑰
 description: 使用 Azure CLI，在您的受控磁片上啟用客戶管理的金鑰。
 author: roygara
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: cd1855a4ce2d394559db28448d9f1c9a01b4bd08
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 2acc95190454de2ffdd81a05a6e6cf166a9a6549
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235882"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814124"
 ---
-# <a name="azure-cli---enable-customer-managed-keys-with-server-side-encryption---managed-disks"></a>Azure CLI-使用伺服器端加密管理的磁片來啟用客戶管理的金鑰
+# <a name="use-the-azure-cli-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>使用 Azure CLI 針對受控磁片使用客戶管理的金鑰啟用伺服器端加密
 
-Azure 磁碟儲存體可讓您在使用伺服器端加密時管理您自己的金鑰， (適用于受控磁片的 SSE) （如果您選擇的話）。 如需搭配客戶管理的金鑰和其他受控磁片加密類型之 SSE 的概念資訊，請參閱磁片加密一文中的[客戶管理的金鑰](disk-encryption.md#customer-managed-keys)一節。
+如果您選擇，Azure 磁碟儲存體可讓您在使用伺服器端加密 (SSE) 的受控磁片時，管理您自己的金鑰。 如需使用客戶管理的金鑰和其他受控磁片加密類型之 SSE 的概念資訊，請參閱磁片加密文章中的 [客戶管理的金鑰](disk-encryption.md#customer-managed-keys) 一節。
 
 ## <a name="restrictions"></a>限制
 
@@ -32,7 +32,7 @@ Azure 磁碟儲存體可讓您在使用伺服器端加密時管理您自己的�
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault](../../../includes/virtual-machines-disks-encryption-create-key-vault-cli.md)]
 
-既然您已建立並設定這些資源，您可以使用它們來保護您的受控磁片。 下列連結包含範例腳本，每個都有個別的案例，可讓您用來保護受控磁片。
+現在您已建立並設定這些資源，您可以使用它們來保護受控磁片。 下列連結包含範例腳本，每個都有各自的案例，可讓您用來保護您的受控磁片。
 
 ## <a name="examples"></a>範例
 
@@ -123,7 +123,7 @@ az disk-encryption-set update -n keyrotationdes -g keyrotationtesting --key-url 
 [!INCLUDE [virtual-machines-disks-encryption-status-cli](../../../includes/virtual-machines-disks-encryption-status-cli.md)]
 
 > [!IMPORTANT]
-> 客戶管理的金鑰須依賴 Azure 資源的受控識別 (Azure Active Directory (Azure AD) 的一項功能)。 當您設定客戶管理的金鑰時，受控識別會在幕後自動指派給您的資源。 如果您之後將訂用帳戶、資源群組或受控磁片從一個 Azure AD 目錄移到另一個，則與受控磁片相關聯的受控識別不會傳輸至新的租使用者，因此客戶管理的金鑰可能無法再使用。 如需詳細資訊，請參閱[在 Azure AD 目錄之間移轉訂用帳戶](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
+> 客戶管理的金鑰須依賴 Azure 資源的受控識別 (Azure Active Directory (Azure AD) 的一項功能)。 當您設定客戶管理的金鑰時，受控識別會在幕後自動指派給您的資源。 如果您之後將訂用帳戶、資源群組或受控磁片從一個 Azure AD 目錄移至另一個目錄，與受控磁片相關聯的受控身分識別不會傳送至新的租使用者，因此客戶管理的金鑰可能無法再運作。 如需詳細資訊，請參閱[在 Azure AD 目錄之間移轉訂用帳戶](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
 
 ## <a name="next-steps"></a>後續步驟
 

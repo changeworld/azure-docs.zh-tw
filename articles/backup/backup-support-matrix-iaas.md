@@ -4,12 +4,12 @@ description: 摘要說明使用 Azure 備份服務來備份 Azure VM 時的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 66c712eca86b01c5815638c9ea58042580791ea6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f0783d937178c88265c33c8b7339f71520506fc5
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685471"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816111"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
 
@@ -149,7 +149,7 @@ VM 大小 |至少有 2 個 CPU 核心和 1 GB RAM 的任何 Azure VM 大小。<b
 還原區域固定的 VM | 支援 (適用於在 2019 年 1 月之後備份的 VM，以及支援[可用性區域](https://azure.microsoft.com/global-infrastructure/availability-zones/)的 VM)。<br/><br/>目前支援還原至固定在 VM 中的相同區域。 不過，如果該區域不受支援，則還原會失敗。
 第 2 代 VM | 支援 <br> Azure 備份支援[第 2 代 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) 的備份和還原。 當這些 Vm 從復原點還原時，就會還原為 [Gen2 vm](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)。
 使用鎖定備份 Azure Vm | 未受管理的 Vm 不支援。 <br><br> 受管理的 Vm 支援。
-[Spot VM](../virtual-machines/windows/spot-vms.md) | 不支援。 Azure 備份將現成的 Vm 還原為一般的 Azure Vm。
+[Spot VM](../virtual-machines/spot-vms.md) | 不支援。 Azure 備份將現成的 Vm 還原為一般的 Azure Vm。
 
 ## <a name="vm-storage-support"></a>VM 儲存體支援
 
