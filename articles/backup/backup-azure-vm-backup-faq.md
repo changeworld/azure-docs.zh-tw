@@ -4,12 +4,12 @@ description: 在本文中，探索使用 Azure 備份服務備份 Azure Vm 的�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 03e2f004fa54ee235eabc49afd6abd7532a6ee44
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: b29f1a11f6600f013fdf1d5aa71883ab44dfe635
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262767"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761503"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
@@ -23,7 +23,7 @@ ms.locfileid: "88262767"
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>VM 成本中是否包含備份成本？
 
-否。 備份成本與 VM 的成本分開。 深入瞭解 [Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
+不會。 備份成本與 VM 的成本分開。 深入瞭解 [Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
 
 ### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>啟用 VM 備份需要哪些許可權？
 
@@ -43,7 +43,7 @@ ms.locfileid: "88262767"
 
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>隨選備份作業是否會使用與排定備份相同的保留排程？
 
-否。 指定隨選備份作業的保留範圍。 根據預設，若從入口網站觸發，則會保留 30 天。
+不會。 指定隨選備份作業的保留範圍。 根據預設，若從入口網站觸發，則會保留 30 天。
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我在最近一些 VM 上啟用了 Azure 磁碟加密。 我的備份是否會繼續運作？
 
@@ -195,8 +195,8 @@ VM 會使用已修改或新的原則中的排程和保留期設定來備份。
 
 ### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>如何查看我的備份的保留設定？
 
-目前，您可以根據指派給 VM 的備份原則，在 (VM) 層級的備份專案上，查看保留設定。 
+目前，您可以根據指派給 VM 的備份原則，在 (VM) 層級的備份專案上，查看保留設定。
 
 若要查看備份的保留設定，其中一種方式是在 Azure 入口網站中流覽至 VM 的 [備份專案] [儀表板](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) 。 按一下其備份原則的連結，可協助您查看與 VM 相關聯的每日、每週、每月和每年保留點的保留期間。
 
-您也可以使用 [Backup Explorer](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) 來查看單一窗格內所有 vm 的保留設定。 從任何復原服務保存庫流覽至 Backup Explorer，移至 [ **備份專案** ] 索引標籤，然後選取 [Advanced View] 以查看每個 VM 的詳細保留資訊。  
+您也可以使用 [Backup Explorer](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) 來查看單一窗格內所有 vm 的保留設定。 從任何復原服務保存庫流覽至 Backup Explorer，移至 [ **備份專案** ] 索引標籤，然後選取 [Advanced View] 以查看每個 VM 的詳細保留資訊。

@@ -134,8 +134,10 @@
           href: load-balancer-troubleshoot.md
         - name: 針對一般部署錯誤進行疑難排解
           href: load-balancer-common-deployment-errors.md
-        - name: 解決常見的輸出連線問題
+        - name: 針對常見的輸出連線問題進行疑難排解
           href: troubleshoot-outbound-connection.md
+        - name: 針對資源健康狀態和輸入可用性問題進行疑難排解
+          href: troubleshoot-rhc.md
 - name: 參考
   items:
     - name: 程式碼範例

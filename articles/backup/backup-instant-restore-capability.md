@@ -4,12 +4,12 @@ description: Azure 立即還原功能和 VM 備份堆疊、Azure Resource Manage
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: bb9a7a32306fc76ea8852787601f3b3b3828daf8
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: df5af780730f4f5b972107f50387dc0c58b80eaa
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611800"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761741"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>透過 Azure 備份的立即還原功能取得改良的備份和還原效能
 
@@ -115,4 +115,3 @@ Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>我不需要立即還原功能。 可以停用嗎？
 
 每個人都會啟用「立即還原」功能，且無法停用。 您可以將快照集保留降至最少一天。
-

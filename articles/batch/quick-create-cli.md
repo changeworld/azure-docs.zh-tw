@@ -1,35 +1,39 @@
 ---
-title: Azure 快速入門 - 執行 Batch 作業 - CLI
-description: 快速了解如何使用 Azure CLI 執行 Batch 作業。 從命令列或在指令碼中建立和管理 Azure 資源。
+title: 快速入門 - 使用 Azure CLI 執行您的第一個 Batch 作業
+description: 快速了解如何使用 Azure CLI 建立 Batch 帳戶並執行 batch 工作。
 ms.topic: quickstart
-ms.date: 07/03/2018
+ms.date: 08/13/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4c56695180f8f07384f31b750cec03f9d14fb9da
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8824d4485167955dd1b928bc57381b2e6b672c5d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504155"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213105"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>快速入門：使用 Azure CLI 執行您的第一個 Batch 作業
 
-Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 本快速入門示範如何使用 Azure CLI 建立 Batch 帳戶、計算節點 (虛擬機器) 的「集區」，以及在集區上執行「工作」的「作業」。 每個範例工作都會在其中一個集區節點上執行基本命令。 完成本快速入門之後，您將了解 Batch 服務的重要概念，並可準備使用更多真實的工作負載來大規模試用 Batch。
+使用 Azure CLI 開始使用 Azure Batch，以建立 Batch 帳戶、計算節點 (虛擬機器) 集區，以及在集區上執行工作的作業。 每個範例工作都會在其中一個集區節點上執行基本命令。
 
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 完成本快速入門之後，您將了解 Batch 服務的重要概念，並可準備使用更多真實的工作負載來大規模試用 Batch。
+
+## <a name="prerequisites"></a>必要條件
+
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+- 如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.20 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.20 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
-
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 
+使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-下列範例會在 eastus2 位置建立名為 myResourceGroup 的資源群組。
+下列範例會在 eastus2 位置建立名為 QuickstartBatch-rg 的資源群組。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create \
-    --name myResourceGroup \
+    --name QuickstartBatch-rg \
     --location eastus2
 ```
 
@@ -39,7 +43,7 @@ az group create \
 
 ```azurecli-interactive
 az storage account create \
-    --resource-group myResourceGroup \
+    --resource-group QuickstartBatch-rg \
     --name mystorageaccount \
     --location eastus2 \
     --sku Standard_LRS
@@ -49,22 +53,22 @@ az storage account create \
 
 使用 [az batch account create](/cli/azure/batch/account#az-batch-account-create) 命令建立 Batch 帳戶。 您需有帳戶才能建立計算資源 (運算節點的集區) 和 Batch 作業。
 
-下列範例會在 myResourceGroup 中建立名為 mybatchaccount 的 Batch 帳戶，並連結您所建立的儲存體帳戶。  
+下列範例會在 QuickstartBatch-rg 中建立名為 mybatchaccountt 的 Batch 帳戶，並連結您所建立的儲存體帳戶。  
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch account create \
     --name mybatchaccount \
     --storage-account mystorageaccount \
-    --resource-group myResourceGroup \
+    --resource-group QuickstartBatch-rg \
     --location eastus2
 ```
 
 若要建立及管理計算集區和作業，您需要向 Batch 進行驗證。 使用 [az batch account login](/cli/azure/batch/account#az-batch-account-login) 命令登入帳戶。 登入之後，`az batch` 命令會使用此帳戶內容。
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch account login \
     --name mybatchaccount \
-    --resource-group myResourceGroup \
+    --resource-group QuickstartBatch-rg \
     --shared-key-auth
 ```
 
@@ -77,7 +81,7 @@ az batch pool create \
     --id mypool --vm-size Standard_A1_v2 \
     --target-dedicated-nodes 2 \
     --image canonical:ubuntuserver:16.04-LTS \
-    --node-agent-sku-id "batch.node.ubuntu 16.04" 
+    --node-agent-sku-id "batch.node.ubuntu 16.04"
 ```
 
 Batch 會立即建立集區，但需花費數分鐘的時間來配置和啟動計算節點。 在這段期間，集區處於 `resizing` 狀態。 若要查看集區的狀態，請執行 [az batch pool show](/cli/azure/batch/pool#az-batch-pool-show) 命令。 此命令會顯示集區的所有屬性，而且您可以查詢特定屬性。 下列命令可取得集區的配置狀態：
@@ -87,13 +91,13 @@ az batch pool show --pool-id mypool \
     --query "allocationState"
 ```
 
-繼續執行下列步驟以建立一個作業和數項工作，然而集區狀態一直在改變。 當配置狀態為 `steady` 且所有節點正在執行時，集區已準備好執行工作。 
+繼續執行下列步驟以建立一個作業和數項工作，然而集區狀態一直在改變。 當配置狀態為 `steady` 且所有節點正在執行時，集區已準備好執行工作。
 
 ## <a name="create-a-job"></a>建立作業
 
-既然您有集區，請建立要在其中執行的作業。  Batch 作業是一或多項工作的邏輯群組。 作業包含工作通用的設定，例如優先順序以及要執行工作的集區。 使用 [az batch job create](/cli/azure/batch/job#az-batch-job-create) 命令建立 Batch 作業。 下列範例會在 mypool 集區上建立 myjob 作業。 一開始作業沒有任何工作。
+既然您有集區，請建立要在其中執行的作業。 Batch 作業是一或多項工作的邏輯群組。 作業包含工作通用的設定，例如優先順序以及要執行工作的集區。 使用 [az batch job create](/cli/azure/batch/job#az-batch-job-create) 命令建立 Batch 作業。 下列範例會在 mypool 集區上建立 myjob 作業。 一開始作業沒有任何工作。
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch job create \
     --id myjob \
     --pool-id mypool
@@ -105,7 +109,7 @@ az batch job create \
 
 下列 Bash 指令碼會建立 4 個平行工作 (mytask1 至 mytask4)。
 
-```azurecli-interactive 
+```azurecli-interactive
 for i in {1..4}
 do
    az batch task create \
@@ -123,7 +127,7 @@ done
 
 使用 [az batch task show](/cli/azure/batch/task#az-batch-task-show) 命令來檢視 Batch 工作的狀態。 下列範例顯示其中一個集區節點上執行的 mytask1 詳細資料。
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch task show \
     --job-id myjob \
     --task-id mytask1
@@ -133,9 +137,9 @@ az batch task show \
 
 ## <a name="view-task-output"></a>檢視工作輸出
 
-若要列出計算節點上某個工作所建立的檔案，請使用 [az batch task file list](/cli/azure/batch/task) 命令。 下列命令會列出 mytask1 所建立的檔案： 
+若要列出計算節點上某個工作所建立的檔案，請使用 [az batch task file list](/cli/azure/batch/task) 命令。 下列命令會列出 mytask1 所建立的檔案：
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch task file list \
     --job-id myjob \
     --task-id mytask1 \
@@ -154,7 +158,7 @@ stderr.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/myta
 
 ```
 
-若要將其中一個輸出檔案下載到本機目錄，請使用 [az batch task file download](/cli/azure/batch/task) 命令。 在此範例中，工作輸出位於 `stdout.txt` 中。 
+若要將其中一個輸出檔案下載到本機目錄，請使用 [az batch task file download](/cli/azure/batch/task) 命令。 在此範例中，工作輸出位於 `stdout.txt` 中。
 
 ```azurecli-interactive
 az batch task file download \
@@ -183,10 +187,12 @@ AZ_BATCH_TASK_ID=mytask1
 AZ_BATCH_ACCOUNT_NAME=mybatchaccount
 AZ_BATCH_TASK_USER_IDENTITY=PoolNonAdmin
 ```
+
 ## <a name="clean-up-resources"></a>清除資源
+
 如果您想要繼續執行 Batch 教學課程和範例，請使用本快速入門中建立的 Batch 帳戶和連結的儲存體帳戶。 Batch 帳戶本身不收費。
 
-即使沒有排定的作業，您仍需支付節點執行時的集區費用。 當您不再需要集區時，請使用 [az batch pool delete](/cli/azure/batch/pool#az-batch-pool-delete) 命令加以刪除。 當您刪除集區時，節點上的所有工作輸出也會跟著刪除。 
+即使沒有排定的作業，您仍需支付節點執行時的集區費用。 當您不再需要集區時，請使用 [az batch pool delete](/cli/azure/batch/pool#az-batch-pool-delete) 命令加以刪除。 當您刪除集區時，節點上的所有工作輸出也會跟著刪除。
 
 ```azurecli-interactive
 az batch pool delete --pool-id mypool
@@ -194,14 +200,13 @@ az batch pool delete --pool-id mypool
 
 若不再需要，您可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令將資源群組、Batch 帳戶、集區和所有相關資源移除。 刪除資源，如下所示：
 
-```azurecli-interactive 
-az group delete --name myResourceGroup
+```azurecli-interactive
+az group delete --name QuickstartBatch-rg
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您建立了 Batch 帳戶、Batch 集區和 Batch 作業。 此作業執行了範例工作，而您檢視了在其中一個節點上建立的輸出。 您既然了解 Batch 服務的重要概念，即可準備使用更多真實的工作負載來大規模試用 Batch。 若要深入了解 Azure Batch，請繼續進行 Azure Batch 教學課程。 
-
+在本快速入門中，您建立了 Batch 帳戶、Batch 集區和 Batch 作業。 此作業執行了範例工作，而您檢視了在其中一個節點上建立的輸出。 您既然了解 Batch 服務的重要概念，即可準備使用更多真實的工作負載來大規模試用 Batch。 若要深入了解 Azure Batch，請繼續進行 Azure Batch 教學課程。
 
 > [!div class="nextstepaction"]
 > [Azure Batch 教學課程](./tutorial-parallel-dotnet.md)

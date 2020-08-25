@@ -1,5 +1,5 @@
 ---
-title: 使用 C++ 連線 - 適用於 MySQL 的 Azure 資料庫
+title: 快速入門：使用 C++ 連線 - 適用於 MySQL 的 Azure 資料庫
 description: 本快速入門提供 C++ 程式碼範例，您可用於從 Azure Database for MySQL 連線及查詢資料。
 author: ajlam
 ms.author: andrela
@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: a8c922912cae72e1b4344d4d970ec9f3b4949d9f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 6aa550a9c3f58fc7101e632bcd56800b27efc84e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871503"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185973"
 ---
-# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>適用於 MySQL 的 Azure 資料庫：使用連接器/C++ 連線並查詢資料
+# <a name="quickstart-use-connectorc-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 Connector/C++ 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
+
 本快速入門示範如何使用 C++ 應用程式來連線到適用於 MySQL 的 Azure 資料庫。 它會顯示如何使用 SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。 本主題假設您已熟悉使用 C++ 進行開發，但不熟悉適用於 MySQL 的 Azure 資料庫。
 
 ## <a name="prerequisites"></a>Prerequisites
+
 本快速入門使用在以下任一指南中建立的資源作為起點：
 - [使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-cli.md)

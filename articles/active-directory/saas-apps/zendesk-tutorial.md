@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Zendesk 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Zendesk 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 9d7c91e5-78f5-4016-862f-0f3242b00680
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 08/13/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f70e7067a78b439d3dcaf0b83460296cad7b4485
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: c7d452803d15bab77df8e85a861de914a5ed08d5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585809"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546051"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Zendesk 整合
 
@@ -143,13 +139,21 @@ ms.locfileid: "80585809"
 
 ## <a name="configure-zendesk-sso"></a>設定 Zendesk SSO
 
+1. 若要自動執行 **Zendesk** 內的設定，您必須按一下 [安裝延伸模組] 來安裝**我的應用程式安全登入瀏覽器延伸模組**。
+
+    ![image](./media/target-process-tutorial/install_extension.png)
+
+1. 將延伸模組新增至瀏覽器之後，按一下 [安裝 Zendesk] 便會將您導向到 Zendesk 應用程式。 請從該處提供用以登入 Zendesk 的管理員認證。 瀏覽器擴充功能會自動為您設定應用程式，並自動執行步驟 3 到 6。
+
+    ![設定組態](common/setup-sso.png)
+
 1. 如果您想要手動設定 Zendesk，請開啟新的網頁瀏覽器視窗，並以管理員身分登入 Zendesk 公司網站，然後執行下列步驟：
 
-2. 按一下 Admin  。
+1. 按一下 Admin  。
 
-3. 在左側導覽窗格中按一下 [設定]  ，然後按一下 [安全性]  。
+1. 在左側導覽窗格中按一下 [設定]  ，然後按一下 [安全性]  。
 
-4. 在 [安全性]  頁面上執行下列步驟：
+1. 在 [安全性]  頁面上執行下列步驟：
 
     ![安全性](./media/zendesk-tutorial/ic773089.png "安全性")
 

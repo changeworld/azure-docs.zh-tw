@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Yodeck 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Yodeck 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b2c8dccb-eeb0-4f4d-a24d-8320631ce819
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: af0748f36e8d2299921f987c517f7a4923bd0d55
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8eed884ed9d957ede4ae9fc192ae5a8e501b652e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086483"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>教學課程：Azure Active Directory 與 Yodeck 整合
 
@@ -119,19 +115,29 @@ Yodeck 與 Azure AD 整合提供下列優點：
 
 ### <a name="configure-yodeck-single-sign-on"></a>設定 Yodeck 單一登入
 
+1. 若要自動執行 **Yodeck** 內的設定，您必須按一下 [安裝擴充功能] 來安裝**我的應用程式安全登入瀏覽器擴充功能**。
+
+    ![image](./media/target-process-tutorial/install_extension.png)
+
+1. 將擴充功能新增至瀏覽器之後，按一下 [設定 Yodeck] 便會將您導向到 Yodeck 應用程式。 請從該處提供用以登入 Yodeck 的管理員認證。 瀏覽器擴充功能會自動為您設定應用程式，並自動執行步驟 3 到 5。
+
+    ![設定組態](common/setup-sso.png)
+
+    **如果您想要手動設定應用程式，請執行下列步驟：**
+
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Yodeck 公司網站。
 
-2. 按一下頁面右上角的 [使用者設定]  選項，然後選取 [帳戶設定]  。
+1. 按一下頁面右上角的 [使用者設定]**** 選項，然後選取 [帳戶設定]****。
 
     ![Yodeck 設定](./media/yodeck-tutorial/configure1.png)
 
-3. 選取 [SAML]  並執行下列步驟：
+1. 選取 [SAML]**** 並執行下列步驟：
 
     ![Yodeck 設定](./media/yodeck-tutorial/configure2.png)
 
-    a. 選取 [從 URL 匯入]  。
+    a. 選取 [從 URL 匯入]****。
 
-    b. 在 [URL]  文字方塊中，貼上您從 Azure 入口網站複製的**應用程式同盟中繼資料 URL** 值，然後按一下 [匯入]  。
+    b. 在 [URL]**** 文字方塊中，貼上您從 Azure 入口網站複製的**應用程式同盟中繼資料 URL** 值，然後按一下 [匯入]****。
     
     c. 匯入**應用程式同盟中繼資料 URL** 之後，即會自動填入其餘欄位。
 
@@ -141,11 +147,11 @@ Yodeck 與 Azure AD 整合提供下列優點：
 
 本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
 
     ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]  。
+2. 在畫面頂端選取 [新增使用者]。
 
     ![[新增使用者] 按鈕](common/new-user.png)
 
@@ -153,27 +159,27 @@ Yodeck 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱]  欄位中，輸入 brittasimon@yourcompanydomain.extension。 例如， BrittaSimon@contoso.com
+    b. 在 [使用者名稱] 欄位中，輸入 brittasimon@yourcompanydomain.extension。 例如， BrittaSimon@contoso.com
 
-    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增]  。
+    d. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Yodeck 的存取權授與 Britta Simon，使其能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [Yodeck]  。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]****、[所有應用程式]**** 及 [Yodeck]****。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Yodeck]  。
+2. 在應用程式清單中，選取 [Yodeck]****。
 
     ![應用程式清單中的 Yodeck 連結](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]  。
+3. 在左側功能表中，選取 [使用者和群組]。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
@@ -181,11 +187,11 @@ Yodeck 與 Azure AD 整合提供下列優點：
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取]  按鈕。
+6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
 
-7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ### <a name="create-yodeck-test-user"></a>建立 Yodeck 測試使用者
 
@@ -195,27 +201,27 @@ Yodeck 與 Azure AD 整合提供下列優點：
 
 1. 以系統管理員身分登入您的 Yodeck 公司網站。
 
-2. 按一下頁面右上角的 [使用者設定]  選項，然後選取 [使用者]  。
+2. 按一下頁面右上角的 [使用者設定]**** 選項，然後選取 [使用者]****。
 
     ![新增員工](./media/yodeck-tutorial/user1.png)
 
-3. 按一下 [+使用者]  以開啟 [使用者詳細資料]  索引標籤。
+3. 按一下 [+使用者]**** 以開啟 [使用者詳細資料]**** 索引標籤。
 
     ![新增員工](./media/yodeck-tutorial/user2.png)
 
-4. 在 [使用者詳細資料]  對話頁面上，執行下列步驟：
+4. 在 [使用者詳細資料]**** 對話方塊頁面上，執行下列步驟：
 
     ![新增員工](./media/yodeck-tutorial/user3.png)
 
-    a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta**。
+    a. 在 [名字]**** 文字方塊中，輸入使用者的名字，例如 **Britta**。
 
-    b. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
+    b. 在 [姓氏]**** 文字方塊中，輸入使用者的姓氏，例如 **Simon**。
 
-    c. 在 [電子郵件]  文字方塊中，輸入像是 brittasimon@contoso.com 的使用者電子郵件地址。
+    c. 在 [電子郵件] 文字方塊中，輸入像是 brittasimon@contoso.com 的使用者電子郵件地址。
 
     d. 根據您的組織需求，選取適當的**帳戶權限**選項。
     
-    e. 按一下 [檔案]  。
+    e. 按一下 [檔案] 。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: fff032d37fa0746695736e0dbdde73c6bcaade4b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: a786baf70dfd9063c635fd27d43d198b3bd89bfb
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445673"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272122"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>教學課程：將遠端轉譯整合到 Hololens 全像攝影應用程式
 
@@ -99,11 +99,12 @@ if (context.As(&contextMultithread) == S_OK)
 #include <AzureRemoteRendering.h>
 ```
 
-...以及將此額外的 `include` 指示詞新增至 HolographicAppMain.cpp：
+...以及將這些額外的 `include` 指示詞新增至 HolographicAppMain.cpp 檔案：
 
 ```cpp
 #include <AzureRemoteRendering.inl>
 #include <RemoteRenderingExtensions.h>
+#include <windows.perception.spatial.h>
 ```
 
 為了簡化程式碼，我們會在HolographicAppMain.h 檔案的頂端定義下列命名空間 (在 `include` 指示詞之後)：
@@ -297,7 +298,7 @@ namespace HolographicApp
         bool m_modelLoadTriggered = false;
         float m_modelLoadingProgress = 0.f;
         bool m_modelLoadFinished = false;
-
+        bool m_needsCoordinateSystemUpdate = true;
     }
 ```
 
@@ -420,9 +421,13 @@ void HolographicAppMain::OnConnectionStatusChanged(RR::ConnectionStatus status, 
 
 ### <a name="per-frame-update"></a>個別畫面格更新
 
-我們必須針對每個模擬計時 (tick)，對用戶端計時一次。 類別 `HolographicApp1Main` 為每個畫面的更新，提供良好的勾點。 此外，我們還必須輪詢工作階段的狀態，確定是否已轉換為 `Ready` 狀態。 若連線成功，我們最後會透過 `StartModelLoading` 啟動模型載入。
+我們必須針對每個模擬刻度更新一次用戶端，並執行一些額外的狀態更新。 函式 `HolographicAppMain::Update` 為每個畫面的更新，提供良好的勾點。
 
-將下列程式碼新增到函式 `HolographicApp1Main::Update` 的主體：
+#### <a name="state-machine-update"></a>狀態機器更新
+
+我們必須輪詢工作階段的狀態，確定是否已轉換為 `Ready` 狀態。 若連線成功，我們最後會透過 `StartModelLoading` 啟動模型載入。
+
+將下列程式碼新增到函式 `HolographicAppMain::Update` 的主體：
 
 ```cpp
 // Updates the application state once per frame.
@@ -485,9 +490,57 @@ HolographicFrame HolographicAppMain::Update()
         }
     }
 
+    if (m_needsCoordinateSystemUpdate && m_stationaryReferenceFrame && m_graphicsBinding)
+    {
+        // Set the coordinate system once. This must be called again whenever the coordinate system changes.
+        winrt::com_ptr<ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem> ptr{ m_stationaryReferenceFrame.CoordinateSystem().as<ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem>() };
+        m_graphicsBinding->UpdateUserCoordinateSystem(ptr.get());
+        m_needsCoordinateSystemUpdate = false;
+    }
+
     // Rest of the body:
     ...
 }
+```
+
+#### <a name="coordinate-system-update"></a>座標系統更新
+
+我們必須同意座標系統上的轉譯服務，才能使用。 若要存取想使用的座標系統，則需要在函式 `HolographicAppMain::OnHolographicDisplayIsAvailableChanged` 結尾建立的 `m_stationaryReferenceFrame`。
+
+此座標系統通常不會變更，因此是單次性初始化作業。 如果您的應用程式變更座標系統，則必須再次呼叫。
+
+只要有參考座標系統和連線的工作階段，上述程式碼就會在 `Update` 函式中設定一次座標系統。
+
+#### <a name="camera-update"></a>相機更新
+
+我們需要更新相機裁剪平面，讓伺服器相機與本機相機保持同步。 我們可以在 `Update` 函式的結尾處執行此動作：
+
+```cpp
+    ...
+    if (m_isConnected)
+    {
+        // Any near/far plane values of your choosing.
+        constexpr float fNear = 0.1f;
+        constexpr float fFar = 10.0f;
+        for (HolographicCameraPose const& cameraPose : prediction.CameraPoses())
+        {
+            // Set near and far to the holographic camera as normal
+            cameraPose.HolographicCamera().SetNearPlaneDistance(fNear);
+            cameraPose.HolographicCamera().SetFarPlaneDistance(fFar);
+        }
+
+        // The API to inform the server always requires near < far. Depth buffer data will be converted locally to match what is set on the HolographicCamera.
+        auto settings = *m_api->CameraSettings();
+        settings->NearPlane(std::min(fNear, fFar));
+        settings->FarPlane(std::max(fNear, fFar));
+        settings->EnableDepth(true);
+    }
+
+    // The holographic frame will be used to get up-to-date view and projection matrices and
+    // to present the swap chain.
+    return holographicFrame;
+}
+
 ```
 
 ### <a name="rendering"></a>轉譯

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: fb8687c091e8c34ad1fbae2a50981327b3994b6e
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 9bd4c7f17ec1a75e54ca857325cdbb7bf3358511
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051949"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234698"
 ---
 # <a name="what-is-conditional-access"></a>何謂條件式存取？
 
@@ -38,7 +38,8 @@ ms.locfileid: "85051949"
 
 ![概念性的條件式存取流程](./media/overview/conditional-access-overview-how-it-works.png)
 
-完成第一個要素驗證之後，即會強制執行條件式存取原則。 條件式存取不適合作為組織面對拒絕服務 (DoS) 攻擊之類情節的第一道防線，但是可以利用來自這些事件的訊號來決定存取權。
+> [!IMPORTANT]
+> 完成第一個要素驗證後，即會強制執行條件式存取原則。 條件式存取不適合作為組織面對拒絕服務 (DoS) 攻擊之類情節的第一道防線，但是可以利用來自這些事件的訊號來決定存取權。
 
 ## <a name="common-signals"></a>一般訊號
 

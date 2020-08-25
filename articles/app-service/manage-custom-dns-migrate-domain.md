@@ -1,17 +1,17 @@
 ---
-title: 遷移 active DNS 名稱
+title: 遷移有效的 DNS 名稱
 description: 了解如何在完全不停機的情況下，將已指派給即時網站的自訂 DNS 網域名稱移轉至 Azure App Service。
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c1760c746aca439e19ab5727e5be02f6dbad3cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd11690f2a3597d6e1a835ad7ca9c5880117eeea
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535684"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782204"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>將作用中的 DNS 名稱移轉至 Azure App Service
 
@@ -29,35 +29,33 @@ ms.locfileid: "81535684"
 
 ## <a name="bind-the-domain-name-preemptively"></a>事先繫結網域名稱
 
-當您事先繫結自訂網域時，要完成下列兩項之後才能對 DNS 記錄進行任何變更︰
+當您系結自訂網域事先時，您可以在對現有 DNS 記錄進行任何變更之前完成下列兩項：
 
-- 驗證網域擁有權
+- 確認網域擁有權
 - 為您的應用程式啟用網域名稱
 
 當您最後將自訂 DNS 名稱從舊網站移轉至 App Service 應用程式時，DNS 解析不會發生停機。
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
+### <a name="get-domain-verification-id"></a>取得網域驗證識別碼
+
+遵循 [取得網域驗證識別碼](app-service-web-tutorial-custom-domain.md#get-domain-verification-id)中的步驟，取得您應用程式的網域驗證識別碼。
+
 ### <a name="create-domain-verification-record"></a>建立網域驗證記錄
 
-若要確認網域擁有權，請新增 TXT 記錄。 TXT 記錄會從 _awverify.&lt;子網域>_ 對應至 _&lt;應用程式名稱>.azurewebsites.net_。 
-
-您需要的 TXT 記錄取決於您要移轉的 DNS 記錄。 如需範例，請參閱下表 (`@` 通常代表根網域)：
+若要確認網域擁有權，請新增 TXT 記錄以進行網域驗證。 TXT 記錄的主機名稱取決於您要對應的 DNS 記錄類型類型。 請參閱下表 (`@` 通常代表根域) ：
 
 | DNS 記錄範例 | TXT 主機 | TXT 值 |
 | - | - | - |
-| \@ (root) | _awverify_ | _&lt;appname>. azurewebsites.net_ |
-| www (子網域) | _awverify.www_ | _&lt;appname>. azurewebsites.net_ |
-| \* (萬用字元) | _awverify.\*_ | _&lt;appname>. azurewebsites.net_ |
+| \@ (root) | _asuid_ | [應用程式的網域驗證識別碼](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
+| www (子網域) | _asuid www_ | [應用程式的網域驗證識別碼](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
+| \* (萬用字元) | _asuid_ | [應用程式的網域驗證識別碼](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
 
 在您的 DNS 記錄頁面中，記下您要移轉之 DNS 名稱的記錄類型。 App Service 支援 CNAME 與 A 記錄之間的對應。
 
 > [!NOTE]
-> 對於某些提供者，例如 CloudFlare，`awverify.*` 不是有效的記錄。 改為只用 `*`。
-
-> [!NOTE]
 > 萬用字元 `*` 記錄不會使用現有 CNAME 記錄驗證子網域。 您可能需要為每個子網域明確地建立 TXT 記錄。
-
 
 ### <a name="enable-the-domain-for-your-app"></a>為您的應用程式啟用網域
 
@@ -69,7 +67,7 @@ ms.locfileid: "81535684"
 
 ![新增主機名稱](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-鍵入您新增 TXT 記錄的完整網域名稱，例如 `www.contoso.com`。 針對萬用字元網域 (例如 \*.contoso.com)，您可以使用符合萬用字元網域的任何 DNS 名稱。 
+輸入您想要遷移的完整功能變數名稱，其對應至您所建立的 TXT 記錄，例如 `contoso.com` 、 `www.contoso.com` 或 `*.contoso.com` 。
 
 選取 [驗證]。
 
@@ -101,7 +99,7 @@ ms.locfileid: "81535684"
 
 選取右上角的 **X** 關閉 [新增主機名稱]**** 頁面。 
 
-在 [自訂網域]  頁面中，複製應用程式的 IP 位址。
+在 [自訂網域] 頁面中，複製應用程式的 IP 位址。
 
 ![入口網站瀏覽至 Azure 應用程式](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
@@ -114,22 +112,22 @@ ms.locfileid: "81535684"
 | FQDN 範例 | 記錄類型 | Host | 值 |
 | - | - | - | - |
 | contoso.com (根網域) | A | `@` | 來自[複製應用程式的 IP 位址](#info)的 IP 位址 |
-| www \. contoso.com （sub） | CNAME | `www` | _&lt;appname>. azurewebsites.net_ |
+| www \. contoso.com (子)  | CNAME | `www` | _&lt;appname>. azurewebsites.net_ |
 | \*.contoso.com (萬用字元) | CNAME | _\*_ | _&lt;appname>. azurewebsites.net_ |
 
 儲存您的設定。
 
 DNS 查詢應該會在 DNS 散佈發生後立即開始解析為 App Service 應用程式。
 
-## <a name="active-domain-in-azure"></a>Azure 中的 Active 網域
+## <a name="migrate-domain-from-another-app"></a>從另一個應用程式遷移網域
 
-您可以在 Azure 中的訂用帳戶之間，或在相同的訂用帳戶內遷移作用中的自訂網域。 不過，這類不需停機的遷移需要來源應用程式和目標應用程式在特定時間指派相同的自訂網域。 因此，您必須確定兩個應用程式不會部署到相同的部署單位（在內部稱為網路空間）。 功能變數名稱只能指派給每個部署單位中的一個應用程式。
+您可以在 Azure、訂用帳戶之間或相同訂用帳戶內遷移使用中的自訂網域。 不過，這類不需要停機的遷移需要來源應用程式和目標應用程式在特定時間被指派給相同的自訂網域。 因此，您必須確定這兩個應用程式不會部署到相同的部署單位 (在內部稱為網路空間) 。 功能變數名稱只能指派給每個部署單位中的一個應用程式。
 
-您可以藉由查看 FTP/S URL 的功能變數名稱，尋找應用程式的部署單位 `<deployment-unit>.ftp.azurewebsites.windows.net` 。 請檢查並確認來源應用程式與目標應用程式之間的部署單位不同。 應用程式的部署單位取決於其所在的[App Service 方案](overview-hosting-plans.md)。 當您建立方案時，Azure 會隨機選取它，而且無法變更。 只有當您[在相同的資源群組*和*相同的區域中建立](app-service-plan-manage.md#create-an-app-service-plan)兩個方案時，Azure 才會確保兩者在相同的部署單位中，但它不會有任何邏輯可確保方案處於不同的部署單位。 若要在不同的部署單位中建立計畫，唯一的方法是在您取得不同的部署單位之前，在新的資源群組或區域中繼續建立計畫。
+您可以查看 FTP/S URL 的功能變數名稱，找到應用程式的部署單位 `<deployment-unit>.ftp.azurewebsites.windows.net` 。 請檢查並確定來源應用程式和目標應用程式之間的部署單位不同。 應用程式的部署單位取決於它所在的 [App Service 方案](overview-hosting-plans.md) 。 當您建立方案時，Azure 會隨機選取它，而且無法變更。 Azure 只會在您于 [相同的資源群組 *和* 相同區域中建立](app-service-plan-manage.md#create-an-app-service-plan)兩個方案時，確保兩個方案都位於相同的部署單位，但它沒有任何邏輯可確保方案處於不同的部署單位。 在不同的部署單位中建立方案的唯一方式，是在您取得不同的部署單位之前，繼續在新的資源群組或區域中建立方案。
 
 ## <a name="next-steps"></a>後續步驟
 
 瞭解如何將自訂的 TLS/SSL 憑證系結至 App Service。
 
 > [!div class="nextstepaction"]
-> [在 Azure App Service 中使用 TLS 系結保護自訂 DNS 名稱](configure-ssl-bindings.md)
+> [使用 Azure App Service 中的 TLS 系結來保護自訂 DNS 名稱](configure-ssl-bindings.md)

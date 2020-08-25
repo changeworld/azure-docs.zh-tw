@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: f16df87ca72b66003d8870dcd9d778616ea840d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 550c9ff57b9c558f2f175165c7f06ead45991be9
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038540"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226002"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>快速入門：將 Azure 訂用帳戶上架到資訊安全中心的標準層
 Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和威脅防護。 免費層只為 Azure 資源提供有限的安全性，而標準層會將這些功能延伸至內部部署與其他雲端。 資訊安全中心的標準層可協助您尋找和修正安全性弱點、套用存取和應用程式控制項以封鎖惡意活動、使用分析和情報來偵測威脅，以及在遭受攻擊時迅速回應。 您可以免費試用資訊安全中心標準層。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
@@ -34,7 +34,8 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 ## <a name="enable-your-azure-subscription"></a>啟用您的 Azure 訂用帳戶
 
 1. 登入 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)。
-2. 在 [Microsoft Azure]  功能表中，選取 [資訊安全中心]  。 [資訊安全中心 - 概觀]  隨即開啟。
+
+1. 在 [Microsoft Azure]  功能表中，選取 [資訊安全中心]  。 [資訊安全中心 - 概觀]  隨即開啟。
 
    ![資訊安全中心概觀][2]
 
@@ -49,21 +50,25 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 
 若要充分利用資訊安全中心，您需要完成下列步驟，才能升級到標準層並安裝 Log Analytics 代理程式。
 
-## <a name="upgrade-to-the-standard-pricing-tier"></a>升級至標準定價層
+
+## <a name="upgrade-to-the-standard-tier"></a>升級至標準層
+
 基於資訊安全中心快速入門和教學課程的目的，您必須升級至標準層。 資訊安全中心標準層有免費試用。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。 
 
-1. 在 [資訊安全中心] 主功能表下，選取 [開始使用]  。
+1. 從資訊安全中心的側邊欄中，選取 [開始使用]。
  
-   ![開始使用][4]
+   ![開始使用](./media/security-center-get-started/get-started-upgrade-tab.png)
 
-2. 在 [升級]  下，資訊安全中心會列出符合上架資格的訂用帳戶和工作區。 
-   - 您可以按一下可擴展的 [適用試用版]  以查看所有訂用帳戶和工作區的清單與其試用版的資格狀態。
-   -    您可以將沒有資格使用試用版的訂用帳戶和工作區升級。
-   -    您可以選取符合資格的工作區和訂用帳戶來啟動試用版。
-3. 按一下 [啟動試用版]  來啟動所選訂用帳戶上的試用版。
+    **升級**索引標籤會列出符合上線資格的訂用帳戶和工作區。
+
+1. 從**選取工作區以啟用標準層**清單中，選取要升級的工作區。
 
 
-  ![安全性警示][9]
+    > [!TIP]
+    > 如果您選取符合免費試用的工作區，下一步就會開始試用。 如果工作區不符合試用資格，將會進行升級，並開始收費。
+
+1. 選取 [升級]，將選取的工作區升級為標準層。
+
 
 ## <a name="automate-data-collection"></a>自動收集資料
 資訊安全中心會從您的 Azure 虛擬機器和非 Azure 電腦收集資料，以監視安全性漏洞與威脅。 資料是使用 Log Analytics 代理程式收集而得，收集的方式是讀取機器的各種安全性相關組態和事件記錄，並將資料複製到工作區進行分析。 根據預設，資訊安全中心會為您建立新的工作區。
@@ -73,9 +78,9 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 啟用 Log Analytics 代理程式的自動佈建：
 
 1. 在 [資訊安全中心] 主功能表下，選取 [定價和設定]  。
-2. 在訂用帳戶的資料列上，按一下您想要變更設定的訂用帳戶。
-3. 在 [資料收集]  索引標籤中，將 [自動佈建]  設定為 [開啟]  。
-4. 選取 [儲存]  。
+1. 在訂用帳戶的資料列上，按一下您想要變更設定的訂用帳戶。
+1. 在 [資料收集]  索引標籤中，將 [自動佈建]  設定為 [開啟]  。
+1. 選取 [儲存]  。
 ---
   ![啟用自動佈建][6]
 

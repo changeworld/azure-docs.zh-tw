@@ -1,19 +1,17 @@
 ---
 title: Data Lake Analytics 近期變更項目
 description: 本文提供 Data Lake Analytics 近期變更項目清單。
-services: data-lake-analytics
 author: xujiang1
 ms.service: data-lake-analytics
-ms.devlang: na
 ms.topic: overview
 ms.author: xujiang1
 ms.date: 07/31/2020
-ms.openlocfilehash: e78389ffc06f1b4cd4e39c15ac66215d514e9bc1
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 6f4885594e4f67d91c595d8afdddc15e8ed4ae75
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476310"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263175"
 ---
 # <a name="whats-new-in-data-lake-analytics"></a>Data Lake Analytics 的新功能
 
@@ -35,14 +33,13 @@ Azure Data Lake U-SQL 執行階段 (包括編譯器、最佳化工具和作業�
 
 執行階段版本將會定期更新。 而先前的執行階段將會保留一段時間。 當新的搶鮮版 (Beta) 準備好推出預覽版本時，也會在該處提供。
 
-以下是目前可用的執行階段版本。
+> [!CAUTION]
+> - 選擇與預設值不同的執行階段可能會中斷您的 U-SQL 作業。 強烈建議不要將這些非預設版本用於生產環境，只建議供測試之用。
+> - 非預設的執行階段版本具有固定的生命週期， 且會自動過期。
 
-- release-20200124live_adl_16283022_2 --> **目前的預設版本**
-- release_20200124live_adl_16283022
-- release_20200124_adl_14480125
-- release_20190904_adl_10236248_1
-- release_20190904_adl_10236248
-- release_20190904_adl_9225818
+下列版本是目前的預設執行階段版本。
+
+- release-20200124live_adl_16283022_2
 
 若要了解如何針對 U-SQL 執行階段失敗進行疑難排解，請參閱 [U-SQL 執行階段失敗疑難排解](runtime-troubleshoot.md)。
 

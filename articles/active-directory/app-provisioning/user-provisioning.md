@@ -1,5 +1,5 @@
 ---
-title: 在 Azure AD 中自動化 SaaS 應用程式使用者佈建
+title: 什麼是在 Azure AD 中自動佈建 SaaS 應用程式使用者
 description: 簡介如何使用 Azure AD 自動佈建、解除佈建，以及跨多個協力廠商 SaaS 應用程式持續更新使用者帳戶。
 services: active-directory
 author: kenwith
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 7f09bb42f529164ef0f5062ef801ddc7ecfef85c
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: b6eb571c7c37a628d11f07b4e1b207e38830250b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84781085"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235395"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-ad"></a>透過 Azure AD 將應用程式的使用者佈建和取消佈建自動化
+# <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>什麼是在 Azure AD 中自動佈建 SaaS 應用程式使用者？
 
 在 Azure Active Directory (Azure AD) 中，**應用程式佈建**一詞是指在使用者需要存取的雲端 ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) 應用程式中，自動建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動佈建還包括隨著狀態或角色變更，維護和移除使用者身分識別。 常見的案例包括將 Azure AD 使用者佈建到 [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)等應用程式。
 
@@ -59,7 +59,7 @@ Azure AD 的特色是可為多種熱門 SaaS 應用程式和人力資源系統�
 
    ![Salesforce 標誌](./media/user-provisioning/gallery-app-logos.png)
 
-   如果您想要求對新的應用程式進行佈建，您可以[要求應用程式與我們的應用程式庫進行整合](../develop/howto-app-gallery-listing.md)。 針對使用者佈建要求，我們要求應用程式必須具有符合 SCIM 規範的端點。 請要求應用程式廠商遵循 SCIM 標準，以便我們能將應用程式快速上線至我們的平台。
+   如果您想要求對新的應用程式進行佈建，您可以[要求應用程式與我們的應用程式庫進行整合](../azuread-dev/howto-app-gallery-listing.md)。 針對使用者佈建要求，我們要求應用程式必須具有符合 SCIM 規範的端點。 請要求應用程式廠商遵循 SCIM 標準，以便我們能將應用程式快速上線至我們的平台。
 
 * **支援 SCIM 2.0 的應用程式**。 若要了解如何以一般方式連接可實作 SCIM 2.0 型使用者管理 API 的應用程式，請參閱[建置 SCIM 端點和設定使用者佈建](use-scim-to-provision-users-and-groups.md)。
 
@@ -94,11 +94,8 @@ Azure AD 資源庫中的應用程式支援兩種佈建模式之一：
 對於支援 SCIM 2.0 的其他應用程式，請依照[建置 SCIM 端點和設定使用者佈建](use-scim-to-provision-users-and-groups.md)一文中的步驟操作。
 
 
-## <a name="related-articles"></a>相關文章
+## <a name="next-steps"></a>後續步驟
 
 - [如何整合 SaaS 應用程式的教學課程清單](../saas-apps/tutorial-list.md)
 - [自訂使用者佈建的屬性對應](customize-application-attributes.md)
-- [撰寫屬性對應的運算式](../app-provisioning/functions-for-customizing-application-data.md)
-- [適用於使用者佈建的範圍篩選器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
-- [建置 SCIM 端點和設定使用者佈建](use-scim-to-provision-users-and-groups.md)
-- [Azure AD 同步處理 API 概觀](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [適用於使用者佈建的範圍篩選器](define-conditional-rules-for-provisioning-user-accounts.md)

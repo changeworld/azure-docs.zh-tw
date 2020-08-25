@@ -1,14 +1,14 @@
 ---
 title: 教學課程：管理標籤治理
 description: 在本教學課程中，使用 Azure 原則的 Modify 效果，在新的和現有的資源上建立和強制執行標籤治理模型。
-ms.date: 04/21/2020
+ms.date: 08/17/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8b3d0db100a601950ec82824897a3ba3e5145b79
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: f49eedb00c98d3c362140fdca9b195a086903f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142260"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545500"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>教學課程：使用 Azure 原則管理標籤治理
 
@@ -45,7 +45,7 @@ Azure 原則的 [Modify](../concepts/effects.md#modify) 效果可用來協助您
 
 ## <a name="configure-the-costcenter-tag"></a>設定 CostCenter 標籤
 
-就 Azure 原則所管理的 Azure 環境而言，_CostCenter_ 標籤需求如下：
+就 Azure 原則所管理的 Azure 環境而言，CostCenter 標籤需求會產生如下結果：
 
 - 拒絕遺漏 _CostCenter_ 標籤的資源群組
 - 在遺漏 _CostCenter_ 標籤時，修改資源以從父資源群組新增該標籤
@@ -107,7 +107,7 @@ Azure 原則的 [Modify](../concepts/effects.md#modify) 效果可用來協助您
 
 ## <a name="configure-the-env-tag"></a>設定 Env 標籤
 
-就 Azure 原則所管理的 Azure 環境而言，_Env_ 標籤需求如下：
+就 Azure 原則所管理的 Azure 環境而言，Env 標籤會產生如下結果：
 
 - 根據資源群組的命名配置，修改資源群組的 _Env_ 標籤
 - 將資源群組中所有資源的 _Env_ 標籤修改為與父資源群組相同的標籤

@@ -5,20 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 03/17/2020
+ms.date: 08/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
+ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80873b2e2655e7cedbafb526d0fe757eaa282312
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 39c9522362ca6710fae5dee5d831e63cc36a3950
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019606"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509105"
 ---
-# <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection 是什麼？
+# <a name="what-is-identity-protection"></a>什麼是 Identity Protection？
 
 Identity Protection 是一個可讓組織完成三項主要工作的工具：
 
@@ -68,6 +69,12 @@ Identity Protection 會識別下列分類的風險：
 - 風險偵測
 
 如需詳細資訊，請參閱下列文章：[如何：調查風險](howto-identity-protection-investigate-risk.md)。
+
+### <a name="risk-levels"></a>風險層級
+
+身分識別保護會將風險分類成三個層級：低、中和高。 
+
+雖然 Microsoft 並未提供如何計算風險的特定詳細資料，但我們會假設每個層級針對使用者或登入遭到入侵時都具備更高的信賴度。 例如，相較於使用者的其中一個執行個體出現不熟悉的登入屬性，將認證洩漏給其他使用者的情況比較嚴重。
 
 ## <a name="exporting-risk-data"></a>匯出風險資料
 

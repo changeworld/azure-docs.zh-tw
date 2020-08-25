@@ -1,19 +1,19 @@
 ---
 title: 使用 REST API 備份 Azure Vm
-description: 在本文中，您將瞭解如何使用 REST API 來設定、起始和管理 Azure VM 備份的備份作業。
+description: 在本文中，您將瞭解如何使用 REST API 來設定、啟動及管理 Azure VM 備份的備份作業。
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 595291549b4d181967ea168d0dc71bc7e2237a67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 48b5a8c596ec5b23d2962acb9c1f95a1d5aafbc0
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514198"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761673"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>透過 REST API 使用 Azure 備份來備份 Azure VM
 
-本文將說明如何透過 REST API，使用 Azure 備份來管理 Azure VM 的備份。 第一次為先前未受保護的 Azure VM 設定保護、針對受保護的 Azure VM 觸發隨選備份，以及透過 REST API 修改已備份 VM 的備份屬性，如這裡所述。
+本文將說明如何透過 REST API，使用 Azure 備份來管理 Azure VM 的備份。 第一次為先前未受保護的 Azure VM 設定保護、針對受保護的 Azure VM 觸發隨選備份，然後透過 REST API 修改備份 VM 的備份屬性，如下所述。
 
 請參閱[建立保存庫](backup-azure-arm-userestapi-createorupdatevault.md)和[建立原則](backup-azure-arm-userestapi-createorupdatepolicy.md) REST API 教學課程來建立新的保存庫和原則。
 
@@ -29,13 +29,13 @@ ms.locfileid: "86514198"
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
 ```
 
-POST URI 具有 `{subscriptionId}`、`{vaultName}`、`{vaultresourceGroupName}`、`{fabricName}` 參數。 `{fabricName}` 為 "Azure"。 根據我們的範例， `{vaultName}` 為 "testVault"，而 `{vaultresourceGroupName}` 為 "testVaultRG"。 因為已在 URI 中指定所有必要參數，所以不需要個別的要求本文。
+POST URI 具有 `{subscriptionId}`、`{vaultName}`、`{vaultresourceGroupName}`、`{fabricName}` 參數。 `{fabricName}` 為 "Azure"。 根據我們的範例， `{vaultName}` 是 "testVault"，而且 `{vaultresourceGroupName}` 是 "testVaultRG"。 因為已在 URI 中指定所有必要參數，所以不需要個別的要求本文。
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>回應
+#### <a name="responses-to-refresh-operation"></a>重新整理作業的回應
 
 「重新整理」作業為[非同步作業](../azure-resource-manager/management/async-operations.md)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
@@ -46,7 +46,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 |204 沒有內容     |         |  確定，但不會傳回任何內容      |
 |202 已接受     |         |     已接受    |
 
-##### <a name="example-responses"></a>範例回應
+##### <a name="example-responses-to-refresh-operation"></a>重新整理作業的範例回應
 
 一旦提交 *POST* 要求之後，就會傳回 202 (已接受) 回應。
 
@@ -92,7 +92,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>選取相關的 Azure VM
 
- 您可以藉由在訂用帳戶下方[列出所有可保護的項目](/rest/api/backup/backupprotectableitems/list) \(英文\) 來確認「快取」已完成，並在回應中找出所需的 VM。 [這項作業的回應](#example-responses-1)也會提供復原服務如何識別 VM 的資訊。  一旦您熟悉此模式之後，就可略過此步驟，並直接前往[啟用保護](#enabling-protection-for-the-azure-vm)。
+ 您可以藉由在訂用帳戶下方[列出所有可保護的項目](/rest/api/backup/backupprotectableitems/list) \(英文\) 來確認「快取」已完成，並在回應中找出所需的 VM。 [這項作業的回應](#example-responses-to-get-operation) 也會提供復原服務如何識別 VM 的資訊。  一旦您熟悉此模式之後，就可略過此步驟，並直接前往[啟用保護](#enabling-protection-for-the-azure-vm)。
 
 這項作業為 *GET* 作業。
 
@@ -102,13 +102,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *GET* URI 具備所有必要參數。 不需任何額外的要求本文。
 
-#### <a name="responses"></a><a name="responses-1"></a>回應
+#### <a name="responses-to-get-operation"></a>取得作業的回應
 
 |名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       確定 |
+|200 確定     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       [確定] |
 
-#### <a name="example-responses"></a><a name="example-responses-1"></a>範例回應
+#### <a name="example-responses-to-get-operation"></a>取得作業的範例回應
 
 一旦提交 *GET* 要求之後，就會傳回 200 (確定) 回應。
 
@@ -200,9 +200,9 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-`{sourceResourceId}` 是上述來自[清單可保護項目之回應](#example-responses-1)的 `{virtualMachineId}`。
+`{sourceResourceId}` 是上述來自[清單可保護項目之回應](#example-responses-to-get-operation)的 `{virtualMachineId}`。
 
-#### <a name="responses"></a>回應
+#### <a name="responses-to-create-protected-item-operation"></a>建立受保護專案作業的回應
 
 受保護項目的建立是[非同步作業](../azure-resource-manager/management/async-operations.md)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
@@ -210,10 +210,10 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 |名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  確定       |
+|200 確定     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  [確定]       |
 |202 已接受     |         |     已接受    |
 
-##### <a name="example-responses"></a>範例回應
+##### <a name="example-responses-to-create-protected-item-operation"></a>建立受保護專案作業的範例回應
 
 一旦提交 *PUT* 要求以建立或更新受保護的項目之後，初始回應會是 202 (已接受) 並具備位置標頭或 Azure-async-header。
 
@@ -272,11 +272,11 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-這會確認已針對 VM 啟用保護，並根據原則排程觸發第一個備份。
+這會確認已為 VM 啟用保護，並根據原則排程觸發第一個備份。
 
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>針對受保護的 Azure VM 觸發隨選備份
 
-一旦將 Azure VM 設定為進行備份，備份就會根據原則排程進行。 您可以等候第一個排定的備份，或隨時觸發隨選備份。 隨選備份的保留期與備份原則的保留期不同，且可指定為特定的日期時間。 如果未指定，即會假設為從觸發隨選備份當日起算的 30 天。
+一旦 Azure VM 設定為備份，就會根據原則排程進行備份。 您可以等候第一個排定的備份，或隨時觸發隨選備份。 隨選備份的保留期與備份原則的保留期不同，且可指定為特定的日期時間。 如果未指定，即會假設為從觸發隨選備份當日起算的 30 天。
 
 觸發隨選備份為 *POST* 作業。
 
@@ -284,13 +284,13 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup?api-version=2016-12-01
 ```
 
-`{containerName}` 和 `{protectedItemName}` 如[上述](#responses-1)所建構的。 `{fabricName}` 為 "Azure"。 針對我們的範例，這會轉譯為：
+`{containerName}` 和 `{protectedItemName}` 如[上述](#responses-to-get-operation)所建構的。 `{fabricName}` 為 "Azure"。 針對我們的範例，這會轉譯為：
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2016-12-01
 ```
 
-### <a name="create-the-request-body"></a>建立要求本文
+### <a name="create-the-request-body-for-on-demand-backup"></a>建立隨選備份的要求主體
 
 若要觸發隨選備份，以下是要求本文的元件。
 
@@ -300,7 +300,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 如需要求本文的完整定義清單及其他詳細資訊，請參閱[觸發受保護項目的備份 REST API 文件](/rest/api/backup/backups/trigger#request-body) \(英文\)。
 
-#### <a name="example-request-body"></a>要求本文範例
+#### <a name="example-request-body-for-on-demand-backup"></a>隨選備份的要求主體範例
 
 下列要求本文會定義觸發受保護項目之備份所需的屬性。 如果未指定保留期，它將會保留 30 天 (從觸發備份作業當日起算)。
 
@@ -313,7 +313,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 }
 ```
 
-### <a name="responses"></a>回應
+### <a name="responses-for-on-demand-backup"></a>隨選備份的回應
 
 觸發隨選備份為[非同步作業](../azure-resource-manager/management/async-operations.md)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
@@ -323,7 +323,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 |---------|---------|---------|
 |202 已接受     |         |     已接受    |
 
-#### <a name="example-responses"></a><a name="example-responses-3"></a>範例回應
+#### <a name="example-responses-for-on-demand-backup"></a>隨選備份的範例回應
 
 一旦提交 *POST* 要求以進行隨選備份之後，初始回應會是 202 (已接受) 並具備位置標頭或 Azure-async-header。
 
@@ -399,7 +399,7 @@ X-Powered-By: ASP.NET
 }
 ```
 
-回應將遵循與[針對啟用保護](#responses-2)所述相同的格式。
+回應將遵循與[針對啟用保護](#responses-to-create-protected-item-operation)所述相同的格式。
 
 ### <a name="stop-protection-but-retain-existing-data"></a>停止保護，但保留現有資料
 
@@ -415,7 +415,7 @@ X-Powered-By: ASP.NET
 }
 ```
 
-回應將遵循與[針對觸發隨選備份](#example-responses-3)所述相同的格式。 您應該追蹤結果作業，如[使用 REST API 監視作業文件](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)所述。
+回應將遵循與[針對觸發隨選備份](#example-responses-for-on-demand-backup)所述相同的格式。 您應該追蹤結果作業，如[使用 REST API 監視作業文件](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)所述。
 
 ### <a name="stop-protection-and-delete-data"></a>停止保護並刪除資料
 
@@ -427,13 +427,13 @@ X-Powered-By: ASP.NET
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
-`{containerName}` 和 `{protectedItemName}` 如[上述](#responses-1)所建構的。 `{fabricName}` 是 "Azure"。 針對我們的範例，這會轉譯為：
+`{containerName}` 和 `{protectedItemName}` 如[上述](#responses-to-get-operation)所建構的。 `{fabricName}` 是 "Azure"。 針對我們的範例，這會轉譯為：
 
 ```http
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
-#### <a name="responses"></a><a name="responses-2"></a>回應
+#### <a name="responses-for-delete-protection"></a>刪除保護的回應
 
 *DELETE* 作業為[非同步作業](../azure-resource-manager/management/async-operations.md)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
@@ -445,13 +445,13 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 |202 已接受     |         |     已接受    |
 
 > [!IMPORTANT]
-> 為了防止意外刪除案例，有一個適用于復原服務保存庫的虛[刪除功能](use-restapi-update-vault-properties.md#soft-delete-state)。 如果保存庫的虛刪除狀態設定為 [已啟用]，則刪除作業不會立即刪除資料。 它會保留14天，然後永久清除。 在此14天的期間內，客戶不需支付儲存體費用。 若要復原刪除作業，請參閱[復原-刪除一節](#undo-the-stop-protection-and-delete-data)。
+> 為了防止意外刪除的情況，復原服務保存庫 [可使用虛刪除功能](use-restapi-update-vault-properties.md#soft-delete-state) 。 如果保存庫的虛刪除狀態設定為 [已啟用]，則刪除作業將不會立即刪除資料。 它會保留14天，然後永久清除。 客戶在這14天的期間內不會收取儲存體費用。 若要復原刪除操作，請參閱 [復原-刪除一節](#undo-the-stop-protection-and-delete-data)。
 
 ### <a name="undo-the-stop-protection-and-delete-data"></a>復原停止保護並刪除資料
 
-復原意外刪除類似于建立備份專案。 復原刪除之後，會保留專案，但不會觸發任何未來的備份。
+復原意外刪除類似于建立備份專案。 復原刪除之後，會保留專案，但不會觸發未來的備份。
 
-「復原刪除」是*PUT*作業，非常類似于[變更原則](#changing-the-policy-of-protection)和/或[啟用保護](#enabling-protection-for-the-azure-vm)。 只要提供意圖，就可以在[要求主體](#example-request-body)中使用變數*isRehydrate*來復原刪除作業，並提交要求。 例如：若要復原 testVM 的刪除，應使用下列要求主體。
+復原刪除是 *PUT* 作業，非常類似于 [變更原則](#changing-the-policy-of-protection) 及/或 [啟用保護](#enabling-protection-for-the-azure-vm)。 只需提供在[要求主體](#example-request-body)中使用變數*isRehydrate*復原刪除的意圖，然後提交要求。 例如：若要復原 testVM 的刪除，則應該使用下列要求主體。
 
 ```http
 {
@@ -464,7 +464,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 }
 ```
 
-回應將遵循與[針對觸發隨選備份](#example-responses-3)所述相同的格式。 您應該追蹤結果作業，如[使用 REST API 監視作業文件](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)所述。
+回應將遵循與[針對觸發隨選備份](#example-responses-for-on-demand-backup)所述相同的格式。 您應該追蹤結果作業，如[使用 REST API 監視作業文件](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)所述。
 
 ## <a name="next-steps"></a>後續步驟
 

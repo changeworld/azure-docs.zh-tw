@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 692ddbf1e17e316bdcee6c34062ffa51ef278bc7
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 638ab84658c36536966ef990570684a047521ee6
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923776"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257450"
 ---
 ::: zone target="docs"
 
@@ -224,7 +224,7 @@ ms.locfileid: "87923776"
 
 ### <a name="self-managed"></a>[自我管理](#tab/in-selfmanaged)
 
-如果您在日本、新加坡、韓國、西歐或印度使用資料箱磁碟，並已在建立訂單期間選取自我管理寄送選項，請遵循下列指示。
+如果您在美國政府、日本、新加坡、韓國、西歐、南非或印度使用資料箱磁碟，並已在建立訂單期間選取自我管理寄送選項，請遵循下列指示。
 
 1. 在 Azure 入口網站中，移至您訂單的 [概觀] 刀鋒視窗。 請遵循您在選取 [排程取貨] 時顯示的指示。 您應會看到托運訂單時所使用的授權碼。
 

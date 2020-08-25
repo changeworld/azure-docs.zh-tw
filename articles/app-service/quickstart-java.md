@@ -10,16 +10,19 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 8289b21da5009459d2eb7ddc8d26b549f0920317
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 274228ea5aa9ac9de9725176c8b6221ee9e9542e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083668"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182692"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>快速入門：在 Azure App Service 上建立 Java 應用程式
 
 [Azure App Service](overview.md) 可提供可高度擴充、自我修復的 Web 主控服務。  本快速入門說明如何使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 搭配[適用於 Maven 的 Azure Web 應用程式外掛程式](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，部署 Java Web 封存 (WAR) 檔案。
+
+> [!NOTE]
+> 在本文中，我們只會使用封裝在 WAR 檔案中的 JAVA 應用程式。 此外掛程式也支援 JAR Web 應用程式，請瀏覽[將 Java SE JAR 檔案部署至 Linux 上的 App Service](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，並加以試用。
 
 > [!NOTE]
 > 使用 IntelliJ 和 Eclipse 等熱門 IDE 也可以執行相同的動作。 請參閱 [Azure Toolkit for IntelliJ 快速入門](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app)或 [Azure Toolkit for Eclipse 快速入門](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)中的類似文件。
@@ -53,12 +56,12 @@ cd helloworld
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 
-::: zone pivot="platform-windows"  
+::: zone pivot="platform-windows" 
 系統會要求您選取 
 * **作業系統 (預設值：`linux`)**
 * **Java 版本 (預設值：`1.8`)**
 * **Web 容器 (預設值：`tomcat 8.5`)** 
-
+ 
 請小心輸入 **`2`** ，以在第一個步驟選擇 **Windows** OS。 您可以按下[輸入]，將其他設定保留為預設值。 最後，按 **`Y`** **確認 (Y/N)** 提示完成設定。
 
 範例程序如下所示：
@@ -137,6 +140,13 @@ Confirm (Y/N)? :
 ```
 ::: zone-end
 ::: zone pivot="platform-linux"  
+
+系統會要求您選取 
+* **作業系統 (預設值：`linux`)**
+* **Java 版本 (預設值：`Java 8`)**
+* **Web 容器 (預設值：`Tomcat 8.5`)** 
+
+按下[輸入]，將所有設定保留為預設值。 最後，按 **`Y`** **確認 (Y/N)** 提示完成設定。
 範例程序如下所示：
 
 ```cmd
@@ -174,16 +184,7 @@ Confirm (Y/N)? : Y
 ```
 ::: zone-end
 
-> [!NOTE]
-> 在本文中，我們只會使用封裝在 WAR 檔案中的 JAVA 應用程式。 此外掛程式也支援 JAR Web 應用程式，請瀏覽[將 Java SE JAR 檔案部署至 Linux 上的 App Service](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，並加以試用。
-
-開啟 `pom.xml`，查看更新過的設定。
-
-```bash
-code pom.xml
-```
-
-您可視需要，直接在 pom 檔案中修改 App Service 的其他設定，以下列出一些常見的設定：
+您可視需要，直接在 `pom.xml` 中修改 App Service 的其他設定，以下列出一些常見的設定：
 
  屬性 | 必要 | 描述 | 版本
 ---|---|---|---
@@ -195,11 +196,8 @@ code pom.xml
 `<runtime>` | true | 執行階段環境組態，您可以在[此處](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)查看詳細資料。 | 0.1.0+
 `<deployment>` | true | 部署組態，您可以在[此處](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)查看詳細資料。 | 0.1.0+
 
-::: zone pivot="platform-windows"
 請小心 `<appName>` 和 `<resourceGroup>`的值 (在示範中為 `helloworld-1590394316693` 和 `helloworld-1590394316693-rg`)，稍後會用到這兩個值。
-::: zone-end
-::: zone pivot="platform-linux"
-::: zone-end
+
 > [!div class="nextstepaction"]
 > [我遇到問題](https://www.research.net/r/javae2e?tutorial=quickstart-java&step=config)
 
@@ -216,21 +214,11 @@ az login
 mvn package azure-webapp:deploy
 ```
 
-::: zone pivot="platform-windows"
 部署完成後，您的應用程式就會在 `http://<appName>.azurewebsites.net/` (示範中為 `http://helloworld-1590394316693.azurewebsites.net`) 準備就緒。 使用您的本機網頁瀏覽器開啟 URL，您應該會看到
 
-![在 Azure App Service 中執行的範例應用程式](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
+![在 Azure App Service 中執行的範例應用程式](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
-**恭喜！** 您已將第一個 Java 應用程式部署至 Windows 上的 App Service。
-
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
-::: zone-end
-::: zone pivot="platform-linux"
-完成部署後，在網頁瀏覽器中使用下列 URL，瀏覽至已部署的應用程式，例如 `http://<webapp>.azurewebsites.net`。 
-
-![在 Azure App Service 中執行的範例應用程式](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
-
-**恭喜！** 您已將第一個 Java 應用程式部署至 Linux 上的 App Service。
+**恭喜！** 您已將第一個 Java 應用程式部署至 App Service。
 
 > [!div class="nextstepaction"]
 > [我遇到問題](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
@@ -244,19 +232,6 @@ az group delete --name <your resource group name; for example: helloworld-155840
 ```
 
 此命令可能會花一分鐘執行。
-::: zone-end
-
-部署完成後，您的應用程式就會在 `http://<appName>.azurewebsites.net/` (示範中為 `http://helloworld-1590394316693.azurewebsites.net`) 準備就緒。 使用您的本機網頁瀏覽器開啟 URL，您應該會看到
-
-![在 Azure App Service 中執行的範例應用程式](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
-
-**恭喜！** 您已將第一個 Java 應用程式部署至 App Service。
-
-> [!div class="nextstepaction"]
-> [我遇到問題](https://www.research.net/r/javae2e?quickstart-java&step=deploy)
-
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
-
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]

@@ -3,12 +3,12 @@ title: Azure 監視器記錄資料模型
 description: 在本文中，您將詳盡了解 Azure 備份資料的 Azure 監視器 Log Analytics 資料模型。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 73247dac1ca829a7893192101da0981c3edcf8d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 897431feae6cd3166b594d4d6848204df76fe3fa
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539069"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761401"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>適用於 Azure 備份資料的 Log Analytics 資料模型
 
@@ -22,7 +22,7 @@ ms.locfileid: "86539069"
 
 ## <a name="using-azure-backup-data-model"></a>使用 Azure 備份資料模型
 
-您可以使用下列資料模型中提供的欄位，根據您的需求建立視覺效果、自訂查詢和儀表板。
+您可以使用提供的下欄欄位做為資料模型的一部分，以根據您的需求建立視覺效果、自訂查詢和儀表板。
 
 ### <a name="alert"></a>警示
 
@@ -461,35 +461,37 @@ ms.locfileid: "86539069"
     ````
 
 ## <a name="v1-schema-vs-v2-schema"></a>V1 結構描述與 V2 結構描述
-先前，Azure 備份代理程式和 Azure VM 備份的診斷資料會傳送至名為 ***V1 結構描述***的結構描述中的 Azure 診斷資料表。 而在新增了新的資料行以支援其他案例和工作負載之後，診斷資料則會推送至名為 ***V2 結構描述***的新結構描述中。 
 
-基於回溯相容性，Azure 備份代理程式和 Azure VM 備份的診斷資料現在會同時傳送至 V1 和 V2 結構描述中的 Azure 診斷資料表 (V1 結構描述現在位於淘汰的路徑上)。 您可以在記錄查詢中篩選 SchemaVersion_s=="V1" 的記錄，以識別 Log Analytics 中的哪些記錄屬於 V1 結構描述。 
+先前，Azure 備份代理程式和 Azure VM 備份的診斷資料會傳送至名為 ***V1 結構描述***的結構描述中的 Azure 診斷資料表。 而在新增了新的資料行以支援其他案例和工作負載之後，診斷資料則會推送至名為 ***V2 結構描述***的新結構描述中。  
+
+基於回溯相容性，Azure 備份代理程式和 Azure VM 備份的診斷資料現在會同時傳送至 V1 和 V2 結構描述中的 Azure 診斷資料表 (V1 結構描述現在位於淘汰的路徑上)。 您可以在記錄查詢中篩選 SchemaVersion_s=="V1" 的記錄，以識別 Log Analytics 中的哪些記錄屬於 V1 結構描述。
 
 請參閱前述[資料模型](#using-azure-backup-data-model)中的第三個資料行「描述」，以識別哪些資料行僅屬於 V1 結構描述。
 
 ### <a name="modifying-your-queries-to-use-the-v2-schema"></a>修改您的查詢以使用 V2 架構
-當 V1 架構位於取代路徑上時，建議您在 Azure 備份診斷資料的所有自訂查詢中只使用 V2 架構。 以下範例說明如何更新您的查詢，以移除 V1 架構的相依性：
+
+因為 V1 架構是在淘汰路徑上，建議您在 Azure 備份診斷資料的所有自訂查詢中只使用 V2 架構。 以下範例說明如何更新您的查詢，以移除 V1 架構的相依性：
 
 1. 識別您的查詢是否使用僅適用于 V1 架構的任何欄位。 假設您有一個查詢可列出所有備份專案及其相關聯的受保護伺服器，如下所示：
 
-````Kusto
-AzureDiagnostics
-| where Category=="AzureBackupReport"
-| where OperationName=="BackupItemAssociation"
-| distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
-````
+    ````Kusto
+    AzureDiagnostics
+    | where Category=="AzureBackupReport"
+    | where OperationName=="BackupItemAssociation"
+    | distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
+    ````
 
-上述查詢會使用僅適用于 V1 架構的欄位 ProtectedServerUniqueId_s。 此欄位對等的 V2 架構是 ProtectedContainerUniqueId_s （請參閱上面的表格）。 欄位 BackupItemUniqueId_s 也適用于 V2 架構，而且相同的欄位可以在此查詢中使用。
+    上述查詢會使用僅適用于 V1 架構的欄位 ProtectedServerUniqueId_s。 此欄位的 V2 架構對等專案是 ProtectedContainerUniqueId_s (參考上述的資料表) 。 欄位 BackupItemUniqueId_s 也適用于 V2 架構，而此查詢中也可以使用相同的欄位。
 
-2. 將查詢更新為使用 V2 架構功能變數名稱。 建議的作法是在所有查詢中使用 filter ' where SchemaVersion_s = = "V2" '，如此一來，查詢就只會剖析對應至 V2 架構的記錄：
+2. 將查詢更新為使用 V2 架構功能變數名稱。 建議的作法是在您所有的查詢中使用篩選 ' where SchemaVersion_s = = "V2" '，如此一來，查詢才會剖析對應至 V2 架構的記錄：
 
-````Kusto
-AzureDiagnostics
-| where Category=="AzureBackupReport"
-| where OperationName=="BackupItemAssociation"
-| where SchemaVersion_s=="V2"
-| distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s 
-````
+    ````Kusto
+    AzureDiagnostics
+    | where Category=="AzureBackupReport"
+    | where OperationName=="BackupItemAssociation"
+    | where SchemaVersion_s=="V2"
+    | distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s
+    ````
 
 ## <a name="next-steps"></a>後續步驟
 

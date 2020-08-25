@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: mimig
 ms.custom: include file
-ms.openlocfilehash: 35db353c17bb30b149c6af8aa483b234d7390d2d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a52ba3821b51bf6474ebc258575027bc3afcea73
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75972910"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236405"
 ---
 建立 Azure 儲存體帳戶最簡單的方法，就是使用 [Azure 入口網站](https://portal.azure.com)。 若要深入了解，請參閱 [建立儲存體帳戶](../articles/storage/common/storage-account-create.md)。
 

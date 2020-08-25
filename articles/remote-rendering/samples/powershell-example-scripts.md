@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 07055025eff9ab81c7321624daed9b4a6e993a60
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052297"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506506"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell 指令碼範例
 
@@ -26,21 +26,21 @@ Azure 遠端轉譯提供下列兩個 REST API：
 若要執行範例指令碼，您需要 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) 的功能設定。
 
 1. 安裝 Azure PowerShell：
-    1. 以系統管理員權限開啟 PowerShell
+    1. 以管理員權限開啟 PowerShell 視窗。
     1. 執行：`Install-Module -Name Az -AllowClobber`
 
 1. 如果您收到有關執行指令碼的錯誤，請確定已適當設定[執行原則](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)：
-    1. 以系統管理員權限開啟 PowerShell
+    1. 以管理員權限開啟 PowerShell 視窗。
     1. 執行：`Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
 1. [準備 Azure 儲存體帳戶](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
 1. 登入含有 Azure 遠端轉譯帳戶的訂用帳戶：
-    1. 開啟 PowerShell
+    1. 開啟 PowerShell 視窗。
     1. 執行：`Connect-AzAccount`並遵循螢幕上的指示操作。
 
-> [!NOTE]
-> 如果您的組織有多個訂用帳戶，您可能需要指定 SubscriptionId 和 Tenant 引數。 在 [Connect-AzAccount documentation](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 中尋找詳細資料。
+    > [!NOTE]
+    > 如果您的組織有多個訂用帳戶，您可能需要指定 SubscriptionId 和 Tenant 引數。 在 [Connect-AzAccount documentation](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 中尋找詳細資料。
 
 1. 從 [Azure 遠端轉譯 GithHub 存放庫](https://github.com/Azure/azure-remote-rendering)下載 *Scripts* 資料夾。
 
@@ -86,9 +86,9 @@ Azure 遠端轉譯提供下列兩個 REST API：
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-如果您想要執行 **RenderingSession.ps1**，就必須填妥此結構。
+如果您想要執行 **RenderingSession.ps1**，就必須填妥此結構：
 
-- **vmSize：** 選取虛擬機器的大小。 選取「標準」或「進階」。 當您不再需要轉譯工作階段時，請將其關閉。
+- **vmSize：** 選取虛擬機器的大小。 選取[標準](../reference/vm-sizes.md)或[進階](../reference/vm-sizes.md)。 當您不再需要轉譯工作階段時，請將其關閉。
 - **maxLeaseTime：** 您要租用 VM 的持續時間。 當租用到期時，工作階段就會關閉。 稍後可以延長的租用時間 (請參閱下文)。
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
@@ -189,10 +189,10 @@ Azure 遠端轉譯提供下列兩個 REST API：
 .\Conversion.ps1
 ```
 
-1. 將 `assetConversionSettings.modelLocation` 內含的所有檔案上傳至指定的 `inputFolderPath` 之下的輸入 Blob 容器
+1. 將 `assetConversionSettings.modelLocation` 內含的所有檔案上傳至指定的 `inputFolderPath` 之下的輸入 Blob 容器。
 1. 呼叫[模型轉換 REST API](../how-tos/conversion/conversion-rest-api.md)以開始進行[模型轉換](../how-tos/conversion/model-conversion.md)
-1. 輪詢轉換狀態，直到轉換成功或失敗為止
-1. 輸出已轉換檔案位置的詳細資料 (儲存體帳戶、輸出容器、容器中的檔案路徑)
+1. 輪詢轉換狀態，直到轉換成功或失敗為止。
+1. 輸出已轉換檔案位置的詳細資料 (儲存體帳戶、輸出容器、容器中的檔案路徑)。
 
 ### <a name="access-to-storage-via-shared-access-signatures"></a>透過共用存取簽章存取儲存體
 
@@ -202,13 +202,13 @@ Azure 遠端轉譯提供下列兩個 REST API：
 
 這將會：
 
-1. 將本機檔案從 `assetConversionSettings.localAssetDirectoryPath` 上傳至輸入 Blob 容器
-1. 產生輸入容器的 SAS URI
-1. 產生輸出容器的 SAS URI
-1. 呼叫[模型轉換 REST API](../how-tos/conversion/conversion-rest-api.md)以開始進行[模型轉換](../how-tos/conversion/model-conversion.md)
-1. 輪詢轉換狀態，直到轉換成功或失敗為止
-1. 輸出已轉換檔案位置的詳細資料 (儲存體帳戶、輸出容器、容器中的檔案路徑)
-1. 將 SAS URI 輸出至輸出 Blob 容器中已轉換的模型
+1. 將本機檔案從 `assetConversionSettings.localAssetDirectoryPath` 上傳至輸入 Blob 容器。
+1. 產生輸入容器的 SAS URI。
+1. 產生輸出容器的 SAS URI。
+1. 呼叫[模型轉換 REST API](../how-tos/conversion/conversion-rest-api.md)以開始進行[模型轉換](../how-tos/conversion/model-conversion.md)。
+1. 輪詢轉換狀態，直到轉換成功或失敗為止。
+1. 輸出已轉換檔案位置的詳細資料 (儲存體帳戶、輸出容器、容器中的檔案路徑)。
+1. 將 SAS URI 輸出至輸出 Blob 容器中已轉換的模型。
 
 ### <a name="additional-command-line-options"></a>其他命令列選項
 
@@ -249,7 +249,7 @@ Azure 遠端轉譯提供下列兩個 REST API：
 
 如果您想要執行程序的個別步驟，您可使用：
 
-只從指定的 LocalAssetDirectoryPath 上傳資料
+只從指定的 LocalAssetDirectoryPath 上傳資料。
 
 ```PowerShell
 .\Conversion.ps1 -Upload

@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 0f598e0058d817fbba8d816500ab252134be0eb5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: f6085554f64c71c66587587ee03a58ee73c6639a
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371731"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761758"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -39,12 +39,12 @@ ms.locfileid: "87371731"
 
 以下是 Azure 虛擬機器上備份失敗的常見問題。
 
-### <a name="vmrestorepointinternalerror---antivirus-configured-in-the-vm-is-restricting-the-execution-of-backup-extension"></a>VMRestorePointInternalError-VM 中設定的防毒軟體正在限制備份延伸模組的執行
+### <a name="vmrestorepointinternalerror---antivirus-configured-in-the-vm-is-restricting-the-execution-of-backup-extension"></a>VMRestorePointInternalError-在 VM 中設定的防毒軟體正在限制備份擴充功能的執行
 
 錯誤碼： VMRestorePointInternalError
 
-如果在備份時，**事件檢視器應用程式記錄**檔會顯示訊息錯誤的**應用程式名稱： IaaSBcdrExtension.exe**然後確認 VM 中設定的防毒軟體正在限制備份延伸模組的執行。
-若要解決此問題，請在防毒軟體設定中排除下列目錄，然後重試備份操作。
+如果備份時， **事件檢視器的應用程式記錄** 檔會顯示訊息錯誤的 **應用程式名稱： IaaSBcdrExtension.exe** 接著確認 VM 中設定的防毒軟體會限制備份延伸模組的執行。
+若要解決此問題，請在防毒軟體設定中排除下列目錄，然後重試備份作業。
 
 * `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 * `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
@@ -122,7 +122,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 錯誤訊息：備份擴充功能的剖析和設定失敗。
 
 此錯誤是因為 **MachineKeys** 目錄上的權限已變更︰ **%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**。
-執行下列命令，並確認**MachineKeys**目錄的許可權是預設值： `icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys` 。
+執行下列命令，並確認 **MachineKeys** 目錄的許可權是預設值： `icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys` 。
 
 預設的權限如下︰
 
@@ -194,9 +194,9 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 **步驟 2**：嘗試將備份排程變更為 VM 負載較少 (低 CPU/IOps 等) 的時間
 
-**步驟 3**：嘗試[增加 VM 的大小](https://azure.microsoft.com/blog/resize-virtual-machines/)，然後重試操作
+**步驟 3**：嘗試 [增加 VM 的大小](https://azure.microsoft.com/blog/resize-virtual-machines/) ，然後再次嘗試操作
 
-### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001，ResourceNotFound-無法執行作業，因為 VM 不再存在/400094、BCMV2VMNotFound-虛擬機器不存在/找不到 Azure 虛擬機器
+### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001，ResourceNotFound-無法執行作業，因為 VM 已不存在/400094、BCMV2VMNotFound-虛擬機器不存在/找不到 Azure 虛擬機器
 
 錯誤碼：320001, ResourceNotFound <br/> 錯誤訊息：無法執行作業，因為 VM 已不存在。 <br/> <br/> 錯誤碼：400094, BCMV2VMNotFound <br/> 錯誤訊息：虛擬機器不存在 <br/>
 找不到 Azure 虛擬機器。
@@ -206,32 +206,32 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 * 重新建立具有相同名稱和相同資源群組名稱 (**雲端服務名稱**) 的虛擬機器，<br>或
 * 停止保護虛擬機器 (不論是否刪除備份資料)。 如需詳細資訊，請參閱[停止保護虛擬機器](backup-azure-manage-vms.md#stop-protecting-a-vm)。</li></ol>
 
-### <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError-因為儲存體帳戶中的可用空間不足，所以無法複製虛擬機器的快照集
+### <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError-無法複製虛擬機器的快照集，因為儲存體帳戶中的可用空間不足
 
 錯誤碼：UserErrorBCMPremiumStorageQuotaError<br/> 錯誤訊息：無法複製虛擬機器的快照集，因為儲存體帳戶中的可用空間不足
 
  針對 VM 備份堆疊 V1 上的進階 VM，我們會將快照集複製到儲存體帳戶。 此步驟是為了確定快照集上運作的備份管理流量不會限制可供使用進階磁碟的應用程式使用的 IOPS 數目。 <br><br>我們建議您僅配置 50% (17.5 TB) 的總儲存體帳戶空間。 然後 Azure 備份服務便可以將快照集複製到儲存體帳戶，並從儲存體帳戶中的這個複製位置將資料傳送到到保存庫。
 
-### <a name="380008-azurevmoffline---failed-to-install-microsoft-recovery-services-extension-as-virtual-machine--is-not-running"></a>380008，AzureVmOffline-無法安裝 Microsoft 復原服務延伸模組，因為虛擬機器並未執行
+### <a name="380008-azurevmoffline---failed-to-install-microsoft-recovery-services-extension-as-virtual-machine--is-not-running"></a>380008，AzureVmOffline-無法安裝 Microsoft 復原服務擴充功能，因為虛擬機器未執行
 
 錯誤碼：380008, AzureVmOffline <br/> 錯誤訊息：安裝 Microsoft 復原服務延伸失敗，因為虛擬機器並未執行
 
 VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Azure 虛擬機器代理程式並重新啟動註冊作業。 <br> <ol> <li>檢查是否已正確安裝 VM 代理程式。 <li>確定已正確設定 VM 設定上的旗標。</ol> 深入了解如何安裝 VM 代理程式，以及如何驗證 VM 代理程式安裝。
 
-### <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError-快照集作業失敗，發生磁碟區陰影複製服務（VSS）作業錯誤
+### <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError-快照集作業失敗，發生磁碟區陰影複製服務 (VSS) 操作錯誤
 
-錯誤碼：ExtensionSnapshotBitlockerError <br/> 錯誤訊息：快照集作業失敗，發生磁碟區陰影複製服務（VSS）作業錯誤，**此磁片磁碟機已由 BitLocker 磁碟機加密鎖定。您必須從 [控制台] 解除鎖定這個磁片磁碟機。**
+錯誤碼：ExtensionSnapshotBitlockerError <br/> 錯誤訊息：快照集作業失敗，發生磁碟區陰影複製服務 (VSS) 作業錯誤： **BitLocker 磁碟機加密已鎖定此磁片磁碟機。您必須從主控台解除鎖定這個磁片磁碟機。**
 
 對 VM 上的所有磁碟機關閉 BitLocker，並檢查是否已解決 VSS 問題。
 
-### <a name="vmnotindesirablestate---the-vm-isnt-in-a-state-that-allows-backups"></a>VmNotInDesirableState-VM 不是處於允許備份的狀態
+### <a name="vmnotindesirablestate---the-vm-isnt-in-a-state-that-allows-backups"></a>VmNotInDesirableState-VM 未處於允許備份的狀態
 
 錯誤碼：VmNotInDesirableState <br/> 錯誤訊息：VM 目前的狀態不允許備份。
 
 * 如果 VM 處於 [正在執行] 和 [關機] 之間的暫時性狀態，請等候狀態變更。 然後再觸發備份作業。
 * 如果 VM 是 Linux VM 並使用安全性強化的 Linux 核心模組，請從安全性原則中排除 Azure Linux 代理程式路徑 **/var/lib/waagent**，並確定已安裝備份延伸模組。
 
-* 虛擬機器上沒有 VM 代理程式： <br>請安裝所有必要條件和 VM 代理程式。 接著請重新啟動作業。 |深入瞭解[Vm 代理程式安裝，以及如何驗證 Vm 代理程式安裝](#vm-agent)。
+* 虛擬機器上沒有 VM 代理程式： <br>請安裝所有必要條件和 VM 代理程式。 接著請重新啟動作業。 |深入瞭解 [Vm 代理程式安裝，以及如何驗證 Vm 代理程式安裝](#vm-agent)。
 
 ### <a name="extensionsnapshotfailednosecurenetwork---the-snapshot-operation-failed-because-of-failure-to-create-a-secure-network-communication-channel"></a>ExtensionSnapshotFailedNoSecureNetwork-快照集作業失敗，因為無法建立安全的網路通道
 
@@ -241,14 +241,14 @@ VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Az
 * 識別系統中存在的所有 .NET Framework 版本。 它們位於登錄機碼 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** 的階層下。
 * 針對登錄機碼中的每個 .NET Framework，新增下列機碼︰ <br> **SchUseStrongCrypto"=dword:00000001**。 </ol>
 
-### <a name="extensionvcredistinstallationfailure---the-snapshot-operation-failed-because-of-failure-to-install-visual-c-redistributable-for-visual-studio-2012"></a>ExtensionVCRedistInstallationFailure-快照集作業失敗，因為無法安裝適用於 Visual Studio 的 Visual C++ 可轉散發套件2012
+### <a name="extensionvcredistinstallationfailure---the-snapshot-operation-failed-because-of-failure-to-install-visual-c-redistributable-for-visual-studio-2012"></a>ExtensionVCRedistInstallationFailure-因為無法安裝適用於 Visual Studio 的 Visual C++ 可轉散發套件2012，所以快照集作業失敗
 
 錯誤碼：ExtensionVCRedistInstallationFailure <br/> 錯誤訊息：快照集作業失敗，因為無法安裝適用於 Visual Studio 2012 的 Visual C++ 可轉散發套件。
 
 * 瀏覽至 `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` 並安裝 vcredist2013_x64。<br/>確定允許服務安裝的登錄機碼值已設定為正確的值。 也就是說，將 **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** 中的 **Start** 值設定為 **3**，而不是 **4**。 <br><br>如果您仍遇到安裝問題，請從提高權限的命令提示字元執行 **MSIEXEC /UNREGISTER**，再執行 **MSIEXEC /REGISTER**，以重新啟動安裝服務。
 * 檢查事件記錄檔，以驗證您是否注意到存取相關的問題。 例如：*產品：Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- 錯誤 1401。無法建立機碼：Software\Classes。系統錯誤 5。請驗證您是否有足夠的權限存取該機碼，或是連絡支援人員。* <br><br> 請確定管理員或使用者帳戶具有足夠權限，可更新登錄機碼 **HKEY_LOCAL_MACHINE \SOFTWARE\Classes**。 提供足夠的權限，並重新啟動 Windows Azure 客體代理程式。<br><br> <li> 如果您已備妥防毒軟體，請確定其具有正確的排除規則以允許安裝。
 
-### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy-VM 上設定了不正確原則，導致無法進行快照操作
+### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy - VM 上設定了防止進行快照集作業的無效原則
 
 錯誤碼：UserErrorRequestDisallowedByPolicy <BR> 錯誤訊息：VM 上設定了會防止進行快照集作業的無效原則。
 
@@ -269,13 +269,13 @@ VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Az
 | --- | --- |
 | 還原失敗，發生雲端內部錯誤。 |<ol><li>您嘗試還原的雲端服務是使用 DNS 設定所設定。 您可以檢查： <br>**$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings**。<br>如果已設定 [位址]，則 DNS 設定便已設定。<br> <li>您嘗試還原到其中的雲端服務是使用 **ReservedIP** 所設定，而雲端服務中的現有 VM 目前處於停止狀態。 您可以使用下列 PowerShell Cmdlet 來檢查雲端服務是否已保留 IP： **$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName**。 <br><li>您嘗試將具有下列特殊網路組態的虛擬機器還原至相同的雲端服務： <ul><li>負載平衡器設定下的虛擬機器，內部與外部。<li>具有多個保留 IP 的虛擬機器。 <li>具有多個 NIC 的虛擬機器。 </ul><li>在 UI 中選取新的雲端服務，或參閱適用於具有特殊網路組態之 VM 的[還原考量](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations)。</ol> |
 | 選取的 DNS 名稱已有人使用： <br>請指定不同的 DNS 名稱並再試一次。 |此 DNS 名稱是指雲端服務名稱，其結尾通常是 **.cloudapp.net**。 此名稱必須是唯一的。 如果您遇到這個錯誤，您需要在還原期間選擇不同的 VM 名稱。 <br><br> 只有 Azure 入口網站的使用者才會看到這個錯誤。 透過 PowerShell 執行還原作業將會成功，因為它只會還原磁碟，並不會建立 VM。 當您在磁碟還原作業之後明確建立 VM 時，將會遇到此錯誤。 |
-| 指定的虛擬網路設定不正確： <br>請指定不同的虛擬網路設定並再試一次。 |無 |
-| 指定的雲端服務所使用的保留 IP 不符合要還原之虛擬機器的設定： <br>請指定未使用保留 IP 的其他雲端服務。 或選擇另一個復原點來進行還原。 |無 |
-| 雲端服務已達到其輸入端點的數目限制： <br>請指定不同的雲端服務或使用現有的端點來重試作業。 |無 |
-| 復原服務保存庫和目標儲存體帳戶處於兩個不同的區域： <br>請確定還原作業中所指定的儲存體帳戶和您的復原服務保存庫皆位於相同的 Azure 區域中。 |無 |
-| 不支援針對還原作業所指定的儲存體帳戶： <br>僅支援具有本地備援或異地備援複寫設定的「基本」或「標準」儲存體帳戶。 請選取支援的儲存體帳戶。 |無 |
+| 指定的虛擬網路設定不正確： <br>請指定不同的虛擬網路設定並再試一次。 |None |
+| 指定的雲端服務所使用的保留 IP 不符合要還原之虛擬機器的設定： <br>請指定未使用保留 IP 的其他雲端服務。 或選擇另一個復原點來進行還原。 |None |
+| 雲端服務已達到其輸入端點的數目限制： <br>請指定不同的雲端服務或使用現有的端點來重試作業。 |None |
+| 復原服務保存庫和目標儲存體帳戶處於兩個不同的區域： <br>請確定還原作業中所指定的儲存體帳戶和您的復原服務保存庫皆位於相同的 Azure 區域中。 |None |
+| 不支援針對還原作業所指定的儲存體帳戶： <br>僅支援具有本地備援或異地備援複寫設定的「基本」或「標準」儲存體帳戶。 請選取支援的儲存體帳戶。 |None |
 | 針對還原作業所指定的儲存體帳戶類型未上線： <br>請確定針對還原作業所指定的儲存體帳戶類型已上線。 |此錯誤發生的原因可能是因為 Azure 儲存體中發生暫時性錯誤，或是因為運作中斷。 選擇另一個儲存體帳戶。 |
-| 已達到資源群組配額： <br>請從 Azure 入口網站刪除一些資源群組，或連絡 Azure 支援以提高限制。 |無 |
+| 已達到資源群組配額： <br>請從 Azure 入口網站刪除一些資源群組，或連絡 Azure 支援以提高限制。 |None |
 | 選取的子網路不存在： <br>請選取存在的子網路。 |None |
 | 備份服務無權存取您訂用帳戶中的資源。 |若要解決此錯誤，請先使用[還原備份的磁碟](backup-azure-arm-restore-vms.md#restore-disks)中的步驟來還原磁碟。 然後使用[從還原的磁碟建立 VM](backup-azure-vms-automation.md#restore-an-azure-vm) 中的 PowerShell 步驟。 |
 
@@ -289,23 +289,23 @@ VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Az
 
 一般而言，VM 代理程式已存在於從 Azure 資源庫建立的 VM 中。 不過，從內部部署資料中心移轉的虛擬機器並不會安裝 VM 代理程式。 針對那些 VM，必須明確安裝 VM 代理程式。
 
-#### <a name="windows-vms"></a>Windows VM
+#### <a name="windows-vms---set-up-the-agent"></a>Windows Vm-設定代理程式
 
 * 下載並安裝 [代理程式 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 您需要有系統管理員權限，才能完成安裝。
 * 針對使用傳統部署模型建立的虛擬機器，請[更新 VM 屬性](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) \(英文\) 以指出代理程式已安裝。 Azure Resource Manager 虛擬機器不需要此步驟。
 
-#### <a name="linux-vms"></a>Linux VM
+#### <a name="linux-vms---set-up-the-agent"></a>Linux Vm-設定代理程式
 
 * 從散發套件存放庫安裝最新版的代理程式。 如需套件名稱的詳細資料，請參閱 [Linux 代理程式存放庫](https://github.com/Azure/WALinuxAgent) \(英文\)。
 * 針對使用傳統部署模型建立的 VM，請[更新 VM 屬性](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms)並確認代理程式已安裝。 資源管理員虛擬機器不需要此步驟。
 
 ### <a name="update-the-vm-agent"></a>更新 VM 代理程式
 
-#### <a name="windows-vms"></a>Windows VM
+#### <a name="windows-vms---update-the-agent"></a>Windows Vm-更新代理程式
 
 * 若要更新 VM 代理程式，請重新安裝 [VM 代理程式二進位檔](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 更新代理程式之前，請先確定 VM 代理程式更新期間不會進行任何備份作業。
 
-#### <a name="linux-vms"></a>Linux VM
+#### <a name="linux-vms---update-the-agent"></a>Linux Vm-更新代理程式
 
 * 若要更新 Linux VM 代理程式，請遵循[更新 Linux VM 代理程式](../virtual-machines/extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json)一文中的指示。
 

@@ -4,15 +4,15 @@ description: 此快速入門可協助您使用 Azure 入口網站，來設定 Az
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 05/19/2020
+ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 48618815519fad31bff5d6a8d2d2edc82535f437
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: e4953137cf939c35c6ac73fe51ca43eca6e99edc
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697909"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192444"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>快速入門：設定伺服器防火牆 - 入口網站
 
@@ -22,8 +22,9 @@ ms.locfileid: "83697909"
 
 - 訂用帳戶中的 Analysis Services 伺服器。 若要深入了解，請參閱[快速入門：建立伺服器 - 入口網站](analysis-services-create-server.md)或[快速入門：建立伺服器 - PowerShell](analysis-services-create-powershell.md)
 - 用戶端電腦的一或多個 IP 位址範圍 (如有需要)。
-- 目前不支援從 Power BI Premium 連線到 Azure Analysis Services 的某些情況 (包括資料匯入 (重新整理) 和編頁報表)，即使已啟用 [允許從 Power BI 存取] 也是如此。 支援從 Power BI Premium 中使用 Live Connect 的常見案例。 支援所有 Power BI Pro 案例。
 
+> [!NOTE]
+> 啟用防火牆時，即使在「允許從 Power BI 存取」設定設為「開啟」，目前也不支援從 Microsoft 雲端德國的 Power BI Premium 中進行資料匯入 (重新整理) 和編頁報告連線。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站 
 
@@ -32,10 +33,10 @@ ms.locfileid: "83697909"
 ## <a name="configure-a-firewall"></a>設定防火牆
 
 1. 按一下您的伺服器，以開啟 [概觀] 頁面。 
-2. 在 [設定]   > [防火牆]   > [啟用防火牆]  中，按一下 [開啟]  。
-3. 若要允許從 Power BI 服務的 DirectQuery 存取，請在 [允許從 Power BI 存取]  中按一下 [開啟]  。  
+2. 在 [設定] > [防火牆] > [啟用防火牆] 中，選取 [開啟]。
+3. 若要啟用 Power BI 和 Power BI Premium 的連線，在**允許從 Power BI 存取**中，選取 [開啟]。  
 4. (選用) 指定一或多個 IP 位址範圍。 輸入每個範圍的名稱、起始和結束 IP 位址。 防火牆規則名稱應該限制在 128 個字元內，而且只能包含大寫字元、小寫字元、數字、底線和連字號。 不允許使用空格和其他特殊字元。
-5. 按一下 [檔案]  。
+5. 按一下 [儲存]。
 
      ![防火牆設定](./media/analysis-services-qs-firewall/aas-qs-firewall.png)
 

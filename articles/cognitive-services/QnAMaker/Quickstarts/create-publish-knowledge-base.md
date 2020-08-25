@@ -1,14 +1,14 @@
 ---
-title: 快速入門：建立、定型和發佈知識庫-QnA Maker
+title: 快速入門：建立、訓練及發佈知識庫 - QnA Maker
 description: 您可以從自己的內容 (例如常見問題集或產品手冊) 建立 QnA Maker 知識庫 (KB)。 本文包含從簡單的常見問題集網頁建立 QnA Maker 知識庫的範例，以回答問題 QnA Maker。
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 12f46e9a72f0a3b027fe67e5b8bf27c940685cfe
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: 77ddb2a0a149729af72066b53c17b1dcb08a2992
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340584"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540749"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入門：建立、訓練及發佈您的 QnA Maker 知識庫
 
@@ -17,7 +17,7 @@ ms.locfileid: "84340584"
 ## <a name="prerequisites"></a>必要條件
 
 > [!div class="checklist"]
-> * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+> * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 > * 在 Azure 入口網站中所建立的 QnA Maker [資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 請記住您在建立資源時選取的 Azure Active Directory 識別碼、訂用帳戶、QnA 資源名稱。
 
 ## <a name="create-your-first-qna-maker-knowledge-base"></a>建立第一個 QnA Maker 知識庫
@@ -47,7 +47,7 @@ ms.locfileid: "84340584"
     |**+ 新增 URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
     |**閒聊**|選取 [Professional]|
 
-1. 在**步驟 5**中，選取 [**建立您的 KB**]。
+1. 在 [步驟 5] 中，選取 [建立知識庫]。
 
     擷取程序需要一點時間來讀取文件並找出問題和回答。
 
@@ -114,7 +114,7 @@ ms.locfileid: "84340584"
 
 1. Azure 入口網站會在新的瀏覽器索引標籤中開啟，其中會包含 Azure Bot 服務的建立頁面。 設定 Azure Bot 服務。 Bot 與 QnA Maker 可共用 Web 應用程式服務方案，但不能共用 Web 應用程式。 這表示 Bot 的**應用程式名稱**必須與 QnA Maker 服務的應用程式名稱不同。
 
-    * **對**
+    * **建議事項**
         * 變更 Bot 控制代碼 - 如果不是唯一的。
         * 選取 SDK 語言。 建立 Bot 後，您可以將程式碼下載至您的本機開發環境，並繼續進行開發程序。
     * **禁止事項**
@@ -124,7 +124,7 @@ ms.locfileid: "84340584"
 
 
 1. 建立 Bot 之後，請開啟 [Bot 服務]**** 資源。
-1. 在 [ **Bot 管理**] 底下，選取 [**在網路聊天中測試**]。
+1. 在 [Bot 管理] 下，選取 [在網路聊天中測試]。
 1. 在 [輸入您的訊息]**** 聊天提示中，輸入：
 
     `Azure services?`
@@ -135,7 +135,7 @@ ms.locfileid: "84340584"
 
 ## <a name="what-did-you-accomplish"></a>您完成了哪些工作？
 
-您已建立新的知識庫、將公用 URL 加入至知識庫、加入您自己的 QnA 組、定型、測試和發佈知識庫。
+您已建立新的知識庫、將公用 URL 新增至知識庫、新增自己的 QnA 配對、定型、測試及發佈知識庫。
 
 在發佈知識庫之後，您已建立 Bot 並測試 Bot。
 

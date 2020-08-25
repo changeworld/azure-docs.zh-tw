@@ -2,24 +2,24 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: 0efc0f1e07ef9370dbc8e300cd6bd3410f0265d3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 08/17/2020
+ms.openlocfilehash: 918ac54836adf6ad12934d7e30cf88f2786e1fba
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133963"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508504"
 ---
-本文提供資訊和範例程式碼，可協助您開始使用自訂視覺 SDK 與 Go 來建置影像分類模型。 建立它之後，您就可以新增標記、上傳影像、為專案定型、取得專案的已發佈預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Go 應用程式。 如果您想要進行「不用」  程式碼來建置及使用分類模型的程序，請改為參閱[以瀏覽器為基礎的指引](../../getting-started-build-a-classifier.md)。
+本文提供資訊和範例程式碼，可協助您開始使用自訂視覺用戶端程式庫與 Go 來建置影像分類模型。 建立它之後，您就可以新增標記、上傳影像、為專案定型、取得專案的已發佈預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Go 應用程式。 如果您想要進行「不用」  程式碼來建置及使用分類模型的程序，請改為參閱[以瀏覽器為基礎的指引](../../getting-started-build-a-classifier.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 - [Go 1.8+](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>安裝自訂視覺 SDK
+## <a name="install-the-custom-vision-client-library"></a>安裝自訂視覺用戶端程式庫
 
-若要安裝適用於 Go 的自訂視覺服務 SDK，請在 PowerShell 中執行下列命令：
+若要安裝適用於 Go 的自訂視覺服務用戶端程式庫，請在 PowerShell 中執行下列命令：
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...

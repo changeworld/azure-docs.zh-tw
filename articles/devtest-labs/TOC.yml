@@ -83,6 +83,8 @@
           href: devtest-lab-internal-support-message.md
         - name: 設定原則和排程
           href: devtest-lab-set-lab-policy.md
+        - name: "設定實驗室身分識別\_"
+          href: configure-lab-identity.md
         - name: 設定實驗室以使用遠端桌面閘道
           href: configure-lab-remote-desktop-gateway.md
         - name: 在實驗室中張貼公告
@@ -95,8 +97,6 @@
           href: devtest-lab-auto-startup-vm.md
         - name: 調整您的實驗室
           href: devtest-lab-scale-lab.md
-        - name: 在啟用實驗室 VM 的受控識別
-          href: enable-managed-identities-lab-vms.md
         - name: 管理虛擬機器基底
           items:
             - name: 設定 Azure Marketplace 映像
@@ -167,6 +167,8 @@
           href: start-machines-use-automation-runbooks.md
         - name: 從另一個實驗室匯入虛擬機器
           href: import-virtual-machines-from-another-lab.md
+        - name: 在啟用實驗室 VM 的受控識別
+          href: enable-managed-identities-lab-vms.md
     - name: 在實驗室環境中
       items:
         - name: 建立環境

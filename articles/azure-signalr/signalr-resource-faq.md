@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: dde11b6097dddb1568f5adfea811606214a9759e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c944ae3a5d647cc457edd20a5d3dd0489e19e286
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75891258"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192283"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service 常見問題集
 
@@ -68,3 +68,39 @@ SignalR Service 會監視來自應用程式伺服器的活動訊號。
 Azure SignalR Service 依預設會提供 ASP.NET Core SignalR 所支援的三種傳輸。 您無法加以設定。 SignalR Service 會處理所有用戶端連線的連線與傳輸。
 
 您可以依照[這裡](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2)的說明設定用戶端傳輸。
+
+## <a name="what-is-the-meaning-of-metrics-like-message-count-or-connection-count-showed-in-azure-portal-which-kind-of-aggregation-type-should-i-choose"></a>Azure 入口網站中顯示的類似計量 (例如訊息計數或連線計數) 有何意義？ 我應該選擇哪一種彙總類型？
+
+如需如何計算這些計量的詳細資料，請參閱[此處](signalr-concept-messages-and-connections.md)。
+
+我們已在 Azure SignalR Service 資源的概觀刀鋒視窗中，為您選擇適當的彙總類型。 如果您移至計量刀鋒視窗，可以將[這裡](../azure-monitor/platform/metrics-supported.md#microsoftsignalrservicesignalr)的彙總類型作為參考。
+
+## <a name="what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose"></a>服務模式 `Default`/`Serverless`/`Classic` 的意義為何？ 我該如何選擇？
+
+模式：
+* `Default` 模式 **需要**中樞伺服器。 當中樞沒有伺服器連線可用時，用戶端嘗試連線到此中樞時會發生失敗。
+* `Serverless` 模式**不會**允許任何伺服器連線 (也就是會拒絕所有伺服器連線)，而所有用戶端都必須處於無伺服器模式。
+* `Classic` 模式是混合的狀態。 當中樞具有伺服器連線時，新的用戶端將會路由至中樞伺服器，否則用戶端會進入無伺服器模式。
+
+  這可能會造成一些問題；例如，所有伺服器都有一段時間無法連線，有些用戶端會進入無伺服器模式，而不會路由至中樞伺服器。
+
+選擇：
+1. 沒有中樞伺服器，請選擇 `Serverless`。
+1. 所有中樞都有中樞伺服器，請選擇 `Default`。
+1. 有些中樞有中樞伺服器，有些沒有，請選擇 `Classic`，但這可能會造成一些問題；更好的方法是建立兩個執行個體，一個是 `Serverless`，另一個則是 `Default`。
+
+## <a name="any-feature-differences-when-using-azure-signalr-for-aspnet-signalr"></a>使用適用於 ASP.NET SignalR 的 Azure SignalR 時會有任何功能差異嗎？
+使用 Azure SignalR 時，已不再支援 ASP.NET SignalR 的某些 API 和功能：
+- 使用 Azure SignalR 時，不支援在用戶端與中樞之間傳遞任意狀態的功能 (通常稱為 `HubState`)
+- 使用 Azure SignalR 時，尚不支援 `PersistentConnection` 類別
+- 使用 Azure SignalR 時，不支援**永久的框架傳輸**
+- 當用戶端離線時，Azure SignalR 不再重新執行傳送至用戶端的訊息
+- 使用 Azure SignalR 時，一律會將用戶端連線的流量 (也稱為 **長時間**) 傳送至連線期間的應用程式伺服器執行個體
+
+對 ASP.NET SignalR 的支援著重於相容性，因此不支援 ASP.NET Core SignalR 的所有新功能。 例如，**MessagePack**、**串流**等，僅適用於 ASP.NET Core SignalR 應用程式。
+
+SignalR Service 可以設定為不同的服務模式：`Classic`/`Default`/`Serverles`。 在此 ASP.NET 支援中，不支援 `Serverless` 模式。 資料平面 REST API 也不受支援。
+
+## <a name="where-do-my-data-reside"></a>我的資料位於何處？
+
+Azure SignalR Service 是以資料處理器服務的形式運作， 不會儲存任何客戶內容，而且設計為提供資料落地功能。 如果您將 Azure SignalR Service 與其他 Azure 服務搭配使用，例如用於診斷的 Azure 儲存體，請查看[此處](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)以取得如何在 Azure 區域中使用資料落地的指引。

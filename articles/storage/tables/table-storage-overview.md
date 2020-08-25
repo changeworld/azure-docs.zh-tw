@@ -2,21 +2,21 @@
 title: 資料表儲存體簡介 - Azure 中的物件儲存體 | Microsoft Docs
 description: 使用 Azure 表格儲存體 (NoSQL 資料存放區) 將結構化的資料儲存在雲端。
 services: storage
-author: SnehaGunda
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.devlang: dotnet
 ms.topic: overview
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: c850d2b01e098a10aacf383f0ed4340cb9e64e10
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2670d9ce568195fd97350bf678059ac89610422f
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "62129758"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236160"
 ---
-# <a name="introduction-to-table-storage-in-azure"></a>Azure 中的資料表儲存體簡介
+# <a name="what-is-azure-table-storage-"></a>什麼是 Azure 資料表儲存體？ 
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-tip-include.md)]
 

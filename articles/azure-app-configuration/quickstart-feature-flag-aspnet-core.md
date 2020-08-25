@@ -3,15 +3,16 @@ title: 將功能旗標新增至 ASP.NET Core 的快速入門
 description: 將功能旗標新增至 ASP.NET Core 應用程式，並使用 Azure 應用程式組態進行管理
 author: lisaguthrie
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: a25a40346d588f56028bf08294b070823b729e25
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 12b66dc173a8d3f93f97fb369ce03533299a65d7
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760136"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235259"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入門：將功能旗標新增至 ASP.NET Core 應用程式
 
@@ -114,7 +115,7 @@ ms.locfileid: "87760136"
 
 1. 將名為 ConnectionStrings:AppConfig  的祕密新增至祕密管理員。
 
-    此祕密會包含用來存取應用程式組態存放區的連接字串。 請以應用程式組態存放區的連接字串取代下列命令中的 `<your_connection_string>` 值。 您可以在 Azure 入口網站中的 **[存取金鑰]** 下找到連接字串。
+    此祕密會包含用來存取應用程式組態存放區的連接字串。 請以應用程式組態存放區的連接字串取代下列命令中的 `<your_connection_string>` 值。 您可以在 Azure 入口網站中的**存取金鑰**下找到主要唯讀的金鑰連接字串。
 
     此命令必須在和 *.csproj* 檔案相同的目錄中執行。
 
@@ -186,7 +187,7 @@ ms.locfileid: "87760136"
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllersWithViews();
-        services.AddSingleton(Configuration).AddFeatureManagement();
+        services.AddFeatureManagement();
     }
 
     ---

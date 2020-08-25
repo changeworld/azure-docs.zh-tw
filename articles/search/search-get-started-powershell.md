@@ -8,13 +8,13 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 02/10/2020
-ms.openlocfilehash: eb7dcc0956cd9ce214ad3894aa8cc2b99beed942
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/17/2020
+ms.openlocfilehash: b74deaecd1a71fec14e31f0a6aca2fed34361d76
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519808"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506000"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>快速入門：使用 REST API 在 PowerShell 中建立 Azure 認知搜尋索引
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "86519808"
 > * [入口網站](search-get-started-portal.md)
 > 
 
-本文將逐步引導您完成使用 PowerShell 和 [Azure 認知搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 來建立、載入及查詢 Azure 認知搜尋索引的程序。 本文將說明如何以互動方式執行 PowerShell 命令。 或者，您可以[下載並執行 Powershell 指令碼](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)來執行相同的作業。
+本文將逐步引導您完成使用 PowerShell 和 [Azure 認知搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 來建立、載入及查詢 Azure 認知搜尋索引的程序。 本文將說明如何以互動方式執行 PowerShell 命令。 或者，您可以[下載並執行 PowerShell 指令碼](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)來執行相同的作業。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -89,7 +89,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 索引的必要元素包括名稱和欄位集合。 欄位集合會定義「文件」  的結構。 每個欄位都有名稱、類型和用於決定其使用方式的屬性 (例如，該欄位是否可在搜尋結果中進行全文檢索搜尋、篩選或擷取)。 在索引內，類型為 `Edm.String` 的其中一個欄位必須指定為識別文件所需的「索引鍵」  。
 
-如下所示，此索引名為 "hotels-quickstart"，並且具有欄位定義。 這是較大型[飯店索引](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) (用於其他逐步解說) 的子集。 為了簡潔起見，我們已在本快速入門中予以修剪。
+如下所示，此索引名為 "hotels-quickstart"，並且具有欄位定義。 這是較大型[飯店索引](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) (用於其他逐步解說文章) 的子集。 為了簡潔起見，本快速入門中的欄位定義已稍做修改。
 
 1. 將此範例貼入 PowerShell，即可建立包含索引結構描述的 **$body** 物件。
 
@@ -378,7 +378,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
 
 # Query example 2 
-# Apply a filter to the index to find hotels rated 4 or highter
+# Apply a filter to the index to find hotels rated 4 or higher
 # Returns the HotelName and Rating. Two documents match.
 $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
 

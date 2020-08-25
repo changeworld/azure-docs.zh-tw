@@ -43,7 +43,7 @@
         - name: 授權
           href: concept-mfa-licensing.md
         - name: MFA for Office 365
-          href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
+          href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide
         - name: 常見問題集
           href: multi-factor-authentication-faq.md
     - name: 無密碼驗證
@@ -87,7 +87,7 @@
         - name: 目錄同盟
           items:
             - name: Windows Server 2016 AD FS 介面卡
-              href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa'
+              href: /windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa
             - name: 同盟服務
               href: multi-factor-authentication-get-started-adfs.md
             - name: 使用 AD FS
@@ -119,7 +119,7 @@
         - name: 手機無密碼登入
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello 企業版
-          href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+          href: /windows/security/identity-protection/hello-for-business/hello-identity-verification
     - name: 安全性資訊註冊
       items:
         - name: 啟用合併的註冊
@@ -220,7 +220,7 @@
 - name: 參考
   items:
     - name: MFA 使用者指南
-      href: ./end-user/current/multi-factor-authentication-end-user.md
+      href: ../user-help/multi-factor-authentication-end-user-first-time.md
     - name: 程式碼範例
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Azure PowerShell Cmdlet
@@ -234,7 +234,7 @@
     - name: Azure 意見反應論壇
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服務更新

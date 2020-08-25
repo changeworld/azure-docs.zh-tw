@@ -9,17 +9,17 @@ ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 07/06/2020
+ms.date: 08/11/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 76c936cb0c1a95ca1bf5919cbf2753fb6f050687
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 840ccb00fdc91cc44fee46500bbc7237fe55ff2a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971006"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185514"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中佈建 Azure-SSIS 整合執行階段
 
@@ -127,93 +127,99 @@ ms.locfileid: "85971006"
 
 ### <a name="deployment-settings-page"></a>部署設定頁面
 
-在 [整合執行階段設定] 窗格的 [部署設定] 頁面上，完成下列步驟。
+在**整合執行階段安裝** 窗格的**部署設定**頁面上，您可以選擇建立 SSISDB 和或 Azure-SSIS IR 套件存放區。
 
-   1. 選取 [建立由 Azure SQL Database 伺服器/受控執行個體裝載的 SSIS 目錄 (SSISDB) 來儲存您的專案/套件/環境/執行記錄] 核取方塊，以選擇是否要將套件部署到 SSISDB (專案部署模型)。 或者，如果您想要將套件部署到 Azure SQL 受控執行個體 (套件部署模型) 所裝載的檔案系統、Azure 檔案儲存體或 SQL Server 資料庫 (MSDB) 中，就不需要建立 SSISDB。
+#### <a name="creating-ssisdb"></a>建立 SSISDB
+
+在**整合執行階段安裝** 窗格的**部署設定**頁面上，如果您要將套件部署到 SSISDB (專案部署模型)，請選取 [建立由 Azure SQL Database 伺服器/受控執行個體裝載的 SSIS 目錄 (SSISDB) 來儲存您的專案/套件/環境/執行記錄] 核取方塊。 或者，如果要將套件部署到 Azure SQL 受控執行個體 (套件部署模型) 所裝載的檔案系統、Azure 檔案儲存體或 SQL Server 資料庫 (MSDB) 中，就不需要建立 SSISDB，也無需選擇核取方塊。
+
+由於套件是由 SSISDB 啟用的，無論您的部署模型為何，如果要使用 Azure SQL 受控執行個體所裝載的 SQL Server Agent，請選取此核取方塊以協調/排程套件執行。 如需詳細資訊，請參閱[透過 Azure SQL 受控執行個體代理程式排程 SSIS 套件執行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent) \(部分機器翻譯\)。
    
-      由於套件是由 SSISDB 啟用的，無論您的部署模型為何，都請選取此核取方塊來選擇是否要使用 Azure SQL 受控執行個體所裝載的 SQL Server Agent，以協調/排程套件執行。 如需詳細資訊，請參閱[透過 Azure SQL 受控執行個體代理程式排程 SSIS 套件執行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent) \(部分機器翻譯\)。
+如果您選取該核取方塊，請使用用自己的資料庫伺服器來裝載 SSISDB，而我們會為您建立及管理 SSISDB。
+
+   ![SSISDB 的部署設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png)
    
-      如果您選取此核取方塊，則必須用自己的資料庫伺服器來裝載 SSISDB，而我們會為您建立及管理 SSISDB。
+   1. 針對 [訂用帳戶]，選取具有資料庫伺服器可裝載 SSISDB 的 Azure 訂用帳戶。 
 
-      ![SSISDB 的部署設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png)
+   1. 針對 [位置]，選取裝載 SSISDB 的資料庫伺服器所在位置。 我們建議您選取整合執行階段所在的相同位置。
+
+   1. 針對 [目錄資料庫伺服器端點]，選取裝載 SSISDB 的資料庫伺服器端點。 
    
-      1. 針對 [訂用帳戶]，選取具有資料庫伺服器可裝載 SSISDB 的 Azure 訂用帳戶。 
+      根據所選的資料庫伺服器，系統可以代表您將 SSISDB 執行個體建立為單一資料庫、建立為彈性集區的一部分，或建立在受控執行個體中。 該執行個體可以在公用網路中供您存取，而您也可以藉由加入虛擬網路來加以存取。 如需選擇適當資料庫伺服器類型來裝載 SSISDB 的指導方針，請參閱[比較 SQL Database 與 SQL 受控執行個體](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)。   
 
-      1. 針對 [位置]，選取裝載 SSISDB 的資料庫伺服器所在位置。 我們建議您選取整合執行階段所在的相同位置。
+      如果您選取具有 IP 防火牆規則/虛擬網路服務端點的 Azure SQL Database 伺服器或具有私人端點的受控執行個體來裝載 SSISDB，或您需要在不設定自我裝載 IR 的情況下存取內部部署資料，則必須將 Azure-SSIS IR 加入虛擬網路。 如需詳細資訊，請參閱[在虛擬網路中建立 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
 
-      1. 針對 [目錄資料庫伺服器端點]，選取裝載 SSISDB 的資料庫伺服器端點。 
+   1. 選取 [使用 Azure AD 驗證搭配 ADF 的受控識別] 核取方塊，來為要裝載 SSISDB 的資料庫伺服器選擇驗證方法。 您可以選擇 SQL 驗證或 Azure AD 驗證來搭配資料處理站的受控識別。
+
+      如果您選取該核取方塊，則必須將資料處理站的受控識別新增至具有資料庫伺服器存取權限的 Azure AD 群組中。 如需詳細資訊，請參閱[使用 Azure AD 驗證來建立 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
    
-         根據所選的資料庫伺服器，系統可以代表您將 SSISDB 執行個體建立為單一資料庫、建立為彈性集區的一部分，或建立在受控執行個體中。 該執行個體可以在公用網路中供您存取，而您也可以藉由加入虛擬網路來加以存取。 如需選擇適當資料庫伺服器類型來裝載 SSISDB 的指導方針，請參閱[比較 SQL Database 與 SQL 受控執行個體](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)。   
+   1. 針對 [管理使用者名稱]，為裝載 SSISDB 的資料庫伺服器輸入 SQL 驗證使用者名稱。 
 
-         如果您選取具有 IP 防火牆規則/虛擬網路服務端點的 Azure SQL Database 伺服器或具有私人端點的受控執行個體來裝載 SSISDB，或您需要在不設定自我裝載 IR 的情況下存取內部部署資料，則必須將 Azure-SSIS IR 加入虛擬網路。 如需詳細資訊，請參閱[在虛擬網路中建立 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
+   1. 針對 [管理密碼]，為裝載 SSISDB 的資料庫伺服器輸入 SQL 驗證密碼。 
 
-      1. 選取 [使用 AAD 驗證搭配 ADF 的受控識別] 核取方塊，來為要裝載 SSISDB 的資料庫伺服器選擇驗證方法。 您可以選擇 SQL 驗證或 Azure AD 驗證來搭配資料處理站的受控識別。
+   1. 針對 [目錄資料庫服務層級]，選取您資料庫伺服器用來裝載 SSISDB 的服務層級。 選取 [基本]、[標準] 或 [進階] 層，或選取彈性集區名稱。
 
-         如果您選取該核取方塊，則必須將資料處理站的受控識別新增至具有資料庫伺服器存取權限的 Azure AD 群組中。 如需詳細資訊，請參閱[使用 Azure AD 驗證來建立 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
+在適用時，選取 [測試連接]，如果測試成功，請選取 [下一步]。
+
+#### <a name="creating-azure-ssis-ir-package-stores"></a>建立 Azure-SSIS IR 套件存放區
+
+如果您要使用 Azure-SSIS IR 套件存放區，來管理部署到 MSDB、檔案系統或 Azure 檔案儲存體 (套件部署模型) 的套件，請在**整合執行階段安裝** 窗格的**部署設定**頁面上，選取**建立套件存放區以管理部署到 Azure SQL 受控執行個體所裝載的檔案系統/Azure 檔案儲存體/SQL Server 資料庫 (MSDB)** 核取方塊。
    
-      1. 針對 [管理使用者名稱]，為裝載 SSISDB 的資料庫伺服器輸入 SQL 驗證使用者名稱。 
-
-      1. 針對 [管理密碼]，為裝載 SSISDB 的資料庫伺服器輸入 SQL 驗證密碼。 
-
-      1. 針對 [目錄資料庫服務層級]，選取您資料庫伺服器用來裝載 SSISDB 的服務層級。 選取 [基本]、[標準] 或 [進階] 層，或選取彈性集區名稱。
-
-   1. 選取 [建立套件存放區以管理部署到 Azure SQL 受控執行個體所裝載的檔案系統/Azure 檔案儲存體/SQL Server 資料庫 (MSDB)] 核取方塊，以選擇您是否想要使用 Azure-SSIS IR 套件存放區，來管理部署到 MSDB、檔案系統或 Azure 檔案儲存體 (套件部署模型) 的套件。
+Azure-SSIS IR 套件存放區可讓您透過 SSMS (類似於[舊版 SSIS 套件存放區](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017))，來匯入/匯出/刪除/執行套件，以及監視/停止執行套件。 如需詳細資訊，請參閱[使用 Azure-SSIS IR 套件存放區管理 SSIS 套件](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store) \(英文\)。
    
-      Azure-SSIS IR 套件存放區可讓您透過 SSMS (類似於[舊版 SSIS 套件存放區](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017))，來匯入/匯出/刪除/執行套件，以及監視/停止執行套件。 如需詳細資訊，請參閱[使用 Azure-SSIS IR 套件存放區管理 SSIS 套件](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store) \(英文\)。
+如果您選取此核取方塊，您可以選取 [新增]，將多個套件存放區新增至 Azure-SSIS IR。 相反地，多個 Azure SSIS IR 也可以共用一個套件存放區。
+
+![MSDB/檔案系統/Azure 檔案儲存體的部署設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png)
+
+在 [新增套件存放區] 窗格上，完成下列步驟。
    
-      如果您選取此核取方塊，您可以選取 [新增]，將多個套件存放區新增至 Azure-SSIS IR。 相反地，多個 Azure SSIS IR 也可以共用一個套件存放區。
+   1. 針對 [套件存放區名稱]，輸入套件存放區的名稱。 
 
-      ![MSDB/檔案系統/Azure 檔案儲存體的部署設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png)
+   1. 針對 [套件存放區連結的服務]，選取現有的連結服務，其儲存您的套件部署所在檔案系統/Azure 檔案儲存體/Azure SQL 受控執行個體的存取資訊，或選取 [新增] 來建立新的服務。 在 [新增連結服務] 窗格上，完成下列步驟。 
 
-      在 [新增套件存放區] 窗格上，完成下列步驟。
-   
-      1. 針對 [套件存放區名稱]，輸入套件存放區的名稱。 
+      ![連結服務的部署設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
-      1. 針對 [套件存放區連結的服務]，選取現有的連結服務，其儲存您的套件部署所在檔案系統/Azure 檔案儲存體/Azure SQL 受控執行個體的存取資訊，或選取 [新增] 來建立新的服務。 在 [新增連結服務] 窗格上，完成下列步驟。 
-
-         ![連結服務的部署設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
-
-         1. 針對 [名稱]，輸入連結服務的名稱。 
+      1. 針對 [名稱]，輸入連結服務的名稱。 
          
-         1. 針對 [描述]，輸入連結服務的描述。 
+      1. 針對 [描述]，輸入連結服務的描述。 
          
-         1. 針對 [類型]，選取 [Azure 檔案儲存體]、[Azure SQL 受控執行個體] 或 [檔案系統]。
+      1. 針對 [類型]，選取 [Azure 檔案儲存體]、[Azure SQL 受控執行個體] 或 [檔案系統]。
 
-         1. 您可以忽略 [透過整合執行階段連線]，因為我們一律使用 Azure-SSIS IR 來擷取套件存放區的存取資訊。
+      1. 您可以忽略 [透過整合執行階段連線]，因為我們一律使用 Azure-SSIS IR 來擷取套件存放區的存取資訊。
 
-         1. 如果您選取 [Azure 檔案儲存體]，請完成下列步驟。 
+      1. 如果您選取 [Azure 檔案儲存體]，請完成下列步驟。 
 
-            1. 針對 [帳戶選取方法]，選取 [從 Azure 訂用帳戶] 或 [手動輸入]。
+         1. 針對 [帳戶選取方法]，選取 [從 Azure 訂用帳戶] 或 [手動輸入]。
          
-            1. 如果您選取 [從 Azure 訂用帳戶]，請選取相關的 [Azure 訂用帳戶]、[儲存體帳戶名稱] 與 [檔案共用]。
+         1. 如果您選取 [從 Azure 訂用帳戶]，請選取相關的 [Azure 訂用帳戶]、[儲存體帳戶名稱] 與 [檔案共用]。
             
-            1. 如果您選取 [手動輸入]，請針對 [主機] 輸入`\\<storage account name>.file.core.windows.net\<file share name>`、針對 [使用者名稱] 輸入 `Azure\<storage account name>`，並針對 [密碼] 輸入 `<storage account key>`，或選取將其儲存為祕密的 [Azure Key Vault]。
+         1. 如果您選取 [手動輸入]，請針對 [主機] 輸入`\\<storage account name>.file.core.windows.net\<file share name>`、針對 [使用者名稱] 輸入 `Azure\<storage account name>`，並針對 [密碼] 輸入 `<storage account key>`，或選取將其儲存為祕密的 [Azure Key Vault]。
 
-         1. 如果您選取 [Azure SQL 受控執行個體]，請完成下列步驟。 
+      1. 如果您選取 [Azure SQL 受控執行個體]，請完成下列步驟。 
 
-            1. 選取 [連接字串] 以手動輸入，或輸入將其儲存為祕密的 [Azure Key Vault]。
+         1. 選取 [連接字串] 以手動輸入，或輸入將其儲存為祕密的 [Azure Key Vault]。
          
-            1. 如果您選取 [連接字串]，請完成下列步驟。 
+         1. 如果您選取 [連接字串]，請完成下列步驟。 
 
-               1. 針對 [完整網域名稱]，輸入 `<server name>.<dns prefix>.database.windows.net` 或 `<server name>.public.<dns prefix>.database.windows.net,3342` 分別作為 Azure SQL 受控執行個體的私人或公用端點。 如果您輸入私人端點，則 [測試連線] 不適用，因為 ADF UI 無法與其連線。
+            1. 針對 [完整網域名稱]，輸入 `<server name>.<dns prefix>.database.windows.net` 或 `<server name>.public.<dns prefix>.database.windows.net,3342` 分別作為 Azure SQL 受控執行個體的私人或公用端點。 如果您輸入私人端點，則 [測試連線] 不適用，因為 ADF UI 無法與其連線。
 
-               1. 針對 [資料庫名稱]，輸入 `msdb`。
+            1. 針對 [資料庫名稱]，輸入 `msdb`。
                
-               1. 針對 [驗證類型]，選取 [SQL 驗證]、[受控識別] 或 [服務主體]。
+            1. 針對 [驗證類型]，選取 [SQL 驗證]、[受控識別] 或 [服務主體]。
 
-               1. 如果您選取 [SQL 驗證]，請輸入相關 [使用者名稱] 與 [密碼]，或選取將其儲存為祕密的 [Azure Key Vault]。
+            1. 如果您選取 [SQL 驗證]，請輸入相關 [使用者名稱] 與 [密碼]，或選取將其儲存為祕密的 [Azure Key Vault]。
 
-               1. 如果您選取 [受控識別]，請將 ADF 受控識別存取權授與 Azure SQL 受控執行個體。
+            1. 如果您選取 [受控識別]，請將 ADF 受控識別存取權授與 Azure SQL 受控執行個體。
 
-               1. 如果您選取 [服務主體]，請輸入相關 [服務主體識別碼] 與 [服務主體金鑰]，或選取將其儲存為祕密的 [Azure Key Vault]。
+            1. 如果您選取 [服務主體]，請輸入相關 [服務主體識別碼] 與 [服務主體金鑰]，或選取將其儲存為祕密的 [Azure Key Vault]。
 
-         1. 如果您選取 [檔案系統]，請針對 [主機] 輸入套件部署所在資料夾的 UNC 路徑，以及相關 [使用者名稱] 與 [密碼]，或選取將其儲存為祕密的 [Azure Key Vault]。
+      1. 如果您選取 [檔案系統]，請針對 [主機] 輸入套件部署所在資料夾的 UNC 路徑，以及相關 [使用者名稱] 與 [密碼]，或選取將其儲存為祕密的 [Azure Key Vault]。
 
-         1. 在適用時，選取 [測試連接]，如果測試成功，請選取 [建立]。
+      1. 在適用時，選取 [測試連接]，如果測試成功，請選取 [建立]。
 
-      已新增的套件存放區會出現在 [部署設定] 頁面上。 若要將其移除，請選取其核取方塊，然後選取 [刪除]。
+   1. 已新增的套件存放區會出現在 [部署設定] 頁面上。 若要將其移除，請選取其核取方塊，然後選取 [刪除]。
 
-   1. 在適用時，選取 [測試連接]，如果測試成功，請選取 [下一步]。
+在適用時，選取 [測試連接]，如果測試成功，請選取 [下一步]。
 
 ### <a name="advanced-settings-page"></a>進階設定頁面
 

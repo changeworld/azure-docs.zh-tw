@@ -4,14 +4,14 @@ description: 了解如何將 Azure 保留虛擬機器執行個體的折扣，套
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 08/13/2020
 ms.author: banders
-ms.openlocfilehash: a9d9a5661e8a094b7d92a9dd83db3cdcd76b8b65
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ddf232dbe6c6ff61f685e2910286188fb92e1f17
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018377"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192214"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Azure 保留折扣如何套用至虛擬機器
 
@@ -56,11 +56,15 @@ ms.locfileid: "84018377"
 
 ## <a name="discount-can-apply-to-different-sizes"></a>折扣可套用於不同的大小
 
-當您購買保留的 VM 執行個體時，如果選取 [最佳化對象]  ：[執行個體大小彈性]  ，折扣涵蓋範圍就會依據您選取的 VM 大小。 此保留可適用於相同大小系列群組中的虛擬機器 (VM) 大小。 如需詳細資訊，請參閱[利用保留的 VM 執行個體獲得虛擬機器大小彈性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
+當您購買保留的 VM 執行個體時，如果選取 [針對執行個體大小彈性最佳化]，折扣範圍就會涵蓋您選取的 VM 大小。 這也可以套用至相同系列執行個體大小彈性群組中的其他 VM 大小。 如需詳細資訊，請參閱[利用保留的 VM 執行個體獲得虛擬機器大小彈性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
 
-## <a name="discount-applies-to-matching-servicetype-only"></a>折扣只會套用至相符的 ServiceType
+## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>進階儲存體 VM 不提供非進階折扣
 
-保留折扣只會套用至 VM 使用量，其中 `AdditionalInfo`中的 `ServiceType` 值符合所購買的保留。 保留折扣套用會忽略用於 VM 的計量，且只會評估 `ServiceType`。 了解您購買 VM 的服務類型。 您可以交換非進階儲存體 VM 保留與進階儲存體保留，或以相反方式進行。
+以下為範例。 假設您購買了五個 Standard_D1 VM 的保留，則保留折扣僅適用於相同執行個體系列中的 Standard_D1 VM 或其他 VM。 折扣不適用於 DS1 執行個體大小彈性群組中的 Standard_DS1 VM 或其他大小。
+
+保留折扣應用程式會忽略 VM 使用的計量，而只會評估 serviceType。 查看 `AdditionalInfo` 中的 `ServiceType` 值，以判斷 VM 的執行個體彈性群組/系列資訊。 這些值位於您的使用量 CSV 檔案中。
+
+購買後，您無法直接變更保留的執行個體彈性群組/系列。 不過，您可以將 VM 保留從一個執行個體彈性群組/系列「交換」到另一個執行個體彈性群組/系列。
 
 ## <a name="services-that-get-vm-reservation-discounts"></a>取得 VM 保留折扣的服務
 
@@ -70,7 +74,7 @@ ms.locfileid: "84018377"
 
 執行個體大小彈性設定會決定哪些服務可取得保留執行個體折扣。
 
-無論是開啟或關閉設定，保留折扣都會在 *ConsumedService* 為 `Microsoft.Compute` 時，自動套用至任何相符的 VM 使用量。 因此，請檢查您的使用量資料是否有 ConsumedService  值。 部分範例包括：
+無論是開啟或關閉設定，保留折扣都會在 *ConsumedService* 為 `Microsoft.Compute` 時，自動套用至任何相符的 VM 使用量。 因此，請檢查您的使用量資料是否有 ConsumedService** 值。 部分範例包括：
 
 - 虛擬機器
 - 虛擬機器擴展集
@@ -87,7 +91,7 @@ ms.locfileid: "84018377"
 - Microsoft.MachineLearningServices
 - Microsoft.Kusto
 
-檢查使用量資料中的 ConsumedService  值，以判斷使用量是否符合保留折扣的資格。
+檢查使用量資料中的 ConsumedService** 值，以判斷使用量是否符合保留折扣的資格。
 
 如需執行個體大小彈性的詳細資訊，請參閱[利用保留的 VM 執行個體獲得虛擬機器大小彈性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
 

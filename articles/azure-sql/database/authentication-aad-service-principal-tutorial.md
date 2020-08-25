@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: 10d1fe9e47b7a3bf2d921f86703d5ae6d067813c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/17/2020
+ms.openlocfilehash: 61cb5384fd4d935ef4038c18b391b5da5fbc96b1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293290"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516685"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>教學課程：使用 Azure AD 應用程式建立 Azure AD 使用者
 
@@ -94,6 +94,8 @@ ms.locfileid: "87293290"
 
 > [!NOTE] 
 > 此指令碼必須由 Azure AD `Global Administrator` 或 `Privileged Roles Administrator` 執行。
+>
+> 在**公開預覽**中，您可以在 Azure AD 中將 `Directory Readers` 角色指派給群組。 然後，群組擁有者可以將受控識別新增為此群組的成員，這將會略過 `Global Administrator` 或 `Privileged Roles Administrator` 授與 `Directory Readers` 角色的需求。 如需這項功能的詳細資訊，請參閱 [Azure Active Directory 中適用於 Azure SQL 的 Directory 讀者角色](authentication-aad-directory-readers-role.md)。
 
 - 使用稍早蒐集的 `TenantId` 取代 `<TenantId>`。
 - 使用您自己的 SQL 邏輯伺服器名稱取代 `<server name>`。 如果您的伺服器名稱是 `myserver.database.windows.net`，使用 `myserver` 取代 `<server name>`。
@@ -304,3 +306,4 @@ else
 - [Azure AD 服務主體驗證至 SQL DB - 程式碼範例](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467) \(英文\)
 - [Azure Active Directory 中的應用程式和服務主體物件](../../active-directory/develop/app-objects-and-service-principals.md)
 - [使用 Azure PowerShell 來建立 Azure 服務主體](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+- [Azure Active Directory 中適用於 Azure SQL 的 Directory 讀者角色](authentication-aad-directory-readers-role.md)

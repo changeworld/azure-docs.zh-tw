@@ -1,17 +1,17 @@
 ---
-title: 教學課程 - 使用 Azure 備份還原 VM 磁碟
+title: 教學課程 - 使用 Azure CLI 來還原 VM
 description: 了解如何還原磁碟，並在 Azure 中使用備份與復原服務建立 VM。
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: efad97c3668c50669be89e6eccaadb26cb313e81
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 56ea3de451e625ef5c55f92daa1b86bd34b1c4c4
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289463"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141341"
 ---
-# <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>在 Azure 中還原磁碟並建立已復原的 VM
+# <a name="restore-a-vm-with-azure-cli"></a>使用 Azure CLI 來還原 VM
 
 Azure 備份會建立復原點，並儲存在異地備援復原保存庫。 當您從復原點還原時，可以還原整個 VM 或個別檔案。 本文說明如何使用 CLI 還原完整的 VM。 在本教學課程中，您將了解如何：
 

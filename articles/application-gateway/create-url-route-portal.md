@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 11/14/2019
+ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 8d48ea133aaabbe9fd44bda545d672e68c93c08d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 02332e190def7770fa57977461d57766f3dee13a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312189"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205576"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建立包含 URL 路徑型路由規則的應用程式閘道
 
@@ -33,9 +33,9 @@ ms.locfileid: "81312189"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>登入 Azure
+## <a name="prerequisites"></a>必要條件
 
-在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站
+登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 ## <a name="create-virtual-machines"></a>建立虛擬機器
 
@@ -204,7 +204,11 @@ ms.locfileid: "81312189"
 
    連接埠 8080 上的接聽程式會將此要求路由傳送至 [Video]  後端集區。
 
+## <a name="clean-up-resources"></a>清除資源
+
+當不再需要資源時，請刪除資源群組及所有相關資源。 若要這樣做，請選取資源群組，然後選取 [刪除資源群組]。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [在 Azure 應用程式閘道上啟用端對端 TLS](application-gateway-backend-ssl.md)
+> [!div class="nextstepaction"]
+> [在 Azure 應用程式閘道上啟用端對端 TLS](application-gateway-backend-ssl.md)

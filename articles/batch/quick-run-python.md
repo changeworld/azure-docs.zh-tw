@@ -1,31 +1,33 @@
 ---
-title: 使用 Python API 執行 Azure Batch 作業
-description: 使用 Batch Python 用戶端程式庫快速執行 Azure Batch 範例作業和工作。 了解 Batch 服務的重要概念。
+title: 快速入門 - 使用 Python API 執行 Azure Batch 作業
+description: 在本快速入門中，使用 Batch Python 用戶端程式庫快速執行 Azure Batch 範例作業和工作。 了解 Batch 服務的重要概念。
 ms.topic: quickstart
-ms.date: 11/27/2018
+ms.date: 08/17/2020
 ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
-ms.openlocfilehash: 7cef08c81a4122fcbfcc18160ad8e6602f335569
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852560"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511009"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>快速入門：使用 Python API 執行 Azure Batch 作業
 
-在本快速入門中，您會使用 Python API 從應用程式執行 Azure Batch 作業。 此應用程式會將輸入資料檔案上傳至 Azure 儲存體，然後建立 Batch 計算節點 (虛擬機器) 的「集區」  。 接著會建立可執行「工作」  的「作業」  ，以使用基本命令處理集區中的每個輸入檔案。
+開始使用 Azure Batch，方法是使用 Python API 從應用程式執行 Azure Batch 作業。 此應用程式會將輸入資料檔案上傳至 Azure 儲存體，然後建立 Batch 計算節點 (虛擬機器) 的「集區」。 接著會建立可執行「工作」的「作業」，以使用基本命令處理集區中的每個輸入檔案。
 
-在此您將了解 Batch 服務的重要概念，並準備使用更多真實的工作負載來大規模試用 Batch。
+完成本快速入門之後，您將了解 Batch 服務的重要概念，並可準備使用更多真實的工作負載來大規模試用 Batch。
 
 ![Azure Batch 工作流程的概觀](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [Azure Batch]  帳戶和連結的 [Azure 儲存體]  帳戶。 使用 [Azure 入口網站](quick-create-portal.md)或 [CLI](quick-create-cli.md) 來建立這些帳戶。
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+- Batch 帳戶和連結的 Azure 儲存體帳戶。 若要建立這些帳戶，請參閱使用 [Azure 入口網站](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md) 的 Batch 快速入門。
+
 - [Python](https://python.org/downloads) 2.7 或 3.3 或更新版本，包括 [pip](https://pip.pypa.io/en/stable/installing/) 套件管理員
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
@@ -68,7 +70,7 @@ _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB
 python python_quickstart_client.py
 ```
 
-執行此指令碼之後，檢閱程式碼以了解應用程式的每部分用途。 
+執行此指令碼之後，檢閱程式碼以了解應用程式的每部分用途。
 
 當您執行範例應用程式時，主控台輸出大致如下。 在執行期間，集區的計算節點啟動後，您會在 `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` 遇到暫停。 工作會排入佇列中，以便在第一個計算節點執行時執行。 移至 [Azure 入口網站](https://portal.azure.com)中您的 Batch 帳戶，以監視 Batch 帳戶中的集區、計算節點、作業和工作。
 
@@ -102,9 +104,9 @@ Batch processing began with mainframe computers and punch cards. Today it still 
 
 本快速入門中的 Python 應用程式會執行下列作業：
 
-* 將三個小型文字檔上傳至 Azure 儲存體帳戶中的 Blob 容器。 這些檔案是 Batch 工作所處理的輸入。
-* 建立一個集區，其中包含兩個執行 Ubuntu 18.04 LTS 的計算節點。
-* 建立一個作業和三項工作以在節點上執行。 每項工作會使用 Bash Shell 命令列處理其中一個輸入檔案。
+- 將三個小型文字檔上傳至 Azure 儲存體帳戶中的 Blob 容器。 這些檔案是 Batch 工作所處理的輸入。
+- 建立一個集區，其中包含兩個執行 Ubuntu 18.04 LTS 的計算節點。
+- 建立一個作業和三項工作以在節點上執行。 每項工作會使用 Bash Shell 命令列處理其中一個輸入檔案。
 * 顯示工作所傳回的檔案。
 
 如需詳細資訊，請參閱 `python_quickstart_client.py` 檔案和後面幾節。
@@ -182,7 +184,7 @@ batch_service_client.job.add(job)
 
 應用程式會使用 [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) 類別建立工作物件清單。 每項工作都會使用 `command_line` 參數來處理輸入 `resource_files` 物件。 在此範例中，命令列會執行 Bash Shell `cat` 命令以顯示文字檔。 這個命令是用於示範的簡單範例。 當您使用 Batch 時，您會在此命令列中指定您的應用程式或指令碼。 Batch 提供數種方法來將應用程式和指令碼部署至計算節點。
 
-然後，應用程式會使用 [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) 方法將工作新增至作業，該方法會將工作排入佇列以在計算節點上執行。 
+然後，應用程式會使用 [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) 方法將工作新增至作業，該方法會將工作排入佇列以在計算節點上執行。
 
 ```python
 tasks = list()

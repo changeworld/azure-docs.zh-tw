@@ -3,17 +3,17 @@ title: 教學課程 - 建立及管理 Azure 成本管理的匯出資料
 description: 本文示範如何建立及管理匯出的 Azure 成本管理資料，以將其用於外部系統中。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/27/2020
+ms.date: 08/05/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 90334d29ed2f649854863f9ad86f03811728a945
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 69b7b4bff46ba2998ca931ba1cb6bc9e7c1d9096
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142298"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272183"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教學課程：建立和管理匯出的資料
 
@@ -49,40 +49,38 @@ ms.locfileid: "84142298"
 
 ## <a name="create-a-daily-export"></a>建立每日匯出
 
-若要建立或檢視資料匯出，或是排程匯出，請在 Azure 入口網站開啟所需的範圍，然後在功能表中選取 [成本分析]。 例如，瀏覽至 [訂用帳戶]、從清單中選取訂用帳戶，然後在功能表中選取 [成本分析]。 在 [成本分析] 頁面頂端，選取 [設定]，選取 [匯出]，然後選擇匯出選項。
+若要建立或檢視資料匯出，或是排程匯出，請在 Azure 入口網站開啟所需的範圍，然後在功能表中選取 [成本分析]。 例如，瀏覽至 [訂用帳戶]、從清單中選取訂用帳戶，然後在功能表中選取 [成本分析]。 在成本分析頁面頂端，選取 [設定]，然後選取 [匯出]。
 
 > [!NOTE]
-> - 除了訂用帳戶，您也可以在資源群組、帳戶、部門和註冊上建立匯出。 如需有關範圍的詳細資訊，請參閱[了解並使用範圍](understand-work-scopes.md)。
+> - 除了訂用帳戶，您也可以在資源群組、管理群組、部門和註冊上建立匯出。 如需有關範圍的詳細資訊，請參閱[了解並使用範圍](understand-work-scopes.md)。
 >- 當您在計費帳戶範圍或客戶的租用戶上以合作夥伴身分登入時，您可以將資料匯出至與合作夥伴儲存體帳戶連結的 Azure 儲存體帳戶。 不過，您必須在 CSP 租用戶中擁有有效的訂用帳戶。
 
-選取 [新增]、輸入匯出的名稱，然後選取 [當月費用的每日匯出] 選項。 選取 [下一步] 。
-
-[![顯示匯出類型的新匯出範例](./media/tutorial-export-acm-data/basics_exports.png)](./media/tutorial-export-acm-data/basics_exports.png#lightbox)
-
-為您的 Azure 儲存體帳戶名稱指定訂用帳戶，然後選取您的儲存體帳戶。  指定您希望匯出檔案移至的儲存體容器和目錄路徑。 選取 [下一步] 。
-
-![顯示儲存體帳戶詳細資料的新匯出範例](./media/tutorial-export-acm-data/storage_exports.png)
-
-檢閱匯出詳細資料，然後選取 [建立]。
+1. 選取 [新增]，然後輸入匯出的名稱。 
+1. 針對**計量**，請選取：
+    - **實際成本 (使用量和購買)** - 選擇匯出標準使用量和購買
+    - **分攤成本 (使用量和採購)** - 選取以匯出 Azure 保留等購買的分攤成本
+1. 針 **匯出類型**，請選取：
+    - **每日匯出當月迄今成本** - 每天提供新的匯出檔案，提供當月迄今成本資訊。 系統會從先前的每日匯出彙總最新資料。
+    - **每週匯出過去 7 天內成本** - 從匯出的開始日期起算，每週匯出過去七天內的成本。  
+    - **每月匯出上個月的成本** - 相較於您建立匯出的當月，提供您上個月的成本匯出。 在未來，排程會在每個新月份的第五天執行匯出，同時提供前幾個月的成本。  
+    - **一次性匯出** - 可讓您選擇要匯出至 Azure Blob 儲存體之歷程記錄資料的日期範圍。 從選擇的日期起算，您最多可以匯出 90 天的歷程記錄成本。 這項匯出會立即執行，您的儲存體帳戶在兩個小時內會提供此資訊。  
+        根據您的匯出類型，選擇開始日期，或選擇**開始**和**結束**日期。
+1. 為您的 Azure 儲存體帳戶指定訂用帳戶，然後選取資源群組或建立新的資源群組。 
+1. 選取儲存體帳戶名稱，或建立新名稱。 
+1. 選取位置 (Azure 區域)。
+1. 指定您希望匯出檔案移至的儲存體容器和目錄路徑。 
+    :::image type="content" source="./media/tutorial-export-acm-data/basics_exports.png" alt-text="新增匯出範例" lightbox="./media/tutorial-export-acm-data/basics_exports.png":::
+1. 檢閱匯出詳細資料，然後選取 [建立]。
 
 您新增的匯出會出現在匯出清單中。 根據預設會啟用新的匯出。 若您想要停用或刪除已排程的匯出，請選取清單中的任何項目，然後選取 [停用] 或 [刪除]。
 
-剛開始可能會需要一到兩個小時，匯出才會開始執行。 但是，資料可能需要最多四個小時，才會出現在匯出檔案中。
+剛開始可能會需要12 到 24 個小時，才會開始執行匯出。 但是，資料可能需要更久才會出現在匯出檔案中。
 
 ### <a name="export-schedule"></a>匯出排程
 
-排程的匯出會受您最初建立匯出時的時間和星期幾所影響。 當您建立匯出的排程時，後續的每次匯出都會以同樣的頻率執行。 例如，頻率設定為每日的月初迄今匯出，就會在每一天執行匯出。 同樣地，如果是每週匯出，就會在每週已排定的同一天執行匯出。 匯出的確切發生時間無法保證，但匯出的資料可在執行匯出後四小時內取得。
-每次匯出都會建立一個新檔案，因此不會覆寫較舊的匯出。
+排程的匯出會受您最初建立匯出時的時間和星期幾所影響。 當您建立匯出的排程時，後續的每次匯出都會以同樣的頻率執行。 例如，頻率設定為每日的當月迄今成本每日匯出，就會在每一天執行匯出。 同樣地，如果是每週匯出，就會在每週已排定的同一天執行匯出。 匯出的確切發生時間無法保證，但匯出的資料可在執行匯出後四小時內取得。
 
-匯出類型有兩種：
-
-**每日匯出當月成本**– 初始匯出會立即執行。 後續匯出會在隔天與初始匯出相同的時間執行。 系統會從先前的每日匯出彙總最新資料。
-
-**自訂** – 可讓您使用當週和當月選項來排程每週和每月匯出。 *初始匯出會立即執行。*
-
-如果您有隨用隨付、MSDN 或 Visual Studio 訂用帳戶，則您發票的計費期間可能與行事曆月份不同。 對於這些類型的訂用帳戶和資源群組，您可以建立遵循發票期間或行事曆月份的匯出項目。 若要建立遵循發票月份的匯出項目，請瀏覽至 [自訂]，然後選取 [迄今為止的計費期間]。  若要建立遵循行事曆月份的匯出項目，請選取 [月初至今]。
-
-![[新匯出 - 基本資料] 索引標籤，其中顯示自訂每週的當週選取項目](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
+每個匯出都會建立新檔案，因此不會覆寫較舊的匯出。
 
 #### <a name="create-an-export-for-multiple-subscriptions"></a>建立多個訂用帳戶的匯出
 
@@ -90,10 +88,11 @@ ms.locfileid: "84142298"
 
 不支援其他訂用帳戶類型的管理群組匯出。
 
-1. 建立管理群組並將訂用帳戶指派給它。
-1. 在 [匯出] 中，選取 [範圍]。
-1. 選取 [選取此管理群組]。
-1. 在範圍建立匯出，以取得管理群組中訂用帳戶的成本管理資料。
+1. 如果尚未建立管理群組，請建立一個群組，並將訂用帳戶指派給該群組。
+1. 在成本分析中，將範圍設定為您的管理群組，然後選取 [選取此管理群組]。  
+    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="顯示選取此管理群組選項的範例" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
+1. 在範圍建立匯出，以取得管理群組中訂用帳戶的成本管理資料。  
+    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="顯示建立新的匯出選項與管理群組範圍的範例":::
 
 ## <a name="verify-that-data-is-collected"></a>驗證已收集資料
 
@@ -123,6 +122,16 @@ ms.locfileid: "84142298"
 1. 選取 CSV 檔案，然後選取 [下載]。
 
 [![匯出下載範例](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
+
+## <a name="view-export-run-history"></a>檢視匯出執行歷程記錄  
+
+您可以在匯出清單頁面中選取個別的匯出，以檢視排程匯出的執行歷程記錄。 匯出清單頁面也可讓您快速存取，以檢視先前匯出的執行時間，以及下一次執行匯出的時間。 以下是顯示執行歷程記錄的範例。
+
+:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="顯示匯出執行歷程記錄的範例":::
+
+選取匯出以檢視其執行歷程記錄。
+
+:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="顯示匯出執行歷程記錄的範例":::
 
 ## <a name="access-exported-data-from-other-systems"></a>從其他系統存取匯出資料
 

@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Maxient Conduct Manager 軟體整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Maxient Conduct Manager 軟體之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 85e71b76-cac3-4ce6-a35f-796d2cb7bdb5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09399f59e61ded49fef5a2388900b7b478111119
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: dd6872fd8dca3f29b61c6f1dffb5f219abac5cb8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847169"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518884"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Maxient Conduct Manager 軟體整合
 
@@ -113,7 +108,7 @@ ms.locfileid: "83847169"
 
 ## <a name="test-with-maxient"></a>使用 Maxient 進行測試 
 
-如果 Maxient 實作/支援代表尚未開啟支援票證，請將電子郵件傳送至 [support@maxient.com](mailto:support@maxient.com)，主旨為「校園型驗證/Azure 設定 - \<\<學校名稱\>\>」。 在電子郵件的本文中，提供**應用程式同盟中繼資料 URL**。 Maxient 人員會以測試連結回應，以驗證是否已發行適當的屬性。  
+如果 Maxient 實作/支援代表尚未開啟支援票證，請將電子郵件傳送至 [support@maxient.com](mailto:support@maxient.com)，主旨為「校園型驗證/Azure 設定 - \<\<School Name\>\>」。 在電子郵件的本文中，提供**應用程式同盟中繼資料 URL**。 Maxient 人員會以測試連結回應，以驗證是否已發行適當的屬性。  
     
 ## <a name="additional-resources"></a>其他資源
 

@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Atlassian Cloud 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Atlassian Cloud 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 729b8eb6-efc4-47fb-9f34-8998ca2c9545
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb3522898a40dc79e8465af813633015568f1c8
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: ca75aea393e4850eb302cb03914296d7c1eaa951
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033690"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517642"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>教學課程：整合 Atlassian Cloud 與 Azure Active Directory
 
@@ -77,6 +73,16 @@ ms.locfileid: "88033690"
 ### <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
+
+1. 若要自動執行 Atlassian Cloud 內的設定，您必須按一下 [安裝擴充功能]  來安裝「我的應用程式安全登入瀏覽器擴充功能」  。
+
+    ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
+
+1. 將擴充功能新增至瀏覽器之後，按一下 [設定 Atlassian Cloud] 便會將您導向到 Atlassian Cloud 應用程式。 請從該處提供用以登入 Atlassian Cloud 的管理員認證。 瀏覽器擴充功能會自動為您設定應用程式。
+
+    ![設定組態](common/setup-sso.png)
+
+1. 如果您想要手動設定 Atlassian Cloud，請以管理員身分登入 Atlassian Cloud 公司網站，然後執行下列步驟。
 
 1. 開始之前，請移至 Atlassian 產品執行個體，並複製/儲存執行個體 URL
    > [!NOTE]
@@ -189,7 +195,7 @@ ms.locfileid: "88033690"
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 1. 在畫面頂端選取 [新增使用者]。
 1. 在 [使用者] 屬性中，執行下列步驟：
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  

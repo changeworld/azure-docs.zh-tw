@@ -2,22 +2,22 @@
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: 67f8293329b8b091cdc4b0cbe534ced49ba69c7c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 08/17/2020
+ms.openlocfilehash: 3e4206d00d33020098770600e151f9075d160caa
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133951"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511276"
 ---
-本文說明如何開始搭配使用自訂視覺 SDK 與 C# 來建置物件偵測模型。 建立它之後，您就可以新增標記的區域、上傳影像、為專案定型、取得專案的預設預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 .NET 應用程式。 
+本文說明如何開始搭配使用自訂視覺用戶端程式庫與 C# 來建置物件偵測模型。 建立它之後，您就可以新增標記的區域、上傳影像、為專案定型、取得專案的預設預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 .NET 應用程式。 
 
 ## <a name="prerequisites"></a>Prerequisites
 
 - [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/) 的任何版本
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-sdk-and-sample-code"></a>取得自訂視覺 SDK 與程式碼範例
+## <a name="get-the-custom-vision-client-library-and-sample-code"></a>取得自訂視覺 用戶端程式庫與程式碼範例
 
 若要撰寫使用自訂視覺的 .NET 應用程式，您需要有自訂視覺 NuGet 套件。 這些套件包含在您將會下載的專案範例內，但您可以在此個別存取這些套件。
 

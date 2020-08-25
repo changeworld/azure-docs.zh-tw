@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 06/04/2020
+ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eca67c4a5a942e6cd06f67cac868905da0e1f533
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 55cbf0a304bbf13d47fefad0981c0143c101bbb0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535139"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520765"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入門：使用 Azure CLI 上傳、下載及列出 Blob
 
@@ -78,20 +78,28 @@ az storage account create \
 
 ## <a name="create-a-container"></a>建立容器
 
-Blob 一律會上傳到容器中。 您可以在容器中組織 Blob 群組，方式如同在電腦的資料夾中組織檔案。 使用 [az storage container create](/cli/azure/storage/container) 命令，建立用於儲存 Blob 的容器。 
+Blob 一律會上傳到容器中。 您可以在容器中組織 Blob 群組，方式如同在電腦的資料夾中組織檔案。 使用 [az storage container create](/cli/azure/storage/container) 命令，建立用於儲存 Blob 的容器。
 
 下列範例會使用您的 Azure AD 帳戶來授權作業，以便建立容器。 建立容器之前，請將 [儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) 角色指派給自己。 即使您是帳戶擁有者，您還是需要明確的權限，才能對儲存體帳戶執行資料作業。 如需有關指派 Azure 角色的詳細資訊，請參閱 [使用 Azure CLI 指派存取權的 Azure 角色](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json)。  
-
-您也可以使用儲存體帳戶金鑰來授權作業以建立容器。 如需有關藉由 Azure CLI 授權資料作業的詳細資訊，請參閱 [藉由 Azure CLI 來授權 Blob 或佇列資料的存取權](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json)。
 
 請記得以您自己的值取代角括號中的預留位置值：
 
 ```azurecli
+az ad signed-in-user show --query objectId -o tsv | az role assignment create \
+    --role "Storage Blob Data Contributor" \
+    --assignee @- \
+    --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
+
 az storage container create \
     --account-name <storage-account> \
     --name <container> \
     --auth-mode login
 ```
+
+> [!IMPORTANT]
+> Azure 角色指派可能需要數分鐘的時間傳播。
+
+您也可以使用儲存體帳戶金鑰來授權作業以建立容器。 如需有關藉由 Azure CLI 授權資料作業的詳細資訊，請參閱 [藉由 Azure CLI 來授權 Blob 或佇列資料的存取權](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json)。
 
 ## <a name="upload-a-blob"></a>上傳 Blob
 

@@ -62,8 +62,14 @@
           href: use-key-vault-references-dotnet-core.md
         - name: Spring Boot
           href: use-key-vault-references-spring-boot.md
-    - name: 與 CI/CD 管線整合
-      href: integrate-ci-cd-pipeline.md
+    - name: CI/CD 管線整合
+      items:
+        - name: 使用 Azure Pipelines 進行推送
+          href: push-kv-devops-pipeline.md
+        - name: 使用 GitHub Actions 進行推送
+          href: concept-github-action.md
+        - name: 使用匯出的設定建置專案
+          href: integrate-ci-cd-pipeline.md
     - name: 使用 Helm 與 Kubernetes 部署整合
       href: integrate-kubernetes-deployment-helm.md
 - name: 範例
@@ -81,8 +87,6 @@
       href: concept-point-time-snapshot.md
     - name: 功能管理
       href: concept-feature-management.md
-    - name: 使用 GitHub Actions 同步
-      href: concept-github-action.md
     - name: 事件處理
       href: concept-app-configuration-event.md
     - name: 安全性
