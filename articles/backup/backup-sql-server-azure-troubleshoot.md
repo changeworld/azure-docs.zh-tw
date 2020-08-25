@@ -3,12 +3,12 @@ title: 針對 SQL Server 資料庫備份進行疑難排解
 description: 適用於在 Azure VM 上執行並使用 Azure 備份進行備份之 SQL Server 資料庫的疑難排解資訊。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 1d692d0bacbcb26090d17bf905b959f870eed3f8
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 98240254a71695fa72acaf5c7f930c11d9f99cae
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660120"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756906"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 備份針對 SQL Server 資料庫備份進行疑難排解
 
@@ -24,7 +24,7 @@ ms.locfileid: "88660120"
 
 建立並設定復原服務保存庫之後，探索資料庫和設定備份是兩個步驟的程式。<br>
 
-![sql](./media/backup-azure-sql-database/sql.png)
+![備份目標-Azure VM 中的 SQL Server](./media/backup-azure-sql-database/sql.png)
 
 在備份設定期間，如果在 **vm 的探索** 資料庫中看不到 SQL VM 和其實例，並 **設定備份** (請參閱上述映射) 確定：
 

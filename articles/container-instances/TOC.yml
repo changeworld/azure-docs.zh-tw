@@ -41,7 +41,7 @@
 - name: 範例
   items:
     - name: 程式碼範例
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=container%20instance'
     - name: Resource Manager 範本
       href: container-instances-samples-rm.md
 - name: 概念
