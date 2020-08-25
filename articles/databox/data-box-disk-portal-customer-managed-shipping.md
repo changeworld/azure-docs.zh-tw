@@ -2,18 +2,18 @@
 title: Microsoft Azure 資料箱磁碟自我管理寄送 | 資料中的 Microsoft Docs
 description: 說明 Azure 資料箱磁碟裝置的自我管理寄送工作流程
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
-ms.author: v-grpr
-ms.openlocfilehash: 95c0a884b335920df9803a9b468ab522646b26a1
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.author: twooley
+ms.openlocfilehash: f3292e2088397e332323bec71f9a5965eddd0fe0
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258746"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783224"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>在 Azure 入口網站中使用 Azure 資料箱磁碟的自我管理寄送
 
@@ -45,7 +45,7 @@ ms.locfileid: "88258746"
 
    ![自我管理寄送](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. 備妥裝置並收到電子郵件通知之後，您就可以排程取貨。 在您的 Azure 資料箱磁碟訂單中，移至 [概觀]，然後選取 [排程取貨]。
+4. 一旦裝置已備妥且您收到電子郵件通知，您就可以安排取貨。 在您的 Azure 資料箱磁碟訂單中，移至 [概觀]，然後選取 [排程取貨]。
 
    ![訂購要領取的資料箱裝置](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-user-pickup-01b.png)
 
@@ -59,11 +59,11 @@ ms.locfileid: "88258746"
 
    請記下此 [授權碼]。
 
-   根據安全性需求，在排程挑選時，必須出示將會抵達挑選的人員名稱，這是必要的。
+   根據安全性需求，在排程挑選時，必須出示將抵達取得的人員名稱，以供您參考。
 
    您也必須提供將前往資料中心取貨人員的詳細資料。 您或連絡人必須攜帶政府核准使用附相片的身分證，以供資料中心驗證。
 
-   此外，取貨人員也必須有 [授權碼]。 授權碼對取貨或捨棄而言是唯一的，而且會在資料中心進行驗證。
+   此外，取貨人員也必須有 [授權碼]。 授權碼對於取貨或卸載是唯一的，並會在資料中心進行驗證。
 
 7. 從資料中心領取裝置後，您的訂單就會自動變成 [已取貨] 狀態。
 

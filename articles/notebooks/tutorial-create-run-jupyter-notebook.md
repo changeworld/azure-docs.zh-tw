@@ -4,18 +4,18 @@ description: 了解如何在 Azure Notebooks 預覽中建立和執行 Jupyter No
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f6480a93610761061462be8e83ce3e719f3e8bdf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846907"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589246"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>教學：使用 Python 建立和執行 Jupyter Notebook
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-本教學將逐步引導您使用 Azure Notebooks 來建立完整的 Jupyter 筆記本，以示範簡單的線性迴歸。 在本教學中，您將熟悉 Jupyter Notebook UI，其中包括建立不同的資料格、執行資料格，以及透過放映投影片的方式呈現 Notebook。
+本教學將逐步引導您使用 Azure Notebooks 來建立完整的 Jupyter Notebook，以示範簡單的線性迴歸。 在本教學中，您將熟悉 Jupyter Notebook UI，其中包括建立不同的資料格、執行資料格，以及透過放映投影片的方式呈現筆記本。
 
 您可在 [GitHub - Azure Notebooks 範例](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)中找到已完成的 Notebook。 不過，本教學會從新的專案和空白的 Notebook 開始，讓您體驗逐步建立的過程的過程。
 
@@ -219,7 +219,7 @@ Jupyter 會提供主要 UI 元素的內建導覽。 選取 [協助]   >  [使用
 
 ## <a name="create-a-code-cell-with-commands"></a>使用命令建立程式碼資料格
 
-如先前的 Markdown 資料格所述，您可以直接在筆記本中包含命令。 您可以使用命令來安裝套件、執行 curl 或 wget 來擷取資料，或任何其他動作。 Jupyter Notebook 會在 Linux 虛擬機器中有效地執行，所以您可以使用完整的 Linux 命令集。
+如先前的 Markdown 資料格所述，您可以直接在筆記本中包含命令。 您可以使用命令來安裝套件、執行 curl 或 wget 來擷取資料，或任何其他動作。 Jupyter Notebooks 會在 Linux 虛擬機器中有效地執行，所以您可以使用完整的 Linux 命令集。
 
 1. 在您於前一個 Markdown 資料格上使用[執行]  之後出現的程式碼資料格中，輸入以下命令。 如果您沒有看到新的資料格，可使用 [Insert]   > [Insert Cell Below]  ，或使用工具列上的 **+** 按鈕建立。
 
@@ -419,7 +419,7 @@ Jupyter 會提供主要 UI 元素的內建導覽。 選取 [協助]   >  [使用
 
 如需詳細資訊，請參閱 Visual Studio Code 文件中的[針對 Jupyter Notebook 進行偵錯](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook)。
 
-另請參閱 [Visual Studio Code - Jupyter 支援](https://code.visualstudio.com/docs/python/jupyter-support)以了解適用於 Jupyter Notebook 的 Visual Studio Code。
+另請參閱 [Visual Studio Code - Jupyter 支援](https://code.visualstudio.com/docs/python/jupyter-support)以了解適用於 Jupyter Notebooks 的 Visual Studio Code。
 
 ## <a name="next-steps"></a>後續步驟
 

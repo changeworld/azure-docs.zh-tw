@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Azure AD SAML Toolkit 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Azure AD SAML Toolkit 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3f4348e7-c34e-43c7-926e-f1b26ffacf6d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/24/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d2681c09030ff0f36938d7a09e1d1b2e9aa645c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aa37cef84bb1d2cb92f2bb0e4a227c5be60fa345
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82166305"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543409"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Azure AD SAML Toolkit 整合
 
@@ -161,7 +157,7 @@ ms.locfileid: "82166305"
 
 ### <a name="create-azure-ad-saml-toolkit-test-user"></a>建立 Azure AD SAML Toolkit 測試使用者
 
-本節會在 Azure AD SAML Toolkit 中建立名為 B.Simon 的使用者。 Azure AD SAML Toolkit 支援依預設啟用的 Just-In-Time 使用者佈建。 在這一節沒有您需要進行的動作項目。 如果 Azure AD SAML Toolkit 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
+本節會在 Azure AD SAML Toolkit 中建立名為 B.Simon 的使用者。 請註冊新的使用者並提供所有使用者詳細資料，以在工具中建立測試使用者。 
 
 ## <a name="test-sso"></a>測試 SSO 
 

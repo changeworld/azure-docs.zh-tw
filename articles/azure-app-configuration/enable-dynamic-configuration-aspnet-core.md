@@ -14,13 +14,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 5ac09aae724cf7481245ba9e898b52945b394cae
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 217c564a6bdb340ec15262c1eaf54a75bbffc833
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856531"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585010"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用動態設定
 
@@ -57,6 +57,9 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
 1. 針對 [金鑰]  ，請輸入 TestApp:Settings:Sentinel  。 針對 [值]  ，輸入 1。 請將 [標籤]  和 [內容類型]  保留空白。
 
 1. 選取 [套用]  。
+
+    > [!NOTE]
+    > 如果您並非使用 Sentinel 金鑰，將需要手動註冊想要監看的每個金鑰。
 
 ## <a name="reload-data-from-app-configuration"></a>從應用程式設定重新載入資料
 
@@ -159,6 +162,9 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
     }
     ```
     ---
+
+    > [!TIP]
+    > 若要深入了解讀取組態值時的選項模式，請參閱  [ASP.NET Core 中的選項模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)。
 
 4. 更新 `Configure` 方法以新增 `UseAzureAppConfiguration` 中介軟體，讓已註冊要重新整理的組態設定可以進行更新，同時讓 ASP.NET Core Web 應用程式繼續接收要求。
 

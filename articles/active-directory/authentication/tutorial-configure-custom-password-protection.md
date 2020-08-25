@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b2f3a61e2167067bd6e61ee2a36bb1d22950d8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 24e0cfa4227ba5d7c38449d3cf1304add5ae5c1f
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419660"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718878"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>教學課程：設定 Azure Active Directory 密碼保護的自訂禁用密碼
 
@@ -124,4 +124,4 @@ Azure AD 包含全域禁用密碼清單。 全域禁用密碼清單的內容不�
 > * 使用禁用密碼測試密碼變更
 
 > [!div class="nextstepaction"]
-> [啟用風險型 Azure Multi-Factor Authentication](tutorial-mfa-applications.md)
+> [啟用風險型 Azure Multi-Factor Authentication](./tutorial-enable-azure-mfa.md)

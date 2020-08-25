@@ -1,349 +1,104 @@
 ---
-title: 教學課程：透過 Azure CLI 使用發佈/訂閱通道和主題篩選來更新零售庫存商品
-description: 教學課程：在本教學課程中，您將了解如何從主題和訂用帳戶傳送及接收訊息，以及如何使用 Azure CLI 新增和使用篩選規則
+title: 使用 Azure CLI 建立服務匯流排主題和訂用帳戶
+description: 在本快速入門中，您會了解如何使用 Azure CLI 來建立服務匯流排主題和該主題的訂用帳戶
 ms.date: 06/23/2020
-ms.topic: tutorial
+ms.topic: quickstart
 author: spelluru
 ms.author: spelluru
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2526559a8b88309c098e59e8cc6d0ffd2793984f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 3a6535a13ab00c4e22ac4cd8c2de5a5bbb02d0a8
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067574"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189794"
 ---
-# <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>教學課程：使用 CLI 和主題/訂用帳戶來更新庫存
+# <a name="use-azure-cli-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>使用 Azure CLI 建立服務匯流排主題和主題的訂用帳戶
+在本快速入門中，您會使用 Azure CLI 來建立服務匯流排主題，然後建立該主題的訂用帳戶。 
 
-Microsoft Azure 服務匯流排是一項多租用戶雲端傳訊服務，可在應用程式和服務之間傳送資訊。 非同步作業可讓您進行靈活的代理傳訊，搭配結構化的先進先出 (FIFO) 傳訊及發佈/訂閱功能。 本教學課程說明如何透過使用 Azure CLI 和 Java 的發佈/訂閱通道，在零售庫存案例中使用服務匯流排主題和訂用帳戶。
+## <a name="what-are-service-bus-topics-and-subscriptions"></a>什麼是服務匯流排主題和訂用帳戶？
+服務匯流排主題和訂用帳戶支援「發佈/訂閱」 ** 訊息通訊模型。 使用主題和訂用帳戶時，分散式應用程式的元件彼此不直接通訊，相反的，他們會透過扮演中繼角色的主題來交換訊息。
 
-在本教學課程中，您會了解如何：
-> [!div class="checklist"]
-> * 使用 Azure CLI 建立服務匯流排主題，並建立該主題的一或多個訂用帳戶
-> * 使用 Azure CLI 新增主題篩選
-> * 建立含有不同內容的兩個訊息
-> * 傳送訊息，並確認它們送達預期的訂用帳戶中
-> * 從訂用帳戶接收訊息
+![主題概念](./media/service-bus-java-how-to-use-topics-subscriptions/sb-topics-01.png)
 
-此案例的範例是多個零售商店的庫存商品更新。 在此案例中，每個 (或每組) 商店都會收到預定要傳送給他們的訊息，用以更新其商品。 本教學課程將說明如何使用訂用帳戶和篩選實作此案例。 首先，您會以 3 個訂用帳戶建立主題、新增的某些規則和篩選條件，然後從主題和訂用帳戶來傳送和接收訊息。
+有別於服務匯流排佇列，服務匯流排佇列中的每個訊息只會由單一取用者處理，主題和訂用帳戶採用發佈/訂閱模式，提供一對多的通訊形式。 一個主題可以登錄多個訂用帳戶。 當訊息傳送至主題時，每個訂用帳戶都可取得訊息來個別處理。 主題的訂用帳戶類似於虛擬佇列，同樣可接收已傳送到主題的訊息複本。 您可以選擇為個別訂用帳戶登錄主題的篩選規則，以篩選或限制主題的哪些訊息由哪些主題訂用帳戶接收。
 
-![主題](./media/service-bus-tutorial-topics-subscriptions-cli/about-service-bus-topic.png)
+服務匯流排主題和訂用帳戶可讓您擴大處理非常多使用者和應用程式上大量的訊息。
 
-如果您沒有 Azure 訂用帳戶，您可以在開始前建立[免費帳戶][]。
+## <a name="prerequisites"></a>先決條件
+如果您沒有 Azure 訂用帳戶，您可以在開始前建立[免費帳戶][free account]。
 
-## <a name="prerequisites"></a>Prerequisites
+在本快速入門中，您會使用可在登入 Azure 入口網站後啟動的 Azure Cloud Shell。 如需 Azure Cloud Shell 的詳細資訊，請參閱 [Azure Cloud Shell 概觀](../cloud-shell/overview.md)。 您也可以[安裝](/cli/azure/install-azure-cli) Azure PowerShell 並在電腦上使用。 
 
-若要使用 Java 開發服務匯流排應用程式，您必須安裝下列項目：
-
-- 最新版本的 [Java Development Kit](https://aka.ms/azure-jdks)。
-- [Azure CLI](/cli/azure)
-- [Apache Maven](https://maven.apache.org) 3.0 版或更高版本。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
-
-## <a name="service-bus-topics-and-subscriptions"></a>服務匯流排主題和訂用帳戶
-
+## <a name="create-a-service-bus-topic-and-subscriptions"></a>建立服務匯流排主題和訂用帳戶
 [主題的每個訂用帳戶](service-bus-messaging-overview.md#topics)都會接收到每則訊息的複本。 主題在通訊協定和語意上都與服務匯流排佇列完全相容。 服務匯流排主題支援具有篩選條件、並且可透過選用動作來設定或修改訊息屬性的多種選取規則。 每當有規則符合時，就會產生一則訊息。 若要深入了解規則、篩選條件和動作，請進入此[連結](topic-filters.md)。
 
-## <a name="sign-in-to-azure"></a>登入 Azure
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+2. 選取下圖中的圖示來啟動 Azure Cloud Shell。 如果 Cloud Shell 處於 **PowerShell** 模式，請切換至 **Bash** 模式。 
 
-CLI 安裝後，請開啟命令提示字元並發出下列命令，以登入 Azure。 如果您使用 Cloud Shell，則不需要執行下列步驟：
+    :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="啟動 Cloud Shell":::
+3. 執行下列命令以建立 Azure 資源群組。 您可以視需要更新資源群組名稱和位置。 
 
-1. 如果您在本機使用 Azure CLI，請執行下列命令以登入 Azure。 如果您在 Cloud Shell 中執行這些命令，則不需要執行此登入步驟：
+    ```azurecli-interactive
+    az group create --name MyResourceGroup --location eastus
+    ```
+4. 執行下列命令來建立服務匯流排傳訊命名空間。 將命名空間名稱更新為唯一名稱。 
 
-   ```azurecli-interactive
-   az login
-   ```
+    ```azurecli-interactive
+    namespaceName=MyNameSpace$RANDOM
+    az servicebus namespace create --resource-group MyResourceGroup --name $namespaceName --location eastus
+    ```
+5. 請執行下列命令，在命名空間中建立主題。 
 
-2. 將目前的訂用帳戶內容設定為您想要使用的 Azure 訂用帳戶：
-
-   ```azurecli-interactive
-   az account set --subscription Azure_subscription_name
-   ```
-
-## <a name="use-cli-to-provision-resources"></a>使用 CLI 佈建資源
-
-發出下列命令以佈建服務匯流排資源。 請務必將所有預留位置取代為適當的值。
-
-```azurecli-interactive
-# Create a resource group
-az group create --name myResourcegroup --location eastus
-
-# Create a Service Bus messaging namespace with a unique name
-namespaceName=myNameSpace$RANDOM
-az servicebus namespace create \
-   --resource-group myResourceGroup \
-   --name $namespaceName \
-   --location eastus
-
-# Create a Service Bus topic
-az servicebus topic create --resource-group myResourceGroup \
-   --namespace-name $namespaceName \
-   --name myTopic
-
-# Create subscription 1 to the topic
-az servicebus subscription create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --name S1
-
-# Create filter 1 - use custom properties
-az servicebus rule create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S1 --name MyFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3')"
-
-# Create filter 2 - use custom properties
-az servicebus rule create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S1 --name MySecondFilter --filter-sql-expression "StoreId = 'Store4'"
-
-# Create subscription 2
-az servicebus subscription create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --name S2
-
-# Create filter 3 - use message header properties via IN list and 
-# combine with custom properties.
-az servicebus rule create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S2 --name MyFilter --filter-sql-expression "sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'"
-
-# Create subscription 3
-az servicebus subscription create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --name S3
-
-# Create filter 4 - Get everything except messages for subscription 1 and 2. 
-# Also modify and add an action; in this case set the label to a specified value. 
-# Assume those stores might not be part of your main store, so you only add 
-# specific items to them. For that, you flag them specifically.
-az servicebus rule create --resource-group DemoGroup --namespace-name DemoNamespaceSB --topic-name tutorialtest1
- --subscription-name S3 --name MyFilter --filter-sql-expression "sys.To NOT IN ('Store1','Store2','Store3','Store4','Sto
-re5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Stor
-e8')" --action-sql-expression "SET sys.Label = 'SalesEvent'"
-
-# Get the connection string
-connectionString=$(az servicebus namespace authorization-rule keys list \
-   --resource-group myResourceGroup \
-   --namespace-name  $namespaceName \
-   --name RootManageSharedAccessKey \
-   --query primaryConnectionString --output tsv)
-```
-
-在最後一個命令執行之後，請將連接字串與您選取的佇列名稱複製並貼到暫存位置，例如 [記事本]。 您在下一個步驟將會用到這些資料。
-
-## <a name="create-filter-rules-on-subscriptions"></a>在訂用帳戶上建立篩選規則
-
-佈建命名空間和主題/訂用帳戶，且您已擁有必要的認證之後，您即可在訂用帳戶上建立篩選規則，然後傳送和接收訊息。 您可以在[此 GitHub 範例資料夾](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)中查看程式碼。
-
-## <a name="send-and-receive-messages"></a>傳送及接收訊息
-
-1. 確定 Cloud Shell 已開啟並顯示 Bash 提示字元。
-
-2. 發出下列命令，以複製[服務匯流排 GitHub 存放庫](https://github.com/Azure/azure-service-bus/)︰
-
-   ```shell
-   git clone https://github.com/Azure/azure-service-bus.git
-   ```
-
-2. 瀏覽至範例資料夾 `azure-service-bus/samples/Java/quickstarts-and-tutorials/quickstart-java/tutorial-topics-subscriptions-filters-java`。 請注意，Bash 殼層中的命令須區分大小寫，且路徑分隔符號必須是正斜線。
-
-3. 發出下列命令以建置應用程式：
-   
-   ```shell
-   mvn clean package -DskipTests
-   ```
-4. 若要執行程式，請發出下列命令。 請務必將預留位置取代為您在上一個步驟中取得的連接字串和主題名稱：
-
-   ```shell
-   java -jar .\target\tutorial-topics-subscriptions-filters-1.0.0-jar-with-dependencies.jar -c "myConnectionString" -t "myTopicName"
-   ```
-
-   觀察 10 個傳送至主題，和後續接收自個別訂用帳戶的訊息：
-
-   ![程式輸出](./media/service-bus-tutorial-topics-subscriptions-cli/service-bus-tutorial-topics-subscriptions-cli.png)
-
-## <a name="clean-up-resources"></a>清除資源
-
-執行下列命令以移除資源群組、命名空間和所有相關資源：
-
-```azurecli-interactive
-az group delete --resource-group my-resourcegroup
-```
-
-## <a name="understand-the-sample-code"></a>了解範例程式碼
-
-本節將詳細說明範例程式碼的功能。
-
-### <a name="get-connection-string-and-queue"></a>取得連接字串和佇列
-
-首先，程式碼會宣告一組變數，使程式完成其餘的執行：
-
-```java
-    public String ConnectionString = null;
-    public String TopicName = null;
-    static final String[] Subscriptions = {"S1","S2","S3"};
-    static final String[] Store = {"Store1","Store2","Store3","Store4","Store5","Store6","Store7","Store8","Store9","Store10"};
-    static final String SysField = "sys.To";
-    static final String CustomField = "StoreId";
-    int NrOfMessagesPerStore = 1; // Send at least 1.
-```
-
-連接字串和主題名稱是唯一透過命令列參數新增並傳遞至 `main()` 的值。 實際的程式碼執行會在 `run()` 方法中觸發並傳送，然後從主題接收訊息：
-
-```java
-public static void main(String[] args) {
-    TutorialTopicsSubscriptionsFilters app = new TutorialTopicsSubscriptionsFilters();
-        try {
-            app.runApp(args);
-            app.run();
-        } catch (Exception e) {
-            System.out.printf("%s", e.toString());
-        }
-        System.exit(0);
-    }
-}
-
-public void run() throws Exception {
-    // Send sample messages.
-    this.sendMessagesToTopic();
-
-    // Receive messages from subscriptions.
-    this.receiveAllMessages();
-}
-```
-
-### <a name="create-topic-client-to-send-messages"></a>建立主題用戶端以傳送訊息
-
-若要傳送和接收訊息，`sendMessagesToTopic()` 方法會建立主題用戶端執行個體，而此執行個體會使用連接字串和主題名稱，然後呼叫另一個方法以傳送訊息：
-
-```java
-public void sendMessagesToTopic() throws Exception, ServiceBusException {
-    // Create client for the topic.
-    TopicClient topicClient = new TopicClient(new ConnectionStringBuilder(ConnectionString, TopicName));
-
-    // Create a message sender from the topic client.
-
-    System.out.printf("\nSending orders to topic.\n");
-
-    // Now we can start sending orders.
-    CompletableFuture.allOf(
-            SendOrders(topicClient,Store[0]),
-            SendOrders(topicClient,Store[1]),
-            SendOrders(topicClient,Store[2]),
-            SendOrders(topicClient,Store[3]),
-            SendOrders(topicClient,Store[4]),
-            SendOrders(topicClient,Store[5]),
-            SendOrders(topicClient,Store[6]),
-            SendOrders(topicClient,Store[7]),
-            SendOrders(topicClient,Store[8]),
-            SendOrders(topicClient,Store[9])
-    ).join();
-
-    System.out.printf("\nAll messages sent.\n");
-}
-
-    public CompletableFuture<Void> SendOrders(TopicClient topicClient, String store) throws Exception {
-
-        for(int i = 0;i<NrOfMessagesPerStore;i++) {
-            Random r = new Random();
-            final Item item = new Item(r.nextInt(5),r.nextInt(5),r.nextInt(5));
-            IMessage message = new Message(GSON.toJson(item,Item.class).getBytes(UTF_8));
-            // We always set the Sent to field
-            message.setTo(store);
-            final String StoreId = store;
-            Double priceToString = item.getPrice();
-            final String priceForPut = priceToString.toString();
-            message.setProperties(new HashMap<String, String>() {{
-                // Additionally we add a customer store field. In reality you would use sys.To or a customer property but not both.
-                // This is just for demo purposes.
-                put("StoreId", StoreId);
-                // Adding more potential filter / rule and action able fields
-                put("Price", priceForPut);
-                put("Color", item.getColor());
-                put("Category", item.getItemCategory());
-            }});
-
-            System.out.printf("Sent order to Store %s. Price=%f, Color=%s, Category=%s\n", StoreId, item.getPrice(), item.getColor(), item.getItemCategory());
-            topicClient.sendAsync(message);
-        }
-
-        return new CompletableFuture().completedFuture(null);
-    }
-```
-
-### <a name="receive-messages-from-the-individual-subscriptions"></a>從個別的訂用帳戶接收訊息
-
-`receiveAllMessages()` 方法會呼叫 `receiveAllMessageFromSubscription()` 方法，繼而為每個呼叫建立一個訂用帳戶用戶端，並從個別的訂用帳戶接收訊息：
-
-```java
-public void receiveAllMessages() throws Exception {
-    System.out.printf("\nStart Receiving Messages.\n");
-
-    CompletableFuture.allOf(
-            receiveAllMessageFromSubscription(Subscriptions[0]),
-            receiveAllMessageFromSubscription(Subscriptions[1]),
-            receiveAllMessageFromSubscription(Subscriptions[2])
-            ).join();
-}
-
-public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscription) throws Exception {
-
-    int receivedMessages = 0;
-
-    // Create subscription client.
-    IMessageReceiver subscriptionClient = ClientFactory.createMessageReceiverFromConnectionStringBuilder(new ConnectionStringBuilder(ConnectionString, TopicName+"/subscriptions/"+ subscription), ReceiveMode.PEEKLOCK);
-
-    // Create a receiver from the subscription client and receive all messages.
-    System.out.printf("\nReceiving messages from subscription %s.\n\n", subscription);
-
-    while (true)
-    {
-        // This will make the connection wait for N seconds if new messages are available.
-        // If no additional messages come we close the connection. This can also be used to realize long polling.
-        // In case of long polling you would obviously set it more to e.g. 60 seconds.
-        IMessage receivedMessage = subscriptionClient.receive(Duration.ofSeconds(1));
-        if (receivedMessage != null)
-        {
-            if ( receivedMessage.getProperties() != null ) {
-                System.out.printf("StoreId=%s\n", receivedMessage.getProperties().get("StoreId"));
-                
-                // Show the label modified by the rule action
-                if(receivedMessage.getLabel() != null)
-                    System.out.printf("Label=%s\n", receivedMessage.getLabel());
-            }
-            
-            byte[] body = receivedMessage.getBody();
-            Item theItem = GSON.fromJson(new String(body, UTF_8), Item.class);
-            System.out.printf("Item data. Price=%f, Color=%s, Category=%s\n", theItem.getPrice(), theItem.getColor(), theItem.getItemCategory());
-            
-            subscriptionClient.complete(receivedMessage.getLockToken());
-            receivedMessages++;
-        }
-        else
-        {
-            // No more messages to receive.
-            subscriptionClient.close();
-            break;
-        }
-    }
-    System.out.printf("\nReceived %s messages from subscription %s.\n", receivedMessages, subscription);
+    ```azurecli-interactive
+    az servicebus topic create --resource-group MyResourceGroup   --namespace-name $namespaceName --name MyTopic
+    ```
+6. 針對主題建立第一個訂用帳戶
     
-    return new CompletableFuture().completedFuture(null);
-}
-```
+    ```azurecli-interactive
+    az servicebus topic subscription create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --name S1    
+    ```
+6. 針對主題建立第二個訂用帳戶
+    
+    ```azurecli-interactive
+    az servicebus topic subscription create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --name S2    
+    ```
+6. 針對主題建立第三個訂用帳戶
+    
+    ```azurecli-interactive
+    az servicebus topic subscription create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --name S3    
+    ```
+7. 使用自訂屬性，透過篩選條件在第一個訂用帳戶上建立篩選 (`StoreId` 是 `Store1`、`Store2` 和 `Store3` 的其中一個)。
 
-> [!NOTE]
-> 您可以使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer/)來管理服務匯流排資源。 服務匯流排總管可讓使用者連線到服務匯流排命名空間，並以簡便的方式管理傳訊實體。 此工具提供進階的功能 (例如匯入/匯出功能) 或測試主題、佇列、訂用帳戶、轉送服務、通知中樞和事件中樞的能力。 
+    ```azurecli-interactive
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S1 --name MyFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3')"    
+    ```
+8. 使用自訂屬性，透過篩選條件在第二個訂用帳戶上建立篩選 (`StoreId = Store4`)
+
+    ```azurecli-interactive
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S2 --name MySecondFilter --filter-sql-expression "StoreId = 'Store4'"    
+    ```
+9. 使用自訂屬性，透過篩選條件在第三個訂用帳戶上建立篩選 (`StoreId` 不在 `Store1`、`Store2`、`Store3` 或 `Store4` 中)。
+
+    ```azurecli-interactive
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S3 --name MyThirdFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3', 'Store4')"     
+    ```
+10. 執行下列命令，以取得命名空間的主要連接字串。 您可以使用此連接字串連線到佇列，並傳送和接收訊息。 
+
+    ```azurecli-interactive
+    az servicebus namespace authorization-rule keys list --resource-group MyResourceGroup --namespace-name $namespaceName --name RootManageSharedAccessKey --query primaryConnectionString --output tsv    
+    ```
+
+    記下連接字串和主題名稱。 您會使用這兩個資訊傳送及接收訊息。 
+    
 
 ## <a name="next-steps"></a>後續步驟
-
-在本教學課程中，您已使用 Azure CLI 佈建資源，然後從服務匯流排主題及其訂用帳戶傳送和接收訊息。 您已了解如何︰
-
-> [!div class="checklist"]
-> * 使用 Azure 入口網站建立服務匯流排主題，並建立該主題的一或多個訂用帳戶
-> * 使用 .NET 程式碼新增主題篩選
-> * 建立含有不同內容的兩個訊息
-> * 傳送訊息，並確認它們送達預期的訂用帳戶中
-> * 從訂用帳戶接收訊息
-
-如需傳送和接收訊息的範例，請開始使用 [GitHub 上的服務匯流排範例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted)。
-
-繼續進行下一個教學課程，以深入了解如何使用服務匯流排的發佈/訂閱功能。
+若要了解如何傳送訊息至主題，並透過訂用帳戶接收那些訊息，請參閱下列文章：選取 TOC 中的程式設計語言。 
 
 > [!div class="nextstepaction"]
-> [使用 PowerShell 和主題/訂用帳戶來更新庫存](service-bus-tutorial-topics-subscriptions-portal.md)
+> [發佈和訂閱訊息](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-[免費帳戶]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+
+[free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create

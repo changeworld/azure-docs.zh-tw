@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 8x8 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 8x8 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b34a6edf-e745-4aec-b0b2-7337473d64c5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c81e63a073882dea3a7aea32d5e9f4d3d5c48f7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 52b45bf7457a81b605df91e63a7c6ad539309dd8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018585"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538649"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 8x8 整合
 
@@ -64,7 +60,7 @@ ms.locfileid: "87018585"
 1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **8x8**。
 1. 從結果面板選取 [8x8]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-8x8"></a>設定及測試 8x8 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-8x8"></a>設定和測試 8x8 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 8x8 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 8x8 中相關使用者之間的連結關聯性。
 
@@ -139,7 +135,15 @@ ms.locfileid: "87018585"
 
 ### <a name="configure-8x8-configuration-manager"></a>設定 8x8 Configuration Manager
 
-1. 登入 8x8 [Configuration Manager](https://vo-cm.8x8.com/)。
+1. 若要自動執行 8x8 內的設定，您必須按一下 [安裝擴充功能] 來安裝「我的應用程式安全登入瀏覽器擴充功能」。
+
+    ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
+
+1. 將擴充功能新增至瀏覽器之後，按一下 [設定 8x8] 便會將您導向到 8x8 應用程式。 請從該處提供用以登入 8x8 的管理員認證。 瀏覽器擴充功能會自動為您設定應用程式，並自動執行步驟 3 到 6。
+
+    ![設定組態](common/setup-sso.png)
+
+1. 如果您想要手動設定 8x8，請以管理員身分登入 8x8 [Configuration Manager](https://vo-cm.8x8.com/)。
 
 1. 從首頁按一下 [身分識別管理]。
 

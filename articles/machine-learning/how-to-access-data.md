@@ -10,22 +10,22 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
-ms.custom: how-to, seodec18, devx-track-python
-ms.openlocfilehash: 90de785d56e50885a13d43faa77f087d1235ea18
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: how-to, contperfq1, devx-track-python
+ms.openlocfilehash: c5200214946b52ce974a8b7557e38eb57481028a
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852526"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782986"
 ---
 # <a name="connect-to-azure-storage-services"></a>連線至 Azure 儲存體服務
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將瞭解如何透過**Azure Machine Learning 資料存放區來連線到 Azure 儲存體服務**。 資料存放區安全地連接到您的 Azure 儲存體服務，而不需要將驗證認證和原始資料來源的完整性放在風險下。 他們會在與工作區相關聯的[Key Vault](https://azure.microsoft.com/services/key-vault/)中儲存連線資訊，例如您的訂用帳戶識別碼和權杖授權，讓您可以安全地存取儲存體，而不需要在腳本中進行硬式編碼。 您可以使用[Azure Machine Learning PYTHON SDK](#python)或[Azure Machine Learning studio](#studio)來建立和註冊資料存放區。
+在本文中，您將瞭解如何透過 **Azure Machine Learning 資料存放區連線到 Azure 儲存體服務**。 資料存放區會安全地連線到您的 Azure 儲存體服務，而不會將您的驗證認證與原始資料來源的完整性保持在風險之下。 他們會將連接資訊（例如您的訂用帳戶識別碼和權杖授權）儲存在與工作區相關聯的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中，以便您可以安全地存取儲存體，而不需要在腳本中進行硬程式碼撰寫。 您可以使用 [Azure Machine Learning PYTHON SDK](#python) 或 [Azure Machine Learning studio](#studio) 來建立和註冊資料存放區。
 
-如果您想要使用 Azure Machine Learning VS Code 延伸模組來建立和管理資料存放區，若要深入瞭解，請造訪[VS Code 資源管理操作指南](how-to-manage-resources-vscode.md#datastores)。
+如果您想要使用 Azure Machine Learning VS Code 擴充功能來建立和管理資料存放區;如需深入瞭解，請造訪 [VS Code 資源管理操作指南](how-to-manage-resources-vscode.md#datastores) 。
 
-您可以從[這些 Azure 儲存體解決方案](#matrix)建立資料存放區。 **針對不支援的儲存體解決方案**，以及在 ML 實驗期間儲存資料輸出成本，請[將您的資料移](#move)至支援的 Azure 儲存體解決方案。  
+您可以從[這些 Azure 儲存體解決方案](#matrix)建立資料存放區。 **針對不支援的儲存體解決方案**，以及在 ML 實驗期間儲存資料輸出成本，請 [將您的資料移](#move) 至支援的 Azure 儲存體解決方案。  
 
 若要了解如何將資料存放區納入 Azure Machine Learning 的整體資料存取工作流程中，請參閱[安全地存取資料](concept-data.md#data-workflow)一文。
 
@@ -34,7 +34,7 @@ ms.locfileid: "87852526"
 您需要：
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
-- 具有[支援之儲存體類型](#matrix)的 Azure 儲存體帳戶。
+- 具有 [支援之儲存體類型](#matrix)的 Azure 儲存體帳戶。
 
 - [適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)，或 [Azure Machine Learning Studio](https://ml.azure.com/) 的存取權。
 
@@ -51,7 +51,7 @@ ms.locfileid: "87852526"
    ws = Workspace.from_config()
    ```
 
-    當您建立工作區時，Azure blob 容器和 Azure 檔案共用會自動註冊為數據存放區至工作區。 這兩者分別會命名為 `workspaceblobstore` 和 `workspacefilestore`。 `workspaceblobstore`是用來儲存工作區成品和您的機器學習實驗記錄。 它也會設定為**預設資料**存放區，且無法從工作區中刪除。 `workspacefilestore`是用來儲存透過[計算實例](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)授權的筆記本和 R 腳本。
+    當您建立工作區時，Azure blob 容器和 Azure 檔案共用會自動註冊為工作區的資料存放區。 這兩者分別會命名為 `workspaceblobstore` 和 `workspacefilestore`。 `workspaceblobstore`會用來儲存工作區成品和您的機器學習實驗記錄。 它也會設定為 **預設資料** 存放區，而且無法從工作區刪除。 `workspacefilestore`是用來儲存透過[計算實例](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)授權的筆記本和 R 腳本。
     
     > [!NOTE]
     > 當您在設計工具首頁中開啟範例時，Azure Machine Learning 設計工具 (預覽) 會自動建立名為 **azureml_globaldatasets** 的資料存放區。 此資料存放區僅包含範例資料集。 請**不要**將此資料存放區用於任何機密資料存取。
@@ -84,55 +84,55 @@ ms.locfileid: "87852526"
 
 ## <a name="storage-access-and-permissions"></a>儲存體存取和許可權
 
-為了確保您安全地連線到您的 Azure 儲存體服務，Azure Machine Learning 需要您有權存取對應的資料儲存體容器。 此存取權取決於用來註冊資料存放區的驗證認證。 
+若要確保您安全地連線到您的 Azure 儲存體服務，Azure Machine Learning 要求您有權存取對應的資料儲存體容器。 此存取權取決於用來註冊資料存放區的驗證認證。 
 
 ### <a name="virtual-network"></a>虛擬網路 
 
-如果您的資料儲存體帳戶位於**虛擬網路**中，則需要額外的設定步驟，以確保 Azure Machine Learning 能夠存取您的資料。 請參閱[網路隔離 & 隱私權](how-to-enable-virtual-network.md#machine-learning-studio)，以確保當您建立並註冊資料存放區時，會套用適當的設定步驟。  
+如果您的資料儲存體帳戶位於 **虛擬網路**中，則需要額外的設定步驟，以確保 Azure Machine Learning 可以存取您的資料。 請參閱 [網路隔離 & 隱私權](how-to-enable-virtual-network.md#machine-learning-studio) ，以確保當您建立和註冊資料存放區時，會套用適當的設定步驟。  
 
 ### <a name="access-validation"></a>存取驗證
 
-**在初始資料存放區建立和註冊程式的過程**中，Azure Machine Learning 會自動驗證基礎儲存體服務是否存在，以及使用者是否提供主體 (username、服務主體或 SAS 權杖) 具有指定存放裝置的存取權。
+**在初始資料存放區建立和註冊**程式中，Azure Machine Learning 會自動驗證基礎儲存體服務是否存在，以及使用者提供的主體 (使用者名稱、服務主體或 SAS 權杖，) 可以存取指定的儲存體。
 
-**建立資料**存放區之後，只會針對需要存取基礎儲存體容器的方法執行這項驗證，而**不**是每次抓取資料存放區物件。 例如，如果您想要從資料存放區下載檔案，則會進行驗證；如果您只是要變更預設資料存放區，則不會進行驗證。
+**建立資料**存放區之後，只會針對需要存取基礎儲存體容器的方法執行這項驗證， **而不** 是每次抓取資料存放區物件。 例如，如果您想要從資料存放區下載檔案，則會進行驗證；如果您只是要變更預設資料存放區，則不會進行驗證。
 
-若要驗證您對基礎儲存體服務的存取權，您可以在 `register_azure_*()` 想要建立的資料存放區類型的對應方法中，提供您的帳戶金鑰、共用存取簽章 (SAS) 權杖或服務主體。 [儲存類型矩陣](#matrix)會列出對應至每個資料存放區類型的支援驗證類型。
+若要驗證您對基礎儲存體服務的存取權，您可以在想要建立的資料存放區類型的對應方法中，提供帳戶金鑰、共用存取簽章 (SAS) 權杖或服務主體 `register_azure_*()` 。 [儲存體類型矩陣](#matrix)會列出對應至每個資料存放區類型的支援驗證類型。
 
-您可以在[Azure 入口網站](https://portal.azure.com)上找到帳戶金鑰、SAS 權杖和服務主體資訊。
+您可以在 [Azure 入口網站](https://portal.azure.com)上找到帳戶金鑰、SAS 權杖和服務主體資訊。
 
 * 如果您打算使用帳戶金鑰或 SAS 權杖進行驗證，請在左窗格中選取 [儲存體帳戶]，然後選擇您要註冊的儲存體帳戶。 
   * [概觀] 頁面會提供帳戶名稱、容器和檔案共用名稱等資訊。 
       1. 針對帳戶金鑰，請移至 [設定] 窗格上的 [存取金鑰]。 
       1. 針對 SAS 權杖，請移至 [設定] 窗格上的 [共用存取簽章]。
 
-* 如果您打算使用服務主體進行驗證，請移至您的**應用程式註冊**，然後選取您要使用的應用程式。 
-    * 其對應的 **[總覽**] 頁面將包含 [租使用者識別碼] 和 [用戶端識別碼] 等必要資訊
+* 如果您打算使用服務主體進行驗證，請移至您的 **應用程式註冊** ，然後選取您要使用的應用程式。 
+    * 其對應的 **總覽** 頁面將包含必要的資訊，例如租使用者識別碼和用戶端識別碼。
 
 > [!IMPORTANT]
-> 基於安全性理由，您可能需要變更 Azure 儲存體帳戶的存取金鑰， (帳戶金鑰或 SAS 權杖) 。 當您這麼做時，請務必將新認證與您的工作區和連線的資料存放區同步。 瞭解如何使用[這些步驟](how-to-change-storage-access-key.md)同步已更新的認證。 
+> 基於安全性理由，您可能需要變更 Azure 儲存體帳戶的存取金鑰 (帳戶金鑰或 SAS 權杖) 。 當您這樣做時，請務必將新的認證與您的工作區和連線的資料存放區同步。 瞭解如何使用 [這些步驟](how-to-change-storage-access-key.md)來同步處理已更新的認證。 
 
 ### <a name="permissions"></a>權限
 
-針對 Azure blob 容器和 Azure Data Lake Gen 2 儲存體，請確定您的驗證認證具有**儲存體 Blob 資料讀取器**存取權。 深入瞭解[儲存體 Blob 資料讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)。 
+針對 Azure blob 容器和 Azure Data Lake Gen 2 儲存體，請確定您的驗證認證具有 **儲存體 Blob 資料讀取器** 存取權。 深入瞭解 [儲存體 Blob 資料讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)。 
 
 <a name="python"></a>
 
-## <a name="create-and-register-datastores-via-the-sdk"></a>透過 SDK 建立及註冊資料存放區
+## <a name="create-and-register-datastores-via-the-sdk"></a>透過 SDK 建立和註冊資料存放區
 
-當您將 Azure 儲存體解決方案註冊為資料存放區時，將會自動建立該資料存放區，並將其註冊至特定工作區。 請參閱[儲存體存取 & 許可權](#storage-access-and-permissions)一節，以瞭解哪裡可以找到所需的驗證認證。
+當您將 Azure 儲存體解決方案註冊為資料存放區時，將會自動建立該資料存放區，並將其註冊至特定工作區。 請參閱 [儲存體存取 & 許可權](#storage-access-and-permissions) 一節，以瞭解尋找所需驗證認證的位置。
 
-本節中的範例說明如何透過 Python SDK 針對下列儲存類型來建立及註冊資料存放區。 這些範例中提供的參數，是建立和註冊資料存放區時**所需的參數**。
+本節中的範例將說明如何透過 Python SDK 針對下列儲存體類型建立和註冊資料存放區。 這些範例中提供的參數，是建立和註冊資料存放區時**所需的參數**。
 
 * [Azure Blob 容器](#azure-blob-container)
 * [Azure 檔案共用](#azure-file-share)
 * [Azure Data Lake Storage Generation 2](#azure-data-lake-storage-generation-2)
 
- 若要為其他支援的儲存體服務建立資料存放區，請參閱[適用 `register_azure_*` 方法的參考檔](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods)。
+ 若要為其他支援的儲存體服務建立資料存放區，請參閱 [適用 `register_azure_*` 方法的參考檔](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods)。
 
-如果您偏好較低的程式碼體驗，請參閱[在 Azure Machine Learning studio 中建立資料存放區](#studio)。
+如果您偏好低程式碼體驗，請參閱 [在 Azure Machine Learning studio 中建立資料存放區](#studio)。
 
 > [!NOTE]
-> 資料存放區名稱只能包含小寫字母、數位和底線。 
+> 資料存放區名稱只可包含小寫字母、數位和底線。 
 
 ### <a name="azure-blob-container"></a>Azure Blob 容器
 
@@ -176,7 +176,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 針對 Azure Data Lake Storage Generation 2 (ADLS Gen 2) 資料存放區，請使用 [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) 透過[服務主體權限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)註冊連線至 Azure DataLake Gen 2 儲存體的認證資料存放區。 
 
-若要利用您的服務主體，您必須[註冊應用程式](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)，並將**儲存體 Blob 資料讀取器**存取權授與服務主體。 深入了解 [ADLS Gen 2 的存取控制設定](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
+若要使用您的服務主體，您必須 [註冊您的應用程式](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) ，並將服務主體授與 **儲存體 Blob 資料讀取器** 存取權。 深入了解 [ADLS Gen 2 的存取控制設定](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
 
 下列程式碼會建立 `adlsgen2_datastore_name` 資料存放區，並將其註冊至 `ws` 工作區。 此資料存放區會使用提供的服務主體認證，存取 `account_name` 儲存體帳戶中的檔案系統 `test`。
 
@@ -206,24 +206,24 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 ## <a name="create-datastores-in-the-studio"></a>在 studio 中建立資料存放區 
 
 
-使用 Azure Machine Learning studio 的幾個步驟，建立新的資料存放區。
+在 Azure Machine Learning studio 的幾個步驟中建立新的資料存放區。
 
 > [!IMPORTANT]
-> 如果您的資料儲存體帳戶位於虛擬網路中，則需要額外的設定步驟，以確保 studio 能夠存取您的資料。 請參閱[網路隔離 & 隱私權](how-to-enable-virtual-network.md#machine-learning-studio)，以確保套用適當的設定步驟。 
+> 如果您的資料儲存體帳戶位於虛擬網路中，則需要額外的設定步驟，以確保 studio 具有您資料的存取權。 請參閱 [網路隔離 & 隱私權](how-to-enable-virtual-network.md#machine-learning-studio) ，以確保套用適當的設定步驟。 
 
 1. 登入 [Azure Machine Learning Studio](https://ml.azure.com/)。
 1. 在左窗格中，選取 [管理] 底下的 [資料存放區]。
 1. 選取 [+ 新增資料存放區]。
-1. 完成新資料存放區的表單。 此表單會根據您選取的 Azure 儲存體類型和驗證類型，以智慧方式自行更新。 請參閱[儲存體存取和許可權一節](#access-validation)，以瞭解在何處尋找您需要的驗證認證才能填入此表單。
+1. 完成新資料存放區的表單。 此表單會根據您選取的 Azure 儲存體類型和驗證類型，以智慧方式自行更新。 請參閱「 [儲存體存取和許可權」一節](#access-validation) ，以瞭解在哪裡可以找到您需要的驗證認證才能填入此表單。
 
-下列範例示範當您建立**Azure blob 資料**存放區時，表單看起來的樣子： 
+下列範例示範當您建立 **Azure blob 資料**存放區時，表單看起來的樣子： 
     
 ![新資料存放區的表單](media/how-to-access-data/new-datastore-form.png)
 
 <a name="train"></a>
-## <a name="use-data-in-your-datastores"></a>在您的資料存放區中使用資料
+## <a name="use-data-in-your-datastores"></a>使用資料存放區中的資料
 
-建立資料存放區之後，請[建立 Azure Machine Learning 資料集](how-to-create-register-datasets.md)來與您的資料互動。 Dataset 會將您的資料封裝到延遲評估的可取用物件中，以進行機器學習工作（例如訓練）。 它們也能讓您從 Azure 儲存體服務（例如 Azure Blob 儲存體和 ADLS Gen 2）[下載或掛接](how-to-train-with-datasets.md#mount-vs-download)任何格式的檔案。 您也可以使用它們來將表格式資料載入至 pandas 或 Spark 資料框架。
+建立資料存放區之後，請 [建立 Azure Machine Learning 資料集](how-to-create-register-datasets.md) 來與您的資料互動。 資料集會將您的資料封裝成機器學習工作的延遲評估取用物件（例如定型）。 它們也提供從 Azure 儲存體服務（例如 Azure Blob 儲存體和 ADLS Gen 2） [下載或掛接](how-to-train-with-datasets.md#mount-vs-download) 任何格式檔案的功能。 您也可以使用它們來將表格式資料載入至 pandas 或 Spark 資料框架。
 
 <a name="get"></a>
 

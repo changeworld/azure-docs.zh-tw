@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 44c43505bb779c3e00af19bed3a3fd3844c16bfe
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 262c12b1fb1d5c768b178d6e56c2964527f34495
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923827"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607214"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立公用負載平衡器以平衡 VM 的負載
 
@@ -36,14 +36,12 @@ ms.locfileid: "87923827"
 
 ---
 
-# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[選項 1 (預設值)：建立公用負載平衡器 (標準 SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="standard-sku"></a>[**標準 SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >建議對生產環境工作負載使用標準 SKU 負載平衡器。  如需 SKU 的詳細資訊，請參閱 **[Azure Load Balancer 的標準 SKU](skus.md)** 。
 
 在本節中，您會建立負載平衡器以平衡虛擬機器的負載。 
-
-您可以建立公用負載平衡器或內部負載平衡器。 
 
 建立公用負載平衡器時，也必須建立新的公用 IP 位址，而該 IP 位址會設定為負載平衡器的前端 (預設的名稱為 LoadBalancerFrontend)。
 
@@ -317,14 +315,12 @@ ms.locfileid: "87923827"
 
 8. 選取 [儲存]。
 
-# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[選項 2：建立公用負載平衡器 (基本 SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="basic-sku"></a>[**基本 SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >建議對生產環境工作負載使用標準 SKU 負載平衡器。  如需 SKU 的詳細資訊，請參閱 **[Azure Load Balancer 的標準 SKU](skus.md)** 。
 
 在本節中，您會建立負載平衡器以平衡虛擬機器的負載。 
-
-您可以建立公用負載平衡器或內部負載平衡器。 
 
 建立公用負載平衡器時，也必須建立新的公用 IP 位址，而該 IP 位址會設定為負載平衡器的前端 (預設的名稱為 LoadBalancerFrontend)。
 

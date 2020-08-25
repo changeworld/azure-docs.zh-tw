@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1d2675a55133d405041be6e309e0cc4d1596084e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4e955a51906f160264fc4e81f263fe7677be91de
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835473"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589617"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虛擬機器
 
@@ -45,12 +45,16 @@ Azure 中所建立的所有資源分散在世界各地的多個[地理區域](ht
 
 下表顯示一些您可以取得可用位置清單的方式。
 
-| 方法 | 說明 |
+| 方法 | 描述 |
 | --- | --- |
 | Azure 入口網站 |當您建立 VM 時，請從清單中選取位置。 |
 | Azure PowerShell |使用 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) 命令。 |
 | REST API |使用[列出位置](/rest/api/resources/subscriptions)作業。 |
 | Azure CLI |使用 [az account list-locations](/cli/azure/account?view=azure-cli-latest) 作業。 |
+
+### <a name="singapore-data-residency"></a>新加坡資料落地
+
+在 Azure 中，將客戶資料儲存在單一區域中的功能目前僅適用於亞太地區的東南亞區域 (新加坡)。 至於其他所有區域，客戶資料會儲存在地區中。 如需詳細資訊，請參閱[信任中心](https://azuredatacentermap.azurewebsites.net/)。
 
 ## <a name="availability"></a>可用性
 Azure 已宣布推出業界領先的單一執行個體虛擬機器 99.9% 服務等級協定 (前提是您部署的所有磁碟都是進階儲存體的 VM)。  為了讓您的部署符合標準的 99.95% VM 服務等級協定資格，您還必須在可用性設定組內部署兩個或更多執行工作負載的 VM。 可用性設定組可確保您的 VM 會分散在 Azure 資料中心內的多個容錯網域，以及部署至具有不同維護期間的主機。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 說明保證的 Azure 整體可用性。
@@ -71,7 +75,7 @@ Azure 提供許多 [Marketplace 映像](https://azuremarketplace.microsoft.com/m
 
 下表顯示您可找到映像資訊的一些方法。
 
-| 方法 | 說明 |
+| 方法 | 描述 |
 | --- | --- |
 | Azure 入口網站 |當您選取要使用的影像時，會自動為您指定值。 |
 | Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |

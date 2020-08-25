@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 7044954d2ba67e61172c08c0a77acaaaec3822c6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 5da9e5b38b88a5a148bd3d85664daa523153086b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992669"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589446"
 ---
 # <a name="what-is-the-translator"></a>什麼是翻譯工具？
 
-您可以輕鬆地在應用程式、網站、工具和解決方案中整合翻譯工具。 它可讓您以 [60 種以上的語言](languages.md)新增多語言使用者體驗，並且可在使用任何作業系統的任何硬體平台上用於文字轉換文字的語言翻譯。
+您可以輕鬆地在應用程式、網站、工具和解決方案中整合翻譯工具。 它可讓您以 [70 種以上的語言](languages.md)新增多語言使用者體驗，並且可在使用任何作業系統的任何硬體平台上用於文字轉換文字的語言翻譯。
 
 翻譯工具是由雲端中的機器學習與 AI 演算法所組成的 [Azure 認知服務](https://docs.microsoft.com/azure/?pivot=products&panel=ai)集合的一部分，可隨時供您在開發專案中取用。
 

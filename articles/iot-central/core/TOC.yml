@@ -163,6 +163,10 @@
               href: howto-manage-preferences.md
             - name: 切換即時聊天
               href: howto-show-hide-chat.md
+    - name: 疑難排解
+      items: null
+      '-name': Device connections
+      href: troubleshoot-connection.md
 - name: 參考
   items:
     - name: Azure CLI

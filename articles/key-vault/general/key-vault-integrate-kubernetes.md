@@ -6,12 +6,12 @@ ms.author: rkarlin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: 9a13ede1c9dcd23b829d08ed9e3c6fc10248e191
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 1942576037c7367612580a04d4187ccf4655aade
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510040"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685879"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教學課程：在 Kubernetes 上，為祕密存放區 CSI 驅動程式設定及執行 Azure Key Vault 提供者
 
@@ -107,7 +107,7 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 
 ## <a name="create-your-own-secretproviderclass-object"></a>建立您自己的 SecretProviderClass 物件
 
-若要使用祕密存放區 CSI 驅動程式的提供者專用參數來建立您自己的自訂 SecretProviderClass 物件，請[使用此範本](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass.yaml)。 此物件將提供存取您金鑰保存庫所需的身分識別。
+若要使用祕密存放區 CSI 驅動程式的提供者專用參數來建立您自己的自訂 SecretProviderClass 物件，請[使用此範本](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/test/bats/tests/azure_v1alpha1_secretproviderclass.yaml)。 此物件將提供存取您金鑰保存庫所需的身分識別。
 
 在範例 SecretProviderClass YAML 檔案中，填入遺漏的參數。 必要參數如下：
 
@@ -141,12 +141,12 @@ spec:
     keyvaultName: "contosoKeyVault5"          # [REQUIRED] the name of the key vault
                                               #     az keyvault show --name contosoKeyVault5
                                               #     the preceding command will display the key vault metadata, which includes the subscription ID, resource group name, key vault 
-    cloudName: ""                             # [OPTIONAL for Azure] if not provided, Azure environment will default to AzurePublicCloud
+    cloudName: ""                                # [OPTIONAL for Azure] if not provided, Azure environment will default to AzurePublicCloud
     objects:  |
       array:
         - |
           objectName: secret1                 # [REQUIRED] object name
-                                              #     az keyvault secret list --vault-name “contosoKeyVault5”
+                                              #     az keyvault secret list --vault-name "contosoKeyVault5"
                                               #     the above command will display a list of secret names from your key vault
           objectType: secret                  # [REQUIRED] object types: secret, key, or cert
           objectVersion: ""                   # [OPTIONAL] object versions, default to latest if empty
