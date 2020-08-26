@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來追蹤和管理
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: b9f69b8815cc8d508d5a10dda82803581216a4eb
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: ced0e0020fe955734bf6cc767480fbadd6eaffc1
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761622"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890275"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>使用 REST API 追蹤備份和還原
 
@@ -41,13 +41,13 @@ Azure VM 備份作業是由 "jobId" 欄位來識別，而且可如[這裡](/rest
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-`{jobName}` 是上面提及的 "jobId"。 回應一律為「200 確定」，其 [狀態] 欄位會指出作業的目前狀態。 一旦為 "Completed" 或 "CompletedWithWarnings"，'extendedInfo' 區段就會顯示更多有關作業的詳細資訊。
+`{jobName}` 是上面提及的 "jobId"。 回應一律為「200 確定」，其 [狀態] 欄位會指出作業的目前狀態。 當它是 "Completed" 或 "CompletedWithWarnings" 時，[extendedInfo] 區段會顯示更多關於作業的詳細資料。
 
 ### <a name="response"></a>回應
 
 |名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     | [JobResource](/rest/api/backup/jobdetails/get#jobresource)        | [確定]        |
+|200 確定     | [JobResource](/rest/api/backup/jobdetails/get#jobresource)        | 確定        |
 
 #### <a name="example-response"></a>範例回應
 

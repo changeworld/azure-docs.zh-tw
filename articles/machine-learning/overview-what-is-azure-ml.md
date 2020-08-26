@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 01061ce1099588029410531793279572d112f382
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 53ccd610c6f0f36d4ab04efbada2070a22975023
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850350"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650106"
 ---
 # <a name="what-is-azure-machine-learning"></a>什麼是 Azure Machine Learning？
 
@@ -43,7 +43,7 @@ Azure Machine Learning 可用於任何一種機器學習，從傳統 ML 到深�
 Azure Machine Learning 為開發人員和資料科學家提供其機器學習工作流程需要的所有工具，包括：
 + [Azure Machine Learning 設計工具](tutorial-designer-automobile-price-train-score.md) (預覽)：拖放模組可讓您建立實驗，然後部署管線。
 
-+ Jupyter 筆記本：使用我們的[範例筆記本](https://aka.ms/aml-notebooks)或建立您自己的筆記本，將<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">適用於 Python 的 SDK</a> 範例用於機器學習。 
++ Jupyter 筆記本：使用我們的[範例筆記本](https://github.com/Azure/MachineLearningNotebooks)或建立您自己的筆記本，將<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">適用於 Python 的 SDK</a> 範例用於機器學習。 
 
 + R 指令碼或筆記本，您可以在其中使用<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">適用於 R 的 SDK</a> 來撰寫您自己的程式碼，或在設計工具中使用 R 模組。
 
@@ -88,7 +88,7 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps：部署和生命週期管理
 當您有正確的模型時，您可以在 Web 服務中、在 IoT 裝置上或從 Power BI 輕鬆使用它。 如需詳細資訊，請參閱有關[如何部署和部署位置](how-to-deploy-and-where.md)的文章。
 
-接著，您可以使用[適用於 Python 的 Azure Machine Learning SDK](https://aka.ms/aml-sdk)、[Azure Machine Learning Studio](https://ml.azure.com) 或[機器學習 CLI](reference-azure-machine-learning-cli.md) 來管理所部署的模型。
+接著，您可以使用[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py)、[Azure Machine Learning Studio](https://ml.azure.com) 或[機器學習 CLI](reference-azure-machine-learning-cli.md) 來管理所部署的模型。
 
 這些模型可被取用並[即時](how-to-consume-web-service.md)或[非同步](how-to-use-parallel-run-step.md)地傳回大量資料的相關預測。
 

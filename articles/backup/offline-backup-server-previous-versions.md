@@ -3,12 +3,12 @@ title: Data Protection Manager (DPM) 和 Microsoft Azure 備份 Server 的離線
 description: 使用 Azure 備份，您可以使用 Azure 匯入/匯出服務，將資料從網路傳送。 本文說明舊版 DPM 和 Azure 備份伺服器的離線備份工作流程。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 45518607b96848dc211c1a787ecfa85432cd842e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826594"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890088"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM 的離線備份工作流程和 Azure 備份伺服器 (之前的版本) 
 
@@ -203,7 +203,7 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
 
 1. 針對您要準備傳輸到 Azure 的已掛接磁碟，輸入不含後置冒號的磁碟機代號。 出現提示時，請提供磁片磁碟機格式的確認。
 
-    然後，此工具會開始準備磁片並複本備份資料。 當工具提示時，您可能需要附加其他磁片，以防提供的磁片沒有足夠的空間可供備份資料使用。 <br/>
+    然後，此工具會開始準備磁片並複本備份資料。 如果所提供的磁片沒有足夠的空間可用於備份資料，則您可能需要在工具提示時連接其他磁片。 <br/>
 
     工具順利完成之後，您提供的一或多個磁片已準備好寄送至 Azure。 在「起始離線備份」一節中，您于工作流程中提供的名稱的匯入作業也會在 Azure 中建立。 最後，工具會顯示磁碟所需之寄送目的地的 Azure 資料中心寄送地址。
 

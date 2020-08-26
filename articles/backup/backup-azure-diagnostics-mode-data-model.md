@@ -3,12 +3,12 @@ title: Azure 監視器記錄資料模型
 description: 在本文中，您將詳盡了解 Azure 備份資料的 Azure 監視器 Log Analytics 資料模型。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 897431feae6cd3166b594d4d6848204df76fe3fa
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 7822f88c9ea3e0cd83b7e600d63984a8a51becb1
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761401"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890258"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>適用於 Azure 備份資料的 Log Analytics 資料模型
 
@@ -37,7 +37,7 @@ ms.locfileid: "88761401"
 | AlertSeverity_s |Text |警示嚴重性 (例如，重大) |
 |AlertTimeToResolveInMinutes_s    | Number        |解決警示所花費的時間。 作用中警示的時間會呈現為空白。         |
 |AlertConsolidationStatus_s   |Text         |識別警示是否為合併警示         |
-|CountOfAlertsConsolidated_s     |Number         |如果是合併警示，則顯示合併警示的數目          |
+|CountOfAlertsConsolidated_s     |Number         |合併警示時合併的警示數目          |
 |AlertRaisedOn_s     |Text         |引發警示的實體類型         |
 |AlertCode_s     |Text         |唯一識別警示類型的代碼         |
 |RecommendedAction_s   |Text         |建議用來解決警示的動作         |
@@ -45,7 +45,7 @@ ms.locfileid: "88761401"
 | BackupItemUniqueId_s |Text |與警示相關聯的備份項目所具備的唯一識別碼 |
 | SchemaVersion_s |Text |結構描述的目前版本，例如 **V2** |
 | State_s |Text |警示物件的目前狀態 (例如，作用中、已刪除) |
-| BackupManagementType_s |Text |用於執行本警示所屬之備份的提供者類型 (例如，IaaSVM、FileFolder) |
+| BackupManagementType_s |Text |執行備份的提供者類型，例如，IaaSVM，此警示所屬的 Filefolder)  |
 | OperationName |Text |目前作業的名稱，例如 Alert |
 | 類別 |Text |推送至 Azure 監視器記錄的診斷資料類別。 一律為 Always AzureBackupReport |
 | 資源 |Text |這是所收集資料的資源，會顯示復原服務保存庫名稱 |
@@ -77,7 +77,7 @@ ms.locfileid: "88761401"
 | SecondaryBackupProtectionState_s |Text |是否要為備份項目啟用次要保護|
 | SchemaVersion_s |Text |結構描述的版本，例如 **V2** |
 | State_s |Text |備份項目物件的狀態，例如使用中、已刪除 |
-| BackupManagementType_s |Text |用於執行本備份項目所屬之備份的提供者類型 (例如，IaaSVM、FileFolder) |
+| BackupManagementType_s |Text |執行備份的提供者類型，例如，此備份專案所屬的 IaaSVM、Filefolder)  |
 | OperationName |Text |作業的名稱，例如 BackupItem |
 | 類別 |Text |推送至 Azure 監視器記錄的診斷資料類別。 一律為 Always AzureBackupReport |
 | 資源 |Text |要收集其資料的資源，例如復原服務保存庫名稱 |
@@ -94,14 +94,14 @@ ms.locfileid: "88761401"
 
 | 欄位 | 資料類型 | 描述 |
 | --- | --- | --- |
-| EventName_s |Text |此欄位代表這個事件的名稱，它一律為 AzureBackupCentralReport |  
+| EventName_s |Text |此欄位代表此事件的名稱。 永遠為 azurebackupcentralreport |  
 | BackupItemUniqueId_s |Text |備份項目的唯一識別碼 |
-| SchemaVersion_s |Text |此欄位代表目前的結構描述版本，值為 **V2** |
+| SchemaVersion_s |Text |此欄位代表目前的架構版本。 它是 **V2** |
 | State_s |Text |備份項目關聯物件的目前狀態 (例如，作用中、已刪除) |
 | BackupManagementType_s |Text |執行備份作業的伺服器所屬的提供者類型，例如 IaaSVM、FileFolder |
 | BackupItemSourceSize_s |Text | 備份項目的前端大小 |
 | BackupManagementServerUniqueId_s |Text | 可唯一識別用來保護備份項目之備份管理伺服器的欄位 (如果適用) |
-| 類別 |Text |此欄位代表推送到 Log Analytics 的診斷資料類別，則是 AzureBackupReport |
+| 類別 |Text |此欄位代表推送至 Log Analytics 的診斷資料類別。 它是 AzureBackupReport |
 | OperationName |Text |此欄位代表目前作業的名稱 - BackupItemAssociation |
 | 資源 |Text |這是所收集資料的資源，會顯示復原服務保存庫名稱 |
 | ProtectedContainerUniqueId_s |Text |與備份項目相關聯的受保護伺服器所具備的唯一識別碼 (V1 中的識別碼為 ProtectedServerUniqueId_s) |
@@ -144,7 +144,7 @@ ms.locfileid: "88761401"
 | State_s |Text |作業物件的目前狀態 (例如，作用中、已刪除) |
 | BackupManagementType_s |Text |執行備份作業的伺服器所屬的提供者類型，例如 IaaSVM、FileFolder |
 | OperationName |Text |此欄位代表目前作業的名稱 - Job |
-| 類別 |Text |此欄位代表推送至 Azure 監視器記錄的診斷資料類別，值為 AzureBackupReport |
+| 類別 |Text |此欄位代表推送至 Azure 監視器記錄的診斷資料類別。 它是 AzureBackupReport |
 | 資源 |Text |這是所收集資料的資源，會顯示復原服務保存庫名稱 |
 | ProtectedServerUniqueId_s |Text |與作業相關聯的受保護伺服器所具備的唯一識別碼 |
 | ProtectedContainerUniqueId_s |Text | 用來識別作業執行所在之受保護容器的唯一識別碼 |
@@ -174,12 +174,12 @@ ms.locfileid: "88761401"
 
 | 欄位 | 資料類型 | 適用的版本 | 描述 |
 | --- | --- | --- | --- |
-| EventName_s |Text ||此欄位代表這個事件的名稱，它一律為 AzureBackupCentralReport |
-| SchemaVersion_s |Text ||此欄位代表目前的結構描述版本，值為 **V2** |
+| EventName_s |Text ||此欄位代表此事件的名稱。 永遠為 azurebackupcentralreport |
+| SchemaVersion_s |Text ||此欄位代表目前的架構版本。 它是 **V2** |
 | State_s |Text ||原則物件的目前狀態 (例如，作用中、已刪除) |
 | BackupManagementType_s |Text ||執行備份作業的伺服器所屬的提供者類型，例如 IaaSVM、FileFolder |
 | OperationName |Text ||此欄位代表目前作業的名稱 - Policy |
-| 類別 |Text ||此欄位代表推送至 Azure 監視器記錄的診斷資料類別，值為 AzureBackupReport |
+| 類別 |Text ||此欄位代表推送至 Azure 監視器記錄的診斷資料類別。 它是 AzureBackupReport |
 | 資源 |Text ||這是所收集資料的資源，會顯示復原服務保存庫名稱 |
 | PolicyUniqueId_g |Text ||用來識別原則的唯一識別碼 |
 | PolicyName_s |Text ||所定義原則的名稱 |
@@ -196,7 +196,7 @@ ms.locfileid: "88761401"
 | MonthlyRetentionTimes_s |Text ||每月保留期的設定日期和時間 |
 | MonthlyRetentionFormat_s |Text ||每月保留期的設定類型 (例如，以天為基礎則每日、以週為基礎則每週) |
 | MonthlyRetentionDaysOfTheWeek_s |Text ||一週中所選用於每月保留期的日期 |
-| MonthlyRetentionWeeksOfTheMonth_s |Text ||一個月中每月保留期的設定週數 (例如，第一週、最後一週等等)。 |
+| MonthlyRetentionWeeksOfTheMonth_s |Text ||每月保留期的設定，例如： First、Last |
 | YearlyRetentionDuration_s |十進位數字 ||所設定備份的總保留期間 (以年為單位) |
 | YearlyRetentionTimes_s |Text ||每年保留期的設定日期和時間 |
 | YearlyRetentionMonthsOfTheYear_s |Text ||一年中所選用於每年保留期的月數 |
@@ -222,12 +222,12 @@ ms.locfileid: "88761401"
 
 | 欄位 | 資料類型 | 適用的版本 | 描述 |
 | --- | --- | --- | --- |
-| EventName_s |Text ||此欄位代表這個事件的名稱，它一律為 AzureBackupCentralReport |
-| SchemaVersion_s |Text ||此欄位代表目前的結構描述版本，值為 **V2** |
+| EventName_s |Text ||此欄位代表此事件的名稱。 永遠為 azurebackupcentralreport |
+| SchemaVersion_s |Text ||此欄位代表目前的架構版本。 它是 **V2** |
 | State_s |Text ||原則物件的目前狀態 (例如，作用中、已刪除) |
 | BackupManagementType_s |Text ||執行備份作業的伺服器所屬的提供者類型，例如 IaaSVM、FileFolder |
 | OperationName |Text ||此欄位代表目前作業的名稱 - PolicyAssociation |
-| 類別 |Text ||此欄位代表推送至 Azure 監視器記錄的診斷資料類別，值為 AzureBackupReport |
+| 類別 |Text ||此欄位代表推送至 Azure 監視器記錄的診斷資料類別。 它是 AzureBackupReport |
 | 資源 |Text ||這是所收集資料的資源，會顯示復原服務保存庫名稱 |
 | PolicyUniqueId_g |Text ||用來識別原則的唯一識別碼 |
 | VaultUniqueId_s |Text ||此原則所屬之保存庫的唯一識別碼 |
@@ -248,7 +248,7 @@ ms.locfileid: "88761401"
 | ProtectedContainerUniqueId_s |Text | 可唯一識別受保護容器的欄位 |
 | ProtectedContainerOSType_s |Text |受保護容器的作業系統類型 |
 | ProtectedContainerOSVersion_s |Text |受保護容器的作業系統版本 |
-| AgentVersion_s |Text |代理程式備份或保護代理程式的版本號碼 (如果是 SC DPM 和 MABS) |
+| AgentVersion_s |Text |在 SC DPM 和 MABS) 的情況下，代理程式備份或保護代理程式的版本號碼 ( |
 | BackupManagementType_s |Text |執行備份的提供者類型。 例如 IaaSVM、Filefolder |
 | EntityState_s |Text |受保護伺服器物件的目前狀態。 例如，作用中、已刪除 |
 | ProtectedContainerFriendlyName_s |Text |受保護伺服器的易記名稱 |
@@ -266,12 +266,12 @@ ms.locfileid: "88761401"
 | --- | --- | --- |
 | CloudStorageInBytes_s |十進位數字 |備份所使用的雲端備份儲存體，會根據最新的值來計算 (此欄位僅適用於 v1 結構描述)|
 | ProtectedInstances_s |十進位數字 |用於在帳單中計算前端儲存體的受保護執行個體數目，在計算時會以最後的值為依據 |
-| EventName_s |Text |此欄位代表這個事件的名稱，它一律為 AzureBackupCentralReport |
-| SchemaVersion_s |Text |此欄位代表目前的結構描述版本，值為 **V2** |
+| EventName_s |Text |此欄位代表此事件的名稱。 永遠為 azurebackupcentralreport |
+| SchemaVersion_s |Text |此欄位代表目前的架構版本。 它是 **V2** |
 | State_s |Text |儲存體物件的目前狀態 (例如，作用中、已刪除) |
 | BackupManagementType_s |Text |執行備份作業的伺服器所屬的提供者類型，例如 IaaSVM、FileFolder |
 | OperationName |Text |此欄位代表目前作業的名稱 - Storage |
-| 類別 |Text |此欄位代表推送至 Azure 監視器記錄的診斷資料類別，值為 AzureBackupReport |
+| 類別 |Text |此欄位代表推送至 Azure 監視器記錄的診斷資料類別。 它是 AzureBackupReport |
 | 資源 |Text |這是所收集資料的資源，會顯示復原服務保存庫名稱 |
 | ProtectedServerUniqueId_s |Text |進行儲存體計算之受保護伺服器的唯一識別碼 |
 | VaultUniqueId_s |Text |計算儲存體之保存庫的唯一識別碼 |
@@ -293,7 +293,7 @@ ms.locfileid: "88761401"
 | 欄位 | 資料類型 | 描述 |
 | --- | --- |  --- |
 | StorageUniqueId_s |Text |用來識別儲存體實體的唯一識別碼 |
-| SchemaVersion_s |Text |此欄位代表目前的結構描述版本，值為 **V2** |
+| SchemaVersion_s |Text |此欄位代表目前的架構版本。 它是 **V2** |
 | BackupItemUniqueId_s |Text |用來對儲存體實體的相關備份項目進行識別的唯一識別碼 |
 | BackupManagementServerUniqueId_s |Text |用來對儲存體實體的相關備份管理伺服器進行識別的唯一識別碼|
 | VaultUniqueId_s |Text |用來對儲存體實體的相關保存庫進行識別的唯一識別碼|
@@ -306,11 +306,11 @@ ms.locfileid: "88761401"
 
 | 欄位 | 資料類型 | 描述 |
 | --- | --- | --- |
-| EventName_s |Text |此欄位代表這個事件的名稱，它一律為 AzureBackupCentralReport |
-| SchemaVersion_s |Text |此欄位代表目前的結構描述版本，值為 **V2** |
+| EventName_s |Text |此欄位代表此事件的名稱。 永遠為 azurebackupcentralreport |
+| SchemaVersion_s |Text |此欄位代表目前的架構版本。 它是 **V2** |
 | State_s |Text |保存庫物件的目前狀態 (例如，作用中、已刪除) |
 | OperationName |Text |此欄位代表目前作業的名稱 - Vault |
-| 類別 |Text |此欄位代表推送至 Azure 監視器記錄的診斷資料類別，值為 AzureBackupReport |
+| 類別 |Text |此欄位代表推送至 Azure 監視器記錄的診斷資料類別。 它是 AzureBackupReport |
 | 資源 |Text |這是所收集資料的資源，會顯示復原服務保存庫名稱 |
 | VaultUniqueId_s |Text |保存庫的唯一識別碼 |
 | VaultName_s |Text |保存庫名稱 |
@@ -470,7 +470,7 @@ ms.locfileid: "88761401"
 
 ### <a name="modifying-your-queries-to-use-the-v2-schema"></a>修改您的查詢以使用 V2 架構
 
-因為 V1 架構是在淘汰路徑上，建議您在 Azure 備份診斷資料的所有自訂查詢中只使用 V2 架構。 以下範例說明如何更新您的查詢，以移除 V1 架構的相依性：
+由於 V1 架構是在淘汰路徑上，建議您在 Azure 備份診斷資料的所有自訂查詢中只使用 V2 架構。 以下範例說明如何更新您的查詢，以移除 V1 架構的相依性：
 
 1. 識別您的查詢是否使用僅適用于 V1 架構的任何欄位。 假設您有一個查詢可列出所有備份專案及其相關聯的受保護伺服器，如下所示：
 
@@ -481,9 +481,9 @@ ms.locfileid: "88761401"
     | distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
     ````
 
-    上述查詢會使用僅適用于 V1 架構的欄位 ProtectedServerUniqueId_s。 此欄位的 V2 架構對等專案是 ProtectedContainerUniqueId_s (參考上述的資料表) 。 欄位 BackupItemUniqueId_s 也適用于 V2 架構，而此查詢中也可以使用相同的欄位。
+    上述查詢會使用欄位 ProtectedServerUniqueId_s，這僅適用于 V1 架構。 此欄位的 V2 架構對等專案是 ProtectedContainerUniqueId_s (參考上述的資料表) 。 欄位 BackupItemUniqueId_s 也適用于 V2 架構，而此查詢中也可以使用相同的欄位。
 
-2. 將查詢更新為使用 V2 架構功能變數名稱。 建議的作法是在您所有的查詢中使用篩選 ' where SchemaVersion_s = = "V2" '，如此一來，查詢才會剖析對應至 V2 架構的記錄：
+2. 將查詢更新為使用 V2 架構功能變數名稱。 建議的作法是在所有查詢中使用 **SchemaVersion_s = = "V2"** 的篩選準則，如此一來，查詢才會剖析對應至 V2 架構的記錄：
 
     ````Kusto
     AzureDiagnostics

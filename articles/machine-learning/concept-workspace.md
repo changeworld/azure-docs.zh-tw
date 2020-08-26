@@ -1,7 +1,7 @@
 ---
 title: 什麼是工作區
 titleSuffix: Azure Machine Learning
-description: 工作區是 Azure Machine Learning 的最上層資源。 它會保留所有定型執行的歷程記錄，包括記錄、計量、輸出，以及腳本的快照集。 您可以使用此資訊來判斷哪一個定型回合會產生最佳模型
+description: 工作區是 Azure Machine Learning 的最上層資源。 它會保留所有定型執行的歷程記錄，包括記錄、計量、輸出，以及腳本的快照。 您可以使用此資訊來判斷哪一個定型回合會產生最佳模型
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 53f151c63c85e958aad3bd0eaf16c50294bf250f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 437c2b8e42ed5128cc716eee23b8702ec012b481
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287227"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890909"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什麼是 Azure Machine Learning 工作區？
 
-工作區是 Azure Machine Learning 的最上層資源，提供一個集中的位置來處理您在使用 Azure Machine Learning 時所建立的所有成品。  工作區會保留所有定型執行的歷程記錄，包括記錄、計量、輸出，以及腳本的快照集。 您可以使用此資訊來判斷哪一個定型回合會產生最佳模型。  
+工作區是 Azure Machine Learning 的最上層資源，可提供集中的位置來處理您使用 Azure Machine Learning 時所建立的所有成品。  工作區會保留所有定型執行的歷程記錄，包括記錄、計量、輸出，以及腳本的快照。 您可以使用此資訊來判斷哪一個定型回合會產生最佳模型。  
 
-一旦擁有您想要的模型之後，您就可以向工作區註冊它。 接著，您可以使用已註冊的模型和評分腳本，將部署到 Azure 容器實例、Azure Kubernetes Service 或可現場程式化閘道陣列（FPGA），做為 REST 架構的 HTTP 端點。 您也可以將模型部署到 Azure IoT Edge 裝置作為模組。
+當您有想要的模型之後，您可以向工作區註冊該模型。 然後，您可以使用已註冊的模型和評分腳本來部署至 Azure 容器實例、Azure Kubernetes Service，或部署至可現場程式化閘道陣列， (FPGA) 作為 REST 型 HTTP 端點。 您也可以將模型部署到 Azure IoT Edge 裝置作為模組。
 
-可用的定價和功能取決於是否已針對工作區選取 [[基本] 或 [企業版](overview-what-is-azure-ml.md#sku)]。 您會在[建立工作區](#create-workspace)時選取版本。  您也可以從 Basic[升級](#upgrade)至 Enterprise edition。
+可用的定價和功能取決於是否已為工作區選取 [ [基本] 或 [企業版](overview-what-is-azure-ml.md#sku) ]。 當您 [建立工作區](#create-workspace)時，請選取版本。  您也可以從 Basic [升級](#upgrade) 為 Enterprise edition。
 
 ## <a name="taxonomy"></a>分類法 
 
@@ -30,95 +30,103 @@ ms.locfileid: "87287227"
 
 [![工作區分類法](./media/concept-workspace/azure-machine-learning-taxonomy.png)](./media/concept-workspace/azure-machine-learning-taxonomy.png#lightbox)
 
-此圖顯示工作區的下列元件：
+下圖顯示工作區的下列元件：
 
-+ 工作區可以包含[Azure Machine Learning 的計算實例](concept-compute-instance.md)、使用執行 Azure Machine Learning 所需的 Python 環境所設定的雲端資源。
++ 工作區可以包含 [Azure Machine Learning 計算實例](concept-compute-instance.md)、使用執行 Azure Machine Learning 所需的 Python 環境設定的雲端資源。
 
-+ [使用者角色](how-to-assign-roles.md)可讓您與其他使用者、小組或專案共用您的工作區。
-+ [計算目標](concept-azure-machine-learning-architecture.md#compute-targets)是用來執行您的實驗。
-+ 當您建立工作區時，也會為您建立[相關聯的資源](#resources)。
-+ [實驗](concept-azure-machine-learning-architecture.md#experiments)是用來建立模型的定型回合。  
-+ [管線](concept-azure-machine-learning-architecture.md#ml-pipelines)是可重複使用的工作流程，用於訓練和重新定型您的模型。
-+ 資料[集](concept-azure-machine-learning-architecture.md#datasets-and-datastores)可協助管理您用於模型定型和管線建立的資料。
-+ 一旦擁有您想要部署的模型之後，您就可以建立一個已註冊的模型。
-+ 使用已註冊的模型和評分腳本來建立[部署端點](concept-azure-machine-learning-architecture.md#endpoints)。
++ [使用者角色](how-to-assign-roles.md) 可讓您與其他使用者、小組或專案共用您的工作區。
++ [計算目標](concept-azure-machine-learning-architecture.md#compute-targets) 是用來執行您的實驗。
++ 當您建立工作區時，也會為您建立 [相關聯的資源](#resources) 。
++ [實驗](concept-azure-machine-learning-architecture.md#experiments) 是您用來建立模型的定型回合。  
++ [管線](concept-azure-machine-learning-architecture.md#ml-pipelines) 是可重複使用的工作流程，用於定型和重新定型您的模型。
++ 資料[集](concept-azure-machine-learning-architecture.md#datasets-and-datastores)可協助您管理用於模型定型和管線建立的資料。
++ 當您擁有想要部署的模型之後，就可以建立已註冊的模型。
++ 使用已註冊的模型和評分腳本來建立 [部署端點](concept-azure-machine-learning-architecture.md#endpoints)。
 
 ## <a name="tools-for-workspace-interaction"></a>工作區互動的工具
 
-您可以透過下列方式與工作區進行互動：
+您可以透過下列方式與您的工作區互動：
 
 > [!IMPORTANT]
-> 下列已標記的工具（預覽）目前為公開預覽狀態。
-> 預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 以下是標示 (preview) 的工具目前處於公開預覽狀態。
+> 此預覽版本會在沒有服務等級協定的情況下提供，不建議用於實際執行工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 + 在網站上：
-    + [Azure Machine Learning studio](https://ml.azure.com) 
-    + [Azure Machine Learning 設計工具（預覽）](concept-designer.md) -僅適用于[Enterprise edition](overview-what-is-azure-ml.md#sku)工作區。
-+ 在任何 Python 環境中，使用[適用于 python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
-+ 在任何 R 環境中，使用[適用于 r 的 AZURE MACHINE LEARNING SDK （預覽）](https://azure.github.io/azureml-sdk-for-r/reference/index.html)。
+    + [Azure Machine Learning studio ](https://ml.azure.com) 
+    + [Azure Machine Learning 設計工具 (預覽) ](concept-designer.md) -僅適用于 [Enterprise edition](overview-what-is-azure-ml.md#sku) 工作區。
++ 在任何具有 [適用于 python 之 AZURE MACHINE LEARNING SDK 的](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)Python 環境中。
++ 在任何具有 [適用于 r 的 AZURE MACHINE LEARNING SDK (preview) ](https://azure.github.io/azureml-sdk-for-r/reference/index.html)的 r 環境中。
 + 在命令列上使用 Azure Machine Learning [CLI 擴充](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)功能
 + [Azure Machine Learning VS Code 延伸模組](how-to-manage-resources-vscode.md#workspaces)
 
 
-## <a name="machine-learning-with-a-workspace"></a>具有工作區的機器學習服務
+## <a name="machine-learning-with-a-workspace"></a>使用工作區進行機器學習
 
-機器學習服務工作會讀取及/或寫入成品至您的工作區。
+機器學習工作會讀取及/或寫入構件至您的工作區。
 
-+ 執行實驗以將模型寫入實驗執行結果定型至工作區。
-+ 使用自動化 ML 來定型模型-將定型結果寫入工作區。
++ 執行實驗來定型模型-將實驗執行結果定型至工作區。
++ 使用自動化 ML 將模型寫入定型結果定型至工作區。
 + 在工作區中註冊模型。
 + 部署模型-使用已註冊的模型來建立部署。
 + 建立並執行可重複使用的工作流程。
-+ 查看機器學習成品，例如實驗、管線、模型、部署。
++ 查看機器學習構件，例如實驗、管線、模型、部署。
 + 追蹤和監視模型。
 
 ## <a name="workspace-management"></a>工作區管理
 
-您也可以執行下列工作區管理作業：
+您也可以執行下列工作區管理工作：
 
 | 工作區管理工作   | 入口網站              | Studio | Python SDK/R SDK       | CLI        | VS 程式碼
 |---------------------------|---------|---------|------------|------------|------------|
 | 建立工作區        | **&check;**     | | **&check;** | **&check;** | **&check;** |
 | 管理工作區存取    | **&check;**   || |  **&check;**    ||
 | 升級至 Enterprise edition    | **&check;** | **&check;**  | |     ||
-| 建立和管理計算資源    | **&check;**   | **&check;** | **&check;** |  **&check;**   ||
+| 建立及管理計算資源    | **&check;**   | **&check;** | **&check;** |  **&check;**   ||
 | 建立筆記本 VM |   | **&check;** | |     ||
 
 > [!WARNING]
 > 不支援將 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新租用戶。 這麼做可能會導致錯誤。
 
-## <a name="create-a-workspace"></a><a name='create-workspace'></a>建立工作區
+## <a name="create-a-workspace"></a><a name='create-workspace'></a> 建立工作區
 
-當您建立工作區時，您會決定是否要使用[Basic 或 Enterprise edition](overview-what-is-azure-ml.md#sku)來建立。 版本會決定工作區中可用的功能。 除了其他功能之外，Enterprise edition 還能讓您存取[Azure Machine Learning 的設計](concept-designer.md)工具，以及建立[自動化機器學習實驗](tutorial-first-experiment-automated-ml.md)的 studio 版本。  如需詳細資訊和定價資訊，請參閱[Azure Machine Learning 定價](https://azure.microsoft.com/pricing/details/machine-learning/)。
+當您建立工作區時，您會決定是否要使用 [Basic 或 Enterprise edition](overview-what-is-azure-ml.md#sku)來建立工作區。 版本會決定工作區中可用的功能。 Enterprise edition 除了其他功能之外，還可讓您存取 [Azure Machine Learning 設計](concept-designer.md) 工具，以及建立 [自動化機器學習實驗](tutorial-first-experiment-automated-ml.md)的 studio 版本。  如需詳細資訊和定價資訊，請參閱 [Azure Machine Learning 定價](https://azure.microsoft.com/pricing/details/machine-learning/)。
 
-建立工作區的方法有很多種：  
+有多種方式可建立工作區：  
 
-* 使用點和按一下介面的[Azure 入口網站](how-to-manage-workspace.md)，引導您完成每個步驟。
-* 使用[適用于 python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) ，從 Python 腳本或木星筆記本即時建立工作區
-* 當您需要使用公司安全性標準來自動化或自訂建立時，請使用[Azure Resource Manager 範本](how-to-create-workspace-template.md)或[Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) 。
-* 如果您在 Visual Studio Code 中工作，請使用[VS Code 延伸](how-to-manage-resources-vscode.md#create-a-workspace)模組。
+* 使用點按一下介面的 [Azure 入口網站](how-to-manage-workspace.md) ，逐步引導您完成每個步驟。
+* 使用 [適用于 python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) ，從 Python 腳本或木星筆記本即時建立工作區
+* 當您需要使用企業安全性標準來自動化或自訂建立時，請使用 [Azure Resource Manager 範本](how-to-create-workspace-template.md) 或 [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) 。
+* 如果您在 Visual Studio Code 中工作，請使用 [VS Code 擴充](how-to-manage-resources-vscode.md#create-a-workspace)功能。
 
 > [!NOTE]
 > 工作區名稱不區分大小寫。
 
-## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>升級至 Enterprise edition
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a> 升級至 Enterprise edition
 
-您可以使用 Azure 入口網站，將[工作區從 Basic 升級至 Enterprise edition](how-to-manage-workspace.md#upgrade) 。 您無法將 Enterprise edition 工作區降級為基本版本工作區。 
+您可以使用 Azure 入口網站，將 [工作區從基本升級至 Enterprise edition](how-to-manage-workspace.md#upgrade) 。 您無法將企業版工作區降級至基本版工作區。 
 
-## <a name="associated-resources"></a><a name="resources"></a>相關聯的資源
+## <a name="associated-resources"></a><a name="resources"></a> 相關聯的資源
 
 建立新的工作區時，會自動建立工作區使用的幾個 Azure 資源：
 
-+ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)：註冊您在定型期間和部署模型時使用的 docker 容器。 為了將成本降至最低，在建立部署映射之前，會**延遲載入**ACR。
-+ [Azure 儲存體帳戶](https://azure.microsoft.com/services/storage/)：用來作為工作區的預設資料存放區。  與您 Azure Machine Learning 計算實例搭配使用的 Jupyter 筆記本也會儲存在這裡。
-+ [Azure 應用程式 Insights](https://azure.microsoft.com/services/application-insights/)：儲存有關模型的監視資訊。
++ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)：註冊您在定型期間以及在部署模型時使用的 docker 容器。 為了將成本降至最低，ACR 會 **延遲載入** ，直到建立部署映射為止。
++ [Azure 儲存體帳戶](https://azure.microsoft.com/services/storage/)：作為工作區的預設資料存放區使用。  Jupyter 與 Azure Machine Learning 計算實例搭配使用的筆記本也會儲存在這裡。
++ [Azure 應用程式見解](https://azure.microsoft.com/services/application-insights/)：儲存有關模型的監視資訊。
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)：儲存計算目標所使用的秘密，以及工作區所需的其他機密資訊。
 
 > [!NOTE]
 > 除了建立新的版本之外，您也可以使用現有的 Azure 服務。
 
+### <a name="azure-storage-account"></a>Azure 儲存體帳戶
+
+預設使用工作區建立的 Azure 儲存體帳戶是一般用途 v1 帳戶。 您可以遵循 [升級至一般用途 v2 儲存體帳戶一](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) 文中的步驟，在建立工作區之後，將此升級為一般用途 v2。
+
 > [!IMPORTANT]
-> 如果您想要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶（Premium_LRS 和 Premium_GRS）。 它也不能有階層式命名空間（與 Azure Data Lake Storage Gen2 一起使用）。 工作區的_預設_儲存體帳戶不支援 premium 儲存體或階層式命名空間。 您可以使用 premium 儲存體或具有_非預設_儲存體帳戶的階層命名空間。
+> 升級至一般用途 v2 之後，請勿在儲存體帳戶上啟用階層式命名空間。
+
+如果您想要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶 (Premium_LRS 和 Premium_GRS) 。 它也不能有階層命名空間 (用於 Azure Data Lake Storage Gen2) 。 工作區的 _預設_ 儲存體帳戶不支援 premium 儲存體或階層命名空間。 您可以搭配使用 premium 儲存體或階層命名空間與 _非預設_ 儲存體帳戶。
+
+
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -128,6 +136,6 @@ ms.locfileid: "87287227"
 + [建立工作區](how-to-manage-workspace.md)
 + [管理工作區](how-to-manage-workspace.md)
 + [教學課程：使用 Python SDK 開始建立您的第一個 ML 實驗](tutorial-1st-experiment-sdk-setup.md)
-+ [教學課程：使用 R SDK 開始使用 Azure Machine Learning](tutorial-1st-r-experiment.md)
-+ [教學課程：使用自動化機器學習建立您的第一個分類模型](tutorial-first-experiment-automated-ml.md)（僅適用于[Enterprise edition](overview-what-is-azure-ml.md#sku)工作區）
-+ [教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)（僅適用于[Enterprise edition](overview-what-is-azure-ml.md#sku)工作區）
++ [教學課程：開始使用 R SDK 的 Azure Machine Learning](tutorial-1st-r-experiment.md)
++ [教學課程：使用自動化機器學習建立第一個分類模型](tutorial-first-experiment-automated-ml.md) (僅適用于 [Enterprise edition](overview-what-is-azure-ml.md#sku) 工作區) 
++ [教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md) (僅適用于 [企業版](overview-what-is-azure-ml.md#sku) 工作區) 

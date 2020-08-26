@@ -3,12 +3,12 @@ title: 私人端點
 description: 瞭解建立 Azure 備份私用端點的程式，以及使用私人端點來協助維護資源安全性的案例。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: b7f7c6461701b6f4e438cbead60456b327c7c207
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4f41eee7a84308eb9f4da56f087b2c36e09148f0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871542"
+ms.locfileid: "88890887"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 備份的私人端點
 
@@ -99,7 +99,7 @@ Azure 備份可讓您使用 [私人端點](../private-link/private-endpoint-over
 
 ### <a name="optional-dns-zone"></a>選用的 DNS 區域
 
-客戶可以選擇將其私人端點與私人 DNS 區域整合，以進行 Azure 備份 (在建立私人端點) 以進行服務通訊的章節中討論。 如果您不想要與私人 DNS 區域整合，可以選擇使用您自己的 DNS 伺服器，或分別建立私人 DNS 區域。 這是前一節所討論的兩個強制私人 DNS 區域的補充。
+您可以選擇將私人端點與私人 DNS 區域整合，以進行 Azure 備份 (在 [建立和使用私人端點以進行](#creating-and-using-private-endpoints-for-backup) 服務通訊的備份) 一節中所討論。 如果您不想要與私人 DNS 區域整合，可以選擇使用您自己的 DNS 伺服器，或分別建立私人 DNS 區域。 這是前一節所討論的兩個強制私人 DNS 區域的補充。
 
 如果您想要在 Azure 中建立個別的私人 DNS 區域，您可以使用建立強制 DNS 區域所用的相同步驟來執行相同動作。 命名與訂用帳戶的詳細資料會在下面共用：
 
@@ -192,7 +192,7 @@ Azure 備份可讓您使用 [私人端點](../private-link/private-endpoint-over
 ## <a name="adding-dns-records"></a>新增 DNS 記錄
 
 >[!NOTE]
-> 如果您使用整合式 DNS 區域，則不需要執行此步驟。 不過，如果您已建立自己的 Azure 私人 DNS 區域，或使用自訂的私人 DNS 區域，請確定已依照本節所述的專案進行。
+> 如果您使用的是整合式 DNS 區域，則不需要執行此步驟。 不過，如果您已建立自己的 Azure 私人 DNS 區域，或使用自訂的私人 DNS 區域，請確定已依照本節所述的專案進行。
 
 在您為保存庫建立了選用的私人 DNS 區域和私人端點之後，您必須將 DNS 記錄新增到您的 DNS 區域。 您可以手動或使用 PowerShell 腳本來進行這項作業。 這只需要針對您的備份 DNS 區域完成，Blob 和佇列的更新就會自動更新。
 

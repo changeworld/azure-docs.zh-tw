@@ -3,12 +3,12 @@ title: 安全性功能概觀
 description: 了解 Azure 備份中的安全性功能，協助保護您的備份資料，並符合您企業的安全性需求。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 0354e319c82e02072a8771f9aae383bf0b6240f6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: f9a505723b40df61665a99e898d59ecfb8c03fd5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824589"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890462"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 備份中的安全性功能概觀
 
@@ -56,7 +56,7 @@ Azure 備份包括虛擬機器備份和虛擬機器備份中的 SQL 和 SAP HANA
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>保護不小心刪除的備份資料
 
-Azure 備份提供安全性功能，即使在刪除之後，也能協助保護備份資料。 使用虛刪除，如果使用者刪除了虛擬機器的備份，備份資料會額外保留 14 天，以便在沒有遺失資料的情況下復原該備份項目。 在「虛刪除」狀態中，備份資料額外保留 14 天不會對客戶產生任何費用。 [深入了解虛刪除](backup-azure-security-feature-cloud.md)。
+Azure 備份提供安全性功能，即使在刪除之後，也能協助保護備份資料。 使用虛刪除，如果使用者刪除了虛擬機器的備份，備份資料會額外保留 14 天，以便在沒有遺失資料的情況下復原該備份項目。 「虛刪除」狀態中的額外14天備份資料保留期不會產生任何費用。 [深入了解虛刪除](backup-azure-security-feature-cloud.md)。
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>可疑活動的監視與警示
 

@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來管理 Azure �
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 03815cd9956e323583d6d66097e0eeaa3d492f44
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 2588ca87e2dc2209fbaa5eae411fe5895d5f5669
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826356"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889646"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 還原 Azure 虛擬機器
 
@@ -19,7 +19,7 @@ ms.locfileid: "88826356"
 
 ## <a name="select-recovery-point"></a>選取復原點
 
-使用[列出復原點 REST API](/rest/api/backup/recoverypoints/list)，可以列出備份項目可用的復原點。 這是一項具備所有相關值的簡單 GET** 作業。
+使用[列出復原點 REST API](/rest/api/backup/recoverypoints/list)，可以列出備份項目可用的復原點。 它是具有所有相關值的簡單 *GET* 作業。
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13

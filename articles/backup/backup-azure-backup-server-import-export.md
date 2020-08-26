@@ -3,12 +3,12 @@ title: 適用於 DPM 和 Azure 備份伺服器的離線備份
 description: 使用 Azure 備份，您可以使用 Azure 匯入/匯出服務，將資料從網路傳送。 本文說明 DPM 和 Azure 備份伺服器的離線備份工作流程。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 30c8526271a636b8890dde0079e27374df9c38af
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 221424871aa4f022e199c98e95024ec20e55d803
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757263"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890071"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM 和 Azure 備份伺服器 (MABS) 的離線備份工作流程
 
@@ -136,7 +136,7 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
 
     ![Azure 登入畫面](./media/backup-azure-backup-server-import-export/signin-disk-prep.png)
 
-    然後，此工具會開始準備磁片並複本備份資料。 當工具提示時，您可能需要附加其他磁片，以防提供的磁片沒有足夠的空間可供備份資料使用。 <br/>
+    然後，此工具會開始準備磁片並複本備份資料。 如果所提供的磁片沒有足夠的空間可用於備份資料，則您可能需要在工具提示時連接其他磁片。 <br/>
 
     在工具成功執行結束時，命令提示字元會提供三個資訊：
     * 您提供的一或多個磁碟已準備好寄送至 Azure。

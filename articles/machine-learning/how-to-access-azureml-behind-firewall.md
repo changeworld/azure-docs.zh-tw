@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7d270ac9a6597645c5a98b6af77d19021ef00329
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 581feff516e0f0cd820c94290d4aaa729cc4d3a4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827421"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889935"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>使用防火牆後方的工作區進行 Azure Machine Learning
 
@@ -24,9 +24,9 @@ ms.locfileid: "88827421"
 
 雖然本檔中的資訊是以使用 [Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)為基礎，但您應該能夠搭配其他防火牆產品使用。 如果您有關于如何允許透過防火牆進行通訊的問題，請參閱您所使用之防火牆的檔。
 
-## <a name="network-rules"></a>網路規則
+## <a name="application-rules"></a>應用程式規則
 
-在您的防火牆上建立網路規則，以允許來自本文中位址的流量。
+在您的防火牆上，建立 _應用程式規則_ ，以允許來自本文中位址的流量。
 
 > [!TIP]
 > 新增網路規則時，將 __通訊協定__ 設定為 [任何]，並將埠設定為 `*` 。

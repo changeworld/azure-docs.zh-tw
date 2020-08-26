@@ -3,12 +3,12 @@ title: 復原服務保存庫概觀
 description: 復原服務保存庫和 Azure 備份保存庫之間的概觀與比較。
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: c69883a88473cd304bb772430ddfe662da4d8fac
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6b6550bc8c5221547d55ad1e81a985b8ecd303e0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757093"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889612"
 ---
 # <a name="recovery-services-vaults-overview"></a>復原服務保存庫概觀
 
@@ -20,7 +20,7 @@ ms.locfileid: "88757093"
 
 - **角色型存取控制 (RBAC)**：RBAC 提供 Azure 中的更細緻存取權管理。 [Azure 提供各種內建角色](../role-based-access-control/built-in-roles.md)，且 Azure Backup 有三個[內建的角色可用來管理復原點](backup-rbac-rs-vault.md)。 復原服務保存庫與 RBAC 相容，且會對一組定義之使用者角色的備份和還原存取權限加以限制。 [深入了解](backup-rbac-rs-vault.md)
 
-- 虛**刪除**：透過虛刪除，即使惡意執行者刪除備份 (或不小心刪除備份資料) ，備份資料仍會保留14天，以允許復原該備份專案，而不會遺失資料。 在「虛刪除」狀態中，備份資料保留的額外14天不會對客戶產生任何成本。 [深入了解](backup-azure-security-feature-cloud.md)。
+- 虛**刪除**：透過虛刪除，即使惡意執行者刪除備份 (或不小心刪除備份資料) ，備份資料仍會保留14天，以允許復原該備份專案，而不會遺失資料。 在「虛刪除」狀態中，備份資料保留的額外14天不會產生任何費用。 [深入了解](backup-azure-security-feature-cloud.md)。
 
 - **跨區域還原**：跨區域還原 (CRR) 可讓您在次要區域（即 azure 配對的區域）中還原 azure vm。 如果 Azure 在主要區域中宣告了嚴重損壞，次要區域中複寫的資料就可以在次要區域中還原，以降低其環境的主要區域發生的即時停機。 [深入了解](backup-azure-arm-restore-vms.md#cross-region-restore)。
 

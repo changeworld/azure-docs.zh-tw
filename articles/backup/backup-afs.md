@@ -3,12 +3,12 @@ title: 在 Azure 入口網站中備份 Azure 檔案共用
 description: 瞭解如何使用 Azure 入口網站來備份復原服務保存庫中的 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 40b966d719360570a472b17fbf733aa4c8795b4d
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: ca49f1ad48ab0534b27b91ad6a5a50b393cda782
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757790"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890343"
 ---
 # <a name="back-up-azure-file-shares"></a>備份 Azure 檔案共用
 
@@ -21,7 +21,7 @@ ms.locfileid: "88757790"
 * 從 [檔案共用] 窗格設定備份
 * 執行隨選備份作業以建立還原點
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * [瞭解](azure-file-share-backup-overview.md) 以 Azure 檔案共用快照集為基礎的備份解決方案。
 * 確定檔案共用存在於其中一種 [支援的儲存體帳戶類型](azure-file-share-support-matrix.md)中。
@@ -132,7 +132,7 @@ ms.locfileid: "88757790"
        ![建立新的保存庫](./media/backup-afs/create-new-vault.png)
 
       >[!IMPORTANT]
-      >如果儲存體帳戶已向保存庫註冊，或在裝載您要保護之檔案共用的儲存體帳戶內有少數受保護的共用，則會預先填入復原服務保存庫名稱，而您將無法在 [此處深入瞭解](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share)。
+      >如果儲存體帳戶已向保存庫註冊，或在裝載您要保護之檔案共用的儲存體帳戶內有幾個受保護的共用，則會預先填入復原服務保存庫名稱，且您將無法編輯它，請在 [這裡深入瞭解](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share)。
 
 1. 在 [ **備份原則** ] 選取專案中，執行下列其中一項：
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: 92f56f3b405470bc8ae0e9ebab2450ddc31b3c6a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8c22ff3cc79d326da09c44167519adbea48b5643
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77672169"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651330"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>什麼是 Azure HDInsight 中的 Apache Kafka
 
@@ -27,7 +27,7 @@ HDInsight 上的 Apache Kafka 特定特性如下：
 
 * 它會使用 Azure 受控磁碟作為 Kafka 的備份存放區。 受控磁碟可針對每個 Kafka 訊息代理程式最多提供 16 TB 的儲存空間。 如需使用 HDInsight 上的 Kafka 設定受控磁碟的資訊，請參閱[提高 HDInsight 上的 Apache Kafka 延展性](apache-kafka-scalability.md)。
 
-    如需受控磁碟的詳細資訊，請參閱 [Azure 受控磁碟](../../virtual-machines/windows/managed-disks-overview.md)。
+    如需受控磁碟的詳細資訊，請參閱 [Azure 受控磁碟](../../virtual-machines/managed-disks-overview.md)。
 
 * Kafka 是針對機架的單一維度檢視而設計的。 Azure 會將一個機架分隔成兩個維度：更新網域 (UD) 和容錯網域 (FD)。 Microsoft 所提供的工具會重新平衡各 UD 和 FD 的 Kafka 分割區和複本。
 

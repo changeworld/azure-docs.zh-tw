@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 57f9338841b599e10c8a1d7eec8fd4f371ceecb9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6a01e86f4afe397ed78cd279231a2429b17c60a8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081010"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651364"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>快速入門：使用 PowerShell 在 Azure HDInsight 中建立 Apache Spark 叢集
 
@@ -133,7 +133,7 @@ New-AzHDInsightCluster `
 
 建立 HDInsight 叢集最多可能需要 20 分鐘。
 
-`-DisksPerWorkerNode` 參數會設定 HDInsight 上 Kafka 的延展性。 HDInsight 上的 Kafka 會在叢集中使用虛擬機器的本機磁碟來儲存資料。 Kafka 的 I/O 非常大量，因此會使用 [Azure 受控磁碟](../../virtual-machines/windows/managed-disks-overview.md)來提供高輸送量，並為每個節點提供更多儲存空間。
+`-DisksPerWorkerNode` 參數會設定 HDInsight 上 Kafka 的延展性。 HDInsight 上的 Kafka 會在叢集中使用虛擬機器的本機磁碟來儲存資料。 Kafka 的 I/O 非常大量，因此會使用 [Azure 受控磁碟](../../virtual-machines/managed-disks-overview.md)來提供高輸送量，並為每個節點提供更多儲存空間。
 
 受控磁碟的類型可以是__標準__ (HDD) 或__進階__ (SSD)。 磁碟類型取決於背景工作節點 (Kafka 代理程式) 所使用的 VM 大小。 進階磁碟會自動與 DS 和 GS 系列的 VM 搭配使用。 所有其他的 VM 類型是使用標準磁碟。 您可以使用 `-WorkerNodeSize` 參數來設定 VM 類型。 如需參數的詳細資訊，請參閱 [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) 文件。
 

@@ -4,12 +4,12 @@ description: 尋找有關使用 Azure 備份備份 Azure Vm 上的 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 577f6637ebe96dcabcb1357ca09da75bd9552c30
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d69a2aff900dc3185aafbcb2d655a29d2fff06e3
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827234"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890550"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有關在 Azure VM 備份上執行的 SQL Server 資料庫的常見問題
 
@@ -60,7 +60,7 @@ ms.locfileid: "88827234"
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>我可以保護內部部署的可用性群組嗎？
 
-不知道。 Azure 備份可保護在 Azure 中執行的 SQL Server 資料庫。 如果可用性群組 (AG) 在 Azure 和內部部署機器之間散佈，則只有在主要複本是在 Azure 中執行時，才能保護 AG。 此外，Azure 備份只會保護在與復原服務保存庫相同的 Azure 區域中執行的節點。
+不會。 Azure 備份可保護在 Azure 中執行的 SQL Server 資料庫。 如果可用性群組 (AG) 在 Azure 和內部部署機器之間散佈，則只有在主要複本是在 Azure 中執行時，才能保護 AG。 此外，Azure 備份只會保護在與復原服務保存庫相同的 Azure 區域中執行的節點。
 
 ## <a name="can-i-protect-availability-groups-across-regions"></a>我可以跨區域保護可用性群組嗎？
 
@@ -68,7 +68,7 @@ Azure 備份復原服務保存庫可以偵測和保護與保存庫位於相同�
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>成功的備份作業是否會建立警示？
 
-否。 成功的備份作業不會產生警示。 只有失敗的備份作業會傳送警示。 [這裡](backup-azure-monitoring-built-in-monitor.md)詳載了入口網站警示的行為。 但是，如果您有興趣，即使作業成功也有警示，您也可以使用 [Azure 監視器](backup-azure-monitoring-use-azuremonitor.md)來進行監視。
+否。 成功的備份作業不會產生警示。 只有失敗的備份作業會傳送警示。 [這裡](backup-azure-monitoring-built-in-monitor.md)詳載了入口網站警示的行為。 但是，如果您想要讓警示即使成功，也可以使用 Azure 監視器來進行 [監視](backup-azure-monitoring-use-azuremonitor.md)。
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>是否可以在 [備份作業] 功能表中看到已排程的備份作業？
 
@@ -94,7 +94,7 @@ Azure 備份復原服務保存庫可以偵測和保護與保存庫位於相同�
 
 重新命名的資料庫會被視為新的資料庫。 如此一來，服務就會將這種情況視為無法找到資料庫，且備份失敗。
 
-您可以選取資料庫，此資料庫現在已重新命名並設定保護。 如果已在實例上啟用自動保護，就會自動偵測並保護重新命名的資料庫。
+您可以選取資料庫，此資料庫現在已重新命名並設定保護。 如果已在實例上啟用自動保護，將會自動偵測並保護重新命名的資料庫。
 
 ## <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>為什麼我無法看到 autoprotected 實例的新增資料庫？
 

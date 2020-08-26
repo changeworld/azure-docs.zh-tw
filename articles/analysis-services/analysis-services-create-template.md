@@ -8,12 +8,12 @@ ms.service: azure-analysis-services
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.custom: subject-armqs, references_regions
-ms.openlocfilehash: 249c678fb6d55f01a9f06e4e1db5f41fa85a700f
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: e282e3a7e6efc5c989955a5a6b96030b3054b446
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553065"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641903"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>快速入門：建立伺服器 - ARM 範本
 
@@ -34,7 +34,7 @@ ms.locfileid: "87553065"
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-analysis-services-create/)。
 
-:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json" range="1-79" highlight="63-78":::
+:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json":::
 
 具有防火牆規則的單一 [Microsoft.analysisservices/servers](/azure/templates/microsoft.analysisservices/servers) 資源會在範本中定義。
 

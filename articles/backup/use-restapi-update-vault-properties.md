@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來更新保存庫
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: c68d3accfc6963d7a5eebfef128e3521b45ac886
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 3ee2d57b5589daa756020ebb787a5400ed244506
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827251"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890037"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 復原服務保存庫設定
 
@@ -17,7 +17,7 @@ ms.locfileid: "88827251"
 
 ## <a name="soft-delete-state"></a>虛刪除狀態
 
-刪除受保護專案的備份是必須監視的重要作業。 為了防止意外刪除，Azure 復原服務保存庫具有虛刪除功能。 這項功能可讓客戶在刪除之後的一段時間內，視需要還原已刪除的備份。
+刪除受保護專案的備份是必須監視的重要作業。 為了防止意外刪除，Azure 復原服務保存庫具有虛刪除功能。 這項功能可讓您在刪除之後的一段時間內，視需要還原已刪除的備份。
 
 但在某些情況下不需要這項功能。 如果 Azure 復原服務保存庫中有備份專案，甚至是虛刪除的，則無法刪除該保存庫。 如果需要立即刪除保存庫，這可能會造成問題。 例如：部署作業通常會在相同的工作流程中清除已建立的資源。 部署可以建立保存庫、設定專案的備份、執行測試還原，然後繼續刪除備份專案和保存庫。 如果保存庫刪除失敗，整個部署可能會失敗。 停用虛刪除是保證立即刪除的唯一方法。
 
@@ -85,8 +85,8 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 |名稱  |必要  |類型  |描述  |
 |---------|---------|---------|---------|
-|etag     |         |   字串      |  選擇性 eTag       |
-|location     |  true       |字串         |   資源位置      |
+|etag     |         |   String      |  選擇性 eTag       |
+|location     |  true       |String         |   資源位置      |
 |properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保存庫的屬性       |
 |tags     |         | Object        |     資源標籤    |
 

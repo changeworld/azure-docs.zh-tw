@@ -3,12 +3,12 @@ title: Azure 檔案共用備份的移難排解
 description: 本文說明如何排解您在保護 Azure 檔案共用時所發生的問題。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e6aec34bea32d33e7a202cb9afb1aae6e1047f18
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b6f4c74f6e2e8c463d1bcbd78d6ff79d3fb6ee56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825455"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889803"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>針對備份 Azure 檔案共用時發生的問題進行疑難排解
 
@@ -25,7 +25,7 @@ ms.locfileid: "88825455"
   >一個儲存體帳戶中的所有檔案共用只能在一個復原服務保存庫之下加以保護。 您可以使用 [此腳本](scripts/backup-powershell-script-find-recovery-services-vault.md) 來尋找您的儲存體帳戶註冊所在的復原服務保存庫。
 
 - 請確定檔案共用不存在任何不受支援的儲存體帳戶中。 您可以參考 Azure 檔案 [共用備份的支援矩陣](azure-file-share-support-matrix.md) ，以尋找支援的儲存體帳戶。
-- 如果有新的儲存體帳戶，請確定儲存體帳戶名稱和資源組名的合併長度不超過84個字元，如果是傳統儲存體帳戶，則為77個字元。
+- 請確定儲存體帳戶名稱和資源組名的合併長度在新的儲存體帳戶和77字元的情況下，不會超過84個字元（如果是傳統儲存體帳戶）。
 - 請檢查儲存體帳戶的防火牆設定，確定已啟用 [允許信任的 Microsoft 服務存取儲存體帳戶] 選項。
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>入口網站中的錯誤指出儲存體帳戶探索失敗
@@ -300,7 +300,7 @@ ms.locfileid: "88825455"
 檢查備份的檔案共用是否已刪除。 如果它處於虛刪除狀態，請檢查虛刪除保留期限是否已結束且未復原。 在上述任一情況下，您將會永久遺失所有的快照集，而且無法復原資料。
 
 >[!NOTE]
-> 建議您不要刪除已備份的檔案共用，或如果它處於虛刪除的狀態，請在虛刪除保留期限結束之前取消刪除，以避免遺失所有的還原點。
+> 建議您不要刪除已備份的檔案共用，或如果它處於已虛刪除的狀態，請在虛刪除保留期限結束之前取消刪除，以避免遺失所有的還原點。
 
 ### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState-備份失敗，因為 Azure 檔案共用處於虛刪除狀態
 
