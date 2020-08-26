@@ -16,6 +16,8 @@
       href: quickstart-load-balancer-standard-public-template.md
     - name: 建立內部 Load Balancer - 入口網站
       href: quickstart-load-balancer-standard-internal-portal.md
+    - name: 建立內部 Load balancer - Azure CLI
+      href: quickstart-load-balancer-standard-internal-cli.md
   expanded: true
 - name: 教學課程
   items:

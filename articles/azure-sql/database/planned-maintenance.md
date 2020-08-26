@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
-ms.date: 01/30/2019
-ms.openlocfilehash: f0bda1f4b9894b1ea5a68f44a728f715676d500e
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 08/25/2020
+ms.openlocfilehash: 85459f357032a7f9944d50e3e4f3929015c6dcfd
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661141"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869112"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>規劃 Azure SQL Database 和 Azure SQL 受控執行個體中的 Azure 維護事件
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,15 +29,15 @@ ms.locfileid: "88661141"
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>計劃性維護事件期間的預期情況
 
-重新進行/容錯移轉通常會在30秒內完成。 平均是8秒。 若已成功連線，您的應用程式必須重新連線至健康情況良好的新資料庫主要複本。 如果在新的主要複本上線之前，嘗試重新設定資料庫時發生新的連接，您會收到錯誤 40613 (資料庫無法使用) ：目前無法使用伺服器 ' {servername} ' 上的「資料庫 ' {databasename} '」。 請稍後重試連接。」 如果您的資料庫有長時間執行的查詢，此查詢將會在重新設定期間中斷，且需要重新開機。
+維護事件可以產生單一或多個容錯移轉，視維護事件開始時的主要和次要複本的 constellation 而定。 平均而言，每個規劃的維護事件都會發生1.7 容錯移轉。 重新進行/容錯移轉通常會在30秒內完成。 平均是8秒。 如果已連接，您的應用程式必須重新連接到您資料庫的新主要複本。 如果在新的主要複本上線之前，嘗試重新設定資料庫時發生新的連接，您會收到錯誤 40613 (資料庫無法使用) ：*目前無法使用伺服器 ' {servername} ' 上的「資料庫 ' {databasename} '」。請稍後重試連接。* 」 如果您的資料庫有長時間執行的查詢，此查詢將會在重新設定期間中斷，且需要重新開機。
+
+## <a name="how-to-simulate-a-planned-maintenance-event"></a>如何模擬規劃的維護事件
+
+確保您的用戶端應用程式在部署至生產環境之前，能夠復原維護事件，有助於降低應用程式錯誤的風險，並且會對您的終端使用者造成應用程式可用性的影響。 您可以透過 PowerShell、CLI 或 REST API [起始手動容錯移轉](https://aka.ms/mifailover-techblog) ，在規劃的維護事件期間測試用戶端應用程式的行為。 它會產生與維護事件相同的行為，使主要複本離線。
 
 ## <a name="retry-logic"></a>重試邏輯
 
-任何連線到雲端資料庫服務的用戶端生產應用程式均應實作健全的連線[重試邏輯](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)。 此步驟有助於減緩這些情況，而且通常能夠讓終端使用者知道這些錯誤。
-
-## <a name="frequency"></a>頻率
-
-平均而言，每個月會發生 1.7 次計劃性維護事件。
+任何連線到雲端資料庫服務的用戶端生產應用程式均應實作健全的連線[重試邏輯](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)。 這有助於讓使用者無法透明地進行容錯移轉，或至少將負面影響降到最低。
 
 ## <a name="resource-health"></a>資源健康情況
 

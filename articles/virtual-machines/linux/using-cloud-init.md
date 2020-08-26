@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: e303b713adf2925af8bc012a5b858c6f5740fccf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7ddbb48f3598780988feb25a11729a5086d31fde
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510067"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869264"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 中適用於虛擬機器的 cloud-init 支援
 此文章說明針對 [cloud-init](https://cloudinit.readthedocs.io) \(英文\) 存在的支援，以便在 Azure 中於佈建階段設定虛擬機器 (VM) 或虛擬機器擴展集。 一旦 Azure 佈建資源，這些 cloud-init 設定就會在初次開機時執行。  
@@ -27,7 +27,7 @@ Azure 支援兩種佈建代理程式，[cloud-init](https://cloudinit.readthedoc
 
 cloud-init 也可在不同的發行版本上運作。 例如，您不使用 **apt-get install** 或 **yum install** 來安裝套件。 您可以改為定義要安裝的套件清單。 cloud-init 會針對您選取的發行版本，自動使用原生的套件管理工具。
 
-我們正積極與我們背書的 Linux 散發版本合作夥伴合作，在 Azure Marketplace 中提供啟用雲端初始化的映射。 這些映像會讓您的 Cloud-init 部署和設定順暢地與 VM 和虛擬機器擴展集運作。 一開始，我們會與經過背書的 Linux 發行版本合作夥伴及上游合作，以確保 cloud-init 能在 Azure 上與 OS 搭配運作，然後便會更新套件，並在發行版本套件存放庫中公開提供。 
+我們正積極與我們背書的 Linux 發行版本合作夥伴合作，在 Azure Marketplace 中提供已啟用雲端初始化的映射。 這些映像會讓您的 Cloud-init 部署和設定順暢地與 VM 和虛擬機器擴展集運作。 一開始，我們會與經過背書的 Linux 發行版本合作夥伴及上游合作，以確保 cloud-init 能在 Azure 上與 OS 搭配運作，然後便會更新套件，並在發行版本套件存放庫中公開提供。 
 
 在 Azure 上於經過背書的 Linux 發行版本 OS 上提供 cloud-init 有兩個階段：套件支援，然後映像支援：
 * 「Azure 上的 cloud-init 套件支援」會記載接下來有哪些 cloud-init 套件會受到支援或處於預覽狀態，讓您可以在自訂映像中將這些套件與 OS 搭配使用。
@@ -46,46 +46,46 @@ cloud-init 也可在不同的發行版本上運作。 例如，您不使用 **ap
 | 發行者 / 版本 | 供應項目 | SKU | 版本 | 映像 cloud-init 就緒 | Azure 上的 cloud-init 套件支援|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |是 | 是 - 從下列套件版本開始支援：*18.2-1.el7_6.2*|
-|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 | 是（注意：這是預覽映射 **，不能再使用**，這會在2020年9月1日移除） | N/A |
+|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 | 是 (注意：這是預覽映射 **，不能再使用** ，這將于2020年9月1日移除)  | N/A |
 |RedHat 7.7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | 是 | 是 - 從下列套件版本開始支援：*18.5-6.el7*|
 |RedHat 7.7 (Gen2)|RHEL | 77-gen2 | 7.7.2020051913 | 是 | 是 - 從下列套件版本開始支援：*18.5-6.el7*|
 |RedHat 7.7 (Gen1)|RHEL |7-LVM | 7.7.2020051921 | 是 | 是 - 從下列套件版本開始支援：*18.5-6.el7*|
 |RedHat 7.7 (Gen2)|RHEL | 7lvm-gen2 | 7.7.2020051922  | 是 | 是 - 從下列套件版本開始支援：*18.5-6.el7*|
 |RedHat 7.7 (Gen1) |rhel-byos | rhel-lvm77 | 7.7.20200416 | 是  | 是 - 從下列套件版本開始支援：*18.5-6.el7*|
-|RedHat 8.1 (Gen1) |RHEL |8.1-ci |8.1.2020042511 | 是（注意：這是預覽映射，一旦所有 RHEL 8.1 映射都支援雲端 init 之後，這將會在2020年8月前移除） | 否，預計於 2020 年 6 月完整支援|
-|RedHat 8.1 (Gen2) |RHEL |81-ci-gen2 |8.1.2020042524 | 是（注意：這是預覽映射，一旦所有 RHEL 8.1 映射都支援雲端 init 之後，這將會在2020年8月前移除） | 否，預計於 2020 年 6 月完整支援 |
+|RedHat 8.1 (Gen1) |RHEL |8.1-ci |8.1.2020042511 | 是 (注意：這是預覽映射，一旦所有 RHEL 8.1 映射都支援 cloud init 之後，這將會在 8 2020 月1日之前移除)  | 否，預計於 2020 年 6 月完整支援|
+|RedHat 8.1 (Gen2) |RHEL |81-ci-gen2 |8.1.2020042524 | 是 (注意：這是預覽映射，一旦所有 RHEL 8.1 映射都支援 cloud init 之後，這將會在 8 2020 月1日之前移除)  | 否，預計於 2020 年 6 月完整支援 |
 
-* 所有 RedHat： RHEL 7.8 和8.2 （Gen1 和 Gen2）映射都會使用雲端 init 來布建。
+* 所有 RedHat： RHEL 7.8 和 8.2 (Gen1 和 Gen2) 映射都會使用雲端初始化進行布建。
 
 ### <a name="centos"></a>CentOS
 
 | 發行者 / 版本 | 供應項目 | SKU | 版本 | 映像 cloud-init 就緒 | Azure 上的 cloud-init 套件支援|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7.7 |CentOS |7-CI |7.7.20190920 |是（注意：這是預覽映射 **，不能再使用**，這會在2020年9月1日移除） | N/A |
-|OpenLogic 7.7 |CentOS | 7.7 |7.7.2020062400 |是 | 是-封裝版本的支援：`18.5-6.el7.centos.5`|
-|OpenLogic 7.7 （Gen2） |CentOS | 7_7-gen2 |7.7.2020062401 |是 | 是-封裝版本的支援：`18.5-6.el7.centos.5`|
-|OpenLogic 7.7 |CentOS-HPC | 7.7 |7.6.2020062600 |是 | 是-封裝版本的支援：`18.5-6.el7.centos.5`|
-|OpenLogic 7.7 （Gen2） |CentOS-HPC | 7_7-gen2 |7.6.2020062601 |是 | 是-封裝版本的支援：`18.5-6.el7.centos.5`|
-|OpenLogic 8。1 |CentOS | 8_1 |8.1.2020062400 |是 | 是-封裝版本的支援：`18.5-7.el8_1.1`|
-|OpenLogic 8.1 （Gen2） |CentOS | 8_1-gen2 |8.1.2020062401 |是 | 是-封裝版本的支援：`18.5-7.el8_1.1`|
-|OpenLogic 8。1 |CentOS-HPC | 8_1 |8.1.2020062400 |是 | 是-封裝版本的支援：`18.5-7.el8_1.1`|
-|OpenLogic 8.1 （Gen2） |CentOS-HPC： 8_1-gen2 | 8_1-gen2 |8.1.2020062401 |是 | 是-封裝版本的支援：`18.5-7.el8_1.1`|
+|OpenLogic 7.7 |CentOS |7-CI |7.7.20190920 |是 (注意：這是預覽映射 **，不能再使用** ，這將于2020年9月1日移除)  | N/A |
+|OpenLogic 7.7 |CentOS | 7.7 |7.7.2020062400 |是 | 是-套件版本的支援： `18.5-6.el7.centos.5`|
+|OpenLogic 7.7 (Gen2)  |CentOS | 7_7-gen2 |7.7.2020062401 |是 | 是-套件版本的支援： `18.5-6.el7.centos.5`|
+|OpenLogic 7.7 |CentOS-HPC | 7.7 |7.6.2020062600 |是 | 是-套件版本的支援： `18.5-6.el7.centos.5`|
+|OpenLogic 7.7 (Gen2)  |CentOS-HPC | 7_7-gen2 |7.6.2020062601 |是 | 是-套件版本的支援： `18.5-6.el7.centos.5`|
+|OpenLogic 8。1 |CentOS | 8_1 |8.1.2020062400 |是 | 是-套件版本的支援： `18.5-7.el8_1.1`|
+|OpenLogic 8.1 (Gen2)  |CentOS | 8_1-gen2 |8.1.2020062401 |是 | 是-套件版本的支援： `18.5-7.el8_1.1`|
+|OpenLogic 8。1 |CentOS-HPC | 8_1 |8.1.2020062400 |是 | 是-套件版本的支援： `18.5-7.el8_1.1`|
+|OpenLogic 8.1 (Gen2)  |CentOS-HPC： 8_1-gen2 | 8_1-gen2 |8.1.2020062401 |是 | 是-套件版本的支援： `18.5-7.el8_1.1`|
 
-* 所有 OpenLogic： CentOS 7.8 和8.2 （Gen1 和 Gen2）映射都會使用雲端 init 來布建。
+* 所有的 OpenLogic： CentOS 7.8 和 8.2 (Gen1 和 Gen2) 映射都會使用雲端初始化進行布建。
 
 ### <a name="oracle"></a>Oracle
 
 | 發行者 / 版本 | 供應項目 | SKU | 版本 | 映像 cloud-init 就緒 | Azure 上的 cloud-init 套件支援|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Oracle 7.7 |Oracle-Linux |77-ci |7.7.01| 預覽影像（注意：這是預覽映射，一旦所有 Oracle 7.7 映射都支援雲端 init 之後，這將會在2020中移除，並會提供通知） | 否，處於預覽狀態，套件為：*18.5-3.0.1.el7*
+|Oracle 7.7 |Oracle-Linux |77-ci |7.7.01| 預覽影像 (注意：這是預覽映射，一旦所有 Oracle 7.7 映射都支援 cloud init 之後，這將會在2020年中移除，並會提供通知)  | 否，處於預覽狀態，套件為：*18.5-3.0.1.el7*
 
 ### <a name="suse-sles"></a>SUSE SLES
-這些 SLES 映射已更新為使用雲端 init 進行布建，Gen2 映射變體也已更新。
+這些 SLES 映射已更新為使用雲端初始化進行布建，Gen2 映射變體也已更新。
 * suse： sles-15-sp1-{basic/byos/hpc/hpc-byos/chost-byos}： gen1：2020.06.10
 * suse： sles-sap-15-sp1： gen1：2020.06.10
 * suse： sles-sap-15-sp1-byos： gen1：2020.06.10
 * suse： manager-proxy-4-byos： gen1：2020.06.10
-* suse： manager-server-4-byos： gen1：2020.06.10
+* suse： manager-伺服器-4-byos： gen1：2020.06.10
 * suse： sles-{byos/sap/sap-byos}：15：2020.06.10
 * suse： sles-12-sp5： gen1：2020.06.10
 * suse： sles-12-sp5 {-byos/basic/hpc-byos/hpc}： gen1：2020.06.10
@@ -97,8 +97,8 @@ cloud-init 也可在不同的發行版本上運作。 例如，您不使用 **ap
 ### <a name="debian"></a>Debian
 | 發行者 / 版本 | 供應項目 | SKU | 版本 | 映像 cloud-init 就緒 | Azure 上的 cloud-init 套件支援|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| debian （Gen1） |debian-10 | 10-于 cloudinit |cloud-init-preview| 是（僅限預覽） | 否，處於預覽狀態。 |
-| debian （Gen2） |debian-10 | 10-于 cloudinit-gen2 |cloud-init-preview| 是（僅限預覽） | 否，處於預覽狀態。 |
+| debian (Gen1)  |debian-10 | 10-于 cloudinit |cloud-init-preview| 是 (僅限預覽)  | 否，處於預覽狀態。 |
+| debian (Gen2)  |debian-10 | 10-于 cloudinit-gen2 |cloud-init-preview| 是 (僅限預覽)  | 否，處於預覽狀態。 |
 
 
 
@@ -139,7 +139,7 @@ packages:
 
 最後一個步驟是使用 [az vm create](/cli/azure/vm) 命令來建立 VM。 
 
-下列範例會建立名為 *centos74* 的 VM，並建立 SSH 金鑰 (如果它們不存在於預設金鑰位置)。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。  使用 `--custom-data` 參數以傳入 cloud-init 組態檔。 如果您將檔案儲存於目前工作目錄之外的位置，請提供 cloud-init.txt 組態的完整路徑。 
+下列範例會建立名為 *centos74* 的 VM，並建立 SSH 金鑰 (如果它們不存在於預設金鑰位置)。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。  使用 `--custom-data` 參數以傳入 cloud-init 組態檔。 如果您將檔案儲存於目前工作目錄之外的位置，請提供 cloud-init.txt  組態的完整路徑。 
 
 ```azurecli-interactive 
 az vm create \
@@ -152,6 +152,8 @@ az vm create \
 
 建立 VM 後，Azure CLI 會顯示您部署專屬的資訊。 記下 `publicIpAddress`。 此位址用來存取 VM。  系統需要花一些時間建立 VM、安裝套件以及啟動應用程式。 在 Azure CLI 將您返回提示字元之後，背景工作會繼續執行。 您可以透過 SSH 連線到 VM，並使用「疑難排解」一節中所述的步驟來檢視 cloud-init 記錄。 
 
+您也可以 [在 ARM 範本中傳遞參數](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli#inline-parameters)，以部署已啟用雲端初始化的 VM。
+
 ## <a name="troubleshooting-cloud-init"></a>針對 cloud-init 進行疑難排解
 一旦佈建 VM，Cloud-init 將會執行 `--custom-data` 中定義的所有模組和指令碼，以設定 VM。  如果您需要針對設定中的任何錯誤或遺漏進行疑難排解，則需要在 cloud-init 記錄 (位於 **/var/log/cloud-init.log**) 中搜尋模組名稱 (例如 `disk_setup` 或 `runcmd`)。
 
@@ -162,7 +164,7 @@ az vm create \
 
 ## <a name="next-steps"></a>後續步驟
 
-針對[雲端 init 的問題進行疑難排解](cloud-init-troubleshooting.md)。
+針對[雲端初始化的問題進行疑難排解](cloud-init-troubleshooting.md)。
 
 
 如需設定變更的 cloud-init 範例，請參閱下列文件：

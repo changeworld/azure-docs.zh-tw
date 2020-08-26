@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 50c6d3ff6e1e8b979b3544c423a15ae8e1e42f6f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: dba43c9e9b214a1ad077a2a15bdf014e057bb04e
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592146"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869876"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Microsoft 認知服務的自然語言支援
 
-Azure 認知服務可讓您建立應用程式，以查看、聆聽、說話及瞭解您的使用者。 這些服務共支援三十餘種語言，讓使用者能夠自然地與您的應用程式溝通。 使用下列連結以依服務來觀看語言可用性。
+Azure 認知服務可讓您建立應用程式，以查看、聆聽、說話及瞭解您的使用者。 這些服務共支援三十餘種語言，讓使用者能夠自然地與您的應用程式溝通。 使用下列連結可依服務來查看語言可用性。
 
 這些認知服務與語言無關，而且沒有以人類語言為基礎的限制。
 
@@ -28,7 +28,7 @@ Azure 認知服務可讓您建立應用程式，以查看、聆聽、說話及�
 * [臉部](./face/index.yml)
 * [個人化工具](./personalizer/index.yml)
 
-## <a name="vision"></a>願景
+## <a name="vision"></a>視覺
 
 * [電腦視覺](./computer-vision/language-support.md)
 * [表單辨識器 (預覽)](./form-recognizer/language-support.md)
@@ -37,11 +37,11 @@ Azure 認知服務可讓您建立應用程式，以查看、聆聽、說話及�
 
 ## <a name="language"></a>語言
 
-* [沈浸式閱讀程式 (預覽)](./immersive-reader/language-support.md)
+* [沈浸式閱讀程式](./immersive-reader/language-support.md)
 * [語言理解 (LUIS)](./luis/luis-supported-languages.md)
 * [QnA Maker](./qnamaker/overview/languages-supported.md)
 * [文字分析](./text-analytics/text-analytics-supported-languages.md)
-* [Translator](./translator/languages.md)
+* [翻譯工具](./translator/languages.md)
 
 ## <a name="speech"></a>語音
 
@@ -61,9 +61,9 @@ Azure 認知服務可讓您建立應用程式，以查看、聆聽、說話及�
 
 ## <a name="decision"></a>決策
 
-* [內容仲裁者](./content-moderator/text-moderation-api-languages.md)
+* [內容仲裁](./content-moderator/text-moderation-api-languages.md)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
-* [認知服務是什麼？](welcome.md)
+* [什麼是認知服務？](welcome.md)
 * [建立帳戶](cognitive-services-apis-create-account.md)

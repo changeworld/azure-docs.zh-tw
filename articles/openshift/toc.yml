@@ -97,6 +97,8 @@
       href: supported-resources.md
     - name: Azure Red Hat OpenShift 4.3 支援的資源
       href: support-policies-v4.md
+    - name: Azure Red Hat OpenShift 4 的支援生命週期
+      href: support-lifecycle.md
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Azure Red Hat OpenShift 4.3 文件

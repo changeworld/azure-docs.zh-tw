@@ -4,12 +4,12 @@ description: 將容器群組部署至 Azure 虛擬網路的案例、資源和限
 ms.topic: article
 ms.date: 08/11/2020
 ms.author: danlep
-ms.openlocfilehash: d904f1333ddf4b22bfca2546bd064b1ae8f299dd
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0474a5f85829080a89a74195483484c464de5840
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797850"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870760"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>虛擬網路案例和資源
 
@@ -80,6 +80,7 @@ ms.locfileid: "88797850"
 * 如需 Azure CLI 的部署範例，請參閱將 [容器實例部署至 Azure 虛擬網路](container-instances-vnet.md)。
 * 若要使用 Resource Manager 範本部署新的虛擬網路、子網路、網路設定檔及容器群組，請參閱 [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 ) (使用 VNet 建立 Azure 容器群組)。
+* 使用 [Azure 入口網站](container-instances-quickstart-portal.md) 建立容器實例時，您也可以在 [ **網路** ] 索引標籤上提供新的或 exsting 虛擬網路的設定。
 
 
 <!-- IMAGES -->

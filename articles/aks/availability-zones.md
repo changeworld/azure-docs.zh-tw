@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
 ms.date: 08/13/2020
-ms.openlocfilehash: 6bca57f799681a9f51b983da6f565bb465da8814
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f24351c5f77e6c00365497d5e6deeefea8271cb9
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214248"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871406"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>建立使用可用性區域的 Azure Kubernetes Service (AKS) 叢集
 
@@ -28,6 +28,7 @@ Azure Kubernetes Service (AKS) 叢集會在基本 Azure 基礎結構的邏輯區
 
 目前可使用以下區域中的可用性區域來建立 AKS 叢集：
 
+* 澳大利亞東部
 * 美國中部
 * 美國東部 2
 * 美國東部
@@ -48,7 +49,7 @@ Azure Kubernetes Service (AKS) 叢集會在基本 Azure 基礎結構的邏輯區
 
 ### <a name="azure-disks-limitations"></a>Azure 磁碟限制
 
-使用 Azure 受控磁碟的磁碟區目前並非區域備援資源。 磁片區無法跨區域連接，而且必須共置於與主控目標 pod 的指定節點相同的區域中。
+使用 Azure 受控磁碟的磁碟區目前並非區域備援資源。 磁片區無法跨區域附加，且必須與裝載目標 pod 的指定節點共置於相同的區域中。
 
 如果必須執行具狀態的工作負載，請使用 Pod 規格中的節點集區污點和容差，將 Pod 排程分類到與磁碟相同的區域中。 或者，使用以網路為基礎的儲存空間 (例如 Azure 檔案儲存體)，以在區域之間排程 Pod 時連結至 Pod。
 
@@ -99,7 +100,7 @@ az aks create \
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-接下來，使用 [ [kubectl 描述][kubectl-describe] ] 命令來列出叢集中的節點，並根據 *failure-domain.Beta.kubernetes.io/zone* 值進行篩選。 下列範例適用于 Bash shell。
+接下來，使用 [kubectl 描述][kubectl-describe] 命令來列出叢集中的節點，並根據 *failure-domain.Beta.kubernetes.io/zone* 值進行篩選。 下列範例適用于 Bash shell。
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
@@ -131,7 +132,7 @@ az aks scale \
     --node-count 5
 ```
 
-當調整作業在幾分鐘後完成後， `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` Bash shell 中的命令應該會提供類似下列範例的輸出：
+在幾分鐘後完成調整規模作業之後， `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` Bash shell 中的命令應該會提供類似此範例的輸出：
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000
@@ -152,7 +153,7 @@ Name:       aks-nodepool1-28993262-vmss000004
 kubectl run nginx --image=nginx --replicas=3
 ```
 
-檢視 Pod 執行所在的節點，即可發現 Pod 是在對應到三個不同可用性區域的節點上執行。 例如，使用 `kubectl describe pod | grep -e "^Name:" -e "^Node:"` Bash shell 中的命令時，您會得到類似下面的輸出：
+檢視 Pod 執行所在的節點，即可發現 Pod 是在對應到三個不同可用性區域的節點上執行。 例如，使用 `kubectl describe pod | grep -e "^Name:" -e "^Node:"` Bash shell 中的命令時，您會得到如下的輸出：
 
 ```console
 Name:         nginx-6db489d4b7-ktdwg

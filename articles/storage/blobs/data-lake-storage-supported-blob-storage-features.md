@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 0d915c0b293e9f3deadbfb2a5fb0ff7f379e1717
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 87e0fe7baaf3d83c18b12227e9ecb5bf1d2fb361
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053468"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869451"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 儲存體功能
 
@@ -46,19 +46,20 @@ Blob 儲存體功能 (例如[診斷記錄](../common/storage-analytics-logging.m
 |靜態網站|預覽|尚不支援|[Azure 儲存體中的靜態網站代管](storage-blob-static-website.md)|
 |固定儲存體|預覽|尚不支援|[使用不可變儲存體儲存業務關鍵 Blob 資料](storage-blob-immutable-storage.md)|
 |生命週期管理原則|預覽|尚不支援|[管理 Azure Blob 儲存體生命週期](storage-lifecycle-management-concepts.md)|
-|容器虛刪除|預覽|預覽|[ (預覽) 的容器虛刪除](soft-delete-container-overview.md)|
+|容器虛刪除|預覽|預覽|[適用于容器的虛刪除 (預覽) ](soft-delete-container-overview.md)|
 |Blob 虛刪除|尚不支援|尚不支援|[Blob 的虛刪除](storage-blob-soft-delete.md)|
 |Blobfuse|預覽|尚不支援|[如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統](storage-how-to-mount-container-linux.md)|
 |變更摘要|尚不支援|尚不支援|[Azure Blob 儲存體中的變更摘要支援](storage-blob-change-feed.md)|
 |帳戶容錯移轉|尚不支援|尚不支援|[災害復原和帳戶容錯移轉](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob 容器 ACL|尚不支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|尚不支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Set Container ACL (設定容器 ACL)](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |自訂網域|尚不支援|尚不支援|[將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)|
+|加密範圍|尚不支援|尚不支援|[建立及管理加密範圍 (預覽) ](encryption-scope-manage.md)|
 
-<div id="diagnostic-logging"><sup>1</sup>若為 premium 區塊 blob 儲存體帳戶，則無法使用 Azure 入口網站來啟用 (傳統) 的診斷記錄。 使用 PowerShell 加以啟用。</div><br>
+<div id="diagnostic-logging"><sup>1</sup> 對於 premium 區塊 blob 儲存體帳戶， (傳統) 的診斷記錄，無法使用 Azure 入口網站來啟用。 使用 PowerShell 加以啟用。</div><br>
 
-<div id="blob-container-ACL"><sup>2</sup>您可以在容器的根資料夾（而不是容器本身）上設定 acl。</div><br>
+<div id="blob-container-ACL"><sup>2</sup> 您可以在容器的根資料夾（而不是容器本身）上設定 acl。</div><br>
 
-<div id="preview-form"><sup>3</sup>若要使用快照集、不可變的儲存體或具有 Data Lake Storage Gen2 的靜態網站，您必須完成此<a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>表單</a>以在預覽中註冊。  </div>
+<div id="preview-form"><sup>3</sup>若要搭配 Data Lake Storage Gen2 使用快照集、不可變的儲存體或靜態網站，您必須完成此 <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>表單</a>以註冊預覽。  </div>
 
 ## <a name="see-also"></a>另請參閱
 

@@ -12,6 +12,11 @@
   items:
     - name: 虛擬機器上的解決方案
       href: virtual-machine-solutions.md
+- name: 作法
+  expanded: true
+  items:
+    - name: Fortanix 記憶體保護區管理員
+      href: how-to-fortanix-enclave-manager.md
 - name: 資源
   expanded: true
   items:

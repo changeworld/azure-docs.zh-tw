@@ -155,7 +155,7 @@
           href: search-howto-large-index.md
         - name: 處理並行更新
           href: search-howto-concurrency.md
-    - name: 擷取 Azure 資料
+    - name: 擷取僅限 Azure 的資料
       items:
         - name: 設定索引子
           href: search-indexer-overview.md
@@ -203,7 +203,7 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL Database
               href: search-howto-managed-identities-sql.md
-    - name: 使用 AI 來擷取
+    - name: 使用技能 (AI)
       items:
         - name: 附加認知服務資源
           href: cognitive-search-attach-cognitive-services.md
@@ -215,7 +215,7 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: 對應至索引欄位
               href: cognitive-search-output-field-mapping.md
-            - name: 從映像擷取資訊
+            - name: 處理映像檔案
               href: cognitive-search-concept-image-scenarios.md
             - name: 快取 (累加) 擴充
               href: search-howto-incremental-index.md

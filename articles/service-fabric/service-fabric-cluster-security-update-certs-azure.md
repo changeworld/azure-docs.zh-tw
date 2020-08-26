@@ -3,12 +3,12 @@ title: 管理 Azure Service Fabric 叢集上的憑證
 description: 說明如何在 Service Fabric 叢集新增新的憑證、變換憑證及移除憑證。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658380"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869740"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>新增或移除 Azure 中 Service Fabric 叢集的憑證
 建議您熟悉 Service Fabric 使用 X.509 憑證的方式，以及熟悉[叢集安全性案例](service-fabric-cluster-security.md)。 您必須瞭解什麼是叢集憑證及其用途，方可繼續進行後續作業。
@@ -260,7 +260,7 @@ Get-ServiceFabricClusterHealth
 
 您可以新增兩種用戶端憑證 - 系統管理員或唯讀。 接著這些憑證便可用來控制對叢集上系統管理員作業和查詢作業的存取。 叢集憑證預設會新增到允許的系統管理員憑證清單中。
 
-您可以指定任何數目的用戶端憑證。 每次進行新增/刪除時，都會導致更新 Service Fabric 叢集的組態
+您可以指定任意數目的用戶端憑證。 每次新增/刪除都會導致 Service Fabric 叢集的設定更新。
 
 
 ### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>透過入口網站新增用戶端憑證 - 系統管理員或唯讀

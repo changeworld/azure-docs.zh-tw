@@ -44,12 +44,18 @@
       href: vm-do-ten-things.md
     - name: 使用 Linux 資料科學虛擬機器
       href: linux-dsvm-walkthrough.md
-    - name: 建立自動調整資料科學虛擬機器集區
-      href: dsvm-pools.md
-    - name: 與 Active Directory 整合
-      href: dsvm-common-identity.md
-    - name: 保護資源存取認證
-      href: dsvm-secure-access-keys.md
+    - name: 與 Azure Machine Learning 整合
+      items:
+        - name: 追蹤實驗
+          href: how-to-track-experiments.md
+    - name: 企業版指導方針
+      items:
+        - name: 建立自動調整資料科學虛擬機器集區
+          href: dsvm-pools.md
+        - name: 與 Active Directory 整合
+          href: dsvm-common-identity.md
+        - name: 保護資源存取認證
+          href: dsvm-secure-access-keys.md
 - name: 資源
   items:
     - name: Microsoft 問與答頁面

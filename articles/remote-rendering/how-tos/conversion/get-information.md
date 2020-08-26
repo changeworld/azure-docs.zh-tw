@@ -1,20 +1,40 @@
 ---
-title: 取得已轉換模型的相關資訊
-description: 所有模型轉換參數的描述
+title: 取得轉換的相關資訊
+description: 取得轉換的相關資訊
 author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5c38ac88503416b37b720a091c9e46d819a3146
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 529bfb61b3af7040f3656c04071683841f5abe86
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509292"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870284"
 ---
-# <a name="get-information-about-a-converted-model"></a>取得已轉換模型的相關資訊
+# <a name="get-information-about-conversions"></a>取得轉換的相關資訊
 
-轉換服務所產生的 arrAsset 檔案僅供轉譯服務取用。 但是，如果您想要在不啟動轉譯會話的情況下存取模型的相關資訊，有時可能會發生。 因此，轉換服務會將 JSON 檔案放在輸出容器中的 arrAsset 檔案旁邊。 例如，如果檔案 `buggy.gltf` 已轉換，則輸出容器將包含在已 `buggy.info.json` 轉換的資產旁邊呼叫的檔案 `buggy.arrAsset` 。 它包含來源模型的相關資訊、轉換過的模型，以及關於轉換本身的資訊。
+## <a name="information-about-a-conversion-the-result-file"></a>轉換的相關資訊：結果檔
+
+當轉換服務轉換資產時，會將任何問題的摘要寫入「結果檔案」。 例如，如果檔案 `buggy.gltf` 已轉換，輸出容器將會包含名為的檔案 `buggy.result.json` 。
+
+結果檔會列出轉換期間發生的任何錯誤和警告，並提供結果摘要，也就是或的其中一個 `succeeded` `failed` `succeeded with warnings` 。
+結果檔案會結構化為物件的 JSON 陣列，其中每一個都有一個字串屬性，它是、、、和的其中一個 `warning` `error` `internal warning` `internal error` `result` 。 最多隻會有一個錯誤 (`error` 或 `internal error`) ，而且一律會有一個錯誤 `result` 。
+
+## <a name="example-result-file"></a>範例 *結果* 檔
+
+下列範例說明成功產生 arrAsset 的轉換。 不過，因為缺少材質，所以產生的 arrAsset 可能不會如預期。
+
+```JSON
+[
+  {"warning":"4004","title":"Missing texture","details":{"texture":"buggy_baseColor.png","material":"buggy_col"}},
+  {"result":"succeeded with warnings"}
+]
+```
+
+## <a name="information-about-a-converted-model-the-info-file"></a>已轉換模型的相關資訊：資訊檔案
+
+轉換服務所產生的 arrAsset 檔案僅供轉譯服務取用。 但是，如果您想要在不啟動轉譯會話的情況下存取模型的相關資訊，有時可能會發生。 為了支援此工作流程，轉換服務會將 JSON 檔案放在輸出容器中的 arrAsset 檔案旁邊。 例如，如果檔案 `buggy.gltf` 已轉換，則輸出容器將包含在已 `buggy.info.json` 轉換的資產旁邊呼叫的檔案 `buggy.arrAsset` 。 它包含來源模型的相關資訊、轉換過的模型，以及關於轉換本身的資訊。
 
 ## <a name="example-info-file"></a>範例 *資訊* 檔案
 
@@ -124,6 +144,11 @@ ms.locfileid: "88509292"
 * `numMeshPartsInstanced`： ArrAsset 中重複使用的網格數目。
 * `recenteringOffset`：當 `recenterToOrigin` [ConversionSettings](configure-model-conversion.md) 中的選項啟用時，此值是將轉換的模型移回其原始位置的轉譯。
 * `boundingBox`：模型的界限。
+
+## <a name="deprecated-features"></a>已淘汰的功能
+
+轉換服務會將檔案 `stdout.txt` 和 `stderr.txt` 輸出容器寫入，而這些檔案是唯一的警告和錯誤來源。
+這些檔案現在已被取代。 相反地，請將 [結果](#information-about-a-conversion-the-result-file) 檔用於此用途。
 
 ## <a name="next-steps"></a>後續步驟
 

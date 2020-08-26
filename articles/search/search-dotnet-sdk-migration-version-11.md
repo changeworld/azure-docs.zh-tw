@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 6880706300597e925267dae1230a87d17cd5c028
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5dd061309447dd6037d2dd664e7c5db2c7df38cc
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688346"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870199"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升級至 Azure 認知搜尋 .NET SDK 11 版
 
@@ -153,6 +153,8 @@ Azure 認知搜尋用戶端程式庫的每個版本都是以對應的 REST API �
    using Azure.Search.Documents.Indexes.Models;
    using Azure.Search.Documents.Models;
    ```
+
+1. 若為需要 JSON 序列化的類別，請將取代為 `using Newtonsoft.Json` `using System.Text.Json.Serialization` 。
 
 1. 修訂用戶端驗證碼。 在舊版中，您會使用用戶端物件上的屬性來設定 API 金鑰 (例如，SearchServiceClient) 的 [認證](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) 屬性。 在目前的版本中，使用 [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) 類別將金鑰以認證的形式傳遞，如此一來，您就可以在需要的情況下更新 API 金鑰，而不需要建立新的用戶端物件。
 

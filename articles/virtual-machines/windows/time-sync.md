@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1717ebd5709c05e33e658d3798494324a702b1d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 830bdd45be4b0365ac45bc3ea366b99a34882a4c
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074049"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871474"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 中 Windows VM 的時間同步
 
@@ -22,7 +22,7 @@ Azure 現在支援採用 Windows Server 2016 的基礎結構。 Windows Server 2
 
 
 >[!NOTE]
->如需 Windows Time 服務的快速概觀，請參閱此[整體概觀影片](https://aka.ms/WS2016TimeVideo)。
+>如需 Windows Time 服務的快速概觀，請參閱此[高階概觀影片](https://aka.ms/WS2016TimeVideo)。
 >
 > 如需詳細資訊，請參閱 [Windows Server 2016 的準確時間](/windows-server/networking/windows-time-service/accurate-time)。 
 
@@ -60,14 +60,14 @@ VMICTimeSync 服務會在範例或同步模式中運作，而且只會影響後�
 - NtpClient 提供者，其會向 time.windows.com 取得資訊。
 - VMICTimeSync 服務，用來將主機時間傳遞給 VM，並在 VM 暫停以進行維修後予以修正。 Azure 主機使用 Microsoft 所屬的 Stratum 1 裝置來維持時間的準確性。
 
-w32time 會依照以下優先順序決定偏好的時間提供者：組織層層級、根延遲、根散佈、時間位移。 在大部分情況下，w32time 偏好 time.windows.com 而非主機，因為 time.windows.com 會報告較低層級的組織層。 
+w32time 會依照以下優先順序決定偏好的時間提供者：組織層層級、根延遲、根散佈、時間位移。 在大部分的情況下，Azure VM 上的 w32time 會偏好主機時間，因為評估它會將這兩個時間來源進行比較。 
 
 針對加入網域的機器，網域本身會建立時間同步階層，但樹系根仍需從其他地方取得時間，且以下考量仍適用。
 
 
 ### <a name="host-only"></a>僅限主機 
 
-因為 time.windows.com 是公用 NTP 伺服器，所以同步處理時間需要透過網際網路傳送流量，而不同的封包延遲可能會對時間同步的品質造成負面影響。藉由切換至僅限主機同步來移除 time.windows.com，有時可以改善時間同步結果。
+由於 time.windows.com 是公用 NTP 伺服器，因此同步處理時間需要透過網際網路傳送流量，而不同的封包延遲可能會對時間同步的品質造成負面影響。藉由切換為僅限主機同步來移除 time.windows.com，有時可以改善您的時間同步結果。
 
 如果在使用預設設定時發生時間同步問題，切換為僅限主機時間同步為合理的解決方式。 嘗試使用僅限主機同步，確認是否可改善 VM 上的時間同步結果。 
 
@@ -115,8 +115,8 @@ w32tm /query /source
 
 以下是您可能看到的輸出，以及其代表的意義：
     
-- **time.windows.com** - 在預設設定中，w32time 會向 time.windows.com 取得時間。 時間同步處理品質取決網際網路連線能力，且會受到封包延遲影響。 這是預設設定的一般輸出。
-- **VM IC Time Synchronization Provider** - VM 從主機同步時間。 如果您加入僅限主機時間同步，或者 NtpServer 當下無法使用，通常會看到此結果。 
+- **time.windows.com** - 在預設設定中，w32time 會向 time.windows.com 取得時間。 時間同步處理品質取決網際網路連線能力，且會受到封包延遲影響。 這是您會在實體機器上取得的一般輸出。
+- **VM IC Time Synchronization Provider** - VM 從主機同步時間。 這是您可以在 Azure 上執行的虛擬機器上取得的一般輸出。 
 - *您的網域伺服器* - 目前的機器位於某個網域中，且該網域定義了時間同步階層。
 - *其他伺服器* - w32time 已明確設為向這部其他伺服器取得時間。 時間同步品質取決於此時間伺服器的品質。
 - **Local CMOS Clock** - 時鐘未同步處理。 如果重新開機後 w32time 尚未有足夠的時間啟動，或當所有設定的時間來源均無法使用，您可能會得到此輸出。
@@ -147,7 +147,7 @@ net stop w32time && net start w32time
 
 ## <a name="windows-server-2012-and-r2-vms"></a>Windows Server 2012 與 R2 VM 
 
-Windows Server 2012 和 Windows Server 2012 R2 的時間同步有不同的預設設定。根據預設，w32time 的設定方式是讓服務的低負荷更精確。 
+Windows Server 2012 和 Windows Server 2012 R2 具有不同的時間同步預設設定。依預設，w32time 的設定方式是讓服務的額外負荷較短的時間。 
 
 如果您想讓 Windows Server 2012 和 2012 R2 部署改為使用偏好精確時間的較新預設值，您可以套用下列設定。
 
@@ -160,7 +160,7 @@ reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w32time\Config /v U
 w32tm /config /update
 ```
 
-為了讓 w32time 使用新的輪詢間隔，系統會將 NtpServers 標示為使用新輪詢間隔。 如果伺服器標註使用 0x1 位元旗標遮罩，便會覆寫此機制，且 w32time 會改用 SpecialPollInterval。 請確定指定的 NTP 伺服器使用 0x8 旗標或未使用任何旗標：
+若要讓 w32time 能夠使用新的輪詢間隔，NtpServers 必須標示為使用它們。 如果伺服器標註使用 0x1 位元旗標遮罩，便會覆寫此機制，且 w32time 會改用 SpecialPollInterval。 請確定指定的 NTP 伺服器使用 0x8 旗標或未使用任何旗標：
 
 檢查哪些旗標用於所使用的 NTP 伺服器。
 
@@ -173,6 +173,6 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 以下是時間同步的更多詳細資訊：
 
 - [Windows 時間服務工具和設定](/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings)
-- [Windows Server 2016 改良功能](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
-- [Windows Server 2016 的準確時間](/windows-server/networking/windows-time-service/accurate-time)
+- [Windows Server 2016 改進 ](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Windows Server 2016 準確時間](/windows-server/networking/windows-time-service/accurate-time)
 - [可為高準確度環境設定 Windows Time 服務的支援界限](/windows-server/networking/windows-time-service/support-boundary)

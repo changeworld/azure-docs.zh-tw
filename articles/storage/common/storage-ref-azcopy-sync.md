@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 04b87f8d0dd6a8fff35e3ae769652b50e7d0ef34
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 16ee2f01e1b7771e71afe49c4b69b1fb39e43f37
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285198"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869434"
 ---
 # <a name="azcopy-sync"></a>azcopy 同步
 
@@ -21,21 +21,21 @@ ms.locfileid: "87285198"
 
 ## <a name="synopsis"></a>概要
 
-上次修改時間是用來進行比較。 如果目的地中上次修改時間較新，就會略過該檔案。
+上次修改時間是用來進行比較。 如果目的地中的上次修改時間較新，則會略過該檔案。
 
-支援的配對如下：
+支援的配對為：
 
-- 本機 <-> Azure Blob （可以使用 SAS 或 OAuth 驗證）
-- Azure Blob <-> Azure Blob （來源必須包含 SAS 或可公開存取; SAS 或 OAuth 驗證可以用於目的地）
-- Azure 檔案 <-> Azure 檔案（來源必須包含 SAS 或可公開存取;SAS 驗證應用於目的地）
+- 本機 <-> Azure Blob (可以使用 SAS 或 OAuth 驗證) 
+- Azure Blob <-> Azure Blob (來源必須包含 SAS 或可公開存取;SAS 或 OAuth 驗證都可用於目的地) 
+- Azure File <-> Azure 檔案 (來源必須包含 SAS 或可公開存取;目的地) 應使用 SAS 驗證
 
-Sync 命令與 copy 命令的差異有好幾種：
+Sync 命令不同于 copy 命令的方式有好幾種：
 
-1. 根據預設，遞迴旗標為 true，同步會複製所有子目錄。 如果遞迴旗標為 false，同步只會複製目錄中的最上層檔案。
-2. 在虛擬目錄之間進行同步處理時，如果有 blob 的名稱與其中一個虛擬目錄相同，請在路徑中加上尾端斜線（請參閱範例）。
-3. 如果 `deleteDestination` 旗標設定為 true 或 prompt，則同步將會刪除來源上不存在之目的地的檔案和 blob。
+1. 根據預設，遞迴旗標為 true，而且同步會複製所有子目錄。 如果遞迴旗標為 false，則 Sync 只會複製目錄內的最上層檔案。
+2. 在虛擬目錄之間進行同步處理時，請將尾端斜線新增至路徑 (參閱範例) 如果 blob 的名稱與其中一個虛擬目錄相同，則為。
+3. 如果 `deleteDestination` 旗標設定為 true 或 prompt，則同步處理將會刪除來源端沒有目的地的檔案和 blob。
 
-## <a name="related-conceptual-articles"></a>相關的概念性文章
+## <a name="related-conceptual-articles"></a>相關的概念文章
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
 - [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
@@ -44,15 +44,15 @@ Sync 命令與 copy 命令的差異有好幾種：
 
 ### <a name="advanced"></a>進階
 
-如果您未指定副檔名，則 AzCopy 會根據副檔名或內容（如果未指定副檔名）從本機磁片上傳時，自動偵測檔案的內容類型。
+如果您未指定副檔名，AzCopy 會在從本機磁片上傳時，根據副檔名或內容 (自動偵測檔案的內容類型（如果未指定) 的副檔名）。
 
-內建查閱資料表很小，但是在 Unix 上，它會透過本機系統的 mime. 類型檔案來增強（如果有一或多個這些名稱可用的話）：
+內建的查閱資料表很小，但是在 Unix 上，它是由本機系統的 mime. 類型檔案 (s 的) （如果可在下列一或多個名稱下使用）來擴充：
 
 - /etc/mime.types
 - /etc/apache2/mime.types
 - /etc/apache/mime.types
 
-在 Windows 上，MIME 類型會從登錄中解壓縮。
+在 Windows 上，會從登錄解壓縮 MIME 類型。
 
 ```azcopy
 azcopy sync <source> <destination> [flags]
@@ -72,7 +72,7 @@ azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[contai
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
 ```
 
-同步整個目錄（包括其子目錄）（請注意，遞迴預設為 on）：
+同步處理整個目錄（包括其子目錄） (請注意，) 上的遞迴預設為：
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
@@ -84,19 +84,19 @@ azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
 ```
 
-只同步目錄內的檔案，而不是子目錄中的檔案或子目錄內的檔案：
+只同步目錄內的檔案，但不同步子目錄中的檔案或子目錄內的檔案：
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-同步目錄中的檔案子集（例如：只有 jpg 和 pdf 檔案，或檔案名為 `exactName` ）：
+同步目錄中的檔案子集 (例如：只有 jpg 和 pdf 檔案，或檔案名為 `exactName`) ：
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --include-pattern="*.jpg;*.pdf;exactName"
 ```
 
-同步整個目錄，但排除範圍中的某些檔案（例如：以 foo 或結尾為 bar 的每個檔案）：
+同步整個目錄，但從範圍中排除特定檔案 (例如：以 foo 開頭或以 bar) 結尾的每個檔案：
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude-pattern="foo*;*bar"
@@ -108,63 +108,67 @@ azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
 
-同步處理虛擬目錄：
+同步虛擬目錄：
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=true
 ```
 
-同步與 blob 同名的虛擬目錄（將尾端斜線新增至路徑以區分）：
+將名稱與 blob 相同的虛擬目錄同步 (在路徑中加入尾端的斜線，以區分) ：
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/" --recursive=true
 ```
 
-同步處理 Azure 檔案目錄（與 Blob 相同的語法）：
+將 Azure 檔案目錄同步 (與 Blob) 相同的語法：
 
 ```azcopy
 azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]" --recursive=true
 ```
 
 > [!NOTE]
-> 如果同時使用包含/排除旗標，則只會查看符合 include 模式的檔案，但是符合排除模式的檔一律會被忽略。
+> 如果同時使用 include/exclude 旗標，則只會查看符合 include 模式的檔案，但會一律忽略符合排除模式的檔案。
 
-## <a name="options"></a>選項。
+## <a name="options"></a>選項
 
---當上傳至 Azure 儲存體或從 Azure 儲存體下載時，**區塊大小-mb** float 使用此區塊大小（以 MiB 指定）。 預設值會根據檔案大小自動計算。 允許小數分數（例如： `0.25` ）。
+**--區塊大小-mb** 浮點數使用 () 上傳至 Azure 儲存體或從 Azure 儲存體下載時所指定的區塊大小。 預設值會根據檔案大小自動計算。 允許使用小數小數 (例如： `0.25`) 。
 
-**--check-md5**字串指定在下載時應如何驗證嚴格的 md5 雜湊。 只有在下載時，才可以使用此選項。 可用的值包括： `NoCheck` 、 `LogOnly` 、 `FailIfDifferent` 、 `FailIfDifferentOrMissing` 。 （預設值 `FailIfDifferent` ）。 （預設值 `FailIfDifferent` ）
+**--check-md5** 字串指定在下載時，應如何驗證嚴格的 md5 雜湊。 只有在下載時才可使用此選項。 可用的值包括： `NoCheck` 、 `LogOnly` 、 `FailIfDifferent` 、 `FailIfDifferentOrMissing` 。  (預設 `FailIfDifferent`) 。  (預設 `FailIfDifferent`) 
 
-**--delete-destination** string 定義是否要從目的地刪除不存在於來源的額外檔案。 可以設定為 `true` 、 `false` 或 `prompt` 。 如果設定為 `prompt` ，則會在排程檔案和 blob 以供刪除之前，詢問使用者一個問題。 （預設值 `false` ）。 （預設值 `false` ）
+**--delete-destination** 字串定義是否要刪除來源不存在之目的地的額外檔案。 可以設定為 `true` 、 `false` 或 `prompt` 。 如果設定為 `prompt` ，就會在排程要刪除的檔案和 blob 之前，先詢問使用者問題。  (預設 `false`) 。  (預設 `false`) 
 
-**--exclude-** attribute 字串（僅限 Windows）排除其屬性符合屬性清單的檔案。 例如：`A;S;R`
+**--排除-** 僅限 Windows 的屬性字串 () 排除屬性符合屬性清單的檔案。 例如：`A;S;R`
 
-**--排除-** 在比較來源與目的地時，不包含這些路徑的路徑字串。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞（例如： `myFolder;myFolder/subDirName/file.pdf` ）。
+**--** 在比較來源與目的地時，排除路徑字串會排除這些路徑。 此選項不支援萬用字元字元 ( * ) 。 檢查相對路徑首碼 (例如： `myFolder;myFolder/subDirName/file.pdf`) 。
 
-**--排除-模式**字串排除名稱符合模式清單的檔案。 例如：`*.jpg;*.pdf;exactName`
+**--排除-模式** 字串排除名稱符合模式清單的檔案。 例如：`*.jpg;*.pdf;exactName`
 
-**--** 適用于同步處理的說明協助。
+**--**    說明如何進行同步處理。
 
-**--include-屬性**字串（僅限 Windows）只包含屬性符合屬性清單的檔案。 例如：`A;S;R`
+**--include-** attribute 字串 (僅限 Windows) 只包含其屬性符合屬性清單的檔案。 例如：`A;S;R`
 
-**--include-模式**字串只包含名稱符合模式清單的檔案。 例如：`*.jpg;*.pdf;exactName`
+**--include-模式** 字串只包含名稱符合模式清單的檔案。 例如：`*.jpg;*.pdf;exactName`
 
-**--記錄層級**字串會定義記錄檔的記錄詳細資訊、可用的層級： `INFO` （所有要求和回應）、 `WARNING` （回應緩慢）、 `ERROR` （僅限失敗的要求）和 `NONE` （沒有輸出記錄）。 （預設值 `INFO` ）。 
+**--記錄層級** 字串會定義記錄檔的記錄詳細資訊，可用層級： `INFO` (所有要求和回應) 、 `WARNING` (回應緩慢的) 回應、 `ERROR` (僅) 失敗的要求，以及 (不) 的 `NONE` 輸出記錄。  (預設 `INFO`) 。 
 
-**--put-md5**    建立每個檔案的 MD5 雜湊，並將雜湊儲存為目的地 blob 或檔案的 Content-MD5 屬性。 （根據預設，不會建立雜湊）。只有在上傳時才可使用。
+**--preserve-smb-資訊**    預設為 False。保留 SMB 屬性資訊 (上次寫入時間、建立時間、在 SMB 感知資源 (Windows 和 Azure 檔案儲存體) 之間) 屬性位。此旗標適用于檔案和資料夾，除非已指定僅限檔案的篩選 (例如，包含模式) 。針對資料夾所傳送的資訊與檔案的資訊相同，但不會保留給資料夾的最後寫入時間除外。
 
-**--遞迴** `True`根據預設，在目錄之間同步時，會以遞迴方式查看子目錄。     （預設值 `True` ）。 
+**--preserve-smb-許可權**    預設為 False。在感知資源之間保留 SMB Acl (Windows 和 Azure 檔案儲存體) 。此旗標適用于檔案和資料夾，除非已指定僅限檔案的篩選 (例如  `include-pattern`) 。
 
-**--s2s-保留-存取層** 在服務對服務複製期間保留存取層。 請參閱[Azure Blob 儲存體：經常性、非經常性和封存存取層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)，以確保目的地儲存體帳戶支援設定存取層。 在不支援設定存取層的情況下，請使用 s2sPreserveAccessTier = false 來略過複製存取層。 （預設值 `true` ）。 
+**--put-md5**     建立每個檔案的 MD5 雜湊，並將雜湊儲存為目的地 blob 或檔案的 Content-type-MD5 屬性。  (預設不會建立雜湊。只有在上傳時才能使用 ) 。
+
+**--遞迴** `True`依預設，會在目錄之間進行同步處理時，以遞迴方式查看子目錄。      (預設 `True`) 。 
+
+**--s2s-保留-存取層**  保留服務至服務複製期間的存取層。 請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) ，以確保目的地儲存體帳戶支援設定存取層。 在不支援設定存取層的情況下，請使用 s2sPreserveAccessTier = false 來略過複製存取層。  (預設 `true`) 。 
 
 ## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
 
-|選項|說明|
+|選項|描述|
 |---|---|
-|--cap-mbps uint32|上限（以每秒 mb 為單位）傳輸速率。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。|
-|--output-類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|
-|--trusted-microsoft-尾碼字串   |指定可在其中傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 '*. core.windows.net;*。core.chinacloudapi.cn;*. core.cloudapi.de;*。core.usgovcloudapi.net '。 此處列出的任何內容都會新增至預設值。 基於安全性，您應該只將 Microsoft Azure 網域放在這裡。 以分號分隔多個專案。|
+|--cap-mbps uint32|以每秒 mb 數為單位的傳輸速率上限。 時間的輸送量可能會與端點稍有不同。 如果此選項設定為零，或省略，則輸送量不會有上限。|
+|--output 類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|
+|--受信任-microsoft-尾碼字串   |指定可能傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 '*. core.windows.net;*。core.chinacloudapi.cn;*. core.cloudapi.de;*。core.usgovcloudapi.net '。 此處所列的任何一種都會新增至預設值。 基於安全性，您應該只在這裡放置 Microsoft Azure 網域。 以分號分隔多個專案。|
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [azcopy](storage-ref-azcopy.md)

@@ -1,4 +1,4 @@
-- name: 總覽
+- name: 概觀
   items:
     - name: 開始使用
       href: get-started.md
@@ -227,6 +227,8 @@
               href: high-availability-guide-rhel-netapp-files.md
         - name: SAP 多重安全性識別碼
           items:
+            - name: Windows 和適用於 (A)SCS 執行個體的 Azure 共用磁碟
+              href: sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md
             - name: Windows 和適用於 (A)SCS 執行個體的共用磁碟
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
             - name: Windows 和適用於 (A)SCS 執行個體的檔案共用

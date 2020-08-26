@@ -3,12 +3,12 @@ title: 使用 MARS 代理程式將檔案還原到 Windows Server
 description: 在本文中，了解如何使用 Microsoft Azure 復原服務 (MARS) 代理程式，將儲存在 Azure 中的資料還原至 Windows Server 或 Windows 電腦。
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: e5158681971c5c10e813187fedb61bc0022ee9e1
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 78663edadfdef581dbdd259882a6dd4afe5a4b0b
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827064"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871253"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>使用 MARS 代理程式將檔案還原到 Windows Server
 
@@ -50,7 +50,7 @@ ms.locfileid: "88827064"
    > 若要執行還原個別檔案與資料夾的選項，必須具備 .NET Framework 4.5.2 或更新版本。 如果您沒有看到 [ **個別檔案及資料夾** ] 選項，就必須將 .NET Framework 升級至4.5.2 版或更新版本，然後再試一次。
 
    > [!TIP]
-   > [個別檔案及資料夾] 選項可讓您快速存取復原點資料。 它適合用來復原個別檔案（大小總計不超過 80 GB），並在復原期間提供最多 6 MBps 的傳輸或複製速度。 [磁碟區] 選項會復原指定磁碟區中的所有備份資料。 此選項可提供更快的傳送速率 (高達 40 MBps) ，這非常適合用來復原大型資料或整個磁片區。
+   > [個別檔案及資料夾] 選項可讓您快速存取復原點資料。 它適合用來復原個別檔案，建議大小總計小於 80 GB。 在復原期間，它可提供高達 6 MBps 的傳輸或複製速度。 [磁碟區] 選項會復原指定磁碟區中的所有備份資料。 此選項可提供更快的傳送速率 (高達 40 MBps) ，而且建議用來復原大型資料或整個磁片區。
 
 5. 在 [選取磁碟區和日期] 頁面中，選取包含您要還原之檔案和資料夾的磁碟區。
 

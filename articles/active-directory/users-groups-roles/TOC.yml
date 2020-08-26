@@ -62,12 +62,14 @@
           href: users-revoke-access.md
         - name: 關閉非受控目錄中的帳戶
           href: users-close-account.md
-        - name: 新增 B2B 使用者
-          href: ../external-identities/what-is-b2b.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
-        - name: 將角色指派給 B2B 使用者
-          href: ../external-identities/add-guest-to-role.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
-        - name: 動態群組與 B2B
-          href: ../external-identities/use-dynamic-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
+        - name: 新增來賓使用者
+          href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 將角色指派給來賓使用者
+          href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 限制來賓使用者的存取權
+          href: users-restrict-guest-permissions.md
+        - name: 動態群組與來賓
+          href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 管理您的目錄
       items:
         - name: Azure AD 組織

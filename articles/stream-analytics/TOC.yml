@@ -172,6 +172,8 @@
           href: stream-analytics-real-time-fraud-detection.md
         - name: 在 IoT Edge 上執行作業
           href: stream-analytics-edge.md
+        - name: 在 Azure Stack 上執行作業
+          href: on-azure-stack.md
         - name: 收費亭感應器資料分析
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
         - name: 高頻率交易

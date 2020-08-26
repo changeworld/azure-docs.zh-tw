@@ -509,6 +509,8 @@
       href: monitor-resource-reference.md
     - name: 學習管線 YAML 參考
       href: reference-pipeline-yaml.md
+    - name: 主權雲端同位
+      href: reference-machine-learning-cloud-parity.md
 - name: 資源
   items:
     - name: 版本資訊

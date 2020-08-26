@@ -3,12 +3,12 @@ title: 私人端點
 description: 瞭解建立 Azure 備份私用端點的程式，以及使用私人端點來協助維護資源安全性的案例。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 5c2c994b48fb2b950afb67f5c8b6d3c4f7d01e39
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b7f7c6461701b6f4e438cbead60456b327c7c207
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826645"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871542"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 備份的私人端點
 
@@ -16,12 +16,12 @@ Azure 備份可讓您使用 [私人端點](../private-link/private-endpoint-over
 
 本文將協助您瞭解建立 Azure 備份私人端點的程式，以及使用私用端點協助維護資源安全性的案例。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - 只有在沒有任何專案已註冊至保存庫) 的 (，才能為新的復原服務保存庫建立私人端點。 因此，您必須先建立私人端點，才能嘗試保護保存庫中的任何專案。
 - 一個虛擬網路可以包含多個復原服務保存庫的私人端點。 此外，一個復原服務保存庫在多個虛擬網路中可以有私人端點。 不過，可以為保存庫建立的私人端點數目上限是12。
 - 一旦為保存庫建立私人端點，保存庫將會遭到鎖定。 它無法 (進行備份，也無法從網路（除了包含保存庫私人端點的網路）進行還原) 。 如果已移除保存庫的所有私人端點，則會從所有網路存取保存庫。
-- 備份的私人端點連線會在子網中使用總計11個私人 Ip。 此數目可能會更高 (特定 Azure 區域的最多25個) 。 因此，當您嘗試建立私人端點以進行備份時，建議您有足夠的私人 Ip 可用。
+- 備份的私人端點連線會在子網中使用總計11個私人 Ip，包括用於儲存 Azure 備份的私人 Ip。 此數目可能會更高 (特定 Azure 區域的最多25個) 。 因此，當您嘗試建立私人端點以進行備份時，建議您有足夠的私人 Ip 可用。
 - 雖然 () Azure 備份和 Azure Site Recovery 都使用復原服務保存庫，但本文只討論 Azure 備份使用私人端點。
 - Azure Active Directory 目前不支援私人端點。 因此，當您在 Azure Vm 中執行資料庫的備份，並使用 MARS 代理程式進行備份時，必須允許來自受保護網路的輸出存取，才能讓 Azure Active Directory 在區域中運作所需的 Ip 和 Fqdn。 您也可以使用 NSG 標籤和 Azure 防火牆標籤來允許存取 Azure AD （適用）。
 - 私人端點不支援具有網路原則的虛擬網路。 您必須先停用網路原則，才能繼續進行。

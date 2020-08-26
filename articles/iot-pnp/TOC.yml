@@ -69,6 +69,8 @@
       href: howto-use-iot-pnp-cli.md
     - name: 管理 Digital Twins
       href: howto-manage-digital-twin.md
+    - name: 認證裝置
+      href: howto-certify-device.md
 - name: 參考
   items:
     - name: 程式庫和 SDK

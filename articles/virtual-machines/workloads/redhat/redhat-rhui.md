@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 685d337f9e6448f44d34a980ed884026d8a0a168
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525410"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869213"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>適用於 Azure 中隨選 Red Hat Enterprise Linux VM 的 Red Hat Update Infrastructure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允許雲端提供者 (例如 Azure) 鏡像 Red Hat 代管的存放庫內容、建立具有 Azure 特定內容的自訂存放庫，以及讓它可供使用者 VM 使用。
@@ -49,7 +49,7 @@ Red Hat Enterprise Linux (RHEL) 隨用隨付 (PAYG) 映像預先設定為存取 
 
 ### <a name="images-connected-to-non-eus-repositories"></a>連線至非 EUS 存放庫的映像
 
-如果您從已連線至非 EUS 存放庫的 RHEL 映像佈建 VM，則當您執行 `sudo yum update` 時，將會升級至最新的 RHEL 次要版本。 例如，如果您從 RHEL 7.4 PAYG 映像佈建 VM 並執行 `sudo yum update`，最終將會得到 RHEL 7.7 VM (RHEL7 系列中的最新次要版本)。
+如果您從已連線至非 EUS 存放庫的 RHEL 映像佈建 VM，則當您執行 `sudo yum update` 時，將會升級至最新的 RHEL 次要版本。 例如，如果您從 RHEL 7.4 PAYG 映射布建 VM 並執行 `sudo yum update` ，您最後會得到 rhel 7.8 VM (RHEL7 系列) 的最新次要版本。
 
 連線至非 EUS 存放庫的映像將不會在 SKU 中包含次要版本號碼。 SKU 是 URN (映像的完整名稱) 中的第三個元素。 例如，下列所有產生的映像都會附加至非 EUS 存放庫：
 
@@ -83,7 +83,7 @@ RedHat:RHEL:7.6:7.6.2019062116
 >[!NOTE]
 > RHEL 額外項目上不支援 EUS。 這表示如果您要安裝的套件通常可從 RHEL 額外項目通道取得，則在 EUS 時將無法這麼做。 Red Hat 額外項目產品生命週期詳述於[這裡](https://access.redhat.com/support/policy/updates/extras/)。
 
-在撰寫本文時，RHEL <= 7.4 的 EUS 支援已結束。 如需詳細資訊，請參閱[Red Hat 檔](https://access.redhat.com/support/policy/updates/errata/#Long_Support)中的「Red Hat Enterprise Linux 擴充維護」一節。
+在撰寫本文時，RHEL <= 7.4 的 EUS 支援已結束。 如需詳細資訊，請參閱 [Red Hat 檔](https://access.redhat.com/support/policy/updates/errata/#Long_Support) 中的「Red Hat Enterprise Linux 擴充維護」一節。
 * RHEL 7.4 EUS 支援於 2019 年 8 月 31 日結束
 * RHEL 7.5 EUS 支援於 2020 年 4 月 30 日結束
 * RHEL 7.6 EUS 支援將于2021年5月31日結束
@@ -165,10 +165,10 @@ RedHat:RHEL:7.6:7.6.2019062116
 51.4.228.145
 ```
 >[!NOTE]
->從2020年1月起，新的 Azure 美國政府映射將會使用上述 Azure 全域標頭底下提及的公用 IP。
+>從2020年1月起，新的 Azure 美國政府映射將會使用上述 Azure Global 標頭下所述的公用 IP。
 
 >[!NOTE]
->另請注意，Azure 德國已淘汰，以利公開德國地區。 Azure 德國客戶的建議是使用[這裡](#manual-update-procedure-to-use-the-azure-rhui-servers)的步驟開始指向公用 RHUI。
+>另外也請注意，Azure 德國已被取代為公用德國區域。 Azure 德國客戶的建議是使用 [這裡](#manual-update-procedure-to-use-the-azure-rhui-servers)的步驟開始指向公用 RHUI。
 
 ## <a name="azure-rhui-infrastructure"></a>Azure RHUI 基礎結構
 

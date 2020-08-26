@@ -192,3 +192,5 @@
       href: web-service-input-output.md
 - name: 模組錯誤與疑難排解
   href: designer-error-codes.md
+- name: 圖表搜尋查詢語法
+  href: graph-search-syntax.md

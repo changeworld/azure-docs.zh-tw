@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 391692d708adbd542b2cf358f0ac597dc1db3fa0
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 9d3c5a914fe472dd7e4f797cb633e65951bf07e7
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565548"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871457"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>總覽：使用 Azure Resource Manager 範本將 Azure Logic Apps 的部署自動化
 
@@ -269,17 +269,7 @@ ms.locfileid: "88565548"
 
 ### <a name="view-resource-definitions"></a>查看資源定義
 
-若要檢查 Azure 資源群組中所有資源的資源定義，請將 [您的邏輯應用程式從 azure 下載至 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)，這是最簡單的方法，可讓您輕鬆地建立最適合部署的有效參數化邏輯應用程式範本，或遵循 Azure 入口網站中的下列步驟：
-
-1. 使用您的 Azure 帳戶認證登入 [Azure 入口網站](https://portal.azure.com)。
-
-1. 尋找包含邏輯應用程式、連線和其他資源的 Azure 資源群組。
-
-1. 在 [資源群組] 工具列上，選取 [ **總覽**]，然後選取資源群組中的所有資源。
-
-1. 在 [資源群組] 工具列的 [ **設定**] 底下，選取 [ **匯出範本**]。
-
-   入口網站會顯示您所選取資源的定義。 如需詳細資訊，請參閱 [Azure 入口網站中的單一和多重資源匯出至範本](../azure-resource-manager/templates/export-template-portal.md)。
+若要檢查 Azure 資源群組中所有資源的資源定義，請將 [您的邏輯應用程式從 azure 下載至 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)，這是最簡單的方式，可讓您輕鬆地建立可供部署的有效參數化邏輯應用程式範本。
 
 如需範本資源與其屬性的一般資訊，請參閱下列主題：
 
@@ -584,7 +574,7 @@ ms.locfileid: "88565548"
 
 ## <a name="connection-resource-definitions"></a>連接資源定義
 
-當您的邏輯應用程式使用 [受管理的連接器](../connectors/apis-list.md)建立和使用與其他服務和系統的連線時，您的範本物件就會 `resources` 包含這些連接的資源定義。
+當您的邏輯應用程式使用 [受管理的連接器](../connectors/apis-list.md)建立和使用與其他服務和系統的連線時，您的範本物件就會 `resources` 包含這些連接的資源定義。 雖然您會從邏輯應用程式內建立連線，但連線是個別的 Azure 資源與其本身的資源定義。 若要檢查這些連線資源定義，請將 [您的邏輯應用程式從 Azure 下載至 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)，這是最簡單的方法，可讓您輕鬆地建立可供部署的有效參數化邏輯應用程式範本。
 
 ```json
 {
