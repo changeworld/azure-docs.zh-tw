@@ -5,18 +5,18 @@ description: Azure SQL Database 和 Azure SQL 受控執行個體會每隔幾分�
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: backup-restore
-ms.custom: sqldbrb=2
+ms.custom: references_regions
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 5fd835418a8429fa07325c22b106ee675ba3e2e1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 485a137f552ca06fba366d261eb38268d821ccaf
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756719"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853208"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動備份-Azure SQL Database & SQL 受控執行個體
 
@@ -46,7 +46,14 @@ SQL 受控執行個體引進將儲存體冗余變更為本機冗余 (LRS) 或區
 > [!IMPORTANT]
 > 在 SQL 受控執行個體中，設定的備份冗余會套用至用於時間點還原的短期備份保留設定 (PITR) 以及用於長期備份的長期保留備份 (LTR) 。
 
+
+> [!NOTE]
+> Azure SQL Database 可設定的備份儲存體冗余目前可作為東南亞 Azure 區域中特定客戶的有限私人預覽。 如果您想要在此私人預覽版中進行註冊，請聯絡 [sqlbackuppreview@microsoft.com](mailto:sqlbackuppreview@microsoft.com) 。 
+
+如果您的資料保護規則要求您的備份可供使用 (長達10年的時間) ，您可以設定單一和集區資料庫的 [長期保留](long-term-retention-overview.md) 。
+
 ### <a name="backup-usage"></a>備份使用量
+
 
 您可以使用這些備份來︰
 
