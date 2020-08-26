@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0d4c5a33f52799ea4da9c7c23fbace94e800660b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b205665a0e5fc06fdc784efa91036f26da5d3cde
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589464"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654339"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure 中的 Linux 虛擬機器
 
@@ -71,7 +71,7 @@ Azure 可依據 VM 的大小和作業系統，以[每小時](https://azure.micro
 
 受控磁碟可在背景中為您處理 Azure 儲存體帳戶的建立和管理作業，確保您不需要擔心儲存體帳戶的延展性限制。 您可指定磁碟大小和效能層級 (標準或進階)，而 Azure 會建立和管理磁碟。 當您新增磁碟或相應增加和減少 VM 時，都不必擔心所使用的儲存體。 如果您要建立新的 VM，請[使用 Azure CLI](quick-create-cli.md) 或 Azure 入口網站來建立具有受控 OS 和資料磁碟的 VM。 如果您有具備非受控磁碟的 VM，您可以[將 VM 轉換成由受控磁碟提供支援](convert-unmanaged-to-managed-disks.md)。
 
-您也可以在每個 Azure 區域中使用單一儲存體帳戶管理自訂映像，並使用映像在相同訂用帳戶中建立數百個 VM。 如需受控磁碟的詳細資訊，請參閱 [Azure 受控磁碟概觀](../linux/managed-disks-overview.md)。
+您也可以在每個 Azure 區域中使用單一儲存體帳戶管理自訂映像，並使用映像在相同訂用帳戶中建立數百個 VM。 如需受控磁碟的詳細資訊，請參閱 [Azure 受控磁碟概觀](../managed-disks-overview.md)。
 
 ## <a name="distributions"></a>散發 
 Microsoft Azure 支援執行由多家合作夥伴提供和維護的眾多熱門 Linux 散發套件。  您可以在 Azure Marketplace 中找到 Red Hat Enterprise、CentOS、SUSE Linux Enterprise、Debian、Ubuntu、CoreOS、RancherOS 及 FreeBSD 等散發套件。 Microsoft 與各個 Linux 社群積極合作，以便為[經 Azure 背書的 Linux 散發套件](endorsed-distros.md)清單新增更多版本選項。

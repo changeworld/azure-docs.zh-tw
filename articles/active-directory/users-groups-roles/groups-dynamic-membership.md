@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dda8c742a0aafe7ec3f46a0a9dbf0abd4a516b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f36e5d8974caea0eecff7e0b399b6aab5d200664
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213794"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797100"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中群組的動態成員資格規則
 
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>擴充屬性和自訂擴充屬性
 
-動態成員資格規則中，以字串屬性形式支援擴充屬性和自訂擴充屬性。 [擴充屬性](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0)同步自內部部署 Windows Server AD，且採用 "ExtensionAttributeX" 格式，其中 X 等於 1-15。 以下是使用擴充屬性 (attribute) 作為屬性 (property) 的規則範例：
+動態成員資格規則中，以字串屬性形式支援擴充屬性和自訂擴充屬性。 [擴充屬性](/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0)同步自內部部署 Windows Server AD，且採用 "ExtensionAttributeX" 格式，其中 X 等於 1-15。 以下是使用擴充屬性 (attribute) 作為屬性 (property) 的規則範例：
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-[自訂擴充屬性](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions)同步自內部部署 Windows Server AD 或連線的 SaaS 應用程式，格式為 `user.extension_[GUID]_[Attribute]`，其中：
+[自訂擴充屬性](../hybrid/how-to-connect-sync-feature-directory-extensions.md)同步自內部部署 Windows Server AD 或連線的 SaaS 應用程式，格式為 `user.extension_[GUID]_[Attribute]`，其中：
 
 * 對於在 Azure AD 中建立屬性的應用程式而言，[GUID] 是其在 Azure AD 中的唯一識別碼
 * [Attribute] 是屬性建立時的名稱
@@ -393,7 +393,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
  systemLabels | 比對 Intune 裝置屬性以觸發新式工作場所的裝置的任何字串 | (device.systemLabels -contains "M365Managed")
 
 > [!Note]  
-> 針對 deviceOwnership，為裝置建立動態群組時，您需要將此值設定為等於 "Company"。 在 Intune 上，裝置擁有權會改以 Corporate 表示。 如需詳細資訊，請參閱 [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes)。 
+> 針對 deviceOwnership，為裝置建立動態群組時，您需要將此值設定為等於 "Company"。 在 Intune 上，裝置擁有權會改以 Corporate 表示。 如需詳細資訊，請參閱 [OwnerTypes](/intune/reports-ref-devices#ownertypes)。 
 
 ## <a name="next-steps"></a>後續步驟
 

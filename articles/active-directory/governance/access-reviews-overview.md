@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 956e61894113b4728760de519ad49be71ed184cc
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c69a5e153377eee86eaf0c43d6c982dee2938ddf
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605010"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783666"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>什麼是 Azure AD 存取權檢閱？
 
@@ -81,7 +81,7 @@ Azure AD 可讓您與組織內部與外部使用者共同作業。 使用者可�
 
 具有全域管理員或使用者管理員角色的使用者**不需要** Azure AD Premium P2 授權，即可設定存取權檢閱、設定組態，或套用來自檢閱的決策。
 
-至於您對於貴組織使用者指派的每個付費 Azure AD Premium P2 授權，在「外部使用者額度」下，您可以使用 Azure AD 企業對企業 (B2B) 邀請最多 5 位使用者。 這些來賓使用者也可以使用 Azure AD Premium P2 功能。 如需詳細資訊，請參閱 [Azure AD B2B 共同作業授權指引](../b2b/licensing-guidance.md)。
+至於您對於貴組織使用者指派的每個付費 Azure AD Premium P2 授權，在「外部使用者額度」下，您可以使用 Azure AD 企業對企業 (B2B) 邀請最多 5 位使用者。 這些來賓使用者也可以使用 Azure AD Premium P2 功能。 如需詳細資訊，請參閱 [Azure AD B2B 共同作業授權指引](../external-identities/licensing-guidance.md)。
 
 如需授權的詳細資訊，請參閱[使用 Azure Active Directory 入口網站指派或移除授權](../fundamentals/license-users-groups.md)。
 

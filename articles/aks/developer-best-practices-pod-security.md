@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: bd6891ff4d15dc326c846efbaa37aea997ef2e17
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b09fb7cb5e631d3405adf39d5c92a72288249aff
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320675"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893118"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中的 Pod 安全性最佳做法
 
@@ -85,7 +85,7 @@ spec:
 
 Azure 資源其受控識別可讓 Pod 向任何支援此功能的 Azure 服務進行自我驗證，例如儲存體或 SQL。 獲指派 Azure 身分識別的 Pod 可向 Azure Active Directory 進行驗證，並接收數位權杖。 此數位權杖可向其他 Azure 服務顯示，供其檢查是否已授權 Pod 存取服務和執行所需動作。 這種方法代表資料庫連接字串不需要任何祕密。 Pod 受控身分識別的簡化工作流程如下圖所示：
 
-![Azure 中 Pod 受控身分識別的簡化工作流程](media/developer-best-practices-pod-security/basic-pod-identity.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-pod-identity.svg" alt-text="Azure 中 Pod 受控身分識別的簡化工作流程":::
 
 使用受控身分識別，應用程式程式碼就不需要包含認證以存取服務時，例如 Azure 儲存體。 每個 Pod 都以自己的身分識別驗證，因此您可以稽核和檢閱存取權。 如果應用程式會與其他 Azure 服務連線，請使用受控身分識別來限制重複使用和公開認證的風險。
 
@@ -97,7 +97,7 @@ Azure 資源其受控識別可讓 Pod 向任何支援此功能的 Azure 服務�
 
 當應用程式需要認證時會與數位保存庫通訊、擷取最新的祕密內容，然後連線到所需的服務。 這個數位保存庫可以是 Azure Key Vault。 下圖顯示使用 Pod 受控身分識別從 Azure Key Vault 擷取認證的簡化工作流程：
 
-![使用 Pod 受控身分識別從 Azure Key Vault 擷取認證的簡化工作流程](media/developer-best-practices-pod-security/basic-key-vault.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="使用 Pod 受控身分識別從 Azure Key Vault 擷取認證的簡化工作流程":::
 
 有了 Key Vault，您就可以儲存並定期輪替使用祕密，例如認證、儲存體帳戶金鑰或憑證。 您可使用[祕密存放區 CSI 驅動程式的 Azure Key Vault 提供者](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)來整合 Azure Key Vault 與 AKS 叢集。 祕密存放區 CSI 驅動程式可讓 AKS 叢集從 Key Vault 原生擷取祕密內容，並只會將其安全地提供給提出要求的 Pod。 請與叢集操作員合作，以將祕密存放區 CSI 驅動程式部署至 AKS 背景工作節點。 您可使用 Pod 受控身分識別向 Key Vault 要求存取權，並透過祕密存放區 CSI 驅動程式擷取所需的祕密內容。
 

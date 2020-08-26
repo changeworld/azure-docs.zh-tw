@@ -3,12 +3,12 @@ title: 將 SQL Server 資料庫備份到 Azure
 description: 本文說明如何將 SQL Server 備份至 Azure。 本文也將說明 SQL Server 復原。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 88ac95a3e21269ccb5ca2c0fed1c1444af2f4d11
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d8cdafe215d9271151d8dacee114d40108e907bd
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826917"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892434"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>關於 Azure VM 中的 SQL Server 備份
 
@@ -35,7 +35,7 @@ ms.locfileid: "88826917"
 
   ![SQL 備份架構](./media/backup-azure-sql-database/backup-sql-overview.png)
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 開始之前，請確認下列需求：
 
@@ -51,9 +51,9 @@ ms.locfileid: "88826917"
 * 建立 NT SERVICE\AzureWLBackupPluginSvc 帳戶以探索虛擬機器上的資料庫。 此帳戶會用於備份和還原，且必須具備 SQL 系統管理員 (sysadmin) 權限。
 * 探索在虛擬機器上執行的資料庫，Azure 備份會使用 NT AUTHORITY\SYSTEM 帳戶。 此帳戶必須是 SQL 上的公用登入。
 
-如果您未在 Azure Marketplace 中建立 SQL Server VM，或您是在 SQL 2008 和 2008 R2 上，您可能會收到 **>usererrorsqlnosysadminmembership** 錯誤。
+如果您未在 Azure Marketplace 中建立 SQL Server VM，或您是在 SQL 2008 或 2008 R2 上，您可能會收到 **>usererrorsqlnosysadminmembership** 錯誤。
 
-有關如何為 Windows 2008 R2 上執行的 **SQL 2008** 和 **2008 R2** 提供權限，請參閱[這裡](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)。
+若要在 Windows 2008 R2 上執行的 **SQL 2008** 和 **2008 R2** 的情況下提供許可權，請參閱 [這裡](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)。
 
 針對所有其他版本，請依照下列步驟修正權限：
 

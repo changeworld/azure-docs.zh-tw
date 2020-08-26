@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 05a45a2a8aeabae2b160701020e5deb89fb3aa81
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1d405aff5233f38aee2031220fd119693da64abb
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751703"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892859"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
 
@@ -120,7 +120,7 @@ New-AzResourceGroupDeployment `
 依預設，建立為範本一部分的所有資源都是新的。 不過，您也可以選擇使用現有的資源。 藉由提供範本的其他參數，您可以使用現有的資源。 例如，如果您想要使用現有的儲存體帳戶，請將 **storageAccountOption** 值設定為 **現有** 的，並在 **storageAccountName** 參數中提供儲存體帳戶的名稱。
 
 > [!IMPORTANT]
-> 如果您想要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶 (Premium_LRS 和 Premium_GRS) 。 它也不能有階層命名空間 (用於 Azure Data Lake Storage Gen2) 。 使用工作區的預設儲存體帳戶並不支援 premium 儲存體或階層命名空間。
+> 如果您想要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶 (Premium_LRS 和 Premium_GRS) 。 它也不能有階層命名空間 (用於 Azure Data Lake Storage Gen2) 。 使用工作區的預設儲存體帳戶並不支援 premium 儲存體或階層命名空間。 工作區的 _預設_ 儲存體帳戶不支援 premium 儲存體或階層命名空間。 您可以搭配使用 premium 儲存體或階層命名空間與 _非預設_ 儲存體帳戶。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

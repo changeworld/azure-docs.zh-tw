@@ -3,18 +3,18 @@ title: Azure 備份的虛刪除
 description: 瞭解如何使用 Azure 備份中的安全性功能，讓備份更安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d791b76698330cd14c56f01cf5da62c8a64bec29
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 921d04c530695ee8909fb17b216029849c4fc4a2
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826968"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892468"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 備份的虛刪除
 
 現在越來越重視安全性問題，例如惡意程式碼、勒索軟體和入侵。 這些安全性問題在成本和資料方面付出的代價很高。 為了防範這類攻擊，Azure 備份現在提供安全性功能來協助保護備份資料，即使在刪除後也一樣。
 
-其中一項功能是虛刪除。 使用虛刪除時，即使惡意執行者刪除備份 (或不小心刪除備份資料) ，備份資料仍會保留14天，以允許復原該備份專案而不會遺失資料。 在「虛刪除」狀態中，備份資料保留的額外14天不會對客戶產生任何成本。
+其中一項功能是虛刪除。 使用虛刪除時，即使惡意執行者刪除備份 (或不小心刪除備份資料) ，備份資料仍會保留14天，以允許復原該備份專案而不會遺失資料。 在「虛刪除」狀態中，備份資料保留的額外14天不會產生任何費用。
 
 這些服務可使用虛刪除保護：
 
@@ -172,7 +172,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>是否可以在刪除後的14天內刪除超過14天的資料？
 
-不知道。 您無法強制刪除虛刪除的專案。 它們會在14天后自動刪除。 啟用這項安全性功能，以保護備份資料免于遭到意外或惡意刪除。  您應等候14天，然後再對專案執行任何其他動作。  虛刪除的專案將不會收費。  如果您需要在新保存庫的14天內重新保護標示為虛刪除的專案，請洽詢 Microsoft 支援服務。
+不會。 您無法強制刪除虛刪除的專案。 它們會在14天后自動刪除。 啟用這項安全性功能，以保護備份資料免于遭到意外或惡意刪除。  您應等候14天，然後再對專案執行任何其他動作。  虛刪除的專案將不會收費。  如果您需要在新保存庫的14天內重新保護標示為虛刪除的專案，請洽詢 Microsoft 支援服務。
 
 ### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>是否可以在 PowerShell 或 CLI 中執行虛刪除作業？
 

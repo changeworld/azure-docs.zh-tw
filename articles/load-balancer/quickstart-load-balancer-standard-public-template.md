@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: ebf2f926f5be86ffee5f3a3e30277962a6060762
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: d83d58d608fc184f94ae70e60c56fe8fdc1e5eaa
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85479755"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706042"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立負載平衡器以平衡 VM 的負載
 
@@ -42,7 +42,7 @@ ms.locfileid: "85479755"
 
 負載平衡器和公用 IP SKU 必須相符。 當您建立 Standard Load Balancer 時，您也必須建立新的標準公用 IP 位址，而該 IP 位址會設定為 Standard Load Balancer 的前端。 如果您想要建立基本負載平衡器，請使用[此範本](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)。 Microsoft 建議對生產工作負載使用標準 SKU。
 
-:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json" range="1-324" highlight="57-122":::
+:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json":::
 
 範本中已定義多個 Azure 資源：
 

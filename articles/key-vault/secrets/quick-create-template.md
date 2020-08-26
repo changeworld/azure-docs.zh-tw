@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: 5206c73ac225f31ee8c40105e292726a9f951a79
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: cff67e99d40b092341e89c96a9f1e037d8572248
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85478922"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690624"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>快速入門：使用 ARM 範本從 Azure Key Vault 設定及擷取祕密
 
@@ -61,7 +61,7 @@ ms.locfileid: "85478922"
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-key-vault-create/)。
 
-:::code language="json" source="~/quickstart-templates/101-key-vault-create/azuredeploy.json" range="1-150" highlight="106-148":::
+:::code language="json" source="~/quickstart-templates/101-key-vault-create/azuredeploy.json":::
 
 範本中定義了兩個 Azure 資源：
 

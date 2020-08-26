@@ -3,12 +3,12 @@ title: Azure 快速入門 - 使用 Azure 入口網站建立事件中樞
 description: 在本快速入門中，您將了解如何使用 Azure 入口網站建立 Azure 事件中樞，然後使用 .NET Standard SDK 傳送和接收事件。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 271d01ef6711c7e57538abae301ae924fb6ff351
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: f2012880a7703ba07556d5e18d44d17af73326e9
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142548"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794621"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>快速入門：使用 Azure 入口網站建立事件中樞
 Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可接收和處理數百萬個事件。 事件中樞可以處理及儲存分散式軟體和裝置所產生的事件、資料或遙測。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。 如需事件中樞的詳細概觀，請參閱[事件中樞概觀](event-hubs-about.md)和[事件中樞功能](event-hubs-features.md)。
@@ -20,8 +20,6 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 若要完成本快速入門，請確定您具備︰
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
-- [Visual Studio 2019](https://www.visualstudio.com/vs) 或更新版本。
-- [.NET Standard SDK](https://www.microsoft.com/net/download/windows)，2.0 版或更新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 

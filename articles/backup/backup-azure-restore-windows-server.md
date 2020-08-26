@@ -3,12 +3,12 @@ title: 使用 MARS 代理程式將檔案還原到 Windows Server
 description: 在本文中，了解如何使用 Microsoft Azure 復原服務 (MARS) 代理程式，將儲存在 Azure 中的資料還原至 Windows Server 或 Windows 電腦。
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 78663edadfdef581dbdd259882a6dd4afe5a4b0b
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: e61ad7083a7b6979222566112820bad133022844
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871253"
+ms.locfileid: "88892502"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>使用 MARS 代理程式將檔案還原到 Windows Server
 
@@ -75,7 +75,7 @@ ms.locfileid: "88871253"
     ![[復原資料] Wizard [流覽及復原檔案] 頁面的螢幕擷取畫面 (還原到相同的電腦) -確認復原磁片區卸載](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > 如果您未選取 [ **卸載**]，復原磁片區會保持掛接6個小時（從掛接時開始）。 不過，如果是進行中的檔案複製，掛接時間可延長至高達 24 小時。 當磁碟區處於掛接狀態時，不會執行任何備份作業。 掛接磁碟區時，任何排定要執行的備份作業都會在復原磁碟區卸載之後執行。
+    > 如果您未選取 [ **卸載**]，復原磁片區會保持掛接6個小時（從掛接時開始）。 不過，在進行檔案複製的情況下，掛接時間最多會延長至24小時。 當磁碟區處於掛接狀態時，不會執行任何備份作業。 掛接磁碟區時，任何排定要執行的備份作業都會在復原磁碟區卸載之後執行。
     >
 
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>使用「立即還原」將資料還原至其他電腦
@@ -138,7 +138,7 @@ ms.locfileid: "88871253"
     ![將磁片區卸載 (還原至替代電腦) ](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > 如果您未選取 [ **卸載**]，復原磁片區會保持掛接6個小時（從掛接時開始）。 不過，如果是進行中的檔案複製，掛接時間可延長至高達 24 小時。 當磁碟區處於掛接狀態時，不會執行任何備份作業。 掛接磁碟區時，任何排定要執行的備份作業都會在復原磁碟區卸載之後執行。
+    > 如果您未選取 [ **卸載**]，復原磁片區會保持掛接6個小時（從掛接時開始）。 不過，在進行檔案複製的情況下，掛接時間最多會延長至24小時。 當磁碟區處於掛接狀態時，不會執行任何備份作業。 掛接磁碟區時，任何排定要執行的備份作業都會在復原磁碟區卸載之後執行。
     >
 
 ## <a name="next-steps"></a>後續步驟

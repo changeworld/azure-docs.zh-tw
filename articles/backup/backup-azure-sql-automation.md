@@ -4,12 +4,12 @@ description: 使用 Azure 備份和 PowerShell 來備份和還原 Azure Vm 中�
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 46583a0a26c86a0f77b115178fb53592977aef09
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 1fe3af3b2a12cf6fdfc0e71d36d36046858c50af
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826883"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892417"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>使用 PowerShell 備份及還原 Azure Vm 中的 SQL 資料庫
 
@@ -26,7 +26,7 @@ ms.locfileid: "88826883"
 > * 還原已備份的 SQL DB。
 > * 監視備份和還原作業。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 * [深入瞭解](backup-azure-recovery-services-vault-overview.md) 復原服務保存庫。
 * 瞭解在 [Azure vm 中備份 SQL db](backup-azure-sql-database.md#before-you-start)的功能功能。
@@ -44,7 +44,7 @@ ms.locfileid: "88826883"
 
 設定 PowerShell，如下所示：
 
-1. [下載最新版的 Az PowerShell](/powershell/azure/install-az-PowerShell)。 所需的最低版本為1.5.0。
+1. [下載最新版的 Az PowerShell](/powershell/azure/install-az-ps)。 所需的最低版本為1.5.0。
 
 2. 使用下列命令尋找 Azure 備份 PowerShell Cmdlet：
 
@@ -237,7 +237,7 @@ master           ConfigureBackup      Completed            3/18/2019 6:00:21 PM 
 
 ### <a name="fetching-new-sql-dbs"></a>提取新的 SQL Db
 
-註冊機器之後，備份服務將會提取可用資料庫的詳細資料。 如果使用者稍後將 SQL Db/SQL 實例新增至已註冊的電腦，您需要手動觸發備份服務，以執行全新的「查詢」以取得所有未受保護的 Db (包括重新新增的資料庫) 。 在 SQL VM 上使用 [>backup-azrecoveryservicesbackupitem](/powershell/module/az.recoveryservices/initialize-azrecoveryservicesbackupprotectableitem) PowerShell Cmdlet，以執行新的查詢。 此命令會等到作業完成為止。 稍後使用 [AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) PowerShell Cmdlet 來取得最新未受保護的 SQL 元件清單
+註冊機器之後，備份服務將會提取可用資料庫的詳細資料。 如果稍後將 SQL Db 或 SQL 實例新增至已註冊的電腦，您需要手動觸發備份服務，以執行全新的「查詢」以取得 **所有** 未受保護的 db (包括重新新增的資料庫) 。 在 SQL VM 上使用 [>backup-azrecoveryservicesbackupitem](/powershell/module/az.recoveryservices/initialize-azrecoveryservicesbackupprotectableitem) PowerShell Cmdlet，以執行新的查詢。 此命令會等到作業完成為止。 稍後使用 [AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) PowerShell Cmdlet 來取得最新未受保護的 SQL 元件清單。
 
 ```powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
@@ -278,7 +278,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload 
 
 ### <a name="fetch-the-relevant-restore-time"></a>提取相關的還原時間
 
-如上面所述，使用者可以將備份的 SQL 資料庫還原至完整/差異複本 **或** 記錄時間點。
+如上所述，您可以將備份的 SQL 資料庫還原至完整/差異複本 **或** 記錄時間點。
 
 #### <a name="fetch-distinct-recovery-points"></a>提取相異復原點
 
@@ -307,7 +307,7 @@ $FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $tar
 
 #### <a name="fetch-point-in-time-recovery-point"></a>提取時間點復原點
 
-如果使用者想要將資料庫還原到特定時間點，請使用 [AzRecoveryServicesBackupRecoveryLogChain](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverylogchain) PowerShell Cmdlet。 指令程式會傳回日期清單，代表該 SQL 備份專案之未中斷、連續記錄鏈的開始和結束時間。 所需的時間點應該在此範圍內。
+如果您想要將資料庫還原到特定時間點，請使用 [AzRecoveryServicesBackupRecoveryLogChain](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverylogchain) PowerShell Cmdlet。 指令程式會傳回日期清單，代表該 SQL 備份專案之未中斷、連續記錄鏈的開始和結束時間。 所需的時間點應該在此範圍內。
 
 ```powershell
 Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -Item -VaultId $targetVault.ID
@@ -321,14 +321,14 @@ ItemName                       StartTime                      EndTime
 SQLDataBase;MSSQLSERVER;azu... 3/18/2019 8:09:35 PM           3/19/2019 12:08:32 PM
 ```
 
-上述輸出表示使用者可以還原至顯示的開始時間和結束時間之間的任何時間點。 時間是以 UTC 為限。 在 PowerShell 中的任何時間點上，以上述的範圍來建立任何時間點。
+上述輸出表示您可以還原至顯示的開始時間和結束時間之間的任何時間點。 時間是以 UTC 為限。 在 PowerShell 中的任何時間點上，以上述的範圍來建立任何時間點。
 
 > [!NOTE]
 > 選取要還原的記錄檔時間點時，您不需要指定起始點，也就是還原資料庫的完整備份。 Azure 備份服務將負責處理整個復原計畫，也就是要選擇的完整備份、要套用的記錄備份等等。
 
 ### <a name="determine-recovery-configuration"></a>判斷恢復設定
 
-若為 SQL DB 還原，則支援下列還原案例。
+在 SQL DB 還原的案例中，支援下列還原案例。
 
 * 使用來自另一個復原點的資料來覆寫備份的 SQL DB-OriginalWorkloadRestore
 * 將 SQL DB 還原為相同 SQL 實例中的新資料庫->alternateworkloadrestore
@@ -358,7 +358,7 @@ $OverwriteWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -Po
 > [!IMPORTANT]
 > 已備份的 SQL DB 可在 Azure VM 「已註冊」至此保存庫中，以新的 DB 形式還原至另一個 SQLInstance。
 
-如上所述，如果目標 SQLInstance 位於另一個 Azure VM 中，請確定它已 [註冊到此保存庫](#registering-the-sql-vm) ，而相關的 SQLInstance 會顯示為可保護的專案。
+如上所述，如果目標 SQLInstance 位於另一個 Azure VM 中，請確定它 [已註冊到此保存庫](#registering-the-sql-vm) ，而相關的 SQLInstance 會顯示為可保護的專案。
 
 ```powershell
 $TargetInstance = Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -ItemType SQLInstance -Name "<SQLInstance Name>" -ServerName "<SQL VM name>" -VaultId $targetVault.ID
@@ -479,7 +479,7 @@ MSSQLSERVER/m... Restore              InProgress           3/17/2019 10:02:45 AM
 
 ### <a name="on-demand-backup"></a>隨選備份
 
-針對資料庫啟用備份之後，使用者也可以使用 [>backup-azrecoveryservicesbackupitem](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) PowerShell CMDLET 觸發資料庫的隨選備份。 下列範例會在啟用壓縮的 SQL DB 上觸發完整備份，且應保留60天的完整備份。
+針對資料庫啟用備份之後，您也可以使用 [>backup-azrecoveryservicesbackupitem](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) PowerShell Cmdlet 來觸發資料庫的隨選備份。 下列範例會在啟用壓縮的 SQL DB 上觸發完整備份，且應保留60天的完整備份。
 
 ```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -499,7 +499,7 @@ MSSQLSERVER/m... Backup               InProgress           3/18/2019 8:41:27 PM 
 
 ### <a name="change-policy-for-backup-items"></a>變更備份專案的原則
 
-使用者可以將備份專案的原則從 Policy1 變更為 Policy2。 若要切換已備份專案的原則，請提取相關的原則和備份專案，並使用 [AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 命令搭配備份專案作為參數。
+您可以將備份專案的原則從 *Policy1* 變更為 *Policy2*。 若要切換已備份專案的原則，請提取相關的原則和備份專案，並使用 [AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 命令搭配備份專案作為參數。
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -545,7 +545,7 @@ Register-AzRecoveryServicesBackupContainer -Container $SQLContainer -BackupManag
 
 #### <a name="retain-data"></a>保留資料
 
-如果使用者想要停止保護，則可以使用 [>enable-azrecoveryservicesbackupprotection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PowerShell Cmdlet。 這將會停止已排程的備份，但直到現在為止備份的資料會永久保留。
+如果您想要停止保護，您可以使用 [>enable-azrecoveryservicesbackupprotection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PowerShell Cmdlet。 這將會停止已排程的備份，但直到現在為止備份的資料會永久保留。
 
 ```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -562,7 +562,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 #### <a name="disable-auto-protection"></a>停用自動保護
 
-如果 start-autoprotection 是在 SQLInstance 上設定，則使用者可以使用 [disable-AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection) PowerShell Cmdlet 來停用它。
+如果在 SQLInstance 上設定 start-autoprotection，您可以使用 [AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection) PowerShell Cmdlet 來停用它。
 
 ```powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
@@ -571,7 +571,7 @@ Disable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupMa
 
 #### <a name="unregister-sql-vm"></a>取消註冊 SQL VM
 
-如果 SQL server 的所有 Db 都不再 [受到保護，而且沒有備份資料存在](#delete-backup-data)，使用者可以從這個保存庫取消註冊 sql VM。 只有使用者可以保護資料庫到另一個保存庫。 使用 [>get-azrecoveryservicesbackupcontainer](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) PowerShell Cmdlet 取消註冊 SQL VM。
+如果 SQL server 的所有 Db 都不再 [受到保護，而且沒有備份資料存在](#delete-backup-data)，您可以從這個保存庫取消註冊 sql VM。 只有這樣才能保護資料庫到另一個保存庫。 使用 [>get-azrecoveryservicesbackupcontainer](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) PowerShell Cmdlet 取消註冊 SQL VM。
 
 ```powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
@@ -600,7 +600,7 @@ Get-AzRecoveryServicesBackupJob -Status InProgress -BackupManagementType AzureWo
 
 針對 SQL Always On 可用性群組，請務必註冊可用性群組 (AG) 的 [所有節點](#registering-the-sql-vm) 。 一旦完成所有節點的註冊，就會在可保護的專案下以邏輯方式建立 SQL 可用性群組物件。 SQL AG 底下的資料庫將會列為 ' SQLDatabase '。 節點會顯示為獨立的實例，而這些節點下的預設 SQL 資料庫也會列為 SQL 資料庫。
 
-例如，假設 SQL AG 有兩個節點： ' SQL-server-0 ' 和 ' sql-server-1 ' 和1個 SQL AG 資料庫。 這兩個節點都註冊之後，如果使用者列出可保護 [的專案](#fetching-sql-dbs)，它會列出下列元件
+例如，假設 SQL AG 有兩個節點： *sql-server-0* 和 *sql-server-1* 和 1 sql AG DB。 這兩個節點都註冊之後，如果您列出可保護 [的專案](#fetching-sql-dbs)，它會列出下列元件
 
 * SQL AG 物件可保護的專案類型為 >new-sqlavailabilitygroup
 * SQL AG 資料庫-可保護的專案類型為 SQLDatabase

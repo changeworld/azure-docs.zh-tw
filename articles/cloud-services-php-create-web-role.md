@@ -13,16 +13,16 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: fd04c6315a5a6915159c0cbb6a9640ae0695ed73
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 1bf0ea35c51b063a7720a1542a23a49fbcdbc557
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117231"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892978"
 ---
 # <a name="create-php-web-and-worker-roles"></a>建立 PHP Web 和背景工作角色
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本指南將說明如何在 Windows 開發環境中建立 PHP Web 或背景工作角色、從「內建」的可用版本中選擇特定版本的 PHP、變更 PHP 組態、啟用擴充功能，最終部署至 Azure。 此外也會說明如何設定 Web 或背景工作角色，以使用您所提供的 PHP 執行階段 (具有自訂組態和擴充功能)。
 
@@ -153,7 +153,7 @@ PS C:\myProject> Add-AzurePHPWorkerRole roleName
 
 ## <a name="run-your-application-in-the-compute-and-storage-emulators"></a>在計算和儲存模擬器中執行您的應用程式
 
-Azure 模擬器所提供的本機環境，可讓您在 Azure 應用程式部署至雲端前先加以測試。 模擬器與 Azure 環境之間有若干差異。 若要深入了解，請參閱[使用 Azure 儲存體模擬器進行開發和測試](storage/common/storage-use-emulator.md)。
+Azure 模擬器所提供的本機環境，可讓您在 Azure 應用程式部署至雲端前先加以測試。 模擬器與 Azure 環境之間有若干差異。 若要進一步瞭解，請參閱 [使用 Azure 儲存體模擬器進行開發和測試](storage/common/storage-use-emulator.md)。
 
 請注意，您必須在本機安裝 PHP，才能使用計算模擬器。 計算模擬器會使用您的本機 PHP 安裝執行您的應用程式。
 
@@ -189,8 +189,8 @@ PS C:\MyProject> Stop-AzureEmulator
 如需詳細資訊，請參閱 [PHP 開發人員中心](https://azure.microsoft.com/develop/php/)。
 
 [install ps and emulators]: https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[服務定義（..）]: https://msdn.microsoft.com/library/windowsazure/ee758711.aspx
-[服務設定（.cscfg）]: https://msdn.microsoft.com/library/windowsazure/ee758710.aspx
+[ ( 的服務定義) ]: https://msdn.microsoft.com/library/windowsazure/ee758711.aspx
+[服務設定 ( .cscfg) ]: https://msdn.microsoft.com/library/windowsazure/ee758710.aspx
 [iis.net]: https://www.iis.net/
 [sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: https://php.net/sqlsrv

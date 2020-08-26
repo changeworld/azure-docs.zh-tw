@@ -8,12 +8,12 @@ ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 009f8ec69261103faaa4de1e27ae7383257a13ca
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 5141ad9c088998bbc0ea241382c47f7b74b014b4
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136400"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815890"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI - 使用 Private Link 限制受控磁碟的匯入/匯出存取
 
@@ -34,7 +34,6 @@ ms.locfileid: "88136400"
 ## <a name="log-in-into-your-subscription-and-set-your-variables"></a>登入訂用帳戶並設定變數
 
 ```azurecli-interactive
-
 subscriptionId=yourSubscriptionId
 resourceGroupName=yourResourceGroupName
 region=northcentralus
@@ -58,7 +57,7 @@ az account set --subscription $subscriptionId
 
 ## <a name="create-a-disk-access-using-azure-cli"></a>使用 Azure CLI 建立磁碟存取
 ```azurecli-interactive
-az group deployment create -g $resourceGroupName \
+az deployment group create -g $resourceGroupName \
 --template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/privatelinks/CreateDiskAccess.json" \
 --parameters "region=$region" "diskAccessName=$diskAccessName"
 
@@ -101,7 +100,7 @@ az network private-endpoint create --resource-group $resourceGroupName \
 建立儲存體 Blob 網域的私人 DNS 區域、建立與虛擬網路的關聯連結，以及建立 DNS 區域群組，以將私人端點與私人 DNS 區域建立關聯。 
 
 ```azurecli-interactive
-az network private-dns zone create --resource-group $resourceGroupName \ 
+az network private-dns zone create --resource-group $resourceGroupName \
     --name "privatelink.blob.core.windows.net"
 
 az network private-dns link vnet create --resource-group $resourceGroupName \
@@ -119,48 +118,48 @@ az network private-endpoint dns-zone-group create \
 ```
 
 ## <a name="create-a-disk-protected-with-private-links"></a>建立受 Private Link 保護的磁碟
-  ```cli
-    resourceGroupName=yourResourceGroupName
-    region=northcentralus
-    diskAccessName=yourDiskAccessName
-    diskName=yourDiskName
-    diskSkuName=Standard_LRS
-    diskSizeGB=128
+```azurecli-interactive
+resourceGroupName=yourResourceGroupName
+region=northcentralus
+diskAccessName=yourDiskAccessName
+diskName=yourDiskName
+diskSkuName=Standard_LRS
+diskSizeGB=128
 
-    diskAccessId=$(az resource show -n $diskAccessName -g $resourceGroupName --namespace Microsoft.Compute --resource-type diskAccesses --query [id] -o tsv)
+diskAccessId=$(az resource show -n $diskAccessName -g $resourceGroupName --namespace Microsoft.Compute --resource-type diskAccesses --query [id] -o tsv)
 
-    az group deployment create -g $resourceGroupName \
-       --template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/privatelinks/CreateDisksWithExportViaPrivateLink.json" \
-       --parameters "diskName=$diskName" \
-       "diskSkuName=$diskSkuName" \
-       "diskSizeGB=$diskSizeGB" \
-       "diskAccessId=$diskAccessId" \
-       "region=$region" \
-       "networkAccessPolicy=AllowPrivate"
+az deployment group create -g $resourceGroupName \
+   --template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/privatelinks/CreateDisksWithExportViaPrivateLink.json" \
+   --parameters "diskName=$diskName" \
+   "diskSkuName=$diskSkuName" \
+   "diskSizeGB=$diskSizeGB" \
+   "diskAccessId=$diskAccessId" \
+   "region=$region" \
+   "networkAccessPolicy=AllowPrivate"
 ```
 
 ## <a name="create-a-snapshot-of-a-disk-protected-with-private-links"></a>建立以 Private Link 保護之磁碟的快照集
-   ```cli
-    resourceGroupName=yourResourceGroupName
-    region=northcentralus
-    diskAccessName=yourDiskAccessName
-    sourceDiskName=yourSourceDiskForSnapshot
-    snapshotNameSecuredWithPL=yourSnapshotName
+```azurecli-interactive
+resourceGroupName=yourResourceGroupName
+region=northcentralus
+diskAccessName=yourDiskAccessName
+sourceDiskName=yourSourceDiskForSnapshot
+snapshotNameSecuredWithPL=yourSnapshotName
 
-    diskId=$(az disk show -n $sourceDiskName -g $resourceGroupName --query [id] -o tsv)
-   
-    diskAccessId=$(az resource show -n $diskAccessName -g $resourceGroupName --namespace Microsoft.Compute --resource-type diskAccesses --query [id] -o tsv)
-   
-    az group deployment create -g $resourceGroupName \
-      --template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/privatelinks/CreateSnapshotWithExportViaPrivateLink.json" \
-      --parameters "snapshotName=$snapshotNameSecuredWithPL" \
-      "sourceResourceId=$diskId" \
-      "diskAccessId=$diskAccessId" \
-      "region=$region" \
-      "networkAccessPolicy=AllowPrivate" 
+diskId=$(az disk show -n $sourceDiskName -g $resourceGroupName --query [id] -o tsv)
+
+diskAccessId=$(az resource show -n $diskAccessName -g $resourceGroupName --namespace Microsoft.Compute --resource-type diskAccesses --query [id] -o tsv)
+
+az deployment group create -g $resourceGroupName \
+   --template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/privatelinks/CreateSnapshotWithExportViaPrivateLink.json" \
+   --parameters "snapshotName=$snapshotNameSecuredWithPL" \
+   "sourceResourceId=$diskId" \
+   "diskAccessId=$diskAccessId" \
+   "region=$region" \
+   "networkAccessPolicy=AllowPrivate" 
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Private Link 常見問題集](faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
+- [Private Link 常見問題集](../faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
 - [使用 CLI 將受控快照集匯出/複製到不同區域的儲存體帳戶當做 VHD](../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md)

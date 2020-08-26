@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 5ef5af77831c01ae484398c1f2d8905e5e2bc11e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a8f956a692fd857fc864ca0132acc85d9942bbd
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021325"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891805"
 ---
 # <a name="hierarchical-state-override"></a>階層式狀態覆寫
 
@@ -28,22 +28,22 @@ ms.locfileid: "84021325"
 可以覆寫的一組固定狀態為：
 
 * **`Hidden`**：場景圖形中的個別網格會隱藏或顯示。
-* **`Tint color`**：轉譯的物件可以使用其個別色彩色彩和色調粗細，以彩色色彩呈現。 下圖顯示滾輪邊緣的濃淡色彩。
+* **`Tint color`**：轉譯的物件可以色彩色彩，以及其個別的色調色彩和色調粗細。 下圖顯示滾輪邊緣的濃淡色彩。
   
   ![濃淡色彩](./media/color-tint.png)
 
-* **`See-through`**：幾何會以半透明的方式呈現，例如，用來顯示物件的內部部分。 下圖顯示除了紅色的剎車制動器之外，以透視模式轉譯的整輛汽車：
+* **`See-through`**：幾何會以半透明方式轉譯，例如，用來顯示物件的內部部分。 下圖顯示除了紅色的剎車制動器之外，以透視模式轉譯的整輛汽車：
 
   ![透視](./media/see-through.png)
 
   > [!IMPORTANT]
   > 只有在使用 *TileBasedComposition* [轉譯模式](../../concepts/rendering-modes.md) 時，才可使用透視效果。
 
-* **`Selected`**：幾何會以[選取範圍外框](outlines.md)來呈現。
+* **`Selected`**：幾何會以 [選取範圍大綱](outlines.md)呈現。
 
   ![選取範圍外框](./media/selection-outline.png)
 
-* **`DisableCollision`**： Geometry 不會受到[空間查詢](spatial-queries.md)的豁免。 **`Hidden`** 旗標不會影響衝突狀態旗標，因此這兩個旗標通常會一起設定。
+* **`DisableCollision`**：幾何豁免于 [空間查詢](spatial-queries.md)。 **`Hidden`** 旗標不會影響衝突狀態旗標，因此這兩個旗標通常會一起設定。
 
 ## <a name="hierarchical-overrides"></a>階層式覆寫
 
@@ -74,9 +74,9 @@ component.SetState(HierarchicalStates.Hidden | HierarchicalStates.DisableCollisi
 ApiHandle<HierarchicalStateOverrideComponent> component = ...;
 
 // set one state directly
-component->HiddenState(HierarchicalEnableState::ForceOn);
+component->SetHiddenState(HierarchicalEnableState::ForceOn);
 
-// set a state with the SetState function
+// or: set a state with the SetState function
 component->SetState(HierarchicalStates::SeeThrough, HierarchicalEnableState::InheritFromParent);
 
 // set multiple states at once with the SetState function
@@ -87,7 +87,7 @@ component->SetState(
 
 ### <a name="tint-color"></a>濃淡色彩
 
-覆 `tint color` 寫有點特殊，因為有開啟/關閉/繼承狀態和淡色色彩屬性。 濃淡色彩的 Alpha 部分會定義色調效果的權重：如果設為 0.0，則不會顯示濃淡色彩；如果設定為 1.0，則會以純濃淡色彩轉譯物件。 若為介於中間的值，最終色彩會與濃淡色彩混合。 您可以變更每個畫面的濃淡色彩，以完成色彩動畫。
+覆 `tint color` 寫有點特殊，因為兩者都有開啟/關閉/繼承狀態和淡色色彩屬性。 濃淡色彩的 Alpha 部分會定義色調效果的權重：如果設為 0.0，則不會顯示濃淡色彩；如果設定為 1.0，則會以純濃淡色彩轉譯物件。 若為介於中間的值，最終色彩會與濃淡色彩混合。 您可以變更每個畫面的濃淡色彩，以完成色彩動畫。
 
 ## <a name="performance-considerations"></a>效能考量
 

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: edf5fc33ec14d41630462cca1a4ace0663473196
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ca8da227c97a44abe14354a5c530d508ce357884
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78191000"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88704188"
 ---
 ## <a name="run-the-function-locally"></a>在本機執行函式
 
@@ -30,7 +30,7 @@ Azure Functions Core Tools 與 Visual Studio Code 整合，可讓您在本機執
 
     您也可以在瀏覽器中透過下列 URL 執行 GET 要求：
 
-    <http://localhost:7071/api/HttpExample?name=PowerShell>
+    `http://localhost:7071/api/HttpExample?name=PowerShell`
 
     如果您呼叫 HttpTrigger 端點，但未在本文中傳遞 `name` 參數作為查詢參數，則函式會傳回 `BadRequest` 錯誤。 當您檢閱 run.ps1 中的程式碼時，您會看到這個錯誤按設計發生。
 

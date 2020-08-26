@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: d6acc16780179654975d63ab2c0b04caf141510c
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 3eec935d0a25f9510cd9a2f6e00b7ac22756e697
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557045"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796794"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>快速入門：將 Unity 範例部署至 HoloLens
 
@@ -44,7 +44,7 @@ ms.locfileid: "85557045"
 1. 將設定變更為 [版本] 和 [ARM64]
 1. 將偵錯工具模式切換到 [遠端電腦]\
     ![解決方案設定](media/unity-deploy-config.png)
-1. 建置解決方案 (F7)
+1. 建立解決方案
 1. 如需專案的「快速入門」，請移至 [屬性] > [偵錯]
     1. 請確定 [版本] 設定為作用中
     1. 將 [要啟動的偵錯工具] 設定為 [遠端電腦]

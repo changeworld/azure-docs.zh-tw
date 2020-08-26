@@ -4,12 +4,12 @@ description: 瞭解如何使用 Azure 備份服務管理和監視 Microsoft Azur
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b6f6d9ca94b2fda54c9f9aa8048660af450e0d31
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: b46303bdb7fc6c39aafd3046a4bcbc5e0ba75766
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757161"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893063"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 備份服務來管理 Microsoft Azure 復原服務 (MARS) 代理程式備份
 
@@ -106,7 +106,7 @@ ms.locfileid: "88757161"
 1. 在 [ **選取原則專案** ] 頁面中，選取 [ **修改檔案和資料夾的備份排程** ]，然後選取 **[下一步]**。
 
     ![選取原則專案](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，但保留已儲存的備份，直到重新開機排程為止**。 然後，選取 [下一步]。
+1. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，但保留已儲存的備份，直到重新開機排程為止**。 然後，選取 [下一步]  。
 
     ![停止已排程的備份。](./media/backup-azure-manage-mars/stop-schedule-backup.png)
 1. 在 [ **暫停排程備份**] 中，檢查資訊並選取 **[完成]**。
@@ -117,7 +117,7 @@ ms.locfileid: "88757161"
 ### <a name="stop-protection-and-delete-backup-data"></a>停止保護並刪除備份資料
 
 1. 開啟 MARS 管理主控台，移至 [ **動作** ] 窗格，然後選取 [ **排程備份**]。
-2. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，然後刪除所有儲存的備份**。 然後，選取 [下一步]。
+2. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，然後刪除所有儲存的備份**。 然後，選取 [下一步]  。
 
     ![修改或停止已排程的備份。](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 

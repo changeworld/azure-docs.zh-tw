@@ -3,12 +3,12 @@ title: 使用 PowerShell 備份和復原 Azure Vm
 description: 說明如何使用 Azure 備份搭配 PowerShell 來備份和復原 Azure Vm
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f5d2e10213970ce6f9d1f9c77ff8f7f4c36c3547
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: f34dc0b5ce4b230b3bc2408bd011180cb855cf17
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826441"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892400"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 備份及還原 Azure Vm
 
@@ -23,7 +23,7 @@ ms.locfileid: "88826441"
 > * 套用備份原則以保護多部虛擬機器
 > * 觸發受保護虛擬機器的隨選備份作業。在備份 (或保護) 虛擬機器之前，您必須先完成[先決條件](backup-azure-arm-vms-prepare.md)來備妥保護 VM 的環境。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 * [深入瞭解](backup-azure-recovery-services-vault-overview.md) 復原服務保存庫。
 * 請[參閱](backup-architecture.md#architecture-built-in-azure-vm-backup)Azure VM 備份的架構、[瞭解](backup-azure-vms-introduction.md)備份程式，以及[審查](backup-support-matrix-iaas.md)支援、限制和必要條件。
@@ -104,7 +104,7 @@ ms.locfileid: "88826441"
     ```
 
    > [!TIP]
-   > 許多 Azure 備份 Cmdlet 都需要將復原服務保存庫物件當做輸入。 基於這個理由，將備份復原服務保存庫物件儲存在變數中會是方便的做法。
+   > 許多 Azure 備份 Cmdlet 都需要將復原服務保存庫物件當做輸入。 基於這個理由，將備份復原服務保存庫物件儲存在變數中是很方便的。
    >
    >
 
@@ -228,7 +228,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 在定義保護原則之後，您仍然必須對項目啟用此原則。 使用 [>enable-azrecoveryservicesbackupprotection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 啟用保護。 啟用保護需要兩個物件：項目和原則。 一旦原則與保存庫相關聯，備份工作流程將依照原則排程定義的時間觸發。
 
 > [!IMPORTANT]
-> 使用 PowerShell 同時啟用多個 Vm 的備份時，請確定單一原則沒有超過100個與其相關聯的 Vm。 這是[建議的最佳做法](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy)。 目前，如果有超過100部 Vm，但已計畫在未來新增檢查，則 PowerShell 用戶端不會明確封鎖。
+> 使用 PowerShell 同時啟用多個 Vm 的備份時，請確定單一原則沒有超過100個與其相關聯的 Vm。 這是[建議的最佳做法](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy)。 目前，如果有超過100部 Vm，則 PowerShell 用戶端不會明確封鎖，但會計畫在未來新增檢查。
 
 下列範例會使用原則 NewPolicy 來對項目 V2VM 啟用保護。 這些範例根據 VM 是否加密以及加密的類型而有所不同。
 
@@ -256,7 +256,7 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 ```
 
 > [!NOTE]
-> 如果您使用 Azure Government 雲端，則在 [>set-azkeyvaultaccesspolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) Cmdlet 中使用參數 ServicePrincipalName 的值 ff281ffe-705c-4f53-9f37-a40e6f2c68f3 作為。
+> 如果您是使用 Azure Government 雲端，則 `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` 在[>set-azkeyvaultaccesspolicy 指令程式](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)中使用參數**ServicePrincipalName**的值。
 >
 
 ## <a name="monitoring-a-backup-job"></a>監視備份工作
@@ -294,7 +294,7 @@ Wait-AzRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200 -VaultId $targe
 
 ````powershell
 $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
-$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z" (This is the time that the customer wants to start the backup)
+$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z" (This is the time that you want to start the backup)
 $UtcTime = $UtcTime.ToUniversalTime()
 $SchPol.ScheduleRunTimes[0] = $UtcTime
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -VaultId $targetVault.ID
@@ -323,7 +323,7 @@ $bkpPol.SnapshotRetentionInDays=7
 Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
 ````
 
-預設值為2，使用者可以設定最小值為1，最大值為5的值。 針對每週備份原則，期限設定為5，而且無法變更。
+預設值會是2。 您最少可以將值設定為1，最大值為5。 針對每週備份原則，期限設定為5，而且無法變更。
 
 #### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>在快照集保留期間建立 Azure 備份資源群組
 
@@ -365,7 +365,7 @@ V2VM              Backup              InProgress          4/23/2016             
 
 ### <a name="change-policy-for-backup-items"></a>變更備份專案的原則
 
-使用者可以修改現有的原則，或將備份專案的原則從 Policy1 變更為 Policy2。 若要切換已備份專案的原則，請提取相關的原則和備份專案，並使用 [AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 命令搭配備份專案作為參數。
+您可以修改現有的原則，或將備份專案的原則從 Policy1 變更為 Policy2。 若要切換已備份專案的原則，請提取相關的原則和備份專案，並使用 [AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 命令搭配備份專案作為參數。
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName> -VaultId $targetVault.ID
@@ -481,7 +481,7 @@ $restorejob
 請提供額外的參數 **TargetResourceGroupName**以指定將作為受控磁碟還原目的地的 RG。
 
 > [!IMPORTANT]
-> 強烈建議使用 **TargetResourceGroupName** 參數來還原受控磁碟，因為這會導致效能顯著改善。 如果未指定此參數，則您無法從立即還原功能獲益，而且還原作業將會比較慢。 如果目的是要將受控磁片還原為非受控磁片，則請勿提供此參數，並藉由提供參數來清除意圖 `-RestoreAsUnmanagedDisks` 。 您 `-RestoreAsUnmanagedDisks` 可以從 Azure PowerShell 3.7.0 開始取得參數。 在未來的版本中，必須提供這些參數的任一個，才能進行正確的還原體驗。
+> 強烈建議使用 **TargetResourceGroupName** 參數來還原受控磁片，因為這樣會大幅改善效能。 如果未指定此參數，則您無法從立即還原功能獲益，而且還原作業將會比較慢。 如果目的是要將受控磁片還原為非受控磁片，則請勿提供此參數，並藉由提供參數來清除意圖 `-RestoreAsUnmanagedDisks` 。 您 `-RestoreAsUnmanagedDisks` 可以從 Azure PowerShell 3.7.0 開始取得參數。 在未來的版本中，必須提供這些參數的任一個，才能進行正確的還原體驗。
 >
 >
 
@@ -544,7 +544,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-無法直接存取範本，因為它位於客戶的儲存體帳戶和指定的容器底下。 我們需要完整的 URL (以及暫時的 SAS 權杖)，才能存取此範本。
+此範本位於客戶的儲存體帳戶和指定的容器下，因此無法直接存取。 我們需要完整的 URL (以及暫時的 SAS 權杖)，才能存取此範本。
 
 1. 先從 templateBlobURI 中解壓縮範本名稱。 格式如下所述。 您可以使用 PowerShell 中的分割作業，從這個 URL 中解壓縮出最終的範本名稱。
 
@@ -570,7 +570,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 下節列出使使用「VMConfig」檔案建立虛擬機器所需的步驟。
 
 > [!NOTE]
-> 強烈建議使用以上詳述的部署範本來建立虛擬機器。 本節 (1-6 點) 很快就會淘汰。
+> 強烈建議您使用上面詳述的部署範本來建立 VM。 本節 (1-6 點) 很快就會淘汰。
 
 1. 查詢工作詳細資料的已還原磁碟內容。
 

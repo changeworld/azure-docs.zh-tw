@@ -3,12 +3,12 @@ title: 使用 PowerShell 將 Windows Server 備份至 Azure
 description: 在本文中，您將瞭解如何使用 PowerShell 來設定 Windows Server 或 Windows 用戶端上的 Azure 備份，以及管理備份和復原。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 8e9b2f0adc2cdd4e0d17f618b516486d8ca9f8a8
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 47c8fc39626d3bca3355c1d1e46f1634327748a8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826322"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892366"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 用戶端的 Azure 備份
 
@@ -45,7 +45,7 @@ ms.locfileid: "88826322"
 4. 指定要使用的儲存空間備援類型。 您可以使用 [本機冗余儲存體 (LRS) ](../storage/common/storage-redundancy.md) 或 [地理位置多餘的儲存體 (GRS) ](../storage/common/storage-redundancy.md)。 下列範例顯示*testVault*的 **-BackupStorageRedundancy**選項設定為**異地備援**。
 
    > [!TIP]
-   > 許多 Azure 備份 Cmdlet 都需要將復原服務保存庫物件當做輸入。 基於這個理由，將備份復原服務保存庫物件儲存在變數中會是方便的做法。
+   > 許多 Azure 備份 Cmdlet 都需要將復原服務保存庫物件當做輸入。 基於這個理由，將備份復原服務保存庫物件儲存在變數中是很方便的。
    >
    >
 
@@ -226,7 +226,7 @@ Server properties updated successfully
 ```
 
 > [!IMPORTANT]
-> 一旦設定，就請保管好此複雜密碼。 若沒有此複雜密碼，您將無法從 Azure 還原資料。
+> 設定之後，請確保複雜密碼資訊安全且安全。 若沒有此複雜密碼，您將無法從 Azure 還原資料。
 >
 >
 

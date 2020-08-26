@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: f4af3c202d4f00c4ac3041921175c92226f0db7c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 052e0c93732b99efa37b029cad29dc2efded78ee
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76964068"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88704178"
 ---
 ## <a name="run-the-function-locally"></a>在本機執行函式
 
@@ -23,7 +23,7 @@ Visual Studio Code 可與 [Azure Functions Core Tools](../articles/azure-functio
 
 1. 在 Core Tools 執行時，瀏覽至下列 URL 以執行 GET 要求 (其中包含 `?name=Functions` 查詢字串)。
 
-    <http://localhost:7071/api/HttpExample?name=Functions>
+    `http://localhost:7071/api/HttpExample?name=Functions`
 
 1. 此時會傳回回應，其內容在瀏覽器中會顯示如下：
 

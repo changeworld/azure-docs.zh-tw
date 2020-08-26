@@ -4,12 +4,12 @@ description: 在本快速入門中，您可以使用 Azure Resource Manager 範�
 ms.date: 07/06/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: a05be04064df81373f856ea0e8ca59664078695f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cc9da201b10b697f125e8ffe7402f23f5eaa8362
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252363"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685522"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立共用查詢
 
@@ -31,7 +31,7 @@ Resource Graph 查詢可以儲存為_私人查詢_或_共用查詢_。 私人查
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/)。
 
-:::code language="json" source="~/quickstart-templates/resourcegraph-sharedquery-countos/azuredeploy.json" highlight="28-37":::
+:::code language="json" source="~/quickstart-templates/resourcegraph-sharedquery-countos/azuredeploy.json":::
 
 範本中定義的資源為：
 

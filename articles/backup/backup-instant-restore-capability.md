@@ -4,17 +4,17 @@ description: Azure 立即還原功能和 VM 備份堆疊、Azure Resource Manage
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: e8037af9433cc642f57c1ab6ca2709a3d92c2f81
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825846"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892621"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>透過 Azure 備份的立即還原功能取得改良的備份和還原效能
 
 > [!NOTE]
-> 我們根據使用者的意見反應，正在將 **VM 備份堆疊 V2** 重新命名為**立即還原**，以減少與 Azure Stack 功能的混淆。
+> 根據使用者的意見反應，我們已將 **VM 備份堆疊 V2** 重新命名為「 **立即還原** 」，以減少與 Azure stack 功能的混淆。
 > 所有 Azure 備份使用者現在已升級為立即 **還原**。
 
 「立即還原」的新模型提供下列增強功能：
@@ -76,7 +76,7 @@ $bkpPol.SnapshotRetentionInDays=5
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 
-每個原則的預設快照集保留設定為兩天。 使用者可以將值變更為最少1，最多五天。 針對每週原則，快照集保留期固定為五天。
+每個原則的預設快照集保留設定為兩天。 您可以將此值變更為最少1個，最多五天。 針對每週原則，快照集保留期固定為五天。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 1917bed7727b97de27e560a0f2d8032a8ae08996
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: bfa957d8fb0eeb8020472026e18c41dc6e65fdc3
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242010"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705753"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>快速入門：使用 Azure 防火牆管理員來保護您的虛擬中樞 - ARM 範本
 
@@ -37,7 +37,7 @@ ms.locfileid: "86242010"
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/fwm-docs-qs/)。
 
-:::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json" range="001-477" highlight="47-76":::
+:::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json":::
 
 範本中定義了多個 Azure 資源：
 

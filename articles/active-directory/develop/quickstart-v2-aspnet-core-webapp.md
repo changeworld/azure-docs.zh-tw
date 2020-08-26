@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1bc8a9c06b564282af15d6a6aa53b6fc696857b2
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: fdc1f0db956d0f64938b6a0433fda21dc4462ced
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165765"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691320"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 ASP.NET Core Web 應用程式
 在本快速入門中，您將利用程式碼範例了解 ASP.NET Core Web 應用程式如何從任何 Azure Active Directory (Azure AD) 執行個體登入個人帳戶 (hotmail.com、outlook.com 等) 與公司和學校帳戶。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
@@ -148,7 +148,7 @@ public void ConfigureServices(IServiceCollection services)
 > |Where | 描述 |
 > |---------|---------|
 > | ClientId  | 應用程式 (用戶端) 識別碼 (在 Azure 入口網站中註冊的應用程式)。 |
-> | 授權單位 | 供使用者用於驗證的 STS 端點。 通常，這會是公用雲端的 <https://login.microsoftonline.com/{tenant}/v2.0>，其中 {tenant} 為您的租用戶名稱或租用戶識別碼，或是使用 common，以參考一般端點 (用於多租用戶應用程式) |
+> | 授權單位 | 供使用者用於驗證的 STS 端點。 通常，這會是公用雲端的 `https://login.microsoftonline.com/{tenant}/v2.0`，其中 {tenant} 為您的租用戶名稱或租用戶識別碼，或是使用 common，以參考一般端點 (用於多租用戶應用程式) |
 > | TokenValidationParameters | 用於權杖驗證的參數清單。 在此案例中，`ValidateIssuer` 設為 `false`，表示它可以接受來自任何個人或公司或學校帳戶的登入。 |
 
 

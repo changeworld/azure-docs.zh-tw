@@ -3,12 +3,12 @@ title: 安全性控制
 description: 瞭解 Azure 備份服務中所使用的安全性控制項。 這些控制項可協助服務防止、偵測及回應安全性弱點。
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: e69053d4646207b34e8df31b949410994c967303
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: ce1ca0a79476e4985569c677b58892fad91866a5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827285"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892957"
 ---
 # <a name="security-controls-for-azure-backup"></a>Azure 備份的安全性控制
 
@@ -16,7 +16,7 @@ ms.locfileid: "88827285"
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Network (網路)
+## <a name="network"></a>網路
 
 | 安全性控制 | 是/否 | 備註 | 文件
 |---|---|--|--|
@@ -29,7 +29,7 @@ ms.locfileid: "88827285"
 
 | 安全性控制 | 是/否 | 備註| 文件
 |---|---|--|--|
-| Azure 監視支援 (Log analytics、App insights 等 ) | 是 | 您可以透過資源記錄來支援 Log Analytics。 如需詳細資訊，請參閱 [使用 Log Analytics 監視 Azure 備份受保護的工作負載](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/)。 |  |
+| Azure 監視支援 (例如 Log analytics、App insights) | 是 | 您可以透過資源記錄來支援 Log Analytics。 如需詳細資訊，請參閱 [使用 Log Analytics 監視 Azure 備份受保護的工作負載](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/)。 |  |
 | 控制和管理平面記錄和審核| 是 | Azure 入口網站中所有由客戶觸發的動作都會都記錄到活動記錄。 |  |
 | 資料平面記錄和審核| 否 | 無法直接存取 Azure 備份資料平面。  |  |
 
@@ -54,7 +54,7 @@ ms.locfileid: "88827285"
 
 | 安全性控制 | 是/否 | 備註| 文件
 |---|---|--|--|
-| 設定管理支援 (設定版本等 ) | 是|  |  |
+| 設定管理支援 (設定的版本設定，) | 是|  |  |
 
 ## <a name="next-steps"></a>後續步驟
 

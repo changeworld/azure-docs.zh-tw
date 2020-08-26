@@ -3,12 +3,12 @@ title: 將系統狀態還原到 Windows Server
 description: 從 Azure 中的備份還原 Windows Server 系統狀態的逐步說明。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1adf20b08a5c7f93108b3af5077afae9555f2219
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 9237d3d087da7f9e72813baa0056cd6b70f2c914
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827098"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892536"
 ---
 # <a name="restore-system-state-to-windows-server"></a>將系統狀態還原到 Windows Server
 

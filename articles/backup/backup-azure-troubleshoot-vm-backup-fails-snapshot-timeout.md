@@ -4,12 +4,12 @@ description: 與代理程式、延伸模組及磁碟相關之 Azure 備份失敗
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 99e175f20247058a57bb64a47465cce1ce7fbd75
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: a3fe61bf5d116d257ed7aeb32226a437d0193c54
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826048"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892383"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
 
@@ -58,7 +58,7 @@ Azure 備份使用 VM 快照集延伸模組來進行 Azure 虛擬機器的應用
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
 - **檢查是否需要網路存取**：延伸模組套件是從 Azure 儲存體延伸模組存放庫下載，且延伸模組狀態上傳會張貼到 Azure 儲存體。 [深入了解](../virtual-machines/extensions/features-windows.md#network-access)。
-  - 如果您使用不受支援的代理程式版本，則必須允許從虛擬機器對該區域中的 Azure 儲存體進行存取。
+  - 如果您是使用不支援的代理程式版本，您需要允許從 VM 對該區域中的 Azure 儲存體進行輸出存取。
   - 如果您已 `168.63.129.16` 使用來賓防火牆或 proxy 來封鎖存取，擴充功能將會失敗，而不考慮上述各項。 需要端口80、443和32526，請 [深入瞭解](../virtual-machines/extensions/features-windows.md#network-access)。
 
 - **確定已在來賓 VM 內啟用 DHCP**：需要此項才能從 DHCP 取得主機或網狀架構位址，IaaS VM 備份才能運作。 如果您需要靜態私人 IP，您應該透過 Azure 入口網站或 PowerShell 進行設定，並確定已啟用 VM 內的 DHCP 選項， [深入瞭解](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)。

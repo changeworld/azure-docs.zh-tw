@@ -4,12 +4,12 @@ description: 在本快速入門中，您會了解如何使用 Azure Resource Man
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
-ms.openlocfilehash: 9112841f6f07808d80fa2b8b61e612d57d0ec20e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248820"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684111"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>快速入門：使用 ARM 範本建立復原服務保存庫
 
@@ -29,7 +29,7 @@ ms.locfileid: "86248820"
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/)。
 
-:::code language="json" source="~/quickstart-templates/101-recovery-services-vault-create/azuredeploy.json" range="1-66" highlight="41-65":::
+:::code language="json" source="~/quickstart-templates/101-recovery-services-vault-create/azuredeploy.json":::
 
 範本中定義了兩個 Azure 資源：
 

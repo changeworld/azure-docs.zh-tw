@@ -4,12 +4,12 @@ description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 41bc06e2c63b1b35bb789636bcd269439078be70
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 9b0698b16d3432c1bfefd3cf909cdfdf5529200e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825183"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892179"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -145,7 +145,7 @@ Azure 備份支援傳輸中和待用資料的加密。
 
 ## <a name="cross-region-restore"></a>跨區域還原
 
-Azure 備份已新增「跨區域還原」功能，以加強資料可用性和復原功能，讓客戶可以完全控制將資料還原到次要地區。 若要設定此功能，請參閱[設定跨區域還原](backup-create-rs-vault.md#set-cross-region-restore)一文。 下列管理類型支援此功能：
+Azure 備份已新增跨區域還原功能來加強資料可用性和復原功能，讓您可以完全控制將資料還原至次要區域。 若要設定此功能，請參閱[設定跨區域還原](backup-create-rs-vault.md#set-cross-region-restore)一文。 下列管理類型支援此功能：
 
 | 備份管理類型 | 支援                                                    | 支援的區域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
