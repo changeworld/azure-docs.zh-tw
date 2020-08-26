@@ -195,7 +195,7 @@
     - name: 概觀
       href: ../managed-disks-overview.md
     - name: 常見問題集
-      href: ../windows/faq-for-disks.md
+      href: ../faq-for-disks.md
     - name: 刪除儲存體資源時發生錯誤
       href: storage-resource-deletion-errors.md
     - name: 刪除傳統儲存體資源時發生錯誤

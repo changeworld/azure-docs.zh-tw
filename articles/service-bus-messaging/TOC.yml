@@ -117,6 +117,8 @@
           href: network-security.md
 - name: 操作指南
   items:
+    - name: 跨區域移動
+      href: move-across-regions.md
     - name: 從 Azure Service Manager (傳統) API 遷移至 Resource Manager API
       href: deprecate-service-bus-management.md
     - name: 建立命名空間

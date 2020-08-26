@@ -510,6 +510,8 @@
           href: unique-keys.md
         - name: 交易和開放式並行存取控制
           href: database-transactions-optimistic-concurrency.md
+        - name: 附件
+          href: attachments.md
     - name: 變更摘要
       items:
         - name: 變更摘要概觀

@@ -11,12 +11,12 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 02/14/2020
-  ms.openlocfilehash: ea9b89a92aa271065a59de561dc684263ce1cdc4
-  ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+  ms.openlocfilehash: eb7d7c911fc099a5f3b5456d7fb77688e0b06af5
+  ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/06/2020
-  ms.locfileid: "87829028"
+  ms.lasthandoff: 08/25/2020
+  ms.locfileid: "88816468"
 highlightedContent:
   items:
   - title: 使用 Azure CLI 建立 Linux 虛擬機器
@@ -30,7 +30,7 @@ highlightedContent:
     url: ../virtual-machine-scale-sets/quick-create-portal.md
   - title: 找出 VM - 以大幅降低的成本使用我們未運用的容量。
     itemType: concept
-    url: ./linux/spot-vms.md
+    url: ./spot-vms.md
   - title: 專用主機 - 裝載一或多部虛擬機器的實體伺服器。
     itemType: concept
     url: ./linux/dedicated-hosts.md
