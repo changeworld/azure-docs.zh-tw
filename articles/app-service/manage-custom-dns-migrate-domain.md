@@ -4,14 +4,14 @@ description: 了解如何在完全不停機的情況下，將已指派給即時�
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: bd11690f2a3597d6e1a835ad7ca9c5880117eeea
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: c51745b7760573aa3c6ae067e9a6c1cc315f8e56
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782204"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871389"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>將作用中的 DNS 名稱移轉至 Azure App Service
 
@@ -21,7 +21,7 @@ ms.locfileid: "88782204"
 
 如果您不擔心 DNS 解析發生停機，請參閱[將現有的自訂 DNS 名稱對應至 Azure App Service](app-service-web-tutorial-custom-domain.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要完成本操作說明：
 
@@ -59,31 +59,27 @@ ms.locfileid: "88782204"
 
 ### <a name="enable-the-domain-for-your-app"></a>為您的應用程式啟用網域
 
-在 [Azure 入口網站](https://portal.azure.com)之應用程式頁面的左側導覽中，選取 [自訂網域]****。 
+1. 在 [Azure 入口網站](https://portal.azure.com)之應用程式頁面的左側導覽中，選取 [自訂網域]****。 
 
-![[自訂網域] 功能表](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![[自訂網域] 功能表](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-在 [自訂網域]**** 頁面中，選取 [新增主機名稱]**** 旁的 **+** 圖示。
+1. 在 [ **自訂網域** ] 頁面中，選取 [ **新增自訂網域**]。
 
-![新增主機名稱](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![新增主機名稱](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-輸入您想要遷移的完整功能變數名稱，其對應至您所建立的 TXT 記錄，例如 `contoso.com` 、 `www.contoso.com` 或 `*.contoso.com` 。
+1. 輸入您想要遷移的完整功能變數名稱，其對應至您所建立的 TXT 記錄，例如 `contoso.com` 、 `www.contoso.com` 或 `*.contoso.com` 。 選取 [驗證]。
 
-選取 [驗證]。
+    [新增自訂網域] 按鈕會啟用。 
 
-[新增主機名稱]**** 按鈕會啟用。 
+1. 確定將 [主機名稱記錄類型]**** 設定為您要移轉的 DNS 記錄類型。 選取 [新增主機名稱]  。
 
-確定將 [主機名稱記錄類型]**** 設定為您要移轉的 DNS 記錄類型。
+    ![將 DNS 名稱新增至應用程式](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-選取 [新增主機名稱]  。
+    可能需要一些時間，新的主機名稱才會反映在應用程式的 [自訂網域]**** 分頁中。 嘗試重新整理瀏覽器以更新資料。
 
-![將 DNS 名稱新增至應用程式](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+    ![CNAME 記錄已新增](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-可能需要一些時間，新的主機名稱才會反映在應用程式的 [自訂網域]**** 分頁中。 嘗試重新整理瀏覽器以更新資料。
-
-![CNAME 記錄已新增](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
-
-您的 DNS 名稱現已在您的 Azure 應用程式中啟用。 
+    您的 DNS 名稱現已在您的 Azure 應用程式中啟用。 
 
 ## <a name="remap-the-active-dns-name"></a>重新對應作用中的 DNS 名稱
 
@@ -96,8 +92,6 @@ ms.locfileid: "88782204"
 如果您重新對應的是 CNAME 記錄，請略過本節。 
 
 若要重新對應 A 記錄，您需要 App Service 應用程式的外部 IP 位址，如 [自訂網域]**** 頁面中所示。
-
-選取右上角的 **X** 關閉 [新增主機名稱]**** 頁面。 
 
 在 [自訂網域] 頁面中，複製應用程式的 IP 位址。
 

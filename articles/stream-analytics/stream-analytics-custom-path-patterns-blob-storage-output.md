@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747626"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869808"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 串流分析自訂 Blob 輸出資料分割
 
@@ -44,7 +44,7 @@ Azure 串流分析支援使用自訂欄位或屬性以及自訂日期時間路�
 
 ![用戶端容器](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
 
-每個資料夾可能包含多個 Blob，其中每個 Blob 包含一或多個記錄。 在上述範例中，標記為 "06000000" 的資料夾中有一個 Blob，其中包含下列內容：
+每個資料夾可能包含多個 Blob，其中每個 Blob 包含一或多個記錄。 在上述範例中，資料夾中有一個標示為 "06000000" 且具有下列內容的單一 blob：
 
 ![Blob 內容](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
 
@@ -113,7 +113,7 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ### <a name="example"></a>範例
 
-根據 [Azure 串流分析 Azure 入口網站](stream-analytics-quick-create-portal.md)快速入門指南，建立儲存體帳戶、資源群組、串流分析作業和輸入來源。 使用在快速入門指南中使用的相同範例資料，也可以在 [GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) 上取得。
+根據 [Azure 串流分析 Azure 入口網站](stream-analytics-quick-create-portal.md) 快速入門手冊，建立儲存體帳戶、資源群組、串流分析作業，以及輸入來源。 使用在快速入門指南中使用的相同範例資料，也可以在 [GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) 上取得。
 
 以下列組態建立 Blob 輸出接收：
 

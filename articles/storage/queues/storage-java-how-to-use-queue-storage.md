@@ -9,16 +9,18 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 78e2bd80b689394b654a85ea913c618c08120091
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 9c2f8ea55f99ac893dca0fa380729b7cc866812e
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854015"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871273"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>如何使用 Java 的佇列儲存體
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
+
+## <a name="overview"></a>概觀
 
 本指南將為您示範如何使用 Azure 佇列儲存體服務撰寫一般案例的程式碼。 相關範例是以 Java 撰寫並使用 [Azure Storage SDK for Java][Azure Storage SDK for Java]。 案例包括 **插入**、 **查看**、 **取得**和 **刪除** 佇列訊息。 此外也涵蓋 **建立** 和 **刪除** 佇列的程式碼。 如需佇列的詳細資訊，請參閱[後續步驟](#next-steps)一節。
 

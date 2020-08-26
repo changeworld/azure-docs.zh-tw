@@ -8,12 +8,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 8/20/2020
 ms.author: allensu
-ms.openlocfilehash: ed6c60b4f66361e87f67f3c64bb60846b2df757b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c7e6733079dbd867255e604f6f8d4459f647cc93
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817367"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870441"
 ---
 # <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN 端點多來源
 
@@ -66,6 +66,7 @@ ms.locfileid: "88817367"
 
    | 設定           | 值                                                                 |
    |-------------------|-----------------------------------------------------------------------|
+   | 名稱        | 輸入來源的名稱。        |
    | 來源類型 | 選取 **儲存體**、 **雲端服務**、 **Web 應用程式**或 **自訂來源**。                                   |
    | 原始主機名稱        | 選取或輸入您的來源主機名稱。  下拉式清單會列出您在先前設定中指定之類型的所有可用原始來源。 如果您選取 [ **自訂原始來源** ] 作為來源類型，請輸入客戶源伺服器的網域。 |
    | 原始主機標頭    | 輸入您想要讓 Azure CDN 隨每個要求傳送的主機標頭，或保留預設值。                        |
@@ -114,6 +115,34 @@ ms.locfileid: "88817367"
 2. 若要從原始群組移除來源，請選取來源旁的垃圾桶圖示，然後選取 [ **儲存**]：
 
     :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="更新原始群組刪除來源" border="true":::
+
+## <a name="override-origin-group-with-rules-engine"></a>使用規則引擎覆寫來源群組
+
+使用標準規則引擎自訂將流量分散到不同來源群組的方式。
+
+根據要求 URL，將流量分散到不同的群組。
+
+1. 在您的 CDN 端點中，選取 [**設定**] 下的 [**規則引擎**]：
+
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="規則引擎" border="true":::
+
+2. 選取 [ **+ 新增規則**]。
+
+3. 在 [ **名稱**] 中輸入規則的名稱。
+
+4. 選取 [ **+ 條件**]，然後選取 [ **URL 路徑**]。
+
+5. 在 [ **運算子** ] 下拉式清單中，選取 [ **包含**]。
+
+6. 在 [ **值**] 中，輸入 **/images**。
+
+7. 選取 [ **+ 新增動作**]，然後選取 [ **原始群組覆寫**]。
+
+8. 在 [ **來源] 群組**中，選取下拉式清單方塊中的來源群組。
+
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="規則引擎條件" border="true":::
+
+針對所有連入要求，如果 URL 路徑包含 **/images**，則會將要求指派給 [動作] 區段中的原始群組 ** (myorigingroup) **。 
 
 ## <a name="next-steps"></a>後續步驟
 在本文中，您已啟用 Azure CDN 端點多來源。

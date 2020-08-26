@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: fff44617a5621d4edd84bee8f9b1e6b6e6924cd8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 906311452598d592b73a263ce25d0c8c51cc1cc7
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305919"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870182"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>使用受控識別從 Azure 串流分析作業 (預覽) 存取 Azure SQL Database
 
@@ -96,13 +96,13 @@ Azure 串流分析支援 Azure SQL Database 輸出接收的[受控識別驗證](
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
    ```
 
-1. 為了讓 Microsoft 的 Azure Active Directory 確認串流分析作業是否可存取 SQL Database，我們必須給予 Azure Active Directory 與資料庫通訊的權限。 若要這麼做，請再次前往 Azure 入口網站中的 [防火牆和虛擬網路] 頁面，並啟用 [允許 Azure 服務和資源存取這部伺服器]。 
+1. 為了讓 Microsoft 的 Azure Active Directory 確認串流分析作業是否可存取 SQL Database，我們必須給予 Azure Active Directory 與資料庫通訊的權限。 若要這樣做，請再次移至 Azure 入口網站中的 [防火牆和虛擬網路] 頁面，然後啟用 [允許 Azure 服務和資源存取這部伺服器]。 
 
    ![防火牆與虛擬網路](./media/sql-db-output-managed-identity/allow-access.png)
 
 ## <a name="grant-stream-analytics-job-permissions"></a>授與串流分析作業權限
 
-當您在入口網站中建立自主資料庫使用者並取得 Azure 服務的存取權 (如上一節所述) 之後，您的串流分析作業會從受控識別獲得權限，可透過受控識別**連線**到您的 SQL Database 資源。 建議您將 SELECT 和 INSERT 權限授與串流分析作業，因為稍後在串流分析工作流程中需要用到。 **SELECT** 權限可讓作業測試其與 SQL Database 中資料表的連線。 **INSERT** 權限可讓您在設定輸入和 SQL Database 輸出之後，測試端對端串流分析查詢。您可以使用 SQL Server Management Studio 將這些權限授與串流分析作業。 如需詳細資訊，請參閱 GRANT （Transact-sql）參考。
+當您在入口網站中建立自主資料庫使用者並取得 Azure 服務的存取權 (如上一節所述) 之後，您的串流分析作業會從受控識別獲得權限，可透過受控識別**連線**到您的 SQL Database 資源。 建議您將 SELECT 和 INSERT 權限授與串流分析作業，因為稍後在串流分析工作流程中需要用到。 **SELECT** 權限可讓作業測試其與 SQL Database 中資料表的連線。 **INSERT** 權限可讓您在設定輸入和 SQL Database 輸出之後，測試端對端串流分析查詢。您可以使用 SQL Server Management Studio 將這些權限授與串流分析作業。 如需詳細資訊，請參閱 GRANT (Transact-sql) 參考。
 
 若只要授與資料庫中特定資料表或物件的權限，請使用下列 T-SQL 語法並執行查詢。 
 
@@ -122,7 +122,7 @@ GRANT SELECT, INSERT ON OBJECT::TABLE_NAME TO ASA_JOB_NAME;
 
 1. 選取 [新增] > [SQL Database]。 在 SQL Database 輸出接收的輸出屬性視窗中，選取驗證模式下拉式清單中的 [受控識別]。
 
-1. 填寫其餘屬性。 若要深入了解如何建立 SQL Database 輸出，請參閱[使用串流分析建立 SQL Database 輸出](stream-analytics-define-outputs.md#sql-database)。 完成後，請選取 [儲存]。 
+1. 填寫其餘屬性。 若要深入了解如何建立 SQL Database 輸出，請參閱[使用串流分析建立 SQL Database 輸出](sql-database-output.md)。 完成後，請選取 [儲存]。 
 
 ## <a name="next-steps"></a>後續步驟
 

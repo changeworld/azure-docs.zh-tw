@@ -1,0 +1,32 @@
+### YamlMime:Landing
+title: Azure Arc 伺服器 (預覽)
+summary: Azure Arc 伺服器
+metadata:
+  title: Azure Arc 伺服器
+  description: 了解如何在 Azure 中管理內部部署機器
+  author: mgoedtel
+  ms.service: azure-arc
+  ms.topic: landing-page
+  ms.date: 06/26/2020
+  ms.author: magoedte
+  ms.openlocfilehash: 9080f5bb770f5cb86284b5816c340a614843038c
+  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 08/24/2020
+  ms.locfileid: "88763730"
+landingContent:
+- title: 使用已啟用 Azure Arc 的伺服器將機器連線至 Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是已啟用 Azure Arc 的伺服器？
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: 從 Azure 入口網站將機器連線到 Azure Arc
+      url: onboard-portal.md
+    - text: 使用服務主體大規模地連線機器
+      url: onboard-service-principal.md
+    - text: 使用 PowerShell DSC 將機器連線至 Azure
+      url: onboard-dsc.md

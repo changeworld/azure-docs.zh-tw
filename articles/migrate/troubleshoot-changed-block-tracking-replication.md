@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 55e79877fb186a5ba2aece316c61f542adeda60c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796930"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871170"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>針對無代理程式 VMware VM 遷移中的複寫問題進行疑難排解
 
@@ -30,13 +30,36 @@ ms.locfileid: "88796930"
 
   1. 移至 Azure 入口網站 Azure Migrate 中的 [伺服器] 頁面。
   2. 在 [伺服器遷移] 磚中，按一下 [複寫伺服器]，以流覽至 [複寫機器] 頁面。
-  3. 您將會看到一份複寫伺服器的清單，以及其他資訊，例如狀態、健全狀況、上次同步時間等等。健全狀況資料行會指出 VM 目前的複寫健康情況。 健全狀況資料行中的 ' Critical'or ' 警告 ' 值通常表示 VM 先前的複寫週期失敗。 若要取得更多詳細資料，請以滑鼠右鍵按一下 VM，然後選取 [錯誤詳細資料]。 [錯誤詳細資料] 頁面包含有關錯誤的資訊，以及如何進行疑難排解的其他詳細資料。 您也會看到 [最近使用的事件] 連結，可用來流覽至 VM 的 [事件] 頁面。
+  3. 您將會看到一份複寫伺服器的清單，以及其他資訊，例如狀態、健全狀況、上次同步時間等等。健全狀況資料行會指出 VM 目前的複寫健康情況。 健全狀況資料行中的「重大」或「警告」值通常表示 VM 先前的複寫週期失敗。 若要取得更多詳細資料，請以滑鼠右鍵按一下 VM，然後選取 [錯誤詳細資料]。 [錯誤詳細資料] 頁面包含有關錯誤的資訊，以及如何進行疑難排解的其他詳細資料。 您也會看到 [最近使用的事件] 連結，可用來流覽至 VM 的 [事件] 頁面。
   4. 按一下 [最近使用的事件] 以查看 VM 先前的複寫週期失敗。 在 [事件] 頁面中，尋找 VM 的「複寫週期失敗」或「磁片的複寫週期失敗」類型的最新事件。
   5. 按一下事件可瞭解錯誤的可能原因，以及建議的補救步驟。 使用提供的資訊來疑難排解和補救錯誤。
     
 ## <a name="common-replication-errors"></a>一般複寫錯誤
 
 本節說明一些常見的錯誤，以及您可以如何進行疑難排解。
+
+## <a name="key-vault-operation-failed-error-when-trying-to-replicate-vms"></a>嘗試複寫 Vm 時 Key Vault 操作失敗錯誤
+
+**錯誤：** 「Key Vault 操作失敗。 作業：設定受管理的儲存體帳戶，Key Vault：金鑰保存庫-名稱，儲存體帳戶：儲存體帳戶名稱失敗，錯誤： "
+
+**錯誤：** 「Key Vault 操作失敗。 作業：產生共用存取簽章定義，Key Vault：金鑰保存庫名稱，儲存體帳戶：儲存體帳戶名稱失敗，錯誤： "
+
+![Key Vault](./media/troubleshoot-changed-block-tracking-replication/key-vault.png)
+
+發生此錯誤的原因通常是因為 Key Vault 的使用者存取原則未授與目前登入的使用者設定要 Key Vault 管理的儲存體帳戶所需的許可權。 若要在金鑰保存庫上檢查使用者存取原則，請移至金鑰保存庫的入口網站上的 [金鑰保存庫] 頁面，然後選取 [存取原則] 
+
+當入口網站建立金鑰保存庫時，它也會新增使用者存取原則，授與目前登入的使用者權限來設定要 Key Vault 管理的儲存體帳戶。 這可能會因為兩個原因而失敗
+
+- 登入的使用者是客戶 Azure 租使用者 (CSP 訂用帳戶的遠端主體，而且登入的使用者是夥伴管理員) 。 在此情況下，因應措施是刪除金鑰保存庫、登出入口網站，然後使用客戶租使用者中的使用者帳戶登入 (而不是遠端主體) 然後重試作業。 CSP 合作夥伴通常會在客戶 Azure Active Directory 租使用者中擁有可使用的使用者帳戶。 如果不是，他們可以在客戶 Azure Active Directory 租使用者中自行建立新的使用者帳戶，以新使用者的身分登入入口網站，然後重試複寫作業。 使用的帳戶必須將擁有者或參與者 + 使用者存取系統管理員許可權授與資源群組上的帳戶， (遷移專案資源群組) 
+
+- 另一種情況可能會發生這種情況，就是當一位使用者 (user1) 嘗試在一開始設定複寫併發生失敗時，但已建立金鑰保存庫 (以及適當地指派給此使用者) 的使用者存取原則。 現在，我們會在稍後將不同的使用者 (使用者 2) 嘗試設定複寫，但設定受管理的儲存體帳戶或產生 SAS 定義作業失敗，因為沒有對應至金鑰保存庫中使用者2的使用者存取原則。
+
+**解決**方法：若要解決此問題，請在 keyvault 授與使用者管理人員許可權，以設定受管理的儲存體帳戶並產生 SAS 定義的使用者存取原則。 您可以使用下列 Cmdlet，在 Azure PowerShell 中執行此動作：
+
+$userPrincipalId = $ (>get-azurermaduser-UserPrincipalName "user2_email_address" ) 。Id
+
+>set-azurermkeyvaultaccesspolicy-VaultName "keyvaultname"-ObjectId $userPrincipalId-PermissionsToStorage get、list、delete、set、update、regeneratekey、getsas、listsas、deletesas、setsas、recover、backup、restore、清除
+
 
 ## <a name="disposeartefactstimedout"></a>DisposeArtefactsTimedOut
 
