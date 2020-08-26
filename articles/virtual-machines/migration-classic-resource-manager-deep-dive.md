@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 6f633a585e4fa6ebd12e8d12408847b5ee758855
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513106"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855909"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討
 
@@ -33,7 +33,7 @@ ms.locfileid: "88513106"
 
 傳統部署模型與 Resource Manager 堆疊之間的資料平面相同。 差異在於移轉過程中，Microsoft 會將資源的表示法從傳統部署模型轉譯為 Resource Manager 堆疊中的表示法。 因此，您必須使用新的工具、API 和 SDK 來管理 Resource Manager 堆疊中資源。
 
-![顯示管理/控制平面與資料平面之間差異的圖表](~/articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+![顯示管理/控制平面與資料平面之間差異的圖表](media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 
 > [!NOTE]
@@ -52,7 +52,7 @@ ms.locfileid: "88513106"
 
 移轉工作流程如下：
 
-![顯示移轉工作流程的圖表](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
+![顯示移轉工作流程的圖表](windows/media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
 > 下列各節描述的作業都是等冪的。 如果您有不支援的功能或組態錯誤以外的任何問題，請重新嘗試準備、中止或認可作業。 Azure 會再次嘗試此動作。
@@ -94,17 +94,17 @@ ms.locfileid: "88513106"
 準備作業完成之後，您將可以選擇在傳統部署模型和 Resource Manager 中將資源視覺化。 Azure 平台會為傳統部署模型中的每個雲端服務，建立一個採用 `cloud-service-name>-Migrated`模式的資源群組名稱。
 
 > [!NOTE]
-> 不可能選取為已移轉資源建立之資源群組的名稱 (也就是 "-Migrated")。 不過，完成移轉之後，您就可以使用 Azure Resource Manager 的移動功能，將資源移至您想要的任何資源群組。 如需詳細資訊，請參閱 [將資源移動到新的資源群組或訂用帳戶](~/articles/resource-group-move-resources.md)。
+> 不可能選取為已移轉資源建立之資源群組的名稱 (也就是 "-Migrated")。 不過，完成移轉之後，您就可以使用 Azure Resource Manager 的移動功能，將資源移至您想要的任何資源群組。 如需詳細資訊，請參閱 [將資源移動到新的資源群組或訂用帳戶](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 以下兩個螢幕擷取畫面顯示成功準備作業之後的結果。 第一個螢幕擷取畫面顯示包含原始雲端服務的資源群組。 第二個螢幕擷取畫面顯示新的 "-Migrated" 資源群組，其中包含對等的 Azure Resource Manager 資源。
 
-![顯示原始雲端服務的螢幕擷取畫面](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
+![顯示原始雲端服務的螢幕擷取畫面](windows/media/migration-classic-resource-manager/portal-classic.png)
 
-![顯示準備作業中 Azure Resource Manager 資源的螢幕擷取畫面](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
+![顯示準備作業中 Azure Resource Manager 資源的螢幕擷取畫面](windows/media/migration-classic-resource-manager/portal-arm.png)
 
 以下是準備階段完成之後，資源的幕後外觀。 請注意，資料平面中的資源相同。 它會以管理平面 (傳統部署模型) 和控制平面 (Resource Manager) 表示。
 
-![準備階段的圖表](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+![準備階段的圖表](windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
 
 > [!NOTE]
 > 在這個移轉階段中，不在傳統部署模型的虛擬網路中的 VM 會停止並解除配置。
@@ -124,7 +124,7 @@ ms.locfileid: "88513106"
 ### <a name="abort"></a>中止
 如果您要將變更還原至傳統部署模型並停止移轉，這是選擇性步驟。 此作業會刪除您資源的 Resource Manager 中繼資料 (在準備步驟中建立的)。 
 
-![中止步驟的圖表](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+![中止步驟的圖表](windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
 
 
 > [!NOTE]
@@ -139,13 +139,13 @@ ms.locfileid: "88513106"
 >
 >
 
-![認可步驟的圖表](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+![認可步驟的圖表](windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
 
 ## <a name="migration-flowchart"></a>移轉流程圖
 
 以下流程圖顯示如何繼續進行移轉：
 
-![Screenshot that shows the migration steps](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
+![Screenshot that shows the migration steps](windows/media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>從傳統部署模型轉譯成 Resource Manager 資源
 下表提供資源的傳統部署模型和 Resource Manager 表示法。 目前不支援其他功能和資源。

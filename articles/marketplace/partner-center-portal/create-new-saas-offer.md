@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6344cb5f1a4bd52395378f97ba2848eeec336572
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c1550b941c6d0f58feba7d505c7206993e14226b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817012"
+ms.locfileid: "88856076"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>在商業市場中建立 SaaS 供應專案
 
@@ -234,7 +234,7 @@ Microsoft 提供標準合約範本。
 
 #### <a name="terms-and-conditions"></a>條款及條件
 
-若要提供您自己的自訂條款及條件，您可以選擇在條款及條件欄位中加以輸入。 最多可以在此欄位中輸入 10,000 個字元的文字。 如果您的條款與條件需要較長的描述，請在此欄位中輸入連往您條款與條件的單一 URL 連結， 會向客戶顯示為有效連結。
+若要提供您自己的自訂條款及條件，您可以選擇在條款及條件欄位中加以輸入。 最多可以在此欄位中輸入 10,000 個字元的文字。 如果您的條款與條件需要較長的描述，請在此欄位中輸入連往您條款與條件的單一 URL 連結，
 
 客戶必須先接受這些條款，才能試用您的供應項目。
 

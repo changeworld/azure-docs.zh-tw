@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: f423ae957d11248b16a180e22647d6566157b7be
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 3a6ecc44791602ea074ebdd1fdf4e11393e10a4b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782833"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852166"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>將時間序列預測模型自動定型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -178,6 +178,7 @@ featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": 
 |`enable_dnn`|[啟用預測 dnn]()。||
 |`time_series_id_column_names`|資料行名稱 (s) 用來唯一識別資料中有多個資料列具有相同時間戳記的時間序列。 如果未定義時間序列識別碼，則會假設資料集為一個時間序列。 若要深入了解單一時間序列，請參閱 [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。||
 |`target_lags`|要根據資料頻率延隔目標值的資料列數目。 延隔會以清單或單一整數來表示。 當獨立變數與相依變數之間的關聯性預設不相符或相互關聯時，應該使用延隔。 ||
+|`feature_lags`| 當 `target_lags` 設定且設定為時，自動化 ML 會自動決定延隔的功能 `feature_lags` `auto` 。 啟用功能延遲可能有助於改善精確度。 功能延遲預設為停用。 ||
 |`target_rolling_window_size`|要用來產生預測值的 *n* 個歷程記錄週期，小於或等於定型集大小。 如果省略，則 *n* 就是完整的定型集大小。 若在將模型定型時只想考慮特定數量的歷程記錄，則請指定此參數。 深入瞭解 [目標滾動視窗匯總](#target-rolling-window-aggregation)。||
 
 

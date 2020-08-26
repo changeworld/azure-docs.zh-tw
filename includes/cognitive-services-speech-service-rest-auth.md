@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78668946"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864937"
 ---
 ## <a name="authentication"></a>驗證
 
-每個要求都需要一個 authorization 標頭。 下表會列出各項服務支援的標頭：
+每個要求都需要授權標頭。 下表會列出各項服務支援的標頭：
 
 | 支援的授權標頭 | 語音轉文字 | 文字轉換語音 |
 |------------------------|----------------|----------------|
@@ -32,13 +32,13 @@ ms.locfileid: "78668946"
 
 若要取得存取權杖，您必須使用 `Ocp-Apim-Subscription-Key` 和您的訂用帳戶金鑰，對 `issueToken` 端點提出要求。
 
-端點`issueToken`的格式如下：
+`issueToken`端點的格式如下：
 
 ```http
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
-取代`<REGION_IDENTIFIER>`為符合此資料表中訂用帳戶區域的識別碼：
+取代 `<REGION_IDENTIFIER>` 為與此資料表中的訂用帳戶區域相符的識別碼：
 
 [!INCLUDE [](cognitive-services-speech-service-region-identifier.md)]
 
@@ -82,7 +82,7 @@ $OAuthToken
 cURL 是 Linux (以及適用於 Linux 的 Windows 子系統) 中可用的命令列工具。 此 cURL 命令說明如何取得存取權杖。 使用您的語音服務訂用帳戶金鑰來取代 `YOUR_SUBSCRIPTION_KEY`。 請務必使用符合您訂用帳戶區域的正確端點。 此範例目前設為「美國西部」。
 
 ```console
-curl -v -X POST
+curl -v -X POST \
  "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
  -H "Content-type: application/x-www-form-urlencoded" \
  -H "Content-Length: 0" \

@@ -1,33 +1,33 @@
 ---
 title: IoT 隨插即用慣例 |Microsoft Docs
-description: IoT 隨插即用在傳送遙測和屬性時預期要使用的慣例，以及處理命令和屬性更新的說明。
+description: IoT 隨插即用的慣例描述會在傳送遙測和屬性時預期裝置使用，以及處理命令和屬性更新。
 author: rido-min
 ms.author: rmpablos
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 126673391b49f884a51521d462060c425a314667
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: ef29be53e776c4c185ac8430b3340c53ca85d855
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475663"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856047"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT 隨插即用慣例
 
-IoT 隨插即用預覽裝置在與 IoT 中樞交換訊息時，應遵循一組慣例。 IoT 隨插即用預覽裝置會使用 MQTT 通訊協定來與 IoT 中樞通訊。
+IoT 隨插即用預覽裝置在與 IoT 中樞交換訊息時，應遵循一組慣例。 IoT 隨插即用 Preview 裝置會使用 MQTT 通訊協定與 IoT 中樞進行通訊。
 
-您可以使用[數位 Twins 定義語言 v2 （DTDL）](https://github.com/Azure/opendigitaltwins-dtdl) _模型_，描述 IoT 隨插即用裝置所執行的遙測、屬性和命令。 這篇文章中所參考的模型有兩種類型：
+您可以使用 [數位 Twins 定義語言 v2 (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl) _模型_，來描述 IoT 隨插即用裝置所執行的遙測、屬性和命令。 這篇文章中所參考的模型類型有兩種：
 
-- **無元件**-不含元件的模型。 此模型會將遙測、屬性和命令宣告為主要介面內容區段中的最上層屬性。
-- **多個元件**-由兩個或多個介面組成的模型。 具有遙測、屬性和命令的主要介面。 一或多個介面宣告為具有其他遙測、屬性和命令的元件。
+- **沒有元件** -沒有元件的模型。 此模型會將遙測、屬性和命令宣告為主要介面之 [內容] 區段中的最上層屬性。
+- **多個元件** -由兩個或多個介面所組成的模型。 具有遙測、屬性和命令的主要介面。 以其他遙測、屬性和命令宣告為元件的一或多個介面。
 
-如需詳細資訊，請參閱[IoT 隨插即用模型中的元件](concepts-components.md)。
+如需詳細資訊，請參閱 [模型中的 IoT 隨插即用元件](concepts-components.md)。
 
 ## <a name="identify-the-model"></a>識別模型
 
-為了宣佈它所執行的模型，IoT 隨插即用裝置藉由將加入至欄位，在 MQTT 連線封包中包含模型識別碼 `model-id` `USERNAME` 。
+為了宣佈它所實行的模型，IoT 隨插即用裝置會在欄位中加入 MQTT 連接封包中的模型識別碼 `model-id` `USERNAME` 。
 
 若要識別裝置所執行的模型，服務可以從下列來源取得模型識別碼：
 
@@ -37,7 +37,7 @@ IoT 隨插即用預覽裝置在與 IoT 中樞交換訊息時，應遵循一組�
 
 ## <a name="telemetry"></a>遙測
 
-從「無」元件裝置傳送的遙測不需要任何額外的中繼資料。 系統會新增 `dt-dataschema` 屬性。
+從無元件裝置傳送的遙測資料不需要任何額外的中繼資料。 系統會加入 `dt-dataschema` 屬性。
 
 從多個元件裝置傳送的遙測必須新增 `$.sub` 為訊息屬性。 系統會新增 `dt-subject` 和 `dt-dataschema` 屬性。
 
@@ -45,7 +45,7 @@ IoT 隨插即用預覽裝置在與 IoT 中樞交換訊息時，應遵循一組�
 
 ### <a name="sample-no-component-read-only-property"></a>範例無元件唯讀屬性
 
-裝置可以傳送遵循 DTDL v2 規則的任何有效 JSON。
+裝置可以傳送任何遵循 DTDL v2 規則的有效 JSON。
 
 :::row:::
    :::column span="":::
@@ -78,7 +78,7 @@ IoT 隨插即用預覽裝置在與 IoT 中樞交換訊息時，應遵循一組�
 
 ### <a name="sample-multiple-components-read-only-property"></a>範例多個元件唯讀屬性
 
-裝置必須加入 `{"__t": "c"}` 標記，以指出元素參考元件。
+裝置必須新增 `{"__t": "c"}` 標記，以指出元素參考元件。
 
 :::row:::
    :::column span="":::
@@ -125,16 +125,16 @@ IoT 隨插即用預覽裝置在與 IoT 中樞交換訊息時，應遵循一組�
 
 ## <a name="writable-properties"></a>可寫入屬性
 
-裝置應該藉由傳送報告屬性來確認它是否收到屬性。 報告屬性應包含：
+裝置應該藉由傳送報告屬性來確認它收到屬性。 報告的屬性應包括：
 
-- `value`-裝置接收的值。
-- `ac`-使用 HTTP 狀態碼的認可程式碼。
-- `av`-參考所 `$version` 需屬性之的認可版本。
-- `ad`-選擇性的確認描述。
+- `value` -屬性的實際值 (通常是接收的值，但裝置可能會決定報告不同的值) 。
+- `ac` -使用 HTTP 狀態碼的認可程式碼。
+- `av` -參考所 `$version` 需屬性之的認可版本。
+- `ad` -選擇性的確認描述。
 
-### <a name="sample-no-component-writable-property"></a>範例沒有可寫入的元件屬性
+### <a name="sample-no-component-writable-property"></a>範例無元件可寫入屬性
 
-裝置可以傳送遵循 DTDL v2 規則的任何有效 JSON：
+裝置可以傳送任何遵循 DTDL v2 規則的有效 JSON：
 
 :::row:::
    :::column span="":::
@@ -183,9 +183,9 @@ IoT 隨插即用預覽裝置在與 IoT 中樞交換訊息時，應遵循一組�
 
 ### <a name="sample-multiple-components-writable-property"></a>範例多個元件可寫入屬性
 
-裝置必須加入 `{"__t": "c"}` 標記，以指出元素參考元件。
+裝置必須新增 `{"__t": "c"}` 標記，以指出元素參考元件。
 
-標記只會針對元件層級更新傳送，因此裝置會不得檢查此旗標。
+標記只會傳送給元件層級更新，因此裝置不得檢查此旗標。
 
 裝置應該藉由傳送報告屬性來確認它收到屬性：
 
@@ -253,15 +253,15 @@ IoT 隨插即用預覽裝置在與 IoT 中樞交換訊息時，應遵循一組�
 
 ## <a name="commands"></a>命令
 
-沒有任何元件介面使用沒有前置詞的命令名稱。
+沒有任何元件介面使用命令名稱，不含前置詞。
 
 在裝置上，多個元件介面會使用具有下列格式的命令名稱： `componentName*commandName` 。
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已瞭解 IoT 隨插即用慣例，以下是一些額外的資源：
+現在您已瞭解 IoT 隨插即用慣例，以下是一些額外的資源：
 
-- [數位 Twins 定義語言（DTDL）](https://github.com/Azure/opendigitaltwins-dtdl)
+- [數位分身定義語言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C 裝置 SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
 - [模型元件](./concepts-components.md)

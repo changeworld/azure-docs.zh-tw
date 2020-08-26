@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 885394b2dd50b9f8a94ece409c47609c8f7f18fd
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 39c33efb4896893c8baa18d06f62defc26c64949
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587557"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855883"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -63,7 +63,7 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 Azure 數位 Twins .NET (c # ) SDK 是 Azure SDK for .NET 的一部分。 它是開放原始碼，並以 Azure 數位 Twins 資料平面 Api 為基礎。
 
 > [!NOTE]
-> 如需 SDK 設計的深入資訊，請參閱 [Azure sdk 的一般設計原則](https://azure.github.io/azure-sdk/general_introduction.html) 和特定的 [.net 設計指導方針](https://azure.github.io/azure-sdk/dotnet_introduction.html)。
+> 如需 SDK 設計的詳細資訊，請參閱 [Azure sdk 的一般設計原則](https://azure.github.io/azure-sdk/general_introduction.html) 和特定的 [.net 設計指導方針](https://azure.github.io/azure-sdk/dotnet_introduction.html)。
 
 若要使用 SDK，請在您的專案中包含 NuGet 套件 **DigitalTwins** 。 您也將需要 (1.1.1 版) 的 **Azure 身分識別** 套件。
 
@@ -143,7 +143,7 @@ await foreach (string twin in result)
 
 #### <a name="serialization-helpers"></a>序列化協助程式
 
-如先前所述，核心 SDK 方法會將對應項資料傳回為 JSON。 不過，SDK 也包含用於序列化的 helper 類別。 這些 helper 函數可讓您快速建立或還原序列化對應項資料，以存取基本資訊。
+序列化協助程式是 SDK 內提供的 helper 函式，可用來快速建立或還原序列化對應項資料，以存取基本資訊。 由於核心 SDK 方法預設會將對應項資料傳回為 JSON，因此使用這些協助程式類別可進一步中斷對應項資料可能會很有説明。
 
 可用的 helper 類別包括：
 * `BasicDigitalTwin`：表示數位對應項的核心資料
@@ -230,7 +230,7 @@ foreach (string prop in rel.CustomProperties.Keys)
 
 ##### <a name="create-a-relationship"></a>建立關聯性
 
-`BasicDigitalTwin`您也可以使用類別來準備資料，以便在對應項實例上建立關聯性：
+`BasicRelationship`您也可以使用類別來準備資料，以便在對應項實例上建立關聯性：
 
 ```csharp
 BasicRelationship rel = new BasicRelationship();

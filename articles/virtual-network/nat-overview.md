@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 08/25/2020
 ms.author: allensu
-ms.openlocfilehash: 63c687cdfe3e014617b5a8773136dfb6513178ed
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135805"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855800"
 ---
 # <a name="what-is-virtual-network-nat"></a>什麼是虛擬網路 NAT？
 
@@ -123,31 +123,17 @@ NAT 的公用端不會產生「TCP 重設」封包或任何其他流量。  只�
 
 公開上市時，NAT 資料路徑至少 99.9% 可用。
 
-
 ## <a name="pricing"></a>定價
 
-NAT 閘道會使用兩個不同的計量進行計費：
-
-| 計量 | 費率 |
-| --- | --- |
-| 資源時數 | $0.045/小時 |
-| 已處理的資料量 | $0.045/GB |
-
-資源時數說明 NAT 閘道資源存在的持續期間。
-已處理的資料量說明 NAT 閘道資源處理的所有流量。
+如需定價詳細資料，請參閱 [虛擬網路定價](https://azure.microsoft.com/pricing/details/virtual-network)。
 
 ## <a name="availability"></a>可用性
 
-虛擬網路 NAT 和 NAT 閘道資源適用於所有 Azure 公用雲端[區域](https://azure.microsoft.com/global-infrastructure/regions/)。
-
-## <a name="support"></a>支援
-
-NAT 是透過標準支援管道來支援。
+虛擬網路 NAT 和 NAT 閘道資源可在所有 Azure 雲端 [區域](https://azure.microsoft.com/global-infrastructure/regions/)的所有區域中使用。
 
 ## <a name="suggestions"></a>建議
 
 我們想要知道如何改善服務。 請針對我們接下來應在[適用於 NAT 的 UserVoice](https://aka.ms/natuservoice) 建置的項目，提出建議和投票。
-
 
 ## <a name="limitations"></a>限制
 

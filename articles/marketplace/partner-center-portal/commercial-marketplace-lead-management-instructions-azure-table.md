@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 03/30/2020
-ms.openlocfilehash: 485da8549175af8813a9d0c3052d1e77f336e619
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/25/2020
+ms.openlocfilehash: db2bae9d9e1c9658937e725a04d919743ff9999e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120835"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855731"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure 資料表儲存體來管理商業市集潛在客戶
 
@@ -28,19 +28,19 @@ ms.locfileid: "86120835"
     1. 在 [新增] 窗格中，選取 [儲存體]。 [精選] 清單隨即在右側出現。
     1. 選取 [儲存體帳戶] 以開始建立帳戶。 請遵循[建立儲存體帳戶](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal) \(部分機器翻譯\) 中的指示。
 
-        ![建立 Azure 儲存體帳戶的步驟](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
+        :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png" alt-text="建立 Azure 儲存體帳戶的步驟。":::
 
         如需儲存體帳戶的詳細資訊，請參閱[快速入門教學課程](../../storage/index.yml)。 如需儲存體定價的詳細資訊，請參閱[儲存體定價](https://azure.microsoft.com/pricing/details/storage/)。
 
-1. 等候儲存體帳戶佈建完成。 此程序通常需要幾分鐘的時間。 
+1. 等候儲存體帳戶佈建完成。 此程序通常需要幾分鐘的時間。
 
 ## <a name="create-a-table-in-your-storage-account"></a>在儲存體帳戶中建立資料表
 
-1. 從 Azure 入口網站的 [首頁]，選取 [查看所有資源] 以存取您的儲存體帳戶。 您也可以從 Azure 入口網站的左側功能表中選取 [所有資源]。
+1. 從 Azure 入口網站 **的 [首頁** ] 中，選取 [ **查看您的所有資源** ] 以存取您的儲存體帳戶。 您也可以從 Azure 入口網站的左側功能表中選取 [所有資源]。
 
-    ![存取您的 Azure 儲存體帳戶](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="存取您的 Azure 儲存體帳戶。":::
 
-1. 從您的儲存體帳戶窗格，選取 [存取金鑰] 並複製該金鑰的 [連接字串] 值。 請儲存此值，因為其為您必須在發佈入口網站中加以提供，以便接收您 Azure Marketplace 供應項目之潛在客戶的「儲存體帳戶連接字串」。 
+1. 從您的儲存體帳戶窗格，選取 [存取金鑰] 並複製該金鑰的 [連接字串] 值。 請儲存此值，因為其為您必須在發佈入口網站中加以提供，以便接收您 Azure Marketplace 供應項目之潛在客戶的「儲存體帳戶連接字串」。
 
     以下是連接字串的範例。
 
@@ -48,13 +48,14 @@ ms.locfileid: "86120835"
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    ![Azure 儲存體金鑰](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure 儲存體金鑰。":::
+
 
 1. 從您的儲存體帳戶窗格，選取 [資料表] 並選取 [+ 資料表] 以建立資料表。 輸入資料表的名稱，然後選取 [確定]。 請儲存此值，因為如果您想要設定流程以在接收到潛在客戶時接收電子郵件通知，便會需要此值。
 
     ![Azure 資料表](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    您可以使用 [Azure 儲存體總管](https://archive.codeplex.com/?p=azurestorageexplorer) \(英文\) 或任何其他工具，來檢視儲存體資料表中的資料。 您也可以將 Azure 資料表中的資料匯出。 
+    您可以使用 [Azure 儲存體總管](https://archive.codeplex.com/?p=azurestorageexplorer) \(英文\) 或任何其他工具，來檢視儲存體資料表中的資料。 您也可以將 Azure 資料表中的資料匯出。
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>(選擇性) 使用 Power Automate 來取得潛在客戶通知
 
@@ -66,7 +67,7 @@ ms.locfileid: "86120835"
 
 1. 登入您的 Power Automate 帳戶。
 1. 在左側列上，選取 [我的流程]。
-1. 在頂端列上，選取 [+ 新增]。 
+1. 在頂端列上，選取 [+ 新增]。
 1. 在下拉式清單中，選取 [已排程 - 從頭開始]。
 
    ![[我的流程] + [已排程 - 從頭開始]](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
@@ -90,7 +91,7 @@ ms.locfileid: "86120835"
 
     ![設定 [取得過去時間] 間隔](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-getpast-time.png)
 
-   >[!TIP] 
+   >[!TIP]
    >您可以隨時檢查您的流程，以確認每個步驟都已正確設定。 若要檢查您的流程，請從 [流程] 功能表列中選取 [流程檢查工具]。
 
    在下一組步驟中，您將會連線到您的資料表，並設定處理邏輯來處理新的潛在客戶。
@@ -107,7 +108,7 @@ ms.locfileid: "86120835"
 
    在您選取 [建立] 之後，[取得實體] 視窗隨即出現。 在這裡，請選取 [顯示進階選項]，然後為下列方塊提供資訊：
 
-   * **資料表**：選取您資料表的名稱 (從[建立資料表](#create-a-table-in-your-storage-account))。 下圖顯示 `marketplaceleads` 針對此範例選取 [資料表] 時的提示。
+   * **資料表**：選取您資料表的名稱 (從[建立資料表](#create-a-table-in-your-storage-account))。 下圖顯示在此範例中選取 [資料表] 時的提示 `marketplaceleads` 。
 
      ![[取得實體] 視窗](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
@@ -123,7 +124,7 @@ ms.locfileid: "86120835"
 
 1. 在 [條件] 視窗中，選取 [選擇值]。 然後在快顯視窗中選取 [運算式]。
 
-1. 將 `length(body('Get_entities')?['value'])` 貼入 [fx] 方塊。 選取 [確定] 來新增此函式。 
+1. 將 `length(body('Get_entities')?['value'])` 貼入 [fx] 方塊。 選取 [確定] 來新增此函式。
 
 1. 若要完成設定條件：
     1. 從下拉式清單中選取 [大於]。
@@ -134,7 +135,7 @@ ms.locfileid: "86120835"
    在接下來幾個步驟中，您會設定根據條件的結果所要採取的動作：
 
    * 如果條件解析為 [如果否]，則不執行任何動作。
-   * 如果條件解析為 **If yes**，觸發連接 Office 365 帳戶傳送電子郵件的動作。 
+   * 如果條件解析為 **If yes**，觸發連接 Office 365 帳戶傳送電子郵件的動作。
 
 1. 在 [如果是] 底下，選取 [新增動作]。
 

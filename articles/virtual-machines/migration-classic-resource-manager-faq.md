@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 3d8c5d408ef2b958ca7d3454f23ce2c52fb1d1be
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0f9a8a1c4631fc667d0dd31ae62f7d57aefccc90
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513110"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855846"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>傳統至 Azure Resource Manager 移轉的常見問題
 
@@ -22,7 +22,7 @@ ms.locfileid: "88513110"
 
 ## <a name="what-is-azure-service-manager-and-what-does-it-mean-by-classic"></a>什麼是 Azure Service Manager 以及傳統的意義為何？
 
-IaaS VM (傳統) 中的 "傳統" 一字指的是 Azure Service Manager (ASM) 所管理的 Vm。 Azure Service Manager (ASM) 是 azure 的舊控制平面，負責建立、管理、刪除 Vm 和執行其他控制平面作業。 
+IaaS VM (傳統) 中的 "傳統" 一字指的是 Azure Service Manager (ASM) 所管理的 Vm。 Azure Service Manager (ASM) 是 Azure 的舊控制平面，負責建立、管理、刪除 Vm 和執行其他控制平面作業。 
 
 ## <a name="what-is-azure-resource-manager"></a>什麼是 Azure Resource Manager？
 
@@ -70,7 +70,7 @@ IaaS VM (傳統) 中的 "傳統" 一字指的是 Azure Service Manager (ASM) 所
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>如果我必須使用 Resource Manager 下的 IaaS，是否必須購買另一條 ExpressRoute 線路？ 
 
-否。 我們最近啟用了[將 ExpressRoute 線路從傳統部署模型移至 Resource Manager 部署模型](~/articles/expressroute/expressroute-move.md)的功能。 如果您已有 ExpressRoute 線路，就不需要購買新線路。
+否。 我們最近啟用了[將 ExpressRoute 線路從傳統部署模型移至 Resource Manager 部署模型](../expressroute/expressroute-move.md)的功能。 如果您已有 ExpressRoute 線路，就不需要購買新線路。
 
 ## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>如果我已為傳統 IaaS 資源設定角色型存取控制原則，該怎麼辦？ 
 
@@ -93,7 +93,7 @@ IaaS VM (傳統) 中的 "傳統" 一字指的是 Azure Service Manager (ASM) 所
 1. 從 VM 中刪除備份/快照集擴充功能。
 2. 將虛擬機器從傳統模式移轉至 Resource Manager 模式。 確定虛擬機器對應的儲存體和網路資訊也會移轉至 Resource Manager 模式。
 
-此外，如果您想要備份已遷移的 VM，請移至虛擬機器的管理刀鋒視窗來[啟用備份](~/articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm)。
+此外，如果您想要備份已遷移的 VM，請移至虛擬機器的管理刀鋒視窗來[啟用備份](../backup/quick-backup-vm-portal.md#enable-backup-on-a-vm)。
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>我是否可以驗證訂用帳戶或資源，以查看是否能夠移轉它們？ 
 
@@ -113,7 +113,7 @@ IaaS VM (傳統) 中的 "傳統" 一字指的是 Azure Service Manager (ASM) 所
 
 ## <a name="can-i-migrate-expressroute-circuits-used-across-subscriptions-with-authorization-links"></a>可以透過授權連結移轉跨訂用帳戶使用的 ExpressRoute 線路嗎？ 
 
-無法在不停機的情況下，自動移轉使用跨訂用帳戶授權連結的 ExpressRoute 線路。 我們提供使用手動步驟移轉這些項目的指引。 如需相關步驟和詳細資訊，請參閱[將 ExpressRoute 線路和相關聯的虛擬網路從傳統部署模型移轉至 Resource Manager 部署模型](~/articles/expressroute/expressroute-migration-classic-resource-manager.md)。
+無法在不停機的情況下，自動移轉使用跨訂用帳戶授權連結的 ExpressRoute 線路。 我們提供使用手動步驟移轉這些項目的指引。 如需相關步驟和詳細資訊，請參閱[將 ExpressRoute 線路和相關聯的虛擬網路從傳統部署模型移轉至 Resource Manager 部署模型](../expressroute/expressroute-migration-classic-resource-manager.md)。
 
 ## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>我收到訊息 *「VM 將整體代理程式狀態回報為『未就緒』。因此，無法移轉 VM。請確定 VM 代理程式將整體代理程式狀態回報為『就緒』」* ，或 *「VM 包含 VM 未回報其狀態的擴充功能。因此，無法移轉此 VM。」*
 
