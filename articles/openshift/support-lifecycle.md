@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 56328500c1c220a04b3e2219c145ad5db0e07ff7
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c066931cece60d14767b86254020ea5ba4bad1be
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817455"
+ms.locfileid: "88854505"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 的支援生命週期
 
@@ -97,9 +97,9 @@ Azure Red Hat OpenShift SRE 團隊保留新增或移除新的/現有版本的許
 
 |OCP 版本|上游版本|Azure Red Hat OpenShift 正式推出|生命週期結束|
 |-|-|-|-|
-|4.3|2020 年 1 月 23 日|2020 年 4 月 28 日|2020年8月2日|
-|4.4|5月5日，2020|2020年7月29日|4.6 GA|
-|4.5|2020年7月13日|2020年9月28日|4.7 GA
+|4.3|2020 年 2 月|2020 年 5 月|2020 年 8 月|
+|4.4|2020 年 5 月|2020 年 8 月|4.6 GA|
+|4.5|2020 年 7 月|2020年10月|4.7 GA
 |4.6|* 2020 年4月初|* 2020 年4月底|4.8 GA|
 
 \*_暫止上游發行日期確認。_

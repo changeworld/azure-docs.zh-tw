@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 719b96c9186d463ca3ee41c6fb401a8f22c4c11c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: b4f3733806eb810cff7722e6432bb274b6d46a37
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431974"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854831"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>開始使用 R 中的 Azure Machine Learning Studio (傳統) 
 
@@ -225,7 +225,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 我們已討論載入 [資料集的](#loading)載入資料集。 在您建立並測試上一節中所示的 R 指令碼之後，請執行下列作業：
 
-1. 將 R 指令碼儲存成 .R 檔案。 我將我的指令碼檔案稱為 "simpleplot.R"。 內容如下。
+1. 將 R 指令碼儲存成 .R 檔案。 我將我的指令碼檔案稱為 "simpleplot.R"。 以下是檔案中的功能：
 
    ```r
    ## Only one of the following two lines should be used
@@ -570,7 +570,7 @@ cadairydata$Month.Count <- num.month(cadairydata$Year, cadairydata$Month.Number)
 
 在本節中，我們將對資料框架之某些資料行中的值執行一些簡單的轉換。 R 語言幾乎支援任何一種值轉換。 以下 [進一步閱讀](#appendixb) 的參考包含廣泛的範例。
 
-如果您看看我們資料框架摘要中的值，您應該會發現此處有點奇怪。 加州生產的冰淇淋比牛奶多？ 否，當然不是，因為這樣並不合理，雖然這對我們當中的一些冰淇淋愛好者來說是個令人悲傷的事實。 其單位並不相同。 計價單位為美制磅，牛奶是以 100 萬美制磅為單位、冰淇淋是以 1,000 美制加侖為單位，而卡達乾酪則是以 1,000 美制磅為單位。 假設冰淇淋每加侖重約 6.5 磅，我們便可輕鬆地進行乘法運算來轉換這些值，讓它們都同樣以 1000 磅為單位。
+如果您查看資料框架摘要中的值，您應該會在這裡看到奇怪的內容。 加州生產的冰淇淋比牛奶多？ 否，當然不是，因為這樣並不合理，雖然這對我們當中的一些冰淇淋愛好者來說是個令人悲傷的事實。 其單位並不相同。 計價單位為美制磅，牛奶是以 100 萬美制磅為單位、冰淇淋是以 1,000 美制加侖為單位，而卡達乾酪則是以 1,000 美制磅為單位。 假設霜淇淋的每加侖大約6.5 磅，我們可以輕鬆地進行乘法以轉換這些值，因此它們都是以1000磅的相等單位來計算。
 
 針對我們的預測模型，我們使用乘法模型來進行此資料的趨勢和季節性調整。 對數轉換可讓我們使用線性模型，以簡化此程序。 我們可以在套用乘數的相同函式中套用對數轉換。
 
@@ -773,7 +773,7 @@ pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = c
 
 ### <a name="correlation-analysis"></a>相互關聯分析
 
-若要執行相互關聯分析，我們必須將變數去除趨勢並標準化。 我們可以就使用既可將變數置中又可縮放變數的 R `scale()` 函式。 此函式可能也執行得更快。 不過，我想要示範以 R 撰寫的防禦型程式設計範例。
+若要執行相互關聯分析，我們必須將變數去除趨勢並標準化。 我們可以就使用既可將變數置中又可縮放變數的 R `scale()` 函式。 此函式可能也執行得更快。 不過，我想要示範 R 中的防禦程式設計範例。
 
 以下所示的 `ts.detrend()` 函式即可執行這兩種作業。 下列兩行程式碼會將資料去除趨勢，然後將值標準化。
 
@@ -828,7 +828,7 @@ pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = d
 
 請注意，用於去除趨勢的線性迴歸是時間序列迴歸。 預測工具變數是時間序列物件。  
 
-定義 `ts.detrend()` 之後，我們會將它套用到資料框架中感興趣的變數。 我們必須使用 `as.data.frame()` 將 `lapply()` 所建立的結果清單強制轉換成資料框架。 由於 `ts.detrend()`的防禦性層面緣故，因此即使無法處理其中一個變數，也不會導致無法處理其他變數。  
+一旦 `ts.detrend()` 定義之後，我們會將它套用至資料框架中感興趣的變數。 我們必須使用 `as.data.frame()` 將 `lapply()` 所建立的結果清單強制轉換成資料框架。 由於 `ts.detrend()`的防禦性層面緣故，因此即使無法處理其中一個變數，也不會導致無法處理其他變數。  
 
 最後一行程式碼會建立成對的散佈圖。 執行 R 程式碼之後，散佈圖的結果會如圖 17 所示。
 
@@ -1136,7 +1136,7 @@ lines(cadairytrain$Time, predict(milk.lm, cadairytrain), lty = 2, col = 2)
 
 有了趨勢模型之後，我們還需要繼續進行來納入季節性效果。 我們將使用年中月份做為線性模型中的虛擬變數，以擷取逐月的效果。 請注意，當您將因素變數導入到模型中時，必須不計算截距。 如果不這麼做，便會過度指定該公式，R 將會卸除其中一個想要的因素，而保留截距項。
 
-既然我們有了令人滿意的趨勢模型，我們可以使用 `update()` 函式將新項新增到現有的模型。 更新公式中的-1 會卸除截距項。 目前先繼續在 RStudio 中進行：
+由於我們有令人滿意的趨勢模型，因此我們可以使用函式 `update()` 將新的詞彙新增至現有的模型。 更新公式中的-1 會卸除截距項。 目前先繼續在 RStudio 中進行：
 
 ```r
 milk.lm2 <- update(milk.lm, . ~ . + Month - 1)
@@ -1333,12 +1333,12 @@ RStudio 已經過妥善記載。 以下是 RStudio 檔中重要章節的一些�
 * **編輯和執行 r 程式碼** -RStudio 提供一個整合式環境來編輯和執行 r 程式碼。 如需詳細資料，請參閱 [編輯和執行程式碼](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code) 。
 * RStudio 包括功能**強大的調試**功能。 如需這些功能的詳細資訊，請參閱 [使用 RStudio 的調試](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio) 程式。 如需中斷點疑難排解功能的相關資訊，請參閱 [中斷點疑難排解](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)。
 
-## <a name="further-reading"></a><a id="appendixb"></a>進階閱讀
+## <a name="further-reading"></a><a id="appendixb"></a>進一步閱讀
 
 此 R 程式設計教學課程涵蓋了使用 R 語言搭配 Azure Machine Learning Studio (傳統) 所需的基本概念。 如果您不熟悉 R，CRAN 有提供兩本簡介：
 
 * Emmanuel Paradis 的[R For 初學者](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf)是不錯的開端。  
-* [R 的簡介](https://cran.r-project.org/doc/manuals/R-intro.html) （依 W. N）。 Venables et.  等 更深入探討。
+* [R 的簡介](https://cran.r-project.org/doc/manuals/R-intro.html) （依 W. N）。 Venables et，更深入探討。
 
 有許多 R 的相關書籍可以協助您輕鬆上手。 以下是一些我認為實用的書籍：
 
@@ -1355,7 +1355,8 @@ RStudio 已經過妥善記載。 以下是 RStudio 檔中重要章節的一些�
 以下是一些絕佳的網際網路資源：
 
 * DataCamp 透過影片單元和程式碼撰寫練習，在瀏覽器中輕鬆教導 R。 最新 R 技巧和封裝均有互動式教學課程。 參加免費的 [互動式 R 教學](https://www.datacamp.com/courses/introduction-to-r)課程。
-* [瞭解 R 程式設計，這是 Programiz 的最終指南](https://www.programiz.com/r-programming) 。
+* [瞭解 R 程式設計，這是 DataMentor 的最終指南](https://www.datamentor.io/r-programming/) 。
+* [R 編碼員](https://r-coder.com/)。 適用于初學者的詳細 R 教學課程和免費的 R 課程。
 * 由 Clarkson 大學的王黑色提供的快速 [R 教學](https://www.cyclismo.org/tutorial/R/) 課程。
 * 有超過60個 R 資源列在 [最上層的 r 語言資源中，以改善您的資料技能](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html)。
 

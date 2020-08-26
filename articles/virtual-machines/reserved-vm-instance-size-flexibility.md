@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: manshuk
-ms.openlocfilehash: 05119a6f9af935a0f4a2887eae53f3d5bdb1a482
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 381023a0650b078a74c01ff7b698aebacb256147
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658078"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855513"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>利用保留 VM 執行個體獲得虛擬機器大小彈性
 
-當您購買保留的 VM 實例時，您可以選擇針對實例大小彈性或容量優先順序進行優化。 如需有關為保留的 VM 實例設定或變更 [優化] 設定的詳細資訊，請參閱 [變更保留的 vm 實例的優化設定](~/articles/cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)。
+當您購買保留的 VM 實例時，您可以選擇針對實例大小彈性或容量優先順序進行優化。 如需有關為保留的 VM 實例設定或變更 [優化] 設定的詳細資訊，請參閱 [變更保留的 vm 實例的優化設定](../cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)。
 
 使用已針對實例大小彈性進行優化的保留虛擬機器實例，您購買的保留可套用至虛擬機器 (Vm) 大小調整為相同的實例大小彈性群組。 例如，如果您針對 DSv2 系列中所列的 VM 大小（例如 Standard_DS5_v2）購買保留，保留折扣可以套用至相同實例大小彈性群組中列出的其他四個大小：
 
@@ -52,4 +52,4 @@ ms.locfileid: "88658078"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需詳細資訊，請參閱 [什麼是 Azure 保留](~/articles/cost-management-billing/reservations/save-compute-costs-reservations.md)專案。
+如需詳細資訊，請參閱 [什麼是 Azure 保留](../cost-management-billing/reservations/save-compute-costs-reservations.md)專案。

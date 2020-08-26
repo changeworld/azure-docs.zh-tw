@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: 6148cedbf004e3e63200ac50b91a40866c5b18db
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1af3ce7125d30ed0cb9b8ca6b3cb9322dc14c520
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719662"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855255"
 ---
 # <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>針對資源健康狀態、前端和後端可用性問題進行疑難排解 
 
@@ -30,6 +30,9 @@ ms.locfileid: "88719662"
 
 ## <a name="health-probe-status"></a>健康情況探查狀態
 健康情況探查狀態度量是由健康情況探查中定義之通訊協定的 ping 所產生。 此 ping 會傳送至後端集區中的每個實例，以及健康情況探查中定義的埠。 對於 HTTP 和 HTTPS 探查，成功的 ping 需要 HTTP 200 OK 回應，而 TCP 探查則會將任何回應視為成功。 每次探查的連續成功或失敗，接著會判斷後端實例是否狀況良好，而且能夠接收指派後端集區之負載平衡規則的流量。 與資料路徑可用性類似，我們會使用平均匯總，這會在取樣間隔期間告訴我們平均成功/總計的 ping。 此健康情況探查狀態值會藉由探查您的後端實例，而不透過前端傳送流量，來指出從負載平衡器隔離的後端健康情況。
+
+>[!IMPORTANT]
+>健康情況探查狀態是以一分鐘為單位進行取樣。 這可能會導致在其他穩定值中發生輕微波動。 例如，如果有兩個後端實例，一個探查和一個探查關閉，則健康情況探查服務可能會針對狀況良好的實例捕獲7個範例，並針對狀況不良的實例捕獲6個範例。 這會導致先前穩定的值50，顯示為一分鐘間隔的46.15。 
 
 ## <a name="diagnose-degraded-and-unavailable-load-balancers"></a>診斷降級和無法使用的負載平衡器
 如同 [資源健康狀態文章](load-balancer-standard-diagnostics.md#resource-health-status)中所述，降級的負載平衡器是顯示在25% 到90% 的資料路徑可用性之間，而無法使用的負載平衡器是在兩分鐘的期間內，具有少於25% 資料路徑可用性的負載平衡器。 您可以採取這些相同步驟來調查您在任何健康情況探查狀態中所看到的失敗，或您已設定的資料路徑可用性警示。 我們會探索我們已檢查資源健康狀態的情況，併發現我們的負載平衡器無法在資料路徑可用性為0% 的情況下使用-我們的服務已關閉。

@@ -12,82 +12,84 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 08/25/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
-ms.openlocfilehash: 944abc62f25473ea52836af7dc1fdcd1e16d9269
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15ece836e172b8316222ea606ca638650795d5d7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82120778"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852603"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>在已啟用 Python 3 的 Linux Azure 虛擬機器系統中使用 VM 擴充功能的問題
 
 > [!NOTE]
-> 除非您的工作負載需要**python** 2.x 支援，否則 Microsoft 鼓勵使用者在其系統中採用**python** 3.x。 這項需求的範例可能包括舊版系統管理腳本，或**Azure 磁碟加密**和**Azure 監視器**等延伸模組。
+> 除非您的工作負載需要**python** 2.x 支援，否則 Microsoft 鼓勵使用者在其系統中採用**python** 3.x。 這項需求的範例可能包括舊版管理腳本或延伸模組，例如 **Azure 磁碟加密** 和 **Azure 監視器**。
 >
-> 在生產環境中安裝**Python** 2.x 之前，請考慮 Python 2.x 長期支援的問題，特別是他們接收安全性更新的能力。 如產品（包括部分擴充功能）更新為**python 3.8**支援，您應該停止使用 python 2.x。
+> 在生產環境中安裝 **python** 2.x 之前，請考慮 Python 2.x 長期支援的問題，特別是他們接收安全性更新的能力。 隨著產品（包括部分延伸模組）的更新，請使用 **python 3.8** 支援進行更新，您應該不再使用 python 2.x。
 
-某些 Linux 發行版本已轉換成 Python 3.8，並已完全移除 Python 的舊版進入 `/usr/bin/python` 點。 這項轉換會影響特定虛擬機器（VM）延伸模組的預設自動部署，並具有下列條件：
+某些 Linux 發行版本已轉換成 Python 3.8，並已 `/usr/bin/python` 完全移除適用于 python 的舊版 entrypoint。 這項轉換會在下列兩種情況下，影響特定虛擬機器 (VM) 擴充功能的預設自動部署：
 
-- 仍轉換成 Python 3.x 支援的延伸模組
-- 使用舊版進入點的擴充功能 `/usr/bin/python`
+- 仍在轉換為 Python 3.x 支援的延伸模組
+- 使用舊版 entrypoint 的延伸模組 `/usr/bin/python`
 
-轉換成**Python** 3.x 的 Linux 散發使用者必須先確定舊版進入 `/usr/bin/python` 點存在，然後再嘗試將這些擴充功能部署至其 vm。 否則，延伸模組部署可能會失敗。 
+轉換至 **Python** 3.x 的 Linux 散發使用者必須確定舊版的進入 `/usr/bin/python` 點存在，然後再嘗試將這些擴充功能部署至其 vm。 否則，延伸模組部署可能會失敗。 
 
-- 受背書的 Linux 發行版本受到影響，包括**Ubuntu Server 20.04 LTS**和**UBUNTU Pro 20.04 LTS**。
+- 受背書的 Linux 發行版本會受到影響，包括 **Ubuntu Server 20.04 LTS** 和 **UBUNTU Pro 20.04 LTS**。
 
-- 受影響的 VM 擴充功能包括**Azure 磁碟加密**、 **Log Analytics**、 **VM 存取**（用於密碼重設）和**來賓診斷**（用於其他效能計數器）。
+- 受影響的 VM 延伸模組包括 **Azure 磁碟加密**、 **Log Analytics**、用於密碼重設) 的 **vm 存取** (，以及用於其他效能計數器) 的 **來賓診斷** (。
 
-就地升級（例如從**Ubuntu 18.04 LTS**升級至**ubuntu 20.04 LTS**）應保留 `/usr/bin/python` 符號，並保持不受影響。
+就地升級（例如從 **Ubuntu 18.04 LTS** 升級為 **ubuntu 20.04 LTS**）應該保留 `/usr/bin/python` 符號，且不受影響。
 
-## <a name="resolution"></a>解決方案
+## <a name="resolution"></a>解決方法
 
-在先前于摘要中所述的已知受影響案例中部署擴充功能之前，請先考慮下列一般建議：
+在先前的摘要所述的已知受影響案例中部署擴充功能之前，請先考慮這些一般建議：
 
-1.  部署擴充功能之前，請 `/usr/bin/python` 使用 Linux 散發廠商提供的方法來恢復符號連結。
+1. 部署延伸模組之前，請 `/usr/bin/python` 使用 Linux 散發廠商提供的方法恢復符號連結。
 
-    - 例如，針對**Python 2.7**，請使用：`sudo apt update && sudo apt install python-is-python2`
+   - 例如，針對 **Python 2.7**，請使用： `sudo apt update && sudo apt install python-is-python2`
 
-2.  如果您已部署展示此問題的實例，請使用 [ **VM** ] 分頁中的 [**執行命令**] 功能來執行上面所述的命令。 執行命令延伸模組本身不會受到轉換至 Python 3.8 的影響。
+1. 這項建議適用于 Azure 客戶，在 Azure Stack 中不受支援：
 
-3.  如果您要部署新的實例，而且需要在布建階段設定延伸模組，請使用**雲端初始化**使用者資料來安裝上述套件。
+   - 如果您已部署展示此問題的實例，請使用 VM 分頁中的執行命令功能執行上述命令。 執行命令延伸模組本身不會受到轉換至 Python 3.8 的影響。
 
-    例如，針對 Python 2.7：
+1. 如果您要部署新的實例，而且需要在布建時設定擴充功能，請使用 **雲端初始** 使用者資料來安裝上述套件。
 
-    ```
-    # create cloud-init config
-    cat > cloudinitConfig.json <<EOF
-    #cloud-config
-    package_update: true
+   例如，針對 Python 2.7：
+
+   ```python
+   # create cloud-init config
+   cat > cloudinitConfig.json <<EOF
+   #cloud-config
+   package_update: true
     
-    runcmd:
-    - sudo apt update
-    - sudo apt install python-is-python2 
-    EOF
-    
-    # create VM
-    az vm create \
-        --resource-group <resourceGroupName> \
-        --name <vmName> \
-        --image <Ubuntu 20.04 Image URN> \
-        --admin-username azadmin \
-        --ssh-key-value "<sshPubKey>" \
-        --custom-data ./cloudinitConfig.json
-    ```
+   runcmd:
+   - sudo apt update
+   - sudo apt install python-is-python2 
+   EOF
 
-4.  如果貴組織的原則系統管理員判斷不應在 Vm 中部署擴充功能，您可以在布建階段停用擴充功能支援：
+   # create VM
+   az vm create \
+       --resource-group <resourceGroupName> \
+       --name <vmName> \
+       --image <Ubuntu 20.04 Image URN> \
+       --admin-username azadmin \
+       --ssh-key-value "<sshPubKey>" \
+       --custom-data ./cloudinitConfig.json
+   ```
 
-    - REST API
+1. 如果您組織的原則系統管理員判斷不應在 Vm 中部署延伸模組，您可以在布建階段停用擴充功能支援：
 
-      當您可以使用此屬性部署 VM 時，停用並啟用擴充功能：
+   - REST API
 
-      ```
-        "osProfile": {
-          "allowExtensionOperations": false
-        },
-      ```
+     當您可以使用此屬性來部署 VM 時，停用並啟用延伸模組：
+
+     ```python
+       "osProfile": {
+         "allowExtensionOperations": false
+       },
+     ```
 
 ## <a name="next-steps"></a>後續步驟
 
-如需其他資訊，請參閱[自 18.04 LTS-Python 3 之後的其他基本系統變更](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes#Python3_by_default)。
+如需其他資訊，請參閱 [18.04 LTS 之後的其他基底系統變更（預設為 Python 3）](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes#Python3_by_default) 。

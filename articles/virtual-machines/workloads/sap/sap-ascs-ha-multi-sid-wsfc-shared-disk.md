@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 上使用 WSFC&共用磁片的 SAP ASCS/SCS 多重 SID HA |Microsoft Docs
+title: Azure 上具有 WSFC&共用磁片的 SAP ASCS/SCS 多重 SID HA |Microsoft Docs
 description: 在 Azure 上搭配 Windows Server 容錯移轉叢集和共用磁碟之 SAP ASCS/SCS 執行個體的多重 SID 高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -13,26 +13,24 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8c235cd204b86573746be4bce615939f3b072fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 332c81c8502dac6f057c6ea41c7662e1edde1599
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82977901"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855182"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>在 Azure 上搭配 Windows Server 容錯移轉叢集和共用磁碟的 SAP ASCS/SCS 執行個體多重 SID 高可用性
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows 作業系統][Logo_Windows] Windows
 >
-
-Microsoft 在 2016 年 9 月發行的功能，可讓您使用 [Azure 內部負載平衡器][load-balancer-multivip-overview]管理多個虛擬 IP 位址。 這項功能已存在 Azure 外部負載平衡器。 
 
 如果您有 SAP 部署，則必須使用內部負載平衡器，建立 SAP Central Services 執行個體的 Windows 叢集組態。
 
-本文將著重於如何將單一 ASCS/SCS 安裝移至 SAP 多重 SID 設定，方法是使用共用磁碟，將其他 SAP ASCS/SCS 叢集執行個體安裝至現有 Windows Server 容錯移轉叢集 (WSFC) 叢集。 完成此程序之後，您將已設定 SAP 多重 SID 叢集。
+本文著重于如何將單一 ASCS/SCS 安裝移至 SAP 多重 SID 設定，方法是將額外的 SAP ASCS/SCS 叢集實例安裝至現有的 Windows Server 容錯移轉叢集， (WSFC) 叢集（具有共用磁片），並使用 SIOS 來模擬共用磁片。 完成此程序之後，您將已設定 SAP 多重 SID 叢集。
 
 > [!NOTE]
 > 這項功能僅適用於 Azure Resource Manager 部署模型。
@@ -46,7 +44,7 @@ Microsoft 在 2016 年 9 月發行的功能，可讓您使用 [Azure 內部負�
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您已經使用**檔案共用**來設定要用於一個 SAP ASCS/SCS 執行個體的 WSFC 叢集，如下圖所示。
 
@@ -54,9 +52,10 @@ Microsoft 在 2016 年 9 月發行的功能，可讓您使用 [Azure 內部負�
 
 > [!IMPORTANT]
 > 安裝程式必須符合下列條件︰
-> * SAP ASCS / SCS 執行個體必須共用相同的 WSFC 叢集。
-> * 每個資料庫管理系統 (DBMS) SID 必須有自己專用的 WSFC 叢集。
-> * SAP 應用程式伺服器屬於必須擁有自己專用 VM 的一個 SAP 系統 SID。
+> * SAP ASCS / SCS 執行個體必須共用相同的 WSFC 叢集。  
+> * 每個資料庫管理系統 (DBMS) SID 必須有自己專用的 WSFC 叢集。  
+> * SAP 應用程式伺服器屬於必須擁有自己專用 VM 的一個 SAP 系統 SID。  
+> * 不支援在相同的叢集中將複寫伺服器1和排入佇列複寫伺服器2的混合。  
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-shared-disk"></a>搭配共用磁碟的 SAP ASCS/SCS 多重 SID 架構
 
@@ -246,8 +245,6 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
     此外，開啟 Azure 內部負載平衡器探查連接埠，在我們的案例中為 62350。 這如[本文][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port]所述。
 
-7. [變更 SAP Evaluated Receipts Settlement (ERS) Windows 服務執行個體的啟動類型][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type]。
-
 8. 在新的專用 VM 上安裝 SAP 主要應用程式伺服器，如 SAP 安裝指南所述。  
 
 9. 在新的專用 VM 上安裝 SAP 其他應用程式伺服器，如 SAP 安裝指南所述。
@@ -285,7 +282,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 [sap-high-availability-installation-wsfc-shared-disk]:sap-high-availability-installation-wsfc-shared-disk.md
 [sap-hana-ha]:sap-hana-high-availability.md
 [sap-suse-ascs-ha]:high-availability-guide-suse.md
-[sap-net-weaver-ports-ascs-scs-ports]:sap-high-availability-infrastructure-wsfc-shared-disk.md#0f3ee255-b31e-4b8a-a95a-d9ed6200468b
+[sap-net-weaver-ports-ascs-scs-ports]:sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 

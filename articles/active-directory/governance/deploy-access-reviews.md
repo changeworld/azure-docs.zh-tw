@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb74fae150d4c8e5dda6978c272d358bdec6ca25
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 46a56e830c8c9b55c9bbe48cd7d23ad8475b51b8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783598"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853032"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>規劃 Azure Active Directory 存取審查部署
 
@@ -283,7 +283,7 @@ ms.locfileid: "88783598"
 
 * 指派 Azure AD 或 Azure 訂用帳戶中的特殊許可權角色
 
-請參閱 [範例腳本](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse.)。 腳本會顯示如何使用受邀加入租使用者的外部身分識別。 您可以在 Azure AD 中看到外部使用者的群組成員資格、角色指派和應用程式指派。 腳本不會顯示 Azure AD 以外的任何指派，例如對 Sharepoint 資源的直接許可權指派，而不使用群組。
+請參閱 [範例腳本](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse)。 腳本會顯示如何使用受邀加入租使用者的外部身分識別。 您可以在 Azure AD 中看到外部使用者的群組成員資格、角色指派和應用程式指派。 腳本不會顯示 Azure AD 以外的任何指派，例如對 Sharepoint 資源的直接許可權指派，而不使用群組。
 
 建立群組或應用程式的存取權審查時，您可以選擇讓審核者專注于具有存取權的所有人，或僅限來賓使用者。 藉由選取 [僅來賓使用者]，審核者會從具有資源存取權的 Azure AD B2B 取得外部身分識別的集中清單。
 

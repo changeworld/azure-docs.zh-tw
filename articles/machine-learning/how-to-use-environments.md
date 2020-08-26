@@ -3,20 +3,20 @@ title: 使用軟體環境
 titleSuffix: Azure Machine Learning
 description: 建立及管理模型定型和部署的環境。 管理環境的 Python 套件和其他設定。
 services: machine-learning
-author: rastala
-ms.author: roastala
+author: saachigopal
+ms.author: sagopal
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a08575ac118f38361d82198ccc86a09f7b2558d6
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 1994407de579e8fd7bc6dfc2ecc9f021d1bf0ec5
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783734"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853251"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure Machine Learning 中建立 & 使用軟體環境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -153,7 +153,7 @@ run.wait_for_completion(show_output=True)
 
 如果封裝在 Conda 套件存放庫中可供使用，則建議您使用 Conda 安裝，而不是 pip 安裝。 Conda 封裝通常隨附預建的二進位檔，讓安裝更可靠。
 
-下列範例會對環境新增項目。 其中會新增 1.17.0 版的 `numpy`。 它也會新增 `pillow` 封裝 `myenv` 。 此範例會分別使用 [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) 方法和 [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) 方法。
+下列範例會新增至環境 `myenv` 。 其中會新增 1.17.0 版的 `numpy`。 它也會新增 `pillow` 套件。 此範例會分別使用 [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) 方法和 [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) 方法。
 
 ```python
 from azureml.core.environment import Environment
@@ -245,7 +245,7 @@ build.wait_for_completion(show_output=True)
 先使用方法在本機建立映射很有用 [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-local-workspace--platform-none----kwargs-) 。 而且，設定選擇性參數 `pushImageToWorkspaceAcr = True` 會將產生的映射推送至 AZURE ML 工作區容器登錄。 
 
 > [!WARNING]
->  在環境中變更相依性或通道的順序，將會產生新的環境，並需要新的映射組建。
+>  在環境中變更相依性或通道的順序，將會產生新的環境，並需要新的映射組建。 此外， `build()` 如果有新的版本，呼叫現有映射的方法將會更新其相依性。 
 
 ## <a name="enable-docker"></a>啟用 Docker
 
@@ -323,7 +323,7 @@ myenv.python.interpreter_path = "/opt/miniconda/bin/python"
 針對已註冊的環境，您可以使用下列程式碼抓取映射詳細資料，其中 `details` 是 [DockerImageDetails](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockerimagedetails?view=azure-ml-py) (AzureML Python SDK >=) 1.11 的實例，並提供有關環境映射的所有資訊，例如 dockerfile、登錄和映射名稱。
 
 ```python
-details = environment.get_image_details()
+details = environment.get_image_details(workspace=ws)
 ```
 
 ## <a name="use-environments-for-training"></a>使用環境進行訓練

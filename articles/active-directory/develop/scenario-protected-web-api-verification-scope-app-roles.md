@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 204bc7dd8cc31f48fdc09eae6b00247023de64f3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: c3cf8bfd2810e9c26a6f65c50c1a22baeec892af
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120961"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855465"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>受保護的 Web API：驗證範圍和應用程式角色
 
@@ -29,7 +29,7 @@ ms.locfileid: "88120961"
 > [!NOTE]
 > 本文中的程式碼片段會從 GitHub 上的下列程式碼範例中解壓縮：
 >
-> - [ASP.NET Core Web API 累加式教學課程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Controllers/TodoListController.cs)
+> - [ASP.NET Core web API 增量教學課程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Controllers/TodoListController.cs)
 > - [ASP.NET Web API 範例](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof/blob/master/TodoListService/Controllers/TodoListController.cs)
 
 若要保護 ASP.NET 或 ASP.NET Core Web API，您必須將 `[Authorize]` 屬性新增至下列其中一個項目：
@@ -86,9 +86,9 @@ public class TodoListController : Controller
 - 確認宣告的值包含 API 所預期的範圍。
 
 
-#### <a name="verify-the-scopes-more-globally"></a>更全域驗證範圍
+#### <a name="verify-the-scopes-more-globally"></a>更全域地驗證範圍
 
-針對您的 Web API 定義細微範圍，並驗證每個控制器動作中的範圍是建議的方法。 不過，您也可以使用 ASP.NET Core 來驗證應用程式層級或控制站的範圍。 如需詳細資訊，請參閱 ASP.NET core 檔中的宣告[型授權](/aspnet/core/security/authorization/claims)。
+為您的 web API 定義細微範圍，以及驗證每個控制器動作中的範圍是建議的方法。 不過，您也可以使用 ASP.NET Core 來驗證應用程式層級或控制器層級的範圍。 如需詳細資訊，請參閱 ASP.NET core 檔中的宣告 [型授權](/aspnet/core/security/authorization/claims) 。
 
 ### <a name="net-mvc"></a>.NET MVC
 
@@ -108,12 +108,12 @@ public class TodoListController : ApiController
 {
     public IEnumerable<TodoItem> Get()
     {
-        ValidateAppRole("access_as_application");
+        HttpContext.ValidateAppRole("access_as_application");
         ...
     }
 ```
 
-`ValidateAppRole`方法是在[RolesRequiredHttpCoNtextExtensions.cs](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RolesRequiredHttpContextExtensions.cs#L28)中的 web.config 定義。
+`ValidateAppRole`方法會定義在[RolesRequiredHttpCoNtextExtensions.cs](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RolesRequiredHttpContextExtensions.cs#L28)中的 web.config 中。
 
 ### <a name="aspnet-mvc"></a>ASP.NET MVC
 

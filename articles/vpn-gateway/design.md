@@ -1,6 +1,6 @@
 ---
 title: 關於 Azure VPN 閘道設計
-description: 瞭解您可以設計 VPN 閘道拓朴以連線到 Azure 虛擬網路的方式。
+description: 瞭解您可以用來設計 VPN 閘道拓撲以連接到 Azure 虛擬網路的方式。
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
@@ -8,24 +8,26 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7b9077af50115e912415d784dc98ace081c0c88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0bcd0608796545a4982f72f276399d5f692e765
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84302310"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852697"
 ---
 # <a name="vpn-gateway-design"></a>VPN 閘道設計
 
-請務必知道 VPN 閘道連線有不同的組態可用。 您必須決定哪個組態最符合您的需求。 在下列各節中，您可以查看有關下列 VPN 閘道連線的設計資訊和拓撲圖表。 使用圖形和描述來協助選取符合您需求的連線拓撲。 這些圖表顯示主要基準拓撲，但您可以使用圖表做為指導方針來建立更複雜的設定。
+請務必知道 VPN 閘道連線有不同的組態可用。 您必須決定哪個組態最符合您的需求。 在下列各節中，您可以查看有關下列 VPN 閘道連線的設計資訊和拓撲圖。 使用圖形和描述來協助選取符合您需求的連線拓撲。 這些圖表顯示主要基準拓撲，但您可以使用圖表做為指導方針來建立更複雜的設定。
 
-## <a name="site-to-site-and-multi-site-ipsecike-vpn-tunnel"></a><a name="s2smulti"></a>站對站和多網站（IPsec/IKE VPN 通道）
+## <a name="site-to-site-and-multi-site-ipsecike-vpn-tunnel"></a><a name="s2smulti"></a>站對站和多網站 (IPsec/IKE VPN 通道) 
 
 ### <a name="site-to-site"></a><a name="S2S"></a>站對站
 
 網站間 (S2S) VPN 閘道連線是透過 IPsec/IKE (IKEv1 或 IKEv2) VPN 通道建立的連線。 S2S 連線可以用於跨單位與混合式組態。 S2S 連線需要位於內部部署的 VPN 裝置，其具有指派的公用 IP 位址。 如需選取 VPN 裝置的資訊，請參閱 [VPN 閘道常見問題集 - VPN 裝置](vpn-gateway-vpn-faq.md#s2s)。
 
 ![Azure VPN 閘道站對站連接範例](./media/design/vpngateway-site-to-site-connection-diagram.png)
+
+VPN 閘道可以使用一個公用 IP 或主動-主動模式，使用兩個公用 IP 設定為使用中的待命模式。 在主動-待命模式中，有一個 IPsec 通道正在使用中，另一個通道處於待命狀態。 在此設定中，流量會流經主動通道，如果此通道發生某些問題，流量會切換到待命通道。 *建議*在主動-主動模式中設定 VPN 閘道，這兩個 IPsec 通道同時處於作用中狀態，且資料同時流經兩個通道。 主動-主動模式的另一個優點是客戶體驗更高的輸送量。
 
 ### <a name="multi-site"></a><a name="Multi"></a>多網站
 
@@ -75,7 +77,7 @@ Azure 目前有兩種部署模型：傳統和 Resource Manager。 如果您已�
 
 ## <a name="expressroute-private-connection"></a><a name="ExpressRoute"></a>ExpressRoute (私人連線)
 
-ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部部署網路延伸至 Microsoft 雲端。 透過 ExpressRoute，您可以建立 Microsoft 雲端服務的連線，例如 Microsoft Azure、Office 365 和 CRM Online。 連線能力可以來自任意對任意（IP VPN）網路、點對點乙太網路，或是透過連線提供者在共置設備上進行的虛擬交叉連線。
+ExpressRoute 可讓您透過連線提供者提供的私人連線，將內部部署網路延伸至 Microsoft 雲端。 透過 ExpressRoute，您可以建立 Microsoft 雲端服務的連線，例如 Microsoft Azure、Office 365 和 CRM Online。 連線可以來自任何 (IP VPN) 網路、點對點乙太網路，或透過共置設備上的連線提供者的虛擬交叉連線。
 
 ExpressRoute 連線不會經過公用網際網路。 相較於一般網際網路連線，這可讓 ExpressRoute 連線提供更可靠、更快速、延遲更短和更安全的連線。
 
@@ -95,15 +97,15 @@ ExpressRoute 是從 WAN (不透過公用網際網路) 到 Microsoft 服務 (包�
 
 ## <a name="highly-available-connections"></a><a name="highly-available"></a>高可用性連接
 
-如需高可用性連線的規劃和設計，請參閱[高可用性連接](vpn-gateway-highlyavailable.md)。
+如需高可用性連接的規劃和設計，請參閱 [高可用性連接](vpn-gateway-highlyavailable.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 如需詳細資訊，請參閱 [VPN 閘道常見問題集](vpn-gateway-vpn-faq.md)。
 
-* 深入瞭解[VPN 閘道的設定](vpn-gateway-about-vpn-gateway-settings.md)。
+* 深入瞭解 [VPN 閘道設定](vpn-gateway-about-vpn-gateway-settings.md)。
 
-* 如需 VPN 閘道 BGP 考慮，請參閱[關於 bgp](vpn-gateway-bgp-overview.md)。
+* 如需 VPN 閘道 BGP 考慮，請參閱 [關於 bgp](vpn-gateway-bgp-overview.md)。
 
 * 檢視[訂用帳戶與服務限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 

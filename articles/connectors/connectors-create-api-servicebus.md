@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: d02467fddcce77340b9845fe084bf5a2fb8b01f3
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815720"
+ms.locfileid: "88853298"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure Logic Apps 和 Azure 服務匯流排在雲端中交換訊息
 
@@ -85,23 +85,23 @@ ms.locfileid: "88815720"
 
    1. 請為您的連線提供名稱，然後選取您的服務匯流排命名空間。
 
-      ![建立服務匯流排連線 (第一部分)](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
+      ![顯示提供連接名稱和選取服務匯流排命名空間的螢幕擷取畫面](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
 
       若要改為手動輸入連接字串，請選取 [ **手動輸入連接資訊**]。 如果您還沒有連接字串，請了解[如何尋找您的連接字串](#permissions-connection-string)。
 
    1. 選取您的服務匯流排原則，然後選取 [ **建立**]。
 
-      ![建立服務匯流排連線 (第二部分)](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
+      ![顯示選取服務匯流排原則的螢幕擷取畫面](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
    1. 選取您想要的訊息實體，例如佇列或主題。 針對此範例，請選取您的服務匯流排佇列。
    
-      ![選取服務匯流排佇列](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
+      ![顯示選取服務匯流排佇列的螢幕擷取畫面](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
 1. 為您選取的觸發程式提供必要的資訊。 若要在動作中加入其他可用的屬性，請開啟 [ **加入新的參數** ] 清單，然後選取您想要的屬性。
 
    針對此範例的觸發程式，請選取輪詢間隔和檢查佇列的頻率。
 
-   ![設定輪詢間隔](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
+   ![顯示在服務匯流排觸發程式上設定輪詢間隔的螢幕擷取畫面](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
    如需可用觸發程式和屬性的詳細資訊，請參閱連接器的 [參考頁面](/connectors/servicebus/)。
 
@@ -123,29 +123,29 @@ ms.locfileid: "88815720"
 
    在此範例中，請選取 [ **傳送訊息** ] 動作。
 
-   ![選取服務匯流排動作](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+   ![顯示選取服務匯流排動作的螢幕擷取畫面](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
 1. 如果您的動作第一次連線到服務匯流排命名空間，當邏輯應用程式設計工具提示您輸入連線資訊時，請遵循下列步驟。
 
    1. 請為您的連線提供名稱，然後選取您的服務匯流排命名空間。
 
-      ![建立服務匯流排連線 (第一部分)](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
+      ![顯示提供連接名稱和選取服務匯流排命名空間的螢幕擷取畫面](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
 
       若要改為手動輸入連接字串，請選取 [ **手動輸入連接資訊**]。 如果您還沒有連接字串，請了解[如何尋找您的連接字串](#permissions-connection-string)。
 
    1. 選取您的服務匯流排原則，然後選取 [ **建立**]。
 
-      ![建立服務匯流排連線 (第二部分)](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
+      ![顯示選取服務匯流排原則和選取 [建立] 按鈕的螢幕擷取畫面](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
 
    1. 選取您想要的訊息實體，例如佇列或主題。 針對此範例，請選取您的服務匯流排佇列。
 
-      ![選取服務匯流排佇列](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
+      ![顯示選取服務匯流排佇列的螢幕擷取畫面](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
 
 1. 為您選取的動作提供必要的詳細資料。 若要在動作中加入其他可用的屬性，請開啟 [ **加入新的參數** ] 清單，然後選取您想要的屬性。
 
    例如，選取 [ **內容** ] 和 [ **內容類型** ] 屬性，以便將它們新增至動作。 然後，指定您要傳送之訊息的內容。
 
-   ![提供訊息內容和詳細資料](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+   ![顯示提供訊息內容類型和詳細資料的螢幕擷取畫面](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 
    如需可用動作及其屬性的詳細資訊，請參閱連接器的 [參考頁面](/connectors/servicebus/)。
 

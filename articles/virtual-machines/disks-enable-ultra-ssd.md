@@ -8,12 +8,12 @@ ms.date: 05/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4f49d4e78cd58d16627a0b6fda1957baa9f1f085
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4c005bc49780edcb7f322455e37163e78d87619f
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752077"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852679"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure ultra 磁片
 
@@ -128,7 +128,7 @@ UltraSSDAvailable                            True
 
 ## <a name="deploy-an-ultra-disk-using-the-azure-portal"></a>使用 Azure 入口網站部署 ultra 磁片
 
-本節說明如何將配備 ultra 磁片的虛擬機器部署為數據磁片。 它會假設您已熟悉部署虛擬機器，如果沒有，請參閱我們 [的快速入門：在 Azure 入口網站中建立 Windows 虛擬機器](~/articles/virtual-machines/windows/quick-create-portal.md)。
+本節說明如何將配備 ultra 磁片的虛擬機器部署為數據磁片。 它會假設您已熟悉部署虛擬機器，如果沒有，請參閱我們 [的快速入門：在 Azure 入口網站中建立 Windows 虛擬機器](./windows/quick-create-portal.md)。
 
 - 登入 [Azure 入口網站](https://portal.azure.com/) ，然後流覽至 (VM) 部署虛擬機器。
 - 請務必選擇支援的 [VM 大小和區域](#ga-scope-and-limitations)。
@@ -156,7 +156,7 @@ UltraSSDAvailable                            True
 或者，如果您現有的 VM 位於能夠使用 ultra 磁片的區域/可用性區域中，您就可以利用 ultra 磁片，而不需要建立新的 VM。 在現有的 VM 上啟用 ultra 磁片，然後將它們連接為數據磁片。
 
 - 流覽至您的 VM，然後選取 [ **磁片**]。
-- 選取 [編輯]。
+- 選取 [編輯]  。
 
 ![options-selector-ultra-disks.png](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
 

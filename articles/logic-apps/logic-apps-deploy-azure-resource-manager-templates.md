@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4fce5b191e0af6a69fe218c4ed7272f352c3bdd2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 8c51095c9e33cd9e5f6da7e972e0cc596eec6478
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827489"
+ms.locfileid: "88855596"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>部署 Azure Logic Apps 的 Azure Resource Manager 範本
 
@@ -119,7 +119,9 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 ## <a name="authorize-oauth-connections"></a>授權 OAuth 連接
 
-部署之後，您的邏輯應用程式會以有效的參數以端對端方式運作。 不過，您仍然必須授權或使用預先授權 OAuth 連線，才能產生有效的存取權杖來 [驗證您的認證](../active-directory/develop/authentication-vs-authorization.md)。 一些建議如下：
+部署之後，您的邏輯應用程式會以有效的參數以端對端運作，但若要產生有效的存取權杖來 [驗證您的認證](../active-directory/develop/authentication-vs-authorization.md)，您仍然必須授權或使用預先授權 OAuth 連線。 不過，您只需要部署及驗證 API 連線資源一次，這表示您不需要在後續的部署中包含這些連接資源，除非您必須更新連接資訊。 如果您使用持續整合和持續部署管線，則只會部署更新的 Logic Apps 資源，而不需要每次都重新授權連線。
+
+以下是處理授權連接的一些建議：
 
 * 跨相同區域中的邏輯應用程式，Preauthorize 及共用 API 連線資源。 API 連線是獨立于邏輯應用程式的 Azure 資源。 雖然邏輯應用程式具有 API 連線資源的相依性，但 API 連線資源沒有邏輯應用程式的相依性，而且會在您刪除相依的邏輯應用程式之後繼續進行。 此外，邏輯應用程式可以使用存在於其他資源群組中的 API 連接。 不過，邏輯應用程式設計工具只支援在與邏輯應用程式相同的資源群組中建立 API 連接。
 

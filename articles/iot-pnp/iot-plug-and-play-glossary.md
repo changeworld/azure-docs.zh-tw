@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475459"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854222"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT 隨插即用預覽版的名詞解釋
 
@@ -24,7 +24,7 @@ Azure IoT 總管是一種圖形化工具，其可用來與 [IoT 隨插即用裝�
 
 - 檢視連線到 [IoT 中樞](#azure-iot-hub)的裝置。
 - 連線到 IoT 隨插即用裝置。
-- 查看裝置[元件](#component)。
+- 查看裝置 [元件](#component)。
 - 檢視裝置所傳送的[遙測](#telemetry)。
 - 使用裝置[屬性](#properties)。
 - 呼叫裝置[命令](#commands)。
@@ -46,7 +46,7 @@ IoT 中樞是託管於雲端中的受控服務，可做為 IoT 應用程式與�
 
 ## <a name="component"></a>元件
 
-元件可讓您建立模型[介面](#interface)，做為其他介面的元件。 [裝置型號](#device-model)可以將多個介面結合為元件。 例如，模型可能包含 switch 元件和控溫器元件。 模型中的多個元件也可以使用相同的介面類別型。 例如，模型可能會包含兩個控溫器元件。
+元件可讓您將模型 [介面](#interface) 建立成其他介面的元件。 [裝置模型](#device-model)可以結合多個介面作為元件。 例如，模型可能包含 switch 元件和控溫器元件。 模型中的多個元件也可以使用相同的介面類別型。 例如，模型可能包含兩個控溫器元件。
 
 ## <a name="connection-string"></a>連接字串
 
@@ -55,37 +55,41 @@ IoT 中樞是託管於雲端中的受控服務，可做為 IoT 應用程式與�
 - 裝置連接字串可讓 [IoT 隨插即用裝置](#iot-plug-and-play-device)連線到 IoT 中樞上的裝置對向端點。 裝置上用戶端程式碼會使用連接字串來建立與 IoT 中樞的安全連線。
 - IoT 中樞連接字串可讓後端解決方案和工具安全地連線到 IoT 中樞上的服務對向端點。 這些解決方案和工具會管理 IoT 中樞和連線的裝置。
 
+## <a name="device-certification"></a>裝置認證
+
+IoT 隨插即用裝置認證方案會確認裝置符合 IoT 隨插即用認證需求。 您可以將認證的裝置新增至 [Azure IoT 裝置目錄](https://aka.ms/devicecatalog)的公開認證。
+
 ## <a name="device-model"></a>裝置型號
 
-裝置型號描述[IoT 隨插即用裝置](#iot-plug-and-play-device)，並定義組成裝置的[元件](#component)。 簡單的裝置模型沒有個別的元件，而且包含單一根層級介面的定義。 更複雜的裝置型號包含多個元件。 裝置型號通常會對應至實體裝置、產品或 SKU。 您可以使用[數位 Twins 定義語言第2版](#digital-twins-definition-language)來定義裝置型號。
+裝置模型會描述 [IoT 隨插即用裝置](#iot-plug-and-play-device) ，並定義組成裝置的 [元件](#component) 。 簡單的裝置模型沒有個別的元件，而且包含單一根層級介面的定義。 更複雜的裝置模型包含多個元件。 裝置型號通常會對應至實體裝置、產品或 SKU。 您可以使用 [數位 Twins 定義語言第2版](#digital-twins-definition-language) 來定義裝置型號。
 
 ## <a name="device-builder"></a>Device builder
 
-裝置建立器會在執行程式碼以在[IoT 隨插即用裝置](#iot-plug-and-play-device)上執行時，使用[裝置模型](#device-model)和[介面](#interface)。 裝置構建者通常會使用其中一個[Azure IoT 裝置 sdk](#azure-iot-device-sdk)來執行裝置用戶端，但這並非必要。
+裝置產生器會在執行程式碼以在[IoT 隨插即用裝置](#iot-plug-and-play-device)上執行時，使用[裝置模型](#device-model)和[介面](#interface)。 裝置構建者通常會使用其中一個 [Azure IoT 裝置 sdk](#azure-iot-device-sdk) 來執行裝置用戶端，但這並非必要。
 
 ## <a name="device-modeling"></a>裝置模型
 
-「[裝置](#device-builder)建立器」會使用[數位 Twins 定義語言](#digital-twins-definition-language)來建立[IoT 隨插即用裝置](#iot-plug-and-play-device)的功能模型。 [解決方案](#solution-builder)產生器可以從模型設定 IoT 解決方案。
+[裝置](#device-builder)產生器會使用[數位 Twins 定義語言](#digital-twins-definition-language)來建立[IoT 隨插即用裝置](#iot-plug-and-play-device)的功能模型。 [解決方案](#solution-builder)產生器可以從模型設定 IoT 解決方案。
 
 ## <a name="digital-twin"></a>數位分身
 
-數位分身是 [IoT 隨插即用裝置](#iot-plug-and-play-device)的一種模型。 數位對應項是使用[數位 Twins 定義語言](#digital-twins-definition-language)來建立模型。 您可使用 [Azure IoT 裝置 SDK](#azure-iot-device-sdk) 在執行階段與數位分身互動。 例如，您可設定裝置上數位分身中的屬性值，SDK 會將這項變更傳達給雲端中的 IoT 解決方案。
+數位分身是 [IoT 隨插即用裝置](#iot-plug-and-play-device)的一種模型。 數位對應項會使用 [數位 Twins 定義語言](#digital-twins-definition-language)進行模型化。 您可使用 [Azure IoT 裝置 SDK](#azure-iot-device-sdk) 在執行階段與數位分身互動。 例如，您可設定裝置上數位分身中的屬性值，SDK 會將這項變更傳達給雲端中的 IoT 解決方案。
 
 ## <a name="digital-twin-change-events"></a>數位分身變更事件
 
-當 [IoT 隨插即用裝置](#iot-plug-and-play-device)連線到 [IoT 中樞](#azure-iot-hub)時，中樞可使用其路由功能來傳送數位分身變更的通知。 例如，每當裝置上的[屬性](#properties)值變更時，IoT 中樞可以將通知傳送至端點（例如事件中樞）。
+當 [IoT 隨插即用裝置](#iot-plug-and-play-device)連線到 [IoT 中樞](#azure-iot-hub)時，中樞可使用其路由功能來傳送數位分身變更的通知。 例如，每當裝置上的 [屬性](#properties) 值變更時，IoT 中樞就可以將通知傳送至端點（例如事件中樞）。
 
 ## <a name="digital-twins-definition-language"></a>數位 Twins 定義語言
 
-一種語言，其用來描述 [IoT 隨插即用裝置](#iot-plug-and-play-device)的模型和介面。 使用[數位 Twins 定義語言第2版](https://github.com/Azure/opendigitaltwins-dtdl)來描述數位對應項[的](#digital-twin)功能，並啟用 iot 平臺和 iot 解決方案以利用實體的語義。
+一種語言，其用來描述 [IoT 隨插即用裝置](#iot-plug-and-play-device)的模型和介面。 使用 [數位 Twins 定義語言第2版](https://github.com/Azure/opendigitaltwins-dtdl) 來描述數位對應項 [的](#digital-twin) 功能，並啟用 iot 平臺和 iot 解決方案來利用實體的語法。
 
 ## <a name="digital-twin-route"></a>數位分身路由
 
-在[IoT 中樞](#azure-iot-hub)內設定的路由，可將[數位對應項變更事件](#digital-twin-change-events)傳遞至和端點，例如事件中樞。
+在 [IoT 中樞](#azure-iot-hub) 中設定的路由，可將 [數位對應項變更事件](#digital-twin-change-events) 傳遞至和端點（例如事件中樞）。
 
 ## <a name="interface"></a>介面
 
-介面描述 [IoT 隨插即用裝置](#iot-plug-and-play-device)或[數位分身](#digital-twin)所實作的相關功能。 您可以跨不同的[裝置模型](#device-model)重複使用介面。 在裝置型號中使用介面時，它會定義裝置的[元件](#component)。
+介面描述 [IoT 隨插即用裝置](#iot-plug-and-play-device)或[數位分身](#digital-twin)所實作的相關功能。 您可以跨不同的 [裝置模型](#device-model)重複使用介面。 在裝置模型中使用介面時，它會定義裝置的 [元件](#component) 。
 
 ## <a name="iot-hub-query-language"></a>IoT 中樞查詢語言
 
@@ -93,23 +97,23 @@ IoT 中樞查詢語言可用於多種用途。 例如，您可使用語言來搜
 
 ## <a name="iot-plug-and-play-device"></a>IoT 隨插即用裝置
 
-IoT 隨插即用裝置通常是小型的獨立計算裝置，可收集資料或控制其他裝置，並執行軟體或固件來執行[裝置型號](#device-model)。  例如，IoT 隨插即用裝置可能是環境監視裝置，或智慧型農業灌溉系統的控制器。 您可撰寫雲端託管的 IoT 解決方案，從 IoT 隨插即用裝置下命令、控制和接收資料。
+IoT 隨插即用裝置通常是小型的獨立計算裝置，可收集資料或控制其他裝置，以及執行軟體或可執行 [裝置型號](#device-model)的固件。  例如，IoT 隨插即用裝置可能是環境監視裝置，或智慧型農業灌溉系統的控制器。 您可撰寫雲端託管的 IoT 解決方案，從 IoT 隨插即用裝置下命令、控制和接收資料。
 
 ## <a name="iot-plug-and-play-conventions"></a>IoT 隨插即用慣例
 
-IoT 隨插即用[裝置](#iot-plug-and-play-device)在與解決方案交換資料時，預期會遵循一組[慣例](concepts-convention.md)。
+當 IoT 隨插即用 [裝置](#iot-plug-and-play-device) 與解決方案交換資料時，應遵循一組 [慣例](concepts-convention.md) 。
 
 ## <a name="model-id"></a>模型識別碼
 
-當 IoT 隨插即用裝置連接到 IoT 中樞時，它會傳送它所實[DTDL](#digital-twins-definition-language)模型的**模型識別碼**。 這可讓解決方案尋找裝置型號。
+當 IoT 隨插即用裝置連線到 IoT 中樞時，它會傳送它所執行之[DTDL](#digital-twins-definition-language)模型的**模型識別碼**。 這可讓解決方案找出裝置型號。
 
 ## <a name="model-repository"></a>模型存放庫
 
-[模型存放庫](concepts-model-repository.md)會儲存[裝置型號](#device-model)和[介面](#interface)。
+[模型存放庫](concepts-model-repository.md)會儲存[裝置模型](#device-model)和[介面](#interface)。
 
 ## <a name="model-repository-rest-api"></a>模型存放庫 REST API
 
-用於管理模型存放庫及與其互動的 API。 例如，您可以使用 API 來新增和搜尋[裝置型號](#device-model)。
+用來管理和與模型存放庫互動的 API。 例如，您可以使用 API 來新增和搜尋 [裝置型號](#device-model)。
 
 ## <a name="properties"></a>屬性
 
@@ -119,9 +123,9 @@ IoT 隨插即用[裝置](#iot-plug-and-play-device)在與解決方案交換資�
 
 共用存取簽章是以 SHA-256 安全雜湊或 URI 為基礎的驗證機制。 共用存取簽章驗證有兩個元件：共用存取原則和共用存取簽章 (通常稱為權杖)。 [IoT 隨插即用裝置](#iot-plug-and-play-device)使用共用存取簽章向 [IoT 中樞](#azure-iot-hub)進行驗證。
 
-## <a name="solution-builder"></a>解決方案產生器
+## <a name="solution-builder"></a>Solution builder
 
-解決方案產生器會建立解決方案後端。 解決方案產生器通常適用于 Azure 資源，例如[IoT 中樞](#azure-iot-hub)和[模型存放庫](#model-repository)。
+解決方案產生器會建立解決方案後端。 解決方案產生器通常適用于 Azure 資源，例如 [IoT 中樞](#azure-iot-hub) 和 [模型存放庫](#model-repository)。
 
 ## <a name="telemetry"></a>遙測
 

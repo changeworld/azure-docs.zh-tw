@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97da7428090935daf95ae28a54b8ff10bca2e546
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 3c5b7debe0c94839e2ca7742817a49216328c571
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760901"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855303"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>在 Azure 中的 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和共用磁碟上安裝 SAP NetWeaver HA
 
@@ -124,6 +124,7 @@ ms.locfileid: "87760901"
 [sap-ha-guide-figure-3044]:./media/virtual-machines-shared-sap-high-availability-guide/3044-data-keeper-synchronous-mirroring-for-SAP-gui.png
 [sap-ha-guide-figure-3045]:./media/virtual-machines-shared-sap-high-availability-guide/3045-replicated-disk-by-data-keeper-in-wsfc.png
 [sap-ha-guide-figure-3046]:./media/virtual-machines-shared-sap-high-availability-guide/3046-dns-entry-sap-ascs-virtual-name-ip.png
+[sap-ha-guide-figure-3046-ers2]:./media/virtual-machines-shared-sap-high-availability-guide/3046-dns-entry-sap-ers2-virtual-name-ip.png
 [sap-ha-guide-figure-3047]:./media/virtual-machines-shared-sap-high-availability-guide/3047-dns-manager.png
 [sap-ha-guide-figure-3048]:./media/virtual-machines-shared-sap-high-availability-guide/3048-default-cluster-probe-port.png
 [sap-ha-guide-figure-3049]:./media/virtual-machines-shared-sap-high-availability-guide/3049-cluster-probe-port-after.png
@@ -146,9 +147,12 @@ ms.locfileid: "87760901"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-本文說明針對為 SAP ASCS/SCS 執行個體進行叢集處理，如何使用 Windows Server 容錯移轉和叢集共用磁碟在 Azure 中安裝及設定高可用性 SAP 系統。
+本文說明針對為 SAP ASCS/SCS 執行個體進行叢集處理，如何使用 Windows Server 容錯移轉和叢集共用磁碟在 Azure 中安裝及設定高可用性 SAP 系統。 如 [架構指南所述：使用叢集共用磁片在 Windows 容錯移轉叢集上叢集 SAP ASCS/SCS 實例][sap-high-availability-guide-wsfc-shared-disk]，叢集 *共用磁片*有兩種替代方案：
 
-## <a name="prerequisites"></a>Prerequisites
+- [Azure 共用磁碟](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- 使用 [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) 建立鏡像儲存體，以模擬叢集共用磁片 
+
+## <a name="prerequisites"></a>先決條件
 
 在開始安裝之前，請檢閱這些文章：
 
@@ -156,26 +160,23 @@ ms.locfileid: "87760901"
 
 * [使用 SAP ASCS/SCS 實例的 Windows 容錯移轉叢集和共用磁片，為 SAP HA 準備 Azure 基礎結構][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-由於設定視使用的 DBMS 系統而異，因此我們不會在本文中說明 DBMS 設定。 我們會假設 DBMS 在高可用性方面的疑慮已藉由不同 DBMS 廠商為 Azure 提供的功能支援而獲得解決。 範例包括適用於 SQL Server 的 Always On 或資料庫鏡像，以及適用於 Oracle 資料庫的 Oracle Data Guard。 在本文使用的案例中，我們不對 DBMS 加入更多保護。
+由於設定視使用的 DBMS 系統而異，因此我們不會在本文中說明 DBMS 設定。 我們會假設 DBMS 在高可用性方面的疑慮已藉由不同 DBMS 廠商為 Azure 提供的功能支援而獲得解決。 範例包括適用於 SQL Server 的 Always On 或資料庫鏡像，以及適用於 Oracle 資料庫的 Oracle Data Guard。 本文未涵蓋 DBMS 的高可用性案例。
 
 當不同的 DBMS 服務與 Azure 中的叢集 SAP ASCS/SCS 組態互動時，沒有任何特殊的考量。
 
 > [!NOTE]
-> SAP NetWeaver ABAP 系統、Java 系統及 ABAP+Java 系統的安裝程序幾乎完全相同。 最顯著的差異在於 SAP ABAP 系統有一個 ASCS 執行個體。 SAP Java 系統有一個 SCS 執行個體。 SAP ABAP+Java 系統有一個 ASCS 執行個體和一個 SCS 執行個體在相同 Microsoft 容錯移轉叢集群組中執行。 我們會明確說明每個 SAP NetWeaver 安裝堆疊的所有安裝差異。 您可以假設所有其他部分都相同。  
->
->
+> SAP NetWeaver ABAP 系統、Java 系統及 ABAP+Java 系統的安裝程序幾乎完全相同。 最顯著的差異在於 SAP ABAP 系統有一個 ASCS 執行個體。 SAP Java 系統有一個 SCS 執行個體。 SAP ABAP+Java 系統有一個 ASCS 執行個體和一個 SCS 執行個體在相同 Microsoft 容錯移轉叢集群組中執行。 我們會明確說明每個 SAP NetWeaver 安裝堆疊的所有安裝差異。 您可以假設其餘步驟都相同。  
 
 ## <a name="install-sap-with-a-high-availability-ascsscs-instance"></a><a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>使用高可用性 ASCS/SCS 實例安裝 SAP
 
 > [!IMPORTANT]
-> 請不要將分頁檔放在 SIOS DataKeeper 鏡像磁碟區上。 DataKeeper 不支援鏡像磁碟區。 您可以將分頁檔留在 Azure 虛擬機器的暫存磁碟機 D 中，此為預設值。 如果還不在此磁碟機中，請將 Windows 分頁檔移至 Azure 虛擬機器的磁碟機 D。
->
->
+> 如果您使用 SIOS 來呈現共用磁片，請不要將分頁檔放在 SIOS DataKeeper 鏡像磁碟區上。 您可以將分頁檔留在 Azure 虛擬機器的暫存磁碟機 D 中，此為預設值。 如果還不在此磁碟機中，請將 Windows 分頁檔移至 Azure 虛擬機器的磁碟機 D。  
+
 
 使用高可用性 ASCS/SCS 執行個體安裝 SAP 包含下列工作︰
 
 * 建立叢集 SAP ASCS/SCS 執行個體的虛擬主機名稱。
-* 安裝 SAP 的第一個叢集節點。
+* 在第一個叢集節點上安裝 SAP。
 * 修改 ASCS/SCS 執行個體的 SAP 設定檔。
 * 新增探查連接埠。
 * 開啟 Windows 防火牆探查連接埠。
@@ -185,174 +186,229 @@ ms.locfileid: "87760901"
 1. 在「Windows DNS 管理員」中，為 ASCS/SCS 執行個體的虛擬主機名稱建立 DNS 項目。
 
    > [!IMPORTANT]
-   > 您指派給 ASCS/SCS 實例之虛擬主機名稱的 IP 位址，必須與您指派給 Azure Load Balancer (\<SID\> -lb-ASCS) 的 ip 位址相同。  
-   >
-   >
-
-   虛擬 SAP ASCS/SCS 主機名稱 (pr1-ascs-sap) 的 IP 位址與 Azure Load Balancer (pr1-lb-ascs) 的 IP 位址相同。
-
+   > 您指派給 ASCS/SCS 實例之虛擬主機名稱的 IP 位址必須與指派給 Azure Load Balancer 的 IP 位址相同。  
+   
+   
    ![圖 1：定義 SAP ASCS/SCS 叢集虛擬名稱和 TCP/IP 位址的 DNS 項目][sap-ha-guide-figure-3046]
 
-   _**圖 1：** 定義 SAP ASCS/SCS 叢集虛擬名稱和 TCP/IP 位址的 DNS 項目_
+   _定義 SAP ASCS/SCS 叢集虛擬名稱和 TCP/IP 位址的 DNS 項目_
 
-2. 若要定義指派給虛擬主機名稱的 IP 位址，請選取 [ **DNS 管理員**  >  **網域**]。
+2. 如果使用新的 SAP 排入佇列複寫伺服器2，也就是叢集實例，則您也必須在 DNS 中保留 ERS2 的虛擬主機名稱。 
+
+   > [!IMPORTANT]
+   > 您指派給 ERS2 實例之虛擬主機名稱的 IP 位址，必須是您指派給 Azure Load Balancer 的第二個 IP 位址。    
+   
+   
+   ![圖1A：定義 SAP ASCS/SCS 叢集虛擬名稱和 TCP/IP 位址的 DNS 專案][sap-ha-guide-figure-3046-ers2]
+
+   _定義 SAP ERS2 叢集虛擬名稱和 TCP/IP 位址的 DNS 專案_
+
+
+3. 若要定義指派給虛擬主機名稱的 IP 位址，請選取 [ **DNS 管理員**  >  **網域**]。
 
    ![圖 2：SAP ASCS/SCS 叢集設定的新虛擬名稱和 TCP/IP 位址][sap-ha-guide-figure-3047]
 
-   _**圖 2：** SAP ASCS/SCS 叢集設定的新虛擬名稱和 TCP/IP 位址_
+   _適用于 SAP ASCS/SCS 叢集設定的新虛擬名稱和 TCP/IP 位址_
 
 ### <a name="install-the-sap-first-cluster-node"></a><a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a> 安裝 SAP 的第一個叢集節點
 
-1. 在叢集節點 A 上執行第一個叢集節點選項。例如，在 pr1-ascs-0* 主機上。
-2. 如果要為 Azure 內部負載平衡器保留預設連接埠，請選取：
+1. 在叢集節點 A 上執行第一個叢集節點選項。選取：
 
    * **ABAP 系統**：**ASCS** 執行個體號碼 **00**
    * **Java 系統**：**SCS** 執行個體號碼 **01**
    * **ABAP + Java 系統**：**ASCS** 執行個體號碼 **00** 和 **SCS** 執行個體號碼 **01**
 
-   如果 ABAP ASCS 執行個體要使用 00 以外的執行個體編號，且 Java SCS 執行個體使用 01 以外的執行個體編號，首先，變更 Azure 內部負載平衡器預設負載平衡規則。 如需詳細資訊，請參閱[變更 Azure 內部負載平衡器的 ASCS/SCS 預設負載平衡規則][sap-ha-guide-8.9]。
+   
+   > [!IMPORTANT]
+   > 請記住，如果使用基本 SKU) 和選取的 SAP 實例號碼必須相符，Azure 內部負載平衡器負載平衡規則中的設定 (。
 
-接下來幾個步驟並未在標準 SAP 安裝文件中說明。
+2. 遵循 SAP 描述的安裝程式。 請確定在開始安裝選項「第一個叢集節點」中，選擇「叢集共用磁片」作為設定選項。
 
-> [!NOTE]
+> [!TIP]
 > SAP 安裝文件說明如何安裝第一個 ASCS/SCS 叢集節點。
->
->
+
+
 
 ### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a> 修改 ASCS/SCS 執行個體的 SAP 設定檔
 
-首先，新增新的設定檔參數。 此設定檔參數可避免 SAP 工作程序與加入佇列伺服器之間的連線在閒置時間太長時關閉。 我們在本文中的[在 SAP ASCS/SCS 執行個體的兩個叢集節點上都新增登錄項目][sap-ha-guide-8.11]中提到問題案例。 在該部分，我們也介紹了對一些基本 TCP/IP 連線參數所做的兩項變更。 在第二個步驟中，您必須設定讓加入佇列伺服器傳送 `keep_alive` 訊號，如此連線才不會達到 Azure 內部負載平衡器的閒置臨界值。
+如果您已排入佇列複寫伺服器1，請新增 SAP 設定檔參數， `enque/encni/set_so_keepalive` 如下所述。 此設定檔參數可避免 SAP 工作程序與加入佇列伺服器之間的連線在閒置時間太長時關閉。 ERS2 不需要 SAP 參數。 
 
-若要修改 ASCS/SCS 執行個體的 SAP 設定檔：
-
-1. 如果使用 ENSA1，請將此設定檔參數新增至 SAP ASCS/SCS 實例設定檔。
+1. 如果使用 ERS1，請將此設定檔參數新增至 SAP ASCS/SCS 實例設定檔。
 
    ```
    enque/encni/set_so_keepalive = true
    ```
-   在我們的範例中，路徑為：
-
-   `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_ASCS00_pr1-ascs-sap`
-
-   例如，新增到 SAP SCS 執行個體設定檔和對應的路徑：
-
-   `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
    
-   針對 ENSA1 和 ENSA2，請確定 `keepalive` OS 參數設定如 SAP 附注[1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述。   
+   針對 ERS1 和 ERS2，請確定 `keepalive` 作業系統參數已設定為 SAP note [1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述。   
 
-2. 若要套用變更，請重新啟動 SAP ASCS/SCS 執行個體。
+2. 若要套用 SAP 設定檔參數變更，請重新開機 SAP ASCS/SCS 實例。
 
 ### <a name="add-a-probe-port"></a><a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a> 新增探查連接埠
 
 使用內部負載平衡器探查功能，讓整個叢集組態使用 Azure Load Balancer。 Azure 內部負載平衡器通常會在參與的虛擬機器之間，平均分配內送的工作負載。
 
- 不過，這對某些叢集組態不會產生作用，因為只有一個執行個體是主動的。 另一個執行個體是被動的，而且不接受任何工作負載。 Azure 內部負載平衡器僅將工作指派給主動的執行個體時，探查功能才可提供協助。 使用探查功能，內部負載平衡器便能夠偵測哪些執行個體是主動的，然後只以該執行個體作為工作負載的目標。
+不過，這對某些叢集組態不會產生作用，因為只有一個執行個體是主動的。 另一個執行個體是被動的，而且不接受任何工作負載。 當 Azure 內部負載平衡器偵測到使用中的實例，而且只以作用中的實例為目標時，探查功能會有所説明。  
 
-若要新增探查連接埠︰
+> [!IMPORTANT]
+> 在此範例設定中， **ProbePort** 會設定為 620**Nr**。 若為具有數位 **00** 的 SAP ASCS 實例，則為 620**00**。 您將需要調整設定，以符合您的 SAP 實例號碼和 SAP SID。
 
-1. 執行下列 PowerShell 命令，檢查目前的 **ProbePort** 值：
+若要新增探查埠，請在其中一個叢集 Vm 上執行此 PowerShell 模組：
 
+- SAP ASC/SCS 實例的情況 
    ```powershell
-   $SAPSID = "PR1"     # SAP <SID>
-
-   $SAPNetworkIPClusterName = "SAP $SAPSID IP"
-   Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
+   Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID SID -ProbePort 62000
    ```
 
-   在叢集組態中的其中一個虛擬機器中執行命令。
-
-2. 定義探查連接埠。 預設探查連接埠號碼為 0。 在我們的範例中，我們會使用探查連接埠 62000。
-
-   ![圖 3：叢集設定探查連接埠預設為 0][sap-ha-guide-figure-3048]
-
-   _**圖 3：** 預設叢集設定探查連接埠為 0_
-
-   SAP Azure Resource Manager 範本中已定義連接埠號碼。 您可以在 PowerShell 中指派連接埠號碼。
-
-   若要為 SAP IP 叢集資源設定新的 ProbePort 值 \<SID\> ，請執行下列 powershell 腳本來更新您環境的 powershell 變數：
-
+- 如果使用已叢集化的 ERS2。 不需要為 ERS1 設定探查埠，因為它未叢集化。  
    ```powershell
-   $SAPSID = "PR1"      # SAP <SID>
-   $ProbePort = 62000   # ProbePort of the Azure internal load balancer
-
-   Clear-Host
-   $SAPClusterRoleName = "SAP $SAPSID"
-   $SAPIPresourceName = "SAP $SAPSID IP"
-   $SAPIPResourceClusterParameters =  Get-ClusterResource $SAPIPresourceName | Get-ClusterParameter
-   $IPAddress = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Address" }).Value
-   $NetworkName = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Network" }).Value
-   $SubnetMask = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "SubnetMask" }).Value
-   $OverrideAddressMatch = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "OverrideAddressMatch" }).Value
-   $EnableDhcp = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "EnableDhcp" }).Value
-   $OldProbePort = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "ProbePort" }).Value
-
-   $var = Get-ClusterResource | Where-Object {  $_.name -eq $SAPIPresourceName  }
-
-   Write-Host "Current configuration parameters for SAP IP cluster resource '$SAPIPresourceName' are:" -ForegroundColor Cyan
-   Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
-
-   Write-Host
-   Write-Host "Current probe port property of the SAP cluster resource '$SAPIPresourceName' is '$OldProbePort'." -ForegroundColor Cyan
-   Write-Host
-   Write-Host "Setting the new probe port property of the SAP cluster resource '$SAPIPresourceName' to '$ProbePort' ..." -ForegroundColor Cyan
-   Write-Host
-
-   $var | Set-ClusterParameter -Multiple @{"Address"=$IPAddress;"ProbePort"=$ProbePort;"Subnetmask"=$SubnetMask;"Network"=$NetworkName;"OverrideAddressMatch"=$OverrideAddressMatch;"EnableDhcp"=$EnableDhcp}
-
-   Write-Host
-
-   $ActivateChanges = Read-Host "Do you want to take restart SAP cluster role '$SAPClusterRoleName', to activate the changes (yes/no)?"
-
-   if($ActivateChanges -eq "yes"){
-   Write-Host
-   Write-Host "Activating changes..." -ForegroundColor Cyan
-
-   Write-Host
-   write-host "Taking SAP cluster IP resource '$SAPIPresourceName' offline ..." -ForegroundColor Cyan
-   Stop-ClusterResource -Name $SAPIPresourceName
-   sleep 5
-
-   Write-Host "Starting SAP cluster role '$SAPClusterRoleName' ..." -ForegroundColor Cyan
-   Start-ClusterGroup -Name $SAPClusterRoleName
-
-   Write-Host "New ProbePort parameter is active." -ForegroundColor Green
-   Write-Host
-
-   Write-Host "New configuration parameters for SAP IP cluster resource '$SAPIPresourceName':" -ForegroundColor Cyan
-   Write-Host
-   Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
-   }else
-   {
-   Write-Host "Changes are not activated."
-   }
+   Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID SID -ProbePort 62001 -IsSAPERSClusteredInstance $True
    ```
 
-   使 SAP 叢集 \<SID\> 角色上線之後，請確認**ProbePort**已設定為新的值。
-
+ 函數的程式碼 `Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource` 看起來會像這樣：
    ```powershell
-   $SAPSID = "PR1"     # SAP <SID>
-
-   $SAPNetworkIPClusterName = "SAP $SAPSID IP"
-   Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
+    function Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource {
+    
+    <#
+    .SYNOPSIS 
+    Set-AzureLoadBalancerHealthProbePortOnSAPClusterIPResource will set a new Azure Load Balancer Health Probe Port on 'SAP $SAPSID IP' cluster resource.
+    
+    .DESCRIPTION
+    Set-AzureLoadBalancerHealthProbePortOnSAPClusterIPResource will set a new Azure Load Balancer Health Probe Port on 'SAP $SAPSID IP' cluster resource.
+    It will also restart SAP Cluster group (default behavior), to activate the changes. 
+    
+    You need to run it on one of the SAP ASCS/SCS Windows cluster nodes.
+    
+    Expectation is that SAP group is installed with official SWPM installation tool, which will set default expected naming convention for:
+    - SAP Cluster Group:               'SAP $SAPSID'
+    - SAP Cluster IP Address Resource: 'SAP $SAPSID IP' 
+    
+    .PARAMETER SAPSID 
+    SAP SID - 3 characters staring with letter.
+    
+    .PARAMETER ProbePort 
+    Azure Load Balancer Health Check Probe Port.
+    
+    .PARAMETER RestartSAPClusterGroup 
+    Optional parameter. Default value is '$True', so SAP cluster group will be restarted to activate the changes.
+    
+    .PARAMETER IsSAPERSClusteredInstance 
+    Optional parameter.Default value is '$False'.
+    If set to $True , then handle clsutered new SAP ERS2 instance.
+    
+    
+    .EXAMPLE 
+    # Set probe port to 62000, on SAP cluster resource 'SAP AB1 IP', and restart the SAP cluster group 'SAP AB1', to activate the changes.
+    Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID AB1 -ProbePort 62000 
+    
+    .EXAMPLE 
+    # Set probe port to 62000, on SAP cluster resource 'SAP AB1 IP'. SAP cluster group 'SAP AB1' IS NOT restarted, therefore changes are NOT active.
+    # To activate the changes you need to manualy restart 'SAP AB1' cluster group.
+    Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID AB1 -ProbePort 62000 -RestartSAPClusterGroup $False
+    
+    .EXAMPLE 
+    # Set probe port to 62001, on SAP cluster resource 'SAP AB1 ERS IP'. SAP cluster group 'SAP AB1 ERS' IS restarted, to activate the changes.
+    Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID AB1 -ProbePort 62000 -IsSAPERSClusteredInstance $True
+    
+    #> 
+    
+        [CmdletBinding()]
+        param(
+            
+            [Parameter(Mandatory=$True)]
+            [ValidateNotNullOrEmpty()]  
+            [ValidateLength(3,3)]      
+            [string]$SAPSID,
+                  
+            [Parameter(Mandatory=$True)]
+            [ValidateNotNullOrEmpty()]        
+            [int] $ProbePort,
+    
+            [Parameter(Mandatory=$False)] 
+            [bool] $RestartSAPClusterGroup = $True,
+    
+            [Parameter(Mandatory=$False)] 
+            [bool] $IsSAPERSClusteredInstance = $False
+        )
+    
+        BEGIN{}
+        
+        PROCESS{
+            try{                                      
+                
+                if($IsSAPERSClusteredInstance){
+                    #Handle clustered SAP ERS Instance
+                    $SAPClusterRoleName = "SAP $SAPSID ERS"
+                    $SAPIPresourceName = "SAP $SAPSID ERS IP"            
+                }else{
+                    #Handle clustered SAP ASCS/SCS Instance
+                    $SAPClusterRoleName = "SAP $SAPSID"
+                    $SAPIPresourceName = "SAP $SAPSID IP"
+                }
+    
+                $SAPIPResourceClusterParameters =  Get-ClusterResource $SAPIPresourceName | Get-ClusterParameter
+                $IPAddress = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Address" }).Value
+                $NetworkName = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Network" }).Value
+                $SubnetMask = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "SubnetMask" }).Value
+                $OverrideAddressMatch = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "OverrideAddressMatch" }).Value
+                $EnableDhcp = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "EnableDhcp" }).Value
+                $OldProbePort = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "ProbePort" }).Value
+    
+                $var = Get-ClusterResource | Where-Object {  $_.name -eq $SAPIPresourceName  }
+                Write-Output "Current configuration parameters for SAP IP cluster resource '$SAPIPresourceName' are:" 
+    
+                Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
+    
+                Write-Output " "
+                Write-Output "Current probe port property of the SAP cluster resource '$SAPIPresourceName' is '$OldProbePort'." 
+                Write-Output " "
+                Write-Output "Setting the new probe port property of the SAP cluster resource '$SAPIPresourceName' to '$ProbePort' ..." 
+                Write-Output " "
+    
+                $var | Set-ClusterParameter -Multiple @{"Address"=$IPAddress;"ProbePort"=$ProbePort;"Subnetmask"=$SubnetMask;"Network"=$NetworkName;"OverrideAddressMatch"=$OverrideAddressMatch;"EnableDhcp"=$EnableDhcp}
+    
+                Write-Output " "
+                    
+                if($RestartSAPClusterGroup){
+                    Write-Output ""
+                    Write-Output "Activating changes..." 
+    
+                    Write-Output " "
+                    Write-Output "Taking SAP cluster IP resource '$SAPIPresourceName' offline ..."
+                    Stop-ClusterResource -Name $SAPIPresourceName
+                    sleep 5
+    
+                    Write-Output "Starting SAP cluster role '$SAPClusterRoleName' ..."
+                    Start-ClusterGroup -Name $SAPClusterRoleName
+    
+                    Write-Output "New ProbePort parameter is active." 
+                    Write-Output " "
+    
+                    Write-Output "New configuration parameters for SAP IP cluster resource '$SAPIPresourceName':" 
+                    Write-Output " " 
+                    Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
+                }else
+                {
+                    Write-Output "SAP cluster role '$SAPClusterRoleName' is not restarted, therefore changes are not activated."
+                }   
+            }
+            catch{
+               Write-Error  $_.Exception.Message
+           }
+        }
+        END {}
+    }
 
    ```
-   指令碼執行之後，系統會提示您重新啟動 SAP 叢集群組，以啟動變更。
-
-   ![圖 4：設定新值之後，探查叢集連接埠][sap-ha-guide-figure-3049]
-
-   _**圖4：** 設定新值之後，探查叢集埠_
 
 ### <a name="open-the-windows-firewall-probe-port"></a><a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a> 開啟 Windows 防火牆探查連接埠
 
-開啟這兩個叢集節點上的 Windows 防火牆探查連接埠。 使用下列指令碼開啟 Windows 防火牆探查連接埠。 請更新您環境的 PowerShell 變數。
+開啟這兩個叢集節點上的 Windows 防火牆探查連接埠。 使用下列指令碼開啟 Windows 防火牆探查連接埠。 請更新您環境的 PowerShell 變數。  
+如果使用 ERS2，您也必須開啟 ERS2 探查埠的防火牆埠。  
 
   ```powershell
-  $ProbePort = 62000   # ProbePort of the Azure internal load balancer
-
-  New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
+    $ProbePort = 62000   # ProbePort of the Azure internal load balancer
+    New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
-
-**ProbePort** 已設為 **62000**。 現在您可以從其他主機存取檔案共用 \\\ascsha-clsap\sapmnt，例如從 ascsha-dbas。
 
 ## <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a> 安裝資料庫執行個體
 
@@ -362,69 +418,44 @@ ms.locfileid: "87760901"
 
 若要安裝第二個叢集，請依照 SAP 安裝指南中所述的步驟。
 
-## <a name="change-the-start-type-of-the-sap-ers-windows-service-instance"></a><a name="094bc895-31d4-4471-91cc-1513b64e406a"></a> 變更 SAP ERS Windows 服務執行個體的啟動類型
-
-將兩個叢集節點上 SAP ERS Windows 服務的啟動類型都變更為 [自動 (延遲啟動)]。
-
-![圖 5：將 SAP ERS 執行個體的服務類型變更為延遲的自動類型][sap-ha-guide-figure-3050]
-
-_**圖 5：** 將 SAP ERS 執行個體的服務類型變更為延遲的自動類型_
-
 ## <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a> 安裝 SAP 主要應用程式伺服器
 
-\<SID\>在您指定用來裝載 PAS 的虛擬機器上，安裝主要應用程式伺服器 (PAS) 實例-0。 在 Azure 上沒有相依性。 沒有 DataKeeper 特定設定。
+在 \<SID\> 您指定用來裝載 PAS 的虛擬機器上安裝主要應用程式伺服器 (PAS) 實例-di-0。 在 Azure 上沒有相依性。 如果使用 SIOS，則沒有 DataKeeper 特定的設定。
 
 ## <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a> 安裝 SAP 其他應用程式伺服器
 
-在您指派來裝載 SAP 應用程式伺服器執行個體的所有虛擬機器上安裝 SAP 其他應用程式伺服器 (AAS)。 例如，在 \<SID\> -di-1 到 \<SID\> -di- &lt; n &gt; 。
+在您指派來裝載 SAP 應用程式伺服器執行個體的所有虛擬機器上安裝 SAP 其他應用程式伺服器 (AAS)。 
 
-> [!NOTE]
-> 這樣就完成高可用性的 SAP NetWeaver 系統的安裝。 接下來，繼續進行容錯移轉測試。
->
+## <a name="test-the-sap-ascsscs-instance-failover"></a><a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a> 測試 SAP ASCS/SCS 實例容錯移轉
 
+針對概述的容錯移轉測試，我們假設在節點 A 上的 SAP ASCS 為作用中。  
 
-## <a name="test-the-sap-ascsscs-instance-failover-and-sios-replication"></a><a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a> 測試 SAP ASCS/SCS 執行個體容錯移轉和 SIOS 複寫
-使用「容錯移轉叢集管理員」和 SIOS DataKeeper 管理和組態工具，可輕鬆地測試及監視 SAP ASCS/SCS 執行個體容錯移轉和 SIOS 磁碟複寫。
+1. 確認 SAP 系統可以成功地從節點 A 容錯移轉到節點 B，選擇下列其中一個選項，以起始 \<SID\> 從叢集節點 a 到叢集節點 B 的 SAP 叢集群組容錯移轉：
+    - 容錯移轉叢集管理員  
+    - 容錯移轉叢集 PowerShell
 
-### <a name="sap-ascsscs-instance-is-running-on-cluster-node-a"></a><a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a> SAP ASCS/SCS 執行個體在叢集節點 A 上執行
+    ```powershell
+    $SAPSID = "PR1"     # SAP <SID>
+ 
+    $SAPClusterGroup = "SAP $SAPSID"
+    Move-ClusterGroup -Name $SAPClusterGroup
 
-SAP PR1 叢集群組在叢集節點 A 上執行，例如，在 pr1-ascs-0 上。 將屬於 SAP PR1 叢集群組的共用磁碟 S 指派給叢集節點 A。ASCS/SCS 執行個體也使用磁碟 S。 
+    ```
 
-![圖 6：容錯移轉叢集管理員：SAP \<SID\> 叢集群組在叢集結點 A 上執行][sap-ha-guide-figure-5000]
-
-_**圖6：** 容錯移轉叢集管理員： SAP 叢集 \<SID\> 群組正在叢集節點 A 上執行_
-
-在 SIOS DataKeeper 管理和組態工具中，您可以看到共用磁碟資料以同步方式從叢集節點 A 上的來源磁碟區 S 複寫到叢集節點 B 上的目標磁碟區 S。例如，從 pr1-ascs-0 [10.0.0.40] 複寫到 pr1-ascs-1 [10.0.0.41]。
-
-![圖 7：在 SIOS DataKeeper 中，將本機磁碟區從叢集節點 A 複寫到叢集節點 B][sap-ha-guide-figure-5001]
-
-_**圖7：** 在 SIOS DataKeeper 中，將本機磁片區從叢集節點 A 複寫到叢集節點 B_
-
-### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a> 從節點 A 到節點 B 進行容錯移轉
-
-1. 選擇下列其中一個選項，以起始將 SAP 叢集 \<SID\> 群組從叢集節點 a 到叢集節點 B 的容錯移轉：
-   - 容錯移轉叢集管理員  
-   - 容錯移轉叢集 PowerShell
-
-   ```powershell
-   $SAPSID = "PR1"     # SAP <SID>
-
-   $SAPClusterGroup = "SAP $SAPSID"
-   Move-ClusterGroup -Name $SAPClusterGroup
-
-   ```
 2. 重新啟動 Windows 客體作業系統內的叢集節點 A。 這會起始將 SAP 叢集 \<SID\> 群組從節點 A 到節點 B 的自動容錯移轉。  
 3. 從 Azure 入口網站重新啟動叢集節點 A。 這會起始將 SAP 叢集 \<SID\> 群組從節點 A 到節點 B 的自動容錯移轉。  
 4. 使用 Azure PowerShell 重新啟動叢集節點 A。 這會起始將 SAP 叢集 \<SID\> 群組從節點 A 到節點 B 的自動容錯移轉。
 
-   容錯移轉之後，SAP 叢集 \<SID\> 群組會在叢集節點 B 上執行。例如，它正在 pr1-ascs-1 上執行。
+5. 驗證
+   - 在容錯移轉之後，請確認 SAP 叢集群組正在叢集 \<SID\> 節點 B 上執行。 
 
-   ![圖 8：在「容錯移轉叢集管理員」中，SAP \<SID\> 叢集群組在叢集節點 B 上執行][sap-ha-guide-figure-5002]
+      ![圖 8：在「容錯移轉叢集管理員」中，SAP \<SID\> 叢集群組在叢集節點 B 上執行][sap-ha-guide-figure-5002]
 
-   _**圖 8**：在容錯移轉叢集管理員中，SAP 叢集群組正在叢集 \<SID\> 節點 B 上執行_
+      _在容錯移轉叢集管理員中，SAP 叢集群組正在叢集 \<SID\> 節點 B 上執行_
 
-   共用磁碟現在已掛接在叢集節點 B 上。SIOS DataKeeper 正在將資料從叢集節點 B 上的來源磁碟區 S 複寫到叢集節點 A 上的目標磁碟區 S。例如，從 pr1-ascs-1 [10.0.0.41] 複寫到 pr1-ascs-0 [10.0.0.40]。
+   - 容錯移轉之後，請確認共用磁片現在已掛接在叢集節點 B 上。 
+   - 在容錯移轉之後，如果使用 SIOS，請確認 SIOS DataKeeper 正在將資料從叢集節點 B 上的來源磁片區 S 複寫到叢集節點 A 上的目標磁片區 S。 
 
-   ![圖 9：SIOS DataKeeper 將本機磁碟區從叢集節點 B 複寫到叢集節點 A][sap-ha-guide-figure-5003]
+      ![圖 9：SIOS DataKeeper 將本機磁碟區從叢集節點 B 複寫到叢集節點 A][sap-ha-guide-figure-5003]
 
-   _**圖9：** SIOS DataKeeper 會將本機磁片區從叢集節點 B 複製到叢集節點 A_
+      _SIOS DataKeeper 將本機磁片區從叢集節點 B 複寫到叢集節點 A_

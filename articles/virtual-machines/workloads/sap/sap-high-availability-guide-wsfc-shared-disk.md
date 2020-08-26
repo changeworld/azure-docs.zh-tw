@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中使用共用磁片在 WSFC 上叢集 SAP ASCS/SCS 實例 |Microsoft Docs
+title: 在 Azure 中使用共用磁片的 WSFC 上的 SAP ASCS/SCS 實例叢集 |Microsoft Docs
 description: 了解如何使用叢集共用磁碟於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -13,26 +13,26 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b286812ba0a418d74738837fd5cfb7a7b617a9fa
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982950"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854425"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>在 Azure 中使用叢集共用磁碟於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows 作業系統][Logo_Windows] Windows
 >
 
 Windows Server 容錯移轉叢集是 Windows 中高可用性 SAP ASCS/SCS 安裝和 DBMS 的基礎。
 
 容錯移轉叢集是由 1+n 個獨立伺服器 (節點) 所組成的群組，這些伺服器會共同運作以提升應用程式和服務的可用性。 如果發生節點失敗，Windows Server 容錯移轉叢集會計算發生的失敗次數，以及仍然維持狀況良好的叢集，以提供應用程式和服務。 您可以從不同的仲裁模式選擇以達成容錯移轉叢集。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 開始本文中的工作之前，請檢閱下列文章：
 
 * [SAP NetWeaver 的 Azure 虛擬機器高可用性架構和案例][sap-high-availability-architecture-scenarios]
@@ -40,7 +40,7 @@ Windows Server 容錯移轉叢集是 Windows 中高可用性 SAP ASCS/SCS 安裝
 
 ## <a name="windows-server-failover-clustering-in-azure"></a>Azure 中的 Windows Server 容錯移轉叢集
 
-相較於裸機或私人雲端部署，Azure 虛擬機器需要額外的步驟來設定 Windows Server 容錯移轉叢集。 當您建置叢集時，需要為 SAP ASCS/SCS 執行個體設定數個 IP 位址和虛擬主機名稱。
+使用 Azure 虛擬機器的 Windows Server 容錯移轉叢集需要額外的設定步驟。 當您建置叢集時，需要為 SAP ASCS/SCS 執行個體設定數個 IP 位址和虛擬主機名稱。
 
 ### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Azure 和叢集虛擬主機名稱中的名稱解析
 
@@ -52,7 +52,7 @@ Azure Load Balancer 服務可為 Azure 提供「內部負載平衡器」**。 �
 
 ![圖 1：Azure 中不含共用磁碟的 Windows 容錯移轉叢集設定][sap-ha-guide-figure-1001]
 
-_**圖 1**：Azure 中不含共用磁碟的 Windows Server 容錯移轉叢集設定_
+_Azure 中不含共用磁片的 Windows Server 容錯移轉叢集設定_
 
 ### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>含叢集共用磁碟的 SAP ASCS/SCS HA
 在 Windows 中，SAP ASCS/SCS 執行個體包含 SAP 中央服務、SAP 訊息伺服器、加入佇列伺服器處理序和 SAP 全域主機檔案。 SAP 全域主機檔案會儲存整個 SAP 系統的中央檔案。
@@ -68,35 +68,109 @@ SAP ASCS/SCS 執行個體包含下列元件：
   * 檔案結構：S:\usr\sap\\&lt;SID&gt;\SYS\..
   * sapmnt 檔案共用，可利用下列 UNC 路徑，供存取這些全域 S:\usr\sap\\&lt;SID&gt;\SYS\... 檔案：
 
-    \\\\<ASCS/SCS 虛擬主機名稱 \> \Sapmnt \\ &lt; SID &gt; \SYS \. .。
+    \\\\<ASCS/SCS 虛擬主機名稱 \> \Sapmnt \\ &lt; SID &gt; \SYS \. .。。
 
 
 ![圖 2：SAP ASCS/SCS 執行個體的處理序、檔案結構和全域主機 sapmnt 檔案共用][sap-ha-guide-figure-8001]
 
-_**圖2：** SAP ASCS/SCS 實例的進程、檔案結構和全域主機 sapmnt 檔案共用_
+_SAP ASCS/SCS 實例的進程、檔案結構和全域主機 sapmnt 檔案共用_
 
 在高可用性設定中，您要將 SAP ASCS/SCS 執行個體進行叢集處理。 我們會使用*叢集共用磁碟* (在我們的範例為 S 磁碟機) 來放置 SAP ASCS/SCS 和 SAP 全域主機檔案。
 
 ![圖 3：含共用磁碟的 SAP ASCS/SCS HA 架構][sap-ha-guide-figure-8002]
 
-_**圖3：** 具有共用磁片的 SAP ASCS/SCS HA 架構_
+_具有共用磁片的 SAP ASCS/SCS HA 架構_
 
-> [!IMPORTANT]
-> 這兩個元件會在相同的 SAP ASCS/SCS 執行個體底下執行：
->* 這 \<ASCS/SCS virtual host name> 是用來存取 sap 訊息和排入佇列伺服器進程，以及透過 sapmnt 檔案共用的 sap 全域主機檔案。
->* 會在兩者間共用相同的叢集共用磁碟 S 磁碟機。
->
 
+使用排入佇列伺服器複寫1架構：
+* 相同的 \<ASCS/SCS virtual host name> 用途是透過 sapmnt 檔案共用來存取 sap 訊息和排入佇列伺服器進程，以及 sap 全域主機檔案。
+* 會在兩者間共用相同的叢集共用磁碟 S 磁碟機。  
+
+使用排入佇列 server replication 2 架構： 
+* 這 \<ASCS/SCS virtual host name> 是用來存取 sap 訊息伺服器進程，以及透過 sapmnt 檔案共用的 sap 全域主機檔案。
+* 會在兩者間共用相同的叢集共用磁碟 S 磁碟機。
+* \<ERS virtual host name>存取排入佇列伺服器進程的情況不同  
 
 ![圖 4：含共用磁碟的 SAP ASCS/SCS HA 架構][sap-ha-guide-figure-8003]
 
-_**圖 4：** 含共用磁碟的 SAP ASCS/SCS HA 架構_
+_具有共用磁片的 SAP ASCS/SCS HA 架構_
+
+#### <a name="shared-disk-and-enqueue-replication-server"></a>共用磁片和排入佇列複寫伺服器 
+
+1. 佇列伺服器複寫1架構支援共用磁片，其中排入佇列複寫伺服器 (ERS) 實例：   
+
+   - 未叢集化
+   - 使用 `localhost` 名稱
+   - 會部署在每個叢集節點上的本機磁片上
+
+2. 佇列伺服器複寫2架構也支援共用磁片，其中佇列複寫伺服器 2 (ERS2) 實例：  
+
+   - 已叢集化
+   - 使用專用的虛擬/網路主機名稱
+   - 除了 () SCS IP 位址之外，還需要在 Azure Internal Load Balancer 上設定 ERS 虛擬主機名稱的 IP 位址
+   - 會部署在每個叢集節點上的 **本機磁片** 上，因此不需要共用磁片。
+
+   > [!TIP]
+   > 您可以在這裡找到有關將 Replication Server 1 和 2 (ERS1 和) ERS2 排入佇列的詳細資訊：  
+   > [在 Microsoft 容錯移轉叢集中將複寫伺服器排入佇列](https://help.sap.com/viewer/3741bfe0345f4892ae190ee7cfc53d4c/CURRENT_VERSION_SWPM20/en-US/8abd4b52902d4b17a105c2fabdf5c0cf.html)  
+   > [容錯移轉叢集環境中的新佇列複寫器](https://blogs.sap.com/2019/03/19/new-enqueue-replicator-in-failover-cluster-environments/)  
+
+#### <a name="options-for-shared-disk-in-azure-for-sap-workloads"></a>適用于 SAP 工作負載的 Azure 中的共用磁片選項
+
+在 Azure 中的 windows 容錯移轉叢集中，有兩個共用磁片選項：
+
+- [Azure 共用磁片](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) -功能，可讓您同時將 Azure 受控磁片連結到多個 vm。 
+- 使用協力廠商軟體 [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster) 來建立鏡像儲存體，以模擬叢集共用儲存體。 
+
+為共用磁片選取技術時，請記住下列考慮：
+
+**適用于 SAP 工作負載的 Azure 共用磁片**
+- 可讓您同時將 Azure 受控磁片連結到多個 Vm，而不需要額外的軟體來維護和操作 
+- 您將在一個儲存體叢集上使用單一 Azure 共用磁片。 這會影響您的 SAP 解決方案的可靠性。
+- 目前唯一支援的部署是在可用性設定組中使用 Azure shared Premium 磁片。 區域部署不支援 Azure 共用磁片。     
+- 請務必使用 [進階 SSD 範圍](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared#disk-sizes) 中所指定的最小磁片大小來布建 Azure Premium 磁片，以同時連接到所需的 vm 數目 (通常是2個用於 SAP ASCS Windows 容錯移轉叢集 ) 。 
+- SAP 工作負載不支援 Azure 共用 Ultra 磁片，因為它不支援可用性設定組或區域部署中的部署。  
+ 
+**SIOS**
+- SIOS 解決方案可提供兩個磁片之間的即時同步資料複寫
+- 利用 SIOS 解決方案，您可以使用兩個受控磁片，而且如果使用可用性設定組或可用性區域，受控磁片將會落在不同的儲存體叢集上。 
+- 支援在可用性區域中部署
+- 需要安裝和操作協力廠商軟體，您必須另外購買
+
+### <a name="shared-disk-using-azure-shared-disk"></a>使用 Azure 共用磁片的共用磁片
+
+Microsoft 提供 [Azure 共用磁片](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)，可用來利用共用磁片選項來執行 SAP ASCS/SCS 高可用性。
+
+#### <a name="prerequisites-and-limitations"></a>必要條件和限制
+
+目前，您可以使用 Azure 進階 SSD 磁片作為 SAP ASCS/SCS 實例的 Azure 共用磁片。 目前已有下列限制：
+
+-  [Azure Ultra 磁片](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) 不支援作為 SAP 工作負載的 Azure 共用磁片。 目前無法在可用性設定組中使用 Azure Ultra 磁片來放置 Azure Vm
+-  只有可用性設定組中的 Vm 支援具有進階 SSD 磁片的[Azure 共用磁片](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)。 可用性區域部署中並不支援此功能。 
+-  Azure 共用磁片值 [maxShares](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) 決定可使用共用磁片的叢集節點數目。 通常針對 SAP ASCS/SCS 實例，您將在 Windows 容錯移轉叢集中設定兩個節點，因此的值 `maxShares` 必須設定為 [2]。
+-  所有 SAP ASCS/SCS 叢集 Vm 都必須部署在相同的 [Azure 鄰近放置群組](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)中。   
+   雖然您可以在沒有 PPG 的情況下，使用 Azure 共用磁片在可用性設定組中部署 Windows 叢集 Vm，PPG 將可確保接近 Azure 共用磁片和叢集 Vm 的實體鄰近程度，因此可在 Vm 和儲存層之間達到較低的延遲。    
+
+如需 Azure 共用磁片限制的進一步詳細資料，請仔細閱讀 Azure 共用磁片檔的 [限制](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations) 一節。
+
+> [!IMPORTANT]
+> 使用 Azure 共用磁片部署 SAP ASCS/SCS Windows 容錯移轉叢集時，請注意，您的部署將會使用一個儲存體叢集中的單一共用磁片來運作。 您的 SAP ASCS/SCS 實例會受到影響，以防儲存體叢集發生問題，也就是部署 Azure 共用磁片的位置。    
+
+> [!TIP]
+> 請參閱 sap [Netweaver On Azure 規劃指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) 和 [sap 工作負載的 Azure 儲存體指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) ，以瞭解規劃 sap 部署時的重要考慮。
+
+### <a name="supported-os-versions"></a>支援的 OS 版本
+
+支援 Windows Server 2016 和 2019 (使用最新的資料中心映射) 。
+
+我們強烈建議使用 **Windows Server 2019 Datacenter**，如下所示：
+- Windows 2019 容錯移轉叢集服務為 Azure 感知
+- 藉由監視 Azure 排程事件，可新增 Azure 主機維護的整合和認知，並改善體驗。
+- 您可以使用分散式網路名稱 (它是) 的預設選項。 因此，叢集網路名稱不需要有私人 IP 位址。 此外，您也不需要在 Azure Internal Load Balancer 上設定此 IP 位址。 
 
 ### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>使用 SIOS DataKeeper 在 Azure 中共用磁碟
 
-您需要針對高可用性的 SAP ASCS/SCS 執行個體叢集共用儲存體。
-
-您可以使用協力廠商軟體 SIOS DataKeeper Cluster Edition 以建立鏡像儲存體，以模擬叢集共用儲存體。 SIOS 解決方案提供即時同步的資料複寫。
+共用磁片的另一個選項是使用協力廠商軟體 SIOS DataKeeper Cluster Edition 來建立鏡像儲存體，以模擬叢集共用儲存體。 SIOS 解決方案提供即時同步的資料複寫。
 
 若要為叢集建立共用磁碟資源：
 
@@ -108,7 +182,7 @@ _**圖 4：** 含共用磁碟的 SAP ASCS/SCS HA 架構_
 
 ![圖 5：Azure 中含 SIOS DataKeeper 的 Windows Server 容錯移轉叢集組態][sap-ha-guide-figure-1002]
 
-_**圖 5：** Azure 中含 SIOS DataKeeper 的 Windows 容錯移轉叢集組態_
+_使用 SIOS DataKeeper 在 Azure 中設定 Windows 容錯移轉叢集_
 
 > [!NOTE]
 > 您不需要與某些 DBMS 產品 (例如 SQL Server) 共用提供高可用性的磁碟。 SQL Server AlwaysOn 會將 DBMS 資料及記錄檔，從一個叢集節點的本機磁碟複寫到另一個叢集節點的本機磁碟。 在此情況下，Windows 叢集組態不需要共用磁碟。

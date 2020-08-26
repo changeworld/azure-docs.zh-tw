@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d518dcf833a49e32d72938a31da412d53cc40037
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141528"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853369"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
 
@@ -143,7 +143,6 @@ ms.locfileid: "88141528"
 | onprem_sid |
 | openid2_id |
 | 密碼 |
-| platf |
 | polids |
 | pop_jwk |
 | preferred_username |
@@ -248,11 +247,11 @@ ms.locfileid: "88141528"
 
 **摘要：** 此屬性會決定是否在此原則所影響到的權杖中包含基本宣告集。
 
-- 如果設為 True，此原則所影響到的權杖中就會發出基本宣告集。 
+- 如果設為 True，此原則所影響到的權杖中就會發出基本宣告集。
 - 如果設為 False，權杖中將不會包含基本宣告集的宣告，除非相同原則的宣告結構描述屬性中個別新增了這些宣告。
 
-> [!NOTE] 
-> 核心宣告集中的宣告會出現在每個權杖中，不論此屬性的設定為何。 
+> [!NOTE]
+> 核心宣告集中的宣告會出現在每個權杖中，不論此屬性的設定為何。
 
 ### <a name="claims-schema"></a>宣告結構描述
 
@@ -261,20 +260,20 @@ ms.locfileid: "88141528"
 **資料類型：** 具有一或多個宣告結構描述項目的 JSON blob
 
 **摘要：** 此屬性會定義除了基本宣告集和核心宣告集以外，原則所影響到的權杖中還會有哪些宣告。
-此屬性中所定義的每個宣告結構描述項目必須有某些資訊。 指定資料來自 (**值**、**來源/識別碼**組或**來源/ExtensionID**組) ，以及資料會以 (宣告**類型**) 的形式發出。
+此屬性中所定義的每個宣告結構描述項目必須有某些資訊。 指定資料來自 (**值**、 **來源/識別碼**組或 **來源/ExtensionID** 組) ，以及資料是以 (宣告 **類型**) 的形式發出。
 
 ### <a name="claim-schema-entry-elements"></a>宣告結構描述項目的元素
 
 **值：** 值元素會定義靜態值來作為宣告中發出的資料。
 
-**來源/識別碼組：** 來源和識別碼元素會定義宣告中的資料來自何處。  
+**來源/識別碼組：** 來源和識別碼元素會定義宣告中的資料來自何處。
 
-**來源/ExtensionID 配對：** Source 和 ExtensionID 元素會定義宣告中的資料來源所在的目錄架構延伸屬性。 如需詳細資訊，請參閱[在宣告中使用目錄架構擴充屬性](active-directory-schema-extensions.md)。
+**來源/ExtensionID 配對：** 來源和 ExtensionID 元素會定義目錄架構延伸模組屬性，其中宣告中的資料來自何處。 如需詳細資訊，請參閱 [在宣告中使用目錄架構延伸模組屬性](active-directory-schema-extensions.md)。
 
-來源元素必須設為下列其中一個值： 
+來源元素必須設為下列其中一個值：
 
-- 「使用者」：宣告中的資料是使用者物件上的屬性。 
-- 「應用程式」：宣告中的資料是應用程式 (用戶端) 服務主體上的屬性。 
+- 「使用者」：宣告中的資料是使用者物件上的屬性。
+- 「應用程式」：宣告中的資料是應用程式 (用戶端) 服務主體上的屬性。
 - 「資源」：宣告中的資料是資源服務主體上的屬性。
 - 「對象」：宣告中的資料是作為權杖對象之服務主體 (用戶端或資源服務主體) 上的屬性。
 - 「公司」：宣告中的資料是資源租用戶之公司物件上的屬性。
@@ -349,7 +348,7 @@ ms.locfileid: "88141528"
 
 **字串：** ClaimsTransformation
 
-**資料類型：** 具有一或多個轉換項目的 JSON blob 
+**資料類型：** 具有一或多個轉換項目的 JSON blob
 
 **摘要：** 使用此屬性可對來源資料套用常見的轉換，以便為宣告結構描述中指定的宣告產生輸出資料。
 
@@ -364,11 +363,11 @@ ms.locfileid: "88141528"
 |TransformationMethod|預期的輸入|預期的輸出|描述|
 |-----|-----|-----|-----|
 |Join|string1、string2、分隔符號|outputClaim|可在輸入字串之間使用分隔符號來聯結這些字串。 例如：string1:"foo@bar.com" , string2:"sandbox" , separator:"." 會導致 outputClaim:"foo@bar.com.sandbox"|
-|ExtractMailPrefix|電子郵件或 UPN|已解壓縮的字串|ExtensionAttributes 1-15 或其他為使用者儲存 UPN 或電子郵件地址值的任何其他架構延伸模組，例如 johndoe@contoso.com 。 擷取電子郵件地址的本機部分。 例如：mail:"foo@bar.com" 會導致 outputClaim:"foo"。 如果沒有 \@ 符號，原始輸入字串會以現狀傳回。|
+|ExtractMailPrefix|電子郵件或 UPN|解壓縮的字串|Extensionattribute 1-15 或任何其他儲存 UPN 或電子郵件地址值給使用者的架構延伸，例如 johndoe@contoso.com 擷取電子郵件地址的本機部分。 例如：mail:"foo@bar.com" 會導致 outputClaim:"foo"。 如果沒有 \@ 符號，原始輸入字串會以現狀傳回。|
 
 **InputClaims：** 使用 InputClaims 元素可從宣告結構描述項目將資料傳遞至轉換。 它有兩個屬性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
-- **ClaimTypeReferenceId** 會與宣告結構描述項目的識別碼元素聯結以尋找適當的輸入宣告。 
+- **ClaimTypeReferenceId** 會與宣告結構描述項目的識別碼元素聯結以尋找適當的輸入宣告。
 - **TransformationClaimType** 則可用來為此輸入指定唯一的名稱。 此名稱必須符合轉換方法的其中一個預期輸入。
 
 **InputParameters：** 使用 InputParameters 元素可對轉換傳遞常數值。 它有兩個屬性：**值**和**識別碼**。
@@ -420,7 +419,7 @@ ms.locfileid: "88141528"
 
 您必須對服務主體物件指派自訂簽署金鑰，宣告對應原則才會生效。 如此可確認權杖是由宣告對應原則的建立者所修改，並且可遏止惡意執行者建立的宣告對應原則，保護應用程式不受威脅。 若要新增自訂簽署金鑰，您可以使用 Azure PowerShell Cmdlet `new-azureadapplicationkeycredential`，為您的應用程式物件建立對稱金鑰認證。 如需此 Azure PowerShell Cmdlet 的詳細資訊，請參閱 [New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
 
-已啟用宣告對應的應用程式必須將 `appid={client_id}` 附加至其 [OpenID Connect 中繼資料要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)，以驗證其權杖簽署金鑰。 以下是您應該使用的 OpenID Connect 中繼資料文件格式︰ 
+已啟用宣告對應的應用程式必須將 `appid={client_id}` 附加至其 [OpenID Connect 中繼資料要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)，以驗證其權杖簽署金鑰。 以下是您應該使用的 OpenID Connect 中繼資料文件格式︰
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
@@ -439,7 +438,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 在 Azure AD 中，當您可以為特定的服務主體自訂權杖中所發出的宣告時，許多案例便可能實現。 在本節中，我們將逐步解說一些常見案例，以協助您掌握如何使用宣告對應原則類型。
 
 > [!NOTE]
-> 建立宣告對應原則時，您也可以從權杖中的目錄架構延伸模組屬性發出宣告。 請在專案中使用擴充屬性的*ExtensionID* ，而不是*ID* `ClaimsSchema` 。  如需擴充屬性的詳細資訊，請參閱[使用目錄架構延伸屬性](active-directory-schema-extensions.md)。
+> 建立宣告對應原則時，您也可以從權杖中的目錄架構延伸模組屬性發出宣告。 在擴充屬性中使用 *ExtensionID* ，而非元素中的 *識別碼* `ClaimsSchema` 。  如需擴充功能屬性的詳細資訊，請參閱 [使用目錄架構延伸模組屬性](active-directory-schema-extensions.md)。
 
 #### <a name="prerequisites"></a>Prerequisites
 
@@ -464,20 +463,20 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 在此範例中，您將會建立原則，以從核發給連結之服務主體的權杖中移除基本宣告集。
 
 1. 建立宣告對應原則。 這個連結至特定服務主體的原則會從權杖中移除基本宣告。
-   1. 若要建立原則，請執行此命令： 
-    
+   1. 若要建立原則，請執行此命令：
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims" -Type "ClaimsMappingPolicy"
       ```
    2. 若要查看您的新原則並取得原則的 ObjectId，請執行下列命令：
-    
+
       ``` powershell
       Get-AzureADPolicy
       ```
 1. 將原則指派給服務主體。 您也需要取得服務主體的 ObjectId。
    1. 若要查看您組織的所有服務主體，您可以[查詢 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
-   2. 當您有服務主體的 ObjectId 時，執行下列命令︰  
-     
+   2. 當您有服務主體的 ObjectId 時，執行下列命令︰
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -487,21 +486,21 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 在此範例中，您將會建立原則，以在核發給連結之服務主體的權杖中新增 EmployeeID 和 TenantCountry。 在 SAML 權杖和 JWT 中，系統會以名稱宣告類型來發出 EmployeeID。 在 SAML 權杖和 JWT 中，系統會以國家/區域宣告類型來發出 TenantCountry。 在此範例中，我們會繼續在權杖中納入基本宣告集。
 
 1. 建立宣告對應原則。 這個連結至特定服務主體的原則會在權杖中新增 EmployeeID 和 TenantCountry 宣告。
-   1. 若要建立原則，請執行下列命令：  
-     
+   1. 若要建立原則，請執行下列命令：
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/employeeid","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
       ```
-    
+
    2. 若要查看您的新原則並取得原則的 ObjectId，請執行下列命令：
-     
-      ``` powershell  
+
+      ``` powershell
       Get-AzureADPolicy
       ```
-1. 將原則指派給服務主體。 您也需要取得服務主體的 ObjectId。 
+1. 將原則指派給服務主體。 您也需要取得服務主體的 ObjectId。
    1. 若要查看您組織的所有服務主體，您可以[查詢 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
-   2. 當您有服務主體的 ObjectId 時，執行下列命令︰  
-     
+   2. 當您有服務主體的 ObjectId 時，執行下列命令︰
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -512,20 +511,20 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 1. 建立宣告對應原則。 這個連結至特定服務主體的原則會在權杖中新增 EmployeeID 和 TenantCountry 宣告。
    1. 若要建立原則，請執行下列命令：
-     
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy"
       ```
-    
-   2. 若要查看您的新原則並取得原則的 ObjectId，請執行下列命令： 
-     
+
+   2. 若要查看您的新原則並取得原則的 ObjectId，請執行下列命令：
+
       ``` powershell
       Get-AzureADPolicy
       ```
-1. 將原則指派給服務主體。 您也需要取得服務主體的 ObjectId。 
+1. 將原則指派給服務主體。 您也需要取得服務主體的 ObjectId。
    1. 若要查看您組織的所有服務主體，您可以[查詢 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
-   2. 當您有服務主體的 ObjectId 時，執行下列命令︰ 
-     
+   2. 當您有服務主體的 ObjectId 時，執行下列命令︰
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -533,4 +532,4 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ## <a name="see-also"></a>另請參閱
 
 - 若要了解如何透過 Azure 入口網站自訂 SAML 權杖中發出的宣告，請參閱[如何：針對 Azure AD 中的企業應用程式，自訂 SAML 權杖中發出的宣告](active-directory-saml-claims-customization.md)
-- 若要深入瞭解延伸模組屬性，請參閱[在宣告中使用目錄架構延伸模組屬性](active-directory-schema-extensions.md)。
+- 若要深入瞭解延伸模組屬性，請參閱 [在宣告中使用目錄架構延伸模組屬性](active-directory-schema-extensions.md)。
