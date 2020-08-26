@@ -1,28 +1,28 @@
 ---
 title: 使用 Rest API 管理 Azure 檔案共用備份
-description: 瞭解如何使用 REST API 來管理和監視 Azure 備份備份的 Azure 檔案共用。
+description: 瞭解如何使用 REST API 來管理及監視由 Azure 備份備份的 Azure 檔案共用。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: c4d1ee187fd1c45dfd043b28c0d4b3d5935f50e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5e2823472c6a7bdd6b3f9819db3079d7efa78c4e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073247"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892842"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>使用 REST API 管理 Azure 檔案共用備份
 
-本文說明如何執行工作來管理和監視[Azure 備份](./backup-overview.md)所備份的 Azure 檔案共用。
+本文說明如何執行工作，以管理及監視 [Azure 備份](./backup-overview.md)所備份的 Azure 檔案共用。
 
 ## <a name="monitor-jobs"></a>監視工作
 
-Azure 備份服務會觸發在背景執行的作業。 這包括觸發備份、還原作業，以及停用備份等案例。 這些工作可以使用其識別碼進行追蹤。
+Azure 備份服務會觸發在背景中執行的作業。 這包括觸發備份、還原作業和停用備份等案例。 這些工作可以使用其識別碼進行追蹤。
 
 ### <a name="fetch-job-information-from-operations"></a>從操作提取作業資訊
 
-觸發備份之類的作業一律會在回應中傳回 jobID。
+觸發備份之類的作業一律會傳迴響應中的 jobID。
 
-例如，[觸發程式備份 REST API](backup-azure-file-share-rest-api.md#trigger-an-on-demand-backup-for-file-share)作業的最後回應如下所示：
+例如， [觸發程式備份 REST API](backup-azure-file-share-rest-api.md#trigger-an-on-demand-backup-for-file-share) 作業的最終回應如下所示：
 
 ```json
 {
@@ -38,7 +38,7 @@ Azure 備份服務會觸發在背景執行的作業。 這包括觸發備份、�
 }
 ```
 
-Azure 檔案共用備份作業是由 [ **jobId** ] 欄位所識別，並可使用 GET 要求來追蹤，如[這裡](/rest/api/backup/jobdetails/)所述。
+Azure 檔案共用備份作業是由 **jobId** 欄位所識別，並可在 [此處](/rest/api/backup/jobdetails/) 使用 GET 要求進行追蹤。
 
 ### <a name="tracking-the-job"></a>追蹤作業
 
@@ -46,7 +46,7 @@ Azure 檔案共用備份作業是由 [ **jobId** ] 欄位所識別，並可使�
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-{JobName} 是上面所述的「jobId」。 回應一律為 "200 OK"，其中**status**欄位指出作業的狀態。 一旦「完成」或「CompletedWithWarnings」， **extendedInfo**區段就會顯示更多關於此作業的詳細資料。
+{JobName} 是上面所述的「jobId」。 回應一律是「200確定」，且 [ **狀態** ] 欄位會指出作業的狀態。 當它是 "Completed" 或 "CompletedWithWarnings" 時， **extendedInfo** 區段會顯示更多關於作業的詳細資料。
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupJobs/e2ca2cf4-2eb9-4d4b-b16a-8e592d2a658b?api-version=2019-05-13'
@@ -60,7 +60,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 #### <a name="response-example"></a>回應範例
 
-一旦提交*GET* URI，就會傳回200回應。
+提交 *GET* URI 之後，會傳回200回應。
 
 ```http
 HTTP/1.1" 200
@@ -111,9 +111,9 @@ HTTP/1.1" 200
 
 ## <a name="modify-policy"></a>修改原則
 
-若要變更檔案共用所保護的原則，您可以使用與啟用保護相同的格式。 只需在要求原則中提供新的原則識別碼，並提交要求。
+若要變更用來保護檔案共用的原則，您可以使用與啟用保護相同的格式。 請在要求原則中提供新的原則識別碼，並提交要求。
 
-例如：若要將*testshare*的保護原則從*schedule1*變更為*schedule2*，請在要求主體中提供*schedule2*識別碼。
+例如：若要將 *testshare* 的保護原則從 *schedule1* 變更為 *schedule2*，請在要求主體中提供 *schedule2* 識別碼。
 
 ```json
 {
@@ -127,7 +127,7 @@ HTTP/1.1" 200
 
 ## <a name="stop-protection-but-retain-existing-data"></a>停止保護，但保留現有資料
 
-您可以移除受保護檔案共用上的保護，但保留已備份的資料。 若要這麼做，請移除您用來[啟用備份](backup-azure-file-share-rest-api.md#enable-backup-for-the-file-share)並提交要求的要求本文中的原則。 一旦移除與原則的關聯之後，就不會再觸發備份，也不會建立任何新的復原點。
+您可以移除受保護檔案共用上的保護，但保留已備份的資料。 若要這樣做，請移除您用來[啟用備份](backup-azure-file-share-rest-api.md#enable-backup-for-the-file-share) 並提交要求的要求主體中的原則。 一旦移除與原則的關聯，就不會再觸發備份，也不會建立任何新的復原點。
 
 ```json
 {
@@ -142,9 +142,9 @@ HTTP/1.1" 200
 
 ### <a name="sample-response"></a>範例回應
 
-停止保護檔案共用是非同步作業。 作業會建立另一個需要追蹤的作業。 它會傳回兩個回應：在建立另一個作業時傳回202（已接受），而當該作業完成時傳回200。
+停止保護檔案共用是非同步作業。 作業會建立另一個需要追蹤的作業。 它會傳回兩個回應： 202 (在建立另一個作業時接受) ，以及在該作業完成時，傳回200。
 
-成功接受作業時的回應標頭：
+成功接受操作時的回應標頭：
 
 ```http
 HTTP/1.1" 202
@@ -166,7 +166,7 @@ msrest.http_logger :     'Azure-AsyncOperation': 'https://management.azure.com/S
 'Content-Length': '0'
 ```
 
-然後使用 location 標頭或 AsyncOperation 標頭搭配 GET 命令來追蹤所產生的作業：
+然後使用 location 標頭或 Azure AsyncOperation 標頭搭配 GET 命令來追蹤產生的作業：
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupoperations/b300922a-ad9c-4181-b4cd-d42ea780ad77?api-version=2016-12-01
@@ -190,7 +190,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ## <a name="stop-protection-and-delete-data"></a>停止保護並刪除資料
 
-若要在受保護的檔案共用上移除保護並刪除備份資料，請執行[此處](/rest/api/backup/protecteditems/delete)詳述的刪除作業。
+若要移除受保護檔案共用上的保護，並同時刪除備份資料，請執行 [下列詳細說明](/rest/api/backup/protecteditems/delete)的刪除操作。
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
@@ -198,7 +198,7 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 
 參數 {容器} 和 {protectedItemName}[的設定方式如下。](restore-azure-file-share-rest-api.md#fetch-containername-and-protecteditemname)
 
-下列範例會觸發作業，以停止保護使用*azurefilesvault*保護的*testshare*檔案共用。
+下列範例會觸發作業，以停止保護受*azurefilesvault*保護的*testshare*檔案共用。
 
 ```http
 DELETE https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2/protectedItems/azurefileshare;testshare?api-version=2016-12-01
@@ -206,9 +206,9 @@ DELETE https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f4
 
 ### <a name="responses"></a>回應
 
-刪除保護是非同步作業。 作業會建立另一個需要個別追蹤的作業。
-它會傳回兩個回應：在建立另一個作業時，202（已接受），而當該作業完成時，則會傳回204（NoContent）。
+刪除保護是非同步作業。 作業會建立另一個需要分開追蹤的作業。
+它會傳回兩個回應： 202 (在建立另一項作業時接受) ，並在該作業完成時) 204 (NoContent。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解如何[在設定 Azure 檔案共用的備份時，針對問題進行疑難排解](troubleshoot-azure-files.md)。
+* 瞭解如何 [針對 Azure 檔案共用設定備份時的問題進行疑難排解](troubleshoot-azure-files.md)。

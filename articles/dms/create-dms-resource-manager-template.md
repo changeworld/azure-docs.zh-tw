@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: dbc09c3fa1dc1878d4feea5c5e7fd8b68e0c11f1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 24a0d16a6ff052df4b7a9bcdd078542987b4fd50
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537440"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661175"
 ---
 # <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>快速入門：使用 ARM 範本建立 Azure 資料庫移轉服務的執行個體
 
@@ -35,7 +35,7 @@ Azure 資料庫移轉服務的 ARM 範本需要下列各項：
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-azure-database-migration-simple-deploy/)。
 
-:::code language="json" source="~/quickstart-templates/101-azure-database-migration-simple-deploy/azuredeploy.json" highlight="33-75":::
+:::code language="json" source="~/quickstart-templates/101-azure-database-migration-simple-deploy/azuredeploy.json":::
 
 範本中定義了三個 Azure 資源： 
 

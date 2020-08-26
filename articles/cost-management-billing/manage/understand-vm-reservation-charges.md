@@ -3,15 +3,16 @@ title: 了解 Azure 保留的 VM 執行個體折扣
 description: 了解如何將 Azure 保留虛擬機器執行個體的折扣，套用至執行中的虛擬機器。
 author: yashesvi
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 08/13/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ddf232dbe6c6ff61f685e2910286188fb92e1f17
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: dd21faa07426c80bb3a95dbd1b6d4ee93f783881
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192214"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686440"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Azure 保留折扣如何套用至虛擬機器
 
@@ -93,7 +94,7 @@ ms.locfileid: "88192214"
 
 檢查使用量資料中的 ConsumedService** 值，以判斷使用量是否符合保留折扣的資格。
 
-如需執行個體大小彈性的詳細資訊，請參閱[利用保留的 VM 執行個體獲得虛擬機器大小彈性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
+如需執行個體大小彈性的詳細資訊，請參閱[利用保留的 VM 執行個體獲得虛擬機器大小彈性](../../virtual-machines/reserved-vm-instance-size-flexibility.md)。
 
 
 ## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡

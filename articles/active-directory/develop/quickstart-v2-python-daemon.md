@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 6d4710f0b8756ea9b7f824b8b0aa1221ad8b30f0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0969afa95009255981381d41268f416a615dd9f3
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120383"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683737"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>快速入門：使用應用程式的身分識別取得權杖，並從 Python 主控台應用程式呼叫 Microsoft Graph API
 
@@ -193,7 +193,7 @@ app = msal.ConfidentialClientApplication(
 > |---------|---------|
 > | `config["secret"]` | 在 Azure 入口網站中為應用程式建立的用戶端密碼。 |
 > | `config["client_id"]` | 是註冊於 Azure 入口網站中的應用程式所具備的**應用程式 (用戶端) 識別碼**。 您可以在 Azure 入口網站的應用程式 [概觀] 頁面中找到此值。 |
-> | `config["authority"]`    | 供使用者用於驗證的 STS 端點。 若為公用雲端，通常是 <https://login.microsoftonline.com/{tenant}>，其中 {tenant} 是租用戶的名稱或租用戶識別碼。|
+> | `config["authority"]`    | 供使用者用於驗證的 STS 端點。 若為公用雲端，通常是 `https://login.microsoftonline.com/{tenant}`，其中 {tenant} 是租用戶的名稱或租用戶識別碼。|
 
 如需詳細資訊，請參閱[下列項目的參考文件：`ConfidentialClientApplication`](https://msal-python.readthedocs.io/en/latest/#confidentialclientapplication)
 

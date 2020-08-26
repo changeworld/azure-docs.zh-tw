@@ -4,15 +4,16 @@ description: 了解如何向其他使用者要求 Azure 訂用帳戶的帳單擁
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a0643b42a7d306a9e41a80cb8529926eff42c00a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: eef36726db735cfdd42f5a103073303cf3b3a632
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289018"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684944"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>將 Azure 訂用帳戶的帳單擁有權交給您的 MPA 帳戶
 

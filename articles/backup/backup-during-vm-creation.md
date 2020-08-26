@@ -3,12 +3,12 @@ title: 建立 Azure VM 時啟用備份
 description: 說明當您使用 Azure 備份建立 Azure VM 時，如何啟用備份。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 8612061ca21b4609600f5b9822ca4f6fe3b673f1
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: bbc00239a34fc0eb88991fcabd91c5a0eb7dbea7
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825948"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892298"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>建立 Azure VM 時啟用備份
 
@@ -16,7 +16,7 @@ ms.locfileid: "88825948"
 
 本文將詳細說明當您在 Azure 入口網站中建立 (VM) 的虛擬機器時，如何啟用備份。  
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - 如果您在建立 VM 時啟用備份，[請檢查](backup-support-matrix-iaas.md#supported-backup-actions)支援的作業系統。
 

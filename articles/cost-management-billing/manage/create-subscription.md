@@ -3,15 +3,16 @@ title: 建立額外的 Azure 訂用帳戶
 description: 了解如何在 Azure 入口網站中新增 Azure 訂用帳戶。 查看計費帳戶表單的相關資訊，並檢視其他可用的資源。
 author: amberbhargava
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d27120f6bd0978b69d664ab3ab2e86bfee4f1755
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: df303801daba0509177e48565b3ddbe7674013e8
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460961"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689961"
 ---
 # <a name="create-an-additional-azure-subscription"></a>建立額外的 Azure 訂用帳戶
 

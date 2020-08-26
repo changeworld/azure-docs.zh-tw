@@ -4,15 +4,16 @@ description: 本文可協助您判斷所應購買的保留。
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 909d712e0c8e8ea242c27ab93f16a36e22d36aae
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: d89f890d3e2bb8238a00b4a529b8804a8c38fa6f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759883"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684740"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>決定您要購買的保留
 
@@ -38,7 +39,7 @@ ms.locfileid: "87759883"
 
 請略過每天的使用量少於 24 小時的資源。
 
-如果您想要在執行個體大小的系列層級進行分析，您可以從 [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) 取得執行個體大小彈性值。 將值與您的資料結合，以進行分析。 如需執行個體大小彈性的詳細資訊，請參閱[利用保留的 VM 執行個體獲得虛擬機器大小彈性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
+如果您想要在執行個體大小的系列層級進行分析，您可以從 [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) 取得執行個體大小彈性值。 將值與您的資料結合，以進行分析。 如需執行個體大小彈性的詳細資訊，請參閱[利用保留的 VM 執行個體獲得虛擬機器大小彈性](../../virtual-machines/reserved-vm-instance-size-flexibility.md)。
 
 ### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>分析 Azure Synapse Analytics 保留執行個體購買的使用量
 

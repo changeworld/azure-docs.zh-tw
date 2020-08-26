@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3d810d14dd6b49bc054e3844a60ec33c62dc084c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271238"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891856"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>將您的應用程式發佈至 Azure AD 應用程式資源庫
 
@@ -33,7 +33,7 @@ ms.locfileid: "88271238"
 
 此外，當您的客戶使用 Azure AD 作為應用程式的身分識別提供者時，有許多優點。 其中包含：
 
-- 為您的使用者提供單一登入。 使用 SSO，您可以透過單一登入讓客戶更輕鬆地降低支援成本。 如果已啟用單鍵 SSO，客戶的 IT 系統管理員就不需要學習如何設定您的應用程式以在其組織中使用。 若要深入瞭解單一登入，請參閱 [什麼是單一登入？](../manage-apps/what-is-single-sign-on.md)。
+- 為您的使用者提供單一登入。 使用 SSO，您可以透過單一登入讓客戶更輕鬆地降低支援成本。 如果已啟用單鍵 SSO，客戶的 IT 系統管理員就不需要學習如何設定您的應用程式以在其組織中使用。 若要深入了解單一登入，請參閱[什麼是單一登入？](../manage-apps/what-is-single-sign-on.md)。
 - 您的應用程式可以在 Microsoft 365 應用程式資源庫、Microsoft 365 應用程式啟動程式，以及在 Office.com 上的 Microsoft 搜尋服務中找到。 
 - 整合式應用程式管理。 若要深入瞭解 Azure AD 中的應用程式管理，請參閱 [什麼是應用程式管理？](../manage-apps/what-is-application-management.md)。
 - 您的應用程式可以使用 [圖形 API](https://docs.microsoft.com/graph/) 來存取在 Microsoft 生態系統中驅動使用者生產力的資料。
@@ -98,7 +98,7 @@ OAuth 2.0 是適用于授權的 [業界標準](https://oauth.net/2/) 通訊協�
 
 ### <a name="saml-20-or-ws-fed"></a>SAML 2.0 或 WS-送出
 
-SAML 是適用于 web 應用程式的成熟且廣泛採用的單一登入標準。 若要深入瞭解 Azure 如何使用 SAML，請參閱 [Azure 如何使用 saml 通訊協定](active-directory-saml-protocol-reference.md)。 
+SAML 是適用于 web 應用程式的成熟且廣泛採用的 [單一登入標準](https://www.oasis-open.org/standards#samlv2.0) 。 若要深入瞭解 Azure 如何使用 SAML，請參閱 [Azure 如何使用 saml 通訊協定](active-directory-saml-protocol-reference.md)。 
 
 Web 服務同盟 (WS-送) 是一種 [業界標準](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html) ，通常用於使用 .net 平臺開發的 web 應用程式。
 
