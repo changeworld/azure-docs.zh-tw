@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 333e48ff963ec42dd2ee00956fa046a5a038c099
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 83ab2c6b97435ace0d2bc508cbf522600391b60b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903777"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926825"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的 OData $orderby 語法
 
- 您可以使用[OData **$orderby**參數](query-odata-filter-orderby-syntax.md)，在 Azure 認知搜尋中套用搜尋結果的自訂排序次序。 本文會詳細說明 **$orderby**的語法。 如需有關如何在呈現搜尋結果時使用 **$orderby**的一般資訊，請參閱[如何在 Azure 認知搜尋中使用搜尋結果](search-pagination-page-layout.md)。
+ 您可以使用 [OData **$orderby** 參數](query-odata-filter-orderby-syntax.md) ，將自訂排序次序套用至 Azure 認知搜尋中的搜尋結果。 本文將詳細說明 **$orderby** 的語法。 如需有關如何在呈現搜尋結果時使用 **$orderby** 的一般資訊，請參閱 [如何在 Azure 認知搜尋中使用搜尋結果](search-pagination-page-layout.md)。
 
 ## <a name="syntax"></a>語法
 
-**$Orderby**參數接受以逗號分隔的清單，其中最多可有32個**order by 子句**。 下列 EBNF ([Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 描述 order by 子句的語法：
+**$Orderby**參數接受以逗號分隔的清單，最多可達32個**order by 子句**。 Order by 子句的語法如下所述 EBNF ([外延巴克斯-格斯表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) ：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -42,25 +42,25 @@ order_by_clause ::= (field_path | sortable_function) ('asc' | 'desc')?
 sortable_function ::= geo_distance_call | 'search.score()'
 ```
 
-也提供互動式語法圖：
+您也可以使用互動式語法圖：
 
 > [!div class="nextstepaction"]
-> [Azure 認知搜尋的 OData 語法圖表](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
+> [Azure 認知搜尋的 OData 語法圖](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
 
 > [!NOTE]
-> 如需完整的 EBNF，請參閱[Azure 認知搜尋的 OData 運算式語法參考](search-query-odata-syntax-reference.md)。
+> 如需完整 EBNF 的詳細 Azure 認知搜尋，請參閱 [OData 運算式語法參考](search-query-odata-syntax-reference.md) 。
 
-每個子句都有排序準則，並選擇性地後面加上 (`asc` 遞增或遞減) 的排序方向 `desc` 。 如果您未指定方向，預設值為 [遞增]。 如果欄位中有 null 值，則如果排序是，則會先出現 null 值，如果排序是，則為 `asc` last `desc` 。
+每個子句都有排序準則，並選擇性地接著排序方向 (`asc` 遞增或 `desc` 遞減) 。 如果您未指定方向，則預設值為遞增。 如果欄位中有 null 值，如果排序是，則會先出現 null 值，如果 `asc` 排序是，則為最後一個 `desc` 。
 
-排序準則可以是欄位的路徑，或是呼叫或函式的方法 `sortable` [`geo.distance`](search-query-odata-geo-spatial-functions.md) [`search.score`](search-query-odata-search-score-function.md) 。
+排序準則可以是欄位的路徑，也可以是 `sortable` [`geo.distance`](search-query-odata-geo-spatial-functions.md) 或函數的呼叫 [`search.score`](search-query-odata-search-score-function.md) 。
 
-如果多個檔具有相同的排序準則，但未使用此函式 `search.score` (例如，如果您依數值 `Rating` 欄位排序，而三個檔的評等為 4) ，則系結將會依檔分數遞減順序中斷。 當檔分數是相同的 (例如，未在要求) 中指定全文檢索搜尋查詢時，系結檔的相對順序就是不確定的。
+如果有多份檔具有相同的排序準則，但未使用此函式 `search.score` (例如，如果您依數值 `Rating` 欄位排序，且三份檔的評等為 4) ，則會以遞減順序將系結分成檔分數。 當檔分數相同時 (例如，當要求中沒有指定任何全文檢索搜尋查詢時) ，則系結檔的相對順序不確定。
 
-您可以指定多個排序準則。 運算式的順序會決定最終的排序順序。 例如，若要依分數遞減排序，然後按下評等，語法會是 `$orderby=search.score() desc,Rating desc` 。
+您可以指定多個排序準則。 運算式的順序會決定最終的排序順序。 例如，若要依分數遞減排序，然後依評等，則語法為 `$orderby=search.score() desc,Rating desc` 。
 
 `geo.distance` 在 **$orderby** 中的語法與其在 **$filter** 中的語法相同。 在 **$orderby** 中使用 `geo.distance` 時，加以套用的欄位必須屬於 `Edm.GeographyPoint` 類型，而且也必須是 `sortable`。
 
-`search.score` 在 **$orderby** 中的語法為 `search.score()`。 函數 `search.score` 不接受任何參數。
+`search.score` 在 **$orderby** 中的語法為 `search.score()`。 函數 `search.score` 不採用任何參數。
 
 ## <a name="examples"></a>範例
 
@@ -76,13 +76,13 @@ sortable_function ::= geo_distance_call | 'search.score()'
     $orderby=Rating desc,BaseRate
 ```
 
-依評等將飯店遞減排序，然後依指定座標的距離遞增：
+依評等遞減方式排序旅館，然後依指定座標的距離遞增：
 
 ```odata-filter-expr
     $orderby=Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
 ```
 
-依照搜尋分數和評等的遞減順序來排序飯店，然後依照距指定座標的遞增順序。 在兩個具有相同相關性分數和評等的飯店之間，最接近的旅館會最先列出：
+依搜尋的遞減順序排序旅館，然後以相對於給定座標的距離遞增順序排序。 在具有相同相關性分數和評等的兩個旅館之間，會先列出最接近的旅館：
 
 ```odata-filter-expr
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
@@ -93,4 +93,4 @@ sortable_function ::= geo_distance_call | 'search.score()'
 - [如何在 Azure 認知搜尋中使用搜尋結果](search-pagination-page-layout.md)
 - [Azure 認知搜尋的 OData 運算式語言總覽](query-odata-filter-orderby-syntax.md)
 - [Azure 認知搜尋的 OData 運算式語法參考](search-query-odata-syntax-reference.md)
-- [搜尋檔 &#40;Azure 認知搜尋 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [搜尋檔 &#40;Azure 認知搜尋 REST API&#41;](/rest/api/searchservice/Search-Documents)

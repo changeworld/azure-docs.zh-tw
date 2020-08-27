@@ -19,29 +19,29 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83e9ae4aa68bc0c819d02a0cc6c39758549811cb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72793241"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928848"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Azure 認知搜尋的 OData 運算式語法參考
 
-Azure 認知搜尋會使用[OData 運算式](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)做為整個 API 中的參數。 最常見的是，OData 運算式是用於 `$orderby` 和 `$filter` 參數。 這些運算式可能很複雜，其中包含多個子句、函數和運算子。 不過，即使是屬性路徑之類的簡單 OData 運算式，也會用於 Azure 認知搜尋 REST API 的許多部分。 例如，路徑運算式是用來參考 API 中的所有複雜欄位的子欄位，例如在[建議工具](index-add-suggesters.md)中列出子欄位、[計分函數](index-add-scoring-profiles.md)、 `$select` 參數，或甚至是[在 Lucene 查詢中回復搜尋](query-lucene-syntax.md)。
+Azure 認知搜尋使用 [OData 運算式](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) 做為整個 API 的參數。 最常使用的 OData 運算式是 `$orderby` 和 `$filter` 參數。 這些運算式可能很複雜，其中包含多個子句、函數和運算子。 但是，即使是簡單的 OData 運算式（如屬性路徑），也會在 Azure 認知搜尋 REST API 的許多部分中使用。 例如，路徑運算式是用來在 API 中的任何地方參考複雜欄位的子欄位，例如在 [建議工具](index-add-suggesters.md)中列出子欄位、 [計分函數](index-add-scoring-profiles.md)、 `$select` 參數，甚至是 [在 Lucene 查詢中回復搜尋](query-lucene-syntax.md)。
 
-本文說明所有使用正式文法的 OData 運算式形式。 另外還有一個[互動式圖表](#syntax-diagram)，可協助您以視覺化方式流覽文法。
+本文使用正式文法來描述這些 OData 運算式的所有形式。 也有互動式的 [圖表](#syntax-diagram) 可協助您以視覺化方式探索文法。
 
 ## <a name="formal-grammar"></a>正式文法
 
-我們可以使用 EBNF （[延伸巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）文法來描述 Azure 認知搜尋所支援的 OData 語言子集。 規則會以「由上而下」列出，從最複雜的運算式開始，再將其細分為更基本的運算式。 最上方是對應至 Azure 認知搜尋之特定參數的文法規則 REST API：
+我們可以使用 EBNF ([外延巴克斯格斯](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 文法，來描述 Azure 認知搜尋支援的 OData 語言子集。 規則會列出「由上而下」，從最複雜的運算式開始，然後將它們細分成更基本的運算式。 頂端有文法規則，對應至 Azure 認知搜尋 REST API 的特定參數：
 
-- [`$filter`](search-query-odata-filter.md)，由規則定義 `filter_expression` 。
-- [`$orderby`](search-query-odata-orderby.md)，由規則定義 `order_by_expression` 。
-- [`$select`](search-query-odata-select.md)，由規則定義 `select_expression` 。
-- 欄位路徑，由規則定義 `field_path` 。 在整個 API 中都會使用欄位路徑。 它們可以參考索引的最上層欄位，或是具有一或多個[複雜欄位](search-howto-complex-data-types.md)祖系的子欄位。
+- [`$filter`](search-query-odata-filter.md)，由規則所定義 `filter_expression` 。
+- [`$orderby`](search-query-odata-orderby.md)，由規則所定義 `order_by_expression` 。
+- [`$select`](search-query-odata-select.md)，由規則所定義 `select_expression` 。
+- 由規則定義的欄位路徑 `field_path` 。 整個 API 都會使用欄位路徑。 它們可以參考索引的最上層欄位，或是具有一或多個 [複雜欄位](search-howto-complex-data-types.md) 上階的子欄位。
 
-在 EBNF 是可流覽的[語法圖表](https://en.wikipedia.org/wiki/Syntax_diagram)之後，可讓您以互動方式流覽文法和其規則之間的關聯性。
+EBNF 是可流覽的 [語法圖表](https://en.wikipedia.org/wiki/Syntax_diagram) ，可讓您以互動方式探索文法以及其規則之間的關聯性。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -209,14 +209,14 @@ search_mode ::= "'any'" | "'all'"
 
 ## <a name="syntax-diagram"></a>語法圖表
 
-若要以視覺化方式探索 Azure 認知搜尋所支援的 OData 語言文法，請嘗試互動式語法圖：
+若要以視覺化方式流覽 Azure 認知搜尋所支援的 OData 語言文法，請嘗試互動式語法圖：
 
 > [!div class="nextstepaction"]
-> [Azure 認知搜尋的 OData 語法圖表](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Azure 認知搜尋的 OData 語法圖](https://azuresearch.github.io/odata-syntax-diagram/)
 
-## <a name="see-also"></a>另請參閱  
+## <a name="see-also"></a>請參閱  
 
 - [Azure 認知搜尋中的篩選](search-filters.md)
-- [搜尋檔 &#40;Azure 認知搜尋 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [搜尋檔 &#40;Azure 認知搜尋 REST API&#41;](/rest/api/searchservice/Search-Documents)
 - [Lucene 查詢語法](query-lucene-syntax.md)
 - [Azure 認知搜尋中的簡單查詢語法](query-simple-syntax.md)

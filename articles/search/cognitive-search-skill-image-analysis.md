@@ -1,26 +1,26 @@
 ---
 title: 映像分析認知技能
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 認知搜尋中使用 AI 擴充管線中的影像分析認知技能，透過影像分析來解壓縮語義文字。
+description: 在 Azure 認知搜尋的 AI 擴充管線中使用影像分析認知技能，以在影像分析中解壓縮語義文字。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: d535866881fa6ed73b51eb6039baa9d515b770b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63a1f8e30be2983c0df93ff5a7229460f8f39214
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080842"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936039"
 ---
 # <a name="image-analysis-cognitive-skill"></a>映像分析認知技能
 
-**映像分析**技能可根據映像內容擷取一組豐富的視覺功能。 例如，您可以從映像產生標題、產生標記，或識別名人和地標。 這項技能會使用認知服務中[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)所提供的機器學習模型。 
+**映像分析**技能可根據映像內容擷取一組豐富的視覺功能。 例如，您可以從映像產生標題、產生標記，或識別名人和地標。 這項技能會使用認知服務中[電腦視覺](../cognitive-services/computer-vision/home.md)所提供的機器學習模型。 
 
 > [!NOTE]
-> 小型磁片區（低於20筆交易）可以在 Azure 認知搜尋中免費執行，但較大的工作負載[則需要附加可計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
+>  (20 筆交易下的小型磁片區) 可在 Azure 認知搜尋中免費執行，但較大的工作負載需要 [附加可計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
 >
 > 內建技能的執行會依現有的[認知服務預付型方案價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 影像擷取定價的說明請見 [Azure 認知搜尋定價頁面](https://azure.microsoft.com/pricing/details/search/)。
 
@@ -32,15 +32,15 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 這些參數會區分大小寫。
 
-| 參數名稱     | Description |
+| 參數名稱     | 描述 |
 |--------------------|-------------|
 | `defaultLanguageCode` |  此字串表示要傳回的語言。 服務會以指定語言傳回辨識結果。 如果未指定此屬性，則預設值為 "en"。 <br/><br/>支援的語言為： <br/>*en* - 英文 (預設) <br/> *es* -西班牙文 <br/> *ja-jp* -日文 <br/> *pt* -葡萄牙文 <br/> *zh* - 簡體中文|
-| `visualFeatures` |    此字串陣列表示要傳回的視覺功能類型。 有效的視覺功能類型包括：  <ul><li>*成人*-偵測影像本質上是否為色情（描述裸體或性別 act），或為繁雜（描述極端的暴力或血壓）。 也會偵測到色情的暗示性內容（也稱為猥褻內容）。</li><li>*品牌*-偵測影像內的各種品牌，包括大約的位置。 *品牌*視覺功能僅提供英文版。</li><li> *類別*-根據認知服務[電腦視覺檔](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中所定義的分類，將影像內容分類。 </li><li>*描述*-以支援的語言描述具有完整句子的影像內容。</li><li>*臉部*-偵測臉部是否存在。 如果有的話，會產生座標、性別和年齡。</li><li>   *物件*-偵測影像內的各種物件，包括大約的位置。 [*物件*] 視覺效果功能僅提供英文版。</li><li> *標記* - 使用與映像內容相關之字組的詳細清單標記映像。</li></ul> 視覺功能的名稱會區分大小寫。 請注意， *color*和*imageType*視覺功能已被取代，但仍可透過[自訂技能](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface)存取這項功能。|
-| `details` | 字串陣列表示要傳回的特定領域詳細資料。 有效的視覺功能類型包括： <ul><li>*名人*-識別映射中偵測到的名人。</li><li>*地標*-識別映射中偵測到的地標。 </li></ul> |
+| `visualFeatures` |    此字串陣列表示要傳回的視覺功能類型。 有效的視覺功能類型包括：  <ul><li>*成人* -偵測影像本質上是否為色情 (描繪裸體或性別行為) ，或暴力 (描述極端暴力或血糖) 。 也會偵測到 (也稱為猥褻內容) 的色情內容內容。</li><li>*品牌* -偵測影像內的各種品牌，包括大約的位置。 *品牌*視覺功能只提供英文版。</li><li> *類別* -根據認知服務 [電腦視覺檔](../cognitive-services/computer-vision/category-taxonomy.md)中定義的分類法來分類影像內容。 </li><li>*描述* -使用支援語言的完整句子來描述影像內容。</li><li>*臉部* -偵測臉部是否存在。 如果有的話，會產生座標、性別和年齡。</li><li>  *物件* -偵測影像內的各種物件，包括大約的位置。 *物件*視覺功能只提供英文版。</li><li> *標記* - 使用與映像內容相關之字組的詳細清單標記映像。</li></ul> 視覺功能的名稱會區分大小寫。 請注意，[ *色彩* ] 和 [ *imageType* ] 視覺效果功能已被取代，但是這種功能仍然可以透過 [自訂技能](./cognitive-search-custom-skill-interface.md)來存取。|
+| `details` | 字串陣列表示要傳回的特定領域詳細資料。 有效的視覺功能類型包括： <ul><li>*名人* -識別名人（如果在影像中偵測到）。</li><li>*地標* -識別地標（如果在影像中偵測到）。 </li></ul> |
 
 ## <a name="skill-inputs"></a>技能輸入
 
-| 輸入名稱      | Description                                          |
+| 輸入名稱      | 描述                                          |
 |---------------|------------------------------------------------------|
 | `image`         | 複雜類型。 目前僅可搭配 "/document/normalized_images" 欄位使用，該欄位是由 Azure Blob 索引子在 ```imageAction``` 被設定為 ```none``` 以外的其他值時產生。 如需詳細資訊，請參閱[範例](#sample-output)。|
 
@@ -86,7 +86,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             ]
         }
 ```
-### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>範例索引（僅適用于 [類別]、[描述]、[臉部] 和 [標記] 欄位）
+### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>只有 [類別]、[描述]、[臉部] 和 [標記] 欄位的範例索引 () 
 ```json
 {
     "fields": [
@@ -298,7 +298,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 }
 
 ```
-### <a name="sample-output-field-mapping-for-the-above-index"></a>範例輸出欄位對應（適用于上述索引）
+### <a name="sample-output-field-mapping-for-the-above-index"></a>上述索引的範例輸出欄位對應 () 
 ```json
     "outputFieldMappings": [
         {
@@ -322,7 +322,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             "targetFieldName": "brands"
         }
 ```
-### <a name="variation-on-output-field-mappings-nested-properties"></a>輸出欄位對應的變化（嵌套屬性）
+### <a name="variation-on-output-field-mappings-nested-properties"></a>輸出欄位對應 (嵌套屬性的變異) 
 
 您可以將輸出欄位對應定義為較低層級的屬性，例如只是地標或名人。 在此情況下，請確定您的索引架構具有可明確包含地標的欄位。
 
@@ -542,4 +542,4 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 + [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
-+ [建立索引子 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [建立索引子 (REST)](/rest/api/searchservice/create-indexer)

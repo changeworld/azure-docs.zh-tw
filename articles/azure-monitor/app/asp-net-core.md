@@ -2,13 +2,14 @@
 title: ASP.NET Core 應用程式 Azure 應用程式見解 |Microsoft Docs
 description: 監視 ASP.NET Core Web 應用程式的可用性、效能和使用方式。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 81d7ab38080aac941bce1f5d1dd17145f8075036
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 719bf997254c98c5790d6d6733982fea08541967
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518079"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936515"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 應用程式的 Application Insights
 
@@ -120,7 +121,7 @@ ms.locfileid: "88518079"
 
 ### <a name="user-secrets-and-other-configuration-providers"></a>使用者秘密和其他設定提供者
 
-如果您想要將檢測金鑰儲存在 ASP.NET Core 使用者密碼，或從另一個設定提供者抓取，您可以使用多載搭配 `Microsoft.Extensions.Configuration.IConfiguration` 參數。 例如： `services.AddApplicationInsightsTelemetry(Configuration);` 。
+如果您想要將檢測金鑰儲存在 ASP.NET Core 使用者密碼，或從另一個設定提供者抓取，您可以使用多載搭配 `Microsoft.Extensions.Configuration.IConfiguration` 參數。 例如 `services.AddApplicationInsightsTelemetry(Configuration);`。
 
 ## <a name="run-your-application"></a>執行您的應用程式
 
@@ -426,7 +427,7 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>我可以使用狀態監視器之類的工具來啟用 Application Insights 監視嗎？
 
-否。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
+不會。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
 
 ### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>我的 ASP.NET Core 2.0 應用程式會自動啟用 Application Insights 嗎？
 
@@ -465,7 +466,7 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 如需最新的更新和錯誤修正， [請參閱版本](./release-notes.md)資訊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [探索使用者流程](./usage-flows.md) ，以瞭解使用者如何流覽您的應用程式。
 * [設定快照集集合](./snapshot-debugger.md) ，以查看擲回例外狀況時的原始程式碼和變數狀態。

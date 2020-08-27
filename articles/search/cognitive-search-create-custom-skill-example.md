@@ -8,28 +8,28 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46170a0eede92584b8ac4cc77ad61ca673cae65c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113810"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935478"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>範例：使用 Bing 實體搜尋 API 建立自訂技能
 
-在此範例中，您將瞭解如何建立 Web API 的自訂技能。 這項技能將接受位置、公用圖表和組織，並傳回其描述。 此範例會使用[Azure](https://azure.microsoft.com/services/functions/)函式來包裝[Bing 實體搜尋 API](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) ，使其可執行自訂技能介面。
+在此範例中，您將瞭解如何建立 web API 自訂技能。 這種技能會接受地點、公共資料和組織，並傳回其描述。 此範例會使用 [Azure](https://azure.microsoft.com/services/functions/) 函式來包裝 [Bing 實體搜尋 API](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) ，使其能實作為自訂技能介面。
 
 ## <a name="prerequisites"></a>必要條件
 
-+ 如果您不熟悉自訂技能應實行的輸入/輸出介面，請閱讀[自訂技能介面](cognitive-search-custom-skill-interface.md)一文。
++ 如果您不熟悉自訂技能應該實行的輸入/輸出介面，請參閱 [自訂技能介面](cognitive-search-custom-skill-interface.md) 文章。
 
 + [!INCLUDE [cognitive-services-bing-entity-search-signup-requirements](../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-+ 安裝[Visual Studio 2019](https://www.visualstudio.com/vs/)或更新版本，包括 Azure 開發工作負載。
++ 安裝 [Visual Studio 2019](https://www.visualstudio.com/vs/) 或更新版本，包括 Azure 開發工作負載。
 
 ## <a name="create-an-azure-function"></a>建立 Azure 函式
 
-雖然此範例使用 Azure 函式來裝載 Web API，但並不是必要的。  只要您符合[認知技能的介面需求](cognitive-search-custom-skill-interface.md)，採取的方式並不重要。 不過，Azure Functions 能讓您輕鬆建立自訂技能。
+雖然此範例會使用 Azure 函式來裝載 web API，但它並不是必要的。  只要您符合[認知技能的介面需求](cognitive-search-custom-skill-interface.md)，採取的方式並不重要。 不過，Azure Functions 能讓您輕鬆建立自訂技能。
 
 ### <a name="create-a-function-app"></a>建立函數應用程式
 
@@ -37,7 +37,7 @@ ms.locfileid: "74113810"
 
 1. 在 [新增專案] 對話方塊中，選取 [已安裝]****，展開 [Visual C#]**** > [雲端]****，選取 [Azure Functions]****，輸入專案的 [名稱]，然後選取 [確定]****。 函數應用程式名稱必須是有效的 c # 命名空間，因此請勿使用底線、連字號或任何其他非英數位元。
 
-1. 選取 **[Azure Functions v2 （.Net Core）**]。 您也可以使用第 1 版來執行，但下方撰寫的程式碼以 v2 範本為基礎。
+1. 選取 **Azure Functions v2 ( .Net Core) **。 您也可以使用第 1 版來執行，但下方撰寫的程式碼以 v2 範本為基礎。
 
 1. 選取 [HTTP 觸發程序]**** 類型
 
@@ -311,15 +311,15 @@ namespace SampleSkills
 }
 ```
 
-請務必*key* `key` 根據您註冊 BING 實體搜尋 API 時所取得的金鑰，在常數中輸入您自己的金鑰值。
+請務必*key* `key` 根據您註冊 BING 實體搜尋 API 時所得到的金鑰，在常數中輸入您自己的金鑰值。
 
-這個範例會在單一檔案中包含所有必要的程式碼，以方便您使用。 您可以在[power 技能存放庫](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)中找到該相同技能的更結構化版本。
+為了方便起見，此範例會將所有必要的程式碼都包含在單一檔案中。 您可以在 [power 技能存放庫](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)中找到該相同技能稍微更多的結構化版本。
 
 當然，您可以將檔案從重新命名 `Function1.cs` 為 `BingEntitySearch.cs` 。
 
 ## <a name="test-the-function-from-visual-studio"></a>從 Visual Studio 測試函式
 
-按 **F5** 以執行程式並測試函式行為。 在此情況下，我們將使用下列函式來查詢兩個實體。 使用 Postman 或 Fiddler 來發出呼叫，如下所示：
+按 **F5** 以執行程式並測試函式行為。 在此情況下，我們將使用下列函數來查閱兩個實體。 使用 Postman 或 Fiddler 來發出呼叫，如下所示：
 
 ```http
 POST https://localhost:7071/api/EntitySearch
@@ -373,17 +373,17 @@ POST https://localhost:7071/api/EntitySearch
 
 ## <a name="publish-the-function-to-azure"></a>將函式發佈至 Azure
 
-當您對函式行為感到滿意時，就可以發行它。
+當您對函式行為感到滿意時，就可以將它發行。
 
-1. 在 [方案總管]**** 中，以滑鼠右鍵按一下專案並選取 [發佈]****。 選擇 [**建立新**  >  **發行**]。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下專案並選取 [發佈]。 選擇 [**建立新**  >  **發行**]。
 
 1. 如果您尚未將 Visual Studio 連線到您的 Azure 帳戶，請選取 [新增帳戶...]****。
 
-1. 遵循螢幕上的提示進行。 系統會要求您指定應用程式服務的唯一名稱、Azure 訂用帳戶、資源群組、主控方案和您想要使用的儲存體帳戶。 如果您沒有上述項目，則可以建立新的資源群組、新的主控方案和儲存體帳戶。 完成後，選取 [**建立**]
+1. 遵循螢幕上的提示進行。 系統會要求您為您的 app service、Azure 訂用帳戶、資源群組、主控方案，以及您想要使用的儲存體帳戶指定唯一的名稱。 如果您沒有上述項目，則可以建立新的資源群組、新的主控方案和儲存體帳戶。 完成時，選取 [**建立**]
 
 1. 部署完成之後，請注意網站 URL。 這是 Azure 中的函數應用程式的位址。 
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [資源群組]，然後尋找 `EntitySearch` 您發佈的函式。 在 [管理]**** 區段下，應該會看到主機金鑰。 選取 [預設]** 主機金鑰的 [複製]**** 圖示。  
+1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至資源群組，並尋找您發行的函式 `EntitySearch` 。 在 [管理]**** 區段下，應該會看到主機金鑰。 選取 [預設]** 主機金鑰的 [複製]**** 圖示。  
 
 ## <a name="test-the-function-in-azure"></a>在 Azure 測試函式
 
@@ -415,10 +415,10 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 }
 ```
 
-在本機環境中執行此函式時，此範例應該會產生與您先前看到的相同結果。
+此範例應產生您先前在本機環境中執行函數時所看到的相同結果。
 
 ## <a name="connect-to-your-pipeline"></a>連線到您的管線
-有了新的自訂技能之後，就可以將它加入您的技能集。 下列範例示範如何呼叫技能，以將描述新增至檔中的組織（這可能會擴充為也可在位置和人員上工作）。 將取代 `[your-entity-search-app-name]` 為您的應用程式名稱。
+有了新的自訂技能之後，就可以將它加入您的技能集。 下列範例會示範如何呼叫技能，以將描述新增至檔中的組織 (這可延伸至也可在) 位置和人員上運作。 `[your-entity-search-app-name]`以您的應用程式名稱取代。
 
 ```json
 {
@@ -446,7 +446,7 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 }
 ```
 
-在這裡，我們會計算要出現在技能集中的內建[實體辨識技能](cognitive-search-skill-entity-recognition.md)，並使用組織的清單擴充檔。 如需參考，以下是實體的提取技能設定，足以產生我們需要的資料：
+在這裡，我們將計算內建的 [實體辨識技能](cognitive-search-skill-entity-recognition.md) ，使其出現在技能集中，並以組織清單擴充檔。 如需參考，以下是實體解壓縮技能設定，足以產生所需的資料：
 
 ```json
 {
@@ -478,8 +478,8 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 ## <a name="next-steps"></a>後續步驟
 恭喜！ 您已建立您的第一個自訂技能。 現在您可以遵循相同的模式，新增自己的自訂功能。 若要深入瞭解，請按一下下列連結。
 
-+ [電力技能：自訂技能的存放庫](https://github.com/Azure-Samples/azure-search-power-skills)
++ [強大技能：自訂技能的儲存機制](https://github.com/Azure-Samples/azure-search-power-skills)
 + [將自訂技能新增至 AI 擴充管線](cognitive-search-custom-skill-interface.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
-+ [建立技能集 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [建立技能集 (REST)](/rest/api/searchservice/create-skillset)
 + [如何對應豐富型欄位](cognitive-search-output-field-mapping.md) (英文)

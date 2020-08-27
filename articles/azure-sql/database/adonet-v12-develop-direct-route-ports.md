@@ -1,22 +1,22 @@
 ---
-title: 1433以外的埠
+title: 超過1433的埠
 description: 從 ADO.NET 至 Azure SQL Database 的用戶端連線可以略過 Proxy，並且使用 1433 以外的連接埠直接與資料庫互動。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-dotnet
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 06/11/2020
-ms.openlocfilehash: c5ddcd083dfae1d0d4b79cd534b6ae4d034903b9
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 73bd3a86d34f36c3737db62e531dc2f79c0db8b5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759303"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928321"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>ADO.NET 4.5 超過 1433 以外的連接埠
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,17 +37,17 @@ ms.locfileid: "87759303"
 
 ### <a name="inside-client-runs-on-azure"></a>*內部：* 在 Azure 上執行的用戶端
 
-當您的用戶端在 Azure 雲端界限內執行時，它會使用我們可以呼叫*直接路由*的方式來與 SQL Database 互動。 建立連線之後，用戶端和資料庫之間的進一步互動未牽涉到 Azure SQL Database Gateway。
+當您的用戶端在 Azure 雲端界限內執行時，它會使用我們可以呼叫的 *直接路由* 來與 SQL Database 互動。 建立連線之後，用戶端和資料庫之間的進一步互動未牽涉到 Azure SQL Database Gateway。
 
 順序如下：
 
 1. ADO.NET 4.5 (或更新版本) 會起始與 Azure 雲端的簡短互動，並且接收動態已識別的連接埠號碼。
 
-   * 動態識別的埠號碼在11000-11999 的範圍內。
-2. 然後，ADO.NET 會直接連接到 SQL Database，其間不會有中介軟體。
+   * 動態識別的埠號碼的範圍是11000-11999。
+2. 然後，ADO.NET 會直接連接到 SQL Database，中間沒有中介軟體。
 3. 查詢會直接傳送到資料庫，結果會直接傳回至用戶端。
 
-請確定您的 Azure 用戶端機器上的埠範圍11000-11999 可供 ADO.NET 4.5 用戶端與 SQL Database 進行互動。
+確定您 Azure 用戶端電腦上11000-11999 的埠範圍可供 ADO.NET 4.5 用戶端與 SQL Database 的互動使用。
 
 * 特別是範圍中的連接埠必須沒有其他任何輸出封鎖器。
 * 在您的 Azure VM 上， **具有進階安全性的 Windows 防火牆** 會控制此連接埠設定。
@@ -77,7 +77,7 @@ ms.locfileid: "87759303"
 * ADO.NET 4.5 於 2012 年 8 月 15 日發行。 您可以在 [這裡](https://devblogs.microsoft.com/dotnet/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code/)查看 .NET 小組的部落格公告。
   * 您可以在 [這裡](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-5-1-preview/)查看有關 ADO.NET 4.5.1 的部落格文章。
 
-* 適用于 SQL Server 的 Microsoft ODBC Driver 17https://aka.ms/downloadmsodbcsql
+* Microsoft ODBC Driver 17 for SQL Server https://aka.ms/downloadmsodbcsql
 
 * 透過重新導向連線到 Azure SQL Database V12 https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 

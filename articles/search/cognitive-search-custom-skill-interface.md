@@ -1,27 +1,27 @@
 ---
 title: 自訂技能的介面定義
 titleSuffix: Azure Cognitive Search
-description: Azure 認知搜尋中 AI 擴充管線內 web api 自訂技能的自訂資料提取介面。
+description: Azure 認知搜尋的 AI 擴充管線中，適用于 web api 自訂技能的自訂資料解壓縮介面。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 7a1a2aa92549bcab35532120c4af5bd0b6904f58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e78f0d1e8d6d637dfebe1ff475ab8416ba49a263
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891253"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935410"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>如何將自訂技能新增至 Azure 認知搜尋擴充管線
 
 > [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=172&end=221]
 
-Azure 認知搜尋中的[擴充管線](cognitive-search-concept-intro.md)可以從[內建認知技能](cognitive-search-predefined-skills.md)，以及您個人建立並新增至管線的[自訂技能](cognitive-search-custom-skill-web-api.md)來組合。 在本文中，您將瞭解如何建立自訂技能，以公開介面，讓它包含在 AI 擴充管線中。 
+Azure 認知搜尋中的 [擴充管線](cognitive-search-concept-intro.md) 可以從 [內建的認知技能](cognitive-search-predefined-skills.md) ，以及您個人建立並新增至管線的 [自訂技能](cognitive-search-custom-skill-web-api.md) 來組合。 在本文中，您將瞭解如何建立自訂技能來公開介面，以便將它包含在 AI 擴充管線中。 
 
-建置自訂技能可讓您插入內容獨有的轉換。 自訂技能會獨立執行，可套用在任何所需的擴充步驟。 例如，您可以定義欄位特定的自訂實體、建立自訂的分類模型以區分商務和財務合約和文件，或者新增語音辨識技能以深入觸及音訊檔案來了解相關內容。 如需逐步範例，請參閱[範例：建立 AI 擴充的自訂技能](cognitive-search-create-custom-skill-example.md)。
+建置自訂技能可讓您插入內容獨有的轉換。 自訂技能會獨立執行，可套用在任何所需的擴充步驟。 例如，您可以定義欄位特定的自訂實體、建立自訂的分類模型以區分商務和財務合約和文件，或者新增語音辨識技能以深入觸及音訊檔案來了解相關內容。 如需逐步範例，請參閱 [範例：建立 AI 擴充的自訂技能](cognitive-search-create-custom-skill-example.md)。
 
  無論您需要哪一種自訂功能，都有一個簡單且清楚的介面，可將自訂技能連接到擴充管線的其餘部分。 要包含[技能集](cognitive-search-defining-skillset.md)中的唯一需求，便是以在技能集內可整體取用的方式，接受輸入並發出輸出的能力。 本文著重於擴充管線所需的輸入和輸出格式。
 
@@ -36,7 +36,7 @@ Azure 認知搜尋中的[擴充管線](cognitive-search-concept-intro.md)可以�
         "timeout": "PT230S",
 ```
 
-請確定 URI 是安全的（HTTPS）。
+請確定 URI 是安全的 (HTTPS) 。
 
 目前與自訂技能互動的唯一機制是透過 Web API 介面。 Web API 的需求必須符合本節所描述的需求。
 
@@ -130,7 +130,7 @@ Web API 必須接受要處理的記錄陣列。 每一筆記錄都必須包含�
 
 ## <a name="consuming-custom-skills-from-skillset"></a>取用技能集的自訂技能
 
-當您建立 Web API 擴充程式時，可以在要求中描述 HTTP 標頭和參數。 下列程式碼片段顯示如何將要求參數和*選擇性*HTTP 標頭描述為技能集定義的一部分。 HTTP 標頭不是必要條件，但可讓您將額外的設定功能新增至您的技能，並從技能集定義加以設定。
+當您建立 Web API 擴充程式時，可以在要求中描述 HTTP 標頭和參數。 下列程式碼片段顯示如何在技能集定義中描述要求參數和 *選擇性* 的 HTTP 標頭。 HTTP 標頭不是必要條件，但可讓您將額外的設定功能新增至您的技能，並從技能集定義進行設定。
 
 ```json
 {
@@ -162,11 +162,11 @@ Web API 必須接受要處理的記錄陣列。 每一筆記錄都必須包含�
 
 ## <a name="next-steps"></a>後續步驟
 
-本文涵蓋將自訂技能整合到技能集所需的介面需求。 若要深入瞭解自訂技能和技能集組合，請按一下下列連結。
+本文涵蓋將自訂技能整合至技能集所需的介面需求。 請按一下下列連結，以深入瞭解自訂技能和技能集組合。
 
-+ [觀看我們關於自訂技能的影片](https://youtu.be/fHLCE-NZeb4)
-+ [電力技能：自訂技能的存放庫](https://github.com/Azure-Samples/azure-search-power-skills)
++ [觀賞有關自訂技能的影片](https://youtu.be/fHLCE-NZeb4)
++ [強大技能：自訂技能的儲存機制](https://github.com/Azure-Samples/azure-search-power-skills)
 + [範例：建立 AI 擴充的自訂技能](cognitive-search-create-custom-skill-example.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
-+ [建立技能集 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [建立技能集 (REST)](/rest/api/searchservice/create-skillset)
 + [如何對應豐富型欄位](cognitive-search-output-field-mapping.md) (英文)

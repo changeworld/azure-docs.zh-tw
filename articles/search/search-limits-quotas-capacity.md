@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 99b64ca8e807fcf6a142f10878d90e77e3639698
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 62a0b0ec5312b4d00724fe7c13a5e20b5d35e34f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749478"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926859"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 認知搜尋中的服務限制
 
@@ -44,8 +44,8 @@ ms.locfileid: "88749478"
 | 每個索引的複雜集合欄位數上限 |40 |40 |40 |40 |40 |40 |40 |40 |
 | 每份文件所有複雜集合之間的元素上限&nbsp;<sup>2</sup> |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | 複雜欄位的最大深度 |10 |10 |10 |10 |10 |10 |10 |10 |
-| 每個索引的[建議工具](https://docs.microsoft.com/rest/api/searchservice/suggesters)上限 |1 |1 |1 |1 |1 |1 |1 |1 |
-| 每個索引的[評分設定檔](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)上限 |100 |100 |100 |100 |100 |100 |100 |100 |
+| 每個索引的[建議工具](/rest/api/searchservice/suggesters)上限 |1 |1 |1 |1 |1 |1 |1 |1 |
+| 每個索引的[評分設定檔](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)上限 |100 |100 |100 |100 |100 |100 |100 |100 |
 | 每個設定檔的函式上限 |8 |8 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> 2017 年 12 月之前建立的基本服務，在索引方面具有較低的限制 (5 個，而不是 15 個)。 基本層是唯一具有較低限制 (每個索引 100 個欄位) 的 SKU。
@@ -58,7 +58,7 @@ ms.locfileid: "88749478"
 
 截至 2018 年 10 月，在任何區域中任何計費層 (基本、S1、S2、S3、S3 HD) 建立的任何新的服務，都不再有任何文件計數限制。 在 2018 年 10 月之前建立的舊版服務仍可能受限於文件計數限制。
 
-若要判斷您的服務是否有文件限制，請使用 [GET 服務統計資料 REST API](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)。 文件限制會反映在回應中，`null` 表示沒有限制。
+若要判斷您的服務是否有文件限制，請使用 [GET 服務統計資料 REST API](/rest/api/searchservice/get-service-statistics)。 文件限制會反映在回應中，`null` 表示沒有限制。
 
 > [!NOTE]
 > 雖然此服務並未規定任何文件限制，但在基本、S1、S2 和 S3 搜尋服務中，其分區限制為每個索引大約有 240 億個文件。 對於 S3 HD，分區限制為每個索引 20 億個文件。 在分區限制方面，複雜集合中的每個元素都會算成個別文件。
@@ -120,7 +120,7 @@ ms.locfileid: "88749478"
 
 ## <a name="data-limits-ai-enrichment"></a>資料限制 (AI 擴充)
 
-[AI 擴充管線](cognitive-search-concept-intro.md)可呼叫文字分析資源以進行[實體辨識](cognitive-search-skill-entity-recognition.md)、[關鍵片語擷取](cognitive-search-skill-keyphrases.md)、[情感分析](cognitive-search-skill-sentiment.md)、[語言偵測](cognitive-search-skill-language-detection.md)，以及[個人資訊偵測](cognitive-search-skill-pii-detection.md)，會受到資料限制的約束。 記錄的大小上限應該是 50,000 個字元 (以 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) 為測量單位)。 如果您需要先分割資料，再將該資料傳送至情感分析器，請使用[文字分割技能](cognitive-search-skill-textsplit.md)。
+[AI 擴充管線](cognitive-search-concept-intro.md)可呼叫文字分析資源以進行[實體辨識](cognitive-search-skill-entity-recognition.md)、[關鍵片語擷取](cognitive-search-skill-keyphrases.md)、[情感分析](cognitive-search-skill-sentiment.md)、[語言偵測](cognitive-search-skill-language-detection.md)，以及[個人資訊偵測](cognitive-search-skill-pii-detection.md)，會受到資料限制的約束。 記錄的大小上限應該是 50,000 個字元 (以 [`String.Length`](/dotnet/api/system.string.length) 為測量單位)。 如果您需要先分割資料，再將該資料傳送至情感分析器，請使用[文字分割技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="throttling-limits"></a>節流限制
 
@@ -141,7 +141,7 @@ ms.locfileid: "88749478"
 * $orderby 子句中最多 32 個欄位
 * 最大搜尋詞彙的大小是 utf-8 編碼文字的 32,766 個位元組 (32 KB 減 2 個位元組)
 
-<sup>1</sup> 在「Azure 認知搜尋」中，要求主體的上限是 16 MB，這會針對不受理論上限制約束之個別欄位或集合的內容強加實際限制 (如需有關欄位組合和限制的詳細資訊，請參閱[支援的資料類型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types))。
+<sup>1</sup> 在「Azure 認知搜尋」中，要求主體的上限是 16 MB，這會針對不受理論上限制約束之個別欄位或集合的內容強加實際限制 (如需有關欄位組合和限制的詳細資訊，請參閱[支援的資料類型](/rest/api/searchservice/supported-data-types))。
 
 ## <a name="api-response-limits"></a>API 回應限制
 * 每一頁搜尋結果最多傳回 1000 個文件

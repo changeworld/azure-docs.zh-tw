@@ -1,19 +1,19 @@
 ---
 title: 將輸入對應至輸出欄位
 titleSuffix: Azure Cognitive Search
-description: 將源資料欄位解壓縮並擴充，並對應至 Azure 認知搜尋索引中的輸出欄位。
+description: 將源資料欄位解壓縮並擴充，並將其對應至 Azure 認知搜尋索引中的輸出欄位。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ef840dc84c04875333958fa59ce399f2d16d07b5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 58bb87d5af785d3cffd96f3bd02477f97ed967a9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214033"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935359"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>如何將 AI 擴充的欄位對應至可搜尋的索引
 
@@ -21,18 +21,18 @@ ms.locfileid: "88214033"
 
 在本文中，您可以了解如何將擴充的輸入欄位對應至可搜尋索引中的輸出欄位。 一旦具備[定義的技能集](cognitive-search-defining-skillset.md)，即必須將直接提供值之任何技能的輸出欄位，對應至搜尋索引中的指定欄位。
 
-將內容從擴充的檔移至索引時，需要輸出欄位對應。  擴充的檔其實是一種資訊的樹狀結構，即使索引中有複雜類型的支援，有時您可能會想要將資訊從擴充的樹狀結構轉換成更簡單的類型 (例如，) 的字串陣列。 輸出欄位對應可讓您透過簡維資訊來執行資料圖形轉換。 輸出欄位對應一律會在技能集執行之後發生，不過即使未定義任何技能集，此階段也可能執行。
+從擴充的檔將內容移至索引時，需要輸出欄位對應。  擴充的檔其實是一種資訊樹狀結構，即使在索引中支援複雜類型，有時候您可能會想要將擴充樹狀結構中的資訊轉換成更簡單的類型 (例如，字串的陣列) 。 輸出欄位對應可讓您依簡維資訊來執行資料圖形轉換。 輸出欄位對應一律會在技能集執行之後發生，不過即使沒有定義任何技能集，這個階段仍可能執行。
 
 輸出欄位對應的範例：
 
-* 在您的技能集過程中，您會解壓縮檔的每個頁面中所提及的組織名稱。 現在您想要將每個組織名稱對應到類型為 Edm 的索引中的欄位， (Edm. String) 。
+* 在技能集的過程中，您已解壓縮檔中每個頁面所提及的組織名稱。 現在您想要將這些組織的每個名稱對應至 edm 類型之索引中的欄位， (Edm. 字串) 。
 
-* 在您的技能集過程中，您會產生稱為 "document/translated_text" 的新節點。 您想要將此節點上的資訊對應至索引中的特定欄位。
+* 在技能集的過程中，您產生了名為 "document/translated_text" 的新節點。 您想要將這個節點上的資訊對應到索引中的特定欄位。
 
-* 您沒有技能集，而是從 Cosmos DB 資料庫編制複雜類型的索引。 您想要取得該複雜型別的節點，並將它對應至索引中的欄位。
+* 您沒有技能集，但正在從 Cosmos DB 資料庫編制複雜類型的索引。 您想要取得該複雜型別的節點，並將它對應至索引中的欄位。
 
 > [!NOTE]
-> 我們最近啟用了輸出欄位對應的對應函數功能。 如需對應函數的詳細資訊，請參閱 [欄位對應函數](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions)
+> 我們最近在輸出欄位對應上啟用了對應函式的功能。 如需對應函數的詳細資訊，請參閱[欄位對應](./search-indexer-field-mappings.md#field-mapping-functions)函式
 
 ## <a name="use-outputfieldmappings"></a>使用 outputFieldMappings
 
@@ -81,9 +81,9 @@ Content-Type: application/json
 }
 ```
 
-針對每個輸出欄位對應，將資料的位置設定在擴充的檔樹狀結構中 (Sourcefieldname 路徑) ，並在索引 (targetFieldName) 中參考欄位的名稱。
+針對每個輸出欄位對應，在擴充的檔樹狀結構中設定資料的位置 (sourceFieldName) ，並在索引 (targetFieldName) 中參考的欄位名稱。
 
-## <a name="flattening-information-from-complex-types"></a>從複雜類型簡維資訊 
+## <a name="flattening-information-from-complex-types"></a>複雜類型的簡維資訊 
 
 sourceFieldName 中的路徑可以代表一個元素或多個元素。 在上述範例中，```/document/content/sentiment``` 代表單一數值，而 ```/document/content/organizations/*/description``` 代表數個組織描述。 
 
@@ -95,7 +95,7 @@ sourceFieldName 中的路徑可以代表一個元素或多個元素。 在上述
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
 ```
 
-這是一項重要的原則，因此我們將提供另一個範例。 假設您在擴充樹狀結構中有複雜類型的陣列。 假設有一個名為 customEntities 的成員，其中包含複雜類型的陣列，如下所述。
+這是很重要的準則，因此我們將提供另一個範例。 假設您有一個複雜類型的陣列，做為擴充樹狀結構的一部分。 假設有一個名為 customEntities 的成員，其中有一個複雜類型的陣列，如下所述。
 
 ```json
 "document/customEntities": 
@@ -126,9 +126,9 @@ sourceFieldName 中的路徑可以代表一個元素或多個元素。 在上述
 ]
 ```
 
-讓我們假設您的索引有一個名為 ' 疾病 ' （類型為 Collection）的欄位， (Edm. String) ，您想要在其中儲存實體的每個名稱。 
+讓我們假設您的索引有一個名為 ' 疾病 ' 的欄位，其類型為 Collection () ，您想要在其中儲存每個實體的名稱。 
 
-這可以使用 " \* " 符號輕鬆完成，如下所示：
+您可以使用 "" 符號來輕鬆完成此動作，如下所示 \* ：
 
 ```json
     "outputFieldMappings": [
@@ -139,7 +139,7 @@ sourceFieldName 中的路徑可以代表一個元素或多個元素。 在上述
     ]
 ```
 
-這項作業只會將 customEntities 元素的每個名稱「簡維」成單一字串陣列，如下所示：
+這項作業只會將每個 customEntities 元素的名稱「簡維化」成單一字串陣列，如下所示：
 
 ```json
   "diseases" : ["heart failure","morquio"]

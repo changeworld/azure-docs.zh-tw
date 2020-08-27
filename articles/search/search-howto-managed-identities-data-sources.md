@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d303de23a04d183d0ca280c3b3591299d883adf7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553159"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936583"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>使用受控識別 (預覽) 設定與資料來源的索引子連線
 
@@ -31,7 +31,7 @@ Azure 認知搜尋中的[索引子](search-indexer-overview.md)是一種編目�
 
 ## <a name="using-managed-identities"></a>使用受控識別
 
-[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)功能會在 Azure Active Directory (Azure AD) 中為 Azure 服務提供自動受控識別。 您可使用 Azure 認知搜尋中的這項功能，以不包含任何認證的連接字串來建立資料來源物件。 將會改為透過角色型存取控制 (RBAC) 來授與搜尋服務對資料來源的存取權。
+[受控識別](../active-directory/managed-identities-azure-resources/overview.md)功能會在 Azure Active Directory (Azure AD) 中為 Azure 服務提供自動受控識別。 您可使用 Azure 認知搜尋中的這項功能，以不包含任何認證的連接字串來建立資料來源物件。 將會改為透過角色型存取控制 (RBAC) 來授與搜尋服務對資料來源的存取權。
 
 使用受控識別設定資料來源時，您可變更資料來源認證，而索引子仍然可連線至資料來源。 您也可以在程式碼中建立資料來源物件，而不需要包含帳戶金鑰或使用金鑰保存庫來擷取帳戶金鑰。
 
