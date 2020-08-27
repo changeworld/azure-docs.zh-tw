@@ -1,7 +1,7 @@
 ---
 title: 如何使用語音轉換文字的自動語言偵測
 titleSuffix: Azure Cognitive Services
-description: 語音 SDK 支援語音轉換文字的自動語言偵測。 使用這項功能時，所提供的音訊會與提供的語言清單進行比較，並決定最可能的相符項。 然後，傳回的值可以用來選取用於語音轉換文字的語言模型。
+description: 語音 SDK 支援語音轉換文字的自動語言偵測。 使用這項功能時，所提供的音訊會與提供的語言清單進行比較，並決定最可能的相符。 然後，您可以使用傳回的值來選取語音轉換文字所使用的語言模型。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c1d2613661421ae95c34edef3caafe4c6fb3d4a9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 1fc7e7da62aa92812a124f920f5c59ebf8e50fcc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905069"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934611"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>語音轉換文字的自動語言偵測
 
-自動語言偵測是用來判斷與所提供語言清單相較之下，傳遞至語音 SDK 的音訊最可能相符的情況。 然後，自動語言偵測傳回的值會用來選取語音轉換文字的語言模型，為您提供更精確的轉譯。 若要查看有哪些語言可供使用，請參閱[語言支援](language-support.md)。
+當與提供的語言清單相比較時，會使用自動語言偵測來判斷傳遞給語音 SDK 的音訊最有可能相符的情況。 然後，自動語言偵測所傳回的值會用來選取語音轉換文字的語言模型，以提供更精確的轉譯。 若要查看有哪些可用的語言，請參閱 [語言支援](language-support.md)。
 
-在本文中，您將瞭解如何使用 `AutoDetectSourceLanguageConfig` 來建立 `SpeechRecognizer` 物件，並取出偵測到的語言。
+在本文中，您將瞭解如何使用 `AutoDetectSourceLanguageConfig` 來建立 `SpeechRecognizer` 物件並取得偵測到的語言。
 
 > [!IMPORTANT]
-> 這項功能僅適用于使用 c #、c + +、JAVA、Python、JavaScript 和目標-C 的語音 SDK。
+> 這項功能僅適用于使用 c #、c + +、JAVA、Python、JavaScript 和目標 C 的語音 SDK。
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>使用語音 SDK 進行自動語言偵測
 
-自動語言偵測目前在每次偵測時都有四種語言的服務端限制。 在建設您的物件時，請記住這項限制 `AudoDetectSourceLanguageConfig` 。 在下列範例中，您將建立 `AutoDetectSourceLanguageConfig` ，然後使用它來建立 `SpeechRecognizer` 。
+自動語言偵測目前的每個偵測都有四種語言的服務端限制。 在結構您的物件時，請記住這項限制 `AudoDetectSourceLanguageConfig` 。 在下列範例中，您將建立 `AutoDetectSourceLanguageConfig` ，然後使用它來建立 `SpeechRecognizer` 。
 
 > [!TIP]
-> 您也可以指定要在執行語音轉換文字時使用的自訂模型。 如需詳細資訊，請參閱[使用自訂模型進行自動語言偵測](#use-a-custom-model-for-automatic-language-detection)。
+> 您也可以指定要在執行語音轉換文字時使用的自訂模型。 如需詳細資訊，請參閱 [使用自訂模型進行自動語言偵測](#use-a-custom-model-for-automatic-language-detection)。
 
 下列程式碼片段說明如何在您的應用程式中使用自動語言偵測：
 
@@ -152,9 +152,9 @@ speechRecognizer.recognizeOnceAsync((result: SpeechSDK.SpeechRecognitionResult) 
 
 ## <a name="use-a-custom-model-for-automatic-language-detection"></a>使用自訂模型進行自動語言偵測
 
-除了使用語音服務模型偵測語言之外，您還可以指定自訂模型來進行增強式辨識。 如果未提供自訂模型，服務將會使用預設語言模型。
+除了使用語音服務模型的語言偵測之外，您還可以指定自訂模型來增強辨識。 如果未提供自訂模型，服務會使用預設的語言模型。
 
-下列程式碼片段說明如何在您的語音服務呼叫中指定自訂模型。 如果偵測到的語言是 `en-US` ，則會使用預設模型。 如果偵測到的語言是 `fr-FR` ，則會使用自訂模型的端點：
+下列程式碼片段說明如何在語音服務的呼叫中指定自訂模型。 如果偵測到的語言是 `en-US` ，則會使用預設模型。 如果偵測到的語言是 `fr-FR` ，則會使用自訂模型的端點：
 
 ::: zone pivot="programming-language-csharp"
 
@@ -241,23 +241,23 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 ## <a name="next-steps"></a>後續步驟
 
 ::: zone pivot="programming-language-csharp"
-* 請參閱 GitHub 上的[範例程式碼](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L741)以進行自動語言偵測
+* 請參閱 GitHub 上的 [範例程式碼](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L741) 以進行自動語言偵測
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
-* 請參閱 GitHub 上的[範例程式碼](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#L507)以進行自動語言偵測
+* 請參閱 GitHub 上的 [範例程式碼](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#L507) 以進行自動語言偵測
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-* 請參閱 GitHub 上的[範例程式碼](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#L521)以進行自動語言偵測
+* 請參閱 GitHub 上的 [範例程式碼](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#L521) 以進行自動語言偵測
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-* 請參閱 GitHub 上的[範例程式碼](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_synthesis_sample.py#L434)以進行自動語言偵測
+* 請參閱 GitHub 上的 [範例程式碼](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_synthesis_sample.py#L434) 以進行自動語言偵測
 ::: zone-end
 
 ::: zone pivot="programming-language-objectivec"
-* 請參閱 GitHub 上的[範例程式碼](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L494)以進行自動語言偵測
+* 請參閱 GitHub 上的 [範例程式碼](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L494) 以進行自動語言偵測
 ::: zone-end
 
 * [語音 SDK 參考檔](speech-sdk.md)

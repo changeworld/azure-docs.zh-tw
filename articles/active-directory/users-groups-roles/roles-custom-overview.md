@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ce2ea7bed7da5226868afcf4d284ba893f2208a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 915098130c7a8462bc0e009be04a61b5b0a7985d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828654"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795587"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory 中的自訂管理員角色 (預覽)
 
@@ -46,7 +46,7 @@ Azure AD 內建和自訂角色的運作概念與 [Azure 角色型存取控制 (A
 
 1. 視情況而定，Azure AD 會採取下列其中一個動作：
 
-    - 根據使用者存取權杖中的 [wids 宣告](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)，評估使用者的角色成員資格。
+    - 根據使用者存取權杖中的 [wids 宣告](../develop/access-tokens.md)，評估使用者的角色成員資格。
     - 擷取所有可針對使用者套用至要執行動作的資源 (無論是直接還是透過群組成員資格) 的角色指派。
 
 1. Azure AD 會判斷 API 呼叫中的動作是否包含於使用者針對此資源所具備的角色中。

@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 0c008061d2d4fafa96eda934d5026c92839a0bdb
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 01d962db45a58781ca5f2ba494de16ad420b0807
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661481"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921064"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 數位 Twins 的已知問題
 
@@ -51,7 +51,9 @@ Cloud Shell 中的命令可能會間歇性失敗，並出現錯誤「400用戶�
 
 ## <a name="issue-with-interactive-browser-authentication"></a>互動式瀏覽器驗證的問題
 
-使用** [Azure 身分識別](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)程式庫** (版本**1.2.0**) 的最新版本在 azure 數位 Twins 應用程式中撰寫驗證碼時，您可能會遇到[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)方法的問題。
+當您在 Azure 數位 Twins 應用程式中使用** [Azure 身分識別](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)程式庫**的版本**1.2.0**來撰寫驗證碼時，您可能會遇到[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)方法的問題。
+
+這不是最新版本的程式庫。 最新版本是 **1.2.2**。
 
 下列文章中使用受影響的方法： 
 * [*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)
@@ -62,10 +64,7 @@ Cloud Shell 中的命令可能會間歇性失敗，並出現錯誤「400用戶�
 
 ### <a name="troubleshooting-steps"></a>疑難排解步驟
 
-若要解決此問題，請讓您的應用程式明確使用 Azure. 身分識別 **1.1.1**版。 使用此版本的程式庫時，瀏覽器應該會如預期般載入和驗證。
-
->[!NOTE]
-> 新增程式庫時，不需要指定任何版本，因為它仍然會預設為最新的 **1.2.0**。 您必須明確指定 **1.1.1** 版。
+若要解決此問題，請更新您的應用程式以使用 Azure 身分識別版本 **1.2.2**。 使用此版本的程式庫時，瀏覽器應該會如預期般載入和驗證。
 
 ### <a name="possible-causes"></a>可能的原因
 

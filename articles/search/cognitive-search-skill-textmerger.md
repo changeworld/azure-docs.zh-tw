@@ -1,19 +1,19 @@
 ---
 title: 文字合併認知技能
 titleSuffix: Azure Cognitive Search
-description: 將一組欄位中的文字合併成一個合併欄位。 在 Azure 認知搜尋中的 AI 擴充管線中使用這項認知技能。
+description: 將一組欄位中的文字合併成一個合併欄位。 在 Azure 認知搜尋的 AI 擴充管線中使用此認知技能。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: f713eb71d375a3388c4b238656355595354b9806
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b364655f26c6ac29c14d387d69d7b4277d6aeb86
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982011"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924634"
 ---
 #   <a name="text-merge-cognitive-skill"></a>文字合併認知技能
 
@@ -31,8 +31,8 @@ Microsoft.Skills.Text.MergeSkill
 
 | 參數名稱     | 描述 |
 |--------------------|-------------|
-| `insertPreTag`    | 要在每次插入之前包含的字串。 預設值為 `" "`。 若要省略空間，請將值設定為 `""`。  |
-| `insertPostTag`   | 要在每次插入之後包含的字串。 預設值為 `" "`。 若要省略空間，請將值設定為 `""`。  |
+| `insertPreTag`    | 要在每次插入之前包含的字串。 預設值是 `" "`。 若要省略空間，請將值設定為 `""`。  |
+| `insertPostTag`   | 要在每次插入之後包含的字串。 預設值是 `" "`。 若要省略空間，請將值設定為 `""`。  |
 
 
 ##  <a name="sample-input"></a>範例輸入
@@ -75,7 +75,7 @@ Microsoft.Skills.Text.MergeSkill
 
 使用文字合併的常見案例是將影像的文字表示 (來自 OCR 技能的文字，或影像標題) 合併至文件的內容欄位。 
 
-下列範例技能集使用 OCR 技能來擷取文件中內嵌影像的文字。 接下來，它會建立 *merged_text* 欄位以包含每個影像的原始和已進行 OCR 處理的文字。 您可以在[這裡](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)深入了解 OCR 技能。
+下列範例技能集使用 OCR 技能來擷取文件中內嵌影像的文字。 接下來，它會建立 *merged_text* 欄位以包含每個影像的原始和已進行 OCR 處理的文字。 您可以在[這裡](./cognitive-search-skill-ocr.md)深入了解 OCR 技能。
 
 ```json
 {
@@ -148,4 +148,4 @@ Microsoft.Skills.Text.MergeSkill
 
 + [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
-+ [建立索引子 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [建立索引子 (REST)](/rest/api/searchservice/create-indexer)

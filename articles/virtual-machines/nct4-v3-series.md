@@ -8,16 +8,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: vikancha
-ms.openlocfilehash: d07da12ecef7dfc6cf1a6df67f6beae01c4573d9
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 73d583cb371876cefc10c982dbe66f6e15bddf03
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168111"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932605"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 系列 
 
-NCasT4_v3 系列的虛擬機器由[Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU 和 AMD EPYC 7V12 提供技術支援， (羅馬) cpu。 Vm 最多可以有4個 NVIDIA T4 Gpu，每個都有 16 GB 的記憶體，最多64個非多執行緒 AMD EPYC 7V12 (羅馬) 處理器核心，以及 440 GiB 的系統記憶體。 這些虛擬機器適合用來執行使用 CUDA、TensorFlow、Pytorch、Caffe 和其他架構的 ML 和 AI 工作負載，或使用 NVIDIA GRID 技術的圖形工作負載。 NCasT4_v3 系列是執行推斷工作負載的理想選擇。
+NCasT4_v3 系列虛擬機器支援 [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU 和 AMD EPYC 7V12 (羅馬) cpu。 Vm 最多可以有4個 NVIDIA T4 Gpu （每個都有 16 GB 的記憶體），最多64個非多執行緒 AMD EPYC 7V12 (羅馬) 處理器核心和 440 GiB 的系統記憶體。 這些虛擬機器適用于使用 CUDA、TensorFlow、Pytorch、Caffe 和其他架構，或使用 NVIDIA GRID 技術的圖形工作負載來執行 ML 和 AI 工作負載。 NCasT4_v3 系列適合用來執行推斷工作負載。
 
 <br>
 
@@ -34,18 +34,18 @@ ACU：230-260
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大 NIC |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NC4as_T4_v3 |4 |28 |180 | 1 | 16 | 8 | 2 |
-| Standard_NV8as_T4_v3 |8 |56 |360 | 1 | 16 | 16 | 4  |
-| Standard_NV16as_T4_v3 |16 |110 |360 | 1 | 16 | 32 | 8  |
-| Standard_NV64as_T4_v3 |64 |440 |2880 | 4 | 64 | 32 | 8  |
+| Standard_NC8as_T4_v3 |8 |56 |360 | 1 | 16 | 16 | 4  |
+| Standard_NC16as_T4_v3 |16 |110 |360 | 1 | 16 | 32 | 8  |
+| Standard_NC64as_T4_v3 |64 |440 |2880 | 4 | 64 | 32 | 8  |
 
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="supported-operating-systems-and-drivers"></a>支援的作業系統和驅動程式
 
-若要利用執行 Windows 或 Linux 的 Azure NCasT4_v3 系列 Vm 的 GPU 功能，必須安裝 Nvidia GPU 驅動程式。
+若要利用 Azure NCasT4_v3 系列 Vm （執行 Windows 或 Linux）的 GPU 功能，必須安裝 Nvidia GPU 驅動程式。
 
-若要手動安裝 Nvidia GPU 驅動程式，請參閱適用于[Windows 的 N 系列 GPU 驅動程式設定](./windows/n-series-driver-setup.md)，以瞭解支援的作業系統、驅動程式、安裝和驗證步驟。
+若要手動安裝 Nvidia GPU 驅動程式，請參閱適用于 [Windows 的 N 系列 GPU 驅動程式設定](./windows/n-series-driver-setup.md) ，以取得支援的作業系統、驅動程式、安裝和驗證步驟。
 
 ## <a name="other-sizes"></a>其他大小
 
