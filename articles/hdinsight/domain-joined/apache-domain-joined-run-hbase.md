@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "73044650"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>教學課程：使用企業安全性套件在 HDInsight 中設定 Apache HBase 原則
@@ -95,7 +95,7 @@ ms.locfileid: "73044650"
 
 為 **sales_user1** 和 **marketing_user1** 建立 Ranger 原則。
 
-1. 開啟 **Ranger 管理員 UI**。 按一下 **HBase** 底下的 **\<ClusterName>_hbase**。
+1. 開啟 **Ranger 管理員 UI**。 按一下 [HBase] 底下的 [\<ClusterName>_hbase]。
 
    ![HDInsight Apache Ranger 系統管理員 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 

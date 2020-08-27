@@ -3,16 +3,16 @@ title: 教學課程 - 在 Azure 中設定 VMware 私人雲端的網路功能
 description: 了解如何建立及設定在 Azure 中部署私人雲端所需的網路功能
 ms.topic: tutorial
 ms.date: 07/22/2020
-ms.openlocfilehash: aa4247f60c3e1ec54bfcde336d1ae8c8f70ff7a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ff071e0d6eaf1552634433a76e4eade530c603b6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079441"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750497"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>教學課程：在 Azure 中設定 VMWare 私人雲端的網路功能
 
-Azure VMware 解決方案 (AVS) 私人雲端需要 Azure 虛擬網路。 因為 AVS 不會在預覽期間支援您的內部部署 vCenter，所以需要與內部部署環境整合的其他步驟。 也需要設定 ExpressRoute 線路和虛擬網路閘道，而且會在本教學課程中加以探討。
+Azure VMware 解決方案私人雲端需要 Azure 虛擬網路。 因為 Azure VMware 解決方案不會在預覽期間支援您的內部部署 vCenter，所以需要與內部部署環境整合的其他步驟。 也需要設定 ExpressRoute 線路和虛擬網路閘道，而且會在本教學課程中加以探討。
 
 在本教學課程中，您會了解如何：
 
@@ -23,7 +23,7 @@ Azure VMware 解決方案 (AVS) 私人雲端需要 Azure 虛擬網路。 因為 
 > * 找出 vCenter 和 NSX 管理員的 URL
 
 ## <a name="prerequisites"></a>必要條件 
-在可以建立虛擬網路之前，請確定您已建立 [AVS 私人雲端](tutorial-create-private-cloud.md)。 
+在可以建立虛擬網路之前，請確定您已建立 [Azure VMware 解決方案私人雲端](tutorial-create-private-cloud.md)。 
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
@@ -48,7 +48,7 @@ Azure VMware 解決方案 (AVS) 私人雲端需要 Azure 虛擬網路。 因為 
 
 1. 選取 [檢閱 + 建立]。
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network.png" alt-text="建立虛擬網路" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network.png" alt-text="選取 [檢閱 + 建立]。" border="true":::
 
 1. 確認資訊並選取 [建立]。 部署完成之後，您會在資源群組中看到您的虛擬網路。
 
@@ -76,20 +76,20 @@ Azure VMware 解決方案 (AVS) 私人雲端需要 Azure 虛擬網路。 因為 
    | **閘道子網路位址範圍** | 選取虛擬網路時，就會填入此值。 請勿變更預設值。 |
    | **公用 IP 位址** | 選取 [建立新的]。 |
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="建立閘道" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="在 [建立虛擬網路閘道] 頁面的 [基本資料] 索引標籤上，提供欄位的值，然後選取 [檢閱 + 建立]。" border="true":::
 
 1. 驗證詳細資料是否正確，然後選取 [建立] 以開始部署虛擬網路閘道。 
-1. 部署完成之後，請移至下一節，將您的 ExpressRoute 連線到包含 AVS 私人雲端的虛擬網路。
+1. 部署完成之後，請移至下一節，將您的 ExpressRoute 連線到包含 Azure VMware 解決方案私人雲端的虛擬網路。
 
 ## <a name="connect-expressroute-to-the-virtual-network-gateway"></a>將 ExpressRoute 連線到虛擬網路閘道
 
-既然您已部署虛擬網路閘道，就會在其與您的 AVS 私人雲端之間新增連線。
+既然您已部署虛擬網路閘道，就會在其與您的 Azure VMware 解決方案私人雲端之間新增連線。
 
 1. 瀏覽至您在上一個教學課程中建立的私ㄟ雲端，然後選取 [管理] 下的 [連線]，選取 [ExpressRoute] 索引標籤。
 
-1. 複製授權金鑰。 如果沒有授權金鑰，您需要建立一個，然後選取 [+要求授權金鑰]
+1. 複製授權金鑰。 如果沒有授權金鑰，您需要建立一個，然後選取 [+要求授權金鑰]。
 
-   :::image type="content" source="./media/tutorial-configure-networking/request-auth-key.png" alt-text="要求授權金鑰" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/request-auth-key.png" alt-text="複製授權金鑰。如果沒有授權金鑰，您需要建立一個，然後選取 [+要求授權金鑰]。" border="true":::
 
 1. 瀏覽至您在上一個步驟中建立的虛擬網路閘道，然後在 [設定]下，選取 [連線]。 在 [連線] 頁面上，選取 [+新增]。
 
@@ -104,7 +104,7 @@ Azure VMware 解決方案 (AVS) 私人雲端需要 Azure 虛擬網路。 因為 
    | **授權金鑰**  | 複製並貼上您資源群組的 ExpressRoute 索引標籤中的授權金鑰。 |
    | **對等線路 URI**  | 複製並貼上您資源群組的 ExpressRoute 索引標籤中的 ExpressRoute 識別碼。  |
 
-   :::image type="content" source="./media/tutorial-configure-networking/add-connection.png" alt-text="新增連線" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/add-connection.png" alt-text="在 [新增連線] 頁面上，提供欄位的值，然後選取 [確定]。" border="true":::
 
 即會在您的 ExpressRoute 線路與虛擬網路之間建立連線。
 
@@ -114,9 +114,9 @@ Azure VMware 解決方案 (AVS) 私人雲端需要 Azure 虛擬網路。 因為 
 
 若要登入 vCenter 和 NSX 管理員，您需要 vCenter Web 用戶端的 URL 和 NSX-T 管理員網站。 
 
-瀏覽至您的 AVS 私人雲端，在 [管理] 下選取 [身分識別]，您可以在這裡找到所需的資訊。
+瀏覽至您的 Azure VMware 解決方案私人雲端，在 [管理] 下選取 [身分識別]，您可以在這裡找到所需的資訊。
 
-:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="找出 vCenter URL" border="true":::
+:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="瀏覽至您的 Azure VMware 解決方案私人雲端，在 [管理] 下選取 [身分識別]，您可以在這裡找到所需的資訊。" border="true":::
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 69d346d554ee6f30e4ef578bacf358aaba722b5b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 528fe5dea533faf9447e03dd901568d783891ce9
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825169"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718929"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>教學課程 - 使用 Azure PowerShell 管理 Azure 磁碟
 
@@ -52,10 +52,11 @@ Azure 提供兩種類型的磁碟。
 
 **標準磁碟** - 由 HDD 所支援，可提供符合成本效益的儲存體，同時保有效能。 標準磁碟適合用於具成本效益的開發和測試工作負載。
 
-**進階磁碟** - 採用以 SSD 為基礎的高效能、低延遲磁碟。 最適合用於執行生產工作負載的 VM。 進階儲存體支援 DS 系列、DSv2 系列、GS 系列和 FS 系列 VM。 進階磁碟有五種類型 (P10、P20、P30、P40、P50)，磁碟的大小可決定磁碟類型。 進行選取時，磁碟大小值會上調為下一個類型。 例如，如果大小低於 128 GB，則磁碟類型會是 P10，如果介於 129 與 512 GB，則是 P20。
-
-### <a name="premium-disk-performance"></a>進階磁碟效能
+**進階磁碟** - 採用以 SSD 為基礎的高效能、低延遲磁碟。 最適合用於執行生產工作負載的 VM。 在[大小名稱](../vm-naming-conventions.md)中具有 **S** 的 VM 大小通常會支援進階儲存體。 例如，DS 系列、DSv2 系列、GS 系列和 FS 系列的 VM 便支援進階儲存體。 當您選取磁碟大小時，其值會上調為下一個類型。 例如，如果磁碟大小超過 64 GB，但少於 128 GB，則磁碟類型為 P10。 
+<br>
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
+
+當您佈建進階儲存體磁碟時，不同於標準儲存體的是，您可獲得該磁碟的容量、IOPS 和輸送量保證。 例如，如果您建立 P50 磁碟，Azure 會為該磁碟佈建 4,095 GB 儲存體容量、7,500 IOPS 和 250 MB/秒的輸送量。 您的應用程式可以使用全部或部分的容量和效能。 進階固態硬碟的設計是為了在 99.9% 的時間內，提供低個位數毫秒延遲以及上表所述的目標 IOPS 和輸送量。
 
 雖然上表指出每個磁碟的最大 IOPS，但可藉由分割多個資料磁碟來達到較高等級的效能。 例如，可以將 64 個資料磁碟連結到 Standard_GS5 VM。 如果上述每個磁碟的大小調整為 P30，就可以達到 80,000 IOPS 的最大值。 如需每部 VM 之最大 IOPS 的詳細資訊，請參閱 [VM 類型和大小](../sizes.md)。
 

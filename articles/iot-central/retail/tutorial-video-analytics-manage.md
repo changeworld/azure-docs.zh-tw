@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 30e123b24a5d2c9e45df6ee6dc6debfb88b920f3
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 76e72e8fd134c65cc9334e635375cc25e9b09a75
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037919"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719065"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>教學課程：監視和管理 [影片分析 - 物件和動作偵測] 應用程式
 
@@ -155,22 +155,22 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 |amsResourceGroup| ResourceGroup |
 |amsAccountName| AccountName|
 
-瀏覽至應用程式中的**監視器**儀表板。 然後在 [推斷事件影片] 磚上，按一下其中一個已擷取的物件偵測超連結。 影片會出現在本機影片播放器所顯示的頁面上：
+瀏覽至 **camera-003** 裝置，然後選取 [儀表板] 索引標籤。然後在 [推斷事件影片] 磚上，按一下其中一個已擷取的物件偵測超連結。 影片會出現在本機影片播放器所顯示的頁面上：
 
 :::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="影片程式碼片段":::
 
-## <a name="change-the-simulated-devices-in-application-dashboard"></a>變更應用程式儀表板中的模擬裝置
+## <a name="change-the-simulated-devices-in-application-dashboards"></a>變更應用程式儀表板中的模擬裝置
 
 應用程式儀表板最初會填入從 IoT Central 模擬裝置中產生的遙測和屬性。 若要將磚設定為來自真實相機或 Live555 模擬器的遙測，請遵循下列步驟：
 
-1. 瀏覽至**真實相機監視器**儀表板。
-1. 選取 [編輯]。
+1. 瀏覽至 [(範例) 真實相機監視器] 應用程式儀表板。
+1. 選取 [編輯]  。
+1. 選取 [便箋] 圖格並加以刪除。
+1. 將儀表板標題變更為*真實相機監視器*。
 1. 在 [推斷計數] 磚上，選取 [設定] 圖示。
 1. 在 [設定圖表] 區段中，選取 **LVA Edge 物件偵測器**裝置群組中的一個或多個真實相機。
 1. 選取 `AI Inference Interface/Inference Count` 遙測欄位。
 1. 選取 [更新]。
-
-   
 
 1. 對下列幾個磚重複前述步驟：
     1. **偵測**圓形圖會使用 `AI Inference Interface/Inference/entity/tag/value` 遙測類型。

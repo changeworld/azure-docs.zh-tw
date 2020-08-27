@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5056f453580ef3e4549a0d8ee5b59e893d8c56bf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e6702ab3753604af50e21f931dd23f63de3c1451
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522286"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936192"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>適用於 Linux 的金鑰保存庫虛擬機器擴充功能
 
@@ -130,6 +130,8 @@ Key Vault VM 擴充功能支援下列 Linux 發行版本：
 
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell 部署
+> [!WARNING]
+> PowerShell 用戶端通常 `\` `"` 會在 settings.js中新增，這會導致 akvvm_service 失敗，並出現錯誤： `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
 
 Azure PowerShell 可以用來將金鑰保存庫 VM 擴充功能部署到現有的虛擬機器或虛擬機器擴展集。 
 

@@ -9,12 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: cdcf4182f098affba0a18be5846ae6f6e52d7229
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e4e85de2fad5c08f296d8089f48fa8614f7f1739
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547353"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925176"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>安裝及執行表單辨識器容器 (預覽) 
 
@@ -24,7 +25,7 @@ Azure 表單辨識器會套用機器學習技術來識別和解壓縮表單中�
 
 若要降低複雜度並輕鬆地將自訂表單辨識器模型整合到您的工作流程自動化進程或其他應用程式，您可以使用簡單的 REST API 來呼叫模型。 只有五個表單檔 (或一個空白表單和兩個填滿表單) ，因此您可以快速、精確地取得結果，並根據您的特定內容量身打造。 不需要大量手動介入或廣泛的資料科學專業知識。 而且不需要資料標記或資料批註。
 
-| 函式 | 功能 |
+| 函式 | 特性 |
 |----------|----------|
 | 表單辨識器 | <li>處理 PDF、PNG 和 JPG 檔案<li>使用至少五種相同版面配置的表單來訓練自訂模型 <li>將機碼值組和資料表資訊解壓縮 <li>使用 Azure 認知服務電腦視覺 API 辨識文字功能，從表單內的影像偵測和解壓縮列印的文字<li>不需要批註或標記 |
 
@@ -332,7 +333,7 @@ formrecognizer_config =
 > [!IMPORTANT]
 >  認知服務容器在未連線至 Azure 以進行計量的情況下，將無法被授權以執行。 客戶必須啟用容器以持續與計量服務進行帳單資訊的通訊。 認知服務容器不會將客戶資料 (例如正在分析的影像或文字) 傳送至 Microsoft。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 請參閱 [設定容器](form-recognizer-container-configuration.md) 以進行設定。
 * 使用更多 [認知服務容器](../cognitive-services-container-support.md)。

@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何建立復原服務保存�
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 76c09cc02a3545d975de5d6d49b396b12f8abb44
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263413"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757501"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>使用 Azure 入口網站備份多部虛擬機器
 
@@ -136,7 +136,7 @@ ms.locfileid: "88263413"
 
 1. 在操作功能表上，選取 [立即備份]。
 
-    ![捷徑功能表](./media/tutorial-backup-vm-at-scale/context-menu.png)
+    ![捷徑功能表 - 選取 [立即備份]](./media/tutorial-backup-vm-at-scale/context-menu.png)
 
     [立即備份] 功能表隨即開啟。
 
@@ -166,7 +166,7 @@ ms.locfileid: "88263413"
 
 1. 在 [備份項目] 功能表中，選取省略符號開啟操作功能表。
 
-    ![捷徑功能表](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
+    ![在 [備份項目] 功能表中，開啟捷徑功能表](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
 1. 在操作功能表上選取 [停止備份] 開啟 [停止備份] 功能表。
 

@@ -3,12 +3,12 @@ title: 使用 MABS 備份 Hyper-v 虛擬機器
 description: 本文包含使用 Microsoft Azure 備份 Server (MABS) 來備份和復原虛擬機器的程式。
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 364426956d665d54885182e7b63af93df3d30e1f
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: dc135e74564d4104c61ffef6f1403eddc08586be
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823959"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892808"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>使用 Azure 備份伺服器備份 Hyper-v 虛擬機器
 
@@ -149,7 +149,7 @@ MABS 會以 VSS 執行備份，如下所示。 為了清楚呈現，這項描述
     - 如果您已設定網路，請選取 [使用硬體快照集啟用 SAN 型復原]****。
     - 如果您希望復原程序完成時傳送電子郵件通知，請選取 [此復原完成時傳送電子郵件]****，然後提供電子郵件地址。
 
-6. 在 [摘要] 畫面中，確定所有詳細資料正確無誤。 如果詳細資料不正確或您想要變更，請按一下 [上一步]****。 如果您設定完成，請按一下 [復原]**** 以開始復原程序。
+6. 在 [摘要] 畫面中，確定所有詳細資料正確無誤。 如果詳細資料不正確或您想要變更，請按一下 [上一步]****。 如果您對設定感到滿意，請按一下 [復原] 開始 **復原** 程式。
 
 7. [復原狀態]**** 畫面會提供有關復原工作的資訊。
 

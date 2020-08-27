@@ -2,15 +2,16 @@
 title: Azure Application Insights - 相依性自動收集 | Microsoft Docs
 description: Application Insights 會自動收集相依項目，並將其視覺化
 ms.topic: reference
+ms.custom: devx-track-dotnet
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: 2227facfcf469bc22034da0da504b390cc0deee1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ca1c63f042bd06c19f232c2ff8170d23741e73f2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324177"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936430"
 ---
 # <a name="dependency-auto-collection"></a>相依性自動收集
 
@@ -27,14 +28,14 @@ ms.locfileid: "87324177"
 | <b> 通訊程式庫</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5+、.NET Core 1.1+ |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0+、NuGet 4.3.0 |
-| [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.2)| 1.1.0-最新的穩定版本。 （請參閱下面的附注）。
+| [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.2)| 1.1.0-最新穩定版本。  (請參閱下面的注意事項。 ) 
 | [EventHubs 用戶端 SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0 |
 | [ServiceBus 用戶端 SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | 3.0.0 |
 | <b>儲存體用戶端</b>|  |
 | ADO.NET | 4.5+ |
 
 > [!NOTE]
-> 較舊版本的 SqlClient 有[已知問題](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1347)。 我們建議使用1.1.0 或更新版本來減輕這個問題。 Entity Framework Core 不一定會隨附 SqlClient 的最新穩定版本，因此我們建議您確認至少已有1.1.0，以避免發生此問題。   
+> 舊版的 SqlClient 有 [已知的問題](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1347) 。 我們建議使用1.1.0 或更新版本來緩和此問題。 Entity Framework Core 不一定會隨附于 SqlClient 的最新穩定版本，因此建議您確認您至少有1.1.0，以避免發生此問題。   
 
 
 ## <a name="java"></a>Java
@@ -51,7 +52,7 @@ ms.locfileid: "87324177"
 | [Apache HTTP 用戶端](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3 +<sup>†</sup> |
 | <b>儲存體用戶端</b> | |
 | [SQL Server]( https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc) | 1 +<sup>†</sup> |
-| [于 postgresql （搶鮮版（Beta）支援）](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/CHANGELOG.md#version-240-beta) | |
+| [于 postgresql (搶鮮版（Beta）支援) ](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/CHANGELOG.md#version-240-beta) | |
 | [Oracle]( https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1 +<sup>†</sup> |
 | [MySql]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1 +<sup>†</sup> |
 | <b>記錄程式庫</b> | |
@@ -73,10 +74,10 @@ ms.locfileid: "87324177"
 | [Redis](https://www.npmjs.com/package/redis) | 2.x |
 | [MongoDb](https://www.npmjs.com/package/mongodb)、[MongoDb Core](https://www.npmjs.com/package/mongodb-core) | 2.x-3。x |
 | [MySQL](https://www.npmjs.com/package/mysql) | 2.0.0-2.16. x |
-| [于 postgresql](https://www.npmjs.com/package/pg); | 6.x-7. x |
-| [pg-pool](https://www.npmjs.com/package/pg-pool) | 1.x-2. x |
+| [于 postgresql](https://www.npmjs.com/package/pg); | 6.x-7。x |
+| [pg-pool](https://www.npmjs.com/package/pg-pool) | 1.x-2。x |
 | <b>記錄程式庫</b> | |
-| [控制](https://nodejs.org/api/console.html) | 0.10+ |
+| [安慰](https://nodejs.org/api/console.html) | 0.10+ |
 | [Bunyan](https://www.npmjs.com/package/bunyan) | 1.x |
 | [Winston](https://www.npmjs.com/package/winston) | 2.x-3。x |
 
@@ -90,7 +91,7 @@ ms.locfileid: "87324177"
 
 - 設定 [.NET](./asp-net-dependencies.md) 的自訂相依性追蹤。
 - 設定 [Java](./java-agent.md) 的自訂相依性追蹤。
-- 設定[OpenCensus Python](./opencensus-python-dependency.md)的自訂相依性追蹤。
+- 設定 [OpenCensus Python](./opencensus-python-dependency.md)的自訂相依性追蹤。
 - [撰寫自訂相依性遙測](./api-custom-events-metrics.md#trackdependency)
 - 如需 Application Insights 類型和資料模型，請參閱[資料模型](./data-model.md)。
 - 查看 Application Insights 支援的[平台](./platforms.md)。

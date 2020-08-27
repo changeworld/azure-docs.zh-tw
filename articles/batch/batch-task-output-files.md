@@ -3,13 +3,13 @@ title: 使用 Batch 服務 API 將輸出資料保存到 Azure 儲存體
 description: 了解如何使用 Batch 服務 API 將 Batch 工作和作業輸出資料保存到 Azure 儲存體。
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.custom: seodec18
-ms.openlocfilehash: 964ffea2ed1536dc1851aefc03c735cb08ba7ed7
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 720c064c6b382bc62565c0828422181c761df8e8
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475612"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936923"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>使用 Batch 服務 API 將工作資料保存到 Azure 儲存體
 
@@ -20,7 +20,7 @@ Batch 服務 API 針對使用虛擬機器設定在集區上執行的工作和作
 使用 Batch 服務 API 來保存工作輸出的好處，是您不需要修改工作正在執行的應用程式。 相反地，對用戶端應用程式進行幾項修改，即可從建立工作的相同程式碼內保存工作的輸出。
 
 > [!IMPORTANT]
-> 使用 Batch 服務 API 將工作資料保存到 Azure 儲存體，無法與[2018 年2月 1](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md#1204)日前建立的集區搭配使用。
+> 使用 Batch 服務 API 將工作資料保存到 Azure 儲存體，不適用於在 [2018 年2月1日](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md#1204)之前建立的集區。
 
 ## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>何時使用 Batch 服務 API 來保存工作輸出？
 
@@ -31,7 +31,7 @@ Azure Batch 提供多個方法來保存工作輸出。 使用 Batch 服務 API �
 - 您需要將輸出保存到具有任意名稱的 Azure 儲存體容器。
 - 您需要將輸出保存到根據 [Batch 檔案慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)命名的 Azure 儲存體容器。
 
-如果您的情節與以上所列不同，可能需要考慮不同的方法。 例如，Batch 服務 API 目前不支援在工作執行時將輸出串流至 Azure 儲存體。 若要將輸出串流，請考慮使用適用於 .NET 的 Batch 檔案慣例程式庫。 針對其他語言，您必須實作自己的解決方案。 如需保存工作輸出之其他選項的詳細資訊，請參閱[將作業和工作輸出保存到 Azure 儲存體](batch-task-output.md)。
+如果您的情節與以上所列不同，可能需要考慮不同的方法。 例如，Batch 服務 API 目前不支援在工作執行時將輸出串流至 Azure 儲存體。 若要將輸出串流，請考慮使用適用於 .NET 的 Batch 檔案慣例程式庫。 針對其他語言，您必須實作自己的解決方案。 如需保存工作輸出之其他選項的詳細資訊，請參閱 [將作業和工作輸出保存至 Azure 儲存體](batch-task-output.md)。
 
 ## <a name="create-a-container-in-azure-storage"></a>在 Azure 儲存體中建立容器
 
@@ -93,7 +93,7 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 ```
 
 > [!NOTE]
-> 如果使用此範例搭配 Linux，請務必將反斜線變更為正斜線。
+> 如果搭配使用此範例與 Linux，請務必將反斜線變更為正斜線。
 
 ### <a name="specify-a-file-pattern-for-matching"></a>指定要進行比對的檔案模式
 
@@ -187,5 +187,5 @@ string containerName = job.OutputStorageContainerName();
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要深入瞭解如何使用適用于 .NET 的檔案慣例程式庫來保存工作輸出，請參閱[使用適用于 .net 的 Batch 檔案慣例程式庫將作業和工作資料保存到 Azure 儲存體](batch-task-output-file-conventions.md)。
-- 若要瞭解在 Azure Batch 中保存輸出資料的其他方法，請參閱[將作業和工作輸出保存到 Azure 儲存體](batch-task-output.md)。
+- 若要深入瞭解如何使用適用于 .NET 的檔案慣例程式庫來保存工作輸出，請參閱 [使用適用于 .net 的 Batch 檔案慣例程式庫將作業和工作資料保存至 Azure 儲存體](batch-task-output-file-conventions.md)。
+- 若要瞭解在 Azure Batch 中保存輸出資料的其他方法，請參閱 [將作業和工作輸出保存到 Azure 儲存體](batch-task-output.md)。

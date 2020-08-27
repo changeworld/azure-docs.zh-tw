@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57630b789233dd23e61398f445b434e4ba08b48e
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: cfb778a1a632dc17a9f50c7ea05debed0edb4fb6
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80236037"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660242"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>教學課程：定型和部署 Azure Machine Learning 模型
 
@@ -37,7 +37,7 @@ Azure Notebooks 能運用 Azure Machine Learning 工作區，其為用來對機�
 * **快速入門：** [建立及共用筆記本](../notebooks/quickstart-create-share-jupyter-notebook.md)
 * **教學課程：** [使用 Python 建立和執行 Jupyter Notebook](../notebooks/tutorial-create-run-jupyter-notebook.md)
 
-使用 Azure 筆記本可確保練習所在的環境保持一致。
+使用 Azure Notebooks 可確保練習所在的環境保持一致。
 
 > [!NOTE]
 > 設定之後，便可以從任何電腦存取 Azure Notebooks 服務。 您在設定期間應使用開發 VM，其具備您所需的所有檔案。
@@ -80,7 +80,7 @@ Azure Notebooks 能運用 Azure Machine Learning 工作區，其為用來對機�
 
 1. 選取 [上傳]  以開始上傳，然後在程序完成時選取 [完成]  。
 
-### <a name="azure-notebook-files"></a>Azure 筆記本檔案
+### <a name="azure-notebook-files"></a>Azure Notebook 檔案
 
 請檢閱您上傳到 Azure Notebooks 專案中的檔案。 本教學課程這個部分的活動橫跨兩個使用一些支援檔案的筆記本檔案。
 

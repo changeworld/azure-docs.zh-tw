@@ -3,14 +3,14 @@ title: 在 Azure Kubernetes Service 中使用 Azure AD
 description: '瞭解如何在 Azure Kubernetes Service (AKS 中使用 Azure AD) '
 services: container-service
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: fd13fbc3b1ada0a9e974742d36bd231e3caf6ef6
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 32273bbb14e6cee73f03bd83b84be77299186370
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661056"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936991"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS-受控 Azure Active Directory 整合
 
@@ -35,19 +35,21 @@ AKS 管理的 Azure AD 整合旨在簡化 Azure AD 整合體驗，其中使用�
 * AKS 管理的 Azure AD 整合不支援已啟用非 RBAC 的叢集
 * 不支援變更與 AKS 管理 Azure AD 整合相關聯的 Azure AD 租使用者
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* Azure CLI 2.9.0 版版或更新版本
-* 最低版本為[1.18](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1180)的 Kubectl
+* Azure CLI 2.11.0 版版或更新版本
+* 最低版本為[1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181)或[kubelogin](https://github.com/Azure/kubelogin)的 Kubectl
+* 如果您使用的是 [helm](https://github.com/helm/helm)，helm 3.3 的最小版本。
 
 > [!Important]
-> 您必須使用最低版本為1.18 的 Kubectl
+> 您必須使用 Kubectl 搭配1.18.1 或 kubelogin 的最小版本。 如果您未使用正確的版本，將會注意到驗證問題。
 
-若要安裝 kubectl，請使用下列命令：
+若要安裝 kubectl 和 kubelogin，請使用下列命令：
 
 ```azurecli-interactive
 sudo az aks install-cli
 kubectl version --client
+kubelogin --version
 ```
 
 針對其他作業系統，請使用 [這些指示](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 。

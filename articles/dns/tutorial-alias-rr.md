@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76939256"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>教學課程：建立別名記錄以參考區域資源記錄
@@ -58,7 +58,7 @@ ms.locfileid: "76939256"
 ## <a name="test-the-alias-record"></a>測試別名記錄
 
 1. 啟動您慣用的 nslookup 工具。 其中一個選項是瀏覽至 [https://network-tools.com/nslook](https://network-tools.com/nslook)。
-2. 設定 A 記錄的查詢類型，並尋找 **test.\<您的網域名稱\>** 。 答案為 **10.10.10.10**。
+2. 設定 A 記錄的查詢類型，並查閱 **test.\<your domain name\>** 。 答案為 **10.10.10.10**。
 3. 在 Azure 入口網站中，將**伺服器** A 記錄變更為 **10.11.11.11**。
 4. 等候幾分鐘，然後再次對 **test** 記錄使用 nslookup。 答案為 **10.11.11.11**。
 

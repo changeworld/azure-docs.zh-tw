@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: a9c64d1a5c4c7ada666b5fe3a8bcc70b39871850
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 90993ea2ee66a23b5b629dfaf5bb34298ce15d9b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545619"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936277"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>在 C# 中根據自訂字詞清單檢查文字
 
@@ -436,6 +437,6 @@ Deleting term list with ID 252.
 Press ENTER to close the application.
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 針對這個及其他適用於 .NET 的 Content Moderator 快速入門取得 [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 和 [Visual Studio 解決方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)，並開始進行您的整合。

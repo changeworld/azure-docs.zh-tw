@@ -1,18 +1,18 @@
 ---
 title: 將內部部署環境對等互連至私人雲端
-description: 在此 Azure VMware 解決方案 (AVS) 教學課程中，您會在 AVS 中建立與私人雲端對等互連的 ExpressRoute Global Reach。
+description: 在此 Azure VMware 解決方案教學課程中，您會在 Azure VMware 解決方案中建立與私人雲端對等互連的 ExpressRoute Global Reach。
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: a9a002eab3219a0db74062570d31595bfcc0d6a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: db3f5988cb8c07d9b6e80f500ac6aff8f96dfded
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093358"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750442"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>教學課程：將內部部署環境對等互連至私人雲端
 
-ExpressRoute Global Reach 可將您的內部部署環境連線至私人雲端。 在私人雲端 ExpressRoute 線路與內部部署環境的現有 ExpressRoute 連線之間，會建立 ExpressRoute Global Reach 連線。  有一些指示可讓您使用 Azure CLI 和 PowerShell 來設定 ExpressRoute Global Reach，而且我們已透過特定詳細資料和範例增強 [CLI 命令](../expressroute/expressroute-howto-set-global-reach-cli.md)，以協助您設定內部部署環境與 Azure VMware 解決方案 (AVS) 私人雲端之間的 ExpressRoute Global Reach 對等互連。   
+ExpressRoute Global Reach 可將您的內部部署環境連線至私人雲端。 在私人雲端 ExpressRoute 線路與內部部署環境的現有 ExpressRoute 連線之間，會建立 ExpressRoute Global Reach 連線。  有一些指示可讓您使用 Azure CLI 和 PowerShell 來設定 ExpressRoute Global Reach，而且我們已透過特定詳細資料和範例增強 [CLI 命令](../expressroute/expressroute-howto-set-global-reach-cli.md)，以協助您設定內部部署環境與 Azure VMware 解決方案私人雲端之間的 ExpressRoute Global Reach 對等互連。   
 
 在使用 ExpressRoute Global Reach 啟用兩個 ExpressRoute 線路之間的連線之前，請檢閱有關如何[在不同 Azure 訂用帳戶中啟用連線](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions)的文件。  您在[設定 Azure 到私人雲端的網路](tutorial-configure-networking.md)時所使用的 ExpressRoute 線路，需要您在對等互連至 ExpressRoute 閘道或使用 Global Reach 與其他 ExpressRoute 線路對等互連時，建立並使用授權金鑰。 您已使用 ExpressRoute 線路中的一個授權金鑰，而您將建立第二個授權金鑰，以便與內部部署 ExpressRoute 線路對等互連。
 
@@ -33,11 +33,11 @@ ExpressRoute Global Reach 可將您的內部部署環境連線至私人雲端。
 - 不同的運作中 ExpressRoute 線路，以便用來將內部部署環境連線至 Azure – 從對等互連程序的角度來看，這是_線路 1_。
 - /29 的非重疊[網路位址區塊](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings)，用於進行 ExpressRoute Global Reach 對等互連。
 
-## <a name="create-an-expressroute-authorization-key-in-the-avs-private-cloud"></a>在 AVS 私人雲端中建立 ExpressRoute 授權金鑰
+## <a name="create-an-expressroute-authorization-key-in-the-azure-vmware-solution-private-cloud"></a>在 Azure VMware 解決方案私人雲端中建立 ExpressRoute 授權金鑰
 
 1. 從私人雲端 [概觀]的 [管理] 底下，選取 [連線] > [ExpressRoute] > [要求授權金鑰]。
 
-   :::image type="content" source="media/expressroute-global-reach/start-request-auth-key.png" alt-text="選取 [連線] > [ExpressRoute] > [要求授權金鑰] 以開始新的要求":::
+   :::image type="content" source="media/expressroute-global-reach/start-request-auth-key.png" alt-text="選取 [連線] > [ExpressRoute] > [要求授權金鑰] 以開始新的要求。":::
 
 2. 輸入授權金鑰的名稱，然後選取 [建立]。 
 

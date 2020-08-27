@@ -4,12 +4,12 @@ description: 在此文章中，您將了解如何從 Azure 虛擬機器復原點
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ac121195ba46389798acc7f099829fde96da72e1
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7b9d97e518282cf150a8f54225c11d9edcbf8892
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827132"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892570"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
@@ -285,7 +285,7 @@ mount [RAID Disk Path] [/mountpath]
 | openSUSE | 42.2 和更新版本 |
 
 > [!NOTE]
-> 我們發現在具有 SLES 12 SP4 OS 的電腦上執行檔案復原指令碼時發生一些問題，我們正在 SLES 小組一起進行調查。
+> 我們發現在具有 SLES 12 SP4 作業系統的電腦上執行檔案復原腳本時發生一些問題，我們正在調查 SLES 團隊。
 > 目前，執行檔案復原指令碼的作業是在作業系統版本為 SLES 12 SP2 和 SP3 的電腦上運作。
 >
 

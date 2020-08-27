@@ -4,12 +4,12 @@ description: 在本文中，您可以找到 Azure 備份監視警示和 Azure �
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 2112a439585e6b111614e728dbc4a1a5eb4ee3d2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 670314d8703889016431838a9f5b0a6dc56b84b8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827166"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892553"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure 備份監視警示-常見問題
 
@@ -38,7 +38,7 @@ ms.locfileid: "88827166"
 
 ### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>我在設定 LA 工作區後，是否會在報告中看到所有的資料？
 
- 設定診斷設定之後所產生的所有資料都會推送至 LA 工作區，而且可以在報表中使用。 系統不會推送進行中的作業來提供報告。 作業完成或失敗之後，就會傳送至報表。
+ 設定診斷設定之後所產生的所有資料都會推送至 LA 工作區，而且可以在報表中使用。 系統不會推送進行中的作業來提供報告。 在作業完成或失敗之後，才會將其傳送至報告。
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>我是否可以跨保存庫和訂用帳戶檢視報告？
 

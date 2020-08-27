@@ -5,46 +5,46 @@ ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
-ms.custom: devx-track-javascript
+ms.custom: devx-track-javascript, devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 375929a983c5dfea01a88fb64fd5ab19bf105c0c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 944257c93e00dca77507f26db15f7bf45fbb387e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383625"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936413"
 ---
 # <a name="connection-strings"></a>連接字串
 
 ## <a name="overview"></a>概觀
 
-連接字串可讓應用程式深入解析使用者使用單一設定，而不需要多個 proxy 設定。 對於想要將資料傳送到監視服務的內部網路 web 伺服器、主權或混合式雲端環境而言，非常有用。
+連接字串可讓應用程式深入解析使用者進行單一設定，而不需要多個 proxy 設定。 非常適用于想要將資料傳送至監視服務的內部網路 web 伺服器、主權或混合式雲端環境。
 
-索引鍵值組提供簡單的方式，讓使用者定義每個 Application Insights （AI）服務/產品的前置詞尾碼組合。
+金鑰值組提供簡單的方法，讓使用者為每個 Application Insights (AI) 服務/產品定義前置詞尾碼組合。
 
 > [!IMPORTANT]
-> 我們不建議同時設定連接字串和檢測金鑰。 如果使用者同時設定這兩個專案，則會優先使用最後一個設定。 
+> 我們不建議同時設定連接字串和檢測金鑰。 如果使用者同時設定了這兩個專案，就會優先採用最後一個設定。 
 
 
 ## <a name="scenario-overview"></a>案例概觀 
 
-客戶案例中，我們會將其視覺化：
+我們會以最大的影響來視覺化這種情況的客戶案例：
 
 - 防火牆例外或 proxy 重新導向 
 
     在需要監視內部網路 web 伺服器的情況下，我們先前的解決方案會要求客戶將個別的服務端點新增至您的設定。 如需詳細資訊，請參閱[這裡](../faq.md#can-i-monitor-an-intranet-web-server)。 
-    連接字串藉由將這項工作縮減為單一設定，提供更好的替代方式。 一個簡單的前置詞，後置詞修訂可讓所有端點自動填入和重新導向至正確的服務。 
+    連接字串藉由將這項工作縮減為單一設定，提供更好的替代方案。 簡單的前置詞（尾碼修訂）可將所有端點的自動填入和重新導向至正確的服務。 
 
 - 主權或混合式雲端環境
 
-    使用者可以將資料傳送至已定義的[Azure Government 區域](../../azure-government/compare-azure-government-global-azure.md#application-insights)。
+    使用者可以將資料傳送至已定義的 [Azure Government 區域](../../azure-government/compare-azure-government-global-azure.md#application-insights)。
     連接字串可讓您定義內部網路伺服器或混合式雲端設定的端點設定。 
 
 ## <a name="getting-started"></a>開始使用
 
-### <a name="finding-my-connection-string"></a>要尋找我的連接字串嗎？
+### <a name="finding-my-connection-string"></a>尋找我的連接字串？
 
-您的連接字串會顯示在 Application Insights 資源的 [總覽] 分頁上。
+您的連接字串會顯示在 Application Insights 資源的總覽分頁中。
 
 ![總覽分頁上的連接字串](media/overview-dashboard/overview-connection-string.png)
 
@@ -52,23 +52,23 @@ ms.locfileid: "87383625"
 
 #### <a name="max-length"></a>最大長度
 
-連接的支援長度上限為4096個字元。
+連接的最大支援長度為4096個字元。
 
 #### <a name="key-value-pairs"></a>機碼值組
 
-連接字串是由以分號分隔的索引鍵/值組來表示的設定清單所組成：`key1=value1;key2=value2;key3=value3`
+連接字串是由以分號分隔的索引鍵/值組所表示的設定清單所組成： `key1=value1;key2=value2;key3=value3`
 
 #### <a name="syntax"></a>語法
 
-- `InstrumentationKey`（例如：00000000-0000-0000-0000-000000000000） [連接字串] 是**必要**欄位。
-- `Authorization`（例如： ikey）（這是選擇性設定，因為我們目前只支援 ikey 授權）。
-- `EndpointSuffix`（例如： applicationinsights.azure.cn）設定端點尾碼會指示 SDK 要連接的 Azure 雲端。 SDK 會將個別服務的其餘端點組合在一起。
+- `InstrumentationKey` (例如： 00000000-0000-0000-0000-000000000000) 連接字串是 **必要** 欄位。
+- `Authorization` (例如： ikey)  (這項設定是選擇性的，因為今天我們只支援 ikey 授權。 ) 
+- `EndpointSuffix` (範例： applicationinsights.azure.cn) 設定端點尾碼將會指示要連接的 Azure 雲端 SDK。 SDK 會組合個別服務的其餘端點。
 - 明確的端點。
   任何服務都可以在連接字串中明確覆寫。
-   - `IngestionEndpoint`（例如： `https://dc.applicationinsights.azure.com` ）
-   - `LiveEndpoint`（例如： `https://live.applicationinsights.azure.com` ）
-   - `ProfilerEndpoint`（例如： `https://profiler.applicationinsights.azure.com` ）
-   - `SnapshotEndpoint`（例如： `https://snapshot.applicationinsights.azure.com` ）
+   - `IngestionEndpoint` (例如： `https://dc.applicationinsights.azure.com`) 
+   - `LiveEndpoint` (例如： `https://live.applicationinsights.azure.com`) 
+   - `ProfilerEndpoint` (例如： `https://profiler.applicationinsights.azure.com`) 
+   - `SnapshotEndpoint` (例如： `https://snapshot.applicationinsights.azure.com`) 
 
 #### <a name="endpoint-schema"></a>端點架構
 
@@ -88,17 +88,17 @@ ms.locfileid: "87383625"
 
 ##### <a name="valid-prefixes"></a>有效的首碼
 
-- [遙測](./app-insights-overview.md)內嵌：`dc`
-- [即時計量](./live-stream.md)：`live`
-- [Profiler](./profiler-overview.md)：`profiler`
-- [快照](./snapshot-debugger.md)集：`snapshot`
+- [遙測](./app-insights-overview.md)內嵌： `dc`
+- [即時計量](./live-stream.md)： `live`
+- [Profiler](./profiler-overview.md)： `profiler`
+- [快照](./snapshot-debugger.md)集： `snapshot`
 
 
 
 ## <a name="connection-string-examples"></a>連接字串範例
 
 
-### <a name="minimal-valid-connection-string"></a>最小有效的連接字串
+### <a name="minimal-valid-connection-string"></a>基本有效的連接字串
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;`
 
@@ -106,11 +106,11 @@ ms.locfileid: "87383625"
 
 - 授權配置預設為 "ikey" 
 - 檢測金鑰：00000000-0000-0000-0000-000000000000
-- 區域服務 Uri 是以[SDK 預設值](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6)為基礎，並會連線到公用全域 Azure：
-   - 攝取`https://dc.services.visualstudio.com/`
-   - 即時計量：`https://rt.services.visualstudio.com/`
-   - 頻寬`https://agent.azureserviceprofiler.net/`
-   - 偵錯工具`https://agent.azureserviceprofiler.net/`
+- 區域服務 Uri 是以 [SDK 預設值](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) 為基礎，並且會連接到公用全域 Azure：
+   - 攝入： `https://dc.services.visualstudio.com/`
+   - 即時計量： `https://rt.services.visualstudio.com/`
+   - 分析器： `https://agent.azureserviceprofiler.net/`
+   - 調試： `https://agent.azureserviceprofiler.net/`
 
 
 
@@ -118,15 +118,15 @@ ms.locfileid: "87383625"
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;EndpointSuffix=ai.contoso.com;`
 
-在此範例中，此連接字串會指定端點尾碼，而 SDK 會建立服務端點。
+在此範例中，此連接字串會指定端點尾碼，而 SDK 將會建立服務端點。
 
 - 授權配置預設為 "ikey" 
 - 檢測金鑰：00000000-0000-0000-0000-000000000000
 - 區域服務 Uri 是以提供的端點尾碼為基礎： 
-   - 攝取`https://dc.ai.contoso.com`
-   - 即時計量：`https://live.ai.contoso.com`
-   - 頻寬`https://profiler.ai.contoso.com`
-   - 偵錯工具`https://snapshot.ai.contoso.com`  
+   - 攝入： `https://dc.ai.contoso.com`
+   - 即時計量： `https://live.ai.contoso.com`
+   - 分析器： `https://profiler.ai.contoso.com`
+   - 調試： `https://snapshot.ai.contoso.com`  
 
 
 
@@ -134,15 +134,15 @@ ms.locfileid: "87383625"
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;IngestionEndpoint=https://custom.com:111/;LiveEndpoint=https://custom.com:222/;ProfilerEndpoint=https://custom.com:333/;SnapshotEndpoint=https://custom.com:444/;`
 
-在此範例中，這個連接字串會指定每個服務的明確覆寫。 SDK 將會使用提供的確切端點，而不需修改。
+在此範例中，這個連接字串會指定每個服務的明確覆寫。 SDK 將會使用提供的正確端點，而不需要修改。
 
 - 授權配置預設為 "ikey" 
 - 檢測金鑰：00000000-0000-0000-0000-000000000000
-- 區域服務 Uri 是以明確覆寫值為基礎： 
-   - 攝取`https://custom.com:111/`
-   - 即時計量：`https://custom.com:222/`
-   - 頻寬`https://custom.com:333/`
-   - 偵錯工具`https://custom.com:444/`  
+- 區域服務 Uri 以明確覆寫值為基礎： 
+   - 攝入： `https://custom.com:111/`
+   - 即時計量： `https://custom.com:222/`
+   - 分析器： `https://custom.com:333/`
+   - 調試： `https://custom.com:444/`  
 
 
 ## <a name="how-to-set-a-connection-string"></a>如何設定連接字串
@@ -151,7 +151,7 @@ ms.locfileid: "87383625"
 - .NET 和 .NET Core v 2.12。0
 - JAVA 2.5.1 和 JAVA 3。0
 - JavaScript v 2.3。0
-- NodeJS v 1.5。0
+- NodeJS，1.5.0 版
 - Python 1.0.0 版
 
 您可以在程式碼、環境變數或設定檔中設定連接字串。
@@ -164,7 +164,7 @@ ms.locfileid: "87383625"
 
 # <a name="netnetcore"></a>[.NET/. NetCore](#tab/net)
 
-TelemetryConfiguration ConnectionString：https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
+TelemetryConfiguration ConnectionString： https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
 .NET 明確設定：
 ```csharp
@@ -174,7 +174,7 @@ var configuration = new TelemetryConfiguration
 };
 ```
 
-.NET 設定檔案：
+.NET 設定檔：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -206,7 +206,7 @@ NetCore config.js：
 # <a name="java"></a>[Java](#tab/java)
 
 
-JAVA （v 2.5. x）明確設定：
+JAVA (2.5. x) 明確設定：
 ```java
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
