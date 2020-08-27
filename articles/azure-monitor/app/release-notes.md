@@ -2,22 +2,23 @@
 title: Azure Application Insights 的版本資訊 | Microsoft Docs
 description: Application Insights SDK 的最新更新。
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 07/27/2020
-ms.openlocfilehash: 59e10bff6d0e2246b130f97ce9b21cd9685bde30
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0f5cebcb2711ca63833b6c7e285483f4e3ca6eb1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87315473"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934271"
 ---
 # <a name="release-notes---application-insights"></a>版本資訊-Application Insights
 
-本頁概述在哪裡可以找到有關每個 Application Insights Sdk 的更新和 bug 修正的詳細版本資訊。
+本頁面概述有關每個 Application Insights Sdk 的更新和錯誤修正的詳細版本資訊。
 
 ## <a name="sdk"></a>SDK 
 
 * .NET SDK
-    - 2.12 版和更新版本： [.Net sdk （包括 ASP.NET、ASP.NET Core 和記錄介面卡）](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
+    - 針對2.12 版和更新版本： [.Net sdk (包括 ASP.NET、ASP.NET Core 和記錄介面卡) ](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
     - 針對較舊版本：
       - [ASP.NET Web Server SDK](https://github.com/Microsoft/ApplicationInsights-server-dotnet/releases)
       - [.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
@@ -31,13 +32,13 @@ ms.locfileid: "87315473"
 
 ## <a name="next-steps"></a>後續步驟
 
-開始使用無程式碼 monitor 無程式碼 monitoring：
+開始使用無程式碼監視器無程式碼監視：
 
 * [由 Azure VM 和 Azure 虛擬機器擴展集 IIS 所裝載的應用程式](./azure-vm-vmss-apps.md)
 * [IIS 伺服器](./monitor-performance-live-website-now.md)
 * [Azure Web Apps](./azure-web-apps.md)
 
-開始使用以程式碼為基礎的監視：
+以程式碼為基礎的監視入門：
 
 * [ASP.NET](./asp-net.md)
 * [ASP.NET Core](./asp-net-core.md)

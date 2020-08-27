@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 0309f4d07056e3986138139e10ab29faa675cfcd
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056073"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923733"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知問題
 
@@ -60,9 +60,9 @@ Blob API 和 Data Lake Storage Gen2 API 可運作於相同的資料上。
 
 <a id="api-scope-data-lake-client-library"></a>
 
-## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK、PowerShell 和 Azure CLI 中的檔案系統支援
+## <a name="support-for-setting-access-control-lists-acls-recursively"></a>支援以遞迴方式將存取控制清單設定 (Acl) 
 
-- 取得及設定 ACL 作業目前不是遞迴的。
+將 ACL 變更以遞迴方式從父目錄套用到子專案的功能處於 [公開預覽](recursive-access-control-lists.md)狀態。 在這項功能的目前版本中，您可以使用 PowerShell、.NET SDK 和 Python SDK 來套用 ACL 變更。 尚未提供 JAVA SDK、Azure CLI、Azure 入口網站或 Azure 儲存體總管的支援。
 
 <a id="known-issues-tools"></a>
 
@@ -109,7 +109,7 @@ Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumG
 Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
 ```
 
-尚不支援保留天數的設定，但您可以使用任何支援的工具（例如 Azure 儲存體總管、REST 或 SDK）來手動刪除記錄。
+尚不支援保留天數的設定，但您可以使用任何支援的工具（例如 Azure 儲存體總管、REST 或 SDK）手動刪除記錄。
 
 ### <a name="lifecycle-management-policies"></a>生命週期管理原則
 

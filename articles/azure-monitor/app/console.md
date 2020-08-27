@@ -3,13 +3,14 @@ title: 適用於主控台應用程式的 Azure Application Insights | Microsoft 
 description: 監視 Web 應用程式的可用性、效能和使用方式。
 ms.topic: conceptual
 ms.date: 05/21/2020
+ms.custom: devx-track-csharp
 ms.reviewer: lmolkova
-ms.openlocfilehash: 28f86e32dd73e25079ca685538fd0cb6f351b2d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 98f1ea8a4994515b437841174ae95563ea53ed88
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310458"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933336"
 ---
 # <a name="application-insights-for-net-console-applications"></a>適用於 .NET 主控台應用程式的 Application Insights
 
@@ -18,7 +19,7 @@ ms.locfileid: "87310458"
 您需要 [Microsoft Azure](https://azure.com) 的訂用帳戶。 使用 Microsoft 帳戶登入，此帳戶可能是您針對 Windows、Xbox Live 或其他 Microsoft 雲端服務所擁有的帳戶。 您的小組可能已有 Azuare 組織訂用帳戶：請洽詢擁有者將您的 Microsoft 帳戶新增至其中。
 
 > [!NOTE]
-> *強烈建議您*針對任何主控台應用程式，使用[這裡](./worker-service.md)的[ApplicationInsights WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)套件和相關聯的指示。 此套件的目標 [`NetStandard2.0`](/dotnet/standard/net-standard) 是，因此可在 .Net Core 2.1 或更高版本中使用，並 .NET Framework 4.7.2 或更高版本。
+> *強烈建議您*在任何主控台應用程式中使用[ApplicationInsights 的 WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)套件和[相關的指示](./worker-service.md)。 此封裝 [`NetStandard2.0`](/dotnet/standard/net-standard) 是以 .Net Core 2.1 或更高版本為目標，因此可用於 .Net Core 或更高版本，並 .NET Framework 4.7.2 或更新版本。
 
 ## <a name="getting-started"></a>開始使用
 

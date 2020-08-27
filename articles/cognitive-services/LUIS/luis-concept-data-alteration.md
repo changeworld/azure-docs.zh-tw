@@ -3,24 +3,25 @@ title: 資料改變-LUIS
 description: 了解如何在於 Language Understanding (LUIS) 中進行預測之前變更資料
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 3a88739caa9b35679f10b0cb63a804e9464c871c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c675ac246f397b5949c870ad91ab936bbd92c7ef
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872242"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934662"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>預測之前或預測期間變更語句資料
-LUIS 提供可在預測之前或預測期間操作語句的方法。 其中包括[修正拼寫](luis-tutorial-bing-spellcheck.md)，以及修正預先建立之[datetimeV2](luis-reference-prebuilt-datetimev2.md)的時區問題。
+LUIS 提供可在預測之前或預測期間操作語句的方法。 這些包括 [修正拼寫](luis-tutorial-bing-spellcheck.md)，以及修正預建 [datetimeV2](luis-reference-prebuilt-datetimev2.md)的時區問題。
 
 ## <a name="correct-spelling-errors-in-utterance"></a>校正語句中的拼字錯誤
 
 
 ### <a name="v3-runtime"></a>V3 執行時間
 
-在您將語句傳送至 LUIS 之前，預先處理文字以進行拼寫更正。 使用範例語句搭配正確的拼寫，以確保您得到正確的預測。
+將語句傳送至 LUIS 之前，預先處理文字以進行拼寫更正。 使用範例語句搭配正確的拼寫，以確保您取得正確的預測。
 
-使用[Bing 拼寫檢查](../bing-spell-check/overview.md)來更正文字，然後再將它傳送至 LUIS。
+使用 [Bing 拼寫檢查](../bing-spell-check/overview.md) 來修正文字，然後再將其傳送至 LUIS。
 
 ### <a name="prior-to-v3-runtime"></a>在 V3 執行時間之前
 
@@ -70,20 +71,20 @@ LUIS 使用 [Bing 拼字檢查 API V7](../Bing-Spell-Check/overview.md) 來校�
 * * *
 
 ### <a name="list-of-allowed-words"></a>允許的單字清單
-LUIS 中使用的 Bing 拼寫檢查 API 不支援在拼寫檢查改變期間忽略的字詞清單。 如果您需要允許單字或縮略字清單，請先處理用戶端應用程式中的語句，再將語句傳送至 LUIS 進行意圖預測。
+LUIS 中使用的 Bing 拼寫檢查 API 不支援拼寫檢查變更時要忽略的單字清單。 如果您需要允許單字或縮寫清單，請在用戶端應用程式中處理語句，然後再將語句傳送至 LUIS 進行意圖預測。
 
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>變更預先建置 datetimeV2 實體的時區
-當 LUIS 應用程式使用預先建立的[datetimeV2](luis-reference-prebuilt-datetimev2.md)實體時，可以在預測回應中傳回 datetime 值。 要求的時區會用來判斷要傳回的正確日期時間。 如果要求來自 Bot 或另一個集中式應用程式，請在其抵達 LUIS 之前，先更正 LUIS 使用的時區。
+當 LUIS 應用程式使用預建的 [datetimeV2](luis-reference-prebuilt-datetimev2.md) 實體時，可以在預測回應中傳回 datetime 值。 要求的時區會用來判斷要傳回的正確日期時間。 如果要求來自 Bot 或另一個集中式應用程式，請在其抵達 LUIS 之前，先更正 LUIS 使用的時區。
 
 ### <a name="v3-prediction-api-to-alter-timezone"></a>變更時區的 V3 預測 API
 
-在 V3 中， `datetimeReference`會決定時區時差。 深入瞭解[V3 預測](luis-migration-api-v3.md#v3-post-body)。
+在 V3 中，會 `datetimeReference` 決定時區位移。 深入瞭解 [V3 預測](luis-migration-api-v3.md#v3-post-body)。
 
 ### <a name="v2-prediction-api-to-alter-timezone"></a>變更時區的 V2 預測 API
-使用以 API 版本為基礎的`timezoneOffset`參數，將使用者的時區新增至端點，即可更正時區。 參數的值應該是正數或負數（以分鐘為單位），以改變時間。
+使用以 API 版本為基礎的參數將使用者的時區新增至端點，以更正時區 `timezoneOffset` 。 參數的值應該是用來改變時間的正數或負數（以分鐘為單位）。
 
 #### <a name="v2-prediction-daylight-savings-example"></a>V2 預測日光節約範例
-如果您需要針對日光節約時間來調整傳回的預先建立 datetimeV2，您應該在[端點](https://go.microsoft.com/fwlink/?linkid=2092356)查詢的幾分鐘內，使用 querystring 參數搭配 +/-值。
+如果您需要傳回的預建 datetimeV2 來調整日光節約時間，您應該使用 querystring 參數搭配 +/-值（以分鐘為單位）來進行 [端點](https://go.microsoft.com/fwlink/?linkid=2092356) 查詢。
 
 增加 60 分鐘：
 
@@ -93,9 +94,9 @@ LUIS 中使用的 Bing 拼寫檢查 API 不支援在拼寫檢查改變期間忽�
 
 `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?timezoneOffset=-60&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
-#### <a name="v2-prediction-c-code-determines-correct-value-of-parameter"></a>V2 預測 c # 程式碼判斷參數的正確值
+#### <a name="v2-prediction-c-code-determines-correct-value-of-parameter"></a>V2 預測 c # 程式碼會判斷參數的正確值
 
-下列 c # 程式碼會使用[TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo)類別的[timezoneinfo.findsystemtimezonebyid](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples)方法，根據系統時間判斷正確的位移值：
+下列 c # 程式碼會使用 [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) 類別的 [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) 方法，根據系統時間判斷正確的位移值：
 
 ```csharp
 // Get CST zone id

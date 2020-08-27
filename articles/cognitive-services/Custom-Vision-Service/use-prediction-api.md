@@ -10,42 +10,43 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: pafarley
-ms.openlocfilehash: cbc899d1278a2afcdf4948a88b54af81954f1eba
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7f1939536e033d2cf964dd2f4ee562e4ee20061b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205591"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934747"
 ---
-# <a name="use-your-model-with-the-prediction-api"></a>搭配預測 API 使用您的模型
+# <a name="use-your-model-with-the-prediction-api"></a>使用您的模型搭配預測 API
 
-定型模型之後，您可以將影像提交至預測 API 端點，以程式設計方式測試它們。
+定型您的模型之後，您可以藉由將影像提交至預測 API 端點，以程式設計方式測試影像。
 
 > [!NOTE]
-> 本文件示範如何使用 C#，送出影像到預測 API。 如需詳細資訊和範例，請參閱[預測 API 參考](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)。
+> 本文件示範如何使用 C#，送出影像到預測 API。 如需詳細資訊和範例，請參閱 [預測 API 參考](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)。
 
-## <a name="publish-your-trained-iteration"></a>發行定型的反復專案
+## <a name="publish-your-trained-iteration"></a>發佈您已定型的反復專案
 
 從[自訂視覺網頁](https://customvision.ai) \(英文\) 選取您的專案，然後選取 [效能]____ 索引標籤。
 
-若要將影像提交至預測 API，您必須先發佈反復專案以進行預測，這可以藉由選取 [__發行__] 並指定已發行之反復專案的名稱來完成。 這會讓您的模型可供自訂視覺 Azure 資源的預測 API 存取。
+若要將影像提交至預測 API，您必須先發佈反覆運算以進行預測，您可以選取 [ __發行__ ] 並指定已發行之反復專案的名稱來完成。 這會讓您的模型可供您自訂視覺 Azure 資源的預測 API 存取。
 
-![[效能] 索引標籤隨即顯示，並以紅色矩形括住 [發行] 按鈕。](./media/use-prediction-api/unpublished-iteration.png)
+![[效能] 索引標籤會顯示，其中有一個圍繞 [發佈] 按鈕的紅色矩形。](./media/use-prediction-api/unpublished-iteration.png)
 
-成功發行模型之後，您會看到左側提要欄位中的反復專案旁邊出現「已發行」標籤，而且其名稱會出現在反復專案的描述中。
+成功發佈模型之後，您會看到左側提要欄位中的反復專案旁出現「已發佈」標籤，而且其名稱會出現在反復專案的描述中。
 
-![[效能] 索引標籤隨即顯示，並以紅色矩形括住已發行的標籤和已發佈的反復專案名稱。](./media/use-prediction-api/published-iteration.png)
+![[效能] 索引標籤會顯示，其中有一個圍繞已發行標籤的紅色矩形，以及已發佈的反復專案名稱。](./media/use-prediction-api/published-iteration.png)
 
 ## <a name="get-the-url-and-prediction-key"></a>取得 URL 和預測金鑰
 
-一旦您的模型發佈之後，您就可以選取 [__預測 URL__] 來抓取所需的資訊。 這會開啟一個對話方塊，其中包含使用預測 API 的資訊，包括__預測 URL__和__預測金鑰__。
+一旦發行您的模型之後，您就可以選取 [ __預測 URL__] 來取得所需的資訊。 這會開啟一個對話方塊，其中包含使用預測 API 的資訊，包括 __預測 URL__ 和 __預測金鑰__。
 
 ![[效能] 索引標籤會顯示在 [預測 URL] 按鈕周圍的紅色矩形。](./media/use-prediction-api/published-iteration-prediction-url.png)
 
-![[效能] 索引標籤會顯示在 [預測 URL] 值周圍的紅色矩形，用於使用影像檔和預測索引鍵值。](./media/use-prediction-api/prediction-api-info.png)
+![[效能] 索引標籤會顯示在預測 URL 值周圍的紅色矩形，以使用影像檔案和預測金鑰值。](./media/use-prediction-api/prediction-api-info.png)
 
 
-在本指南中，您將使用本機影像，因此，**如果您有影像檔**案到暫存位置，請複製下的 URL。 也複製對應的__預測索引鍵值__。
+在本指南中，您將使用本機映射，因此， **如果您有** 一個暫存位置的影像檔案，請複製下的 URL。 也複製對應的 __預測__ 索引鍵值。
 
 ## <a name="create-the-application"></a>建立應用程式
 
@@ -110,12 +111,12 @@ ms.locfileid: "86205591"
 
 1. 變更下列資訊：
    * 將 `namespace` 欄位設定為專案的名稱。
-   * `<Your prediction key>`以您稍早取得的金鑰值取代預留位置。
-   * 將預留位置取代為 `<Your prediction URL>` 您稍早取得的 URL。
+   * 將預留位置取代為 `<Your prediction key>` 您稍早取出的索引鍵值。
+   * 將預留位置取代為 `<Your prediction URL>` 您稍早取出的 URL。
 
 ## <a name="run-the-application"></a>執行應用程式
 
-當您執行應用程式時，系統會提示您在主控台中輸入影像檔案的路徑。 然後，影像會提交至預測 API，而預測結果會以 JSON 格式的字串傳回。 以下是範例回應。
+當您執行應用程式時，系統會提示您在主控台中輸入影像檔案的路徑。 然後，會將影像提交至預測 API，並以 JSON 格式的字串傳回預測結果。 以下是範例回應。
 
 ```json
 {
@@ -132,6 +133,6 @@ ms.locfileid: "86205591"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本指南中，您已瞭解如何使用 c # SDK，以程式設計方式將影像提交至您的自訂影像分類器/偵測器，並接收回應。 接下來，瞭解如何使用 c # 完成端對端案例，或開始使用不同的語言 SDK。
+在本指南中，您已瞭解如何將影像提交至自訂影像分類器/偵測器，並使用 c # SDK 以程式設計方式接收回應。 接下來，瞭解如何使用 c # 完成端對端案例，或開始使用不同的語言 SDK。
 
 * [快速入門：自訂視覺 SDK](quickstarts/image-classification.md)

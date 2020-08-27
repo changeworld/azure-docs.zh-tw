@@ -4,18 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
-ms.openlocfilehash: 58fa9361cc591f7d2b78a19f3db620112e288592
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 51b919c97a15946f57211cf8fe12d7c5efe435bf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284201"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934630"
 ---
 ## <a name="upload-the-audio"></a>上傳音訊
 
-在執行非同步轉譯之前，您必須使用 Microsoft 認知語音用戶端 SDK （1.13.0 或更新版本）將音訊傳送至對話轉譯服務。
+在可以執行非同步轉譯之前，您必須使用 Microsoft 認知語音用戶端 SDK (1.13.0 版或更新版本的) ，將音訊傳送至交談轉譯服務。
 
-此範例程式碼示範如何針對非同步模式建立對話 transcriber。 若要將音訊串流至 transcriber，您可以[使用語音 SDK 來即時](../../../../how-to-use-conversation-transcription.md)新增衍生自轉譯交談的音訊串流程式碼。 
+此範例程式碼示範如何建立僅限非同步模式的對話 transcriber。 為了將音訊串流至 transcriber，您可以 [使用語音 SDK 來即時](../../../../how-to-use-conversation-transcription.md)新增衍生自轉譯交談的音訊串流程式碼。 
 
 ```csharp
 async Task CompleteContinuousRecognition(ConversationTranscriber recognizer, string conversationId)
@@ -93,7 +94,7 @@ async Task UploadAudio()
 }
 ```
 
-如果您想要即時_加上_非同步，請將適當的程式程式碼批註並取消批註，如下所示：
+如果您想要即時 _加上_ 非同步，請將適當的程式程式碼加上批註和取消批註，如下所示：
 
 ```csharp
 // Set the property for asynchronous transcription
@@ -105,11 +106,11 @@ speechConfig.SetServiceProperty("transcriptionMode", "RealTimeAndAsync", Service
 
 ## <a name="get-transcription-results"></a>取得轉譯結果
 
-透過 NuGet 安裝**1.13.0 或更新版本的 CognitiveServices Remoteconversation** 。
+透過 NuGet 安裝 **1.13.0 或更新版本的 CognitiveServices Remoteconversation** 。
 
 ### <a name="sample-transcription-code"></a>範例轉譯程式碼
 
-在您擁有之後 `conversationId` ，請在用戶端應用程式建立遠端對話轉譯用戶端**RemoteConversationTranscriptionClient** ，以查詢非同步轉譯的狀態。 建立**RemoteConversationTranscriptionOperation**的物件，以取得長時間執行的[工作物件。](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/core/Azure.Core#consuming-long-running-operations-using-operationt) 您可以檢查作業的狀態，或等候它完成。 
+當您擁有之後 `conversationId` ，請在用戶端應用程式上建立遠端對話轉譯用戶端 **RemoteConversationTranscriptionClient** ，以查詢非同步轉譯的狀態。 建立  **RemoteConversationTranscriptionOperation** 的物件以取得長時間執行的 [操作](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/core/Azure.Core#consuming-long-running-operations-using-operationt) 物件。 您可以檢查作業的狀態，或等候它完成。 
 
 ```csharp
 // Create the speech config

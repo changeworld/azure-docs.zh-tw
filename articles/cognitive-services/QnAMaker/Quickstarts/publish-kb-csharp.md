@@ -3,14 +3,14 @@ title: '快速入門：發佈知識庫、REST、c #-QnA Maker'
 description: 這個以 C# REST 為基礎的快速入門會發佈您的知識庫，並建立可在應用程式或聊天機器人中呼叫的端點。
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27
+ms.custom: RESTCURL2020FEB27, devx-track-csharp
 ms.topic: how-to
-ms.openlocfilehash: 7eaa8d7f7d86e215ea2e9906075c27dd2916dcd5
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: ccad31c5a67eaec53ee9366961187bb1ed235283
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342743"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934152"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>快速入門：使用 C# 在 QnA Maker 中發佈知識庫
 
@@ -30,7 +30,7 @@ ms.locfileid: "84342743"
     如果您還沒有知識庫，可以建立要用於本快速入門的範例知識庫：[建立新的知識庫](create-new-kb-csharp.md)。
 
 > [!NOTE]
-> 您可以從[ **Azure 範例/認知服務-qnamaker-csharp** GitHub 存放庫](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/publish-knowledge-base)取得完整的解決方案檔案。
+> 您可以從[ **Azure 範例/認知服務-qnamaker-csharp** GitHub 儲存](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/publish-knowledge-base)機制取得完整的解決方案檔 (s) 。
 
 ## <a name="create-knowledge-base-project"></a>建立知識庫專案
 

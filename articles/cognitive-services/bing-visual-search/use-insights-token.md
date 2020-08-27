@@ -10,13 +10,13 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 49daf816c4075820c9efc93611f33c4854a6042d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: d82445499ffa42b1e3a0e949d95eadf61dfdd4c1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849568"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925074"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用見解權杖取得影像的深入解析
 
@@ -30,7 +30,7 @@ Bing 圖像式搜尋 API 會傳回您所提供影像的相關資訊。 您可以
 
 * [Python](quickstarts/python.md)) 。
 
-如果您將影像權杖或 URL 傳送 Bing 圖像式搜尋，以下會顯示您必須包含在 POST 本文中的表單資料。 表單資料必須包含 `Content-Disposition` 標頭，而且您必須將其 `name` 參數設為 "knowledgeRequest"。 如需物件的詳細資訊 `imageInfo` ，請參閱要求：
+如果您將影像權杖或 URL Bing 圖像式搜尋傳送，下列內容會顯示您必須包含在 POST 本文中的表單資料。 表單資料必須包含 `Content-Disposition` 標頭，而且您必須將其 `name` 參數設定為 "knowledgeRequest"。 如需物件的詳細資訊 `imageInfo` ，請參閱要求：
 
 ```json
 {
@@ -52,7 +52,7 @@ Bing 圖像式搜尋 API 會傳回您所提供影像的相關資訊。 您可以
 }
 ```
 
-本文中的範例將示範如何使用見解權杖。 您會從 `Image` /IMAGES/SEARCH API 回應中的物件取得深入解析權杖。 如需取得深入解析權杖的相關資訊，請參閱[什麼是 BING 影像搜尋 API？](../Bing-Image-Search/overview.md)。
+本文中的範例將示範如何使用見解權杖。 您可以從 `Image` /IMAGES/SEARCH API 回應中的物件取得見解權杖。 如需取得見解權杖的詳細資訊，請參閱 [什麼是 BING 影像搜尋 API？](../Bing-Image-Search/overview.md)。
 
 ```
 --boundary_1234-abcd
@@ -67,7 +67,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-如需使用深入解析權杖的範例，請參閱：
+如需使用 insights 權杖的範例，請參閱：
 
 * [C#](#use-with-c)
 
@@ -83,14 +83,14 @@ Content-Disposition: form-data; name="knowledgeRequest"
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="建立 Bing 搜尋資源"  target="_blank">建立 Bing 搜尋資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
-* 任何版本的[Visual Studio 2019](https://www.visualstudio.com/downloads/) ，以讓此程式碼在 Windows 上執行。
+* 任何版本的 [Visual Studio 2019](https://www.visualstudio.com/downloads/) ，以取得在 Windows 上執行的此程式碼。
 
 ## <a name="run-the-application"></a>執行應用程式
 
 若要執行此應用程式，請遵循下列步驟：
 
 1. 在 Visual Studio 中建立主控台解決方案。
-2. 以本快速入門中顯示的程式碼取代 Program.cs 的內容。
+2. 以本快速入門中所示的程式碼取代 Program.cs 的內容。
 3. 以您的訂用帳戶金鑰取代 `accessKey` 值。
 4. 以 /images/search 回應中的見解權杖取代 `insightsToken` 值。
 5. 執行程式。
@@ -251,20 +251,20 @@ namespace VisualSearchInsightsToken
 }
 ```
 
-## <a name="use-with-java"></a>搭配 JAVA 使用
+## <a name="use-with-java"></a>搭配使用 JAVA
 
 ### <a name="java-prerequisites"></a>JAVA 必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="建立 Bing 搜尋資源"  target="_blank">建立 Bing 搜尋資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
-* [JDK 7 或 8](https://aka.ms/azure-jdks)以編譯並執行此程式碼。 如果您有 [我的最愛]，可以使用 JAVA IDE，但是文字編輯器就夠了。
+* [JDK 7 或 8](https://aka.ms/azure-jdks) ，以編譯並執行此程式碼。 如果您有我的最愛，則可以使用 JAVA IDE，但文字編輯器將會足夠。
 
 
 ## <a name="run-the-java-application"></a>執行 JAVA 應用程式
 
 若要執行此應用程式，請遵循下列步驟：
 
-1. 下載或安裝[Gson JAVA 程式庫](https://github.com/google/gson)。 您也可以透過 Maven 取得 Gson。
+1. 下載或安裝 [Gson JAVA 程式庫](https://github.com/google/gson)。 您也可以透過 Maven 取得 Gson。
 2. 在您最愛的 IDE 或編輯器中建立新的 Java 專案。
 3. 在名為 `VisualSearch.java` 的檔案中新增提供的程式碼。
 4. 以您的訂用帳戶金鑰取代 `subscriptionKey` 值。
@@ -373,7 +373,7 @@ public class InsightsToken {
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="建立 Bing 搜尋資源"  target="_blank">建立 Bing 搜尋資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
-* 您必須有[Node.js 6](https://nodejs.org/en/download/) ，才能執行此程式碼。
+* 您必須有 [Node.js 6](https://nodejs.org/en/download/) 才能執行此程式碼。
 
 ## <a name="run-the-javascript-application"></a>執行 JavaScript 應用程式
 
@@ -432,13 +432,13 @@ function requestCallback(err, res, body) {
 }
 ```
 
-## <a name="use-with-python"></a>搭配 Python 使用
+## <a name="use-with-python"></a>使用 Python
 
 ### <a name="python-prerequisites"></a>Python 必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="建立 Bing 搜尋資源"  target="_blank">建立 Bing 搜尋資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
-* 您必須有[Python 3](https://www.python.org/) ，才能執行此程式碼。
+* 您必須要有 [Python 3](https://www.python.org/) ，才能執行此程式碼。
 
 ## <a name="run-the-python-application"></a>執行 Python 應用程式
 
@@ -501,4 +501,4 @@ if __name__ == '__main__':
 [建立圖像式搜尋單頁 Web 應用程式](tutorial-bing-visual-search-single-page-app.md)  
 [什麼是 Bing 圖像式搜尋 API？](overview.md)  
 [試用認知服務](https://aka.ms/bingvisualsearchtryforfree)  
-[映射-圖像式搜尋](https://aka.ms/bingvisualsearchreferencedoc)
+[影像-圖像式搜尋](https://aka.ms/bingvisualsearchreferencedoc)

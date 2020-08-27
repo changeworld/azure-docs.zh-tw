@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 0f113c22d28b4ae211562974d1c3292f54351498
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1042383e285780f5ee9297b1c87615bbdd2fe1b6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035806"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925247"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -17,11 +18,11 @@ ms.locfileid: "86035806"
 
 ## <a name="install-the-speech-sdk"></a>安裝語音 SDK
 
-您必須先安裝語音 SDK，才能執行動作。 根據您的平臺，遵循_關於語音 sdk_一文的<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">取得語音 <span class="docon docon-navigate-external x-hidden-focus"></span> sdk</a>一節中的指示。
+您必須先安裝語音 SDK，才能執行動作。 視您的平臺而定，請依照「_關於語音 sdk_ 」一文的「 <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> 取得語音 sdk</a> 」一節中的指示進行。
 
 ## <a name="import-dependencies"></a>匯入相依性
 
-若要執行本文中的範例，請 `using` 在*Program.cs*檔案的頂端加入下列語句。
+若要執行本文中的範例，請 `using` 在 *Program.cs* 檔案的頂端加入下列語句。
 
 ```csharp
 using System;
@@ -36,7 +37,7 @@ using Microsoft.CognitiveServices.Speech.Translation;
 
 ## <a name="sensitive-data-and-environment-variables"></a>敏感性資料和環境變數
 
-本文中的範例原始程式碼取決於用來儲存敏感性資料的環境變數，例如語音資源訂用帳戶金鑰和區域。 `Program`類別包含兩個 `static readonly string` 指派自主機電腦環境變數的值，即 `SPEECH__SUBSCRIPTION__KEY` 和 `SPEECH__SERVICE__REGION` 。 這兩個欄位都在類別範圍內，讓它們可在類別的方法主體中存取。 如需環境變數的詳細資訊，請參閱[環境變數和應用程式](../../../../cognitive-services-security.md#environment-variables-and-application-configuration)設定。
+本文中的範例原始程式碼相依于儲存機密資料的環境變數，例如語音資源訂用帳戶金鑰和區域。 `Program`類別包含兩個 `static readonly string` 從主機電腦環境變數（即和）指派的值 `SPEECH__SUBSCRIPTION__KEY` `SPEECH__SERVICE__REGION` 。 這兩個欄位都在類別範圍內，使其可在類別的方法主體內進行存取。 如需環境變數的詳細資訊，請參閱 [環境變數和應用程式](../../../../cognitive-services-security.md#environment-variables-and-application-configuration)設定。
 
 ```csharp
 public class Program
@@ -88,7 +89,7 @@ public class Program
 
 ## <a name="change-source-language"></a>變更來源語言
 
-語音翻譯的一個常見工作是指定輸入（或來源）語言。 我們來看看如何將輸入語言變更為義大利文。 在您的程式碼中，與實例進行互動，並將 [`SpeechTranslationConfig`][config] 指派給 `SpeechRecognitionLanguage` 屬性。
+語音翻譯的一個常見工作是指定輸入 (或來源) 語言。 我們來看看如何將輸入語言變更為義大利文。 在您的程式碼中，與 [`SpeechTranslationConfig`][config] 實例互動，並指派給 `SpeechRecognitionLanguage` 屬性。
 
 ```csharp
 static async Task TranslateSpeechAsync()
@@ -101,11 +102,11 @@ static async Task TranslateSpeechAsync()
 }
 ```
 
-[`SpeechRecognitionLanguage`][recognitionlang] 屬性需要語言/地區設定格式字串。 您可以提供支援的[地區設定/語言](../../../language-support.md)清單中位於 [地區設定]  資料行內的任何值。
+[`SpeechRecognitionLanguage`][recognitionlang] 屬性需要語言/地區設定格式字串。 您可以提供支援的[地區設定/語言](../../../language-support.md)清單中位於 [地區設定] 資料行內的任何值。
 
 ## <a name="add-translation-language"></a>新增翻譯語言
 
-語音翻譯的另一個常見工作是指定目標轉譯語言，至少需要一個，但支援多個。 下列程式碼片段會將法文和德文設定為翻譯語言目標。
+語音翻譯的另一項常見工作是指定目標翻譯語言，至少需要一個，但支援倍數。 下列程式碼片段會將法文和德文設定為翻譯語言目標。
 
 ```csharp
 static async Task TranslateSpeechAsync()
@@ -121,11 +122,11 @@ static async Task TranslateSpeechAsync()
 }
 ```
 
-每次呼叫時 [`AddTargetLanguage`][addlang] ，會指定新的目標轉譯語言。 換句話說，從來源語言辨識出語音時，每個目標轉譯都可做為所產生轉譯作業的一部分。
+每次呼叫時 [`AddTargetLanguage`][addlang] ，會指定新的目標翻譯語言。 換句話說，從來源語言辨識語音時，每個目標翻譯都可作為產生之轉譯作業的一部分。
 
 ## <a name="initialize-a-translation-recognizer"></a>初始化翻譯辨識器
 
-建立 [`SpeechTranslationConfig`][config] 之後，下一步是初始化 [`TranslationRecognizer`][recognizer]。 當您初始化 [`TranslationRecognizer`][recognizer] 時，您必須為其傳入您的 `translationConfig`。 Configuration 物件會提供語音服務驗證要求所需的認證。
+建立 [`SpeechTranslationConfig`][config] 之後，下一步是初始化 [`TranslationRecognizer`][recognizer]。 當您初始化 [`TranslationRecognizer`][recognizer] 時，您必須為其傳入您的 `translationConfig`。 設定物件會提供語音服務驗證要求所需的認證。
 
 如果您要使用裝置的預設麥克風來辨識語音，則 [`TranslationRecognizer`][recognizer] 應會顯示如下：
 
@@ -187,7 +188,7 @@ static async Task TranslateSpeechAsync()
 
 ## <a name="translate-speech"></a>翻譯語音
 
-若要翻譯語音，語音 SDK 會依賴麥克風或音訊檔案輸入。 語音辨識會在語音翻譯之前進行。 在初始化所有物件之後，呼叫辨識一次函式並取得結果。
+為了翻譯語音，語音 SDK 會依賴麥克風或音訊檔案輸入。 語音轉換之前會進行語音辨識。 所有物件都已初始化之後，請呼叫「辨識一次」函數並取得結果。
 
 ```csharp
 static async Task TranslateSpeechAsync()
@@ -217,18 +218,18 @@ static async Task TranslateSpeechAsync()
 }
 ```
 
-如需有關語音轉換文字的詳細資訊，請參閱[語音辨識的基本概念](../../../speech-to-text-basics.md)。
+如需語音轉換文字的詳細資訊，請參閱 [語音辨識的基本概念](../../../speech-to-text-basics.md)。
 
 ## <a name="synthesize-translations"></a>合成翻譯
 
-在成功的語音辨識和轉譯之後，結果會包含字典中的所有翻譯。 [`Translations`][translations]字典索引鍵是目標轉譯語言，而值則是翻譯的文字。 可以翻譯辨識的語音，然後以不同的語言（語音轉換語音）合成。
+成功進行語音辨識和轉譯之後，結果會包含字典中的所有翻譯。 [`Translations`][translations]字典索引鍵是目標翻譯語言，而值是翻譯的文字。 辨識的語音可以轉譯，然後以不同的語言合成 (語音轉換語音) 。
 
 ### <a name="event-based-synthesis"></a>以事件為基礎的合成
 
-`TranslationRecognizer`物件會公開 `Synthesizing` 事件。 事件會引發數次，並提供從轉譯辨識結果抓取合成音訊的機制。 如果您要翻譯成多種語言，請參閱[手動合成](#manual-synthesis)。 藉由指派 [`VoiceName`][voicename] 並提供事件的事件處理常式來指定合成語音 `Synthesizing` ，以取得音訊。 下列範例會將轉譯的音訊儲存為 *.wav*檔案。
+`TranslationRecognizer`物件會公開 `Synthesizing` 事件。 事件會引發數次，並提供從轉譯辨識結果取出合成音訊的機制。 如果您要翻譯成多種語言，請參閱 [手動合成](#manual-synthesis)。 藉由指派來指定合成語音 [`VoiceName`][voicename] ，並提供事件的事件處理常式 `Synthesizing` ，取得音訊。 下列範例會將翻譯的音訊儲存為 *.wav* 檔。
 
 > [!IMPORTANT]
-> 以事件為基礎的合成僅適用于單一轉譯，**請勿**新增多個目標轉譯語言。 此外， [`VoiceName`][voicename] 應該是與目標轉譯語言相同的語言，例如， `"de"` 可以對應至 `"de-DE-Hedda"` 。
+> 以事件為基礎的合成僅適用于單一轉譯， **請勿** 新增多個目標翻譯語言。 此外，也 [`VoiceName`][voicename] 應該與目標翻譯語言的語言相同，例如， `"de"` 可能會對應到 `"de-DE-Hedda"` 。
 
 ```csharp
 static async Task TranslateSpeechAsync()
@@ -271,7 +272,7 @@ static async Task TranslateSpeechAsync()
 
 ### <a name="manual-synthesis"></a>手動合成
 
-[`Translations`][translations]字典可以用來從翻譯文字合成音訊。 逐一查看每個翻譯，併合成翻譯。 建立實例時 `SpeechSynthesizer` ，物件必須 `SpeechConfig` [`SpeechSynthesisVoiceName`][speechsynthesisvoicename] 將其屬性設定為所需的聲音。 下列範例會轉譯成五種語言，然後每個翻譯都會合成對應的類神經語言中的音訊檔案。
+[`Translations`][translations]字典可以用來從翻譯文字合成音訊。 逐一查看每個翻譯，併合成翻譯。 建立實例時 `SpeechSynthesizer` ，物件必須 `SpeechConfig` [`SpeechSynthesisVoiceName`][speechsynthesisvoicename] 將其屬性設定為所需的聲音。 下列範例會轉譯成五種語言，然後每個轉譯都會合成對應的類神經語言中的音訊檔案。
 
 ```csharp
 static async Task TranslateSpeechAsync()
@@ -322,7 +323,7 @@ static async Task TranslateSpeechAsync()
 }
 ```
 
-如需有關語音合成的詳細資訊，請參閱[語音合成的基本概念](../../../text-to-speech-basics.md)。
+如需語音合成的詳細資訊，請參閱 [語音合成的基本概念](../../../text-to-speech-basics.md)。
 
 [config]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig?view=azure-dotnet
 [audioconfig]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet

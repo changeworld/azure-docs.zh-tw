@@ -10,22 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 1574ea1c6f97606198d071d79ea69d58304a6159
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3c8d3162e13c31204ed317edc653756b04ef8dd4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053553"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934118"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>關於語音 SDK 音訊輸入資料流 API
 
-語音 SDK 的**音訊輸入資料流程**API 提供將音訊串流至辨識器的方式，而不是使用麥克風或輸入檔 api。
+語音 SDK 的 **音訊輸入串流** API 提供了將音訊串流到辨識器中的方法，而不是使用麥克風或輸入檔 api。
 
 使用音訊輸入資料流時，必須執行下列步驟：
 
 - 識別音訊資料流的格式。 語音 SDK 和語音服務必須支援此格式。 目前僅支援下列設定：
 
-  PCM 格式的音訊樣本、一個頻道、每個樣本16位、8000或每秒16000個樣本 (16000 或每秒32000位元組) ，兩個區塊對齊 (16 位，包括範例) 的填補。
+  PCM 格式的音訊範例、一個通道、每個樣本16個位、每秒8000或16000個樣本 (16000 或每秒32000位元組) 、兩個區塊對齊 (16 位，包括樣本) 的填補。
 
   SDK 中用於建立音訊格式相對應程式碼看起來像這樣：
 

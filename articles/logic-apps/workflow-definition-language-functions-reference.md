@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: ca6324bd27749d9be3f516dbcd8ff99eca39d1a6
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.date: 08/26/2020
+ms.openlocfilehash: e4f9fa554a7c0e45abe1e9686605c95bb79d1739
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875450"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932945"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>在運算式中使用函式的參考指南，適用於 Azure Logic Apps 和 Power Automate
 
@@ -122,7 +122,7 @@ ms.locfileid: "87875450"
 若要處理條件、比較值和運算式結果，或評估各種不同的邏輯，您可以使用下列邏輯比較函式。 如需有關每個函式的完整參考，請參閱[依字母順序排列的清單](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)。
 
 > [!NOTE]
-> 如果您使用邏輯函數或條件來比較值，null 值會轉換成空字串 (`""`) 值。 當您與空字串（而非 null 值）比較時，條件的行為會有所不同。 如需詳細資訊，請參閱[字串 ( # A1 函數](#string)。 
+> 如果您使用邏輯函數或條件來比較值，null 值會轉換成空字串 (`""`) 值。 當您比較空字串而非 null 值時，條件的行為會有所不同。 如需詳細資訊，請參閱 [字串 ( # A1 函數](#string)。 
 
 | 邏輯比較函式 | Task |
 | --------------------------- | ---- |
@@ -479,7 +479,7 @@ actionOutputs('Get_user')
 若要了解目前的動作，請參閱 [action()](#action)。
 
 > [!TIP]
-> 函式會 `actions()` 以字串形式傳回輸出。 如果您需要使用傳回的值做為 JSON 物件，您必須先轉換字串值。 您可以使用[剖析 json 動作](logic-apps-perform-data-operations.md#parse-json-action)，將字串值轉換成 JSON 物件。
+> `actions()`函數會以字串形式傳回輸出。 如果您需要使用傳回的值做為 JSON 物件，您必須先轉換字串值。 您可以使用 [PARSE json 動作](logic-apps-perform-data-operations.md#parse-json-action)，將字串值轉換成 JSON 物件。
 
 > [!NOTE]
 > 先前，指定動作以另一個動作的輸出為基礎來執行時，您可以使用 `actions()` 函式或 `conditions` 元素。 但是，若要明確宣告動作之間的相依性，您現在必須使用相依動作的 `runAfter` 屬性。
@@ -1128,27 +1128,27 @@ bool(<value>)
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 任意 | 要轉換的值 |
+| <*value*> | 是 | 任意 | 要轉換為布林值的值。 |
 |||||
+
+如果您使用 `bool()` 的物件是，物件的值必須是可轉換成布林值的字串或整數。
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 指定值的布林值版本 |
+| `true` 或 `false` | Boolean | 指定之值的布林值版本。 |
 ||||
 
-*範例*
+*輸出*
 
-這些範例會將指定的值轉換為布林值：
+下列範例顯示不同支援的輸入類型 `bool()` ：
 
-```
-bool(1)
-bool(0)
-```
-
-並傳回下列結果：
-
-* 第一個範例：`true`
-* 第二個範例：`false`
+| 輸入值 | 類型 | 傳回值 |
+| ----------- | ---------- | ---------------------- |
+| `bool(1)` | 整數 | `true` |
+| `bool(0)` | 整數    | `false` |
+| `bool(-1)` | 整數 | `true` |
+| `bool('true')` | String | `true` |
+| `bool('false')` | String | `false` |
 
 <a name="coalesce"></a>
 
@@ -1700,12 +1700,12 @@ div(<dividend>, <divisor>)
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*quotient-result*> | 整數或浮點數 | 從第一個數位除以第二個數字的結果。 如果被除數或除數具有 Float 型別，則結果會是 Float 型別。 <p><p>**注意**：若要將 float 結果轉換成整數，請嘗試從邏輯應用程式[建立和呼叫 Azure 函式](../logic-apps/logic-apps-azure-functions.md)。 |
+| <*quotient-result*> | 整數或浮點數 | 將第一個數位除以第二個數字的結果。 如果被除數或除數具有 Float 類型，則結果會是 Float 類型。 <p><p>**注意**：若要將 float 結果轉換成整數，請嘗試從邏輯應用程式 [建立和呼叫 Azure 函式](../logic-apps/logic-apps-azure-functions.md) 。 |
 ||||
 
 *範例 1*
 
-這兩個範例都會傳回具有整數類型的此值：`2`
+這兩個範例都會以整數類型傳回此值： `2`
 
 ```
 div(10,5)
@@ -1714,7 +1714,7 @@ div(11,5)
 
 *範例 2*
 
-這兩個範例都會傳回具有 Float 類型的這個值：`2.2`
+這兩個範例都會以 Float 類型傳回此值： `2.2`
 
 ```
 div(11,5.0)
@@ -2722,7 +2722,7 @@ lastIndexOf('<text>', '<searchText>')
 
 * 如果字串和子字串值都是空的， `0` 則會傳回。
 
-* 如果只有子字串值是空的，則會傳回下列兩個值中較大的一個：
+* 如果只有子字串值是空的，則會傳回下列兩個值的最大值：
 
   * `0`
 
@@ -2730,13 +2730,13 @@ lastIndexOf('<text>', '<searchText>')
 
 *範例*
 
-這個範例會在字串中尋找子字串最後一次出現的起始索引值 `world` `hello world hello world` 。 傳回的結果為 `18` ：
+這個範例會尋找字串中最後一次出現的子字串子字串的起始索引值 `world` `hello world hello world` 。 傳回的結果為 `18` ：
 
 ```json
 lastIndexOf('hello world hello world', 'world')
 ```
 
-這個範例缺少 substring 參數，並傳回值， `22` 因為輸入字串 (`23`) 減1的值大於0。
+此範例缺少 substring 參數，並傳回值， `22` 因為輸入字串的值 (`23`) 減1大於0。
 
 ```json
 lastIndexOf('hello world hello world', '')
@@ -3662,7 +3662,7 @@ skip(createArray(0, 1, 2, 3), 1)
 
 ### <a name="split"></a>split
 
-根據原始字串中指定的分隔符號字元，傳回由逗號分隔的子字串所構成的陣列。
+根據原始字串中指定的分隔符號字元，傳回包含以逗號分隔之子字串的陣列。
 
 ```
 split('<text>', '<delimiter>')
@@ -3847,12 +3847,12 @@ string(<value>)
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 任意 | 要進行轉換的值。 如果此值為 null 或評估為 null，則會將值轉換成空字串 (`""`) 值。 <p><p>例如，如果您將字串變數指派給不存在的屬性（您可以使用運算子來存取 `?` ），則 null 值會轉換成空字串。 不過，比較 null 值與比較空字串並不相同。 |
+| <*value*> | 是 | 任意 | 要進行轉換的值。 如果此值為 null 或評估為 null，則會將值轉換成空字串 (`""`) 值。 <p><p>例如，如果您將字串變數指派給不存在的屬性（可利用 `?` 運算子存取），則 null 值會轉換成空字串。 不過，比較 null 值與空字串的比較並不相同。 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*string-value*> | String | 指定值的字串版本。 如果*value*參數為 null 或評估為 null，則會以空字串傳回此值 (`""`) 值。 |
+| <*string-value*> | String | 指定之值的字串版本。 如果 *value* 參數為 null 或評估為 null，則會以空字串的形式傳回此值， (`""`) 值。 |
 ||||
 
 
@@ -4761,15 +4761,15 @@ xpath('<xml>', '<xpath>')
 
 *範例 1*
 
-假設您有 `'items'` 下列 XML 字串： 
+假設您有這個 `'items'` XML 字串： 
 
 `"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
 
-這個範例會傳入 XPath 運算式， `'/produce/item/name'` 以尋找符合 `<name></name>` XML 字串中節點的節點 `'items'` ，並傳回具有這些節點值的陣列：
+此範例會傳入 XPath 運算式， `'/produce/item/name'` 以尋找符合 `<name></name>` XML 字串中節點的節點 `'items'` ，並傳回具有這些節點值的陣列：
 
 `xpath(xml(parameters('items')), '/produce/item/name')`
 
-此範例也會使用[ ( # B1](#parameters)函數的參數，從取得 xml 字串 `'items'` ，並使用[xml ( # B3](#xml)函式將字串轉換為 xml 格式。
+此範例也會使用 [參數 ( # B1 ](#parameters) 函數來取得 xml 字串 `'items'` ，並使用 [xml ( # B3 ](#xml) 函數將字串轉換為 xml 格式。
 
 以下是結果陣列，其中有符合 `<name></name`的節點：
 
@@ -4777,43 +4777,43 @@ xpath('<xml>', '<xpath>')
 
 *範例 2*
 
-在範例1上，此範例會傳入 XPath 運算式， `'/produce/item/name[1]'` 以尋找屬於元素子系的第一個 `name` 元素 `item` 。
+在範例1上，此範例會傳入 XPath 運算式，以找出第一個專案（即元素的子系） `'/produce/item/name[1]'` `name` `item` 。
 
 `xpath(xml(parameters('items')), '/produce/item/name[1]')`
 
-結果如下：`Gala`
+結果如下： `Gala`
 
 *範例 3*
 
-在範例1上，此範例會傳入 XPath 運算式， `'/produce/item/name[last()]'` 以尋找屬於元素子系的最後一個 `name` 元素 `item` 。
+在範例1上，此範例會傳入 XPath 運算式，以找出第一個專案（ `'/produce/item/name[last()]'` `name` 即元素的子系） `item` 。
 
 `xpath(xml(parameters('items')), '/produce/item/name[last()]')`
 
-結果如下：`Honeycrisp`
+結果如下： `Honeycrisp`
 
 *範例 4*
 
-在此範例中，假設您 `items` 的 XML 字串也包含屬性， `expired='true'` 而且 `expired='false'` ：
+在此範例中，假設您 `items` 的 XML 字串也包含屬性， `expired='true'` 以及 `expired='false'` ：
 
 `"<?xml version="1.0"?> <produce> <item> <name expired='true'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name expired='false'>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
 
-這個範例會傳入 XPath 運算式， `'//name[@expired]'` 以尋找具有屬性的所有 `name` 元素 `expired` ：
+此範例會傳入 XPath 運算式， `'//name[@expired]'` 以尋找 `name` 具有該屬性的所有元素 `expired` ：
 
 `xpath(xml(parameters('items')), '//name[@expired]')`
 
-結果如下：`[ Gala, Honeycrisp ]`
+結果如下： `[ Gala, Honeycrisp ]`
 
 *範例 5*
 
-在此範例中，假設您的 `items` XML 字串只包含此屬性 `expired = 'true'` ：
+在此範例中，假設您的 `items` XML 字串只包含這個屬性 `expired = 'true'` ：
 
 `"<?xml version="1.0"?> <produce> <item> <name expired='true'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
 
-這個範例會傳入 XPath 運算式， `'//name[@expired = 'true']'` 以尋找具有屬性的所有 `name` 元素 `expired = 'true'` ：
+此範例會傳入 XPath 運算式， `'//name[@expired = 'true']'` 以尋找 `name` 具有該屬性的所有元素 `expired = 'true'` ：
 
 `xpath(xml(parameters('items')), '//name[@expired = 'true']')`
 
-結果如下：`[ Gala ]`
+結果如下： `[ Gala ]`
 
 *範例 6*
 
@@ -4824,11 +4824,11 @@ xpath('<xml>', '<xpath>')
 
 `"<?xml version="1.0"?> <produce> <item> <name expired='true' price='12'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name expired='false' price='40'>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
 
-這個範例會傳入 XPath 運算式， `'//name[price>35]'` 以尋找 `name` 具有下列專案的所有元素 `price > 35` ：
+此範例會傳入 XPath 運算式， `'//name[price>35]'` 以尋找具有下列專案的 `name` 所有元素 `price > 35` ：
 
 `xpath(xml(parameters('items')), '//name[price>35]')`
 
-結果如下：`Honeycrisp`
+結果如下： `Honeycrisp`
 
 *範例 7*
 
@@ -4836,19 +4836,19 @@ xpath('<xml>', '<xpath>')
 
 `"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
 
-這個範例會尋找符合節點的節點 `<count></count>` ，並使用函數來新增這些節點值 `sum()` ：
+此範例會尋找符合節點的節點 `<count></count>` ，並使用函式加入這些節點值 `sum()` ：
 
 `xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
 
-結果如下：`30`
+結果如下： `30`
 
 *範例 8*
 
-在此範例中，假設您有此 XML 字串，其中包含 XML 檔命名空間 `xmlns="http://contoso.com"` ：
+在此範例中，假設您有此 XML 字串，其中包含 XML 檔命名空間， `xmlns="http://contoso.com"` 如下所示：
 
 `"<?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>"`
 
-這些運算式會使用 XPath 運算式 `/*[name()="file"]/*[name()="location"]` 或 `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]` 來尋找符合節點的節點 `<location></location>` 。 這些範例會顯示您在邏輯應用程式設計工具或運算式編輯器中使用的語法：
+這些運算式使用 XPath 運算式 `/*[name()="file"]/*[name()="location"]` 或 `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]` ，來尋找符合節點的節點 `<location></location>` 。 這些範例顯示您在邏輯應用程式設計工具或運算式編輯器中使用的語法：
 
 * `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
 * `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]')`
@@ -4859,9 +4859,9 @@ xpath('<xml>', '<xpath>')
 
 > [!IMPORTANT]
 >
-> 如果您在程式碼視圖中工作，請使用 () 的反斜線字元，將雙引號 ( ") \\ 。 
+> 如果您在程式碼視圖中工作，請使用反斜線字元 () ，將雙引號 ( ") \\ 。 
 > 例如，當您將運算式序列化為 JSON 字串時，您必須使用逸出字元。 
-> 不過，如果您是在邏輯應用程式設計工具或運算式編輯器中工作，則不需要將雙引號轉義，因為會自動將反斜線字元新增至基礎定義，例如：
+> 但是，如果您是在邏輯應用程式設計工具或運算式編輯器中工作，就不需要將雙引號轉義，因為反斜線字元會自動加入基礎定義中，例如：
 > 
 > * 程式碼檢視：`xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
 >
@@ -4869,11 +4869,11 @@ xpath('<xml>', '<xpath>')
 
 *範例9*
 
-在範例8之後，此範例會使用 XPath 運算式 `'string(/*[name()="file"]/*[name()="location"])'` 來尋找節點中的值 `<location></location>` ：
+在範例8之後，此範例會使用 XPath 運算式， `'string(/*[name()="file"]/*[name()="location"])'` 以找出節點中的值 `<location></location>` ：
 
 `xpath(xml(body('Http')), 'string(/*[name()="file"]/*[name()="location"])')`
 
-結果如下：`Paris`
+結果如下： `Paris`
 
 ## <a name="next-steps"></a>後續步驟
 

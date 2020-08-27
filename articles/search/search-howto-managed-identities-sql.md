@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 321c13e88cb09c7078a169c3e1666cf781ec7787
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8dabf69af8628bb0b168bfea94af5333df341423
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553133"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924124"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>使用受控識別 (預覽，設定與 Azure SQL Database 的索引子連接) 
 
@@ -44,7 +44,7 @@ ms.locfileid: "88553133"
 
 在下一個步驟中連線到資料庫時，您將必須使用具有資料庫系統管理員存取權的 Azure Active Directory (Azure AD) 帳戶連線，才能授與您的搜尋服務存取資料庫的權限。
 
-依照[這裡](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) \(英文\) 的指示，將資料庫的系統管理員存取權授與您的 Azure AD 帳戶。
+依照[這裡](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-database) \(英文\) 的指示，將資料庫的系統管理員存取權授與您的 Azure AD 帳戶。
 
 ### <a name="3---assign-the-search-service-permissions"></a>3 - 指派搜尋服務權限
 
@@ -97,9 +97,9 @@ ms.locfileid: "88553133"
 
 ### <a name="5---create-the-data-source"></a>5 - 建立資料來源
 
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 和受控識別連接字串來編制 Azure SQL Database 的資料索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
+[REST API](/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](/rest/api/searchservice/create-data-source) 和受控識別連接字串來編制 Azure SQL Database 的資料索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
 
-使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)建立資料來源時，資料來源必須具有下列必要屬性：
+使用 [REST API](/rest/api/searchservice/create-data-source)建立資料來源時，資料來源必須具有下列必要屬性：
 
 * **名稱**是搜尋服務中資料來源的唯一名稱。
 * **type** 是 `azuresql`
@@ -109,7 +109,7 @@ ms.locfileid: "88553133"
         * *初始類別目錄|資料庫=**資料庫名稱**;ResourceId=/訂用帳戶/**您的訂用帳戶識別碼**/resourceGroups/**您的資源群組名稱**/providers/Microsoft.Sql/servers/**SQL Server 名稱**/;連線逾時=**連線逾時時間長度**;*
 * **container** 指定您想要編制索引的資料表或檢視表的名稱。
 
-如何使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) \(機器翻譯\) 建立 Azure SQL 資料來源物件的範例：
+如何使用 [REST API](/rest/api/searchservice/create-data-source) \(機器翻譯\) 建立 Azure SQL 資料來源物件的範例：
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -144,7 +144,7 @@ api-key: [admin key]
 }
 ```
 
-如需建立索引的詳細資訊，請參閱[建立索引](https://docs.microsoft.com/rest/api/searchservice/create-index)
+如需建立索引的詳細資訊，請參閱[建立索引](/rest/api/searchservice/create-index)
 
 ### <a name="7---create-the-indexer"></a>7 - 建立索引子
 
@@ -169,13 +169,13 @@ api-key: [admin key]
 
 這個索引子每隔兩小時就會執行一次 (已將排程間隔設為 "PT2H")。 若每隔 30 分鐘就要執行索引子，可將間隔設為 "PT30M"。 支援的最短間隔為 5 分鐘。 排程為選擇性 - 如果省略，索引子只會在建立時執行一次。 不過，您隨時都可依需求執行索引子。   
 
-如需建立索引子 API 的詳細資訊，請參閱 [建立索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
+如需建立索引子 API 的詳細資訊，請參閱 [建立索引子](/rest/api/searchservice/create-indexer)。
 
 如需有關定義索引子排程的詳細資訊，請參閱[如何排程 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您在索引子嘗試連線到資料來源時收到錯誤，指出不允許用戶端存取伺服器，請參閱[常見的索引子錯誤](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting) \(部分機器翻譯\)。
+如果您在索引子嘗試連線到資料來源時收到錯誤，指出不允許用戶端存取伺服器，請參閱[常見的索引子錯誤](./search-indexer-troubleshooting.md) \(部分機器翻譯\)。
 
 ## <a name="see-also"></a>另請參閱
 

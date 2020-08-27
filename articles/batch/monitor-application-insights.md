@@ -2,13 +2,14 @@
 title: 使用 Azure Application Insights 來監視 Batch
 description: 了解如何使用 Azure Application Insights 程式庫檢測 Azure Batch .NET 應用程式。
 ms.topic: how-to
+ms.custom: devx-track-csharp
 ms.date: 04/05/2018
-ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: d06e2b61725f05d025acd8a2995ea041f138ae4f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723607"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933557"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>使用 Application Insights 監視 Azure Batch .NET 應用程式並進行偵錯
 

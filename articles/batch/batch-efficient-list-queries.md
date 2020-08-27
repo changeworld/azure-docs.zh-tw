@@ -3,24 +3,24 @@ title: 設計有效率的清單查詢
 description: 藉由在要求集區、作業、工作和計算節點等 Batch 資源的資訊時篩選查詢，以提高效能。
 ms.topic: how-to
 ms.date: 06/18/2020
-ms.custom: seodec18
-ms.openlocfilehash: bcf99dbc55d708af70a28155a3f98c20003e51f7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 3a767cc8ae3c8c48e1e40e0735c33fa807ba0015
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960600"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933509"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>建立查詢以便有效率地列出 Batch 資源
 
 幾乎所有 Batch 應用程式都必須執行某種類型的監視或其他查詢 Batch 服務的作業，並且通常是定期執行。 例如，若要判斷作業中是否有任何剩餘的已排入佇列的工作，您必須取得作業內每項工作的資料。 若要判斷集區中節點的狀態，您必須取得集區中每個節點的資料。 這篇文章說明如何以最有效率的方式執行這類查詢。
 
-當您使用[Batch .net](/dotnet/api/microsoft.azure.batch)程式庫查詢作業、工作、計算節點和其他資源時，您可以減少服務所傳回的資料量，藉此提升 Azure Batch 應用程式的效能。
+當您使用 [Batch .net](/dotnet/api/microsoft.azure.batch) 程式庫查詢作業、工作、計算節點和其他資源時，可以減少服務所傳回的資料量，以增加 Azure Batch 應用程式的效能。
 
 > [!NOTE]
-> Batch 服務會針對在作業中計算工作的常見案例，以及計算 Batch 集區中的計算節點，提供 API 支援。 您可以呼叫[取得工作計數](/rest/api/batchservice/job/gettaskcounts)和[列出集區節點計數](/rest/api/batchservice/account/listpoolnodecounts)作業，而非使用這些作業的清單查詢。 這些作業比清單查詢更有效率，但會傳回更多不一定是最新狀態的限制資訊。 如需詳細資訊，請參閱[依狀態計算工作和計算節點](batch-get-resource-counts.md)。
+> Batch 服務會針對計算作業中工作的常見案例，以及計算 Batch 集區中的計算節點，提供 API 支援。 您可以呼叫[取得工作計數](/rest/api/batchservice/job/gettaskcounts)和[列出集區節點計數](/rest/api/batchservice/account/listpoolnodecounts)作業，而非使用這些作業的清單查詢。 這些作業比清單查詢更有效率，但傳回的資訊可能不一定是最新的。 如需詳細資訊，請參閱 [依狀態計算工作和計算節點](batch-get-resource-counts.md)。
 
-## <a name="specify-a-detail-level"></a>指定詳細等級
+## <a name="specify-a-detail-level"></a>指定詳細資料層級
 
 在生產用 Batch 應用程式中，作業、工作和計算節點等實體的數量可能有數千個。 當您要求這些資源的資訊時，可能會有大量資料必須從 Batch 服務「傳送」到每個查詢上的應用程式。 透過限制項目數量及查詢所傳回的資訊類型，您可以加速查詢，因而提高應用程式的效能。
 
@@ -57,7 +57,7 @@ IPagedEnumerable<CloudTask> completedTasks =
 
 ### <a name="filter"></a>Filter
 
-篩選字串是可減少傳回的項目數的運算式。 例如，您可以只列出作業的執行中工作，或僅列出已準備好執行工作的計算節點。
+篩選字串是可減少傳回的項目數的運算式。 例如，您可以只列出工作的執行中工作，或只列出準備好執行工作的計算節點。
 
 篩選字串包含一個或多個運算式，而運算式由屬性名稱、運算子和值構成。 可指定的屬性及每個屬性支援的運算子，取決於您查詢的每個實體類型。  多個運算式可以透過邏輯運算子 `and` 和 `or` 結合。
 
@@ -65,13 +65,13 @@ IPagedEnumerable<CloudTask> completedTasks =
 
 ### <a name="select"></a>選取
 
-選取字串限制每個項目傳回的屬性值。 您可以指定以逗號分隔的屬性名稱清單，而且只會針對查詢結果中的專案傳回那些屬性值。您可以為所查詢的實體類型指定任何屬性。
+選取字串限制每個項目傳回的屬性值。 您可以指定以逗號分隔之屬性名稱的清單，而且只會傳回查詢結果中專案的屬性值。您可以針對您要查詢的實體類型指定任何屬性。
 
 此範例選取字串會指定應該針對每個工作只傳回三個屬性： `id, state, stateTransitionTime`。
 
 ### <a name="expand"></a>展開
 
-展開字串減少取得某些資訊所需的 API 呼叫次數。 當您使用展開字串時，可以透過單一 API 呼叫取得每個項目的相關詳細資訊。 您不需要先取得實體清單，然後要求清單中每個專案的資訊，而是在單一 API 呼叫中使用展開字串來取得相同的資訊，藉由減少 API 呼叫來協助改善效能。
+展開字串減少取得某些資訊所需的 API 呼叫次數。 當您使用展開字串時，可以透過單一 API 呼叫取得每個項目的相關詳細資訊。 您可以使用展開字串在單一 API 呼叫中取得相同的資訊，而不是先取得實體清單，然後針對清單中的每個專案要求資訊，藉由減少 API 呼叫來協助提升效能。
 
 與選取字串相似，展開字串可以控制清單查詢結果中是否包含特定資料。 當需要所有屬性但未指定選取字串時， *必須* 使用展開字串來取得統計資料資訊。 如果使用選取字串來取得屬性子集，則可以在選取字串中指定 `stats` ，不需要指定展開字串。
 
@@ -84,7 +84,7 @@ IPagedEnumerable<CloudTask> completedTasks =
 
 ### <a name="rules-for-filter-select-and-expand-strings"></a>篩選、選取和展開字串的規則
 
-- [篩選]、[選取] 和 [展開字串] 中的屬性名稱應該會如同在[BATCH REST](/rest/api/batchservice/) API 中一樣出現，即使您使用[batch .net](/dotnet/api/microsoft.azure.batch)或其他其中一個 batch sdk 也一樣。
+- 篩選、選取和展開字串中的屬性名稱應該會像在 [BATCH REST](/rest/api/batchservice/) API 中一樣地出現，即使您使用 [batch .net](/dotnet/api/microsoft.azure.batch) 或其中一個其他 Batch sdk 也一樣。
 - 所有屬性名稱都會區分大小寫，但屬性值不會區分大小寫。
 - 日期/時間字串有兩種格式，開頭必須加上 `DateTime`。
   
@@ -97,9 +97,9 @@ IPagedEnumerable<CloudTask> completedTasks =
 
 在 [Batch .NET](/dotnet/api/microsoft.azure.batch) API 內，[ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) 類別用來提供篩選、選取和展開字串給清單作業。 ODataDetailLevel 物件有三個公用字串屬性，可以在建構函式中指定或是直接在物件上設定。 然後您可以將 ODataDetailLevel 物件當作參數，傳遞到各種清單作業，例如 [ListPools](/dotnet/api/microsoft.azure.batch.pooloperations)、[ListJobs](/dotnet/api/microsoft.azure.batch.joboperations) 和 [ListTasks](/dotnet/api/microsoft.azure.batch.joboperations)。
 
-- [ODATADetailLevel. odatadetaillevel.filterclause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause)：限制傳回的專案數。
-- [ODATADetailLevel. SelectClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause)：指定隨著每個專案一起傳回的屬性值。
-- [ODATADetailLevel. ExpandClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.expandclause)：取得單一 API 呼叫中所有專案的資料，而不是針對每個專案個別呼叫。
+- [ODATADetailLevel. >odatadetaillevel.filterclause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause)：限制傳回的專案數。
+- [ODATADetailLevel. >odatadetaillevel.selectclause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause)：指定要與每個專案一起傳回的屬性值。
+- [ODATADetailLevel. >expandclause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.expandclause)：在單一 API 呼叫中取出所有專案的資料，而不是針對每個專案進行個別呼叫。
 
 下列程式碼片段使用 Batch .NET API，有效率地向 Batch 服務查詢一組特定集區的統計資料。 在此案例中，Batch 使用者具有測試與生產的集區。 這些測試集區識別碼前面會加上 "test"，而生產集區識別碼則會加上 "prod"。 在程式碼片段中，「myBatchClient」  是適當初始化的 [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) 類別的執行個體。
 
@@ -139,7 +139,7 @@ List<CloudPool> testPools =
 ### <a name="mappings-for-filter-strings"></a>篩選字串的對應
 
 - **.NET 清單方法**：此欄中的每個 .NET API 方法都接受 [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) 物件作為參數。
-- **REST 清單要求**：此資料行的每個 REST API 頁面都連結至一個資料表，其中指定「篩選」字串中允許的屬性和作業。 當您建立[ODATADetailLevel odatadetaillevel.filterclause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause)字串時，會使用這些屬性名稱和作業。
+- **REST 清單要求**：此資料行的每個 REST API 頁面都連結至一個資料表，其中指定「篩選」字串中允許的屬性和作業。 當您建立 [ODATADetailLevel. >odatadetaillevel.filterclause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause) 字串時，會使用這些屬性名稱和作業。
 
 | .NET 清單方法 | REST 清單要求 |
 | --- | --- |
@@ -157,7 +157,7 @@ List<CloudPool> testPools =
 ### <a name="mappings-for-select-strings"></a>選取字串的對應
 
 - **Batch .NET 類型**：Batch .NET API 類型。
-- **REST API 實體**：此資料行中的每個頁面包含一個或多個資料表，其中列出類型的 REST API 屬性名稱。 建構「選取」  字串時會使用這些屬性名稱。 當您建立[ODATADetailLevel SelectClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause)字串時，會使用這些相同的屬性名稱。
+- **REST API 實體**：此資料行中的每個頁面包含一個或多個資料表，其中列出類型的 REST API 屬性名稱。 建構「選取」  字串時會使用這些屬性名稱。 當您建立 [ODATADetailLevel. >odatadetaillevel.selectclause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause) 字串時，會使用這些相同的屬性名稱。
 
 | Batch .NET types | REST API entities |
 | --- | --- |
@@ -197,7 +197,7 @@ List<CloudPool> testPools =
 
 ### <a name="efficient-list-queries-code-sample"></a>有效率的清單查詢程式碼範例
 
-GitHub 上的[EfficientListQueries](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries)範例專案會顯示有效率的清單查詢如何影響應用程式的效能。 這個 C# 主控台應用程式會建立並將大量工作加入至作業。 然後，其會對 [JobOperations.ListTasks](/dotnet/api/microsoft.azure.batch.joboperations) 方法進行多個呼叫，並傳遞設定了不同屬性值的 [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) 物件，以變更要傳回的資料量。 它會產生類似下列的輸出：
+GitHub 上的 [EfficientListQueries](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries) 範例專案會顯示有效的清單查詢如何影響應用程式的效能。 這個 C# 主控台應用程式會建立並將大量工作加入至作業。 然後，其會對 [JobOperations.ListTasks](/dotnet/api/microsoft.azure.batch.joboperations) 方法進行多個呼叫，並傳遞設定了不同屬性值的 [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) 物件，以變更要傳回的資料量。 它會產生類似下列的輸出：
 
 ```
 Adding 5000 tasks to job jobEffQuery...
@@ -217,7 +217,7 @@ Sample complete, hit ENTER to continue...
 
 ### <a name="batchmetrics-library-and-code-sample"></a>BatchMetrics 程式庫和程式碼範例
 
-除了上述的 EfficientListQueries 程式碼範例， [BatchMetrics](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/BatchMetrics)範例專案也會示範如何使用 Batch API 有效率地監視 Azure Batch 作業進度。
+除了上述的 EfficientListQueries 程式碼範例， [BatchMetrics](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/BatchMetrics) 範例專案也會示範如何使用 Batch API 有效率地監視 Azure Batch 作業進度。
 
 [BatchMetrics](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/BatchMetrics) 範例包含可併入自己專案的 .NET 類別庫專案，以及用來運作和示範如何使用程式庫的簡單命令列程式。
 
@@ -240,8 +240,8 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何[使用並行節點工作，將 Azure Batch 計算資源使用量最大化](batch-parallel-node-tasks.md)。 某些類型的工作負載可受益于在較大（但較少）計算節點上執行平行作業。 如需這類案例的詳細資訊，請查看 [範例案例](batch-parallel-node-tasks.md#example-scenario) 。
-- 瞭解如何藉[由依狀態計算工作和節點來監視 Batch 解決方案](batch-get-resource-counts.md)
+- 瞭解如何 [使用並行節點工作最大化 Azure Batch 計算資源使用量](batch-parallel-node-tasks.md)。 某些類型的工作負載可受益于在較大的 (上執行平行工作，但) 的計算節點較少。 如需這類案例的詳細資訊，請查看 [範例案例](batch-parallel-node-tasks.md#example-scenario) 。
+- 瞭解如何藉 [由依狀態計算工作和節點來監視 Batch 解決方案](batch-get-resource-counts.md)
 
 
 [api_net]: /dotnet/api/microsoft.azure.batch

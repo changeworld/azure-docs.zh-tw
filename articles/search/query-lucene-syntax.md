@@ -19,19 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 088f3c78e0840ca435d70d6844b0eb932a07ccb7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891090"
+ms.locfileid: "88923444"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的 Lucene 查詢語法
 
 您可以根據特殊查詢形式的豐富 [Lucene 查詢](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 剖析器語法，針對 Azure 認知搜尋撰寫查詢：萬用字元、模糊搜尋、鄰近搜尋、正則運算式為一些範例。 在 Azure 認知搜尋中，大部分的 Lucene 查詢剖析器語法都是 [完整](search-lucene-query-architecture.md)的，但 *範圍搜尋* 的例外狀況是透過運算式在 Azure 認知搜尋中所建立 `$filter` 。 
 
 > [!NOTE]
-> 完整的 Lucene 語法用於[搜尋檔](https://docs.microsoft.com/rest/api/searchservice/search-documents)API 之**搜尋**參數中所傳遞的查詢運算式，而不是與該 api 的[$Filter](search-filters.md)參數所使用的[OData 語法](query-odata-filter-orderby-syntax.md)混淆。 這些不同的語法有自己的規則，可供您用來建立查詢、逸出字元串等等。
+> 完整的 Lucene 語法用於[搜尋檔](/rest/api/searchservice/search-documents)API 之**搜尋**參數中所傳遞的查詢運算式，而不是與該 api 的[$Filter](search-filters.md)參數所使用的[OData 語法](query-odata-filter-orderby-syntax.md)混淆。 這些不同的語法有自己的規則，可供您用來建立查詢、逸出字元串等等。
 
 ## <a name="invoke-full-parsing"></a>叫用完整剖析
 
@@ -60,7 +60,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 }
 ```
 
-如需其他範例，請參閱 [在 Azure 認知搜尋中建立查詢的 Lucene 查詢語法範例](search-query-lucene-examples.md)。 如需有關指定完整查詢參數的詳細資訊，請參閱 [Azure 認知搜尋 REST API&#41;搜尋檔 &#40;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
+如需其他範例，請參閱 [在 Azure 認知搜尋中建立查詢的 Lucene 查詢語法範例](search-query-lucene-examples.md)。 如需有關指定完整查詢參數的詳細資訊，請參閱 [Azure 認知搜尋 REST API&#41;搜尋檔 &#40;](/rest/api/searchservice/Search-Documents)。
 
 > [!NOTE]  
 >  Azure 認知搜尋也支援 [簡單的查詢語法](query-simple-syntax.md)，這是一個簡單且健全的查詢語言，可用於直接關鍵字搜尋。  
@@ -139,7 +139,7 @@ NOT 運算子是負號。 例如， `wifi –luxury` 會搜尋具有 `wifi` 和/
 
 如果您想要將字串視為單一實體評估，請務必將多個字串放在引號中，就此案例而言，即搜尋 `artists` 欄位中的兩個不同藝人。  
 
-`fieldName:searchExpression` 中指定的欄位必須是 `searchable` 欄位。  如需欄位定義中索引屬性使用方式的詳細資訊，請參閱[建立索引](https://docs.microsoft.com/rest/api/searchservice/create-index)。  
+`fieldName:searchExpression` 中指定的欄位必須是 `searchable` 欄位。  如需欄位定義中索引屬性使用方式的詳細資訊，請參閱[建立索引](/rest/api/searchservice/create-index)。  
 
 > [!NOTE]
 > 使用回復搜尋運算式時，您不需要使用 `searchFields` 參數，因為每個回復搜尋運算式都有明確指定的功能變數名稱。 但是， `searchFields` 如果您想要執行查詢，其中某些部分的範圍設定為特定欄位，而且其餘部分可以套用至數個欄位，您仍然可以使用參數。 例如，查詢 `search=genre:jazz NOT history&searchFields=description` 只會比對 `jazz` `genre` 欄位，但會與 `NOT history` `description` 欄位相符。 中提供的功能變數名稱 `fieldName:searchExpression` 一律優先于 `searchFields` 參數，這就是在此範例中，我們不需要包含 `genre` 在參數中的原因 `searchFields` 。
@@ -202,6 +202,6 @@ Azure 認知搜尋針對文字查詢使用以頻率為基礎的評分 ([TF-IDF](
 
 + [簡單搜尋的查詢範例](search-query-simple-examples.md)
 + [完整 Lucene 搜尋的查詢範例](search-query-lucene-examples.md)
-+ [搜尋文件](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [搜尋文件](/rest/api/searchservice/Search-Documents)
 + [篩選和排序的 OData 運算式語法](query-odata-filter-orderby-syntax.md)   
-+ [Azure 認知搜尋中的簡單查詢語法](query-simple-syntax.md)   
++ [Azure 認知搜尋中的簡單查詢語法](query-simple-syntax.md)
