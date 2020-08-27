@@ -3,16 +3,17 @@ title: Azure EA 入口網站系統管理員
 description: 本文將說明系統管理員在 Azure EA 入口網站中完成的一般工作。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/14/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9714b3efe7052b837a83769fe24794a373adbc84
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 764346c7d37e4738992ddf25c11f5ee0913e308d
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245344"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689893"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 入口網站系統管理員
 

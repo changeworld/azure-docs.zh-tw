@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e44de0058af0210ecb42eaa4be8b55d543d66103
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7d94b8604b2f947463dd760ca7baf25f19a15a26
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212808"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642141"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取
 
@@ -188,7 +188,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 
     | 欄位 | 說明 |
     | :---- | :---------- |
-    | **名稱** | 會出現在存取面板上和 Azure 入口網站的應用程式名稱。 |
+    | **名稱** | 會出現在「我的應用程式」上和 Azure 入口網站中的應用程式名稱。 |
     | **內部 URL** | 用於從私用網路內部存取應用程式的 URL。 您可以提供後端伺服器上要發佈的特定路徑，而伺服器的其餘部分則不發佈。 如此一來，您可以在相同的伺服器上將不同網站發佈為不同應用程式，並給予各自的名稱和存取規則。<br><br>如果您發佈路徑，請確定其中包含您的應用程式的所有必要映像、指令碼和樣式表。 例如，如果您的應用程式位於 https:\//yourapp/app 並使用位於 https:\//yourapp/media 的映像，您應該發佈 https:\//yourapp/ 做為路徑。 此內部 URL 不一定是您使用者所看見的登陸頁面。 如需詳細資訊，請參閱[針對發佈應用程式設定自訂的首頁](application-proxy-configure-custom-home-page.md)。 |
     | **外部 URL** | 可讓使用者從網路外部存取應用程式的位址。 如果您不想使用預設的應用程式 Proxy 網域，請閱讀 [Azure AD Application Proxy 中的自訂網域](application-proxy-configure-custom-domain.md)。|
     | **預先驗證** | 應用程式 Proxy 在給予您的應用程式存取權前，用來驗證使用者的方式。<br><br>**Azure Active Directory** - 應用程式 Proxy 會重新導向使用者以使用 Azure AD 登入，進而驗證目錄和應用程式的權限。 建議您將這個選項保持為預設值，讓您可以利用諸如條件式存取以及 Multi-Factor Authentication 等 Azure AD 安全性功能。 利用 Microsoft Cloud Application Security 監視應用程式時需要 **Azure Active Directory**。<br><br>**即時通行** - 使用者不必向 Azure AD 進行驗證即可存取應用程式。 您還是可以在後端設定驗證需求。 |

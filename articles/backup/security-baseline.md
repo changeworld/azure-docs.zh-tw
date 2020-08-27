@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2951d0ee8719ec3b0f195a9abcd1af6f65f2c141
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 7b48ac1621c5c8788a4ecdb9ceb3af78f8e82a37
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761809"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890496"
 ---
 # <a name="azure-security-baseline-for-backup"></a>適用于備份的 Azure 安全性基準
 
@@ -186,7 +186,7 @@ ms.locfileid: "88761809"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
-**指導**方針： Azure 備份提供復原服務保存庫中的內建監視與警示功能。 這些功能不需要任何額外的管理基礎結構即可供使用。 您也可以使用 Azure 監視器來擴大監視和報告的規模。
+**指導**方針： Azure 備份提供復原服務保存庫中的內建監視與警示功能。 您不需要任何額外的管理基礎結構，即可使用這些功能。 您也可以使用 Azure 監視器來擴大監視和報告的規模。
 
 啟用 Azure 活動記錄診斷設定，並將記錄傳送至 Log Analytics 工作區。 在 Log Analytics 中執行查詢，以搜尋詞彙、識別趨勢、分析模式，以及根據可能已針對復原服務保存庫收集的活動記錄資料，提供許多其他見解。
 
@@ -202,7 +202,7 @@ ms.locfileid: "88761809"
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：啟用異常活動的警示
 
-**指導**方針： Azure 備份提供復原服務保存庫中的內建監視與警示功能。 這些功能不需要任何額外的管理基礎結構即可供使用。 您也可以使用 Azure 監視器來擴大監視和報告的規模。
+**指導**方針： Azure 備份提供復原服務保存庫中的內建監視與警示功能。 您不需要任何額外的管理基礎結構，即可使用這些功能。 您也可以使用 Azure 監視器來擴大監視和報告的規模。
 
 警示的主要案例是通知使用者，讓他們可以採取相關動作。 [備份警示] 區段會顯示 Azure 備份服務產生的警示。 這些警示是由服務所定義，而您無法自訂建立任何警示。
 
@@ -426,7 +426,7 @@ ms.locfileid: "88761809"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指導**方針：備份 Azure IaaS vm 時，Azure 備份提供獨立且隔離的備份，以防止意外損毀原始資料。 備份會儲存在復原服務保存庫中，並進行內建的復原點管理。
+**指導**方針：備份 Azure IaaS vm 時，Azure 備份提供獨立且隔離的備份，以防止意外損毀原始資料。 備份會儲存在復原服務保存庫中，其具有內建的復原點管理功能。
 
 針對開發、測試和生產復原服務保存庫，執行個別的訂用帳戶和/或管理群組。 資源應該以 VNet/子網分隔，並適當地標記，並受到 NSG 或 Azure 防火牆的保護。 儲存或處理敏感性資料的資源應該要充分隔離。 針對儲存或處理敏感性資料的虛擬機器，請在不使用時將原則和程式 (的) 將其關閉。
 
@@ -580,7 +580,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 資產探索
 
-**指引**：使用 Azure Resource Graph 來查詢/探索訂用帳戶內的所有資源 (例如計算、儲存體、網路、連接埠及通訊協定等)。  確保您的租用戶中有適當的 (讀取) 權限，並列舉所有 Azure 訂用帳戶以及訂用帳戶內的資源。
+**指導**方針：使用 Azure Resource Graph 來查詢/探索)  (訂用帳戶中) 的計算、儲存體、網路、埠和通訊協定等所有資源 (。  確保您的租用戶中有適當的 (讀取) 權限，並列舉所有 Azure 訂用帳戶以及訂用帳戶內的資源。
 
 雖然可透過 Resource Graph 探索傳統 Azure 資源，但強烈建議您從現在開始建立並使用 Azure Resource Manager 資源。
 
@@ -860,7 +860,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指導**方針： Microsoft Antimalware 會在支援 Azure 服務的基礎主機上啟用 (例如 Azure 備份) ，不過它不會在您的內容上執行。
 
-預先掃描即將上傳至非計算 Azure 資源的任何檔案，例如 App Service、Data Lake Storage、Blob 儲存體等等。
+預先掃描即將上傳至非計算 Azure 資源的任何檔案，例如 App Service、Data Lake Storage 和 Blob 儲存體。
 
 使用 Azure 資訊安全中心的資料服務威脅偵測來偵測上傳至儲存體帳戶的惡意程式碼。
 

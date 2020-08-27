@@ -3,16 +3,17 @@ title: Azure EA 合約和修訂文件
 description: 本文將說明 Azure EA 合約和修訂文件如何影響您使用 Azure EA 入口網站的方式。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/14/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: a23623112b44edc0bd32f0382ed382193d999394
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 08cc6b7c6edb31d0a983943694ebb1dc55989bca
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243661"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689876"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 合約和修訂文件
 

@@ -1,14 +1,15 @@
 ---
 title: Azure 轉送混合式連接-.NET 中的 Websocket
-description: '撰寫適用于 Azure 轉送混合式連接 Websocket 的 c # 主控台應用程式。'
+description: '針對 Azure 轉送混合式連線 Websocket 撰寫 c # 主控台應用程式。'
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: a6e759b8cda7515faf63834ef15c013e2f075687
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb204a7bf18ed1c88a6d359cc521130fa19a1c82
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317081"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934254"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>在 .NET 中開始使用轉送混合式連線 WebSocket
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]

@@ -3,15 +3,16 @@ title: 檢視 Azure 保留購買和退款交易
 description: 了解如何查看 Azure 保留購買和退款交易。
 author: yashesvi
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 988dd057834f6eb19dfd75a868c2893aefb61435
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d9e5269468f7cd4571e7ae686af7f1ef159b4ef3
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290770"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88681697"
 ---
 # <a name="view-reservation-purchase-and-refund-transactions"></a>檢視保留購買和退款交易
 

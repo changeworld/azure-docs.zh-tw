@@ -1,27 +1,27 @@
 ---
-title: .NET 程式設計指南-Azure 事件中樞（舊版） |Microsoft Docs
+title: .NET 程式設計手冊-Azure 事件中樞 (舊版) |Microsoft Docs
 description: 本文提供有關如何使用 Azure .NET SDK 為「Azure 事件中樞」撰寫程式碼的資訊。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0186357ec7f0f8541acf33c524a57cdb8e8dc55c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5be30d7786fa094a55badb7b38ff2116a6013b6a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074845"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934016"
 ---
-# <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中樞的 .NET 程式設計指南（EventHubs 套件的舊版）
+# <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中樞 (舊版 EventHubs 套件的 .NET 程式設計指南) 
 本文會討論一些使用 Azure 事件中樞來撰寫程式碼的常見案例。 它假設使用者對事件中樞已有初步了解。 如需事件中樞的概念概觀，請參閱 [事件中樞概觀](./event-hubs-about.md)。
 
 > [!WARNING]
-> 本指南適用于舊的**EventHubs**套件。 我們建議您[遷移](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)程式碼，以使用最新的[EventHubs](get-started-dotnet-standard-send-v2.md)套件。  
+> 本指南適用于 **EventHubs** 套件的舊版本。 建議您 [遷移](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md) 程式碼以使用最新的 [EventHubs](event-hubs-dotnet-standard-getstarted-send.md) 套件。  
 
 
 ## <a name="event-publishers"></a>事件發佈者
 
 您可以使用 HTTP POST 或透過 AMQP 1.0 連線，將事件傳送到事件中樞。 使用選擇取決於應用的特定案例。 AMQP 1.0 連線是以服務匯流排中的代理連線形式計量，其較適合經常出現大量訊息且需要低延遲的案例，因為它們可提供持續的傳訊通道。
 
-在使用 .NET 受控 API 時，用於將資料發佈到事件中樞的主要建構是 [EventHubClient][] 和 [EventData][] 類別。 [EventHubClient][]提供將事件傳送至事件中樞的 AMQP 通道。 [EventData][] 類別代表事件，可用來將訊息發佈到事件中樞。 此類別包含關於事件的主體、一些中繼資料（屬性）和標頭資訊（SystemProperties）。 當 [EventData][] 物件通過事件中樞時，系統會為它新增其他屬性。
+在使用 .NET 受控 API 時，用於將資料發佈到事件中樞的主要建構是 [EventHubClient][] 和 [EventData][] 類別。 [>eventhubclient][] 會提供將事件傳送到事件中樞的 AMQP 通道。 [EventData][] 類別代表事件，可用來將訊息發佈到事件中樞。 這個類別包含主體、某些中繼資料 (屬性) 和標頭資訊 (SystemProperties 有關事件的) 。 當 [EventData][] 物件通過事件中樞時，系統會為它新增其他屬性。
 
 ## <a name="get-started"></a>開始使用
 [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet 套件中會提供支援事件中樞的 .NET 類別。 您可以使用 Visual Studio 方案總管，或 Visual Studio 中的[套件管理員主控台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)進行安裝。 若要這樣做，請在 [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) 視窗中發出下列命令：
@@ -56,7 +56,7 @@ eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuild
 
 ## <a name="event-serialization"></a>事件序列化
 
-[EventData][] 類別具有[兩個多載建構函式](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor)，它們會採用代表事件資料承載的各種參數 (位元組或位元組陣列)。 在搭配使用 JSON 和 [EventData][]時，您可以使用 **Encoding.UTF8.GetBytes()** 來擷取 JSON 編碼字串的位元組陣列。 例如:
+[EventData][] 類別具有[兩個多載建構函式](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor)，它們會採用代表事件資料承載的各種參數 (位元組或位元組陣列)。 在搭配使用 JSON 和 [EventData][]時，您可以使用 **Encoding.UTF8.GetBytes()** 來擷取 JSON 編碼字串的位元組陣列。 例如：
 
 ```csharp
 for (var i = 0; i < numMessagesToSend; i++)
@@ -70,7 +70,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 ## <a name="partition-key"></a>分割區索引鍵
 
 > [!NOTE]
-> 如果您不熟悉分割區，請參閱[這篇文章](event-hubs-features.md#partitions)。 
+> 如果您不熟悉資料分割，請參閱 [這篇文章](event-hubs-features.md#partitions)。 
 
 傳送事件資料時，您可以指定雜湊值，以產生分割區指派。 您可使用 [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) 屬性來指定分割區。 不過，使用分割區的決策暗示可用性與一致性之間的選擇。 
 
@@ -108,10 +108,10 @@ for (var i = 0; i < numMessagesToSend; i++)
 * [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
-若要啟動事件處理，請具現化[EventProcessorHost][]，並為事件中樞提供適當的參數。 例如:
+若要啟動事件處理，請具現化 [EventProcessorHost][]，並為您的事件中樞提供適當的參數。 例如：
 
 > [!NOTE]
-> EventProcessorHost 及其相關類別會在**EventHubs**中提供。 依照本文中的指示[，或在](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package)[[套件管理員主控台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)] 視窗中發出下列命令，將套件新增至您的 Visual Studio 專案： `Install-Package Microsoft.Azure.EventHubs.Processor` 。
+> EventProcessorHost 和其相關類別是在 **EventHubs. 處理器** 套件中提供。 遵循本文中的指示[，或在](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package)[封裝管理員主控台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)視窗中發出下列命令，將套件新增至您的 Visual Studio 專案： `Install-Package Microsoft.Azure.EventHubs.Processor` 。
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(
@@ -122,7 +122,7 @@ var eventProcessorHost = new EventProcessorHost(
         StorageContainerName);
 ```
 
-然後，呼叫[RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync)以向執行時間註冊[IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)執行：
+然後，呼叫 [>registereventprocessorasync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync) 以向執行時間註冊您的 [>ieventprocessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 執行：
 
 ```csharp
 await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
@@ -138,10 +138,10 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 
 ## <a name="publisher-revocation"></a>發佈者撤銷
 
-除了事件處理器主機的 advanced 執行時間功能之外，事件中樞服務也會啟用[發行者撤銷](/rest/api/eventhub/revoke-publisher)，以封鎖特定發行者將事件傳送至事件中樞。 當發行者權杖遭到洩露，或軟體更新造成發佈者出現不當行為時，這些功能很有用。 在這些情況下，您可以封鎖發佈者 SAS 權杖中的發佈者身分識別，避免它們發佈事件。
+除了事件處理器主機的 advanced 執行時間功能，事件中樞服務還會啟用 [發行者撤銷](/rest/api/eventhub/revoke-publisher) ，以防止特定發行者將事件傳送至事件中樞。 當發行者權杖遭到洩露，或軟體更新造成發佈者出現不當行為時，這些功能很有用。 在這些情況下，您可以封鎖發佈者 SAS 權杖中的發佈者身分識別，避免它們發佈事件。
 
 > [!NOTE]
-> 目前，只有 REST API 支援這項功能（[發行者撤銷](/rest/api/eventhub/revoke-publisher)）。
+> 目前只有 REST API 支援這項功能 ([發行者撤銷](/rest/api/eventhub/revoke-publisher)) 。
 
 如需有關發佈者撤銷，以及如何以發佈者身分傳送到事件中樞的詳細資訊，請參閱[事件中樞大規模安全發佈](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab)範例。
 

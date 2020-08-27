@@ -10,18 +10,18 @@ ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: 675ddf073393afde6ac8d08a65b40da11d90d3ea
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9b89c0a4135bf595991439dd47e57a870ea2b0d1
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026656"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855069"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>快速入門：使用 ARM 範本，建立 Ubuntu 資料科學虛擬機器
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-此快速入門將說明如何使用 Azure Resource Manager 範本 (ARM 範本)，建立 Ubuntu 18.04 資料科學虛擬機器。 資料科學虛擬機器是雲端虛擬機器，預先載入了一套資料科學，以及機器學習架構與工具。 當部署了支援 GPU 的計算資源之後，所有工具與程式庫將會設定為使用該 GPU。 
+此快速入門將說明如何使用 Azure Resource Manager 範本 (ARM 範本)，建立 Ubuntu 18.04 資料科學虛擬機器。 資料科學虛擬機器是雲端虛擬機器，預先載入了一套資料科學，以及機器學習架構與工具。 當部署了支援 GPU 的計算資源之後，所有工具與程式庫將會設定為使用該 GPU。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -37,12 +37,17 @@ ms.locfileid: "86026656"
 
 ## <a name="review-the-template"></a>檢閱範本
 
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/)。 本文的完整範本太長，所以無法盡顯於此處。 若要檢視完整的範本，請參閱 [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json)。 以下是定義 DSVM 特性的部分內容：
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/)。
 
-:::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json" range="235-276":::
+:::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json":::
 
 範本中會定義下列資源：
 
+* [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+* [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
 * [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)：建立雲端虛擬機器。 此範本已將虛擬機器設定為執行 Ubuntu 18.04 的資料科學虛擬機器。
 
 ## <a name="deploy-the-template"></a>部署範本
@@ -74,7 +79,7 @@ read
 
 若要查看您的資料科學虛擬機器：
 
-1. 移至 https://portal.azure.com 。
+1. 移至 [Azure 入口網站](https://portal.azure.com)
 1. 登入。
 1. 選擇您剛才所建立的資源群組。
 

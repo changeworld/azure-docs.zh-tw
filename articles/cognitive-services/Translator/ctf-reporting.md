@@ -1,5 +1,5 @@
 ---
-title: 協同作業翻譯架構 (CTF) 報告-Translator
+title: 協同作業轉譯架構 (CTF) 報告-Translator
 titleSuffix: Azure Cognitive Services
 description: 如何使用 Collaborative Translation Framework (CTF) 報告。
 services: cognitive-services
@@ -10,19 +10,20 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: cc06f73aba216f37db570bb33b9f897fabb16cbf
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 68b0de40940fa75dd4eb4e1572405f31ce1c22b8
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244120"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934373"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>如何使用 Collaborative Translation Framework (CTF) 報告
 
 > [!NOTE]
-> 此方法已被取代。 在 Translator 的 v3.0 中不提供此功能。
+> 此方法已被取代。 它無法在 v3.0 的轉換程式中使用。
 > 
->  (CTF) 的共同作業翻譯架構（先前適用于翻譯工具）已于2018年2月1日淘汰。 AddTranslation 和 AddTranslationArray 函式可讓使用者透過 Collaborative Translation Framework 啟用校正功能。 在 2018 年 1 月 31 日之後，這兩個函式便不接受新的句子提交，而使用者則會收到錯誤訊息。 這些函式已淘汰，將不會被取代。
+> 從2018年2月1日起，CTF) 的共同作業翻譯架構 (，之前適用于 v2.0 的翻譯工具。 AddTranslation 和 AddTranslationArray 函式可讓使用者透過 Collaborative Translation Framework 啟用校正功能。 在 2018 年 1 月 31 日之後，這兩個函式便不接受新的句子提交，而使用者則會收到錯誤訊息。 這些函式已淘汰且不會被取代。
 
 「Collaborative Translation Framework (CTF) 報告 API」會傳回統計資料和 CTF 存放區中的實際內容。 此 API 與 GetTranslations() 方法不同，因為它：
 * 只會從您的帳戶 (appId 或 Azure Marketplace 帳戶) 傳回翻譯後的內容及其總計數。
@@ -76,7 +77,7 @@ CTF 報告 API 的端點是 https://api.microsofttranslator.com/v2/beta/ctfrepor
 | appId | **必要** 如果使用 Authorization 標頭，請將 appid 欄位保留空白，否則請指定一個包含 "Bearer" + " " + 存取權杖的字串。|
 | uriPrefix | **選擇性** 一個包含翻譯 URI 前置詞的字串。|
 | 從 | **選擇性** 一個代表翻譯文字之語言代碼的字串。 |
-| to | **選擇性** 一個代表文字之目標翻譯語言代碼的字串。|
+| 至 | **選擇性** 一個代表文字之目標翻譯語言代碼的字串。|
 | minRating| **選擇性** 一個代表翻譯後文字之品質評分下限的整數值。 有效值介於 -10 到 10 之間。 預設值為 1。|
 | maxRating| **選擇性** 一個代表翻譯後文字之品質評分上限的整數值。 有效值介於 -10 到 10 之間。 預設值為 1。|
 | user | **選擇性** 一個可根據提交項目建立者來篩選結果的字串。 |
@@ -95,19 +96,19 @@ CTF 報告 API 的端點是 https://api.microsofttranslator.com/v2/beta/ctfrepor
 
 | 欄位 | 描述 |
 |:---|:---|
-| 計數| 所擷取的結果數目|
+| Count| 所擷取的結果數目|
 | 寄件者 | 來源語言|
 | 分級| 提交者在 AddTranslation() 方法呼叫中套用的評分|
 | 收件者| 目標語言|
 | Uri| AddTranslation() 方法呼叫中套用的 URI|
-| 使用者| 使用者名稱|
+| User| 使用者名稱|
 
 **例外狀況**
 
 | 例外狀況 | 訊息 | 條件 |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | '**maxDateUtc**' 參數必須大於或等於 '**minDateUtc**'。| **maxDateUtc** 參數的值小於 **minDateUtc** 參數的值。|
-| TranslateApiException | IP 超出配額。| <ul><li>已達到每分鐘的要求數目限制。</li><li>要求大小維持限制在 10000 個字元。</li><li>每小時和每日配額限制 Translator 將接受的字元數。</li></ul>|
+| TranslateApiException | IP 超出配額。| <ul><li>已達到每分鐘的要求數目限制。</li><li>要求大小維持限制在 10000 個字元。</li><li>每小時和每日配額會限制翻譯工具將接受的字元數。</li></ul>|
 | TranslateApiException | AppId 超出配額。| 應用程式識別碼超出每小時或每日配額。|
 
 > [!NOTE]
@@ -147,10 +148,10 @@ CTF 報告 API 的端點是 https://api.microsofttranslator.com/v2/beta/ctfrepor
 | appId | **必要** 如果使用 Authorization 標頭，請將 appid 欄位保留空白，否則請指定一個包含 "Bearer" + " " + 存取權杖的字串。|
 | uriPrefix| **選擇性** 一個包含翻譯 URI 前置詞的字串。|
 | 從| **選擇性** 一個代表翻譯文字之語言代碼的字串。|
-| to| **選擇性** 一個代表文字之目標翻譯語言代碼的字串。|
+| 至| **選擇性** 一個代表文字之目標翻譯語言代碼的字串。|
 | minRating| **選擇性** 一個代表翻譯後文字之品質評分下限的整數值。 有效值介於 -10 到 10 之間。 預設值為 1。|
 | maxRating| **選擇性** 一個代表翻譯後文字之品質評分上限的整數值。 有效值介於 -10 到 10 之間。 預設值為 1。|
-| user| **選擇性.用來根據提交的建立者來篩選結果的字串**|
+| user| **選。用來根據提交的建立者來篩選結果的字串。**|
 | category| **選擇性** 一個包含翻譯之分類或領域的字串。 此參數僅支援預設選項 general。|
 | minDateUtc| **選擇性** 您想要開始擷取翻譯的日期。 此日期必須是 UTC 格式。|
 | maxDateUtc| **選擇性** 您想要停止擷取翻譯的日期。 此日期必須是 UTC 格式。|
@@ -173,14 +174,14 @@ CTF 報告 API 的端點是 https://api.microsofttranslator.com/v2/beta/ctfrepor
 |收件者|    目標語言|
 |TranslatedText|    AddTranslation() 方法呼叫中所提交的翻譯|
 |Uri|   AddTranslation() 方法呼叫中套用的 URI|
-|使用者   |使用者名稱|
+|User   |使用者名稱|
 
 **例外狀況**
 
 | 例外狀況 | 訊息 | 條件 |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | '**maxDateUtc**' 參數必須大於或等於 '**minDateUtc**'。| **maxDateUtc** 參數的值小於 **minDateUtc** 參數的值。|
-| TranslateApiException | IP 超出配額。| <ul><li>已達到每分鐘的要求數目限制。</li><li>要求大小維持限制在 10000 個字元。</li><li>每小時和每日配額限制 Translator 將接受的字元數。</li></ul>|
+| TranslateApiException | IP 超出配額。| <ul><li>已達到每分鐘的要求數目限制。</li><li>要求大小維持限制在 10000 個字元。</li><li>每小時和每日配額會限制翻譯工具將接受的字元數。</li></ul>|
 | TranslateApiException | AppId 超出配額。| 應用程式識別碼超出每小時或每日配額。|
 
 > [!NOTE]

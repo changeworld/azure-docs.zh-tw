@@ -4,15 +4,16 @@ description: 了解保留折扣套用至執行中 Azure SQL Database 的方式�
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: 9398a68d384eb7acba15fb64e27d7a2672006bc6
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 1df60eedfb776164be7e78f2994027b8d111828b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461284"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88681952"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>保留折扣套用至 Azure SQL Database 的方式
 

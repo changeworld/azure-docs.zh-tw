@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來設定、啟動
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: a0ad08e9fd750166f8df82a1b3a36cecd8f12f27
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: db5e6cc460d320971a4005889dc2c9aa9925a18d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826407"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890326"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>透過 REST API 使用 Azure 備份來備份 Azure VM
 
@@ -23,7 +23,7 @@ ms.locfileid: "88826407"
 
 ### <a name="discover-unprotected-azure-vms"></a>探索未受保護的 Azure VM
 
-首先，保存庫應該能夠識別 Azure VM。 這會使用[重新整理作業](/rest/api/backup/protectioncontainers/refresh) \(英文\) 來觸發。 此為非同步的 *POST* 作業，以確定保存庫會取得目前訂用帳戶中所有受保護 VM 的最新清單，並「快取」它們。 一旦「快取」VM 之後，復原服務將能存取該 VM 並保護它。
+首先，保存庫應該能夠識別 Azure VM。 這會使用[重新整理作業](/rest/api/backup/protectioncontainers/refresh) \(英文\) 來觸發。 這是非同步 *POST*  作業，可確保保存庫取得目前訂用帳戶中所有未受保護 VM 的最新清單，並「快取」。 一旦「快取」VM 之後，復原服務將能存取該 VM 並保護它。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01

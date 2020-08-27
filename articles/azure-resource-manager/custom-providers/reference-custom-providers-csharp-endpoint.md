@@ -2,15 +2,16 @@
 title: '自訂提供者 c # RESTful 端點參考'
 description: '提供 Azure 自訂提供者 c # RESTful 端點的基本參考。 端點是透過 Azure 函數應用程式提供。'
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: b6ecb22cb968e0d963242c8c2d5dd1a6cb24229c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce329e7cd8db73e217162fa0bc1bb433d57e9971
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651172"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935631"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>自訂提供者 c # RESTful 端點參考
 
@@ -18,7 +19,7 @@ ms.locfileid: "75651172"
 
 ## <a name="azure-function-app-restful-endpoint"></a>Azure 函數應用程式 RESTful 端點
 
-下列程式碼適用于 Azure 函數應用程式。 若要瞭解如何設定 Azure 函式應用程式以使用 Azure 自訂提供者，請參閱為[Azure 自訂提供者設定 Azure Functions 的教學](./tutorial-custom-providers-function-setup.md)課程。
+下列程式碼適用于 Azure 函數應用程式。 若要瞭解如何設定 Azure 函數應用程式來使用 Azure 自訂提供者，請參閱 [設定 Azure 自訂提供者 Azure Functions 的教學](./tutorial-custom-providers-function-setup.md)課程。
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -255,7 +256,7 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 自訂資源提供者的總覽](overview.md)
-- [教學課程：建立 Azure 自訂資源提供者並部署自訂資源](./create-custom-provider.md)
+- [Azure 自訂資源提供者總覽](overview.md)
+- [教學課程：建立 Azure 自訂資源提供者和部署自訂資源](./create-custom-provider.md)
 - [如何：將自訂動作新增至 Azure REST API](./custom-providers-action-endpoint-how-to.md)
 - [參考：自訂資源快取參考](proxy-cache-resource-endpoint-reference.md)
