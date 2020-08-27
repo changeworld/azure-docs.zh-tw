@@ -3,16 +3,17 @@ title: Azure 企業版註冊發票
 description: 本文將說明如何管理 Azure 企業發票，並採取相關行動。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/14/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 89b344a4fc97ccc65a123a2892eac998eaf18b28
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 983cf6e7c9596d40f9db6221739af86175c58e87
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244103"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689859"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure 企業版註冊發票
 

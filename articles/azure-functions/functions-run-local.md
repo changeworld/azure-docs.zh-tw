@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: bbdc05d2b5a770791bb81f26a71b9dc3eb7523d5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505711"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929479"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -37,9 +37,9 @@ Azure Functions Core Tools 可讓您使用命令提示字元或終端機，在�
 
 + 1.x**版**：支援版本1.x 的 Azure Functions 執行時間。 這個版本的工具只有在 Windows 電腦上提供支援，並且從 [npm 套件](https://www.npmjs.com/package/azure-functions-core-tools)進行安裝。
 
-除非另有說明，否則本文中的範例適用于3.x 版。
+您只能在指定的電腦上安裝一個版本的 Core Tools。 除非另有說明，否則本文中的範例適用于3.x 版。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 Azure Functions Core Tools 目前相依于使用您的 Azure 帳戶進行驗證的 Azure CLI。 這表示您必須在 [本機安裝 Azure CLI](/cli/azure/install-azure-cli) ，才能從 Azure Functions Core Tools [發佈至 Azure](#publish) 。 
 
@@ -257,20 +257,21 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
   ![透過儲存體總管複製連接字串](./media/functions-run-local/storage-explorer.png)
 
-+ 使用核心工具，並藉由以下其中一個命令從 Azure 下載連接字串：
++ 使用專案根目錄中的核心工具，透過下列其中一個命令從 Azure 下載連接字串：
 
   + 從現有的函數應用程式下載所有設定：
 
     ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
+
   + 取得特定儲存體帳戶的連接字串：
 
     ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    當您尚未登入 Azure 時，系統會提示您這樣做。
+    當您尚未登入 Azure 時，系統會提示您這樣做。 這些命令會覆寫 local.settings.json 檔案的任何現有設定。 
 
 ## <a name="create-a-function"></a><a name="create-func"></a>建立函式
 

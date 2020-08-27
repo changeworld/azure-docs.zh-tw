@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 297c2354e8a56b681230bfe2cedd0d49ddbb5b82
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 97a040ec166894197520b2e3a6dfc720262b7f1c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165714"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691287"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入門：將 Microsoft 身分識別平台登入新增至 ASP.NET Web 應用程式
 在本快速入門中，您將利用程式碼範例了解 ASP.NET Web 應用程式如何從任何 Azure Active Directory (Azure AD) 執行個體登入個人帳戶 (hotmail.com、outlook.com 等) 與公司和學校帳戶。  (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
@@ -159,7 +159,7 @@ public void Configuration(IAppBuilder app)
 > |Where  | 描述 |
 > |---------|---------|
 > | `ClientId`     | 來自註冊於 Azure 入口網站中之應用程式的應用程式識別碼 |
-> | `Authority`    | 供使用者用於驗證的 STS 端點。 通常針對公用雲端為 <https://login.microsoftonline.com/{tenant}/v2.0>，其中 {tenant} 為您租用戶的名稱、您的租用戶識別碼，或 *common* 以參考一般端點 (用於多租用戶應用程式) |
+> | `Authority`    | 供使用者用於驗證的 STS 端點。 通常針對公用雲端為 `https://login.microsoftonline.com/{tenant}/v2.0`，其中 {tenant} 為您租用戶的名稱、您的租用戶識別碼，或 *common* 以參考一般端點 (用於多租用戶應用程式) |
 > | `RedirectUri`  | 在使用者針對 Azure 身分識別平台端點完成驗證之後，會被送往的 URL |
 > | `PostLogoutRedirectUri`     | 在使用者登出之後，會被送往的 URL |
 > | `Scope`     | 所要求之範圍的清單 (以空格分隔) |

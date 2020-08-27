@@ -1,23 +1,24 @@
 ---
 title: Azure Application Insights 中的分散式追蹤 | Microsoft Docs
-description: 提供 Microsoft 透過 OpenCensus 專案中的合作關係，支援分散式追蹤的相關資訊
+description: 透過 OpenCensus 專案中的合作關係，提供 Microsoft 對分散式追蹤的支援相關資訊
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 142daec93724fe4c25fd5c65dd387856dfb582c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5c1e6f3f6c4ee0abe1a25d5a9182f6e4e1a9d0f4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324432"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929222"
 ---
 # <a name="what-is-distributed-tracing"></a>什麼是分散式追蹤？
 
-新式雲端和[微服務](https://azure.com/microservices)架構的推出提供了簡單且獨立部署的服務，可協助降低成本，同時增加可用性和輸送量。 但是雖然這些移動作業讓個別的服務更容易瞭解，但它們也使整體系統更棘手，以及進行 debug。
+新式雲端和 [微服務](https://azure.com/microservices) 架構的推出帶來了簡單、獨立部署的服務，可協助降低成本，同時提高可用性和輸送量。 但是，雖然這些移動讓個別服務的整體理解更容易瞭解，但它們使得整體系統更難進行和 debug 錯。
 
-在整合型架構中，我們已用來以呼叫堆疊進行調試。 呼叫堆疊是很出色的工具，可用來顯示執行的流程 (方法 A 呼叫方法 B，方法 B 呼叫方法 C)，以及有關每個呼叫的詳細資料和參數。 非常適合於在單一程序中執行的單體或服務，但我們如何在呼叫跨越程序界限 (不只限於本機堆疊上的參考) 時進行偵錯？ 
+在整合型架構中，我們已使用呼叫堆疊進行調試。 呼叫堆疊是很出色的工具，可用來顯示執行的流程 (方法 A 呼叫方法 B，方法 B 呼叫方法 C)，以及有關每個呼叫的詳細資料和參數。 非常適合於在單一程序中執行的單體或服務，但我們如何在呼叫跨越程序界限 (不只限於本機堆疊上的參考) 時進行偵錯？ 
 
 這就是分散式追蹤的來源。  
 
@@ -27,11 +28,11 @@ Azure 監視器也提供可彙總許多交易的[應用程式對應](./app-map.m
 
 ## <a name="how-to-enable-distributed-tracing"></a>如何啟用分散式追蹤
 
-在應用程式中啟用跨服務的分散式追蹤，就像將適當的代理程式、SDK 或程式庫新增至每個服務一樣簡單，也就是以服務的實作為基礎來執行。
+在應用程式中啟用跨服務的分散式追蹤，就像將適當的代理程式、SDK 或程式庫新增至每個服務一樣簡單，根據服務的實作為基礎。
 
 ## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>透過自動檢測或 Sdk 啟用 via Application Insights
 
-適用于 .NET、.NET Core、JAVA、Node.js 和 JavaScript 的 Application Insights 代理程式和（或） Sdk 全都以原生方式支援分散式追蹤。 以下可取得安裝和設定每個 Application Insights SDK 的指示：
+適用于 .NET、.NET Core、JAVA、Node.js 和 JavaScript 的 Application Insights 代理程式和（或） Sdk，全都支援以原生方式進行分散式追蹤。 以下可取得安裝和設定每個 Application Insights SDK 的指示：
 
 * [.NET](../learn/quick-monitor-portal.md)
 * [.NET Core](../learn/dotnetcore-quick-start.md)
