@@ -3,12 +3,12 @@ title: 從 VM 窗格備份 SQL Server VM
 description: 在本文中，您將瞭解如何從 VM 窗格備份 Azure 虛擬機器上的 SQL Server 資料庫。
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: 3d44c856d264c784d07b8301fa5605affddd7c02
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4f4ea202ee96e93a621c8dd0025c9ebc8b8d445d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827472"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891652"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>從 VM 窗格備份 SQL Server
 
@@ -17,7 +17,7 @@ ms.locfileid: "88827472"
 - 單一 SQL Server Azure VM：本文中的指示說明如何直接從 VM view 備份 SQL Server VM。
 - 多 SQL Server Azure Vm：您可以設定復原服務保存庫，並設定多個 Vm 的備份。 請依照 [本文中的指示進行該案例](backup-sql-server-database-azure-vms.md) 。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 1. 使用 [支援矩陣](sql-support-matrix.md)驗證您的環境。
 2. 取得 SQL Server VM 的 Azure 備份 [總覽](backup-azure-sql-database.md) 。
@@ -35,7 +35,7 @@ ms.locfileid: "88827472"
     ![SQL Server 備份視圖](./media/backup-sql-server-vm-from-vm-pane/sql-server-backup-view.png)
 
     >[!NOTE]
-    >看不到橫幅嗎？ 只有使用 Azure Marketplace 映射建立 SQL Server Vm 時，才會顯示橫幅。 針對使用 Azure VM 備份保護的 Vm，它會另外顯示。 若是其他映射，您可以如下所述設定[備份。](backup-sql-server-database-azure-vms.md)
+    >看不到橫幅嗎？ 只有使用 Azure Marketplace 映射建立 SQL Server Vm 時，才會顯示橫幅。 此外也會針對使用 Azure VM 備份保護的 Vm 另外顯示。 若是其他映射，您可以如下所述設定[備份。](backup-sql-server-database-azure-vms.md)
 
 2. 輸入復原服務保存庫名稱。 保存庫是用來儲存及管理所有備份的邏輯實體。 如果您建立新的保存庫：
 

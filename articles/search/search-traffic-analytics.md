@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6ab32a2ccb4c7eb79309798c2b53d326723ad6ea
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2a65d31bd7cde0a1f456212a19c06f6b940ce602
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420068"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922727"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>收集搜尋流量分析的遙測資料
 
 搜尋流量分析是一種模式，用來收集有關使用者與 Azure 認知搜尋應用程式互動的遙測資料，例如使用者起始的按一下事件和鍵盤輸入。 您可以使用此資訊來判斷搜尋解決方案的有效性，包括熱門搜尋字詞、點選連結率，以及哪些查詢輸入未產生任何結果。
 
-此模式會相依於 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) ([Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/)的一個功能)，以收集使用者資料。 您必須如此文章所述，在用戶端程式碼中加入檢測設備。 最後，您將需要一個報告機制來分析資料。 我們建議使用 Power BI，但您可以使用應用程式儀表板，或任何連線至 Application Insights 的工具。
+此模式會相依於 [Application Insights](../azure-monitor/app/app-insights-overview.md) ([Azure 監視器](../azure-monitor/index.yml)的一個功能)，以收集使用者資料。 您必須如此文章所述，在用戶端程式碼中加入檢測設備。 最後，您將需要一個報告機制來分析資料。 我們建議使用 Power BI，但您可以使用應用程式儀表板，或任何連線至 Application Insights 的工具。
 
 > [!NOTE]
 > 此文章中描述的模式適用於您新增至用戶端的程式碼所產生的進階案例和點選流資料。 服務記錄相對容易設定，而且可提供一系列的計量，還可以在入口網站中完成，不需要撰寫程式碼。 因此無論是什麼情況，都建議啟用記錄。 如需詳細資訊，請參閱[收集和分析記錄資料](search-monitor-logs.md)。
@@ -43,9 +43,9 @@ ms.locfileid: "87420068"
 
 ## <a name="1---set-up-application-insights"></a>1 - 設定 Application Insights
 
-請選取現有的 Application Insights 資源，或者如果您還沒有該個資源，請[建立一個](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。 如果您使用 [搜尋流量分析] 頁面，可以複製應用程式連線 Application Insights 時所需的檢測金鑰。
+請選取現有的 Application Insights 資源，或者如果您還沒有該個資源，請[建立一個](../azure-monitor/app/create-new-resource.md)。 如果您使用 [搜尋流量分析] 頁面，可以複製應用程式連線 Application Insights 時所需的檢測金鑰。
 
-擁有 Application Insights 資源之後，就可以遵循[支援的語言和平台的相關指示](https://docs.microsoft.com/azure/azure-monitor/app/platforms)來註冊您的應用程式。 註冊方式很簡單，只要將檢測金鑰從 Application Insights 新增到會設定關聯的程式碼中就完成了。 當您選取現有的資源時，可以在入口網站或 [搜尋流量分析] 頁面中找到金鑰。
+擁有 Application Insights 資源之後，就可以遵循[支援的語言和平台的相關指示](../azure-monitor/app/platforms.md)來註冊您的應用程式。 註冊方式很簡單，只要將檢測金鑰從 Application Insights 新增到會設定關聯的程式碼中就完成了。 當您選取現有的資源時，可以在入口網站或 [搜尋流量分析] 頁面中找到金鑰。
 
 後續步驟中會反映出某些 Visual Studio 專案類型可使用的快捷方式。 該方式只需按幾下滑鼠，就能建立資源並註冊您的應用程式。
 
@@ -55,7 +55,7 @@ ms.locfileid: "87420068"
 
 1. 透過提供 Microsoft 帳戶、Azure 訂用帳戶和 Application Insights 資源 (預設為新的資源) 來註冊您的應用程式。 按一下 [註冊] 。
 
-此時，您的應用程式已設定為進行應用程式監視，這表示所有頁面載入作業都會以預設計量進行追蹤。 如需和上述步驟有關的詳細資訊，請參閱[啟用 Application Insights 伺服器端遙測](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-application-insights-server-side-telemetry-visual-studio)。
+此時，您的應用程式已設定為進行應用程式監視，這表示所有頁面載入作業都會以預設計量進行追蹤。 如需和上述步驟有關的詳細資訊，請參閱[啟用 Application Insights 伺服器端遙測](../azure-monitor/app/asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)。
 
 ## <a name="2---add-instrumentation"></a>2 - 新增檢測
 
@@ -63,11 +63,11 @@ ms.locfileid: "87420068"
 
 ### <a name="step-1-create-a-telemetry-client"></a>步驟 1:建立遙測用戶端
 
-建立會將事件傳送至 Application Insights 的物件。 您可以將檢測設備新增到伺服器端應用程式程式碼，或新增到在瀏覽器中執行的用戶端程式碼，這裡以 C# 和 JavaScript 變體來表示 (針對其他語言，請參閱[支援的平台和架構](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) \(部分機器翻譯\) 的完整清單)。 請選擇可提供您所需資訊深度的方法。
+建立會將事件傳送至 Application Insights 的物件。 您可以將檢測設備新增到伺服器端應用程式程式碼，或新增到在瀏覽器中執行的用戶端程式碼，這裡以 C# 和 JavaScript 變體來表示 (針對其他語言，請參閱[支援的平台和架構](../azure-monitor/app/platforms.md) \(部分機器翻譯\) 的完整清單)。 請選擇可提供您所需資訊深度的方法。
 
 伺服器端遙測會在應用程式層 (例如，在雲端以 Web 服務形式，或在公司網路中以內部部署應用程式形式執行的應用程式) 擷取計量。 伺服器端遙測會擷取搜尋和按一下事件、文件在結果中的位置，以及查詢資訊，但您的資料收集範圍將會限定在該層所提供的任何資訊。
 
-在用戶端上，您可能會有額外的程式碼，它們或許能夠操作查詢輸入、新增瀏覽，或包含內容 (例如，從首頁和產品頁面起始的查詢)。 如果您的解決方案類似上面所述情況，可以選擇使用用戶端檢測，讓遙測反映出額外的詳細資料。 有關如何收集這個額外詳細資料的問題，已經超出此模式的範圍，但您可以查看[網頁適用的 Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/javascript#explore-browserclient-side-data) 以獲得更多指引。 
+在用戶端上，您可能會有額外的程式碼，它們或許能夠操作查詢輸入、新增瀏覽，或包含內容 (例如，從首頁和產品頁面起始的查詢)。 如果您的解決方案類似上面所述情況，可以選擇使用用戶端檢測，讓遙測反映出額外的詳細資料。 有關如何收集這個額外詳細資料的問題，已經超出此模式的範圍，但您可以查看[網頁適用的 Application Insights](../azure-monitor/app/javascript.md#explore-browserclient-side-data) 以獲得更多指引。 
 
 **使用 C#**
 
@@ -238,6 +238,6 @@ appInsights.trackEvent("Click", {
 
 檢測您的搜尋應用程式，取得搜尋服務的強大且詳細相關資料。
 
-您可以在 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) 上找到詳細資訊，以及瀏覽[價格頁面](https://azure.microsoft.com/pricing/details/application-insights/)頁面來深入了解其不同的服務層級。
+您可以在 [Application Insights](../azure-monitor/app/app-insights-overview.md) 上找到詳細資訊，以及瀏覽[價格頁面](https://azure.microsoft.com/pricing/details/application-insights/)頁面來深入了解其不同的服務層級。
 
-深入了解如何建立令人讚嘆的報告。 如需詳細資訊，請參閱[開始使用 Power BI Desktop](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started)。
+深入了解如何建立令人讚嘆的報告。 如需詳細資訊，請參閱[開始使用 Power BI Desktop](/power-bi/fundamentals/desktop-getting-started)。

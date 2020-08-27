@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: 897262dcdb8cbacd512f19823da375e2c603b97e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b98406984f2c9f2adfca030369a6ea3d47a786f3
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037838"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762772"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>教學課程：在 Azure IoT Central 中建立影片分析 - 物件和動作偵測應用程式
 
@@ -40,7 +40,7 @@ ms.locfileid: "88037838"
 
 ## <a name="initial-setup"></a>初始設定
 
-在這些教學課程中，您會更新及使用數個設定檔。 這些檔案的初始版本可在 [LVA-gateway](https://github.com/Azure/live-video-analytics) GitHub 存放庫中取得。 此存放庫也包含可供您下載的便籤文字檔，可讓您用來記錄所部署服務的設定值。
+在這些教學課程中，您會更新及使用數個設定檔。 這些檔案的初始版本可在 [LVA-gateway](https://github.com/Azure/live-video-analytics/tree/master/ref-apps/lva-edge-iot-central-gateway) GitHub 存放庫中取得。 此存放庫也包含可供您下載的便籤文字檔，可讓您用來記錄所部署服務的設定值。
 
 在您的本機電腦上建立名為 lva-configuration 的資料夾，以儲存這些檔案的副本。 然後以滑鼠右鍵按一下下列每個連結，然後選擇 [另存新檔]，將檔案儲存至 lva-configuration 資料夾：
 
@@ -98,7 +98,7 @@ ms.locfileid: "88037838"
 
 若要建立新的影片分析應用程式：
 
-1. 選取 [影片分析 - 物件和動作偵測] 應用程式範本。 針對本教學課程中使用的裝置，其裝置範本皆包含在此範本中。 此範本也會提供用來監視影片的操作員儀表板。
+1. 選取 [影片分析 - 物件和動作偵測] 應用程式範本。 針對本教學課程中使用的裝置，其裝置範本皆包含在此範本中。 此範本包含範例儀表板，可供操作員用來執行監視和管理相機等工作。
 
 1. (選擇性) 選擇易記的 [應用程式名稱]  。 此應用程式會以名為 Northwind Traders 的虛構零售商店為基礎。 本教學課程會使用「Northwind Traders 影片分析」作為**應用程式名稱**。
 

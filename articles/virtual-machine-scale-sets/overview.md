@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 0fcad26bb78e0e9a03d51818ac66a98af1ef0b18
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f381afa69d1a445d2bdb14dd663341e4a18f8cd9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590382"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648661"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>什麼是虛擬機器擴展集？
 Azure 虛擬機器擴展集可讓您建立和管理一組負載平衡的 VM。 VM 執行個體的數目可以自動增加或減少，以因應需求或已定義的排程。 擴展集可為您的應用程式提供高可用性，並且可讓您集中管理、設定和更新大量的 VM。 透過虛擬機器擴展集，您將可針對計算、巨量資料和容器工作負載等領域建立大規模的服務。
@@ -40,7 +40,7 @@ Azure 虛擬機器擴展集可提供對跨 VM 執行的應用程式進行管理�
 
 - **大規模運作**
     - 擴展集最多支援可 1,000 個 VM 執行個體。 如果您建立並上傳自己的自訂 VM 映像，則限制為 600 個 VM 執行個體。
-    - 若要讓生產工作負載達到最佳效能，請使用 [Azure 受控磁碟](../virtual-machines/windows/managed-disks-overview.md)。
+    - 若要讓生產工作負載達到最佳效能，請使用 [Azure 受控磁碟](../virtual-machines/managed-disks-overview.md)。
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>虛擬機器與擴展集的差異

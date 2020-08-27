@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc,seoapr2020
+ms.custom: contperfq1
 ms.topic: overview
-ms.date: 04/17/2020
-ms.openlocfilehash: e933d48a60a01bdbf00205a389778b9a3befeede
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 08/21/2020
+ms.openlocfilehash: 2cbe0b520156e77308f61a725937ac415cb80473
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82188220"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756940"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>什麼是 Azure HDInsight 中的 Apache Spark
 
@@ -108,3 +108,4 @@ HDInsight 上的 Spark 叢集提供豐富的支援供您建置即時分析解決
 在本概觀中，您已對 Azure HDInsight 中的 Apache Spark 有了一些基本了解。 了解如何建立 HDInsight Spark 叢集以及執行某些 Spark SQL 查詢：
 
 * [在 HDInsight 中建立 Apache Spark 叢集](./apache-spark-jupyter-spark-sql-use-portal.md)
+* [最佳化 Spark 作業的效能](apache-spark-perf.md)

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 723c30856593044c91220b4e3ab267ab140c5ffd
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ed95cf0b98edd8a6775c980876a6092c00e3a68d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366922"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918582"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
 
@@ -75,7 +75,7 @@ Azure Machine Learning 支援兩種形式的 Web 服務驗證：金鑰和權杖�
 | 檢視模型/影像 | ✓ | ✓ | ✓ |
 | 呼叫 Web 服務 | ✓ | ✓ | ✓ |
 
-如果內建角色不符合您的需求，您可以建立自訂角色。 支援自訂角色來控制工作區中的所有作業，例如建立計算、提交執行、註冊資料存放區，或部署模型。 自訂角色可以具有工作區的各種資源（例如叢集、資料存放區、模型和端點）的讀取、寫入或刪除許可權。 您可以在特定工作區層級、特定的資源群組層級或特定的訂用帳戶層級上，讓角色可供使用。 如需詳細資訊，請參閱[管理 Azure Machine Learning 工作區中的使用者和角色](how-to-assign-roles.md)。
+如果內建角色不符合您的需求，您可以建立自訂角色。 支援自訂角色來控制工作區內的所有作業，例如建立計算、提交執行、註冊資料存放區，或部署模型。 自訂角色可以擁有工作區的各種資源（例如叢集、資料存放區、模型和端點）的讀取、寫入或刪除許可權。 您可以在特定工作區層級、特定的資源群組層級或特定的訂用帳戶層級上，讓角色可供使用。 如需詳細資訊，請參閱[管理 Azure Machine Learning 工作區中的使用者和角色](how-to-assign-roles.md)。
 
 > [!WARNING]
 > Azure Active Directory 的企業對企業共同作業支援 Azure Machine Learning，但 Azure Active Directory 的企業對消費者共同作業目前不支援。
@@ -112,26 +112,21 @@ Azure Machine Learning 仰賴其他 Azure 服務來處理計算資源。 計算�
 ## <a name="data-encryption"></a>資料加密
 
 > [!IMPORTANT]
-> 若要在__定型__期間進行生產等級加密，Microsoft 建議使用 Azure Machine Learning 計算叢集。 對於__推斷__期間的生產等級加密，Microsoft 建議使用 Azure Kubernetes Service。
+> 針對在 __定型__期間的生產等級加密，Microsoft 建議使用 Azure Machine Learning 計算叢集。 針對在 __推斷__期間的生產等級加密，Microsoft 建議使用 Azure Kubernetes Service。
 >
-> Azure Machine Learning 計算實例是開發/測試環境。 使用此功能時，建議您將檔案（例如筆記本和腳本）儲存在檔案共用中。 您的資料應該儲存在資料存放區中。
+> Azure Machine Learning 計算實例是開發/測試環境。 使用它時，建議您將檔案（例如筆記本和腳本）儲存在檔案共用中。 您的資料應該儲存在資料存放區中。
 
 ### <a name="encryption-at-rest"></a>待用加密
 
 > [!IMPORTANT]
-> 如果您的工作區包含敏感性資料，建議您在建立工作區時，設定 [hbi_workspace 旗標](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 
+> 如果您的工作區包含敏感性資料，建議您在建立工作區時，設定 [hbi_workspace 旗標](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 只有在建立 `hbi_workspace` 工作區時，才可以設定旗標。 無法針對現有的工作區進行變更。
 
-`hbi_workspace`旗標可控制 microsoft 所收集的資料量，以供診斷之用，並在 microsoft 管理的環境中啟用額外的加密。 此外，它也會啟用下列動作：
+旗標會 `hbi_workspace` 控制 [microsoft 針對診斷目的所收集的資料](#microsoft-collected-data) 量，並 [在 microsoft 管理的環境中啟用額外的加密](../security/fundamentals/encryption-atrest.md)。 此外，它也會啟用下列動作：
 
-* 如果您尚未在該訂用帳戶中建立任何先前的叢集，請在您的 Azure Machine Learning 計算叢集中開始加密本機臨時磁片。 否則，您必須提出支援票證，以啟用計算叢集的暫存磁碟加密 
+* 如果您未在該訂用帳戶中建立任何先前的叢集，就會開始加密 Azure Machine Learning 計算叢集中的本機暫存磁片。 否則，您必須提出支援票證，以啟用計算叢集的暫存磁碟加密 
 * 清除執行之間的本機暫存磁碟
-* 使用您的金鑰保存庫，將您的儲存體帳戶、容器登錄和 SSH 帳戶的認證，從執行層安全地傳遞至您的計算叢集
+* 使用您的金鑰保存庫，安全地將儲存體帳戶、容器登錄和 SSH 帳戶的認證從執行層傳遞至您的計算叢集
 * 啟用 IP 篩選以確保底層批次集區無法由 AzureMachineLearningService 以外的任何外部服務呼叫
-
-> [!WARNING]
-> 只有在建立 `hbi_workspace` 工作區時，才能設定旗標。 無法針對現有的工作區進行變更。
-
-如需 Azure 中待用加密運作方式的詳細資訊，請參閱[待用 Azure 資料加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) \(部分機器翻譯\)。
 
 #### <a name="azure-blob-storage"></a>Azure Blob 儲存體
 
@@ -181,7 +176,7 @@ Azure Machine Learning 會在 Azure Cosmos DB 執行個體中儲存計量和中�
 若要使用您自己 (客戶管理) 金鑰來加密您的 Azure Container Registry，您必須建立自己的 ACR，並在佈建工作區時加以連結，或加密在佈建工作區時所建立的預設執行個體。
 
 > [!IMPORTANT]
-> Azure Machine Learning 需要在您的 Azure Container Registry 上啟用系統管理員帳戶。 根據預設，當您建立容器登錄時，會停用此設定。 如需啟用系統管理員帳戶的相關資訊，請參閱系統[管理員帳戶](/azure/container-registry/container-registry-authentication#admin-account)。
+> Azure Machine Learning 需要在您的 Azure Container Registry 啟用系統管理員帳戶。 依預設，當您建立容器登錄時，就會停用此設定。 如需啟用系統管理員帳戶的相關資訊，請參閱系統 [管理員帳戶](/azure/container-registry/container-registry-authentication#admin-account)。
 >
 > 為工作區建立 Azure Container Registry 之後，請勿將其刪除。 這樣做將會造成您的 Azure Machine Learning 工作區中斷。
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: 06c36b3f3939c8804149448ecb770a22d658fcbf
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854717"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930905"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
@@ -27,6 +27,7 @@ ms.locfileid: "88854717"
 
 * V3 的模型版本 `2020-07-01` `/keyphrases` `/pii` 和 `/languages` 端點，其會新增：
     * 命名實體辨識的其他政府和國家特定 [實體類別](named-entity-types.md?tabs=personal) 。
+    * 情感分析 v3 支援挪威文和土耳其文。
 * 針對超過已發佈 [資料限制](concepts/data-limits.md)的 v3 API 要求，現在會傳回 HTTP 400 錯誤。 
 * 傳回位移的端點現在支援選擇性 `stringIndexType` 參數，會將傳回的 `offset` 和值調整 `length` 為符合支援的 [字串索引配置](concepts/text-offsets.md)。
 

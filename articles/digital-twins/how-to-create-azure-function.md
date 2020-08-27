@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f371f52b0a110afeef6f3f72fb459b30842f77eb
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 66f514f4c5d299ef11efda541f16f4ef2fe61aed
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723702"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930157"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>連接 Azure Functions apps 以處理資料
 
@@ -84,7 +84,7 @@ namespace FunctionSample
 
 函數應用程式會使用 [適用于 .net (c # ) 的 Azure IoT 數位對應項用戶端程式庫 ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)，與 Azure 數位 Twins 互動。 您必須在專案中包含下列套件，才能使用 SDK：
 * `Azure.DigitalTwins.Core` (版本 `1.0.0-preview.2`) 
-* `Azure.Identity` (版本 `1.1.1`) 
+* `Azure.Identity`
 
 若要設定 Azure SDK 管線以針對 Azure Functions 適當地設定，您也將需要：
 * `Azure.Net.Http`

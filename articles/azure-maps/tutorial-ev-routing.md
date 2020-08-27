@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 843094a58868e7751f1fa2dbee70535f2192ae62
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850163"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639744"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 規劃電動車的路線
 
@@ -27,7 +27,7 @@ Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API �
 在本教學課程中，您將：
 
 > [!div class="checklist"]
-> * 在雲端的 [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) \(部分機器翻譯\) 上建立並執行 Jupyter 筆記本。
+> * 在雲端的 [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) \(部分機器翻譯\) 上建立並執行 Jupyter Notebook 檔案。
 > * 在 Python 中呼叫 Azure 地圖服務 REST API。
 > * 根據電動車的耗電量模型搜尋可達範圍。
 > * 搜尋位於可抵達範圍或等時線內的電動車充電站。
@@ -45,9 +45,9 @@ Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API �
 
 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
 
-## <a name="create-an-azure-notebook"></a>建立 Azure 筆記本
+## <a name="create-an-azure-notebooks-project"></a>建立 Azure Notebooks 專案
 
-若要遵循此教學課程，您必須建立 Azure 筆記本專案，並下載及執行 Jupyter 筆記本檔案。 此 Notebook 檔案包含 Python 程式碼，可實作本教學課程中的案例。 若要建立 Azure Notebook 專案，並將 Jupyter Notebook 文件上傳到其中，請執行下列步驟：
+若要遵循此教學課程，您必須建立 Azure Notebooks 專案，並下載及執行 Jupyter Notebook 檔案。 此 Jupyter Notebook 檔案包含 Python 程式碼，可實作本教學課程中的案例。 若要建立 Azure Notebooks 專案，並將 Jupyter Notebook 文件上傳到其中，請執行下列步驟：
 
 1. 前往 [Azure Notebooks](https://notebooks.azure.com) 並登入。 如需詳細資訊，請參閱[快速入門：登入並設定使用者識別碼](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks)。
 1. 在您的公用設定檔頁面上，選取 [我的專案]  。
@@ -66,23 +66,23 @@ Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API �
 
 1. 專案建立後，請從 [Azure 地圖服務 Jupyter Notebook 存放庫](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)下載 [Jupyter Notebook 文件檔案](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb)。
 
-1. 在 [我的專案]  頁面上的專案清單中選取您的專案，然後選取 [上傳]  以上傳 Jupyter 筆記本文件檔案。 
+1. 在 [我的專案] 頁面上的專案清單中選取您的專案，然後選取 [上傳] 以上傳 Jupyter Notebook 文件檔案。 
 
-    ![上傳 Notebook](./media/tutorial-ev-routing/upload-notebook.png)
+    ![上傳 Jupyter Notebook](./media/tutorial-ev-routing/upload-notebook.png)
 
 1. 從您的電腦上傳檔案，然後選取 [完成]  。
 
 1. 成功完成上傳之後，您的檔案就會顯示在專案頁面上。 按兩下該檔案，使其以 Jupyter Notebook 的形式開啟。
 
-請嘗試了解在 Notebook 檔案中執行的功能。 在 Notebook 檔案中執行程式碼，一次執行一個儲存格。 您可以選取筆記本應用程式頂端的 [執行]  按鈕，以執行每個資料格中的程式碼。
+請嘗試了解在 Jupyter Notebook 檔案中執行的功能。 在 Jupyter Notebook 檔案中執行程式碼，一次執行一個儲存格。 您可以選取 Jupyter Notebook 應用程式頂端的 [執行] 按鈕，以執行每個資料格中的程式碼。
 
   ![[執行] 按鈕](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>安裝專案層級套件
 
-若要在 Notebook 中執行程式碼，請執行下列步驟，以在專案層級安裝套件：
+若要在 Jupyter Notebook 中執行程式碼，請執行下列步驟，以在專案層級安裝套件：
 
-1. 從 [Azure 地圖服務 Jupyter 筆記本存放庫](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) \(英文\) 下載 [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) 檔案，然後將其上傳至您的專案。
+1. 從 [Azure 地圖服務 Jupyter Notebook 存放庫](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) \(英文\) 下載 [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) 檔案，然後將其上傳至您的專案。
 1. 在專案儀表板上，選取 [專案設定]  。 
 1. 在 [專案設定]  窗格中，選取 [環境]  索引標籤，然後選取 [新增]  。
 1. 在 [環境設定步驟]  下方，執行下列動作：   

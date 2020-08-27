@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: dddb332498f41437eba77d75c38218c58b8c8379
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507109"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651194"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure Machine Learning 對大量資料執行批次推斷
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -202,7 +202,7 @@ model = Model.register(model_path="models/",
 ## <a name="write-your-inference-script"></a>撰寫推斷指令碼
 
 >[!Warning]
->下列程式碼只是[筆記本範例](https://aka.ms/batch-inference-notebooks)所使用的範例。 請針對您的案例建立自己的指令碼。
+>下列程式碼只是[筆記本範例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)所使用的範例。 請針對您的案例建立自己的指令碼。
 
 指令碼「必須包含」兩個函式：
 - `init()`:請將此函式用於高成本或一般的準備，以進行後續的推斷。 例如，使用此函式將模型載入至全域物件。 此函式只會在程序開始時呼叫一次。
@@ -214,7 +214,7 @@ model = Model.register(model_path="models/",
 %%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
-# (https://aka.ms/batch-inference-notebooks)
+# (https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)
 # for the implementation script.
 
 import os
@@ -421,7 +421,7 @@ df.head(10)
 
 ## <a name="next-steps"></a>後續步驟
 
-若要查看此程序的完整運作過程，請試試[批次推斷筆記本](https://aka.ms/batch-inference-notebooks)。 
+若要查看此程序的完整運作過程，請試試[批次推斷筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)。 
 
 如需 ParallelRunStep 的偵錯和疑難排解指引，請參閱[操作指南](how-to-debug-parallel-run-step.md)。
 

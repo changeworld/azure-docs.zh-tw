@@ -2,17 +2,17 @@
 title: 將範本規格部署為連結的範本
 description: 瞭解如何在連結的部署中部署現有的範本規格。
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 5d4824ea432d804418fda2cdc90d49154d496722
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: dacf2fba3ff78f3ff92741b49edad8fdf5bffe29
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096144"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918378"
 ---
-# <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>教學課程：將範本規格部署為連結的範本（預覽）
+# <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>教學課程：將範本規格部署為連結的範本 (預覽) 
 
-瞭解如何使用[連結的部署](linked-templates.md#linked-template)來部署現有的[範本規格](template-specs.md)。 您可以使用範本規格，與組織中的其他使用者共用 ARM 範本。 建立範本規格之後，您可以使用 Azure PowerShell 來部署範本規格。 您也可以使用連結的範本，將範本規格部署為方案的一部分。
+瞭解如何使用[連結的部署](linked-templates.md#linked-template)來部署現有的[範本規格](template-specs.md)。 您可以使用範本規格，與組織中的其他使用者共用 ARM 範本。 建立範本規格之後，您可以使用 Azure PowerShell 或 Azure CLI 來部署範本規格。 您也可以使用連結的範本，將範本規格部署為解決方案的一部分。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -23,11 +23,11 @@ ms.locfileid: "87096144"
 
 ## <a name="create-a-template-spec"></a>建立範本規格
 
-遵循[快速入門：建立及部署範本規格](quickstart-create-template-specs.md)，以建立用於部署儲存體帳戶的範本規格。 在下一節中，您需要範本規格、範本規格名稱和範本規格版本的資源組名。
+遵循 [快速入門：建立及部署範本規格](quickstart-create-template-specs.md) ，以建立用於部署儲存體帳戶的範本規格。 在下一節中，您需要範本規格的資源組名、範本規格名稱和範本規格版本。
 
 ## <a name="create-the-main-template"></a>建立主要範本
 
-若要在 ARM 範本中部署範本規格，請將[部署資源](/azure/templates/microsoft.resources/deployments)新增至您的主要範本。 在 `templateLink` 屬性中，指定範本規格的資源識別碼。建立具有下列 JSON 的範本，其**在上稱為azuredeploy.js**。 本教學課程假設您已儲存至的路徑**c:\Templates\deployTS\azuredeploy.js** ，但您可以使用任何路徑。
+若要在 ARM 範本中部署範本規格，請將 [部署資源](/azure/templates/microsoft.resources/deployments) 新增至您的主要範本。 在 `templateLink` 屬性中，指定範本規格的資源識別碼。請使用下列稱為 **azuredeploy.js**的 JSON 建立範本。 本教學課程假設您已儲存至 **c:\Templates\deployTS\azuredeploy.js的** 路徑，但您可以使用任何路徑。
 
 ```json
 {
@@ -115,11 +115,24 @@ ms.locfileid: "87096144"
 }
 ```
 
-範本規格識別碼是使用函數產生的 [`resourceID()`](template-functions-resource.md#resourceid) 。 如果 templateSpec 位於目前部署的相同資源群組中，則 resourceID （）函數中的資源群組引數是選擇性的。  您也可以直接傳入資源識別碼做為參數。 若要取得識別碼，請使用：
+範本規格識別碼是使用函數所產生 [`resourceID()`](template-functions-resource.md#resourceid) 。 如果 templateSpec 位於目前部署的相同資源群組中，則 resourceID ( # A1 函數中的資源群組引數是選擇性的。  您也可以直接傳入資源識別碼作為參數。 若要取得識別碼，請使用：
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 $id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Version.Id
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli-interactive
+id = $(az template-specs show --name $templateSpecName --resource-group $resourceGroupName --version $templateSpecVersion --query "id")
+```
+
+> [!NOTE]
+> 取得範本規格識別碼，然後將它指派給 Windows PowerShell 中的變數時，有一個已知的問題。
+
+---
 
 將參數傳遞給範本規格的語法如下：
 
@@ -138,6 +151,8 @@ $id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateS
 
 當您部署連結的範本時，它會同時部署 web 應用程式和儲存體帳戶。 部署與部署其他 ARM 範本相同。
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name webRG `
@@ -148,6 +163,21 @@ New-AzResourceGroupDeployment `
   -TemplateFile "c:\Templates\deployTS\azuredeploy.json"
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name webRG \
+  --location westus2
+
+az deployment group create \
+  --resource-group webRG \
+  --template-file "c:\Templates\deployTS\azuredeploy.json"
+
+```
+
+---
+
 ## <a name="next-steps"></a>後續步驟
 
-若要瞭解如何建立包含連結範本的範本規格，請參閱[建立連結範本的範本規格](template-specs-create-linked.md)。
+若要了解如何建立包含連結範本的範本規格，請參閱[建立連結範本的範本規格](template-specs-create-linked.md)。

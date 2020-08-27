@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 5cafb7927bb3ec697446b37df8936da65748a9ba
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3e1845eee9832770cc289821c60097e69eec6c08
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749470"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932010"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>教學課程：使用推送 API 將索引編製最佳化
 
@@ -21,7 +21,7 @@ Azure 認知搜尋支援[兩種基本方法](search-what-is-data-import.md)以�
 
 本教學課程說明如何使用[推送模型](search-what-is-data-import.md#pushing-data-to-an-index)有效率地為資料編製索引，方法是批次處理要求並使用指數輪詢重試策略。 您可以[下載並執行應用程式](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing)。 本文會說明應用程式的重要層面，以及為資料編製索引時所應考量的因素。
 
-本教學課程將使用 C# 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 執行下列工作：
+本教學課程將使用 C# 和 [.NET SDK](/dotnet/api/overview/azure/search) 執行下列工作：
 
 > [!div class="checklist"]
 > * 建立索引
@@ -111,7 +111,7 @@ API 呼叫需要用到服務 URL 和存取金鑰。 建立搜尋服務時需要�
 
 ### <a name="creating-the-index"></a>建立索引
 
-此範例程式會使用 .NET SDK 來定義並建立 Azure 認知搜尋服務索引。 它會利用 [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) \(英文\) 類別，從 C# 資料模型類別產生索引結構。
+此範例程式會使用 .NET SDK 來定義並建立 Azure 認知搜尋服務索引。 它會利用 [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) \(英文\) 類別，從 C# 資料模型類別產生索引結構。
 
 資料模型會透過旅館類別來定義，其中也包含對地址類別的參考。 FieldBuilder 會向下鑽研多個類別定義，以針對索引產生複雜的資料結構。 中繼資料標記可用來定義每個欄位的屬性，例如，其是否可搜尋或可排序。
 
@@ -162,8 +162,8 @@ List<Hotel> hotels = dg.GetHotels(100000, "large");
 
 Azure 認知搜尋支援使用下列 API 來將單一或多個文件載入至索引：
 
-+ [新增、更新或刪除文件 (REST API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction class](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) 或 [indexBatch class](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
++ [新增、更新或刪除文件 (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
++ [indexAction class](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) 或 [indexBatch class](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
 
 以批次方式為文件編製索引會大幅提升索引編製效能。 這些批次最多可達 1000 個文件，或每批次最多 16 MB 左右。
 
@@ -258,14 +258,14 @@ await TestBatchSizes(indexClient, numTries: 3);
 
 在上述重要考量中，有好幾個會影響最佳的執行緒數目。 您可以修改此範例，並使用不同的執行緒計數進行測試，以判斷您所處情況的最佳執行緒計數。 不過，只要您有數個同時執行的執行緒，應該就能利用絕大多數的效率增益。
 
-當抵達搜尋服務的要求增加時，您可能會遇到 [HTTP 狀態碼](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)指出要求並未完全成功。 在索引編製期間，兩個常見的 HTTP 狀態碼如下：
+當抵達搜尋服務的要求增加時，您可能會遇到 [HTTP 狀態碼](/rest/api/searchservice/http-status-codes)指出要求並未完全成功。 在索引編製期間，兩個常見的 HTTP 狀態碼如下：
 
 + **503 服務無法使用** - 此錯誤表示系統負載過重，因此目前無法處理要求。
 + **207多重狀態** - 此錯誤表示有些文件成功，但至少有一個文件失敗。
 
 ### <a name="implement-an-exponential-backoff-retry-strategy"></a>實作指數輪詢重試策略
 
-如果發生失敗，系統應該就會使用[指數輪詢重試策略](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)來重試要求。
+如果發生失敗，系統應該就會使用[指數輪詢重試策略](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)來重試要求。
 
 Azure 認知搜尋的 .NET SDK 會自動重試 503 和其他失敗的要求，但您必須實作自己的邏輯才能重試 207。 您也可以使用 [Polly](https://github.com/App-vNext/Polly) 等開放原始碼工具來實作重試策略。 
 
@@ -281,7 +281,7 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-請務必攔截 [IndexBatchException](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet)，因為這些例外狀況表示索引編製作業只部分成功 (207)。 請使用 `FindFailedActionsToRetry` 方法來重試失敗項目，以便能輕鬆地建立只包含失敗項目的新批次。
+請務必攔截 [IndexBatchException](/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet)，因為這些例外狀況表示索引編製作業只部分成功 (207)。 請使用 `FindFailedActionsToRetry` 方法來重試失敗項目，以便能輕鬆地建立只包含失敗項目的新批次。
 
 此外，`IndexBatchException` 以外的例外狀況也請攔截下來，這些例外狀況表示要求徹底失敗。 這些例外狀況較不常見，特別是在 .NET SDK 中，因為其會自動重試 503。
 
@@ -346,7 +346,7 @@ ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
 
 ### <a name="programatically"></a>程式設計方式
 
-有兩個主要選項可用來檢查索引中的文件數目：[文件計數 API](https://docs.microsoft.com/rest/api/searchservice/count-documents) 和[取得索引統計資料 API](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics)。 這兩種途徑可能需要一些額外時間來進行更新，因此，如果所傳回的文件數目低於您原本的預期，請不要驚慌。
+有兩個主要選項可用來檢查索引中的文件數目：[文件計數 API](/rest/api/searchservice/count-documents) 和[取得索引統計資料 API](/rest/api/searchservice/get-index-statistics)。 這兩種途徑可能需要一些額外時間來進行更新，因此，如果所傳回的文件數目低於您原本的預期，請不要驚慌。
 
 #### <a name="count-documents"></a>文件計數
 
@@ -370,7 +370,7 @@ IndexGetStatisticsResult indexStats = serviceClient.Indexes.GetStatistics(config
 
   ![Azure 認知搜尋索引的清單](media/tutorial-optimize-data-indexing/portal-output.png "Azure 認知搜尋索引的清單")
 
-*文件計數*和*儲存體大小*的根據是[取得索引統計資料 API](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics)，而且可能需要花幾分鐘的時間才會更新。
+*文件計數*和*儲存體大小*的根據是[取得索引統計資料 API](/rest/api/searchservice/get-index-statistics)，而且可能需要花幾分鐘的時間才會更新。
 
 ## <a name="reset-and-rerun"></a>重設並重新執行
 

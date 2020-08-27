@@ -175,6 +175,7 @@
               href: functions-develop-vs.md
             - name: 核心工具開發
               href: functions-run-local.md
+              displayName: 'local, runtime'
         - name: 建立函式
           items:
             - name: HTTP 觸發程序
@@ -398,7 +399,7 @@
                 - name: 輸出
                   href: functions-bindings-cosmosdb-v2-output.md
                   displayName: Azure Cosmos DB
-        - name: 事件方格
+        - name: Event Grid
           items:
             - name: 概觀
               href: functions-bindings-event-grid.md
@@ -422,7 +423,7 @@
               displayName: Azure Event Hubs
         - name: IoT 中樞
           items:
-            - name: 總覽
+            - name: 概觀
               href: functions-bindings-event-iot.md
               displayName: Azure IoT Hubs
             - name: 觸發程序

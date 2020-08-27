@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3394882574f94e4a1af3aa942f3b0bd87be55368
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f202a9d616809d1f14366350d8d60ef2bc06b96b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690080"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934509"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言 (SSML) 改進合成
 
@@ -112,7 +112,7 @@ SSML 的語音服務執行是以全球資訊網協會的 [語音合成標記語�
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+如需詳細資訊， <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```csharp
 speechConfig.SetProperty(
@@ -121,7 +121,7 @@ speechConfig.SetProperty(
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+如需詳細資訊， <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```cpp
 speechConfig->SetProperty(
@@ -130,7 +130,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+如需詳細資訊， <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```java
 speechConfig.setProperty(
@@ -139,7 +139,7 @@ speechConfig.setProperty(
 
 # <a name="python"></a>[Python](#tab/python)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+如需詳細資訊， <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```python
 speech_config.set_property_by_name(
@@ -148,7 +148,7 @@ speech_config.set_property_by_name(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+如需詳細資訊， <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```javascript
 speechConfig.setProperty(
@@ -157,7 +157,7 @@ speechConfig.setProperty(
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+如需詳細資訊， <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```objectivec
 [speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
@@ -165,7 +165,7 @@ speechConfig.setProperty(
 
 # <a name="swift"></a>[Swift](#tab/swift)
 
-如需詳細資訊，請參閱 <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+如需詳細資訊， <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```swift
 speechConfig!.setPropertyTo(
@@ -262,8 +262,8 @@ speechConfig!.setPropertyTo(
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `strength` | 使用下列其中一個值，指定暫停的相對持續時間：<ul><li>無</li><li>x-弱式</li><li>弱</li><li>中型 (預設) </li><li>強式</li><li>x-強式</li></ul> | 選用 |
-| `time` | 指定暫停的絕對持續時間（以秒為單位）。 有效值的範例包括 `2s` 和 `500` | 選用 |
+| `strength` | 使用下列其中一個值，指定暫停的相對持續時間：<ul><li>無</li><li>x-弱式</li><li>弱</li><li>中型 (預設) </li><li>強式</li><li>x-強式</li></ul> | 選擇性 |
+| `time` | 指定暫停的絕對持續時間（以秒為單位）。 有效值的範例包括 `2s` 和 `500` | 選擇性 |
 
 | 強度                      | 描述 |
 |-------------------------------|-------------|
@@ -332,7 +332,7 @@ speechConfig!.setPropertyTo(
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `alphabet` | 指定當合成屬性中字串的發音時，所要使用的拼音字母 `ph` 。 指定字母的字串必須以小寫字母來指定。 以下是您可以指定的可能字母。<ul><li>`ipa`&ndash;<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">國際注音字母 <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash;[語音服務拼音字母](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">通用電話組</a></li></ul><br>字母只適用于 `phoneme` 元素中的。 | 選用 |
+| `alphabet` | 指定當合成屬性中字串的發音時，所要使用的拼音字母 `ph` 。 指定字母的字串必須以小寫字母來指定。 以下是您可以指定的可能字母。<ul><li>`ipa`&ndash;<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">國際注音字母 <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash;[語音服務拼音字母](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">通用電話組</a></li></ul><br>字母只適用于 `phoneme` 元素中的。 | 選擇性 |
 | `ph` | 字串，包含指定元素中單字發音的電話 `phoneme` 。 如果指定的字串包含無法辨識的電話，則文字轉換語音 (TTS) 服務會拒絕整個 SSML 檔，並且不會產生檔中指定的任何語音輸出。 | 如果使用音素，則為必要。 |
 
 **範例**
@@ -493,12 +493,12 @@ speechConfig!.setPropertyTo(
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `pitch` | 表示文字的基準間距。 您可以將推銷表達為：<ul><li>絕對值，以數位開頭，後面接著 "Hz" (赫茲) 。 例如，600 Hz。</li><li>相對值，以前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st" 的數位表示，以指定要變更音調的數量。 例如： + 80 Hz 或-2st。 "St" 表示變更單位是 semitone，也就是標準 diatonic 小數位數的一半步驟) 的一半 (。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>default</li></ul></li></ul>. | 選用 |
-| `contour` |等高線現在支援類神經和標準語音。 等高線表示音調變化。 這些變更會在語音輸出中指定的時間位置，以目標陣列的形式表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要提高或減少間距的數量，使用相對值的相對值或列舉值 (請參閱 `pitch`) 。 | 選用 |
-| `range` | 值，表示文字的音調範圍。 您可以 `range` 使用相同的絕對值、相對值或用來描述的列舉值來表示 `pitch` 。 | 選用 |
-| `rate` | 指出文字的說話率。 您可以表達 `rate` ：<ul><li>相對值，以做為預設值乘數的數位來表示。 例如，值為 *1* 會導致費率沒有變更。 值為 *0.5* 時，會產生速率減半。 值為 *3* 時，會產生速率增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>default</li></ul></li></ul> | 選用 |
-| `duration` | 當語音合成 (TTS) 服務讀取文字（以秒或毫秒為單位）時，應該經過的時間長度。 例如，2 *或* *1800ms*。 | 選用 |
-| `volume` | 表示說話聲音的音量層級。 您可以將磁片區表達為：<ul><li>絕對值，以0.0 到100.0 之間的數位表示，從 *quietest* 到 *loudest*。 例如，75。 預設值為100.0。</li><li>相對值，以前面加上 "+" 或 "-" 的數位表示，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>silent</li><li>x-軟</li><li>軟</li><li>中</li><li>大聲</li><li>x-朗讀</li><li>default</li></ul></li></ul> | 選用 |
+| `pitch` | 表示文字的基準間距。 您可以將推銷表達為：<ul><li>絕對值，以數位開頭，後面接著 "Hz" (赫茲) 。 例如，600 Hz。</li><li>相對值，以前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st" 的數位表示，以指定要變更音調的數量。 例如： + 80 Hz 或-2st。 "St" 表示變更單位是 semitone，也就是標準 diatonic 小數位數的一半步驟) 的一半 (。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>default</li></ul></li></ul>. | 選擇性 |
+| `contour` |等高線現在支援類神經和標準語音。 等高線表示音調變化。 這些變更會在語音輸出中指定的時間位置，以目標陣列的形式表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要提高或減少間距的數量，使用相對值的相對值或列舉值 (請參閱 `pitch`) 。 | 選擇性 |
+| `range` | 值，表示文字的音調範圍。 您可以 `range` 使用相同的絕對值、相對值或用來描述的列舉值來表示 `pitch` 。 | 選擇性 |
+| `rate` | 指出文字的說話率。 您可以表達 `rate` ：<ul><li>相對值，以做為預設值乘數的數位來表示。 例如，值為 *1* 會導致費率沒有變更。 值為 *0.5* 時，會產生速率減半。 值為 *3* 時，會產生速率增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>default</li></ul></li></ul> | 選擇性 |
+| `duration` | 當語音合成 (TTS) 服務讀取文字（以秒或毫秒為單位）時，應該經過的時間長度。 例如，2 *或* *1800ms*。 | 選擇性 |
+| `volume` | 表示說話聲音的音量層級。 您可以將磁片區表達為：<ul><li>絕對值，以0.0 到100.0 之間的數位表示，從 *quietest* 到 *loudest*。 例如，75。 預設值為100.0。</li><li>相對值，以前面加上 "+" 或 "-" 的數位表示，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>silent</li><li>x-軟</li><li>軟</li><li>中</li><li>大聲</li><li>x-朗讀</li><li>default</li></ul></li></ul> | 選擇性 |
 
 ### <a name="change-speaking-rate"></a>改變說話速度
 
@@ -577,8 +577,8 @@ speechConfig!.setPropertyTo(
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `interpret-as` | 指出元素文字的內容類型。 如需類型清單，請參閱下表。 | 必要 |
-| `format` | 針對可能具有不明確格式的內容類型，提供有關專案文字精確格式的其他資訊。 SSML 會定義使用這些內容類型的格式 (請參閱下表) 。 | 選用 |
-| `detail` | 指出要說出的詳細資料層級。 例如，這個屬性可能會要求語音合成引擎發音標點符號。 未定義任何標準值 `detail` 。 | 選用 |
+| `format` | 針對可能具有不明確格式的內容類型，提供有關專案文字精確格式的其他資訊。 SSML 會定義使用這些內容類型的格式 (請參閱下表) 。 | 選擇性 |
+| `detail` | 指出要說出的詳細資料層級。 例如，這個屬性可能會要求語音合成引擎發音標點符號。 未定義任何標準值 `detail` 。 | 選擇性 |
 
 <!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
 
@@ -675,9 +675,9 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `src` | 指定背景音訊檔案的位置/URL。 | 如果在 SSML 檔中使用背景音訊，則為必要項。 |
-| `volume` | 指定背景音訊檔案的磁片區。 **接受的值**： `0` 至 `100` 內含。 預設值為 `1`。 | 選用 |
-| `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡入。 **接受的值**： `0` 至 `10000` 內含。  | 選用 |
-| `fadeout` | 指定背景音訊淡出的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡出。 **接受的值**： `0` 至 `10000` 內含。  | 選用 |
+| `volume` | 指定背景音訊檔案的磁片區。 **接受的值**： `0` 至 `100` 內含。 預設值是 `1`。 | 選擇性 |
+| `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡入。 **接受的值**： `0` 至 `10000` 內含。  | 選擇性 |
+| `fadeout` | 指定背景音訊淡出的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡出。 **接受的值**： `0` 至 `10000` 內含。  | 選擇性 |
 
 **範例**
 

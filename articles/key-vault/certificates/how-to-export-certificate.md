@@ -1,6 +1,6 @@
 ---
 title: 從 Azure Key Vault 匯出憑證
-description: 從 Azure Key Vault 匯出憑證
+description: 了解如何從 Azure Key Vault 匯出憑證。
 services: key-vault
 author: sebansal
 tags: azure-key-vault
@@ -10,34 +10,49 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: afab65b22d9487f30da458346bf143a557bec0d8
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ee05d331e953aa39855033d0987cb85cbfddb744
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588887"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827506"
 ---
-# <a name="export-certificate-from-azure-key-vault"></a>從 Azure Key Vault 匯出憑證
+# <a name="export-certificates-from-azure-key-vault"></a>從 Azure Key Vault 匯出憑證
 
-Azure Key Vault 可讓您輕鬆地布建、管理及部署網路的數位憑證，以及啟用應用程式的安全通訊。 如需更多有關憑證的一般資訊，請參閱 [Azure Key Vault 憑證](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)
+了解如何從 Azure Key Vault 匯出憑證。 您可以使用 Azure CLI、Azure PowerShell 或 Azure 入口網站來匯出憑證。 也可以使用 Azure 入口網站來匯出 Azure App Service 憑證。
 
-## <a name="about-azure-key-vault-certificate"></a>關於 Azure Key Vault 憑證
+## <a name="about-azure-key-vault-certificates"></a>關於 Azure Key Vault 憑證
 
-### <a name="composition-of-certificate"></a>憑證的構成要素
-建立 Key Vault 憑證時，可定址的金鑰和秘密也會以相同名稱建立。 Key Vault 金鑰可讓金鑰作業和 Key Vault 秘密允許擷取憑證值作為秘密。 Key Vault 憑證也會包含公用 x509 憑證的中繼資料。 [閱讀更多資訊](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)
+Azure Key Vault 可讓您輕鬆地為您的網路佈建、管理及部署數位憑證。 其也會啟用應用程式的安全通訊。 如需詳細資訊，請參閱 [Azure Key Vault 憑證](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)。
 
-### <a name="exportable-or-non-exportable-keys"></a>可匯出或不可匯出金鑰
-Key Vault 憑證建立後，該憑證將可透過可定址秘密和 PFX 或 PEM 格式的私密金鑰來擷取。 用來建立憑證的原則必須指出金鑰是可匯出的。 如果原則指出金鑰是不可匯出的，則擷取為祕密的值不會包含私密金鑰。
+### <a name="composition-of-a-certificate"></a>憑證的構成要素
 
-支援金鑰類型有兩種 – 具有憑證的 RSA  或 RSA HSM  。 可匯出金鑰允許使用 RSA，不支援 RSA HSM。 [閱讀更多資訊](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#exportable-or-non-exportable-key)
+建立 Key Vault 憑證時，會建立相同名稱的可定址「金鑰」和「秘密」。 Azure Key Vault 允許金鑰作業。 Key Vault 祕密允許擷取憑證值作為秘密。 Key Vault 憑證也會包含公用 x509 憑證的中繼資料。 如需詳細資訊，請移至[憑證的構成要素](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)。
 
-您可以使用 Azure CLI、PowerShell 或入口網站匯出 Azure Key Vault 中的預存憑證。
+### <a name="exportable-and-non-exportable-keys"></a>可匯出或不可匯出的金鑰
+
+在建立 Key Vault 憑證之後，您可以使用私密金鑰，從可定址秘密中擷取該憑證。 擷取 PFX 或 PEM 格式的憑證。
+
+- **可匯出**：用來建立憑證的原則指出金鑰是可匯出的。
+- **不可匯出**：用來建立憑證的原則指出金鑰是不可匯出的。 在此情況下，當私密金鑰以秘密形式擷取時，不會將其視為值的一部分。
+
+Key Vault 支援兩種類型的金鑰：
+
+- **RSA**：可匯出
+- **HSM RSA**：不可匯出
+
+如需詳細資訊，請參閱[關於 Azure Key Vault 憑證](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#exportable-or-non-exportable-key)。
+
+## <a name="export-stored-certificates"></a>匯出儲存的憑證
+
+您可以使用 Azure CLI、Azure PowerShell 或 Azure 入口網站，匯出 Azure Key Vault 中儲存的憑證。
 
 > [!NOTE]
-> 請務必注意，您只需要在金鑰保存庫中匯入憑證的密碼。 Key Vault 不會儲存相關聯的密碼，因此當您匯出憑證時，密碼會是空白的。
+> 只有當您在金鑰保存庫中匯入憑證時，才需要憑證密碼。 Key Vault 不會儲存相關聯的密碼。 當您匯出憑證時，密碼為空白。
 
-## <a name="exporting-certificate-using-cli"></a>使用 CLI 匯出憑證
-下列命令可讓您下載 Key Vault 憑證的**公開部分**。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+在 Azure CLI 中使用下列命令，下載 Key Vault 憑證的**公開部分**。
 
 ```azurecli
 az keyvault certificate download --file
@@ -48,11 +63,10 @@ az keyvault certificate download --file
                                  [--vault-name]
                                  [--version]
 ```
-如需範例和參數定義，請[檢視這裡](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download)
 
+如需詳細資訊，請檢視[範例和參數定義](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download)。
 
-
-如果您要下載整個憑證，亦即**組成的公開和私人部分**，可以下載憑證作為祕密來完成。
+如果您想要下載整個憑證 (即其構成要素的公開和私人部分)，請下載憑證作為祕密。
 
 ```azurecli
 az keyvault secret download –file {nameofcert.pfx}
@@ -63,12 +77,12 @@ az keyvault secret download –file {nameofcert.pfx}
                             [--vault-name]
                             [--version]
 ```
-如需參數定義，請[檢視這裡](https://docs.microsoft.com/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download)
 
+如需詳細資訊，請參閱[參數定義](https://docs.microsoft.com/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download)。
 
-## <a name="exporting-certificate-using-powershell"></a>使用 PowerShell 匯出憑證
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-此命令會從名為 ContosoKV01 的金鑰保存庫取得名為 TestCert01 的憑證。 若要將憑證下載為 pfx 檔案，請執行下列命令。 這些命令會存取 SecretId，然後將內容儲存為 pfx 檔案。
+在 Azure PowerShell 中使用此命令，從名為 **ContosoKV01** 的金鑰保存庫取得名為 **TestCert01** 的憑證。 若要將憑證下載為 PFX 檔案，請執行下列命令。 這些命令會存取 **SecretId**，然後將內容儲存為 PFX 檔案。
 
 ```azurepowershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
@@ -81,26 +95,25 @@ $protectedCertificateBytes = $certCollection.Export([System.Security.Cryptograph
 $pfxPath = [Environment]::GetFolderPath("Desktop") + "\MyCert.pfx"
 [System.IO.File]::WriteAllBytes($pfxPath, $protectedCertificateBytes)
 ```
-這會匯出具有私密金鑰的整個憑證鏈，而此憑證將會受到密碼保護。
-如需有關 ```Get-AzKeyVaultCertificate``` 命令和參數的詳細資訊，請參閱[範例 2](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0)
 
-## <a name="exporting-certificate-using-portal"></a>使用入口網站匯出憑證
+此命令會利用私密金鑰匯出整個憑證鏈。 憑證使用密碼保護。
+如需 **Get-AzKeyVaultCertificate** 命令和參數的詳細資訊，請參閱 [Get-AzKeyVaultCertificate - 範例 2](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0)。
 
-在入口網站上，當您在憑證刀鋒視窗中建立/匯入憑證時，會收到已成功建立憑證的通知。 選取憑證時，您可以按一下目前的版本，即可看到下載選項。
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
+在 Azure 入口網站上，於您在 [憑證] 刀鋒視窗上建立/匯入憑證之後，會收到已成功建立憑證的通知。 選取憑證和目前版本來查看要下載的選項。
 
-按一下 [以 CER 格式下載] 或 [以 PFX/PEM 格式下載] 按鈕即可下載憑證。
-
+若要下載憑證，請選取 [以 CER 格式下載] 或 [以 PFX/PEM 格式下載]。
 
 ![憑證下載](../media/certificates/quick-create-portal/current-version-shown.png)
 
+**匯出 Azure App Service 憑證**
 
-## <a name="exporting-app-service-certificate-from-key-vault"></a>將 App Service 憑證從金鑰保存庫中匯出
+Azure App Service 憑證是方便您購買 SSL 憑證的方式。 您可以從入口網站內將其指派給 Azure 應用程式。 也可以從入口網站將這些憑證匯出為 PFX 檔案，以便在其他地方使用。 在您匯入 PFX 檔案之後，App Service 憑證位於**祕密**之下。
 
-Azure App Service 憑證提供便利的方式來購買 SSL 憑證，並可直接從入口網站指派給 Azure 應用程式。 這些憑證也可以從入口網站匯出為 PFX 檔案，以便在其他地方使用。
-匯入之後，應用程式服務憑證可能**位於祕密之下**。
+如需詳細資訊，請參閱[匯出 Azure App Service 憑證](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)的步驟。
 
-如需匯出應用程式服務憑證的步驟，請[閱讀本文](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)
+---
 
 ## <a name="read-more"></a>閱讀更多資訊
 * [各種憑證檔案類型和定義](https://docs.microsoft.com/archive/blogs/kaushal/various-ssltls-certificate-file-typesextensions)

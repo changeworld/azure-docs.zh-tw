@@ -49,3 +49,9 @@
       items:
         - name: 代理程式連線問題
           href: troubleshoot-agent-onboard.md
+    - name: 參考資料
+      items:
+        - name: 區域可用性與資料落地
+          href: data-residency.md
+        - name: REST
+          href: /rest/api/hybridcompute

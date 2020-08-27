@@ -9,12 +9,12 @@ ms.subservice: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs
-ms.openlocfilehash: bb23a47b702237cad55ded2fa46400eba0997264
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f6ab030b7f807a884b5d05487724fc9c66a6de87
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082840"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648627"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>快速入門：使用 ARM 範本建立 Linux 虛擬機器擴展集
 
@@ -36,7 +36,7 @@ ARM 範本可讓您部署相關資源的群組。 在單一範本中，您可以
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/)。
 
-:::code language="json" source="~/quickstart-templates/201-vmss-bottle-autoscale/azuredeploy.json" range="1-330" highlight="176-264":::
+:::code language="json" source="~/quickstart-templates/201-vmss-bottle-autoscale/azuredeploy.json":::
 
 範本中定義了下列資源：
 
@@ -48,7 +48,7 @@ ARM 範本可讓您部署相關資源的群組。 在單一範本中，您可以
 
 ### <a name="define-a-scale-set"></a>定義擴展集
 
-反白顯示的部分是擴展集資源定義。 若要使用範本建立縮放，您可以定義適當的資源。 虛擬機器擴展集資源類型的核心部分是：
+若要使用範本建立縮放，您可以定義適當的資源。 虛擬機器擴展集資源類型的核心部分是：
 
 | 屬性                     | 屬性描述                                  | 範例範本值                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dd00c357a422a407a3367e45531e3443577f9bec
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171936"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923240"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中實作多面向導覽
 
@@ -63,7 +63,7 @@ ms.locfileid: "86171936"
 
 ### <a name="query-basics"></a>查詢基本概念
 
-在 Azure 認知搜尋中，要求是透過一或多個查詢參數指定 (如需每個查詢參數的描述，請參閱[搜尋文件](https://docs.microsoft.com/rest/api/searchservice/Search-Documents))。 沒有任何一個查詢參數是必要的，但您至少要有一個才能讓查詢有效。
+在 Azure 認知搜尋中，要求是透過一或多個查詢參數指定 (如需每個查詢參數的描述，請參閱[搜尋文件](/rest/api/searchservice/Search-Documents))。 沒有任何一個查詢參數是必要的，但您至少要有一個才能讓查詢有效。
 
 精確度 (視為篩選並排除不相關項目的能力) 是透過下列運算式而達到：
 
@@ -230,7 +230,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-面向查詢參數已設定至欄位，且根據資料類型能夠由包含 `count:<integer>`、`sort:<>`、`interval:<integer>` 與 `values:<list>` 的逗號分隔清單進一步參數化。 當設定範圍時，針對數值資料支援值清單。 如需用量詳細資訊，請參閱 [搜尋文件 (Azure 認知搜尋 API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
+面向查詢參數已設定至欄位，且根據資料類型能夠由包含 `count:<integer>`、`sort:<>`、`interval:<integer>` 與 `values:<list>` 的逗號分隔清單進一步參數化。 當設定範圍時，針對數值資料支援值清單。 如需用量詳細資訊，請參閱 [搜尋文件 (Azure 認知搜尋 API)](/rest/api/searchservice/Search-Documents)。
 
 由您的應用程式制訂的要求也應該與面向一起建置篩選條件，以根據選取的面向值縮小候選文件集的範圍。 就單車店而言，多面向導覽可提供「有哪些顏色、製造商和單車類型可供販售？」等問題的線索。 篩選功能可解答「哪些單車確實是位於此價格帶內的紅色登山車？」之類的問題。 當您按一下 [紅色] 來表示僅顯示紅色的商品，應用程式傳送的下一個查詢會包含 `$filter=Color eq 'Red'`。
 
@@ -319,7 +319,7 @@ Content type
 
 **確實取得精確的面向計數**
 
-在特定情況下，您可能會發現面向計數不符合結果集 (請參閱 [Azure 認知搜尋中的多面向導覽 (Microsoft 問與答頁面)](https://docs.microsoft.com/answers/topics/azure-cognitive-search.html))。
+在特定情況下，您可能會發現面向計數不符合結果集 (請參閱 [Azure 認知搜尋中的多面向導覽 (Microsoft 問與答頁面)](/answers/topics/azure-cognitive-search.html))。
 
 面向計數可能會因為分區結構而不正確。 每個搜尋索引都有多個分區，且每個分區都會依照文件計數報告前 N 個面向，然後結合為單一結果。 如果一些分區有許多相符值，而一些有較少相符值，您可能發現結果中有一些面向值遺失或短少。
 
@@ -333,7 +333,7 @@ Content type
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>根據範圍進行篩選
-透過值範圍進行面向化是常見的搜尋應用程式需求。 範圍支援數值資料與日期時間值。 您可以在[搜尋文件 (Azure 認知搜尋 API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 中閱讀各方法的相關資訊。
+透過值範圍進行面向化是常見的搜尋應用程式需求。 範圍支援數值資料與日期時間值。 您可以在[搜尋文件 (Azure 認知搜尋 API)](/rest/api/searchservice/Search-Documents) 中閱讀各方法的相關資訊。
 
 Azure 認知搜尋透過提供兩種方法進行範圍運算，來簡化範圍建構。 針對這兩種方法，Azure 認知搜尋會依照您提供的輸入建立適當的範圍。 例如，如果您指定 10|20|30 的值範圍，它會自動建立 0-10、10-20、20-30 的範圍。 您的應用程式可以選擇性地移除任何空白間隔。 
 
@@ -404,4 +404,3 @@ Azure 認知搜尋作業入口網站示範包含了本文所參考的範例。
 
 * [設計模式：多面向導覽](https://alistapart.com/article/design-patterns-faceted-navigation)
 * [實作多面向搜尋時的前端考量 – 第1部分](https://articles.uie.com/faceted_search2/)
-

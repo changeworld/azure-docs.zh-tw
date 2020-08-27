@@ -3,12 +3,12 @@ title: Azure 監視器中的計量 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何使用「Azure 監視」來監視「Azure 事件中樞」的資訊
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c7841007fa1736c88c30108099f86b99d3dad0fb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ad570a41fd9dfff01e3a1da6b2d309a7a8464cc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074868"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931143"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 事件中樞計量
 
@@ -37,7 +37,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 ## <a name="billing"></a>計費
 
-在 Azure 監視器中使用計量目前是免費的服務。 不過，如果您使用內嵌計量資料的額外解決方案，可能就需支付這些解決方案的使用費。 例如，如果您將計量資料封存到 Azure 儲存體帳戶，就要支付 Azure 儲存體的使用費。 如果您將計量資料串流至 Azure 監視器記錄以進行先進的分析，則也會向您收取 Azure 的費用。
+在 Azure 監視器中使用計量目前是免費的服務。 不過，如果您使用內嵌計量資料的額外解決方案，可能就需支付這些解決方案的使用費。 例如，如果您將計量資料封存到 Azure 儲存體帳戶，就要支付 Azure 儲存體的使用費。 如果您將計量資料串流至 Azure 監視器記錄以進行高階分析，也會向您收取費用。
 
 下列計量會提供您服務健康狀態的概觀。 
 
@@ -56,7 +56,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 | 成功的要求    | 在指定的期間內，向「Azure 事件中樞」服務提出的成功要求數目。 <br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName |
 | 伺服器錯誤  | 在指定的期間內，因「Azure 事件中樞」服務發生錯誤而未處理的要求數目。 <br/><br/>單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName |
 |使用者錯誤 |在指定的期間內，因使用者錯誤而未處理的要求數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|超過配額錯誤 |超出可用配額的要求數目。 如需有關「事件中樞」配額的詳細資訊，請參閱[這篇文章](event-hubs-quotas.md)。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|超出配額的錯誤 |超出可用配額的要求數目。 如需有關「事件中樞」配額的詳細資訊，請參閱[這篇文章](event-hubs-quotas.md)。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
 
 ## <a name="throughput-metrics"></a>輸送量計量
 
@@ -70,7 +70,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 | ------------------- | ----------------- |
 |傳入訊息 |在指定的期間內，傳送到「事件中樞」的事件或訊息數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
 |外送訊息 |在指定的期間內，從「事件中樞」擷取的事件或訊息數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|傳入位元組 |在指定的期間內，傳送到「Azure 事件中樞」服務的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|傳入的位元組 |在指定的期間內，傳送到「Azure 事件中樞」服務的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 |傳出的位元組 |在指定的期間內，從「Azure 事件中樞」服務擷取的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 
 ## <a name="connection-metrics"></a>連接計量
@@ -100,16 +100,16 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 |EntityName| 「事件中樞」可在命名空間底下支援事件中樞實體。|
 
 ## <a name="azure-monitor-integration-with-siem-tools"></a>Azure 監視器與 SIEM 工具整合
-使用 Azure 監視器將您的監視資料（活動記錄、診斷記錄等）路由傳送至事件中樞，可讓您輕鬆地與安全性資訊和事件管理（SIEM）工具整合。 如需詳細資訊，請參閱下列文章/blog 文章：
+使用 Azure 監視器讓您的監視資料 (活動記錄、診斷記錄等 ) 到事件中樞，可讓您輕鬆地整合安全性資訊和事件管理 (SIEM) 工具。 如需詳細資訊，請參閱下列文章/blog 文章：
 
 - [將 Azure 監視資料串流至事件中樞以供外部工具取用](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
 - [Azure 記錄整合簡介](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)
 - [使用 Azure 監視器以與 SIEM 工具整合](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-在 SIEM 工具從事件中樞取用記錄資料的案例中，如果您未看到任何內送訊息，或在計量圖表中看不到傳入訊息，但沒有任何外寄訊息，請遵循下列步驟：
+在 SIEM 工具從事件中樞取用記錄資料的案例中，如果您未看到任何內送訊息，或您在計量圖表中看到內送訊息但沒有任何外寄訊息，請遵循下列步驟：
 
-- 如果沒有內送**訊息**，這表示 Azure 監視器服務不會將 audit/diagnostics 記錄移至事件中樞。 在此案例中，向 Azure 監視器小組開啟支援票證。 
-- 如果有傳入訊息，但**沒有外寄訊息**，這表示 SIEM 應用程式不會讀取訊息。 請洽詢 SIEM 提供者，以判斷事件中樞的設定是否正確。
+- 如果沒有內送 **訊息**，則表示 Azure 監視器服務未將 audit/diagnostics 記錄移至事件中樞。 在此案例中，Azure 監視器小組開啟支援票證。 
+- 如果有內送訊息，但 **沒有任何外寄訊息**，則表示 SIEM 應用程式未讀取訊息。 請聯絡 SIEM 提供者，以判斷事件中樞的設定是否正確。
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -120,10 +120,10 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 如需事件中樞的詳細資訊，請造訪下列連結：
 
 - 開始使用事件中樞教學課程
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [事件中樞常見問題集](event-hubs-faq.md)
 * [使用事件中樞的完整範例應用程式](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

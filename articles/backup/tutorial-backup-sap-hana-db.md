@@ -3,12 +3,12 @@ title: 教學課程 - 將 SAP HANA 資料庫備份至 Azure VM
 description: 在本教學課程中，您將了解如何將執行於 Azure VM 上的 SAP HANA 資料庫備份至 Azure 備份復原服務保存庫。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 3903630a657c2cf8a0b39f3e4c8fc22456097941
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 50c71d58a2409d0062c414b4328eaf8a919e338b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611818"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757484"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教學課程：將 SAP HANA 資料庫備份至 Azure VM
 
@@ -125,7 +125,7 @@ hdbuserstore list
 >[!NOTE]
 > 請確定您在 `/usr/sap/{SID}/home/.hdb/` 下有一組唯一的 SSFS 檔案。 此路徑中應該只有一個資料夾。
 
-## <a name="create-a-recovery-service-vault"></a>建立復原服務保存庫
+## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
 
 復原服務保存庫是一個實體，可儲存一段時間以來建立的備份和復原點。 復原服務保存庫也包含與受保護虛擬機器相關聯的備份原則。
 

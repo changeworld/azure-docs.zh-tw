@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: dacfeeff06d58a084d4313ca50b51f262cf61381
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 30305607ea291587f7751b7e8048924f995251e9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553075"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917970"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>使用受控識別來設定與 Azure 儲存體帳戶的連線 (預覽)
 
@@ -68,7 +68,7 @@ ms.locfileid: "88553075"
 
 ### <a name="3---create-the-data-source"></a>3 - 建立資料來源
 
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 和受控識別連接字串，從儲存體帳戶編制資料的索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
+[REST API](/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](/rest/api/searchservice/create-data-source) 和受控識別連接字串，從儲存體帳戶編制資料的索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
 
 從儲存體帳戶編製索引時，資料來源必須具有下列必要屬性︰
 
@@ -83,7 +83,7 @@ ms.locfileid: "88553075"
         * *ResourceId=/subscriptions/**您的訂用帳戶識別碼**/resourceGroups/**您的資源群組名稱**/providers/Microsoft.Storage/storageAccounts/**您的儲存體帳戶名稱**/;*
 * **容器**會指定您儲存體帳戶中的容器或資料表名稱。 根據預設，容器內的所有 Blob 都可擷取。 如果您只想要在特定虛擬目錄為 Blob 編製索引，您可以使用選擇性的**查詢**參數指定該目錄。
 
-如何使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) \(部分內容為機器翻譯\) 建立 Blob 資料來源物件的範例：
+如何使用 [REST API](/rest/api/searchservice/create-data-source) \(部分內容為機器翻譯\) 建立 Blob 資料來源物件的範例：
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -118,7 +118,7 @@ api-key: [admin key]
     }
 ```
 
-如需建立索引的詳細資訊，請參閱[建立索引](https://docs.microsoft.com/rest/api/searchservice/create-index)
+如需建立索引的詳細資訊，請參閱[建立索引](/rest/api/searchservice/create-index)
 
 ### <a name="5---create-the-indexer"></a>5 - 建立索引子
 
@@ -143,7 +143,7 @@ Blob 索引子的索引子定義範例：
 
 這個索引子每隔兩小時就會執行一次 (已將排程間隔設為 "PT2H")。 若每隔 30 分鐘就要執行索引子，可將間隔設為 "PT30M"。 支援的最短間隔為 5 分鐘。 排程為選擇性 - 如果省略，索引子只會在建立時執行一次。 不過，您隨時都可依需求執行索引子。   
 
-如需建立索引子 API 的詳細資訊，請參閱 [建立索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
+如需建立索引子 API 的詳細資訊，請參閱 [建立索引子](/rest/api/searchservice/create-indexer)。
 
 如需有關定義索引子排程的詳細資訊，請參閱[如何排程 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
 
