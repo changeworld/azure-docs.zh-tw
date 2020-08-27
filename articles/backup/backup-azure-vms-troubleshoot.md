@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: bf2a811098138663f1b7f2acd174d6bca4aa6150
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: a5784aeb615c6d84048835bd6169f0819fad2f56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826235"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892332"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -43,7 +43,7 @@ ms.locfileid: "88826235"
 
 錯誤碼： VMRestorePointInternalError
 
-如果備份時， **事件檢視器的應用程式記錄** 檔會顯示訊息錯誤的 **應用程式名稱： IaaSBcdrExtension.exe** 接著確認 VM 中設定的防毒軟體會限制備份延伸模組的執行。
+如果備份時， **事件檢視器應用程式記錄** 檔會顯示訊息錯誤的 **應用程式名稱： IaaSBcdrExtension.exe** 接著確認 VM 中設定的防毒軟體會限制備份延伸模組的執行。
 若要解決此問題，請將下列目錄排除在防毒軟體設定中，然後重試備份作業。
 
 * `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
@@ -192,7 +192,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 這可確保快照集會透過主機 (而非客體資源) 取得。 請重試備份作業。
 
-**步驟 2**：嘗試將備份排程變更為 VM 負載較少 (低 CPU/IOps 等) 的時間
+**步驟 2**：嘗試將備份排程變更為 VM 低於負載 (（例如較少 CPU 或 IOps）的時間) 
 
 **步驟 3**：嘗試 [增加 VM 的大小](https://azure.microsoft.com/blog/resize-virtual-machines/) ，然後再次嘗試操作
 
@@ -246,7 +246,7 @@ VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Az
 錯誤碼：ExtensionVCRedistInstallationFailure <br/> 錯誤訊息：快照集作業失敗，因為無法安裝適用於 Visual Studio 2012 的 Visual C++ 可轉散發套件。
 
 * 瀏覽至 `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` 並安裝 vcredist2013_x64。<br/>確定允許服務安裝的登錄機碼值已設定為正確的值。 也就是說，將 **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** 中的 **Start** 值設定為 **3**，而不是 **4**。 <br><br>如果您仍遇到安裝問題，請從提高權限的命令提示字元執行 **MSIEXEC /UNREGISTER**，再執行 **MSIEXEC /REGISTER**，以重新啟動安裝服務。
-* 檢查事件記錄檔，以驗證您是否注意到存取相關的問題。 例如：*產品：Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- 錯誤 1401。無法建立機碼：Software\Classes。系統錯誤 5。請驗證您是否有足夠的權限存取該機碼，或是連絡支援人員。* <br><br> 請確定管理員或使用者帳戶具有足夠權限，可更新登錄機碼 **HKEY_LOCAL_MACHINE \SOFTWARE\Classes**。 提供足夠的權限，並重新啟動 Windows Azure 客體代理程式。<br><br> <li> 如果您已備妥防毒軟體，請確定其具有正確的排除規則以允許安裝。
+* 檢查事件記錄檔，以確認您是否注意到存取相關的問題。 例如：*產品：Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- 錯誤 1401。無法建立機碼：Software\Classes。系統錯誤 5。請驗證您是否有足夠的權限存取該機碼，或是連絡支援人員。* <br><br> 請確定管理員或使用者帳戶具有足夠權限，可更新登錄機碼 **HKEY_LOCAL_MACHINE \SOFTWARE\Classes**。 提供足夠的權限，並重新啟動 Windows Azure 客體代理程式。<br><br> <li> 如果您已備妥防毒軟體，請確定其具有正確的排除規則以允許安裝。
 
 ### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy - VM 上設定了防止進行快照集作業的無效原則
 

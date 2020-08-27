@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509598"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922560"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>在 Windows 虛擬桌面使用 Microsoft 小組
 
 >[!IMPORTANT]
->Microsoft 365 的政府環境不支援小組的媒體優化。
+>Microsoft 365 政府 (GCC) 環境支援小組的媒體優化。 針對 GCC （High 或 DoD），不支援小組的媒體優化。
 
 >[!NOTE]
 >Microsoft 小組的媒體優化僅適用于 Windows 10 電腦上的 Windows 桌面用戶端。 媒體優化需要 Windows 桌面用戶端版本1.2.1026.0 或更新版本。
@@ -25,14 +25,14 @@ Windows 虛擬桌面的 Microsoft 小組支援聊天與協同作業。 使用媒
 
 使用 Microsoft 團隊的媒體優化，Windows 桌面用戶端會在本機處理適用于小組通話和會議的音訊和影片。 您仍然可以搭配其他用戶端使用 Windows 虛擬桌面的 Microsoft 小組，而不需要優化通話和會議。 所有平臺都支援小組聊天和共同作業功能。 若要重新導向遠端會話中的本機裝置，請參閱 [自訂主機集區的遠端桌面通訊協定屬性](#customize-remote-desktop-protocol-properties-for-a-host-pool)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在 Windows 虛擬桌面電腦上使用 Microsoft 小組之前，您必須執行下列動作：
 
 - 為 Microsoft 小組[準備您的網路](/microsoftteams/prepare-network/)。
 - 在 Windows 10 或 Windows 10 IoT 企業版裝置上安裝 [Windows 桌面用戶端](connect-windows-7-10.md) ，以符合 [Windows 電腦上小組](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)的 Microsoft 小組硬體需求。
 - 連線到 Windows 10 多會話或 Windows 10 企業版虛擬機器 (VM) 。
-- 使用每一電腦安裝，在主機上安裝小組桌面應用程式。 Microsoft 小組的媒體優化需要小組傳統型應用程式版本1.3.00.4461 或更新版本。
+- 使用每一電腦安裝，在主機上[下載](https://www.microsoft.com/microsoft-365/microsoft-teams/download-app)並安裝小組桌面應用程式。 Microsoft 小組的媒體優化需要小組傳統型應用程式版本1.3.00.4461 或更新版本。
 
 ## <a name="install-the-teams-desktop-app"></a>安裝小組桌面應用程式
 
@@ -94,8 +94,8 @@ Windows 虛擬桌面的 Microsoft 小組支援聊天與協同作業。 使用媒
 
         這會將團隊安裝至64位作業系統上的 Program Files (x86) 資料夾，以及32位作業系統上的 Program Files 資料夾。 到目前為止，黃金映射設定已完成。 非持續性的安裝需要針對每部電腦安裝團隊。
 
-        安裝小組時可以設定兩個旗標， **ALLUSER = 1** 和 **ALLUSERS = 1**。 請務必瞭解這些參數之間的差異。 **ALLUSER = 1**參數只能用於 VDI 環境中，以指定每部電腦安裝。 **ALLUSERS = 1**參數可以用於非 VDI 和 vdi 環境。 當您設定此參數時，team 全電腦安裝程式會顯示在 [程式和功能] 的 [程式和功能] 中，主控台以及 Windows 設定中的應用程式 & 功能。 在電腦上具有系統管理員認證的所有使用者都可以卸載團隊。 
-       
+        安裝小組時可以設定兩個旗標， **ALLUSER = 1** 和 **ALLUSERS = 1**。 請務必瞭解這些參數之間的差異。 **ALLUSER = 1**參數只能用於 VDI 環境中，以指定每部電腦安裝。 **ALLUSERS = 1**參數可以用於非 VDI 和 vdi 環境。 當您設定此參數時，team 全電腦安裝程式會顯示在 [程式和功能] 的 [程式和功能] 中，主控台以及 Windows 設定中的應用程式 & 功能。 在電腦上具有系統管理員認證的所有使用者都可以卸載團隊。
+
         > [!NOTE]
         > 在此時登入期間，使用者和系統管理員無法停用小組的自動啟動。
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: d94e19753a93d2682043d7b67b867325067cee5d
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 73036ba1a72d657fd07a826bbee8651781f70e9b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762295"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931959"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>使用 Azure 入口網站管理 Azure DDoS Protection Standard
 
@@ -38,7 +38,7 @@ DDoS 保護計劃會定義一組跨訂用帳戶且已啟用標準 DDoS 保護的
 對大多數組織來說，並沒有必要建立多個計劃。 計劃無法在訂用帳戶之間移動。 如果您想要變更計劃所在的訂用帳戶，就必須[刪除現有的計劃](#work-with-ddos-protection-plans)，再建立一個新計劃。
 
 1. 選取 Azure 入口網站左上角的 [ **建立資源** ]。
-2. 搜尋 *DDoS*。 當 **DDoS 保護計劃**出現在搜尋結果中時，請選取它。
+2. 搜尋 *DDoS*。 當 **DDoS 保護計劃** 出現在搜尋結果中時，請加以選取。
 3. 選取 [建立]  。
 4. 輸入或選取您自己的值，或者輸入或選取下列範例值，然後選取 [建立]****：
 
@@ -61,7 +61,7 @@ DDoS 保護計劃會定義一組跨訂用帳戶且已啟用標準 DDoS 保護的
     | 訂用帳戶    | 選取您的訂用帳戶。                                    |
     | 資源群組  | 選取 [使用現有的]，然後選取 [myResourceGroup] |
     | 位置        | 美國東部                                                      |
-    | DDoS 保護 | 選取 [標準]****，然後在 [DDoS 保護]**** 底下，選取 [myDdosProtectionPlan]****。 您所選取的計劃可以與虛擬網路位於相同或不同的訂用帳戶中，但兩個訂用帳戶必須都與同一個 Azure Active Directory 租用戶關聯。|
+    | Azure 標準 DDoS 保護 | 選取 [啟用]。 您所選取的計劃可以與虛擬網路位於相同或不同的訂用帳戶中，但兩個訂用帳戶必須都與同一個 Azure Active Directory 租用戶關聯。|
 
 已為虛擬網路啟用「標準 DDoS」時，您無法將虛擬網路移到另一個資源群組或訂用帳戶。 如果您需要移動已啟用「標準 DDoS」的虛擬網路，請先將「標準 DDoS」停用，移動虛擬網路，然後再啟用「標準 DDoS」。 移動之後，就會重設虛擬網路中所有受保護公用 IP 位址的自動調整原則閾值。
 
@@ -71,7 +71,7 @@ DDoS 保護計劃會定義一組跨訂用帳戶且已啟用標準 DDoS 保護的
 2. 選取 Azure 入口網站左上角的 [ **建立資源** ]。
 3. 在入口網站頂端的 [搜尋資源、服務及文件]**** 方塊中，輸入您要為其啟用「標準 DDoS 保護」的虛擬網路名稱。 當虛擬網路的名稱出現在搜尋結果中時，請選取它。
 4. 選取 [設定]**** 底下的 [DDoS 保護]****。
-5. 選取 [標準]。 在 [DDoS 保護計劃]**** 底下，選取現有的 DDoS 保護計劃或是您在步驟 1 中建立的計劃，然後選取 [儲存]****。 您所選取的計劃可以與虛擬網路位於相同或不同的訂用帳戶中，但兩個訂用帳戶必須都與同一個 Azure Active Directory 租用戶關聯。
+5. 選取 [標準]  。 在 [DDoS 保護計劃]**** 底下，選取現有的 DDoS 保護計劃或是您在步驟 1 中建立的計劃，然後選取 [儲存]****。 您所選取的計劃可以與虛擬網路位於相同或不同的訂用帳戶中，但兩個訂用帳戶必須都與同一個 Azure Active Directory 租用戶關聯。
 
 **命令** 
 - Azure CLI： [az network ddos-protection create](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-create)
@@ -229,7 +229,7 @@ Azure 資訊安全中心提供 [安全性警示](/azure/security-center/security
 
 若要使用 DDoS 保護計劃，您的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派下表中所列適當動作的[自訂](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 動作                                            | Name                                     |
+| 動作                                            | 名稱                                     |
 | ---------                                         | -------------                            |
 | Microsoft.Network/ddosProtectionPlans/read        | 讀取 DDoS 保護計劃              |
 | Microsoft.Network/ddosProtectionPlans/write       | 建立或更新 DDoS 保護計劃  |
@@ -238,6 +238,6 @@ Azure 資訊安全中心提供 [安全性警示](/azure/security-center/security
 
 若要啟用虛擬網路的 DDoS 保護，您的帳戶也必須指派[虛擬網路的適當動作](manage-virtual-network.md#permissions)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 為虛擬網路建立和指派[Azure 原則定義](policy-samples.md)

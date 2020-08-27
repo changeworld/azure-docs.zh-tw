@@ -9,13 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 70173e1904ce9d7a159532c8962932765060e4d9
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 6850012272251c910362b61363dacd9090976680
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406940"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918412"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>如何快取驗證權杖
 
@@ -23,7 +23,7 @@ ms.locfileid: "87406940"
 
 ## <a name="using-aspnet"></a>使用 ASP.NET
 
-匯入**microsoft.identitymodel** ，這是用來取得權杖的 NuGet 套件。 接下來，使用下列程式碼來取得 `AuthenticationResult` ，使用您在[建立沉浸式讀取器資源](./how-to-create-immersive-reader.md)時所得到的驗證值。
+匯入 **Microsoft.identitymodel** NuGet 套件，以用來取得權杖。 接下來，使用下列程式碼來取得 `AuthenticationResult` ，並使用您在 [建立沈浸式閱讀程式資源](./how-to-create-immersive-reader.md)時所得到的驗證值。
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -35,11 +35,11 @@ private async Task<AuthenticationResult> GetTokenAsync()
 }
 ```
 
-`AuthenticationResult`物件具有屬性， `AccessToken` 這是您使用 SDK 啟動沉浸式讀取器時將使用的實際 token。 它也具有 `ExpiresOn` 代表權杖何時到期的屬性。 啟動沉浸式讀取器之前，您可以檢查權杖是否已過期，並只在過期時取得新的權杖。
+`AuthenticationResult`物件具有屬性， `AccessToken` 此屬性是您使用 SDK 啟動沈浸式閱讀程式時將使用的實際標記。 它也有一個 `ExpiresOn` 屬性，此屬性會表示權杖到期的時間。 啟動沈浸式閱讀程式之前，您可以檢查權杖是否已過期，並只在過期時取得新的權杖。
 
 ## <a name="using-nodejs"></a>使用 Node.JS
 
-將[**要求**](https://www.npmjs.com/package/request)npm 套件新增至您的專案。 使用下列程式碼來取得權杖，使用您在[建立沉浸式讀取器資源](./how-to-create-immersive-reader.md)時所得到的驗證值。
+將 [**要求**](https://www.npmjs.com/package/request) npm 套件新增至您的專案。 使用下列程式碼來取得權杖，並使用您在 [建立沈浸式閱讀程式資源](./how-to-create-immersive-reader.md)時取得的驗證值。
 
 ```javascript
 router.get('/token', function(req, res) {
@@ -65,7 +65,7 @@ router.get('/token', function(req, res) {
 });
 ```
 
-`expires_on`屬性是權杖到期的日期和時間，以1970年1月1日之後的秒數表示。 請使用此值來判斷您的權杖是否已過期，再嘗試取得新的權杖。
+`expires_on`屬性是權杖到期的日期和時間，以1970年1月1日起的秒數表示。 您可以使用此值來判斷您的權杖是否已過期，然後再嘗試取得新的權杖。
 
 ```javascript
 async function getToken() {

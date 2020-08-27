@@ -1,19 +1,20 @@
 ---
 title: 處理雲端服務生命週期事件 | Microsoft Docs
-description: 瞭解如何在 .NET 中使用雲端服務角色的生命週期方法，包括 RoleEntryPoint，其提供回應生命週期事件的方法。
+description: 瞭解如何在 .NET 中使用雲端服務角色的生命週期方法，包括 RoleEntryPoint，其提供方法來回應生命週期事件。
 services: cloud-services
 documentationcenter: .net
 author: tgore03
 ms.service: cloud-services
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: e23eea439235659cf68da1063ae50a718a847a8d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: d64414abfbc62e52b172a2c42796ec8d89d1719f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142310"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930055"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>在 .NET 中自訂 Web 或背景工作角色的生命週期
 當您建立背景工作角色時，擴充可為您提供覆寫方法並讓您回應生命週期事件的 [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) 類別。 若是 Web 角色，此類別是選擇性的，因此您必須使用它來回應生命週期事件。
@@ -23,7 +24,7 @@ ms.locfileid: "88142310"
 
 擴充 **RoleEntryPoint** 時，應留意下列方法的行為：
 
-* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))方法會傳回布林值，因此可能會從這個方法傳回**false** 。
+* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))方法會傳回布林值，因此可以從這個方法傳回**false** 。
   
    如果您的程式碼傳回 **false**，會突然終止角色處理序，而不會執行您既有的任何關機順序。 一般而言，您應該避免從 **OnStart** 方法傳回 **false**。
 * **RoleEntryPoint** 方法多載未能攔截的任何例外狀況，將一律視為未處理的例外狀況。

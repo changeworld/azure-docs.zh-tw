@@ -11,19 +11,25 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbd4ea4438e82ea9fb1d503b262bfda1b22b2737
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5c072298bf5cce4e22fe50d2474c7abe6b915f74
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690301"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919500"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>針對 IIS Web 應用程式設定 Azure Multi-Factor Authentication Server
 
 使用 Azure Multi-Factor Authentication (MFA) Server 的 [IIS 驗證] 區段來啟用及設定 IIS 驗證，以便與 Microsoft IIS Web 應用程式整合。 Azure MFA Server 會安裝一個外掛程式，可以篩選對 IIS Web 伺服器提出的要求，以新增 Azure Multi-Factor Authentication。 IIS 外掛程式支援表單架構驗證和整合式 Windows HTTP 驗證。 信任的 IP 也可以設定為將內部 IP 位址免除雙因素驗證。
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 MFA 伺服器。 希望要求使用者使用多重要素驗證的新客戶，應該使用雲端式 Azure Multi-Factor Authentication。 在 7 月 1 日前啟用 MFA 伺服器的現有客戶，將能夠下載最新版本及未來的更新，並照常產生啟動認證。 當您使用雲端式 Azure Multi-Factor Authentication 時，除了 Azure Multi-Factor Authentication (MFA) Server 提供的 IIS 外掛程式外，別無選擇。 請改用 Web 應用程式 Proxy (WAP) 搭配 Active Directory 同盟服務 (AD FS) 或 Azure Active Directory 的應用程式 Proxy。
+> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。
+>
+> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure 保護使用者登入事件 Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+>
+> 在2019年7月1日前啟用 MFA Server 的現有客戶，可以下載最新版本、未來的更新，並照常產生啟用認證。
+>
+> 當您使用雲端式 Azure Multi-Factor Authentication 時，除了 Azure Multi-Factor Authentication (MFA) Server 提供的 IIS 外掛程式外，別無選擇。 請改用 Web 應用程式 Proxy (WAP) 搭配 Active Directory 同盟服務 (AD FS) 或 Azure Active Directory 的應用程式 Proxy。
 
 ![MFA 伺服器中的 IIS 驗證](./media/howto-mfaserver-iis/iis.png)
 

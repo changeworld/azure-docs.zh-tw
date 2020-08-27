@@ -10,17 +10,18 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: ba8cf9a25a12ecc261845477c4e32a86f585906e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 16f639a2a263aee286cec8bb0827fa506b50e3df
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592197"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921115"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>如何使用 TransformText 方法
 
 > [!NOTE]
-> 此方法已被取代。 在翻譯工具的 v3.0 中不提供此功能。
+> 此方法已被取代。 這項工具在 v3.0 的3.0 版中無法使用。
 
 TransformText 方法是一個社交媒體的文字正規化函式，會傳回輸入內容的正規化形式。 針對機器翻譯或其他預期要有整齊輸入文字 (通常在社交媒體或使用者產生的內容中不會有) 的應用程式，此方法可用來作為前處理步驟。 此函式目前只對英文輸入有用。
 

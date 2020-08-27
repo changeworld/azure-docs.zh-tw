@@ -3,12 +3,12 @@ title: 使用客戶管理的金鑰來加密備份資料
 description: 瞭解 Azure 備份如何讓您使用客戶管理的金鑰 (CMK) 來加密備份資料。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 9e299095709e07d3c73c8e8c847042cc51f549dd
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 55b994d287e4e2d3971b43359936815822bc18a4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827336"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892638"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客戶管理的金鑰來加密備份資料
 
@@ -23,7 +23,7 @@ Azure 備份可讓您使用客戶管理的金鑰 (CMK) 來加密備份資料，�
 - 執行備份至使用客戶管理金鑰加密的保存庫
 - 從備份還原資料
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - 這項功能可讓您 **僅加密新**的復原服務保存庫。 不支援任何包含已註冊或嘗試註冊之現有專案的保存庫。
 
