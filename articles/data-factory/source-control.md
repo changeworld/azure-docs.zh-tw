@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: d171edb23b482ad1871990dcffd979d2125c4406
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 66cc7b0d4f205a93c41f49ecaadac495a98b6da6
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067404"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949128"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory 中的原始檔控制
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -46,7 +46,7 @@ ms.locfileid: "88067404"
 -   **更好的效能：** 具有 Git 整合的一般處理站，其載入速度會比針對資料處理站服務進行撰寫的處理站快 10 倍。 會有此效能提升是因為資源會透過 Git 來下載。
 
 > [!NOTE]
-> 設定了 Git 存放庫時，Azure Data Factory UX 會停用直接使用 Data Factory 服務來撰寫。 您可以透過 PowerShell 或 SDK 來直接對服務進行變更。
+> 設定了 Git 存放庫時，Azure Data Factory UX 會停用直接使用 Data Factory 服務來撰寫。 透過 PowerShell 或 SDK 所做的變更會直接發佈至 Data Factory 服務，且不會在 Git 中輸入。
 
 ## <a name="author-with-azure-repos-git-integration"></a>使用 Azure Repos Git 整合來進行撰寫
 
@@ -93,7 +93,7 @@ ms.locfileid: "88067404"
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>使用不同的 Azure Active Directory 租用戶
 
-Azure Repos Git 存放庫可以位於不同的 Azure Active Directory 租用戶中。 若要指定不同的 Azure AD 租用戶，您必須擁有所用 Azure 訂用帳戶的系統管理員權限。 如需詳細資訊，請參閱[變更訂用帳戶管理員](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#to-assign-a-user-as-an-administrator)
+Azure Repos Git 存放庫可以位於不同的 Azure Active Directory 租用戶中。 若要指定不同的 Azure AD 租用戶，您必須擁有所用 Azure 訂用帳戶的系統管理員權限。 如需詳細資訊，請參閱 [變更訂用帳戶管理員](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#to-assign-a-user-as-an-administrator)
 
 ### <a name="use-your-personal-microsoft-account"></a>使用您的個人 Microsoft 帳戶
 
@@ -211,10 +211,10 @@ Azure Data Factory 一次只能有一個發佈分支。 當您指定新的發佈
 
 ### <a name="permissions"></a>權限
 
-通常您不會希望每個小組成員都擁有更新 Data Factory 的許可權。 建議您使用下列權限設定：
+一般來說，您不希望每個小組成員都具有更新 Data Factory 的許可權。 建議您使用下列權限設定：
 
 *   所有小組成員都應該具有 Data Factory 的讀取權限。
-*   只應允許一組選取的人員發佈到 Data Factory。 若要這麼做，他們必須在包含 Data Factory 的**資源群組**上具有 [ **Data Factory 參與者**] 角色。 如需權限的詳細資訊，請參閱 [Azure Data Factory 的角色和權限](concepts-roles-permissions.md)。
+*   只有一組選取的人員才能發佈至 Data Factory。 若要這樣做，他們必須在包含 Data Factory 的**資源群組**上擁有**Data Factory 參與者**角色。 如需權限的詳細資訊，請參閱 [Azure Data Factory 的角色和權限](concepts-roles-permissions.md)。
 
 建議您不要允許直接簽入至共同作業分支。 此限制可協助避免錯誤 (bug)，因為每個簽入都會經歷[建立功能分支](source-control.md#creating-feature-branches)所述的提取要求檢閱程序。
 

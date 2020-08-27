@@ -3,12 +3,12 @@ title: 設定診斷記錄 - Azure 事件中樞 | Microsoft Docs
 description: 了解如何為 Azure 中的事件中樞設定活動記錄和診斷記錄。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 65c3fc783506eae19c911eb035ebc51b2db19849
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521933"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927726"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>為 Azure 事件中樞設定診斷記錄
 
@@ -61,18 +61,18 @@ ms.locfileid: "86521933"
 
 名稱 | 描述
 ------- | -------
-TaskName | 失敗工作的描述
-ActivityId | 用於追蹤的內部識別碼
-trackingId | 用於追蹤的內部識別碼
-resourceId | Azure Resource Manager 資源識別碼
-eventHub | 事件中樞完整名稱 (包括命名空間名稱)
-partitionId | 要寫入的事件中樞資料分割
-archiveStep | 可能值：ArchiveFlushWriter、DestinationInit
-startTime | 失敗開始時間
-failures | 發生失敗的次數
-durationInSeconds | 失敗持續時間
-message | 錯誤訊息
-category | ArchiveLogs
+`TaskName` | 失敗工作的描述
+`ActivityId` | 用於追蹤的內部識別碼
+`trackingId` | 用於追蹤的內部識別碼
+`resourceId` | Azure Resource Manager 資源識別碼
+`eventHub` | 事件中樞完整名稱 (包括命名空間名稱)
+`partitionId` | 要寫入的事件中樞資料分割
+`archiveStep` | 可能值：ArchiveFlushWriter、DestinationInit
+`startTime` | 失敗開始時間
+`failures` | 發生失敗的次數
+`durationInSeconds` | 失敗持續時間
+`message` | 錯誤訊息
+`category` | ArchiveLogs
 
 下列程式碼是封存記錄 JSON 字串的範例：
 
@@ -99,15 +99,15 @@ category | ArchiveLogs
 
 名稱 | 描述
 ------- | -------
-ActivityId | 內部識別碼，用來進行追蹤 |
-EventName | 作業名稱 |
-resourceId | Azure Resource Manager 資源識別碼 |
-SubscriptionId | 訂用帳戶識別碼 |
-EventTimeString | 作業時間 |
-EventProperties | 作業屬性 |
-狀態 | 作業狀態 |
-呼叫者 | 作業呼叫者 (Azure 入口網站或管理用戶端) |
-類別 | OperationalLogs |
+`ActivityId` | 內部識別碼，用來進行追蹤 |
+`EventName` | 作業名稱 |
+`resourceId` | Azure Resource Manager 資源識別碼 |
+`SubscriptionId` | 訂用帳戶識別碼 |
+`EventTimeString` | 作業時間 |
+`EventProperties` | 作業屬性 |
+`Status` | 作業狀態 |
+`Caller` | 作業呼叫者 (Azure 入口網站或管理用戶端) |
+`Category` | OperationalLogs |
 
 下列程式碼是作業記錄 JSON 字串的範例：
 
@@ -131,9 +131,9 @@ Example:
 
 | 名稱 | 描述 |
 | ---- | ----------- | 
-| TrackingId | 內部識別碼，用來進行追蹤 |
-| ResourceId | Azure Resource Manager 資源識別碼。 |
-| 訊息 | 參考訊息，其能提供自動擴充動作的詳細資料。 訊息會包含指定命名空間之輸送量單位先前與目前的值，以及觸發 TU 擴充的項目。 |
+| `TrackingId` | 內部識別碼，用來進行追蹤 |
+| `ResourceId` | Azure Resource Manager 資源識別碼。 |
+| `Message` | 參考訊息，其能提供自動擴充動作的詳細資料。 訊息會包含指定命名空間之輸送量單位先前與目前的值，以及觸發 TU 擴充的項目。 |
 
 以下是自動調整事件的範例： 
 
@@ -150,13 +150,13 @@ Kafka 協調器記錄 JSON 包括下表所列的元素：
 
 | 名稱 | 描述 |
 | ---- | ----------- | 
-| RequestId | 要求識別碼，用來進行追蹤 |
-| ResourceId | Azure Resource Manager 資源識別碼 |
-| 作業 | 在群組協調期間完成之作業的名稱 |
-| ClientId | 用戶端識別碼 |
-| NamespaceName | 命名空間名稱 | 
-| SubscriptionId | Azure 訂用帳戶識別碼 |
-| 訊息 | 參考或警告訊息，其能提供在群組協調期間完成之動作的詳細資料。 |
+| `RequestId` | 要求識別碼，用來進行追蹤 |
+| `ResourceId` | Azure Resource Manager 資源識別碼 |
+| `Operation` | 在群組協調期間完成之作業的名稱 |
+| `ClientId` | 用戶端識別碼 |
+| `NamespaceName` | 命名空間名稱 | 
+| `SubscriptionId` | Azure 訂用帳戶識別碼 |
+| `Message` | 參考或警告訊息，其能提供在群組協調期間完成之動作的詳細資料。 |
 
 ### <a name="example"></a>範例
 
@@ -178,14 +178,14 @@ Kafka 使用者錯誤記錄 JSON 包括下表所列的元素：
 
 | 名稱 | 描述 |
 | ---- | ----------- |
-| TrackingId | 追蹤識別碼，用來進行追蹤。 |
-| NamespaceName | 命名空間名稱 |
-| Eventhub | 事件中樞名稱 |
-| PartitionId | 資料分割識別碼 |
-| GroupId | 群組識別碼 |
-| ClientId | 用戶端識別碼 |
-| ResourceId | Azure Resource Manager 資源識別碼。 |
-| 訊息 | 參考訊息，其能提供錯誤的詳細資料 |
+| `TrackingId` | 追蹤識別碼，用來進行追蹤。 |
+| `NamespaceName` | 命名空間名稱 |
+| `Eventhub` | 事件中樞名稱 |
+| `PartitionId` | 資料分割識別碼 |
+| `GroupId` | 群組識別碼 |
+| `ClientId` | 用戶端識別碼 |
+| `ResourceId` | Azure Resource Manager 資源識別碼。 |
+| `Message` | 參考訊息，其能提供錯誤的詳細資料 |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>事件中樞虛擬網路連線事件結構描述
 
@@ -193,13 +193,13 @@ Kafka 使用者錯誤記錄 JSON 包括下表所列的元素：
 
 | 名稱 | 描述 |
 | ---  | ----------- | 
-| SubscriptionId | Azure 訂用帳戶識別碼 |
-| NamespaceName | 命名空間名稱 |
-| IPAddress | 連線到事件中樞服務之用戶端的 IP 位址 |
-| 動作 | 由事件中樞服務在評估連線要求時完成的動作。 支援的動作為 [接受連線] 和 [拒絕連線]。 |
-| 原因 | 提供完成動作的原因 |
-| Count | 指定動作的出現次數 |
-| ResourceId | Azure Resource Manager 資源識別碼。 |
+| `SubscriptionId` | Azure 訂用帳戶識別碼 |
+| `NamespaceName` | 命名空間名稱 |
+| `IPAddress` | 連線到事件中樞服務之用戶端的 IP 位址 |
+| `Action` | 由事件中樞服務在評估連線要求時完成的動作。 支援的動作為 [接受連線] 和 [拒絕連線]。 |
+| `Reason` | 提供完成動作的原因 |
+| `Count` | 指定動作的出現次數 |
+| `ResourceId` | Azure Resource Manager 資源識別碼。 |
 
 ### <a name="example"></a>範例
 
@@ -221,14 +221,14 @@ Kafka 使用者錯誤記錄 JSON 包括下表所列的元素：
 
 | 名稱 | 描述 |
 | ---- | ----------- | 
-| 類別 | 訊息的類別類型。 其為下列其中一個值：**error** 和 **info** |
-| ResourceId | 內部資源識別碼，其包括 Azure 訂用帳戶識別碼和命名空間名稱 |
-| KeyVault | 金鑰保存庫資源的名稱 |
-| Key | 金鑰保存庫金鑰的名稱。 |
-| 版本 | 金鑰保存庫金鑰的版本 |
-| 作業 | 為提供要求所完成之作業的名稱 |
-| 程式碼 | 狀態碼 |
-| 訊息 | 訊息，其能提供錯誤或參考訊息的詳細資料 |
+| `Category` | 訊息的類別類型。 其為下列其中一個值：**error** 和 **info** |
+| `ResourceId` | 內部資源識別碼，其包括 Azure 訂用帳戶識別碼和命名空間名稱 |
+| `KeyVault` | 金鑰保存庫資源的名稱 |
+| `Key` | 金鑰保存庫金鑰的名稱。 |
+| `Version` | 金鑰保存庫金鑰的版本 |
+| `Operation` | 為提供要求所完成之作業的名稱 |
+| `Code` | 狀態碼 |
+| `Message` | 訊息，其能提供錯誤或參考訊息的詳細資料 |
 
 
 
@@ -236,7 +236,7 @@ Kafka 使用者錯誤記錄 JSON 包括下表所列的元素：
 - [事件中樞簡介](./event-hubs-about.md)
 - [事件中樞範例](sdks.md)
 - 開始使用事件中心
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)

@@ -1,23 +1,24 @@
 ---
-title: '在 Azure Kubernetes Service (AKS 中使用系統節點集區) '
-description: '瞭解如何在 Azure Kubernetes Service (AKS 中建立和管理系統節點集區) '
+title: 使用 Azure Kubernetes Service (AKS) 中的系統節點集區
+description: '瞭解如何在 Azure Kubernetes Service (AKS 中建立及管理系統節點集區) '
 services: container-service
 ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
-ms.openlocfilehash: 8c808bda624cca3bd7bd28c6adfbdfb52fa2c068
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.custom: fasttrack-edit
+ms.openlocfilehash: e068984e02a468169f286ab5b783e531a54bd6ed
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562815"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949774"
 ---
-# <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS 中管理系統節點集區) 
+# <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>管理 Azure Kubernetes Service (AKS) 中的系統節點集區
 
-在 Azure Kubernetes Service (AKS) 中，相同設定的節點會群組在一起成為*節點*集區。 節點集區包含執行應用程式的基礎 Vm。 針對您的 AKS 叢集，系統節點集區和使用者節點集區是兩個不同的節點集區模式。 系統節點集區提供裝載重要系統 pod （例如 CoreDNS 和 tunnelfront）的主要目的。 使用者節點集區提供裝載應用程式 pod 的主要目的。 不過，如果您想要在 AKS 叢集中只有一個集區，可以在系統節點集區上排程應用程式 pod。 每個 AKS 叢集至少必須包含一個具有至少一個節點的系統節點集區。
+在 Azure Kubernetes Service (AKS) 中，相同設定的節點會一起分組到 *節點*集區中。 節點集區包含執行應用程式的基礎 Vm。 系統節點集區和使用者節點集區是 AKS 叢集的兩個不同節點集區模式。 系統節點集區提供裝載重要系統 pod （例如 CoreDNS 和 tunnelfront）的主要用途。 使用者節點集區提供裝載應用程式 pod 的主要用途。 但是，如果您想要在 AKS 叢集中只有一個集區，則可以在系統節點集區上排程應用程式 pod。 每個 AKS 叢集至少必須包含一個具有至少一個節點的系統節點集區。
 
 > [!Important]
-> 如果您在生產環境中針對 AKS 叢集執行單一系統節點集區，建議您針對節點集區使用至少三個節點。
+> 如果您在生產環境中為您的 AKS 叢集執行單一系統節點集區，建議您針對節點集區使用至少三個節點。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -27,38 +28,38 @@ ms.locfileid: "87562815"
 
 當您建立和管理支援系統節點集區的 AKS 叢集時，適用下列限制。
 
-* 請參閱[Azure Kubernetes Service (AKS) 中的配額、虛擬機器大小限制和區域可用性][quotas-skus-regions]。
-* AKS 叢集必須以虛擬機器擴展集作為 VM 類型和*標準*SKU 負載平衡器來建立。
-* 節點集區的名稱只可包含小寫英數位元，且必須以小寫字母開頭。 針對 Linux 節點集區，長度必須介於1到12個字元之間。 對於 Windows 節點集區，長度必須介於1到6個字元之間。
-* 必須使用2020-03-01 或更高的 API 版本來設定節點集區模式。 在2020-03-01 之前的 API 版本上建立的叢集只會包含使用者節點集區，但可以遵循[更新集區模式步驟](#update-existing-cluster-system-and-user-node-pools)來遷移以包含系統節點集區。
-* 節點集區的模式是必要屬性，而且必須在使用 ARM 範本或直接 API 呼叫時明確設定。
+* [如 Azure Kubernetes Service (AKS) ，請參閱配額、虛擬機器大小限制和區域可用性][quotas-skus-regions]。
+* AKS 叢集必須以虛擬機器擴展集作為 VM 類型和 *標準* SKU 負載平衡器來建立。
+* 節點集區的名稱只能包含小寫英數位元，且開頭必須是小寫字母。 Linux 節點集區的長度必須介於1到12個字元之間。 Windows 節點集區的長度必須介於1到6個字元之間。
+* 您必須使用2020-03-01 或更高的 API 版本來設定節點集區模式。 在2020-03-01 之前的 API 版本上建立的叢集只會包含使用者節點集區，但可透過下列 [更新集區模式步驟](#update-existing-cluster-system-and-user-node-pools)來遷移，以包含系統節點集區。
+* 節點集區的模式是必要的屬性，而且必須在使用 ARM 範本或直接 API 呼叫時明確設定。
 
 ## <a name="system-and-user-node-pools"></a>系統和使用者節點集區
 
-針對系統節點集區，AKS 會自動將標籤**kubernetes.azure.com/mode**指派給其節點。 這會導致 AKS 偏好在包含此標籤的節點集區上排程系統 pod。 此標籤不會防止您在系統節點集區上排程應用程式 pod。 不過，我們建議您從應用程式 pod 隔離重要的系統 pod，以防止設定錯誤或 rogue 應用程式 pod 不小心終止系統 pod。 您可以藉由建立專用的系統節點集區來強制執行此行為。 使用 `CriticalAddonsOnly=true:NoSchedule` 污點來防止在系統節點集區上排程應用程式 pod。
+針對系統節點集區，AKS 會自動將標籤 **kubernetes.azure.com/mode：系統** 指派給其節點。 這會導致 AKS 偏好在包含此標籤的節點集區上排程系統 pod。 此標籤不會讓您無法排程系統節點集區上的應用程式 pod。 不過，我們建議您從您的應用程式 pod 隔離重要的系統 pod，以防止設定錯誤或 rogue 應用程式 pod 不小心終止系統 pod。 您可以藉由建立專用的系統節點集區來強制執行此行為。 使用 `CriticalAddonsOnly=true:NoSchedule` 污點防止應用程式 pod 在系統節點集區上進行排程。
 
 系統節點集區具有下列限制：
 
 * 系統集區 osType 必須是 Linux。
 * 使用者節點集區 osType 可能是 Linux 或 Windows。
-* 系統集區必須包含至少一個節點，且使用者節點集區可能包含零個或多個節點。
-* 系統節點集區需要至少2個個 vcpu 和 4 GB 記憶體的 VM SKU。
-* 系統節點集區必須支援至少30個 pod，如 pod 的[最小和最大值公式][maximum-pods]所述。
+* 系統集區必須包含至少一個節點，而使用者節點集區可包含零或多個節點。
+* 系統節點集區需要至少2個個 vcpu 和4GB 記憶體的 VM SKU。
+* 系統節點集區必須支援至少30個 pod，如 pod 的 [最小值和最大值公式][maximum-pods]所述。
 * 點節點集區需要使用者節點集區。
 
 您可以使用節點集區執行下列作業：
 
-* 建立專用的系統節點集區 (偏好將系統 pod 排程至) 的節點集區 `mode:system`
-* 將系統節點集區變更為使用者節點集區，前提是您有另一個系統節點集區，以便在 AKS 叢集中使用它。
+* 建立專用的系統節點集區 (偏好將系統 pod 排程到) 的節點集區 `mode:system`
+* 將系統節點集區變更為使用者節點集區，前提是您有另一個系統節點集區在 AKS 叢集中進行放置。
 * 將使用者節點集區變更為系統節點集區。
 * 刪除使用者節點集區。
-* 您可以刪除系統節點集區，但前提是您有另一個系統節點集區，以將其放在 AKS 叢集中。
+* 您可以刪除系統節點集區，前提是您有另一個系統節點集區可在 AKS 叢集中進行。
 * AKS 叢集可能會有多個系統節點集區，而且至少需要一個系統節點集區。
-* 如果您想要變更現有節點集區上的各種不可變設定，可以建立新的節點集區來取代它們。 其中一個範例是使用新的 maxPods 設定來新增節點集區，並刪除舊的節點集區。
+* 如果您想要變更現有節點集區上的各種固定設定，可以建立新的節點集區來取代它們。 其中一個範例是使用新的 maxPods 設定來新增節點集區，並刪除舊的節點集區。
 
-## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>建立具有系統節點集區的新 AKS 叢集
+## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>使用系統節點集區建立新的 AKS 叢集
 
-當您建立新的 AKS 叢集時，您會自動建立具有單一節點的系統節點集區。 初始節點集區預設為「系統」類型的模式。 當您使用建立新的節點集區時 `az aks nodepool add` ，這些節點集區是使用者節點集區，除非您明確指定 mode 參數。
+當您建立新的 AKS 叢集時，會自動建立具有單一節點的系統節點集區。 初始節點集區預設為系統類型的模式。 當您使用建立新的節點集區時 `az aks nodepool add` ，除非您明確指定模式參數，否則這些節點集區會是使用者節點集區。
 
 下列範例會在 eastus 地區建立名為 myResourceGroup 的資源群組。
 
@@ -66,21 +67,21 @@ ms.locfileid: "87562815"
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az aks create][az-aks-create] 命令來建立 AKS 叢集。 下列範例會建立名為*myAKSCluster*的叢集，其中一個專用的系統集區包含一個節點。 針對生產工作負載，請確定您使用的系統節點集區至少有三個節點。 此作業可能需要幾分鐘的時間才能完成。
+使用 [az aks create][az-aks-create] 命令來建立 AKS 叢集。 下列範例會建立名為 *myAKSCluster* 的叢集，其中包含一個包含一個節點的專用系統集區。 針對您的生產工作負載，請確定您使用的系統節點集區至少有三個節點。 此作業可能需要幾分鐘的時間才能完成。
 
 ```azurecli-interactive
 # Create a new AKS cluster with a single system pool
 az aks create -g myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
-## <a name="add-a-dedicated-system-node-pool-to-an-existing-aks-cluster"></a>將專用的系統節點集區新增至現有的 AKS 叢集中
+## <a name="add-a-dedicated-system-node-pool-to-an-existing-aks-cluster"></a>將專用系統節點集區新增至現有的 AKS 叢集
 
 > [!Important]
 > 建立節點集區之後，您就無法透過 CLI 變更節點污點。
 
-您可以將一或多個系統節點集區新增至現有的 AKS 叢集。 建議您將應用程式 pod 排程在使用者節點集區上，並將系統節點集區專用於只有重要的系統 pod。 這可防止惡意應用程式 pod 意外終止系統 pod。 使用系統節點集區的污點強制執行此行為 `CriticalAddonsOnly=true:NoSchedule` [taint][aks-taints] 。 
+您可以將一或多個系統節點集區新增至現有的 AKS 叢集。 建議您將應用程式 pod 排程在使用者節點集區上，並將系統節點集區專門用於重要的系統 pod。 這可防止惡意應用程式 pod 不慎終止系統 pod。 使用您系統節點集區的 `CriticalAddonsOnly=true:NoSchedule` [污點][aks-taints] 來強制執行此行為。 
 
-下列命令會新增模式類型系統的專用節點集區，其預設計數為三個節點。
+下列命令會以三個節點的預設計數，加入模式類型系統的專用節點集區。
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -89,7 +90,7 @@ az aks nodepool add \
     --name systempool \
     --node-count 3 \
     --node-taints CriticalAddonsOnly=true:NoSchedule \
-    --mode system
+    --mode System
 ```
 ## <a name="show-details-for-your-node-pool"></a>顯示節點集區的詳細資料
 
@@ -99,7 +100,7 @@ az aks nodepool add \
 az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n systempool
 ```
 
-系統會為系統節點集區定義一種類型為**system**的模式，並為使用者節點集區定義**使用者**類型的模式。 若為系統集區，請確認污點已設定為 `CriticalAddonsOnly=true:NoSchedule` ，這會防止此節點集區上的應用程式 pod 被排程。
+系統節點集區定義了 **系統** 節點集區的模式，以及為使用者節點集區定義 **使用者** 類型的模式。 針對系統集區，確認污點設定為，以 `CriticalAddonsOnly=true:NoSchedule` 防止應用程式 pod 在此節點集區上排程。
 
 ```output
 {
@@ -141,9 +142,9 @@ az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n systempoo
 ## <a name="update-existing-cluster-system-and-user-node-pools"></a>更新現有的叢集系統和使用者節點集區
 
 > [!NOTE]
-> 必須使用2020-03-01 或更高的 API 版本來設定系統節點集區模式。 在2020-03-01 之前的 API 版本上建立的叢集僅包含使用者節點集區。 若要在較舊的叢集上接收系統節點集區功能和優點，請在最新的 Azure CLI 版本上，使用下列命令來更新現有節點集區的模式。
+> 您必須使用2020-03-01 或更高的 API 版本來設定系統節點集區模式。 在2020-03-01 之前的 API 版本上建立的叢集只會包含使用者節點集區。 若要在舊叢集上接收系統節點集區功能和優點，請在最新的 Azure CLI 版本上，使用下列命令來更新現有節點集區的模式。
 
-您可以變更系統和使用者節點集區的模式。 只有當 AKS 叢集上已有另一個系統節點集區時，您才可以將系統節點集區變更為使用者集區。
+您可以變更系統和使用者節點集區的模式。 只有當 AKS 叢集中已有其他系統節點集區時，您才能將系統節點集區變更為使用者集區。
 
 此命令會將系統節點集區變更為使用者節點集區。
 
@@ -160,9 +161,9 @@ az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 ## <a name="delete-a-system-node-pool"></a>刪除系統節點集區
 
 > [!Note]
-> 若要在 API 版本2020-03-02 之前，在 AKS 叢集上使用系統節點集區，請新增系統節點集區，然後刪除原始預設節點集區。
+> 若要在 API 2020-03-02 版之前使用 AKS 叢集上的系統節點集區，請新增系統節點集區，然後刪除原始的預設節點集區。
 
-先前您無法刪除系統節點集區，這是 AKS 叢集中的初始預設節點集區。 您現在可以彈性地從叢集刪除任何節點集區。 由於 AKS 叢集需要至少一個系統節點集區，因此您的 AKS 叢集上必須至少有兩個系統節點集區，才能刪除其中一個。
+先前您無法刪除系統節點集區，這是 AKS 叢集中的初始預設節點集區。 您現在可以彈性地從您的叢集刪除任何節點集區。 因為 AKS 叢集需要至少一個系統節點集區，所以您的 AKS 叢集上必須至少有兩個系統節點集區，才能刪除其中一個。
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
@@ -170,7 +171,7 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若要刪除叢集，請使用[az group delete][az-group-delete]命令來刪除 AKS 資源群組：
+若要刪除叢集，請使用 [az group delete][az-group-delete] 命令來刪除 AKS 資源群組：
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
@@ -178,9 +179,9 @@ az group delete --name myResourceGroup --yes --no-wait
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-在本文中，您已瞭解如何在 AKS 叢集中建立和管理系統節點集區。 如需有關如何使用多個節點集區的詳細資訊，請參閱[使用多個節點][use-multiple-node-pools]集區。
+在本文中，您已瞭解如何建立和管理 AKS 叢集中的系統節點集區。 如需有關如何使用多個節點集區的詳細資訊，請參閱 [使用多個節點][use-multiple-node-pools]集區。
 
 <!-- EXTERNAL LINKS -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

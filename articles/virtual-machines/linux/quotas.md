@@ -4,19 +4,22 @@ description: 了解 Azure 的 vCPU 配額。
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 684c665d57127b7ca52771c0498ef370293e4003
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 028da1fa9d2b16b4d87c345d8435c99b565e1774
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292317"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949689"
 ---
-# <a name="virtual-machine-vcpu-quotas"></a>虛擬機器 vCPU 配額
+# <a name="check-vcpu-quotas-using-the-azure-cli"></a>使用 Azure CLI 檢查 vCPU 配額
 
 虛擬機器和虛擬機器擴展集的 vCPU 配額依每個地區的每個訂用帳戶分兩層排列。 第一層是「區域 vCPU 總計」，第二層是不同的 VM 大小系列核心，例如「D 系列 vCPU」。 在每次部署新的 VM 時，VM 的 vCPU 皆不得超過 VM 大小系列的 vCPU 配額或區域 vCPU 總配額。 如果超過這些配額，將不允許 VM 部署。 另外還有區域中虛擬機器整體數目的配額。 在 [Azure 入口網站](https://portal.azure.com)的 [訂用帳戶]**** 頁面的 [使用量 + 配額]**** 區段中可以看到這些配額的詳細資料，或者您可以使用 Azure CLI 查詢這些值。
+
+> [!NOTE]
+> 配額是根據已配置和已解除配置的核心總數來計算。 如果您需要額外的核心，[請要求增加配額](../../azure-portal/supportability/resource-manager-core-quotas-request.md)，或刪除不再使用的虛擬機器。 
 
 
 ## <a name="check-usage"></a>檢查使用量

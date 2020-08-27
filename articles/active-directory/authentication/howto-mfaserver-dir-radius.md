@@ -1,5 +1,5 @@
 ---
-title: RADIUS 和 Azure MFA Server-Azure Active Directory
+title: RADIUS 和 Azure MFA 伺服器-Azure Active Directory
 description: 部署 RADIUS 驗證與 Azure Multi-Factor Authentication Server。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,21 +11,25 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 552226c35d4d129f73b96b689871708950b7ffb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 679a8fee80711e8244cf953e78fd7260d922ff49
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652956"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949383"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>將 RADIUS 驗證與 Azure Multi-Factor Authentication Server 整合
 
 RADIUS 是接受驗證要求並處理這些要求的標準通訊協定。 Azure Multi-Factor Authentication Server 可作為 RADIUS 伺服器。 將它插入您的 RADIUS 用戶端 (VPN 應用裝置) 與驗證目標之間，以新增雙步驟驗證。 您的驗證目標可能是 Active Directory、LDAP 目錄或其他 RADIUS 伺服器。 為了讓 Azure Multi-Factor Authentication (MFA) 運作，必須將 Azure MFA Server 設定為能夠與用戶端伺服器和驗證目標進行通訊。 Azure MFA Server 會從 RADIUS 用戶端接收要求、向驗證目標驗證認證、新增 Azure Multi-Factor Authentication，然後將回應傳回給 RADIUS 用戶端。 只有當主要驗證和 Azure Multi-Factor Authentication 都成功時，驗證要求才會成功。
 
 > [!IMPORTANT]
-> 本文僅適用于 Azure MFA Server 的使用者。 如果您使用以雲端為基礎的 Azure MFA，請改為參閱如何[整合 AZURE mfa 的 RADIUS 驗證](howto-mfa-nps-extension.md)。
+> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。
 >
-> 自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 MFA 伺服器。 希望要求使用者使用多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。 在 7 月 1 日前啟用 MFA 伺服器的現有客戶，將能夠下載最新版本及未來的更新，並如常產生啟用認證。
+> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure 保護使用者登入事件 Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+>
+> 如果您使用雲端式 MFA，請參閱 [將現有的 NPS 基礎結構與 Azure Multi-Factor Authentication 整合](howto-mfa-nps-extension.md)。
+>
+> 在2019年7月1日前啟用 MFA Server 的現有客戶，可以下載最新版本、未來的更新，並照常產生啟用認證。
 
 > [!NOTE]
 > MFA 伺服器在做為 RADIUS 伺服器時，僅支援 PAP (密碼驗證通訊協定) 和 MSCHAPv2 (Microsoft 的 Challenge-Handshake 驗證通訊協定) RADIUS 通訊協定。  當 MFA Server 是作為另一部 RADIUS 伺服器的 RADIUS Proxy，而該伺服器支援 EAP (可延伸的驗證通訊協定) 這類其他通訊協定時，則也可以使用該通訊協定。
@@ -41,7 +45,7 @@ RADIUS 是接受驗證要求並處理這些要求的標準通訊協定。 Azure 
 1. 在 Azure Multi-Factor Authentication Server 中，按一下左功能表中的 [RADIUS 驗證] 圖示。
 2. 請選取 [啟用 RADIUS 驗證]**** 核取方塊。
 3. 如果 Azure MFA RADIUS 服務需要在非標準連接埠上接聽 RADIUS 要求，請在 [用戶端] 索引標籤上變更 [驗證連接埠] 和 [帳戶處理連接埠]。
-4. 按一下 **[新增]** 。
+4. 按一下 [新增] 。
 5. 輸入將向 Azure Multi-Factor Authentication Server 進行驗證之應用裝置/伺服器的 IP 位址、應用程式名稱 (選擇性)，以及 共用密碼。
 
    應用程式名稱會出現在報告中，而且可能顯示在簡訊或行動裝置應用程式驗證訊息內。
@@ -56,11 +60,11 @@ RADIUS 是接受驗證要求並處理這些要求的標準通訊協定。 Azure 
 
 ## <a name="configure-your-radius-client"></a>設定 RADIUS 用戶端
 
-1. 按一下 [**目標**] 索引標籤。
-   * 如果 Azure MFA Server 是安裝在 Active Directory 環境中已加入網域的伺服器上，請選取 [ **Windows 網域**]。
-   * 如果應針對 LDAP 目錄驗證使用者，請選取 [ **ldap**系結]。
-      選取 [目錄整合] 圖示，然後編輯 [設定] 索引標籤上的 LDAP 組態，以便讓伺服器能夠繫結至您的目錄。 您可以在[Ldap Proxy 設定指南](howto-mfaserver-dir-ldap.md)中找到設定 ldap 的指示。
-   * 如果應該向另一部 RADIUS 伺服器驗證使用者，請選取 **[radius 伺服器**]。
+1. 按一下 [ **目標** ] 索引標籤。
+   * 如果 Azure MFA 伺服器安裝在 Active Directory 環境中已加入網域的伺服器上，請選取 [ **Windows 網域**]。
+   * 如果使用者應針對 LDAP 目錄進行驗證，請選取 [ **ldap**系結]。
+      選取 [目錄整合] 圖示，然後編輯 [設定] 索引標籤上的 LDAP 組態，以便讓伺服器能夠繫結至您的目錄。 您可以在 [Ldap Proxy 設定指南](howto-mfaserver-dir-ldap.md)中找到設定 ldap 的指示。
+   * 如果使用者應該向另一部 RADIUS 伺服器進行驗證，請選取 [ **RADIUS 伺服器 (s]) **。
 1. 按一下 [新增]**** 以設定 Azure MFA Server 要作為其 Proxy 來處理 RADIUS 要求的伺服器。
 1. 在 [新增 RADIUS 伺服器] 對話方塊中，輸入 RADIUS 伺服器的 IP 位址和共用密碼。
 
@@ -77,10 +81,10 @@ RADIUS 是接受驗證要求並處理這些要求的標準通訊協定。 Azure 
 
 若要設定 RADIUS 用戶端，請遵循下列指導方針：
 
-* 將您的應用裝置/伺服器設定為透過 RADIUS 向 Azure 多重要素驗證服務器的 IP 位址（作為 RADIUS 伺服器）進行驗證。
+* 將您的應用裝置/伺服器設定為透過 RADIUS 對 Azure Multi-Factor Authentication Server 的 IP 位址進行驗證，作為 RADIUS 伺服器。
 * 使用先前設定的相同共用密碼。
 * 將 RADIUS 超時設定為30-60 秒，以便有時間驗證使用者的認證、執行雙步驟驗證、接收其回應，然後回應 RADIUS 存取要求。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您在雲端有 Azure Multi-Factor Authentication，請了解如何[與 RADIUS 驗證整合](howto-mfa-nps-extension.md)。 

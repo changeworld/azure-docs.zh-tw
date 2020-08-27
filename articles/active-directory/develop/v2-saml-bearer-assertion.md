@@ -2,7 +2,7 @@
 title: Microsoft 身分識別平台與 SAML 持有人判斷提示流程 | Azure
 description: 了解如何使用 SAML 持有人判斷提示流程從 Microsoft Graph 擷取資料，而無須提示使用者提供認證。
 services: active-directory
-author: umeshbarapatre
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.custom: aaddev
-ms.openlocfilehash: e0db5bec00ce864536b3559eda160acdada5e157
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 46f3ef775f3b17e0ebc93fc4145a5b8037b901e5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114688"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949349"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 SAML 持有人判斷提示流程
 OAuth 2.0 SAML 持有人判斷提示流程可供在用戶端需要使用現有的信任關係時，使用 SAML 判斷提示來要求 OAuth 存取權杖。 套用至 SAML 判斷提示的簽章會提供授權應用程式其驗證。 SAML 判斷提示是一種由識別提供者發行，並由服務提供者取用的 XML 安全性權杖。 服務提供者會針對與安全性相關的用途，依賴其內容來識別判斷提示的主旨。

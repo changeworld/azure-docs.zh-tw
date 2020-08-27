@@ -3,22 +3,20 @@ title: 使用事件處理器主機接收事件 - Azure 事件中樞 | Microsoft 
 description: 本文將說明 Azure 事件中樞內的事件處理器主機；此主機可簡化檢查點、租用和平行事件讀取的管理。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 7c6d08c385174597ce80e3ddfd6204db6b0b14a5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936175"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949077"
 ---
 # <a name="event-processor-host"></a>事件處理器主機
 > [!NOTE]
-> 本文適用于舊版的 Azure 事件中樞 SDK。 若要瞭解如何將您的程式碼遷移至較新版本的 SDK，請參閱這些遷移指南。 
+> 本文適用于舊版的 Azure 事件中樞 SDK。 如需 SDK 的最新版本，請參閱在 [應用程式的多個實例之間平衡分割區的負載](event-processor-balance-partition-load.md)。 若要瞭解如何將您的程式碼遷移至較新版本的 SDK，請參閱這些遷移指南。 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
 > - [JAVA 腳本](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
->
-> 此外，請參閱在 [應用程式的多個實例之間平衡分割區的負載](event-processor-balance-partition-load.md)。
 
 Azure 事件中樞是能以低成本串流數百萬個事件的強大遙測擷取服務。 本文將說明如何使用「事件處理器主機」**(EPH) 來取用內嵌事件；事件處理器主機是智慧型取用者代理程式，可簡化檢查點、租用和平行事件讀取器的管理。  
 
@@ -187,7 +185,7 @@ Epoch 功能可讓使用者在任何時間點，使用下列規則，確保取�
 > 針對使用 epoch 的應用程式以及不使用 epoch 的應用程式，建議使用不同的取用者群組來避免錯誤。 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在您已熟悉事件處理器主機，請參閱下列文章以深入了解事件中樞：
 

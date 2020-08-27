@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: efcc4aebf16fccc70af7c77f0e8481d24f13b9cd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0e83f63e3c39f2aa20cd46f098185aba523e2478
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935257"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950471"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure 認知搜尋中的預覽功能
 
@@ -35,7 +35,7 @@ ms.locfileid: "88935257"
 |  [**Azure Data Lake Storage Gen2 索引子**](search-howto-index-azure-data-lake-storage.md) | 索引子資料來源 | Data Lake Storage Gen2 中的索引內容和中繼資料。| 需要[註冊](https://aka.ms/azure-cognitive-search/indexer-preview)，才能在後端為您的訂用帳戶啟用支援。 使用 [Create Data source (REST) ](/rest/api/searchservice/create-data-source) （api 版本 = 2020-06-30-Preview-preview 或 api 版本 = 2019-05-06-Preview-preview）來存取此資料來源。 |
 | [**moreLikeThis**](search-more-like-this.md) | 查詢 | 尋找與特定檔相關的檔。 這個功能已存在舊版預覽中。 | 使用 api 版本 = 2020-06-30-preview-Preview、2019-05-06-Preview、2016-09-01-Preview 或 2017-11-11-Preview，在搜尋檔中新增此查詢參數 [ (REST) ](/rest/api/searchservice/search-documents) 呼叫。 |
 
-## <a name="calling-preview-rest-apis"></a>呼叫預覽 REST Api
+## <a name="how-to-call-a-preview-rest-api"></a>如何呼叫預覽版 REST API
 
 Azure 認知搜尋一律先透過 REST API 預先發行實驗性功能，然後再透過 .NET SDK 的發行前版本。
 
@@ -47,17 +47,19 @@ Azure 認知搜尋一律先透過 REST API 預先發行實驗性功能，然後�
 
 + 若為管理作業， [**`2019-10-01-Preview`**](/rest/api/searchmanagement/index-2019-10-01-preview) 則為目前的預覽版本。
 
-較舊的預覽仍可運作，但是經過一段時間後會變成過時。 如果您的程式碼呼叫 `api-version=2019-05-06-Preview` 或 `api-version=2016-09-01-Preview` 或 `api-version=2017-11-11-Preview` ，則這些呼叫仍然有效。 但是，只有最新預覽版本會重新整理改進功能。 
+較舊的預覽仍可運作，但是經過一段時間後會變成過時。 如果您的程式碼呼叫 `api-version=2019-05-06-Preview` 或 `api-version=2016-09-01-Preview` 或 `api-version=2017-11-11-Preview` ，則這些呼叫仍然有效。 但是，只有最新預覽版本會重新整理改進功能。
 
 下列的範例語法說明對預覽 API 版本的呼叫。
 
 ```HTTP
-GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2020-06-30-Preview
+POST https://[service name].search.windows.net/indexes/hotels-idx/docs/search?api-version=2020-06-30-Preview  
+  Content-Type: application/json  
+  api-key: [admin key]
 ```
 
 Azure 認知搜尋服務可在多個版本中使用。 如需詳細資訊，請參閱 [API 版本](search-api-versions.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請參閱搜尋 REST 預覽 API 參考檔。 如果您遇到問題，請向我們尋求 [Stack Overflow](https://stackoverflow.com/) 或 [連絡人支援](https://azure.microsoft.com/support/community/?product=search)的協助。
 

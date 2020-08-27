@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: eaae6d90799c11d2475105a30f830db8dfae7fcf
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: bdb6bf166e84bb9134bbd14454899bcefbf0a887
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860956"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949893"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>如何認證 IoT 隨插即用裝置
 
@@ -43,7 +43,7 @@ IoT 隨插即用裝置認證方案包含可檢查裝置是否符合 IoT 隨插�
 - 描述與 [DTDL v2](https://aka.ms/dtdl) 模型的裝置互動。
 - 發佈[Azure IoT 公用模型存放庫](https://devicemodels.azureiotsolutions.com/)中的模型和所有必要的介面
 - 在 dps 布建承載的 [dps 註冊](concepts-developer-guide.md#dps-payload) 期間傳送模型識別碼。
-- 宣告 [MQTT 連接](/concepts-developer-guide.md#model-id-announcement)期間的模型識別碼。
+- 宣告 [MQTT 連接](concepts-developer-guide.md#model-id-announcement)期間的模型識別碼。
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>使用 Azure IoT 擴充功能 CLI 進行測試
 
@@ -204,6 +204,6 @@ az iot product test task create --type QueueTestRun --test-id d45d53d9-656d-4be7
 1. 查看介面。 請檢查介面，並確定每一個都有適合測試的承載輸入。
 1. 測試。 系統會測試每個裝置模型，以檢查模型中所述的遙測、屬性和命令是否遵循 IoT 隨插即用慣例。 測試完成時，請選取 [ **查看記錄** ] 連結，以查看裝置的遙測資料，以及傳送至 IoT 中樞裝置對應項屬性的原始資料。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 裝置提交完成後，您可以聯繫裝置認證小組， [iotcert@microsoft.com](mailto:iotcert@microsoft.com) 以繼續進行後續步驟，其中包括 Microsoft 合作夥伴網路成員資格驗證，以及使用者入門指南的評論。 滿足所有需求時，您可以選擇讓裝置包含在「 [Azure IoT 認證」裝置目錄](https://aka.ms/devicecatalog)中。

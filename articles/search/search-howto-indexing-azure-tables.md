@@ -1,7 +1,7 @@
 ---
 title: 搜尋 Azure 資料表儲存體內容
 titleSuffix: Azure Cognitive Search
-description: 瞭解如何使用 Azure 認知搜尋索引子來編制 Azure 資料表儲存體中儲存的資料索引。
+description: 瞭解如何使用 Azure 認知搜尋索引子為儲存在 Azure 資料表儲存體中的資料編制索引。
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,37 +9,37 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: a57232853284dad6f363797c009b1c38738d5b37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 26be48e7968345863799191539bd668ea6d9a4a2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519774"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929562"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>如何使用 Azure 認知搜尋為 Azure 資料表儲存體中的資料表編制索引
 
-本文說明如何使用 Azure 認知搜尋來編制 Azure 資料表儲存體中儲存的資料索引。
+本文說明如何使用 Azure 認知搜尋來為儲存在 Azure 資料表儲存體中的資料編制索引。
 
 ## <a name="set-up-azure-table-storage-indexing"></a>設定 Azure 表格儲存體編制索引
 
 您可以使用下列資源設定 Azure 表格儲存體索引子︰
 
 * [Azure 入口網站](https://ms.portal.azure.com)
-* Azure 認知搜尋[REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Azure 認知搜尋[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
+* Azure 認知搜尋 [REST API](/rest/api/searchservice/Indexer-operations)
+* Azure 認知搜尋 [.NET SDK](/dotnet/api/overview/azure/search)
 
 我們會在此使用 REST API 示範流程。 
 
 ### <a name="step-1-create-a-datasource"></a>步驟 1：建立資料來源
 
-資料來源會指定要編制索引的資料、存取資料所需的認證，以及可讓 Azure 認知搜尋有效率地識別資料變更的原則。
+資料來源會指定要編制索引的資料、存取資料所需的認證，以及啟用 Azure 認知搜尋有效率地識別資料變更的原則。
 
 若要為資料表編製索引，資料來源必須具有下列屬性︰
 
 - **name** 是搜尋服務中資料來源的唯一名稱。
 - **type** 必須是 `azuretable`。
 - **credentials** 參數包含儲存體帳戶連接字串。 請參閱[指定認證](#Credentials)一節了解詳細資訊。
-- **container**設定資料表名稱和選擇性查詢。
+- **容器** 會設定資料表名稱和選擇性查詢。
     - 使用 `name` 參數指定資料表名稱。
     - (選擇性) 使用 `query` 參數指定查詢。 
 
@@ -62,18 +62,18 @@ ms.locfileid: "86519774"
     }   
 ```
 
-如需建立資料來源 API 的詳細資訊，請參閱[建立資料來源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)。
+如需建立資料來源 API 的詳細資訊，請參閱[建立資料來源](/rest/api/searchservice/create-data-source)。
 
 <a name="Credentials"></a>
 #### <a name="ways-to-specify-credentials"></a>指定認證的方法 ####
 
 您可以採取下列其中一種方式提供資料表的認證︰ 
 
-- **完整存取儲存體帳戶連接字串**： `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 您可以移至**儲存體帳戶**的 [分頁] [設定] [索引  >  **Settings**  >  **鍵**] （適用于傳統儲存體帳戶）或 [**設定**] [  >  **存取金鑰**] （適用于 Azure Resource Manager 儲存體帳戶），以從 Azure 入口網站取得連接字串。
-- **儲存體帳戶共用存取簽章連接字串**： `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 共用存取簽章應該有容器（在此案例中為數據表）和物件（資料表資料列）的 [清單] 和 [讀取] 許可權。
--  **資料表共用存取**簽章： `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` 共用存取簽章應該有資料表的查詢（讀取）許可權。
+- **完整存取儲存體帳戶連接字串**： `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 您可以從 Azure 入口網站取得連接字串，方法是移至傳統儲存體帳戶的**儲存體帳戶**分頁  >  **設定**  >  **金鑰** () 或 Azure Resource Manager **Settings**  >  儲存體帳戶) 的設定**存取金鑰** (。
+- **儲存體帳戶共用存取簽章連接字串**： `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 在此情況下，共用存取簽章應該擁有容器 (資料表的清單和讀取權限) 和 (資料表資料列) 的物件。
+-  **資料表共用存取**簽章： `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` 共用存取簽章應該有資料表的查詢 (read) 許可權。
 
-如需儲存體共用存取簽章的詳細資訊，請參閱[使用共用存取簽章](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+如需儲存體共用存取簽章的詳細資訊，請參閱[使用共用存取簽章](../storage/common/storage-sas-overview.md)。
 
 > [!NOTE]
 > 如果您使用共用存取簽章認證，您必須使用更新的簽章定期更新資料來源認證以防止其到期。 如果共用存取簽章認證過期，索引子會失敗並出現類似以下的錯誤訊息：「連接字串中提供的認證無效或已過期」。  
@@ -97,7 +97,7 @@ ms.locfileid: "86519774"
     }
 ```
 
-如需建立索引的詳細資訊，請參閱[建立索引](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+如需建立索引的詳細資訊，請參閱[建立索引](/rest/api/searchservice/create-index)。
 
 ### <a name="step-3-create-an-indexer"></a>步驟 3：建立索引子
 索引子會以目標搜尋索引連線資料來源，並提供排程來自動重新整理資料。 
@@ -117,19 +117,19 @@ ms.locfileid: "86519774"
     }
 ```
 
-這個索引子會每隔兩小時執行一次。 （排程間隔設為 "PT2H"）。若要每隔30分鐘執行索引子，請將間隔設定為 "為 PT30M"。 支援的最短間隔為 5 分鐘。 排程為選擇性；如果省略，索引子只會在建立時執行一次。 不過，您隨時都可依需求執行索引子。   
+這個索引子會每隔兩小時執行一次。  (排程間隔設定為 "PT2H"。 ) 若要每隔30分鐘執行一次索引子，請將間隔設定為 "PT30M"。 支援的最短間隔為 5 分鐘。 排程為選擇性；如果省略，索引子只會在建立時執行一次。 不過，您隨時都可依需求執行索引子。   
 
-如需建立索引子 API 的詳細資訊，請參閱[建立索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
+如需建立索引子 API 的詳細資訊，請參閱[建立索引子](/rest/api/searchservice/create-indexer)。
 
 如需有關定義索引子排程的詳細資訊，請參閱[如何排程 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
 
 ## <a name="deal-with-different-field-names"></a>處理不同的欄位名稱
-有時候，現有索引中的欄位名稱與資料表中的屬性名稱不同。 您可以使用欄位對應，將資料表中的屬性名稱對應至您搜尋索引中的欄位名稱。 若要深入瞭解欄位對應，請參閱[Azure 認知搜尋索引子欄位對應會橋接資料來源和搜尋索引之間的差異](search-indexer-field-mappings.md)。
+有時候，現有索引中的欄位名稱與資料表中的屬性名稱不同。 您可以使用欄位對應，將資料表中的屬性名稱對應至您搜尋索引中的欄位名稱。 若要深入瞭解欄位對應，請參閱 [Azure 認知搜尋索引子欄位對應會橋接資料來源和搜尋索引之間的差異](search-indexer-field-mappings.md)。
 
 ## <a name="handle-document-keys"></a>處理文件索引鍵
 在 Azure 認知搜尋中，檔索引鍵會唯一識別檔。 每個搜尋索引必須確實具有一個 `Edm.String`類型的索引鍵欄位。 要新增至索引的每個文件都需要有索引鍵欄位。 (實際上它是唯一必要的欄位。)
 
-因為資料表資料列具有複合索引鍵，所以 Azure 認知搜尋會產生名為的綜合欄位，其 `Key` 為分割區索引鍵和資料列索引鍵值的串連。 例如，如果資料列的 PartitionKey 為 `PK1` 且 RowKey 是 `RK1`，則 `Key` 欄位的值是 `PK1RK1`。
+由於資料表資料列有複合索引鍵，因此 Azure 認知搜尋會產生一個稱為的綜合欄位， `Key` 該欄位是分割區索引鍵和資料列索引鍵值的串連。 例如，如果資料列的 PartitionKey 為 `PK1` 且 RowKey 是 `RK1`，則 `Key` 欄位的值是 `PK1RK1`。
 
 > [!NOTE]
 > `Key` 值可能包含在文件索引鍵中無效的字元，例如連字號。 您可以使用 `base64Encode` [欄位對應函式](search-indexer-field-mappings.md#base64EncodeFunction)來處理無效字元。 如果您這樣做，請記得在 API 呼叫 (例如查閱) 中傳遞文件索引鍵時，也使用 URL 安全 Base64 編碼。
@@ -158,7 +158,7 @@ ms.locfileid: "86519774"
 <a name="Performance"></a>
 ## <a name="performance-considerations"></a>效能考量
 
-根據預設，Azure 認知搜尋會使用下列查詢篩選： `Timestamp >= HighWaterMarkValue` 。 因為 Azure 資料表的 `Timestamp` 欄位沒有次要索引，這種類型的查詢需要完整的資料表掃描，因此若是大型資料表就會變慢。
+根據預設，Azure 認知搜尋會使用下列查詢篩選準則： `Timestamp >= HighWaterMarkValue` 。 因為 Azure 資料表的 `Timestamp` 欄位沒有次要索引，這種類型的查詢需要完整的資料表掃描，因此若是大型資料表就會變慢。
 
 
 以下是加強資料表索引效能兩個可能的做法。 這兩種做法都依賴使用資料表資料分割︰ 
@@ -170,7 +170,7 @@ ms.locfileid: "86519774"
 
 - 如果您的資料是依時間分割 (例如，每日或每週建立新的資料分割)，請考慮下列做法︰ 
     - 使用這個形式的查詢︰`(PartitionKey ge <TimeStamp>) and (other filters)`。 
-    - 使用 [Get Indexer Status API](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) 監視索引子進度，並根據最新成功的上限標準值定期更新查詢的 `<TimeStamp>` 條件。 
+    - 使用 [Get Indexer Status API](/rest/api/searchservice/get-indexer-status) 監視索引子進度，並根據最新成功的上限標準值定期更新查詢的 `<TimeStamp>` 條件。 
     - 採取此做法時，如果您需要觸發完整的重新索引，則除了重設索引子之外，還必須重設資料來源查詢。 
 
 

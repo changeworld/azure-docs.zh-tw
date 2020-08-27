@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46d3b8d94148e3db163411c21cccf39c7630c6b3
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: eb51e8590e2859a9fe8692f79c5b1238ed5a2098
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032899"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948176"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>使用 What If 工具對條件式存取進行疑難排解
 
@@ -76,6 +76,6 @@ What If 工具僅需要**使用者**便可以開始使用。
 ## <a name="next-steps"></a>後續步驟
 
 * [何謂條件式存取？](overview.md)
-* [Azure Active Directory Identity Protection 是什麼？](../identity-protection/overview-v2.md)
+* [Azure Active Directory Identity Protection 是什麼？](../identity-protection/overview-identity-protection.md)
 * [什麼是裝置身分識別？](../devices/overview.md)
 * [運作方式：Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)

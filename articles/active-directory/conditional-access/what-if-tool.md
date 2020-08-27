@@ -1,6 +1,6 @@
 ---
-title: 條件式存取 What If 工具 Azure Active Directory
-description: 瞭解如何在您的環境中瞭解條件式存取原則的影響。
+title: 條件式存取 What If 工具-Azure Active Directory
+description: 瞭解如何瞭解您的條件式存取原則對您環境的影響。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,28 +11,28 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5f75ce20d24f98e5fcefde49b95a545281f8066
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: db76ec2bc2fc8640214f962a809fee559b4c4af3
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032878"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948193"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在條件式存取中使用 What If 工具進行疑難排解
 
-[條件式存取](../active-directory-conditional-access-azure-portal.md)是 Azure Active Directory (Azure AD) 的功能，可讓您控制授權使用者存取雲端應用程式的方式。 您要如何知道環境中的條件式存取原則會有什麼？ 若要回答這個問題，您可以使用**條件式存取 What If 工具**。
+[條件式存取](./overview.md) 是 Azure Active Directory (Azure AD) 的功能，可讓您控制授權使用者如何存取您的雲端應用程式。 您如何知道環境中的條件式存取原則會有什麼預期？ 若要回答這個問題，您可以使用 **條件式存取 What If 工具**。
 
 本文說明如何使用此工具來測試您的條件式存取原則。
 
 ## <a name="what-it-is"></a>內容
 
-**條件式存取 What If 原則工具**可讓您瞭解條件式存取原則對環境的影響。 這個工具並非要讓您以手動方式執行多個登入來測試原則，而是要讓您評估使用者的模擬登入。 該模擬可評估此登入對原則所造成的影響，並產生模擬報告。 此報告不只會列出已套用的條件式存取原則，還有[傳統原則](policy-migration.md#classic-policies)（如果有的話）。    
+**條件式存取 What If 原則工具**可讓您瞭解條件式存取原則對您環境的影響。 這個工具並非要讓您以手動方式執行多個登入來測試原則，而是要讓您評估使用者的模擬登入。 該模擬可評估此登入對原則所造成的影響，並產生模擬報告。 報表不只會列出已套用的條件式存取原則，也會列出 [傳統原則](policy-migration.md#classic-policies) （如果有的話）。    
 
-**What If**工具可讓您快速判斷適用于特定使用者的原則。 例如，如果您需要針對問題進行疑難排解，就可以使用這項資訊。    
+**What If**工具提供一種方式，可快速判斷適用于特定使用者的原則。 例如，如果您需要針對問題進行疑難排解，就可以使用這項資訊。    
 
 ## <a name="how-it-works"></a>運作方式
 
-在 [**條件式存取 What If 工具**] 中，您必須先設定要模擬之登入案例的設定。 這些設定包括：
+在 **條件式存取 What If 工具**中，您必須先設定要模擬之登入案例的設定。 這些設定包括：
 
 - 您要測試的使用者 
 - 使用者會嘗試存取的雲端應用程式
@@ -40,13 +40,13 @@ ms.locfileid: "88032878"
      
 在下一個步驟中，您可以起始模擬執行來評估設定。 只有已啟用的原則才會參與評估執行。
 
-評估完成時，此工具會產生一份受影響原則的報告。 若要收集有關條件式存取原則的詳細資訊，[條件式存取深入解析和報表活頁簿](howto-conditional-access-insights-reporting.md)可以在僅限報表模式中提供原則的其他詳細資料，以及目前已啟用的原則。
+評估完成時，此工具會產生一份受影響原則的報告。 若要收集有關條件式存取原則的詳細資訊， [條件式存取深入解析和報告活頁簿](howto-conditional-access-insights-reporting.md) 可以在僅限報表模式下提供原則的其他詳細資料，以及目前啟用的原則。
 
 ## <a name="running-the-tool"></a>執行工具
 
-您可以在 Azure 入口網站的 [**[條件式存取-原則](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)**] 頁面上找到 [ **What If** ] 工具。
+您可以在 Azure 入口網站的 [**[條件式存取-原則](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)**] 頁面上找到**What If**工具。
 
-若要啟動工具，請在原則清單頂端的工具列中，按一下 [ **What If**]。
+若要啟動工具，請在原則清單頂端的工具列中按一下 [ **What If**]。
 
 ![What If](./media/what-if-tool/01.png)
 
@@ -88,7 +88,7 @@ IP 位址是用來模擬[位置條件](location-condition.md)的單一 IPv4 位�
 
 ## <a name="evaluation"></a>評估 
 
-您可以按一下 [ **What If**] 開始評估。 評估結果所提供的報告中會包含： 
+您可以按一下 [ **What If**開始進行評估。 評估結果所提供的報告中會包含： 
 
 ![What If](./media/what-if-tool/03.png)
 
@@ -98,11 +98,11 @@ IP 位址是用來模擬[位置條件](location-condition.md)的單一 IPv4 位�
 
 如果選取的雲端應用程式中存在[傳統原則](policy-migration.md#classic-policies)，系統就會向您顯示指標。 按一下指標，系統就會將您重新導向至傳統原則頁面。 在傳統原則頁面中，您可以移轉傳統原則，也可以直接加以停用。 關閉此頁面就會回到評估結果。
 
-在套用至所選使用者的原則清單中，您也可以找到使用者必須滿足的[授與控制項](concept-conditional-access-grant.md)和[會話控制項](concept-conditional-access-session.md)的清單。
+在套用至所選使用者的原則清單中，您也可以找到使用者必須滿足的 [grant 控制項](concept-conditional-access-grant.md) 和 [會話控制項](concept-conditional-access-session.md) 清單。
 
 在未套用至使用者的原則清單中，您也可以找到未套用這些原則的原因。 每個所列出原則的原因各代表其第一個未符合的條件。 原則已停用是之所以未套用原則的可能原因之一，因為已停用的原則不會進行進一步的評估。   
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- 如需條件式存取原則應用程式的詳細資訊，請參閱使用[條件式存取深入解析和報告](howto-conditional-access-insights-reporting.md)的原則僅限報告模式。
-- 如果您已準備好設定環境的條件式存取原則，請參閱[條件式存取的一般原則](concept-conditional-access-policy-common.md)。 
+- 有關條件式存取原則應用程式的詳細資訊，可以使用 [條件式存取深入解析和報告](howto-conditional-access-insights-reporting.md)來使用原則報告模式。
+- 如果您已準備好設定環境的條件式存取原則，請參閱 [條件式存取一般原則](concept-conditional-access-policy-common.md)。

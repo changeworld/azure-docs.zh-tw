@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: bf3e4262f4342788f343ab287fd3db53d12736c7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/26/2020
+ms.openlocfilehash: 73037ac3725ad1e7e9dd84597936c47406244630
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918106"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949876"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure 認知搜尋中的 API 版本
 
@@ -24,7 +24,24 @@ Azure 認知搜尋定期推出功能更新。 有時候 (但並不一定)，這�
 相同的規則適用於 SDK 更新。 Azure 認知搜尋 SDK 會遵循 [語義版本控制](https://semver.org/) 規則，這表示其版本有三個部分：主要、次要和組建編號 (例如，1.1.0) 。 只有在變更會破壞回溯相容性時，才會發行新的主要版本 SDK。 非重大功能更新會遞增次要版本，而錯誤修正只會遞增組建版本。
 
 > [!Important]
-> 適用于 .NET、JAVA、Python 和 JavaScript 的 Azure Sdk 即將推出 Azure 認知搜尋的新用戶端程式庫。 目前，沒有任何 Azure SDK 程式庫完全支援最新的搜尋 REST Api (2020-06-30) 或管理 REST Api (2020-03-13) 但這會隨著時間而改變。 您可以定期檢查此頁面或功能增強功能的 [新](whats-new.md) 功能。 
+> 適用于 .NET、JAVA、Python 和 JavaScript 的 Azure Sdk 即將推出 Azure 認知搜尋的新用戶端程式庫。 目前，沒有任何 Azure SDK 程式庫完全支援最新的搜尋 REST Api (2020-06-30) 或管理 REST Api (2020-03-13) 但這會隨著時間而改變。 您可以定期檢查此頁面或功能增強功能的 [新](whats-new.md) 功能。
+
+<a name="unsupported-versions"></a>
+
+## <a name="unsupported-versions"></a>不支援的版本
+
+2020年10月15日之前，將現有的搜尋解決方案升級為最新版的 REST API。 屆時，將會淘汰下列版本的 Azure 認知搜尋 REST API，且不再支援：
+
++ **2015-02-28**
++ **2015-02-28-Preview**
++ **2014-07-31-Preview**
++ **2014-10-20-Preview**
+
+此外，Azure 認知搜尋版 [**3.0.0**](https://www.nuget.org/packages/Microsoft.Azure.Search/3.0.0-rc) 的 .net SDK 版本也將會被淘汰，因為這些版本是以其中一個 REST API 版本為目標。 
+
+在此日期之後，使用任何已淘汰 REST API 或 SDK 版本的應用程式將無法再運作，而且必須進行升級。 就像這種類型的任何變更一樣，我們會提供12個月的通知，讓您有足夠的時間進行調整。
+
+若要繼續使用 Azure 認知搜尋，請在2020年10月15日之前，將以 [REST API](search-api-migration.md) 為目標的現有程式碼遷移至 [REST API 2020-06-30 版](https://docs.microsoft.com/rest/api/searchservice/) 或更新版本的 SDK。  如果您有任何關於更新至最新版本的問題，請傳送電子郵件至 azuresearch_contact@microsoft.com 2020 5 月15日，以確保您有足夠的時間更新您的程式碼。
 
 ## <a name="rest-apis"></a>REST API
 
@@ -40,16 +57,16 @@ Azure 認知搜尋服務實例支援數個 REST API 版本，包括最新版本�
 |-------------------------|--------|------------------------------|
 | [搜尋 2020-06-30](/rest/api/searchservice/index)| 穩定 | 最新穩定版本的搜尋 REST Api，並在相關性評分和正式推出的知識存放區中提供進展。|
 | [搜尋 2020-06-30-預覽](/rest/api/searchservice/index-preview)| 預覽 | 與穩定版本相關聯的預覽版本。 包含多項 [預覽功能](search-api-preview.md)。 |
-| 搜尋 2019-05-06 | 穩定 | 加入 [複雜類型](search-howto-complex-data-types.md)。 |
+| 搜尋 2019-05-06 | 穩定  | 加入 [複雜類型](search-howto-complex-data-types.md)。 |
 | 搜尋 2019-05-06-預覽 | 預覽 | 與穩定版本相關聯的預覽版本。 |
-| 搜尋2017-11-11 | 穩定  | 新增技能集和 [AI 擴充](cognitive-search-concept-intro.md)。 |
+| 搜尋2017-11-11 | 穩定 | 新增技能集和 [AI 擴充](cognitive-search-concept-intro.md)。 |
 | 搜尋 2017-11-11-預覽 | 預覽 | 與穩定版本相關聯的預覽版本。 |
 | 搜尋2016-09-01 |穩定 | 加入 [索引子](search-indexer-overview.md)。 |
 | 搜尋 2016-09-01-預覽 | 預覽 | 與穩定版本相關聯的預覽版本。|
-| 搜尋2015-02-28 | 穩定  | 第一個正式推出的版本。  |
-| 搜尋 2015-02-28-預覽 | 預覽 | 與穩定版本相關聯的預覽版本。 |
-| 搜尋 2014-10-20-預覽 | 預覽 | 第二個公開預覽版。 |
-| 搜尋 2014-07-31-預覽 | 預覽 | 第一個公開預覽。 |
+| 搜尋2015-02-28 | 10-10-2020 之後不支援   | 第一個正式推出的版本。  |
+| 搜尋 2015-02-28-預覽 | 10-10-2020 之後不支援  | 與穩定版本相關聯的預覽版本。 |
+| 搜尋 2014-10-20-預覽 | 10-10-2020 之後不支援 | 第二個公開預覽版。 |
+| 搜尋 2014-07-31-預覽 | 10-10-2020 之後不支援  | 第一個公開預覽。 |
 
 ### <a name="management-rest-apis"></a>管理 REST API
 
@@ -64,8 +81,7 @@ Azure 認知搜尋服務實例支援數個 REST API 版本，包括最新版本�
 
 ## <a name="azure-sdk-for-net"></a>適用於 .NET 的 Azure SDK
 
-套件版本歷程記錄可在 NuGet.org 上取得。下表提供每個封裝頁面的連結。
-
+下表提供較新 SDK 版本的連結。 
 
 | SDK 版本 | 狀態 | 描述 |
 |-------------|--------|------------------------------|
@@ -73,6 +89,8 @@ Azure 認知搜尋服務實例支援數個 REST API 版本，包括最新版本�
 | [Microsoft Azure. 搜尋10。0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | 穩定 | 發行日期可能是2019。 以搜尋 REST api 版本 = 2019-05-06 為目標。|
 | [Microsoft Azure。搜尋 8.0-預覽](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) | 預覽 | 2019年4月發行。 以搜尋 REST api 版本 = 2019-05-06-preview-Preview 為目標。|
 | [Microsoft. 管理。搜尋3.0。0](/dotnet/api/overview/azure/search/management?view=azure-dotnet) | 穩定 | 以管理 REST api 版本 = 2015-08-19 為目標。  |
+
+如需較早版本的 Microsoft. 搜尋的詳細資訊，請移至任何版本的 [NuGet 封裝頁面](https://www.nuget.org/packages/Microsoft.Azure.Search/) ，向下移至 **版本歷程記錄**，並展開區段以查看完整的版本清單。
 
 ## <a name="azure-sdk-for-java"></a>Azure SDK for Java
 

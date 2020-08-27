@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 00219dbebb8e84c21b9e5b84cf71309c63fc518e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c211c0e5ef0b39f778db7c922fafc735e2411068
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855969"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930038"
 ---
 # <a name="write-client-app-authentication-code"></a>撰寫用戶端應用程式驗證碼
 
@@ -25,7 +25,7 @@ ms.locfileid: "88855969"
 
 您也可以在 how [*to：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)中，深入瞭解適用于 Azure 數位 Twins 的 Api 和 sdk。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 首先，請完成 how [*to：設定實例和驗證*](how-to-set-up-instance-scripted.md)中的設定步驟。 這可確保您有 Azure 數位 Twins 實例、您的使用者具有存取權限，而且您已設定用戶端應用程式的許可權。 完成此設定之後，您就可以開始撰寫用戶端應用程式程式碼。
 
@@ -35,7 +35,7 @@ ms.locfileid: "88855969"
 
 首先，請在您的專案中包含下列套件，以使用 .NET SDK 和驗證工具進行此操作說明：
 * `Azure.DigitalTwins.Core` (版本 `1.0.0-preview.2`) 
-* `Azure.Identity` (版本 `1.1.1`) 
+* `Azure.Identity`
 
 根據您選擇的工具，您可以使用 Visual Studio 套件管理員或命令列工具來包含套件 `dotnet` 。 
 
@@ -104,7 +104,7 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 
 本節說明如何在這種情況下進行驗證。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 首先，您應該使用 AutoRest 中的步驟來完成建立自訂 SDK 的步驟，方法是使用 how [*to：建立適用于 Azure 數位 Twins 的自訂 sdk 和 AutoRest*](how-to-create-custom-sdks.md)。
 

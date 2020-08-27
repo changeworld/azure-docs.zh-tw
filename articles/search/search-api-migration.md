@@ -7,28 +7,28 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 06e25e1426f206a4542444f57954ed4859a11142
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/26/2020
+ms.openlocfilehash: 0f1050bf58e0cd8d9a601d60a4c5dc22a5420483
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927131"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949026"
 ---
-# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>升級至最新的 Azure 認知搜尋服務 REST API 版本
+# <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>升級至 Azure 認知搜尋中的最新 REST API
 
-如果您使用舊版的 [搜尋 REST API](/rest/api/searchservice/)，本文將協助您升級應用程式，以使用最新正式推出的 API 版本2020-06-30。
+如果您使用的是舊版的 [**搜尋 REST API**](/rest/api/searchservice/)，本文將協助您將應用程式升級至最新正式運作的 API 版本 **2020-06-30**。
 
-REST API 的2020-06-30 版包含一些較舊版本的變更。 這些是大部分具有回溯相容性，因此變更程式碼應該只需要最少的工作 (視您之前使用的版本而定)。 [升級的步驟](#UpgradeSteps) 概述使用新功能所需的程式碼變更。
+2020-06-30 版包含 ([知識存放區](knowledge-store-concept-intro.md)) 的重要新功能，並引進數個次要行為變更。 因此，這個版本大多是回溯相容性，因此，如果您要從舊版 (2019-05-06) 升級，程式碼的變更應該會很短。
 
 > [!NOTE]
-> Azure 認知搜尋服務實例支援的 REST API 版本範圍，包括較舊的版本。 您可以繼續使用這些 API 版本，但建議您將程式碼遷移至最新版本，以便您可以存取新功能。
+> 搜尋服務支援一系列的 REST API 版本，包括較舊的版本。 您可以繼續使用這些 API 版本，但建議您將程式碼遷移至最新版本，以便您可以存取新功能。 經過一段時間後，最舊的 REST API 版本將會被取代，而且 [不再受到支援](search-api-versions.md#unsupported-versions)。
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="how-to-upgrade"></a>如何升級
 
-升級至新版本時，您可能不需要對程式碼進行任何變更，只要變更版本號碼即可。 您可能需要變更程式碼的唯一情況是︰
+升級至新版本時，您可能不需要對程式碼進行許多變更，只要變更版本號碼即可。 您可能需要變更程式碼的唯一情況是︰
 
 * 您的程式碼在 API 回應中傳回無法辨認的屬性時失敗。 您的應用程式預設應該會略過不了解的屬性。
 
@@ -36,7 +36,7 @@ REST API 的2020-06-30 版包含一些較舊版本的變更。 這些是大部�
 
 * 您的程式碼會參考比2019-05-06 的 API 版本，並且受限於該版本中的一或多個重大變更。 [升級至 2019-05-06](#upgrade-to-2019-05-06)一節會提供更多詳細資料。 
 
-如果其中任何一種情況適用于您，您可能需要據此變更程式碼。 否則，除非您想要開始使用新版本中新增的功能，否則不需要進行任何變更。
+如果其中任何一種情況適用于您，您可能需要據此變更程式碼。 否則，就不需要進行任何變更，不過您可能會想要開始使用新版本中新增的功能。
 
 ## <a name="upgrade-to-2020-06-30"></a>升級至2020-06-30
 
@@ -63,7 +63,7 @@ REST API 的2020-06-30 版包含一些較舊版本的變更。 這些是大部�
 
 ### <a name="breaking-changes"></a>重大變更
 
-如果程式碼包含下列功能，則針對舊版 API 所撰寫的現有程式碼將會在 API 版本 = 2019-05-06 中斷：
+如果程式碼包含下列功能，則針對舊版 API 所撰寫的現有程式碼將會在 API 版本 = 2019-05-06 和更新版本中斷：
 
 #### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Azure Cosmos DB 資料來源的索引子現在是 "type"： "cosmosdb"
 
@@ -141,7 +141,7 @@ API 版本 2017-11-11-Preview 中引進了定義索引欄位的較新樹狀結�
 > [!NOTE]
 > 您無法從 Azure 入口網站管理以舊的 "單層" 格式建立的索引。 請在最早的便利性中，將您的索引從「一般」標記法升級為「樹狀結構」標記法。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請參閱搜尋 REST API 參考檔。 如果您遇到問題，請向我們尋求 [Stack Overflow](https://stackoverflow.com/) 或 [連絡人支援](https://azure.microsoft.com/support/community/?product=search)的協助。
 

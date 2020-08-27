@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 08/25/2020
-ms.openlocfilehash: 85459f357032a7f9944d50e3e4f3929015c6dcfd
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c7b78f14602632068a19d520aeeb940b543be61
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869112"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948210"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>規劃 Azure SQL Database 和 Azure SQL 受控執行個體中的 Azure 維護事件
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,6 +24,8 @@ ms.locfileid: "88869112"
 瞭解如何在 Azure SQL Database 和 Azure SQL 受控執行個體中為您的資料庫做好規劃的維護事件。
 
 ## <a name="what-is-a-planned-maintenance-event"></a>什麼是計劃性維護事件？
+
+為了讓 Azure SQL Database 和 Azure SQL 受控執行個體服務保持安全、符合規範、穩定和效能，您幾乎會不斷地透過服務元件來執行更新。 感謝新式、健全的服務架構和創新的技術（例如 [熱修補](https://aka.ms/azuresqlhotpatching)），大部分的更新在服務可用性方面都是完全透明且不可具影響力的。 但是，有幾種類型的更新會導致短暫的服務中斷，且需要進行特殊處理。 
 
 針對每個資料庫，Azure SQL Database 和 Azure SQL 受控執行個體維護資料庫複本的仲裁，其中一個複本是主要複本。 在任何時候，主要複本都必須是線上服務，而且至少一個次要複本必須狀況良好。 計劃性維護期間，資料庫仲裁的成員每次只會有一個離線，目的是在線上隨時保有一個可回應的主要複本和至少一個次要複本，以確保用戶端不會停機。 主要複本需要離線時，會產生重新設定/容錯移轉程序，這時，其中一個次要複本會成為新的主要複本。  
 
@@ -43,7 +45,7 @@ ms.locfileid: "88869112"
 
 如果您的資料庫遇到登入失敗，請檢查[Azure 入口網站](https://portal.azure.com)中的 [[資源健康狀態](../../service-health/resource-health-overview.md#get-started)] 視窗，以取得目前的狀態。 [健康情況歷程記錄] 區段會包含每個事件停止運作的原因 (如果有的話)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入瞭解 Azure SQL Database 和 Azure SQL 受控執行個體的 [資源健康狀態](resource-health-to-troubleshoot-connectivity.md) 。
 - 如需重試邏輯的詳細資訊，請參閱 [暫時性錯誤的重試邏輯](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)。

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147c6016c56d45fadca4f4b8e583bce54006ef07
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6eb4efd26502c20a33cb61ab1c9d58f2757bbd70
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922088"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948295"
 ---
 # <a name="custom-controls-preview"></a>自訂控制項 (預覽)
 
@@ -53,7 +53,7 @@ ms.locfileid: "88922088"
 
 ## <a name="known-limitations"></a>已知限制
 
-自訂控制項不能搭配需要 Azure Multi-Factor Authentication、Azure AD 自助式密碼重設 (SSPR) 、滿足多重要素驗證宣告需求、提升特殊許可權身分識別管理員 (PIM) 中的角色，或作為 Intune 裝置註冊的一部分的自動化。
+自訂控制項不能搭配需要 Azure Multi-Factor Authentication 的身分識別保護、Azure AD 自助式密碼重設 (SSPR) 、滿足多重要素驗證宣告需求、在 Intune 裝置註冊的過程中提升許可權身分識別管理員 (PIM) 中的角色，或將裝置加入 Azure AD 時使用。
 
 ## <a name="next-steps"></a>後續步驟
 

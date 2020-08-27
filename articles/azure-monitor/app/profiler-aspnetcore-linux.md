@@ -2,16 +2,17 @@
 title: 使用 Application Insights Profiler 來分析 ASP.NET Core Azure Linux Web 應用程式 | Microsoft Docs
 description: 關於如何使用 Application Insights Profiler 的概念敍述及逐步教學課程。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a21d48787a39c491a2ab1ace1bf42ff85bd34993
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 652d63cbf71f7a998462780a5057ce8269463da4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078082"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930378"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 來分析 ASP.NET Core Azure Linux Web 應用程式
 
@@ -23,7 +24,7 @@ ms.locfileid: "88078082"
 
 ![分析工具追蹤](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 下列指示適用於所有 Windows、Linux 和 Mac 開發環境：
 
 * 安裝 [.NET Core SDK 2.1.2 或更新版本](https://dotnet.microsoft.com/download/archives)。
@@ -47,7 +48,7 @@ ms.locfileid: "88078082"
    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
    ```
 
-1. 啟用 Program.cs 中的 Application Insights：
+1. 在 Program.cs 中啟用 Application Insights：
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -106,7 +107,7 @@ ms.locfileid: "88078082"
 
     ![設定 Git 存放庫](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-如需更多部署選項，請參閱[App Service 檔](https://docs.microsoft.com/azure/app-service)。
+如需部署選項的詳細資訊，請參閱 [App Service 檔](https://docs.microsoft.com/azure/app-service)。
 
 ## <a name="deploy-your-project"></a>部署您的專案
 

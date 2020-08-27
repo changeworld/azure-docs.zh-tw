@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/26/2020
 ms.author: b-juche
-ms.openlocfilehash: 3299865837bd14566cca54ec84b2dce452c633da
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e85a78582c0f7aac188198ad91f9ac91ddf62961
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080502"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950369"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
-Azure NetApp Files 支援使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或雙重通訊協定 (NFSv3 和 SMB) 來建立磁片區。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。 本文說明如何建立 SMBv3 磁碟區。
+Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙重通訊協定 (NFSv3 和 SMB) 。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。 本文說明如何建立 SMBv3 磁碟區。
 
 ## <a name="before-you-begin"></a>開始之前 
 您必須已經設定容量集區。   
@@ -163,7 +163,7 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或雙重通�
      * **備份原則使用者**  
         您可以將需要更高權限的其他帳戶，納入為了使用 Azure NetApp Files 而建立的電腦帳戶。 指定的帳號可允許在檔案或資料夾層級變更 NTFS 權限。 例如，您可以指定非特殊權限服務帳戶，用來將資料移轉至 Azure NetApp Files 中的 SMB 檔案共用。  
 
-        「**備份原則使用者**」功能目前為預覽狀態。 如果這是您第一次使用此功能，請在使用此功能之前先進行註冊： 
+        **備份原則使用者**功能目前為預覽狀態。 如果這是您第一次使用這項功能，請先註冊該功能再加以使用： 
 
         ```azurepowershell-interactive
         Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
@@ -172,11 +172,13 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或雙重通�
         檢查功能註冊的狀態： 
 
         > [!NOTE]
-        > **RegistrationState** `Registering` 最多可能處於60分鐘的狀態，然後再變更為 `Registered` 。 等候狀態為 [**已註冊**]，再繼續進行。
+        > 在變更為之前， **>registrationstate** 可能會處於 `Registering` 最多60分鐘的狀態 `Registered` 。 等到狀態 **註冊** 後再繼續。
 
         ```azurepowershell-interactive
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
+        
+        您也可以使用 Azure CLI 命令 [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) ，並 [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) 註冊功能並顯示註冊狀態。 
 
     * 認證，包括您的**使用者名稱**和**密碼**
 
@@ -197,7 +199,7 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或雙重通�
 2. 按一下 [+ 新增磁碟區] 以建立磁碟區。  
     隨即顯示 [建立磁碟區] 視窗。
 
-3. 在 [建立磁片區] 視窗中，按一下 [**建立**]，然後在 [基本] 索引標籤下提供下欄欄位的資訊：   
+3. 在 [建立磁片區] 視窗中，按一下 [基本] 索引標籤底下的 [ **建立** ] 並提供下欄欄位的資訊：   
     * **磁碟區名稱**      
         為您要建立的磁碟區指定名稱。   
 
@@ -228,11 +230,11 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或雙重通�
     
         ![建立子網路](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * 如果您想要將現有的快照集原則套用到磁片區，請按一下 [**顯示 advanced] 區段**將它展開，然後選取下拉式功能表中的快照集原則。 
+    * 如果您想要將現有的快照集原則套用到磁片區，請按一下 [ **顯示 advanced] 區段** 將它展開，然後在下拉式功能表中選取快照集原則。 
 
-        如需建立快照集原則的相關資訊，請參閱[管理快照集原則](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
+        如需建立快照集原則的詳細資訊，請參閱 [管理快照](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)集原則。
 
-        ![顯示先進的選擇](../media/azure-netapp-files/volume-create-advanced-selection.png)
+        ![顯示 advanced selection](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. 按一下 [通訊協定]，然後完成下列資訊：  
     * 選取 [SMB] 做為磁碟區的通訊協定類型。 

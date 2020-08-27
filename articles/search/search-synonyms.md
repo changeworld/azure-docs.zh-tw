@@ -1,31 +1,31 @@
 ---
-title: 搜尋索引上的查詢展開同義字
+title: 搜尋索引的查詢擴充同義字
 titleSuffix: Azure Cognitive Search
-description: 建立同義字對應，以在 Azure 認知搜尋索引上擴充搜尋查詢的範圍。 範圍會擴大納入您清單所提供的對等詞彙。
+description: 建立同義字地圖，以展開 Azure 認知搜尋索引上搜尋查詢的範圍。 範圍會擴大納入您清單所提供的對等詞彙。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 96ad10fcca260223d92203a80f396de816238efc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/26/2020
+ms.openlocfilehash: aad953483749d676844221f7e519f50c50b63ad4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529552"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948635"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure 認知搜尋中的同義字
 
 搜尋引擎中與對等詞彙相關聯的同義字，讓使用者不必實際提供詞彙，就能以隱含方式擴充查詢範圍。 例如，給定詞彙「狗」與關聯的同義字「犬科動物」和「小狗」，任何包含「狗」、「犬科動物」和「小狗」的文件都會包含在查詢範圍內。
 
-在 Azure 認知搜尋中，同義字展開會在查詢期間完成。 您可以在不中斷現有作業的情況下，新增同義字地圖至服務中。 您無需重建索引，就可以將 synonymMaps**** 屬性新增至欄位定義。
+在 Azure 認知搜尋中，同義字展開是在查詢時完成的。 您可以在不中斷現有作業的情況下，新增同義字地圖至服務中。 您無需重建索引，就可以將 synonymMaps**** 屬性新增至欄位定義。
 
 ## <a name="create-synonyms"></a>建立同義字
 
-不支援建立同義字的入口網站，但您可以使用 REST API 或 .NET SDK。 若要開始使用 REST，建議[使用 Postman](search-get-started-postman.md) ，並使用此 API 來表述要求：[建立同義字對應](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)。 對於 c # 開發人員，您可以開始使用[c # 在 Azure 認知搜尋中新增同義字](search-synonyms-tutorial-sdk.md)。
+沒有建立同義字的入口網站支援，但是您可以使用 REST API 或 .NET SDK。 若要開始使用 REST，建議使用下列 API 來 [使用 Postman](search-get-started-postman.md) 和編寫要求： [建立同義字對應](/rest/api/searchservice/create-synonym-map)。 針對 c # 開發人員，您可以 [使用 c # 在 Azure 認知搜尋中開始新增同義字](search-synonyms-tutorial-sdk.md)。
 
-或者，如果您使用[客戶管理的金鑰](search-security-manage-encryption-keys.md)來進行服務端待用加密，您可以將該保護套用至同義字對應的內容。
+（選擇性）如果您使用 [客戶管理的金鑰](search-security-manage-encryption-keys.md) 進行服務端加密，您可以將該保護套用至同義字對應的內容。
 
 ## <a name="use-synonyms"></a>使用同義字
 
@@ -45,7 +45,7 @@ ms.locfileid: "86529552"
 
 #### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>使用 POST 或 PUT 在您的服務中新增或更新同義字地圖。
 
-同義地圖會透過 POST 或 PUT 上傳至服務。 每個規則都必須以新行字元 ('\n') 分隔。 您最多可以在免費服務中針對每個同義字地圖定義5000個規則，並在所有其他 Sku 中針對每個對應定義20000個規則。 每條規則最多可以有 20 個擴充詞彙。
+同義地圖會透過 POST 或 PUT 上傳至服務。 每個規則都必須以新行字元 ('\n') 分隔。 您最多可以為每個同義字地圖在免費服務中定義5000個規則，並在所有其他 Sku 中定義每個對應的20000個規則。 每條規則最多可以有 20 個擴充詞彙。
 
 同義字地圖必須使用 Apache Solr 格式，以下會加以說明。 如果您有現有的同義字字典使用的是不同格式，而您想直接使用此字典，請透過 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 讓我們知道。
 
@@ -80,7 +80,7 @@ ms.locfileid: "86529552"
 
 ##### <a name="apache-solr-synonym-format"></a>Apache Solr 同義字格式
 
-Solr 格式支援對等且明確的對應同義字。 對應規則符合 Apache Solr 的開放原始碼同義字篩選準則規格，如本檔所述： [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter)。 以下是對等同義字的樣本規則。
+Solr 格式支援對等且明確的對應同義字。 對應規則遵循此檔中所述之 Apache Solr 的開放原始碼同義字篩選準則規格： [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter)。 以下是對等同義字的樣本規則。
 
 ```
 USA, United States, United States of America
@@ -88,10 +88,25 @@ USA, United States, United States of America
 
 根據上述規則，搜尋「USA」時，會擴充搜尋「USA」或「United States」以及「United States of America」。
 
-明確的對應由箭號「=>」表示。 當指定時，搜尋查詢的詞彙序列若符合 "=>" 的左邊，則會取代為右邊的替代專案。 根據下列規則，搜尋查詢「Washington」、「Wash.」 或「WA」，都會重寫為「WA」。 明確對應只會套用在指定的方向，而且在此案例中，不會在查詢「WA」時重寫為「Washington」。
+明確的對應由箭號「=>」表示。 若有指定，則會將符合 "=>" 左邊的搜尋查詢詞彙順序取代為右邊的替代專案。 根據下列規則，搜尋查詢「Washington」、「Wash.」 或「WA」，都會重寫為「WA」。 明確對應只會套用在指定的方向，而且在此案例中，不會在查詢「WA」時重寫為「Washington」。
 
 ```
 Washington, Wash., WA => WA
+```
+
+如果您需要定義包含逗號的同義字，您可以使用反斜線來進行轉義，例如在此範例中：
+
+```
+WA\, USA, WA, Washington
+```
+
+因為反斜線本身是其他語言（例如 JSON 和 c #）中的特殊字元，所以您可能需要將它重複。 例如，針對上述同義字對應傳送至 REST API 的 JSON 如下所示：
+
+```json
+    {
+       "format":"solr",
+       "synonyms": "WA\\, USA, WA, Washington"
+    }
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>您服務中的同義字地圖清單。
@@ -170,7 +185,7 @@ Washington, Wash., WA => WA
 
 如果您在開發 (非生產) 環境中有現有的索引，可以使用小型的字典進行試驗，看看增加同義字能如何改變搜尋體驗，包含對於評分檔案、點閱數醒目提示以及搜尋建議的影響。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
-> [建立同義字地圖](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)
+> [建立同義字地圖](/rest/api/searchservice/create-synonym-map)

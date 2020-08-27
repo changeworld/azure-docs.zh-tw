@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ebe6671e0a5f4821d06e93e3da4e37bd09a2fa7
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 7ac4813e26d847f99f6a3bb7e3eb91bf06797d3c
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716940"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949332"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>使用 RADIUS 的遠端桌面閘道和 Azure Multi-Factor Authentication Server
 
@@ -27,7 +27,13 @@ ms.locfileid: "88716940"
 在不同的伺服器上安裝 Azure Multi-Factor Authentication Server，由它代理將 RADIUS 要求傳回到遠端桌面閘道器伺服器上的 NPS。 NPS 驗證使用者名稱和密碼之後，它會將回應傳回給 Multi-Factor Authentication Server。 然後，MFA Server 會執行第二因素驗證，然後將結果傳回給閘道。
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 MFA 伺服器。 希望要求使用者使用多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。 在 7 月 1 日前啟用 MFA 伺服器的現有客戶，將能夠下載最新版本及未來的更新，並如常產生啟用認證。
+> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。
+>
+> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure 保護使用者登入事件 Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+>
+> 如果您使用以雲端為基礎的 MFA，請參閱如何 [整合 Azure Multi-Factor Authentication 的 RADIUS 驗證](howto-mfa-nps-extension.md)。
+>
+> 在2019年7月1日前啟用 MFA Server 的現有客戶，可以下載最新版本、未來的更新，並照常產生啟用認證。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -84,7 +90,7 @@ Azure Multi-Factor Authentication Server 設定為 RD 閘道器和 NPS 之間的
 
 ![MFA Server 中的 Radius 驗證](./media/howto-mfaserver-nps-rdg/radius.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 整合 Azure MFA 與 [IIS Web Apps](howto-mfaserver-iis.md)
 

@@ -1,22 +1,22 @@
 ---
-title: 自動化將函式應用程式資源部署至 Azure
+title: 自動將函數應用程式資源部署至 Azure
 description: 了解如何建置能部署函數應用程式的 Azure Resource Manager 範本。
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e56c76583f601c2e13ab4a35c1fef2996d2e3e67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 33f6f87f38000fd7874f0ab19d4eea2e71a9e2e8
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506225"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949706"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions 中函數應用程式的自動化資源部署
 
 您可以使用 Azure Resource Manager 範本來部署函數應用程式。 本文概述執行這項作業所需的資源和參數。 您可能需要部署額外的資源，視函數應用程式中的[觸發程序和繫結](functions-triggers-bindings.md)而定。
 
-如需建立範本的詳細資訊，請參閱[撰寫 Azure Resource Manager 範本](../azure-resource-manager/templates/template-syntax.md)。
+如需建立範本的詳細資訊，請參閱 [撰寫 Azure Resource Manager 範本](../azure-resource-manager/templates/template-syntax.md)。
 
 如需範例範本，請參閱：
 - [採用取用方案的函數應用程式]
@@ -30,13 +30,13 @@ Azure Functions 部署通常包含下列資源：
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
 | 函數應用程式                                                                     | 必要    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |
 | [Azure 儲存體](../storage/index.yml)帳戶                                   | 必要    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| [Application Insights](../azure-monitor/app/app-insights-overview.md)元件 | 選擇性    | [Microsoft Insights/元件](/azure/templates/microsoft.insights/components)         |
-| [主控方案](./functions-scale.md)                                             | 選擇性<sup>1</sup>    | [Microsoft Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |
+| [Application Insights](../azure-monitor/app/app-insights-overview.md)元件 | 選用    | [Microsoft Insights/元件](/azure/templates/microsoft.insights/components)         |
+| [主控方案](./functions-scale.md)                                             | 選用<sup>1</sup>    | [Microsoft. Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |
 
-<sup>1</sup>只有當您選擇在高階[方案](./functions-premium-plan.md)或[App Service 方案](../app-service/overview-hosting-plans.md)上執行函數應用程式時，才需要主控方案。
+<sup>1</sup>只有當您選擇在 [Premium 方案](./functions-premium-plan.md) 或 [App Service 方案](../app-service/overview-hosting-plans.md)上執行函數應用程式時，才需要主控方案。
 
 > [!TIP]
-> 雖然不是必要的，但強烈建議您為應用程式設定 Application Insights。
+> 雖然並非必要，但強烈建議您為應用程式設定 Application Insights。
 
 <a name="storage"></a>
 ### <a name="storage-account"></a>儲存體帳戶
@@ -66,18 +66,18 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 "appSettings": [
     {
         "name": "AzureWebJobsStorage",
-        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
     },
     {
         "name": "AzureWebJobsDashboard",
-        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
     }
 ]
 ```
 
 ### <a name="application-insights"></a>Application Insights
 
-建議使用 Application Insights 來監視您的函式應用程式。 Application Insights 資源是使用類型 [ **Microsoft Insights/元件**] 和 [種類**web**] 定義的：
+建議 Application Insights，以監視您的函數應用程式。 Application Insights 的資源會以類型 [ **Microsoft. Insights/元件** ] 和 [ **網路**類型] 來定義：
 
 ```json
         {
@@ -96,7 +96,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
         },
 ```
 
-此外，您必須使用應用程式設定，將檢測金鑰提供給函式應用程式 `APPINSIGHTS_INSTRUMENTATIONKEY` 。 此屬性是在物件的 `appSettings` 集合中指定 `siteConfig` ：
+此外，您必須使用應用程式設定，將檢測金鑰提供給函數應用程式 `APPINSIGHTS_INSTRUMENTATIONKEY` 。 這個屬性是在物件的集合中指定的 `appSettings` `siteConfig` ：
 
 ```json
 "appSettings": [
@@ -110,13 +110,13 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 ### <a name="hosting-plan"></a>主控方案
 
 主控方案的定義會有所不同，而且可以是下列其中一項：
-* [耗用量方案](#consumption)（預設值）
+* [使用量方案](#consumption) (預設) 
 * [進階方案](#premium)
 * [App Service 計劃](#app-service-plan)
 
 ### <a name="function-app"></a>函數應用程式
 
-函數應用程式資源是使用**functionapp****類型的**資源來定義的：
+函數應用程式資源是 **使用類型為** **functionapp**的資源所定義：
 
 ```json
 {
@@ -133,18 +133,18 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 ```
 
 > [!IMPORTANT]
-> 如果您要明確定義主控方案，dependsOn 陣列中會需要額外的專案：`"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
+> 如果您要明確定義主控方案，dependsOn 陣列中會需要額外的專案： `"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
 
 函數應用程式必須包含下列應用程式設定：
 
 | 設定名稱                 | 說明                                                                               | 範例值                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
-| AzureWebJobsStorage          | 函式執行時間用來進行內部佇列之儲存體帳戶的連接字串 | 請參閱[儲存體帳戶](#storage)       |
+| AzureWebJobsStorage          | 函數執行時間用於內部佇列的儲存體帳戶連接字串 | 查看 [儲存體帳戶](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Functions 執行時間的版本                                                | `~2`                                  |
 | FUNCTIONS_WORKER_RUNTIME     | 要用於此應用程式中函式的語言堆疊                                   | `dotnet`、`node`、`java`、`python` 或 `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | 只有在使用 `node` 語言堆疊時，才需要指定要使用的版本              | `10.14.1`                             |
 
-這些屬性是在屬性的 `appSettings` 集合中指定 `siteConfig` ：
+這些屬性會在屬性的 `appSettings` 集合中指定 `siteConfig` ：
 
 ```json
 "properties": {
@@ -152,7 +152,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
         "appSettings": [
             {
                 "name": "AzureWebJobsStorage",
-                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
             },
             {
                 "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -173,17 +173,17 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 
 <a name="consumption"></a>
 
-## <a name="deploy-on-consumption-plan"></a>部署使用方式方案
+## <a name="deploy-on-consumption-plan"></a>在取用方案上部署
 
-取用方案會在您的程式碼執行時自動設定計算能力、視需要相應放大來處理負載，然後在程式碼未執行時進行調整。 您不必支付閒置 Vm 的費用，也不需要事先保留容量。 若要深入了解，請參閱 [Azure Functions 規模調整和主控](functions-scale.md#consumption-plan)。
+取用方案會在您的程式碼執行時自動設定計算能力、視需要相應放大來處理負載，然後在程式碼未執行時相應放大。 您不需要支付閒置 Vm 的費用，也不需要預先保留容量。 若要深入了解，請參閱 [Azure Functions 規模調整和主控](functions-scale.md#consumption-plan)。
 
 如需範例 Azure Resource Manager 範本，請參閱[採用取用方案的函數應用程式]。
 
 ### <a name="create-a-consumption-plan"></a>建立取用方案
 
-不需要定義耗用量方案。 當您建立函式應用程式資源本身時，每個區域會自動建立或選取一個。
+不需要定義耗用量方案。 當您建立函式應用程式資源本身時，系統會根據每個區域自動建立或選取一個。
 
-取用方案是一種特殊類型的「伺服器陣列」資源。 針對 Windows，您可以使用 `Dynamic` 和屬性的值來指定它 `computeMode` `sku` ：
+取用方案是一種特殊類型的「serverfarm」資源。 針對 Windows，您可以使用 `Dynamic` 和屬性的值來指定它 `computeMode` `sku` ：
 
 ```json
 {  
@@ -206,15 +206,15 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 ```
 
 > [!NOTE]
-> 無法為 Linux 明確定義取用方案。 它會自動建立。
+> 無法針對 Linux 明確定義耗用量方案。 系統會自動建立此檔案。
 
-如果您明確定義取用方案，您將需要在 `serverFarmId` 應用程式上設定屬性，使其指向方案的資源識別碼。 您應該確定函式應用程式也有 `dependsOn` 方案的設定。
+如果您明確地定義取用方案，則必須 `serverFarmId` 在應用程式上設定屬性，使其指向方案的資源識別碼。 您應確定函式應用程式也有 `dependsOn` 此計畫的設定。
 
 ### <a name="create-a-function-app"></a>建立函數應用程式
 
 #### <a name="windows"></a>Windows
 
-在 Windows 上，取用方案在網站設定中需要兩個額外的設定： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE` 。 這些屬性能設定儲存函數應用程式程式碼和組態的儲存體帳戶和檔案路徑。
+在 Windows 上，取用方案需要網站設定中的兩個額外設定： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE` 。 這些屬性能設定儲存函數應用程式程式碼和組態的儲存體帳戶和檔案路徑。
 
 ```json
 {
@@ -231,11 +231,11 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "WEBSITE_CONTENTSHARE",
@@ -261,7 +261,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 
 #### <a name="linux"></a>Linux
 
-在 Linux 上，函數應用程式必須將其 `kind` 設定為 `functionapp,linux` ，而且其屬性必須 `reserved` 設定為 `true` ：
+在 Linux 上，函數應用程式必須 `kind` 將其設定為 `functionapp,linux` ，而且必須將 `reserved` 屬性設定為 `true` ：
 
 ```json
 {
@@ -278,7 +278,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountName'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountName'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -305,11 +305,11 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 
 ## <a name="deploy-on-premium-plan"></a>在 Premium 方案上部署
 
-Premium 方案提供與取用方案相同的調整，但包含專用的資源和其他功能。 若要深入瞭解，請參閱[Azure Functions Premium 方案](./functions-premium-plan.md)。
+Premium 方案提供與取用方案相同的調整，但包含專屬資源和額外的功能。 若要深入瞭解，請參閱 [Azure Functions Premium 方案](./functions-premium-plan.md)。
 
 ### <a name="create-a-premium-plan"></a>建立進階方案
 
-Premium 方案是一種特殊類型的「伺服器陣列」資源。 您可以使用 `EP1` 、 `EP2` 或， `EP3` 針對 `Name` `sku` [description 物件](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中的屬性值來指定它。
+Premium 方案是一種特殊類型的「serverfarm」資源。 您可以 `EP1` `EP2` `EP3` 針對 `Name` `sku` [description 物件](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中的屬性值，使用、或來指定它。
 
 ```json
 {
@@ -334,7 +334,7 @@ Premium 方案是一種特殊類型的「伺服器陣列」資源。 您可以�
 
 ### <a name="create-a-function-app"></a>建立函數應用程式
 
-高階方案上的函式應用程式必須將 `serverFarmId` 屬性設定為稍早建立之方案的資源識別碼。 此外，Premium 方案在網站設定中需要另外兩項設定： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE` 。 這些屬性能設定儲存函數應用程式程式碼和組態的儲存體帳戶和檔案路徑。
+Premium 方案上的函式應用程式必須將 `serverFarmId` 屬性設定為稍早建立之方案的資源識別碼。 此外，Premium 方案還需要網站設定中的兩個額外設定： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE` 。 這些屬性能設定儲存函數應用程式程式碼和組態的儲存體帳戶和檔案路徑。
 
 ```json
 {
@@ -353,11 +353,11 @@ Premium 方案是一種特殊類型的「伺服器陣列」資源。 您可以�
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "WEBSITE_CONTENTSHARE",
@@ -384,7 +384,7 @@ Premium 方案是一種特殊類型的「伺服器陣列」資源。 您可以�
 
 <a name="app-service-plan"></a>
 
-## <a name="deploy-on-app-service-plan"></a>在 App Service 方案上部署
+## <a name="deploy-on-app-service-plan"></a>部署 App Service 方案
 
 在 App Service 方案中，您的函數應用程式是依據基本、標準或進階 SKU 在專用的 VM 上執行，就像 Web 應用程式一樣。 如需 App Service 方案運作方式的詳細資訊，請參閱 [Azure App Service 方案深入概觀](../app-service/overview-hosting-plans.md)。
 
@@ -392,7 +392,7 @@ Premium 方案是一種特殊類型的「伺服器陣列」資源。 您可以�
 
 ### <a name="create-an-app-service-plan"></a>建立應用程式服務方案
 
-App Service 計畫是由 "伺服器陣列" 資源所定義。
+App Service 方案是由「serverfarm」資源所定義。
 
 ```json
 {
@@ -431,7 +431,7 @@ App Service 計畫是由 "伺服器陣列" 資源所定義。
 
 ### <a name="create-a-function-app"></a>建立函數應用程式
 
-App Service 計畫上的函式應用程式必須將 `serverFarmId` 屬性設定為稍早建立之方案的資源識別碼。
+App Service 方案上的函數應用程式必須將 `serverFarmId` 屬性設定為稍早建立之方案的資源識別碼。
 
 ```json
 {
@@ -450,7 +450,7 @@ App Service 計畫上的函式應用程式必須將 `serverFarmId` 屬性設定�
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -470,7 +470,7 @@ App Service 計畫上的函式應用程式必須將 `serverFarmId` 屬性設定�
 }
 ```
 
-Linux 應用程式也應該在底下包含 `linuxFxVersion` 屬性 `siteConfig` 。 如果您只是部署程式碼，則此值取決於您所需的執行時間堆疊：
+Linux 應用程式也應該 `linuxFxVersion` 在下包含屬性 `siteConfig` 。 如果您只是部署程式碼，則這個值是由您所需的執行時間堆疊所決定：
 
 | Stack            | 範例值                                         |
 |------------------|-------------------------------------------------------|
@@ -495,7 +495,7 @@ Linux 應用程式也應該在底下包含 `linuxFxVersion` 屬性 `siteConfig` 
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -516,7 +516,7 @@ Linux 應用程式也應該在底下包含 `linuxFxVersion` 屬性 `siteConfig` 
 }
 ```
 
-如果您要[部署自訂容器映射](./functions-create-function-linux-custom-image.md)，您必須使用來指定它， `linuxFxVersion` 並且包含可讓您的映射提取的設定，如同[用於容器的 Web App](../app-service/containers/index.yml)。 此外，請將設定 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 為 `false` ，因為容器本身會提供您的應用程式內容：
+如果您要 [部署自訂的容器映射](./functions-create-function-linux-custom-image.md)，您必須使用來加以指定， `linuxFxVersion` 並且包含可讓您的映射提取的設定，如 [用於容器的 Web App](../app-service/containers/index.yml)中所示。 此外，請將設定 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 為 `false` ，因為容器本身會提供您的應用程式內容：
 
 ```json
 {
@@ -535,7 +535,7 @@ Linux 應用程式也應該在底下包含 `linuxFxVersion` 屬性 `siteConfig` 
             "appSettings": [
                 {
                     "name": "AzureWebJobsStorage",
-                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]"
                 },
                 {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -574,10 +574,10 @@ Linux 應用程式也應該在底下包含 `linuxFxVersion` 屬性 `siteConfig` 
 
 ## <a name="customizing-a-deployment"></a>自訂部署
 
-函數應用程式有許多子資源可供您用於部署，包括應用程式設定和原始檔控制選項。 您也可以選擇移除**sourcecontrols**子資源，並改為使用不同的[部署選項](functions-continuous-deployment.md)。
+函數應用程式有許多子資源可供您用於部署，包括應用程式設定和原始檔控制選項。 您也可以選擇移除 **>sourcecontrols** 子資源，並改為使用不同的 [部署選項](functions-continuous-deployment.md) 。
 
 > [!IMPORTANT]
-> 若要使用 Azure Resource Manager 成功部署應用程式，請務必了解資源在 Azure 中部署的方式。 在下列範例中，將使用 **siteConfig** 套用高層級組態。 請務必將這些組態設定為高層級，因為它們會將資訊傳遞給 Functions 執行階段和部署引擎。 在套用子 **sourcecontrols/web** 資源之前，需要高層級資訊。 雖然可以在子層級**config/appSettings**資源中設定這些設定，但在某些情況下，必須先部署您的函數應用程式，*才能*套用**config/appSettings** 。 例如，在搭配使用函數應用程式與 [Logic Apps](../logic-apps/index.yml) 時，您的函數為另一個資源的相依性。
+> 若要使用 Azure Resource Manager 成功部署應用程式，請務必了解資源在 Azure 中部署的方式。 在下列範例中，將使用 **siteConfig** 套用高層級組態。 請務必將這些組態設定為高層級，因為它們會將資訊傳遞給 Functions 執行階段和部署引擎。 在套用子 **sourcecontrols/web** 資源之前，需要高層級資訊。 雖然可以在子層級設定 **/appSettings** 資源中設定這些設定，但在某些情況下，您必須先部署函數應用程式， *再*套用 **config/appSettings** 。 例如，在搭配使用函數應用程式與 [Logic Apps](../logic-apps/index.yml) 時，您的函數為另一個資源的相依性。
 
 ```json
 {
@@ -617,8 +617,8 @@ Linux 應用程式也應該在底下包含 `linuxFxVersion` 屬性 `siteConfig` 
           "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
         ],
         "properties": {
-          "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]",
-          "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]",
+          "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]",
+          "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').keys[0].value)]",
           "FUNCTIONS_EXTENSION_VERSION": "~2",
           "FUNCTIONS_WORKER_RUNTIME": "dotnet",
           "Project": "src"
@@ -641,7 +641,7 @@ Linux 應用程式也應該在底下包含 `linuxFxVersion` 屬性 `siteConfig` 
 }
 ```
 > [!TIP]
-> 此範本會使用 [[專案](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file)應用程式設定值]，以設定「函式部署引擎」（Kudu）在其中尋找可部署程式碼的基底目錄。 在我們的存放庫中，我們的函數是位於 **src** 資料夾的子資料夾中。 因此，在上述範例中，我們將應用程式設定值設定為 `src`。 如果您的函數位於您存放庫的根，或您並非從來源控制項進行部署，您可以移除此應用程式設定值。
+> 此範本會使用 [專案](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) 應用程式設定值，此值會設定函式部署引擎 (Kudu) 在其中尋找可部署程式碼的基礎目錄。 在我們的存放庫中，我們的函數是位於 **src** 資料夾的子資料夾中。 因此，在上述範例中，我們將應用程式設定值設定為 `src`。 如果您的函數位於您存放庫的根，或您並非從來源控制項進行部署，您可以移除此應用程式設定值。
 
 ## <a name="deploy-your-template"></a>部署範本
 
@@ -670,7 +670,7 @@ Linux 應用程式也應該在底下包含 `linuxFxVersion` 屬性 `siteConfig` 
 
 ### <a name="deploy-using-powershell"></a>使用 PowerShell 進行部署
 
-下列 PowerShell 命令會建立資源群組，並部署範本來建立具有所需資源的函式應用程式。 若要在本機執行，您必須安裝[Azure PowerShell](/powershell/azure/install-az-ps) 。 執行 [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) 以登入。
+下列 PowerShell 命令會建立資源群組，並部署範本，以使用其必要的資源來建立函數應用程式。 若要在本機執行，您必須安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 。 執行 [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) 以登入。
 
 ```powershell
 # Register Resource Providers if they're not already registered
@@ -687,9 +687,9 @@ $TemplateParams = @{"appName" = "<function-app-name>"}
 New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile template.json -TemplateParameterObject $TemplateParams -Verbose
 ```
 
-若要測試此部署，您可以使用[像這樣的範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json)，在取用方案中于 Windows 上建立函數應用程式。 以函式 `<function-app-name>` 應用程式的唯一名稱取代。
+若要測試此部署，您可以使用 [像這樣的範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) ，在取用方案中于 Windows 上建立函數應用程式。 取代為 `<function-app-name>` 函數應用程式的唯一名稱。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入了解如何開發並設定 Azure Functions。
 

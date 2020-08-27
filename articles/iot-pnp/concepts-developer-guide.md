@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9e6d13fedbfa495448164c1354868e12992dd71c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f1860f9645a50789803d509a6a1ea98bc0ea1a9e
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856027"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950131"
 ---
 # <a name="iot-plug-and-play-preview-developer-guide"></a>IoT 隨插即用 Preview 開發人員指南
 
@@ -57,7 +57,7 @@ DeviceClient.CreateFromConnectionString(
 
 ## <a name="dps-payload"></a>DPS 承載
 
-使用「裝置布建 [服務」 (DPS) ](/iot-dps/) 的裝置可以包含在布建程式 `modelId` 期間使用下列 JSON 承載所要使用的。
+使用「裝置布建 [服務」 (DPS) ](../iot-dps/about-iot-dps.md) 的裝置可以包含在布建程式 `modelId` 期間使用下列 JSON 承載所要使用的。
 
 ```json
 {
@@ -423,7 +423,7 @@ POST /digitalTwins/t-123/components/Thermostat/commands/restart
 /digitalTwins/{device-id}/components/{component-name}/commands/{command-name}
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在您已瞭解裝置模型化，以下是一些額外的資源：
 

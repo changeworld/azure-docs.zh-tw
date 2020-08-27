@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 070f9336c3e0ff00f35c4a17460c5c0a60a54031
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d5bcb63a325ca6bbf464faf9c5f9934879ccf9a3
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919687"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949655"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>設定 Azure Multi-Factor Authentication Server 以與 AD FS 2.0 搭配運作
 
@@ -28,6 +28,8 @@ ms.locfileid: "88919687"
 > 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。
 >
 > 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure 保護使用者登入事件 Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+>
+> 如果您使用以雲端為基礎的 MFA，請參閱 [使用 Azure 保護雲端資源 Multi-Factor Authentication 和 AD FS](howto-mfa-adfs.md)。
 >
 > 在2019年7月1日前啟用 MFA Server 的現有客戶，可以下載最新版本、未來的更新，並照常產生啟用認證。
 

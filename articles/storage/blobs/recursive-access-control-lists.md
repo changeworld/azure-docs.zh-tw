@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: cbf5d8286d6f181c69cd090df6cf595934cd547e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 53ff86f7dc5dfd6b7b60f99848c48f4e44f5a8a1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942089"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948839"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a> (Acl) 遞迴方式設定存取控制清單 Azure Data Lake Storage Gen2
 
@@ -24,7 +24,7 @@ ms.locfileid: "88942089"
 
 連結[庫](#libraries)  | [範例](#code-samples)  | [最佳做法](#best-practice-guidelines)  | [提供意見](#provide-feedback)反應
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -79,7 +79,7 @@ ms.locfileid: "88942089"
 2. 從您的專案目錄中，使用命令來安裝 DataLake preview 套件。 `dotnet add package`
 
    ```console
-   dotnet add package Azure.Storage.Files.DataLake -v 12.3.0-dev.20200811.1 -s https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json
+   dotnet add package Azure.Storage.Files.DataLake -v 12.3.0-dev.20200811.1 -s https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json
    ```
 
 3. 將這些 using 語句新增至程式碼檔案的頂端。
@@ -145,7 +145,7 @@ $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseCon
 
 下表顯示每個支援的角色及其 ACL 設定功能。
 
-|[角色]|ACL 設定功能|
+|角色|ACL 設定功能|
 |--|--|
 |[儲存體 Blob 資料擁有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|帳戶中的所有目錄和檔案。|
 |[儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)|只有安全性主體所擁有的目錄和檔案。|
@@ -175,7 +175,7 @@ using Azure.Identity;
 
 取得用戶端識別碼、用戶端密碼和租使用者識別碼。 若要這樣做，請參閱 [從用戶端應用程式授權要求取得 Azure AD 的權杖](../common/storage-auth-aad-app.md)。 在該程式中，您必須將下列其中一個以 [角色為基礎的存取控制 (RBAC) ](../../role-based-access-control/overview.md) 角色指派給您的安全性主體。 
 
-|[角色]|ACL 設定功能|
+|角色|ACL 設定功能|
 |--|--|
 |[儲存體 Blob 資料擁有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|帳戶中的所有目錄和檔案。|
 |[儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)|只有安全性主體所擁有的目錄和檔案。|
@@ -230,7 +230,7 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 
 此範例會使用用戶端識別碼、用戶端密碼和租使用者識別碼來建立 **DataLakeServiceClient** 實例。  若要取得這些值，請參閱 [從 Azure AD 取得權杖，以授權用戶端應用程式的要求](../common/storage-auth-aad-app.md)。 在該程式中，您必須將下列其中一個以 [角色為基礎的存取控制 (RBAC) ](../../role-based-access-control/overview.md) 角色指派給您的安全性主體。 
 
-|[角色]|ACL 設定功能|
+|角色|ACL 設定功能|
 |--|--|
 |[儲存體 Blob 資料擁有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|帳戶中的所有目錄和檔案。|
 |[儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)|只有安全性主體所擁有的目錄和檔案。|
@@ -600,7 +600,7 @@ def resume_set_acl_recursive(continuation_token):
 #### <a name="libraries"></a>程式庫
 
 - [PowerShell](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.powershellgallery.com%2Fpackages%2FAz.Storage%2F2.5.2-preview&data=02%7C01%7Cnormesta%40microsoft.com%7Ccdabce06132c42132b4008d849a2dfb1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637340311173215017&sdata=FWynO9UKTt7ESMCFgkWaL7J%2F%2BjODaRo5BD6G6yCx9os%3D&reserved=0)
-- [.NET](https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json)
+- [.NET](https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json)
 - [Python](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2Fazure_storage_file_datalake-12.1.0b99-py2.py3-none-any.whl%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A47%253A01Z%26se%3D2021-08-25T07%253A47%253A00Z%26sr%3Db%26sp%3Dr%26sig%3DH1XYw4FTLJse%252BYQ%252BfamVL21UPVIKRnnh2mfudA%252BfI0I%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C95a5966d938a4902560e08d84912fe32%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637339693209725909&sdata=acv4KWZdzkITw1lP0%2FiA3lZuW7NF5JObjY26IXttfGI%3D&reserved=0)
 
 #### <a name="code-samples"></a>程式碼範例
@@ -641,7 +641,7 @@ def resume_set_acl_recursive(continuation_token):
 
 您可以使用下列任何頁面來提供您的意見反應或回報問題： [PowerShell](https://github.com/Azure/azure-powershell/issues/new?assignees=&labels=triage&template=az-module-bug-report.md&title=)、 [.net](https://github.com/Azure/azure-sdk-for-net/issues/new?assignees=&labels=&template=bug_report.md&title=)、 [Python](https://github.com/Azure/azure-sdk-for-python/issues/new?assignees=&labels=&template=bug_report.md&title=)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
 - [已知問題](data-lake-storage-known-issues.md)

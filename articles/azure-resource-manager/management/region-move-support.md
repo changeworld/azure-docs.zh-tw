@@ -1,21 +1,21 @@
 ---
 title: 跨區域移動 Azure 資源的支援
-description: 列出可跨 Azure 區域移動的 Azure 資源類型
+description: 列出可在 Azure 區域間移動的 Azure 資源類型
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 07/21/2020
+ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 70f981f2763dd36f0f417faec6c81e168e9856e7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c18a4d2fa6e5bdb211b77d4d7bb28af7e5b1c1a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040959"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948108"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨區域移動 Azure 資源的支援
 
-本文會確認是否支援將 Azure 資源類型移至另一個 Azure 區域。 
+本文確認是否支援將 Azure 資源類型移至另一個 Azure 區域。 
 
 跳至資源提供者命名空間：
 > [!div class="op_single_selector"]
@@ -121,6 +121,7 @@ ms.locfileid: "87040959"
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.ResourceGraph](#microsoftresourcegraph)
+> - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
 > - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
@@ -158,7 +159,7 @@ ms.locfileid: "87040959"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- | 
 > | domainservices | 否 | 
-> | domainservices/replicasets | 否 | 
+> | domainservices/replicaset | 否 | 
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 
@@ -186,7 +187,7 @@ ms.locfileid: "87040959"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | 服務 |  是（使用範本） <br/><br/> [跨區域移動 API 管理](../../api-management/api-management-howto-migrate.md)。 | 
+> | 服務 |  是 (使用範本)  <br/><br/> [跨區域移動 API 管理](../../api-management/api-management-howto-migrate.md)。 | 
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -200,7 +201,7 @@ ms.locfileid: "87040959"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | apiapps | 是（使用範本）<br/><br/> [將 App Service 應用程式移至另一個區域](../../app-service/manage-move-across-regions.md) | 
+> | apiapps | 是 (使用範本) <br/><br/> [將 App Service 應用程式移至另一個區域](../../app-service/manage-move-across-regions.md) | 
 > | appidentities | 否 | 
 > | gateways | 否 | 
 
@@ -217,7 +218,7 @@ ms.locfileid: "87040959"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | automationaccounts | 是（使用範本） <br/><br/> [使用異地複寫](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |  
+> | automationaccounts | 是 (使用範本)  <br/><br/> [使用異地複寫](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |  
 > | automationaccounts / configurations | 否 | 
 > | automationaccounts / runbooks | 否 | 
 
@@ -249,14 +250,14 @@ ms.locfileid: "87040959"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | batchaccounts |  Batch 帳戶無法直接從一個區域移至另一個區域，但您可以使用範本來匯出範本、加以修改，並將範本部署到新的區域。 <br/><br/> 瞭解如何[跨區域移動 Batch 帳戶](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
+> | batchaccounts |  Batch 帳戶無法直接從某個區域移至另一個區域，但您可以使用範本來匯出範本、修改範本，然後將範本部署到新的區域。 <br/><br/> 瞭解如何 [跨區域移動 Batch 帳戶](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
 
 ## <a name="microsoftbatchai"></a>Microsoft.BatchAI
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | clusters | 否 <br/><br/> Azure Batch AI 服務已[淘汰](/previous-versions/azure/batch-ai/overview-what-happened-batch-ai)。
+> | clusters | 否 <br/><br/> Azure Batch AI 服務已 [淘汰](/previous-versions/azure/batch-ai/overview-what-happened-batch-ai)。
 > | fileservers | 否 | 
 > | jobs | 否 | 
 > | workspaces | 否 | 
@@ -327,7 +328,7 @@ ms.locfileid: "87040959"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | domainnames | 未規劃傳統服務的任何工作。
+> | domainnames | 傳統服務未規劃任何工作。
 > | virtualmachines | 否 | 
 
 
@@ -337,7 +338,7 @@ ms.locfileid: "87040959"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | networksecuritygroups | 未規劃傳統服務的任何工作。
+> | networksecuritygroups | 傳統服務未規劃任何工作。
 > | reservedips | 否 | 
 > | virtualnetworks | 否 | 
 
@@ -355,7 +356,7 @@ ms.locfileid: "87040959"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | accounts | 否 | 
-> | 認知搜尋 | 支援手動步驟。<br/><br/> 瞭解如何將[Azure 認知搜尋服務移至另一個區域](../../search/search-howto-move-across-regions.md)
+> | 認知搜尋 | 支援手動步驟。<br/><br/> 瞭解如何將 [您的 Azure 認知搜尋服務移至另一個區域](../../search/search-howto-move-across-regions.md)
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -410,7 +411,7 @@ ms.locfileid: "87040959"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | containerservices | 不可以。<br/><br/> 服務已[淘汰](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)。
+> | containerservices | 不知道。<br/><br/> 服務已 [淘汰](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)。
 > | managedclusters | 否 | 
 > | openshiftmanagedclusters | 否 | 
 
@@ -543,7 +544,7 @@ ms.locfileid: "87040959"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | servers | 您可以使用跨區域讀取複本來移動現有的伺服器。 [深入了解](../../postgresql/howto-move-regions-portal.md)。<br/><br/> 如果服務是以異地多餘的備份儲存體布建，您可以使用異地還原，在其他區域中進行還原。 [深入了解](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)。
+> | servers | 您可以使用跨區域讀取複本來移動現有的伺服器。 [深入了解](../../postgresql/howto-move-regions-portal.md)。<br/><br/> 如果服務是以異地複寫備份儲存體進行布建，您可以使用「異地還原」在其他區域中還原。 [深入了解](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)。
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
@@ -578,8 +579,8 @@ ms.locfileid: "87040959"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | elasticpools | 不可以。 資源未公開。
-> | elasticpools / iothubtenants | 不可以。 資源未公開。
+> | elasticpools | 不知道。 未公開資源。
+> | elasticpools / iothubtenants | 不知道。 未公開資源。
 > | iothubs | 是。 [深入了解](../../iot-hub/iot-hub-how-to-clone.md)
 > | provisioningservices | 否 | 
 
@@ -589,7 +590,7 @@ ms.locfileid: "87040959"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | controllers | 否 | 
-> | AKS 叢集 | 否<br/><br/> [深入瞭解](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region)移至另一個區域。
+> | AKS 叢集 | 否<br/><br/> [深入瞭解](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) 如何移至另一個區域。
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -638,7 +639,7 @@ ms.locfileid: "87040959"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | clusters | 否 |  
-> | 命名空間 | 是（使用範本）<br/><br/> [將事件中樞命名空間移至另一個區域](../../event-hubs/move-across-regions.md) | 
+> | 命名空間 | 是範本) 的 (<br/><br/> [將事件中樞命名空間移至另一個區域](../../event-hubs/move-across-regions.md) | 
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
 
@@ -715,7 +716,7 @@ ms.locfileid: "87040959"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | checknameavailability |  不可以。<br/><br/> IoT Central 適用于地理位置，而不是區域。
+> | checknameavailability |  不知道。<br/><br/> IoT Central 適用于地理位置，而非區域。
 > | graph | 否
 
 ## <a name="microsoftiothub"></a>Microsoft.IoTHub
@@ -723,7 +724,7 @@ ms.locfileid: "87040959"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> |  iothub |  是（複製中樞） <br/><br/> [將 IoT 中樞複製到另一個區域](../../iot-hub/iot-hub-how-to-clone.md)
+> |  iothub |  是 (複製中樞)  <br/><br/> [將 IoT 中樞複製到另一個區域](../../iot-hub/iot-hub-how-to-clone.md)
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 
@@ -768,7 +769,7 @@ ms.locfileid: "87040959"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | accounts | 否，這是一種全域服務。
+> | accounts | 否，這是全域服務。
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -849,7 +850,7 @@ ms.locfileid: "87040959"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | classicdevservices | 未規劃傳統服務的任何工作 
+> | classicdevservices | 未針對傳統服務規劃任何工作 
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
@@ -907,7 +908,7 @@ ms.locfileid: "87040959"
 > | expressrouteports | 否 | 
 > | frontdoors | 否 | 
 > | frontdoorwebapplicationfirewallpolicies | 否 | 
-> | loadbalancers | 是 <br/><br/> 您可以將現有的設定匯出為範本，並在新的區域中部署範本。 瞭解如何移動[外部](../..//load-balancer/move-across-regions-external-load-balancer-portal.md)或[內部](../../load-balancer/move-across-regions-internal-load-balancer-portal.md)負載平衡器。 |
+> | loadbalancers | 是 <br/><br/> 您可以將現有的設定匯出為範本，並在新的區域中部署範本。 瞭解如何移動 [外部](../..//load-balancer/move-across-regions-external-load-balancer-portal.md) 或 [內部](../../load-balancer/move-across-regions-internal-load-balancer-portal.md) 負載平衡器。 |
 > | localnetworkgateways |  否 | 
 > | natgateways |  否 | 
 > | networkintentpolicies |  否 | 
@@ -923,7 +924,7 @@ ms.locfileid: "87040959"
 > | privatednszones / virtualnetworklinks |  否 |  
 > | privateendpoints | 否 | 
 > | privatelinkservices | 否 | 
-> | publicipaddresses | 是<br/><br/> 您可以將現有的公用 IP 位址設定匯出為範本，並在新的區域中部署範本。 [深入瞭解](../../virtual-network/move-across-regions-publicip-portal.md)如何移動公用 IP 位址。 |
+> | publicipaddresses | 是<br/><br/> 您可以將現有的公用 IP 位址設定匯出為範本，並在新的區域中部署範本。 [深入瞭解](../../virtual-network/move-across-regions-publicip-portal.md) 如何移動公用 IP 位址。 |
 > | publicipprefixes | 否 | 
 > | routefilters | 否 | 
 > | routetables |  否 | 
@@ -1011,7 +1012,7 @@ ms.locfileid: "87040959"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | vaults | 不可以。<br/><br/> 不支援跨 Azure 區域移動復原服務保存庫以進行 Azure 備份。<br/><br/> 在 Azure Site Recovery 的復原服務保存庫中，您可以在目的地區域中[停用並重新](../../site-recovery/move-vaults-across-regions.md)建立保存庫。 | 
+> | vaults | 不知道。<br/><br/> 不支援在 Azure 區域間移動 Azure 備份的復原服務保存庫。<br/><br/> 在 Azure Site Recovery 的復原服務保存庫中，您可以在目的地區域中 [停用並重新](../../site-recovery/move-vaults-across-regions.md) 建立保存庫。 | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
@@ -1027,6 +1028,14 @@ ms.locfileid: "87040959"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | 查詢 |  否 |  
+
+## <a name="microsoftresources"></a>Microsoft.Resources
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 區域移動 |
+> | ------------- | ----------- |
+> | deploymentScripts |  是<br/><br/>[將 Microsoft .Resources 資源移至新區域](microsoft-resources-move-regions.md) |
+> | templateSpecs |  是<br/><br/>[將 Microsoft .Resources 資源移至新區域](microsoft-resources-move-regions.md) |  
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 

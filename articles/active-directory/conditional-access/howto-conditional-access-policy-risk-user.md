@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 916ff4a5e6afd68106d70f386436723c24574df1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c890c8e9af7310338e8470c4d56b46d1e259c168
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605577"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948057"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>條件式存取：以使用者風險為基礎的條件式存取
 
@@ -29,7 +29,7 @@ Microsoft 與研究人員、執法機關、Microsoft 的各種安全性小組和
 1. 以全域管理員、安全性系統管理員或條件式存取管理員的身分，登入 **Azure 入口網站**。
 1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
 1. 選取 [新增原則]。
-1. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。 如需詳細資訊，請 [設定原則的命名標準](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access#set-naming-standards-for-your-policies)。
+1. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。 如需詳細資訊，請 [設定原則的命名標準](./plan-conditional-access.md#set-naming-standards-for-your-policies)。
 1. 在 [指派] 底下選取 [使用者和群組]。
    1. 在 [包含] 下，選取 [所有使用者]。
    1. 在 [排除] 底下選取 [使用者和群組]，然後選擇組織的緊急存取或急用帳戶。 
@@ -54,7 +54,7 @@ Microsoft 與研究人員、執法機關、Microsoft 的各種安全性小組和
 1. 在**Controls**  >  [**訪問**控制] 底下，選擇 [**允許存取**]，然後選取 [**需要密碼變更**]。
    1. 選取 [選取]  。
 1. 將 [ **強制執行原則** ] 設定為 [ **開啟**]。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -66,4 +66,4 @@ Microsoft 與研究人員、執法機關、Microsoft 的各種安全性小組和
 
 [使用條件式存取 What If 工具模擬登入行為](troubleshoot-conditional-access-what-if.md)
 
-[Azure Active Directory Identity Protection 是什麼？](../identity-protection/overview.md)
+[Azure Active Directory Identity Protection 是什麼？](../identity-protection/overview-identity-protection.md)

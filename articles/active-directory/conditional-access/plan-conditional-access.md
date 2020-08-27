@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f0cb99fd7f2ce842f76cbe1df2f598f2188ca41
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339732"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948890"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>規劃條件式存取部署
 
@@ -216,7 +216,7 @@ CA 原則是 if-then 語句：如果符合指派，則套用這些存取控制�
 
 ### <a name="minimize-the-number-of-ca-policies"></a>將 CA 原則數目減到最少
 
-為每個應用程式建立原則效率不高，而且會導致管理困難。 條件式存取將僅對每個使用者套用前 195 個原則。 我們建議您分析您的應用程式，並將其分組為對相同使用者具有相同資源需求的應用程式。 例如，如果所有 Microsoft 365 應用程式或所有 HR 應用程式的相同使用者都有相同的需求，請建立單一原則，並包含它所套用的所有應用程式。 
+為每個應用程式建立原則效率不高，而且會導致管理困難。 條件式存取將僅對每個使用者套用前 195 個原則。 我們建議您分析您的應用程式，並將其分組為對相同使用者具有相同資源需求的應用程式。 例如，如果所有 Microsoft 365 apps 或所有 HR apps 對相同的使用者都有相同的需求，請建立單一原則，並包含其套用的所有應用程式。 
 
 ### <a name="set-up-emergency-access-accounts"></a>設定緊急存取帳戶
 
@@ -304,7 +304,7 @@ Azure Active Directory 可讓您建立[具名位置](location-condition.md) \(�
 * [需要 MFA](#require-mfa)
 * [回應可能遭盜用的帳戶](#respond-to-potentially-compromised-accounts)
 * [需要受控裝置](#require-managed-devices)
-* [需要核准的用戶端應用程式](#require-approved-client-apps)
+* [需要已核准的用戶端應用程式](#require-approved-client-apps)
 * [封鎖存取](#block-access)
 
 ### <a name="require-mfa"></a>需要 MFA
@@ -313,7 +313,7 @@ Azure Active Directory 可讓您建立[具名位置](location-condition.md) \(�
 
 * [系統管理員](howto-conditional-access-policy-admin-mfa.md)
 
-* [存取特定應用程式](app-based-mfa.md)
+* [存取特定應用程式](../authentication/tutorial-enable-azure-mfa.md)
 
 * [適用於所有使用者](howto-conditional-access-policy-all-users-mfa.md) \(部分機器翻譯\)
 
@@ -384,18 +384,18 @@ Azure Active Directory 可讓您建立[具名位置](location-condition.md) \(�
 | - | - | - |
 | [不在公司時要求 MFA](untrusted-networks.md)| 已授權的使用者在信任的位置/公司登入應用程式| 不會提示使用者進行 MFA |
 | [不在公司時要求 MFA](untrusted-networks.md)| 已授權的使用者不是在信任的位置/公司登入應用程式| 提示使用者進行 MFA 且成功登入 |
-| [要求 MFA (適用於管理員)](howto-baseline-protect-administrators.md)| 全域管理員登入應用程式| 提示管理員進行 MFA |
-| [有風險的登入](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)| 使用者使用未核准的瀏覽器登入應用程式| 提示管理員進行 MFA |
+| [要求 MFA (適用於管理員)](../fundamentals/concept-fundamentals-security-defaults.md)| 全域管理員登入應用程式| 提示管理員進行 MFA |
+| [有風險的登入](../identity-protection/howto-identity-protection-configure-risk-policies.md)| 使用者使用未核准的瀏覽器登入應用程式| 提示管理員進行 MFA |
 | [裝置管理](require-managed-devices.md)| 已授權的使用者嘗試從已授權的裝置登入| 授與存取權 |
 | [裝置管理](require-managed-devices.md)| 已授權的使用者嘗試從未經授權的裝置登入| 封鎖存取權 |
-| [具風險使用者的密碼變更](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)| 已授權的使用者嘗試以被盜用的認證登入 (高風險登入)| 根據您的原則，系統會提示使用者變更密碼或封鎖存取 |
+| [具風險使用者的密碼變更](../identity-protection/howto-identity-protection-configure-risk-policies.md)| 已授權的使用者嘗試以被盜用的認證登入 (高風險登入)| 根據您的原則，系統會提示使用者變更密碼或封鎖存取 |
 
 
 ### <a name="configure-the-test-policy"></a>設定測試原則
 
 在 [Azure 入口網站](https://portal.azure.com/)中，您可以在 [Azure Active Directory] > [安全性] > [條件式存取] 下設定 CA 原則。
 
-如果您想要深入了解如何建立 CA 原則，請參閱此範例：[當使用者登入 Azure 入口網站時，用來提示進行 MFA 的 CA 原則](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json)。 本快速入門可協助您：
+如果您想要深入了解如何建立 CA 原則，請參閱此範例：[當使用者登入 Azure 入口網站時，用來提示進行 MFA 的 CA 原則](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)。 本快速入門可協助您：
 
 * 熟悉使用者介面
 
@@ -442,7 +442,7 @@ Azure Active Directory 可讓您建立[具名位置](location-condition.md) \(�
 > [!NOTE]
 >  您應該盡量避免使用此選項，只有在使用者可信任的情況時才使用。 您應該儘速將使用者加回原則或群組中。
 
-* **刪除原則**。 如果已不再需要原則，請將其[刪除](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json)。
+* **刪除原則**。 如果已不再需要原則，請將其[刪除](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)。
 
 ## <a name="manage-access-to-cloud-apps"></a>管理雲端應用程式的存取權
 
@@ -501,4 +501,4 @@ CA 原則的位置條件可讓您將存取控制設定和使用者的網路位�
 
 [深入了解 Identity Protection](../identity-protection/overview-identity-protection.md)
 
-[使用 Microsoft Graph API 來管理 CA 原則](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md) \(英文\)
+[使用 Microsoft Graph API 來管理 CA 原則](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md) \(英文\)
