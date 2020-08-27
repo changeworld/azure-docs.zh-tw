@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 206f941360b5c7912db548c6d2cfdc9d3d6a41dc
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 8af1e52477cf047bbbec46884717166ec014fc6c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816400"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933491"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 開發人員指南
 
@@ -384,14 +384,60 @@ PowerShell 中有 PowerShell 設定檔的概念。 如果您不熟悉 PowerShell
 
 ## <a name="powershell-versions"></a>PowerShell 版本
 
-下表顯示每個主要版本的函式執行時間所支援的 PowerShell 版本，以及所需的 .NET 版本：
+下表顯示每個主要版本的函式執行時間可用的 PowerShell 版本，以及所需的 .NET 版本：
 
 | Functions 版本 | PowerShell 版本                               | .NET 版本  | 
 |-------------------|--------------------------------------------------|---------------|
-| 3. x (建議的)  | PowerShell 7 (建議的) <br/>PowerShell Core 6 | .NET Core 3.1<br/>.NET Core 3.1 |
+| 3. x (建議的)  | PowerShell 7 (建議的) <br/>PowerShell Core 6 | .NET Core 3.1<br/>.NET Core 2.1 |
 | 2.x               | PowerShell Core 6                                | .NET Core 2.2 |
 
 您可以藉由從任何函式列印來查看目前的版本 `$PSVersionTable` 。
+
+### <a name="running-local-on-a-specific-version"></a>在特定版本上執行本機
+
+在本機執行時，Azure Functions 執行時間預設為使用 PowerShell Core 6。 在本機執行時，若要改為使用 PowerShell 7，您需要將設定新增 `"FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"` 至 `Values` 專案根目錄中檔案 local.setting.js的陣列。 在 PowerShell 7 的本機上執行時，您的 local.settings.json 檔案看起來如下列範例所示： 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "powershell",
+    "FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"
+  }
+}
+```
+
+### <a name="changing-the-powershell-version"></a>變更 PowerShell 版本
+
+您的函數應用程式必須在3.x 版上執行，才能從 PowerShell Core 6 升級到 PowerShell 7。 若要瞭解如何進行這種作法，請參閱 [View 和 update a current runtime 版本](set-runtime-version.md#view-and-update-the-current-runtime-version)。
+
+使用下列步驟來變更函數應用程式所使用的 PowerShell 版本。 您可以在 Azure 入口網站或使用 PowerShell 來進行這項作業。
+
+# <a name="portal"></a>[入口網站](#tab/portal)
+
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至函式應用程式。
+
+1. 在 [設定] **Configuration**底下，選擇 [**設定**]。 在 [ **一般設定** ] 索引標籤中，找出 **PowerShell 版本**。 
+
+    :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="選擇函數應用程式所使用的 PowerShell 版本"::: 
+
+1. 選擇您想要的 **PowerShell Core 版本** ，然後選取 [ **儲存**]。 當警告有關擱置中的重新開機時，請選擇 [ **繼續**]。 函數應用程式會在所選的 PowerShell 版本上重新開機。 
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+執行下列腳本來變更 PowerShell 版本： 
+
+```powershell
+Set-AzResource -ResourceId "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<FUNCTION_APP>/config/web" -Properties @{  powerShellVersion  = '<VERSION>' } -Force -UsePatchSemantics
+
+```
+
+`<SUBSCRIPTION_ID>` `<RESOURCE_GROUP>` `<FUNCTION_APP>` 以您的 Azure 訂用帳戶識別碼、資源群組和函式應用程式的名稱分別取代、和。  此外，請將取代 `<VERSION>` 為 `~6` 或 `~7` 。 您可以 `powerShellVersion` 在傳回的雜湊表中驗證設定的更新值 `Properties` 。 
+
+---
+
+函數應用程式會在變更設定之後重新開機。
 
 ## <a name="dependency-management"></a>相依性管理
 

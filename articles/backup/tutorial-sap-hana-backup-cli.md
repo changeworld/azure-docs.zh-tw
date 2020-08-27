@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何使用 Azure CLI 將執�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4113ba75f007bfa03fed5cfeaed7737797e37ed9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a0b6683183d6bf73b5376c6320106373ffd4ba78
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489498"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762397"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教學課程：使用 Azure CLI 在 Azure VM 中備份 SAP Hana 資料庫
 
@@ -19,7 +19,7 @@ Azure CLI 可用來從命令列或透過指令碼建立和管理 Azure 資源。
 
 > [!div class="checklist"]
 >
-> * 建立復原服務保存庫。
+> * 建立復原服務保存庫
 > * 註冊 SAP Hana 執行個體並探索其中的資料庫
 > * 在 SAP Hana 資料庫上啟用備份
 > * 觸發隨選備份
@@ -30,7 +30,7 @@ Azure CLI 可用來從命令列或透過指令碼建立和管理 Azure 資源。
 
 若要在本機安裝和使用 CLI，您必須執行 Azure CLI xx.xxx.x 版或更新版本。 若要知道 CLI 版本，執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫。
+## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
 
 復原服務保存庫是一個邏輯容器，可儲存每個受保護資源 (例如 Azure VM 或 Azure VM 上執行的 SQL 或 HANA 資料庫等工作負載) 的備份資料。 執行受保護資源的備份作業時，它會在復原服務保存庫內建立復原點。 然後您可以使用其中一個復原點，將資料還原到指定的時間點。
 

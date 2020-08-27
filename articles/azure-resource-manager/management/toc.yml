@@ -139,9 +139,9 @@
     - name: EA 訂用帳戶
       items:
         - name: 建立
-          href: programmatically-create-subscription.md
+          href: ../../cost-management-billing/manage/programmatically-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
         - name: 授與建立的存取權
-          href: grant-access-to-create-subscription.md
+          href: ../../cost-management-billing/manage/grant-access-to-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: 資源提供者和類型
       href: resource-providers-and-types.md
     - name: 刪除資源群組和資源

@@ -2,15 +2,15 @@
 title: 將 Azure Vm 移至新的訂用帳戶或資源群組
 description: 使用 Azure Resource Manager 將虛擬機器移至新的資源群組或訂用帳戶。
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: e812f2cee44fc48dccbd8ab66a3343e087790803
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: d522eb4a6496bc2cc65b4937a19b9ac5228e7f2b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87063088"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933234"
 ---
-# <a name="move-guidance-for-virtual-machines"></a>適用于虛擬機器的移動指引
+# <a name="move-guidance-for-virtual-machines"></a>虛擬機器的移動指引
 
 本文說明目前不支援的案例，以及使用備份來移動虛擬機器的步驟。
 
@@ -18,16 +18,15 @@ ms.locfileid: "87063088"
 
 尚未支援下列案例：
 
-* 可用性區域中的受控磁碟無法移至不同的訂用帳戶。
-* 不能移動標準 SKU Load Balancer 或標準 SKU 公用 IP 的虛擬機器擴展集。
-* 從 Marketplace 資源建立且附加方案的虛擬機器無法跨訂用帳戶移動。 取消布建目前訂用帳戶中的虛擬機器，然後在新的訂用帳戶中再次部署。
-* 當您不移動虛擬網路中的所有資源時，無法將現有虛擬網路中的虛擬機器移至新的訂用帳戶。
-* 低優先順序的虛擬機器和低優先順序的虛擬機器擴展集無法在資源群組或訂用帳戶之間移動。
+* 具有標準 SKU Load Balancer 或標準 SKU 公用 IP 的虛擬機器擴展集無法移動。
+* 從 Marketplace 資源建立且附加方案的虛擬機器，無法跨訂用帳戶移動。 解除布建目前訂用帳戶中的虛擬機器，並在新的訂用帳戶中再次部署。
+* 當您未移動虛擬網路中的所有資源時，現有虛擬網路中的虛擬機器無法移至新的訂用帳戶。
+* 低優先順序的虛擬機器和低優先順序的虛擬機器擴展集無法跨資源群組或訂用帳戶移動。
 * 無法個別移動可用性設定組中的虛擬機器。
 
 ## <a name="azure-disk-encryption"></a>Azure 磁碟加密
 
-您無法移動與金鑰保存庫整合的虛擬機器，以執行[適用于 Linux vm 的 Azure 磁碟加密](../../../virtual-machines/linux/disk-encryption-overview.md)或[適用于 Windows vm 的 Azure 磁碟加密](../../../virtual-machines/windows/disk-encryption-overview.md)。 若要移動 VM，您必須停用加密。
+您無法移動與金鑰保存庫整合的虛擬機器，以執行 [適用于 Linux vm 的 Azure 磁碟加密](../../../virtual-machines/linux/disk-encryption-overview.md) 或 [適用于 Windows vm 的 Azure 磁碟加密](../../../virtual-machines/windows/disk-encryption-overview.md)。 若要移動 VM，您必須停用加密。
 
 ```azurecli-interactive
 az vm encryption disable --resource-group demoRG --name myVm1
@@ -39,19 +38,19 @@ Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 
 ## <a name="virtual-machines-with-azure-backup"></a>具有 Azure 備份的虛擬機器
 
-若要移動以 Azure 備份設定的虛擬機器，您必須從保存庫中刪除還原點。
+若要移動使用 Azure 備份設定的虛擬機器，您必須刪除保存庫中的還原點。
 
-如果您的虛擬機器已啟用虛[刪除](../../../backup/backup-azure-security-feature-cloud.md)，則在保留這些還原點時，您無法移動虛擬機器。 刪除還原點之後，請停用虛[刪除](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)或等待14天。
+如果您的虛擬機器已啟用虛 [刪除](../../../backup/backup-azure-security-feature-cloud.md) ，則您無法在保留這些還原點時移動虛擬機器。 請在刪除還原點後停用虛 [刪除](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) 或等候14天。
 
 ### <a name="portal"></a>入口網站
 
 1. 暫時停止備份並保留備份資料。
-2. 若要移動以 Azure 備份設定的虛擬機器，請執行下列步驟：
+2. 若要移動使用 Azure 備份設定的虛擬機器，請執行下列步驟：
 
    1. 尋找虛擬機器的位置。
    2. 尋找具有下列命名模式的資源群組： `AzureBackupRG_<location of your VM>_1` 。 例如， *AzureBackupRG_westus2_1*
-   3. 在 [Azure 入口網站中，勾選 [**顯示隱藏的類型**]。
-   4. 尋找類型為**Microsoft. Compute/restorePointCollections**且具有命名模式的資源 `AzureBackup_<name of your VM that you're trying to move>_###########` 。
+   3. 在 [Azure 入口網站中，選取 [ **顯示隱藏的類型**]。
+   4. 尋找具有命名模式的 **restorePointCollections** 類型的資源 `AzureBackup_<name of your VM that you're trying to move>_###########` 。
    5. 刪除此資源。 此作業只會刪除立即復原點，而不會刪除保存庫中備份的資料。
    6. 刪除作業完成之後，您就可以移動虛擬機器。
 

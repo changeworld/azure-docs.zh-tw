@@ -4,15 +4,16 @@ description: 說明您的 Azure for Students 訂用帳戶停用的原因，以�
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 7f1c1aa8729640acdb0d3e468c46d049a0d82a4d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d2ccfcb26c66d936d474cd5bd4f830d03a8b0002
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283872"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682908"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>我的 Azure for Students 訂用帳戶為何停用，以及如何將它重新啟動？
 

@@ -4,12 +4,12 @@ description: 本文說明如何使用 Azure Migrate 將 AWS VM 遷移至 Azure�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 9e26268010e4287d1f98e99389ffeddf3e4747ce
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 0ef9adfe7ee88141b67bb9e8c9586c5cc6e5df6f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611427"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762414"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>探索、評估 Amazon Web Services (AWS) VM，並將其遷移至 Azure
 
@@ -379,7 +379,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 **答：** 目前，我們不支援針對此工作流程匯入評量。 因應措施是，您可以匯出評量，然後在啟用複寫步驟中手動選取 VM 建議。
   
 **問：** 嘗試探索 AWS VM 時，我收到「無法提取 BIOS GUID」錯誤   
-**答：** 請檢閱 AWS VM 支援的作業系統。  
+**答：** 請一律使用根登入進行驗證，而不要使用任何虛擬使用者。 也請檢閱 AWS VM 支援的作業系統。  
 
 **問：** 我的複寫狀態沒有進展    
 **答：** 請檢查您的複寫設備是否符合需求。 請確定您已在複寫設備 TCP 連接埠 9443 和 HTTPS 443 上啟用資料傳輸所需的連接埠。 請確定沒有任何過時且重複的複寫設備版本連線到相同的專案。   

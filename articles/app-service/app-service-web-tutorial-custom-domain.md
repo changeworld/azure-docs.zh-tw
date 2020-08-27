@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: c301876a57b3be4a112c7df2706bf17389a5af44
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 1496f46eb29831dfb858f061ccc00c9e3dbc2e75
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190060"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782306"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教學課程：將現有的自訂 DNS 名稱對應至 Azure App Service
 
@@ -277,7 +277,7 @@ ms.locfileid: "88190060"
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>在應用程式中啟用 CNAME 記錄對應
 
-您現在可以將符合萬用字元名稱的任何子網域新增至應用程式 (例如，`sub1.contoso.com` 和 `sub2.contoso.com` 均符合 `*.contoso.com`)。
+您現在可以將符合萬用字元名稱的任何子網域新增至應用程式 (例如，`sub1.contoso.com`、`sub2.contoso.com` 和 `*.contoso.com` 均符合 `*.contoso.com`)。
 
 在 Azure 入口網站之應用程式分頁的左側導覽中，選取 [自訂網域]。
 
