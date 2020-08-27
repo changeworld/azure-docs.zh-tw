@@ -1,5 +1,5 @@
 ---
-title: 將 PhoneFactor 升級至 Azure MFA Server-Azure Active Directory
+title: 將 PhoneFactor 升級至 Azure MFA 伺服器-Azure Active Directory
 description: 當您從舊版的 PhoneFactor Agent 升級時，開始使用 Azure MFA Server。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,19 +11,23 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f2a52f31babf1f0323f28033f9138c3630bdba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23e485c55ab591bcccdc32818839a8d484a6c3af
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653146"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919534"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>將 PhoneFactor Agent 升級為 Azure Multi-Factor Authentication Server
 
 若要將 PhoneFactor Agent v5.x 或更舊版本升級至 Azure Multi-factor Authentication Server，請先解除安裝 PhoneFactor Agent 和附屬元件。 然後即可安裝 Multi-Factor Authentication Server 與其附屬元件。
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 MFA 伺服器。 希望要求使用者使用多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。 在 7 月 1 日前啟用 MFA 伺服器的現有客戶，將能夠下載最新版本及未來的更新，並如常產生啟用認證。
+> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。
+>
+> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure 保護使用者登入事件 Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+>
+> 在2019年7月1日前啟用 MFA Server 的現有客戶，可以下載最新版本、未來的更新，並照常產生啟用認證。
 
 ## <a name="uninstall-the-phonefactor-agent"></a>解除安裝 PhoneFactor Agent
 
@@ -54,11 +58,11 @@ ms.locfileid: "80653146"
 
 2. 如果您之前已安裝 Web 服務 SDK，請透過 Multi-Factor Authentication Server 使用者介面安裝新的 Web 服務 SDK。
 
-   預設虛擬目錄名稱現在是**MultiFactorAuthWebServiceSdk** ，而不是**PhoneFactorWebServiceSdk**。 如果您想要使用先前的名稱，必須在安裝期間變更虛擬目錄的名稱。 否則，如果您允許安裝使用新預設名稱，必須變更所有參考 Web 服務 SDK 之應用程式中的 URL (例如使用者入口網站和 Mobile App Web 服務)，使其指向正確位置。
+   預設虛擬目錄名稱現在是 **MultiFactorAuthWebServiceSdk** ，而不是 **PhoneFactorWebServiceSdk**。 如果您想要使用先前的名稱，必須在安裝期間變更虛擬目錄的名稱。 否則，如果您允許安裝使用新預設名稱，必須變更所有參考 Web 服務 SDK 之應用程式中的 URL (例如使用者入口網站和 Mobile App Web 服務)，使其指向正確位置。
 
 3. 如果您之前將使用者入口網站安裝在 PhoneFactor Agent Server 上，請透過 Multi-Factor Authentication Server 使用者介面安裝新的 Multi-Factor Authentication 使用者入口網站。
 
-   預設虛擬目錄名稱現在是**MultiFactorAuth** ，而不是**PhoneFactor**。 如果您想要使用先前的名稱，必須在安裝期間變更虛擬目錄的名稱。 否則，如果您允許安裝使用新預設名稱，應該要在 Multi-Factor Authentication Server 中按一下 [使用者入口網站] 圖示，然後更新 [設定] 索引標籤中的使用者入口網站 URL。
+   預設虛擬目錄名稱現在是 **MultiFactorAuth** ，而不是 **PhoneFactor**。 如果您想要使用先前的名稱，必須在安裝期間變更虛擬目錄的名稱。 否則，如果您允許安裝使用新預設名稱，應該要在 Multi-Factor Authentication Server 中按一下 [使用者入口網站] 圖示，然後更新 [設定] 索引標籤中的使用者入口網站 URL。
 
 4. 如果您之前將使用者入口網站和/或 Mobile App Web 服務安裝在 PhoneFactor Agent 之外的伺服器上：
 
@@ -66,7 +70,7 @@ ms.locfileid: "80653146"
 
    2. 若要將使用者入口網站安裝在 Web 伺服器上，請以系統管理員身分開啟命令提示字元，然後執行 MultiFactorAuthenticationUserPortalSetupXX.msi。
 
-      預設虛擬目錄名稱現在是**MultiFactorAuth** ，而不是**PhoneFactor**。 如果您想要使用先前的名稱，必須在安裝期間變更虛擬目錄的名稱。 否則，如果您允許安裝使用新的預設名稱，您應該按一下多重要素驗證服務器中的使用者入口網站圖示，並更新 [設定] 索引標籤上的使用者入口網站 URL。現有的使用者必須收到新 URL 的通知。
+      預設虛擬目錄名稱現在是 **MultiFactorAuth** ，而不是 **PhoneFactor**。 如果您想要使用先前的名稱，必須在安裝期間變更虛擬目錄的名稱。 否則，如果您允許安裝使用新的預設名稱，您應該在 Multi-Factor Authentication Server 中按一下 [使用者入口網站] 圖示，並更新 [設定] 索引標籤上的使用者入口網站 URL。現有的使用者必須收到新 URL 的通知。
 
    3. 移至使用者入口網站安裝位置 (例如，C:\inetpub\wwwroot\MultiFactorAuth)，然後編輯 web.config 檔案。 在將 web.config 檔案升級為新 web.config 檔案之前備份的原始檔案中，複製 appSettings 和 applicationSettings 區段中的值。 在安裝 Web 服務 SDK 時，如果新的預設虛擬目錄名稱已保留，請變更 applicationSettings 區段中的 URL，以指向正確位置。 如果先前 web.config 檔案中有其他任何經過變更的預設值，請將這些相同變更套用到新的 web.config 檔案。
 

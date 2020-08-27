@@ -1,5 +1,5 @@
 ---
-title: 升級 Azure MFA Server-Azure Active Directory
+title: 升級 Azure MFA 伺服器-Azure Active Directory
 description: 將 Azure Multi-Factor Authentication Server 升級為較新版本的步驟和指引。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebe40cd68074d4857b9869f29173ec3e6f78379d
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 455df5d2bf6003dd06a11f93d3e0d70ab9e11ee2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053995"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919517"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>升級為最新的 Azure Multi-Factor Authentication Server
 
@@ -25,7 +25,11 @@ ms.locfileid: "88053995"
 如果您要從 v6.x 或更舊版本升級為 v7.x 或更新版本，所有元件都會從 .NET 2.0 變更為 .NET 4.5。 所有元件也都需要 Microsoft Visual C++ 2015 可轉散發套件更新 1 或更新版本。 MFA Server 安裝程式會同時安裝這些元件的 x86 和 x64 版本 (如果尚未安裝)。 如果使用者入口網站和行動裝置應用程式 Web 服務在不同的伺服器上執行，則您需要先安裝這些套件，再升級這些元件。 您可以在 [Microsoft 下載中心](https://www.microsoft.com/download/)搜尋最新的 Microsoft Visual C++ 2015 可轉散發套件更新。 
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 MFA 伺服器。 希望要求使用者使用多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。 在 7 月 1 日前啟用 MFA 伺服器的現有客戶，將能夠下載最新版本及未來的更新，並如常產生啟用認證。
+> 從2019年7月1日起，Microsoft 不再為新的部署提供 MFA Server。 想要在登入事件期間 (MFA) 要求多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。
+>
+> 若要開始使用雲端式 MFA，請參閱 [教學課程：使用 Azure 保護使用者登入事件 Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+>
+> 在2019年7月1日前啟用 MFA Server 的現有客戶，可以下載最新版本、未來的更新，並照常產生啟用認證。
 
 快速瀏覽升級步驟：
 
@@ -41,7 +45,7 @@ ms.locfileid: "88053995"
 4. 在每部 MFA Server 上執行新的安裝程式。 先升級次級伺服器，因為它們可以讀取由主要伺服器所複寫的舊資料檔。
 
    > [!NOTE]
-   > 升級伺服器時，應該從任何負載平衡或與其他 MFA 伺服器共用的流量中移除它。
+   > 升級伺服器時，應該將它從任何負載平衡或與其他 MFA 伺服器的流量共用中移除。
    >
    > 您不需解除安裝目前的 MFA Server，就能執行安裝程式。 安裝程式會執行就地升級。 系統會從先前安裝的登錄中挑選安裝路徑，因此它會安裝在相同位置 (例如，C:\Program Files\Multi-Factor Authentication Server)。
   
@@ -66,7 +70,7 @@ ms.locfileid: "88053995"
 ## <a name="upgrade-the-mobile-app-web-service"></a>升級行動裝置應用程式 Web 服務
 
 > [!NOTE]
-> 從8.0 之前的 Azure MFA Server 版本升級至 8.0 + 時，可以在升級之後卸載行動裝置應用程式 web 服務
+> 從早于8.0 的 Azure MFA 伺服器版升級到 8.0 + 時，可以在升級之後卸載行動裝置應用程式 web 服務
 
 ## <a name="upgrade-the-ad-fs-adapters"></a>升級 AD FS 配接器
 
@@ -102,7 +106,7 @@ ms.locfileid: "88053995"
 
    完成此步驟之後，您必須先完成步驟 8，才能在此 AD FS 叢集中透過 MFA Server 進行雙步驟驗證。
 
-4. 執行 Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 指令碼來取消註冊舊版的 AD FS 配接器。 請確定 *-Name*參數 ("WindowsAzureMultiFactorAuthentication" 或 "AzureMFAServerAuthentication" ) 符合步驟3中所顯示的名稱。 這適用於相同 AD FS 叢集中的所有伺服器，因為有一個中央組態。
+4. 執行 Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 指令碼來取消註冊舊版的 AD FS 配接器。 請確定 *-Name* 參數 ("WindowsAzureMultiFactorAuthentication" 或 "AzureMFAServerAuthentication" ) 符合步驟3中顯示的名稱。 這適用於相同 AD FS 叢集中的所有伺服器，因為有一個中央組態。
 5. 執行 Register-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 指令碼來註冊新的 AD FS 配接器。 這適用於相同 AD FS 叢集中的所有伺服器，因為有一個中央組態。
 6. 在已從 AD FS 伺服器陣列中移除的每部伺服器上重新啟動 AD FS 服務。
 7. 將更新的伺服器加回 AD FS 伺服器陣列，並從該伺服器陣列中移除其他伺服器。

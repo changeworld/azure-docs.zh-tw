@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 1a7f2983b65c3568ae07e4bcd9d21b7dbd3435a9
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: db6dfb36c579f57f9cef66fa00a07b0d1dc2bc03
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705346"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929664"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用索引子為 Cosmos DB 資料編製索引 
 
@@ -23,19 +23,19 @@ ms.locfileid: "88705346"
 > MongoDB API、Gremlin API 和 Cassandra API 支援目前處於公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 您可以填寫 [此表單](https://aka.ms/azure-cognitive-search/indexer-preview)來要求存取預覽版。 [REST API 2020-06-30-preview 版](search-api-preview.md)提供預覽功能。 目前的入口網站支援有限，而且沒有 .NET SDK 支援。
 
 > [!WARNING]
-> Azure 認知搜尋只支援將 [索引編制原則](https://docs.microsoft.com/azure/cosmos-db/index-policy) 設定為 [一致](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode) Cosmos DB 集合。 不建議使用延遲編制索引原則來編制索引集合的索引，而且可能會導致資料遺失。 不支援已停用索引的集合。
+> Azure 認知搜尋只支援將 [索引編制原則](/azure/cosmos-db/index-policy) 設定為 [一致](/azure/cosmos-db/index-policy#indexing-mode) Cosmos DB 集合。 不建議使用延遲編制索引原則來編制索引集合的索引，而且可能會導致資料遺失。 不支援已停用索引的集合。
 
 本文說明如何設定 Azure Cosmos DB [索引子](search-indexer-overview.md) 來將內容解壓縮，並讓它可在 Azure 認知搜尋中搜尋。 此工作流程會建立 Azure 認知搜尋的索引，並使用從 Azure Cosmos DB 解壓縮的現有文字載入它。 
 
-由於術語可能會造成混淆，值得注意的是， [Azure Cosmos DB 索引編制](https://docs.microsoft.com/azure/cosmos-db/index-overview) 和 [Azure 認知搜尋索引](search-what-is-an-index.md) 是不同的作業，每個服務都是唯一的。 開始 Azure 認知搜尋索引之前，您的 Azure Cosmos DB 資料庫必須已經存在且包含資料。
+由於術語可能會造成混淆，值得注意的是， [Azure Cosmos DB 索引編制](/azure/cosmos-db/index-overview) 和 [Azure 認知搜尋索引](search-what-is-an-index.md) 是不同的作業，每個服務都是唯一的。 開始 Azure 認知搜尋索引之前，您的 Azure Cosmos DB 資料庫必須已經存在且包含資料。
 
-Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定存取的 [Azure Cosmos DB 專案](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) 。 
+Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定存取的 [Azure Cosmos DB 專案](../cosmos-db/databases-containers-items.md#azure-cosmos-items) 。 
 
-+ 針對正式推出的 [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference)，您可以使用 [入口網站](#cosmos-indexer-portal)、 [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)或 [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) 來建立資料來源和索引子。
++ 針對正式推出的 [SQL API](../cosmos-db/sql-query-getting-started.md)，您可以使用 [入口網站](#cosmos-indexer-portal)、 [REST API](/rest/api/searchservice/indexer-operations)或 [.net SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) 來建立資料來源和索引子。
 
-+ 針對 [MONGODB API (預覽版) ](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)，您可以使用 [入口網站](#cosmos-indexer-portal) 或 [REST API 版本 2020-06-30-preview](search-api-preview.md) 來建立資料來源和索引子。
++ 針對 [MONGODB API (預覽版) ](../cosmos-db/mongodb-introduction.md)，您可以使用 [入口網站](#cosmos-indexer-portal) 或 [REST API 版本 2020-06-30-preview](search-api-preview.md) 來建立資料來源和索引子。
 
-+ 針對 [Cassandra API (preview) ](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) 和 [Gremlin API (preview) ](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)，您只能使用 [REST API 2020-06-30-preview 版](search-api-preview.md) 來建立資料來源和索引子。
++ 針對 [Cassandra API (preview) ](../cosmos-db/cassandra-introduction.md) 和 [Gremlin API (preview) ](../cosmos-db/graph-introduction.md)，您只能使用 [REST API 2020-06-30-preview 版](search-api-preview.md) 來建立資料來源和索引子。
 
 
 > [!Note]
@@ -95,7 +95,7 @@ Azure Cosmos DB 專案編制索引最簡單的方法是使用 [Azure 入口網�
 
 您可以按一下屬性資料行頂端的核取方塊，以大量選取屬性。 針對每個應該傳回給用戶端應用**程式的欄位**，選擇 [可取得] 和 [可搜尋 **]，並**受限於全文檢索搜尋處理。 您將會注意到，整數不是全文檢索或模糊可搜尋 (數位會逐字進行評估，而且在篩選) 中通常很有用。
 
-如需詳細資訊，請參閱 [索引屬性](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib) 和 [語言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support) 的描述。 
+如需詳細資訊，請參閱 [索引屬性](/rest/api/searchservice/create-index#bkmk_indexAttrib) 和 [語言分析器](/rest/api/searchservice/language-support) 的描述。 
 
 請花一點時間檢閱您的選擇。 一旦執行精靈，就會建立實體的資料結構，而且除非您捨棄並重新建立所有物件，否則將無法編輯這些欄位。
 
@@ -127,7 +127,7 @@ Azure Cosmos DB 專案編制索引最簡單的方法是使用 [Azure 入口網�
 > [!NOTE]
 > 針對 Cosmos DB Gremlin API 或 Cosmos DB 的資料編制索引 Cassandra API 您必須先填寫 [此表單](https://aka.ms/azure-cognitive-search/indexer-preview)，要求存取閘道預覽。 處理您的要求之後，您將會收到如何使用 [REST API 2020-06-30-Preview 版](search-api-preview.md) 來建立資料來源的指示。
 
-稍早在本文中，我們提到 [Azure Cosmos DB 索引](https://docs.microsoft.com/azure/cosmos-db/index-overview) 編制索引和 [Azure 認知搜尋索引](search-what-is-an-index.md) 編制索引是不同的作業。 針對 Cosmos DB 索引編制，預設會自動編制所有檔的索引，但 Cassandra API 除外。 如果您關閉自動編制索引，只能透過其自我連結或使用檔識別碼的查詢來存取檔。 Azure 認知搜尋索引需要在將依 Azure 認知搜尋編制索引的集合中開啟 Cosmos DB 自動編制索引。 註冊 Cosmos DB Cassandra API 索引子預覽時，系統會提供您如何設定 Cosmos DB 索引的指示。
+稍早在本文中，我們提到 [Azure Cosmos DB 索引](/azure/cosmos-db/index-overview) 編制索引和 [Azure 認知搜尋索引](search-what-is-an-index.md) 編制索引是不同的作業。 針對 Cosmos DB 索引編制，預設會自動編制所有檔的索引，但 Cassandra API 除外。 如果您關閉自動編制索引，只能透過其自我連結或使用檔識別碼的查詢來存取檔。 Azure 認知搜尋索引需要在將依 Azure 認知搜尋編制索引的集合中開啟 Cosmos DB 自動編制索引。 註冊 Cosmos DB Cassandra API 索引子預覽時，系統會提供您如何設定 Cosmos DB 索引的指示。
 
 > [!WARNING]
 > Azure Cosmos DB 是新一代的 DocumentDB。 先前使用 API 版本 **2017-11-11** ，您可以使用 `documentdb` 語法。 這表示您可以將您的資料來源類型指定為 `cosmosdb` 或 `documentdb` 。 從 API 版本 **2019-05-06** 開始，Azure 認知搜尋 Api 和入口網站都只支援本文 `cosmosdb` 中指示的語法。 這表示， `cosmosdb` 如果您想要連接到 Cosmos DB 端點，則必須要有此資料來源類型。
@@ -296,7 +296,7 @@ SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @High
 
 這個索引子每隔兩小時就會執行一次 (已將排程間隔設為 "PT2H")。 若每隔 30 分鐘就要執行索引子，可將間隔設為 "PT30M"。 支援的最短間隔為 5 分鐘。 排程為選擇性 - 如果省略，索引子只會在建立時執行一次。 不過，您隨時都可依需求執行索引子。   
 
-如需建立索引子 API 的詳細資訊，請參閱 [建立索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
+如需建立索引子 API 的詳細資訊，請參閱 [建立索引子](/rest/api/searchservice/create-indexer)。
 
 如需定義索引子排程的詳細資訊，請參閱 [如何排程 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
 
@@ -304,16 +304,16 @@ SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @High
 
 正式推出的 .NET SDK 與正式運作的 REST API 有完全相同的同位。 建議您檢閱先前的 REST API 章節，以了解其概念、工作流程和需求。 然後，您可以參閱下列 .NET API 參考文件，以在受控程式碼中實作 JSON 索引子。
 
-+ [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [microsoft.azure.search.models.datasource](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [microsoft.azure.search.models.datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [microsoft.azure.search.models.index](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [microsoft.azure.search.models.indexer](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="DataChangeDetectionPolicy"></a>
 
 ## <a name="indexing-changed-documents"></a>索引已變更的文件
 
-資料變更偵測原則是用來有效識別已變更的資料項目。 目前唯一支援的原則是 [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) 使用 `_ts` Azure Cosmos DB 所提供的 (timestamp) 屬性，其指定方式如下：
+資料變更偵測原則是用來有效識別已變更的資料項目。 目前唯一支援的原則是 [`HighWaterMarkChangeDetectionPolicy`](/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) 使用 `_ts` Azure Cosmos DB 所提供的 (timestamp) 屬性，其指定方式如下：
 
 ```http
     {

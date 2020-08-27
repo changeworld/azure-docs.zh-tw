@@ -2,16 +2,17 @@
 title: 管理 Azure Application Insights 的使用量和成本 | Microsoft Docs
 description: 在 Application Insights 中管理遙測量和監視成本。
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3914764035d65482bcf224f8d0eda9c6579e03a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309676"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930480"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用量和成本
 
@@ -57,7 +58,7 @@ Application Insights 可讓您根據最近的使用模式，輕鬆了解可能�
 ![選擇價格](./media/pricing/pricing-001.png)
 
 A. 檢閱當月的資料量。 這包括從您的伺服器和用戶端應用程式，以及從可用性測試接收並保留的所有資料 (在任何[取樣](./sampling.md)之後)。  
-B. [多步驟 web 測試](./availability-multistep.md)會產生不同的費用。 (這不包括簡單的可用性測試，其已包含在資料量費用中。)  
+B. [多重步驟的 web 測試](./availability-multistep.md)會另外收費。 (這不包括簡單的可用性測試，其已包含在資料量費用中。)  
 C. 檢視上個月的資料量趨勢。  
 D. 啟用資料擷取[取樣](./sampling.md)。
 E. 設定每日資料量上限。  
@@ -230,7 +231,7 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 * 已達到 Application Insights 元件每日上限
 
 ## <a name="sampling"></a>取樣
-[取樣](./sampling.md)是一種降低遙測傳送至應用程式的速率，同時保留在診斷搜尋期間尋找相關事件的能力。 此外，也保留正確的事件計數。
+[取樣](./sampling.md) 是一種方法，可減少將遙測傳送至應用程式的速率，同時保留在診斷搜尋期間尋找相關事件的能力。 此外，也保留正確的事件計數。
 
 取樣可有效減少費用並維持在每月配額內。 取樣演算法會保留相關的遙測項目，因此，例如在使用 [搜尋] 時，您便可以找到與特定例外狀況相關的要求。 此演算法也會保留正確的計數，因此您在 [計量瀏覽器] 中會看到要求率、例外狀況率及其他計數的正確值。
 
@@ -339,7 +340,7 @@ Application Insights 資源的預設保留期為 90 天。 可以為每個 Appli
 
 ## <a name="next-steps"></a>後續步驟
 
-* [抽樣](./sampling.md)
+* [採樣](./sampling.md)
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties

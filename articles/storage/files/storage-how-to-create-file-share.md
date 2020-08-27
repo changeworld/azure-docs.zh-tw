@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: aaba608ba80a751c40cd300dee80f673897c22a8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525644"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930667"
 ---
 # <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
 若要建立 Azure 檔案共用，您需要回答三個有關您將如何使用它的問題：
@@ -32,7 +32,7 @@ ms.locfileid: "88525644"
 
 如需這三個選項的詳細資訊，請參閱 [規劃 Azure 檔案儲存體部署](storage-files-planning.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 - 本文會假設您已經建立 Azure 訂用帳戶。 如果您還沒有訂用帳戶，則先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 - 如果您想要使用 Azure PowerShell，請[安裝最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 - 如果您想要使用 Azure CLI，請[安裝最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
@@ -267,6 +267,9 @@ Update-AzRmStorageShare `
     -AccessTier Cool
 ```
 
+> [!Note]  
+> 預覽 Az. 儲存體 PowerShell 模組中提供透過 PowerShell 設定和變更階層的功能。 這些 Cmdlet 或其輸出可能會在發行至正式推出的 Az. 儲存體 PowerShell 模組之前變更，因此請記住這點。
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 您可以在最新的 Azure CLI 更新中，取得用來建立檔案共用或將檔案共用移至特定層的功能。 更新 Azure CLI 是您所使用的作業系統/Linux 散發套件專用的。 如需有關如何更新系統上 Azure CLI 的指示，請參閱 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
@@ -282,9 +285,13 @@ az storage share-rm create \
     --name $shareName \
     --access-tier "Hot"
 ```
+
+> [!Note]  
+> 以參數設定階層的功能 `--access-tier` 會在最新的 Azure CLI 套件中提供預覽。 此命令或其輸出可能會在標示為已正式推出之前變更，因此請記住這點來建立腳本。
+
 ---
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - [規劃 Azure 檔案儲存體部署](storage-files-planning.md) 或 [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)。 
 - [網路功能總覽](storage-files-networking-overview.md)。
 - 在 [Windows](storage-how-to-use-files-windows.md)、 [macOS](storage-how-to-use-files-mac.md)和 [Linux](storage-how-to-use-files-linux.md)上連接並掛接檔案共用。

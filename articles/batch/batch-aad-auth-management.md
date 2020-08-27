@@ -3,13 +3,13 @@ title: 使用 Azure Active Directory 驗證 Batch Management 解決方案
 description: 探索從使用 Batch Management .NET 程式庫的應用程式，使用 Azure Active Directory 進行驗證。
 ms.topic: how-to
 ms.date: 04/27/2017
-ms.custom: has-adal-ref
-ms.openlocfilehash: 829a742c144f2bba39f1ca392e80db25640d4dee
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: ff49d5e88df7c56ed4dee0685f09e45eb372aa5c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86141958"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930208"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>使用 Active Directory 驗證 Batch Management 解決方案
 
@@ -23,15 +23,15 @@ Batch 管理 .NET 程式庫會公開使用 Batch 帳戶、帳戶金鑰、應用�
 
 ## <a name="register-your-application-with-azure-ad"></a>向 Azure AD 註冊您的應用程式
 
- (ADAL) 的[Azure Active Directory Authentication 程式庫](../active-directory/azuread-dev/active-directory-authentication-libraries.md)提供了程式設計介面，可 Azure AD 在應用程式中使用。 若要從您的應用程式呼叫 ADAL，您必須在 Azure AD 租用戶中註冊您的應用程式。 當您註冊應用程式時，要提供 Azure AD 有關您應用程式的資訊，包括 Azure AD 租用戶內的名稱。 Azure AD 接著會提供您在執行階段用來將應用程式與 Azure AD 產生關聯的應用程式識別碼。 若要深入了解應用程式識別碼，請參閱[Azure Active Directory 中的應用程式物件和服務主體物件之間的關聯性討論](../active-directory/develop/app-objects-and-service-principals.md)。
+[Azure Active Directory Authentication Library](../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) 提供可在應用程式內 Azure AD 使用的程式設計介面。 若要從您的應用程式呼叫 ADAL，您必須在 Azure AD 租用戶中註冊您的應用程式。 當您註冊應用程式時，要提供 Azure AD 有關您應用程式的資訊，包括 Azure AD 租用戶內的名稱。 Azure AD 接著會提供您在執行階段用來將應用程式與 Azure AD 產生關聯的應用程式識別碼。 若要深入了解應用程式識別碼，請參閱[Azure Active Directory 中的應用程式物件和服務主體物件之間的關聯性討論](../active-directory/develop/app-objects-and-service-principals.md)。
 
-若要註冊 AccountManagement 範例應用程式，請依照[整合應用程式與 Azure Active Directory](../active-directory/develop/quickstart-register-app.md) 之[新增應用程式](../active-directory/develop/quickstart-register-app.md)一節中的步驟進行。 指定 [原生用戶端應用程式] 作為應用程式類型。 適用於**重新導向 URI** 的業界標準 OAuth 2.0 URI 是 `urn:ietf:wg:oauth:2.0:oob`。 不過，您可以為重新導向 URI 指定任何有效 `http://myaccountmanagementsample` 的 URI (**Redirect URI**例如) ，因為它不需要是實際的端點。
+若要註冊 AccountManagement 範例應用程式，請依照[整合應用程式與 Azure Active Directory](../active-directory/develop/quickstart-register-app.md) 之[新增應用程式](../active-directory/develop/quickstart-register-app.md)一節中的步驟進行。 指定 [原生用戶端應用程式] 作為應用程式類型。 適用於**重新導向 URI** 的業界標準 OAuth 2.0 URI 是 `urn:ietf:wg:oauth:2.0:oob`。 不過，您可以指定任何有效的 URI (例如重新 `http://myaccountmanagementsample` **導向 URI**的) ，因為它不需要是實際的端點。
 
 ![新增應用程式](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
 完成註冊程序後，您會看到應用程式識別碼以及針對應用程式列出的物件 (服務主體) 識別碼。
 
-![完成的註冊程式](./media/batch-aad-auth-management/app-registration-client-id.png)
+![完成的註冊流程](./media/batch-aad-auth-management/app-registration-client-id.png)
 
 ## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>授與 Azure Resource Manager API 存取給您的應用程式
 
