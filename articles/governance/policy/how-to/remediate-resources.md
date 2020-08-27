@@ -1,23 +1,23 @@
 ---
 title: 補救不相容的資源
 description: 本指南會逐步引導您補救不符合「Azure 原則」中原則規範的資源。
-ms.date: 06/09/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: be55f16734a94acfcc89d632f4cb79f550fa74d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1274b049d7ce19601968697b22da38f0eb2cb5ff
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636303"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958740"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>補救不符合 Azure 原則規範的資源
 
-您可以透過**補救**讓不符合 **deployIfNotExists** 或 **modify** 原則規範的資源變成符合規範狀態。 藉由指示「Azure 原則」在現有資源上執行所指派原則的 **deployIfNotExists** 效果或標籤**作業** (不論該指派屬於管理群組、訂用帳戶、資源群組或個別資源)，即可完成補救。 本文說明了解和完成使用「Azure 原則」來進行補救所需的步驟。
+您可以透過**補救**讓不符合 **deployIfNotExists** 或 **modify** 原則規範的資源變成符合規範狀態。 補救的完成方式是指示 Azure 原則在現有資源上執行 **deployIfNotExists** 效果或指派原則的 **修改** 作業，無論是指派給管理群組、訂用帳戶、資源群組或個別資源。 本文說明了解和完成使用「Azure 原則」來進行補救所需的步驟。
 
 ## <a name="how-remediation-security-works"></a>補救安全性的運作方式
 
 當「Azure 原則」執行 **deployIfNotExists** 原則定義中的範本時，會使用[受控識別](../../../active-directory/managed-identities-azure-resources/overview.md)來執行。
-「Azure 原則」會為每個指派項目建立受控識別，但您必須提供有關要將哪些角色授與受控識別的詳細資料。 如果受控識別缺少角色，在指派原則或方案時，就會顯示此錯誤。 使用入口網站時，在開始指派之後，「Azure 原則」會自動將所列出的角色授與受控識別。 受控識別的_位置_不會影響其對 Azure 原則的操作。
+「Azure 原則」會為每個指派項目建立受控識別，但您必須提供有關要將哪些角色授與受控識別的詳細資料。 如果受控識別缺少角色，在指派原則或方案時，就會顯示此錯誤。 使用入口網站時，在開始指派之後，「Azure 原則」會自動將所列出的角色授與受控識別。 受控識別的 _位置_ 不會影響其對 Azure 原則的操作。
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="受控識別 - 遺漏角色" border="false":::
 
@@ -180,7 +180,7 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 
 ### <a name="create-a-remediation-task-during-policy-assignment-in-the-azure-portal"></a>在 Azure 入口網站中於原則指派期間建立補救工作
 
-建立補救工作的簡化方式是在原則指派期間從 Azure 入口網站執行此動作。 如果要指派的原則定義是**deployIfNotExists**或**修改**效果，[**補救**] 索引標籤上的 wizard 會提供 [_建立補救_工作] 選項。 如果選取此選項，則會在原則指派的同時建立補救工作。
+建立補救工作的簡化方式是在原則指派期間從 Azure 入口網站執行此動作。 如果要指派的原則定義是 **deployIfNotExists** 或 **修改** 效果，[ **補救** ] 索引標籤上的 [嚮導] 會提供 [ _建立補救_ 工作] 選項。 如果選取此選項，則會同時建立補救工作和原則指派。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: cdbce7c11bc3184b624fa00f3ac33db7ad8730d8
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4022ca97f88e2f06d3b4c1eeb103bb60d1856eda
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077422"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962140"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>將 App Service 或 Azure Functions 應用程式設定為使用 Azure AD 登入
 
@@ -103,7 +103,7 @@ ms.locfileid: "88077422"
     |欄位|描述|
     |-|-|
     |用戶端識別碼| 使用應用程式註冊的 [應用程式 (用戶端) 識別碼]。 |
-    |簽發者 URL| 使用 `<authentication-endpoint>/<tenant-id>/v2.0` ，並將取代為 *\<authentication-endpoint>* [您雲端環境的驗證端點](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (例如 "" （ https://login.microsoft.com 適用于全域 Azure) ）也會 *\<tenant-id>* 將取代為在其中建立應用程式註冊的**目錄 (租使用者) 識別碼**。 此值用來將使用者重新導向至正確的 Azure AD 租用戶，以及下載適當的中繼資料，以判斷適當的權杖簽署金鑰和權杖簽發者宣告值 (舉例而言)。 針對使用 Azure AD v1 和 Azure Functions apps 的應用程式，請 `/v2.0` 在 URL 中省略。|
+    |簽發者 URL| 使用 `<authentication-endpoint>/<tenant-id>/v2.0` ，並取代為 *\<authentication-endpoint>* [您雲端環境的驗證端點](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (例如 " https://login.microsoft.com " 適用于全域 Azure) ，也會 *\<tenant-id>* 以建立應用程式註冊的 **目錄 (租使用者) 識別碼** 來取代。 此值用來將使用者重新導向至正確的 Azure AD 租用戶，以及下載適當的中繼資料，以判斷適當的權杖簽署金鑰和權杖簽發者宣告值 (舉例而言)。 針對使用 Azure AD v1 和 Azure Functions 應用程式的應用程式，請 `/v2.0` 在 URL 中省略。|
     |用戶端秘密 (選用)| 使用您在應用程式註冊中產生的用戶端秘密。|
     |允許的權杖對象| 如果這是雲端或伺服器應用程式，而且您想允許來自 Web 應用程式的驗證權杖，請在這裡新增 Web 應用程式的 [應用程式識別碼 URI]。 所設定的 [用戶端識別碼]一律會被隱含地視為允許的對象。 |
 
@@ -120,7 +120,7 @@ ms.locfileid: "88077422"
 1. 在 [重新導向 URI] 中，選取 [公用用戶端 (行動和傳統型)] 並輸入 URL `<app-url>/.auth/login/aad/callback`。 例如： `https://contoso.azurewebsites.net/.auth/login/aad/callback` 。
 
     > [!NOTE]
-    > 若是 Microsoft Store 應用程式，請改為使用[套件 SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid)作為 URI。
+    > 若是 Microsoft Store 應用程式，請改為使用[套件 SID](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid)作為 URI。
 1. 選取 [建立]。
 1. 建立應用程式註冊之後，複製 [應用程式 (用戶端) 識別碼] 的值。
 1. 選取 [API 權限] > [新增權限] > [我的 API]。

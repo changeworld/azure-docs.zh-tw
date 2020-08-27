@@ -2,19 +2,19 @@
 title: 使用連結的範本建立範本規格
 description: 瞭解如何使用連結的範本建立範本規格。
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 49a26bf61c3c66f41761afe293471575e76c4eb9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/27/2020
+ms.openlocfilehash: a70d4be2810b8d5a19fa9d806444cac1674e1a05
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936362"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959216"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>教學課程：使用連結的範本建立範本規格 (預覽) 
 
 瞭解如何使用[連結的範本](linked-templates.md#linked-template)建立[範本規格](template-specs.md)。 您可以使用範本規格，與組織中的其他使用者共用 ARM 範本。 本文說明如何使用 `relativePath` [部署資源](/azure/templates/microsoft.resources/deployments)的新屬性，建立範本規格來封裝主要範本及其連結的範本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -245,7 +245,7 @@ az deployment group create \
 ```
 
 > [!NOTE]
-> 取得範本規格識別碼，然後將它指派給 Windows PowerShell 中的變數時，有一個已知的問題。
+> 取得範本規格識別碼並將它指派給 Windows PowerShell 中的變數時，有一個已知的問題。
 
 ---
 

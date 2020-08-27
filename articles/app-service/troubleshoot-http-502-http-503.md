@@ -7,12 +7,12 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9cb672f2ada88b1fc67bcd8f022c5faeeac6dddf
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 9a41c5912ec285094c1f47540caf3744ddd4d469
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170795"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958321"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>針對 Azure App Service 中「502 不正確的閘道」和「503 服務無法使用」的 HTTP 錯誤，進行疑難排解
 在裝載於 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 的應用程式中，「502 不正確的閘道」和「503 服務無法使用」是常見的錯誤。 本文可協助您對這些錯誤進行疑難排解。
@@ -42,7 +42,7 @@ ms.locfileid: "84170795"
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1.觀察和監視應用程式行為
 #### <a name="track-service-health"></a>追蹤服務健全狀況
-每次發生服務中斷或效能降低時，Microsoft Azure 就會發出公告。 您可以在 [Azure 入口網站](https://portal.azure.com/)上追蹤服務健全狀況。 如需詳細資訊，請參閱[追蹤服務健全狀況](../monitoring-and-diagnostics/insights-service-health.md)。
+每次發生服務中斷或效能降低時，Microsoft Azure 就會發出公告。 您可以在 [Azure 入口網站](https://portal.azure.com/)上追蹤服務健全狀況。 如需詳細資訊，請參閱[追蹤服務健全狀況](../service-health/service-notifications.md)。
 
 #### <a name="monitor-your-app"></a>監視應用程式
 此選項可讓您了解應用程式是否有任何問題。 在應用程式刀鋒視窗中，按一下 [要求和錯誤] 圖格。 [ **度量** ] 刀鋒視窗將顯示所有可以加入的計量。
@@ -60,7 +60,7 @@ ms.locfileid: "84170795"
 如需詳細資訊，請參閱
 
 * [監視 Azure App Service 中的應用程式](web-sites-monitor.md)
-* [接收警示通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+* [接收警示通知](../azure-monitor/platform/alerts-overview.md)
 
 <a name="collect"></a>
 
@@ -108,5 +108,4 @@ AutoHeal 會根據您選擇的設定 (例如組態變更、要求、以記憶體
 
  ![重新啟動應用程式，以解決 502 不正確的閘道和 503 服務無法使用的 HTTP 錯誤](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
-您也可以使用 Azure Powershell 管理應用程式。 如需詳細資訊，請參閱 [將 Azure PowerShell 與 Azure 資源管理員搭配使用](../powershell-azure-resource-manager.md)。
-
+您也可以使用 Azure Powershell 管理應用程式。 如需詳細資訊，請參閱 [將 Azure PowerShell 與 Azure 資源管理員搭配使用](../azure-resource-manager/management/manage-resources-powershell.md)。

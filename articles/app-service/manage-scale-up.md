@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: b8545c4f8c0dc86d83e0711147a1bda608c2897f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8085cbd3d19bd60c50de38950625de2fcd1e5c27
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020161"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962480"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>在 Azure App Service 中擴大應用程式
 
@@ -18,7 +18,7 @@ ms.locfileid: "84020161"
 
 * [擴大](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)：取得更多的 CPU、記憶體、磁碟空間和額外的功能，例如專用虛擬機器 (VM)、自訂網域和憑證、預備位置，以及自動調整等等。 您可以藉由變更應用程式所屬的 App Service 方案定價層來擴大。
 * [擴增](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)：增加執行您的應用程式的 VM 執行個體數目。
-  視您的定價層而定，最多可以擴增至 30 個執行個體。 **隔離**層中的 [App Service 環境](environment/intro.md)，進一步將您的相應放大計數增加到 100 個執行個體。 如需擴增的詳細資訊，請參閱[手動或自動調整執行個體計數](../monitoring-and-diagnostics/insights-how-to-scale.md)。 您可以在該文章中了解如何使用自動調整，也就是根據預先定義的規則與排程，自動調整執行個體計數。
+  視您的定價層而定，最多可以擴增至 30 個執行個體。 **隔離**層中的 [App Service 環境](environment/intro.md)，進一步將您的相應放大計數增加到 100 個執行個體。 如需擴增的詳細資訊，請參閱[手動或自動調整執行個體計數](../azure-monitor/platform/autoscale-get-started.md)。 您可以在該文章中了解如何使用自動調整，也就是根據預先定義的規則與排程，自動調整執行個體計數。
 
 這些調整設定只需幾秒鐘便能套用，且影響範圍遍及 [App Service 方案](../app-service/overview-hosting-plans.md)內的所有應用程式。
 在此過程中，您不需要變更程式碼或重新部署應用程式。
@@ -77,7 +77,7 @@ ms.locfileid: "84020161"
 
 ## <a name="more-resources"></a>其他資源
 
-[手動或自動調整執行個體計數](../monitoring-and-diagnostics/insights-how-to-scale.md)  
+[手動或自動調整執行個體計數](../azure-monitor/platform/autoscale-get-started.md)  
 [設定 App Service 的 PremiumV2 層](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->

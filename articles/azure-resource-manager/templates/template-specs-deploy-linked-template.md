@@ -2,19 +2,19 @@
 title: 將範本規格部署為連結的範本
 description: 瞭解如何在連結的部署中部署現有的範本規格。
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: dacf2fba3ff78f3ff92741b49edad8fdf5bffe29
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/27/2020
+ms.openlocfilehash: dd1bb00c1cfd737478a8d5f6ebffdb57e5e1640e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918378"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959199"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>教學課程：將範本規格部署為連結的範本 (預覽) 
 
 瞭解如何使用[連結的部署](linked-templates.md#linked-template)來部署現有的[範本規格](template-specs.md)。 您可以使用範本規格，與組織中的其他使用者共用 ARM 範本。 建立範本規格之後，您可以使用 Azure PowerShell 或 Azure CLI 來部署範本規格。 您也可以使用連結的範本，將範本規格部署為解決方案的一部分。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -130,7 +130,7 @@ id = $(az template-specs show --name $templateSpecName --resource-group $resourc
 ```
 
 > [!NOTE]
-> 取得範本規格識別碼，然後將它指派給 Windows PowerShell 中的變數時，有一個已知的問題。
+> 取得範本規格識別碼並將它指派給 Windows PowerShell 中的變數時，有一個已知的問題。
 
 ---
 

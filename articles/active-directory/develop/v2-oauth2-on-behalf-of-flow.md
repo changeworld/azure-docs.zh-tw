@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3abef3324bee61f2d7eb96c80750ad589b15f342
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 018d67b3e4e730cd46eb524a8927b3a6d68d74e8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987030"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958655"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 代理者流程
 
@@ -47,7 +47,7 @@ OAuth2.0 代理者流程 (OBO) 的使用案例，是應用程式叫用服務/Web
 > [!NOTE]
 > 在此案例中，中介層服務不會利用使用者互動來取得使用者的下游 API 存取同意。 因此，在驗證期間必須先呈現授與存取下游 API 的選項，作為同意步驟的一部分。 若要深入了解如何為您的應用程式進行這個設定，請參閱[取得中介層應用程式的同意](#gaining-consent-for-the-middle-tier-application)。
 
-## <a name="middle-tier-access-token-request"></a>中介層存取權杖要求
+## <a name="middle-tier-access-token-request"></a>仲介層存取權杖要求
 
 若要要求存取權杖，請使用下列參數，對租用戶特定的 Microsoft 身分識別平台權杖端點提出 HTTP POST。
 
@@ -66,7 +66,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 | `grant_type` | 必要 | 權杖要求的類型。 對於使用 JWT 的要求，值必須是 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
 | `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面指派給您應用程式的應用程式 (用戶端) 識別碼。 |
 | `client_secret` | 必要 | 您在 Azure 入口網站 - 應用程式註冊頁面中為應用程式產生的用戶端秘密。 |
-| `assertion` | 必要 | 已傳送至中介層 API 的存取權杖。  此權杖必須有物件 (`aud` 應用程式的) 宣告， (由欄位) 所表示的應用程式來提出此 OBO 要求 `client-id` 。 應用程式無法兌換不同應用 (程式的權杖，例如，如果用戶端傳送 API 給 MS Graph 的權杖，則 API 無法使用 OBO 兌換。  它應該會改為拒絕) 的權杖。  |
+| `assertion` | 必要 | 傳送至中介層 API 的存取權杖。  此權杖必須有物件 (`aud` 應用程式) 宣告，讓此 OBO 要求 () 欄位所表示的應用程式 `client-id` 。 應用程式無法兌換不同應用程式的權杖 (因此，例如，如果用戶端傳送的 API 是用於 MS Graph 的權杖，則 API 無法使用 OBO 兌換該權杖。  它應該改為拒絕權杖) 。  |
 | `scope` | 必要 | 權杖要求範圍的清單，各項目之間以空格分隔。 如需詳細資訊，請參閱[範圍](v2-permissions-and-consent.md)。 |
 | `requested_token_use` | 必要 | 指定應該如何處理要求。 在 OBO 流程中，此值必須設定為 `on_behalf_of`。 |
 
@@ -99,7 +99,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 | `client_id` | 必要 |  [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面指派給您應用程式的應用程式 (用戶端) 識別碼。 |
 | `client_assertion_type` | 必要 | 值必須是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
 | `client_assertion` | 必要 | 您必須建立判斷提示 (JSON Web 權杖)，並使用註冊的憑證來簽署，以作為應用程式的認證。 若要深入了解如何註冊您的憑證與判斷提示的格式，請參閱[憑證認證](active-directory-certificate-credentials.md)。 |
-| `assertion` | 必要 |  已傳送至中介層 API 的存取權杖。  此權杖必須有物件 (`aud` 應用程式的) 宣告， (由欄位) 所表示的應用程式來提出此 OBO 要求 `client-id` 。 應用程式無法兌換不同應用 (程式的權杖，例如，如果用戶端傳送 API 給 MS Graph 的權杖，則 API 無法使用 OBO 兌換。  它應該會改為拒絕) 的權杖。  |
+| `assertion` | 必要 |  傳送至中介層 API 的存取權杖。  此權杖必須有物件 (`aud` 應用程式) 宣告，讓此 OBO 要求 () 欄位所表示的應用程式 `client-id` 。 應用程式無法兌換不同應用程式的權杖 (因此，例如，如果用戶端傳送的 API 是用於 MS Graph 的權杖，則 API 無法使用 OBO 兌換該權杖。  它應該改為拒絕權杖) 。  |
 | `requested_token_use` | 必要 | 指定應該如何處理要求。 在 OBO 流程中，此值必須設定為 `on_behalf_of`。 |
 | `scope` | 必要 | 權杖要求範圍的清單，各項目之間以空格分隔。 如需詳細資訊，請參閱[範圍](v2-permissions-and-consent.md)。|
 
@@ -125,7 +125,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read+offline_access
 ```
 
-## <a name="middle-tier-access-token-response"></a>中介層存取權杖回應
+## <a name="middle-tier-access-token-response"></a>仲介層存取權杖回應
 
 成功的回應是 JSON OAuth 2.0 回應，包含下列參數。
 
@@ -153,9 +153,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ```
 
 > [!NOTE]
-> 上述存取權杖是適用于 Microosft Graph 的 v1.0 格式權杖。 這是因為權杖格式是以存取的**資源**為基礎，而且與用來要求它的端點無關。 既然 Microsoft Graph 已設為接受 v1.0 權杖，所以當用戶端要求 Microsoft Graph 權杖時，Microsoft 身分識別平台即會產生 v1.0 存取權杖。 其他應用程式可能表示他們想要有 v2.0 格式的權杖、v1.0 格式的權杖，甚至是專屬或加密的權杖格式。  V1.0 和 v2.0 端點都可以發出權杖的格式-如此一來，無論用戶端要求權杖的方式或位置為何，資源一律會取得正確的權杖格式。 
+> 上述存取權杖是 Microsoft Graph 的1.0 格式權杖。 這是因為權杖格式是根據所存取的 **資源** ，以及用來要求它的端點不相關的。 既然 Microsoft Graph 已設為接受 v1.0 權杖，所以當用戶端要求 Microsoft Graph 權杖時，Microsoft 身分識別平台即會產生 v1.0 存取權杖。 其他應用程式可能會指出他們想要的是 v2.0 格式權杖、v1.0 格式權杖，或甚至是專屬或加密的權杖格式。  V1.0 和 v2.0 端點都可以發出權杖的任何一種格式，如此一來，不論用戶端要求權杖的方式或位置為何，資源一律都可以取得正確的權杖格式。 
 >
-> 只有應用程式應該檢查存取權杖。 用戶端**不得**檢查存取權杖。 在您的程式碼中檢查其他應用程式的存取權杖，會導致您的應用程式在應用程式變更權杖的格式或開始加密它們時意外中斷。 
+> 只有應用程式應該檢查存取權杖。 用戶端**不得**檢查存取權杖。 檢查程式碼中其他應用程式的存取權杖，會導致您的應用程式在應用程式變更權杖的格式或開始加密時，意外中斷。 
 
 ### <a name="error-response-example"></a>錯誤回應範例
 

@@ -1,21 +1,21 @@
 ---
-title: OS 和執行時間修補步調
-description: 瞭解 Azure App Service 如何更新 OS 和執行時間、應用程式的執行時間和修補程式等級，以及您可以如何取得更新宣告。
+title: 作業系統和執行時間修補步調
+description: 瞭解 Azure App Service 如何更新作業系統和執行時間、應用程式的執行時間和修補程式等級，以及您可以如何取得更新公告。
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 93716ab36bc475b092542d1eef40cfe9d75ad819
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 831ba5f055b70e2f46cb8c6a941c0401df347dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414933"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961511"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service 中的 OS 和執行階段修補
 
 本文說明如何取得有關 [App Service](overview.md) 中 OS 或軟體的特定版本資訊。 
 
-App Service 是平台即服務，這表示 Azure 會為您管理 OS 和應用程式堆疊；您只需要管理您的應用程式和其資料。 您可以在 [Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/)中獲得更多對於 OS 和應用程式堆疊的控制能力。 記住這一點可幫助身為 App Service 使用者的您了解更多資訊，例如：
+App Service 是平台即服務，這表示 Azure 會為您管理 OS 和應用程式堆疊；您只需要管理您的應用程式和其資料。 您可以在 [Azure 虛擬機器](../virtual-machines/index.yml)中獲得更多對於 OS 和應用程式堆疊的控制能力。 記住這一點可幫助身為 App Service 使用者的您了解更多資訊，例如：
 
 -   OS 更新的套用方式和時機？
 -   針對重大漏洞 (例如零時差) 修補 App Service 的方式？
@@ -25,7 +25,7 @@ App Service 是平台即服務，這表示 Azure 會為您管理 OS 和應用程
 
 ## <a name="how-and-when-are-os-updates-applied"></a>OS 更新的套用方式和時機？
 
-Azure 會在兩個層級管理 OS 修補，分別是實體伺服器和執行 App Service 資源的客體虛擬機器 (VM)。 兩者皆會每月更新，以配合每月的 [Patch Tuesday](https://technet.microsoft.com/security/bulletins.aspx) 排程。 這些更新會以能夠保證 Azure 服務具有高可用性 SLA 的方式自動套用。 
+Azure 會在兩個層級管理 OS 修補，分別是實體伺服器和執行 App Service 資源的客體虛擬機器 (VM)。 兩者皆會每月更新，以配合每月的 [Patch Tuesday](/security-updates/) 排程。 這些更新會以能夠保證 Azure 服務具有高可用性 SLA 的方式自動套用。 
 
 如需更新套用方式的詳細資訊，請參閱[揭露 App Service OS 更新背後的魔法](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html)。
 
@@ -51,11 +51,11 @@ Azure 會在兩個層級管理 OS 修補，分別是實體伺服器和執行 App
 
 ### <a name="new-patch-updates"></a>新的修補程式更新
 
-.NET、PHP、Java SDK 或 Tomcat/Jetty 版本的修補程式更新，會透過以新版本覆寫現有安裝的方式自動套用。 Node.js 修補程式更新則會與現有版本並存安裝 (類似於下一節的主要和次要版本)。 新的 Python 修補程式版本可以透過與內建 Python 安裝並存的[網站延伸](https://azure.microsoft.com/blog/azure-web-sites-extensions/)模組來手動安裝。
+.NET、PHP、Java SDK 或 Tomcat/Jetty 版本的修補程式更新，會透過以新版本覆寫現有安裝的方式自動套用。 Node.js 修補程式更新則會與現有版本並存安裝 (類似於下一節的主要和次要版本)。 您可以透過 [網站延伸](https://azure.microsoft.com/blog/azure-web-sites-extensions/)模組，與內建的 python 安裝並存安裝新的 python 修補程式版本。
 
 ### <a name="new-major-and-minor-versions"></a>新的主要和次要版本
 
-有新增的主要或次要版本時，便會與現有版本並存安裝。 您可以手動將應用程式升級至新的版本。 如果您是在設定檔中 (例如 `web.config` 和 `package.json`) 設定執行階段版本，則必須以相同方法升級。 如果您使用 App Service 設定來設定執行階段版本，則可以在 [Azure 入口網站](https://portal.azure.com)中或藉由在 [Cloud Shell](../cloud-shell/overview.md) 中執行 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 命令來加以變更，如下列範例所示：
+有新增的主要或次要版本時，便會與現有版本並存安裝。 您可以手動將應用程式升級至新的版本。 如果您是在設定檔中 (例如 `web.config` 和 `package.json`) 設定執行階段版本，則必須以相同方法升級。 如果您使用 App Service 設定來設定執行階段版本，則可以在 [Azure 入口網站](https://portal.azure.com)中或藉由在 [Cloud Shell](../cloud-shell/overview.md) 中執行 [Azure CLI](/cli/azure/get-started-with-azure-cli) 命令來加以變更，如下列範例所示：
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -81,12 +81,12 @@ az webapp config set --java-version 1.8 --java-container Tomcat --java-container
 | .NET 版本 | 位於 `https://<appname>.scm.azurewebsites.net/DebugConsole`，在命令提示字元中執行下列命令： <br>`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"` |
 | .NET Core 版本 | 位於 `https://<appname>.scm.azurewebsites.net/DebugConsole`，在命令提示字元中執行下列命令： <br> `dotnet --version` |
 | PHP 版本 | 位於 `https://<appname>.scm.azurewebsites.net/DebugConsole`，在命令提示字元中執行下列命令： <br> `php --version` |
-| 預設的 Node.js 版本 | 在[Cloud Shell](../cloud-shell/overview.md)中，執行下列命令： <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
+| 預設的 Node.js 版本 | 在 [Cloud Shell](../cloud-shell/overview.md)中，執行下列命令： <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Python 版本 | 位於 `https://<appname>.scm.azurewebsites.net/DebugConsole`，在命令提示字元中執行下列命令： <br> `python --version` |  
 | Java 版本 | 位於 `https://<appname>.scm.azurewebsites.net/DebugConsole`，在命令提示字元中執行下列命令： <br> `java -version` |  
 
 > [!NOTE]  
-> 您無法存取登錄位置 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` (這裡儲存了有關 ["KB" 修補程式](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)的資訊)。
+> 您無法存取登錄位置 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` (這裡儲存了有關 ["KB" 修補程式](/security-updates/SecurityBulletins/securitybulletins)的資訊)。
 >
 >
 

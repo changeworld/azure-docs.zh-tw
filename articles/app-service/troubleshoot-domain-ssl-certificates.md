@@ -1,6 +1,6 @@
 ---
-title: 針對網域和 TLS/SSL 憑證進行疑難排解
-description: 尋找在 Azure App Service 中設定網域或 TLS/SSL 憑證時可能會遇到之常見問題的解決方案。
+title: 針對網域與 TLS/SSL 憑證進行疑難排解
+description: 尋找當您在 Azure App Service 中設定網域或 TLS/SSL 憑證時，可能會遇到之常見問題的解決方案。
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80668030"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958383"
 ---
-# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>針對 Azure App Service 中的網域和 TLS/SSL 憑證問題進行疑難排解
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>針對 Azure App Service 中的網域與 TLS/SSL 憑證問題進行疑難排解
 
 本文列出當您在 Azure App Service 中為 web 應用程式設定網域或 TLS/SSL 憑證時，可能會遇到的常見問題。 文中也會描述這些問題的可能原因和解決方案。
 
-如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至[Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 前往 [Azure 支援網站](https://azure.microsoft.com/support/options/) ，然後選取 [ **取得支援**]。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -30,13 +30,13 @@ ms.locfileid: "80668030"
 
 #### <a name="symptom"></a>徵狀
 
-當您新增 TLS 系結時，您會收到下列錯誤訊息：
+當您新增 TLS 系結時，會收到下列錯誤訊息：
 
 「無法新增 SSL 繫結。 無法為現有 VIP 設定憑證，因為已經有另一個 VIP 使用該憑證。」
 
 #### <a name="cause"></a>原因
 
-多個應用程式之間，如果有多個基於相同 IP 位址的 IP 為主 SSL 繫結，可能會發生此問題。 例如，應用程式 A 的以 IP 為主 SSL 使用舊憑證。 應用程式 B 的以 IP 為主 SSL 使用同一個 IP 位址的新憑證。 當您使用新的憑證來更新應用程式 TLS 系結時，會因此錯誤而失敗，因為另一個應用程式正在使用相同的 IP 位址。 
+多個應用程式之間，如果有多個基於相同 IP 位址的 IP 為主 SSL 繫結，可能會發生此問題。 例如，應用程式 A 的以 IP 為主 SSL 使用舊憑證。 應用程式 B 的以 IP 為主 SSL 使用同一個 IP 位址的新憑證。 當您使用新憑證來更新應用程式 TLS 系結時，會因為另一個應用程式正在使用相同的 IP 位址而失敗，並出現此錯誤。 
 
 #### <a name="solution"></a>解決方案 
 
@@ -51,7 +51,7 @@ ms.locfileid: "80668030"
 
 當您嘗試刪除憑證時，收到下列錯誤訊息：
 
-「無法刪除憑證，因為它目前正用於 TLS/SSL 系結中。 您必須先移除 TLS 系結，才能刪除憑證。」
+「無法刪除憑證，因為目前正在使用 TLS/SSL 系結。 您必須先移除 TLS 系結，才能刪除憑證。」
 
 #### <a name="cause"></a>原因
 
@@ -84,13 +84,13 @@ ms.locfileid: "80668030"
 - 訂用帳戶已達到單一訂用帳戶允許的購買限制。
 
     **解決方案**：隨用隨付和 EA 訂用帳戶類型的 App Service 憑證有購買 10 個憑證的限制。 其他訂用帳戶類型的限制則為 3 個。 若要提高限制，請連絡 [Azure支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-- App Service 憑證已標示為詐騙。 您收到以下錯誤訊息：「您的憑證已被標幟為可能是詐騙。 要求目前正在進行檢閱。 如果憑證在24小時內無法使用，請聯絡 Azure 支援。」
+- App Service 憑證已標示為詐騙。 您收到以下錯誤訊息：「您的憑證已被標幟為可能是詐騙。 要求目前正在進行檢閱。 如果憑證未在24小時內變成可用，請洽詢 Azure 支援服務」。
 
     **解決方案**：如果憑證被標示為詐騙，而且在接下來的 24 小時內未能解決，請遵循以下步驟：
 
     1. 登入 [Azure 入口網站](https://portal.azure.com)。
     2. 前往 [App Service 憑證]****，然後選取憑證。
-    3. 選取**憑證**設定  >  **步驟2：驗證**  >  **網域驗證**。 此步驟會傳送電子郵件通知給 Azure 憑證提供者，尋求解決問題。
+    3. 選取**憑證**設定  >  **步驟2：確認**  >  **網域驗證**。 此步驟會傳送電子郵件通知給 Azure 憑證提供者，尋求解決問題。
 
 ## <a name="custom-domain-problems"></a>自訂網域問題
 
@@ -112,7 +112,7 @@ ms.locfileid: "80668030"
 
 - 如果您已新增 A 記錄，請務必一併新增 TXT 記錄。 如需詳細資訊，請參閱[建立 A 記錄](./app-service-web-tutorial-custom-domain.md#create-the-a-record)。
 - 如果您的應用程式不一定要使用根網域，建議您使用 CNAME 記錄，避免使用 A 記錄。
-- CNAME 記錄和 A 記錄不應同時用於同一個網域。 此問題可能會造成衝突，並導致無法解析網域。 
+- CNAME 記錄和 A 記錄不應同時用於同一個網域。 此問題可能會導致衝突，並導致無法解析網域。 
 
 **原因 2** 
 
@@ -131,7 +131,7 @@ ms.locfileid: "80668030"
 #### <a name="solution"></a>解決方案
 
 - 請洽詢訂用帳戶管理員，確認您擁有將主機名稱新增至應用程式的權限。
-- 如果您需要更多子域，建議您將裝載的網域變更為 Azure 功能變數名稱服務（DNS）。 只要使用 Azure DNS，您就可以將 500 個主機名稱新增至應用程式。 如需詳細資訊，請參閱[新增子網域](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)。
+- 如果您需要更多子域，建議您將裝載的網域變更為 Azure 功能變數名稱服務 (DNS) 。 只要使用 Azure DNS，您就可以將 500 個主機名稱新增至應用程式。 如需詳細資訊，請參閱[新增子網域](/archive/blogs/waws/mapping-a-custom-subdomain-to-an-azure-website)。
 
 ### <a name="dns-cant-be-resolved"></a>無法解析 DNS
 
@@ -161,11 +161,11 @@ ms.locfileid: "80668030"
 訂用帳戶的擁有者可能已意外刪除網域。
 
 #### <a name="solution"></a>解決方案
-如果網域遭到刪除的時間距離今天不到七天，網域的刪除程序可能尚未開始。 此時，您可以 Azure 入口網站中以同一個訂用帳戶再次購買相同的網域。 （請務必在搜尋方塊中輸入確切的功能變數名稱）。您不會再向您收取此網域的費用。 如果網域已在七天前刪除，請洽詢[Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以取得還原網域的協助。
+如果網域遭到刪除的時間距離今天不到七天，網域的刪除程序可能尚未開始。 此時，您可以 Azure 入口網站中以同一個訂用帳戶再次購買相同的網域。  (請務必在 [搜尋] 方塊中輸入確切的功能變數名稱。 ) 此網域不會再向您收費。 如果網域在七天前遭到刪除，請聯絡 [Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 以取得還原網域的協助。
 
 ## <a name="domain-problems"></a>網域問題
 
-### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>您購買了錯誤網域的 TLS/SSL 憑證
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>您為錯誤的網域購買了 TLS/SSL 憑證
 
 #### <a name="symptom"></a>徵狀
 
@@ -184,14 +184,14 @@ ms.locfileid: "80668030"
 App Service 憑證已更新，不過使用 App Service 憑證的應用程式仍然使用舊憑證。 此外，您收到必須使用 HTTPS 通訊協定的警告。
 
 #### <a name="cause"></a>原因 
-App Service 會在48小時內自動同步處理您的憑證。 當您輪替或更新憑證時，有時候應用程式仍會擷取舊憑證，而非更新後的憑證。 這是因為同步處理憑證資源的作業尚未執行。 按一下 [同步處理]。同步作業會自動更新 App Service 中憑證的主機名稱系結，而不會對您的應用程式造成任何停機時間。
+App Service 在48小時內自動同步處理您的憑證。 當您輪替或更新憑證時，有時候應用程式仍會擷取舊憑證，而非更新後的憑證。 這是因為同步處理憑證資源的作業尚未執行。 按一下 [同步]。同步作業會自動更新 App Service 中憑證的主機名稱系結，而不會導致您的應用程式停止運作。
  
 #### <a name="solution"></a>解決方案
 
 您可以強制同步處理憑證：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [App Service 憑證]****，然後選取憑證。
-2. 選取 [**重設金鑰及同步**]，然後選取 [**同步**]。同步處理需要一些時間才能完成。 
+2. 選取 [ **重設金鑰和同步**處理]，然後選取 [ **同步**]。同步需要一些時間才能完成。 
 3. 當同步完成時，您會看見以下通知：「已成功將所有資源更新為最新憑證」。
 
 ### <a name="domain-verification-is-not-working"></a>網域驗證無法運作 
@@ -268,56 +268,56 @@ App Service 憑證必須經過網域驗證才能使用。 當您選取 [驗證]*
 
 ## <a name="faq"></a>常見問題集
 
-**購買我的網站之後，我必須為我的網站設定我的自訂網域嗎？**
+**當我購買我的網站時，我是否需要為我的網站設定我的自訂網域？**
 
-當您從 Azure 入口網站購買網域時，App Service 應用程式會自動設定為使用該自訂網域。 您不需要採取任何額外的步驟。 如需詳細資訊，請觀賞[Azure App Service Self Help：在 Channel9 上新增自訂功能變數名稱](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)。
+當您從 Azure 入口網站購買網域時，會自動將 App Service 應用程式設定為使用該自訂網域。 您不必採取任何額外的步驟。 如需詳細資訊，請觀賞 [Azure App Service Self Help：在 Channel9 上新增自訂功能變數名稱](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) 。
 
-**我可以使用在 Azure 入口網站中購買的網域，改為指向 Azure VM 嗎？**
+**我可以使用 Azure 入口網站購買的網域來改為指向 Azure VM 嗎？**
 
 是，您可以將網域指向 VM。 如需詳細資訊，請參閱[使用 Azure DNS 為 Azure 服務提供自訂網域設定](../dns/dns-custom-domain.md)。
 
-**我的網域是由 GoDaddy 或 Azure DNS 所主控嗎？**
+**我的網域是由 GoDaddy 還是 Azure DNS 所裝載？**
 
-App Service 網域會使用 GoDaddy 進行網域註冊，並 Azure DNS 來裝載網域。 
+App Service 網域會使用 GoDaddy 來註冊網域，並使用 Azure DNS 來裝載網域。 
 
-**我已啟用自動更新，但仍透過電子郵件收到我的網域的更新通知。我該怎麼做？**
+**我已啟用自動更新，但仍會透過電子郵件收到網域的續約通知。我該怎麼做？**
 
-如果您已啟用自動更新，則不需要採取任何動作。 系統會提供通知電子郵件，告知您網域已接近到期，如果未啟用自動更新，則會手動更新。
+如果您已啟用自動更新，就不需要採取任何動作。 系統會提供通知電子郵件通知您，網域即將到期，如果未啟用自動更新，則會手動更新。
 
-**我是否會針對裝載我的網域 Azure DNS 付費？**
+**我會向我收取網域 Azure DNS 的費用嗎？**
 
-網域購買的初始成本僅適用于網域註冊。 除了註冊成本以外，Azure DNS 會根據您的使用量產生費用。 如需詳細資訊，請參閱[Azure DNS 定價](https://azure.microsoft.com/pricing/details/dns/)。
+網域購買的初始成本僅適用于網域註冊。 除了註冊成本之外，Azure DNS 也會根據您的使用量收取費用。 如需詳細資訊，請參閱 [Azure DNS 定價](https://azure.microsoft.com/pricing/details/dns/) 以取得詳細資料。
 
-**我先前已從 Azure 入口網站購買我的網域，而且想要從 GoDaddy 裝載移至 Azure DNS 裝載。我該怎麼做呢？**
+**我稍早從 Azure 入口網站購買網域，並想要從 GoDaddy 主機移至 Azure DNS 裝載。我該怎麼做？**
 
-不一定要遷移至 Azure DNS 裝載。 如果您想要遷移至 Azure DNS，Azure 入口網站中的網域管理體驗會提供移至 Azure DNS 所需步驟的相關資訊。 如果網域是透過 App Service 購買，則從 GoDaddy 裝載到 Azure DNS 的遷移作業是相對無縫的程式。
+遷移至 Azure DNS 裝載並不是必要的。 如果您想要遷移至 Azure DNS，Azure 入口網站中的網域管理體驗會提供移至 Azure DNS 所需步驟的相關資訊。 如果網域是透過 App Service 購買的，則從 GoDaddy 裝載到 Azure DNS 的遷移程式相當完美。
 
-**我想要從 App Service 網域購買我的網域，但是我可以在 GoDaddy 上裝載我的網域，而不是 Azure DNS 嗎？**
+**我想要從 App Service 網域購買我的網域，但我可以在 GoDaddy 而不是 Azure DNS 上裝載網域嗎？**
 
-從2017年7月24日開始，入口網站中購買的 App Service 網域會裝載在 Azure DNS 上。 如果您想要使用不同的主機服務提供者，您必須移至其網站，以取得網域裝載解決方案。
+從2017年7月24日開始，在入口網站中購買的 App Service 網域會裝載于 Azure DNS。 如果您想要使用不同的主機服務提供者，您必須移至其網站以取得網域裝載解決方案。
 
 **我必須支付網域的隱私權保護嗎？**
 
-當您透過 Azure 入口網站購買網域時，您可以選擇新增隱私權，而不需要額外付費。 這是透過 Azure App Service 購買網域的其中一項優點。
+當您透過 Azure 入口網站購買網域時，可以選擇不額外的費用來新增隱私權。 這是透過 Azure App Service 購買網域的其中一個優點。
 
-**如果我決定不再需要我的網域，是否可以讓我的錢回復？**
+**如果我決定不再需要我的網域，我可以取回錢嗎？**
 
-當您購買網域時，您不需要支付五天的費用，在這段期間，您可以決定不要使用網域。 如果您決定不想讓該網域在五天期間內，就不會向您收費。 （. 英國網域是這個的例外狀況。 如果您購買的是英國網域，則會立即向您收取費用，而且不能退款。）
+當您購買網域時，系統不會向您收取五天的費用，在這段期間，您可以決定不想要該網域。 如果您決定不想讓該網域在五天的期間內，則不會向您收費。  ( uk 網域是唯一的例外。 如果您購買的是 uk 網域，則會立即向您收費，而且無法退款。 ) 
 
-**我可以在訂用帳戶中使用另一個 Azure App Service 應用程式中的網域嗎？**
+**我可以在訂用帳戶中的另一個 Azure App Service 應用程式中使用網域嗎？**
 
-是。 當您存取 Azure 入口網站中的 [自訂網域和 TLS] 分頁時，您會看到已購買的網域。 您可以將應用程式設定為使用其中任何一個網域。
+是。 當您在 Azure 入口網站中存取自訂網域和 TLS 分頁時，會看到您已購買的網域。 您可以將應用程式設定為使用任何這些網域。
 
 **我可以將網域從一個訂用帳戶轉移到另一個訂用帳戶嗎？**
 
-您可以使用[Get-azresource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell Cmdlet，將網域移至另一個訂用帳戶/資源群組。
+您可以使用 [Get-azresource](/powershell/module/az.Resources/Move-azResource) PowerShell Cmdlet，將網域移至另一個訂用帳戶/資源群組。
 
-**如果我目前沒有 Azure App Service 應用程式，該如何管理我的自訂網域？**
+**如果目前沒有 Azure App Service 應用程式，該如何管理我的自訂網域？**
 
-即使您沒有 App Service Web 應用程式，也可以管理您的網域。 網域可用於 Azure 服務，例如虛擬機器、儲存體等等。如果您想要使用網域進行 App Service Web Apps，則需要包含不在免費 App Service 方案中的 Web 應用程式，才能將網域系結至您的 web 應用程式。
+即使您沒有 App Service Web 應用程式，也可以管理您的網域。 網域可用於 Azure 服務，例如虛擬機器、儲存體等等。如果您想要使用網域進行 App Service Web Apps，則必須包含不在免費 App Service 方案中的 Web 應用程式，才能將網域系結至您的 Web 應用程式。
 
-**是否可以將具有自訂網域的 web 應用程式移至另一個訂用帳戶，或從 App Service 環境 v1 到 V2？**
+**是否可以將具有自訂網域的 web 應用程式移至另一個訂用帳戶，或從 App Service 環境 v1 移至 V2？**
 
-是，您可以跨訂用帳戶移動您的 web 應用程式。 請遵循[如何在 Azure 中移動資源中](../azure-resource-manager/management/move-resource-group-and-subscription.md)的指導方針。 移動 web 應用程式時有幾個限制。 如需詳細資訊，請參閱[移動 App Service 資源的限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)。
+是，您可以跨訂用帳戶移動您的 web 應用程式。 遵循 [如何在 Azure 中移動資源](../azure-resource-manager/management/move-resource-group-and-subscription.md)的指導方針。 移動 web 應用程式時有一些限制。 如需詳細資訊，請參閱 [移動 App Service 資源的限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)。
 
-移動 web 應用程式之後，[自訂網域] 設定內網域的主機名稱系結應該保持不變。 不需要額外的步驟來設定主機名稱系結。
+移動 web 應用程式之後，[自訂網域] 設定中網域的主機名稱系結應維持不變。 設定主機名稱系結不需要額外的步驟。

@@ -1,16 +1,16 @@
 ---
-title: 使用 ZIP 或 WAR 檔案部署程式碼
+title: 使用 ZIP 或 WAR 檔案來部署程式碼
 description: 了解如何使用 ZIP 檔案 (若為 Java 開發人員，則是 WAR 檔案) 將您的應用程式部署至 Azure App Service。
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: f547f60bf6c67b757f2e12f06f1e39100c3e76cb
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e2959403d2e5db38d03013e798fe299d56837227
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077147"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962106"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 檔案將您的應用程式部署至 Azure App Service
 
@@ -29,18 +29,18 @@ ms.locfileid: "88077147"
 WAR 檔案部署會將您的 [WAR](https://wikipedia.org/wiki/WAR_(file_format)) 檔案部署至 App Service，以執行您的 Java Web 應用程式。 請參閱[部署 WAR 檔案](#deploy-war-file)。
 
 > [!NOTE]
-> 使用時 `ZipDeploy` ，只有當檔案的時間戳記不符合已部署的檔案時，才會複製檔案。 使用可快取輸出的組建程式來產生 zip，會產生更快速的部署。 如需詳細資訊，請參閱[從 zip 檔案或 url 進行部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)。
+> 使用時 `ZipDeploy` ，只有當檔案的時間戳記不符合已部署的檔案時，才會複製檔案。 使用可快取輸出的組建進程產生 zip，可能會導致更快速的部署。 如需詳細資訊，請參閱 [從 zip 檔案或 url 進行部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要完成本文中的步驟，請[建立 App Service 應用程式](/azure/app-service/)，或使用您在另一個教學課程中建立的應用程式。
+若要完成本文中的步驟，請 [建立 App Service 應用程式](./index.yml)，或使用您為另一個教學課程所建立的應用程式。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [Create a project ZIP file](../../includes/app-service-web-deploy-zip-prepare.md)]
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
-上述端點目前不適用於 Linux 應用程式服務。 請考慮改為使用 FTP 或[ZIP 部署 API](faq-app-service-linux.md#continuous-integration-and-deployment) 。
+上述端點目前無法在 Linux 應用程式服務上運作。 請考慮改為使用 FTP 或 [ZIP DEPLOY API](faq-app-service-linux.md#continuous-integration-and-deployment) 。
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>使用 Azure CLI 部署 ZIP 檔案
 
@@ -54,7 +54,7 @@ az webapp deployment source config-zip --resource-group <group-name> --name <app
 
 此命令會將檔案和目錄從 ZIP 檔案部署到預設的 App Service 應用程式資料夾 (`\home\site\wwwroot`)，並重新啟動應用程式。
 
-根據預設，部署引擎會假設 ZIP 檔案已準備好以既有的方式執行，而且不會執行任何組建自動化。 若要啟用與[Git 部署](deploy-local-git.md)相同的組建自動化，請 `SCM_DO_BUILD_DURING_DEPLOYMENT` 在[Cloud Shell](https://shell.azure.com)中執行下列命令，以設定應用程式設定：
+根據預設，部署引擎會假設 ZIP 檔案已就緒可依原樣執行，且不會執行任何組建自動化。 若要啟用與 [Git 部署](deploy-local-git.md)相同的組建自動化，請 `SCM_DO_BUILD_DURING_DEPLOYMENT` 在 [Cloud Shell](https://shell.azure.com)中執行下列命令來設定應用程式設定：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
@@ -66,9 +66,9 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 ## <a name="deploy-war-file"></a>部署 WAR 檔案
 
-若要將 WAR 檔案部署到 App Service，請將 POST 要求傳送至 `https://<app-name>.scm.azurewebsites.net/api/wardeploy` 。 POST 要求必須在訊息本文中包含 .war 檔案。 系統會使用 HTTP 基本驗證，在要求中提供應用程式的部署認證。
+若要將 WAR 檔案部署至 App Service，請將 POST 要求傳送至 `https://<app-name>.scm.azurewebsites.net/api/wardeploy` 。 POST 要求必須在訊息本文中包含 .war 檔案。 系統會使用 HTTP 基本驗證，在要求中提供應用程式的部署認證。
 
-`/api/wardeploy`部署 WAR 檔案時，請一律使用。 此 API 會擴充您的 WAR 檔案，並將它放在共用的檔磁片磁碟機上。 使用其他部署 Api 可能會導致不一致的行為。 
+`/api/wardeploy`部署 WAR 檔案時一律使用。 此 API 會擴充您的 WAR 檔案，並將它放在共用的檔案磁片磁碟機上。 使用其他部署 Api 可能會導致不一致的行為。 
 
 針對 HTTP 基本驗證，您需要 App Service 部署的認證。 若要了解如何設定部署認證，請參閱[設定及重設使用者層級的認證](deploy-configure-credentials.md#userscope)。
 
@@ -82,7 +82,7 @@ curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app-name>.s
 
 ### <a name="with-powershell"></a>透過 PowerShell
 
-下列範例會使用[new-azwebapp](/powershell/module/az.websites/publish-azwebapp)上傳 war 檔案。 取代預留位置 `<group-name>`、`<app-name>` 和 `<war-file-path>`。
+下列範例會使用 [set-azwebapp](/powershell/module/az.websites/publish-azwebapp) 上傳 war 檔。 取代預留位置 `<group-name>`、`<app-name>` 和 `<war-file-path>`。
 
 ```powershell
 Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <war-file-path>

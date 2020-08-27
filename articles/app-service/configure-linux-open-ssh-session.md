@@ -1,6 +1,6 @@
 ---
 title: 適用于 Linux 容器的 SSH 存取
-description: 您可以在 Azure App Service 中開啟 Linux 容器的 SSH 會話。 自訂的 Linux 容器支援自訂映射的某些修改。
+description: 您可以在 Azure App Service 中開啟 Linux 容器的 SSH 會話。 自訂 Linux 容器可支援自訂映射的一些修改。
 keywords: azure app service, web 應用程式, linux, oss
 author: msangapu-msft
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: f663b58de666e2a0fe44fa3c023816a524b7d6c5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d46aacc441b412a117d906e0201a9bed6046a338
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082924"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961600"
 ---
-# <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>在中開啟 Linux 容器的 SSH 會話 Azure App Service
+# <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>在 Azure App Service 中開啟 Linux 容器的 SSH 會話
 
-[安全殼層 (SSH)](https://wikipedia.org/wiki/Secure_Shell) 通常用於從命令列終端機，遠端執行系統管理命令。 Linux 上的 App Service 會在應用程式容器中提供 SSH 支援。 
+[安全殼層 (SSH)](https://wikipedia.org/wiki/Secure_Shell) 通常用於從命令列終端機，遠端執行系統管理命令。 Linux 上的 App Service 提供應用程式容器的 SSH 支援。 
 
 ![Linux App Service SSH](./media/configure-linux-open-ssh-session/app-service-linux-ssh.png)
 
@@ -29,7 +29,7 @@ ms.locfileid: "88082924"
 
 ## <a name="use-ssh-support-with-custom-docker-images"></a>使用 SSH 支援搭配自訂 Docker 映像
 
-請參閱[在自訂容器中設定 SSH](configure-custom-container.md#enable-ssh)。
+請參閱 [在自訂容器中設定 SSH](configure-custom-container.md#enable-ssh)。
 
 ## <a name="open-ssh-session-from-remote-shell"></a>從遠端殼層開啟 SSH 工作階段
 
@@ -41,7 +41,7 @@ ms.locfileid: "88082924"
 
 若要開始，您必須安裝 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要查看未安裝 Azure CLI 時的運作方式，請開啟 [Azure Cloud Shell](../cloud-shell/overview.md)。 
 
-使用 [az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) 命令，開啟您應用程式的遠端連線。 _\<subscription-id>_ _\<group-name>_ \_ \<app-name> 針對您的應用程式指定和 _。
+使用 [az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) 命令，開啟您應用程式的遠端連線。 _\<subscription-id>_ _\<group-name>_ \_ \<app-name> 為您的應用程式指定和 _。
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
@@ -113,7 +113,7 @@ Load average: 0.07 0.04 0.08 4/765 45738
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以在 [Azure 論壇](https://docs.microsoft.com/answers/topics/azure-webapps.html)張貼問題和疑難。
+您可以在 [Azure 論壇](/answers/topics/azure-webapps.html)張貼問題和疑難。
 
 如需「用於容器的 Web App」的詳細資訊，請參閱：
 

@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f5255041a97a56e6577f33b571403ff454bb65b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 86f501a145ea82f7a4499824dd0b21822c3f1cbd
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211878"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961579"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用 App Service 和 Azure Functions 的受控身分識別
 
@@ -43,7 +43,7 @@ ms.locfileid: "88211878"
 
 
 > [!NOTE] 
-> 若要在 Azure 入口網站中尋找 web 應用程式或位置應用程式的受控識別，請在 [ **企業應用程式**] 下，查看 [ **使用者設定** ] 區段。 通常，位置名稱類似 `<app name>/slots/<slot name>` 。
+> 若要在 Azure 入口網站中尋找 web 應用程式或位置應用程式的受控識別，請在 [ **企業應用程式**] 下的 [ **使用者設定** ] 區段中尋找。 通常，位置名稱類似于 `<app name>/slots/<slot name>` 。
 
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
@@ -52,7 +52,7 @@ ms.locfileid: "88211878"
 
 - 從 Azure 入口網站使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
 - 請透過下方每個程式碼區塊右上角的 [立即試用] 按鈕，使用內嵌的 Azure Cloud Shell。
-- 如果您偏好使用本機 CLI 主控台，請[安裝最新版的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 或更新版本)。 
+- 如果您偏好使用本機 CLI 主控台，請[安裝最新版的 Azure CLI](/cli/azure/install-azure-cli) (2.0.31 或更新版本)。 
 
 下列步驟將逐步引導您建立 web 應用程式，並使用 CLI 指派身分識別給它：
 
@@ -82,7 +82,7 @@ ms.locfileid: "88211878"
 
 下列步驟將逐步引導您建立應用程式，並使用 Azure PowerShell 為其指派身分識別。 建立 web 應用程式和函數應用程式的指示不同。
 
-#### <a name="using-azure-powershell-for-a-web-app"></a>使用 web 應用程式的 Azure PowerShell
+#### <a name="using-azure-powershell-for-a-web-app"></a>針對 web 應用程式使用 Azure PowerShell
 
 1. 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/)中的指示來安裝 Azure PowerShell，然後執行 `Login-AzAccount` 來建立與 Azure 的連線。
 
@@ -105,11 +105,11 @@ ms.locfileid: "88211878"
     Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName $resourceGroupName 
     ```
 
-#### <a name="using-azure-powershell-for-a-function-app"></a>使用函數應用程式的 Azure PowerShell
+#### <a name="using-azure-powershell-for-a-function-app"></a>針對函數應用程式使用 Azure PowerShell
 
 1. 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/)中的指示來安裝 Azure PowerShell，然後執行 `Login-AzAccount` 來建立與 Azure 的連線。
 
-2. 使用 Azure PowerShell 建立函數應用程式。 如需如何搭配 Azure Functions 使用 Azure PowerShell 的更多範例，請參閱 [Az. 函數參考](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)：
+2. 使用 Azure PowerShell 建立函數應用程式。 如需有關如何搭配使用 Azure PowerShell 與 Azure Functions 的更多範例，請參閱 [Az. 函數參考](/powershell/module/az.functions/?view=azps-4.1.0#functions)：
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -122,7 +122,7 @@ ms.locfileid: "88211878"
     New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType SystemAssigned
     ```
 
-您也可以改為使用來更新現有的函式應用程式 `Update-AzFunctionApp` 。
+您也可以改為使用更新現有的函數應用程式 `Update-AzFunctionApp` 。
 
 ### <a name="using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本
 
@@ -177,7 +177,7 @@ ms.locfileid: "88211878"
 
 tenantId 屬性能辨識身分識別所隸屬的 Azure AD 租用戶。 principalId 是應用程式新身分識別的唯一識別碼。 在 Azure AD 內，服務主體的名稱與您提供給 App Service 或 Azure Functions 執行個體的名稱相同。
 
-如果您需要在範本的後續階段中參考這些屬性，您可以透過具有旗標的[ `reference()` 範本](../azure-resource-manager/templates/template-functions-resource.md#reference)函式來執行 `'Full'` 此動作，如下列範例所示：
+如果您需要在範本的後續階段中參考這些屬性，您可以透過具有旗標的樣板[ `reference()` ](../azure-resource-manager/templates/template-functions-resource.md#reference)函式來執行 `'Full'` 此動作，如下列範例所示：
 
 ```json
 {
@@ -219,7 +219,7 @@ tenantId 屬性能辨識身分識別所隸屬的 Azure AD 租用戶。 principal
 
 1. 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/)中的指示來安裝 Azure PowerShell，然後執行 `Login-AzAccount` 來建立與 Azure 的連線。
 
-2. 使用 Azure PowerShell 建立函數應用程式。 如需如何搭配 Azure Functions 使用 Azure PowerShell 的更多範例，請參閱 [Az. 函數參考](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)。 下列腳本也會使用，您 `New-AzUserAssignedIdentity` 必須依據 [Create、list 或 delete 使用者指派的受控識別，使用 Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)來個別安裝。
+2. 使用 Azure PowerShell 建立函數應用程式。 如需有關如何搭配使用 Azure PowerShell 與 Azure Functions 的更多範例，請參閱 [Az. 函數參考](/powershell/module/az.functions/?view=azps-4.1.0#functions)。 下列腳本也會使用，您 `New-AzUserAssignedIdentity` 必須根據 [建立、列出或刪除使用者指派的受控識別，並使用 Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)來個別安裝。
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -235,7 +235,7 @@ tenantId 屬性能辨識身分識別所隸屬的 Azure AD 租用戶。 principal
     New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType UserAssigned -IdentityId $userAssignedIdentity.Id
     ```
 
-您也可以改為使用來更新現有的函式應用程式 `Update-AzFunctionApp` 。
+您也可以改為使用更新現有的函數應用程式 `Update-AzFunctionApp` 。
 
 ### <a name="using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本
 
@@ -327,7 +327,7 @@ principalId 是身分識別的唯一識別碼，而此身分識別用於 Azure A
 > | 參數名稱    | 在     | 描述                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | resource          | 查詢  | 資源的 Azure AD 資源 URI，也就是要取得權杖的目標資源。 這可能是其中一個[支援 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)，或任何其他資源 URI。    |
-> | api-version       | 查詢  | 要使用的權杖 API 版本。 請使用 "2019-08-01" 或更新版本 (除非使用 Linux 使用量（目前僅提供 "2017-09-01"），請參閱上述) 的附注。                                                                                                                                                                                                                                                                 |
+> | api-version       | 查詢  | 要使用的權杖 API 版本。 除非使用目前僅提供 "2017-09-01" 的 Linux 使用量，否則請使用 "2019-08-01" 或更新版本 (-請參閱上述) 的附注。                                                                                                                                                                                                                                                                 |
 > | X-IDENTITY-HEADER | 頁首 | IDENTITY_HEADER 環境變數的值。 此標頭用來協助減輕伺服器端要求偽造 (SSRF) 攻擊。                                                                                                                                                                                                    |
 > | client_id         | 查詢  | (選擇性) 要使用的使用者指派身分識別，其用戶端識別碼。 不能用於包含 `principal_id`、`mi_res_id` 或 `object_id` 的要求。 如果省略所有識別碼參數 (`client_id`、`principal_id`、`object_id` 和 `mi_res_id`)，則會使用系統指派的身分識別。                                             |
 > | principal_id      | 查詢  | (選擇性) 要使用的使用者指派身分識別，其主體識別碼。 `object_id` 是可代替使用的別名。 不能用於包含 client_id、mi_res_id 或 object_id 的要求。 如果省略所有識別碼參數 (`client_id`、`principal_id`、`object_id` 和 `mi_res_id`)，則會使用系統指派的身分識別。 |
@@ -347,7 +347,7 @@ principalId 是身分識別的唯一識別碼，而此身分識別用於 Azure A
 > | resource      | 要求存取權杖所針對的資源，符合要求的 `resource` 查詢字串參數。                                                                                                                               |
 > | token_type    | 表示權杖類型值。 Azure AD 唯一支援的類型是 FBearer。 如需有關持有人權杖的詳細資訊，請參閱 [OAuth 2.0 授權架構︰持有人權杖使用方式 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) \(英文\)。 |
 
-該回應與 [ AD 服務對服務存取權杖要求的回應](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)相同。
+該回應與 [ AD 服務對服務存取權杖要求的回應](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)相同。
 
 ### <a name="rest-protocol-examples"></a>REST 通訊協定範例
 
@@ -440,7 +440,7 @@ $accessToken = $tokenResponse.access_token
 
 ### <a name="using-the-microsoftazureservicesappauthentication-library-for-net"></a><a name="asal"></a>將 Microsoft.Azure.Services.AppAuthentication 程式庫運用在 .NET 上
 
-對於 .NET 應用程式和函式來說，採用受控身分識別最簡單的方法就是透過 Microsoft.Azure.Services.AppAuthentication 套件。 該程式庫還能讓您使用來自 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 整合式驗證的使用者帳戶，在部署機器上以本機方式測試程式碼。 裝載于雲端時，它會預設為使用系統指派的身分識別，但您可以使用連接字串環境變數（參考使用者指派之身分識別的用戶端識別碼）來自訂此行為。 如需有關此程式庫之開發選項的詳細資訊，請參閱 [AppAuthentication 參考]。 本節示範如何在您的程式碼中開始使用程式庫。
+對於 .NET 應用程式和函式來說，採用受控身分識別最簡單的方法就是透過 Microsoft.Azure.Services.AppAuthentication 套件。 該程式庫還能讓您使用來自 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 整合式驗證的使用者帳戶，在部署機器上以本機方式測試程式碼。 裝載在雲端時，預設會使用系統指派的身分識別，但您可以使用連接字串環境變數（參考使用者指派之身分識別的用戶端識別碼）來自訂此行為。 如需此程式庫之開發選項的詳細資訊，請參閱 [AppAuthentication 參考]。 本節示範如何在您的程式碼中開始使用程式庫。
 
 1. 將對 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 及任何其他必要 NuGet 套件的參考新增到您的應用程式。 以下範例也使用 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)。
 
@@ -456,7 +456,7 @@ $accessToken = $tokenResponse.access_token
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
 
-如果您想要使用使用者指派的受控識別，您可以將 `AzureServicesAuthConnectionString` 應用程式設定設為 `RunAs=App;AppId=<clientId-guid>` 。 將取代 `<clientId-guid>` 為您想要使用之身分識別的用戶端識別碼。 您可以使用自訂應用程式設定來定義多個這類連接字串，並將其值傳遞至 Azureservicetokenprovider 會的函式。
+如果您想要使用使用者指派的受控識別，您可以將 `AzureServicesAuthConnectionString` 應用程式設定設為 `RunAs=App;AppId=<clientId-guid>` 。 取代 `<clientId-guid>` 為您要使用之身分識別的用戶端識別碼。 您可以使用自訂應用程式設定，並將其值傳遞至 Azureservicetokenprovider 會的函式，以定義多個這類連接字串。
 
 ```csharp
     var identityConnectionString1 = Environment.GetEnvironmentVariable("UA1_ConnectionString");
@@ -466,7 +466,7 @@ $accessToken = $tokenResponse.access_token
     var azureServiceTokenProvider2 = new AzureServiceTokenProvider(identityConnectionString2);
 ```
 
-若要深入瞭解如何設定 Azureservicetokenprovider 會和它所公開的作業，請參閱 [AppAuthentication 參考] 和 [使用 MSI 的 App Service 和 KeyVault .net 範例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
+若要深入瞭解如何設定 Azureservicetokenprovider 會和它公開的作業，請參閱 [AppAuthentication 參考] ，以及 [使用 MSI .net 範例的 App Service 和 KeyVault](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
 
 ### <a name="using-the-azure-sdk-for-java"></a>使用 Azure SDK for Java
 
@@ -498,11 +498,11 @@ $accessToken = $tokenResponse.access_token
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>移除身分識別
 
-您可用建立身分識別的相同方式，使用入口網站、PowerShell 或 CLI 停用功能，來將系統指派的身分識別移除。 使用者指派的身分識別可以個別移除。 若要移除所有身分識別，請將 identity 類型設定為 "None"。
+您可用建立身分識別的相同方式，使用入口網站、PowerShell 或 CLI 停用功能，來將系統指派的身分識別移除。 使用者指派的身分識別可以個別移除。 若要移除所有身分識別，請將識別類型設定為 "None"。
 
 以這種方式移除系統指派的身分識別，也會從 AAD 將其刪除。 當您刪除應用程式資源時，系統指派的身分識別會自動從 Azure AD 移除。
 
-若要移除 [ARM 範本](#using-an-azure-resource-manager-template)中的所有身分識別：
+移除 [ARM 範本](#using-an-azure-resource-manager-template)中的所有身分識別：
 
 ```json
 "identity": {
@@ -510,7 +510,7 @@ $accessToken = $tokenResponse.access_token
 }
 ```
 
-若要移除 Azure PowerShell 中的所有身分識別 (僅 Azure Functions) ：
+若要移除 Azure PowerShell 中的所有身分識別 (只 Azure Functions) ：
 
 ```azurepowershell-interactive
 # Update an existing function app to have IdentityType "None".

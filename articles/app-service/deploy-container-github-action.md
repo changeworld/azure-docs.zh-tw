@@ -1,21 +1,21 @@
 ---
-title: 來自 GitHub 動作的自訂容器 CI/CD
-description: 瞭解如何使用 GitHub 動作，從 CI/CD 管線將您的自訂 Linux 容器部署到 App Service。
+title: GitHub Actions 的自訂容器 CI/CD
+description: 瞭解如何使用 GitHub Actions 將自訂 Linux 容器部署至來自 CI/CD 管線的 App Service。
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 21019917f37ad95dc15056daa51b3d9e53ec06fa
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 6af23aba28ce3cda9982878ed08ec515aa25633a
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083004"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962599"
 ---
-# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub 動作將自訂容器部署至 App Service
+# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub Actions 將自訂容器部署到 App Service
 
-[GitHub Actions](https://help.github.com/en/articles/about-github-actions) 可讓您彈性地建置自動化軟體開發生命週期工作流程。 使用容器的 [ [Azure App Service 動作](https://github.com/Azure/webapps-container-deploy)]，您可以使用 GitHub 動作，將工作流程自動化以部署自訂容器[App Service](overview.md) 。
+[GitHub Actions](https://help.github.com/en/articles/about-github-actions) 可讓您彈性地建置自動化軟體開發生命週期工作流程。 使用 [容器的 Azure App Service 動作](https://github.com/Azure/webapps-container-deploy)，您可以將工作流程自動化，以使用 GitHub Actions [App Service](overview.md) 部署自訂容器。
 
 > [!IMPORTANT]
 > GitHub Actions 目前為搶鮮版 (Beta)。 您必須先[註冊之後，才能使用您的 GitHub 帳戶加入預覽](https://github.com/features/actions)。
@@ -33,7 +33,7 @@ ms.locfileid: "88083004"
 
 ## <a name="create-a-service-principal"></a>建立服務主體
 
-您可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/) 中的 [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令來建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 您可以使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com/)，或選取 [試試看] 按鈕來執行此命令。
+您可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令來建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 您可以使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com/)，或選取 [試試看] 按鈕來執行此命令。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -41,7 +41,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
                             --sdk-auth
 ```
 
-在上述範例中，請將預留位置取代為您的訂用帳戶識別碼和資源組名。 輸出是具有角色指派認證的 JSON 物件，可讓您存取 App Service 應用程式，如下所示。 複製此 JSON 物件，以供稍後取得。
+在上述範例中，請將預留位置取代為您的訂用帳戶識別碼和資源組名。 輸出是具有角色指派認證的 JSON 物件，可讓您存取您的 App Service 應用程式，如下所示。 複製此 JSON 物件以供稍後之用。
 
 ```output 
   {
@@ -58,9 +58,9 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 ## <a name="configure-the-github-secret"></a>設定 GitHub 密碼
 
-在[GitHub](https://github.com/)中，流覽您的存放庫、選取 [**設定] > [密碼] > 新增新的密碼**。
+在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定**。
 
-將 [[建立服務主體](#create-a-service-principal)] 中的 JSON 輸出內容貼入 [秘密變數] 的值。 為密碼命名，例如 `AZURE_CREDENTIALS` 。
+貼上 JSON 輸出的內容，從 [建立服務主體](#create-a-service-principal) 作為 secret 變數的值。 為秘密命名，例如 `AZURE_CREDENTIALS` 。
 
 當您稍後設定工作流程檔案時，您會使用秘密來輸入 `creds` Azure 登入動作。 例如：
 
@@ -70,14 +70,14 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
     creds: ${{ secrets.AZURE_CREDENTIALS }}
 ```
 
-同樣地，針對容器登錄認證定義下列額外的秘密，並在 Docker 登入動作中加以設定。
+同樣地，為容器登錄認證定義下列其他秘密，並在 Docker 登入動作中進行設定。
 
 - REGISTRY_USERNAME
 - REGISTRY_PASSWORD
 
 ## <a name="build-the-container-image"></a>建立容器映射
 
-下列範例顯示建立 docker 映射的工作流程的一部分。
+下列範例會顯示建立 docker 映射的部分工作流程。
 
 ```yaml
 on: [push]
@@ -108,7 +108,7 @@ jobs:
         docker push contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
 ```
 
-## <a name="deploy-to-an-app-service-container"></a>部署到 App Service 容器
+## <a name="deploy-to-an-app-service-container"></a>部署至 App Service 容器
 
 若要將您的映射部署到 App Service 中的自訂容器，請使用 `azure/webapps-container-deploy@v1` 動作。 此動作有五個參數：
 
@@ -116,11 +116,11 @@ jobs:
 |---------|---------|
 | **app-name** | (必要) App Service 應用程式的名稱 | 
 | **slot-name** | (選擇性) 輸入生產位置以外的現有位置。 |
-| **images** |  (必要) 指定完整的容器映射 (s) 名稱。 例如，' myregistry.azurecr.io/nginx:latest ' 或 ' python： 3.7.2-alpine/'。 針對多容器應用程式，可以提供多個容器映射名稱， (多行分隔)  |
-| **設定檔** |  (Docker 撰寫檔案的選擇性) 路徑。 應該是完整路徑或相對於預設工作目錄。 多容器應用程式所需。 |
-| **容器-命令** |  (選擇性) 輸入啟動命令。 針對 ex dotnet 執行或 dotnet filename.dll |
+| **images** |  (必要) 指定完整的容器映射 () 名稱。 例如，' myregistry.azurecr.io/nginx:latest ' 或 ' python： 3.7.2-alpine/'。 若為多容器應用程式，可以提供多個容器映射名稱 (多行分隔)  |
+| **設定檔** |  (Docker 撰寫檔案的選擇性) 路徑。 應該是完整路徑或相對於預設工作目錄。 多容器應用程式的必要元件。 |
+| **容器-命令** |  (選擇性) 輸入啟動命令。 例如， dotnet run 或 dotnet filename.dll |
 
-以下是在 App Service 中建立 Node.js 應用程式，並將其部署至自訂容器的範例工作流程。 請注意 `creds` 輸入如何參考 `AZURE_CREDENTIALS` 您稍早建立的密碼。
+以下是在 App Service 中建立 Node.js 應用程式並部署至自訂容器的範例工作流程。 請注意 `creds` 輸入如何參考 `AZURE_CREDENTIALS` 您稍早建立的秘密。
 
 ```yaml
 on: [push]
@@ -164,7 +164,7 @@ jobs:
 
 您可以在 GitHub 上找到分組到不同存放庫的一組動作，其中每一個都包含文件與範例，以協助您使用 GitHub 來進行 CI/CD，並將您的應用程式部署至 Azure。
 
-- [動作工作流程以部署至 Azure](https://github.com/Azure/actions-workflow-samples)
+- [要部署到 Azure 的動作工作流程](https://github.com/Azure/actions-workflow-samples)
 
 - [Azure 登入](https://github.com/Azure/login)
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: b6984e16d1ddcee7d3f276ddcdf8c89609f14fe5
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 19d6a646df22e2f8c9bdfc03f15453a520e527a4
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271017"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962820"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service 和 Azure Functions 中的驗證和授權
 
@@ -31,7 +31,7 @@ Azure App Service 提供內建的驗證和授權支援，因此您在 Web 應用
 > [!NOTE]
 > 啟用此功能將會自動將 **所有** 不安全的 HTTP 要求重新導向至 HTTPs，不論 App Service 的設定設定是否 [強制使用 HTTPs](configure-ssl-bindings.md#enforce-https)。 如有需要，您可以透過 `requireHttps` [驗證設定設定檔](app-service-authentication-how-to.md#configuration-file-reference)中的設定來停用此功能，但您必須小心確保不會透過非安全的 HTTP 連線來傳輸任何安全性權杖。
 
-如需原生行動應用程式的專屬資訊，請參閱 [Azure App Service 的行動應用程式使用者驗證和授權](../app-service-mobile/app-service-mobile-auth.md)。
+如需原生行動應用程式的專屬資訊，請參閱 [Azure App Service 的行動應用程式使用者驗證和授權](/previous-versions/azure/app-service-mobile/app-service-mobile-auth)。
 
 ## <a name="how-it-works"></a>運作方式
 
@@ -52,7 +52,7 @@ Azure App Service 提供內建的驗證和授權支援，因此您在 Web 應用
 
 ### <a name="on-containers"></a>在容器上
 
-驗證和授權模組會在個別的容器中執行，並與您的應用程式程式碼隔離。 使用所謂的 [大使模式](https://docs.microsoft.com/azure/architecture/patterns/ambassador)，它會與連入流量互動，以在 Windows 上執行類似的功能。 因為它不是以同進程執行，所以無法與特定語言架構進行直接整合;不過，您的應用程式所需的相關資訊會透過使用要求標頭來傳遞，如下所述。
+驗證和授權模組會在個別的容器中執行，並與您的應用程式程式碼隔離。 使用所謂的 [大使模式](/azure/architecture/patterns/ambassador)，它會與連入流量互動，以在 Windows 上執行類似的功能。 因為它不是以同進程執行，所以無法與特定語言架構進行直接整合;不過，您的應用程式所需的相關資訊會透過使用要求標頭來傳遞，如下所述。
 
 ### <a name="userapplication-claims"></a>使用者/應用程式宣告
 
@@ -150,7 +150,7 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 ## <a name="more-resources"></a>其他資源
 
 [教學課程：在 Azure App Service 中端對端驗證和授權使用者 (Windows)](tutorial-auth-aad.md)  
-[教學課程：在適用於 Linux 的 Azure App Service 中端對端驗證和授權使用者](containers/tutorial-auth-aad.md)  
+[教學課程：在適用於 Linux 的 Azure App Service 中端對端驗證和授權使用者](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
 [自訂 App Service](app-service-authentication-how-to.md) 
  中的驗證和授權[Azure AppService EasyAuth (協力廠商) ](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
  的 .net Core 整合使用[.Net Core (協力廠商) 取得 Azure App Service 驗證](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
@@ -171,8 +171,8 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 [Twitter]: configure-authentication-provider-twitter.md
 [OIDC]: configure-authentication-provider-openid-connect.md
 
-[custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
+[custom-auth]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#custom-auth
 
-[ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
-[ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
-[ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
+[ADAL-Android]: /previous-versions/azure/app-service-mobile/app-service-mobile-android-how-to-use-client-library#adal
+[ADAL-iOS]: /previous-versions/azure/app-service-mobile/app-service-mobile-ios-how-to-use-client-library#adal
+[ADAL-dotnet]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#adal

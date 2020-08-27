@@ -1,6 +1,6 @@
 ---
 title: 設定常見問題
-description: 取得 Azure App Service 設定和管理問題的常見問題解答。
+description: 針對 Azure App Service 的設定和管理問題，取得常見問題的解答。
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82159995"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962344"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中 Web 應用程式的設定和管理常見問題集
 
@@ -35,14 +35,14 @@ ms.locfileid: "82159995"
 若要深入了解如何購買並設定 App Service Web 應用程式的自訂網域，請參閱[購買自訂網域名稱並且在 App Service 中設定](manage-custom-dns-buy-domain.md)。
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>如何? 針對我的 web 應用程式上傳和設定現有的 TLS/SSL 憑證嗎？
+## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>如何? 上傳並設定 web 應用程式的現有 TLS/SSL 憑證？
 
-若要瞭解如何上傳和設定現有的自訂 TLS/SSL 憑證，請參閱[將 TLS/ssl 憑證新增至您的 App Service 應用程式](configure-ssl-certificate.md)。
+若要瞭解如何上傳及設定現有的自訂 TLS/SSL 憑證，請參閱 [將 TLS/ssl 憑證新增至您的 App Service 應用程式](configure-ssl-certificate.md)。
 
 
-## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>如何? 在 Azure 中針對我的 web 應用程式購買並設定新的 TLS/SSL 憑證嗎？
+## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>如何? 在 Azure 中為我的 web 應用程式購買並設定新的 TLS/SSL 憑證？
 
-若要瞭解如何購買及設定 App Service web 應用程式的 TLS/SSL 憑證，請參閱[將 tls/ssl 憑證新增至您的 App Service 應用程式](configure-ssl-certificate.md)。
+若要瞭解如何為您的 App Service web 應用程式購買及設定 TLS/SSL 憑證，請參閱 [將 tls/ssl 憑證新增至您的 App Service 應用程式](configure-ssl-certificate.md)。
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>如何移動 Application Insights 資源？
@@ -63,9 +63,9 @@ ms.locfileid: "82159995"
 2. 在 [應用程式設定]**** 底下，新增以下設定：
     * 索引鍵 = WEBSITE_TIME_ZONE
     * 值 = 您想要的時區**
-3. 選取 [儲存]。
+3. 選取 [儲存]  。
 
-針對在 Windows 上執行的應用程式服務，請參閱[預設時區](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)文章中的 [**時區**] 資料行以取得接受的值。 針對在 Linux 上執行的應用程式服務，將[TZ 資料庫名稱](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)設定為時區值。 以下是一個 TZ 資料庫名稱：北美洲/Adak 的範例。
+針對在 Windows 上執行的應用程式服務，請參閱 [[預設時區](/windows-hardware/manufacture/desktop/default-time-zones)] 文章中的 [**時區**] 資料行，以取得已接受的值。 針對在 Linux 上執行的應用程式服務，將 [TZ 資料庫名稱](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) 設定為時區值。 以下是 TZ 資料庫名稱的範例：北美洲/Adak。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>為什麼我的持續 WebJobs 有時候會失敗？
 
@@ -84,13 +84,13 @@ ms.locfileid: "82159995"
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>如何為 Web 應用程式取得保留或專用輸入 IP 位址？
 
-若要為 Azure 應用程式網站的輸入呼叫設定專用或保留的 IP 位址，請安裝並設定以 IP 為基礎的 TLS/SSL 憑證。
+若要針對您的 Azure 應用程式網站進行的輸入呼叫設定專用或保留的 IP 位址，請安裝並設定以 IP 為基礎的 TLS/SSL 憑證。
 
 請注意，若要針對輸入呼叫使用專用或保留 IP 位址，您的 App Service 方案必須是「基本」或更高版本的服務方案。
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>是否可以將 App Service 憑證匯出以在 Azure 外部使用，例如在其他位置裝載的網站？ 
 
-是，您可以將它們匯出以在 Azure 外部使用。 如需詳細資訊，請參閱 [App Service 憑證和自訂網域的常見問題集](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)。
+是，您可以將其匯出以在 Azure 外部使用。 如需詳細資訊，請參閱 [App Service 憑證和自訂網域的常見問題集](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)。
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>是否可以匯出我的 App Service 憑證以與其他 Azure 雲端服務搭配使用？
 
@@ -105,7 +105,7 @@ ms.locfileid: "82159995"
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>如何從 HTTP 回應移除標題？
 
-若要移除 HTTP 回應中的標頭，請更新網站的 web.config 檔案。 如需詳細資訊，請參閱[在 Azure 網站上移除標準伺服器標題](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)。
+若要從 HTTP 回應移除標頭，請更新您網站的 web.config 檔案。 如需詳細資訊，請參閱[在 Azure 網站上移除標準伺服器標題](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)。
 
 ## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>App Service 是否符合 PCI 標準 3.0 和 3.1 的規範？
 
@@ -125,7 +125,7 @@ PCI DSS 3.1 版憑證需要停用傳輸層安全性 (TLS) 1.0。 目前，停用
 
 若要檢閱 WebJob 記錄：
 
-1. 登入您的**Kudu 網站**（ `https://*yourwebsitename*.scm.azurewebsites.net` ）。
+1. 登入您的 **Kudu 網站** (`https://*yourwebsitename*.scm.azurewebsites.net`) 。
 2. 選取 WebJob。
 3. 選取 [切換輸出]**** 按鈕。
 4. 若要下載輸出檔案，請選取 [下載]**** 連結。
@@ -141,13 +141,13 @@ PCI DSS 3.1 版憑證需要停用傳輸層安全性 (TLS) 1.0。 目前，停用
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>解決方案
+### <a name="resolution"></a>解決方法
 
 例外狀況是「混合式連線管理員」問題所造成的，該問題在那之後已修正。 請務必[更新混合式連線管理員](https://go.microsoft.com/fwlink/?LinkID=841308)以解決此問題。
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>如何? 新增 URL 重寫規則？
 
-若要新增 URL 重寫規則，請在**wwwroot**資料夾中建立具有相關設定專案的 web.config 檔案。 如需詳細資訊，請參閱[Azure App Services：瞭解 URL 重寫](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)。
+若要新增 URL 重寫規則，請在 [ **wwwroot** ] 資料夾中建立含有相關設定專案的 web.config 檔案。 如需詳細資訊，請參閱 [Azure App 服務：瞭解 URL 重寫](/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write)。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>如何控制 App Service 的輸入流量？
 
@@ -160,7 +160,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>如何封鎖 App Service Web 應用程式中的連接埠？
 
-在 App Service 共用租用戶環境中，因為基礎結構的本質，所以無法封鎖特定連接埠。 TCP 埠4020、4022和4024也可能針對 Visual Studio 遠端偵錯程式開啟。
+在 App Service 共用租用戶環境中，因為基礎結構的本質，所以無法封鎖特定連接埠。 TCP 埠4020、4022和4024也可能會開放 Visual Studio 遠端偵錯程式。
 
 在 App Service Environment 中，您對於輸入與輸出流量有完整控制權。 您可以使用網路安全性群組來限制或封鎖特定連接埠。 如需 App Service Environment 的詳細資訊，請參閱[App Service Environment 簡介](https://azure.microsoft.com/blog/introducing-app-service-environment/)。
 
@@ -183,7 +183,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 ### <a name="f12-console-output"></a>F12 主控台輸出
 
 1. 選取 [主控台]**** 索引標籤。
-2. 對於包含零個以上項目的每個索引標籤，選取索引標籤 (**錯誤**、**警告**或**資訊**)。 如果未選取索引標籤，則當您將游標移離該索引標籤時，索引標籤圖示會是灰色或黑色。
+2. 對於包含零個以上項目的每個索引標籤，選取索引標籤 (**錯誤**、**警告**或**資訊**)。 如果未選取索引標籤，當您將游標移離它時，索引標籤圖示會是灰色或黑色。
 3. 以滑鼠右鍵按一下窗格的訊息區域，然後選取 [全部複製]****。
 4. 在檔案中貼上複製的文字，然後儲存檔案。
 
@@ -222,7 +222,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 * 不正確的網路安全性群組會阻止 App Service Environment 的網路連線需求。
 * 強制通道已開啟。
 
-如需詳細資訊，請參閱[部署 (建立) 新的 Azure App Service Environment 時最常遇到的問題](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/)。
+如需詳細資訊，請參閱[部署 (建立) 新的 Azure App Service Environment 時最常遇到的問題](/archive/blogs/waws/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase)。
 
 ## <a name="why-cant-i-delete-my-app-service-plan"></a>為什麼我無法刪除 App Service 方案？
 
@@ -286,7 +286,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何判斷安裝在 App Service 中的是哪一個版本的 .NET？
 
-尋找 App Service 中已安裝之 Microsoft.NET 版本的最快方式是使用 Kudu 主控台。 您可以從入口網站或使用 App Service 應用程式的 URL 來存取 Kudu 主控台。 如需詳細指示，請參閱[判斷 App Service 中安裝的 .NET 版本](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/)。
+尋找 App Service 中已安裝之 Microsoft.NET 版本的最快方式是使用 Kudu 主控台。 您可以從入口網站或使用 App Service 應用程式的 URL 來存取 Kudu 主控台。 如需詳細指示，請參閱[判斷 App Service 中安裝的 .NET 版本](/archive/blogs/waws/how-to-determine-the-installed-net-version-in-azure-app-services)。
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>為什麼自動調整無法如預期般運作？
 

@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 5507e6f97211f209eb559ff7491f22bdf1a00e54
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 888118d227529110c209d7c8d5a3bb79cfcf3a9a
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079666"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959786"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>監視 Azure App Service 中的應用程式
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)為[Azure 入口網站](https://portal.azure.com)中的 web 應用程式、行動裝置和 API 應用程式提供內建的監視功能。
+[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 針對 [Azure 入口網站](https://portal.azure.com)中的 web 應用程式、行動和 API 應用程式提供內建的監視功能。
 
-在 Azure 入口網站中，您可以查看應用程式的*配額*和*計量*，並 App Service 方案，並設定*警示*和自動*調整規則型*計量。
+在 Azure 入口網站中，您可以查看應用程式的 *配額* 和 *計量* ，並 App Service 方案，並設定 *警示* 和自動 *調整規則型* 計量。
 
 ## <a name="understand-quotas"></a>了解配額
 
@@ -37,9 +37,9 @@ App Service 中裝載的應用程式都必須遵守其可用資源的某些「�
 | **CPU (天)** | 此應用程式在 1 天內允許的 CPU 總量。 此配額會每隔 24 小時在午夜 (UTC) 重設一次。 |
 | **記憶體** | 此應用程式允許的記憶體總量。 |
 | **頻寬** | 此應用程式在 1 天內允許的連出頻寬總量。 此配額會每隔 24 小時在午夜 (UTC) 重設一次。 |
-| **內** | 允許的儲存體總量。 |
+| **檔** | 允許的儲存體總量。 |
 
-唯一適用于*基本*、*標準*和高階託管應用*程式的配額是 Filesystem* 。
+唯一適用于 *基本*、 *標準*和高階裝載之應用 *程式的配額是檔* 系統。
 
 如需有關不同 App Service SKU 可用特定配額、限制和功能的詳細資訊，請參閱 [Azure 訂用帳戶服務限制](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)。
 
@@ -58,14 +58,14 @@ App Service 中裝載的應用程式都必須遵守其可用資源的某些「�
 ## <a name="understand-metrics"></a>了解計量
 
 > [!NOTE]
-> **檔案系統使用**方式是全域推出的新計量，除非您已獲得私人預覽的存取權，否則不會有任何資料。
+> **檔案系統使用** 方式是全域推出的新計量，除非您已獲得私人預覽的存取權，否則不會有任何資料。
 > 
 
 > [!IMPORTANT]
-> **平均回應時間**將會被取代，以避免與計量匯總產生混淆。 使用**回應時間**做為取代。
+> **平均回應時間** 將會被取代，以避免與計量匯總混淆。 使用 **回應時間** 取代。
 
 > [!NOTE]
-> 應用程式的計量包括對應用程式的 SCM 網站 (Kudu) 的要求。  這包括使用 Kudu 來查看網站 logstream 的要求。  Logstream 要求可能會跨越數分鐘，而這會影響要求時間度量。  當使用這些計量搭配自動調整邏輯時，使用者應該知道這項關聯性。
+> 應用程式的度量包括要求應用程式的 SCM 網站 (Kudu) 。  這包括使用 Kudu 來查看網站 logstream 的要求。  Logstream 要求可能會跨越數分鐘，而這會影響要求時間度量。  使用這些計量搭配自動調整邏輯時，使用者應留意此關聯性。
 > 
 
 計量提供有關應用程式或 App Service 方案行為的資訊。
@@ -75,14 +75,14 @@ App Service 中裝載的應用程式都必須遵守其可用資源的某些「�
 | 計量 | 描述 |
 | --- | --- |
 | **回應時間** | 應用程式處理要求所花費的時間（以秒為單位）。 |
-| **平均回應時間 (已淘汰) ** | 應用程式處理要求所花費的平均時間（以秒為單位）。 |
+| ** (已淘汰的平均回應時間) ** | 應用程式服務要求所花費的平均時間（以秒為單位）。 |
 | **平均記憶體工作集** | 應用程式使用的平均記憶體數量 (以 MiB 為單位)。 |
 | **連線** | 存在於沙箱 (w3wp.exe 及其子處理序) 中的已繫結通訊端數目。  建立已繫結通訊端時，會透過呼叫 bind()/connect() API 來建立，然後保留直到使用 CloseHandle()/closesocket() 來關閉上述通訊端為止。 |
-| **CPU 時間** | 應用程式所耗用的 CPU 數量 (以秒為單位)。 如需此計量的詳細資訊，請參閱[cpu 時間與 cpu 百分比](#cpu-time-vs-cpu-percentage)。 |
+| **CPU 時間** | 應用程式所耗用的 CPU 數量 (以秒為單位)。 如需此度量的詳細資訊，請參閱 [cpu 時間與 cpu 百分比](#cpu-time-vs-cpu-percentage)。 |
 | **目前的組件** | 在此應用程式的所有 AppDomain 載入的目前組件數目。 |
 | **中的資料** | 應用程式所耗用的連入頻寬量 (MiB)。 |
 | **資料輸出** | 應用程式所耗用的連出頻寬量 (MiB)。 |
-| **檔案系統使用方式** | 應用程式所耗用的檔案系統配額百分比。 |
+| **檔案系統使用量** | 應用程式所耗用的檔案系統配額百分比。 |
 | **Gen 0 記憶體回收** | 自應用程式處理序啟動後，對層代 0 物件進行記憶體回收的次數。 較高層代的 GC 包含所有較低層代的 GC。|
 | **Gen 1 記憶體回收** | 自應用程式處理序啟動後，對層代 1 物件進行記憶體回收的次數。 較高層代的 GC 包含所有較低層代的 GC。|
 | **Gen 2 記憶體回收** | 自應用程式處理序啟動後，對層代 2 物件進行記憶體回收的次數。|
@@ -95,14 +95,14 @@ App Service 中裝載的應用程式都必須遵守其可用資源的某些「�
 | **Http 406** | 導致 HTTP 406 狀態碼的要求計數。 |
 | **Http 4xx** | 導致 HTTP 狀態碼 >= 400 但 < 500 的要求計數。 |
 | **Http 伺服器錯誤** | 導致 HTTP 狀態碼 >= 500 但 < 600 的要求計數。 |
-| **每秒的 IO 其他位元組數** | 應用程式進程對不包含資料的 i/o 作業（例如控制作業）發出位元組的速率。|
-| **每秒的 IO 其他作業數** | 應用程式進程發出非讀取或寫入作業之 i/o 作業的速率。|
+| **每秒的 IO 其他位元組數** | 應用程式進程發出位元組給不牽涉到資料的 i/o 作業（例如控制作業）的速率。|
+| **每秒的 IO 其他作業數** | 應用程式進程發出非讀取或寫入作業 i/o 作業的速率。|
 | **每秒的 IO 讀取位元組數** | 應用程式處理序從 I/O 作業讀取位元組的速率。|
 | **每秒的 IO 讀取作業數** | 應用程式處理序發出讀取 I/O 作業的速率。|
 | **每秒的 IO 寫入位元組數** | 應用程式處理序將位元組寫入至 I/O 作業的速率。|
 | **每秒的 IO 寫入作業數** | 應用程式處理序發出寫入 I/O 作業的速率。|
 | **記憶體工作集** | 應用程式目前使用的記憶體數量 (MiB)。 |
-| **私用位元組** | 私用位元組是指應用程式進程已配置但無法與其他進程共用之記憶體的目前大小（以位元組為單位）。|
+| **私用位元組** | 私用位元組是指應用程式進程已配置且無法與其他進程共用的目前記憶體大小（以位元組為單位）。|
 | **要求** | 要求總數 (不論其導致的 HTTP 狀態碼為何)。 |
 | **應用程式佇列中的要求數** | 應用程式要求佇列中的要求數目。|
 | **執行緒計數** | 應用程式處理序中目前作用中的執行緒數目。|
@@ -122,7 +122,7 @@ App Service 中裝載的應用程式都必須遵守其可用資源的某些「�
 | **記憶體百分比** | 方案的所有執行個體使用的平均記憶體。 |
 | **中的資料** | 方案的所有執行個體使用的平均連入頻寬。 |
 | **資料輸出** | 方案的所有執行個體使用的平均連出頻寬。 |
-| **磁片佇列長度** | 儲存體上已排入佇列的平均讀取和寫入要求數目。 磁片佇列長度很大表示應用程式可能因為過度的磁片 i/o 而變慢。 |
+| **磁片佇列長度** | 儲存體上已排入佇列的平均讀取和寫入要求數目。 磁片佇列長度很高，表示應用程式可能因為磁片 i/o 過多而變慢。 |
 | **Http 佇列長度** | 必須在履行前排入佇列的平均 HTTP 要求數目。 HTTP 佇列長度很大或不斷增加是方案負載過重的徵兆。 |
 
 ### <a name="cpu-time-vs-cpu-percentage"></a>CPU 時間與 CPU 百分比
@@ -132,34 +132,34 @@ App Service 中裝載的應用程式都必須遵守其可用資源的某些「�
 
 **CPU 時間**：適用于在免費或共用方案中裝載的應用程式，因為其中一個配額是以應用程式使用的 CPU 分鐘數來定義。
 
-**CPU 百分比**：適用于基本、標準和高階方案中裝載的應用程式，因為它們可以相應放大。CPU 百分比是所有實例整體使用量的良好指示。
+**CPU 百分比**：適用于在基本、標準和高階方案中裝載的應用程式，因為它們可以相應放大。CPU 百分比是所有實例的整體使用量的良好表示。
 
 ## <a name="metrics-granularity-and-retention-policy"></a>計量資料細微性和保留原則
-服務會記錄和匯總應用程式和 app service 方案的計量，並[根據這些規則來保留](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)。
+應用程式和 app service 方案的計量會由服務進行記錄和匯總，並 [根據這些規則進行保留](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)。
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>在 Azure 入口網站中監視配額和計量
 若要檢閱影響應用程式的各種配額和計量狀態，請前往 [Azure 入口網站](https://portal.azure.com)。
 
 ![Azure 入口網站中的配額圖表][quotas]
 
-若要尋找配額，請選取 [**設定**] [  >  **配額**]。 在圖表上，您可以檢閱： 
+若要尋找配額，請選取 [**設定**  >  **配額**]。 在圖表上，您可以檢閱： 
 1. 配額名稱。
 1. 重設間隔。
 1. 目前限制。
 1. 目前的值。
 
-![度量圖表在 Azure 入口網站 ][metrics] 您可以直接從資源的 [**總覽**] 頁面存取計量。 在這裡，您會看到代表一些應用程式計量的圖表。
+![Azure 入口網站中的計量圖表 ][metrics] ，您可以直接從資源 **總覽** 頁面存取計量。 您將在這裡看到代表一些應用程式計量的圖表。
 
-按一下任一圖表會帶您前往 [計量] 視圖，您可以在其中建立自訂圖表、查詢不同的計量，以及其他更多功能。 
+按一下任何圖表會帶您前往 [計量] 視圖，您可以在其中建立自訂圖表、查詢不同的度量，以及其他更多。 
 
-若要進一步了解計量，請參閱[監視服務計量](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)。
+若要進一步了解計量，請參閱[監視服務計量](../azure-monitor/platform/data-platform.md)。
 
 ## <a name="alerts-and-autoscale"></a>警示和自動調整
-應用程式或 App Service 方案的計量可以連接到警示。 如需詳細資訊，請參閱[接收警示通知](../monitoring-and-diagnostics/insights-alerts-portal.md)。
+應用程式或 App Service 方案的計量可以連接到警示。 如需詳細資訊，請參閱 [接收警示通知](../azure-monitor/platform/alerts-classic-portal.md)。
 
-在基本或更高版本中裝載的 App Service 應用程式，App Service 方案支援自動調整。 自動調整可讓您設定用以監視 App Service 方案計量的規則。 這些規則可以增加或減少執行個體計數，並視需要提供其他資源。 當應用程式過度佈建時，這些規則也可協助您節省成本。
+App Service 在基本或更高 App Service 方案中裝載的應用程式支援自動調整。 自動調整可讓您設定用以監視 App Service 方案計量的規則。 這些規則可以增加或減少執行個體計數，並視需要提供其他資源。 當應用程式過度佈建時，這些規則也可協助您節省成本。
 
-如需詳細資訊，請參閱[如何調整](../monitoring-and-diagnostics/insights-how-to-scale.md)和 [Azure 監視器自動調整的最佳做法](../azure-monitor/platform/autoscale-best-practices.md)。
+如需詳細資訊，請參閱[如何調整](../azure-monitor/platform/autoscale-get-started.md)和 [Azure 監視器自動調整的最佳做法](../azure-monitor/platform/autoscale-best-practices.md)。
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

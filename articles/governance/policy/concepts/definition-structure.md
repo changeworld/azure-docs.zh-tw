@@ -1,14 +1,14 @@
 ---
 title: 原則定義結構的詳細資料
 description: 描述如何使用原則定義來建立組織中 Azure 資源的慣例。
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba6b8160eefb0a59bc8273989c27a3a8501a79b7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b6509f684e611fbb79184383e1b332d793458b9
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547795"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958774"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -652,6 +652,13 @@ Azure 原則支援下列類型的效果：
   (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
   ```
 
+  > [!NOTE]
+  > 若要尋找可搭配 [modify](./effects.md#modify) 效果使用的別名，請使用下列命令：
+  >
+  > ```azurepowershell-interactive
+  > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
+  > ```
+
 - Azure CLI
 
   ```azurecli-interactive
@@ -704,7 +711,7 @@ Azure 原則支援下列類型的效果：
 
 如需詳細資訊，請參閱[評估 [\*] 別名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱 [計畫定義結構](./initiative-definition-structure.md)
 - 在 [Azure 原則範例](../samples/index.md)檢閱範例。

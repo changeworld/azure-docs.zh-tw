@@ -1,26 +1,26 @@
 ---
 title: 設定 ASE v1
-description: 設定、管理和監視 App Service 環境 v1。 本文件僅提供給使用舊版 v1 ASE 的客戶。
+description: App Service 環境 v1 的設定、管理和監視。 本文件僅提供給使用舊版 v1 ASE 的客戶。
 author: ccompy
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 598e43d07c213cfeb25f0ecbc7bd02b6ec54b7ed
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74687268"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962582"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>設定 App Service 環境 v1
 
 > [!NOTE]
-> 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 若要深入瞭解新版本，請從[App Service 環境簡介](intro.md)開始。
+> 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 若要深入瞭解新版本，請從 [App Service 環境簡介](intro.md)開始著手。
 > 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 Azure App Service Environment 是由數個主要元件所組成：
 
 * 在 Azure App Service 環境託管服務中執行的計算資源
@@ -129,9 +129,9 @@ ASE 刀鋒視窗中有一個包含幾項重要功能的 [設定] **** 區段：
 
 ![設定刀鋒視窗和屬性][4]
 
-**設定**  > **Ip 位址**：當您在 ASE 中建立 ip 安全通訊端層（SSL）應用程式時，您需要 IP SSL 位址。 若要取得該位址，您的 ASE 需要擁有一些可配置的 IP SSL 位址。 建立 ASE 後，它會有一個 IP SSL 可供此用途使用，但您可以新增更多位址。 額外的 IP SSL 位址需付費，如 [App Service 價格][AppServicePricing] (在 SSL 連線一節中) 所示。 額外的價格是 IP SSL 價格。
+**設定**  > **Ip 位址**：當您在 ASE 中建立 ip 安全通訊端層 (SSL) 應用程式時，您需要 IP SSL 位址。 若要取得該位址，您的 ASE 需要擁有一些可配置的 IP SSL 位址。 建立 ASE 後，它會有一個 IP SSL 可供此用途使用，但您可以新增更多位址。 額外的 IP SSL 位址需付費，如 [App Service 價格][AppServicePricing] (在 SSL 連線一節中) 所示。 額外的價格是 IP SSL 價格。
 
-**設定**  > **前端集**  /  區背景**工作角色**集區：除了提供控制項來完全調整該資源集區之外，這些資源集區的每一個都能只在該資源集區上查看資訊。  
+**設定**  > **前端集**  /  區背景**工作**集區：每個資源集區 blade 都提供在該資源集區上只查看資訊的功能，以及提供控制項來完全調整該資源集區。  
 
 每個資源集區的基準刀鋒視窗分別會提供一個圖表，內附該資源集區的計量。 就像 ASE 刀鋒視窗中的圖表，您可以進入圖表，並設定所需的警示。 從 ASE 刀鋒視窗為特定的資源集區設定警示，效果等同於從資源集區進行設定。 在背景工作集區的 [設定] **** 刀鋒視窗中，您可存取在此背景工作集區中執行的所有應用程式或 App Service 方案。
 
@@ -154,7 +154,7 @@ ASE 刀鋒視窗中有一個包含幾項重要功能的 [設定] **** 區段：
 
 ![調整 UI][6]
 
-若要在特定資源集區中使用手動或自動調整功能，請視需要移至 [**設定**] [  >  **前端集**區] [背景工作集區]  /  **Worker Pools** 。 然後開啟您想要變更的集區。 移至 [**設定**]  >  **Scale Out**或 [**設定**] [相應  >  **增加**]。 [相應放大] **** 刀鋒視窗可讓您控制執行個體數量。 **** 可讓您控制資源大小。  
+若要在特定資源集區中使用手動或自動調整功能，請適當地移至**設定**  >  **前端集**區背景  /  **工作**集區。 然後開啟您想要變更的集區。 移至 [**設定**]  >  **Scale Out**或 [**設定**  >  **擴大**]。 [相應放大] **** 刀鋒視窗可讓您控制執行個體數量。 **** 可讓您控制資源大小。  
 
 ![調整設定 UI][7]
 
@@ -206,7 +206,7 @@ ASE 刀鋒視窗中有一個包含幾項重要功能的 [設定] **** 區段：
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
-[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md

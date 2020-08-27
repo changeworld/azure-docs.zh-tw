@@ -4,12 +4,12 @@ description: 瞭解如何針對不同的案例自訂 App Service 中的驗證和
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7ec16b5de6053256fa6565db510ee94776def2c4
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2fa2e3463e057062ba743c2f6989aa571c85c983
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272309"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962463"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>在 Azure App Service 中進階使用驗證和授權
 
@@ -146,7 +146,7 @@ App Service 會使用特殊標頭，將使用者宣告傳遞至您的應用程�
 
 以任何語言或架構撰寫的程式碼可以從這些標頭中取得所需的資訊。 針對 ASP.NET 4.6 應用程式， **ClaimsPrincipal** 會自動設定適當的值。 不過，ASP.NET Core 不會提供與 App Service 使用者宣告整合的驗證中介軟體。 如需因應措施，請參閱 [MaximeRouiller AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)。
 
-如果您的應用程式已啟用 [權杖存放區](overview-authentication-authorization.md#token-store) ，您也可以藉由呼叫來取得已驗證使用者的其他詳細資料 `/.auth/me` 。 Mobile Apps 伺服器 SDK 提供 Helper 方法來處理此資料。 如需詳細資訊，請參閱[如何使用 Azure Mobile Apps Node.js SDK ](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)和[使用適用於 Azure Mobile Apps 的 .NET 後端伺服器 SDK](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)。
+如果您的應用程式已啟用 [權杖存放區](overview-authentication-authorization.md#token-store) ，您也可以藉由呼叫來取得已驗證使用者的其他詳細資料 `/.auth/me` 。 Mobile Apps 伺服器 SDK 提供 Helper 方法來處理此資料。 如需詳細資訊，請參閱[如何使用 Azure Mobile Apps Node.js SDK ](/previous-versions/azure/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk#howto-tables-getidentity)和[使用適用於 Azure Mobile Apps 的 .NET 後端伺服器 SDK](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#user-info)。
 
 ## <a name="retrieve-tokens-in-app-code"></a>在應用程式程式碼中取出權杖
 
@@ -489,7 +489,7 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 
 ##### <a name="from-the-azure-cli"></a>從 Azure CLI
 
-使用 Azure CLI，使用 [az webapp auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) 命令來查看目前的中介軟體版本。
+使用 Azure CLI，使用 [az webapp auth show](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) 命令來查看目前的中介軟體版本。
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -520,7 +520,7 @@ az webapp auth show --name <my_app_name> \
 
 #### <a name="update-the-current-runtime-version"></a>更新目前的執行階段版本
 
-使用 Azure CLI，您可以使用 `runtimeVersion` [az webapp auth update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) 命令來更新應用程式中的設定。
+使用 Azure CLI，您可以使用 `runtimeVersion` [az webapp auth update](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) 命令來更新應用程式中的設定。
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \
@@ -530,7 +530,7 @@ az webapp auth update --name <my_app_name> \
 
 `<my_app_name>`以您的應用程式名稱取代。 也請 `<my_resource_group>` 以您應用程式的資源組名取代。 此外，請 `<version>` 以1.x 執行時間的有效版本或 `~1` 最新版本取代。 您可以在 [這裡 (] 的不同執行階段版本上找到版本 https://github.com/Azure/app-service-announcements) 資訊，以協助判斷要釘選的版本。
 
-您可以選擇上述程式碼範例中的 [試試看]****，從 [Azure Cloud Shell](../cloud-shell/overview.md) 執行此命令。 在執行 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 登入之後，您也可以使用[本機 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 來執行此命令。
+您可以選擇上述程式碼範例中的 [試試看]****，從 [Azure Cloud Shell](../cloud-shell/overview.md) 執行此命令。 在執行 [az login](/cli/azure/reference-index#az-login) 登入之後，您也可以使用[本機 Azure CLI](/cli/azure/install-azure-cli) 來執行此命令。
 
 ## <a name="next-steps"></a>後續步驟
 

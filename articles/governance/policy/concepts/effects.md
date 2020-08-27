@@ -1,14 +1,14 @@
 ---
 title: 了解效果的運作方式
 description: 「Azure 原則」定義有各種效果，可決定合規性的管理和回報方式。
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83566cc638c4db1b00dbe40a48064a7c94250d8c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544718"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958757"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure 原則效果
 
@@ -479,14 +479,33 @@ EnforceRegoPolicy 效果的 **details** 屬性有子屬性可描述 Gatekeeper v
 
 ## <a name="modify"></a>修改
 
-Modify 用於在建立或更新期間在資源上新增、更新或移除標記。 常見範例如更新 costCenter 等資源上的標記。 除非目標資源是資源群組，否則 Modify 原則應一律將 `mode` 設定為 _Indexed_。 現有的不相容資源可透過[補救工作](../how-to/remediate-resources.md)加以補救。 單項 Modify 規則的作業數目不拘。
+在建立或更新期間，會使用 Modify 來新增、更新或移除資源上的屬性或標記。
+常見範例如更新 costCenter 等資源上的標記。 現有的不相容資源可透過[補救工作](../how-to/remediate-resources.md)加以補救。 單項 Modify 規則的作業數目不拘。
+
+以下是修改支援的作業：
+
+- 新增、取代或移除資源標記。 針對標籤， `mode` 除非目標資源是資源群組，否則修改原則應設定為 [ _索引_ ]。
+- 新增或取代 `identity.type` 虛擬機器和虛擬機器擴展集 () 受控識別類型的值。
+- 新增或取代 (預覽版) 特定別名的值。
+  - 使用`Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }`
+    在 Azure PowerShell 取得可搭配 Modify 使用的別名清單。
 
 > [!IMPORTANT]
-> Modify 目前僅供搭配標記使用。 如果您要管理標記，建議使用 Modify 而非 Append，因為 Modify 可提供額外的作業類型，且能補救現有的資源。 不過，如果您無法建立受控識別，則建議使用 Append。
+> 如果您要管理標記，建議使用 Modify 而非 Append as Modify 提供其他作業類型，以及補救現有資源的能力。 但是，如果您無法建立受控識別，或修改還不支援資源屬性的別名，則建議使用 Append。
 
 ### <a name="modify-evaluation"></a>Modify 評估
 
-在建立或更新資源期間，會先由 Modify 進行評估，然後才由「資源提供者」處理要求。 Modify 會在原則規則的 **if** 條件相符時，在資源上新增或更新標記。
+在建立或更新資源期間，會先由 Modify 進行評估，然後才由「資源提供者」處理要求。 當符合原則規則的 **if** 條件時，修改作業會套用至要求內容。 每個修改作業都可以指定條件，以決定其套用時機。 將會略過評估為 _false_ 之條件的作業。
+
+指定別名時，會執行下列額外的檢查，以確保修改作業不會以導致資源提供者拒絕的方式變更要求內容：
+
+- 別名對應的屬性在要求的 API 版本中標示為「可修改」。
+- 修改作業中的 token 類型符合要求的 API 版本中，屬性的預期 token 類型。
+
+如果其中一項檢查失敗，則原則評估會回復至指定的 **conflictEffect**。
+
+> [!IMPORTANT]
+> 它的 recommeneded 會修改包含別名的定義，使用 _audit_ **衝突效果** 來避免失敗的要求使用 API 版本，其中對應的屬性不是「可修改」。 如果相同的別名在 API 版本之間有不同的行為，則可以使用條件式修改作業來判斷每個 API 版本所使用的修改作業。
 
 當使用 Modify 效果的原則定義在評估週期中執行時，並不會對已經存在的資源進行變更。 取而代之的是，會將符合 **if** 條件的所有資源標示為不符合規範。
 
@@ -498,7 +517,7 @@ Modify 效果的 **details** 屬性，含有用於定義修補所需權限的所
   - 此屬性必須包含與訂用帳戶可存取之角色型存取控制角色識別碼相符的字串陣列。 如需詳細資訊，請參閱[補救 - 設定原則定義](../how-to/remediate-resources.md#configure-policy-definition)。
   - 定義的角色必須包含授與給[參與者](../../../role-based-access-control/built-in-roles.md#contributor)角色的所有作業。
 - **conflictEffect** (選用) 
-  - 決定當多個原則定義修改相同屬性時，哪個原則定義「獲勝」。
+  - 決定當有一個以上的原則定義修改相同的屬性，或修改作業在指定的別名上無法運作時，哪個原則定義「獲勝」。
     - 針對新的或更新的資源，具有 _拒絕_ 的原則定義優先。 具有 _audit_ 的原則定義會略過所有 **作業**。 如果有一個以上的原則定義 _拒絕_，要求就會被視為衝突。 如果所有原則定義都有 _audit_，則不會處理衝突原則定義的任何 **作業** 。
     - 針對現有的資源，如果有一個以上的原則定義有 _拒絕_，合規性狀態會是 [ _衝突_]。 如果有一或多個原則定義 _拒絕_，則每個指派會傳回 _不符合規範_的合規性狀態。
   - 可用的值： _audit_、 _deny_、 _disabled_。
@@ -513,6 +532,9 @@ Modify 效果的 **details** 屬性，含有用於定義修補所需權限的所
     - **value** (選擇性)
       - 標記所要設定的值。
       - 如果 **operation** 為 _addOrReplace_ 或 _Add_，則此屬性為必要。
+    - **條件** (選擇性) 
+      - 包含 Azure 原則語言運算式的字串，其 [原則](./definition-structure.md#policy-functions) 函式會評估為 _true_ 或 _false_。
+      - 不支援下列原則函數： `field()` 、 `resourceGroup()` 、 `subscription()` 。
 
 ### <a name="modify-operations"></a>Modify 作業
 
@@ -548,9 +570,9 @@ Modify 效果的 **details** 屬性，含有用於定義修補所需權限的所
 
 |作業 |描述 |
 |-|-|
-|addOrReplace |將定義的標記和值新增至資源，即使標記已經存在且具有不同的值。 |
-|加 |將定義的標記和值新增至資源。 |
-|移除 |將定義的標記從資源中移除。 |
+|addOrReplace |將已定義的屬性或標記和值加入至資源，即使屬性或標記已經存在且具有不同的值。 |
+|新增 |將已定義的屬性或標記和值新增至資源。 |
+|移除 |從資源中移除已定義的屬性或標記。 |
 
 ### <a name="modify-examples"></a>Modify 範例
 
@@ -593,6 +615,28 @@ Modify 效果的 **details** 屬性，含有用於定義修補所需權限的所
                 "operation": "addOrReplace",
                 "field": "tags['environment']",
                 "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
+}
+```
+
+範例3：確定儲存體帳戶不允許 blob 公用存取，只有在評估 API 版本大於或等於 ' 2019-04-01 ' 的要求時，才會套用修改作業：
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/17d1049b-9a84-46fb-8f53-869881c3d3ab"
+        ],
+        "conflictEffect": "audit",
+        "operations": [
+            {
+                "condition": "[greaterOrEquals(requestContext().apiVersion, '2019-04-01')]",
+                "operation": "addOrReplace",
+                "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+                "value": false
             }
         ]
     }

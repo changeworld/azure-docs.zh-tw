@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: a14f7ca3e5a7b291e430db6ea536edc5396b5448
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 58d6f98c87e37254e77bcc8dda1cdca6e608cafc
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318890"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962667"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure 監視器中可供記錄擷取的客戶自有儲存體帳戶
 
-Azure 監視器在某些資料類型的擷取程序中會使用儲存體帳戶，例如[自訂記錄](data-sources-custom-logs.md)，以及部份的[ Azure 記錄](./diagnostics-extension-logs.md)。 在擷取程序中，系統會先將記錄傳送到儲存體帳戶，並於稍後擷取到 Log Analytics 或 Application Insights。 如果您想要在擷取期間控制資料，您可以使用自己的儲存體帳戶，而非服務管理的儲存體。 使用您自己的儲存體帳戶，可讓您在內嵌期間控制記錄的存取、內容、加密及保留。 我們將此稱為「自備儲存體」或 BYOS。 
+Azure 監視器在某些資料類型的擷取程序中會使用儲存體帳戶，例如[自訂記錄](data-sources-custom-logs.md)，以及部份的[ Azure 記錄](./diagnostics-extension-logs.md)。 在擷取程序中，系統會先將記錄傳送到儲存體帳戶，並於稍後擷取到 Log Analytics 或 Application Insights。 如果您想要在擷取期間控制資料，您可以使用自己的儲存體帳戶，而非服務管理的儲存體。 使用您自己的儲存體帳戶可讓您在內嵌期間控制記錄的存取、內容、加密和保留。 我們將此稱為「自備儲存體」或 BYOS。 
 
 透過 Private Link 進行網路隔離時，即是需要 BYOS 的狀況之一。 在使用 VNet 時，通常需要網路隔離，而且公用網際網路的存取會受到限制。 在這種情況下，存取 Azure 監視器服務儲存體來擷取記錄的做法會完全遭到封鎖，或視為不正確的做法。 請改為透過 VNet 內部的客戶自有儲存體帳戶來擷取記錄，或可從中輕鬆存取。
 
@@ -40,7 +40,7 @@ Azure 監視器在某些資料類型的擷取程序中會使用儲存體帳戶�
 
 - 可存取您的 VNet 上的資源，其可將記錄寫入至儲存體。
 - 必須位於與其連結的工作區相同區域。
-- 允許 Azure 監視器存取-如果您選擇限制儲存體帳戶存取選取的網路，請務必允許此例外狀況：*允許受信任的 Microsoft 服務存取此儲存體帳戶*。
+- 允許 Azure 監視器存取-如果您選擇將儲存體帳戶存取許可權制為選取網路，請務必允許此例外狀況： *允許信任的 Microsoft 服務存取此儲存體帳戶*。
 
 ## <a name="process-to-configure-customer-owned-storage"></a>設定客戶自有儲存體的程序
 使用您自己的儲存體帳戶進行擷取的基本流程如下：
@@ -54,7 +54,7 @@ Azure 監視器在某些資料類型的擷取程序中會使用儲存體帳戶�
 ## <a name="command-line-and-rest-api"></a>命令列和 REST API
 
 ### <a name="command-line"></a>命令列
-若要建立及管理連結的儲存體帳戶，請使用已[連結儲存體的 az monitor log analytics 工作區](/cli/azure/monitor/log-analytics/workspace/linked-storage)。 此命令可從工作區連結和取消連結儲存體帳戶，並列出連結的儲存體帳戶。
+若要建立和管理連結的儲存體帳戶，請使用 [az monitor log analytics 工作區連結儲存體](/cli/azure/monitor/log-analytics/workspace/linked-storage)。 此命令可以連結和取消連結工作區中的儲存體帳戶，並列出連結的儲存體帳戶。
 
 ### <a name="request-and-cli-values"></a>要求和 CLI 值
 
@@ -77,6 +77,8 @@ Azure 監視器在某些資料類型的擷取程序中會使用儲存體帳戶�
 subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName1}
 ```
 
+
+## <a name="get-linked-storage-accounts"></a>取得連結的儲存體帳戶
 
 ### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>取得所有資料來源類型的連結儲存體帳戶
 
@@ -213,7 +215,7 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="replace-a-storage-account"></a>取代儲存體帳戶
 
-若要取代用於擷取的儲存體帳戶，請先建立新儲存體帳戶的連結。 記錄代理程式也會取得更新的設定，並開始將資料傳送至新的儲存體。
+若要取代用於擷取的儲存體帳戶，請先建立新儲存體帳戶的連結。 記錄代理程式也會取得更新的設定，並開始將資料傳送到新的儲存體。
 
 接下來，請將舊儲存體帳戶取消連結，以便讓代理程式停止寫入已移除的帳戶。 擷取程序會繼續讀取此帳戶的資料，直到全部擷取完畢為止。 除非您看到所有記錄都已擷取，否則請勿刪除儲存體帳戶。
 
@@ -235,5 +237,5 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需設定私人連結的詳細資訊，請參閱[使用 Azure 私人連結將網路安全地連接到 Azure 監視器](private-link-security.md)
+- 如需設定私人連結的詳細資訊，請參閱 [使用 Azure Private Link 將網路安全地連線到 Azure 監視器](private-link-security.md)
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: be33841206fa30a5b4975a604af1b5d9e38551a8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a8fa409a8ee66cd69016b7978f0d5f0194b338c4
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690250"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959148"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -153,7 +153,7 @@ SCIM RFC 中定義了數個端點。 您可以從 /User 端點開始著手，然
 * 支援根據 SCIM 通訊協定 3.4.2 小節，依識別碼和管理員查詢使用者的作業。  
 * 支援根據 SCIM 通訊協定 3.4.2 小節，依識別碼和成員查詢群組的作業。  
 * 接受以單一持有人權杖對應用程式進行 Azure AD 的驗證和授權。
-* 支援虛刪除使用者 `active=false` 及還原使用者 `active=true` 。
+* 支援虛刪除使用者 `active=false` 及還原使用者 `active=true` (使用者物件應該在要求中傳回，無論使用者是否為使用中) 。 只有當使用者從應用程式中被刪除時，才不會傳回該使用者。 
 
 在執行 SCIM 端點時，請遵循下列一般指導方針，以確保與 Azure AD 的相容性：
 

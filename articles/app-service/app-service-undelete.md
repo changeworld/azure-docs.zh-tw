@@ -5,21 +5,21 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 20c220bcb44a1a47e308f57d1466aee2773111a4
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 04e496806f2c388eb3a69df1b4cc3897b8132f6c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985677"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962905"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>使用 PowerShell 還原已刪除的 App Service 應用程式
 
-如果您意外刪除了 Azure App Service 中的應用程式，您可以使用 [Az PowerShell 模組](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)中的命令進行還原。
+如果您意外刪除了 Azure App Service 中的應用程式，您可以使用 [Az PowerShell 模組](/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)中的命令進行還原。
 
 > [!NOTE]
-> - 已刪除的應用程式會在初始刪除之後的 30 天內從系統中清除。 應用程式清除之後，就無法復原。
-> - 取用量方案不支援取消刪除功能。
-> - 在 App Service 環境中執行的應用程式服務應用程式不支援快照集。 因此，在 App Service 環境中執行的 App Service 應用程式不支援取消刪除功能和複製功能。
+> - 已刪除的應用程式會在初始刪除之後的 30 天內從系統中清除。 清除應用程式之後，就無法復原。
+> - 使用量方案不支援取消刪除功能。
+> - 在 App Service 環境中執行的應用程式服務應用程式不支援快照集。 因此，App Service 在 App Service 環境中執行的應用程式不支援取消刪除功能和複製功能。
 >
 
 ## <a name="re-register-app-service-resource-provider"></a>重新註冊 App Service 資源提供者
@@ -61,7 +61,7 @@ Get-AzDeletedWebApp -Name <your_deleted_app> -Location <your_deleted_app_locatio
 Restore-AzDeletedWebApp -TargetResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
 > [!NOTE]
-> 部署位置不會還原為應用程式的一部分。 如果您需要還原預備位置，請使用旗標 `-Slot <slot-name>` 。
+> 部署位置不會還原為應用程式的一部分。 如果您需要還原預備位置，請使用旗標 `-Slot <slot-name>`  。
 >
 
 命令的輸入如下：
@@ -70,10 +70,10 @@ Restore-AzDeletedWebApp -TargetResourceGroupName <my_rg> -Name <my_app> -TargetA
 - **Name**：應用程式的名稱，必須是全域唯一的。
 - **TargetAppServicePlanName**：連結至應用程式的 App Service 方案
 
-根據預設， `Restore-AzDeletedWebApp` 會同時還原您的應用程式設定和任何內容。 如果您只想還原內容，請使用 `-RestoreContentOnly` 旗標搭配這個 commandlet。
+預設 `Restore-AzDeletedWebApp` 會還原您的應用程式設定和任何內容。 如果您只想還原內容，請使用 `-RestoreContentOnly` 旗標搭配這個 commandlet。
 
 > [!NOTE]
-> 如果應用程式裝載在上，然後從 App Service 環境中刪除，則只有在對應的 App Service 環境仍然存在時，才可以還原。
+> 如果應用程式是裝載在上，然後從 App Service 環境中刪除，則只有在對應的 App Service 環境仍然存在時，才能還原。
 >
 
-您可以在這裡找到完整的 commandlet 參考：[Restore-AzDeletedWebApp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp) \(英文\)。
+您可以在這裡找到完整的 commandlet 參考：[Restore-AzDeletedWebApp](/powershell/module/az.websites/restore-azdeletedwebapp) \(英文\)。

@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: b917ef9234ef2e0d36526bc1688dfae2020d6b51
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b160f0aa50c30f7856bc09b88b3eb305f32d6f98
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075472"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961919"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中備份應用程式
 [Azure App Service](overview.md) 中的「備份與還原」功能可讓您以手動或透過排程方式，輕鬆建立應用程式備份。 您可以將備份設定為無限期保留。 您可以透過覆寫現有的應用程式或還原到另一個應用程式，將應用程式還原到先前狀態的快照。
@@ -42,7 +42,7 @@ App Service 可以將下列資訊備份到您已設定讓應用程式使用的 A
 
 ## <a name="requirements-and-restrictions"></a>需求和限制
 * 若要使用「備份與還原」功能，App Service 方案必須屬於**標準**層、**進階**層或**隔離**層。 如需有關調整 App Service 方案以使用更高階層的詳細資訊，請參閱 [在 Azure 中調整應用程式規模](manage-scale-up.md)。 **進階**層和**隔離**層會比**標準**層允許更多的每日備份。
-* 您需要與您即將備份之應用程式隸屬於相同訂用帳戶的 Azure 儲存體帳戶和容器。 如需有關 Azure 儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
+* 您需要與您即將備份之應用程式隸屬於相同訂用帳戶的 Azure 儲存體帳戶和容器。 如需有關 Azure 儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../storage/common/storage-account-overview.md)。
 * 備份上限是 10 GB 的應用程式和資料庫內容。 如果備份大小超出此限制，您就會收到錯誤。
 * 不支援備份具 TLS 功能的適用於 MySQL 的 Azure 資料庫。 如果設定備份，會得到失敗的備份檔案。
 * 不支援備份具 TLS 功能的適用於 PostgreSQL 的 Azure 資料庫。 如果設定備份，會得到失敗的備份檔案。
@@ -74,7 +74,7 @@ App Service 可以將下列資訊備份到您已設定讓應用程式使用的 A
 
 4. 選取 [儲存體帳戶] 和 [容器]，以選擇您的備份目的地。 此儲存體帳戶必須與您要備份之應用程式隸屬於相同的訂用帳戶。 如果您希望的話，也可以在個別頁面中，建立新的儲存體帳戶或新的容器。 完成後，按一下 [選取] 。
 
-5. 在仍處於開啟狀態的 [**備份**設定] 頁面中，您可以設定 [**備份資料庫**]，然後選取您想要包含在備份中的資料庫（SQL Database 或 MySQL），然後按一下 **[確定]**。
+5. 在仍保持開啟狀態的 [ **備份** 設定] 頁面上，您可以設定 [ **備份資料庫**]，然後選取要包含在備份中的資料庫 (SQL Database 或 MySQL) ，然後按一下 **[確定]**。
 
     ![Choose storage account](./media/manage-backup/configure-database.png)
 
@@ -150,7 +150,7 @@ App Service 可以將下列資訊備份到您已設定讓應用程式使用的 A
 ## <a name="how-backups-are-stored"></a>備份的儲存方式
 在您為應用程式建立一或多個備份之後，這些備份就會顯示在您儲存體帳戶及應用程式的 [容器] 頁面中。 在儲存體帳戶中，每個備份都是由一個 `.zip` 檔案 (包含備份資料) 和一個 `.xml` 檔案 (包含 `.zip` 檔案內容的資訊清單) 所組成。 如果您要存取備份而不實際執行應用程式還原，則可以將這些檔案解壓縮並加以瀏覽。
 
-應用程式的資料庫備份則儲存在 .zip 檔案的根目錄中。 針對 SQL Database，這是 BACPAC 檔案（無副檔名），而且可以匯入。 若要根據 BACPAC 匯出在 Azure SQL Database 中建立資料庫，請參閱匯[入 bacpac 檔案以在 Azure SQL Database 中建立資料庫](../azure-sql/database/database-import.md)。
+應用程式的資料庫備份則儲存在 .zip 檔案的根目錄中。 針對 SQL Database，這是 BACPAC 檔案 (沒有副檔名) 而且可以匯入。 若要根據 BACPAC 匯出在 Azure SQL Database 中建立資料庫，請參閱匯 [入 bacpac 檔案以在 Azure SQL Database 中建立資料庫](../azure-sql/database/database-import.md)。
 
 > [!WARNING]
 > 對 **websitebackups** 容器中的檔案進行任何變更，都可能導致備份失效，進而無法還原。
@@ -169,4 +169,4 @@ App Service 可以將下列資訊備份到您已設定讓應用程式使用的 A
 <a name="nextsteps"></a>
 
 ## <a name="next-steps"></a>後續步驟
-如需從備份還原應用程式的相關資訊，請參閱 [在 Azure 中還原應用程式](web-sites-restore.md)。 
+如需從備份還原應用程式的相關資訊，請參閱 [在 Azure 中還原應用程式](web-sites-restore.md)。

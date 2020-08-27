@@ -7,21 +7,21 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cd3881617227430488f8dd3f2f3d24072b24b8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 878cef39ade0487c03dba83c9e3631fe3c72088f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478739"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962378"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>App Service 環境 v1 簡介
 
 > [!NOTE]
-> 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 若要深入瞭解新版本，請從[App Service 環境簡介](intro.md)開始。
+> 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 若要深入瞭解新版本，請從 [App Service 環境簡介](intro.md)開始著手。
 
 ## <a name="overview"></a>概觀
 
-App Service 環境是[Azure App Service](../overview.md)的[高階服務方案][PremiumTier]選項，可提供完全隔離且專用的環境，以便安全地大規模執行 Azure App Service 應用程式，包括 Web Apps、Mobile Apps 和 API Apps。  
+App Service 環境是[Azure App Service](../overview.md)的[高階服務方案][PremiumTier]選項，可提供完全隔離和專用的環境，以便安全地大規模執行 Azure App Service 應用程式，包括 Web Apps、Mobile Apps 和 API Apps。  
 
 適合應用程式工作負載的 App Service 環境需要：
 
@@ -32,7 +32,7 @@ App Service 環境是[Azure App Service](../overview.md)的[高階服務方案][
 
 App Service 環境已經過隔離，可執行只有單一客戶的應用程式，且一律會部署到虛擬網路。  客戶對於輸入和輸出的應用程式網路流量都有更細微的控制，且應用程式可以透過虛擬網路建立與內部部署公司資源的高速安全連線。
 
-如需 App Service 環境如何提供高擴充和安全網路存取的總覽，請參閱[AzureCon 深入探討][AzureConDeepDive]App Service 環境！
+如需 App Service 環境如何啟用高擴充和安全網路存取的總覽，請參閱 App Service 環境的 [AzureCon 深入探討][AzureConDeepDive] ！
 
 如需使用多個 App Service Environment 水平延展的深入探討，請參閱關於如何設定[地理位置發佈的應用程式使用量][GeodistributedAppFootprint]一文。
 
@@ -72,7 +72,7 @@ App Service Environment 可以是具有公用 IP 位址的網際網路對向，�
 
 ## <a name="getting-started"></a>開始使用
 
-若要開始使用 App Service 環境，請參閱[如何建立 App Service 環境][HowToCreateAnAppServiceEnvironment]
+若要開始使用 App Service 環境，請參閱 [如何建立 App Service 環境][HowToCreateAnAppServiceEnvironment]
 
 如需 App Service Environment 網路架構的概觀，請參閱[網路架構概觀][NetworkArchitectureOverview]一文。
 
@@ -82,14 +82,14 @@ App Service Environment 可以是具有公用 IP 位址的網際網路對向，�
 
 <!-- LINKS -->
 [PremiumTier]: https://azure.microsoft.com/pricing/details/app-service/
-[MoreInfoOnVirtualNetworks]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[MoreInfoOnVirtualNetworks]: ../../virtual-network/virtual-networks-faq.md
 [AppServicePlan]: ../overview-hosting-plans.md
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
-[LogicApps]: https://azure.microsoft.com/documentation/articles/app-service-logic-what-are-logic-apps/
+[LogicApps]: ../../logic-apps/logic-apps-overview.md
 [AzureConDeepDive]:  https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/
 [GeodistributedAppFootprint]:  app-service-app-service-environment-geo-distributed-scale.md
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
-[SiteToSite]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
+[SiteToSite]: ../../vpn-gateway/vpn-gateway-multi-site.md
 [ExpressRoute]: https://azure.microsoft.com/services/expressroute/
 [HowToConfigureanAppServiceEnvironment]:  app-service-web-configure-an-app-service-environment.md
 [ControllingInboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md

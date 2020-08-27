@@ -1,6 +1,6 @@
 ---
-title: 自訂 Linux 容器的 CI/CD
-description: 瞭解如何在 Azure App Service 中設定持續部署至自訂的 Linux 容器。 Docker Hub 和 ACR 支援持續部署。
+title: CI/CD 至自訂 Linux 容器
+description: 瞭解如何在 Azure App Service 中設定持續部署至自訂 Linux 容器。 Docker Hub 和 ACR 都支援持續部署。
 keywords: azure app service, linux, docker, acr,oss
 author: msangapu-msft
 ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b168328f64f599de109dbd0a5bd95c0a26f5f902
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b73c7e62c6b621d3ac86cfb99b10b567460534f1
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083008"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961851"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>使用用於容器的 Web 應用程式進行持續部署
 
@@ -55,7 +55,7 @@ ms.locfileid: "88083008"
 
 ## <a name="automate-with-cli"></a>使用 CLI 自動化
 
-若要使用 Azure CLI 來設定 CI/CD，請執行[az webapp deployment container config](https://docs.microsoft.com/cli/azure/webapp/deployment/container?view=azure-cli-latest#az-webapp-deployment-container-config)命令以產生 webhook URL。 URL 可以用來設定您的 DockerHub 或 Azure Container Registry。
+若要使用 Azure CLI 設定 CI/CD，請執行 [az webapp deployment container config](/cli/azure/webapp/deployment/container?view=azure-cli-latest#az-webapp-deployment-container-config) 命令以產生 webhook URL。 URL 可以用來設定您的 DockerHub 或 Azure Container Registry。
 
 ```azurecli-interactive
 az webapp deployment container config --name <app-name> --resource-group <group-name> --enable-cd true
@@ -68,4 +68,4 @@ az webapp deployment container config --name <app-name> --resource-group <group-
 * [在 Linux 上的 App Service 中建立 Ruby Web 應用程式](quickstart-ruby.md)
 * [快速入門：在 App Service 上執行自訂容器](quickstart-custom-container.md?pivots=container-linux)
 * [Linux 上的 App Service 常見問題集](faq-app-service-linux.md)
-* [設定自訂的 Linux 容器](configure-custom-container.md)
+* [設定自訂 Linux 容器](configure-custom-container.md)

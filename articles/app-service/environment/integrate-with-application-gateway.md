@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e4838597c50898748eb4b33e81ff22eaeea37b30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b73d528802a8aa33c6122eaf5edfa9d046b6753
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80476902"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962072"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>整合 ILB App Service Environment 與 Azure 應用程式閘道 #
 
@@ -20,7 +20,7 @@ ms.locfileid: "80476902"
 
 Web 應用程式防火牆會檢查輸入的 Web 流量以封鎖 SQL 插入、跨網站指令碼、惡意程式碼上傳和應用程式 DDoS 以及其他攻擊，藉此保護您的 Web 應用程式。 它也會針對資料外洩防護 (DLP) 檢查來自後端 Web 伺服器的回應。 您可以從 Azure Marketplace 取得 WAF 裝置，或者您可以使用 [Azure 應用程式閘道][appgw]。
 
-Azure 應用程式閘道是一種虛擬裝置，可提供第7層負載平衡、TLS/SSL 卸載和 web 應用程式防火牆（WAF）保護。 它可以接聽公用 IP 位址，並將流量路由到您的應用程式端點。 下列資訊說明如何將已設定 WAF 的應用程式閘道與 ILB App Service Environment 中的應用程式進行整合。  
+Azure 應用程式閘道是一種虛擬裝置，可提供第7層負載平衡、TLS/SSL 卸載，以及 web 應用程式防火牆 (WAF) 保護。 它可以接聽公用 IP 位址，並將流量路由到您的應用程式端點。 下列資訊說明如何將已設定 WAF 的應用程式閘道與 ILB App Service Environment 中的應用程式進行整合。  
 
 應用程式閘道與 ILB App Service Environment 的整合是在應用程式層級進行的。 當您使用 ILB App Service Environment 設定應用程式閘道時，請針對 ILB App Service Environment 中的特定應用程式進行此操作。 此技巧可讓您在單一 ILB App Service Environment 中裝載安全的多租用戶應用程式。  
 
@@ -33,14 +33,14 @@ Azure 應用程式閘道是一種虛擬裝置，可提供第7層負載平衡、T
 * 將應用程式設定為採用自訂網域名稱。
 * 編輯指向應用程式閘道的公用 DNS 主機名稱。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 為了整合應用程式閘道與 ILB App Service Environment，您需要：
 
 * ILB App Service Environment。
 * 在 ILB App Service Environment 中執行的應用程式。
 * 可在網際網路路由傳送的網域名稱，以便搭配 ILB App Service Environment 中的應用程式使用。
-* ILB App Service Environment 使用的 ILB 位址。 這項資訊位於 App Service 環境入口網站的 [**設定**] [  >  **IP 位址**] 底下：
+* ILB App Service Environment 使用的 ILB 位址。 這項資訊位於 App Service 環境入口網站的 [**設定**  >  **IP 位址**：
 
     ![ILB App Service Environment 所使用之 IP 位址清單的範例][9]
     
@@ -56,7 +56,7 @@ Azure 應用程式閘道是一種虛擬裝置，可提供第7層負載平衡、T
 
 ## <a name="configuration-steps"></a>組態步驟 ##
 
-1. 在 Azure 入口網站中，移至 [**新增**] [網路] [  >  **Network**  >  **應用程式閘道**]。
+1. 在 Azure 入口網站中，移至 [**新增**  >  **網路**  >  **應用程式閘道**]。
 
 2. 在 [基本資料]**** 區域中：
 
@@ -68,7 +68,7 @@ Azure 應用程式閘道是一種虛擬裝置，可提供第7層負載平衡、T
 
    d. 於 [資源群組]**** 中建立或選取資源群組。
 
-   e。 於 [位置]**** 中選取 App Service Environment 虛擬網路的位置。
+   e. 於 [位置]**** 中選取 App Service Environment 虛擬網路的位置。
 
    ![新應用程式閘道的建立基本概念][2]
 
@@ -82,7 +82,7 @@ Azure 應用程式閘道是一種虛擬裝置，可提供第7層負載平衡、T
 
    d. 於 [公用 IP 位址]**** 中選取公用 IP 位址。 如果您沒有公用 IP 位址，請立即建立一個。
 
-   e。 於 [通訊協定]**** 中選取 [HTTP]**** 或 [HTTPS]****。 如果您要設定為 HTTPS，則需要提供 PFX 憑證。
+   e. 於 [通訊協定]**** 中選取 [HTTP]**** 或 [HTTPS]****。 如果您要設定為 HTTPS，則需要提供 PFX 憑證。
 
    f. 對於 [Web 應用程式防火牆]****，您可以啟用防火牆，並視需要將它設定為 [偵測]**** 或 [預防]****。
 
@@ -106,7 +106,7 @@ Azure 應用程式閘道是一種虛擬裝置，可提供第7層負載平衡、T
 
    ![應用程式閘道入口網站][7]
 
-9. 在 ILB App Service Environment 中設定應用程式的自訂網域名稱。 在入口網站中移至您的應用程式，然後在 [**設定**] 下選取 [**自訂網域**]。
+9. 在 ILB App Service Environment 中設定應用程式的自訂網域名稱。 在入口網站中移至您的應用程式，然後在 [ **設定**] 底下選取 [ **自訂網域**]。
 
    ![在應用程式上設定自訂網域名稱][8]
 
@@ -127,6 +127,6 @@ Azure 應用程式閘道是一種虛擬裝置，可提供第7層負載平衡、T
 [9]: ./media/integrate-with-application-gateway/appgw-iplist.png
 
 <!--LINKS-->
-[appgw]: https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction
+[appgw]: ../../application-gateway/overview.md
 [custom-domain]: ../app-service-web-tutorial-custom-domain.md
 [ilbase]: ./create-ilb-ase.md

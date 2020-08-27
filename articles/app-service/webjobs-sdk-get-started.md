@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: ded612fb79001adf2ada1a289603bc8a7561d38f
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: eebdf053cc3eea1dfc91476bff3817891bec42a3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612481"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959049"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>開始使用 Azure WebJobs SDK 進行事件驅動幕後處理
 
@@ -184,7 +184,7 @@ ms.locfileid: "88612481"
 
    `QueueTrigger` 屬性會告知執行階段當名為 `queue` 的 Azure 儲存體佇列上有新訊息寫入時，請呼叫此函式。 佇列訊息的內容會提供給 `message` 參數中的方法程式碼。 方法的主體是您處理觸發程序資料的地方。 在此範例中，程式碼只會記錄訊息。
 
-   `message` 參數不必是字串。 您也可以繫結至 JSON 物件、位元組陣列或 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) 物件。 [請參閱佇列觸發程序使用方式](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage)。 每個繫結類型 (例如佇列、blob 或資料表) 都有一組您可以繫結至的不同參數類型。
+   `message` 參數不必是字串。 您也可以繫結至 JSON 物件、位元組陣列或 [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) 物件。 [請參閱佇列觸發程序使用方式](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#usage)。 每個繫結類型 (例如佇列、blob 或資料表) 都有一組您可以繫結至的不同參數類型。
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 
@@ -280,7 +280,7 @@ WebJobs SDK 會在 Azure 中的 [應用程式設定] 尋找儲存體連接字串
 
    因為您在 `ProcessQueueMessage` 函式中使用 `QueueTrigger` 屬性，所以 WeJobs SDK 執行階段會在啟動時接聽佇列訊息。 它會在名為 queue 的佇列中發現新佇列訊息並呼叫此函式。
 
-   由於[佇列輪詢指數輪詢](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)，它可能會需要 2 分鐘的時間，讓執行階段尋找訊息及叫用函式。 在[開發模式](webjobs-sdk-how-to.md#host-development-settings)中執行可以縮短此等候時間。
+   由於[佇列輪詢指數輪詢](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#polling-algorithm)，它可能會需要 2 分鐘的時間，讓執行階段尋找訊息及叫用函式。 在[開發模式](webjobs-sdk-how-to.md#host-development-settings)中執行可以縮短此等候時間。
 
    主控台輸出如下所示：
 
@@ -444,7 +444,7 @@ WebJobs SDK 會在 Azure 中的 [應用程式設定] 尋找儲存體連接字串
 1. 重新整理 [佇列] 頁面，新訊息會消失，因為它已由 Azure 中執行的函式進行處理。
 
    > [!TIP]
-   > 當您在 Azure 中測試時，使用[開發模式](webjobs-sdk-how-to.md#host-development-settings)以確保立即叫用佇列觸發程序函式，並且避免因[佇列輪詢指數輪詢](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)所造成的延遲。
+   > 當您在 Azure 中測試時，使用[開發模式](webjobs-sdk-how-to.md#host-development-settings)以確保立即叫用佇列觸發程序函式，並且避免因[佇列輪詢指數輪詢](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#polling-algorithm)所造成的延遲。
 
 ### <a name="view-logs-in-application-insights"></a>在 Application Insights 中檢視記錄
 

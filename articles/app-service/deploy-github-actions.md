@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python
-ms.openlocfilehash: 713f4228bc2ba968fc96668d4d5c568f33b7e786
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 264976fdfe514a8778c60fe9242ac555f268718d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080278"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962565"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到 App Service
 
@@ -36,7 +36,7 @@ Azure App Service 工作流程的檔案會有三個區段：
 
 # <a name="user-level-credentials"></a>[使用者層級認證](#tab/userlevel)
 
-您可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/) 中的 [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令來建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 您可以使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com/)，或選取 [試試看] 按鈕來執行此命令。
+您可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令來建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 您可以使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com/)，或選取 [試試看] 按鈕來執行此命令。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -44,7 +44,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
                             --sdk-auth
 ```
 
-在上述範例中，請將預留位置取代為您的訂用帳戶識別碼、資源組名和應用程式名稱。 輸出是具有角色指派認證的 JSON 物件，可讓您存取 App Service 應用程式，如下所示。 複製此 JSON 物件，以供稍後取得。
+在上述範例中，請將預留位置取代為您的訂用帳戶識別碼、資源組名和應用程式名稱。 輸出是具有角色指派認證的 JSON 物件，可讓您存取您的 App Service 應用程式，如下所示。 複製此 JSON 物件以供稍後之用。
 
 ```output 
   {
@@ -57,11 +57,11 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 ```
 
 > [!IMPORTANT]
-> 授與最小存取權永遠是最佳作法。 上一個範例中的範圍僅限於特定的 App Service 應用程式，而不是整個資源群組。
+> 授與最小存取權永遠是最佳作法。 上一個範例中的範圍僅限於特定的 App Service 應用程式，而非整個資源群組。
 
 # <a name="app-level-credentials"></a>[應用層級認證](#tab/applevel)
 
-您可以使用應用程式的發行設定檔，來使用應用層級的認證。 在入口網站中，移至您應用程式的 [管理] 頁面。 在 [**總覽**] 頁面中，按一下 [**取得發行設定檔**] 選項。
+您可以使用應用程式的發行設定檔，來使用應用層級的認證。 在入口網站中移至應用程式的管理頁面。 在 [ **總覽** ] 頁面中，按一下 [ **取得發行設定檔** ] 選項。
 
 您稍後將需要檔案的內容。
 
@@ -71,9 +71,9 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="user-level-credentials"></a>[使用者層級認證](#tab/userlevel)
 
-在[GitHub](https://github.com/)中，流覽您的存放庫、選取 [**設定] > [密碼] > 新增新的密碼**。
+在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定**。
 
-若要使用[使用者層級的認證](#generate-deployment-credentials)，請將 Azure CLI 命令的整個 JSON 輸出貼入密碼的 [值] 欄位中。 為密碼命名，例如 `AZURE_CREDENTIALS` 。
+若要使用 [使用者層級的認證](#generate-deployment-credentials)，請將 Azure CLI 命令中的整個 JSON 輸出貼到秘密的值欄位中。 為秘密命名，例如 `AZURE_CREDENTIALS` 。
 
 當您稍後設定工作流程檔案時，您會使用秘密來輸入 `creds` Azure 登入動作。 例如：
 
@@ -85,11 +85,11 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="app-level-credentials"></a>[應用層級認證](#tab/applevel)
 
-在[GitHub](https://github.com/)中，流覽您的存放庫、選取 [**設定] > [密碼] > 新增新的密碼**。
+在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定**。
 
-若要使用[應用層級認證](#generate-deployment-credentials)，請將下載之發行設定檔的內容貼入密碼的 [值] 欄位中。 為密碼命名，例如 `azureWebAppPublishProfile` 。
+若要使用 [應用層級的認證](#generate-deployment-credentials)，請將所下載發行設定檔的內容貼入秘密的 [值] 欄位中。 為秘密命名，例如 `azureWebAppPublishProfile` 。
 
-當您稍後設定工作流程檔案時，您可以使用 [ `publish-profile` 部署 Azure Web 應用程式] 動作的輸入密碼。 例如：
+當您稍後設定工作流程檔案時，會使用秘密作為 [ `publish-profile` 部署 Azure Web 應用程式] 動作的輸入。 例如：
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -221,7 +221,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="user-level-credentials"></a>[使用者層級認證](#tab/userlevel)
 
-下面是使用 Azure 服務主體建置 Node.js 應用程式並部署到 Azure 的範例工作流程。 請注意 `creds` 輸入如何參考 `AZURE_CREDENTIALS` 您稍早建立的密碼。
+下面是使用 Azure 服務主體建置 Node.js 應用程式並部署到 Azure 的範例工作流程。 請注意 `creds` 輸入如何參考 `AZURE_CREDENTIALS` 您稍早建立的秘密。
 
 ```yaml
 on: [push]
@@ -264,7 +264,7 @@ jobs:
 
 # <a name="app-level-credentials"></a>[應用層級認證](#tab/applevel)
 
-以下是使用應用程式的發行設定檔，建立 Node.js 應用程式並將其部署至 Azure 的範例工作流程。 請注意 `publish-profile` 輸入如何參考 `azureWebAppPublishProfile` 您稍早建立的密碼。
+以下是使用應用程式的發行設定檔，建立 Node.js 應用程式並將其部署至 Azure 的範例工作流程。 請注意 `publish-profile` 輸入如何參考 `azureWebAppPublishProfile` 您稍早建立的秘密。
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -302,7 +302,7 @@ jobs:
 
 您可以在 GitHub 上找到分組到不同存放庫的一組動作，其中每一個都包含文件與範例，以協助您使用 GitHub 來進行 CI/CD，並將您的應用程式部署至 Azure。
 
-- [動作工作流程以部署至 Azure](https://github.com/Azure/actions-workflow-samples)
+- [要部署到 Azure 的動作工作流程](https://github.com/Azure/actions-workflow-samples)
 
 - [Azure 登入](https://github.com/Azure/login)
 

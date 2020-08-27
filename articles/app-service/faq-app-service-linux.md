@@ -1,18 +1,18 @@
 ---
 title: 執行內建容器常見問題
-description: 尋找 Azure App Service 中內建 Linux 容器的常見問題解答。
+description: 尋找 Azure App Service 內建 Linux 容器常見問題的解答。
 keywords: azure app service, web 應用程式, 常見問題集, linux, oss, 用於容器的 Web App, 多重容器
 author: msangapu-msft
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e01954e0f2f311a7229a69cb18f881e0491b80d3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082931"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961715"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure App Service 常見問題集
 
@@ -33,14 +33,14 @@ ms.locfileid: "88082931"
 | Stack           | 預期的值                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
 | Java SE         | 用來啟動 JAR 應用程式的命令 (例如， `java -jar /home/site/wwwroot/app.jar --server.port=80`)  |
-| Tomcat          | 執行任何必要設定的腳本位置 (例如， `/home/site/deployments/tools/startup_script.sh`)           |
+| Tomcat          | 腳本的位置，用來執行任何必要的設定 (例如， `/home/site/deployments/tools/startup_script.sh`)           |
 | Node.js         | PM2 設定檔或您的腳本檔案                                |
-| .NET Core       | 已編譯的 DLL 名稱，形式為`dotnet <myapp>.dll`                                 |
-| Ruby            | 您想要用來初始化應用程式的 Ruby 腳本                     |
+| .NET Core       | 已編譯的 DLL 名稱為 `dotnet <myapp>.dll`                                 |
+| Ruby            | 您要用來初始化應用程式的 Ruby 腳本                     |
 
-這些命令或腳本會在內建的 Docker 容器啟動後，但在您的應用程式程式碼啟動之前執行。
+這些命令或腳本會在內建的 Docker 容器啟動之後，但在您的應用程式程式碼啟動之前執行。
 
-## <a name="management"></a>管理性
+## <a name="management"></a>管理
 
 **當我按下 Azure 入口網站中的 [重新啟動] 按鈕時，會發生什麼事？**
 
@@ -56,11 +56,11 @@ ms.locfileid: "88082931"
 
 **我如何透過 SDK 或 Azure Resource Manager 範本建立 Linux App Service 方案？**
 
-將應用程式服務的 [**保留**] 欄位設定為 [ *true*]。
+將 app service 的 **保留** 欄位設定為 *true*。
 
 ## <a name="continuous-integration-and-deployment"></a>持續整合與部署
 
-**我的 web 應用程式在我已更新 Docker Hub 上的映射之後，仍會使用舊的 Docker 容器映射。您是否支援自訂容器的持續整合和部署？**
+**我的 web 應用程式在 Docker Hub 上更新映射之後，仍然使用舊的 Docker 容器映射。您是否支援自訂容器的持續整合和部署？**
 
 是，若要設定 Azure Container Registry 或 DockerHub 的持續整合/部署，請依照[使用用於容器的 Web 應用程式進行持續部署](./deploy-ci-cd-custom-container.md)操作。 針對私人登錄，您可以將 Web 應用程式先停止再啟動，來重新整理容器。 您也可以變更或新增虛擬應用程式設定，來強制重新整理您的容器。
 
@@ -72,11 +72,11 @@ ms.locfileid: "88082931"
 
 是，您需要將稱為 `WEBSITE_WEBDEPLOY_USE_SCM` 的應用程式設定設定為 *false*。
 
-**當您使用 Linux web 應用程式時，應用程式的 Git 部署失敗。如何解決此問題？**
+**使用 Linux web 應用程式時，我的應用程式的 Git 部署失敗。我該如何解決此問題？**
 
 如果您的 Linux Web 應用程式無法部署 Git，請選擇下列其中一個選項來部署應用程式程式碼：
 
-- 使用持續傳遞 (預覽) 功能：您可以將應用程式的原始程式碼儲存在 Azure DevOps Git 存放庫或 GitHub 存放庫中，以使用 Azure 持續傳遞。 如需詳細資訊，請參閱[如何設定 Linux Web 應用程式的持續傳遞](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)。
+- 使用持續傳遞 (預覽) 功能：您可以將應用程式的原始程式碼儲存在 Azure DevOps 的 Git 存放庫或 GitHub 存放庫中，以使用 Azure 持續傳遞。 如需詳細資訊，請參閱[如何設定 Linux Web 應用程式的持續傳遞](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)。
 
 - 使用 [ZIP 部署 API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)：若要使用此應用程式開發介面，[SSH 到您的 Web 應用程式](configure-linux-open-ssh-session.md)，然後移至您要部署程式碼的資料夾。 執行下列程式碼：
 
@@ -108,9 +108,9 @@ const io = require('socket.io')(server,{
 
 ## <a name="custom-containers"></a>自訂容器
 
-**我使用自己的自訂容器。我希望平臺將 SMB 共用掛接至 `/home/` 目錄。**
+**我使用自己的自訂容器。我希望平臺將 SMB 共用掛接到 `/home/` 目錄。**
 
-如果 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` **未指定**設定，或將設定為*true*，則會在 `/home/` 所有規模的實例間**共用**目錄，而寫入的檔案**會**在重新開機時保存。 將明確設定 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 為*false*將會停用掛接。
+如果 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定為 **未指定** 或設為 *true*，則會在 `/home/` 擴展實例之間 **共用** 目錄，而寫入的檔案會在重新開機時 **持續保存** 。 明確設定 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 為 *false* 將會停用掛接。
 
 **我的自訂容器需要很長時間才能啟動，而平台會在它完成啟動之前將容器重新啟動。**
 
@@ -122,15 +122,15 @@ const io = require('socket.io')(server,{
 
 **私人登錄選項中的映像名稱格式為何？**
 
-新增包括私人登錄 URL 的完整映像名稱 (例如 myacr.azurecr.io/dotnet:latest)。 使用自訂連接埠的映像名稱[無法透過入口網站輸入](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 若要設定 `docker-custom-image-name` ，請使用[ `az` 命令列工具](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)。
+新增包括私人登錄 URL 的完整映像名稱 (例如 myacr.azurecr.io/dotnet:latest)。 使用自訂連接埠的映像名稱[無法透過入口網站輸入](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 若要設定 `docker-custom-image-name` ，請使用[ `az` 命令列工具](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)。
 
 **我可以在我的自訂容器映像上公開多個連接埠嗎？**
 
-我們不支援公開一個以上的埠。
+我們不支援公開多個埠。
 
 **我可以攜帶自己的儲存體嗎？**
 
-是，[自備儲存體](https://docs.microsoft.com/azure/app-service/configure-connect-to-azure-storage)處於預覽狀態。
+是，[自備儲存體](./configure-connect-to-azure-storage.md)處於預覽狀態。
 
 **為什麼我無法從 SCM 網站瀏覽自訂容器的檔案系統或執行中處理序？**
 
@@ -148,7 +148,7 @@ SCM 網站是在個別的容器中執行。 您無法檢查應用程式容器的
 
 **如何設定 Azure 容器登錄 (ACR) 與多重容器一起使用？ **
 
-為了將 ACR 與多重容器一起使用，**所有容器映像**都必須裝載在相同的 ACR 登錄伺服器上。 一旦它們位於相同的登錄伺服器上，您將需要建立應用程式設定，然後更新 Docker Compose 的設定檔，以包含 ACR 映射名稱。
+為了將 ACR 與多重容器一起使用，**所有容器映像**都必須裝載在相同的 ACR 登錄伺服器上。 一旦在相同的登錄伺服器上，您將需要建立應用程式設定，然後更新 Docker Compose 設定檔，以包含 ACR 映射名稱。
 
 建立下列應用程式設定：
 
@@ -179,19 +179,19 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 Linux 應用程式支援 Web 通訊端。
 
 > [!IMPORTANT]
-> 免費 App Service 方案上的 Linux 應用程式目前不支援 Web 通訊端。 我們正努力移除這項限制，並計畫在免費的 App Service 方案上支援最多5個 web 通訊端連線。
+> Linux 應用程式目前不支援 Web 通訊端免費 App Service 方案。 我們正致力於移除這項限制，並規劃在免費的 App Service 方案上支援最多5個 web 通訊端連線。
 
 ## <a name="pricing-and-sla"></a>價格和 SLA
 
 **既然服務已正式推出，服務的定價為何？**
 
-定價會因 SKU 和區域而有所不同，但您可以在定價頁面上看到更多詳細資料： [App Service 定價](https://azure.microsoft.com/pricing/details/app-service/linux/)。
+定價依 SKU 和區域而異，但您可以在定價頁面上查看更多詳細資料： [App Service 定價](https://azure.microsoft.com/pricing/details/app-service/linux/)。
 
 ## <a name="other-questions"></a>其他問題
 
-**「要求的功能在資源群組中無法使用」是什麼意思？**
+**「資源群組中未提供要求的功能」是什麼意思？**
 
-當您使用 Azure Resource Manager (ARM) 建立 web 應用程式時，可能會看到此訊息。 根據目前的限制，針對相同的資源群組，您無法在相同的區域中混用 Windows 和 Linux 應用程式。
+使用 Azure Resource Manager (ARM) 來建立 web 應用程式時，您可能會看到此訊息。 根據目前的限制，對於相同的資源群組，您無法在相同區域中混合使用 Windows 和 Linux 應用程式。
 
 **應用程式設定名稱所支援的字元為何？**
 
@@ -205,4 +205,4 @@ Linux 應用程式支援 Web 通訊端。
 
 - [何謂 Linux 上的 Azure App Service？](overview.md#app-service-on-linux)
 - [在 Azure App Service 中設定預備環境](deploy-staging-slots.md) \(部分機器翻譯\)
-- [使用用於容器的 Web App 進行持續部署](./deploy-ci-cd-custom-container.md)
+- [使用用於容器的 Web App 的持續部署](./deploy-ci-cd-custom-container.md)

@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 4c95c5eccb5ff804adeae94074136c6242678127
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6a1506de0bf21e44d84925fabeeea860f5807e2c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816060"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958094"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>疑難排解您的裝置資料未顯示在 Azure IoT Central 中的原因
 
@@ -94,8 +94,6 @@ version : 32
 ': 200}, 'brightness': {'value': {'value': 2}, 'status': 'completed', 'desiredVersion': 7, 'ad': 'completed', 'av': 7, 'ac': 200}, 'p
 rocessorArchitecture': 'ARM', 'swVersion': '1.0.0'}
 ```
-
-### <a name="interpreting-terminal-output"></a>解讀終端機輸出
 
 如果您看到資料出現在終端機中，則資料會變成您 IoT Central 應用程式的最遠。
 
@@ -187,8 +185,6 @@ https://aka.ms/iotcentral-docs-dps-SAS",
     az iot central app validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
-- 如果您想要使用 GUI，請使用 IoT Central **原始資料** 視圖，以查看是否有未模型化的內容。 如果裝置正在傳送格式不正確的 JSON， **原始資料** 視圖就不會偵測到。
-
 當 `uamqp` 您第一次執行命令時，系統可能會提示您安裝程式庫 `validate` 。
 
 下列輸出顯示來自 validate 命令的範例錯誤和警告訊息：
@@ -205,9 +201,9 @@ Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happen
 tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601 compliant.
 ```
 
-:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="原始資料檢視的螢幕擷取畫面":::
+如果您想要使用 GUI，請使用 IoT Central **原始資料** 視圖，以查看是否有未模型化的內容。 如果裝置正在傳送格式不正確的 JSON， **原始資料** 視圖就不會偵測到。
 
-### <a name="interpreting-terminal-output"></a>解讀終端機輸出
+:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="原始資料檢視的螢幕擷取畫面":::
 
 當您偵測到問題時，您可能需要更新裝置固件，或建立新的裝置範本，以模型化先前未清查的資料。
 
@@ -215,9 +211,6 @@ tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您無法使用本指南進行疑難排解並修正問題，請開啟支援票證。 Azure 客戶可以在 Azure 入口網站中建立及管理支援要求：
-
-- [Azure 入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-- [美國政府的 Azure 入口網站](https://portal.azure.us/)
+如果您需要更多協助，您可以聯繫 [MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 azure 專家。 或者，您也可以提出 [Azure 支援的票證](https://portal.azure.com/#create/Microsoft.Support)。
 
 如需詳細資訊，請參閱 [Azure IoT 支援和協助選項](../../iot-fundamentals/iot-support-help.md)。

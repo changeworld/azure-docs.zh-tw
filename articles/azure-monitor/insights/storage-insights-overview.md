@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6d6754594a321d297d983f9bd7e90ce074857919
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327339"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961970"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用適用於儲存體的 Azure 監視器監視儲存體服務
 
@@ -54,11 +54,11 @@ ms.locfileid: "87327339"
 
 ### <a name="overview-workbook"></a>[概觀] 活頁簿
 
-在所選訂用帳戶的 [概觀] 活頁簿上，該資料表會針對訂用帳戶內已分組的最多 10 個儲存體帳戶，顯示互動式儲存體計量和服務可用性狀態。 您可以根據您從下列下拉式清單中選取的選項，篩選結果：
+在所選訂用帳戶的 **總覽** 活頁簿中，資料表會顯示最多5個儲存體帳戶（群組在訂用帳戶內）的互動式儲存體計量和服務可用性狀態。 您可以根據您從下列下拉式清單中選取的選項，篩選結果：
 
 * **訂用帳戶**：僅列出具有儲存體帳戶的訂用帳戶。  
 
-* **儲存體帳戶**：預設會預先選取 10 個儲存體帳戶。 如果您在範圍選取器中選取所有或多個儲存體帳戶，最多將傳回 200 個儲存體帳戶。 例如，如果您所選取的三個訂用帳戶共有 573 個儲存體帳戶，則只會顯示 200 個帳戶。 
+* **儲存體帳戶** -預設會預先選取5個儲存體帳戶。 如果您在範圍選取器中選取所有或多個儲存體帳戶，最多將傳回 200 個儲存體帳戶。 例如，如果您所選取的三個訂用帳戶共有 573 個儲存體帳戶，則只會顯示 200 個帳戶。 
 
 * **時間範圍**：預設會根據對應的選取項目，顯示過去 4 小時的資訊。
 
@@ -198,7 +198,7 @@ ms.locfileid: "87327339"
 
 1. 在計量方格中，選取 [資料行設定]。
 
-2. 在 [**編輯資料行設定**] 窗格中，選取 [ **microsoft. storage/storageaccounts-UsedCapacity $ `|` Storageaccounts/Blobservices-容量-BlobCapacity $ microsoft. storage/storageaccounts `|` /fileservices- `|` `|` **容量-FileCapacity $ microsoft. storage/storageaccounts/queueservices-容量-QueueCapacity $ microsoft. storage/storageaccounts/Tableservices-容量-TableCapacity $] 資料**行**。 在 [調色盤] 下拉式清單中，選取 [綠色]。
+2. 在 [**編輯資料行設定**] 窗格中，選取 [ **microsoft. 儲存體/storageaccounts-容量-UsedCapacity $ `|` microsoft. 儲存體/Storageaccounts/Blobservices-容量-BlobCapacity $ `|` microsoft. 儲存體/storageaccounts/fileservices-容量-FileCapacity $ microsoft `|` . 儲存體/storageaccounts/ `|` **queueservices]**的 [容量**-QueueCapacity]。 在 [調色盤] 下拉式清單中，選取 [綠色]。
 
 3. 選取 [儲存後關閉] 以認可變更。
 
@@ -228,7 +228,7 @@ ms.locfileid: "87327339"
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如需一般疑難排解指導方針，請參閱專用的活頁簿型深入解析[疑難排解文章](troubleshoot-workbooks.md)。
+如需一般疑難排解指引，請參閱專用的以活頁簿為基礎的深入解析 [疑難排解文章](troubleshoot-workbooks.md)。
 
 此節將協助您診斷在使用適用於儲存體的 Azure 監視器時可能遇到的一些常見問題，並進行疑難排解。 請使用下列清單，找到與您的特定問題相關的資訊。
 
