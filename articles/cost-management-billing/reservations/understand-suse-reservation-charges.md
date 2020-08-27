@@ -4,15 +4,16 @@ description: 了解軟體方案折扣如何套用至虛擬機器上的軟體。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: banders
-ms.openlocfilehash: b8e4c4188b0a3b862715a2e4eec2f31dd3f55ac9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3b936cb15114d81d1dff1eb052a9bafe01adeff7
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902060"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88681680"
 ---
 # <a name="azure-software-plan-discount"></a>Azure 軟體方案折扣
 

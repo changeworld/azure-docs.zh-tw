@@ -3,15 +3,16 @@ title: Red Hat 保留方案折扣 - Azure
 description: 了解 Red Hat 方案折扣如何套用至虛擬機器上的 Red Hat 軟體。
 author: yashesvi
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: 46a1fd9be35abb19d920e2a3bd34f88c557f40b1
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 4314a52488473bcacd4aa62a0e8f44d88d2b75f1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735110"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88681595"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>了解 Azure 會如何套用 Red Hat Linux Enterprise 軟體保留方案折扣
 

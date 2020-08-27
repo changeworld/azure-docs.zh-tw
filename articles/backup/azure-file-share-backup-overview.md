@@ -3,16 +3,16 @@ title: 關於 Azure 檔案共用備份
 description: 瞭解如何在復原服務保存庫中備份 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 1c44d406519c8c0d9fb71b5e94bcb6bcaa1a7253
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7960040df4208ad021bca3406f6472d8c3206d81
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823875"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892247"
 ---
 # <a name="about-azure-file-share-backup"></a>關於 Azure 檔案共用備份
 
-Azure 檔案共用備份是以雲端為基礎的原生備份解決方案，可保護您在雲端中的資料，並消除與內部部署備份解決方案相關的額外維護負荷。 Azure 備份服務可順暢地與 Azure 檔案同步整合，並可讓您將檔案共用資料和備份組中在一起。 這個簡單、可靠且安全的解決方案，可讓您以幾個簡單的步驟來設定企業檔案共用的保護，並確保在發生嚴重損壞情況時可以復原資料。
+Azure 檔案共用備份是以雲端為基礎的原生備份解決方案，可保護您在雲端中的資料，並消除與內部部署備份解決方案相關的額外維護負荷。 Azure 備份服務可順暢地與 Azure 檔案同步整合，並可讓您將檔案共用資料和備份組中在一起。 這個簡單、可靠且安全的解決方案，可讓您以幾個簡單的步驟來設定企業檔案共用的保護，並確保您可以在任何嚴重損壞的情況下復原資料。
 
 ## <a name="key-benefits-of-azure-file-share-backup"></a>Azure 檔案共用備份的主要優點
 

@@ -4,15 +4,16 @@ description: 了解 Azure Reservations 和定價，以節省虛擬機器、SQL �
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
+ms.subservice: reservations
+ms.topic: overview
 ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 437344d1a0e3cc1178c21efb4bfa26f192d23e5c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760034"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682581"
 ---
 # <a name="what-are-azure-reservations"></a>什麼是 Azure 保留項目？
 
@@ -109,7 +110,6 @@ Azure 保留可提供彈性，以協助您滿足不斷演變的需求。 您可�
 - **Azure Red Hat OpenShift** - 保留適用於 OpenShift 成本，而不適用於 Azure 基礎結構成本。
 
 對於 Windows 虛擬機器和 SQL Database，保留折扣不適用於軟體成本。 您可以利用 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 來涵蓋授權成本。
-
 
 ## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 

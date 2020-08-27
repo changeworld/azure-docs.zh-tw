@@ -14,16 +14,16 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c96da30411705bf33b1c63f79a9beef11962a1
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a752eb8f38c5a2ccc88d7ceed3d3b342d20d3f51
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223817"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795311"
 ---
 # <a name="what-is-enterprise-user-management"></a>什麼是企業使用者管理？
 
-本文將在重要的使用者[身分識別管理](/azure/active-directory/fundamentals/identity-fundamentals?context=azure/active-directory/users-groups-roles/context/ugr-context)工作關係中 (就使用者的群組、授權、已部署企業應用程式及系統管理員角色而言)，引入 Azure AD 系統管理員。 隨著貴組織的成長，您可以使用 Azure AD 群組和系統管理員角色來：
+本文將在重要的使用者[身分識別管理](../fundamentals/active-directory-whatis.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)工作關係中 (就使用者的群組、授權、已部署企業應用程式及系統管理員角色而言)，引入 Azure AD 系統管理員。 隨著貴組織的成長，您可以使用 Azure AD 群組和系統管理員角色來：
 
 * 將授權指派給群組而非個人
 * 委派權限以將 Azure AD 管理工作分配給較低權限的角色
@@ -37,7 +37,7 @@ ms.locfileid: "86223817"
 
 ## <a name="assign-licenses-to-groups"></a>將授權指派給群組
 
-個別指派或移除使用者的授權需要時間和心力。 相反地，如果您[將授權指派給群組](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)，可以讓大規模授權管理更容易。
+個別指派或移除使用者的授權需要時間和心力。 相反地，如果您[將授權指派給群組](../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)，可以讓大規模授權管理更容易。
 
 在 Azure AD 中，當使用者加入授權的群組時，他們會自動獲派適當的授權。 當使用者離開群組時，Azure AD 會移除其授權指派。 如果沒有 Azure AD 群組，您就必須撰寫 PowerShell 指令碼或使用圖形 API，針對加入或離開組織的使用者大量新增或移除使用者授權。
 
@@ -60,7 +60,7 @@ ms.locfileid: "86223817"
 
 ## <a name="assign-app-access"></a>指派應用程式存取權
 
-您可以使用 Azure AD 將群組存取權指派給[部署在 Azure AD 組織中的企業應用程式](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)。 如果您將具有群組指派的動態群組合併至應用程式，您就可以在組織成長時，自動化使用者應用程式的存取權指派。 您需要 Azure Active Directory Premium P1 或 Premium P2 授權，才能將存取權指派給企業應用程式。
+您可以使用 Azure AD 將群組存取權指派給[部署在 Azure AD 組織中的企業應用程式](../manage-apps/assign-user-or-group-access-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)。 如果您將具有群組指派的動態群組合併至應用程式，您就可以在組織成長時，自動化使用者應用程式的存取權指派。 您需要 Azure Active Directory Premium P1 或 Premium P2 授權，才能將存取權指派給企業應用程式。
 
 Azure AD 也可讓您更精細地控制在應用程式與群組 (您對其指派存取權) 之間流動的資料。 在[企業應用程式](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)中，開啟應用程式，然後選取 [佈建] 來：
 
@@ -72,6 +72,6 @@ Azure AD 也可讓您更精細地控制在應用程式與群組 (您對其指派
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您剛開始成為 Azure AD 系統管理員，請在 [Azure Active Directory 基礎](https://docs.microsoft.com/azure/active-directory/fundamentals/index)中取得基本概念。
+如果您剛開始成為 Azure AD 系統管理員，請在 [Azure Active Directory 基礎](../fundamentals/index.yml)中取得基本概念。
 
-或者您可以開始[建立群組](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)、[指派授權](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)、[指派應用程式存取權](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)或[指派系統管理員角色](directory-assign-admin-roles.md)。
+或者您可以開始[建立群組](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)、[指派授權](../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)、[指派應用程式存取權](../manage-apps/assign-user-or-group-access-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)或[指派系統管理員角色](directory-assign-admin-roles.md)。

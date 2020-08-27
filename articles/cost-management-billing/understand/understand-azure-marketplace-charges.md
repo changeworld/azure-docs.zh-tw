@@ -1,20 +1,21 @@
 ---
-title: 了解您的 Azure 外部服務費用 | Microsoft Docs
+title: 了解您的 Azure 外部服務費用
 description: 了解 Azure 中外部服務 (先前稱為 Marketplace) 費用的計費方式。
 author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 08/20/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 120f60698851bcdaf39f989b4d36c0436b716833
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8da85ec5781ff9575cf380092fea9e41d6af8786
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117860"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686117"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>了解您的 Azure 外部服務費用
 外部服務是由 Azure Marketplace 中的第三方軟體廠商發佈。 比方說，SendGrid 是您可以在 Azure 中購買的外部服務，但不是由 Microsoft 所發佈。 有些 Microsoft 產品也會透過 Azure Marketplace 銷售。

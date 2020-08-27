@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d52384f04fd8a2a2bc3c42af713378ad15d01c42
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 3ec578370d32664e36ffcc4bd075c3f6a3ed68ab
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192701"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795354"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>什麼是 Azure Active Directory 的自助式註冊？
 
@@ -64,7 +64,7 @@ AllowEmailVerifiedUsers 和 AllowAdHocSubscriptions 是用於整個目錄的設�
 如需 Flow 和 PowerApps 試用版註冊的詳細資訊，請參閱下列文章：
 
 * [如何防止現有使用者開始使用 Power BI？](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
-* [組織中 Flow 的問與答](https://docs.microsoft.com/flow/organization-q-and-a)
+* [組織中 Flow 的問與答](/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>這些控制項如何一起運作？
 這兩個參數可合併使用，以定義更精確的自助式註冊控制項。 例如，下列命令可讓使用者執行自助式註冊，但僅限於在 Azure AD 中已有帳戶的使用者 (換句話說，需要建立電子郵件驗證帳戶的使用者無法先執行自助式註冊)：

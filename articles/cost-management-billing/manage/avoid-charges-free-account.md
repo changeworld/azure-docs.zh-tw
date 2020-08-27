@@ -4,15 +4,16 @@ description: 了解為什麼您看到 Azure 免費帳戶的費用。 了解如�
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 557e099b4250d5514920aa6c22399ce225f35d92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f81c33f3b49352933801c8b89a2c3a1787c2356a
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200943"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682904"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>避免 Azure 免費帳戶產生費用
 
@@ -23,7 +24,6 @@ ms.locfileid: "77200943"
 ## <a name="your-credit-runs-out-or-is-expired"></a>您的額度已用完或已到期
 
 如果點數用完或在 30 天結束時過期，您的訂用帳戶和服務就會停用。 若要繼續使用 Azure 服務，則必須將您的帳戶升級。 如需詳細資訊，請參閱[更新您的 Azure 免費帳戶](upgrade-azure-subscription.md)。 升級之後，您仍可存取 12 個月的免費服務，而只需對免費服務和數量以外的使用量付費。
-
 
 ## <a name="usage-exceeds-the-limits-of-free-services"></a>使用量超過免費服務的限額
 

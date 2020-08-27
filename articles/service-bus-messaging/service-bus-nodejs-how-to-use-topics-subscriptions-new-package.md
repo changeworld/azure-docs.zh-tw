@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: fafdf18a3593f7ec444e9970d99807cbfe0cb13d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: bbb0f530d95c78b8b5da178ee1544830ac3f7132
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080621"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660591"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>快速入門：如何透過 Node.js 和 azure/service-bus 套件使用服務匯流排主題和訂用帳戶
 在本教學課程中，您將了解如何撰寫 Node.js 程式，以使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 套件將訊息傳送至服務匯流排主題，以及接收來自服務匯流排訂用帳戶的訊息。 此套件使用較快速的 [AMQP 1.0 通訊協定](service-bus-amqp-overview.md)，而舊版的 [azure-sb](https://www.npmjs.com/package/azure-sb) 套件則使用[服務匯流排 REST 執行階段 API](/rest/api/servicebus/service-bus-runtime-rest)。 相關範例是以 JavaScript 撰寫的。
@@ -86,7 +86,7 @@ npm install @azure/service-bus
 與服務匯流排訂用帳戶的互動時，會先具現化 [ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient) 類別，並使用它來具現化 [SubscriptionClient](/javascript/api/@azure/service-bus/subscriptionclient) 類別。 擁有訂用帳戶用戶端之後，您即可建立接收者，並對其使用 [receiveMessages](/javascript/api/@azure/service-bus/receiver#receivemessages-number--undefined---number-) 或 [registerMessageHandler](/javascript/api/@azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) 方法來接收訊息。
 
 1. 開啟您慣用的編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/)
-2. 建立名為 `recieve.js` 的檔案，並在其中貼上下列程式碼。 此程式碼會嘗試從您的訂用帳戶接收 10 則訊息。 您實際收到的計數取決於訂用帳戶中的訊息數目和網路延遲。
+2. 建立名為 `receive.js` 的檔案，並在其中貼上下列程式碼。 此程式碼會嘗試從您的訂用帳戶接收 10 則訊息。 您實際收到的計數取決於訂用帳戶中的訊息數目和網路延遲。
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -117,7 +117,7 @@ npm install @azure/service-bus
     });
     ```
 3. 在上述程式碼中，輸入主題和訂用帳戶的連接字串和名稱。
-4. 然後，在命令提示字元中執行命令 `node receiveMessages.js`，以執行此檔案。
+4. 然後，在命令提示字元中執行命令 `node receive.js`，以執行此檔案。
 
 恭喜！ 您已從服務匯流排訂用帳戶接收訊息。
 
