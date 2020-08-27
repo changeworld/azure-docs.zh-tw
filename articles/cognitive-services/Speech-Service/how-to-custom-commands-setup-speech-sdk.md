@@ -1,7 +1,7 @@
 ---
 title: 使用語音 SDK 與用戶端應用程式整合
 titleSuffix: Azure Cognitive Services
-description: 如何從在 UWP 應用程式中執行的語音 SDK 對已發佈的自訂命令應用程式提出要求。
+description: 如何向在 UWP 應用程式中執行的語音 SDK 提出對已發佈自訂命令應用程式的要求。
 services: cognitive-services
 author: xiaojul
 manager: yetian
@@ -10,46 +10,47 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1d84646fcb6769b7489cc0e03085e95fc47ef56c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f3a8cafa907cb66832faf033f7b62e68bf859097
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027625"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918820"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用語音 SDK 與用戶端應用程式整合
 
-在本文中，您將瞭解如何從在 UWP 應用程式中執行的語音 SDK 對已發佈的自訂命令應用程式提出要求。 若要建立自訂命令應用程式的連接，您需要：
+在本文中，您將瞭解如何對在 UWP 應用程式中執行的語音 SDK 提出對已發佈自訂命令應用程式的要求。 為了建立自訂命令應用程式的連接，您需要：
 
-- 發行自訂命令應用程式，並取得應用程式識別碼（App ID）
-- 使用語音 SDK 建立通用 Windows 平臺（UWP）用戶端應用程式，以讓您與您的自訂命令應用程式交談
+- 發佈自訂命令應用程式，並取得應用程式識別碼 (應用程式識別碼) 
+- 使用語音 SDK 建立通用 Windows 平臺 (UWP) 用戶端應用程式，以讓您與您的自訂命令應用程式交談
 
 ## <a name="prerequisites"></a>必要條件
 
-必須要有自訂命令應用程式才能完成這篇文章。 如果您尚未建立自訂命令應用程式，您可以遵循快速入門：
+需要自訂命令應用程式才能完成這篇文章。 如果您尚未建立自訂命令應用程式，可以遵循快速入門：
 > [!div class = "checklist"]
 > * [建立自訂命令應用程式](quickstart-custom-commands-application.md)
 
 您也需要：
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)或更高版本。 本指南是以 Visual Studio 2019 為基礎。
-> * 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個](get-started.md)或在[Azure 入口網站](https://portal.azure.com)上建立
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 或更高版本。 本指南是根據 Visual Studio 2019。
+> * 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個](get-started.md)，或在[Azure 入口網站](https://portal.azure.com)上建立一個
 > * [啟用您的裝置以進行開發](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
-## <a name="step-1-publish-custom-commands-application"></a>步驟1：發行自訂命令應用程式
+## <a name="step-1-publish-custom-commands-application"></a>步驟1：發佈自訂命令應用程式
 
 1. 開啟您先前建立的自訂命令應用程式
 1. 移至 [**設定**]，選取 [ **LUIS 資源**]
-1. 如果未指派**預測資源**，請選取查詢預測金鑰，或建立一個新的
+1. 如果未指派 **預測資源** ，請選取查詢預測金鑰，或建立一個新的
 
-    在發行應用程式之前，一律需要查詢預測金鑰。 如需 LUIS 資源的詳細資訊，請參閱[建立 LUIS 資源](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription)
+    在發行應用程式之前，一律需要查詢預測金鑰。 如需 LUIS 資源的詳細資訊，請參閱 [建立 LUIS 資源](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription)
 
-1. 返回 [編輯] 命令，選取 [**發佈**]
+1. 返回若要編輯命令，請選取 [**發行**]
 
    > [!div class="mx-imgBorder"]
    > ![發佈應用程式](media/custom-commands/setup-speech-sdk-publish-application.png)
 
-1. 複製發佈通知中的 [應用程式識別碼] 以供稍後使用
+1. 從發佈通知中複製應用程式識別碼以供稍後使用
 1. 複製語音資源金鑰以供稍後使用
 
 ## <a name="step-2-create-a-visual-studio-project"></a>步驟2：建立 Visual Studio 專案
@@ -58,13 +59,13 @@ ms.locfileid: "86027625"
 
 ## <a name="step-3-add-sample-code"></a>步驟3：新增範例程式碼
 
-在此步驟中，我們會新增 XAML 程式碼來定義應用程式的使用者介面，並新增 c # 程式碼後置的執行。
+在此步驟中，我們會新增定義應用程式使用者介面的 XAML 程式碼，並加入 c # 程式碼後端執行。
 
 ### <a name="xaml-code"></a>XAML 程式碼
 
 藉由新增 XAML 程式碼來建立應用程式的使用者介面。
 
-1. 在**方案總管**中，開啟`MainPage.xaml`
+1. 在 **方案總管**中，開啟 `MainPage.xaml`
 
 1. 在設計工具的 XAML 檢視中，以下列程式碼片段取代整個內容：
 
@@ -117,20 +118,20 @@ ms.locfileid: "86027625"
 
 ### <a name="c-code-behind-source"></a>C# 程式碼後置來源
 
-加入程式碼後置來源，讓應用程式如預期般運作。 開啟程式碼後置來源：
+新增程式碼後端來源，讓應用程式如預期般運作。 開啟程式碼後置來源：
 
-- `using` `Speech` 和命名空間的必要 `Speech.Dialog` 語句
+- `using` `Speech` 和 `Speech.Dialog` 命名空間的必要語句
 - 進行簡單的實作，確認麥克風存取正常並連線至按鈕處理常式
 - 應用程式中的基本 UI 協助程式會顯示訊息及錯誤
 - 初始程式碼路徑登陸點，稍後會填入資訊
 - 協助程式會播放文字轉換語音資訊 (無需串流支援)
 - 稍後會填入即將開始接聽的空白按鈕處理常式
 
-新增程式碼後置來源，如下所示：
+新增程式碼後端來源，如下所示：
 
-1. 在 [**方案總管**] 中，開啟程式碼後置原始程式檔 `MainPage.xaml.cs` （在下分組 `MainPage.xaml` ）
+1. 在 **方案總管**中，開啟程式碼後端原始程式檔 `MainPage.xaml.cs` (分組 `MainPage.xaml`) 
 
-1. 將檔案的內容取代為下列程式碼： 
+1. 以下列程式碼取代檔案的內容： 
 
    ```csharp
    using Microsoft.CognitiveServices.Speech;
@@ -297,12 +298,12 @@ ms.locfileid: "86027625"
    }
    ```
     > [!NOTE]
-    > 如果您看到錯誤：「類型 ' 物件 ' 定義在未參考的元件中」
-    > 1. 以滑鼠右鍵用戶端您的解決方案。
+    > 如果您看到錯誤：「類型 ' Object ' 定義在未參考的元件中」
+    > 1. 將您的解決方案向右用戶端。
     > 1. 選擇 [**管理解決方案的 NuGet 套件**]，選取 [**更新**] 
-    > 1. 如果您在更新清單中看到**NETCore microsoft.netcore.universalwindowsplatform** ，請將**NETCore**更新為最新版本
+    > 1. 如果您在更新清單中看到 **NETCore** ，請將 **NETCore. microsoft.netcore.universalwindowsplatform** 更新為最新版本
 
-1. 將下列程式碼新增至的方法主體`InitializeDialogServiceConnector`
+1. 將下列程式碼新增至的方法主體 `InitializeDialogServiceConnector`
 
    ```csharp
    // This code creates the `DialogServiceConnector` with your subscription information.
@@ -317,9 +318,9 @@ ms.locfileid: "86027625"
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```
 
-1. 以您 `YourApplicationId` `YourSpeechSubscriptionKey` `YourServiceRegion` 自己的應用程式、語音訂用帳戶和[區域](regions.md)的值取代字串、和
+1. 以您 `YourApplicationId` `YourSpeechSubscriptionKey` `YourServiceRegion` 自己的應用程式、語音訂用帳戶和[區域](regions.md)值取代字串、和
 
-1. 將下列程式碼片段附加至的方法主體結尾`InitializeDialogServiceConnector`
+1. 將下列程式碼片段附加至的方法主體結尾。 `InitializeDialogServiceConnector`
 
    ```csharp
    //
@@ -377,7 +378,7 @@ ms.locfileid: "86027625"
    };
    ```
 
-1. 將下列程式碼片段新增至 `ListenButton_ButtonClicked` 類別中方法的主體。 `MainPage`
+1. 將下列程式碼片段新增至 `ListenButton_ButtonClicked` 類別中的方法主體 `MainPage`
 
    ```csharp
    // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
@@ -401,7 +402,7 @@ ms.locfileid: "86027625"
    }
    ```
 
-1. 從功能表列中 **，選擇 [** 檔案] [  >  **全部儲存**] 以儲存您的變更
+1. 從功能表列中 **，選擇 [**  >  **全部儲存**] 以儲存您的變更
 
 ## <a name="try-it-out"></a>試試看
 
@@ -415,9 +416,9 @@ ms.locfileid: "86027625"
 
    ![麥克風存取權限要求](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. 選取 [**說話**]，並在裝置的麥克風中說出英文片語或句子。 您的語音會傳送到 Direct Line Speech 頻道並轉譯為文字，該文字會出現在視窗中。
+1. 選取 [ **交談**]，並在裝置的麥克風中說出英文片語或句子。 您的語音會傳送到 Direct Line Speech 頻道並轉譯為文字，該文字會出現在視窗中。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [如何：將活動傳送至用戶端應用程式（預覽）](./how-to-custom-commands-send-activity-to-client.md)
+> [How to：將活動傳送至用戶端應用程式 (預覽版) ](./how-to-custom-commands-send-activity-to-client.md)

@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 08/14/2020
+ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: c73e09e241baff7c4719acfd4257f537e27b010a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 6fb613578e520f50701c9a09169f2d78c0c08c4f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236182"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723991"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建立和設定應用程式閘道以裝載多個網站
 
@@ -78,7 +78,7 @@ ms.locfileid: "88236182"
 
 2. 針對 [公用 IP 位址]  選擇 [新建]  ，然後針對公用 IP 位址名稱輸入 *myAGPublicIPAddress*，然後選取 [確定]  。 
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="建立 VNet":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="建立另一個 VNet":::
 
 3. 完成時，選取 [下一步:  後端]。
 
@@ -156,14 +156,14 @@ ms.locfileid: "88236182"
 
     - **資源群組**：選取 **myResourceGroupAG** 作為資源群組名稱。
     - **虛擬機器名稱**：輸入 *contosoVM* 作為虛擬機器的名稱。
-    - **使用者名稱**：輸入 azureuser  作為系統管理員使用者名稱。
-    - **密碼**：輸入Azure123456! 作為系統管理員密碼。
-4. 接受其他預設值，然後選取 [下一步：  磁碟]。  
-5. 接受 [磁碟]  索引標籤的預設值，然後選取 [下一步：  網路功能]。
-6. 在 [網路]  索引標籤上，確認已選取 [myVNet]  作為[虛擬網路]  ，且 [子網路]  設為 [myBackendSubnet]  。 接受其他預設值，然後選取 [下一步：  管理]。<br>「應用程式閘道」可與其虛擬網路外的執行個體進行通訊，但您需要確保具有 IP 連線能力。
-7. 在 [管理]  索引標籤上，將 [開機診斷]  設為 [關閉]  。 接受其他預設值，然後選取 [檢閱 + 建立]  。
-8. 在 [檢閱 + 建立]  索引標籤上檢閱設定，並更正任何驗證錯誤，然後選取 [建立]  。
-9. 請等候虛擬機器建立完成，再繼續操作。
+    - **使用者名稱**：輸入管理員使用者的名稱。
+    - **密碼**：輸入管理員的密碼。
+1. 接受其他預設值，然後選取 [下一步：  磁碟]。  
+2. 接受 [磁碟]  索引標籤的預設值，然後選取 [下一步：  網路功能]。
+3. 在 [網路]  索引標籤上，確認已選取 [myVNet]  作為[虛擬網路]  ，且 [子網路]  設為 [myBackendSubnet]  。 接受其他預設值，然後選取 [下一步：  管理]。<br>「應用程式閘道」可與其虛擬網路外的執行個體進行通訊，但您需要確保具有 IP 連線能力。
+4. 在 [管理]  索引標籤上，將 [開機診斷]  設為 [關閉]  。 接受其他預設值，然後選取 [檢閱 + 建立]  。
+5. 在 [檢閱 + 建立]  索引標籤上檢閱設定，並更正任何驗證錯誤，然後選取 [建立]  。
+6. 請等候虛擬機器建立完成，再繼續操作。
 
 ### <a name="install-iis-for-testing"></a>安裝 IIS 進行測試
 
@@ -173,7 +173,7 @@ ms.locfileid: "88236182"
 
     ![安裝自訂延伸模組](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
-2. 執行下列命令以在虛擬機器上安裝 IIS： 
+2. 執行下列命令以在虛擬機器上安裝 IIS，並以您的資源群組區域取代 <位置\>： 
 
     ```azurepowershell-interactive
     Set-AzVMExtension `
@@ -184,7 +184,7 @@ ms.locfileid: "88236182"
       -ExtensionType CustomScriptExtension `
       -TypeHandlerVersion 1.4 `
       -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
-      -Location EastUS
+      -Location <location>
     ```
 
 3. 使用您先前完成的步驟，建立第二個虛擬機器並安裝 IIS。 請使用 *fabrikamVM* 作為虛擬機器名稱，並作為 **Set-AzVMExtension** Cmdlet 的 **VMName** 設定。

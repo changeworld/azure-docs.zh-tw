@@ -4,15 +4,16 @@ description: 了解如何在訂閱者與 CSP 之間轉移 Azure 訂用帳戶。
 author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 7db0a5bd4697c99c071d685903dfc394c2b49f25
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ffb72b4b06b8925cae57989a171d7efbd88c3866
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835794"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686600"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在訂閱者與 CSP 之間轉移 Azure 訂用帳戶
 
