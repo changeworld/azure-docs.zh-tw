@@ -7,15 +7,16 @@ author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
-ms.openlocfilehash: 7522df94a0055af398f1fdbf2050e132f5519eb5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 397239f92e3b07669a22481b07a67d9859176b7a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092689"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932333"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>在 Azure 雲端服務中啟用 Azure 診斷
 如需有關 Azure 診斷的背景資訊，請參閱 [Azure 診斷概觀](../azure-diagnostics.md) 。
@@ -139,7 +140,7 @@ namespace WorkerRole1
 2. 以滑鼠右鍵按一下 **WorkerRole1** 專案，然後選取 [新增]**** ->  [新增項目]****，將 XML 檔新增至您的 **WorkerRole1** 專案 -> **Visual c # 專案**  -> **資料**  -> **XML**檔案。 將檔案命名為 "WadExample.xml"。
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
-3. 將 WadConfig.xsd 與組態檔產生關聯。 確定 WadExample.xml 編輯器視窗是使用中視窗。 按**F4**開啟 [**屬性**] 視窗。 在 [屬性]**** 視窗中，按一下 [結構描述]**** 屬性。 按一下 [ **...** ] 在 [結構描述]**** 屬性中。 按一下 [**新增 ...** ] 按鈕並瀏覽至您儲存 XSD 檔的位置，然後選取檔案 WadConfig.xsd。 按一下 [確定]  。
+3. 將 WadConfig.xsd 與組態檔產生關聯。 確定 WadExample.xml 編輯器視窗是使用中視窗。 按 **F4** 開啟 [ **屬性** ] 視窗。 在 [屬性]**** 視窗中，按一下 [結構描述]**** 屬性。 按一下 [ **...** ] 在 [結構描述]**** 屬性中。 按一下 [**新增 ...** ] 按鈕並瀏覽至您儲存 XSD 檔的位置，然後選取檔案 WadConfig.xsd。 按一下 [確定]。
 
 4. 以下列 XML 取代 WadExample.xml 組態檔的內容，然後儲存檔案。 此組態檔可定義兩個要收集的效能計數器：一個用於 CPU 使用率，一個用於記憶體使用率。 組態會接著定義四個事件，分別對應至 SampleEventSourceWriter 類別中的方法。
 

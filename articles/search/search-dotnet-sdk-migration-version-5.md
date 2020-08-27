@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 81159b1d19c4c5d46b223158df3ba2c81665c7d7
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ade326b7dda19478398de4ec3ab2be8996d98535
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171902"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923206"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>升級至 Azure 搜尋服務 .NET SDK 第5版
 
-如果您使用4.0 預覽版或更舊版本的[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文將協助您將應用程式升級為使用第5版。
+如果您使用的是 4.0-preview 版或更舊版本的 [.NET SDK](/dotnet/api/overview/azure/search)，本文將協助您將應用程式升級為使用第5版。
 
 如需包括範例的 SDK 一般逐步解說，請參閱 [如何從 .NET 應用程式使用 Azure 搜尋服務](search-howto-dotnet-sdk.md)。
 
@@ -35,7 +35,7 @@ Azure 搜尋服務 .NET SDK 第 5 版包含了一些舊版所做的變更。 這
 Azure 搜尋服務 .NET SDK 第 5 版以最新推出的 Azure 搜尋服務 REST API 版本為目標，也就是 2017-11-11。 這可讓您從 .NET 應用程式中使用 Azure 搜尋服務的新功能，包括：
 
 * [同義字](search-synonyms.md)。
-* 您現在可以透過程式設計方式來存取索引子執行歷程記錄中的警告 (請參閱 [.NET 參考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)中 `IndexerExecutionResult` 的 `Warning` 屬性，以了解詳細資料)。
+* 您現在可以透過程式設計方式來存取索引子執行歷程記錄中的警告 (請參閱 [.NET 參考](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)中 `IndexerExecutionResult` 的 `Warning` 屬性，以了解詳細資料)。
 * .NET Core 2 的支援。
 * 新的套件結構支援只使用所需的 SDK 組件 (請參閱[第 5 版的中斷性變更](#ListOfChanges)，以了解詳細資料)。
 
@@ -100,6 +100,6 @@ The name 'SuggesterSearchMode' does not exist in the current context
 ## <a name="conclusion"></a>結論
 如需更多有關使用 Azure 搜尋服務 .NET SDK 的詳細資料，請參閱 [.NET 做法](search-howto-dotnet-sdk.md)。
 
-歡迎您提供 SDK 的意見反應。 如果您遇到問題，歡迎詢問我們[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)的協助。 如果您發現錯誤，您可以在 [Azure .NET SDK GitHub 儲存機制](https://github.com/Azure/azure-sdk-for-net/issues)中提出問題。 請務必在問題的標題前面加上「[Azure 搜尋服務]」前置詞。
+歡迎您提供 SDK 的意見反應。 如果您遇到問題，歡迎您尋求 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)的協助。 如果您發現錯誤，您可以在 [Azure .NET SDK GitHub 儲存機制](https://github.com/Azure/azure-sdk-for-net/issues)中提出問題。 請務必在問題的標題前面加上「[Azure 搜尋服務]」前置詞。
 
 感謝您使用 Azure 搜尋服務！
