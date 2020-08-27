@@ -1,6 +1,6 @@
 ---
-title: Node.js 最佳做法和疑難排解
-description: 瞭解在 Azure App Service 中執行之 Node.js 應用程式的最佳作法和疑難排解步驟。
+title: Node.js 最佳作法和疑難排解
+description: 瞭解 Node.js 在 Azure App Service 中執行之應用程式的最佳作法和疑難排解步驟。
 author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3fd9a013eb3318abc48745e163d9ee0118b52b1d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077470"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961885"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 上節點應用程式的最佳作法和疑難排解指南
 
-在本文中，您將瞭解使用[iisnode](https://github.com/azure/iisnode)) 在 Azure App Service (上執行之[Windows Node.js 應用程式](quickstart-nodejs.md?pivots=platform-windows)的最佳作法和疑難排解步驟。
+在本文中，您將瞭解使用[iisnode](https://github.com/azure/iisnode)) Azure App Service (上執行的[Windows Node.js 應用程式](quickstart-nodejs.md?pivots=platform-windows)的最佳作法和疑難排解步驟。
 
 > [!WARNING]
 > 請小心在您的生產網站上使用疑難排解步驟。 建議在非生產安裝 (例如您的預備位置) 上對應用程式進行疑難排解，而當問題修正後，請切換您的預備位置與生產位置。
@@ -123,7 +123,7 @@ IIS 的預設行為是在排清之前或直到回應結束時 (取決於何者�
 
 agentkeepalive 模組可確保通訊端會在您的 Azure webapp VM 上重複使用。 在每一個輸出要求上建立新通訊端會增加應用程式的負擔。 讓應用程式重複使用輸出要求的通訊端，可確保您的應用程式不會超過每個 VM 配置的 maxSockets。 對於 Azure App Service 的建議是將 agentKeepAlive maxSockets 值設為每個 VM 總計有 160 個通訊端 (4 個 node.exe 執行個體 \* 40 個 maxSockets/執行個體)。
 
-範例[agentKeepALive](https://www.npmjs.com/package/agentkeepalive)設定：
+範例 [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) 設定：
 
 ```nodejs
 let keepaliveAgent = new Agent({
@@ -170,7 +170,7 @@ http.createServer(function (req, res) {
 
 進入 site/wwwroot 目錄。 您會看到如下列範例所示的命令提示字元：
 
-![顯示網站/wwwroot 目錄和命令提示字元的螢幕擷取畫面。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
+![顯示您的網站/wwwroot 目錄和命令提示字元的螢幕擷取畫面。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
 執行命令 `npm install v8-profiler`。
 
@@ -203,11 +203,11 @@ http.createServer(function (req, res) {
 
 上述程式碼會剖析 WriteConsoleLog 函式，然後將設定檔輸出寫入至您的網站 wwwroot 下的 'profile.cpuprofile' 檔案。 將要求傳送至您的應用程式。 您會在您的網站 wwwroot 下看到建立的 'profile.cpuprofile' 檔案。
 
-![顯示 profile.cpuprofile 檔案的螢幕擷取畫面。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
+![顯示設定檔 profile.cpuprofile 檔案的螢幕擷取畫面。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-下載此檔案，並使用 Chrome F12 工具開啟檔案。 在 Chrome 上按 F12，然後選擇 [**設定檔**] 索引標籤。選擇 [**載入**] 按鈕。 選取您下載的 profile.cpuprofile 檔案。 按一下您剛下載的設定檔
+下載此檔案，並使用 Chrome F12 工具開啟檔案。 在 Chrome 上按 F12，然後選擇 [ **設定檔** ] 索引標籤。選擇 [ **載入** ] 按鈕。 選取您下載的 profile.cpuprofile 檔案。 按一下您剛下載的設定檔
 
-![螢幕擷取畫面：顯示您載入的 profile.cpuprofile 檔案。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
+![顯示您所載入之設定檔 profile.cpuprofile 檔案的螢幕擷取畫面。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
 您會看到 WriteConsoleLog 函式已耗用 95%的時間。 輸出也會顯示造成此問題的確切行號和來源檔案。
 
@@ -274,8 +274,8 @@ NODE.exe 具有稱為 `NODE_PENDING_PIPE_INSTANCES` 的設定。 在 Azure App S
 請遵循下列連結以深入了解 Azure App Service 上的 node.js 應用程式。
 
 * [在 Azure App Service 中開始使用 Node.js Web 應用程式](quickstart-nodejs.md)
-* [如何在 Azure App Service 中偵錯 Node.js Web 應用程式](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
+* [如何在 Azure App Service 中偵錯 Node.js Web 應用程式](/archive/blogs/azureossds/debugging-node-js-apps-on-azure-app-services)
 * [使用 Node.js 模組與 Azure 應用程式搭配](../nodejs-use-node-modules-azure-apps.md)
-* [Azure App Service Web Apps：Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Azure App Service Web Apps：Node.js](/archive/blogs/silverlining/windows-azure-websites-node-js)
 * [Node.js 開發人員中心](../nodejs-use-node-modules-azure-apps.md)
 * [探索神秘無比的 Kudu 偵錯主控台](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

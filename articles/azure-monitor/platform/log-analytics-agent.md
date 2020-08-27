@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2020
-ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e1fa2fe11873d08fae5add1ee3206f6f887975eb
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121522"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88960912"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理程式概觀
 開發 Azure Log Analytics 代理程式是為了能夠全面管理任何雲端中的虛擬機器、內部部署機器，以及 [System Center Operations Manager](/system-center/scom/) 所監視的機器。 Windows 和 Linux 代理程式會將從不同來源收集而來的資料傳送至 Azure 監視器中的 Log Analytics 工作區，以及監視解決方案中所定義的任何唯一記錄或計量。 Log Analytics 代理程式也支援 Azure 監視器中的深入解析和其他服務，例如[適用於 VM 的 Azure 監視器](../insights/vminsights-enable-overview.md)、[Azure 資訊安全中心](../../security-center/index.yml)和 [Azure 自動化](../../automation/automation-intro.md)。
@@ -116,21 +116,21 @@ Windows 代理程式正式支援下列 Windows 作業系統版本：
 
 
 ### <a name="python-2-requirement"></a>Python 2 需求
- Log Analytics 代理程式需要 Python 2。 如果您的虛擬機器使用預設不包含 Python 2 的散發版本，則您必須安裝它。 下列範例命令會在不同的散發版本上安裝 Python 2。
+ Log Analytics 代理程式需要 Python 2。 如果您的虛擬機器預設使用未包含 Python 2 的發行版本，則您必須安裝它。 下列範例命令會在不同的散發版本上安裝 Python 2。
 
- - Red Hat、CentOS、Oracle：`yum install -y python2`
- - Ubuntu、Debian：`apt-get install -y python2`
+ - Red Hat、CentOS、Oracle： `yum install -y python2`
+ - Ubuntu、Debian： `apt-get install -y python2`
  - SUSE：`zypper install -y python2`
 
-使用下列程式，python2 可執行檔必須以*python*的別名：
+您必須使用下列程式，將 python2 可執行檔的別名設為 *python* ：
 
-1. 執行下列命令，以查看任何目前的 python 別名（如果有的話）。 如果有，請記下下一個步驟的優先順序。
+1. 執行下列命令來查看任何目前的 python 別名（如果有的話）。 如果有的話，請記下下一個步驟的優先順序。
  
     ```
     sudo update-alternatives ––display python
     ```
 
-2. 執行下列命令。 取代 *\<priority\>* 為大於任何現有連結優先順序的數位，如果目前沒有任何連結存在，則為1。
+2. 執行下列命令。 取代為 *\<priority\>* 大於任何現有連結優先順序的數位，如果目前沒有連結，則取代為1。
 
     ```
     sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 <priority>
@@ -174,7 +174,7 @@ Linux 代理程式正式支援下列 Linux 作業系統版本：
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>Windows 的 SHA-2 程式碼簽署支援需求
-Windows 代理程式將在2020年11月2日開始以獨佔方式使用 SHA-1 簽署。 這項變更會影響在舊版 OS 上以任何 Azure 服務 (Azure 監視器、Azure 自動化、Azure 更新管理、Azure 變更追蹤、Azure 資訊安全中心、Azure Sentinel、Windows Defender ATP) 的形式來使用 Log Analytics 代理程式的客戶。 除非客戶在舊版 OS (Windows 7、Windows Server 2008 R2 和 Windows Server 2008) 上執行代理程式，否則此變更不需要其採取任何動作。 在2020年11月2日之前，在舊版作業系統上執行的客戶必須在其電腦上採取下列動作，否則其代理程式將會停止將資料傳送到其 Log Analytics 工作區：
+Windows 代理程式將在2020年11月2日開始專門使用 SHA-1 簽署。 這項變更會影響在舊版 OS 上以任何 Azure 服務 (Azure 監視器、Azure 自動化、Azure 更新管理、Azure 變更追蹤、Azure 資訊安全中心、Azure Sentinel、Windows Defender ATP) 的形式來使用 Log Analytics 代理程式的客戶。 除非客戶在舊版 OS (Windows 7、Windows Server 2008 R2 和 Windows Server 2008) 上執行代理程式，否則此變更不需要其採取任何動作。 在舊版作業系統上執行的客戶，必須在2020年11月2日之前對其電腦採取下列動作，否則其代理程式將會停止將資料傳送到其 Log Analytics 工作區：
 
 1. 安裝適用於 OS 的最新 Service Pack。 所需的 Service Pack 版本如下：
     - Windows 7 SP1
@@ -213,9 +213,6 @@ Windows 和 Linux 代理程式支援使用 HTTPS 通訊協定，透過 Proxy 伺
 若是 Linux 代理程式，請在安裝期間或[安裝後](agent-manage.md#update-proxy-settings)透過修改 proxy.conf 設定檔來指定 Proxy 伺服器。  Linux 代理程式 Proxy 設定值的語法如下：
 
 `[protocol://][user:password@]proxyhost[:port]`
-
-> [!NOTE]
-> 若您的 Proxy 伺服器不要求您進行驗證，Linux 代理程式仍會要求提供虛擬使用者/密碼。 這可以是任何使用者名稱或密碼。
 
 |屬性| 描述 |
 |--------|-------------|

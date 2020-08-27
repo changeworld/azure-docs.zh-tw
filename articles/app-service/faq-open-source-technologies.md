@@ -1,6 +1,6 @@
 ---
 title: 開放原始碼技術常見問題
-description: 取得 Azure App Service 中開放原始碼技術常見問題的解答。
+description: 取得 Azure App Service 中的開放原始碼技術相關常見問題的解答。
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 89c317e6623a868fd75b09274c726720e726e470
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 512776f2498a88f1fda9b5e7f0e2db0ddd32b955
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848633"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962323"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure 中的 Web Apps 相關開放原始碼技術常見問題集
 
@@ -26,15 +26,15 @@ ms.locfileid: "87848633"
 
 若要開啟 PHP 記錄：
 
-1.  () 登入您的**Kudu 網站** `https://*yourwebsitename*.scm.azurewebsites.net` 。
-2. 在頂端功能表中，選取 [**偵錯主控台**  >  **CMD**]。
+1. 登入您的 **Kudu 網站** (`https://*yourwebsitename*.scm.azurewebsites.net`) 。
+2. 在上方功能表中，選取**偵錯主控台**  >  **CMD**]。
 3. 選取 [網站]**** 資料夾。
 4. 選取 [wwwroot]**** 資料夾。
-5. 選取 **+** 圖示，然後選取 [**新增**檔案]。
+5. 選取 **+** 圖示，然後選取 [ **新增**檔案]。
 6. 將檔案名稱設定為 **.user.ini**。
 7. 選取 **.user.ini** 旁邊的鉛筆圖示。
 8. 在檔案中，新增下列程式碼：`log_errors=on`
-9. 選取 [儲存]。
+9. 選取 [儲存]  。
 10. 選取 **wp-config.php** 旁邊的鉛筆圖示。
 11. 將文字變更為下列程式碼：
     ```php
@@ -43,7 +43,7 @@ ms.locfileid: "87848633"
     ```
 12. 在 Azure 入口網站的 Web 應用程式功能表中，重新啟動 Web 應用程式。
 
-如需詳細資訊，請參閱[啟用 WordPress 錯誤記錄](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/) (英文)。
+如需詳細資訊，請參閱[啟用 WordPress 錯誤記錄](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2) (英文)。
 
 ## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>如何在 App Service 內裝載的應用程式中記錄 Python 應用程式錯誤？
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
@@ -56,7 +56,7 @@ ms.locfileid: "87848633"
   1. 在 Azure 入口網站中，移至您的 Web 應用程式。
   2. 在 [設定]**** 刀鋒視窗上，選取 [應用程式設定]****。
   3. 在 [應用程式設定]**** 中，您可以包含 WEBSITE_NODE_DEFAULT_VERSION 做為索引鍵，並包含所需的 Node.js 版本做為值。
-  4. 移至您的**Kudu 主控台** (`https://*yourwebsitename*.scm.azurewebsites.net`) ]。
+  4. 移至您的 **Kudu 主控台** (`https://*yourwebsitename*.scm.azurewebsites.net`) 。
   5. 若要檢查 Node.js 版本，請輸入下列命令：  
      ```
      node -v
@@ -80,7 +80,7 @@ ms.locfileid: "87848633"
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>在 App Service 裝載的 WordPress 應用程式中，顯示「建立資料庫連接時發生錯誤」訊息。 我該如何進行疑難排解？
 
-如果您在 Azure WordPress 應用程式中看到這個錯誤，而要啟用 php_errors.log 和 debug.log，請完成[啟用 WordPress 錯誤記錄](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/) (英文) 中詳述的步驟。
+如果您在 Azure WordPress 應用程式中看到這個錯誤，而要啟用 php_errors.log 和 debug.log，請完成[啟用 WordPress 錯誤記錄](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2) (英文) 中詳述的步驟。
 
 在記錄已啟用時重現錯誤，然後檢查記錄查看是否即將用盡連線：
 ```
@@ -91,17 +91,17 @@ ms.locfileid: "87848633"
 
 ## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>如何對於 App Service 中裝載的 Node.js 應用程式進行偵錯？
 
-1.  移至您的**Kudu 主控台** (`https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole`) ]。
+1.  移至您的 **Kudu 主控台** (`https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole`) 。
 2.  移至應用程式記錄資料夾 (D:\home\LogFiles\Application)。
 3.  在 Logging_errors.txt 檔案中檢查內容。
 
 ## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>如何在 App Service Web 應用程式或 API 應用程式中安裝原生 Python 模組？
 
-某些封裝可能不會使用 Azure 中的 pip 進行安裝。 封裝可能並未出現在 Python 封裝索引，或可能必須使用編譯器 (執行 App Service Web 應用程式的電腦沒有編譯器可用)。 如需在 App Service Web 應用程式及 API 應用程式中安裝原生模組的相關資訊，請參閱[在 App Service 中安裝 Python 模組](https://blogs.msdn.microsoft.com/azureossds/2015/06/29/install-native-python-modules-on-azure-web-apps-api-apps/) (英文)。
+某些封裝可能不會使用 Azure 中的 pip 進行安裝。 封裝可能並未出現在 Python 封裝索引，或可能必須使用編譯器 (執行 App Service Web 應用程式的電腦沒有編譯器可用)。 如需在 App Service Web 應用程式及 API 應用程式中安裝原生模組的相關資訊，請參閱[在 App Service 中安裝 Python 模組](/archive/blogs/azureossds/install-native-python-modules-on-azure-web-apps-api-apps) (英文)。
 
 ## <a name="how-do-i-deploy-a-django-app-to-app-service-by-using-git-and-the-new-version-of-python"></a>如何使用 Git 和新版 Python 將 Django 應用程式部署到 App Service？
 
-如需安裝 Django 的相關資訊，請參閱[將 Django 應用程式部署至 App Service](https://blogs.msdn.microsoft.com/azureossds/2016/08/25/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python/) (英文)。
+如需安裝 Django 的相關資訊，請參閱[將 Django 應用程式部署至 App Service](/archive/blogs/azureossds/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python) (英文)。
 
 ## <a name="where-are-the-tomcat-log-files-located"></a>Tomcat 記錄檔位於何處？
 
@@ -138,7 +138,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 
 1. 從 app/lib 資料夾移除 sqljdbc*.jar 檔案。
 2. 如果您使用自訂的 Tomcat 或 Azure Marketplace Tomcat Web 伺服器，請將此 .jar 檔案複製到 Tomcat lib 資料夾。
-3. 如果您要從 Azure 入口網站啟用 java (選取 [ **java 1.8**  >  **Tomcat 伺服器**) ]，請複製與您的應用程式平行的資料夾中的 sqljdbc.jar. * jar 檔案。 然後，將下列 classpath 設定新增到 web.config 檔案：
+3. 如果您要從 Azure 入口網站啟用 java (選取 [ **java 1.8**  >  **Tomcat 伺服器**) ]，將 >sqljdbc.jar. * jar 檔案複製到與您的應用程式平行的資料夾中。 然後，將下列 classpath 設定新增到 web.config 檔案：
 
     ```xml
     <httpPlatform>
@@ -171,7 +171,7 @@ The process cannot access the file because it is being used by another process.
 
 對於 Marketplace 和自訂部署，記錄位於 D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs 資料夾。 請注意，資料夾位置取決於您使用的 Jetty 版本。 例如，此處提供的路徑是 Jetty 9.1.2 的路徑。 尋找 jetty_*YYYY_MM_DD*.stderrout.log。
 
-對於入口網站應用程式設定部署，記錄檔位於 D:\home\LogFiles。 尋找 jetty_ 的*YYYY_MM_DD*. .stderrout.log .log
+對於入口網站應用程式設定部署，記錄檔位於 D:\home\LogFiles。 尋找 jetty_*YYYY_MM_DD*>.stderrout.log。
 
 ## <a name="can-i-send-email-from-my-azure-web-app"></a>我能否從 Azure Web 應用程式傳送電子郵件？
 
@@ -183,7 +183,7 @@ App Service 沒有內建的電子郵件功能。 如需從應用程式傳送電�
 
 WordPress Buddy+ 是 Azure 網站擴充功能，可讓您直接在資料庫中更新重新導向 URL。 如需使用 WordPress Buddy+ 的詳細資訊，請參閱 [WordPress 工具以及使用 WordPress Buddy+ 進行 MySQL 移轉](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) (英文)。
 
-或者，如果您想要使用 SQL 查詢或 PHPMyAdmin 手動更新重新導向 URL，請參閱 [WordPress：重新導向至錯誤的 URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/) (英文)。
+或者，如果您想要使用 SQL 查詢或 PHPMyAdmin 手動更新重新導向 URL，請參閱 [WordPress：重新導向至錯誤的 URL](/archive/blogs/azureossds/wordpress-redirecting-to-wrong-url) (英文)。
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>如何變更我的 WordPress 登入密碼？
 
@@ -197,12 +197,12 @@ WordPress Buddy+ 是 Azure 網站擴充功能，可讓您直接在資料庫中�
 
 對於移轉連線到 WordPress 網站的 MySQL 資料庫，您有多個選項：
 
-* 開發人員：使用[命令提示字元或 PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
+* 開發人員：使用[命令提示字元或 PHPMyAdmin](/archive/blogs/azureossds/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service)
 * 非開發人員：使用 [WordPress Buddy+](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>如何使 WordPress 更安全？
 
-若要了解 WordPress 的安全性最佳做法，請參閱 [Azure 的 WordPress 安全性最佳做法](https://blogs.msdn.microsoft.com/azureossds/2016/12/26/best-practices-for-wordpress-security-on-azure/) (英文)。
+若要了解 WordPress 的安全性最佳做法，請參閱 [Azure 的 WordPress 安全性最佳做法](/archive/blogs/azureossds/best-practices-for-wordpress-security-on-azure) (英文)。
 
 ## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>我嘗試使用 PHPMyAdmin，但顯示「拒絕存取」訊息。 如何解決這個問題？
 

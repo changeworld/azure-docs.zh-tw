@@ -6,18 +6,18 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
-ms.openlocfilehash: d9ef246079fc95b79a2dc7a3d33eba79da70c55a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4db7c6bf29d0874b5441a8a0eb90f7d1ada33d9c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050386"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962429"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>設定 Azure App Service 的 PremiumV2 層
 
 新 **PremiumV2** 定價層提供更快速的處理器、SSD 儲存體，而且記憶體與核心的比例是現有定價層的兩倍。 有此效能優勢，您可在較少的執行個體上執行應用程式來節省成本。 在本文中，您將了解如何在 **PremiumV2** 層建立應用程式，或將應用程式相應增加為 **PremiumV2** 層。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要將應用程式相應增加為 **PremiumV2**，您必須讓 Azure App Service 應用程式在低於 **PremiumV2** 的定價層中執行，而且該應用程式必須在支援 PremiumV2 的 App Service 部署中執行。
 
@@ -58,7 +58,7 @@ App Service 應用程式的定價層會定義在其執行所在的 [App Service 
 
 在 App Service 應用程式頁面的左側導覽中，選取 [相應增加 (App Service 方案)]****。
 
-![顯示如何相應增加 app service 方案的螢幕擷取畫面。](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
+![顯示如何擴大 app service 方案的螢幕擷取畫面。](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
 選取 [生產]****，然後選取 [P1V2]****、[P2V2]**** 或 [P3V2]****，然後按一下 [套用]****。
 
@@ -66,7 +66,7 @@ App Service 應用程式的定價層會定義在其執行所在的 [App Service 
 
 如果作業成功完成，應用程式的概觀頁面會顯示其已進入 **PremiumV2** 層。
 
-![螢幕擷取畫面，顯示您應用程式 [總覽] 頁面上的 [PremiumV2] 定價層。](media/app-service-configure-premium-tier/finished.png)
+![螢幕擷取畫面，顯示應用程式總覽頁面上的 >premiumv2 定價層。](media/app-service-configure-premium-tier/finished.png)
 
 ### <a name="if-you-get-an-error"></a>如果您收到錯誤
 
@@ -81,7 +81,7 @@ App Service 應用程式的定價層會定義在其執行所在的 [App Service 
 - 建立**新的**資源群組，然後在**新的**資源群組中建立**新的**應用程式和 App Service 方案，並且在建立程序期間選擇所需的 Azure 區域。  您**必須**在建立新的 App Service 方案時選取 **PremiumV2** 方案。  這可確保資源群組、App Service 方案及 Azure 區域組合產生的 App Service 方案會建立在支援 **PremiumV2** 的 App Service 部署中。  然後將應用程式的程式碼部署到新建立的應用程式和 App Service 方案中。 如有需要，您之後可以從 **PremiumV2** 相應縮小 App Service 方案來節省成本，而未來仍可再使用 **PremiumV2** 成功地進行相應增加。
 - 如果應用程式已在現有的**進階**層執行，則可以將應用程式與所有應用程式設定、連接字串和部署組態複製到使用 **PremiumV2** 的新 App Service 方案中。
 
-    ![顯示如何複製應用程式的螢幕擷取畫面。](media/app-service-configure-premium-tier/clone-app.png)
+    ![顯示如何複製您的應用程式的螢幕擷取畫面。](media/app-service-configure-premium-tier/clone-app.png)
 
     在 [複製應用程式]**** 頁面上，您可以使用 **PremiumV2** 在您想要的區域中建立 App Service 方案，並指定您要複製的應用程式設定和組態。
 
@@ -116,4 +116,4 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
 ## <a name="more-resources"></a>其他資源
 
 [在 Azure 中相應增加應用程式](manage-scale-up.md)  
-[手動或自動調整執行個體計數](../monitoring-and-diagnostics/insights-how-to-scale.md)
+[手動或自動調整執行個體計數](../azure-monitor/platform/autoscale-get-started.md)

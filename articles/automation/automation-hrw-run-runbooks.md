@@ -3,14 +3,14 @@ title: 在混合式 Runbook 背景工作角色上執行 Azure 自動化 Runbook
 description: 本文章說明如何在您的本機資料中心的電腦上執行 Runbook，或使用混合式 Runbook 背景工作角色的雲端提供者。
 services: automation
 ms.subservice: process-automation
-ms.date: 01/29/2019
+ms.date: 08/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 22ab982abe9f73aa77cb9bb2c8d3eaa383bc42fb
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 13c982dcfab21371ea6017f730065cc5ced4b79e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186209"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959564"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>在混合式 Runbook 背景工作上啟動 Runbook
 
@@ -304,6 +304,14 @@ gpg –-clear-sign <runbook name>
 ```azurepowershell-interactive
 Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
+
+## <a name="logging"></a>記錄
+
+為了協助您針對在混合式 runbook 背景工作角色上執行的 runbook 問題進行疑難排解，記錄會儲存在本機的下列位置：
+
+* 在上的 Windows 中 `C:\ProgramData\Microsoft\System Center\Orchestrator\<version>\SMA\Sandboxes` ，以取得詳細的作業執行時間進程記錄。 高階 runbook 作業狀態事件會寫入至 **應用程式和服務 Logs\Microsoft-Automation\Operations** 事件記錄檔。
+
+* 在 Linux 上，您可以在中找到使用者混合式背景工作記錄，也可以在中 `/home/nxautomation/run/worker.log` 找到系統 runbook 背景工作記錄檔 `/var/opt/microsoft/omsagent/run/automationworker/worker.log` 。
 
 ## <a name="next-steps"></a>後續步驟
 

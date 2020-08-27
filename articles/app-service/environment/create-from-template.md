@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e06fcdbac097e85c039e34274c61cb51ee06bcd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6b9ba8c3f72b070ad1ec9ade9684a182e2dea08
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478316"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962395"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本立 ASE
 
@@ -38,7 +38,7 @@ ASE 可以使用 Azure 入口網站或 Azure Resource Manager 範本來建立。
 
 2. 建立 ILB ASE 之後，會上傳符合 ILB ASE 網域的 TLS/SSL 憑證。
 
-3. 已上傳的 TLS/SSL 憑證會指派給 ILB ASE 作為其「預設」 TLS/SSL 憑證。  當 ILB ASE 上的應用程式使用指派給 ASE 的一般根域（例如）時，會將此憑證用於 TLS/SSL 流量 `https://someapp.mycustomrootdomain.com` 。
+3. 上傳的 TLS/SSL 憑證會指派給 ILB ASE 作為其「預設」 TLS/SSL 憑證。  當 ILB ASE 上的應用程式使用指派給 (ASE 的一般根域時，此憑證會用於 TLS/SSL 流量，例如 `https://someapp.mycustomrootdomain.com`) 。
 
 
 ## <a name="create-the-ase"></a>建立 ASE
@@ -61,17 +61,17 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 建立 ASE 約需一小時。 然後在入口網站中，ASE 會顯示在觸發部署之訂用帳戶的 ASE 清單中。
 
-## <a name="upload-and-configure-the-default-tlsssl-certificate"></a>上傳和設定「預設」 TLS/SSL 憑證
-TLS/SSL 憑證必須與 ASE 相關聯，做為用來建立應用程式之 TLS 連線的「預設」 TLS/SSL 憑證。 如果 ASE 的預設 DNS 尾碼是*internal-contoso.com*，則連接到 `https://some-random-app.internal-contoso.com` 需要對 **. internal-contoso.com*有效的 TLS/SSL 憑證。 
+## <a name="upload-and-configure-the-default-tlsssl-certificate"></a>上傳並設定「預設」 TLS/SSL 憑證
+TLS/SSL 憑證必須與 ASE 相關聯，作為用來建立應用程式 TLS 連線的「預設」 TLS/SSL 憑證。 如果 ASE 的預設 DNS 尾碼是 *internal-contoso.com*，則連線需要的 `https://some-random-app.internal-contoso.com` TLS/SSL 憑證對 **. internal-contoso.com*有效。 
 
-使用內部憑證授權單位單位、向外部簽發者購買憑證，或使用自我簽署憑證，取得有效的 TLS/SSL 憑證。 無論 TLS/SSL 憑證的來源為何，都必須正確設定下列憑證屬性：
+使用內部憑證授權單位單位、向外部簽發者購買憑證，或使用自我簽署憑證，以取得有效的 TLS/SSL 憑證。 無論 TLS/SSL 憑證的來源為何，都必須正確設定下列憑證屬性：
 
-* 主旨 **：此**屬性必須設定為 **. your-root-domain-here.com*。
-* **主體替代名稱**：此屬性必須同時包含 **. your-root-domain-here.com*和 **. scm.your-root-domain-here.com*。 與每個應用程式相關聯之 SCM/Kudu 網站的 TLS 連線，會使用格式為*your-app-name.scm.your-root-domain-here.com*的位址。
+* **Subject**：此屬性必須設定為 **. your-root-domain-here.com*。
+* **主體替代名稱**：此屬性必須同時包含 **. your-root-domain-here.com* 和 **. scm.your-root-domain-here.com*。 與每個應用程式相關聯的 SCM/Kudu 網站的 TLS 連線會使用表單 *your-app-name.scm.your-root-domain-here.com*的位址。
 
-使用有效的 TLS/SSL 憑證時，需要兩個額外的準備步驟。 將 TLS/SSL 憑證轉換/儲存為 .pfx 檔案。 請記住，.pfx 檔案必須包含所有中繼和根憑證。 使用密碼保護其安全。
+擁有有效的 TLS/SSL 憑證時，需要兩個額外的準備步驟。 將 TLS/SSL 憑證轉換/儲存為 .pfx 檔案。 請記住，.pfx 檔案必須包含所有中繼和根憑證。 使用密碼保護其安全。
 
-.Pfx 檔案必須轉換成 base64 字串，因為 TLS/SSL 憑證是使用 Resource Manager 範本上傳的。 因為 Resource Manager 範本是文字檔案，所以必須將 .pfx 檔案轉換成 base64 字串， 如此才能將其納入範本參數。
+.Pfx 檔案必須轉換成 base64 字串，因為 TLS/SSL 憑證是使用 Resource Manager 範本上傳。 因為 Resource Manager 範本是文字檔案，所以必須將 .pfx 檔案轉換成 base64 字串， 如此才能將其納入範本參數。
 
 使用以下 PowerShell 程式碼片段來進行：
 
@@ -96,16 +96,16 @@ $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 $fileContentEncoded | set-content ($fileName + ".b64")
 ```
 
-成功產生 TLS/SSL 憑證並轉換成 base64 編碼字串之後，請使用範例 Resource Manager 範本在 GitHub 上[設定預設 SSL 憑證][quickstartconfiguressl]。 
+在成功產生 TLS/SSL 憑證並轉換成 base64 編碼字串之後，請使用範例 Resource Manager 範本在 GitHub 上 [設定預設 SSL 憑證][quickstartconfiguressl] 。 
 
 azuredeploy.parameters.json** 檔案中有以下參數︰
 
-* *appServiceEnvironmentName*：正在設定的 ILB ASE 名稱。
-* *existingaselocation ..*：包含已部署 ILB ASE 之 Azure 區域的文字字串。  例如："South Central US (美國中南部)"。
+* *appServiceEnvironmentName*：要設定的 ILB ASE 名稱。
+* *existingAseLocation*：文字字串，其中包含已部署 ILB ASE 的 Azure 區域。  例如："South Central US (美國中南部)"。
 * pfxBlobString**：.pfx 檔案的 based64 編碼字串表示法。 使用稍早的程式碼片段，複製 "exportedcert.pfx.b64" 中的字串。 貼上字串作為 pfxBlobString** 屬性的值。
 * **: The  used to secure the .pfx file.
 * *certificateThumbprint*：憑證的指紋。 如果您從 Powershell 擷取此值 (例如先前程式碼片段中的 $certificate.Thumbprint **)，可以直接使用該值。 如果您從 Windows 憑證對話方塊中複製此值，請記得去除多餘的空格。 *CertificateThumbprint*看起來應該像 AF3143EB61D43F6727842115BB7F17BBCECAECAE。
-* *certificateName*：您自己選擇的易記字串識別碼，用來識別憑證。 此名稱會用來做為代表 TLS/SSL 憑證之*Microsoft Web/* certificate 實體的唯一 Resource Manager 識別碼的一部分。 名稱的結尾*必須*是下列尾碼： \_ yourASENameHere_InternalLoadBalancingASE。 Azure 入口網站會以這個尾碼為指標，表示憑證要用於保護啟用 ILB 的 ASE。
+* *certificateName*：您自己選擇用來識別憑證的易記字串識別碼。 此名稱會用來做為代表 TLS/SSL 憑證之「 *Microsoft/憑證* 」實體唯一 Resource Manager 識別碼的一部分。 名稱的結尾 *必須* 是下列尾碼： \_ yourASENameHere_InternalLoadBalancingASE。 Azure 入口網站會以這個尾碼為指標，表示憑證要用於保護啟用 ILB 的 ASE。
 
 以下是 azuredeploy.parameters.json ** 的縮簡範例︰
 
@@ -136,7 +136,7 @@ azuredeploy.parameters.json** 檔案中有以下參數︰
 }
 ```
 
-填入*azuredeploy.parameters.js*檔案之後，請使用 PowerShell 程式碼片段設定預設的 TLS/SSL 憑證。 將檔案路徑變更為您電腦上 Resource Manager 範本檔案的位置。 記得提供您自己的 Resource Manager 部署名稱和資源群組名稱的值：
+填入檔案 * 上的azuredeploy.parameters.js* 之後，請使用 PowerShell 程式碼片段來設定預設的 TLS/SSL 憑證。 將檔案路徑變更為您電腦上 Resource Manager 範本檔案的位置。 記得提供您自己的 Resource Manager 部署名稱和資源群組名稱的值：
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -147,9 +147,9 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 每個 ASE 前端套用變更大約需要 40 分鐘。 例如，有一個預設大小的 ASE 使用兩個前端，則範本將需要大約一小時 20 分鐘的時間才能完成。 執行範本時，無法調整 ASE。  
 
-範本完成之後，可以透過 HTTPS 存取 ILB ASE 上的應用程式。 系統會使用預設的 TLS/SSL 憑證來保護連接。 使用應用程式名稱加上預設主機名稱的組合來定址 ILB ASE 上的應用程式時，會使用預設的 TLS/SSL 憑證。 例如，會 `https://mycustomapp.internal-contoso.com` 針對 **. internal-contoso.com*使用預設的 TLS/SSL 憑證。
+範本完成之後，可以透過 HTTPS 存取 ILB ASE 上的應用程式。 這些連線會使用預設的 TLS/SSL 憑證來保護。 使用應用程式名稱加上預設主機名稱的組合來定址 ILB ASE 上的應用程式時，會使用預設的 TLS/SSL 憑證。 例如，會 `https://mycustomapp.internal-contoso.com` 使用 **. internal-contoso.com*的預設 TLS/SSL 憑證。
 
-不過，就如同在公用多租用戶服務上執行的應用程式，開發人員可以為個別的應用程式設定自訂主機名稱。 他們也可以針對個別應用程式設定唯一的 SNI TLS/SSL 憑證系結。
+不過，就如同在公用多租用戶服務上執行的應用程式，開發人員可以為個別的應用程式設定自訂主機名稱。 它們也可以為個別的應用程式設定唯一的 SNI TLS/SSL 憑證系結。
 
 ## <a name="app-service-environment-v1"></a>App Service 環境 v1 ##
 App Service 環境有兩個版本：ASEv1 和 ASEv2。 前述資訊架構在 ASEv2 上。 本節說明 ASEv1 與 ASEv2 之間的差異。
@@ -178,12 +178,12 @@ ASEv1 使用與 ASEv2 不同的定價模式。 在 ASEv1 中，您需要支付�
 [NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
-[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../../app-service/configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [ILBASEv1Template]: app-service-app-service-environment-create-ilb-ase-resourcemanager.md

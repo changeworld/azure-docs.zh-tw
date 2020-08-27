@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: a9d3de5d4a88c782ad541ceb4916ec90a3bdd7b5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170761"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958247"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>針對 Azure App Service 中應用程式效能變慢的問題進行疑難排解
 本文可協助您針對 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 中應用程式效能變慢的問題進行疑難排解。
@@ -43,7 +43,7 @@ ms.locfileid: "84170761"
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1.觀察和監視應用程式行為
 #### <a name="track-service-health"></a>追蹤服務健全狀況
-每次發生服務中斷或效能降低時，Microsoft Azure 就會發出公告。 您可以在 [Azure 入口網站](https://portal.azure.com/)上追蹤服務的健康情況。 如需詳細資訊，請參閱[追蹤服務健全狀況](../monitoring-and-diagnostics/insights-service-health.md)。
+每次發生服務中斷或效能降低時，Microsoft Azure 就會發出公告。 您可以在 [Azure 入口網站](https://portal.azure.com/)上追蹤服務的健康情況。 如需詳細資訊，請參閱[追蹤服務健全狀況](../service-health/service-notifications.md)。
 
 #### <a name="monitor-your-app"></a>監視應用程式
 此選項可讓您了解應用程式是否有任何問題。 在應用程式刀鋒視窗中，按一下 [要求和錯誤] 圖格。 [計量] 刀鋒視窗會顯示所有可以加入的計量。
@@ -61,7 +61,7 @@ ms.locfileid: "84170761"
 如需詳細資訊，請參閱
 
 * [監視 Azure App Service 中的應用程式](web-sites-monitor.md)
-* [接收警示通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+* [接收警示通知](../azure-monitor/platform/alerts-overview.md)
 
 #### <a name="monitor-web-endpoint-status"></a>監視 Web 端點狀態
 若您在**標準**定價層中執行應用程式，App Service 可讓您從三個地理位置監視兩個端點。
@@ -161,4 +161,4 @@ AutoHeal 會根據您選擇的設定 (例如組態變更、要求、以記憶體
 
  ![重新啟動應用程式以解決效能問題](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-您也可以使用 Azure Powershell 管理應用程式。 如需詳細資訊，請參閱 [將 Azure PowerShell 與 Azure 資源管理員搭配使用](../powershell-azure-resource-manager.md)。
+您也可以使用 Azure Powershell 管理應用程式。 如需詳細資訊，請參閱 [將 Azure PowerShell 與 Azure 資源管理員搭配使用](../azure-resource-manager/management/manage-resources-powershell.md)。

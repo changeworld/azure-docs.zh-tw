@@ -1,27 +1,27 @@
 ---
 title: 混合式連線
-description: 瞭解如何在 Azure App Service 中建立及使用混合式連接，以存取不同網路中的資源。
+description: 瞭解如何在 Azure App Service 中建立及使用混合式連線，以存取不同網路中的資源。
 author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: d55d1c0d72f0122472813fc6e79ba021e8b86e89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c8b71e4be11a886da3e0889add0a3cdc19a56c3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831245"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962412"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service 混合式連線
 
 混合式連線既是 Azure 服務，也是 Azure App Service 功能。 作為服務時，它具有 App Service 所利用之用途和功能以外的用途和功能。 若要深入了解混合式連線及其在 App Service 之外的使用方式，請參閱 [Azure 轉送混合式連線][HCService]。
 
-在 App Service 中，您可以使用混合式連線來存取任何網路中的應用程式資源，其可透過埠443對 Azure 進行輸出呼叫。 混合式連線可讓您從應用程式存取 TCP 端點，而不會啟用新的方式來存取您的應用程式。 和在 App Service 中使用時相同，每個「混合式連線」都會與單一 TCP 主機和連接埠的組合相互關聯。 這可讓您的應用程式存取任何 OS 上的資源，前提是它是 TCP 端點。 混合式連線不會知道 (或不在意) 應用程式通訊協定為何，或您要存取什麼資源。 它只是提供網路存取。  
+在 App Service 中，您可以使用混合式連線來存取任何網路中的應用程式資源，這些資源可以透過埠443對 Azure 進行輸出呼叫。 混合式連線可讓您從應用程式存取 TCP 端點，而且不會啟用新的方式來存取您的應用程式。 和在 App Service 中使用時相同，每個「混合式連線」都會與單一 TCP 主機和連接埠的組合相互關聯。 這可讓您的應用程式存取任何 OS 上的資源（前提是它是 TCP 端點）。 混合式連線不會知道 (或不在意) 應用程式通訊協定為何，或您要存取什麼資源。 它只會提供網路存取。  
 
 ## <a name="how-it-works"></a>運作方式 ##
-混合式連線需要部署「轉送代理」，才能同時觸達所需的端點和 Azure。 轉送代理，混合式連線管理員（HCM），會透過埠443呼叫 Azure 轉送。 從 web 應用程式網站，App Service 基礎結構也會代表您的應用程式連接到 Azure 轉送。 透過聯結的連線，您的應用程式就能夠存取所需的端點。 連線會使用 TLS 1.2 以求安全性，並使用共用存取簽章 (SAS) 金鑰來進行驗證和授權。    
+混合式連線需要部署轉送代理程式，讓它可以同時連線到所需的端點以及 Azure。 轉送代理程式混合式連線管理員 (HCM) ，會透過埠443呼叫 Azure 轉送。 從 web 應用程式網站，App Service 基礎結構也會代表您的應用程式連接到 Azure 轉送。 透過已加入的連接，您的應用程式就能夠存取所需的端點。 連線會使用 TLS 1.2 以求安全性，並使用共用存取簽章 (SAS) 金鑰來進行驗證和授權。    
 
 ![混合式連線概要流程圖表][1]
 
@@ -42,7 +42,7 @@ ms.locfileid: "85831245"
 - 通常不需要在防火牆開洞。 連線全都是透過標準的 Web 連接埠輸出。
 - 由於這是網路層級的功能，因此不會因為應用程式所使用的語言及端點所使用的技術而受到影響。
 - 它可用來讓您從單一應用程式存取多個網路。 
-- Windows 應用程式 GA 支援此功能，Linux 應用程式也提供預覽。
+- 適用于 Windows 應用程式的 GA 支援，並且在 Linux 應用程式中為預覽狀態。
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>混合式連線無法執行的作業 ###
 
@@ -56,7 +56,7 @@ ms.locfileid: "85831245"
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>在您的應用程式中新增和建立混合式連線 ##
 
-若要建立「混合式連線」，請移至 [Azure 入口網站][portal]，然後選取您的應用程式。 選取 [**網路**] [  >  **設定您的混合式連接端點**]。 您可以在這裡看到為您應用程式設定的「混合式連線」。  
+若要建立「混合式連線」，請移至 [Azure 入口網站][portal]，然後選取您的應用程式。 選取 [**網路**]  >  **設定您的混合式連接端點**。 您可以在這裡看到為您應用程式設定的「混合式連線」。  
 
 ![混合式連線清單的螢幕擷取畫面][2]
 
@@ -94,10 +94,10 @@ ms.locfileid: "85831245"
 
 | 定價方案 | 方案中可用的混合式連線數目 |
 |----|----|
-| 基本 | 5每個方案 |
-| 標準 | 每個方案25個 |
-| PremiumV2 | 每個應用程式200 |
-| 隔離 | 每個應用程式200 |
+| 基本 | 每個方案 5 個 |
+| 標準 | 每個方案 25 個 |
+| >premiumv2 | 每個應用程式 200 個 |
+| 隔離 | 每個應用程式 200 個 |
 
 App Service 方案 UI 會顯示您正在使用的混合式連線數目，以及由哪些應用程式使用。  
 
@@ -129,12 +129,12 @@ App Service 方案 UI 會顯示您正在使用的混合式連線數目，以及�
 2. 選取 [設定另一個混合式連線]****。
 ![設定新的混合式連線螢幕擷取畫面][8]
 
-1. 使用您的 Azure 帳戶登入，以取得您的訂閱所提供的混合式連線。 HCM 不會繼續使用您的 Azure 帳戶。 
+1. 使用您的 Azure 帳戶登入，以取得您的訂用帳戶可用的混合式連線。 HCM 不會繼續使用您的 Azure 帳戶超過該帳戶。 
 1. 選擇訂用帳戶。
 1. 選取您要讓 HCM 轉送的「混合式連線」。
 ![混合式連線的螢幕擷取畫面][9]
 
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 
 現在可以看到您新增的「混合式連線」。 您也可以選取已設定的混合式連線，以查看詳細資料。
 
@@ -166,7 +166,7 @@ App Service 方案 UI 會顯示您正在使用的混合式連線數目，以及�
 
 ## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>以程式設計方式將混合式連線新增至應用程式 ##
 
-混合式連接有 Azure CLI 支援。 提供的命令會在應用程式和 App Service 計畫層級上運作。  應用層級的命令為：
+混合式連線有 Azure CLI 支援。 提供的命令會在應用程式和 App Service 計畫層級運作。  應用層級命令為：
 
 ```azurecli
 az webapp hybrid-connection
@@ -180,7 +180,7 @@ Commands:
     remove : Remove a hybrid-connection from a webapp.
 ```
 
-App Service 計畫命令可讓您設定指定的混合式連線所要使用的金鑰。 在每個混合式連線（主要和次要）上設定兩個金鑰。 您可以選擇使用主要或次要金鑰搭配下列命令。 當您想要定期重新產生金鑰時，這可讓您切換的金鑰。 
+App Service plan 命令可讓您設定指定的混合式連接將使用的金鑰。 每個混合式連線（主要和次要）都會設定兩個索引鍵。 您可以選擇使用主要或次要金鑰搭配下列命令。 當您想要定期重新產生金鑰時，這可讓您切換的金鑰。 
 
 ```azurecli
 az appservice hybrid-connection --help
@@ -193,11 +193,11 @@ Commands:
                 connections in that appservice plan.
 ```
 
-## <a name="secure-your-hybrid-connections"></a>保護您的混合式連接 ##
+## <a name="secure-your-hybrid-connections"></a>保護混合式連接 ##
 
-現有的混合式連接可以新增至具有基礎 Azure 服務匯流排轉送之足夠許可權的任何使用者，以加入其他 App Service Web Apps。 這表示如果您必須防止其他人重複使用相同的混合式連接（例如，當目標資源是一項服務，但沒有任何額外的安全性措施可防止未經授權的存取），您就必須鎖定 Azure 服務匯流排轉送的存取。
+您可以將現有的混合式連線新增至具有基礎 Azure 服務匯流排轉送的足夠許可權之任何使用者的其他 App Service Web Apps。 這表示，如果您必須防止其他人重複使用相同的混合式連線 (例如，當目標資源是沒有任何額外安全性措施可防止未經授權存取) 的服務時，您必須鎖定 Azure 服務匯流排轉送的存取權。
 
-擁有轉送存取權的任何人都能 `Reader` 在嘗試將其新增至其 Web 應用程式的 Azure 入口網站中時_看到_混合式連線，但如果沒有抓取用來建立轉送連線之連接字串的許可權，就無法_新增_此連接。 為了成功新增混合式連線，它們必須具有 `listKeys` 許可權（ `Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action` ）。 在 `Contributor` 轉送上包含此許可權的角色或任何其他角色，可讓使用者使用混合式連線，並將其新增至自己的 Web Apps。
+擁有轉送存取權的任何人都可以在 `Reader` 嘗試將其新增至 Azure 入口網站中的 Web 應用程式時， _看到_ 混合式連線，但因為缺少取得用來建立轉送連線之連接字串的許可權，所以將無法 _新增_ 該連接。 為了成功新增混合式連線，它們必須具有 `listKeys` () 的許可權 `Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action` 。 在 `Contributor` 轉送上包含此許可權的角色或任何其他角色，可讓使用者使用混合式連線，並將其新增至自己的 Web Apps。
 
 ## <a name="troubleshooting"></a>疑難排解 ##
 
@@ -205,9 +205,9 @@ Commands:
 
 用戶端無法連線至其端點的主要原因是，端點在指定時所使用的是 IP 位址而非 DNS 名稱。 如果您的應用程式無法連線到所要的端點，且您使用的是 IP 位址，請改為使用對 HCM 執行所在之主機有效的 DNS 名稱。 也請檢查 HCM 執行所在的主機已正確解析 DNS 名稱。 請確認 HCM 執行所在的主機可連線到「混合式連線」端點。  
 
-在 App Service 中，您可以從 [Advanced Tools （Kudu）] 主控台叫用**tcpping**命令列工具。 這個工具可以指出您是否能夠存取 TCP 端點，但不會指出您是否能夠存取「混合式連線」端點。 當您在主控台中對「混合式連線」端點使用此工具時，您只能確認該端點使用「主機:連接埠」組合。  
+在 App Service 中，您可以從 [Advanced Tools (Kudu]) 主控台叫用 **tcpping** 命令列工具。 這個工具可以指出您是否能夠存取 TCP 端點，但不會指出您是否能夠存取「混合式連線」端點。 當您在主控台中對「混合式連線」端點使用此工具時，您只能確認該端點使用「主機:連接埠」組合。  
 
-如果您的端點有命令列用戶端，您可以從應用程式主控台測試連線能力。 例如，您可以使用捲曲來測試對 web 伺服器端點的存取。
+如果您的端點有命令列用戶端，您可以從應用程式主控台測試連線能力。 例如，您可以使用捲曲測試對 web 伺服器端點的存取。
 
 
 <!--Image references-->
@@ -225,8 +225,8 @@ Commands:
 [12]: ./media/app-service-hybrid-connections/hybridconn-bt.png
 
 <!--Links-->
-[HCService]: https://docs.microsoft.com/azure/service-bus-relay/relay-hybrid-connections-protocol/
+[HCService]: /azure/service-bus-relay/relay-hybrid-connections-protocol/
 [portal]: https://portal.azure.com/
-[oldhc]: https://docs.microsoft.com/azure/biztalk-services/integration-hybrid-connection-overview/
+[oldhc]: /azure/biztalk-services/integration-hybrid-connection-overview/
 [sbpricing]: https://azure.microsoft.com/pricing/details/service-bus/
 [armclient]: https://github.com/projectkudu/ARMClient/
