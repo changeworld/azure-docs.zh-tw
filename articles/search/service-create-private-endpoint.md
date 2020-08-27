@@ -1,64 +1,64 @@
 ---
 title: 建立安全連線的私人端點
 titleSuffix: Azure Cognitive Search
-description: 在虛擬網路中設定私人端點，以安全連線至 Azure 認知搜尋服務
+description: 設定虛擬網路中的私人端點，以安全地連接到 Azure 認知搜尋服務
 manager: nitinme
 author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 27fb165c36c17cee83cd9f90eba3bdcb9e32d517
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206913"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935750"
 ---
-# <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>建立私人端點以進行 Azure 認知搜尋的安全連線
+# <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>建立私人端點，以 Azure 認知搜尋的安全連線
 
-在本文中，您將使用 Azure 入口網站建立無法透過網際網路存取的新 Azure 認知搜尋服務實例。 接下來，您將在相同的虛擬網路中設定 Azure 虛擬機器，並透過私人端點使用它來存取搜尋服務。
+在本文中，您將使用 Azure 入口網站建立無法透過網際網路存取的新 Azure 認知搜尋服務實例。 接下來，您將在相同的虛擬網路中設定 Azure 虛擬機器，並使用它透過私人端點來存取搜尋服務。
 
-私人端點是由[Azure 私用連結](../private-link/private-link-overview.md)以個別服務的方式提供。 如需成本的詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/private-link/)。
+私人端點是由 [Azure Private Link](../private-link/private-link-overview.md)以個別服務的形式提供。 如需成本的詳細資訊，請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/private-link/)。
 
 > [!Important]
-> 您可以使用 Azure 入口網站或[Management REST API 2020-03-13 版](https://docs.microsoft.com/rest/api/searchmanagement/)來設定 Azure 認知搜尋的私人端點支援。 當服務端點為私用時，部分入口網站功能會停用。 您將能夠查看和管理服務層級資訊，但基於安全性考慮，會限制入口網站存取索引資料和服務中的各種元件（例如索引、索引子和技能集定義）。
+> 您可以使用 Azure 入口網站或 [管理 REST API 2020-03-13 版](/rest/api/searchmanagement/)來設定 Azure 認知搜尋的私人端點支援。 當服務端點為私用時，會停用某些入口網站功能。 您將能夠查看和管理服務等級資訊，但基於安全性考慮，會限制入口網站存取索引資料和服務中的各種元件，例如索引、索引子和技能集定義。
 
-## <a name="why-use-a-private-endpoint-for-secure-access"></a>為何要使用私人端點來進行安全存取？
+## <a name="why-use-a-private-endpoint-for-secure-access"></a>為何要使用私人端點進行安全存取？
 
-Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md)可讓虛擬網路上的用戶端透過[私人連結](../private-link/private-link-overview.md)，安全地存取搜尋索引中的資料。 私人端點會使用您搜尋服務的[虛擬網路位址空間](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)中的 IP 位址。 用戶端與搜尋服務之間的網路流量會透過虛擬網路和 Microsoft 骨幹網路上的私人連結來進行，以消除公開網際網路的暴露。 如需支援私用連結之其他 PaaS 服務的清單，請參閱產品檔中的[可用性一節](../private-link/private-link-overview.md#availability)。
+Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md)可讓虛擬網路上的用戶端透過[Private Link](../private-link/private-link-overview.md)，安全地存取搜尋索引中的資料。 私人端點會使用您搜尋服務的 [虛擬網路位址空間](../virtual-network/private-ip-addresses.md) 中的 IP 位址。 用戶端與搜尋服務之間的網路流量會在 Microsoft 骨幹網路上進行虛擬網路和私人連結，以消除公用網際網路的暴露。 如需支援 Private Link 的其他 PaaS 服務清單，請參閱產品檔中的「 [可用性」一節](../private-link/private-link-overview.md#availability) 。
 
-您的搜尋服務的私人端點可讓您：
+搜尋服務的私人端點可讓您：
 
-- 封鎖搜尋服務的公用端點上的所有連線。
-- 藉由讓您封鎖從虛擬網路外泄的資料，提高虛擬網路的安全性。
-- 從使用[VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)或[ExpressRoutes](../expressroute/expressroute-locations.md)與私用對等互連連線到虛擬網路的內部部署網路，安全地連接到您的搜尋服務。
+- 封鎖您的搜尋服務在公用端點上的所有連接。
+- 藉由讓您封鎖從虛擬網路遭到外泄的資料，提高虛擬網路的安全性。
+- 使用 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [expressroute](../expressroute/expressroute-locations.md) 搭配私人對等互連，安全地從連線到虛擬網路的內部部署網路連接到您的搜尋服務。
 
 ## <a name="create-the-virtual-network"></a>建立虛擬網路
 
 在本節中，您將建立虛擬網路和子網，以裝載將用來存取搜尋服務私人端點的 VM。
 
-1. 從 Azure 入口網站首頁] 索引標籤中，選取 [**建立資源**] [網路] [  >  **Networking**  >  **虛擬網路**]。
+1. 從 Azure 入口網站的 [首頁] 索引標籤中，選取 [**建立資源**  >  **網路**  >  **虛擬網路**]。
 
 1. 在 [建立虛擬網路] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
     | 訂用帳戶 | 選取您的訂用帳戶|
-    | 資源群組 | 選取 [**新建**]，輸入*myResourceGroup*，然後選取 **[確定]** 。 |
-    | 名稱 | 輸入*MyVirtualNetwork* |
+    | 資源群組 | 選取 [ **建立新**的]，輸入 *myResourceGroup*，然後選取 **[確定]** |
+    | 名稱 | 輸入 *MyVirtualNetwork* |
     | 區域 | 選取您想要的區域 |
     |||
 
-1. 保留其餘設定的預設值。 按一下 [審核] [ **+ 建立**]，然後**建立**
+1. 保留其餘設定的預設值。 按一下 [ **審核] + [建立** ]，然後 **建立**
 
-## <a name="create-a-search-service-with-a-private-endpoint"></a>建立具有私人端點的搜尋服務
+## <a name="create-a-search-service-with-a-private-endpoint"></a>使用私人端點建立搜尋服務
 
-在本節中，您會建立具有私人端點的新 Azure 認知搜尋服務。 
+在本節中，您將建立具有私人端點的新 Azure 認知搜尋服務。 
 
-1. 在 [Azure 入口網站] 畫面的左上方，選取 [**建立資源**] [Web] [  >  **Web**  >  **Azure 認知搜尋**]。
+1. 在 Azure 入口網站畫面的左上方，選取 [**建立資源**  >  **Web**  >  **Azure 認知搜尋**。
 
-1. 在 [**新搜尋服務-基本**] 中，輸入或選取這項資訊：
+1. 在 [ **新的搜尋服務-基本**] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
@@ -67,33 +67,33 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
     | **執行個體詳細資料** |  |
     | URL | 輸入唯一名稱。 |
-    | 位置 | 選取您想要的區域。 |
-    | 定價層 | 選取 [**變更定價層**]，然後選擇您想要的服務層級。 **免費**層不支援 (。 必須是**基本**或更高的版本。 )  |
+    | Location | 選取所需的區域。 |
+    | 定價層 | 選取 [ **變更定價層** ]，然後選擇您想要的服務層級。 **免費**層上的 (不支援。 必須是 **基本** 或更高的版本。 )  |
     |||
   
 1. 選取 **[下一步：調整]**。
 
-1. 保留 [預設值]，然後選取 **[下一步：網路]**。
+1. 將值保留為預設值，然後選取 **[下一步：網路]**。
 
-1. 在 [**新搜尋服務-網路**] 中，針對 [**端點連線 (資料) **選取 [**私人**]。
+1. 在 [ **新的搜尋服務-網路**] 中，選取 [ **私人** ]， ** (資料) 的端點連線能力 **。
 
-1. 在 [**新增搜尋服務-網路**] 中，選取 [**私人端點**] 底下的 [ **+ 新增**]。 
+1. 在 [**新搜尋服務-網路**] 中，選取 [**私人端點**] 底下的 [ **+ 新增**]。 
 
-1. 在 [**建立私人端點**] 中，輸入或選取這項資訊：
+1. 在 [ **建立私人端點**] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
     | 訂用帳戶 | 選取您的訂用帳戶。 |
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
-    | 位置 | 選取 [美國西部]****。|
+    | Location | 選取 [美國西部]****。|
     | 名稱 | 輸入 myPrivateEndpoint。  |
-    | 目標子資源 | 保留預設值**searchService**。 |
+    | 目標子資源 | 保留預設 **searchService**。 |
     | **網路** |  |
-    | 虛擬網路  | 從 [資源群組] *myResourceGroup*中選取 [ *MyVirtualNetwork* ]。 |
+    | 虛擬網路  | 從 [資源群組*myResourceGroup*] 中選取 [ *MyVirtualNetwork* ]。 |
     | 子網路 | 選取 [mySubnet]。 |
     | **私人 DNS 整合** |  |
-    | 與私人 DNS 區域整合  | 保留預設值 [**是]**。 |
-    | 私人 DNS 區域  | 保留預設的 [ (New) privatelink.search.windows.net] * *。 |
+    | 與私人 DNS 區域整合  | 保留預設值 [ **是]**。 |
+    | 私人 DNS 區域  | 保留預設值 [ (新的) privatelink.search.windows.net * *。 |
     |||
 
 1. 選取 [確定]。 
@@ -102,15 +102,15 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
 
 1. 當您看到 [驗證成功] 訊息時，請選取 [建立]。 
 
-1. 一旦完成布建新服務，請流覽至您剛才建立的資源。
+1. 新服務的布建完成後，請流覽至您剛才建立的資源。
 
-1. 從左側內容功能表中選取 [**金鑰**]。
+1. 從左側內容功能表中選取 [ **金鑰** ]。
 
-1. 連接到服務時，請複製**主要系統管理金鑰**。
+1. 連接到服務時，請複製 **主要管理金鑰** 以供稍後進行。
 
 ## <a name="create-a-virtual-machine"></a>建立虛擬機器
 
-1. 在 [Azure 入口網站] 畫面的左上方，選取 [**建立資源**] [計算] [  >  **Compute**  >  **虛擬機器**]。
+1. 在 Azure 入口網站畫面的左上方，選取 [**建立資源**  >  **計算**  >  **虛擬機器**]。
 
 1. 在 [建立虛擬機器 - 基本] 中，輸入或選取這項資訊：
 
@@ -121,7 +121,7 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。  |
     | **執行個體詳細資料** |  |
     | 虛擬機器名稱 | 輸入 myVm。 |
-    | 區域 | 選取 [**美國西部**] 或您所使用的任何區域。 |
+    | 區域 | 選取 [ **美國西部** ] 或您使用的任何區域。 |
     | 可用性選項 | 保留預設值 [不需要基礎結構備援]。 |
     | 映像 | 選取 [Windows Server 2019 Datacenter]。 |
     | 大小 | 保留預設值 [標準 DS1 v2]。 |
@@ -130,13 +130,13 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | 密碼 | 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     | 確認密碼 | 再次輸入密碼。 |
     | **輸入連接埠規則** |  |
-    | 公用輸入連接埠 | 保留預設 [**允許選取的埠**]。 |
-    | 選取輸入連接埠 | 保留預設的**RDP (3389) **。 |
+    | 公用輸入連接埠 | 保留預設的 [ **允許選取的埠**]。 |
+    | 選取輸入連接埠 | 將預設的 **RDP (3389) **。 |
     | **節省費用** |  |
     | 已經有 Windows 授權？ | 保留預設值 [否]。 |
     |||
 
-1. 完成時，選取 [下一步:磁碟]。
+1. 完成時，選取 [下一步:  磁碟]。
 
 1. 在 [建立虛擬機器 - 磁碟]，保留預設值並選取 [下一步：網路功能]。
 
@@ -185,13 +185,13 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
 
 ## <a name="test-connections"></a>測試連接
 
-在本節中，您將驗證對搜尋服務的私人網路存取，並使用私用端點私下連接到。
+在本節中，您將會驗證對搜尋服務的私人網路存取，並使用私人端點私下連接至。
 
-當搜尋服務端點為私人時，部分入口網站功能會停用。 您將能夠查看和管理服務層級設定，但基於安全性考慮，會限制入口網站存取索引資料和服務中的其他元件（例如索引、索引子和技能集定義）。
+當搜尋服務端點為私用時，會停用某些入口網站功能。 您將能夠查看和管理服務等級設定，但基於安全性考慮，會限制入口網站存取索引資料和服務中的各種其他元件（例如索引、索引子和技能集定義）。
 
 1. 在 myVm 的遠端桌面中，開啟 PowerShell。
 
-1. 輸入 ' nslookup [搜尋服務名稱]. search. windows. net '
+1. 輸入 ' nslookup [search service name]. net '
 
     您將收到如下訊息：
     ```azurepowershell
@@ -203,19 +203,19 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     Aliases:  [search service name].search.windows.net
     ```
 
-1. 從 VM 連接到搜尋服務，並建立索引。 您可以遵循本[快速入門](search-get-started-postman.md)，使用 REST API 在 Postman 的服務中建立新的搜尋索引。 從 Postman 設定要求需要搜尋服務端點 (HTTPs：//[搜尋服務名稱]. [搜尋]) 和您在上一個步驟中複製的管理 api 金鑰。
+1. 從 VM 連接到搜尋服務，並建立索引。 您可以遵循本 [快速入門](search-get-started-postman.md) ，使用 REST API 在 Postman 的服務中建立新的搜尋索引。 從 Postman 設定要求需要搜尋服務端點 (HTTPs：//[搜尋服務名稱].. a n t) ，以及您在上一個步驟中複製的管理員 api 金鑰。
 
-1. 從 VM 完成快速入門即表示您確認服務可完整運作。
+1. 從 VM 完成快速入門是您確認服務可完全運作。
 
-1. 關閉對*myVM*的遠端桌面連線。 
+1. 關閉 *myVM*的遠端桌面連線。 
 
 1. 若要確認您的服務無法在公用端點上存取，請在您的本機工作站上開啟 Postman，然後嘗試快速入門中的前幾個工作。 如果您收到遠端伺服器不存在的錯誤，表示您已成功設定搜尋服務的私人端點。
 
 ## <a name="clean-up-resources"></a>清除資源 
-當您使用私用端點、搜尋服務和 VM 完成時，請刪除資源群組及其包含的所有資源：
-1.  *myResourceGroup*   在入口網站頂端的**搜尋**方塊中輸入 myResourceGroup，然後 *myResourceGroup*   從搜尋結果中選取 [myResourceGroup]。 
+當您完成使用私人端點、搜尋服務和 VM 時，請刪除資源群組及其包含的所有資源：
+1.  *myResourceGroup*   在入口網站頂端的 [**搜尋**] 方塊中輸入 myResourceGroup，然後 *myResourceGroup*   從搜尋結果中選取 [myResourceGroup]。 
 1. 選取 [刪除資源群組]。 
-1.  *myResourceGroup*   針對 [輸入**資源組名**] 輸入 MyResourceGroup，然後選取 [**刪除**]。
+1. 輸入 *myResourceGroup*   **資源組名類型的**MyResourceGroup，然後選取 [**刪除**]。
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已在虛擬網路上建立 VM，並在具有私人端點的搜尋服務上建立。 您已從網際網路連線至 VM，並使用私人連結安全地向搜尋服務通訊。 若要深入瞭解私用端點，請參閱 [什麼是 Azure 私人端點？](../private-link/private-endpoint-overview.md)。
+在本文中，您已在虛擬網路上建立 VM，並在具有私人端點的搜尋服務上建立。 您已從網際網路連線到 VM，並使用 Private Link 安全地傳達給搜尋服務。 若要深入瞭解私人端點，請參閱 [什麼是 Azure 私人端點？](../private-link/private-endpoint-overview.md)。

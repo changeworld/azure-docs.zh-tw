@@ -1,7 +1,7 @@
 ---
 title: 如何跨區域移動您的服務資源
 titleSuffix: Azure Cognitive Search
-description: 本文將說明如何在 Azure 雲端中，將您的 Azure 認知搜尋資源從一個區域移至另一個區域。
+description: 本文將說明如何在 Azure 雲端中將 Azure 認知搜尋資源從某個區域移至另一個區域。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,43 +9,43 @@ ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 03/24/2020
-ms.openlocfilehash: 00f16d11f7a9cd276772eda5e91d6e117ada8c9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71846b8e26efb3853705fabff78831e746727191
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80246296"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926944"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>將您的 Azure 認知搜尋服務移至另一個 Azure 區域
 
-客戶偶爾會詢問如何將搜尋服務移至另一個區域。 目前沒有任何內建機制或工具可協助執行這項工作，但本文可協助您瞭解達到相同結果的手動步驟。
+有時候，客戶會詢問如何將搜尋服務移至另一個區域。 目前沒有任何內建機制或工具可協助進行這項工作，但這篇文章可協助您瞭解達到相同結果的手動步驟。
 
 > [!NOTE]
-> 在 Azure 入口網站中，所有服務都有一個 [**匯出範本**] 命令。 在 Azure 認知搜尋的案例中，此命令會產生服務的基本定義（名稱、位置、層級、複本和分割區計數），但不會辨識服務的內容，也不會包含金鑰、角色或記錄。 雖然此命令存在，但我們不建議您使用它來移動搜尋服務。
+> 在 Azure 入口網站中，所有服務都有 [ **匯出範本** ] 命令。 在 Azure 認知搜尋的情況下，此命令會產生服務的基本定義 (名稱、位置、層級、複本和分割區計數) ，但無法辨識您服務的內容，也不會對金鑰、角色或記錄檔執行。 雖然命令存在，但不建議您使用它來移動搜尋服務。
 
 ## <a name="guidance-for-moving-a-service"></a>移動服務的指引
 
-1. 識別相依性和相關服務，以瞭解重新放置服務的完整影響，以防您需要移動的不只是 Azure 認知搜尋。
+1. 識別相依性和相關服務，以瞭解重新放置服務的完整影響，以防您需要移動不只是 Azure 認知搜尋。
 
-   Azure 儲存體用於記錄、建立知識存放區，而且是常用的外部資料源，可供 AI 擴充和編制索引。 認知服務是 AI 擴充中的相依性。 如果您使用 AI 擴充，認知服務和您的搜尋服務都必須位於相同區域中。
+   Azure 儲存體用於記錄、建立知識存放區，而且是用於 AI 擴充和編制索引的常用外部資料源。 認知服務是 AI 擴充的相依性。 如果您使用 AI 擴充，認知服務和搜尋服務都必須位於相同的區域中。
 
-1. 建立服務上所有物件的清查，讓您知道要移動的內容：索引、同義字對應、索引子、資料來源、技能集。 如果您啟用記錄功能，請建立並封存歷程記錄所需的任何報表。
+1. 建立服務上所有物件的清查，讓您知道要移動的內容：索引、同義字地圖、索引子、資料來源、技能集。 如果您已啟用記錄功能，請建立並封存歷史記錄所需的任何報表。
 
-1. 檢查新區域中的定價和可用性，以確保 Azure 認知搜尋的可用性以及新區域中的任何相關服務。 大部分的功能都適用于所有區域，但部分預覽功能的可用性有限。
+1. 檢查新區域中的定價和可用性，以確保 Azure 認知搜尋的可用性及新區域中的任何相關服務。 大部分的功能都可在所有區域中使用，但某些預覽功能的可用性有限。
 
-1. 在新區域中建立服務，並從原始程式碼重新發佈任何現有的索引、同義字對應、索引子、資料來源和技能集。 請記住，服務名稱必須是唯一的，因此您無法重複使用現有的名稱。 檢查每個技能集，以查看與認知服務的連線是否仍然有效，而不是在相同區域的需求方面。 此外，如果建立了知識存放區，請檢查 Azure 儲存體的連接字串（如果您使用不同的服務）。
+1. 在新區域中建立服務，並從原始程式碼重新發行任何現有的索引、同義字地圖、索引子、資料來源和技能集。 請記住，服務名稱必須是唯一的，因此您無法重複使用現有的名稱。 檢查每個技能集，以查看與認知服務的連線是否仍在相同區域需求方面有效。 此外，如果已建立知識存放區，請檢查 Azure 儲存體的連接字串（如果您使用不同的服務）。
 
-1. 重載索引和知識存放區（如果適用的話）。 您將使用應用程式程式碼將 JSON 資料推送至索引，或重新執行索引子以從外部來源提取檔。 
+1. 重載索引和知識存放區（如果適用）。 您將使用應用程式程式碼將 JSON 資料推送至索引，或重新執行索引子，以便從外部來源提取檔。 
 
-1. 啟用記錄功能，如果您使用它們，請重新建立安全性角色。
+1. 啟用記錄功能，如果您正在使用記錄，請重新建立安全性角色。
 
 1. 更新用戶端應用程式和測試套件，以使用新的服務名稱和 API 金鑰，並測試所有應用程式。
 
-1. 一旦新的服務經過完整測試和運作，請刪除舊的服務。
+1. 在新服務經過完整測試和運作之後，刪除舊的服務。
 
 ## <a name="next-steps"></a>後續步驟
 
-下列連結可協助您在完成上面所述的步驟時，尋找詳細資訊。
+下列連結可協助您在完成上述步驟時找出詳細資訊。
 
 + [Azure 認知搜尋定價和區域](https://azure.microsoft.com/pricing/details/search/)
 + [選擇階層。](search-sku-tier.md)
@@ -69,11 +69,11 @@ In this article, you'll learn how to:
 
 - Ensure that the services and features that your account uses are supported in the target region.
 
-- For preview features, ensure that your subscription is whitelisted for the target region. For more information about preview features, see [knowledge stores](https://docs.microsoft.com/azure/search/knowledge-store-concept-intro), [incremental enrichment](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual), and [private endpoint](https://docs.microsoft.com/azure/search/service-create-private-endpoint).
+- For preview features, ensure that your subscription is whitelisted for the target region. For more information about preview features, see [knowledge stores](./knowledge-store-concept-intro.md), [incremental enrichment](./cognitive-search-incremental-indexing-conceptual.md), and [private endpoint](./service-create-private-endpoint.md).
 
 ## Assessment and planning
 
-When you move your search service to the new region, you will need to [move your data to the new storage service](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#configure-the-new-storage-account) and then rebuild your indexes, skillsets and knowledge stores. You should record current settings and copy json files to make the rebuilding of your service easier and faster.
+When you move your search service to the new region, you will need to [move your data to the new storage service](../storage/common/storage-account-move.md?tabs=azure-portal#configure-the-new-storage-account) and then rebuild your indexes, skillsets and knowledge stores. You should record current settings and copy json files to make the rebuilding of your service easier and faster.
 
 ## Moving your search service's resources
 
@@ -167,7 +167,7 @@ To obtain region location codes, see [Azure Locations](https://azure.microsoft.c
 
 To verify the move, open the new resource group and your services will be listed with the new region.
 
-To move your data from your source region to the target region, please see this article's guidelines for [moving your data to the new storage account](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#move-data-to-the-new-storage-account).
+To move your data from your source region to the target region, please see this article's guidelines for [moving your data to the new storage account](../storage/common/storage-account-move.md?tabs=azure-portal#move-data-to-the-new-storage-account).
 
 ## Clean up resources in your original region
 
@@ -175,8 +175,8 @@ To commit the changes and complete the move of your service account, delete the 
 
 ## Next steps
 
-[Create an index](https://docs.microsoft.com/azure/search/search-get-started-portal)
+[Create an index](./search-get-started-portal.md)
 
-[Create a skillset](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)
+[Create a skillset](./cognitive-search-quickstart-blob.md)
 
-[Create a knowledge store](https://docs.microsoft.com/azure/search/knowledge-store-create-portal) -->
+[Create a knowledge store](./knowledge-store-create-portal.md) -->

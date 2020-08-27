@@ -1,44 +1,44 @@
 ---
 title: 將語言分析器新增至字串欄位
 titleSuffix: Azure Cognitive Search
-description: Azure 認知搜尋中非英文查詢和索引的多語言詞法分析。
+description: Azure 認知搜尋中非英文查詢和索引的多重語言詞法分析。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 8f0909ee1cdce1e6180b91a30b2e9b281098c826
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bda186f6bb45250763e439b77b4d3af988574401
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130546"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935873"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>將語言分析器新增至 Azure 認知搜尋索引中的字串欄位
 
-「語言分析器」** 是特定類型的[文字分析器](search-analyzers.md)，能使用目標語言的語言規則來執行語彙分析。 每個可搜尋的欄位都會有 **analyzer** 屬性。 如果您的內容包含翻譯的字串（例如，英文和中文文字的個別欄位），您可以在每個欄位上指定語言分析器，以存取這些分析器的豐富語言功能。
+「語言分析器」** 是特定類型的[文字分析器](search-analyzers.md)，能使用目標語言的語言規則來執行語彙分析。 每個可搜尋的欄位都會有 **analyzer** 屬性。 如果您的內容包含翻譯的字串（例如英文和中文文字的個別欄位），您可以在每個欄位上指定語言分析器，以存取這些分析器的豐富語言功能。
 
 ## <a name="when-to-use-a-language-analyzer"></a>使用語言分析器的時機
 
-當您察覺 word 或句子結構時，應該考慮使用語言分析器，將值加入至文字剖析。 常見的範例是不正常的動詞表單（「帶入」和「帶」）或複數名詞（「滑鼠」和「滑鼠」）的關聯。 如果沒有語言感知，這些字串只會以實體特性進行剖析，而無法攔截連接。 由於大型文字區塊較可能具有此內容，因此包含描述、評論或摘要的欄位是語言分析器的絕佳候選項目。
+當 word 或句子結構的認知將值新增至文字剖析時，您應該考慮使用語言分析器。 常見的範例是將不規則動詞形式的關聯 ( 「攜帶」和「將) 或複數名詞 ( 「老鼠」和「滑鼠」 ) 。 在沒有語言感知的情況下，這些字串只會在實體特性上進行剖析，而無法攔截連接。 因為較大的文字區塊可能具有此內容，所以包含描述、評論或摘要的欄位是語言分析器的絕佳候選項目。
 
-當內容包含非西歐語言字串時，您也應該考慮語言分析器。 雖然[預設分析器](search-analyzers.md#default-analyzer)與語言無關，但是使用空格和特殊字元（連字號和斜線）來分隔字串的概念，通常會比非西方語言更適用于西方語言。 
+當內容包含非西歐語言字串時，您也應該考慮語言分析器。 雖然 [預設分析器](search-analyzers.md#default-analyzer) 與語言無關，但使用空格和特殊字元的概念 (連字號和斜線) 分隔字串，通常比非西方語言更適用西方語言。 
 
-例如，在中文、日文、韓文（CJK）和其他亞洲語言中，空格不一定是文字分隔符號。 請考慮下列日文字串。 因為它沒有空格，所以與語言無關的分析器可能會將整個字串當做一個標記來分析，事實上，字串實際上是一個片語。
+例如，在中文、日文、韓文 (CJK) 和其他亞洲語言中，空格不一定是單字分隔符號。 請考慮下列日文字串。 因為它沒有空格，所以與語言無關的分析器可能會將整個字串分析為一個標記，事實上字串實際上是一個片語。
 
 ```
 これは私たちの銀河系の中ではもっとも重く明るいクラスの球状星団です。
 (This is the heaviest and brightest group of spherical stars in our galaxy.)
 ```
 
-在上述範例中，成功的查詢必須包含完整的 token，或使用後置字元萬用字元的部分權杖，因而導致非自然並限制搜尋體驗。
+在上述範例中，成功的查詢必須包含完整權杖或使用後置萬用字元的部分權杖，以產生非自然和限制搜尋體驗。
 
-更好的體驗是搜尋個別單字：明るい（鮮）、私たちの（我們的）、銀河系（Galaxy）。 使用認知搜尋中提供的其中一個日文分析器比較可能解除鎖定此行為，因為這些分析器較適合將文字區塊分割成目的語言中有意義的文字。
+更好的體驗是搜尋個別的單字：明るい (鮮) 、私たちの () 、銀河系 (Galaxy) 。 使用認知搜尋中提供的其中一個日文分析器比較有可能解除鎖定這種行為，因為這些分析器可以更妥善地將文字區塊分割成目的語言中有意義的文字。
 
 ## <a name="comparing-lucene-and-microsoft-analyzers"></a>比較 Lucene 和 Microsoft 分析器
 
-Azure 認知搜尋支援以 Lucene 支援的35語言分析器，以及由 Office 和 Bing 中使用之專利 Microsoft 自然語言處理技術所支援的50語言分析器。
+Azure 認知搜尋支援 Lucene 所支援的35語言分析器，以及由 Office 和 Bing 使用的專屬 Microsoft 自然語言處理技術所支援的50語言分析器。
 
 一些開發人員可能偏好使用更熟悉、簡單且開放原始碼的 Lucene 解決方案。 Lucene 語言分析器速度較快，但 Microsoft 分析器具備進階功能，例如詞形歸併還原、複合字詞拆分 (適用於德文、丹麥文、荷蘭文、瑞典文、挪威文、愛沙尼亞文、芬蘭文、匈牙利文、斯洛伐克文等語言) 和實體辨識 (URL、電子郵件、日期、數字)。 如果可以，您應該進行 Microsoft 和 Lucene 分析器的比較，以決定哪一個比較適合。 
 
@@ -50,18 +50,18 @@ Azure 認知搜尋支援以 Lucene 支援的35語言分析器，以及由 Office
  
 + Lucene 的英文分析器能擴充標準分析器。 它會從字詞中移除所有格 (結尾的 's)、為每個 Porter 詞幹演算法套用詞幹，然後移除英文停用字詞。  
 
-+ Microsoft 的英文分析器會執行詞形的歸併還原，而不是詞幹分析。 這表示它可以處理屈折變化和不規則的文字形式，而使其產生更相關的搜尋結果。 
++ Microsoft 的英文分析器會執行詞形的歸併還原，而不是詞幹分析。 這表示它可以更妥善地處理屈折變化和不規則的文字表單，以產生更相關的搜尋結果 
 
 ## <a name="configuring-analyzers"></a>設定分析器
 
 語言分析器是以現況使用。 針對索引定義中的每一個欄位，您可以將 **analyzer** 屬性設為能指定語言和語言堆疊 (Microsoft 或 Lucene) 的分析器名稱。 搜尋與編制該欄位索引時會套用相同的分析器。 例如，您可以有個別適用於英文、法文及西班牙文旅館說明的欄位，這些欄位會在相同的索引中並列存在。
 
 > [!NOTE]
-> 在索引時間與欄位的查詢期間，不可能使用不同的語言分析器。 這項功能會保留給[自訂分析器](index-add-custom-analyzers.md)。 基於這個理由，如果您嘗試將**searchAnalyzer**或**indexAnalyzer**屬性設定為語言分析器的名稱，REST API 將會傳回錯誤回應。 您必須改用**analyzer**屬性。
+> 在編制索引時，不能使用不同的語言分析器，而是在欄位的查詢時使用。 這項功能已保留給 [自訂分析器](index-add-custom-analyzers.md)。 基於這個理由，如果您嘗試將 **>searchanalyzer** 或 **>indexanalyzer** 屬性設定為語言分析器的名稱，REST API 將會傳回錯誤回應。 您必須改為使用 **分析器** 屬性。
 
-使用 **searchFields** 查詢參數來指定針對查詢所要搜尋的語言特定欄位。 您可以在[搜尋檔](https://docs.microsoft.com/rest/api/searchservice/search-documents)中查看包含 analyzer 屬性的查詢範例。 
+使用 **searchFields** 查詢參數來指定針對查詢所要搜尋的語言特定欄位。 您可以在 [搜尋檔](/rest/api/searchservice/search-documents)中查看包含分析器屬性的查詢範例。 
 
-如需索引屬性的詳細資訊，請參閱[Create index &#40;Azure 認知搜尋 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)。 如需有關 Azure 認知搜尋中分析的詳細資訊，請參閱[Azure 認知搜尋中的分析器](https://docs.microsoft.com/azure/search/search-analyzers)。
+如需索引屬性的詳細資訊，請參閱 [建立索引 &#40;Azure 認知搜尋 REST API&#41;](/rest/api/searchservice/create-index)。 如需 Azure 認知搜尋中分析的詳細資訊，請參閱 [Azure 認知搜尋中的分析器](./search-analyzers.md)。
 
 <a name="language-analyzer-list"></a>
 
@@ -86,7 +86,7 @@ Azure 認知搜尋支援以 Lucene 支援的35語言分析器，以及由 Office
 |愛沙尼亞文|et.microsoft||  
 |芬蘭文|fi.microsoft|fi.lucene|  
 |法文|fr.microsoft|fr.lucene|  
-|加里斯亞文||gl.lucene|  
+|加利西亞文||gl.lucene|  
 |德文|de.microsoft|de.lucene|  
 |希臘文|el.microsoft|el.lucene|  
 |古吉拉特文|gu.microsoft||  
@@ -129,9 +129,8 @@ Azure 認知搜尋支援以 Lucene 支援的35語言分析器，以及由 Office
 
  所有名稱加上 **Lucene** 註解的分析器都是由 [Apache Lucene 的語言分析器](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ) \(英文\) 所提供。
 
-## <a name="see-also"></a>另請參閱  
+## <a name="see-also"></a>請參閱  
 
-+ [建立 Azure 認知搜尋 REST API&#41;的索引 &#40;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
++ [建立索引 &#40;Azure 認知搜尋 REST API&#41;](/rest/api/searchservice/create-index)  
 
-+ [AnalyzerName 類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername) \(英文\)  
-
++ [AnalyzerName 類別](/dotnet/api/microsoft.azure.search.models.analyzername) \(英文\)

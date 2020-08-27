@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/21/2020
+ms.date: 08/26/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cdee82ddae7f6edf43765063bb610b743dbf0121
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: edb5836ace6f7a1a0cff703b9921f6e6999de578
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88809813"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944508"
 ---
 啟用共用磁片只適用于磁片類型的子集。 目前只有 ultra 磁片和 premium Ssd 可以啟用共用磁片。 啟用共用磁片的每個受控磁片受限於下列限制，並依磁片類型組織：
 
@@ -50,10 +50,15 @@ Ultra 磁片有各自不同的限制清單，與共享磁片無關。 如需 ult
 - 美國西部 2
 - 美國中西部
 - 美國中南部
+- 美國中北部
 - 美國中部
+- 西歐
+- 北歐
 - 南韓中部
 - 加拿大中部
 - 加拿大東部
+- 日本東部
+- 日本西部
 - US Gov 維吉尼亞州
 - US Gov 亞利桑那州
 

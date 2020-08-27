@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fd405513f8bdef09e6d3ab996fc2c04bd397db13
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 72d00b70cf3568466715668aa441ee295614c740
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659433"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935240"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>使用 Azure 認知搜尋將全文檢索搜尋新增至 Azure Blob 資料
 
@@ -75,5 +75,5 @@ Blob 索引子隨附設定參數，如果底層資料提供足夠的資訊，則
 
 ## <a name="next-steps"></a>後續步驟
 
-+ [使用 Azure 入口網站上傳、下載及列出 Blob (Azure Blob 儲存體)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-+ [設定 Blob 索引子 (Azure 認知搜尋)](search-howto-indexing-azure-blob-storage.md) 
++ [使用 Azure 入口網站上傳、下載及列出 Blob (Azure Blob 儲存體)](../storage/blobs/storage-quickstart-blobs-portal.md)
++ [設定 Blob 索引子 (Azure 認知搜尋)](search-howto-indexing-azure-blob-storage.md)

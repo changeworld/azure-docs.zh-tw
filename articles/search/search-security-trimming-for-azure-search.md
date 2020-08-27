@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496412"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928518"
 ---
-# <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Azure 認知搜尋中用於修剪結果的安全性篩選
+# <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Azure 認知搜尋中修剪結果的安全性篩選
 
-您可以套用安全性篩選，以根據使用者身分識別，在 Azure 認知搜尋中修剪搜尋結果。 在此種搜尋體驗中，通常需要將要求搜尋之人員的身分識別與含有具文件權限主體的欄位互相比較。 找到相符結果時，使用者或主體 (例如群組或角色) 即具有該文件的存取權。
+您可以套用安全性篩選，根據使用者身分識別，在 Azure 認知搜尋中修剪搜尋結果。 在此種搜尋體驗中，通常需要將要求搜尋之人員的身分識別與含有具文件權限主體的欄位互相比較。 找到相符結果時，使用者或主體 (例如群組或角色) 即具有該文件的存取權。
 
 達成安全性篩選的其中一種方式，是透過等號比較運算式的負責分離執行：例如 `Id eq 'id1' or Id eq 'id2'` 等等。 此作法很容易發生錯誤且難以維護，若清單包含數以百計或千計的值，則會使查詢回應時間慢上數秒鐘。 
 
@@ -27,14 +27,14 @@ ms.locfileid: "86496412"
 > [!div class="checklist"]
 > * 建立包含主體識別碼的欄位 
 > * 推送或更新具有相關主體識別碼的現有文件
-> * 使用 `search.in` 發出搜尋要求`filter`
+> * 發出搜尋要求 `search.in``filter`
 
 >[!NOTE]
 > 本文件未多加說明擷取主體識別碼的流程。 您應從身分識別服務提供者處取得主體識別碼。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-本文假設您有[azure 訂](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)用帳戶、[azure 認知搜尋服務](search-create-service-portal.md)和[索引](search-what-is-an-index.md)。  
+本文假設您有 [Azure 訂](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)用帳戶、[Azure 認知搜尋服務](search-create-service-portal.md)和 [索引](search-what-is-an-index.md)。  
 
 ## <a name="create-security-field"></a>建立安全性欄位
 
@@ -109,13 +109,13 @@ api-key: [admin key]
 }
 ```
 
-如需與新增或更新文件相關的完整詳細資料，請參閱[編輯文件](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)\(英文\)。
+如需與新增或更新文件相關的完整詳細資料，請參閱[編輯文件](/rest/api/searchservice/addupdate-or-delete-documents)\(英文\)。
    
 ## <a name="apply-the-security-filter"></a>套用安全性篩選條件
 
 若要根據 `group_ids` 存取權限調整文件，您應透過 `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` 篩選條件發出搜尋查詢，其中 'group_id1, group_id2,...' 是搜尋要求簽發者的所屬群組。
 `group_ids` 欄位包含其中一個指定識別碼的所有文件均符合此篩選條件。
-如需使用 Azure 認知搜尋來搜尋檔的完整詳細資料，您可以閱讀[搜尋檔](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
+如需使用 Azure 認知搜尋來搜尋檔的完整詳細資料，您可以閱讀 [搜尋檔](/rest/api/searchservice/search-documents)。
 請注意，此範例會示範如何使用 POST 要求搜尋文件。
 
 發出 HTTP POST 要求：
@@ -154,10 +154,10 @@ api-key: [admin or query key]
 ```
 ## <a name="conclusion"></a>結論
 
-這是您可以根據使用者身分識別和 Azure 認知搜尋功能來篩選結果的方式 `search.in()` 。 您可以使用此函式來傳入要求使用者的原則識別碼，以符合與每個目的檔案相關聯的主體識別碼。 處理搜尋要求時，`search.in` 函式會篩選出沒有任何使用者主體具備讀取權限的搜尋結果。 主體識別碼可代表安全性群組、角色等等，甚至可代表使用者的專屬身分識別。
+這是您可以根據使用者身分識別和 Azure 認知搜尋功能來篩選結果的方式 `search.in()` 。 您可以使用此函式傳遞要求使用者的主體識別碼，使其符合與每個目的檔案相關聯的主體識別碼。 處理搜尋要求時，`search.in` 函式會篩選出沒有任何使用者主體具備讀取權限的搜尋結果。 主體識別碼可代表安全性群組、角色等等，甚至可代表使用者的專屬身分識別。
  
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
-+ [使用 Azure 認知搜尋篩選器 Active Directory 身分識別型存取控制](search-security-trimming-for-azure-search-with-aad.md)
++ [使用 Azure 認知搜尋篩選 Active Directory 身分識別型存取控制](search-security-trimming-for-azure-search-with-aad.md)
 + [Azure 認知搜尋中的篩選](search-filters.md)
-+ [Azure 認知搜尋作業中的資料安全性和存取控制](search-security-overview.md)
++ [Azure 認知搜尋作業中的資料安全性與存取控制](search-security-overview.md)

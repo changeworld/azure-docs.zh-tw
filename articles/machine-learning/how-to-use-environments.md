@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1994407de579e8fd7bc6dfc2ecc9f021d1bf0ec5
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 3368a42248e084476eb27318abbcd1ca9fbfdacf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853251"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927539"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure Machine Learning 中建立 & 使用軟體環境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "88853251"
 
 如需有關環境如何在 Azure Machine Learning 中運作的概要資訊，請參閱 [什麼是 ML 環境？](concept-environments.md) 如需設定開發環境的詳細資訊，請參閱 [這裡](how-to-configure-environment.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)
@@ -242,7 +242,11 @@ build = env.build(workspace=ws)
 build.wait_for_completion(show_output=True)
 ```
 
-先使用方法在本機建立映射很有用 [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-local-workspace--platform-none----kwargs-) 。 而且，設定選擇性參數 `pushImageToWorkspaceAcr = True` 會將產生的映射推送至 AZURE ML 工作區容器登錄。 
+先使用方法在本機建立映射很有用 [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-local-workspace--platform-none----kwargs-) 。 若要建立 docker 映射，請設定選用參數 `useDocker=True` 。 若要將產生的映射推送至 AzureML 工作區 container registry，請設定 `pushImageToWorkspaceAcr=True` 。
+
+```python
+build = env.build_local(workspace=ws, useDocker=True, pushImageToWorkspaceAcr=True)
+```
 
 > [!WARNING]
 >  在環境中變更相依性或通道的順序，將會產生新的環境，並需要新的映射組建。 此外， `build()` 如果有新的版本，呼叫現有映射的方法將會更新其相依性。 

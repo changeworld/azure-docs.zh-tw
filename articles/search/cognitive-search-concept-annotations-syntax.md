@@ -1,21 +1,21 @@
 ---
 title: 參考技能集中的輸入和輸出
 titleSuffix: Azure Cognitive Search
-description: 說明注釋語法，以及如何在 Azure 認知搜尋中的 AI 擴充管線中，參考技能集的輸入和輸出中的注釋。
+description: 說明批註語法，以及如何在 Azure 認知搜尋的 AI 擴充管線中，參考技能集輸入和輸出中的注釋。
 manager: nitinme
 author: LuisCabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03431d861ca6d469b894e45c36fe2a3d7904c3a2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113862"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935529"
 ---
-# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>如何參考 Azure 認知搜尋技能集中的批註
+# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>如何參考 Azure 認知搜尋技能集中的注釋
 
 在本文中，我們將使用範例說明各種案例，讓您了解如何參考技能定義中的註解。 當文件內容流經技能集時，將會增添註解而有所擴充。 註解可以作為進一步下游擴充的輸入，或對應至索引中的輸出欄位。 
  
@@ -33,7 +33,7 @@ ms.locfileid: "74113862"
 <a name="example-1"></a>
 ## <a name="example-1-simple-annotation-reference"></a>範例 1：簡單註解參考
 
-在 Azure Blob 儲存體中，假設您有各種檔案包含您想要使用實體辨識來解壓縮的人員名稱參考。 在下列技能定義中，`"/document/content"` 是整份文件的文字表示法，而 "people" 則是對識別為人員的實體擷取到的完整名稱。
+在 Azure Blob 儲存體中，假設您有各式各樣的檔案，其中包含您想要使用實體辨識來解壓縮之人員名稱的參考。 在下列技能定義中，`"/document/content"` 是整份文件的文字表示法，而 "people" 則是對識別為人員的實體擷取到的完整名稱。
 
 由於預設內容為 `"/document"`，因此人員清單此時可以參考為 `"/document/people"`。 在這種情況下，`"/document/people"` 是註解，且此時有可能對應至索引中的欄位，或用於相同技能集中的另一項技能。
 
@@ -120,8 +120,8 @@ ms.locfileid: "74113862"
 
 
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 + [如何將自訂技能整合到擴充管線中](cognitive-search-custom-skill-interface.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
-+ [建立技能集 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [建立技能集 (REST)](/rest/api/searchservice/create-skillset)
 + [如何將擴充的欄位對應至索引](cognitive-search-output-field-mapping.md)

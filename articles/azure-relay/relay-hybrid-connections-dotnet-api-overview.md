@@ -1,14 +1,15 @@
 ---
 title: Azure 轉送 .NET Standard API 概觀 | Microsoft Docs
-description: 本文摘要說明 Azure 轉送混合式連線 .NET Standard API 的一些重要概述。
+description: 本文摘要說明 Azure 轉送混合式連線 .NET Standard API 的一些重點。
 ms.topic: article
+ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 1d5aeed2ea76f47608ef03103b11fa236ec0362e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 44d5800c08b49118e99a678e31d02e5b7a1f550c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532895"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935665"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure 轉送混合式連線 .NET Standard API 概觀
 
@@ -69,7 +70,7 @@ await listener.OpenAsync();
 var hybridConnectionStream = await listener.AcceptConnectionAsync();
 ```
 
-#### <a name="client"></a>用戶端
+#### <a name="client"></a>Client
 
 使用 [HybridConnectionClient][HCClient] 物件，您可以取得如下的 `HybridConnectionStream` 物件︰
 

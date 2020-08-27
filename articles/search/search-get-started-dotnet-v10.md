@@ -1,7 +1,7 @@
 ---
 title: '舊版 c # 快速入門'
 titleSuffix: Azure Cognitive Search
-description: '這個 c # 快速入門會使用第10版用戶端程式庫 (Microsoft. Azure. Search) 來建立、載入和查詢搜尋索引。'
+description: '此 c # 快速入門使用第10版的用戶端程式庫 (的) 來建立、載入及查詢搜尋索引。'
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,27 +9,27 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 4a8a2455ea3e5889293cb8285f36699942a46437
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d0391f3724533410a66f8d01bf77f5a3c5c8d9da
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209333"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936719"
 ---
-# <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>快速入門：使用 Microsoft. Azure 搜尋服務 v10 用戶端程式庫來建立搜尋索引
+# <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>快速入門：使用 Microsoft Azure 搜尋 v10 用戶端程式庫建立搜尋索引
 
-本文是舊版 Microsoft. Azure 搜尋服務的 c # 快速入門 (版本 10) 用戶端程式庫，現在已由 Azure.Search.Documents (版本 11) 用戶端程式庫取代。 如果您有使用 Microsoft. Azure 搜尋程式庫的現有搜尋解決方案，您可以使用本快速入門來瞭解這些 Api。 
+本文是舊版 Microsoft 的 c # 快速入門 (版本 10) 用戶端程式庫，現在已由 Azure.Search.Documents (第11版) 用戶端程式庫取代。 如果您有現有的搜尋解決方案可使用 Microsoft Azure 搜尋程式庫，您可以使用本快速入門來瞭解這些 Api。 
 
 針對新的解決方案，我們建議新的 Azure.Search.Documents 程式庫。 如需簡介，請參閱 [快速入門：使用 Azure.Search.Documents 程式庫建立搜尋索引](search-get-started-dotnet.md)。
 
 ## <a name="about-this-quickstart"></a>關於本快速入門
 
-在 c # 中建立 .NET Core 主控台應用程式，以使用 Visual Studio 和 [Microsoft. Azure 搜尋用戶端程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/search/client10?view=azure-dotnet)來建立、載入和查詢 Azure 認知搜尋索引。 
+使用 c # 建立 .NET Core 主控台應用程式，以使用 Visual Studio 和 [Azure 搜尋用戶端程式庫](/dotnet/api/overview/azure/search/client10?view=azure-dotnet)建立、載入和查詢 Azure 認知搜尋索引。 
 
 本文說明如何建立應用程式。 您也可以 [下載並執行完整的應用程式](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v10)。
 
 > [!NOTE]
-> 本文中的示範程式碼會使用 Azure 認知搜尋第10版 .NET SDK 的同步方法來簡化。 不過，針對生產案例，我們建議您在您自己的應用程式中使用非同步方法，讓應用程式保有可擴充性且回應靈敏。 例如，您可以使用 `CreateAsync` 與 `DeleteAsync`，而非 `Create` 與 `Delete`。
+> 為了簡單起見，本文中的示範程式碼會使用 Azure 認知搜尋版本 10 .NET SDK 的同步方法。 不過，針對生產案例，我們建議您在您自己的應用程式中使用非同步方法，讓應用程式保有可擴充性且回應靈敏。 例如，您可以使用 `CreateAsync` 與 `DeleteAsync`，而非 `Create` 與 `Delete`。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -47,9 +47,9 @@ ms.locfileid: "88209333"
 
 在每個對服務發出呼叫的要求上，都需要 URL 端點和存取金鑰。 建立搜尋服務時需要這兩項資料，因此如果您將 Azure 認知搜尋新增至您的訂用帳戶，請依照下列步驟來取得必要的資訊：
 
-1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀] 頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
+1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀]  頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
 
-2. 在 [設定] >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
+2. 在 [設定]   >  [金鑰]  中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
    一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
 
@@ -63,15 +63,15 @@ ms.locfileid: "88209333"
 
 ### <a name="install-nuget-packages"></a>安裝 NuGet 套件
 
-「 [Microsoft Azure 搜尋套件](https://www.nuget.org/packages/Microsoft.Azure.Search/) 」是由幾個以 NuGet 套件形式散發的用戶端程式庫所組成。
+[Azure 搜尋套件](https://www.nuget.org/packages/Microsoft.Azure.Search/)包含一些以 NuGet 套件形式散發的用戶端程式庫。
 
-針對此專案，請使用版本10的 `Microsoft.Azure.Search` nuget 套件和最新的 `Microsoft.Extensions.Configuration.Json` nuget 套件。
+針對此專案，請使用第10版的 `Microsoft.Azure.Search` nuget 套件和最新的 `Microsoft.Extensions.Configuration.Json` nuget 套件。
 
 1. 在 [工具] > [NuGet 套件管理員] 中，選取 [管理解決方案的 NuGet 套件] 中。 
 
 1. 按一下 **[瀏覽]** 。
 
-1. 搜尋 `Microsoft.Azure.Search` 並選取 [第10版]。
+1. 搜尋 `Microsoft.Azure.Search` 並選取第10版。
 
 1. 按一下右邊的 [安裝] 以將組件新增到您的r專案與解決方案。
 
@@ -98,11 +98,11 @@ ms.locfileid: "88209333"
     }
     ```
 
-1. 將搜尋服務名稱 (YOUR-SEARCH-SERVICE-NAME) 與系統管理 API 金鑰 (YOUR-ADMIN-API-KEY) 取代為有效的值。 如果您的服務端點是 `https://mydemo.search.windows.net` ，服務名稱會是 " `mydemo` "。
+1. 將搜尋服務名稱 (YOUR-SEARCH-SERVICE-NAME) 與系統管理 API 金鑰 (YOUR-ADMIN-API-KEY) 取代為有效的值。 如果您的服務端點為 `https://mydemo.search.windows.net` ，服務名稱會是 " `mydemo` "。
 
 ### <a name="add-class-method-files-to-your-project"></a>新增類別 ".Method" 檔案到您的專案
 
-需要執行此步驟，才能在主控台中產生有意義的輸出。 當您將結果列印到主控台視窗時，來自 Hotel 專案的個別欄位必須以字串形式傳回。 此步驟會執行 [ToString()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) 來執行這項工作，您可以將必要的程式碼複製到兩個新的檔案來完成這項工作。
+需要執行此步驟，才能在主控台中產生有意義的輸出。 當您將結果列印到主控台視窗時，來自 Hotel 專案的個別欄位必須以字串形式傳回。 此步驟會執行 [ToString()](/dotnet/api/system.object.tostring?view=netframework-4.8) 來執行這項工作，您可以將必要的程式碼複製到兩個新的檔案來完成這項工作。
 
 1. 新增兩個空類別定義到您的專案：Address.Methods.cs、Hotel.Methods.cs
 
@@ -197,15 +197,15 @@ Hotels 索引由簡單與複雜欄位組成，其中簡單欄位是 "HotelName" 
     欄位上的屬性決定它如何在應用程式中使用。 例如，`IsSearchable` 屬性必須指派給應該包括在全文檢索搜尋中的每個欄位。 
     
     > [!NOTE]
-    > 在 .NET SDK 中，欄位必須明確地屬性化為 [`IsSearchable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet)、[`IsFilterable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)、[`IsSortable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet) 與 [`IsFacetable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet)。 此行為與 REST API 形成對比，後者隱含啟用以資料類型為基礎的屬性 (例如，簡單的字串欄位可自動搜尋)。
+    > 在 .NET SDK 中，欄位必須明確地屬性化為 [`IsSearchable`](/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet)、[`IsFilterable`](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)、[`IsSortable`](/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet) 與 [`IsFacetable`](/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet)。 此行為與 REST API 形成對比，後者隱含啟用以資料類型為基礎的屬性 (例如，簡單的字串欄位可自動搜尋)。
 
     只有類型為 `string` 索引中的一個欄位才必須是「索引鍵」欄位，它會識別每個文件。 在此結構描述中，索引鍵是 `HotelId`。
 
-    在此索引中，描述欄位使用選擇性的 [`analyzer`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) 屬性，這是在當您想要覆寫預設標準 Lucene 分析器時指定的。 `description_fr` 欄位使用法文 Lucene 分析器 ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet))，因為它會儲存法文文字。 `description` 是使用選擇性的 Microsoft 語言分析器 ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet))。
+    在此索引中，描述欄位使用選擇性的 [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) 屬性，這是在當您想要覆寫預設標準 Lucene 分析器時指定的。 `description_fr` 欄位使用法文 Lucene 分析器 ([FrLucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet))，因為它會儲存法文文字。 `description` 是使用選擇性的 Microsoft 語言分析器 ([EnMicrosoft](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet))。
 
-1. 在Program.cs 中，建立 [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) 類別的執行個體以使用儲存在應用程式設定檔 (appsettings.json) 中的值連線到該服務。 
+1. 在Program.cs 中，建立 [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) 類別的執行個體以使用儲存在應用程式設定檔 (appsettings.json) 中的值連線到該服務。 
 
-   `SearchServiceClient` 具有 [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) 屬性，它提供建立、列出、更新或刪除 Azure 認知搜尋索引所需的所有方法。 
+   `SearchServiceClient` 具有 [`Indexes`](/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) 屬性，它提供建立、列出、更新或刪除 Azure 認知搜尋索引所需的所有方法。 
 
     ```csharp
     using System;
@@ -305,7 +305,7 @@ Hotels 索引由簡單與複雜欄位組成，其中簡單欄位是 "HotelName" 
 
 在 Azure 認知搜尋中，文件是同時屬於索引輸入與查詢輸出的資料結構。 如同從外部資料來源所取得的一樣，文件輸入可能是資料庫中的資料列，Blob 儲存體中的 Blob 或磁碟上的 JSON 文件。 在此範例中，我們採用捷徑，並針對程式碼本身中的四家旅館內嵌 JSON 文件。 
 
-當上傳文件時，您必須使用 [`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 物件。 `IndexBatch` 包含 [`IndexAction`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) 物件的集合，每個物件都包含文件與屬性，後者會告知 Azure 認知搜尋所應執行的動作 ([上傳、合併、刪除及 mergeOrUpload](search-what-is-data-import.md#indexing-actions))。
+當上傳文件時，您必須使用 [`IndexBatch`](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 物件。 `IndexBatch` 包含 [`IndexAction`](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) 物件的集合，每個物件都包含文件與屬性，後者會告知 Azure 認知搜尋所應執行的動作 ([上傳、合併、刪除及 mergeOrUpload](search-what-is-data-import.md#indexing-actions))。
 
 1. 在 Program.cs 中，建立文件與索引動作的索引，然後將該陣列傳遞到 `IndexBatch`。 下面的文件符合旅館快速入門索引，如旅館與地址類別所定義。
 
@@ -427,7 +427,7 @@ Hotels 索引由簡單與複雜欄位組成，其中簡單欄位是 "HotelName" 
     }
     ```
 
-    初始化 `IndexBatch` 物件之後，您可以將它傳送到索引，方式是呼叫您 [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) 物件上的 [`Documents.Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet)。 `Documents` 是 `SearchIndexClient` 的屬性，此物件提供的方法可用來新增、修改、刪除或查詢您索引中的文件。
+    初始化 `IndexBatch` 物件之後，您可以將它傳送到索引，方式是呼叫您 [`SearchIndexClient`](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) 物件上的 [`Documents.Index`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet)。 `Documents` 是 `SearchIndexClient` 的屬性，此物件提供的方法可用來新增、修改、刪除或查詢您索引中的文件。
 
     對 `Index` 方法之呼叫周圍的 `try`/`catch` 會追補索引失敗，當您的服務負載很高時可能會發生索引失敗。 在生產程式碼中，您可以延遲，然後重新重新為失敗的文件編製索引，或像範例一樣記錄失敗狀況並繼續，或是根據您應用程式的資料一致性需求處理失敗狀況。
 
@@ -451,10 +451,10 @@ Hotels 索引由簡單與複雜欄位組成，其中簡單欄位是 "HotelName" 
 
 您可以在系統為第一個文件編製索引之後立即取得結果，但索引的實際測試應該等到系統為所有文件編製索引之後才進行。 
 
-此節新增兩個功能：查詢邏輯，以及結果。 針對查詢，請使用 [`Search`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search?view=azure-dotnet
-) 方法。 此方法接受查詢文件與其他[參數](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters?view=azure-dotnet) \(英文\)。 
+此節新增兩個功能：查詢邏輯，以及結果。 針對查詢，請使用 [`Search`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search?view=azure-dotnet
+) 方法。 此方法接受查詢文件與其他[參數](/dotnet/api/microsoft.azure.search.models.searchparameters?view=azure-dotnet) \(英文\)。 
 
-[`DocumentsSearchResult`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1?view=azure-dotnet) 類別代表結果。
+[`DocumentsSearchResult`](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1?view=azure-dotnet) 類別代表結果。
 
 
 1. 在 Program.cs 中，建立會將結果列印到主控台的 WriteDocuments 方法。
@@ -570,4 +570,4 @@ Hotels 索引由簡單與複雜欄位組成，其中簡單欄位是 "HotelName" 
 想要最佳化並節省您的雲端費用嗎？
 
 > [!div class="nextstepaction"]
-> [使用成本管理開始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [使用成本管理開始分析成本](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

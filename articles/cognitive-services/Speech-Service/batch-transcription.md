@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: wolfma
-ms.openlocfilehash: b30a314977755b94bdcfdf7526d1b9ae61fcf100
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5be3b4ce5d89a15009f2b9b31183400890dbefb5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689740"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918939"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批次轉譯
 
@@ -40,7 +41,7 @@ ms.locfileid: "88689740"
 批次轉譯作業會以最大量的方式進行排程。
 您無法預估工作何時會變更為「執行中」狀態，但它應該會在正常系統載入的幾分鐘內發生。 一旦處於執行中狀態，轉譯的速度會比音訊執行時間的播放速度快。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 如同語音服務的所有功能，您可以依照我們的[快速入門指南](get-started.md)從 [Azure 入口網站](https://portal.azure.com)建立訂用帳戶金鑰。
 
@@ -62,7 +63,7 @@ ms.locfileid: "88689740"
 針對身歷聲音訊串流，會在轉譯期間分割左邊和右邊的通道。 正在為每個通道建立 JSON 結果檔。
 若要建立已排序的最終文字記錄，請使用每個語句所產生的時間戳記。
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 設定參數會以 JSON 形式提供 (一或多個個別檔案) ：
 

@@ -1,18 +1,18 @@
 ---
 title: 使用連結的範本建立範本規格
-description: 瞭解如何使用連結的範本來建立範本規格。
+description: 瞭解如何使用連結的範本建立範本規格。
 ms.topic: conceptual
-ms.date: 07/22/2020
-ms.openlocfilehash: b952baa465092fef19ad2feb11a43328a6177d1c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/26/2020
+ms.openlocfilehash: 49a26bf61c3c66f41761afe293471575e76c4eb9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387858"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936362"
 ---
-# <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>教學課程：使用連結的範本建立範本規格（預覽）
+# <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>教學課程：使用連結的範本建立範本規格 (預覽) 
 
-瞭解如何使用[連結的範本](linked-templates.md#linked-template)來建立[範本規格](template-specs.md)。 您可以使用範本規格，與組織中的其他使用者共用 ARM 範本。 本文說明如何使用 `relativePath` [部署資源](/azure/templates/microsoft.resources/deployments)的新屬性，建立範本規格來封裝主要範本及其連結的範本。
+瞭解如何使用[連結的範本](linked-templates.md#linked-template)建立[範本規格](template-specs.md)。 您可以使用範本規格，與組織中的其他使用者共用 ARM 範本。 本文說明如何使用 `relativePath` [部署資源](/azure/templates/microsoft.resources/deployments)的新屬性，建立範本規格來封裝主要範本及其連結的範本。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -25,17 +25,17 @@ ms.locfileid: "87387858"
 
 建立主要範本和連結的範本。
 
-若要連結範本，請將[部署資源](/azure/templates/microsoft.resources/deployments)新增至您的主要範本。 在 `templateLink` 屬性中，根據父範本的路徑指定連結範本的相對路徑。
+若要連結範本，請將 [部署資源](/azure/templates/microsoft.resources/deployments) 新增至您的主要範本。 在 `templateLink` 屬性中，根據父範本的路徑指定連結範本的相對路徑。
 
-連結的範本會**在上linkedTemplate.js**呼叫，並儲存在主要範本儲存所在路徑中名為成品的子**資料夾中。**  您可以使用下列其中一個 relativePath 值：
+連結的範本會 ** 在上呼叫linkedTemplate.js**，並儲存在儲存主要範本的路徑中 **，稱為成品** 的子資料夾。  您可以使用下列其中一個 relativePath 值：
 
 - `./artifacts/linkedTemplate.json`
 - `/artifacts/linkedTemplate.json`
 - `artifacts/linkedTemplate.json`
 
-`relativePath`屬性一律相對於宣告的範本檔案 `relativePath` ，因此，如果從上的 linkedTemplate.js呼叫了另一個 linkedTemplate2.js，而 linkedTemplate2.js上的則儲存在相同的成品子資料夾中，則在 linkedTemplate.js中指定的 relativePath 就是 `linkedTemplate2.json` 。
+`relativePath`屬性一律相對於宣告的範本檔案 `relativePath` ，因此，如果在上有另一個從 linkedTemplate.js呼叫的 linkedTemplate2.js，而 linkedTemplate2.json 儲存在相同的成品子資料夾中，則在 linkedTemplate.js中指定的 relativePath 就是 `linkedTemplate2.json` 。
 
-1. 使用下列 JSON 建立主要範本。 將azuredeploy.js的主要範本儲存到本機電腦**上**。 本教學課程假設您已儲存至的路徑**c:\Templates\linkedTS\azuredeploy.js** ，但您可以使用任何路徑。
+1. 使用下列 JSON 建立主要範本。 將主要範本儲存為本機電腦 ** 上的azuredeploy.js** 。 本教學課程假設您已儲存至 **c:\Templates\linkedTS\azuredeploy.js的** 路徑，但您可以使用任何路徑。
 
     ```json
     {
@@ -104,7 +104,7 @@ ms.locfileid: "87387858"
     > [!NOTE]
     > 的 apiVersion `Microsoft.Resources/deployments` 必須是2020-06-01 或更新版本。
 
-1. 在儲存主要範本的資料夾中，**建立名為成品的目錄**。
+1. 在儲存主要範本的資料夾中，建立稱為 **構件** 的目錄。
 1. 使用下列 JSON 建立連結的範本：
 
     ```json
@@ -158,11 +158,13 @@ ms.locfileid: "87387858"
     }
     ```
 
-1. 在 [成品 **] 資料夾中，將**範本儲存為**linkedTemplate.js** 。
+1. 將範本儲存為 **linkedTemplate.js** **在 [成品** ] 資料夾中。
 
 ## <a name="create-template-spec"></a>建立範本規格
 
-範本規格會儲存在資源群組中。  建立資源群組，然後使用下列腳本建立範本規格。 範本規格名稱是**webSpec**。
+範本規格會儲存在資源群組中。  建立資源群組，然後使用下列腳本建立範本規格。 範本規格名稱是 **webSpec**。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -170,22 +172,51 @@ New-AzResourceGroup `
   -Location westus2
 
 New-AzTemplateSpec `
-  -ResourceGroupName templateSpecRG `
   -Name webSpec `
   -Version "1.0.0.0" `
+  -ResourceGroupName templateSpecRG `
   -Location westus2 `
   -TemplateJsonFile "c:\Templates\linkedTS\azuredeploy.json"
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name templateSpecRG \
+  --location westus2
+
+az template-specs create \
+  --name webSpec \
+  --version "1.0.0.0" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "c:\Templates\linkedTS\azuredeploy.json"
+```
+
+---
+
 當您完成時，您可以從 Azure 入口網站或使用下列 Cmdlet 來查看範本規格：
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Get-AzTemplateSpec -ResourceGroupName templatespecRG -Name webSpec
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
+```
+
+---
+
 ## <a name="deploy-template-spec"></a>部署範本規格
 
 您現在可以部署範本規格。部署範本規格就如同部署其包含的範本，不同的是您會傳入範本規格的資源識別碼。您可以使用相同的部署命令，並視需要傳入範本規格的參數值。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -199,6 +230,25 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName webRG
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name webRG \
+  --location westus2
+
+id = $(az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
+
+az deployment group create \
+  --resource-group webRG \
+  --template-spec $id
+```
+
+> [!NOTE]
+> 取得範本規格識別碼，然後將它指派給 Windows PowerShell 中的變數時，有一個已知的問題。
+
+---
+
 ## <a name="next-steps"></a>後續步驟
 
-若要瞭解如何將範本規格部署為連結的範本，請參閱[教學課程：將範本規格部署為連結的範本](template-specs-deploy-linked-template.md)。
+若要瞭解如何將範本規格部署為連結的範本，請參閱 [教學課程：將範本規格部署為連結的範本](template-specs-deploy-linked-template.md)。

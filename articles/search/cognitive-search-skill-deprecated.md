@@ -1,26 +1,26 @@
 ---
 title: 已淘汰的認知技能
 titleSuffix: Azure Cognitive Search
-description: 此頁面包含被視為已淘汰的認知技能清單，在不久的未來 Azure 認知搜尋技能集中不會提供支援。
+description: 此頁面包含被視為已淘汰的認知技能清單，未來將不會在 Azure 認知搜尋技能集中提供支援。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85f3b9862bd8155c1a4b11860dc82d92a2f9e810
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792024"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936090"
 ---
 # <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Azure 認知搜尋中已淘汰的認知技能
 
 本文件描述已淘汰的認知技能。 使用下列指南取得內容：
 
 * 技能名稱：即將淘汰的技能名稱，其對應至 @odata.type 屬性。
-* 上次可用的 api 版本： Azure 認知搜尋公用 API 的最後一個版本，您可以在其中建立/更新包含對應已淘汰技能的技能集。
+* 最後一個可用的 api 版本： Azure 認知搜尋公用 API 的最後一個版本，可以建立/更新包含對應已淘汰技能的技能集。
 * 結束支援：對應技能已視為不受支援後的最後一天。 先前建立的技能集應會繼續運作，但建議使用者遷移出已淘汰的技能。
 * 建議：將路徑遷移至受支援的技能。 建議使用者遵循建議，以便繼續獲得支援。
 
@@ -38,7 +38,7 @@ ms.locfileid: "72792024"
 
 請改用 [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)。 可提供 NamedEntityRecognitionSkill 的大多數功能，且品質更高。 在複雜輸出欄位中也具有更豐富的資訊。
 
-若要遷移至[實體辨識技能](cognitive-search-skill-entity-recognition.md)，您必須對您的技能定義執行下列一或多項變更。 您可以使用 [Update Skillset API](https://docs.microsoft.com/rest/api/searchservice/update-skillset) (更新技能集 API) 來更新技能定義。
+若要遷移至[實體辨識技能](cognitive-search-skill-entity-recognition.md)，您必須對您的技能定義執行下列一或多項變更。 您可以使用 [Update Skillset API](/rest/api/searchservice/update-skillset) (更新技能集 API) 來更新技能定義。
 
 > [!NOTE]
 > 目前不支援信賴分數作為概念。 `minimumPrecision` 參數會存在於 `EntityRecognitionSkill` 以供日後使用，並提供回溯相容性。
