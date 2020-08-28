@@ -1,7 +1,7 @@
 ---
 title: '啟用和管理 blob 版本設定 (預覽) '
 titleSuffix: Azure Storage
-description: 瞭解如何在 Azure 入口網站中或使用 Azure Resource Manager 範本來啟用 blob 版本設定 (預覽) 。
+description: 瞭解如何在 Azure 入口網站中或使用 Azure Resource Manager 範本啟用 blob 版本設定 (預覽) 。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,20 +9,21 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 85e8ccd03bd20ed9bb572d482dbc7a06b8af725c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7e8d712a3477fe7dd9b963f203b3374dd5fa2a2e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067268"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001054"
 ---
 # <a name="enable-and-manage-blob-versioning-preview"></a>啟用和管理 blob 版本設定 (預覽) 
 
-您可以 (預覽) 啟用 Blob 儲存體版本設定，以自動維護舊版的物件。  啟用 blob 版本設定時，您可以還原較舊版本的 blob，以在錯誤地修改或刪除資料時加以復原。
+您可以 (預覽) 啟用 Blob 儲存體版本設定，以自動維護舊版的物件。  啟用 blob 版本設定時，您可以還原舊版的 blob 來復原您的資料（如果錯誤遭到修改或刪除）。
 
-本文說明如何使用 Azure 入口網站或 Azure Resource Manager 範本，針對儲存體帳戶啟用或停用 blob 版本設定。
+本文說明如何使用 Azure 入口網站或 Azure Resource Manager 範本，啟用或停用儲存體帳戶的 blob 版本設定。
 
-您必須先註冊預覽版，才可啟用 blob 版本設定。 若要深入瞭解 blob 版本設定，包括如何註冊預覽版，請參閱[blob 版本設定 (預覽) ](versioning-overview.md)。
+啟用 blob 版本設定之前，您必須先註冊預覽版。 若要深入瞭解 blob 版本設定（包括如何註冊預覽版），請參閱 [blob 版本設定 (預覽) ](versioning-overview.md)。
 
 ## <a name="enable-blob-versioning"></a>啟用 Blob 版本設定
 
@@ -31,21 +32,21 @@ ms.locfileid: "88067268"
 若要在 Azure 入口網站中啟用 blob 版本設定：
 
 1. 在入口網站中流覽至您的儲存體帳戶。
-1. 在 [ **Blob 服務**] 下，選擇 [**資料保護**]。
-1. 在 [**版本控制**] 區段中，選取 [**已啟用**]。
+1. 在 [ **Blob 服務**] 底下，選擇 [ **資料保護**]。
+1. 在 [ **版本控制** ] 區段中，選取 [ **已啟用**]。
 
 :::image type="content" source="media/versioning-enable/portal-enable-versioning.png" alt-text="顯示如何在 Azure 入口網站中啟用 blob 版本設定的螢幕擷取畫面":::
 
 # <a name="template"></a>[範本](#tab/template)
 
-若要使用範本啟用 blob 版本設定，請建立一個範本，並將**IsVersioningEnabled**屬性設定為**true**。 下列步驟說明如何在 Azure 入口網站中建立範本。
+若要使用範本啟用 blob 版本設定，請建立一個範本，並將 **IsVersioningEnabled** 屬性設定為 **true**。 下列步驟說明如何在 Azure 入口網站中建立範本。
 
-1. 在 [Azure 入口網站中，選擇 [**建立資源**]。
-1. 在 **[搜尋 Marketplace**] 中，輸入**範本部署**，然後按**enter**。
-1. 選擇 [**範本部署**]，選擇 [**建立**]，然後**在編輯器中選擇 [建立您自己的範本**]。
-1. 在 [範本編輯器] 中，貼上下列 JSON。 使用您的儲存體帳戶名稱取代 `<accountName>` 預留位置。
+1. 在 [Azure 入口網站中，選擇 [ **建立資源**]。
+1. 在 **[搜尋 Marketplace**] 中，輸入 **範本部署**，然後按 **enter**。
+1. 選擇 [ **範本部署**]，選擇 [ **建立**]，然後 **在編輯器中選擇 [建立您自己的範本**]。
+1. 在範本編輯器中，貼上下列 JSON。 使用您的儲存體帳戶名稱取代 `<accountName>` 預留位置。
 1. 儲存範本。
-1. 指定帳戶的資源群組，然後選擇 [**購買**] 按鈕以部署範本並啟用 blob 版本設定。
+1. 指定帳戶的資源群組，然後選擇 [ **購買** ] 按鈕以部署範本，並啟用 blob 版本設定。
 
     ```json
     {
@@ -66,13 +67,13 @@ ms.locfileid: "88067268"
     }
     ```
 
-如需在 Azure 入口網站中使用範本部署資源的詳細資訊，請參閱[使用 Azure 入口網站部署資源](../../azure-resource-manager/templates/deploy-portal.md)。
+如需使用 Azure 入口網站中的範本部署資源的詳細資訊，請參閱 [使用 Azure 入口網站部署資源](../../azure-resource-manager/templates/deploy-portal.md)。
 
 ---
 
-## <a name="modify-a-blob-to-trigger-a-new-version"></a>修改 blob 以觸發新版本
+## <a name="modify-a-blob-to-trigger-a-new-version"></a>修改 blob 以觸發新的版本
 
-下列程式碼範例示範如何使用適用于 .NET 的 Azure 儲存體用戶端程式庫（版本[12.5.0-preview 5](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5)或更新版本）來觸發新版本的建立。 執行此範例之前，請確定您已針對儲存體帳戶啟用版本設定。
+下列程式碼範例示範如何使用適用于 .NET 的 Azure 儲存體用戶端程式庫（版本 [12.5.0-preview. 5](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) 或更新版本）來觸發新版本的建立。 執行此範例之前，請確定您已啟用儲存體帳戶的版本設定。
 
 此範例會建立區塊 blob，然後更新 blob 的中繼資料。 更新 blob 的中繼資料會觸發新版本的建立。 此範例會抓取初始版本和目前的版本，並顯示只有目前的版本包含中繼資料。
 

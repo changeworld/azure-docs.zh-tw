@@ -3,18 +3,18 @@ title: 關於 Azure VM 備份
 description: 在本文中，您將瞭解 Azure 備份服務如何備份 Azure 虛擬機器，以及如何遵循最佳作法。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 04ea9fa49d95ced3245f88fee58a23ba67aaa0d7
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f9da75a66d25896e8d977910e2eb7fbe6ea69ca1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587492"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014637"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM 備份的總覽
 
 本文說明 [Azure 備份服務](./backup-overview.md) 如何)  (vm 來備份 Azure 虛擬機器。
 
-Azure 備份提供獨立和隔離的備份，以防止非預期的資料在您的 Vm 上損毀。 備份會儲存在復原服務保存庫中，並進行內建的復原點管理。 設定和調整很簡單，備份會優化，而且您可以視需要輕鬆地還原。
+Azure 備份提供獨立、隔離的備份，以防止您的 VM 上發生非預期的資料損毀。 備份會儲存在復原服務保存庫中，其具有內建的復原點管理功能。 設定及擴縮很簡單，備份已最佳化，而且您可以視需要輕鬆地還原。
 
 在備份過程中， [會建立快照](#snapshot-creation)集，並將資料傳輸至復原服務保存庫，而不會影響生產工作負載。 快照集會提供不同層級的一致性[，如下所述。](#snapshot-consistency)
 
@@ -22,7 +22,7 @@ Azure 備份也有適用于資料庫工作負載的特製化供應專案，例�
 
 ## <a name="backup-process"></a>備份程序
 
-以下是 Azure 備份完成 Azure Vm 備份的方式：
+以下是 Azure 備份完成 Azure VM 備份的方式：
 
 1. 針對選取要備份的 Azure Vm，Azure 備份根據您指定的備份排程來啟動備份工作。
 1. 在第一次備份期間，如果 VM 正在執行，則會在 VM 上安裝備份擴充功能。
@@ -33,9 +33,9 @@ Azure 備份也有適用于資料庫工作負載的特製化供應專案，例�
     - 如果備份無法建立應用程式一致的快照集，則會取得基礎儲存體 (的檔案一致快照集，因為在 VM 停止) 時，不會進行應用程式寫入。
 1. 針對 Linux Vm，備份會採用檔案一致備份。 針對應用程式一致快照集，您需要手動自訂前置/後置腳本。
 1. 備份拍攝快照集之後，會將資料傳輸至保存庫。
-    - 備份會藉由平行備份每個 VM 磁片來優化。
-    - 針對每個要備份的磁片，Azure 備份會讀取磁片上的區塊，並只識別和傳輸自上次備份後 (差異) 變更的資料區塊。
-    - 快照集資料可能不會立即複製到保存庫。 這在尖峰時間可能需耗費數小時。 針對每日備份原則，VM 的總備份時間會小於24小時。
+    - 備份是透過以平行方式備份每個 VM 磁碟來最佳化。
+    - 針對每個要備份的磁碟，Azure 備份會讀取磁碟上的區塊，並只識別並傳輸自上次備份之後變更的資料區塊 (差異)。
+    - 快照集資料可能不會立即複製到保存庫。 這在尖峰時間可能需耗費數小時。 針對每日備份原則，VM 的總備份時間會小於 24 小時。
 1. 啟用 Azure 備份之後對 Windows VM 所做的變更為：
     - Microsoft Visual C++ 2013 可轉散發套件 (x64) -12.0.40660 安裝在 VM 中
     - 磁片區陰影複製服務的啟動類型 (VSS) 變更為自動自手動

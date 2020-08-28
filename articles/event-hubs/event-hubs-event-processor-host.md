@@ -3,12 +3,13 @@ title: 使用事件處理器主機接收事件 - Azure 事件中樞 | Microsoft 
 description: 本文將說明 Azure 事件中樞內的事件處理器主機；此主機可簡化檢查點、租用和平行事件讀取的管理。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 7c6d08c385174597ce80e3ddfd6204db6b0b14a5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 27b587e6562b5ba0c9bf28a52a00a9d8e7d9201c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949077"
+ms.locfileid: "89010455"
 ---
 # <a name="event-processor-host"></a>事件處理器主機
 > [!NOTE]
@@ -185,7 +186,7 @@ Epoch 功能可讓使用者在任何時間點，使用下列規則，確保取�
 > 針對使用 epoch 的應用程式以及不使用 epoch 的應用程式，建議使用不同的取用者群組來避免錯誤。 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已熟悉事件處理器主機，請參閱下列文章以深入了解事件中樞：
 

@@ -8,12 +8,13 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: 57366011c93065803162164c03c7878e1610af9f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-csharp
+ms.openlocfilehash: adc510ef89a912e6d76949794aacbf130a8f066d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500380"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018870"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>利用 Blob 索引標記 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料
 
@@ -22,7 +23,7 @@ Blob 索引標記會使用索引鍵/值標記屬性，將儲存體帳戶中的�
 若要深入了解 Blob 索引，請參閱[使用 Blob 索引 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料](storage-manage-find-blobs.md)。
 
 > [!NOTE]
-> Blob 索引處於公開預覽狀態，並可在**加拿大中部**、**加拿大東部**、**法國中部**和**法國南部**區域中取得。 若要深入了解這項功能以及已知的問題和限制，請參閱[使用 Blob 索引 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料](storage-manage-find-blobs.md)。
+> Blob 索引處於公開預覽狀態，可在 **加拿大中部**、 **加拿大東部**、 **法國中部** 和 **法國南部** 區域中使用。 若要深入了解這項功能以及已知的問題和限制，請參閱[使用 Blob 索引 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料](storage-manage-find-blobs.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
@@ -32,9 +33,9 @@ Blob 索引標記會使用索引鍵/值標記屬性，將儲存體帳戶中的�
 # <a name="net"></a>[.NET](#tab/net)
 由於 Blob 索引處於公開預覽狀態，因此 .NET 儲存體套件會在預覽 NuGet 摘要中發行。 此程式庫在現在和正式發行之間可能會有變更。 
 
-1. 設定您的 Visual Studio 專案，以開始使用適用于 .NET 的 Azure Blob 儲存體用戶端程式庫 v12。 若要深入瞭解，請參閱[.Net 快速入門](storage-quickstart-blobs-dotnet.md)
+1. 設定您的 Visual Studio 專案，以開始使用適用于 .NET 的 Azure Blob 儲存體用戶端程式庫 v12。 若要深入瞭解，請參閱 [.Net 快速入門](storage-quickstart-blobs-dotnet.md)
 
-2. 在 NuGet 套件管理員中，尋找 [ **Azure** ] 的 [儲存體] 套件，然後將 [ **12.5.0-preview. 6**或更新版本] 安裝至您的專案。 您也可以執行 ```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6``` 命令
+2. 在 NuGet 封裝管理員中，尋找 **Azure** 12.5.0 套件，並將版本 **-preview. 6** 或更新版本安裝至您的專案。 您也可以執行 ```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6``` 命令
 
    若要了解作法，請參閱[尋找並安裝套件](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)。
 

@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: laobri
 ms.date: 07/17/2020
 ms.topic: reference
-ms.openlocfilehash: ac56e2e69cf62c8afae73e0a7616e7e7f80c0493
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d5f541dec14eebc944e4eac11dbe569b38cb277e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816315"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001615"
 ---
 # <a name="reference-retirements-of-dsvm-images"></a>參考： DSVM 影像的 Retirements
 
@@ -50,18 +50,3 @@ ms.locfileid: "88816315"
 >
 > 未以新 DSVM 映射詳細資料更新的 ARM 範本將無法在停用日期之後進行部署。
 
-## <a name="mitigating-upcoming-retirements"></a>減少即將推出的 retirements
-
-在本節中，我們會討論即將 retirements 的緩和措施。
-
-### <a name="upgrade-windows-2016-dsvm"></a>升級 Windows 2016 DSVM
-
-若要將資料磁片從現有的 Windows 2016 DSVM 遷移至 Windows 2019 DSVM，請執行下列步驟：
-
-1. 依照 [此處](./provision-vm.md#create-your-dsvm)所示的指示，建立新的 WINDOWS 2019 DSVM。
-1. 使用 [這些指示](../../virtual-machines/windows/detach-disk.md)，從 Windows 2016 映射卸離現有的資料磁片。
-1. 使用 [這些指示](../../virtual-machines/windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)，將磁片從上一個步驟連接到您的 Windows 2019 映射。
-
-### <a name="upgrade-ubuntu-1604-dsvm"></a>升級 Ubuntu 16.04 DSVM
-
-建議您將現有的 Ubuntu 16.04 Dsvm 升級為 [ubuntu 18.04 DSVM edition](./dsvm-ubuntu-intro.md)。

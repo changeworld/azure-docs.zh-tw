@@ -3,12 +3,12 @@ title: 在 Azure VM 上管理備份的 SAP HANA 資料庫
 description: 在本文中，可了解在 Azure 虛擬機器上執行的 SAP HANA 資料庫的一般管理和監視工作。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 7e23ffc2fe39389725519f7b94a0fe6ffaecf69c
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 6de1144237366806bb06c28a0777f62d69004e8b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826696"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006560"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>管理和監視已備份的 SAP Hana 資料庫
 
@@ -84,7 +84,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 從 HANA 原生用戶端 (使用 **Backint**) 觸發的還原，可以從 [[備份作業]](#monitor-manual-backup-jobs-in-the-portal) 頁面**監視**。
 
-### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>在已啟用 Azure 備份的資料庫上執行 SAP HANA 原生用戶端備份
+### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>在啟用 Azure 備份的資料庫上執行 SAP Hana native client 備份
 
 如果您想要進行使用 Azure 備份備份的資料庫的本機備份 (使用 HANA Studio / Cockpit)，請執行下列動作：
 

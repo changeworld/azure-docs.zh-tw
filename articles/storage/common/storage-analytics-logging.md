@@ -1,6 +1,6 @@
 ---
 title: Azure 儲存體分析記錄
-description: 使用儲存體分析來記錄有關 Azure 儲存體要求的詳細資料。 查看記錄了哪些要求、如何儲存記錄檔、如何啟用儲存體記錄等等。
+description: 使用儲存體分析記錄有關 Azure 儲存體要求的詳細資料。 查看記錄哪些要求、記錄的儲存方式、如何啟用儲存體記錄等等。
 author: normesta
 ms.service: storage
 ms.subservice: common
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring
-ms.openlocfilehash: 98c8bc07e1f5bb790c2f907bbc3c2125cae383a5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: monitoring, devx-track-csharp
+ms.openlocfilehash: 7010e47dd9272ce620f8e057fbfb36e1fd5b26c9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903216"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021165"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 儲存體分析記錄
 
@@ -137,7 +137,7 @@ ms.locfileid: "87903216"
 
 ### <a name="enable-storage-logging-using-powershell"></a>使用 PowerShell 啟用儲存體記錄  
 
- 您可以在本機電腦上使用 PowerShell 來設定儲存體帳戶中的儲存體記錄，方法是使用 Azure PowerShell Cmdlet **AzStorageServiceLoggingProperty**來取得目前的設定，並**設定 Cmdlet AzStorageServiceLoggingProperty**來變更目前的設定。  
+ 您可以在本機電腦上使用 PowerShell 來設定儲存體帳戶中的儲存體記錄，方法是使用 Azure PowerShell Cmdlet **AzStorageServiceLoggingProperty** 來取得目前的設定，並使用 Cmdlet **設定 AzStorageServiceLoggingProperty** 來變更目前的設定。  
 
  控制「儲存體記錄」的 Cmdlet 會使用 **LoggingOperations** 參數，該參數是一個包含所要記錄要求類型清單 (以逗號分隔) 的字串。 三個可能的要求類型包含**讀取**、**寫入**和**刪除**。 若要關閉記錄功能，請將值 **none** 使用於 **LoggingOperations** 參數。  
 

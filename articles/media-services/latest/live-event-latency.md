@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 媒體服務中 LiveEvent 低延遲設定 |Microsoft Docs
-description: 本主題提供 LiveEvent 低延遲設定的總覽，並說明如何設定低延遲。
+title: Azure 媒體服務中的低延遲設定 LiveEvent |Microsoft Docs
+description: 本主題概要說明 LiveEvent 低延遲設定，並示範如何設定低延遲。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,21 +13,22 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 24eb5f8691c94c1f319820f3133b66065504ace3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e454ce84049f0f7c90da45ed77532f9ba2d90fd4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000886"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018700"
 ---
-# <a name="live-event-low-latency-settings"></a>即時事件低延遲設定
+# <a name="live-event-low-latency-settings"></a>實況活動低延遲設定
 
 本文說明如何在[實況活動](/rest/api/media/liveevents)上設定低延遲。 它也會討論您在各種播放器中使用低延遲設定時會看到的典型結果。 結果會隨著 CDN 和網路延遲而有所不同。
 
-若要使用新的 **LowLatency** 功能，您可以在 **LiveEvent** 上將 **StreamOptionsFlag** 設定為 **LowLatency**。 在建立 [LiveOutput](/rest/api/media/liveoutputs) 以便播放 HLS 時，請將 [LiveOutput.Hls.fragmentsPerTsSegment](/rest/api/media/liveoutputs/create#hls) 設定為 1。 串流啟動並執行之後，您可以使用[Azure 媒體播放機](https://ampdemo.azureedge.net/)（AMP 示範頁面），並將播放選項設定為使用 [低延遲啟發學習法設定檔]。
+若要使用新的 **LowLatency** 功能，您可以在 **LiveEvent** 上將 **StreamOptionsFlag** 設定為 **LowLatency**。 在建立 [LiveOutput](/rest/api/media/liveoutputs) 以便播放 HLS 時，請將 [LiveOutput.Hls.fragmentsPerTsSegment](/rest/api/media/liveoutputs/create#hls) 設定為 1。 串流啟動並執行後，您可以使用 [Azure 媒體播放機](https://ampdemo.azureedge.net/) (AMP 示範頁面) ，並將播放選項設定為使用「低延遲啟發學習法設定檔」。
 
 > [!NOTE]
-> 目前，Azure 媒體播放機中的 LowLatency HeuristicProfile 是設計用來以 MPEG 破折號通訊協定播放資料流程，其中包含 CSF 或 CMAF 格式（例如 `format=mdp-time-csf` 或 `format=mdp-time-cmaf` ）。 
+> 目前，Azure 媒體播放機中的 LowLatency HeuristicProfile 是設計用來播放以 MPEG 虛線通訊協定表示的串流，其中 CSF 或 CMAF 格式 (例如 `format=mdp-time-csf` 或 `format=mdp-time-cmaf`) 。 
 
 下列 .NET 範例會示範如何在 **LiveEvent** 上設定 **LowLatency**：
 
@@ -75,7 +76,7 @@ LiveEvent liveEvent = new LiveEvent(
 > [!NOTE]
 > 端對端延遲可能會因區域網路狀況或引進 CDN 快取層而有所不同。 建議您測試實際的設定。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [即時串流概觀](live-streaming-overview.md)
 - [即時串流教學課程](stream-live-tutorial-with-api.md)

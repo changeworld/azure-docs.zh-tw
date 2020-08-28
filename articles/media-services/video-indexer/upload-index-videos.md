@@ -10,12 +10,13 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: b6f8181568e5996bfb3c99ae25fb801fa62f3af1
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 153540ce0bf49740d0b3387715d83c8efd7af2cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904253"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011866"
 ---
 # <a name="upload-and-index-your-videos"></a>上傳影片及編製影片索引  
 
@@ -25,9 +26,9 @@ ms.locfileid: "87904253"
 * 將影片檔案當作要求本文中的位元組陣列傳送、
 * 藉由提供[資產識別碼](../latest/assets-concept.md)來使用現有的 Azure 媒體服務資產 (僅支援付費帳戶)。
 
-當您的影片上傳之後，影片索引子 (選擇性地) 編碼 (文章) 中所討論的影片。 建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編製索引的分鐘數，以及媒體帳戶相關費用。 
+上傳您的影片後，影片索引子 (選擇性地) 編碼) 文章中所討論的影片 (。 建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編製索引的分鐘數，以及媒體帳戶相關費用。 
 
-本文說明如何使用下列選項來上傳和編制影片的索引：
+本文說明如何使用下列選項來上傳您的影片並為其編制索引：
 
 * [使用影片索引子網站](#website) 
 * [影片索引子 API](#apis)
@@ -40,13 +41,13 @@ ms.locfileid: "87904253"
 - 要求 URL 長度限制為 6144 個字元，其中查詢字串 URL 長度限制為 4096 個字元。
 - 具有位元組陣列選項的上傳大小限制為 2GB。
 - 位元組陣列選項會在 30 分鐘後逾時。
-- 參數中提供的 URL `videoURL` 必須進行編碼。
+- 在參數中提供的 URL `videoURL` 必須經過編碼。
 - 編製索引媒體服務資產與從 URL 編製索引的限制相同。
 - 影片索引子的最大持續時間限制為單一檔案 4 小時。
 - URL 必須可供存取 (例如公用 URL)。 
 
     如果是私人 URL，必須在要求中提供存取權杖。
-- URL 必須指向有效的媒體檔案，而不是網頁的連結，例如頁面的連結 `www.youtube.com` 。
+- URL 必須指向有效的媒體檔案，而不是指向網頁的連結，例如頁面的連結 `www.youtube.com` 。
 - 在付費帳戶中，每分鐘最多可以上傳 50 部電影，在試用帳戶中，每分鐘最多可以上傳 5 部電影。
 
 > [!Tip]
@@ -58,12 +59,12 @@ ms.locfileid: "87904253"
 
 如需可與影片索引子搭配使用的檔案格式清單，請參閱[輸入容器/檔案格式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)一文。
 
-## <a name="video-files-storage"></a>影片檔案存放區
+## <a name="video-files-storage"></a>影片檔案儲存體
 
-- 有了付費的影片索引子帳戶，您可以建立連接到您的 Azure 訂用帳戶的影片索引子帳戶和 Azure 媒體服務帳戶。 如需詳細資訊，請參閱[建立連線到 Azure 的影片索引子帳戶](connect-to-azure.md)。
+- 使用付費的影片索引子帳戶，您可以建立連線至 Azure 訂用帳戶的影片索引子帳戶和 Azure 媒體服務帳戶。 如需詳細資訊，請參閱 [建立連線到 Azure 的影片索引子帳戶](connect-to-azure.md)。
 - 影片檔案會藉由 Azure 媒體服務儲存在 Azure 儲存體中。 沒有時間限制。
-- 您隨時可以使用影片索引子來刪除您的影片和音訊檔案，以及從這些檔案中解壓縮的任何中繼資料和深入解析。 當您從影片索引器刪除檔案時，該檔案和其中繼資料與見解都會從影片索引器中永久移除。 不過，如果您已在 Azure 儲存體中實作屬於自己的備份解決方案，那些檔案將會保留在您的 Azure 儲存體中。
-- 影片的持續性完全相同，不論上傳是以影片索引子網站或使用上傳 API 來完成。
+- 您一律可以刪除影片和音訊檔案，以及影片索引子從這些檔案中解壓縮的任何中繼資料和見解。 當您從影片索引器刪除檔案時，該檔案和其中繼資料與見解都會從影片索引器中永久移除。 不過，如果您已在 Azure 儲存體中實作屬於自己的備份解決方案，那些檔案將會保留在您的 Azure 儲存體中。
+- 無論上傳是否已從影片索引子網站或使用上傳 API 來完成，影片的持續性都完全相同。
    
 ## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>使用影片索引子網站上傳影片並為其編制索引
 
@@ -83,7 +84,7 @@ ms.locfileid: "87904253"
 
 ## <a name="upload-and-index-with-api"></a><a name="apis"></a>使用 API 上傳和編制索引
 
-使用 [[上傳影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)API]，根據 URL 上傳並編制您的影片索引。 後面的程式碼範例包含批註化的程式碼，說明如何上傳位元組陣列。 
+使用上 [傳影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API，根據 URL 上傳影片並編制其索引。 接下來的程式碼範例包含批註化的程式碼，說明如何上傳位元組陣列。 
 
 ### <a name="configurations-and-params"></a>設定與參數
 
@@ -115,7 +116,7 @@ ms.locfileid: "87904253"
       |knownPersonId|臉部模型中唯一的個人識別碼|
       |personName|人員名稱|
         
-    - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&識別碼 = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
+    - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
 ##### <a name="notes"></a>注意
 
@@ -127,13 +128,13 @@ ms.locfileid: "87904253"
 如果原始或外部錄影包含背景雜訊，請使用此參數。 此參數會用來設定索引編製程序。 您可以指定下列值：
 
 - `AudioOnly` – 只使用音訊 (忽略視訊) 來編製索引及擷取深入解析
-- `VideoOnly`-僅使用影片來編制索引並將見解解壓縮 (忽略音訊) 
+- `VideoOnly` -只使用影片編制索引和解壓縮見解 (忽略音訊) 
 - `Default` – 使用音訊和視訊來編製索引及擷取深入解析
 - `DefaultWithNoiseReduction` – 從音訊及視訊編製索引及擷取深入解析的同時，在音訊串流上套用減少雜訊演算法
 
 > [!NOTE]
-> 影片索引子最多可涵蓋兩個音訊追蹤。 如果檔案中有更多的音訊播放軌，則會將它們視為一個追蹤。<br/>
-如果您想要個別編制追蹤的索引，您必須將相關的音訊檔案解壓縮，並將其編制為的索引 `AudioOnly` 。
+> 影片索引子最多可涵蓋兩個音訊曲目。 如果檔案中有更多音訊播放軌，則會將它們視為一個曲目。<br/>
+如果您想要個別編制追蹤的索引，您必須將相關的音訊檔案解壓縮，並將其索引為 `AudioOnly` 。
 
 價格取決於選取的索引編製選項。  
 
@@ -149,8 +150,8 @@ ms.locfileid: "87904253"
 
 使用[上傳影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或[重新編製影片索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API 時，其中一個選擇性參數為 `streamingPreset`。 如果您將 `streamingPreset` 設定為 `Default`、`SingleBitrate` 或 `AdaptiveBitrate`，就會觸發編碼程序。 完成編製索引及編碼工作後，影片就會發佈，因此您也可以對影片進行串流處理。 您想要串流影片的串流端點必須處於 [執行中]**** 狀態。
 
-針對 SingleBitrate，標準編碼器成本會依輸出套用。 如果影片高度大於或等於720，影片索引子會將其編碼為1280x720。 否則，為640x468。
-預設設定為 [[內容感知編碼](../latest/content-aware-encoding.md)]。
+若為 SingleBitrate，則會依據輸出套用標準編碼器成本。 如果影片高度大於或等於720，影片索引子會將它編碼為1280x720。 否則為640x468。
+預設設定為 [內容感知編碼](../latest/content-aware-encoding.md)。
 
 若要執行編製索引及編碼工作，[連線至您影片索引器帳戶的 Azure 媒體服務帳戶](connect-to-azure.md)需要保留單元。 如需詳細資訊，請參閱[調整媒體處理](../previous/media-services-scale-media-processing-overview.md)。 由於這些都是計算密集的作業，強烈建議使用 S3 單元類型。 RU 數量會定義可以平行執行的作業數目上限。 基準建議是 10 個 S3 RU。 
 
@@ -168,19 +169,19 @@ ms.locfileid: "87904253"
 
 #### <a name="instructions-for-running-this-code-sample"></a>執行此程式碼範例的指示
 
-將此程式碼複製到您的開發平臺之後，您必須提供兩個參數： [API 管理] [驗證金鑰] 和 [影片 URL]。
+將此程式碼複製到您的開發平臺之後，您必須提供兩個參數： API 管理驗證金鑰和影片 URL。
 
-* API 金鑰-API 金鑰是您個人的 API 管理訂用帳戶金鑰，可讓您取得存取權杖，以便在您的影片索引子帳戶上執行作業。 
+* API 金鑰-API 金鑰是您的個人 API 管理訂用帳戶金鑰，可讓您取得存取權杖，以便在您的影片索引子帳戶上執行作業。 
 
-    若要取得您的 API 金鑰，請完成此流程：
+    若要取得您的 API 金鑰，請執行下列流程：
 
     * 巡覽到 https://api-portal.videoindexer.ai/
     * 登入
-    * 前往**產品**  ->  **授權**  ->  **授權訂**用帳戶
-    * 複製**主要金鑰**
+    * 前往**Products**  ->  **授權**  ->  **授權訂**用帳戶
+    * 複製 **主要金鑰**
 * 影片 URL –要編制索引之影片/音訊檔案的 URL。 URL 必須指向媒體檔案 (不支援 HTML 網頁)。 作為 URI 一部分提供的存取權杖可以保護檔案，而處理檔案的端點必須透過 TLS 1.2 或更高版本來保護。 URL 必須進行編碼。
 
-成功執行程式碼範例的結果將包含深入解析 widget URL 和播放程式 widget URL，可讓您檢查深入解析和上傳的影片。 
+成功執行程式碼範例的結果將包含深入解析小工具 URL 和播放機 widget URL，可讓您分別檢查上傳的見解和影片。 
 
 
 ```csharp
@@ -362,7 +363,7 @@ public class AccountContractSlim
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|指定帳戶中已有正在處理的相同影片。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小時前，指定帳戶中有相同的影片處理失敗。 API 用戶端應該等待至少 2 小時，才能重新上傳影片。|
-|429||每分鐘允許試用帳戶5次上傳。 付費帳戶允許50每分鐘上傳一次。|
+|429||試用帳戶每分鐘允許5次上傳。 每分鐘允許付費帳戶50上傳。|
 
 ## <a name="next-steps"></a>後續步驟
 

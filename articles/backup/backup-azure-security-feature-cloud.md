@@ -3,12 +3,12 @@ title: Azure 備份的虛刪除
 description: 瞭解如何使用 Azure 備份中的安全性功能，讓備份更安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 921d04c530695ee8909fb17b216029849c4fc4a2
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: a23d9d1e2ceeb767784490ba65542a5e91b6785b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892468"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004913"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 備份的虛刪除
 
@@ -164,7 +164,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>如何針對虛刪除的資源再次觸發排程備份？
 
-之後再繼續操作將會再次保護資源。 Resume 作業會建立備份原則的關聯，以觸發已選取保留期限的排程備份。 此外，垃圾收集行程會在繼續操作完成時立即執行。 如果您想要從已超過其到期日的復原點執行還原，建議您在觸發繼續操作之前執行此作業。
+之後再繼續操作將會再次保護資源。 Resume 作業會建立備份原則的關聯，以觸發已選取保留期限的排程備份。 此外，垃圾收集行程會在繼續操作完成時立即執行。 如果您想要從超過其到期日的復原點執行還原，建議您在觸發繼續操作之前執行此作業。
 
 ### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>如果保存庫中有虛刪除的專案，我是否可以刪除保存庫？
 
@@ -172,7 +172,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>是否可以在刪除後的14天內刪除超過14天的資料？
 
-不會。 您無法強制刪除虛刪除的專案。 它們會在14天后自動刪除。 啟用這項安全性功能，以保護備份資料免于遭到意外或惡意刪除。  您應等候14天，然後再對專案執行任何其他動作。  虛刪除的專案將不會收費。  如果您需要在新保存庫的14天內重新保護標示為虛刪除的專案，請洽詢 Microsoft 支援服務。
+不知道。 您無法強制刪除虛刪除的專案。 它們會在14天后自動刪除。 啟用這項安全性功能，以保護備份資料免于遭到意外或惡意刪除。  您應等候14天，然後再對專案執行任何其他動作。  虛刪除的專案將不會收費。  如果您需要在新保存庫的14天內重新保護標示為虛刪除的專案，請洽詢 Microsoft 支援服務。
 
 ### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>是否可以在 PowerShell 或 CLI 中執行虛刪除作業？
 

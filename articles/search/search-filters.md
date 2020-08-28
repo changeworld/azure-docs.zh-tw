@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 75932acb740eeff6f95180cf2eaa332ad0f5fb6a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4d1e120073e5bf4306c89628fc4e2e9c9f7ed2cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923070"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002414"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure 認知搜尋中的篩選 
 
@@ -195,7 +196,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 
 若要使用更多範例，請參閱 [OData 篩選條件運算式語法 > 範例](./search-query-odata-filter.md#examples) \(英文\)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [全文檢索搜尋如何在 Azure 認知搜尋中運作](search-lucene-query-architecture.md)
 + [搜尋檔 REST API](/rest/api/searchservice/search-documents)
