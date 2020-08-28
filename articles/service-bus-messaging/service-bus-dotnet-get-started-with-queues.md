@@ -1,19 +1,20 @@
 ---
 title: 開始使用 Azure 服務匯流排佇列 | Microsoft Docs
-description: 在本教學課程中，您會建立 .NET Core 主控台應用程式，以在服務匯流排佇列中傳送和接收訊息。
+description: 在本教學課程中，您會建立 .NET Core 主控台應用程式，以對服務匯流排佇列傳送和接收訊息。
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: 477d9d5a23e50d9b303d560b5530cbc22104c5cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cff2b8a8a0f6aefad43737aeb6fe63d40facac05
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337542"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021658"
 ---
 # <a name="get-started-with-service-bus-queues"></a>開始使用服務匯流排佇列
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-在本教學課程中，您會建立 .NET Core 主控台應用程式，以在服務匯流排佇列中傳送和接收訊息。
+在本教學課程中，您會建立 .NET Core 主控台應用程式，以對服務匯流排佇列傳送和接收訊息。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -33,19 +34,19 @@ ms.locfileid: "85337542"
 
 ### <a name="create-a-console-application"></a>建立主控台應用程式
 
-啟動 Visual Studio，並為 c # 建立新的**主控台應用程式（.Net Core）** 專案。 這個範例會將應用程式命名為*CoreSenderApp*。
+啟動 Visual Studio 並建立新的 **主控台應用程式 ( ** 適用于 c # 的 .net Core) 專案。 此範例會將應用程式命名為 *CoreSenderApp*。
 
 ### <a name="add-the-service-bus-nuget-package"></a>新增服務匯流排 NuGet 封裝
 
 1. 以滑鼠右鍵按一下新建立的專案，然後選取 [管理 NuGet 套件]****。
-1. 選取 [瀏覽]。 搜尋並選取 [ **[Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)**]。
-1. 選取 [**安裝**] 以完成安裝，然後關閉 [NuGet 套件管理員]。
+1. 選取 [瀏覽]  。 搜尋並選取 [ **[Azure 服務匯流排](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)**]。
+1. 選取 [ **安裝** ] 以完成安裝，然後關閉 NuGet 封裝管理員。
 
     ![選取 NuGet 封裝][nuget-pkg]
 
 ### <a name="write-code-to-send-messages-to-the-queue"></a>撰寫程式碼以將訊息傳送到佇列
 
-1. 在*Program.cs*中，于 `using` 命名空間定義的頂端新增下列語句（在類別宣告之前）：
+1. 在 *Program.cs*中，將下列 `using` 語句加入至命名空間定義頂端的類別宣告之前：
 
     ```csharp
     using System.Text;
@@ -62,9 +63,9 @@ ms.locfileid: "85337542"
     static IQueueClient queueClient;
     ```
 
-    輸入命名空間的連接字串作為 `ServiceBusConnectionString` 變數。 輸入您的佇列名稱。
+    輸入命名空間的連接字串做為 `ServiceBusConnectionString` 變數。 輸入您的佇列名稱。
 
-1. 將方法取代為 `Main()` 下列**非同步** `Main` 方法。 它會呼叫 `SendMessagesAsync()` 您將在下一個步驟中新增的方法，以將訊息傳送至佇列。 
+1. `Main()`以下列非同步方法取代方法**async** `Main` 。 它會呼叫 `SendMessagesAsync()` 您將在下一個步驟中新增的方法，以將訊息傳送至佇列。 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -84,7 +85,7 @@ ms.locfileid: "85337542"
         await queueClient.CloseAsync();
     }
     ```
-1. 直接在 `MainAsync()` 方法後面，新增下列 `SendMessagesAsync()` 方法，以執行傳送指定的訊息數目 `numberOfMessagesToSend` （目前設定為10）的工作：
+1. 在方法的正後方 `MainAsync()` ，新增下列 `SendMessagesAsync()` 方法，以執行 `numberOfMessagesToSend` 目前設定為 10)  (所指定之訊息數目的傳送工作：
 
     ```csharp
     static async Task SendMessagesAsync(int numberOfMessagesToSend)
@@ -111,7 +112,7 @@ ms.locfileid: "85337542"
     }
     ```
 
-以下是您的*Program.cs*檔案應該看起來的樣子。
+*Program.cs*檔案看起來應該像這樣。
 
 ```csharp
 namespace CoreSenderApp
@@ -175,23 +176,23 @@ namespace CoreSenderApp
 
 執行程式，並檢查 Azure 入口網站。
 
-在 [命名空間**總覽**] 視窗中選取您的佇列名稱，以顯示 [佇列] [**基本**]。
+在命名空間 **總覽** 視窗中選取您的佇列名稱，以顯示佇列 **基本**功能。
 
 ![以計數和大小接收的訊息][queue-message]
 
-佇列的作用中**訊息計數**值現在是**10**。 每次您執行此傳送者應用程式時，若未抓取訊息，此值會增加10。
+佇列的作用中 **訊息計數** 值現在是 **10**。 每次執行此傳送者應用程式而未取出訊息時，此值會增加10。
 
-每次應用程式將訊息新增至佇列時，佇列目前的大小會增加**基本**資訊中的**目前**值。
+當應用程式每次將訊息新增至佇列時，佇列目前的大小會遞增**Essentials**中的**目前**值。
 
 下一節將說明如何取得這些訊息。
 
 ## <a name="receive-messages-from-the-queue"></a>從佇列接收訊息
 
-若要接收您所傳送的訊息，請建立另一個**主控台應用程式（.Net Core）** 應用程式。 如您對傳送者應用程式所做的一樣，安裝**Microsoft Azure。**
+若要接收您傳送的訊息，請建立另一個 **主控台應用程式 ( .Net Core) ** 應用程式。 如同您在傳送者應用程式中所做的一樣，安裝 **Node.js NuGet 套件** 。
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>撰寫程式碼以從佇列接收訊息
 
-1. 在*Program.cs*中，于 `using` 命名空間定義的頂端新增下列語句（在類別宣告之前）：
+1. 在 *Program.cs*中，將下列 `using` 語句加入至命名空間定義頂端的類別宣告之前：
 
     ```csharp
     using System;
@@ -209,7 +210,7 @@ namespace CoreSenderApp
     static IQueueClient queueClient;
     ```
 
-    輸入命名空間的連接字串作為 `ServiceBusConnectionString` 變數。 輸入您的佇列名稱。
+    輸入命名空間的連接字串做為 `ServiceBusConnectionString` 變數。 輸入您的佇列名稱。
 
 1. 以下列程式碼取代 `Main()` 方法：
 
@@ -236,7 +237,7 @@ namespace CoreSenderApp
     }
     ```
 
-1. 直接在 `MainAsync()` 方法後面，新增下列方法，以註冊訊息處理常式，並接收傳送者應用程式所傳送的訊息：
+1. 在方法的正後方 `MainAsync()` ，新增下列方法，以註冊訊息處理常式，並接收傳送者應用程式傳送的訊息：
 
     ```csharp
     static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -292,7 +293,7 @@ namespace CoreSenderApp
     }
     ```
 
-您的*Program.cs*檔案看起來應該像這樣：
+*Program.cs*檔案看起來應該像這樣：
 
 ```csharp
 namespace CoreReceiverApp
@@ -378,14 +379,14 @@ namespace CoreReceiverApp
 }
 ```
 
-執行程式，並再次檢查入口網站。 作用中**訊息計數**和**目前**值現在是**0**。
+執行程式，並再次檢查入口網站。 使用中的 **訊息計數** 和 **目前** 的值現在是 **0**。
 
-![接收訊息之後的佇列][queue-message-receive]
+![收到訊息之後的佇列][queue-message-receive]
 
-恭喜！ 您現在已建立佇列、將一組訊息傳送至該佇列，以及從相同的佇列接收這些訊息。
+恭喜！ 您現在已建立佇列、將一組訊息傳送至該佇列，以及從相同佇列接收這些訊息。
 
 > [!NOTE]
-> 您可以使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer/)來管理服務匯流排資源。 服務匯流排 Explorer 可讓使用者輕鬆地連接到服務匯流排命名空間，並管理訊息實體。 此工具提供匯入/匯出功能，或測試主題、佇列、訂用帳戶、轉送服務、通知中樞和事件中樞的能力等先進功能。
+> 您可以使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer/)來管理服務匯流排資源。 Service Bus Explorer 可讓使用者輕鬆地連接到服務匯流排命名空間，以及管理訊息實體。 此工具提供像是匯入/匯出功能或測試主題、佇列、訂用帳戶、轉送服務、通知中樞和事件中樞等功能的先進功能。
 
 ## <a name="next-steps"></a>後續步驟
 

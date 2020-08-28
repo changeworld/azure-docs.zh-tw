@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 24a411403fc139a7e7fa6644690c57a3b2729bf5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463335"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002278"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>將 Web 角色和背景工作角色轉換成 Service Fabric 無狀態服務的指南
 本文說明如何將雲端服務的 Web 角色和背景工作角色移轉至 Service Fabric 無狀態服務。 對於整體架構會大致保持相同的應用程式來說，這是最簡單的雲端服務至 Service Fabric 移轉路徑。
@@ -23,7 +24,7 @@ ms.locfileid: "75463335"
 ![Service Fabric 和雲端服務專案的比較][3]
 
 ## <a name="worker-role-to-stateless-service"></a>背景工作角色至無狀態服務
-從概念上來說，背景工作角色代表無狀態的工作負載，這表示是工作負載的每個執行個體都是相同的，隨時都可將要求路由傳送到任何執行個體。 每個執行個體應該不會記得先前的要求。 工作負載操作所在的狀態是由外部狀態存放區（例如 Azure 表格儲存體或 Azure Cosmos DB）所管理。 在 Service Fabric 中，這類工作負載是以無狀態服務來代表。 只要將背景工作角色程式碼轉換成無狀態服務，就能以最簡單的方式將背景工作角色移轉到 Service Fabric。
+從概念上來說，背景工作角色代表無狀態的工作負載，這表示是工作負載的每個執行個體都是相同的，隨時都可將要求路由傳送到任何執行個體。 每個執行個體應該不會記得先前的要求。 工作負載運作的狀態是由外部狀態存放區（例如 Azure 資料表儲存體或 Azure Cosmos DB）進行管理。 在 Service Fabric 中，這類工作負載是以無狀態服務來代表。 只要將背景工作角色程式碼轉換成無狀態服務，就能以最簡單的方式將背景工作角色移轉到 Service Fabric。
 
 ![背景工作角色至無狀態服務][4]
 
@@ -32,7 +33,7 @@ ms.locfileid: "75463335"
 
 | **應用程式** | **支援** | **移轉路徑** |
 | --- | --- | --- |
-| ASP.NET Web Forms |No |轉換為 ASP.NET Core 1 MVC |
+| ASP.NET Web Forms |否 |轉換為 ASP.NET Core 1 MVC |
 | ASP.NET MVC |移轉 |升級至 ASP.NET Core 1 MVC |
 | ASP.NET Web API |移轉 |使用自我裝載的伺服器或 ASP.NET Core 1 |
 | ASP.NET Core 1 |是 |N/A |

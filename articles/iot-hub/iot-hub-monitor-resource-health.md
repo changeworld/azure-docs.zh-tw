@@ -11,23 +11,24 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
-ms.openlocfilehash: 140bbc698db773f851cf03d80e8e51be9c2a21c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-csharp
+ms.openlocfilehash: c7b2055494d61ba348ae6226e6fc0ad9ce5775bb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327543"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022134"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>監視 Azure IoT 中樞的健康情況並快速診斷問題
 
-實作「Azure IoT 中樞」的企業會期望其資源有可靠的效能。 為了協助您對作業維持密切的監看，「IoT 中樞」已與 [Azure 監視器](../azure-monitor/index.yml)和 [Azure 資源健康狀態](../service-health/resource-health-overview.md)完全整合。 這兩項服務可提供您所需的資料，讓您的 IoT 解決方案以狀況良好的狀態運作並執行。
+實作「Azure IoT 中樞」的企業會期望其資源有可靠的效能。 為了協助您對作業維持密切的監看，「IoT 中樞」已與 [Azure 監視器](../azure-monitor/index.yml)和 [Azure 資源健康狀態](../service-health/resource-health-overview.md)完全整合。 這兩項服務可為您提供所需的資料，讓您的 IoT 解決方案保持正常運作狀態。
 
-「Azure 監視器」是您所有 Azure 服務之監視和記錄功能的單一來源。 您可以將 Azure 監視器產生的診斷記錄傳送至自訂處理 Azure 監視器記錄、事件中樞或 Azure 儲存體。 Azure 監視器的計量和診斷設定可讓您檢視資源的效能。 請繼續閱讀本文來了解如何搭配您的 IoT 中樞來[使用 Azure 監視器](#use-azure-monitor)。 
+「Azure 監視器」是您所有 Azure 服務之監視和記錄功能的單一來源。 您可以將 Azure 監視器產生的診斷記錄傳送至 Azure 監視器記錄、事件中樞或 Azure 儲存體以進行自訂處理。 Azure 監視器的計量和診斷設定可讓您檢視資源的效能。 請繼續閱讀本文來了解如何搭配您的 IoT 中樞來[使用 Azure 監視器](#use-azure-monitor)。 
 
 > [!IMPORTANT]
 > 不保證使用 Azure 監視器診斷記錄透過 IoT 中樞服務發出的事件是可靠的或按順序的。 某些事件可能會遺失，或未按順序傳遞。 診斷記錄也不是即時的，而且它可能需要幾分鐘的時間才能將事件記錄到您所選擇的目的地。
 
-Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您的資源時取得支援。 儀表板會為您的每個 IoT 中樞提供目前和過去的健全狀況狀態。 請繼續閱讀本文底部的一節，以瞭解如何搭配您的 IoT 中樞[使用 Azure 資源健康狀態](#use-azure-resource-health)。 
+Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您的資源時取得支援。 儀表板會針對您的每個 IoT 中樞提供目前和過去的健康情況狀態。 請繼續閱讀本文底部的一節，以瞭解如何搭配 [使用 Azure 資源健康狀態](#use-azure-resource-health) 與 IoT 中樞。 
 
 「IoT 中樞」也提供自己的計量，可供您用來了解 IoT 資源的狀態。 若要深入了解，請參閱[了解 IoT 中樞計量](iot-hub-metrics.md)。
 
@@ -121,7 +122,7 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 #### <a name="routes"></a>路由
 
-[[訊息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)] 類別會追蹤訊息路由評估期間發生的錯誤，以及 IoT 中樞所見的端點健康情況。 此類別包括下列事件，例如：
+[訊息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)類別會追蹤訊息路由評估期間發生的錯誤，以及 IoT 中樞所察覺的端點健康情況。 此類別包括下列事件，例如：
 
 * 規則評估為「未定義」、
 * IoT 中樞將端點標示為無效，或
@@ -150,8 +151,8 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 以下是路由診斷記錄的更多詳細資料：
 
-* [路由診斷記錄錯誤代碼的清單](troubleshoot-message-routing.md#diagnostics-error-codes)
-* [路由診斷記錄 Azurermprovideroperation 值清單的清單](troubleshoot-message-routing.md#diagnostics-operation-names)
+* [路由診斷記錄錯誤碼的清單](troubleshoot-message-routing.md#diagnostics-error-codes)
+* [路由診斷記錄 operationNames 的清單](troubleshoot-message-routing.md#diagnostics-operation-names)
 
 #### <a name="device-telemetry"></a>裝置遙測
 
@@ -320,9 +321,9 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 #### <a name="distributed-tracing-preview"></a>分散式追蹤 (預覽)
 
-分散式追蹤類別會追蹤相互關聯識別碼，以尋找帶有追蹤內容標頭的訊息。 若要完整啟用這些記錄，必須更新用戶端程式代碼，方法如下：[使用 IoT 中樞分散式追蹤（預覽），以端對端分析及診斷 IoT 應用程式](iot-hub-distributed-tracing.md)。
+分散式追蹤類別會追蹤相互關聯識別碼，以尋找帶有追蹤內容標頭的訊息。 若要完整啟用這些記錄，您必須更新用戶端程式代碼，方法是遵循 [Iot 中樞分散式追蹤的端對端分析和診斷 iot 應用程式 (預覽) ](iot-hub-distributed-tracing.md)。
 
-請注意， `correlationId` 符合[W3C 追蹤內容](https://github.com/w3c/trace-context)提案，其中包含和 `trace-id` `span-id` 。
+請注意， `correlationId` 符合 [W3C 追蹤內容](https://github.com/w3c/trace-context) 提案，其中包含和 `trace-id` `span-id` 。
 
 ##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT 中樞 D2C (裝置到雲端) 記錄
 
@@ -351,7 +352,7 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 在這裡，`durationMs` 不會進行計算，因為 IoT 中樞的時鐘可能未與裝置的時鐘同步，因此計算持續時間可能會產生誤導。 建議您使用 `properties` 區段中的時間戳記來撰寫邏輯，以擷取暴增的裝置到雲端延遲。
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | 整數 | 裝置到雲端訊息的大小 (以位元組為單位) |
 | **deviceId** | 由 ASCII 7 位元英數字元組成的字串 | 裝置的身分識別 |
@@ -385,10 +386,10 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 在 `properties` 區段中，此記錄檔包含有關訊息輸入的其他資訊。
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | String | 可為 true 或 false，會指出 IoT 中樞是否已啟用訊息路由 |
-| **parentSpanId** | String | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 D2C 訊息追蹤 |
+| **isRoutingEnabled** | 字串 | 可為 true 或 false，會指出 IoT 中樞是否已啟用訊息路由 |
+| **parentSpanId** | 字串 | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 D2C 訊息追蹤 |
 
 ##### <a name="iot-hub-egress-logs"></a>IoT 中樞輸出記錄
 
@@ -417,15 +418,15 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 在 `properties` 區段中，此記錄檔包含有關訊息輸入的其他資訊。
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **endpointName** | String | 路由端點的名稱 |
-| **endpointType** | String | 路由端點的類型 |
-| **parentSpanId** | String | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 IoT 中樞輸入訊息追蹤 |
+| **點** | 字串 | 路由端點的名稱 |
+| **endpointType** | 字串 | 路由端點的類型 |
+| **parentSpanId** | 字串 | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 IoT 中樞輸入訊息追蹤 |
 
 #### <a name="configurations"></a>組態
 
-IoT 中樞設定記錄檔會追蹤自動裝置管理功能集的事件和錯誤。
+IoT 中樞設定記錄會追蹤自動裝置管理功能集的事件和錯誤。
 
 ```json
 {
@@ -447,9 +448,9 @@ IoT 中樞設定記錄檔會追蹤自動裝置管理功能集的事件和錯誤�
 }
 ```
 
-### <a name="device-streams-preview"></a>裝置串流（預覽）
+### <a name="device-streams-preview"></a>裝置串流 (預覽) 
 
-[裝置串流] 類別會追蹤傳送給個別裝置的要求-回應互動。
+裝置串流類別會追蹤傳送給個別裝置的要求-回應互動。
 
 ```json
 {
@@ -550,11 +551,11 @@ class Program
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 流覽至 [**服務健康狀態**  >  **資源健康狀態**]。
+2. 流覽至**服務健康**情況  >  **資源健康狀態**。
 
-3. 從下拉式方塊中選取您的訂用帳戶，然後選取 [ **IoT 中樞**] 作為 [資源類型]。
+3. 從下拉式方塊中選取您的訂用帳戶，然後選取 [ **IoT 中樞** ] 作為資源類型。
 
-若要深入瞭解如何解讀健康情況資料，請參閱[Azure 資源健康狀態總覽](../service-health/resource-health-overview.md)。
+若要深入瞭解如何解讀健康情況資料，請參閱 [Azure 資源健康狀態總覽](../service-health/resource-health-overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

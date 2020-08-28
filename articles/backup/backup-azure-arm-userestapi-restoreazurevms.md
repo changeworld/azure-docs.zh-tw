@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來管理 Azure �
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 2588ca87e2dc2209fbaa5eae411fe5895d5f5669
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: f9cd0cca938dac79071d7ded6f6139f4e3c3840d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889646"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011183"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 還原 Azure 虛擬機器
 
@@ -27,7 +27,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 `{containerName}` 和 `{protectedItemName}` 的建構方式在[這裡](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)。 `{fabricName}` 是 "Azure"。
 
-*GET* URI 具備所有必要參數。 不需要額外的要求內文
+*GET* URI 具備所有必要參數。 不需要額外的要求主體。
 
 ### <a name="responses"></a>回應
 

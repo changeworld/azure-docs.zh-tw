@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 96eeafd7e434e2c3a42311999fcd4979531df2aa
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 00718e15b069e9be25abdaf0e4460eae20c6afd0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88584874"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998067"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>從 Azure 開放資料集建立 Azure Machine Learning 資料集
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "88584874"
 
 若要瞭解資料集符合 Azure Machine Learning 的整體資料存取工作流程，請參閱 [安全存取資料](../machine-learning/concept-data.md#data-workflow) 檔。
 
-Azure 開放資料集是策劃的公用資料集，可讓您用來新增案例專屬的功能，以擴充您的預測解決方案並改善其精確度。 請參閱 [開放資料集目錄](https://azure.microsoft.com/services/op[en-datasets/catalog/) 中的公用網域資料，以協助您訓練機器學習模型，例如：
+Azure 開放資料集是策劃的公用資料集，可讓您用來新增案例專屬的功能，以擴充您的預測解決方案並改善其精確度。 請參閱 [開放資料集目錄](https://azure.microsoft.com/en-in/services/open-datasets/catalog/) 中的公用網域資料，以協助您訓練機器學習模型，例如：
 
 * [天氣](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)
 * [政府](https://azure.microsoft.com/services/open-datasets/catalog/us-decennial-census-zip/)
@@ -38,7 +38,7 @@ Azure 開放資料集是策劃的公用資料集，可讓您用來新增案例�
 開放資料集位於雲端上的 Microsoft Azure，同時包含在 [Azure Machine Learning PYTHON SDK](#create-datasets-with-the-sdk) 和 [Azure Machine Learning studio](#create-datasets-with-the-studio)中。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在本文中，您需要：
 
@@ -111,7 +111,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
     ![選擇資料集](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-1. 選擇用來註冊資料集的名稱，並選擇性地使用可用的篩選準則來篩選資料。 在此情況下，針對「 **公用假日** 」資料集，您可以將時間週期篩選為一年，並將國家/地區代碼篩選為只有美國。 如需詳細資料，請參閱 [Azure 開放資料集目錄](https://azure.microsoft.com/services/op[en-datasets/catalog/) ，例如欄位描述和日期範圍。 選取 [建立]。
+1. 選擇用來註冊資料集的名稱，並選擇性地使用可用的篩選準則來篩選資料。 在此情況下，針對「 **公用假日** 」資料集，您可以將時間週期篩選為一年，並將國家/地區代碼篩選為只有美國。 如需詳細資料，請參閱 [Azure 開放資料集目錄](https://azure.microsoft.com/services/op[en-datasets/catalog/) ，例如欄位描述和日期範圍。 選取 [建立]  。
 
     ![設定資料集參數和建立資料集](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 

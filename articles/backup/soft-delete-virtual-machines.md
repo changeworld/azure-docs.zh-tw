@@ -4,12 +4,12 @@ description: 瞭解虛擬機器虛刪除如何讓備份更安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: a79f2bf77bcc184db8ac61b51107c1bb4a2a989d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: a8b70d4c8240d096c19e5a8d7449921557b8896c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889820"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022236"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>虛擬機器的虛刪除
 
@@ -19,7 +19,7 @@ Vm 的虛刪除會保護 Vm 的備份免于非預期的刪除。 即使在刪除
 > 虛刪除只會保護已刪除的備份資料。 如果在沒有備份的情況下刪除 VM，虛刪除功能將不會保留資料。 所有資源都應該使用 Azure 備份來保護，以確保完整的復原能力。
 >
 
-## <a name="supported-regions"></a>支援的區域
+## <a name="supported-regions"></a>支援區域
 
 在美國中西部、東亞、加拿大中部、加拿大東部、法國中部、法國南部、韓國中部、南韓南部、英國南部、歐洲、澳大利亞東部、澳大利亞東南部、歐洲北部、美國西部、美國中南部、美國中部、日本東部、日本西部、印度南部、印度中部、印度西部、美國東部2中，都支援虛刪除、瑞士北部、瑞士西部、挪威西部、挪威東部和所有國家地區。
 

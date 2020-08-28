@@ -1,6 +1,6 @@
 ---
 title: 輸入驗證 - Microsoft 威脅模型化工具 - Azure | Microsoft Docs
-description: 深入瞭解 Threat Modeling Tool 中的輸入驗證。 請參閱風險降低資訊和查看程式碼範例。
+description: 瞭解 Threat Modeling Tool 中的輸入驗證。 查看緩和資訊並查看程式碼範例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5782c8b96534722a1e03ce619504e513a1c5e048
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a10dec01757fd344c9fa2bc92082082d2af085e9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539793"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000561"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>安全框架︰輸入驗證 | 風險降低 
 | 產品/服務 | 發行項 |

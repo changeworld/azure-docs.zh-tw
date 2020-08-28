@@ -1,19 +1,19 @@
 ---
 title: 使用 .NET 和 HDInsight 執行 Apache Sqoop 作業 - Azure
-description: 瞭解如何使用 HDInsight .NET SDK，在 Apache Hadoop 叢集與 Azure SQL Database 之間執行 Apache Sqoop 匯入和匯出。
+description: 瞭解如何使用 HDInsight .NET SDK 執行 apache Hadoop 叢集與 Azure SQL Database 之間的 Apache Sqoop 匯入和匯出。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive, hdiseo17may2017, devx-track-csharp
 ms.date: 01/14/2020
-ms.openlocfilehash: 5faa3d7bf048eee622ddd5a46082bb2432d84871
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bc4b3019cb8308ea19d86eea7bf886063ea28563
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076244"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008279"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>在 HDInsight 中使用 .NET SDK for Apache Hadoop 執行 Apache Sqoop 作業
 
@@ -21,7 +21,7 @@ ms.locfileid: "86076244"
 
 瞭解如何使用 Azure HDInsight .NET SDK 在 HDInsight 中執行 Apache Sqoop 作業，以在 HDInsight 叢集與 Azure SQL Database 或 SQL Server 資料庫之間進行匯入和匯出。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 透過[搭配使用 Apache Sqoop 與 HDInsight 中的 Hadoop](./hdinsight-use-sqoop.md)完成[設定測試環境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
 
@@ -31,13 +31,13 @@ ms.locfileid: "86076244"
 
 ## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>使用 .NET SDK 在 HDInsight 叢集上使用 Sqoop
 
-HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您輕鬆地從 .NET 使用 HDInsight 叢集。 在本節中，您會建立 c # 主控台應用程式，將匯出 `hivesampletable` 至您從必要條件建立的 Azure SQL Database 資料表。
+HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您輕鬆地從 .NET 使用 HDInsight 叢集。 在本節中，您會建立 c # 主控台應用程式，以將匯出 `hivesampletable` 至您從必要條件建立的 Azure SQL Database 資料表。
 
 ## <a name="set-up"></a>設定
 
-1. 啟動 Visual Studio 並建立 c # 主控台應用程式。
+1. 啟動 Visual Studio，然後建立 c # 主控台應用程式。
 
-1. 流覽至 [**工具**] [  >  **NuGet 套件管理員**]  >  [**套件管理員主控台**]，然後執行下列命令：
+1. 流覽至 [**工具**]  >  **NuGet 封裝管理員**  >  **封裝管理員主控台**，然後執行下列命令：
 
     ```
     Install-Package Microsoft.Azure.Management.HDInsight.Job
@@ -115,9 +115,9 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您輕鬆地從 .NET 使�
 
 ## <a name="sqoop-import"></a>Sqoop import
 
-從 SQL Server 到 Azure 儲存體。 這個範例相依于上述已執行的匯出。  這個範例會將資料從 `mobiledata` SQL Database 中的資料表匯入到叢集 `wasb:///tutorials/usesqoop/importeddata` 預設儲存體帳戶上的目錄。
+從 SQL Server 到 Azure 儲存體。 此範例相依于已執行的上述匯出。  此範例會將 SQL Database 資料表中的資料匯入 `mobiledata` 至叢集 `wasb:///tutorials/usesqoop/importeddata` 預設儲存體帳戶上的目錄。
 
-1. 將區塊中上述程式碼取代為 `//sqoop start //sqoop end` 下列程式碼：
+1. 將區塊中的程式碼取代為 `//sqoop start //sqoop end` 下列程式碼：
 
     ```csharp
     var tableName = "mobiledata";

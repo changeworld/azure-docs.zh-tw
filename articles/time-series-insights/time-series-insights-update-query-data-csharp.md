@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 075bf78599602b1b92f3cec01fe5dfb92b5321cc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fcb38f761a72bf2c6e5dee8bb993cec9143e7241
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654441"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998946"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>使用 C 銳利查詢 Azure 時間序列深入解析 Gen2 環境中的資料
 
 此 c # 範例示範如何從 Azure 時間序列深入解析 Gen2 環境中的 [Gen2 資料存取 api](https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview) 查詢資料。
 
 > [!TIP]
-> View Gen2 c # 程式碼範例位於 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) 。
+> View Gen2 c # 程式碼範例位於 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) 。
 
 ## <a name="summary"></a>摘要
 
@@ -71,7 +71,7 @@ ms.locfileid: "88654441"
 
 ## <a name="c-sample-code"></a>C# 範例程式碼
 
-請參閱 [Azure 時間序列深入解析](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs) 存放庫，以存取 c # 範例程式碼。 
+請參閱 [Azure 時間序列深入解析](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) 存放庫，以存取 c # 範例程式碼。 
 
 > [!NOTE]
 >

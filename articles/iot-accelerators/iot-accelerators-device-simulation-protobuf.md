@@ -6,17 +6,15 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom:
-- mvc
-- amqp
+ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9c8aa86aa8a374a33750e306529ef212c9a8bfc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683996"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012325"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用 Protocol Buffers 將遙測資料序列化
 
@@ -34,7 +32,7 @@ Protocol Buffers (Protobuf) 是結構化資料的二進位序列化格式。 Pr
 1. 產生 Protobuf 類別
 1. 本機測試
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要遵循本操作指南中的步驟，您需要：
 
@@ -65,7 +63,7 @@ Protocol Buffers (Protobuf) 是結構化資料的二進位序列化格式。 Pr
 
 在 Visual Studio Code 中，開啟 **remote-monitoring-services-dotnet-master\storage-adapter** 資料夾。 按一下任何 [還原]**** 按鈕，以修正無法解決的相依性。
 
-開啟檔案**上的 vscode/launch.js** ，並將您的 Cosmos DB 連接字串指派**給 \_ pc \_ pcs storageadapter DOCUMENTDB \_ CONNSTRING**環境變數。
+開啟檔案的 **vscode/launch.js** ，並將您的 Cosmos DB 連接字串指派給 ** \_ >storageadapter \_ DOCUMENTDB \_ CONNSTRING** 環境變數的電腦。
 
 > [!NOTE]
 > 當您在本機電腦上執行微服務時，仍需要 Azure 中的 Cosmos DB 執行個體才能正常運作。
@@ -202,7 +200,7 @@ Visual Studio Code 中的 [終端機]**** 視窗會顯示執行中微服務的�
 * **PCS\_AZURE\_STORAGE\_ACCOUNT** 環境變數的儲存體帳戶連接字串。
 * **PCS\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** 環境變數的 Cosmos DB 連接字串。
 
-開啟**WebService\appsettings.ini**檔案，並修改設定，如下所示：
+開啟 **WebService\appsettings.ini** 檔案並修改設定，如下所示：
 
 #### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>設定解決方案以包含新的裝置型號檔案
 

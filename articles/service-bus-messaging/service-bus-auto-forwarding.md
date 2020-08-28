@@ -3,12 +3,13 @@ title: 自動轉送 Azure 服務匯流排訊息實體
 description: 本文說明如何將 Azure 服務匯流排的佇列或訂用帳戶連結至另一個佇列或主題。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 28c3e8985f12163e871fa4de5fb6cc92d68110b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: af1c8a8e043ae964c4917a58ea67275e8379817f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337741"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021709"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自動轉寄鏈結服務匯流排實體
 
@@ -37,10 +38,10 @@ namespaceManager.CreateSubscription(srcSubscription));
 如果 Alice 去渡假，她的個人佇列 (而不是 ERP 主題) 會填滿。 在此案例中，因為銷售代表未收到任何訊息，所以沒有任何 ERP 主題達到配額。
 
 > [!NOTE]
-> 設定自動轉寄時，會自動將**來源和目的地**上的 AutoDeleteOnIdle 值設定為資料類型的最大值。
+> 設定自動轉寄時， **來源和目的地** 的 >autodeleteonidle 值會自動設定為資料類型的最大值。
 > 
->   - 在來源端，自動轉寄會作為接收作業。 因此，具有自動轉寄設定的來源絕對不會真正「閒置」。
->   - 在目的地端，這樣做是為了確保一律有目的地可將訊息轉送到。
+>   - 在來源端，自動轉寄會作為接收作業。 因此具有自動轉寄設定的來源絕不會真正「閒置」。
+>   - 在目的地端，這是為了確保一律會有目的地可以轉寄訊息。
 
 ## <a name="autoforwarding-considerations"></a>自動轉寄考量
 
@@ -50,7 +51,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 服務匯流排會針對每一則轉寄的訊息向一個作業計費。 例如，如果所有第一層訂用帳戶都收到訊息的複本，將訊息傳送至有 20 個訂用帳戶的主題 (其中的每個訂用帳戶都會設定成將訊息自動轉寄至另一個佇列或主題) 會以 21 個作業計費。
 
-若要建立連結至另一個佇列或主題的訂用帳戶，訂用帳戶的建立者必須同時擁有來源和目的地實體的**管理**許可權。 將訊息傳送至來源主題只需要來源主題的**傳送**權限。
+若要建立連結至另一個佇列或主題的訂用帳戶，訂用帳戶的建立者必須擁有來源和目的地實體的 **管理** 許可權。 將訊息傳送至來源主題只需要來源主題的**傳送**權限。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -63,7 +64,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 若要深入了解服務匯流排效能改進，請參閱 
 
 * [使用服務匯流排傳訊的效能改進最佳作法](service-bus-performance-improvements.md)
-* [分割訊息實體][Partitioned messaging entities]。
+* [分割的訊息實體][Partitioned messaging entities]。
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
 [SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo

@@ -1,5 +1,5 @@
 ---
-title: ML Studio （傳統）：匯入/匯出 web 服務中的資料-Azure
+title: ML Studio (傳統) ：在 web 服務中匯入/匯出資料-Azure
 description: 了解如何使用「匯入資料」及「匯出資料」模組來傳送和接收 Web 服務的資料。
 services: machine-learning
 author: likebupt
@@ -10,21 +10,22 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: d16fabbf08b95d16cf54926d7d0373596e7bcf13
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7b1d8f939e403c795effeca14943791d1554742f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430107"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010727"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用資料匯入和資料匯出模組的 Azure Machine Learning Studio (傳統版) Web 服務
 
-**適用物件：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio （傳統） ![ 否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 當您建立預測性實驗時，通常會新增 Web 服務輸入和輸出。 當您部署實驗時，取用者可以透過輸入和輸出傳送和接收 Web 服務的資料。 對於某些應用程式，取用者的資料可能可以從資料摘要獲得，或者資料已經位於外部資料來源 (例如 Azure Blob 儲存體)。 在這些情況下，應用程式就不需要使用 Web 服務的輸入和輸出讀取和寫入資料。 而是可以改用「批次執行服務 (BES)」使用「匯入資料」模組從資料來源讀取資料，然後使用「匯出資料」模組將評分結果寫入不同的資料位置。
 
-「匯入資料」和「匯出資料」模組可以讀取和寫入各種資料位置，例如透過 HTTP 的 Web URL、Hive 查詢、Azure SQL Database 中的資料庫、Azure 表格儲存體、Azure Blob 儲存體、資料摘要提供或 SQL Server 資料庫。
+「匯入資料」和「匯出資料」模組可以讀取和寫入各種資料位置，例如透過 HTTP 的 Web URL、Hive 查詢、Azure SQL Database 中的資料庫、Azure 資料表儲存體、Azure Blob 儲存體、資料摘要提供或 SQL Server 資料庫。
 
 本主題使用「範例5：定型、測試、評估二元分類：成人資料集」範例，並假設已將該資料集載入到名為 censusdata 的 Azure SQL 資料表。
 

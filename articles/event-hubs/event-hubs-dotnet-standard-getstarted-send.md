@@ -3,12 +3,13 @@ title: 使用 .NET 從 Azure 事件中樞傳送或接收事件 (最新版)
 description: 本文將逐步解說如何建立 .NET Core 應用程式，以使用最新的 Azure.Messaging.EventHubs 套件，從 Azure 事件中樞傳送/接收事件。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 94223513c41f44555f5c2c2ed7328dc0b5803f28
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1bf41eb5ef5b43a59330d1735086ca595d7604b5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936209"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010577"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>將事件傳送至 Azure 事件中樞及從中接收事件 - .NET (Azure.Messaging.EventHubs) 
 本快速入門說明如何使用 **Azure.Messaging.EventHubs** .NET 程式庫，將事件傳送至事件中樞，以及從中接收事件。 
@@ -38,7 +39,7 @@ ms.locfileid: "88936209"
     1. 選取 [C#] 作為程式設計語言。
     1. 選取 [主控台] 作為應用程式的類型。 
     1. 從結果清單中選取 [主控台應用程式 (.NET Core)]。 
-    1. 然後，選取 [下一步]  。 
+    1. 然後，選取 [下一步]。 
 
         ![[新增專案] 對話方塊](./media/getstarted-dotnet-standard-send-v2/new-send-project.png)    
 1. 輸入 **EventHubsSender** 作為專案名稱、輸入 **EventHubsQuickStart** 作為解決方案名稱，然後選取 [確定] 以建立專案。 

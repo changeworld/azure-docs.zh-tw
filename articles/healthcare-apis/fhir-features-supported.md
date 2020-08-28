@@ -8,14 +8,14 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 46568bf3969d050fd964c85278debd9d599db266
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: bdf328222fef1f763776bd26c47f5cd4d65e487e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796556"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000000"
 ---
-# <a name="features"></a>功能
+# <a name="features"></a>特性
 
 Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部署。 伺服器是 [FHIR](https://hl7.org/fhir) 標準的實作為。 本檔列出 FHIR 伺服器的主要功能。
 
@@ -98,7 +98,7 @@ Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部�
 | 搜尋作業       | 支援-PaaS | 支援的作業系統 (SQL)  | 支援的-OSS (Cosmos DB)  | 註解 |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | 否        | 否        | 否        |         |
-| `_sort`                 | 否        | 否        | 否        |         |
+| `_sort`                 | 否        | Partial   | Partial        |   支援 `_sort=_lastUpdated`       |
 | `_score`                | 否        | 否        | 否        |         |
 | `_count`                | 是       | 是       | 是       |         |
 | `_summary`              | 部分   | Partial   | Partial   | 支援 `_summary=count` |

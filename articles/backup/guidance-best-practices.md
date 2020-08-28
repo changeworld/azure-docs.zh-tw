@@ -3,12 +3,12 @@ title: 指導方針和最佳做法
 description: 探索將雲端和內部部署工作負載備份至雲端的最佳做法和指導方針
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825574"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000357"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>將雲端和內部部署工作負載備份到雲端
 
@@ -90,7 +90,7 @@ Azure 備份會使用復原服務保存庫來協調和管理備份。 其也會�
 
 ## <a name="backup-policy-considerations"></a>備份原則考慮
 
-Azure 備份原則有兩個元件： *排程* (何時進行備份) 和 *保留* (保留備份) 的時間長度。 您可以根據所備份的資料類型、RTO/RPO 需求、操作或法規合規性需求和工作負載 (類型（例如 VM、資料庫、檔案) ）來定義原則。 若要[深入瞭解](backup-architecture.md#backup-policy-essentials)，請參閱。
+Azure 備份原則有兩個元件： *排程* (何時進行備份) 和 *保留* (保留備份) 的時間長度。 您可以根據所備份的資料類型、RTO/RPO 需求、作業或法規合規性需求和工作負載 (類型（例如 VM、資料庫、檔案) ）來定義原則。 若要[深入瞭解](backup-architecture.md#backup-policy-essentials)，請參閱。
 
 建立備份原則時，請考慮下列指導方針：
 
@@ -214,7 +214,7 @@ Azure 備份服務的功能可讓您彈性地管理成本，並仍能滿足您�
 
 * Azure 備份會取得 Azure Vm 的快照集，並將其儲存在磁片上，以加速建立復原點，並加快還原作業的速度。 這稱為「立即還原」。 根據預設，立即還原快照集會保留兩天。 這項功能可減少還原時間，讓這些快照集的還原作業。 它可減少從保存庫轉換和複製資料所需的時間。 因此，您將看見儲存體成本會隨著在這段期間內取得的快照集而增減。 若要[深入瞭解](backup-instant-restore-capability.md#configure-snapshot-retention)，請參閱。
 
-* 依預設，Azure 備份保存庫的儲存體複寫類型會設定為異地冗余 (GRS) 。 保護專案之後，就無法變更此選項。 異地冗余儲存體 (GRS) 提供比本地冗余儲存體 (LRS) 更高的資料持久性層級，可讓您選擇使用跨區域還原和成本。 檢查較低成本和較高的資料持久性（最適合您的案例）之間的取捨。 [請於此處深入了解](backup-create-rs-vault.md#set-storage-redundancy)
+* 依預設，Azure 備份保存庫的儲存體複寫類型會設定為異地冗余 (GRS) 。 保護專案之後，就無法變更此選項。 異地冗余儲存體 (GRS) 提供比本地冗余儲存體 (LRS) 更高的資料持久性層級，可讓您選擇使用跨區域還原和成本。 檢查較低成本和更高資料耐久性之間的取捨，並決定最適合您的案例。 [請於此處深入了解](backup-create-rs-vault.md#set-storage-redundancy)
 
 * 如果您要保護在 VM 和 VM 本身內執行的工作負載，請檢查是否需要此雙重保護。
 

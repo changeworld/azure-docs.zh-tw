@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 33cc0c33f90d68ac3396f1366d4ff8437563eda1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
+ms.openlocfilehash: 2edb3060437080e528d41d4af5f4affd4fbf3316
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213885"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010183"
 ---
 # <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>Synapse SQL 集區連線問題疑難排解
 
@@ -50,7 +50,7 @@ ms.locfileid: "85213885"
 
 ## <a name="check-your-firewall-settings"></a>檢查防火牆設定
 
-SQL 集區資料庫會透過連接埠 1433 通訊。  如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 在此情況下，除非您的 IT 部門開啟埠1433，否則您無法連線到[邏輯伺服器](../../azure-sql/database/logical-servers.md)。 您可以在[這裡](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)找到防火牆組態的其他資訊。
+SQL 集區資料庫會透過連接埠 1433 通訊。  如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 在此情況下，除非 IT 部門開啟埠1433，否則您無法連線到您的 [邏輯伺服器](../../azure-sql/database/logical-servers.md) 。 您可以在[這裡](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)找到防火牆組態的其他資訊。
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>檢查 VNet/服務端點設定
 

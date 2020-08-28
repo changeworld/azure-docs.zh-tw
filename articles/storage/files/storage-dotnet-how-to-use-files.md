@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7ef9d87db1981c7721c2398e858404c2527dd274
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c5c51bb052948c58d4849c556d0756240d6968ca
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605785"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011526"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 開發 Azure 檔案服務
 
@@ -70,7 +71,7 @@ API | 使用時機 | 注意
 
   此封裝提供一個類別，可讓您在應用程式執行所在的位置剖析設定檔中的連接字串。
 
-您可以使用 NuGet 來取得這兩個封裝。 遵循下列步驟：
+您可以使用 NuGet 來取得這兩個封裝。 請遵循下列步驟：
 
 1. 在 **方案總管**中，以滑鼠右鍵按一下您的專案，然後選擇 [ **管理 NuGet 套件**]。
 1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]。 然後搜尋並選擇 [ **Azure**]，然後選取 [ **安裝**]。

@@ -1,14 +1,15 @@
 ---
 title: 開發具狀態服務的單元測試
-description: 瞭解 Service Fabric Azure 中適用于具狀態服務的單元測試，以及在開發期間要牢記在心的特殊考慮。
+description: 瞭解 Azure Service Fabric 中適用于具狀態服務的單元測試，以及在開發期間要牢記在心的特殊考慮。
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 287c0544daa3c44d91fd336b502c496b9b4bb266
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639831"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011390"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>建立具狀態服務的單元測試
 對 Service Fabric 具狀態服務進行單元測試，可找出傳統應用程式或特定領域單元測試不一定能找到的常見錯誤。 為具狀態服務開發單元測試時，必須留意某些特殊考量。
@@ -25,7 +26,7 @@ ms.locfileid: "75639831"
 [Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/) 
 [GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
-*ServiceFabric。模擬不是由 Microsoft 所擁有或維護。不過，這是目前 Microsoft 建議的程式庫，可供進行具狀態服務的單元測試。*
+*ServiceFabric 模擬並非由 Microsoft 所擁有或維護。不過，這是 Microsoft 建議的資源庫，用於單元測試具狀態服務。*
 
 ## <a name="set-up-the-mock-orchestration-and-state"></a>設定模擬協調流程和狀態
 在編排測試的過程中，將會建立模擬複本集和狀態管理員。 其後，複本集將自行為每個複本建立受測服務的執行個體。 它也將自行執行生命週期事件，例如 `OnChangeRole` 和 `RunAsync`。 模擬狀態管理員會確保對狀態管理員執行的任何作業，都會比照實際狀態管理員的方式執行和保存。

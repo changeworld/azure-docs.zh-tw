@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: a74fae74a2d0ebbb71d65420475e5772e44a8d84
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 74fae6a8aa0c59043db0ab816e09b16affb63580
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507088"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021828"
 ---
 # <a name="remote-rendering-sessions"></a>遠端轉譯工作階段
 
@@ -76,7 +77,7 @@ Azure 遠端轉譯的運作方式，是將複雜的轉譯工作交由雲端處�
 
 #### <a name="extend-a-sessions-lease-time"></a>延長工作階段的租用時間
 
-如果您發現需要更多時間，也可以將作用中的工作階段[延長租用時間](../how-tos/session-rest-api.md#update-a-session)。
+如果您發現需要更多時間，也可以將作用中的工作階段[延長租用時間](../how-tos/session-rest-api.md#modify-and-query-session-properties)。
 
 ## <a name="example-code"></a>程式碼範例
 
@@ -107,6 +108,8 @@ while (true)
     {
         break;
     }
+    // REST calls must not be issued too frequently, otherwise the server returns failure code 429 ("too many requests"). So we insert the recommended delay of 10s
+    await Task.Delay(TimeSpan.FromSeconds(10));
 }
 
 if (sessionProperties.Status != RenderingSessionStatus.Ready)

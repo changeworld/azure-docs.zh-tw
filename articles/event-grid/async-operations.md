@@ -3,12 +3,13 @@ title: 事件方格非同步作業的狀態
 description: 說明如何在 Azure 中追蹤事件方格非同步作業。 其會顯示您用來取得長時間執行作業狀態的值。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 621490a9f56e88baaf343c1c2a072ab84aa7d3ef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: baae7b097a0b696d405c0e7ea3d3bdeb326f23b1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103325"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011679"
 ---
 # <a name="track-event-grid-asynchronous-azure-operations"></a>追蹤事件方格非同步 Azure 作業
 某些 Azure REST 作業因為無法快速完成，而以非同步方式執行。 本文說明如何透過回應中傳回的值，以追蹤非同步作業的狀態。  
@@ -185,4 +186,4 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 ## <a name="next-steps"></a>後續步驟
 
 * 如需每個 REST 作業的相關文件，請參閱 [REST API 文件](/rest/api/)。
-* 如需透過 Resource Manager REST API 部署範本的詳細資訊，請參閱[使用 Resource Manager 範本部署資源和 Resource Manager REST API](../azure-resource-manager/templates/deploy-rest.md)。
+* 如需透過 Resource Manager REST API 部署範本的相關資訊，請參閱 [使用 Resource Manager 範本部署資源和 Resource Manager REST API](../azure-resource-manager/templates/deploy-rest.md)。

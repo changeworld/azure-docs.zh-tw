@@ -6,12 +6,13 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 08/19/2020
-ms.openlocfilehash: 40c32226f0e79e66db45d0c32614eaa4c5b543f9
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ece2fdf5c75decb9a2139b973ad4bbb3f0803a0b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607529"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011169"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模擬器進行本機開發和測試
 
@@ -539,7 +540,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 - 如果您收到**服務無法使用**訊息，模擬器可能無法初始化網路堆疊。 由於 Pulse 安全用戶端或 Juniper 網路用戶端的網路篩選驅動程式可能會造成問題，因此請檢查是否已安裝這些驅動程式。 解除安裝協力廠商網路篩選驅動程式通常便會修正問題。 或者，使用 /DisableRIO 來啟動模擬器，將模擬器網路通訊切換為一般 Winsock。 
 
-- 如果您遇到「 **禁止」，則會使用傳輸通訊協定或加密中禁止的加密來發出「訊息」： "要求。檢查帳戶 SSL/TLS 的最小允許通訊協定設定 ...** 」連線問題，這可能是 OS 中的全域變更所造成的 (例如 Insider Preview 組建 20170) ，或啟用 TLS 1.3 作為預設值的瀏覽器設定。 使用 SDK 對 Cosmos 模擬器執行要求時，可能會發生類似的錯誤，例如 **Microsoft.Azure.Documents.DocumentClientException：使用傳輸通訊協定或加密中的禁止加密提出要求。檢查帳戶 SSL/TLS 允許的最小通訊協定設定**。 這是預期的情況，因為 Cosmos 模擬器只接受並可搭配使用 TLS 1.2 通訊協定。 建議的解決辦法是將設定和預設值變更為 TLS 1.2;例如，在 [IIS 管理員] 中，流覽至 [網站]-> [預設的網站]，並找出埠8081的「網站系結」，並加以編輯以停用 TLS 1.3。 您可以透過 [設定] 選項來執行網頁瀏覽器的類似操作。
+- 如果您遇到「 **禁止」，則會使用傳輸通訊協定或加密中禁止的加密來發出「訊息」： "要求。檢查帳戶 SSL/TLS 的最小允許通訊協定設定 ...** 」連線問題，這可能是 OS 中的全域變更所造成的 (例如 Insider Preview 組建 20170) ，或啟用 TLS 1.3 作為預設值的瀏覽器設定。 使用 SDK 對 Cosmos 模擬器執行要求時，可能會發生類似的錯誤，例如 **Microsoft.Azure.Documents.DocumentClientException：使用傳輸通訊協定或加密中的禁止加密提出要求。檢查帳戶 SSL/TLS 允許的最小通訊協定設定**。 就目前而言，這是的預期行為，因為 Cosmos 模擬器僅接受並適用 TLS 1.2 通訊協定。 建議的解決辦法是將設定和預設值變更為 TLS 1.2;例如，在 [IIS 管理員] 中，流覽至 [網站]-> [預設的網站]，並找出埠8081的「網站系結」，並加以編輯以停用 TLS 1.3。 您可以透過 [設定] 選項對網頁瀏覽器執行類似的作業。
 
 - 當模擬器執行時，如果您的電腦進入睡眠模式或執行任何作業系統更新，您應該會看見**服務目前無法使用**的訊息。 以滑鼠右鍵按一下視窗通知匣上出現的圖示，然後選取 [重設資料]，來重設模擬器的資料。
 

@@ -7,12 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
-ms.openlocfilehash: 211dce8a2810d9eb07bf0f388753afd50add4945
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bb2f948a49badf2578957b137d185c26607923b7
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87919951"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997195"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>搭配 Gremlin SDK 使用 Azure Cosmos DB 資源權杖
 
@@ -26,7 +27,7 @@ Apache TinkerPop Gremlin SDK 沒有 API 可用來建立資源權杖。 「資源
 
 - **Azure Cosmos DB 帳戶** - 具有相關聯 DNS 的最上層實體 (例如 `contoso.gremlin.cosmos.azure.com`)。
   - **Azure Cosmos DB 資料庫**
-    - **使用者**
+    - **User**
       - **權限**
         - **權杖** - 權限物件屬性，代表允許或拒絕的動作。
 
@@ -95,12 +96,12 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="limit"></a>限制
 
-透過單一 Gremlin 帳戶，您可以發出不限數目的權杖。 不過，1 小時內只能同時使用最多 100 個權杖。 如果應用程式超過每小時的權杖限制，則會拒絕驗證要求，而且您會收到下列錯誤訊息：「已超過允許的資源權杖限制100，可同時使用。」 關閉使用特定權杖的作用中連線不會為新權杖釋出位置。 Azure Cosmos DB Gremlin 資料庫引擎會在緊接驗證要求之前的一小時內，持續追蹤唯一標記。
+透過單一 Gremlin 帳戶，您可以發出不限數目的權杖。 不過，1 小時內只能同時使用最多 100 個權杖。 如果應用程式超過每小時的權杖限制，則會拒絕驗證要求，而且您會收到下列錯誤訊息：「超過允許的資源權杖限制100，可同時使用。」 關閉使用特定權杖的作用中連線不會為新權杖釋出位置。 Azure Cosmos DB Gremlin 資料庫引擎會在緊接驗證要求之前的一小時內，持續追蹤唯一標記。
 
 ## <a name="permission"></a>權限
 
 應用程式在使用資源權杖時常遇到的錯誤是：「未在對應要求的授權標頭中提供足夠的權限。 請使用另一個授權標頭並重試。」 當 Gremlin 周遊嘗試寫入邊線或頂點，但資源權杖僅授與「讀取」** 權限時，就會傳回此錯誤。 檢查您的周遊是否包含下列任一步驟：.addV()**、.addE()**、.drop()** 或 .property()**。
 
 ## <a name="next-steps"></a>後續步驟
-* [Azure 角色型存取控制 (AZURE RBAC) ](role-based-access-control.md)的 Azure Cosmos DB
+* [Azure 角色型存取控制 (Azure Cosmos DB 中的 AZURE RBAC) ](role-based-access-control.md)
 * [了解如何保護對 Azure Cosmos DB 中資料的存取](secure-access-to-data.md)
