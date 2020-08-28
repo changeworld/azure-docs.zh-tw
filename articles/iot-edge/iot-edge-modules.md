@@ -8,16 +8,17 @@ ms.date: 03/21/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1c625e628f53d156ad56a1c69df1c23aec9120ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9feef9ec04bcc44bc09d55202b72ada4adc94cf5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76548708"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017051"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>了解 Azure IoT Edge 模組
 
-Azure IoT Edge 可讓您以*模組*的形式在邊緣上部署和管理商務邏輯。 Azure IoT Edge 模組是 IoT Edge 管理的最小計算單位，可以包含 Azure 服務 (例如 Azure 串流分析) 或您自己的解決方案特定程式碼。 若要瞭解如何開發、部署和維護模組，請考慮模組的四個概念元素：
+Azure IoT Edge 可讓您以 *模組*形式部署和管理邊緣的商務邏輯。 Azure IoT Edge 模組是 IoT Edge 管理的最小計算單位，可以包含 Azure 服務 (例如 Azure 串流分析) 或您自己的解決方案特定程式碼。 若要瞭解如何開發、部署和維護模組，請考慮使用模組的四個概念元素：
 
 * **模組映像**是套件，其中包含定義模組的軟體。
 * **模組執行個體**是在 IoT Edge 裝置上執行模組映像的計算單位。 模組執行個體是由 IoT Edge 執行階段啟動。
@@ -41,7 +42,7 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 
 ## <a name="module-identities"></a>模組身分識別
 
-當 IoT Edge 執行時間建立新的模組實例時，它會取得對應的模組身分識別。 模組身分識別會儲存在 IoT 中樞中，並作為該模組實例之所有本機和雲端通訊的定址和安全性範圍。
+當 IoT Edge 執行時間建立新的模組實例時，它會取得對應的模組身分識別。 模組身分識別會儲存在 IoT 中樞，並做為該模組實例所有本機和雲端通訊的定址和安全性範圍。
 
 與模組執行個體相關聯的身分識別取決於在其上執行執行個體的裝置身分識別，以及您提供給解決方案中該模組的名稱。 例如，如果您將使用 Azure 串流分析的模組稱為 `insight`，並且在稱為 `Hannover01` 的裝置上部署，IoT Edge 執行階段會建立稱為 `/devices/Hannover01/modules/insight` 的對應模組身分識別。
 
@@ -68,9 +69,9 @@ Twin twin = await client.GetTwinAsync();
 
 ## <a name="offline-capabilities"></a>離線功能
 
-同步處理之後，Azure IoT Edge 模組可以無限期地離線操作 IoT 中樞至少一次。 IoT Edge 裝置也可以將此離線功能延伸至其他 IoT 裝置。 如需詳細資訊，請參閱[了解適用於 IoT Edge 裝置、模組及子裝置的擴充離線功能](offline-capabilities.md)。
+在與 IoT 中樞同步處理之後，Azure IoT Edge 模組可以無限期地離線運作。 IoT Edge 裝置也可以將此離線功能延伸至其他 IoT 裝置。 如需詳細資訊，請參閱[了解適用於 IoT Edge 裝置、模組及子裝置的擴充離線功能](offline-capabilities.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解開發 IoT Edge 模組的需求和工具](module-development.md)
+* [瞭解開發 IoT Edge 課程模組的需求和工具](module-development.md)
 * [了解 Azure IoT Edge 執行階段和架構](iot-edge-runtime.md)

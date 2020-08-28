@@ -1,14 +1,15 @@
 ---
 title: Reliable Actors 計時器和提醒
-description: Service Fabric Reliable Actors 的計時器和提醒簡介，包括每個使用時機的指導方針。
+description: Service Fabric Reliable Actors 的計時器和提醒的簡介，包括各項使用時機的指引。
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: a464fda3f8b0f293efd36cf0a064156bd7795d44
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2b97b15ca4eb287f8d8f2c1af932f22acafae546
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245942"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016541"
 ---
 # <a name="actor-timers-and-reminders"></a>動作項目計時器和提醒
 動作項目可藉由註冊計時器或提醒來排程本身的週期性工作。 本文示範如何使用計時器和提醒，以及說明它們之間的差異。
@@ -120,17 +121,17 @@ public class VisualObjectActorImpl extends FabricActor implements VisualObjectAc
 
 動作項目執行階段會儲存在回呼完成時，對動作項目的狀態管理員所做的變更。 如果儲存狀態時發生錯誤，將會停用該動作項目物件並啟動新的執行個體。
 
-與[提醒](#actor-reminders)不同的是，計時器無法更新。 如果 `RegisterTimer` 再次呼叫，將會註冊新的計時器。
+不同于 [提醒](#actor-reminders)，無法更新計時器。 如果 `RegisterTimer` 再次呼叫，將會註冊新的計時器。
 
 當動作項目在記憶體回收期間停用時，將會停止所有的計時器。 而在此之後不會叫用任何計時器回呼。 此外，動作項目執行階段並不保留任何停用前執行中的計時器資訊。 由動作項目來決定任何未來重新啟動時所需計時器的註冊。 如需詳細資訊，請參閱 [動作項目記憶體回收](service-fabric-reliable-actors-lifecycle.md)一節。
 
 ## <a name="actor-reminders"></a>動作項目提醒
-提醒是一個會在指定時間於動作項目上觸發持續性回呼的機制。 其功能很類似計時器。 但與計時器不同的是，在所有情況下都會觸發提醒，直到動作項目明確地取消註冊它們或動作項目明確刪除為止。 具體而言，動作項目的停用和容錯移轉會觸發提醒，因為動作項目執行階段會使用動作項目狀態供應器來保存動作項目的提醒相關資訊。 與計時器不同的是，您可以呼叫註冊方法來更新現有的提醒， (`RegisterReminderAsync` 使用相同的*reminderName*再次) 。
+提醒是一個會在指定時間於動作項目上觸發持續性回呼的機制。 其功能很類似計時器。 但與計時器不同的是，在所有情況下都會觸發提醒，直到動作項目明確地取消註冊它們或動作項目明確刪除為止。 具體而言，動作項目的停用和容錯移轉會觸發提醒，因為動作項目執行階段會使用動作項目狀態供應器來保存動作項目的提醒相關資訊。 與計時器不同的是，可以 `RegisterReminderAsync` 使用相同的 *reminderName*，藉由呼叫註冊方法來更新現有的提醒， () 。
 
 > [!NOTE]
-> 提醒的可靠性會與動作專案狀態提供者所提供的狀態可靠性保證相關聯。 這表示，如果動作專案的狀態持續性設定為 [*無*]，則不會在容錯移轉之後引發提醒。
+> 提醒的可靠性會與動作專案狀態提供者所提供的狀態可靠性保證相關聯。 這表示，如果動作專案的狀態持續性設定為 [ *無*]，則在容錯移轉之後不會引發提醒。
 
-若要註冊提醒，動作專案會呼叫 [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) 基類提供的方法，如下列範例所示：
+為了註冊提醒，動作專案會呼叫 [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) 基類上提供的方法，如下列範例所示：
 
 ```csharp
 protected override async Task OnActivateAsync()

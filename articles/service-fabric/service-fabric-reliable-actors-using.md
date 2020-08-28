@@ -1,16 +1,17 @@
 ---
-title: 在 Azure Service Fabric 執行者中執行功能
+title: 在 Azure 中執行功能 Service Fabric 執行者
 description: 說明如何撰寫自己的動作項目服務，以繼承 StatefulService 時的相同方式來實作服務層級功能。
 author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: b8bf54f9909125030e067bc483ca2fb7e3dc68a7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4eb8dd98909459feab72f61e46834e60c5b07ebd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253349"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007752"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>在動作項目服務中實作服務層級功能
 
@@ -214,7 +215,7 @@ public class Program
 ## <a name="next-steps"></a>後續步驟
 
 * [動作項目狀態管理](service-fabric-reliable-actors-state-management.md)
-* [執行者生命週期和垃圾收集](service-fabric-reliable-actors-lifecycle.md)
+* [動作專案生命週期與垃圾收集](service-fabric-reliable-actors-lifecycle.md)
 * [動作項目 API 參考文件](/previous-versions/azure/dn971626(v=azure.100))
 * [.NET 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-java-getting-started)

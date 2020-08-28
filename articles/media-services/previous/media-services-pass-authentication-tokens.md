@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 15d4cbc372f5d5ec0d323170189329152ed436e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a15afcba26c8c8dcc8b023e57d05b04dfa5e3e88
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73684950"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016711"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>了解用戶端如何將權杖傳遞到 Azure 媒體服務金鑰傳遞服務
 客戶常常詢問播放程式如何將權杖傳遞至 Azure 媒體服務金鑰傳遞服務以進行認證，讓播放器能夠取得金鑰。 媒體服務支援簡單 Web 權杖 (SWT) 和 JSON Web 權杖 (JWT) 格式。 不論您在系統中使用的是一般加密或進階加密標準 (AES) 信封加密，權杖驗證都會套用至任何類型的金鑰。

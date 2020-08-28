@@ -8,22 +8,22 @@ ms.subservice: core
 ms.author: laobri
 author: lobrien
 manager: cgronlun
-ms.date: 06/15/2020
+ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7eac92a3d438c6a9ee67ae5d5b06829f3ef77528
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6aff48844f42286de1d30368288b83e5356a36bd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754918"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016881"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 中的 Azure Machine Learning 管線中使用自動化 ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning 的自動化 ML 功能可協助您找出高效能的模型，而不需要重新實作不免每種可能的方法。 結合 Azure Machine Learning 管線，您可以建立可部署的工作流程，以快速探索最適合您資料的演算法。 本文將說明如何有效率地將資料準備步驟加入自動化 ML 步驟。 自動化 ML 可以快速探索最適合您資料的演算法，同時讓您 MLOps 和模型生命週期運算化與管線。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -37,12 +37,13 @@ Azure Machine Learning 的自動化 ML 功能可協助您找出高效能的模�
 
 的子類別有數個 `PipelineStep` 。 除了之外，本文還 `AutoMLStep` 會顯示資料準備的，另一個則是用來 `PythonScriptStep` 註冊模型。
 
-首先，將資料移 _入_ ML 管線的慣用方式是使用 `Dataset` 物件。 若要在步驟 _之間_ 移動資料，並可能儲存執行的資料輸出，慣用的方法是使用 `OutputFileDatasetConfig` 物件。 如需詳細資訊，請參閱 [來自 ML 管線的輸入和輸出資料](how-to-move-data-in-out-of-pipelines.md)。
+首先，將資料移 _入_ ML 管線的慣用方式是使用 `Dataset` 物件。 若要在步驟 _之間_ 移動資料，慣用的方法是使用 `PipelineData` 物件。 若要搭配使用 `AutoMLStep` ， `PipelineData` 必須將物件轉換成 `PipelineOutputTabularDataset` 物件。 如需詳細資訊，請參閱 [來自 ML 管線的輸入和輸出資料](how-to-move-data-in-out-of-pipelines.md)。
 
-> [!NOTE]
->`OutputFileDatasetConfig`和 `OutputTabularDatasetConfig` 類別是實驗性預覽功能，而且可能隨時變更。
->
->如需詳細資訊，請參閱https://aka.ms/azuremlexperimental。
+
+> [!TIP]
+> 公開預覽類別和中提供在管線步驟之間傳遞暫存資料的改良體驗  `OutputFileDatasetConfig` `OutputTabularDatasetConfig` 。  這些類別是實驗性預覽功能，而且可能隨時變更。
+> 
+>如需實驗性功能的詳細資訊，請參閱 https://aka.ms/azuremlexperimental 。
 
 `AutoMLStep`是透過物件來設定 `AutoMLConfig` 。 `AutoMLConfig` 是有彈性的類別，如在 [Python 中設定自動化 ML 實驗](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)中所述。 
 
@@ -150,7 +151,8 @@ else:
 - 將類別資料轉換成整數
 - 捨棄我們不想要使用的資料行
 - 將資料分割成定型集和測試集
-- 將已轉換的資料寫入至 `OutputFileDatasetConfig` 輸出路徑
+- 將已轉換的資料寫入至其中一個
+    - `PipelineData` 輸出路徑
 
 ```python
 %%writefile dataprep.py
@@ -220,7 +222,7 @@ print(f"Wrote test to {args.output_path} and train to {args.output_path}")
 
 `prepare_`上述程式碼片段中的各種函數會修改輸入資料集中的相關資料行。 這些函式會在資料變更為 Pandas 物件之後，對其進行處理 `DataFrame` 。 在每個案例中，遺漏的資料會填入代表「未知」的代表性亂數據或類別資料。 以文字為基礎的類別資料會對應到整數。 不再需要的資料行會遭到覆寫或捨棄。 
 
-在程式碼定義資料準備函式之後，程式碼會剖析輸入引數，也就是我們想要寫入資料的路徑。  (這些值將由 `OutputFileDatasetConfig` 下一個步驟中所討論的物件來決定。 ) 程式碼會抓取已註冊的 `'titanic_cs'` `Dataset` ，將它轉換成 Pandas `DataFrame` ，並呼叫各種資料準備函式。 
+在程式碼定義資料準備函式之後，程式碼會剖析輸入引數，也就是我們想要寫入資料的路徑。  (這些值將由 `PipelineData` 下一個步驟中所討論的物件來決定。 ) 程式碼會抓取已註冊的 `'titanic_cs'` `Dataset` ，將它轉換成 Pandas `DataFrame` ，並呼叫各種資料準備函式。 
 
 因為 `output_path` 是完整限定的，所以函式 `os.makedirs()` 是用來準備目錄結構。 此時，您可以使用 `DataFrame.to_csv()` 寫入輸出資料，但 Parquet 檔案會更有效率。 這種效率可能與這類小型資料集無關，但使用 **PyArrow** 封裝和函 `from_pandas()` 式 `write_table()` 只是比更多的按鍵 `to_csv()` 。
 
@@ -228,25 +230,30 @@ print(f"Wrote test to {args.output_path} and train to {args.output_path}")
 
 ### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>寫入資料準備管線步驟 (`PythonScriptStep`) 
 
-上面所述的資料準備程式碼必須與 `PythonScripStep` 要搭配管線使用的物件相關聯。 寫入 Parquet 資料準備輸出的路徑是由物件所產生 `OutputFileDatasetConfig` 。 先前備妥的資源（例如 `ComputeTarget` 、和） `RunConfig` `'titanic_ds' Dataset` 會用來完成規格。
+上面所述的資料準備程式碼必須與 `PythonScripStep` 要搭配管線使用的物件相關聯。 寫入 Parquet 資料準備輸出的路徑是由物件所產生 `PipelineData` 。 先前備妥的資源（例如 `ComputeTarget` 、和） `RunConfig` `'titanic_ds' Dataset` 會用來完成規格。
 
+PipelineData 使用者
 ```python
-from azureml.data import OutputFileDatasetConfig
-from azureml.pipeline.steps import PythonScriptStep
+from azureml.pipeline.core import PipelineData
 
-prepped_data_path = OutputFileDatasetConfig(name="titanic_train", (destination=(datastore, 'outputdataset')))
+from azureml.pipeline.steps import PythonScriptStep
+prepped_data_path = PipelineData("titanic_train", datastore).as_dataset()
 
 dataprep_step = PythonScriptStep(
     name="dataprep", 
     script_name="dataprep.py", 
     compute_target=compute_target, 
     runconfig=aml_run_config,
-    arguments=[titanic_ds.as_named_input('titanic_ds').as_mount(), prepped_data_path],
+    arguments=["--output_path", prepped_data_path],
+    inputs=[titanic_ds.as_named_input("titanic_ds")],
+    outputs=[prepped_data_path],
     allow_reuse=True
 )
 ```
+`prepped_data_path`物件的類型為 `PipelineOutputFileDataset` 。 請注意，它是在 `arguments` 和 `outputs` 引數中指定。 如果您檢查上一個步驟，您將會看到在資料準備程式碼中，引數的值 `'--output_path'` 是寫入 Parquet 檔案的檔案路徑。 
 
-`prepped_data_path`物件的類型是 `OutputFileDatasetConfig` 指向目錄。  請注意，它是在參數中指定 `arguments` 。 
+> [!TIP]
+> 公開預覽版類別提供在管線步驟之間傳遞中繼資料的改良體驗 `OutputFileDatasetConfig` 。 深入瞭解 `OutputFileDatasetConfig` [SDK 參考檔中的](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)設計模式和方法。
 
 ## <a name="train-with-automlstep"></a>使用 AutoMLStep 定型
 
@@ -254,19 +261,42 @@ dataprep_step = PythonScriptStep(
 
 ### <a name="send-data-to-automlstep"></a>傳送資料至 `AutoMLStep`
 
-在 ML 管線中，輸入資料必須是 `Dataset` 物件。 最高效能的方法是以物件的形式提供輸入資料 `OutputTabularDatasetConfig` 。 您可以使用上的來建立該類型的物件 `read_delimited_files()` `OutputFileDatasetConfig` ，例如 `prepped_data_path` 物件。
+在 ML 管線中，輸入資料必須是 `Dataset` 物件。 最高效能的方法是以物件的形式提供輸入資料 `PipelineOutputTabularDataset` 。 您可以使用或在上建立該類型的物件 `parse_parquet_files()` `parse_delimited_files()` `PipelineOutputFileDataset` ，例如 `prepped_data_path` 物件。
 
 ```python
-# type(prepped_data_path) == OutputFileDatasetConfig
-# type(prepped_data) == OutputTabularDatasetConfig
-prepped_data = prepped_data_path.read_delimited_files()
+# type(prepped_data_path) == PipelineOutputFileDataset
+# type(prepped_data) == PipelineOutputTabularDataset
+prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 ```
 
-上述程式碼片段會 `OutputTabularDatasetConfig` 從資料準備步驟的輸出中建立高效能 `OutputFileDatasetConfig` 。
+上述程式碼片段會 `PipelineOutputTabularDataset` 從資料準備步驟的輸出中建立高效能 `PipelineOutputFileDataset` 。
+
+> [!TIP]
+> 公開預覽類別也能夠將 `OutputFileDatasetConfig` 轉換 `OutputFileDatasetConfig` 成 `OutputTabularDatasetConfig` ，以便在 AutoML 回合中使用。 深入瞭解 `OutputFileDatasetConfig` [SDK 參考檔中的](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)設計模式和方法。
+
+另一個選項是使用 `Dataset` 在工作區中註冊的物件：
+
+```python
+prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
+```
+
+比較這兩種技術：
+
+| 技巧 | 優點與缺點 | 
+|-|-|
+|`PipelineOutputTabularDataset`| 較高的效能 | 
+|| 自然路由來源 `PipelineData` | 
+|| 在管線執行之後不會保存資料 |
+|| [顯示技術的筆記本 `PipelineOutputTabularDataset`](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
+| 註冊 `Dataset` | 效能低 |
+| | 可以透過許多方式產生 | 
+| | 資料會持續存在，而且會在整個工作區中顯示 |
+| | [顯示已註冊 `Dataset` 技術的筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/continuous-retraining/auto-ml-continuous-retraining.ipynb)
+
 
 ### <a name="specify-automated-ml-outputs"></a>指定自動化 ML 輸出
 
-的輸出是效能 `AutoMLStep` 較高之模型和模型本身的最終計量分數。 若要在進一步的管線步驟中使用這些輸出，請準備 `OutputFileDatasetConfig` 物件來接收它們。
+的輸出是效能 `AutoMLStep` 較高之模型和模型本身的最終計量分數。 若要在進一步的管線步驟中使用這些輸出，請準備 `PipelineData` 物件來接收它們。
 
 ```python
 
@@ -326,8 +356,8 @@ train_step = AutoMLStep(name='AutoML_Classification',
 - `path` 並 `debug_log` 描述專案的路徑，以及將用來寫入調試資訊的本機檔案 
 - `compute_target` 是先前定義 `compute_target` 的，在此範例中，是以 CPU 為基礎的較便宜電腦。 如果您使用 AutoML 的深度學習設備，您會想要將計算目標變更為以 GPU 為基礎的
 - `featurization` 設定為 `auto`。 您可以在自動化 ML 設定檔的 [資料特徵化](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) 一節中找到更多詳細資料。 
-- `training_data` 設定為 `OutputTabularDatasetConfig` 從資料準備步驟的輸出中所做的物件 
 - `label_column_name` 指出我們想要預測的資料行 
+- `training_data` 設定為 `PipelineOutputTabularDataset` 從資料準備步驟的輸出中所做的物件 
 
 `AutoMLStep`本身會採用， `AutoMLConfig` 並以輸出形式 `PipelineData` 建立用來保存計量和模型資料的物件。 
 

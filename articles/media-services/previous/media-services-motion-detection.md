@@ -14,19 +14,20 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 17b325ab15f55a8fc02729c6f5ed0cb0330ecca2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77912999"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016830"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>使用 Azure 媒體分析偵測動作
 
 > [!NOTE]
-> **Azure 媒體動態偵測器**媒體處理器將被淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
+> **Azure 媒體動態偵測器**媒體處理器將會淘汰。 如需淘汰日期，請參閱 [舊版元件](legacy-components.md) 主題。
  
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 **Azure 媒體動作偵測器** 媒體處理器 (MP) 能讓您在冗長且平淡的影片中，有效識別出感興趣的區段。 動作偵測可以用來在靜態攝影機資料上識別影片中有動作發生的區段。 它會產生 JSON 檔案，其中包含具有時間戳記的中繼資料，以及發生事件的週框區域。
 
@@ -45,7 +46,7 @@ ms.locfileid: "77912999"
 ### <a name="parameters"></a>參數
 您可以使用以下參數：
 
-| Name | 選項 | 描述 | 預設 |
+| 名稱 | 選項。 | 描述 | 預設 |
 | --- | --- | --- | --- |
 | sensitivityLevel |字串：'low'、'medium'、'high' |設定要報告哪些動作的敏感度等級。 調整該項目可調整誤判的數目。 |'medium' |
 | frameSamplingValue |正整數 |設定演算法的執行頻率。 1 等於每個畫面，2 表示每 2 個畫面，依此類推。 |1 |
@@ -98,7 +99,7 @@ ms.locfileid: "77912999"
 
 下表說明輸出 JSON 的元素。
 
-| 元素 | 描述 |
+| 項目 | 描述 |
 | --- | --- |
 | version |這是指影片 API 的版本。 目前版本為 2。 |
 | timescale |影片每秒的「刻度」數目。 |
@@ -109,7 +110,7 @@ ms.locfileid: "77912999"
 | duration |事件的長度 (以「刻度」為單位)。 |
 | interval |事件中每個項目的間隔 (以「刻度」為單位)。 |
 | 活動 |每個事件片段皆包含在該持續期間內所偵測到的動作。 |
-| 類型 |在目前的版本中，針對一般動作，這永遠會是「2」。 此標籤可讓影片 API 在未來的版本中能夠彈性地為動作進行分類。 |
+| type |在目前的版本中，針對一般動作，這永遠會是「2」。 此標籤可讓影片 API 在未來的版本中能夠彈性地為動作進行分類。 |
 | regionId |如前文所述，這在此版本中將永遠會是 0。 此標籤可讓影片 API 在未來的版本中能夠彈性地在各個區域中尋找動作。 |
 | regions |指的是影片中您會關心其中所發生之動作的區塊。 <br/><br/>-「識別碼」表示區域區塊 – 在此版本中只有一個，識別碼為 0。 <br/>-「類型」代表您關心動作的區域形狀。 目前支援「矩形」和「多邊形」。<br/> 如果您指定「矩形」，區域的維度將以 X、Y、寬度及高度表示。 X 和 Y 座標代表以標準化縮放 (0.0 到 1.0) 顯示之區域左上角的 XY 座標。 寬度和高度代表以標準化縮放 (0.0 到 1.0) 顯示之區域的大小。 在目前版本中，X、Y、寬度和高度一律固定為 0, 0 和 1, 1。 <br/>如果您指定「多邊形」，區域的維度將以點表示。 <br/> |
 | fragments |中繼資料會被分成稱為「片段」的不同區段。 每個片段皆包含開始、持續時間、間隔數字及事件。 沒有事件的片段，代表在該片段的開始時間和持續時間之間沒有偵測到任何動作。 |
@@ -208,7 +209,7 @@ ms.locfileid: "77912999"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
+設定您的開發環境，並在 app.config 檔案中填入連線資訊，如 [使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)所述。 
 
 #### <a name="example"></a>範例
 

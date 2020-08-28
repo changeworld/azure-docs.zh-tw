@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 02e814a9da320d688fe57edf3a3fe0640b8f5a47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dcec1e40e9095c27abb1470e3739f65035a96834
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75976744"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007174"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>使用 Azure Resource Manager 範本建立 IoT 中樞 (.NET)
 
@@ -23,7 +24,7 @@ ms.locfileid: "75976744"
 您可以使用 Azure 資源管理員，以程式設計方式建立和管理 Azure IoT 中樞。 本教學課程示範如何使用 Azure Resource Manager 範本從 C# 程式建立 IoT 中樞。
 
 > [!NOTE]
-> Azure 有兩種不同的部署模型可用於建立及使用資源： [Azure Resource Manager 和傳統](../azure-resource-manager/management/deployment-models.md)。  本文涵蓋使用 Azure Resource Manager 部署模型的部分。
+> Azure 有兩種不同的部署模型可用於建立和使用資源：  [Azure Resource Manager 和傳統](../azure-resource-manager/management/deployment-models.md)。  本文涵蓋使用 Azure Resource Manager 部署模型的部分。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -184,7 +185,7 @@ ms.locfileid: "75976744"
 
 在建置和執行應用程式之前，您現在可以呼叫 **CreateIoTHub** 方法來完成應用程式。
 
-1. 將下列程式碼新增至**Main**方法的結尾：
+1. 將下列程式碼新增至 **Main** 方法的結尾：
 
     ```csharp
     CreateIoTHub(client);
@@ -195,10 +196,10 @@ ms.locfileid: "75976744"
 
 3. 按一下 [偵錯]****，然後按一下 [開始偵錯]**** 以執行應用程式。 可能需要數分鐘的時間，部署才會開始執行。
 
-4. 若要確認您的應用程式已新增新的 IoT 中樞，請前往 [Azure 入口網站][lnk-azure-portal] 並檢視您的資源清單。 或者，使用**Get-azresource** PowerShell Cmdlet。
+4. 若要確認您的應用程式已新增新的 IoT 中樞，請前往 [Azure 入口網站][lnk-azure-portal] 並檢視您的資源清單。 或者，使用 **Get-azresource** PowerShell Cmdlet。
 
 > [!NOTE]
-> 此範例應用程式會加入您付費的「S1 標準 IoT 中樞」。 當您完成時，您可以透過[Azure 入口網站][lnk-azure-portal]或使用**get-azresource** PowerShell Cmdlet，來刪除 IoT 中樞。
+> 此範例應用程式會加入您付費的「S1 標準 IoT 中樞」。 您可以透過 [Azure 入口網站][lnk-azure-portal] 刪除 IoT 中樞，或在完成時使用 **get-azresource** PowerShell Cmdlet。
 
 ## <a name="next-steps"></a>後續步驟
 現在您已經使用 Azure Resource Manager 範本和 C# 程式部署 IoT 中樞，可以進一步探索：

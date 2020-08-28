@@ -3,7 +3,7 @@ title: 受控識別的常見問題集與已知問題 - Azure AD
 description: Azure 資源適用受控識別的已知問題。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
@@ -14,15 +14,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 08/06/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 484f5443702b1151dc3f83af11b5f12a2c0a177d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ffc6ba2725a8ce9e3eeb4202ed7d10dd3d1937a8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902230"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997467"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 資源適用受控識別的常見問題集與已知問題
 
@@ -34,9 +34,9 @@ ms.locfileid: "87902230"
 > 先前稱為「受控服務識別」(MSI) 的服務，其新名稱為「Azure 資源適用受控識別」。
 
 
-### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>您要如何尋找具有受控識別的資源？
+### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>如何尋找具有受控識別的資源？
 
-您可以使用下列 Azure CLI 命令，尋找具有系統指派之受控識別的資源清單： 
+您可以使用下列 Azure CLI 命令，找出具有系統指派受控識別的資源清單： 
 
 `az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
 
@@ -45,22 +45,22 @@ ms.locfileid: "87902230"
 
 ### <a name="do-managed-identities-have-a-backing-app-object"></a>受控識別是否有支援的應用程式物件？
 
-不可以。 受控識別和 Azure AD App 註冊在目錄中的情況並不相同。 
+不知道。 受控識別和 Azure AD App 註冊與目錄中的內容不同。 
 
 應用程式註冊有兩個元件：應用程式物件 + 服務主體物件。 適用于 Azure 資源的受控識別只有其中一個元件：服務主體物件。 
 
-受控識別在目錄中沒有應用程式物件，這通常是用來授與 MS graph 的應用程式許可權。 相反地，受控識別的 MS graph 許可權必須直接授與服務主體。  
+受控識別在目錄中沒有應用程式物件，此物件通常是用來授與 MS graph 的應用程式許可權。 相反地，受控識別的 MS graph 許可權必須直接授與服務主體。  
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Azure 資源適用受控識別是否可與 Azure 雲端服務一起使用？
 
 否，目前沒有計劃讓 Azure 雲端服務支援 Azure 資源適用受控識別。
 
-### <a name="what-is-the-credential-associated-with-a-managed-identity-how-long-is-it-valid-and-how-often-is-it-rotated"></a>與受控識別相關聯的認證為何？ 它有效的時間長度，以及它輪替的頻率為何？
+### <a name="what-is-the-credential-associated-with-a-managed-identity-how-long-is-it-valid-and-how-often-is-it-rotated"></a>什麼是與受控識別相關聯的認證？ 有效期限和旋轉的頻率為何？
 
 > [!NOTE]
-> 受控識別的驗證方式是內部執行的詳細資料，如有變更恕不另行通知。
+> 受控識別驗證的方式是內部執行的詳細資料，如有變更，恕不另行通知。
 
-受控識別會使用以憑證為基礎的驗證。 每個受控識別的認證都有90天的到期日，且會在45天后進行匯總。
+受控識別使用以憑證為基礎的驗證。 每個受控識別的認證都有90天的到期日，並會在45天后復原。
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>什麼是 Azure 資源適用受控識別安全性界限？
 
@@ -76,7 +76,7 @@ ms.locfileid: "87902230"
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>如果我將訂用帳戶移到另一個目錄，系統是否會自動重新建立受控識別？
 
-否。 如果您將訂用帳戶移至另一個目錄，則必須手動重新建立，並再次授與 Azure 角色指派。
+否。 如果您將訂用帳戶移至另一個目錄，則必須手動重新建立訂用帳戶，並再次授與 Azure 角色指派。
 - 若為系統指派的受控識別：停用然後重新啟用。 
 - 若為使用者指派的受控識別：加以刪除、重新建立，然後重新連結至所需的資源 (例如虛擬機器)
 

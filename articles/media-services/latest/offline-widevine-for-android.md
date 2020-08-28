@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務 v3 離線串流 Widevine Android
+title: 使用 Azure 媒體服務 v3 將 Android 離線串流 Widevine
 description: 本主題說明如何設定 Azure 媒體服務帳戶，以離線串流受 Widevine 保護的內容。
 services: media-services
 keywords: DASH, DRM, Widevine Offline Mode, ExoPlayer, Android, Widevine 離線模式
@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: willzhan
-ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b603b800dfdfb96e9b6b1074dc1e39d31b994c06
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80887192"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997773"
 ---
-# <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>適用于 Android 與媒體服務 v3 的離線 Widevine 串流
+# <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>使用媒體服務 v3 進行 Android 的離線 Widevine 串流
 
 除了保護線上串流的內容之外，媒體內容訂用帳戶與租賃服務能提供可在未連線到網際網路時使用的可下載內容。 在和網路中斷連線的飛行途中，您可能需要先將內容下載至手機或平板電腦，以在飛航模式中播放。 您可能會想要下載內容的其他案例如下：
 
-- 某些內容提供者可能不允許超出國家/地區框線的 DRM 授權傳遞。 如果使用者想要在出國旅行時觀賞內容，則需要離線下載。
-- 在某些國家/地區，網際網路可用性和/或頻寬會受到限制。 使用者可能會選擇下載內容，以便能以較高的解析度觀賞，來獲得令人滿意的檢視體驗。
+- 某些內容提供者可能不允許在國家/地區的邊界之外傳遞 DRM 授權。 如果使用者想要在出國旅行時觀賞內容，則需要離線下載。
+- 在某些國家/地區，網際網路可用性和/或頻寬有限。 使用者可能會選擇下載內容，以便能以較高的解析度觀賞，來獲得令人滿意的檢視體驗。
 
 本文討論如何針對 Android 裝置上受 Widevine 保護的 DASH 內容實作離線模式播放。 離線 DRM 可讓您為內容提供訂用帳戶、租賃及採購模式，讓服務的客戶能在和網際網路中斷連線時，輕鬆地隨身攜帶內容。
 
@@ -40,9 +41,9 @@ ms.locfileid: "80887192"
 本文也會回答一些和離線串流受 Widevine 保護的內容相關的常見問題。
 
 > [!NOTE]
-> 只有在您下載內容時，才會向離線 DRM 收取授權的單一要求。 任何錯誤都不會計費。
+> 離線 DRM 只會在您下載內容時，針對授權提出單一要求付費。 任何錯誤都不計費。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>先決條件 
 
 在 Android 裝置上實作適用於 Widevine 的離線 DRM 之前，您應該先：
 
@@ -98,7 +99,7 @@ ms.locfileid: "80887192"
 
 ## <a name="configuring-the-android-player-for-offline-playback"></a>設定 Android 播放程式以進行離線播放
 
-若要開發適用於 Android 裝置的原生播放應用程式，最簡單的方法就是使用 [Google ExoPlayer SDK](https://github.com/google/ExoPlayer) \(英文\) 開放原始碼視訊播放程式 SDK。 ExoPlayer 支援 Android 的原生 MediaPlayer API 目前不支援的功能，包括 MPEG-2 和 Microsoft Smooth Streaming 傳遞通訊協定。
+若要開發適用於 Android 裝置的原生播放應用程式，最簡單的方法就是使用 [Google ExoPlayer SDK](https://github.com/google/ExoPlayer) \(英文\) 開放原始碼視訊播放程式 SDK。 ExoPlayer 支援 Android 原生 MediaPlayer API 目前不支援的功能，包括 MPEG 破折號和 Microsoft Smooth Streaming 傳遞通訊協定。
 
 ExoPlayer 2.6 版及更新版本包括許多支援離線 Widevine DRM 播放的類別。 其中 OfflineLicenseHelper 類別能提供公用程式函式，以利於使用 DefaultDrmSessionManager 進行下載、更新及發行離線授權。 SDK 資料夾 "library/core/src/main/java/com/google/android/exoplayer2/offline/" 中所提供的類別支援下載離線視訊內容。
 
@@ -136,18 +137,18 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 
 ## <a name="chrome-player-apps-for-android"></a>適用於 Android 的 Chrome 播放應用程式
 
-從[適用于 Android 62 的 Chrome](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates)版本開始，支援 EME 中的持續性授權。 適用於 Android 的 Chrome 現在也支援 [Widevine L1](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates#widevine_l1) \(英文\)。 如果您的使用者具有此版本 (或更新版本) 的 Chrome，這可讓您在 Chrome 中建立離線播放應用程式。 
+從 [適用于 Android v. 62 的 Chrome](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates)版本開始，支援 EME 中的持續性授權。 適用於 Android 的 Chrome 現在也支援 [Widevine L1](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates#widevine_l1) \(英文\)。 如果您的使用者具有此版本 (或更新版本) 的 Chrome，這可讓您在 Chrome 中建立離線播放應用程式。 
 
 此外，Google 已推出 Progressive Web App (PWA) 範例，並將它作為開放原始碼提供： 
 
-- [原始程式碼](https://github.com/GoogleChromeLabs/sample-media-pwa)
+- [原始程式碼](https://github.com/GoogleChromeLabs/sample-media-pwa) \(英文\)
 - [Google 裝載的版本 ](https://biograf-155113.appspot.com/ttt/episode-2/) \(英文\) (僅適用於 Android 裝置上的 Chrome v 62 和更新版本)
 
 如果將 Android 手機上的 Chrome 行動瀏覽器升級至 v62 (或更新版本)，並測試上述裝載的範例應用程式，線上串流和離線播放將同時皆能夠運作。
 
 上述的開放原始碼 PWA 應用程式是以 Node.js 撰寫。 如果您想在 Ubuntu 伺服器上裝載自己的版本，請留意下列會阻礙播放的常見問題：
 
-1. CORS 問題：範例應用程式中的範例視訊是裝載於 https://storage.googleapis.com/biograf-video-files/videos/。 Google 已為所有裝載於 Google Cloud Storage 貯體中的測試範例設定 CORS。 它們也會搭配 CORS 標頭提供，明確指定出 CORS 項目 `https://biograf-155113.appspot.com` (Google 用來裝載其範例的網域)，防止由其他網站存取。 如果您嘗試，就會看到下列 HTTP 錯誤：`Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
+1. CORS 問題：範例應用程式中的範例視訊是裝載於 https://storage.googleapis.com/biograf-video-files/videos/。 Google 已為所有裝載於 Google Cloud Storage 貯體中的測試範例設定 CORS。 它們也會搭配 CORS 標頭提供，明確指定出 CORS 項目 `https://biograf-155113.appspot.com` (Google 用來裝載其範例的網域)，防止由其他網站存取。 如果您嘗試，將會看到下列 HTTP 錯誤： `Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
 2. 憑證問題：從 Chrome v 58 開始，針對 Widevine 的 EME 將要求使用 HTTPS。 因此，您必須搭配 X509 憑證透過 HTTPS 裝載範例應用程式。 由於下列需求使得一般測試憑證沒有作用：您必須先取得符合以下最低需求的憑證：
     - Chrome 和 Firefox 都需要憑證中存在 SAN (主體別名) 設定
     - 憑證必須要有信任的 CA，自我簽署的開發憑證將不會有作用
@@ -155,12 +156,12 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 
 ## <a name="faqs"></a>常見問題集
 
-如需詳細資訊，請參閱[Widevine 常見問題](frequently-asked-questions.md#widevine-streaming-for-android)。
+如需詳細資訊，請參閱 [Widevine 常見問題](frequently-asked-questions.md#widevine-streaming-for-android)。
 
 ## <a name="additional-notes"></a>其他注意事項
 
 Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 本文已討論如何針對 Android 裝置上受 Widevine 保護的 DASH 內容實作離線模式播放。  文中也回答一些和離線串流受 Widevine 保護的內容相關的常見問題。

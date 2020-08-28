@@ -3,12 +3,12 @@ title: Microsoft Azure 復原服務 (MARS) 代理程式升級
 description: 瞭解如何 Microsoft Azure 復原服務 (MARS) 代理程式升級。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 79abc877f102d83cdb3c72a571f2203984eb54e4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: c822c75fa1232d2304b5bcb4a0afe4323e52287f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890182"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007361"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure 復原服務 (MARS) 代理程式升級
 
@@ -19,7 +19,7 @@ ms.locfileid: "88890182"
 
 ## <a name="identify-servers-with-earlier-versions-of-the-mars-agent"></a>使用舊版 MARS 代理程式識別伺服器
 
-針對 Azure 備份代理程式和 Azure 備份伺服器的安裝：
+針對 Azure 備份代理程式和 Azure 備份 server 的安裝：
 
 1. 流覽至復原服務保存庫，其中您的已註冊伺服器可能會由舊版的代理程式進行備份。 您可以在 Azure 備份從 Azure 更新警示中找到具有舊版 Azure 備份代理程式的代表性保存庫清單。
 1. 在 [復原服務保存庫] 的 [左側**設定**] 區段中，選取 [**管理**] 區段下的 [**備份基礎結構**]。
@@ -31,19 +31,19 @@ ms.locfileid: "88890182"
 
     ![已安裝 MARS 代理程式的伺服器清單](./media/upgrade-mars-agent/protected-servers.png)
 
-1. 選取 MARS 代理程式安裝的 [ **代理程式版本** ] 資料行或 Azure 備份伺服器安裝的 [ **Azure 備份代理程式版本** ] 資料行，以排序 Azure 備份代理程式版本資料行。
+1. 選取 MARS 代理程式安裝的 [ **代理程式版本** ] 資料行或 Azure 備份伺服器安裝的 [ **Azure 備份代理程式版本** ] 欄，以排序 Azure 備份代理程式版本資料行。
 
 1. 上一個步驟會提供您 Azure 備份代理程式的伺服器清單，而此代理程式的版本低於2.0.9083.0 版或代理程式版本列為空白。 這些是需要更新 Azure 備份代理程式的伺服器。
 
 ## <a name="update-the-mars-agent-installation-on-the-server"></a>補救伺服器上的 MARS 代理程式安裝
 
-一旦您識別出需要 Azure 備份代理程式更新的伺服器之後，請使用 Azure 備份伺服器或 MARS 代理程式) 針對每個已識別的伺服器 (執行下列步驟。 請先[下載最新版的 Azure 備份代理程式](https://aka.ms/azurebackup_agent)，然後再遵循下列步驟。
+一旦識別出需要 Azure 備份代理程式更新的伺服器之後，請使用 Azure 備份 server 或 MARS 代理程式) ，針對每個已識別的伺服器 (執行下列步驟。 請先[下載最新版的 Azure 備份代理程式](https://aka.ms/azurebackup_agent)，然後再遵循下列步驟。
 
 1. 選取 Azure 備份代理程式低於2.0.9083.0 版或空白的資料列。 這會開啟 [伺服器詳細資料] 畫面。
 
     ![使用過期代理程式版本的受保護伺服器](./media/upgrade-mars-agent/old-agent-version.png)
 
-    ![具有過期代理程式版本的 Azure 備份伺服器](./media/upgrade-mars-agent/backup-management-servers-old-versions.png)
+    ![使用過期代理程式版本的 Azure 備份伺服器](./media/upgrade-mars-agent/backup-management-servers-old-versions.png)
 
 1. 選取 **[連線]** 以接收遠端桌面連線檔案，以與伺服器連接，或直接透過伺服器上的遠端桌面連線連接到伺服器。
 
@@ -71,7 +71,7 @@ ms.locfileid: "88890182"
 
     ![Microsoft Azure 復原服務代理程式升級嚮導](./media/upgrade-mars-agent/agent-upgrade-wizard.png)
 
-1. 選取 [下一步]  。
+1. 選取 [下一步] 。
 
 1. 選取 [ **升級**]。
 

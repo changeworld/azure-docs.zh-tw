@@ -1,9 +1,9 @@
 ---
-title: 在 Azure VM 上使用受控識別進行登入-Azure 進階
-description: 使用適用于 Azure 資源的 Azure VM 受控識別服務主體的逐步指示和範例，以進行腳本用戶端登入和資源存取。
+title: 在 Azure VM 上使用受控識別來進行登入-Azure 進階
+description: 針對腳本用戶端登入和資源存取使用 azure VM 受控識別的 azure 資源服務主體的逐步指示和範例。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,24 +13,24 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 058058b975116fabcbc242f46afb09dff8df08b6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 02815003bf5167a73c1e2362d9270deb867c84b7
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480436"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999405"
 ---
-# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>如何在 Azure VM 上使用 Azure 資源的受控識別進行登入 
+# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>如何在 Azure VM 上使用 Azure 資源的受控識別來進行登入 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 本文提供使用 Azure 資源的受控識別服務主體進行登入的 PowerShell 和 CLI 指令碼範例，以及錯誤處理等重要主題的指引。
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -42,7 +42,7 @@ ms.locfileid: "87480436"
 
 ## <a name="overview"></a>概觀
 
-適用于 Azure 資源的受控識別會提供[服務主體物件](../develop/developer-glossary.md#service-principal-object)，它是在針對 VM 上的[Azure 資源啟用受控識別時所建立](overview.md)。 服務主體可以獲得 Azure 資源的存取權，並可讓指令碼/命令列用戶端用來作為登入及存取資源時的身分識別。 傳統上，若要以受保護資源本身的身分識別來存取該資源，指令碼用戶端需要：  
+適用于 Azure 資源的受控識別會提供 [服務主體物件](../develop/developer-glossary.md#service-principal-object) ，此物件是在 VM 上 [啟用 Azure 資源的受控識別時所建立](overview.md) 。 服務主體可以獲得 Azure 資源的存取權，並可讓指令碼/命令列用戶端用來作為登入及存取資源時的身分識別。 傳統上，若要以受保護資源本身的身分識別來存取該資源，指令碼用戶端需要：  
 
    - 向 Azure AD 註冊並獲得同意成為機密/Web 用戶端應用程式
    - 在其服務主體下登入，並使用應用程式的認證 (這可能會內嵌於指令碼中)
@@ -88,14 +88,14 @@ ms.locfileid: "87480436"
 以下所示的回應可能代表虛擬機器的 Azure 資源受控識別未正確設定：
 
 - PowerShell：Invoke-WebRequest：無法連線到遠端伺服器**
-- CLI： *MSI：無法從取得權杖 `http://localhost:50342/oauth2/token` ，錯誤為 ' 包含 HTTPconnectionpool （主機 = ' localhost '，埠 = 50342）* 
+- CLI： *MSI：無法從 `http://localhost:50342/oauth2/token` ' 包含 HTTPconnectionpool (host = ' localhost '，port = 50342) 的錯誤中取出權杖 * 
 
 如果您收到這些錯誤的其中一個，請返回 [Azure 入口網站](https://portal.azure.com)中的 Azure 虛擬機器，並且：
 
 - 移至 [身分識別]**** 頁面，並確保 [系統指派]**** 設為 [是]。
 - 移至 [延伸模組]**** 頁面，並確定已成功部署適用於 Azure 資源的受控識別延伸模組 **(已計劃在 2019 年 1 月淘汰)**。
 
-如果其中一者不正確，您可能需要再次在資源上重新部署 Azure 資源受控識別，或針對部署失敗進行疑難排解。 如果您需要 VM 設定的協助，請參閱[使用 Azure 入口網站在 vm 上設定 Azure 資源的受控](qs-configure-portal-windows-vm.md)識別。
+如果其中一者不正確，您可能需要再次在資源上重新部署 Azure 資源受控識別，或針對部署失敗進行疑難排解。 如果您需要協助進行 VM 設定，請參閱 [使用 Azure 入口網站在 vm 上設定 Azure 資源的受控](qs-configure-portal-windows-vm.md) 識別。
 
 ## <a name="next-steps"></a>後續步驟
 

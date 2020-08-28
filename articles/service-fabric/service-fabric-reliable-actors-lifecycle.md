@@ -1,16 +1,17 @@
 ---
-title: 概述 Azure Service Fabric 執行者生命週期
+title: 瞭解 Azure Service Fabric 動作專案生命週期
 description: 說明 Service Fabric Reliable Actor 生命週期、記憶體回收，以及手動刪除動作項目與其狀態
 author: amanbha
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: db47a758d33c3ed6e861601285e7737514ab416d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3cea6213b2c6f2797d46f865afe1e13cbf4aaff6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260441"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016694"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>動作項目生命週期、自動記憶體回收，以及手動刪除
 第一次呼叫動作項目的方法時就會啟動動作項目。 如果有一段可設定的時間未使用動作項目，動作項目就會停用 (由動作項目執行階段進行記憶體回收)。 動作項目與其狀態也可以隨時進行手動刪除。
@@ -50,7 +51,7 @@ ms.locfileid: "86260441"
 在進入停用的細節前，最重要的是定義下列詞彙：
 
 * *掃描間隔*。 這是動作項目執行階段掃描其作用中動作項目資料表中，是否有動作項目可予以停用和進行記憶體回收的間隔。 預設值為 1 分鐘。
-* *閒置超時*。 這是動作項目維持未使用 (閒置) 所需的時間長度，過此時間後即可停用和進行記憶體回收。 預設值為 60 分鐘。
+* *閒置的超時時間*。 這是動作項目維持未使用 (閒置) 所需的時間長度，過此時間後即可停用和進行記憶體回收。 預設值為 60 分鐘。
 
 通常不需要變更這些預設值。 不過，如有必要，可以在註冊[動作項目服務](service-fabric-reliable-actors-platform.md)時透過 `ActorServiceSettings` 變更這些間隔：
 
@@ -85,7 +86,7 @@ public class Program
     }
 }
 ```
-對於每個作用中動作項目，動作項目執行階段會持續追蹤動作項目已閒置 (亦即未使用) 的時間。 動作專案執行時間會每個動作專案都檢查每個動作專案 `ScanIntervalInSeconds` 是否可以進行垃圾收集，並在已閒置時將它標示為 `IdleTimeoutInSeconds` 。
+對於每個作用中動作項目，動作項目執行階段會持續追蹤動作項目已閒置 (亦即未使用) 的時間。 動作專案執行時間會檢查每個動作專案， `ScanIntervalInSeconds` 以查看是否可進行垃圾收集，並在它已閒置時加以標記 `IdleTimeoutInSeconds` 。
 
 只要使用動作項目，其閒置時間就會重設為 0。 在此之後，只有當動作項目再次閒置達 `IdleTimeoutInSeconds`時，才會將動作項目作為記憶體回收。 請回想一下，當動作項目介面方法或動作項目提醒回撥執行時，動作項目會視為已使用。 如果動作項目的計時器回撥執行時， **不會** 將動作項目視為已使用。
 

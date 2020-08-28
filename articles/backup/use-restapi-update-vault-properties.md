@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來更新保存庫
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 3ee2d57b5589daa756020ebb787a5400ed244506
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 8890cb541e38f8bc8b680fbcfeb821f29723e8c0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890037"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007106"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 復原服務保存庫設定
 
@@ -33,7 +33,7 @@ ms.locfileid: "88890037"
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-GET URI 具有 `{subscriptionId}` 、 `{vaultName}` 、 `{vaultresourceGroupName}` 參數。 在此範例中， `{vaultName}` 是 "testVault"，而且 `{vaultresourceGroupName}` 是 "testVaultRG"。 因為已在 URI 中指定所有必要參數，所以不需要個別的要求本文。
+GET URI 具有 `{subscriptionId}` 、 `{vaultName}` 、 `{vaultresourceGroupName}` 參數。 在此範例中， `{vaultName}` 是 "testVault"，而且 `{vaultresourceGroupName}` 是 "testVaultRG"。 因為 URI 中提供所有必要的參數，所以不需要個別的要求主體。
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -85,8 +85,8 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 |名稱  |必要  |類型  |描述  |
 |---------|---------|---------|---------|
-|etag     |         |   String      |  選擇性 eTag       |
-|location     |  true       |String         |   資源位置      |
+|etag     |         |   字串      |  選擇性 eTag       |
+|location     |  true       |字串         |   資源位置      |
 |properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保存庫的屬性       |
 |tags     |         | Object        |     資源標籤    |
 
