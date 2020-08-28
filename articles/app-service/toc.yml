@@ -310,7 +310,7 @@
     - name: Cookbooks
       items:
         - name: 參考架構
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
+          href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: 部署指令碼
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: 疑難排解
