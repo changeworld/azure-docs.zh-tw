@@ -7,12 +7,12 @@ ms.date: 06/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 7645600a476a1c2294ddd4a24fe01e2ffe51d5ac
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6336a0d4d8aa9c781befed0470d9a190af5aa9eb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589977"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930854"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>向 Azure Key Vault 進行驗證
 
@@ -112,14 +112,9 @@ Azure Key Vault 是一種秘密管理解決方案，可讓您集中儲存應用�
 1. 建立憑證
 
     * 選項 1：使用 [OpenSSL](https://www.openssl.org/) 建立憑證 (僅供測試之用，請不要在生產環境中使用自我簽署憑證)
-
-    ```console
-    openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
-    ```
-
     * 選項 2：使用金鑰保存庫建立憑證。 [在 Azure Key Vault 中建立憑證](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#creating-your-first-key-vault-certificate)
 
-1. 以 PEM 格式下載憑證
+1. 以 PEM/PFX 格式下載憑證
 1. 登入 Azure 入口網站，然後瀏覽至 Azure Active Directory
 1. 按一下 [應用程式註冊]
 1. 選取您在第 1 部分中建立的服務主體。

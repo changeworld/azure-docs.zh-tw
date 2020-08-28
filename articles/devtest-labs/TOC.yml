@@ -8,7 +8,7 @@
       href: lab-services-overview.md
 - name: 快速入門
   items:
-    - name: 建立實驗室 - ARM 範本
+    - name: 建立實驗室 - Resource Manager 範本
       displayName: Resource Manager
       href: create-lab-windows-vm-template.md
 - name: 教學課程
@@ -75,6 +75,8 @@
       items:
         - name: 建立實驗室
           href: devtest-lab-create-lab.md
+        - name: 建立網路隔離實驗室
+          href: network-isolation.md
         - name: 使用 Resource Manager 範本建立或修改實驗室
           href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
         - name: 為實驗室虛擬機器指定資源群組

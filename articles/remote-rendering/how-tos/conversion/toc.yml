@@ -8,5 +8,5 @@
   href: configure-model-conversion.md
 - name: 在模型轉換期間覆寫材質
   href: override-materials.md
-- name: 取得已轉換模型的相關資訊
+- name: 取得轉換的相關資訊
   href: get-information.md

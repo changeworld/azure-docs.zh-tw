@@ -73,12 +73,34 @@
         - name: 輸出概觀
           href: stream-analytics-define-outputs.md
           displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
-        - name: 輸出至 Cosmos DB
-          href: stream-analytics-documentdb-output.md
-        - name: 輸出到 Azure SQL DB
+        - name: Azure Data Lake Storage Gen 1
+          href: azure-data-lake-storage-gen1-output.md
+        - name: Azure SQL Database
+          href: sql-database-output.md
+        - name: SQL Database 效能
           href: stream-analytics-sql-output-perf.md
+        - name: Azure Synapse Analytics
+          href: azure-synapse-analytics-output.md
+        - name: Blob 儲存體和 Azure Data Lake Gen 2
+          href: blob-storage-azure-data-lake-gen2-output.md
         - name: Blob 自訂路徑模式
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+        - name: 事件中樞
+          href: event-hubs-output.md
+        - name: Power BI
+          href: power-bi-output.md
+        - name: 表格儲存體
+          href: table-storage-output.md
+        - name: 服務匯流排佇列
+          href: service-bus-queues-output.md
+        - name: 服務匯流排主題
+          href: service-bus-topics-output.md
+        - name: Azure Cosmos DB
+          href: azure-cosmos-db-output.md
+        - name: Cosmos DB 最佳化
+          href: stream-analytics-documentdb-output.md
+        - name: Azure Functions
+          href: azure-functions-output.md
     - name: 使用函式擴充查詢
       items:
         - name: 函式概觀

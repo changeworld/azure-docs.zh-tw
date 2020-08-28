@@ -27,13 +27,13 @@
     - name: 傳送及接收事件
       items:
         - name: .NET (Azure.Messaging.EventHubs)
-          href: get-started-dotnet-standard-send-v2.md
+          href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java (azure-messaging-eventhubs)
-          href: get-started-java-send-v2.md
+          href: event-hubs-java-get-started-send.md
         - name: Python (azure-eventhub 第 5 版)
-          href: get-started-python-send-v2.md
+          href: event-hubs-python-get-started-send.md
         - name: JavaScript (azure/event-hubs 第 5 版)
-          href: get-started-node-send-v2.md
+          href: event-hubs-node-get-started-send.md
         - name: Go
           href: event-hubs-go-get-started-send.md
         - name: C (僅傳送)
@@ -43,13 +43,9 @@
     - name: 傳送和接收事件 (舊版/套件)
       items:
         - name: .NET (Microsoft.Azure.EventHubs)
-          href: event-hubs-dotnet-standard-getstarted-send.md
+          href: event-hubs-dotnet-standard-get-started-send-legacy.md
         - name: Java (azure-eventhubs)
-          href: event-hubs-java-get-started-send.md
-        - name: Python (azure-eventhub 第 1 版)
-          href: event-hubs-python-get-started-send.md
-        - name: JavaScript (azure/event-hubs 第 2 版)
-          href: event-hubs-node-get-started-send.md
+          href: event-hubs-java-get-started-send-legacy.md
         - name: .NET Framework (Microsoft.ServiceBus)
           href: event-hubs-dotnet-framework-getstarted-send.md
     - name: 擷取事件
@@ -58,9 +54,7 @@
           href: event-hubs-capture-enable-through-portal.md
         - name: 使用 Resource Manager 範本啟用事件中樞擷取
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: 使用 Python 讀取擷取的資料 (azure-eventhub 第 5 版)
-          href: get-started-capture-python-v2.md
-        - name: 使用 Python 讀取擷取的資料 (azure-eventhub 第 1 版)
+        - name: 使用 Python 讀取擷取的資料
           href: event-hubs-capture-python.md
     - name: 串流至適用於 Apache Kafka 的事件中樞
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md

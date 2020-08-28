@@ -6,7 +6,7 @@
   items:
     - name: 購買模型
       items:
-        - name: 概觀
+        - name: 總覽
           href: database/purchasing-models.md
         - name: 虛擬核心模型概觀
           href: database/service-tiers-vcore.md
@@ -16,7 +16,7 @@
           href: database/reserved-capacity-overview.md
     - name: 計算和儲存體
       items:
-        - name: 概觀
+        - name: 總覽
           href: database/service-tiers-general-purpose-business-critical.md
           displayName: provisioned compute tier
         - name: 一般目的/標準
@@ -39,7 +39,7 @@
           href: database/read-scale-out.md
         - name: 安全性
           items:
-            - name: 概觀
+            - name: 總覽
               href: database/security-overview.md
               displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
             - name: 最佳作法
@@ -195,7 +195,7 @@
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/azure-sql/toc.json
         - name: 開發資料應用程式
           items:
-            - name: 概觀
+            - name: 總覽
               href: database/develop-overview.md
             - name: 使用 JSON 資料
               href: database/json-features.md
@@ -922,7 +922,7 @@
       href: virtual-machines/index.yml
     - name: Windows
       items:
-        - name: 概觀
+        - name: 總覽
           items:
             - name: 什麼是 SQL Server 虛擬機器？
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
@@ -941,7 +941,7 @@
               href: virtual-machines/windows/create-sql-vm-resource-manager-template.md
         - name: 概念
           items:
-            - name: 商務持續性
+            - name: 業務持續性
               items:
                 - name: 概觀
                   href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
@@ -986,9 +986,11 @@
                 - name: 授權模式
                   displayName: 'ahb, ahub, payg, change, modify, update'
                   href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
-                - name: 版本
+                - name: 變更版本
                   displayName: 'change, modify, update'
                   href: virtual-machines/windows/change-sql-server-edition.md
+                - name: 變更版本
+                  href: virtual-machines/windows/change-sql-server-version.md
                 - name: 儲存體
                   href: virtual-machines/windows/storage-configuration.md
                 - name: Azure Key Vault 整合
@@ -1024,6 +1026,8 @@
                       href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: Always On 可用性群組
                   items:
+                    - name: Azure 入口網站
+                      href: virtual-machines/windows/availability-group-azure-portal-configure.md
                     - name: PowerShell 或 Az CLI
                       href: virtual-machines/windows/availability-group-az-commandline-configure.md
                     - name: Azure 快速入門範本

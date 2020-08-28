@@ -6,9 +6,9 @@
     - name: 什麼是 Azure Machine Learning？
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: Azure Machine Learning 與 Studio (傳統)
-      displayName: 'AML, Studio, designer'
-      href: compare-azure-ml-to-studio-classic.md
+    - name: 什麼是 Azure Machine Learning Studio？
+      displayName: 'AML, studio, designer'
+      href: overview-what-is-machine-learning-studio.md
     - name: 架構和條款
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
@@ -436,6 +436,8 @@
           href: how-to-create-your-first-pipeline.md
         - name: 將資料匯入 ML 管線步驟並在其中來回移動 (Python)
           href: how-to-move-data-in-out-of-pipelines.md
+        - name: 部署 ML 管線 (Python)
+          href: how-to-deploy-pipelines.md
         - name: 排程管線 (Python)
           href: how-to-schedule-pipelines.md
         - name: 觸發管線

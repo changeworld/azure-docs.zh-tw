@@ -134,6 +134,8 @@
           href: batch-sig-images.md
         - name: 建立具有受控映像資源的集區
           href: batch-custom-images.md
+        - name: 建立已啟用磁碟加密的集區
+          href: disk-encryption.md
         - name: 在虛擬網路中建立集區
           href: batch-virtual-network.md
         - name: 使用公用 IP 位址建立集區

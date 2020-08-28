@@ -172,6 +172,10 @@
               href: manage/pay-by-invoice.md
             - name: 建立其他訂用帳戶
               href: manage/create-subscription.md
+            - name: 以程式設計方式建立訂用帳戶
+              href: manage/programmatically-create-subscription.md
+            - name: 授與存取權以建立 EA 訂用帳戶
+              href: manage/grant-access-to-create-subscription.md
             - name: 匯出訂用帳戶資訊
               href: manage/export-subscriptions.md
             - name: 變更信用卡

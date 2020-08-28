@@ -43,7 +43,7 @@
           href: plan-an-application-integration.md
         - name: 規劃未列在資源庫中的應用程式
           href: non-gallery-apps.md
-        - name: 規劃存取面板部署
+        - name: 規劃我的應用程式部署
           href: access-panel-deployment-plan.md
         - name: 開發人員指導方針
           href: developer-guidance-for-integrating-applications.md
@@ -246,7 +246,7 @@
               href: application-types.md
             - name: 指派未預期的使用者
               href: ways-users-get-assigned-to-applications.md
-        - name: 存取面板疑難排解
+        - name: 針對我的應用程式進行疑難排解
           items:
             - name: 管理瀏覽器延伸模組
               href: manage-access-panel-browser-extension.md
@@ -256,8 +256,6 @@
               href: access-panel-troubleshoot-unexpected-application.md
             - name: 無法登入
               href: access-panel-troubleshoot-web-sign-in-problem.md
-            - name: 安裝瀏覽器擴充功能時發生錯誤
-              href: access-panel-extension-problem-installing.md
             - name: 使用自助應用程式存取時發生錯誤
               href: access-panel-troubleshoot-self-service-access.md
         - name: 針對內部部署應用程式進行疑難排解

@@ -4,8 +4,6 @@
   items:
     - name: 關於應用程式閘道
       href: overview.md
-    - name: 新功能
-      href: whats-new.md
 - name: 快速入門
   expanded: true
   items:

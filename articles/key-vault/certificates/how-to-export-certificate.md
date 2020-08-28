@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: ee05d331e953aa39855033d0987cb85cbfddb744
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 408b507ff23a2a20c5ed6d2fc32fd5dbf5dbab5d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827506"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930888"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>從 Azure Key Vault 匯出憑證
 
@@ -36,10 +36,7 @@ Azure Key Vault 可讓您輕鬆地為您的網路佈建、管理及部署數位�
 - **可匯出**：用來建立憑證的原則指出金鑰是可匯出的。
 - **不可匯出**：用來建立憑證的原則指出金鑰是不可匯出的。 在此情況下，當私密金鑰以秘密形式擷取時，不會將其視為值的一部分。
 
-Key Vault 支援兩種類型的金鑰：
-
-- **RSA**：可匯出
-- **HSM RSA**：不可匯出
+支援的金鑰類型：RSA、RSA-HSM、EC、EC-HSM、oct (列於[此處](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)) 僅允許匯出 RSA、EC。 HSM 金鑰不可匯出。
 
 如需詳細資訊，請參閱[關於 Azure Key Vault 憑證](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#exportable-or-non-exportable-key)。
 

@@ -6,6 +6,10 @@
       href: overview.md
     - name: 與先前版本之間的差異
       href: overview-differences.md
+- name: 快速入門
+  items:
+    - name: 探索範例案例
+      href: quickstart-adt-explorer.md
 - name: 教學課程
   items:
     - name: 撰寫用戶端應用程式程式碼
@@ -76,6 +80,8 @@
       items:
         - name: 從 IoT 中樞內嵌遙測
           href: how-to-ingest-iot-hub-data.md
+        - name: 與 Logic Apps 整合
+          href: how-to-integrate-logic-apps.md
     - name: 連線輸出
       items:
         - name: 管理端點和路由
@@ -88,8 +94,6 @@
           href: how-to-integrate-maps.md
         - name: 與 Azure 時間序列深入解析整合
           href: how-to-integrate-time-series-insights.md
-        - name: 與 Logic Apps 整合
-          href: how-to-integrate-logic-apps.md
     - name: 疑難排解
       items:
         - name: 檢視 Azure 監視器中的計量

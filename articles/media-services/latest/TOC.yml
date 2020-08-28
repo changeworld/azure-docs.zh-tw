@@ -56,6 +56,8 @@
           href: stream-files-dotnet-quickstart.md
         - name: 搭配 Node.js
           href: stream-files-nodejs-quickstart.md
+    - name: 將 AMS 事件儲存在 Azure Log Analytics 中
+      href: tutorial-events-log-analytics.md
     - name: 將已上傳檔案編碼和串流影片
       displayName: 'encode, encoding, job, transform'
       href: stream-files-tutorial-with-api.md

@@ -520,17 +520,11 @@
           href: speech-container-faq.md
 - name: 語音 SDK
   items:
-    - name: 概觀
-      items:
-        - name: 關於語音 SDK
-          href: speech-sdk.md
-        - name: 案例可用性
-          href: scenario-availability.md
-    - name: 快速入門
-      items:
-        - name: 設定語音 SDK
-          displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
-          href: quickstarts/setup-platform.md
+    - name: 語音 SDK 概觀
+      href: speech-sdk.md
+    - name: 設定語音 SDK
+      displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
+      href: quickstarts/setup-platform.md
     - name: 操作指南
       items:
         - name: 啟用記錄
