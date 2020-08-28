@@ -8,25 +8,26 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 46eb1fe7543cbc65545eaca46e38f09466406701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5b9170e0fcf4bba8b928522cdc881f34968d771f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84417934"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003859"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>大量匯入和匯出 IoT 中樞裝置身分識別
 
-每個 IoT 中樞都有一個身分識別登錄，您可用來在服務中建立各裝置的資源。 身分識別登錄也可讓您控制裝置面向端點的存取權。 本文說明如何在身分識別登錄中大量匯入和匯出裝置身分識別。 若要查看 c # 中的實用範例，並瞭解如何在將中樞複製到不同區域時使用這項功能，請參閱[如何複製 IoT 中樞](iot-hub-how-to-clone.md)。
+每個 IoT 中樞都有一個身分識別登錄，您可用來在服務中建立各裝置的資源。 身分識別登錄也可讓您控制裝置面向端點的存取權。 本文說明如何在身分識別登錄中大量匯入和匯出裝置身分識別。 若要在 c # 中查看運作中的範例，並瞭解如何在將中樞複製到不同區域時使用這項功能，請參閱 [如何複製 IoT 中樞](iot-hub-how-to-clone.md)。
 
 > [!NOTE]
-> IoT 中樞最近在有限數目的區域中新增了虛擬網路支援。 這項功能可保護匯入和匯出作業的安全，並免除傳遞金鑰以進行驗證的需求。  一開始，虛擬網路支援僅適用于下欄區域： *WestUS2*、 *EastUS*和*SouthCentralUS*。 若要深入瞭解虛擬網路支援和用來執行它的 API 呼叫，請參閱[虛擬網路的 IoT 中樞支援](virtual-network-support.md)。
+> IoT 中樞最近新增了有限數量區域的虛擬網路支援。 這項功能可保護匯入和匯出作業，並免除傳遞金鑰以進行驗證的需要。  虛擬網路支援一開始僅適用于下欄區域： *WestUS2*、 *EastUS*和 *SouthCentralUS*。 若要深入瞭解虛擬網路支援和執行的 API 呼叫，請參閱 [虛擬網路的 IoT 中樞支援](virtual-network-support.md)。
 
 匯入和匯出操作會在「作業」** 的內容中進行，其可讓您對 IoT 中樞執行大量服務操作。
 
 **RegistryManager** 類別包含使用**作業**架構的 **ExportDevicesAsync** 和 **ImportDevicesAsync** 方法。 這些方法可讓您匯出、匯入和同步處理整個 IoT 中樞身分識別登錄。
 
-本主題討論如何使用**RegistryManager**類別和**作業**系統，在 IoT 中樞的身分識別登錄中執行裝置的大量匯入和匯出。 您也可以使用 Azure IoT 中樞裝置佈建服務，以無須人為介入的方式對一或多個 IoT 中樞進行 Just-In-Time 自動佈建。 若要深入了解，請參閱[佈建服務文件](/azure/iot-dps)。
+本主題討論如何使用 **RegistryManager** 類別和 **作業** 系統，在 IoT 中樞的身分識別登錄中執行大量匯入和匯出裝置。 您也可以使用 Azure IoT 中樞裝置佈建服務，以無須人為介入的方式對一或多個 IoT 中樞進行 Just-In-Time 自動佈建。 若要深入了解，請參閱[佈建服務文件](/azure/iot-dps)。
 
 ## <a name="what-are-jobs"></a>什麼是作業？
 
@@ -49,7 +50,7 @@ JobProperties exportJob = await
 > [!NOTE]
 > 若要在 C# 程式碼中使用 **RegistryManager** 類別，請將 **Microsoft.Azure.Devices** NuGet 套件新增至您的專案。 **RegistryManager** 類別位於 **Microsoft.Azure.Devices** 命名空間。
 
-您可以使用 **RegistryManager** 類別來查詢**作業**的狀態 (使用所傳回的 **JobProperties** 中繼資料)。 若要建立**RegistryManager**類別的實例，請使用**CreateFromConnectionString**方法。
+您可以使用 **RegistryManager** 類別來查詢**作業**的狀態 (使用所傳回的 **JobProperties** 中繼資料)。 若要建立 **RegistryManager** 類別的實例，請使用 **>createfromconnectionstring** 方法。
 
 ```csharp
 RegistryManager registryManager =
@@ -86,16 +87,16 @@ while(true)
 ```
 
 > [!NOTE]
-> 如果您的儲存體帳戶具有限制 IoT 中樞連線的防火牆設定，請考慮使用[Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)狀況（適用于使用受控服務識別的 IoT 中樞的選取區域）。
+> 如果您的儲存體帳戶有限制 IoT 中樞連線的防火牆設定，請考慮使用適用于 IoT 中樞的精選區域中的 [Microsoft 受信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) 狀況 (，其具有受控服務識別) 。
 
 
 ## <a name="device-importexport-job-limits"></a>裝置匯入/匯出作業限制
 
-針對所有 IoT 中樞層，一次只允許1個作用中裝置匯入或匯出作業。 IoT 中樞也有作業的速率限制。 若要深入瞭解，請參閱[參考-IoT 中樞配額和節流](iot-hub-devguide-quotas-throttling.md)。
+所有 IoT 中樞層一次只允許一個作用中裝置匯入或匯出作業。 IoT 中樞也有作業作業的速率限制。 若要深入瞭解，請參閱 [參考-IoT 中樞配額和節流](iot-hub-devguide-quotas-throttling.md)。
 
 ## <a name="export-devices"></a>匯出裝置
 
-使用**ExportDevicesAsync**方法，透過共用存取簽章（SAS）將整個 IoT 中樞身分識別登錄匯出至 Azure 儲存體的 blob 容器。 如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章 (SAS) 授與 Azure 儲存體資源的有限存取權](../storage/common/storage-sas-overview.md)。
+使用 **>exportdevicesasync** 方法，將整個 IoT 中樞身分識別登錄匯出到使用共用存取簽章 (SAS) 的 Azure 儲存體 blob 容器。 如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章 (SAS) 授與 Azure 儲存體資源的有限存取權](../storage/common/storage-sas-overview.md)。
 
 這個方法可讓您在所控制的 Blob 容器中建立可靠的裝置資訊備份。
 
@@ -261,15 +262,15 @@ JobProperties importJob =
 
 在每個裝置的匯入序列化資料中使用選擇性的 **importMode** 屬性控制每個裝置的匯入程序。 **ImportMode** 屬性具有下列選項：
 
-| importMode | Description |
+| importMode | 描述 |
 | --- | --- |
-| **createOrUpdate** |如果裝置不存在指定的**識別碼**，則會進行新註冊。 <br/>如果裝置已存在，則會以所提供的輸入資料覆寫現有資訊，而不管 **ETag** 值為何。 <br> 使用者可以選擇性地指定對應項資料以及裝置資料。 對應項的 etag （若已指定）會與裝置的 etag 分開處理。 如果與現有對應項的 etag 不相符，就會在記錄檔中寫入錯誤。 |
-| **create** |如果裝置不存在指定的**識別碼**，則會進行新註冊。 <br/>如果裝置已存在，則會在記錄檔中寫入錯誤。 <br> 使用者可以選擇性地指定對應項資料以及裝置資料。 對應項的 etag （若已指定）會與裝置的 etag 分開處理。 如果與現有對應項的 etag 不相符，就會在記錄檔中寫入錯誤。 |
-| **update** |如果已存在具有指定**識別碼**的裝置，則會以所提供的輸入資料覆寫現有資訊，而不考慮**ETag**值。 <br/>如果裝置不存在，則會在記錄檔中寫入錯誤。 |
-| **pdateIfMatchETagu** |如果已存在具有指定**識別碼**的裝置，只有當**ETag**相符時，才會以提供的輸入資料覆寫現有資訊。 <br/>如果裝置不存在，則會在記錄檔中寫入錯誤。 <br/>如果**ETag**不相符，就會在記錄檔中寫入錯誤。 |
-| **createOrUpdateIfMatchETag** |如果裝置不存在指定的**識別碼**，則會進行新註冊。 <br/>如果裝置已存在，則當 **ETag** 相符時，才會以所提供的輸入資料覆寫現有資訊。 <br/>如果**ETag**不相符，就會在記錄檔中寫入錯誤。 <br> 使用者可以選擇性地指定對應項資料以及裝置資料。 對應項的 etag （若已指定）會與裝置的 etag 分開處理。 如果與現有對應項的 etag 不相符，就會在記錄檔中寫入錯誤。 |
-| **delete** |如果已存在具有指定**識別碼**的裝置，則會刪除它，而不考慮**ETag**值。 <br/>如果裝置不存在，則會在記錄檔中寫入錯誤。 |
-| **deleteIfMatchETag** |如果已存在具有指定**識別碼**的裝置，只有當**ETag**相符時，才會將其刪除。 如果裝置不存在，則會在記錄檔中寫入錯誤。 <br/>如果 ETag 不相符，則會在記錄檔中寫入錯誤。 |
+| **createOrUpdate** |如果裝置不存在且具有指定的 **識別碼**，則會進行新的註冊。 <br/>如果裝置已存在，則會以所提供的輸入資料覆寫現有資訊，而不管 **ETag** 值為何。 <br> 使用者可以選擇性地指定對應項資料以及裝置資料。 如果已指定對應項的 etag，則會獨立于裝置的 etag 之外進行處理。 如果現有對應項的 etag 不相符，就會將錯誤寫入記錄檔。 |
+| **create** |如果裝置不存在且具有指定的 **識別碼**，則會進行新的註冊。 <br/>如果裝置已存在，則會在記錄檔中寫入錯誤。 <br> 使用者可以選擇性地指定對應項資料以及裝置資料。 如果已指定對應項的 etag，則會獨立于裝置的 etag 之外進行處理。 如果現有對應項的 etag 不相符，就會將錯誤寫入記錄檔。 |
+| **update** |如果裝置已經存在且具有指定的 **識別碼**，則會以提供的輸入資料覆寫現有資訊，而不考慮 **ETag** 值。 <br/>如果裝置不存在，則會在記錄檔中寫入錯誤。 |
+| **pdateIfMatchETagu** |如果裝置已經存在且具有指定的 **識別碼**，則只有當 **ETag** 相符時，才會使用提供的輸入資料覆寫現有資訊。 <br/>如果裝置不存在，則會在記錄檔中寫入錯誤。 <br/>如果 **ETag** 不相符，就會將錯誤寫入記錄檔。 |
+| **createOrUpdateIfMatchETag** |如果裝置不存在且具有指定的 **識別碼**，則會進行新的註冊。 <br/>如果裝置已存在，則當 **ETag** 相符時，才會以所提供的輸入資料覆寫現有資訊。 <br/>如果 **ETag** 不相符，就會將錯誤寫入記錄檔。 <br> 使用者可以選擇性地指定對應項資料以及裝置資料。 如果已指定對應項的 etag，則會獨立于裝置的 etag 之外進行處理。 如果現有對應項的 etag 不相符，就會將錯誤寫入記錄檔。 |
+| **delete** |如果裝置已經存在且具有指定的 **識別碼**，則會刪除它，而不考慮 **ETag** 值。 <br/>如果裝置不存在，則會在記錄檔中寫入錯誤。 |
+| **deleteIfMatchETag** |如果裝置已經存在且具有指定的 **識別碼**，則只有在有 **ETag** 相符時，才會將其刪除。 如果裝置不存在，則會在記錄檔中寫入錯誤。 <br/>如果 ETag 不相符，則會在記錄檔中寫入錯誤。 |
 
 > [!NOTE]
 > 如果序列化資料未明確定義裝置的 **importMode** 旗標，則會在匯入作業期間預設為 **createOrUpdate**。
@@ -425,9 +426,9 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已了解如何對 IoT 中樞內的身分識別登錄執行大量操作。 其中許多作業（包括如何將裝置從一個中樞移至另一個集線器）會用於[如何複製 IoT 中樞的管理註冊至 IoT 中樞的裝置一節](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub)。 
+在本文中，您已了解如何對 IoT 中樞內的身分識別登錄執行大量操作。 其中許多作業（包括如何將裝置從某個中樞移至另一個中樞）都會用於 [如何複製 Iot 中樞的 [管理裝置註冊到 iot 中樞] 區段](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub)。 
 
-複製文章具有相關聯的實用範例，其位於此頁面上的 IoT c # 範例中：[適用于 c # 的 Azure Iot 範例](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)，其中包含要 ImportExportDevicesSample 的專案。 您可以下載範例並試試看;[如何複製 IoT 中樞一](iot-hub-how-to-clone.md)文中有指示。
+複製文章有相關聯的工作範例，位於本頁的 IoT c # 範例中： [適用于 c # 的 Azure Iot 範例](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)，以及要 ImportExportDevicesSample 的專案。 您可以下載範例並加以試用; [如何複製 IoT 中樞](iot-hub-how-to-clone.md) 文章中有指示。
 
 若要深入瞭解如何管理 Azure IoT 中樞，請參閱下列文章：
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 06/10/2020
-ms.openlocfilehash: 37f4b7208d7c8fafcd3aa1d25106a2cd5e4949c6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: c4b29db8bbcb741116fcd425b4489973228066e6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450007"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021590"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本啟用更新管理
 
@@ -23,7 +23,7 @@ ms.locfileid: "87450007"
 * 將自動化帳戶連結至 Log Analytics 工作區 (如果尚未連結)。
 * 啟用更新管理。
 
-此範本不會自動化在一或多個 Azure 或非 Azure Vm 上啟用更新管理。
+範本不會自動啟用一或多個 Azure 或非 Azure Vm 上的更新管理。
 
 如果您已在訂用帳戶的支援區域中部署 Log Analytics 工作區和自動化帳戶，則不會與其連結。 使用此範本會成功建立連結並部署更新管理。
 
@@ -33,7 +33,7 @@ ms.locfileid: "87450007"
 
 | 資源 | 資源類型 | API 版本 |
 |:---|:---|:---|
-| 工作區 | workspaces | 2020-03-01-預覽 |
+| 工作區 | workspaces | 2020-03-01-preview |
 | 自動化帳戶 | automation | 2018-06-30 |
 | 解決方法 | solutions | 2015-11-01-preview |
 
@@ -47,7 +47,7 @@ JSON 範本已設定為提示您輸入：
 
 * 工作區的名稱。
 * 要在其中建立工作區的區域。
-* 以啟用資源或工作區許可權。
+* 啟用資源或工作區許可權。
 * 自動化帳戶的名稱。
 * 要在其中建立帳戶的區域。
 
@@ -150,7 +150,7 @@ JSON 範本會針對您的環境中可能用於標準設定的其他參數，指
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-                    "name": "[parameters('sku')]",
+                    "name": "[parameters('sku')]"
                 },
                 "retentionInDays": "[parameters('dataRetention')]",
                 "features": {
@@ -192,7 +192,7 @@ JSON 範本會針對您的環境中可能用於標準設定的其他參數，指
                 "sku": {
                     "name": "Basic"
                 }
-            },
+            }
         },
         {
             "apiVersion": "2020-03-01-preview",
@@ -235,8 +235,8 @@ JSON 範本會針對您的環境中可能用於標準設定的其他參數，指
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要使用 Vm 的更新管理，請參閱[管理 vm 的更新和修補程式](update-mgmt-manage-updates-for-vm.md)。
+* 若要使用 Vm 的更新管理，請參閱 [管理 vm 的更新和修補程式](update-mgmt-manage-updates-for-vm.md)。
 
-* 如果您不想再使用更新管理並想要將它移除，請參閱[移除更新管理功能](update-mgmt-remove-feature.md)中的指示。
+* 如果您不想再使用更新管理而且想要將它移除，請參閱 [移除更新管理功能](update-mgmt-remove-feature.md)中的指示。
 
 * 若要從更新管理中刪除 VM，請參閱[從更新管理中移除 VM](update-mgmt-remove-vms.md)。

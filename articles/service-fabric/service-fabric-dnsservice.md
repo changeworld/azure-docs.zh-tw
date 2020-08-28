@@ -3,12 +3,13 @@ title: Azure Service Fabric DNS 服務
 description: 使用 Service Fabric 的 DNS 服務來從叢集內部探索微服務。
 ms.topic: conceptual
 ms.date: 7/20/2018
-ms.openlocfilehash: 6a6611281fd2d2368809419ad594d2eb1289b5a0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a05669bbd6de44447d7eb11a0b9941d18e8048d1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258907"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021267"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服務
 「DNS 服務」是一個選用的系統服務，您可以在叢集中啟用以使用 DNS 通訊協定來探索其他服務。 
@@ -103,10 +104,10 @@ DNS 服務不支援動態連接埠。 若要解決動態連接埠上所公開的
 3. 在使用您的變更將叢集範本更新之後，請加以套用，使升級完成。 升級完成後，DNS 系統服務就會開始在叢集中執行。 服務名稱是 `fabric:/System/DnsService`，而且您可以在 Service Fabric Explorer 的 [系統]**** 服務區段下找到它。 
 
 > [!NOTE]
-> 從 [停用] 將 DNS 升級為 [已啟用] 時，Service Fabric Explorer 可能不會反映新的狀態。 若要解決此問題，請修改 Azure Resource Manager 範本中的 UpgradePolicy 來重新開機節點。 如需詳細資訊，請參閱[Service Fabric 範本參考](/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications)。
+> 將 DNS 從 disabled 升級為啟用時，Service Fabric Explorer 可能不會反映新的狀態。 若要解決此問題，請藉由修改 Azure Resource Manager 範本中的 UpgradePolicy 來重新開機節點。 如需詳細資訊，請參閱 [Service Fabric 範本參考](/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) 。
 
 > [!NOTE]
-> 啟用 DNS 服務時，在本機電腦上進行開發時，將會覆寫某些 DNS 設定。 如果您在連線到網際網路時遇到問題，請檢查您的 DNS 設定。
+> 在本機電腦上進行開發時，啟用 DNS 服務將會覆寫某些 DNS 設定。 如果您在連線到網際網路時遇到問題，請檢查您的 DNS 設定。
 
 ## <a name="setting-the-dns-name-for-your-service"></a>為您的服務設定 DNS 名稱
 您可以在 ApplicationManifest.xml 檔案中，透過預設服務的宣告為您的服務設定 DNS 名稱，或透過 PowerShell 命令來設定。

@@ -3,12 +3,12 @@ title: Azure 監視器記錄資料模型
 description: 在本文中，您將詳盡了解 Azure 備份資料的 Azure 監視器 Log Analytics 資料模型。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 7822f88c9ea3e0cd83b7e600d63984a8a51becb1
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890258"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020944"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>適用於 Azure 備份資料的 Log Analytics 資料模型
 
@@ -159,7 +159,7 @@ ms.locfileid: "88890258"
 | DataTransferredInMB_s | Number |此工作的資料轉送 (以 MB 為單位)|
 | JobUniqueId_g |Text |用來識別作業的唯一識別碼 |
 | RecoveryJobDestination_s |Text | 復原作業的目的地，資料會在此處復原 |
-| RecoveryJobRPDateTime_s |Datetime | 建立要復原之復原點的日期和時間 |
+| RecoveryJobRPDateTime_s |Datetime | 要復原之復原點的建立日期（時間） |
 | RecoveryJobRPLocation_s |Text | 要復原之復原點的儲存位置|
 | SourceSystem |Text |目前資料的來源系統 - Azure |
 | ResourceId |Text |正在收集資料的資源識別碼。 例如，復原服務保存庫資源識別碼|

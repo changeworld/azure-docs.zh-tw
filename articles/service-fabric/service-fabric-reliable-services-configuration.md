@@ -1,16 +1,17 @@
 ---
 title: 設定 Azure Service Fabric Reliable Services
-description: 深入瞭解如何在 Azure Service Fabric 應用程式中設定可設定狀態的 Reliable Services，以及單一服務。
+description: 深入瞭解如何在 Azure Service Fabric 應用程式中設定可設定狀態的 Reliable Services 全域和單一服務。
 author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 640ee925a0a91c4f8424546e7ae734dfbeaed21d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cda0a9f988afae58a60bff051885a5eec8afe434
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518957"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021964"
 ---
 # <a name="configure-stateful-reliable-services"></a>設定具狀態可靠服務
 有兩組組態設定可供 Reliable Services 使用。 一組是適用於叢集中的所有 Reliable Services，而另一組專屬於特定的 Reliable Services。
@@ -63,7 +64,7 @@ SharedLogSizeInMB 會指定要預先配置給所有節點上之預設共用記�
 您可以使用組態封裝 (組態)，或服務實作 (程式碼) 修改具狀態的 Reliable Services 的預設組態。
 
 * **組態** - 您可以藉由變更在 Microsoft Visual Studio 封裝根的 Config 資料夾底下，為應用程式中每個服務產生的 Settings.xml 檔案，來透過組態封裝完成組態。
-* 透過程式碼進行程式**代碼**設定的方式，是使用具有適當選項組的 ReliableStateManagerConfiguration 物件來建立 ReliableStateManager。
+* 透過程式碼進行程式**代碼**設定的方法，是使用已設定適當選項的 ReliableStateManagerConfiguration 物件來建立 ReliableStateManager。
 
 Azure Service Fabric 執行階段預設會在建立基礎執行階段元件時，在 Settings.xml 檔案中尋找預先定義的區段名稱，並使用組態值。
 
@@ -111,14 +112,14 @@ ReplicatorConfig
 | CheckpointThresholdInMB |MB |50 |狀態完成檢查點作業後的記錄檔空間量。 |
 | MaxRecordSizeInKB |KB |1024 |複寫器可以寫入記錄檔中的最大記錄大小。 此值必須是 4 的倍數且大於 16。 |
 | MinLogSizeInMB |MB |0 (系統判定) |交易記錄檔大小下限。 系統將不會允許把記錄檔截斷為低於此設定的大小。 0 表示複寫器將會判斷記錄檔大小下限。 提高這個值會提高執行部分複本和增量備份的可能性，因為這會降低將相關記錄檔記錄截斷的可能性。 |
-| TruncationThresholdFactor |因數 |2 |判斷將會觸發截斷的記錄檔大小。 截斷臨界值是以 MinLogSizeInMB 乘以 TruncationThresholdFactor 來決定。 TruncationThresholdFactor 必須大於 1。 MinLogSizeInMB 乘以 TruncationThresholdFactor 必須小於 MaxStreamSizeInMB。 |
-| ThrottlingThresholdFactor |因數 |4 |判斷複本將會開始節流的記錄檔大小。 節流閾值 (MB) 是以 Max((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)) 來決定。 節流臨界值 (MB) 必須大於截斷臨界值 (MB)。 截斷臨界值 (MB) 必須小於 MaxStreamSizeInMB。 |
+| TruncationThresholdFactor |因素 |2 |判斷將會觸發截斷的記錄檔大小。 截斷臨界值是以 MinLogSizeInMB 乘以 TruncationThresholdFactor 來決定。 TruncationThresholdFactor 必須大於 1。 MinLogSizeInMB 乘以 TruncationThresholdFactor 必須小於 MaxStreamSizeInMB。 |
+| ThrottlingThresholdFactor |因素 |4 |判斷複本將會開始節流的記錄檔大小。 節流閾值 (MB) 是以 Max((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)) 來決定。 節流臨界值 (MB) 必須大於截斷臨界值 (MB)。 截斷臨界值 (MB) 必須小於 MaxStreamSizeInMB。 |
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |指定備份記錄鏈中備份記錄的最大累積大小 (MB)。 如果增量備份會產生導致累積備份記錄的備份記錄，增量備份要求將會失敗，因為相關完整備份會大於此大小。 在這個情況下，使用者需要進行完整備份。 |
 | SharedLogId |GUID |"" |指定用於識別此複本共用記錄檔的唯一 GUID。 服務通常不應使用此設定。 不過，如果有指定 SharedLogId，則也必須指定 SharedLogPath。 |
 | SharedLogPath |完整路徑名稱 |"" |指定建立此複本共用記錄檔的完整路徑。 服務通常不應使用此設定。 不過，如果有指定 SharedLogPath，則也必須指定 SharedLogId。 |
 | SlowApiMonitoringDuration |秒 |300 |設定受控 API 呼叫的監視間隔。 範例︰使用者提供的備份回呼函式。 經過這段間隔後，警告健全狀況報告會傳送到健全狀況管理員。 |
 | LogTruncationIntervalSeconds |秒 |0 |會在每個複本中起始記錄截斷的可設定間隔。 它可用來確保記錄也會根據時間而不只是記錄大小進行截斷。 這項設定也會強制在可靠的字典中清除已刪除的項目。 因此，它可用來確保適時將已刪除的項目清除。 |
-| EnableStableReads |布林值 |False |啟用穩定讀取會限制次要複本，以傳回已仲裁已確認的值。 |
+| EnableStableReads |布林值 |否 |啟用穩定讀取會限制次要複本傳回已仲裁已確認的值。 |
 
 ### <a name="sample-configuration-via-code"></a>透過程式碼的範例組態
 ```csharp

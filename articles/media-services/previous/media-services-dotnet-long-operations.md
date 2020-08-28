@@ -1,6 +1,6 @@
 ---
 title: 輪詢長時間執行的作業 | Microsoft Docs
-description: Azure 媒體服務所提供的 Api 會將要求傳送至媒體服務以啟動作業 (例如，建立、啟動、停止或刪除通道) ，這些作業會長時間執行。 本主題說明如何輪詢長時間執行的作業。
+description: Azure 媒體服務提供可將要求傳送至媒體服務以啟動作業的 Api (例如，建立、啟動、停止或刪除通道) ，這些作業是長時間執行的。 本主題說明如何輪詢長時間執行的作業。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1c5b008b9771e636201f95f3a56f81d4e75b7ea2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4365796a9d7f7b72687db19573c09ccfdf9ea8de
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831731"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020519"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>利用 Azure 媒體服務提供即時資料流
 
@@ -38,7 +39,7 @@ Media Services .NET SDK 提供能傳送要求並等候作業完成的 API (API �
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。
+設定您的開發環境，並在 app.config 檔案中填入連線資訊，如 [使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)所述。
 
 ## <a name="example"></a>範例
 

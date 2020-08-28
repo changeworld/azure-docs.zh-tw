@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒體內容仲裁來偵測潛在的成人和猥褻內容 | Microsoft Docs
-description: Azure 媒體內容仲裁媒體處理器可協助偵測影片中潛在的成人和猥褻內容。
+description: Azure 媒體內容仲裁媒體處理器有助於偵測影片中潛在的成人和猥褻內容。
 services: media-services
 documentationcenter: ''
 author: sanjeev3
@@ -14,20 +14,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 70d824522e1ae71bd49050779ff37e821d560783
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d30949327f3025c06d4c98670494809c486631a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954698"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022202"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>使用 Azure 媒體內容仲裁來偵測潛在的成人和猥褻內容 
 
 > [!NOTE]
-> **Azure 媒體內容仲裁**媒體處理器將會淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
+> 即將淘汰 **Azure 媒體內容仲裁** 媒體處理器。 如需淘汰日期，請參閱 [舊版元件](legacy-components.md) 主題。
 
-## <a name="overview"></a>總覽
-**Azure 媒體內容仲裁**媒體處理器（MP）可讓您針對影片使用機器輔助仲裁。 例如，您可能會想要偵測影片中潛在的成人和猥褻內容，並由您的人力仲裁小組檢閱這些被標記的內容。
+## <a name="overview"></a>概觀
+**Azure 媒體內容仲裁**媒體處理器 (MP) 可讓您針對影片使用機器輔助仲裁。 例如，您可能會想要偵測影片中潛在的成人和猥褻內容，並由您的人力仲裁小組檢閱這些被標記的內容。
 
 **Azure 媒體內容仲裁** MP 目前為預覽功能。
 
@@ -47,20 +48,20 @@ JSON 格式的仲裁輸出包含自動偵測的擷取畫面和主要畫面格。
 
 ### <a name="root-json-elements"></a>根 JSON 元素
 
-| 元素 | 描述 |
+| 項目 | 描述 |
 | --- | --- |
 | version |內容仲裁的版本。 |
 | timescale |影片每秒的「刻度」數目。 |
 | Offset |時間戳記的時間位移。 在 1.0 版的影片 API 中，此值永遠是 0。 此值未來可能會變更。 |
 | framerate |影片的每秒畫面格數。 |
 | width |輸出影片畫面格的寬度 (以像素為單位)。|
-| height |輸出影片畫面格的高度 (以像素為單位)。|
+| 身高 |輸出影片畫面格的高度 (以像素為單位)。|
 | totalDuration |輸入影片的持續時間 (以刻度為單位)。 |
-| [分段](#fragments-json-elements) |中繼資料會被分成稱為「片段」的不同區段。 每個片段都是一個自動偵測的擷取畫面，包含開始、持續時間、間隔數字及事件。 |
+| [碎片](#fragments-json-elements) |中繼資料會被分成稱為「片段」的不同區段。 每個片段都是一個自動偵測的擷取畫面，包含開始、持續時間、間隔數字及事件。 |
 
 ### <a name="fragments-json-elements"></a>Fragments JSON 元素
 
-|元素|描述|
+|項目|描述|
 |---|---|
 | start |第一個事件的開始時間 (以「刻度」為單位)。 |
 | duration |片段的長度 (以「刻度」為單位)。 |
@@ -69,7 +70,7 @@ JSON 格式的仲裁輸出包含自動偵測的擷取畫面和主要畫面格。
 
 ### <a name="events-json-elements"></a>Events JSON 元素
 
-|元素|描述|
+|項目|描述|
 |---|---|
 | reviewRecommended | `true` 或 `false` 需視 **adultScore** 或 **racyScore** 是否超出內部閾值而定。 |
 | adultScore | 是否有潛在成人內容的信賴分數，範圍為 0.00 到 0.99。 |

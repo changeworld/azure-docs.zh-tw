@@ -1,14 +1,15 @@
 ---
 title: Azure 服務匯流排端對端追蹤與診斷 | Microsoft Docs
-description: 概述服務匯流排用戶端診斷和端對端追蹤（用戶端透過所有與處理相關的服務）。
+description: '概述服務匯流排用戶端診斷和端對端追蹤 (用戶端透過所有與處理相關的服務。 ) '
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b46f85e16370d15e3a8def98cdcdf8b3878208d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340725"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021624"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>透過服務匯流排傳訊進行分散式追蹤與相互關聯
 
@@ -75,11 +76,11 @@ async Task ProcessAsync(Message message)
 
 如果您在訊息處理期間對支援的外部元件進行呼叫，系統也會自動對它們進行追蹤及相互關聯。 請參閱[使用 Application Insights .NET SDK 追蹤自訂作業](../azure-monitor/app/custom-operations-tracking.md)以了解手動追蹤及相互關聯。
 
-如果除了 Application Insights SDK 以外，您還在執行任何外部程式碼，則在觀看 Application Insights 記錄檔時，預期會看到較長的**持續時間**。 
+如果您除了 Application Insights SDK 之外，還在執行任何外部程式碼，則在查看 Application Insights 記錄時，預期會看到較長的 **持續時間** 。 
 
 ![Application Insights 記錄檔中的持續時間較長](./media/service-bus-end-to-end-tracing/longer-duration.png)
 
-這並不表示接收訊息時發生延遲。 在此案例中，已收到訊息，因為訊息會當做參數傳入 SDK 程式碼。 而且，App Insights 記錄（**進程**）中的**name**標記表示訊息現在正由您的外部事件處理常式代碼處理。 此問題與 Azure 無關。 相反地，這些計量會參考您的外部程式碼效率，假設已從服務匯流排收到該訊息。 請參閱[GitHub 上的這個](https://github.com/Azure/azure-sdk-for-net/blob/4bab05144ce647cc9e704d46d3763de5f9681ee0/sdk/servicebus/Microsoft.Azure.ServiceBus/src/ServiceBusDiagnosticsSource.cs)檔案，以查看從服務匯流排收到訊息之後，產生和指派**進程**標記的位置。 
+這並不表示接收訊息有延遲。 在此案例中，已經收到訊息，因為訊息會以參數的形式傳入 SDK 程式碼。 而且，App Insights 記錄檔中的 **名稱** 標記 (**進程**) 指出訊息現在正由您的外部事件處理常式代碼處理。 此問題與 Azure 無關。 相反地，這些計量會參考您外部程式碼的效率，因為已經從服務匯流排收到該訊息。 請參閱 [GitHub 上的這個](https://github.com/Azure/azure-sdk-for-net/blob/4bab05144ce647cc9e704d46d3763de5f9681ee0/sdk/servicebus/Microsoft.Azure.ServiceBus/src/ServiceBusDiagnosticsSource.cs) 檔案，以瞭解在從服務匯流排收到訊息之後，會產生並指派 **進程** 標籤的位置。 
 
 ### <a name="tracking-without-tracing-system"></a>在沒有追蹤系統下進行追蹤
 如果您的追蹤系統不支援自動「服務匯流排」呼叫追蹤，您可以研究如何將該支援新增至追蹤系統或應用程式中。 本節說明由服務匯流排 .NET 用戶端所傳送的診斷事件。  
@@ -137,7 +138,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 #### <a name="events"></a>事件
 
-針對每個作業，系統會傳送兩個事件：'Start' 和 'Stop'。 您應該只會對 'Stop' 事件感到興趣。 它們會提供作業的結果，以及開始時間和持續時間作為活動屬性。
+針對每個作業，系統會傳送兩個事件：'Start' 和 'Stop'。 您應該只會對 'Stop' 事件感到興趣。 它們提供作業的結果，以及開始時間和持續時間的活動屬性。
 
 每個裝載都會為接聽程式提供作業的內容，它會複寫 API 傳入參數和傳回值。 'Stop' 事件裝載具有 'Start' 事件裝載的所有屬性，因此您可以完全忽略 'Start' 事件。
 

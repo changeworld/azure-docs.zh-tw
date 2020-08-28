@@ -1,7 +1,7 @@
 ---
 title: 使用 .NET 建立帳戶 SAS
 titleSuffix: Azure Storage
-description: 瞭解如何使用 .NET 用戶端程式庫建立帳戶共用存取簽章（SAS）。
+description: 瞭解如何使用 .NET 用戶端程式庫 (SAS) 建立帳戶共用存取簽章。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,22 +10,23 @@ ms.date: 08/06/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 75f4a3c835a843e824c2ac0b437843cd91824bfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 102248882e1ec123ee74eedd74730c12a991fb86
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512727"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021182"
 ---
 # <a name="create-an-account-sas-with-net"></a>使用 .NET 建立帳戶 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文說明如何使用儲存體帳戶金鑰，搭配[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來建立帳戶 SAS。
+本文說明如何使用儲存體帳戶金鑰，透過 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來建立帳戶 SAS。
 
 ## <a name="create-an-account-sas"></a>建立帳戶 SAS
 
-若要建立容器的帳戶 SAS，請呼叫[CloudStorageAccount. cloudblobcontainer.getsharedaccesssignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature)方法。
+若要建立容器的帳戶 SAS，請呼叫 [>cloudstorageaccount. >cloudblobcontainer.getsharedaccesssignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) 方法。
 
 下列程式碼範例會建立適用於 Blob 和檔案服務的帳戶 SAS，並提供用戶端權限讀取、寫入和列出權限來存取服務層級 API。 帳戶 SAS 會將通訊協定限制為 HTTPS，因此必須使用 HTTPS 提出要求。 請記得以您自己的值取代角括號中的預留位置值：
 
@@ -97,5 +98,5 @@ static void UseAccountSAS(string sasToken)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用共用存取簽章（SAS）授與 Azure 儲存體資源的有限存取權](storage-sas-overview.md)
+- [使用 (SAS) 的共用存取簽章來授與 Azure 儲存體資源的有限存取權 ](storage-sas-overview.md)
 - [建立帳戶 SAS](/rest/api/storageservices/create-account-sas)

@@ -3,12 +3,12 @@ title: 關於 Azure Vm 中的 SAP Hana 資料庫備份
 description: 在本文中，您將瞭解如何備份在 Azure 虛擬機器上執行的 SAP Hana 資料庫。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: e30507e433ff9a828266c88ca79e576c508edc31
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: e30510817401fd8db23dc9f1d62fab495fac7ab2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757535"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022304"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>關於 Azure Vm 中的 SAP Hana 資料庫備份
 
@@ -69,7 +69,7 @@ Azure 備份是 [經過 SAP 認證的 Backint](https://www.sap.com/dmc/exp/2013_
 
 * 從最新的復原點，[從 AZURE VM 備份還原新的 vm](backup-azure-arm-restore-vms.md) 。 或建立新的空白 VM，並從最新的復原點連接磁片。
 * 因為不會備份 WA 磁片，所以不會還原它們。 建立空白的 WA 磁片和記錄區域。
-* 在設定所有其他設定之後 (例如 IP、系統名稱等) 設定好之後，VM 便會設定為接收來自 Azure 備份的 DB 資料。
+* 在設定所有其他設定之後 (例如 IP、系統名稱等) ，VM 會設定為接收來自 Azure 備份的 DB 資料。
 * 現在將資料庫從 [Azure SAP HANA db 備份](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point) 還原至 VM，以進行所需的時間點。
 
 ## <a name="next-steps"></a>後續步驟

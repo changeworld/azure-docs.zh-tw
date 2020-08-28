@@ -5,12 +5,13 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
-ms.openlocfilehash: caa6d4fc27373e524f4c492635cffbf8b735add8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a36425acf42a469c7f48b2e954bdacfdfcce1b10
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247212"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011475"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>為 Service Fabric 應用程式新增記錄功能
 
@@ -97,7 +98,7 @@ internal sealed class ServiceEventSource : EventSource
 ASP.NET Core 記錄 ([Microsoft.Extensions.Logging NuGet 套件](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) 是一個為應用程式提供標準記錄 API 的記錄架構。 您可以在 ASP.NET Core 記錄中插入對其他記錄後端的支援。 這可針對所處理應用程式中的記錄提供各種支援，而無須變更太多程式碼。
 
 1. 將 **Microsoft.Extensions.Logging** NuGet 套件新增至您要檢測的專案。 此外，也新增任何提供者套件。 如需詳細資訊，請參閱 [ASP.NET Core 中的記錄](/aspnet/core/fundamentals/logging)。
-2. 將適用于**Microsoft Extensions**的**using**指示詞新增至您的服務檔案。
+2. 為**Microsoft 副檔名**新增**using**指示詞。記錄至您的服務檔案。
 3. 在服務類別內定義私用變數。
 
    ```csharp

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: dafea083e68b2afe6b6bcf45b4cff8779f817049
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: ecd402c30fee63ad594fff5e4fdc3b1610fe7e4e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749014"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003876"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>針對 Azure 數位 Twins 進行疑難排解：計量
 
@@ -24,7 +24,7 @@ ms.locfileid: "88749014"
 
 1. 建立 Azure 數位 Twins 實例。 您可以在 how [*to：設定實例和驗證*](how-to-set-up-instance-scripted.md)中找到如何設定 Azure 數位 Twins 實例的指示。
 
-2. 在 [Azure 入口網站](https:/portal.azure.com) 中尋找您的 Azure 數位 Twins 實例 (您可以在入口網站的搜尋列) 中輸入其名稱，以開啟該實例的頁面。 
+2. 在 [Azure 入口網站](https://portal.azure.com) 中尋找您的 Azure 數位 Twins 實例 (您可以在入口網站的搜尋列) 中輸入其名稱，以開啟該實例的頁面。 
 
     從實例的功能表中，選取 [ **計量**]。
    

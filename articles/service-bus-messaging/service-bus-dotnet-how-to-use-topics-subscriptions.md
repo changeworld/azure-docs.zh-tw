@@ -4,12 +4,13 @@ description: 撰寫使用服務匯流排傳訊主題和訂用帳戶的 C# .NET C
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: 7b2b8382c11f447237a8f49ee5be1f4989e3f906
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bc7435fb46d5783cb487038a10709a9e40b0d136
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337511"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021641"
 ---
 # <a name="get-started-with-service-bus-topics"></a>開始使用服務匯流排主題
 
@@ -20,14 +21,14 @@ ms.locfileid: "85337511"
 1. 撰寫 .NET Core 主控台應用程式，以將一組訊息傳送到主題。
 2. 撰寫 .NET Core 主控台應用程式，以從訂用帳戶接收這些訊息。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 1. Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以啟用自己的 [Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 遵循[快速入門：使用 Azure 入口網站建立服務匯流排主題和主題訂用](service-bus-quickstart-topics-subscriptions-portal.md)帳戶中的步驟來執行下列工作：
+2. 遵循快速入門中的步驟 [：使用 Azure 入口網站建立服務匯流排主題和主題的](service-bus-quickstart-topics-subscriptions-portal.md) 訂用帳戶，以執行下列工作：
     1. 建立服務匯流排**命名空間**。
     2. 取得**連接字串**。
     3. 在命名空間中建立**主題**。
-    4. 為命名空間中的主題建立**一個訂**用帳戶。
+    4. 為命名空間中的主題建立 **一個訂** 用帳戶。
 3. [Visual Studio 2017 Update 3 (版本 15.3, 26730.01)](https://www.visualstudio.com/vs) 或更新版本。
 4. [.NET Core SDK](https://www.microsoft.com/net/download/windows)，2.0 版或更新版本。
  
@@ -65,7 +66,7 @@ ms.locfileid: "85337511"
     static ITopicClient topicClient;
     ``` 
 
-3. 將 `Main()` 方法取代為下列**非同步** `Main` 方法，使用您將在下一個步驟中新增的 SendMessagesAsync 方法，以非同步方式傳送訊息。 
+3. `Main()`以下列非同步方法取代方法**async** `Main` ，該方法會使用您將在下一個步驟中新增的 SendMessagesAsync 方法，以非同步方式傳送訊息。 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -178,7 +179,7 @@ ms.locfileid: "85337511"
 
 ## <a name="receive-messages-from-the-subscription"></a>自訂用帳戶接收訊息
 
-若要接收您所傳送的訊息，請建立另一個 .NET Core 主控台應用程式，並安裝與先前的傳送者應用程式類似的**Microsoft Azure**主機套件。
+若要接收您傳送的訊息，請建立另一個 .NET Core 主控台應用程式，並安裝與先前的傳送者應用程式類似的**Node.js NuGet 套件。**
 
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>撰寫程式碼以從訂用帳戶接收訊息
 
@@ -200,7 +201,7 @@ ms.locfileid: "85337511"
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. 將方法取代為 `Main()` 下列**非同步** `Main` 方法。 它會呼叫 `RegisterOnMessageHandlerAndReceiveMessages()` 您將在下一個步驟中新增的方法。 
+3. `Main()`以下列非同步方法取代方法**async** `Main` 。 它會呼叫 `RegisterOnMessageHandlerAndReceiveMessages()` 您將在下一個步驟中新增的方法。 
 
     ```csharp
     public static async Task Main(string[] args)

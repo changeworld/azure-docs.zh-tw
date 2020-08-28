@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: a3f19d1240c2dcf1e62d5723c40b4f7c8b2154f0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 246b1456c05605c4015c19e1a139e9ad65f6eaba
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253281"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022151"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>使用 Reliable Services 在 C# 中進行服務遠端處理
 
@@ -268,7 +269,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>使用明確的遠端類別來建立 V2 (介面相容) 版本的接聽程式/用戶端處理站。
 
-遵循這些步驟：
+請遵循下列步驟：
 
 1. 在服務資訊清單中新增名稱為 "ServiceEndpointV2_1" 的端點資源。
 
@@ -313,7 +314,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 若要從 V1 升級為 V2 (介面相容，也稱為 V2_1)，需要 2 個步驟。 遵循此序列中的步驟。
 
 > [!NOTE]
-> 從 V1 升級至 V2 時，請確定已將 `Remoting` 命名空間更新為使用 v2。 範例： ' ServiceFabric. FabricTransport. Client '
+> 從 V1 升級至 V2 時，請確定已將 `Remoting` 命名空間更新為使用 v2。 範例： ' ServiceFabric. FabricTransport.. 用戶端 '
 >
 >
 
@@ -357,7 +358,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>使用自訂序列化搭配遠端包裝訊息
 
 對於遠端包裝訊息，我們會建立含有所有參數的單一包裝物件作為其中的欄位。
-遵循這些步驟：
+請遵循下列步驟：
 
 1. 實作 `IServiceRemotingMessageSerializationProvider` 介面，以提供自訂序列化的實作。
     此程式碼片段會顯示實作情況。

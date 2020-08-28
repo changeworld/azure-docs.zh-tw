@@ -14,13 +14,13 @@ ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.custom: devx-track-java
-ms.openlocfilehash: bace9130f87300585d1e7d90c6c1a30041171f4b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-java, devx-track-csharp
+ms.openlocfilehash: 13b05c17cc621660576913c08a1fdbc389365a53
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324653"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003961"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>透過百度開始使用通知中樞
 
@@ -30,7 +30,7 @@ ms.locfileid: "87324653"
 
 由於中國無法使用 Google Play 和 FCM (Firebase Cloud Messaging)，因此必須使用不同的應用程式市集和推送服務。 百度是其中一種方法，且目前由通知中樞所使用。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本教學課程需要：
 
@@ -69,7 +69,7 @@ ms.locfileid: "87324653"
 
 2. 輸入 [應用程式名稱]，並確定 [最低必要 SDK] 版本已設定為 [API 16: Android 4.1]。 **此外，請確定您的套件名稱 (应用包名) 與百度雲推送入口網站中的名稱相同**
 
-    ![Azure 通知中樞-百度 Min SDK1 ](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![ azure 通知中樞-百度 min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure 通知中樞-百度 Min SDK1 ](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![ Azure 通知中樞-百度 min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
 3. 按 [下一步] 並繼續遵循精靈的指示進行，直到出現 [建立活動] 視窗為止。 請確定已選取 [空的活動]，最後選取 [完成] 以建立新的 Android 應用程式。
 
@@ -416,8 +416,8 @@ ms.locfileid: "87324653"
 
 您可以在 [Azure 入口網站]中快速測試通知的接收：使用通知中樞設定畫面中的 [傳送]**** 按鈕 (如下列畫面所示)︰
 
-![Azure 入口網站的螢幕擷取畫面，其中的 [測試傳送] 選項以紅色概述，而紅色箭號指向它。 ](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
- ![[Azure 入口網站中的百度測試傳送] 頁面的螢幕擷取畫面。](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
+![Azure 入口網站的螢幕擷取畫面，其中包含以紅色標示的測試傳送選項，以及指向它的紅色箭號。 ](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
+ ![Azure 入口網站中百度測試傳送頁面的螢幕擷取畫面。](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
 
 推播通知通常會以後端服務傳送，例如行動服務或使用相容程式庫的 ASP.NET。 如果程式庫不適用於您的後端，您可以直接使用 REST API 來傳送通知訊息。
 
@@ -425,8 +425,8 @@ ms.locfileid: "87324653"
 
 以下是不同的傳送通知方法：
 
-* **Rest 介面**：您可以在使用[rest 介面](/previous-versions/azure/reference/dn223264(v=azure.100))的任何後端平臺上支援通知。
-* **Microsoft Azure 通知中樞 .NET SDK**：在適用于 Visual Studio 的 Nuget 套件管理員中，執行[Install-Package NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+* **Rest 介面**：您可以在使用 [rest 介面](/previous-versions/azure/reference/dn223264(v=azure.100))的任何後端平臺上支援通知。
+* **Microsoft Azure 通知中樞 .NET SDK**：在適用于 Visual Studio 的 Nuget 封裝管理員中，執行 [NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 * **Node.js**：[如何從 Node.js 使用通知中樞](notification-hubs-nodejs-push-notification-tutorial.md)。
 * **Mobile Apps**：如需如何從已與通知中樞整合的 Azure App Service Mobile Apps 傳送通知的範例，請參閱[將推播通知新增至行動應用程式](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push)。
 * **Java/PHP**︰如需使用 REST API 傳送通知的範例，請參閱＜如何從 Java/PHP 使用通知中樞＞([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md))。
@@ -437,7 +437,7 @@ ms.locfileid: "87324653"
 
 1. 建立新的 Visual C# 主控台應用程式：
 
-    ![已反白顯示 [主控台應用程式] Visual c # 選項的 [新增專案] 對話方塊的螢幕擷取畫面。](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
+    ![[新增專案] 對話方塊的螢幕擷取畫面，其中反白顯示 [主控台應用程式 Visual c #] 選項。](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
 2. 在 [套件管理員主控台] 視窗中，將 [預設專案] **** 設為新的主控台應用程式專案，然後在主控台視窗中執行下列命令：
 
@@ -447,7 +447,7 @@ ms.locfileid: "87324653"
 
     此指示會使用 [Microsoft.Azure.Notification Hubs NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)新增對 Azure 通知中樞 SDK 的參考。
 
-    ![[套件管理員主控台] 對話方塊的螢幕擷取畫面，其中包含以紅色圈起的 [傳送至通知中樞] 選項。](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
+    ![封裝管理員主控台] 對話方塊的螢幕擷取畫面，其中以紅色圓圈傳送至通知中樞選項。](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
 3. 開啟 `Program.cs` 檔案，並新增下列 using 陳述式：
 

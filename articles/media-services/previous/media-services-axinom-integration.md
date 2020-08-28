@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 147fecdd9777e06ce078e4ed1531d6d0a0da749c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c2dc90b84446917c4f06de707047b92e52cf7bc8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954616"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020978"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 Axinom 將 Widevine 授權傳遞到 Azure 媒體服務 
 > [!div class="op_single_selector"]
@@ -29,7 +30,7 @@ ms.locfileid: "85954616"
 > 
 > 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 Azure 媒體服務 (AMS) 已新增Google Widevine 動態保護 (如需詳細資訊，請參閱 [Mingfei 的部落格](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) )。 此外，Azure 媒體播放器 (AMP) 也已新增 Widevine 支援 (如需詳細資訊，請參閱 [AMP 文件](https://amp.azure.net/libs/amp/latest/docs/) )。 談到在配備 MSE 和 EME 的現代瀏覽器上串流處理受到 CENC 與多重原生 DRM (PlayReady 和 Widevine) 保護的 DASH 內容時，這可說是一大成就。
 
 從媒體服務 .NET SDK 版本 3.5.2 開始，媒體服務讓您可設定 Widevine 授權範本並取得 Widevine 授權。 您也可以使用下列 AMS 合作夥伴來協助您傳遞 Widevine 授權：[Axinom](https://www.axinom.com)、[EZDRM](https://ezdrm.com/)、[castLabs](https://castlabs.com/company/partners/azure/)。
@@ -199,7 +200,7 @@ public static string GetKeyID(string dashUrl)
 | --- | --- |
 | 通訊金鑰識別碼 |必須包含在 JWT 權杖中作為宣告 "com_key_id" 的值 (請參閱 [本節](media-services-axinom-integration.md#jwt-token-generation))。 |
 | 通訊金鑰 |必須做為 JWT 權杖的簽署金鑰 (請參閱 [本節](media-services-axinom-integration.md#jwt-token-generation) )。 |
-| 金鑰種子 |必須用來使用任何指定的內容金鑰識別碼來產生內容金鑰（[請參閱本節）](media-services-axinom-integration.md#content-protection) 。 |
+| 金鑰種子 |必須使用任何指定的內容金鑰識別碼來產生內容金鑰 (請參閱  [這](media-services-axinom-integration.md#content-protection) 一節) 。 |
 | Widevine 授權取得 URL |必須用於設定 DASH 串流資產傳遞原則 (請參閱[本節](media-services-axinom-integration.md#content-protection))。 |
 | 內容金鑰識別碼 |必須包含其中作為 JWT 權杖之權利訊息宣告值的一部分 (請參閱 [本節](media-services-axinom-integration.md#jwt-token-generation) )。 |
 

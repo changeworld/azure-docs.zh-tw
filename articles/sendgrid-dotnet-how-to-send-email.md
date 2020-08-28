@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
-ms.openlocfilehash: 82bcc61d06ac519447307c1e92784f33794d5817
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: c8ac20378cbae9334cedb59878311f2541b40bd3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258025"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020587"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>如何在 Azure 上使用 SendGrid 傳送電子郵件
 ## <a name="overview"></a>概觀
@@ -34,7 +35,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠的 [交易式電
 * 轉寄客戶查詢。
 * 處理內送電子郵件。
 
-如需詳細資訊，請造訪 [https://sendgrid.com](https://sendgrid.com) 或 SendGrid 的[c # 程式庫][sendgrid-csharp]GitHub 儲存機制。
+如需詳細資訊，請造訪 [https://sendgrid.com](https://sendgrid.com) 或 SendGrid 的 [c # 程式庫][sendgrid-csharp] GitHub 存放庫。
 
 ## <a name="create-a-sendgrid-account"></a>建立 SendGrid 帳戶
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -43,7 +44,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠的 [交易式電
 [SendGrid NuGet 封裝](https://www.nuget.org/packages/Sendgrid) 是取得 SendGrid API 及透過所有相依性設定應用程式的最簡單方式。 NuGet 是 Microsoft Visual Studio 2015 和更新版本隨附的 Visual Studio 擴充，能輕鬆地安裝及更新程式庫和工具。
 
 > [!NOTE]
-> 若要在執行 Visual Studio 2015 之前的 Visual Studio 版本時安裝 NuGet，請造訪 [https://www.nuget.org](https://www.nuget.org) ，然後按一下 [**安裝 nuget** ] 按鈕。
+> 如果您執行的版本 Visual Studio 早于 Visual Studio 2015，請造訪 [https://www.nuget.org](https://www.nuget.org) ，然後按一下 [ **安裝 nuget** ] 按鈕，以安裝 nuget。
 >
 >
 
@@ -63,7 +64,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠的 [交易式電
 
 SendGrid 的 .NET 類別庫稱為 **SendGrid**。 其中包含下列命名空間：
 
-* **SendGrid** ，可與 SENDGRID 的 API 進行通訊。
+* **SendGrid** ，以與 SENDGRID 的 API 進行通訊。
 * **SendGrid.Helpers.Mail** 讓協助程式方法可以輕鬆建立 SendGridMessage 物件，以指定如何傳送電子郵件。
 
 將下列程式碼命名空間宣告，新增至您想要在其中以程式設計方式存取 SendGrid 電子郵件服務之任何 C# 檔案內的頂端。
@@ -104,7 +105,7 @@ msg.AddContent(MimeType.Html, "<p>Hello World!</p>");
 
 傳送電子郵件需要您提供 SendGrid API 金鑰。 如需有關如何設定 API 金鑰的詳細資訊，請參閱 SendGrid 的 API 金鑰[文件][documentation]。
 
-您可以透過 Azure 入口網站按一下 [應用程式設定]，然後在 [應用程式設定] 下新增金鑰/值組，來儲存這些認證。
+您可以按一下 [應用程式設定]，然後在 [應用程式設定] 下新增索引鍵/值組，以透過 Azure 入口網站儲存這些認證。
 
  ![Azure 應用程式設定][azure_app_settings]
 

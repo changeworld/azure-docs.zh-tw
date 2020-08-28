@@ -1,29 +1,29 @@
 ---
-title: ML Studio （傳統）：重新定型 web 服務-Azure
-description: 瞭解如何在 Azure Machine Learning Studio （傳統）中更新 web 服務，以使用新定型的機器學習模型。
+title: ML Studio (傳統) ：重新定型 web 服務-Azure
+description: 瞭解如何更新 web 服務，以在 Azure Machine Learning Studio (傳統) 中使用新訓練的機器學習模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 9acb9db0024ea1601f82b96376f084536fbbeabb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 7ce7697b92df9c6bef61bbf9eccb9f4252ce957f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431861"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020672"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新定型和部署機器學習模型
 
-**適用物件：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio （傳統） ![ 否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
-若想要確保機器模型保持精準，並確定模型所根據的是相關性最高的可用資料，其中一種方式就是重新定型。 本文說明如何將機器學習服務模型重新定型並部署為 Studio （傳統）中的新 web 服務。 如果是要重新定型傳統的 Web 服務，請[參閱操作說明文章](retrain-classic-web-service.md)。
+若想要確保機器模型保持精準，並確定模型所根據的是相關性最高的可用資料，其中一種方式就是重新定型。 本文說明如何在 Studio (傳統) 中，將機器學習模型重新定型和部署為新的 web 服務。 如果是要重新定型傳統的 Web 服務，請[參閱操作說明文章](retrain-classic-web-service.md)。
 
-本文假設您已部署了預測性 Web 服務。 如果您還沒有預測性 web 服務，請[在這裡瞭解如何部署 Studio （傳統） web 服務。](deploy-a-machine-learning-web-service.md)
+本文假設您已部署了預測性 Web 服務。 如果您還沒有預測性 web 服務，請 [在這裡瞭解如何部署 Studio (傳統) web 服務。](deploy-a-machine-learning-web-service.md)
 
 請按照這些步驟重新定型並部署機器學習新 Web 服務：
 
@@ -61,7 +61,7 @@ ms.locfileid: "87431861"
 
 使用下列步驟呼叫重新定型 API：
 
-1. 在 Visual Studio 中建立 c # 主控台應用程式：**新增**  >  **專案**  >  **Visual c #**  >  **Windows 傳統桌面**  >  **主控台應用程式（.NET Framework）**。
+1. 在 Visual Studio 中建立 c # 主控台應用程式：**新增**  >  **專案**  >  **Visual c #**  >  **Windows 傳統桌面**  >  **主控台應用程式 ( .NET Framework) **。
 1. 登入 Machine Learning Web 服務入口網站。
 1. 按一下您要使用的 Web 服務。
 1. 按一下 [取用] ****。
@@ -82,7 +82,7 @@ ms.locfileid: "87431861"
 const string apiKey = "abc123"; // Replace this with the API key for the web service
 ```
 
-**在 [取用] 頁面的**[基本取用**資訊**] 區段中，找出主要金鑰，並將它複製到**apikey**宣告。
+在 [取用] 頁面的 [ **基本取用資訊** ] 區段中， **找出主鍵** ，然後將它複製到 **apikey** 宣告。
 
 ### <a name="update-the-azure-storage-information"></a>更新 Azure 儲存體資訊
 
@@ -93,7 +93,7 @@ BES 範例程式碼會將檔案從本機磁碟機 (例如，C:\temp\CensusInput.
 1. 在儲存體帳戶的清單中，選取要儲存重新定型模型的帳戶。
 1. 在左側導覽中，按一下 [存取金鑰]****。
 1. 複製並儲存 [主要存取金鑰]****。
-1. 在左側導覽資料行中，按一下 [ **blob**]。
+1. 在左側導覽欄中，按一下 [ **blob**]。
 1. 您可以使用現有容器，或建立新的容器並儲存名稱。
 
 找到 StorageAccountName**、StorageAccountKey**、StorageContainerName** 宣告，更新為您從入口網站儲存的值。
@@ -140,17 +140,17 @@ Outputs = new Dictionary<string, AzureBlobDataReference>() {
 
 ### <a name="sign-in-to-azure-resource-manager"></a>登入 Azure Resource Manager
 
-首先，使用[disconnect-azaccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet，從 PowerShell 環境中登入您的 Azure 帳戶。
+首先，使用 [disconnect-azaccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 從 PowerShell 環境內登入您的 Azure 帳戶。
 
 ### <a name="get-the-web-service-definition-object"></a>取得 Web 服務定義物件
 
-接下來，藉由呼叫[AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) Cmdlet 來取得 Web 服務定義物件。
+接下來，呼叫 [AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) 指令程式來取得 Web 服務定義物件。
 
 ```azurepowershell
 $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 ```
 
-若要判斷現有 web 服務的資源組名，請執行 AzMlWebService 指令程式而不使用任何參數，以顯示您的訂用帳戶中的 web 服務。 找出 Web 服務，再查看其 Web 服務識別碼。 資源群組的名稱是識別碼中的第四個元素，緊接在 resourceGroups ** 元素之後。 在下列範例中，資源群組名稱是 Default-MachineLearning-SouthCentralUS。
+若要判斷現有 web 服務的資源組名，請執行不含任何參數的 AzMlWebService 指令程式，以在您的訂用帳戶中顯示 web 服務。 找出 Web 服務，再查看其 Web 服務識別碼。 資源群組的名稱是識別碼中的第四個元素，緊接在 resourceGroups ** 元素之後。 在下列範例中，資源群組名稱是 Default-MachineLearning-SouthCentralUS。
 
 ```azurepowershell
 Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
@@ -167,7 +167,7 @@ Tags : {}
 
 ### <a name="export-the-web-service-definition-object-as-json"></a>將 Web 服務定義物件匯出為 JSON
 
-若要修改定型模型的定義以使用新定型的模型，您必須先使用[AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) Cmdlet 將它匯出至 JSON 格式的檔案。
+若要修改定型模型的定義以使用新定型的模型，您必須先使用 AzMlWebService 指令 [程式](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) 將它匯出至 JSON 格式檔案。
 
 ```azurepowershell
 Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
@@ -194,7 +194,7 @@ Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.jso
 
 ### <a name="import-the-json-into-a-web-service-definition-object"></a>將 JSON 匯入至 Web 服務定義物件
 
-使用[AzMlWebService 指令程式](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice)，將修改過的 JSON 檔案轉換回 Web 服務定義物件，您可以用來更新預測性實驗。
+使用 [AzMlWebService 指令程式](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) 可將修改過的 JSON 檔案轉換回可用來更新預測性實驗的 Web 服務定義物件。
 
 ```azurepowershell
 $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
@@ -202,7 +202,7 @@ $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 ### <a name="update-the-web-service"></a>更新 Web 服務
 
-最後，使用[AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) Cmdlet 來更新預測性實驗。
+最後，使用 [AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) 指令 Cmdlet 來更新預測性實驗。
 
 ```azurepowershell
 Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'

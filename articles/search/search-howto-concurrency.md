@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5171db64f931d59d4f5b66143072cfc8153e8775
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 85f14329359eaf051b992f657ac0e4e634d504cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935189"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020825"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>如何管理 Azure 認知搜尋中的平行存取
 
@@ -215,7 +216,7 @@ ms.locfileid: "88935189"
 + [GitHub 上的 REST API 範例](https://github.com/Azure-Samples/search-rest-api-getting-started)
 + [GitHub 上的 .NET SDK 範例](https://github.com/Azure-Samples/search-dotnet-getting-started)。 此解決方案包括「DotNetEtagsExplainer」專案，其中包含本文所提供的程式碼。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [一般 HTTP 要求和回應標頭](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
 [HTTP 狀態碼](/rest/api/searchservice/http-status-codes) 

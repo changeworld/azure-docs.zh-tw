@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7e5f6b7fa505890dc6bc818d1bd2578e5d974ff0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 93b449636282568ab614b42a46d939935f576895
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594860"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021301"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在用戶端插入廣告
 本文包含如何在用戶端上插入各種類型廣告的相關資訊。
@@ -160,7 +161,7 @@ VAST 檔案會指定要顯示的廣告。 下列 XML 是線性廣告的 VAST 檔
     </Creative>
 ```
 
-<**NonLinearAds**> 元素可以包含一或多個 <**NonLinear**> 元素，其中每一個元素都可說明一個非線性廣告。 <**NonLinear**> 元素會指定非線性廣告的資源。 資源可以是 <**StaticResource**>、<**IFrameResource**> 或 <**HTMLResource**>。 \<**StaticResource**>描述非 HTML 資源，並定義 creativeType 屬性來指定資源的顯示方式：
+<**NonLinearAds**> 元素可以包含一或多個 <**NonLinear**> 元素，其中每一個元素都可說明一個非線性廣告。 <**NonLinear**> 元素會指定非線性廣告的資源。 資源可以是 <**StaticResource**>、<**IFrameResource**> 或 <**HTMLResource**>。 \<**StaticResource**> 描述非 HTML 資源，並定義 creativeType 屬性，以指定資源的顯示方式：
 
 image/gif、image/jpeg、image/png – 資源在 HTML <**img**> 標記中顯示。
 
@@ -586,7 +587,7 @@ ProgrammaticAdPage.xaml.cs 檔案會建立 AdHandlerPlugin，新增 TimelineMark
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>實作具有廣告支援的 iOS 視訊播放器
-Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合，為您示範如何使用架構實作視訊播放器應用程式。 您可以從 [Azure Media Player Framework](https://github.com/CloudMetal/azure-media-player-framework)下載 Player Framework 和範例。 GitHub 頁面含有 Wiki 的連結，其中包含播放程式架構的其他資訊，以及播放程式範例： [Azure 媒體播放機 Wiki](https://github.com/CloudMetal/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)的簡介。
+Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合，為您示範如何使用架構實作視訊播放器應用程式。 您可以從 [Azure Media Player Framework](https://github.com/CloudMetal/azure-media-player-framework)下載 Player Framework 和範例。 GitHub 頁面有 Wiki 的連結，其中包含有關 player framework 的其他資訊和播放程式範例簡介： [Azure 媒體播放機 wiki](https://github.com/CloudMetal/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
 
 ### <a name="scheduling-ads-with-vmap"></a>使用 VMAP 排程廣告
 下列範例示範如何使用 VMAP 檔案排程廣告。

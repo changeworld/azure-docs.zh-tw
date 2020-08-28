@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/24/2019
-ms.openlocfilehash: f1927d44daf49d938d2c43ce9de02cb1dbfb735f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: cdb2207ab834ab84cedd2ad23e5e26186ac44039
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207763"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020468"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 執行 Apache Hive 查詢
 
@@ -33,7 +33,7 @@ ms.locfileid: "86207763"
     > [!IMPORTANT]  
     > 2017 年 9 月 15 起，HDInsight.NET SDK 僅支援從 Microsoft Azure 儲存體帳戶傳回的 Hive 查詢結果。 如果您使用此範例，並搭配將 Azure Data Lake Store 用作主要儲存體的 HDInsight 叢集使用，您無法擷取使用 .NET SDK 的搜尋結果。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/community/) 2013 和以上。 至少應該安裝工作負載 **.net 桌面開發**。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/community/) 2013 以上。 至少應安裝工作負載 **.net 桌面開發** 。
 
 ## <a name="run-a-hive-query"></a>執行 Hive 查詢
 
@@ -47,7 +47,7 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您輕鬆地從 .NET 使�
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
 
-1. 編輯下列程式碼，以初始化變數的值： `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName` 。 然後使用修改過的程式碼作為 Visual Studio 中**Program.cs**的完整內容。
+1. 編輯下列程式碼，以初始化變數的值： `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName` 。 然後使用修訂過的程式碼，做為 Visual Studio 中 **Program.cs** 的整個內容。
 
     ```csharp
     using System.Collections.Generic;
@@ -134,9 +134,9 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您輕鬆地從 .NET 使�
     }
     ```
 
-1. 按**F5**執行應用程式。
+1. 按 **F5** 執行應用程式。
 
-應用程式的輸出應該類似：
+應用程式的輸出應該類似于：
 
 ![HDInsight Hadoop Hive 作業輸出](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
 

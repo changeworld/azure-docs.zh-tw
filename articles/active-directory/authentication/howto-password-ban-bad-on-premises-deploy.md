@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: b773fb887d3663a2af2e340912e378c7fccaba4a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718946"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003536"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>規劃和部署內部部署 Azure Active Directory 密碼保護
 
@@ -49,6 +49,8 @@ ms.locfileid: "88718946"
 * [由於本機系統管理員密碼弱，導致網域控制站降級失敗](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
 當功能在 audit 模式中以合理的時間執行之後，您可以從 *audit* 切換設定，以 *強制* 要求更安全的密碼。 在這段時間內的其他監視是個不錯的主意。
+
+請務必注意，Azure AD 密碼保護只能在密碼變更或設定作業期間驗證密碼。 部署 Azure AD 密碼保護之前，在 Active Directory 中接受和儲存的密碼永遠不會經過驗證，而且會繼續依原樣繼續工作。 經過一段時間之後，所有使用者和帳戶最終都會開始使用 Azure AD 密碼保護驗證的密碼，因為其現有密碼會正常過期。 使用「密碼永久有效」設定的帳戶會豁免。
 
 ### <a name="multiple-forest-considerations"></a>多個樹系考慮
 

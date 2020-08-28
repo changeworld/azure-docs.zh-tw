@@ -1,17 +1,18 @@
 ---
 title: 使用 .NET 管理 Azure Data Lake Storage Gen1 帳戶
-description: 瞭解如何使用 .NET SDK 來 Azure Data Lake Storage Gen1 帳戶管理作業。
+description: 瞭解如何使用 .NET SDK 進行 Azure Data Lake Storage Gen1 帳戶管理作業。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 379f0c5418c2e15786b16cf1e4f67487432fa905
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ffd00ace0445b1b8cc13881834d7759aa217c4c6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985925"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020961"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 對 Azure Data Lake Storage Gen1 進行帳戶管理作業。
 > [!div class="op_single_selector"]
@@ -25,27 +26,27 @@ ms.locfileid: "85985925"
 
 如需有關如何使用 .NET SDK 對 Data Lake Storage Gen1 執行資料管理作業的指示，請參閱[使用 .NET SDK 對 Data Lake Storage Gen1 進行檔案系統作業](data-lake-store-data-operations-net-sdk.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 * **Visual Studio 2013 或**更新版本。 下列指示使用 Visual Studio 2019。
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-a-net-application"></a>建立 .NET 應用程式
-1. 在 Visual Studio 中，依序**選取 [檔案**] 功能表、[**新增**] 和 [**專案**]。
-2. 選擇 [**主控台應用程式（.NET Framework）**]，然後選取 **[下一步]**。
+1. 在 Visual Studio 中，依序 **選取 [檔案** ] 功能表、[ **新增**] 和 [ **專案**]。
+2. 選擇 [ **主控台應用程式 ( .NET Framework) **]，然後選取 **[下一步]**。
 3. 在 [專案名稱]**** 中，輸入 `CreateADLApplication`，然後選取 [建立]****。
 
 4. 將 NuGet 套件新增至您的專案。
 
    1. 在方案總管中以滑鼠右鍵按一下專案名稱，然後按一下 [ **管理 NuGet 封裝**]。
-   2. 在 [ **NuGet 套件管理員**] 索引標籤中，確定已選取 [**套件來源**] 設定為 [ **nuget.org** ]，並已勾選 [**發行**前版本] 核取方塊。
+   2. 在 [ **NuGet 封裝管理員** ] 索引標籤中，確定已選取 [ **套件來源** ] 設定為 [ **nuget.org** ]，並已選取 [ **包含發行** 前版本] 核取方塊。
    3. 搜尋並安裝下列 NuGet 封裝：
 
       * `Microsoft.Azure.Management.DataLake.Store` - 本教學課程使用 v2.1.3-preview。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教學課程使用 v2.2.12。
 
         ![新增 NuGet 來源](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "建立新的 Azure Data Lake 帳戶")
-   4. 關閉 [ **NuGet 套件管理員**]。
+   4. 關閉 **NuGet 封裝管理員**。
 5. 開啟 **Program.cs**，刪除現有的程式碼，然後納入下列陳述式以新增命名空間的參考。
 
     ```csharp

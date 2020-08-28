@@ -14,38 +14,38 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 302a0361c19d247b6da4abd516d3a5df8dfd10c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19d94c7ec08dbf2556ae72da2f0e5645fb228569
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494661"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020502"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>適用於 Windows 的 Log Analytics 虛擬機器擴充功能
 
-Azure 監視器記錄可提供跨雲端和內部部署資產的監視功能。 Microsoft 已發佈和支援適用於 Windows 的 Log Analytics 代理程式虛擬機器擴充功能。 擴充功能會在 Azure 虛擬機器上安裝 Log Analytics 代理程式，並且在現有的 Log Analytics 工作區中註冊虛擬機器。 本文件詳述適用於 Windows 的 Log Analytics 虛擬機器擴充功能所支援的平台、組態和部署選項。
+Azure 監視器記錄提供跨雲端和內部部署資產的監視功能。 Microsoft 已發佈和支援適用於 Windows 的 Log Analytics 代理程式虛擬機器擴充功能。 擴充功能會在 Azure 虛擬機器上安裝 Log Analytics 代理程式，並且在現有的 Log Analytics 工作區中註冊虛擬機器。 本文件詳述適用於 Windows 的 Log Analytics 虛擬機器擴充功能所支援的平台、組態和部署選項。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>作業系統
 
-如需有關支援的 Windows 作業系統的詳細資訊，請參閱[Log Analytics 代理程式總覽](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)一文。
+如需有關支援的 Windows 作業系統的詳細資訊，請參閱 [Azure 監視器代理](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) 程式文章的總覽。
 
 ### <a name="agent-and-vm-extension-version"></a>代理程式和 VM 擴充功能版本
-下表提供每個版本之 Windows Log Analytics VM 擴充功能和 Log Analytics 代理程式套件組合的版本對應。 
+下表提供每個版本的 Windows Log Analytics VM 擴充功能和 Log Analytics 代理程式套件組合版本的對應。 
 
-| Log Analytics Windows 代理程式套件組合版本 | Log Analytics Windows VM 延伸模組版本 | 發行日期 | 版本資訊 |
+| Log Analytics Windows 代理程式套件組合版本 | Log Analytics Windows VM 擴充功能版本 | 發行日期 | 版本資訊 |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 10.20.18038 | 1.0.18038 | 2020 年 4 月   | <ul><li>使用 Azure 監視器私人連結範圍來啟用透過私人連結的連線</li><li>新增內嵌節流，以避免在內嵌到工作區時突然意外異常湧入</li><li>新增額外 Azure Government 雲端和區域的支援</li><li>解決 HealthService.exe 損毀的 bug</li></ul> |
-| 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>加入 SHA-2 程式碼簽署支援</li><li>改善 VM 延伸模組的安裝和管理</li><li>解決適用于伺服器整合的 Azure Arc 中的 bug</li><li>新增用於客戶支援的內建疑難排解工具</li><li>新增其他 Azure Government 區域的支援</li> |
-| 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 次要錯誤修正和穩定改良功能 </li></ul> |
-| 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 次要錯誤修正和穩定改良功能 </li><li> 將 MaxExpressionDepth 增加至10000 </li></ul> |
-| 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 次要錯誤修正和穩定改良功能 </li><li> 已新增在進行 proxy 連線時停用預設認證的功能（WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH 的支援） </li></ul>|
+| 10.20.18038 | 1.0.18038 | 2020 年 4 月   | <ul><li>使用 Azure 監視器 Private Link 範圍，啟用透過 Private Link 的連接</li><li>新增內嵌節流，以避免在工作區中內嵌突然意外的異常湧入</li><li>新增額外 Azure Government 雲端和區域的支援</li><li>解決 HealthService.exe 損毀的 bug</li></ul> |
+| 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>新增 SHA-1 程式碼簽署支援</li><li>改進 VM 延伸模組的安裝和管理</li><li>解決伺服器整合 Azure Arc 中的 bug</li><li>新增客戶支援的內建疑難排解工具</li><li>新增額外 Azure Government 區域的支援</li> |
+| 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 次要錯誤修正和穩定改進 </li></ul> |
+| 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 次要錯誤修正和穩定改進 </li><li> 將 MaxExpressionDepth 增加至10000 </li></ul> |
+| 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 次要錯誤修正和穩定改進 </li><li> 在對 WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH 進行 proxy 連線 (支援時，已新增停用預設認證的功能)  </li></ul>|
 | 10.19.13515 | 1.0.13515 | 2019 年 3 月 | <ul><li>次要穩定修正 </li></ul> |
 | 10.19.10006 | n/a | 12月2018 | <ul><li> 次要穩定修正 </li></ul> | 
-| 8.0.11136 | n/a | 2018 年 9 月 |  <ul><li> 已新增偵測 VM 移動上資源識別碼變更的支援 </li><li> 已新增使用非延伸模組安裝時的報告資源識別碼支援 </li></ul>| 
+| 8.0.11136 | n/a | 2018 年 9 月 |  <ul><li> 已新增在 VM 移動上偵測資源識別碼變更的支援 </li><li> 已新增使用非延伸模組安裝時的報告資源識別碼支援 </li></ul>| 
 | 8.0.11103 | n/a |  2018 年 4 月 | |
-| 8.0.11081 | 1.0.11081 | 2017年11月 | | 
+| 8.0.11081 | 1.0.11081 | 11月2017 | | 
 | 8.0.11072 | 1.0.11072 | 2017年9月 | |
 | 8.0.11049 | 1.0.11049 | 2017年2月 | |
 
@@ -102,10 +102,10 @@ Azure 資訊安全中心會自動布建 Log Analytics 代理程式，並將它�
 
 ## <a name="template-deployment"></a>範本部署
 
-也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 上一節中詳述的 JSON 結構描述可在部署 Azure Resource Manager 範本期間，在 Azure Resource Manager 範本中用來執行 Log Analytics 代理程式擴充功能。 您可以在[Azure 快速入門資源庫](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)中找到包含 Log Analytics 代理程式 VM 擴充功能的範例範本。 
+也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 上一節中詳述的 JSON 結構描述可在部署 Azure Resource Manager 範本期間，在 Azure Resource Manager 範本中用來執行 Log Analytics 代理程式擴充功能。 您可以在 [Azure 快速入門資源庫](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)中找到包含 Log Analytics 代理程式 VM 擴充功能的範例範本。 
 
 >[!NOTE]
->當您想要將代理程式設定為向多個工作區報告時，此範本不支援指定多個工作區識別碼和工作區金鑰。 若要將代理程式設定為向多個工作區報告，請參閱[新增或移除工作區](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace)。  
+>當您想要將代理程式設定為向多個工作區報告時，範本不支援指定多個工作區識別碼和工作區金鑰。 若要將代理程式設定為向多個工作區報告，請參閱 [新增或移除工作區](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace)。  
 
 虛擬機器擴充功能的 JSON 可以巢狀方式置於虛擬機器資源內部，或放在 Resource Manager JSON 範本的根目錄或最上層。 JSON 的放置會影響資源名稱和類型的值。 如需詳細資訊，請參閱[設定子資源的名稱和類型](../../azure-resource-manager/templates/child-resource-name-type.md)。 
 

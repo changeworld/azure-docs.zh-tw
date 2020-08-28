@@ -1,16 +1,17 @@
 ---
 title: Reliable Services 通知
-description: 適用于可靠狀態管理員和可靠字典之 Service Fabric Reliable Services 通知的概念檔
+description: 適用于可靠狀態管理員和可靠字典的 Service Fabric Reliable Services 通知的概念檔
 author: mcoskun
 ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: 16dcfd23ec00a144b17244e811e91a92db9e6995
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4a336daf9bd7400d049233a22a04d64d561b42c9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253042"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021947"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services 通知
 通知可讓用戶端追蹤對於他們感興趣物件所進行的變更。 兩種類型的物件支援通知：「可靠的狀態管理員」** 和「可靠的字典」**。
@@ -158,7 +159,7 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 
 * **NotifyDictionaryChangedAction.Rebuild**：**NotifyDictionaryRebuildEventArgs**
 * **NotifyDictionaryChangedAction.Clear**：**NotifyDictionaryClearEventArgs**
-* **Notifydictionarychangedaction.remove. Add**： **NotifyDictionaryItemAddedEventArgs**
+* **NotifyDictionaryChangedAction： Add**： **NotifyDictionaryItemAddedEventArgs**
 * **NotifyDictionaryChangedAction.Update**：**NotifyDictionaryItemUpdatedEventArgs**
 * **NotifyDictionaryChangedAction.Remove**：**NotifyDictionaryItemRemovedEventArgs**
 

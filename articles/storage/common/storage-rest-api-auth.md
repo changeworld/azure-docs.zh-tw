@@ -10,18 +10,19 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: 29bec00916f4cc3683dae5b6d3065e02a3cbe10f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f569fdac19c4f765828d24f4d6615fdd7bafef8a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724161"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010897"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>使用共用金鑰授權呼叫 REST API 作業
 
 本文說明如何呼叫 Azure 儲存體 REST Api，包括如何形成授權標頭。 它是從不知道 REST 的開發人員觀點來撰寫，不知道如何進行 REST 呼叫。 在您瞭解如何呼叫 REST 作業之後，您可以運用此知識來使用任何其他 Azure 儲存體 REST 作業。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 範例應用程式會列出儲存體帳戶的 blob 容器。 若要試用本文中的程式碼，您需要下列項目︰
 

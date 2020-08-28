@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.custom: has-adal-ref
-ms.openlocfilehash: c1bf77881f672bf3bd2b2dccf91c30855c520052
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: 4c83ab0a2958fc437f7b6df1502e34e62254d35c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042907"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020638"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>使用 Azure AD 驗證搭配 .NET 存取 Azure 媒體服務 API
 
@@ -28,9 +28,9 @@ ms.locfileid: "87042907"
 
 從 windowsazure.mediaservices 4.0.0.4 開始，Azure 媒體服務支援以 Azure Active Directory (Azure AD) 為主的驗證。 本主題說明如何使用 Azure AD 驗證搭配 Microsoft .NET 存取 Azure 媒體服務 API。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+- 一個 Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 - 媒體服務帳戶。 如需詳細資訊，請參閱[使用 Azure 入口網站建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)。
 - 最新的 [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) 封裝。
 - 熟讀[使用 Azure AD 驗證存取 Azure 媒體服務 API 概觀](media-services-use-aad-auth-to-access-ams-api.md)主題。
@@ -97,7 +97,7 @@ var tokenCredentials = new AzureAdTokenCredentials("microsoft.onmicrosoft.com", 
 var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 ```
 
-若要開始針對媒體服務進行程式設計，您必須建立代表伺服器內容的**CloudMediaCoNtext**實例。 **CloudMediaContext** 包含重要集合的參考，包括工作、資產、檔案、存取原則和定位器。
+若要開始針對媒體服務進行程式設計，您必須建立代表伺服器內容的 **CloudMediaCoNtext** 實例。 **CloudMediaContext** 包含重要集合的參考，包括工作、資產、檔案、存取原則和定位器。
 
 您還需要將**媒體 REST 服務的資源 URI** 傳遞至 **CloudMediaContext** 建構函式。 若要取得媒體 REST 服務的資源 URI，請登入 Azure 入口網站，選取您的 Azure 媒體服務帳戶，選取 [API 存取權]****，然後選取 [使用使用者驗證連線到 Azure 媒體服務]****。
 
@@ -143,7 +143,7 @@ namespace AzureADAuthSample
 
 - Azure AD 租用戶端點。 租用戶資訊可從 Azure 入口網站擷取。 將滑鼠游標停留在右上角登入的使用者。
 - 媒體服務資源 URI。
-- Azure AD 應用程式值：**用戶端識別碼**和**用戶端密碼**。
+- Azure AD 的應用程式值： **用戶端識別碼** 和 **用戶端密碼**。
 
 **用戶端識別碼**和**用戶端祕密**參數的值可以在 Azure 入口網站中找到。 如需詳細資訊，請參閱[利用 Azure 入口網站開始使用 Azure AD 驗證](media-services-portal-get-started-with-aad.md)。
 
@@ -167,7 +167,7 @@ var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN
                             AzureEnvironments.AzureCloudEnvironment);
 ```
 
-若要開始針對媒體服務進行程式設計，您必須建立代表伺服器內容的**CloudMediaCoNtext**實例。 您還需要將**媒體 REST 服務的資源 URI** 傳遞至 **CloudMediaContext** 建構函式。 您也可以從 Azure 入口網站取得**媒體 REST 服務的資源 URI** 值。
+若要開始針對媒體服務進行程式設計，您必須建立代表伺服器內容的 **CloudMediaCoNtext** 實例。 您還需要將**媒體 REST 服務的資源 URI** 傳遞至 **CloudMediaContext** 建構函式。 您也可以從 Azure 入口網站取得**媒體 REST 服務的資源 URI** 值。
 
 下列程式碼範例會建立 **CloudMediaContext** 執行個體：
 
@@ -205,6 +205,6 @@ namespace AzureADAuthSample
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 開始使用[上傳檔案至您的帳戶](media-services-dotnet-upload-files.md)。

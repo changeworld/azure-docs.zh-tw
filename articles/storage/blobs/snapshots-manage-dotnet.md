@@ -1,7 +1,7 @@
 ---
 title: 在 .NET 中建立和管理 Blob 快照集
 titleSuffix: Azure Storage
-description: 瞭解如何建立 blob 的唯讀快照集，以便在指定的時間點備份 blob 資料。
+description: 瞭解如何建立 blob 的唯讀快照集，以在指定的時間點備份 blob 資料。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,29 +9,30 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9404cc8037b9cd7ef3e6f74265ce803177eb0465
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d50357a648d63984ae70a32e0fdd7260a86d6a6a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185276"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020808"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中建立和管理 Blob 快照集
 
-快照集是在某個點時間取得的唯讀 Blob 版本。 本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來建立和管理 blob 快照集。
+快照集是在某個點時間取得的唯讀 Blob 版本。 本文說明如何使用 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來建立和管理 blob 快照集。
 
-如需 Azure 儲存體中 blob 快照的詳細資訊，請參閱[在 .net 中建立和管理 blob 快照](snapshots-overview.md)集。
+如需 Azure 儲存體中 blob 快照集的詳細資訊，請參閱 [在 .net 中建立和管理 blob 快照](snapshots-overview.md)集。
 
 ## <a name="create-a-snapshot"></a>建立快照集
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要使用適用于 .NET 的 Azure 儲存體用戶端程式庫版本5.x 建立區塊 blob 的快照集，請使用下列其中一種方法：
+若要使用適用于 .NET 的 Azure 儲存體用戶端程式庫版本建立區塊 blob 的快照集，請使用下列其中一種方法：
 
-- [Icloudblob.createsnapshot](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.createsnapshot)
+- [>icloudblob.createsnapshot](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.createsnapshot)
 - [CreateSnapshotAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.createsnapshotasync)
 
-下列程式碼範例示範如何建立版本為 12. x 的快照集。 包含對[Azure 身分識別](https://www.nuget.org/packages/azure.identity)程式庫的參考，以便使用您的 Azure AD 認證來授權服務的要求。
+下列程式碼範例示範如何建立版本為7.x 的快照集。 包含 [Azure 身分識別](https://www.nuget.org/packages/azure.identity) 程式庫的參考，以使用您的 Azure AD 認證來授權服務的要求。
 
 ```csharp
 private static async Task CreateBlockBlobSnapshot(string accountName, string containerName, string blobName, Stream data)
@@ -79,12 +80,12 @@ private static async Task CreateBlockBlobSnapshot(string accountName, string con
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-若要使用適用于 .NET 的 Azure 儲存體用戶端程式庫版本 11. x 建立區塊 blob 的快照集，請使用下列其中一種方法：
+若要使用適用于 .NET 的 Azure 儲存體用戶端程式庫版本 11. x 來建立區塊 blob 的快照集，請使用下列其中一種方法：
 
-- [Icloudblob.createsnapshot](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.createsnapshot)
+- [>icloudblob.createsnapshot](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.createsnapshot)
 - [CreateSnapshotAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.createsnapshotasync)
 
-下列程式碼範例示範如何建立版本 11. x 的快照集。 此範例會在建立快照集時為其指定其他中繼資料。
+下列程式碼範例示範如何建立版本為 11. x 的快照集。 此範例會在建立快照集時為其指定其他中繼資料。
 
 ```csharp
 private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
@@ -128,14 +129,14 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要使用適用于 .NET 的 Azure 儲存體用戶端程式庫版本5.x 來刪除 blob 及其快照集，請使用下列其中一種方法，並包含[DeleteSnapshotsOption](/dotnet/api/azure.storage.blobs.models.deletesnapshotsoption)列舉：
+若要使用 .NET 版 Azure 儲存體用戶端程式庫的版本8.x 來刪除 blob 及其快照集，請使用下列其中一種方法，並包含 [DeleteSnapshotsOption](/dotnet/api/azure.storage.blobs.models.deletesnapshotsoption) 列舉：
 
 - [刪除](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.delete)
 - [DeleteAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteasync)
 - [DeleteIfExists](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexists)
-- [Cloudblobcontainer.deleteifexistsasync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexistsasync)
+- [>cloudblobcontainer.deleteifexistsasync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexistsasync)
 
-下列程式碼範例顯示如何在 .NET 中刪除 blob 及其快照集，其中 `blobClient` 是[BlobClient](/dotnet/api/azure.storage.blobs.blobclient)類型的物件) ：
+下列程式碼範例顯示如何在 .NET 中刪除 blob 及其快照集，其中 `blobClient` 是 [>blobclient](/dotnet/api/azure.storage.blobs.blobclient)) 類型的物件：
 
 ```csharp
 await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
@@ -143,14 +144,14 @@ await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, nul
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-若要使用適用于 .NET 的 Azure 儲存體用戶端程式庫版本 11. x 刪除 blob 及其快照集，請使用下列其中一種 blob 刪除方法，並包含[DeleteSnapshotsOption](/dotnet/api/microsoft.azure.storage.blob.deletesnapshotsoption)列舉：
+若要使用適用于 .NET 的 Azure 儲存體用戶端程式庫版本 11. x 來刪除 blob 及其快照集，請使用下列其中一個 blob 刪除方法，並包含 [DeleteSnapshotsOption](/dotnet/api/microsoft.azure.storage.blob.deletesnapshotsoption) 列舉：
 
 - [刪除](/dotnet/api/microsoft.azure.storage.blob.cloudblob.delete)
 - [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteasync)
 - [DeleteIfExists](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexists)
-- [Cloudblobcontainer.deleteifexistsasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexistsasync)
+- [>cloudblobcontainer.deleteifexistsasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexistsasync)
 
-下列程式碼範例示範如何在 .NET 中刪除 blob 及其快照集，其中 `blockBlob` 是 [CloudBlockBlob] [dotnet_CloudBlockBlob] 類型的物件：
+下列程式碼範例示範如何在 .NET 中刪除 blob 及其快照集，其中 `blockBlob` 是類型 [>cloudblockblob] [dotnet_CloudBlockBlob] 的物件：
 
 ```csharp
 await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, null, null);

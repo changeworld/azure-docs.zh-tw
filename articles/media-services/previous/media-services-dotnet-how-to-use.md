@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3e4d56698ed14ec260838f3ecbec91d58945e4ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 706e4762fa81ad4f290ded89387fc3ea9ab5bb1c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042926"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020570"
 ---
 # <a name="media-services-development-with-net"></a>使用 .NET 進行媒體服務開發 
 
@@ -43,13 +44,13 @@ ms.locfileid: "87042926"
 
 或者，您可以從 GitHub 取得最新 Media Services .NET SDK 位元 ([github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) 或 [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions))、建置方案，並新增至用戶端專案的參考。 所有必要相依性皆會自動下載並解壓縮。
 
-1. 在 Visual Studio 中，建立新的 C# 主控台應用程式。 輸入 [**名稱**]、[**位置**] 和 [**方案名稱**]，然後按一下 [確定]。
+1. 在 Visual Studio 中，建立新的 C# 主控台應用程式。 輸入 [ **名稱**]、[ **位置**] 和 [ **方案名稱**]，然後按一下 [確定]。
 2. 建置方案。
 3. 使用 **NuGet** 來安裝和新增 **Azure 媒體服務 .NET SDK 延伸模組** (**windowsazure.mediaservices.extensions**)。 安裝這個封裝，也會安裝 **Media Services .NET SDK** ，並新增所有其他必要相依性。
    
     確定您已安裝 NuGet 的最新版本。 如需詳細資訊和安裝指示，請參閱 [NuGet](https://nuget.codeplex.com/)。
 
-    1. 在方案總管中，以滑鼠右鍵按一下專案的名稱，然後選擇 [**管理 NuGet 封裝**]。
+    1. 在方案總管中，以滑鼠右鍵按一下專案的名稱，然後選擇 [ **管理 NuGet 套件**]。
 
     2. [管理 NuGet 封裝] 對話方塊隨即出現。
 
@@ -57,7 +58,7 @@ ms.locfileid: "87042926"
    
     4. 會修改專案，並新增 Media Services .NET SDK 延伸模組、Media Services .NET SDK 和其他相依組件的參考。
 4. 若要提升更乾淨的開發環境，請考慮啟用 [NuGet 封裝還原]。 如需詳細資訊，請參閱 [NuGet 封裝還原](https://docs.nuget.org/consume/package-restore)。
-5. 加入 **System.Configuration** 組件的參考。 此元件包含 System.Configuration。用來存取設定檔的**ConfigurationManager**類別（例如 App.config）。
+5. 加入 **System.Configuration** 組件的參考。 此元件包含 System.Configuration。用來存取設定檔的**ConfigurationManager** 類別 (例如 App.config) 。
    
     1. 若要使用 [管理參考] 對話方塊新增參考，請以滑鼠右鍵按一下 [方案總管] 中的專案名稱。 接著，按一下 [新增]****，然後按一下 [參考]****。
    
@@ -80,7 +81,7 @@ ms.locfileid: "87042926"
     ```
 
 7. 將 **System.Configuration** 參考新增至專案。
-8. 使用下列程式碼，覆寫 Program.cs 檔案開頭的現有**using**語句：
+8. 以下列程式碼覆寫 Program.cs 檔案開頭的現有 **using** 語句：
 
     ```csharp      
     using System;
@@ -133,7 +134,7 @@ class Program
     }
  ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在[您可以連接到 AMS API](media-services-use-aad-auth-to-access-ams-api.md)並開始[開發](media-services-dotnet-get-started.md)。
 

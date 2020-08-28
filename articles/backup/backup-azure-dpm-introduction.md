@@ -3,12 +3,12 @@ title: 準備 DPM 服務器來備份工作負載
 description: 在本文中，您將瞭解如何使用 Azure 備份服務來準備 System Center Data Protection Manager (DPM) 備份至 Azure。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 96eadb4d600b6aa842cdbded2a906d70f27cf55e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4534b75018fb91cedda00b8c1167012858c5e562
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890802"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021029"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>準備使用 System Center DPM 將工作負載備份到 Azure
 
@@ -34,7 +34,7 @@ ms.locfileid: "88890802"
 - 針對內部部署 DPM，Azure 備份提供了長期部署至磁帶的替代方式。
 - 對於在 Azure VM 上執行的 DPM，Azure 備份可讓您卸載 Azure 磁碟中的儲存體。 在備份保存庫中儲存較舊的資料，可讓您將新資料儲存至磁碟，進而相應增加業務。
 
-## <a name="prerequisites-and-limitations"></a>必要條件和限制
+## <a name="prerequisites-and-limitations"></a>先決條件和限制
 
 **設定** | **需求**
 --- | ---

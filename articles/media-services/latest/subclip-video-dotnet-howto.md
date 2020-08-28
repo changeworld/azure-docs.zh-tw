@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務進行編碼時子剪輯影片
+title: 使用 Azure 媒體服務編碼時子剪輯影片
 description: 本主題說明如何使用 .NET SDK 以 Azure 媒體服務編碼時子剪輯影片
 services: media-services
 documentationcenter: ''
@@ -13,26 +13,27 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
-ms.openlocfilehash: 31fa7fe6b16b7ba97b8ce5e6697f1aaaf88aa294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: be39c9390dacf6ae0fb44157f6185c5cf17a8725
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091890"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021216"
 ---
-# <a name="subclip-a-video-when-encoding-with-media-services---net"></a>使用媒體服務進行編碼時子剪輯影片-.NET
+# <a name="subclip-a-video-when-encoding-with-media-services---net"></a>使用媒體服務編碼時子剪輯影片-.NET
 
-使用[作業](/rest/api/media/jobs)進行編碼時，您可以修剪或子剪輯影片。 這項功能適用於使用 [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 預設或 [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) 預設所建立的任何[轉換](/rest/api/media/transforms)。
+使用 [作業](/rest/api/media/jobs)進行編碼時，您可以修剪或子剪輯影片。 這項功能適用於使用 [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 預設或 [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) 預設所建立的任何[轉換](/rest/api/media/transforms)。
 
-下列 c # 範例會建立一個作業，在資產提交編碼工作時修剪該影片。 
+下列 c # 範例會建立一項作業，在資產提交編碼作業時修剪其影片。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要完成此主題中所述的步驟，您必須：
 
 - [建立 Azure 媒體服務帳戶](./create-account-howto.md)
-- 建立轉換和輸入和輸出資產。 您可以在[使用 .net 的上傳、編碼和串流](stream-files-tutorial-with-api.md)影片教學課程中，瞭解如何建立轉換和輸入和輸出資產。
-- 請參閱[編碼概念](encoding-concept.md)主題。
+- 建立轉換和輸入與輸出資產。 您可以瞭解如何 [使用 .net 教學課程，在上傳、編碼和串流](stream-files-tutorial-with-api.md) 影片中建立轉換和輸入與輸出資產。
+- 請參閱 [編碼概念](encoding-concept.md) 主題。
 
 ## <a name="example"></a>範例
 

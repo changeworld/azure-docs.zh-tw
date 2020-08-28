@@ -1,17 +1,17 @@
 ---
-title: 教學課程-升級 Azure Service Fabric 網狀架構應用程式
+title: 教學課程-升級 Azure Service Fabric 網狀應用程式
 description: 本教學課程是系列中的第四部分，說明如何直接從 Visual Studio 升級 Azure Service Fabric Mesh 應用程式。
 author: dkkapur
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devcenter, devx-track-csharp
+ms.openlocfilehash: 876359b45daa280a1f5701f2490ce505327f309b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75351722"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010999"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>教學課程：了解如何使用 Visual Studio 升級 Service Fabric 應用程式
 
@@ -24,7 +24,7 @@ ms.locfileid: "75351722"
 在本教學課程系列中，您將了解如何：
 > [!div class="checklist"]
 > * [在 Visual Studio 中建立 Service Fabric Mesh 應用程式](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [對在本機開發叢集中執行的 Service Fabric Mesh 應用程式進行偵錯](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [偵錯在本機開發叢集中執行的 Service Fabric Mesh 應用程式](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * [部署 Service Fabric Mesh 應用程式](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
 > * 升級 Service Fabric Mesh 應用程式
 > * [清除 Service Fabric Mesh 資源](service-fabric-mesh-tutorial-cleanup-resources.md)
@@ -55,13 +55,13 @@ ms.locfileid: "75351722"
 
 2. 在 [WebFrontEnd]**** > [服務資源]**** 底下，開啟 **WebFrontEnd** 專案的 **service.yaml** 檔案。
 
-    請注意，在 `resources:` 區段中，`cpu:` 會設定為 `"[parameters('WebFrontEnd_cpu')]"`。 如果專案是針對雲端所建立，則的值 `'WebFrontEnd_cpu` 將取自**環境**  >  **雲端**yaml 檔案  >  **parameters.yaml** ，而且會是 `1.5` 。 如果組建的專案是要在本機執行，則會從**環境**的本機 yaml 檔案取得值  >  **Local**  >  **parameters.yaml** ，而且會是 ' 0.5 '。
+    請注意，在 `resources:` 區段中，`cpu:` 會設定為 `"[parameters('WebFrontEnd_cpu')]"`。 如果正在為雲端建立專案，的值會 `'WebFrontEnd_cpu` 取自**環境**  >  **雲端**  >  **參數 yaml**檔案，而且將會是 `1.5` 。 如果正在建立專案以在本機執行，則會從**環境**的本機 yaml 檔案取得值  >  **Local**  >  **parameters.yaml** ，而且將會是 ' 0.5 '。
 
 > [!Tip]
 > 根據預設，系統會使用 profile.yaml 檔案的對等參數檔案，來提供該 profile.yaml 檔案的值。
 > 例如，[環境] > [雲端] > parameters.yaml 會提供 [環境] > [雲端] > profile.yaml 的參數值。
 >
-> 您可以將下列程式碼新增至 yaml 檔案，以覆寫此項： `parametersFilePath=”relative or full path to the parameters file”` 例如， `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` 或`parametersFilePath=”..\CommonParameters.yaml”`
+> 您可以藉由將下列內容新增至 yaml 檔案來覆寫此內容： `parametersFilePath=”relative or full path to the parameters file”` 例如， `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` 或 `parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>修改模型
 
@@ -125,7 +125,7 @@ public static ToDoItem Load(string description, int index, bool completed)
 
 無論您是要升級程式碼，還是要升級組態 (在此案例中，我們兩者皆進行)，都請升級 Azure 上的 Service Fabric Mesh 應用程式，方法是在 Visual Studio 中的 [todolistapp]**** 按一下滑鼠右鍵，然後選取 [發佈...]****
 
-接著，您將會看見 [發佈 Service Fabric 應用程式]**** 對話方塊。
+接著，您將會看見 [發佈 Service Fabric 應用程式] 對話方塊。
 
 使用 [目標寫照]**** 下拉式清單來選取要用於此部署的 profile.yaml 檔案。 我們要升級雲端中的應用程式，因此我們在下拉式清單中選取 **cloud.yaml**，這會使用該檔案中定義的 `WebFrontEnd_cpu` 值 (即 1.0)。
 
