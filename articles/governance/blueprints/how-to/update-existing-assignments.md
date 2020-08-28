@@ -1,14 +1,14 @@
 ---
 title: 從入口網站更新現有的指派
-description: 瞭解在 Azure 藍圖中，從入口網站更新現有藍圖指派的機制。
-ms.date: 04/15/2020
+description: 瞭解在 Azure 藍圖中從入口網站更新現有藍圖指派的機制。
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 03c954517662c1f54fcca9fbb96ebdf48afdedef
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 888ebbf0149f8f75f867bb17115988cb20d25df2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969459"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051418"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新現有的藍圖指派
 
@@ -22,20 +22,19 @@ ms.locfileid: "85969459"
 
 1. 在左側窗格中選取 [所有服務]。 搜尋並選取 [藍圖]。
 
-1. 選取頁面左側的 [指派的藍圖]  。
+1. 選取頁面左側的 [指派的藍圖]。
 
-1. 在藍圖清單中，以滑鼠左鍵按一下藍圖指派。 然後按一下 [**更新指派**] 按鈕，或以滑鼠右鍵按一下藍圖指派，然後選取 [**更新指派**]。
+1. 在藍圖清單中，選取藍圖指派。 然後使用 [ **更新指派** ] 按鈕，或以滑鼠右鍵按一下藍圖指派，然後選取 [ **更新指派**]。
 
    :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="更新現有的藍圖指派" border="false":::
 
-1. [**指派藍圖**] 頁面會預先填入原始指派中的所有值。
-   您可以變更**藍圖定義版本**、**鎖定指派**狀態，以及任何存在於藍圖定義的動態參數。 完成變更後，按一下 [指派]****。
+1. [ **指派藍圖** ] 頁面會載入預先填入原始指派的所有值。 您可以變更**藍圖定義版本**、**鎖定指派**狀態，以及任何存在於藍圖定義的動態參數。 選取 [完成變更時 **指派** ]。
 
 1. 在更新後的指派詳細資料頁面上，查看新的狀態。 在此範例中，我們對指派新增了**鎖定**。
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="已更新現有的藍圖指派-鎖定模式" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="已更新現有的藍圖指派-鎖定模式已變更" border="false":::
 
-1. 使用下拉式按鈕探索其他**指派作業**的詳細資料。 **受管理資源**的資料表會依選取的指派作業進行更新。
+1. 使用下拉式清單，探索其他 **指派作業** 的詳細資料。 受選指派作業所更新的 **受控資源** 表格。
 
    :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="藍圖指派的指派作業" border="false":::
 
@@ -50,12 +49,12 @@ ms.locfileid: "85969459"
   - 如果原則指派定義有所變更，則會建立新的原則指派。
     先前部署的原則指派會留在原處。
   - 如果從藍圖中移除原則指派成品，則部署的原則指派會留在原處。
-- Azure Resource Manager 範本（ARM 範本）
+- Azure Resource Manager 範本 (ARM 範本)
   - 範本會透過 Resource Manager 處理為 **PUT**。 因為每個資源類型對此動作的處理方式不同，請檢閱每個所含資源的文件，以判斷藍圖在執行此動作時會有什麼影響。
 
 ## <a name="possible-errors-on-updating-assignments"></a>更新指派時的可能錯誤
 
-在更新指派時，所進行的變更可能會在執行時中斷。 例如，在資源群組部署好之後，變更其位置。 [Resource Manager](../../../azure-resource-manager/management/overview.md)可以進行任何變更，但會透過 Resource Manager 造成錯誤的任何變更，也會導致指派失敗。
+在更新指派時，所進行的變更可能會在執行時中斷。 例如，在資源群組部署好之後，變更其位置。 您可以進行 [Resource Manager](../../../azure-resource-manager/management/overview.md) 所支援的任何變更，但任何會透過 Resource Manager 導致錯誤的變更，也會導致指派失敗。
 
 指派的更新次數沒有限制。 如果發生錯誤，請判斷錯誤並對指派進行其他更新。  範例錯誤案例：
 

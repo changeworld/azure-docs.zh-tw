@@ -8,16 +8,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 08/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 9ecb703f8c8f75939d8d796bdd5f687795145f74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ce50246245d0e8aa6a637f55e28eb7e3b0d8e53
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85101042"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047585"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Google Cloud Storage 複製資料
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何從 Google Cloud Storage (GCS) 複製資料。 若要了解 Azure Data Factory，請閱讀[簡介文章](introduction.md)。
@@ -31,15 +32,15 @@ ms.locfileid: "85101042"
 - [GetMetadata 活動](control-flow-get-metadata-activity.md)
 - [刪除活動](delete-activity.md)
 
-具體而言，此 Google 雲端儲存體連接器支援依自己的方式複製檔案，或使用[支援的檔案格式和壓縮編解碼器](supported-file-formats-and-compression-codecs.md)來剖析檔案。 它會利用 GC 的 S3 相容互通性。
+具體來說，這個 Google Cloud Storage connector 支援依原樣複製檔案，或使用 [支援的檔案格式和壓縮編解碼器](supported-file-formats-and-compression-codecs.md)來剖析檔案。 它會利用 GC 的 S3 相容互通性。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-您的 Google 雲端儲存體帳戶需要下列設定：
+您的 Google Cloud 儲存體帳戶需要下列設定：
 
 1. 啟用 Google Cloud Storage 帳戶的互通性
-2. 設定預設專案，其中包含您想要從 [目標 GC] bucket 複製的資料。
-3. 建立服務帳戶，並使用 GCP 上的雲端 IAM 定義正確的許可權層級。 
+2. 設定預設專案，其中包含您想要從目標 GC bucket 複製的資料。
+3. 建立服務帳戶，並在 GCP 上使用雲端 IAM 來定義適當的許可權層級。 
 4. 產生此服務帳戶的存取金鑰。
 
 ![取得 Google Cloud Storage 的存取金鑰](media/connector-google-cloud-storage/google-storage-cloud-settings.png)
@@ -60,13 +61,13 @@ ms.locfileid: "85101042"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | **Type**屬性必須設定為**GoogleCloudStorage**。 | 是 |
+| type | **Type**屬性必須設為**GoogleCloudStorage**。 | 是 |
 | accessKeyId | 密碼存取金鑰的識別碼。 若要尋找存取金鑰和秘密，請參閱[必要條件](#prerequisites)。 |是 |
-| secretAccessKey | 密碼存取金鑰本身。 將此欄位標記為**SecureString** ，將它安全地儲存在 Data Factory 中，或[參考儲存在 Azure Key Vault 中的秘密](store-credentials-in-key-vault.md)。 |是 |
+| secretAccessKey | 密碼存取金鑰本身。 將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中，或 [參考儲存在 Azure Key Vault 中的密碼](store-credentials-in-key-vault.md)。 |是 |
 | serviceUrl | 將自訂 S3 端點指定為 `https://storage.googleapis.com` 。 | 是 |
-| connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 您可以使用 Azure integration runtime 或自我裝載整合執行時間（如果您的資料存放區位於私人網路中）。 如果未指定此屬性，服務就會使用預設的 Azure integration runtime。 |否 |
+| connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路) ，您可以使用 Azure integration runtime 或自我裝載整合執行時間 (。 如果未指定此屬性，服務會使用預設的 Azure integration runtime。 |否 |
 
-以下是範例：
+以下為範例：
 
 ```json
 {
@@ -93,14 +94,14 @@ ms.locfileid: "85101042"
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-下列屬性在以 `location` 格式為基礎的資料集的 [設定] 下支援 Google 雲端儲存體：
+下列屬性在以 `location` 格式為基礎的資料集中的設定下支援 Google Cloud Storage：
 
 | 屬性   | 描述                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | 資料集內的**類型**屬性 `location` 必須設定為**GoogleCloudStorageLocation**。 | 是      |
+| type       | 資料集內的 **type** 屬性 `location` 必須設定為 **GoogleCloudStorageLocation**。 | 是      |
 | bucketName | S3 貯體名稱。                                          | 是      |
-| folderPath | 所指定貯體下的資料夾路徑。 如果您想要使用萬用字元來篩選資料夾，請略過此設定，並在 [活動來源設定] 中指定。 | 否       |
-| fileName   | 給定值區和資料夾路徑下的檔案名。 如果您想要使用萬用字元來篩選檔案，請略過此設定，並在 [活動來源設定] 中指定。 | 否       |
+| folderPath | 所指定貯體下的資料夾路徑。 如果您想要使用萬用字元來篩選資料夾，請略過此設定，並在 [活動來源設定] 中指定該設定。 | 否       |
+| fileName   | 指定之值區和資料夾路徑底下的檔案名。 如果您想要使用萬用字元來篩選檔案，請略過此設定，並在 [活動來源設定] 中指定該設定。 | 否       |
 
 **範例︰**
 
@@ -133,27 +134,29 @@ ms.locfileid: "85101042"
 
 如需可用來定義活動的區段和屬性完整清單，請參閱[管線](concepts-pipelines-activities.md)一文。 本節提供 Google Cloud Storage 來源所支援的屬性清單。
 
-### <a name="google-cloud-storage-as-a-source-type"></a>作為來源類型的 Google 雲端儲存體
+### <a name="google-cloud-storage-as-a-source-type"></a>Google Cloud Storage 作為來源類型
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-下列屬性在以 `storeSettings` 格式為基礎的複製來源的 [設定] 下支援 Google 雲端儲存體：
+以下是在以 `storeSettings` 格式為基礎的複製來源中設定下，Google Cloud Storage 支援的屬性：
 
 | 屬性                 | 描述                                                  | 必要                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| type                     | 底下的**type**屬性 `storeSettings` 必須設定為**GoogleCloudStorageReadSettings**。 | 是                                                         |
+| type                     | 下的 **類型** 屬性 `storeSettings` 必須設為 **GoogleCloudStorageReadSettings**。 | 是                                                         |
 | 找到要複製的檔案： |  |  |
-| 選項 1：靜態路徑<br> | 從在資料集內指定的貯體或資料夾/檔案路徑複製。 如果您想要複製 bucket 或資料夾中的所有檔案，請另外將指定 `wildcardFileName` 為 `*` 。 |  |
-| 選項 2：GCS 前置詞<br>- 前置詞 | 在資料集內設定的指定值區下，GC 金鑰名稱的前置詞，用來篩選來源 GC 檔案。 已選取其名稱開頭為的 GC 金鑰 `bucket_in_dataset/this_prefix` 。 它會利用 GC 的服務端篩選，提供比萬用字元篩選更好的效能。 | 否 |
-| 選項 3：萬用字元<br>- wildcardFolderPath | 在資料集內設定的指定值區底下，具有萬用字元的資料夾路徑，用來篩選來源資料夾。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱包含萬用字元或內的此 escape 字元，請使用來進行 escape。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | No                                            |
-| 選項 3：萬用字元<br>- wildcardFileName | 在指定的值區和資料夾路徑（或萬用字元資料夾路徑）底下，含有萬用字元的檔案名，用來篩選來源檔案。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱包含萬用字元或內的此 escape 字元，請使用來進行 escape。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
-| 選項 3：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向包含您要複製之檔案清單的文字檔，每行一個檔案，這是在資料集中設定之路徑的相對路徑。<br/>當您使用此選項時，請勿指定資料集中的檔案名。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |No |
+| 選項 1：靜態路徑<br> | 從在資料集內指定的貯體或資料夾/檔案路徑複製。 如果您想要複製值區或資料夾中的所有檔案，請另外指定 `wildcardFileName` as `*` 。 |  |
+| 選項 2：GCS 前置詞<br>- 前置詞 | 在資料集中設定的指定值區下，GC 金鑰名稱的前置詞，以篩選來源 GC 檔案。 系統會選取其名稱開頭為的 GC 金鑰 `bucket_in_dataset/this_prefix` 。 它會利用 GC 的服務端篩選器，提供比萬用字元篩選器更好的效能。 | 否 |
+| 選項 3：萬用字元<br>- wildcardFolderPath | 在資料集內設定的指定值區下，具有萬用字元的資料夾路徑，可篩選來源資料夾。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱裡面有萬用字元或這個 escape 字元，請使用來進行 escape。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
+| 選項 3：萬用字元<br>- wildcardFileName | 在指定的值區和資料夾路徑下具有萬用字元的檔案名 (或萬用字元資料夾路徑，) 來篩選原始程式檔。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱裡面有萬用字元或這個 escape 字元，請使用來進行 escape。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
+| 選項 3：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向文字檔，其中包含您要複製的檔案清單，每行一個檔案，也就是在資料集中設定之路徑的相對路徑。<br/>當您使用此選項時，請勿在資料集中指定檔案名。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |否 |
 | 其他設定： |  | |
-| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當**遞迴**設定為**true**且接收是以檔案為基礎的存放區時，不會在接收時複製或建立空的資料夾或子資料夾。 <br>允許的值為 **true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |No |
-| deleteFilesAfterCompletion | 指出在成功移至目的地存放區之後，是否會從來源存放區刪除二進位檔案。 檔案刪除是每個檔案，因此當複製活動失敗時，您會看到某些檔案已複製到目的地，並從來源刪除，而其他檔案仍在來源存放區上剩餘。 <br/>此屬性只在二進位複製案例中有效，其中資料來源存放區為 Blob、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、File、Azure 檔案、SFTP 或 FTP。 預設值： false。 |No |
-| modifiedDatetimeStart    | 檔案會根據屬性進行篩選：上次修改。 <br>若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br> 屬性可以是**Null**，這表示不會將檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值 `modifiedDatetimeEnd` ，但為**Null**時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值 `modifiedDatetimeStart` ，但為**Null**時，將會選取上次修改屬性小於日期時間值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
+| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 **遞迴** 設定為 **true** 且接收是檔案型存放區時，不會在接收時複製或建立空的資料夾或子資料夾。 <br>允許的值為 **true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
+| deleteFilesAfterCompletion | 指出是否要在成功移至目的地存放區之後，從來源存放區刪除二進位檔案。 檔案刪除是針對每個檔案，因此當複製活動失敗時，您會看到部分檔案已複製到目的地並從來源刪除，其他檔案仍在來源存放區上。 <br/>這個屬性只適用于二進位複製案例，其中資料來源存放區為 Blob、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、檔案、Azure 檔案、SFTP 或 FTP。 預設值： false。 |否 |
+| modifiedDatetimeStart    | 檔案會根據屬性進行篩選：上次修改。 <br>若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br> 屬性可以是 **Null**，這表示不會將任何檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 有 datetime 值但 `modifiedDatetimeEnd` 為 **Null**時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 有 datetime 值但 `modifiedDatetimeStart` 為 **Null**時，將會選取上次修改屬性小於 datetime 值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                                          |
-| maxConcurrentConnections | 對儲存體的並行連接數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | No                                                          |
+| enablePartitionDiscovery | 針對已分割的檔案，指定是否從檔案路徑剖析分割區，並將它們新增為其他來源資料行。<br/>允許的值為 **false** (預設) 和 **true**。 | 否                                            |
+| partitionRootPath | 當資料分割探索已啟用時，請指定絕對根路徑，以便將分割的資料夾讀取為數據行。<br/><br/>如果未指定，則預設為<br/>-當您在資料集或來源上的檔案清單中使用檔案路徑時，資料分割根路徑是在資料集中設定的路徑。<br/>-當您使用萬用字元資料夾篩選時，資料分割根路徑是第一個萬用字元之前的子路徑。<br/><br/>例如，假設您將資料集中的路徑設定為 "root/folder/year = 2020/month = 08/day = 27"：<br/>-如果您將資料分割根路徑指定為 "root/folder/year = 2020"，則除了檔案內的資料行之外，複製活動會分別產生兩個數據行， `month` 以及 `day` 值為 "08" 和 "27" 的資料行。<br/>-如果未指定資料分割根路徑，將不會產生額外的資料行。 | 否                                            |
+| maxConcurrentConnections | 儲存體的並行連接數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | 否                                                          |
 
 **範例︰**
 
@@ -215,7 +218,7 @@ ms.locfileid: "85101042"
 
 | 範例來源結構                                      | FileListToCopy.txt 中的內容                             | Data Factory 設定                                            |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
-| 貯體<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;中繼資料<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **在資料集中：**<br>- 貯體：`bucket`<br>- 資料夾路徑：`FolderA`<br><br>**在複製活動來源內：**<br>- 檔案清單路徑：`bucket/Metadata/FileListToCopy.txt` <br><br>檔案清單路徑指向相同資料存放區中的文字檔，其中包含您想要複製的檔案清單（每行一個檔案），其中包含資料集中所設定路徑的相對路徑。 |
+| 貯體<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;中繼資料<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **在資料集中：**<br>- 貯體：`bucket`<br>- 資料夾路徑：`FolderA`<br><br>**在複製活動來源內：**<br>- 檔案清單路徑：`bucket/Metadata/FileListToCopy.txt` <br><br>檔案清單路徑指向相同資料存放區中的文字檔，其中包含您要複製的檔案清單、每行一個檔案，以及在資料集中設定之路徑的相對路徑。 |
 
 ## <a name="lookup-activity-properties"></a>查閱活動屬性
 
@@ -223,15 +226,15 @@ ms.locfileid: "85101042"
 
 ## <a name="getmetadata-activity-properties"></a>GetMetadata 活動屬性
 
-若要瞭解屬性的詳細資料，請檢查[GetMetadata 活動](control-flow-get-metadata-activity.md)。 
+若要瞭解有關屬性的詳細資料，請檢查 [GetMetadata 活動](control-flow-get-metadata-activity.md)。 
 
 ## <a name="delete-activity-properties"></a>刪除活動屬性
 
-若要瞭解有關屬性的詳細資料，請核取 [[刪除活動](delete-activity.md)]。
+若要瞭解有關屬性的詳細資料，請檢查 [刪除活動](delete-activity.md)。
 
 ## <a name="legacy-models"></a>舊版模型
 
-如果您使用 Amazon S3 連接器從 Google Cloud Storage 複製資料，則仍會支援它，以提供回溯相容性。 我們建議您使用先前所述的新模型。 Data Factory 撰寫 UI 已切換為產生新的模型。
+如果您使用 Amazon S3 連接器從 Google Cloud Storage 複製資料，它仍支援回溯相容性。 建議您使用稍早所述的新模型。 Data Factory 撰寫 UI 已切換為產生新的模型。
 
 ## <a name="next-steps"></a>後續步驟
-如需 Azure Data Factory 中的複製活動支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。
+如需 Azure Data Factory 中複製活動支援作為來源和接收的資料存放區清單，請參閱 [支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

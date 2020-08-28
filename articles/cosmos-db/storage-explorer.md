@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: b892e4c5078b50bb865a715ddf12aebc1eb05f57
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d1948ae186662c7f60f4d49c19a4d48b424a38f7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799106"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047474"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>使用 Azure 儲存體總管處理資料
 
@@ -95,7 +95,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
 * 以滑鼠右鍵按一下 Azure Cosmos DB 帳戶或資料庫，您可以選擇 [在入口網站中開啟]**** 並使用瀏覽器在 Azure 入口網站上管理資源。
 
-     :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="在入口網站中開啟":::
+  :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="在入口網站中開啟":::
 
 * 您也可以將 Azure Cosmos DB 帳戶、資料庫及集合新增至 [快速存取]****。
 * [Search from Here] \(從這裡搜尋)**** 可在選取的路徑下使用關鍵字搜尋。
@@ -106,25 +106,25 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
 #### <a name="create-a-database"></a>建立資料庫
 
--   以滑鼠右鍵按一下 Azure Cosmos DB 帳戶，選擇 [建立資料庫]****，輸入資料庫名稱，然後按 ** ENTER 鍵**以完成。
+- 以滑鼠右鍵按一下 Azure Cosmos DB 帳戶，選擇 [建立資料庫]****，輸入資料庫名稱，然後按 ** ENTER 鍵**以完成。
 
-    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="在您的 Azure Cosmos 帳戶中建立資料庫":::
+  :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="在您的 Azure Cosmos 帳戶中建立資料庫":::
 
 #### <a name="delete-a-database"></a>刪除資料庫
 
 - 以滑鼠右鍵按一下資料庫，選取 [ **刪除資料庫**]，然後在快顯視窗中選取 **[是** ]。 資料庫節點隨即會刪除，而 Azure Cosmos DB 帳戶會自動重新整理。
 
-    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="刪除第一個資料庫":::
+  :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="刪除第一個資料庫":::
 
-    :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="刪除第二個資料庫":::
+  :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="刪除第二個資料庫":::
 
 #### <a name="create-a-collection"></a>建立集合
 
 1. 以滑鼠右鍵按一下您的資料庫，選擇 [ **建立集合**]，然後提供下列資訊，例如 **集合識別碼**、 **儲存容量**等等。按一下 **[確定** ] 以完成。
 
-    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="在資料庫中建立第一個集合":::
+   :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="在資料庫中建立第一個集合":::
 
-    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="在資料庫中建立第二個集合":::
+   :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="在資料庫中建立第二個集合":::
 
 2. 選取 [ **無限制** ] 以指定資料分割索引鍵，然後選取 **[確定** ] 以完成。
 
@@ -146,7 +146,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
 - 若要建立新檔，請在左側視窗中開啟 [ **檔** ]，選取 [ **新增檔**]，在右窗格中編輯內容，然後選取 [ **儲存**]。 您也可以更新現有的檔，然後選取 [ **儲存**]。 按一下 [捨棄]**** 以捨棄變更。
 
-    :::image type="content" source="./media/storage-explorer/document.png" alt-text="建立新文件":::
+  :::image type="content" source="./media/storage-explorer/document.png" alt-text="建立新文件":::
 
 #### <a name="delete-a-document"></a>刪除文件
 
@@ -156,7 +156,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
 - 輸入 [SQL 查詢](how-to-sql-query.md) 來編輯檔篩選器， **然後選取**[套用]。
 
-    :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="查詢特定檔":::
+  :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="查詢特定檔":::
 
 ### <a name="graph-management"></a>圖表管理
 
@@ -165,7 +165,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 1. 若要建立新的頂點，請從左側視窗開啟 [ **圖形** ]、選取 [ **新增頂點**]、編輯內容，然後選取 **[確定]**。
 2. 若要修改現有頂點，請在右窗格中選取畫筆圖示。
 
-    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="修改圖形的頂點":::
+   :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="修改圖形的頂點":::
 
 #### <a name="delete-a-graph"></a>建立圖表
 
@@ -175,7 +175,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
 - 輸入 [gremlin 查詢](gremlin-support.md) ，然後選取 [套用 **篩選**]，以編輯圖形篩選。
 
-    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="執行圖形查詢":::
+   :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="執行圖形查詢":::
 
 ### <a name="table-management"></a>資料表管理
 
@@ -184,33 +184,34 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 1. 若要建立新的資料表，請從左側視窗開啟 **實體** ， **選取 [加入]**，在 [ **新增實體** ] 對話方塊中編輯內容，按一下 [新增 **屬性**]，然後選取 [ **插入**]。
 2. 若要修改資料表，請選取 [ **編輯**]、[修改內容]，然後選取 [ **更新**]。
 
-    :::image type="content" source="./media/storage-explorer/table.png" alt-text="建立和修改資料表":::
+   :::image type="content" source="./media/storage-explorer/table.png" alt-text="建立和修改資料表":::
 
 #### <a name="import-and-export-table"></a>匯入和匯出資料表
 
 1. 若要匯入，請選取 [匯 **入** ] 按鈕，然後選擇現有的資料表。
 2. 若要匯出，請選取 [ **匯出** ] 按鈕，然後選擇目的地。
 
-    :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="匯入或匯出資料表":::
+   :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="匯入或匯出資料表":::
 
 #### <a name="delete-entities"></a>刪除實體
 
 - 選取實體，然後選取 [ **刪除**] 按鈕。
 
-    :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="刪除資料表":::
+  :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="刪除資料表":::
 
 #### <a name="query-table"></a>查詢資料表
 
 - 按一下 [ **查詢** 按鈕]、[輸入查詢準則]，然後選取 [ **執行查詢** ] 按鈕。 按一下 [關閉查詢]**** 按鈕即可關閉 [查詢] 窗格。
 
-    :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="查詢資料表中的資料":::
+  :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="查詢資料表中的資料":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>管理預存程序、觸發程序和 UDF
 
 * 若要建立預存程式，請在左樹狀結構中，以滑鼠右鍵按一下 [ **預存**程式]，選擇 [ **建立預存**程式]，在左側輸入名稱，在右視窗中輸入預存程式腳本，然後選取 [ **建立**]。
 * 您也可以按兩下來編輯現有的預存程式、進行更新，然後按一下 [ **更新** ] 以儲存，或選取 [ **捨棄** ] 取消變更。
 
-    :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="建立和管理預存程式":::
+  :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="建立和管理預存程式":::
+
 * **觸發程序**及 **UDF** 的作業與**預存程序**雷同。
 
 ## <a name="troubleshooting"></a>疑難排解

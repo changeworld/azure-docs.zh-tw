@@ -1,43 +1,43 @@
 ---
 title: 設計原則即程式碼工作流程
 description: 了解如何設計將您的 Azure 原則定義部署為程式碼並自動驗證資源的工作流程。
-ms.date: 07/23/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131492"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047321"
 ---
 # <a name="design-policy-as-code-workflows"></a>設計原則即程式碼工作流程
 
 透過雲端治理進行旅程時，您會想要從使用 Azure 入口網站或各種 SDK 手動管理每個原則定義，轉換為在企業規模更容易管理且可重複使用的程序。 要在雲端大規模管理系統，主要有兩種方法：
 
-- 基礎結構即程式碼：將定義環境的內容（從 Azure Resource Manager 範本（ARM 範本）到 Azure 原則 Azure 藍圖定義的所有專案），做為原始程式碼。
+- 基礎結構即程式碼：將定義您的環境內容的做法，從 Azure Resource Manager 範本 (ARM 範本的所有專案，) Azure 原則定義為 Azure 藍圖原始程式碼。
 - DevOps：為我們的使用者持續傳遞價值的人員、程序和產品組合。
 
 原則即程式碼是這些想法的組合。 基本上，請將原則定義保存在原始檔控制中，並在每次進行變更後測試並驗證該變更。 不過，基礎結構即程式碼或 DevOps 的相關原則並不在此範圍內。
 
-驗證步驟也應該是其他持續整合或持續部署工作流程的元件。 其範例包括部署應用程式環境或虛擬基礎結構。 藉由將 Azure 原則驗證做為組建和部署程式的初期元件，應用程式和作業小組會探索其變更是否不符合規範、是否在過晚之後，以及是否嘗試在生產環境中部署。
+驗證步驟也應該是其他持續整合或持續部署工作流程的元件。 其範例包括部署應用程式環境或虛擬基礎結構。 藉由讓 Azure 原則驗證成為組建和部署程式的早期元件，應用程式和作業小組會探索其變更是否不符合規範、是否晚于太晚，並嘗試在生產環境中部署。
 
-## <a name="definitions-and-foundational-information"></a>定義和基礎資訊
+## <a name="definitions-and-foundational-information"></a>定義和基本資訊
 
-在進入原則的詳細資料作為程式碼工作流程之前，請先參閱下列定義和範例：
+在取得原則的詳細資料作為程式碼工作流程之前，請先參閱下列定義和範例：
 
 - [原則定義](./definition-structure.md)
 - [計畫定義](./initiative-definition-structure.md)
 
-檔案名會與原則或計畫定義的部分一致：
-- `policy(set).json`-整個定義
-- `policy(set).parameters.json`- `properties.parameters` 定義的部分
-- `policy.rules.json`- `properties.policyRule` 定義的部分
-- `policyset.definitions.json`- `properties.policyDefinitions` 定義的部分
+檔案名會與原則或方案定義的部分相符：
+- `policy(set).json` -整個定義
+- `policy(set).parameters.json` - `properties.parameters` 定義的部分
+- `policy.rules.json` - `properties.policyRule` 定義的部分
+- `policyset.definitions.json` - `properties.policyDefinitions` 定義的部分
 
-[Azure 原則 GitHub](https://github.com/Azure/azure-policy/)存放庫中提供這些檔案格式的範例：
+[Azure 原則 GitHub](https://github.com/Azure/azure-policy/)存放庫提供這些檔案格式的範例：
 
-- 原則定義：[將標記新增至資源](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
-- 計畫定義：[計費標記](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
+- 原則定義： [將標記新增至資源](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
+- 方案定義： [計費標記](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
 
 ## <a name="workflow-overview"></a>工作流程概觀
 
@@ -110,7 +110,8 @@ ms.locfileid: "87131492"
 > [!NOTE]
 > 雖然強制模式很有幫助，但仍應在各種情況下徹底測試原則定義。 原則定義應使用 `PUT` 和 `PATCH` REST API 呼叫、符合規範和不符合規範的資源以及邊緣案例 (例如資源中遺漏的屬性) 進行測試。
 
-部署指派之後，請使用原則 SDK [取得新指派的合規性資料](../how-to/get-compliance-data.md)。 用來測試原則和指派的環境應同時具備符合規範和不符合規範的資源。 如同程式碼的適當單元測試，您應測試資源是否符合預期，且沒有誤判為真或誤否定。 如果您只針對預期的部分進行測試和驗證，原則可能會有非預期和未辨識的影響。 如需詳細資訊，請參閱[評估新 Azure 原則定義的影響](./evaluate-impact.md)。
+部署指派之後，請使用原則 SDK 或 [Azure 原則合規性掃描 GitHub 動作](https://github.com/marketplace/actions/azure-policy-compliance-scan) 來取得新指派的 [合規性資料](../how-to/get-compliance-data.md) 。 用來測試原則和指派的環境應同時具備符合規範和不符合規範的資源。
+如同程式碼的適當單元測試，您應測試資源是否符合預期，且沒有誤判為真或誤否定。 如果您只針對預期的部分進行測試和驗證，原則可能會有非預期和未辨識的影響。 如需詳細資訊，請參閱[評估新 Azure 原則定義的影響](./evaluate-impact.md)。
 
 ### <a name="enable-remediation-tasks"></a>啟用補救工作
 
@@ -133,7 +134,7 @@ ms.locfileid: "87131492"
 
 ## <a name="process-integrated-evaluations"></a>程序整合評估
 
-原則即程式碼的一般工作流程可在環境中大規模開發及部署原則和方案。 不過，針對在 Azure 中部署或建立資源的任何工作流程，原則評估應該是部署程式的一部分，例如部署應用程式或執行 ARM 範本來建立基礎結構。
+原則即程式碼的一般工作流程可在環境中大規模開發及部署原則和方案。 不過，在 Azure 中部署或建立資源的任何工作流程（例如部署應用程式或執行 ARM 範本以建立基礎結構）的部署程式中，原則評估應該是部署程式的一部分。
 
 在這些情況下，將應用程式或基礎結構部署至測試訂用帳戶或資源群組之後，即應對該範圍執行原則評估，以檢查所有現有原則和方案的有效性。 雖然其 **enforcementMode** 在這類環境中可能設定為 [停用]，但及早了解應用程式或基礎結構部署是否違反原則定義，仍很有幫助。 因此，此原則評估應納入為這些工作流程中的步驟之一，使建立的資源不符合規範的部署失敗。
 

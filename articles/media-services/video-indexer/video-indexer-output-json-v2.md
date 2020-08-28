@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 08/27/2020
 ms.author: juliako
-ms.openlocfilehash: ddd1a5b9217962b595408973874a59219af298cf
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604778"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050857"
 ---
 # <a name="examine-the-video-indexer-output"></a>檢查影片索引子輸出
 
@@ -27,7 +27,7 @@ ms.locfileid: "88604778"
 
 ![深入解析](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
-本文會檢查影片索引子輸出 (JSON 內容) 。 如需您可以使用哪些功能和見解的詳細資訊，請參閱 [影片索引子深入](video-indexer-overview.md#video-insights)解析。
+本文會檢查影片索引子輸出 (JSON 內容) 。 <br/>如需您可以使用哪些功能和見解的詳細資訊，請參閱 [影片索引子深入](video-indexer-overview.md#video-insights)解析。
 
 > [!NOTE]
 > 影片索引子中所有存取權杖的到期時間皆為一小時。
@@ -58,11 +58,11 @@ ms.locfileid: "88604778"
 |accountId|播放清單的 VI 帳戶識別碼。|
 |id|播放清單的識別碼。|
 |NAME|播放清單的名稱。|
-|description|播放清單的描述。|
+|描述|播放清單的描述。|
 |userName|建立播放清單的使用者名稱。|
 |created|播放清單的建立時間。|
 |privacyMode|播放清單的隱私模式 (私人/公用)。|
-|狀態|播放清單 (已上傳、處理中、已處理、失敗、已隔離)。|
+|state|播放清單 (已上傳、處理中、已處理、失敗、已隔離)。|
 |isOwned|指出播放清單是否由目前的使用者所建立。|
 |isEditable|指出目前的使用者是否有權編輯播放清單。|
 |isBase|指出播放清單是基礎播放清單 (影片) 還是以其他影片組成的播放清單 (衍生)。|
@@ -118,7 +118,7 @@ ms.locfileid: "88604778"
 |accountId|影片的 VI 帳戶識別碼。|
 |id|影片的識別碼。|
 |NAME|影片的名稱。
-|狀態|影片的狀態 (已上傳、處理中、已處理、失敗、已隔離)。|
+|state|影片的狀態 (已上傳、處理中、已處理、失敗、已隔離)。|
 |processingProgress|處理期間的處理進度 (例如 20%)。|
 |failureCode|無法處理時顯示的失敗碼 (例如 'UnsupportedFileType')。|
 |failureMessage|無法處理時顯示的失敗訊息。|
@@ -221,7 +221,7 @@ id|區塊的識別碼。|
 |名稱|描述|
 |---|---|
 |id|行識別碼。|
-|文字|文字記錄本身。|
+|text|文字記錄本身。|
 |語言|文字記錄語言。 用於支援文字記錄，其中每一行可以有不同的語言。|
 |執行個體|這一行曾出現的時間範圍清單。 如果執行個體是文字記錄，它只能有 1 個執行個體。|
 
@@ -259,7 +259,7 @@ id|區塊的識別碼。|
 |名稱|描述|
 |---|---|
 |id|OCR 行識別碼。|
-|文字|OCR 文字。|
+|text|OCR 文字。|
 |信賴度|辨識信賴。|
 |語言|OCR 語言。|
 |執行個體|此 OCR 曾出現的時間範圍清單 (相同的 OCR 可以出現多次)。|
@@ -294,7 +294,7 @@ id|區塊的識別碼。|
 |名稱|描述|
 |---|---|
 |id|關鍵字識別碼。|
-|文字|關鍵字。|
+|text|關鍵字。|
 |信賴度|關鍵字的辨識信賴。|
 |語言|關鍵字語言 (轉譯時)。|
 |執行個體|此關鍵字曾出現的時間範圍清單 (同一個關鍵字可以出現多次)。|
@@ -331,7 +331,7 @@ id|區塊的識別碼。|
 |id|臉部識別碼。|
 |NAME|臉部的名稱。 這可以是 'Unknown #0、已識別的名人或客戶培訓人員。|
 |信賴度|臉部識別信賴。|
-|description|名人的描述。 |
+|描述|名人的描述。 |
 |thumbnailId|該臉部的縮圖識別碼。|
 |knownPersonId|如果是已知人物，則為其內部識別碼。|
 |referenceId|若為 Bing 名人，則為其 Bing 識別碼。|
@@ -519,7 +519,7 @@ id|區塊的識別碼。|
 |NAME|品牌名稱。|
 |referenceId | 品牌 Wikipedia URL 的尾碼。 例如，"Target_Corporation" 是的尾碼 [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) 。
 |referenceUrl | 品牌的 Wikipedia URL (如果存在)。 例如： [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) 。
-|description|品牌描述。|
+|描述|品牌描述。|
 |tags|與此品牌相關聯的預先定義標記清單。|
 |信賴度|影片索引子品牌偵測器的信賴值 (0-1)。|
 |執行個體|此品牌的時間範圍清單。 每個執行個體都有 brandType，用以指出此品牌會出現在文字記錄還是 OCR 中。|
@@ -585,7 +585,7 @@ id|區塊的識別碼。|
 |名稱|描述|
 |---|---|
 |id|音訊效果識別碼。|
-|type|音訊效果類型 (例如，拍手聲、說話、無聲)。|
+|類型|音訊效果類型 (例如，拍手聲、說話、無聲)。|
 |執行個體|此音訊效果曾出現的時間範圍清單。|
 
 ```json
@@ -699,7 +699,7 @@ visualContentModeration 區塊包含影片索引器偵測到可能含有成人�
 |名稱|描述|
 |---|---|
 |id|表情識別碼。|
-|type|根據語音和音訊提示所識別的表情時間。表情可能是：歡樂、悲傷、生氣或恐懼。|
+|類型|根據語音和音訊提示所識別的表情時間。表情可能是：歡樂、悲傷、生氣或恐懼。|
 |執行個體|這一個表情出現的時間範圍清單。|
 
 ```json

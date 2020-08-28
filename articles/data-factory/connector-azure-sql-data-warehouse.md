@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/25/2020
-ms.openlocfilehash: 4890013fe584c49caa9e358c924911255a7f5d33
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 08/28/2020
+ms.openlocfilehash: cd14a183ae1434af83c96b7f8d6575186412b534
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815958"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051214"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Synapse Analytics (先前稱為 Azure SQL 資料倉儲) 中複製和轉換資料
 
@@ -504,7 +504,7 @@ SQL 資料倉儲 PolyBase 直接支援 Azure Blob、Azure Data Lake Storage Gen1
 
 3. 如果您的來源是資料夾，則複製活動中的 `recursive` 必須設定為 true。
 
-4. 未指定 `wildcardFolderPath`、`wildcardFilename`、`modifiedDateTimeStart`、`modifiedDateTimeEnd` 和 `additionalColumns`。
+4. `wildcardFolderPath``wildcardFilename` `modifiedDateTimeStart` 未指定、、、、 `modifiedDateTimeEnd` `prefix` `enablePartitionDiscovery` 和 `additionalColumns` 。
 
 >[!NOTE]
 >如果您的來源是資料夾，請注意 PolyBase 會從資料夾及其所有子資料夾擷取檔案，而且不會從檔案名稱開頭為底線 (_) 或句號 (.) 的檔案中擷取資料，如[這裡 - LOCATION 引數](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2)所述。
@@ -684,7 +684,7 @@ SQL 資料倉儲 [COPY 陳述式](https://docs.microsoft.com/sql/t-sql/statement
 
 3. 如果您的來源是資料夾，則複製活動中的 `recursive` 必須設定為 true，而且 `wildcardFilename` 必須是 `*`。 
 
-4. 未指定 `wildcardFolderPath`、`wildcardFilename` (而非 `*`)、`modifiedDateTimeStart`、`modifiedDateTimeEnd` 和 `additionalColumns`。
+4. `wildcardFolderPath``wildcardFilename` (， `*` `modifiedDateTimeStart` `modifiedDateTimeEnd` `prefix` `enablePartitionDiscovery` `additionalColumns` 則不會指定) 、、、和以外的。
 
 在複製活動的 `allowCopyCommand` 下支援下列 COPY 陳述式設定：
 

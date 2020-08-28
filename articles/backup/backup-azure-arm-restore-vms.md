@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 3212ba621f02740e9b27c28da854eef70dce64a6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 582ec3e5409e5ada6f98a0c2db77c0bb73eaed18
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006577"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050415"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -200,7 +200,7 @@ Azure 備份提供數種方式來還原 VM。
 **還原單一網域中的多個網域控制站 VM** | 如果可以透過網路連線到相同網域中的其他網域控制站，則可以像任何 VM 一樣還原網域控制站。 如果該網域控制站是網域內剩餘的最後一個網域控制站，或者您是在隔離的網路中進行復原，請使用[樹系復原](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 **還原單一樹系中的多個網域** | 我們建議使用[樹系復原](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 **裸機還原** | Azure VM 與內部部署 Hypervisor 的主要差異是，Azure 沒有提供 VM 主控台。 在某些情況下，您必須使用主控台，例如使用裸機復原 (BMR) 類型的備份進行復原。 不過，從保存庫來還原 VM 可完整取代 BMR。
-**還原具有特殊網路組態的 VM** | 特殊網路組態包含使用內部或外部負載平衡、使用多個 NIC 或多個保留 IP 位址的 VM。 您可以使用[還原磁碟選項](#restore-disks)來還原這些 VM。 此選項會將 Vhd 的複本複製到指定的儲存體帳戶，然後您可以根據您的設定，建立具有 [內部](../load-balancer/load-balancer-get-started-ilb-arm-ps.md) 或 [外部](../load-balancer/quickstart-create-standard-load-balancer-powershell.md) 負載平衡器、 [多個 NIC](../virtual-machines/windows/multiple-nics.md)或 [多個保留 IP 位址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)的 VM。
+**還原具有特殊網路組態的 VM** | 特殊網路組態包含使用內部或外部負載平衡、使用多個 NIC 或多個保留 IP 位址的 VM。 您可以使用[還原磁碟選項](#restore-disks)來還原這些 VM。 此選項會將 Vhd 的複本複製到指定的儲存體帳戶，然後您可以根據您的設定，建立具有 [內部](../load-balancer/load-balancer-get-started-ilb-arm-ps.md) 或 [外部](../load-balancer/quickstart-load-balancer-standard-public-powershell.md) 負載平衡器、 [多個 NIC](../virtual-machines/windows/multiple-nics.md)或 [多個保留 IP 位址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)的 VM。
 **NIC/子網上 (NSG) 的網路安全性群組** | Azure VM 備份支援在 vnet、子網和 NIC 層級備份和還原 NSG 資訊。
 **區域固定的 Vm** | 如果您備份的 Azure VM 已釘選到具有 Azure 備份) 的區域 (，則您可以在其釘選所在的相同區域中進行還原。 [深入了解](../availability-zones/az-overview.md)
 **還原任何可用性設定組中的 VM** | 從入口網站還原 VM 時，沒有選擇可用性設定組的選項。 還原的 VM 不會有可用性設定值組。 如果您使用 [復原磁碟] 選項，則您可以在使用提供的範本或 PowerShell 從磁片建立 VM 時， [指定可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md) 。

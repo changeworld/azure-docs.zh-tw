@@ -9,16 +9,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 34c29a6f6cab77eaa69c7f28f57a4b823dd23d08
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6e35e32c92535a408c8df22d7306895150a59519
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685233"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050143"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 和 Esv4 系列
 
-Ev4 和 Esv4 系列是在 Intel 8272CL 白金級 &reg; &reg; (在超執行緒設定中的串聯式 Lake) 處理器上執行，適用于各種需要大量記憶體的企業應用程式和功能，最高可達504GIB 的 RAM。
+Ev4 和 Esv4 系列是在 Intel 8272CL 白金級 &reg; &reg; (在超執行緒設定中的串聯式 Lake) 處理器上執行，適用于各種需要大量記憶體的企業應用程式和功能，最高可達504GIB 的 RAM。 它有一種持續的核心 Turbo 頻率速度 3.4 GHz。
 
 > [!NOTE]
 > 關於常見問題，請參閱  [沒有本機暫存磁片的 AZURE VM 大小](azure-vms-no-temp-disk.md)。

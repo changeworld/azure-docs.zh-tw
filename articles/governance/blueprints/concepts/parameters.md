@@ -1,26 +1,26 @@
 ---
 title: 使用參數建立動態藍圖
 description: 瞭解靜態和動態參數，以及如何使用它們來建立安全且動態的藍圖。
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: b9c80a50ebb4be8dc530c73544a704035d777225
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970632"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051554"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>透過參數建立動態藍圖
 
-具有各種成品（例如資源群組、Azure Resource Manager 範本（ARM 範本）、原則或角色指派）的完整定義藍圖，可讓您在 Azure 中快速建立和一致地建立物件。 為了能夠彈性使用這些可重複使用的設計模式與容器，Azure 藍圖支援參數。 參數會在定義與指派期間建立彈性，以變更藍圖所部署成品上的屬性。
+具有各種成品（例如資源群組、Azure Resource Manager 範本 (ARM 範本) 、原則或角色指派）的完整定義藍圖，可讓您在 Azure 中快速建立和一致建立物件。 為了能夠彈性使用這些可重複使用的設計模式與容器，Azure 藍圖支援參數。 參數會在定義與指派期間建立彈性，以變更藍圖所部署成品上的屬性。
 
-資源群組成品即為一個簡單的範例。 建立資源群組時，必須提供兩個必要的值：名稱與位置。 將資源群組新增至您的藍圖時，如果參數不存在，您會在每次使用藍圖時定義該名稱和位置。 此種重複導致每次使用藍圖時，就會在相同資源群組中建立成品。 該資源群組內的群組會變成重複且導致衝突。
+資源群組成品即為一個簡單的範例。 建立資源群組時，必須提供兩個必要的值：名稱與位置。 當您將資源群組新增至藍圖時，如果參數不存在，您會定義每次使用藍圖的名稱和位置。 此種重複導致每次使用藍圖時，就會在相同資源群組中建立成品。 該資源群組內的群組會變成重複且導致衝突。
 
 > [!NOTE]
 > 對於兩個不同的藍圖來說，包含相同名稱的資源群組並不會造成任何問題。
 > 如果藍圖內含的資源群組已經存在，則藍圖會繼續在該資源群組中建立相關成品。 這可能導致衝突，因為具有相同名稱與資源類型的兩個資源不能存在於一個訂用帳戶內。
 
-這個問題的解決方式為參數。 Azure 藍圖可讓您在指派給訂用帳戶期間，定義成品之每個屬性的值。 此參數讓您能夠重複使用藍圖，在單一訂用帳戶中建立資源群組與其他資源，而不會發生衝突。
+這個問題的解決方式為參數。 Azure 藍圖可讓您在指派給訂用帳戶期間，定義成品每個屬性的值。 此參數讓您能夠重複使用藍圖，在單一訂用帳戶中建立資源群組與其他資源，而不會發生衝突。
 
 ## <a name="blueprint-parameters"></a>藍圖參數
 
@@ -28,18 +28,18 @@ ms.locfileid: "85970632"
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>使用 secureString 與 secureObject 參數
 
-雖然 ARM 範本成品支援**secureString**和**secureObject**類型的參數，但 Azure 藍圖需要每個_專案_都與 Azure Key Vault 連接。 此安全性措施可防止將祕密與藍圖儲存在一起的這種不安全做法，並鼓勵採用安全模式。 Azure 藍圖支援此安全性措施，可偵測_ARM 範本成品_中是否包含任何安全參數。 服務接著會在指派期間，針對每個偵測到的安全參數提示下列 Key Vault 屬性：
+當 _ARM 範本成品_ 支援 **secureString** 和 **secureObject** 類型的參數時，Azure 藍圖需要每個都與 Azure Key Vault 連接。 此安全性措施可防止將祕密與藍圖儲存在一起的這種不安全做法，並鼓勵採用安全模式。 Azure 藍圖支援此安全性措施，可偵測 _ARM 範本成品_中是否包含兩個安全參數。 服務接著會在指派期間，針對每個偵測到的安全參數提示下列 Key Vault 屬性：
 
 - Key Vault 資源識別碼
 - Key Vault 祕密名稱
 - Key Vault 祕密版本
 
-如果藍圖指派使用**系統指派的受控識別**，則參照的 Key Vault_必須_存在於藍圖定義指派所在的相同訂用帳戶中。
+如果藍圖指派使用 **系統指派的受控識別**，則參考的 Key Vault _必須_ 存在於指派藍圖定義的相同訂用帳戶中。
 
-如果藍圖指派使用**使用者指派的受控識別**，則受參考的 Key Vault_可能_存在於集中式訂用帳戶中。 在藍圖指派之前，必須先將 Key Vault 的適當許可權授與受控識別。
+如果藍圖指派使用 **使用者指派的受控識別**，則參考的 Key Vault _可能會_ 存在於集中式訂用帳戶中。 在藍圖指派之前，必須先將 Key Vault 的適當許可權授與受控識別。
 
 > [!IMPORTANT]
-> 在這兩種情況下，Key Vault 都必須具有 [**存取原則**] 頁面上所設定**範本部署 Azure Resource Manager 的存取權**。 如需如何啟用此功能的相關指示，請參閱 [Key Vault - 啟用範本部署](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment)。
+> 在這兩種情況下，Key Vault 都必須能夠存取 [**存取原則**] 頁面上設定的**範本部署 Azure Resource Manager** 。 如需如何啟用此功能的相關指示，請參閱 [Key Vault - 啟用範本部署](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment)。
 
 如需 Azure Key Vault 的詳細資訊，請參閱 [Azure Key Vault 概觀](../../../key-vault/general/overview.md)。
 
@@ -53,13 +53,13 @@ ms.locfileid: "85970632"
 
 1. 在左側窗格中選取 [所有服務]。 搜尋並選取 [藍圖]。
 
-1. 在頁面左側選取 [藍圖定義]  。
+1. 在頁面左側選取 [藍圖定義]。
 
-1. 按一下現有的藍圖，然後按一下 [**編輯藍圖**]，或按一下 [ **+ 建立藍圖**]，並填寫 [**基本**] 索引標籤上的資訊。
+1. 選取現有的藍圖，然後選取 [ **編輯藍圖** ] 或選取 [ **+ 建立藍圖** ]，然後在 [ **基本** ] 索引標籤上填寫資訊。
 
-1. 按一下 [下一步: 成品]****，或按一下 [成品]**** 索引標籤。
+1. 選取 [ **下一步：** 成品] 或 **選取 [成品** ] 索引標籤。
 
-1. 新增到具有參數選項之藍圖的成品會在 [參數]**** 欄中顯示 [已填入 X 個參數 (共 Y 個)]****。 按一下成品列來編輯成品參數。
+1. 新增到具有參數選項之藍圖的成品會在 [參數]**** 欄中顯示 [已填入 X 個參數 (共 Y 個)]****。 選取成品資料列以編輯成品參數。
 
    :::image type="content" source="../media/parameters/parameter-column.png" alt-text="藍圖定義上的藍圖參數" border="false":::
 
@@ -164,23 +164,23 @@ ms.locfileid: "85970632"
 
 ### <a name="dynamic-parameters"></a>動態參數
 
-靜態參數的相反是**動態參數**。 此參數並未定義於藍圖上，而是改為在藍圖的每個指派期間內定義。 在資源群組範例中，**動態參數**適合用於資源群組名稱。 它可為藍圖的每個指派提供不同的名稱。 如需藍圖函式的清單，請參閱[藍圖函數](../reference/blueprint-functions.md)參考。
+靜態參數的相反是**動態參數**。 此參數並未定義於藍圖上，而是改為在藍圖的每個指派期間內定義。 在資源群組範例中，**動態參數**適合用於資源群組名稱。 它可為藍圖的每個指派提供不同的名稱。 如需藍圖函數的清單，請參閱 [藍圖](../reference/blueprint-functions.md) 函式參考。
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>在入口網站中設定動態參數
 
 1. 在左側窗格中選取 [所有服務]。 搜尋並選取 [藍圖]。
 
-1. 在頁面左側選取 [藍圖定義]  。
+1. 在頁面左側選取 [藍圖定義]。
 
-1. 以滑鼠右鍵按一下您想要指派的藍圖。 選取 [**指派藍圖**]，或按一下您要指派的藍圖，然後按一下 [**指派藍圖**] 按鈕。
+1. 以滑鼠右鍵按一下您想要指派的藍圖。 選取 [ **指派藍圖** ] 或選取您想要指派的藍圖，然後使用 [ **指派藍圖** ] 按鈕。
 
-1. 在 [**指派藍圖**] 頁面上，尋找 [成品**參數**] 區段。 至少具有一個**動態參數**的每個成品都會顯示成品與設定選項。 指派藍圖之前，請先為參數提供所需的值。 在下列範例中，「名稱」__ 是必須先定義才能完成藍圖指派的**動態參數**。
+1. 在 [ **指派藍圖** ] 頁面上，尋找 [成品 **參數** ] 區段。 至少具有一個**動態參數**的每個成品都會顯示成品與設定選項。 指派藍圖之前，請先為參數提供所需的值。 在下列範例中，「名稱」__ 是必須先定義才能完成藍圖指派的**動態參數**。
 
    :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="藍圖指派期間的藍圖動態參數" border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>從 REST API 設定動態參數
 
-在指派期間設定**動態參數**，可透過直接輸入值來完成。 提供的值是適當的字串，而不是使用函式[（例如 parameters （））](../reference/blueprint-functions.md#parameters)。 資源群組的成品是使用「範本名稱」與**名稱**和**位置**屬性來定義。 內含成品的所有其他參數都定義在**parameters**具有 **\<name\>** 和**值**金鑰組的參數之下。 如果已針對指派期間未提供的動態參數設定藍圖，指派將會失敗。
+在指派期間設定**動態參數**，可透過直接輸入值來完成。 提供的值不是使用函式（例如 [ ( # B1 的參數 ](../reference/blueprint-functions.md#parameters)），而是適當的字串。 資源群組的成品是使用「範本名稱」與**名稱**和**位置**屬性來定義。 包含之成品的所有其他參數都是在具有和值索引鍵組的**參數**下定義 **\<name\>** 。 **value** 如果已針對指派期間未提供的動態參數設定藍圖，指派將會失敗。
 
 - REST API URI
 
@@ -233,9 +233,9 @@ ms.locfileid: "85970632"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 查看[藍圖功能](../reference/blueprint-functions.md)的清單。
-- 了解[藍圖生命週期](lifecycle.md)。
-- 了解如何自訂[藍圖排序順序](sequencing-order.md)。
-- 了解如何使用[藍圖資源鎖定](resource-locking.md)。
+- 請參閱 [藍圖](../reference/blueprint-functions.md)函式清單。
+- 了解[藍圖生命週期](./lifecycle.md)。
+- 了解如何自訂[藍圖排序順序](./sequencing-order.md)。
+- 了解如何使用[藍圖資源鎖定](./resource-locking.md)。
 - 了解如何[更新現有的指派](../how-to/update-existing-assignments.md)。
 - 使用[一般疑難排解](../troubleshoot/general.md)來解決藍圖指派期間發生的問題。

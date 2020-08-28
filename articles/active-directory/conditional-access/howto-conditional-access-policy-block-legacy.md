@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7a4693dabc62ec03897ccc46398bdff77118fe4
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 0eaa2f2bc0ee26a4f543ea0938db6c226a9a6575
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032079"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049242"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>條件式存取：封鎖舊式驗證
 
@@ -24,7 +24,7 @@ ms.locfileid: "88032079"
 
 ## <a name="create-a-conditional-access-policy"></a>建立條件式存取原則
 
-下列步驟將協助建立條件式存取原則，以封鎖舊式驗證要求。 此原則會以[報告專用模式](howto-conditional-access-report-only.md)啟動，讓管理員可以判斷對現有使用者的影響。 當管理員確信原則會如預期套用時，可以切換至 [開啟]，或藉由新增特定群組和排除其他群組以進行階段部署。
+下列步驟將協助建立條件式存取原則，以封鎖舊式驗證要求。 此原則會以[報告專用模式](howto-conditional-access-insights-reporting.md)啟動，讓管理員可以判斷對現有使用者的影響。 當管理員確信原則會如預期套用時，可以切換至 [開啟]，或藉由新增特定群組和排除其他群組以進行階段部署。
 
 1. 以全域管理員、安全性系統管理員或條件式存取管理員的身分，登入 **Azure 入口網站**。
 1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
@@ -36,8 +36,8 @@ ms.locfileid: "88032079"
    1. 選取 [完成] 。
 1. 在 [雲端應用程式或動作] 下，選取 [所有雲端應用程式]。
    1. 選取 [完成] 。
-1. 在 [**條件**  >  **用戶端應用程式**] 下，將 **[設定]** 設為 [ **Configure**
-   1. 僅檢查**Exchange ActiveSync 用戶端**和**其他用戶端**的方塊。
+1. 在 [**條件**  >  **用戶端應用程式**] 底下，將 [設定為**是]**。 **Configure**
+   1. 只檢查 **Exchange ActiveSync 用戶端** 和 **其他用戶端**的方塊。
    1. 選取 [完成] 。
 1. 在 [存取控制] > [授與] 下，選取 [封鎖存取]。
    1. 選取 [選取] 。
@@ -48,7 +48,7 @@ ms.locfileid: "88032079"
 
 [條件式存取一般原則](concept-conditional-access-policy-common.md)
 
-[使用條件式存取報告專用模式判斷影響](howto-conditional-access-report-only.md)
+[使用條件式存取報告專用模式判斷影響](howto-conditional-access-insights-reporting.md)
 
 [使用條件式存取 What If 工具模擬登入行為](troubleshoot-conditional-access-what-if.md)
 

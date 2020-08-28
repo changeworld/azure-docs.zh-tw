@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c890c8e9af7310338e8470c4d56b46d1e259c168
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: d5423a61c8febee72f32935f3dee4e9f9e868630
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948057"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049072"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>條件式存取：以使用者風險為基礎的條件式存取
 
@@ -54,7 +54,7 @@ Microsoft 與研究人員、執法機關、Microsoft 的各種安全性小組和
 1. 在**Controls**  >  [**訪問**控制] 底下，選擇 [**允許存取**]，然後選取 [**需要密碼變更**]。
    1. 選取 [選取]  。
 1. 將 [ **強制執行原則** ] 設定為 [ **開啟**]。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -62,7 +62,7 @@ Microsoft 與研究人員、執法機關、Microsoft 的各種安全性小組和
 
 [登入風險型條件式存取](howto-conditional-access-policy-risk.md)
 
-[使用條件式存取報告專用模式判斷影響](howto-conditional-access-report-only.md)
+[使用條件式存取報告專用模式判斷影響](howto-conditional-access-insights-reporting.md)
 
 [使用條件式存取 What If 工具模擬登入行為](troubleshoot-conditional-access-what-if.md)
 

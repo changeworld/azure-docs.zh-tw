@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 08/28/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5be3b4ce5d89a15009f2b9b31183400890dbefb5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3b9a491f7546fbaa8722498b164bfa56353dfcfc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918939"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050177"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批次轉譯
 
@@ -170,7 +170,7 @@ ms.locfileid: "88918939"
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      具有 [服務 SAS](../../storage/common/storage-sas-overview.md) 的選擇性 URL，可供 Azure 中的可寫入容器使用。 結果會儲存在此容器中。 如果未指定，Microsoft 會將結果儲存在 Microsoft 所管理的儲存體容器中。 藉由呼叫 [刪除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)轉譯來刪除轉譯時，也會一併刪除結果資料。
+      具有服務特定 [SAS](../../storage/common/storage-sas-overview.md) 的選擇性 URL，指向 Azure 中可寫入的容器。 結果會儲存在此容器中。 **不**支援具有預存存取原則的 SAS。 如果未指定，Microsoft 會將結果儲存在 Microsoft 所管理的儲存體容器中。 藉由呼叫 [刪除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)轉譯來刪除轉譯時，也會一併刪除結果資料。
 :::row-end:::
 
 ### <a name="storage"></a>儲存體

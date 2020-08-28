@@ -1,53 +1,63 @@
 ---
 title: 輸入/輸出 IP 位址
-description: 瞭解輸入和輸出 IP 位址在 Azure App Service 中的使用方式、變更時間，以及如何尋找您的應用程式位址。
+description: 瞭解如何在 Azure App Service 中使用輸入和輸出 IP 位址（當它們變更時），以及如何尋找您的應用程式位址。
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fa9fec9219cfd85a8a0b25f50835425766d9043
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537622"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050687"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service 中的輸入和輸出 IP 位址
 
-[Azure App Service](overview.md) 是多租用戶服務，但 [App Service 環境](environment/intro.md)除外。 不在 App Service 環境中的應用程式 (不在[隔離層](https://azure.microsoft.com/pricing/details/app-service/)) 會與其他應用程式共用網路基礎結構。 因此，應用程式的輸入和輸出 IP 位址可能不同，甚至會在某些情況下變更。 
+[Azure App Service](overview.md) 是多租用戶服務，但 [App Service 環境](environment/intro.md)除外。 不在 App Service 環境中的應用程式 (不在[隔離層](https://azure.microsoft.com/pricing/details/app-service/)) 會與其他應用程式共用網路基礎結構。 因此，應用程式的輸入和輸出 IP 位址可能不同，甚至會在某些情況下變更。
 
 [App Service 環境](environment/intro.md)使用專用的網路基礎結構，因此在 App Service 環境中執行的應用程式會針對輸入和輸出連線取得靜態的專用 IP 位址。
+
+## <a name="how-ip-addresses-work-in-app-service"></a>IP 位址在 App Service 中的運作方式
+
+App Service 應用程式會在 App Service 方案中執行，而 App Service 方案會部署至 Azure 基礎結構中的其中一個部署單位 (內部稱為網路空間) 。 每個部署單位最多指派五個虛擬 IP 位址，其中包含一個公用輸入 IP 位址和四個輸出 IP 位址。 所有 App Service 方案都在相同的部署單位中，而在其中執行的應用程式實例則會共用同一組虛擬 IP 位址。 針對 App Service 環境 ([隔離層](https://azure.microsoft.com/pricing/details/app-service/) 中的 App Service 計畫) ，App Service 計畫是部署單位本身，因此虛擬 IP 位址是由其專用。
+
+由於您不允許在部署單位之間移動 App Service 計畫，指派給您應用程式的虛擬 IP 位址通常會維持不變，但有例外狀況。
 
 ## <a name="when-inbound-ip-changes"></a>當輸入 IP 變更時
 
 不論相應放大的執行個體數目為何，每個應用程式都只有一個輸入 IP 位址。 輸入 IP 位址可能會在您執行下列動作之一時變更：
 
-- 刪除應用程式，並在不同資源群組中重建。
-- 刪除資源群組和__ 區域組合中的最後一個應用程式，並予以重建。
-- 刪除現有的 TLS 系結，例如在憑證更新期間（請參閱[更新憑證](configure-ssl-certificate.md#renew-certificate)）。
+- 刪除應用程式，並在不同的資源群組中重新建立， (部署單位可能會變更) 。
+- 刪除資源群組 _和_ 區域組合中的最後一個應用程式，然後重新建立 (部署單位可能會變更) 。
+- 刪除現有以 IP 為基礎的 TLS/SSL 系結，例如在憑證更新期間 (參閱 [更新憑證](configure-ssl-certificate.md#renew-certificate)) 。
 
 ## <a name="find-the-inbound-ip"></a>尋找輸入 IP
 
-只要在本機終端機中執行下列命令：
+只需在本機終端機中執行下列命令：
 
 ```bash
 nslookup <app-name>.azurewebsites.net
 ```
 
-## <a name="get-a-static-inbound-ip"></a>取得靜態的輸入 IP
+## <a name="get-a-static-inbound-ip"></a>取得靜態輸入 IP
 
-有時候您可能會想讓應用程式使用專用的靜態 IP 位址。 若要取得靜態的輸入 IP 位址，您必須[保護自訂網域](configure-ssl-bindings.md#secure-a-custom-domain)。 如果您實際上不需要 TLS 功能來保護您的應用程式，您甚至可以上傳此系結的自我簽署憑證。 在以 IP 為基礎的 TLS 系結中，憑證會系結至 IP 位址本身，因此 App Service 會布建靜態 IP 位址來進行這項操作。 
+有時候您可能會想讓應用程式使用專用的靜態 IP 位址。 若要取得靜態的輸入 IP 位址，您需要 [保護自訂網域](configure-ssl-bindings.md#secure-a-custom-domain)。 如果您實際上不需要 TLS 功能來保護您的應用程式，您甚至可以上傳此系結的自我簽署憑證。 在以 IP 為基礎的 TLS 系結中，憑證會系結至 IP 位址本身，因此 App Service 會布建靜態 IP 位址來進行。 
 
 ## <a name="when-outbound-ips-change"></a>當輸出 IP 變更時
 
-不論相應放大的執行個體數目為何，每個應用程式在任何給定時間都會有一定數目的輸出 IP 位址。 任何來自 App Service 應用程式的輸出連線 (例如連往後端資料庫) 都會使用其中一個輸出 IP 位址來作為來源 IP 位址。 您無法事先知道給定的應用程式執行個體會使用哪個 IP 位址來進行輸出連線，因此您的後端服務必須對應用程式的所有輸出 IP 位址開啟其防火牆。
+不論相應放大的執行個體數目為何，每個應用程式在任何給定時間都會有一定數目的輸出 IP 位址。 任何來自 App Service 應用程式的輸出連線 (例如連往後端資料庫) 都會使用其中一個輸出 IP 位址來作為來源 IP 位址。 要使用的 IP 位址會在執行時間隨機選取，因此您的後端服務必須對您應用程式的所有輸出 IP 位址開啟其防火牆。
 
-當您在較低層級 (**基本**、**標準**和**進階**) 和**進階 V2** 層級之間調整應用程式時，應用程式的該組輸出 IP 位址會變更。
+當您執行下列其中一個動作時，您的應用程式的輸出 IP 位址集會變更：
 
-您可以在 Azure 入口網站的 [內容] 分頁中，尋找 `possibleOutboundIpAddresses` 屬性或 [**其他輸出 ip 位址**] 欄位，以尋找您的應用程式可以使用的所有可能輸出 ip 位址**Properties**集合（不論定價層為何）。 請參閱[尋找輸出 IP](#find-outbound-ips)。
+- 刪除應用程式，並在不同的資源群組中重新建立， (部署單位可能會變更) 。
+- 刪除資源群組 _和_ 區域組合中的最後一個應用程式，然後重新建立 (部署單位可能會變更) 。
+- 在較低層級之間調整您的應用程式 (**基本**、 **標準**和 **高階) ，** 而且高階 **V2** 層 (可以將) 中的 IP 位址加入或減去。
+
+您可以尋找應用程式可使用的所有可能輸出 IP 位址集合（不論定價層為何），方法是在 Azure 入口網站的 [屬性] 分頁中，尋找 `possibleOutboundIpAddresses` 屬性或 [ **Properties** **其他輸出 ip 位址**] 欄位。 請參閱[尋找輸出 IP](#find-outbound-ips)。
 
 ## <a name="find-outbound-ips"></a>尋找輸出 IP
 
-若要在 Azure 入口網站中尋找應用程式目前所使用的輸出 IP 位址，請按一下應用程式左側導覽中的 [屬性]****。 它們會列在 [**輸出 IP 位址**] 欄位中。
+若要在 Azure 入口網站中尋找應用程式目前所使用的輸出 IP 位址，請按一下應用程式左側導覽中的 [屬性]****。 這些欄位會列在 [ **輸出 IP 位址** ] 欄位中。
 
 您可以在 [Cloud Shell](../cloud-shell/quickstart.md) 中執行下列命令來找到同樣的資訊。
 
@@ -59,7 +69,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-若要尋找應用程式的_所有_可能輸出 IP 位址，不論定價層為何，請按一下應用程式左側導覽中的 [**屬性**]。 它們會列在 [**其他輸出 IP 位址**] 欄位中。
+若要尋找應用程式的 _所有_ 可能輸出 IP 位址（不論定價層為何），請按一下應用程式左側導覽中的 [ **屬性** ]。 這些欄位會列在 [ **其他輸出 IP 位址** ] 欄位中。
 
 您可以在 [Cloud Shell](../cloud-shell/quickstart.md) 中執行下列命令來找到同樣的資訊。
 

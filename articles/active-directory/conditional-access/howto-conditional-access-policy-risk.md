@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2564e3f246d23028d6c73832a25f37110e7670c8
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 0c6e3316afc09992d16e17d9d2e2afe6b92dcd22
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948091"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049038"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>條件式存取：以登入風險為基礎的條件式存取
 
@@ -58,7 +58,7 @@ ms.locfileid: "88948091"
 1. 在 [**控制項**  >  **存取**] 底下，選擇 [**允許存取**]，然後選取 [**需要多重要素驗證**]。
    1. 選取 [選取]  。
 1. 將 [ **強制執行原則** ] 設定為 [ **開啟**]。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -66,7 +66,7 @@ ms.locfileid: "88948091"
 
 [使用者風險型條件式存取](howto-conditional-access-policy-risk-user.md)
 
-[使用條件式存取報告專用模式判斷影響](howto-conditional-access-report-only.md)
+[使用條件式存取報告專用模式判斷影響](howto-conditional-access-insights-reporting.md)
 
 [使用條件式存取 What If 工具模擬登入行為](troubleshoot-conditional-access-what-if.md)
 

@@ -3,12 +3,12 @@ title: 計畫定義結構的詳細資料
 description: 說明如何使用原則計畫定義來群組原則定義，以部署至組織中的 Azure 資源。
 ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: b151ef4d58998b810e116321de68cbdb2e8d3eff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d7b4adf15193e2cd1b9e516a04c7c989dc442ee9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544633"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048494"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure 原則計畫定義結構
 
@@ -284,7 +284,7 @@ Microsoft 所建立的法規合規性內建有有關每個控制項的其他資�
 
 - 在遵循法規合規性計畫的 **控制項** 總覽中顯示 Azure 入口網站。
 - 可透過 REST API 取得。 請參閱 `Microsoft.PolicyInsights` 資源提供者和 [policyMetadata 操作群組](/rest/api/policy-insights/policymetadata/getresource)。
-- 可透過 Azure CLI 取得。 請參閱 [az policy metadata](/cli/azure/policy/metadata?view=azure-cli-latest) 命令。
+- 可透過 Azure CLI 取得。 請參閱 [az policy metadata](/cli/azure/policy/metadata) 命令。
 
 > [!IMPORTANT]
 > 符合法規規範的中繼資料物件是 _唯讀_ 的，而且無法由客戶建立。
@@ -319,7 +319,7 @@ Microsoft 所建立的法規合規性內建有有關每個控制項的其他資�
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 查看 [定義結構](./definition-structure.md)
 - 在 [Azure 原則範例](../samples/index.md)檢閱範例。

@@ -1,18 +1,18 @@
 ---
 title: Azure 藍圖函式
 description: 描述可用於 Azure 藍圖定義和指派中藍圖成品的函式。
-ms.date: 05/22/2020
+ms.date: 08/27/2020
 ms.topic: reference
-ms.openlocfilehash: 7a52901060466692e7094cf74fa5acfcded5f1da
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: fe984ee7664b0d50fb891d946f9f40a200ccce09
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422839"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050755"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>搭配 Azure 藍圖使用的函式
 
-Azure 藍圖會提供讓藍圖定義更具動態性的函式。 這些函式可與藍圖定義和藍圖成品搭配使用。 Azure Resource Manager 範本（ARM 範本）成品除了透過藍圖參數取得動態值之外，也支援 Resource Manager 函數的完整使用。
+Azure 藍圖會提供讓藍圖定義更具動態性的函式。 這些函式可與藍圖定義和藍圖成品搭配使用。 Azure Resource Manager 範本 (ARM 範本) 成品除了透過藍圖參數取得動態值之外，還支援 Resource Manager 函式的完整使用。
 
 支援下列函式：
 
@@ -30,7 +30,7 @@ Azure 藍圖會提供讓藍圖定義更具動態性的函式。 這些函式可�
 傳回已填入藍圖成品輸出的屬性物件。
 
 > [!NOTE]
-> `artifacts()`無法從 ARM 範本內部使用函式。 在使用 Azure PowerShell 或 REST API 作為 [藍圖即程式碼 (Blueprints-as-code)](https://github.com/Azure/azure-blueprints/blob/master/README.md) 的一部分來管理藍圖時，函式只能用於藍圖定義 JSON 或成品 JSON 中。
+> `artifacts()`無法從 ARM 範本內部使用函數。 在使用 Azure PowerShell 或 REST API 作為 [藍圖即程式碼 (Blueprints-as-code)](https://github.com/Azure/azure-blueprints/blob/master/README.md) 的一部分來管理藍圖時，函式只能用於藍圖定義 JSON 或成品 JSON 中。
 
 ### <a name="parameters"></a>參數
 
@@ -62,7 +62,7 @@ Azure 藍圖會提供讓藍圖定義更具動態性的函式。 這些函式可�
 
 #### <a name="arm-template-artifact"></a>ARM 範本成品
 
-傳回之物件的**輸出**屬性會定義在 ARM 範本內，並由部署傳回。
+傳回物件的 **輸出** 屬性會定義在 ARM 範本內，並由部署所傳回。
 
 #### <a name="role-assignment-artifact"></a>角色指派成品
 
@@ -78,7 +78,7 @@ Azure 藍圖會提供讓藍圖定義更具動態性的函式。 這些函式可�
 
 ### <a name="example"></a>範例
 
-具有識別碼_myTemplateArtifact_的 ARM 範本成品，其中包含下列範例輸出屬性：
+具有識別碼 _myTemplateArtifact_ 的 ARM 範本成品，包含下列範例輸出屬性：
 
 ```json
 {
@@ -158,7 +158,7 @@ Azure 藍圖函式與 ARM 範本功能不同之處在于，它只適用于字串
 
 ### <a name="remarks"></a>備註
 
-Azure 藍圖函式與 ARM 範本功能不同之處在于，它只適用于藍圖參數。
+Azure 藍圖函式與 ARM 範本函式不同之處在于，它只適用于藍圖參數。
 
 ### <a name="example"></a>範例
 
@@ -218,7 +218,7 @@ Azure 藍圖函式與 ARM 範本功能不同之處在于，它只適用于藍圖
 
 ### <a name="remarks"></a>備註
 
-Azure 藍圖功能與 ARM 範本函式不同。 `resourceGroup()` 函式不能用在訂用帳戶層級成品或藍圖定義中。 其只能用於屬於資源群組成品一部分的藍圖成品。
+Azure 藍圖函式與 ARM 範本功能不同。 `resourceGroup()` 函式不能用在訂用帳戶層級成品或藍圖定義中。 其只能用於屬於資源群組成品一部分的藍圖成品。
 
 `resourceGroup()` 函式的常見用法是在和資源群組成品相同的位置中建立資源。
 

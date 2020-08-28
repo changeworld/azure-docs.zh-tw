@@ -3,12 +3,12 @@ title: 資源陣列屬性編寫原則
 description: 瞭解如何使用陣列參數和陣列語言運算式、評估 [*] 別名，以及附加具有 Azure 原則定義規則的元素。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: f3ba5179ca7acc60042d23e88d42a504d4d05f08
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5b9392a943e264ae5eca989ee87eb9ff09b36972
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544582"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048477"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>對於 Azure 資源編寫陣列屬性的原則
 
@@ -95,7 +95,7 @@ Azure Resource Manager 屬性通常會定義為字串和布林值。 存在一�
 
 若要將此字串與每個 SDK 搭配使用，請使用下列命令：
 
-- Azure CLI：命令 [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) 搭配參數 **params**
+- Azure CLI：命令 [az policy assignment create](/cli/azure/policy/assignment#az-policy-assignment-create) 搭配參數 **params**
 - Azure PowerShell：Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) 搭配參數 **PolicyParameter**
 - REST API：_PUT_ 中屬於要求本文的 **properties.parameters** 屬性值 [create](/rest/api/resources/policyassignments/create)作業
 

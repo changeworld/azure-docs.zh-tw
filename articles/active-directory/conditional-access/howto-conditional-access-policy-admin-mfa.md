@@ -1,6 +1,6 @@
 ---
 title: 條件式存取-需要適用于系統管理員的 MFA-Azure Active Directory
-description: 建立自訂的條件式存取原則，以要求系統管理員執行多重要素驗證
+description: 建立自訂條件式存取原則，以要求系統管理員執行多重要素驗證
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc38e576f53c3623bacc374a00adcb4cced01517
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 45263ca0448042aa972ee53093b51dd47bd51190
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552878"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049344"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>條件式存取：系統管理員需要 MFA
 
-指派系統管理許可權的帳戶是攻擊者的目標。 要求多重要素驗證 (MFA) 對這些帳戶而言，是降低那些帳戶遭到入侵風險的簡單方法。
+被指派系統管理許可權的帳戶會成為攻擊者的目標。 在這些帳戶上 (MFA) 需要多重要素驗證，是降低這些帳戶遭到入侵風險的簡單方法。
 
-Microsoft 建議您至少要求下列角色的 MFA：
+Microsoft 建議您至少需要下列角色的 MFA：
 
 * 計費管理員
 * 條件式存取系統管理員
@@ -34,7 +34,7 @@ Microsoft 建議您至少要求下列角色的 MFA：
 * SharePoint 管理員
 * 使用者管理員
 
-組織可以選擇包含或排除角色（如其所示）。
+組織可以選擇在適當的情況下包含或排除角色。
 
 ## <a name="user-exclusions"></a>使用者排除
 
@@ -47,14 +47,14 @@ Microsoft 建議您至少要求下列角色的 MFA：
 
 ## <a name="create-a-conditional-access-policy"></a>建立條件式存取原則
 
-下列步驟將協助建立條件式存取原則，要求這些指派的系統管理角色執行多重要素驗證。
+下列步驟將協助建立條件式存取原則，以要求指派的系統管理角色執行多重要素驗證。
 
 1. 以全域管理員、安全性系統管理員或條件式存取管理員的身分，登入 **Azure 入口網站**。
 1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
 1. 選取 [新增原則]。
 1. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。
 1. 在 [指派] 底下，選取 [使用者和群組]
-   1. 在 [**包含**] 底下，選取 [**目錄角色] (預覽) **並至少選擇下列角色：
+   1. 在 [ **包含**] 下，選取 [ **目錄角色] (預覽) ** 並至少選擇下列角色：
       * 驗證系統管理員
       * 計費管理員
       * 條件式存取系統管理員
@@ -67,12 +67,12 @@ Microsoft 建議您至少要求下列角色的 MFA：
       * 使用者管理員
    
       > [!WARNING]
-      > 條件式存取原則不支援使用者指派的目錄角色，範圍限於直接設定為物件範圍的系統[管理單位](../users-groups-roles/roles-admin-units-assign-roles.md)或目錄角色，例如透過[自訂角色](../users-groups-roles/roles-create-custom.md)。
+      > 條件式存取原則不支援使用者將目錄角色指派給範圍直接指向物件的 [管理單位](../users-groups-roles/roles-admin-units-assign-roles.md) 或目錄角色，例如透過 [自訂角色](../users-groups-roles/roles-create-custom.md)。
 
    1. 在 [排除] 底下選取 [使用者和群組]，然後選擇組織的緊急存取或急用帳戶。 
    1. 選取 [完成] 。
 1. 在 [雲端應用程式或動作] > [包含] 下，選取 [所有雲端應用程式]，然後選取 [完成]。
-1. 在 [**條件**  >  **用戶端應用程式 (預覽) **] 底下**的 [選取用戶端應用程式**] 下，將套用此原則，保留所有預設值並選取 [**完成**]。
+1. 在 [**條件**  >  **用戶端應用程式] (預覽) **的 **[選取用戶端應用程式] 下，選取 [此原則將**套用]， **Done**保留所有選取的預設值並選取
 1. 在 [存取控制] > [授與] 底下選取 [授與存取權] 和 [需要多重要素驗證]，然後選取 [選取]。
 1. 確認您的設定，並將 [啟用原則] 設定為 [開啟]。
 1. 選取 [建立] 以建立以啟用您的原則。
@@ -81,6 +81,6 @@ Microsoft 建議您至少要求下列角色的 MFA：
 
 [條件式存取一般原則](concept-conditional-access-policy-common.md)
 
-[使用條件式存取報告專用模式判斷影響](howto-conditional-access-report-only.md)
+[使用條件式存取報告專用模式判斷影響](howto-conditional-access-insights-reporting.md)
 
 [使用條件式存取 What If 工具模擬登入行為](troubleshoot-conditional-access-what-if.md)

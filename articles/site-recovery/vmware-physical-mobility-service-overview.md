@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: 431f1da463e4bd9970bc92b0842393f2de882220
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 19d6933497b469148687dc9c5012513ab7d0314b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604737"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047202"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>關於適用於 VMware VM 和實體伺服器的行動服務
 
@@ -33,7 +33,7 @@ ms.locfileid: "88604737"
 
 推入安裝是從 Azure 入口網站執行以 [啟用](vmware-azure-enable-replication.md#enable-replication)複寫的工作不可或缺的一部分。 選擇您想要保護並啟用複寫的 Vm 集合之後，設定伺服器會將行動服務代理程式推送至伺服器，安裝代理程式，並完成代理程式與設定伺服器的註冊。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 - 確定已符合所有的推送安裝 [必要條件](vmware-azure-install-mobility-service.md) 。
 - 請確定所有伺服器設定都符合支援矩陣中的準則， [以便將 VMware vm 和實體伺服器故障復原至 Azure](vmware-physical-azure-support-matrix.md)。
@@ -69,7 +69,7 @@ ms.locfileid: "88604737"
 
 ## <a name="install-the-mobility-service-using-ui"></a>使用 UI 安裝行動服務
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 - 請確定所有伺服器設定都符合支援矩陣中的準則， [以便將 VMware vm 和實體伺服器故障復原至 Azure](vmware-physical-azure-support-matrix.md)。
 - 找出伺服器作業系統[的安裝程式](#locate-installer-files)。
@@ -97,7 +97,7 @@ ms.locfileid: "88604737"
 
 ## <a name="install-the-mobility-service-using-command-prompt"></a>使用命令提示字元安裝行動服務
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 - 請確定所有伺服器設定都符合支援矩陣中的準則， [以便將 VMware vm 和實體伺服器故障復原至 Azure](vmware-physical-azure-support-matrix.md)。
 - 找出伺服器作業系統[的安裝程式](#locate-installer-files)。
@@ -108,7 +108,7 @@ ms.locfileid: "88604737"
 
   ```cmd
   cd C:\Temp
-  ren Microsoft-ASR_UA_version_Windows_GA_date_release.exe MobilityServiceInstaller.exe
+  ren Microsoft-ASR_UA*Windows*release.exe MobilityServiceInstaller.exe
   MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
   cd C:\Temp\Extracted
   ```
@@ -130,7 +130,7 @@ ms.locfileid: "88604737"
 
 設定 | 詳細資料
 --- | ---
-語法 | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
+Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 安裝程式記錄 | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | 必要安裝參數。 指定應該要安裝行動服務 (MS) 還是主要目標 (MT)。
 `/InstallLocation`| 選擇性參數。 指定行動服務安裝位置 (任何資料夾)。
@@ -141,7 +141,7 @@ ms.locfileid: "88604737"
 
 設定 | 詳細資料
 --- | ---
-語法 | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
+Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
 代理程式設定記錄 | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
 `/CSEndPoint` | 必要參數。 `<CSIP>` 指定設定伺服器的 IP 位址。 請使用任何有效的 IP 位址。
 `/PassphraseFilePath` |  Mandatory。 複雜密碼的位置。 請使用任何有效的 UNC 或本機檔案路徑。
@@ -171,7 +171,7 @@ ms.locfileid: "88604737"
 
 設定 | 詳細資料
 --- | ---
-語法 | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
+Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 `-r` | 必要安裝參數。 指定應該要安裝行動服務 (MS) 還是主要目標 (MT)。
 `-d` | 選擇性參數。 指定行動服務安裝位置： `/usr/local/ASR` 。
 `-v` | Mandatory。 指定安裝行動服務的平臺。 <br/> **Vmware 適用于 Vmware** vm/實體伺服器。 <br/> 適用于 Azure Vm 的**azure** 。
@@ -181,7 +181,7 @@ ms.locfileid: "88604737"
 
 設定 | 詳細資料
 --- | ---
-語法 | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
+Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
 `-i` | 必要參數。 `<CSIP>` 指定設定伺服器的 IP 位址。 請使用任何有效的 IP 位址。
 `-P` |  Mandatory。 儲存複雜密碼之檔案的完整檔案路徑。 請使用任何有效的資料夾。
 

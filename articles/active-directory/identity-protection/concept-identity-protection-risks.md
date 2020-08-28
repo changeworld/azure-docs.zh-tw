@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 629173612f091319f6dec57b1cdfcfea41033bfc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815047"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047100"
 ---
 # <a name="what-is-risk"></a>什麼是風險？
 
@@ -39,7 +39,6 @@ Identity Protection 可讓組織存取強大的資源，以快速查看及回應
 | 風險偵測 | 描述 |
 | --- | --- |
 | 認證外洩 | 此風險偵測類型表示使用者的有效認證已洩露。 當網路罪犯入侵合法使用者的有效密碼時，他們通常會共用這些認證。 這項共用通常是藉由在黑色市場上公開張貼、貼上網站，或透過交易和銷售認證來完成。 當 Microsoft 洩漏的認證服務從深色 web、貼上網站或其他來源取得使用者認證時，系統會根據 Azure AD 使用者目前有效的認證來檢查它們，以找出有效的相符專案。 如需洩漏認證的詳細資訊，請參閱 [常見問題](#common-questions)。 |
-| 密碼噴灑 | 密碼噴灑攻擊是指以統一的暴力密碼破解方式使用一般密碼來攻擊多個使用者名稱的攻擊，以取得未經授權的存取權。 執行密碼噴灑攻擊時，會觸發此風險偵測。 |
 | Azure AD 威脅情報 | 此風險偵測類型指出指定使用者不尋常的使用者活動，或是與以 Microsoft 內部和外部威脅情報來源為基礎的已知攻擊模式一致的使用者活動。 |
 
 ### <a name="sign-in-risk"></a>登入風險
@@ -57,6 +56,7 @@ Identity Protection 可讓組織存取強大的資源，以快速查看及回應
 | 系統管理員已確認消費者遭盜用 | 離線 | 此偵測表示系統管理員已在具風險的使用者 UI 或使用 riskyUsers API 中選取 [確認使用者遭盜用]。 若要查看哪些系統管理員已確認此使用者遭盜用，請透過 UI 或 API) 檢查使用者的風險歷程記錄 (。 |
 | 惡意 IP 位址 | 離線 | 此偵測表示從惡意 IP 位址登入。 因為從 IP 位址或其他 IP 信譽來源收到的認證無效，所以會根據高失敗率將 IP 位址視為惡意。 |
 | 可疑的收件匣操作規則 | 離線 | [Microsoft Cloud App Security (MCAS) ](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules)會探索此偵測。 此偵測可描述您的環境，並在使用者收件匣上設定會刪除或移動訊息或資料夾的可疑規則時觸發警示。 這項偵測可能表示使用者的帳戶遭到入侵、已刻意隱藏訊息，以及用來在組織中散發垃圾郵件或惡意程式碼的信箱。 |
+| 密碼噴灑 | 離線 | 密碼噴灑攻擊是指以統一的暴力密碼破解方式使用一般密碼來攻擊多個使用者名稱的攻擊，以取得未經授權的存取權。 執行密碼噴灑攻擊時，會觸發此風險偵測。 |
 | 不可能的旅遊 | 離線 | [Microsoft Cloud App Security (MCAS) ](/cloud-app-security/anomaly-detection-policy#impossible-travel)會探索此偵測。 此偵測會識別在一段時間內出現的兩個使用者活動 (可能是單一或多個工作階段)，它們來自遙遠的地理位置，而使用者從第一個位置移動到第二個位置所需的時間會比此段時間長，這代表不同的使用者在使用相同的認證。 |
 
 ### <a name="other-risk-detections"></a>其他風險偵測

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f0cb99fd7f2ce842f76cbe1df2f598f2188ca41
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 14612247d241aed420a76ff40e19d04164cbe150
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948890"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049922"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>規劃條件式存取部署
 
@@ -242,7 +242,7 @@ CA 原則是 if-then 語句：如果符合指派，則套用這些存取控制�
 
 [報告專用模式](concept-conditional-access-report-only.md) \(部分機器翻譯\) 可讓管理員在於 CA 原則的環境中加以啟用之前，先評估其影響。
 
-了解如何[在 CA 原則上設定報告專用模式](howto-conditional-access-report-only.md) \(部分機器翻譯\)。
+了解如何[在 CA 原則上設定報告專用模式](howto-conditional-access-insights-reporting.md) \(部分機器翻譯\)。
 
 ### <a name="plan-for-disruption"></a>針對中斷進行規劃
 

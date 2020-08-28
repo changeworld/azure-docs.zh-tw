@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 678c32703501c4d0b66321cfc3518631ffa28c0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253268"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049412"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>條件式存取見解和報告
 
@@ -97,24 +97,44 @@ ms.locfileid: "85253268"
 
 您也可在儀表板底部搜尋登入，以調查特定使用者的登入。 左側的查詢會顯示最常出現的使用者。 選取使用者會篩選右側的查詢。  
 
+> [!NOTE]
+> 下載登入記錄檔時，請選擇 [JSON 格式]，以包含條件式存取報表的結果資料。
+
+## <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>在僅限報表模式中設定條件式存取原則
+
+若要在僅限報表模式中設定條件式存取原則：
+
+1. 以條件式存取系統管理員、安全性系統管理員或全域管理員身分登入 **Azure 入口網站** 。
+1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
+1. 選取現有的原則，或建立新的原則。
+1. 在 [ **啟用原則** ] 下，將切換切換為 **僅限報表** 模式。
+1. 選取 [儲存]
+
+> [!TIP]
+> 將現有原則的 [ **啟用原則** 狀態] 從 [ **開啟** ] 編輯為 [ **僅限報表** ] 會停用現有的原則強制執行。 
+
 ## <a name="troubleshooting"></a>疑難排解
 
 ### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>為什麼查詢因為許可權錯誤而失敗？
 
-為了存取活頁簿，您需要適當的 Azure AD 許可權，以及 Log Analytics 工作區許可權。 若要測試您是否具有適當的工作區許可權，請執行範例 log analytics 查詢：
+為了存取活頁簿，您需要適當的 Azure AD 許可權，以及 Log Analytics 工作區許可權。 若要測試您是否有執行範例 log analytics 查詢的適當工作區許可權：
 
 1. 登入 **Azure 入口網站**。
 1. 流覽至**Azure Active Directory**  >  **記錄**檔。
-1. `SigninLogs`在 [查詢] 方塊中輸入，然後選取 [**執行**]。
+1. 在 `SigninLogs` [查詢] 方塊中輸入，然後選取 [ **執行**]。
 1. 如果查詢未傳回任何結果，則您的工作區可能未正確設定。 
 
-![疑難排解失敗的查詢](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
+![針對失敗的查詢進行疑難排解](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
 
-如需有關如何將 Azure AD 登入記錄串流至 Log Analytics 工作區的詳細資訊，請參閱將[Azure AD 記錄與 Azure 監視器記錄整合](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)一文。
+如需有關如何將 Azure AD 登入記錄串流至 Log Analytics 工作區的詳細資訊，請參閱將 [Azure AD 記錄與 Azure 監視器記錄整合](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)的文章。
+
+### <a name="why-are-the-queries-in-the-workbook-failing"></a>活頁簿中的查詢為何失敗？
+
+客戶注意到，如果有錯誤或多個工作區與活頁簿相關聯，查詢有時會失敗。 若要修正這個問題，請按一下活頁簿頂端的 [ **編輯** ]，然後按一下 [設定] 齒輪。 選取並移除未與活頁簿相關聯的工作區。 每個活頁簿只能有一個相關聯的工作區。
 
 ### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>條件式存取原則參數為何是空的？
 
-原則清單會藉由查看針對最新登入事件評估的原則來產生。 如果您的租使用者中沒有最近的登入，您可能需要等候幾分鐘的時間，讓活頁簿載入條件式存取原則的清單。 這可能會在設定 Log Analytics 之後立即發生，如果租使用者沒有最近的登入活動，則可能需要較長的時間。
+原則清單是藉由查看針對最近一次登入事件評估的原則所產生。 如果您的租使用者中沒有最近的登入，您可能需要等候幾分鐘，讓活頁簿載入條件式存取原則的清單。 這可能會在設定 Log Analytics 之後立即發生，如果租使用者沒有最近的登入活動，可能需要較長的時間。
 
 ### <a name="why-is-the-workbook-taking-a-long-time-to-load"></a>活頁簿為何需要很長的時間才能載入？  
 
@@ -134,4 +154,8 @@ ms.locfileid: "85253268"
  
 ## <a name="next-steps"></a>後續步驟
 
-[條件式存取報告專用模式](concept-conditional-access-report-only.md)
+- [條件式存取報告專用模式](concept-conditional-access-report-only.md)
+
+- 如需 Azure AD 活頁簿的詳細資訊，請參閱文章： [如何使用 Azure 監視器活頁簿來 Azure Active Directory 報表](../reports-monitoring/howto-use-azure-monitor-workbooks.md)。
+
+- [條件式存取一般原則](concept-conditional-access-policy-common.md)

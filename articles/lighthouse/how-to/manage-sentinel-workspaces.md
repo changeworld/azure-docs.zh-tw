@@ -1,14 +1,14 @@
 ---
 title: 大規模管理 Azure Sentinel 工作區
 description: 瞭解如何有效管理委派客戶資源上的 Azure Sentinel。
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 1734efb57b18cfc559144b13aaecb882612ca73b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 328c55afc141a7f2efd85104453342b62eae0bb2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511247"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050806"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>大規模管理 Azure Sentinel 工作區
 
@@ -29,7 +29,7 @@ Azure Sentinel 提供安全性分析和威脅情報，提供單一解決方案�
 
 - 每個受管理的租使用者都會保留資料的擁有權。
 - 支援在地理界限內儲存資料的需求。
-- 確保資料隔離，因為多個客戶的資料不會儲存在相同的工作區中。 
+- 確保資料隔離，因為多個客戶的資料不會儲存在相同的工作區中。
 - 防止資料從受管理的租使用者遭到外泄，以協助確保資料符合規範。
 - 相關成本會對每個受管理的租使用者收費，而不是管理租使用者。
 - 與 Azure Sentinel (（例如 Azure AD 活動記錄、Office 365 記錄或 Microsoft 威脅防護) 警示）整合的所有資料來源和資料連線器的資料，都會保留在每個客戶租使用者內。
@@ -71,13 +71,21 @@ MSSP 將管理的每個客戶訂用帳戶都必須 [上線至 Azure Lighthouse](
 
 ## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>在 Azure Sentinel 工作區中執行 Log Analytics 和搜尋查詢
 
-您可以在管理租使用者中集中建立和儲存威脅偵測的 Log Analytics 查詢，包括 [搜尋查詢](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting)。 然後，您可以使用 Union 運算子和工作區 ( # A1 運算式，在所有客戶的 Azure Sentinel 工作區上執行這些查詢。 如需詳細資訊，請參閱 [跨工作區查詢](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)。
+在管理租使用者（包括 [搜尋查詢](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting)）集中，建立並儲存威脅偵測的 Log Analytics 查詢。 然後，您可以使用 Union 運算子和工作區 ( # A1 運算式，在所有客戶的 Azure Sentinel 工作區上執行這些查詢。 如需詳細資訊，請參閱 [跨工作區查詢](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)。
 
 ## <a name="use-automation-for-cross-workspace-management"></a>使用自動化進行跨工作區管理
 
 您可以使用自動化來管理多個 Azure Sentinel 工作區，以及設定 [搜尋查詢](../../sentinel/hunting.md)、工作手冊和活頁簿。 如需詳細資訊，請參閱 [使用自動化的跨工作區管理](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation)。
 
 請注意，某些功能 [目前不支援跨多個工作區](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces)。
+
+## <a name="manage-security-of-office-365-environments"></a>管理 Office 365 環境的安全性
+
+使用 Azure Lighthouse 搭配 Azure Sentinel 來管理跨租使用者的 Office 365 環境安全性。 首先， [受管理的租使用者中必須啟用現成的 Office 365 資料連線器](../../sentinel/connect-office-365.md) ，才能將 Exchange 和 SharePoint (中的使用者和系統管理活動的相關資訊（包括 OneDrive) ）內嵌至受管理租使用者內的 Azure Sentinel 工作區。 這包括有關動作的詳細資料，例如檔案下載、傳送的存取要求、群組事件的變更，以及信箱作業，以及執行動作之使用者的相關資訊。 [Office 365 DLP 警示](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) 也支援作為內建 Office 365 連接器的一部分。
+
+您可以啟用 [Microsoft Cloud App Security (MCAS) 連接器](../../sentinel/connect-cloud-app-security.md) ，以將警示和 Cloud Discovery 記錄串流至 Azure Sentinel。 這可讓您深入瞭解雲端應用程式、取得精密的分析，以識別並對抗網路威脅，以及控制資料的傳輸方式。 您可以 [使用 (CEF) 的常見事件格式 ](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849)來取用 MCAS 的活動記錄。
+
+設定 Office 365 資料連線器之後，您可以使用跨租使用者 Azure Sentinel 功能，例如在活頁簿中查看和分析資料、使用查詢建立自訂警示，以及設定腳本來回應威脅。
 
 ## <a name="next-steps"></a>後續步驟
 

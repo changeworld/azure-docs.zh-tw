@@ -149,7 +149,7 @@
           href: app/data-retention-privacy.md
     - name: 警示
       items:
-        - name: 概觀
+        - name: 總覽
           href: platform/alerts-overview.md
         - name: 度量警示
           href: platform/alerts-metric-overview.md
@@ -329,6 +329,28 @@
       items:
         - name: 資料收集規則
           href: platform/data-collection-rule-overview.md
+        - name: 代理程式資料來源
+          items:
+            - name: 概觀
+              href: platform/agent-data-sources.md
+            - name: Windows 事件
+              href: platform/data-sources-windows-events.md
+            - name: 自訂 JSON 資料
+              href: platform/data-sources-json.md
+            - name: CollectD 效能資料
+              href: platform/data-sources-collectd.md
+            - name: syslog
+              href: platform/data-sources-syslog.md
+            - name: 效能計數器
+              href: platform/data-sources-performance-counters.md
+            - name: Linux 應用程式的效能
+              href: platform/data-sources-linux-applications.md
+            - name: IIS 記錄
+              href: platform/data-sources-iis-logs.md
+            - name: 自訂的記錄
+              href: platform/data-sources-custom-logs.md
+            - name: 自訂欄位
+              href: platform/custom-fields.md
         - name: 自訂度量
           items:
             - name: 自訂度量
@@ -361,6 +383,24 @@
             - name: 資料集合
               displayname: 'data collection rule,Azure Monitor agent'
               href: platform/data-collection-rule-azure-monitor-agent.md
+        - name: Log Analytics 代理程式
+          items:
+            - name: 概觀
+              href: platform/log-analytics-agent.md
+            - name: Windows 代理程式
+              href: platform/agent-windows.md
+            - name: Linux 代理程式
+              href: platform/agent-linux.md
+            - name: Windows 的 VM 延伸模組
+              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
+            - name: Linux 的 VM 延伸模組
+              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
+            - name: Log Analytics 閘道
+              href: platform/gateway.md
+            - name: 代理程式管理
+              href: platform/agent-manage.md
+            - name: 代理程式健康狀態
+              href: insights/solution-agenthealth.md
         - name: Azure 診斷擴充功能
           items:
             - name: 概觀
@@ -399,50 +439,10 @@
             - name: Linux
               displayname: diagnostics extension
               items:
-                - name: 概觀
+                - name: 總覽
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: 使用 Telegraf 收集計量
                   href: platform/collect-custom-metrics-linux-telegraf.md
-        - name: Log Analytics 代理程式
-          items:
-            - name: 概觀
-              href: platform/log-analytics-agent.md
-            - name: Windows 代理程式
-              href: platform/agent-windows.md
-            - name: Linux 代理程式
-              href: platform/agent-linux.md
-            - name: Windows 的 VM 延伸模組
-              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
-            - name: Linux 的 VM 延伸模組
-              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
-            - name: Log Analytics 閘道
-              href: platform/gateway.md
-            - name: 代理程式管理
-              href: platform/agent-manage.md
-            - name: 代理程式健康狀態
-              href: insights/solution-agenthealth.md
-            - name: 資料來源
-              items:
-                - name: 概觀
-                  href: platform/agent-data-sources.md
-                - name: Windows 事件
-                  href: platform/data-sources-windows-events.md
-                - name: 自訂 JSON 資料
-                  href: platform/data-sources-json.md
-                - name: CollectD 效能資料
-                  href: platform/data-sources-collectd.md
-                - name: syslog
-                  href: platform/data-sources-syslog.md
-                - name: 效能計數器
-                  href: platform/data-sources-performance-counters.md
-                - name: Linux 應用程式的效能
-                  href: platform/data-sources-linux-applications.md
-                - name: IIS 記錄
-                  href: platform/data-sources-iis-logs.md
-                - name: 自訂的記錄
-                  href: platform/data-sources-custom-logs.md
-                - name: 自訂欄位
-                  href: platform/custom-fields.md
         - name: 疑難排解
           items:
             - name: Log Analytics VM 延伸模組
@@ -983,7 +983,7 @@
           href: insights/vminsights-optout.md
     - name: 適用於容器的 Azure 監視器
       items:
-        - name: 概觀
+        - name: 總覽
           href: insights/container-insights-overview.md
         - name: 常見問題集
           href: faq.md#azure-monitor-for-containers

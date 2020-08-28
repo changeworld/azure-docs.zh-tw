@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fafe9fd46322b0720d876f5b70d204fdf23fbb2
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716294"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049565"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 來建立具彈性的存取控制管理策略
 
@@ -92,7 +92,7 @@ ms.locfileid: "88716294"
 
 ### <a name="contingencies-for-user-lockout"></a>使用者鎖定的應變措施
 
-或者，您的組織也可以建立應變原則。 若要建立應變原則，您必須定義商務持續性、營運成本、財務成本及安全性風險之間的取捨準則。 例如，您可以只針對一部分使用者、一部分應用程式、一部分用戶端或一部分位置，啟用應變原則。 應變原則可在沒有實作任何風險降低方法的情況下，於中斷情況發生期間，讓系統管理員和使用者能夠存取應用程式和資源。 Microsoft 建議在不使用時，于 [僅限報表模式](../conditional-access/howto-conditional-access-report-only.md) 中啟用應變原則，讓系統管理員能夠監視原則在需要開啟時可能產生的影響。
+或者，您的組織也可以建立應變原則。 若要建立應變原則，您必須定義商務持續性、營運成本、財務成本及安全性風險之間的取捨準則。 例如，您可以只針對一部分使用者、一部分應用程式、一部分用戶端或一部分位置，啟用應變原則。 應變原則可在沒有實作任何風險降低方法的情況下，於中斷情況發生期間，讓系統管理員和使用者能夠存取應用程式和資源。 Microsoft 建議在不使用時，于 [僅限報表模式](../conditional-access/howto-conditional-access-insights-reporting.md) 中啟用應變原則，讓系統管理員能夠監視原則在需要開啟時可能產生的影響。
 
  了解您在中斷情況發生期間的暴露情形，不僅有助於降低您的風險，也是您規劃程序中不可或缺的一部分。 若要建立您的應變計劃，請先判斷您組織的下列業務需求：
 
