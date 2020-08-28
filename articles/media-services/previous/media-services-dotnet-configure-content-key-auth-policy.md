@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e05c7a8388b662731c04ac4098d6eecb1d89fe4f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2419ea0db7c5653e7ff4f41b6aae842c5a37c80a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060147"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019329"
 ---
 # <a name="configure-a-content-key-authorization-policy-by-using-the-media-services-net-sdk"></a>使用媒體服務 .NET SDK 設定內容金鑰授權原則
 
@@ -34,7 +35,7 @@ ms.locfileid: "87060147"
 
 播放程式要求串流時，媒體服務便會使用 AES 或 DRM 加密，使用指定的金鑰動態加密您的內容。 為了將串流解密，播放程式將向金鑰傳遞服務要求金鑰。 為了決定使用者是否有權取得金鑰，服務會評估為金鑰指定的授權原則。
 
-媒體服務支援多種方式來驗證提出金鑰要求的使用者。 內容金鑰授權原則可以有一或多個授權限制。 選項包括開放式或權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 web 權杖（[SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)）格式和 JSON web 權杖（[JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3)）格式的權杖。
+媒體服務支援多種方式來驗證提出金鑰要求的使用者。 內容金鑰授權原則可以有一或多個授權限制。 選項包括開放式或權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 web 權杖中的權杖 ([SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)) 格式和 JSON web 權杖 ([JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3)) 格式。
 
 媒體服務不提供 STS。 您可以建立自訂 STS，或使用 Azure 存取控制服務來發行權杖。 STS 必須設定為建立使用指定金鑰簽署的權杖，並發行在權杖限制組態中指定的宣告 (如本文中所述)。 如果權杖有效，且權杖中的宣告符合為內容金鑰設定的宣告，媒體服務金鑰傳遞服務會將加密金鑰傳回給用戶端。
 
@@ -231,7 +232,7 @@ Open 限制表示系統會將金鑰傳遞給提出金鑰要求的任何人。 �
 ## <a name="playready-dynamic-encryption"></a>PlayReady 動態加密。
 您可以使用媒體服務來設定您要 PlayReady DRM 執行階段在使用者嘗試播放受保護內容時強制執行的權限和限制。 
 
-當您使用 PlayReady 保護內容時，您需要在授權原則中指定的其中一件事是定義[PlayReady 授權範本](media-services-playready-license-template-overview.md)的 XML 字串。 在適用於 .NET 的媒體服務 SDK 中，PlayReadyLicenseResponseTemplate 和 PlayReadyLicenseTemplate 類別可協助您定義 PlayReady 授權範本。
+當您使用 PlayReady 保護內容時，您需要在授權原則中指定的其中一件事，就是定義 [PlayReady 授權範本](media-services-playready-license-template-overview.md)的 XML 字串。 在適用於 .NET 的媒體服務 SDK 中，PlayReadyLicenseResponseTemplate 和 PlayReadyLicenseTemplate 類別可協助您定義 PlayReady 授權範本。
 
 若要了解如何使用 PlayReady 和 Widevine 來加密內容，請參閱[使用 PlayReady 和/或 Widevine 動態一般加密](media-services-protect-with-playready-widevine.md)。
 
@@ -437,5 +438,5 @@ Open 限制表示系統會將金鑰傳遞給提出金鑰要求的任何人。 �
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 現在，您已設定內容金鑰的授權原則，接著請參閱[如何設定資產傳遞原則](media-services-dotnet-configure-asset-delivery-policy.md)。

@@ -11,12 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 7d00801ccf67ff82dd0c00bf8aec616aa531668f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c9dce90b0dc563fb0fa7ecaaa0882167eef444a0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023478"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019890"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure Data Factory .NET SDK 來建立、監視及管理 Azure Data Factory
 > [!NOTE]
@@ -137,7 +138,7 @@ ms.locfileid: "87023478"
         </appSettings>
     </configuration>
     ```
-5. 在 App.Config 檔案中，使用您自己的值來更新** &lt; 應用程式 &gt; 識別碼**、 ** &lt; 密碼 &gt; **、訂用帳戶** &lt; 識別碼 &gt; **和租使用者** &lt; 識別碼 &gt; **的值。
+5. 在 App.Config 檔案中，以您自己的值更新** &lt; 應用程式 &gt; 識別碼**、 ** &lt; 密碼 &gt; **、訂用帳戶** &lt; 識別碼 &gt; **和租使用者** &lt; 識別碼 &gt; **的值。
 6. 將下列 **using** 陳述式新增至專案的 **Program.cs**檔案。
 
     ```csharp
@@ -445,7 +446,7 @@ ms.locfileid: "87023478"
     }
     ```
 
-15. 在 [方案總管中，展開專案： **DataFactoryAPITestApp**，以滑鼠右鍵按一下 [**參考**]，然後按一下 [**加入參考**]。 選取 `System.Configuration` 組件的核取方塊，然後按一下 [確定]****。
+15. 在方案總管中，展開 [專案： **>datafactoryapitestapp**]，以滑鼠右鍵按一下 [ **參考**]，然後按一下 [ **加入參考**]。 選取 `System.Configuration` 組件的核取方塊，然後按一下 [確定]****。
 15. 建置主控台應用程式。 按一下功能表上的 [建置]，再按一下 [建置方案]。
 16. 確認您 Azure Blob 儲存體之 adftutorial 容器中至少有一個檔案。 如果沒有，請在「記事本」中以下列內容建立 Emp.txt 檔案，然後將它上傳至 adftutorial 容器。
 
@@ -458,7 +459,7 @@ ms.locfileid: "87023478"
     * 連結服務：**AzureStorageLinkedService**
     * 資料集：**DatasetBlobSource** 和 **DatasetBlobDestination**。
     * 管線：**PipelineBlobSample**
-19. 確認輸出檔案已建立于**adftutorial**容器的**apifactoryoutput**資料夾中。
+19. 確認已在**adftutorial**容器的 **>apifactoryoutput**資料夾中建立輸出檔。
 
 ## <a name="get-a-list-of-failed-data-slices"></a>取得失敗資料配量的清單 
 
@@ -499,7 +500,7 @@ do
 while (response != null);
 ```
 
-## <a name="next-steps"></a>接下來的步驟
-請參閱下列範例，以使用 .NET SDK 建立管線，將資料從 Azure blob 儲存體複製到 Azure SQL Database： 
+## <a name="next-steps"></a>後續步驟
+請參閱下列範例，以使用 .NET SDK 建立管線，以將資料從 Azure blob 儲存體複製到 Azure SQL Database： 
 
 - [建立管線以將資料從 Blob 儲存體複製到 SQL Database](data-factory-copy-activity-tutorial-using-dotnet-api.md)

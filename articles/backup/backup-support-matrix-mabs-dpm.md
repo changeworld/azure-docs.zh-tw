@@ -3,12 +3,12 @@ title: MABS & System Center DPM 支援矩陣
 description: 本文摘要說明當您使用 Microsoft Azure 備份 Server (MABS) 或 System Center DPM 來備份內部部署和 Azure VM 資源時的 Azure 備份支援。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 26d9e3012749298a781cd611866bc6d0a6596979
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 90b79dfa412102b139f2f094fb9ca07a6361cab0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825217"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019567"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 備份 Server 或 System Center DPM 進行備份的支援矩陣
 
@@ -167,7 +167,7 @@ DPM 伺服器/MABS 需要存取下列 URL：
 **Storage** | **詳細資料**
 --- | ---
 **MBS** | DPM 2016/MABS v2 和更新版本支援新式備份儲存體 (MB) 。 MBS 不適用於 MABS v1。
-**Azure VM 上的 MABS 儲存體** | 資料會儲存在連接至 DPM/MABS VM 的 Azure 磁片上，並在 DPM/MABS 中進行管理。 可用於 DPM/MABS 存放集區的磁片數目受限於 VM 的大小。<br/><br/> A2 VM：4個磁片;A3 VM：8個磁片;A4 VM：16個磁片，每個磁片的大小上限為 1 TB。 這會決定可用的備份存放集區總計。<br/><br/> 您可以備份的資料量取決於連結的磁碟數目和大小。
+**Azure VM 上的 MABS 儲存體** | 資料會儲存在連接至 DPM/MABS VM 的 Azure 磁片上，並在 DPM/MABS 中進行管理。 可用於 DPM/MABS 存放集區的磁片數目受限於 VM 的大小。<br/><br/> A2 VM：4個磁片;A3 VM：8個磁片;A4 VM：16個磁片，每個磁片的大小上限為 1 TB。 這會決定可用的備份存放集區總數。<br/><br/> 您可以備份的資料量取決於連結的磁碟數目和大小。
 **Azure VM 上的 MABS 資料保留** | 建議您將資料保留在 DPM/MABS Azure 磁片上一天，並從 DPM/MABS 備份至保存庫，以延長保留時間。 如此一來，您就可以藉由將資料卸載至 Azure 備份來保護更大量的資料。
 
 ### <a name="modern-backup-storage-mbs"></a>新式備份儲存體 (MBS)

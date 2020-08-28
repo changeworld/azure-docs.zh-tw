@@ -8,18 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 46170a0eede92584b8ac4cc77ad61ca673cae65c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5755e14e53d359fd8b322939bf1325d21536d593
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935478"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020179"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>範例：使用 Bing 實體搜尋 API 建立自訂技能
 
 在此範例中，您將瞭解如何建立 web API 自訂技能。 這種技能會接受地點、公共資料和組織，並傳回其描述。 此範例會使用 [Azure](https://azure.microsoft.com/services/functions/) 函式來包裝 [Bing 實體搜尋 API](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) ，使其能實作為自訂技能介面。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 + 如果您不熟悉自訂技能應該實行的輸入/輸出介面，請參閱 [自訂技能介面](cognitive-search-custom-skill-interface.md) 文章。
 

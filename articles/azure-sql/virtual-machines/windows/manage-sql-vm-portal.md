@@ -12,24 +12,24 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8def7c52f2b1005419a29d35ef122b48f34fdee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04f502183b8240515ee136ce27d99bd4b5d6277c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668996"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010166"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>使用 Azure 入口網站管理 Azure 中的 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-在[Azure 入口網站](https://portal.azure.com)中， **SQL 虛擬機器**（vm）資源是獨立的管理服務。 您可以使用它同時檢視所有 SQL Server VM，並修改 SQL Server 專用的設定： 
+在 [Azure 入口網站](https://portal.azure.com)中， [**SQL 虛擬機器**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 資源是一種獨立的管理服務，用來管理 Azure vm 上的 SQL Server。 您可以使用它同時檢視所有 SQL Server VM，並修改 SQL Server 專用的設定： 
 
 ![SQL 虛擬機器資源](./media/manage-sql-vm-portal/sql-vm-manage.png)
 
 
 ## <a name="remarks"></a>備註
 
-- 建議您使用 **SQL 虛擬機器**資源，以在 Azure 中檢視及管理您的 SQL Server VM。 但目前，**SQL 虛擬機器**資源不支援管理[已終止支援](sql-server-2008-extend-end-of-support.md)的 SQL Server VM。 若要管理已終止支援 SQL Server VM 的設定，請改為使用已過時的 [SQL Server [設定] 索引標籤](#access-the-sql-server-configuration-tab)。 
+- 建議您在 Azure 中使用 [**SQL 虛擬機器**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 資源來查看和管理您的 SQL Server vm。 但目前，**SQL 虛擬機器**資源不支援管理[已終止支援](sql-server-2008-extend-end-of-support.md)的 SQL Server VM。 若要管理已終止支援 SQL Server VM 的設定，請改為使用已過時的 [SQL Server [設定] 索引標籤](#access-the-sql-server-configuration-tab)。 
 - **SQL 虛擬機器**資源僅適用於[已向 SQL VM 資源提供者註冊](sql-vm-resource-provider-register.md)的 SQL Server VM。 
 
 
@@ -51,7 +51,7 @@ ms.locfileid: "84668996"
    選取您的 SQL Server VM 會開啟 [SQL 虛擬機器] 資源： 
 
 
-   ![SQL 虛擬機器資源](./media/manage-sql-vm-portal/sql-vm-resource.png)
+   ![查看 SQL 虛擬機器資源](./media/manage-sql-vm-portal/sql-vm-resource.png)
 
 > [!TIP]
 > **SQL 虛擬機器**資源適用於專用的 SQL Server 設定。 在 [虛擬機器] 方塊中選取 VM 的名稱，以開啟 VM 特定但並非 SQL Server 專用的設定。 

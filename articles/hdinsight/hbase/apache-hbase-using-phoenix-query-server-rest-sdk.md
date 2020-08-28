@@ -6,14 +6,14 @@ ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/01/2020
-ms.openlocfilehash: 93136286dc14a5c7c69fe8c17829eddabddbfacf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4ad6d16e4c6d91b44061d99ffa1c397fb0e0ec28
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080052"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019635"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
@@ -96,7 +96,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 HBase 與任何其他 RDBMS 一樣，會將資料儲存在資料表中。 Phoenix 使用標準 SQL 查詢來建立新資料表，同時會定義主索引鍵和資料行類型。
 
-這個範例和所有後續的範例，會使用具現 `PhoenixClient` [化新的 PhoenixClient 物件](#instantiate-new-phoenixclient-object)時所定義的具現化物件。
+這個範例和所有稍後的範例都會使用具現化 `PhoenixClient` 的物件，如具現 [化新的 PhoenixClient 物件](#instantiate-new-phoenixclient-object)中所定義。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -172,7 +172,7 @@ finally
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-資料表的資料 `StateProvince` 行值將用於稍後的選取作業。
+資料表的資料 `StateProvince` 行值將在稍後的選取作業中使用。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -279,7 +279,7 @@ finally
 }
 ```
 
-執行 insert 陳述式的結構與建立新資料表類似。 在區塊的結尾 `try` ，會明確認可交易。 此範例會重複執行插入交易 300 次。 以下範例示範一個更有效率的批次插入程序。
+執行 insert 陳述式的結構與建立新資料表類似。 在區塊結束時 `try` ，會明確認可交易。 此範例會重複執行插入交易 300 次。 以下範例示範一個更有效率的批次插入程序。
 
 ## <a name="batch-insert-data"></a>批次插入資料
 

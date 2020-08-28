@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 533990ef0ea88be7f1f06021d7aa398e89f6390b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f4f69904954286f15d2fda13ddd26ee64c81776f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060320"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019363"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure 佇列儲存體監視 .NET 的媒體服務工作通知 
 
@@ -64,13 +65,13 @@ ms.locfileid: "87060320"
 > [!NOTE]
 > 要想監視工作的狀態，建議您接聽通知訊息，如下列範例所示：
 >
-> 或者，使用 **IJob.State** 屬性檢查工作狀態。  在**IJob**上的狀態設定為 [**已完成**] 之前，作業完成的通知訊息可能會到達。 **IJob.State** 屬性會延遲片刻再反映正確的狀態。
+> 或者，使用 **IJob.State** 屬性檢查工作狀態。  在 **IJob** 的狀態設定為 [ **已完成**] 之前，您可能會收到關於作業完成的通知訊息。 **IJob.State** 屬性會延遲片刻再反映正確的狀態。
 >
 >
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-1. 設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
+1. 設定您的開發環境，並在 app.config 檔案中填入連線資訊，如 [使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)所述。 
 2. 建立新的資料夾 (資料夾可在本機磁碟機上任意處)，並複製您想要編碼和串流處理或漸進式下載的 .mp4 檔案。 在此範例中，使用 "C:\Media" 路徑。
 3. 新增 **System.Runtime.Serialization** 程式庫的參考。
 

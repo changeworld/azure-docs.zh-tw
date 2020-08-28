@@ -1,22 +1,23 @@
 ---
-title: 單元
+title: 元件
 description: Azure 遠端轉譯範圍中的元件定義
 author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: bd2a6e16d34bf6c5b59ce7fa5c99975d44947770
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d957da572bfdd3119dda506ac8f5bb42064d7758
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021665"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020298"
 ---
 # <a name="components"></a>元件
 
 Azure 遠端轉譯使用[實體元件系統](https://en.wikipedia.org/wiki/Entity_component_system) \(英文\) 模式。 雖然[實體](entities.md)代表物件的位置和階層式組合，但元件會負責實作行為。
 
-最常使用的元件類型是 [:::no-loc text="mesh components":::](meshes.md) ，這會將網格新增至轉譯管線。 同樣地，[光線元件](../overview/features/lights.md)會用來新增光源，而[切割平面元件](../overview/features/cut-planes.md)會用來剪開網格。
+最常使用的元件類型是 [:::no-loc text="mesh components":::](meshes.md) ，會將網格新增至轉譯管線。 同樣地，[光線元件](../overview/features/lights.md)會用來新增光源，而[切割平面元件](../overview/features/cut-planes.md)會用來剪開網格。
 
 所有這些元件都使用其所連結實體的轉換 (位置、旋轉、縮放) 作為其參考點。
 

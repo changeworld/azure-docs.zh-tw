@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 8a87f9c9b2db2c6118134d76cefc7c2813f5a864
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 413664b790423fb5eafb58e2baaee46e10c6a929
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876660"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019958"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>定義 Azure Cosmos 容器的唯一索引鍵
 
@@ -38,7 +38,7 @@ ms.locfileid: "87876660"
 
 ## <a name="use-powershell"></a>使用 PowerShell
 
-若要建立具有唯一索引鍵的容器，請參閱[建立具有唯一金鑰和 TTL 的 Azure Cosmos 容器](manage-with-powershell.md#create-container-unique-key-ttl)
+若要建立具有唯一索引鍵的容器，請參閱 [建立具有唯一索引鍵和 TTL 的 Azure Cosmos 容器](manage-with-powershell.md#create-container-unique-key-ttl)
 
 ## <a name="use-the-net-sdk"></a>使用 .NET SDK
 
@@ -64,7 +64,7 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 
 # <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
-使用[.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)建立新容器時，請使用 SDK 的 Fluent API，以簡潔易懂的方式宣告唯一索引鍵。
+使用 [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)建立新的容器時，請使用 SDK 的流暢 API，以簡潔易懂的方式宣告唯一索引鍵。
 
 ```csharp
 await client.GetDatabase("database").DefineContainer(name: "container", partitionKeyPath: "/myPartitionKey")
@@ -151,5 +151,5 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解資料[分割](partition-data.md)
+- 深入瞭解 [分割](partition-data.md)
 - 探索[如何為工作編製索引](index-overview.md)

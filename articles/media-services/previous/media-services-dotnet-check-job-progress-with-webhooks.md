@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 0a82050bef36e139c122ea97f777fb5cb1906974
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ae177f2cbfa1b6ecef2ef6326b2d8b5008504933
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052970"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019397"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure Webhook 監視 .NET 的媒體服務作業通知 
 
@@ -42,13 +43,13 @@ ms.locfileid: "87052970"
 
 您可以在[這裡](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) \(英文\) 找到各種媒體服務 .NET Azure Functions 的定義 (包括本文所示的定義)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 需要有下列項目，才能完成教學課程：
 
 * 一個 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
-* 瞭解[如何使用 Azure Functions](../../azure-functions/functions-overview.md)。 另請檢閱 [Azure Functions HTTP 和 Webhook 繫結](../../azure-functions/functions-bindings-http-webhook.md)。
+* 瞭解 [如何使用 Azure Functions](../../azure-functions/functions-overview.md)。 另請檢閱 [Azure Functions HTTP 和 Webhook 繫結](../../azure-functions/functions-bindings-http-webhook.md)。
 
 ## <a name="create-a-function-app"></a>建立函數應用程式
 
@@ -381,7 +382,7 @@ URL to the manifest for client streaming using HLS protocol: http://mediapkeewmg
 本節會顯示將 Webhook 通知新增至工作的程式碼。 您也可以新增作業層級通知，這更適用於具有鏈結工作的作業。  
 
 1. 在 Visual Studio 中，建立新的 C# 主控台應用程式。 依序輸入 [名稱]、[位置] 和 [方案名稱]，然後按一下 [確定]。
-2. 使用[NuGet](https://www.nuget.org/packages/windowsazure.mediaservices)來安裝 Azure 媒體服務。
+2. 使用 [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) 來安裝 Azure 媒體服務。
 3. 使用適當的值來更新 App.config 檔案： 
     
    * Azure 媒體服務連線資訊， 

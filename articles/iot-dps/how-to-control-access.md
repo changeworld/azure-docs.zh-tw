@@ -1,6 +1,6 @@
 ---
 title: IoT 裝置佈建服務中的安全性端點 | Microsoft Docs
-description: 概念-如何控制後端應用程式對 IoT 裝置布建服務（DPS）的存取權。 包含安全性權杖的相關資訊。
+description: 概念-如何針對後端應用程式，控制對 IoT 裝置布建服務 (DPS) 的存取。 包含安全性權杖的相關資訊。
 author: wesmc7777
 manager: philmea
 ms.service: iot-dps
@@ -8,13 +8,13 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7ca1620c51640699fe8b31aef3504b8c67185253
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 5190ff2575f80a7c1c8c4fc9b386441497de23fb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423485"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020315"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制 Azure IoT 中樞裝置佈建服務的存取權
 

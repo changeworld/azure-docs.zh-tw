@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 58657ca604e7bd0fc081d6a5bb6ef18a8b7b5b48
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0710d41dd44872be550917cbac036d72d052c333
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091703"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019431"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>使用媒體服務傳遞 DRM 授權或 AES 金鑰 
 
@@ -30,7 +31,7 @@ Azure 媒體服務可讓您內嵌、編碼、新增內容保護，以及串流�
 
 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 媒體服務提供傳遞 PlayReady 和 Widevine 數位版權管理 (DRM) 授權及 AES-128 金鑰的服務。 媒體服務也提供 API，可讓您設定您要 DRM 執行階段在使用者播放受 DRM 保護內容時強制執行的權限和限制。 當使用者要求受保護的內容時，播放器應用程式會向媒體服務授權服務要求授權。 如果已獲得授權，媒體服務授權服務就會發出授權給播放器。 PlayReady 和 Widevine 授權包含解密金鑰，可被用戶端播放器用來解密和串流處理內容。
 
 媒體服務支援多種方式，來授權給提出授權要求或金鑰要求的使用者。 您可以設定內容金鑰的授權原則。 原則可以有一或多個限制。 選項包括開放式或權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 Web 權杖 (SWT) 格式和 JSON Web 權杖 (JWT) 格式的權杖。
@@ -355,6 +356,6 @@ namespace DeliverDRMLicenses
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [使用 PlayReady 和/或 Widevine 動態一般加密](media-services-protect-with-playready-widevine.md)
 * [使用 AES-128 動態加密和金鑰傳遞服務](media-services-protect-with-aes128.md)

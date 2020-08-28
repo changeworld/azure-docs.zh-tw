@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 48f728e697e3ca92eee0469c8368e966479fe7fb
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 85c99892a225de933da337e748ebde3370b6f7a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422227"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019601"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的一致性層級
 
@@ -63,7 +63,7 @@ Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
 用戶端可以覆寫服務所設定的預設一致性層級。 一致性層級可以根據每個要求來設定，而這會覆寫帳戶層級上設定的預設一致性層級。
 
 > [!TIP]
-> 一致性只能在要求層級**放寬**。 若要從較弱到更強的一致性進行移動，請更新 Cosmos 帳戶的預設一致性。
+> 一致性只能在要求層級 **放寬** 。 若要從較弱到更強的一致性進行移動，請更新 Cosmos 帳戶的預設一致性。
 
 ### <a name="net-sdk"></a><a id="override-default-consistency-dotnet"></a>.NET SDK
 
@@ -109,11 +109,11 @@ var response = await client.GetContainer(databaseName, containerName)
 
 --- 
 
-### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a>JAVA V2 Sdk
+### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a> JAVA V2 Sdk
 
 # <a name="async"></a>[非同步](#tab/api-async)
 
-Async JAVA V2 SDK （Maven .com. azure：： azure-cosmosdb）
+Async JAVA V2 SDK (Maven .com. azure：： azure-cosmosdb) 
 
 ```java
 // Override consistency at the client level
@@ -129,7 +129,7 @@ AsyncDocumentClient client =
 
 # <a name="sync"></a>[同步處理](#tab/api-sync)
 
-同步處理 JAVA V2 SDK （Maven .com. azure：： azure-documentdb）
+同步 JAVA V2 SDK (Maven .com. azure：： azure-documentdb) 
 
 ```java
 // Override consistency at the client level
@@ -214,7 +214,7 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 
 # <a name="async"></a>[非同步](#tab/api-async)
 
-Async JAVA V2 SDK （Maven .com. azure：： azure-cosmosdb）
+Async JAVA V2 SDK (Maven .com. azure：： azure-cosmosdb) 
 
 ```java
 // Get session token from response
@@ -238,7 +238,7 @@ Observable<ResourceResponse<Document>> readObservable = client.readDocument(docu
 
 # <a name="sync"></a>[同步處理](#tab/api-sync)
 
-同步處理 JAVA V2 SDK （Maven .com. azure：： azure-documentdb）
+同步 JAVA V2 SDK (Maven .com. azure：： azure-documentdb) 
 
 ```java
 // Get session token from response
@@ -279,7 +279,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>監視機率限定過期 (PBS) 計量
 
-最終一致性的界定標準為何？ 針對平均案例，我們可根據版本記錄和時間來提供過期界限。 [**機率限定過期 (PBS)**](https://pbs.cs.berkeley.edu/) 計量會嘗試量化過期的機率，並將其顯示為計量。 若要檢視 PBS 計量，請在 Azure 入口網站中移至您的 Azure Cosmos 帳戶。 開啟 [**計量**] 窗格，然後選取 [**一致性**] 索引標籤。**根據您的工作負載（請參閱 PBS）** 查看名為 [強式一致讀取] 機率的圖表。
+最終一致性的界定標準為何？ 針對平均案例，我們可根據版本記錄和時間來提供過期界限。 [**機率限定過期 (PBS)**](https://pbs.cs.berkeley.edu/) 計量會嘗試量化過期的機率，並將其顯示為計量。 若要檢視 PBS 計量，請在 Azure 入口網站中移至您的 Azure Cosmos 帳戶。 開啟 [ **計量** ] 窗格，然後選取 [ **一致性** ] 索引標籤。查看以 **您的工作負載為基礎的強式一致讀取的圖表， (查看 PBS) **。
 
 :::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure 入口網站中的 PBS 圖形":::
 

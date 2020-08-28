@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: c165663e19037bd2ebac410adb6b6d05fcc162e6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3de7101eb998d0f9b3b57afba6d19595738cbb63
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076346"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020400"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 執行 MapReduce 作業
 
@@ -26,7 +26,7 @@ ms.locfileid: "86076346"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* HDInsight 上的 Apache Hadoop 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop](../hdinsight-hadoop-create-linux-clusters-portal.md)叢集。
+* HDInsight 上的 Apache Hadoop 叢集。 請參閱 [使用 Azure 入口網站建立 Apache Hadoop](../hdinsight-hadoop-create-linux-clusters-portal.md)叢集。
 
 * [Visual Studio](https://visualstudio.microsoft.com/vs/community/)。
 
@@ -34,15 +34,15 @@ ms.locfileid: "86076346"
 
 HDInsight .NET SDK 提供 .NET 用戶端程式庫，可讓您更輕鬆地從 .NET 使用 HDInsight 叢集。
 
-1. 啟動 Visual Studio 並建立 c # 主控台應用程式。
+1. 啟動 Visual Studio，然後建立 c # 主控台應用程式。
 
-1. 流覽至 [**工具**] [  >  **NuGet 套件管理員**]  >  [**套件管理員主控台**]，然後輸入下列命令：
+1. 流覽至 [**工具**]  >  **NuGet 封裝管理員**  >  **封裝管理員主控台**，然後輸入下列命令：
 
     ```   
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
 
-1. 將下列程式碼複製到**Program.cs**。 然後藉由設定下列各項的值來編輯程式碼： `existingClusterName` 、 `existingClusterPassword` 、 `defaultStorageAccountName` 、 `defaultStorageAccountKey` 和 `defaultStorageContainerName` 。
+1. 將下列程式碼複製到 **Program.cs**中。 然後藉由設定下列值來編輯程式碼： `existingClusterName` 、、 `existingClusterPassword` `defaultStorageAccountName` 、 `defaultStorageAccountKey` 和 `defaultStorageContainerName` 。
 
     ```csharp
     using System.Collections.Generic;
@@ -161,13 +161,13 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，可讓您更輕鬆地從 .NE
 
     ```
 
-1. 按**F5**執行應用程式。
+1. 按 **F5** 執行應用程式。
 
 若要再次執行作業，您必須在範例中變更作業輸出檔案夾名稱 `/example/data/davinciwordcount` 。
 
-當作業順利完成時，應用程式會列印輸出檔案的內容 `part-r-00000` 。
+當工作順利完成時，應用程式會列印輸出檔案的內容 `part-r-00000` 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您學到幾種建立 HDInsight 叢集的方法。 如需詳細資訊，請參閱下列文章：
 

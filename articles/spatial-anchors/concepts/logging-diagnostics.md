@@ -1,6 +1,6 @@
 ---
 title: 記錄和診斷
-description: 如何在 Azure 空間錨點中產生和取出記錄和診斷的深入說明。
+description: 深入說明如何在 Azure 空間錨點中產生和取出記錄和診斷。
 author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
@@ -8,22 +8,23 @@ ms.author: rgarcia
 ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f4359db1deda2295a66bcb97cf374d0fe9bc3ef7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: da941aa8b616fffeb2e283480c2a1e2f9cf7a093
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74270134"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003111"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Azure 空間錨點中的記錄和診斷
 
-Azure 空間錨點提供標準記錄機制，適用于應用程式開發。 當您需要更多的偵錯工具資訊時，空間錨點診斷記錄模式非常有用。 診斷記錄會儲存環境的影像。
+Azure 空間錨點提供適用于應用程式開發的標準記錄機制。 當您需要更多的偵錯工具資訊時，空間錨點診斷記錄模式會很有用。 診斷記錄會儲存環境的影像。
 
 ## <a name="standard-logging"></a>標準記錄
-在空間錨點 API 中，您可以訂閱記錄機制，以取得有用的記錄以進行應用程式開發和偵測。 標準記錄 Api 不會將環境的圖片儲存在裝置磁片上。 SDK 會提供這些記錄做為事件回呼。 您必須將這些記錄檔整合至應用程式的記錄機制。
+在空間錨點 API 中，您可以訂閱記錄機制來取得有用的記錄，以便進行應用程式開發和偵錯工具。 標準記錄 Api 不會將環境的圖片儲存在裝置磁片上。 SDK 會將這些記錄提供為事件回呼。 您可以自行將這些記錄整合至應用程式的記錄機制。
 
-### <a name="configuration-of-log-messages"></a>記錄訊息的設定
-使用者有兩個有意義的回呼。 下列範例顯示如何設定會話。
+### <a name="configuration-of-log-messages"></a>設定記錄檔訊息
+使用者有兩個感興趣的回呼。 下列範例顯示如何設定會話。
 
 ```csharp
     cloudSpatialAnchorSession = new CloudSpatialAnchorSession();
@@ -42,23 +43,23 @@ Azure 空間錨點提供標準記錄機制，適用于應用程式開發。 當�
 
 系統會提供這些事件回呼，以處理來自會話的記錄和錯誤：
 
-- [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel)：指定要從執行時間接收之事件的詳細資料層級。
-- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug)：提供標準的 debug 記錄事件。
+- [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel)：指定要從執行時間接收之事件的詳細層級。
+- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug)：提供標準的 debug 錯記錄事件。
 - [錯誤](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error)：提供執行時間視為錯誤的記錄事件。
 
 ## <a name="diagnostics-logging"></a>診斷記錄
 
-除了用於記錄作業的標準模式以外，空間錨點也具有診斷模式。 診斷模式會捕獲環境的映射，並將其記錄到磁片中。 您可以使用此模式來偵測特定種類的問題，例如無法以可預測的方式找出錨點。 僅啟用診斷記錄以重現特定的問題。 然後將它停用。 當您正常執行應用程式時，請勿啟用診斷功能。
+除了用於記錄的標準作業模式之外，空間錨點也有診斷模式。 診斷模式會捕獲環境的映射，並將其記錄至磁片。 您可以使用此模式來偵測特定類型的問題，例如無法預期地找出錨點。 只啟用診斷記錄以重現特定問題。 然後停用它。 當您正常執行您的應用程式時，請勿啟用診斷功能。
 
-在與 Microsoft 的支援互動期間，Microsoft 代表可能會詢問您是否願意提交診斷配套以進行進一步調查。 在此情況下，您可能會決定啟用診斷並重現問題，以便您可以提交診斷配套。
+在與 Microsoft 的互動支援期間，Microsoft 代表可能會詢問您是否願意提交診斷配套以進行進一步的調查。 在此情況下，您可能會決定啟用診斷並重現問題，以便您可以提交診斷配套。
 
-如果您將診斷記錄提交給 Microsoft，但未事先收到 Microsoft 代表的通知，則提交將會未經解答。
+如果您向 Microsoft 提交診斷記錄，但未收到來自 Microsoft 代表的事先通知，提交將不會獲得解答。
 
 下列各節說明如何啟用診斷模式，以及如何將診斷記錄提交給 Microsoft。
 
 ### <a name="enable-diagnostics-logging"></a>啟用診斷記錄
 
-當您啟用診斷記錄的會話時，會話中的所有作業在本機檔案系統中都會有對應的診斷記錄。 在記錄期間，環境的映射會儲存至磁片。
+當您啟用診斷記錄的會話時，會話中的所有作業在本機檔案系統中都會有對應的診斷記錄。 在記錄期間，會將環境的影像儲存至磁片。
 
 ```csharp
 private void ConfigureSession()
@@ -88,7 +89,7 @@ private void ConfigureSession()
 
 ### <a name="submit-the-diagnostics-bundle"></a>提交診斷配套
 
-下列程式碼片段顯示如何將診斷配套提交給 Microsoft。 此配套會包含在啟用診斷之後，由會話所捕捉到的環境影像。
+下列程式碼片段顯示如何將診斷配套提交給 Microsoft。 此套組將包含在您啟用診斷之後，會話所捕獲的環境映射。
 
 ```csharp
 // method to handle the diagnostics bundle submission
@@ -107,6 +108,6 @@ private async Task CreateAndSubmitBundle()
 ### <a name="parts-of-a-diagnostics-bundle"></a>診斷配套的元件
 診斷配套可能包含下列資訊：
 
-- 主要**畫面格影像**：啟用診斷時，在會話期間所捕捉到的環境影像。
-- **記錄**：執行時間所記錄的記錄事件。
-- **會話中繼資料**：可識別會話的中繼資料。
+- 主要**畫面格影像**：啟用診斷時，在會話期間所捕獲的環境影像。
+- **記錄**：執行時間記錄的記錄事件。
+- **會話中繼資料**：識別會話的中繼資料。

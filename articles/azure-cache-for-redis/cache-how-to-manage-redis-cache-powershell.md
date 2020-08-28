@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: c51e67dcc3536a3083179451743b1c97cf618dae
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 327505dfbaf5f6f35b065f4f3941053c5114aa33
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004863"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019210"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Cache for Redis
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ ms.locfileid: "88004863"
 
 在將 Windows PowerShell 與 Azure 資源管理員搭配使用之前，您需要下列項目：
 
-* Windows PowerShell 3.0 或 4.0 版本。 若要找出 Windows PowerShell 的版本，輸入：`$PSVersionTable`，並確認 `PSVersion` 的值是 3.0 或 4.0。 若要安裝相容版本，請參閱 [Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595) 或 [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)。
+* Windows PowerShell 3.0 或 4.0 版本。 若要找出 Windows PowerShell 的版本，輸入：`$PSVersionTable`，並確認 `PSVersion` 的值是 3.0 或 4.0。 若要安裝相容的版本，請參閱 [Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595)。
 
 若要取得您在本教學課程中任何所見 Cmdlet 的詳細說明，請使用 Get-Help Cmdlet。
 
@@ -655,7 +655,7 @@ ms.locfileid: "88004863"
 您可以使用 `Import-AzRedisCache` Cmdlet 將資料匯入 Azure Cache for Redis 執行個體中。
 
 > [!IMPORTANT]
-> 匯入/匯出僅[適用于進](cache-overview.md#service-tiers)階層快取。 如需匯入/匯出的詳細資訊，請參閱 [在 Azure Cache for Redis 中匯入與匯出資料](cache-how-to-import-export-data.md)。
+> 匯入/匯出僅 [適用于進](cache-overview.md#service-tiers) 階層快取。 如需匯入/匯出的詳細資訊，請參閱 [在 Azure Cache for Redis 中匯入與匯出資料](cache-how-to-import-export-data.md)。
 > 
 > 
 
@@ -719,7 +719,7 @@ ms.locfileid: "88004863"
 您可以使用 `Export-AzRedisCache` Cmdlet 從 Azure Cache for Redis 執行個體匯出資料。
 
 > [!IMPORTANT]
-> 匯入/匯出僅[適用于進](cache-overview.md#service-tiers)階層快取。 如需匯入/匯出的詳細資訊，請參閱 [在 Azure Cache for Redis 中匯入與匯出資料](cache-how-to-import-export-data.md)。
+> 匯入/匯出僅 [適用于進](cache-overview.md#service-tiers) 階層快取。 如需匯入/匯出的詳細資訊，請參閱 [在 Azure Cache for Redis 中匯入與匯出資料](cache-how-to-import-export-data.md)。
 > 
 > 
 
@@ -784,7 +784,7 @@ ms.locfileid: "88004863"
 您可以使用 `Reset-AzRedisCache` Cmdlet 將 Azure Cache for Redis 執行個體重新啟動。
 
 > [!IMPORTANT]
-> 重新開機僅[適用于進](cache-overview.md#service-tiers)階層快取。 如需重新啟動快取的詳細資訊，請參閱 [快取管理 - 重新啟動](cache-administration.md#reboot)。
+> 重新開機僅適用于 [Premium 層](cache-overview.md#service-tiers) 快取。 如需重新啟動快取的詳細資訊，請參閱 [快取管理 - 重新啟動](cache-administration.md#reboot)。
 > 
 > 
 

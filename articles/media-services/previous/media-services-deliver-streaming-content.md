@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9c7a29ebb355a5733201ff01af9e38f371def1cf
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2dff01841a97de4a7683f1bf4a0dbb3125b5dbd8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962810"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019414"
 ---
 # <a name="publish-media-services-content-using-net"></a>使用 .NET 發佈媒體服務內容  
 > [!div class="op_single_selector"]
@@ -29,7 +30,7 @@ ms.locfileid: "85962810"
 > 
 > 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 您可以建立隨選串流定位器及建置串流 URL，串流處理調適性位元速率 MP4 集。 [為資產編碼](media-services-encode-asset.md) 主題說明如何編碼為調適性位元速率 MP4 集。 
 
 > [!NOTE]
@@ -103,11 +104,11 @@ ms.locfileid: "85962810"
   `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest`
 - 使用 HLS 通訊協定之用戶端資料流程的資訊清單 URL： \
   `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)`
-- 使用 MPEG 破折號通訊協定之用戶端資料流程的資訊清單 URL： \
+- 使用 MPEG 破折號通訊協定的用戶端資料流程的資訊清單 URL： \
   `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)`
 
 > [!NOTE]
-> 您也可以透過 TLS 連線來串流處理您的內容。 若要執行這個方法，請確定您的串流 URL 是以 HTTPS 開頭。 目前，AMS 不支援使用自訂網域的 TLS。
+> 您也可以透過 TLS 連接來串流您的內容。 若要執行這個方法，請確定您的串流 URL 是以 HTTPS 開頭。 目前，AMS 不支援使用自訂網域的 TLS。
 > 
 > 
 

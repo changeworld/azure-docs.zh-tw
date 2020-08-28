@@ -3,12 +3,12 @@ title: 針對 Azure 備份代理程式進行疑難排解
 description: 在本文中，您將瞭解如何針對 Azure 備份代理程式的安裝和註冊進行疑難排解。
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 64996737a18add8ca1bee25e32929f1d602f9018
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 86f9dfd8554e2560ea16a85c3551dba3f7dc01f1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763502"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019618"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>針對 Microsoft Azure 復原服務 (MARS) 代理程式進行疑難排解
 
@@ -83,7 +83,7 @@ ms.locfileid: "88763502"
 
 ## <a name="backup-jobs-completed-with-warning"></a>備份作業已完成，但出現警告
 
-- MARS 代理程式在備份期間逐一查看檔案和資料夾時，可能會遇到可能導致備份標示為已完成但出現警告的各種狀況。 在這些情況下，工作會顯示為已完成，但出現警告。 這是正常的，但這表示至少有一個檔案無法備份。 如此一來，工作會略過該檔案，但會在資料來源上備份所有其他有問題的檔案。
+- MARS 代理程式在備份期間逐一查看檔案和資料夾時，可能會遇到可能導致備份標示為已完成但出現警告的各種狀況。 在這些情況下，工作會顯示為已完成，但出現警告。 沒問題，但這表示至少有一個檔案無法備份。 如此一來，工作會略過該檔案，但會在資料來源上備份所有其他有問題的檔案。
 
   ![備份作業已完成，但出現警告](./media/backup-azure-mars-troubleshoot/backup-completed-with-warning.png)
 
@@ -278,7 +278,7 @@ Microsoft Azure 復原服務代理程式無法存取臨時位置以初始化 VHD
 --|--
 找不到檔案中的變更。 這可能是由各種原因所造成。 請重試該作業 | 若要解決此問題，請確認下列步驟，然後再次嘗試操作：<br/> - [確定 MARS 代理程式是最新的](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [確認並解決影響備份暫存空間的儲存體問題](#prerequisites)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 取得有關 [如何使用 Azure 備份代理程式來備份 Windows Server](tutorial-backup-windows-server-to-azure.md)的詳細資料。
 - 如果您需要還原備份，請參閱將 [檔案還原到 Windows 電腦](backup-azure-restore-windows-server.md)。

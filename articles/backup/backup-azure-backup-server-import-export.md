@@ -3,12 +3,12 @@ title: 適用於 DPM 和 Azure 備份伺服器的離線備份
 description: 使用 Azure 備份，您可以使用 Azure 匯入/匯出服務，將資料從網路傳送。 本文說明 DPM 和 Azure 備份伺服器的離線備份工作流程。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 221424871aa4f022e199c98e95024ec20e55d803
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 909c7cc85590005afd3b6bd32a94020937f96c32
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890071"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002006"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM 和 Azure 備份伺服器 (MABS) 的離線備份工作流程
 
@@ -192,7 +192,7 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
 
 ### <a name="complete-the-workflow"></a>完成工作流程
 
-匯入作業完成之後，即可在您的儲存體帳戶中取得初始備份資料。 在下次排定的備份期間，Azure 備份會將資料的內容從儲存體帳戶複製到復原服務保存庫。
+匯入作業完成之後，即可在您的儲存體帳戶中取得初始備份資料。 下次排定的備份時，Azure 備份會將資料的內容從儲存體帳戶複製到復原服務保存庫。
 
 在下次排定的線上複本建立作業期間，Data Protection Manager 會對初始備份複本執行增量備份。
 

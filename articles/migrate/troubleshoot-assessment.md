@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: e9b9e0b27e46c95ca4c2bc3a5c547259bada5fda
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685403"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020349"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評量/相依性視覺效果疑難排解
 
@@ -164,7 +164,7 @@ Azure Migrate 依存于相依性視覺效果功能的服務對應。 因為 Azur
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
-- **MMS 代理程式**：檢查支援的 [Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)和 [Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) 作業系統。
+- **MMS 代理程式**：檢查支援的 [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)和 [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) 作業系統。
 - **Dependency agent**：支援的 [Windows 和 Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) 作業系統。
 
 ## <a name="visualize-dependencies-for--hour"></a>將 > 小時的相依性視覺化

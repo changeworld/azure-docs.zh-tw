@@ -1,18 +1,18 @@
 ---
-title: 管理 Azure Cosmos DB 中的區域之間的衝突
-description: 瞭解如何藉由建立最後寫入者為准或自訂衝突解決原則，管理 Azure Cosmos DB 中的衝突
+title: 管理 Azure Cosmos DB 中區域之間的衝突
+description: 瞭解如何藉由建立最後寫入-獲勝或自訂衝突解決原則來管理 Azure Cosmos DB 中的衝突
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 0f823c00f4362fc018fb52b2d8458fa58d6831d2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: ec9e6bc7daad05284893ce3148f9a80f500c5cbb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422244"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019941"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理衝突解決原則
 
@@ -72,9 +72,9 @@ Container container = await createClient.GetDatabase(this.databaseName)
 
 ### <a name="java-v2-sdks"></a><a id="create-custom-conflict-resolution-policy-lww-javav2"></a>JAVA V2 Sdk
 
-# <a name="async-java-v2-sdk"></a>[非同步 JAVA V2 SDK](#tab/async)
+# <a name="async-java-v2-sdk"></a>[Async JAVA V2 SDK](#tab/async)
 
-[非同步 JAVA V2 SDK](sql-api-sdk-async-java.md)  （Maven [.com. azure：： azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)）
+[Async JAVA V2 SDK](sql-api-sdk-async-java.md)   (Maven [.com. azure：： azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)) 
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -84,9 +84,9 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-# <a name="sync-java-v2-sdk"></a>[同步處理 JAVA V2 SDK](#tab/sync)
+# <a name="sync-java-v2-sdk"></a>[同步 JAVA V2 SDK](#tab/sync)
 
-[同步處理 JAVA V2 SDK](sql-api-sdk-java.md)  （Maven [.com。 azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)）
+[同步 JAVA V2 SDK](sql-api-sdk-java.md)   (Maven [.com. azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)) 
 
 ```java
 DocumentCollection lwwCollection = new DocumentCollection();
@@ -134,10 +134,10 @@ udp_collection = self.try_create_document_collection(
 
 您必須使用如下所示的函式簽章來實作自訂衝突解決預存程序。 函式名稱不需要符合向容器註冊預存程序時所使用的名稱，但符合的話可簡化命名程序。 下面會說明必須為此預存程序實作的參數。
 
-- **incomingItem**：要在產生衝突的認可中插入或更新的專案。 若為刪除作業，此參數為 null。
-- **existingItem**：目前已認可的專案。 在更新中，此值為非 Null，若為插入或刪除作業，則為 Null。
+- **incomingItem**：正在產生衝突的認可中所插入或更新的專案。 若為刪除作業，此參數為 null。
+- **existingItem**：目前認可的專案。 在更新中，此值為非 Null，若為插入或刪除作業，則為 Null。
 - **isTombstone**：布林值，指出 incomingItem 是否與先前刪除的專案衝突。 若為 true，則 existingItem 也是 null。
-- **conflictingItems**：容器中所有專案的認可版本陣列，與識別碼或任何其他唯一索引屬性上的 incomingItem 衝突。
+- **conflictingItems**：容器中所有專案的認可版本陣列，這些專案與識別碼或任何其他唯一索引屬性上的 incomingItem 衝突。
 
 > [!IMPORTANT]
 > 和任何預存程序一樣，自訂衝突解決程序可以存取任何具有相同分割索引鍵的資料，並可執行任何插入、更新或刪除作業來解決衝突。
@@ -260,9 +260,9 @@ await container.Scripts.CreateStoredProcedureAsync(
 
 ### <a name="java-v2-sdks"></a><a id="create-custom-conflict-resolution-policy-stored-proc-javav2"></a>JAVA V2 Sdk
 
-# <a name="async-java-v2-sdk"></a>[非同步 JAVA V2 SDK](#tab/async)
+# <a name="async-java-v2-sdk"></a>[Async JAVA V2 SDK](#tab/async)
 
-[非同步 JAVA V2 SDK](sql-api-sdk-async-java.md)  （Maven [.com. azure：： azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)）
+[Async JAVA V2 SDK](sql-api-sdk-async-java.md)   (Maven [.com. azure：： azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)) 
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -272,9 +272,9 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-# <a name="sync-java-v2-sdk"></a>[同步處理 JAVA V2 SDK](#tab/sync)
+# <a name="sync-java-v2-sdk"></a>[同步 JAVA V2 SDK](#tab/sync)
 
-[同步處理 JAVA V2 SDK](sql-api-sdk-java.md)  （Maven [.com。 azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)）
+[同步 JAVA V2 SDK](sql-api-sdk-java.md)   (Maven [.com. azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)) 
 
 ```java
 DocumentCollection udpCollection = new DocumentCollection();
@@ -375,9 +375,9 @@ Container container = await createClient.GetDatabase(this.databaseName)
 
 ### <a name="java-v2-sdks"></a><a id="create-custom-conflict-resolution-policy-javav2"></a>JAVA V2 Sdk
 
-# <a name="async-java-v2-sdk"></a>[非同步 JAVA V2 SDK](#tab/async)
+# <a name="async-java-v2-sdk"></a>[Async JAVA V2 SDK](#tab/async)
 
-[非同步 JAVA V2 SDK](sql-api-sdk-async-java.md)  （Maven [.com. azure：： azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)）
+[Async JAVA V2 SDK](sql-api-sdk-async-java.md)   (Maven [.com. azure：： azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)) 
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -387,9 +387,9 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-# <a name="sync-java-v2-sdk"></a>[同步處理 JAVA V2 SDK](#tab/sync)
+# <a name="sync-java-v2-sdk"></a>[同步 JAVA V2 SDK](#tab/sync)
 
-[同步處理 JAVA V2 SDK](sql-api-sdk-java.md)  （Maven [.com。 azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)）
+[同步 JAVA V2 SDK](sql-api-sdk-java.md)   (Maven [.com. azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)) 
 
 ```java
 DocumentCollection manualCollection = new DocumentCollection();
@@ -464,9 +464,9 @@ while (conflictFeed.HasMoreResults)
 
 ### <a name="java-v2-sdks"></a><a id="read-from-conflict-feed-javav2"></a>JAVA V2 Sdk
 
-# <a name="async-java-v2-sdk"></a>[非同步 JAVA V2 SDK](#tab/async)
+# <a name="async-java-v2-sdk"></a>[Async JAVA V2 SDK](#tab/async)
 
-[非同步 JAVA V2 SDK](sql-api-sdk-async-java.md)  （Maven [.com. azure：： azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)）
+[Async JAVA V2 SDK](sql-api-sdk-async-java.md)   (Maven [.com. azure：： azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)) 
 
 ```java
 FeedResponse<Conflict> response = client.readConflicts(this.manualCollectionUri, null)
@@ -475,9 +475,9 @@ for (Conflict conflict : response.getResults()) {
     /* Do something with conflict */
 }
 ```
-# <a name="sync-java-v2-sdk"></a>[同步處理 JAVA V2 SDK](#tab/sync)
+# <a name="sync-java-v2-sdk"></a>[同步 JAVA V2 SDK](#tab/sync)
 
-[同步處理 JAVA V2 SDK](sql-api-sdk-java.md)  （Maven [.com。 azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)）
+[同步 JAVA V2 SDK](sql-api-sdk-java.md)   (Maven [.com. azure：： azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)) 
 
 ```java
 Iterator<Conflict> conflictsIterator = client.readConflicts(this.collectionLink, null).getQueryIterator();
@@ -513,7 +513,7 @@ while conflict:
 深入了解下列 Azure Cosmos DB 概念：
 
 - [全域散發 - 運作原理](global-dist-under-the-hood.md)
-- [如何在您的應用程式中設定多宿主](how-to-multi-master.md)
+- [如何在應用程式中設定多宿主](how-to-multi-master.md)
 - [設定多路連接的用戶端](how-to-manage-database-account.md#configure-multiple-write-regions)
 - [從您的 Azure Cosmos 帳戶新增或移除區域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 - [如何在應用程式中設定多重主機](how-to-multi-master.md)。

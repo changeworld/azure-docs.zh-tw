@@ -10,32 +10,33 @@ ms.date: 08/07/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: e0d442624448cfe48fdd9ab426147599acbb940d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 16179ae730e81ff1ff7c107e3af70b5ce24e8813
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034715"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001939"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>使用 .NET 建立容器或 blob 的服務 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文說明如何使用儲存體帳戶金鑰，以[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來建立容器或 blob 的服務 SAS。
+本文說明如何使用儲存體帳戶金鑰，透過 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來建立容器或 blob 的服務 SAS。
 
 ## <a name="create-a-service-sas-for-a-blob-container"></a>建立 blob 容器的服務 SAS
 
-下列程式碼範例會建立容器的 SAS。 如果提供現有預存存取原則的名稱，該原則將與 SAS 相關聯。 如果未提供任何預存存取原則，則程式碼會在容器上建立臨機操作 SAS。
+下列程式碼範例會建立容器的 SAS。 如果提供現有預存存取原則的名稱，該原則將與 SAS 相關聯。 如果未提供任何預存存取原則，則程式碼會在容器上建立特定 SAS。
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-建立新的[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)。 然後，呼叫[ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters)以取得 SAS 權杖字串。 
+建立新的 [>blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)。 然後，呼叫 [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 以取得 SAS 權杖字串。 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
 
 ### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-若要建立容器的服務 SAS，請呼叫[CloudBlobContainer. cloudblobcontainer.getsharedaccesssignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature)方法。
+若要建立容器的服務 SAS，請呼叫 [>cloudblobcontainer.listblobs. >cloudblobcontainer.getsharedaccesssignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) 方法。
 
 ```csharp
 private static string GetContainerSasUri(CloudBlobContainer container, string storedPolicyName = null)
@@ -81,17 +82,17 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 
 ## <a name="create-a-service-sas-for-a-blob"></a>建立 blob 的服務 SAS
 
-下列程式碼範例會在 blob 上建立 SAS。 如果提供現有預存存取原則的名稱，該原則將與 SAS 相關聯。 如果未提供任何預存存取原則，則程式碼會在 blob 上建立臨機操作 SAS。
+下列程式碼範例會在 blob 上建立 SAS。 如果提供現有預存存取原則的名稱，該原則將與 SAS 相關聯。 如果未提供任何預存存取原則，則程式碼會在 blob 上建立特定 SAS。
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-建立新的[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)。 然後，呼叫[ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters)以取得 SAS 權杖字串。 
+建立新的 [>blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)。 然後，呼叫 [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 以取得 SAS 權杖字串。 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
 
 ### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-若要建立 blob 的服務 SAS，請呼叫[CloudBlob. cloudblobcontainer.getsharedaccesssignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature)方法。
+若要建立 blob 的服務 SAS，請呼叫 [cloudblob.. >cloudblobcontainer.getsharedaccesssignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) 方法。
 
 ```csharp
 private static string GetBlobSasUri(CloudBlobContainer container, string blobName, string policyName = null)
@@ -141,5 +142,5 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 (SAS 的共用存取簽章，授與 Azure 儲存體資源的有限存取權) ](../common/storage-sas-overview.md)
+- [使用 (SAS) 的共用存取簽章來授與 Azure 儲存體資源的有限存取權 ](../common/storage-sas-overview.md)
 - [建立服務 SAS](/rest/api/storageservices/create-service-sas)

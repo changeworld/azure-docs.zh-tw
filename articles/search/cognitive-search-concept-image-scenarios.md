@@ -8,12 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6f1e19fd41b4d98cb401582cd86232d8ada25733
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 56ec893de159f4c8a90c5a229ccf7669856fb066
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935512"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020213"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>如何處理和解壓縮 AI 擴充案例中的影像資訊
 
@@ -213,7 +214,7 @@ Azure 認知搜尋有許多功能可處理影像和影像檔案。 在文件破�
         }
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 + [建立索引子 (REST) ](/rest/api/searchservice/create-indexer)
 + [影像分析技能](cognitive-search-skill-image-analysis.md)
 + [OCR 技術](cognitive-search-skill-ocr.md)

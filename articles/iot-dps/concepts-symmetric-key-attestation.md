@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中樞裝置佈建服務 - 對稱金鑰證明
-description: 本文提供使用 IoT 裝置布建服務（DPS）的對稱金鑰證明概念總覽。
+description: 本文提供使用 IoT 裝置布建服務 (DPS) 的對稱金鑰證明的概念總覽。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: c0a8680dc5c06bd1527b2cca732b58f484101a96
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ba4f67f924455b911d76426231cc71b661faf4a0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286490"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020332"
 ---
 # <a name="symmetric-key-attestation"></a>對稱金鑰證明
 
@@ -26,7 +27,7 @@ ms.locfileid: "87286490"
 
 ## <a name="symmetric-key-creation"></a>對稱金鑰建立
 
-根據預設，裝置布建服務會在啟用 [**自動產生金鑰**] 選項的儲存新註冊時，建立預設長度為64個位元組的新對稱金鑰。
+根據預設，裝置布建服務會在已啟用 **自動產生金鑰** 選項的情況下儲存新的註冊時，建立預設長度為64個位元組的新對稱金鑰。
 
 ![自動產生對稱金鑰](./media/concepts-symmetric-key-attestation/auto-generate-keys.png)
 

@@ -7,16 +7,17 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: b8cf0425a4a40c4692f4c0c7fcf11dbb23019b23
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 24f321e3c3c0fe8e85633edb505879874e8c772f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132665"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019227"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的計量進行監視及偵錯
 
-Azure Cosmos DB 為輸送量、儲存體、一致性、可用性和延遲提供計量。 Azure 入口網站會提供這些計量的彙總檢視。 您也可以從 Azure 監視器 API 檢視 Azure Cosmos DB 計量。 「容器名稱」等計量的維度值不區分大小寫。 因此，在對這些維度值進行字串比較時，您必須使用不區分大小寫比較。 若要瞭解如何從 Azure 監視器中查看計量，請參閱[從 Azure 監視器取得計量](cosmos-db-azure-monitor-metrics.md)一文。
+Azure Cosmos DB 為輸送量、儲存體、一致性、可用性和延遲提供計量。 Azure 入口網站會提供這些計量的彙總檢視。 您也可以從 Azure 監視器 API 檢視 Azure Cosmos DB 計量。 容器名稱等度量的維度值會區分大小寫。 因此，對這些維度值執行字串比較時，您必須使用不區分大小寫的比較。 若要瞭解如何從 Azure 監視器查看計量，請參閱「 [從 Azure 監視器取得度量](cosmos-db-azure-monitor-metrics.md) 」一文。
 
 本文將逐步解說常見的使用案例，以及如何使用 Azure Cosmos DB 計量來分析和偵錯這些問題。 系統每隔五分鐘就會收集計量一次並保留七天。
 
@@ -24,29 +25,29 @@ Azure Cosmos DB 為輸送量、儲存體、一致性、可用性和延遲提供�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)
 
-1. 開啟 [**計量**] 窗格。 根據預設，[計量] 窗格會顯示 Azure Cosmos 帳戶中所有資料庫的儲存體、索引、要求單位計量。 您可以針對每個資料庫、容器或區域篩選這些計量。 您也可以在特定時間細微性篩選計量。 如需輸送量、儲存體、可用性、延遲和一致性計量的詳細資訊，請在個別的索引標籤上提供。 
+1. 開啟 [ **計量** ] 窗格。 根據預設，[計量] 窗格會顯示 Azure Cosmos 帳戶中所有資料庫的儲存體、索引、要求單位度量。 您可以針對每個資料庫、容器或區域篩選這些計量。 您也可以在特定的時間細微性篩選計量。 輸送量、儲存體、可用性、延遲和一致性計量的詳細資料會在不同的索引標籤上提供。 
 
-   :::image type="content" source="./media/use-metrics/performance-metrics.png" alt-text="Azure 入口網站中的 Cosmos DB 效能計量":::
+   :::image type="content" source="./media/use-metrics/performance-metrics.png" alt-text="Azure 入口網站中的 Cosmos DB 效能度量":::
 
-下列計量可從 [**計量**] 窗格取得： 
+[ **計量** ] 窗格提供下列計量： 
 
-* **輸送量計量**-此度量會顯示已取用或失敗的要求數目（429回應碼），因為已超過為容器布建的輸送量或儲存體容量。
+* **輸送量計量** -此計量會顯示因容器所布建的輸送量或儲存體容量超過的 (429 回應碼) 所耗用或失敗的要求數目。
 
-* **儲存體計量**-此度量會顯示資料大小和索引使用方式。
+* **儲存體計量** -此計量會顯示資料和索引使用方式的大小。
 
-* **可用性計量**-此度量會顯示每小時要求總數的成功要求百分比。 成功率是由 Azure Cosmos DB Sla 所定義。
+* **可用性計量** -此度量會顯示每小時要求總數的成功要求百分比。 成功率是由 Azure Cosmos DB Sla 所定義。
 
-* **延遲計量**-此度量會顯示您的帳戶運作所在區域中 Azure Cosmos DB 所觀察到的讀取和寫入延遲。 您可以針對異地複寫帳戶，以視覺化方式跨區域的延遲。 此度量不代表端對端要求延遲。
+* **延遲計量** -此計量會顯示您的帳戶運作所在區域 Azure Cosmos DB 所觀察到的讀取和寫入延遲。 您可以針對異地複寫的帳戶，將不同區域的延遲視覺化。 此度量不代表端對端要求延遲。
 
-* **一致性計量**-此度量會顯示您所選擇的一致性模型之間的一致性。 針對多重區域帳戶，此計量也會顯示您所選取區域之間的複寫延遲。
+* **一致性計量** -此計量會顯示您所選擇之一致性模型的最終一致性。 針對多重區域帳戶，此計量也會顯示您所選取區域之間的複寫延遲。
 
-* **系統計量**-此度量會顯示主要分割區提供多少中繼資料要求。 它也有助於識別已節流的要求。
+* **系統計量** -此計量會顯示主要分割區所提供的中繼資料要求數目。 它也有助於識別節流的要求。
 
-下列各節說明您可以使用 Azure Cosmos DB 計量的常見案例。 
+下列各節說明您可以使用 Azure Cosmos DB 計量的一般案例。 
 
 ## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>了解有多少要求成功或導致錯誤
 
-若要開始，請前往 [Azure 入口網站](https://portal.azure.com)，並瀏覽至 [計量]**** 刀鋒視窗。 在分頁中，尋找 [每1分鐘的要求數目超過容量] 圖表。 此圖表依狀態碼分段顯示每分鐘的要求總數。 如需 HTTP 狀態碼的詳細資訊，請參閱[Azure Cosmos DB 的 HTTP 狀態碼](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)。
+若要開始，請前往 [Azure 入口網站](https://portal.azure.com)，並瀏覽至 [計量]**** 刀鋒視窗。 在分頁中，找出 [每1分鐘的要求數目超過容量] 圖表。 此圖表依狀態碼分段顯示每分鐘的要求總數。 如需有關 HTTP 狀態碼的詳細資訊，請參閱 [Azure Cosmos DB 的 HTTP 狀態碼](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)。
 
 最常見的錯誤狀態碼是 429 (速率限制/節流)。 此錯誤表示對 Azure Cosmos DB 的要求數目多於佈建的輸送量。 此問題最常見的解決方案是為指定的集合[相應增加 RU](./set-throughput.md)。
 
@@ -56,7 +57,7 @@ Azure Cosmos DB 為輸送量、儲存體、一致性、可用性和延遲提供�
 
 良好的磁碟分割索引鍵基數對於任何種類的可調整應用程式都很重要。 若要判斷任何分割容器的輸送量分佈且能細分至分割區，請瀏覽至 [Azure 入口網站](https://portal.azure.com)中的 [計量]**** 刀鋒視窗。 在 [輸送量]**** 索引標籤上，儲存體細目顯示在**每個實體磁碟分割每秒使用的最多 RU** 圖表中。 下圖說明資料分佈不佳的範例，如最左側有誤差的磁碟分割所示。
 
-:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="單一資料分割看到大量使用量":::
+:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="單一分割區會看到大量使用量":::
 
 輸送量分佈不平均可能會造成磁碟分割過度使用**，這可能會導致節流要求，而且可能需要重新分割磁碟。 如需有關在 Azure Cosmos DB 中進行磁碟分割的詳細資訊，請參閱[在 Azure Cosmos DB 中進行磁碟分割和調整](./partition-data.md)。
 
@@ -111,6 +112,6 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 您現在已了解如何使用 Azure 入口網站中提供的計量來監視和偵錯問題。 若要深入了解如何提升資料庫效能，請閱讀下列文章：
 
-* 若要瞭解如何從 Azure 監視器中查看計量，請參閱[從 Azure 監視器取得計量](cosmos-db-azure-monitor-metrics.md)一文。 
+* 若要瞭解如何從 Azure 監視器查看計量，請參閱「 [從 Azure 監視器取得度量](cosmos-db-azure-monitor-metrics.md) 」一文。 
 * [Azure Cosmos DB 的效能和規模測試](performance-testing.md)
 * [Azure Cosmos DB 的效能秘訣](performance-tips.md)

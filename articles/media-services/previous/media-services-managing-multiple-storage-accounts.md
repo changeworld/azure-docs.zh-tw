@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 2796a2be5c779124db4dd7f1137ebbff4094705d
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9c7addf4d30e81f449e9d9a7509dfe44c381e014
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056696"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020077"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>管理多個儲存體帳戶間的媒體服務資產  
 
@@ -27,7 +28,7 @@ ms.locfileid: "86056696"
 * 在多個儲存體帳戶之間平衡您資產的負載。
 * 調整媒體服務進行大量的內容處理 (因為目前單一儲存體帳戶的最大上限為 500 TB)。 
 
-本文示範如何使用[Azure Resource Manager api](/rest/api/media/operations/azure-media-services-rest-api-reference)和[PowerShell](/powershell/module/az.media)，將多個儲存體帳戶附加至媒體服務帳戶。 同時也會示範如何在使用媒體服務 SDK 建立資產時，指定不同的儲存體帳戶。 
+本文示範如何使用 [Azure Resource Manager api](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [PowerShell](/powershell/module/az.media)，將多個儲存體帳戶附加至媒體服務帳戶。 同時也會示範如何在使用媒體服務 SDK 建立資產時，指定不同的儲存體帳戶。 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -42,11 +43,11 @@ ms.locfileid: "86056696"
 
 其他考量：
 
-媒體服務在建立串流內容的 Url 時，會使用**IAssetFile.Name**屬性的值（例如，HTTP：//{wamsaccount .origin.mediaservices.windows.net}. windowsazure.mediaservices.extensions. net/{GUID}/{IAssetFile. Name}/streamingParameters）。基於這個理由，不允許使用百分比編碼。 Name 屬性的值不能有下列任何[百分比編碼保留字元](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一個 ‘.’ 在檔案名稱的副檔名。
+當建立串流 (內容的 Url 時，媒體服務會使用 **IAssetFile.Name** 屬性的值，例如，HTTP：//{wamsaccount .origin.mediaservices.windows.net} windowsazure.mediaservices.. IAssetFile/{GUID}/{. Name}/streamingParameters。 ) 基於這個原因，不允許使用百分比編碼。 Name 屬性的值不能有下列任何[百分比編碼保留字元](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一個 ‘.’ 在檔案名稱的副檔名。
 
 ## <a name="to-attach-storage-accounts"></a>附加儲存體帳戶  
 
-若要將儲存體帳戶附加到 AMS 帳戶，請使用[Azure Resource Manager api](/rest/api/media/operations/azure-media-services-rest-api-reference)和[PowerShell](/powershell/module/az.media)，如下列範例所示：
+若要將儲存體帳戶附加到 AMS 帳戶，請使用 [Azure Resource Manager api](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [PowerShell](/powershell/module/az.media)，如下列範例所示：
 
 ```azurepowershell
 $regionName = "West US"

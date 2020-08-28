@@ -4,12 +4,12 @@ description: 在此文章中，您將了解如何從 Azure 虛擬機器復原點
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 7b9d97e518282cf150a8f54225c11d9edcbf8892
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 7ff746b85142714c129c04e7f8a3d20ac4b6cb53
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892570"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020162"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
@@ -386,11 +386,11 @@ mount [RAID Disk Path] [/mountpath]
 
 只有系統管理員可以執行指令碼，而且應該在提高權限的模式下執行。 指令碼只會執行一組預先產生的步驟，而且不接受來自任何外部來源的輸入。
 
-若要執行指令碼，只需要在 Azure 入口網站或 PowerShell/CLI 中產生指令碼時，才向獲授權的使用者顯示的密碼。 這是為了確保下載腳本的授權使用者也負責執行腳本。
+若要執行腳本，只有在 Azure 入口網站或 PowerShell/CLI 中的腳本產生時，才會向授權使用者顯示密碼。 這是為了確保下載腳本的授權使用者也負責執行腳本。
 
 #### <a name="browse-files-and-folders"></a>瀏覽檔案和資料夾
 
-為瀏覽檔案和資料夾，指令碼會使用電腦中的 iSCSI 啟動器，並連線到設定為 iSCSI 目標的復原點。 在這裡，您可以想像有人嘗試模仿/欺騙任何或所有元件的案例。
+若要流覽檔案和資料夾，腳本會使用機器中的 iSCSI 啟動器，並連接到設定為 iSCSI 目標的復原點。 在這裡，您可以想像有人嘗試模仿/欺騙任何或所有元件的案例。
 
 我們會使用相互 CHAP 驗證機制，讓每個元件彼此驗證。 也就是說，假的啟動器很難連線到 iSCSI 目標，而且假的目標很難連線到執行指令碼所在的電腦。
 

@@ -9,12 +9,13 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
-ms.openlocfilehash: d29500db5efd0abde4c9555fde9a7e3d5bbe070a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f769036ac9e5a6945e7ecad30e021d377cabd358
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564984"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020264"
 ---
 # <a name="graphics-binding"></a>圖形繫結
 
@@ -233,4 +234,4 @@ else
 
 ## <a name="next-steps"></a>後續步驟
 
-* [教學課程：觀看遠端呈現的模型](../tutorials/unity/view-remote-models/view-remote-models.md)
+* [教學課程：檢視遠端轉譯模型](../tutorials/unity/view-remote-models/view-remote-models.md)

@@ -1,7 +1,7 @@
 ---
 title: 使用 .NET 的資料手機連結庫傳輸資料
 titleSuffix: Azure Storage
-description: 使用資料手機連結庫，從 blob 和檔案內容移動或複製資料。 從本機檔案複製資料到 Azure 儲存體，或在儲存體帳戶內或之間複製資料。 輕鬆地將資料移轉至 Azure 儲存體。
+description: 使用資料手機連結庫，將資料移至或複製 blob 和檔案內容。 從本機檔案複製資料到 Azure 儲存體，或在儲存體帳戶內或之間複製資料。 輕鬆地將資料移轉至 Azure 儲存體。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,16 +10,17 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bab78d60e5007d9c3eb61afa7bc63a9b44e47aa1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8ec35a651d4d3ef9e0877463329a654bc7491f4c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888038"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001871"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>透過資料移動程式庫傳輸資料
 
-Azure 儲存體資料手機連結庫是一種跨平臺的開放原始碼程式庫，其設計是為了高效能上傳、下載及複製 blob 和檔案。 資料手機連結庫提供了在適用于 .NET 的 Azure 儲存體用戶端程式庫中無法使用的便利方法。 這些方法可讓您設定平行作業的數目、追蹤傳輸進度、輕鬆地恢復已取消的傳輸，以及其他更多作業。
+Azure 儲存體資料手機連結庫是一種跨平臺開放原始碼程式庫，專為高效能上傳、下載及複製 blob 和檔案所設計。 資料手機連結庫提供在適用于 .NET 的 Azure 儲存體用戶端程式庫中無法使用的便利方法。 這些方法可讓您設定平行作業的數目、追蹤傳輸進度、輕鬆地繼續已取消的傳輸，還有更多其他功能。
 
 此程式庫也會使用 .NET Core，這表示您在建置適用於 Windows、Linux 和 macOS 的 .NET 應用程式時可以使用它。 若要深入了解 .NET Core，請參閱 [.NET Core 文件 (英文)](https://dotnet.github.io/)。 這個程式庫也適用於 Windows 的傳統 .NET 架構應用程式。
 
@@ -49,7 +50,7 @@ Azure 儲存體資料手機連結庫是一種跨平臺的開放原始碼程式�
 
 ## <a name="add-the-data-movement-library-to-your-project"></a>將資料手機連結庫新增至您的專案
 
-1. 將最新版本的資料手機連結庫新增至檔案的 `dependencies` 區段 `<project-name>.csproj` 。 撰寫本文時，此版本為 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+1. 將最新版本的資料手機連結庫加入至檔案的 `dependencies` 區段 `<project-name>.csproj` 。 撰寫本文時，此版本為 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
 2. 您應該會看到提示顯示以還原專案。 按一下 [還原] 按鈕。 您也可以在專案目錄的根目錄中輸入命令 `dotnet restore`，來從命令列還原專案。
 
 修改 `<project-name>.csproj`：
@@ -195,7 +196,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 ## <a name="set-the-number-of-parallel-operations"></a>設定平行作業的數目
 
-資料手機連結庫提供的一項功能是能夠設定平行作業的數目，以增加資料傳輸輸送量。 根據預設，資料手機連結庫會將平行作業的數目設定為 8 * 電腦上的核心數目。
+資料手機連結庫所提供的一項功能，就是能夠設定平行作業的數目，以增加資料傳輸的輸送量。 根據預設，資料手機連結庫會將平行作業的數目設定為 8 * 您電腦上的核心數目。
 
 請留意，在低頻寬環境執行大量的平行作業可能會拖垮網路連線，並造成作業無法完成。 您必須針對此設定進行實驗，以根據您的可用網路頻寬決定最佳的運作方式。
 
@@ -259,7 +260,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 ## <a name="track-transfer-progress"></a>追蹤傳輸進度
 
-知道資料傳輸所需的時間很有説明。 不過，在傳送作業*期間*能夠查看傳輸的進度會變得更好。 為了達成此案例，我們需要建立 `TransferContext` 物件。 `TransferContext` 物件有兩種形式：`SingleTransferContext` 和 `DirectoryTransferContext`。 前者是用來傳送單一檔案，而後者則是用來傳送檔案目錄。
+知道資料傳輸所花費的時間很有説明。 不過，在傳送作業 *期間* 能夠看到傳輸進度會更好。 為了達成此案例，我們需要建立 `TransferContext` 物件。 `TransferContext` 物件有兩種形式：`SingleTransferContext` 和 `DirectoryTransferContext`。 前者是用於傳送單一檔案，後者則是用來傳送檔案的目錄。
 
 將方法 `GetSingleTransferContext` 和 `GetDirectoryTransferContext` 加入到 `Program.cs`：
 
@@ -309,7 +310,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 ## <a name="resume-a-canceled-transfer"></a>繼續已取消的傳輸
 
-資料手機連結庫所提供的另一項便利功能，是能夠繼續已取消的傳輸。 讓我們加入一些程式碼，使我們能夠輸入 `c` 來暫時取消傳輸，然後在 3 秒之後繼續傳輸。
+資料手機連結庫提供的另一項便利功能，就是能夠繼續已取消的傳輸。 讓我們加入一些程式碼，使我們能夠輸入 `c` 來暫時取消傳輸，然後在 3 秒之後繼續傳輸。
 
 修改 `TransferLocalFileToAzureBlob`：
 
@@ -367,7 +368,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 ## <a name="transfer-a-local-directory-to-blob-storage"></a>將本機目錄傳送至 Blob 儲存體
 
-如果資料手機連結庫一次只能傳送一個檔案，就會令人失望。 所幸，事實並非如此。 資料手機連結庫提供傳輸檔案目錄及其所有子目錄的功能。 讓我們加入一些程式碼來這麼做。
+如果資料手機連結庫一次只能傳送一個檔案，就會令人失望。 所幸，事實並非如此。 資料手機連結庫提供傳輸檔案目錄及其所有子目錄的能力。 讓我們加入一些程式碼來這麼做。
 
 首先，將方法 `GetBlobDirectory` 加入 `Program.cs`：
 

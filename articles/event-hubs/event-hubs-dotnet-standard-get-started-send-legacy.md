@@ -3,12 +3,13 @@ title: 使用 .NET (舊) 從 Azure 事件中樞傳送和接收事件
 description: 本文提供逐步解說，說明如何建立 .NET Core 應用程式，以使用舊的 EventHubs 套件將事件傳送到 Azure 事件中樞或從中接收事件。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 9aa971b3415894fc79df6faf1075184b413fefb6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d7d33ebcabb728cf2fbf43b393de5eec6cb58af3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942097"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010693"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>使用 .NET Core (EventHubs，將事件傳送至 Azure 事件中樞或從中接收事件) 
 本快速入門說明如何使用 **EventHubs** .net Core 程式庫，將事件傳送到事件中樞，以及從事件中樞接收事件。
@@ -16,7 +17,7 @@ ms.locfileid: "88942097"
 > [!WARNING]
 > 本快速入門會使用舊的 **EventHubs** 套件。 如需使用最新  **EventHubs** 程式庫的快速入門，請參閱 [使用 azure EventHubs 程式庫傳送和接收事件](event-hubs-dotnet-standard-getstarted-send.md)。 若要將您的應用程式從使用舊的程式庫移至新的程式庫，請參閱 [從 EventHubs 遷移至 azure 的指南。 EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 如果您對 Azure 事件中樞並不熟悉，在進行此快速入門之前，請先參閱[事件中樞概述](event-hubs-about.md)。 
 
 若要完成本快速入門，您必須符合下列必要條件：

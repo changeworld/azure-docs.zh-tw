@@ -6,40 +6,41 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
-ms.openlocfilehash: 1f5609eae106e04928bc2c49bd84aa651b224611
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 787c39681d0e9aff25d205c7b195be00b8c0bc9c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261574"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020009"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>在 .NET SDK 中轉換會話權杖格式
 
 本文說明如何在不同的會話權杖格式之間進行轉換，以確保 SDK 版本之間的相容性。
 
 > [!NOTE]
-> 根據預設，SDK 會自動追蹤會話權杖，而且它會使用最新的會話權杖。  如需詳細資訊，請流覽[利用會話權杖](how-to-manage-consistency.md#utilize-session-tokens)。 本文中的指示僅適用于下列條件：
+> 根據預設，SDK 會自動追蹤會話權杖，並使用最新的會話權杖。  如需詳細資訊，請造訪 [使用會話權杖](how-to-manage-consistency.md#utilize-session-tokens)。 本文中的指示僅適用于下列條件：
 > * 您的 Azure Cosmos DB 帳戶會使用會話一致性。
 > * 您要以手動方式管理會話權杖。
 > * 您同時使用多個版本的 SDK。
 
 ## <a name="session-token-formats"></a>會話權杖格式
 
-有兩種會話權杖格式：**簡單**和**向量**。  這兩種格式無法互換，因此，傳遞至具有不同版本的用戶端應用程式時，應該轉換格式。
-- **簡單**會話權杖格式是由 .Net SDK V1 （Microsoft.Azure.DocumentDB-版本1.x）所使用。
-- **向量**會話 token 格式是由 .Net SDK V2 （Microsoft.Azure.DocumentDB-2.x 版）所使用。
+有兩種會話權杖格式： **simple** 和 **vector**。  這兩種格式不是可互換的，因此在傳遞至具有不同版本的用戶端應用程式時，應該轉換格式。
+- .NET SDK V1 ( # B0 umentDB-1.x 版) 使用 **簡單** 會話權杖格式
+- .NET SDK V2 ( # B0 umentDB-2.x 版) 使用 **向量** 會話權杖格式
 
 ### <a name="simple-session-token"></a>簡單會話權杖
 
-簡單的會話 token 具有下列格式：`{pkrangeid}:{globalLSN}`
+簡單會話權杖的格式如下： `{pkrangeid}:{globalLSN}`
 
-### <a name="vector-session-token"></a>向量會話標記
+### <a name="vector-session-token"></a>向量會話權杖
 
-向量會話 token 具有下列格式：`{pkrangeid}:{Version}#{GlobalLSN}#{RegionId1}={LocalLsn1}#{RegionId2}={LocalLsn2}....#{RegionIdN}={LocalLsnN}`
+向量會話權杖的格式如下： `{pkrangeid}:{Version}#{GlobalLSN}#{RegionId1}={LocalLsn1}#{RegionId2}={LocalLsn2}....#{RegionIdN}={LocalLsnN}`
 
-## <a name="convert-to-simple-session-token"></a>轉換成簡單會話權杖
+## <a name="convert-to-simple-session-token"></a>轉換成簡單的會話權杖
 
-若要使用 .NET SDK V1 將會話權杖傳遞給用戶端，請使用**簡單**會話權杖格式。  例如，使用下列範例程式碼來進行轉換。
+若要使用 .NET SDK V1 將會話權杖傳遞給用戶端，請使用 **簡單** 的會話權杖格式。  例如，使用下列範例程式碼進行轉換。
 
 ```csharp
 private static readonly char[] SegmentSeparator = (new[] { '#' });
@@ -71,9 +72,9 @@ else
 }
 ```
 
-## <a name="convert-to-vector-session-token"></a>轉換成向量會話 token
+## <a name="convert-to-vector-session-token"></a>轉換成向量會話權杖
 
-若要使用 .NET SDK V2 將會話權杖傳遞給用戶端，請使用**向量**會話 token 格式。  例如，使用下列範例程式碼來進行轉換。
+若要使用 .NET SDK V2 將會話權杖傳遞給用戶端，請使用 **向量** 會話權杖格式。  例如，使用下列範例程式碼進行轉換。
 
 ```csharp
 
@@ -111,5 +112,5 @@ else
 
 * [使用工作階段權杖在 Azure Cosmos DB 中管理一致性](how-to-manage-consistency.md#utilize-session-tokens)
 * [在 Azure Cosmos DB 中選擇正確的一致性層級](consistency-levels-choosing.md)
-* [Azure Cosmos DB 中的一致性、可用性和效能取捨](consistency-levels-tradeoffs.md)
+* [Azure Cosmos DB 中的一致性、可用性和效能權衡取捨](consistency-levels-tradeoffs.md)
 * [各種一致性層級的可用性和效能權衡取捨](consistency-levels-tradeoffs.md)
