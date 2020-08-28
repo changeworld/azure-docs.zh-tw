@@ -3,21 +3,23 @@ title: 將筆跡資料傳送至筆跡辨識器 API
 titleSuffix: Azure Cognitive Services
 description: 了解如何為不同應用程式呼叫筆跡分析器 API
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: erhopf
-ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 08/24/2020
+ms.author: aahi
+ms.openlocfilehash: 8665e27b6b7c43bce7d749d9bfe0a2f815a0f46d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221531"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051095"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>將筆跡資料傳送至筆跡辨識器 API 
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 數位筆跡是指能夠數位呈現手寫和繪圖等輸入的技術。 要實現此功能，我們一般會使用數位板來擷取手寫筆等輸入裝置的移動。 由於裝置能夠繼續提供豐富的數位筆跡體驗，因此人工智慧和機器學習能夠辨識任何內容中的書寫圖形和文字。 筆跡辨識器 API 可讓您傳送筆跡筆觸並取得其相關詳細資訊。 
 
@@ -82,7 +84,7 @@ ms.locfileid: "79221531"
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>整合筆跡辨識器 API 與 Windows Ink
 
-[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) 提供各種工具和技術，因此能在各種裝置上實現數位筆跡體驗。 您可以將 Windows Ink 平臺與筆跡辨識器 API 結合，以建立顯示和解讀數位筆跡筆劃的應用程式。
+[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) 提供各種工具和技術，因此能在各種裝置上實現數位筆跡體驗。 您可以將 Windows Ink 平臺與筆跡辨識器 API 結合，以建立顯示及解讀數位筆跡筆劃的應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 

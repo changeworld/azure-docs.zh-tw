@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 381afdbb57e2de41382a10c1912abac980e89cbd
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: a1973d45197044c325caf2d9938838f438d7755c
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948465"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049531"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用條件式存取封鎖對 Azure AD 的舊式驗證   
 
@@ -85,7 +85,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 1. 瀏覽至 [Azure 入口網站]  >  [Azure Active Directory]  >  [登入]。
 1. 如果未顯示 [用戶端應用程式] 欄，請按一下 [欄]  >  [用戶端應用程式] 來新增此欄。
-1. **新增篩選**  > **用戶端應用程式**> 選取所有舊版驗證通訊協定。 在篩選對話方塊 blox 之外選取，以套用您的選取專案並關閉對話方塊。
+1. **新增篩選**  > **用戶端應用程式**> 選取所有舊版驗證通訊協定。 選取 [篩選] 對話方塊以外的範圍，以套用您的選取專案並關閉對話方塊。
 
 篩選後，只會顯示您使用舊式驗證通訊協定的登入嘗試。 按一下各項登入嘗試，即會顯示更多詳細資料。 [基本資訊] 索引標籤下方的 [用戶端應用程式] 欄位，會標明使用的舊式驗證通訊協定。
 
@@ -122,7 +122,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用條件式存取的僅限報告模式來判斷影響](howto-conditional-access-report-only.md)
+- [使用條件式存取的僅限報告模式來判斷影響](howto-conditional-access-insights-reporting.md)
 - 如果您還不太了解如何設定條件式存取原則，請參閱[利用 Azure Active Directory 條件式存取來取得特定應用程式的 MFA](../authentication/tutorial-enable-azure-mfa.md)，以取得範例。
 - 如需新式驗證支援的詳細資訊，請參閱 [Office 2013 和 Office 2016 用戶端應用程式的新式驗證運作方式](/office365/enterprise/modern-auth-for-office-2013-and-2016) 
 - [如何將多功能裝置或應用程式設定為使用 Office 365 和 Microsoft 365 傳送電子郵件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)

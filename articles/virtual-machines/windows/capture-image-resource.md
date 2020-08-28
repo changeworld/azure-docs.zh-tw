@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: e579223691ed7593d04c3b67004a6dd511f72c78
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 751fa9f9fe2ba17a982b71a6332be302804f0dcc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236602"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047287"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中建立一般化 VM 的受控映像
 
@@ -26,10 +26,12 @@ ms.locfileid: "88236602"
 
 Sysprep 會移除您的所有個人帳戶與安全性資訊，然後準備使用機器做為映像。 如需 Sysprep 的詳細資訊，請參閱 [Sysprep 概觀](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
 
-請確定 Sysprep 支援電腦上執行的伺服器角色。 如需詳細資訊，請參閱[伺服器角色的 Sysprep 支援](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)和[不支援的案例](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)。 Sysprep 需要在執行前完整解密磁片磁碟機。 如果您已在 VM 上啟用加密，請在執行 Sysprep 之前先停用加密。
+請確定 Sysprep 支援電腦上執行的伺服器角色。 如需詳細資訊，請參閱[伺服器角色的 Sysprep 支援](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)和[不支援的案例](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)。 
 
 > [!IMPORTANT]
 > 在 VM 中執行 Sysprep 之後，該 VM 便會被視為「已一般化」，而且無法重新啟動。 將 VM 一般化的程序是無法復原的。 如果您需要讓原始 VM 保持運作，就應該建立 [VM 的複本](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)，然後將複本一般化。 
+>
+>Sysprep 要求磁片磁碟機必須完整解密。 如果您已在 VM 上啟用加密，請在執行 Sysprep 之前先停用加密。
 >
 > 如果您打算在第一次將虛擬硬碟 (VHD) 上傳到 Azure 之前，先執行 Sysprep，請確定您已[準備好 VM](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。  
 > 
@@ -41,7 +43,7 @@ Sysprep 會移除您的所有個人帳戶與安全性資訊，然後準備使用
    
 2. 以系統管理員身分開啟 [命令提示字元] 視窗。 
 
-3.  (C:\Windows\Panther) 中刪除 panther 目錄。 然後將目錄變更為%windir%\system32\sysprep，然後執行 `sysprep.exe` 。
+3.  (C:\Windows\Panther) 刪除 >\panther\setupact.log 目錄。 然後將目錄變更為%windir%\system32\sysprep，然後執行 `sysprep.exe` 。
    
 4. 在 [系統準備工具] 對話方塊中，選取 [進入系統全新體驗 (OOBE)]，然後選取 [一般化] 核取方塊。
    

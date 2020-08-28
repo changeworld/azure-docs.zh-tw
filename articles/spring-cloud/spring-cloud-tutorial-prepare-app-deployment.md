@@ -1,22 +1,24 @@
 ---
-title: 如何準備 JAVA 春季應用程式以在 Azure 春季雲端中進行部署
-description: 瞭解如何準備要部署至 Azure 春季雲端的 JAVA 春季應用程式。
+title: 如何在 Azure 春季雲端中準備 JAVA 春季應用程式以進行部署
+description: 瞭解如何準備 JAVA 春季應用程式以部署到 Azure 春季雲端。
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b2ae94da3d9b2dee62bc031c4a32d17b43be00a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1261e36c782068844712908e62a72b77d34ba5af
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021268"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046726"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>準備 Java Spring 應用程式以部署到 Azure Spring Cloud
 
 本主題會示範如何準備現有的 Java Spring 應用程式以部署到 Azure Spring Cloud。 若能夠正確設定，Azure Spring Cloud 將能提供豐富的服務以監視、調整及更新您的 Java Spring Cloud 應用程式。
+
+執行此範例之前，您可以嘗試 [基本快速入門](spring-cloud-quickstart.md)。
 
 其他範例說明在已設定 POM 檔案時，如何將應用程式部署至 Azure Spring Cloud。 
 * [使用 Azure 入口網站啟動應用程式](spring-cloud-quickstart-launch-app-portal.md)
@@ -93,9 +95,9 @@ Spring Boot 版本 | Spring Cloud 版本
         </dependencies>
     </dependencyManagement>
 ```
-### <a name="dependencies-for-spring-boot-version-23"></a>春季開機版本2.3 的相依性
+### <a name="dependencies-for-spring-boot-version-23"></a>彈簧開機版本2.3 的相依性
 
-針對春季開機版本2.3，請將下列相依性新增至應用程式 POM 檔案。
+針對彈簧開機版本2.3，請將下列相依性新增至應用程式 POM 檔案。
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -156,7 +158,7 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 </dependency>
 ```
 
-針對春季開機版本2.3，請將下列相依性新增至應用程式 POM 檔案。
+針對彈簧開機版本2.3，請將下列相依性新增至應用程式 POM 檔案。
 
 ```xml
 <dependency>
@@ -237,7 +239,7 @@ public class GatewayApplication {
  系統會定期從 JMX 端點提取計量。 您可以使用 Azure 入口網站將計量視覺化。
 
  > [!WARNING]
- > 請 `spring.jmx.enabled=true` 在您的 configuration 屬性中指定。 否則，將無法在 Azure 入口網站中視覺化計量。
+ > 請 `spring.jmx.enabled=true` 在您的 configuration 屬性中指定。 否則，計量無法在 Azure 入口網站中視覺化。
 
 ### <a name="distributed-tracing"></a>分散式追蹤
 
@@ -254,7 +256,7 @@ public class GatewayApplication {
 </dependency>
 ```
 
- 您也需要啟用 Azure Application Insights 執行個體，以搭配您的 Azure Spring Cloud 服務執行個體運作。 如需如何搭配 Azure 春季雲端使用 Application Insights 的相關資訊，請參閱[分散式追蹤的相關檔](spring-cloud-tutorial-distributed-tracing.md)。
+ 您也需要啟用 Azure Application Insights 執行個體，以搭配您的 Azure Spring Cloud 服務執行個體運作。 如需有關如何搭配 Azure 春季雲端使用 Application Insights 的詳細資訊，請參閱 [分散式追蹤的相關檔](spring-cloud-tutorial-distributed-tracing.md)。
 
 ## <a name="see-also"></a>另請參閱
 * [分析應用程式記錄和計量](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
@@ -265,6 +267,6 @@ public class GatewayApplication {
 
 ## <a name="next-steps"></a>後續步驟
 
-在此主題中，您已了解如何設定 Java Spring 應用程式以部署至 Azure Spring Cloud。 若要瞭解如何設定設定伺服器實例，請參閱[設定 Config server 實例](spring-cloud-tutorial-config-server.md)。
+在此主題中，您已了解如何設定 Java Spring 應用程式以部署至 Azure Spring Cloud。 若要瞭解如何設定 Config Server 實例，請參閱 [設定設定伺服器實例](spring-cloud-tutorial-config-server.md)。
 
 GitHub 上可用的其他範例：[Azure Spring Cloud 範例](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)。

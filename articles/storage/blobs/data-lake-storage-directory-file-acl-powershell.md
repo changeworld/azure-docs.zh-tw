@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 01706b3f6850d49240b9c84997cbbec528045200
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e80db84789ab5c8b0f07bc6a76ae99f8db3c8b80
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923869"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051027"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
 
@@ -125,6 +125,8 @@ $dir.Owner
 $dir.Properties
 $dir.Properties.Metadata
 ```
+> [!NOTE]
+> 若要取得容器的根目錄，請省略 `-Path` 參數。
 
 ## <a name="rename-or-move-a-directory"></a>重新命名或移動目錄
 
@@ -202,7 +204,8 @@ $properties.Group
 $properties.Owner
 ```
 
-若要列出容器的內容，請省略 `-Path` 命令中的參數。
+> [!NOTE]
+> 若要列出容器根目錄的內容，請省略 `-Path` 參數。
 
 ## <a name="upload-a-file-to-a-directory"></a>將檔案上傳至目錄
 
@@ -227,6 +230,9 @@ $file1.Properties
 $file1.Properties.Metadata
 
 ```
+
+> [!NOTE]
+> 若要將檔案上傳至容器的根目錄，請省略 `-Path` 參數。
 
 ## <a name="show-file-properties"></a>顯示檔案屬性
 
@@ -404,7 +410,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 |設定-AzDataLakeStoreItemOwner<br>設定-AzDataLakeStoreItemPermission<br>設定-AzDataLakeStoreItemAcl|更新-AzDataLakeGen2Item|AzDataLakeGen2Item 指令程式只會更新單一專案，而不會以遞迴方式更新。 如果想要以遞迴方式更新，請使用 AzDataLakeStoreChildItem 指令程式來列出專案，然後再使用 AzDataLakeGen2Item 指令程式的管線。|
 |測試-AzDataLakeStoreItem|AzDataLakeGen2Item|如果專案不存在，AzDataLakeGen2Item 指令程式將會報告錯誤。|
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [已知問題](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [儲存體 PowerShell Cmdlet](/powershell/module/az.storage)

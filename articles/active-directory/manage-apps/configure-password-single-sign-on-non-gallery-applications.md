@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: be6a8a58f1d66df9d0fe557584c4731e42ae9c59
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: e04a3aab128bb8f0bdee01361bc0d09aad6ed2fb
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640543"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049055"
 ---
 # <a name="configure-password-based-single-sign-on"></a>設定以密碼為基礎的單一登入
 
@@ -52,6 +52,9 @@ ms.locfileid: "88640543"
 ## <a name="basic-configuration"></a>基本設定
 
 在 [快速入門系列](view-applications-portal.md)中，您已瞭解如何將應用程式新增至您的租使用者，此應用程式可讓 Azure AD 知道它正作為應用程式 (IdP) 的身分識別提供者使用。 某些應用程式已預先設定，且會顯示在 Azure AD 資源庫中。 其他應用程式不在資源庫中，您必須建立一般應用程式，並手動進行設定。 視應用程式而定，可能無法使用以密碼為基礎的 SSO 選項。 如果您在應用程式的單一登入頁面上沒有看到以密碼為基礎的選項清單，則無法使用。
+
+> [!IMPORTANT]
+> 密碼型 SSO 需要我的應用程式瀏覽器擴充功能。 若要深入瞭解，請參閱 [規劃我的應用程式部署](access-panel-deployment-plan.md)。
 
 以密碼為基礎的 SSO 的設定頁面很簡單。 它只包含應用程式所使用之登入頁面的 URL。 此字串必須是包含使用者名稱輸入欄位的頁面。
 

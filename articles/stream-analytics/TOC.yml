@@ -89,7 +89,7 @@
           href: event-hubs-output.md
         - name: Power BI
           href: power-bi-output.md
-        - name: 表格儲存體
+        - name: 資料表儲存體
           href: table-storage-output.md
         - name: 服務匯流排佇列
           href: service-bus-queues-output.md
@@ -186,6 +186,8 @@
               displayName: 'managed identity, identities, authenticate'
         - name: 將資料進行加密
           href: data-protection.md
+        - name: 異地備援
+          href: geo-redundancy.md
     - name: 建置解決方案
       items:
         - name: Twitter 情緒分析

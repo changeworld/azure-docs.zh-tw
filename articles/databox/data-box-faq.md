@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c6b524fb76c623273c60d39f4102500664c487cb
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7fbc69100a2cc5c23150fcc0c19e6c38ba6d438d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823976"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051163"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure 資料箱：常見問題集
 
@@ -61,7 +61,7 @@ A. 美國、西歐、北歐、法國、英國、日本、澳大利亞和加拿�
 
 資料箱僅支援在與目的地相同的國家/地區內內嵌或輸出資料，而且不會跨越任何國際框線。 唯一的例外狀況是歐盟 (EU) 中的訂單，資料箱可以在任何歐盟國家/地區運送。
 
-例如，在匯入案例中，如果您在加拿大有您想要移至 Azure WestUS 儲存體帳戶的內部部署資料，您可以透過下列方式來達成：
+例如，在匯入案例中，如果您有想要移至 Azure WestUS 儲存體帳戶的加拿大來源資料，您可以透過下列方式達成：
 
 1. 在 [Cananda] 中選擇儲存體帳戶，以在加拿大訂購資料箱。 裝置會從加拿大的 Azure 資料中心寄送至加拿大) 在訂單建立期間提供的運送位址 (。
 

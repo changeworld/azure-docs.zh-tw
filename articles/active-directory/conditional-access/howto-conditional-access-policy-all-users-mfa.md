@@ -1,6 +1,6 @@
 ---
-title: 條件式存取-所有使用者都需要 MFA-Azure Active Directory
-description: 建立自訂的條件式存取原則，以要求所有使用者執行多重要素驗證
+title: 條件式存取-要求所有使用者使用 MFA-Azure Active Directory
+description: 建立自訂條件式存取原則，要求所有使用者執行多重要素驗證
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1e99556b0a0c5b7559cc03b152a19e78aeb58f6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a45ce7bee04716612431effe77315d739f328dba
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283039"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049293"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>條件式存取：所有使用者都需要 MFA
 
-身為 Alex Weinert，Microsoft 身分識別安全性的目錄在他的文章中提及[您的 Pa $ $word 並不重要](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)：
+身為 Alex Weinert，Microsoft 的身分識別安全性目錄，他在他的 blog 文章中提及 [您的 Pa $ $word 並不重要](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)：
 
-> 您的密碼並不重要，但 MFA 的確沒問題！ 根據我們的研究，當您使用 MFA 時，您的帳戶會比99.9% 更不可能遭到入侵。
+> 您的密碼並不重要，但 MFA 的確有！ 根據我們的研究，如果您使用 MFA，您的帳戶99.9 會比較不可能遭到入侵。
 
 本文中的指導方針可協助您的組織為您的環境建立平衡的 MFA 原則。
 
@@ -37,7 +37,7 @@ ms.locfileid: "87283039"
 
 ## <a name="application-exclusions"></a>應用程式排除專案
 
-組織可能會有許多使用中的雲端應用程式。 並非所有的應用程式都可能需要同等的安全性。 例如，薪資和出席應用程式可能需要 MFA，但該餐廳可能不會。 系統管理員可以選擇從其原則中排除特定的應用程式。
+組織可能會有許多使用中的雲端應用程式。 並非所有的應用程式都可能需要相等的安全性。 例如，薪資和出席的應用程式可能需要 MFA，但餐廳可能不會。 系統管理員可以選擇從原則中排除特定的應用程式。
 
 ## <a name="create-a-conditional-access-policy"></a>建立條件式存取原則
 
@@ -48,34 +48,34 @@ ms.locfileid: "87283039"
 1. 選取 [新增原則]。
 1. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。
 1. 在 [指派] 底下，選取 [使用者和群組]
-   1. 在 [**包含**] 底下，選取 [**所有使用者**]
+   1. 在 [**包含**] 下，選取 [**所有使用者**]
    1. 在 [排除] 底下選取 [使用者和群組]，然後選擇組織的緊急存取或急用帳戶。 
    1. 選取 [完成] 。
-1. 在 [**雲端應用程式] 或 [動作**] 底下  >  ** **，選取 [**所有雲端應用程式**]。
-   1. 在 [**排除**] 底下，選取不需要多重要素驗證的任何應用程式。
-1. 在**Conditions**  >  **[條件用戶端應用程式（預覽）**] 底下**的 [選取用戶端應用程式] 下，將套用此原則以**保留所有預設值並選取 [**完成**]。
+1. 在 [**雲端應用程式] 或 [動作**] 下  >  ** **，選取 [**所有雲端應用程式**]。
+   1. 在 [ **排除**] 下，選取不需要多重要素驗證的任何應用程式。
+1. 在 [**條件**  >  **用戶端應用程式] (預覽) **的 **[選取用戶端應用程式] 下，選取 [此原則將**套用]， **Done**保留所有選取的預設值並選取
 1. 在 [存取控制] > [授與] 底下選取 [授與存取權] 和 [需要多重要素驗證]，然後選取 [選取]。
 1. 確認您的設定，並將 [啟用原則] 設定為 [開啟]。
 1. 選取 [建立] 以建立以啟用您的原則。
 
 ### <a name="named-locations"></a>具名位置
 
-組織可以選擇將已知的網路位置（稱為「**已命名位置**」）併入其條件式存取原則。 這些命名位置可能包括受信任的 IPv4 網路，例如總公司位置的。 如需有關設定命名位置的詳細資訊，請參閱[Azure Active Directory 條件式存取中的位置條件為何？](location-condition.md)一文。
+組織可以選擇將已知的網路位置（稱為 **位置** ）納入其條件式存取原則。 這些命名位置可能包含受信任的 IPv4 網路，例如主要辦公室位置的網路。 如需設定命名位置的詳細資訊，請參閱 [Azure Active Directory 條件式存取中的位置條件為何？](location-condition.md)
 
-在上述範例原則中，如果從公司網路存取雲端應用程式，組織可能會選擇不要求多重要素驗證。 在此情況下，他們可以將下列設定新增至原則：
+在上述的範例原則中，如果從公司網路存取雲端應用程式，組織可能會選擇不需要多重要素驗證。 在此情況下，他們可以將下列設定新增至原則：
 
-1. 在 [**指派**] 底下，選取 [**條件**] [  >  **位置**]。
+1. 在 [**指派**] 底下，選取 [**條件**  >  **位置**]。
    1. 設定 [是]。
    1. 包含 [任何位置]。
    1. 排除 [所有信任的位置]。
    1. 選取 [完成]。
 1. 選取 [完成]。
-1. **儲存**原則變更。
+1. **儲存** 您的原則變更。
 
 ## <a name="next-steps"></a>後續步驟
 
 [條件式存取一般原則](concept-conditional-access-policy-common.md)
 
-[使用條件式存取報告專用模式判斷影響](howto-conditional-access-report-only.md)
+[使用條件式存取報告專用模式判斷影響](howto-conditional-access-insights-reporting.md)
 
 [使用條件式存取 What If 工具模擬登入行為](troubleshoot-conditional-access-what-if.md)

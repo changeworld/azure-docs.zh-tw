@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ab9a9785f2f995a6f8df766603e3fc3b9a894be5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ec1aa165b8fa5d3a249cb525887acf2990136bd3
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814212"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049856"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV 合作夥伴
 
@@ -31,6 +31,7 @@ ms.locfileid: "88814212"
 | :--- | :--- |
 | ![標誌](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) 是一項詐騙防護解決方案提供者，可協助組織防止 bot 攻擊、帳戶接管攻擊，以及詐騙帳戶。
 | ![標誌](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) 是身分識別驗證和證明提供者，可根據使用者屬性來執行風險評定，以防止詐騙。|
+| ![標誌](./media/partner-gallery/hypr-logo.png) | [HYPR](./partner-hypr.md) 是真正的無密碼 authentication 提供者，可將密碼取代為公開金鑰加密，以免除詐騙、網路釣魚和認證的重複使用。|
 | ![標誌](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) 是身分識別驗證和證明提供者，具有識別碼驗證解決方案、詐騙防護解決方案、合規性解決方案及其他資訊。|
 | ![標誌](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) 是一種電子識別、驗證和信任服務， () eiDAS 符合規範的數位識別碼解決方案，可讓使用者安全地登入，而不需要卡片讀卡機、密碼、雙因素驗證，以及多個 PIN 碼。 |
 | ![標誌](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) 是一種識別碼驗證服務，可啟用即時自動化識別碼驗證，保護客戶資料。 |

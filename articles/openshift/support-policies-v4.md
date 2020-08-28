@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: ec27d054055866c72148ad6eb024d4324f063ce8
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: f496d0f38452fa7cf64bc9eef370bd0b2116cfa5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774398"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049956"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift 支援原則
 
@@ -25,7 +25,6 @@ Azure Red Hat OpenShift 4 叢集的某些設定可能會影響您叢集的可支
 * 所有 OpenShift 叢集運算子必須保持在受控狀態。 您可以藉由執行 `oc get clusteroperators` 來傳回叢集運算子清單。
 * 請勿移除或修改叢集 Prometheus 與 Alertmanager s服務。
 * 請勿移除服務 Alertmanager 規則。
-* 請勿修改 OpenShift 叢集版本。
 * 請勿移除或修改 Azure Red Hat OpenShift 服務記錄 (mdsd Pod)。
 * 請勿移除或修改 'arosvc.azurecr.io' 叢集提取祕密。
 * 所有叢集虛擬機器都必須具有直接的輸出網際網路存取權，至少要有 Azure Resource Manager (ARM) 和服務記錄 (Geneva) 端點。  不支援任何形式的 HTTPS Proxy。

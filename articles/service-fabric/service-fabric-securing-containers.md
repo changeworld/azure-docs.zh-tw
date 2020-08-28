@@ -4,14 +4,17 @@ description: 立即了解如何將憑證檔案匯入到 Service Fabric 容器服
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 949cc642572bfbf6ebe297d3ffba16939561ac8a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 426aa2ebbfb87fe2c80e0d1aff3eeecbe0e2472d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012716"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050738"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>將憑證檔案匯入到 Service Fabric 上執行的容器
+
+> [!NOTE]
+> 針對在 Azure 上執行的 Service Fabric 叢集，建議使用 [Service Fabric 應用程式受控識別](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) ，從容器內布建應用程式憑證。 受控識別可讓您隔離服務層級的秘密和憑證，並允許應用程式憑證布建成為應用程式工作流程的一部分，而不是基礎結構的工作流程。 CertificateRef 機制將在未來的版本中淘汰。
 
 您可以藉由指定憑證來保護您的容器服務。 Service Fabric 為容器內的服務提供了一種機制，供其存取 Windows 或 Linux 叢集 (5.7 版或更高版本) 節點上所安裝的憑證。 此憑證必須安裝於叢集所有節點上 LocalMachine 底下的憑證存放區中。 對應至此憑證的私密金鑰必須可供使用、可存取，而且 (在 Windows 上) 可匯出。 憑證資訊會在應用程式資訊清單的 `ContainerHostPolicies` 標記底下提供，如下列程式碼片段所示：
 
@@ -30,6 +33,8 @@ ms.locfileid: "89012716"
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PEM
 * Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey
+
+請注意，和檔案 `PEM` 都 `PrivateKey` 包含憑證和未加密的私密金鑰。
 
 或者，如果您已經有所需格式的憑證，而且要在容器內存取該憑證，您可以在應用程式套件內建立資料套件，並在應用程式資訊清單中指定下列項目：
 

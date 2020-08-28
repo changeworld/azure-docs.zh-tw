@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1eae9cc067f8aa10ad49d70dfe0393f4bed6c5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a531692264a768e4f6cb8e6475807789df049d03
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518414"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049141"
 ---
 # <a name="conditional-access-block-access-by-location"></a>條件式存取：依位置封鎖存取
 
@@ -43,20 +43,20 @@ ms.locfileid: "86518414"
 1. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。
 1. 在 [指派] 下，選取 [使用者和群組]
    1. 在 [包含] 下，選取 [所有使用者]。
-1. 在 [**雲端應用程式] 或 [動作**  >  **包括**] 底下，選取 [**所有雲端應用程式**]。
+1. 在 [**雲端應用程式] 或 [動作**] 下  >  ** **，選取 [**所有雲端應用程式**]。
 1. 在 [條件] > [位置] 底下。
    1. 將 [設定] 設定為 [是]
-   1. 在 [**包含**] 底下，選取 [**選取的位置**]
+   1. 在 [**包含**] 下，選取 [選取的**位置**]
    1. 選取您為組織建立的已封鎖位置。
    1. 按一下 [選取]。
-1. 在 [**存取控制**] 底下 > 選取 [**封鎖存取**]，然後選取 [**選取**]。
+1. 在 [ **存取控制** ] 底下 > 選取 [ **封鎖存取**]，然後選取 [ **選取**]。
 1. 確認您的設定，並將 [啟用原則] 設定為 [開啟]。
-1. 選取 [**建立**] 以建立條件式存取原則。
+1. 選取 [ **建立** ] 以建立條件式存取原則。
 
 ## <a name="next-steps"></a>後續步驟
 
 [條件式存取一般原則](concept-conditional-access-policy-common.md)
 
-[使用條件式存取報告專用模式判斷影響](howto-conditional-access-report-only.md)
+[使用條件式存取報告專用模式判斷影響](howto-conditional-access-insights-reporting.md)
 
 [使用條件式存取 What If 工具模擬登入行為](troubleshoot-conditional-access-what-if.md)
