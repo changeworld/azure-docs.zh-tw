@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 53ff86f7dc5dfd6b7b60f99848c48f4e44f5a8a1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4bed663b66e6c1a8c537ac9bac17ccdd8a8b152c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948839"
+ms.locfileid: "89004148"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a> (Acl) 遞迴方式設定存取控制清單 Azure Data Lake Storage Gen2
 
@@ -24,7 +25,7 @@ ms.locfileid: "88948839"
 
 連結[庫](#libraries)  | [範例](#code-samples)  | [最佳做法](#best-practice-guidelines)  | [提供意見](#provide-feedback)反應
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -454,9 +455,9 @@ def update_permission_recursively():
 
 ```powershell
 $filesystemName = "my-container"
-$userID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+$userID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
-$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" 
 
 Remove-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName  -Acl $acl
 ```

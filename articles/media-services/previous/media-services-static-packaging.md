@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: b53ddb9cd6f6aae25086f44e4f5a8b189293b11c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 83fc8316171601b7a55e4fc2cb83f49978269150
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052632"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999558"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>使用 Azure Media Packager 完成靜態封裝工作  
 
@@ -27,11 +28,11 @@ ms.locfileid: "87052632"
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 若要透過網際網路傳遞數位視訊，您必須壓縮媒體。 數位視訊檔案十分龐大，並且可能太大而無法透過網際網路傳遞，或使您客戶的裝置無法正確顯示。 編碼是壓縮視訊和音訊，好讓客戶能檢視您的媒體的程序。 完成影片編碼後，即可將其放置於其他檔案容器中。 將編碼後的媒體放入容器的程序稱為封裝。 例如，您可以使用 Azure Media Packager 將 MP4 檔案轉換成 Smooth Streaming 或 HLS 內容。 
 
-媒體服務支援靜態和動態封裝。 使用靜態封裝時，您必須依據客戶所需的每種格式各建立一份內容。 使用動態封裝時，您只需要建立包含一組自動調整位元速率或 Smooth Streaming 檔案的資產。 然後，隨選資料流處理伺服器會根據資訊清單或片段要求中的指定格式，確保您的使用者會以他們自己選擇的通訊協定接收串流。 因此，您只需要儲存及支付一種儲存格式之檔案的費用，媒體服務會根據用戶端的要求建置及提供適當的回應。
+媒體服務支援靜態和動態封裝。 使用靜態封裝時，您必須依據客戶所需的每種格式各建立一份內容。 使用動態封裝，您只需要建立包含一組自動調整位元速率設定檔或 Smooth Streaming 檔案的資產。 然後，隨選資料流處理伺服器會根據資訊清單或片段要求中的指定格式，確保您的使用者會以他們自己選擇的通訊協定接收串流。 因此，您只需要儲存及支付一種儲存格式之檔案的費用，媒體服務會根據用戶端的要求建置及提供適當的回應。
 
 > [!NOTE]
 > 建議您使用 [動態封裝](media-services-dynamic-packaging-overview.md)。
@@ -717,7 +718,7 @@ ms.locfileid: "87052632"
 > [!NOTE]
 > 若要將您的內容轉換為 HLS，必須先將其轉換/編碼為 Smooth Streaming。
 > 此外，針對使用 AES 加密的 HLS，請務必設定 MediaPackager_SmoothToHLS.xml 檔案中的下列屬性：將加密屬性設為 true、設定金鑰值和指向驗證/授權伺服器的 KeyURI 值。
-> 媒體服務會建立金鑰檔，並將它放在資產容器中。 您應該將 /asset-containerguid/\*.key 檔案複製到伺服器中 (或自行建立金鑰檔案)，然後從資產容器中刪除 \*.key 檔案。
+> 媒體服務會建立金鑰檔案，並將它放在資產容器中。 您應該將 /asset-containerguid/\*.key 檔案複製到伺服器中 (或自行建立金鑰檔案)，然後從資產容器中刪除 \*.key 檔案。
 > 
 > 
 

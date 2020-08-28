@@ -11,24 +11,25 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/17/2020
 ms.author: juliako
-ms.openlocfilehash: 7c39b133773cbe35d78e04c4e40de9d62c4eba18
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6a0592af43987e89556aee57ea44e07dc2c00828
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001106"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006783"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>建立具有多個轉換輸出的作業
 
-本主題說明如何建立具有兩個轉換輸出的轉換。 第一個呼叫會使用內建的[AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset)預設值，針對自動調整位元速率串流的輸入進行編碼。 第二個會呼叫輸入影片中的音訊信號，以使用[AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets)進行處理。 建立轉換之後，您可以提交將會據以處理影片的作業。 因為在此範例中，我們會指定兩個轉換輸出，所以我們必須指定兩個作業輸出。 您可以選擇將這兩個作業輸出導向相同的資產（如下所示），也可以將結果寫入不同的資產。
+本主題說明如何建立具有兩個轉換輸出的轉換。 第一個會呼叫輸入，以使用內建 [>adaptivestreaming](encoding-concept.md#builtinstandardencoderpreset) 預設值進行自動調整位元速率串流處理。 第二個呼叫輸入影片中要使用 [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets)處理的音訊信號。 建立轉換之後，您可以提交將會據以處理影片的作業。 因為在此範例中，我們要指定兩個轉換輸出，所以我們必須指定兩個作業輸出。 您可以選擇將這兩個作業輸出導向相同的資產 (如下所示) ，也可以讓結果寫入個別的資產。
  
 
 > [!TIP]
-> 在您開始開發之前，請先參閱[使用媒體服務 V3 api 進行開發](media-services-apis-overview.md)（包含存取 api、命名慣例等的資訊）。
+> 開始開發之前，請參閱 [使用媒體服務 V3 api 進行開發](media-services-apis-overview.md) (包含存取 api、命名慣例等的資訊 ) 
 
 ## <a name="create-a-transform"></a>建立轉換
 
-下列程式碼顯示如何建立會產生兩個輸出的轉換。
+下列程式碼說明如何建立會產生兩個輸出的轉換。
 
 ```csharp
 private static async Task<Transform> GetOrCreateTransformAsync(
@@ -67,7 +68,7 @@ private static async Task<Transform> GetOrCreateTransformAsync(
 ```
 ## <a name="submit-a-job"></a>提交作業
 
-建立具有 HTTPS URL 輸入和兩個作業輸出的作業。
+使用 HTTPS URL 輸入建立作業，並使用兩個作業輸出。
 
 ```csharp
 private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
@@ -133,6 +134,6 @@ private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
 
 請參閱[錯誤碼](/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [使用 .NET Azure 媒體服務 v3 範例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/) 

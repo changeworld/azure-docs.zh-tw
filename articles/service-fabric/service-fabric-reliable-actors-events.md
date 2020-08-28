@@ -1,16 +1,17 @@
 ---
-title: 以動作專案為基礎的 Azure Service Fabric 執行者中的事件
+title: 以動作專案為基礎的 Azure Service Fabric 動作專案中的事件
 description: 瞭解 Service Fabric Reliable Actors 的事件，這是在動作專案與用戶端之間進行通訊的有效方式。
 author: vturecek
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: b17befcd86cd56eb5eb385ddc5196cbfce73003c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f5634a33dccb06437f2e5f095e7880221dba9d6e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260421"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007905"
 ---
 # <a name="actor-events"></a>動作項目事件
 動作項目事件會將最佳效果通知從動作項目傳送到用戶端。 動作項目事件是為了動作項目與用戶端之間的通訊而設計，不應用於動作項目與動作項目之間的通訊。

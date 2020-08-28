@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 0607133f26113123f1c75d714c6c71f19cf2db63
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 3212ba621f02740e9b27c28da854eef70dce64a6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826509"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006577"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -43,7 +43,7 @@ Azure 備份提供數種方式來還原 VM。
   - 還原非 premium Vm 時，不支援 premium 儲存體帳戶。
   - 還原受管理的 Vm 時，不支援以網路規則設定的 premium 儲存體帳戶。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 若要 (建立新的 VM) 來還原 VM，請確定您有正確的 Azure 角色型存取控制 (Azure RBAC) 還原 VM 操作的 [許可權](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) 。
 

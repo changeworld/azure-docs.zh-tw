@@ -3,12 +3,12 @@ title: 管理及監視 Azure VM 備份
 description: 瞭解如何使用 Azure 備份服務來管理及監視 Azure VM 備份。
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a3349d30d5913781fb3348e7f5622366b3abc1d0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 707558b8ad28f7a8a17e24e57f97fda064d0f238
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892162"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999337"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 備份服務管理 Azure VM 備份
 
@@ -186,7 +186,7 @@ Azure 備份包含虛刪除功能，以保護您的資料。 使用虛刪除時�
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>主要資料來源已不再存在的備份專案
 
-* 如果針對 Azure 備份設定的 Azure Vm 未停止保護而遭到刪除或移動，則排程的備份作業和隨選 (臨機操作) 備份工作將會失敗，並出現錯誤 UserErrorVmNotFoundV2。 備份前置檢查只會顯示為失敗的隨選備份作業 (失敗的排程作業不會顯示) 。
+* 如果針對 Azure 備份設定的 Azure Vm 未停止保護而遭到刪除或移動，則排程的備份作業和隨選 (臨機操作) 備份作業將會失敗，並出現錯誤 UserErrorVmNotFoundV2。 備份前置檢查只會顯示為失敗的隨選備份作業 (失敗的排程作業不會顯示) 。
 * 這些備份專案會在系統中保持作用中狀態，並遵守使用者所設定的備份和保留原則。 根據保留原則，將會保留這些 Azure Vm 的備份資料。 過期的復原點 (除了最後一個復原點) 會根據備份原則中設定的保留範圍進行清除。
 * 建議您刪除主要資料來源不存在的備份專案，以避免產生任何額外的成本，如果不再需要刪除資源的備份專案/資料，因為最後一個復原點會永遠保留，而使用者會根據適用的備份定價收費。
 

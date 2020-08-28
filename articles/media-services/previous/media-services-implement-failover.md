@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ae1371a8f025fd5e5722d483323fbe937538eb15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 91ef9d8bf75874f07c6a4a9c5763ff77b97b0180
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78939214"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008959"
 ---
-# <a name="implement-failover-streaming-with-media-services-v2"></a>使用媒體服務 v2 來執行容錯移轉串流
+# <a name="implement-failover-streaming-with-media-services-v2"></a>使用媒體服務 v2 執行容錯移轉串流
 
 本逐步解說示範如何將內容 (Blob) 從一個資產複製到另一個資產，以便處理隨選資料流處理的備援。 如果您想要設定 Azure 內容傳遞網路，以便在某個資料中心發生中斷時在兩個資料中心之間進行容錯移轉，這個案例會很有用。 本逐步解說使用 Azure 媒體服務 SDK、Azure 媒體服務 REST API 和 Azure 儲存體 SDK 來示範下列工作：
 
@@ -50,7 +51,7 @@ ms.locfileid: "78939214"
 * 儲存體加密資產 (AssetCreationOptions.StorageEncrypted) 不支援複寫 (因為兩個媒體服務帳戶中的加密金鑰不同)。 
 * 如果您想要利用動態封裝，請確定您想要從中串流內容的串流端點是處於 [執行中]**** 狀態。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 在新的或現有的 Azure 訂用帳戶中有兩個媒體服務帳戶。 請參閱 [如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 * 作業系統：Windows 7、Windows 2008 R2 或 Windows 8。
@@ -61,11 +62,11 @@ ms.locfileid: "78939214"
 
 在本節中，您會建立 C# Console Application 專案。
 
-1. 使用 Visual Studio 建立一個包含 C# Console Application 專案的新方案。 在 [名稱] 中輸入**handleredundancyforondemandstreaming 做**，然後按一下 **[確定]**。
-2. 在與**handleredundancyforondemandstreaming 做**專案檔相同的層級上建立**SupportFiles**資料夾。 在**SupportFiles**資料夾底下，建立**OutputFiles**和**MP4Files**資料夾。 將 .mp4 檔案複製到 **MP4Files** 資料夾  （在此範例中，會使用**ignite.mp4**檔案）。 
-3. 使用**NuGet**將參考新增至與媒體服務相關的 dll。 在**Visual Studio 主功能表**中，選取 [**工具**] [  >  **NuGet 套件管理員**] [  >  **套件管理員主控台**]。 在主控台視窗中，輸入**Install-Package windowsazure.storage. windowsazure.mediaservices.extensions**，然後按 enter。
-4. 新增此專案所需的其他參考： System.object、序列化和 System.web。
-5. 以下列方式取代預設新增至**Programs.cs**檔案的**using**語句：
+1. 使用 Visual Studio 建立一個包含 C# Console Application 專案的新方案。 輸入 **HandleRedundancyForOnDemandStreaming** 作為名稱，然後按一下 **[確定]**。
+2. 在與**HandleRedundancyForOnDemandStreaming .csproj**專案檔相同的層級上建立**SupportFiles**資料夾。 在 [ **SupportFiles** ] 資料夾底下，建立 **OutputFiles** 和 **MP4Files** 資料夾。 將 .mp4 檔案複製到 **MP4Files** 資料夾   (在此範例中，會使用 **ignite.mp4** 檔案。 )  
+3. 使用 **NuGet** 來新增與媒體服務相關之 dll 的參考。 在**Visual Studio 主功能表**中，選取 [**工具**]  >  **NuGet 封裝管理員**  >  **封裝管理員主控台**。 在主控台視窗中，輸入 **Install-Package windowsazure. windowsazure.mediaservices**，然後按 enter。
+4. 新增此專案所需的其他參考： System.object 和 System.object。
+5. 以下列專案取代預設新增至**Programs.cs**檔案的**using**語句：
 
 ```csharp
 using System;
@@ -208,7 +209,7 @@ using System.Runtime.Serialization.Json;
 3. 從 Main 呼叫下列方法定義。 如需每個方法的詳細資訊，請參閱批註。
 
     >[!NOTE]
-    >對於不同的媒體服務原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您總是使用相同的天數和存取權限，您應該使用相同的原則識別碼。 例如，為預定要長時間維持就地 (非上傳原則) 的定位器原則，使用相同的識別碼。 如需詳細資訊，請參閱[這個主題](media-services-dotnet-manage-entities.md#limit-access-policies)。
+    >對於不同的媒體服務原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您總是使用相同的天數和存取權限，您應該使用相同的原則識別碼。 例如，為預定要長時間維持就地 (非上傳原則) 的定位器原則，使用相同的識別碼。 如需詳細資訊，請參閱 [本主題](media-services-dotnet-manage-entities.md#limit-access-policies)。
 
     ```csharp
     public static IAsset CreateAssetAndUploadSingleFile(CloudMediaContext context,
@@ -748,13 +749,13 @@ using System.Runtime.Serialization.Json;
     
 ## <a name="content-protection"></a>內容保護
 
-本主題中的範例會顯示清除串流。 如果您想要執行受保護的資料流程，您需要設定一些其他專案，您必須使用相同的**AssetDeliveryPolicy**、相同的**ContentKeyAuthorizationPolicy**或外部金鑰伺服器 URL，而且您需要複製具有相同識別碼的內容金鑰。
+本主題中的範例會顯示清楚的串流。 如果您想要執行受保護的串流，您需要設定一些其他專案，您必須使用相同的 **AssetDeliveryPolicy**、相同的 **ContentKeyAuthorizationPolicy** 或外部金鑰伺服器 URL，而且您必須使用相同的識別碼複製內容金鑰。
 
-如需內容保護的詳細資訊，請參閱[使用 AES-128 動態加密和金鑰傳遞服務](media-services-protect-with-aes128.md)。
+如需有關內容保護的詳細資訊，請參閱 [使用 AES-128 動態加密和金鑰傳遞服務](media-services-protect-with-aes128.md)。
 
 ## <a name="see-also"></a>另請參閱
 
-[使用 Azure Webhook 來監視媒體服務作業通知](media-services-dotnet-check-job-progress-with-webhooks.md)
+[使用 Azure Webhook 來監視媒體服務工作通知](media-services-dotnet-check-job-progress-with-webhooks.md)
 
 ## <a name="next-steps"></a>後續步驟
 

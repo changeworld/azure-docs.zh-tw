@@ -1,18 +1,19 @@
 ---
 title: Azure 服務匯流排中的交易處理總覽
-description: 本文提供交易處理的總覽，以及 Azure 服務匯流排中的 [透過傳送] 功能。
+description: 本文提供您在 Azure 服務匯流排中處理交易處理和傳送 via 功能的總覽。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 90ee3e4f7cd6465d6297406d1d28d4ea34f88ac4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f51e570775fbce8a316d98b5198fa906173dc755
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340505"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999949"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服務匯流排交易處理概觀
 
-本文討論 Microsoft Azure 服務匯流排的交易功能。 大部分的討論都會[以服務匯流排範例的 AMQP 交易](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)來說明。 本文只包含交易處理概觀以及服務匯流排中的「傳送方式」** 功能，而「不可部分完成交易」範例的範圍更廣且更複雜。
+本文討論 Microsoft Azure 服務匯流排的交易功能。 [使用服務匯流排範例的 AMQP 交易](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)會說明大部分的討論。 本文只包含交易處理概觀以及服務匯流排中的「傳送方式」** 功能，而「不可部分完成交易」範例的範圍更廣且更複雜。
 
 ## <a name="transactions-in-service-bus"></a>服務匯流排中的交易
 
@@ -27,7 +28,7 @@ ms.locfileid: "85340505"
 可在交易範圍內執行的作業如下︰
 
 * ** [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、 [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、 [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**： `Send` 、 `SendAsync` 、 `SendBatch` 、`SendBatchAsync`
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**： `Complete` 、 `CompleteAsync` 、 `Abandon` 、 `AbandonAsync` 、 `Deadletter` 、 `DeadletterAsync` `Defer` `DeferAsync` 、、、 `RenewLock` 、`RenewLockAsync` 
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**： `Complete` 、 `CompleteAsync` 、、、、、、、 `Abandon` `AbandonAsync` `Deadletter` `DeadletterAsync` `Defer` `DeferAsync` `RenewLock` 、、 `RenewLockAsync` 
 
 不包括接收作業，因為假設應用程式使用 [ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式、在一些接收迴圈內或使用 [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) 回呼來取得訊息，然後只會開啟交易範圍來處理訊息。
 
@@ -35,7 +36,7 @@ ms.locfileid: "85340505"
 
 ## <a name="transfers-and-send-via"></a>傳輸和「傳送方式」
 
-若要啟用從佇列到處理器再到另一個佇列的交易式資料送交，服務匯流排支援「傳輸」**。 在傳輸作業中，寄件者會先將訊息*傳送至傳輸佇列*，而傳送佇列會使用 autoforward 功能所依賴的相同穩固傳輸實現，立即將訊息移至預定的目的地佇列。 訊息絕不會認可到傳輸佇列的記錄檔，因此，傳輸佇列的取用者可以看到它。
+若要啟用從佇列到處理器再到另一個佇列的交易式資料送交，服務匯流排支援「傳輸」**。 在傳送作業中，寄件者會先將訊息傳送至 *傳送佇列*，而傳送佇列會使用 autoforward 功能所依賴的相同健全傳輸執行，立即將訊息移至預定的目的端佇列。 訊息絕不會認可到傳輸佇列的記錄檔，因此，傳輸佇列的取用者可以看到它。
 
 傳輸佇列本身是寄件者輸入訊息的來源時，就能知道這個交易式功能的能力。 換句話說，服務匯流排可以「透過」傳輸佇列將訊息傳輸到目的地佇列，同時對輸入訊息執行完整 (或延遲，或寄不出信件) 作業 (全部都在一個不可部分完成作業中)。 
 
@@ -50,7 +51,7 @@ var sender = new MessageSender(connection, QueueName);
 var receiver = new MessageReceiver(connection, QueueName);
 ```
 
-然後，簡單的交易會使用這些元素，如下列範例所示。 若要參考完整的範例，請參閱[GitHub 上的原始程式碼](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)：
+簡單交易接著會使用這些元素，如下列範例所示。 若要參考完整的範例，請參閱 [GitHub 上的原始程式碼](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)：
 
 ```csharp
 var receivedMessage = await receiver.ReceiveAsync();
@@ -88,7 +89,7 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 ```
 
 ## <a name="timeout"></a>逾時
-交易時間已在2分鐘後過期。 交易計時器會在交易中的第一個作業開始時啟動。 
+交易會在2分鐘後過期。 交易計時器會在交易中的第一個作業開始時啟動。 
 
 ## <a name="next-steps"></a>後續步驟
 

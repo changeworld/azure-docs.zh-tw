@@ -3,12 +3,13 @@ title: 安全地連接到 Azure Service Fabric 叢集
 description: 說明如何驗證用戶端對 Service Fabric 叢集的存取，以及如何保護用戶端與叢集之間的通訊。
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 89d3598b283a91645f0db648be81c73dffde8b46
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2ce0325f7aebac92eb1e7deadd6f6875b75b3755
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259246"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008806"
 ---
 # <a name="connect-to-a-secure-cluster"></a>連線到安全的叢集
 
@@ -30,7 +31,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 如果您的 .pfx 檔案未受密碼保護，請針對最後一個參數使用 -passin pass:。
 
-若要以 pem 檔案指定用戶端憑證，請在 `--pem` 引數中指定檔案路徑。 例如︰
+若要以 pem 檔案指定用戶端憑證，請在 `--pem` 引數中指定檔案路徑。 例如：
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -44,7 +45,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-有時，用來保護測試或開發叢集的憑證會讓憑證驗證失敗。 若要略過憑證驗證，請指定 `--no-verify` 選項。 例如︰
+有時，用來保護測試或開發叢集的憑證會讓憑證驗證失敗。 若要略過憑證驗證，請指定 `--no-verify` 選項。 例如：
 
 > [!WARNING]
 > 連線到生產環境 Service Fabric 叢集時，請勿使用 `no-verify` 選項。
@@ -53,7 +54,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./cli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-此外，您可以指定受信任 CA 憑證，或個別憑證的目錄路徑。 若要指定這些路徑，請使用 `--ca` 引數。 例如︰
+此外，您可以指定受信任 CA 憑證，或個別憑證的目錄路徑。 若要指定這些路徑，請使用 `--ca` 引數。 例如：
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca

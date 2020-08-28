@@ -2,21 +2,21 @@
 title: 支援受控識別的 Azure 服務 - Azure AD
 description: 支援 Azure 資源和 Azure AD 驗證受控識別的服務清單
 services: active-directory
-author: MarkusVi
-ms.author: markvi
+author: barclayn
+ms.author: barclayn
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
-manager: markvi
+manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 13521017076c609c2fadb4362d5cccdf12d94098
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 1d9bd6ccc0f92ab28088e886c5bd17d79bc6cea3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873580"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007622"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支援適用於 Azure 資源的受控識別服務
 
@@ -63,7 +63,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 | 系統指派 | 預覽 | 無法使用 | 無法使用 | 無法使用 | 
 | 使用者指派 | 無法使用 | 無法使用 | 無法使用 | 無法使用 |
 
-啟用 Azure Arc 的 Kubernetes 目前[支援系統指派](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#azure-arc-agents-for-kubernetes)的身分識別。 受管理的服務識別憑證可供所有啟用 Azure Arc 的 Kubernetes 代理程式用來與 Azure 進行通訊。
+Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#azure-arc-agents-for-kubernetes)的身分識別。 所有 Azure Arc 啟用的 Kubernetes 代理程式都會使用受控服務識別憑證來與 Azure 進行通訊。
 
 ### <a name="azure-blueprints"></a>Azure 藍圖
 
@@ -185,7 +185,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| 系統指派 | 適用于可使用 Azure 匯入匯出服務的區域 | 預覽 | 可用 | 可用 |
+| 系統指派 | 可在 Azure 匯入匯出服務的可用區域中使用 | 預覽 | 可用 | 可用 |
 | 使用者指派 | 無法使用 | 無法使用 | 無法使用 | 無法使用 |
 
 ### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
@@ -231,7 +231,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ### <a name="azure-service-fabric"></a>Azure Service Fabric
 
-所有區域都可使用[Service Fabric 應用程式的受控識別](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)。
+適用于[Service Fabric 應用程式的受控識別](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)可在所有區域中使用。
 
 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -250,7 +250,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 | 使用者指派 | 無法使用 | 無法使用 | 無法使用 | 無法使用 |
 
 
-如需詳細資訊，請參閱[如何為 Azure 春季雲端應用程式啟用系統指派的受控識別](~/articles/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity.md)。
+如需詳細資訊，請參閱 [如何為 Azure 春季 Cloud 應用程式啟用系統指派的受控識別](~/articles/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity.md)。
 
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集
@@ -291,9 +291,9 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 | 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | 系統指派 | 無法使用 | 無法使用 | 無法使用 | 無法使用 | 
-| 使用者指派 | [適用于支援的區域](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) | 無法使用 | 無法使用 | 無法使用 |
+| 使用者指派 | [可在支援的區域中使用](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) | 無法使用 | 無法使用 | 無法使用 |
 
-若要瞭解如何在可用) 的區域中設定 Azure VM 映射產生器的受控識別 (，請參閱映射產生器的[總覽](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions)。
+若要瞭解如何為 Azure VM 映射產生器設定受控識別 (在可用) 的區域中，請參閱影像產生器 [總覽](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions)。
 ### <a name="azure-signalr-service"></a>Azure SignalR 服務
 
 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |

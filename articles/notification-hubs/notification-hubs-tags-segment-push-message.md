@@ -1,6 +1,6 @@
 ---
 title: Azure 通知中樞中的路由和標記運算式
-description: 瞭解如何路由及標記 Azure 通知中樞的運算式。
+description: 瞭解如何為 Azure 通知中樞路由及標記運算式。
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,13 @@ ms.date: 12/09/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: 2432ac41645e373ea3a87ff7e69ef02a4e30c81d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4ff8225522e79e2be40682fb5e4823777dde2aa0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062301"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998297"
 ---
 # <a name="routing-and-tag-expressions"></a>路由與標記運算式
 
@@ -31,7 +32,7 @@ ms.locfileid: "80062301"
 
 ## <a name="targeting-specific-registrations"></a>指定特定的註冊
 
-指定特定通知註冊的唯一方法，就是關聯標記與註冊，然後再指定這些標記。 如[註冊管理](notification-hubs-push-notification-registration-management.md)中所述，若要接收推播通知，應用程式必須在通知中樞上註冊裝置控制碼。 一旦應用程式在通知中樞上建立註冊，應用程式後端就可以傳送推播通知給它。 應用程式後端可以下列方式，選擇特定通知的目標註冊：
+指定特定通知註冊的唯一方法，就是關聯標記與註冊，然後再指定這些標記。 如 [註冊管理](notification-hubs-push-notification-registration-management.md)中所述，若要接收推播通知，應用程式必須在通知中樞上註冊裝置控制碼。 一旦應用程式在通知中樞上建立註冊，應用程式後端就可以傳送推播通知給它。 應用程式後端可以下列方式，選擇特定通知的目標註冊：
 
 1. **廣播**：通知中樞中的所有註冊都會收到通知。
 2. **標記**：所有包含指定標記的註冊都會收到通知。
@@ -39,11 +40,11 @@ ms.locfileid: "80062301"
 
 ## <a name="tags"></a>標籤
 
-標記可以是任何字串，最多120個字元，其中包含英數位元及下列非英數位元： ' `_` '、' `@` '、' `#` '、' `.` '、' `:` '、' `-` '。 下列範例示範的應用程式可以讓您從中接收有關特定音樂群組的快顯通知。 在此案例中，路由通知的簡單方式是使用代表不同群組的標記來標示註冊，如下圖所示：
+標記可以是任何字串，最多120個字元，包含英數位元及下列非英數位元： ' `_` '、' `@` '、' `#` '、' `.` '、' `:` '、' `-` '。 下列範例示範的應用程式可以讓您從中接收有關特定音樂群組的快顯通知。 在此案例中，路由傳送通知的簡單方式，是使用代表不同頻帶的標記來標記註冊，如下圖所示：
 
 ![標記總覽](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
-在圖中，以**Beatles**標記的訊息只會到達已向標記**Beatles**註冊的平板電腦。
+在圖中，以 **Beatles** 標記的訊息只會抵達以標記 **Beatles**註冊的平板電腦。
 
 如需為標記建立註冊的詳細資訊，請參閱 [註冊管理](notification-hubs-push-notification-registration-management.md)。
 
@@ -63,13 +64,13 @@ toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
 outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Wailers");
 ```
 
-標籤不得預先布建，而且可以參考多個應用程式特有的概念。 例如，此範例應用程式的使用者可能想要對所有樂團發表評論，但不想只收到他們評論及喜愛之樂團的快顯通知，也想要收到來自他們朋友之所有評論的快顯通知。 下圖顯示此案例的範例：
+標記不得預先布建，而且可以參考多個應用程式專屬的概念。 例如，此範例應用程式的使用者可能想要對所有樂團發表評論，但不想只收到他們評論及喜愛之樂團的快顯通知，也想要收到來自他們朋友之所有評論的快顯通知。 下圖強調此案例的範例：
 
-![朋友的標記](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags2.png)
+![標記朋友](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags2.png)
 
-在此範例中，Alice 會對 Beatles 的更新感興趣，而 Bob 會對 Wailers 的更新感興趣。 Bob 也對 Charlie 的意見感興趣，Charlie 對 Wailers 感興趣。 傳送通知給 Charlie 在 Beatles 上的批註時，通知中樞會將它傳送給 Alice 和 Bob。
+在此範例中，Alice 對 Beatles 的更新有興趣，而 Bob 對 Wailers 的更新有興趣。 Bob 對 Charlie 的評論也有興趣，Charlie 對 Wailers 感興趣。 針對 Beatles 上的 Charlie 批註傳送通知時，通知中樞會將它傳送給 Alice 和 Bob。
 
-雖然您可以編碼標記中的多個考慮（例如， `band_Beatles` 或 `follows_Charlie` ），但標記是簡單字串，而不是具有值的屬性。 註冊只會符合特定標記的存在與否。
+雖然您可以針對標記中的多個考慮進行編碼 (例如 `band_Beatles` 或 `follows_Charlie`) ，但標記是簡單字串，而不是具有值的屬性。 註冊僅符合特定標記的存在與否。
 
 如何使用標記傳送到您所關注之群組的完整逐步教學課程，請參閱 [即時新聞](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)。
 
@@ -78,15 +79,15 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 ## <a name="using-tags-to-target-users"></a>使用標記指定使用者
 
-另一種使用標記的方式，是識別與特定使用者相關聯的所有裝置。 您可以使用包含使用者識別碼的標記來標記註冊，如下圖所示：
+使用標記的另一種方式是識別與特定使用者相關聯的所有裝置。 您可以使用包含使用者識別碼的標記來標記註冊，如下圖所示：
 
 ![標記使用者](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags3.png)
 
-在圖中，標記為的訊息會 `user_Alice` 到達所有標記為的裝置 `user_Alice` 。
+在圖中，標記的訊息會 `user_Alice` 到達標記為的所有裝置 `user_Alice` 。
 
 ## <a name="tag-expressions"></a>標記運算式
 
-在某些情況下，通知必須以單一標記所識別的一組註冊為目標，但使用標記的布林運算式。
+在某些情況下，通知必須以一組指定的註冊為目標，而不是由單一標記所識別，而是使用標記的布林運算式。
 
 假設有一支運動應用程式會將提醒傳送給波士頓的每個人，告知他們有關於紅襪隊與紅雀隊之間的賽事訊息。 若用戶端應用程式註冊關於球隊與地點的標記，則通知的目標應為波士頓中位關注紅襪隊或紅雀隊的每個人。 此條件可以下列布林運算式表示：
 
@@ -96,9 +97,9 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 ![標記運算式](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
-標記運算式支援一般布林運算子，例如 `AND` （ `&&` ）、 `OR` （ `||` ）和 `NOT` （ `!` ）; 它們也可以包含括弧。 僅使用 `OR` 運算子的標記運算式可以參考20個標記; 具有運算子的運算式， `AND` 但沒有 `OR` 運算子可以參考10個標記; 否則，標記運算式的限制為6個標記。
+標記運算式支援常見的布林運算子 `AND` ，例如 (`&&`) 、 `OR` (`||`) 和 `NOT` (`!`) ; 它們也可以包含括弧。 只有使用 `OR` 運算子的標記運算式可以參考20個標籤; expression with `AND` 運算子，但不 `OR` 能有運算子可以參考10個標記; 否則，標記運算式的限制為6個標記。
 
-以下是使用 SDK 搭配標記運算式來傳送通知的範例：
+以下是使用 SDK 以標記運算式傳送通知的範例：
 
 ```csharp
 Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;

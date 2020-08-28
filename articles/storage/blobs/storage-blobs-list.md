@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 81eab2f3c5748c4edf7e09e5147a178a08bc546b
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9295b1d8a54d9c3c1a138a54f4b3706bd39227fd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185701"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009537"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 Blob
 
@@ -50,9 +51,9 @@ ms.locfileid: "88185701"
 
 ### <a name="manage-how-many-results-are-returned"></a>管理傳回的結果數目
 
-根據預設，清單作業一次最多會傳回5000個結果，但您可以指定想要讓每個清單作業傳回的結果數目。 本文中顯示的範例將示範如何執行這項操作。
+根據預設，清單作業一次最多會傳回5000個結果，但您可以指定要讓每個清單作業傳回的結果數目。 本文中顯示的範例會示範如何進行這項操作。
 
-如果清單作業傳回5000個以上的 blob，或可用的 blob 數目超過您指定的數目，則 Azure 儲存體會傳回包含 blob 清單的*接續 token* 。 接續權杖是不透明的值，其可用來從 Azure 儲存體中擷取下一組結果。
+如果清單作業傳回的 blob 超過5000個，或可用的 blob 數目超過您指定的數目，則 Azure 儲存體會傳回包含 blob 清單的 *接續 token* 。 接續權杖是不透明的值，其可用來從 Azure 儲存體中擷取下一組結果。
 
 在程式碼中檢查接續權杖的值，以判斷該值是否為 null。 當接續權杖為 null 時，結果集就會完成。 如果接續權杖不是 null，則會再次呼叫清單作業、傳遞接續權杖來擷取下一組結果，直到接續權杖是 null 為止。
 
@@ -82,7 +83,7 @@ Azure 儲存體中的 Blob 是以簡單架構進行組織，而不是階層式�
 
 下列範例會使用簡單列表，在指定了選擇性區段大小情況下列出指定容器中的 Blob，並將 Blob 名稱寫入主控台視窗。
 
-如果您已在您的帳戶上啟用階層命名空間功能，目錄就不是虛擬的。 相反地，它們是實體獨立的物件。 因此，目錄會在清單中顯示為長度為零的 blob。
+如果您已在您的帳戶上啟用階層命名空間功能，目錄就不是虛擬的。 相反地，它們是具體、獨立的物件。 因此，目錄會以零長度的 blob 形式出現在清單中。
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
@@ -152,7 +153,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要以階層方式列出 blob，請呼叫[BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)或[BlobContainerClient. GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)方法。
+若要以階層方式列出 blob，請呼叫 [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)或 [BlobContainerClient. GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) 方法。
 
 下列範例會使用階層式清單來列出指定容器中的 blob，並指定選擇性區段大小，並將 blob 名稱寫入主控台視窗。
 

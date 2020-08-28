@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f02f31e0fc8943682af77ca6f506d15f36e88146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 208b900de20a89a9ecc819ef1254c08fcc628f82
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668894"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010215"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>變更 Azure 中 SQL 虛擬機器的授權模型
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -156,7 +156,9 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 
 ## <a name="known-errors"></a>已知錯誤
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>在資源群組 '\<resource-group>' 下找不到資源 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>'。
+檢查常見的錯誤及其解決方法。 
+
+**在資源群組 ' ' 下找不到資源 ' Microsoft.sqlvirtualmachine/SqlVirtualMachines/ \<resource-group> ' \<resource-group> 。**
 
 當在尚未向 SQL VM 資源提供者註冊的 SQL Server VM 上嘗試變更授權模型時，就會發生此錯誤：
 
@@ -165,7 +167,7 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 您必須先向資源提供者註冊訂閱，再[向資源提供者註冊 SQL Server VM](sql-vm-resource-provider-register.md)。 
 
 
-### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>虛擬機器 '\<vmname\>' 具備多個相關聯的 NIC
+**虛擬機器 ' \<vmname\> ' 有多個相關聯的 NIC**
 
 此錯誤會在具備超過一個 NIC 的虛擬機器上發生。 在變更授權模型之前，請先移除其中一個 NIC。 雖然可在變更授權模型之後，將 NIC 新增回 VM，但系統不會再支援 Azure 入口網站中的作業，例如自動備份和修補。 
 
@@ -176,7 +178,7 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 
 * [Windows VM 上的 SQL Server 概觀](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 上的 SQL Server 常見問題集](frequently-asked-questions-faq.md)
-* [Windows VM 上的 SQL Server 定價指導](pricing-guidance.md)
+* [Windows VM 上的 SQL Server 定價指引](pricing-guidance.md)
 * [Windows VM 上的 SQL Server 版本資訊](../../database/doc-changes-updates-release-notes.md)
 
 

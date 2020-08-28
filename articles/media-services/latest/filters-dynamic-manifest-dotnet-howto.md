@@ -13,23 +13,24 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/11/2020
 ms.author: juliako
-ms.openlocfilehash: 0d8a60d6c4b3fb66b46742fbd99e3a73a63fff45
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 96fd2fbc087fda422271aef0dfac34f066f09b11
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136077"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009656"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>使用媒體服務 .NET SDK 建立篩選器
 
 當提供您的內容給客戶 (串流處理即時事件或點播視訊) 時，您的用戶端可能需要比預設資產資訊清單檔案中所述還大的彈性。 Azure 媒體服務可讓您為您的內容定義帳戶篩選器與資產篩選器。 
 
-如需這項功能和使用方式的詳細描述，請參閱[動態資訊清單](filters-dynamic-manifest-overview.md)和[篩選](filters-concept.md)。
+如需這項功能的詳細說明，以及使用它的案例，請參閱 [動態資訊清單](filters-dynamic-manifest-overview.md) 和 [篩選器](filters-concept.md)。
 
 本主題說明如何使用媒體服務 .NET SDK 為點播視訊資產定義篩選器，以及如何建立[帳戶篩選器](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet)與[資產篩選器](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)。 
 
 > [!NOTE]
-> 請務必參閱[presentationTimeRange](filters-concept.md#presentationtimerange)。
+> 請務必查看 [presentationTimeRange](filters-concept.md#presentationtimerange)。
 
 ## <a name="prerequisites"></a>先決條件 
 
@@ -82,11 +83,11 @@ AssetFilter assetFilterParams = new AssetFilter(tracks: includedTracks);
 client.AssetFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, encodedOutputAsset.Name, "assetFilterName1", assetFilterParams);
 ```
 
-## <a name="associate-filters-with-streaming-locator"></a>將篩選器與串流定位器建立關聯
+## <a name="associate-filters-with-streaming-locator"></a>將篩選準則與串流定位器建立關聯
 
-您可以指定資產或帳戶篩選器的清單，其適用于您的串流定位器。 動態封裝程式[ (串流端點) ](dynamic-packaging-overview.md)會將這份篩選器清單與您的用戶端在 URL 中指定的篩選準則一起套用。 這個組合會產生[動態資訊清單](filters-dynamic-manifest-overview.md)，這是根據 URL 中的篩選器，以及您在串流定位器上指定的篩選準則。 如果您想要套用篩選，但不想要在 URL 中公開篩選名稱，建議您使用這項功能。
+您可以指定資產或帳戶篩選器的清單，這會套用至您的串流定位器。 [動態封裝 (串流端點) ](dynamic-packaging-overview.md)會將這份篩選清單與您的用戶端在 URL 中指定的篩選準則一起套用。 此組合會產生 [動態資訊清單](filters-dynamic-manifest-overview.md)，這是以 URL 中的篩選器和您在串流定位器上指定的篩選器為基礎。 如果您想要套用篩選，但不想公開 URL 中的篩選名稱，建議您使用這項功能。
 
-下列 c # 程式碼說明如何建立串流定位器並指定 `StreamingLocator.Filters` 。 這是選擇性的屬性，可接受 `IList<string>` 篩選名稱的。
+下列 c # 程式碼說明如何建立串流定位器並指定 `StreamingLocator.Filters` 。 這是選擇性的屬性，接受 `IList<string>` 篩選名稱的。
 
 ```csharp
 IList<string> filters = new List<string>();
@@ -104,7 +105,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
       
-## <a name="stream-using-filters"></a>使用篩選器串流
+## <a name="stream-using-filters"></a>使用篩選的資料流程
 
 定義篩選條件後，您的用戶端就可以在串流 URL 中使用它們。 篩選器可以套用至自適性串流通訊協定：Apple HTTP 即時串流 (HLS)、MPEG-DASH 和 Smooth Streaming。
 

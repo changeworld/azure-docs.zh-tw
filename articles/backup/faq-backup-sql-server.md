@@ -4,18 +4,18 @@ description: 尋找有關使用 Azure 備份備份 Azure Vm 上的 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: d69a2aff900dc3185aafbcb2d655a29d2fff06e3
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 991a00aca3b32ee743be3cdc2bc6a35de064cb25
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890550"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006137"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有關在 Azure VM 備份上執行的 SQL Server 資料庫的常見問題
 
 本文將針對在 Azure 虛擬機器上執行的 SQL Server 資料庫，提供備份 (Vm) 並使用 [Azure 備份](backup-overview.md) 服務的相關常見問題。
 
-## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>是否可以在相同電腦上使用適用于 IaaS VM 的 Azure 備份以及 SQL Server？
+## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>是否可以在相同電腦上使用 IaaS VM 的 Azure 備份以及 SQL Server？
 
 是的，您可以在相同的 VM 上同時有 VM 備份和 SQL 備份。 在此情況下，我們會在內部觸發 VM 上僅複製的完整備份，而不會截斷記錄。
 
@@ -60,7 +60,7 @@ ms.locfileid: "88890550"
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>我可以保護內部部署的可用性群組嗎？
 
-不會。 Azure 備份可保護在 Azure 中執行的 SQL Server 資料庫。 如果可用性群組 (AG) 在 Azure 和內部部署機器之間散佈，則只有在主要複本是在 Azure 中執行時，才能保護 AG。 此外，Azure 備份只會保護在與復原服務保存庫相同的 Azure 區域中執行的節點。
+不知道。 Azure 備份可保護在 Azure 中執行的 SQL Server 資料庫。 如果可用性群組 (AG) 在 Azure 和內部部署機器之間散佈，則只有在主要複本是在 Azure 中執行時，才能保護 AG。 此外，Azure 備份只會保護在與復原服務保存庫相同的 Azure 區域中執行的節點。
 
 ## <a name="can-i-protect-availability-groups-across-regions"></a>我可以跨區域保護可用性群組嗎？
 

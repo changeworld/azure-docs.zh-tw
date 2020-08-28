@@ -3,7 +3,7 @@ title: 使用 REST Azure AD 管理使用者指派的受控識別
 description: 如何建立、列出和刪除使用者指派的受控識別，以進行 REST API 呼叫的逐步指示。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c342359b015085804b127ef8c58aca8a4b13dcf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8da142b9ee97d45b5f798e1b7db31228613cd37f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608461"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014263"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>使用 REST API 呼叫來建立、列出或刪除使用者指派的受控識別
 
@@ -30,7 +30,7 @@ ms.locfileid: "85608461"
 
 在本文中，您會了解如何使用 CURL 進行 REST API 呼叫，來建立、列出和刪除使用者指派的識別。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
@@ -63,11 +63,11 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 |要求標頭  |描述  |
 |---------|---------|
 |*Content-Type*     | 必要。 設定為 `application/json`。        |
-|*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。        |
+|*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        |
 
 **要求本文**
 
-|Name  |說明  |
+|名稱  |描述  |
 |---------|---------|
 |location     | 必要。 資源位置。        |
 
@@ -86,7 +86,7 @@ GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/
 |要求標頭  |描述  |
 |---------|---------|
 |*Content-Type*     | 必要。 設定為 `application/json`。        |
-|*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。        |
+|*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        |
 
 ## <a name="delete-a-user-assigned-managed-identity"></a>刪除使用者指派的受控識別
 
@@ -106,7 +106,7 @@ DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616
 |要求標頭  |描述  |
 |---------|---------|
 |*Content-Type*     | 必要。 設定為 `application/json`。        |
-|*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。        |
+|*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        |
 
 ## <a name="next-steps"></a>後續步驟
 

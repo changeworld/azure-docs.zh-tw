@@ -14,17 +14,18 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
-ms.openlocfilehash: d4589e2e923bf4068cc3a707c69f0304a1539745
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 82c69d67d261c493d89f259720e1f903824d6ef8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011544"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013600"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>使用 Azure Media Indexer 2 Preview 編製媒體檔案索引
 
 > [!NOTE]
-> **Azure 媒體索引子 2**媒體處理器將被淘汰。 如需淘汰日期，請參閱此[舊版元件](legacy-components.md)主題。 [Azure 媒體服務影片索引子](../video-indexer/index.yml)會取代此舊版媒體處理器。 如需詳細資訊，請參閱[從 Azure 媒體索引器和 Azure 媒體索引器 2 遷移到 Azure 媒體服務影片索引器](migrate-indexer-v1-v2.md)。
+> **Azure 媒體索引子 2**媒體處理器將會淘汰。 如需淘汰日期，請參閱此[舊版元件](legacy-components.md)主題。 [Azure 媒體服務影片索引子](../video-indexer/index.yml) 會取代此舊版媒體處理器。 如需詳細資訊，請參閱[從 Azure 媒體索引器和 Azure 媒體索引器 2 遷移到 Azure 媒體服務影片索引器](migrate-indexer-v1-v2.md)。
 
 **Azure Media Indexer 2 Preview** 媒體處理器 (MP) 可讓您將媒體檔案和內容設為可供搜尋，並產生隱藏式輔助字幕追蹤。 相較於舊版的 [Azure Media Indexer](media-services-index-content.md)， **Azure Media Indexer 2 Preview** 編製索引速度更快，並提供更廣泛的語言支援。 支援的語言包括英文、西班牙文、法文、德文、義大利文、中文 (國語、簡體)、葡萄牙文、阿拉伯文、俄文和日文。
 
@@ -86,7 +87,7 @@ Azure Media Indexer 2 Preview 支援下列語言的語音轉文字 (在工作設
 * 日文 [JaJp]
 * 俄文 [RuRu]
 * 英式英文 [EnGb]
-* 西班牙文（墨西哥） [EsMx] 
+* 西班牙文 (墨西哥) [EsMx] 
 
 ## <a name="supported-file-types"></a>支援的檔案類型
 
@@ -119,7 +120,7 @@ Azure Media Indexer 2 Preview 支援下列語言的語音轉文字 (在工作設
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
+設定您的開發環境，並在 app.config 檔案中填入連線資訊，如 [使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)所述。 
 
 #### <a name="example"></a>範例
 

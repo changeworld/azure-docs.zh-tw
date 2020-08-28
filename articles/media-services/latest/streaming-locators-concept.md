@@ -11,38 +11,39 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: ed58919c47da13a8a0707a344a389126c6feb6c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6b4ba1bf63c1b8ebe6b7e294f416eb528ce444c5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091958"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005780"
 ---
 # <a name="streaming-locators"></a>串流定位器
 
 若要讓輸出資產中的影片可供用戶端播放，您必須建立[串流定位器](/rest/api/media/streaminglocators)，然後建置串流 URL。 若要建置 URL，您需要串連串流端點主機名稱和串流定位器路徑。 如需 .NET 範例，請參閱[取得串流定位器](stream-files-tutorial-with-api.md#get-a-streaming-locator)。
 
-建立 [串流定位器] 的程序稱為發佈。 根據預設，在您進行 API 呼叫之後，**串流定位器**會立即生效，除非您設定選擇性的開始和結束時間，否則會一直持續到刪除為止。 
+建立 [串流定位器] 的程序稱為發佈。 根據預設， **串流定位器** 會在您進行 API 呼叫後立即生效，並持續到刪除為止，除非您設定選擇性的開始和結束時間。 
 
-建立**串流定位器**時，您必須指定**資產**名稱和**串流原則**名稱。 如需詳細資訊，請參閱下列主題：
+建立 **串流定位器**時，您必須指定 **資產** 名稱和 **串流原則** 名稱。 如需詳細資訊，請參閱下列主題：
 
 * [資產](assets-concept.md)
 * [串流原則](streaming-policy-concept.md)
 * [內容金鑰原則](content-key-policy-concept.md)
 
-您也可以指定串流定位器的開始和結束時間，這只會讓您的使用者在這些時間之間播放內容（例如，介於5/1/2019 到5/5/2019 之間）。  
+您也可以指定串流定位器的開始和結束時間，這只會讓您的使用者在這些時間之間播放內容 (例如，介於5/1/2019 到5/5/2019 之間的) 。  
 
 ## <a name="considerations"></a>考量
 
-* **串流定位器**不是可更新的。 
+* **串流定位器** 不是可更新的。 
 * 屬於日期時間類型的**串流定位器**屬性一律為 UTC 格式。
-* 您應該為媒體服務帳戶設計一組受限的原則，並且在需要相同的選項時，對串流定位器重新使用這些原則。 如需詳細資訊，請參閱[配額和限制](limits-quotas-constraints.md)。
+* 您應該為媒體服務帳戶設計一組受限的原則，並且在需要相同的選項時，對串流定位器重新使用這些原則。 如需詳細資訊，請參閱 [配額和限制](limits-quotas-constraints.md)。
 
 ## <a name="create-streaming-locators"></a>建立串流定位器  
 
 ### <a name="not-encrypted"></a>未加密
 
-如果您想要以純文字（未加密）串流處理您的檔案，請將預先定義的清除串流原則設定為 ' Predefined_ClearStreamingOnly ' （在 .NET 中，您可以使用 Predefinedstreamingpolicy.clearstreamingonly. Predefinedstreamingpolicy.clearstreamingonly 列舉）。
+如果您想要將檔案以純 (非加密) 的方式串流，請將預先定義的清除串流原則設定為 [Predefined_ClearStreamingOnly] (在 .NET 中，您可以使用 PredefinedStreamingPolicy. >predefinedstreamingpolicy.clearstreamingonly 列舉) 。
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -58,7 +59,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 ### <a name="encrypted"></a>已加密 
 
-如果您需要使用 CENC 加密來加密您的內容，請將您的原則設定為 ' Predefined_MultiDrmCencStreaming '。 Widevine 加密會套用至破折號串流，PlayReady 則會順暢地進行。 金鑰會根據所設定的 DRM 授權傳遞至播放用戶端。
+如果您需要使用 CENC 加密來加密您的內容，請將您的原則設定為 [Predefined_MultiDrmCencStreaming]。 Widevine 加密將會套用至虛線串流，PlayReady 則可順暢地進行。 金鑰將會根據設定的 DRM 授權傳遞至播放用戶端。
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -73,16 +74,16 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
 
-如果您也想要使用 CBCS （FairPlay）來加密 HLS 串流，請使用 ' Predefined_MultiDrmStreaming '。
+如果您也想要使用 CBCS (FairPlay) 加密 HLS 串流，請使用 ' Predefined_MultiDrmStreaming '。
 
 > [!NOTE]
 > Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
-## <a name="associate-filters-with-streaming-locators"></a>將篩選器與串流定位器建立關聯
+## <a name="associate-filters-with-streaming-locators"></a>將篩選準則與串流定位器建立關聯
 
-請參閱[篩選：與串流定位器產生關聯](filters-concept.md#associating-filters-with-streaming-locator)。
+請參閱 [篩選：與串流定位器建立關聯](filters-concept.md#associating-filters-with-streaming-locator)。
 
-## <a name="filter-order-page-streaming-locator-entities"></a>篩選、排序、分頁串流定位器實體
+## <a name="filter-order-page-streaming-locator-entities"></a>篩選、排序、頁面串流定位器實體
 
 請參閱[媒體服務實體的篩選、排序、分頁](entities-overview.md)。
 
@@ -98,7 +99,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 |Java|[AssetStreamingLocator](/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [資產](assets-concept.md)
 * [串流原則](streaming-policy-concept.md)

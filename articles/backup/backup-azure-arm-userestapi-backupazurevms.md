@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來設定、啟動
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: db5e6cc460d320971a4005889dc2c9aa9925a18d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: aa072cb48e12ac89af3be28a9633a82b50122275
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890326"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006290"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>透過 REST API 使用 Azure 備份來備份 Azure VM
 
@@ -29,7 +29,7 @@ ms.locfileid: "88890326"
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
 ```
 
-POST URI 具有 `{subscriptionId}`、`{vaultName}`、`{vaultresourceGroupName}`、`{fabricName}` 參數。 `{fabricName}` 為 "Azure"。 根據我們的範例， `{vaultName}` 是 "testVault"，而且 `{vaultresourceGroupName}` 是 "testVaultRG"。 因為已在 URI 中指定所有必要參數，所以不需要個別的要求本文。
+POST URI 具有 `{subscriptionId}`、`{vaultName}`、`{vaultresourceGroupName}`、`{fabricName}` 參數。 `{fabricName}` 為 "Azure"。 根據我們的範例， `{vaultName}` 是 "testVault"，而且 `{vaultresourceGroupName}` 是 "testVaultRG"。 因為 URI 中提供所有必要的參數，所以不需要個別的要求主體。
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
@@ -445,7 +445,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 |202 已接受     |         |     已接受    |
 
 > [!IMPORTANT]
-> 為了防止意外刪除的情況，復原服務保存庫 [可使用虛刪除功能](use-restapi-update-vault-properties.md#soft-delete-state) 。 如果保存庫的虛刪除狀態設定為 [已啟用]，則刪除作業將不會立即刪除資料。 它會保留14天，然後永久清除。 您不需支付此14天期間的儲存體費用。 若要復原刪除操作，請參閱 [復原-刪除一節](#undo-the-deletion)。
+> 為了防止意外刪除的情況，復原服務保存庫有 [可供使用的虛刪除功能](use-restapi-update-vault-properties.md#soft-delete-state) 。 如果保存庫的虛刪除狀態設定為 [已啟用]，則刪除作業將不會立即刪除資料。 它會保留14天，然後永久清除。 您不需支付此14天期間的儲存體費用。 若要復原刪除操作，請參閱 [復原-刪除一節](#undo-the-deletion)。
 
 ### <a name="undo-the-deletion"></a>復原刪除
 

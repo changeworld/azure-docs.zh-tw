@@ -8,12 +8,13 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 8a50aa02a2ba7187c8221c046fcabb7f4a6473fa
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b200782d10ae3637fcade63feab1e638d40acddb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826679"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006341"
 ---
 # <a name="table-design-patterns"></a>資料表設計模式
 本文將說明一些適用於表格服務方案的模式。 此外，您會了解如何有效處理其他表格儲存體設計文章中討論的一些問題和取捨。 下圖摘要說明不同模式之間的關聯性：  

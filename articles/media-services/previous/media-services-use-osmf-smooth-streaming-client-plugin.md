@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 63b534f67aa5cf39f7549a467be28ec1212897d2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a0a2f5fbc2139a8340ee763efc51c36a01dd24d0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172004"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999575"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>如何使用 Adobe Open Source Media Framework 的 Microsoft Smooth Streaming 外掛程式  
 ## <a name="overview"></a>概觀
@@ -30,7 +31,7 @@ SS for OSMF 包含兩個外掛程式版本：
 * OSMF 的靜態 Smooth Streaming 外掛程式 (.swc)
 * OSMF 的動態 Smooth Streaming 外掛程式 (.swf)
 
-本檔假設讀者具有 OSMF 和 OSMF 外掛程式的一般使用知識。如需 OSMF 的詳細資訊，請參閱[官方 OSMF 網站](http://osmf.org/)上的檔。
+本檔假設讀者對 OSMF 和 OSMF 外掛程式具有一般的使用知識。如需 OSMF 的詳細資訊，請參閱 [官方 OSMF 網站](http://osmf.org/)上的檔。
 
 ### <a name="smooth-streaming-plugin-for-osmf-20"></a>OSMF 2.0 的 Smooth Streaming 外掛程式
 此外掛程式支援以下列功能載入及播放隨選的 Smooth Streaming 內容：
@@ -334,7 +335,7 @@ package
 Smooth Streaming for OSMF 動態外掛程式與 [Strobe Media Playback (SMP)](https://sourceforge.net/adobe/smp/home/Strobe%20Media%20Playback/)是相容的。 您可以使用 SS for OSMF 外掛程式，將 Smooth Streaming 內容播放新增至 SMP。 若要這麼做，請使用下列步驟，在 Web 伺服器下複製 "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf"，以進行 HTTP 載入：
 
 1. 瀏覽 [Strobe Media Playback 設定頁面](http://osmf.org/dev/2.0gm/setup.html)。 
-2. 將 src 設定為 Smooth Streaming 來源， (例如 HTTP： \/ /devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest)  
+2. 將 src 設為 Smooth Streaming 來源， (例如 HTTP： \/ /devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest)  
 3. 進行所需的組態變更，然後按一下 [Preview and Update]。
    
    **注意** 您的內容 Web 伺服器需要有效的 crossdomain.xml。 

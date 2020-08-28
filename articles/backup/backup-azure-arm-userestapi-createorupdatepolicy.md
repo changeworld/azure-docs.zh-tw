@@ -4,16 +4,16 @@ description: 在本文中，您將瞭解如何使用 REST API 來建立和管理
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 6a045ff1653c58a3a583b6c64941fff26f480861
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4678c6aaa03d511da35d5efee2b1e75d08546781
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826387"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006256"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 建立 Azure 復原服務備份原則
 
-[原則 REST API 文件](/rest/api/backup/protectionpolicies/createorupdate)概述為 Azure 復原服務保存庫建立備份原則的步驟。 讓我們使用這份文件作為參考，以建立 Azure VM 備份的原則。
+[原則 REST API 文件](/rest/api/backup/protectionpolicies/createorupdate)概述為 Azure 復原服務保存庫建立備份原則的步驟。 讓我們使用這份檔作為參考，以建立 Azure VM 備份的原則。
 
 ## <a name="create-or-update-a-policy"></a>建立或更新原則
 
@@ -31,7 +31,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 |名稱  |必要  |類型  |描述  |
 |---------|---------|---------|---------|
-|properties     |   True      |  ProtectionPolicy：[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 屬性        |
+|properties     |   是      |  ProtectionPolicy：[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 屬性        |
 |tags     |         | Object        |  資源標籤       |
 
 如需要求本文中的完整定義清單，請參閱[備份原則 REST API 文件](/rest/api/backup/protectionpolicies/createorupdate)。

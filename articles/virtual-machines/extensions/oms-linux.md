@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: d7ebb23cfc0ffdcfcac7ecb4ecbd9b9a665e6130
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d24463834a49cdfbdb4599770caf579ae94582d8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029088"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999813"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>適用於 Linux 的 Log Analytics 虛擬機器擴充功能
 
@@ -36,7 +36,7 @@ ms.locfileid: "87029088"
 
 ### <a name="operating-system"></a>作業系統
 
-關於支援的 Linux 發行版本，如需詳細資訊，請參閱 [Log Analytics 代理程式概觀](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) 一文。
+如需支援的 Linux 發行版本的詳細資訊，請參閱 [Azure 監視器代理](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) 程式的總覽。
 
 ### <a name="agent-and-vm-extension-version"></a>代理程式和 VM 擴充功能版本
 下表針對每個版本提供 Log Analytics VM 擴充功能和 Log Analytics 代理程式套件組合的版本對應。 隨附 Log Analytics 代理程式套件組合版本的版本資訊連結。 版本資訊包含錯誤修正和適用於指定代理程式版本的新功能詳細資料。  

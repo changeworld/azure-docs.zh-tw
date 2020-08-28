@@ -1,16 +1,17 @@
 ---
-title: Azure Service Fabric 執行者中的重新進入
-description: Service Fabric Reliable Actors 重新進入的簡介，這是一種以邏輯方式根據呼叫內容來避免封鎖的方法。
+title: Azure Service Fabric 動作專案中的重新進入
+description: Service Fabric Reliable Actors 的重新進入簡介，以邏輯方式避免根據呼叫內容來封鎖封鎖。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 100cf1f7bf8a0c903cfd61d93d2f923c32cabd11
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 75512633dae8d9a9f61c37bbc795d8e8d20c4ff1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260951"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007803"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors 重新進入
 Reliable Actors 執行階段預設允許邏輯呼叫以內容為基礎的重新進入。 這允許位於相同的呼叫內容鏈結的動作項目可重新進入。 例如，動作項目 A 傳送訊息給動作項目 B，而動作項目 B 又將訊息傳送給動作項目 C。當處理訊息時，如果動作項目 C 呼叫動作項目 A，則此訊息是可以重新進入的，因此將允許此訊息。 屬於不同呼叫內容的其他任何訊息都將在動作項目 A 上遭到封鎖，直到其處理完畢為止。

@@ -7,20 +7,20 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f77a5b634b035b7cc1142645d355fe6c3756226b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73605608"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004063"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 查詢 Avro 資料
 
-本文討論如何查詢 Avro 資料，以有效率地將訊息從 Azure IoT 中樞路由至 Azure 服務。 [訊息路由](iot-hub-devguide-messages-d2c.md)可讓您使用豐富的查詢，根據訊息屬性、訊息本文、裝置對應項標記與裝置對應項屬性來篩選資料。 若要深入瞭解訊息路由中的查詢功能，請參閱關於[訊息路由查詢語法](iot-hub-devguide-routing-query-syntax.md)的文章。
+本文討論如何查詢 Avro 資料，以有效率地將訊息從 Azure IoT 中樞路由至 Azure 服務。 [訊息路由](iot-hub-devguide-messages-d2c.md)可讓您使用豐富的查詢，根據訊息屬性、訊息本文、裝置對應項標記與裝置對應項屬性來篩選資料。 若要深入瞭解訊息路由中的查詢功能，請參閱有關 [訊息路由查詢語法](iot-hub-devguide-routing-query-syntax.md)的文章。
 
-挑戰是當 Azure IoT 中樞將訊息路由至 Azure Blob 儲存體時，根據預設，IoT 中樞會以 Avro 格式寫入內容，其中同時具有訊息內文屬性和訊息屬性。 Avro 格式不會用於任何其他端點。 雖然 Avro 格式很適合用來保存資料和訊息，但難以用來查詢資料。 相較之下，JSON 或 CSV 格式則非常適合用來查詢資料。 IoT 中樞現在支援以 JSON 和 AVRO 將資料寫入至 Blob 儲存體。
+這項挑戰是，當 Azure IoT 中樞將訊息路由至 Azure Blob 儲存體時，IoT 中樞依預設會以 Avro 格式寫入內容，同時具有訊息主體屬性和訊息屬性。 Avro 格式不會用於任何其他端點。 雖然 Avro 格式很適合用來保存資料和訊息，但難以用來查詢資料。 相較之下，JSON 或 CSV 格式則非常適合用來查詢資料。 IoT 中樞現在支援將資料寫入 JSON 和 AVRO 中的 Blob 儲存體。
 
-如需詳細資訊，請參閱[使用 Azure 儲存體做為路由端點](iot-hub-devguide-messages-d2c.md#azure-storage)。
+如需詳細資訊，請參閱 [使用 Azure 儲存體作為路由端點](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)。
 
 若要因應非關聯式巨量資料的需求和格式並克服這項挑戰，您可以使用多種巨量資料模式來轉換和調整資料。 Azure Data Lake Analytics 即為其中一種模式，屬於「依查詢量付費」模式，這是此文章的焦點。 雖然您可以在 Hadoop 或其他解決方案中輕鬆地執行查詢，但對於這種「依查詢量付費」的方法，使用 Data Lake Analytics 通常會適合得多。
 

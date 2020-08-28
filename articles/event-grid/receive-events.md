@@ -3,13 +3,13 @@ title: 從 Azure 事件格線接收 HTTP 端點的事件
 description: 描述如何驗證 HTTP 端點，然後從 Azure 事件格線接收和還原序列化事件
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3e79d292dfcbed9f572c88e913bc76d47e6ee37f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9e89c6920c76914ccab6298b1404b0cae698b532
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415103"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006069"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>接收 HTTP 端點的事件
 
@@ -18,13 +18,13 @@ ms.locfileid: "87415103"
 > [!NOTE]
 > **強烈**建議您在使用事件格線觸發 Azure Function 時使用[事件格線觸發程序](../azure-functions/functions-bindings-event-grid.md)。 這裡使用的泛型 WebHook 觸發程序是示範。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您需要具有 HTTP 觸發函式的函數應用程式。
 
 ## <a name="add-dependencies"></a>新增相依性
 
-如果您是在 .NET 中進行開發，請將相依性[新增](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)至 `Microsoft.Azure.EventGrid` [NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)的函式。 本文的範例需要 1.4.0 版或更新版本。
+如果您是在 .NET 中進行[add a dependency](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)開發，請針對 `Microsoft.Azure.EventGrid` [NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)將相依性新增至函式。 本文的範例需要 1.4.0 版或更新版本。
 
 其他語言的 SDK 可以透過[發行 SDK](./sdk-overview.md#data-plane-sdks) 參考取得。 這些套件包含原生事件類型的模型，例如 `EventGridEvent`、`StorageBlobCreatedEventData` 和 `EventHubCaptureFileCreatedEventData`。
 

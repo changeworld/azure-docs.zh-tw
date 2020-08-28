@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務 v3 來設定離線 PlayReady 串流
+title: 使用 Azure 媒體服務 v3 設定離線 PlayReady 串流
 description: 本文說明如何設定 Azure 媒體服務帳戶，以離線串流適用於 Windows 10 的 PlayReady。
 services: media-services
 keywords: DASH, DRM, Widevine Offline Mode, ExoPlayer, Android, Widevine 離線模式
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: d5d6c7738516337b3db90bbc5d1a94515e96b3ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bec7b37cf45851216f7b392ae1be52d4b1b2d990
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060590"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998487"
 ---
-# <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>適用于 Windows 10 的離線 PlayReady 串流（含媒體服務 v3）
+# <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>使用媒體服務 v3 進行 Windows 10 的離線 PlayReady 串流
 
 Azure 媒體服務支援在具備 DRM 保護的情況下離線下載/播放。 本文涵蓋適用於 Windows 10/PlayRead 用戶端的 Azure 媒體服務離線支援。 您可以在以下文章中閱讀和適用於 iOS/FairPlay 與 Android/Widevine 裝置的離線模式支援相關資訊：
 
@@ -29,15 +30,15 @@ Azure 媒體服務支援在具備 DRM 保護的情況下離線下載/播放。 �
 - [適用于 Android 的離線 Widevine 串流](offline-widevine-for-android.md)
 
 > [!NOTE]
-> 只有在您下載內容時，才會向離線 DRM 收取授權的單一要求。 任何錯誤都不會計費。
+> 離線 DRM 只會在您下載內容時，針對授權提出單一要求付費。 任何錯誤都不計費。
 
 ## <a name="overview"></a>概觀
 
 本節提供一些離線模式播放的背景資訊，尤其是開發該技術的原因：
 
-* 在某些國家/地區，網際網路可用性和/或頻寬仍然受到限制。使用者可以選擇先下載，以便能以夠高的解析度觀賞內容，來獲得令人滿意的檢視體驗。 在此情況下，更常見的問題不是網路可用性，而是有限的網路頻寬。 OTT/OVP 提供者正在要求提供離線模式支援。
+* 在某些國家/地區，網際網路可用性和/或頻寬仍有限制。使用者可以選擇先下載，以便能以夠高的解析度觀賞內容，來獲得令人滿意的檢視體驗。 在此情況下，更常見的問題不是網路可用性，而是有限的網路頻寬。 OTT/OVP 提供者正在要求提供離線模式支援。
 * Netflix 2016 年第 3 季股東會議中，Netflix CEO Reed Hastings 揭露了一項資訊，那就是下載內容是「頻繁被要求的功能」，並且「我們對此持開放態度」。
-* 某些內容提供者可能不允許超出國家/地區框線的 DRM 授權傳遞。 如果使用者想要在需要出國旅行時仍能觀賞內容，就需要離線下載。
+* 某些內容提供者可能不允許在國家/地區的邊界之外傳遞 DRM 授權。 如果使用者想要在需要出國旅行時仍能觀賞內容，就需要離線下載。
  
 以下是我們在實作離線模式時面臨的挑戰：
 
@@ -60,13 +61,13 @@ Azure 媒體服務支援在具備 DRM 保護的情況下離線下載/播放。 �
 
 資產 1：
 
-* 漸進式下載 URL：[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* 漸進式下載 URL： [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA_URL (AMS)：`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
 
 資產 2：
 
-* 漸進式下載 URL：[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL （內部部署）：`https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
+* 漸進式下載 URL： [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA_URL (內部部署) ： `https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
 
 針對播放測試，我們使用 Windows 10 上的通用 Windows 應用程式。 在 [Windows 10 通用範例](https://github.com/Microsoft/Windows-universal-samples)中，有一個名為[彈性資料流樣本](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming)的基本播放器樣本。 我們只需要自行新增程式碼，以選擇下載的視訊並使用它做為來源，而不是作為彈性資料流來源。 這些變更是在按鈕按下事件處理常式中：
 
@@ -122,6 +123,6 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 * PlayReady 授權傳遞服務可以從 Azure 媒體服務或其他位置提供；
 * 所準備的 Smooth Streaming 內容仍可用來透過 DASH 進行線上串流，或使用 PlayReady 以 DRM 內容的方式進行串流。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [設計具有存取控制的多重 DRM 內容保護系統](design-multi-drm-system-with-access-control.md)

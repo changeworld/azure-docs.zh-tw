@@ -3,12 +3,13 @@ title: 節流要求指引
 description: 了解如何以平行方式分組、錯開、編頁和查詢，以避免要求受到 Azure Resource Graph 的節流。
 ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 343d0c02e300431b63b908199931c20a50b85dd2
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541833"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006001"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Resource Graph 中的節流要求指導方針
 
@@ -30,7 +31,7 @@ Azure Resource Graph 會根據時間範圍，為每個使用者配置配額編�
 - `x-ms-user-quota-remaining` (int)：使用者的剩餘資源配額。 此值會對應至查詢計數。
 - `x-ms-user-quota-resets-after` (hh:mm:ss)：使用者配額耗用量重設之前的剩餘時間長度。
 
-當安全性主體可存取租使用者或管理群組[查詢範圍](./query-language.md#query-scope)內的超過5000個訂用帳戶時，回應會限制為第一個5000訂用帳戶，且 `x-ms-tenant-subscription-limit-hit` 標頭會以形式傳回 `true` 。
+當安全性主體可存取租使用者或管理群組 [查詢範圍](./query-language.md#query-scope)內超過5000的訂用帳戶時，回應會限制為第一個5000訂用帳戶，而且 `x-ms-tenant-subscription-limit-hit` 標頭會傳回為 `true` 。
 
 為了說明標頭的作用，讓我們看一下具有標頭和值 `x-ms-user-quota-remaining: 10` 和 `x-ms-user-quota-resets-after: 00:00:03` 的查詢回應。
 

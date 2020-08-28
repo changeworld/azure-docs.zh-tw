@@ -3,12 +3,13 @@ title: .NET 程式設計手冊-Azure 事件中樞 (舊版) |Microsoft Docs
 description: 本文提供有關如何使用 Azure .NET SDK 為「Azure 事件中樞」撰寫程式碼的資訊。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5be30d7786fa094a55badb7b38ff2116a6013b6a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 17bec931f79a6dbb3d98270ab0ff6e2d1d4c6541
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934016"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013906"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中樞 (舊版 EventHubs 套件的 .NET 程式設計指南) 
 本文會討論一些使用 Azure 事件中樞來撰寫程式碼的常見案例。 它假設使用者對事件中樞已有初步了解。 如需事件中樞的概念概觀，請參閱 [事件中樞概觀](./event-hubs-about.md)。

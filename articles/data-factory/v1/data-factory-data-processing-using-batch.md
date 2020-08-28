@@ -11,12 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ab4e2f480ab0ef2deea3909d56f4fe1da17bbd07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d0e608e1afae77afd44d7351b7c3f1f269bd8a8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321400"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998062"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用 Data Factory 和 Batch 來處理大型資料集
 > [!NOTE]
@@ -578,7 +579,7 @@ test custom activity Microsoft test custom activity Microsoft
    d. 針對 **batchUri** JSON 屬性，輸入 Batch URI。
 
       > [!IMPORTANT]
-      > **Batch 帳戶**分頁的 URL 採用下列格式： \<accountname\> . \<region\> 。batch.azure.com。 針對 JSON 指令碼中的 **batchUri** 屬性，您必須從該 URL 中移除 a88"accountname."**。 例如 `"batchUri": "https://eastus.batch.azure.com"`。
+      > **Batch 帳戶**分頁的 URL 格式如下： \<accountname\> ... \<region\>batch.azure.com。 針對 JSON 指令碼中的 **batchUri** 屬性，您必須從該 URL 中移除 a88"accountname."**。 例如 `"batchUri": "https://eastus.batch.azure.com"`。
       >
       >
 
@@ -795,7 +796,7 @@ test custom activity Microsoft test custom activity Microsoft
    * **AssemblyName** 已設定為 DLL **MyDotNetActivity.dll** 的名稱。
    * **EntryPoint** 設定為 **MyDotNetActivityNS.MyDotNetActivity**。 基本上是如此 \<namespace\> 。\<classname\> 在您的程式碼中。
    * **PackageLinkedService** 已設為 **StorageLinkedService**，這會指向包含自訂活動 zip 檔案的 Blob 儲存體。 如果您針對輸入/輸出檔案和自訂活動 zip 檔案使用不同的儲存體帳戶，就必須建立另一個儲存體已連結服務。 本文假設您使用相同的儲存體帳戶。
-   * **PackageFile** 設定為 **customactivitycontainer/MyDotNetActivity.zip**。 其格式為 \<containerforthezip\> / \<nameofthezip.zip\> 。
+   * **PackageFile** 設定為 **customactivitycontainer/MyDotNetActivity.zip**。 格式為 \<containerforthezip\> / \<nameofthezip.zip\> 。
    * 自訂活動會採用 **InputDataset** 做為輸入和 **OutputDataset** 做為輸出。
    * 自訂活動的 **linkedServiceName** 屬性會指向 **AzureBatchLinkedService**，這可讓 Data Factory 知道自訂活動必須在 Batch 上執行。
    * **並行** 設定很重要。 如果您使用預設值 1，則即使 Batch 集區中有兩個以上的計算節點，系統仍會逐一處理配量。 因此，您將無法利用 Batch 的平行處理功能。 如果您將 **concurrency** 設定為更大的值 (例如 2)，即表示可以同時處理兩個配量 (對應至 Batch 中的兩個工作)。 在此情況下，會同時運用 Batch 集區中的兩個 VM。 請適當地設定 concurrency 屬性。
@@ -973,7 +974,7 @@ Data Factory 服務會在 Batch 中建立一個名為 `adf-poolname:job-xxx` 的
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
   * [Batch 的基本概念](../../azure-sql/database/sql-database-paas-overview.md)
-  * [Batch 功能的總覽](../../batch/batch-service-workflow-features.md)）
+  * [Batch 功能的總覽](../../batch/batch-service-workflow-features.md)) 
   * [在 Azure 入口網站中建立和管理 Batch 帳戶](../../batch/batch-account-create-portal.md)
   * [開始使用適用於 .NET 的 Batch 用戶端程式庫](../../batch/quick-run-dotnet.md)
 

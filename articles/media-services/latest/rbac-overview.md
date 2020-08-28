@@ -1,6 +1,6 @@
 ---
 title: 媒體服務帳戶的角色型存取控制-Azure |Microsoft Docs
-description: 本文討論 Azure 媒體服務帳戶的角色型存取控制（RBAC）。
+description: 本文討論 Azure 媒體服務帳戶 (RBAC) 的角色型存取控制。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,21 +11,21 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: c75b6e67932cfd26a3374eab3f3efa34ceade577
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 03e6c54ae9931f8f209a5f59150db2801827da06
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504478"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003758"
 ---
-# <a name="role-based-access-control-rbac-for-media-services-accounts"></a>媒體服務帳戶的角色型存取控制（RBAC）
+# <a name="role-based-access-control-rbac-for-media-services-accounts"></a>媒體服務帳戶 (RBAC) 的角色型存取控制
 
-目前，Azure 媒體服務不會定義服務特定的任何自訂角色。 若要取得媒體服務帳戶的完整存取權，客戶可以使用**擁有**者或**參與者**的內建角色。 這些角色的主要差異在於：**擁有**者可以控制誰有資源的存取權，而**參與者**則不能。 您也可以使用內建的**讀取**者角色，但使用者或應用程式只會擁有媒體服務 api 的讀取權限。 
+目前，Azure 媒體服務不會定義服務特定的任何自訂角色。 若要取得媒體服務帳戶的完整存取權，客戶可以使用 **擁有** 者或 **參與者**的內建角色。 這些角色之間的主要差異在於： **擁有** 者可以控制誰可以存取資源，而 **參與者** 無法存取。 您也可以使用內建的「 **讀取** 者」角色，但使用者或應用程式只會有媒體服務 api 的讀取權限。 
 
 ## <a name="design-principles"></a>設計原則
 
-v3 API 的金鑰設計原則之一，是讓 API 更為安全。 v3 Api 不會在**取得**或**列出**作業時傳回秘密或認證。 回應中的金鑰一律為 Null、空白或處理過的。 使用者必須呼叫個別的動作方法，才能取得秘密或認證。 「**讀取**者」角色無法呼叫 ListContainerSas、StreamingLocator. ListContentKeys、ContentKeyPolicies. GetPolicyPropertiesWithSecrets 之類的作業。 有個別的動作可讓您在自訂角色中設定更細微的 RBAC 安全性許可權（如有需要）。
+v3 API 的金鑰設計原則之一，是讓 API 更為安全。 v3 Api 不會傳回 **取得** 或 **列出** 作業的秘密或認證。 回應中的金鑰一律為 Null、空白或處理過的。 使用者必須呼叫個別的動作方法，才能取得秘密或認證。 **讀者**角色無法呼叫 ListContainerSas、StreamingLocator、ListContentKeys、ContentKeyPolicies 等作業。 擁有不同的動作可讓您視需要在自訂角色中設定更細微的 RBAC 安全性許可權。
 
 若要列出媒體服務支援的作業，請執行：
 
@@ -36,7 +36,7 @@ foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operation
 }
 ```
 
-[內建角色定義一](../../role-based-access-control/built-in-roles.md)文會告訴您角色授與的確切內容。 
+[內建的角色定義](../../role-based-access-control/built-in-roles.md)文章會告訴您該角色所授與的確切內容。 
 
 如需詳細資訊，請參閱下列文章：
 

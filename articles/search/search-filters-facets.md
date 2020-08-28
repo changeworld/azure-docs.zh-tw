@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: eb5771a6e615535a9a158e6378cd36b6e0df58bc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a9d508afac64e448ca220a36b2be983da85d96b0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923121"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002618"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立 facet 篩選 
 
@@ -121,7 +122,7 @@ Azure 認知搜尋中的 facet 導覽挑戰之一，就是目前的結果只存�
 
 儘管這是一個常見使用案例，但並不是多面向導覽目前預設提供的功能。 需要靜態 Facet 的開發人員通常可藉由發出兩個篩選查詢來解決限制：一個將範圍設為結果，另一個則基於導覽目的用來建立靜態的 Facet 清單。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [Azure 認知搜尋中的篩選](search-filters.md)
 + [建立索引 REST API](/rest/api/searchservice/create-index)

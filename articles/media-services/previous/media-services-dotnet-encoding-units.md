@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milangada
-ms.openlocfilehash: 49ba9b7a7f7cba883246bbfed055e22a4ea50b04
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c9e99bcc1ca8681b9052bb9a25f18ea7e6f070c8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052904"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008653"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>如何使用 .NET SDK 調整編碼
 > [!div class="op_single_selector"]
@@ -32,7 +33,7 @@ ms.locfileid: "87052904"
 > 
 > 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 > [!IMPORTANT]
 > 請務必檢閱[概觀](media-services-scale-media-processing-overview.md)，以取得調整媒體處理的詳細資訊。
 > 

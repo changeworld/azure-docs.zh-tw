@@ -1,14 +1,15 @@
 ---
-title: 使用 FabricClient 部署 Azure Service Fabric
+title: 使用 FabricClient 進行 Azure Service Fabric 部署
 description: 使用 FabricClient API 來部署和移除 Service Fabric 中的應用程式。
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 25b874d1be8ab50d8076ff8fe9423c8cc0187512
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75376965"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009295"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>使用 FabricClient 來部署和移除應用程式
 > [!div class="op_single_selector"]
@@ -28,12 +29,12 @@ ms.locfileid: "75376965"
 3. 移除映像存放區中的應用程式封裝
 4. 建立應用程式執行個體
 
-部署應用程式並在叢集中執行實例之後，您可以刪除應用程式實例和其應用程式類型。 依照下列步驟，從叢集完全移除應用程式：
+在部署應用程式並執行叢集中的實例之後，您可以刪除應用程式實例和其應用程式類型。 依照下列步驟，從叢集中完全移除應用程式：
 
 1. 移除 (或刪除) 執行中的應用程式執行個體
 2. 取消註冊不再需要的應用程式類型
 
-如果您在本機開發叢集上使用 Visual Studio 來針對應用程式進行部署和偵錯，則先前所有步驟都會透過 PowerShell 指令碼自動處理。  此腳本可在應用程式專案的 [*腳本*] 資料夾中找到。 本文提供該腳本所執行作業的背景，讓您可以在 Visual Studio 之外執行相同的作業。 
+如果您在本機開發叢集上使用 Visual Studio 來針對應用程式進行部署和偵錯，則先前所有步驟都會透過 PowerShell 指令碼自動處理。  您可以在應用程式專案的 [ *腳本* ] 資料夾中找到此腳本。 本文提供執行腳本的背景，讓您可以在 Visual Studio 之外執行相同的作業。 
  
 ## <a name="connect-to-the-cluster"></a>連線至叢集
 執行本文中任何程式碼範例之前，請先建立 [FabricClient](/dotnet/api/system.fabric.fabricclient) 執行個體來連線到叢集。 針對連線至本機開發叢集或遠端叢集，或是連線至使用 Azure Active Directory、X509 憑證或 Windows Active Directory 保護的叢集，如需相關的範例，請參閱[連線至安全的叢集](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis)。 若要連接到本機開發叢集，請執行下列範例：
@@ -44,9 +45,9 @@ FabricClient fabricClient = new FabricClient();
 ```
 
 ## <a name="upload-the-application-package"></a>上傳應用程式封裝
-假設您在 Visual Studio 中組建並封裝名為 *MyApplication* 的應用程式。 根據預設，ApplicationManifest.xml 中列出的應用程式類型名稱會是 "MyApplicationType"。  應用程式封裝（其中包含必要的應用程式資訊清單、服務資訊清單和程式碼/設定/資料封裝）位於*C:\Users \& lt; Username &gt; \Documents\Visual Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug*。
+假設您在 Visual Studio 中組建並封裝名為 *MyApplication* 的應用程式。 根據預設，ApplicationManifest.xml 中列出的應用程式類型名稱會是 "MyApplicationType"。  應用程式封裝（其中包含必要的應用程式資訊清單、服務資訊清單和程式碼/設定/資料封裝）位於 *C:\Users \& lt; Username &gt; \Documents\Visual Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug*。
 
-上傳應用程式套件會將它放在內部 Service Fabric 元件可以存取的位置。 Service Fabric 會在應用程式套件的註冊期間驗證應用程式套件。 不過，如果您想要在本機驗證應用程式封裝（也就是在上傳之前），請使用[ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) Cmdlet。
+上傳應用程式套件會將它放在內部 Service Fabric 元件可以存取的位置。 Service Fabric 會在應用程式套件的註冊期間驗證應用程式套件。 但是，如果您想要在本機確認應用程式封裝 (也就是在上傳) 之前，請使用 [>remove-servicefabricapplicationpackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) Cmdlet。
 
 [Copy-ServiceFabricApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API 會將應用程式套件上傳至叢集映像存放區。 
 
@@ -72,7 +73,7 @@ FabricClient fabricClient = new FabricClient();
 若要查看哪些具名的應用程式和服務正在叢集中執行，請執行 [GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync) 和 [GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync) API。
 
 ## <a name="create-a-service-instance"></a>建立服務執行個體
-您可以使用 [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API，從服務類型將服務具現化。  如果服務宣告為應用程式資訊清單中的預設服務，服務會在應用程式具現化時進行具現化。  呼叫已具現化之服務的[CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API，將會傳回 FabricException 類型的例外狀況。 例外狀況將包含錯誤碼為 FabricErrorCode ServiceAlreadyExists 的錯誤代碼。
+您可以使用 [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API，從服務類型將服務具現化。  如果服務宣告為應用程式資訊清單中的預設服務，服務會在應用程式具現化時進行具現化。  針對已具現化的服務呼叫 [>createserviceasync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API，將會傳回 FabricException 類型的例外狀況。 例外狀況會包含 >fabricerrorcode. ServiceAlreadyExists 值的錯誤碼。
 
 ## <a name="remove-a-service-instance"></a>移除服務執行個體
 當不再需要服務執行個體時，可以呼叫 [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) API，將它從執行的應用程式執行個體中移除。  
@@ -87,7 +88,7 @@ FabricClient fabricClient = new FabricClient();
 > 此作業無法回復，且應用程式狀態無法復原。
 
 ## <a name="unregister-an-application-type"></a>取消註冊應用程式類型
-不再需要特定版本的應用程式類型時，您應該使用 [Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) API 將該特定版本的應用程式類型取消註冊。 取消註冊未使用的應用程式類型版本會釋放映像存放區已使用的儲存空間。 只要沒有任何應用程式會針對該版本的應用程式類型進行具現化，就可以取消註冊應用程式類型的版本。 此外，應用程式類型也可能沒有擱置中的應用程式升級正在參考該版本的應用程式類型。
+不再需要特定版本的應用程式類型時，您應該使用 [Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) API 將該特定版本的應用程式類型取消註冊。 取消註冊未使用的應用程式類型版本會釋放映像存放區已使用的儲存空間。 只要沒有任何應用程式針對該版本的應用程式類型具現化，就可以取消註冊應用程式類型的版本。 此外，應用程式類型也可能沒有任何擱置中的應用程式升級參考該版本的應用程式類型。
 
 ## <a name="troubleshooting"></a>疑難排解
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage 要求 ImageStoreConnectionString
@@ -122,25 +123,25 @@ Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\Se
 
 ### <a name="deploy-large-application-package"></a>部署大型應用程式封裝
 問題︰大型應用程式套件 (GB 的順序) 的 [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API 逾時。
-請嘗試︰
+嘗試：
 - 使用 `timeout` 參數指定 [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) 方法的較大逾時。 此逾時預設為 30 分鐘。
 - 檢查來源電腦與叢集之間的網路連線。 如果連線速度變慢，請考慮使用更佳網路連線的電腦。
 如果用戶端電腦與叢集在不同的區域中，請考慮使用與叢集接近或相同區域中的用戶端電腦。
 - 請檢查是否到達外部節流。 例如，當映像存放區設定為使用 Azure 儲存體時，上傳可能受到節流控制。
 
-問題：上傳封裝已順利完成，但[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API 超時。次
+問題：上傳封裝已順利完成，但 [>provisionapplicationasync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API 超時。嘗試：
 - 複製到映像存放區之前[壓縮封裝](service-fabric-package-apps.md#compress-a-package)。
-壓縮會減少檔案的大小和數目，而後者則可減少資料傳輸量和 Service Fabric 必須執行的工作。 上傳作業的速度可能會比較慢（尤其是如果您包含壓縮時間），但註冊和取消註冊應用程式類型的速度會更快。
+壓縮會減少檔案的大小和數目，而後者則可減少資料傳輸量和 Service Fabric 必須執行的工作。 上傳作業的速度可能較慢 (特別是當您包含壓縮時間) ，但登錄和取消註冊應用程式類型的速度較快。
 - 使用 `timeout` 參數為 [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API 指定較大的逾時。
 
 ### <a name="deploy-application-package-with-many-files"></a>部署具有很多檔案的應用程式封裝
 問題︰具有很多檔案的應用程式套件 (以千計的順序) [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) 的逾時。
-請嘗試︰
+嘗試：
 - 複製到映像存放區之前[壓縮封裝](service-fabric-package-apps.md#compress-a-package)。 壓縮會減少檔案的數目。
 - 使用 `timeout` 參數指定 [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) 的較大逾時。
 
 ## <a name="code-example"></a>程式碼範例
-下列範例會將應用程式套件複製到映射存放區，並布建應用程式類型。 然後，此範例會建立應用程式實例，並建立服務實例。 最後，此範例會移除應用程式實例、unprovisions 應用程式類型，並從映射存放區刪除應用程式封裝。
+下列範例會將應用程式封裝複製到映射存放區，並布建應用程式類型。 然後，此範例會建立應用程式實例，並建立服務實例。 最後，此範例會移除應用程式實例、解除布建應用程式類型，並從映射存放區刪除應用程式封裝。
 
 ```csharp
 using System;

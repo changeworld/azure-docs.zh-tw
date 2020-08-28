@@ -4,12 +4,12 @@ description: 針對安裝、註冊「Azure 備份伺服器」以及備份和還�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: cc62418ed1dec3cbcc944d9b66c691062ca552f8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 70431ee42566d1cbba5ed239b9da55c2ff7a2afe
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893012"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999218"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>針對 Azure 備份伺服器進行疑難排解
 
@@ -83,7 +83,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | 作業 | 錯誤詳細資料 | 因應措施 |
 | --- | --- | --- |
-| 還原 | **錯誤碼**：CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error:100110 <br/> <br/>**錯誤訊息**：原始和外部 DPM 伺服器必須向同一個保存庫註冊 | **原因**：當您嘗試使用外部 DPM 復原選項從源伺服器將檔案還原到替代伺服器時，以及如果要復原的伺服器與備份資料的源伺服器不會與相同的復原服務保存庫產生關聯，就會發生此問題。<br/> <br/>**因應措施**：若要解決此問題，請確定原始伺服器和備用伺服器已向同一個保存庫註冊。|
+| 還原 | **錯誤碼**：CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error:100110 <br/> <br/>**錯誤訊息**：原始和外部 DPM 伺服器必須向同一個保存庫註冊 | **原因**：當您嘗試使用外部 DPM 復原選項從源伺服器將檔案還原到替代伺服器時，如果要復原的伺服器和資料備份所在的源伺服器沒有與相同的復原服務保存庫相關聯，就會發生此問題。<br/> <br/>**因應措施**：若要解決此問題，請確定原始伺服器和備用伺服器都已註冊至相同的保存庫。|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>VMware VM 的線上復原點建立作業失敗
 

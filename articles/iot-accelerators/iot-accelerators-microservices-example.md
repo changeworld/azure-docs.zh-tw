@@ -7,16 +7,17 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9ff3e12721628e244f247e174af101e71ea91191
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61447580"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998317"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>自訂和重新部署微服務
 
-本教學課程示範如何編輯遠端監視解決方案中的其中一個[微服務](https://azure.com/microservices)、建立微服務的映射、將映射部署到您的 docker hub，然後將它用於遠端監視解決方案。 為了引入此概念，本教學課程會使用基本情節，讓您可在其中呼叫微服務 API，並將狀態訊息從 "Alive and Well" 變更為 "New Edits Made Here!"。
+本教學課程示範如何編輯遠端監視解決方案中的其中一個 [微服務](https://azure.com/microservices) 、建立微服務的映射、將映射部署至您的 docker hub，然後將它用於遠端監視解決方案。 為了引入此概念，本教學課程會使用基本情節，讓您可在其中呼叫微服務 API，並將狀態訊息從 "Alive and Well" 變更為 "New Edits Made Here!"。
 
 遠端監視解決方案所使用的微服務，是使用提取自 Docker Hub 的 Docker 映像所建置。 
 
@@ -29,7 +30,7 @@ ms.locfileid: "61447580"
 > * 提取新的 Docker 映像
 > * 將變更視覺化 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 為了依循本教學課程進行操作，您需要：
 

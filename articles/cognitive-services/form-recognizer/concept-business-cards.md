@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 039f7343bcef64db9ad9eae558cd3e97f3678c59
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1163531fb5a6aa7158bd81ff9095ed1ee29e73c1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799276"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004896"
 ---
 # <a name="business-card-concepts"></a>名片概念
 
-Azure 表單辨識器可以使用其中一個預先建立的模型，從名片分析和解壓縮金鑰值組。 名片 API 結合了強大的光學字元辨識 (OCR) 功能，以及我們的智慧卡理解模型，以英文的方式從名片中取出重要資訊。 它會解壓縮個人連絡人資訊、公司名稱、職稱等等。 預先建立的名片 API 可在表單辨識器2.1 版 preview 中公開使用。 
+Azure 表單辨識器可以使用其中一個預先建立的模型，分析和解壓縮名片中的連絡人資訊。 名片 API 結合了強大的光學字元辨識 (OCR) 功能，以及我們的智慧卡理解模型，以英文的方式從名片中取出重要資訊。 它會解壓縮個人連絡人資訊、公司名稱、職稱等等。 預先建立的名片 API 可在表單辨識器2.1 版 preview 中公開使用。 
 
 ## <a name="what-does-the-business-card-api-do"></a>名片 API 的用途為何？
 
@@ -27,10 +27,11 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，從名片�
 
 ![來自 FOTT + JSON 輸出的 Contoso 明細影像](./media/business-card-english.jpg)
 
-### <a name="fields-extracted"></a>已解壓縮的欄位： 
+### <a name="fields-extracted"></a>已解壓縮的欄位：
+
 * 連絡人名稱 
-* 名字 
-* 姓氏 
+  * 名字
+  * 姓氏
 * 公司名稱 
 * 部門 
 * 頭銜 
@@ -43,7 +44,7 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，從名片�
   * 公司電話 
   * 其他電話 
 
-名片 API 也會傳回來自名片的所有已辨識文字。 此 OCR 輸出包含在 JSON 回應中。  
+名片 API 也可以從名片傳回所有已辨識的文字。 此 OCR 輸出包含在 JSON 回應中。  
 
 ### <a name="input-requirements"></a>輸入需求 
 
@@ -51,7 +52,7 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，從名片�
 
 ## <a name="the-analyze-business-card-operation"></a>分析名片操作
 
-「 [分析名片](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 」會使用名片的影像或 PDF 作為輸入，並解壓縮感興趣的值和文字。 呼叫會傳回稱為的回應標頭欄位 `Operation-Location` 。 `Operation-Location`值是包含要在下一個步驟中使用之結果識別碼的 URL。
+「 [分析名片](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 」會使用名片的影像或 PDF 作為輸入，並將感興趣的值解壓縮。 呼叫會傳回稱為的回應標頭欄位 `Operation-Location` 。 `Operation-Location`值是包含要在下一個步驟中使用之結果識別碼的 URL。
 
 |回應標頭| 結果 URL |
 |:-----|:----|
@@ -63,18 +64,15 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，從名片�
 
 |欄位| 類型 | 可能值 |
 |:-----|:----:|:----|
-|status | 字串 | notStarted：分析作業尚未啟動。 |
-| |  | 正在執行：分析作業正在進行中。 |
-| |  | 失敗：分析作業已失敗。 |
-| |  | 成功：分析作業已成功。 |
+|status | 字串 | notStarted：分析作業尚未啟動。<br /><br />正在執行：分析作業正在進行中。<br /><br />失敗：分析作業已失敗。<br /><br />成功：分析作業已成功。|
 
-當 [ **狀態** ] 欄位的值為 [ **成功** ] 時，JSON 回應會包含名片理解和文字辨識結果。 名片理解結果會組織為命名域值的字典，其中每個值都包含已解壓縮的文字、正規化值、周框方塊、信賴度和對應的單字元素。 文字辨識結果會組織成行和單字的階層，其中包含文字、周框方塊和信賴資訊。
+當 [ **狀態** ] 欄位的值為 [ **成功** ] 時，如果要求的話，JSON 回應會包含名片理解和選擇性的文字辨識結果。 名片理解結果會組織為命名域值的字典，其中每個值都包含已解壓縮的文字、正規化值、周框方塊、信賴度和對應的單字元素。 文字辨識結果會組織成行和單字的階層，其中包含文字、周框方塊和信賴資訊。
 
 ![範例名片輸出](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>範例 JSON 輸出
 
-請參閱下列成功 JSON 回應的範例： "readResults" 節點包含所有已辨識的文字。 文字會依頁面彙整，然後依文字行，再依個別字組彙整。 "DocumentResults" 節點包含模型所發現的特定名片值。 您可以在這裡找到有用的索引鍵/值組，例如名字、姓氏、公司名稱等等。
+請參閱下列成功 JSON 回應的範例： "readResults" 節點包含所有已辨識的文字。 文字會依頁面彙整，然後依文字行，再依個別字組彙整。 "DocumentResults" 節點包含模型所發現的特定名片值。 您可以在這裡找到有用的連絡人資訊，例如名字、姓氏、公司名稱等等。
 
 ```json
 {
@@ -394,5 +392,4 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，從名片�
 - 遵循快速入門以開始使用 [名片 API Python 快速入門](./quickstarts/python-business-cards.md)
 - 瞭解 [表單辨識器 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
 - 深入瞭解 [表單辨識器](overview.md)
-
 

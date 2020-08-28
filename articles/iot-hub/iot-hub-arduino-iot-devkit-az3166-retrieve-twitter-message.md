@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 464e2c14fa238160ca198b9f1c8a9808e70933f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f0aa71b34818cf373d1bb58531ee5c68c8d3d5ec
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560973"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004307"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>搖一搖以獲取推文 -- 使用 Azure Functions 擷取 Twitter 訊息
 
@@ -92,7 +93,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 1. 使用 `Ctrl+P` 來執行 `task device-upload`。
 
-2. 終端機會提示您進入設定模式。 若要這樣做：
+2. 終端機會提示您進入設定模式。 操作方法：
 
    * 按住 A 按鈕
 
@@ -116,7 +117,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
    ![device-upload](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
 
-2. DevKit 會重新開機，然後開始執行程式碼。
+2. DevKit 會重新開機並開始執行程式碼。
 
 您可能會收到「錯誤：AZ3166：未知的套件」錯誤訊息。 未正確重新整理面板套件索引時，就會發生此錯誤。 若要解決此問題，請查看 [IoT DevKit 常見問題集中的「未知的套件」錯誤](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)。
 

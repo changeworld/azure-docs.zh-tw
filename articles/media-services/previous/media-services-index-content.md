@@ -15,17 +15,18 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 8b9f0e824352126204c7a6f1cfe08d3e7c6c29a9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 39cbfebcf34ef47ae93972a11be44ef3bcec0d66
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826053"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008925"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>使用 Azure Media Indexer 編輯媒體檔案索引
 
 > [!NOTE]
-> **Azure 媒體索引子**媒體處理器將被淘汰。 如需淘汰日期，請參閱此[舊版元件](legacy-components.md)主題。 [Azure 媒體服務影片索引子](../video-indexer/index.yml)會取代此舊版媒體處理器。 如需詳細資訊，請參閱[從 Azure 媒體索引器和 Azure 媒體索引器 2 遷移到 Azure 媒體服務影片索引器](migrate-indexer-v1-v2.md)。
+> **Azure 媒體索引子**媒體處理器將會淘汰。 如需淘汰日期，請參閱此[舊版元件](legacy-components.md)主題。 [Azure 媒體服務影片索引子](../video-indexer/index.yml) 會取代此舊版媒體處理器。 如需詳細資訊，請參閱[從 Azure 媒體索引器和 Azure 媒體索引器 2 遷移到 Azure 媒體服務影片索引器](migrate-indexer-v1-v2.md)。
 
 Azure Media Indexer 讓您能將媒體檔案的內容變成可搜尋，並產生隱藏式字幕和關鍵字的全文檢索記錄。 您可以處理一份媒體檔或是批次處理多個媒體檔案。  
 
@@ -33,7 +34,7 @@ Azure Media Indexer 讓您能將媒體檔案的內容變成可搜尋，並產生
 
 索引工作可產生下列輸出檔案：
 
-* 下列格式的隱藏式輔助字幕檔案： **TTML**和**WebVTT**。
+* 下列格式的隱藏式輔助字幕檔案： **TTML**和 **WebVTT**。
   
     隱藏式輔助字幕檔案包含稱為 Recognizability 的標記，它會根據來源視訊中的語音可辨識度來為索引工作評分。  您可以使用 Recognizability 值篩選輸出檔的實用性。 較低的分數表示由於音訊品質所致的不良索引結果。
 * 關鍵字檔案 (XML)。
@@ -145,11 +146,11 @@ Azure Media Indexer 讓您能將媒體檔案的內容變成可搜尋，並產生
 ### <a name="output-files"></a><a id="output_files"></a>輸出檔案
 索引工作預設會產生下列輸出檔案。 檔案會儲存在第一個輸出資產中。
 
-當有多個輸入媒體檔案時，索引子會產生作業輸出的資訊清單檔，名為 'JobResult.txt'。 針對每個輸入媒體檔案，產生的 TTML、WebVTT 及關鍵字檔案會以順序編號，並使用「別名」來命名。
+當有多個輸入媒體檔案時，索引子會產生作業輸出的資訊清單檔，名為 'JobResult.txt'。 針對每個輸入媒體檔案，會依序編號產生的 TTML、WebVTT 和關鍵字檔案，並使用 "Alias" 來命名。
 
 | 檔案名稱 | 描述 |
 | --- | --- |
-| **InputFileName.ttml**<br/>**InputFileName.vtt** |隱藏式輔助字幕 (TTML 和 WebVTT 格式的 CC) 檔案。<br/><br/>它們可以用來讓具有聽力障礙的人存取音訊和視訊檔案。<br/><br/>隱藏式輔助字幕檔案包含名為<b>Recognizability</b>的標籤，它會根據來源影片中的語音可辨識程度來評分索引作業。  您可以使用 <b>Recognizability</b> 的值，針對實用性來篩選輸出檔。 較低的分數表示由於音訊品質所致的不良索引結果。 |
+| **InputFileName.ttml**<br/>**InputFileName.vtt** |隱藏式標題 (CC) TTML 和 WebVTT 格式的檔。<br/><br/>它們可以用來讓具有聽力障礙的人存取音訊和視訊檔案。<br/><br/>隱藏式輔助字幕檔案包含稱為 <b>Recognizability</b> 的標記，它會根據來源影片中的語音可辨識的程度來評分索引工作。  您可以使用 <b>Recognizability</b> 的值，針對實用性來篩選輸出檔。 較低的分數表示由於音訊品質所致的不良索引結果。 |
 | **InputFileName.kw.xml<br/>InputFileName.info** |關鍵字與資訊檔案。 <br/><br/>關鍵字檔案是 XML 檔案，其中包含從語音內容擷取的關鍵字，以及關鍵字的頻率和位移資訊。 <br/><br/>資訊檔案是純文字檔案，包含每個已辨識字詞的細微資訊。 第一行是特殊行並包含可辨識分數。 後續每一行皆是下列資料的清單 (以 tab 鍵分隔)：開始時間、結束時間、文字/片語、信賴值。 時間是以秒為單位，信賴值則是以 0-1 的數字標示。 <br/><br/>範例行："1.20    1.45    word    0.67" <br/><br/>這些檔案的用途眾多，例如執行語音分析，或是公開到搜尋引擎 (例如 Bing、Google 或 Microsoft SharePoint) 來讓媒體檔案更容易被找到，或甚至用來放送更多相關的廣告。 |
 | **JobResult.txt** |包含下列資訊的輸出資訊清單 (只會在編製多個檔案的索引時顯示)：<br/><br/><table border="1"><tr><th>InputFile</th><th>Alias</th><th>MediaLength</th><th>錯誤</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
 
@@ -238,7 +239,7 @@ Azure Media Indexer 讓您能將媒體檔案的內容變成可搜尋，並產生
 ### <a name="partially-succeeded-job"></a>部分成功的工作
 如果不是所有輸入媒體檔案都成功編製索引，則索引工作將會失敗，錯誤碼為 4000。 如需詳細資訊，請參閱 [錯誤碼](#error_codes)。
 
-會產生 (與成功工作) 相同的輸出。 您可以參閱輸出資訊清單檔，根據 Error 欄位值找出哪些輸入檔案失敗。 對於失敗的輸入檔，將不會產生產生的 TTML、WebVTT 及關鍵字檔案。
+會產生 (與成功工作) 相同的輸出。 您可以參閱輸出資訊清單檔，根據 Error 欄位值找出哪些輸入檔案失敗。 針對失敗的輸入檔，將不會產生產生的 TTML、WebVTT 和關鍵字檔案。
 
 ### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a> Azure 媒體索引器的工作預設
 在工作旁邊提供選擇性工作預設，即可自訂從 Azure 媒體索引器處理。  下表說明此組態 xml 的格式。
@@ -246,8 +247,8 @@ Azure Media Indexer 讓您能將媒體檔案的內容變成可搜尋，並產生
 | 名稱 | 要求 | 描述 |
 | --- | --- | --- |
 | **input** |false |您想要編製索引的資產檔案。</p><p>Azure 媒體索引器支援下列媒體檔案格式︰MP4、WMV、MP3、M4A、WMA、AAC、WAV。</p><p>您可以在 **input** 元素的 **name** 或 **list** 屬性中指定檔案名稱 (如下所示)。如果您未指定要編制索引的資產檔案，則會選擇主要檔案。 如果未設定主要資產檔案，則會對輸入資產中的第一個檔案編製索引。</p><p>若要明確指定資產檔案名稱，請執行︰<br/>`<input name="TestFile.wmv">`<br/><br/>您也可以一次對多個資產檔案編制索引 (最多 10 個檔案)。 若要這樣做：<br/><br/><ol class="ordered"><li><p>建立文字檔 (資訊清單檔) 並指定 .lst 副檔名。 </p></li><li><p>將輸入資產中所有資產檔案名稱的清單加入至此資訊清單檔案。 </p></li><li><p>將資訊檔案新增 (上傳) 到資產。  </p></li><li><p>在輸入的 list 屬性中指定資訊清單檔的名稱。<br/>`<input list="input.lst">`</li></ol><br/><br/>附註︰如果您在資訊清單檔中新增超過 10 個檔案，編製索引作業將失敗，並出現 2006 錯誤碼。 |
-| **中繼資料** |false |用於詞彙調節之指定資產檔案的中繼資料。  適合用來準備 Indexer 以辨識非標準詞彙文字，例如專有名詞。<br/>`<metadata key="..." value="..."/>` <br/><br/>您可以提供預先定義的**索引鍵**的**值**。 目前支援下列索引鍵：<br/><br/>"title" 和 "description" - 用於詞彙調整，以微調您的工作的語言模型及改進語音辨識準確度。  值會植入網際網路搜尋來尋找內容相關的文字文件，並使用內容來加強索引工作期間的內部字典。<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
-| **功能** <br/><br/>  在 1.2 版中新增。 目前唯一支援的功能是語音辨識 ("ASR")。 |false |語音辨識功能具有下列設定索引鍵︰<table><tr><th><p>Key</p></th>        <th><p>描述</p></th><th><p>範例值</p></th></tr><tr><td><p>語言</p></td><td><p>要在多媒體檔案中辨識的自然語言。</p></td><td><p>英文、西班牙文</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>所需輸出字幕格式的分號分隔清單 (如果有的話)</p></td><td><p>ttml; webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>True; False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>布林值旗標，用於指定是否需要關鍵字 XML 檔案。</p></td><td><p>True; False。 </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>布林值旗標，用於指定是否強制完整字幕 (不管信賴等級為何)。  </p><p>預設值為 false，在此情況下，會省略最終字幕輸出中信賴等級小於 50% 的單字和片語並以省略符號 ("...") 取代。  省略符號適合用於字幕品質控制和稽核。</p></td><td><p>True; False。 </p></td></tr></table> |
+| **元** |false |用於詞彙調節之指定資產檔案的中繼資料。  適合用來準備 Indexer 以辨識非標準詞彙文字，例如專有名詞。<br/>`<metadata key="..." value="..."/>` <br/><br/>您可以提供預先定義的**索引鍵**的**值**。 目前支援下列索引鍵：<br/><br/>"title" 和 "description" - 用於詞彙調整，以微調您的工作的語言模型及改進語音辨識準確度。  值會植入網際網路搜尋來尋找內容相關的文字文件，並使用內容來加強索引工作期間的內部字典。<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
+| **特徵** <br/><br/>  在 1.2 版中新增。 目前唯一支援的功能是語音辨識 ("ASR")。 |false |語音辨識功能具有下列設定索引鍵︰<table><tr><th><p>Key</p></th>        <th><p>描述</p></th><th><p>範例值</p></th></tr><tr><td><p>Language</p></td><td><p>要在多媒體檔案中辨識的自然語言。</p></td><td><p>英文、西班牙文</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>所需輸出字幕格式的分號分隔清單 (如果有的話)</p></td><td><p>ttml; webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>True; False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>布林值旗標，用於指定是否需要關鍵字 XML 檔案。</p></td><td><p>True; False。 </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>布林值旗標，用於指定是否強制完整字幕 (不管信賴等級為何)。  </p><p>預設值為 false，在此情況下，會省略最終字幕輸出中信賴等級小於 50% 的單字和片語並以省略符號 ("...") 取代。  省略符號適合用於字幕品質控制和稽核。</p></td><td><p>True; False。 </p></td></tr></table> |
 
 ### <a name="error-codes"></a><a id="error_codes"></a>錯誤碼
 如果發生錯誤，Azure 媒體索引器應回報下列其中一個錯誤碼：

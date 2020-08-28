@@ -15,17 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 1b85cffe497ad0b374edb18a1089412da839cdf8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a0e342e5509aaba05228c7d1032023a6f4710f1f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231840"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999507"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒體視訊縮圖建立視訊摘要  
 
 > [!NOTE]
-> **Azure 媒體影片縮圖**媒體處理器將被淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
+> **Azure 媒體影片縮圖**媒體處理器將會淘汰。 如需淘汰日期，請參閱 [舊版元件](legacy-components.md) 主題。
 
 ## <a name="overview"></a>概觀
 
@@ -67,7 +68,7 @@ ms.locfileid: "86231840"
 
 下表說明未使用 **maxMotionThumbnailInSecs** 時的預設持續時間。
 
-|  | Small | 容量 |
+|  | 小 | 大 |
 | --- | --- | --- |
 | **視訊持續時間** |d < 3 分鐘 |3 分鐘 < d < 15 分鐘 |
 | **縮圖持續時間** |15 秒 (2-3 個場景) |30 秒 (3-5 個場景) |
@@ -107,7 +108,7 @@ ms.locfileid: "86231840"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
+設定您的開發環境，並在 app.config 檔案中填入連線資訊，如 [使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)所述。 
 
 #### <a name="example"></a>範例
 

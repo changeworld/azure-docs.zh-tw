@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 4025ace5c2609783a8d0f09b99d60537addb6f08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e5ccb87a215d6d29d1545fc99a052795ef3f9556
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060112"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005763"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>使用 .NET 將檔案上傳至媒體服務帳戶 
 
 > [!NOTE]
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
-在媒體服務中，您可以將數位檔案上傳 (或內嵌) 到資產。 **資產**實體可以包含影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案（以及這些檔案的相關中繼資料）。 檔案上傳之後，您的內容就會安全地儲存在雲端，以進行進一步的處理和串流。
+在媒體服務中，您可以將數位檔案上傳 (或內嵌) 到資產。 **資產**實體可包含影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案 (以及這些檔案的相關中繼資料。 ) 檔案上傳之後，您的內容就會安全地儲存在雲端，以供進一步處理和串流處理。
 
 資產中的檔案稱為 **資產檔案**。 **AssetFile** 執行個體和實際媒體檔是兩個不同的物件。 AssetFile 執行個體包含媒體檔案的相關中繼資料，而媒體檔案包含實際的媒體內容。
 
@@ -34,7 +35,7 @@ ms.locfileid: "87060112"
 
 您必須考量下列事項：
  
- * 媒體服務在建立串流內容的 Url 時，會使用 IAssetFile.Name 屬性的值（例如，HTTP：//{AMSAccount}. windowsazure.mediaservices.extensions. net/{GUID}/{IAssetFile. Name}/streamingParameters）。基於這個理由，不允許使用百分比編碼。 **Name** 屬性的值不能有下列任何[百分比編碼保留字元](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 而且，副檔名只能有一個 '.'。
+ * 當建立串流 (內容的 Url 時，媒體服務會使用 IAssetFile.Name 屬性的值，例如，HTTP：//{Amsaccount .origin.mediaservices.windows.net} windowsazure.mediaservices.. IAssetFile/{GUID}/{. Name}/streamingParameters。 ) 基於這個原因，不允許使用百分比編碼。 **Name** 屬性的值不能有下列任何[百分比編碼保留字元](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 而且，副檔名只能有一個 '.'。
 * 名稱長度不應超過 260 個字元。
 * 對於在媒體服務處理檔案，支援的檔案大小有上限。 請參閱[這篇](media-services-quotas-and-limitations.md)文章，以取得有關檔案大小限制的詳細資料。
 * 對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限，例如，要長時間維持就地 (非上載原則) 的定位器原則，您應該使用相同的原則識別碼。 如需詳細資訊，請參閱[本篇文章](media-services-dotnet-manage-entities.md#limit-access-policies)。
@@ -49,7 +50,7 @@ ms.locfileid: "87060112"
   
     媒體服務可為您的資產提供磁碟上的儲存體加密，而不是在線上加密，例如數位版權管理員 (DRM)。
   
-    如果您的資產是儲存體加密，必須設定資產傳遞原則。 如需詳細資訊，請參閱設定[資產傳遞原則](media-services-dotnet-configure-asset-delivery-policy.md)。
+    如果您的資產是儲存體加密，必須設定資產傳遞原則。 如需詳細資訊，請參閱設定 [資產傳遞原則](media-services-dotnet-configure-asset-delivery-policy.md)。
 
 如果您指定使用 **CommonEncrypted** 選項或 **EnvelopeEncrypted** 選項加密資產，則需要建立資產與 **ContentKey** 的關聯。 如需詳細資訊，請參閱 [如何建立 ContentKey](media-services-dotnet-create-contentkey.md)。 
 
@@ -91,8 +92,8 @@ ms.locfileid: "87060112"
 此程式碼會執行下列動作：
 
 * 使用上一個步驟中所定義的 CreateEmptyAsset 方法，來建立空白資產。
-* 建立**AccessPolicy**實例，以定義存取資產的許可權和持續時間。
-* 建立提供資產存取權的**定位器**實例。
+* 建立 **AccessPolicy** 實例，以定義存取資產的許可權與持續時間。
+* 建立提供資產存取權的 **定位器** 實例。
 * 建立 **BlobTransferClient** 執行個體。 此類型代表在 Azure Blob 上作業的用戶端。 在此範例中，用戶端會監視上傳進度。 
 * 逐一列舉所指定目錄中的檔案，並建立每個檔案的 **AssetFile** 執行個體。
 * 使用 **UploadAsync** 方法，將檔案上傳到媒體服務。 
@@ -299,7 +300,7 @@ IngestManifestAsset 會建立資產與大量 IngestManifest 的關聯，以進�
     var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您現在可以將上傳的資產編碼。 如需詳細資訊，請參閱 [為資產編碼](media-services-portal-encode.md)。
 

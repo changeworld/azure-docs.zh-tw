@@ -8,12 +8,13 @@ ms.author: crtreasu
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: baf5252a6b158855739546c2a03e63dceee6701e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e4d25637498bec223e294eecf2be6dc88fa2aa0d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84456499"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997161"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure 空間錨點的驗證和授權
 
@@ -174,14 +175,14 @@ Azure AD 存取權杖的擷取方式是使用 [MSAL 程式庫](../../active-dire
         1.  在 Azure 入口網站中，瀏覽至 **Azure Active Directory**，然後選取 [應用程式註冊]
         2.  選取 [新增應用程式註冊]
         3.  輸入應用程式的名稱，選取 [Web 應用程式/API] 作為 [應用程式類型]，然後輸入服務的驗證 URL。 然後點擊 [建立]。
-        4.  在該應用程式上，按 [**設定**]，然後選取 [**憑證和秘密**] 索引標籤。建立新的用戶端密碼，選取持續時間，然後點擊 [**新增**]。 請務必儲存秘密值，因為您必須將它包含在 web 服務的程式碼中。
+        4.  在該應用程式上，按一下 [ **設定**]，然後選取 [ **憑證和密碼** ] 索引標籤。建立新的用戶端密碼、選取持續時間，然後按 [ **新增**]。 請務必儲存秘密值，因為您必須將它包含在 web 服務的程式碼中。
     2.  對您的應用程式及 (或) 使用者授與資源的存取權：
         1.  在 Azure 入口網站中瀏覽至您的空間錨點資源
         2.  切換至 [存取控制 (IAM)] 索引標籤
         3.  點擊 [新增角色指派]
         1.  [選取角色](#role-based-access-control)
         2.  在 [選取] 欄位中，輸入您所建立，並且要對其指派存取權的應用程式名稱。 如果您想要讓應用程式的使用者以不同角色存取空間錨點帳戶，您應該在 Azure AD 中註冊多個應用程式，並將不同角色指派給每個應用程式。 然後執行您的授權邏輯，為您的使用者使用正確的角色。
-        3.  注意-在 [**新增角色指派**] 選取專案中，您想要將 [**指派存取**權] 設定為 [Azure AD 使用者、群組或服務主體]。
+        3.  注意-在 [ **新增角色指派** ] 選項中，您要將 [ **指派存取** 權] 設定為 [Azure AD 使用者、群組或服務主體]。
     3.  按 [儲存]。
 2.  在您的程式碼中 (注意：您可以使用 GitHub 上所包含的服務範例)：
     1.  請務必使用您 Azure AD 應用程式的應用程式識別碼、應用程式祕密和重新導向 URI 作為 MSAL 中的 client ID、secret 和 RedirectUri 參數
