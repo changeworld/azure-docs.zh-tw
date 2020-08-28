@@ -3,12 +3,13 @@ title: 管理 Azure Service Fabric 應用程式秘密
 description: 了解如何保護 Service Fabric 應用程式中的祕密值 (無平台限制)。
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.openlocfilehash: af82a55d41c48eebcbcbd1581ec5096a89c49bea
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a11869c3b606ed9e74ce4f598109139fa1bb4164
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248113"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012818"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>在 Service Fabric 應用程式中管理已加密的祕密
 本指南將逐步引導您完成管理 Service Fabric 應用程式中密碼的步驟。 密碼可以是任何機密資訊，例如儲存體連接字串、密碼或其他不會以純文字處理的值。
@@ -45,7 +46,7 @@ ms.locfileid: "86248113"
 </CodePackage>
 ```
 
-您也應該在應用程式資訊清單中指定憑證，以將秘密包含在 Service Fabric 應用程式中。 將**SecretsCertificate**元素新增至**ApplicationManifest.xml** ，並包含所需的憑證指紋。
+您也應在應用程式資訊清單中指定憑證，以將秘密包含在 Service Fabric 應用程式中。 將 **SecretsCertificate** 元素新增至 **ApplicationManifest.xml** ，並包含所需的憑證指紋。
 
 ```xml
 <ApplicationManifest … >
@@ -56,9 +57,9 @@ ms.locfileid: "86248113"
 </ApplicationManifest>
 ```
 > [!NOTE]
-> 啟用指定 SecretsCertificate 的應用程式時，Service Fabric 會尋找相符的憑證，並將應用程式在憑證私密金鑰的完整許可權下執行的身分識別授與。 Service Fabric 也會監視憑證的變更，並據以重新套用許可權。 若要偵測一般名稱所宣告之憑證的變更，Service Fabric 會執行定期工作，以尋找所有相符的憑證，並將它與快取的指紋清單進行比較。 當偵測到新的指紋時，表示該主體的憑證已更新。 此工作會在叢集的每個節點上每分鐘執行一次。
+> 啟用指定 SecretsCertificate 的應用程式時，Service Fabric 將會尋找相符的憑證，並以完整許可權將憑證的私密金鑰授與應用程式執行的身分識別。 Service Fabric 也會監視憑證的變更，並據以重新套用許可權。 若要偵測一般名稱所宣告之憑證的變更，Service Fabric 執行定期工作來尋找所有相符的憑證，並將其與已快取的指紋清單進行比較。 偵測到新的指紋時，表示該主體的憑證已更新。 此工作會在叢集的每個節點上每分鐘執行一次。
 >
-> 雖然 SecretsCertificate 允許以主體為基礎的宣告，但請注意，加密的設定會系結至用來加密用戶端上設定的金鑰組。 您必須確定原始加密憑證 (或對等的) 符合以主體為基礎的宣告，並已在可能裝載應用程式之叢集的每個節點上安裝，包括其對應的私密金鑰。 所有符合以主旨為基礎的宣告，並使用與原始加密憑證相同的金鑰組建立的有效憑證，都會被視為對等。
+> 雖然 SecretsCertificate 允許以主體為基礎的宣告，但請注意，加密設定會系結至用來加密用戶端設定的金鑰組。 您必須確定原始加密憑證 (或對等的) 符合以主體為基礎的宣告，並且在可裝載應用程式的每個叢集節點上安裝它，包括其對應的私密金鑰。 所有符合以主體為基礎之宣告的有效憑證，以及與原始加密憑證相同的金鑰組所建立的所有符合條件的憑證都會被視為對等。
 >
 
 ### <a name="inject-application-secrets-into-application-instances"></a>將應用程式密碼插入應用程式執行個體內
@@ -141,7 +142,7 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* Service Fabric[秘密存放區](service-fabric-application-secret-store.md) 
+* Service Fabric [秘密存放區](service-fabric-application-secret-store.md) 
 * 深入了解[應用程式及服務安全性](service-fabric-application-and-service-security.md)
 
 <!-- Links -->

@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何針對內部部署 Windows 伺服�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 56593176e705176b87cf955eb116909c1912e723
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7eb596853bfe17ec5bf14c8830c1b95bde5b7c98
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824265"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022355"
 ---
 # <a name="troubleshoot-system-state-backup"></a>對系統狀態備份進行疑難排解
 
@@ -20,7 +20,7 @@ ms.locfileid: "88824265"
 建議您在開始對系統狀態備份進行疑難排解之前，先執行下列驗證步驟：
 
 - [確定 Microsoft Azure 復原服務 (MARS) 代理程式是最新版本](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [確保 MARS 代理程式和 Azure 之間具有網路連線能力](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [確定 MARS 代理程式與 Azure 之間有網路連線能力](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - 確保 Microsoft Azure 復原服務正在執行中 (在服務主控台中)。 如有必要，請重新開機，然後重試作業
 - [確保草稿資料夾位置具有 5-10% 的磁碟區空間可供使用](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - [檢查是否有其他程序或防毒軟體在干擾 Azure 備份](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)

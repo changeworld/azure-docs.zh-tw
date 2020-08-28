@@ -1,7 +1,7 @@
 ---
 title: Microsoft Threat Modeling Tool 的設定管理
 titleSuffix: Azure
-description: 深入瞭解 Threat Modeling Tool 的設定管理。 請參閱風險降低資訊和查看程式碼範例。
+description: 瞭解 Threat Modeling Tool 的設定管理。 查看緩和資訊並查看程式碼範例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,13 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f34a98ccbe069a5cb9e2c26a88e486b27f016fe1
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9410f06298bd40fe6e0bf8f3fca1be4b87f793ed
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540014"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004488"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架︰組態管理 | 緩和措施 
 | 產品/服務 | 發行項 |
@@ -289,7 +289,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **SDL 階段**               | Build |  
 | **適用的技術** | SQL Azure、OnPrem |
 | **屬性**              | N/A、SQL 版本 - V12 |
-| **參考**              | [如何設定 Azure SQL Database 防火牆](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/)、[設定資料庫引擎存取的 Windows 防火牆](https://msdn.microsoft.com/library/ms175043) |
+| **參考**              | [如何設定 Azure SQL Database 防火牆](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/)、 [設定資料庫引擎存取的 Windows 防火牆](https://msdn.microsoft.com/library/ms175043) |
 | **步驟** | 防火牆系統有助於預防未經授權存取電腦資源。 若要透過防火牆存取 SQL Server 資料庫引擎的執行個體，您必須在執行 SQL Server 的電腦上設定防火牆以允許存取 |
 
 ## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-api"></a><a id="cors-api"></a>確保在 ASP.NET Web API 上啟用 CORS 的情況下只允許信任的原始來源

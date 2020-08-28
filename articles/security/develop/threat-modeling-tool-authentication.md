@@ -1,6 +1,6 @@
 ---
 title: 驗證 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: 深入瞭解 Threat Modeling Tool 中的驗證緩和。 請參閱風險降低資訊和查看程式碼範例。
+description: 瞭解 Threat Modeling Tool 中的驗證緩和措施。 查看緩和資訊並查看程式碼範例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,29 +15,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 11158749f3cae222c0948286e7365b1629cebbf2
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: has-adal-ref, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 65e680a14cfc878b6dc406a179a0aa3afe038563
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543974"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004709"
 ---
 # <a name="security-frame-authentication--mitigations"></a>安全框架︰驗證 | 緩和措施
 
 | 產品/服務 | 發行項 |
 | --------------- | ------- |
-| **Web 應用程式**    | <ul><li>[考慮使用標準驗證機制來驗證 Web 應用程式](#standard-authn-web-app)</li><li>[應用程式必須安全地處理失敗的驗證案例](#handle-failed-authn)</li><li>[啟用逐步執行或適應性驗證](#step-up-adaptive-authn)</li><li>[確保已適當地鎖定系統管理介面](#admin-interface-lockdown)</li><li>[安全地執行忘記密碼功能](#forgot-pword-fxn)</li><li>[確定已執行密碼和帳戶原則](#pword-account-policy)</li><li>[執行控制項以防止使用者名稱列舉](#controls-username-enum)</li></ul> |
-| **Database** | <ul><li>[可能的話，請使用 Windows 驗證連接到 SQL Server](#win-authn-sql)</li><li>[可能的話，請使用 Azure Active Directory 驗證來連接到 SQL Database](#aad-authn-sql)</li><li>[使用 SQL 驗證模式時，確保在 SQL Server 上強制執行帳戶和密碼原則](#authn-account-pword)</li><li>[請勿在自主資料庫中使用 SQL 驗證](#autn-contained-db)</li></ul> |
+| **Web 應用程式**    | <ul><li>[考慮使用標準驗證機制來驗證 Web 應用程式](#standard-authn-web-app)</li><li>[應用程式必須安全地處理失敗的驗證案例](#handle-failed-authn)</li><li>[啟用逐步執行或自我調整驗證](#step-up-adaptive-authn)</li><li>[確保已適當地鎖定系統管理介面](#admin-interface-lockdown)</li><li>[安全地執行忘記的密碼功能](#forgot-pword-fxn)</li><li>[確定已實行密碼和帳戶原則](#pword-account-policy)</li><li>[執行控制項以防止使用者名稱列舉](#controls-username-enum)</li></ul> |
+| **Database** | <ul><li>[可能的話，請使用 Windows 驗證連接到 SQL Server](#win-authn-sql)</li><li>[可能的話，請使用 Azure Active Directory Authentication 連接到 SQL Database](#aad-authn-sql)</li><li>[使用 SQL 驗證模式時，確保在 SQL Server 上強制執行帳戶和密碼原則](#authn-account-pword)</li><li>[請勿在自主資料庫中使用 SQL 驗證](#autn-contained-db)</li></ul> |
 | **Azure 事件中樞** | <ul><li>[使用採用 SaS 權杖的每一裝置驗證認證](#authn-sas-tokens)</li></ul> |
 | **Azure 信任邊界** | <ul><li>[啟用 Azure 系統管理員適用的 Azure Multi-Factor Authentication](#multi-factor-azure-admin)</li></ul> |
-| **Service Fabric 信任邊界** | <ul><li>[限制 Service Fabric 叢集的匿名存取](#anon-access-cluster)</li><li>[確定 Service Fabric 的用戶端對節點憑證不同于節點對節點憑證](#fabric-cn-nn)</li><li>[使用 AAD 向 service fabric 叢集驗證用戶端](#aad-client-fabric)</li><li>[確保從經過核准的憑證授權單位 (CA) 取得 Service Fabric 憑證](#fabric-cert-ca)</li></ul> |
-| **身分識別伺服器** | <ul><li>[使用 Identity Server 所支援的標準驗證案例](#standard-authn-id)</li><li>[使用可調整的替代方法來覆寫預設身分識別伺服器權杖快取](#override-token)</li></ul> |
+| **Service Fabric 信任邊界** | <ul><li>[限制 Service Fabric 叢集的匿名存取](#anon-access-cluster)</li><li>[確定 Service Fabric 的用戶端對節點憑證與節點對節點憑證不同](#fabric-cn-nn)</li><li>[使用 AAD 來向 service fabric 叢集驗證用戶端](#aad-client-fabric)</li><li>[確保從經過核准的憑證授權單位 (CA) 取得 Service Fabric 憑證](#fabric-cert-ca)</li></ul> |
+| **身分識別伺服器** | <ul><li>[使用 Identity Server 支援的標準驗證案例](#standard-authn-id)</li><li>[以可調整的替代方式覆寫預設身分識別伺服器權杖快取](#override-token)</li></ul> |
 | **電腦信任邊界** | <ul><li>[確保已數位簽署所部署應用程式的二進位檔](#binaries-signed)</li></ul> |
 | **WCF** | <ul><li>[連接到 WCF 中的 MSMQ 佇列時啟用驗證](#msmq-queues)</li><li>[WCF - 請勿將訊息 clientCredentialType 設定為 none](#message-none)</li><li>[WCF-請勿將傳輸 clientCredentialType 設定為 none](#transport-none)</li></ul> |
 | **Web API** | <ul><li>[確保使用標準驗證技術來保護 Web Api](#authn-secure-api)</li></ul> |
-| **Azure AD** | <ul><li>[使用 Azure Active Directory 所支援的標準驗證案例](#authn-aad)</li><li>[以可調整的替代項覆寫預設 ADAL 權杖快取](#adal-scalable)</li><li>[確保使用 TokenReplayCache 來防止重新執行 ADAL 驗證權杖](#tokenreplaycache-adal)</li><li>[使用 ADAL 程式庫來管理從 OAuth2 用戶端至 AAD （或內部部署 AD）的權杖要求](#adal-oauth2)</li></ul> |
-| **IoT 現場閘道** | <ul><li>[驗證連線到現場閘道的裝置](#authn-devices-field)</li></ul> |
+| **Azure AD** | <ul><li>[使用 Azure Active Directory 所支援的標準驗證案例](#authn-aad)</li><li>[使用可調整的替代方式覆寫預設 ADAL 權杖快取](#adal-scalable)</li><li>[確保使用 TokenReplayCache 來防止重新執行 ADAL 驗證權杖](#tokenreplaycache-adal)</li><li>[使用 ADAL 程式庫來管理從 OAuth2 用戶端至 AAD (或內部部署 AD 的權杖要求) ](#adal-oauth2)</li></ul> |
+| **IoT 現場閘道** | <ul><li>[驗證連接到現場閘道的裝置](#authn-devices-field)</li></ul> |
 | **IoT 雲端閘道** | <ul><li>[確保會驗證連線到雲端閘道的裝置](#authn-devices-cloud)</li><li>[使用每一裝置的驗證認證](#authn-cred)</li></ul> |
 | **Azure 儲存體** | <ul><li>[確保只有必要的容器和 blob 會取得匿名讀取權限](#req-containers-anon)</li><li>[使用 SAS 或 SAP 對 Azure 儲存體中的物件授與有限的存取權](#limited-access-sas)</li></ul> |
 
@@ -105,7 +105,7 @@ ms.locfileid: "87543974"
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
-| 詳細資料 | <p>必須實作符合組織原則和最佳作法的密碼和帳戶原則。</p><p>若要防止暴力密碼破解及以字典為基礎的猜測︰必須實作強式密碼原則，以確保使用者建立複雜的密碼 (例如，長度最少 12 個字元、英數字元和特殊字元)。</p><p>帳戶鎖定原則可能會以下列方式實作︰</p><ul><li>**軟式鎖定︰** 這是保護使用者以對抗暴力密碼破解攻擊的理想選項。 例如，每當使用者輸入錯誤的密碼三次時，應用程式可能會鎖定該帳戶一分鐘，以減緩暴力密碼破解的處理速度，讓攻擊者更不容易獲利。 如果您要在此範例中執行硬鎖定的對策，您可以藉由永久鎖定帳戶來達成「DoS」。 或者，應用程式可產生 OTP (一次性密碼) 並以頻外方式 (透過電子郵件、簡訊等) 將它傳送給使用者。 另一種方法則是在達到嘗試失敗次數閾值之後，實作 CAPTCHA。</li><li>**硬鎖定：** 每當您偵測到攻擊應用程式的使用者，並藉由永久鎖定其帳戶來加以計數器，直到回應小組有時間執行其辯論時，就應該套用這種類型的鎖定。 在此程式之後，您可以決定讓使用者回到其帳戶，或對他們採取進一步的法律動作。 這種方法可防止攻擊者進一步入侵您的應用程式和基礎結構。</li></ul><p>若要防禦對於預設和可預測帳戶的攻擊，請確認所有金鑰和密碼均可取代，而且會在安裝階段後產生或取代。</p><p>如果應用程式必須自動產生密碼，請確保所產生的密碼是隨機的且具有高熵。</p>|
+| 詳細資料 | <p>必須實作符合組織原則和最佳作法的密碼和帳戶原則。</p><p>若要防止暴力密碼破解及以字典為基礎的猜測︰必須實作強式密碼原則，以確保使用者建立複雜的密碼 (例如，長度最少 12 個字元、英數字元和特殊字元)。</p><p>帳戶鎖定原則可能會以下列方式實作︰</p><ul><li>**軟式鎖定︰** 這是保護使用者以對抗暴力密碼破解攻擊的理想選項。 例如，每次使用者輸入錯誤的密碼三次時，應用程式就可以鎖定帳戶一分鐘，以降低暴力破解密碼的程式，讓攻擊者不能繼續進行。 如果您要在此範例中實行硬鎖定的對策，您可以藉由永久鎖定帳戶來達成「DoS」。 或者，應用程式可產生 OTP (一次性密碼) 並以頻外方式 (透過電子郵件、簡訊等) 將它傳送給使用者。 另一種方法則是在達到嘗試失敗次數閾值之後，實作 CAPTCHA。</li><li>**硬鎖定：** 當您偵測到攻擊應用程式的使用者時，應套用這類型的鎖定，並透過永久鎖定其帳戶的方式來加以處理，直到回應小組有時間進行他的辯論。 完成此程式之後，您可以決定讓使用者返回其帳戶，或對其採取進一步的法律動作。 這種方法可防止攻擊者進一步入侵您的應用程式和基礎結構。</li></ul><p>若要防禦對於預設和可預測帳戶的攻擊，請確認所有金鑰和密碼均可取代，而且會在安裝階段後產生或取代。</p><p>如果應用程式必須自動產生密碼，請確保所產生的密碼是隨機的且具有高熵。</p>|
 
 ## <a name="implement-controls-to-prevent-username-enumeration"></a><a id="controls-username-enum"></a>實作控制項以避免列舉使用者名稱
 
@@ -288,7 +288,7 @@ ms.locfileid: "87543974"
 將 MSMQ 設定為隨時需要 Windows 網域或憑證驗證才能處理傳入或傳出訊息。
 
 ### <a name="example"></a>範例
-以下 WCF 組態檔的 `<netMsmqBinding/>` 元素會指示 WCF 在連線到 MSMQ 佇列時啟用憑證驗證。 用戶端會使用 X.509 憑證進行驗證。 用戶端憑證必須存在於伺服器的憑證存放區。
+以下 WCF 組態檔的 `<netMsmqBinding/>` 元素會指示 WCF 在連線到 MSMQ 佇列時啟用憑證驗證。 用戶端會透過 X.509 憑證來驗證。 用戶端憑證必須位於伺服器的憑證存放區中。
 ```
 <bindings>
     <netMsmqBinding>
@@ -436,7 +436,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
-| **步驟** | <p>Azure AD 驗證程式庫 (ADAL) 可讓用戶端應用程式開發人員輕鬆地向雲端或內部部署 Active Directory (AD) 驗證使用者，然後取得存取權杖來保護 API 呼叫。</p><p>ADAL 有許多功能可使開發人員的驗證更容易，例如非同步支援、儲存存取權杖和更新權杖的可設定權杖快取、當存取權杖到期並且更新權杖可供使用時自動更新權杖等等。</p><p>藉由處理大部分的複雜度，ADAL 可以幫助開發人員專注於他們的應用程式中的商務邏輯，並輕鬆地保護資源而不需成為安全性方面的專家。 個別的程式庫適用于 .NET、JavaScript （用戶端和 Node.js）、Python、iOS、Android 和 JAVA。</p>|
+| **步驟** | <p>Azure AD 驗證程式庫 (ADAL) 可讓用戶端應用程式開發人員輕鬆地向雲端或內部部署 Active Directory (AD) 驗證使用者，然後取得存取權杖來保護 API 呼叫。</p><p>ADAL 有許多功能可使開發人員的驗證更容易，例如非同步支援、儲存存取權杖和更新權杖的可設定權杖快取、當存取權杖到期並且更新權杖可供使用時自動更新權杖等等。</p><p>藉由處理大部分的複雜度，ADAL 可以幫助開發人員專注於他們的應用程式中的商務邏輯，並輕鬆地保護資源而不需成為安全性方面的專家。 不同的程式庫適用于 .NET、JavaScript (用戶端和 Node.js) 、Python、iOS、Android 和 JAVA。</p>|
 
 ## <a name="authenticate-devices-connecting-to-the-field-gateway"></a><a id="authn-devices-field"></a>驗證連線到現場閘道的裝置
 
@@ -457,7 +457,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 | **SDL 階段**               | Build |
 | **適用的技術** | 泛型、C#、Node.JS  |
 | **屬性**              | N/A、閘道選擇 - Azure IoT 中樞 |
-| **參考**              | N/A、[具有 .net 的 Azure IoT 中樞](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)、[與 Iot 中樞和 Node JS 消費者入門](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)，[使用 SAS 和憑證來保護 IoT](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)， [Git 存放庫](https://github.com/Azure/azure-iot-sdks/) |
+| **參考**              | N/A、 [使用 .net 的 Azure IoT 中樞](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)、 [與 Iot 中樞和 Node JS 消費者入門](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)、 [使用 SAS 和憑證來保護 IoT](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)、 [Git 存放庫](https://github.com/Azure/azure-iot-sdks/) |
 | **步驟** | <ul><li>**泛型︰** 使用傳輸層安全性 (TLS) 或 IPSec 來驗證裝置。 如果裝置無法處理完整的非對稱密碼編譯，則基礎結構應該支援在這些裝置上使用預先共用金鑰 (PSK)。 利用 Azure AD、Oauth。</li><li>**C#：** 建立 DeviceClient 執行個體時，Create 方法預設會建立一個使用 AMQP 通訊協定來與 IoT 中樞通訊的 DeviceClient 執行個體。 若要使用 HTTPS 通訊協定，請使用可讓您指定通訊協定的 Create 方法的覆寫。 若您使用 HTTPS 通訊協定，您也應該將 `Microsoft.AspNet.WebApi.Client` Nuget 套件新增至您的專案，以包含 `System.Net.Http.Formatting` 命名空間。</li></ul>|
 
 ### <a name="example"></a>範例

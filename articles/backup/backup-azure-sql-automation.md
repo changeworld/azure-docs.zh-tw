@@ -4,12 +4,12 @@ description: 使用 Azure 備份和 PowerShell 來備份和還原 Azure Vm 中�
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 1fe3af3b2a12cf6fdfc0e71d36d36046858c50af
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: b355aaa465132e86c636c68552f3d650b51b08f1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892417"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004981"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>使用 PowerShell 備份及還原 Azure Vm 中的 SQL 資料庫
 
@@ -321,7 +321,7 @@ ItemName                       StartTime                      EndTime
 SQLDataBase;MSSQLSERVER;azu... 3/18/2019 8:09:35 PM           3/19/2019 12:08:32 PM
 ```
 
-上述輸出表示您可以還原至顯示的開始時間和結束時間之間的任何時間點。 時間是以 UTC 為限。 在 PowerShell 中的任何時間點上，以上述的範圍來建立任何時間點。
+上述輸出表示您可以還原至顯示的開始時間和結束時間之間的任何時間點。 時間是以 UTC 為限。 在 PowerShell 中的任何時間點，于上方顯示的範圍內建立任何時間點。
 
 > [!NOTE]
 > 選取要還原的記錄檔時間點時，您不需要指定起始點，也就是還原資料庫的完整備份。 Azure 備份服務將負責處理整個復原計畫，也就是要選擇的完整備份、要套用的記錄備份等等。
@@ -582,7 +582,7 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 請務必注意，Azure 備份只會在 SQL 備份中追蹤使用者觸發的作業。 排程備份 (包括記錄備份) 不會顯示在入口網站或 PowerShell 中。 但是，如果有任何排程工作失敗，則會產生 [備份警示](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) ，並顯示在入口網站中。 [使用 Azure 監視器](backup-azure-monitoring-use-azuremonitor.md) 來追蹤所有排程工作和其他相關資訊。
 
-使用者可以使用非同步作業（例如備份） [輸出](#on-demand-backup) 中傳回的 JobID 來追蹤隨選/使用者觸發的作業。 使用 [AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) PowerShell Cmdlet 來追蹤工作及其詳細資料。
+使用者可以追蹤隨選/使用者觸發的作業，以及在非同步作業 [輸出](#on-demand-backup) （例如備份）中傳回的 JobID。 使用 [AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) PowerShell Cmdlet 來追蹤工作及其詳細資料。
 
 ```powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID

@@ -1,16 +1,17 @@
 ---
-title: Service Fabric 叢集 Resource Manager：移動成本
-description: 瞭解 Service Fabric 服務的移動成本，以及如何指定它以符合任何架構需求，包括動態設定。
+title: Service Fabric 叢集資源管理員：移動成本
+description: 瞭解 Service Fabric 服務的移動成本，以及如何將其指定為符合任何架構需求（包括動態設定）。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0fdcfb02851d56ed996ae4bf32671ab545782733
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75563338"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005338"
 ---
 # <a name="service-movement-cost"></a>服務移動成本
 「Service Fabric 叢集資源管理員」在嘗試判斷要對叢集進行哪些變更時會考量一個因素，就是這些變更的成本。 「成本」的概念是針對叢集可以改善多少來做取捨。 成本在移動服務進行平衡、重組和其他需求時納入考量因素。 目標是以最沒有干擾、最便宜的方式符合需求。
@@ -69,10 +70,10 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ## <a name="impact-of-move-cost"></a>移動成本的影響
 MoveCost 有五個層級：零、低、中、高和 VeryHigh。 適用的規則如下：
 
-* 除了零和 VeryHigh 以外，MoveCosts 會彼此相對。 
+* MoveCosts 是彼此相對的，但零和 VeryHigh 除外。 
 * 零移動成本表示移動是免費的，因此不應計入解決方案的分數。
-* 將您的移動成本設定為 [高] 或 [VeryHigh]，並*不*保證複本*永遠*不會移動。
-* 只有當叢集中的條件約束違規無法以任何其他方式修正時，才會移動具有 VeryHigh 移動成本的複本（即使需要移動許多其他複本來修正違規）
+* 將您的移動成本設定為 High 或 VeryHigh，並 *不* 保證 *永遠* 不會移動複本。
+* 只有當叢集中的條件約束違規無法以任何其他 (方式修正時，才會移動具有 VeryHigh 移動成本的複本，即使需要移動許多其他複本來修正違規) 
 
 
 
@@ -88,7 +89,7 @@ MoveCost 可協助您在達成對等的平衡時，尋找整體導致最少中�
 - 中斷執行中作業的成本。 某些資料存放區層級的作業，或是執行以回應用戶端呼叫的作業，它們的成本都很高。 在某個特定點之後，除非必要否則您不會想要停止它們。 因此，在作業持續期間，您可以提高此服務物件的移動成本以降低其移動的可能性。 當作業完成之後，您可以將成本設定回正常。
 
 > [!IMPORTANT]
-> 應謹慎考慮使用 VeryHigh 移動成本，因為它會大幅限制叢集 Resource Manager 在叢集中尋找全域最佳放置解決方案的能力。 只有當叢集中的條件約束違規無法以任何其他方式修正時，才會移動具有 VeryHigh 移動成本的複本（即使需要移動許多其他複本來修正違規）
+> 使用 VeryHigh 移動成本應該謹慎考慮，因為它會大幅限制叢集資源管理員在叢集中尋找全球最佳放置解決方案的能力。 只有當叢集中的條件約束違規無法以任何其他 (方式修正時，才會移動具有 VeryHigh 移動成本的複本，即使需要移動許多其他複本來修正違規) 
 
 ## <a name="enabling-move-cost-in-your-cluster"></a>在您的叢集中啟用移動成本
 為了將更細微的 MoveCosts 納入考量，必須在叢集中啟用 MoveCost。 如果沒有此設定，則會使用計算移動的預設模式來計算 MoveCost，並且忽略 MoveCost 報告。

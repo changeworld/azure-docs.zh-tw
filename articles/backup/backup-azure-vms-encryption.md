@@ -3,12 +3,12 @@ title: 備份和還原已加密的 Azure Vm
 description: 說明如何使用 Azure 備份服務來備份和還原已加密的 Azure Vm。
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 74658f695387a776fe12cef97887075ae0bc161d
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 6ce0068203c91d9d2031ce2f8735cccf94172dd8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611291"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014909"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>備份和還原已加密的 Azure 虛擬機器
 
@@ -129,7 +129,7 @@ Azure 備份需要唯讀存取權來備份金鑰和密碼，以及相關聯的 V
     - 該備份會在 [金鑰權限]**** 和 [祕密權限]**** 預先填入必要的權限。
     - 如果您的 VM 只使用 **BEK**加密，請移除 **金鑰許可權** 的選項，因為您只需要秘密的許可權。
 
-    ![Azure 備份選取項目](./media/backup-azure-vms-encryption/select-backup-template.png)
+    ![Azure 備份選取範圍](./media/backup-azure-vms-encryption/select-backup-template.png)
 
 1. 選取 [新增]。 **備份管理服務** 已新增至 **存取原則**。
 

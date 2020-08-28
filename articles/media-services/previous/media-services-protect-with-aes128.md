@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 143583cf11da7687ae99121a2893be1c54810add
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f9d86f979fb27052e7abec43bc94b95705f5ceb5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087342"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012937"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>使用 AES-128 動態加密和金鑰傳遞服務
 > [!div class="op_single_selector"]
@@ -33,7 +34,7 @@ ms.locfileid: "87087342"
 
 您可以利用 128 位元加密金鑰，使用媒體服務提供 HTTP Live Streaming (HLS) 和透過 AES 加密的 Smooth Streaming。 媒體服務也提供加密金鑰傳遞服務，將加密金鑰傳遞至授權的使用者。 如果您需要媒體服務來加密資產，就需要建立加密金鑰與資產的關聯，同時設定金鑰的授權原則。 播放器要求串流時，媒體服務便會透過 AES 加密，使用指定的金鑰動態加密您的內容。 為了將串流解密，播放程式將向金鑰傳遞服務要求金鑰。 為了決定使用者是否有權取得金鑰，服務會評估為金鑰指定的授權原則。
 
-媒體服務支援多種方式來驗證提出金鑰要求的使用者。 內容金鑰授權原則可能有一個或多個授權限制，可能是 Open 或權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援[簡單 web 權杖](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)（SWT）和[JSON web 權杖](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3)（JWT）格式的權杖。 如需詳細資訊，請參閱[設定內容金鑰的授權原則](media-services-protect-with-aes128.md#configure_key_auth_policy)。
+媒體服務支援多種方式來驗證提出金鑰要求的使用者。 內容金鑰授權原則可能有一個或多個授權限制，可能是 Open 或權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援 [簡單 web 權杖](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2) 中的權杖 (SWT) 和 [JSON WEB 權杖](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) (JWT) 格式。 如需詳細資訊，請參閱 [設定內容金鑰的授權原則](media-services-protect-with-aes128.md#configure_key_auth_policy)。
 
 若要利用動態加密，您需有一個資源，其中包含一組多位元速率 MP4 檔案或多位元速率 Smooth Streaming 來源檔案。 您也需要設定資產的傳遞原則 (本文稍後會加以描述)。 然後，根據串流 URL 中指定的格式，隨選資料流處理伺服器確保會以您選取的通訊協定傳遞串流。 如此一來，您只須以單一儲存格式儲存及支付檔案。 媒體服務會根據用戶單的要求建置及傳遞適當的回應。
 
@@ -47,17 +48,17 @@ ms.locfileid: "87087342"
 
 當您利用 AES 並使用媒體服務金鑰傳遞服務，以及使用動態加密來加密資產時，請執行下列一般步驟：
 
-1. [建立資產，並將檔案上傳到資產](media-services-protect-with-aes128.md#create_asset)。
+1. [建立資產，並將檔案上傳到資產](media-services-protect-with-aes128.md#create_asset)中。
 
-2. 將包含檔案的[資產編碼為自動調整位元速率的設定檔集](media-services-protect-with-aes128.md#encode_asset)。
+2. [將包含檔案的資產編碼為自動調整位元速率設定檔集](media-services-protect-with-aes128.md#encode_asset)。
 
 3. [建立內容金鑰，並將它與編碼的資產產生關聯](media-services-protect-with-aes128.md#create_contentkey)。 在媒體服務中，內容金鑰包含資產的加密金鑰。
 
 4. [設定內容金鑰的授權原則](media-services-protect-with-aes128.md#configure_key_auth_policy)。 您必須設定內容金鑰授權原則。 用戶端必須先符合原則，系統才會將內容金鑰傳遞給用戶端。
 
-5. [設定資產的傳遞原則](media-services-protect-with-aes128.md#configure_asset_delivery_policy)。 傳遞原則設定包含金鑰取得 URL 和初始化向量 (IV)。 （AES-128 需要相同的 IV 來加密和解密）。此設定也包括傳遞通訊協定（例如，MPEG 破折號、HLS、Smooth Streaming 或全部）和動態加密的類型（例如，信封或沒有動態加密）。
+5. [設定資產的傳遞原則](media-services-protect-with-aes128.md#configure_asset_delivery_policy)。 傳遞原則設定包含金鑰取得 URL 和初始化向量 (IV)。  (AES-128 需要相同的 IV 進行加密和解密。 ) 設定也包含傳遞通訊協定 (例如，MPEG 虛線、HLS、Smooth Streaming 或所有) ，以及動態加密的類型 (例如，信封或沒有動態加密) 。
 
-    您可以將不同的原則套用至相同資產上的每一個通訊協定。 例如，您可以將 PlayReady 加密套用到 Smooth/DASH，以及將 AES 信封加密套用到 HLS。 傳遞原則中未定義的任何通訊協定都會封鎖串流。 （例如，如果您加入僅指定 HLS 作為通訊協定的單一原則）。如果您完全沒有定義任何資產傳遞原則，就會發生例外狀況。 接著，允許所有通訊協定，不受阻礙。
+    您可以將不同的原則套用至相同資產上的每一個通訊協定。 例如，您可以將 PlayReady 加密套用到 Smooth/DASH，以及將 AES 信封加密套用到 HLS。 傳遞原則中未定義的任何通訊協定都會封鎖串流。  (一個範例是，如果您新增只指定 HLS 做為通訊協定的單一原則。 ) 例外狀況是，如果您沒有定義任何資產傳遞原則。 接著，允許所有通訊協定，不受阻礙。
 
 6. [建立隨選定位器](media-services-protect-with-aes128.md#create_locator)以取得串流 URL。
 
@@ -89,7 +90,7 @@ ms.locfileid: "87087342"
 
 如需編碼方式的指示，請參閱[使用媒體編碼器標準將資產編碼](media-services-dotnet-encode-with-media-encoder-standard.md)。
 
-## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>建立內容金鑰並將它與編碼的資產產生關聯
+## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>建立內容金鑰，並將它與編碼的資產產生關聯
 在媒體服務中，內容金鑰包含您要加密資產時使用的金鑰。
 
 如需詳細資訊，請參閱[建立內容金鑰](media-services-dotnet-create-contentkey.md)。
@@ -159,7 +160,7 @@ ms.locfileid: "87087342"
 
 在 HLS 的案例中，根資訊清單會分成區段檔案。 
 
-例如，根資訊清單是： HTTP： \/ /test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest （format = m3u8-m3u8-aapl-v3）。 它包含區段檔案名稱的清單。
+例如，根資訊清單是： HTTP： \/ /test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest (format = m3u8-m3u8-aapl-v3) 。 它包含區段檔案名稱的清單。
 
 ```text
 . . . 
@@ -170,7 +171,7 @@ QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
 …
 ```
 
-如果您在文字編輯器中開啟其中一個區段檔案（例如，HTTP： \/ /test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels （514369）/Manifest （video，format = m3u8-m3u8-aapl-v3），它會包含 #EXT-X 鍵，這表示檔案已加密。
+如果您在文字編輯器中開啟其中一個區段檔案 (例如，HTTP： \/ /test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels (514369) /manifest (video，format = m3u8-m3u8-aapl-v3) ，它包含 #EXT X 索引鍵，表示檔案已加密。
 
 ```text
 #EXTM3U

@@ -13,18 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: e75e3f3eecf6c34050aeaa7fe387fffb0de58a74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4c1a9f98373ac872bb315c1ae621b3895760dc18
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513196"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013379"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>從 Windows Azure 媒體編碼器遷移至媒體編碼器標準
 
-本文討論從舊版 Windows Azure 媒體編碼器（WAME）媒體處理器（已淘汰）遷移至媒體編碼器標準媒體處理器的步驟。 如需淘汰日期，請參閱此[舊版元件](legacy-components.md)主題。
+本文討論從舊版 Windows Azure 媒體編碼器 (WAME) 媒體處理器 (（即將淘汰) 至媒體編碼器標準媒體處理器）的步驟。 如需淘汰日期，請參閱此[舊版元件](legacy-components.md)主題。
 
-以 WAME 編碼檔案時，客戶通常會使用名為的預設字串，例如 `H264 Adaptive Bitrate MP4 Set 1080p` 。 為了進行遷移，您的程式碼必須更新為使用**媒體編碼器標準**媒體處理器，而不是 WAME，以及其中一個對等的[系統](media-services-mes-presets-overview.md)預設值，例如 `H264 Multiple Bitrate 1080p` 。 
+使用 WAME 來編碼檔案時，客戶通常會使用名為的預設字串（例如） `H264 Adaptive Bitrate MP4 Set 1080p` 。 若要遷移，您的程式碼必須更新為使用 **媒體編碼器標準** 媒體處理器，而不是 WAME，以及其中一個對等的 [系統](media-services-mes-presets-overview.md) 預設值（例如） `H264 Multiple Bitrate 1080p` 。 
 
 ## <a name="migrating-to-media-encoder-standard"></a>遷移至媒體編碼器標準
 
@@ -64,15 +65,15 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>進階案例 
 
-如果您已使用其架構為 WAME 建立自己的編碼預設值，則會有媒體編碼器標準的對[等架構](media-services-mes-schema.md)。
+如果您已使用其架構為 WAME 建立自己的編碼預設值，則會有 [對等的媒體編碼器標準架構](media-services-mes-schema.md)。
 
 ## <a name="known-differences"></a>已知的差異 
 
-媒體編碼器標準更健全、可靠、效能更佳，並產生比舊版 WAME 編碼器更佳的品質輸出。 另外： 
+媒體編碼器標準更穩定、可靠、具有更佳的效能，並產生比舊版 WAME 編碼器更佳的品質輸出。 另外： 
 
-* 媒體編碼器標準會產生與 WAME 不同的命名慣例的輸出檔。
-* 媒體編碼器標準會產生成品，例如包含[輸入檔案中繼資料](media-services-input-metadata-schema.md)和[輸出檔案中繼資料](media-services-output-metadata-schema.md)的檔案。
-* 如[定價頁面](https://azure.microsoft.com/pricing/details/media-services/#encoding)（特別是在常見問題一節）中所述，當您使用媒體編碼器標準來編碼影片時，會根據輸出產生的檔案持續時間來計費。 使用 WAME 時，您會根據輸入影片檔案和輸出影片檔案的大小來計費。
+* 媒體編碼器標準會產生與 WAME 不同的命名慣例的輸出檔案。
+* 媒體編碼器標準會產生成品，例如包含 [輸入檔中繼資料](media-services-input-metadata-schema.md) 的檔案，以及 [ (s) 中繼資料的輸出](media-services-output-metadata-schema.md)檔案。
+* 如 [定價] [頁面](https://azure.microsoft.com/pricing/details/media-services/#encoding) 中所述 (特別是在 [常見問題] 區段中) ，當您使用媒體編碼器標準編碼影片時，會依據產生的檔案持續時間（以輸出形式）來計費。 使用 WAME 時，您會根據輸入影片檔案的大小來計費 (s) 和輸出影片檔案 (s) 。
 
 ## <a name="need-help"></a>需要協助嗎？
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ff89b38de1ff62ddea328a49b998692e8039341f
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 85056710c8072c55e2661021795d9aedb407b629
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661549"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012999"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 數位 Twins 模型
 
@@ -165,6 +165,30 @@ Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 `RetrieveModelWithDependencies`呼叫不僅會傳回要求的模型，也會傳回要求的模型所相依的所有模型。
 
 模型不一定會以其上傳的檔表單來傳回。 Azure 數位 Twins 只會保證傳回表單在語義上是相等的。 
+
+### <a name="update-models"></a>更新模型
+
+模型上傳至您的實例之後，整個模型介面都是不可變的。 這表示沒有傳統的「編輯」模型。
+
+相反地，如果您想要對 Azure 數位 Twins 中的模型進行變更，例如變更 `DisplayName` 或 `Description` ，執行這項作業的方式是上傳相同模型的 **較新版本** 。 這將會覆寫原始模型。
+
+若要這樣做，請從原始模型的 DTDL 開始。 更新您想要變更的任何欄位。
+
+然後，藉由更新模型的欄位，將此標示為較新版本的模型 `id` 。 模型識別碼的最後一個區段（在之後） `;` 表示模型編號。 若要指出這現在是此模型的更新版本，請將值結尾的數位遞增 `id` 到大於目前版本號碼的任何數位。
+
+例如，如果您先前的模型識別碼看起來像這樣：
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;1",
+```
+
+此模型的第2版看起來可能像這樣：
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;2",
+```
+
+然後，將新版本的模型上傳至您的實例。 它會取代舊的版本，而您使用此模型建立的新 twins 會使用更新的版本。
 
 ### <a name="remove-models"></a>移除模型
 

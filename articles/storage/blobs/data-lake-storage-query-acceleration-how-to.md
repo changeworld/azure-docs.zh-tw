@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Data Lake Storage 查詢加速來篩選資料（預覽） |Microsoft Docs
-description: 使用查詢加速（預覽），從您的儲存體帳戶中取出資料的子集。
+title: 使用 Azure Data Lake Storage 查詢加速 (預覽) 來篩選資料 |Microsoft Docs
+description: 使用查詢加速 (預覽) 從儲存體帳戶取出資料的子集。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,29 +8,30 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.openlocfilehash: cc9235f07c0829abfb8be42e83d05d8428bc1806
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6de6661e5c970c7c3cbfc944b8539060b8844a36
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465859"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005219"
 ---
-# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>使用 Azure Data Lake Storage 查詢加速來篩選資料（預覽）
+# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>使用 Azure Data Lake Storage 查詢加速 (預覽版來篩選資料) 
 
-本文說明如何使用查詢加速（預覽），從您的儲存體帳戶中取出資料的子集。 
+本文說明如何使用查詢加速 (預覽版) 從儲存體帳戶取出資料的子集。 
 
-查詢加速（預覽）是 Azure Data Lake Storage 的新功能，可讓應用程式和分析架構藉由僅抓取執行給定作業所需的資料，大幅優化資料處理。 若要深入瞭解，請參閱[Azure Data Lake Storage 查詢加速（預覽）](data-lake-storage-query-acceleration.md)。
+查詢加速 (預覽) 是 Azure Data Lake Storage 的新功能，可讓應用程式和分析架構藉由只抓取執行指定作業所需的資料，大幅優化資料處理。 若要深入瞭解，請參閱 [Azure Data Lake Storage Query 加速 (preview) ](data-lake-storage-query-acceleration.md)。
 
 > [!NOTE]
-> 查詢加速功能處於公開預覽狀態，並可在加拿大中部和法國中部區域中取得。 若要查看限制，請參閱[已知問題](data-lake-storage-known-issues.md)一文。 若要註冊預覽，請參閱[此表單](https://aka.ms/adls/qa-preview-signup)。  
+> 查詢加速功能處於公開預覽狀態，可在加拿大中部和法國中部區域中使用。 若要查看限制，請參閱 [已知問題](data-lake-storage-known-issues.md) 文章。 若要註冊預覽，請參閱 [這份表單](https://aka.ms/adls/qa-preview-signup)。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
 - 若要存取 Azure 儲存體，您需要有 Azure 訂用帳戶。 如果您還沒有訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 
-- **一般用途 v2**儲存體帳戶。 請參閱[建立儲存體帳戶](../common/storage-quickstart-create-account.md)。
+- **一般用途 v2**儲存體帳戶。 請參閱 [建立儲存體帳戶](../common/storage-quickstart-create-account.md)。
 
 - [.NET SDK](https://dotnet.microsoft.com/download)。 
 
@@ -38,14 +39,14 @@ ms.locfileid: "84465859"
 
 - 若要存取 Azure 儲存體，您需要有 Azure 訂用帳戶。 如果您還沒有訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 
-- **一般用途 v2**儲存體帳戶。 請參閱[建立儲存體帳戶](../common/storage-quickstart-create-account.md)。
+- **一般用途 v2**儲存體帳戶。 請參閱 [建立儲存體帳戶](../common/storage-quickstart-create-account.md)。
 
-- [JAVA 開發工具組（JDK）](/java/azure/jdk/?view=azure-java-stable)第8版或更新版本。
+- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) 第 8 版或更新版本。
 
 - [Apache Maven](https://maven.apache.org/download.cgi)。 
 
   > [!NOTE] 
-  > 本文假設您已使用 Apache Maven 建立 JAVA 專案。 如需如何使用 Apache Maven 建立專案的範例，請參閱[設定](storage-quickstart-blobs-java.md#setting-up)。
+  > 本文假設您已使用 Apache Maven 建立 JAVA 專案。 如需如何使用 Apache Maven 建立專案的範例，請參閱 [設定](storage-quickstart-blobs-java.md#setting-up)。
   
 ---
 
@@ -57,7 +58,7 @@ ms.locfileid: "84465859"
 
 2. 將此檔案的內容解壓縮至您的專案目錄。
 
-3. 在文字編輯器中開啟您的專案檔（*.csproj*），並在元素內新增這些套件參考 \<Project\> 。
+3. 在文字編輯器中開啟專案檔 (*.csproj*) ，然後在專案內加入這些封裝參考 \<Project\> 。
 
    ```xml
    <ItemGroup>
@@ -81,14 +82,14 @@ ms.locfileid: "84465859"
 
 ### <a name="java"></a>[Java](#tab/java)
 
-1. 在專案的根目錄中建立目錄。 根目錄是包含**pom.xml**檔案的目錄。
+1. 在專案的根目錄中建立目錄。 根目錄是包含 **pom.xml** 檔案的目錄。
 
    > [!NOTE]
-   > 本文中的範例假設目錄的名稱為**lib**。
+   > 本文中的範例假設目錄的名稱是 **lib**。
 
 2. 下載查詢加速套件。 您可以使用下列連結，取得包含這些封裝的壓縮 .zip 檔案： [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java) 。 
 
-3. 將這個 .zip 檔案中的檔案解壓縮至您所建立的目錄。 在我們的範例中，該目錄名為**lib**。 
+3. 將這個 .zip 檔案中的檔案解壓縮到您建立的目錄。 在我們的範例中，該目錄名為 **lib**。 
 
 4. 在文字編輯器中開啟 *pom.xml* 檔案。 將下列相依性元素新增至相依性群組。 
 
@@ -140,7 +141,7 @@ ms.locfileid: "84465859"
 
 ---
 
-## <a name="add-statements"></a>新增語句
+## <a name="add-statements"></a>Add 語句
 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
@@ -155,14 +156,14 @@ using Azure.Storage.QuickQuery;
 using Azure.Storage.QuickQuery.Models;
 ```
 
-查詢加速會捕獲 CSV 和 Json 格式的資料。 因此，請務必為您選擇使用的任何 CSV 或 Json 剖析程式庫新增 using 語句。 本文中所顯示的範例會使用可在 NuGet 上取得的[CsvHelper](https://www.nuget.org/packages/CsvHelper/)程式庫來剖析 CSV 檔案。 因此，我們會將這些 `using` 語句新增至程式碼檔案的頂端。
+查詢加速會抓取 CSV 和 Json 格式的資料。 因此，請務必為您選擇要使用的任何 CSV 或 Json 剖析程式庫加入 using 語句。 本文中顯示的範例會使用 NuGet 上提供的 [CsvHelper](https://www.nuget.org/packages/CsvHelper/) 程式庫來剖析 CSV 檔案。 因此，我們會將這些 `using` 語句新增至程式碼檔案的頂端。
 
 ```csharp
 using CsvHelper;
 using CsvHelper.Configuration;
 ```
 
-若要編譯本文中顯示的範例，您也必須新增這些 `using` 語句。
+若要編譯本文中所呈現的範例，您也必須加入這些 `using` 語句。
 
 ```csharp
 using System.Threading.Tasks;
@@ -188,17 +189,17 @@ import org.apache.commons.csv.*;
 
 ---
 
-## <a name="retrieve-data-by-using-a-filter"></a>使用篩選器來取出資料
+## <a name="retrieve-data-by-using-a-filter"></a>使用篩選器取出資料
 
-您可以使用 SQL 來指定查詢加速要求中的資料列篩選述詞和資料行投影。 下列程式碼會查詢儲存體中的 CSV 檔案，並傳回第三個數據行符合值的所有資料列 `Hemingway, Ernest` 。 
+您可以使用 SQL 來指定查詢加速要求中的資料列篩選述詞和資料行預測。 下列程式碼會查詢儲存體中的 CSV 檔案，並傳回第三個數據行符合值的所有資料列 `Hemingway, Ernest` 。 
 
-- 在 SQL 查詢中，關鍵字 `BlobStorage` 是用來表示正在查詢的檔案。
+- 在 SQL 查詢中，關鍵字 `BlobStorage` 是用來表示要查詢的檔案。
 
-- 資料行參考會指定為， `_N` 其中第一個資料行是 `_1` 。 如果來源檔案包含標頭資料列，則您可以依據標題列中所指定的名稱來參考資料行。 
+- 資料行參考是指定為 `_N` 第一個資料行的位置 `_1` 。 如果來源檔案包含標頭資料列，則您可以使用標頭資料列中所指定的名稱來參考資料行。 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-非同步方法會 `BlobQuickQueryClient.QueryAsync` 將查詢傳送至查詢加速 API，然後再將結果以[資料流程](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8)物件的形式串流回應用程式。
+Async 方法會 `BlobQuickQueryClient.QueryAsync` 將查詢傳送至查詢加速 API，然後將結果以 [資料流程](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8) 物件的形式串流回應用程式。
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
@@ -260,7 +261,7 @@ class ProgressHandler : IProgress<long>
 
 ### <a name="java"></a>[Java](#tab/java)
 
-方法會將 `BlobQuickQueryClient.openInputStream()` 查詢傳送至查詢加速 API，然後再將結果以物件的形式串流回應用程式，以便 `InputStream` 如同任何其他 InputStream 物件一樣讀取。
+方法會 `BlobQuickQueryClient.openInputStream()` 將查詢傳送至查詢加速 API，然後將結果串流回至應用程式，做為 `InputStream` 可讀取的物件，就像任何其他 InputStream 物件一樣。
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
@@ -314,9 +315,9 @@ static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
 
 ## <a name="retrieve-specific-columns"></a>取出特定資料行
 
-您可以將結果的範圍設為數據行的子集。 如此一來，您只會取出執行指定計算所需的資料行。 這可改善應用程式效能並降低成本，因為網路上傳輸的資料較少。 
+您可以將結果的範圍設為數據行的子集。 如此一來，您就只會取出執行指定計算所需的資料行。 這可改善應用程式效能並降低成本，因為透過網路傳送的資料較少。 
 
-此程式碼只會 `PublicationYear` 針對資料集中的所有書籍，抓取資料行。 它也會使用來源檔案中標頭資料列的資訊，來參考查詢中的資料行。
+此程式碼只會抓取 `PublicationYear` 資料集中所有書籍的資料行。 它也會使用來源檔案的標頭資料列中的資訊，來參考查詢中的資料行。
 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
@@ -341,7 +342,7 @@ static void QueryPublishDates(BlobClient blobClient)
 
 ---
 
-下列程式碼會將資料列篩選和資料行投影結合成相同的查詢。 
+下列程式碼會將資料列篩選和資料行投影合併成相同的查詢。 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -368,5 +369,5 @@ static void QueryMysteryBooks(BlobClient blobClient)
 ## <a name="next-steps"></a>後續步驟
 
 - [查詢加速註冊表單](https://aka.ms/adls/qa-preview-signup)    
-- [Azure Data Lake Storage 查詢加速（預覽）](data-lake-storage-query-acceleration.md)
-- [查詢加速 SQL 語言參考（預覽）](query-acceleration-sql-reference.md)
+- [Azure Data Lake Storage 查詢加速 (預覽) ](data-lake-storage-query-acceleration.md)
+- [查詢加速 SQL 語言參考 (預覽) ](query-acceleration-sql-reference.md)

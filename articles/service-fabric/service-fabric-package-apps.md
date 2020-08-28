@@ -3,12 +3,13 @@ title: 封裝 Azure Service Fabric 應用程式
 description: 瞭解如何封裝 Azure Service Fabric 應用程式，以及如何準備部署至叢集。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: c00e46915c7bf147d224911ef4988d9fedd691c7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 11a3fdd5dbaef53af321342952f786ed8119689c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260966"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012393"
 ---
 # <a name="package-an-application"></a>封裝應用程式
 
@@ -43,12 +44,12 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ## <a name="use-setupentrypoint"></a>使用 SetupEntryPoint
 
-使用 **SetupEntryPoint** 的一般案例，是當您必須在服務啟動之前執行可執行檔，或必須使用提高的權限來執行作業時。 例如︰
+使用 **SetupEntryPoint** 的一般案例，是當您必須在服務啟動之前執行可執行檔，或必須使用提高的權限來執行作業時。 例如：
 
 * 設定及初始化服務可執行檔需要的環境變數。 這不僅限於透過 Service Fabric 程式設計模型撰寫的可執行檔。 例如，npm.exe 部署 node.js 應用程式，需要設定某些環境變數。
 * 透過安裝安全性憑證設定存取控制。
 
-如需有關如何設定**SetupEntryPoint**的詳細資訊，請參閱[設定服務安裝程式進入點的原則](service-fabric-application-runas-security.md)
+如需有關如何設定 **SetupEntryPoint**的詳細資訊，請參閱 [設定服務安裝程式進入點的原則](service-fabric-application-runas-security.md)
 
 <a id="Package-App"></a>
 
@@ -56,9 +57,9 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ### <a name="build-a-package-by-using-visual-studio"></a>使用 Visual Studio 建置封裝
 
-如果您使用 Visual Studio 來建立應用程式，您可以使用 [*封裝*] 命令，自動建立符合上述版面配置的套件。
+如果您使用 Visual Studio 建立應用程式，您可以使用 *package* 命令自動建立符合上述配置的套件。
 
-若要建立封裝，請以滑鼠右鍵按一下*方案總管*中的應用程式專案，然後選擇 [**封裝**] 命令：
+若要建立封裝，請在 *方案總管* 中的應用程式專案上按一下滑鼠右鍵，然後選擇 [ **封裝** ] 命令：
 
 ![使用 Visual Studio 封裝應用程式][vs-package-command]
 
@@ -226,7 +227,7 @@ ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
 
 ## <a name="next-steps"></a>後續步驟
 
-[部署和移除應用程式][10]說明如何使用 PowerShell 來管理應用程式實例
+[部署和移除應用程式][10] 描述如何使用 PowerShell 來管理應用程式實例
 
 [管理多個環境的應用程式參數][11]說明如何為不同的應用程式執行個體設定參數和環境變數。
 

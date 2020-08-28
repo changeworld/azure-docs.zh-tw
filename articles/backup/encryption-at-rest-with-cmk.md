@@ -3,12 +3,12 @@ title: 使用客戶管理的金鑰來加密備份資料
 description: 瞭解 Azure 備份如何讓您使用客戶管理的金鑰 (CMK) 來加密備份資料。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 55b994d287e4e2d3971b43359936815822bc18a4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 989b06b62f2db8df5504107eee8ed26710d13a57
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892638"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022406"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客戶管理的金鑰來加密備份資料
 
@@ -160,7 +160,7 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
         ![從 key vault 選取金鑰](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. 按一下 [檔案] 。
+1. 按一下 [儲存]。
 
 1. **追蹤加密金鑰更新的進度：** 您可以使用復原服務保存庫中的 **活動記錄** 來追蹤金鑰指派的進度。 狀態應該會變更為 [ **成功**]。 您的保存庫現在會將具有指定索引鍵的所有資料加密為 KEK。
 
@@ -242,7 +242,7 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
 否，保存庫在過去必須沒有任何嘗試保護其任何專案。
 
-### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>我有一個使用 CMK 加密的保存庫。 我稍後是否可以使用平臺管理的金鑰來還原至加密，即使我的備份專案受保護于保存庫也是一樣？
+### <a name="i-have-a-vault-thats-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>我有一個使用 CMK 加密的保存庫。 我稍後是否可以使用平臺管理的金鑰來還原至加密，即使我的備份專案受保護于保存庫也是一樣？
 
 否，一旦啟用 CMK 加密，就無法將它還原為使用平臺管理的金鑰。 您可以根據您的需求變更所使用的金鑰。
 

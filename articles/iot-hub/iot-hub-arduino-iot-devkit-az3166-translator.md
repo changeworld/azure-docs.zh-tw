@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
-ms.openlocfilehash: 8e840a1ae7161ea3e7b370889a1f0fb648ca120e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 412a3e78006d263858ff0e28af52cf11bf44c7bb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73953361"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004335"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>使用 IoT DevKit AZ3166 搭配 Azure Functions 和認知服務製作語言翻譯工具
 
@@ -29,7 +30,7 @@ ms.locfileid: "73953361"
 
 ## <a name="create-azure-cognitive-service"></a>建立 Azure 認知服務
 
-1. 在 Azure 入口網站中，按一下 [建立資源]**** 並搜尋 [語音]****。 填寫表單以建立語音服務。
+1. 在 [Azure 入口網站中，按一下 [ **建立資源** ] 並搜尋 **語音**。 填寫表單以建立語音服務。
   ![語音服務](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
 
 1. 移至您剛剛建立的語音服務，按一下 [金鑰]**** 區段以複製並記下 **Key1**，供 DevKit 加以存取。
@@ -41,19 +42,19 @@ ms.locfileid: "73953361"
 
 1. 按一下 `F1` 以開啟命令選擇區，輸入並選取 [Azure IoT Device Workbench：**開啟範例...]** 。然後選取 [IoT DevKit] 作為面板。
 
-1. 在 [IoT Workbench 範例] 頁面上找出 [DevKit 翻譯工具]****，然後按一下 [開啟範例]****。 然後選取預設路徑來下載範例程式碼。
+1. 在 [IoT 工作臺範例] 頁面中，尋找 **DevKit Translator** ，然後按一下 [ **開啟範例**]。 然後選取預設路徑來下載範例程式碼。
   ![開啟範例](media/iot-hub-arduino-iot-devkit-az3166-translator/open-sample.png)
 
 ## <a name="use-speech-service-with-azure-functions"></a>搭配使用語音服務與 Azure Functions
 
-1. 在 VS Code 中，按一下 `F1` ，輸入並選取 [ **Azure IoT 裝置工作臺：布建 azure 服務 ...**]。 ![布建 Azure 服務](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
+1. 在 VS Code 中，按一下 `F1` ，然後輸入並選取 [ **Azure IoT 裝置工作臺：布建 azure 服務 ...** ![ ]。布建 Azure 服務](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
 
 1. 依照下列步驟完成 Azure IoT 中樞和 Azure Functions 的佈建。
    ![佈建步驟](media/iot-hub-arduino-iot-devkit-az3166-translator/provision-steps.png)
 
-   記下您所建立的 Azure IoT 中樞裝置名稱。
+   記下所建立的 Azure IoT 中樞裝置名稱。
 
-1. 開啟 `Functions\DevKitTranslatorFunction.cs` 並使用您記下的裝置名稱和語音服務金鑰來更新下列幾行程式碼。
+1. `Functions\DevKitTranslatorFunction.cs`使用您記下的裝置名稱和語音服務金鑰，開啟並更新下列幾行程式碼。
    ```csharp
    // Subscription Key of Speech Service
    const string speechSubscriptionKey = "";
@@ -65,10 +66,10 @@ ms.locfileid: "73953361"
    const string deviceName = "";
    ```
 
-1. 按一下 `F1` ，輸入並選取 [ **Azure IoT 裝置工作臺：部署至 azure ...**]。如果 VS Code 要求確認重新部署，請按一下 **[是]**。
+1. 按一下 `F1` ，然後輸入並選取 [ **Azure IoT 裝置工作臺：部署至 Azure ...**]。如果 VS Code 要求重新部署的確認，請按一下 **[是]**。
    ![部署警告](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-warning.png)
 
-1. 確定部署成功。
+1. 確認部署成功。
    ![部署成功](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-success.png)
 
 1. 在 Azure 入口網站中移至 [函式應用程式]**** 區段，找出剛才建立的 Azure 函式應用程式。 按一下 `devkit_translator`，然後按一下 [</> 取得函式 URL]**** 以複製 URL。
@@ -90,7 +91,7 @@ ms.locfileid: "73953361"
 
    ![DevKit 組態模式](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
 
-1. 按一下 `F1` ，輸入並選取 [ **Azure IoT 裝置工作臺]： [設定裝置設定 ...] > Config 裝置連接字串**]。 選取 [選取 IoT 中樞裝置連接字串]****，以將其設定為 DevKit。
+1. 按一下 `F1` ，輸入並選取 [ **Azure IoT 裝置工作臺：設定裝置設定 ...] > Config 裝置連接字串**。 選取 [選取 IoT 中樞裝置連接字串]****，以將其設定為 DevKit。
    ![設定連接字串](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string.png)
 
 1. 作業順利完成後，您會看到通知。
@@ -101,19 +102,19 @@ ms.locfileid: "73953361"
 
 ## <a name="test-the-project"></a>測試專案
 
-在應用程式初始化之後，依照 DevKit 畫面上的指示操作。 預設來源語言是中文。
+在應用程式初始化之後，遵循 DevKit 畫面上的指示。 預設來源語言為中文。
 
-若要選取另一種語言進行翻譯：
+選取另一個語言以進行翻譯：
 
-1. 按下按鈕 A 進入設定模式。
+1. 按下按鈕 A 以進入設定模式。
 
-2. 按下按鈕 B 捲動所有支援的來源語言。
+2. 按下按鈕 B 以捲動所有支援的來源語言。
 
 3. 按下按鈕 A 確認您選擇的來源語言。
 
-4. 在說話時按住按鈕 B，然後放開按鈕 B 開始翻譯。
+4. 在說話時按住按鈕 B 不放，然後放開按鈕 B 來起始翻譯。
 
-5. 以英文表示的翻譯文字會顯示在畫面上。
+5. 翻譯後的英文文字會顯示在畫面上。
 
 ![捲動以選取語言](media/iot-hub-arduino-iot-devkit-az3166-translator/select-language.jpg)
 
@@ -121,9 +122,9 @@ ms.locfileid: "73953361"
 
 在翻譯結果畫面上，您可以：
 
-- 按下按鈕 A 和 B 以捲動並選取來源語言。
+- 按下按鈕 A 和 B 來捲動及選取來源語言。
 
-- 按 B 按鈕進行交談。 若要傳送語音和取得翻譯文字，請放開 B 按鈕。
+- 按下 B 按鈕以說話。 若要傳送音訊並取得翻譯文字，請放開 B 按鈕。
 
 ## <a name="how-it-works"></a>運作方式
 

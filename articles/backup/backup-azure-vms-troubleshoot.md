@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: a5784aeb615c6d84048835bd6169f0819fad2f56
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 65662af2bad5475b024366a2ff550ff30e6c0e88
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892332"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014653"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -28,10 +28,10 @@ ms.locfileid: "88892332"
 * 確認 VM 具有網際網路連線。
   * 請確定沒有其他備份服務正在執行。
 * 從 `Services.msc` 中，確定 **Windows Azure 客體代理程式**服務**執行中**。 如果遺漏 **Windows Azure 客體代理程式** 服務，請從[備份復原服務保存庫中的 Azure VM](./backup-azure-arm-vms-prepare.md#install-the-vm-agent)安裝該服務。
-* **事件記錄**檔可能會顯示來自其他備份產品（例如 Windows Server backup）的備份失敗，而不是因為 Azure 備份所致。 請使用下列步驟來判斷問題是否與 Azure 備份有關：
-  * 如果事件來源或訊息中的項目**備份**發生錯誤，請檢查 Azure IaaS VM 備份是否成功，以及是否已使用所需的快照集類型建立還原點。
+* **事件記錄**檔可能會顯示來自其他備份產品（例如 Windows Server backup）的備份失敗，而不是因為 Azure 備份。 請使用下列步驟來判斷問題是否與 Azure 備份有關：
+  * 如果事件來源或訊息中的專案 **備份** 發生錯誤，請檢查 AZURE IaaS VM 備份備份是否成功，以及是否以所需的快照集類型建立還原點。
   * 如果 Azure 備份運作中，則問題可能與另一個備份解決方案有關。
-  * 以下是事件檢視器錯誤 517 的範例，其中 Azure 備份正常運作，但「Windows Server 備份」失敗：<br>
+  * 以下是事件檢視器錯誤517的範例，其中 Azure 備份可正常運作，但 "Windows Server Backup" 失敗：<br>
     ![Windows Server 備份失敗](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * 如果 Azure 備份失敗，請在本文的常見 VM 備份錯誤一節中尋找對應的錯誤碼。
 

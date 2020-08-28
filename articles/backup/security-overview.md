@@ -3,12 +3,12 @@ title: 安全性功能概觀
 description: 了解 Azure 備份中的安全性功能，協助保護您的備份資料，並符合您企業的安全性需求。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f9a505723b40df61665a99e898d59ecfb8c03fd5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 62f4e6783d4c2c2e09b7b4cbb41ae98ac2779ebe
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890462"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012546"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 備份中的安全性功能概觀
 
@@ -70,7 +70,7 @@ Azure 備份服務使用 Microsoft Azure 復原服務 (MARS) 代理程式，將�
 
 * 已刪除的備份資料會額外保留 14 天 (從刪除日期算起)。 這可確保指定時間週期內的資料復原能力，所以即使發生攻擊，也不會遺失任何資料。 而且會維護更多的復原點，以防範資料損毀。 [深入了解復原已刪除的備份資料](./backup-azure-security-feature.md#recover-deleted-backup-data)。
 
-* 對於使用 Microsoft Azure 復原服務 (MARS) 代理程式備份的資料，在上傳至 Azure 備份之前，會使用複雜密碼來確保已加密資料，而且只有在從 Azure 備份下載之後才會解密。 複雜密碼詳細資料僅適用於建立複雜密碼的使用者，以及使用複雜密碼設定的客服專員。 不會使用服務傳輸或共用任何內容。 這可確保資料的完整安全性，因為不慎公開的任何資料 (例如網路上的中間人攻擊) 如果沒有複雜密碼，即無法使用，而且不會在網路上傳送複雜密碼。
+* 對於使用 Microsoft Azure 復原服務 (MARS) 代理程式備份的資料，在上傳至 Azure 備份之前，會使用複雜密碼來確保已加密資料，而且只有在從 Azure 備份下載之後才會解密。 複雜密碼詳細資料僅適用于建立複雜密碼的使用者，以及使用它設定的代理程式。 不會使用服務傳輸或共用任何內容。 這可確保資料的完整安全性，因為不慎 (的任何資料（例如，網路) 的攔截式攻擊）在沒有複雜密碼的情況下無法使用，而且複雜密碼不會透過網路傳送。
 
 ## <a name="compliance-with-standardized-security-requirements"></a>符合標準化的安全性需求
 

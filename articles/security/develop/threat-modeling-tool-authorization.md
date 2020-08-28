@@ -1,6 +1,6 @@
 ---
 title: 授權 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: 深入瞭解 Threat Modeling Tool 中的授權風險降低。 查看潛在威脅和緩和指示的清單。
+description: 瞭解 Threat Modeling Tool 中的授權緩和措施。 查看潛在威脅和緩和指示的清單。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,19 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 07e33279452b8296688c358c9ffdab1bfb2e1321
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 77964eed6960a79920f359a03c65102ad949a210
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543957"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004658"
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架︰授權 | 緩和措施 
 | 產品/服務 | 發行項 |
 | --------------- | ------- |
-| **電腦信任邊界** | <ul><li>[請確定已設定適當的 Acl，以限制不受授權存取裝置上的資料](#acl-restricted-access)</li><li>[確保機密的使用者特定應用程式內容會儲存在使用者設定檔目錄中](#sensitive-directory)</li><li>[確保已部署的應用程式是以最低權限執行](#deployed-privileges)</li></ul> |
-| **Web 應用程式** | <ul><li>[在處理商務邏輯流程時強制執行順序步驟](#sequential-logic)</li><li>[實作速率限制機制以防止列舉](#rate-enumeration)</li><li>[請確定已備妥適當的授權，並遵循最低許可權的原則](#principle-least-privilege)</li><li>[商務邏輯和資源存取授權決策不應以傳入的要求參數為基礎](#logic-request-parameters)</li><li>[確保無法透過強迫瀏覽來列舉或存取內容和資源](#enumerable-browsing)</li></ul> |
-| **Database** | <ul><li>[確保使用最低權限的帳戶連線到資料庫伺服器](#privileged-server)</li><li>[執行資料列層級安全性 RLS，以防止租使用者存取彼此的資料](#rls-tenants)</li><li>[系統管理員角色只能具備有效的必要使用者](#sysadmin-users)</li></ul> |
+| **電腦信任邊界** | <ul><li>[確定已設定適當的 Acl 來限制未授權存取裝置上的資料](#acl-restricted-access)</li><li>[確定機密的使用者特定應用程式內容儲存在使用者設定檔目錄中](#sensitive-directory)</li><li>[確保已部署的應用程式是以最低權限執行](#deployed-privileges)</li></ul> |
+| **Web 應用程式** | <ul><li>[在處理商務邏輯流程時強制執行順序步驟](#sequential-logic)</li><li>[實作速率限制機制以防止列舉](#rate-enumeration)</li><li>[確定已備妥適當的授權，並遵循最低許可權的原則](#principle-least-privilege)</li><li>[商務邏輯和資源存取授權決策不應以傳入的要求參數為基礎](#logic-request-parameters)</li><li>[確保無法透過強迫瀏覽來列舉或存取內容和資源](#enumerable-browsing)</li></ul> |
+| **Database** | <ul><li>[確保使用最低權限的帳戶連線到資料庫伺服器](#privileged-server)</li><li>[實行資料列層級安全性 RLS 以防止租使用者存取彼此的資料](#rls-tenants)</li><li>[系統管理員角色只能具備有效的必要使用者](#sysadmin-users)</li></ul> |
 | **IoT 雲端閘道** | <ul><li>[使用最低權限的權杖連線到雲端閘道](#cloud-least-privileged)</li></ul> |
 | **Azure 事件中樞** | <ul><li>[使用僅限傳送權限 SAS 金鑰來產生裝置權杖](#sendonly-sas)</li><li>[請勿使用可供直接存取事件中樞的存取權杖](#access-tokens-hub)</li><li>[使用具有所需最低權限的 SAS 金鑰來連線到事件中樞](#sas-minimum-permissions)</li></ul> |
 | **Azure Document DB** | <ul><li>[盡可能使用資源權杖來連線到 Azure Cosmos DB](#resource-docdb)</li></ul> |
@@ -149,7 +150,7 @@ WHERE userID=:id < - session var
 | **參考**              | [Sql 許可權](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine)階層， [sql 安全性實體](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **步驟** | 應該使用最低權限的帳戶連線到資料庫。 應用程式登入應受限於資料庫，應該只能執行所選的程序。 應用程式的登入應該沒有直接的資料表存取權。 |
 
-## <a name="implement-row-level-security-rls-to-prevent-tenants-from-accessing-each-others-data"></a><a id="rls-tenants"></a>執行資料列層級安全性 RLS，以防止租使用者存取彼此的資料
+## <a name="implement-row-level-security-rls-to-prevent-tenants-from-accessing-each-others-data"></a><a id="rls-tenants"></a>實行資料列層級安全性 RLS 以防止租使用者存取彼此的資料
 
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
@@ -160,7 +161,7 @@ WHERE userID=:id < - session var
 | **參考**              | [SQL Server 資料列層級安全性 (RLS)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
 | **步驟** | <p>資料列層級安全性讓客戶能夠根據執行查詢之使用者的特性 (例如，群組成員資格或執行內容) 來控制資料庫資料表中的資料列存取。</p><p>資料列層級安全性 (RLS) 簡化您的應用程式中安全性的設計和編碼。 RLS 可讓您實作資料的資料列存取限制。 例如，確保背景工作角色只能存取其部門相關資料列，或將客戶的資料存取權限制為其公司的相關資料。</p><p>存取限制邏輯是位於資料庫層，而不是離開這些資料，到另一個應用程式層。 資料庫系統會在每次於任何層嘗試存取該資料時套用存取限制。 這可藉由縮小安全性系統的接觸區，讓安全性系統更加可靠和健全。</p><p>|
 
-請注意，做為現成可用的資料庫功能的 RLS 僅適用于從2016、Azure SQL Database 和 SQL 受控執行個體開始 SQL Server。 如果未實作最新的 RLS 功能，則應確保資料存取是受限的。使用檢視和程序
+請注意，RLS 是現成的資料庫功能，僅適用于從2016、Azure SQL Database 和 SQL 受控執行個體開始 SQL Server。 如果未實作最新的 RLS 功能，則應確保資料存取是受限的。使用檢視和程序
 
 ## <a name="sysadmin-role-should-only-have-valid-necessary-users"></a><a id="sysadmin-users"></a>系統管理員角色只能具備有效的必要使用者
 
@@ -237,7 +238,7 @@ WHERE userID=:id < - session var
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [使用角色指派來管理 Azure 訂用帳戶資源的存取權](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)  |
-| **步驟** | Azure 角色型存取控制（Azure RBAC）可為 Azure 提供更細緻的存取權管理。 使用 RBAC，您可以僅授與使用者執行其作業所需的存取權。|
+| **步驟** | Azure 角色型存取控制 (Azure RBAC) 可讓您對 Azure 進行更細緻的存取管理。 使用 RBAC，您可以僅授與使用者執行其作業所需的存取權。|
 
 ## <a name="restrict-clients-access-to-cluster-operations-using-rbac"></a><a id="cluster-rbac"></a>使用 RBAC 限制用戶端對於叢集作業的存取
 
@@ -281,7 +282,7 @@ WHERE userID=:id < - session var
 | **適用的技術** | 泛型 |
 | **屬性**              | StorageType - 資料表 |
 | **參考**              | [如何使用 SAS 將存取權委派給 Azure 儲存體帳戶中的物件](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
-| **步驟** | 在特定商務案例中，Azure 表格儲存體可能必須儲存能滿足不同合作夥伴需求的敏感性資料。 例如，與不同國家/地區相關的敏感性資料。 在這種情況下，可以藉由指定分割區和資料列索引鍵範圍來建立 SAS 簽章，讓使用者可以存取特定國家/地區的特定資料。| 
+| **步驟** | 在特定商務案例中，Azure 表格儲存體可能必須儲存能滿足不同合作夥伴需求的敏感性資料。 例如，與不同國家/地區相關的敏感性資料。 在這種情況下，您可以藉由指定分割區和資料列索引鍵範圍來建立 SAS 簽章，讓使用者可以存取特定國家/地區的特定資料。| 
 
 ## <a name="enable-role-based-access-control-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>使用 Azure Resource Manager 啟用 Azure 儲存體帳戶的角色型存取控制 (RBAC)
 
