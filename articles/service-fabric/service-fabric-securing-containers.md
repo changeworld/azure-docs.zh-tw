@@ -1,14 +1,15 @@
 ---
-title: 將憑證匯入至容器
+title: 將憑證匯入容器
 description: 立即了解如何將憑證檔案匯入到 Service Fabric 容器服務。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: da4babd8f9d1a25a8514d0c6f1526b43a9723854
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 949cc642572bfbf6ebe297d3ffba16939561ac8a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614106"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012716"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>將憑證檔案匯入到 Service Fabric 上執行的容器
 

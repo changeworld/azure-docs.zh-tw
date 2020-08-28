@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509275"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014586"
 ---
 # <a name="troubleshoot"></a>疑難排解
 
@@ -34,6 +34,14 @@ ms.locfileid: "88509275"
 檢查您的 GPU 是否支援硬體視訊解碼。 請參閱[開發電腦](../overview/system-requirements.md#development-pc)。
 
 如果您使用具有兩個 GPU 的膝上型電腦，則預設執行的 GPU 可能不會提供硬體視訊解碼功能。 若是如此，請嘗試強制您的應用程式使用其他 GPU。 這通常可以在 GPU 驅動程式設定中進行。
+
+## <a name="retrieve-sessionconversion-status-fails"></a>取得會話/轉換狀態失敗
+
+傳送 REST API 命令太頻繁，最後會導致伺服器節流並傳回失敗。 節流案例中的 HTTP 狀態碼為 429 ( 「太多要求」 ) 。 根據經驗法則， **後續呼叫之間**應該會有5-10 秒的延遲。
+
+請注意，這項限制不只會影響直接呼叫的 REST API 呼叫，同時也會影響其 c #/C + + 對應專案，例如 `Session.GetPropertiesAsync` 、 `Session.RenewAsync` 或 `Frontend.GetAssetConversionStatusAsync` 。
+
+如果您遇到伺服器端節流，請變更程式碼，以減少呼叫的頻率。 伺服器每分鐘會重設節流狀態，因此可以安全地在一分鐘後重新執行程式碼。
 
 ## <a name="h265-codec-not-available"></a>H265 轉碼器無法使用
 

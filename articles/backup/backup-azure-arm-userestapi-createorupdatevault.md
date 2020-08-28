@@ -4,16 +4,16 @@ description: 在本文中，您將瞭解如何使用 REST API 來管理 Azure VM
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: c4aa88399bfbdd7814864170d9861a7b7d14dc58
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: d0baac97b7a1bfb5ac55ee8cacc40dc8f13994a5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757246"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012597"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>使用 REST API 建立 Azure 復原服務保存庫
 
-建立保存 [庫 REST API](/rest/api/recoveryservices/vaults/createorupdate) 檔中概述使用 REST API 建立 Azure 復原服務保存庫的步驟。 讓我們使用這份文件作為參考，以在美國西部建立稱為 "testVault" 的保存庫。
+建立保存 [庫 REST API](/rest/api/recoveryservices/vaults/createorupdate) 檔中概述使用 REST API 建立 Azure 復原服務保存庫的步驟。 讓我們使用這份檔作為參考，以在「美國西部」中建立名為 "testVault" 的保存庫。
 
 若要建立或更新 Azure 復原服務保存庫，請使用下列 *PUT* 作業。
 
@@ -40,8 +40,8 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 |名稱  |必要  |類型  |描述  |
 |---------|---------|---------|---------|
-|etag     |         |   String      |  選擇性 eTag       |
-|location     |  true       |String         |   資源位置      |
+|etag     |         |   字串      |  選擇性 eTag       |
+|location     |  true       |字串         |   資源位置      |
 |properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保存庫的屬性       |
 |sku     |         |  [Sku](/rest/api/recoveryservices/vaults/createorupdate#sku)       |    識別每個 Azure 資源的唯一系統識別碼     |
 |tags     |         | Object        |     資源標籤    |
@@ -68,7 +68,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 |名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     |   [保存庫](/rest/api/recoveryservices/vaults/createorupdate#vault)      | [確定]        |
+|200 確定     |   [保存庫](/rest/api/recoveryservices/vaults/createorupdate#vault)      | 確定        |
 |201 Created     | [保存庫](/rest/api/recoveryservices/vaults/createorupdate#vault)        |   建立時間      |
 
 如需 REST API 回應的詳細資訊，請參閱[處理回應訊息](/rest/api/azure/#process-the-response-message)。

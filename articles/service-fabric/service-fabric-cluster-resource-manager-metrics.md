@@ -5,12 +5,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3cb22bc2cd032e51dcdb7429e2c0684c578b0870
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75452006"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005644"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>在 Service Fabric 中使用度量管理資源耗用量和負載
 *計量*是您的服務所關切的資源，且是由叢集中的節點提供。 計量就是任何您想要管理，以便改善或監視服務效能的項目。 例如，您可能會監看記憶體耗用量以得知您的服務是否為多載。 另一個用法是，了解服務是否能夠移至記憶體限制較小的其他位置，以取得更佳的效能。
@@ -18,7 +19,7 @@ ms.locfileid: "75452006"
 像記憶體、磁碟 及 CPU 使用率等項目都是計量的範例。 這些計量是實體計量，也就是對應至節點上需要管理之實體資源的資源。 計量也可以是 (且通常是) 邏輯計量。 邏輯計量的範例是 “MyWorkQueueDepth”、"MessagesToProcess" 或 "TotalRecords" 之類的項目。 邏輯計量是由應用程式定義，並且間接對應到某些實體資源耗用量。 邏輯計量是常見的，因為很難以每個服務為基礎測量及報告實體資源耗用量。 測量及報告您自己的實體計量有點複雜，這也是為什麼 Service Fabric 會提供一些預設計量。
 
 ## <a name="default-metrics"></a>預設度量
-假設您想要開始撰寫和部署您的服務。 此時，您不知道它會取用哪些實體或邏輯資源。 沒關係！ 未指定其他計量時，Service Fabric 叢集資源管理員會使用某些預設計量。 其中包括：
+假設您想要開始撰寫和部署您的服務。 此時，您不知道它會取用哪些實體或邏輯資源。 沒關係！ 未指定其他計量時，Service Fabric 叢集資源管理員會使用某些預設計量。 分別是：
 
   - PrimaryCount - 節點上主要複本的計數 
   - ReplicaCount - 節點上具狀態複本的總數
@@ -33,7 +34,7 @@ ms.locfileid: "75452006"
 
 針對基本工作負載，預設計量會提供叢集中工作的適當分配。 在下列範例中，讓我們看看建立兩個服務以及依賴預設計量以進行平衡時會發生什麼情況。 第一個服務是帶有三個資料分割且目標複本集大小為三的具狀態服務。 第二個服務是帶有一個資料分割且執行個體計數為三的無狀態服務。
 
-以下是您將看到的情況：
+以下是將看到的情況：
 
 <center>
 
@@ -260,7 +261,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 ## <a name="next-steps"></a>後續步驟
 - 如需有關設定服務的詳細資訊，請參閱[深入了解設定服務](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
-- 定義磁碟重組計量是在節點上合併負載而不是將其分散出去的一種方式。若要瞭解如何設定磁碟重組，請參閱[這篇文章](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+- 定義重組計量是合併節點上的負載，而不是分散的方式之一。若要瞭解如何設定磁碟重組，請參閱 [這篇文章](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 - 若要了解叢集資源管理員如何管理並平衡叢集中的負載，請查看關於 [平衡負載](service-fabric-cluster-resource-manager-balancing.md)
 - 從頭開始，並 [取得 Service Fabric 叢集資源管理員的簡介](service-fabric-cluster-resource-manager-introduction.md)
 - 移動成本是向叢集資源管理員發出訊號，表示移動某些服務會比較貴的其中一種方式。 若要深入了解移動成本，請參閱 [這篇文章](service-fabric-cluster-resource-manager-movement-cost.md)

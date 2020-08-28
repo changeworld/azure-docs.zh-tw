@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: c27c5fae45f7cde57f2db12c05107d2b77b90a2c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509836"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012376"
 ---
 # <a name="use-the-session-management-rest-api"></a>使用工作階段管理 REST API
 
@@ -79,7 +79,7 @@ $token = $response.AccessToken;
 
 | 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
-| 202 | -sessionId： GUID | Success |
+| 202 | -sessionId： GUID | 成功 |
 
 ### <a name="example-script-create-a-session"></a>範例腳本：建立會話
 
@@ -117,7 +117,14 @@ RawContentLength  : 52
 $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 ```
 
-## <a name="update-a-session"></a>更新會話
+## <a name="modify-and-query-session-properties"></a>修改和查詢會話屬性
+
+有幾個命令可查詢或修改現有會話的參數。
+
+> [!CAUTION]
+針對所有 REST 呼叫，太頻繁傳送這些命令會導致伺服器節流並最後傳回失敗。 此案例中的狀態碼是 429 ( 「太多要求」 ) 。 根據經驗法則， **後續呼叫之間**應該會有5-10 秒的延遲。
+
+### <a name="update-session-parameters"></a>更新會話參數
 
 此命令會更新會話的參數。 目前您只能延長會話的租用時間。
 
@@ -138,7 +145,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 |-----------|:-----------|:-----------|
 | 200 | | Success |
 
-### <a name="example-script-update-a-session"></a>範例腳本：更新會話
+#### <a name="example-script-update-a-session"></a>範例腳本：更新會話
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Patch -ContentType "application/json" -Body "{ 'maxLeaseTime': '5:0:0' }" -Headers @{ Authorization = "Bearer $token" }
@@ -160,7 +167,7 @@ Headers           : {[MS-CV, Fe+yXCJumky82wuoedzDTA.0], [Content-Length, 0], [Da
 RawContentLength  : 0
 ```
 
-## <a name="get-active-sessions"></a>取得使用中會話
+### <a name="get-active-sessions"></a>取得使用中會話
 
 此命令會傳回作用中會話的清單。
 
@@ -174,7 +181,7 @@ RawContentLength  : 0
 |-----------|:-----------|:-----------|
 | 200 | -會話：會話屬性的陣列 | 如需會話屬性的說明，請參閱「取得會話屬性」一節。 |
 
-### <a name="example-script-query-active-sessions"></a>範例腳本：查詢使用中會話
+#### <a name="example-script-query-active-sessions"></a>範例腳本：查詢使用中會話
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -203,7 +210,7 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 2
 ```
 
-## <a name="get-sessions-properties"></a>取得會話屬性
+### <a name="get-sessions-properties"></a>取得會話屬性
 
 此命令會傳回會話的相關資訊，例如其 VM 主機名稱。
 
@@ -217,7 +224,7 @@ RawContentLength  : 2
 |-----------|:-----------|:-----------|
 | 200 | -message： string<br/>-sessionElapsedTime： timespan<br/>-sessionHostname：字串<br/>-sessionId： string<br/>-sessionMaxLeaseTime： timespan<br/>-sessionSize： enum<br/>-sessionStatus： enum | 列舉 sessionStatus {正在啟動、就緒、停止、已停止、已過期、錯誤}<br/>如果狀態為 [錯誤] 或 [已過期]，訊息將會包含詳細資訊 |
 
-### <a name="example-script-get-session-properties"></a>範例腳本：取得會話屬性
+#### <a name="example-script-get-session-properties"></a>範例腳本：取得會話屬性
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId/properties" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -258,7 +265,7 @@ RawContentLength  : 60
 
 | 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
-| 204 | | Success |
+| 204 | | 成功 |
 
 ### <a name="example-script-stop-a-session"></a>範例腳本：停止會話
 

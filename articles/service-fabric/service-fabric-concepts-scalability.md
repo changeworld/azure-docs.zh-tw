@@ -5,12 +5,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 5b311dd9b0cd2c2b007bc19994aee771b2c4360f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cb5820849fb34e232a07d610e1cedeb40c0fcfba
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246375"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005321"
 ---
 # <a name="scaling-in-service-fabric"></a>Service Fabric 中的縮放比例
 Azure Service Fabric 可管理叢集節點上的服務、分割區和複本，讓您輕鬆建置可調整的應用程式。 在相同硬體上執行許多工作負載時，會獲得最大資源使用量，還可以針對您選擇調整工作負載的方式提供彈性。 這個 Channel 9 影片說明如何建置可調整的微服務應用程式：
@@ -63,13 +64,13 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>透過建立或移除新的具名服務進行縮放比例
 具名服務執行個體是一些叢集中具名應用程式執行個體內的服務類型之特定執行個體 (請參閱 [Service Fabric 應用程式生命週期](service-fabric-application-lifecycle.md))。 
 
-可以在服務的忙碌程度提高或降低時，建立 (或移除) 新的具名服務執行個體。 這樣可讓要求散佈到多個服務執行個體，通常會使現有服務上的負載降低。 在建立服務時，Service Fabric 叢集 Resource Manager 會以分散式方式將服務置於叢集中。 確切決策是依叢集和其他放置規則中的[計量](service-fabric-cluster-resource-manager-metrics.md)來控管。 服務可以用數種不同的方式建立，但最常見的方法是透過系統管理動作，像是某人呼叫 [`New-ServiceFabricService`](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) 或呼叫程式碼 [`CreateServiceAsync`](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) 。 甚至可以從叢集中執行的其他服務內呼叫 `CreateServiceAsync`。
+可以在服務的忙碌程度提高或降低時，建立 (或移除) 新的具名服務執行個體。 這樣可讓要求散佈到多個服務執行個體，通常會使現有服務上的負載降低。 在建立服務時，Service Fabric 叢集 Resource Manager 會以分散式方式將服務置於叢集中。 確切決策是依叢集和其他放置規則中的[計量](service-fabric-cluster-resource-manager-metrics.md)來控管。 您可以建立數種不同的服務，但最常見的方式是透過系統管理動作 [`New-ServiceFabricService`](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) （例如，呼叫者）或程式碼呼叫 [`CreateServiceAsync`](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) 。 甚至可以從叢集中執行的其他服務內呼叫 `CreateServiceAsync`。
 
 各種情節中皆可使用動態建立服務，且是常見的模式。 例如，假設有一個可代表特定工作流程的具狀態服務。 會向這項服務顯示代表工作的呼叫，且此服務會對該工作流程和資料列進度執行這些步驟。 
 
 您會如何進行此特定的服務規模？ 服務可能是某種形式的多租用戶，且會接受呼叫並可一次開始進行相同工作流程中許多不同執行個體的所有步驟。 不過，這樣會讓程式碼更複雜，因為現在必須擔心相同工作流程的許多不同執行個體，全都是不同階段及來自不同客戶。 此外，同時處理多個工作流程並無法解決縮放問題。 這是因為在某個時間點，此服務需耗用太多資源才能符合特定的電腦。 起初未建立此模式的許多服務，也會因程式碼中的某些固有瓶頸或速度變慢而遇到困難。 這類問題還會在它所追蹤的同時工作流程數目變大時，造成服務無法運作。  
 
-解決方案是針對您想要追蹤的每個不同的工作流程實例，建立此服務的實例。這是很棒的模式，而且可以處理服務是否為無狀態或具狀態。 若要運作此模式，通常有另一項服務可作為「工作負載管理員服務」。 這項服務的作業會接收要求，並將這些要求路由至其他服務。 管理員可以在其接收訊息時動態建立工作負載服務的執行個體，然後再將要求傳遞至這些服務。 當指定的工作流程服務完成其作業時，管理員服務可能也會收到回呼。 管理員收到這些回呼時，它可以刪除工作流程服務的執行個體，或是如果有多個呼叫，就會將它保留。 
+解決方案是針對您要追蹤的每個工作流程實例，建立此服務的實例。這是絕佳的模式，不論服務是無狀態或具狀態都可運作。 若要運作此模式，通常有另一項服務可作為「工作負載管理員服務」。 這項服務的作業會接收要求，並將這些要求路由至其他服務。 管理員可以在其接收訊息時動態建立工作負載服務的執行個體，然後再將要求傳遞至這些服務。 當指定的工作流程服務完成其作業時，管理員服務可能也會收到回呼。 管理員收到這些回呼時，它可以刪除工作流程服務的執行個體，或是如果有多個呼叫，就會將它保留。 
 
 此類型管理員的進階版本甚至可以建立其所管理的服務集區。 集區可協助確保在新的要求進入時，不必等待服務就能加速。 反之，管理員可以只從集區或路由中隨機挑選目前非忙碌中的工作流程服務。 將服務集區保持可用能夠加速處理新的要求，因為要求比較不需要等候新服務就能加速。 建立新的服務很快速，但並非免費或可瞬間完成。 集區有助於降低要求在接受服務之前所要等待的時間。 在回應時間至關重要的情況下，您將會經常看到這個管理員和集區模式。 將要求佇列並在背景中建立服務_然後_加以傳遞，也是常用的管理員模式，如同以該服務目前已暫止的某些追蹤工作量作為基礎，將服務建立和刪除。 
 
@@ -94,14 +95,14 @@ Service Fabric 支援資料分割。 分割區會將服務分割成數個邏輯�
 
 <center>
 
-![具有三個節點的分割版面配置](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
+![具有三個節點的資料分割配置](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
 </center>
 
 如果您增加節點數目，Service Fabric 會將一些現有的複本移至那裡。 例如，假設節點的數目增加到四個，且重新發佈複本。 現在，服務有三個複本在每個節點上執行，每個都屬於不同的分割區。 這可提升資源使用率，因為新的節點並不陌生。 通常，它也會改善效能，因為每個服務都有較多資源可供其使用。
 
 <center>
 
-![具有四個節點的分割區配置](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
+![具有四個節點的資料分割版面配置](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
 </center>
 
 ## <a name="scaling-by-using-the-service-fabric-cluster-resource-manager-and-metrics"></a>使用 Service Fabric 叢集 Resource Manager 和計量進行縮放比例
@@ -115,7 +116,7 @@ Service Fabric 支援資料分割。 分割區會將服務分割成數個邏輯�
 
 ## <a name="choosing-a-platform"></a>選擇平臺
 
-由於作業系統間的執行差異，選擇使用 Service Fabric 搭配 Windows 或 Linux，可能是調整應用程式的重要部分。 其中一個可能的屏障是執行分段記錄的方式。 Windows 上的 Service Fabric 針對一部電腦的記錄檔使用核心驅動程式，可在具狀態服務複本之間共用。 此記錄會在大約 8 GB 的時間進行權衡。 另一方面，Linux 會針對每個複本使用 256 MB 的暫存記錄檔，因此不適合想要將在指定節點上執行的輕量服務複本數目最大化的應用程式。 這些暫時性儲存需求的差異可能會通知所需的平臺，以進行 Service Fabric 叢集部署。
+由於作業系統之間的實現差異，選擇使用 Windows 或 Linux 的 Service Fabric 可能是調整應用程式的重要部分。 其中一個可能的屏障是執行分段記錄的方式。 Windows 上的 Service Fabric 使用核心驅動程式來處理一部機器的記錄，在具狀態服務複本之間共用。 此記錄會在大約 8 GB 的時間內進行權衡。 另一方面，Linux 會針對每個複本使用 256 MB 的暫存記錄，讓想要將在指定節點上執行的輕量服務複本數目最大的應用程式變得較不理想。 這些暫存儲存體需求的差異可能會通知所需的平臺以進行 Service Fabric 叢集部署。
 
 ## <a name="putting-it-all-together"></a>總整理
 讓我們根據這裡討論的所有概念來探討範例。 假設下列服務︰您嘗試建置一個服務作為通訊錄，以儲存名稱和連絡人資訊。 
@@ -127,7 +128,7 @@ Service Fabric 支援資料分割。 分割區會將服務分割成數個邏輯�
 在針對縮放進行建置時，請考慮下列動態模式。 您可能需要縮放來適應您的情況：
 
 1. 建置「服務管理員」，而不要嘗試事先為每個人挑選資料分割配置。
-2. 當客戶註冊您的服務時，管理員服務就負責查看他們的資訊。 然後，視該資訊而定，管理員服務_只會為該客戶_建立_實際_連絡人儲存體服務的實例。 如果他們需要特定組態、隔離或升級，您也可以決定針對此客戶加速應用程式執行個體。 
+2. 當客戶註冊您的服務時，管理員服務就負責查看他們的資訊。 然後，視該資訊而定，管理員服務會_為該客戶_建立您_實際_的連絡人儲存體服務的實例。 如果他們需要特定組態、隔離或升級，您也可以決定針對此客戶加速應用程式執行個體。 
 
 此動態建立模式的多項優點：
 

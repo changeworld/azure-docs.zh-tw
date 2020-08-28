@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 串流分析的高頻率交易
+title: 使用 Azure 串流分析進行高頻率交易
 description: 如何在相同的 Azure 串流分析作業中執行線性迴歸模型訓練和評分。
 author: mamccrea
 ms.author: mamccrea
@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: 2196fe825570c371f4590868e994780b16a9c552
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: e5d346a6f412b5764400a42e2bebbafec610009b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040940"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015419"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>使用串流分析進行高頻率交易模擬
 Azure 串流分析中的 SQL 語言、JavaScript 使用者定義函式 (UDF) 和使用者定義彙總 (UDA) 組合，讓使用者能夠執行進階分析。 進階分析可能包含線上機器學習訓練和評分，以及可設定狀態的程序模擬。 本文說明如何在 Azure 串流分析作業中執行線性迴歸，以在高頻率的交易案例中進行連續訓練和評分。
@@ -64,7 +64,7 @@ socket.On(Socket.EVENT_CONNECT, () =>
 >事件的時間戳記為 **lastUpdated** (epoch 時間)。
 
 ### <a name="predictive-model-for-high-frequency-trading"></a>高頻率交易的預測模型
-基於示範的目的，我們會使用 Darryl Shen 在[他的論文](https://docplayer.net/23038840-Order-imbalance-based-strategy-in-high-frequency-trading.html)中所描述的線性模型。
+為了示範，我們使用 Darryl Shen 在 [他的白皮書](https://docplayer.net/23038840-Order-imbalance-based-strategy-in-high-frequency-trading.html)中所描述的線性模型。
 
 數量委託單不平衡 (VOI) 是目前買入/賣出價格和數量的函式，以及最後一個檔位中買入/賣出價格和數量的函式。 本文件可識別 VOI 與未來價格變動之間的相互關聯。 它建立過去 5 個 VOI 值與接下來 10 個檔位中價格變動之間的線性模型。 使用前一天的資料搭配線性迴歸來訓練模型。 
 

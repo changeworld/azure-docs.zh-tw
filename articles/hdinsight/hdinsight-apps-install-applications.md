@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: fd0d425f00e001071f5c9021068ca2f038371a36
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e0d1f9ad99e1b64560321312a22f61f5a2ef3dea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212826"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016031"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安裝協力廠商 Apache Hadoop 應用程式
 
@@ -29,7 +29,7 @@ HDInsight 應用程式是使用者可以在 HDInsight 叢集上安裝的應用�
 |[適用於 HDInsight 的 CDAP](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |hbase |CDAP 是第一個適用於巨量資料的統一整合平台，可加速實現 Hadoop 的價值，並可讓 IT 提供自助資料。 開放原始碼並可延伸的 CDAP，能夠移除創新的障礙。 需求：4 個區域節點，至少 D3 v2。 |
 |[Datameer](https://azuremarketplace.microsoft.com/marketplace/apps/datameer.datameer) |Hadoop |Datameer 是可靈活調整規模的自助式平台，用來準備、探索及掌管供分析使用的資料，加速將複雜的多來源資料轉變為有價值的商務就緒資訊，更快提供更聰明的企業級深入解析。 |
 |[HDInsight 上的 Dataiku DSS](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dss-on-hdi) |Hadoop、Spark |企業資料科學平台中的 Dataiku DSS，可讓資料科學家和資料分析師共同作業，以更有效率的方式設計和執行新的資料產品和服務，並將原始資料轉換成影響力預測。 |
-|[WANdisco Fusion HDI 應用程式](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.fusion-hdi-app) |Hadoop、Spark、HBase、Storm、Kafka |在分散式環境中保持資料的一致性是資料作業的一大挑戰。 企業級軟體平台 WANdisco Fusion 能在任何環境中保持非結構化資料的一致性，解決這個問題。 |
+|[WANdisco Fusion HDI 應用程式](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/wandisco.wandisco-liveanalytics) |Hadoop、Spark、HBase、Storm、Kafka |在分散式環境中保持資料的一致性是資料作業的一大挑戰。 企業級軟體平台 WANdisco Fusion 能在任何環境中保持非結構化資料的一致性，解決這個問題。 |
 |[適用於 HDInsight 的 H2O SparklingWater](https://azuremarketplace.microsoft.com/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |H2O Sparkling Water 支援下列分散式演算法：GLM、貝氏 (Naïve Bayes)、分散式隨機樹系 (Distributed Random Forest)、梯度提升機 (Gradient Boosting Machine)、深度類神經網路 (Deep Neural Networks)、深度學習、K-Means、PCA、一般化低秩模型 (Generalized Low Rank Model)、異常偵測、自動編碼器 (Autoencoder)。 |
 |[適用於將即時資料整合至 HDInsight 的 Striim](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop、HBase、Storm、Spark、Kafka |Striim (讀為 "stream") 是端對端串流資料整合與智慧平台，可持續擷取、處理及分析不同的資料串流。 |
 |[加速企業巨量資料分析的 Jumbune](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop、Spark |概括而言，Jumbune 能夠協助企業，因為它：1. 可加速 Tez、MapReduce 與以 Spark 引擎為基礎的 Hive、JAVA、Scala 工作負載效能。 2. 擁有主動式 Hadoop 叢集監視，3. 可在分散式檔案系統上建立資料品質管理。 |

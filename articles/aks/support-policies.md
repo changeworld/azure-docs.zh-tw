@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: be80c0d5999ed06bcc505ec5737e7e416d28b981
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c51b5c4d9cd7362aeda0a0998d8031d0ba358ce1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050685"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012342"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service 支援原則
 
@@ -20,7 +20,7 @@ ms.locfileid: "87050685"
 ## <a name="service-updates-and-releases"></a>服務更新和版本
 
 * 如需詳細資訊，請參閱 [AKS 版本資訊](https://github.com/Azure/AKS/releases)。
-* 如需預覽功能的詳細資訊，請參閱 [AKS 預覽功能和相關的專案](https://github.com/Azure/AKS/blob/master/previews.md)。
+* 如需預覽功能的詳細資訊，請參閱 [AKS 預覽功能和相關的專案](https://awesomeopensource.com/projects/aks?categoryPage=11)。
 
 ## <a name="managed-features-in-aks"></a>AKS 中的受控功能
 
@@ -52,11 +52,11 @@ AKS 不是完全受控的叢集解決方案。 某些元件 (例如背景工作�
 Microsoft 可針對下列問題提供技術支援：
 
 > [!NOTE]
-> Microsoft/AKS 所採取的任何叢集動作，都是在內建的 Kubernetes 角色 `aks-service` 和內建角色系結之下，以使用者同意來進行 `aks-service-rolebinding` 。 此角色可讓 AKS 對叢集問題進行疑難排解和診斷，但無法修改許可權，也無法建立角色或角色系結，或其他高許可權動作。 只有在具有即時（JIT）存取權的主動式支援票證底下，才會啟用角色存取。
+> Microsoft/AKS 所採取的任何叢集動作都是在內建 Kubernetes 角色 `aks-service` 和內建角色系結的使用者同意下進行 `aks-service-rolebinding` 。 此角色可讓 AKS 對叢集問題進行疑難排解和診斷，但無法修改許可權，也無法建立角色或角色系結，或其他高許可權動作。 只有在具有即時 (JIT) 存取權的主動式支援票證下，才會啟用角色存取。
 
 * 連線至 Kubernetes 服務提供和支援的所有 Kubernetes 元件，例如 API 伺服器。
 * Kubernetes 控制平面服務的管理、運作時間、QoS 和作業 (例如 Kubernetes 主要節點、API 伺服器、etcd 和 kube-dns)。
-* Etcd。 支援包括每 30 分鐘自動且透明地備份所有 etcd 資料，以進行災害規劃和叢集狀態還原。 這些備份無法直接提供給客戶或使用者。 它們可確保資料的可靠性和一致性。 Etcd。 「隨選復原」或「還原」不支援做為功能。
+* Etcd。 支援包括每 30 分鐘自動且透明地備份所有 etcd 資料，以進行災害規劃和叢集狀態還原。 這些備份無法直接提供給客戶或使用者。 它們可確保資料的可靠性和一致性。 Etcd。 視需要回復或還原不支援做為功能。
 * 適用於 Kubernetes 的 Azure 雲端提供者驅動程式中的任何整合點。 其中包括與其他 Azure 服務的整合，例如負載平衡器、永久性磁碟區或網路 (Kubernetes 和 Azure CNI)。
 * 自訂控制平面元件的相關問題，例如 Kubernetes API 伺服器、etcd 和 kube-dns。
 * 網路的相關問題，例如 Azure CNI、kubenet，或其他網路存取和功能問題。 問題可能包括 DNS 解析、封包遺失、路由等等。 Microsoft 支援各種網路功能案例：
@@ -137,7 +137,7 @@ AKS 會代表客戶管理背景工作節點的生命週期和作業 - **不支�
 
 ## <a name="network-ports-access-and-nsgs"></a>網路連接埠、存取權和 NSG
 
-AKS 是一種受控服務，具有特定的網路和連線能力需求。 這些需求與一般 IaaS 元件的需求相比，較不具彈性。 在 AKS 中，像是自訂 NSG 規則、封鎖特定埠（例如，使用封鎖輸出埠443的防火牆規則）和將 Url 新增至允許清單等作業，都可以讓您的叢集不受支援。
+AKS 是一種受控服務，具有特定的網路和連線能力需求。 這些需求與一般 IaaS 元件的需求相比，較不具彈性。 在 AKS 中，像是自訂 NSG 規則、封鎖特定埠 (例如使用封鎖輸出埠 443) 的防火牆規則，以及將 Url 新增至允許清單的作業，都可以讓您的叢集不受支援。
 
 > [!NOTE]
 > 目前，AKS 不允許您完全鎖定來自叢集的輸出流量。 若要控制叢集可用於輸出流量的 URL 和連接埠清單，請參閱[限制輸出流量](limit-egress-traffic.md)。
@@ -149,7 +149,7 @@ AKS 僅支援上游 Kubernetes 專案內的穩定功能。 除非另有記載，
 在兩種情況下，Alpha 版或搶鮮版 (Beta) 功能可能會在正式推出之前發行：
 
 * 客戶已與 AKS 產品、支援或工程師團隊會面，並受到試用這些新功能的要求。
-* 這些功能[已根據功能旗標啟用](https://github.com/Azure/AKS/blob/master/previews.md)。 客戶必須明確選擇使用這些功能。
+* 這些功能[已根據功能旗標啟用](https://awesomeopensource.com/projects/aks?categoryPage=11)。 客戶必須明確選擇使用這些功能。
 
 ## <a name="preview-features-or-feature-flags"></a>預覽功能或功能旗標
 

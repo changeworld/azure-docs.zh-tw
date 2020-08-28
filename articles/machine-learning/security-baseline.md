@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9d288c8d3f521467c8d15e027e2530ff879b37af
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 203ca95368d313055d7c715a3a3becbc1061582c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642813"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015079"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>適用于 Azure Machine Learning 的 Azure 安全性基準
 
@@ -270,9 +270,9 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資源之間有不同的支援。 針對組織所擁有的計算資源，請針對 Azure 雲端服務和虛擬機器的 Microsoft Antimalware 啟用反惡意程式碼事件收集。
 
-- [如何設定虛擬機器的 Microsoft Antimalware](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
+- [如何設定虛擬機器的 Microsoft Antimalware](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension)
 
-- [如何設定雲端服務的 Microsoft Antimalware 擴充功能](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
+- [如何設定雲端服務的 Microsoft Antimalware 擴充功能](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
 
 - [瞭解 Microsoft Antimalware](../security/fundamentals/antimalware.md)
 

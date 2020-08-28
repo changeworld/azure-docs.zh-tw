@@ -1,5 +1,5 @@
 ---
-title: 以匿名方式使用 .NET 存取公用容器和 blob
+title: 使用 .NET 以匿名方式存取公用容器和 blob
 titleSuffix: Azure Storage
 description: 使用適用于 .NET 的 Azure 儲存體用戶端程式庫，以匿名方式存取公用容器和 blob。
 services: storage
@@ -9,24 +9,25 @@ ms.topic: how-to
 ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 6f2e7403d85f9132c9a5a0b76cf057834e7cc499
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1ba36c7128f72f5181f3fed53f5615ab464e3325
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534952"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013532"
 ---
-# <a name="access-public-containers-and-blobs-anonymously-with-net"></a>以匿名方式使用 .NET 存取公用容器和 blob
+# <a name="access-public-containers-and-blobs-anonymously-with-net"></a>使用 .NET 以匿名方式存取公用容器和 blob
 
-Azure 儲存體支援對容器和 blob 進行選擇性的公用讀取權限。 用戶端可以使用 Azure 儲存體的用戶端程式庫，以及使用其他支援 Azure 儲存體資料存取的工具和公用程式，以匿名方式存取公用容器和 blob。
+Azure 儲存體支援容器和 blob 的選擇性公用讀取權限。 用戶端可以使用 Azure 儲存體用戶端程式庫，以及使用支援資料存取 Azure 儲存體的其他工具和公用程式，以匿名方式存取公用容器和 blob。
 
-本文說明如何從 .NET 存取公用容器或 blob。 如需有關在容器上設定匿名讀取權限的詳細資訊，請參閱[設定容器和 blob 的匿名公用讀取權限](anonymous-read-access-configure.md)。 如需防止所有匿名存取儲存體帳戶的相關資訊，請參閱[防止對容器和 blob 的匿名公用讀取權限](anonymous-read-access-prevent.md)。
+本文說明如何從 .NET 存取公用容器或 blob。 如需在容器上設定匿名讀取權限的相關資訊，請參閱 [設定容器和 blob 的匿名公用讀取權限](anonymous-read-access-configure.md)。 如需防止所有匿名存取儲存體帳戶的相關資訊，請參閱 [防止對容器和 blob 進行匿名公用讀取存取](anonymous-read-access-prevent.md)。
 
-匿名存取容器與 Blob 的用戶端可使用不需要認證的建構函式。 下列範例示範以匿名方式參考容器和 blob 的幾種不同方法。
+匿名存取容器與 Blob 的用戶端可使用不需要認證的建構函式。 下列範例顯示以匿名方式參考容器和 blob 的幾種不同方式。
 
 ## <a name="create-an-anonymous-client-object"></a>建立匿名用戶端物件
 
-您可以藉由提供帳戶的 Blob 儲存體端點，為匿名存取建立新的服務用戶端物件。 不同，您也必須知道可供匿名存取的帳戶中的容器名稱。
+您可以藉由提供帳戶的 Blob 儲存體端點來建立匿名存取的新服務用戶端物件。 不同，您也必須知道可供匿名存取的帳戶中的容器名稱。
 
 # <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
@@ -106,5 +107,5 @@ public static void DownloadBlobAnonymously()
 ## <a name="next-steps"></a>後續步驟
 
 - [設定容器和 blob 的匿名公用讀取權限](anonymous-read-access-configure.md)
-- [防止對容器和 blob 的匿名公用讀取權限](anonymous-read-access-prevent.md)
+- [防止對容器和 blob 進行匿名公用讀取存取](anonymous-read-access-prevent.md)
 - [授權存取 Azure 儲存體](../common/storage-auth.md)

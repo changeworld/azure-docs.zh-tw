@@ -3,12 +3,12 @@ title: 使用 Azure CLI 備份 Azure 檔案共用
 description: 瞭解如何使用 Azure CLI 在復原服務保存庫中備份 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 9afd1e866c85770a8797493c3f89e531e2ef72fc
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 54852112591b5f5eec1ecbac34b836b4cb0f4f1f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763208"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012019"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>使用 CLI 備份 Azure 檔案共用
 
@@ -100,7 +100,7 @@ Name                                  ResourceGroup
 
 輸出中的 **name** 屬性會對應至備份服務針對您的「隨選備份」作業所建立的作業名稱。 若要追蹤作業的狀態，請使用 [az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) Cmdlet。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何 [使用 CLI 還原 Azure 檔案共用](restore-afs-cli.md)
 * 瞭解如何 [使用 CLI 管理 Azure 檔案共用備份](manage-afs-backup-cli.md)
