@@ -8,12 +8,13 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: de173d6dc25610cd397cd719fe4c1c9db33a02f6
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: bf8563274d7aa677249335612d0156d6a5ecbd95
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641835"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018445"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 資料表 .NET Standard API：下載和版本資訊
 > [!div class="op_single_selector"]
@@ -57,18 +58,18 @@ ms.locfileid: "88641835"
 * 在 TableClientConfiguration 下引進新的設定，以使用 Rest 執行程式來與 Cosmos DB 通訊資料表 API
 
 ### <a name="105-preview"></a><a name="1.0.5-preview"></a>1.0.5-預覽
-* 錯誤修正
+* Bug 修正
 
 ### <a name="104"></a><a name="1.0.4"></a>1.0.4
-* 錯誤修正
+* Bug 修正
 * 提供 RestExecutorConfiguration 的 HttpClientTimeout 選項。
 
 ### <a name="104-preview"></a><a name="1.0.4-preview"></a>1.0.4-預覽
-* 錯誤修正
+* Bug 修正
 * 提供 RestExecutorConfiguration 的 HttpClientTimeout 選項。
 
 ### <a name="101"></a><a name="1.0.1"></a>1.0.1
-* 錯誤修正
+* Bug 修正
 
 ### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * 公開上市版本

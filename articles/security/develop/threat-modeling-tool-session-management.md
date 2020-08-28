@@ -1,6 +1,6 @@
 ---
 title: 工作階段管理 - Microsoft 威脅模型化工具 - Azure | Microsoft Docs
-description: 瞭解 Threat Modeling Tool 中公開之威脅的會話管理緩和措施。 請參閱風險降低資訊和查看程式碼範例。
+description: 瞭解 Threat Modeling Tool 中公開的威脅的會話管理緩和措施。 查看緩和資訊並查看程式碼範例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 6a40d89db3e81721ec8a35973b79a558c17caee4
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: has-adal-ref, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: b6cb79c4310237e2052ff7eca59a5e2d356968a5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543685"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000459"
 ---
 # <a name="security-frame-session-management"></a>安全性架構︰工作階段管理
 | 產品/服務 | 發行項 |
@@ -31,7 +31,7 @@ ms.locfileid: "87543685"
 | **Azure Document DB** | <ul><li>[為產生的資源權杖使用最短的權杖存留期](#resource-tokens)</li></ul> |
 | **ADFS** | <ul><li>[在使用 ADFS 時以 WsFederation 方法實作適當的登出](#wsfederation-logout)</li></ul> |
 | **身分識別伺服器** | <ul><li>[在使用 Identity Server 時執行適當的登出](#proper-logout)</li></ul> |
-| **Web 應用程式** | <ul><li>[透過 HTTPS 使用的應用程式必須使用安全 Cookie](#https-secure-cookies)</li><li>[所有 http 型應用程式只應在定義 Cookie 時指定 http](#cookie-definition)</li><li>[避免 ASP.NET 網頁上發生跨網站偽造要求 (CSRF) 攻擊](#csrf-asp)</li><li>[設定會話的閒置存留期](#inactivity-lifetime)</li><li>[從應用程式執行適當的登出](#proper-app-logout)</li></ul> |
+| **Web 應用程式** | <ul><li>[透過 HTTPS 使用的應用程式必須使用安全 Cookie](#https-secure-cookies)</li><li>[所有 http 型應用程式只應在定義 Cookie 時指定 http](#cookie-definition)</li><li>[避免 ASP.NET 網頁上發生跨網站偽造要求 (CSRF) 攻擊](#csrf-asp)</li><li>[設定閒置存留期的會話](#inactivity-lifetime)</li><li>[從應用程式執行適當的登出](#proper-app-logout)</li></ul> |
 | **Web API** | <ul><li>[避免 ASP.NET Web API 上發生跨網站偽造要求 (CSRF) 攻擊](#csrf-api)</li></ul> |
 
 ## <a name="implement-proper-logout-using-adal-methods-when-using-azure-ad"></a><a id="logout-adal"></a>在使用 Azure AD 時以 ADAL 方法實作適當的登出
@@ -149,7 +149,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [IdentityServer3-同盟登出](https://identityserver.github.io/Documentation/docsv2/advanced/federated-signout.html) |
-| **步驟** | IdentityServer 支援與外部識別提供者同盟的能力。 當使用者登出上游識別提供者時，視使用的通訊協定而定，可能會在使用者登出時收到通知。它可讓 IdentityServer 通知其用戶端，讓他們也可以將使用者登出。如需執行詳細資料，請參閱參考一節中的檔。|
+| **步驟** | IdentityServer 支援與外部識別提供者同盟的能力。 當使用者登出上游身分識別提供者時，視使用的通訊協定而定，可能會在使用者登出時收到通知。它可讓 IdentityServer 通知其用戶端，讓他們也可以將使用者登出。請參閱 [參考] 區段中的檔，以取得執行詳細資料。|
 
 ## <a name="applications-available-over-https-must-use-secure-cookies"></a><a id="https-secure-cookies"></a>透過 HTTPS 使用的應用程式必須使用安全 Cookie
 
@@ -222,7 +222,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **適用的技術** | Web Form |
 | **屬性**              | N/A  |
 | **參考**              | [FormsAuthentication.RequireSSL 屬性](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
-| **步驟** | RequireSSL 屬性值是使用組態元素的 requireSSL 屬性來設定於 ASP.NET 應用程式的組態檔中。 您可以在 ASP.NET 應用程式的 Web.config 檔案中指定傳輸層安全性（TLS）（先前稱為 SSL （安全通訊端層））是否需要藉由設定 requireSSL 屬性，將表單驗證 cookie 傳回至伺服器。|
+| **步驟** | RequireSSL 屬性值是使用組態元素的 requireSSL 屬性來設定於 ASP.NET 應用程式的組態檔中。 您可以在 ASP.NET 應用程式的 Web.config 檔案中指定傳輸層安全性 (TLS) （先前稱為 SSL (安全通訊端層) ）是否需要藉由設定 requireSSL 屬性將表單驗證 cookie 傳回伺服器。|
 
 ### <a name="example"></a>範例 
 下列程式碼範例會在 Web.config 檔案中設定 requireSSL 屬性。
@@ -379,7 +379,7 @@ void Page_Init (object sender, EventArgs e) {
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [HttpSessionState.Timeout 屬性](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
-| **步驟** | 會話超時代表使用者在間隔期間（由 web 伺服器定義）未在網站上執行任何動作時所發生的事件。 伺服器端上的事件會將使用者工作階段的狀態變更為「無效」(例如「不再被使用」)，並指示網頁伺服器終結它 (刪除其中包含的所有資料)。 下列程式碼範例會在 Web.config 檔案中將逾時工作階段屬性設定為 15 分鐘。|
+| **步驟** | 會話超時表示當使用者未在 web 伺服器) 所定義的間隔 (的間隔期間，在網站上執行任何動作時所發生的事件。 伺服器端上的事件會將使用者工作階段的狀態變更為「無效」(例如「不再被使用」)，並指示網頁伺服器終結它 (刪除其中包含的所有資料)。 下列程式碼範例會在 Web.config 檔案中將逾時工作階段屬性設定為 15 分鐘。|
 
 ### <a name="example"></a>範例
 ```XML 
@@ -398,7 +398,7 @@ void Page_Init (object sender, EventArgs e) {
 | **SDL 階段**               | Build |  
 | **適用的技術** | Web Form |
 | **屬性**              | N/A  |
-| **參考**              | [驗證的表單元素（ASP.NET 設定架構）](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **參考**              | [驗證 (ASP.NET 設定架構) 的 Forms 元素 ](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
 | **步驟** | 將表單驗證票證 Cookie 逾時設定為 15 分鐘|
 
 ### <a name="example"></a>範例

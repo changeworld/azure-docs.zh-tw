@@ -3,12 +3,12 @@ title: 使用 Azure 備份伺服器來備份 VMware VM
 description: 在本文中，您將瞭解如何使用 Azure 備份伺服器來備份在 VMware vCenter/ESXi 伺服器上執行的 VMware Vm。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: f498a7b7d2faf9ff857b504043233c46c843a961
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e18b5c51446446103a91ef7d6a00277c2b41db77
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826934"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017561"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 備份伺服器來備份 VMware VM
 
@@ -22,7 +22,7 @@ ms.locfileid: "88826934"
 - 將 vCenter 或 ESXi 伺服器新增至 Azure 備份伺服器。
 - 設定包含您要備份之 VMware VM 的保護群組、指定備份設定和排程備份。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - 確認您正在執行支援備份的 vCenter/ESXi 版本。 請參閱 [這裡](./backup-mabs-protection-matrix.md)的支援矩陣。
 - 確定您已設定 Azure 備份伺服器。 如果還沒，請在開始之前[進行設定](backup-azure-microsoft-azure-backup.md)。 您應該執行具有最新更新的 Azure 備份伺服器。
@@ -333,7 +333,7 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
    - 建議的磁碟配置是根據您指定的保留範圍、工作負載的類型和所保護資料的大小。 進行任何必要的變更，然後選取 **[下一步]**。
    - **資料大小：** 保護群組中的資料大小。
-   - **磁碟空間：** 保護群組的建議磁碟空間數量。 如果您想要修改此設定，您配置的總空間應該稍微大於您預估每個資料來源將成長的數量。
+   - **磁碟空間：** 保護群組的建議磁碟空間數量。 如果您想要修改此設定，您應該配置比每個資料來源量值成長時稍微大一點的總空間。
    - **共置資料：** 如果您開啟共置功能，受保護的多個資料來源可以對應至單一複本和復原點磁碟區。 不支援所有工作負載的共置。
    - **自動成長：** 如果您開啟此設定，則如果受保護群組中的資料成長到超過初始配置，Azure 備份伺服器會嘗試增加25% 的磁片大小。
    - **儲存集區詳細資料：** 顯示儲存體集區的狀態，包括總計和剩餘的磁碟大小。

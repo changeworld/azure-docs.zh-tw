@@ -10,12 +10,13 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8273be760b37c12f3db7a393e59ab8ead291ec02
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2087e5f8ec397123df504e9d30d351a0ba79b4a5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827991"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018751"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用適用于 Azure 資源的受控識別來授權 blob 和佇列資料的存取
 
@@ -87,7 +88,7 @@ az ad sp create-for-rbac \
 ```
 
 > [!IMPORTANT]
-> Azure 角色指派可能需要幾分鐘的時間才會傳播。
+> Azure 角色指派可能需要數分鐘的時間傳播。
 
 #### <a name="set-environment-variables"></a>設定環境變數
 

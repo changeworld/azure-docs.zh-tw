@@ -16,32 +16,33 @@ ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: 467664f4c102a81f6469765ea1742995f04c60e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3acfc9e3a856ec777bfada68d535b6a1e9878a08
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021999"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017918"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>使用 Azure 通知中樞傳送跨平臺通知
 
-本教學課程是以先前的教學課程為基礎，[使用 Azure 通知中樞將通知傳送給特定使用者]。 該教學課程說明如何將通知推送至已向特定已驗證使用者註冊的所有裝置。 該方法需要多個要求，以傳送通知給每個支援的用戶端平臺。 Azure 通知中心可支援範本，讓您指定特定裝置接收通知的方式。 此方法使得傳送跨平台通知變得更簡單。
+本教學課程是以先前的教學課程為基礎， [使用 Azure 通知中樞將通知傳送給特定使用者]。 該教學課程說明如何將通知推送至已註冊至特定已驗證使用者的所有裝置。 這種方法需要多個要求，以將通知傳送至每個支援的用戶端平臺。 Azure 通知中心可支援範本，讓您指定特定裝置接收通知的方式。 此方法使得傳送跨平台通知變得更簡單。
 
-本文示範如何利用範本來傳送以所有平臺為目標的通知。 本文使用單一要求來傳送平臺中性通知。 如需範本的詳細資訊，請參閱[通知中樞總覽][Templates]。
+本文示範如何利用範本來傳送以所有平臺為目標的通知。 本文使用單一要求來傳送平臺中立的通知。 如需範本的詳細資訊，請參閱 [通知中樞總覽][Templates]。
 
 > [!IMPORTANT]
-> Visual Studio 2019 不支援 Windows Phone 專案8.1 和更早版本。 如需詳細資訊，請參閱 [Visual Studio 2019 平台目標及相容性](/visualstudio/releases/2019/compatibility)。
+> Visual Studio 2019 不支援 Windows Phone 專案8.1 及更早版本。 如需詳細資訊，請參閱 [Visual Studio 2019 平台目標及相容性](/visualstudio/releases/2019/compatibility)。
 
 > [!NOTE]
 > 透過通知中樞，裝置可使用相同標籤註冊多個範本。 在此情況下，當傳入的訊息符合該標籤時，就會有多個通知傳遞至裝置 (每個通知各用於一個範本)。 透過此流程，您就能讓相同訊息顯示在多個視覺通知中，例如以徽章形式和 Windows 市集應用程式中的快顯通知形式。
 
 ## <a name="send-cross-platform-notifications-using-templates"></a>使用範本傳送跨平台通知
 
-本節使用您在[使用 Azure 通知中樞將通知傳送至特定使用者]教學課程中所建立的範例程式碼。 您可以從 [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers) 下載範例。
+本節會使用您在 [使用 Azure 通知中樞將通知傳送至特定使用者] 的範例程式碼教學課程中所建立的範例程式碼。 您可以從 [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers) 下載範例。
 
 若要使用範本傳送跨平臺通知，請執行下列步驟：
 
-1. 在**方案總管**的 Visual Studio 中，展開 [**控制器**] 資料夾，然後開啟*RegisterController.cs*檔案。
+1. 在 **方案總管**的 Visual Studio 中，展開 [ **控制器** ] 資料夾，然後開啟 *RegisterController.cs* 檔案。
 
 1. 在 `Put` 方法中找出建立新註冊的程式碼區塊，並將 `switch` 內容取代為下列程式碼：
 
@@ -76,7 +77,7 @@ ms.locfileid: "87021999"
 
     這段程式碼會呼叫平台特有方法來建立範本註冊，而非原生註冊。 因為範本註冊源自原生註冊，因此不需要修改現有註冊。
 
-1. 在**方案總管**的 [**控制器**] 資料夾中，開啟*NotificationsController.cs*檔案。 以下列程式碼取代 `Post` 方法：
+1. 在 **方案總管**的 [ **控制器** ] 資料夾中，開啟 *NotificationsController.cs* 檔案。 以下列程式碼取代 `Post` 方法：
 
     ```csharp
     public async Task<HttpResponseMessage> Post()
@@ -99,12 +100,12 @@ ms.locfileid: "87021999"
 
 1. （選擇性）將用戶端應用程式部署到第二個裝置，然後執行應用程式。 每個裝置上都會顯示通知。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已完成本教學課程，請在下列文章中深入瞭解通知中樞和範本：
 
-* 如需使用範本的不同案例，請參閱將[通知推送至執行通用 Windows 平臺應用程式的特定 Windows 裝置][Use Notification Hubs to send breaking news]教學課程。
-* 如需範本的詳細資訊，請參閱[通知中樞總覽][Templates]。
+* 如需使用範本的不同案例，請參閱 [推播通知至執行通用 Windows 平臺應用程式的特定 Windows 裝置][Use Notification Hubs to send breaking news] 教學課程。
+* 如需範本的詳細資訊，請參閱 [通知中樞總覽][Templates]。
 
 <!-- Anchors. -->
 

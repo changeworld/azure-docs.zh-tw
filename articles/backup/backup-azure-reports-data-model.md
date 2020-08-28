@@ -3,12 +3,12 @@ title: Azure 備份診斷事件的資料模型
 description: 此資料模型參考將診斷事件傳送至 Log Analytics (LA) 的資源特定模式。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 8cc671152485bc2781a80f96e48b81263dea221b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: adc1442b674b9a6e947ef65967a2c2f1359e7d8a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892519"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017578"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure 備份診斷事件的資料模型
 
@@ -55,7 +55,7 @@ ms.locfileid: "88892519"
 | resourceGroupName                 | 文字          | 資源的資源群組 (例如，復原服務保存庫) 收集的資料 |
 | schemaVersion                     | 文字          | 此欄位代表目前的架構版本。 它是 **V2** |
 | SecondaryBackupProtectionState    | Text          | 是否要為備份項目啟用次要保護  |
-| 狀態                             | 文字          | 備份專案物件的狀態。 例如，作用中、已刪除 |
+| State                             | 文字          | 備份專案物件的狀態。 例如，作用中、已刪除 |
 | StorageReplicationType            | 文字          | 保存庫的儲存體複寫類型。 例如，異地備援 |
 | SubscriptionId                    | Text          | 資源的訂用帳戶識別碼 (例如，收集資料的復原服務保存庫)  |
 | VaultName                         | Text          | 保存庫名稱                                            |
@@ -88,7 +88,7 @@ ms.locfileid: "88892519"
 | ProtectedContainerUniqueId     | 文字          | 與警示相關聯之受保護伺服器的唯一識別碼 |
 | RecommendedAction              | Text          | 建議用來解決警示的動作                      |
 | schemaVersion                  | Text          | 結構描述的目前版本，例如 **V2**            |
-| 狀態                          | Text          | 警示物件的目前狀態 (例如，作用中、已刪除) |
+| State                          | Text          | 警示物件的目前狀態 (例如，作用中、已刪除) |
 | StorageUniqueId                | Text          | 用來識別儲存體實體的唯一識別碼                |
 | VaultUniqueId                  | 文字          | 用來識別與警示相關之保存庫的唯一識別碼    |
 | SourceSystem                   | Text          | 目前資料的來源系統 - Azure                    |
@@ -108,7 +108,7 @@ ms.locfileid: "88892519"
 | ProtectedContainerUniqueId     | 文字          | 用來識別工作執行所在之受保護容器的唯一識別碼 |
 | ProtectedInstanceCount         | 文字          | 相關聯的備份專案或該日期時間受保護容器的受保護實例計數 |
 | schemaVersion                  | Text          | 結構描述的目前版本，例如 **V2**            |
-| 狀態                          | 文字          | 備份專案物件的狀態，例如 [作用中]、[已刪除] |
+| State                          | 文字          | 備份專案物件的狀態，例如 [作用中]、[已刪除] |
 | VaultUniqueId                  | 文字          | 與受保護的實例相關聯之受保護保存庫的唯一識別碼 |
 | SourceSystem                   | Text          | 目前資料的來源系統 - Azure                    |
 
@@ -139,7 +139,7 @@ ms.locfileid: "88892519"
 | RecoveryJobLocation            | 文字          | 要復原之復原點的儲存位置 |
 | RecoveryLocationType           | 文字          | 復原位置的類型                                |
 | schemaVersion                  | Text          | 結構描述的目前版本，例如 **V2**            |
-| 狀態                          | 文字          | 工作物件的目前狀態（例如，作用中、已刪除） |
+| State                          | 文字          | 工作物件的目前狀態（例如，作用中、已刪除） |
 | VaultUniqueId                  | 文字          | 與作業相關聯之受保護保存庫的唯一識別碼 |
 | SourceSystem                   | Text          | 目前資料的來源系統 - Azure                    |
 
@@ -177,7 +177,7 @@ ms.locfileid: "88892519"
 | RetentionDuration               | 文字           | 所設定備份的保留期間                    |
 | RetentionType                   | 文字           | 保留類型                                            |
 | schemaVersion                   | 文字           | 此欄位代表目前的架構版本，其為 **V2** |
-| 狀態                           | 文字           | 原則物件的目前狀態。 例如，使用中、已刪除 |
+| State                           | 文字           | 原則物件的目前狀態。 例如，使用中、已刪除 |
 | SynchronisationFrequencyPerDay  | 整數   | 在一天內，SC DPM 和 MABS 的檔案備份同步處理的次數 |
 | VaultUniqueId                   | 文字           | 此原則所屬之保存庫的唯一識別碼          |
 | WeeklyRetentionDaysOfTheWeek    | Text           | 一週中所選用於每週保留期的日期               |
@@ -207,7 +207,7 @@ ms.locfileid: "88892519"
 | PreferredWorkloadOnVolume      | 文字          | 此磁片區是慣用儲存體的工作負載      |
 | ProtectedContainerUniqueId     | 文字          | 與備份專案相關聯之受保護容器的唯一識別碼 |
 | schemaVersion                  | 文字          | 架構的版本。 例如， **V2**                   |
-| 狀態                          | 文字          | 備份專案物件的狀態。 例如，使用中、已刪除 |
+| State                          | 文字          | 備份專案物件的狀態。 例如，使用中、已刪除 |
 | StorageAllocatedInMBs          | Number        | 對應的備份專案在類型磁片的對應儲存體中所配置的儲存體大小 |
 | StorageConsumedInMBs           | Number        | 對應儲存體中對應的備份專案所耗用的儲存體大小 |
 | StorageName                    | 文字          | 儲存體實體的名稱。 例如，E:\                      |

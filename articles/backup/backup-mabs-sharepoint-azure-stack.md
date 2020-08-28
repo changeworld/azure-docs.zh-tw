@@ -3,12 +3,12 @@ title: 備份 Azure Stack 上的 SharePoint 伺服器陣列
 description: 使用 Azure 備份伺服器來備份和還原 Azure Stack 上的 SharePoint 資料。 本文提供設定 SharePoint 伺服器陣列，讓所需的資料可以儲存在 Azure 中的相關資訊。 您可以從磁碟或 Azure 還原受保護的 SharePoint 資料。
 ms.topic: conceptual
 ms.date: 06/07/2020
-ms.openlocfilehash: bd94b24479631f9fbbe4070529d76fe6442faae2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7319cf064ab2bab20e4140f8a208be843df7fa71
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538780"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017963"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>備份 Azure Stack 上的 SharePoint 伺服器陣列
 
@@ -32,7 +32,7 @@ MABS 的 Azure 備份支援下列案例：
 
 * MABS 不支援備份向外延展檔案伺服器 (SOFS) 上託管的 SharePoint SQL Server 資料庫。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 繼續之前，請確定您符合使用 Microsoft Azure 備份來保護工作負載的所有[必要條件](backup-azure-dpm-introduction.md#prerequisites-and-limitations)。 關於必要條件的一些工作包括︰建立備份保存庫、下載保存庫認證、安裝 Azure 備份代理程式，以及向保存庫註冊 Azure 備份伺服器。
 
@@ -84,17 +84,17 @@ MABS 的 Azure 備份支援下列案例：
 
     當您展開 SharePoint 伺服器時，MABS 會查詢 VSS，以查看 MABS 可保護什麼資料。  如果 SharePoint 資料庫在遠端，MABS 會連線到資料庫。 如果沒有顯示 SharePoint 資料來源，請檢查 VSS 寫入器是否正在 SharePoint 伺服器和任何遠端 SQL Server 上執行，並確定 SharePoint 伺服器和遠端 SQL Server 上都已安裝 MABS 代理程式。 此外，請確定 SharePoint 資料庫沒有在別處當成 SQL Server 資料庫來保護。
 
-1. 在 [選取資料保護方法] 中，指定您要如何處理短期和長期備份。 短期備份一律會先備份到磁碟，還可選擇使用 Azure 備份從磁碟備份至 Azure 雲端 (\(適用於短期或長期\))。
+1. 在 [選取資料保護方法] 中，指定您要如何處理短期和長期備份。 短期 \- 備份一律會先移至磁片，並可選擇是否要使用 Azure 備份短期或長期從磁片備份至 Azure 雲端 \( \- \) 。
 
 1. 在 [選取短期目標] 中，指定您要如何備份到磁碟上的短期儲存體。   在 [保留期間] 中，指定您要讓資料在磁碟上保留多久。 在 [同步頻率] 中，指定您要增量備份到磁碟的頻率。 如果您不想設定備份間隔，您可以核取 [恰好在復原點之前]，讓 MABS 就在每個排定的復原點之前，執行快速完整備份。
 
 1. 在 [檢閱磁碟配置] 頁面中，檢閱配置給保護群組的存放集區磁碟空間。
 
-    [資料大小總計] 是您想要備份的資料大小，[要在 MABS 上佈建的磁碟空間] 是 MABS 建議給保護群組的空間。 MABS 會根據設定來選擇理想的備份磁碟區。 不過，您也可以在 [磁碟配置詳細資料] 中編輯備份磁碟區選擇。 針對工作負載，請在下拉式功能表中選取您偏好的儲存體。 您的編輯內容會變更 [可用磁碟儲存體] 窗格中 [儲存體總計] 和 [可用儲存體] 的值。 佈建不足的空間是指 MABS 建議為磁碟區新增的儲存體數量，以便未來繼續順暢地備份。
+    [資料大小總計] 是您想要備份的資料大小，[要在 MABS 上佈建的磁碟空間] 是 MABS 建議給保護群組的空間。 MABS 會根據設定來選擇理想的備份磁碟區。 不過，您也可以在 [磁碟配置詳細資料] 中編輯備份磁碟區選擇。 對於工作負載，請在下拉式功能表中選取慣用的存放裝置。 您的編輯內容會變更 [可用磁碟儲存體] 窗格中 [儲存體總計] 和 [可用儲存體] 的值。 佈建不足的空間是指 MABS 建議為磁碟區新增的儲存體數量，以便未來繼續順暢地備份。
 
 1. 在 [選擇複本的建立方式] 中，選取您要如何處理首次的完整資料複寫。  如果您選擇透過網路複寫，建議您選擇離峰時間。 對於大量資料或較差的網路狀況，請考慮使用卸除式媒體來離線複寫資料。
 
-1. 在 [選擇一致性檢查選項] 中，選取要如何自動執行一致性檢查。 您可以只在複本資料變得不一致時才檢查，或根據排程來執行檢查。 如果您不設定自動一致性檢查，則隨時想要執行手動檢查時，請在 MABS 主控台的 [保護] 區域中，以滑鼠右鍵按一下保護群組，然後選取 [執行一致性檢查]。
+1. 在 [選擇一致性檢查選項]  頁面中，選取您想要自動執行一致性檢查的方式。 您可以只在複本資料變得不一致時才檢查，或根據排程來執行檢查。 如果您不設定自動一致性檢查，則隨時想要執行手動檢查時，請在 MABS 主控台的 [保護] 區域中，以滑鼠右鍵按一下保護群組，然後選取 [執行一致性檢查]。
 
 1. 如果您已選擇使用 Azure 備份來備份到雲端，在 [指定線上保護資料] 頁面上，請確定已選取您想要備份至 Azure 的工作負載。
 
@@ -128,7 +128,7 @@ MABS 的 Azure 備份支援下列案例：
 
 1. 在 [MABS 系統管理員主控台]，按一下 [監視] > [動作] > [選項] > [警示發佈] > [發佈作用中警示]
 
-2. 啟用 [警示發佈] 之後，所有可能需要使用者動作的現有 MABS 警示，都會發佈至 **MABS 警示**事件記錄檔。 接著，MABS 伺服器上安裝的 Operations Manager 代理程式，就會將這些警示發佈到 Operations Manager，並隨著新警示產生而持續更新主控台。
+2. 啟用 [警示發佈] 之後，所有可能需要使用者動作的現有 MABS 警示，都會發佈至 **MABS 警示**事件記錄檔。 MABS 伺服器上安裝的 Operations Manager 代理程式接著會將這些警示發佈至 Operations Manager，並在產生新警示時繼續更新主控台。
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>使用 MABS 從磁碟還原 SharePoint 項目
 
@@ -161,7 +161,7 @@ MABS 的 Azure 備份支援下列案例：
    >
 8. 選取您想要使用的 [復原程序]  。
 
-   * 如果 SharePoint 伺服器陣列並未變更，而且與將要還原的復原點相同，請選取 [復原而不使用復原伺服器陣列]。
+   * 如果 SharePoint 伺服器陣列未變更，而且與正在還原的復原點相同，請選取 [ **不使用復原伺服器陣列來復原** ]。
    * 如果 SharePoint 伺服器陣列自建立復原點後已變更，請選取 [使用復原伺服器陣列執行復原]  。
 
      ![復原程序](./media/backup-azure-backup-sharepoint/recovery-process.png)
@@ -169,7 +169,7 @@ MABS 的 Azure 備份支援下列案例：
 
     ![Staging Location1](./media/backup-azure-backup-sharepoint/staging-location1.png)
 
-    MABS 會將裝載 SharePoint 項目的內容資料庫連接至暫存 SQL Server 執行個體。 它會從內容資料庫復原項目，並將它放在 MABS 上的預備檔案位置。 位於預備位置上的復原項目，現在需要匯出至 SharePoint 伺服器陣列上的預備位置。
+    MABS 會將裝載 SharePoint 專案的內容資料庫附加至暫存的 SQL Server 實例。 它會從內容資料庫復原項目，並將它放在 MABS 上的預備檔案位置。 位於預備位置上的復原項目，現在需要匯出至 SharePoint 伺服器陣列上的預備位置。
 
     ![Staging Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
 10. 選取 [指定復原選項] ，並將安全性設定套用至 SharePoint 伺服器陣列，或套用復原點的安全性設定。 按 [下一步] 。

@@ -4,12 +4,12 @@ description: 在本文中，您可以找到 Azure 備份監視警示和 Azure �
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 670314d8703889016431838a9f5b0a6dc56b84b8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4ce1d65414011b1e307cc16fe886adeb007b262c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892553"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000714"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure 備份監視警示-常見問題
 
@@ -50,13 +50,13 @@ ms.locfileid: "88892553"
 
 ## <a name="recovery-services-vault"></a>復原服務保存庫
 
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure 備份代理程式作業狀態需要多久時間才會反映在入口網站中？
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure 備份代理程式作業狀態需要多久的時間才會反映在入口網站中？
 
-Azure 入口網站最多可能需要 15 分鐘，才會反映 Azure 備份代理程式作業狀態。
+Azure 入口網站最多可能需要15分鐘的時間，以反映 Azure 備份代理程式作業狀態。
 
 ### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>當備份作業失敗時，需要多久的時間才會引發警示？
 
-在 Azure 備份失敗的 20 分鐘內就會引發警示。
+Azure 備份失敗的20分鐘內會引發警示。
 
 ### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>是否會有已設定通知但不會傳送電子郵件的情況？
 

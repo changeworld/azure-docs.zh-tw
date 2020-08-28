@@ -1,14 +1,14 @@
 ---
 title: 備份 Azure Stack 中的 SQL Server 工作負載
-description: 在本文中，您將瞭解如何設定 Microsoft Azure 備份 Server （MABS），以保護 Azure Stack 上 SQL Server 資料庫。
+description: 在本文中，您將瞭解如何設定 Microsoft Azure 備份 Server (MABS) 來保護 Azure Stack 上的 SQL Server 資料庫。
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 706050fa37e4234a0ffc902f6b696ebd84e6701e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e56b29f886224617a9ae13d58c8b3dd8dda0dcf8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032641"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017952"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>備份 Azure Stack 中的 SQL Server
 
@@ -24,31 +24,31 @@ ms.locfileid: "87032641"
 
 * 如果您有一個資料庫上其檔案位於遠端的檔案共用，則保護將會失敗，錯誤識別碼為 104。 MABS 不支援保護遠端檔案共用上的 SQL Server 資料。
 * MABS 無法保護儲存在遠端 SMB 共用上的資料庫。
-* 請確定[可用性群組複本已設定為唯讀](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)。
-* 您必須明確地將系統帳戶**NTAuthority\System**新增至 SQL Server 上的 Sysadmin 群組。
-* 當您執行部分自主資料庫的替代位置復原時，您必須確定目標 SQL 實例已啟用「自主[資料庫](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)」功能。
-* 當您針對檔案資料流程資料庫執行替代位置復原時，必須確定目標 SQL 實例已啟用「檔案[資料流程資料庫](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)」功能。
+* 請確定[可用性群組複本設定為唯讀](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)。
+* 您必須將系統帳戶 **NTAuthority\System** 明確新增至 SQL Server 上的系統管理員（Sysadmin）群組。
+* 當您執行部分自主資料庫的替代位置復原時，請確定目標 SQL 執行個體已啟用[自主資料庫](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)功能。
+* 當您執行檔案資料流資料庫的替代位置復原時，請確定目標 SQL 執行個體已啟用[檔案資料流資料庫](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)功能。
 * 保護 SQL Server AlwaysOn：
-  * 在保護群組建立時執行查詢時，MABS 會偵測可用性群組。
+  * MABS 會在建立保護群組時偵測可用性群組。
   * MABS 會偵測容錯移轉並繼續保護資料庫。
   * MABS 支援 SQL Server 實例的多網站叢集設定。
-* 當您保護使用 AlwaysOn 功能的資料庫時，MABS 有下列限制：
-  * MABS 將會根據備份喜好設定，接受 SQL Server 中設定之可用性群組的備份原則，如下所示：
-    * 慣用次要：除非主要複本是唯一的線上複本，否則應在次要複本上執行備份。 如果有多個次要複本可用，則會選取具有最高備份優先權的節點進行備份。 如果只有主要複本可用，則應該在主要複本上進行備份。
+* 當您保護使用 AlwaysOn 功能的資料庫時，MABS 具有下列限制：
+  * MABS 會根據備份喜好設定，採用 SQL Server 中設定的可用性群組備份原則，如下所示：
+    * 慣用次要：除非主要複本是唯一的線上複本，否則應在次要複本上執行備份。 如果有多個次要複本可用，則會選取備份優先順序最高的節點進行備份。 如果只有主要複本可用，則應該在主要複本上進行備份。
     * 僅次要：不應在主要複本上執行備份。 如果主要複本是唯一的線上複本，則不應進行備份。
     * 主要備份：您應該一律在主要複本上進行備份。
     * 任何複本：備份可以在可用性群組中的任何可用性複本上執行。 作為備份來源的節點將依據每個節點的備份優先順序而定。
   * 請注意：
-    * 備份可能會從任何可讀取的複本（也就是主要、同步次要、非同步次要）進行。
-    * 如果從備份中排除任何複本，例如 [**排除複本**] 已啟用或標示為 [無法讀取]，則不會在任何選項下選取該複本進行備份。
+    * 您可以從任何可讀取的複本（也就是主要、同步次要、非同步次要資料庫）進行備份。
+    * 如果從備份中排除任何複本，例如，已啟用 [ **排除複本** ] 或標示為無法讀取，則在任何選項下都不會選取該複本進行備份。
     * 如果有多個複本可用且可讀取，則會選取備份優先順序最高的節點進行備份。
     * 如果在選取的節點上備份失敗，則備份作業會失敗。
-    * 不支援復原到原始位置。
+    * 不支援復原至原始位置。
 * SQL Server 2014 或以上的備份問題：
-  * SQL server 2014 新增了新功能，可為[Windows Azure Blob 儲存體中的內部部署 SQL Server 建立資料庫](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)。 MABS 無法用來保護此設定。
+  * SQL Server 2014 加入了新功能，可為 [Windows Azure Blob 儲存空間的內部部署 SQL Server 建立資料庫](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)。 MABS 不能用來保護此設定。
   * SQL AlwaysOn 選項的「偏好次要」備份喜好設定有一些已知問題。 MABS 一律會從次要複本進行備份。 如果找不到次要複本，則備份會失敗。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 [安裝及準備 Azure 備份伺服器](backup-mabs-install-azure-stack.md)。
 
@@ -93,7 +93,7 @@ ms.locfileid: "87032641"
 
     ![初始複寫方法](./media/backup-azure-backup-sql/pg-manual.png)
 
-    初始備份複本要求將整個資料來源（SQL Server 資料庫）從生產伺服器（SQL Server 電腦）傳送到 Azure 備份伺服器。 這些資料可能會很大，因此透過網路傳輸資料可能會超出頻寬。 基於這個理由，您可以選擇傳送初始備份的方式︰[手動]**** (使用卸除式媒體) 可避免頻寬壅塞，也可選擇 [自動透過網路]**** 在指定時間傳輸。
+    初始備份複本需要將整個資料來源 (SQL Server 資料庫) 從實際執行伺服器 (SQL Server 電腦) 至 Azure 備份伺服器。 這些資料可能會很大，因此透過網路傳輸資料可能會超出頻寬。 基於這個理由，您可以選擇傳送初始備份的方式︰[手動]**** (使用卸除式媒體) 可避免頻寬壅塞，也可選擇 [自動透過網路]**** 在指定時間傳輸。
 
     一旦完成初始備份，其餘的備份會是初始備份複本的增量備份。 增量備份通常都非常小，因此有利於透過網路傳輸。
 
@@ -101,7 +101,7 @@ ms.locfileid: "87032641"
 
     ![一致性檢查](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    Azure 備份伺服器可以執行一致性檢查來檢查備份點的完整性。 Azure 備份伺服器會計算生產伺服器（在此案例中為 SQL Server 電腦）上備份檔案的總和檢查碼，以及該檔案的已備份資料。 如果有衝突，則會假設 Azure 備份伺服器上的備份檔案已損毀。 Azure 備份伺服器會傳送對應至總和檢查碼不符的區塊，藉此改正已備份的資料。 由於一致性檢查會耗用大量效能，您可以安排要在何時進行一致性檢查，也可以自動執行檢查。
+    Azure 備份伺服器可以執行一致性檢查來檢查備份點的完整性。 Azure 備份伺服器會在此情況下，計算生產伺服器上備份檔案的總和檢查碼 (SQL Server 電腦) 和該檔案的備份資料。 如果發生衝突，則會假設 Azure 備份伺服器上的備份檔案已損毀。 Azure 備份伺服器會傳送對應至總和檢查碼不符的區塊，藉此改正已備份的資料。 由於一致性檢查會耗用大量效能，您可以安排要在何時進行一致性檢查，也可以自動執行檢查。
 
 10. 若要指定資料來源的線上保護，請選取要送至 Azure 保護的資料庫，然後按一下 [下一步] ****。
 
@@ -157,7 +157,7 @@ ms.locfileid: "87032641"
 
 以下是從 Azure 復原受保護的實體 (SQL Server 資料庫) 所需的步驟。
 
-1. 開啟 [Azure 備份伺服器管理主控台]。 前往 [復原]**** 工作區，您可以在此處查看受到保護的伺服器。 瀏覽所需的資料庫 (在此例中為 ReportServer$MSDPM2012)。 選取 [復原開始時間]****，該時間會指定為**線上**點。
+1. 開啟 [Azure 備份伺服器管理主控台]。 前往 [復原]**** 工作區，您可以在此處查看受到保護的伺服器。 瀏覽所需的資料庫 (在此例中為 ReportServer$MSDPM2012)。 **從**指定為**線上**點的時間選取復原。
 
     ![選取復原點](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 2. 以滑鼠右鍵按一下資料庫名稱，然後按一下 [復原]****。

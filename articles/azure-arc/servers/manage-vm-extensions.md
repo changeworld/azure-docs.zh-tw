@@ -1,40 +1,40 @@
 ---
-title: '使用已啟用 Azure Arc 的伺服器進行 VM 擴充功能管理 (預覽) '
-description: 已啟用 Azure Arc 的伺服器 (預覽) 可以管理虛擬機器擴充功能的部署，以使用非 Azure Vm 來提供部署後設定和自動化工作。
+title: 'Azure Arc 已啟用伺服器的 VM 延伸模組管理 (預覽) '
+description: Azure Arc 已啟用的伺服器 (preview) 可以管理虛擬機器擴充功能的部署，以使用非 Azure Vm 提供部署後設定和自動化工作。
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b27172a14896041cb4217b12af41d6a04118721
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 259a55c0e5cb4074871fd70a61e6c61d5cf3c50a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213115"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018156"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>使用已啟用 Azure Arc 的伺服器管理虛擬機器擴充功能 (預覽) 
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Azure Arc 已啟用伺服器的虛擬機器延伸模組管理 (預覽) 
 
-虛擬機器 (VM) 延伸模組是小型應用程式，可在 Azure Vm 上提供部署後設定和自動化工作。 例如，如果虛擬機器需要軟體安裝、防毒保護，或是要在其中執行指令碼，您可以使用 VM 延伸模組。
+虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure Vm 上提供部署後設定和自動化工作。 例如，如果虛擬機器需要軟體安裝、防毒保護，或是要在其中執行指令碼，您可以使用 VM 延伸模組。
 
-已啟用 azure Arc 的伺服器 (預覽) 可讓您將 Azure VM 擴充功能部署到非 Azure Windows 和 Linux Vm，並透過其生命週期簡化混合式機器內部部署、邊緣和其他雲端環境的管理。
+Azure Arc 已啟用的伺服器 (preview) 可讓您將 Azure VM 擴充功能部署至非 Azure Windows 和 Linux Vm，並透過其生命週期簡化混合式機器內部部署、邊緣和其他雲端環境的管理。
 
 ## <a name="key-benefits"></a>主要權益
 
-已啟用 Azure Arc 的伺服器 (預覽) VM 擴充功能支援提供下列主要優點：
+Azure Arc 啟用的伺服器 (預覽版) VM 延伸模組支援提供下列主要優點：
 
-* 使用 [Azure 自動化狀態設定](../../automation/automation-dsc-overview.md) 集中儲存設定，並維護透過 DSC VM 擴充功能啟用的混合式連線機器所需的狀態。
+* 使用 [Azure 自動化狀態設定](../../automation/automation-dsc-overview.md) 來集中儲存設定，並維護透過 DSC VM 延伸模組啟用的混合式連線機器所需狀態。
 
-* 在透過 Log Analytics 代理程式 VM 擴充功能啟用 [Azure 監視器中](../../azure-monitor/platform/data-platform-logs.md) ，收集記錄檔資料以進行分析。 這適用于跨各種來源的資料執行複雜的分析。
+* 使用 Log Analytics 代理程式 VM 擴充功能 [Azure 監視器](../../azure-monitor/platform/data-platform-logs.md) 啟用記錄檔收集記錄資料以進行分析。 這適用于跨各種來源的資料執行複雜的分析。
 
-* 有了 [適用於 VM 的 Azure 監視器](../../azure-monitor/insights/vminsights-overview.md)，會分析 Windows 和 Linux vm 的效能，並監視其進程和其他資源和外部進程的相依性。 這是透過啟用 Log Analytics 代理程式和相依性代理程式 VM 延伸模組來達成。
+* 使用 [適用於 VM 的 Azure 監視器](../../azure-monitor/insights/vminsights-overview.md)時，會分析 Windows 和 Linux vm 的效能，並監視其進程和其他資源和外部進程的相依性。 這可透過啟用 Log Analytics 代理程式和 Dependency agent VM 延伸模組來達成。
 
-* 使用自訂腳本擴充功能，在混合式連線電腦上下載並執行腳本。 此擴充功能適用於部署後設定、軟體安裝或其他任何設定/管理工作。
+* 使用自訂腳本擴充功能，在混合式連線的電腦上下載並執行腳本。 此擴充功能適用於部署後設定、軟體安裝或其他任何設定/管理工作。
 
 ## <a name="availability"></a>可用性
 
-VM 擴充功能僅適用于 [支援的區域](overview.md#supported-regions)清單。 請確定您將電腦上架到其中一個區域。
+VM 擴充功能只能在 [支援的區域](overview.md#supported-regions)清單中使用。 確定您已在其中一個區域內架您的電腦。
 
 ## <a name="extensions"></a>延伸模組
 
-在此預覽中，我們支援 Windows 和 Linux 電腦上的下列 VM 擴充功能。
+在此預覽中，我們會在 Windows 和 Linux 機器上支援下列 VM 擴充功能。
 
 |延伸模組 |OS |Publisher |其他資訊 |
 |----------|---|----------|-----------------------|
@@ -42,31 +42,31 @@ VM 擴充功能僅適用于 [支援的區域](overview.md#supported-regions)清�
 |DSC |Windows |Microsoft PowerShell|[Windows PowerShell DSC 延伸模組](../../virtual-machines/extensions/dsc-windows.md)|
 |Log Analytics 代理程式 |Windows |Microsoft.EnterpriseCloud.Monitoring |[適用于 Windows 的 Log Analytics VM 擴充功能](../../virtual-machines/extensions/oms-windows.md)|
 |Microsoft Dependency Agent | Windows |Microsoft.Compute | [適用于 Windows 的相依性代理程式虛擬機器擴充功能](../../virtual-machines/extensions/agent-dependency-windows.md)|
-|CustomScript|Linux |Microsoft. Azure 擴充功能 |[Linux 自訂腳本擴充功能第2版](../../virtual-machines/extensions/custom-script-linux.md) |
+|CustomScript|Linux |Microsoft Azure 延伸模組 |[Linux 自訂腳本擴充功能第2版](../../virtual-machines/extensions/custom-script-linux.md) |
 |DSC |Linux |Microsoft.OSTCExtensions |[適用于 Linux 的 PowerShell DSC 擴充功能](../../virtual-machines/extensions/dsc-linux.md) |
 |Log Analytics 代理程式 |Linux |Microsoft.EnterpriseCloud.Monitoring |[適用于 Linux 的 Log Analytics VM 擴充功能](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft Dependency Agent | Linux |Microsoft.Compute | [適用于 Linux 的相依性代理程式虛擬機器擴充功能](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-VM 擴充功能可以搭配 Azure Resource Manager 範本、Azure 入口網站或 Azure PowerShell 在已啟用 Arc 的伺服器所管理的混合式伺服器上， (preview) 執行。
+VM 擴充功能可以使用 Azure Resource Manager 範本、從 Azure 入口網站，或在已啟用 Arc 之伺服器 (preview) 所管理的混合式伺服器上的 Azure PowerShell 執行。
 
-若要深入瞭解 Azure 已連線的機器代理程式套件，以及有關延伸模組代理程式元件的詳細資料，請參閱 [代理程式總覽](agent-overview.md#agent-component-details)。
+若要瞭解 Azure Connected Machine 代理程式封裝和延伸模組代理程式元件的詳細資料，請參閱 [代理程式總覽](agent-overview.md#agent-component-details)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 這項功能取決於您訂用帳戶中的下列 Azure 資源提供者：
 
 * **Microsoft.HybridCompute**
 * **Microsoft.GuestConfiguration**
 
-如果尚未註冊，請遵循 [註冊 Azure 資源提供者](agent-overview.md#register-azure-resource-providers)底下的步驟。
+如果尚未註冊，請遵循 [註冊 Azure 資源提供者](agent-overview.md#register-azure-resource-providers)中的步驟。
 
 適用于 Linux 的 Log Analytics 代理程式 VM 擴充功能需要在目的電腦上安裝 Python 2.x。
 
 ### <a name="connected-machine-agent"></a>Connected Machine 代理程式
 
-請確認您的電腦符合 Azure 連線機器代理程式支援的 Windows 和 Linux 作業系統 [版本](agent-overview.md#supported-operating-systems) 。
+確認您的電腦符合 Azure Connected Machine 代理程式支援的 Windows 和 Linux 作業系統 [版本](agent-overview.md#supported-operating-systems) 。
 
-這項功能支援的已連線機器代理程式的最小版本為：
+這項功能支援的已連線電腦代理程式的最小版本為：
 
 * Windows-0.7. x
 * Linux-0.8. x
@@ -75,37 +75,37 @@ VM 擴充功能可以搭配 Azure Resource Manager 範本、Azure 入口網站�
 
 ## <a name="enable-extensions-from-the-portal"></a>從入口網站啟用擴充功能
 
-您可以透過 Azure 入口網站，將您的 Arc 用於伺服器 (預覽) 受管理的機器。
+您可以透過 Azure 入口網站，將 VM 擴充功能套用至伺服器 (預覽版) 受管理的電腦。
 
 1. 在瀏覽器中，移至 [Azure 入口網站](https://aka.ms/arcserver-preview)。
 
-2. 在入口網站中，流覽至 [ **機器]-[Azure Arc** ]，並從清單中選取您的混合式機器。
+2. 在入口網站中，流覽至 [ **電腦-Azure Arc** ]，然後從清單中選取您的混合式電腦。
 
-3. 選擇 [ **擴充**功能]，然後選取 [ **新增**]。 請從可用擴充功能清單選擇您想要的擴充功能，並遵循精靈中的指示。 在此範例中，我們將部署 Log Analytics VM 擴充功能。 
+3. 選擇 [ **擴充**功能]，然後選取 [ **新增**]。 請從可用擴充功能清單選擇您想要的擴充功能，並遵循精靈中的指示。 在此範例中，我們會部署 Log Analytics VM 擴充功能。 
 
-    ![選取所選機器的 VM 延伸模組](./media/manage-vm-extensions/add-vm-extensions.png)
+    ![選取所選機器的 VM 擴充功能](./media/manage-vm-extensions/add-vm-extensions.png)
 
-    下列範例示範如何從 Azure 入口網站安裝 Log Analytics VM 擴充功能：
+    下列範例顯示從 Azure 入口網站安裝 Log Analytics VM 擴充功能：
 
     ![安裝 Log Analytics VM 擴充功能](./media/manage-vm-extensions/mma-extension-config.png)
 
-    若要完成安裝，您必須提供工作區識別碼和主要金鑰。 如果您不熟悉如何尋找此資訊，請參閱 [取得工作區識別碼和金鑰](../../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)。
+    若要完成安裝，您必須提供工作區識別碼和主要金鑰。 如果您不熟悉如何尋找此資訊，請參閱 [取得工作區識別碼和金鑰](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)。
 
-4. 確認所提供的必要資訊之後，請選取 [ **建立**]。 隨即會顯示部署的摘要，您可以查看部署的狀態。
-
->[!NOTE]
->雖然多個擴充功能可以一起批次處理並加以處理，但它們會以序列方式進行安裝。 第一個延伸模組安裝完成後，會嘗試安裝下一個延伸模組。
-
-## <a name="azure-resource-manager-templates"></a>Azure Resource Manager 範本
-
-VM 擴充功能可以新增至 Azure Resource Manager 範本，並使用範本的部署執行。 使用已啟用 Arc 的伺服器所支援的 VM 擴充功能 (preview) ，您可以使用 Azure PowerShell 在 Linux 或 Windows 電腦上部署支援的 VM 擴充功能。 下列每個範例都包含範本檔案和參數檔案，其中包含要提供給範本的範例值。
+4. 確認所提供的必要資訊之後，請選取 [ **建立**]。 系統會顯示部署的摘要，您可以查看部署的狀態。
 
 >[!NOTE]
->雖然多個擴充功能可以一起批次處理並加以處理，但它們會以序列方式進行安裝。 第一個延伸模組安裝完成後，會嘗試安裝下一個延伸模組。
+>雖然多個擴充功能可以一起批次處理和處理，但它們是以順序安裝。 第一個延伸模組安裝完成之後，會嘗試安裝下一個擴充功能。
+
+## <a name="azure-resource-manager-templates"></a>Azure 資源管理員範本
+
+VM 擴充功能可以新增至 Azure Resource Manager 範本，並使用範本的部署執行。 使用已啟用 Arc 的伺服器所支援的 VM 延伸模組 (preview) ，您可以使用 Azure PowerShell，在 Linux 或 Windows 電腦上部署支援的 VM 擴充功能。 下列每個範例都包含範本檔案和參數檔案，其中包含要提供給範本的範例值。
+
+>[!NOTE]
+>雖然多個擴充功能可以一起批次處理和處理，但它們是以順序安裝。 第一個延伸模組安裝完成之後，會嘗試安裝下一個擴充功能。
 
 ### <a name="deploy-the-log-analytics-vm-extension"></a>部署 Log Analytics VM 擴充功能
 
-若要輕鬆部署 Log Analytics 代理程式，請提供下列範例，以在 Windows 或 Linux 上安裝代理程式。
+若要輕鬆地部署 Log Analytics 代理程式，請提供下列範例，以在 Windows 或 Linux 上安裝代理程式。
 
 #### <a name="template-file-for-linux"></a>適用于 Linux 的範本檔案
 
@@ -148,7 +148,7 @@ VM 擴充功能可以新增至 Azure Resource Manager 範本，並使用範本�
 }
 ```
 
-#### <a name="template-file-for-windows"></a>適用于 Windows 的範本檔案
+#### <a name="template-file-for-windows"></a>適用于 Windows 的範本檔
 
 ```json
 {
@@ -213,7 +213,7 @@ VM 擴充功能可以新增至 Azure Resource Manager 範本，並使用範本�
 }
 ```
 
-將範本和參數檔案儲存至磁片，並使用部署的適當值來編輯參數檔案。 接著，您可以使用下列命令，在資源群組內的所有已連線電腦上安裝擴充功能。 此命令會使用 *TemplateFile* 參數來指定範本和 *TemplateParameterFile* 參數，以指定包含參數和參數值的檔案。
+將範本和參數檔案儲存至磁片，並以適當的值為您的部署編輯參數檔案。 然後，您可以使用下列命令，在資源群組內的所有連線電腦上安裝此延伸模組。 此命令會使用 *TemplateFile* 參數來指定範本，並使用 *>templateparameterfile* 參數來指定包含參數和參數值的檔案。
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\LogAnalyticsAgentWin.json" -TemplateParameterFile "D:\Azure\Templates\LogAnalyticsAgentWinParms.json"
@@ -221,15 +221,15 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ### <a name="deploy-the-custom-script-extension"></a>部署自訂腳本擴充功能
 
-若要使用自訂腳本擴充功能，請提供下列範例，以在 Windows 和 Linux 上執行。 如果您不熟悉自訂腳本延伸模組，請參閱 [Windows 的自訂腳本擴充](../../virtual-machines/extensions/custom-script-windows.md) 功能或 [適用于 Linux 的自訂腳本擴充](../../virtual-machines/extensions/custom-script-linux.md)功能。 搭配混合式機器使用此延伸模組時，您應該瞭解幾個不同的特性：
+若要使用自訂腳本擴充功能，您可以在 Windows 和 Linux 上執行下列範例。 如果您不熟悉自訂腳本擴充功能，請參閱 [適用于 Windows 的自訂腳本擴充](../../virtual-machines/extensions/custom-script-windows.md) 功能或 [適用于 Linux 的自訂腳本擴充](../../virtual-machines/extensions/custom-script-linux.md)功能。 搭配混合式電腦使用此延伸模組時，您應該瞭解幾個不同的特性：
 
-* 具有 Azure VM 自訂腳本擴充功能的支援作業系統清單不適用於已啟用 Azure Arc 的伺服器。 您可以在 [這裡](agent-overview.md#supported-operating-systems)找到支援 Arc 之伺服器的支援 OSs 清單。
+* 使用 Azure VM 自訂腳本擴充功能的支援作業系統清單不適用 Azure Arc 啟用的伺服器。 您可以在 [這裡](agent-overview.md#supported-operating-systems)找到已啟用 Arc 之伺服器的支援 OSs 清單。
 
-* 關於 Azure 虛擬機器擴展集或傳統 Vm 的設定詳細資料不適用。
+* 關於 Azure 虛擬機器擴展集或傳統 Vm 的設定詳細資料並不適用。
 
-* 如果您的電腦需要在外部下載腳本，而且只能透過 proxy 伺服器進行通訊，您必須設定 [連線的電腦代理程式](manage-agent.md#update-or-remove-proxy-settings) 來設定 proxy 伺服器環境變數。
+* 如果您的電腦需要在外部下載腳本，而且只能透過 proxy 伺服器進行通訊，則您需要設定 [連線的機器代理程式](manage-agent.md#update-or-remove-proxy-settings) 來設定 proxy 伺服器的環境變數。
 
-「自訂指令碼擴充功能」組態會指定指令碼位置和要執行命令等項目。 這項設定是在適用于 Linux 和 Windows 混合式電腦的 Azure Resource Manager 範本中指定。
+「自訂指令碼擴充功能」組態會指定指令碼位置和要執行命令等項目。 這項設定是在 Azure Resource Manager 範本中指定，適用于 Linux 和 Windows 混合式電腦。
 
 #### <a name="template-file-for-linux"></a>適用于 Linux 的範本檔案
 
@@ -272,7 +272,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 }
 ```
 
-#### <a name="template-file-for-windows"></a>適用于 Windows 的範本檔案
+#### <a name="template-file-for-windows"></a>適用于 Windows 的範本檔
 
 ```json
 {
@@ -375,13 +375,13 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 }
 ```
 
-### <a name="deploy-the-powershell-dsc-extension"></a>部署 PowerShell DSC 延伸模組
+### <a name="deploy-the-powershell-dsc-extension"></a>部署 PowerShell DSC 擴充功能
 
-若要使用 PowerShell DSC 延伸模組，請提供下列範例，以在 Windows 和 Linux 上執行。 如果您不熟悉 PowerShell DSC 延伸模組，請參閱 [DSC 延伸模組處理常式總覽](../../virtual-machines/extensions/dsc-overview.md)。 搭配混合式機器使用此延伸模組時，您應該瞭解幾個不同的特性：
+若要使用 PowerShell DSC 擴充功能，您可以在 Windows 和 Linux 上執行下列範例。 如果您不熟悉 PowerShell DSC 擴充功能，請參閱 [DSC 延伸模組處理常式總覽](../../virtual-machines/extensions/dsc-overview.md)。 搭配混合式電腦使用此延伸模組時，您應該瞭解幾個不同的特性：
 
-* 具有 Azure VM PowerShell DSC 擴充功能的支援作業系統清單不適用於已啟用 Azure Arc 的伺服器。 您可以在 [這裡](agent-overview.md#supported-operating-systems)找到支援 Arc 之伺服器的支援 OSs 清單。
+* 具有 Azure VM PowerShell DSC 擴充功能的支援作業系統清單，不適用於 Azure Arc 啟用的伺服器。 您可以在 [這裡](agent-overview.md#supported-operating-systems)找到已啟用 Arc 之伺服器的支援 OSs 清單。
 
-* 如果您的電腦需要在外部下載腳本，而且只能透過 proxy 伺服器進行通訊，您必須設定 [連線的電腦代理程式](manage-agent.md#update-or-remove-proxy-settings) 來設定 proxy 伺服器環境變數。
+* 如果您的電腦需要在外部下載腳本，而且只能透過 proxy 伺服器進行通訊，則您需要設定 [連線的機器代理程式](manage-agent.md#update-or-remove-proxy-settings) 來設定 proxy 伺服器的環境變數。
 
 #### <a name="template-file-for-linux"></a>適用于 Linux 的範本檔案
 
@@ -460,7 +460,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 }
 ```
 
-#### <a name="template-file-for-windows"></a>適用于 Windows 的範本檔案
+#### <a name="template-file-for-windows"></a>適用于 Windows 的範本檔
 
 ```json
 {
@@ -629,7 +629,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ### <a name="dependency-agent"></a>相依性代理程式
 
-若要使用 Azure 監視器相依性代理程式擴充功能，請提供下列範例，以在 Windows 和 Linux 上執行。 如果您不熟悉 Dependency agent，請參閱 [Azure 監視器代理程式的總覽](../../azure-monitor/platform/agents-overview.md#dependency-agent)。
+若要使用 Azure 監視器相依性代理程式延伸模組，您可以在 Windows 和 Linux 上執行下列範例。 如果您不熟悉相依性代理程式，請參閱 [Azure 監視器代理程式的總覽](../../azure-monitor/platform/agents-overview.md#dependency-agent)。
 
 #### <a name="template-file-for-linux"></a>適用于 Linux 的範本檔案
 
@@ -669,7 +669,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 }
 ```
 
-#### <a name="template-file-for-windows"></a>適用于 Windows 的範本檔案
+#### <a name="template-file-for-windows"></a>適用于 Windows 的範本檔
 
 ```json
 {
@@ -709,15 +709,15 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ## <a name="troubleshooting"></a>疑難排解
 
-您可以從 Azure 入口網站抓取有關擴充功能部署狀態的資料。
+您可以從 Azure 入口網站抓取有關延伸模組部署狀態的資料。
 
 下列疑難排解步驟適用於所有虛擬機器擴充功能。
 
-1. 若要檢查來賓代理程式記錄檔，請查看您的擴充功能是在 for Windows 中布建 `%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs` ，以及下的 Linux 時的活動 `/var/lib/GuestConfig/ext_mgr_logs` 。
+1. 若要檢查來賓代理程式記錄檔，請查看您的延伸模組在中布建于 `%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs` Windows 和下的 Linux 時的活動 `/var/lib/GuestConfig/ext_mgr_logs` 。
 
-2. 如需 Windows 的詳細資訊，請參閱特定擴充功能的延伸模組記錄檔 `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` 。 延伸模組輸出會記錄到中 Linux 上安裝的每個延伸模組的檔案 `/var/log/GuestConfig/extension_logs` 。
+2. 如需 Windows 的詳細資訊，請參閱特定延伸模組的延伸模組記錄檔 `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` 。 擴充功能輸出會記錄到安裝在 Linux 上的每個擴充功能的檔案 `/var/log/GuestConfig/extension_logs` 。
 
-3. 請參閱延伸模組特定檔的疑難排解章節，以瞭解錯誤碼、已知問題等。您可以在延伸模組總覽的 **疑難排解和支援** 一節中，找到每個擴充功能的其他疑難排解資訊。 這包括寫入記錄檔之錯誤碼的描述。 延伸模組文章已連結于本文稍早所述的延伸模組 [資料表](#extensions) 。
+3. 針對錯誤碼、已知問題等，請參閱延伸模組特定檔疑難排解章節。您可以在延伸模組總覽的 [ **疑難排解和支援** ] 區段中找到每個擴充功能的其他疑難排解資訊。 這包括寫入記錄檔的錯誤碼描述。 擴充功能文章會連結到本文稍早所述的 [延伸模組資料表](#extensions) 。
 
 4. 查看系統記錄。 檢查是否有其他作業對擴充功能造成干擾，例如，長時間執行且需要以獨佔方式存取套件管理員的其他應用程式安裝。
 

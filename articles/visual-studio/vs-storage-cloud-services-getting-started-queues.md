@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio （雲端服務）開始使用佇列儲存體
+title: '使用 Visual Studio (雲端服務開始使用佇列儲存體) '
 description: 在使用 Visual Studio 已連接服務連接到儲存體帳戶之後，如何在 Visual Studio 雲端服務專案中開始使用 Azure 佇列儲存體
 services: storage
 author: ghogen
@@ -7,18 +7,18 @@ manager: jillfra
 ms.assetid: da587aac-5e64-4e9a-8405-44cc1924881d
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-csharp
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 8410d082369c5eb5bc7212c50a5546e9b74c5b95
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 9f0a3c3a96a73bd71a9b0c769a3ceff85ae428f1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131521"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017612"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>開始使用 Azure 佇列儲存體和 Visual Studio 已連接服務 (雲端服務專案)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "86131521"
 ## <a name="overview"></a>概觀
 本文描述當您在雲端服務專案中建立或參考 Azure 儲存體帳戶之後，如何在 Visual Studio 中使用 [加入已連接服務]**** 對話方塊，開始使用 Azure 佇列儲存體。
 
-我們將會示範如何在程式碼中建立佇列。 我們也將顯示如何執行基本的佇列作業，例如新增、修改、讀取和讀取佇列訊息。 這些範例均以 c # 程式碼撰寫，並使用[適用于 .net 的 Microsoft Azure 儲存體用戶端程式庫](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
+我們將會示範如何在程式碼中建立佇列。 我們也將顯示如何執行基本的佇列作業，例如新增、修改、讀取和讀取佇列訊息。 這些範例是以 c # 程式碼撰寫，並使用 [適用于 .net 的 Microsoft Azure 儲存體用戶端程式庫](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
 
 [ **新增連接的服務** ] 作業會安裝適當的 NuGet 封裝，以存取專案中的 Azure 儲存體，並將儲存體帳戶的連接字串新增至您的專案組態檔。
 
@@ -90,7 +90,7 @@ messageQueue.AddMessage(message);
 ```
 
 ## <a name="read-a-message-in-a-queue"></a>讀取佇列中的訊息
-藉由呼叫**PeekMessage**方法，您可以在佇列前面查看訊息，而無需將它從佇列中移除。
+您可以藉由呼叫 **PeekMessage** 方法，在佇列前面查看訊息，而不需要將它從佇列中移除。
 
 ```csharp
 // Peek at the next message
@@ -100,7 +100,7 @@ CloudQueueMessage peekedMessage = messageQueue.PeekMessage();
 ## <a name="read-and-remove-a-message-in-a-queue"></a>讀取並移除佇列中的訊息
 您的程式碼可以使用兩個步驟將訊息從佇列中移除 (清除佇列)。
 
-1. 呼叫**GetMessage**以取得佇列中的下一個訊息。 從這個佇列讀取訊息的任何其他程式碼都不會看到從**GetMessage**傳回的訊息。 依預設，此訊息會維持 30 秒的不可見狀態。
+1. 呼叫 **GetMessage** 以取得佇列中的下一則訊息。 從這個佇列中讀取訊息的任何其他程式碼，都會無法看到從 **GetMessage** 傳回的訊息。 依預設，此訊息會維持 30 秒的不可見狀態。
 2. 若要完成從佇列中移除訊息，請呼叫 **DeleteMessage**。
 
 這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 下列程式碼會在處理完訊息之後立即呼叫 **DeleteMessage** 。
@@ -120,9 +120,9 @@ await messageQueue.DeleteMessage(retrievedMessage);
 自訂從佇列中擷取訊息的方法有兩種。
 
 * 您可以取得一批訊息 (最多 32 個)。
-* 您可以設定較長或較短的可見度逾時，讓您的程式碼有較長或較短的時間可以完全處理每個訊息。 下列程式碼範例將使用 **GetMessages** 方法，在一次呼叫中取得 20 個訊息。 接著它會使用 **foreach** 迴圈處理每個訊息。 它也會將可見度逾時設定為每個訊息五分鐘。 請注意，5分鐘會同時針對所有訊息啟動，因此在呼叫**GetMessages**之後的5分鐘過後，任何尚未刪除的訊息都會再次顯示。
+* 您可以設定較長或較短的可見度逾時，讓您的程式碼有較長或較短的時間可以完全處理每個訊息。 下列程式碼範例將使用 **GetMessages** 方法，在一次呼叫中取得 20 個訊息。 接著它會使用 **foreach** 迴圈處理每個訊息。 它也會將可見度逾時設定為每個訊息五分鐘。 請注意，系統會同時為所有訊息啟動5分鐘，因此在呼叫 **GetMessages**之後5分鐘之後，任何尚未刪除的訊息都會重新顯示。
 
-以下是範例：
+以下為範例：
 
 ```csharp
 foreach (CloudQueueMessage message in messageQueue.GetMessages(20, TimeSpan.FromMinutes(5)))
@@ -150,7 +150,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
 ## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>搭配使用 Async-Await 模式和通用 Azure 佇列 API
-這個範例示範如何搭配使用 Async-Await 模式和通用 Azure 佇列 API。 此範例會呼叫每個指定方法的非同步版本，這可由每個方法的**非同步**修正後看到。 使用非同步方法時，async-await 模式會暫停本機執行，直到呼叫完成為止。 這種行為可讓目前的執行緒執行其他工作，有助於避免發生效能瓶頸並提升應用程式的整體回應。 如需在 .NET 中使用非同步 Await 模式的詳細資訊，請參閱[async 和 Await （c # 和 Visual Basic）](https://msdn.microsoft.com/library/hh191443.aspx)
+這個範例示範如何搭配使用 Async-Await 模式和通用 Azure 佇列 API。 此範例會呼叫每個指定方法的非同步版本，這可以透過每個方法的 **非同步** 修正後來查看。 使用非同步方法時，async-await 模式會暫停本機執行，直到呼叫完成為止。 這種行為可讓目前的執行緒執行其他工作，有助於避免發生效能瓶頸並提升應用程式的整體回應。 如需在 .NET 中使用 Async-Await 模式的詳細資訊 [，請參閱 async 和 Await (c # 和 Visual Basic) ](https://msdn.microsoft.com/library/hh191443.aspx)
 
 ```csharp
 // Create a message to put in the queue

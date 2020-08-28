@@ -3,12 +3,12 @@ title: 使用 MARS 代理程式將檔案還原到 Windows Server
 description: 在本文中，了解如何使用 Microsoft Azure 復原服務 (MARS) 代理程式，將儲存在 Azure 中的資料還原至 Windows Server 或 Windows 電腦。
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: e61ad7083a7b6979222566112820bad133022844
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 59e212b31d79c0d9a75369e542fee5e86f29653a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892502"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018904"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>使用 MARS 代理程式將檔案還原到 Windows Server
 
@@ -89,7 +89,7 @@ ms.locfileid: "88892502"
 * *範例保存庫* – 來源電腦和目標電腦註冊所在的復原服務保存庫。
 
 > [!NOTE]
-> 備份無法還原到執行舊版作業系統的目標電腦。 例如，從 Windows 7 電腦建立的備份可以還原至 Windows 7 (或更新版本) 的電腦。 從 Windows 8 電腦建立的備份無法還原至 Windows 7 電腦。
+> 備份無法還原到執行舊版作業系統的目的電腦。 例如，從 Windows 7 電腦建立的備份可以還原至 Windows 7 (或更新版本) 的電腦。 從 Windows 10 電腦建立的備份無法還原至 Windows 7 電腦。
 >
 >
 

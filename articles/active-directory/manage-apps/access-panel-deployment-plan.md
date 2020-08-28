@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: b7ddbff2643086f1875ca190b67f521edb115c3e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 009818c9b208f5f464949f5e3ffe1404e509ac4b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930531"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017714"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>規劃 Azure Active Directory 我的應用程式部署
 
-Azure Active Directory (Azure AD) 我的應用程式是網頁型入口網站，可協助降低支援成本、提高生產力和安全性，並減少使用者挫折。 系統包含詳細的報告，可在您存取系統時進行追蹤，並通知系統管理員誤用或濫用。
+Azure Active Directory (Azure AD) 我的應用程式是網頁型入口網站，可協助降低支援成本、提高生產力和安全性，並減少使用者挫折。 系統包含詳細的報告，可在您存取系統時進行追蹤，並通知系統管理員誤用或濫用。 若要瞭解如何從終端使用者的觀點來使用我的應用程式，請參閱 [我的應用程式入口網站](../user-help/my-apps-portal-end-user-access.md)說明。
 
 藉由使用 Azure AD 我的應用程式，您可以：
 
@@ -42,7 +42,7 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 
 **提供直覺的使用者體驗**：我的應用程式為您的單一平臺提供適用于所有 Azure 單一登入 (SSO) 連線的應用程式。 您有一個整合的入口網站，可尋找現有的設定和新的功能，例如群組管理和自助式密碼重設，因為它們是新增的。 直覺的體驗可讓使用者更快速地恢復工作，並提高生產力，同時減少其挫折。
 
-**提高生產力**：我的應用程式中的所有使用者應用程式都已啟用 SSO。 藉由減少或排除額外的登入提示，跨企業應用程式和 Microsoft 365 來啟用 SSO 會建立絕佳的登入體驗。 我的應用程式使用自助和動態成員資格，並提升您身分識別系統的整體安全性。 它是藉由確保適當的人員來管理應用程式的存取權來完成這項工作。 我的應用程式可作為一致的登陸頁面，讓您快速尋找資源並繼續工作。
+**提高生產力**：我的應用程式中的所有使用者應用程式都已啟用 SSO。 藉由減少或排除額外的登入提示，跨企業應用程式和 Microsoft 365 來啟用 SSO 會建立絕佳的登入體驗。 我的應用程式使用自助和動態成員資格，並提升您身分識別系統的整體安全性。 我的應用程式可確保適當的人員可以管理應用程式的存取權。 我的應用程式可作為一致的登陸頁面，讓您快速尋找資源並繼續工作。
 
 **管理成本**：使用 Azure AD 啟用我的應用程式有助於 divestment 內部部署基礎結構。 它會提供您一致的入口網站來尋找您的所有應用程式、要求資源存取權，以及管理帳戶，進而降低支援成本。
 
@@ -89,6 +89,10 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 | 使用者體驗| 使用者可以管理他們的帳戶。 |
 | 使用者體驗| 使用者知道瀏覽器相容性。 |
 | 支援| 使用者可以找到我的應用程式問題的支援。 |
+
+
+> [!TIP]
+> 我的應用程式可以在遠端使用應用程式 Proxy 時，與內部公司 Url 搭配使用。 若要深入瞭解，請參閱 [教學課程：新增內部部署應用程式，以透過應用程式 Proxy 在 Azure Active Directory 中進行遠端存取](application-proxy-add-on-premises-application.md)。
 
 ### <a name="best-practices-for-deploying-azure-ad-my-apps"></a>部署 Azure AD 我的應用程式的最佳作法
 
@@ -189,7 +193,7 @@ Microsoft 會為 [電子郵件提供可自訂的範本，以及我的應用程�
 
 ## <a name="plan-your-my-apps-deployment"></a>規劃您的我的應用程式部署
 
-我的應用程式的基礎是可供使用者存取的應用程式啟動器入口網站 [https://myapps.microsoft.com](https://myapps.microsoft.com/) 。 我的應用程式頁面會提供使用者單一位置來開始工作，並取得其必要的應用程式。 在這裡，使用者可以找到他們具有單一登入存取權的所有應用程式清單。 
+我的應用程式的基礎是可供使用者存取的應用程式啟動器入口網站 [https://myapps.microsoft.com](https://myapps.microsoft.com/) 。 [我的應用程式] 頁面可讓使用者在單一位置開始工作，並取得其必要的應用程式。 在這裡，使用者可以找到他們具有單一登入存取權的所有應用程式清單。 
 
 > [!NOTE]
 > 相同的應用程式將會顯示在 Microsoft 365 應用程式啟動器中。
@@ -255,7 +259,7 @@ Azure AD 會將大部分的審核資料保留30天。 您可以透過 Azure 系�
 
 如果您要在測試或部署期間新增群組，但尚未允許應用程式在我的應用程式中顯示，請參閱 [Azure Active Directory 中的使用者體驗中隱藏應用程式](hide-application-from-user-portal.md)。
 
-### <a name="deploy-microsoft-microsoft-365-applications-to-my-apps"></a>將 Microsoft Microsoft 365 的應用程式部署到我的應用程式
+### <a name="deploy-microsoft-365-applications-to-my-apps"></a>將 Microsoft 365 應用程式部署至我的應用程式
 
 針對 Microsoft 365 的應用程式，使用者會根據指派給他們的授權，接收 Office 的複本。 存取 Office 應用程式的必要條件是讓使用者指派與 Office 應用程式相關聯的正確授權。 當您為使用者指派授權時，他們會在我的應用程式頁面和 Microsoft 365 應用程式啟動器中，自動看到與授權相關聯的應用程式。
 
@@ -303,7 +307,7 @@ Azure AD 會將大部分的審核資料保留30天。 您可以透過 Azure 系�
 
 ## <a name="manage-your-implementation"></a>管理您的實作為
 
-在 Azure Active Directory 中，您應該使用最低許可權角色來完成必要的工作。 請[參閱可用的不同角色](../users-groups-roles/directory-assign-admin-roles.md)，並選擇正確的角色，為此應用程式的每個角色解決您的需求。 某些角色可能需要暫時套用，並在部署完成後移除。
+使用最低特殊許可權角色來完成 Azure Active Directory 內的必要工作。 請[參閱可用的不同角色](../users-groups-roles/directory-assign-admin-roles.md)，並選擇正確的角色，為此應用程式的每個角色解決您的需求。 某些角色可能需要暫時套用，並在部署完成後移除。
 
 | 角色| 角色| Azure AD 角色  |
 | - | -| -|

@@ -1,6 +1,6 @@
 ---
 title: 敏感性資料 - Microsoft 威脅模型化工具 - Azure | Microsoft Docs
-description: 瞭解 Threat Modeling Tool 中的敏感性資料緩和。 請參閱風險降低資訊和查看程式碼範例。
+description: 瞭解 Threat Modeling Tool 中的敏感性資料緩和措施。 查看緩和資訊並查看程式碼範例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,27 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8f8b18d36453ac65300a5dd19fa7e07b1449bc28
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 1de363e66a4d5780258b75d777a95318f36333fd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87538943"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000493"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>安全性架構︰敏感性資料 | 風險降低 
 | 產品/服務 | 發行項 |
 | --------------- | ------- |
-| **電腦信任邊界** | <ul><li>[如果二進位檔包含機密資訊，請務必加以模糊處理](#binaries-info)</li><li>[考慮使用加密檔案系統（EFS）來保護機密的使用者特定資料](#efs-user)</li><li>[確定應用程式儲存在檔案系統上的敏感性資料已加密](#filesystem)</li></ul> | 
-| **Web 應用程式** | <ul><li>[確保不會在瀏覽器上快取敏感性內容](#cache-browser)</li><li>[加密包含敏感性資料的 Web 應用程式組態檔區段](#encrypt-data)</li><li>[明確停用敏感性表單和輸入中的自動完成 HTML 屬性](#autocomplete-input)</li><li>[確定使用者畫面上顯示的敏感性資料已遮罩](#data-mask)</li></ul> | 
-| **Database** | <ul><li>[執行動態資料遮罩來限制敏感性資料暴露非特殊許可權的使用者](#dynamic-users)</li><li>[確定密碼是以 salted 雜湊格式儲存](#salted-hash)</li><li>[確保資料庫資料行中的敏感性資料已加密](#db-encrypted)</li><li>[確定已啟用資料庫層級加密（TDE）](#tde-enabled)</li><li>[確定資料庫備份已加密](#backup)</li></ul> | 
+| **電腦信任邊界** | <ul><li>[如果二進位檔包含機密資訊，請確定這些二進位檔已進行模糊處理](#binaries-info)</li><li>[請考慮使用加密的檔案系統 (EFS) 用來保護機密的使用者特定資料](#efs-user)</li><li>[確定應用程式儲存在檔案系統上的敏感性資料已加密](#filesystem)</li></ul> | 
+| **Web 應用程式** | <ul><li>[確定瀏覽器上不會快取敏感性內容](#cache-browser)</li><li>[加密包含敏感性資料的 Web 應用程式組態檔區段](#encrypt-data)</li><li>[明確停用敏感性表單和輸入中的自動完成 HTML 屬性](#autocomplete-input)</li><li>[確定使用者畫面上顯示的敏感性資料已遮罩](#data-mask)</li></ul> | 
+| **Database** | <ul><li>[執行動態資料遮罩來限制敏感性資料暴露非特殊許可權的使用者](#dynamic-users)</li><li>[確定密碼是以 salted 雜湊格式儲存](#salted-hash)</li><li>[確定資料庫資料行中的敏感性資料已加密](#db-encrypted)</li><li>[確定已啟用資料庫層級加密 (TDE) ](#tde-enabled)</li><li>[確定資料庫備份已加密](#backup)</li></ul> | 
 | **Web API** | <ul><li>[確定與 Web API 相關的敏感性資料未儲存在瀏覽器的儲存體中](#api-browser)</li></ul> | 
 | Azure Document DB | <ul><li>[將儲存在 Azure Cosmos DB 中的敏感性資料加密](#encrypt-docdb)</li></ul> | 
 | **Azure IaaS VM 信任邊界** | <ul><li>[使用 Azure 磁碟加密來加密虛擬機器所使用的磁片](#disk-vm)</li></ul> | 
 | **Service Fabric 信任邊界** | <ul><li>[加密 Service Fabric 應用程式中的秘密](#fabric-apps)</li></ul> | 
-| **Dynamics CRM** | <ul><li>[執行安全性模型化並視需要使用業務單位/團隊](#modeling-teams)</li><li>[將存取權最小化以在關鍵實體上共用功能](#entities)</li><li>[針對與 Dynamics CRM 共用功能相關聯的風險和良好的安全性作法訓練使用者](#good-practices)</li><li>[包含開發標準規則來禁止在例外狀況管理中顯示設定詳細資料](#exception-mgmt)</li></ul> | 
+| **Dynamics CRM** | <ul><li>[執行安全性模型化並視需要使用業務單位/團隊](#modeling-teams)</li><li>[最小化對重要實體共用功能的存取](#entities)</li><li>[針對與 Dynamics CRM 共用功能相關聯的風險以及良好的安全性作法訓練使用者](#good-practices)</li><li>[包含開發標準規則來禁止在例外狀況管理中顯示 config 詳細資料](#exception-mgmt)</li></ul> | 
 | **Azure 儲存體** | <ul><li>[針對待用資料使用 Azure 儲存體服務加密 (SSE) (預覽)](#sse-preview)</li><li>[使用用戶端加密在 Azure 儲存體中儲存敏感性資料](#client-storage)</li></ul> | 
-| **行動用戶端** | <ul><li>[將寫入電話本機儲存體的敏感性資料或 PII 資料加密](#pii-phones)</li><li>[在散發給使用者之前，先模糊產生的二進位檔](#binaries-end)</li></ul> | 
+| **行動用戶端** | <ul><li>[將寫入電話本機儲存體的敏感性資料或 PII 資料加密](#pii-phones)</li><li>[將產生的二進位檔分配給終端使用者之前，先將其模糊化](#binaries-end)</li></ul> | 
 | **WCF** | <ul><li>[將 clientCredentialType 設定為憑證或 Windows](#cert)</li><li>[未啟用 WCF 安全性模式](#security)</li></ul> | 
 
 ## <a name="ensure-that-binaries-are-obfuscated-if-they-contain-sensitive-information"></a><a id="binaries-info"></a>確定包含敏感性資訊的二進位檔已經過模糊處理
@@ -80,7 +80,7 @@ ms.locfileid: "87538943"
 | **適用的技術** | 泛型、Web Form、MVC5、MVC6 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
-| **步驟** | 瀏覽器可以儲存資訊以便進行快取和記錄歷程。 這些快取的檔案會儲存在資料夾中，例如若是 Internet Explorer，則會儲存在 Temporary Internet Files 資料夾內。 當您再次參閱這些頁面時，瀏覽器就會顯示快取內的這些頁面。 如果對使用者顯示機密資訊（例如其位址、信用卡詳細資料、身分證號碼或使用者名稱），則此資訊可能會儲存在瀏覽器的快取中，因此可透過檢查瀏覽器的快取，或直接按瀏覽器的 [上一頁] 按鈕來取得。 針對所有頁面，將 [快取控制回應標頭] 值設定為 [無存放區]。 |
+| **步驟** | 瀏覽器可以儲存資訊以便進行快取和記錄歷程。 這些快取的檔案會儲存在資料夾中，例如若是 Internet Explorer，則會儲存在 Temporary Internet Files 資料夾內。 當您再次參閱這些頁面時，瀏覽器就會顯示快取內的這些頁面。 如果使用者顯示機密資訊 (例如其位址、信用卡詳細資料、身分證號碼或使用者名稱) ，則這項資訊可能會儲存在瀏覽器的快取中，因此可透過檢查瀏覽器的快取或直接按下瀏覽器的 [上一頁] 按鈕來取得。 將所有頁面的快取控制回應標頭值設定為 [無存放區]。 |
 
 ### <a name="example"></a>範例
 ```XML

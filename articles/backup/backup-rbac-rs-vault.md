@@ -1,36 +1,36 @@
 ---
-title: 以角色為基礎的存取控制管理備份
+title: 使用角色型存取控制來管理備份
 description: 使用角色型存取控制來管理復原服務保存庫中的備份管理作業存取權。
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 408e25b865c6d244118e505121492ccf22d19b64
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1a4bb617511f5d5ccf882ccb11e7d88eb7a848ea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533456"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017799"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用角色型存取控制來管理 Azure 備份復原點
 
-Azure 角色型存取控制（Azure RBAC）可為 Azure 提供更細緻的存取權管理。 RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。
+Azure 角色型存取控制 (Azure RBAC) 可讓您對 Azure 進行更細緻的存取管理。 RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。
 
 > [!IMPORTANT]
-> Azure 備份所提供的角色僅限於可在 Azure 入口網站中執行，或透過 REST API 或復原服務保存庫 PowerShell 或 CLI Cmdlet 進行的動作。 在 Azure 備份代理程式用戶端 UI、System Center Data Protection Manager UI 或 Azure 備份伺服器 UI 中執行的動作則非這些角色所能控制。
+> Azure 備份提供的角色僅限於可在 Azure 入口網站或透過 REST API 或復原服務保存庫 PowerShell 或 CLI Cmdlet 執行的動作。 在 Azure 備份代理程式用戶端 UI 或 System center Data Protection Manager UI 或 Azure 備份伺服器 UI 中執行的動作不是這些角色的控制權。
 
-Azure 備份提供三個內建角色來控制備份管理作業。 深入瞭解[Azure 內建角色](../role-based-access-control/built-in-roles.md)
+Azure 備份提供三個內建角色來控制備份管理作業。 深入瞭解 [Azure 內建角色](../role-based-access-control/built-in-roles.md)
 
-* [備份參與者](../role-based-access-control/built-in-roles.md#backup-contributor)-此角色具有建立和管理備份的擁有權限，但刪除復原服務保存庫並將存取權授與其他人。 您可以將此角色想做是管理備份的系統管理員，其可執行每一種備份管理作業。
+* [備份參與者](../role-based-access-control/built-in-roles.md#backup-contributor) -除了刪除復原服務保存庫並將存取權授與其他人之外，此角色具有建立及管理備份的擁有權限。 您可以將此角色想做是管理備份的系統管理員，其可執行每一種備份管理作業。
 * [備份操作員](../role-based-access-control/built-in-roles.md#backup-operator) - 此角色擁有參與者的所有權限，但用來移除備份和管理備份原則的權限除外。 此角色相當於參與者，但無法執行破壞性作業，例如停止備份並刪除資料，或移除內部部署資源的註冊。
 * [備份讀取者](../role-based-access-control/built-in-roles.md#backup-reader) - 此角色擁有用來檢視所有備份管理作業的權限。 您可以將此角色想做是監視者。
 
-如果您想要定義自己的角色以獲得更多控制，請參閱如何在 Azure RBAC 中[建立自訂角色](../role-based-access-control/custom-roles.md)。
+如果您想要定義您自己的角色以進行更多的控制，請參閱如何在 Azure RBAC 中 [建立自訂角色](../role-based-access-control/custom-roles.md) 。
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>將備份的內建角色對應至備份管理動作
 
-下表會捕捉執行該作業所需的備份管理動作和對應的最低 Azure 角色。
+下表將會捕獲執行該作業所需的備份管理動作和對應的最低 Azure 角色。
 
-| 管理作業 | 需要的最低 Azure 角色 | 所需的範圍 |
+| 管理作業 | 需要最小的 Azure 角色 | 所需的範圍 |
 | --- | --- | --- |
 | 建立復原服務保存庫 | 備份參與者 | 包含保存庫的資源群組 |
 | 啟用 Azure VM 的備份 | 備份操作員 | 包含保存庫的資源群組 |
@@ -58,9 +58,9 @@ Azure 備份提供三個內建角色來控制備份管理作業。 深入瞭解[
 > [!IMPORTANT]
 > 如果您指定 VM 資源範圍內的 VM 參與者，並按一下 VM 設定中的 [備份]，它就會開啟 [啟用備份] 畫面 (即使已在呼叫時將 VM 備份)，以確認備份狀態只能在訂用帳戶層級才能運作。 若要避免這個問題，請移至保存庫並開啟 VM 的備份項目檢視，或在訂用帳戶層級指定 VM 參與者角色。
 
-## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Azure 檔案共用備份的最低角色需求
+## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Azure 檔案共用備份的最小角色需求
 
-下表會捕捉執行 Azure 檔案共用作業所需的備份管理動作和對應的角色。
+下表將會捕獲執行 Azure 檔案共用作業所需的備份管理動作和對應角色。
 
 | 管理作業 | 需要角色 | 資源 |
 | --- | --- | --- |
@@ -77,7 +77,7 @@ Azure 備份提供三個內建角色來控制備份管理作業。 深入瞭解[
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/role-assignments-portal.md)：開始使用 Azure 入口網站中的 RBAC。
+* [Azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)：開始使用 Azure 入口網站中的 RBAC。
 * 了解如何使用下列各項管理存取權：
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)

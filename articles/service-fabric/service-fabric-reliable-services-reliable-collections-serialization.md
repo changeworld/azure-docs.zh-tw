@@ -1,14 +1,15 @@
 ---
 title: 可靠的集合物件序列化
-description: 瞭解 Azure Service Fabric 可靠的集合物件序列化，包括預設策略和如何定義自訂序列化。
+description: 瞭解 Azure Service Fabric 可靠的集合物件序列化，包括預設策略，以及如何定義自訂序列化。
 ms.topic: conceptual
 ms.date: 5/8/2017
-ms.openlocfilehash: f7a0dc56c181ddd6a98ab0e263180c222368dafb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1d29f5d3391bdea0b21997a392d4d2e053b7ec65
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245988"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018615"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric 中的 Reliable Collection 物件序列化
 Reliable Collections 會複寫並保存其項目，以確保在電腦發生失敗和電力中斷時能持續保留這些項目。
@@ -140,8 +141,8 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 ## <a name="next-steps"></a>後續步驟
   * [序列化與升級](service-fabric-application-upgrade-data-serialization.md)
   * [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
-  * [使用 Visual Studio 升級您的應用程式](service-fabric-application-upgrade-tutorial.md)會逐步引導您使用 Visual Studio 進行應用程式升級。
-  * [使用 Powershell 升級您的應用程式](service-fabric-application-upgrade-tutorial-powershell.md)會逐步引導您使用 powershell 進行應用程式升級。
+  * [使用 Visual Studio 升級您的應用程式](service-fabric-application-upgrade-tutorial.md) 會逐步引導您使用 Visual Studio 進行應用程式升級。
+  * [使用 Powershell 升級您的應用程式](service-fabric-application-upgrade-tutorial-powershell.md) 會逐步引導您使用 powershell 來升級應用程式。
   * 使用 [升級參數](service-fabric-application-upgrade-parameters.md)來控制您應用程式的升級方式。
-  * 瞭解如何在升級您的應用程式時使用 advanced 功能，方法是參考[Advanced 主題](service-fabric-application-upgrade-advanced.md)。
-  * 參考[疑難排解應用程式升級](service-fabric-application-upgrade-troubleshooting.md)中的步驟，以修正應用程式升級中常見的問題。
+  * 瞭解如何在升級您的應用程式時使用先進的功能，方法是參考 [Advanced 主題](service-fabric-application-upgrade-advanced.md)。
+  * 藉由參考針對 [應用程式升級進行疑難排解](service-fabric-application-upgrade-troubleshooting.md)的步驟，修正應用程式升級中常見的問題。

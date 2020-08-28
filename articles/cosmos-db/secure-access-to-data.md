@@ -6,16 +6,17 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 3a9039470c32b89d398dd41e3df99e91c70d913c
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4714ec9773b98887de483b7353eea9f4416eec19
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542631"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017748"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>安全存取 Azure Cosmos DB 中的資料
 
-本文概述如何保護[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)中所儲存之資料的存取權。
+本文概述如何保護 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)中儲存之資料的存取。
 
 Azure Cosmos DB 會使用兩種類型的金鑰來驗證使用者，以允許存取其資料和資源。 
 
@@ -28,7 +29,7 @@ Azure Cosmos DB 會使用兩種類型的金鑰來驗證使用者，以允許存�
 
 ## <a name="master-keys"></a>主要金鑰
 
-主要金鑰可讓您存取資料庫帳戶的所有系統管理資源。 主要金鑰：
+主要金鑰提供資料庫帳戶的所有管理資源的存取權。 主要金鑰：
 
 - 允許存取帳戶、資料庫、使用者和權限。 
 - 無法用來提供容器和文件的更細微的存取權。
@@ -47,17 +48,17 @@ Azure Cosmos DB 會使用兩種類型的金鑰來驗證使用者，以允許存�
 
 輸替主要金鑰的程序很簡單。 
 
-1. 流覽至 Azure 入口網站以取得您的次要金鑰。
-2. 以您應用程式中的次要金鑰取代您的主要金鑰。 請確定所有部署的所有 Cosmos DB 用戶端都會立即重新開機，而且會開始使用更新的金鑰。
-3. 旋轉 Azure 入口網站中的主要金鑰。
-4. 驗證新的主要金鑰適用于所有資源。 視 Cosmos DB 帳戶的大小而定，金鑰輪替程式可能需要不到一分鐘到數小時的時間。
+1. 流覽至 Azure 入口網站，以取得您的次要金鑰。
+2. 將您的主要金鑰取代為應用程式中的次要金鑰。 確定所有部署中的所有 Cosmos DB 用戶端都會立即重新開機，並且會開始使用更新的金鑰。
+3. 輪替 Azure 入口網站中的主要金鑰。
+4. 驗證新的主要金鑰適用于所有資源。 視 Cosmos DB 帳戶的大小而定，金鑰輪替程式可能會從小於一分鐘到數小時的時間進行。
 5. 將次要金鑰取代為新的主要金鑰。
 
 :::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Azure 入口網站中的主要金鑰輪替 - 示範 NoSQL 資料庫安全性" border="false":::
 
 ### <a name="code-sample-to-use-a-master-key"></a>使用主要金鑰的程式碼範例
 
-下列程式碼範例說明如何使用 Cosmos DB 帳戶端點和主要金鑰來具現化 DocumentClient 並建立資料庫：
+下列程式碼範例說明如何使用 Cosmos DB 帳戶端點和主要金鑰來具現化 DocumentClient，並建立資料庫：
 
 ```csharp
 //Read the Azure Cosmos DB endpointUrl and authorization keys from config.
@@ -74,7 +75,7 @@ CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 
 :::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
-## <a name="resource-tokens"></a>資源權杖<a id="resource-tokens"></a>
+## <a name="resource-tokens"></a>資源權杖 <a id="resource-tokens"></a>
 
 資源權杖允許存取資料庫內的應用程式資源。 資源權杖：
 
@@ -103,13 +104,13 @@ Cosmos DB 資源權杖提供一個安全的替代方式，無需主要或唯讀�
 
     :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure Cosmos DB 資源權杖工作流程" border="false":::
 
-資源權杖的產生和管理由原生 Cosmos DB 用戶端程式庫處理。不過，如果您使用 REST，您必須建構要求/驗證標頭。 如需建立 REST 驗證標頭的詳細資訊，請參閱[Cosmos DB 資源的存取控制](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)或[.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs)或[Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)的原始程式碼。
+資源權杖的產生和管理由原生 Cosmos DB 用戶端程式庫處理。不過，如果您使用 REST，您必須建構要求/驗證標頭。 如需有關建立 REST 驗證標頭的詳細資訊，請參閱 [Cosmos DB 資源的存取控制](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) 或 [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) 或 [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)的原始程式碼。
 
 如需用來產生或代理資源權杖的中間層服務的範例，請參閱 [ResourceTokenBroker 應用程式](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)。
 
 ## <a name="users"></a>使用者<a id="users"></a>
 
-Azure Cosmos DB 的使用者與 Cosmos 資料庫相關聯。  每個資料庫都包含零個或多個 Cosmos DB 使用者。 下列程式碼範例示範如何使用[Azure Cosmos DB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement)來建立 Cosmos DB 使用者。
+Azure Cosmos DB 的使用者與 Cosmos 資料庫相關聯。  每個資料庫都包含零個或多個 Cosmos DB 使用者。 下列程式碼範例示範如何使用 [Azure Cosmos DB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement)來建立 Cosmos DB 使用者。
 
 ```csharp
 //Create a user.
@@ -119,17 +120,17 @@ User user = await database.CreateUserAsync("User 1");
 ```
 
 > [!NOTE]
-> 每個 Cosmos DB 使用者都有一個 ReadAsync （）方法，可用於抓取與使用者相關聯的[許可權](#permissions)清單。
+> 每個 Cosmos DB 使用者都有一個 System.io.stream.readasync ( # A1 方法，可用來取得與使用者相關聯的 [許可權](#permissions) 清單。
 
-## <a name="permissions"></a>權限<a id="permissions"></a>
+## <a name="permissions"></a>許可權<a id="permissions"></a>
 
-許可權資源會與使用者建立關聯，並在容器上指派，以及分割區索引鍵層級。 每個使用者都可以包含零或多個許可權。 許可權資源可存取安全性權杖，使用者在嘗試存取特定的資料分割索引鍵時，其所需。 權限資源可能提供兩種可用的存取等級：
+許可權資源會與使用者建立關聯，並在容器和分割區索引鍵層級指派。 每位使用者可能包含零個或更多的許可權。 許可權資源可讓您存取使用者嘗試存取特定資料分割索引鍵中的特定容器或資料時所需的安全性權杖。 權限資源可能提供兩種可用的存取等級：
 
 - 全部：使用者具有資源的完整權限。
 - 讀取：使用者只能讀取資源的內容，但無法執行資源的寫入、更新或刪除作業。
 
 > [!NOTE]
-> 若要執行預存程式，使用者必須擁有將在其上執行預存程式之容器的「全部」許可權。
+> 若要執行預存程式，使用者必須擁有將在其中執行預存程式之容器的 All 許可權。
 
 ### <a name="code-sample-to-create-permission"></a>建立權限的程式碼範例
 
@@ -146,9 +147,9 @@ user.CreatePermissionAsync(
         resourcePartitionKey: new PartitionKey("012345")));
 ```
 
-### <a name="code-sample-to-read-permission-for-user"></a>使用者讀取權限的程式碼範例
+### <a name="code-sample-to-read-permission-for-user"></a>使用者的讀取權限程式碼範例
 
-下列程式碼片段示範如何抓取與上面建立的使用者相關聯的許可權，並代表使用者具現化新的 CosmosClient，範圍限定為單一分割區索引鍵。
+下列程式碼片段示範如何抓取與上面建立的使用者相關聯的許可權，並代表使用者具現化新的 CosmosClient，範圍為單一分割區索引鍵。
 
 ```csharp
 //Read a permission, create user client session.
@@ -164,10 +165,10 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 1. 開啟 Azure 入口網站，選取您的 Azure Cosmos DB 帳戶。
 2. 按一下 [存取控制 (IAM)]**** 索引標籤，然後按一下 [+ 新增角色指派]****。
 3. 在 [新增角色指派]**** 窗格的 [角色]**** 方塊中，選取 [Cosmos DB 帳戶讀者角色]****。
-4. 在 [**指派存取權給**] 方塊中，選取 [ **Azure AD 使用者、群組或應用程式**]。
+4. 在 [ **指派存取權**] 方塊中，選取 [ **Azure AD 使用者、群組或應用程式**]。
 5. 選取目錄中您要為其授與存取權的使用者、群組或應用程式。  您可以依顯示名稱、電子郵件地址或物件識別碼來搜尋目錄。
     選取的使用者、群組或應用程式會出現在選取的成員清單中。
-6. 按一下 [檔案] 。
+6. 按一下 [儲存]。
 
 實體現在已可讀取 Azure Cosmos DB 資源。
 
@@ -179,6 +180,6 @@ Azure Cosmos DB 可讓您搜尋、選取、修改和刪除資料庫或集合中�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要深入瞭解 Cosmos 資料庫安全性，請參閱[Cosmos DB 資料庫安全性](database-security.md)。
+- 若要深入瞭解 Cosmos 資料庫安全性，請參閱 [Cosmos DB 資料庫安全性](database-security.md)。
 - 若要了解如何建構 Cosmos DB 授權權杖，請參閱 [Cosmos DB 資源的存取控制 (英文)](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)。
-- 使用者管理範例與使用者和許可權、 [.NET SDK v3 使用者管理範例](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)
+- 使用者管理範例（含使用者和許可權）， [.NET SDK v3 使用者管理範例](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)

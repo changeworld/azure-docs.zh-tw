@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
-ms.custom: has-adal-ref
-ms.openlocfilehash: 57d1cda2e74cfe4ae3948e55124123d05682591b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: d842974b0b53e0b0ce199334a07f11e5c998b18d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534221"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018802"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>從 Azure AD 取得權杖，以授權用戶端應用程式的要求
 
@@ -281,7 +281,7 @@ CloudBlockBlob blob = new CloudBlockBlob(
 
 ### <a name="enable-implicit-grant-flow"></a>啟用隱含授與流程
 
-若要執行範例，您可能需要設定應用程式註冊的隱含授與流程。 遵循下列步驟：
+若要執行範例，您可能需要設定應用程式註冊的隱含授與流程。 請遵循下列步驟：
 
 1. 在 Azure 入口網站中，流覽至您的應用程式註冊。
 1. 在 [ **管理** ] 區段中，選取 **驗證** 設定。

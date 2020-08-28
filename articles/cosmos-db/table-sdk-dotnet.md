@@ -8,12 +8,13 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: f735668e1519a6a12082537dabfe17be3e96ffdd
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 8c594ba01ea6fe9fb1c3cee2ed415496132d1abc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459994"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018428"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 資料表 .NET API：下載和版本資訊
 
@@ -41,11 +42,11 @@ ms.locfileid: "87459994"
 
 ### <a name="212"></a><a name="2.1.2"></a>2.1.2
 
-* 錯誤修正
+* Bug 修正
 
 ### <a name="210"></a><a name="2.1.0"></a>2.1.0
 
-* 錯誤修正
+* Bug 修正
 
 ### <a name="200"></a><a name="2.0.0"></a>2.0.0
 
@@ -66,7 +67,7 @@ ms.locfileid: "87459994"
 ### <a name="110"></a><a name="1.1.0"></a>1.1.0
 
 * 將 TableQueryMaxItemCount、TableQueryEnableScan、TableQueryMaxDegreeOfParallelism 及 TableQueryContinuationTokenLimitInKb 新增至 TableRequestOptions
-* Bug 修正
+* 錯誤修正
 
 ### <a name="100"></a><a name="1.0.0"></a>1.0.0
 
@@ -80,9 +81,9 @@ ms.locfileid: "87459994"
 
 Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供順利轉換至較新/支援的版本。
 
-此連結 `Microsoft.Azure.CosmosDB.Table` 庫目前僅適用于 .NET Framework，而且處於維護模式，即將淘汰。 新的特性和功能和優化只會新增至 .NET Standard 程式庫[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)，因此建議您升級至[Cosmos. table. 資料表](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)。
+連結 `Microsoft.Azure.CosmosDB.Table` 庫目前僅供 .NET Framework，且處於維護模式，且即將淘汰。 新的特性和功能和優化只會新增至 .NET Standard 程式庫 [Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)，因此建議您升級至 [Cosmos.. 資料表](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)。
 
-Windowsazure.storage 已淘汰[windowsazure.storage-premiumtable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview)預覽套件。 WindowsAzure.Storage-PremiumTable SDK 將於 2018 年 11 月 15 日淘汰，屆時不允許使用已停用 SDK 的要求。
+WindowsAzure 已淘汰 [windowsazure.storage-premiumtable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) 預覽套件。 WindowsAzure.Storage-PremiumTable SDK 將於 2018 年 11 月 15 日淘汰，屆時不允許使用已停用 SDK 的要求。
 
 | 版本 | 發行日期 | 停用日期 |
 | --- | --- | --- |

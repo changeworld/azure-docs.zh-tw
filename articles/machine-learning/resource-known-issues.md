@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: cd9b015c292d262430d3fd845e06e38866bc6239
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757280"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018717"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 的已知問題與疑難排解
 
@@ -184,6 +184,8 @@ ms.locfileid: "88757280"
 ## <a name="set-up-your-environment"></a>設定您的環境
 
 * **建立 AmlCompute 時發生問題**：在 GA 版本之前，某些從 Azure 入口網站建立其 Azure Machine Learning 工作區的使用者很少可能無法在該工作區中建立 AmlCompute。 您可以對服務提出支援要求，或透過入口網站或 SDK 建立新的工作區，以立即解除封鎖。
+
+* **Azure Container Registry 目前不支援資源組名中的 unicode 字元**：由於 ACR 要求的資源組名包含 unicode 字元，因此可能會失敗。 若要減輕此問題，建議您在不同名稱的資源群組中建立 ACR。
 
 ## <a name="work-with-data"></a>使用資料
 

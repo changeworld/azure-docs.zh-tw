@@ -10,13 +10,13 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6e34bd91a1deb5bbd28c11e8f23ea2b812333aaf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: how-to, devx-track-python, devx-track-csharp
+ms.openlocfilehash: 56cd2117a352626cf59023d62ea8c931401389c5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652588"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018088"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署為 Web 服務的 Azure Machine Learning 模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,7 +179,7 @@ REST API 預期是具有下列結構之 JSON 文件的要求主體：
 
 ## <a name="call-the-service-c"></a>呼叫服務 (C#)
 
-此範例示範如何使用 C# 呼叫從[在筆記本內訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)範例建立的 Web 服務：
+此範例示範如何使用 C# 呼叫從[在筆記本內訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)範例建立的 Web 服務：
 
 ```csharp
 using System;
@@ -268,7 +268,7 @@ namespace MLWebServiceClient
 
 ## <a name="call-the-service-go"></a>呼叫服務 (Go)
 
-此範例示範如何使用 Go 來呼叫從[在筆記本內訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)範例建立的 Web 服務：
+此範例示範如何使用 Go 來呼叫從[在筆記本內訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)範例建立的 Web 服務：
 
 ```go
 package main
@@ -360,7 +360,7 @@ func main() {
 
 ## <a name="call-the-service-java"></a>呼叫服務 (Java)
 
-此範例示範如何使用 Java 來呼叫從[在筆記本內訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)範例建立的 Web 服務：
+此範例示範如何使用 Java 來呼叫從[在筆記本內訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)範例建立的 Web 服務：
 
 ```java
 import java.io.IOException;
@@ -440,7 +440,7 @@ public class App {
 
 ## <a name="call-the-service-python"></a>呼叫服務 (Python)
 
-此範例示範如何使用 Python 來呼叫從[在筆記本內訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)範例建立的 Web 服務：
+此範例示範如何使用 Python 來呼叫從[在筆記本內訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)範例建立的 Web 服務：
 
 ```python
 import requests

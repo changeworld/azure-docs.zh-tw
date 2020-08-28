@@ -9,12 +9,13 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: 270461ad0ba5c77f845af13d7cd4a24d0c098b31
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 542c9374b70cd765ed27dd4dd158ad81035269f0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182454"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018836"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 分頁 Blob 的概觀
 
@@ -22,7 +23,7 @@ Azure 儲存體提供三種類型的 Blob 儲存體：區塊 Blob、附加 Blob 
 
 分頁 Blob 是 512 位元組分頁的集合，可提供讀取/寫入任意位元組範圍的功能。 因此，分頁 Blob 適合用於儲存索引式和疏鬆檔案結構，例如虛擬機器和資料庫的 OS 和資料磁碟。 例如，Azure SQL DB 會使用分頁 Blob 作為其資料庫的基礎永續性儲存體。 此外，分頁 Blob 也經常用於具有範圍型更新的檔案。  
 
-Azure 分頁 Blob 的主要功能包括其 REST 介面、基礎儲存體的持久性，以及能順暢移轉至 Azure 的能力。 下一節將更深入討論這些功能。 此外，Azure 分頁 Blob 目前支援兩種類型的儲存體：進階儲存體和標準儲存體。 進階儲存體是特別針對需要一致高效能和低延遲的工作負載而設計，讓 premium 分頁 blob 適用于高效能儲存案例。 標準儲存體帳戶較符合成本效益，可執行不區分延遲的工作負載。
+Azure 分頁 Blob 的主要功能包括其 REST 介面、基礎儲存體的持久性，以及能順暢移轉至 Azure 的能力。 下一節將更深入討論這些功能。 此外，Azure 分頁 Blob 目前支援兩種類型的儲存體：進階儲存體和標準儲存體。 進階儲存體是專為需要一致高效能和低延遲的工作負載所設計，讓高階頁面 blob 適用于高效能儲存體案例。 標準儲存體帳戶對於執行不區分延遲的工作負載而言更符合成本效益。
 
 ## <a name="sample-use-cases"></a>範例使用案例
 
@@ -31,12 +32,12 @@ Azure 分頁 Blob 的主要功能包括其 REST 介面、基礎儲存體的持�
 第一方 Microsoft 服務 (例如 Azure Site Recovery、Azure 備份)，以及許多第三方協力廠商的開發人員，皆使用分頁 Blob 的 REST 介面來實作領先業界的創新功能。 以下是一些實作於 Azure 上的獨特案例： 
 
 * 應用程式導向的累加快照集管理：應用程式可以利用分頁 Blob 快照集和 REST API 來儲存應用程式檢查點，以免於因複製資料所帶來高成本。 Azure 儲存體支援針對分頁 Blob 的本機快照集，此功能並不需要複製整個 Blob。 這些公用快照集 API 也能提供針對快照集間差異的存取及複製。
-* 從內部部署到雲端的應用程式和資料即時移轉：複製內部部署資料，並使用 REST Api 直接寫入 Azure 分頁 blob，同時內部部署 VM 會繼續執行。 一旦趕上目標之後，您可以使用該資料快速地容錯移轉至 Azure VM。 如此一來，您就可以將 Vm 和虛擬磁片從內部部署遷移至雲端，但停機時間最短，因為資料移轉會在背景中進行，而當您繼續使用 VM 時，容錯移轉所需的停機時間會是短 (，) 分鐘。
+* 從內部部署到雲端的應用程式和資料即時移轉：複製內部部署資料，並使用 REST Api 直接寫入 Azure 分頁 blob，而內部部署 VM 會繼續執行。 一旦趕上目標之後，您可以使用該資料快速地容錯移轉至 Azure VM。 如此一來，您就可以將 Vm 和虛擬磁片從內部部署遷移至雲端，並將停機時間降到最短，因為資料移轉是在背景中進行，而當您繼續使用 VM，且容錯移轉所需的停機時間將會在幾分鐘內短暫 (的) 。
 * [SAS 型](../common/storage-sas-overview.md)共用存取，可實現如多個讀取器及單一寫入器並支援並行控制的案例。
 
 ## <a name="pricing"></a>定價
 
-分頁 blob 提供的兩種儲存體類型都有自己的計價模式。 高階分頁 blob 會遵循受控磁片的定價模型，而標準分頁 blob 則會依使用的大小和每筆交易來計費。 如需詳細資訊，請參閱[Azure 分頁 blob 定價頁面](https://azure.microsoft.com/pricing/details/storage/page-blobs/)。
+分頁 blob 提供的兩種儲存體類型都有自己的定價模型。 高階分頁 blob 會遵循受控磁片的定價模式，而標準分頁 blob 則會依所使用的大小和每筆交易計費。 如需詳細資訊，請參閱 [Azure 分頁 blob 定價頁面](https://azure.microsoft.com/pricing/details/storage/page-blobs/)。
 
 ## <a name="page-blob-features"></a>分頁 Blob 功能
 
@@ -52,13 +53,13 @@ Azure 分頁 Blob 的主要功能包括其 REST 介面、基礎儲存體的持�
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-首先，取得容器的參考。 若要建立分頁 blob，請呼叫[GetPageBlobClient](/dotnet/api/azure.storage.blobs.specialized.specializedblobextensions.getpageblobclient)方法，然後呼叫[PageBlobClient. create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create)方法。 傳入要建立之 blob 的大小上限。 該大小必須是512個位元組的倍數。
+首先，取得容器的參考。 若要建立分頁 blob，請呼叫 [GetPageBlobClient](/dotnet/api/azure.storage.blobs.specialized.specializedblobextensions.getpageblobclient) 方法，然後呼叫 [PageBlobClient. create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) 方法。 傳入要建立之 blob 的大小上限。 該大小必須是512個位元組的倍數。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_CreatePageBlob":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-若要建立分頁 blob，我們會先建立**CloudBlobClient**物件，並使用基底 URI 來存取儲存體帳戶的 blob 儲存體 (*pbaccount* （如 [圖) 1] 所示），以及**StorageCredentialsAccountAndKey**物件，如下列範例所示。 然後，此範例會顯示如何建立**CloudBlobContainer**物件的參考，然後建立容器 (*Testvhds*) （如果尚未存在的話）。 然後，透過 **CloudBlobContainer** 物件，建立 **CloudPageBlob** 物件的參照，方法是指定要存取的分頁 Blob 名稱 (os4.vhd)。 若要建立分頁 blob，請呼叫[CloudPageBlob](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)，傳入要建立之 blob 的大小上限。 *blobSize* 必須是 512 位元組的倍數。
+若要建立分頁 blob，我們會先建立 **CloudBlobClient** 物件，其中包含用來存取儲存體帳戶之 blob 儲存體的基底 URI (在 [圖) 1] 中 *>pbaccount* ，以及 **>storagecredentialsaccountandkey** 物件，如下列範例所示。 然後，此範例會顯示如何建立 **>cloudblobcontainer.listblobs** 物件的參考，然後建立容器 (*Testvhds*) （如果尚未存在）。 然後，透過 **CloudBlobContainer** 物件，建立 **CloudPageBlob** 物件的參照，方法是指定要存取的分頁 Blob 名稱 (os4.vhd)。 若要建立分頁 blob，請呼叫 [CloudPageBlob](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)，並傳入要建立之 blob 的大小上限。 *blobSize* 必須是 512 位元組的倍數。
 
 ```csharp
 using Microsoft.Azure;
@@ -89,13 +90,13 @@ pageBlob.Create(16 * OneGigabyteAsBytes);
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要在建立之後調整分頁 blob 的大小，請使用重[設大小](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize?view=azure-dotnet)方法。 要求的大小應該是 512 位元組的倍數。
+若要在建立之後調整分頁 blob 的大小，請使用重 [設大小](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize?view=azure-dotnet) 方法。 要求的大小應該是 512 位元組的倍數。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ResizePageBlob":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-若要在建立之後調整分頁 blob 的大小，請使用重[設大小](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.resize)方法。 要求的大小應該是 512 位元組的倍數。
+若要在建立之後調整分頁 blob 的大小，請使用重 [設大小](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.resize) 方法。 要求的大小應該是 512 位元組的倍數。
 
 ```csharp
 pageBlob.Resize(32 * OneGigabyteAsBytes);
@@ -107,7 +108,7 @@ pageBlob.Resize(32 * OneGigabyteAsBytes);
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要寫入頁面，請使用[PageBlobClient. UploadPages](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.uploadpages)方法。  
+若要寫入頁面，請使用 [PageBlobClient. UploadPages](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.uploadpages) 方法。  
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_WriteToPageBlob":::
 
@@ -127,7 +128,7 @@ pageBlob.WritePages(dataStream, startingOffset);
 
 下圖說明 2 個獨立的寫入作業：
 
-![顯示兩個不同寫入選項的圖表。](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
+![此圖顯示兩個不同的寫入選項。](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
 
 1.  長度為 1024 位元組並從位移 0 開始的寫入作業 
 2.  長度為 1024 位元組並從位移 4096 開始的寫入作業 
@@ -136,7 +137,7 @@ pageBlob.WritePages(dataStream, startingOffset);
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要讀取頁面，請使用[PageBlobClient](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.download)方法來讀取分頁 blob 中的位元組範圍。 
+若要讀取頁面，請使用 [PageBlobClient](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.download) 方法來讀取分頁 blob 中的位元組範圍。 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadFromPageBlob":::
 
@@ -153,15 +154,15 @@ pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, pageBlobOffset, rangeSiz
 
 這可讓您從 Blob 中的任何位移開始，下載完整的 Blob 或位元組範圍。 讀取時，位移並不需要從 512 的倍數開始。 從 NUL 分頁讀取位元組時，服務會傳回零個位元組。
 
-下圖顯示位移為256且範圍大小為4352的讀取作業。 傳回的資料會以橙色反白顯示。 為 NUL 頁面傳回零。
+下圖顯示位移為256且範圍大小為4352的讀取作業。 傳回的資料會以橙色反白顯示。 NUL 頁面會傳回零。
 
-![顯示位移為256且範圍大小為4352之讀取作業的圖表](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
+![此圖表顯示位移為256且範圍大小為4352的讀取作業](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
 如果您有疏鬆填入的 Blob，建議只下載有效的頁面區域，以避免支付零位元組的輸出，並降低下載延遲。  
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要判斷哪些頁面是由資料所支援，請使用[PageBlobClient. GetPageRanges](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.getpageranges)。 然後，您可以對傳回的範圍進行列舉，並下載每個範圍中的資料。 
+若要判斷哪些頁面是由資料所支援，請使用 [PageBlobClient. GetPageRanges](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.getpageranges)。 然後，您可以對傳回的範圍進行列舉，並下載每個範圍中的資料。 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadValidPageRegionsFromPageBlob":::
 
@@ -193,7 +194,7 @@ foreach (PageRange range in pageRanges)
 
 租用 Blob 作業會針對寫入和刪除作業，在 Blob 上建立鎖定並加以管理。 這項作業在有多個用戶端存取分頁 Blob 的案例中很有用，因為它可確保一次僅有一個用戶端可以寫入 Blob。 例如，Azure 磁碟會運用此租用機制來確保磁碟僅受單一 VM 管理。 鎖定持續時間的範圍是 15 到 60 秒，也可以設為無限。 如需詳細資料，請參閱[這裡](/rest/api/storageservices/lease-blob)的文件。
 
-除了豐富的 REST Api，分頁 blob 也提供共用存取、耐久性和增強的安全性。 我們將會在接下來的段落中詳細介紹那些優點。 
+除了豐富的 REST Api 以外，分頁 blob 也提供共用存取、耐久性和增強的安全性。 我們將會在接下來的段落中詳細介紹那些優點。 
 
 ### <a name="concurrent-access"></a>並行存取
 
@@ -203,7 +204,7 @@ foreach (PageRange range in pageRanges)
 
 ### <a name="durability-and-high-availability"></a>持久性和高可用性
 
-標準儲存體和進階儲存體皆為持久的儲存體，它們一律會複寫分頁 Blob 資料以確保持久性和高可用性。 如需有關 Azure 儲存體備援的詳細資訊，請參閱此[文件](../common/storage-redundancy.md)。 Azure 已持續為 IaaS 磁片和分頁 blob 提供企業級持久性，並具有領先業界的零[年度失敗率](https://en.wikipedia.org/wiki/Annualized_failure_rate)。
+標準儲存體和進階儲存體皆為持久的儲存體，它們一律會複寫分頁 Blob 資料以確保持久性和高可用性。 如需有關 Azure 儲存體備援的詳細資訊，請參閱此[文件](../common/storage-redundancy.md)。 Azure 為 IaaS 磁片和分頁 blob 持續提供企業級持久性，其具有領先業界的零% [年度失敗率](https://en.wikipedia.org/wiki/Annualized_failure_rate)。
 
 ### <a name="seamless-migration-to-azure"></a>順暢地遷移至 Azure
 

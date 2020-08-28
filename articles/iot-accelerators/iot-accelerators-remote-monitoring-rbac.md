@@ -1,6 +1,6 @@
 ---
 title: 遠端監視存取控制 - Azure | Microsoft Docs
-description: 本文提供如何在遠端監視解決方案加速器中， (RBAC) 設定角色型存取控制的相關資訊
+description: 本文提供如何在遠端監視解決方案加速器中設定角色型存取控制 (RBAC) 的相關資訊
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,17 +8,17 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.custom: has-adal-ref
-ms.openlocfilehash: 397e7cfbc2599d2a259f55a5f465d51cd1fe54a8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: b32e0a60e099b5ad184f8919be3f93646c3a68b3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008979"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018139"
 ---
 # <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>在遠端監視解決方案加速器中設定以角色為基礎的存取控制
 
-本文提供如何在遠端監視解決方案加速器中設定角色型存取控制的相關資訊。 以角色為基礎的存取控制可讓您將個別使用者的存取限制為解決方案中的特定功能。
+本文提供如何在遠端監視解決方案加速器中設定角色型存取控制的相關資訊。 角色型存取控制可讓您限制個別使用者對解決方案中特定功能的存取權。
 
 ## <a name="default-settings"></a>預設設定
 
@@ -244,7 +244,7 @@ public async Task DeleteAsync(string id)
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已瞭解如何在遠端監視解決方案加速器中實行角色型存取控制。
+在本文中，您已瞭解如何在遠端監視解決方案加速器中執行角色型存取控制。
 
 如需有關在遠端監視解決方案加速器中管理時間序列深入解析總管之存取權的資訊，請參閱[設定時間序列深入解析總館的存取控制](iot-accelerators-remote-monitoring-rbac-tsi.md)。
 

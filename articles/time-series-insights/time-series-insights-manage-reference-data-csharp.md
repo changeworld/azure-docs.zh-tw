@@ -10,17 +10,17 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.custom: seodec18
-ms.openlocfilehash: c2a33c701278a900e502da9e6d9520ea213ce4c3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 2d14d45a6cf7147514cf4fdfc2a3ede470c12835
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168094"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017629"
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>使用 C 銳利管理 Azure 時間序列深入解析 Gen 1 環境的參考資料
+# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>使用 C 清晰管理 Azure 時間序列深入解析 Gen 1 環境的參考資料
 
-本文示範如何結合 c #、 [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)和 Azure Active Directory，將程式設計 api 要求提供給 Azure 時間序列深入解析 Gen 1[參考資料管理 api](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)。
+本文示範如何結合 c #、 [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)和 Azure Active Directory，以對 Azure 時間序列深入解析 Gen 1 [參考資料管理 api](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)發出程式設計 api 要求。
 
 > [!TIP]
 > 在 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) 檢視 GA C# 程式碼範例。
@@ -30,7 +30,7 @@ ms.locfileid: "88168094"
 以下範例程式碼會示範下列功能：
 
 * 使用 [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication** 取得存取權杖。
-* 針對 Gen 1[參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)的順序建立、讀取、更新和刪除作業。
+* 針對 Gen 1 [參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)的順序建立、讀取、更新和刪除作業。
 * 常見的回應碼包括[常見錯誤碼](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api#validation-and-error-handling)。
 
     參考資料管理 API 會個別處理每個項目，且其中一個項目的錯誤不會防止其他項目成功完成。 例如，若要求包含 100 個項目，且其中一個項目發生錯誤，則會寫入 99 個項目，並拒絕一個項目。
@@ -39,7 +39,7 @@ ms.locfileid: "88168094"
 
 編譯及執行範例程式碼之前，您必須先完成下列步驟：
 
-1. 布建[Gen 1 Azure 時間序列深入解析](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+1. 布建[第1代 Azure 時間序列深入解析](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
 )環境。
 
 1. 在環境內[建立參考資料集](time-series-insights-add-reference-data-set.md)。 使用下列參考資料配置：
@@ -310,4 +310,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如[資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)參考檔，請參閱第1代參考。
+* 請參閱 Gen 1 [參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) 參考檔。

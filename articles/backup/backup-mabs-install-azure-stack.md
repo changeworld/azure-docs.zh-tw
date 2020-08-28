@@ -3,12 +3,12 @@ title: 在 Azure Stack 上安裝 Azure 備份伺服器
 description: 在本文中，您將了解如何使用 Azure 備份伺服器來保護或備份 Azure Stack 中的工作負載。
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 644aeeb8670c4b8d551ba1d3f6b1b16aa199f4ef
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: a95ee42c3229e642bd48b812eb6bc01636af3ba2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827002"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018122"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安裝 Azure 備份伺服器
 
@@ -99,7 +99,7 @@ Azure 備份伺服器虛擬機器必須加入網域。 具有系統管理員權�
 > - 執行為網域控制站的電腦
 > - 安裝應用程式伺服器角色所在的電腦
 > - Exchange Server 執行所在的電腦
-> - 本身是叢集節點的電腦
+> - 屬於叢集節點的電腦
 
 Azure 備份伺服器一律加入網域。 如果您需要將 Azure 備份伺服器移到不同的網域，請先安裝 Azure 備份伺服器，然後將該伺服器加入新網域。 一旦您部署 Azure 備份伺服器，即無法將它移到新的網域。
 
@@ -107,7 +107,7 @@ Azure 備份伺服器一律加入網域。 如果您需要將 Azure 備份伺服
 
 ### <a name="set-storage-replication"></a>設定儲存體複寫
 
-復原服務保存庫儲存體複寫選項有異地備援儲存體和本地備援儲存體可供您選擇。 根據預設，復原服務保存庫會使用異地備援儲存體。 如果這個保存庫是您的主要保存庫，儲存體選項請保持設定為異地備援儲存體。 如果您想要更便宜但較不持久的選項，請選擇本地備援儲存體。 在 [Azure 儲存體複寫概觀](../storage/common/storage-redundancy.md)中，深入了解[異地備援](../storage/common/storage-redundancy.md)和[本地備援](../storage/common/storage-redundancy.md)儲存體選項。
+復原服務保存庫儲存體複寫選項有異地備援儲存體和本地備援儲存體可供您選擇。 根據預設，復原服務保存庫會使用異地備援儲存體。 如果這個保存庫是您的主要保存庫，儲存體選項請保持設定為異地備援儲存體。 如果您想要更便宜的選項，請選擇本地多餘的儲存體。 在 [Azure 儲存體複寫概觀](../storage/common/storage-redundancy.md)中，深入了解[異地備援](../storage/common/storage-redundancy.md)和[本地備援](../storage/common/storage-redundancy.md)儲存體選項。
 
 若要編輯儲存體複寫設定︰
 
@@ -217,7 +217,7 @@ Azure 備份伺服器與 Data Protection Manager 共用程式碼。 您會在 Az
 
     ![Azure 備份伺服器-必要條件檢查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    如果您的環境具有必要的必要條件，您會看到一則訊息，指出電腦符合需求。 選取 [下一步]  。  
+    如果您的環境具有必要的必要條件，您會看到一則訊息，指出電腦符合需求。 選取 [下一步] 。  
 
     ![Azure 備份伺服器 - 必要條件檢查通過](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 

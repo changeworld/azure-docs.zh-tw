@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio （雲端服務）開始使用資料表儲存體
+title: '使用 Visual Studio (雲端服務開始使用資料表儲存體) '
 description: 在使用 Visual Studio 已連接服務連接到儲存體帳戶之後，如何在 Visual Studio 雲端服務專案中開始使用 Azure 資料表儲存體
 services: storage
 author: ghogen
@@ -7,18 +7,18 @@ manager: jillfra
 ms.assetid: a3a11ed8-ba7f-4193-912b-e555f5b72184
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-csharp
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 88c8ea458aade44f5a3d789a15369718bc38ea35
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8579efcee45e08fec3331df8f55b61618edb4f4f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134516"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000408"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>開始使用 Azure 資料表儲存體和 Visual Studio 已連接服務 (雲端服務專案)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "86134516"
 
 Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服務是一個 NoSQL 資料存放區，接受來自 Azure 雲端內外經過驗證的呼叫。 Azure 資料表很適合儲存結構化、非關聯式資料。
 
-若要開始，首先您必須在儲存體帳戶中建立資料表。 我們將說明如何使用程式碼建立 Azure 資料表，以及如何執行基本的資料表和實體作業，例如新增、修改、讀取和讀取資料表實體。 這些範例是以 C 程式 \# 代碼撰寫，並使用[適用于 .net 的 Microsoft Azure 儲存體用戶端程式庫](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
+若要開始，首先您必須在儲存體帳戶中建立資料表。 我們將說明如何使用程式碼建立 Azure 資料表，以及如何執行基本的資料表和實體作業，例如新增、修改、讀取和讀取資料表實體。 這些範例是以 C \# 程式碼撰寫，並使用 [適用于 .net 的 Microsoft Azure 儲存體用戶端程式庫](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
 
 **注意：** 有一些 API會以非同步方式對 Azure 儲存體執行呼叫。 如需詳細資訊，請參閱 [使用 Async 和 Await 進行非同步程式設計](https://msdn.microsoft.com/library/hh191443.aspx) 。 以下程式碼假設使用非同步程式設計方法。
 
@@ -169,7 +169,7 @@ return View();
 
 
 ## <a name="get-a-single-entity"></a>取得單一實體
-您可以撰寫查詢來取得單一特定實體。 下列程式碼使用 **TableOperation** 物件來指定名為 'Ben Smith' 的客戶。 這個方法只會傳回一個實體，而不是一個集合，而**tableresult.result**中傳回的值是**CustomerEntity**物件。 在查詢中同時指定資料分割和資料列索引鍵，是從**資料表**服務中抓取單一實體的最快方式。
+您可以撰寫查詢來取得單一特定實體。 下列程式碼使用 **TableOperation** 物件來指定名為 'Ben Smith' 的客戶。 這個方法只會傳回一個實體，而不是集合，而 **>tableresult** 中的傳回值則是 **>customerentity** 物件。 在查詢中同時指定資料分割和資料列索引鍵，是從 **表格** 服務中取得單一實體最快的方式。
 
 ```csharp
 // Create a retrieve operation that takes a customer entity.

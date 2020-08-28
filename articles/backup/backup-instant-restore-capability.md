@@ -4,12 +4,12 @@ description: Azure 立即還原功能和 VM 備份堆疊、Azure Resource Manage
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 69348a9902224f9f73f80d5b1900143c885d20ee
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892621"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000374"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>透過 Azure 備份的立即還原功能取得改良的備份和還原效能
 
@@ -19,7 +19,7 @@ ms.locfileid: "88892621"
 
 「立即還原」的新模型提供下列增強功能：
 
-* 能夠使用在備份作業中所建立的快照集 (可用於復原)，而不需等到資料轉送到保存庫完成。 如此可減少觸發還原之前，將快照集複製到保存庫的等候時間。
+* 能夠使用在備份作業中所建立的快照集，以供復原，而不需要等待將資料傳輸到保存庫完成。 如此可減少觸發還原之前，將快照集複製到保存庫的等候時間。
 * 藉由本機預設保留 2 天的快照集，可減少備份和還原時間。 此預設快照集保留值可設定為介於1到5天之間的任何值。
 * 最多可支援 32 TB 的磁片大小。 Azure 備份不建議將磁片調整大小。
 * 支援標準 SSD 磁片以及標準 HDD 磁片和進階 SSD 磁片。
@@ -37,7 +37,7 @@ ms.locfileid: "88892621"
 
 ![VM 備份堆疊 Resource Manager 部署模型的備份作業 -- 儲存體與保存庫](./media/backup-azure-vms/instant-rp-flow.png)
 
-根據預設，快照集會保留兩天。 這項功能可讓您減少還原時間，以便從這些快照集進行還原作業。 它可縮短轉換和複製資料到保存庫所需的時間。
+根據預設，快照集會保留兩天。 這項功能可讓您減少還原時間，以便從這些快照集進行還原作業。 它可減少轉換並從保存庫複製資料所需的時間。
 
 ## <a name="feature-considerations"></a>功能考量
 
@@ -108,9 +108,9 @@ Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 
 除非刪除快照集 (第1層) ，否則新的模型不允許刪除 (第2層) 的還原點。 建議您排程大於快照集保留期間的還原點 (第 2 層) 保留期間。
 
-### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>為何在備份原則中設定的保留期間之後，我的快照集仍然存在？
+### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>為什麼我的快照集仍然存在，即使在備份原則中設定的保留期限之後？
 
-如果復原點有快照集，而且是最新的 RP 可用，則會保留到下一次成功備份為止。 這是根據設計的「垃圾收集」 (GC) 原則，目前會要求至少有一個最新的 RP，以防所有備份因為 VM 發生問題而失敗。 在正常情況下，RP 會在到期後的最多 24 小時內清除。
+如果復原點有快照集，且它是可用的最新復原點，則會保留到下一次成功備份為止。 這是根據指定的「垃圾收集」 (GC) 原則。 它會要求至少有一個最新的復原點存在，以防所有後續的備份因 VM 中的問題而失敗。 在一般情況下，復原點會在到期後的最多24小時內清除。
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>我不需要立即還原功能。 可以停用嗎？
 

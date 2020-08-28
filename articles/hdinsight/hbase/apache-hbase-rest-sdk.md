@@ -6,14 +6,14 @@ ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/02/2019
-ms.openlocfilehash: 9d03a201711488b1c0a3f4f2bab0981f83374a5d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7c62f1875fe44aa001323af5d83a0007ee18f11d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085577"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017340"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>使用適用于 Apache HBase 的 .NET SDK
 
@@ -60,7 +60,7 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 }
 ```
 
-這個新的資料表有兩個數據行的系列，t1 和 t2。 因為資料行系列分別儲存在不同的 HFiles，因此，經常查詢的資料具有個別的資料行系列不無道理。 在下列[插入資料](#insert-data)範例中，是將資料行新增至 t1 資料行系列。
+這個新的資料表有兩個數據行的系列 t1 和 t2。 因為資料行系列分別儲存在不同的 HFiles，因此，經常查詢的資料具有個別的資料行系列不無道理。 在下列[插入資料](#insert-data)範例中，是將資料行新增至 t1 資料行系列。
 
 ## <a name="delete-a-table"></a>刪除資料表
 
@@ -114,7 +114,7 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase 會執行[雲端 BigTable](https://cloud.google.com/bigtable/)，因此資料格式看起來會像下圖：
+HBase 會實作為 [雲端 BigTable](https://cloud.google.com/bigtable/)，因此資料格式看起來如下圖所示：
 
 ![Apache HBase 範例資料輸出](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 

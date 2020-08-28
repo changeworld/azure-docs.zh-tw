@@ -3,12 +3,12 @@ title: 常見問題的解答
 description: '有關以下常見問題的解答：包括復原服務保存庫、可以備份的項目、其運作方式、加密和限制等 Azure 備份功能。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ea4cc792100edf59188a9be99c384747267dc0d8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 16ee9fa94f8c6d5ee97c35833b4cee908750bc0a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892757"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017731"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 備份 - 常見問題集
 
@@ -43,7 +43,7 @@ ms.locfileid: "88892757"
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>我是否可以將備份資料移至另一個保存庫？
 
-不會。 儲存在保存庫中的備份資料無法移至不同的保存庫。
+不知道。 儲存在保存庫中的備份資料無法移至不同的保存庫。
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>是否可以在備份之後從 GRS 變更為 LRS？
 
@@ -56,7 +56,7 @@ ms.locfileid: "88892757"
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>我是否可以針對備份到「復原服務保存庫」的 VM 執行「項目層級還原」(ILR)？
 
 - 由 Azure VM 備份所備份的 Azure VM 支援 Azure VM。 如需詳細資訊，請參閱[文章](backup-azure-restore-files-from-vm.md)
-- Azure 備份伺服器或 System Center DPM 所備份的內部部署 Vm 線上復原點不支援 ILR。
+- Azure 備份伺服器 (MABS) 或 System Center DPM 所備份的內部部署 Vm 線上復原點不支援 ILR。
 
 ## <a name="azure-backup-agent"></a>Azure 備份代理程式
 
@@ -139,7 +139,7 @@ BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>如果我在備份作業開始後取消作業，是否會刪除已傳輸的備份資料？
 
-不會。 所有在備份作業取消前傳輸到保存庫的資料都會保留在保存庫中。
+不知道。 所有在備份作業取消前傳輸到保存庫的資料都會保留在保存庫中。
 
 - Azure 備份會使用檢查點機制，在備份期間偶爾將檢查點加入至備份資料。
 - 因為備份資料中有檢查點，所以下一個備份程序才可驗證檔案的完整性。
@@ -159,13 +159,13 @@ BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>我是否可以針對備份排程和保留原則使用不同的時間？
 
-不會。 保留原則僅能套用在復原點上。 例如，下圖顯示在上午 12:00 和下午 6:00 進行之備份的保留原則。
+不知道。 保留原則僅能套用在復原點上。 例如，下圖顯示在上午 12:00 和下午 6:00 進行之備份的保留原則。
 
 ![排程備份和保留](./media/backup-azure-backup-faq/Schedule.png)
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point"></a>如果備份保留了很長一段時間，是否需要較多時間才能復原較舊的資料點？
 
-不會。 復原最舊或最新時間點所需的時間都相同。 每個復原點的功能就像一個完整的復原點。
+不知道。 復原最舊或最新時間點所需的時間都相同。 每個復原點的功能就像一個完整的復原點。
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>若每個復原點就像一個完整的復原點，則其是否會影響可計費的備份儲存體總數？
 
@@ -184,11 +184,11 @@ Azure 備份的儲存體架構透過最佳化儲存資料以進行快速還原�
 
 ### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>我可以將備份至 Azure 的資料復原幾次？
 
-從 Azure 備份進行復原的次數沒有任何限制。
+Azure 備份的復原數量沒有任何限制。
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>還原資料時，我需要支付來自 Azure 的輸出流量嗎？
 
-不會。 復原是免費的，不會向您收取輸出流量的費用。
+不知道。 復原是免費的，不會向您收取輸出流量的費用。
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>變更我的備份原則時會發生什麼狀況？
 

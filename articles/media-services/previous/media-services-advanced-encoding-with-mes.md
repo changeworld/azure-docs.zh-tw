@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 8142ef5e2aaaf5831c01215d28eecf8d06e1d8ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 32b3207fc86f9aab7194d63a0e57eea459fd7eac
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071918"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018020"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>自訂 MES 預設值來執行進階編碼 
 
@@ -30,7 +31,7 @@ ms.locfileid: "87071918"
 如果使用 XML 預設值，請務必維持元素的順序，如下列 XML 範例所示 (例如，KeyFrameInterval 應在 SceneChangeDetection 之前)。
 
 > [!NOTE] 
-> 在 v3 中目前無法使用媒體編碼器標準的許多 advanced 媒體服務 v2 功能。 如需詳細資訊，請參閱[功能差距](../latest/media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)。
+> 媒體編碼器標準的許多 advanced Media Services v2 功能目前無法在 v3 中使用。 如需詳細資訊，請參閱 [功能間距](../latest/media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)。
 
 ## <a name="support-for-relative-sizes"></a>支援相對大小
 
@@ -55,7 +56,7 @@ ms.locfileid: "87071918"
 本節說明如何自訂產生縮圖的預設值。 下面定義的預設值包含有關如何將檔案編碼的資訊，以及產生縮圖時所需的資訊。 您可以使用[此](media-services-mes-presets-overview.md)節記載的任何 MES 預設值，並加入可產生縮圖的程式碼。  
 
 > [!NOTE]
-> 如果您要編碼為單一位元速率影片，下列預設值中的**SceneChangeDetection**設定只能設定為 true。 如果您是針對多位元速率視訊進行編碼，並將 **SceneChangeDetection** 設為 true，編碼器會傳回錯誤。  
+> 如果您要編碼為單一位元速率影片，則下列預設值中的 **>scenechangedetection** 設定只能設定為 true。 如果您是針對多位元速率視訊進行編碼，並將 **SceneChangeDetection** 設為 true，編碼器會傳回錯誤。  
 >
 >
 
@@ -254,7 +255,7 @@ ms.locfileid: "87071918"
 
     您可以隨意混合使用標記法。
 
-    此外，Start 也支援特殊宏： {最佳}，它會嘗試判斷內容的第一個「有趣」的畫面格備註：（當 Start 設定為 {最佳} 時，會忽略步驟和範圍）
+    此外，Start 也支援特殊的宏： {最佳}，它會嘗試判斷內容的第一個「有趣」的畫面格：當 Start 設為 {最佳} 時，會忽略 (步驟和範圍 ) 
   * 預設值：Start:{Best}
 * 必須明確地提供每個影像格式的輸出格式：Jpg/Png/BmpFormat。 顯示時，MES 會比對 JpgVideo 與 JpgFormat，依此類推。 OutputFormat 引進了新的影像轉碼器特定巨集 (即 {Index})，必須針對影像輸出格式提供一次 (只需一次)。
 
@@ -746,7 +747,7 @@ static public IAsset EncodeWithOverlay(IAsset assetSource, string customPresetFi
 ```
 
 ## <a name="disable-auto-de-interlacing"></a><a id="deinterlacing"></a>停用自動去交錯
-如果客戶喜歡交錯內容自動取消交錯，則不需要執行任何動作。 當自動去交錯開啟 (預設) 時，MES 會自動偵測交錯式畫面，並且只會將標示為交錯式的畫面去交錯。
+如果客戶希望交錯內容自動取消交錯，則不需要執行任何動作。 當自動去交錯開啟 (預設) 時，MES 會自動偵測交錯式畫面，並且只會將標示為交錯式的畫面去交錯。
 
 您可以關閉自動去交錯。 不建議使用此選項。
 
@@ -958,7 +959,7 @@ job.GetExecutionProgressTask(CancellationToken.None).Wait();
 
 ### <a name="inserting-video-at-only-the-lowest-bitrate"></a>於最低位元速率插入視訊
 
-假設您正在使用多重位元速率編碼預設值（例如「 [H264 多重位元速率 720p](media-services-mes-preset-h264-multiple-bitrate-720p.md) 」）來將整個輸入目錄編碼成串流，其中包含混合的影片檔案和僅限音訊的檔案。 在這個案例中，當輸入沒有視訊時，您可能需要強制編碼器於最低位元速率插入單色視訊播放軌，而非於所有輸出位元速率插入視訊。 為達成此目的，您必須使用 **InsertBlackIfNoVideoBottomLayerOnly** 旗標。
+假設您使用的是多重位元速率編碼預設值（例如「 [H264 多重位元速率 720p](media-services-mes-preset-h264-multiple-bitrate-720p.md) 」）來編碼整個輸入目錄以進行串流處理，而這包含了混合的影片檔案和僅限音訊的檔。 在這個案例中，當輸入沒有視訊時，您可能需要強制編碼器於最低位元速率插入單色視訊播放軌，而非於所有輸出位元速率插入視訊。 為達成此目的，您必須使用 **InsertBlackIfNoVideoBottomLayerOnly** 旗標。
 
 您可以使用[此](media-services-mes-presets-overview.md)節記載的任何 MES 預設值，並執行以下修改：
 

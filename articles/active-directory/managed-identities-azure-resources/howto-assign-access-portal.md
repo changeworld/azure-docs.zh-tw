@@ -1,9 +1,9 @@
 ---
-title: 使用 Azure 入口網站 Azure AD，為受控識別指派對資源的存取權
+title: 使用 Azure 入口網站 Azure AD 將受控識別存取權指派給資源
 description: 以下逐步指示說明如何使用 Azure 入口網站為一項資源的受控識別指派對另一項資源的存取權。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2af718c3555176167eb154b0a718218c42e93dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8126f6314044fc2ee816e9150e9595719d63eff
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608291"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009197"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>使用 Azure 入口網站為受控識別指派對資源的存取權
 
@@ -28,14 +28,14 @@ ms.locfileid: "85608291"
 
 以受控識別設定 Azure 資源後，您可以為此受控識別提供對另一項資源的存取權，就像任何安全性主體一樣。 本文說明如何使用 Azure 入口網站為 Azure 虛擬機器或虛擬機器擴展集的受控識別提供對 Azure 儲存體帳戶的存取權。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 
 ## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>使用 RBAC 為受控識別指派對其他資源的存取權
 
-在 Azure 資源（例如[AZURE VM](qs-configure-portal-windows-vm.md)或[azure 虛擬機器擴展集](qs-configure-portal-windows-vmss.md)）上啟用受控識別之後：
+在 Azure 資源（例如 [AZURE VM](qs-configure-portal-windows-vm.md) 或 [azure 虛擬機器擴展集](qs-configure-portal-windows-vmss.md)）上啟用受控識別之後：
 
 1. 使用與已設定受控識別的 Azure 訂用帳戶相關聯的帳戶，登入 [Azure 入口網站](https://portal.azure.com)。
 

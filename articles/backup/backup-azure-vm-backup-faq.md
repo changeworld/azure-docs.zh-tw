@@ -4,18 +4,18 @@ description: 在本文中，探索使用 Azure 備份服務備份 Azure Vm 的�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: b29f1a11f6600f013fdf1d5aa71883ab44dfe635
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: ec79fc7c09f2bc1aeb2c07016365e831932fa1ff
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761503"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018105"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
 本文提供使用 [Azure 備份](./backup-overview.md) 服務來備份 Azure vm 的常見問題解答。
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>備份
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>當我建立 VM 映射時，可以啟用這些映射以進行備份嗎？
 
@@ -23,7 +23,7 @@ ms.locfileid: "88761503"
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>VM 成本中是否包含備份成本？
 
-不會。 備份成本與 VM 的成本分開。 深入瞭解 [Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
+不知道。 備份成本與 VM 的成本分開。 深入瞭解 [Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
 
 ### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>啟用 VM 備份需要哪些許可權？
 
@@ -43,7 +43,7 @@ ms.locfileid: "88761503"
 
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>隨選備份作業是否會使用與排定備份相同的保留排程？
 
-不會。 指定隨選備份作業的保留範圍。 根據預設，若從入口網站觸發，則會保留 30 天。
+不知道。 指定隨選備份作業的保留範圍。 根據預設，若從入口網站觸發，則會保留 30 天。
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我在最近一些 VM 上啟用了 Azure 磁碟加密。 我的備份是否會繼續運作？
 

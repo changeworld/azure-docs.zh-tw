@@ -3,12 +3,12 @@ title: 針對 SQL Server 資料庫備份進行疑難排解
 description: 適用於在 Azure VM 上執行並使用 Azure 備份進行備份之 SQL Server 資料庫的疑難排解資訊。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 53b701e5bfae9313732f4b76a4e13b63afb3864a
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 53e97e768dc13c32f6c174d01dfb222e0de61e43
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826713"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017867"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 備份針對 SQL Server 資料庫備份進行疑難排解
 

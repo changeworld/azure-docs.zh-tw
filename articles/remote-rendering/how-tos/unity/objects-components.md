@@ -1,30 +1,31 @@
 ---
 title: Unity 遊戲物件和元件
-description: 說明用來處理遠端呈現實體和元件的 Unity 特定方法。
+description: 描述使用遠端轉譯實體和元件的 Unity 特定方法。
 author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
-ms.openlocfilehash: e55589a388a1883f42284f2e20c6d5619b63f48f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 662c28196b06f5fbe49f69cb7145fdd33805e000
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565470"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019040"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>與 Unity 遊戲物件和元件互動
 
-Azure 遠端呈現（ARR）已針對大量物件進行優化（請參閱[限制](../../reference/limits.md)）。 雖然您可以在主機上管理大型且複雜的階層，但在低電源裝置上的 Unity 中全部複寫都是不可行。
+Azure 遠端轉譯 (ARR) 已針對大量物件進行優化 (查看) 的 [限制](../../reference/limits.md) 。 雖然可以在主機上管理大型且複雜的階層，但在低電源裝置上以 Unity 的方式複寫它們都是不可行。
 
-因此，在主機上載入模型時，Azure 遠端轉譯會反映用戶端裝置上有關模型結構的資訊（這會產生網路流量），但不會複寫 Unity 中的物件和元件。 相反地，它會要求您手動要求所需的 Unity 遊戲物件和元件，讓您可以限制實際所需的額外負荷。 如此一來，您就能更充分掌控用戶端的效能。
+因此，當模型載入至主機時，Azure 遠端轉譯會鏡像用戶端裝置上的模型結構相關資訊 (這會產生) 的網路流量，但不會複寫 Unity 中的物件和元件。 相反地，它會要求您手動要求所需的 Unity 遊戲物件和元件，讓您可以將額外負荷限制在真正需要的部分。 如此一來，您就可以更充分掌控用戶端效能。
 
-因此，Azure 遠端轉譯的 Unity 整合隨附了額外的功能，可在需要時複寫遠端轉譯結構。
+因此，Azure 遠端轉譯的 Unity 整合會隨附額外的功能，以視需要複寫遠端轉譯結構。
 
 ## <a name="load-a-model-in-unity"></a>在 Unity 中載入模型
 
-當您載入模型時，會取得已載入模型之根物件的參考。 此參考不是 Unity 遊戲物件，但您可以使用擴充方法將它轉換成一個 `Entity.GetOrCreateGameObject()` 。 該函數需要類型的引數 `UnityCreationMode` 。 如果您通過 `CreateUnityComponents` ，新建立的 Unity 遊戲物件也會針對存在於主機上的所有遠端呈現元件，另外填入 proxy 元件。 不過，建議您最好將 `DoNotCreateUnityComponents` 額外負荷降到最低。
+當您載入模型時，您會取得已載入模型之根物件的參考。 此參考不是 Unity 遊戲物件，但您可以使用擴充方法將它轉換成一個 `Entity.GetOrCreateGameObject()` 。 該函數需要類型的引數 `UnityCreationMode` 。 如果您通過 `CreateUnityComponents` ，新建立的 Unity 遊戲物件將會另外針對存在於主機上的所有遠端呈現元件，填入 proxy 元件。 不過，建議您最好將 `DoNotCreateUnityComponents` 額外負荷維持在最短。
 
-### <a name="load-model-with-task"></a>使用工作載入模型
+### <a name="load-model-with-task"></a>具有工作的載入模型
 
 ```cs
 LoadModelAsync _pendingLoadTask = null;
@@ -50,7 +51,7 @@ void LoadModelWithTask()
 }
 ```
 
-### <a name="load-model-with-unity-coroutines"></a>使用 Unity 協同程式載入模型
+### <a name="load-model-with-unity-coroutines"></a>使用 Unity 協同程式的負載模型
 
 ```cs
 IEnumerator LoadModelWithCoroutine()
@@ -72,7 +73,7 @@ IEnumerator LoadModelWithCoroutine()
 }
 ```
 
-### <a name="load-model-with-await-pattern"></a>使用 await 模式載入模型
+### <a name="load-model-with-await-pattern"></a>具有 await 模式的載入模型
 
 ```cs
 async void LoadModelWithAwait()
@@ -82,21 +83,21 @@ async void LoadModelWithAwait()
 }
 ```
 
-上述程式碼範例使用透過 SAS 的模型載入路徑，因為已載入內建模型。 透過 blob 容器（使用和）來定址模型， `LoadModelAsync` `LoadModelParams` 可以完整類似。
+上述程式碼範例透過 SAS 使用模型載入路徑，因為已載入內建模型。 透過 (使用和) 的 blob 容器來定址模型 `LoadModelAsync` ， `LoadModelParams` 可以完全類似。
 
 ## <a name="remoteentitysyncobject"></a>RemoteEntitySyncObject
 
-建立 Unity 遊戲物件會以隱含方式將 `RemoteEntitySyncObject` 元件新增至遊戲物件。 這個元件是用來將實體轉換同步處理到伺服器。 根據預設， `RemoteEntitySyncObject` 使用者必須明確地呼叫 `SyncToRemote()` ，以同步處理本機 Unity 狀態與伺服器。 啟用 `SyncEveryFrame` 會自動同步處理物件。
+建立 Unity 遊戲物件時，會以隱含方式將 `RemoteEntitySyncObject` 元件新增至遊戲物件。 此元件用來將實體轉換同步處理至伺服器。 依預設， `RemoteEntitySyncObject` 使用者必須明確呼叫 `SyncToRemote()` ，才能將本機 Unity 狀態同步處理到伺服器。 啟用 `SyncEveryFrame` 會自動同步處理物件。
 
-具有的物件 `RemoteEntitySyncObject` 可以透過按鈕來具現化和顯示在 Unity 編輯器中的遠端子系 **:::no-loc text="Show children":::** 。
+具有的物件 `RemoteEntitySyncObject` 可以透過按鈕來具現化其遠端子系，並顯示在 Unity 編輯器中 **:::no-loc text="Show children":::** 。
 
 ![RemoteEntitySyncObject](media/remote-entity-sync-object.png)
 
 ## <a name="wrapper-components"></a>包裝函式元件
 
-附加至遠端轉譯實體的[元件](../../concepts/components.md)會透過 Proxy 向 Unity 公開 `MonoBehavior` 。 這些 proxy 代表 Unity 中的遠端元件，並將所有修改轉送到主機。
+附加至遠端轉譯實體的[元件](../../concepts/components.md)會透過 Proxy 向 Unity 公開 `MonoBehavior` 。 這些 proxy 代表 Unity 中的遠端元件，並將所有的修改轉寄至主機。
 
-若要建立 proxy 遠端轉譯元件，請使用擴充方法 `GetOrCreateArrComponent` ：
+若要建立 proxy 遠端呈現元件，請使用擴充方法 `GetOrCreateArrComponent` ：
 
 ```cs
 var cutplane = gameObject.GetOrCreateArrComponent<ARRCutPlaneComponent>(RemoteManagerUnity.CurrentSession);
@@ -104,11 +105,11 @@ var cutplane = gameObject.GetOrCreateArrComponent<ARRCutPlaneComponent>(RemoteMa
 
 ## <a name="coupled-lifetimes"></a>結合存留期
 
-當遠端[實體](../../concepts/entities.md)和 Unity 遊戲物件透過系結時，其存留期會結合在一起 `RemoteEntitySyncObject` 。 如果您 `UnityEngine.Object.Destroy(...)` 使用這類遊戲物件呼叫，遠端實體也會一併移除。
+遠端 [實體](../../concepts/entities.md) 和 Unity 遊戲物件的存留期會在透過進行系結時結合 `RemoteEntitySyncObject` 。 如果您 `UnityEngine.Object.Destroy(...)` 使用這類遊戲物件來呼叫，則遠端實體也會一併移除。
 
-若要摧毀 Unity 遊戲物件，而不影響遠端實體，您必須先 `Unbind()` 在上呼叫 `RemoteEntitySyncObject` 。
+若要損毀 Unity 遊戲物件，而不會影響遠端實體，您必須先 `Unbind()` 在上呼叫 `RemoteEntitySyncObject` 。
 
-所有 proxy 元件的情況也是如此。 若只要終結用戶端表示，您必須 `Unbind()` 先在 proxy 元件上呼叫：
+所有 proxy 元件也是如此。 若只要銷毀用戶端表示，您必須 `Unbind()` 先在 proxy 元件上呼叫：
 
 ```cs
 var cutplane = gameObject.GetComponent<ARRCutPlaneComponent>();

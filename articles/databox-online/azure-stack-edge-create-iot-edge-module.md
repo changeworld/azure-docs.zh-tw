@@ -1,6 +1,6 @@
 ---
 title: '適用于 Azure Stack Edge 的 c # IoT Edge 模組 |Microsoft Docs'
-description: '瞭解如何開發可在您的 Azure Stack Edge 上部署的 c # IoT Edge 模組。'
+description: '瞭解如何開發可在 Azure Stack Edge 上部署的 c # IoT Edge 模組。'
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,19 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d8cea74ec24efa7562caab5074d87d436cddaffb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339887"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018479"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>開發 c # IoT Edge 模組以在 Azure Stack Edge 上移動檔案
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>開發 c # IoT Edge 模組，以將檔案移至 Azure Stack Edge
 
-這篇文章會引導您逐步瞭解如何建立 IoT Edge 模組，以使用您的 Azure Stack Edge 裝置進行部署。 Azure Stack Edge 是一種儲存體解決方案，可讓您處理資料並透過網路傳送至 Azure。
+本文將逐步引導您建立 IoT Edge 模組，以使用您的 Azure Stack Edge 裝置進行部署。 Azure Stack Edge 是一種儲存體解決方案，可讓您處理資料，並透過網路傳送至 Azure。
 
-您可以搭配 Azure Stack Edge 使用 Azure IoT Edge 模組，以在資料移至 Azure 時進行轉換。 本文中使用的模組會執行邏輯，將檔案從本機共用複製到您 Azure Stack 邊緣裝置上的雲端共用。
+您可以使用 Azure IoT Edge 模組搭配您的 Azure Stack Edge，以在資料移至 Azure 時進行轉換。 本文中使用的模組會執行邏輯，以將檔案從本機共用複製到 Azure Stack Edge 裝置上的雲端共用。
 
 在本文中，您將學會如何：
 
@@ -31,17 +32,17 @@ ms.locfileid: "84339887"
 
 ## <a name="about-the-iot-edge-module"></a>關於 IoT Edge 模組
 
-您的 Azure Stack Edge 裝置可以部署及執行 IoT Edge 模組。 Edge 模組本質上是可執行特定工作的 Docker 容器，例如，從裝置內嵌訊息、轉換訊息或將訊息傳送到 IoT 中樞。 在本文中，您將建立模組，將檔案從本機共用複製到您 Azure Stack 邊緣裝置上的雲端共用。
+您的 Azure Stack Edge 裝置可以部署和執行 IoT Edge 模組。 Edge 模組本質上是可執行特定工作的 Docker 容器，例如，從裝置內嵌訊息、轉換訊息或將訊息傳送到 IoT 中樞。 在本文中，您將建立模組，以將檔案從本機共用複製到 Azure Stack Edge 裝置上的雲端共用。
 
 1. 檔案會寫入 Azure Stack Edge 裝置上的本機共用。
-2. 檔案事件產生器會針對寫入到本機共用的每個檔案建立檔案事件。 檔案事件也會在檔案已修改時產生。 接著將檔案事件傳送到 IoT Edge 中樞 (位於 IoT Edge 執行階段)。
+2. 檔案事件產生器會針對寫入到本機共用的每個檔案建立檔案事件。 當檔案遭到修改時，也會產生檔案事件。 接著將檔案事件傳送到 IoT Edge 中樞 (位於 IoT Edge 執行階段)。
 3. IoT Edge 自訂模組會處理檔案事件以建立檔案事件物件，此物件也包含該檔案的相對路徑。 此模組會使用相對的檔案路徑來產生絕對路徑，並將檔案從本機共用複製到雲端共用。 模組接著會從本機共用中刪除該檔案。
 
 ![Azure IoT Edge 模組在 Azure Stack Edge 上的運作方式](./media/azure-stack-edge-create-iot-edge-module/how-module-works-1.png)
 
 一旦檔案位於雲端共用之後，它就會自動上傳至您的 Azure 儲存體帳戶。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請確定您擁有：
 
@@ -49,7 +50,7 @@ ms.locfileid: "84339887"
 
     - 裝置也會有相關聯的 IoT 中樞資源。
     - 裝置已設定 Edge 計算角色。
-    如需詳細資訊，請移至為您的 Azure Stack Edge[設定計算](azure-stack-edge-deploy-configure-compute.md#configure-compute)。
+    如需詳細資訊，請移至為您的 Azure Stack Edge [設定計算](azure-stack-edge-deploy-configure-compute.md#configure-compute) 。
 
 - 下列開發資源：
 
@@ -59,7 +60,7 @@ ms.locfileid: "84339887"
     - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
     - [DOCKER CE](https://store.docker.com/editions/community/docker-ce-desktop-windows)。 您可能必須建立帳戶，才能下載並安裝軟體。
 
-## <a name="create-a-container-registry"></a>建立容器登錄庫
+## <a name="create-a-container-registry"></a>建立容器登錄
 
 Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其中儲存並管理私人 Docker 容器映像。 雲端中所提供的兩個熱門 Docker 登錄服務為 Azure Container Registry 和 Docker Hub。 本文使用 Container Registry。
 
@@ -68,15 +69,15 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 3. 提供：
 
    1. Azure 內唯一的**登錄名稱**，其中包含 5 到 50 個英數字元。
-   2. 選擇**訂**用帳戶。
+   2. 選擇 **訂**用帳戶。
    3. 建立新的，或選擇現有的**資源群組**。
-   4. 選取 [位置] 。 我們建議此位置與 Azure Stack Edge 資源相關聯。
+   4. 選取 [位置] 。 我們建議此位置與 Azure Stack Edge 資源相關聯的位置相同。
    5. 將 [管理使用者]**** 切換為 [啟用]****。
    6. 將 SKU 設定為 [基本]****。
 
       ![建立容器登錄](./media/azure-stack-edge-create-iot-edge-module/create-container-registry-1.png)
  
-4. 選取 [建立]。
+4. 選取 [建立]  。
 5. 建立容器登錄之後，請加以瀏覽，並選取 [存取金鑰]****。
 
     ![取得存取金鑰](./media/azure-stack-edge-create-iot-edge-module/get-access-keys-1.png)
@@ -124,7 +125,7 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 
 ### <a name="update-the-module-with-custom-code"></a>使用自訂程式碼來更新模組
 
-1. 在 [VS Code explorer] 中，開啟 [**模組 > FileCopyModule > Program.cs**]。
+1. 在 VS Code explorer 中，開啟 [ **模組] > >filecopymodule > Program.cs**]。
 2. 在 **FileCopyModule 命名空間**頂端，為稍後用到的類型新增下列 using 陳述式。 **Microsoft.Azure.Devices.Client.Transport.Mqtt** 是將訊息傳送至 IoT Edge 中樞的通訊協定。
 
     ```
@@ -143,7 +144,7 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
             private const string OutputFolderPath = "/home/output";
     ```
 
-4. 在上一個步驟之後，請新增**FileEvent**類別來定義訊息本文。
+4. 緊接在上一個步驟之後，新增 **FileEvent** 類別來定義訊息主體。
 
     ```
     /// <summary>
@@ -159,7 +160,7 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
     }
     ```
 
-5. 在**Init 方法**中，程式碼會建立並設定**ModuleClient**物件。 此物件允許模組使用 MQTT 通訊協定連線至本機的 Azure IoT Edge 執行階段，來傳送和接收訊息。 Init 方法中使用的連接字串，會由 IoT Edge 執行階段提供給模組。 程式碼會註冊 FileCopy 回呼，透過 **input1** 端點接收來自 IoT Edge 中樞的訊息。 以下列程式碼取代**Init 方法**。
+5. 在 **Init 方法**中，程式碼會建立並設定 **ModuleClient** 物件。 此物件允許模組使用 MQTT 通訊協定連線至本機的 Azure IoT Edge 執行階段，來傳送和接收訊息。 Init 方法中使用的連接字串，會由 IoT Edge 執行階段提供給模組。 程式碼會註冊 FileCopy 回呼，透過 **input1** 端點接收來自 IoT Edge 中樞的訊息。 以下列程式碼取代 **Init 方法** 。
 
     ```
     /// <summary>
@@ -181,7 +182,7 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
     }
     ```
 
-6. 移除**PipeMessage 方法**的程式碼，並在其位置插入**FileCopy**的程式碼。
+6. 移除 **>pipemessage 方法** 的程式碼，並在其位置插入 **FileCopy**的程式碼。
 
     ```
         /// <summary>
@@ -239,14 +240,14 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
     ```
 
 7. 儲存這個檔案。
-8. 您也可以下載此專案的[現有程式碼範例](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable)。 接著，您可以針對此範例中的**program.cs**檔案，驗證您所儲存的檔案。
+8. 您也可以下載此專案的 [現有程式碼範例](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) 。 然後，您可以在此範例中，驗證您針對 **program.cs** 檔案所儲存的檔案。
 
 ## <a name="build-your-iot-edge-solution"></a>建置 IoT Edge 解決方案
 
 在上一節中，您已建立 IoT Edge 解決方案，並將程式碼新增至 FileCopyModule，以將檔案從本機共用複製到雲端共用。 現在，您需要建置容器映像形式的解決方案，並將它推送到容器登錄。
 
-1. 在 VSCode 中，移至 [終端機] > 新的終端機] 以開啟新的 Visual Studio Code 整合式終端機。
-2. 在整合式終端機中輸入下列命令，以登入 Docker。
+1. 在 VSCode 中，移至 [終端 > 新增終端機] 以開啟新的 Visual Studio Code 整合式終端機。
+2. 在整合式終端機中輸入下列命令來登入 Docker。
 
     `docker login <ACR login server> -u <ACR username>`
 
@@ -271,10 +272,10 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 
     您可能會看到下列可略過的警告：
 
-    *Program .cs （77，44）： warning CS1998：這個非同步方法缺少 ' await ' 運算子，並會同步執行。請考慮使用 ' await ' 運算子來等候非封鎖式 API 呼叫，或 ' await Task. Run （...） ' 以在背景執行緒上執行 CPU 系結工作。*
+    *Program.cs (77，44) ： warning CS1998：此非同步方法缺少 ' await ' 運算子，將會同步執行。請考慮使用 ' await ' 運算子來等候非封鎖的 API 呼叫，或使用 ' await Task. Run ( ... ) ' 在背景執行緒上執行 CPU 系結工作。*
 
 4. 您可以在 VS Code 整合式終端機中檢視完整容器映像位址。 系統會根據 module.json 檔案中的資訊，使用 `<repository>:<version>-<platform>` 格式來建置映像位址。 在本文中，它應該看起來像 `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要在 Azure Stack Edge 上部署並執行此模組，請參閱[新增模組](azure-stack-edge-deploy-configure-compute.md#add-a-module)中的步驟。
+若要在 Azure Stack Edge 上部署和執行此模組，請參閱 [新增模組](azure-stack-edge-deploy-configure-compute.md#add-a-module)中的步驟。
