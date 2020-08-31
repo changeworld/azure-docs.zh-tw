@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5334a1196ac8044c56e615cf8894b44646b48fb4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: c68cb8cc0ecf759b9af0e313e09663cdbc327917
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88615103"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067700"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure 數位 Twins 中的查詢單位 
 
@@ -20,7 +20,9 @@ Azure 數位 Twins**查詢單位 (QU) **是一種隨選計算單位，可用來�
 
 它會將執行 Azure 數位 Twins 所支援的查詢作業所需的系統資源（例如 CPU、IOPS 和記憶體）抽象化出來，讓您可以改為追蹤查詢單位的使用量。
 
-查詢的複雜性會影響執行該查詢所耗用的 QUs 數目。 
+執行查詢所耗用的查詢單位數量受 .。。
+* 查詢的複雜度 
+* 結果集的大小 (因此，傳回10個結果的查詢所耗用的 QUs，會比只傳回一個結果的類似複雜性查詢更多的情況) 
 
 本文說明如何瞭解查詢單位和追蹤查詢單位耗用量。
 

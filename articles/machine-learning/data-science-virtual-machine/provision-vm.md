@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: afcb676f68e7be9d3ebef11ea2c6876a86bbd062
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a955f035933955b88200e49e343f7dd0c257c89b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281777"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816349"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>快速入門：設定適用於 Windows 的資料科學虛擬機器
 
@@ -69,6 +69,5 @@ ms.locfileid: "80281777"
 
 * 開啟 [開始]  功能表，探索 DSVM 上的工具。
 * 閱讀[什麼是 Azure Machine Learning？](../overview-what-is-azure-ml.md)並試用[教學課程](../index.yml)，以了解 Azure Machine Learning。
-* 閱讀文章：[您可以在資料科學虛擬機器上做的十件事](https://aka.ms/dsvmtenthings)。
-* 瀏覽 [Azure AI 資源庫](https://gallery.cortanaintelligence.com)，可取得在 Azure 上使用 Azure Machine Learning 和相關資料服務的機器學習和資料分析範例。 我們也已在虛擬機器的 [開始]  功能表和桌面上提供此資源庫的圖示。
+* 閱讀[使用 Azure 中的 Windows 資料科學虛擬機器的資料科學](./vm-do-ten-things.md)一文
 

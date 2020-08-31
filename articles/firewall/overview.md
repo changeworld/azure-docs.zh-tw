@@ -5,16 +5,16 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: overview
-ms.custom: mvc
-ms.date: 08/10/2020
+ms.custom: mvc, contperfq1
+ms.date: 08/25/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: a496f91621199dce6dc8e49963938ab0fafe5227
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 914f267edd5a8168fc11af7186e322c306718a4a
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053196"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852641"
 ---
 # <a name="what-is-azure-firewall"></a>何謂 Azure 防火牆？
 
@@ -54,7 +54,8 @@ Azure 防火牆有下列已知問題：
 |NetworkRuleHit 計量缺少通訊協定維度|ApplicationRuleHit 計量允許篩選型的通訊協定，但對應的 NetworkRuleHit 計量中缺少這項功能。|我們正在調查提供修正程式的可能性。|
 |不支援在 64000 與 65535 之間使用連接埠的 NAT 規則|Azure 防火牆允許網路和應用程式規則使用 1-65535 範圍中的任何連接埠，不過 NAT 規則只支援 1-63999 範圍中的連接埠。|這是目前的限制。
 |組態更新平均可能需要 5 分鐘|Azure 防火牆組態更新平均可能需要三到五分鐘，而且不支援平行更新。|我們正在調查提供修正程式的可能性。|
-|Azure 防火牆會使用 SNI TLS 標頭來篩選 HTTPS 和 MSSQL 流量|如果瀏覽器或伺服器軟體不支援伺服器名稱指示 (SNI) 擴充功能，您就無法透過 Azure 防火牆連線。|如果瀏覽器或伺服器軟體不支援 SNI，您或許能夠使用網路規則 (而不是應用程式規則) 來控制連線。 如需可支援 SNI 的軟體，請參閱[伺服器名稱指示](https://wikipedia.org/wiki/Server_Name_Indication)。
+|Azure 防火牆會使用 SNI TLS 標頭來篩選 HTTPS 和 MSSQL 流量|如果瀏覽器或伺服器軟體不支援伺服器名稱指示 (SNI) 擴充功能，您就無法透過 Azure 防火牆連線。|如果瀏覽器或伺服器軟體不支援 SNI，您或許能夠使用網路規則 (而不是應用程式規則) 來控制連線。 如需可支援 SNI 的軟體，請參閱[伺服器名稱指示](https://wikipedia.org/wiki/Server_Name_Indication)。|
+|自訂 DNS (預覽) 無法與強制通道搭配運作|如果已啟用強制通道，自訂 DNS (預覽) 就無法運作。|我們正在調查提供修正程式的可能性。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: 從 Azure Notebooks 預覽版匯出 Jupyter Notebook 專案
 description: 快速匯出 Jupyter Notebook 專案。
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: ad37db7e9bdb1251a3e62bd567960979f556b489
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2e76f2c1956df4d0de59cfb429dc1c9dce85a62
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832027"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892094"
 ---
 # <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>快速入門：在 Azure Notebooks 預覽版中匯出 Jupyter Notebook 專案
 
@@ -17,6 +17,7 @@ ms.locfileid: "85832027"
 在本快速入門中，您將下載 Azure Notebooks 專案來用於其他 Jupyter Notebook 解決方案。 
 
 ## <a name="prerequisites"></a>必要條件
+
 現有的 Azure Notebooks 專案。
 
 ## <a name="export-an-azure-notebooks-project"></a>匯出 Azure Notebooks 專案

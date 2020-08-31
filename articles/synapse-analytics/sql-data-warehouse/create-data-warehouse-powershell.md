@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 建立及查詢 Synapse SQL 集區
+title: 使用 Azure PowerShell 建立 Synapse SQL 集區
 description: 使用 Azure PowerShell，透過伺服器層級的防火牆規則快速建立 Synapse SQL 集區。
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -11,14 +11,14 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 21ca3968065df2575b101efa7735d56f87683938
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e6683746e2a8f274f7260a3d5bb60e956d49d30a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211063"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751912"
 ---
-# <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立及查詢 Synapse SQL 集區
+# <a name="quickstart-create-a-synapse-sql-pool-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立 Synapse SQL 集區
 
 使用 Azure PowerShell 在 Azure Synapse Analytics 中建立 Synapse SQL 集區。
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在已建立了 SQL 集區、防火牆規則、連線到您的 SQL 集區，並執行了一些查詢。 若要深入了解，請繼續閱讀[將資料載入 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)一文。
+您現在已建立了 SQL 集區、防火牆規則並連線到您的 SQL 集區。 若要深入了解，請繼續閱讀[將資料載入 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)一文。

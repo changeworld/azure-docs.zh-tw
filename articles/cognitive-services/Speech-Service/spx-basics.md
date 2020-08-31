@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 2f5a1d190c6e63056c2377641446f617edaa1bd3
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e859ac13c72ed07d3f57da6e61fd6d9f827f0fca
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590212"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854891"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>了解語音 CLI 的基本概念
 
@@ -31,10 +31,18 @@ ms.locfileid: "88590212"
 spx
 ```
 
-注意**另請參閱**命令參數右側所列的說明主題。 您也可以依關鍵字搜尋主題。 例如，輸入下列命令以查看關於語音 CLI 範例的說明主題清單：
+注意 **請參閱：** 命令參數右側所列的說明主題。 您可以輸入這些命令，以取得子命令的詳細說明。
+
+您可以依關鍵字搜尋說明主題。 例如，輸入下列命令以查看語音 CLI 使用量範例的清單：
 
 ```shell
 spx help find --topics "examples"
+```
+
+輸入下列命令以查看辨識命令的選項：
+
+```shell
+spx help recognize
 ```
 
 現在執行下列命令，使用您的預設麥克風，使用語音服務執行一些語音辨識。

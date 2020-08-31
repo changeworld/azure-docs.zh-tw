@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/22/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: cc950c4915a57dd949941fbb9802c51a47c9a00d
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 1a645a333db9b24005639f4adbb2913a2b887b66
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607138"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055663"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>合作夥伴中心的 [Marketplace 見解] 儀表板
 
@@ -66,7 +66,10 @@ ms.locfileid: "88607138"
 
 ## <a name="marketplace-insights-summary"></a>Marketplace 見解的摘要
 
-[Marketplace 見解] 的 [摘要] 區段會顯示所選日期範圍內的 [頁面瀏覽數]、[動作呼叫數]，以及 [非重複訪客數]。
+[Marketplace 見解摘要] 區段會顯示所選日期範圍內的 **頁面**流覽次數、 **動作呼叫**和 **唯一訪客** 。
+
+>[!NOTE]
+>Marketplace 見解儀表板提供點選流資料，不應與潛在客戶目的地端點中產生的潛在客戶相互關聯。
 
 ### <a name="page-visits"></a>頁面瀏覽數
 
@@ -137,10 +140,10 @@ ms.locfileid: "88607138"
 ## <a name="next-steps"></a>後續步驟
 
 - 如需合作夥伴中心商業市集中可用的分析報告概觀，請參閱[合作夥伴中心的商業市集分析](./analytics.md)。
-- 如需摘要說明您供應項目市集活動的彙總資料圖表、趨勢和值，請參閱[商業市集分析中的摘要儀表板](./summary-dashboard.md)。
+- 如需摘要說明供應項目市集活動的彙總資料圖表、趨勢和值，請參閱[商業市集分析中的摘要儀表板](./summary-dashboard.md)。
 - 如需圖形化和可下載格式的訂單資訊，請參閱[商業市集分析中的訂單儀表板](./orders-dashboard.md)。
-- 如需虛擬機器 (VM) 供應項目使用量和計量帳單計量，請參閱[商業市集分析中的使用量儀表板](./usage-dashboard.md)。
+- 針對虛擬機器 (VM) 供應項目使用量和計量帳單計量，請參閱[商業市集分析中的使用量儀表板](./usage-dashboard.md)。
 - 如需客戶的詳細資訊 (包括成長趨勢)，請參閱[商業市集分析中的客戶儀表板](./customer-dashboard.md)。
 - 如需過去 30 天內的下載要求清單，請參閱[商業市集分析中的下載儀表板](./downloads-dashboard.md)。
 - 若要查看 Azure Marketplace 和 AppSource 上客戶對於供應項目的意見反應彙總檢視，請參閱[商業市集分析中的評等和評論儀表板](./ratings-reviews.md)。
-- 如需商業市集分析的常見問題集以及完整資料術語字典，請參閱[商業市集分析的常見問題集與術語](./faq-terminology.md)。
+- 如需商業市集分析的常見問題集以及完整的資料術語字典，請參閱[商業市集分析的常見問題集與術語](./faq-terminology.md)。

@@ -167,7 +167,11 @@
           displayName: 'monitor, insights, log analytics, builtin'
           href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
 - name: 疑難排解
-  href: ./troubleshoot/general.md
+  items:
+    - name: 常見問題
+      href: ./troubleshoot/general.md
+    - name: 已知問題
+      href: 'https://github.com/azure/azure-policy#known-issues'
 - name: 參考
   items:
     - name: Azure CLI
@@ -189,9 +193,9 @@
     - name: Azure SDK for Java
       items:
         - name: 指派
-          href: /java/api/com.microsoft.azure.management.resources.policyassignment?view=azure-java-stable
+          href: /java/api/com.microsoft.azure.management.resources.policyassignment
         - name: 原則定義
-          href: /java/api/com.microsoft.azure.management.resources.PolicyDefinitions?view=azure-java-stable
+          href: /java/api/com.microsoft.azure.management.resources.PolicyDefinitions
     - name: 適用於 JavaScript 的 Azure SDK
       items:
         - name: 原則
@@ -234,31 +238,45 @@
           href: /azure/templates/microsoft.authorization/policysetdefinitions
 - name: 資源
   items:
-    - name: 已知問題
-      href: 'https://github.com/azure/azure-policy#known-issues'
     - name: GitHub - Azure 原則範例
       href: 'https://github.com/Azure/azure-policy'
-    - name: GitHub - 社群原則存放庫
-      href: 'https://github.com/Azure/Community-Policy'
-    - name: 適用於 Azure 原則的 Microsoft 問答集
-      href: /answers/topics/azure-policy.html
-    - name: 治理 YouTube 頻道
-      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-    - name: 來賓設定影片
+    - name: 社群工具
       items:
-        - name: 開始使用
-          href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
-        - name: 了解方案
-          href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'
-        - name: 指派原則
-          href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
-        - name: 補救工作
-          href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
-    - name: 影片 - Ignite 2019
-      href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
+        - name: GitHub - 社群原則存放庫
+          href: 'https://github.com/Azure/Community-Policy'
+        - name: Azure 原則合規性掃描的 GitHub 動作
+          href: 'https://github.com/marketplace/actions/azure-policy-compliance-scan'
+        - name: CCO Azure 控管儀表板
+          href: 'https://github.com/Azure/ccodashboard/blob/master/README.md#cco-azure-governance-dashboard-report-pages'
+        - name: AzAdvertizer
+          href: 'https://www.azadvertizer.net/'
+        - name: Azure 控管視覺化檢視
+          href: 'https://github.com/julianhayward/azure-mg-sub-governance-reporting'
+    - name: 意見反應與支援
+      items:
+        - name: 適用於 Azure 原則的 Microsoft 問答集
+          href: /answers/topics/azure-policy.html
+        - name: Azure 支援票證
+          href: 'https://azure.microsoft.com/support/create-ticket/'
+        - name: UserVoice
+          href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345055'
+    - name: 影片
+      items:
+        - name: 治理 YouTube 頻道
+          href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
+        - name: 影片 - Ignite 2019
+          href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
+        - name: 來賓設定影片
+          items:
+            - name: 開始使用
+              href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
+            - name: 了解方案
+              href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'
+            - name: 指派原則
+              href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
+            - name: 補救工作
+              href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: UserVoice
-      href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345055'

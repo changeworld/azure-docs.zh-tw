@@ -1,14 +1,16 @@
 ---
 title: 何謂 Language Understanding Intelligent Service (LUIS)？
-description: Language Understanding Intelligent Service (LUIS) 是一種 API 雲端式服務，可將自訂機器學習智慧套用至使用者的對話、自然語言文字中，以預測整體意義，並找出相關的詳細資訊。
+description: Language Understanding (LUIS) - 雲端式 API 服務，使用機器學習來進行對話式自然語言以預測意義並擷取資訊。
+keywords: Azure, 人工智慧, ai, 自然語言處理, nlp, 自然語言理解, nlu, ai 對話, 對話式 ai, ai 聊天機器人, 聊天機器人製作者, LUIS, nlp ai, luis ai, azure luis, 理解自然語言
 ms.topic: overview
-ms.date: 05/05/2020
-ms.openlocfilehash: 231a6580a6776b82173865744e9e8757c2fa08f1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/07/2020
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 22fe99e1552a9612adfbc455d60852f1591a1a54
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538032"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752141"
 ---
 # <a name="what-is-language-understanding-luis"></a>何謂 Language Understanding Intelligent Service (LUIS)？
 
@@ -40,7 +42,9 @@ LUIS 應用程式會提供智慧，讓用戶端應用程式得以做出聰明的
 <a name="Key-LUIS-concepts"></a>
 <a name="what-is-a-luis-model"></a>
 
-## <a name="natural-language-processing"></a>自然語言處理
+## <a name="natural-language-understanding-nlu"></a>自然語言理解 (NLU)
+
+[LUIS 以 NLU 的形式提供人工智慧 (AI)](artificial-intelligence.md)，這是自然語言處理 (NLP) 的子集。
 
 您的 LUIS 應用程式包含領域特定自然語言模型。 您可以從預先建立的領域模型開始使用 LUIS 應用程式、自行建置模型，或以自己的自訂資訊融合預先建立的領域片段。
 
@@ -48,10 +52,11 @@ LUIS 應用程式會提供智慧，讓用戶端應用程式得以做出聰明的
 
 * **自訂模型** LUIS 提供您幾種方式來識別您自己的自訂模型，包括意圖和實體。 實體包括機器學習實體、特定或常值實體，以及機器學習和常值的組合。
 
-## <a name="build-the-luis-model"></a>建置 LUIS 模型
-使用[撰寫](https://go.microsoft.com/fwlink/?linkid=2092087) API 或使用 [LUIS](https://www.luis.ai) 入口網站建置模型。
+深入了解 [NLP](artificial-intelligence.md)，以及 NLU 的 LUIS 特定區域。
 
-LUIS 模型的首要組件是使用者意向的類別，名為 **[意圖](luis-concept-intent.md)** 。 每個意圖都需要使用者 **[語句](luis-concept-utterance.md)** 的範例。 每個語句都提供需要擷取的資料。
+## <a name="step-1-design-and-build-your-model"></a>步驟 1:設計和建置您的模型
+
+使用稱為 **[意圖](luis-concept-intent.md)** 的使用者意圖類別來設計您的模型。 每個意圖都需要使用者 **[語句](luis-concept-utterance.md)** 的範例。 每個語句都可以提供需要使用[機器學習實體](luis-concept-entity-types.md#effective-machine-learned-entities)來擷取的資料。
 
 |範例使用者語句|Intent|擷取的資料|
 |-----------|-----------|-----------|
@@ -59,9 +64,11 @@ LUIS 模型的首要組件是使用者意向的類別，名為 **[意圖](luis-c
 |`When does your store open?`|StoreHoursAndLocation|開啟|
 |`Schedule a meeting at 1pm with Bob in Distribution`|ScheduleMeeting|下午 1 點、Bob|
 
-## <a name="query-prediction-endpoint"></a>查詢預測端點
+使用[撰寫](https://go.microsoft.com/fwlink/?linkid=2092087) API 和 (或) 使用 [**LUIS 入口網站**](https://www.luis.ai)建置模型。 深入了解如何使用[入口網站](get-started-portal-build-app.md)和 [SDK 用戶端程式庫](quickstart-sdk.md)來建置。
 
-在已訓練應用程式並發佈至端點後，用戶端應用程式會將語句傳送至預測[端點](https://go.microsoft.com/fwlink/?linkid=2092356) API。 API 會將模型套用至語句進行分析，並以 JSON 格式回應預測結果。
+## <a name="step-2-get-the-query-prediction"></a>步驟 2:取得查詢預測
+
+在已定型應用程式的模型並發佈至端點後，用戶端應用程式 (例如聊天機器人) 會將語句傳送至預測[端點](https://go.microsoft.com/fwlink/?linkid=2092356) API。 API 會將模型套用至語句進行分析，並以 JSON 格式回應預測結果。
 
 JSON 最基本的端點回應包含查詢語句和評分最高的意圖。 它也可以擷取下列**連絡人類型**實體和整體情感之類的資料。
 
@@ -69,7 +76,6 @@ JSON 最基本的端點回應包含查詢語句和評分最高的意圖。 它�
 {
     "query": "I want to call my HR rep",
     "prediction": {
-        "normalizedQuery": "i want to call my hr rep",
         "topIntent": "HRContact",
         "intents": {
             "HRContact": {
@@ -82,49 +88,52 @@ JSON 最基本的端點回應包含查詢語句和評分最高的意圖。 它�
             ]
         },
         "sentiment": {
-            "label": "negative",
-            "score": 0.103343368
+            "label": "neutral",
+            "score": 0.5
         }
     }
 }
 ```
 
-## <a name="improve-model-prediction"></a>改善模型預測
+## <a name="step-3-improve-model-prediction"></a>步驟 3：改善模型預測
 
-在 LUIS 應用程式發佈並接收實際使用者語句之後，LUIS 會提供端點語句的[主動式學習](luis-concept-review-endpoint-utterances.md)，以改善預測準確度。
+在 LUIS 應用程式發佈並接收實際使用者語句之後，LUIS 會提供端點語句的[主動式學習](luis-concept-review-endpoint-utterances.md)，以改善預測準確度。 請在您開發生命週期中的定期維護工作進行過程中檢閱這些建議。
 
 <a name="using-luis"></a>
 
-## <a name="development-lifecycle"></a>開發生命週期
+## <a name="development-lifecycle-and-tools"></a>開發生命週期和工具
 LUIS 會提供工具、版本控制和與其他 LUIS 作者的共同作業，以便整合到完整的[開發生命週期](luis-concept-app-iteration.md)。
 
-## <a name="implementing-luis"></a>實作 LUIS
-Language Understanding (LUIS) 在作為 REST API 時，可以與任何具有 HTTP 要求的產品、服務或架構搭配使用。 下列清單包含最常與 LUIS 搭配使用的 Microsoft 產品和服務。
-
-LUIS 最上層的用戶端應用程式是：
-* [Web 應用程式 Bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) 可快速建立具備 LUIS 功能的聊天機器人，以透過文字輸入與使用者交談。 使用 [Bot Framework][bot-framework][4.x](https://github.com/Microsoft/botbuilder-dotnet) 版可取得完整的 Bot 體驗。
+Language Understanding (LUIS) 在作為 REST API 時，可以與任何具有 HTTP 要求的產品、服務或架構搭配使用。 LUIS 也提供數個熱門程式設計語言的用戶端程式庫 (SDK)。 深入了解所提供的[開發人員資源](developer-reference-resource.md)。
 
 可供快速且輕鬆地搭配使用 LUIS 與聊天機器人的工具：
 * [LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) NPM 套件可透過獨立命令列工具或匯入形式來提供撰寫和預測功能。
 * [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) LUISGen 工具可從匯出的 LUIS 模型中產生強型別的 C# 和 typescript 原始程式碼。
 * [分派](https://aka.ms/dispatch-tool)可讓您透過發送器模型從父應用程式使用數個 LUIS 和 QnA Maker 應用程式。
 * [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) LUDown 是一種命令列工具，可協助您管理聊天機器人的語言模型。
-* [Bot 架構 - 編輯器](https://github.com/microsoft/BotFramework-Composer) - 一種整合式開發工具，可供開發人員和多專業團隊透過 Microsoft Bot Framework 建置 Bot 和對話式體驗
+
+## <a name="integrate-with-a-bot"></a>與聊天機器人整合
+
+使用 [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) 搭配 [Microsoft Bot Framework](https://dev.botframework.com/) 來建置和部署聊天機器人。 使用圖形化介面工具 [Composer](https://docs.microsoft.com/composer/) 來進行設計和開發，或使用針對最常見聊天機器人案例所設計的[有效聊天機器人範例](https://github.com/microsoft/BotBuilder-Samples)來進行。
+
+## <a name="integrate-with-other-cognitive-services"></a>與其他認知服務整合
 
 其他可與 LUIS 搭配使用的認知服務包括：
 * [QnA Maker][qnamaker] 可讓數種文字類型合併為問題和答案知識庫。
 * [語音服務](../Speech-Service/overview.md)可將口說語言要求轉換成文字。
-* [對話學習模組](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview)可讓您更快速地使用 LUIS 建置 Bot 對話。
 
-使用 LUIS 的範例：
-* [交談式 AI](https://github.com/Microsoft/AI) GitHub 存放庫。
-* [Bot Framework - Bot 範例](https://github.com/microsoft/BotBuilder-Samples)
+LUIS 會提供文字分析中的功能作為現有 LUIS 資源的一部分。 這項功能包括[情感分析](luis-how-to-publish-app.md#configuring-publish-settings)，以及使用預先建置的 keyPhrase 實體來進行的[關鍵片語擷取](luis-reference-prebuilt-keyphrase.md)。
+
+## <a name="learn-with-the-quickstarts"></a>使用快速入門來了解
+
+使用[入口網站](get-started-portal-build-app.md)和 [SDK 用戶端程式庫](quickstart-sdk.md)進行實際操作快速入門來了解 LUIS。
+
 
 ## <a name="next-steps"></a>後續步驟
 
-* [新功能](whats-new.md)
-* 使用[預先建立](luis-get-started-create-app.md)或[自訂](luis-quickstart-intents-only.md)領域撰寫新的 LUIS 應用程式。
-* 對公用 IoT 應用程式[查詢預測端點](luis-get-started-get-intent-from-browser.md)。
+* 服務和文件的[最新動向](whats-new.md)
+* 使用[意圖](luis-concept-intent.md)和[實體](luis-concept-entity-types.md)來[規劃您的應用程式](luis-how-plan-your-app.md)。
+* [查詢預測端點](luis-get-started-get-intent-from-browser.md)。
 * LUIS 的[開發人員資源](developer-reference-resource.md)。
 
 [bot-framework]: https://docs.microsoft.com/bot-framework/

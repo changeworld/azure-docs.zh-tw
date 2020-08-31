@@ -6,12 +6,12 @@ ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 154558a2aa679dddad395225088ea891ecea8ebc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 744e62f8a2207cff400a96069fc6ea82866f6e2d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654271"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055680"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes Service (AKS) 節點映射升級
 
@@ -20,6 +20,10 @@ AKS 支援升級節點上的映射，讓您能夠掌握最新的 OS 和執行時
 如果您有興趣瞭解 AKS 提供的最新映射，請參閱 [AKS 版本](https://github.com/Azure/AKS/releases) 資訊以取得詳細資料。
 
 如需升級叢集之 Kubernetes 版本的詳細資訊，請參閱 [升級 AKS][upgrade-cluster]叢集。
+
+## <a name="limitations"></a>限制
+
+* AKS 叢集必須使用節點的虛擬機器擴展集。
 
 ## <a name="install-the-aks-cli-extension"></a>安裝 AKS CLI 擴充功能
 

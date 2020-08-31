@@ -3,12 +3,12 @@ title: 變更 Azure Service Fabric 叢集設定
 description: 本文說明您可以自訂的網狀架構設定和網狀架構升級原則。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 05b0b132f45e1cc7fbb136c46a7596f480941178
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fbd6c9503e409473a87c58202eb88d77716441f9
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682984"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055115"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自訂 Service Fabric 叢集設定
 本文說明您可以為 Service Fabric 叢集自訂的各種網狀架構設定。 針對裝載於 Azure 中的叢集，您可以透過 [Azure 入口網站](https://portal.azure.com)或使用 Azure Resource Manager 範本來自訂設定。 如需詳細資訊，請參閱[升級 Azure 叢集的設定](service-fabric-cluster-config-upgrade-azure.md)。 針對獨立叢集，您會透過更新 *ClusterConfig.json* 檔案並在叢集上執行設定升級來自訂設定。 如需詳細資訊，請參閱[升級獨立叢集的設定](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -423,14 +423,14 @@ ms.locfileid: "83682984"
 |AzureStorageMaxConnections | 整數，預設值為 5000 |動態|Azure 儲存體的並行連線數目上限。 |
 |AzureStorageMaxWorkerThreads | 整數，預設值為 25 |動態|平行背景工作執行緒的數目上限。 |
 |AzureStorageOperationTimeout | 時間 (秒)，預設值為 6000 |動態|以秒為單位指定時間範圍。 可供 xstore 作業完成的逾時值。 |
-|CleanupApplicationPackageOnProvisionSuccess|布林值，預設值為 FALSE |動態|在成功佈建時，啟用或停用應用程式套件的自動清除。 |
-|CleanupUnusedApplicationTypes|布林值，預設值為 FALSE |動態|此組態若啟用，允許自動取消註冊未使用的應用程式類型版本，略過最新三個未使用的版本，藉以修剪映像存放區所佔用的磁碟空間。 自動清除將會在該特定應用程式類型的成功佈建結束時觸發，而且所有應用程式類型也會一天定期執行一次。 可使用參數 "MaxUnusedAppTypeVersionsToKeep" 設定要略過的未使用版本數目。 |
-|DisableChecksumValidation | 布林值，預設值為 false |靜態| 此組態可讓我們在應用程式佈建期間啟用或停用總和檢查碼驗證。 |
-|DisableServerSideCopy | 布林值，預設值為 false |靜態|此組態會在應用程式佈建期間，啟用或停用 ImageStore 上應用程式套件的伺服器端複製作業。 |
-|ImageCachingEnabled | 布林值，預設值為 true |靜態|此組態可讓我們啟用或停用快取。 |
-|ImageStoreConnectionString |SecureString |靜態|ImageStore 根目錄的連接字串。 |
-|ImageStoreMinimumTransferBPS | 整數，預設值為 1024 |動態|叢集與 ImageStore 之間的傳輸速率下限。 此值可用來決定外部 ImageStore 的存取逾時。 只有在叢集和 ImageStore 之間的延遲偏高時才需變更此值，以允許叢集有更多時間可從外部 ImageStore 進行下載。 |
-|MaxUnusedAppTypeVersionsToKeep | 整數，預設值為 3 |動態|此組態會定義要略過清除的未使用應用程式類型版本數目。 只有在啟用參數 CleanupUnusedApplicationTypes 時，此參數才適用。 |
+|CleanupApplicationPackageOnProvisionSuccess|布林值，預設值為 FALSE |動態|在成功佈建時，啟用或停用應用程式套件的自動清除。
+
+*最佳做法是使用 `true` 。* | |CleanupUnusedApplicationTypes |Bool，預設值為 FALSE |動態 |如果啟用此設定，可讓自動取消註冊未使用的應用程式類型版本，略過最新三個未使用的版本，藉此修剪映射存放區所佔用的磁碟空間。 自動清除將會在該特定應用程式類型的成功佈建結束時觸發，而且所有應用程式類型也會一天定期執行一次。 可使用參數 "MaxUnusedAppTypeVersionsToKeep" 設定要略過的未使用版本數目。 
+
+*最佳做法是使用 `true` 。*
+| |DisableChecksumValidation |Bool，預設值為 false |靜態 |這種設定可讓我們在應用程式布建期間啟用或停用總和檢查碼驗證。 | |DisableServerSideCopy |Bool，預設值為 false |靜態 |此設定會在應用程式布建期間，啟用或停用 ImageStore 上應用程式套件的伺服器端複本。 | |ImageCachingEnabled |Bool，預設值為 true |靜態 |此設定可讓我們啟用或停用快取。 | |ImageStoreConnectionString |SecureString |靜態 |ImageStore 根目錄的連接字串。 | |ImageStoreMinimumTransferBPS |整數，預設值為 1024 |動態 |叢集與 ImageStore 之間的最小傳輸速率。 此值可用來決定外部 ImageStore 的存取逾時。 只有在叢集和 ImageStore 之間的延遲偏高時才需變更此值，以允許叢集有更多時間可從外部 ImageStore 進行下載。 | |MaxUnusedAppTypeVersionsToKeep |整數，預設值為 3 |動態 |此設定會定義要略過清除的未使用應用程式類型版本數目。 只有在啟用參數 CleanupUnusedApplicationTypes 時，此參數才適用。
+
+*一般最佳作法是使用預設的 (`3`) 。*|
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds

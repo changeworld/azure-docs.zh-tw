@@ -5,14 +5,14 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: overview
-ms.date: 09/18/2019
+ms.date: 08/25/2020
 ms.author: mialdrid
-ms.openlocfilehash: 2fda31b97314347f52b0cd1bbe9e1b54d01af807
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6621a9778025d67046722b7cd60e32a62b574ee5
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607103"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852935"
 ---
 # <a name="what-is-azure-expressroute"></a>什麼是 Azure ExpressRoute？
 ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部部署網路延伸至 Microsoft 雲端。 透過 ExpressRoute，您可以建立 Microsoft 雲端服務的連線，例如 Microsoft Azure 和 Office 365。
@@ -111,6 +111,10 @@ ExpressRoute Direct 提供的主要功能包括但不限於：
 
 ## <a name="faq"></a>常見問題集
 如需有關 ExpressRoute 的常見問題，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md)。
+
+## <a name="whats-new"></a><a name="new"></a>新功能
+
+訂閱 RSS 摘要，並在 [Azure 更新](https://azure.microsoft.com/updates/?category=networking&query=ExpressRoute) 頁面上查看最新的 ExpressRoute 功能更新。
 
 ## <a name="next-steps"></a>後續步驟
 * 深入了解 [ExpressRoute 連線模型](expressroute-connectivity-models.md)。

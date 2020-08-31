@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 06/25/2020
+ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: 82099172a933496f015ae8fc575c1919a879e1f9
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cc29eb959876a0c9c6f8c8e5dee2d18aaa5443ac
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167737"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825342"
 ---
 # <a name="what-is-the-speech-service"></a>什麼是語音服務？
 
@@ -24,7 +24,7 @@ ms.locfileid: "88167737"
 > [!IMPORTANT]
 > 語音服務已取代 Bing 語音 API 和翻譯工具語音。 如需移轉說明，請參閱 [操作指南] > [移轉]。
 
-語音服務由以下功能組成。 請使用此資料表中的連結，深入了解每項功能的常見使用案例，或瀏覽 API 參考。
+下列功能是語音服務的一部分。 請使用此資料表中的連結，深入了解每項功能的常見使用案例，或瀏覽 API 參考。
 
 | 服務 | 功能 | 描述 | SDK | REST |
 |---------|---------|-------------|-----|------|
@@ -42,20 +42,61 @@ ms.locfileid: "88167737"
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="try-the-speech-service"></a>試用語音服務
+## <a name="try-the-speech-service-for-free"></a>免費試用語音服務
 
-我們以最受歡迎的程式設計語言提供快速入門，目的是讓您能在 10 分鐘內執行程式碼。 此資料表包含每項功能最受歡迎的快速入門。 您可以使用左側導覽列來瀏覽其他語言及平台。
+在下列步驟中，您同時需要 Microsoft 帳戶和 Azure 帳戶。 如果您沒有 Microsoft 帳戶，則可以在 [Microsoft 帳戶入口網站](https://account.microsoft.com/account)免費註冊。 選取 [使用 Microsoft 帳戶登入]，然後在系統要求您登入時選取 [建立 Microsoft 帳戶]。 依照步驟來建立及驗證新的 Microsoft 帳戶。
 
-| 語音轉文字 (SDK) | 文字轉語音 (SDK) | 翻譯 (SDK) |
-|----------------------|----------------------|-------------------|
-| [辨識來自音訊檔案的語音](quickstarts/speech-to-text-from-file.md) | [將語音合成至音訊檔案](quickstarts/text-to-speech-audio-file.md) | [翻譯語音轉換文字](quickstarts/translate-speech-to-text.md) |
-| [透過麥克風辨識語音](quickstarts/speech-to-text-from-microphone.md) | [將語音合成至喇叭](quickstarts/text-to-speech.md) | [將語音翻譯成多種目標語言](quickstarts/translate-speech-to-text-multiple-languages.md) |
-| [辨識儲存在 Blob 儲存體中的語音](quickstarts/from-blob.md) | [適用於長格式音訊的非同步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [翻譯語音轉換語音](quickstarts/translate-speech-to-speech.md) |
+有了 Microsoft 帳戶之後，請移至 [Azure 註冊頁面](https://azure.microsoft.com/free/ai/)、選取 [免費開始]，然後使用 Microsoft 帳戶建立新的 Azure 帳戶。
 
 > [!NOTE]
-> 語音轉換文字和文字轉換語音也都具備 REST 端點和相關聯的快速入門。
+> 語音服務有兩個服務層級：免費和訂用帳戶，其各有不同的限制和權益。 當您註冊免費 Azure 帳戶時，其隨附 200 美元的服務點數，您可以將此點數應用於有效時間長達 30 天的付費語音服務訂用帳戶。
+>
+> 如果您使用免費的低容量語音服務層級，則即使在免費試用或服務點數到期後，您仍可保留此免費訂用帳戶。
+>
+> 如需詳細資訊，請參閱[認知服務定價 - 語音服務](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
-在您有機會使用語音服務之後，請嘗試我們的教學課程，其可告訴您如何解決各種案例。
+### <a name="create-the-azure-resource"></a>建立 Azure 資源
+
+若要將語音服務資源 (免費或付費層) 新增至您的 Azure 帳戶：
+
+1. 使用您的 Microsoft 帳戶，登入 [Azure 入口網站](https://portal.azure.com/)。
+
+1. 選取入口網站左上方的 [建立資源]****。 如果您沒有看到 [建立資源]，則隨時都可以在畫面左上角選取摺疊的功能表來找到。
+
+1. 在 [新增] 視窗中，於搜尋方塊中輸入「語音」，然後按 ENTER。
+
+1. 在搜尋結果中，選取 [Speech]****。
+
+   ![語音搜尋結果](media/index/speech-search.png)
+
+1. 選取 [建立]，然後：
+
+   - 為您的新資源提供唯一的名稱。 此名稱可協助您區分繫結至相同服務的多個訂用帳戶。
+   - 選擇與新資源相關聯的 Azure 訂用帳戶來決定費用的計費方式。
+   - 選擇將使用此資源的[區域](regions.md)。
+   - 選擇免費 (F0) 或付費 (S0) 的定價層。 如需每一層的定價和使用量配額完整資訊，請選取 [檢視完整定價詳細資料]。
+   - 為此語音訂用帳戶建立新的資源群組，或將該訂用帳戶指派給現有的資源群組。 資源群組可協助組織各種 Azure 訂用帳戶。
+   - 選取 [建立]  。 這會帶您前往部署概觀並顯示部署進度訊息。
+
+> [!NOTE]
+> 您可以在一或多個區域中建立無限數量的標準層訂用帳戶。 不過，您可以建立只有一個免費層的訂用帳戶。 免費層上的模型部署若持續 7 天未使用，將會自動解除委任。
+
+部署新的語音資源需要幾分鐘的時間。 部署完成後，選取 [移至資源]，然後在左側瀏覽窗格中選取 [金鑰] 以顯示語音服務訂用帳戶金鑰。 每個訂用帳戶都有兩個金鑰，您可以在應用程式中使用任一個金鑰。 若要快速地將金鑰複製/貼到您的程式碼編輯器或其他位置，請選取每個金鑰旁的 [複製] 按鈕，切換視窗將剪貼簿內容貼到所需的位置。
+
+> [!IMPORTANT]
+> 這些訂用帳戶金鑰可用來存取您的認知服務 API。 請勿共用您的金鑰。 安全地加以儲存，例如使用 Azure Key Vault。 我們也建議您定期重新產生這些金鑰。 進行 API 呼叫時，只需要一個金鑰。 重新產生第一個金鑰時，您可以使用第二個金鑰繼續存取服務。
+
+## <a name="complete-a-quickstart"></a>完成快速入門
+
+我們會以最熱門的程式設計語言提供快速入門，目的是教您基本的設計模式，並讓您能在 10 分鐘內執行程式碼。 請參閱下列清單，以取得每項功能的快速入門。
+
+* [語音轉換文字快速入門](speech-to-text-basics.md)
+* [文字轉換語音快速入門](get-started-text-to-speech.md)
+* [語音翻譯快速入門](speech-translation-basics.md)
+* [意圖辨識快速入門](quickstarts/intent-recognition.md)
+* [說話者辨識快速入門](speaker-recognition-basics.md)
+
+在您有機會開始使用語音服務之後，請嘗試我們的教學課程，其可說明如何解決各種案例。
 
 - [教學課程：使用語音 SDK 和 LUIS 從語音辨識意圖 (C#)](how-to-recognize-intents-from-speech-csharp.md)
 - [教學課程：使用語音 SDK 和 C# 透過聲音啟用 Bot](tutorial-voice-enable-your-bot-speech-sdk.md)
@@ -74,6 +115,8 @@ ms.locfileid: "88167737"
 
 語音服務可順利地與內建模型搭配使用，不過，您可以進一步自訂及調整體驗，以搭配您的產品或環境。 從原音模型調整到專屬於自身品牌的獨特聲音音調，都是自訂選項的範圍。
 
+其他產品則會提供專為醫療保健或保險等特定用途而調整的語音模型，但可供所有人平等地使用。 Azure 語音中的自訂會成為*您的獨特*競爭優勢一部分，而其他使用者或客戶則無法使用。 換句話說，您的模型是私人的，而且只會針對您的使用案例進行自訂調整。
+
 | 語音服務 | 平台 | 描述 |
 | -------------- | -------- | ----------- |
 | 語音轉文字 | [客製化的語音](https://aka.ms/customspeech) | 依據您的需求和可用的資料，自訂語音辨識模型。 克服像是語音模式、詞彙及背景雜音等語音辨識的阻礙。 |
@@ -90,4 +133,5 @@ ms.locfileid: "88167737"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [免費取得語音服務的訂用帳戶金鑰](get-started.md)
+> [開始使用語音轉換文字](speech-to-text-basics.md)
+> [開始使用文字轉換語音](get-started-text-to-speech.md)

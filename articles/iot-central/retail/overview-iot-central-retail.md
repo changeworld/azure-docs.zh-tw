@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: c060b87b24d7467097d06adecb9f34acb4993779
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3cae2902385eb82f65243c631745df5ca48825f3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032279"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719205"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 建置零售解決方案
 
@@ -160,20 +160,20 @@ IoT Central 的微型物流中心應用程式範本可讓解決方案建置者�
 
 應用程式範本包含四個應用程式儀表板：
 
-* **設定**會提供應用程式設計的相關資訊，並可讓您新增和刪除相機。
-* **管理**可讓您管理相機。 例如，您可以設定相機、檢視狀態資訊，以及開始相機的執行。
-* **真實相機**可讓您檢視真實相機中的資訊，例如偵測計數和相機事件。
-* **監視**可讓您檢視所有相機中的詳細資訊。
+* **使用者入門**會提供資源連結，可協助您開始使用應用程式範本。
+* **示範儀表板**會提供您可以從連線相機顯示的資訊類型圖例。
+* **(範例) 真實相機管理**會使用模擬相機來示範如何從應用程式管理相機。
+* **(範例) 真實相機監視**會使用模擬相機來示範如何從應用程式監視相機。
 
 :::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="影片分析 - 物件與動態偵測":::
 
 若要深入了解解決方案的架構，請參閱[影片分析應用程式架構](architecture-video-analytics.md)。
 
-若要了解如何部署解決方案，請參閱[在 Azure IoT Central 中建立影片分析應用程式](tutorial-video-analytics-create-app.md)教學課程。
+若要了解如何部署解決方案，請參閱[在 Azure IoT Central 中建立影片分析應用程式](tutorial-video-analytics-deploy.md)教學課程。
 
 ### <a name="live-video-analytics"></a>Live Video Analytics
 
-Live Video Analytics 會提供平台供您建置跨 Edge 和雲端的智慧型影片應用程式。 此平台可讓您擷取、錄製、分析即時影片，並將結果 (可能是影片或影片分析) 發佈到 Azure 服務。 Azure 服務可能在雲端或邊緣中執行。 您可以使用此平台，透過影片分析來增強 IoT 解決方案。
+[即時影片分析](https://github.com/Azure/live-video-analytics)會提供平台供您建置跨 Edge 和雲端的智慧型影片應用程式。 此平台可讓您擷取、錄製、分析即時影片，並將結果 (可能是影片或影片分析) 發佈到 Azure 服務。 Azure 服務可能在雲端或邊緣中執行。 您可以使用此平台，透過影片分析來增強 IoT 解決方案。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -184,4 +184,5 @@ Live Video Analytics 會提供平台供您建置跨 Edge 和雲端的智慧型�
 * [部署並逐步執行數位配送中心應用程式範本](./tutorial-iot-central-digital-distribution-center.md)。
 * [部署並逐步執行智慧庫存管理應用程式範本](./tutorial-iot-central-smart-inventory-management.md)。
 * [部署並逐步執行微型物流中心應用程式範本](./tutorial-micro-fulfillment-center.md)。
+* [部署並逐步解說影片分析應用程式範本](./tutorial-video-analytics-deploy.md)。
 * 參閱 [IoT Central 概觀](../preview/overview-iot-central.md)以深入了解 IoT Central。

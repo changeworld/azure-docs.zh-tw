@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 0644dad9e8e6f2999acfa24ea1088207f6d5e692
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 88be632e17912012618ab559f22f97487ad26c9c
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028038"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723483"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>分析索引鍵/值組和資料表的表單
 
@@ -22,6 +22,7 @@ ms.locfileid: "86028038"
 1. 將 `<file type>` 取代為檔案類型。 支援的類型：`application/pdf`、`image/jpeg`、`image/png`、`image/tiff`。
 1. 將 `<subscription key>` 取代為訂用帳戶金鑰。
 
+    # <a name="v20"></a>[v2.0](#tab/v2-0)
     ```python
     ########### Python Form Recognizer Async Analyze #############
     import json
@@ -56,7 +57,48 @@ ms.locfileid: "86028038"
     except Exception as e:
         print("POST analyze failed:\n%s" % str(e))
         quit() 
-    ```
+    ```    
+    # <a name="v21-preview"></a>[v2.1 預覽](#tab/v2-1)
+    ```python
+    ########### Python Form Recognizer Async Analyze #############
+    import json
+    import time
+    from requests import get, post
+    
+    # Endpoint URL
+    endpoint = r"<endpoint>"
+    apim_key = "<subsription key>"
+    model_id = "<model_id>"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.1/custom/models/%s/analyze" % model_id
+    source = r"<file path>"
+    params = {
+        "includeTextDetails": True
+    }
+    
+    headers = {
+        # Request headers
+        'Content-Type': '<file type>',
+        'Ocp-Apim-Subscription-Key': apim_key,
+    }
+    with open(source, "rb") as f:
+        data_bytes = f.read()
+    
+    try:
+        resp = post(url = post_url, data = data_bytes, headers = headers, params = params)
+        if resp.status_code != 202:
+            print("POST analyze failed:\n%s" % json.dumps(resp.json()))
+            quit()
+        print("POST analyze succeeded:\n%s" % resp.headers)
+        get_url = resp.headers["operation-location"]
+    except Exception as e:
+        print("POST analyze failed:\n%s" % str(e))
+        quit() 
+    ```    
+
+
+    ---
+
+
 
 1. 將程式碼儲存在副檔名為 .py 的檔案中。 例如，*form-recognizer-analyze.py*。
 1. 開啟 [命令提示字元] 視窗。

@@ -33,8 +33,6 @@
           href: concept-conditional-access-grant.md
         - name: 工作階段
           href: concept-conditional-access-session.md
-    - name: 深入解析和報告
-      href: howto-conditional-access-insights-reporting.md
     - name: 僅限報告模式
       href: concept-conditional-access-report-only.md
     - name: 服務相依性
@@ -78,6 +76,8 @@
           href: howto-conditional-access-policy-block-access.md
     - name: 封鎖舊式驗證
       href: block-legacy-authentication.md
+    - name: 設定僅限報表模式
+      href: howto-conditional-access-insights-reporting.md
     - name: 需要已核准的用戶端應用程式
       href: app-based-conditional-access.md
     - name: 需要應用程式保護原則
@@ -88,12 +88,8 @@
       href: untrusted-networks.md
     - name: 需要使用規定
       href: terms-of-use.md
-    - name: 設定僅限報告模式
-      href: howto-conditional-access-report-only.md
     - name: 登入頻率和瀏覽器持續性控制項
       href: howto-conditional-access-session-lifetime.md
-    - name: 遷移傳統原則
-      href: policy-migration-mfa.md
     - name: 疑難排解
       items:
         - name: 對登入問題進行疑難排解
@@ -102,6 +98,8 @@
           href: troubleshoot-conditional-access-what-if.md
         - name: 常見問題集
           href: faqs.md
+    - name: 遷移傳統原則
+      href: policy-migration-mfa.md
 - name: 參考
   items:
     - name: 搶鮮版圖形 API

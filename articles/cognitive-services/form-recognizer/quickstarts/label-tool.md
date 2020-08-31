@@ -7,26 +7,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 08/25/2020
 ms.author: pafarley
-ms.openlocfilehash: 54fe33750b08b5da85b30d876a32daf33d8b4bc2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 91050311e5e0604af44731f7bf6e1a818ec464cc
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517909"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852733"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用範例標籤工具，以標籤定型表單辨識器模型
 
 在本快速入門中，您將搭配使用表單辨識器 REST API 與範例標籤工具，以手動加上標籤的資料定型自訂模型。 若要深入了解此功能，請參閱概觀的[以標籤定型](../overview.md#train-with-labels)一節。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此快速入門，您必須：
 
-- 至少有六個相同類型的表單。 您將使用此資料來定型模型和測試表單。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。 將訓練檔案上傳至標準效能層級 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="建立表單辨識器資源"  target="_blank">建立表單辨識器資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至表單辨識器 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
+* 至少有六個相同類型的表單。 您將使用此資料來定型模型和測試表單。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。 將訓練檔案上傳至標準效能層級 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
 
 ## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源
 
@@ -52,14 +56,35 @@ ms.locfileid: "88517909"
    * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
+
+
+
+
 1. 使用 `docker pull` 命令取得範例標籤工具容器。
+
+    # <a name="v20"></a>[v2.0](#tab/v2-0)    
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
+    # <a name="v21-preview"></a>[v2.1 預覽](#tab/v2-1)    
+    ```
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview
+    ```
+
+    ---
+
 1. 現在您已準備就緒，可使用 `docker run` 執行容器。
+
+    # <a name="v20"></a>[v2.0](#tab/v2-0)    
     ```
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
+    # <a name="v21-preview"></a>[v2.1 預覽](#tab/v2-1)    
+    ```
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview    
+    ```
+
+    --- 
 
    此命令會讓範例標籤工具可透過網頁瀏覽器來使用。 移至 `http://localhost:3000`。
 
@@ -97,7 +122,8 @@ ms.locfileid: "88517909"
 * **描述** - 您的專案描述。
 * **SAS URL** - Azure Blob 儲存體容器的共用存取簽章 (SAS) URL。 若要擷取 SAS URL，請開啟 Microsoft Azure 儲存體總管、以滑鼠右鍵按一下您的容器，然後選取 [取得共用存取簽章]。 請將到期時間設定為您用完服務後的時間。 確定 [讀取]、[寫入]、[刪除] 和 [列出] 權限均已勾選，然後按一下 [建立]。 然後，複製 [URL] 區段的值。 其格式應該為：`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
 
-![範例標籤工具的連線設定](../media/label-tool/connections.png)
+:::image type="content" source="../media/label-tool/connections.png" alt-text="範例標籤工具的連線設定。":::
+
 
 ## <a name="create-a-new-project"></a>建立新專案
 
@@ -111,7 +137,7 @@ ms.locfileid: "88517909"
 * **API 金鑰** - 您的表單辨識器訂用帳戶金鑰。
 * **描述** - 選擇性 - 專案描述
 
-![範例標籤工具上的新增專案頁面](../media/label-tool/new-project.png)
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="範例標籤工具上的新增專案頁面。":::
 
 ## <a name="label-your-forms"></a>為表單加上標籤
 
@@ -125,10 +151,15 @@ ms.locfileid: "88517909"
 
 按一下左窗格上的 [在所有檔案上執行 OCR]，以取得每份文件的文字版面配置資訊。 標籤工具會在每個文字元素周圍繪製週框方塊。
 
+其也會顯示哪些資料表已自動擷取。 按一下文件左側的 [資料表/格線] 圖示，以查看已擷取的資料表。 因為本快速入門會自動擷取資料表內容，所以我們不會為資料表內容加上標籤，而是會仰賴自動化擷取。
+
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="範例標籤工具中的資料表視覺效果。":::
+
 ### <a name="apply-labels-to-text"></a>將標籤套用至文字
 
 接下來，您將建立標記 (標籤)，並將其套用至要讓模型辨識的文字元素。
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)  
 1. 首先，使用標記編輯器窗格建立您要識別的標記。
    1. 按一下 **+** 以建立新標記。
    1. 輸入標記名稱。
@@ -146,7 +177,30 @@ ms.locfileid: "88517909"
     > * 使用 **+** 右邊的按鈕來搜尋、重新命名、重新排序和刪除您的標記。
     > * 若要移除已套用的標記，而不刪除標記本身，請在文件檢視上選取加上標記的矩形，然後按下 Delete 鍵。
 
-![範例標籤工具的主要編輯器視窗](../media/label-tool/main-editor.png)
+
+# <a name="v21-preview"></a>[v2.1 預覽](#tab/v2-1) 
+1. 首先，使用標記編輯器窗格建立您要識別的標記。
+   1. 按一下 **+** 以建立新標記。
+   1. 輸入標記名稱。
+   1. 按 Enter 以儲存標記。
+1. 在主要編輯器中，按一下以從醒目提示的文字元素中選取字組。 在 _v2.1 預覽_中，您也可以按一下以選取 [選取標記] (如選項按鈕和核取方塊) 來作為索引鍵值組。 表單辨識器會識別選取標記是「已選取」或「未選取」作為值。
+1. 按一下您要套用的標記，或按對應的鍵盤按鍵。 數字鍵會指派為前 10 個標記的快速鍵。 您可以使用標籤編輯器窗格中的向上和向下箭號圖示來重新排序標籤。
+    > [!Tip]
+    > 當您要標記表單時，請記住下列秘訣。
+    > * 您只能對每個選取的文字元素套用一個標記。
+    > * 每個標記只能在每頁套用一次。 如果某個值在相同表單上出現多次，請為每個執行個體建立不同的標記。 例如："invoice# 1"、"invoice# 2" 等等。
+    > * 標記不能跨越頁面。
+    > * 標示出現在表單上的值；請勿嘗試將值分割成具有兩個不同標記的兩個部分。 例如，位址欄位應該以單一標記標示，即使其橫跨多行也一樣。
+    > * 請勿在標記的欄位中包含索引鍵，&mdash; 只能包含值。
+    > * 系統應會自動偵測資料表資料，而且將會在最終輸出 JSON 檔案中提供。 不過，如果模型無法偵測所有資料表資料，您也可以手動標記這些欄位。 以不同的標籤標記資料表中的每個資料格。 如果您的表單具有不同資料列數目的資料表，請務必標記至少一個具有最大可能資料表的表單。
+    > * 使用 **+** 右邊的按鈕來搜尋、重新命名、重新排序和刪除您的標記。
+    > * 若要移除已套用的標記，而不刪除標記本身，請在文件檢視上選取加上標記的矩形，然後按下 Delete 鍵。
+
+
+---
+
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="範例標籤工具的主要編輯器視窗。":::
+
 
 請遵循上述步驟，至少為您表單中的五個表單加上標籤。
 
@@ -166,6 +220,7 @@ ms.locfileid: "88517909"
     * 預設值、`dmy`、`mdy`、`ymd`
 * `time`
 * `integer`
+* `selectionMark` – _v2.1-preview.1 中的新功能！_
 
 > [!NOTE]
 > 請參閱適用於日期格式的規則：
@@ -196,14 +251,31 @@ ms.locfileid: "88517909"
 * **平均精確度** - 模型的平均精確度。 您可以為其他表單加上標籤並再次定型以建立新的模型，進而改善模型的精確度。 建議您先為五個表單加上標籤，然後再視需要新增更多表單。
 * 標籤的清單，以及每個標籤的預估精確度。
 
-![訓練檢視](../media/label-tool/train-screen.png)
+
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="定型檢視。":::
 
 定型完成後，請查看 [平均精確度] 值。 如果該值偏低，您應新增更多輸入文件，並重複上述步驟。 您已加上標籤的文件會保留在專案索引中。
 
 > [!TIP]
 > 您也可以使用 REST API 呼叫來執行定型程序。 若要了解其執行方法，請參閱[使用 Python 以標籤定型](./python-labeled-data.md)。
 
-## <a name="analyze-a-form"></a>分析表單
+## <a name="compose-trained-models"></a>撰寫已定型的模型
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)  
+
+此功能目前已在 v2.1 預覽中提供。 preview. 
+
+# <a name="v21-preview"></a>[v2.1 預覽](#tab/v2-1) 
+
+使用「模型撰寫」時，您最多可以將 100 個模型撰寫為單一模型識別碼。 當您使用此已撰寫模型的識別碼呼叫分析時，表單辨識器會先將您所提交的表單分類，使其符合最相符的模型，然後再傳回該模型的結果。 當傳入表單可能屬於數個範本之一時，這會很有用。
+
+若要在範例標籤工具中撰寫模型，請按一下左側的 [模型撰寫 (合併箭號)] 圖示。 在左側，選取您想要一起撰寫的模型。 具有箭號圖示的模型是已經撰寫好的模型。 按一下 [撰寫] 按鈕。 在快顯視窗中，為新撰寫的模型命名，然後按一下 [撰寫]。 當作業完成時，新撰寫的模型應該就會出現在清單中。 
+
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="模型撰寫 UX 檢視。":::
+
+---
+
+## <a name="analyze-a-form"></a>分析表單 
 
 按一下左側的「預測 (燈泡)」圖示，以測試您的模型。 上傳還未用於定型程序的表單文件。 然後按一下右側的 [預測] 按鈕，以取得表單的索引鍵/值預測。 此工具會將標籤套用到週框方塊中，且會報告每個標籤的信賴度。
 
@@ -228,7 +300,7 @@ ms.locfileid: "88517909"
 
 ### <a name="resume-a-project"></a>繼續執行專案
 
-最後，移至主頁面 (房屋圖示)，然後按一下 [開啟雲端專案]。 接著，選取 Blob 儲存體連線，再選取專案的 *.vott* 檔案。 應用程式會載入所有專案的設定，因為它具有安全性權杖。
+最後，移至主頁面 (房屋圖示)，然後按一下 [開啟雲端專案]。 接著，選取 Blob 儲存體連線，再選取專案的 *.fott* 檔案。 應用程式會載入所有專案的設定，因為它具有安全性權杖。
 
 ## <a name="next-steps"></a>後續步驟
 

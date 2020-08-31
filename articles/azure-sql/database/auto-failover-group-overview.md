@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 07/09/2020
-ms.openlocfilehash: 5a7f13982de000478b14eb75d7341ed2e99c1274
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.date: 08/28/2020
+ms.openlocfilehash: 68fa972d45ab0db6e5274142f550c2bd829e7917
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245565"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055578"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -257,7 +257,7 @@ ms.locfileid: "88245565"
 
 ### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>使用唯讀接聽程式連接到次要實例
 
-如果您有容忍某些過時資料的邏輯隔離唯讀工作負載，則可以使用應用程式中的次要資料庫。 若要直接連接到異地複寫的次要執行個體，請使用 `server.secondary.zone_id.database.windows.net` 作為伺服器 URL，並直接連接到異地複寫的次要執行個體。
+如果您有容忍某些過時資料的邏輯隔離唯讀工作負載，則可以使用應用程式中的次要資料庫。 若要直接連接到異地複寫的次要執行個體，請使用 `<fog-name>.zone_id.secondary.database.windows.net` 作為伺服器 URL，並直接連接到異地複寫的次要執行個體。
 
 > [!NOTE]
 > 在某些服務層級中，SQL Database 支援使用 [唯讀](read-scale-out.md) 複本，以使用一個唯讀複本的容量，並 `ApplicationIntent=ReadOnly` 在連接字串中使用參數來對唯讀查詢工作負載進行負載平衡。 當您已設定異地複寫的次要執行個體時，可以使用此功能連接至主要位置或異地複寫位置中的唯讀複本。

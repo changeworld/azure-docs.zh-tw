@@ -3,7 +3,7 @@
 - name: 概觀
   items:
     - name: 關於 Azure Arc
-      href: arc-overview.md
+      href: overview.md
 - name: 已啟用 Arc 的伺服器 >
   href: ./servers/overview.md
 - name: 已啟用 Arc 的 Kubernetes >

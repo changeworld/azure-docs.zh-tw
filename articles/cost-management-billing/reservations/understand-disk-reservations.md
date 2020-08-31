@@ -4,20 +4,21 @@ description: 了解如何將 Azure 保留磁碟的折扣，套用至 Azure 進�
 author: roygara
 ms.author: rogarana
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 3541e3f12a6d0b1beecdd67821d31f71b47f6c68
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: cd89c3ddc3c58de02f1104109ce7f243c4d1e6fd
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509460"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682445"
 ---
 # <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>了解如何將您的保留折扣套用至 Azure 磁碟儲存體
 
 購買 Azure 磁碟保留容量之後，保留折扣會自動套用至符合保留條款的磁碟資源。 保留折扣僅會套用至磁碟 SKU。 磁碟快照集則會以隨用隨付費率計費。
 
-如需 Azure 磁碟保留的詳細資訊，請參閱[使用 Azure 磁碟保留來節省成本](../../virtual-machines/linux/disks-reserved-capacity.md)。 如需 Azure 磁碟保留的定價資訊，請參閱 [Azure 受控磁碟定價](https://azure.microsoft.com/pricing/details/managed-disks/)。
+如需 Azure 磁碟保留的詳細資訊，請參閱[使用 Azure 磁碟保留來節省成本](../../virtual-machines/disks-reserved-capacity.md)。 如需 Azure 磁碟保留的定價資訊，請參閱 [Azure 受控磁碟定價](https://azure.microsoft.com/pricing/details/managed-disks/)。
 
 ## <a name="how-the-reservation-discount-is-applied"></a>保留折扣的套用方式
 
@@ -53,6 +54,5 @@ Azure 磁碟保留折扣是「不用則作廢」的折扣。 每小時都會套�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure 磁碟保留來節省成本 (Linux)](../../virtual-machines/linux/disks-reserved-capacity.md)
-- [使用 Azure 磁碟保留來節省成本 (Windows)](../../virtual-machines/windows/disks-reserved-capacity.md)
+- [使用 Azure 磁碟保留來節省成本](../../virtual-machines/disks-reserved-capacity.md)
 - [什麼是 Azure 保留項目？](save-compute-costs-reservations.md)

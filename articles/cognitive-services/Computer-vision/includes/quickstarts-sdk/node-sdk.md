@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 01/22/2020
 ms.author: pafarley
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 861e6528b52af39a56cc6b936eae0d68df2eecf5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4d025057cf8992e1dc54a0fd4a07814c7cbb13d3
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87841940"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748872"
 ---
 <a name="HOLTop"></a>
 
@@ -208,9 +208,9 @@ npm install @azure/cognitiveservices-computervision
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
-## <a name="read-printed-and-handwritten-text"></a>讀取印刷和手寫文字
+## <a name="extract-text-ocr-with-read"></a>使用讀取來擷取文字 (OCR)
 
-電腦視覺可以讀取影像中的可見文字，並將它轉換成字元資料流。
+電腦視覺可以擷取影像中的可見文字，並將其轉換成字元串流。 這個範例會使用讀取作業。
 
 > [!NOTE]
 > 您也可以從本機影像讀取文字。 如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上的範例程式碼。
@@ -221,17 +221,17 @@ npm install @azure/cognitiveservices-computervision
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
-### <a name="call-the-recognize-api"></a>呼叫辨識 API
+### <a name="call-the-read-api"></a>呼叫讀取 API
 
-新增下面的程式碼，以針對指定的影像呼叫 `recognizeText` 函式。
+新增下面的程式碼，以針對指定的影像呼叫 `readTextFromURL` 和 `readTextFromFile` 函式。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-定義 `recognizeText` 函式。 這會在用戶端物件上呼叫 **recognizeText** 方法，以傳回作業識別碼並啟動非同步程序來讀取影像的內容。 然後，它會以一秒的間隔使用作業識別碼來檢查作業，直到傳回結果為止。 它會接著傳回擷取的結果。
+定義 `readTextFromURL` 和 `readTextFromFile` 函式。 這兩個函式會在用戶端物件上呼叫 **read** 和 **readInStream** 方法，這會傳回作業識別碼並啟動非同步程序來讀取影像的內容。 然後，其會使用作業識別碼來檢查作業狀態，直到傳回結果為止。 其會接著傳回擷取的結果。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 
-然後，定義協助程式函式 `printRecText`，此函式會將辨識作業的結果輸出到主控台。
+然後，定義協助程式函式 `printRecText`，此函式會將讀取作業的結果輸出到主控台。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 

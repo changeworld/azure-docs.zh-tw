@@ -3,17 +3,18 @@ title: 快速入門 - 利用成本分析探索 Azure 成本
 description: 本快速入門可協助您使用成本分析，來探索及分析您的 Azure 組織成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 72c0b55e1ffc300b42181075247ed3efafe2793a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8ca9eaeeb8d484c9aeae6646e6f4814afbaed577
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560572"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718521"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入門：使用成本分析探索及分析成本
 
@@ -161,6 +162,10 @@ ms.locfileid: "84560572"
 
 如果您需要完整的未彙總資料集，請從計費帳戶下載。 然後，從入口網站左側瀏覽窗格的服務清單中，移至 [成本管理 + 計費]。 選取您的計費帳戶 (如果適用)。 移至 [使用方式 + 費用]，然後選取所需計費週期的 [下載] 圖示。
 
+## <a name="clean-up-resources"></a>清除資源
+
+- 如果您已釘選成本分析的自訂檢視，但不再需要用到，請移至您釘選所在的儀表板，並刪除已釘選的檢視。
+- 如果您已下載使用量資料檔案，但不再需要用到，請務必將其刪除。
 
 ## <a name="next-steps"></a>後續步驟
 

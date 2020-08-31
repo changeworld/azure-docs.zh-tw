@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Graph 概觀
 description: 了解 Azure Resource Graph 服務如何能夠在訂用帳戶和租用戶之間，大規模地進行複雜的資源查詢。
-ms.date: 07/25/2020
+ms.date: 08/13/2020
 ms.topic: overview
-ms.openlocfilehash: 5a2be5e65ecd5590d992e1883f432c173660e78d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 73143c13fd83c8b784679ac28bd9a14f1c6a6888
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541782"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798528"
 ---
 # <a name="what-is-azure-resource-graph"></a>什麼是 Azure Resource Graph？
 
@@ -37,6 +37,9 @@ Resource Manager 目前支援查詢基本資源欄位 (尤其是資源名稱、�
 
 - 存取由資源提供者傳回的屬性，而無須對每個資源提供者進行個別呼叫。
 - 檢視過去 14 天中資源上的變更記錄，以查看變更的屬性和變更的時間。 (預覽)
+
+> [!NOTE]
+> 作為_預覽_功能，某些 `type` 物件會有額外的非 Resource Manager 屬性可用。 如需詳細資訊，請參閱[擴充屬性 (預覽)](./concepts/query-language.md#extended-properties)。
 
 ## <a name="how-resource-graph-is-kept-current"></a>Resource Graph 保持最新狀態的方式
 

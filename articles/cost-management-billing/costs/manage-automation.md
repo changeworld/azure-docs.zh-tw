@@ -3,16 +3,17 @@ title: 使用自動化管理 Azure 成本
 description: 此文章說明如何使用自動化來管理 Azure 成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/15/2020
+ms.date: 08/19/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 0727f98b917944f3721c6c6758fde05c2efd8773
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: a5ab84794884cc0c87bd766be7a0fa2fe4c52aa9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449826"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684400"
 ---
 # <a name="manage-costs-with-automation"></a>使用自動化管理成本
 
@@ -79,11 +80,181 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 
 ## <a name="retrieve-large-cost-datasets-recurringly-with-exports"></a>使用「匯出」功能重複擷取大型成本資料集
 
-「匯出」功能是用於排定定期備份成本資料的解決方案。 針對使用量檔案可能太大，導致無法用使用量詳細資料 API 可靠地呼叫及下載資料的組織，建議使用此功能擷取未彙總的成本資料。 資料會放在您選擇的 Azure 儲存體帳戶中。 您可以將資料從該位置載入到您自己的系統中，並由您的小組視需要加以分析。 若要在 Azure 入口網站中設定匯出功能，請參閱[匯出資料](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data)。
+您可以從成本管理透過匯出來定期匯出大量資料。 建議您使用匯出來擷取未彙總成本資料。 特別是當使用量檔案太大，而無法使用使用量詳細資料 API 可靠地進行呼叫和下載時。 匯出的資料會放在您選擇的 Azure 儲存體帳戶中。 您可以將資料從該位置載入到您自己的系統中，並視需要加以分析。 若要在 Azure 入口網站中設定匯出功能，請參閱[匯出資料](tutorial-export-acm-data.md)。
+
+如果您想要將各種範圍的匯出自動化，下一節中的範例 API 要求是很好的起點。 您可以使用匯出 API 來將自動匯出建立為一般環境設定的一部分。 自動匯出有助於確保您擁有所需的資料。 當您擴充 Azure 使用量時，則可以在自己的組織系統中使用。
+
+### <a name="common-export-configurations"></a>一般匯出設定
+
+在建立第一個匯出之前，請考慮您的案例以及為了實現此案例所需要的設定選項。 請考慮下列匯出選項：
+
+- **週期** - 決定匯出作業的執行頻率，以及何時要將檔案放在您的 Azure 儲存體帳戶中。 可選擇 [每天]、[每週] 和 [每月]。 請嘗試設定您的週期，使其符合貴組織內部系統所使用的資料匯入作業。
+- **週期期間** - 決定匯出保持有效的時間長度。 檔案只會在週期期間內匯出。
+- **時間範圍** - 決定匯出在指定的執行時所產生的資料量。 常見的選項為 MonthToDate 和 WeekToDate。
+- **開始日期** - 設定您想要的匯出排程開始時間。 系統會根據您的週期，在開始日期和之後的時間建立匯出。
+- **類型** - 有三種匯出類型：
+  - ActualCost - 顯示指定期間所產生的總使用量和成本，並在帳單上顯示。
+  - AmortizedCost - 顯示指定期間的總使用量和成本，並將分攤套用至適用的保留購買成本。
+  - 使用量 - 在 2020 年 7 月 20 日之前建立的匯出全都是「使用量」類型。 請將所有已排程的匯出更新為 ActualCost 或 AmortizedCost。
+- **資料行** - 定義您想要包含在匯出檔案中的資料欄位。 其會對應至使用量詳細資料 API 中所提供的欄位。 如需詳細資訊，請參閱[使用量詳細資料 API](/rest/api/consumption/usagedetails/list)。
+
+### <a name="create-a-daily-month-to-date-export-for-a-subscription"></a>針對訂用帳戶建立每日的月初至今匯出
+
+要求 URL：`PUT https://management.azure.com/{scope}/providers/Microsoft.CostManagement/exports/{exportName}?api-version=2020-06-01`
+
+```json
+{
+  "properties": {
+    "schedule": {
+      "status": "Active",
+      "recurrence": "Daily",
+      "recurrencePeriod": {
+        "from": "2020-06-01T00:00:00Z",
+        "to": "2020-10-31T00:00:00Z"
+      }
+    },
+    "format": "Csv",
+    "deliveryInfo": {
+      "destination": {
+        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/{yourStorageAccount} ",
+        "container": "{yourContainer}",
+        "rootFolderPath": "{yourDirectory}"
+      }
+    },
+    "definition": {
+      "type": "ActualCost",
+      "timeframe": "MonthToDate",
+      "dataSet": {
+        "granularity": "Daily",
+        "configuration": {
+          "columns": [
+            "Date",
+            "MeterId",
+            "ResourceId",
+            "ResourceLocation",
+            "Quantity"
+          ]
+        }
+      }
+    }
+}
+```
+
+### <a name="automate-alerts-and-actions-with-budgets"></a>使用預算將警示和動作自動化
+
+有兩個關鍵元件可讓您的雲端投資創造最大價值。 其中一個是自動建立預算。 另一個則是設定成本型協調流程，以回應預算警示。 有不同的方式可將 Azure 預算的建立作業自動化。 超過設定的警示閾值時，就會發生各種警示回應。
+
+下列各節會說明可用的選項，並提供範例 API 要求，讓您可以開始使用預算自動化。
+
+#### <a name="how-costs-are-evaluated-against-your-budget-threshold"></a>如何針對您的預算限額來評估成本
+
+系統會每天一次針對您的預算限額來評估成本。 當您建立新預算或到達預算重設日的時候，相較於限額的成本就會變成零/Null，因為可能還未開始評估。
+
+當 Azure 偵測到您的成本超過限額時，就會在偵測期間所在的該小時內觸發通知。
+
+#### <a name="view-your-current-cost"></a>檢視您目前的成本
+
+若要檢視您目前的成本，您需要使用[查詢 API](/rest/api/cost-management/query) 進行 GET 呼叫。
+
+針對預算 API 的 GET 呼叫不會傳回成本分析中顯示的目前成本。 相反地，該呼叫會傳回您上次評估時的成本。
+
+### <a name="automate-budget-creation"></a>自動建立預算
+
+您可以使用[預算 API](/rest/api/consumption/budgets)，將預算的建立作業自動化。 您也可以使用[預算範本](quick-create-budget-template.md)來建立預算。 範本可讓您輕鬆地將 Azure 部署標準化，同時確保會正確設定和強制執行成本控制。
+
+#### <a name="common-budgets-api-configurations"></a>一般的預算 API 設定
+
+有許多方法可在您的 Azure 環境中設定預算。 請先考慮您的案例，然後再找出可實現該案例的設定選項。 檢閱下列選項：
+
+- **時間粒紋** - 代表您的預算用來產生和評估成本的週期性期間。 最常見的選項有 [每月]、[每季] 和 [每年]。
+- **時間週期** - 代表預算的有效時間長度。 預算會主動監視，並且只有在仍然有效時才會向您發出警示。
+- **通知**
+  - 連絡人電子郵件 - 當預算產生成本且超過定義的限額時，電子郵件地址就會收到警示。
+  - 連絡人角色 - 在給定範圍上具有相符 Azure RBAC 角色的所有使用者都會透過此選項而收到電子郵件警示。 例如，訂用帳戶擁有者會收到在訂用帳戶範圍上所建立預算的警示。
+  - 連絡人群組 - 當超過警示限額時，預算會呼叫已設定的動作群組。
+- **成本維度篩選** - 您可以在成本分析或查詢 API 中執行的相同篩選，也可以在您的預算上進行。 使用此篩選可減少您所監視的預算成本範圍。
+
+找出符合您需求的預算建立選項之後，請使用 API 建立預算。 下列範例可協助您開始使用一般的預算設定。
+
+**建立已針對多個資源和標籤來篩選的預算**
+
+要求 URL：`PUT https://management.azure.com/subscriptions/{SubscriptionId} /providers/Microsoft.Consumption/budgets/{BudgetName}/?api-version=2019-10-01`
+
+```json
+{
+  "eTag": "\"1d34d016a593709\"",
+  "properties": {
+    "category": "Cost",
+    "amount": 100.65,
+    "timeGrain": "Monthly",
+    "timePeriod": {
+      "startDate": "2017-10-01T00:00:00Z",
+      "endDate": "2018-10-31T00:00:00Z"
+    },
+    "filter": {
+      "and": [
+        {
+          "dimensions": {
+            "name": "ResourceId",
+            "operator": "In",
+            "values": [
+              "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{meterName}",
+              "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{meterName}"
+            ]
+          }
+        },
+        {
+          "tags": {
+            "name": "category",
+            "operator": "In",
+            "values": [
+              "Dev",
+              "Prod"
+            ]
+          }
+        },
+        {
+          "tags": {
+            "name": "department",
+            "operator": "In",
+            "values": [
+              "engineering",
+              "sales"
+            ]
+          }
+        }
+      ]
+    },
+    "notifications": {
+      "Actual_GreaterThan_80_Percent": {
+        "enabled": true,
+        "operator": "GreaterThan",
+        "threshold": 80,
+        "contactEmails": [
+          "user1@contoso.com",
+          "user2@contoso.com"
+        ],
+        "contactRoles": [
+          "Contributor",
+          "Reader"
+        ],
+        "contactGroups": [
+          "/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/actionGroups/{actionGroupName}
+        ],
+        "thresholdType": "Actual"
+      }
+    }
+  }
+}
+```
+
+### <a name="configure-cost-based-orchestration-for-budget-alerts"></a>針對預算警示來設定成本型協調流程
+
+您可以設定預算，以使用 Azure 動作群組來啟動自動化動作。 若要深入了解如何使用預算將動作自動化，請參閱[使用 Azure 預算進行自動化](../manage/cost-management-budget-scenario.md)。
 
 ## <a name="data-latency-and-rate-limits"></a>資料延遲與速率限制
 
-我們建議您每天呼叫 API 的次數不要超過一次。 成本管理資料會在每四小時從 Azure 資源提供者處接收新使用量資料時重新整理一次。 較頻繁地呼叫並不會提供任何額外的資料。 這樣反而會加重負載。 若要深入了解資料變更頻率，以及資料延遲的處理方式，請參閱[了解成本管理資料](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data)。
+我們建議您每天呼叫 API 的次數不要超過一次。 成本管理資料會在每四小時從 Azure 資源提供者處接收新使用量資料時重新整理一次。 較頻繁地呼叫並不會提供任何額外的資料。 這樣反而會加重負載。 若要深入了解資料變更頻率，以及資料延遲的處理方式，請參閱[了解成本管理資料](understand-cost-mgt-data.md)。
 
 ### <a name="error-code-429---call-count-has-exceeded-rate-limits"></a>錯誤碼 429 - 呼叫計數已超過速率限制
 

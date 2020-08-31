@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c944ae3a5d647cc457edd20a5d3dd0489e19e286
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 6d104e41a0cae906c346e81a26617a9d29795fb3
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192283"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853280"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service 常見問題集
 
@@ -78,8 +78,8 @@ Azure SignalR Service 依預設會提供 ASP.NET Core SignalR 所支援的三種
 ## <a name="what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose"></a>服務模式 `Default`/`Serverless`/`Classic` 的意義為何？ 我該如何選擇？
 
 模式：
-* `Default` 模式 **需要**中樞伺服器。 當中樞沒有伺服器連線可用時，用戶端嘗試連線到此中樞時會發生失敗。
-* `Serverless` 模式**不會**允許任何伺服器連線 (也就是會拒絕所有伺服器連線)，而所有用戶端都必須處於無伺服器模式。
+* `Default` 模式 *需要*中樞伺服器。 在此模式中，Azure SignalR 會將用戶端流量路由傳送至其連線的中樞伺服器連線。 Azure SignalR 會檢查已連線的中樞伺服器。 如果找不到已連線的中樞伺服器，Azure SignalR 便會拒絕連入的用戶端連線。 您也可以在此模式下使用**管理 API**，直接透過 Azure SignalR 來管理已連線的用戶端。
+* `Serverless` 模式*不會*允許任何伺服器連線，也就是說，其會拒絕所有伺服器連線。 所有用戶端都必須處於無伺服器模式。 用戶端會連線到 Azure SignalR，而使用者通常會使用無伺服器技術 (例如 **Azure Function**) 來處理中樞邏輯。 請參閱使用 Azure SignalR 無伺服器模式的[簡單範例](https://docs.microsoft.com/azure/azure-signalr/signalr-quickstart-azure-functions-javascript?WT.mc_id=signalrquickstart-github-antchu)。
 * `Classic` 模式是混合的狀態。 當中樞具有伺服器連線時，新的用戶端將會路由至中樞伺服器，否則用戶端會進入無伺服器模式。
 
   這可能會造成一些問題；例如，所有伺服器都有一段時間無法連線，有些用戶端會進入無伺服器模式，而不會路由至中樞伺服器。

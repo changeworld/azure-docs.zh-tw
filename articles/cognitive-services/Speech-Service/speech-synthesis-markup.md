@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 069e0f2d14dafe0de208ac69d2d652361a11ee34
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d924c019d5ee231f3c9d66a56c4d98857bc89abc
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012427"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055544"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言 (SSML) 改進合成
 
@@ -238,7 +238,8 @@ speechConfig!.setPropertyTo(
 |                         | `style="angry"`           | 以較低的音調、更高的強度和更高的關切這個領域能源來表示生氣和感到苦惱的語氣。 說話者處於 irate、displeased 和感冒的狀態。       |
 |                         | `style="fearful"`         | 以較高的音調、更高的關切這個領域能源及更快的速率表示害怕和緊張語氣。 喇叭處於 tenseness 和 uneasiness 的狀態。                          |
 |                         | `style="disgruntled"`     | 表示 disdainful 和抱怨語氣。 此表情的語音會顯示不悅和藐視。              |
-|                         | `style="serious"`         | 表示嚴格和命令的色調。 說話者通常會 stiffer，而且會有公司的步調更寬鬆。          | |                         | `style="affectionate"`    | 以更高的音調和關切這個領域能源來表示暖和 affectionate 的色調。 說話者的狀態是吸引接聽程式的注意力。 說話者的「個人化」通常是可愛本質。          |     
+|                         | `style="serious"`         | 表示嚴格和命令的色調。 說話者通常會 stiffer，而且會有公司的步調更寬鬆。          |
+|                         | `style="affectionate"`    | 以更高的音調和關切這個領域能源來表示暖和 affectionate 的色調。 說話者的狀態是吸引接聽程式的注意力。 說話者的「個人化」通常是可愛本質。          |     
 |                         | `style="gentle"`          | 以較低的音調和關切這個領域能源來表達輕微、親切、愉快的語氣         |   
 |                         | `style="lyrical"`         | 以 melodic 和感情因素存在的方式表達表情         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | 為客戶支援表達易記且有用的語氣  | 
@@ -288,8 +289,8 @@ speechConfig!.setPropertyTo(
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `strength` | 使用下列其中一個值，指定暫停的相對持續時間：<ul><li>無</li><li>x-弱式</li><li>弱</li><li>中型 (預設) </li><li>強式</li><li>x-強式</li></ul> | 選用 |
-| `time` | 指定暫停的絕對持續時間（以秒為單位）。 有效值的範例包括 `2s` 和 `500` | 選用 |
+| `strength` | 使用下列其中一個值，指定暫停的相對持續時間：<ul><li>無</li><li>x-弱式</li><li>弱</li><li>中型 (預設) </li><li>強式</li><li>x-強式</li></ul> | 選擇性 |
+| `time` | 指定暫停的絕對持續時間（以秒為單位）。 有效值的範例包括 `2s` 和 `500` | 選擇性 |
 
 | 強度                      | 描述 |
 |-------------------------------|-------------|
@@ -358,7 +359,7 @@ speechConfig!.setPropertyTo(
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `alphabet` | 指定當合成屬性中字串的發音時，所要使用的拼音字母 `ph` 。 指定字母的字串必須以小寫字母來指定。 以下是您可以指定的可能字母。<ul><li>`ipa`&ndash;<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">國際注音字母 <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash;[語音服務拼音字母](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">通用電話組</a></li></ul><br>字母只適用于 `phoneme` 元素中的。 | 選用 |
+| `alphabet` | 指定當合成屬性中字串的發音時，所要使用的拼音字母 `ph` 。 指定字母的字串必須以小寫字母來指定。 以下是您可以指定的可能字母。<ul><li>`ipa`&ndash;<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">國際注音字母 <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash;[語音服務拼音字母](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">通用電話組</a></li></ul><br>字母只適用于 `phoneme` 元素中的。 | 選擇性 |
 | `ph` | 字串，包含指定元素中單字發音的電話 `phoneme` 。 如果指定的字串包含無法辨識的電話，則文字轉換語音 (TTS) 服務會拒絕整個 SSML 檔，並且不會產生檔中指定的任何語音輸出。 | 如果使用音素，則為必要。 |
 
 **範例**
@@ -519,12 +520,12 @@ speechConfig!.setPropertyTo(
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `pitch` | 表示文字的基準間距。 您可以將推銷表達為：<ul><li>絕對值，以數位開頭，後面接著 "Hz" (赫茲) 。 例如，600 Hz。</li><li>相對值，以前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st" 的數位表示，以指定要變更音調的數量。 例如： + 80 Hz 或-2st。 "St" 表示變更單位是 semitone，也就是標準 diatonic 小數位數的一半步驟) 的一半 (。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>default</li></ul></li></ul>. | 選用 |
-| `contour` |等高線現在支援類神經和標準語音。 等高線表示音調變化。 這些變更會在語音輸出中指定的時間位置，以目標陣列的形式表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要提高或減少間距的數量，使用相對值的相對值或列舉值 (請參閱 `pitch`) 。 | 選用 |
-| `range` | 值，表示文字的音調範圍。 您可以 `range` 使用相同的絕對值、相對值或用來描述的列舉值來表示 `pitch` 。 | 選用 |
-| `rate` | 指出文字的說話率。 您可以表達 `rate` ：<ul><li>相對值，以做為預設值乘數的數位來表示。 例如，值為 *1* 會導致費率沒有變更。 值為 *0.5* 時，會產生速率減半。 值為 *3* 時，會產生速率增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>default</li></ul></li></ul> | 選用 |
-| `duration` | 當語音合成 (TTS) 服務讀取文字（以秒或毫秒為單位）時，應該經過的時間長度。 例如，2 *或* *1800ms*。 | 選用 |
-| `volume` | 表示說話聲音的音量層級。 您可以將磁片區表達為：<ul><li>絕對值，以0.0 到100.0 之間的數位表示，從 *quietest* 到 *loudest*。 例如，75。 預設值為100.0。</li><li>相對值，以前面加上 "+" 或 "-" 的數位表示，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>silent</li><li>x-軟</li><li>軟</li><li>中</li><li>大聲</li><li>x-朗讀</li><li>default</li></ul></li></ul> | 選用 |
+| `pitch` | 表示文字的基準間距。 您可以將推銷表達為：<ul><li>絕對值，以數位開頭，後面接著 "Hz" (赫茲) 。 例如，600 Hz。</li><li>相對值，以前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st" 的數位表示，以指定要變更音調的數量。 例如： + 80 Hz 或-2st。 "St" 表示變更單位是 semitone，也就是標準 diatonic 小數位數的一半步驟) 的一半 (。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>default</li></ul></li></ul>. | 選擇性 |
+| `contour` |等高線現在支援類神經和標準語音。 等高線表示音調變化。 這些變更會在語音輸出中指定的時間位置，以目標陣列的形式表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要提高或減少間距的數量，使用相對值的相對值或列舉值 (請參閱 `pitch`) 。 | 選擇性 |
+| `range` | 值，表示文字的音調範圍。 您可以 `range` 使用相同的絕對值、相對值或用來描述的列舉值來表示 `pitch` 。 | 選擇性 |
+| `rate` | 指出文字的說話率。 您可以表達 `rate` ：<ul><li>相對值，以做為預設值乘數的數位來表示。 例如，值為 *1* 會導致費率沒有變更。 值為 *0.5* 時，會產生速率減半。 值為 *3* 時，會產生速率增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>default</li></ul></li></ul> | 選擇性 |
+| `duration` | 當語音合成 (TTS) 服務讀取文字（以秒或毫秒為單位）時，應該經過的時間長度。 例如，2 *或* *1800ms*。 | 選擇性 |
+| `volume` | 表示說話聲音的音量層級。 您可以將磁片區表達為：<ul><li>絕對值，以0.0 到100.0 之間的數位表示，從 *quietest* 到 *loudest*。 例如，75。 預設值為100.0。</li><li>相對值，以前面加上 "+" 或 "-" 的數位表示，以指定要變更磁片區的數量。 例如，+ 10 或-5.5。</li><li>常數值：<ul><li>silent</li><li>x-軟</li><li>軟</li><li>中</li><li>大聲</li><li>x-朗讀</li><li>default</li></ul></li></ul> | 選擇性 |
 
 ### <a name="change-speaking-rate"></a>改變說話速度
 
@@ -603,8 +604,8 @@ speechConfig!.setPropertyTo(
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `interpret-as` | 指出元素文字的內容類型。 如需類型清單，請參閱下表。 | 必要 |
-| `format` | 針對可能具有不明確格式的內容類型，提供有關專案文字精確格式的其他資訊。 SSML 會定義使用這些內容類型的格式 (請參閱下表) 。 | 選用 |
-| `detail` | 指出要說出的詳細資料層級。 例如，這個屬性可能會要求語音合成引擎發音標點符號。 未定義任何標準值 `detail` 。 | 選用 |
+| `format` | 針對可能具有不明確格式的內容類型，提供有關專案文字精確格式的其他資訊。 SSML 會定義使用這些內容類型的格式 (請參閱下表) 。 | 選擇性 |
+| `detail` | 指出要說出的詳細資料層級。 例如，這個屬性可能會要求語音合成引擎發音標點符號。 未定義任何標準值 `detail` 。 | 選擇性 |
 
 <!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
 
@@ -701,9 +702,9 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `src` | 指定背景音訊檔案的位置/URL。 | 如果在 SSML 檔中使用背景音訊，則為必要項。 |
-| `volume` | 指定背景音訊檔案的磁片區。 **接受的值**： `0` 至 `100` 內含。 預設值是 `1`。 | 選用 |
-| `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡入。 **接受的值**： `0` 至 `10000` 內含。  | 選用 |
-| `fadeout` | 指定背景音訊淡出的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡出。 **接受的值**： `0` 至 `10000` 內含。  | 選用 |
+| `volume` | 指定背景音訊檔案的磁片區。 **接受的值**： `0` 至 `100` 內含。 預設值是 `1`。 | 選擇性 |
+| `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡入。 **接受的值**： `0` 至 `10000` 內含。  | 選擇性 |
+| `fadeout` | 指定背景音訊淡出的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡出。 **接受的值**： `0` 至 `10000` 內含。  | 選擇性 |
 
 **範例**
 

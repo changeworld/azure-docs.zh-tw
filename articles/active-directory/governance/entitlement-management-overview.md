@@ -12,16 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 08/25/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710c81c7b5c6abbf499f2cb43570db94df1a3db5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: contperfq1
+ms.openlocfilehash: dbcd8ab2f2825e18943436dcc1a9ca4ff38e2d8d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034397"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871202"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>什麼是 Azure AD 權利管理？
 
@@ -54,7 +55,10 @@ Azure AD 權利管理有助於解決這些挑戰。  若要深入了解客戶一
 - 向非管理員委派建立存取套件的能力。 這些存取套件包含使用者可以要求的資源，受到委派的存取套件管理員可以定義原則，其中包含哪些使用者可以提出要求、誰必須核准其存取權，以及存取權何時到期的規則。
 - 選取其使用者可以要求存取權的已連線組織。  當還未在您目錄中的使用者要求存取權並獲得核准時，系統會自動邀請他們進入您的目錄並為其指派存取權。  其存取權到期時，如果未獲得任何其他存取套件指派，其在您目錄中的 B2B 帳戶就會自動遭到移除。
 
-您可以從我們的[建立您的第一個存取套件教學課程](entitlement-management-access-package-first.md)來入門。 您也可以閱讀[常見案例](entitlement-management-scenarios.md)或觀看影片，包括
+>[!NOTE]
+>如果您已準備好試用權利管理，則可以從我們的[建立您的第一個存取套件教學課程](entitlement-management-access-package-first.md)來入門。
+
+您也可以閱讀[常見案例](entitlement-management-scenarios.md)或觀看影片，包括
 
 - [如何在您的組織中部署 Azure AD 權利管理](https://www.youtube.com/watch?v=zaaKvaaYwI4)
 - [如何監視及擴縮您對 Azure AD 權利管理的使用](https://www.youtube.com/watch?v=omtNJ7ySjS0)
@@ -102,7 +106,7 @@ Azure AD 權利管理有助於解決這些挑戰。  若要深入了解客戶一
 存取套件不會取代其他存取指派機制。  其最適合用於下列情況：
 
 - 員工需要有限時間的存取權來執行特定工作。  例如，您可以使用群組型授權和動態群組，以確保所有員工都擁有 Exchange Online 信箱，然後在員工需要額外存取權的情況下使用存取套件，例如為了從另一個部門讀取部門資源。
-- 存取權必須由員工的經理或其他指定人員來核准。
+- 需要員工經理或其他指定人員核准的存取。
 - 部門想要針對其資源管理自己的存取原則，但不要 IT 介入。  
 - 兩個以上的組織共同合作進行一項專案，因此，一個組織中的多個使用者必須透過 Azure AD B2B 來進入以便存取另一個組織的資源。
 
@@ -149,7 +153,7 @@ Azure AD 權利管理有助於解決這些挑戰。  若要深入了解客戶一
 - 使用者若已獲得委派的系統管理工作 (例如目錄建立者、目錄擁有者和存取套件管理員)，就不需要任何授權。
 - 來賓若**可以**要求存取套件，但**未**要求存取套件，就不需要任何授權。
 
-針對您為成員使用者 (員工) 購買的每個付費 Azure AD Premium P2 授權，您可以使用 Azure AD B2B 來邀請最多 5 位來賓使用者。 這些來賓使用者也可以使用 Azure AD Premium P2 功能。 如需詳細資訊，請參閱 [Azure AD B2B 共同作業授權指引](../b2b/licensing-guidance.md)。
+針對您為成員使用者 (員工) 購買的每個付費 Azure AD Premium P2 授權，您可以使用 Azure AD B2B 來邀請最多 5 位來賓使用者。 這些來賓使用者也可以使用 Azure AD Premium P2 功能。 如需詳細資訊，請參閱 [Azure AD B2B 共同作業授權指引](../external-identities/licensing-guidance.md)。
 
 如需授權的詳細資訊，請參閱[使用 Azure Active Directory 入口網站指派或移除授權](../fundamentals/license-users-groups.md)。
 

@@ -8,23 +8,24 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: c0ad9ae885a458da5df8975d5d13018fd92bbdaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: aed079c467139ac5819951c5895ba753ee38ae2d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710774"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067734"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>使用 PowerShell 將對等 ASN 與 Azure 訂用帳戶產生關聯
 
 提交對等互連要求之前，您應該先使用下列步驟，將您的 ASN 與 Azure 訂用帳戶建立關聯。
 
-如果您想要的話，可以使用[入口網站](howto-subscription-association-portal.md)來完成本指南。
+如果您想要的話，可以使用 [入口網站](howto-subscription-association-portal.md)完成本指南。
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>建立 PeerASN 以將您的 ASN 與 Azure 訂用帳戶建立關聯
+## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>建立 PeerASN 以將您的 ASN 與 Azure 訂用帳戶產生關聯
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>登入您的 Azure 帳戶並且選取您的訂用帳戶
 [!INCLUDE [Account](./includes/account-powershell.md)]
@@ -42,7 +43,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Peering
 ```
 
 > [!IMPORTANT]
-> 等到*RegistrationState*變成「已註冊」，再繼續進行。 執行命令可能需要5到30分鐘的時間。
+> 等候 *>registrationstate* 開啟「已註冊」，再繼續進行。 執行命令時，可能需要5到30分鐘的時間。
 
 ### <a name="update-the-peer-information-associated-with-this-subscription"></a>更新與此訂用帳戶相關聯的對等資訊
 
@@ -58,15 +59,15 @@ New-AzPeerAsn `
 ```
 
 > [!NOTE]
-> -Name 對應于資源名稱，而且可以是您選擇的任何專案。 不過，-peerName 會對應至您公司的名稱，而且必須盡可能靠近您的 PeeringDB 設定檔。 請注意，-peerName 的值僅支援字元 a-z、A-z 和空格。
+> -名稱會對應至資源名稱，可以是您選擇的任何名稱。 但是，-peerName 會對應到您公司的名稱，而且必須盡可能靠近您的 PeeringDB 設定檔。 請注意，peerName 的值僅支援字元 a-z、a-z 和空格。
 
-訂用帳戶可以有多個 Asn。 更新每個 ASN 的對等資訊。 請確定每個 ASN 的「名稱」都是唯一的。
+訂用帳戶可以有多個 Asn。 更新每個 ASN 的對等互連資訊。 確定每個 ASN 的「名稱」都是唯一的。
 
-對等應該在[PeeringDB](https://www.peeringdb.com)上有完整且最新的設定檔。 我們會在註冊期間使用此資訊來驗證對等的詳細資料，例如 NOC 資訊、技術連絡人資訊，以及其在對等互連設施的狀態等。
+對等應該會在 [PeeringDB](https://www.peeringdb.com)上擁有完整且最新的設定檔。 在註冊期間，我們會使用此資訊來驗證對等的詳細資料，例如 NOC 資訊、技術連絡人資訊，以及它們在對等互連設備上的存在等。
 
-請注意，在上面的輸出中，若要取代 **{subscriptionId}** ，將會顯示實際的訂用帳戶識別碼。
+請注意，在上面的輸出中，將會顯示 **實際的訂** 用帳戶識別碼。
 
-## <a name="view-status-of-a-peerasn"></a>PeerASN 的檢視狀態
+## <a name="view-status-of-a-peerasn"></a>查看 PeerASN 的狀態
 
 使用下列命令檢查 ASN 驗證狀態：
 
@@ -98,7 +99,7 @@ Set-PeerAsn -Name Contoso_1234 -Email "newemail@test.com" -Phone "1800-000-0000"
 ```
 
 ## <a name="delete-peerasn"></a>刪除 PeerAsn
-目前不支援刪除 PeerASN。 如果您需要刪除 PeerASN，請聯絡[Microsoft 對等互連](mailto:peering@microsoft.com)。
+目前不支援刪除 PeerASN。 如果您需要刪除 PeerASN，請與 [Microsoft 對等互連](mailto:peering@microsoft.com)。
 
 ## <a name="next-steps"></a>後續步驟
 

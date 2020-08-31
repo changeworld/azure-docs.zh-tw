@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 共用磁片建立 FCI （預覽）
-description: 使用 azure 共用磁片來建立容錯移轉叢集實例（FCI），並在 Azure 虛擬機器上 SQL Server。
+title: '使用 Azure 共用磁片建立 FCI (預覽版) '
+description: 使用 Azure 共用磁片，在 Azure 虛擬機器上使用 SQL Server (FCI) 來建立容錯移轉叢集實例。
 services: virtual-machines
 documentationCenter: na
 author: MashaMSFT
@@ -13,38 +13,38 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: e1a4a366b3e4fa045df69683d6e72b157ccf0a1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ffb739affac68898f6ed5ff1d972d3fd4a70df2f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003622"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055255"
 ---
-# <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>使用 Azure 共用磁片建立 FCI （在 Azure Vm 上 SQL Server）
+# <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有 Azure 共用磁片 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-本文說明如何在 Azure 虛擬機器（Vm）上使用具有 SQL Server 的 Azure 共用磁片來建立容錯移轉叢集實例（FCI）。 
+本文說明如何使用 Azure 共用磁片搭配 Azure 虛擬機器 (Vm) 上的 SQL Server， (FCI) 建立容錯移轉叢集實例。 
 
-若要深入瞭解，請參閱[FCI 與 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md)和叢集[最佳做法](hadr-cluster-best-practices.md)。 
+若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 
-在您完成本文中的指示之前，您應該已經具備：
+在您完成本文中的指示之前，您應該已經有：
 
 - Azure 訂用帳戶。 [免費](https://azure.microsoft.com/free/)開始使用。 
-- 在相同的[可用性設定組](../../../virtual-machines/linux/tutorial-availability-sets.md)和[近接位置群組](../../../virtual-machines/windows/co-location.md#proximity-placement-groups)中，有[兩個或多個已備妥美國中西部的 Windows Azure 虛擬機器](failover-cluster-instance-prepare-vm.md)，其可用性設定組是以容錯網域和更新網域設定為**1**來建立。 
+- 在相同的[可用性設定](../../../virtual-machines/linux/tutorial-availability-sets.md)組和[鄰近放置群組](../../../virtual-machines/windows/co-location.md#proximity-placement-groups)中，有[兩個或多個美國中西部備妥的 Windows Azure 虛擬機器](failover-cluster-instance-prepare-vm.md)，並將容錯網域和更新網域所建立的可用性設定組設定為**1**。 
 - 具有在 Azure 虛擬機器和 Active Directory 中建立物件權限的帳戶。
-- 最新版的[PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)。 
+- [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)的最新版本。 
 
 
 ## <a name="add-azure-shared-disk"></a>新增 Azure 共用磁片
-部署已啟用共用磁片功能的受控進階 SSD 磁片。 設定 `maxShares` 為**2**可在兩個 FCI 節點間共用磁片。 
+部署已啟用共用磁片功能的受控進階 SSD 磁片。 設定 `maxShares` 為 **2** ，可讓磁片可在兩個 FCI 節點之間共用。 
 
-執行下列動作來新增 Azure 共用磁片： 
+藉由執行下列動作來新增 Azure 共用磁片： 
 
 
-1. 將下列腳本儲存為*SharedDiskConfig.js在上*： 
+1. 將下列腳本儲存為 *SharedDiskConfig.js*： 
 
    ```JSON
    { 
@@ -86,7 +86,7 @@ ms.locfileid: "87003622"
    ```
 
 
-2. 使用 PowerShell*在上執行SharedDiskConfig.js* ： 
+2. 使用 PowerShell * 在上執行SharedDiskConfig.js* ： 
 
    ```powershell
    $rgName = < specify your resource group name>
@@ -95,7 +95,7 @@ ms.locfileid: "87003622"
    -TemplateFile "SharedDiskConfig.json"
    ```
 
-3. 針對每部 VM，執行下列命令，將連接的共用磁片初始化為 GUID 磁碟分割表格（GPT），並將其格式化為新的技術檔案系統（NTFS）： 
+3. 針對每部 VM，請將連結的共用磁片初始化為 GUID 磁碟分割表格 (GPT) ，並將其格式化為新的技術檔案系統 (NTFS) ，方法是執行下列命令： 
 
    ```powershell
    $resourceGroup = "<your resource group name>"
@@ -144,12 +144,12 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="configure-quorum"></a>設定仲裁
 
-設定最適合您業務需求的仲裁解決方案。 您可以設定[磁片見證](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)、[雲端見證](/windows-server/failover-clustering/deploy-cloud-witness)或檔案[共用見證](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。 如需詳細資訊，請參閱[使用 SQL Server vm 的仲裁](hadr-cluster-best-practices.md#quorum)。 
+設定最適合您商務需求的仲裁解決方案。 您可以設定 [磁片見證](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)、 [雲端見證](/windows-server/failover-clustering/deploy-cloud-witness)或檔案 [共用見證](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。 如需詳細資訊，請參閱 [SQL Server vm 的仲裁](hadr-cluster-best-practices.md#quorum)。 
 
 ## <a name="validate-cluster"></a>驗證叢集
 在 UI 中或使用 PowerShell 驗證叢集。
 
-若要使用 UI 來驗證叢集，請在其中一部虛擬機器上執行下列動作：
+若要使用 UI 驗證叢集，請在其中一部虛擬機器上執行下列步驟：
 
 1. 在 [伺服器管理員] 下，選取 [工具]，然後選取 [容錯移轉叢集管理員]。
 1. 在 [容錯移轉叢集管理員] 下，選取 [動作]，然後選取 [驗證設定]。
@@ -157,11 +157,11 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 1. 在 [選取伺服器或叢集] 下，輸入這兩部虛擬機器的名稱。
 1. 在 [測試選項] 下，選取 [僅執行我選取的測試]。 
 1. 選取 [下一步] 。
-1. 在 [**測試選取範圍**] 底下，選取 [**儲存體**]*以外*的所有測試
+1. 在 [**測試選取專案**] 底下，選取 [**儲存體**]*以外*的所有測試
 
 ## <a name="test-cluster-failover"></a>測試叢集容錯移轉
 
-測試叢集的容錯移轉。 在**容錯移轉叢集管理員**中，以滑鼠右鍵按一下您的叢集，選取 [**更多動作**] [  >  **移動核心叢集資源**]  >  [**選取節點**]，然後選取叢集的其他節點。 將核心叢集資源移到叢集的每個節點，再移回主要節點。 如果您可成功地將叢集移至每個節點，即可開始安裝 SQL Server。  
+測試叢集的容錯移轉。 在**容錯移轉叢集管理員**中，以滑鼠右鍵按一下您的叢集，然後選取 [**其他動作**]  >  **移動核心叢集資源**  >  **選取節點**，然後選取叢集的其他節點。 將核心叢集資源移到叢集的每個節點，再移回主要節點。 如果您可成功地將叢集移至每個節點，即可開始安裝 SQL Server。  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="將核心資源移至其他節點以測試叢集容錯移轉":::
 
@@ -169,9 +169,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 在設定容錯移轉叢集和所有叢集元件 (包括儲存體) 後，即可建立 SQL Server FCI。
 
-1. 使用遠端桌面通訊協定（RDP）連接到第一部虛擬機器。
+1. 使用遠端桌面通訊協定 (RDP) 連接到第一部虛擬機器。
 
-1. 在**容錯移轉叢集管理員**中，請確定所有核心叢集資源都在第一部虛擬機器上。 如有必要，請將所有資源移至該虛擬機器。
+1. 在 **容錯移轉叢集管理員**中，請確定所有核心叢集資源都位於第一部虛擬機器上。 如有必要，請將所有資源移至該虛擬機器。
 
 1. 找出安裝媒體。 若虛擬機器是使用其中一個 Azure Marketplace 映像，則媒體會位於 `C:\SQLServer_<version number>_Full`。 
 
@@ -187,7 +187,7 @@ FCI 資料目錄必須位於 Azure 共用磁片上。
 
 1. 安裝程式在第一個節點上安裝 FCI 後，請使用 RDP 連線到第二個節點。
 
-1. 開啟 [ **SQL Server 安裝中心**]，然後選取 [**安裝**]。
+1. 開啟 **SQL Server 安裝中心**，然後選取 [ **安裝**]。
 
 1. 選取 [將節點新增到 SQL Server 容錯移轉叢集]。 遵循精靈中的指示來安裝 SQL Server，並將伺服器新增到 FCI。
 
@@ -197,10 +197,10 @@ FCI 資料目錄必須位於 Azure 共用磁片上。
 
 ## <a name="register-with-the-sql-vm-rp"></a>向 SQL VM RP 註冊
 
-若要從入口網站管理您的 SQL Server VM，請以[輕量管理模式](sql-vm-resource-provider-register.md#lightweight-management-mode)向 SQL vm 資源提供者（RP）註冊，目前只有 Azure vm 上的 FCI 和 SQL Server 支援的模式。 
+若要從入口網站管理您的 SQL Server VM，請使用 [輕量管理模式](sql-vm-resource-provider-register.md#lightweight-management-mode)中的 SQL VM 資源提供者 (RP) 來註冊它，目前只有 Azure vm 上的 FCI 和 SQL Server 支援的模式。 
 
 
-使用 PowerShell 在輕量模式中註冊 SQL Server VM：  
+使用 PowerShell 以輕量模式註冊 SQL Server VM：  
 
 ```powershell-interactive
 # Get the existing compute VM
@@ -213,20 +213,20 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>設定連線能力 
 
-若要將流量適當地路由至目前的主要節點，請設定適用于您環境的連線選項。 您可以建立[Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md)，或者，如果您使用 SQL Server 2019 和 Windows Server 2019，則可以改為預覽[分散式網路名稱](hadr-distributed-network-name-dnn-configure.md)功能。 
+若要將流量適當地路由傳送到目前的主要節點，請設定適用于您環境的連線選項。 您可以建立 [Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md) ，或如果您使用 SQL Server 2019 和 Windows Server 2016 (或更新版本) 您可以改為預覽 [分散式網路名稱](hadr-distributed-network-name-dnn-configure.md) 功能。 
 
 ## <a name="limitations"></a>限制
 
 - 僅支援 Windows Server 2019 上的 SQL Server 2019。 
-- 僅支援以[輕量管理模式](sql-vm-resource-provider-register.md#management-modes)向 SQL VM 資源提供者註冊。
+- 只支援以 [輕量管理模式](sql-vm-resource-provider-register.md#management-modes) 向 SQL VM 資源提供者註冊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-如果您尚未這麼做，請使用[虛擬網路名稱和 Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md)或[分散式網路名稱（DNN）](hadr-distributed-network-name-dnn-configure.md)，設定與您的 FCI 的連線能力。 
+如果您尚未這麼做，請使用 [虛擬網路名稱和 Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md) 或 [分散式網路名稱（ (DNN) ](hadr-distributed-network-name-dnn-configure.md)）設定 FCI 的連線。 
 
-如果 Azure 共用磁片不是適合您的 FCI 儲存體解決方案，請考慮使用[premium 檔案共用](failover-cluster-instance-premium-file-share-manually-configure.md)或[儲存空間直接存取](failover-cluster-instance-storage-spaces-direct-manually-configure.md)來建立 FCI。 
+如果 Azure 共用磁片不是適合您的 FCI 儲存體解決方案，請考慮使用 [premium 檔案共用](failover-cluster-instance-premium-file-share-manually-configure.md) 或 [儲存空間直接存取](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 來建立 FCI。 
 
-若要深入瞭解，請參閱[FCI 與 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md)和叢集設定的[最佳做法](hadr-cluster-best-practices.md)。
+若要深入瞭解，請參閱 [使用 Azure vm](failover-cluster-instance-overview.md) 和叢集設定 [最佳作法](hadr-cluster-best-practices.md)SQL Server 的 FCI 總覽。
 
 如需詳細資訊，請參閱： 
 - [Windows 叢集技術](/windows-server/failover-clustering/failover-clustering-overview)   

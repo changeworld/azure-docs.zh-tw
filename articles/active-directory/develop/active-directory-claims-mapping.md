@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853369"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068638"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
 
@@ -302,7 +302,7 @@ ms.locfileid: "88853369"
 | User | streetaddress | 街道地址 |
 | User | postalcode | 郵遞區號 |
 | User | preferredlanguange | 慣用語言 |
-| User | onpremisesuserprincipalname | 內部部署 UPN |
+| User | onpremisesuserprincipalname | 內部部署 UPN |*
 | User | mailNickname | 郵件暱稱 |
 | User | extensionattribute1 | 擴充屬性 1 |
 | User | extensionattribute2 | 擴充屬性 2 |
@@ -340,6 +340,8 @@ ms.locfileid: "88853369"
 
 - JwtClaimType 必須包含要在 JWT 中發出的宣告名稱。
 - SamlClaimType 必須包含要在 SAML 權杖中發出的宣告 URI。
+
+* **onPremisesUserPrincipalName 屬性：** 使用替代識別碼時，內部部署屬性 userPrincipalName 會與 Azure AD 屬性 onPremisesUserPrincipalName 同步處理。 只有在已設定替代識別碼，但也可透過 MS Graph Beta：來使用時，才能使用此屬性 https://graph.microsoft.com/beta/me/ 。
 
 > [!NOTE]
 > 受限制宣告集裡面所含宣告的名稱和 URI 不能用於宣告類型元素。 如需詳細資訊，請參閱本文稍後的＜例外狀況和限制＞一節。

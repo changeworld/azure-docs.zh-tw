@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: a087faee45b8725bc596a5faa92536741d8cd569
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836899"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723551"
 ---
 # <a name="what-is-form-recognizer"></a>什麼是表單辨識器？
 
@@ -24,7 +24,7 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 
 表單辨識器是由下列服務所組成：
 * **自訂模型** - 從表單擷取索引鍵/值組和資料表資料。 這些模型會使用您自己的資料進行定型，因此會針對您的表單量身打造。
-* **預建的收據模型** - 使用預建的模型，從美國銷售收據中擷取資料。
+* **預建模型** - 使用預建模型從唯一的表單類型擷取資料。 目前可用的是適用於英文銷售收據和名片的預建模型。
 * **版面配置 API** - 從文件中擷取文字和資料表結構，以及其週框方塊座標。
 
 <!-- add diagram -->
@@ -45,9 +45,18 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 
 表單辨識器會使用[版面配置 API](#layout-api) 來學習所列印和手寫文字元素的預期大小和位置。 然後，其會使用使用者指定的標籤來學習文件中的索引鍵/值關聯。 建議您使用相同類型的五個手動標記表單，以便在定型新模型時開始使用，並視需要新增更多標記資料，以改善模型精確度。
 
-## <a name="prebuilt-receipt-model"></a>預先建置的回條模型
+## <a name="prebuilt-models"></a>預先建置的模型
 
-表單辨識器也包含可供讀取美國英文銷售收據的模型，&mdash;餐廳、加油站、零售等所使用的類型 ([範例收據](./media/contoso-receipt-small.png))。 此模型會擷取索引鍵資訊，例如交易的時間和日期、商家資訊、稅金和總計的數量等等。 此外，預先建置的收據模型已定型為用來辨識及傳回收據上所有文字。
+表單辨識器也包含適用於唯一表單類型的預建模型。
+### <a name="prebuilt-receipt-model"></a>預建的收據模型
+預建的收據模型可用來讀取來自澳大利亞、加拿大、英國、印度和美國的英文銷售收據&mdash;這是餐廳、加油站、零售商店等商家所使用的類型。 此模型會擷取索引鍵資訊，例如交易的時間和日期、商家資訊、稅金、明細項目和總計等等。 此外，預先建置的收據模型已定型為用來辨識及傳回收據上所有文字。 
+
+![範例收據](./media/contoso-receipt-small.png)
+
+### <a name="prebuilt-business-cards-model"></a>預建的名片模型
+名片模型可讓您從英文的名片中，擷取個人姓名、職稱、地址、電子郵件、公司和電話號碼等資訊。 
+
+![範例名片](./media/business-card-english.jpg)
 
 ## <a name="layout-api"></a>版面配置 API
 
@@ -90,7 +99,7 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-### <a name="prebuilt-receipt-model"></a>預先建置的回條模型
+### <a name="prebuilt"></a>預建
 
 接收模型的輸入需求會略有不同。
 

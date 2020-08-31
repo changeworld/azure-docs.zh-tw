@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e7be96fcab0807ac8c6500c3b360f9380b4d2b28
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e6236d9ed5ed75b6b5e10914e668de545c48fc2c
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824945"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055629"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖表
 
@@ -24,9 +24,21 @@ ms.locfileid: "88824945"
 
 ## <a name="query-syntax"></a>查詢語法
 
-本章節包含的範例查詢會說明查詢語言結構，並執行可能的查詢作業。
+本章節包含的範例查詢會說明查詢語言結構，並對 [數位 twins](concepts-twins-graph.md)執行可能的查詢作業。
 
-依屬性取得 [數位 twins](concepts-twins-graph.md) (包括識別碼和中繼資料) ：
+### <a name="select-top-items"></a>選取最上層專案
+
+您可以使用子句，在查詢中選取數個 "top" 專案 `Select TOP` 。
+
+```sql
+SELECT TOP (5)
+FROM DIGITALTWINS
+WHERE ...
+```
+
+### <a name="query-by-property"></a>依屬性查詢
+
+依 **屬性** 取得數位 twins (包括識別碼和中繼資料) ：
 ```sql
 SELECT  * 
 FROM DigitalTwins T  
@@ -38,24 +50,29 @@ AND T.Temperature = 70
 > [!TIP]
 > 數位對應項的識別碼會使用元資料欄位來查詢 `$dtId` 。
 
-您也可以依 *標記* 屬性取得 twins，如將標籤 [新增至數位 twins](how-to-use-tags.md)所述：
+您也可以根據 **是否已定義特定屬性**來取得 twins。 以下查詢會取得具有已定義 *位置* 屬性的 twins：
+
+```sql
+SELECT *
+FROM DIGITALTWINS WHERE IS_DEFINED(Location)
+```
+
+這可協助您依卷 *標屬性進行* twins，如將標籤 [新增至數位 twins](how-to-use-tags.md)所述。 以下查詢會取得以 *紅色*標記的所有 twins：
+
 ```sql
 select * from digitaltwins where is_defined(tags.red) 
 ```
 
-### <a name="select-top-items"></a>選取最上層專案
-
-您可以使用子句，在查詢中選取數個 "top" 專案 `Select TOP` 。
+您也可以根據 **屬性的類型**來取得 twins。 以下查詢會取得其 *溫度* 屬性為數字的 twins：
 
 ```sql
-SELECT TOP (5)
-FROM DIGITALTWINS
-WHERE property = 42
+SELECT * FROM DIGITALTWINS T
+WHERE IS_NUMBER(T.Temperature)
 ```
 
 ### <a name="query-by-model"></a>依模型查詢
 
-`IS_OF_MODEL`操作員可以用來根據對應項的[模型](concepts-models.md)進行篩選。 它支援繼承，而且有數個多載選項。
+`IS_OF_MODEL`操作員可以用來根據對應項的[**模型**](concepts-models.md)進行篩選。 它支援繼承，而且有數個多載選項。
 
 最簡單的用法 `IS_OF_MODEL` 只會採用 `twinTypeName` 參數： `IS_OF_MODEL(twinTypeName)` 。
 以下是在此參數中傳遞值的查詢範例：
@@ -87,7 +104,7 @@ SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', ex
 
 ### <a name="query-based-on-relationships"></a>以關聯性為基礎的查詢
 
-根據數位 twins 的關聯性進行查詢時，Azure 數位 Twins 查詢語言具有特殊的語法。
+根據數位 twins 的 **關聯**性進行查詢時，Azure 數位 twins 查詢語言具有特殊的語法。
 
 關聯性會提取到子句中的查詢範圍內 `FROM` 。 與「傳統」 SQL 類型語言的差異在於，這個子句中的每個運算式 `FROM` 都不是資料表; 而是會 `FROM` 表示跨實體的關聯性，並使用 Azure 數位 Twins 版來撰寫 `JOIN` 。 
 
@@ -117,7 +134,8 @@ WHERE T.$dtId = 'ABC'
 
 #### <a name="query-the-properties-of-a-relationship"></a>查詢關聯性的屬性
 
-類似于數位 twins 具有透過 DTDL 描述的屬性，關聯性也可以有屬性。 Azure 數位 Twins 查詢語言可讓您藉由將別名指派給子句內的關聯性，來篩選和投射關聯性 `JOIN` 。 
+類似于數位 twins 具有透過 DTDL 描述的屬性，關聯性也可以有屬性。 您可以 **根據關聯**性的屬性來查詢 twins。
+Azure 數位 Twins 查詢語言可讓您藉由將別名指派給子句內的關聯性，來篩選和投射關聯性 `JOIN` 。 
 
 例如，假設有一個具有*reportedCondition*屬性的*servicedBy*關聯性。 在下列查詢中，會為此關聯性指定 ' R ' 的別名，以便參考其屬性。
 
@@ -142,10 +160,20 @@ SELECT LightBulb
 FROM DIGITALTWINS Room 
 JOIN LightPanel RELATED Room.contains 
 JOIN LightBulb RELATED LightPanel.contains 
-WHERE IS_OF_MODEL(LightPanel, ‘dtmi:contoso:com:lightpanel;1’) 
-AND IS_OF_MODEL(LightBulb, ‘dtmi:contoso:com:lightbulb ;1’) 
-AND Room.$dtId IN [‘room1’, ‘room2’] 
+WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1') 
+AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1') 
+AND Room.$dtId IN ['room1', 'room2'] 
 ```
+
+### <a name="other-compound-query-examples"></a>其他複合查詢範例
+
+您可以使用組合運算子 **結合** 上述任何類型的查詢，以在單一查詢中包含更多詳細資料。 以下是一些額外的複合查詢範例，可同時查詢多個類型的對應項描述項。
+
+| 描述 | 查詢 |
+| --- | --- |
+| 在 *123 空間* 的裝置上，傳回服務角色為操作員的 MxChip 裝置 | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
+| 取得具有名為*Contains*之關聯性的 twins，以及識別碼為*id1*的另一個對應項 | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
+| 取得*floor11*所包含之房間模型的所有房間 | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
 
 ## <a name="run-queries-with-an-api-call"></a>使用 API 呼叫來執行查詢
 

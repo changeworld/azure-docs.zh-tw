@@ -1,6 +1,6 @@
 ---
 title: 建立適用於 Azure 的 Linux 映像概觀
-description: 如何帶入您的 Linux VM 映像或建立新映像以在 Azure 中使用的概觀。
+description: 如何帶入您的 Linux VM 映像或建立新映像以在 Azure 中使用。
 author: danielsollondon
 ms.service: virtual-machines-linux
 ms.subservice: imaging
@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: aa372d4e1b377ecdcbeb49b47f0f9a3a217ee7ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 220aa4e0d545eedcd1eb0e6f5a6555b17a361da2
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502175"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815295"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>在 Azure 中帶入並建立 Linux 映像
 
@@ -25,7 +25,7 @@ ms.locfileid: "86502175"
 ## <a name="difference-between-managed-disks-and-images"></a>受控磁碟與映像之間的差異
 
 
-Azure 可讓您將 VHD 帶入平台，作為[受控磁碟](../windows/faq-for-disks.md#managed-disks)或作為映像的來源使用。 
+Azure 可讓您將 VHD 帶入平台，作為[受控磁碟](../faq-for-disks.md#managed-disks)或作為映像的來源使用。 
 
 Azure 受控磁碟是單一 VHD。 您可以使用現有的 VHD 並從中建立受控磁碟，或從頭開始建立空的受控磁碟。 您可以藉由將磁碟連結至 VM，從受控磁碟建立 VM，但是一個 VHD 只能與一個 VM 搭配使用。 您無法修改任何 OS 屬性，Azure 只會嘗試開啟 VM，並使用該磁碟啟動。 
 

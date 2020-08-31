@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9f6f428a930f03259986373ca70a95d5df1f7dc3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9457836a3048ff08b228bf9d5b84400af15d6cc5
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091482"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854954"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors 的相關常見問題集
 
@@ -51,7 +51,7 @@ Azure Spatial Anchors 是一個受控雲端服務和開發人員平台，可在 
 
 **問：Azure Spatial Anchors 如何儲存資料？**
 
-**答：** 所有資料都會使用 Microsoft 管理的資料加密金鑰進行加密儲存。
+**答：** 所有資料都會以 Microsoft 受控資料加密金鑰進行加密，並針對每個資源儲存區域內的所有資料。
 
 **問：使用 Azure Spatial Anchors 時，會在服務上傳送和儲存哪些環境相關資訊？是否會傳送及儲存環境的圖片？**
 

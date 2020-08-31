@@ -1,25 +1,26 @@
 ---
 title: 從 Azure PowerShell 管理 IoT Central | Microsoft Docs
-description: 本文說明如何從 Azure PowerShell 建立和管理您的 IoT Central 應用程式。
+description: 本文說明如何從 Azure PowerShell 建立及管理您的 IoT Central 應用程式。
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 03/27/2020
 ms.topic: how-to
+ms.custom: devx-track-azurepowershell
 manager: philmea
-ms.openlocfilehash: 7638b44dc3e727e2530e656541272ddad292d1fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 77327689911a0fc36df14f69ef4d48e5cb120375
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002466"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067751"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>從 Azure PowerShell 管理 IoT Central
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-您可以使用[Azure PowerShell](https://docs.microsoft.com/powershell/azure/)來管理應用程式，而不是在[Azure IoT Central 應用程式管理員](https://aka.ms/iotcentral)網站上建立和管理 IoT Central 應用程式。
+您可以使用[Azure PowerShell](https://docs.microsoft.com/powershell/azure/)來管理您的應用程式，而不需在[Azure IoT Central 應用程式管理員](https://aka.ms/iotcentral)網站上建立和管理 IoT Central 應用程式。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -30,7 +31,7 @@ ms.locfileid: "87002466"
 如果您偏好在本機電腦上執行 Azure PowerShell，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps) \(英文\)。 當您在本機上執行 Azure PowerShell 時，在嘗試本文中所述的 Cmdlet 之前，請先使用 **Connect-AzAccount** Cmdlet 來登入 Azure。
 
 > [!TIP]
-> 如果您需要在不同的 Azure 訂用帳戶中執行 PowerShell 命令，請參閱[變更有效的訂](/powershell/azure/manage-subscriptions-azureps?view=azps-3.4.0#change-the-active-subscription)用帳戶。
+> 如果您需要在不同的 Azure 訂用帳戶中執行 PowerShell 命令，請參閱 [變更有效訂](/powershell/azure/manage-subscriptions-azureps?view=azps-3.4.0#change-the-active-subscription)用帳戶。
 
 ## <a name="install-the-iot-central-module"></a>安裝 IoT Central 模組
 
@@ -69,11 +70,11 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 |參數         |描述 |
 |------------------|------------|
 |resourceGroupName |包含應用程式的資源群組。 此資源群組必須已經存在於您的訂用帳戶中。 |
-|Location |根據預設，此 Cmdlet 會使用來自資源群組的位置。 目前，您可以在**澳大利亞**、**亞太地區**、**歐洲**、**美國**、**英國**和**日本**地區建立 IoT Central 應用程式。 |
+|位置 |根據預設，此 Cmdlet 會使用來自資源群組的位置。 目前，您可以在**澳大利亞**、**亞太地區**、**歐洲**、**美國** **、英國和****日本**地區建立 IoT Central 應用程式。 |
 |名稱              |應用程式在 Azure 入口網站中的名稱。 |
 |子網域         |應用程式 URL 中的子網域。 在範例中，應用程式 URL 是 `https://mysubdomain.azureiotcentral.com`。 |
-|SKU               |目前，您可以使用**ST1**或**ST2**。 請參閱 [Azure IoT Central 價格](https://azure.microsoft.com/pricing/details/iot-central/)。 |
-|範本          | 要使用的應用程式範本。 如需詳細資訊，請參閱下列表格。 |
+|SKU               |目前，您可以使用 **ST1** 或 **ST2**。 請參閱 [Azure IoT Central 價格](https://azure.microsoft.com/pricing/details/iot-central/)。 |
+|[範本]          | 要使用的應用程式範本。 如需詳細資訊，請參閱下列表格。 |
 |DisplayName       |在 UI 中顯示的應用程式名稱。 |
 
 [!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]

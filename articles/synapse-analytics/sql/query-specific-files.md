@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 6beda409f03938f471f089bceebaa97c6d02ae7e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 04a308805dd69c4d9245d287a391f1e7fa7d50f2
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496214"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055561"
 ---
 # <a name="use-file-metadata-in-queries"></a>在查詢中使用檔案中繼資料
 
-SQL 隨選查詢服務可以處理多個檔案和資料夾，如[查詢資料夾和多個檔案](query-folders-multiple-csv-files.md)一文所述。 在本文中，您會了解如何在查詢時使用檔案和資料夾名稱的相關中繼資料資訊。
+SQL 隨選可以處理多個檔案和資料夾，如 [查詢資料夾和多個](query-folders-multiple-csv-files.md) 檔案一文所述。 在本文中，您會了解如何在查詢時使用檔案和資料夾名稱的相關中繼資料資訊。
 
 有時可能需要知道哪些檔案或資料夾來源與結果集中特定的資料列相互關聯。
 

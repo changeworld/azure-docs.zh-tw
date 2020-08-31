@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 08/15/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39c9522362ca6710fae5dee5d831e63cc36a3950
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509105"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815176"
 ---
 # <a name="what-is-identity-protection"></a>什麼是 Identity Protection？
 
@@ -52,9 +52,10 @@ Identity Protection 會識別下列分類的風險：
 | 非慣用登入位置 | 以使用者最近的登入為準，從非慣用的位置登入。 |
 | 匿名 IP 位址 | 從匿名 IP 位址登入 (例如：Tor 瀏覽器、Anonymizer VPN)。 |
 | 不熟悉的登入屬性 | 以給定使用者近期未出現過的屬性登入。 |
-| 已連結惡意程式碼的 IP 位址 | 從已連結惡意程式碼的 IP 位址登入 |
-| 認證外洩 | 此風險偵測指出使用者的有效認證已外洩 |
-| Azure AD 威脅情報 | Microsoft 的內部和外部威脅情報來源已識別出已知的攻擊模式 |
+| 已連結惡意程式碼的 IP 位址 | 從已連結惡意程式碼的 IP 位址登入。 |
+| 認證外洩 | 此風險偵測指出使用者的有效認證已外洩。 |
+| 密碼噴灑 | 指出有攻擊者正以一致的暴力密碼破解方式，使用常見的密碼來攻擊多個使用者名稱。 |
+| Azure AD 威脅情報 | Microsoft 的內部和外部威脅情報來源已識別出已知的攻擊模式。 |
 
 如需這些風險的詳細資訊及其計算方式/時機，請參閱[什麼是風險](concept-identity-protection-risks.md)一文。
 

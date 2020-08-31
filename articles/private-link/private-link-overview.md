@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 46d1f811593571228d21c687be0a98d413cc9854
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c2959507b8b9275ee2b7a9ebd8159e0014e932c0
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168145"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639692"
 ---
 # <a name="what-is-azure-private-link"></a>什麼是 Azure Private Link？ 
 Azure Private Link 可讓您存取各項 Azure PaaS 服務 (例如 Azure 儲存體和 SQL Database)，並透過虛擬網路中的[私人端點](private-endpoint-overview.md)裝載 Azure 的客戶擁有/合作夥伴服務。
@@ -68,6 +68,7 @@ Azure Private Link 提供下列優點：
 | Azure SignalR | 美國東部、美國西部 2、美國中南部      |  | 預覽   <br/> [深入了解](https://aka.ms/asrs/privatelink)   |
 | Azure 監視器 <br/>(Log Analytics 與 Application Insights) | 所有公用區域      |  | GA   <br/> [深入了解](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
 | Azure 檔案同步 | 所有公用區域      | |   GA   <br/> [深入了解](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints?tabs=azure-portal)   |
+| Azure Batch | 美國東部、美國西部 2、美國中南部、美國中西部、法國中部、東亞、英國南部、US Gov 維吉尼亞州、US Gov 亞利桑那州  | | GA <br/> [深入了解](https://docs.microsoft.com/azure/batch/private-connectivity) |
 
 如需最新通知，請查看 [Azure Private Link 更新頁面](https://azure.microsoft.com/updates/?product=private-link)。
 

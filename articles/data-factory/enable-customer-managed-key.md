@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: 9caa4690fa6b9d6c473bb8863acdcbbe15a37fba
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: c7d3dae2b7da2fcc14e86eb4965ebd99fd7bf681
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569355"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650567"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>使用客戶管理的金鑰來加密 Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory 會加密待用資料，包括實體定義、在執行期間快取的任何資料，以及針對資料預覽而快取的資料。 根據預設，資料會使用隨機產生、由 Microsoft 管理的金鑰進行加密，且該金鑰會唯一指派給您的資料處理站。 若要確保能有更高的安全性，您現在可以在 Azure Data Factory 中使用客戶管理的金鑰功能啟用自備金鑰 (BYOK)。 當您指定客戶管理的金鑰時，Data Factory 會__同時__使用處理站系統金鑰和 CMK 來加密客戶資料。 若缺少金鑰，可能會導致存取資料和處理站時遭到拒絕。
+Azure Data Factory 會加密待用資料，包括實體定義，以及在執行期間快取的任何資料。 根據預設，資料會使用隨機產生、由 Microsoft 管理的金鑰進行加密，且該金鑰會唯一指派給您的資料處理站。 若要確保能有更高的安全性，您現在可以在 Azure Data Factory 中使用客戶管理的金鑰功能啟用自備金鑰 (BYOK)。 當您指定客戶管理的金鑰時，Data Factory 會__同時__使用處理站系統金鑰和 CMK 來加密客戶資料。 若缺少金鑰，可能會導致存取資料和處理站時遭到拒絕。
 
 必須要有 Azure Key Vault 才能儲存客戶管理的金鑰。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 金鑰保存庫和 Data Factory 必須位於相同的 Azure Active Directory (Azure AD) 租用戶和相同區域中，但兩者可位於不同的訂用帳戶中。 如需 Azure 金鑰保存庫的詳細資訊，請參閱 [什麼是 Azure 金鑰保存庫？](../key-vault/general/overview.md)
 
@@ -76,7 +76,7 @@ Azure Data Factory 會加密待用資料，包括實體定義、在執行期間�
 
     ![從 Key Vault 取得金鑰 URI 的螢幕擷取畫面](media/enable-customer-managed-key/04-get-key-identifier.png)
 
-1. 啟動 Azure Data Factory 入口網站，並使用左側的導覽列跳至 Data Factory 首頁
+1. 啟動 Azure Data Factory 入口網站，並使用左側的導覽列跳至 Data Factory 管理入口網站
 
 1. 按一下 [客戶管理的金鑰] 圖示
 

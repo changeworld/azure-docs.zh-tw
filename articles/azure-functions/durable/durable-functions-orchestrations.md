@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1b349b1e3c4a2fac4cd260dbe83469a776951ab0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033637"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750196"
 ---
 # <a name="durable-orchestrations"></a>長期協調流程
 
@@ -51,7 +51,7 @@ Durable Functions 會以透明的方式使用事件來源。 實際上，協調�
 > 為了讓重新執行模式能夠正確且可靠地運作，協調器函式程式碼必須具有「決定性」  。 如需協調器函式程式碼限制的詳細資訊，請參閱[協調器函式程式碼條件約束](durable-functions-code-constraints.md)主題。
 
 > [!NOTE]
-> 如果協調器函式發出記錄訊息，重新執行行為可能會導致發出重複的記錄訊息。 請參閱[記錄](durable-functions-diagnostics.md#logging)主題，以深入了解發生此行為的原因及其因應措施。
+> 如果協調器函式發出記錄訊息，重新執行行為可能會導致發出重複的記錄訊息。 請參閱[記錄](durable-functions-diagnostics.md#app-logging)主題，以深入了解發生此行為的原因及其因應措施。
 
 ## <a name="orchestration-history"></a>協調流程記錄
 

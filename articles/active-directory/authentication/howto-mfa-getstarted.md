@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fc459e63dd48adb49ab916c368b68cc3a1ccbaf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: da9a0fe30721a2f55db2c4771f54716868f9972f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717025"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055068"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>規劃 Azure Multi-Factor Authentication 部署
 
@@ -110,7 +110,7 @@ Azure Multi-factor Authentication 會強制執行具有條件式存取的原則�
 系統管理員可以選擇可供使用者使用的[驗證方法](../authentication/concept-authentication-methods.md)。 請務必允許使用一種以上的驗證方法，如此無法使用在主要方法的情況下，使用者才有備份方法可供使用。 系統管理員可以透過下列方法啟用：
 
 > [!TIP]
-> Microsoft 建議使用行動裝置應用程式做為 Azure Multi-Factor Authentication 的主要方法，以獲得最佳的安全性與使用者體驗。
+> Microsoft 建議使用 Microsoft Authenticator (行動應用程式) 作為 Azure Multi-Factor Authentication 的主要方法，以獲得更安全且更佳的使用者體驗。 Microsoft Authenticator 應用程式也 [符合](https://azure.microsoft.com/resources/microsoft-nist/) 美國國家標準和技術驗證器保證等級。 
 
 ### <a name="notification-through-mobile-app"></a>行動應用程式的通知
 

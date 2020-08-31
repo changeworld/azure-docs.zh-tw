@@ -4,18 +4,18 @@ description: 使用 Azure 入口網站為受控磁碟啟用 Private Link (目前
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 08/11/2020
+ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 83f204a35e48962e525ad7d64c018eef301f9933
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135839"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815856"
 ---
-# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure 入口網站 - 使用 Private Link 限制受控磁碟的匯入/匯出存取
+# <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>使用 Azure 入口網站，透過 Private Link 限制受控磁碟的匯入/匯出存取
 
 受控磁碟的 Private Links 支援目前為預覽狀態，可讓您限制受控磁碟的匯出和匯入，使其只會在您的 Azure 虛擬網路中進行。 您可以為未連結的受控磁碟和快照集產生時間繫結的共用存取簽章 (SAS) URI，以將資料匯出至其他區域進列區域擴充、災害復原，以及讀取資料以進行取證分析。 您也可以使用 SAS URI，直接將 VHD 從內部部署環境上傳至空白磁碟。 虛擬網路上的用戶端與受控磁碟之間的網路流量會流經虛擬網路和 Microsoft 骨幹網路上的私人連結，以排除對網際網路公開的風險。
 
@@ -100,5 +100,5 @@ ms.locfileid: "88135839"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Private Link 常見問題集](linux/faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
+- [Private Link 常見問題集](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
 - [使用 PowerShell 將受控快照集匯出/複製到不同區域的儲存體帳戶當做 VHD](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)

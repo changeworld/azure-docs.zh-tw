@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 475933bcc9219808087671d49778cc3696d8c815
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 46aae2acb1f35eb22259e1e648fb869c23f26c9c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500788"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067666"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>適用於 PostgreSQL 的 Azure 資料庫單一伺服器其 Azure 安全性基準
 
@@ -549,9 +549,9 @@ Microsoft 會管理適用於 PostgreSQL 的 Azure 資料庫基礎結構，並已
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指引**：使用 Azure 角色型存取控制（azure RBAC）來控制適用於 PostgreSQL 的 Azure 資料庫控制平面的存取權（例如 Azure 入口網站）。 針對資料平面存取 (在該資料庫本身內)，請使用 SQL 查詢來建立使用者和設定使用者權限。 RBAC 不會影響資料庫中的使用者權限。
+**指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來控制適用於 PostgreSQL 的 Azure 資料庫控制平面的存取 (例如 Azure 入口網站) 。 針對資料平面存取 (在該資料庫本身內)，請使用 SQL 查詢來建立使用者和設定使用者權限。 Azure RBAC 不會影響資料庫中的使用者許可權。
 
-如何在 Azure 中設定 RBAC： https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+如何設定 Azure RBAC： https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
 如何使用 SQL為適用於 PostgreSQL 的 Azure 資料庫設定使用者存取權： https://docs.microsoft.com/azure/postgresql/howto-create-users
 

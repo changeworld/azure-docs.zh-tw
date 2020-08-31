@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 08/27/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 670d7f160285283bd44371b893c63904b2685926
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: cef6ff109607455881970aeb95eaf0859f6f4f05
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934492"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055527"
 ---
 # <a name="what-is-speech-translation"></a>什麼是語音翻譯？
 
@@ -30,25 +30,14 @@ Microsoft 現在使用 NMT 來翻譯為最受歡迎的語言。 所有[可用於
 
 ## <a name="core-features"></a>核心功能
 
-以下是透過語音 SDK 和 REST Api 提供的功能：
+* 具有辨識結果的語音轉換文字翻譯。
+* 語音轉換語音翻譯。
+* 支援翻譯成多種目的語言。
+* 過渡期辨識和轉譯結果。
 
-| 使用案例 | SDK | REST |
-|----------|-----|------|
-| 具有辨識結果的語音轉換文字翻譯。 | 是 | 否 |
-| 語音轉換語音翻譯。 | 是 | 否 |
-| 過渡期辨識和轉譯結果。 | 是 | 否 |
+## <a name="get-started"></a>開始使用 
 
-## <a name="get-started-with-speech-translation"></a>開始使用語音翻譯
-
-我們提供的快速入門設計可讓您在10分鐘內執行程式碼。 下表包含依語言組織的語音翻譯快速入門清單。
-
-| 快速入門 | 平台 | API 參考資料 |
-|------------|----------|---------------|
-| [C #，.NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [瀏覽](https://aka.ms/csspeech/csharpref) |
-| [C #、.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [瀏覽](https://aka.ms/csspeech/csharpref) |
-| [C #、UWP](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [瀏覽](https://aka.ms/csspeech/csharpref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-cpp&tabs=windows) | Windows | [瀏覽](https://aka.ms/csspeech/cppref)|
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre) | Windows、Linux、macOS | [瀏覽](https://aka.ms/csspeech/javaref) |
+請參閱 [快速入門](get-started-speech-translation.md) 以開始使用語音翻譯。 語音翻譯服務可透過 [語音 SDK](speech-sdk.md) 和 [語音 CLI](spx-overview.md)取得。
 
 ## <a name="sample-code"></a>範例程式碼
 
@@ -72,5 +61,6 @@ Microsoft 現在使用 NMT 來翻譯為最受歡迎的語言。 所有[可用於
 
 ## <a name="next-steps"></a>後續步驟
 
+* 完成語音翻譯 [快速入門](get-started-speech-translation.md)
 * [免費取得語音服務的訂用帳戶金鑰](get-started.md)
 * [取得語音 SDK](speech-sdk.md)
