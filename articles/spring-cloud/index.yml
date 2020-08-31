@@ -11,12 +11,12 @@ metadata:
   author: bmitchell287
   ms.author: brendm
   ms.date: 09/26/2019
-  ms.openlocfilehash: fd012e58928b7844b122a826769167cb525f5ba1
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 277d058427cc9527e6ed71ed252a4930489353fd
+  ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77138188"
+  ms.lasthandoff: 08/28/2020
+  ms.locfileid: "89049888"
 landingContent:
 - title: 關於 Azure Spring Cloud
   linkLists:
@@ -30,10 +30,10 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 使用入口網站啟動 Java Spring 應用程式
-      url: spring-cloud-quickstart-launch-app-portal.md
-    - text: 使用 Azure CLI 啟動 Java Spring 應用程式
-      url: spring-cloud-quickstart-launch-app-cli.md
+    - text: 快速入門 - 部署您的第一個 Azure Spring Cloud 應用程式
+      url: spring-cloud-quickstart.md
+    - text: Piggy Metrics 範例應用程式的簡介
+      url: spring-cloud-quickstart-sample-app-introduction.md
   - linkListType: tutorial
     links:
     - text: 準備 Java Spring 應用程式以進行部署

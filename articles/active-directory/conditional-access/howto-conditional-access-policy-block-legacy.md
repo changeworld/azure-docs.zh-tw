@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eaa2f2bc0ee26a4f543ea0938db6c226a9a6575
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 4c10f0ab4ff7fd8461ef81da67e50f7e5e174104
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049242"
+ms.locfileid: "89068621"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>條件式存取：封鎖舊式驗證
 
@@ -37,7 +37,7 @@ ms.locfileid: "89049242"
 1. 在 [雲端應用程式或動作] 下，選取 [所有雲端應用程式]。
    1. 選取 [完成] 。
 1. 在 [**條件**  >  **用戶端應用程式**] 底下，將 [設定為**是]**。 **Configure**
-   1. 只檢查 **Exchange ActiveSync 用戶端** 和 **其他用戶端**的方塊。
+   1. 只檢查 **Exchange ActiveSync 用戶端** 和 **其他用戶端**的方塊。 若要在 Azure 中部署 Exchange ActiveSync 條件式存取原則，使用者也必須是全域管理員。
    1. 選取 [完成] 。
 1. 在 [存取控制] > [授與] 下，選取 [封鎖存取]。
    1. 選取 [選取] 。

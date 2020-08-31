@@ -1,20 +1,20 @@
 ---
-title: 快速入門：在貴組織外部共用 - Azure Data Share
-description: 快速入門 - 使用 Azure Data Share 和 Resource Manager 範本與客戶及合作夥伴共用資料
+title: 在您的組織外部共用 (ARM 範本) - Azure Data Share 快速入門
+description: 了解如何使用本快速入門中的 Azure Data Share 和 Resource Manager 範本來與客戶及合作夥伴共用資料。
 author: mumian
 ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 08/17/2020
-ms.openlocfilehash: 62c800e8da3ab4f99b0933e286debcb05c5c3e22
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.date: 08/19/2020
+ms.openlocfilehash: 76ef44d438b9af7ada6c1c464705a22ee10f4c58
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88575641"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654101"
 ---
-# <a name="tutorial-share-data-using-azure-data-share-and-resource-manager-templates"></a>教學課程：使用 Azure Data Share 和 Resource Manager 範本共用資料
+# <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>快速入門：使用 Azure Data Share 和 Resource Manager 範本共用資料
 
 使用 Azure Resource Manager 範本，了解如何在 Azure 儲存體帳戶中設定新的 Azure Data Share，並開始與 Azure 組織外的客戶及合作夥伴共用資料。 如需支援的資料存放區清單，請參閱 [Azure Data Share 中支援的資料存放區](./supported-data-stores.md)。
 
@@ -101,4 +101,4 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何建立 Azure Data Share 並邀請收件者。 若要深入了解資料取用者要如何接受和接收資料共用，請繼續閱讀[接受和接收資料](subscribe-to-data-share.md)教學課程。
+在本快速入門中，您已了解如何建立 Azure Data Share 並邀請收件者。 若要深入了解資料取用者要如何接受和接收資料共用，請繼續閱讀[接受和接收資料](subscribe-to-data-share.md)教學課程。

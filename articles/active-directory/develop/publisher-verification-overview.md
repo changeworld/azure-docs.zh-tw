@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: f611eefc50fede2ef4d738cd5abfd6afcc08b9ff
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 286f813c825bcc05ce8e9fa43df5dc0299625277
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120774"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068468"
 ---
 # <a name="publisher-verification-preview"></a>發行者驗證 (預覽)
 
@@ -42,13 +42,13 @@ Azure AD 同意提示和其他畫面上會出現一個藍色的「已驗證」�
 
 -  有效 [Microsoft 合作夥伴網路](https://partner.microsoft.com/membership)帳戶的 MPN 識別碼，該帳戶必須已完成[驗證](/partner-center/verification-responses)程序。 此 MPN 帳戶必須是您組織的[合作夥伴通用帳戶 (PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga)。 
 
--  其[自訂網域](../fundamentals/add-custom-domain.md)已經過 DNS 驗證的 Azure AD 租用戶。 自訂網域必須符合前述步驟中進行驗證時所使用的電子郵件地址網域。 
+-  在 Azure AD 租使用者中註冊的應用程式，並已設定 [發行者網域](howto-configure-publisher-domain.md) 。
 
--  在 Azure AD 租用戶中註冊的應用程式，並以先前使用的相同網域設定[發行者網域](howto-configure-publisher-domain.md)。 
+-  在 MPN 帳戶驗證期間使用的電子郵件地址網域，必須符合在應用程式上設定的發行者網域，或新增至 Azure AD 租使用者的 DNS 驗證 [自訂網域](../fundamentals/add-custom-domain.md) 。 
 
 -  執行驗證的使用者必須獲得授權，才能對 Azure AD 中的應用程式註冊和合作夥伴中心內的 MPN 帳戶進行變更。 
 
-    -  在 Azure AD 中，此使用者必須是應用程式的擁有者，或是具有下列其中一種[角色](../users-groups-roles/directory-assign-admin-roles.md)：應用程式管理員、雲端應用程式系統管理員、全域管理員。 
+    -  在 Azure AD 此使用者必須是下列其中一個 [角色](../users-groups-roles/directory-assign-admin-roles.md)的成員：應用程式系統管理員、雲端應用程式系統管理員或全域管理員。 
 
     -  在合作夥伴中心內，此使用者必須擁有下列其中一種[角色](/partner-center/permissions-overview)：MPN 管理員、帳戶管理員或全域管理員 (這是在 Azure AD 中主控的共用角色)。
     

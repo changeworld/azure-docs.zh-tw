@@ -4,12 +4,12 @@ description: 如何在單一 Azure Batch 作業中有效率地提交非常大量
 ms.topic: how-to
 ms.date: 08/24/2018
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 0442be6f0c56aecc401ac4322c565a9ef999df63
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 26230372a04d13a8b8f59d50aa5da1362126413b
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936889"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144051"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>將大量工作提交至 Batch 作業
 
@@ -26,15 +26,15 @@ Batch API 提供了有效率地以「集合」形式，將工作新增至作業�
 * 下列 Batch API 將集合限制為 **100 個工作**。 視工作的大小，限制也可以更小；例如，工作有大量資源檔或環境變數時。
 
     * [REST API](/rest/api/batchservice/task/addcollection)
-    * [Python API](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)
-    * [Node.js API](/javascript/api/@azure/batch/task?view=azure-node-latest)
+    * [Python API](/python/api/azure-batch/azure.batch.operations.TaskOperations)
+    * [Node.js API](/javascript/api/@azure/batch/task)
 
   使用這些 API 時，您需要提供邏輯來分割工作數目，以符合集合限制，以及在新增工作失敗時處理錯誤並重試。 如果工作集合太大而無法新增，要求會產生錯誤，應該以較少的工作重試。
 
 * 下列 API 支援更大的工作集合 - 僅受限於提交用戶端上的 RAM 可用性。 這些 API 會以透明方式，針對較低層級的 API 將工作集合分割為「區塊」，並且在新增工作失敗時重試。
 
-    * [.NET API](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet)
-    * [Java API](/java/api/com.microsoft.azure.batch.protocol.tasks.addcollectionasync?view=azure-java-stable)
+    * [.NET API](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync)
+    * [Java API](/java/api/com.microsoft.azure.batch.protocol.tasks.addcollectionasync)
     * [Azure Batch CLI 擴充功能](batch-cli-templates.md)與 Batch CLI 範本
     * [Python SDK 擴充功能](https://pypi.org/project/azure-batch-extensions/)
 
@@ -44,7 +44,7 @@ Batch API 提供了有效率地以「集合」形式，將工作新增至作業�
 
 * **工作大小** - 新增大型工作所花費的時間，比新增較小工作的時間久。 若要減少集合中每個工作的大小，您可以簡化工作命令列、減少環境變數數目，或者更有效率地處理工作執行需求。 例如，並非使用大量資源檔，而是在集區上使用[啟動工作](jobs-and-tasks.md#start-task)，或使用[應用程式套件](batch-application-packages.md)或 [Docker 容器](batch-docker-container-workloads.md)，安裝工作相依性。
 
-* **平行作業數目** - 依據 Batch API 而定，藉由增加 Batch 用戶端的並行作業數目上限來增加輸送量。 使用 .NET API 中的 [BatchClientParallelOptions.MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) 屬性，或方法 (例如 Batch Python SDK 擴充功能中的 [TaskOperations.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)) 的 `threads` 參數，進行這項設定。 (這個屬性不適用於原生 Batch Python SDK。)根據預設，此屬性設為 1，但是設為較高的數值可改善作業的輸送量。 您會耗用網路頻寬和一些 CPU 效能，來換取增加的輸送量。 工作輸送量會增加到最多 100 乘以 `MaxDegreeOfParallelism` 或 `threads`。 在實務上，您應該將並行作業數目設為 100 以下。 
+* **平行作業數目** - 依據 Batch API 而定，藉由增加 Batch 用戶端的並行作業數目上限來增加輸送量。 使用 .NET API 中的 [BatchClientParallelOptions.MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) 屬性，或方法 (例如 Batch Python SDK 擴充功能中的 [TaskOperations.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations)) 的 `threads` 參數，進行這項設定。 (這個屬性不適用於原生 Batch Python SDK。)根據預設，此屬性設為 1，但是設為較高的數值可改善作業的輸送量。 您會耗用網路頻寬和一些 CPU 效能，來換取增加的輸送量。 工作輸送量會增加到最多 100 乘以 `MaxDegreeOfParallelism` 或 `threads`。 在實務上，您應該將並行作業數目設為 100 以下。 
  
   Azure Batch CLI 擴充功能與 Batch 範本，會根據可用核心數目自動增加並行作業數目，但是這個屬性在 CLI 中無法設定。 
 
@@ -54,7 +54,7 @@ Batch API 提供了有效率地以「集合」形式，將工作新增至作業�
 
 下列 C# 程式碼片段會顯示使用 Batch .NET API 新增大量工作時，所要進行的設定。
 
-若要增加工作輸送量，請針對 [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet) 的 [MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) 屬性增加值。 例如：
+若要增加工作輸送量，請針對 [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) 的 [MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) 屬性增加值。 例如：
 
 ```csharp
 BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
@@ -63,7 +63,7 @@ BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
   };
 ...
 ```
-使用 [AddTaskAsync](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet) 或 [AddTask](/dotnet/api/microsoft.azure.batch.cloudjob.addtask?view=azure-dotnet
+使用 [AddTaskAsync](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync) 或 [AddTask](/dotnet/api/microsoft.azure.batch.cloudjob.addtask
 ) 方法的適當多載，將工作集合新增至作業。 例如：
 
 ```csharp
@@ -144,7 +144,7 @@ tasks = list()
 ...
 ```
 
-使用 [task.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) 來新增工作集合。 設定 `threads` 參數來增加並行作業數目：
+使用 [task.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations) 來新增工作集合。 設定 `threads` 參數來增加並行作業數目：
 
 ```python
 try:

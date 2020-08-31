@@ -212,16 +212,10 @@
               href: application-sign-in-unexpected-user-consent-prompt.md
             - name: 使用者同意錯誤
               href: application-sign-in-unexpected-user-consent-error.md
-            - name: 從自訂入口網站登入時發生問題
-              href: application-sign-in-other-problem-deeplink.md
-            - name: 從存取面板登入時發生問題
+            - name: 從我的應用程式登入時發生問題
               href: application-sign-in-other-problem-access-panel.md
             - name: 應用程式登入頁面發生錯誤
               href: application-sign-in-problem-application-error.md
-            - name: 密碼單一登入問題 - 非資源庫應用程式
-              href: application-sign-in-problem-password-sso-non-gallery.md
-            - name: 密碼單一登入問題 - 資源庫應用程式
-              href: application-sign-in-problem-password-sso-gallery.md
             - name: 登入 Microsoft 應用程式時發生問題
               href: application-sign-in-problem-first-party-microsoft.md
             - name: 同盟單一登入問題 - 非資源庫應用程式
@@ -232,14 +226,12 @@
               href: application-sign-in-problem-custom-dev.md
         - name: 單一登入疑難排解
           items:
+            - name: 針對密碼式單一登入進行疑難排解
+              href: troubleshoot-password-based-sso.md
             - name: 設定同盟常見問題 - 資源庫應用程式
               href: configure-federated-single-sign-on-gallery-applications-problems.md
             - name: 設定同盟常見問題 - 非資源庫應用程式
               href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-            - name: 設定密碼常見問題 - 資源庫應用程式
-              href: configure-password-single-sign-on-gallery-applications-problems.md
-            - name: 設定密碼常見問題 - 非資源庫應用程式
-              href: configure-password-single-sign-on-non-gallery-applications-problems.md
         - name: 應用程式清單和指派疑難排解
           items:
             - name: 管理租用戶應用程式清單
@@ -248,16 +240,10 @@
               href: ways-users-get-assigned-to-applications.md
         - name: 針對我的應用程式進行疑難排解
           items:
-            - name: 管理瀏覽器延伸模組
-              href: manage-access-panel-browser-extension.md
             - name: 未顯示的應用程式
               href: access-panel-troubleshoot-application-not-appearing.md
             - name: 出現未預期的應用程式
               href: access-panel-troubleshoot-unexpected-application.md
-            - name: 無法登入
-              href: access-panel-troubleshoot-web-sign-in-problem.md
-            - name: 使用自助應用程式存取時發生錯誤
-              href: access-panel-troubleshoot-self-service-access.md
         - name: 針對內部部署應用程式進行疑難排解
           items:
             - name: 應用程式 Proxy 疑難排解

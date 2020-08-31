@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: adf58b667d17393fc905fbf31261530fce88d9f8
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: d1c4f62f19a36867ebc85a98b0cd38bbbf8ce757
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272343"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660677"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions 是什麼？
 
@@ -704,8 +704,9 @@ Durable Functions 的收費方式與 Azure Functions 相同。 如需詳細資�
 * [使用 Visual Studio 2019 的 C#](durable-functions-create-first-csharp.md)
 * [使用 Visual Studio Code 的 JavaScript](quickstart-js-vscode.md)
 * [使用 Visual Studio Code 的 Python](quickstart-python-vscode.md)
+* [使用 Visual Studio Code 的 PowerShell](quickstart-powershell-vscode.md)
 
-在這兩個快速入門中，您會在本機建立及測試 "hello world" 耐久函式。 接著會將函式程式碼發佈至 Azure。 您建立的函式會協調對其他函式的呼叫並鏈結在一起。
+在這些快速入門中，您會在本機建立及測試 "hello world" 耐久函式。 接著會將函式程式碼發佈至 Azure。 您建立的函式會協調對其他函式的呼叫並鏈結在一起。
 
 ## <a name="learn-more"></a>深入了解
 

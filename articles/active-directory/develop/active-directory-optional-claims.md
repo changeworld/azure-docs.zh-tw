@@ -12,12 +12,12 @@ ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1384dc760edb0bca66344d8892c18fdebb54855d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853579"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068721"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -58,7 +58,7 @@ ms.locfileid: "88853579"
 | `verified_secondary_email` | 源自使用者的 SecondaryAuthoritativeEmail   | JWT        |           |        |
 | `vnet`                     | VNET 規範資訊。 | JWT        |           |      |
 | `fwd`                      | IP 位址。| JWT    |   | 新增發出要求之用戶端的原始 IPv4 位址 (位於 VNET 內部時) |
-| `ctry`                     | 使用者的國家/地區 | JWT |  | Azure AD 會傳回選用的宣告（ `ctry` 如果有的話），而欄位的值是標準的兩個字母的國家/地區代碼，例如 FR、JP、SZ 等等。 |
+| `ctry`                     | 使用者的國家/地區 | JWT、SAML |  | Azure AD 會傳回選用的宣告（ `ctry` 如果有的話），而欄位的值是標準的兩個字母的國家/地區代碼，例如 FR、JP、SZ 等等。 |
 | `tenant_ctry`              | 資源租使用者的國家/地區 | JWT | | 與系統 `ctry` 管理員在租使用者層級設定的不同。 也必須是標準的兩個字母值。 |
 | `xms_pdl`             | 慣用資料位置   | JWT | | 若為多地理位置租用戶，慣用的資料位置是三個字母的代碼，顯示使用者所在的地理區域。 如需詳細資訊，請參閱 [Azure AD Connect 慣用資料位置的相關文件](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md)。<br/>例如：`APC` 是指亞太地區。 |
 | `xms_pl`                   | 使用者慣用語言  | JWT ||使用者的慣用語言 (如果已設定)。 在來賓存取案例中，來源是其主租用戶。 格式化 LL-CC ("en-us")。 |

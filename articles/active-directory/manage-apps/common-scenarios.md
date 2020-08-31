@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b81e792d3b3bf491b281e09c00f48a7ad56fa47
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 8ce3819ff1f9b0c61f7738f90ff17c2798fe888b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763630"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642107"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>使用 Azure AD 將應用程式管理集中化
 
@@ -43,7 +43,7 @@ ms.locfileid: "84763630"
 |功能  | 描述 | 建議 |
 |---------|---------|---------|
 |SSO|使用受信任業界標準的標準型同盟 SSO。|如果您的應用程式支援 SSO，請一律使用 [SAML/OIDC](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-choose-multi-tenant-federation) 加以啟用。|
-|存取面板|為使用者提供可探索及存取其所有應用程式的簡單中樞。 讓他們能藉由自助式功能提升生產力，例如，要求存取應用程式和群組，或代表其他人管理資源的存取權。| 當您將應用程式與 Azure AD 進行 SSO 的整合之後，請在您的組織中部署[存取面板](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-deployment-plan)。|
+|我的應用程式|為使用者提供可探索及存取其所有應用程式的簡單中樞。 讓他們能藉由自助式功能提升生產力，例如，要求存取應用程式和群組，或代表其他人管理資源的存取權。| 當您將應用程式與 Azure AD 進行 SSO 的整合之後，請在您的組織中部署[我的應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-deployment-plan)。|
 
 ## <a name="scenario-2-automate-provisioning-and-deprovisioning"></a>案例 2：自動化佈建和取消佈建 
 

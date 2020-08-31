@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 118abaef1fd1458057a7dbe28d5cd74ded55fe28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac36650e285c371457b89f7a362b51fa74d7d47c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358288"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071426"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 傳遞驗證：常見問題集
 
@@ -37,22 +37,22 @@ ms.locfileid: "85358288"
 
 ## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>[Microsoft Azure 德國雲端](https://www.microsoft.de/cloud-deutschland)和 [Microsoft Azure Government 雲端](https://azure.microsoft.com/features/gov/)是否有提供傳遞驗證功能？
 
-否。 只有全球版的 Azure AD 執行個體會提供傳遞驗證功能。
+不知道。 只有全球版的 Azure AD 執行個體會提供傳遞驗證功能。
 
 ## <a name="does-conditional-access-work-with-pass-through-authentication"></a>[條件式存取](../active-directory-conditional-access-azure-portal.md)是否能與傳遞驗證搭配運作？
 
-是。 所有條件式存取功能（包括 Azure 多重要素驗證）都會使用傳遞驗證。
+是。 所有條件式存取功能（包括 Azure Multi-Factor Authentication）都會使用傳遞驗證。
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>傳遞驗證支援以「替代識別碼」而非「userPrincipalName」來作為使用者名稱嗎？
-是，傳遞驗證（PTA）和密碼雜湊同步處理（PHS）都支援使用非 UPN 值（例如替代電子郵件）進行登入。 如需[替代登入識別碼](../authentication/howto-authentication-use-email-signin.md)的詳細資訊。
+是的，使用非 UPN 值（例如替代電子郵件）的登入支援傳遞驗證 (PTA) 和密碼雜湊同步處理 (PHS) 。 如需 [替代登入識別碼](../authentication/howto-authentication-use-email-signin.md)的詳細資訊。
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>密碼雜湊同步處理是否會作為傳遞驗證的遞補？
 
-否。 傳遞驗證_不會_自動容錯移轉至密碼雜湊同步處理。 若要避免使用者登入失敗，您應該為傳遞驗證設定[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
+不知道。 傳遞驗證_不會_自動容錯移轉至密碼雜湊同步處理。 若要避免使用者登入失敗，您應該為傳遞驗證設定[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
 
 ## <a name="what-happens-when-i-switch-from-password-hash-synchronization-to-pass-through-authentication"></a>當我從密碼雜湊同步處理切換至傳遞驗證時，會發生什麼事？
 
-當您使用 Azure AD Connect 將登入方法從密碼雜湊同步處理切換至傳遞驗證時，傳遞驗證會成為您的使用者在受控網域中的主要登入方法。 請注意，先前由密碼雜湊同步處理同步處理的所有使用者密碼雜湊，仍會儲存在 Azure AD 上。
+當您使用 Azure AD Connect 將登入方法從密碼雜湊同步切換至傳遞驗證時，傳遞驗證會成為受控網域中使用者的主要登入方法。 請注意，先前透過密碼雜湊同步處理進行同步處理的所有使用者密碼雜湊仍會儲存在 Azure AD 上。
 
 ## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>能否在傳遞驗證代理程式所在的同一部伺服器上安裝 [Azure AD 應用程式 Proxy](../manage-apps/application-proxy.md) 連接器？
 
@@ -75,7 +75,7 @@ ms.locfileid: "85358288"
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>傳遞驗證代理程式會透過連接埠 80 和 443 進行哪些方面的通訊？
 
 - 驗證代理程式會透過連接埠 443 對所有功能作業進行 HTTPS 要求。
-- 驗證代理程式會透過埠80提出 HTTP 要求，以下載 TLS/SSL 憑證吊銷清單（Crl）。
+- 驗證代理程式會透過埠80提出 HTTP 要求，以下載 (Crl) 的 TLS/SSL 憑證吊銷清單。
 
      >[!NOTE]
      >最近的更新減少了此功能所需的連接埠數目。 如果您有舊版的 Azure AD Connect 或驗證代理程式，請將下列連接埠保持開放：5671、8080、9090、9091、9350、9352、10100-10120。
@@ -113,7 +113,7 @@ ms.locfileid: "85358288"
 
 「傳遞驗證代理程式」只要正在執行，就會維持作用中並持續處理使用者登入要求。 如果您想要將「驗證代理程式」解除安裝，請移至 [控制台] -> [程式集] -> [程式和功能]****，然後將 [Microsoft Azure AD Connect 驗證代理程式]**** 和 [Microsoft Azure AD Connect 代理程式更新程式]**** 程式都解除安裝。
 
-如果您在完成上述步驟後查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)上的 [傳遞驗證] 刀鋒視窗，您將會看到「驗證代理程式」顯示為 [非作用中]****。 這是_預期_的情況。 幾天後，「驗證代理程式」就會自動從清單中卸除。
+如果您在完成上述步驟後查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)上的 [傳遞驗證] 刀鋒視窗，您將會看到「驗證代理程式」顯示為 [非作用中]****。 這是 _預期_的情況。 驗證代理程式會在10天后自動從清單中卸載。
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>我已使用 AD FS 登入 Azure AD。 要如何改為使用傳遞驗證？
 
@@ -121,7 +121,7 @@ ms.locfileid: "85358288"
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>是否可以在多樹系 Active Directory 環境中使用傳遞驗證？
 
-是。 如果您的 Active Directory 樹系之間有樹系信任（雙向），且名稱尾碼路由已正確設定，則支援多樹系環境。
+是。 如果 Active Directory 樹系之間有樹系信任 (雙向) ，且名稱尾碼路由已正確設定，就支援多樹系環境。
 
 ## <a name="does-pass-through-authentication-provide-load-balancing-across-multiple-authentication-agents"></a>傳遞驗證是否提供跨多個驗證代理程式的負載平衡？
 
@@ -144,11 +144,11 @@ ms.locfileid: "85358288"
 
 ## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>是否可以在不同於 Azure AD Connect 執行所在伺服器的某個伺服器上安裝第一個傳遞驗證代理程式？
 
-否，_不_支援這種情況。
+否， _不_ 支援此案例。
 
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>為何必須要有僅限雲端的全域管理員帳戶才能啟用傳遞驗證？
 
-建議您使用僅限雲端的全域管理員帳戶來啟用或停用傳遞驗證。 瞭解如何[新增僅限雲端的全域系統管理員帳戶](../active-directory-users-create-azure-portal.md)。 這樣可確保您不會被租用戶封鎖。
+建議您使用僅限雲端的全域管理員帳戶來啟用或停用傳遞驗證。 瞭解如何 [新增僅限雲端的全域系統管理員帳戶](../active-directory-users-create-azure-portal.md)。 這樣可確保您不會被租用戶封鎖。
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>如何停用傳遞驗證？
 

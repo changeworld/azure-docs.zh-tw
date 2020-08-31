@@ -25,9 +25,9 @@
         - name: 受控磁碟
           items:
             - name: 使用 CLI 在可用性區域中新增受控磁碟
-              href: '../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm'
+              href: ../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm
             - name: 使用 PowerShell 在可用性區域中新增受控磁碟
-              href: '../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine'
+              href: ../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine
         - name: 虛擬機器擴展集
           items:
             - name: 在可用性區域中建立擴展集
@@ -58,11 +58,11 @@
                 - name: 使用 Azure (CLI) 跨越多個可用性區域為 VM 進行負載平衡
                   href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
         - name: 公用 IP 位址
-          href: '../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address'
+          href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: SQL Database
           items:
             - name: 使用 SQL Database 的可用性區域
-              href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
+              href: ../sql-database/sql-database-high-availability.md#zone-redundant-configuration
         - name: 儲存體
           items:
             - name: 區域備援儲存體
@@ -70,11 +70,11 @@
         - name: 事件中樞
           items:
             - name: 事件中樞異地災害復原
-              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones'
+              href: ../event-hubs/event-hubs-geo-dr.md#availability-zones
         - name: 服務匯流排
           items:
             - name: 服務匯流排異地災害復原
-              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones'
+              href: ../service-bus-messaging/service-bus-geo-dr.md#availability-zones
         - name: VPN 閘道
           items:
             - name: 建立區域備援虛擬網路閘道
@@ -83,6 +83,10 @@
           items:
             - name: 建立區域備援虛擬網路閘道
               href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: 應用程式閘道 v2
+          items:
+            - name: 自動調整規模和區域備援應用程式閘道 v2
+              href: ../application-gateway/application-gateway-autoscaling-zone-redundant.md
         - name: 身分識別
           items:
             - name: 建立 Azure Active Directory Domain Services 執行個體

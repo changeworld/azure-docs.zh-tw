@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 7/15/2020
-ms.openlocfilehash: 61da81dd96078e0577e00be37fe27211a5b62154
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 840e7769e8a242314b10562684c942a2468ea5ad
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084398"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705141"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立適用於 MySQL 的 Azure 資料庫伺服器
 
@@ -84,7 +84,7 @@ Location | *最接近使用者的區域*| 選擇最靠近您的使用者或其�
 
    >[!div class="mx-imgBorder"]
    > ![入口網站完整檢視 Cloud Shell](./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png)
-2. 在 Azure Cloud Shell 終端機上執行此命令。 將值取代為實際的伺服器名稱和管理員使用者登入名稱。 適用於 MySQL 的 Azure 資料庫管理員使用者名稱需要 '@<servername>，如下所示  
+2. 在 Azure Cloud Shell 終端機上執行此命令。 將值取代為實際的伺服器名稱和管理員使用者登入名稱。 適用於 MySQL 的 Azure 資料庫管理員使用者名稱需要 '@\<servername>'，如下所示  
 
   ```azurecli-interactive
   mysql --host=mydemoserver.mysql.database.azure.com --user=myadmin@mydemoserver -p 
@@ -100,7 +100,7 @@ Location | *最接近使用者的區域*| 選擇最靠近您的使用者或其�
   Type "az" to use Azure CLI
   Type "help" to learn about Cloud Shell
 
-  sunitha@Azure:~$mysql -h mydemoserver.mysql.database.azure.com -u admin@wpapp-mysqldbserver -p
+  user@Azure:~$mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
   Enter password:
   Welcome to the MySQL monitor.  Commands end with ; or \g.
   Your MySQL connection id is 64796

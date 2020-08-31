@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: beb5c7262a5475f5c1535e120fcebe4c70838c7e
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 1873cd14883e8b1a5174b8761e4a0bc9ba1ef872
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135482"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641852"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入門：針對您 Azure Active Directory (Azure AD) 租用戶中的應用程式設定屬性
 
@@ -47,7 +47,7 @@ ms.locfileid: "88135482"
 3. 請花點時間了解可供設定的選項：
     - [為使用者啟用登入？] 可決定指派給應用程式的使用者是否可以登入。
     - [需要使用者指派？] 可決定未指派給應用程式的使用者是否可以登入。
-    - [可讓使用者看見？] 可決定指派給應用程式的使用者是否可以在[存取面板](https://myapps.microsoft.com)和 Office 365 啟動器中看見應用程式。 (請參閱 Office 365 或 Microsoft 365 網站左上角的鬆餅功能表)。
+    - [可讓使用者看見？] 可決定指派給應用程式的使用者是否可以在[我的應用程式](https://myapps.microsoft.com)和 Office 365 啟動器中看見應用程式。 (請參閱 Office 365 或 Microsoft 365 網站左上角的鬆餅功能表)。
     
     > [!TIP]
     > 指派使用者會在導覽的 [使用者和群組] 區段中進行。

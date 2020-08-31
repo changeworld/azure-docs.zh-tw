@@ -7,16 +7,20 @@ ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d0d3e6836e2f87c503ac5154a54aeb0dd1c0e26
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ddd8166dd29d2210fecdd72d5be446df47a6c5df
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266294"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072293"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>利用 Resource Manager 範本建立 Windows 虛擬機器
 
-瞭解如何使用 Azure Resource Manager 範本建立 Windows 虛擬機器，並從 Azure Cloud shell Azure PowerShell。 本文中使用的範本會在具有單一子網的新虛擬網路中，部署執行 Windows Server 的單一虛擬機器。 如需建立 Linux 虛擬機器，請參閱[如何使用 Azure Resource Manager 範本建立 linux 虛擬機器](../linux/create-ssh-secured-vm-from-template.md)。
+瞭解如何使用 Azure Resource Manager 範本建立 Windows 虛擬機器，並從 Azure Cloud shell Azure PowerShell。 本文中使用的範本會在具有單一子網的新虛擬網路中，部署執行 Windows Server 的單一虛擬機器。 若要建立 Linux 虛擬機器，請參閱 [如何使用 Azure Resource Manager 範本建立 linux 虛擬機器](../linux/create-ssh-secured-vm-from-template.md)。
+
+替代方法是從 Azure 入口網站部署範本。 若要在入口網站中開啟範本，請選取 [ **部署至 Azure** ] 按鈕。
+
+[![部署至 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
 
 ## <a name="create-a-virtual-machine"></a>建立虛擬機器
 
@@ -25,11 +29,11 @@ ms.locfileid: "87266294"
 - 建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器之前建立。
 - 建立虛擬機器。
 
-下列範例會從[Azure 快速入門範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json)建立 VM。 以下是範本的複本：
+下列範例會從 [Azure 快速入門範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json)建立 VM。 以下是範本的複本：
 
 [!code-json[create-windows-vm](~/quickstart-templates/101-vm-simple-windows/azuredeploy.json)]
 
-若要執行 PowerShell 腳本，請選取 [**試試看**] 以開啟 Azure Cloud shell。 若要貼上腳本，請以滑鼠右鍵按一下 shell，然後選取 [**貼**上]：
+若要執行 PowerShell 腳本，請選取 [ **試試看** ] 以開啟 Azure Cloud shell。 若要貼上腳本，請以滑鼠右鍵按一下 shell，然後選取 [ **貼**上]：
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -57,12 +61,12 @@ New-AzResourceGroupDeployment `
 以下是一些其他資源：
 
 - 若要了解如何開發 Resource Manager 範本，請參閱 [Azure Resource Manager 文件](../../azure-resource-manager/index.yml)。
-- 若要查看 Azure 虛擬機器架構，請參閱[azure 範本參考](/azure/templates/microsoft.compute/allversions)。
-- 若要查看更多虛擬機器範本範例，請參閱[Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)。
+- 若要查看 Azure 虛擬機器架構，請參閱 [azure 範本參考](/azure/templates/microsoft.compute/allversions)。
+- 若要查看更多虛擬機器範本範例，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)。
 
 ## <a name="connect-to-the-virtual-machine"></a>連接至虛擬機器
 
-上一個腳本中的最後一個 PowerShell 命令會顯示虛擬機器名稱。 若要連線到虛擬機器，請參閱[如何連接和登入執行 Windows 的 Azure 虛擬機器](./connect-logon.md)。
+上一個腳本中的最後一個 PowerShell 命令會顯示虛擬機器名稱。 若要連線到虛擬機器，請參閱 [如何連線及登入執行 Windows 的 Azure 虛擬機器](./connect-logon.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

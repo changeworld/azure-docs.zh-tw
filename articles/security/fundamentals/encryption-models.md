@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 105d867b4eafe37ca6555e3f6b54dc521a7264fe
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 51d7cb32ef2d1d7750a0bb53cfa3ccc111bd1302
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227060"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89143728"
 ---
 # <a name="data-encryption-models"></a>資料加密模型
 
@@ -54,23 +54,23 @@ ms.locfileid: "88227060"
 - 客戶在內部部署環境 (或其他安全的儲存區中) 管理或儲存金鑰。 金鑰無法供 Azure 服務使用
 - 縮減的雲端功能
 
-Azure 中支援的加密模型分成兩個主要群組：先前所述的「用戶端加密」和「伺服器端加密」。 除了所使用的加密靜態模型之外，Azure 服務一律建議使用諸如 TLS 或 HTTPS 等安全的傳輸。 因此，傳輸中的加密應該由傳輸通訊協定來處理，且不應作為要使用哪個靜態加密模型的主要判斷因素。
+Azure 中支援的加密模型會分割成兩個主要群組：如先前所述的「用戶端加密」和「伺服器端加密」。 除了所使用的加密靜態模型之外，Azure 服務一律建議使用諸如 TLS 或 HTTPS 等安全的傳輸。 因此，傳輸中的加密應該由傳輸通訊協定來處理，且不應作為要使用哪個靜態加密模型的主要判斷因素。
 
 ## <a name="client-encryption-model"></a>用戶端加密模型
 
 用戶端加密模型是指由服務或呼叫應用程式在資源提供者或 Azure 外部執行的加密。 加密可由 Azure 中的服務應用程式或客戶資料中心內執行的應用程式執行。 在任一案例中，利用此加密模型時，Azure 資源提供者無需以任何方式解密的能力或具有加密金鑰的存取權，即可接收加密的 blob 資料。 在此模型中，金鑰管理是由呼叫服務/應用程式所完成，且對 Azure 服務不透明。
 
-![Client](./media/encryption-models/azure-security-encryption-atrest-fig2.png)
+![用戶端](./media/encryption-models/azure-security-encryption-atrest-fig2.png)
 
 ## <a name="server-side-encryption-using-service-managed-keys"></a>使用服務管理金鑰的伺服器端加密
 
-對許多客戶而言，基本需求就是確保在靜態時會將資料加密。 使用服務管理之金鑰的伺服器端加密會啟用這個模型，方法是允許客戶標示特定的資源 (儲存體帳戶、SQL DB 等) 以進行加密，並將諸如金鑰發佈、輪替和備份等所有金鑰管理層面保留給 Microsoft。 支援待用加密的大部分 Azure 服務，通常都支援將加密金鑰管理卸載至 Azure 的這種模型。 Azure 資源提供者會建立金鑰、將它們放置在安全的儲存體，並在需要時加以擷取。 這表示服務具有金鑰的完整存取權，且服務可完整控制認證生命週期管理。
+對許多客戶而言，基本需求就是確保在靜態時會將資料加密。 使用服務管理之金鑰的伺服器端加密會啟用這個模型，方法是允許客戶標示特定的資源 (儲存體帳戶、SQL DB 等) 以進行加密，並將諸如金鑰發佈、輪替和備份等所有金鑰管理層面保留給 Microsoft。 大部分支援靜態加密的 Azure 服務，通常都支援此模型將加密金鑰的管理卸載至 Azure。 Azure 資源提供者會建立金鑰、將它們放置在安全的儲存體，並在需要時加以擷取。 這表示服務具有金鑰的完整存取權，且服務可完整控制認證生命週期管理。
 
 ![受控](./media/encryption-models/azure-security-encryption-atrest-fig4.png)
 
 使用服務管理之金鑰的伺服器端加密因此能快速解決靜態加密的需求，並為客戶提供低額外負荷。 情況允許時，客戶通常會開啟目標訂用帳戶和資源提供者的 Azure 入口網站，並勾選方塊以指示要加密資料。 在部分 Resource Manager 中，使用服務管理金鑰的伺服器端加密預設為開啟。
 
-搭配 Microsoft 管理之金鑰的伺服器端加密確實表示服務具有儲存及管理金鑰的完整存取權。 雖然部分客戶會因為認為可獲得更高的安全性而要管理金鑰，但在評估此模型時，應該考慮自訂金鑰儲存解決方案的相關成本和風險。 在許多情況下，組織可能會判斷資源限制或內部部署解決方案的風險可能會大於在雲端管理靜態加密金鑰的風險。  不過，對於需要控制加密金鑰的建立或生命週期，或讓不同的人員管理服務的加密 (金鑰（與服務) 的整體管理模型隔離）的組織而言，此模型可能並不足夠。
+搭配 Microsoft 管理之金鑰的伺服器端加密確實表示服務具有儲存及管理金鑰的完整存取權。 雖然部分客戶會因為認為可獲得更高的安全性而要管理金鑰，但在評估此模型時，應該考慮自訂金鑰儲存解決方案的相關成本和風險。 在許多情況下，組織可能會判斷資源限制或內部部署解決方案的風險可能會大於在雲端管理靜態加密金鑰的風險。  不過，對於需要控制加密金鑰的建立或生命週期，或是讓不同人員管理服務的加密金鑰（而非管理服務 (也就是從) 服務的整體管理模型隔離金鑰管理）的組織而言，此模型可能不足。
 
 ### <a name="key-access"></a>金鑰存取
 
@@ -91,7 +91,7 @@ Azure 中支援的加密模型分成兩個主要群組：先前所述的「用�
 
 在需要將待用資料加密並控制加密金鑰的情節中，客戶可以使用 Key Vault 中使用客戶管理之金鑰的伺服器端加密。 某些服務可能只會在 Azure Key Vault 中儲存根金鑰加密金鑰，並將加密的資料加密金鑰儲存在較接近資料的內部位置。 在該案例中，客戶可以將自己的金鑰帶到 Key Vault (BYOK – 自備金鑰) 或產生新的金鑰，並使用它們來加密所需的資源。 當資源提供者執行加密和解密作業時，它會使用已設定的金鑰加密金鑰做為所有加密作業的根機碼。
 
-遺失金鑰加密金鑰表示資料遺失。 基於這個理由，不應刪除金鑰。 每次建立或旋轉時，都應該備份金鑰。 您應該在儲存金鑰加密金鑰的任何保存庫上啟用虛[刪除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)。 將 [啟用] 設定為 [false] 或設定 [到期日]，而不是刪除索引鍵。
+遺失金鑰加密金鑰表示資料遺失。 基於這個理由，不應該刪除金鑰。 每次建立或旋轉時，都應該備份金鑰。 您應該在儲存金鑰加密金鑰的任何保存庫上啟用虛[刪除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)。 將 [啟用] 設定為 [false] 或 [設定到期日]，而不是刪除金鑰。
 
 ### <a name="key-access"></a>金鑰存取
 
@@ -106,7 +106,7 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 
 **優點**
 
-- 完全控制使用的金鑰–加密金鑰會在客戶的 Key Vault 中，由客戶的控制來管理。
+- 完整控制所使用的金鑰–加密金鑰會在客戶的 Key Vault 中管理于客戶的控制之下。
 - 能夠將多個服務加密到一個主機
 - 可從服務的整體管理模型將金鑰管理隔離
 - 可跨區域定義服務與金鑰位置
@@ -119,11 +119,11 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 
 ## <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>在客戶控制的硬體中使用客戶管理的金鑰進行伺服器端加密
 
-某些 Azure 服務可允許「裝載您自己的金鑰」(HYOK) 金鑰管理模型。 當需要加密待用資料，並在 Microsoft 控制之外的專屬存放庫中管理金鑰時，此管理模式非常有用。 在此模型中，服務必須從外部網站擷取金鑰。 效能和可用性保證會受到影響，且設定會更為複雜。 此外，因為服務在加密和解密作業期間可存取 DEK，此模型的整體安全性保證會與在 Azure Key Vault 中由客戶管理金鑰時類似。  因此，此模型不適用於大部分的組織，除非組織有特定金鑰管理需求。 由於這些限制，大部分的 Azure 服務不支援在客戶控制的硬體中使用伺服器管理金鑰的伺服器端加密。
+某些 Azure 服務可允許「裝載您自己的金鑰」(HYOK) 金鑰管理模型。 此管理模式適用于需要加密待用資料，以及在 Microsoft 控制之外的專屬存放庫中管理金鑰的案例。 在此模型中，服務必須從外部網站擷取金鑰。 效能和可用性保證會受到影響，且設定會更為複雜。 此外，因為服務在加密和解密作業期間可存取 DEK，此模型的整體安全性保證會與在 Azure Key Vault 中由客戶管理金鑰時類似。  因此，此模型不適用於大部分的組織，除非組織有特定金鑰管理需求。 由於這些限制，大部分的 Azure 服務不支援在客戶控制的硬體中使用伺服器管理金鑰的伺服器端加密。
 
 ### <a name="key-access"></a>金鑰存取
 
-使用在客戶控制的硬體中使用服務管理金鑰的伺服器端加密時，金鑰會保留在客戶所設定的系統上。 支援這個模型的 Azure 服務可提供方法，來建立與客戶提供之金鑰儲存區的安全連線。
+使用在客戶控制的硬體中使用服務管理金鑰的伺服器端加密時，金鑰會保留在客戶設定的系統上。 支援這個模型的 Azure 服務可提供方法，來建立與客戶提供之金鑰儲存區的安全連線。
 
 **優點**
 
@@ -143,14 +143,14 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 ## <a name="supporting-services"></a>支援服務
 支援每個加密模型的 Azure 服務：
 
-| 產品、功能或服務 | 使用服務管理金鑰的伺服器端   | 使用客戶管理的金鑰的伺服器端 | 用戶端使用用戶端管理的金鑰  |
+| 產品、功能或服務 | 使用服務管理金鑰的伺服器端   | 使用客戶管理金鑰的伺服器端 | 用戶端使用用戶端管理的金鑰  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 | **AI 與機器學習**      |                    |                    |                    |
 | Azue 認知搜尋           | 是                | 是                | -                  |
 | Azure 認知服務         | 是                | 是                | -                  |
 | Azure Machine Learning           | 是                | 是                | -                  |
 | Azure Machine Learning Studio    | 是                | 預覽，RSA 2048 位元 | -               |
-| 內容仲裁者                | 是                | 是                | -                  |
+| 內容仲裁                | 是                | 是                | -                  |
 | 臉部                             | 是                | 是                | -                  |
 | Language Understanding           | 是                | 是                | -                  |
 | 個人化工具                     | 是                | 是                | -                  |
@@ -159,9 +159,9 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 | 翻譯工具文字                  | 是                | 是                | -                  |
 | Power BI                         | 是                | 預覽，RSA 2048 位元 | -                  |
 | **分析**                    |                    |                    |                    |
-| Azure 串流分析           | 是                | N/A\*            | -                  |
-| 事件中樞                       | 是                | 是，所有 RSA 長度。 | -                  |
-| 函式                        | 是                | 是，所有 RSA 長度。 | -                  |
+| Azure 串流分析           | 是                | N/A\*              | -                  |
+| 事件中樞                       | 是                | 是                | -                  |
+| 函式                        | 是                | 是                | -                  |
 | Azure Analysis Services          | 是                | -                  | -                  |
 | Azure 資料目錄               | 是                | -                  | -                  |
 | Azure HDInsight                  | 是                | 全部                | -                  |
@@ -175,9 +175,9 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 | Container Instances              | 是                | 是                | -                  |
 | Container Registry               | 是                | 是                | -                  |
 | **Compute**                      |                    |                    |                    |
-| 虛擬機器                 | 是                | 是，RSA 2048 位元  | -                  |
-| 虛擬機器擴展集        | 是                | 是，RSA 2048 位元  | -                  |
-| SAP HANA                         | 是                | 是，RSA 2048 位元  | -                  |
+| 虛擬機器                 | 是                | 是                | -                  |
+| 虛擬機器擴展集        | 是                | 是                | -                  |
+| SAP HANA                         | 是                | 是                | -                  |
 | App Service 方案                      | 是                | 是\*\*            | -                  |
 | 自動化                       | 是                | 是\*\*            | -                  |
 | Azure Functions                  | 是                | 是\*\*            | -                  |
@@ -187,13 +187,13 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 | 服務匯流排                      | 是                | 是                | -                  |
 | Site Recovery                    | 是                | 是                | -                  |
 | **資料庫**                    |                    |                    |                    |
-| 虛擬機器上的 SQL Server   | 是                | 是，RSA 2048 位元  | 是                |
-| Azure SQL Database               | 是                | 是，RSA 2048 位元  | 是                |
-| 適用于 mariadb 的 Azure SQL Database   | 是                | -                  | -                  |
+| 虛擬機器上的 SQL Server   | 是                | 是                | 是                |
+| Azure SQL Database               | 是                | 是，RSA 3072 位  | 是                |
+| 適用于適用于 mariadb 的 Azure SQL Database   | 是                | -                  | -                  |
 | 適用于 MySQL 的 Azure SQL Database     | 是                | 是                | -                  |
-| 于 postgresql 的 Azure SQL Database | 是               | 是                | -                  |
-| Azure Synapse Analytics          | 是                | 是，RSA 2048 位元  | -                  |
-| SQL Server Stretch Database      | 是                | 是，RSA 2048 位元  | 是                |
+| 適用于于 postgresql 的 Azure SQL Database | 是               | 是                | -                  |
+| Azure Synapse Analytics          | 是                | 是，RSA 3072 位  | -                  |
+| SQL Server Stretch Database      | 是                | 是，RSA 3072 位  | 是                |
 | 表格儲存體                    | 是                | 是                | 是                |
 | Azure Cosmos DB                  | 是                | 是                | -                  |
 | Azure Databricks                 | 是                | 是                | -                  |
@@ -203,7 +203,7 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 | Azure Repos                      | 是                | -                  | 是                |
 | **身分識別**                     |                    |                    |                    |
 | Azure Active Directory           | 是                | -                  | -                  |
-| Azure Active Directory Domain Services | 是          | 是，RSA 2048 位元  | -                  |
+| Azure Active Directory Domain Services | 是          | 是                | -                  |
 | **整合**                  |                    |                    |                    |
 | 服務匯流排                      | 是                | 是                | 是                |
 | Event Grid                       | 是                | -                  | -                  |
@@ -220,29 +220,29 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 | IoT 的 Azure 資訊安全中心    | 是                | 是                | -                  |
 | Azure Sentinel                   | 是                | 是                | -                  |
 | **Storage**                      |                    |                    |                    |
-| Blob 儲存體                     | 是                | 是，RSA 2048 位元  | 是                |
-| Premium Blob 儲存體             | 是                | 是，RSA 2048 位元  | 是                |
+| Blob 儲存體                     | 是                | 是                | 是                |
+| Premium Blob 儲存體             | 是                | 是                | 是                |
 | 磁碟儲存體                     | 是                | 是                | -                  |
 | Ultra 磁碟儲存體               | 是                | 是                | -                  |
 | 受控磁碟儲存體             | 是                | 是                | -                  |
-| 檔案儲存體                     | 是                | 是，RSA 2048 位元  | -                  |
-| 檔案進階儲存體             | 是                | 是，RSA 2048 位元  | -                  |
-| 檔案同步                        | 是                | 是，RSA 2048 位元  | -                  |
+| 檔案儲存體                     | 是                | 是                | -                  |
+| 檔案進階儲存體             | 是                | 是                | -                  |
+| 檔案同步                        | 是                | 是                | -                  |
 | 佇列儲存體                    | 是                | 是                | 是                |
 | Avere vFXT                       | 是                | -                  | -                  |
 | Azure Cache for Redis            | 是                | N/A\*              | -                  |
 | Azure NetApp Files               | 是                | 是                | -                  |
-| 封存儲存體                  | 是                | 是，RSA 2048 位元  | -                  |
-| StorSimple                       | 是                | 是，RSA 2048 位元  | 是                |
+| 封存儲存體                  | 是                | 是                | -                  |
+| StorSimple                       | 是                | 是                | 是                |
 | Azure 備份                     | 是                | 是                | 是                |
 | 資料箱                         | 是                | -                  | 是                |
 | 資料箱邊緣                    | 是                | 是                | -                  |
 
-\* 此服務不會保存資料。 暫時性快取（如果有的話）會使用 Microsoft 金鑰進行加密。
+\* 此服務不會保存資料。 暫時性快取（如果有的話）會以 Microsoft 金鑰加密。
 
-\*\* 這項服務支援將資料儲存在您自己的 Key Vault、儲存體帳戶或其他已支援客戶管理金鑰的伺服器端加密的資料保存服務中。
+\*\* 這項服務支援將資料儲存在您自己的 Key Vault、儲存體帳戶，或其他已支援客戶管理金鑰的伺服器端加密的資料保存服務中。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 瞭解如何 [在 Azure 中使用加密](encryption-overview.md)。
 - 瞭解 Azure 如何使用 [雙重加密](double-encryption.md) 來減輕加密資料所帶來的威脅。

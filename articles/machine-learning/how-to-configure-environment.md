@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1753373b360a78918682b5f6102dcc896e2d90c3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a6e603ad5698e7a6a57799def8a0f2de28e0cada
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652633"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144884"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>設定 Azure Machine Learning 的開發環境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "88652633"
 
 | 環境 | 優點 | 缺點 |
 | --- | --- | --- |
-| [以雲端為基礎的 Azure Machine Learning 計算實例 (預覽) ](#compute-instance) | 入門的最簡單方式。 整個 SDK 已安裝在您的工作區 VM 中，而筆記本教學課程已預先複製並準備好執行。 | 缺乏開發環境和相依性的控制權。 針對 Linux VM (VM 所產生的額外成本，可能會在未使用時停止，以避免) 費用。 請參閱[定價詳細資料](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。 |
+| [以雲端為基礎的 Azure Machine Learning 計算實例](#compute-instance) | 入門的最簡單方式。 整個 SDK 已安裝在您的工作區 VM 中，而筆記本教學課程已預先複製並準備好執行。 | 缺乏開發環境和相依性的控制權。 針對 Linux VM (VM 所產生的額外成本，可能會在未使用時停止，以避免) 費用。 請參閱[定價詳細資料](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。 |
 | [本機環境](#local) | 完全掌控您的開發環境和相依性。 使用您選擇的任何組建工具、環境或 IDE 來執行。 | 開始使用需要較長的時間。 必須安裝必要的 SDK 套件，而且如果您還沒有環境，也必須安裝環境。 |
 | [Azure Databricks](#aml-databricks) | 適用于在可擴充的 Apache Spark 平臺上執行大規模密集的機器學習工作流程。 | 實驗性機器學習的麻煩，或較小規模的實驗和工作流程。 Azure Databricks 所產生的額外成本。 請參閱[定價詳細資料](https://azure.microsoft.com/pricing/details/databricks/)。 |
 | [資料科學虛擬機器 (DSVM) ](#dsvm) | 類似于以雲端為基礎的計算實例 (Python 和 SDK 已預先安裝) ，但已預先安裝其他熱門的資料科學和機器學習工具。 易於調整規模，並與其他自訂工具和工作流程合併。 | 相較于以雲端為基礎的計算實例，較慢的使用者入門體驗。 |
@@ -55,7 +55,7 @@ Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azu
 
 ## <a name="your-own-cloud-based-compute-instance"></a><a id="compute-instance"></a>您自己的雲端式計算實例
 
-Azure Machine Learning [計算實例 (預覽) ](concept-compute-instance.md) 是安全的雲端式 Azure 工作站，可為數據科學家提供 Jupyter 筆記本伺服器、JupyterLab 和完整備妥的 ML 環境。
+Azure Machine Learning [計算實例](concept-compute-instance.md) 是安全的雲端式 Azure 工作站，可為數據科學家提供 Jupyter 筆記本伺服器、JupyterLab 和完整備妥的 ML 環境。
 
 不需要為計算實例安裝或設定任何專案。  您隨時都能從 Azure Machine Learning 工作區中建立一個。 只提供名稱並指定 Azure VM 類型。 請在此教學課程中立即試用 [：設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)。
 
@@ -156,7 +156,7 @@ Azure Machine Learning SDK 適用於 Ubuntu 或 Windows版本的 DSVM。 但如�
 
     此範例會使用 python 3.7.7 建立環境，但可以選擇任何特定的 subversions。 SDK 相容性可能無法保證特定的主要版本 (3.5 + 建議) ，而且如果遇到錯誤，建議您在 Anaconda 環境中嘗試不同的版本/subversion。 建立環境可能需要幾分鐘的時間，因為需要下載元件和套件。
 
-1. 在新的環境中執行下列命令，以啟用環境特定的 IPython 核心。 這可確保在 Anaconda 環境中使用 Jupyter 筆記本時，預期的核心和套件匯入行為：
+1. 在新的環境中執行下列命令，以啟用特定環境的 I Python 核心。 這可確保在 Anaconda 環境中使用 Jupyter 筆記本時，預期的核心和套件匯入行為：
 
     ```bash
     conda install notebook ipykernel
@@ -306,10 +306,10 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
    |SDK &nbsp; 套件 &nbsp; 額外專案|來源|PyPi &nbsp; 名稱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |針對 Databricks| 上傳 Python Egg 或 PyPI | azureml-sdk[databricks]|
-   |針對 Databricks-with-<br> 自動化 ML 功能| 上傳 Python Egg 或 PyPI | azureml-sdk [automl]|
+   |針對 Databricks-with-<br> 自動化 ML 功能| 上傳 Python Egg 或 PyPI | `azureml-sdk[automl]`|
 
    > [!Warning]
-   > 不能安裝任何其他 SDK 額外專案。 請只選擇上述其中一個選項 [databricks] 或 [automl]。
+   > 不能安裝任何其他 SDK 額外專案。 請只選擇上述其中一個選項 [ `databricks` ] 或 [ `automl` ]。
 
    * 請勿選取 [ **自動附加到所有**叢集]。
    * 選取叢集名稱旁邊的 [  **附加** ]。
@@ -361,7 +361,7 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 
 您可以透過三種方式建立組態檔：
 
-* **使用  [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**：寫入檔案的 *config.js* 。 此檔案包含您工作區的組態資訊。 您可以將此 *config.json* 下載或複製到其他開發環境。
+* **使用  [ws.write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**：寫入檔案的 *config.js* 。 此檔案包含您工作區的組態資訊。 您可以將此 *config.json* 下載或複製到其他開發環境。
 
 * **下載檔案**：在[Azure 入口網站](https://ms.portal.azure.com)中，從工作區的 [**總覽**] 區段中選取 [**下載 config.js** 。
 
@@ -386,7 +386,7 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 
     此程式碼會將設定檔寫入檔案的 *azureml/config.js* 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 使用 MNIST 資料集在 Azure Machine Learning 上[定型模型](tutorial-train-models-with-aml.md)
 - 檢視[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) \(英文\) 參考

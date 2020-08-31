@@ -3,15 +3,15 @@ title: 什麼是 Windows 虛擬桌面？ - Azure
 description: Windows 虛擬桌面的概觀。
 author: Heidilohr
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 003662beefcb2ee8f99a5f565ed680d406421a62
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002382"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661107"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什麼是 Windows 虛擬桌面？
 
@@ -46,7 +46,7 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
 
 您可以部署及管理虛擬桌面：
 
-* 使用 Windows 虛擬桌面 PowerShell 和 REST 介面，設定主機集區、建立應用程式群組、指派使用者，以及發佈資源。
+* 使用 Azure 入口網站、Windows 虛擬桌面 PowerShell 和 REST 介面，設定主機集區、建立應用程式群組、指派使用者，以及發佈資源。
 * 從單一主機集區發佈完整桌面或個別遠端應用程式、為不同的使用者集合建立個別的應用程式群組，或甚至將使用者指派給多個應用程式群組，以減少映像數目。
 * 如同您管理您的環境，使用內建委派的存取權來指派角色和收集診斷，以了解各種組態或使用者錯誤。
 * 使用新的診斷服務來進行錯誤疑難排解。
@@ -61,7 +61,7 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
 
 您需要進行 Windows 虛擬桌面的一些設定，才能讓使用者成功連線到其 Windows 桌面和應用程式。
 
-我們計畫為下列作業系統新增支援，因此，針對您打算部署的桌面和應用程式，請確定您的使用者有[適當的授權](https://azure.microsoft.com/pricing/details/virtual-desktop/)：
+我們支援下列作業系統，因此，針對您打算部署的桌面和應用程式，請確定您的使用者有[適當的授權](https://azure.microsoft.com/pricing/details/virtual-desktop/)：
 
 |OS|必要授權|
 |---|---|
@@ -71,11 +71,17 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
 
 您的基礎結構需要下列項目才能支援 Windows 虛擬桌面：
 
-* [Azure Active Directory](/azure/active-directory/)
-* 與 Azure Active Directory 同步的 Windows Server Active Directory。 您可以使用下列其中一項來進行設定：
-  * Azure AD Connect (適用於混合式組織)
-  * Azure AD Domain Services (適用於混合式雲端組織)
-* Azure 訂用帳戶，含有包含或已連線到 Windows Server Active Directory 的虛擬網路
+* [Azure Active Directory](/azure/active-directory/)。
+* 與 Azure Active Directory 同步的 Windows Server Active Directory。 您可以使用 Azure AD Connect (適用於混合式組織) 或 Azure AD Domain Services (適用於混合式或雲端組織) 來進行設定。
+  * 與 Azure Active Directory 同步的 Windows Server AD。 使用者來自 Windows Server AD，而 Windows 虛擬桌面 VM 會加入到 Windows Server AD 網域。
+  * 與 Azure Active Directory 同步的 Windows Server AD。 使用者來自 Windows Server AD，而 Windows 虛擬桌面 VM 會加入到 Azure AD Domain Services 網域。
+  * Azure AD Domain Services 網域。 使用者來自 Azure Active Directory，而 Windows 虛擬桌面 VM 會加入到 Azure AD Domain Services 網域。
+* Azure 訂用帳戶，其父代為相同的 Azure AD 租用戶，其中包含的虛擬網路包含或已連線到 Windows Server Active Directory 或 Azure AD DS 執行個體。
+
+要連線到 Windows 虛擬桌面的使用者需求：
+
+* 使用者必須來自與 Azure AD 連線的相同 Active Directory。 Windows 虛擬桌面不支援 B2B 或 MSA 帳戶。
+* 您用來訂閱 Windows 虛擬桌面的 UPN 必須存在於 VM 所加入的 Active Directory 網域。
 
 您為 Windows 虛擬桌面建立的 Azure 虛擬機器必須：
 
@@ -91,7 +97,7 @@ Windows 虛擬桌面包含您交付給使用者的 Windows 桌面與應用程式
 
 為了達到最佳效能，請確定您的網路符合下列需求：
 
-* 從用戶端的網路到主機集區部署所在 Azure 區域的來回行程 (RTT) 延遲應少於 150 毫秒。
+* 從用戶端的網路到主機集區部署所在 Azure 區域的來回行程 (RTT) 延遲應少於 150 毫秒。 使用[體驗估算器](https://azure.microsoft.com/services/virtual-desktop/assessment)來檢視您的連線健康情況和建議的 Azure 區域。
 * 當裝載桌面和應用程式的 VM 連線至管理服務時，網路流量可能會送到國家/地區以外。
 * 若要將網路效能最佳化，我們建議讓工作階段主機的 VM 共置在與管理服務相同的 Azure 區域中。
 
@@ -111,7 +117,7 @@ Windows 虛擬桌面包含您交付給使用者的 Windows 桌面與應用程式
 > [!IMPORTANT]
 > Windows 虛擬桌面目前不支援來自 Windows Store 的遠端桌面用戶端。 未來版本將增加此用戶端的支援。
 
-若要深入了解您必須解除封鎖以使用遠端用戶端的 URL，請參閱[安全 URL 清單](safe-url-list.md)。
+若要深入了解您必須解除封鎖以使用用戶端的 URL，請參閱[安全 URL 清單](safe-url-list.md)。
 
 ## <a name="supported-virtual-machine-os-images"></a>支援的虛擬機器 OS 映像
 
@@ -130,10 +136,10 @@ Windows 虛擬桌面不支援 x86 (32 位元)、Windows 10 Enterprise N 或 Wind
 
 |作業系統|Azure 映像庫|手動 VM 部署|Azure Resource Manager 範本整合|在 Azure Marketplace 上佈建主機集區|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 多工作階段，版本1903|是|是|是|是|
-|Windows 10 多工作階段，版本1809|是|是|否|否|
-|Windows 10 企業版，版本1903|是|是|是|是|
-|Windows 10 企業版，版本1809|是|是|否|否|
+|Windows 10 企業版 (多重工作階段) 2004 版|是|是|是|是|
+|Windows 10 企業版 (多重工作階段) 1909 版|是|是|是|是|
+|Windows 10 企業版 (多重工作階段) 1903 版|是|是|否|否|
+|Windows 10 企業版 (多重工作階段) 1809 版|是|是|否|否|
 |Windows 7 企業版|是|是|否|否|
 |Windows Server 2019|是|是|否|否|
 |Windows Server 2016|是|是|是|是|

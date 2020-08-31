@@ -1,22 +1,22 @@
 ---
-title: Azure Cache for Redis 的 azure 安全性基準
-description: Azure Cache for Redis 的 azure 安全性基準
+title: 適用于 Azure Cache for Redis 的 Azure 安全性基準
+description: 適用于 Azure Cache for Redis 的 Azure 安全性基準
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ea46a42fa8063aaf1d67c4f5ae0d2eef3a83fd5a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e22e7c1295747725cf40f1fd1b84b49ab6d6fbb2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242692"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071188"
 ---
-# <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Azure Cache for Redis 的 azure 安全性基準
+# <a name="azure-security-baseline-for-azure-cache-for-redis"></a>適用于 Azure Cache for Redis 的 Azure 安全性基準
 
-Azure Cache for Redis 的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
+適用于 Azure Cache for Redis 的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
 
 此服務的基準取自 [Azure 安全性效能評定 1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
@@ -28,11 +28,11 @@ Azure Cache for Redis 的 Azure 安全性基準包含可協助您改善部署安
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虛擬網路上使用網路安全性群組或 Azure 防火牆來保護資源
 
-**指引**：在虛擬網路中部署您的 Azure Cache for Redis 實例 (VNet) 。 VNet 是雲端中的私人網路。 當 Azure Cache for Redis 執行個體是以 VNet 設定時，它將無法公開定址，而只能從 VNet 中的虛擬機器和應用程式存取。
+**指導**方針：在虛擬網路中部署 Azure Cache for Redis 實例 (VNet) 。 VNet 是雲端中的私人網路。 當 Azure Cache for Redis 執行個體是以 VNet 設定時，它將無法公開定址，而只能從 VNet 中的虛擬機器和應用程式存取。
 
 您也可以指定具有開始和結束 IP 位址範圍的防火牆規則。 設定防火牆規則時，只有來自指定 IP 位址範圍的用戶端連線可以連接至快取。
 
-如何設定高階 Azure Cache for Redis 的虛擬網路支援：
+如何設定 Premium Azure Cache for Redis 的虛擬網路支援：
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet
 
@@ -46,7 +46,7 @@ https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：監視和記錄 VNet、子網路與 NIC 的設定和流量
 
-**指導**方針：當虛擬機器部署在與您的 Azure Cache for Redis 實例相同的虛擬網路中時，您可以使用網路安全性群組 (NSG) 來降低資料外泄的風險。 啟用 NSG 流量記錄，並將記錄傳送到 Azure 儲存體帳戶以進行流量審核。 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
+**指導**方針：當虛擬機器部署在與 Azure Cache for Redis 實例相同的虛擬網路時，您可以使用網路安全性群組 (NSG) 來降低資料遭到外泄的風險。 啟用 NSG 流量記錄，並將記錄傳送至 Azure 儲存體帳戶以進行流量審核。 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
 如何啟用 NSG 流量記錄： 
 
@@ -70,15 +70,15 @@ https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
 
-**指引**： azure 虛擬網路 (VNet) 部署為您的 azure Cache for Redis、子網、存取控制原則及其他功能提供增強的安全性和隔離，以進一步限制存取。 在 VNet 中部署時，Azure Cache for Redis 無法公開定址，而且只能從 VNet 內的虛擬機器和應用程式存取。
+**指導**方針： Azure 虛擬網路 (VNet) 部署為您的 Azure Cache for Redis 提供增強的安全性和隔離，以及子網、存取控制原則及其他功能，以進一步限制存取。 在 VNet 中部署時，Azure Cache for Redis 無法公開定址，且只能從 VNet 內的虛擬機器和應用程式存取。
 
-在與您的 Azure Cache for Redis 實例相關聯的 Vnet 上啟用 DDoS 保護標準，以防止分散式阻斷服務 (DDoS) 攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，以拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
+在與 Azure Cache for Redis 實例相關聯的 Vnet 上啟用 DDoS 保護標準，以防止分散式阻絕服務 (DDoS) 攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，以拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
 
-如何設定高階 Azure Cache for Redis 的虛擬網路支援：
+如何設定 Premium Azure Cache for Redis 的虛擬網路支援：
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet
 
-使用 Azure 入口網站管理 Azure DDoS 保護標準：
+使用 Azure 入口網站管理 Azure DDoS 保護 Standard：
 
 https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
@@ -88,7 +88,7 @@ https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5：記錄網路封包和流量記錄
 
-**指引**：當虛擬機器部署在與 Azure Cache for Redis 實例相同的虛擬網路中時，您可以使用網路安全性群組 (NSG) ，以降低資料外泄的風險。 啟用 NSG 流量記錄，並將記錄傳送到 Azure 儲存體帳戶以進行流量審核。 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
+**指導**方針：當虛擬機器部署在與 Azure Cache for Redis 實例相同的虛擬網路時，您可以使用網路安全性群組 (NSG) 來降低資料遭到外泄的風險。 啟用 NSG 流量記錄，並將記錄傳送至 Azure 儲存體帳戶以進行流量審核。 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
 如何啟用 NSG 流量記錄： 
 
@@ -104,9 +104,9 @@ https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統 (IDS/IPS)
 
-**指導**方針：搭配使用 azure Cache for Redis 與在 Azure App Service 或計算實例上執行的 web 應用程式時，請在 azure 虛擬網路 (VNet 中部署所有資源) 並使用 Azure Web 應用程式防火牆進行保護 (web) 上的 WAF 應用程式閘道。 將 WAF 設定為以「預防模式」執行。 防止模式會封鎖規則偵測到的入侵和攻擊。 攻擊者會收到「403 未經授權存取」例外狀況，且連線會關閉。 預防模式會將這類攻擊記錄在 WAF 記錄中。
+**指導**方針：當您使用 Azure Cache for Redis 在 Azure App Service 或計算實例上執行的 web 應用程式時，請在 Azure 虛擬網路內部署所有資源 (VNet) ，並使用 (web 應用程式閘道上的 Azure Web 應用程式防火牆) WAF 進行保護。 將 WAF 設定為以「防止模式」執行。 預防模式會封鎖規則偵測到的入侵和攻擊。 攻擊者會收到「403 未經授權存取」例外狀況，且連線會關閉。 預防模式會將這類攻擊記錄在 WAF 記錄中。
 
-或者，您也可以從支援使用承載檢查和/或異常偵測功能的識別碼/IP 功能的 Azure Marketplace 中選取供應專案。
+或者，您也可以從 Azure Marketplace 選取供應專案，以支援具有承載檢查和/或異常偵測功能的 IDS/IPS 功能。
 
 瞭解 Azure WAF 功能：
 
@@ -134,11 +134,11 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負荷降至最低
 
-**指導**方針：使用虛擬網路服務標籤，在 (NSG) 或 Azure 防火牆的網路安全性群組上定義網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 在規則的適當來源或目的地欄位中指定服務標籤名稱 (例如 ApiManagement)，即可允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
+**指導**方針：使用虛擬網路服務標籤來定義網路安全性群組 (NSG) 或 Azure 防火牆的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 在規則的適當來源或目的地欄位中指定服務標籤名稱 (例如 ApiManagement)，即可允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
 
-您也可以使用 (ASG) 的應用程式安全性群組，以協助簡化複雜的安全性設定。 Asg 可讓您將網路安全性設定為應用程式結構的自然擴充功能，讓您將虛擬機器分組，並根據這些群組定義網路安全性原則。
+您也可以使用 (ASG) 的應用程式安全性群組，協助簡化複雜的安全性設定。 Asg 可讓您將網路安全性設定為應用程式結構的自然擴充功能，讓您將虛擬機器分組，並定義以這些群組為基礎的網路安全性原則。
 
-虛擬網路服務標籤：
+虛擬網路服務標記：
 
 https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
@@ -152,13 +152,13 @@ https://docs.microsoft.com/azure/virtual-network/security-overview#application-s
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
-**指引**：使用 Azure 原則，為與您的 Azure Cache for Redis 實例相關的網路資源定義和實施標準安全性設定。 使用 "Redis" 和 "Microsoft" 命名空間中的 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure Cache for 實例的網路設定。 您也可以利用內建的原則定義，例如：
+**指導**方針：使用 Azure 原則來定義和執行與您的 Azure Cache for Redis 實例相關之網路資源的標準安全性設定。 使用 "Microsoft. Cache" 和 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對 Azure Cache for Redis 實例的網路設定進行審核或強制執行。 您也可以利用內建的原則定義，例如：
 
 應該只允許對 Redis Cache 的安全連線
 
 應啟用 DDoS 保護標準
 
-您也可以使用 Azure 藍圖，藉由在單一藍圖定義中封裝金鑰環境成品（例如 Azure Resource Manager (ARM) 範本、角色型存取控制 (RBAC) 和原則），以簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂閱、環境，以及透過版本控制來微調控制和管理。
+您也可以使用 Azure 藍圖，將金鑰環境成品（例如 Azure Resource Manager (ARM) 範本、Azure 角色型存取控制 (Azure RBAC) 和原則）封裝在單一藍圖定義中，以簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂閱、環境，以及透過版本控制來微調控制和管理。
 
 如何設定和管理 Azure 原則：
 
@@ -174,7 +174,7 @@ https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
-**指引**：使用與您的 Azure Cache for Redis 部署相關聯的網路資源標記，以邏輯方式將它們組織成分類法。
+**指導**方針：針對與您 Azure Cache for Redis 部署相關聯的網路資源使用標籤，以便以邏輯方式將它們組織成分類法。
 
 如何建立和使用標籤： 
 
@@ -186,7 +186,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
-**指引**：使用 azure 活動記錄來監視網路資源設定，並偵測與您的 Azure Cache for Redis 實例相關的網路資源變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
+**指導**方針：使用 Azure 活動記錄來監視網路資源設定，並偵測與 Azure Cache for Redis 實例相關之網路資源的變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
 
 如何檢視及擷取 Azure 活動記錄事件： 
 
@@ -206,7 +206,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
-**指引**： Microsoft 會維護用於 azure 資源（例如，azure Cache for Redis）記錄中時間戳記的時間來源。
+**指導**方針： Microsoft 會維護用於 Azure 資源的時間來源，例如記錄中時間戳記的 Azure Cache for Redis。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -214,9 +214,9 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
-**指引**：啟用 Azure 活動記錄診斷設定，並將記錄傳送到 Log Analytics 工作區、Azure 事件中樞或 Azure 儲存體帳戶進行封存。 活動記錄可讓您深入瞭解在控制平面層級的 Azure Cache for Redis 實例上執行的作業。 使用 Azure 活動記錄資料，您可以判斷任何寫入作業的「內容、物件和時間」， (PUT、POST、DELETE) 在 Azure Cache for Redis 實例的控制平面層級執行。
+**指引**：啟用 Azure 活動記錄診斷設定，並將記錄傳送到 Log Analytics 工作區、Azure 事件中樞或 Azure 儲存體帳戶進行封存。 活動記錄可讓您深入瞭解在控制平面層級的 Azure Cache for Redis 實例上所執行的作業。 您可以使用 Azure 活動記錄資料來判斷任何寫入作業的「內容、物件和時間」 (PUT、POST、DELETE) 在 Azure Cache for Redis 實例的控制平面層級執行。
 
-如何啟用 Azure 活動記錄的診斷設定：https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+如何啟用 Azure 活動記錄的診斷設定： https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -224,11 +224,11 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
-**指引**：啟用 Azure 活動記錄診斷設定，並將記錄傳送到 Log Analytics 工作區、Azure 事件中樞或 Azure 儲存體帳戶進行封存。 活動記錄可讓您深入瞭解在控制平面層級的 Azure Cache for Redis 實例上執行的作業。 使用 Azure 活動記錄資料，您可以判斷任何寫入作業的「內容、物件和時間」， (PUT、POST、DELETE) 在 Azure Cache for Redis 實例的控制平面層級執行。
+**指引**：啟用 Azure 活動記錄診斷設定，並將記錄傳送到 Log Analytics 工作區、Azure 事件中樞或 Azure 儲存體帳戶進行封存。 活動記錄可讓您深入瞭解在控制平面層級的 Azure Cache for Redis 實例上所執行的作業。 您可以使用 Azure 活動記錄資料來判斷任何寫入作業的「內容、物件和時間」 (PUT、POST、DELETE) 在 Azure Cache for Redis 實例的控制平面層級執行。
 
-雖然計量可以藉由啟用診斷設定來取得，但資料平面的 audit 記錄尚未提供給 Azure Cache for Redis。
+雖然可以藉由啟用診斷設定來取得計量，但資料平面上的 audit 記錄還無法用於 Azure Cache for Redis。
 
-如何啟用 Azure 活動記錄的診斷設定：https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+如何啟用 Azure 活動記錄的診斷設定： https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -244,11 +244,11 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
 
-**指引**：在 Azure 監視器中，根據貴組織的合規性規定，設定與您的 Azure Cache for Redis 實例相關聯之 log Analytics 工作區的記錄保留週期。
+**指導**方針：在 Azure 監視器中，根據您組織的合規性法規，為與您的 Azure Cache for Redis 實例相關聯的 log Analytics 工作區設定記錄保留期限。
 
-請注意，資料平面上的 audit 記錄尚未提供給 Azure Cache for Redis。
+請注意，資料平面上的 audit 記錄還無法供 Azure Cache for Redis。
 
-如何設定記錄檔保留參數：
+如何設定記錄保留參數：
 
 https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
@@ -258,13 +258,13 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#chan
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
-**指引**：啟用 Azure 活動記錄診斷設定，並將記錄傳送到 Log Analytics 工作區。 在 Log Analytics 中執行查詢，以搜尋詞彙、識別趨勢、分析模式，並根據可能針對 Azure Cache for Redis 所收集的活動記錄資料，提供許多其他深入解析。
+**指導**方針：啟用 Azure 活動記錄診斷設定，並將記錄傳送至 Log Analytics 工作區。 在 Log Analytics 中執行查詢，以搜尋詞彙、識別趨勢、分析模式，以及根據可能已針對 Azure Cache for Redis 收集的活動記錄資料，提供許多其他見解。
 
-請注意，資料平面上的 audit 記錄尚未提供給 Azure Cache for Redis。
+請注意，資料平面上的 audit 記錄還無法供 Azure Cache for Redis。
 
-如何啟用 Azure 活動記錄的診斷設定：https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+如何啟用 Azure 活動記錄的診斷設定： https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-如何在 Azure 監視器中收集和分析 Log Analytics 工作區中的 Azure 活動記錄：https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect
+如何在 Azure 監視器中收集和分析 Log Analytics 工作區中的 Azure 活動記錄： https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -272,11 +272,11 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#chan
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：啟用異常活動的警示
 
-**指引**：您可以設定，以根據與您的 Azure Cache for Redis 實例相關的計量和活動記錄來接收警示。 Azure 監視器可讓您設定警示，以傳送電子郵件通知、呼叫 webhook，或叫用 Azure 邏輯應用程式。
+**指導**方針：您可以設定，以根據與 Azure Cache for Redis 實例相關的計量和活動記錄來接收警示。 Azure 監視器可讓您設定警示以傳送電子郵件通知、呼叫 webhook，或叫用 Azure 邏輯應用程式。
 
-雖然計量可以藉由啟用診斷設定來取得，但資料平面的 audit 記錄尚未提供給 Azure Cache for Redis。
+雖然可以藉由啟用診斷設定來取得計量，但資料平面上的 audit 記錄還無法用於 Azure Cache for Redis。
 
-如何設定 Azure Cache for Redis 的警示：https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#alerts
+如何設定 Azure Cache for Redis 的警示： https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#alerts
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -284,7 +284,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#chan
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中化反惡意程式碼記錄
 
-**指導**方針：不適用;Azure Cache for Redis 不會處理或產生與反惡意程式碼相關的記錄。
+**指導**方針：不適用;Azure Cache for Redis 不會處理或產生反惡意程式碼的相關記錄。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -292,7 +292,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#chan
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：啟用 DNS 查詢記錄
 
-**指導**方針：不適用;Azure Cache for Redis 不會處理或產生 DNS 相關的記錄。
+**指導**方針：不適用;Azure Cache for Redis 不會處理或產生 DNS 相關記錄。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -312,11 +312,11 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#chan
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指導**方針： AZURE ACTIVE DIRECTORY (AD) 具有必須明確指派且可查詢的內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
+**指導**方針： AZURE ACTIVE DIRECTORY (AD) 具有必須明確指派且可供查詢的內建角色。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-如何使用 PowerShell 在 Azure AD 中取得目錄角色：https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+如何使用 PowerShell 在 Azure AD 中取得目錄角色： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員：https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
 **Azure 資訊安全中心監視**：是
 
@@ -324,13 +324,13 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#chan
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在適用的情況下變更預設密碼
 
-**指導**方針： Azure Cache for Redis 的控制平面存取是透過 AZURE ACTIVE DIRECTORY (AD) 來控制。 Azure AD 沒有預設密碼的概念。 
+**指導**方針： Azure Cache for Redis 的控制平面存取權是透過 AZURE ACTIVE DIRECTORY (AD) 來控制。 Azure AD 沒有預設密碼的概念。 
 
-Azure Cache for Redis 的資料平面存取是透過存取金鑰來控制。 連接到您的快取的用戶端會使用這些金鑰，而且可以隨時重新產生。
+Azure Cache for Redis 的資料平面存取權是透過存取金鑰來控制。 連接到您快取的用戶端會使用這些金鑰，而且可以隨時重新產生。
 
-不建議您在應用程式中建立預設密碼。 相反地，您可以將密碼儲存在 Azure Key Vault 中，然後使用 Azure Active Directory 來抓取它們。
+不建議您在應用程式中建立預設密碼。 相反地，您可以將密碼儲存在 Azure Key Vault 中，然後使用 Azure Active Directory 來取得它們。
 
-如何重新產生 Azure Cache for Redis 存取金鑰：https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings
+如何重新產生 Azure Cache for Redis 存取金鑰： https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -348,9 +348,9 @@ Azure Cache for Redis 的資料平面存取是透過存取金鑰來控制。 連
 
 - 具有擁有者權限的外部帳戶應該從您的訂用帳戶中移除
 
-如何使用 Azure 資訊安全中心來監視身分識別和存取 (預覽) ：https://docs.microsoft.com/azure/security-center/security-center-identity-access
+如何使用 Azure 資訊安全中心來監視身分識別和存取 (預覽) ： https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-如何使用 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何使用 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 **Azure 資訊安全中心監視**：是
@@ -359,9 +359,9 @@ Azure Cache for Redis 的資料平面存取是透過存取金鑰來控制。 連
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
-**指引**： Azure Cache for Redis 會使用存取金鑰來驗證使用者，而不支援在資料平面層級 (SSO) 的單一登入。 您可以透過 REST API 取得 Azure Cache for Redis 控制平面的存取權，並支援 SSO。 若要驗證，請將要求的授權標頭設定為從 Azure Active Directory 取得的 JSON Web 權杖。
+**指導**方針： Azure Cache for Redis 會使用存取金鑰來驗證使用者，且不支援在資料平面層級 (SSO) 的單一登入。 Azure Cache for Redis 的控制平面存取權可透過 REST API 取得，並支援 SSO。 若要驗證，請將要求的授權標頭設定為從 Azure Active Directory 取得的 JSON Web 權杖。
 
-瞭解 Azure Cache for Redis REST API：https://docs.microsoft.com/rest/api/redis/
+瞭解 Azure Cache for Redis REST API： https://docs.microsoft.com/rest/api/redis/
 
 了解使用 Azure AD 的 SSO： https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
@@ -414,7 +414,7 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：僅從核准的位置管理 Azure 資源
 
-**指引**：在 AZURE ACTIVE DIRECTORY (AD) 條件式存取中設定命名位置，以允許僅從 IP 位址範圍或國家/地區的特定邏輯群組進行存取。
+**指導**方針：在 AZURE ACTIVE DIRECTORY (AD 中設定命名位置) 條件式存取，只允許從 IP 位址範圍或國家/地區的特定邏輯群組進行存取。
 
 如何在 Azure 中設定具名位置： https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
@@ -426,7 +426,7 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **指引**：使用 Azure Active Directory (AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-Azure AD authentication 無法用來直接存取 Azure Cache for Redis 的資料平面，不過，Azure AD 認證可用於控制層級的管理 (也就是控制 Azure Cache for Redis 存取金鑰的 Azure 入口網站) 。
+Azure AD 驗證無法用來直接存取 Azure Cache for Redis 的資料平面，不過 Azure AD 的認證可用於控制平面層級的系統管理 (也就是 Azure 入口網站) ，以控制 Azure Cache for Redis 的存取金鑰。
 
 
 **Azure 資訊安全中心監視**：是
@@ -435,9 +435,9 @@ Azure AD authentication 無法用來直接存取 Azure Cache for Redis 的資料
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
-**指導**方針： AZURE ACTIVE DIRECTORY (AD) 會提供記錄，協助您探索過時的帳戶。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。 
+**指導**方針： AZURE ACTIVE DIRECTORY (AD) 提供記錄檔，以協助您探索過時的帳戶。 此外，使用 Azure 身分識別存取審核來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。 
 
-瞭解 Azure AD 報告：https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+瞭解 Azure AD 報告： https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
 如何使用 Azure 身分識別存取權檢閱： https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
@@ -447,13 +447,13 @@ Azure AD authentication 無法用來直接存取 Azure Cache for Redis 的資料
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：監視對已停用帳戶的存取嘗試
 
-**指導**方針：您可以存取 AZURE ACTIVE DIRECTORY (AD) 登入活動、audit 和風險事件記錄檔來源，讓您能夠與 Azure Sentinel 或協力廠商 SIEM 整合。
+**指導**方針：您可以存取 AZURE ACTIVE DIRECTORY (AD) 登入活動、audit 和風險事件記錄檔來源，讓您可以與 Azure Sentinel 或協力廠商 SIEM 整合。
 
-若要簡化此程式，您可以建立 Azure AD 使用者帳戶的診斷設定，並將 audit 記錄和登入記錄傳送到 Log Analytics 工作區。 您可以在 Log Analytics 中設定所需的記錄警示。
+您可以建立 Azure AD 使用者帳戶的診斷設定，並將審核記錄和登入記錄傳送至 Log Analytics 工作區，以簡化此程式。 您可以在 Log Analytics 中設定所需的記錄警示。
 
 如何將 Azure 活動記錄整合到 Azure 監視器中： https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-如何 Azure Sentinel：https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+如何在面板上 Azure Sentinel： https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -461,11 +461,11 @@ Azure AD authentication 無法用來直接存取 Azure Cache for Redis 的資料
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差警示
 
-**指導**方針：對於控制平面上的帳戶登入行為偏差，請使用 AZURE ACTIVE DIRECTORY (AD) Identity Protection 和風險偵測功能，針對偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
+**指導**方針：若要控制平面上的帳戶登入行為偏差，請使用 AZURE ACTIVE DIRECTORY (AD) Identity Protection 和風險偵測功能，以對偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
 如何檢視 Azure AD 風險性登入： https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-如何設定和啟用身分識別保護風險原則：https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+如何設定及啟用 Identity Protection 風險原則： https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
 如何讓 Azure Sentinel 上線： https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
@@ -475,7 +475,7 @@ Azure AD authentication 無法用來直接存取 Azure Cache for Redis 的資料
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支援案例期間為 Microsoft 提供相關客戶資料的存取權
 
-**指引**：尚未提供;Azure Cache for Redis 尚不支援客戶加密箱。
+**指導**：尚未提供;Azure Cache for Redis 尚不支援客戶加密箱。
 
 客戶加密箱支援的服務清單：
 
@@ -503,7 +503,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 Azure Cache for Redis 實例應以虛擬網路/子網分隔並適當地標記。 （選擇性）使用 Azure Cache for Redis 防火牆來定義規則，讓只有來自指定 IP 位址範圍的用戶端連線能夠連線到快取。
+**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 Azure Cache for Redis 實例應以虛擬網路/子網分隔並適當地標記。 您也可以選擇使用 Azure Cache for Redis 防火牆來定義規則，如此一來，只有來自指定 IP 位址範圍的用戶端連線才能連接至快取。
 
 如何建立其他 Azure 訂用帳戶： 
 
@@ -513,7 +513,7 @@ https://docs.microsoft.com/azure/billing/billing-create-subscription
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
-如何將 Azure Cache for Redis 部署到 Vnet：
+如何將 Azure Cache for Redis 部署至 Vnet：
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet
 
@@ -531,9 +531,9 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的敏感性資訊傳輸
 
-**指引**：尚未提供;Azure Cache for Redis 尚無法使用資料識別、分類及遺失防護功能。
+**指導**：尚未提供;Azure Cache for Redis 尚無法使用資料識別、分類和遺失防護功能。
 
-Microsoft 會管理 Azure Cache for Redis 的基礎結構，並已實作為嚴格的控制，以避免遺失或公開客戶資料。
+Microsoft 管理 Azure Cache for Redis 的基礎結構，並已實行嚴格的控制，以防止客戶資料遺失或洩漏。
 
 了解 Azure 中的客戶資料保護： https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
@@ -543,13 +543,13 @@ Microsoft 會管理 Azure Cache for Redis 的基礎結構，並已實作為嚴�
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
-**指引**： Azure Cache for Redis 預設需要 TLS 加密的通訊。 目前支援 TLS 版本1.0、1.1 和1.2。 不過，TLS 1.0 和1.1 位於整個產業的淘汰路徑，因此，請盡可能使用 TLS 1.2。 如果您的用戶端程式庫或工具不支援 TLS，則可以透過 Azure 入口網站或管理 Api 來啟用未加密的連線。 在無法進行加密連線的情況下，建議將快取和用戶端應用程式放入虛擬網路中。
+**指導**方針： Azure Cache for Redis 預設需要 TLS 加密通訊。 目前支援 TLS 版本1.0、1.1 和1.2。 不過，TLS 1.0 和1.1 都是在整個產業淘汰的路徑上，因此請盡可能使用 TLS 1.2。 如果您的用戶端程式庫或工具不支援 TLS，則啟用未加密的連接可透過 Azure 入口網站或管理 Api 來完成。 在無法進行加密連接的情況下，建議您將快取和用戶端應用程式放入虛擬網路中。
 
-瞭解 Azure Cache for Redis 傳輸中的加密：
+瞭解 Azure Cache for Redis 傳輸中加密：
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-best-practices
 
-瞭解 Vnet 快取案例中使用的必要端口：
+瞭解 Vnet 快取案例中所使用的必要端口：
 
 https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet#outbound-port-requirements
 
@@ -559,7 +559,7 @@ https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用作用中探索工具來識別敏感性資料
 
-**指引**： Azure Cache for Redis 尚無法使用資料識別、分類及遺失防護功能。 標記包含敏感資訊的實例，並視需要進行協力廠商解決方案，以符合規範目的。
+**指導**方針： Azure Cache for Redis 尚無法使用資料識別、分類和遺失防護功能。 標記包含敏感性資訊的實例，並視需要執行協力廠商解決方案，以符合合規性需求。
 
 針對 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力防範客戶資料外洩和暴露。 為確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制和功能。
 
@@ -571,9 +571,9 @@ https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指引**：使用 AZURE ACTIVE DIRECTORY (AAD) 以角色為基礎的存取控制 (RBAC) 控制 Azure Cache for Redis 控制平面的存取， (也就是 Azure 入口網站) 。 
+**指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來控制對 Azure Cache for Redis 控制平面的存取 (即 Azure 入口網站) 。 
 
-如何在 Azure 中設定 RBAC： 
+如何設定 Azure RBAC：
 
 https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -585,9 +585,9 @@ https://docs.microsoft.com/azure/role-based-access-control/role-assignments-port
 
 **指引**：不適用，這項建議主要用於計算資源。
 
-Microsoft 會管理 Azure Cache for Redis 的基礎結構，並已實作為嚴格的控制，以避免遺失或公開客戶資料。
+Microsoft 管理 Azure Cache for Redis 的基礎結構，並已實行嚴格的控制，以防止客戶資料遺失或洩漏。
 
-瞭解 Azure 中的客戶資料保護：
+了解 Azure 中的客戶資料保護： 
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
@@ -597,17 +597,17 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
-**指引**： Azure Cache for Redis 會將客戶資料儲存在記憶體中，並同時由 Microsoft 所實行的許多控制項保護，但預設不會加密記憶體。 如果您的組織需要，請在儲存于 Azure Cache for Redis 之前將內容加密。
+**指導**方針： Azure Cache for Redis 會將客戶資料儲存在記憶體中，而且在受到 Microsoft 所執行的許多控制項的高度保護下，預設不會加密記憶體。 如果您的組織需要的話，請先將內容加密，然後再儲存在 Azure Cache for Redis 中。
 
-如果使用「Azure Redis 快取」功能「Redis 資料持續性」，資料會傳送至您所擁有和管理的 Azure 儲存體帳戶。 您可以在快取建立期間，以及在現有高階快取的 [資源] 功能表上，設定 [新的 Azure Cache for Redis] 分頁的持續性。
+如果使用「Redis 資料持續性」 Azure Cache for Redis 功能，資料會傳送至您所擁有和管理的 Azure 儲存體帳戶。 您可以在快取建立期間，以及在現有高階快取的 [資源] 功能表上，設定 [新增 Azure Cache for Redis] 分頁的持續性。
 
-Azure 儲存體中的資料會使用256位 AES 加密（可用的最強區塊密碼之一），以透明的方式進行加密和解密，且符合 FIPS 140-2 標準。 無法停用 Azure 儲存體加密。 您可以依賴 Microsoft 管理的金鑰來加密您的儲存體帳戶，也可以使用您自己的金鑰來管理加密。
+Azure 儲存體中的資料會以透明的方式使用256位 AES 加密（可用的最強區塊編碼器之一）進行加密和解密，並符合 FIPS 140-2 規範。 無法停用 Azure 儲存體加密。 您可以依賴 Microsoft 管理的金鑰來加密您的儲存體帳戶，也可以使用您自己的金鑰來管理加密。
 
-如何設定 Azure Cache for Redis 中的持續性：https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-persistence
+如何在 Azure Cache for Redis 中設定持續性： https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-persistence
 
-瞭解 Azure 儲存體帳戶的加密：https://docs.microsoft.com/azure/storage/common/storage-service-encryption
+瞭解 Azure 儲存體帳戶的加密： https://docs.microsoft.com/azure/storage/common/storage-service-encryption
 
-瞭解 Azure 客戶資料保護：https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+瞭解 Azure 客戶資料保護： https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -615,7 +615,7 @@ Azure 儲存體中的資料會使用256位 AES 加密（可用的最強區塊密
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：針對重要 Azure 資源的變更留下記錄和發出警示
 
-**指導**方針：使用 Azure 監視器搭配 azure 活動記錄，以針對 azure Cache for Redis 的生產實例和其他重要或相關資源進行變更時，建立警示。
+**指導**方針：使用 Azure 監視器搭配 Azure 活動記錄，以針對 Azure Cache for Redis 和其他重要或相關資源的生產實例進行變更時，建立警示。
 
 如何建立 Azure 活動記錄事件的警示： 
 
@@ -631,11 +631,11 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
-**指導**方針：請遵循 Azure 資訊安全中心保護您的 Azure Cache for Redis 實例和相關資源的建議。
+**指導**方針：遵循 Azure 資訊安全中心保護 Azure Cache for Redis 實例和相關資源的建議。
 
 Microsoft 會在支援 Azure Cache for Redis 的基礎系統上執行弱點管理。
 
-瞭解 Azure 資訊安全中心建議：https://docs.microsoft.com/azure/security-center/recommendations-reference
+瞭解 Azure 資訊安全中心建議： https://docs.microsoft.com/azure/security-center/recommendations-reference
 
 **Azure 資訊安全中心監視**：是
 
@@ -707,9 +707,9 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
-**指引**：在適當的情況下，使用標記、管理群組和個別訂用帳戶來組織和追蹤 Azure Cache for Redis 實例和相關資源。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
+**指導**方針：使用標記、管理群組和個別的訂用帳戶（如果適當）來組織和追蹤 Azure Cache for Redis 的實例和相關資源。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
-此外，使用 Azure 原則來對可在客戶訂用帳戶中建立的資源類型（使用下列內建原則定義）進行限制 (s) ：
+此外，您也可以使用下列內建原則定義，使用 Azure 原則對可在客戶訂用帳戶 () s 中建立的資源類型進行限制：
 
 - 不允許的資源類型
 
@@ -741,7 +741,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 允許的資源類型
 
-此外，使用 Azure Resource Graph 來查詢/探索訂用帳戶 (s) 內的資源。
+此外，您也可以使用 Azure Resource Graph 來查詢/探索訂用帳戶 () 中的資源。
 
 如何設定和管理 Azure 原則： 
 
@@ -809,7 +809,7 @@ https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6.11：透過指令碼限制使用者與 Azure Resource Manager 互動的能力
 
-**指引**.. 設定 Azure 條件式存取，以限制使用者能夠透過針對「Microsoft Azure 管理」應用程式設定「封鎖存取」的方式，與 AZURE RESOURCE MANAGER (ARM) 互動。
+**指導**方針：設定 Azure 條件式存取，藉由設定「Microsoft Azure 管理」應用程式的「封鎖存取」，來限制使用者與 AZURE RESOURCE MANAGER (ARM) 互動的能力。
 
 如何設定條件式存取以封鎖對 ARM 的存取：
 
@@ -841,7 +841,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
-**指導**方針：使用 Azure 原則，為您的 Azure Cache for Redis 實例定義及執行標準安全性設定。 使用 "Redis" 命名空間中的 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure Cache for 實例的設定。 您也可以使用與您的 Azure Cache for Redis 實例相關的內建原則定義，例如：
+**指導**方針：使用 Azure 原則定義和執行 Azure Cache for Redis 實例的標準安全性設定。 使用 "Microsoft. Cache" 命名空間中 Azure 原則別名來建立自訂原則，以對 Azure Cache for Redis 實例的設定進行審核或強制執行。 您也可以使用與 Azure Cache for Redis 實例相關的內建原則定義，例如：
 
 應該只允許對 Redis Cache 的安全連線
 
@@ -883,7 +883,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
-**指導**方針：如果您使用 Azure Cache for Redis 實例和相關資源的自訂 Azure 原則定義或 Azure Resource Manager 範本，請使用 Azure Repos 來安全地儲存和管理您的程式碼。
+**指導**方針：如果您的 Azure Cache for Redis 實例和相關資源使用自訂 Azure 原則定義或 Azure Resource Manager 範本，請使用 Azure Repos 安全地儲存和管理您的程式碼。
 
 如何在 Azure DevOps 中儲存程式碼： https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
@@ -903,7 +903,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7.7：部署系統設定管理工具
 
-**指引**：在 "Microsoft. Cache" 命名空間中使用 Azure 原則別名來建立自訂原則，以警示、審查和強制執行系統設定。 此外，開發流程和管線以管理原則例外狀況。
+**指導**方針：使用 "Microsoft. Cache" 命名空間中 Azure 原則別名來建立自訂原則，以警示、審核和強制執行系統組態。 此外，開發流程和管線以管理原則例外狀況。
 
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -921,7 +921,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9：為 Azure 服務實作自動化的設定監視
 
-**指引**：在 "Microsoft. Cache" 命名空間中使用 Azure 原則別名來建立自訂原則，以警示、審查和強制執行系統設定。 使用 Azure 原則 [audit]、[deny] 和 [deploy if not 存在] 自動強制執行 Azure Cache for Redis 實例和相關資源的設定。
+**指導**方針：使用 "Microsoft. Cache" 命名空間中 Azure 原則別名來建立自訂原則，以警示、審核和強制執行系統組態。 使用 Azure 原則 [audit]、[deny] 和 [deploy if not 存在]，自動強制執行 Azure Cache for Redis 實例和相關資源的設定。
 
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -939,7 +939,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 祕密
 
-**指引**：針對在 Azure App Service 用來存取 azure Cache for Redis 實例的 azure 虛擬機器或 web 應用程式，請使用受控服務識別搭配 Azure Key Vault，以簡化並保護 azure Cache for Redis 秘密管理。 請確定已啟用 Key Vault 虛刪除。
+**指導**方針：適用于在 Azure App Service 上執行的 Azure 虛擬機器或 web 應用程式可用來存取您的 Azure Cache for Redis 實例，請使用受控服務識別搭配 Azure Key Vault 以簡化 Azure Cache for Redis 秘密管理的安全。 確定已啟用 Key Vault 虛刪除。
 
 如何與 Azure 受控識別整合： 
 
@@ -959,9 +959,9 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
-**指引**：針對在 Azure App Service 用來存取 azure Cache for Redis 實例的 azure 虛擬機器或 web 應用程式，請使用受控服務識別搭配 Azure Key Vault，以簡化並保護 azure Cache for Redis 秘密管理。 確保已啟用 Key Vault 虛刪除。
+**指導**方針：適用于在 Azure App Service 上執行的 Azure 虛擬機器或 web 應用程式可用來存取您的 Azure Cache for Redis 實例，請使用受控服務識別搭配 Azure Key Vault 以簡化 Azure Cache for Redis 秘密管理的安全。 確保已啟用 Key Vault 虛刪除。
 
-在 Azure Active Directory 中使用受控識別，以自動管理的身分識別提供 Azure 服務。 受控識別可讓您向任何支援 AAD 驗證的服務進行驗證，包括 Azure Key Vault，而不需要您程式碼中的任何認證。
+使用受控識別，在 Azure Active Directory 中為 Azure 服務提供自動管理的身分識別。 受控識別可讓您向任何支援 AAD 驗證的服務進行驗證，包括 Azure Key Vault，而不需要在您的程式碼中提供任何認證。
 
 如何設定受控識別： 
 
@@ -1001,7 +1001,7 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
-**指引**：在支援 azure 服務 (的基礎主機上啟用 Microsoft 反惡意程式碼，例如 azure Cache for Redis) ，但不會對客戶內容執行。
+**指導**方針：支援 Azure 服務的基礎主機上已啟用 Microsoft 反惡意程式碼 (例如 Azure Cache for Redis) ，但不會對客戶內容執行。
 
 預先掃描要上傳至非計算 Azure 資源的任何內容，例如 App Service、Data Lake Storage、Blob 儲存體、適用於 PostgreSQL 的 Azure 資料庫等。Microsoft 無法存取這些執行個體中的資料。
 
@@ -1025,9 +1025,9 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
-**指引**：啟用 Redis 持續性。 Redis 永續性可讓您保存儲存在 Redis 中的資料。 您也可以擷取快照和備份資料，以在硬體失敗時載入。 這是優於基本或標準層的重大優勢，基本或標準層的所有資料是儲存在記憶體中，若發生快取節點故障的失敗，資料可能會遺失。
+**指導**方針：啟用 Redis 持續性。 Redis 永續性可讓您保存儲存在 Redis 中的資料。 您也可以擷取快照和備份資料，以在硬體失敗時載入。 這是優於基本或標準層的重大優勢，基本或標準層的所有資料是儲存在記憶體中，若發生快取節點故障的失敗，資料可能會遺失。
 
-您也可以使用 Azure Cache for Redis 匯出。 匯出可讓您將儲存在 Azure Cache for Redis 中的資料匯出至與 Redis 相容的 RDB 檔案。 您可以使用這項功能，將資料從一個 Azure Cache for Redis 執行個體移到另一個執行個體，或移到另一個 Redis 伺服器。 在匯出過程中，會在裝載 Azure Cache for Redis 伺服器實例的虛擬機器上建立暫存檔案，並將該檔案上傳至指定的儲存體帳戶。 當匯出作業完成時的狀態為成功或失敗時，都會刪除暫存檔案。
+您也可以使用 Azure Cache for Redis 匯出。 匯出可讓您將儲存在 Azure Cache for Redis 中的資料匯出至與 Redis 相容的 RDB 檔案。 您可以使用這項功能，將資料從一個 Azure Cache for Redis 執行個體移到另一個執行個體，或移到另一個 Redis 伺服器。 在匯出過程中，會在主控 Azure Cache for Redis server 實例的虛擬機器上建立暫存檔案，並將檔案上傳至指定的儲存體帳戶。 當匯出作業完成時的狀態為成功或失敗時，都會刪除暫存檔案。
 
 如何啟用 Redis 持續性：
 
@@ -1043,11 +1043,11 @@ https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-import-expor
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份，並備份客戶管理的任何金鑰
 
-**指引**：啟用 Redis 持續性。 Redis 永續性可讓您保存儲存在 Redis 中的資料。 您也可以擷取快照和備份資料，以在硬體失敗時載入。 這是優於基本或標準層的重大優勢，基本或標準層的所有資料是儲存在記憶體中，若發生快取節點故障的失敗，資料可能會遺失。
+**指導**方針：啟用 Redis 持續性。 Redis 永續性可讓您保存儲存在 Redis 中的資料。 您也可以擷取快照和備份資料，以在硬體失敗時載入。 這是優於基本或標準層的重大優勢，基本或標準層的所有資料是儲存在記憶體中，若發生快取節點故障的失敗，資料可能會遺失。
 
-您也可以使用 Azure Cache for Redis 匯出。 匯出可讓您將儲存在 Azure Cache for Redis 中的資料匯出至與 Redis 相容的 RDB 檔案。 您可以使用這項功能，將資料從一個 Azure Cache for Redis 執行個體移到另一個執行個體，或移到另一個 Redis 伺服器。 在匯出過程中，會在裝載 Azure Cache for Redis 伺服器實例的虛擬機器上建立暫存檔案，並將該檔案上傳至指定的儲存體帳戶。 當匯出作業完成時的狀態為成功或失敗時，都會刪除暫存檔案。
+您也可以使用 Azure Cache for Redis 匯出。 匯出可讓您將儲存在 Azure Cache for Redis 中的資料匯出至與 Redis 相容的 RDB 檔案。 您可以使用這項功能，將資料從一個 Azure Cache for Redis 執行個體移到另一個執行個體，或移到另一個 Redis 伺服器。 在匯出過程中，會在主控 Azure Cache for Redis server 實例的虛擬機器上建立暫存檔案，並將檔案上傳至指定的儲存體帳戶。 當匯出作業完成時的狀態為成功或失敗時，都會刪除暫存檔案。
 
-如果使用 Azure Key Vault 來儲存 Azure Cache for Redis 實例的認證，請確保金鑰的定期自動備份。
+如果使用 Azure Key Vault 儲存 Azure Cache for Redis 實例的認證，請務必定期自動備份您的金鑰。
 
 如何啟用 Redis 持續性：
 
@@ -1067,7 +1067,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvau
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：驗證所有備份，包括客戶管理的金鑰
 
-**指引**：使用 Azure Cache for Redis 匯入。 匯入可以用來從任何雲端或環境中執行的 Redis 伺服器帶入 Redis 相容的 RDB 檔案，包括在 Linux、Windows 上執行的 Redis，或任何雲端提供者（例如 Amazon Web Services 和其他）。 匯入資料是使用預先填入資料建立快取的輕鬆方式。 在進行匯入程序的期間，Azure Cache for Redis 會從 Azure 儲存體將 RDB 檔案載入記憶體，然後將金鑰插入快取中。
+**指導**方針：使用 Azure Cache for Redis 匯入。 匯入可以用來從任何雲端或環境中執行的 Redis 伺服器（包括在 Linux、Windows 上執行的 Redis，或任何雲端提供者，例如 Amazon Web Services 等），帶入 Redis 相容 RDB 檔案。 匯入資料是使用預先填入資料建立快取的輕鬆方式。 在進行匯入程序的期間，Azure Cache for Redis 會從 Azure 儲存體將 RDB 檔案載入記憶體，然後將金鑰插入快取中。
 
 定期測試 Azure Key Vault 秘密的資料還原。
 
@@ -1085,9 +1085,9 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰受到保護
 
-**指引**： Redis 匯出和 Redis 持續性中的 Azure Cache for Redis 備份會儲存在您選取的 Azure 儲存體帳戶中。 Azure 儲存體中的資料會使用256位 AES 加密（可用的最強區塊密碼之一），以透明的方式進行加密和解密，且符合 FIPS 140-2 標準。 無法停用 Azure 儲存體加密。 您可以依賴 Microsoft 管理的金鑰來加密您的儲存體帳戶，也可以使用您自己的金鑰來管理加密。
+**指導**方針： Redis 匯出和 Redis 持續性的 Azure Cache for Redis 備份會儲存在您選取的 Azure 儲存體帳戶內。 Azure 儲存體中的資料會以透明的方式使用256位 AES 加密（可用的最強區塊編碼器之一）進行加密和解密，並符合 FIPS 140-2 規範。 無法停用 Azure 儲存體加密。 您可以依賴 Microsoft 管理的金鑰來加密您的儲存體帳戶，也可以使用您自己的金鑰來管理加密。
 
-瞭解 Azure 儲存體帳戶的加密：https://docs.microsoft.com/azure/storage/common/storage-service-encryption
+瞭解 Azure 儲存體帳戶的加密： https://docs.microsoft.com/azure/storage/common/storage-service-encryption
 
 **Azure 資訊安全中心監視**：是
 
