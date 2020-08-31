@@ -157,8 +157,8 @@ ms.locfileid: "86085084"
 | [sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database) |伺服器 |顯示目前的伺服器層級 IP 防火牆規則 |
 | [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database) |伺服器 |建立或更新伺服器層級 IP 防火牆規則 |
 | [sp_delete_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database) |伺服器 |移除伺服器層級 IP 防火牆規則 |
-| [sys.database_firewall_rules](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database) |資料庫 |顯示目前的伺服器層級 IP 防火牆規則 |
-| [sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) |資料庫 |建立或更新伺服器層級 IP 防火牆規則 |
+| [sys.database_firewall_rules](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database) |資料庫 |顯示目前的資料庫層級 IP 防火牆規則 |
+| [sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) |資料庫 |建立或更新資料庫層級 IP 防火牆規則 |
 | [sp_delete_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database) |資料庫 |移除資料庫層級 IP 防火牆規則 |
 
 下列範例會審查現有的規則、在*Contoso*伺服器上啟用 ip 位址範圍，並刪除 ip 防火牆規則：
