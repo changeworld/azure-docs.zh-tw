@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 6be397631621c727bb8979df2ee8eec3aca43096
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0c37c8f108e9bcbb827c05242d8863994dfc64cf
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799361"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177086"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>在本機上對 PowerShell 進行 Azure Functions 調試
 
@@ -65,6 +65,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 ## <a name="set-the-attach-point"></a>設定附加點
 
 若要對任何 PowerShell 函式進行錯用，必須停止函式，才能附加偵錯工具。 此 `Wait-Debugger` Cmdlet 會停止執行，並等候偵錯工具。
+
+>[!NOTE]
+>使用 PowerShell 7 時，您不需要 `Wait-Debugger` 在程式碼中新增呼叫。
 
 您只需要在 `Wait-Debugger` 語句的正上方新增對 Cmdlet 的呼叫，如下所示 `if` ：
 

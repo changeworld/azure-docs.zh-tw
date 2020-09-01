@@ -3,12 +3,12 @@ title: 管理及監視 Azure VM 上的 SQL Server Db
 description: 本文說明如何管理和監視在 Azure VM 上執行的 SQL Server 資料庫。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 26a1a6cf7bc011edce61a8bb60926dad2cb29a16
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826628"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146516"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和監視備份的 SQL Server 資料庫
 
@@ -55,7 +55,7 @@ Azure 備份會在入口網站中顯示 **備份作業** 下的所有已排程�
 
 - 所有復原點會永遠保持不變，而且所有的剪除都會停止保護，但保留資料。
 - 您需支付受保護執行個體和已使用儲存體的費用。 如需詳細資訊，請參閱 [Azure 備份服務定價](https://azure.microsoft.com/pricing/details/backup/)。
-- 如果您刪除資料來源，但沒有停止備份，新的備份將會失敗。 舊的復原點會根據原則到期，但最後一個復原點會一直保留，直到您停止備份並刪除資料為止。
+- 如果您刪除資料來源，但沒有停止備份，新的備份將會失敗。 舊的復原點將會根據原則到期，但在您停止備份並刪除資料之前，一律會保留最新的復原點。
 
 若要停止保護資料庫：
 

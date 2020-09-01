@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/01/2020
+ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 0a504285b2d79ba1386bcd13dd72fc3faec202ff
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 73f426fdcc020320989f0d09410066b66a131cfa
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055646"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177273"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽) 
 
@@ -29,14 +29,14 @@ ms.locfileid: "89055646"
 本文說明您可以遵循的基本步驟，將訂用帳戶轉移至不同的 Azure AD 目錄，並在傳輸之後重新建立一些資源。
 
 > [!NOTE]
-> 針對 Azure CSP 訂閱，不支援變更訂用帳戶的 Azure AD 目錄。
+> 針對 (CSP) 訂用帳戶的 Azure 雲端服務提供者，不支援變更訂用帳戶的 Azure AD 目錄。
 
 ## <a name="overview"></a>概觀
 
 將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄是必須謹慎規劃和執行的複雜程式。 許多 Azure 服務都需要安全性主體 (身分識別) ，才能正常運作或甚至管理其他 Azure 資源。 本文嘗試涵蓋大部分相依于安全性主體的 Azure 服務，但不是完整的。
 
 > [!IMPORTANT]
-> 在某些案例中，傳輸訂用帳戶可能需要停機才能完成此程式。 需要謹慎規劃，以評估您的遷移是否需要停機時間。
+> 在某些案例中，傳輸訂用帳戶可能需要停機才能完成此程式。 需要謹慎規劃，以評估您的傳輸是否需要停機時間。
 
 下圖顯示將訂用帳戶轉移至不同目錄時必須遵循的基本步驟。
 
@@ -73,7 +73,7 @@ ms.locfileid: "89055646"
 | 自訂角色 | 是 | 是 | [列出自訂角色](#save-custom-roles) | 所有自訂角色都會永久刪除。 您必須重新建立自訂角色和任何角色指派。 |
 | 系統指派的受控識別 | 是 | 是 | [列出受控識別](#list-role-assignments-for-managed-identities) | 您必須停用並重新啟用受控識別。 您必須重新建立角色指派。 |
 | 使用者指派的受控識別 | 是 | 是 | [列出受控識別](#list-role-assignments-for-managed-identities) | 您必須刪除、重新建立，然後將受控識別附加至適當的資源。 您必須重新建立角色指派。 |
-| Azure 金鑰保存庫 | 是 | 是 | [列出 Key Vault 存取原則](#list-other-known-resources) | 您必須更新與金鑰保存庫相關聯的租使用者識別碼。 您必須移除並新增新的存取原則。 |
+| Azure 金鑰保存庫 | 是 | 是 | [列出 Key Vault 存取原則](#list-key-vaults) | 您必須更新與金鑰保存庫相關聯的租使用者識別碼。 您必須移除並新增新的存取原則。 |
 | 已啟用 Azure AD authentication 整合的 Azure SQL 資料庫 | 是 | 否 | [使用 Azure AD authentication 檢查 Azure SQL 資料庫](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
 | Azure 儲存體和 Azure Data Lake Storage Gen2 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
 | Azure Data Lake Storage Gen1 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
@@ -84,10 +84,10 @@ ms.locfileid: "89055646"
 | Azure Active Directory Domain Services | 是 | 否 |  |  |
 | 應用程式註冊 | 是 | 是 |  |  |
 
-> [!IMPORTANT]
-> 如果您對資源（例如儲存體帳戶或 SQL 資料庫）使用待用加密，且資源相依于 *不* 在所要傳輸訂用帳戶中的金鑰保存庫，您可能會收到無法復原的錯誤。 在此情況下，請使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免發生無法復原的錯誤。
+> [!WARNING]
+> 如果您針對資源（例如儲存體帳戶或 SQL database）使用待用資料加密，但其相依于金鑰保存庫，但該金鑰保存庫 **不** 在要傳輸的相同訂用帳戶中，則可能會導致無法復原的情況。 如果您有這種情況，您應該採取步驟來使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免此無法復原的情況。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要完成這些步驟，您將需要：
 
@@ -221,8 +221,8 @@ ms.locfileid: "89055646"
 
 當您建立金鑰保存庫時，它會自動系結至其建立所在之訂用帳戶的預設 Azure Active Directory 租使用者識別碼。 所有存取原則項目也會繫結到此租用戶識別碼。 如需詳細資訊，請參閱 [將 Azure Key Vault 移至另一個訂](../key-vault/general/move-subscription.md)用帳戶。
 
-> [!IMPORTANT]
-> 如果您對資源（例如儲存體帳戶或 SQL 資料庫）使用待用加密，且資源相依于 *不* 在所要傳輸訂用帳戶中的金鑰保存庫，您可能會收到無法復原的錯誤。 在此情況下，請使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免發生無法復原的錯誤。
+> [!WARNING]
+> 如果您針對資源（例如儲存體帳戶或 SQL database）使用待用資料加密，但其相依于金鑰保存庫，但該金鑰保存庫 **不** 在要傳輸的相同訂用帳戶中，則可能會導致無法復原的情況。 如果您有這種情況，您應該採取步驟來使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免此無法復原的情況。
 
 - 如果您有金鑰保存庫，請使用 [az keyvault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) 來列出存取原則。 如需詳細資訊，請參閱 [使用存取控制原則提供 Key Vault 驗證](../key-vault/key-vault-group-permissions-for-apps.md)。
 
@@ -232,7 +232,7 @@ ms.locfileid: "89055646"
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>列出具有 Azure AD authentication 的 Azure SQL 資料庫
 
-- 使用 [az sql server ad-admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) 和 [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) extension 來查看您是否使用具有 AZURE AD authentication 的 Azure sql 資料庫。 如需詳細資訊，請參閱 [設定和管理使用 SQL 的 Azure Active Directory 驗證](../azure-sql/database/authentication-aad-configure.md)。
+- 使用 [az sql server ad-admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) 和 [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) 擴充功能來查看您是否使用已啟用 Azure AD AUTHENTICATION 整合的 Azure sql database。 如需詳細資訊，請參閱 [設定和管理使用 SQL 的 Azure Active Directory 驗證](../azure-sql/database/authentication-aad-configure.md)。
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -262,16 +262,21 @@ ms.locfileid: "89055646"
     --subscriptions $subscriptionId --output table
     ```
 
-## <a name="step-2-transfer-billing-ownership"></a>步驟2：轉移帳單擁有權
+## <a name="step-2-transfer-the-subscription"></a>步驟2：轉移訂用帳戶
 
-在此步驟中，您會將訂用帳戶的帳單擁有權從來原始目錄轉移至目標目錄。
+在此步驟中，您會將訂用帳戶從來原始目錄傳送至目標目錄。 這些步驟會根據您是否也要轉移帳單擁有權而有所不同。
 
 > [!WARNING]
-> 當您轉移訂用帳戶的帳單擁有權時，來原始目錄中的所有角色指派都會 **永久** 刪除，而且無法還原。 轉移訂用帳戶的帳單擁有權後，即無法返回。 執行此步驟之前，請務必先完成上述步驟。
+> 當您傳輸訂用帳戶時，來原始目錄中的所有角色指派都會 **永久** 刪除，而且無法還原。 一旦轉移訂用帳戶，您就無法返回。 執行此步驟之前，請務必先完成上述步驟。
 
-1. 遵循將 [Azure 訂用帳戶的帳單擁有權轉移至另一個帳戶](../cost-management-billing/manage/billing-subscription-transfer.md)的步驟。 若要將訂用帳戶轉移至不同的 Azure AD 目錄，您必須檢查訂用帳戶 **Azure AD 租** 使用者核取方塊。
+1. 判斷您是否也要轉移帳單擁有權。
 
-1. 一旦您完成轉移擁有權後，請回到本文以重新建立目標目錄中的資源。
+1. 將訂用帳戶轉移至不同的目錄。
+
+    - 如果您想要保留目前的帳單擁有權，請遵循 [將 Azure 訂用帳戶關聯或新增至您 Azure Active Directory 租使用者](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)的步驟。
+    - 如果您想要同時轉移帳單擁有權，請遵循將 [Azure 訂用帳戶的帳單擁有權轉移至另一個帳戶](../cost-management-billing/manage/billing-subscription-transfer.md)的步驟。 若要將訂用帳戶轉移至不同的目錄，您必須選取 [訂用帳戶 **Azure AD 租** 使用者] 核取方塊。
+
+1. 當您完成傳送訂用帳戶之後，請回到本文以重新建立目標目錄中的資源。
 
 ## <a name="step-3-re-create-resources"></a>步驟3：重新建立資源
 
@@ -313,7 +318,7 @@ ms.locfileid: "89055646"
 
 1. 停用並重新啟用系統指派的受控識別。
 
-    | Azure 服務 | 詳細資訊 | 
+    | Azure 服務 | 更多資訊 | 
     | --- | --- |
     | 虛擬機器 | [使用 Azure CLI 在 Azure VM 上設定 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#system-assigned-managed-identity) |
     | 虛擬機器擴展集 | [使用 Azure CLI 在虛擬機器擴展集上設定 Azure 資源受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
@@ -329,7 +334,7 @@ ms.locfileid: "89055646"
 
 1. 刪除、重新建立及附加使用者指派的受控識別。
 
-    | Azure 服務 | 詳細資訊 | 
+    | Azure 服務 | 更多資訊 | 
     | --- | --- |
     | 虛擬機器 | [使用 Azure CLI 在 Azure VM 上設定 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) |
     | 虛擬機器擴展集 | [使用 Azure CLI 在虛擬機器擴展集上設定 Azure 資源受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |

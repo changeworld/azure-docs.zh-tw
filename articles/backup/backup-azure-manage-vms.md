@@ -3,12 +3,12 @@ title: 管理及監視 Azure VM 備份
 description: 瞭解如何使用 Azure 備份服務來管理及監視 Azure VM 備份。
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 707558b8ad28f7a8a17e24e57f97fda064d0f238
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999337"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145428"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 備份服務管理 Azure VM 備份
 
@@ -121,7 +121,7 @@ ms.locfileid: "88999337"
 * **停止保護並刪除備份資料**。 此選項將會停止所有未來的備份作業以保護您的 VM，並刪除所有復原點。 您將無法還原 VM，也無法使用 [ *繼續備份* ] 選項。
 
 >[!NOTE]
->如果您刪除資料來源，但沒有停止備份，新的備份將會失敗。 舊的復原點會根據原則到期，但最後一個復原點會一直保留，直到您停止備份並刪除資料為止。
+>如果您刪除資料來源，但沒有停止備份，新的備份將會失敗。 舊的復原點將會根據原則到期，但在您停止備份並刪除資料之前，一律會保留最新的復原點。
 >
 
 ### <a name="stop-protection-and-retain-backup-data"></a>停止保護並保留備份資料
@@ -187,10 +187,10 @@ Azure 備份包含虛刪除功能，以保護您的資料。 使用虛刪除時�
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>主要資料來源已不再存在的備份專案
 
 * 如果針對 Azure 備份設定的 Azure Vm 未停止保護而遭到刪除或移動，則排程的備份作業和隨選 (臨機操作) 備份作業將會失敗，並出現錯誤 UserErrorVmNotFoundV2。 備份前置檢查只會顯示為失敗的隨選備份作業 (失敗的排程作業不會顯示) 。
-* 這些備份專案會在系統中保持作用中狀態，並遵守使用者所設定的備份和保留原則。 根據保留原則，將會保留這些 Azure Vm 的備份資料。 過期的復原點 (除了最後一個復原點) 會根據備份原則中設定的保留範圍進行清除。
-* 建議您刪除主要資料來源不存在的備份專案，以避免產生任何額外的成本，如果不再需要刪除資源的備份專案/資料，因為最後一個復原點會永遠保留，而使用者會根據適用的備份定價收費。
+* 這些備份專案會在系統中保持作用中狀態，並遵守使用者所設定的備份和保留原則。 根據保留原則，將會保留這些 Azure Vm 的備份資料。 過期的復原點 (除了最新的復原點) 會根據備份原則中設定的保留範圍進行清除。
+* 建議您刪除主要資料來源不存在的備份專案，以避免產生任何額外的費用。如果不再需要刪除資源的備份專案/資料，而是將最新的復原點永久保留，且使用者是根據適用的備份定價收費。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 瞭解如何 [從 VM 的設定中備份 Azure vm](backup-azure-vms-first-look-arm.md)。
 * 瞭解如何 [還原 vm](backup-azure-arm-restore-vms.md)。

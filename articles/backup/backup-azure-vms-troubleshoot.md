@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 65662af2bad5475b024366a2ff550ff30e6c0e88
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aa9b5a3f6f7ca935e4e6b3645c58da5516384072
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014653"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178006"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -103,18 +103,60 @@ ms.locfileid: "89014653"
 錯誤碼：ExtensionFailedVssWriterInBadState <br/>
 錯誤訊息：快照集作業失敗，因為 VSS 寫入器處於不良狀態。
 
-請重新啟動處於不良狀態的 VSS 寫入器。 從提升權限的命令提示字元，執行 ```vssadmin list writers```。 輸出會包含所有 VSS 寫入器和其狀態。 針對每個狀態不是「[1] 穩定」的 VSS 寫入器，請從提升權限的命令提示字元執行下列命令，以重新啟動那些 VSS 寫入器：
+發生此錯誤是因為 VSS 寫入器處於不良狀態。 Azure 備份擴充功能會與 VSS 寫入器互動，以取得磁片的快照集。 若要解決此問題，請依照下列步驟執行︰
 
-* ```net stop serviceName```
-* ```net start serviceName```
+請重新啟動處於不良狀態的 VSS 寫入器。
+- 從提升權限的命令提示字元，執行 ```vssadmin list writers```。
+- 輸出會包含所有 VSS 寫入器和其狀態。 針對狀態不是 **[1]** 的每個 vss 寫入器，重新開機各自的 vss 寫入器服務。 
+- 若要重新開機服務，請從提高許可權的命令提示字元執行下列命令：
 
-另一個可協助的程序是，從提高權限的命令提示字元執行下列命令 (以管理員身分執行)。
+ ```net stop serviceName``` <br>
+ ```net start serviceName```
+
+> [!NOTE]
+> 重新開機某些服務可能會影響您的生產環境。 請確定已遵循核准程式，並在排定的停機時間重新開機服務。
+ 
+   
+如果重新開機 VSS 寫入器並未解決此問題，而且問題仍持續發生，因為超時，則：
+- 從提升許可權的命令提示字元中執行下列命令 (系統管理員) ，以防止建立 blob 快照集的執行緒。
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
 
-新增此登錄機碼會導致無法為 blob 快照集建立執行緒，並防止超時。
+### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState 快照集作業失敗，因為 VSS (磁片區陰影複製) 服務處於不正確的狀態
+
+錯誤碼： ExtensionFailedVssServiceInBadState <br/>
+錯誤訊息：快照集作業失敗，因為 VSS (磁片區陰影複製) 服務處於不正確的狀態。
+
+發生此錯誤的原因是 VSS 服務處於不良狀態。 Azure 備份擴充功能會與 VSS 服務互動，以取得磁片的快照集。 若要解決此問題，請依照下列步驟執行︰
+
+重新開機 VSS (磁片區陰影複製) 服務。
+- 流覽至 services.msc，然後重新開機「磁片區陰影複製服務」。<br>
+(或)<br>
+- 從提升權限的命令提示字元執行下列命令：
+
+ ```net stop VSS``` <br>
+ ```net start VSS```
+
+ 
+如果問題仍持續發生，請在排定的停機時間重新開機 VM。
+
+### <a name="usererrorskunotavailable---vm-creation-failed-as-vm-size-selected-is-not-available"></a>UserErrorSkuNotAvailable-VM 建立失敗，因為選取的 VM 大小無法使用
+
+錯誤碼： UserErrorSkuNotAvailable 錯誤訊息： VM 建立失敗，因為選取的 VM 大小無法使用。 
+ 
+發生此錯誤的原因是在還原作業期間選取的 VM 大小是不支援的大小。 <br>
+
+若要解決此問題，請在還原作業期間使用 [ [復原磁碟](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) ] 選項。 您可以使用這些磁片，透過[Powershell Cmdlet](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks)，從[可用的支援 VM 大小](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support)清單中建立 vm。
+
+### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported-VM 建立失敗，因為不存在市場採購申請
+
+錯誤碼： UserErrorMarketPlaceVMNotSupported 錯誤訊息：因為沒有市場採購要求，所以 VM 建立失敗。 
+ 
+Azure 備份支援 Azure Marketplace 中可用 Vm 的備份和還原。 當您嘗試使用特定的方案/發行者設定來還原 VM (時，將會發生此錯誤，) 該設定已無法在 Azure Marketplace 中使用，請在 [這裡深入瞭解](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)。
+- 若要解決此問題，請在還原作業期間使用 [ [復原磁碟](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) ] 選項，然後使用 [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) 或 [AZURE CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) Cmdlet，以與 vm 對應的最新 marketplace 資訊來建立 VM。
+- 如果發行者沒有任何 Marketplace 資訊，您可以使用資料磁片來取出您的資料，並將其連結至現有的 VM。
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - 備份擴充功能的剖析和設定失敗
 

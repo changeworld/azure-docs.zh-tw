@@ -3,12 +3,12 @@ title: 最佳作法
 description: 了解開發 Azure Batch 解決方案的最佳做法和實用秘訣。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: ca6e491586fd653f39da7466ea116109000facd6
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191800"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146533"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -29,12 +29,12 @@ ms.locfileid: "88191800"
     個別節點不保證一律可供使用。 雖然不常見，但硬體故障、作業系統更新和具有其他問題的主機可能會導致個別節點離線。 如果您的 Batch 工作負載需要具決定性且保證的進度，您應該配置具有多個節點的集區。
 
 - **請勿重複使用資源名稱。**
-    Batch 資源 (作業、集區等) 通常會隨時間而不同。 例如，您可以在星期一建立集區、在星期二將其刪除，然後在星期四建立另一個集區。 您所建立的每個新資源，都應該指定您之前未曾用過的唯一名稱。 這可以藉由使用 GUID 來完成 (作為整個資源名稱或其中一部分)，或在資源名稱中內嵌資源的建立時間。 Batch 支援 [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname?view=azure-dotnet)，此屬性可為資源提供人類看得懂的名稱 (即使實際的資源識別碼不是人類易懂的內容)。 使用唯一名稱可讓您更輕鬆地區分特定資源在記錄和計量中的作用。 如果您必須為資源提出支援案例，此方式也有助於避免模稜兩可的情況。
+    Batch 資源 (作業、集區等) 通常會隨時間而不同。 例如，您可以在星期一建立集區、在星期二將其刪除，然後在星期四建立另一個集區。 您所建立的每個新資源，都應該指定您之前未曾用過的唯一名稱。 這可以藉由使用 GUID 來完成 (作為整個資源名稱或其中一部分)，或在資源名稱中內嵌資源的建立時間。 Batch 支援 [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)，此屬性可為資源提供人類看得懂的名稱 (即使實際的資源識別碼不是人類易懂的內容)。 使用唯一名稱可讓您更輕鬆地區分特定資源在記錄和計量中的作用。 如果您必須為資源提出支援案例，此方式也有助於避免模稜兩可的情況。
 
 - **集區維護和失敗期間的持續性。**
     您的作業應以動態方式使用集區。 如果您的作業針對所有項目使用相同集區，則當集區發生問題時，您的作業可能會無法執行。 對於重視時間性的工作負載而言，這一點特別重要。 若要修正此問題，請在為每個作業進行排程時動態地選取或建立集區，或使用方法來覆寫集區名稱，以便略過狀況不良的集區。
 
-- **集區維護和失敗時的商務持續性** 有許多可能的原因會使集區無法成長到您所需要的大小，例如內部錯誤和容量限制等。基於這個理由，您應該準備好在不同集區上重定作業目標，以備不時之需 (可能會使用不同 VM 大小 - Batch 會透過 [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update?view=azure-dotnet)來支援此作業)。 請避免在預期永遠不會刪除且永遠不會變更的情況下使用靜態集區識別碼。
+- **集區維護和失敗時的商務持續性** 有許多可能的原因會使集區無法成長到您所需要的大小，例如內部錯誤和容量限制等。基於這個理由，您應該準備好在不同集區上重定作業目標，以備不時之需 (可能會使用不同 VM 大小 - Batch 會透過 [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)來支援此作業)。 請避免在預期永遠不會刪除且永遠不會變更的情況下使用靜態集區識別碼。
 
 ### <a name="pool-lifetime-and-billing"></a>集區存留期和計費
 
@@ -59,11 +59,11 @@ Batch 集區可能會在 Azure 中遇到停機事件。 在規劃和開發 Batch
 
 ### <a name="custom-image-pools"></a>自訂映射集區
 
-當您使用虛擬機器設定建立 Azure Batch 集區時，需指定 VM 映像，以提供集區中每個計算節點的作業系統。 您可以使用支援的 Azure Marketplace 映射來建立集區，也可以 [使用共用映射庫映射來建立自訂映射](batch-sig-images.md)。 雖然您也可以使用 [受控映射](batch-custom-images.md) 來建立自訂映射集區，但建議您盡可能使用共用映射庫來建立自訂映射。 使用共用映射資源庫可協助您更快速地布建集區、調整較大數量的 Vm，以及改善布建 Vm 時的可靠性。
+當您使用虛擬機器設定建立 Azure Batch 集區時，需指定 VM 映像，以提供集區中每個計算節點的作業系統。 您可以使用支援的 Azure Marketplace 映射來建立集區，也可以 [使用共用映射庫映射來建立自訂映射](batch-sig-images.md)。 雖然您也可以使用 [受控映射](batch-custom-images.md) 來建立自訂映射集區，但建議您盡可能使用共用映射庫來建立自訂映射。 使用共用映射庫可協助您更快速地布建集區、調整更大量的 Vm，以及改善布建 Vm 時的可靠性。
 
 ### <a name="third-party-images"></a>協力廠商映射
 
-您可以使用發佈到 Azure Marketplace 的協力廠商映射來建立集區。 使用使用者訂用帳戶模式 Batch 帳戶時，您可能會在使用特定協力廠商映射建立集區時，看到「因 marketplace 購買資格檢查而導致配置失敗」錯誤。 若要解決此錯誤，請接受映射發行者所設定的條款。 您可以使用 [Azure Powershell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest)來執行此動作。
+您可以使用發佈至 Azure Marketplace 的協力廠商映射來建立集區。 使用使用者訂用帳戶模式 Batch 帳戶時，您可能會在使用某些協力廠商映射建立集區時看到「因為 marketplace 購買資格檢查，導致配置失敗」錯誤。 若要解決此錯誤，請接受映射發行者所設定的條款。 您可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms)來這麼做。
 
 ### <a name="azure-region-dependency"></a>Azure 區域相依性
 
@@ -83,7 +83,7 @@ Batch 集區可能會在 Azure 中遇到停機事件。 在規劃和開發 Batch
 
 Batch 作業在從系統中刪除之前，會有無限的存留期。 其狀態會表明其是否可以接受更多工作來進行排程。
 
-除非明確終止，否則作業不會自動移至已完成狀態。 這可透過 [onAllTasksComplete](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) 屬性或 [maxWallClockTime](/rest/api/batchservice/job/add#jobconstraints) 來自動觸發。
+除非明確終止，否則作業不會自動移至已完成狀態。 這可透過 [onAllTasksComplete](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete) 屬性或 [maxWallClockTime](/rest/api/batchservice/job/add#jobconstraints) 來自動觸發。
 
 其中有預設的[作用中作業和作業排程配額](batch-quota-limit.md#resource-quotas)。 處於 [已完成] 狀態的作業和作業排程不會計入此配額。
 
@@ -99,7 +99,7 @@ Batch 已整合支援，可讓 Azure 儲存體透過 [OutputFiles](batch-task-ou
 
 ### <a name="manage-task-lifetime"></a>管理工作存留期
 
-不再需要工作時，請刪除工作，或設定 [retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) 工作限制。 如果設定了 `retentionTime`，Batch 會在 `retentionTime` 到期時，自動清除工作所使用的磁碟空間。
+不再需要工作時，請刪除工作，或設定 [retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime) 工作限制。 如果設定了 `retentionTime`，Batch 會在 `retentionTime` 到期時，自動清除工作所使用的磁碟空間。
 
 刪除工作可達到兩件事。 其可確保您在作業中沒有建置工作，這可能會使查詢/尋找您感興趣的工作變得更困難 (因為您必須篩選完成的工作)。 也會清除節點上對應的工作資料 (尚未達到已提供的`retentionTime`)。 這有助於確保您的節點不會填滿工作資料並耗盡磁碟空間。
 
@@ -113,7 +113,7 @@ Batch 支援節點上有超載的工作 (執行的工作數目比節點具有的
 
 ### <a name="design-for-retries-and-re-execution"></a>重試和重新執行的設計
 
-Batch 可以自動重試工作。 重試的類型有兩種：使用者控制和內部。 使用者控制的重試是由工作的 [maxTaskRetryCount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet) 來指定。 當工作中指定的程式以非零結束代碼結束時，工作會重試到達到 `maxTaskRetryCount` 的值。
+Batch 可以自動重試工作。 重試的類型有兩種：使用者控制和內部。 使用者控制的重試是由工作的 [maxTaskRetryCount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount) 來指定。 當工作中指定的程式以非零結束代碼結束時，工作會重試到達到 `maxTaskRetryCount` 的值。
 
 雖然很罕見，但工作會因為計算節點發生失敗而在內部重試，例如無法在工作執行時更新內部狀態或節點上發生失敗。 工作會盡可能在相同的計算節點上重試，直到達到內部限制的次數後才放棄，然後延遲工作，直到 Batch 進行重新排程 (可能是在不同的計算節點上進行)。
 
@@ -131,7 +131,7 @@ Batch 可以自動重試工作。 重試的類型有兩種：使用者控制和�
 
 ### <a name="use-pool-scope-for-short-tasks-on-windows-nodes"></a>針對 Windows 節點上的簡短工作使用集區範圍
 
-在 Batch-節點上排程工作時，您可以選擇是否要使用工作範圍或集區範圍來執行。 如果工作只會短時間執行，工作範圍可能會因為建立該工作的自動使用者帳戶所需的資源而沒有效率。 若要提高效率，請考慮將這些工作設定為集區範圍。 如需詳細資訊，請參閱以 [具有集區範圍的自動使用者身分執行工作](batch-user-accounts.md#run-a-task-as-an-auto-user-with-pool-scope)。
+在 Batch-節點上排程工作時，您可以選擇是否要使用工作範圍或集區範圍來執行工作。 如果工作只會短暫執行一次，工作範圍可能會因為建立該工作的自動使用者帳戶所需的資源而沒有效率。 為了提高效率，請考慮將這些工作設定為集區範圍。 如需詳細資訊，請參閱以 [具有集區範圍的自動使用者的形式來執行工作](batch-user-accounts.md#run-a-task-as-an-auto-user-with-pool-scope)。
 
 ## <a name="nodes"></a>節點
 
@@ -157,7 +157,7 @@ Batch 可以自動重試工作。 重試的類型有兩種：使用者控制和�
 
 ### <a name="manage-os-upgrades"></a>管理作業系統升級
 
-針對使用者訂用帳戶模式的 Batch 帳戶，自動化的 OS 升級可能會中斷工作進度，特別是當工作長時間執行時。 [建立等冪](#build-durable-tasks) 工作有助於減少這些中斷所造成的錯誤。 我們也建議您 [針對預期不會執行工作的時間，排程 OS 映射升級](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)。
+若為使用者訂用帳戶模式 Batch 帳戶，自動 OS 升級可能會中斷工作進度，特別是當工作長時間執行時。 [建立等冪](#build-durable-tasks) 工作有助於減少這些中斷所造成的錯誤。 我們也建議您 [排程 OS 映射升級，以找出不應執行工作的時間](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)。
 
 ## <a name="isolation-security"></a>隔離安全性
 
@@ -186,17 +186,17 @@ Azure Batch 帳戶無法直接從一個區域移至另一個區域。 不過，�
 
 ### <a name="honoring-dns"></a>遵守 DNS
 
-請確定您的系統會遵守 Batch 帳戶服務 URL 的 DNS 存留時間 (TTL)。 此外，請確定 batch 服務的 Batch 服務用戶端和其他連接機制不依賴 IP 位址 (或 [建立具有靜態公用 IP 位址的集](create-pool-public-ip.md) 區，如下) 所述。
+請確定您的系統會遵守 Batch 帳戶服務 URL 的 DNS 存留時間 (TTL)。 此外，請確定 batch 服務用戶端和 Batch 服務的其他連線機制不依賴 IP 位址 (或 [建立具有靜態公用 IP 位址的集](create-pool-public-ip.md) 區，如下) 所述。
 
 如果您的要求收到 5xx 層級的 HTTP 回應，而且回應中有「連線：關閉」標頭，則 Batch 服務用戶端應該遵循建議來關閉現有連線、重新解析 Batch 帳戶服務 URL 的 DNS，然後在新的連線上嘗試下列要求。
 
 ### <a name="retry-requests-automatically"></a>自動重試要求
 
-請確定您的 Batch 服務用戶端已有適當的重試原則，即使在正常作業期間也可以自動重試您的要求，而不是僅限於任何服務維護期間。 這些重試原則應具有至少 5 分鐘的間隔。 自動重試功能可透過各種 Batch SDK 提供，例如 [.NET RetryPolicyProvider 類別](/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet)。
+請確定您的 Batch 服務用戶端已有適當的重試原則，即使在正常作業期間也可以自動重試您的要求，而不是僅限於任何服務維護期間。 這些重試原則應具有至少 5 分鐘的間隔。 自動重試功能可透過各種 Batch SDK 提供，例如 [.NET RetryPolicyProvider 類別](/dotnet/api/microsoft.azure.batch.retrypolicyprovider)。
 
 ### <a name="static-public-ip-addresses"></a>靜態公用 IP 位址
 
-一般而言，Batch 集區中的虛擬機器是透過可在集區存留期內變更的公用 IP 位址來存取。 這可能會讓您難以與資料庫或其他外部服務互動，以限制對特定 IP 位址的存取。 若要確保集區中的公用 IP 位址不會意外變更，您可以使用您所控制的一組靜態公用 IP 位址來建立集區。 如需詳細資訊，請參閱 [使用指定的公用 IP 位址建立 Azure Batch 集](create-pool-public-ip.md)區。
+一般而言，Batch 集區中的虛擬機器是透過可在集區存留期內變更的公用 IP 位址來存取。 這可能會讓您難以與資料庫或其他外部服務互動，以限制對特定 IP 位址的存取。 若要確保集區中的公用 IP 位址不會意外變更，您可以使用一組您所控制的靜態公用 IP 位址來建立集區。 如需詳細資訊，請參閱 [使用指定的公用 IP 位址建立 Azure Batch 集](create-pool-public-ip.md)區。
 
 ## <a name="batch-node-underlying-dependencies"></a>Batch 節點基礎相依性
 

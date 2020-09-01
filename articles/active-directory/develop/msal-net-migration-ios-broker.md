@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ed29752e0b5f2ee9acf0382ef96e1b685f9cc886
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: b4eff5910ff5230902d497b55b2afbe6d605365a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068502"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177426"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>將使用 Microsoft Authenticator 的 iOS 應用程式從 ADAL.NET 遷移至 MSAL.NET
 
@@ -25,7 +25,7 @@ ms.locfileid: "89068502"
 
 您該從何處著手？ 本文可協助您將 Xamarin iOS 應用程式從 ADAL 遷移至 MSAL。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 本文假設您已經有整合了 iOS broker 的 Xamarin iOS 應用程式。 如果您沒有這麼做，請直接移至 MSAL.NET，並在該處開始 broker 執行。 如需如何使用新的應用程式在 MSAL.NET 中叫用 iOS broker 的詳細資訊，請參閱 [此檔](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications)。
 
 ## <a name="background"></a>背景
@@ -239,6 +239,19 @@ ADAL.NET 和 MSAL.NET 會在以訊息代理程式為目標時，對重新導向 
 </table>
 
 如需如何在 Azure 入口網站中註冊重新導向 URI 的詳細資訊，請參閱 [步驟7：將重新導向 Uri 新增至您的應用程式註冊](msal-net-use-brokers-with-xamarin-apps.md#step-7-add-a-redirect-uri-to-your-app-registration)。
+
+### <a name="step-7-set-the-entitlementsplist"></a>**步驟7：設定權利. plist**
+
+在 *plist* 檔案中啟用 keychain 存取：
+
+```xml
+ <key>keychain-access-groups</key>
+    <array>
+      <string>$(AppIdentifierPrefix)com.microsoft.adalcache</string>
+    </array>
+```
+
+如需啟用 keychain 存取的詳細資訊，請參閱 [啟用 keychain 存取](msal-net-xamarin-ios-considerations.md#enable-keychain-access)。
 
 ## <a name="next-steps"></a>後續步驟
 

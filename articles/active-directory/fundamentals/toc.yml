@@ -35,8 +35,6 @@
           href: identity-secure-score.md
         - name: 保護遠端工作者
           href: concept-secure-remote-workers.md
-        - name: 持續存取評估
-          href: concept-fundamentals-continuous-access-evaluation.md
     - name: 群組和使用者
       items:
         - name: 群組和存取管理

@@ -1,19 +1,19 @@
 ---
-title: Azure Stack Edge 儲存體帳戶管理 |Microsoft Docs
+title: Azure Stack Edge GPU 儲存體帳戶管理 |Microsoft Docs
 description: 說明如何使用 Azure 入口網站來管理 Azure Stack Edge 上的儲存體帳戶。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 12/11/2019
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 01148fabd6fb5df791ac09090304feee8c72a2d1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 549fa8a01455d45c959db60bc5df31c13b4da984
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083776"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146363"
 ---
 # <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge"></a>使用 Azure 入口網站來管理您 Azure Stack Edge 上的 Edge 儲存體帳戶
 
@@ -95,6 +95,6 @@ ms.locfileid: "89083776"
 
     ![選取同步儲存體金鑰](media/azure-stack-edge-j-series-manage-storage-accounts/sync-storage-key-2.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 了解如何[透過 Azure 入口網站管理使用者](azure-stack-edge-j-series-manage-users.md)。

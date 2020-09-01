@@ -4,26 +4,26 @@ description: 了解如何使用 Java 開發函式。
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 1dd98ede537321403053e2e7c8a5f4f7272665d4
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810083"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144918"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 開發人員指南
 
-本指南包含可協助您使用 JAVA 成功開發 Azure Functions 的詳細資訊。
+本指南包含的詳細資訊可協助您使用 JAVA 成功開發 Azure Functions。
 
-身為 JAVA 開發人員，如果您不熟悉 Azure Functions，請先閱讀下列其中一篇文章：
+如果您是 Azure Functions 的新手，請先閱讀下列其中一篇文章，以 JAVA 開發人員為例：
 
 | 開始使用 | 概念| 
 | -- | -- |  
-| <ul><li>[使用 Visual Studio Code 的 JAVA 函式](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[使用終端機/命令提示字元的 JAVA/Maven 函式](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[使用 Gradle 的 JAVA 函式](functions-create-first-java-gradle.md)</li><li>[使用 Eclipse 的 JAVA 函式](functions-create-maven-eclipse.md)</li><li>[使用 IntelliJ 的 JAVA 函數概念](functions-create-maven-intellij.md)</li></ul> | <ul><li>[開發人員指南](functions-reference.md)</li><li>[主機選項](functions-scale.md)</li><li>[效能 &nbsp; 考慮](functions-best-practices.md)</li></ul> |
+| <ul><li>[使用 Visual Studio Code 的 JAVA 函數](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[使用終端機/命令提示字元的 JAVA/Maven 函式](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[使用 Gradle 的 JAVA 函數](functions-create-first-java-gradle.md)</li><li>[使用 Eclipse 的 JAVA 函式](functions-create-maven-eclipse.md)</li><li>[使用 IntelliJ 構想的 JAVA 函式](functions-create-maven-intellij.md)</li></ul> | <ul><li>[開發人員指南](functions-reference.md)</li><li>[主機選項](functions-scale.md)</li><li>[效能 &nbsp; 考慮](functions-best-practices.md)</li></ul> |
 
 ## <a name="java-function-basics"></a>JAVA 函數基本概念
 
-JAVA 函式是 `public` 方法，以註釋 `@FunctionName` 裝飾。 此方法定義 JAVA 函式的進入點，在特定封裝中必須是唯一的。 封裝可以有多個類別，其中有多個以標注的公用方法 `@FunctionName` 。 單一套件會部署至 Azure 中的函數應用程式。 在 Azure 中執行時，函數應用程式會為您的個別 JAVA 函式提供部署、執行和管理內容。
+JAVA 函式是 `public` 方法，以註釋 `@FunctionName` 裝飾。 此方法定義 JAVA 函式的進入點，在特定封裝中必須是唯一的。 封裝可以有多個具有多個批註的公用方法的類別 `@FunctionName` 。 單一套件會部署至 Azure 中的函數應用程式。 在 Azure 中執行時，函數應用程式會提供個別 JAVA 函式的部署、執行和管理內容。
 
 ## <a name="programming-model"></a>程式設計模型 
 
@@ -136,29 +136,31 @@ public class Function {
 
 _JAVA 11 的支援目前為預覽狀態_
 
-建立函式應用程式時所使用的 JAVA 版本，在 Azure 中執行的函式是在 pom.xml 檔案中指定。 Maven 原型目前會產生 JAVA 8 的 pom.xml，您可以在發佈之前變更此程式。 pom.xml 中的 JAVA 版本應符合您在本機開發並測試應用程式的版本。 
+建立函式應用程式時所使用的 JAVA 版本，在 Azure 中執行的函式是在 pom.xml 檔案中指定。 Maven 原型目前會產生 JAVA 8 的 pom.xml，您可以在發佈之前變更。 pom.xml 中的 JAVA 版本應該符合您在本機開發及測試應用程式的版本。 
 
 ### <a name="supported-versions"></a>支援的版本
 
-下錶針對每個主要版本的函式執行時間，依作業系統顯示目前支援的 JAVA 版本：
+下錶針對每個主要版本的函式執行時間（依作業系統），顯示目前支援的 JAVA 版本：
 
-| Functions 版本 | JAVA 版本 (Windows)  | JAVA 版本 (Linux)  |
+| Functions 版本 | Windows)  (JAVA 版本 | Linux)  (JAVA 版本 |
 | ----- | ----- | --- |
-| 3.x | 11 (preview) <br/>8<sup>\*</sup> | 11 (preview) <br/>8 |
+| 3.x | 11 (preview) <br/>8 | 11 (preview) <br/>8 |
 | 2.x | 8 | n/a |
 
-<sup>\*</sup>這是 Maven 原型所產生之 pom.xml 的目前預設值。
+除非您為部署指定 JAVA 版本，否則 Maven 原型會在部署至 Azure 期間預設為 JAVA 8。
 
 ### <a name="specify-the-deployment-version"></a>指定部署版本
 
-目前，Maven 原型會產生以 JAVA 8 為目標的 pom.xml。 pom.xml 中的下列元素需要更新，才能建立執行 JAVA 11 的函式應用程式。
+您可以使用參數來控制 Maven 原型設為目標的 JAVA 版本 `-DjavaVersion` 。 此參數的值可以是乙太幣 `8` 或 `11` 。 JAVA 11 支援目前為預覽狀態。 
+
+Maven 原型會產生以指定的 JAVA 版本為目標的 pom.xml。 pom.xml 中的下列元素指出要使用的 JAVA 版本：
 
 | 項目 |  JAVA 8 值 | JAVA 11 值 | 描述 |
 | ---- | ---- | ---- | --- |
-| **`Java.version`** | 1.8 | 11 | Maven 所使用的 JAVA 版本。 |
-| **`JavaVersion`** | 8 | 11 | Azure 中的函數應用程式所裝載的 JAVA 版本。 |
+| **`Java.version`** | 1.8 | 11 | Maven 編譯器-外掛程式所使用的 JAVA 版本。 |
+| **`JavaVersion`** | 8 | 11 | Azure 中函數應用程式所裝載的 JAVA 版本。 |
 
-下列範例會在 pom.xml 檔案的相關區段中，顯示 JAVA 8 的設定：
+下列範例顯示 pom.xml 檔案相關區段中的 JAVA 8 設定：
 
 #### `Java.version`
 :::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="12-19" highlight="14":::
@@ -167,23 +169,23 @@ _JAVA 11 的支援目前為預覽狀態_
 :::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="77-85" highlight="80":::
 
 > [!IMPORTANT]
-> 您必須將 JAVA_HOME 環境變數正確設定為 JDK 目錄，以使用 Maven 進行程式碼編譯期間使用。 請確定 JDK 的版本至少為設定的最高值 `Java.version` 。 
+> 您必須將 JAVA_HOME 環境變數正確地設定為使用 Maven 編譯器代碼時所使用的 JDK 目錄。 請確定 JDK 的版本至少與設定的最高 `Java.version` 。 
 
-### <a name="specify-the-deployment-os"></a>指定部署作業系統
+### <a name="specify-the-deployment-os"></a>指定部署 OS
 
-Maven 也可讓您指定函數應用程式在 Azure 中執行的作業系統。 使用 `os` 元素來選擇作業系統。 
+Maven 也可讓您指定在 Azure 中執行函數應用程式的作業系統。 使用 `os` 元素選擇作業系統。 
 
 | 項目 |  Windows | Linux | Docker |
 | ---- | ---- | ---- | --- |
-| **`os`** | windows | 廠商 | docker |
+| **`os`** | windows | Linux | docker |
 
-下列範例顯示 pom.xml 檔案之區段中的作業系統設定 `runtime` ：
+下列範例顯示 pom.xml 檔案區段中的作業系統設定 `runtime` ：
 
 :::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="77-85" highlight="79":::
  
 ## <a name="jdk-runtime-availability-and-support"></a>JDK 執行階段可用性和支援 
 
-若要在本機開發 JAVA 函數應用程式，請從[Azul 系統](https://www.azul.com/downloads/azure-only/zulu/)下載並使用適用于 Azure java jdk 的適當[Azul 祖魯 Enterprise](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) 。 當您將函數應用程式部署至雲端時，Azure Functions 會使用 Azul JAVA JDK 執行時間。
+若要在本機開發 JAVA 函數應用程式，請從[Azul 系統](https://www.azul.com/downloads/azure-only/zulu/)下載並使用適用于 Azure JAVA jdk 的適當[Azul 祖魯企業版](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf)。 當您將函數應用程式部署至雲端時，Azure Functions 使用 Azul JAVA JDK 執行時間。
 
 [合格的支援方案](https://azure.microsoft.com/support/plans/)讓您享有 JDK 和函數應用程式相關問題的 [Azure 支援](https://azure.microsoft.com/support/)。
 
@@ -431,7 +433,7 @@ public class Function {
 
 ## <a name="execution-context"></a>執行內容
 
-`azure-functions-java-library` 中定義的 `ExecutionContext` 包含協助程式方法，用來與函式執行階段進行通訊。 如需詳細資訊，請參閱[ExecutionCoNtext 參考文章](/java/api/com.microsoft.azure.functions.executioncontext)。
+`azure-functions-java-library` 中定義的 `ExecutionContext` 包含協助程式方法，用來與函式執行階段進行通訊。 如需詳細資訊，請參閱 [ExecutionCoNtext 參考文章](/java/api/com.microsoft.azure.functions.executioncontext)。
 
 ### <a name="logger"></a>記錄器
 

@@ -1,19 +1,19 @@
 ---
-title: Azure Stack Edge 管理頻寬排程 |Microsoft Docs
-description: 說明如何使用 Azure 入口網站來管理 Azure Stack Edge 上的頻寬排程。
+title: Azure Stack Edge GPU 管理頻寬排程 |Microsoft Docs
+description: 說明如何使用 Azure 入口網站管理 Azure Stack Edge GPU 上的頻寬排程。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 12/12/2019
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: c991159ffae59626014e5b727c5fb1d1616581cb
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: b27c4fb9beb631b40617307cfc5952b7dcb45369
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083330"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147043"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge"></a>使用 Azure 入口網站來管理您 Azure Stack Edge 上的頻寬排程 
 
@@ -84,6 +84,6 @@ ms.locfileid: "89083330"
 3. 刪除排程之後，排程清單就會更新。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 了解如何[管理共用](azure-stack-edge-j-series-manage-shares.md)。

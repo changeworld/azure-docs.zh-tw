@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5a532ec11cdcd97bd1f72c40f603bce7cc4b12c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f037ea30a1507d4736db7f837e5286701db030e0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611759"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146671"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>安裝和使用 Azure Machine Learning 的 CLI 擴充功能
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -150,15 +150,49 @@ az extension remove -n azure-cli-ml
 
     如需詳細資訊，請參閱 [az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks)
 
-+ 建立新的 AMLcompute 目標。
+### <a name="compute-clusters"></a>計算叢集
+
++ 建立新的受控計算叢集。
 
     ```azurecli-interactive
     az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
     ```
 
-    如需詳細資訊，請參閱 [az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)。
 
-+ <a id="computeinstance"></a>管理計算實例。  在下列所有範例中，計算實例的名稱都是**cpu**
+
++ 使用受控識別建立新的受控計算叢集
+
+  + 使用者指派的受控識別
+
+    ```azurecli
+    az ml computetarget create amlcompute --name cpu-cluster --vm-size Standard_NC6 --max-nodes 5 --assign-identity '/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'
+    ```
+
+  + 系統指派的受控識別
+
+    ```azurecli
+    az ml computetarget create amlcompute --name cpu-cluster --vm-size Standard_NC6 --max-nodes 5 --assign-identity '[system]'
+    ```
++ 將受控識別新增至現有的叢集：
+
+    + 使用者指派的受控識別
+        ```azurecli
+        az ml computetarget amlcompute identity assign --name cpu-cluster '/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'
+        ```
+    + 系統指派的受控識別
+
+        ```azurecli
+        az ml computetarget amlcompute identity assign --name cpu-cluster '[system]'
+        ```
+
+如需詳細資訊，請參閱 [az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)。
+
+[!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-note.md)]
+
+<a id="computeinstance"></a>
+
+### <a name="compute-instance"></a>計算執行個體
+管理計算實例。  在下列所有範例中，計算實例的名稱為 **cpu**
 
     + 建立新的 computeinstance。
 
@@ -166,7 +200,7 @@ az extension remove -n azure-cli-ml
         az ml computetarget create computeinstance  -n cpu -s "STANDARD_D3_V2" -v
         ```
     
-        如需詳細資訊，請參閱[az ml computetarget create computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-computeinstance)。
+        如需詳細資訊，請參閱 [az ml computetarget create computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-computeinstance)。
 
     + 停止 computeinstance。
     
@@ -174,15 +208,15 @@ az extension remove -n azure-cli-ml
         az ml computetarget stop computeinstance -n cpu -v
         ```
     
-        如需詳細資訊，請參閱[az ml computetarget stop computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)。
+        如需詳細資訊，請參閱 [az ml computetarget stop computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)。
     
-    + 開始 computeinstance。
+    + 啟動 computeinstance。
     
         ```azurecli-interactive
         az ml computetarget start computeinstance -n cpu -v
        ```
     
-        如需詳細資訊，請參閱[az ml computetarget start computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)。
+        如需詳細資訊，請參閱 [az ml computetarget start computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)。
     
     + 重新開機 computeinstance。
     
@@ -190,7 +224,7 @@ az extension remove -n azure-cli-ml
         az ml computetarget restart computeinstance -n cpu -v
        ```
     
-        如需詳細資訊，請參閱[az ml computetarget restart computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)。
+        如需詳細資訊，請參閱 [az ml computetarget restart computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)。
     
     + 刪除 computeinstance。
     
@@ -198,7 +232,7 @@ az extension remove -n azure-cli-ml
         az ml computetarget delete -n cpu -v
        ```
     
-        如需詳細資訊，請參閱[az ml computetarget delete computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-delete)。
+        如需詳細資訊，請參閱 [az ml computetarget delete computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-delete)。
 
 
 ## <a name="run-experiments"></a><a id="experiments"></a>執行實驗
@@ -225,6 +259,36 @@ az extension remove -n azure-cli-ml
     ```
 
     如需詳細資訊，請參閱 [az ml experiment list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list)。
+
+### <a name="hyperdrive-run"></a>HyperDrive 回合
+
+您可以搭配使用 HyperDrive 與 Azure CLI 來執行參數微調回合。 首先，以下列格式建立 HyperDrive 組態檔。 如需超參數微調參數的詳細資訊，請參閱[為您的模型微調超參數](how-to-tune-hyperparameters.md)一文。
+
+```yml
+# hdconfig.yml
+sampling: 
+    type: random # Supported options: Random, Grid, Bayesian
+    parameter_space: # specify a name|expression|values tuple for each parameter.
+    - name: --penalty # The name of a script parameter to generate values for.
+      expression: choice # supported options: choice, randint, uniform, quniform, loguniform, qloguniform, normal, qnormal, lognormal, qlognormal
+      values: [0.5, 1, 1.5] # The list of values, the number of values is dependent on the expression specified.
+policy: 
+    type: BanditPolicy # Supported options: BanditPolicy, MedianStoppingPolicy, TruncationSelectionPolicy, NoTerminationPolicy
+    evaluation_interval: 1 # Policy properties are policy specific. See the above link for policy specific parameter details.
+    slack_factor: 0.2
+primary_metric_name: Accuracy # The metric used when evaluating the policy
+primary_metric_goal: Maximize # Maximize|Minimize
+max_total_runs: 8 # The maximum number of runs to generate
+max_concurrent_runs: 2 # The number of runs that can run concurrently.
+max_duration_minutes: 100 # The maximum length of time to run the experiment before cancelling.
+```
+
+連同回合組態檔一起新增此檔案。 然後，使用下列命令提交 HyperDrive 回合：
+```azurecli
+az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
+```
+
+請注意 runconfig 中的 *arguments* 區段，以及 HyperDrive config 中的 *parameter space*。其包含要傳遞至定型指令碼的命令列引數。 runconfig 中的值會在每次反覆運算時維持不變，而 HyperDrive config 中的範圍則會遭到反覆處理。 請勿在這兩個檔案中指定相同的引數。
 
 ## <a name="dataset-management"></a>資料集管理
 

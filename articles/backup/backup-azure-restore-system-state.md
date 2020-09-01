@@ -3,12 +3,12 @@ title: 將系統狀態還原到 Windows Server
 description: 從 Azure 中的備份還原 Windows Server 系統狀態的逐步說明。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 9237d3d087da7f9e72813baa0056cd6b70f2c914
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: d3fb88ddbb02327db4388de18d2645519e13d2ec
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892536"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178581"
 ---
 # <a name="restore-system-state-to-windows-server"></a>將系統狀態還原到 Windows Server
 
@@ -46,7 +46,7 @@ ms.locfileid: "88892536"
 
     ![磁碟區和日期](./media/backup-azure-restore-system-state/select-date.png)
 
-6. 選擇要還原的復原點之後，請選取 [ **下一步]**。
+6. 選擇要還原的復原點之後，請選取 **[下一步]**。
 
     Azure 備份會掛接本機復原點，並且使用它做為復原磁碟區。
 
@@ -94,7 +94,7 @@ ms.locfileid: "88892536"
 
     ![搜尋項目](./media/backup-azure-restore-system-state/select-date.png)
 
-9. 選擇要還原的復原點之後，請選取 [ **下一步]**。
+9. 選擇要還原的復原點之後，請選取 **[下一步]**。
 
 10. 在 [ **選取系統狀態復原模式** ] 窗格中，指定您要復原系統狀態檔案的目的地，然後選取 **[下一步]**。
 
@@ -112,7 +112,7 @@ ms.locfileid: "88892536"
 
 ## <a name="apply-restored-system-state-on-a-windows-server"></a>將還原的系統狀態套用到 Windows Server 上
 
-在使用 Azure 復原服務代理程式復原了檔案形式的系統狀態後，請使用 Windows Server Backup 公用程式將復原的系統狀態套用到 Windows Server。 伺服器上已有 Windows Server Backup 公用程式可供使用。 下列步驟說明如何套用復原的系統狀態。
+當您使用 Azure 復原服務代理程式將系統狀態復原為檔案之後，請使用 Windows Server Backup 公用程式，將復原的系統狀態套用到 Windows Server。 伺服器上已有 Windows Server Backup 公用程式可供使用。 下列步驟說明如何套用復原的系統狀態。
 
 1. 開啟 Windows Server Backup 嵌入式管理單元。 如果您不知道快照安裝的位置，請在電腦或伺服器上搜尋 **Windows Server Backup**。
 

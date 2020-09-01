@@ -3,12 +3,12 @@ title: 使用 PowerShell 備份和復原 Azure Vm
 description: 說明如何使用 Azure 備份搭配 PowerShell 來備份和復原 Azure Vm
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f34dc0b5ce4b230b3bc2408bd011180cb855cf17
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: e4564ba2b6109296a7383fb4b056c2f4b1890fda
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892400"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178126"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 備份及還原 Azure Vm
 
@@ -228,7 +228,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 在定義保護原則之後，您仍然必須對項目啟用此原則。 使用 [>enable-azrecoveryservicesbackupprotection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 啟用保護。 啟用保護需要兩個物件：項目和原則。 一旦原則與保存庫相關聯，備份工作流程將依照原則排程定義的時間觸發。
 
 > [!IMPORTANT]
-> 使用 PowerShell 同時啟用多個 Vm 的備份時，請確定單一原則沒有超過100個與其相關聯的 Vm。 這是[建議的最佳做法](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy)。 目前，如果有超過100部 Vm，則 PowerShell 用戶端不會明確封鎖，但會計畫在未來新增檢查。
+> 使用 PowerShell 同時啟用多個 Vm 的備份時，請確定單一原則沒有超過100個與其相關聯的 Vm。 這是[建議的最佳做法](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy)。 目前，如果有超過 100 部 VM，但已規劃在未來新增檢查，則 PowerShell 用戶端不會明確封鎖。
 
 下列範例會使用原則 NewPolicy 來對項目 V2VM 啟用保護。 這些範例根據 VM 是否加密以及加密的類型而有所不同。
 
@@ -474,7 +474,7 @@ $restorejob
 #### <a name="restore-managed-disks"></a>還原受控磁碟
 
 > [!NOTE]
-> 如果備份的 VM 含有受控磁碟，而您想要將它們還原成受控磁碟，我們從 Azure PowerShell RM 模組 v 6.7.0 開始便已導入該功能 。
+> 如果支援的 VM 具有受控磁片，而您想要將其還原為受控磁片，我們引進了 Azure PowerShell RM 模組 v 6.7.0 的功能。 起。
 >
 >
 

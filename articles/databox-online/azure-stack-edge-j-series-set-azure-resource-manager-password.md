@@ -1,23 +1,23 @@
 ---
-title: 在 Azure Stack Edge 裝置上設定 Azure Resource Manager 密碼
-description: 說明如何使用 Azure PowerShell 連接到 Azure Stack Edge 上執行的 Azure Resource Manager。
+title: 在 Azure Stack Edge GPU 裝置上設定 Azure Resource Manager 密碼
+description: 說明如何使用 Azure PowerShell 連接到 Azure Stack Edge GPU 上執行的 Azure Resource Manager。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: d56f12c746383576a32e2c0ade542bc8aedff22d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d64db4ab8da1f5f0f4c2dc69b2bc6d4da66c8e91
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083773"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146278"
 ---
 # <a name="set-azure-resource-manager-password"></a>設定 Azure Resource Manager 密碼
 
-[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]
+<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
 本文說明如何設定您的 Azure Resource Manager 密碼。 當您透過 Azure Resource Manager 連接到裝置本機 Api 時，必須設定此密碼。
 
@@ -146,6 +146,6 @@ ms.locfileid: "89083773"
     ```
 使用新密碼連接到 Azure Resource Manager。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [連接到 Azure Resource Manager](azure-stack-edge-j-series-connect-resource-manager.md)

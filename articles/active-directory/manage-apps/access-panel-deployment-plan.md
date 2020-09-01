@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 009818c9b208f5f464949f5e3ffe1404e509ac4b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017714"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146618"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>規劃 Azure Active Directory 我的應用程式部署
 
@@ -55,11 +55,8 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 我的應用程式是免費的，而且不需要在基本層級使用任何授權。 不過，您目錄中的物件數目和您想要部署的其他功能可能需要額外的授權。 某些具有授權需求的常見 Azure AD 案例包含下列安全性功能：
 
 * [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
-
 * [以群組為基礎的成員資格](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-
 * [自助式密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
-
 * [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
 如需 Azure AD，請參閱 [完整的授權指南](https://azure.microsoft.com/pricing/details/active-directory/)。
@@ -69,7 +66,6 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 開始此專案之前，請先完成下列必要條件：
 
 * [整合應用程式 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
-
 * [管理 Azure AD 使用者和群組基礎結構](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 
 ## <a name="plan-azure-ad-my-apps-deployment"></a>規劃 Azure AD 我的應用程式部署
@@ -121,7 +117,7 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 
 下表列出幾個重要的我的應用程式設定，以及您可能使用的一般值：
 
-| 組態| 一般值 |
+| 設定| 一般值 |
 | - | - |
 | 判斷試驗群組| 識別要使用的 Azure AD 安全性群組，並確定所有試驗成員都是群組的一部分。 |
 | 判斷要為生產環境啟用的群組或群組。| 識別要使用的 Azure AD 安全性群組或已同步處理至 Azure AD 的 Active Directory 群組。 確定所有試驗成員都是群組的一部分。 |
@@ -139,7 +135,6 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 若要使用系統管理員同意，您必須是組織的全域管理員，而且應用程式必須是：
 
 * 在您的組織中註冊
-
 * 已在另一個 Azure AD 組織註冊，且先前至少有一位使用者同意
 
 如需詳細資訊，請參閱 [設定終端使用者在 Azure Active Directory 中同意應用程式的方式](configure-user-consent.md)。
@@ -180,9 +175,7 @@ Microsoft 會為 [電子郵件提供可自訂的範本，以及我的應用程�
 如果您必須整合密碼型 SSO 應用程式，您應該定義一種機制，以 [支援的瀏覽器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)大規模部署擴充功能。 這些選項包括：
 
 * [Internet Explorer 的群組原則](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-
 * [Internet Explorer 的 Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-
 * [適用于 Chrome、Firefox、Microsoft Edge 或 IE 的使用者導向下載和設定](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 不使用密碼型 SSO 應用程式的使用者也可受益于擴充功能。 這些優點包括從其搜尋列啟動任何應用程式、尋找最近使用的應用程式存取權，以及有我的應用程式頁面連結的功能。
@@ -294,7 +287,6 @@ Azure AD 會將大部分的審核資料保留30天。 您可以透過 Azure 系�
 
 #### <a name="application-self-service-capabilities-test-case-examples"></a>應用程式自助功能測試案例範例
 
-
 | 商務案例| 預期的結果 |
 | - | - |
 | 使用者可以管理應用程式的成員資格| 使用者可以新增/移除具有應用程式存取權的成員 |
@@ -319,22 +311,5 @@ Azure AD 會將大部分的審核資料保留30天。 您可以透過 Azure 系�
 
 您可以使用 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 管理您的角色，為具有目錄許可權的使用者提供額外的審核、控制和存取權審核。
 
-### <a name="troubleshoot-my-apps-issues"></a>針對我的應用程式問題進行疑難排解
-
-使用常見案例為您的支援組織建立疑難排解指南，這些案例會指向 Microsoft 檔中的解決方案。 您可能會想要建立可將支援細分至組織所使用之階層的指南。
-
-請參閱這些疑難排解指南以取得參考：
-
-[應用程式未出現](access-panel-troubleshoot-application-not-appearing.md)
-
-[出現非預期的應用程式](access-panel-troubleshoot-unexpected-application.md)
-
-[使用者無法登入我的應用程式](access-panel-troubleshoot-web-sign-in-problem.md)
-
-[使用自助應用程式存取的問題](access-panel-troubleshoot-self-service-access.md)
-
-[瀏覽器擴充功能的問題](manage-access-panel-browser-extension.md)
-
-## <a name="next-steps"></a>後續步驟
-
+## <a name="next-steps"></a>接下來的步驟
 [規劃 Azure Multi-Factor Authentication 的部署](https://aka.ms/deploymentplans/mfa)

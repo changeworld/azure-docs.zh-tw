@@ -3,12 +3,12 @@ title: 建立和使用資源檔
 description: 了解如何從各種輸入來源建立 Batch 資源檔。 此文章涵蓋一些常見的方法，說明如何建立並將其放置在 VM 上。
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 481ac8843f871f9f1eaa61e782e273e27715a473
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e1bf7520774a0f4143aadd2298f300b3ac5c75a3
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964017"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146295"
 ---
 # <a name="creating-and-using-resource-files"></a>建立和使用資源檔
 
@@ -50,7 +50,7 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 > [!NOTE]
 > 若要存取容器，您必須同時具備 `Read` 和 `List` 權限；若要存取 Blob，您只需要 `Read` 權限。
 
-設定權限之後，建立 SAS 權杖並設定 SAS URL 格式，以存取儲存體容器。 針對儲存體容器使用格式化的 SAS URL 可產生具有 [`FromStorageContainerUrl`](/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) 的資源檔。
+設定權限之後，建立 SAS 權杖並設定 SAS URL 格式，以存取儲存體容器。 針對儲存體容器使用格式化的 SAS URL 可產生具有 [`FromStorageContainerUrl`](/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl) 的資源檔。
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -93,13 +93,13 @@ ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt",
 
 您的 Batch 作業可能包含全都使用相同通用檔案的數個工作。 如果在許多工作中共用通用工作檔案，使用應用程式套件包含檔案，而不是使用資源檔，可能是更好的選項。 應用程式套件可將下載速度最佳化。 此外，系統會在工作之間快取應用程式套件中的資料，因此，如果您的工作檔案不常變更，則應用程式套件可能適合您的解決方案。 使用應用程式套件時，您不需要手動管理數個資源檔或產生 SAS URL，就可以存取 Azure 儲存體中的檔案。 Batch 會在背景搭配 Azure 儲存體運作，以儲存應用程式套件，並將其部署到計算節點。
 
-如果每個工作對於該工作都有許多獨特的檔案，則資源檔是最佳選項，因為您通常需要更新或取代使用獨特檔案的工作，而使用應用程式套件內容並不容易做到。 資源檔可為更新、新增或編輯個別檔案提供額外的彈性。
+如果每個工作都有該工作專屬的許多檔案，則資源檔是最佳選項，因為使用唯一檔案的工作通常需要更新或取代，這與應用程式套件內容並不容易。 資源檔可為更新、新增或編輯個別檔案提供額外的彈性。
 
 ### <a name="number-of-resource-files-per-task"></a>每項工作的資源檔數目
 
 如果針對工作指定了數百個資源檔，Batch 可能會因為太大而拒絕工作。 最好是將工作本身的資源檔數目減至最少，讓您的工作變小。
 
-如果沒有任何方法可將您工作所需的檔案數目減至最少，您可以建立能夠參考資源檔儲存體容器的單一資源檔，以便將工作最佳化。 若要這麼做，請將您的資源檔放入 Azure 儲存體容器中，並針對資源檔使用不同的「容器」[方法](/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods)。 使用 Blob 前置詞選項指定要為您的工作下載的檔案集合。
+如果沒有任何方法可將您工作所需的檔案數目減至最少，您可以建立能夠參考資源檔儲存體容器的單一資源檔，以便將工作最佳化。 若要這麼做，請將您的資源檔放入 Azure 儲存體容器中，並針對資源檔使用不同的「容器」[方法](/dotnet/api/microsoft.azure.batch.resourcefileazure-dotnet#methods)。 使用 Blob 前置詞選項指定要為您的工作下載的檔案集合。
 
 ## <a name="next-steps"></a>後續步驟
 

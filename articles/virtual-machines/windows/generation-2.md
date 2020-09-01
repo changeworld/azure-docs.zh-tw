@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 1ebba13de14935d931d5d21ab786889d9a3755da
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1204435a5f1d7a48fceb654df10b8394d6f5df50
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500305"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146635"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 上第 2 代 VM 的支援
 
@@ -30,6 +30,8 @@ Azure 中所有的 VM 大小都支援第 1 代 VM (Mv2 系列 VM 除外)。 Azur
 * [B 系列](../sizes-b-series-burstable.md)
 * [DCsv2 系列](../dcv2-series.md)
 * [DSv2 系列](../dv2-dsv2-series.md)和 [Dsv3 系列](../dv3-dsv3-series.md)
+* [Dsv4 系列](../dv4-dsv4-series.md)
+* [Ddsv4 系列](../ddv4-ddsv4-series.md)
 * [Dasv4 系列](../dav4-dasv4-series.md)
 * [Esv3 系列](../ev3-esv3-series.md)
 * [Easv4 系列](../eav4-easv4-series.md)
@@ -192,7 +194,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 * **第 2 代 VM 是否支援加速網路？**  
     是。 如需詳細資訊，請參閱[建立具有加速網路功能的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
 
-* **第2代 Vm 是否支援 Azure 中的安全開機或 vTPM？**
+* **第2代 Vm 支援在 Azure 中安全開機或 vTPM 嗎？**
     Azure 中的第1代和第2代 Vm 不支援安全開機或 vTPM。 
     
 * **第 2 代 VM 是否支援 VHDX？**  

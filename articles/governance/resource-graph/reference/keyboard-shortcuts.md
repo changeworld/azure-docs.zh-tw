@@ -4,12 +4,12 @@ description: Azure 入口網站中的 Azure Resource Graph Explorer 支援鍵盤
 ms.date: 08/25/2020
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: f5995498f2b95828a7c03dbcd5669491e62de2e7
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 02471a6efc4ac4d002ca641b792c1c721ffeb3f7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88848756"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146431"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Azure Resource Graph Explorer 的鍵盤快速鍵
 
@@ -22,7 +22,6 @@ ms.locfileid: "88848756"
 |註解/取消註解 |<kbd>Ctrl</kbd>+<kbd>/</kbd> | <kbd>Cmd</kbd>+<kbd>/</kbd> |
 |減少縮排 |<kbd>CTRL</kbd> +<kbd>[</kbd> |<kbd>Cmd</kbd> +<kbd>[</kbd> |
 |增加縮排 |<kbd>CTRL</kbd> +<kbd>]</kbd> |<kbd>Cmd</kbd> +<kbd>]</kbd> |
-|全選 |<kbd>CTRL</kbd> +<kbd>A</kbd> |<kbd>Cmd</kbd> +<kbd>A</kbd> |
 |將行向下移動 |<kbd>ALT</kbd> +<kbd>↓</kbd> |<kbd>選項</kbd> +<kbd>↓</kbd> |
 |將行上移 |<kbd>ALT</kbd> +<kbd>↑</kbd> |<kbd>選項</kbd> +<kbd>↑</kbd> |
 |取代 |<kbd>CTRL</kbd> +<kbd>F</kbd> |<kbd>Cmd</kbd> +<kbd>ALT</kbd> +<kbd>F</kbd> |
@@ -63,7 +62,7 @@ ms.locfileid: "88848756"
 |切換至橫條圖  |<kbd>ALT</kbd> +<kbd>B</kbd> | <kbd>選項</kbd> +<kbd>B</kbd> |
 |切換至地圖圖表  |<kbd>ALT</kbd> +<kbd>N</kbd> | <kbd>選項</kbd> +<kbd>M</kbd> |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [Azure 入口網站的鍵盤快速鍵](../../../azure-portal/azure-portal-keyboard-shortcuts.md)
 - [Resource Graph 的查詢語言](../concepts/query-language.md)

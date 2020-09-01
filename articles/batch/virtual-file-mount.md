@@ -4,23 +4,23 @@ description: 了解如何在 Batch 集區上掛接虛擬檔案系統。
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/13/2019
-ms.openlocfilehash: 6b42d73954bf7ccaedfec15371cc73115c51198a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921625"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145479"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>在 Batch 集區上掛接虛擬檔案系統
 
 Azure Batch 現在支援在 Batch 集區中的 Windows 或 Linux 計算節點上掛接雲端儲存空間或外部檔案系統。 當計算節點加入集區時，就會掛接虛擬檔案系統並將其視為該節點上的本機磁碟機。 您可以掛接檔案系統，例如 Azure 檔案儲存體、Azure Blob 儲存體、網路檔案系統 (NFS)，包括 [Avere vFXT 快取](../avere-vfxt/avere-vfxt-overview.md)或 Common Internet File System (CIFS)。
 
-在本文中，您將了解如何使用[適用於 .NET 的 Batch 管理程式庫](/dotnet/api/overview/azure/batch?view=azure-dotnet)，在計算節點的集區上掛接虛擬檔案系統。
+在本文中，您將了解如何使用[適用於 .NET 的 Batch 管理程式庫](/dotnet/api/overview/azure/batch)，在計算節點的集區上掛接虛擬檔案系統。
 
 > [!NOTE]
 > 在 2019-08-19 當天起建立的 Batch 集區上，支援掛接虛擬檔案系統。 在 2019-08-19 之前建立的 Batch 集區則不支援此功能。
 > 
-> 用於在計算節點上掛接檔案系統的 API 是 [Batch .NET](/dotnet/api/microsoft.azure.batch?view=azure-dotnet) 程式庫的一部分。
+> 用於在計算節點上掛接檔案系統的 API 是 [Batch .NET](/dotnet/api/microsoft.azure.batch) 程式庫的一部分。
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>在集區上掛接的優點
 

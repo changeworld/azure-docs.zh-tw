@@ -1,19 +1,19 @@
 ---
-title: '適用于 Azure Stack Edge 的 c # IoT Edge 模組 |Microsoft Docs'
-description: '瞭解如何開發可在 Azure Stack Edge 上部署的 c # IoT Edge 模組。'
+title: '使用 GPU 進行 Azure Stack Edge 的 c # IoT Edge 模組 |Microsoft Docs'
+description: '瞭解如何開發可在 Azure Stack Edge GPU 裝置上部署的 c # IoT Edge 模組。'
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: a6fb02033d7f242649907eaed8bf01aa23b3cbbe
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: cef6524bd228d5fed342cabfb2959e5d8ab8954e
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083335"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146227"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>開發 c # IoT Edge 模組，以將檔案移至 Azure Stack Edge
 
@@ -276,6 +276,6 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 
 4. 您可以在 VS Code 整合式終端機中檢視完整容器映像位址。 系統會根據 module.json 檔案中的資訊，使用 `<repository>:<version>-<platform>` 格式來建置映像位址。 在本文中，它應該看起來像 `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要在 Azure Stack Edge 上部署和執行此模組，請參閱 [新增模組](azure-stack-edge-j-series-deploy-configure-compute.md#add-a-module)中的步驟。

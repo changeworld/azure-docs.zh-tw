@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: b37b327a535b716bbce845cd5883e58ec5379c48
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 3c2fef4ebd7db076a502f63101c80c4e08683b39
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782714"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145360"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>將 Azure Key Vault 移至另一個訂用帳戶
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 > [!IMPORTANT]
 > **將金鑰保存庫移至另一個訂用帳戶，將會對您的環境造成重大變更。**
@@ -58,8 +58,6 @@ ms.locfileid: "88782714"
 * 新訂用帳戶中的資源群組。
 
 ## <a name="procedure"></a>程序
-
-如果您 
 
 ### <a name="moving-key-vault-to-a-new-subscription-within-the-same-tenant"></a>將 Key Vault 移至相同租使用者內的新訂用帳戶
 

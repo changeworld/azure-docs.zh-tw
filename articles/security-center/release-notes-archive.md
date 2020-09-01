@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: cebc2c3d364cdb93c4b528c186dcef79c58ac6ea
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d7ac2777ffd500082bd0b8a9700d53bffd9d6931
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167006"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177307"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 資訊安全中心內新功能的封存？
 
@@ -51,13 +51,13 @@ Azure 資訊安全中心的安全分數功能增強版本現已提供預覽。 �
 
 請熟悉預覽階段中的安全分數變更，並決定有助於您進一步保護環境的其他補救。
 
-深入瞭解[增強的安全分數 (預覽) ](secure-score-security-controls.md)。
+深入瞭解 [增強的安全分數 (預覽) ](secure-score-security-controls.md)。
 
 
 
 ## <a name="november-2019"></a>2019 年 11 月
 
-11月的更新包括：
+11月更新包括：
  - [北美洲區域中 Azure Key Vault 的威脅防護 (預覽) ](#threat-protection-for-azure-key-vault-in-north-america-regions-preview)
  - [Azure 儲存體的威脅防護包括惡意程式碼信譽檢測](#threat-protection-for-azure-storage-includes-malware-reputation-screening)
  - [Logic Apps 的工作流程自動化 (預覽)](#workflow-automation-with-logic-apps-preview)
@@ -139,9 +139,9 @@ Kubernetes 很快就成為在雲端中部署及管理軟體的新標準。 少�
 
 ### <a name="virtual-machine-vulnerability-assessment-preview"></a>虛擬機器弱點評估 (預覽)
 
-安裝在虛擬機器中的應用程式通常會有可能導致虛擬機器缺口的弱點。 我們宣佈資訊安全中心 standard 層包含適用于虛擬機器的內建弱點評估，不需額外付費。 弱點評量是由 Qualys 提供且處於公開預覽，可讓您持續掃描虛擬機器上所有已安裝的應用程式，以找出易受攻擊的應用程式，並在資訊安全中心入口網站的體驗中呈現結果。 資訊安全中心會負責所有部署作業，因此使用者無須執行任何額外的工作。 接下來，我們打算提供弱點評估選項，以支援客戶的獨特商務需求。
+安裝在虛擬機器中的應用程式通常會有可能導致虛擬機器缺口的弱點。 我們宣佈安全中心標準層包含虛擬機器的內建弱點評定，無須額外付費。 弱點評量是由 Qualys 提供且處於公開預覽，可讓您持續掃描虛擬機器上所有已安裝的應用程式，以找出易受攻擊的應用程式，並在資訊安全中心入口網站的體驗中呈現結果。 資訊安全中心會負責所有部署作業，因此使用者無須執行任何額外的工作。 接下來，我們打算提供弱點評估選項，以支援客戶的獨特商務需求。
 
-[深入了解 Azure 虛擬機器的弱點評量](security-center-vulnerability-assessment-recommendations.md)。
+[深入了解 Azure 虛擬機器的弱點評量](deploy-vulnerability-assessment-vm.md)。
 
 
 ### <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Azure 虛擬機器上 SQL 伺服器的進階資料安全性 (預覽)
@@ -187,7 +187,7 @@ Windows 管理中心是 Windows Server 的管理入口網站，這些伺服器�
 
 ## <a name="september-2019"></a>2019 年 9 月
 
-9月的更新包括：
+9月更新包括：
 
  - [使用自適性應用程式控制改進項目來管理規則](#managing-rules-with-adaptive-application-controls-improvements)
  - [使用 Azure 原則控制容器安全性建議](#control-container-security-recommendation-using-azure-policy)
@@ -208,7 +208,7 @@ Windows 管理中心是 Windows Server 的管理入口網站，這些伺服器�
 
 ## <a name="august-2019"></a>2019 年 8 月
 
-8月的更新包括：
+8月更新包括：
 
  - [Azure 防火牆的 Just-in-time (JIT) VM 存取](#just-in-time-jit-vm-access-for-azure-firewall)
  - [單鍵補救以提升您的安全性狀態 (預覽)](#single-click-remediation-to-boost-your-security-posture-preview)

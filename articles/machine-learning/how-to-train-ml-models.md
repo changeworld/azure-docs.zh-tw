@@ -11,17 +11,17 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: fe7210ad52c756f140144f04e3b747c0bfcd00c3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 70e965e26d3b82cdc63a3c0e147919b8b40585af
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650310"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146584"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>藉由估算器使用 Azure Machine Learning 將模型定型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-使用 Azure Machine Learning，您可以輕鬆地將您的定型指令碼提交到[各種計算目標](how-to-set-up-training-targets.md#compute-targets-for-training)，並使用 [RunConfiguration 物件](how-to-set-up-training-targets.md#whats-a-run-configuration)和 [ScriptRunConfig 物件](how-to-set-up-training-targets.md#submit)。 這種模式可提升彈性並達到最大的控制度。
+使用 Azure Machine Learning，您可以輕鬆地將您的定型指令碼提交到[各種計算目標](how-to-set-up-training-targets.md)，並使用 [RunConfiguration 物件](how-to-set-up-training-targets.md#whats-a-run-configuration)和 [ScriptRunConfig 物件](how-to-set-up-training-targets.md#submit)。 這種模式可提升彈性並達到最大的控制度。
 
 
 估算器類別可讓您更輕鬆地使用深度學習和增強式學習來將模型定型。 其提供了高階的抽象概念，可讓您輕鬆地建構回合組態。 您可以建立和使用泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)，以在任何所選計算目標 (無論是您的本機電腦、Azure 中的單一 VM 還是 Azure 中的 GPU 叢集) 上使用您選擇的任何學習架構 (例如 scikit-learn) 來提交定型指令碼。 針對 PyTorch、TensorFlow、Chainer 和增強式學習工作，Azure Machine Learning 也提供各自的 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) 和[增強式學習](how-to-use-reinforcement-learning.md)估算器，以簡化這些架構的使用方式。
@@ -29,7 +29,7 @@ ms.locfileid: "88650310"
 ## <a name="train-with-an-estimator"></a>使用預估器來定型
 
 建立您的[工作區](concept-workspace.md)並設定您的[開發環境](how-to-configure-environment.md)後，請將 Azure Machine Learning 中的模型定型牽涉到下列步驟：  
-1. 建立[遠端計算目標](how-to-set-up-training-targets.md) (請注意，您也可以使用本機電腦作為計算目標)
+1. 建立 [遠端計算目標](how-to-create-attach-compute-sdk.md) (或您也可以使用本機電腦作為計算目標) 
 2. 將您的[定型資料](how-to-access-data.md)上傳到資料存放區 (選擇性)
 3. 建立您的[定型指令碼](tutorial-train-models-with-aml.md#create-a-training-script)
 4. 建立 `Estimator` 物件
@@ -39,7 +39,7 @@ ms.locfileid: "88650310"
 
 ### <a name="single-node-training"></a>單一節點定型
 
-使用 `Estimator` 在 Azure 中遠端計算上針對 scikit-learn 模型執行單一節點定型。 您應該已經建立[計算目標](how-to-set-up-training-targets.md#amlcompute)物件 `compute_target` 與 [FileDataset](how-to-create-register-datasets.md) 物件 `ds`。
+使用 `Estimator` 在 Azure 中遠端計算上針對 scikit-learn 模型執行單一節點定型。 您應該已經建立[計算目標](how-to-create-attach-compute-sdk.md#amlcompute)物件 `compute_target` 與 [FileDataset](how-to-create-register-datasets.md) 物件 `ds`。
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -63,7 +63,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 --|--
 `source_directory`| 包含定型作業所需之所有程式碼的本機目錄。 此資料夾是從您的本機電腦複製到遠端計算。
 `script_params`| 會指定要傳遞至定型指令碼 `entry_script` 的命令列引數字典，格式為 `<command-line argument, value>` 組。 若要在 `script_params` 中指定詳細資訊旗標，請使用 `<command-line argument, "">`。
-`compute_target`| 您的定型指令碼執行所在的遠端計算目標，在此案例中為 Azure Machine Learning Compute ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) 叢集。 (請注意，即使 AmlCompute 叢集是常用的目標，您也可選擇其他計算目標類型，例如 Azure VM 或甚至本機電腦。)
+`compute_target`| 您的定型指令碼執行所在的遠端計算目標，在此案例中為 Azure Machine Learning Compute ([AmlCompute](how-to-create-attach-compute-sdk.md#amlcompute)) 叢集。 (請注意，即使 AmlCompute 叢集是常用的目標，您也可選擇其他計算目標類型，例如 Azure VM 或甚至本機電腦。)
 `entry_script`| 要在遠端計算上執行之定型指令碼的檔案路徑 (相對於 `source_directory`)。 此檔案 (以及此檔案所相依的其他任何檔案) 都應位於此資料夾。
 `conda_packages`| 要透過 Conda 安裝的 Python 套件清單 (其中包含您的定型指令碼所需的套件)。  
 
@@ -93,7 +93,7 @@ print(run.get_portal_url())
 
 下列程式碼顯示如何執行 Keras 模型的分散式定型。 此外，這會指定來自 Docker Hub `continuumio/miniconda` 的自訂 Docker 映像進行定型，而不是使用預設的 Azure Machine Learning 映像。
 
-您應該已建立了自己的[計算目標](how-to-set-up-training-targets.md#amlcompute)物件`compute_target`。 您會依照下列方式建立估算器：
+您應該已建立了自己的[計算目標](how-to-create-attach-compute-sdk.md#amlcompute)物件`compute_target`。 您會依照下列方式建立估算器：
 
 ```Python
 from azureml.train.estimator import Estimator

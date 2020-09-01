@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure Stack Edge 進行憑證疑難排解 |Microsoft Docs
-description: 描述針對 Azure Stack Edge 裝置的憑證錯誤進行疑難排解。
-services: Azure Stack Edge
+title: 使用 GPU 進行 Azure Stack Edge 的憑證疑難排解 |Microsoft Docs
+description: 描述針對 Azure Stack Edge GPU 裝置的憑證錯誤進行疑難排解。
+services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/25/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 2614928985070e47fa8c4b77a3068d480d362093
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e16121005a34f67ba4ce940e08cb632c1206ad6a
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083353"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146210"
 ---
 # <a name="troubleshooting-certificate-errors"></a>針對憑證錯誤進行疑難排解
 
@@ -56,6 +56,6 @@ ms.locfileid: "89083353"
 | CertificateManagement_UnreadableCertificate | 無法讀取類型的憑證 {0} 。 當憑證無法讀取或損毀時，就會發生此錯誤。 帶入新的憑證。|
 | CertificateSubjectNotFound | 找不到具有主體名稱的憑證 {0} 。 帶入新的憑證。|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [憑證需求](azure-stack-edge-j-series-certificate-requirements.md)

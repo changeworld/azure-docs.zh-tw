@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: c72777bf2a4415a7f773f82a21a121f5e58f2ec0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ab316d7b101a05dd9b6bba2e11bfe77239619126
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651910"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146754"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什麼是 Azure Machine Learning 計算執行個體？
 
@@ -24,13 +24,13 @@ Azure Machine Learning 計算實例是適用于資料科學家的受控雲端架
 
 在雲端中使用計算實例作為機器學習的完整設定和受控開發環境。 它們也可用來做為用於開發和測試之定型和推斷的計算目標。  
 
-針對生產等級模型定型，請使用具有多節點調整功能的 [Azure Machine Learning 計算](how-to-set-up-training-targets.md#amlcompute) 叢集。 針對生產等級模型部署，請使用 [Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)叢集。
+針對生產等級模型定型，請使用具有多節點調整功能的 [Azure Machine Learning 計算](how-to-create-attach-compute-sdk.md#amlcompute) 叢集。 針對生產等級模型部署，請使用 [Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)叢集。
 
 ## <a name="why-use-a-compute-instance"></a>為何要使用計算執行個體？
 
 計算執行個體是完全受控的雲端式工作站，並已針對機器學習開發環境予以最佳化。 其提供下列優點：
 
-|主要權益|說明|
+|主要權益|描述|
 |----|----|
 |生產力|您可以使用整合式筆記本以及下列 Azure Machine Learning studio 中的工具來建立和部署模型：<br/>-  Jupyter<br/>-  JupyterLab<br/>-RStudio (preview) <br/>計算實例已與 Azure Machine Learning 工作區和 studio 完全整合。 您可以與工作區中的其他資料科學家共用筆記本和資料。 您也可以使用[SSH](how-to-set-up-vs-code-remote.md)設定 VS Code 遠端開發 |
 |受控且安全|降低您的安全性磁碟使用量，並提升與企業安全性需求的合規性。 計算執行個體會提供健全的管理原則和安全的網路設定，例如：<br/><br/>- 從 Resource Manager 範本或 Azure Machine Learning SDK 自動佈建<br/>- [Azure 角色型存取控制 (Azure RBAC) ](/azure/role-based-access-control/overview)<br/>- [虛擬網路支援](how-to-enable-virtual-network.md#compute-instance)<br/>- 用以啟用/停用 SSH 存取的 SSH 原則<br/>已啟用 TLS 1。2 |
@@ -138,18 +138,7 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>建立計算實例
 
-在 Azure Machine Learning studio 的工作區中，從 [ **計算** ] 區段或 [ **筆記本** ] 區段中建立新的計算實例（當您準備好要執行其中一個筆記本時）。
-
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="建立新的計算實例":::
-
-
-|欄位  |描述  |
-|---------|---------|
-|計算名稱     |  <li>名稱是必要的，且長度必須介於3到24個字元之間。</li><li>有效字元是大寫和小寫字母、數位及  **-** 字元。</li><li>名稱必須以字母開頭</li><li>名稱在 Azure 區域內的所有現有計算中都必須是唯一的。 如果您選擇的名稱不是唯一的，您會看到警示</li><li>如果 **-**  使用字元，則在名稱後面必須接著至少一個字母</li>     |
-|虛擬機器類型 |  選擇 CPU 或 GPU。 建立之後，即無法變更此類型     |
-|虛擬機器大小     |  受支援的虛擬機器大小可能會在您的區域中受到限制。 檢查 [可用性清單](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
-|啟用/停用 SSH 存取     |   預設會停用 SSH 存取。  無法使用 SSH 存取。 在建立後變更。 如果您打算以互動方式使用[VS Code 遠端](how-to-set-up-vs-code-remote.md)進行調試，請務必啟用存取   |
-|進階設定     |  選擇性。 設定虛擬網路。 指定 **資源群組**、 **虛擬網路**和 **子網** ，以在 Azure 虛擬網路內建立計算實例， (vnet) 。 如需詳細資訊，請參閱這些 vnet 的 [網路需求](how-to-enable-virtual-network.md#compute-instance) 。        |
+在 Azure Machine Learning studio 的工作區中，從 [**計算**] 區段或 [**筆記本**] 區段中[建立新的計算實例](how-to-create-attach-compute-studio.md#compute-instance)（當您準備好要執行其中一個筆記本時）。 
 
 您也可以透過下列方式建立執行個體：
 * 直接從 [整合式筆記本體驗](tutorial-1st-experiment-sdk-setup.md#azure)
@@ -158,7 +147,7 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 * 使用 Azure Machine Learning SDK
 * 從[適用于 Azure Machine Learning 的 CLI 擴充](reference-azure-machine-learning-cli.md#computeinstance)功能
 
-每個區域的專用核心（每個 VM 系列配額）和區域配額總計（適用于建立計算實例）。 是整合的，並與 Azure Machine Learning 訓練計算叢集配額共用。 停止計算實例並不會釋放配額，以確保您能夠重新開機計算實例。
+適用于計算實例建立的每個區域每個區域的專用核心是統一的，並與 Azure Machine Learning 訓練計算叢集配額共用。 停止計算實例並不會釋放配額，以確保您能夠重新開機計算實例。
 
 ## <a name="compute-target"></a>計算目標
 

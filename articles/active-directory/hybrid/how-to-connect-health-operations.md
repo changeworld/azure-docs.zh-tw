@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e72e3cb3ccc6273a9b698475c5e5aa0bb87b8b7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bdcf5ded2f2cf49048b70dedb11f25e67766e938
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828790"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177613"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 作業
 本主題說明您可以使用 Azure Active Directory (Azure AD) Connect Health 來執行的各種作業。
@@ -43,11 +43,11 @@ ms.locfileid: "87828790"
 6. 若要完成變更，請按一下 [儲存]****。 只有在您儲存之後，變更才會生效。
 
 >[!NOTE] 
-> 當在後端服務中處理同步要求時發生問題時，此服務會將錯誤詳細資料的通知電子郵件傳送至您租使用者的系統管理連絡人電子郵件地址 (es) 。 我們聽到客戶的意見反應，在某些情況下，這些訊息的數量很大，所以我們會改變傳送這些訊息的方式。 
+> 當您在後端服務中處理同步處理要求時發生問題，此服務會將錯誤詳細資料傳送給您租使用者的系統管理連絡人電子郵件地址 (es) 的通知電子郵件。 我們聽說客戶的意見反應，在某些情況下，這些訊息的數量非常龐大，因此我們將變更傳送這些訊息的方式。 
 >
-> 每次發生同步處理錯誤時，我們會傳送後端服務傳回的所有錯誤摘要 這可讓客戶以更有效率的方式處理這些錯誤，並減少重複的錯誤訊息數目。
+> 我們不會在每次發生同步處理錯誤時傳送訊息，而是會針對後端服務傳回的所有錯誤傳送每日摘要。 如此一來，客戶就能以更有效率的方式來處理這些錯誤，並減少重複的錯誤訊息數目。
 >
-> 我們計畫在2020年1月15日執行此變更。
+> 我們計畫此變更將于2020年1月15日實行。
 
 ## <a name="delete-a-server-or-service-instance"></a>刪除伺服器或服務執行個體
 
@@ -103,15 +103,15 @@ Azure AD Connect Health for Azure Active Directory Domain Services：
    <br><br>
 
 [//]: # (Start of RBAC section)
-## <a name="manage-access-with-role-based-access-control"></a>使用角色型存取控制來管理存取
-[Azure 角色型存取控制 (](../../role-based-access-control/role-assignments-portal.md)適用于 Azure AD Connect Health 的 azure RBAC) 提供全域管理員以外的使用者和群組的存取權。 RBAC 會指派角色給目標使用者和群組，並提供機制來限制您目錄內的全域管理員。
+## <a name="manage-access-with-azure-rbac"></a>使用 Azure RBAC 管理存取權
+[Azure 角色型存取控制 (](../../role-based-access-control/role-assignments-portal.md) 適用于 Azure AD Connect Health 的 azure RBAC) 可讓您存取全域管理員以外的使用者和群組。 Azure RBAC 會將角色指派給預定的使用者和群組，並提供一種機制來限制您目錄內的全域管理員。
 
 ### <a name="roles"></a>角色
 Azure AD Connect Health 支援下列內建角色：
 
 | 角色 | 權限 |
 | --- | --- |
-| 擁有者 |擁有者可以在 Azure AD Connect Health 內「管理存取」**(例如將角色指派給使用者或群組)、「檢視入口網站中的所有資訊」**(例如檢視警示)，以及「變更設定」**(例如電子郵件通知)。 <br>預設會指派此角色給 Azure AD 全域管理員，而且無法變更。 |
+| Owner |擁有者可以在 Azure AD Connect Health 內「管理存取」**(例如將角色指派給使用者或群組)、「檢視入口網站中的所有資訊」**(例如檢視警示)，以及「變更設定」**(例如電子郵件通知)。 <br>預設會指派此角色給 Azure AD 全域管理員，而且無法變更。 |
 | 參與者 |參與者可以在 Azure AD Connect Health 內「檢視入口網站中的所有資訊」**(例如檢視警示)，以及「變更設定」**(例如電子郵件通知)。 |
 | 讀取者 |讀者可以在 Azure AD Connect Health 內「檢視入口網站中的所有資訊」**(例如檢視警示)。 |
 
@@ -135,12 +135,12 @@ Azure AD Connect Health 支援在兩個層級上管理存取：
    ![Azure AD Connect Health 資源提要欄位的螢幕擷取畫面](./media/how-to-connect-health-operations/startRBAC.png)
 2. 選取 [新增]。
 3. 在 [選取角色]**** 窗格中，選取角色 (例如，**擁有者**)。<br>
-   ![Azure AD Connect Health RBAC [使用者] 視窗的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_add.png)
+   ![Azure AD Connect Health 和 Azure RBAC [設定] 功能表的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_add.png)
 4. 輸入目標使用者或群組的名稱或識別碼。 您可以同時選取一或多個使用者或群組。 按一下 [選取]。
-   ![Azure AD Connect Health RBAC [使用者] 視窗的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_select_users.png)
-5. 選取 [確定]  。<br>
+   ![Azure AD Connect Health 和 Azure RBAC 角色清單的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_select_users.png)
+5. 選取 [確定]。<br>
 6. 完成角色指派之後，使用者和群組就會出現在清單中。<br>
-   ![Azure AD Connect Health RBAC [使用者] 視窗的螢幕擷取畫面，其中已醒目提示新使用者](./media/how-to-connect-health-operations/RBAC_user_list.png)
+   ![醒目提示 Azure AD Connect Health 和 Azure RBAC 和新使用者的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
 現在，列出的使用者和群組根據其獲指派的角色，已具有存取權。
 
@@ -153,7 +153,7 @@ Azure AD Connect Health 支援在兩個層級上管理存取：
 #### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>步驟 3：與使用者或群組共用刀鋒視窗位置
 1. 指派權限之後，使用者就可以前往[這裡](https://aka.ms/aadconnecthealth)來存取 Azure AD Connect Health。
 2. 在刀鋒視窗上，使用者可以將刀鋒視窗或其他組件釘選到儀表板。 只要按一下 [釘選到儀表板]**** 圖示即可。<br>
-   ![Azure AD Connect Health RBAC 釘選刀鋒視窗的螢幕擷取畫面，其中已醒目提示釘選圖示](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
+   ![已醒目提示釘選圖示的 Azure AD Connect Health 和 Azure RBAC 釘選視窗的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
 
 > [!NOTE]
 > 被指派「讀者」角色的使用者無法從 Azure Marketplace 取得 Azure AD Connect Health 擴充。 此使用者無法執行必要的「建立」作業來這麼做。 此使用者仍可前往上述連結以存取刀鋒視窗。 為方便之後使用，使用者可以將刀鋒視窗釘選到儀表板。
@@ -161,8 +161,8 @@ Azure AD Connect Health 支援在兩個層級上管理存取：
 >
 
 ### <a name="remove-users-or-groups"></a>移除使用者或群組
-您可以移除已新增至 Azure AD Connect Health RBAC 的使用者或群組。 只要以滑鼠右鍵按一下使用者或群組，然後選取 [移除]**** 即可。<br>
-![Azure AD Connect Health RBAC [使用者] 視窗的螢幕擷取畫面，其中已醒目提示 [移除]](./media/how-to-connect-health-operations/RBAC_remove.png)
+您可以移除新增至 Azure AD Connect Health 和 Azure RBAC 的使用者或群組。 只要以滑鼠右鍵按一下使用者或群組，然後選取 [移除]**** 即可。<br>
+![已醒目提示 [移除] 的 Azure AD Connect Health 和 Azure RBAC 的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_remove.png)
 
 [//]: # (End of RBAC section)
 

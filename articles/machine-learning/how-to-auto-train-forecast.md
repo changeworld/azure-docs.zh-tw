@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: 3a6ecc44791602ea074ebdd1fdf4e11393e10a4b
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 900e36ec3e508f9d3616cf0c0d19ea4ff067f775
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852166"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144782"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>將時間序列預測模型自動定型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "88852166"
 * 在 [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 物件中設定特定的時間序列參數
 * 使用時間序列資料執行預測
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 針對本文，您需要 
 
@@ -248,7 +248,6 @@ automl_config = AutoMLConfig(task='forecasting',
 若要啟用在 Azure Machine Learning studio 中建立之 AutoML 實驗的 DNN，請參閱 [studio 操作說明中的工作類型設定](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)。
 
 自動化 ML 會為使用者提供原生時間序列和深度學習模型來作為建議系統的一部分。 
-
 
 模型| 描述 | 優點
 ----|----|---

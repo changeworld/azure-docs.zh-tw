@@ -216,6 +216,13 @@
         - name: 使用 Resource Manager 範本
           displayName: arm
           href: how-to-create-workspace-template.md
+    - name: 建立計算資源
+      items:
+        - name: 使用 Studio
+          href: how-to-create-attach-compute-studio.md
+        - name: 使用 Python SDK
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-create-attach-compute-sdk.md
     - name: 設定您的環境
       items:
         - name: 設定開發環境
@@ -265,7 +272,7 @@
         - name: 存取資料
           items:
             - name: 連線到 Azure 儲存體
-              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
             - name: 從資料存放區取得資料
               displayName: 'data, data set, register, access data'
@@ -286,7 +293,7 @@
               href: how-to-differential-privacy.md
     - name: 將模型定型
       items:
-        - name: 設定訓練環境
+        - name: 提交定型回合
           displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
         - name: 為 ML 使用估算器

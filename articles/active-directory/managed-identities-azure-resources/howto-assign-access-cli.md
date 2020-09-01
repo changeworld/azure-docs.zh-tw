@@ -16,12 +16,12 @@ ms.date: 12/06/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fc55034582c4758a57c1fb532f8cf5b203c17961
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: eb27a147211112fa1a73da37d9f0ff379ec3d63f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009367"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177647"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>使用 Azure CLI 為受控識別指派對資源的存取權
 
@@ -40,7 +40,7 @@ ms.locfileid: "89009367"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>使用 RBAC 為受控識別指派對其他資源的存取權
+## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>使用 Azure RBAC 將受控識別存取權指派給另一個資源
 
 在 Azure 資源 (例如 [Azure 虛擬機器](qs-configure-cli-windows-vm.md)或 [Azure 虛擬機器擴展集](qs-configure-cli-windows-vmss.md)) 上啟用受控識別之後： 
 

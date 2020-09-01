@@ -3,12 +3,12 @@ title: 備份復原服務保存庫中的 Azure VM
 description: 說明如何使用 Azure 備份將 Azure VM 備份到備份復原服務保存庫
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: fd958fe658306fd068356764100e6aaa15f4fc67
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 29895c0358547679a9db7b2f4da203e2b546d67f
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826305"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145649"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>備份復原服務保存庫中的 Azure VM
 
@@ -155,7 +155,7 @@ Completed | 失敗 | 已完成但有警告
 失敗 | 失敗 | 失敗
 
 現在透過這項功能，對於相同的 VM，可以平行執行兩個備份，但在任一階段 (快照集、將資料傳輸至保存庫)，只有一個子工作可以執行。 因此，在備份作業進行中的備份作業導致下一天的備份失敗時，將會使用這項分離功能來避免此情況。 後續幾天的備份可以完成快照集，但如果早的備份作業處於進行中狀態，則會略過將 **資料傳輸至保存庫** 。
-在保存庫中建立的增量復原點，將會從保存庫中建立的最後一個復原點來捕捉所有變換。 使用者不會產生任何費用。
+在保存庫中建立的增量復原點將會從保存庫中建立的最新復原點捕獲所有變換。 使用者不會產生任何費用。
 
 ## <a name="optional-steps"></a>選擇性步驟
 

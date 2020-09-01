@@ -4,12 +4,12 @@ description: 瞭解如何使用 Azure 備份服務管理和監視 Microsoft Azur
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b46303bdb7fc6c39aafd3046a4bcbc5e0ba75766
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893063"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145564"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 備份服務來管理 Microsoft Azure 復原服務 (MARS) 代理程式備份
 
@@ -106,7 +106,7 @@ ms.locfileid: "88893063"
 1. 在 [ **選取原則專案** ] 頁面中，選取 [ **修改檔案和資料夾的備份排程** ]，然後選取 **[下一步]**。
 
     ![選取原則專案](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，但保留已儲存的備份，直到重新開機排程為止**。 然後，選取 [下一步]  。
+1. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，但保留已儲存的備份，直到重新開機排程為止**。 然後，選取 [下一步]。
 
     ![停止已排程的備份。](./media/backup-azure-manage-mars/stop-schedule-backup.png)
 1. 在 [ **暫停排程備份**] 中，檢查資訊並選取 **[完成]**。
@@ -117,7 +117,7 @@ ms.locfileid: "88893063"
 ### <a name="stop-protection-and-delete-backup-data"></a>停止保護並刪除備份資料
 
 1. 開啟 MARS 管理主控台，移至 [ **動作** ] 窗格，然後選取 [ **排程備份**]。
-2. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，然後刪除所有儲存的備份**。 然後，選取 [下一步]  。
+2. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，然後刪除所有儲存的備份**。 然後，選取 [下一步]。
 
     ![修改或停止已排程的備份。](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 
@@ -173,7 +173,7 @@ ms.locfileid: "88893063"
 
 本節討論因為已刪除、損毀、受惡意程式碼/勒索軟體感染或解除委任而受到 MARS 保護的來源電腦無法再使用的案例。
 
-針對這些機器，Azure 備份服務可確保最後一個復原點不會過期 (也就是說，不會根據備份原則中指定的保留規則來剪除) 。 因此，您可以安全地還原電腦。  請考慮下列您可以在備份資料上執行的案例：
+針對這些機器，Azure 備份服務可確保最新的復原點不會過期 (也就是說，根據備份原則中指定的保留規則，並不會剪除) 。 因此，您可以安全地還原電腦。  請考慮下列您可以在備份資料上執行的案例：
 
 ### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>案例1：來源電腦無法使用，因此您不再需要保留備份資料
 
@@ -190,7 +190,7 @@ ms.locfileid: "88893063"
   1. 啟動 MARS 用戶端以根據您的需求擴充保留期間
 - 您新還原的機器（以 MARS 保護）將繼續進行備份。  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 如需有關支援案例和限制的詳細資訊，請參閱 [MARS 代理程式的支援矩陣](./backup-support-matrix-mars-agent.md)。
 - 深入瞭解 [隨選備份原則保留行為](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior)。

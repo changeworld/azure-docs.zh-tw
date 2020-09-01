@@ -1,7 +1,7 @@
 ---
 title: 保護雲端中的資料存取
 titleSuffix: Azure Machine Learning
-description: 瞭解如何安全地從 Azure Machine Learning 連接到您的資料，以及如何使用資料集和資料存放區進行 ML 工作。 資料存放區可以從 Azure Blob 儲存資料，Azure Data Lake Gen 1 & 2、SQL db、Databricks,.。。
+description: 瞭解如何安全地從 Azure Machine Learning 連接到您的資料，以及如何使用資料集和資料存放區進行 ML 工作。 資料存放區可以儲存 Azure Blob 的資料，Azure Data Lake Gen 1 & 2、SQL db 和 Azure Databricks。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 04/24/2020
+ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: dadd3a8316efc5bf090a84a738c8f6da223d4572
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 958a433cc76f00010fe6fd431d8bea4fe6380a9c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651789"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146682"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 中的安全資料存取
 
 Azure Machine Learning 可讓您輕鬆地連接到雲端中的資料。  它提供基礎儲存體服務的抽象層，讓您可以安全地存取及使用資料，而不需要撰寫您的儲存體類型專屬的程式碼。 Azure Machine Learning 也提供下列資料功能：
 
+*    與 Pandas 和 Spark 資料框架的互通性
 *    資料歷程的版本控制和追蹤
 *    資料標記 
 *    資料漂移監視
-*    與 Pandas 和 Spark 資料框架的互通性
-
+    
 ## <a name="data-workflow"></a>資料工作流程
 
 當您準備好在雲端式儲存體解決方案中使用資料時，我們建議使用下列資料傳遞工作流程。 此工作流程假設您在 Azure 中的雲端式儲存體服務中有 [azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) 和資料。 
@@ -67,13 +67,19 @@ Azure 中支援的雲端式儲存體服務可註冊為數據存放區：
 
 ## <a name="datasets"></a>資料集
 
-Azure Machine Learning 資料集是指向儲存體服務中資料的參考。 它們不是您資料的複本，因此不會產生額外的儲存體成本，而且原始資料來源的完整性也不會有風險。
+Azure Machine Learning 資料集是指向儲存體服務中資料的參考。 它們不是 dataBy 建立 Azure Machine Learning 資料集的複本，您可以建立資料來源位置的參考，以及其中繼資料的複本。 
 
- 若要與儲存體中的資料互動，請 [建立資料集](how-to-create-register-datasets.md) ，以將資料封裝到機器學習工作的取用物件中。 將資料集註冊到您的工作區，以在不同的實驗之間共用和重複使用，而不需要資料內嵌複雜性。
+因為資料集會進行延遲的評估，且資料會保留在現有的位置，所以您
 
-您可以透過資料存放區，從本機檔案、公用 url、 [Azure 開放資料集](https://azure.microsoft.com/services/open-datasets/)或 Azure 儲存體服務建立資料集。 若要從記憶體中的 pandas 資料框架建立資料集，請將資料寫入本機檔案（例如 parquet），然後從該檔案建立您的資料集。  
+* 不會產生額外的儲存體成本。
+* 不會有意外變更原始資料來源的風險。
+* 改善 ML 工作流程的效能速度。
 
-我們支援2種類型的資料集： 
+若要與儲存體中的資料互動，請 [建立資料集](how-to-create-register-datasets.md) ，以將資料封裝到機器學習工作的取用物件中。 將資料集註冊到您的工作區，以在不同的實驗之間共用和重複使用，而不需要資料內嵌複雜性。
+
+您可以透過資料存放區，從本機檔案、公用 url、 [Azure 開放資料集](https://azure.microsoft.com/services/open-datasets/)或 Azure 儲存體服務建立資料集。 
+
+有2種類型的資料集： 
 
 + [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py)會參考資料存放區或公用 url 中的單一或多個檔案。 如果您的資料已清理，而且準備好用於定型實驗，您可以將 FileDatasets 參考的檔案 [下載或掛接](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) 到您的計算目標。
 
@@ -115,7 +121,7 @@ Azure Machine Learning 可讓您在集中的位置建立、管理及監視標籤
 
 請參閱 [建立資料集監視器](how-to-monitor-datasets.md) 的文章，以深入瞭解如何針對資料集內的新資料偵測和警示資料漂移。
 
-## <a name="next-steps"></a>後續步驟 
+## <a name="next-steps"></a>接下來的步驟 
 
 + [使用這些步驟](how-to-create-register-datasets.md)，在 Azure Machine Learning Studio 或 Python SDK 中建立資料集。
 + 使用我們的 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)試用資料集定型範例。

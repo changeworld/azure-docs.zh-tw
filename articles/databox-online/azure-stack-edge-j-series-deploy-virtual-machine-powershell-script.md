@@ -1,19 +1,19 @@
 ---
-title: 透過 Azure PowerShell 將 Vm 部署到您的 Azure Stack Edge 裝置
+title: 透過 Azure PowerShell 將 Vm 部署到您的 Azure Stack Edge GPU 裝置
 description: 說明如何使用 Azure PowerShell，在 Azure Stack Edge 裝置上建立及管理虛擬機器 (Vm) 。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 113f81c2c4209b851f2029bad2202fbb8bbfe103
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6e776b6dfc233ffb12d3597a0e6bc203f1674abd
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083322"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147060"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell-script"></a>透過 Azure PowerShell 腳本在您的 Azure Stack Edge 裝置上部署 Vm
 
@@ -116,6 +116,6 @@ ms.locfileid: "89083322"
     ```
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [使用 Azure PowerShell Cmdlet 部署 Vm](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)

@@ -1,19 +1,19 @@
 ---
-title: Azure Stack Edge 共用管理 |Microsoft Docs
-description: 說明如何使用 Azure 入口網站來管理 Azure Stack Edge 上的共用。
+title: Azure Stack Edge GPU 共用管理 |Microsoft Docs
+description: 說明如何使用 Azure 入口網站來管理 Azure Stack Edge GPU 上的共用。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 12/12/2019
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 1dff88a3f546480fe92f8fb1eb582fc3b8d2ddb6
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e0bbcc6f3e8b02c6f8191114253d3ccb2d1b739a
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084760"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147094"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>使用 Azure 入口網站來管理您 Azure Stack Edge 上的共用
 
@@ -239,6 +239,6 @@ ms.locfileid: "89084760"
 > 您只需要針對指定的儲存體帳戶執行此作業一次。 不需要針對與相同儲存體帳戶相關聯的所有共用，重複此動作。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 了解如何[透過 Azure 入口網站管理使用者](azure-stack-edge-j-series-manage-users.md)。

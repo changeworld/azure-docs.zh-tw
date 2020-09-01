@@ -1,19 +1,19 @@
 ---
-title: 使用憑證搭配 Azure Stack Edge |Microsoft Docs
-description: 說明如何使用 Azure Stack Edge 裝置的憑證，包括使用的原因、哪些類型，以及如何在您的裝置上傳憑證。
+title: 使用 Azure Stack Edge GPU 的憑證 |Microsoft Docs
+description: 說明如何使用 Azure Stack Edge GPU 裝置的憑證，包括使用原因、哪些類型，以及如何將憑證上傳至您的裝置。
 services: Azure Stack Edge
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: e257ecbcc608dfc6ecb9aedae69eeef083395836
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7742d036857525ce6be64a53234f7aa717d4bdca
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083685"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147077"
 ---
 # <a name="use-certificates-with-azure-stack-edge-series"></a>使用 Azure Stack Edge 系列的憑證 
 
@@ -416,6 +416,6 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
 在裝置本機 web UI 的 [ **憑證** ] 頁面上，查看憑證到期日。 憑證到期後，請根據 [建立和上傳憑證](azure-stack-edge-j-series-manage-certificates.md)中的詳細指示來建立和上傳新的憑證。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [部署 Azure Stack Edge 裝置](azure-stack-edge-gpu-deploy-prep.md)

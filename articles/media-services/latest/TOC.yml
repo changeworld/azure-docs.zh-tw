@@ -7,6 +7,8 @@
     - name: 媒體服務中有哪些新功能
       displayName: release notes
       href: release-notes.md
+    - name: 媒體服務合規性
+      href: concept-compliance.md
 - name: 快速入門
   items:
     - name: 設定您的環境
@@ -45,33 +47,34 @@
           href: encrypt-content-quickstart.md
 - name: 教學課程
   items:
-    - name: 編碼遠端檔案和串流影片
+    - name: .NET
       items:
-        - name: 透過 REST
-          displayName: 'encoding, job, transform'
+        - name: 編碼和串流遠端檔案 REST
           href: stream-files-tutorial-with-rest.md
-        - name: 透過 CLI
-          href: stream-files-cli-quickstart.md
-        - name: 透過 .NET
+        - name: 編碼和串流遠端檔案 .NET
           href: stream-files-dotnet-quickstart.md
-        - name: 搭配 Node.js
+        - name: 編碼和串流上傳的檔案
+          href: stream-files-tutorial-with-api.md
+        - name: 即時串流
+          href: stream-live-tutorial-with-api.md
+        - name: 分析您的影片
+          href: analyze-videos-tutorial-with-api.md
+        - name: 透過 AES-128 進行動態加密
+          href: protect-with-aes128.md
+        - name: 透過 DRM 進行動態加密
+          href: protect-with-drm.md
+    - name: CLI
+      items:
+        - name: 編碼和串流遠端檔案 CLI
+          href: stream-files-cli-quickstart.md
+    - name: Node.js
+      items:
+        - name: 編碼和串流遠端檔案 Node.js
           href: stream-files-nodejs-quickstart.md
-    - name: 將 AMS 事件儲存在 Azure Log Analytics 中
-      href: tutorial-events-log-analytics.md
-    - name: 將已上傳檔案編碼和串流影片
-      displayName: 'encode, encoding, job, transform'
-      href: stream-files-tutorial-with-api.md
-    - name: 即時串流
-      href: stream-live-tutorial-with-api.md
-      displayName: 'Live Events, Live Outputs, ingest'
-    - name: 分析您的影片
-      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-      href: analyze-videos-tutorial-with-api.md
-    - name: 透過 AES-128 進行動態加密
-      href: protect-with-aes128.md
-    - name: 透過 DRM 進行動態加密
-      displayName: 'PlayReady, Widevine, FairPlay'
-      href: protect-with-drm.md
+    - name: Azure 入口網站
+      items:
+        - name: 將 AMS 事件儲存在 Azure Log Analytics 中
+          href: tutorial-events-log-analytics.md
 - name: 範例
   items:
     - name: 媒體服務 v3 範例

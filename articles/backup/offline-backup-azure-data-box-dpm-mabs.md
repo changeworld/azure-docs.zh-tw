@@ -3,12 +3,12 @@ title: 使用 DPM 和 MABS 的 Azure 資料箱進行離線備份
 description: 您可以使用 Azure 資料箱從 DPM 與 MABS 離線植入初始備份資料。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 5a8fbf3869794b6a5ef78e78177f130e4e009795
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3755a4cc77455b37ae1545247992a3c8c4f25653
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017595"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177681"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>使用 DPM 和 MABS (Preview) 的 Azure 資料箱進行離線植入
 
@@ -149,7 +149,7 @@ DPM/MABS 伺服器會在系統內容中運作，因此需要將相同層級的�
           - Azure.Storage       *4.6.1*<br>
      >  - Azure AD 應用程式會註冊為 *AzureOfflineBackup_\<object GUID of the user>* 。
 
-13. 選取您已開箱、連接並解除鎖定資料箱磁碟的正確資料箱訂單。 選取 [下一步] 。
+13. 選取您已解除封裝、連線並解除鎖定資料箱磁片的正確資料箱訂單。 選取 [下一步]  。
 
     ![選取資料箱](./media/offline-backup-azure-data-box-dpm-mabs/select-databox.png)
 
@@ -165,7 +165,7 @@ DPM/MABS 伺服器會在系統內容中運作，因此需要將相同層級的�
     > 例如，如果磁片的路徑是 `\\mydomain\myserver\disk1\` 且 *disk1* 包含名為 *PageBlob*的目錄，則 DPM/MABS Server wizard 上提供的路徑為 `\\mydomain\myserver\disk1\` 。
     > 如果您[設定 Azure 資料箱 100 TB 裝置](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box)，請提供下列路徑作為裝置的網路路徑 `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob`。
 
-15. 選取 [下一步] 。 在 [ **摘要** ] 頁面上，檢查您的設定，然後選取 [ **建立群組**]。
+15. 選取 [下一步]  。 在 [ **摘要** ] 頁面上，檢查您的設定，然後選取 [ **建立群組**]。
 
     ![偵測資料箱](./media/offline-backup-azure-data-box-dpm-mabs/detect-databox.png)
 
