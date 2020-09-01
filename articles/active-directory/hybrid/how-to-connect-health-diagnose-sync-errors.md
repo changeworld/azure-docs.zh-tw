@@ -15,16 +15,16 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d48483697970333c542f140567ca6a6d3fcf7d2
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359087"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179142"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>對重複屬性同步處理錯誤進行診斷和修復
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 為了更進一步地點出同步處理錯誤，Azure Active Directory (Azure AD) Connect Health 導入了自助服務修復功能。 此功能會對重複屬性同步處理錯誤進行疑難排解，並修正來自 Azure AD 的孤立物件。
 診斷功能具有下列功效：
 - 可提供診斷程序，來縮小重複屬性同步處理錯誤的範圍。 此外，還可提供特定的修正方法。
@@ -34,7 +34,7 @@ ms.locfileid: "85359087"
 
 ## <a name="problems"></a>問題
 ### <a name="a-common-scenario"></a>常見案例
-發生 **QuarantinedAttributeValueMustBeUnique** 和 **AttributeValueMustBeUnique** 同步處理錯誤時，您常會在 Azure AD 中發現 **UserPrincipalName** 或 **Proxy 位址**衝突。 您可以從內部部署端更新衝突的來源物件，藉以解決同步處理錯誤。 同步處理錯誤將在下一次同步處理後解決。例如，此影像表示兩個使用者的**UserPrincipalName**有衝突。 兩者都是**Joe. J \@ contoso.com**。 有衝突的物件會在 Azure AD 中隔離。
+發生 **QuarantinedAttributeValueMustBeUnique** 和 **AttributeValueMustBeUnique** 同步處理錯誤時，您常會在 Azure AD 中發現 **UserPrincipalName** 或 **Proxy 位址**衝突。 您可以從內部部署端更新衝突的來源物件，藉以解決同步處理錯誤。 同步處理錯誤將會在下一次同步處理之後解決。例如，此影像表示兩位使用者的 **UserPrincipalName**發生衝突。 兩者都是 **Joe. J \@ contoso.com**。 有衝突的物件會在 Azure AD 中隔離。
 
 ![診斷同步處理錯誤的常見案例](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "85359087"
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique |
 
 >[!IMPORTANT]
-> 若要存取這項功能，必須有 RBAC 設定中的**全域管理員**權限或**參與者**權限。
+> 若要存取這項功能，必須要有 Azure RBAC 的 **全域管理員** 許可權或 **參與者** 許可權。
 >
 
 在 Azure 入口網站中遵循下列步驟，以縮減同步處理錯誤詳細資料，並提供更明確的解決方案：
@@ -129,10 +129,10 @@ ms.locfileid: "85359087"
 > **套用修正**變更只會套用至孤立物件案例。
 >
 
-完成前述步驟後，使用者即可存取連結至現有物件的原始資源。 清單視圖中的 [**診斷狀態**] 值會更新為 [**暫止同步**]。同步處理錯誤將在下一次同步處理後解決。Connect Health 不會再于清單視圖中顯示已解決的同步處理錯誤。
+完成前述步驟後，使用者即可存取連結至現有物件的原始資源。 清單視圖中的 [ **診斷狀態** ] 值會更新為 [ **待同步處理**]。同步處理錯誤將會在下一次同步處理之後解決。Connect Health 不會再于清單視圖中顯示已解決的同步處理錯誤。
 
 ## <a name="failures-and-error-messages"></a>失敗和錯誤訊息
-**具有衝突屬性的使用者會在 Azure Active Directory 中虛刪除。請確定使用者在重試前已被實刪除。**  
+**具有衝突屬性的使用者已在 Azure Active Directory 中虛刪除。請確定使用者已在重試之前被實刪除。**  
 應先清除 Azure AD 中具有衝突屬性的使用者，才能套用修正程式。 請參閱[如何在 Azure AD 中永久刪除使用者](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore)，再重試此修正程式。 進入虛刪除狀態 30 天後，也會自動永久刪除使用者。 
 
 **不支援對租用戶中的雲端式使用者更新來源錨點。**  
@@ -140,7 +140,7 @@ Azure AD 中的雲端式使用者不應擁有來源錨點。 在此情況下，�
 
 ## <a name="faq"></a>常見問題集
 **問：** 如果**套用修正**執行失敗，會發生什麼狀況？  
-**答：** 如果執行失敗，可能表示 Azure AD Connect 正在執行匯出錯誤。 重新整理入口網站頁面，並在下一次同步之後重試。預設的同步處理週期為30分鐘。 
+**答：** 如果執行失敗，可能表示 Azure AD Connect 正在執行匯出錯誤。 重新整理入口網站頁面，然後在下一次同步之後重試。預設的同步處理週期為30分鐘。 
 
 
 **問：** 如果**現有的物件**是要刪除的物件，將會如何？  
@@ -148,7 +148,7 @@ Azure AD 中的雲端式使用者不應擁有來源錨點。 在此情況下，�
 
 
 **問：** 使用者需要哪些權限才能套用修正？  
-**答：** RBAC 設定中的**全域管理員**或**參與者**有權存取診斷和疑難排解程序。
+**答：** **全域管理員**或 Azure RBAC 的 **參與者** 具有存取診斷和疑難排解程式的許可權。
 
 
 **問：** 我需要針對這項功能設定 Azure AD Connect 或更新 Azure AD Connect Health 代理程式嗎？  

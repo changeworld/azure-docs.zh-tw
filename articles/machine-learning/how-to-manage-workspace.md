@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e1f97fddb07e56946e37c04d9b9685412782c560
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: e2f13cbdca9d6372677bbba24d60f4a73436cfd7
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659750"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179252"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理 Azure Machine Learning 工作區
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,13 +45,13 @@ ms.locfileid: "88659750"
    工作區名稱 |輸入可識別您工作區的唯一名稱。 在此範例中，我們使用 **docs-ws**。 名稱必須是整個資源群組中唯一的。 請使用可輕鬆回想並且與其他人建立的工作區有所區別的名稱。 工作區名稱不區分大小寫。
    訂用帳戶 |選取您要使用的 Azure 訂用帳戶。
    資源群組 | 在您的訂用帳戶中使用現有的資源群組，或輸入名稱來建立新的資源群組。 資源群組會保留 Azure 方案的相關資源。 在此範例中，我們使用 **docs-aml**。 您需要 *參與者* 或 *擁有* 者角色，才能使用現有的資源群組。  如需存取的詳細資訊，請參閱 [管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
-   位置 | 選取最接近您的使用者與資料資源的位置，以建立工作區。
-   位置 | 選取最接近您的使用者與資料資源的位置，以建立工作區。
+   Location | 選取最接近您的使用者與資料資源的位置，以建立工作區。
+   Location | 選取最接近您的使用者與資料資源的位置，以建立工作區。
    工作區版本 | 選取 [ **基本** ] 或 [ **企業**]。  此工作區版本會決定您將擁有存取權和定價的功能。 深入瞭解 [基本和企業版的供應](overview-what-is-azure-ml.md#sku)專案。 
 
     ![設定您的工作區](./media/how-to-manage-workspace/select-edition.png)
 
-1. 當您完成工作區的設定時，請選取 [ **審核 + 建立**]。
+1. 當您完成工作區的設定時，請選取 [ **審核 + 建立**]。 （選擇性）使用 [ [網路](#networking) ] 和 [ [Advanced](#advanced) ] 區段來設定工作區的更多設定。
 2. 檢查設定，並進行任何額外的變更或修正。 當您對設定感到滿意之後，請選取 [ **建立**]。
 
    > [!Warning] 
@@ -61,15 +61,65 @@ ms.locfileid: "88659750"
  
  1. 若要檢視新的工作區，選取 [前往資源]****。
 
-### <a name="download-a-configuration-file"></a>下載設定檔
 
-1. 如果您將建立 [計算實例](tutorial-1st-experiment-sdk-setup.md#azure)，請略過此步驟。
+### <a name="networking"></a>網路功能
 
-1. 如果您打算在參考此工作區的本機環境上使用程式碼， 請從工作區的 [概觀]**** 區段中，選取 [下載 config.xml]****。  
+> [!IMPORTANT]
+> 如需搭配使用私人端點和虛擬網路與工作區的詳細資訊，請參閱 [網路隔離和隱私權](how-to-enable-virtual-network.md)。
 
-   ![下載 config.json](./media/how-to-manage-workspace/configure.png)
-   
-   使用 Python 指令碼或 Jupyter Notebook 將文件置於目錄結構中。 可以位於相同的目錄，名為 *aml_config* 的子目錄，或位於父目錄。 當您建立計算實例時，會為您將此檔案新增至 VM 上的正確目錄。
+1. 預設的網路設定是使用可在公用網際網路上存取的 __公用端點__。 若要將您的工作區存取限制為您所建立的 Azure 虛擬網路，您可以改為選取 __私人端點__ (預覽) 作為連線 __方法__，然後使用 [ __+ 新增__ ] 設定端點。
+
+   > [!IMPORTANT]
+   > 使用私人端點搭配 Azure Machine Learning 工作區目前處於公開預覽狀態。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+   :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="私人端點選取":::
+
+1. 在 [ __建立私人端點__ ] 表單上，設定要使用的位置、名稱和虛擬網路。 如果您想要使用端點搭配私人 DNS 區域，請選取 [ __與私人 dns 區域整合__ ]，然後使用 [ __私人 dns 區域__ ] 欄位選取區域。 選取 __[確定]__ 以建立端點。 
+
+   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="私人端點建立":::
+
+1. 當您完成網路的設定時，您可以選取 [ __審核] + [建立__]，或前進至選擇性的 [ __Advanced__ configuration]。
+
+    > [!WARNING]
+    > 當您建立私人端點時，會建立名為 __privatelink.api.azureml.ms__ 的新私人 DNS 區域。 這包含虛擬網路的連結。 如果您在相同的資源群組中建立具有私人端點的多個工作區，則只有第一個私人端點的虛擬網路可以新增至 DNS 區域。 若要新增其他工作區/私人端點所使用之虛擬網路的專案，請使用下列步驟：
+    > 
+    > 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取包含工作區的資源群組。 然後選取名為 __privatelink.api.azureml.ms__的私人 DNS 區域資源。
+    > 2. 在 [ __設定__] 中，選取 [ __虛擬網路連結__]。
+    > 3. 選取 [新增]。 從 [ __新增虛擬網路連結__ ] 頁面中，提供唯一的 __連結名稱__，然後選取要新增的 __虛擬網路__ 。 選取 __[確定]__ 以新增網路連結。
+    >
+    > 如需詳細資訊，請參閱 [Azure 私人端點 DNS](/azure/private-link/private-endpoint-dns)設定。
+
+### <a name="advanced"></a>進階
+
+根據預設，工作區的計量和中繼資料會儲存在 Microsoft 所維護的 Azure Cosmos DB 實例中。 這項資料會使用 Microsoft 管理的金鑰進行加密。 
+
+若要限制 Microsoft 在您的工作區上收集的資料，請選取 [ __高業務影響] 工作區__。
+
+> [!IMPORTANT]
+> 只有在建立工作區時，才能選取 [高業務衝擊]。 建立工作區之後，就無法變更此設定。
+
+如果您使用 __企業__ 版的 Azure Machine Learning，您可以改為提供您自己的金鑰。 這麼做會建立 Azure Cosmos DB 實例，以在您的 Azure 訂用帳戶中儲存計量和中繼資料。 使用下列步驟來使用您自己的金鑰：
+
+> [!IMPORTANT]
+> 在遵循這些步驟之前，您必須先執行下列動作：
+>
+> 1. 使用訂用帳戶的參與者許可權，在身分識別和存取管理) 中授權 __Machine Learning 應用程式__ (。
+> 1. 遵循 [設定客戶管理的金鑰](/azure/cosmos-db/how-to-setup-cmk) 的步驟：
+>     * 註冊 Azure Cosmos DB 提供者
+>     * 建立並設定 Azure Key Vault
+>     * 產生金鑰
+>
+>     您不需要手動建立 Azure Cosmos DB 實例，系統會在工作區建立期間為您建立一個實例。 此 Azure Cosmos DB 實例會根據此模式使用名稱，在個別的資源群組中建立： `<your-resource-group-name>_<GUID>` 。
+>
+> 建立工作區之後，就無法變更此設定。 如果您刪除工作區所使用的 Azure Cosmos DB，也必須刪除正在使用該工作區的工作區。
+
+1. 選取 [ __客戶管理的金鑰__]，然後選取 [ __按一下以選取金鑰__]。
+
+    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="客戶管理的金鑰":::
+
+1. 在 [ __從 Azure Key Vault 選取金鑰__ ] 表單中，選取現有的 Azure Key Vault、其包含的金鑰，以及金鑰的版本。 此金鑰用來加密 Azure Cosmos DB 中儲存的資料。 最後，使用 [ __選取__ ] 按鈕來使用此索引鍵。
+
+   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="選取金鑰":::
 
 ## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>升級至 Enterprise edition
 
@@ -87,7 +137,17 @@ ms.locfileid: "88659750"
 
 
 > [!IMPORTANT]
-> 您無法將企業版工作區降級至基本版工作區。 
+> 您無法將企業版工作區降級至基本版工作區。
+
+### <a name="download-a-configuration-file"></a>下載設定檔
+
+1. 如果您將建立 [計算實例](tutorial-1st-experiment-sdk-setup.md#azure)，請略過此步驟。
+
+1. 如果您打算在參考此工作區的本機環境上使用程式碼， 請從工作區的 [概觀]**** 區段中，選取 [下載 config.xml]****。  
+
+   ![下載 config.json](./media/how-to-manage-workspace/configure.png)
+   
+   使用 Python 指令碼或 Jupyter Notebook 將文件置於目錄結構中。 可以位於相同的目錄，名為 *aml_config* 的子目錄，或位於父目錄。 當您建立計算實例時，會為您將此檔案新增至 VM 上的正確目錄。
 
 ## <a name="find-a-workspace"></a><a name="view"></a>尋找工作區
 

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd189db10b599c0bc6bd5a3dbae2b1bc21b53b0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 033752eed30e898f5306154f73a9ca6741c1f81c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795910"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179567"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取
 
@@ -310,11 +310,11 @@ Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>清查您在代管虛擬機器內的特殊權限帳戶
 
-您通常不需要為使用者授與您所有 Azure 訂用帳戶或資源的無限制許可權。 使用 Azure AD 管理員角色僅授與使用者執行作業所需的存取權。 例如，使用 Azure AD 管理員角色讓一個管理員僅管理訂用帳戶中的 VM，而讓另一個管理員管理同一個訂用帳戶中的 SQL 資料庫。 如需詳細資訊，請參閱[在 Azure 入口網站中開始使用角色型存取控制](../../role-based-access-control/overview.md)。
+您通常不需要為使用者授與您所有 Azure 訂用帳戶或資源的無限制許可權。 使用 Azure AD 管理員角色僅授與使用者執行作業所需的存取權。 例如，使用 Azure AD 管理員角色讓一個管理員僅管理訂用帳戶中的 VM，而讓另一個管理員管理同一個訂用帳戶中的 SQL 資料庫。 如需詳細資訊，請參閱 [什麼是 Azure 角色型存取控制](../../role-based-access-control/overview.md)。
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>為 Azure AD 系統管理員角色實作 PIM
 
-透過具有 Azure AD 系統管理員角色的 Privileged Identity Management，可管理、控制及監視對 Azure 資源的存取。 使用 PIM 可縮短權限的曝光時間，並透過報告和警示更清楚了解權限的使用情形，以加強保護。 如需詳細資訊，請參閱[使用 Privileged Identity Management 管理對 Azure 資源的 RABC 存取](../../role-based-access-control/best-practices.md)。
+透過具有 Azure AD 系統管理員角色的 Privileged Identity Management，可管理、控制及監視對 Azure 資源的存取。 使用 PIM 可縮短權限的曝光時間，並透過報告和警示更清楚了解權限的使用情形，以加強保護。 如需詳細資訊，請參閱 [什麼是 Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md)。
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>使用 Azure 記錄整合將相關 Azure 記錄傳送至您的 SIEM 系統
 

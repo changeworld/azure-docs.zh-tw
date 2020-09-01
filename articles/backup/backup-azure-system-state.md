@@ -3,12 +3,12 @@ title: 將 Windows 系統狀態備份至 Azure
 description: 瞭解如何將 Windows Server 電腦的系統狀態備份至 Azure。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: b3e4e5451d40d7b0e600875b73e4810d5818d168
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 14ca17284d48355260cdeda6ef3b20b4794a0c4f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013430"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181624"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>將 Windows 系統狀態備份至 Azure
 
@@ -80,13 +80,13 @@ ms.locfileid: "89013430"
 
     ![MARS 安裝程式已完成](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
 
-    您還不需要安裝代理程式。 您可以在下載保存庫認證之後﹐安裝代理程式。
+    您還不需要安裝代理程式。 下載保存庫認證之後，您可以安裝代理程式。
 
 6. 在 [ **準備基礎結構** ] 窗格中，選取 [ **下載**]。
 
     ![下載保存庫認證](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    保存庫認證會下載到您的 [ **下載** ] 資料夾。 保存庫認證下載完成之後，您會看到快顯視窗，詢問您是否要開啟或儲存認證。 選取 [儲存]  。 如果您不小心選取 [ **開啟**]，請讓嘗試開啟保存庫認證的對話方塊失敗。 您將無法開啟保存庫認證。 繼續進行下一個步驟。 保存庫認證位於 [ **下載** ] 資料夾中。
+    保存庫認證會下載到您的 [ **下載** ] 資料夾。 保存庫認證下載完成之後，您會看到快顯視窗，詢問您是否要開啟或儲存認證。 選取 \[儲存\]。 如果您不小心選取 [ **開啟**]，請讓嘗試開啟保存庫認證的對話方塊失敗。 您將無法開啟保存庫認證。 繼續進行下一個步驟。 保存庫認證位於 [ **下載** ] 資料夾中。
 
     ![保存庫認證下載完成](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -152,7 +152,7 @@ ms.locfileid: "89013430"
 
 5. 選取 [ **系統狀態** ]，然後選取 **[確定]**。
 
-6. 選取 [下一步] 。
+6. 選取 [下一步]  。
 
 7. 在後續頁面中針對系統狀態備份選取所需的備份頻率和保留原則。
 

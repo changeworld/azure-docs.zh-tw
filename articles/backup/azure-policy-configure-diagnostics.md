@@ -3,12 +3,12 @@ title: 大規模設定保存庫診斷設定
 description: 使用 Azure 原則為指定範圍中的所有保存庫設定 Log Analytics 診斷設定
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 17a5ee5a541c3317c9ec9a6cfbed57d85f5116b4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 751ce0233fb232ef5d276c88a8c2429a2975b2f9
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892230"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179975"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>大規模設定保存庫診斷設定
 

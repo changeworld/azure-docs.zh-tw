@@ -4,12 +4,12 @@ description: 在本文中，您可以找到 Azure 備份監視警示和 Azure �
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 4ce1d65414011b1e307cc16fe886adeb007b262c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cf6929b9b926a6e6469f3fa789a19e60d5883d21
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000714"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181488"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure 備份監視警示-常見問題
 
@@ -19,7 +19,7 @@ ms.locfileid: "89000714"
 
 ### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>如何? 檢查報表資料是否已開始流入 Log Analytics (LA) 工作區？
 
-流覽至您已設定的 LA 工作區，流覽至 [ **記錄** 檔] 功能表項目，然後執行查詢 CoreAzureBackup |花1個。 如果您看到傳回的記錄，表示資料已開始流入工作區。 初始資料推送最多可能需要24小時的時間。
+流覽至您已設定的 LA 工作區。 流覽至 [ **記錄** 檔] 功能表項目，然後執行查詢 `CoreAzureBackup | take 1` 。 如果您看到傳回的記錄，表示資料已開始流入工作區。 初始資料推送最多可能需要24小時的時間。
 
 ### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>將資料推送至 LA 工作區的頻率為何？
 

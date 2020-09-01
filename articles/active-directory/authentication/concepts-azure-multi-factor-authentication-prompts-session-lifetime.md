@@ -5,22 +5,26 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 08/31/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13bbea166d699acead932b1ad6779720f82090e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919670"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179346"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>優化重新驗證提示，並瞭解 Azure Multi-Factor Authentication 的會話存留期
 
 Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重新驗證的頻率。 這種重新驗證可能是第一個因素，例如 password、FIDO 或無密碼 Microsoft Authenticator，或 (MFA) 執行多重要素驗證。 您可以視需要為您自己的環境和您想要的使用者體驗，設定這些重新驗證設定。
+
+使用者登入頻率的 Azure AD 預設設定是90天的滾動時段。 要求使用者提供認證通常是很好的事，但它可以 backfire。 如果使用者在不考慮的情況下輸入其認證，他們可能會不慎將他們提供給惡意認證提示。
+
+它可能會讓使用者不會要求使用者重新登入，但任何違反該會話的 IT 原則。 其中一些範例包括密碼變更、incompliant 裝置或帳戶停用作業。 您也可以 [使用 PowerShell 來明確撤銷使用者的會話](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)。
 
 本文詳述建議的設定，以及不同的設定如何運作並彼此互動。
 
@@ -35,6 +39,7 @@ Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重�
 * 如果您有 Office 365 應用程式授權或免費的 Azure AD 層：
     * 使用 [受管理的裝置](../devices/overview.md) 或 [無縫 sso](../hybrid/how-to-connect-sso.md)，在應用程式之間啟用單一登入 (SSO) 。
     * 保持啟用 [ *保持登入* ] 選項，並引導您的使用者接受它。
+* 針對行動裝置案例，請確定您的使用者使用 Microsoft Authenticator 應用程式。 此應用程式會用來做為其他 Azure AD 同盟應用程式的訊息代理程式，並減少裝置上的驗證提示。
 
 我們的研究顯示這些設定最適合大部分的租使用者。 這些設定的某些組合（例如， *記住 MFA* 並 *保持簽章*）可能會導致您的使用者經常進行驗證。 一般的重新驗證提示對於使用者生產力而言是不良的，可能會讓他們更容易遭受攻擊。
 
@@ -71,11 +76,11 @@ Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重�
 
 ### <a name="remember-multi-factor-authentication"></a>記住 Multi-Factor Authentication  
 
-這項設定可讓您設定1-60 天之間的值，並在使用者選取 [在登入時 **不要再詢問 X 天** ] 選項時，在瀏覽器上設定持續性 cookie。
+這項設定可讓您設定1-365 天之間的值，並在使用者選取 [在登入時 **不要再詢問 X 天** ] 選項時，在瀏覽器上設定持續性 cookie。
 
 ![核准登入要求的範例提示螢幕擷取畫面](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/approve-sign-in-request.png)
 
-雖然這項設定會減少 web 應用程式的驗證次數，但它會增加新式驗證用戶端（例如 Office 用戶端）的驗證次數。 這些用戶端通常只會在密碼重設或閒置90天后才會提示。 不過， *記住 MFA* 的最大值是60天。 當與 **保持登入** 或條件式存取原則搭配使用時，可能會增加驗證要求的數目。
+雖然這項設定會減少 web 應用程式的驗證次數，但它會增加新式驗證用戶端（例如 Office 用戶端）的驗證次數。 這些用戶端通常只會在密碼重設或閒置90天后才會提示。 但是，將此值設定為小於90天，會縮短 Office 用戶端的預設 MFA 提示，並增加重新驗證頻率。 當與 **保持登入** 或條件式存取原則搭配使用時，可能會增加驗證要求的數目。
 
 如果您使用「 *記住 MFA* 」並擁有 Azure AD Premium 1 授權，請考慮將這些設定遷移至條件式存取登入頻率。 否則，請考慮使用 [ *讓我保持登入嗎？* ]。
 

@@ -5,16 +5,16 @@ description: 瞭解 Azure Digital Twins 的新版本的變更內容
 author: baanders
 ms.author: baanders
 ms.date: 3/12/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ad99dc3dc17e81c3b5da144b21519781353baa47
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6d1786766fc61ed0edfdc53295a50ba212818fc0
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826818"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181420"
 ---
-# <a name="how-is-the-new-azure-digital-twins-different-from-the-previous-version-2018"></a>新版 Azure Digital Twins 與先前版本 (2018) 有何不同？
+# <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>什麼是新的 Azure Digital Twins？ 新版與舊版 (2018) 有何不同？
 
 Azure Digital Twins 的第一個公開預覽版本已於 2018 年 10 月發行。 雖然先前版本的核心概念已在公開預覽中傳遞至新的服務，但許多介面與實作詳細資料都已經變更，讓服務更具彈性且更容易存取。 這些變更都是受到客戶的意見反應啟發所形成的。
 
@@ -44,5 +44,4 @@ Azure Digital Twins 的第一個公開預覽版本已於 2018 年 10 月發行�
 
 接下來，藉由第一個教學課程深入瞭解 Azure Digital Twins 的使用方式：
 
-> [!div class="nextstepaction"]
-> [*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)
+[*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)

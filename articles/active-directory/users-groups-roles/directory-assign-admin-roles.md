@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87bb20d23f773997addd170da09ca8f20d2a8ce7
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 953217d15e6aede86d863bcd5be6df583d15df6d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949978"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180077"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -1980,6 +1980,6 @@ User | 未顯示，因為不能使用 | NA
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要深入了解如何將使用者指派為 Azure 訂用帳戶的系統管理員，請參閱[使用 Azure 角色 (Azure RBAC) 管理存取權](../../role-based-access-control/role-assignments-portal.md)
+* 若要深入瞭解如何將使用者指派為 Azure 訂用帳戶的系統管理員，請參閱 [ (AZURE RBAC 新增或移除 azure 角色指派) ](../../role-based-access-control/role-assignments-portal.md)
 * 若要深入了解如何在 Microsoft Azure 中控制資源存取，請參閱[了解不同角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * 如需訂用帳戶與 Azure AD 租使用者之間關聯性的詳細資訊，或若要建立或新增訂用帳戶的相關指示，請參閱 [將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租使用者](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

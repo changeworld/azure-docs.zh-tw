@@ -3,12 +3,12 @@ title: 設定 Azure 備份報告
 description: 使用 Log Analytics 和 Azure 活頁簿來設定及檢視 Azure 備份的報告
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 255f0b5f0066c0a437daba85121edb2f99ba590d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0ede2c8507032811eda26cfcb4d90f18578f3700
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022389"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180281"
 ---
 # <a name="configure-azure-backup-reports"></a>設定 Azure 備份報告
 
@@ -70,7 +70,7 @@ Azure 備份也提供內建的 Azure 原則定義，可自動設定指定範圍�
 
 此報告包含各種索引標籤：
 
-##### <a name="summary"></a>摘要
+##### <a name="summary"></a>[摘要]
 
 您可以使用此索引標籤來取得備份資產的概要說明。 您可以快速概覽備份項目總數、已取用的雲端儲存體總量、受保護的執行個體數目，以及每個工作負載類型的作業成功率。 如需特定備份成品類型的詳細資訊，請移至個別的索引標籤。
 
@@ -113,7 +113,7 @@ Azure 備份也提供內建的 Azure 原則定義，可自動設定指定範圍�
 
 若要查看非使用中的資源，請流覽至 [ **優化** ] 索引標籤，然後選取 [非使用中 **資源** ] 選取此圖格會顯示一個方格，其中包含所選範圍內所有非使用中資源的詳細資料。 依預設，方格會顯示過去七天內沒有復原點的專案。 若要在不同的時間範圍內尋找非使用中的資源，您可以在索引標籤頂端調整 **時間範圍** 篩選器。
 
-一旦您識別出非使用中的資源之後，您可以流覽至 [備份專案] 儀表板或該資源的 [Azure 資源] 窗格 (任何適用的) ，以進一步調查問題。 視您的案例而定，您可以選擇停止電腦的備份 (如果不再存在，請) 並刪除不必要的備份來節省成本，或您可以修正電腦中的問題，以確保備份能可靠地執行。
+一旦您識別出非使用中的資源之後，您可以流覽至 [備份專案] 儀表板或該資源的 [Azure 資源] 窗格， (任何適用的) 來進一步調查問題。 視您的案例而定，您可以選擇停止電腦的備份 (如果不再存在，請) 並刪除不必要的備份來節省成本，或您可以修正電腦中的問題，以確保備份能可靠地執行。
 
 ![優化 tab-非作用中資源](./media/backup-azure-configure-backup-reports/optimize-inactive-resources.png)
 

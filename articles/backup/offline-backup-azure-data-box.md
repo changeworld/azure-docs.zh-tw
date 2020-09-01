@@ -3,12 +3,12 @@ title: 使用 Azure 資料箱進行離線備份
 description: 瞭解如何使用 Azure 資料箱將從 MARS 代理程式離線的大型初始備份資料植入復原服務保存庫。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 6ad97ee60c3c7debea72357cf7fc8d483a3c1d46
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 5a4aeebeddcca4adcac511c7c225c8809dd29c93
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761554"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180927"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure 資料箱進行 Azure 備份離線備份
 
@@ -56,7 +56,7 @@ ms.locfileid: "88761554"
 >[!IMPORTANT]
 >單一伺服器的初始備份資料必須包含在單一 Azure 資料箱實例或 Azure 資料箱磁片中，且不能在相同或不同 Sku 的多個裝置之間共用。 但 Azure 資料箱的裝置可以包含來自多部伺服器的初始備份。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 ### <a name="azure-subscription-and-required-permissions"></a>Azure 訂用帳戶和必要許可權
 
@@ -310,7 +310,7 @@ Microsoft Azure 復原服務 (MARS) 代理程式會在您的租使用者中為�
     >- 從與 Azure 連線的 PowerShell 中，執行 `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` 命令。
     > - 移至名稱為 CurrentUserId 的登錄路徑 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` 。 *CurrentUserId*
 
-6. 以滑鼠右鍵按一下上一個步驟中所新增的字串，然後選取 [ **修改**]。 在 [值] 中，提供您在步驟2中匯出之憑證的指紋。 選取 [確定]  。
+6. 以滑鼠右鍵按一下上一個步驟中所新增的字串，然後選取 [ **修改**]。 在 [值] 中，提供您在步驟2中匯出之憑證的指紋。 選取 [確定]。
 
 7. 若要取得憑證指紋的值，請按兩下該憑證。 選取 [ **詳細資料** ] 索引標籤，直到您看到 [指紋] 欄位為止。 選取 [ **指紋**]，然後複製值。
 

@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c119b56d33908dbc0e53d588f3ac4ea155c8de
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: d88873dafd5a3ffac3f0135d877ff407427ffd6f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799083"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179856"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>關於 Azure Active Directory 的常見問題集
 Azure Active Directory (Azure AD) 是全方位的身分識別即服務 (IDaaS) 解決方案，其涉及範圍橫跨身分識別、存取管理和安全性的所有層面。
@@ -51,7 +51,7 @@ Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位
 
 **答：** 依預設，註冊 Azure 訂用帳戶的使用者會獲指派 Azure 資源的擁有者角色。 擁有者可以使用 Azure 訂用帳戶相關聯目錄中的 Microsoft 帳戶，或是公司或學校帳戶。  此角色經過授權，可管理 Azure 入口網站上的服務。
 
-如果其他人必須使用相同的訂用帳戶來登入和存取服務，您可以將適當的[內建角色](../../role-based-access-control/built-in-roles.md)指派給他們。 如需其他資訊，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
+如果其他人必須使用相同的訂用帳戶來登入和存取服務，您可以將適當的[內建角色](../../role-based-access-control/built-in-roles.md)指派給他們。 如需詳細資訊，請參閱 [使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。
 
 註冊 Azure 訂用帳戶的人員預設會獲指派目錄的全域管理員角色。 全域管理員可以存取所有的 Azure AD 目錄功能。 Azure AD 有一組不同的系統管理員角色，可用來管理目錄和識別相關功能。 這些系統管理員可存取 Azure 入口網站中的各種功能。 系統管理員的角色可決定他們可以執行的作業，例如建立或編輯使用者、將系統管理角色指派給其他人、重設使用者密碼、管理使用者授權或管理網域。  如需有關 Azure AD 目錄管理員及其角色的詳細資訊，請參閱[在 Azure Active Directory 中將使用者指派給系統管理員角色](active-directory-users-assign-role-azure-portal.md)和[在 Azure Active Directory 中指派系統管理員角色](../users-groups-roles/directory-assign-admin-roles.md)。
 

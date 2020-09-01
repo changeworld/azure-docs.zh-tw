@@ -3,12 +3,12 @@ title: 私人端點
 description: 瞭解建立 Azure 備份私用端點的程式，以及使用私人端點來協助維護資源安全性的案例。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 8e9fe46bf3f7528b3a6a08a7c8d90ea6f9117cdd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0a875dfedbf7a3b76b479fd4f23b74a7ced47252
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017663"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179227"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 備份的私人端點
 

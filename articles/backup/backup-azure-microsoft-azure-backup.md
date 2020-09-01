@@ -3,12 +3,12 @@ title: 使用 Azure 備份伺服器備份工作負載
 description: 在本文中，了解如何準備環境，以使用 Microsoft Azure 備份伺服器 (MABS) 來保護及備份工作負載。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 18225fab8b4f1ebe9fd34095108492a0902ca1d1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 79abf55fdbaae80a84618f6944870131dcd82c89
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001156"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181692"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安裝及升級 Azure 備份伺服器
 
@@ -275,11 +275,11 @@ MABS 會使用 System Center Data Protection Manager 保護代理程式。 [這�
 9. 從 SQL 還原 DPMDB。
 10. 在新的伺服器上，以系統管理員) 的身分執行 CMD (。 移至 Microsoft Azure 備份安裝位置和 bin 資料夾
 
-    路徑範例：C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
+    路徑範例： `C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"`
 
 11. 若要連接到 Azure 備份，請執行 `DPMSYNC -SYNC`
 
-    如果 **您已將磁片新增** 到 DPM 存放集區，而不是移動舊磁片，請執行 `DPMSYNC -Reallocatereplica`
+    如果 **您已將磁片新增** 到 DPM 存放集區，而不是移動舊的磁片，請執行 `DPMSYNC -Reallocatereplica` 。
 
 ## <a name="network-connectivity"></a>網路連線
 

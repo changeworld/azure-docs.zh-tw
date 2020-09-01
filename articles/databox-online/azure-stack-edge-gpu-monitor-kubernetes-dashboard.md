@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 9224888a38c86e35df9ad516c761fd7012824c15
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7274cef73bff3fb87d55ad636ff0167c8a064796
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083383"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180672"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>使用 Kubernetes 儀表板來監視您的 Azure Stack Edge GPU 裝置
 
@@ -26,6 +26,7 @@ ms.locfileid: "89083383"
 > [!div class="checklist"]
 >
 > * 存取您裝置上的 Kubernetes 儀表板
+> * 下載 `aseuser` 設定
 > * 查看裝置上部署的模組
 > * 取得部署在裝置上的應用程式 IP 位址
 > * 查看裝置上部署之模組的容器記錄
@@ -33,13 +34,13 @@ ms.locfileid: "89083383"
 
 ## <a name="about-kubernetes-dashboard"></a>關於 Kubernetes 儀表板
 
-Kubernetes 儀表板是一個 web 型使用者介面，可讓您用來針對容器化應用程式進行疑難排解。 Kubernetes 儀表板是 Kubernetes 命令列以 UI 為基礎的替代方案 `kubectl` 。 
+Kubernetes 儀表板是一個 web 型使用者介面，可讓您用來針對容器化應用程式進行疑難排解。 Kubernetes 儀表板是 Kubernetes 命令列以 UI 為基礎的替代方案 `kubectl` 。 如需詳細資訊，請參閱 [Kubernetes 儀表板](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)。 
 
-在您的 Azure Stack Edge 裝置上，您可以在唯讀模式中使用 Kubernetes 儀表板，以深入瞭解在 Azure Stack Edge 裝置上執行的應用程式、查看 Kubernetes 叢集資源的狀態，以及查看裝置上發生的任何錯誤。
+在您的 Azure Stack Edge 裝置上，您可以在 *唯讀* 模式中使用 Kubernetes 儀表板，以深入瞭解在 Azure Stack Edge 裝置上執行的應用程式、查看 Kubernetes 叢集資源的狀態，以及查看裝置上發生的任何錯誤。
 
 ## <a name="access-dashboard"></a>存取儀表板
 
-Kubernetes 儀表板是唯讀的，會在埠31000的 Kubernetes 主要節點上執行。 遵循下列步驟以存取儀表板： 
+Kubernetes 儀表板是 *唯讀* 的，會在埠31000的 Kubernetes 主要節點上執行。 遵循下列步驟以存取儀表板： 
 
 1. 在裝置的本機 UI 中，移至 [ **裝置** ]，然後移至 **裝置端點**。 選取 Kubernetes 儀表板 URL，以在瀏覽器中開啟儀表板。
 

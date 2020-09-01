@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/26/2020
+ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 065a6595ba89e00310ff41cd63b929f6d6d83222
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e1233e17dfe2a56e6ea995190b243ed9c64b8945
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083580"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181352"
 ---
 # <a name="deployment-checklist-for-your-azure-stack-edge-device"></a>Azure Stack Edge 裝置的部署檢查清單  
 
@@ -27,8 +27,8 @@ ms.locfileid: "89083580"
 |-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
 | 裝置管理               | <li>Microsoft Azure 訂用帳戶</li><li>Azure Active Directory 圖形 API</li><li>Microsoft Azure 儲存體帳戶</li>|<li>針對 Azure Stack Edge/資料箱閘道啟用，參與者許可權</li><li>確定系統管理員或使用者存取權</li><li>需要存取認證</li> |
 | 裝置安裝               | 套件中的電源線。 <br>對我們而言，SVE 18/3 纜線針對 125 V 和15安培分級，具有 NEMA 5 15P 至 C13 (輸入輸出) 連接器已寄出。                                                                                                                                                                                                          | 隨附于裝置。<br>如需詳細資訊，請參閱 [支援的電源線清單（依國家/地區）](azure-stack-edge-technical-specifications-power-cords-regional.md)                                                                                        |
-|                                   | <li>埠1至少有 1 X 1 GbE 的 RJ-45 網路纜線 </li><li> 埠3、埠4、埠5或埠6至少有 1 X 25 GbE SFP + 銅纜線</li>| 客戶需要購買這些纜線。<br>如需裝置網路卡支援的網路纜線、交換器及收發器的完整清單，請參閱 [>cavium FastlinQ 41000 系列互通性對照表。](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)                                                                          | 
-| 第一次裝置連接      | 埠1具有固定的 IP (192.168.100.10/24) 用於初始連接。 <li>需要膝上型電腦以直接連線到埠1，並在 192.168.100.0/24 網路上使用 IP 位址。</li><li> 在下列位置使用裝置的本機 UI： `https://192.168.100.10` 進行進一步設定。</li>|                                                                                                                   |
+|                                   | <li>埠1至少有 1 X 1 GbE 的 RJ-45 網路纜線  </li><li> 埠3、埠4、埠5或埠6至少有 1 X 25 GbE SFP + 銅纜線</li>| 客戶需要購買這些纜線。<br>如需裝置網路卡支援的網路纜線、交換器及收發器的完整清單，請參閱 [>cavium FastlinQ 41000 系列互通性對照表](https://www.marvell.com/documents/xalflardzafh32cfvi0z/) 和 [Mellanox 雙埠 25g ConnectX-4 通道網路介面卡相容產品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)。| 
+| 第一次裝置連接      | 埠1具有固定的 IP (192.168.100.10/24) 用於初始連接。 <li>需要膝上型電腦以直接連線到埠1，並在 192.168.100.0/24 網路上使用 IP 位址。</li><li> 在下列位置使用裝置的本機 UI： `https://192.168.100.10` 進行進一步設定。</li><li> 初始設定完成後，裝置必須至少使用 1 GbE 交換器。 如果連接的交換器不是至少 1 Gbe，將無法存取本機 web UI。</li>|                                                                                                                   |
 | 裝置登入                      | 裝置系統管理員密碼必須介於8到16個字元之間。 <br>此密碼必須包含下列其中 3 種字元：大寫、小寫、數字及特殊字元。                                            | 預設密碼是 *Password1* ，其會在第一次登入時過期。                                                     |
 | 網路設定                  | 裝置隨附 2 x 1 GbE、4 x 25 GbE 網路埠。 <li>埠1僅用來設定管理設定。 您可以連接及設定一或多個資料埠。 </li><li> 從埠2到埠6的至少一個資料網路介面必須連線至網際網路 (，且可連線至 Azure) 。</li><li> IP 設定支援 DHCP/靜態 IPv4 設定。 | 靜態 IPv4 設定需要 IP、DNS 伺服器和預設閘道。                                                                                                                  |
 | 計算網路設定     | <li>Kubernetes 節點需要2個靜態公用 ip，且至少有1個靜態 IP 供 Azure Stack Edge 中樞服務存取計算模組。</li><li>針對需要從 Kubernetes 叢集外部存取的每個額外服務或容器，各需要一個 IP。</li>                                                                                                                       | 僅支援靜態 IPv4 設定。                                                                      |

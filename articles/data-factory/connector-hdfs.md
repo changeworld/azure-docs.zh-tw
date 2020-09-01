@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 0104f9002a1fb4f6f1d0d31bd6eea50bce1b365b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 562acfe1ae96f7f88b72945846bcb49c0cc1f216
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050364"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179533"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 HDFS 伺服器複製資料
 
@@ -250,7 +250,7 @@ ms.locfileid: "89050364"
 
 複製活動支援使用 DistCp 將檔案複製到 Azure Blob 儲存體 (包括 [分段複製](copy-activity-performance.md)) 或 azure data lake store。 在此情況下，DistCp 可以利用叢集的電源，而不是在自我裝載整合執行時間上執行。 使用 DistCp 可提供較佳的複製輸送量，特別是當您的叢集非常強大時。 複製活動會根據 data factory 中的設定，自動建立 DistCp 命令、將它提交至您的 Hadoop 叢集，以及監視複製狀態。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 若要使用 DistCp 將檔案從 HDFS 複製到 Azure Blob 儲存體 (包括分段複製) 或 Azure data lake store），請確定您的 Hadoop 叢集符合下列需求：
 
@@ -439,7 +439,7 @@ ms.locfileid: "89050364"
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 *類型* 屬性必須設定為檔案 *共用* |是 |
 | folderPath | 資料夾的路徑。 支援萬用字元篩選。 允許的萬用字元 `*` (符合零或多個字元) 和 `?` (符合零或單一字元) ; `^` 如果您的實際檔案名包含萬用字元或此 escape 字元，請使用來進行 escape。 <br/><br/>範例：rootfolder/subfolder/，如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 |是 |
@@ -484,7 +484,7 @@ ms.locfileid: "89050364"
 
 ### <a name="legacy-copy-activity-source-model"></a>舊版複製活動來源模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 *type* 屬性必須設為 *>hdfssource*。 |是 |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 當遞迴設定為 *true* 且接收是檔案型存放區時，將不會在接收時複製或建立空的資料夾或子資料夾。<br/>允許的值為 *true* (預設值) 和 *false*。 | 否 |

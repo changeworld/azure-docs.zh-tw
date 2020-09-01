@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/18/2020
-ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 08/31/2020
+ms.openlocfilehash: 0d5390beff6c3e0045c6b887f0262a54a737a851
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589498"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181760"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 受控執行個體上使用者起始的手動容錯移轉
 
@@ -36,6 +36,15 @@ ms.locfileid: "88589498"
 > 在部署至生產環境之前，確保您的應用程式具有容錯移轉復原能力，有助於降低生產環境中應用程式錯誤的風險，並且會為您的客戶提供應用程式可用性。
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>在 SQL 受控執行個體上起始手動容錯移轉
+
+### <a name="rbac-permissions-required"></a>需要 RBAC 許可權
+
+起始容錯移轉的使用者必須具有下列其中一個 RBAC 角色：
+
+- 訂用帳戶擁有者角色，或
+- 受控執行個體參與者角色，或
+- 具有下列許可權的自訂角色：
+  - `Microsoft.Sql/managedInstances/failover/action`
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
@@ -116,7 +125,7 @@ API 回應會是下列其中一種：
 
 ## <a name="monitor-the-failover"></a>監視容錯移轉
 
-若要監視使用者起始的手動容錯移轉進度，請在您最愛的用戶端中執行下列 T-SQL 查詢 (例如 SQL 受控執行個體上的 SSMS) 。 它會讀取 system view sys. dm_hadr_fabric_replica_states 以及實例上可用的報表複本。 初始化手動容錯移轉之後，請重新整理相同的查詢。
+若要監視使用者起始的手動容錯移轉進度，請在您最愛的用戶端中執行下列 T-SQL 查詢 (例如 SQL 受控執行個體上的 SSMS) 。 它會讀取 [系統檢視] sys.dm_hadr_fabric_replica_states，以及實例上可用的報表複本。 初始化手動容錯移轉之後，請重新整理相同的查詢。
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states

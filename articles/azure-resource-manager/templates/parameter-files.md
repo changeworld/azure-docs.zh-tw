@@ -2,13 +2,13 @@
 title: 建立參數檔案
 description: 建立在 Azure Resource Manager 範本部署期間傳入值的參數檔案
 ms.topic: conceptual
-ms.date: 06/19/2020
-ms.openlocfilehash: 8039b63978e52b69b0f8ffb4dd4e052769f3c5e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.openlocfilehash: ff5fa74f8b4b7f0ce7dfe2164a369cfd5eedb4d9
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082931"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179618"
 ---
 # <a name="create-resource-manager-parameter-file"></a>建立 Resource Manager 參數檔案
 
@@ -182,12 +182,32 @@ ms.locfileid: "87082931"
 }
 ```
 
-## <a name="deploy-template-with-parameter-file"></a>使用參數檔案部署範本
+## <a name="deploy-template-with-parameter-file"></a>使用參數檔部署範本
 
-請參閱：
+若要使用 Azure CLI 傳遞本機參數檔案，請使用 @ 和參數檔的名稱。
 
-- [使用 ARM 範本與 Azure CLI 來部署資源](./deploy-cli.md#parameters)
-- [使用 ARM 範本與 Azure PowerShell 來部署資源](./deploy-powershell.md#pass-parameter-values)
+```azurecli
+az deployment group create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
+```
+
+如需詳細資訊，請參閱 [使用 ARM 範本部署資源和 Azure CLI](./deploy-cli.md#parameters)。
+
+若要使用 Azure PowerShell 傳遞本機參數檔案，請使用 `TemplateParameterFile` 參數。
+
+```azurepowershell
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -TemplateParameterFile c:\MyTemplates\storage.parameters.json
+```
+
+如需詳細資訊，請參閱 [使用 ARM 範本部署資源和 Azure PowerShell](./deploy-powershell.md#pass-parameter-values)
+
+> [!NOTE]
+> 您無法在入口網站中搭配自訂範本分頁使用參數檔案。
 
 ## <a name="file-name"></a>檔案名稱
 
@@ -199,7 +219,7 @@ ms.locfileid: "87082931"
 
 您可以在相同的部署作業中使用內嵌參數和本機參數檔案。 例如，您可以在部署期間指定本機參數檔案中的某些值，並新增其他內嵌值。 如果您同時為本機檔案中和內嵌的參數提供值，內嵌值的優先順序較高。
 
-藉由提供檔案的 URI，就能夠使用外部參數檔案。 當您執行此動作時，無法傳遞內嵌或本機檔案的其他值。 所有內嵌參數均會遭到忽略。 請提供外部檔案中的所有參數值。
+藉由提供檔案的 URI，就能夠使用外部參數檔案。 當您使用外部參數檔案時，您無法傳遞內嵌或本機檔案的其他值。 所有內嵌參數均會遭到忽略。 請提供外部檔案中的所有參數值。
 
 ## <a name="parameter-name-conflicts"></a>參數名稱衝突
 

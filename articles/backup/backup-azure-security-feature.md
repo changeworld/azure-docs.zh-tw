@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 備份的安全性功能，讓備份更安
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: cbd9ee0336953b65b4e2d55d294d30309ebe0de7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 5a408dc07e83e790a63f8a252d4ed3f84bf66be4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892451"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181675"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>利用安全性功能協助保護使用 Azure 備份的混合式備份
 
@@ -22,7 +22,7 @@ ms.locfileid: "88892451"
 > [!NOTE]
 > 如果您要使用基礎結構即服務 (IaaS) VM 備份，則不應啟用安全性功能。 這些功能尚無法用於 IaaS VM 備份，所以啟用它們不會有任何影響。 只有當您使用時，才應該啟用安全性功能： <br/>
 >
-> - **Azure 備份代理程式**。 至少為代理程式 2.0.9052 版。 啟用這些功能之後，您應該升級為此版本的代理程式，以執行重要作業。 <br/>
+> - **Azure 備份代理程式**。 至少為代理程式 2.0.9052 版。 啟用這些功能之後，您應該升級至此代理程式版本，以執行重要的作業。 <br/>
 > - **Azure 備份伺服器**。 至少為 Azure 備份代理程式 2.0.9052 版與 Azure 備份伺服器 Update 1。 <br/>
 > - **System Center Data Protection Manager**。 至少為 Azure 備份代理程式 2.0.9052 版與 Data Protection Manager 2012 R2 UR12 或 Data Protection Manager 2016 UR2。 <br/>
 
@@ -48,7 +48,7 @@ ms.locfileid: "88892451"
     ![復原服務保存庫屬性的螢幕擷取畫面](./media/backup-azure-security-feature/security-settings-update.png)
 
     [更新] 連結會開啟 [ **安全性設定** ] 窗格，其中提供功能的摘要，並讓您啟用這些功能。
-5. 從 [是否已設定 Azure Multi-Factor Authentication?]**** 下拉式清單中，選取一個值以確認您是否已啟用 [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)。 若已啟用，系統會要求您從另一部裝置進行驗證 (例如，行動電話) 登入 Azure 入口網站。
+5. 從下拉式清單中， **您已設定 azure Multi-Factor Authentication？**，請選取值以確認您是否已啟用 [azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)。 若已啟用，系統會要求您從另一部裝置進行驗證 (例如，行動電話) 登入 Azure 入口網站。
 
    當您在備份中執行重要作業時，您必須輸入安全 PIN 碼 (可在 Azure 入口網站上取得)。 啟用 Multi-Factor Authentication 可多一道安全性。 只有具備有效 Azure 認證且從第二個裝置驗證的授權使用者，才能存取 Azure 入口網站。
 6. 若要儲存安全性設定，請選取 [ **啟用** ]，然後選取 [ **儲存**]。 只有當您在上一個步驟從 [是否已設定 Azure Multi-Factor Authentication?]**** 清單中選取一個值之後，才能選取 [啟用]****。

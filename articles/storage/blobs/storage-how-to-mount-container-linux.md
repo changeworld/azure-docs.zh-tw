@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 8dc7c16b83816d2b408cef7ade06767bfe2a4582
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 297595c6c4a9c82c3d0293f2cea2db66ea9ca54a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826543"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180400"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統
 
 ## <a name="overview"></a>概觀
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) 是 Azure Blob 儲存體的虛擬檔案系統驅動程式。 Blobfuse 可讓您透過 Linux 檔案系統存取您儲存體帳戶中現有的區塊 Blob 資料。 Blobfuse 會使用以正斜線 '/' 做為分隔符號的虛擬目錄配置。  
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) 是 Azure Blob 儲存體的虛擬檔案系統驅動程式。 Blobfuse 可讓您透過 Linux 檔案系統存取您儲存體帳戶中現有的區塊 Blob 資料。 Blobfuse 會使用具有正斜線 '/' 的虛擬目錄配置作為分隔符號。  
 
 本指南示範如何使用 Blobfuse，以及如何在 Linux 上掛接 Blob 儲存體容器並存取資料。 若要深入了解 Blobfuse，請閱讀 [Blobfuse 存放庫](https://github.com/Azure/azure-storage-fuse)中的詳細資料。
 
@@ -56,7 +56,7 @@ sudo apt-get update
 
 ### <a name="install-blobfuse"></a>安裝 Blobfuse
 
-在 Ubuntu/Debian 發佈上：
+在 Ubuntu/Debian 散發上：
 ```bash
 sudo apt-get install blobfuse
 ```
@@ -76,6 +76,7 @@ sudo yum install blobfuse
 ### <a name="optional-use-a-ramdisk-for-the-temporary-path"></a>(選擇性) 將 Ramdisk 當做暫存路徑
 下列範例會建立 16 GB 的 Ramdisk 和 Blobfuse 的目錄。 請根據需求選擇大小。 Ramdisk 允許 Blobfuse 開啟大小達 16 GB 的檔案。 
 ```bash
+sudo mkdir /mnt/ramdisk
 sudo mount -t tmpfs -o size=16g tmpfs /mnt/ramdisk
 sudo mkdir /mnt/ramdisk/blobfusetmp
 sudo chown <youruser> /mnt/ramdisk/blobfusetmp
@@ -98,7 +99,7 @@ accountName myaccount
 accountKey storageaccesskey
 containerName mycontainer
 ```
-`accountName`是您儲存體帳戶的前置詞，而不是完整的 URL。
+`accountName`是儲存體帳戶的前置詞，而不是完整的 URL。
 
 使用下列內容建立此檔案：
 
@@ -106,7 +107,7 @@ containerName mycontainer
 touch ~/fuse_connection.cfg
 ```
 
-建立並編輯此檔案之後，請務必限制存取，讓其他使用者都無法讀取它。
+一旦您建立並編輯此檔案，請務必限制存取權，讓其他使用者無法讀取該檔案。
 ```bash
 chmod 600 fuse_connection.cfg
 ```

@@ -3,12 +3,12 @@ title: 針對 SQL Server 資料庫備份進行疑難排解
 description: 適用於在 Azure VM 上執行並使用 Azure 備份進行備份之 SQL Server 資料庫的疑難排解資訊。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 53e97e768dc13c32f6c174d01dfb222e0de61e43
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b462ebd25a7dac4f215d599aa0dfa8665965fb2f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017867"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180944"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 備份針對 SQL Server 資料庫備份進行疑難排解
 
@@ -60,7 +60,7 @@ ms.locfileid: "89017867"
 
 ### <a name="backup-type-unsupported"></a>不支援的備份類型
 
-| 嚴重性 | 描述 | 可能的原因 | 建議的動作 |
+| 嚴重性 | 說明 | 可能的原因 | 建議的動作 |
 |---|---|---|---|
 | 警告 | 此資料庫目前的設定不支援在相關聯的原則中存在特定的備份類型。 | <li>只有完整的資料庫備份作業可以在 master 資料庫上執行。 無法進行差異備份和交易記錄備份。 </li> <li>簡單復原模式中的任何資料庫都不允許備份交易記錄。</li> | 修改資料庫設定 sp 支援原則中的所有備份類型。 或變更目前的原則，以僅包含支援的備份類型。 否則，在排定備份期間將略過不支援的備份類型，否則備份工作將會失敗以進行隨選備份。
 
@@ -130,7 +130,7 @@ ms.locfileid: "89017867"
 
 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 |---|---|---|
-| 用於復原的記錄備份包含大量記錄的變更。 它無法用來根據 SQL 指導方針，在任意時間點停止。 | 當資料庫處於大量記錄復原模式時，大容量日誌交易與下一個記錄交易之間的資料將無法復原。 | 請選擇不同的恢復時間點。 [深入了解](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)。
+| 用於復原的記錄備份包含大量記錄的變更。 它無法用來根據 SQL 指導方針，在任意時間點停止。 | 當資料庫處於大量記錄復原模式時，大容量日誌交易與下一個記錄交易之間的資料將無法復原。 | 請選擇不同的恢復時間點。 [進一步瞭解](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)。
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -160,7 +160,7 @@ ms.locfileid: "89017867"
 
 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 |---|---|---|
-因為您已達到24小時內允許的作業數目上限，所以作業已遭到封鎖。 | 當您已達24小時範圍內的最大允許作業上限時，會出現此錯誤。 <br> 例如：如果您已達到每日可觸發的設定備份作業數目限制，而且您嘗試在新的專案上設定備份，您將會看到此錯誤。 | 一般來說，在24小時後重試作業會解決此問題。 但是，如果問題持續發生，您可以聯絡 Microsoft 支援服務尋求協助。
+因為您已達到24小時內允許的作業數目上限，所以作業已遭到封鎖。 | 當您已達24小時範圍內的最大允許作業上限時，會出現此錯誤。 <br> 例如：如果您已達到每日可觸發的設定備份作業數目限制，而您嘗試在新的專案上設定備份，您將會看到此錯誤。 | 一般來說，在24小時後重試作業會解決此問題。 但是，如果問題持續發生，您可以聯絡 Microsoft 支援服務尋求協助。
 
 ### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
 

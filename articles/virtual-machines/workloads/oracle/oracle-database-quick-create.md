@@ -9,17 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/02/2018
+ms.date: 08/28/2020
 ms.author: rogardle
-ms.openlocfilehash: ca40fcb6a2e483e656058835f187dc50bf7bc9ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: MT
+ms.openlocfilehash: fb4403747a3681abd6023cdb9b5e62fd50af12c3
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074067"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179635"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 中建立 Oracle 資料庫
 
@@ -82,7 +82,7 @@ ssh azureuser@<publicIpAddress>
 
 Marketplace 映像上已安裝 Oracle 軟體。 建立範例資料庫，如下所示。 
 
-1.  切換至 oracle 超級使用者，然後將接聽程式初始化以啟用記錄功能：
+1.  切換至 *oracle* 使用者，然後啟動 Oracle 接聽程式：
 
     ```bash
     $ sudo -su oracle
@@ -116,8 +116,13 @@ Marketplace 映像上已安裝 Oracle 軟體。 建立範例資料庫，如下�
     The listener supports no services
     The command completed successfully
     ```
+2. 建立 Oracle 資料檔案的資料目錄
 
-2.  建立資料庫︰
+    ```bash
+        mkdir /u01/app/oracle/oradata
+    ```
+
+3.  建立資料庫︰
 
     ```bash
     dbca -silent \
@@ -136,28 +141,58 @@ Marketplace 映像上已安裝 Oracle 軟體。 建立範例資料庫，如下�
            -databaseType MULTIPURPOSE \
            -automaticMemoryManagement false \
            -storageType FS \
+           -datafileDestination "/u01/app/oracle/oradata/"
            -ignorePreReqs
     ```
 
     建立資料庫需要幾分鐘的時間。
 
-3. 設定 Oracle 變數
+    您會看到類似於以下的輸出：
 
-在連線之前，您需要設定兩個環境變數︰ORACLE_HOME 和 ORACLE_SID。
+    ```output
+        Copying database files
+        1% complete
+        2% complete
+        8% complete
+        13% complete
+        19% complete
+        27% complete
+        Creating and starting Oracle instance
+        29% complete
+        32% complete
+        33% complete
+        34% complete
+        38% complete
+        42% complete
+        43% complete
+        45% complete
+        Completing Database Creation
+        48% complete
+        51% complete
+        53% complete
+        62% complete
+        70% complete
+        72% complete
+        Creating Pluggable Databases
+        78% complete
+        100% complete
+        Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for further details.
+    ```
 
-```bash
-ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
-ORACLE_SID=cdb1; export ORACLE_SID
-```
+4. 設定 Oracle 變數
 
-您也可以將 ORACLE_HOME 和 ORACLE_SID 變數新增至 .bashrc 檔案。 這會儲存環境變數以供未來登入。請確認已使用您選擇的編輯器，將下列陳述式新增至 `~/.bashrc` 檔案。
+    在連線之前，您需要設定兩個環境變數︰ORACLE_HOME 和 ORACLE_SID。
 
-```bash
-# Add ORACLE_HOME. 
-export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1 
-# Add ORACLE_SID. 
-export ORACLE_SID=cdb1 
-```
+    ```bash
+        ORACLE_SID=cdb1; export ORACLE_SID
+    ```
+
+    您也可以將 ORACLE_HOME 和 ORACLE_SID 變數新增至 .bashrc 檔案。 這會儲存環境變數以供未來登入。請確認已使用您選擇的編輯器，將下列陳述式新增至 `~/.bashrc` 檔案。
+
+    ```bash
+    # Add ORACLE_SID. 
+    export ORACLE_SID=cdb1 
+    ```
 
 ## <a name="oracle-em-express-connectivity"></a>Oracle EM Express 連線能力
 

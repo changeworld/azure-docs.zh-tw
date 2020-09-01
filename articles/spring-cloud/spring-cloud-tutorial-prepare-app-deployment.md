@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1261e36c782068844712908e62a72b77d34ba5af
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ff797f8b6fd375a940f77b4e0400bcb7a74450c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046726"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179754"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>準備 Java Spring 應用程式以部署到 Azure Spring Cloud
 
@@ -21,8 +21,8 @@ ms.locfileid: "89046726"
 執行此範例之前，您可以嘗試 [基本快速入門](spring-cloud-quickstart.md)。
 
 其他範例說明在已設定 POM 檔案時，如何將應用程式部署至 Azure Spring Cloud。 
-* [使用 Azure 入口網站啟動應用程式](spring-cloud-quickstart-launch-app-portal.md)
-* [使用 Azure CLI 啟動應用程式](spring-cloud-quickstart-launch-app-cli.md)
+* [啟動您的第一個應用程式](spring-cloud-quickstart.md)
+* [建置和執行微服務](spring-cloud-quickstart-sample-app-introduction.md)
 
 本文說明必要的相依性，以及如何將其新增至 POM 檔案。
 

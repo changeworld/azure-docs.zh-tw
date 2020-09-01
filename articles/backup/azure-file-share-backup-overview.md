@@ -3,12 +3,12 @@ title: 關於 Azure 檔案共用備份
 description: 瞭解如何在復原服務保存庫中備份 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 7960040df4208ad021bca3406f6472d8c3206d81
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: dd8a17639c006dd1c0e8cc193776bb63cb536ceb
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892247"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180009"
 ---
 # <a name="about-azure-file-share-backup"></a>關於 Azure 檔案共用備份
 
@@ -50,7 +50,13 @@ Azure 檔案共用備份是以雲端為基礎的原生備份解決方案，可�
 
 ## <a name="backup-costs"></a>備份成本
 
-目前，您只需支付快照集的費用，因為 Azure 檔案共用備份是以快照集為基礎的解決方案。 針對快照集產生的儲存體費用會根據 [此處](https://azure.microsoft.com/pricing/details/storage/files/)所述的定價詳細資料，以 Azure 檔案儲存體使用量計費。
+Azure 檔案共用備份解決方案有兩個相關成本：
+
+1. **快照儲存體成本**：快照集產生的儲存體費用會根據[此處](https://azure.microsoft.com/pricing/details/storage/files/)所述的定價詳細資料，隨 Azure 檔案儲存體使用量計費 
+
+2. **受保護的實例費用** ：自2020年9月1日起，客戶將根據 [此處](https://azure.microsoft.com/en-in/pricing/details/backup/) 所述的定價詳細資料向您收取受保護的實例費用。受保護的實例費用取決於儲存體帳戶中受保護檔案共用的大小總計。
+
+若要取得備份 Azure 檔案共用的詳細估計值，您可以下載詳細的 [Azure 備份定價估算器](https://aka.ms/AzureBackupCostEstimates)。  
 
 ## <a name="next-steps"></a>後續步驟
 

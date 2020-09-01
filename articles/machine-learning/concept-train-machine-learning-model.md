@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 186839425e6ab2fb5430a82650615425bb93d51a
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d0341e5a4d5dc036a4c3f90b2a25003137602694
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651755"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144833"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -55,7 +55,7 @@ Azure Machine Learning 提供數種方式供您將模型定型，從使用 SDK �
 * [什麼是回合組態？](concept-azure-machine-learning-architecture.md#run-configurations)
 * [教學課程：將您的第一個 ML 模型定型](tutorial-1st-experiment-sdk-train.md)
 * [範例：將模型定型的 Jupyter Notebook 範例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
-* [操作說明：設定及使用計算目標來將模型定型](how-to-set-up-training-targets.md)
+* [如何：使用計算目標進行模型定型](how-to-set-up-training-targets.md)
 
 ### <a name="automated-machine-learning"></a>自動化 Machine Learning
 
@@ -158,6 +158,6 @@ R SDK 可讓您搭配使用 R 語言與 Azure Machine Learning。 SDK 會使用�
 
 您可以使用 VS Code 擴充功能來執行和管理定型作業。 若要深入瞭解，請參閱 [VS Code 資源管理操作指南](how-to-manage-resources-vscode.md#experiments) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-了解如何[設定定型環境](how-to-set-up-training-targets.md)。
+瞭解如何 [使用計算目標進行模型定型](how-to-set-up-training-targets.md)。

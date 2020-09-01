@@ -4,12 +4,12 @@ description: 尋找有關使用 Azure 備份備份 Azure Vm 上的 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 991a00aca3b32ee743be3cdc2bc6a35de064cb25
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c1efbc44ae1e4bea96c063e4dc734f1cc53a42ac
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006137"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180094"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有關在 Azure VM 備份上執行的 SQL Server 資料庫的常見問題
 
@@ -52,7 +52,7 @@ ms.locfileid: "89006137"
  雖然此方法可協助備份應用程式耗用大量資源，但 SQL Server [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 是指定傳入應用程式要求可使用的 CPU、實體 IO 和記憶體數量限制的一般方式。
 
 > [!NOTE]
-> 在 UX 中，您仍然可以在任何指定時間排程任意數量的備份。 不過，它們會根據上述範例，在如5的滑動視窗中處理。
+> 在 UX 中，您仍然可以在任何指定時間排程任意數量的備份。 不過，系統會根據上述範例，在5個滑動視窗中處理它們。
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>是否可以從次要複本執行完整備份？
 
@@ -60,7 +60,7 @@ ms.locfileid: "89006137"
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>我可以保護內部部署的可用性群組嗎？
 
-不知道。 Azure 備份可保護在 Azure 中執行的 SQL Server 資料庫。 如果可用性群組 (AG) 在 Azure 和內部部署機器之間散佈，則只有在主要複本是在 Azure 中執行時，才能保護 AG。 此外，Azure 備份只會保護在與復原服務保存庫相同的 Azure 區域中執行的節點。
+否。 Azure 備份可保護在 Azure 中執行的 SQL Server 資料庫。 如果可用性群組 (AG) 在 Azure 和內部部署機器之間散佈，則只有在主要複本是在 Azure 中執行時，才能保護 AG。 此外，Azure 備份只會保護在與復原服務保存庫相同的 Azure 區域中執行的節點。
 
 ## <a name="can-i-protect-availability-groups-across-regions"></a>我可以跨區域保護可用性群組嗎？
 

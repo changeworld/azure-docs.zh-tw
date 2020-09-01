@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: b1c257c206c58f62c1ea82eb3b04ff5830cfbd8d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 674baaaec4e11c5e4e750ccd14bbe5762dcbc09a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071647"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181064"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
 
@@ -272,7 +272,7 @@ New-AzResourceGroupDeployment `
 如果相關聯的資源不在虛擬網路後方，您可以將 **privateEndpointType** 參數設定為 `AutoAproval` 或， `ManualApproval` 以將工作區部署到私人端點後方。 這可以針對新的和現有的工作區進行。 更新現有的工作區時，請使用現有工作區中的資訊填入範本參數。
 
 > [!IMPORTANT]
-> 使用 Azure Private Link 建立 Azure Machine Learning 工作區的私人端點目前處於公開預覽狀態。 這項功能僅適用于 **美國東部** 和 **美國西部 2** 區域。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 使用 Azure Private Link 建立 Azure Machine Learning 工作區的私人端點目前處於公開預覽狀態。 這項功能僅適用于 **美國東部**、 **美國中南部**和 **美國西部 2** 區域。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

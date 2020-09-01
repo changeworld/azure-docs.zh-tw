@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 08/11/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 7fab15ae4e9e58af58a4490beb2d512379976d1c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: f3a542cd62c3d593dbc0cce7982d47222e9a7c88
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263902"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181098"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>使用資產清查和管理工具探索及管理您的資源
 
@@ -102,6 +102,9 @@ ARG 是設計用來提供有效率的資源探索，並能夠大規模查詢。
 1. 若要使用 [ **安全性結果] 包含** 篩選器，請輸入名稱的任意文字、安全性檢查或弱點的 CVE 名稱，以篩選出受影響的資源：
 
     ![「安全性結果包含」篩選](./media/asset-inventory/security-findings-contain-elements.png)
+
+    > [!TIP]
+    > **安全性結果包含**和**標記**篩選器只接受單一值。 若要依一個以上篩選，請使用 [ **加入篩選**]。
 
 1. 若要使用 **定價層** 篩選，請選取一或多個選項， (免費、部分或標準) ：
 

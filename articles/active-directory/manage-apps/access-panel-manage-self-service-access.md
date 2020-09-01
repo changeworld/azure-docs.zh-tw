@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
-ms.openlocfilehash: c789a5fdd2aed7a904dc71065340b3c921ac9abb
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 0cd20d7a11bcffe9937537e3681199757a52bee5
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146601"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181709"
 ---
 # <a name="how-to-use-self-service-application-access"></a>如何使用自助應用程式存取
 
@@ -28,7 +28,7 @@ ms.locfileid: "89146601"
 
 您可以使用這項功能︰
 
--   讓使用者不需要 IT 群組的協助，即可從[應用程式存取面板](https://myapps.microsoft.com/)自行探索應用程式。
+-   讓使用者在不竟然想 IT 群組的情況下，從 [我的應用程式](https://myapps.microsoft.com/) 自行探索應用程式。
 -   將那些使用者新增至預先設定的群組，以便您可以查看哪些人要求存取權、移除存取權，以及管理指派給他們的角色。
 -   （選擇性）允許使用者核准應用程式存取要求，讓 IT 群組不需要。
 -   可選擇設定最多 10 人可核准對此應用程式的存取。
@@ -57,14 +57,14 @@ ms.locfileid: "89146601"
 13. **選擇性：** **對於公開角色的應用程式**，如果您想要將已核准的使用者指派給角色，請選取 [ **在此應用程式中，要將哪個角色指派給哪個角色** ] 旁的選取器？以選取應指派給這些使用者的角色。
 14. 選取頂端的 [ **儲存** ] 按鈕以完成。
 
-完成自助應用程式設定之後，使用者可以流覽至其 [應用程式存取面板](https://myapps.microsoft.com/) 然後選取 [ **+ 新增** ] 按鈕，以尋找您已啟用自助存取的應用程式。 商務核准者在其[應用程式存取面板](https://myapps.microsoft.com/)中也會看到通知。 您可以啟用電子郵件，通知他們有使用者已要求存取應用程式，需要他們核准。 
+完成自助應用程式設定之後，使用者可以流覽至 [我的應用程式](https://myapps.microsoft.com/) 並選取 [ **+ 新增** ] 按鈕，以尋找您已啟用自助存取的應用程式。 商務核准者也會在其 [我的應用程式](https://myapps.microsoft.com/) 頁面中看到通知。 您可以啟用電子郵件，通知他們有使用者已要求存取應用程式，需要他們核准。 
 
 這些核准只支援單一核准工作流程，這表示若您指定多個核准者，任何核准者都可以核准應用程式存取。
 
 ## <a name="things-to-check-if-self-service-isnt-working"></a>自助服務無法運作的檢查事項
 -   請確定已允許使用者或群組要求自助應用程式存取。
--   請確定使用者造訪正確的位置來要求自助應用程式存取。 使用者可以流覽至其 [應用程式存取面板](https://myapps.microsoft.com/) 然後選取 [ **+ 新增** ] 按鈕，以尋找您已啟用自助存取的應用程式。
--   如果最近已設定自助應用程式存取，請在幾分鐘後嘗試登入並再次登入使用者的存取面板，以查看是否出現自助存取變更。
+-   請確定使用者造訪正確的位置來要求自助應用程式存取。 使用者可以流覽至其 [我的應用程式](https://myapps.microsoft.com/) 頁面，然後選取 [ **+ 新增** ] 按鈕以尋找您已啟用自助存取的應用程式。
+-   如果最近已設定自助應用程式存取，請在幾分鐘後嘗試登入並再次登入使用者的我的應用程式，以查看是否出現自助存取變更。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [設定 Azure Active Directory 進行自助服務群組管理](../users-groups-roles/groups-self-service-management.md)

@@ -9,12 +9,12 @@ ms.date: 08/08/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: af7cb87f8caf0176505c8af864ae8d3cb0c312a0
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 860f9b0e49423b5d144d56ecd965153f7a362d87
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585690"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180910"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 進行 Azure Key Vault 的服務對服務驗證
 
@@ -27,7 +27,7 @@ ms.locfileid: "88585690"
 
 此連結 `Microsoft.Azure.Services.AppAuthentication` 庫會自動管理驗證，進而讓您專注于解決方案，而不是您的認證。 它支援使用 Microsoft Visual Studio、Azure CLI 或 Azure AD 整合式驗證進行本機開發。 如果部署到支援受控執行個體的 Azure 資源，程式庫會自動使用 [Azure 資源的受控識別](../../active-directory/msi-overview.md)。 不需要任何程式碼或設定變更。 當受控識別無法使用，或在本機開發期間無法判斷開發人員的安全性內容時，程式庫也支援直接使用 Azure AD [用戶端認證](../../azure-resource-manager/resource-group-authenticate-service-principal.md) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) 或 [Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "88585690"
     string accessToken = await azureServiceTokenProvider2.GetAccessTokenAsync("https://management.azure.com/").ConfigureAwait(false);
     ```
 
-`AzureServiceTokenProvider` 類別會快取記憶體中的權杖，並在到期之前從 Azure AD 擷取權杖。 因此，在呼叫方法之前，您不再需要檢查到期日 `GetAccessTokenAsync` 。 當您想要使用權杖時，可直接呼叫方法。
+呼叫方法之前，您不需要檢查權杖的到期時間 `GetAccessTokenAsync` ，因為會 `AzureServiceTokenProvider` 在記憶體中快取權杖，並在到期前從 Azure AD 抓取權杖。 
 
 `GetAccessTokenAsync` 方法需要資源識別碼。 若要深入瞭解 Microsoft Azure 服務，請參閱 [什麼是適用于 Azure 資源的受控](../../active-directory/msi-overview.md)識別。
 
@@ -235,7 +235,7 @@ ms.locfileid: "88585690"
 
 若要控制處理程序，請使用傳遞至 `AzureServiceTokenProvider` 建構函式或 *AzureServicesAuthConnectionString* 環境變數中指定的連接字串。  支援下列選項：
 
-| 連接字串選項 | 狀況 | 註解|
+| 連接字串選項 | 案例 | 註解|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | 本機開發 | `AzureServiceTokenProvider` 使用 AzureCli 取得權杖。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | 本機開發 | `AzureServiceTokenProvider` 使用 Visual Studio 取得權杖。 |

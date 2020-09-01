@@ -10,18 +10,18 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 092d3893c3cc5473debf8f7d51f393751cfd82bf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef907aea940a4f01475cebf72528b9bcdde50f4d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526813"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180230"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>如何使用開機診斷對 Azure 中的虛擬機器進行疑難排解
 
-有許多原因會讓虛擬機器進入無法開機的狀態。 若要解決使用 Resource Manager 部署模型所建立之虛擬機器的問題，您可以使用下列偵錯工具功能： Azure 虛擬機器的主控台輸出和螢幕擷取畫面支援。 
+有許多原因會讓虛擬機器進入無法開機的狀態。 若要解決使用 Resource Manager 部署模型建立之虛擬機器的問題，您可以使用下列偵錯工具功能：適用于 Azure 虛擬機器的主控台輸出和螢幕擷取畫面支援。 
 
-若為 Linux 虛擬機器，您可以在入口網站檢視主控台記錄的輸出。 若為 Windows 和 Linux 虛擬機器，Azure 可讓您從 Hypervisor 查看 VM 的螢幕擷取畫面。 所有區域中的 Azure 虛擬機器都支援這兩項功能。 請注意，螢幕擷取畫面和輸出最多可能需要10分鐘的時間才會出現在您的儲存體帳戶中。
+若為 Linux 虛擬機器，您可以在入口網站檢視主控台記錄的輸出。 若為 Windows 和 Linux 虛擬機器，Azure 可讓您從 Hypervisor 查看 VM 的螢幕擷取畫面。 所有區域中的 Azure 虛擬機器都支援這兩項功能。 注意：螢幕擷取畫面和輸出最多可能需要10分鐘的時間才會出現在您的儲存體帳戶中。
 
 您可以選取 [開機診斷]**** 選項來檢視記錄和螢幕擷取畫面。
 
@@ -79,7 +79,7 @@ ms.locfileid: "86526813"
 }
 ```
 
-如需使用範本部署資源的詳細資訊，請參閱[快速入門：使用 Azure 入口網站建立和部署 Azure Resource Manager 範本](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
+如需使用範本部署資源的詳細資訊，請參閱 [快速入門：使用 Azure 入口網站來建立和部署 Azure Resource Manager 範本](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>在現有的虛擬機器上啟用開機診斷 
 
@@ -91,8 +91,6 @@ ms.locfileid: "86526813"
 4. 儲存變更。
 
     ![更新現有的 VM](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)
-
-您必須重新啟動虛擬機器，變更才會生效。
 
 ### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>使用 Azure CLI 啟用開機診斷
 
