@@ -1,20 +1,20 @@
 ---
 title: 靜態資料的 Language Understanding 服務加密
 titleSuffix: Azure Cognitive Services
-description: 靜態資料的 Language Understanding 服務加密。
+description: Microsoft 提供 Microsoft 管理的加密金鑰，也可讓您使用自己的金鑰（稱為客戶管理的金鑰）來管理認知服務訂用帳戶， (CMK) 。 本文涵蓋 Language Understanding (LUIS) 的靜止資料加密，以及如何啟用和管理 CMK。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 4fc816c3894120a5d1b356d91ebebbc56f21b530
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: ce6561652801d52e5600ddc63e573070281da3f2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052700"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078124"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>靜態資料的 Language Understanding 服務加密
 
@@ -26,7 +26,7 @@ ms.locfileid: "85052700"
 
 ## <a name="about-encryption-key-management"></a>關於加密金鑰管理
 
-根據預設，您的訂用帳戶會使用由 Microsoft 管理的加密金鑰。 您也可以選擇使用自己的金鑰來管理您的訂用帳戶。 客戶管理的金鑰 (CMK) ，可提供更大的彈性來建立、輪替、停用及撤銷存取控制。 您也可稽核用來保護資料的加密金鑰。
+根據預設，您的訂用帳戶會使用由 Microsoft 管理的加密金鑰。 您也可以選擇使用您自己的金鑰來管理訂用帳戶，稱為客戶管理的金鑰 (CMK) 。 CMK 提供更大的彈性來建立、輪替、停用及撤銷存取控制。 您也可稽核用來保護資料的加密金鑰。
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>客戶管理的金鑰與 Azure Key Vault
 
@@ -39,10 +39,6 @@ ms.locfileid: "85052700"
 若要要求能夠使用客戶管理的金鑰，請填寫並提交 [LUIS Service 客戶管理的金鑰要求表單](https://aka.ms/cogsvc-cmk)。 大約需要3-5 個工作天的時間，才會收到要求的狀態。 視需求而定，您可能會被放入佇列中，並在可用的空間獲得核准。 核准使用 CMK 搭配 LUIS 之後，您必須從 Azure 入口網站建立新的 Language Understanding 資源，並選取 [E0] 作為定價層。 新的 SKU 運作方式與 F0 SKU 相同，除了 CMK 以外，已可供使用。 使用者將無法從 F0 升級至新的 E0 SKU。
 
 ![LUIS 訂用帳戶影像](../media/cognitive-services-encryption/luis-subscription.png)
-
-### <a name="regional-availability"></a>區域可用性
-
-客戶管理的金鑰可在所有 [撰寫區域](luis-reference-regions.md)中使用。 
 
 ### <a name="limitations"></a>限制
 

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e3d43239dabe75bc2b25319945c2c6b08d726d2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac538d71f854643cb59390447be360bc541142ac
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193100"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077223"
 ---
 # <a name="security-control-secure-configuration"></a>安全性控制：安全設定
 
-建立、執行及主動管理（追蹤、報告、更正） Azure 資源的安全性設定，以防止攻擊者利用易受攻擊的服務和設定。
+建立、執行及主動管理 (的追蹤、報告、正確) Azure 資源的安全性設定，以防止攻擊者利用易受攻擊的服務和設定。
 
 ## <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
@@ -24,17 +24,17 @@ ms.locfileid: "82193100"
 |--|--|--|
 | 7.1 | 5.1 | 客戶 |
 
-使用 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure 資源的設定。 您也可以使用內建的 Azure 原則定義。
+使用 Azure 原則別名來建立自訂原則，以對 Azure 資源的設定進行審核或強制執行。 您也可以使用內建的 Azure 原則定義。
 
-此外，Azure Resource Manager 能夠在 JavaScript 物件標記法（JSON）中匯出範本，這應該進行檢查以確保設定符合/超過組織的安全性需求。
+此外，Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出範本，您應該檢查這些設定，以確保設定符合/超過組織的安全性需求。
 
-您也可以使用來自 Azure 資訊安全中心的建議，做為 Azure 資源的安全設定基準。
+您也可以使用 Azure 資訊安全中心中的建議作為 Azure 資源的安全設定基準。
 
-- [如何查看可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [教學課程：建立和管理原則來強制執行相容性](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-- [單一和多重資源匯出至 Azure 入口網站中的範本](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+- [Azure 入口網站中的單一和多重資源匯出至範本](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
 
 - [安全性建議 - 參考指南](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
@@ -44,7 +44,7 @@ ms.locfileid: "82193100"
 |--|--|--|
 | 7.2 | 5.1 | 客戶 |
 
-使用 Azure 資訊安全中心建議來維護所有計算資源的安全性設定。  此外，您可以使用自訂作業系統映射或 Azure 自動化狀態設定，來建立組織所需作業系統的安全性設定。
+使用 Azure 資訊安全中心建議來維護所有計算資源上的安全性設定。  此外，您也可以使用自訂的作業系統映射或 Azure 自動化狀態設定，來建立您組織所需作業系統的安全性設定。
 
 - [如何監視 Azure 資訊安全中心建議](https://docs.microsoft.com/azure/security-center/security-center-recommendations)
 
@@ -62,7 +62,7 @@ ms.locfileid: "82193100"
 |--|--|--|
 | 7.3 | 5.2 | 客戶 |
 
-使用 Azure 原則 [拒絕] 和 [部署（如果不存在）]，在您的 Azure 資源上強制執行安全設定。  此外，您可以使用 Azure Resource Manager 範本來維護貴組織所需之 Azure 資源的安全性設定。 
+使用 Azure 原則 [拒絕] 和 [部署是否不存在]，在您的 Azure 資源上強制執行安全設定。  此外，您可以使用 Azure Resource Manager 範本，維護您的組織所需的 Azure 資源安全性設定。 
 
 - [瞭解 Azure 原則效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
 
@@ -76,11 +76,11 @@ ms.locfileid: "82193100"
 |--|--|--|
 | 7.4 | 5.2 | 共用 |
 
-請遵循在 Azure 計算資源上執行弱點評定 Azure 資訊安全中心中的建議。  此外，您可以使用 Azure Resource Manager 範本、自訂作業系統映射或 Azure 自動化狀態設定，以維護貴組織所需作業系統的安全性設定。   與 Azure 自動化 Desired State Configuration 結合的 Microsoft 虛擬機器範本可能有助於滿足和維護安全性需求。 
+遵循 Azure 資訊安全中心在您的 Azure 計算資源上執行弱點評定的建議。  此外，您也可以使用 Azure Resource Manager 範本、自訂作業系統映射或 Azure 自動化狀態設定來維護組織所需作業系統的安全性設定。   與 Azure 自動化 Desired State Configuration 結合的 Microsoft 虛擬機器範本，可能有助於符合和維護安全性需求。 
 
-另請注意，Microsoft 所發佈的 Azure Marketplace 虛擬機器映射是由 Microsoft 所管理和維護。 
+另外也請注意，microsoft 發佈的 Azure Marketplace 虛擬機器映射是由 Microsoft 所管理和維護。 
 
-- [如何實行 Azure 資訊安全中心弱點評估建議](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+- [如何實行 Azure 資訊安全中心弱點評定建議](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
 
 - [如何從 Azure Resource Manager 範本建立 Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
 
@@ -98,7 +98,7 @@ ms.locfileid: "82193100"
 |--|--|--|
 | 7.5 | 5.3 | 客戶 |
 
-使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂的 Azure 原則、Azure Resource Manager 範本和 Desired State Configuration 腳本。 若要存取您在 Azure DevOps 中管理的資源，您可以將許可權授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory （Azure AD）中定義的群組（如果與 Azure DevOps 整合），或 Active Directory （如果與 TFS 整合）。
+使用 Azure DevOps 來安全地儲存和管理您的程式碼，例如自訂 Azure 原則、Azure Resource Manager 範本和 Desired State Configuration 腳本。 若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中定義的群組，或與 TFS 整合的 Active Directory。
 
 - [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -110,13 +110,13 @@ ms.locfileid: "82193100"
 |--|--|--|
 | 7.6 | 5.3 | 客戶 |
 
-如果使用自訂映射，請使用角色型存取控制（RBAC），以確保只有授權的使用者可以存取映射。 使用共用映像庫，即可在組織內對於不同的使用者、服務主體或 AD 群組共用您的映像。  針對容器映射，請將其儲存在 Azure Container Registry 中，並利用 RBAC 來確保只有授權的使用者可以存取影像。  
+如果使用自訂映射，請使用 Azure 角色型存取控制 (Azure RBAC) ，以確保只有獲得授權的使用者可以存取影像。 使用共用映像庫，即可在組織內對於不同的使用者、服務主體或 AD 群組共用您的映像。  針對容器映射，請將它們儲存在 Azure Container Registry 中，並利用 Azure RBAC 來確保只有授權的使用者可以存取影像。  
 
-- [瞭解 Azure 中的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+- [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-- [瞭解 Container Registry 的 RBAC](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+- [瞭解適用于 Container Registry 的 Azure RBAC](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-- [如何在 Azure 中設定 RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+- [如何設定 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 - [共用映像資源庫概觀](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)
 
@@ -126,7 +126,7 @@ ms.locfileid: "82193100"
 |--|--|--|
 | 7.7 | 5.4 | 客戶 |
 
-使用 Azure 原則定義和執行 Azure 資源的標準安全性設定。 使用 Azure 原則別名來建立自訂原則，以對 Azure 資源的網路設定進行審核或強制執行。 您也可以使用與特定資源相關的內建原則定義。  此外，您可以使用 Azure 自動化來部署設定變更。
+使用 Azure 原則定義和實行 Azure 資源的標準安全性設定。 使用 Azure 原則別名來建立自訂原則，以對 Azure 資源的網路設定進行審核或強制執行。 您也可以使用與特定資源相關的內建原則定義。  此外，您可以使用 Azure 自動化來部署設定變更。
 
 - [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -138,7 +138,7 @@ ms.locfileid: "82193100"
 |--|--|--|
 | 7.8 | 5.4 | 客戶 |
 
-Azure 自動化狀態設定是適用于任何雲端或內部部署資料中心內 Desired State Configuration （DSC）節點的設定管理服務。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。 
+Azure 自動化狀態設定是在任何雲端或內部部署資料中心內 Desired State Configuration (DSC) 節點的設定管理服務。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。 
 
 - [將機器上架交由 Azure Automation State Configuration 管理](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
 
@@ -158,7 +158,7 @@ Azure 自動化狀態設定是適用于任何雲端或內部部署資料中心�
 |--|--|--|
 | 7.10 | 5.5 | 客戶 |
 
-使用 Azure 資訊安全中心來執行適用于容器的 OS 和 Docker 設定的基準掃描。
+使用 Azure 資訊安全中心對容器的 OS 和 Docker 設定執行基準掃描。
 
 - [了解 Azure 資訊安全中心容器建議](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
 
@@ -168,13 +168,13 @@ Azure 自動化狀態設定是適用于任何雲端或內部部署資料中心�
 |--|--|--|
 | 7.11 | 13.1 | 客戶 |
 
-搭配 Azure Key Vault 使用受控服務識別，以簡化及保護雲端應用程式的秘密管理。
+使用受控服務識別搭配 Azure Key Vault，以簡化和保護雲端應用程式的秘密管理。
 
 - [如何與 Azure 受控識別整合](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
 
 - [如何建立 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-- [如何使用受控識別提供 Key Vault 驗證](https://docs.microsoft.com/azure/key-vault/managed-identity)
+- [如何使用受控識別來提供 Key Vault authentication](https://docs.microsoft.com/azure/key-vault/managed-identity)
 
 ## <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
@@ -182,7 +182,7 @@ Azure 自動化狀態設定是適用于任何雲端或內部部署資料中心�
 |--|--|--|
 | 7.12 | 4.1 | 客戶 |
 
-在 Azure AD 中使用受控識別，以自動管理的身分識別提供 Azure 服務。 受控識別可供對支援 Azure AD 驗證的任何服務進行驗證 (包括 Key Vault)，不需要程式碼中的任何認證。
+使用受控識別，在 Azure AD 中為 Azure 服務提供自動管理的身分識別。 受控識別可供對支援 Azure AD 驗證的任何服務進行驗證 (包括 Key Vault)，不需要程式碼中的任何認證。
 
 - [如何設定受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
 
@@ -199,4 +199,4 @@ Azure 自動化狀態設定是適用于任何雲端或內部部署資料中心�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱下一個安全性控制：[惡意程式碼防護](security-control-malware-defense.md)
+- 請參閱下一個安全性控制：  [惡意程式碼防禦](security-control-malware-defense.md)

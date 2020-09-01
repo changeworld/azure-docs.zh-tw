@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 04a984a2dfa473502fd9e534e52b60b33be52757
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: d086f8f3a2f4939012691d5bd03cc92a50ac4613
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88704955"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078311"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商業市集交易功能
 
@@ -143,6 +143,8 @@ BYOL 具有下列成本結構：
 |---------|---------|
 |Microsoft 向您支付授權成本的 80% <br> \* Microsoft 針對任何符合資格的 SaaS 應用程式支付 90% 授權成本給您   |   每月 $80.00 <br> \* 每月 $90.00    |
 |Microsoft 保留授權成本的 20% <br> \* Microsoft 針對任何符合資格的 SaaS 應用程式保留 10% 授權成本。  |  每月 $20.00 <br> \* $10.00     |
+
+### <a name="reduced-service-fee"></a>降低服務費用
 
 針對您在商業市集中發佈的特定供應專案，Microsoft 會將其 Marketplace 服務費用從 20% (降低，如 [Microsoft 發行者合約](https://go.microsoft.com/fwlink/?LinkID=699560)) 至10% 所述。 若您的供應專案 () 符合資格，則您的供應專案 (s) 必須由 Microsoft 指定為 Azure IP 共同銷售受到激勵。 在每個行事曆月份結束前至少必須符合五個工作天的資格，才能獲得每月減少的 Marketplace 服務費用。 降低的 Marketplace 服務費用適用于 Azure IP 共同銷售受到激勵 SaaS、Vm、受控應用程式，以及透過商業市場提供的任何其他合格可交易 IaaS 供應專案。
 

@@ -1,142 +1,84 @@
 ---
-title: 使用 Azure Resource Manager 部署 Azure Cache for Redis
-description: 瞭解如何使用 Azure Resource Manager 範本來部署 Azure Cache for Redis 資源。 範本是針對常見案例所提供。
+title: 使用 Azure Resource Manager 範本部署 Azure Cache for Redis
+description: 瞭解如何使用 Azure Resource Manager 範本來部署 Azure Cache for Redis 資源。 針對常見案例提供範本。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 01/23/2017
-ms.openlocfilehash: 2d00a6b7753a61bb2527a56231b2fe054736f1b0
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-armqs
+ms.date: 08/18/2020
+ms.openlocfilehash: 3c2d13794f2fc3af4541032d1f94967681c0deee
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008571"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078413"
 ---
-# <a name="create-an-azure-cache-for-redis-using-a-template"></a>使用範本來建立 Azure Cache for Redis
+# <a name="create-an-azure-cache-for-redis-using-a-resource-manager-template"></a>使用 Resource Manager 範本建立 Azure Cache for Redis
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+瞭解如何建立部署 Azure Cache for Redis 的 Azure Resource Manager 範本。 快取可以搭配現有的儲存體帳戶以保留診斷資料。 您將學習如何定義要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。 目前對於訂用帳戶，同一區域中所有快取的診斷設定是共用的。 更新區域中的一個快取將會影響區域中的所有其他快取。
 
-在本主題中，您將學習如何建立 Azure Resource Manager 範本，以部署 Azure Cache for Redis。 快取可以搭配現有的儲存體帳戶以保留診斷資料。 您將學習如何定義要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-目前對於訂用帳戶，同一區域中所有快取的診斷設定是共用的。 更新區域中的一個快取將會影響區域中的所有其他快取。
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
 
-如需關於建立範本的詳細資訊，請參閱 [編寫 Azure 資源管理員範本](../azure-resource-manager/templates/template-syntax.md)。 若要深入了解快取資源類型的 JSON 語法和屬性，請參閱 [Microsoft.Cache 資源類型](/azure/templates/microsoft.cache/allversions)。
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
-如需完整的範本，請參閱 [Azure Cache for Redis 範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json) \(英文\)。
+## <a name="prerequisites"></a>必要條件
 
-> [!NOTE]
-> 新 [Premium 層](cache-overview.md#service-tiers) 中有可用的 Resource Manager 範本。 
-> 
-> * [建立具有叢集的進階 Azure Cache for Redis](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
-> * [建立具有資料持續性的進階 Azure Cache for Redis](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
-> * [建立部署到虛擬網路的 Premium Redis 快取](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
-> 
-> 若要查看最新的範本，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/)並搜尋 `Azure Cache for Redis`。
-> 
-> 
+* **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+* **儲存體帳戶**：若要建立一個帳戶，請參閱 [建立 Azure 儲存體帳戶](/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=template)。 儲存體帳戶會用於診斷資料。
 
-## <a name="what-you-will-deploy"></a>部署內容
-在此範本中，您將部署使用現有儲存體帳戶的 Azure Cache for Redis 來診斷資料。
+## <a name="review-the-template"></a>檢閱範本
 
-若要自動執行部署，請按一下下列按鈕：
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-redis-cache/)。
 
-[![部署至 Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+:::code language="json" source="~/quickstart-templates/101-redis-cache/azuredeploy.json":::
 
-## <a name="parameters"></a>參數
-透過 Azure 資源管理員，您可以定義在部署範本時想要指定之值的參數。 此範本有一個 Parameters 區段，內含所有參數值。
-您應該為會隨著要部署的專案或要部署到的環境而變化的值定義參數。 請不要為永遠保持不變的值定義參數。 每個參數值都可在範本中用來定義所部署的資源。 
+範本中會定義下列資源：
 
-[!INCLUDE [app-service-web-deploy-redis-parameters](../../includes/cache-deploy-parameters.md)]
+* [Microsoft. Cache/Redis](/azure/templates/microsoft.cache/redis)
+* [Microsoft Insights/diagnosticsettings](/azure/templates/diagnosticsettings)
 
-### <a name="rediscachelocation"></a>redisCacheLocation
-Azure Cache for Redis 的位置。 針對最佳效能，使用要與快取搭配使用之應用程式相同的位置。
+您也可以 [使用新進階層的 Resource Manager](cache-overview.md#service-tiers) 範本。
 
-```json
-  "redisCacheLocation": {
-    "type": "string"
-  }
+* [建立具有叢集的進階 Azure Cache for Redis](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
+* [建立具有資料持續性的進階 Azure Cache for Redis](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
+* [建立部署到虛擬網路中的 Premium Redis 快取](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
+
+若要查看最新的範本，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/)並搜尋 `Azure Cache for Redis`。
+
+## <a name="deploy-the-template"></a>部署範本
+
+1. 選取以下影像來登入 Azure 並開啟範本。
+
+    [![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+1. 選取或輸入下列值：
+
+    * **訂用帳戶**：選取用來建立資料共用和其他資源的 Azure 訂用帳戶。
+    * **資源群組**：選取 [新建] 以建立新資源群組或選取現有的資源群組。
+    * **位置**：選取資源群組的位置。 儲存體帳戶和 Redis 快取必須位於相同的區域中。 根據預設，Redis 快取會使用與資源群組相同的位置。 因此，請指定與儲存體帳戶相同的位置。
+    * **Redis Cache name**：輸入 Redis 快取的名稱。
+    * **現有的診斷儲存體帳戶**：輸入儲存體帳戶的資源識別碼。 語法為 **/Subscriptions/ &lt; 訂用帳戶識別碼>/RESOURCEGROUPS/ &lt; 資源組名>/PROVIDERS/MICROSOFT.STORAGE/STORAGEACCOUNTS/ &lt; 儲存體帳戶名稱>**。
+
+    其餘設定請使用預設值。
+1. 選取 [我同意上方所述的條款及條件]，然後選取 [購買]。
+
+## <a name="review-deployed-resources"></a>檢閱已部署的資源
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 開啟您所建立的 Redis 快取。
+
+## <a name="clean-up-resources"></a>清除資源
+
+如果不再需要，請刪除資源群組，這會刪除資源群組中的資源。
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
 ```
 
-### <a name="existingdiagnosticsstorageaccountname"></a>existingDiagnosticsStorageAccountName
-要用於診斷的現有儲存體帳戶名稱。 
+## <a name="next-steps"></a>後續步驟
 
-```json
-  "existingDiagnosticsStorageAccountName": {
-    "type": "string"
-  }
-```
-
-### <a name="enablenonsslport"></a>enableNonSslPort
-指出是否允許透過非 SSL 連接埠存取的布林值。
-
-```json
-  "enableNonSslPort": {
-    "type": "bool"
-  }
-```
-
-### <a name="diagnosticsstatus"></a>diagnosticsStatus
-指出診斷是否啟用的值。 使用 ON 或 OFF。
-
-```json
-  "diagnosticsStatus": {
-    "type": "string",
-    "defaultValue": "ON",
-    "allowedValues": [
-          "ON",
-          "OFF"
-      ]
-  }
-```
-
-## <a name="resources-to-deploy"></a>要部署的資源
-### <a name="azure-cache-for-redis"></a>Azure Cache for Redis
-建立 Azure Cache for Redis。
-
-```json
-  {
-    "apiVersion": "2015-08-01",
-    "name": "[parameters('redisCacheName')]",
-    "type": "Microsoft.Cache/Redis",
-    "location": "[parameters('redisCacheLocation')]",
-    "properties": {
-      "enableNonSslPort": "[parameters('enableNonSslPort')]",
-      "sku": {
-        "capacity": "[parameters('redisCacheCapacity')]",
-        "family": "[parameters('redisCacheFamily')]",
-        "name": "[parameters('redisCacheSKU')]"
-      }
-    },
-    "resources": [
-      {
-        "apiVersion": "2017-05-01-preview",
-        "type": "Microsoft.Cache/redis/providers/diagnosticsettings",
-        "name": "[concat(parameters('redisCacheName'), '/Microsoft.Insights/service')]",
-        "location": "[parameters('redisCacheLocation')]",
-        "dependsOn": [
-          "[concat('Microsoft.Cache/Redis/', parameters('redisCacheName'))]"
-        ],
-        "properties": {
-          "status": "[parameters('diagnosticsStatus')]",
-          "storageAccountName": "[parameters('existingDiagnosticsStorageAccountName')]"
-        }
-      }
-    ]
-  }
-```
-
-## <a name="commands-to-run-deployment"></a>執行部署的命令
-[!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell
-    New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli
-    azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
-```
+在本教學課程中，您將學會如何建立部署 Azure Cache for Redis Azure Resource Manager 範本。 若要瞭解如何建立 Azure Resource Manager 範本，以使用 Azure Cache for Redis 部署 Azure Web 應用程式，請參閱 [使用範本建立 Web 應用程式和 Azure Cache for Redis](./cache-web-app-arm-with-redis-cache-provision.md)。

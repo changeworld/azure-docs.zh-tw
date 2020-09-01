@@ -1,6 +1,7 @@
 - name: Azure Data Share 文件
   href: index.yml
 - name: 概觀
+  expanded: true
   items:
     - name: 什麼是 Azure Data Share？
       href: overview.md
@@ -36,6 +37,11 @@
       href: samples-powershell.md
 - name: 操作指南
   items:
+    - name: 依據來源共用及接收資料
+      items:
+        - name: 從 Azure 資料總管共用
+          href: /azure/data-explorer/data-share
+          maintainContext: true
     - name: 監視
       href: how-to-monitor.md
     - name: 疑難排解
@@ -54,9 +60,6 @@
       href: security.md
     - name: 災害復原
       href: disaster-recovery.md
-    - name: 共用 Azure 資料總管資料
-      href: /azure/data-explorer/data-share
-      maintainContext: true
 - name: 參考
   items:
     - name: .NET

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 1a5ed324ae109a151bf21050993bff02434410df
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e949c3db6d8c0cafab8556dbfde367e6e49273e9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814445"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078192"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>待用資料的 Azure 儲存體加密
 
@@ -69,6 +69,8 @@ Azure 儲存體中的資料會以透明的方式使用256位 [AES 加密](https:
 
 > [!NOTE]
 > 在預覽期間，讀取權限異地冗余儲存體 (GRS) 和讀取權限異地區域冗余儲存體 (RA-GZRS) 帳戶不支援加密範圍。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!IMPORTANT]
 > 加密範圍預覽僅供非生產環境使用。 生產環境的服務等級協定 (SLA) 目前無法使用。

@@ -1,7 +1,7 @@
 ---
-title: 需要安全傳輸以確保連接安全
+title: 需要安全傳輸以確保安全連線
 titleSuffix: Azure Storage
-description: 瞭解如何要求 Azure 儲存體的要求的安全傳輸。 當您需要儲存體帳戶的安全傳輸時，來自不安全連線的任何要求都會遭到拒絕。
+description: 瞭解如何要求 Azure 儲存體要求的安全傳輸。 當您需要儲存體帳戶的安全傳輸時，會拒絕源自不安全連線的任何要求。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,30 +10,30 @@ ms.date: 04/21/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 84cbb6f099c7ca94ea7046bae3f4f40e784948fe
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 22e012c36f5c2c6f195a7e3b21afe9001a4cad0d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504563"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077948"
 ---
-# <a name="require-secure-transfer-to-ensure-secure-connections"></a>需要安全傳輸以確保連接安全
+# <a name="require-secure-transfer-to-ensure-secure-connections"></a>需要安全傳輸以確保安全連線
 
-您可以設定儲存體帳戶，以接受來自安全連線的要求，僅透過設定儲存體帳戶的 [**需要安全傳輸**] 屬性。 當您需要安全傳輸時，來自不安全連線的任何要求都會遭到拒絕。 Microsoft 建議您一律針對所有儲存體帳戶要求安全傳輸。
+您可以設定儲存體帳戶，只透過設定儲存體帳戶的 [ **需要安全傳輸** ] 屬性，從安全連線接受要求。 當您需要安全傳輸時，會拒絕源自不安全連線的任何要求。 Microsoft 建議您一律針對所有儲存體帳戶要求安全傳輸。
 
-需要進行安全傳輸時，必須透過 HTTPS 呼叫 Azure 儲存體 REST API 作業。 任何透過 HTTP 提出的要求都會遭到拒絕。
+需要安全傳輸時，必須透過 HTTPS 進行 Azure 儲存體 REST API 作業的呼叫。 任何透過 HTTP 提出的要求都會遭到拒絕。
 
-當儲存體帳戶需要安全傳輸時，透過 SMB 連線至 Azure 檔案共用而不加密會失敗。 不安全連線的範例包括透過 SMB 2.1、沒有加密的 SMB 3.0，或某些 Linux SMB 用戶端版本所建立的連接。
+當儲存體帳戶需要安全傳輸時，透過 SMB 連接至 Azure 檔案共用而不加密會失敗。 不安全的連線範例包括透過 SMB 2.1、不含加密的 SMB 3.0，或某些 Linux SMB 用戶端版本所建立的連接。
 
-根據預設，當您建立儲存體帳戶時，就會啟用 [**需要安全傳輸**] 屬性。
+依預設，當您建立儲存體帳戶時，會啟用 [ **需要安全傳輸** ] 屬性。
 
 > [!NOTE]
 > 因為 Azure 儲存體針對自訂網域名稱並不支援 HTTPS，當您使用自訂網域名稱時，將不會套用此選項。 不支援傳統儲存體帳戶。
 
 ## <a name="require-secure-transfer-in-the-azure-portal"></a>Azure 入口網站中需要安全傳輸
 
-當您在[Azure 入口網站](https://portal.azure.com)中建立儲存體帳戶時，可以開啟 [**需要安全傳輸**] 屬性。 您也可以為現有的儲存體帳戶啟用它。
+當您在[Azure 入口網站](https://portal.azure.com)中建立儲存體帳戶時，可以開啟「**需要安全傳輸**」屬性。 您也可以為現有的儲存體帳戶啟用它。
 
 ### <a name="require-secure-transfer-for-a-new-storage-account"></a>針對新的儲存體帳戶要求使用安全傳輸
 
@@ -52,7 +52,7 @@ ms.locfileid: "87504563"
 
 ## <a name="require-secure-transfer-from-code"></a>需要從程式碼進行安全傳輸
 
-若要以程式設計方式要求安全傳輸，請在儲存體帳戶上將_enableHTTPstrafficonly 屬性_屬性設定為_True_ 。 您可以使用儲存體資源提供者 REST API、用戶端程式庫或工具來設定此屬性：
+若要以程式設計方式要求安全傳輸，請在儲存體帳戶上將 _enableHTTPstrafficonly 屬性_ 屬性設定為 _True_ 。 您可以使用「儲存體資源提供者」 REST API、用戶端程式庫或工具來設定此屬性：
 
 * [REST API](/rest/api/storagerp/storageaccounts)
 * [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
@@ -62,7 +62,7 @@ ms.locfileid: "87504563"
 * [Python SDK](https://pypi.org/project/azure-mgmt-storage)
 * [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)
 
-## <a name="require-secure-transfer-with-powershell"></a>需要使用 PowerShell 進行安全傳輸
+## <a name="require-secure-transfer-with-powershell"></a>使用 PowerShell 要求安全傳輸
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

@@ -1,22 +1,22 @@
 ---
 title: 適用于 Data Lake Analytics 的 Azure 安全性基準
-description: Data Lake Analytics 的安全性基準提供程式指引和資源，可用於執行 Azure 安全性基準測試中所指定的安全性建議。
+description: Data Lake Analytics 安全性基準提供的程式指引和資源，可讓您執行 Azure 安全性基準測試中所指定的安全性建議。
 author: msmbaldwin
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 33084d72e26f2926751def686c0a4c1d0485a5c2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 383e135cad867ed8f345b39a6cace6fbbca8bfa0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005130"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076373"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>適用于 Data Lake Analytics 的 Azure 安全性基準
 
-適用于 Data Lake Analytics 的 Azure 安全性基準包含可協助您改善部署之安全性狀態的建議。
+適用于 Data Lake Analytics 的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
 
 此服務的基準取自 [Azure 安全性效能評定 1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
@@ -26,9 +26,9 @@ ms.locfileid: "88005130"
 
 *如需詳細資訊，請參閱[安全性控制：網路安全性](/azure/security/benchmarks/security-control-network-security)。*
 
-### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路中的 Azure 資源
+### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路內的 Azure 資源
 
-**指導**方針：使用 Data Lake Analytics 的防火牆設定來限制外部 IP 範圍，以允許從您的內部部署用戶端和協力廠商服務進行存取。 您可以透過入口網站、REST Api 或 PowerShell 取得防火牆設定。
+**指導**方針：使用 Data Lake Analytics 的防火牆設定來限制外部 IP 範圍，以允許從您的內部部署用戶端和協力廠商服務進行存取。 您可以透過入口網站、REST Api 或 PowerShell 來設定防火牆設定。
 
 * [防火牆規則](https://docs.microsoft.com/rest/api/datalakeanalytics/firewallrules)
 
@@ -40,7 +40,7 @@ ms.locfileid: "88005130"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：監視和記錄虛擬網路、子網和網路介面的設定和流量
 
-**指導**方針：不適用;Azure Data Lake Analytics 不會在虛擬網路中執行，且使用同盟查詢時，無法將撥出電話設定為透過客戶虛擬網路路由傳送。
+**指導**方針：不適用;Azure Data Lake Analytics 不會在虛擬網路中執行，而且在使用同盟查詢時，不能將外寄呼叫設定為透過客戶虛擬網路路由傳送。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -56,7 +56,7 @@ ms.locfileid: "88005130"
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
 
-**指導**方針：使用 Data Lake Analytics 的防火牆設定來限制外部 IP 範圍，以允許從您的內部部署用戶端和協力廠商服務進行存取。 您可以透過入口網站、REST Api 或 PowerShell 取得防火牆設定。
+**指導**方針：使用 Data Lake Analytics 的防火牆設定來限制外部 IP 範圍，以允許從您的內部部署用戶端和協力廠商服務進行存取。 您可以透過入口網站、REST Api 或 PowerShell 來設定防火牆設定。
 
 * [防火牆規則](https://docs.microsoft.com/rest/api/datalakeanalytics/firewallrules)
 
@@ -68,15 +68,15 @@ ms.locfileid: "88005130"
 
 ### <a name="15-record-network-packets"></a>1.5：記錄網路封包
 
-**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，而且無法使用網路安全性群組 (Nsg) 來記錄網路流量記錄。
+**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，也無法使用 (Nsg) 的網路安全性群組來記錄網路流量記錄。
 
 **Azure 資訊安全中心監視**：不適用
 
 **責任**：不適用
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵預防系統 (IDS/IPS) 
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵防護系統 (IDS/IPS) 
 
-**指導**方針：不適用;Data Lake Analytics 是一種 PaaS 供應專案，不會部署到客戶網路。
+**指導**方針：不適用;Data Lake Analytics 是不會部署到客戶網路的 PaaS 供應專案。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -92,7 +92,7 @@ ms.locfileid: "88005130"
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負擔降至最低
 
-**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，而且無法使用網路安全性群組 (Nsg) 。
+**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，也無法使用 (Nsg) 的網路安全性群組。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -100,7 +100,7 @@ ms.locfileid: "88005130"
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
-**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，而且無法使用網路安全性群組 (Nsg) 。
+**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，也無法使用 (Nsg) 的網路安全性群組。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -108,7 +108,7 @@ ms.locfileid: "88005130"
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
-**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，而且無法使用網路安全性群組 (Nsg) 。
+**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，也無法使用 (Nsg) 的網路安全性群組。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -116,7 +116,7 @@ ms.locfileid: "88005130"
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
-**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，而且無法使用網路安全性群組 (Nsg) 。
+**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，也無法使用 (Nsg) 的網路安全性群組。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -136,9 +136,9 @@ ms.locfileid: "88005130"
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
-**指導**方針：透過 Azure 監視器內嵌記錄來匯總安全性資料，例如 Data Lake Analytics 「audit」和「requests」診斷。 在 Azure 監視器中，您可以使用 Log Analytics 工作區來查詢和執行分析，並將 Azure 儲存體帳戶用於長期/封存儲存體，並選擇性地使用固定儲存體之類的安全性功能，並強制保留保存。
+**指導**方針：透過 Azure 監視器內嵌記錄，以匯總安全性資料，例如 Data Lake Analytics 「audit」和「要求」診斷。 在 Azure 監視器中，您可以使用 Log Analytics 工作區來查詢和執行分析，並使用 Azure 儲存體帳戶來取得長期/封存儲存體，並選擇性地使用安全性功能，例如不可變的儲存體和強制保留保留。
 
-或者，您可以啟用和內部資料，以 Azure Sentinel 或協力廠商 SIEM。
+或者，您可以啟用和內部資料來 Azure Sentinel 或協力廠商 SIEM。
 
 * [存取 Azure Data Lake Analytics 的診斷記錄](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)
 
@@ -156,7 +156,7 @@ ms.locfileid: "88005130"
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
-**指導**方針：啟用 Data Lake Analytics 的診斷設定，以存取 audit 和 requests 記錄。 其中包括事件來源、日期、使用者、時間戳記和其他實用元素等資料。
+**指導**方針：啟用 Data Lake Analytics 的診斷設定，以存取 audit 和要求記錄。 這些包括事件來源、日期、使用者、時間戳記和其他實用元素等資料。
 
 * [如何使用 Azure 監視器收集平臺記錄和計量](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
 
@@ -176,7 +176,7 @@ ms.locfileid: "88005130"
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
 
-**指引**：在 Azure 監視器中，根據貴組織的合規性法規來設定您的 Log Analytics 工作區保留期間。 針對長期和封存儲存體使用 Azure 儲存體帳戶。
+**指導**方針：在 Azure 監視器中，根據您組織的合規性法規來設定 Log Analytics 工作區保留期限。 使用 Azure 儲存體帳戶來取得長期和封存儲存體。
 
 * [變更 Log Analytics 中的資料保留期限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
@@ -188,11 +188,11 @@ ms.locfileid: "88005130"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和審核記錄
 
-**指引**：分析和監視記錄中的異常行為，並定期審查 Data Lake Analytics 資源的結果。 使用 Azure 監視器的 Log Analytics 工作區來審查記錄，並對記錄資料執行查詢。 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。
+**指導**方針：分析和監視記錄中的異常行為，並定期審核您 Data Lake Analytics 資源的結果。 使用 Azure 監視器的 Log Analytics 工作區來檢查記錄，並對記錄資料執行查詢。 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。
 
 * [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
-* [如需 Log Analytics 工作區的詳細資訊](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [有關 Log Analytics 工作區的詳細資訊](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
 
 * [如何在 Azure 監視器中執行自訂查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
 
@@ -202,7 +202,7 @@ ms.locfileid: "88005130"
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：啟用異常活動的警示
 
-**指引**：啟用 Data Lake Analytics 的診斷設定，並將記錄傳送到 Log Analytics 工作區。 請將 Log Analytics 工作區在 Azure Sentinel 上線，因為其可提供安全性協調流程自動化回應 (SOAR) 解決方案。 如此可建立劇本 (自動化解決方案)，並用於修復安全性問題。
+**指導**方針：啟用 Data Lake Analytics 的診斷設定，並將記錄傳送至 Log Analytics 工作區。 請將 Log Analytics 工作區在 Azure Sentinel 上線，因為其可提供安全性協調流程自動化回應 (SOAR) 解決方案。 如此可建立劇本 (自動化解決方案)，並用於修復安全性問題。
 
 * [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
@@ -216,7 +216,7 @@ ms.locfileid: "88005130"
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中化反惡意程式碼記錄
 
-**指導**方針：不適用;Data Lake Analytics 不會處理或產生與反惡意程式碼相關的記錄檔。
+**指導**方針：不適用;Data Lake Analytics 不會處理或產生反惡意程式碼的相關記錄。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -224,7 +224,7 @@ ms.locfileid: "88005130"
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：啟用 DNS 查詢記錄
 
-**指導**方針：根據您的組織需求，從 AZURE MARKETPLACE 針對 DNS 記錄解決方案來執行協力廠商解決方案。
+**指導**方針：根據您的組織需求，針對 DNS 記錄解決方案的 Azure Marketplace 來執行協力廠商解決方案。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -232,7 +232,7 @@ ms.locfileid: "88005130"
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：啟用命令列稽核記錄
 
-**指導**方針：不適用;此控制項適用于客戶可存取基礎作業系統的計算資源。
+**指導**方針：不適用;此控制項適用于客戶可以存取基礎作業系統的計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -244,9 +244,9 @@ ms.locfileid: "88005130"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的詳細目錄
 
-**指導**方針： Azure AD 具有必須明確指派且可供查詢的內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
+**指導**方針： Azure AD 有必須明確指派且可供查詢的內建角色。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-* [如何使用 PowerShell 取得 Azure AD 中的目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
 * [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
@@ -278,9 +278,9 @@ ms.locfileid: "88005130"
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 單一登入 (SSO) 
 
-**指導**方針：盡可能使用 Azure Active Directory SSO，而不是設定個別服務的獨立認證。 使用 Azure 資訊安全中心身分識別和存取建議。
+**指導**方針：盡可能使用 Azure Active Directory SSO，而不是針對個別服務設定個別的獨立認證。 使用 Azure 資訊安全中心身分識別和存取建議。
 
-* [瞭解使用 Azure AD 的 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [瞭解 Azure AD 的 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 **Azure 資訊安全中心監視**：是
 
@@ -288,7 +288,7 @@ ms.locfileid: "88005130"
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：所有以 Azure Active Directory 為基礎的存取都使用多重要素驗證
 
-**指引**： (MFA) 啟用 Azure Active Directory 多重要素驗證，並遵循 Azure 資訊安全中心身分識別和存取管理建議來協助保護您的 Data Lake Analytics 資源。
+**指導**方針： (MFA) 啟用 Azure Active Directory 多重要素驗證，並遵循 Azure 資訊安全中心身分識別和存取管理的建議，以協助保護您的 Data Lake Analytics 資源。
 
 * [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
@@ -298,9 +298,9 @@ ms.locfileid: "88005130"
 
 **責任**：客戶
 
-### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：使用安全、受 Azure 管理的工作站來進行系統管理工作
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：使用安全、受 Azure 管理的工作站進行系統管理工作
 
-**指導**方針：使用安全、受 Azure 管理的工作站 (也稱為特殊許可權存取工作站，或 PAW) ，以執行需要提高許可權的系統管理工作。
+**指導**方針：使用安全且受 Azure 管理的工作站 (也稱為「特殊許可權存取工作站」，或 PAW 需要較高許可權的系統管理工作) 。
 
 * [瞭解安全、受 Azure 管理的工作站](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-managed-workstation)
 
@@ -310,9 +310,9 @@ ms.locfileid: "88005130"
 
 **責任**：客戶
 
-### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：從系統管理客戶紀錄及警示可疑活動
+### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：來自系統管理帳戶的可疑活動記錄和警示
 
-**指導**方針：當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory 的安全性報告來產生記錄檔和警示。 使用 Azure 資訊安全中心來監視身分識別和存取活動。
+**指導**方針：當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory 的安全性報告來產生記錄和警示。 使用 Azure 資訊安全中心來監視身分識別和存取活動。
 
 * [如何識別已標示為有風險活動的 Azure AD 使用者](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
@@ -324,7 +324,7 @@ ms.locfileid: "88005130"
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：僅從核准的位置管理 Azure 資源
 
-**指導**方針：使用 Azure AD 命名位置，只允許來自 IP 位址範圍或國家/地區的特定邏輯群組進行存取。
+**指導**方針：使用 Azure AD 命名位置，只允許來自 IP 位址範圍或國家/地區之特定邏輯群組的存取。
 
 * [如何設定 Azure AD 命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
@@ -334,7 +334,7 @@ ms.locfileid: "88005130"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導**方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 提供角色型存取控制 (RBAC) ，以精細控制用戶端對 Data Lake Analytics 資源的存取。
+**指導**方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure 角色型存取控制 (Azure RBAC) 可讓您更精細地控制用戶端對 Data Lake Analytics 資源的存取。
 
 * [如何建立和設定 Azure AD 實例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -344,11 +344,11 @@ ms.locfileid: "88005130"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
-**指引**：Azure AD 會提供記錄來協助探索過時的帳戶。 此外，您還可以使用 Azure AD 身分識別和存取審查，有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者存取權，以確保只有適當的使用者可以繼續進行存取。
+**指引**：Azure AD 會提供記錄來協助探索過時的帳戶。 此外，使用 Azure AD 身分識別和存取評論，有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者存取權，以確定只有適當的使用者可以繼續存取。
 
 * [瞭解 Azure AD 報告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
 
-* [如何使用 Azure AD 身分識別和存取評論](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [如何使用 Azure AD 身分識別和存取權評論](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 
 **Azure 資訊安全中心監視**：是
 
@@ -356,9 +356,9 @@ ms.locfileid: "88005130"
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：監視嘗試存取已停用的認證
 
-**指導**方針：啟用 Data Lake Analytics 和 Azure Active Directory 的診斷設定，並將所有記錄傳送到 Log Analytics 工作區。 設定所需的警示 (例如，嘗試存取 Log Analytics 內已停用的密碼) 。
+**指導**方針：啟用 Data Lake Analytics 和 Azure Active Directory 的診斷設定，將所有記錄傳送到 Log Analytics 工作區。 設定所需的警示 (例如，嘗試存取 Log Analytics 中) 的已停用秘密。
 
-* [將 Azure AD 記錄與 Azure 監視器記錄整合](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [整合 Azure AD 記錄與 Azure 監視器記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Azure 資訊安全中心監視**：是
 
@@ -366,7 +366,7 @@ ms.locfileid: "88005130"
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：帳戶登入行為偏差的警示
 
-**指導**方針：使用 Azure Active Directory 的風險和身分識別保護功能，為偵測到的 Data Lake Analytics 資源相關可疑動作設定自動回應。 您應該透過 Azure Sentinel 啟用自動回應，以執行貴組織的安全性回應。
+**指導**方針：使用 Azure Active Directory 的風險和身分識別保護功能，來設定偵測到與您 Data Lake Analytics 資源相關的可疑動作的自動回應。 您應該透過 Azure Sentinel 啟用自動回應，以執行您組織的安全性回應。
 
 * [如何檢視有風險的 Azure AD 登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
@@ -382,7 +382,7 @@ ms.locfileid: "88005130"
 
 **指導**方針：不適用;Azure Data Lake Analytics 不支援客戶加密箱。
 
-* [支援的服務和案例已正式運作](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [正式推出的支援服務和案例](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -394,7 +394,7 @@ ms.locfileid: "88005130"
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
-**指引**：使用標記來協助追蹤儲存或處理敏感資訊的 Data Lake Analytics 資源。
+**指導**方針：使用標記來協助追蹤儲存或處理機密資訊 Data Lake Analytics 資源。
 
 * [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -404,7 +404,7 @@ ms.locfileid: "88005130"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指引**：使用不同的訂用帳戶、個別安全性網域（例如環境、資料敏感度）的管理群組來執行隔離。 您可以限制您的 Data Lake Analytics，以控制您的應用程式和企業環境所需之 Data Lake Analytics 資源的存取層級。 設定防火牆規則時，只有透過一組指定網路要求資料的應用程式，才能存取您的 Data Lake Analytics 資源。 您可以透過 Azure AD RBAC 來控制對 Azure Data Lake Analytics 的存取。
+**指導**方針：使用不同的訂用帳戶、個別安全性網域的管理群組（例如環境、資料敏感度）來執行隔離。 您可以限制您的 Data Lake Analytics，以控制您的應用程式和企業環境所需的 Data Lake Analytics 資源存取層級。 設定防火牆規則時，只有透過一組指定網路要求資料的應用程式可以存取您的 Data Lake Analytics 資源。 您可以透過 Azure RBAC 控制對 Azure Data Lake Analytics 的存取。
 
 * [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -412,7 +412,7 @@ ms.locfileid: "88005130"
 
 * [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-* [管理以角色為基礎的存取控制](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
+* [管理角色型存取控制](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
 
 * [防火牆規則](https://docs.microsoft.com/rest/api/datalakeanalytics/firewallrules)
 
@@ -426,11 +426,11 @@ ms.locfileid: "88005130"
 
 **指導**方針： Azure Data Lake Analytics 資源尚無法使用資料遺失防護功能。 若需要達到合規性目標，請實作協力廠商解決方案。
 
-針對由 Microsoft 管理的基礎平臺，Microsoft 會將所有客戶內容視為機密，並防止客戶資料遺失和曝光。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。
+針對 Microsoft 所管理的基礎平臺，Microsoft 會將所有客戶內容視為機密資料，並防止客戶資料遺失和公開。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。
 
 * [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-* [如何保護 Azure 儲存體帳戶的安全](https://docs.microsoft.com/azure/storage/common/storage-security-guide)
+* [如何保護 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-security-guide)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -438,7 +438,7 @@ ms.locfileid: "88005130"
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
-**指導**方針： Microsoft Azure 資源預設會協商 TLS 1.2。 確定任何連線到您 Data Lake Analytics 的用戶端都可以使用 TLS 1.2 或更高版本進行協商。
+**指導**方針： Microsoft Azure 資源預設會協商 TLS 1.2。 確定任何連線至您 Data Lake Analytics 的用戶端都可以使用 TLS 1.2 或更高版本進行協商。
 
 * [範例作業清單](https://docs.microsoft.com/rest/api/datalakeanalytics/operations/list)
 
@@ -456,11 +456,11 @@ ms.locfileid: "88005130"
 
 **責任**：客戶
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用以角色為基礎的存取控制來控制對資源的存取
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指引**：使用角色型存取控制 (RBAC) 來控制使用者與服務的互動方式。
+**指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來控制使用者與服務的互動方式。
 
-* [管理以角色為基礎的存取控制](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
+* [管理 Azure RBAC](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -476,7 +476,7 @@ ms.locfileid: "88005130"
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
-**指引**：資料會儲存在預設的 Data Lake Storage Gen1 帳戶中。 針對待用資料，Data Lake Storage Gen1 支援「預設開啟」、透明加密。
+**指導**方針：資料會儲存在預設的 Data Lake Storage Gen1 帳戶中。 針對待用資料，Data Lake Storage Gen1 支援「預設開啟」、透明加密。
 
 * [Azure Data Lake Storage Gen1 中的資料加密](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-encryption)
 
@@ -500,7 +500,7 @@ ms.locfileid: "88005130"
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
-**指導**方針：請遵循 Azure 資訊安全中心保護 Azure Data Lake Analytics 資源的建議。
+**指導**方針：遵循 Azure 資訊安全中心保護 Azure Data Lake Analytics 資源的建議。
 
 Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點管理。
 
@@ -518,7 +518,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 **責任**：不適用
 
-### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：為協力廠商軟體標題部署自動修補程式管理解決方案
+### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：為協力廠商軟體專案部署自動化的修補程式管理解決方案
 
 **指導**方針：不適用;此控制項適用于計算資源。
 
@@ -536,9 +536,9 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
-**指導**方針：使用常見的風險評分計畫 (例如，常見的弱點評分系統) 或協力廠商掃描工具所提供的預設風險評等。
+**指導**方針：使用常見的風險評分方案 (例如，常見的弱點評分系統) ，或協力廠商掃描工具所提供的預設風險評等。
 
-* [NIST 發行--常見的弱點評分系統](https://www.nist.gov/publications/common-vulnerability-scoring-system)
+* [NIST 發行集--常見的弱點評分系統](https://www.nist.gov/publications/common-vulnerability-scoring-system)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -550,7 +550,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
-**指引**：使用 Azure Resource Graph 來查詢和探索所有資源 (例如，您訂用帳戶中的計算、儲存體、網路、埠及通訊協定等 ) 。 請確定您的租使用者中有適當的 (讀取) 許可權，並列舉所有的 Azure 訂用帳戶以及訂用帳戶中的資源。
+**指導**方針：使用 Azure Resource Graph 來查詢及探索所有資源 (例如計算、儲存體、網路、埠和通訊協定等。您的訂用帳戶中 ) 。 確定您的租使用者中有適當的 (讀取) 許可權，並列舉所有 Azure 訂用帳戶以及訂用帳戶中的資源。
 
 雖然可以透過 Azure Resource Graph Explorer 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager 的資源。
 
@@ -576,9 +576,9 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
-**指引**：適當地使用標記、管理群組和個別訂用帳戶來組織和追蹤 Azure Data Lake Analytics 資源。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
+**指導**方針：使用標記、管理群組和個別的訂用帳戶（如果適當）來組織和追蹤 Azure Data Lake Analytics 資源。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
-此外，使用下列內建原則定義，透過 Azure 原則對可在客戶訂用帳戶中建立的資源類型施加限制：
+此外，使用 Azure 原則來限制可使用下列內建原則定義在客戶訂用帳戶中建立的資源類型：
 - 不允許的資源類型
 - 允許的資源類型
 
@@ -592,9 +592,9 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 **責任**：客戶
 
-### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定義並維護已核准 Azure 資源的清查
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定義和維護已核准 Azure 資源的清查
 
-**指導**方針：根據您的組織需求，建立已核准 Azure 資源的清查和適用于計算資源的已核准軟體。
+**指導**方針：根據您的組織需求，建立已核准 Azure 資源的清查，以及適用于計算資源的已核准軟體。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -606,7 +606,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 - 不允許的資源類型
 - 允許的資源類型
 
-此外，使用 Azure Resource Graph 來查詢/探索訂用帳戶 (s) 內的資源。
+此外，您也可以使用 Azure Resource Graph 來查詢/探索訂用帳戶 () 中的資源。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -694,7 +694,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
-**指引**：在 "DataLakeAnalytics" 命名空間中使用 Azure 原則別名來建立自訂原則，以審核或強制執行您的 Azure Data Lake Analytics 設定。 您也可以使用與 Azure Data Lake Analytics 相關的內建原則定義，例如：
+**指導**方針：在 "DataLakeAnalytics" 命名空間中使用 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure Data Lake Analytics 的設定。 您也可以使用與您的 Azure Data Lake Analytics 相關的內建原則定義，例如：
 - 應在 Data Lake Analytics 中啟用診斷記錄
 
 * [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
@@ -715,7 +715,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
-**指引**：使用 azure 原則 [拒絕] 和 [不存在時部署]，在您的 Azure 資源上強制執行安全設定。
+**指導**方針：使用 azure 原則 [拒絕] 和 [部署是否不存在]，在您的 Azure 資源上強制執行安全設定。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -735,7 +735,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
-**指引**：使用 Azure Repos 安全地儲存和管理您的程式碼，例如自訂的 Azure 原則、Azure Resource Manager 範本、Desired State Configuration 腳本等。若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中所定義之群組的許可權，或 Active Directory （如果與 TFS 整合）。
+**指導**方針：使用 Azure Repos 安全地儲存和管理您的程式碼，例如自訂 Azure 原則、Azure Resource Manager 範本、Desired State Configuration 腳本等。若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中定義的群組，或與 TFS 整合的 Active Directory。
 
 * [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -771,7 +771,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：執行 Azure 資源的自動化設定監視
 
-**指導**方針：使用 "DataLakeAnalytics" 命名空間中的 Azure 原則別名來建立自訂原則，以警示、審查和強制執行系統組態。 使用 Azure 原則 [audit]、[deny] 和 [deploy if not 存在] 自動強制執行 Azure Data Lake Analytics 資源的設定。
+**指導**方針：在 "DataLakeAnalytics" 命名空間中使用 Azure 原則別名來建立自訂原則，以警示、審核和強制執行系統組態。 使用 Azure 原則 [audit]、[拒絕] 和 [部署（如果不存在）]，自動強制執行 Azure Data Lake Analytics 資源的設定。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -827,9 +827,9 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
-**指引**：在支援 Azure 服務 (的基礎主機上啟用 Microsoft 反惡意程式碼，例如 Azure Data Lake Analytics) ，但不會對客戶內容執行。
+**指導**方針：支援 Azure 服務的基礎主機上已啟用 Microsoft 反惡意程式碼 (例如 Azure Data Lake Analytics) ，但不會對客戶內容執行。
 
-預先掃描上傳至 Azure 資源的任何內容，例如 App Service、Data Lake Analytics、Blob 儲存體等等。Microsoft 無法存取您在這些實例中的資料。
+預先掃描即將上傳至 Azure 資源的任何內容，例如 App Service、Data Lake Analytics、Blob 儲存體等等。Microsoft 無法在這些實例中存取您的資料。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -847,9 +847,9 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 *如需詳細資訊，請參閱[安全性控制：資料復原](/azure/security/benchmarks/security-control-data-recovery)。*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保週期性自動化備份
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確定定期自動備份
 
-**指引**： Data Lake Analytics 作業記錄和資料輸出會儲存在基礎 Data Lake Storage Gen1 服務中。 您可以使用各種方法來複製資料，包括 ADLCopy、Azure PowerShell 或 Azure Data Factory。 您也可以使用 Azure 自動化自動定期備份資料。
+**指導**方針： Data Lake Analytics 的作業記錄和資料輸出會儲存在基礎 Data Lake Storage Gen1 服務中。 您可以使用各種方法來複製資料，包括 ADLCopy、Azure PowerShell 或 Azure Data Factory。 您也可以使用 Azure 自動化自動定期備份資料。
 
 * [使用儲存體總管管理 Azure Data Lake Storage Gen1 資源](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-in-storage-explorer)
 
@@ -861,9 +861,9 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 **責任**：客戶
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份，並備份任何客戶管理的金鑰
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份並備份任何客戶管理的金鑰
 
-**指引**： Data Lake Analytics 作業記錄和資料輸出會儲存在基礎 Data Lake Storage Gen1 服務中。 您可以使用各種方法來複製資料，包括 ADLCopy、Azure PowerShell 或 Azure Data Factory。
+**指導**方針： Data Lake Analytics 的作業記錄和資料輸出會儲存在基礎 Data Lake Storage Gen1 服務中。 您可以使用各種方法來複製資料，包括 ADLCopy、Azure PowerShell 或 Azure Data Factory。
 
 * [使用儲存體總管管理 Azure Data Lake Storage Gen1 資源](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-in-storage-explorer)
 
@@ -875,15 +875,15 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：驗證所有備份，包括客戶管理的金鑰
 
-**指引**：定期執行備份資料的資料還原，以測試資料的完整性。
+**指導**方針：定期執行備份資料的資料還原，以測試資料的完整性。
 
 **Azure 資訊安全中心監視**：不適用
 
 **責任**：客戶
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理金鑰的保護
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰的保護
 
-**指導**方針： Data Lake Analytics 儲存在 Data Lake Storage Gen1 或 Azure 儲存體中的備份預設支援加密，且無法關閉。 您應該將備份視為機密資料，並套用相關的存取和資料保護控制項做為此基準的一部分。
+**指導**方針：儲存在 Data Lake Storage Gen1 或 Azure 儲存體內的 Data Lake Analytics 備份預設支援加密，且無法關閉。 您應該將備份視為機密資料，並將相關的存取和資料保護控制項套用為此基準的一部分。
 
 * [保護儲存在 Azure Data Lake Storage Gen1 中的資料](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data)
 
@@ -905,7 +905,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 * [Microsoft 安全性回應中心的事件剖析](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
 
-* [客戶也可以利用 NIST 的「電腦安全性性」事件處理指南，協助建立自己的事件回應計畫](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+* [客戶也可以利用 NIST 的電腦安全性性事件處理指南來協助建立自己的事件回應計畫](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -927,9 +927,9 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程序
 
-**指導**方針：執行練習以定期測試系統的事件回應功能，以協助保護您的 Azure 資源。 找出弱式點和差距，然後視需要修改您的回應計畫。
+**指導**方針：進行練習以定期測試系統的事件回應功能，以協助保護您的 Azure 資源。 識別弱式點數和間隙，然後視需要修改您的回應計畫。
 
-* [NIST 發行--適用于 IT 計畫和功能的測試、訓練和練習計劃指南](https://csrc.nist.gov/publications/detail/sp/800-84/final)
+* [NIST 的發行--測試、訓練和練習適用于 IT 計畫和功能的指南](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -959,7 +959,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自動回應安全性警示
 
-**指導**方針：使用 Azure 資訊安全中心中的工作流程自動化功能，透過「Logic Apps」來自動觸發安全性警示和建議的回應，以保護您的 Azure 資源。
+**指導**方針：使用 Azure 資訊安全中心中的工作流程自動化功能，透過「Logic Apps」安全性警示和建議來自動觸發回應，以保護您的 Azure 資源。
 
 * [如何設定工作流程自動化和 Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
 
@@ -971,11 +971,11 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 *如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期滲透測試您的 Azure 資源，並確保修復所有重要的安全性結果
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導**方針：請遵循 Engagement 的 Microsoft Cloud 滲透測試規則，以確保您的滲透測試不會違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的 Red 小組和即時網站滲透測試策略和執行。
+**指導**方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。
 
-* [Engagement 的滲透測試規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+* [滲透測試的參與規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
 * [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 

@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/28/2020
-ms.openlocfilehash: 68fa972d45ab0db6e5274142f550c2bd829e7917
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055578"
+ms.locfileid: "89076509"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -89,11 +89,11 @@ ms.locfileid: "89055578"
 
 - **容錯移轉群組讀寫接聽程式**
 
-  指向目前的主要 URL 的 DNS CNAME 記錄。 當容錯移轉群組建立時，它會自動建立，並允許讀寫工作負載在容錯移轉後的主要變更時，以透明的方式重新連接到主資料庫。 當您在伺服器上建立容錯移轉群組時，接聽程式 URL 的 DNS CNAME 記錄會形成 `<fog-name>.database.windows.net` 。 當您在 SQL 受控執行個體上建立容錯移轉群組時，接聽程式 URL 的 DNS CNAME 記錄會形成 `<fog-name>.zone_id.database.windows.net` 。
+  指向目前的主要 URL 的 DNS CNAME 記錄。 當容錯移轉群組建立時，它會自動建立，並允許讀寫工作負載在容錯移轉後的主要變更時，以透明的方式重新連接到主資料庫。 當您在伺服器上建立容錯移轉群組時，接聽程式 URL 的 DNS CNAME 記錄會形成 `<fog-name>.database.windows.net` 。 當您在 SQL 受控執行個體上建立容錯移轉群組時，接聽程式 URL 的 DNS CNAME 記錄會形成 `<fog-name>.<zone_id>.database.windows.net` 。
 
 - **容錯移轉群組唯讀接聽程式**
 
-  形成的 DNS CNAME 記錄指向唯讀接聽程式 (指向次要 URL)。 它會在建立容錯移轉群組時自動建立，並允許唯讀 SQL 工作負載使用指定的負載平衡規則，以透明的方式連線到次要資料庫。 當您在伺服器上建立容錯移轉群組時，接聽程式 URL 的 DNS CNAME 記錄會形成 `<fog-name>.secondary.database.windows.net` 。 當您在 SQL 受控執行個體上建立容錯移轉群組時，接聽程式 URL 的 DNS CNAME 記錄會形成 `<fog-name>.zone_id.secondary.database.windows.net` 。
+  形成的 DNS CNAME 記錄指向唯讀接聽程式 (指向次要 URL)。 它會在建立容錯移轉群組時自動建立，並允許唯讀 SQL 工作負載使用指定的負載平衡規則，以透明的方式連線到次要資料庫。 當您在伺服器上建立容錯移轉群組時，接聽程式 URL 的 DNS CNAME 記錄會形成 `<fog-name>.secondary.database.windows.net` 。 當您在 SQL 受控執行個體上建立容錯移轉群組時，接聽程式 URL 的 DNS CNAME 記錄會形成 `<fog-name>.secondary.<zone_id>.database.windows.net` 。
 
 - **自動容錯移轉原則**
 
@@ -257,13 +257,13 @@ ms.locfileid: "89055578"
 
 ### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>使用唯讀接聽程式連接到次要實例
 
-如果您有容忍某些過時資料的邏輯隔離唯讀工作負載，則可以使用應用程式中的次要資料庫。 若要直接連接到異地複寫的次要執行個體，請使用 `<fog-name>.zone_id.secondary.database.windows.net` 作為伺服器 URL，並直接連接到異地複寫的次要執行個體。
+如果您有容忍某些過時資料的邏輯隔離唯讀工作負載，則可以使用應用程式中的次要資料庫。 若要直接連接到異地複寫的次要執行個體，請使用 `<fog-name>.secondary.<zone_id>.database.windows.net` 作為伺服器 URL，並直接連接到異地複寫的次要執行個體。
 
 > [!NOTE]
 > 在某些服務層級中，SQL Database 支援使用 [唯讀](read-scale-out.md) 複本，以使用一個唯讀複本的容量，並 `ApplicationIntent=ReadOnly` 在連接字串中使用參數來對唯讀查詢工作負載進行負載平衡。 當您已設定異地複寫的次要執行個體時，可以使用此功能連接至主要位置或異地複寫位置中的唯讀複本。
 >
-> - 若要連線至主要位置的唯讀複本，請使用 `<fog-name>.zone_id.database.windows.net`。
-> - 若要連接到次要位置的唯讀複本，請使用 `<fog-name>.secondary.zone_id.database.windows.net` 。
+> - 若要連線至主要位置的唯讀複本，請使用 `<fog-name>.<zone_id>.database.windows.net`。
+> - 若要連接到次要位置的唯讀複本，請使用 `<fog-name>.secondary.<zone_id>.database.windows.net` 。
 
 ### <a name="preparing-for-performance-degradation"></a>準備效能降低
 

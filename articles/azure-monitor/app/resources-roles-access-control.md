@@ -3,16 +3,17 @@ title: Azure Application Insights 中的資源、角色及存取控制 | Microso
 description: 您的組織詳細資料的擁有者、參與者及讀者。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 3d69ad7eeb7c8dd32c2e3cb286f9596bed7fe042
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: cd1e69ecd121380353ad6400d473d572b7b7bb3e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926496"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076679"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的資源、角色及存取控制
 
-您可以使用[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md)，控制誰具有 azure [Application Insights][start]中資料的讀取和更新存取權。
+您可以使用 azure[角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md)，來控制誰對 azure [Application Insights][start]中的資料具有讀取和更新存取權。
 
 > [!IMPORTANT]
 > 指派存取權給您的應用程式資源所屬之 **資源群組或訂用帳戶** 中的使用者 - 不在資源本身。 指派 **Application Insights 元件參與者** 角色。 這可確保 Web 測試和警示以及您的應用程式資源的統一存取控制。 [深入了解](#access)。
@@ -26,7 +27,7 @@ ms.locfileid: "87926496"
 
 * **資源** - Microsoft Azure 服務的執行個體。 您的 Application Insights 資源會收集、分析及顯示從您的應用程式傳送的遙測資料。  其他類型的 Azure 資源包括 Web 應用程式、資料庫和 VM。
   
-    若要查看您的資源，請開啟 [ [Azure 入口網站][portal]]、[登入]，然後按一下 [所有資源]。 若要尋找的資源，請在篩選欄位中輸入名稱的一部分。
+    若要查看您的資源，請開啟 [Azure 入口網站][portal]、登入，然後按一下 [所有資源]。 若要尋找的資源，請在篩選欄位中輸入名稱的一部分。
   
     ![Azure 資源清單](./media/resources-roles-access-control/10-browse.png)
 
@@ -39,7 +40,7 @@ ms.locfileid: "87926496"
 
 ## <a name="control-access-in-the-resource-group"></a><a name="access"></a> 控制資源群組中的存取
 
-請務必了解除了您為應用程式建立的資源之外，還有警示和 Web 測試的個別隱藏資源。 它們會附加到與您 Application Insights 資源相同的[資源群組](#resource-group)。 您也可以在那裡放置其他 Azure 服務，例如網站或儲存體。
+請務必了解除了您為應用程式建立的資源之外，還有警示和 Web 測試的個別隱藏資源。 它們會附加至與您的 Application Insights 資源相同的 [資源群組](#resource-group) 。 您也可以在那裡放置其他 Azure 服務，例如網站或儲存體。
 
 ## <a name="to-provide-access-to-another-user"></a>若要提供存取權給其他使用者
 
@@ -101,7 +102,7 @@ ms.locfileid: "87926496"
 
 ## <a name="related-content"></a>相關內容
 
-* [Azure 角色型存取控制 (Azure RBAC) ](../../role-based-access-control/role-assignments-portal.md)
+* [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>用於判斷角色成員資格的 PowerShell 查詢
 

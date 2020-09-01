@@ -6,19 +6,19 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3a53cadbdf7529a2690594617122e84f355e0e46
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 3f3287dd67f89f678a9875ddce93e2d0d26b2209
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065653"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077619"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立服務匯流排命名空間與主題、訂用帳戶和規則
 
 本文說明如何使用 Azure Resource Manager 範本，建立服務匯流排命名空間與主題、訂用帳戶和規則 (篩選器)。 本文說明如何指定要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求
 
-如需建立範本的詳細資訊，請參閱[撰寫 Azure Resource Manager 範本][Authoring Azure Resource Manager templates]。
+如需建立範本的詳細資訊，請參閱 [撰寫 Azure Resource Manager 範本][Authoring Azure Resource Manager templates]。
 
 如需 Azure 資源命名慣例相關實務和模式的詳細資訊，請參閱 [Azure 資源的建議命名慣例][Recommended naming conventions for Azure resources]。
 

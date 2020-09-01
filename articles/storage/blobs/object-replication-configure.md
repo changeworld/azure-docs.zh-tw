@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 9964a10b85d9f388a4498766c6e81ee52498aa37
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566058"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076169"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>設定區塊 Blob 的物件複寫 (預覽)
 
@@ -24,6 +24,8 @@ ms.locfileid: "88566058"
 當設定物件複寫時，您會建立複寫原則，其指定來源儲存體帳戶和目的地帳戶。 複寫原則包含一或多個規則，其指定來源容器和目的地容器，並指出將複寫來源容器中的哪些區塊 Blob。
 
 本文描述如何使用 Azure 入口網站、PowerShell 或 Azure CLI 來為儲存體帳戶設定物件複寫。 您也可以使用其中一個 Azure 儲存體資源提供者用戶端程式庫來設定物件複寫。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-a-replication-policy-and-rules"></a>建立複寫原則和規則
 

@@ -8,17 +8,17 @@ author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurepowershell
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/02/2020
 ms.author: allensu
-ms.openlocfilehash: 7e962b87b1bd7ef200aa276d8dbecffd5d3fed04
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c87903de8ea2525fd0e7672605ce6e279e36021b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090428"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076424"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>使用 Azure PowerShell 模組建立內部負載平衡器
 
@@ -48,7 +48,7 @@ ms.locfileid: "87090428"
 * 探查設定：虛擬機器的健康情況狀態探查。
 * 輸入 NAT 規則：直接存取虛擬機器的連接埠規則。
 
-如需負載平衡器元件的詳細資訊，請參閱[Azure Load Balancer 元件](components.md)。
+如需負載平衡器元件的詳細資訊，請參閱 [Azure Load Balancer 元件](components.md)。
 
 下列步驟說明如何在兩部虛擬機器之間設定負載平衡器。
 
@@ -141,8 +141,8 @@ $beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name "LB-backend"
 * 遠端桌面通訊協定 (RDP) 的輸入 NAT 規則：將連接埠 3441 上的所有傳入流量重新導向至連接埠 3389。
 * RDP 的第二個輸入 NAT 規則：將連接埠 3442 上的所有傳入流量重新導向至連接埠 3389。
 * 健康情況探查規則：檢查 HealthProbe.aspx 路徑的健康情況狀態。
-* 負載平衡器規則：將公用埠80上的所有連入流量負載平衡至後端位址集區中的本機埠80。
-* [HA 埠負載平衡器規則](load-balancer-ha-ports-overview.md)，可將所有連入流量負載平衡到所有埠，以簡化標準 ILB 的 HA 案例。
+* 負載平衡器規則：將公用埠80上的所有傳入流量，負載平衡至後端位址集區中的本機埠80。
+* [Ha 埠負載平衡器規則](load-balancer-ha-ports-overview.md)，可對所有埠的所有連入流量進行負載平衡，以簡化標準 ILB 的 HA 案例。
 
 ```azurepowershell-interactive
 $inboundNATRule1= New-AzLoadBalancerInboundNatRuleConfig -Name "RDP1" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3441 -BackendPort 3389
@@ -258,7 +258,7 @@ Primary              : False
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>步驟 1：儲存負載平衡器資源
 
-將負載平衡器資源儲存在變數中 (如果您還沒這麼做)。 我們會使用變數名稱 **$lb**。針對腳本中的屬性值，使用在先前步驟中建立的負載平衡器資源名稱。
+將負載平衡器資源儲存在變數中 (如果您還沒這麼做)。 我們使用的是變數名稱 **$lb**。針對腳本中的屬性值，使用在先前步驟中建立之負載平衡器資源的名稱。
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG

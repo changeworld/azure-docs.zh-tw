@@ -1,18 +1,18 @@
 ---
 title: Azure 服務匯流排與 Event Grid 的整合概觀 | Microsoft Docs
-description: 本文提供如何 Azure 服務匯流排訊息與 Azure 事件方格整合的說明。
+description: 本文提供 Azure 服務匯流排訊息與 Azure 事件方格整合方式的說明。
 documentationcenter: .net
 author: spelluru
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 641cae751b0b87d93235e1272bc5f46f7797d834
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: f0aaa82db61b5f40e42d6dad641bc09d5add9d0f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065109"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078328"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服務匯流排與 Event Grid 的整合概觀
 
@@ -32,7 +32,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>確認您具有參與者存取權
-移至您的服務匯流排命名空間，然後選取 [**存取控制] (IAM) **，然後選取 [**角色指派**] 索引標籤。請確認您具有命名空間的參與者存取權。 
+移至您的服務匯流排命名空間，然後選取 [ **存取控制] (IAM) **，然後選取 [ **角色指派** ] 索引標籤。確認您擁有命名空間的參與者存取權。 
 
 ### <a name="events-and-event-schemas"></a>事件和事件結構描述
 
@@ -112,7 +112,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 為服務匯流排命名空間建立 Event Grid 訂用帳戶的方式有三種：
 
 * 在 Azure 入口網站中
-* 在[Azure CLI](#azure-cli-instructions)
+* 在 [Azure CLI](#azure-cli-instructions)
 * 在[PowerShell](#powershell-instructions)中
 
 ## <a name="azure-portal-instructions"></a>Azure 入口網站指示
@@ -120,7 +120,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 若要建立新的 Event Grid 訂用帳戶，請執行下列作業：
 1. 在 Azure 入口網站中，移至您的命名空間。
 2. 在左窗格中，選取 [Event Grid]****。 
-3. 選取 [**事件訂**用帳戶]。  
+3. 選取 [ **事件訂閱**]。  
 
    下圖顯示一個命名空間，而該命名空間有事件方格訂用帳戶：
 
@@ -132,7 +132,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 
 ## <a name="azure-cli-instructions"></a>Azure CLI 指示
 
-首先，確定已安裝 Azure CLI 2.0 版或更新版本。 [下載安裝程式](/cli/azure/install-azure-cli?view=azure-cli-latest)。 選取 [ **Windows + X**]，然後以系統管理員許可權開啟新的 PowerShell 主控台。 或者，也可以在 Azure 入口網站中使用命令 shell。
+首先，確定已安裝 Azure CLI 2.0 版或更新版本。 [下載安裝程式](/cli/azure/install-azure-cli?view=azure-cli-latest)。 選取 [ **Windows + X**]，然後使用系統管理員許可權開啟新的 PowerShell 主控台。 或者，也可以在 Azure 入口網站中使用命令 shell。
 
 執行以下程式碼：
 
@@ -173,11 +173,11 @@ New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTIO
 * 取得服務匯流排和 Event Grid [範例](service-bus-to-event-grid-integration-example.md)。
 * 深入了解 [Event Grid](../event-grid/index.yml)。
 * 深入了解 [Azure Functions](../azure-functions/index.yml)。
-* 深入瞭解[Logic Apps](../logic-apps/index.yml)。
+* 深入瞭解 [Logic Apps](../logic-apps/index.yml)。
 * 深入了解[服務匯流排](/azure/service-bus/)。
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
-[19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png
+[診斷]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png
 [8]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid8.png
 [9]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid9.png
 [20]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgridportal.png
