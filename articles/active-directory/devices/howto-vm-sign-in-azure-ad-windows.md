@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38d383f7dac832449e5b10e5cda6b0db859f9a0
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180332"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259365"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (Preview 登入 Azure 中的 Windows 虛擬機器) 
 
@@ -191,9 +191,9 @@ az role assignment create \
 
 如需如何使用 Azure RBAC 來管理 Azure 訂用帳戶資源存取權的詳細資訊，請參閱下列文章：
 
-- [使用 Azure CLI 新增或移除 Azure 角色指派](/azure/role-based-access-control/role-assignments-cli)
-- [使用 Azure 入口網站新增或移除 Azure 角色指派](/azure/role-based-access-control/role-assignments-portal)
-- [使用 Azure PowerShell 新增或移除 Azure 角色指派](/azure/role-based-access-control/role-assignments-powershell)。
+- [使用 Azure CLI 新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-cli.md)
+- [使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure PowerShell 新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-powershell.md)。
 
 ## <a name="using-conditional-access"></a>使用條件式存取
 
@@ -339,7 +339,7 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 ![您的認證無法運作](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-確認您用來起始遠端桌面連線的 Windows 10 電腦是已 Azure AD 加入的電腦，或加入您 VM 所在之相同 Azure AD 目錄的混合式 Azure AD。 如需裝置身分識別的詳細資訊，請參閱文章 [是什麼是裝置身分識別](/azure/active-directory/devices/overview)。
+確認您用來起始遠端桌面連線的 Windows 10 電腦是已 Azure AD 加入的電腦，或加入您 VM 所在之相同 Azure AD 目錄的混合式 Azure AD。 如需裝置身分識別的詳細資訊，請參閱文章 [是什麼是裝置身分識別](./overview.md)。
 
 > [!NOTE]
 > Windows 10 Build 20H1 新增了 Azure AD 已註冊電腦的支援，以起始對您 VM 的 RDP 連線。 使用註冊的 Azure AD (未 Azure AD 加入或混合式 Azure AD 加入的) PC 作為 RDP 用戶端，以起始與您 VM 的連線時，您必須以 AzureAD\UPn (的格式輸入認證，例如 AzureAD\john@contoso.com) 。
@@ -367,4 +367,4 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure Active Directory 的詳細資訊，請參閱[什麼是 Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)
+如需有關 Azure Active Directory 的詳細資訊，請參閱[什麼是 Azure Active Directory](../fundamentals/active-directory-whatis.md)

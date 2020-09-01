@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: f34e3a3d1e0245180ce923fc3ec7353ab1a176be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 78236a334b6c75f823819c70c0cdbb75bb30191d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086348"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257427"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard 格式和轉碼器
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="選取您要使用的媒體服務版本："]
 > * [第 2 版](media-services-media-encoder-standard-formats.md)
@@ -89,8 +91,8 @@ Media Encoder Standard 支援在輸入容器中帶有下列音訊格式：
 | MP3 (MPEG-1 音訊層 3) |是 |
 | Windows Media 音訊 |是 |
 | WAV/PCM |是 |
-| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |是 |
-| [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |是 |
+| [Flac](https://en.wikipedia.org/wiki/FLAC)</a> |是 |
+| [作品](https://go.microsoft.com/fwlink/?LinkId=822667) |是 |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |
 | AMR (可變多速率) |是 |
 | AES (SMPTE 331M 和 302M，AES3-2003) |否 |

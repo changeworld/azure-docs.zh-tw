@@ -1,6 +1,6 @@
 ---
 title: Azure 媒體服務概念 | Microsoft Docs
-description: 本文簡要介紹 Microsoft Azure 媒體服務的概念，並提供其他文章的連結以取得詳細資料。
+description: 本文概述 Microsoft Azure 媒體服務概念和其他文章的連結，以取得詳細資料。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 1ca1b8b453be433f7db428f3b256677b9945ce40
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e75dde14cf7182f5153b3a42b26f1c7e8a4e78ac
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038897"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258022"
 ---
-# <a name="azure-media-services-concepts"></a>Azure 媒體服務概念 
+# <a name="azure-media-services-concepts"></a>Azure 媒體服務概念
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
@@ -111,7 +113,7 @@ Azure 媒體服務提供多個用於將雲端中之媒體編碼的選項。
 ## <a name="live-streaming"></a>即時資料流
 在 Azure 媒體服務中，通道代表處理即時串流內容的管線。 通道會以兩種方式之一收到即時輸入串流：
 
-* 內部部署即時編碼器會傳送多位元速率 RTMP 或 Smooth Streaming (分散的 MP4) 到通道。 您可以使用下列輸出多位元速率 Smooth Streaming 的即時編碼器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 下列即時編碼器會輸出 RTMP： Adobe Flash Live 編碼器、 [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Teradek、Haivision 編碼器。 內嵌的串流會通過「通道」，而不需任何進一步的轉碼和編碼。 接到要求時，媒體服務會傳遞串流給客戶。
+* 內部部署即時編碼器會傳送多位元速率 RTMP 或 Smooth Streaming (分散的 MP4) 到通道。 您可以使用下列輸出多位元速率 Smooth Streaming 的即時編碼器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 下列即時編碼器會輸出 RTMP： Adobe Flash 即時編碼器、 [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Teradek、Haivision 編碼器。 內嵌的串流會通過「通道」，而不需任何進一步的轉碼和編碼。 接到要求時，媒體服務會傳遞串流給客戶。
 * 單一位元速率串流 (下列格式之一：RTMP 或 Smooth Streaming (分散的 MP4)) 會傳送至已啟用媒體服務執行即時編碼的通道。 通道接著會執行即時編碼，將連入的單一位元速率串流編碼成多位元速率 (自動調整) 視訊串流。 接到要求時，媒體服務會傳遞串流給客戶。
 
 ### <a name="channel"></a>管道
@@ -123,7 +125,7 @@ Azure 媒體服務提供多個用於將雲端中之媒體編碼的選項。
 
 ### <a name="program-event"></a>程式 (事件)
 [程式 (事件)](/rest/api/media/operations/program) 可讓您控制即時資料流區段的發佈和儲存體。 通道會管理程式 (事件)。 通道和程式的關聯性類似於傳統媒體，此處的通道有常數內容資料流，而程式的範圍是該通道上的某些計時事件。
-您可以藉由設定**ArchiveWindowLength**屬性，指定您想要保留程式之錄製內容的時數。 此值最小可以設定為 5 分鐘，最大可以設定為 25 個小時。
+您可以藉由設定 **ArchiveWindowLength** 屬性，指定您想要為程式保留記錄內容的時數。 此值最小可以設定為 5 分鐘，最大可以設定為 25 個小時。
 
 ArchiveWindowLength 也指定用戶端可從目前即時位置往回搜尋的最大時間量。 程式在超過指定的時間量後還是可以執行，但是會持續捨棄落後時間範圍長度的內容。 此屬性的這個值也會決定用戶端資訊清單可以成長為多長的時間。
 
@@ -131,10 +133,10 @@ ArchiveWindowLength 也指定用戶端可從目前即時位置往回搜尋的最
 
 通道支援最多三個同時執行的程式，因此您可以建立相同內送串流的多個封存。 這可讓您視需要發行和封存事件的不同部分。 例如，您的商務需求是封存 6 小時的程式，但只廣播最後 10 分鐘。 為了達成此目的，您必須建立兩個同時執行的程式。 其中一個程式設定為封存 6 小時的事件，但是未發行該程式。 另一個程式則設定為封存 10 分鐘，並發行程式。
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
-* [使用已啟用的通道來執行 Azure 媒體服務的即時編碼](media-services-manage-live-encoder-enabled-channels.md)
-* [使用通道，從內部部署編碼器接收多位元率即時資料流](media-services-live-streaming-with-onprem-encoders.md)
+* [使用已啟用 Azure 媒體服務的通道來執行即時編碼](media-services-manage-live-encoder-enabled-channels.md)
+* [使用從內部部署編碼器接收多位元率即時資料流的通道](media-services-live-streaming-with-onprem-encoders.md)
 * [配額和限制](media-services-quotas-and-limitations.md)。
 
 ## <a name="protecting-content"></a>保護內容
@@ -161,10 +163,10 @@ Azure 媒體服務可讓您保護媒體從離開電腦到進行儲存、處理�
 
 ## <a name="delivering"></a>傳遞
 ### <a name="dynamic-packaging"></a><a name="dynamic_packaging"></a>動態封裝
-使用媒體服務時，建議您將夾層檔案編碼為自動調整位元速率的設定檔集，然後使用[動態封裝](media-services-dynamic-packaging-overview.md)將設定轉換成所需的格式。
+使用媒體服務時，建議您將夾層檔案編碼為自動調整位元速率設定檔集，然後使用 [動態封裝](media-services-dynamic-packaging-overview.md)將設定轉換為所需的格式。
 
 ### <a name="streaming-endpoint"></a>串流端點
-StreamingEndpoint 代表可以將內容直接傳遞至用戶端播放機應用程式的串流服務，或可供進一步散發的內容傳遞網路（CDN）（Azure 媒體服務現在提供 Azure CDN 整合）。來自串流端點服務的輸出串流可以是即時資料流，或您媒體服務帳戶中的隨選影片資產。 媒體服務客戶可根據其需求，選擇一個**標準**串流端點，或選擇一或多個**進階**串流端點。 大多數的串流工作負載都適合使用標準串流端點。 
+StreamingEndpoint 代表可將內容直接傳遞至用戶端播放機應用程式的串流服務，或傳遞至內容傳遞網路 (CDN) ，以供進一步發佈 (Azure 媒體服務現在提供 Azure CDN 整合。 ) 串流端點服務的輸出資料流程可以是即時串流，或媒體服務帳戶中的隨選隨選資產。 媒體服務客戶可根據其需求，選擇一個**標準**串流端點，或選擇一或多個**進階**串流端點。 大多數的串流工作負載都適合使用標準串流端點。 
 
 大多數的串流工作負載都適合使用標準串流端點。 標準串流端點可以透過動態封裝至 HLS、MPEG DASH 和 Smooth Streaming，靈活地將您的內容傳遞至幾乎每個裝置，也支援 Microsoft PlayReady、Google Widevine、Apple Fairplay 和 AES128 的動態加密。  透過 Azure CDN 整合，還能從極少觀眾調整到超大量的觀眾，加上數以千計的並行觀賞者。 如果您的進階工作負載或串流容量需求不符合標準串流端點輸送量目標，或您想要控制 StreamingEndpoint 服務的容量來因應不斷成長的頻寬需求，則建議配置縮放單位 (也稱為進階串流單位)。
 
@@ -180,7 +182,7 @@ StreamingEndpoint 代表可以將內容直接傳遞至用戶端播放機應用�
 只有 StreamingEndpoint 處於執行中狀態時，才會向您收取費用。
 
 ### <a name="asset-delivery-policy"></a>資產傳遞原則
-媒體服務內容傳遞工作流程中的其中一個步驟，是為您想要串流的[資產設定傳遞原則](/rest/api/media/operations/assetdeliverypolicy)。 資產傳遞原則會告訴媒體服務您想要如何傳遞資產：您的資產應該動態封裝成哪個串流通訊協定 (如 MPEG DASH、HLS、Smooth Streaming 或所有)，您是否想要動態加密您的資產及其方式 (信封或一般加密)。
+媒體服務內容傳遞工作流程中的其中一個步驟，是設定您想要串流處理之 [資產的傳遞原則](/rest/api/media/operations/assetdeliverypolicy)。 資產傳遞原則會告訴媒體服務您想要如何傳遞資產：您的資產應該動態封裝成哪個串流通訊協定 (如 MPEG DASH、HLS、Smooth Streaming 或所有)，您是否想要動態加密您的資產及其方式 (信封或一般加密)。
 
 如果您有儲存體加密的資產，在可以串流處理資產之前，串流伺服器會先移除儲存體加密，並使用指定的傳遞原則來串流您的內容。 例如，若要傳遞使用進階加密標準 (AES) 加密金鑰加密的資產，請將原則類型設定為 DynamicEnvelopeEncryption。 如果您要移除儲存體加密，並且不受阻礙地串流資產，請將原則類型設定為 NoDynamicEncryption。
 
@@ -190,17 +192,17 @@ StreamingEndpoint 代表可以將內容直接傳遞至用戶端播放機應用�
 >[!NOTE]
 >如果希望加密的資產可供漸進式下載，您必須先將其解密。
 
-若要提供漸進式下載 URL 給使用者，您必須先建立 OnDemandOrigin 定位器。 建立定位器會提供資產的基底路徑。 接著您必須附加上 MP4 檔案的名稱。 例如:
+若要提供漸進式下載 URL 給使用者，您必須先建立 OnDemandOrigin 定位器。 建立定位器會提供資產的基底路徑。 接著您必須附加上 MP4 檔案的名稱。 例如：
 
 `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 
 ### <a name="streaming-urls"></a>串流 URL
 將內容串流到用戶端。 若要提供漸進式下載 URL 給使用者，您必須先建立 OnDemandOrigin 定位器。 建立定位器可針對其中包含您要串流之內容的資產，提供其基底路徑。 不過，若要能夠串流此內容，您還需要進一步修改此路徑。 若要建構串流資訊清單檔案的完整 URL，您必須串連定位器的 Path 值和資訊清單 (filename.ism) 的檔案名稱。 接著，在定位器路徑後面附加 /Manifest 和適當的格式 (如果需要)。
 
-您也可以透過 TLS 連線來串流處理您的內容。 若要這樣做，請確定您的串流 URL 以 HTTPS 開頭。 目前，AMS 不支援使用自訂網域的 TLS。  
+您也可以透過 TLS 連接來串流您的內容。 若要這樣做，請確定您的串流 URL 以 HTTPS 開頭。 目前，AMS 不支援使用自訂網域的 TLS。  
 
 >[!NOTE]
->如果您傳遞內容的來源串流端點是在2014年9月10日之後建立的，您只能透過 TLS 串流。 如果您的串流 URL 是根據 9 月 10 日之後建立的串流端點，則 URL 會包含 "streaming.mediaservices.windows.net" (新格式)。 包含 "origin.mediaservices.windows.net" （舊格式）的串流 Url 不支援 TLS。 如果您的 URL 是舊格式，而且您想要能夠透過 TLS 串流，請建立新的串流端點。 使用根據新串流端點建立的 Url，透過 TLS 串流您的內容。
+>如果您傳遞內容的來源串流端點是在2014年9月10日之後建立的，則您只能透過 TLS 進行串流。 如果您的串流 URL 是根據 9 月 10 日之後建立的串流端點，則 URL 會包含 "streaming.mediaservices.windows.net" (新格式)。 包含 "origin.mediaservices.windows.net" 的串流 Url (舊格式) 不支援 TLS。 如果您的 URL 是舊格式，而且您想要能夠透過 TLS 串流，請建立新的串流端點。 使用以新的串流端點為基礎所建立的 Url，以透過 TLS 串流您的內容。
 
 下列清單說明不同的串流格式，並提供範例：
 
@@ -214,19 +216,19 @@ HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb2
 
 {串流端點名稱-媒體服務帳戶名稱}.streaming.mediaservices.windows.net/{定位器識別碼}/{檔案名稱}.ism/Manifest(format=mpd-time-csf)
 
-HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest （format = mpd-time-csf）
+HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = mpd csf) 
 
 * Apple HTTP 即時資料流 (HLS) V4
 
 {串流端點名稱-媒體服務帳戶名稱}.streaming.mediaservices.windows.net/{定位器識別碼}/{檔案名稱}.ism/Manifest(format=m3u8-aapl)
 
-HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest （format = m3u8-m3u8-aapl-v3）
+HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-m3u8-aapl-v3) 
 
 * Apple HTTP 即時資料流 (HLS) V3
 
 {串流端點名稱-媒體服務帳戶名稱}.streaming.mediaservices.windows.net/{定位器識別碼}/{檔案名稱}.ism/Manifest(format=m3u8-aapl-v3)
 
-HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest （format = m3u8-m3u8-aapl-v3-v3）
+HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-m3u8-aapl-v3-v3) 
 
 ## <a name="additional-notes"></a>其他注意事項
 

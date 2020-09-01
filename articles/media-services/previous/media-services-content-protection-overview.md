@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒體服務保護您的內容 | Microsoft Docs
-description: 本文提供 Azure 媒體服務 v2 的內容保護總覽。
+description: 本文概述 Azure 媒體服務 v2 的內容保護。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: a3a931955451722d7d925be482a78e1f6cc6d43d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 08ebda8bdd17cc4d620792934e1299365d0ced71
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042978"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257920"
 ---
-# <a name="content-protection-overview"></a>內容保護概觀 
+# <a name="content-protection-overview"></a>內容保護概觀
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
@@ -36,7 +38,7 @@ ms.locfileid: "87042978"
 
 ## <a name="dynamic-encryption"></a>動態加密
 
-您可以使用媒體服務，來傳遞藉由使用 PlayReady、Widevine 或 FairPlay 並透過 AES 未加密金鑰或 DRM 加密所動態加密的內容。 如果內容是使用 AES clear 金鑰進行加密，並透過 HTTPS 傳送，則在到達用戶端之前，都不會很清楚。 
+您可以使用媒體服務，來傳遞藉由使用 PlayReady、Widevine 或 FairPlay 並透過 AES 未加密金鑰或 DRM 加密所動態加密的內容。 如果內容是使用 AES 清除金鑰來加密，而且是透過 HTTPS 傳送，則在到達用戶端之前都不會是純文字。 
 
 每一種加密方法都支援下列串流處理通訊協定：
  
@@ -82,15 +84,15 @@ Playready 和 Widevine 會利用一般加密 (AES CTR 模式)。 FairPlay 會利
 
 ### <a name="token-replay-prevention"></a>權杖重新執行防止
 
-「權杖重送防護」功能可讓媒體服務客戶限制以相同權杖來要求金鑰或授權的次數。 客戶可以在權杖中新增類型的宣告 `urn:microsoft:azure:mediaservices:maxuses` ，其中的值是權杖可用於取得授權或金鑰的次數。 對金鑰傳遞具有相同權杖的所有後續要求將會傳回未經授權的回應。 請參閱如何在[DRM 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)中新增宣告。
+「權杖重送防護」功能可讓媒體服務客戶限制以相同權杖來要求金鑰或授權的次數。 客戶可以在權杖中新增類型的宣告 `urn:microsoft:azure:mediaservices:maxuses` ，其中的值是權杖可用來取得授權或金鑰的次數。 所有使用相同權杖對金鑰傳遞的後續要求都會傳回未授權的回應。 請參閱如何在 [DRM 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)中新增宣告。
  
 #### <a name="considerations"></a>考量
 
-* 客戶必須擁有權杖產生的控制權。 宣告必須放在權杖本身。
-* 使用這項功能時，會拒絕權杖的到期時間超過一小時的要求，而不會收到未經授權的回應。
-* 權杖是由其簽章唯一識別。 對裝載所做的任何變更（例如，更新到期時間或宣告）都會變更權杖的簽章，而且會計算為新的權杖，表示金鑰傳遞不會在之前。
-* 如果權杖已超過客戶所設定的值，播放就會失敗 `maxuses` 。
-* 這項功能可用於所有現有的受保護內容（只需要變更發行的權杖）。
+* 客戶必須有權杖產生的控制權。 宣告必須放在權杖本身。
+* 使用這項功能時，如果權杖的到期時間超過一小時，就會遭到未經授權的回應拒絕。
+* 權杖是以其簽章唯一識別。 對承載的任何變更 (例如，更新至到期時間或宣告) 會變更權杖的簽章，而且會以新權杖的形式算出，而金鑰傳遞尚未在之前出現。
+* 如果 token 超過客戶所設定的值，播放就會失敗 `maxuses` 。
+* 這項功能可用於所有現有受保護的內容 (只有發出的權杖需要變更) 。
 * 這項功能適用于 JWT 和 SWT。
 
 ## <a name="streaming-urls"></a>串流 URL
@@ -111,7 +113,7 @@ Playready 和 Widevine 會利用一般加密 (AES CTR 模式)。 FairPlay 會利
 
 * Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 下列文章描述可協助您開始使用內容保護的後續步驟：
 
 * [使用儲存體加密保護](media-services-rest-storage-encryption.md)

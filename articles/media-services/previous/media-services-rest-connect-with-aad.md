@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: be7ac4073bb332a7595dcf211feb7087d0734854
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 958bfa605e0195b5f4fde2c0ff53a8ce567f50a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082727"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257138"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>使用 Azure AD 驗證搭配 REST 存取媒體服務 API
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
@@ -58,7 +60,7 @@ ms.locfileid: "87082727"
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>從 Azure 入口網站取得驗證資訊
 
-### <a name="overview"></a>總覽
+### <a name="overview"></a>概觀
 
 若要存取 Media Services API，您必須收集下列資料點。
 
@@ -83,7 +85,7 @@ ms.locfileid: "87082727"
 5. 選取現有的 **Azure AD 應用程式**或建立新的 Azure AD 應用程式 (如下所示)。
 
     > [!NOTE]
-    > Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有其嘗試存取之媒體服務帳戶的「**參與者**」或「**擁有**者」角色。 如果您收到例外狀況指出「遠端伺服器傳回錯誤：(401) 未授權」，請參閱[存取控制](media-services-use-aad-auth-to-access-ams-api.md#access-control)。
+    > 若要讓 Azure 媒體 REST 要求成功，呼叫的使用者必須擁有其嘗試存取之媒體服務帳戶的「 **參與者** 」或「 **擁有** 者」角色。 如果您收到例外狀況指出「遠端伺服器傳回錯誤：(401) 未授權」，請參閱[存取控制](media-services-use-aad-auth-to-access-ams-api.md#access-control)。
 
     如果您需要建立新的 AD 應用程式，請依照下列步驟操作：
     
@@ -124,7 +126,7 @@ ms.locfileid: "87082727"
 
 本節示範如何使用 **Postman** 來執行 REST API，從而傳回 JWT 持有人權杖 (存取權杖)。 若要呼叫任何媒體服務 REST API，您必須將「授權」標頭新增至呼叫，並將 "Bearer *your_access_token*" 的值新增至每個呼叫 (如本教學課程的下一節所示)。 
 
-1. 開啟**Postman**。
+1. 開啟 **Postman**。
 2. 選取 [POST]  。
 3. 輸入 URL，其中包含您的租用戶名稱，且使用下列格式：租用戶名稱結尾應為 **.onmicrosoft.com**，且 URL 結尾應為 **oauth2/token**： 
 
@@ -156,7 +158,7 @@ ms.locfileid: "87082727"
     resource:https://rest.media.azure.net
     ```
 
-8. 按 [傳送]。
+8. 按 [傳送]  。
 
     ![取得權杖](./media/connect-with-rest/connect-with-rest04.png)
 
@@ -166,8 +168,8 @@ ms.locfileid: "87082727"
 
 本節示範如何使用 **Postman** 存取**資產** API。
 
-1. 開啟**Postman**。
-2. 選取 [**取得**]。
+1. 開啟 **Postman**。
+2. 選取 [ **取得**]。
 3. 貼上 REST API 端點 (例如 https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. 選取 [授權]**** 索引標籤。 
 5. 選取 [持有人權杖]****。
@@ -192,7 +194,7 @@ ms.locfileid: "87082727"
     MaxDataServiceVersion:3.0
     ```
 
-7. 按 [傳送]。
+7. 按 [傳送]  。
 
 傳回的回應會包含您帳戶中的資產。
 

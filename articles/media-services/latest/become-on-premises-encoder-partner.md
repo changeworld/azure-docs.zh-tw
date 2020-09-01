@@ -5,17 +5,19 @@ services: media-services
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 03/02/2020
+ms.date: 08/31/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5af6a7fc988271fc350ecc6e8be19742ede8ecee
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79298626"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258634"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>如何驗證您的內部部署即時串流編碼器
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 身為 Azure 媒體服務內部部署編碼器合作夥伴，媒體服務將會向企業客戶建議您的編碼器，以協助推廣您的產品。 若要成為內部部署編碼器合作夥伴，您必須向媒體服務驗證您內部部署編碼器的相容性。 若要這樣做，請完成下列驗證。
 
@@ -27,9 +29,9 @@ ms.locfileid: "79298626"
 2. 建立並啟動**傳遞**即時事件。 <br/> 如需詳細資訊，請參閱[實況活動狀態和計費](live-event-states-billing.md)。
 3. 取得內嵌 URL 並設定您的內部部署編碼器使用該 URL，以將多位元速率即時資料流傳送到媒體服務。
 4. 取得預覽 URL 並使用它來確認實際上已收到來自編碼器的輸入。
-5. 建立新的**資產**物件。
-6. 建立**即時輸出**，並使用您建立的資產名稱。
-7. 使用內建的**串流原則**類型來建立**串流定位器**。
+5. 建立新的 **資產** 物件。
+6. 建立 **即時輸出** ，並使用您建立的資產名稱。
+7. 使用內建的**串流原則**類型建立**串流定位器**。
 8. 列出**串流定位器**上的路徑，以取回要使用的 URL。
 9. 取得您想要串流的來源**串流端點**主機名稱。
 10. 結合步驟 8 的 URL 和步驟 9 的主機名稱，即可取得完整的 URL。
@@ -46,9 +48,9 @@ ms.locfileid: "79298626"
 2. 建立並啟動**即時編碼**即時事件。 <br/> 如需詳細資訊，請參閱[實況活動狀態和計費](live-event-states-billing.md)。
 3. 取得內嵌 URL 並設定您的編碼器將單一位元速率即時資料流推送到媒體服務。
 4. 取得預覽 URL 並使用它來確認實際上已收到來自編碼器的輸入。
-5. 建立新的**資產**物件。
-6. 建立**即時輸出**，並使用您建立的資產名稱。
-7. 使用內建的**串流原則**類型來建立**串流定位器**。
+5. 建立新的 **資產** 物件。
+6. 建立 **即時輸出** ，並使用您建立的資產名稱。
+7. 使用內建的**串流原則**類型建立**串流定位器**。
 8. 列出**串流定位器**上的路徑，以取回要使用的 URL。
 9. 取得您想要串流的來源**串流端點**主機名稱。
 10. 結合步驟 8 的 URL 和步驟 9 的主機名稱，即可取得完整的 URL。
@@ -69,7 +71,7 @@ ms.locfileid: "79298626"
 
 ## <a name="see-also"></a>另請參閱
 
-[已測試內部部署編碼器](recommended-on-premises-live-encoders.md)
+[測試的內部部署編碼器](recommended-on-premises-live-encoders.md)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: f42361df438a434548b3bc9394c007ef8d4c6eb0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f9f9124568144efba6aa7d715c2e33aaa32e2baf
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038965"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258124"
 ---
-# <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure 隨選媒體編碼器的比較  
+# <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure 隨選媒體編碼器的比較
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 本主題比較**媒體編碼器標準**和**媒體編碼器高階工作流程**的編碼功能。
 
@@ -44,7 +46,7 @@ ms.locfileid: "87038965"
 |多重音訊語言曲目|限制|[是](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
 
 ## <a name="billing-meter-used-by-each-encoder"></a><a id="billing"></a>每個編碼器所使用的計費計量表
-| 媒體處理器名稱 | 適用的價格 | 附註 |
+| 媒體處理器名稱 | 適用的價格 | 備註 |
 | --- | --- | --- |
 | **Media Encoder Standard** |ENCODER |在 ENCODER 資料行底下，「編碼工作」會以[這裡][1]指定的費率，根據所有產生來輸出之媒體檔案的總持續時間 (以分鐘為單位) 計費。 |
 | **媒體編碼器高階工作流程** |PREMIUM ENCODER |在 PREMIUM ENCODER 資料行底下，「編碼工作」會以[這裡][1]指定的費率，根據所有產生來輸出之媒體檔案的總持續時間 (以分鐘為單位) 計費。 |
@@ -73,7 +75,7 @@ ms.locfileid: "87038965"
 | Avid DNxHD (使用 MXF) |是 |是 |
 | DVCPro/DVCProHD (使用 MXF) |是 |是 |
 | JPEG2000 |是 |是 |
-| MPEG-2 （最多422的設定檔和高層級，包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs 和 D10 等變體 &reg; ） |最高 422 設定檔 |是 |
+| MPEG-2 (高達422的設定檔和高層級;包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs 和 D10 等變體 &reg;)  |最高 422 設定檔 |是 |
 | MPEG-1 |是 |是 |
 | Windows Media 視訊/VC-1 |是 |是 |
 | Canopus HQ/HQX |否 |否 |
@@ -92,15 +94,15 @@ ms.locfileid: "87038965"
 | --- | --- | --- |
 | AES (SMPTE 331M 和 302M，AES3-2003) |否 |是 |
 | 杜比 &reg; E |否 |是 |
-| 杜比 &reg; 數位（AC3） |否 |是 |
-| 杜比 &reg; 數位 Plus （E-AC3） |否 |是 |
+| AC3) 的杜比 &reg; 數位 ( |否 |是 |
+| 杜比 &reg; 數位 Plus (E-AC3)  |否 |是 |
 | AAC (AAC-LC、AAC-HE 和 AAC-HEv2；高達 5.1) |是 |是 |
 | MPEG Layer 2 |是 |是 |
 | MP3 (MPEG-1 音訊層 3) |是 |是 |
 | Windows Media 音訊 |是 |是 |
 | WAV/PCM |是 |是 |
-| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |是 |否 |
-| [Opus](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |是 |否 |
+| [Flac](https://en.wikipedia.org/wiki/FLAC)</a> |是 |否 |
+| [作品](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |是 |否 |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |否 |
 
 ## <a name="output-containerfile-formats"></a>輸出容器/檔案格式
@@ -122,7 +124,7 @@ ms.locfileid: "87038965"
 | AVC (H.264；8 位元；高達 High Profile、Level 5.2；4K Ultra HD；AVC Intra) |僅限 8 位元 4:2:0 |是 |
 | HEVC (H.265；8 位元與 10 位元；)  |否 |是 |
 | Avid DNxHD (使用 MXF) |否 |是 |
-| MPEG-2 （最多422的設定檔和高層級，包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs 和 D10 等變體 &reg; ） |否 |是 |
+| MPEG-2 (高達422的設定檔和高層級;包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs 和 D10 等變體 &reg;)  |否 |是 |
 | MPEG-1 |否 |是 |
 | Windows Media 視訊/VC-1 |否 |是 |
 | JPEG 縮圖建立 |是 |是 |
@@ -133,15 +135,15 @@ ms.locfileid: "87038965"
 | 輸出音訊轉碼器 | Media Encoder Standard | 媒體編碼器高階工作流程 |
 | --- | --- | --- |
 | AES (SMPTE 331M 和 302M，AES3-2003) |否 |是 |
-| 杜比 &reg; 數位（AC3） |否 |是 |
-| &reg;高達7.1 的杜比數位 Plus （E-AC3） |否 |是 |
+| AC3) 的杜比 &reg; 數位 ( |否 |是 |
+| 杜比 &reg; 數位加 (E-AC3) 高達7。1 |否 |是 |
 | AAC (AAC-LC、AAC-HE 和 AAC-HEv2；高達 5.1) |是 |是 |
 | MPEG Layer 2 |否 |是 |
 | MP3 (MPEG-1 音訊層 3) |否 |是 |
 | Windows Media 音訊 |否 |是 |
 
 >[!NOTE]
->如果您編碼為杜比 &reg; 數位（AC3），則只能將輸出寫入 ISO 檔案中的檔案。
+>如果您編碼為 &reg; AC3) 的杜比數位 (，則只能將輸出寫入 ISO 檔中。
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

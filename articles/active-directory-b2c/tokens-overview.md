@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2020
+ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8acdf714f459ae604ccd7788b021aee3ee037935
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 19b65554801a22954499219e43ed021a7cc8c121
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87482578"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258430"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>概述 Azure Active Directory B2C 中的權杖
 
@@ -97,7 +97,7 @@ Azure AD B2C 支援 [OAuth 2.0 和 OpenID Connect 通訊協定](protocols-overvi
 
 ## <a name="pass-through"></a>傳遞
 
-使用者旅程啟動時，Azure AD B2C 會收到識別提供者所提供的存取權杖。 Azure AD B2C 會使用該權杖來擷取使用者的相關資訊。 您可[在使用者流程中啟用宣告](idp-pass-through-user-flow.md)或[在自訂原則中定義宣告](idp-pass-through-custom.md)，以將權杖傳至您在 Azure AD B2C 中註冊的應用程式。 您的應用程式必須使用[建議的使用者流程](user-flow-versions.md)，才能利用傳遞權杖做為宣告。
+使用者旅程啟動時，Azure AD B2C 會收到識別提供者所提供的存取權杖。 Azure AD B2C 會使用該權杖來擷取使用者的相關資訊。 您可[在使用者流程中啟用宣告](idp-pass-through-user-flow.md)或[在自訂原則中定義宣告](idp-pass-through-custom.md)，以將權杖傳至您在 Azure AD B2C 中註冊的應用程式。 您的應用程式必須使用 [建議的使用者流程](user-flow-versions.md) ，才能利用傳遞權杖作為宣告。
 
 Azure AD B2C 目前僅支援傳遞 OAuth 2.0 識別提供者的存取權杖，其中包括 Facebook 和 Google。 對於所有其他識別提供者，宣告會傳回空白。
 
@@ -119,7 +119,7 @@ JWT 包含三個區段：*標頭*、*主體*和*簽章*。 簽章區段可用來
 }
 ```
 
-**alg** 宣告的值是用來簽署權杖的演算法。 **kid** 宣告的值是用來簽署權杖的公開金鑰。 無論何時，Azure AD B2C 都能使用任何一組公開-私密金鑰組來簽署權杖。 Azure AD B2C 會定期輪替一組可能的金鑰。 您應撰寫應用程式以自動處理這些金鑰變更。 檢查 Azure AD B2C 所使用的公開金鑰是否有更新的合理頻率為每 24 小時。
+**alg** 宣告的值是用來簽署權杖的演算法。 **kid** 宣告的值是用來簽署權杖的公開金鑰。 無論何時，Azure AD B2C 都能使用任何一組公開-私密金鑰組來簽署權杖。 Azure AD B2C 會定期輪替一組可能的金鑰。 您應撰寫應用程式以自動處理這些金鑰變更。 檢查 Azure AD B2C 所使用的公開金鑰是否有更新的合理頻率為每 24 小時。 若要處理未預期的金鑰變更，您的應用程式應該撰寫成在收到非預期的 **小孩** 值時重新取出公開金鑰。
 
 Azure AD B2C 具有 OpenID Connect 中繼資料端點。 應用程式可以使用此端點，在執行階段要求 Azure AD B2C 的相關資訊。 這項資訊包括端點、權杖內容和權杖簽署金鑰。 您的 Azure AD B2C 租用戶包含每個原則的 JSON 中繼資料文件。 中繼資料文件是包含幾項實用資訊的 JSON 物件。 中繼資料包含 **jwks_uri**，可指出用來簽署權杖的公開金鑰組的位置。 在此提供該位置，但最好使用中繼資料文件並剖析 **jwks_uri** 以動態擷取該位置：
 

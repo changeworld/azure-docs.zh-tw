@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 353024513885651cbc791548d8b91def3de65d90
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 32eab0f729280ad25f45853e05ea982b60a6d9f7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013464"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259331"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>從 Azure 媒體編碼器遷移至媒體編碼器標準
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 本文將討論從舊版 Azure 媒體編碼器 (AME) 媒體處理器 (（即將淘汰) 至媒體編碼器標準媒體處理器）的步驟。 如需淘汰日期，請參閱此[舊版元件](legacy-components.md)主題。
 

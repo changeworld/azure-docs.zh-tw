@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 87348899a70d45fbfbce805bf2169f9f5e4e3f3e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4264d1c0d83f14da02b26107d336521250fcf13b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956758"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257852"
 ---
-# <a name="crop-videos-with-media-encoder-standard"></a>以 Media Encoder Standard 裁剪影片  
+# <a name="crop-videos-with-media-encoder-standard"></a>以 Media Encoder Standard 裁剪影片
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 若要裁剪輸入影片，您可以使用 Media Encoder Standard (MES)。 裁剪是指在視訊畫面內選取矩形視窗，並只編碼該視窗內之像素的程序。 下圖有助於說明此程序。
 
@@ -130,7 +132,7 @@ MES 中的裁剪是前置處理階段，因此編碼預設值中的裁剪參數�
 ```
 
 ## <a name="restrictions-on-cropping"></a>裁剪的限制
-裁剪功能僅供手動操作。 您必須將輸入影片載入適當的編輯工具，讓您選取感的畫面、定位游標以判斷裁剪矩形的位移、判斷針對該特定影片微調的編碼預設值等等。這項功能並非用來啟用：自動偵測和移除輸入影片中的黑色黑邊/垂直黑邊框線。
+裁剪功能僅供手動操作。 您需要將輸入影片載入適合的編輯工具，讓您選取感興趣的畫面、定位游標以決定裁剪矩形的位移、判斷針對該特定影片微調的編碼預設值等等。這項功能的目的不是要啟用：自動偵測和移除輸入影片中的黑色黑邊/垂直黑邊框線等專案。
 
 裁剪功能受到以下限制的約束。 如果不符合以下情況，編碼工作可能會失敗或產生非預期的輸出。
 
@@ -142,7 +144,7 @@ MES 中的裁剪是前置處理階段，因此編碼預設值中的裁剪參數�
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>後續步驟
 請參閱 Azure 媒體服務學習途徑，以了解 AMS 所提供的強大功能。  
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

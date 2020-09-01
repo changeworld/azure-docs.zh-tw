@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: 瞭解 Azure 媒體服務 v3 實體的篩選、排序和分頁。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/21/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 4fbd587b99875690a8c95952ce6b11d41e402726
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 96f08f75d0921fdf88b71c8e8dd2398a6b85ec6d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009877"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258464"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒體服務實體的篩選、排序和分頁
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 本主題討論當您列出 Azure 媒體服務 v3 實體時，可用的 OData 查詢選項和分頁支援。
 
@@ -45,7 +47,7 @@ ms.locfileid: "89009877"
 - `ge`：測試欄位是否 *大於或等於* 常數值。
 - `le`：測試欄位是否 *小於或等於* 常數值。
 
-## <a name="filter"></a>Filter
+## <a name="filter"></a>篩選
 
 用 `$filter` 來提供 OData 篩選參數，只找出您感興趣的物件。
 
@@ -70,7 +72,7 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-若要以遞增或遞減順序排序結果，請將 `asc` 或附加 `desc` 到功能變數名稱，並以空格分隔。 例如： `$orderby properties/created desc` 。
+若要以遞增或遞減順序排序結果，請將 `asc` 或附加 `desc` 到功能變數名稱，並以空格分隔。 例如：`$orderby properties/created desc`。
 
 ## <a name="skip-token"></a>略過權杖
 
@@ -156,27 +158,27 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 下表說明如何將篩選和排序選項套用至不同的實體：
 
-|實體名稱|屬性名稱|Filter|單|
+|實體名稱|屬性名稱|篩選|單|
 |---|---|---|---|
-|[資產](/rest/api/media/assets/)|NAME|`eq`, `gt`, `lt`, `ge`, `le`|`asc` 和 `desc`|
+|[資產](/rest/api/media/assets/)|名稱|`eq`, `gt`, `lt`, `ge`, `le`|`asc` 和 `desc`|
 ||properties.alternateId |`eq`||
 ||properties.assetId |`eq`||
 ||properties.created| `eq`, `gt`, `lt`| `asc` 和 `desc`|
-|[內容金鑰原則](/rest/api/media/contentkeypolicies)|NAME|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+|[內容金鑰原則](/rest/api/media/contentkeypolicies)|名稱|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
 ||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
 ||properties.description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
 ||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
 ||properties.policyId|`eq`, `ne`||
-|[作業](/rest/api/media/jobs)| NAME  | `eq`            | `asc` 和 `desc`|
+|[作業](/rest/api/media/jobs)| 名稱  | `eq`            | `asc` 和 `desc`|
 ||properties.state        | `eq`, `ne`        |                         |
 ||properties.created      | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
 ||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` 和 `desc`| 
-|[串流定位器](/rest/api/media/streaminglocators)|NAME|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+|[串流定位器](/rest/api/media/streaminglocators)|名稱|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
 ||properties.created    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` 和 `desc`|
 ||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
-|[串流原則](/rest/api/media/streamingpolicies)|NAME|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+|[串流原則](/rest/api/media/streamingpolicies)|名稱|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
 ||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
-|[轉換](/rest/api/media/transforms)| NAME | `eq`            | `asc` 和 `desc`|
+|[轉換](/rest/api/media/transforms)| 名稱 | `eq`            | `asc` 和 `desc`|
 || properties.created      | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
 || properties.lastModified | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
 

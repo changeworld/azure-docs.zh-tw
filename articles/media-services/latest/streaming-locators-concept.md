@@ -3,21 +3,21 @@ title: Azure 媒體服務中的串流定位器 | Microsoft Docs
 description: 本文解釋串流定位器是什麼，以及 Azure 媒體服務用它們來做什麼。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
-ms.author: juliako
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6b4ba1bf63c1b8ebe6b7e294f416eb528ce444c5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fe448ea5a4d9610ff82beb7cfa1071d2e8249dfd
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005780"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257614"
 ---
 # <a name="streaming-locators"></a>串流定位器
 
@@ -91,7 +91,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 若要根據相關聯的資產名稱取得串流定位器，請使用下列作業：
 
-|Language|API|
+|語言|API|
 |---|---|
 |REST|[liststreaminglocators](/rest/api/media/assets/liststreaminglocators)|
 |CLI|[az ams 資產清單-串流-定位器](/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|

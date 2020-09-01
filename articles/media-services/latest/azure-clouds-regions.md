@@ -1,5 +1,5 @@
 ---
-title: 可使用 Azure 媒體服務 v3 的雲端和區域
+title: 可用 Azure 媒體服務 v3 的雲端和區域
 description: 本文會討論可使用 Azure 媒體服務 v3 的 Azure 雲端和區域。
 services: media-services
 documentationcenter: ''
@@ -9,17 +9,19 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 5/28/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: 6ecc8cad4480528477f6bb470c7bc32ee2a20e11
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e9da87f3b5f7cb513b4b5d51c93a59d1703d401d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001344"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258651"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒體服務 v3 的雲端和區域
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure 媒體服務 v3 可透過 Azure Resource Manager 資訊清單在全域 Azure、Azure Government、Azure 德國、Azure China 21Vianet 中使用。 但是，並非所有 Azure 雲端中都提供所有的媒體服務功能。 本文件概述主要媒體服務 v3 元件的可用性。
 
@@ -34,9 +36,9 @@ Azure 媒體服務 v3 可透過 Azure Resource Manager 資訊清單在全域 Azu
 | [LiveEvents](live-streaming-overview.md) | 可用 | 可用 | 可用 | 可用 |
 | [StreamingEndpoints](streaming-endpoint-concept.md) | 可用 | 可用 | 可用 | 可用 |
 
-## <a name="feature-availability-in-preview"></a>預覽中的功能可用性
+## <a name="feature-availability-in-preview"></a>預覽版中的功能可用性
 
-[LiveTranscription](live-transcription.md)會在下欄區域內上市：
+[LiveTranscription](live-transcription.md) 適用于下欄區域：
 
 - 東南亞
 - 西歐
@@ -116,6 +118,6 @@ az account list-locations
 * [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [媒體服務 v3 概觀](media-services-overview.md)

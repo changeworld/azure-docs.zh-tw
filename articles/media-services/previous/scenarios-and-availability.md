@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 81d1c86bc5130d616712d022efd4b111b8b939dd
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: eb9d901a32d558f676ba10eaf65b54c51bfbcda8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542373"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259175"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>跨資料中心的媒體服務功能情節和可用性
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
@@ -33,15 +35,15 @@ AMS 在世界各地多個資料中心運作。 這些資料中心會依據地理
 
 ## <a name="overview"></a>概觀
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 若要開始使用 Azure 媒體服務，您應該具備下列項目：
 
-* Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com)。
+* 一個 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com)。
 * Azure 媒體服務帳戶。 如需詳細資訊，請參閱[建立帳戶](media-services-portal-create-account.md)。
 * 您想要串流內容的串流端點必須處於 [執行中]**** 狀態。
 
-    建立 AMS 帳戶時，會將**預設**串流端點新增至您的帳戶處於 [**已停止**] 狀態。 若要開始串流處理您的內容並利用動態封裝和動態加密功能，串流端點必須處於 [執行中]**** 狀態。
+    建立 AMS 帳戶時，系統會將 **預設** 的串流端點新增至您的帳戶處於 **已停止** 狀態。 若要開始串流處理您的內容並利用動態封裝和動態加密功能，串流端點必須處於 [執行中]**** 狀態。
 
 ### <a name="commonly-used-objects-when-developing-against-the-ams-odata-model"></a>針對 AMS OData 模型開發時常用的物件
 
@@ -49,7 +51,7 @@ AMS 在世界各地多個資料中心運作。 這些資料中心會依據地理
 
 按一下影像可以完整大小檢視。  
 
-[![在針對 Azure 媒體服務物件資料模型進行開發時，顯示一些最常使用物件的圖表。](./media/media-services-overview/media-services-overview-object-model-small.png)](./media/media-services-overview/media-services-overview-object-model.png#lightbox)
+[![此圖顯示針對 Azure 媒體服務物件資料模型進行開發時，最常使用的物件。](./media/media-services-overview/media-services-overview-object-model-small.png)](./media/media-services-overview/media-services-overview-object-model.png#lightbox)
 
 您可以[在此](https://media.windows.net/API/$metadata?api-version=2.15)檢視整個模型。  
 
@@ -153,12 +155,12 @@ AMS 客戶可以使用其 AMS 帳戶來調整串流端點、媒體處理和儲�
 
 * 媒體服務帳戶是與保留單元類型相關聯，後者決定媒體處理工作的速度。 您可以選擇下列的保留單元類型：**S1**、**S2** 或 **S3**。 例如，在執行相同編碼作業的前提下，使用 **S2** 保留單元類型的速度會比 **S1** 類型快。
 
-    除了指定保留單元類型之外，您還可以指定使用**保留單元**（ru）布建您的帳戶。 佈建的 RU 數目可決定指定帳戶中可同時處理的媒體工作數目。
+    除了指定保留單元類型之外，您還可以指定使用 **保留單位** (ru) 來布建您的帳戶。 佈建的 RU 數目可決定指定帳戶中可同時處理的媒體工作數目。
 
     >[!NOTE]
     >RU 用於平行化所有媒體處理，包括使用 Azure 媒體索引器的索引作業。 不過，與編碼不同，索引工作的處理速度不會因為使用較快的保留單元而變快。
 
-    如需詳細資訊，請參閱[調整媒體處理](media-services-portal-scale-media-processing.md)。
+    如需詳細資訊，請參閱 [調整媒體處理](media-services-portal-scale-media-processing.md)。
 * 您也可以透過新增儲存體帳戶，來調整媒體服務帳戶。 每個儲存體帳戶的限制為 500 TB。 若想將儲存空間擴大為超過預設限制，您可以選擇將多個儲存體帳戶附加至單一媒體服務帳戶。 如需詳細資訊，請參閱[管理儲存體帳戶](./media-services-managing-multiple-storage-accounts.md)。
 
 ## <a name="availability-of-media-services-features-across-datacenters"></a><a id="availability"></a> 跨資料中心的媒體服務功能可用性
@@ -169,7 +171,7 @@ AMS 客戶可以使用其 AMS 帳戶來調整串流端點、媒體處理和儲�
 
 #### <a name="availability"></a>可用性
 
-[依區域使用 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all)，判斷特定資料中心內是否有媒體服務。
+[依區域使用 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all)，以判斷是否可在特定資料中心內使用媒體服務。
 
 ### <a name="streaming-endpoints"></a>串流端點 
 
@@ -225,7 +227,7 @@ Microsoft Azure 媒體服務可讓您保護媒體從離開電腦到進行儲存�
 
 |加密|狀態|資料中心|
 |---|---|---| 
-|存放裝置|GA|全部|
+|儲存體|GA|全部|
 |AES-128 金鑰|GA|全部|
 |Fairplay|GA|全部|
 |PlayReady|GA|全部|

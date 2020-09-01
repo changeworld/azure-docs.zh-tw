@@ -16,14 +16,16 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a3bd50d23f2543c6efeb6297b4dbcba8293269c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ac27fa5773e266d546b6511a24c6a5e14c5fda7f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019873"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257835"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>使用 Azure 媒體分析偵測臉部和情緒
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > **Azure 媒體臉部偵測器**媒體處理器將會淘汰。 如需淘汰日期，請參閱 [舊版元件](legacy-components.md) 主題。
@@ -82,7 +84,7 @@ ms.locfileid: "89019873"
 ```
 
 #### <a name="attribute-descriptions"></a>屬性描述
-| 屬性名稱 | 描述 |
+| 屬性名稱 | 說明 |
 | --- | --- |
 | [模式] |Fast：較快的處理速度，但較不精確 (預設)。|
 
@@ -157,7 +159,7 @@ ms.locfileid: "89019873"
 
 
 #### <a name="attribute-descriptions"></a>屬性描述
-| 屬性名稱 | 描述 |
+| 屬性名稱 | 說明 |
 | --- | --- |
 | [模式] |Faces：僅臉部偵測。<br/>PerFaceEmotion：將每個臉部偵測的情緒單獨傳回。<br/>AggregateEmotion：傳回該畫面中所有臉部的平均情緒值。 |
 | AggregateEmotionWindowMs |在已選取 AggregateEmotion 模式時使用。 指定要用來產生每個彙總結果之影片的長度，以毫秒為單位。 |

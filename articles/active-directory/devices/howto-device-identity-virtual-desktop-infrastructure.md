@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e2c516371ada59501edd89491a07014ef949eba
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f0313c27666cda785b24f23436f6ad727f337ca8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604397"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259348"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>裝置身分識別和桌面虛擬化
 
@@ -68,7 +68,7 @@ ms.locfileid: "88604397"
 
 <sup>4</sup> **受控** 識別基礎結構環境代表一個環境，其 Azure AD 為使用 [密碼雜湊同步 (PHS) ](../hybrid/whatis-phs.md) 或 [傳遞驗證 (](../hybrid/how-to-connect-pta.md) 使用 [無縫單一登入](../hybrid/how-to-connect-sso.md)PTA) 的身分識別提供者。
 
-<sup>5</sup> **適用于 Windows 最新的5個非持續性支援**需要其他考慮，如下列指引一節所述。
+<sup>5</sup> **適用于 Windows 最新的5個非持續性支援**需要其他考慮，如下列指引一節所述。 此案例需要 Windows 10 1803、Windows Server 2019 或 Windows Server (半年通道) 起始1803版
 
 <sup>6</sup> **針對舊版 Windows 的非持續性支援** 需要其他考慮，如下列指引一節所述。
 

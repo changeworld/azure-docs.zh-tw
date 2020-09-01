@@ -3,7 +3,7 @@ title: 使用媒體服務中的標準編碼器為影片編碼 - Azure | Microsof
 description: 本主題說明如何使用媒體服務的標準編碼器，根據輸入解析度和位元速率，以自動產生的位元速率階梯，進行視訊的編碼。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: c25c32f35adc1c017f0f4c012c82bd7e0af8d452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1c5fb04597ec274eaf2b4a4e7a5e2b96f1816f1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60733312"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258821"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>使用自動產生的位元速率階梯進行編碼
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 ## <a name="overview"></a>概觀
 
@@ -40,7 +42,7 @@ ms.locfileid: "60733312"
 ### <a name="example-1"></a>範例 1
 高度 "1080" 和畫面播放速率 "29.970" 的來源會產生 6 個視訊層︰
 
-|階層|高度|寬度|位元速率 (kbps)|
+|層|高度|寬度|位元速率 (kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -52,7 +54,7 @@ ms.locfileid: "60733312"
 ### <a name="example-2"></a>範例 2
 高度 "720" 和畫面播放速率 "23.970" 的來源會產生 5 個視訊層︰
 
-|階層|高度|寬度|位元速率 (kbps)|
+|層|高度|寬度|位元速率 (kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -63,7 +65,7 @@ ms.locfileid: "60733312"
 ### <a name="example-3"></a>範例 3
 高度 "360" 和畫面播放速率 "29.970" 的來源會產生 3 個視訊層︰
 
-|階層|高度|寬度|位元速率 (kbps)|
+|層|高度|寬度|位元速率 (kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|

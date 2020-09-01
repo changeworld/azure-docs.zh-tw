@@ -14,14 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5e8318b480cfa0d399a7fb2a0e7f6ebed1488397
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6ac638d9062f31b68d3e1954688dde7ed40c4d2c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836491"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258294"
 ---
-# <a name="azure-media-services-community"></a>Azure 媒體服務社群  
+# <a name="azure-media-services-community"></a>Azure 媒體服務社群
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 Azure 媒體服務 (AMS) 社群頁面討論您可以取得 AMS 更新的不同方式。 您也可以檢視新的影片和播客、提出問題，以及提供意見反應。   
 
