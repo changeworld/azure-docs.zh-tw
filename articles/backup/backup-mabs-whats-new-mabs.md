@@ -3,12 +3,12 @@ title: Microsoft Azure 備份伺服器的新功能
 description: Microsoft Azure 備份伺服器可提供您經過強化的備份功能，讓您保護 VM、檔案和資料夾以及工作負載等項目。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: fb47d2f14ca686e04cd2d9e3dec27d3ca4a30f5c
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: ca06e52c81b909bb19008fdccfe4b3fdeb7e6248
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893182"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182134"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure 備份 Server (MABS 的新功能) 
 
@@ -37,7 +37,7 @@ MABS V2 引進了 [Modern Backup Storage](backup-mabs-add-storage.md) (mb) ，�
 >[!NOTE]
 > MABS V3 支援儲存在 ReFS 磁片區上的 Hyper-v Vm 備份
 
->須知我們發現備份重復資料刪除 ReFS 磁片區的一些問題。 我們正在修正這些問題，並會在有可用的修正時立即更新此區段。 在那之前，我們將從 MABSv3 UR1 中移除重復資料刪除 ReFS 磁片區的備份支援。
+>須知我們發現備份重復資料刪除 ReFS 磁片區有幾個問題。 我們正在修正這些問題，並會在有可用的修正時立即更新此區段。 在那之前，我們將從 MABSv3 UR1 中移除重復資料刪除 ReFS 磁片區的備份支援。
 
 ### <a name="azure-vmware-solution-protection-support"></a>Azure VMware 解決方案保護支援
 

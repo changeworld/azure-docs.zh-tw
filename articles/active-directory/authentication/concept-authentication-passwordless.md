@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f7082de204cedd25b3b87b7157376505598712
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: ef1148555706ff04c58733b66f4784da71849ce8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718079"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226670"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的無密碼 authentication 選項
 
@@ -114,6 +114,8 @@ FIDO2 安全性金鑰是以 unphishable 標準為基礎的無密碼驗證方法�
 | 2 | 用戶端 pin | 這項功能可讓您使用第二個因素保護您的認證，並套用至沒有使用者介面的安全性金鑰。 |
 | 3 | hmac-秘密 | 此延伸模組可確保您可以在離線或飛機模式時登入您的裝置。 |
 | 4 | 每個 RP 有多個帳戶 | 這項功能可確保您可以在多個服務（例如 Microsoft 帳戶和 Azure Active Directory）上使用相同的安全性金鑰。 |
+
+### <a name="fido2-security-key-providers"></a>FIDO2 安全性金鑰提供者
 
 下列提供者提供 FIDO2 的安全性金鑰，這些是已知與無密碼體驗相容的不同外型規格。 我們建議您藉由聯絡廠商和 FIDO 聯盟來評估這些金鑰的安全性屬性。
 

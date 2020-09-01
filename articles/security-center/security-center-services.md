@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 489f0138caa54105cced9c9ef4e8846657d84717
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ebc921e319b5ac16cb39001b5ffba5de48727d84
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607135"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181930"
 ---
 # <a name="feature-coverage-for-machines"></a>機器的功能涵蓋範圍
 
@@ -35,7 +35,7 @@ ms.locfileid: "88607135"
 |[無檔案安全性警示](alerts-reference.md#alerts-windows)|✔|✔|✔|標準|
 |[以網路為基礎的安全性警示](threat-protection.md#network-layer)|✔|✔|-|標準|
 |[即時 VM 存取](security-center-just-in-time.md)|✔|-|-|標準|
-|[原生弱點評定](built-in-vulnerability-assessment.md)|✔|-|-|標準|
+|[原生弱點評定](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|標準|
 |[檔案完整性監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|標準|
 |[自適性應用程式控制](security-center-adaptive-application.md)|✔|-|✔|標準|
 |[網路地圖](security-center-network-recommendations.md#network-map)|✔|✔|-|標準|
@@ -59,7 +59,7 @@ ms.locfileid: "88607135"
 |[無檔案安全性警示](alerts-reference.md#alerts-windows)|-|-|-|標準|
 |[以網路為基礎的安全性警示](threat-protection.md#network-layer)|✔|✔|-|標準|
 |[即時 VM 存取](security-center-just-in-time.md)|✔|-|-|標準|
-|[原生弱點評定](built-in-vulnerability-assessment.md)|✔|-|-|標準|
+|[原生弱點評定](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|標準|
 |[檔案完整性監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|標準|
 |[自適性應用程式控制](security-center-adaptive-application.md)|✔|-|✔|標準|
 |[網路地圖](security-center-network-recommendations.md#network-map)|✔|✔|-|標準|

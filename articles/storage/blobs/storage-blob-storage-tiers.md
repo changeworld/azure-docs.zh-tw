@@ -3,17 +3,17 @@ title: 適用于 blob 的經常性存取、非經常性存取層和封存存取�
 description: 瞭解 Azure Blob 儲存體的經常性存取、非經常性存取層和封存存取層。 查看支援階層處理的儲存體帳戶。 比較區塊 blob 儲存體選項。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/23/2019
+ms.date: 08/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: df81a383dc84ebc70beedded03e9fd1d6bccabdf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 59a0433a3b22877808fbe2b8371258e00f214d10
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009605"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226177"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 儲存體︰經常性存取、非經常性存取和封存存取層
 
@@ -156,7 +156,7 @@ Blob 儲存體生命週期管理提供豐富、以規則為基礎的原則，可
 
 1. 按一下頂端的 [ **儲存** ]。
 
-![變更儲存體帳戶層](media/storage-tiers/account-tier.png)
+![變更 Azure 入口網站中的預設帳戶層](media/storage-tiers/account-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 您可以使用下列 PowerShell 腳本來變更帳戶層。 `$rgName` 變數必須以您的資源群組名稱進行初始化。 `$accountName` 變數必須以您的儲存體帳戶名稱進行初始化。 
@@ -186,7 +186,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 1. 在底部選取 [儲存]。
 
-![變更儲存體帳戶層](media/storage-tiers/blob-access-tier.png)
+![變更 Azure 入口網站中的 blob 層](media/storage-tiers/blob-access-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 您可以使用下列 PowerShell 腳本來變更 blob 層。 `$rgName` 變數必須以您的資源群組名稱進行初始化。 `$accountName` 變數必須以您的儲存體帳戶名稱進行初始化。 `$containerName` 變數必須以您的容器名稱進行初始化。 `$blobName` 變數必須以您的 Blob 名稱進行初始化。 
@@ -220,6 +220,8 @@ $blob.ICloudBlob.SetStandardBlobTier("Archive")
 - **輸出資料傳輸成本**︰輸出資料傳輸 (從 Azure 區域傳出的資料) 會產生每 GB 頻寬使用量費用，與一般用途的儲存體帳戶一致。
 - **變更存取層**：變更帳戶存取層會導致 _存取層推斷_ 的 blob （儲存在未設定明確層的帳戶中）的層級變更費用。 如需變更單一 blob 存取層的詳細資訊，請參閱 [blob 層級](#blob-level-tiering-billing)的階層處理計費。
 
+    在啟用版本控制時變更 blob 的存取層，或如果 blob 有快照集，可能會產生額外的費用。 如需有關啟用 blob 版本設定以及明確變更 blob 層級時如何計費的詳細資訊，請參閱 blob 版本設定檔中的 [定價和帳單](versioning-overview.md#pricing-and-billing) 。 如需有關 blob 有快照集且您明確地變更 blob 層的計費方式的詳細資訊，請參閱 blob 快照集檔中的 [定價和帳單](snapshots-overview.md#pricing-and-billing) 。
+
 > [!NOTE]
 > 如需區塊 blob 價格的詳細資訊，請參閱 [Azure 儲存體定價](https://azure.microsoft.com/pricing/details/storage/blobs/) 頁面。 如需輸出資料傳輸費用的詳細資訊，請參閱[資料傳輸定價詳細資料](https://azure.microsoft.com/pricing/details/data-transfers/)頁面。
 
@@ -241,7 +243,7 @@ GPv1 與 GPv2 帳戶之間的價格結構不同，客戶在決定使用 GPv2 帳
 
 **我可以將我的預設帳戶存取層設定為封存嗎？**
 
-不知道。 只有經常性存取和非經常性存取層可以設定為預設帳戶存取層。 封存只能設定於物件層級。 在 blob 上傳時，您可以將您選擇的存取層指定為經常性存取、非經常性存取層或封存（不論預設帳戶層為何）。 這項功能可讓您直接將資料寫入封存層，以在您于 blob 儲存體中建立資料時，實現節省成本。
+否。 只有經常性存取和非經常性存取層可以設定為預設帳戶存取層。 封存只能設定於物件層級。 在 blob 上傳時，您可以將您選擇的存取層指定為經常性存取、非經常性存取層或封存（不論預設帳戶層為何）。 這項功能可讓您直接將資料寫入封存層，以在您于 blob 儲存體中建立資料時，實現節省成本。
 
 **在哪些區域中可以使用經常性存取、非經常性存取層和封存存取層？**
 

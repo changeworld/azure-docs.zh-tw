@@ -7,19 +7,27 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: e2ba5d909a3aa43921f52295d2f7216aac76bc32
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: aca41edeb159a65b27ecbbc27ae568f8bc94cebe
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067081"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181862"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure 開機診斷
 
-開機診斷是 Azure 虛擬機器 (VM) 的偵錯工具功能，可讓您診斷 VM 開機失敗。 開機診斷可讓使用者在開機時，藉由收集序列記錄資訊和螢幕擷取畫面，觀察其 VM 的狀態。
+開機診斷是 Azure 虛擬機器 (VM) 的偵錯工具，可讓您診斷 VM 開機失敗。 開機診斷可讓使用者藉由收集序列記錄資訊和螢幕擷取畫面，來觀察其 VM 的狀態。
+
+## <a name="boot-diagnostics-storage-account"></a>開機診斷儲存體帳戶
+在 Azure 入口網站中建立 VM 時，預設會啟用開機診斷。 建議的開機診斷體驗是使用受控儲存體帳戶，因為它在建立 Azure VM 時，會大幅改善效能。 這是因為將使用 Azure 受控儲存體帳戶，以移除建立新的使用者儲存體帳戶來儲存開機診斷資料所需的時間。
+
+替代的開機診斷體驗是使用使用者管理的儲存體帳戶。 使用者可以建立新的儲存體帳戶或使用現有的儲存體帳戶。
+
+> [!IMPORTANT]
+> Azure 客戶將不需支付使用受控儲存體帳戶于2020年10月的開機診斷 associted 的儲存體成本。
 
 ## <a name="boot-diagnostics-view"></a>開機診斷視圖
-位於 [虛擬機器] 分頁中，[開機診斷] 選項位於 Azure 入口網站中的 [*支援與疑難排解*] 區段底下。 選取 [開機診斷] 將會顯示幕幕快照和序列記錄檔資訊。 序列記錄檔包含核心訊息，螢幕擷取畫面則是 Vm 目前狀態的快照。 根據 VM 是否正在執行 Windows 或 Linux，會決定預期的螢幕擷取畫面外觀。 對於 Windows，使用者會看到桌面背景，而針對 Linux，使用者會看到登入提示。
+位於虛擬機器分頁中的 [開機診斷] 選項位於 Azure 入口網站的 [ *支援與疑難排解* ] 區段下。 選取 [開機診斷] 將會顯示幕幕快照和序列記錄檔資訊。 序列記錄檔包含核心訊息，而螢幕擷取畫面則是 Vm 目前狀態的快照集。 根據 VM 是否正在執行 Windows 或 Linux，判斷預期的螢幕擷取畫面。 針對 Windows，使用者會看到桌面背景，而針對 Linux，使用者會看到登入提示。
 
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-linux.png" alt-text="Linux 開機診斷的螢幕擷取畫面":::
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="Windows 開機診斷的螢幕擷取畫面":::
@@ -27,8 +35,8 @@ ms.locfileid: "88067081"
 
 ## <a name="limitations"></a>限制
 - 開機診斷僅適用于 Azure Resource Manager Vm。 
-- 開機診斷不支援高階儲存體帳戶，如果將 premium 儲存體帳戶用於開機診斷，使用者將會 `StorageAccountTypeNotSupported` 在啟動 VM 時收到錯誤。 
+- 開機診斷不支援 premium 儲存體帳戶，如果用於開機診斷的高階儲存體帳戶，使用者將會 `StorageAccountTypeNotSupported` 在啟動 VM 時收到錯誤。 
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解[Azure 序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview)，以及如何使用開機診斷對[azure 中的虛擬機器進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)。
+深入瞭解 [Azure 序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview) ，以及如何使用開機診斷對 [azure 中的虛擬機器進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)。

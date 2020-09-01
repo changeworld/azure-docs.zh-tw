@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: f431ca71b4df7b23fdc994689492a937db915686
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e8067f2aa485202412f0f0b6101eafb7768b222a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048324"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181896"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SFTP 伺服器複製資料或將資料複製到 SFTP 伺服器
 
@@ -70,7 +70,7 @@ SFTP 連接器支援下列活動：
 
 若要使用基本驗證，請將 [ *authenticationType* ] 屬性設定為 [ *基本*]，並除了上一節所引進的 SFTP 連接器泛型屬性之外，還指定下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | userName | 擁有 SFTP 伺服器存取權的使用者。 |是 |
 | 密碼 | 使用者 (使用者名稱) 的密碼。 將此欄位標示為 SecureString，以安全地將它儲存在您的 data factory 中，或 [參考儲存在 Azure key vault 中的秘密](store-credentials-in-key-vault.md)。 | 是 |
@@ -107,7 +107,7 @@ SFTP 連接器支援下列活動：
 
 若要使用 SSH 公開金鑰驗證，請將 "authenticationType" 屬性設定為 **SshPublicKey**，然後除了上一節中介紹的 SFTP 連接器泛型屬性之外，再指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | userName | 擁有 SFTP 伺服器存取權的使用者。 |是 |
 | privateKeyPath | 指定整合執行時間可以存取之私密金鑰檔案的絕對路徑。 這僅適用于在 "connectVia" 中指定自我裝載類型的整合執行時間時。 | 請指定 `privateKeyPath` 或 `privateKeyContent`。  |
@@ -184,7 +184,7 @@ SFTP 連接器支援下列活動：
 
 以下是針對 `location` 以格式為基礎的資料集設定下的 SFTP 支援的屬性：
 
-| 屬性   | 描述                                                  | 必要 |
+| 屬性   | 說明                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Dataset 中的 *type* 屬性 `location` 必須設為 *SftpLocation*。 | 是      |
 | folderPath | 資料夾的路徑。 如果您想要使用萬用字元來篩選資料夾，請略過此設定，並在 [活動來源設定] 中指定路徑。 | 否       |
@@ -226,7 +226,7 @@ SFTP 連接器支援下列活動：
 
 以下是針對 `storeSettings` 以格式為基礎的複製來源中設定下的 SFTP 支援的屬性：
 
-| 屬性                 | 描述                                                  | 必要                                      |
+| 屬性                 | 說明                                                  | 必要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | 下的 *類型* 屬性 `storeSettings` 必須設為 *SftpReadSettings*。 | 是                                           |
 | ***找出要複製的檔案*** |  |  |
@@ -290,12 +290,12 @@ SFTP 連接器支援下列活動：
 
 以下是以 `storeSettings` 格式為基礎的複製接收中設定下的 SFTP 支援的屬性：
 
-| 屬性                 | 描述                                                  | 必要 |
+| 屬性                 | 說明                                                  | 必要 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | 下的 *類型* 屬性 `storeSettings` 必須設為 *SftpWriteSettings*。 | 是      |
 | copyBehavior             | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 若已指定檔案名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否       |
 | maxConcurrentConnections | 可以同時連線到儲存體存放區的連接數目。 只有當您想要限制與資料存放區的並行連接時，才需要指定值。 | 否       |
-| useTempFileRename | 指出是否要上傳至暫存檔並將它們重新命名，或直接寫入目的檔案夾或檔案位置。 根據預設，Azure Data Factory 會先寫入暫存檔，然後在上傳完成時將其重新命名。 如果您有其他處理常式寫入相同的檔案，則此順序有助於 (1) 避免可能導致檔案損毀的衝突，並 (2) 確定檔案的原始版本存在於傳輸期間。 如果您的 SFTP 伺服器不支援重新命名作業，請停用此選項，並確定您沒有對目標檔案的並行寫入。 如需詳細資訊，請參閱此表格結尾的疑難排解提示。 | 不知道。 預設值為 true。 |
+| useTempFileRename | 指出是否要上傳至暫存檔並將它們重新命名，或直接寫入目的檔案夾或檔案位置。 根據預設，Azure Data Factory 會先寫入暫存檔，然後在上傳完成時將其重新命名。 如果您有其他處理常式寫入相同的檔案，則此順序有助於 (1) 避免可能導致檔案損毀的衝突，並 (2) 確定檔案的原始版本存在於傳輸期間。 如果您的 SFTP 伺服器不支援重新命名作業，請停用此選項，並確定您沒有對目標檔案的並行寫入。 如需詳細資訊，請參閱此表格結尾的疑難排解提示。 | 否。 預設值為 true。 |
 | operationTimeout | 對 SFTP 伺服器發出的每個寫入要求在逾時之前的等待時間。預設值為 60 分鐘 (01:00:00)。|否 |
 
 >[!TIP]
@@ -374,7 +374,7 @@ SFTP 連接器支援下列活動：
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 *type* 屬性必須設定為檔案 *共用*。 |是 |
 | folderPath | 資料夾的路徑。 支援萬用字元篩選。 允許的萬用字元 `*` (符合零或多個字元) 和 `?` (符合零或單一字元) ; `^` 如果您的實際檔案名包含萬用字元或此 escape 字元，請使用來進行 escape。 <br/><br/>範例：rootfolder/subfolder/，如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 |是 |
@@ -390,7 +390,7 @@ SFTP 連接器支援下列活動：
 >[!NOTE]
 >如果您在檔案篩選器中使用 *fileFilter* 屬性，它仍會受到支援，但建議您從現在開始使用新的篩選功能，並新增至 *檔案名* 。
 
-**範例︰**
+**範例：**
 
 ```json
 {
@@ -423,7 +423,7 @@ SFTP 連接器支援下列活動：
 
 ### <a name="legacy-copy-activity-source-model"></a>舊版複製活動來源模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 *type* 屬性必須設定為 *>filesystemsource* |是 |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 當遞迴設定為 *true* 且接收是檔案型存放區時，就不會在接收時複製或建立空的資料夾和子資料夾。<br/>允許的值為 *true* (預設值) 和 *false* | 否 |

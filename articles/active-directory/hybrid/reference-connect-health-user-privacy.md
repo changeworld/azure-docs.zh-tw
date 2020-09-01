@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58cddcde71e6e86b9abe07eb4200f13ad55ea659
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58ecdfefa79716bcc0a69063293d5a1067693a78
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690688"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182355"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>使用者隱私權與 Azure AD Connect Health 
 
@@ -41,7 +41,7 @@ Azure AD Connect Health 不會針對超過 30 天的資料產生報告、執行�
 Azure AD Connect Health 可讓您停止針對每個個別監視的伺服器或針對一個所監視服務的執行個體收集資料。 例如，您可以針對使用 Azure AD Connect Health 所監視的個別 ADFS (Active Directory 同盟服務) 伺服器停止資料收集。 您也可以針對使用 Azure AD Connect Health 所監視的整個 ADFS 執行個體停止資料收集。 當您選擇這樣做時，系統就會在停止資料收集後從 Azure AD Connect Health 入口網站中刪除對應的伺服器。 
 
 >[!IMPORTANT]
-> 您需要 Azure AD 全域系統管理員權限或 RBAC 的參與者角色，才能從 Azure AD Connect Health 刪除所監視的伺服器。
+> 您需要 Azure AD 全域管理員許可權或 Azure RBAC 中的「參與者」角色，才能從 Azure AD Connect Health 刪除受監視的伺服器。
 >
 > 從 Azure AD Connect Health 移除服務或服務執行個體的動作無法復原。 
 

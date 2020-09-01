@@ -5,15 +5,15 @@ description: 了解如何使用 Azure PowerShell，在應用程式閘道上使�
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: a57c5b155f7ab00f781236cfceea59a4277ff06a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: how-to
+ms.openlocfilehash: 1e2fb98d83d1246c54ccb37d68d9b4282701677e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74046284"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225181"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>使用 Azure PowerShell 啟用 Web 應用程式防火牆
 
@@ -21,11 +21,10 @@ ms.locfileid: "74046284"
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
-> * 設定網路
-> * 建立已啟用 WAF 的應用程式閘道
-> * 建立虛擬機器擴展集
-> * 建立儲存體帳戶並設定診斷
+* 設定網路
+* 建立已啟用 WAF 的應用程式閘道
+* 建立虛擬機器擴展集
+* 建立儲存體帳戶並設定診斷
 
 ![Web 應用程式防火牆範例](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 

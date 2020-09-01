@@ -3,12 +3,12 @@ title: 使用 Azure CLI 備份 Azure 檔案共用
 description: 瞭解如何使用 Azure CLI 在復原服務保存庫中備份 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 54852112591b5f5eec1ecbac34b836b4cb0f4f1f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cc4422a7d20dbd231729922bd013549d5276deb1
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012019"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182202"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>使用 CLI 備份 Azure 檔案共用
 

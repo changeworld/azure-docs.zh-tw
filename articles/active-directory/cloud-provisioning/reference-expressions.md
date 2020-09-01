@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 722b3fcb2bc533e396a35feb4c755de99c375b10
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
-ms.translationtype: HT
+ms.openlocfilehash: c14f406e5671e1eefb43f0208044f9945e446267
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201854"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226568"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中撰寫屬性對應的運算式
 在設定雲端佈建時，運算式對應將是您可以指定的屬性對應類型之一。 
@@ -253,7 +253,7 @@ Error 函式是用來傳回自訂錯誤。
    | 名稱 | 必要 / 重複 | 類型 | 注意 |
    | --- | --- | --- | --- |
    | **來源** |必要 |String |通常為 source 物件的屬性名稱。 |
-   | **inputFormat** |必要 |String |source 值的預期格式。 如需支援的格式，請參閱[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
+   | **inputFormat** |必要 |String |source 值的預期格式。 如需支援的格式，請參閱 [/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
    | **outputFormat** |必要 |String |輸出日期的格式。 |
 
 ---

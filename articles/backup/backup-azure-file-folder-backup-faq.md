@@ -3,12 +3,12 @@ title: Microsoft Azure 復原服務 (MARS) 代理程式-常見問題
 description: 解決使用 Azure 備份備份檔案和資料夾的相關常見問題。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: ca2753e4d6da7e2e3079f234a3facac27fd5f098
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: e3a5b6d07982c3261b457d4999025c44489c0a8d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144459"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182508"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常見問題-Microsoft Azure 復原服務 (MARS) 代理程式
 
@@ -80,7 +80,7 @@ ms.locfileid: "89144459"
 
 * 您必須向備份保存庫註冊新的電腦名稱稱。
 * 當您向保存庫註冊新名稱時，第一項作業是 *完整* 備份。
-* 如果您需要使用舊的伺服器名稱來復原備份至保存庫的資料，請使用 [復原資料] 嚮導中的選項來還原至替代位置。 [深入了解](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
+* 如果您需要使用舊的伺服器名稱來復原備份至保存庫的資料，請使用 [復原資料] 嚮導中的選項來還原至替代位置。 [進一步瞭解](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>備份的檔案路徑長度上限為何？
 
@@ -122,7 +122,7 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中 [支援的字元](/w
 1. 在提高許可權的命令提示字元中執行此命令，以停止備份引擎：
 
     ```Net stop obengine```
-2. 如果您已設定系統狀態備份，請開啟 [磁片管理]，然後使用格式的名稱，將磁片 (s) 卸載 `"CBSSBVol_<ID>"` 。
+2. 如果您已設定系統狀態備份，請開啟 [磁片管理]，然後使用格式的名稱將磁片 (s) 卸載 `"CBSSBVol_<ID>"` 。
 3. 根據預設，暫存檔案夾位於 `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 4. 將整個 `\Scratch` 資料夾複製到具有足夠空間的其他磁片磁碟機。 確定已複製但未移動內容。
 5. 以新移動的暫存檔案夾路徑更新下列登錄專案。
@@ -163,7 +163,7 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中 [支援的字元](/w
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>是否有方法可以調整用於備份的頻寬量？
 
-是，您可以使用 MARS 代理程式中的 [ **變更屬性** ] 選項來調整頻寬和時間。 [深入了解](backup-windows-with-mars-agent.md#enable-network-throttling)。
+是，您可以使用 MARS 代理程式中的 [ **變更屬性** ] 選項來調整頻寬和時間。 [進一步瞭解](backup-windows-with-mars-agent.md#enable-network-throttling)。
 
 ## <a name="restore"></a>還原
 
@@ -211,6 +211,6 @@ Azure 備份代理程式需要您在註冊期間提供的複雜密碼 () 在還�
 * 若為磁片區還原復原選項，MARS 代理程式會提供選項，以略過還原要復原的檔案或資料夾的 ACL 許可權
 * 針對個別檔案和資料夾的復原選項，MARS 代理程式會以 ACL 許可權還原 (沒有略過 ACL 還原) 的選項。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [瞭解](tutorial-backup-windows-server-to-azure.md) 如何備份 Windows 電腦。

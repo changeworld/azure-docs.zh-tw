@@ -5,18 +5,20 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: ae34840c04c3a1d2fb3646046792c97ed6f521a0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 05ce944d195cf43f860fc2b39975a736a4454c05
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289429"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226509"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure Logic Apps 中接收和回應輸入 HTTPS 要求
 
-您可以透過 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 及內建的要求觸發程序和回應動作，建立自動化工作和工作流程，以接收和回應傳入的 HTTPS 要求。 例如，您可以讓邏輯應用程式：
+透過 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和內建的要求觸發程式和回應動作，您可以建立可透過 HTTPS 接收輸入要求的自動化工作和工作流程。 若要改為傳送輸出要求，請使用內建的 [HTTP 觸發程式或 HTTP 動作](../connectors/connectors-native-http.md)。
+
+例如，您可以讓邏輯應用程式：
 
 * 接收和回應以內部部署資料庫中的資料為對象的 HTTPS 要求。
 
@@ -24,47 +26,28 @@ ms.locfileid: "87289429"
 
 * 接收和回應來自另一個邏輯應用程式的 HTTPS 呼叫。
 
-要求觸發程序支援 [Azure Active Directory 開放式驗證](../active-directory/develop/index.yml) (Azure AD OAuth)，以授權對邏輯應用程式的輸入呼叫。 如需啟用此驗證的詳細資訊，請參閱[在 Azure Logic Apps 中保護存取和資料 - 啟用 Azure AD OAuth 驗證](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)。
+本文說明如何使用要求觸發程式和回應動作，讓您的邏輯應用程式可以接收和回應傳入的呼叫。
 
-## <a name="prerequisites"></a>必要條件
+如需對邏輯應用程式進行撥入電話的加密、安全性和授權的相關資訊（例如 [傳輸層安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，之前稱為安全通訊端層 (SSL) ，或 Azure Active Directory [ (Open Authentication Azure AD ](../active-directory/develop/index.yml)，請參閱 [以要求為基礎的觸發程式之輸入呼叫的安全存取和資料存取](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
 
-* Azure 訂用帳戶。 如果您沒有訂用帳戶，您可以[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
+## <a name="prerequisites"></a>Prerequisites
 
-* [邏輯應用程式](../logic-apps/logic-apps-overview.md)的基本知識。 如果您不熟悉邏輯應用程式，請了解[如何建立您的第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* Azure 帳戶和訂用帳戶。 如果您沒有訂用帳戶，您可以[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-<a name="tls-support"></a>
-
-## <a name="transport-layer-security-tls"></a>傳輸層安全性 (TLS)
-
-* 輸入呼叫*僅*支援傳輸層安全性（TLS）1.2。 如果收到 TLS 交握錯誤，請確定您使用 TLS 1.2。 如需詳細資訊，請參閱[解決 TLS 1.0 問題](/security/solving-tls1-problem)。 輸出呼叫支援以目標端點的功能為基礎的 TLS 1.0、1.1 和1.2。
-
-* 輸入呼叫支援下列加密套件：
-
-  * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-
-  * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-
-  * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-
-  * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-
-  * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-
-  * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-
-  * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-
-  * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識。 如果您不熟悉邏輯應用程式，請參閱 [什麼是 Azure Logic Apps](../logic-apps/logic-apps-overview.md)？
 
 <a name="add-request"></a>
 
 ## <a name="add-request-trigger"></a>新增要求觸發程序
 
-這個內建的觸發程序會建立可手動呼叫的 HTTPS 端點，而此端點「只」能接收傳入的 HTTPS 要求。 當此事件發生時，這個觸發程序就會引發並執行邏輯應用程式。 如需此觸發程序的基礎 JSON 定義及如何呼叫此觸發程序的詳細資訊，請參閱[要求觸發程序類型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[在 Azure Logic Apps 中使用 HTTPS 端點來呼叫、觸發或巢狀工作流程](../logic-apps/logic-apps-http-endpoint.md)。
+此內建觸發程式會建立可透過 HTTPS *只* 處理輸入要求的手動可呼叫端點。 當呼叫端將要求傳送至此端點時， [要求觸發](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) 程式會引發並執行邏輯應用程式。 如需如何呼叫此觸發程式的詳細資訊，請參閱 [在 Azure Logic Apps 中呼叫、觸發或使用 HTTPS 端點來嵌套工作流程](../logic-apps/logic-apps-http-endpoint.md)。
+
+您的邏輯應用程式只會在 [有限的時間](../logic-apps/logic-apps-limits-and-config.md#request-limits)內將輸入要求保持開啟狀態。 假設您的邏輯應用程式包含 [回應動作](#add-response)，如果您的邏輯應用程式未在這段時間過後將回應傳回給呼叫者，則邏輯應用程式會將 `504 GATEWAY TIMEOUT` 狀態傳回給呼叫者。 如果您的邏輯應用程式未包含回應動作， 
+> 邏輯應用程式會立即將 `202 ACCEPTED` 狀態傳回給呼叫者。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 建立空白邏輯應用程式。
 
-1. 在邏輯應用程式設計工具開啟之後，請在 [搜尋] 方塊中輸入 `http request` 作為篩選件。 從觸發程序清單中，選取 [收到 HTTP 要求時] 觸發程序，這是邏輯應用程式工作流程中的第一個步驟。
+1. 在邏輯應用程式設計工具開啟之後，請在 [搜尋] 方塊中輸入 `http request` 作為篩選件。 從觸發程式清單中，選取 [ **收到 HTTP 要求時** ] 觸發程式。
 
    ![選取要求觸發程序](./media/connectors-native-reqres/select-request-trigger.png)
 
@@ -72,7 +55,7 @@ ms.locfileid: "87289429"
 
    ![要求觸發程序](./media/connectors-native-reqres/request-trigger.png)
 
-   | 屬性名稱 | JSON 屬性名稱 | 必要 | 說明 |
+   | 屬性名稱 | JSON 屬性名稱 | 必要 | 描述 |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL** | {無} | 是 | 在您儲存邏輯應用程式之後產生的端點 URL，用於呼叫邏輯應用程式 |
    | **要求本文 JSON 結構描述** | `schema` | 否 | JSON 結構描述，描述傳入要求本文中的屬性和值 |
@@ -144,11 +127,11 @@ ms.locfileid: "87289429"
 
    1. 在要求觸發程序中，選取 [使用範例承載來產生結構描述]。
 
-      ![從承載產生結構描述](./media/connectors-native-reqres/generate-from-sample-payload.png)
+      ![已選取 [使用範例承載來產生架構] 的螢幕擷取畫面](./media/connectors-native-reqres/generate-from-sample-payload.png)
 
    1. 輸入範例承載，然後選取 [完成]。
 
-      ![從承載產生結構描述](./media/connectors-native-reqres/enter-payload.png)
+      ![輸入範例承載以產生架構](./media/connectors-native-reqres/enter-payload.png)
 
       以下是承載範例：
 
@@ -169,17 +152,17 @@ ms.locfileid: "87289429"
       }
       ```
 
-1. 若要檢查撥入電話是否有符合您指定之架構的要求主體，請遵循下列步驟：
+1. 若要檢查輸入呼叫是否有符合指定架構的要求本文，請遵循下列步驟：
 
-   1. 在要求觸發程式的標題列中，選取省略號按鈕（**...**）。
+   1. 在要求觸發程式的標題列中，選取省略號按鈕 (**...**) 。
 
-   1. 在觸發程式的 [設定] 中，開啟 [**架構驗證**]，然後選取 [**完成**]。
+   1. 在觸發程式的設定中，開啟 **架構驗證**，然後選取 [ **完成**]。
 
-      如果撥入電話的要求主體不符合您的架構，觸發程式會傳回 `HTTP 400 Bad Request` 錯誤。
+      如果撥入電話的要求本文不符合您的架構，則觸發程式會傳回 `HTTP 400 Bad Request` 錯誤。
 
 1. 若要指定其他屬性，請開啟 [新增參數] 清單，然後選取您要新增的參數。
 
-   | 屬性名稱 | JSON 屬性名稱 | 必要 | 說明 |
+   | 屬性名稱 | JSON 屬性名稱 | 必要 | 描述 |
    |---------------|--------------------|----------|-------------|
    | **方法** | `method` | 否 | 傳入要求在呼叫邏輯應用程式時必須使用的方法 |
    | **相對路徑** | `relativePath` | 否 | 參數的相對路徑，指邏輯應用程式的端點 URL 可接受的參數 |
@@ -206,15 +189,13 @@ ms.locfileid: "87289429"
    ![用於觸發邏輯應用程式的 URL](./media/connectors-native-reqres/generated-url.png)
 
    > [!NOTE]
-   > 如果您想要在呼叫要求觸發程式時，將雜湊或井字型大小（ **#** ）包含在 URI 中，請改為使用此編碼版本：`%25%23`
+   > 如果您想要在 **#** 呼叫要求觸發程式時，在 URI 中包含雜湊或 # 符號 () ，請改用此編碼版本： `%25%23`
 
 1. 若要觸發邏輯應用程式，請將 HTTP POST 傳送至產生的 URL。
 
-   例如，您可以使用 [Postman](https://www.getpostman.com/) 之類的工具來傳送 HTTP POST。 如果您[啟用 Azure Active Directory 開啟式驗證](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) (Azure AD OAuth)，以授權對要求觸發程序的輸入呼叫，請使用[共用存取簽章 (SAS) URL](../logic-apps/logic-apps-securing-a-logic-app.md#sas) 或驗證權杖來呼叫觸發程序，但兩者不能同時使用。 驗證權杖必須在授權標頭中指定 `Bearer` 類型。 如需詳細資訊，請參閱[在 Azure Logic Apps 中保護存取和資料 - 存取以要求為基礎的觸發程序](../logic-apps/logic-apps-securing-a-logic-app.md#secure-triggers)。
+   例如，您可以使用 [Postman](https://www.getpostman.com/) 之類的工具來傳送 HTTP POST。 如需此觸發程序的基礎 JSON 定義及如何呼叫此觸發程序的詳細資訊，請參閱這些主題：[要求觸發程序類型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[在 Azure Logic Apps 中使用 HTTP 端點來呼叫、觸發或巢狀工作流程](../logic-apps/logic-apps-http-endpoint.md)。
 
-如需此觸發程序的基礎 JSON 定義及如何呼叫此觸發程序的詳細資訊，請參閱這些主題：[要求觸發程序類型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[在 Azure Logic Apps 中使用 HTTP 端點來呼叫、觸發或巢狀工作流程](../logic-apps/logic-apps-http-endpoint.md)。
-
-### <a name="trigger-outputs"></a>觸發程序輸出
+## <a name="trigger-outputs"></a>觸發程序輸出
 
 關於要求觸發程序的輸出，詳細資訊如下：
 
@@ -228,9 +209,7 @@ ms.locfileid: "87289429"
 
 ## <a name="add-a-response-action"></a>新增回應動作
 
-您可以使用回應動作，以承載 (資料) 來回應傳入的 HTTPS 要求，但僅限於由 HTTPS 要求觸發的邏輯應用程序。 您可以在工作流程中的任何地方新增回應動作。 關於此觸發程序的基礎 JSON 定義，如需詳細資訊，請參閱[回應動作類型](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)。
-
-邏輯應用程式只在[有限時間](../logic-apps/logic-apps-limits-and-config.md#request-limits)內保持開啟傳入要求。 假設邏輯應用程式工作流程包含回應動作，如果邏輯應用程式在此時間過後沒有傳回任何回應，則邏輯應用程式會將 `504 GATEWAY TIMEOUT` 傳回給呼叫者。 另外，如果邏輯應用程式不含回應動作，則邏輯應用程式會立即將 `202 ACCEPTED` 回應傳回給呼叫者。
+當您使用要求觸發程式來處理輸入要求時，您可以使用內建的 [回應動作](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)來建立回應的模型，並將承載結果傳回給呼叫者。 您只能對要求觸發程式使用*回應動作。* 此組合與要求觸發程式和回應動作會建立 [要求-回應模式](https://en.wikipedia.org/wiki/Request%E2%80%93response)。 除了 Foreach 迴圈和 Until 迴圈以及平行分支以外，您也可以在工作流程中的任何位置新增回應動作。
 
 > [!IMPORTANT]
 > 如果回應動作包含以下標頭，Logic Apps 會從產生的回應訊息中移除這些標頭，但不會顯示任何警告或錯誤：
@@ -253,7 +232,7 @@ ms.locfileid: "87289429"
 
    若要在步驟之間新增動作，請將指標移至這些步驟之間的箭頭上。 選擇出現的加號 ( **+** )，然後選取 [新增動作]。
 
-1. 在 [選擇動作] 下的搜尋方塊中，輸入「回應」作為篩選條件，然後選取 [回應] 動作。
+1. 在 [ **選擇動作**] 下的 [搜尋] 方塊中，輸入 `response` 做為篩選準則，然後選取 **回應** 動作。
 
    ![選取回應動作](./media/connectors-native-reqres/select-response-action.png)
 
@@ -286,5 +265,5 @@ ms.locfileid: "87289429"
 
 ## <a name="next-steps"></a>後續步驟
 
+* [對要求型觸發程式的撥入電話安全存取和資料存取](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
 * [適用於 Logic Apps 的連接器](../connectors/apis-list.md)
-

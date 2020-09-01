@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4c4b1f7aed6a188c491e6f4961442fa85744b6b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 9a725831efe6b92ba522900fac67b317e42bc959
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718538"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182372"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常見問題集
 本文會回答有關 Azure Active Directory (Azure AD) Connect Health 的常見問題 (FAQ)。 這些常見問題涵蓋如何使用服務的相關問題，包括計費模型、功能、限制及支援。
@@ -137,7 +137,7 @@ Health 代理程式會因為下列可能原因而無法註冊：
 
 * 因為防火牆封鎖流量，代理程式無法與所需端點通訊。 在 Web 應用程式 Proxy 伺服器上尤其常見。 請確定您已允許針對所需端點和連接埠的輸出通訊。 如需詳細資訊，請參閱 [需求一節](how-to-connect-health-agent-install.md#requirements) 。
 * 輸出通訊會受到網路層的 TLS 檢查。 這會導致代理程式所使用的憑證遭到檢查伺服器/實體所取代，完成代理程式註冊的步驟便會失敗。
-* 使用者沒有執行代理程式註冊的存取權。 根據預設，全域系統管理員具有存取權。 您可以使用 [azure 角色型存取控制 (AZURE RBAC) ](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) 將存取權委派給其他使用者。
+* 使用者沒有執行代理程式註冊的存取權。 根據預設，全域系統管理員具有存取權。 您可以使用 [azure 角色型存取控制 (AZURE RBAC) ](how-to-connect-health-operations.md#manage-access-with-azure-rbac) 將存取權委派給其他使用者。
 
 **問：我收到「健全狀況服務的資料不是最新狀態」的警示。如何? 針對問題進行疑難排解？**
 

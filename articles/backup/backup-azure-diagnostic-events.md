@@ -3,12 +3,12 @@ title: 使用復原服務保存庫的診斷設定
 description: 本文描述如何針對 Azure 備份使用舊的和新的診斷事件。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: e5f666886dca0959b0f06b799088cadf4593ec39
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 3d10053bae5148f33dba6d1207a81bdb16c37577
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826662"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182593"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>使用復原服務保存庫的診斷設定
 
@@ -45,7 +45,7 @@ Azure 備份提供下列診斷事件。 每個事件都會提供一組特定備�
 1. 提供診斷設定的名稱。
 1. 選取 [ **傳送至 Log analytics** ] 核取方塊，然後選取 Log analytics 工作區。
 1. 選取切換中 **特定的資源** ，然後選取下列六個事件： **CoreAzureBackup**、 **AddonAzureBackupJobs**、 **AddonAzureBackupAlerts**、 **AddonAzureBackupPolicy**、 **AddonAzureBackupStorage**和 **AddonAzureBackupProtectedInstance**。
-1. 選取 [儲存]。
+1. 選取 \[儲存\]。
 
    ![資源特定模式](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 
@@ -102,7 +102,7 @@ Azure 備份提供下列診斷事件。 每個事件都會提供一組特定備�
 
 2. 使用 Azure 備份中內 [建的 Azure 原則定義](./azure-policy-configure-diagnostics.md) ，為指定範圍內的所有保存庫新增診斷設定。 此原則會將新的診斷設定新增至保存庫，其中可能沒有診斷設定或只有舊版診斷設定。 您可以一次將此原則指派給整個訂用帳戶或資源群組。 您必須擁有指派原則之每個訂用帳戶的擁有者存取權。
 
-您可以針對 AzureBackupReport 和六個新的事件選擇個別的診斷設定，直到您將所有自訂查詢遷移為使用新資料表中的資料為止。 下圖顯示具有兩個診斷設定的保存庫範例。 第一個設定（名為 **Setting1**）會將 AzureBackupReport 事件的資料傳送至 Azure 診斷模式中的 Log Analytics 工作區。 第二個設定（名為 **Setting2**）會將六個新 Azure 備份事件的資料傳送到資源特定模式中的 Log Analytics 工作區。
+您可以針對 AzureBackupReport 和六個新事件選擇個別的診斷設定，直到您將所有自訂查詢遷移為使用新資料表中的資料為止。 下圖顯示具有兩個診斷設定的保存庫範例。 第一個設定（名為 **Setting1**）會將 AzureBackupReport 事件的資料傳送至 Azure 診斷模式中的 Log Analytics 工作區。 第二個設定（名為 **Setting2**）會將六個新 Azure 備份事件的資料傳送到資源特定模式中的 Log Analytics 工作區。
 
 ![兩個設定](./media/backup-azure-diagnostics-events/two-settings-example.png)
 

@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: 254732630dcf28b90413a1269a34d3aa388cb06c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 08/31/2020
+ms.openlocfilehash: 4e6586453469797458bc60fc7499a45a9aad9b9b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997858"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226738"
 ---
 # <a name="supported-data-types"></a>支援的資料類型
 
@@ -34,9 +34,10 @@ ms.locfileid: "88997858"
 
 > [!NOTE]
 > **字串** 類型不可為 null：
->   * [時間序列運算式 (TSX) ](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)以[時間序列查詢](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis)表示，並比較空字串的值 (**' '**) 與**Null**的行為方式相同：相當 `$event.siteid.String = NULL` 于 `$event.siteid.String = ''` 。
->   * 即使原始事件包含空字串，API 仍可能會傳回 **Null** 值。
->   * 請勿依賴**字串**資料行中的**Null**值進行比較或評估，而是將它們視為空字串的相同方式來處理。
+>
+> * [時間序列運算式 (TSX) ](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)以[時間序列查詢](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis)表示，並比較空字串的值 (**' '**) 與**Null**的行為方式相同：相當 `$event.siteid.String = NULL` 于 `$event.siteid.String = ''` 。
+> * 即使原始事件包含空字串，API 仍可能會傳回 **Null** 值。
+> * 請勿依賴**字串**資料行中的**Null**值進行比較或評估，而是將它們視為空字串的相同方式來處理。
 
 ## <a name="sending-mixed-data-types"></a>傳送混合的資料類型
 

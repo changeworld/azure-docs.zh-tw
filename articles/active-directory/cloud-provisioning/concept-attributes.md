@@ -15,34 +15,34 @@ ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fff90777c63820b54a1cb37156021c894de19c8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78299324"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226925"
 ---
 # <a name="understand-the-azure-ad-schema"></a>瞭解 Azure AD 架構
-Azure Active Directory （Azure AD）中的物件（例如任何目錄）是以程式設計的高階資料結構，代表使用者、群組和連絡人等專案。 當您在 Azure AD 中建立新的使用者或連絡人時，就是建立該物件的新實例。 這些實例可以根據其屬性加以區別。
+Azure Active Directory (Azure AD) 中的物件（例如任何目錄）是一種程式設計的高階資料結構，代表使用者、群組和連絡人等專案。 當您在 Azure AD 中建立新的使用者或連絡人時，您要建立該物件的新實例。 這些實例可以根據其屬性來區分。
 
-Azure AD 中的屬性是負責將物件實例的相關資訊儲存在 Azure AD 中的元素。
+Azure AD 中的屬性是負責在 Azure AD 中儲存物件實例相關資訊的元素。
 
-Azure AD 架構會定義專案中可能會使用哪些屬性的規則、這些屬性可能具有的數值型別，以及使用者如何與這些值進行互動。 
+Azure AD 架構會定義可在專案中使用屬性的規則、這些屬性可能具有的數值型別，以及使用者可能與這些值互動的方式。 
 
 Azure AD 有兩種類型的屬性：
-- **內建屬性**：由 Azure AD 架構預先定義的屬性。 這些屬性提供不同的用法，而且可能或無法存取。
-- **目錄延伸**模組：提供的屬性，讓您可以自訂 Azure AD 供您自己使用。 例如，如果您已使用特定屬性擴充內部部署 Active Directory，而且想要傳送該屬性，則可以使用所提供的其中一個自訂屬性。 
+- **內建屬性**：由 Azure AD 架構預先定義的屬性。 這些屬性會提供不同的用法，而且可能會或可能無法存取。
+- **目錄延伸**模組：提供的屬性，可讓您自訂 Azure AD 供您自己使用。 例如，如果您已使用特定屬性擴充您的內部部署 Active Directory，並且想要傳送該屬性，則可以使用其中一個提供的自訂屬性。 
 
 ## <a name="attributes-and-expressions"></a>屬性和運算式
-當物件（例如使用者）布建到 Azure AD 時，就會建立使用者物件的新實例。 此建立包含該物件的屬性，也就是所謂的屬性。 一開始，新建立的物件會將其屬性設定為由同步處理規則所決定的值。 然後透過雲端布建代理程式，將這些屬性保持在最新狀態。
+當物件（例如使用者）布建至 Azure AD 時，會建立使用者物件的新實例。 這項建立包含該物件的屬性（也稱為屬性）。 一開始，新建立的物件會將其屬性設定為由同步處理規則決定的值。 這些屬性接著會透過雲端布建代理程式保持最新狀態。
 
 ![物件布建](media/concept-attributes/attribute1.png)
 
-例如，使用者可能是行銷部門的一部分。 其 Azure AD 部門屬性一開始會在布建時建立，而值會設定為 Marketing。 六個月後，如果它們變更為 [銷售]，其內部部署 Active Directory 部門屬性會變更為 [銷售]。 這項變更會同步處理至 Azure AD，並反映在其 Azure AD 的使用者物件中。
+例如，使用者可能是行銷部門的一部分。 其 Azure AD 部門屬性一開始會在布建時建立，而值會設定為 Marketing。 六個月後，如果它們變更為 Sales，其內部部署 Active Directory 部門屬性就會變更為 Sales。 這項變更會同步處理至 Azure AD，並反映在其 Azure AD 使用者物件中。
 
-屬性同步處理可能是直接的，其中 Azure AD 中的值會直接設定為內部部署屬性的值。 或者，程式設計運算式可能會處理同步處理。 必須進行某些邏輯或判斷以填入值時，就需要程式設計運算式。
+屬性同步處理可能是直接的，其中 Azure AD 中的值會直接設定為內部部署屬性的值。 或者，程式設計運算式可能會處理同步處理。 必須進行某些邏輯或判斷來擴展值的情況下，才需要程式設計運算式。
 
-例如，如果您有 mail 屬性 " john.smith@contoso.com "，而且需要去除 " @contoso.com " 部分，而且只傳送 "john. smith" 的值，您就會使用如下所示的內容：
+例如，如果您有郵件屬性 " john.smith@contoso.com "，而且需要移除 " @contoso.com " 部分，而且只將值「john smith」，則會使用如下的內容：
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
@@ -51,9 +51,9 @@ Azure AD 有兩種類型的屬性：
 * **輸入** (mail)："john.smith@contoso.com"
 * **輸出**： "john smith"
 
-如需如何撰寫自訂表格達式和語法的詳細資訊，請參閱[在 Azure Active Directory 中撰寫屬性對應的運算式](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)。
+如需如何撰寫自訂表格達式和語法的詳細資訊，請參閱 [在 Azure Active Directory 中撰寫屬性對應的運算式](../app-provisioning/functions-for-customizing-application-data.md)。
 
-下表列出常見的屬性，以及它們如何同步處理到 Azure AD。
+下表列出常見的屬性，以及它們如何同步處理至 Azure AD。
 
 
 |內部部署 Active Directory|對應類型|Azure AD|
@@ -70,11 +70,11 @@ Azure AD 有兩種類型的屬性：
 > [!WARNING]
 > 雲端布建設定會建立服務主體。 服務主體會顯示在 Azure 入口網站中。 您不應該使用 Azure 入口網站中的服務主體體驗來修改屬性對應。  不支援這個動作。
 
-若要查看架構並加以驗證，請遵循下列步驟。
+若要查看架構並進行驗證，請遵循下列步驟。
 
-1.  移至 [ [Graph Explorer]](https://developer.microsoft.com/graph/graph-explorer)。
+1.  移至 [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)。
 1.  使用您的全域管理員帳戶登入。
-1.  在左側選取 [**修改許可權**]，並確定已*同意*[**全部**]。
+1.  選取左側的 [**修改許可權**]，並確定已*同意*[**全部**]。
 1.  執行查詢 `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')` 。 此查詢會傳回已篩選的服務主體清單。
 1.  找 `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` 出並記下的值 `"id"` 。
     ```
@@ -149,7 +149,7 @@ Azure AD 有兩種類型的屬性：
                 "passwordCredentials": []
             },
     ```
-1. `{Service Principal id}`將取代為您的值，然後執行查詢 `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/` 。
+1. `{Service Principal id}`以您的值取代，然後執行查詢 `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/` 。
 1. 找 `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` 出並記下的值 `"id"` 。
     ```
     {
@@ -245,7 +245,7 @@ Azure AD 有兩種類型的屬性：
  
     範例：https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
-   `{Service Principal Id}`將和取代 `{AD2ADD Provisioning Id}` 為您的值。
+   以您自己的值取代 `{Service Principal Id}` 和 `{AD2ADD Provisioning Id}` 。
 
 1. 此查詢會傳回架構。
 

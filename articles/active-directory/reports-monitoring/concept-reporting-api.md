@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dbfca54227895de53b984dcf5c7a1f8c5fbf51d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cf2e3f98bd96c09fe741a24a1332443c876e2e61
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647406"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225905"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>開始使用 Azure Active Directory 報告 API
 
@@ -32,7 +32,7 @@ Azure Active Directory 會向您提供各種[報告](overview-reports.md)，內�
 
 本文會概述報告 API，包括其存取方式。
 
-如果您遇到問題，請參閱[如何取得 Azure Active Directory 支援](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)。
+如果您遇到問題，請參閱[如何取得 Azure Active Directory 支援](../fundamentals/active-directory-troubleshooting-support-howto.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -47,9 +47,9 @@ Azure Active Directory 會向您提供各種[報告](overview-reports.md)，內�
 
 ## <a name="api-endpoints"></a>API 端點 
 
-稽核記錄的 Microsoft Graph API 端點是 `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits`，登入的 Microsoft Graph API 端點則是 `https://graph.microsoft.com/v1.0/auditLogs/signIns`。 如需詳細資訊，請參閱[稽核 API 參考](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/directoryaudit)和[登入 API 參考](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/signIn)。
+稽核記錄的 Microsoft Graph API 端點是 `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits`，登入的 Microsoft Graph API 端點則是 `https://graph.microsoft.com/v1.0/auditLogs/signIns`。 如需詳細資訊，請參閱[稽核 API 參考](/graph/api/resources/directoryaudit?view=graph-rest-1.0)和[登入 API 參考](/graph/api/resources/signIn?view=graph-rest-1.0)。
 
-此外，您可使用 [Identity Protection 風險偵測 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) 來透過 Microsoft Graph 以程式設計方式存取安全性偵測。 如需詳細資訊，請參閱[開始使用 Azure Active Directory Identity Protection 和 Microsoft Graph](../identity-protection/graph-get-started.md)。 
+此外，您可使用 [Identity Protection 風險偵測 API](/graph/api/resources/identityriskevent?view=graph-rest-beta) 來透過 Microsoft Graph 以程式設計方式存取安全性偵測。 如需詳細資訊，請參閱[開始使用 Azure Active Directory Identity Protection 和 Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md)。 
   
 ## <a name="apis-with-microsoft-graph-explorer"></a>具有 Microsoft Graph 總管的 API
 
@@ -70,5 +70,3 @@ Azure Active Directory 會向您提供各種[報告](overview-reports.md)，內�
  * [存取報告 API 的必要條件](howto-configure-prerequisites-for-reporting-api.md) 
  * [使用 Azure AD 報告 API 搭配憑證來取得資料](tutorial-access-api-with-certificates.md)
  * [針對 Azure AD 報告 API 中的錯誤進行疑難排解](troubleshoot-graph-api.md)
-
-

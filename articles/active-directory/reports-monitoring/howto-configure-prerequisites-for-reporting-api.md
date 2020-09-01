@@ -17,25 +17,25 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4702b12bea2e078af4d10fe9d709d16c361b3f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22a8a0efe16b4ab2ea7b8a647284a3449741ac02
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608257"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226959"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>存取 Azure Active Directory 報告 API 的必要條件
 
-[Azure Active Directory (Azure AD) 報告 API](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api) 透過一組以 REST 為基礎的 API 為您提供資料的程式設計方式存取。 您可以從程式設計語言和工具呼叫這些 Api。
+[Azure Active Directory (Azure AD) 報告 API](./concept-reporting-api.md) 透過一組以 REST 為基礎的 API 為您提供資料的程式設計方式存取。 您可以從程式設計語言和工具呼叫這些 Api。
 
-報告 API 會使用 [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) 授權存取 Web API。
+報告 API 會使用 [OAuth](../../api-management/api-management-howto-protect-backend-with-aad.md) 授權存取 Web API。
 
 若要準備存取報告 API，您必須︰
 
 1. [指派角色](#assign-roles)
 2. [授權需求](#license-requirements)
 3. [註冊應用程式](#register-an-application)
-4. [授與權限](#grant-permissions)
+4. [授與許可權](#grant-permissions)
 5. [收集組態設定](#gather-configuration-settings)
 
 ## <a name="assign-roles"></a>指派角色
@@ -50,12 +50,12 @@ ms.locfileid: "85608257"
 
 ## <a name="license-requirements"></a>授權需求
 
-若要存取租使用者的登入報告，Azure AD 租使用者必須有相關聯的 Azure AD Premium 授權。 需要 Azure AD Premium P1 （或更新版本）授權，才能存取任何 Azure AD 租使用者的登入報告。 或者，如果目錄類型是 Azure AD B2C，則可以透過 API 存取登入報告，而不需要任何額外的授權需求。 
+為了存取租使用者的登入報告，Azure AD 租使用者必須有相關聯的 Azure AD Premium 授權。 需要 Azure AD Premium P1 (或更新版本) 授權才能存取任何 Azure AD 租使用者的登入報告。 或者，如果目錄類型是 Azure AD B2C，登入報告可透過 API 存取，而不需要任何額外的授權需求。 
 
 
 ## <a name="register-an-application"></a>註冊應用程式
 
-即使您是使用腳本來存取報告 API，也需要註冊。 註冊會提供**應用程式識別碼**，此為授權呼叫所需，並可讓您的程式碼接收權杖。
+即使您要使用腳本來存取報告 API，也需要註冊。 註冊會為您提供授權呼叫所需的 **應用程式識別碼**，並可讓您的程式碼接收權杖。
 
 若要設定您的目錄以存取 Azure AD 報告 API，您必須以 Azure 管理員帳戶登入 [Azure 入口網站](https://portal.azure.com)，而且該帳戶同時也是 Azure AD 租用戶**全域管理員**目錄角色的成員。
 
@@ -73,19 +73,19 @@ ms.locfileid: "85608257"
 
     ![註冊應用程式](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
-3. 從 [**應用程式註冊**] 頁面上，選取 [**新增註冊**]。
+3. 在 [ **應用程式註冊** ] 頁面中，選取 [ **新增註冊**]。
 
     ![註冊應用程式](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
-4. [**註冊應用程式**] 頁面：
+4. [ **註冊應用程式** ] 頁面：
 
     ![註冊應用程式](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
     a. 在 [名稱]**** 文字方塊中，輸入 `Reporting API application`。
 
-    b. 針對 [**支援的帳戶類型**]，選取 [**僅限此組織中的帳戶**]。
+    b. 針對 [ **支援的帳戶類型**]，選取 [ **僅限此組織中的帳戶**]。
 
-    c. 在 [重新**導向 URL** ] [選取**Web** ] 文字方塊中，輸入 `https://localhost` 。
+    c. 在 [重新 **導向 URL**  ] 選取 [ **Web** ] 文字方塊中，輸入 `https://localhost` 。
 
     d. 選取 [註冊]。 
 
@@ -107,23 +107,23 @@ ms.locfileid: "85608257"
 **若要對應用程式授與 API 使用權限：**
 
 
-1. 選取 [ **API 許可權**]，然後**新增許可權**。 
+1. 選取 [ **API 許可權** ]，然後 **新增許可權**。 
 
     ![註冊應用程式](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-2. 在 [**要求 API 許可權] 頁面**上，找出 [**支援舊版 API** **Azure Active Directory 圖形]**。 
+2. 在 [ **要求 api 許可權] 頁面**上，找出 **支援舊版 API** **Azure Active Directory Graph**。 
 
     ![註冊應用程式](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. 在 [**必要許可權**] 頁面上，依序選取 [**應用程式許可權**] 和 [**目錄**] 核取方塊**ReadAll**。  選取 [新增權限]。
+3. 在 [ **必要許可權** ] 頁面上，依序選取 [ **應用程式許可權**]、[ **目錄** ] 和 [目錄] **ReadAll**。  選取 [新增權限]。
 
     ![註冊應用程式](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
-4. 在 [**報告 API 應用程式-Api 許可權**] 頁面上，選取 **[授與系統管理員同意**]。 
+4. 在 [ **報告 Api 應用程式-Api 許可權** ] 頁面上，選取 **[授與系統管理員同意**]。 
 
     ![註冊應用程式](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
-5. 注意：在 API 註冊期間，預設會新增**Microsoft Graph** 。
+5. 注意：在 API 註冊期間，預設會新增 **Microsoft Graph** 。
 
     ![註冊應用程式](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
@@ -168,7 +168,7 @@ ms.locfileid: "85608257"
 
 
 ### <a name="get-your-applications-client-secret"></a>取得應用程式的用戶端祕密
- 避免嘗試使用 API 來存取 audit 記錄或登入時發生錯誤。
+ 避免在嘗試存取 audit 記錄檔或使用 API 登入時發生錯誤。
 
 **若要取得應用程式的用戶端祕密：**
 
@@ -178,11 +178,11 @@ ms.locfileid: "85608257"
 
 2.  從 [應用程式註冊]**** 頁面中選取您的應用程式。
 
-3.  在 [ **API 應用程式**] 頁面上選取 [**憑證和秘密**]，在 [**用戶端密碼**] 區段中按一下 [ **+ 新增用戶端密碼**]。 
+3.  在 [ **API 應用程式**] 頁面的 [**用戶端密碼**] 區段中，選取 [**憑證和密碼**]，然後按一下 [ **+ 新增用戶端密碼**] 
 
     ![註冊應用程式](./media/howto-configure-prerequisites-for-reporting-api/12.png)
 
-5. 在 [**新增用戶端密碼**] 頁面上，新增：
+5. 在 [ **新增用戶端密碼** ] 頁面上，新增：
 
     a. 在 [描述]**** 文字方塊中，輸入 `Reporting API`。
 
@@ -194,11 +194,11 @@ ms.locfileid: "85608257"
 
 ## <a name="troubleshoot-errors-in-the-reporting-api"></a>針對報告 API 中的錯誤進行疑難排解
 
-本節列出當您使用 Microsoft Graph API 存取活動報告時，可能會遇到的常見錯誤訊息，以及其解決方式的步驟。
+本節列出您在使用 Microsoft Graph API 存取活動報告時可能會遇到的常見錯誤訊息，以及其解決方式的步驟。
 
 ### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>錯誤：無法從 Microsoft Graph 取得使用者角色
 
- 使用 Graph Explorer UI 中的兩個登入按鈕來登入您的帳戶，以避免在嘗試使用 Graph Explorer 登入時收到錯誤。 
+ 使用 Graph Explorer UI 中的兩個登入按鈕來登入您的帳戶，以避免在嘗試使用 Graph Explorer 登入時發生錯誤。 
 
 ![Graph 總管](./media/troubleshoot-graph-api/graph-explorer.png)
 
@@ -208,22 +208,22 @@ ms.locfileid: "85608257"
 
 ![修改權限 UI](./media/troubleshoot-graph-api/modify-permissions.png)
 
-### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>錯誤：租使用者不是 B2C，或租使用者沒有 premium 授權
+### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>錯誤：租使用者不是 B2C 或租使用者沒有 premium 授權
 
 存取登入報表需要 Azure Active Directory 進階 1 (P1) 授權。 如果您在存取登入時看到這個錯誤訊息，請確定您的租用戶已獲得 Azure AD P1 授權。
 
-### <a name="error-the-allowed-roles-does-not-include-user"></a>錯誤：允許的角色不包含使用者。 
+### <a name="error-the-allowed-roles-does-not-include-user"></a>錯誤：允許的角色不包括使用者。 
 
- 避免嘗試使用 API 來存取 audit 記錄或登入時發生錯誤。 請確定您的帳戶屬於 Azure Active Directory 租使用者中的**安全性讀取**者或**報告讀取**者角色。
+ 避免在嘗試存取 audit 記錄檔或使用 API 登入時發生錯誤。 確定您的帳戶屬於 Azure Active Directory 租使用者中的「 **安全性讀取** 者」或「 **報表讀取** 者」角色。
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>錯誤：應用程式遺漏 AAD「讀取目錄資料」權限 
 
-### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>錯誤：應用程式遺失 Microsoft Graph API 「讀取所有的 audit 記錄資料」許可權
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>錯誤：應用程式遺漏 Microsoft Graph API 「讀取所有審核記錄資料」許可權
 
-依照必要條件中的步驟[存取 Azure Active Directory 報告 API](howto-configure-prerequisites-for-reporting-api.md) ，以確保您的應用程式是以正確的許可權集執行。 
+依照必要條件中的步驟 [存取 Azure Active Directory 報告 API](howto-configure-prerequisites-for-reporting-api.md) ，以確保您的應用程式是以正確的許可權集執行。 
 
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure Active Directory 報告 API 搭配憑證來取得資料](tutorial-access-api-with-certificates.md)
-* [稽核 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [登入活動報告 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [稽核 API 參考](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [登入活動報告 API 參考](/graph/api/resources/signin?view=graph-rest-beta)

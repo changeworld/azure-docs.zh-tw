@@ -117,6 +117,9 @@
     - name: 適用於 IoT 的 ASC
       tocHref: /azure/asc-for-iot/
       topicHref: /azure/asc-for-iot/
+    - name: 證明
+      tocHref: /azure/attestation/
+      topicHref: /azure/attestation/
     - name: 自動化
       tocHref: /azure/automation/
       topicHref: /azure/automation/

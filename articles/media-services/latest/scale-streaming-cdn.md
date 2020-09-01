@@ -4,20 +4,20 @@ titleSuffix: Azure Media Services
 description: 瞭解如何使用 CDN 整合來串流內容，以及預先提取和來源輔助 CDN。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
-ms.author: juliako
-ms.openlocfilehash: b60a86d09e5d6f7d1108595253349bbd0784e4d3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.author: inhenkel
+ms.openlocfilehash: abf4b8dffc69cfee9332d18e59d0a2852fa7617e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799344"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226143"
 ---
 # <a name="stream-content-with-cdn-integration"></a>使用 CDN 整合來串流內容
 
@@ -29,14 +29,19 @@ CDN 會快取從媒體服務 [串流端點串流處理的內容 (來源) ](strea
 
 您也需要考量彈性資料流的運作方式。 每個個別的影片片段都會快取為它自己的實體。 例如，想像一下第一次觀看特定影片的時間。 如果檢視器略過只觀賞幾秒鐘的時間，而且只有與監看過的人相關的影片片段會在 CDN 中快取。 因為有彈性資料流，您通常會有 5 到 7 個位元速率不同的視訊。 如果有一位人監看一個位元速率，而另一個人監看不同的位元速率，則它們會分別在 CDN 中快取。 即使兩人監看相同的位元速率，也可以透過不同的通訊協定進行串流處理。 每個通訊協定 (HLS、MPEG DASH、Smooth Streaming) 會分別進行快取。 因此，每一個位元速率和通訊協定都會分別進行快取，而且只會快取已要求的那些視訊片段。
 
-決定是否要在媒體服務 [串流端點](streaming-endpoint-concept.md)上啟用 CDN 時，請考慮預期的檢視器數目。 只有在您預期內容有許多檢視器時，CDN 才有説明。 如果檢視器的最大平行存取低於500，建議您停用 CDN，因為 CDN 最適合使用平行存取。
+除了測試環境以外，我們建議針對標準和高階串流端點啟用 CDN。 每種類型的串流端點都有不同的支援輸送量限制。
+很難精確地計算串流端點所支援的並行資料流程數目上限，因為有許多因素需要考慮。 其中包含：
+
+- 用於串流處理的位元速率上限
+- 播放的前置緩衝區和切換行為。 播放程式會嘗試從原點高載區段，並使用載入速度來計算自動調整位元速率切換。 如果串流端點接近飽和，回應時間可能會不同，而玩家會開始切換為較低的品質。 因為這會減少串流端點播放程式的負載，所以請將建立不需要的切換觸發程式調整回更高的品質。
+整體來說，您可以藉由採用最大的串流端點輸送量，並將此值除以最大位元速率，以安全地預估並行資料流程的最大值， (假設所有玩家都使用最高的位元速率。 ) 例如，您可以有標準串流端點，其限制為 600 Mbps 和3Mbp 的最高位元速率。 在此情況下，最高的位元速率支援大約200的並行資料流程。 也請務必考慮音訊頻寬需求。 雖然音訊串流可能只會在128的 kps 串流，但是當您將它乘以並行資料流程的數目時，總串流會快速增加。
 
 本主題討論如何啟用 [CDN 整合](#enable-azure-cdn-integration)。 此外也會說明預先提取 (主動式快取) 和 [輔助的 CDN 預先提取](#origin-assist-cdn-prefetch) 概念。
 
 ## <a name="considerations"></a>考量
 
-* [streaming endpoint](streaming-endpoint-concept.md) `hostname` 無論您是否啟用 CDN，串流端點和串流 URL 都保持不變。
-* 如果您需要使用或不使用 CDN 測試內容的能力，請建立另一個未啟用 CDN 的串流端點。
+- [streaming endpoint](streaming-endpoint-concept.md) `hostname` 無論您是否啟用 CDN，串流端點和串流 URL 都保持不變。
+- 如果您需要使用或不使用 CDN 測試內容的能力，請建立另一個未啟用 CDN 的串流端點。
 
 ## <a name="enable-azure-cdn-integration"></a>啟用 Azure CDN 整合
 

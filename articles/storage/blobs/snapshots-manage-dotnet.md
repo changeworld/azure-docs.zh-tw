@@ -1,27 +1,27 @@
 ---
 title: 在 .NET 中建立和管理 Blob 快照集
 titleSuffix: Azure Storage
-description: 瞭解如何建立 blob 的唯讀快照集，以在指定的時間點備份 blob 資料。
+description: 瞭解如何使用 .NET 用戶端程式庫，建立 blob 的唯讀快照集，以在指定的時間點備份 blob 資料。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d50357a648d63984ae70a32e0fdd7260a86d6a6a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fb57e7260a056afe023455149f610ff492c98c12
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020808"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226126"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中建立和管理 Blob 快照集
 
 快照集是在某個點時間取得的唯讀 Blob 版本。 本文說明如何使用 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來建立和管理 blob 快照集。
 
-如需 Azure 儲存體中 blob 快照集的詳細資訊，請參閱 [在 .net 中建立和管理 blob 快照](snapshots-overview.md)集。
+如需 Azure 儲存體中 blob 快照集的詳細資訊，請參閱 [blob 快照](snapshots-overview.md)集。
 
 ## <a name="create-a-snapshot"></a>建立快照集
 
@@ -162,5 +162,5 @@ await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null
 ## <a name="next-steps"></a>後續步驟
 
 - [Blob 快照集](snapshots-overview.md)
-- [Blob 版本 (預覽) ](versioning-overview.md)
+- [Blob 版本](versioning-overview.md)
 - [Blob 的虛刪除](storage-blob-soft-delete.md)

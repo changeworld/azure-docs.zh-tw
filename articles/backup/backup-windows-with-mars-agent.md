@@ -3,18 +3,18 @@ title: 使用 MARS 代理程式備份 Windows 機器
 description: 使用 Microsoft Azure 復原服務 (MARS) 代理程式來備份 Windows 機器。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 381df40dfe4149b2f43dc22bb2186ec1f17b0515
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 55eb8bdf069fd1b5793468ae52f764eb4288f261
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825881"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182083"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>將 Windows Server 檔案和資料夾備份至 Azure
 
 本文說明如何使用 [Azure 備份](backup-overview.md) 服務和 MICROSOFT AZURE 復原服務 (MARS) 代理程式來備份 Windows 機器。 MARS 也稱為 Azure 備份代理程式。
 
-在本文中，您將了解如何：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 >
@@ -22,7 +22,7 @@ ms.locfileid: "88825881"
 > * 建立備份原則和排程。
 > * 執行隨選備份。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 * 瞭解 [Azure 備份如何使用 MARS 代理程式來備份 Windows 機器](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders)。
 * 瞭解在次要 MABS 或 Data Protection Manager 伺服器上執行 MARS 代理程式的 [備份架構](backup-architecture.md#architecture-back-up-to-dpmmabs) 。
@@ -53,7 +53,7 @@ Azure 備份不會自動將日光節約時間 (DST) 列入考慮。 此預設值
     ![選取要備份的項目](./media/backup-azure-manage-mars/selected-items-to-backup.png)
 
 1. 在 [ **選取要備份的專案** ] 頁面上，選取 **[下一步]**。
-1. 在 [ **指定備份排程** ] 頁面上，指定每日或每週備份的時間。 接著，選取 [下一步]  。
+1. 在 [ **指定備份排程** ] 頁面上，指定每日或每週備份的時間。 然後，選取 [下一步]。
 
     * 執行備份時，會建立復原點。
     * 在您的環境中建立的復原點數目取決於您的備份排程。
@@ -65,7 +65,7 @@ Azure 備份不會自動將日光節約時間 (DST) 列入考慮。 此預設值
 
         ![設定每週備份排程](./media/backup-configure-vault/week-schedule.png)
 
-1. 在 [ **選取保留原則** ] 頁面上，指定如何儲存資料的歷程記錄複本。 接著，選取 [下一步]  。
+1. 在 [ **選取保留原則** ] 頁面上，指定如何儲存資料的歷程記錄複本。 然後，選取 [下一步]。
 
     * 保留設定會指定要儲存的復原點，以及儲存它們的時間長度。
     * 針對每日保留設定，您表示在指定的每日保留時間內，最新的復原點會保留指定的天數。 或者，您可以指定每月的保留原則，以指出在每個月的30日建立的復原點應儲存12個月。

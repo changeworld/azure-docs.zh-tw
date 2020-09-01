@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 6e35e32c92535a408c8df22d7306895150a59519
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: b8a6e1013c131778bacb11bd885b9280fb6c6077
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050143"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182168"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 和 Esv4 系列
 
@@ -28,9 +28,6 @@ Ev4 和 Esv4 系列是在 Intel 8272CL 白金級 &reg; &reg; (在超執行緒設
 Ev4 系列大小會在 Intel &reg; 8272CL (Cascade Lake) 上執行。 Ev4 系列實例很適合記憶體密集型企業應用程式。 Ev4 系列 Vm 功能 Intel &reg; 超執行緒技術。
 
 遠端資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium 儲存體磁片，請使用 Esv4 大小。 Esv4 大小的定價和計費方式與 Ev4 系列相同。
-
-> [!IMPORTANT]
-> 這些新的大小目前僅處於公開預覽狀態。 您可以在 [這裡](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)註冊這些 Ev4 和 Esv4 系列。 
 
 ACU：195 - 210
 
@@ -58,9 +55,6 @@ ACU：195 - 210
 
 Esv4 系列大小會在 Intel &reg; &reg; 8272CL (Cascade Lake) 上執行。 Esv4 系列實例很適合記憶體密集型企業應用程式。 Evs4 系列 Vm 功能 Intel &reg; 超執行緒技術。 遠端資料磁碟儲存體與虛擬機器分開計費。
 
-> [!IMPORTANT]
-> 這些新的大小目前僅處於公開預覽狀態。 您可以在 [這裡](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)註冊這些 Ev4 和 Esv4 系列。 
-
 ACU：195-210
 
 進階儲存體：支援
@@ -71,16 +65,16 @@ ACU：195-210
 
 記憶體保留更新：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
-|---|---|---|---|---|---|---|---|---|
-| Standard_E2s_v4  | 2 | 16  | 僅限遠端存放 | 4 | 19000/120 (50)  | 3200/48 | 2|1000  |
-| Standard_E4s_v4  | 4 | 32  | 僅限遠端存放 | 8 | 38500/242 (100)  | 6400/96 | 2|2000  |
-| Standard_E8s_v4  | 8 | 64  | 僅限遠端存放 | 16 | 77000/485 (200)  | 12800/192 | 4|4000 |
-| Standard_E16s_v4 | 16 | 128 | 僅限遠端存放 | 32 | 154000/968 (400)  | 25600/384 | 8|8000 |
-| Standard_E20s_v4 | 20 | 160 | 僅限遠端存放 | 32 | 193000/1211 (500)  | 32000/480  | 8|10000 |
-| Standard_E32s_v4 | 32 | 256 | 僅限遠端存放 | 32 | 308000/1936 (800)  | 51200/768  | 8|16000 |
-| Standard_E48s_v4 | 48 | 384 | 僅限遠端存放 | 32 | 462000/2904 (1200)  | 76800/1152 | 8|24000 |
-| Standard_E64s_v4 <sup>1</sup> | 64 | 504| 僅限遠端存放 | 32 | 615000/3872 (1600)  | 80000/1200 | 8|30000 |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
+|---|---|---|---|---|---|---|---|
+| Standard_E2s_v4  | 2 | 16  | 僅限遠端存放 | 4 | 3200/48 | 2|1000  |
+| Standard_E4s_v4  | 4 | 32  | 僅限遠端存放 | 8 | 6400/96 | 2|2000  |
+| Standard_E8s_v4  | 8 | 64  | 僅限遠端存放 | 16 | 12800/192 | 4|4000 |
+| Standard_E16s_v4 | 16 | 128 | 僅限遠端存放 | 32 | 25600/384 | 8|8000 |
+| Standard_E20s_v4 | 20 | 160 | 僅限遠端存放 | 32 | 32000/480  | 8|10000 |
+| Standard_E32s_v4 | 32 | 256 | 僅限遠端存放 | 32 | 51200/768  | 8|16000 |
+| Standard_E48s_v4 | 48 | 384 | 僅限遠端存放 | 32 | 76800/1152 | 8|24000 |
+| Standard_E64s_v4 <sup>1</sup> | 64 | 504| 僅限遠端存放 | 32 | 80000/1200 | 8|30000 |
 
 <sup>1</sup>個 [可用的有限核心大小](./constrained-vcpu.md)。
 

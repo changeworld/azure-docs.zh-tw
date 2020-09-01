@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp, vs-azure
 ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ed473568fbad5bad380001cd2e2faccd90994099
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959896"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226024"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>使用 Visual Studio 開發和部署 Webjob
 
@@ -53,7 +53,7 @@ Visual Studio 將下列專案新增至啟用 Webjob 的專案：
 
 ![Diagram showing WebJob project linking to web project](./media/webjobs-dotnet-deploy-vs/link.png)
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
 使用 [Azure 開發工作負載](/visualstudio/install/install-visual-studio#step-4---choose-workloads)安裝 Visual Studio 2017 或 Visual Studio 2019。
 
@@ -184,9 +184,9 @@ WebJob 部署資訊：
 
 WebJob 的型別可以是 *觸發* 或 *連續*：
 
-- 觸發 (預設) ：觸發的 WebJob 會根據系結事件、依 [排程](#scheduling-a-triggered-webjob)啟動，或是當您依需求) 手動 (時觸發。 它會在 web 應用程式執行所在的所有實例上執行，但是您可以選擇性地將 WebJob 限制為單一實例。
+- 觸發 (預設) ：觸發的 WebJob 會根據系結事件、依 [排程](#scheduling-a-triggered-webjob)啟動，或是當您依需求) 手動 (時觸發。 它會在 web 應用程式執行所在的單一實例上執行。
 
-- 連續：建立 WebJob 時，會立即開始 [連續](#continuous-execution) webjob。 這種類型的 WebJob 最適合未系結或長時間執行的作業。 如果作業結束，您可以重新啟動。  
+- 連續：建立 WebJob 時，會立即開始 [連續](#continuous-execution) webjob。 它預設會在所有 web 應用程式縮放的實例上執行，但可以設定為透過 *設定*執行為單一實例。
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 

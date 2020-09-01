@@ -1,29 +1,29 @@
 ---
-title: 連接到 Windows 虛擬桌面 Windows 10 或 7-Azure
+title: 連線到 Windows 虛擬桌面 Windows 10 或 7-Azure
 description: 如何使用 Windows 桌面用戶端連接到 Windows 虛擬桌面。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85e0c1b146cfba0cb95a6612f33e42a465bfd20b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0e4f41cb23ec4a9463b983049f5f37d09d1b8c71
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008741"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226704"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>與 Windows 桌面用戶端連線
 
 > 適用于： Windows 7、Windows 10 和 Windows 10 IoT 企業版
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md)。
 
-您可以使用 Windows 桌面用戶端，存取 Windows 7、Windows 10 和 Windows 10 IoT 企業版裝置上的 Windows 虛擬桌面資源。 用戶端不支援 Window 8 或 Windows 8.1。
+您可以使用 windows 桌面用戶端，在具有 Windows 7、Windows 10 和 Windows 10 IoT 企業版的裝置上存取 Windows 虛擬桌面資源。 用戶端不支援 Window 8 或 Windows 8.1。
 
 >[!NOTE]
->Windows 用戶端會自動預設為 Windows 虛擬桌面 (傳統) 。 不過，如果用戶端偵測到使用者也有 Azure Resource Manager 資源，它會自動新增資源，或通知使用者其可用。
+>Windows 用戶端會自動預設為 Windows 虛擬桌面 (傳統) 。 但是，如果用戶端偵測到使用者也有 Azure Resource Manager 的資源，則會自動新增資源，或通知使用者其可用。
 
 > [!IMPORTANT]
 > Windows 虛擬桌面不支援 RemoteApp 和桌面連線 (RADC) 用戶端或遠端桌面連線 (MSTSC) 用戶端。
@@ -52,22 +52,23 @@ ms.locfileid: "88008741"
 
 ### <a name="subscribe-with-a-user-account"></a>訂閱使用者帳戶
 
-1. 在用戶端的主頁面上，選取 [**訂閱**]。
+1. 從用戶端的主頁面上，選取 [ **訂閱**]。
 2. 出現提示時，使用您的使用者帳戶登入。
-3. 資源將會出現在 [連線中心] 中，並依工作區分組。
+3. 資源將會出現在 [連接中心] 中，並依工作區分組。
 
 ### <a name="subscribe-with-a-url"></a>訂閱 URL
 
-1. 從用戶端的主頁面中，選取 [**訂閱 URL**]。
+1. 從用戶端的主頁面上，選取 [ **訂閱 URL**]。
 2. 輸入工作區 URL 或您的電子郵件地址：
    - 如果您使用**工作區 URL**，請使用系統管理員提供的帳戶。 如果從 Windows 虛擬桌面存取資源，您可以使用下列其中一個 URL：
-     - Windows 虛擬桌面 (傳統) ：`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
+     - Windows 虛擬桌面 (傳統)：`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Windows 虛擬桌面：`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
-   - 如果您要改為使用 [**電子郵件**] 欄位，請輸入您的電子郵件地址。 如果您的系統管理員已設定[電子郵件探索](/windows-server/remote/remote-desktop-services/rds-email-discovery)，這會告訴用戶端搜尋與您的電子郵件地址相關聯的 URL。
+     - Windows 虛擬桌面 (US Gov) ： `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
+   - 如果您是改為使用 **電子郵件** 欄位，請輸入您的電子郵件地址。 如果您的系統管理員已設定 [電子郵件探索](/windows-server/remote/remote-desktop-services/rds-email-discovery)，這會告知用戶端搜尋與您的電子郵件地址相關聯的 URL。
 3. 選取 [下一步]  。
 4. 出現提示時，使用您的使用者帳戶登入。
-5. 資源應會出現在 [連線中心] 中（依工作區分組）。
+5. 資源應該會出現在 [連接中心] 中，依工作區分組。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解如何使用 Windows 桌面用戶端，請參閱[開始使用 Windows 桌面用戶端](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)。
+若要深入瞭解如何使用 Windows 桌面用戶端，請參閱 [Windows 桌面用戶端入門](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)。

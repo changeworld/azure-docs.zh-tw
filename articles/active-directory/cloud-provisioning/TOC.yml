@@ -19,7 +19,7 @@
 - name: 概念
   items:
     - name: 什麼是密碼雜湊同步處理？
-      href: /azure/active-directory/hybrid/whatis-phs?context=azure/active-directory/cloud-provisioning/context/cloud-provisioning-context
+      href: ../hybrid/whatis-phs.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
     - name: 了解 Azure AD 結構描述、屬性和運算式
       href: concept-attributes.md
     - name: 在 Azure Active Directory 中撰寫屬性對應的運算式
@@ -49,20 +49,20 @@
         - name: 轉換
           href: how-to-transformation.md
         - name: Azure AD 同步處理 API
-          href: 'https://docs.microsoft.com/graph/api/resources/synchronization-overview'
+          href: /graph/api/resources/synchronization-overview
     - name: 疑難排解
       items:
         - name: 雲端佈建疑難排解
           href: how-to-troubleshoot.md
         - name: 重複的屬性
-          href: 'https://docs.microsoft.com/office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync'
+          href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
 - name: 參考
   items:
     - name: Azure AD Connect 雲端佈建代理程式版本歷程
-      href: /azure/active-directory/manage-apps/provisioning-agent-release-version-history?context=azure/active-directory/cloud-provisioning/context/cp-context
+      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Azure AD Connect 雲端佈建常見問題集
       href: reference-cloud-provisioning-faq.md
     - name: 已同步處理的屬性
-      href: /azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized?context=azure/active-directory/cloud-provisioning/context/cp-context
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: 基本 Active Directory 和 Azure AD 環境
       href: tutorial-basic-ad-azure.md

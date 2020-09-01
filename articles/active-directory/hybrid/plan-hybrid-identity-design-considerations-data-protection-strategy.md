@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0186d862968259aae73071cfecd7d62443d0256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bef7de68084ac3084c0b0179a7bbf6b1c9ca951
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109362"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182440"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>定義混合式身分識別解決方案的資料保護策略
 在這項工作中，您將為混合式身分識別解決方案定義資料保護策略，以符合您已定義的商務需求：
@@ -89,7 +89,7 @@ ms.locfileid: "67109362"
 ## <a name="define-access-control-options"></a>定義存取控制選項
 利用 Azure AD 中提供的驗證、授權和存取控制功能，您將能夠讓公司使用中央身分識別存放庫，同時允許使用者和合作夥伴使用單一登入 (SSO)，如下圖所示：
 
-![集中管理](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
+![集中式管理](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
 
 集中式管理以及與其他目錄的完全整合
 
@@ -106,7 +106,7 @@ Azure Active Directory 可為數千個 SaaS 應用程式和內部部署 Web 應�
 >
 >
 
-藉由 Azure AD 支援，行動商業應用程式可使用相同的簡單行動服務驗證功能，讓員工利用公司的 Active Directory 認證登入其行動應用程式。 透過這項功能，Azure AD 可受到支援作為行動服務中的識別提供者，與已支援的其他識別提供者 (包括 Microsoft 帳戶、Facebook ID、Google ID 和 Twitter ID) 搭配運作。 如果內部部署應用程式使用位於公司 AD DS 的使用者認證，則來自雲端的協力廠商和使用者所做的存取應該是透明的。 您可以管理使用者對（以雲端為基礎） web 應用程式、Web API、Microsoft 雲端服務、協力廠商 SaaS 應用程式和原生（行動）用戶端應用程式的條件式存取控制，並在同一個位置提供安全性、審核、報告的優點。 不過，建議您在非生產環境中或使用者數量有限的環境中驗證此實作。
+藉由 Azure AD 支援，行動商業應用程式可使用相同的簡單行動服務驗證功能，讓員工利用公司的 Active Directory 認證登入其行動應用程式。 透過這項功能，Azure AD 可受到支援作為行動服務中的識別提供者，與已支援的其他識別提供者 (包括 Microsoft 帳戶、Facebook ID、Google ID 和 Twitter ID) 搭配運作。 如果內部部署應用程式使用位於公司 AD DS 的使用者認證，則來自雲端的協力廠商和使用者所做的存取應該是透明的。 您可以管理使用者的條件式存取控制，以 (雲端式) web 應用程式、web API、Microsoft 雲端服務、協力廠商 SaaS 應用程式，以及原生 (行動) 用戶端應用程式，並讓安全性、審核和報告的優點全都集中在同一處。 不過，建議您在非生產環境中或使用者數量有限的環境中驗證此實作。
 
 > [!TIP]
 > 務必要提到的是，Azure AD 不像 AD DS 一樣具有群組原則。 若要為裝置強制執行原則，您需要有行動裝置管理解決方案，例如 [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx)。
@@ -121,7 +121,7 @@ Azure Active Directory 可為數千個 SaaS 應用程式和內部部署 Web 應�
 
 1. 內部部署裝載之應用程式的條件式存取：您可以使用已註冊的裝置搭配適用於已設定為使用 AD FS with Windows Server 2012 R2 之應用程式的存取原則。
 
-2. Azure 入口網站的存取控制：Azure 也可讓您使用角色型存取控制 (RBAC) 來控制對入口網站的存取。 此方法可讓公司限制個人可以在 Azure 入口網站中執行的作業數目。 使用 RBAC 來控制存取入口網站時，IT 系統管理員可以利用下列存取管理方法來委派存取：
+2. Azure 入口網站的存取控制： Azure 也可讓您使用 Azure 角色型存取控制 (Azure RBAC) # A2 來控制入口網站的存取權。 此方法可讓公司限制個人可以在 Azure 入口網站中執行的作業數目。 藉由使用 Azure RBAC 來控制對入口網站的存取，IT 系統管理員可以使用下列存取管理方法來委派存取權：
 
    - 群組型角色指派：您可以指派存取權給可從本機 Active Directory 同步處理的 Azure AD 群組。 這可讓您運用組織目前在群組管理工具和程序方面所做的投資。 您也可以使用 Azure AD Premium 的委派群組管理功能。
    - 運用 Azure 中內建的角色：您可以使用三個角色 — 擁有者、參與者和讀者，以確保使用者和群組只擁有他們執行工作所需的權限。
@@ -131,7 +131,7 @@ Azure Active Directory 可為數千個 SaaS 應用程式和內部部署 Web 應�
    > 如果您要建置應用程式並想要自訂其存取控制，可以使用 Azure AD 應用程式角色來進行授權。 請參閱 [WebApp-RoleClaims-DotNet 範例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) ，了解如何建置您的應用程式以使用這項功能。
 
 
-3. 具有 Microsoft Intune 的 Office 365 應用程式的條件式存取： IT 系統管理員可以布建條件式存取裝置原則來保護公司資源，同時允許相容裝置上的資訊工作者存取服務。 
+3. 具有 Microsoft Intune 的 Office 365 應用程式條件式存取： IT 系統管理員可以布建條件式存取裝置原則來保護公司資源，同時允許相容裝置上的資訊工作者存取服務。 
   
 4. Saas 應用程式的條件式存取：[此功能](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/)可讓您設定每個應用程式的多重要素驗證存取規則，且能夠封鎖不在受信任網路上的使用者存取。 您可以將多因素驗證規則套用至所有已指派給應用程式的使用者，或只套用至指定的安全性群組內的使用者。 如果使用者是從組織網路內的 IP 位址存取應用程式，則可從多因素驗證需求中排除這些使用者。
 

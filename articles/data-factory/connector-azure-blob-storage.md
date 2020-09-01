@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: eeabc5d29f0f389120429bd31386e2bea69cf5c8
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.date: 08/31/2020
+ms.openlocfilehash: 34ddea1445ef8a8eb8554add3ee8920078a6e573
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047747"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182559"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Blob 儲存體中複製和轉換資料
 
@@ -76,7 +76,7 @@ ms.locfileid: "89047747"
 
 Data Factory 支援下列儲存體帳戶金鑰驗證的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type**屬性必須設定為**AzureBlobStorage** (建議的) 或**AzureStorage** (請參閱下列附注) 。 |是 |
 | connectionString | 針對 **connectionString** 屬性指定連接到儲存體所需的資訊。 <br/> 您也可以將帳戶金鑰放在 Azure Key Vault 中，並 `accountKey` 從連接字串中提取設定。 如需詳細資訊，請參閱 Azure Key Vault 文章中的下列範例和 [存放區認證](store-credentials-in-key-vault.md) 。 |是 |
@@ -88,7 +88,7 @@ Data Factory 支援下列儲存體帳戶金鑰驗證的屬性：
 >[!NOTE]
 >如果您使用 "AzureStorage" 類型連結服務，它仍然會受到支援。 但是，我們建議您繼續使用新的 "AzureBlobStorage" 連結服務類型。
 
-**範例︰**
+**範例：**
 
 ```json
 {
@@ -146,7 +146,7 @@ Data Factory 支援下列儲存體帳戶金鑰驗證的屬性：
 
 Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type**屬性必須設定為**AzureBlobStorage** (建議的) 或**AzureStorage** (請參閱下列附注) 。 |是 |
 | sasUri | 指定儲存體資源（例如 blob 或容器）的共用存取簽章 URI。 <br/>將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中。 您也可以將 SAS 權杖放在 Azure Key Vault 中，以使用自動旋轉並移除權杖部分。 如需詳細資訊，請參閱下列範例，並 [將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 |是 |
@@ -155,7 +155,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 >[!NOTE]
 >如果您使用 "AzureStorage" 類型連結服務，它仍然會受到支援。 但是，我們建議您繼續使用新的 "AzureBlobStorage" 連結服務類型。
 
-**範例︰**
+**範例：**
 
 ```json
 {
@@ -230,7 +230,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 以下是支援 Azure Blob 儲存體連結服務的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type**屬性必須設為**AzureBlobStorage**。 |是 |
 | serviceEndpoint | 指定模式為 `https://<accountName>.blob.core.windows.net/` 的 Azure Blob 儲存體服務端點。 |是 |
@@ -243,7 +243,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 >[!NOTE]
 >只有 "AzureBlobStorage" 類型連結服務支援服務主體驗證，而不是先前的 "AzureStorage" 類型連結服務。
 
-**範例︰**
+**範例：**
 
 ```json
 {
@@ -285,7 +285,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 以下是支援 Azure Blob 儲存體連結服務的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type**屬性必須設為**AzureBlobStorage**。 |是 |
 | serviceEndpoint | 指定模式為 `https://<accountName>.blob.core.windows.net/` 的 Azure Blob 儲存體服務端點。 |是 |
@@ -320,7 +320,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 以下是以 `location` 格式為基礎的資料集設定中的 Azure Blob 儲存體支援的屬性：
 
-| 屬性   | 描述                                                  | 必要 |
+| 屬性   | 說明                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 資料集中位置的 **type** 屬性必須設定為 **AzureBlobStorageLocation**。 | 是      |
 | 容器  | Blob 容器。                                          | 是      |
@@ -364,7 +364,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 以下是以 `storeSettings` 格式為基礎的複製來源中設定下的 Azure Blob 儲存體支援的屬性：
 
-| 屬性                 | 描述                                                  | 必要                                      |
+| 屬性                 | 說明                                                  | 必要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | 下的 **類型** 屬性 `storeSettings` 必須設為 **AzureBlobStorageReadSettings**。 | 是                                           |
 | 尋找要複製的檔案： |  |  |
@@ -432,7 +432,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 以下是以 `storeSettings` 格式為基礎的複製接收器設定下的 Azure Blob 儲存體支援的屬性：
 
-| 屬性                 | 描述                                                  | 必要 |
+| 屬性                 | 說明                                                  | 必要 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | 下的 **類型** 屬性 `storeSettings` 必須設為 **AzureBlobStorageWriteSettings**。 | 是      |
 | copyBehavior             | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 如果有指定檔案或 Blob 名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否       |
@@ -517,7 +517,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 當您在對應資料流程中轉換資料時，您可以用下列格式從 Azure Blob 儲存體讀取和寫入檔案：
 * [Avro](format-avro.md#mapping-data-flow-properties)
 * [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties)
-* [差異](format-delta.md#mapping-data-flow-properties)
+* [三角洲](format-delta.md#mapping-data-flow-properties)
 * [Excel](format-excel.md#mapping-data-flow-properties)
 * [JSON](format-json.md#mapping-data-flow-properties)
 * [Parquet](format-parquet.md#mapping-data-flow-properties)
@@ -619,7 +619,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 **type** 屬性必須設為 **AzureBlob**。 |是 |
 | folderPath | Blob 儲存體中容器和資料夾的路徑。 <br/><br/>路徑支援萬用字元篩選，但不包括容器名稱。 允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱裡面有萬用字元或這個 escape 字元，請使用來進行 escape。 <br/><br/>例如： myblobcontainer/myblobfolder/。 如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 |適用于複製或查閱活動，GetMetadata 活動不是 |
@@ -632,7 +632,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 >[!TIP]
 >若要複製資料夾下的所有 Blob，只要指定 **folderPath**。<br>若要複製指定名稱的單一 blob，請指定資料夾元件的 **folderPath** ，以及檔案名的 **檔案名** 。<br>若要複製資料夾下的 blob 子集，請為資料夾部分指定 **folderPath** ，並使用萬用字元篩選指定 **檔案名** 。 
 
-**範例︰**
+**範例：**
 
 ```json
 {
@@ -664,7 +664,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 ### <a name="legacy-source-model-for-the-copy-activity"></a>複製活動的舊版來源模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 **type** 屬性必須設為 **>blobsource**。 |是 |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 **遞迴** 設定為 **true** 且接收是檔案型存放區時，不會在接收時複製或建立空的資料夾或子資料夾。<br/>允許的值為 **true** (預設值) 和 **false**。 | 否 |
@@ -704,7 +704,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 ### <a name="legacy-sink-model-for-the-copy-activity"></a>複製活動的舊版接收模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收的 **type** 屬性必須設為 **BlobSink**。 |是 |
 | copyBehavior | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 如果有指定檔案或 Blob 名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否 |

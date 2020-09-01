@@ -3,12 +3,12 @@ title: 使用 PowerShell 備份 DPM 工作負載
 description: 了解如何使用 PowerShell 部署和管理 Data Protection Manager (DPM) 的 Azure 備份
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 7b4e63e94599b1445a7244018e00999df8365cd3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4f0364ef218d346149191e168540eed4827001de
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014671"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182457"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>使用 PowerShell 部署和管理 Data Protection Manager (DPM) 伺服器的 Azure 備份
 
@@ -232,10 +232,10 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="protect-data-to-azure-backup"></a>保護 Azure 備份的資料
 
-在本節中，您會將實際執行伺服器加入至 DPM，然後保護資料到本機 DPM 存放區，然後到 Azure 備份。 在範例中，我們將示範如何備份檔案和資料夾。 您可以輕鬆地運用同樣的觀念，來備份任何 DPM 支援的資料來源。 所有 DPM 備份皆受到保護群組 (PG) 所控管，並且由四個部分構成：
+在本節中，您會將實際執行伺服器新增至 DPM，然後將資料保護至本機 DPM 儲存體，然後再 Azure 備份。 在範例中，我們將示範如何備份檔案和資料夾。 您可以輕鬆地運用同樣的觀念，來備份任何 DPM 支援的資料來源。 所有 DPM 備份皆受到保護群組 (PG) 所控管，並且由四個部分構成：
 
 1. **群組成員** 是您要在相同的保護群組中保護的所有可保護物件的清單 (在 DPM 中也稱為 *資料來源* )。 比方說，您可能想要保護一個保護群組的實際執行 VM 與另一個保護群組中的 SQL Server 資料庫，因為它們可能會有不同的備份需求。 在可以備份實際執行伺服器上的資料來源之前，您必須先確定 DPM 代理程式已安裝在伺服器上並受到 DPM 管理。 請遵循 [安裝 DPM 代理程式](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) 的步驟，並將其連結至適當的 DPM 伺服器。
-2. **資料保護方法** 指定目標備份位置 - 磁帶、磁碟和雲端。 在我們的範例中，我們將保護資料至本機磁碟以及雲端。
+2. **資料保護方法** 指定目標備份位置 - 磁帶、磁碟和雲端。 在我們的範例中，我們會保護本機磁片和雲端的資料。
 3. **備份排程** 可指定何時需要進行備份，以及應該在 DPM 伺服器和實際執行伺服器之間同步處理資料的頻率。
 4. **保留排程** 可指定要在 Azure 中保留復原點多久時間。
 
@@ -276,7 +276,7 @@ $DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name
 Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS
 ```
 
-視需要重複此步驟，直到您已加入所有選取的資料來源至保護群組中為止。 您也可以從只有一個資料來源開始，並完成建立保護群組的工作流程，然後稍後將更多的資料來源加入至保護群組。
+您可以視需要多次重複此步驟，直到將所有選擇的資料來源新增至保護群組為止。 您也可以從只有一個資料來源開始，並完成建立保護群組的工作流程，然後稍後將更多的資料來源加入至保護群組。
 
 ### <a name="selecting-the-data-protection-method"></a>選取資料保護方式
 

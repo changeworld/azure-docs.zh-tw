@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 21845b51fdd108221d5e1bce50e953b79084d17d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2e2a41f797c6c58597e90ef6bd6e373ab7408a7b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083396"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182049"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Kubernetes Azure Stack Edge 裝置上的工作負載管理
 
@@ -33,40 +33,13 @@ ms.locfileid: "89083396"
 
     您可以建立 Kubernetes 部署來部署具狀態應用程式。 
 
-## <a name="namespaces-types"></a>命名空間類型
+## <a name="deployment-flow"></a>部署流程
 
-Kubernetes 資源（例如 pod 和部署）會以邏輯方式分組到命名空間中。 這些群組可讓您以邏輯方式分割 Kubernetes 叢集，並限制存取以建立、查看或管理資源。 使用者只能與其指派的命名空間內包含的資源互動。
-
-命名空間適用于有許多使用者散佈在多個小組或專案的環境中。 對於少數到數十個使用者的叢集，您應該完全不需要建立或考慮命名空間。 當您需要所提供的功能時，請開始使用命名空間。
-
-如需詳細資訊，請參閱 [Kubernetes 命名空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)。
-
-
-您的 Azure Stack Edge 裝置具有下列命名空間：
-
-- **系統命名空間** -此命名空間是核心資源所在的位置，例如 DNS 和 proxy 等網路功能，或 Kubernetes 儀表板。 您通常不會將自己的應用程式部署到此命名空間中。 使用此命名空間來偵測任何 Kubernetes 叢集問題。 
-
-    您的裝置上有多個系統命名空間，並保留對應于這些系統命名空間的名稱。 以下是保留的系統命名空間清單： 
-    - kube-系統
-    - metallb-系統
-    - dbe-命名空間
-    - default
-    - kubernetes-儀表板
-    - default
-    - kube-節點-租用
-    - kube-public
-    - iotedge
-    - azure-arc
-
-    請務必不要針對您所建立的使用者命名空間使用任何保留名稱。 
-<!--- **default namespace** - This namespace is where pods and deployments are created by default when none is provided and you have admin access to this namespace. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.-->
-
-- **使用者命名空間** -這些是您可以透過 **kubectl** 建立以在本機部署應用程式的命名空間。
+若要在 Azure Stack Edge 裝置上部署應用程式，您將遵循下列步驟： 
  
-- **IoT Edge 命名空間** -您會連接到此 `iotedge` 命名空間，以透過 IoT Edge 部署應用程式。
-
-- **Azure Arc 命名空間** -您會連接到此 `azure-arc` 命名空間，以透過 Azure Arc 部署應用程式。
-
+1. **設定存取**：首先，您將使用 PowerShell 執行空間來建立使用者、建立命名空間，以及授與使用者對該命名空間的存取權。
+2. **設定儲存體**：接下來，您將使用 Azure 入口網站中的 Azure Stack Edge 資源，為您將部署的具狀態應用程式，使用靜態或動態布建來建立永久性磁片區。
+3. **設定網路**功能：最後，您將使用這些服務，在外部和 Kubernetes 叢集中公開應用程式。
  
 ## <a name="deployment-types"></a>部署類型
 
@@ -78,7 +51,7 @@ Kubernetes 資源（例如 pod 和部署）會以邏輯方式分組到命名空�
 
 - **IoT Edge 部署**：這是透過連接到 Azure IoT 中樞的 IoT Edge。 您可以透過命名空間連接到 Azure Stack Edge 裝置上的 K8 叢集 `iotedge` 。 部署在此命名空間中的 IoT Edge 代理程式，會負責與 Azure 的連線。 您可以 `IoT Edge deployment.json` 使用 AZURE DEVOPS CI/CD 來套用設定。 命名空間和 IoT Edge 管理是透過雲端操作員進行。
 
-- **Azure/Arc 部署**： Azure Arc 是一種混合式管理工具，可讓您在 K8 叢集上部署應用程式。 您可以透過在 Azure Stack Edge 裝置上連接 K8 叢集 `azure-arc namespace` 。  代理程式會部署在此命名空間中，負責與 Azure 的連線。 您可以使用以 Gitops) 將為基礎的設定管理來套用部署設定。 Azure Arc 也可讓您使用 Azure 監視器容器來查看和監視您的叢集。 如需詳細資訊，請移至 [什麼是已啟用 Azure Arc 的 Kubernetes？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)。
+- **Azure/Arc 部署**： Azure Arc 是一種混合式管理工具，可讓您在 K8 叢集上部署應用程式。 您可以透過在 Azure Stack Edge 裝置上連接 K8 叢集 `azure-arc namespace` 。 代理程式會部署在此命名空間中，負責與 Azure 的連線。 您可以使用以 Gitops) 將為基礎的設定管理來套用部署設定。 Azure Arc 也可讓您使用 Azure 監視器容器來查看和監視您的叢集。 如需詳細資訊，請移至 [什麼是已啟用 Azure Arc 的 Kubernetes？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)。
 
 ## <a name="choose-the-deployment-type"></a>選擇部署類型
 

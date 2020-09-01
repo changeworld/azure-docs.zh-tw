@@ -4,12 +4,12 @@ description: 瞭解 Azure 資源記錄的支援服務和事件架構。
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/15/2020
-ms.openlocfilehash: fd2dc4030816ab0b31befe46ac60d5e96fdae917
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: acd661467e90b4915daa2f3eb31f34fd350dc9f5
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782119"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226458"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>適用于 Azure 資源記錄的常見和服務專屬架構
 
@@ -23,7 +23,7 @@ ms.locfileid: "88782119"
 
 ## <a name="top-level-common-schema"></a>最上層的通用架構
 
-| Name | 必要/選用 | 描述 |
+| Name | 必要/選用 | 說明 |
 |---|---|---|
 | time | 必要 | 事件的時間戳記 (UTC)。 |
 | resourceId | 必要 | 發出事件之資源的資源識別碼。 對於租用戶服務，這是 /tenants/tenant-id/providers/provider-name 的格式。 |
@@ -54,9 +54,6 @@ ms.locfileid: "88782119"
 | 應用程式閘道 |[應用程式閘道的記錄](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure 自動化 |[Azure 自動化的 Log analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch 記錄](../../batch/batch-diagnostics.md) |
-| 適用於 MySQL 的 Azure 資料庫 | [適用於 MySQL 的 Azure 資料庫診斷記錄](../../mysql/concepts-server-logs.md#diagnostic-logs) |
-| 適用於 PostgreSQL 的 Azure 資料庫 | [適用於 PostgreSQL 的 Azure 資料庫記錄](../../postgresql/concepts-server-logs.md#resource-logs) |
-| Azure 資料總管 | [Azure 資料總管記錄](/azure/data-explorer/using-diagnostic-logs) |
 | 認知服務 | [Azure 認知服務的記錄](../../cognitive-services/diagnostic-logging.md) |
 | Container Registry | [Azure Container Registry 的記錄](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | 內容傳遞網路 | [CDN 的 Azure 記錄](../../cdn/cdn-azure-diagnostic-logs.md) |
@@ -64,7 +61,11 @@ ms.locfileid: "88782119"
 | Data Factory | [使用 Azure 監視器監視資料處理站](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[存取 Azure Data Lake Analytics 的記錄](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[存取 Azure Data Lake 存放區的記錄](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Azure 資料總管 | [Azure 資料總管記錄](/azure/data-explorer/using-diagnostic-logs) |
+| 適用於 MySQL 的 Azure 資料庫 | [適用於 MySQL 的 Azure 資料庫診斷記錄](../../mysql/concepts-server-logs.md#diagnostic-logs) |
+| 適用於 PostgreSQL 的 Azure 資料庫 | [適用於 PostgreSQL 的 Azure 資料庫記錄](../../postgresql/concepts-server-logs.md#resource-logs) |
 | Azure Databricks | [Azure Databricks 中的診斷記錄](https://github.com/MicrosoftDocs/databricks-pr/blob/live/databricks/administration-guide/account-settings/azure-diagnostic-logs.md) |
+| Digital Twins | [設定數位 Twins 診斷](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | 事件中樞 |[Azure 事件中樞記錄](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | 無法使用結構描述。 |
 | Azure 防火牆 | 無法使用結構描述。 |
@@ -84,6 +85,7 @@ ms.locfileid: "88782119"
 | 流量管理員 | [流量管理員記錄架構](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | 虛擬網路 | 無法使用結構描述。 |
 | 虛擬網路閘道 | 無法使用結構描述。 |
+
 
 
 ## <a name="next-steps"></a>後續步驟

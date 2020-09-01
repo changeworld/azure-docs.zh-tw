@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: ab316d7b101a05dd9b6bba2e11bfe77239619126
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 5c5326310887cd5756ae264a35aafe7e771a7863
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146754"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226789"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什麼是 Azure Machine Learning 計算執行個體？
 
@@ -30,7 +30,7 @@ Azure Machine Learning 計算實例是適用于資料科學家的受控雲端架
 
 計算執行個體是完全受控的雲端式工作站，並已針對機器學習開發環境予以最佳化。 其提供下列優點：
 
-|主要權益|描述|
+|主要權益|說明|
 |----|----|
 |生產力|您可以使用整合式筆記本以及下列 Azure Machine Learning studio 中的工具來建立和部署模型：<br/>-  Jupyter<br/>-  JupyterLab<br/>-RStudio (preview) <br/>計算實例已與 Azure Machine Learning 工作區和 studio 完全整合。 您可以與工作區中的其他資料科學家共用筆記本和資料。 您也可以使用[SSH](how-to-set-up-vs-code-remote.md)設定 VS Code 遠端開發 |
 |受控且安全|降低您的安全性磁碟使用量，並提升與企業安全性需求的合規性。 計算執行個體會提供健全的管理原則和安全的網路設定，例如：<br/><br/>- 從 Resource Manager 範本或 Azure Machine Learning SDK 自動佈建<br/>- [Azure 角色型存取控制 (Azure RBAC) ](/azure/role-based-access-control/overview)<br/>- [虛擬網路支援](how-to-enable-virtual-network.md#compute-instance)<br/>- 用以啟用/停用 SSH 存取的 SSH 原則<br/>已啟用 TLS 1。2 |
@@ -80,10 +80,10 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 
 ### <a name="installing-packages"></a>安裝套件
 
-您可以直接在 Jupyter 筆記本或 Rstudio 中安裝套件：
+您可以直接在 Jupyter Notebook 或 RStudio 中安裝套件：
 
 * RStudio：使用右下角的 [套件] 索引標籤，或左上角的 [主控台] 索引標籤。  
-* Python：在 Jupyter 筆記本資料格中新增安裝程式碼並執行。
+* Python：新增安裝程式碼，並在 Jupyter Notebook 儲存格中執行。
 
 或者，您也可以使用下列任何一種方式來存取終端機視窗：
 

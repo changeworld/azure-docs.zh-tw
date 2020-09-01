@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: dc17c25a84c3d0af39bfa7a8902bdc1d93f201e8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 80b7d5ca67751cf7ece775331cc13cfbac10395b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518317"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182389"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安裝和執行語音服務容器 (預覽版) 
 
@@ -26,12 +26,12 @@ ms.locfileid: "88518317"
 > [!IMPORTANT]
 > 所有語音容器目前都提供作為 [公用「閘道」預覽](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)的一部分。 當語音容器 (GA) 的正式運作時，將會進行公告。
 
-| 函式 | 功能 | Latest |
+| 函式 | 特性 | Latest |
 |--|--|--|
-| 語音轉文字 | 使用中繼結果分析情感和轉譯連續即時語音或批次音訊錄製。  | 2.3.1 |
-| 自訂語音轉換文字 | 從 [自訂語音入口網站](https://speech.microsoft.com/customspeech)使用自訂模型，以中繼結果轉譯連續的即時語音或批次音訊錄製至文字。 | 2.3.1 |
-| 文字轉換語音 | 使用純文字輸入或語音合成標記語言 (SSML) 將文字轉換成自然發音語音。 | 1.5.0 |
-| 自訂文字轉換語音 | 使用 [自訂語音入口網站](https://aka.ms/custom-voice-portal)中的自訂模型，將文字轉換成自然發音語音，並以純文字輸入或語音合成標記語言 (SSML) 。 | 1.5.0 |
+| 語音轉文字 | 使用中繼結果分析情感和轉譯連續即時語音或批次音訊錄製。  | 2.4.0 |
+| 自訂語音轉換文字 | 從 [自訂語音入口網站](https://speech.microsoft.com/customspeech)使用自訂模型，以中繼結果轉譯連續的即時語音或批次音訊錄製至文字。 | 2.4.0 |
+| 文字轉換語音 | 使用純文字輸入或語音合成標記語言 (SSML) 將文字轉換成自然發音語音。 | 1.6.0 |
+| 自訂文字轉換語音 | 使用 [自訂語音入口網站](https://aka.ms/custom-voice-portal)中的自訂模型，將文字轉換成自然發音語音，並以純文字輸入或語音合成標記語言 (SSML) 。 | 1.6.0 |
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
@@ -39,7 +39,7 @@ ms.locfileid: "88518317"
 
 使用語音容器之前的必要條件如下：
 
-| 必要 | 目的 |
+| 必要 | 用途 |
 |--|--|
 | Docker 引擎 | 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br> |
 | 熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。 |
@@ -165,7 +165,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 下列標記是格式的範例：
 
 ```
-2.3.1-amd64-en-us-preview
+2.4.0-amd64-en-us-preview
 ```
 
 如需 **語音轉換文字** 容器的所有支援地區設定，請參閱 [語音轉換文字影像標記](../containers/container-image-tags.md#speech-to-text)。
@@ -207,7 +207,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 下列標記是格式的範例：
 
 ```
-1.5.0-amd64-en-us-ariarus-preview
+1.6.0-amd64-en-us-ariarus-preview
 ```
 
 針對所有支援的地區設定和 **文字轉換語音** 容器的對應語音，請參閱 [文字轉換語音影像標記](../containers/container-image-tags.md#text-to-speech)。
@@ -310,7 +310,7 @@ CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
 
 下表表示各種 `docker run` 參數及其對應的描述：
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 主機電腦 [磁片區掛接](https://docs.docker.com/storage/volumes/)，docker 會使用它來保存自訂模型。 例如， *C:\CustomSpeech* ，其中 *C 磁片磁碟機* 位於主機電腦上。 |
 | `{MODEL_ID}` | 自訂語音入口網站的 [**定型**] 頁面中的自訂語音**模型識別碼**。 |
@@ -372,7 +372,7 @@ ApiKey={API_KEY}
 
 下表表示各種 `docker run` 參數及其對應的描述：
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 主機電腦 [磁片區掛接](https://docs.docker.com/storage/volumes/)，docker 會使用它來保存自訂模型。 例如， *C:\CustomSpeech* ，其中 *C 磁片磁碟機* 位於主機電腦上。 |
 | `{MODEL_ID}` | 自訂語音入口網站的 [**定型**] 頁面中的自訂語音**模型識別碼**。 |
@@ -423,6 +423,8 @@ ApiKey={API_KEY}
 #### <a name="analyze-sentiment"></a>分析情感
 
 如果您將文字分析 API 認證提供 [給容器](#analyze-sentiment-on-the-speech-to-text-output)，您可以使用語音 SDK 以情感分析傳送語音辨識要求。 您可以將 API 回應設定為使用 *簡單* 或 *詳細* 的格式。
+> [!NOTE]
+> v2.0 的語音服務 Python SDK 有情感分析的識別問題。 如果您在「語音服務 Python SDK」中使用情感分析，請使用 v 1.12. x 或更早版本。
 
 # <a name="simple-format"></a>[簡單格式](#tab/simple-format)
 
@@ -569,7 +571,7 @@ speech_config.set_service_property(
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>[摘要]
 
 在本文中，您已瞭解下載、安裝及執行語音容器的概念和工作流程。 摘要說明：
 
@@ -586,7 +588,7 @@ speech_config.set_service_property(
 > [!IMPORTANT]
 >  認知服務容器在未連線至 Azure 以進行計量的情況下，將無法被授權以執行。 客戶必須啟用容器以持續與計量服務進行帳單資訊的通訊。 認知服務容器不會將客戶資料 (例如正在分析的影像或文字) 傳送至 Microsoft。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 審核設定 [容器](speech-container-configuration.md) 以進行設定
 * 瞭解如何 [使用 Kubernetes 和 Helm 的語音服務容器](speech-container-howto-on-premises.md)

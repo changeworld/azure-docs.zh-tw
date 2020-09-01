@@ -3,12 +3,12 @@ title: MABS & System Center DPM 支援矩陣
 description: 本文摘要說明當您使用 Microsoft Azure 備份 Server (MABS) 或 System Center DPM 來備份內部部署和 Azure VM 資源時的 Azure 備份支援。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 90b79dfa412102b139f2f094fb9ca07a6361cab0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 71f188ffca125bc13eb2e9a43f466aeb61c64b75
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019567"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181998"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 備份 Server 或 System Center DPM 進行備份的支援矩陣
 
@@ -84,9 +84,9 @@ Azure 備份可以備份正在執行下列任何作業系統的 DPM/MABS 實例�
 --- | ---
 **安裝** | 在單一用途的電腦上安裝 DPM/MABS。<br/><br/> 請勿在網域控制站上、執行 Microsoft Exchange Server 或 System Center Operations Manager 的電腦上，或在叢集節點上安裝 DPM/MABS。<br/><br/> [檢查所有 DPM 系統需求](/system-center/dpm/prepare-environment-for-dpm#dpm-server)。
 **網域** | DPM/MABS 應該加入網域。 請先安裝 DPM/MABS，再將其加入網域。 不支援在部署之後將 DPM/MABS 移至新網域。
-**Storage** | DPM 2016/MABS v2 和更新版本支援新式備份儲存體 (MB) 。 MBS 不適用於 MABS v1。
-**MABS 升級** | 您可以直接安裝 MABS v3，或是從 MABS v2 升級至 MABS v3。 [深入了解](backup-azure-microsoft-azure-backup.md#upgrade-mabs)。
-**移動 MABS** | 使用 MABS 時，支援將 MABS 移至新伺服器，同時保留儲存體。<br/><br/> 伺服器必須與原始伺服器同名。 如果您想要保留相同的儲存體集區，並使用相同的 MABS 資料庫來儲存資料復原點，則不可變更名稱。<br/><br/> 您將需要 MABS 資料庫的備份，因為您將必須加以還原。
+**存放裝置** | DPM 2016/MABS v2 和更新版本支援新式備份儲存體 (MB) 。 MBS 不適用於 MABS v1。
+**MABS 升級** | 您可以直接安裝 MABS v3，或是從 MABS v2 升級至 MABS v3。 [進一步瞭解](backup-azure-microsoft-azure-backup.md#upgrade-mabs)。
+**移動 MABS** | 使用 MABS 時，支援將 MABS 移至新伺服器，同時保留儲存體。<br/><br/> 伺服器必須與原始伺服器同名。 如果您想要保留相同的儲存體集區，並使用相同的 MABS 資料庫來儲存資料復原點，則不可變更名稱。<br/><br/> 您將需要 MABS 資料庫的備份，因為您需要加以還原。
 
 ## <a name="mabs-support-on-azure-stack"></a>Azure Stack 上的 MABS 支援
 
@@ -164,7 +164,7 @@ DPM 伺服器/MABS 需要存取下列 URL：
 
 備份至 DPM/MABS 的資料會儲存在本機磁片儲存體上。
 
-**Storage** | **詳細資料**
+**存放裝置** | **詳細資料**
 --- | ---
 **MBS** | DPM 2016/MABS v2 和更新版本支援新式備份儲存體 (MB) 。 MBS 不適用於 MABS v1。
 **Azure VM 上的 MABS 儲存體** | 資料會儲存在連接至 DPM/MABS VM 的 Azure 磁片上，並在 DPM/MABS 中進行管理。 可用於 DPM/MABS 存放集區的磁片數目受限於 VM 的大小。<br/><br/> A2 VM：4個磁片;A3 VM：8個磁片;A4 VM：16個磁片，每個磁片的大小上限為 1 TB。 這會決定可用的備份存放集區總數。<br/><br/> 您可以備份的資料量取決於連結的磁碟數目和大小。

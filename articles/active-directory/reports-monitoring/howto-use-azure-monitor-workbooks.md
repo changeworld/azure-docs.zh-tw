@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ec492466e107eb6f4821f0e6d2caed9daa141a35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 510991c1afba9a5ffbfd77e855ee25d8b641bdd0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608945"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226976"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>如何使用 Azure 監視器活頁簿建立 Azure Active Directory 報表
 
@@ -42,13 +42,13 @@ ms.locfileid: "85608945"
 
 - 取登入記錄查詢的深入見解 (活頁簿會報告已授與或拒絕存取的使用者人數，以及存取資源時已略過條件式存取原則的使用者人數)。
 
-- 為協助解決這些問題，Azure Active Directory 提供活頁簿來進行監視。 [Azure 監視器活頁簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)結合文字、分析查詢、計量和參數來建立豐富的互動式報表。
+- 為協助解決這些問題，Azure Active Directory 提供活頁簿來進行監視。 [Azure 監視器活頁簿](../../azure-monitor/platform/workbooks-overview.md)結合文字、分析查詢、計量和參數來建立豐富的互動式報表。
 
 
 
 本文：
 
-- 假設您已熟悉如何使用 [Azure 監視器活頁簿來建立互動式報表](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)。
+- 假設您已熟悉如何使用 [Azure 監視器活頁簿來建立互動式報表](../../azure-monitor/platform/workbooks-overview.md)。
 
 - 說明如何使用監視器活頁簿，以了解條件式存取原則的影響、針對登入失敗進行疑難排解，以及識別舊版驗證。
  
@@ -58,11 +58,11 @@ ms.locfileid: "85608945"
 
 若要使用監視器活頁簿，則需要：
 
-- 具有進階 (P1 或 P2) 授權的 Azure Active Directory 租用戶。 了解如何[取得進階授權](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)。
+- 具有進階 (P1 或 P2) 授權的 Azure Active Directory 租用戶。 了解如何[取得進階授權](../fundamentals/active-directory-get-started-premium.md)。
 
-- [Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
+- [Log Analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)。
 
-- [存取](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) Log Analytics 工作區
+- [存取](../../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions) Log Analytics 工作區
 - Azure Active Directory 中的下列角色 (如果是透過 Azure Active Directory 入口網站存取 Log Analytics)
     - 安全性系統管理員
     - 安全性讀取者
@@ -70,7 +70,7 @@ ms.locfileid: "85608945"
     - 全域管理員
 
 ## <a name="roles"></a>角色
-您必須是下列其中一個角色，且可以[存取基礎 Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) 工作區，才能管理活頁簿：
+您必須是下列其中一個角色，且可以[存取基礎 Log Analytics](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) 工作區，才能管理活頁簿：
 -   全域管理員
 -   安全性系統管理員
 -   安全性讀取者
@@ -302,4 +302,4 @@ ms.locfileid: "85608945"
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用監視器活頁簿建立互動式報表](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)。
+[使用監視器活頁簿建立互動式報表](../../azure-monitor/platform/workbooks-overview.md)。
