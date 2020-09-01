@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 67e7f8890923dec2dca369b6a57399232c0198cc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5b298767f9814f76dd606bab29bd0b245dad6937
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018371"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260181"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>如何停止使用虛擬機器受控識別擴充功能，並開始使用 Azure Instance Metadata Service
 
@@ -35,7 +35,7 @@ ms.locfileid: "89018371"
 
 ### <a name="provision-the-extension"></a>布建延伸模組 
 
-當您將虛擬機器或虛擬機器擴展集設定為具有受控識別時，您可以選擇使用 >remove-azvmextension 指令程式上的參數來布建 Azure 資源受控識別 VM 擴充 `-Type` [功能](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) 。 您可以傳遞 `ManagedIdentityExtensionForWindows` 或 `ManagedIdentityExtensionForLinux` （視虛擬機器的類型而定），並使用 `-Name` 參數命名。 `-Settings` 參數會指定 OAuth 權杖端點所使用的連接埠，以用來取得權杖：
+當您將虛擬機器或虛擬機器擴展集設定為具有受控識別時，您可以選擇使用 >remove-azvmextension 指令程式上的參數來布建 Azure 資源受控識別 VM 擴充 `-Type` [功能](/powershell/module/az.compute/set-azvmextension) 。 您可以傳遞 `ManagedIdentityExtensionForWindows` 或 `ManagedIdentityExtensionForLinux` （視虛擬機器的類型而定），並使用 `-Name` 參數命名。 `-Settings` 參數會指定 OAuth 權杖端點所使用的連接埠，以用來取得權杖：
 
 ```powershell
    $settings = @{ "port" = 50342 }
@@ -96,7 +96,7 @@ ms.locfileid: "89018371"
 布建虛擬機器擴充功能可能會因為 DNS 查閱失敗而失敗。 如果發生這種情況，請重新開機虛擬機器，然後再試一次。 
 
 ### <a name="remove-the-extension"></a>移除擴充功能 
-若要移除擴充功能，請使用 `-n ManagedIdentityExtensionForWindows` 或 `-n ManagedIdentityExtensionForLinux` 切換 (，視使用 [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/)的虛擬機器) 類型，或使用 Azure CLI 或適用于 Powershell 的虛擬機器擴展集的 [az vmss 延伸模組刪除](https://docs.microsoft.com/cli/azure/vmss) 而定 `Remove-AzVMExtension` ：
+若要移除擴充功能，請使用 `-n ManagedIdentityExtensionForWindows` 或 `-n ManagedIdentityExtensionForLinux` 切換 (，視使用 [az vm extension delete](/cli/azure/vm/)的虛擬機器) 類型，或使用 Azure CLI 或適用于 Powershell 的虛擬機器擴展集的 [az vmss 延伸模組刪除](/cli/azure/vmss) 而定 `Remove-AzVMExtension` ：
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -196,7 +196,7 @@ Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <loc
 
 ## <a name="azure-instance-metadata-service"></a>Azure 執行個體中繼資料服務
 
-[Azure Instance Metadata Service (IMDS) ](/azure/virtual-machines/windows/instance-metadata-service)是 REST 端點，可提供執行虛擬機器實例的相關資訊，可用來管理和設定您的虛擬機器。 端點可以在已知的非可路由 IP 位址上取得， (只能 `169.254.169.254` 從虛擬機器記憶體取) 。
+[Azure Instance Metadata Service (IMDS) ](../../virtual-machines/windows/instance-metadata-service.md)是 REST 端點，可提供執行虛擬機器實例的相關資訊，可用來管理和設定您的虛擬機器。 端點可以在已知的非可路由 IP 位址上取得， (只能 `169.254.169.254` 從虛擬機器記憶體取) 。
 
 使用 Azure IMDS 來要求權杖有幾個優點。 
 
@@ -212,4 +212,4 @@ Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <loc
 ## <a name="next-steps"></a>後續步驟
 
 * [如何在 Azure 虛擬機器上使用 Azure 資源的受控識別來取得存取權杖](how-to-use-vm-token.md)
-* [Azure 執行個體中繼資料服務](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+* [Azure 執行個體中繼資料服務](../../virtual-machines/windows/instance-metadata-service.md)

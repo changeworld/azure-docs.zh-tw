@@ -16,14 +16,16 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ead605462eeb92b31181ce9bba3100df521b471b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 90b4680c725f3b5b7fcb6b988e52410c572b2cfa
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004408"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262393"
 ---
-# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>使用 .NET 透過 Media Encoder Standard 為資產編碼  
+# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>使用 .NET 透過 Media Encoder Standard 為資產編碼
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 編碼工作是媒體服務中最常見的處理作業。 您建立編碼工作以將媒體檔案從一種編碼轉換成另一種編碼。 編碼時，您可以使用媒體服務內建的 Media Encoder。 您也可以使用媒體服務合作夥伴提供的編碼器；第三方編碼器可透過 Azure Marketplace 取得。 
 

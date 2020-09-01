@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: e9236b5d6159a87ef09219d5e2bdb2e2679fb85a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 52ce8a359f63004393e191d1d6a8f991fba1e9f6
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084546"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260793"
 ---
-# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒體服務執行即時串流，以使用 Azure 入口網站建立多位元率串流  
+# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒體服務執行即時串流，以使用 Azure 入口網站建立多位元率串流
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [入口網站](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -43,8 +46,8 @@ ms.locfileid: "87084546"
 
 1. 將攝影機連接到電腦。 <br/>如需了解裝備，請參閱[簡單的可攜式活動視訊器材裝備]( https://link.medium.com/KNTtiN6IeT) \(英文\)。
 
-    如果您沒有攝影機的存取權，就可以使用像是[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)的工具，從影片檔案產生即時摘要。
-1. 啟動和設定可使用下列其中一種通訊協定輸出單一位元速率串流的內部部署即時編碼器：RTMP 或 Smooth Streaming。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](https://go.microsoft.com/fwlink/?LinkId=532824)。 <br/>此外，請參閱此 blog：[使用 OBS 的即時串流生產](https://link.medium.com/ttuwHpaJeT)。
+    如果您沒有相機的存取權，則可以使用 [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md) 之類的工具，從影片檔案產生即時饋送。
+1. 啟動和設定可使用下列其中一種通訊協定輸出單一位元速率串流的內部部署即時編碼器：RTMP 或 Smooth Streaming。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](https://go.microsoft.com/fwlink/?LinkId=532824)。 <br/>另請參閱此 blog： [使用 OBS 的即時串流生產](https://link.medium.com/ttuwHpaJeT)。
 
     此步驟也可以在您建立通道之後執行。
 1. 建立並啟動通道。 
@@ -77,7 +80,7 @@ ms.locfileid: "87084546"
 3. 選取 [自訂建立] ****。 此選項可讓您建立通道，而啟用通道即可進行即時編碼。
 
     ![建立通道](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
-4. 按一下 [**設定**]。
+4. 按一下 [設定]  。
 
    1. 選擇 [即時編碼] **** 通道類型。 此類型指定您想要建立通道，而啟用通道即可進行即時編碼。 這表示內送單一位元速率串流會傳送至通道，並編碼為使用所指定即時編碼器設定的多位元速率串流。 如需詳細資訊，請參閱 [使用 Azure 媒體服務的即時串流，以建立多位元速率串流](media-services-manage-live-encoder-enabled-channels.md)。 按一下 [確定]。
    2. 指定通道的名稱。
@@ -118,7 +121,7 @@ ms.locfileid: "87084546"
 
 ## <a name="create-and-manage-events"></a>建立和管理事件
 
-### <a name="overview"></a>總覽
+### <a name="overview"></a>概觀
 通道是與事件/程式相關聯，而程式可讓您控制即時串流中區段的發佈和儲存。 通道會管理事件/程式。 通道和程式的關聯性非常類似於傳統媒體，此處的通道有常數內容資料流，而程式的範圍是該通道上的某些計時事件。
 
 設定 [封存時間範圍] **** 長度，即可指定您想要保留事件之錄製內容的時數。 此值最小可以設定為 5 分鐘，最大可以設定為 25 個小時。 封存時間範圍長度也會指出用戶端可以從目前即時位置及時往回搜尋的最大時間量。 事件在超過指定的時間量後還是可以執行，但是會持續捨棄落後時間範圍長度的內容。 此屬性的這個值也會決定用戶端資訊清單可以成長為多長的時間。

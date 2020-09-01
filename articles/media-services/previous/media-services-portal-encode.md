@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7c147d99eaabee70316521d1f2bdc41933162ab1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 606a4d753675475cf0138b688523e9029e6d3b0a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69542602"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260776"
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>在 Azure 入口網站中使用媒體編碼器標準為資產編碼
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
+> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
 > 
 > 
 
@@ -41,14 +43,14 @@ ms.locfileid: "69542602"
 若要使用媒體編碼器標準為內容編碼：
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure 媒體服務帳戶。
-2. 選取 [**設定**] [  >  **資產**]。 選取您要編碼的資產。
+2. 選取 **設定** > **資產**。 選取您要編碼的資產。
 3. 選取 [編碼]**** 按鈕。
 4. 在 [為資產編碼]**** 窗格中，選取 [媒體編碼器標準]**** 處理器和預設值。 如需預設值的相關資訊，請參閱[自動產生位元速率排行榜](media-services-autogen-bitrate-ladder-with-mes.md)和[媒體編碼器標準的工作預設值](media-services-mes-presets-overview.md)。 請務必選擇最適合輸入影片的預設值。 例如，如果您知道您的輸入視訊的解析度為 1920 &#215; 1080 像素，您可選擇 [H264 多位元速率 1080p]**** 預設值。 如果您有低解析度 (640 &#215; 360) 影片，您不應該使用 [H264 多重位元速率 1080p]**** 預設值。
    
    為了協助您管理資源，您可以編輯輸出資產的名稱和作業的名稱。
    
    ![為資產編碼](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. 選取 [建立]。
+5. 選取 [建立]  。
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

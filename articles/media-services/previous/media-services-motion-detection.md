@@ -15,14 +15,16 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17b325ab15f55a8fc02729c6f5ed0cb0330ecca2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5e9a978cd96da47e91434c7146eb3e258d77d8ee
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016830"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261337"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>使用 Azure 媒體分析偵測動作
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > **Azure 媒體動態偵測器**媒體處理器將會淘汰。 如需淘汰日期，請參閱 [舊版元件](legacy-components.md) 主題。
@@ -46,7 +48,7 @@ ms.locfileid: "89016830"
 ### <a name="parameters"></a>參數
 您可以使用以下參數：
 
-| 名稱 | 選項。 | 描述 | 預設 |
+| Name | 選項。 | 描述 | 預設 |
 | --- | --- | --- | --- |
 | sensitivityLevel |字串：'low'、'medium'、'high' |設定要報告哪些動作的敏感度等級。 調整該項目可調整誤判的數目。 |'medium' |
 | frameSamplingValue |正整數 |設定演算法的執行頻率。 1 等於每個畫面，2 表示每 2 個畫面，依此類推。 |1 |
@@ -110,7 +112,7 @@ ms.locfileid: "89016830"
 | duration |事件的長度 (以「刻度」為單位)。 |
 | interval |事件中每個項目的間隔 (以「刻度」為單位)。 |
 | 活動 |每個事件片段皆包含在該持續期間內所偵測到的動作。 |
-| type |在目前的版本中，針對一般動作，這永遠會是「2」。 此標籤可讓影片 API 在未來的版本中能夠彈性地為動作進行分類。 |
+| 類型 |在目前的版本中，針對一般動作，這永遠會是「2」。 此標籤可讓影片 API 在未來的版本中能夠彈性地為動作進行分類。 |
 | regionId |如前文所述，這在此版本中將永遠會是 0。 此標籤可讓影片 API 在未來的版本中能夠彈性地在各個區域中尋找動作。 |
 | regions |指的是影片中您會關心其中所發生之動作的區塊。 <br/><br/>-「識別碼」表示區域區塊 – 在此版本中只有一個，識別碼為 0。 <br/>-「類型」代表您關心動作的區域形狀。 目前支援「矩形」和「多邊形」。<br/> 如果您指定「矩形」，區域的維度將以 X、Y、寬度及高度表示。 X 和 Y 座標代表以標準化縮放 (0.0 到 1.0) 顯示之區域左上角的 XY 座標。 寬度和高度代表以標準化縮放 (0.0 到 1.0) 顯示之區域的大小。 在目前版本中，X、Y、寬度和高度一律固定為 0, 0 和 1, 1。 <br/>如果您指定「多邊形」，區域的維度將以點表示。 <br/> |
 | fragments |中繼資料會被分成稱為「片段」的不同區段。 每個片段皆包含開始、持續時間、間隔數字及事件。 沒有事件的片段，代表在該片段的開始時間和持續時間之間沒有偵測到任何動作。 |

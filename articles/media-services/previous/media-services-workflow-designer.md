@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a53027ec1f775c240164f67e7ee0473a44690964
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72801949"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262663"
 ---
-# <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>使用工作流程設計工具建立進階編碼工作流程  
+# <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>使用工作流程設計工具建立進階編碼工作流程
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>概觀
 **工作流程設計工具**是 Windows 傳統型工具，用來設計和建立自訂工作流程，以便用於**媒體編碼器高階工作流程**進行編碼。
 藉由使用工作流程設計工具的強大功能，您可以設計和建立複雜的工作流程，在 **Media Encoder Premium** 中執行。  
@@ -73,7 +76,7 @@ ms.locfileid: "72801949"
 
 * 工作流程/藍圖中的指令碼處理
 * 目前編碼器的限制
-* 問與答
+* 問答集
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
 > 
@@ -83,7 +86,7 @@ ms.locfileid: "72801949"
 
 您可以藉由瀏覽至[新增支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)來開啟支援票證
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>後續步驟
 檢閱媒體服務學習路徑。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

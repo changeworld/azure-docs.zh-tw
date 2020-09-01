@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1d264b0ae0b06079a45cd1e862144a6920133901
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aa0514834d1619bbbae4501fe6b1af16d7964ff7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038437"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261470"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>媒體編碼器標準 (MES) 的範例預設
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 **媒體編碼器標準**會定義一組預先定義的系統編碼預設，供您在建立編碼作業時使用。 如果您想要將視訊編碼以使用媒體服務進行串流處理，建議使用「彈性資料流」預設。 當您指定這個預設時，媒體編碼器標準將[自動產生位元速率階梯](media-services-autogen-bitrate-ladder-with-mes.md)。 
 

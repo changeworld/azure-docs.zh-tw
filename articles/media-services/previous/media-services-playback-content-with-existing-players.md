@@ -14,18 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 2d3c22e17c37bc46c16a9cc80eb3cf4b9ec93ecf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd09b734f1ac5ac3c98b6c0c717a48de19b0106f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81686915"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261065"
 ---
 # <a name="playing-your-content-with-existing-players"></a>使用現有播放器來播放您的內容
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Azure 媒體服務支援許多熱門的串流格式，例如 Smooth Streaming、HTTP 即時資料流和 MPEG-Dash。 本主題會指引您可用來測試串流的現有播放程式。
 
 ### <a name="the-azure-portal-media-services-content-player"></a>Azure 入口網站媒體服務內容播放程式
-**Azure**入口網站會提供內容播放機，供您用來測試您的影片。
+**Azure**入口網站提供內容播放程式，可讓您用來測試影片。
 
 按一下想用的視訊 (請確定它 [已發行](media-services-portal-publish.md))，按一下入口網站底部的 [ **播放** ] 按鈕。
 

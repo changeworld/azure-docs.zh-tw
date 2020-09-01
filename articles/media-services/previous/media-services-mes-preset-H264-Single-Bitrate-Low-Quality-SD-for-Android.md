@@ -1,6 +1,6 @@
 ---
 title: H264 單一位元速率低品質 SD (適用於 Android) | Microsoft Docs
-description: 本主題提供**H264 單一位元速率低品質 SD （適用于 Android** ）工作預設的總覽。
+description: 本主題概要說明「 **H264 單一位元速率低品質 SD （適用于 Android** ）」的預設值。
 author: Juliako
 manager: femila
 editor: ''
@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 6844d920b8726dcfee38234d539a5314afd2e40b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26ac6743bb4ad830168f3803180db31a0f40bd9f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61129622"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261490"
 ---
 # <a name="h264-single-bitrate-low-quality-sd-for-android"></a>H264 單一位元速率低品質 SD (適用於 Android)
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 `Media Encoder Standard` 定義一組編碼預設，供您在建立編碼作業時使用。 您可以使用 `preset name` 來指定您想要將媒體檔案編碼成哪一種格式。 或者，您可以建立自己的 JSON 或 XML 型預設 (使用 UTF-8 或 UTF-16 編碼)。 然後，您要將自訂預設傳遞給編碼器。 如需這個 `Media Encoder Standard` 編碼器支援的所有預設名稱清單，請參閱[媒體編碼器標準的工作預設](media-services-mes-presets-overview.md)。  
   
  本主題說明 XML 和 JSON 格式的 `H264 Single Bitrate Low Quality SD for Android` 預設。  

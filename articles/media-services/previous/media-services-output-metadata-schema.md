@@ -14,16 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: e53aad83e79f236bf9a0bb3029e332cad211471a
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: cd81ef78ecc5ef9cea71adb387597681460d50c8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058090"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261303"
 ---
 # <a name="output-metadata"></a>輸出中繼資料
-## <a name="overview"></a>總覽
-編碼作業會與您要在其上執行一些編碼工作的輸入資產相關聯。 例如，將 MP4 檔案編碼為 H.264 MP4 自動調整位元速率集、建立縮圖、建立疊加層。 完成工作時，就會產生輸出資產。  輸出資產包含影片、音訊、縮圖等等。輸出資產也會包含具有輸出資產相關中繼資料的檔案。 中繼資料 XML 檔案的名稱具備下列格式︰&lt;source_file_name&gt;_manifest.xml (例如：BigBuckBunny_manifest.xml)。  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
+## <a name="overview"></a>概觀
+編碼作業會與您要在其上執行一些編碼工作的輸入資產相關聯。 例如，將 MP4 檔案編碼為 H.264 MP4 自動調整位元速率集、建立縮圖、建立疊加層。 完成工作時，就會產生輸出資產。  輸出資產包含影片、音訊、縮圖等等。輸出資產也包含檔案，其中包含輸出資產的相關中繼資料。 中繼資料 XML 檔案的名稱具備下列格式︰&lt;source_file_name&gt;_manifest.xml (例如：BigBuckBunny_manifest.xml)。  
 
 媒體服務不會事先掃描輸入資產以產生中繼資料。 當輸入資產在作業中處理時，只會以成品的方式產生輸入中繼資料。 因此，此成品會寫入至輸出資產。 產生輸入資產和輸出資產的中繼資料使用不同的工具。 因此，輸入中繼資料與輸出中繼資料會有稍微不同的結構描述。
 
@@ -45,7 +48,7 @@ ms.locfileid: "86058090"
 您可以找到 XML 範例 [XML 範例](#xml)。  
 
 ### <a name="attributes"></a>屬性
-| Name | 類型 | Description |
+| 名稱 | 類型 | 說明 |
 | --- | --- | --- |
 | **名稱**<br/><br/> 必要 |**xs:string** |媒體資產檔案名稱。 |
 | **大小**<br/><br/> minInclusive ="0"<br/><br/> 必要 |**xs:long** |資產檔案大小 (以位元組為單位)。 |
@@ -54,11 +57,11 @@ ms.locfileid: "86058090"
 ### <a name="child-elements"></a>子元素
 | Name | 說明 |
 | --- | --- |
-| **根源** |為了產生此 AssetFile 所處理之輸入/來源媒體檔案的集合。 如需詳細資訊，請參閱來源元素。 |
+| **來源** |為了產生此 AssetFile 所處理之輸入/來源媒體檔案的集合。 如需詳細資訊，請參閱來源元素。 |
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |每個實體 AssetFile 都可以內含零或多個交錯形成適當容器格式的視訊播放軌。 如需詳細資訊，請參閱 VideoTracks 元素。 |
 | **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |每個實體資產檔案可以內含零個或多個交錯形成適當容器格式的音訊播放軌。 這是所有音訊播放軌的集合。 如需詳細資訊，請參閱 AudioTracks 元素。 |
 
-## <a name="sources-element"></a><a name="Sources"></a>來源元素
+## <a name="sources-element"></a><a name="Sources"></a> 來源元素
 為了產生此 AssetFile 所處理之輸入/來源媒體檔案的集合。  
 
 您可以找到 XML 範例 [XML 範例](#xml)。  
@@ -66,15 +69,15 @@ ms.locfileid: "86058090"
 ### <a name="child-elements"></a>子元素
 | Name | 說明 |
 | --- | --- |
-| **來源**<br/><br/> minOccurs="1" maxOccurs="unbounded" |產生此資產時所使用的輸入/來源檔案。 如需詳細資訊，請參閱來源元素。 |
+| **Source**<br/><br/> minOccurs="1" maxOccurs="unbounded" |產生此資產時所使用的輸入/來源檔案。 如需詳細資訊，請參閱來源元素。 |
 
-## <a name="source-element"></a><a name="Source"></a>Source 元素
+## <a name="source-element"></a><a name="Source"></a> Source 元素
 產生此資產時所使用的輸入/來源檔案。  
 
 您可以找到 XML 範例 [XML 範例](#xml)。  
 
 ### <a name="attributes"></a>屬性
-| Name | 類型 | Description |
+| 名稱 | 類型 | 說明 |
 | --- | --- | --- |
 | **名稱**<br/><br/> 必要 |**xs:string** |輸入的來源檔案名稱。 |
 
@@ -94,9 +97,9 @@ ms.locfileid: "86058090"
 您可以找到 XML 範例 [XML 範例](#xml)。  
 
 ### <a name="attributes"></a>屬性
-| Name | 類型 | Description |
+| 名稱 | 類型 | 說明 |
 | --- | --- | --- |
-| **識別碼**<br/><br/> minInclusive ="0"<br/><br/> 必要 |**xs:int** |此影片播放軌以零為起始的索引。**注意：** 此**識別碼**不一定是在用於 trackid 檔案中使用的。 |
+| **識別碼**<br/><br/> minInclusive ="0"<br/><br/> 必要 |**xs:int** |此影片播放軌以零為起始的索引。 **注意：**  此 **識別碼** 不一定是在用於 trackid 中使用的檔案。 |
 | **FourCC**<br/><br/> 必要 |**xs:string** |視訊轉碼器 FourCC 代碼。 |
 | **設定檔** |**xs:string** |H264 設定檔 (僅適用於 H264 轉碼器)。 |
 | **Level** |**xs:string** |H264 層級 (僅適用於 H264 轉碼器)。 |
@@ -126,12 +129,12 @@ ms.locfileid: "86058090"
 您可以找到 XML 範例 [XML 範例](#xml)。  
 
 ### <a name="attributes"></a>屬性
-| 名稱 | 類型 | Description |
+| 名稱 | 類型 | 說明 |
 | --- | --- | --- |
-| **識別碼**<br/><br/> minInclusive ="0"<br/><br/> 必要 |**xs:int** |此音訊播放軌以零為起始的索引。**注意：** 這不一定是在用於 trackid 檔案中使用的。 |
+| **識別碼**<br/><br/> minInclusive ="0"<br/><br/> 必要 |**xs:int** |此音訊播放軌以零為基底的索引。 **注意：**  這不一定是在用於 trackid 中使用的檔案。 |
 | **轉碼器** |**xs:string** |音訊播放軌轉碼器字串。 |
 | **EncoderVersion** |**xs:string** |選用的編碼器版本字串，為 EAC3 所需。 |
-| **Channels**<br/><br/> minInclusive ="0"<br/><br/> 必要 |**xs:int** |音訊聲道數目。 |
+| **聲道**<br/><br/> minInclusive ="0"<br/><br/> 必要 |**xs:int** |音訊聲道數目。 |
 | **SamplingRate**<br/><br/> minInclusive ="0"<br/><br/> 必要 |**xs:int** |音訊取樣率 (每秒或每 Hz 的樣本數)。 |
 | **Bitrate**<br/><br/> minInclusive ="0"<br/><br/> 必要 |**xs:int** |從 AssetFile 計算出來的平均音訊位元速率 (位元 / 秒)。 只會計算基本串流承載，而不會納入封裝負荷。 |
 | **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> 必要 |**xs:int** |wFormatTag 格式類型的每樣本位元數。 |
@@ -147,7 +150,7 @@ ms.locfileid: "86058090"
 您可以找到 XML 範例 [XML 範例](#xml)。  
 
 ### <a name="attributes"></a>屬性
-| 名稱 | 類型 | Description |
+| 名稱 | 類型 | 說明 |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**xs:string** |**Dolby** 專業音量計量開發套件版本。 |
 | **DialogNormalization**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> 必要 |**xs:int** |透過 DPLM 產生的 DialogNormalization，若設定了 LoudnessMetering 則為必要 |

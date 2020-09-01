@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ff797f8b6fd375a940f77b4e0400bcb7a74450c4
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 79d3829eaea15c8e7909b98b83d1327cd90e4544
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179754"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260318"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>準備 Java Spring 應用程式以部署到 Azure Spring Cloud
 
@@ -41,8 +41,8 @@ Azure Spring Cloud 僅支援 Spring Boot 應用程式 (Spring Boot 2.1 版或 2.
 Spring Boot 版本 | Spring Cloud 版本
 ---|---
 2.1 | Greenwich.RELEASE
-2.2 | Hoxton.RELEASE
-2.3 | Hoxton.SR5
+2.2 | Hoxton.SR8
+2.3 | Hoxton.SR8
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot 2.1 版的相依性
 
@@ -62,7 +62,7 @@ Spring Boot 版本 | Spring Cloud 版本
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.SR4</version>
+                <version>Greenwich.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -88,7 +88,7 @@ Spring Boot 版本 | Spring Cloud 版本
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR1</version>
+                <version>Hoxton.SR8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -113,7 +113,7 @@ Spring Boot 版本 | Spring Cloud 版本
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR5</version>
+                <version>Hoxton.SR8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -122,49 +122,23 @@ Spring Boot 版本 | Spring Cloud 版本
 ```
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud 用戶端相依性
 
-Azure Spring Cloud 會裝載和管理 Spring Cloud 元件。 這些元件包含 Spring Cloud Service Registry 和 Spring Cloud Config Server。 在您的相依性中包含 Azure Spring Cloud 用戶端程式庫，以允許和您 Azure Spring Cloud 服務執行個體之間的通訊。
+Azure Spring Cloud 會裝載和管理 Spring Cloud 元件。 這些元件包含 Spring Cloud Service Registry 和 Spring Cloud Config Server。 建議使用彈簧開機2.2 或2.3。 針對彈簧開機2.1，您必須在您的相依性中包含 Azure 春季 Cloud 用戶端程式庫，以允許與您的 Azure 春季雲端服務實例進行通訊。
 
 下表列出適用於應用程式且使用 Spring Boot 和 Spring Cloud 的正確 Azure Spring Cloud 版本。
 
-Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
+Spring Boot 版本 | Spring Cloud 版本 | Azure 春季 Cloud 用戶端入門版
 ---|---|---
-2.1 | Greenwich.RELEASE | 2.1
-2.2 | Hoxton.RELEASE | 2.2
-2.3 | Hoxton.SR5 | 2.3
+2.1 | Greenwich.RELEASE | 2.1.2
+2.2 | Hoxton.SR8 | 不需要
+2.3 | Hoxton.SR8 | 不需要
 
-請在 pom.xml 檔案中包含下列其中一個相依性。 選取其 Azure Spring Cloud 版本與您所擁有版本相符的相依性。
-
-### <a name="dependency-for-azure-spring-cloud-version-21"></a>Azure Spring Cloud 2.1 版的相依性
-
-針對 Spring Boot 2.1 版，請將下列相依性新增至應用程式 POM 檔案。
+如果您使用的是春季開機2.1，請在 pom.xml 檔案中包含下列 dependenciy。
 
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
         <version>2.1.2</version>
-</dependency>
-```
-
-### <a name="dependency-for-azure-spring-cloud-version-22"></a>Azure Spring Cloud 2.2 版的相依性
-
-針對 Spring Boot 2.2 版，請將下列相依性新增至應用程式 POM 檔案。
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.2.1</version>
-</dependency>
-```
-
-針對彈簧開機版本2.3，請將下列相依性新增至應用程式 POM 檔案。
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.3.0</version>
 </dependency>
 ```
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 73c0eeb718bb6ede8215ed3a87e246185a248ffd
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: fcd9f0759ae885199347cc23d93e8f1c00251387
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89054983"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260521"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季雲端常見問題
 
@@ -40,10 +40,10 @@ Azure 春季 Cloud 藉由整合 Azure 監視器、Application Insights 和 Log A
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure 春季雲端的已知限制為何？
 
-在預覽版本期間，Azure 春季雲端具有下列已知限制：
-
+Azure 春季雲端具有下列已知限制：
+    
 * `spring.application.name` 將會由用來建立每個應用程式的應用程式名稱來覆寫。
-* `server.port` 預設為埠80/443。 如果套用任何其他值，則會將其覆寫為80/443。
+* `server.port` 預設為埠1025。 如果套用任何其他值，則會將其覆寫為1025。
 * Azure 入口網站和 Azure Resource Manager 範本不支援上傳應用程式封裝。 您只能透過 Azure CLI 部署應用程式來上傳應用程式封裝。
 
 ### <a name="what-pricing-tiers-are-available"></a>有哪些定價層可供使用？ 
@@ -147,7 +147,7 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>我是否可以存取 Kubernetes 來操作我的應用程式容器？
 
-不知道。  Azure Spring Cloud 將基礎架構對開發人員抽象化，讓您能夠專注於應用程式程式碼和商務邏輯。
+否。  Azure Spring Cloud 將基礎架構對開發人員抽象化，讓您能夠專注於應用程式程式碼和商務邏輯。
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支援從來源建立容器？
 
@@ -155,7 +155,7 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud 是否支援應用程式執行個體自動調整？
 
-不知道。
+否。
 
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>將現有的春季 Cloud 微服務遷移到 Azure 春季雲端的最佳作法為何？
 

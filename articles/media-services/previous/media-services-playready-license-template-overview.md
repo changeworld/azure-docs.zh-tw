@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1fcb935a7a07629ba3d7424a39f6c8542628a842
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: df28078363162496672232ecdebe02fc99ce50f5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084614"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261039"
 ---
 # <a name="media-services-playready-license-template-overview"></a>媒體服務 PlayReady 授權範本概觀
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Azure 媒體服務現在有提供傳遞 PlayReady 授權的服務。 當播放程式 (例如 Silverlight) 嘗試播放受 PlayReady 保護的內容時，會將要求傳送到授權傳遞服務來取得授權。 如果授權服務核准要求，就會發出授權以傳送給用戶端，並將它用來解密和播放所指定內容。
 
 媒體服務也會提供您可以用來設定 PlayReady 授權的 API。 授權包含您要 PlayReady 數位版權管理 (DRM) 執行階段在使用者嘗試播放受保護內容時強制執行的權限和限制。
@@ -32,7 +35,7 @@ Azure 媒體服務現在有提供傳遞 PlayReady 授權的服務。 當播放�
 * 針對要儲存在用戶端上永續性儲存體的授權。 永續性授權通常會用來允許離線播放內容。
 * 播放器播放您的內容必須具有的最低安全性層級。 
 * audio\video 內容的輸出控制輸出保護層級。 
-* 如需詳細資訊，請參閱[PlayReady 相容性規則](https://www.microsoft.com/playready/licensing/compliance/)檔中的「輸出控制項」一節（3.5）。
+* 如需詳細資訊，請參閱 [PlayReady 相容性規則](https://www.microsoft.com/playready/licensing/compliance/) 檔中 (3.5) 的「輸出控制項」一節。
 
 > [!NOTE]
 > 目前，您只能設定 PlayReady 授權的 PlayRight。 這是必要權限。 PlayRight 可讓用戶端播放內容。 您也可以使用 PlayRight 來設定播放特定的限制。 如需詳細資訊，請參閱 [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight)。

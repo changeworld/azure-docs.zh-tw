@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 78fa6b343a01e96c000b6c64a55d5fdf1f0284f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0d896b0ce23116f1b87718f492d407ac094b9e6a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084648"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261150"
 ---
-# <a name="azure-media-services-overview"></a>Azure 媒體服務概觀 
+# <a name="azure-media-services-overview"></a>Azure 媒體服務概觀
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="選取您要使用的媒體服務版本："]
 > * [第 3 版](../latest/media-services-overview.md)
@@ -36,17 +38,17 @@ Microsoft Azure 媒體服務 (AMS) 是一個可延伸的雲端式平台，供開
 
 ## <a name="compliance-privacy-and-security"></a>合規性、隱私權和安全性
 
-重要提醒是，您必須遵守使用 Azure 媒體服務時的所有相關法律，而且不得以違反其他人的權利或可能對其他人有害的方式使用媒體服務或任何 Azure 服務。
+重要提醒是，您必須遵守使用 Azure 媒體服務的所有適用法律，而且不得以違反他人權利或可能會對他人有害的方式使用媒體服務或任何 Azure 服務。
 
-將任何影片/影像上傳至媒體服務之前，您必須擁有所有適當的許可權，才能使用影片/影像，包括在法律要求的情況下，所有必要的同意（如果有的話）在影片/影像中，以便在媒體服務和 Azure 中使用、處理和儲存其資料。 有些司法管轄區可能會對特定資料類別 (例如生物識別資料) 的收集、線上處理和儲存施加特殊的法律要求。 在使用媒體服務和 Azure 來處理及儲存任何資料，以因應特殊法律需求之前，您必須確保符合貴使用者可能適用的任何這類法律需求。
+將任何影片/影像上傳至媒體服務之前，您必須具備使用影片/影像的所有適當許可權，包括法律所需的所有必要 (同意（如果影片/影像中有任何) ，可用於媒體服務和 Azure 中的資料使用、處理和儲存）。 有些司法管轄區可能會對特定資料類別 (例如生物識別資料) 的收集、線上處理和儲存施加特殊的法律要求。 在使用媒體服務和 Azure 來處理和儲存任何受限於特殊法律需求的資料之前，您必須確保符合您可能適用的任何這類法律需求。
 
-若要瞭解媒體服務的合規性、隱私權和安全性，請流覽 Microsoft[信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 如需 Microsoft 的隱私權義務、資料處理和保留做法，包括如何刪除您的資料，請參閱 Microsoft 的[隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、[線上服務條款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1)（「OST」）和[資料處理](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)增補（「DPA」）。 藉由使用媒體服務，即表示您同意遵守 OST、DPA 和隱私權聲明。
+若要瞭解媒體服務中的合規性、隱私權和安全性，請造訪 Microsoft [信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 如需 Microsoft 的隱私權義務、資料處理和保留實務（包括如何刪除您的資料），請參閱 Microsoft 的 [隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、 [線上服務條款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ( 「OST」 ) 和 [資料處理](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) 增補 ( 「DPA」 ) 。 使用媒體服務即表示您同意受到 OST、DPA 和隱私權聲明的約束。
  
 ## <a name="prerequisites"></a>先決條件
 
 若要開始使用 Azure 媒體服務，您應該具備下列項目：
 
-* Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com)。
+* 一個 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com)。
 * Azure 媒體服務帳戶。 如需詳細資訊，請參閱[建立帳戶](media-services-portal-create-account.md)。
 * (選擇性) 設定開發環境。 針對開發環境選擇 .NET 或 REST API。 如需詳細資訊，請參閱 [設定環境](media-services-dotnet-how-to-use.md)。
 
@@ -61,9 +63,9 @@ Microsoft Azure 媒體服務 (AMS) 是一個可延伸的雲端式平台，供開
 * 其中一個可用的用戶端 SDK：
     * 適用于 .NET 的 Azure 媒體服務 SDK
     
-        * [Nuget 套件](https://www.nuget.org/packages/windowsazure.mediaservices/)
+        * [NuGet 套件](https://www.nuget.org/packages/windowsazure.mediaservices/)
         * [GitHub 原始程式碼](https://github.com/Azure/azure-sdk-for-media-services)
-    * [適用于 JAVA 的 AZURE SDK](https://github.com/Azure/azure-sdk-for-java)，
+    * [適用于 JAVA 的 AZURE SDK](https://github.com/Azure/azure-sdk-for-java)、
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)、
     * [Azure Media Services for Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (這是非 Microsoft 版本的 Node.js SDK。 它是由社群維護，且目前並沒有 AMS API 的 100% 涵蓋範圍)。
 * 現有的工具：

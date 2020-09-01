@@ -5,12 +5,12 @@ ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: d49b74ffff8f382427422071b7d8f494f71a52fb
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 38bfada87701533002a2dcf304af573da4c87766
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345184"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259892"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>快速入門：使用 Go 在 QnA Maker 中建立知識庫
 
@@ -24,7 +24,7 @@ ms.locfileid: "84345184"
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * [Go 1.10.1](https://golang.org/dl/)
 * 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]****。
@@ -37,44 +37,34 @@ ms.locfileid: "84345184"
 
 在 `create-new-knowledge-base.go` 的頂端，新增下列幾行以將必要的相依性新增至專案：
 
-[!code-go[Add the required dependencies](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=1-11 "Add the required dependencies")]
-
-## <a name="add-the-required-constants"></a>新增必要的常數
-在上述必要的相依性後面，新增必要的常數以存取 QnA Maker。
-
-設定下列值：
-
-* `<your-qna-maker-subscription-key>` - **金鑰**是 32 字元字串，且可在 Azure 入口網站中 [快速入門] 頁面上的 [QnA Maker 資源] 上取得。 這與預測端點金鑰不同。
-* `{your-resource-name}` - 您的**資源名稱**用來架構可供撰寫的撰寫端點 URL，其格式為 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`。 這與用於查詢預測端點的 URL 不同。
-
-[!code-go[Add the required constants](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=13-20 "Add the required constants")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="dependencies":::
 
 ## <a name="add-the-kb-model-definition"></a>新增 KB 模型定義
 在常數後面新增下列 KB 模型定義。 模型會在定義之後轉換成字串。
 
-[!code-go[Add the KB model definition](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=22-44 "Add the KB model definition")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="model":::
 
 ## <a name="add-supporting-structures-and-functions"></a>新增支援結構和函式
 
 接下來，新增下列支援的函式。
 
-1. 新增 HTTP 要求的結構：
+1. 新增 HTTP 回應的結構：
 
-    [!code-go[Add the structure for an HTTP request](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=46-49 "Add the structure for an HTTP request")]
+    :::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="response":::
 
-2. 新增下列方法，以處理 QnA Maker API 的 POST。 在本快速入門中，POST 可用來將 KB 定義傳送給 QnA Maker。
+1. 新增下列方法，以處理 QnA Maker API 的 POST。 在本快速入門中，POST 可用來將 KB 定義傳送給 QnA Maker。
 
-    [!code-go[Add the POST method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=51-66 "Add the POST method")]
+    :::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="post":::
 
-3. 新增下列方法，以處理 QnA Maker API 的 GET。 在本快速入門中，GET 可用來檢查建立作業的狀態。
+1. 新增下列方法，以處理 QnA Maker API 的 GET。 在本快速入門中，GET 可用來檢查建立作業的狀態。
 
-    [!code-go[Add the GET method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=68-83 "Add the GET method")]
+    :::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="get":::
 
 ## <a name="add-function-to-create-kb"></a>新增函式以建立 KB
 
 新增下列函式，來提出要建立知識庫的 HTTP POST 要求。 _建立_ **作業識別碼**會在 POST 回應標頭欄位 [位置]**** 中傳回，然後在 GET 要求中作為路由的一部分。 `Ocp-Apim-Subscription-Key` 是 QnA Maker 服務金鑰，用於驗證。
 
-[!code-go[Add the create_kb method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=85-97 "Add the create_kb method")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="create_kb":::
 
 此 API 呼叫會傳回包含作業識別碼的 JSON 回應。 使用作業識別碼來判斷是否已成功建立 KB。
 
@@ -92,7 +82,7 @@ ms.locfileid: "84345184"
 
 新增下列函式來提出 HTTP GET 要求，以檢查作業狀態。 `Ocp-Apim-Subscription-Key` 是 QnA Maker 服務金鑰，用於驗證。
 
-[!code-go[Add the check_status method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=99-108 "Add the check_status method")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="get_status":::
 
 重複呼叫直到成功或失敗：
 
@@ -110,7 +100,7 @@ ms.locfileid: "84345184"
 
 下列函式是主要函式，並且會建立 KB 並重複檢查狀態。 因為 KB 建立可能需要一些時間，您必須重複呼叫來檢查狀態，直到狀態為成功或失敗。
 
-[!code-go[Add the main method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=110-140 "Add the main method")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="main":::
 
 
 ## <a name="compile-the-program"></a>編譯程式

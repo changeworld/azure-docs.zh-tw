@@ -13,21 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 208019bbc86b22443c7d012400d4e4324679aee9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3d6c494232456b4819c9275d66fa6f7ab5de9b77
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084461"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260725"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>利用 Azure 入口網站開始使用 Azure AD 驗證
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 了解如何使用 Azure 入口網站存取 Azure Active Directory (Azure AD) 驗證，以存取 Azure 媒體服務 API。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 一個 Azure 帳戶。 如果您沒有帳戶，請先從 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)開始。 
 - 媒體服務帳戶。 如需詳細資訊，請參閱[使用 Azure 入口網站建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)。
@@ -43,7 +45,7 @@ ms.locfileid: "87084461"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的媒體服務帳戶。
 2. 選取如何連線到媒體服務 API。
-3. 在 **[連線到媒體服務 API]** 底下，選取您要連線的媒體服務 API 版本。
+3. 在 **[連線到媒體服務 Api]** 下，選取您要連線的媒體服務 API 版本。
 
 ## <a name="service-principal-authentication--recommended"></a>服務主體驗證 (建議)
 

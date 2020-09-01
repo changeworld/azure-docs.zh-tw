@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 22a79f75fa795226e45e54947f410db4c2a57a7c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3988bbb46782f6dbc703823135f5bda4e2539bd8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020655"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262255"
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何搭配 .NET 使用 Media Encoder Standard 產生縮圖 
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何搭配 .NET 使用 Media Encoder Standard 產生縮圖
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 您可以使用媒體編碼器標準，以 [JPEG](https://en.wikipedia.org/wiki/JPEG)、[PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) 或 [BMP](https://en.wikipedia.org/wiki/BMP_file_format) 影像檔案格式，從您的輸入視訊中產生一或多個縮圖。 您可以送出只產生影像的工作，或是結合縮圖產生與編碼。 本文章提供幾個對於這類情況的範例 XML 和 JSON 縮圖預設。 在文章的結尾有[範例程式碼](#code_sample)，示範如何使用 Media Services .NET SDK，以完成編碼工作。
 

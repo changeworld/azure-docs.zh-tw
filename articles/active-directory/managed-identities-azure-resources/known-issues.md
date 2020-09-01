@@ -17,12 +17,12 @@ ms.date: 08/06/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ffc6ba2725a8ce9e3eeb4202ed7d10dd3d1937a8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4bcd36a1ce38d4d9eb6a0faec470f7427852894b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997467"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260215"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 資源適用受控識別的常見問題集與已知問題
 
@@ -45,7 +45,7 @@ ms.locfileid: "88997467"
 
 ### <a name="do-managed-identities-have-a-backing-app-object"></a>受控識別是否有支援的應用程式物件？
 
-不知道。 受控識別和 Azure AD App 註冊與目錄中的內容不同。 
+否。 受控識別和 Azure AD App 註冊與目錄中的內容不同。 
 
 應用程式註冊有兩個元件：應用程式物件 + 服務主體物件。 適用于 Azure 資源的受控識別只有其中一個元件：服務主體物件。 
 
@@ -86,8 +86,8 @@ ms.locfileid: "88997467"
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>資源上的受控識別需要哪些 Azure RBAC 權限？ 
 
-- 系統指派的受控識別：您需要資源的寫入權限。 例如，針對虛擬機器，您需要 Microsoft.Compute/virtualMachines/write。 此動作包含在資源特定的內建角色中，例如[虛擬機器參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)。
-- 使用者指派的受控識別：您需要資源的寫入權限。 例如，針對虛擬機器，您需要 Microsoft.Compute/virtualMachines/write。 加上透過受控識別的[受控識別操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色指派。
+- 系統指派的受控識別：您需要資源的寫入權限。 例如，針對虛擬機器，您需要 Microsoft.Compute/virtualMachines/write。 此動作包含在資源特定的內建角色中，例如[虛擬機器參與者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
+- 使用者指派的受控識別：您需要資源的寫入權限。 例如，針對虛擬機器，您需要 Microsoft.Compute/virtualMachines/write。 加上透過受控識別的[受控識別操作員](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色指派。
 
 
 
