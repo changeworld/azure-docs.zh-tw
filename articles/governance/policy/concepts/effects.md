@@ -3,12 +3,12 @@ title: 了解效果的運作方式
 description: 「Azure 原則」定義有各種效果，可決定合規性的管理和回報方式。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 83566cc638c4db1b00dbe40a48064a7c94250d8c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958757"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079654"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure 原則效果
 
@@ -488,7 +488,7 @@ EnforceRegoPolicy 效果的 **details** 屬性有子屬性可描述 Gatekeeper v
 - 新增或取代 `identity.type` 虛擬機器和虛擬機器擴展集 () 受控識別類型的值。
 - 新增或取代 (預覽版) 特定別名的值。
   - 使用`Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }`
-    在 Azure PowerShell 取得可搭配 Modify 使用的別名清單。
+    在 Azure PowerShell **4.6.0** 或更高版本中，取得可搭配 Modify 使用的別名清單。
 
 > [!IMPORTANT]
 > 如果您要管理標記，建議使用 Modify 而非 Append as Modify 提供其他作業類型，以及補救現有資源的能力。 但是，如果您無法建立受控識別，或修改還不支援資源屬性的別名，則建議使用 Append。

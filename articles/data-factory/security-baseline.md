@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 771f692ade9c7616eb7d217b4728a8c80d2aeac5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 256751e452be539084a7dc022dc56c0f60e910e6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044170"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079178"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>適用于 Azure Data Factory 的 Azure 安全性基準
 
-適用于 Azure Data Factory 的 Azure 安全性基準包含可協助您改善部署之安全性狀態的建議。
+適用于 Azure Data Factory 的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
 
 此服務的基準取自 [Azure 安全性效能評定 1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
@@ -26,15 +26,15 @@ ms.locfileid: "86044170"
 
 *如需詳細資訊，請參閱[安全性控制：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
 
-### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路中的 Azure 資源
+### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路內的 Azure 資源
 
-**指導**方針：建立 Azure SSIS INTEGRATION RUNTIME （IR）時，您可以選擇將它與虛擬網路聯結。 這可讓 Azure Data Factory 建立特定的網路資源，例如網路安全性群組（NSG）和負載平衡器。 您也能夠提供自己的靜態公用 IP 位址，或讓 Azure Data Factory 為您建立一個。 在 Azure Data Factory 自動建立的 NSG 上，埠3389預設會開放給所有流量。 請鎖定此限制，以確保只有您的系統管理員能夠存取。
+**指導**方針：建立 AZURE-SSIS INTEGRATION RUNTIME (IR) 時，您可以選擇將它與虛擬網路聯結。 這可讓 Azure Data Factory 建立特定的網路資源，例如 (NSG) 的網路安全性群組和負載平衡器。 您也可以提供自己的靜態公用 IP 位址，或 Azure Data Factory 為您建立一個位址。 在 Azure Data Factory 自動建立的 NSG 上，預設會針對所有流量開啟埠3389。 請將此鎖定，以確保只有您的系統管理員具有存取權。
 
-自我裝載的 IRs 可以部署在內部部署機器或虛擬網路內的 Azure 虛擬機器上。 請確定您的虛擬網路子網部署已將 NSG 設定為只允許系統管理存取權。 根據預設，Azure SSIS IR 在每個 IR 節點的 windows 防火牆規則上不允許埠3389輸出，以供保護。 您可以藉由將 NSG 與子網產生關聯並設定嚴格的規則，來保護虛擬網路設定的資源。
+自我裝載的 IRs 可以部署在內部部署機器或虛擬網路內的 Azure 虛擬機器上。 確定您的虛擬網路子網部署具有設定為僅允許系統管理存取權的 NSG。 根據預設，Azure-SSIS IR 在每個 IR 節點上的 windows 防火牆規則預設不允許埠3389輸出以進行保護。 您可以藉由將 NSG 與子網建立關聯，並設定嚴格的規則，來保護虛擬網路設定的資源。
 
-若有可用的私用連結，請使用私人端點來保護任何連結到您 Azure Data Factory 管線的資源，例如 Azure SQL Server。 使用私人連結時，您的虛擬網路與服務之間的流量會通過 Microsoft 骨幹網路，消除公開網際網路的風險。
+如果有可用的 Private Link，請使用私人端點來保護任何連結至 Azure Data Factory 管線的資源，例如 Azure SQL Server。 使用 Private Link 時，您的虛擬網路與服務之間的流量會流經 Microsoft 骨幹網路，以消除公用網際網路的暴露。
 
-* [如何建立 Azure SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
+* [如何建立 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
 
 * [如何建立和設定自我裝載 IR](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 
@@ -42,9 +42,9 @@ ms.locfileid: "86044170"
 
 * [如何建立具有安全性設定的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
-* [將 Azure SSIS IR 加入虛擬網路](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#virtual-network-configuration)
+* [將 Azure-SSIS IR 加入虛擬網路](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#virtual-network-configuration)
 
-* [瞭解 Azure 私人連結](https://docs.microsoft.com/azure/private-link/private-link-overview)
+* [瞭解 Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
 **Azure 資訊安全中心監視**：是
 
@@ -52,9 +52,9 @@ ms.locfileid: "86044170"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：監視和記錄虛擬網路、子網和 Nic 的設定和流量
 
-**指導**方針：使用 Azure 資訊安全中心並修復與您的 Integration Runtime 部署相關聯的虛擬網路和網路安全性群組的網路保護建議。
+**指導**方針：使用 Azure 資訊安全中心，並針對與您 Integration Runtime 部署相關聯的虛擬網路和網路安全性群組，修復網路保護建議。
 
-此外，針對保護您的 Integration Runtime 部署的 NSG 啟用「網路安全性群組」（NSG）流量記錄，並將記錄傳送到 Azure 儲存體帳戶以進行流量審核。
+此外，啟用網路安全性群組 (NSG) 流量記錄，以保護您的 Integration Runtime 部署並將記錄傳送到 Azure 儲存體帳戶以進行流量審核。
 
 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
@@ -80,7 +80,7 @@ ms.locfileid: "86044170"
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址通訊
 
-**指引**：在與您的 Integration Runtime 部署相關聯的虛擬網路上啟用 DDoS 保護標準，以保護免于分散式阻斷服務的攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，以拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
+**指導**方針：在與您的 Integration Runtime 部署相關聯的虛擬網路上啟用 DDoS 保護標準，以防止分散式阻絕服務攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，以拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
 
 * [如何設定 DDoS 保護](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
 
@@ -92,7 +92,7 @@ ms.locfileid: "86044170"
 
 ### <a name="15-record-network-packets"></a>1.5：記錄網路封包
 
-**指導**方針：針對 NSG 保護您的 Integration Runtime 部署並將記錄傳送到用於流量審核的 Azure 儲存體帳戶，啟用網路安全性群組（NSG）流量記錄。
+**指導**方針：啟用網路安全性群組 (NSG) 流量記錄，以保護您的 Integration Runtime 部署，並將記錄傳送到 Azure 儲存體帳戶以進行流量審核。
 
 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
@@ -106,11 +106,11 @@ ms.locfileid: "86044170"
 
 **責任**：客戶
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統（IDS/IPS）
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵防護系統 (IDS/IPS) 
 
-**指導**方針：如果您想要檢查來自 AZURE ssis ir 的輸出流量，您可以將從 AZURE ssis ir 起始的流量路由傳送至內部部署防火牆設備，透過 azure ExpressRoute 強制通道，或從支援 IDS/IPS 功能的 Azure Marketplace 到網路虛擬裝置（NVA）。 如果基於酬載檢查的入侵偵測和/或預防不是必要條件，則可以使用具有威脅情報的 Azure 防火牆。
+**指導**方針：如果您想要檢查來自 Azure-SSIS IR 的輸出流量，您可以透過 Azure ExpressRoute 強制通道或網路虛擬裝置，將從 Azure-SSIS IR 起始的流量路由傳送至內部部署防火牆設備， (從支援 IDS/IPS 功能的 Azure Marketplace NVA) 。 如果基於酬載檢查的入侵偵測和/或預防不是必要條件，則可以使用具有威脅情報的 Azure 防火牆。
 
-* [將 Azure SSIS Integration Runtime 加入虛擬網路](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)
+* [將 Azure-SSIS Integration Runtime 加入虛擬網路](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)
 
 * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
@@ -132,11 +132,11 @@ ms.locfileid: "86044170"
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負擔降至最低
 
-**指導**方針：使用虛擬網路服務標籤來定義網路安全性群組（NSG）或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由在規則的適當 [來源] 或 [目的地] 欄位中指定服務標籤名稱（例如，DataFactoryManagement），您可以允許或拒絕對應服務的輸入流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
+**指導**方針：使用虛擬網路服務標籤來定義網路安全性群組 (NSG) 或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由在規則的適當來源或目的地欄位中指定服務標記名稱 (例如，DataFactoryManagement) ，您可以允許或拒絕對應服務的輸入流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
 
-* [瞭解及使用服務標記](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [瞭解和使用服務標記](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
-* [瞭解 Azure Data Factory 特定服務標記](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)
+* [瞭解 Azure Data Factory 特定的服務標記](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -144,12 +144,12 @@ ms.locfileid: "86044170"
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
-**指導**方針：使用 Azure 原則來定義和執行與 Azure data Factory 實例相關聯的網路設定和網路資源的標準安全性設定。 使用 "DataFactory" 和 "Microsoft" 命名空間中 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure Data Factory 實例的網路設定。 您也可以使用與網路或 Azure Data factory 實例相關的內建原則定義，例如：
+**指導**方針：使用 Azure 原則定義和執行與您的 Azure data Factory 實例相關聯的網路設定和網路資源的標準安全性設定。 使用 "DataFactory" 和 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對 Azure Data Factory 實例的網路設定進行審核或強制執行。 您也可以利用與網路或 Azure Data factory 實例相關的內建原則定義，例如：
 - 應啟用 DDoS 保護標準
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-* [網路的 Azure 原則範例](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+* [適用于網路的 Azure 原則範例](https://docs.microsoft.com/azure/governance/policy/samples/#network)
 
 * [如何建立 Azure 藍圖](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
 
@@ -159,7 +159,7 @@ ms.locfileid: "86044170"
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
-**指導**方針：使用標記來取得與 Azure Data Factory 實例的網路安全性和流量流程相關的資源，以提供中繼資料和邏輯組織。
+**指導**方針：針對您的 Azure Data Factory 實例的網路安全性和流量流程，使用與網路安全性和流量相關的資源標記，以提供中繼資料和邏輯組織。
 
 使用與標記相關的任何內建 Azure 原則定義 (例如「需要標籤及其值」)，以確保建立的所有資源都具有標籤，並向您通知未加上標籤的現有資源。
 
@@ -173,7 +173,7 @@ ms.locfileid: "86044170"
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
-**指引**：使用 Azure 活動記錄來監視網路資源設定，並偵測與 Azure Data Factory 實例相關的網路資源變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
+**指導**方針：使用 Azure 活動記錄監視網路資源設定，並偵測與您的 Azure Data Factory 實例相關之網路資源的變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
 
 * [如何檢視及擷取 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
 
@@ -189,7 +189,7 @@ ms.locfileid: "86044170"
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
-**指引**： Microsoft 會維護 Azure 資源所使用的時間來源，例如記錄中時間戳記的 Azure Data Factory。
+**指導**方針： Microsoft 會維護用於 Azure 資源的時間來源，例如記錄中時間戳記的 Azure Data Factory。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -199,7 +199,7 @@ ms.locfileid: "86044170"
 
 **指導**方針：透過 Azure 監視器內嵌記錄，以匯總 Azure Data Factory 所產生的安全性資料。 在 Azure 監視器中，您可以查詢設定為接收 Azure Data Factory 活動記錄的 Log Analytics 工作區。 使用適用於長期/封存記錄儲存體或事件中樞的 Azure 儲存體帳戶，將資料匯出至其他系統。
 
-或者，您可以啟用和內部資料，以 Azure Sentinel 或協力廠商安全性事件和事件管理（SIEM）。您也可以將 Azure Data Factory 與 Git 整合，以運用數個原始檔控制的優點，例如追蹤/審核變更的能力，以及還原引入 bug 之變更的能力。
+或者，您也可以啟用和內部資料來 Azure Sentinel 或協力廠商安全性事件和事件管理 (SIEM) 。您也可以整合 Azure Data Factory 與 Git，以利用數個原始檔控制的優點，例如追蹤/審核變更的能力，以及還原引進 bug 之變更的能力。
 
 * [如何設定診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-in-azure-portal)
 
@@ -215,9 +215,9 @@ ms.locfileid: "86044170"
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
-**指引**：針對控制平面的審核記錄，啟用 Azure 活動記錄診斷設定，並將記錄傳送到 Log Analytics 工作區、Azure 事件中樞或 Azure 儲存體帳戶以進行封存。 使用 Azure 活動記錄資料，您可判斷在 Azure 資源的控制平面層級執行任何寫入作業 (PUT、POST、DELETE) 的「內容 (What)、人員 (Who) 和時間 (When)」。
+**指導**方針：若要進行控制平面審核記錄，請啟用 Azure 活動記錄診斷設定，並將記錄傳送至 Log Analytics 工作區、Azure 事件中樞或 Azure 儲存體帳戶以供封存。 使用 Azure 活動記錄資料，您可判斷在 Azure 資源的控制平面層級執行任何寫入作業 (PUT、POST、DELETE) 的「內容 (What)、人員 (Who) 和時間 (When)」。
 
-使用診斷設定來設定 Azure Data Factory 中 noncompute 資源的診斷記錄，例如計量和管線執行資料。 Azure Data Factory 會儲存管線執行資料45天。 若要將此資料保留較長的時間，請將您的診斷記錄儲存到儲存體帳戶以進行審核或手動檢查，並指定保留時間（以天為單位）。 您也可以串流記錄以 Azure 事件中樞或將記錄傳送到 Log Analytics 工作區進行分析。
+您可以使用診斷設定來設定 Azure Data Factory 中 noncompute 資源的診斷記錄，例如計量和管線執行資料。 Azure Data Factory 會將管線執行資料儲存45天。 若要將此資料保留較長的一段時間，請將您的診斷記錄儲存至儲存體帳戶以進行審核或手動檢查，並以天為單位指定保留時間。 您也可以串流記錄以 Azure 事件中樞，或將記錄傳送至 Log Analytics 工作區以進行分析。
 
 * [如何啟用 Azure 活動記錄的診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
@@ -229,11 +229,11 @@ ms.locfileid: "86044170"
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：從作業系統收集安全性記錄
 
-**指導**方針：如果您在 Azure 虛擬機器（VM）中執行 Integration Runtime，您可以使用 Azure 監視器從虛擬機器收集資料。 安裝 Log Analytics VM 擴充功能可讓 Azure 監視器從您的 Azure Vm 收集資料。 Azure 資訊安全中心接著可以提供虛擬機器的安全性事件記錄檔監視。 由於安全性事件記錄檔產生的資料量，預設並不會儲存。
+**指導**方針：如果您要在 Azure 虛擬機器中執行 INTEGRATION RUNTIME (VM) ，您可以使用 Azure 監視器從虛擬機器收集資料。 安裝 Log Analytics VM 擴充功能可讓 Azure 監視器從您的 Azure Vm 收集資料。 Azure 資訊安全中心接著可以為虛擬機器提供安全性事件記錄檔監視。 由於安全性事件記錄檔所產生的資料量，因此預設不會儲存。
 
-如果您的組織想要保留安全性事件記錄檔資料，可以將它儲存在資料收集層中，以便在 Log Analytics 中進行查詢。
+如果您的組織想要保留安全性事件記錄檔資料，它可以儲存在資料收集層內，此時可以在 Log Analytics 中進行查詢。
 
-* [如何從 Azure 監視器中的 Azure 虛擬機器收集資料](https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm)
+* [如何在 Azure 監視器中從 Azure 虛擬機器收集資料](https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm)
 
 * [在 Azure 資訊安全中心中啟用資料收集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
 
@@ -243,7 +243,7 @@ ms.locfileid: "86044170"
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
 
-**指引**：啟用 Azure Data Factory 的診斷設定。 如果選擇將記錄儲存在 Log Analytics 工作區中，請根據貴組織的合規性法規來設定您的 Log Analytics 工作區保留期間。 使用 Azure 儲存體帳戶進行長期/封存儲存。
+**指導**方針：啟用 Azure Data Factory 的診斷設定。 如果選擇將記錄儲存在 Log Analytics 工作區中，請根據貴組織的合規性法規來設定您的 Log Analytics 工作區保留期間。 使用 Azure 儲存體帳戶進行長期/封存儲存。
 
 * [如何在 Azure Data Factory 中啟用診斷記錄](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#set-up-diagnostic-logs)
 
@@ -255,9 +255,9 @@ ms.locfileid: "86044170"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
-**指引**：啟用 Azure Data Factory 的診斷設定，並將記錄傳送到 Log Analytics 工作區。 使用 Log Analytics 來分析和監視您的記錄中是否有異常行為，並定期審查結果。 請確定您也為任何與 Azure Data Factory 部署相關的資料存放區啟用診斷設定。 請參閱每個服務的安全性基準，以取得如何啟用診斷設定的指引。
+**指導**方針：啟用 Azure Data Factory 的診斷設定，並將記錄傳送至 Log Analytics 工作區。 使用 Log Analytics 分析和監視記錄的異常行為，並定期查看結果。 確定您也針對與 Azure Data Factory 部署相關的任何資料存放區啟用診斷設定。 請參閱每個服務的安全性基準，以取得如何啟用診斷設定的指引。
 
-如果您是在 Azure 虛擬機器（VM）中執行 Integration Runtime，請同時啟用 VM 的診斷設定。
+如果您是在 Azure 虛擬機器 (VM) 中執行 Integration Runtime，也請啟用 VM 的診斷設定。
 
 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。
 
@@ -273,11 +273,11 @@ ms.locfileid: "86044170"
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：啟用異常活動的警示
 
-**指導**方針：您可以前往 Azure 監視器中的 [警示計量] 區段，針對 Data Factory 中支援的計量引發警示 &amp; 。
+**指導**方針：移至 Azure 監視器中的 [警示計量] 區段，即可針對 Data Factory 中支援的計量提出警示 &amp; 。
 
-設定 Azure Data Factory 的診斷設定，並將記錄傳送到 Log Analytics 工作區。 在您的 Log Analytics 工作區中，設定在一組預先定義的條件發生時，所要採取的警示。 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。
+針對 Azure Data Factory 設定診斷設定，並將記錄傳送至 Log Analytics 工作區。 在您的 Log Analytics 工作區中，設定在一組預先定義的條件發生時，所要採取的警示。 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。
 
-此外，請確定您已針對與資料存放區相關的服務啟用診斷設定。 您可以參考每個服務的安全性基準，以取得指導方針。
+此外，請確定您已啟用與資料存放區相關之服務的診斷設定。 您可以參考每個服務的安全性基準，以取得指導方針。
 
 * [Azure Data Factory 中的警示](https://docs.microsoft.com/azure/data-factory/monitor-visually#alerts)
 
@@ -291,7 +291,7 @@ ms.locfileid: "86044170"
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中化反惡意程式碼記錄
 
-**指導**方針：如果您在 Azure 虛擬機器中執行 Integration Runtime，您可以使用 azure 雲端服務的 Microsoft Antimalware 和虛擬機器，並將虛擬機器設定為將事件記錄到 Azure 儲存體帳戶。 設定 Log Analytics 工作區，以內嵌來自儲存體帳戶的事件，並在適當時建立警示。 遵循 Azure 資訊安全中心：「計算應用程式」中的建議 &amp; 。
+**指導**方針：如果您是在 Azure 虛擬機器中執行您的 Integration Runtime，您可以使用 Microsoft Antimalware 作為 Azure 雲端服務和虛擬機器，並將虛擬機器設定為將事件記錄到 Azure 儲存體帳戶。 設定 Log Analytics 工作區，以內嵌來自儲存體帳戶的事件，並在適當時建立警示。 遵循 Azure 資訊安全中心中的建議：「計算 &amp; 應用程式」。
 
 * [如何設定雲端服務和虛擬機器的 Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 
@@ -303,7 +303,7 @@ ms.locfileid: "86044170"
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：啟用 DNS 查詢記錄
 
-**指導**方針：不適用;Azure Data Factory 不會處理或產生 DNS 相關的記錄檔。
+**指導**方針：不適用;Azure Data Factory 不會處理或產生 DNS 相關的記錄。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -311,7 +311,7 @@ ms.locfileid: "86044170"
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：啟用命令列稽核記錄
 
-**指導**方針：如果您在 Azure 虛擬機器（VM）中執行 Integration Runtime，則可以啟用命令列審核記錄。 Azure 資訊安全中心提供適用于 Azure Vm 的安全性事件記錄檔監視。 資訊安全中心會在所有支援的 Azure Vm 上，以及在啟用自動布建或您可以手動安裝代理程式時所建立的任何新虛擬機器上，提供 Microsoft Monitoring Agent。 代理程式支援處理序建立事件 4688，及事件 4688 中的 CommandLine 欄位。 EventLog 會記錄在 VM 上建立的新處理序，並由資訊安全中心的偵測服務監視。
+**指導**方針：如果您要在 Azure 虛擬機器中執行 INTEGRATION RUNTIME (VM) ，您可以啟用命令列審核記錄。 Azure 資訊安全中心為 Azure Vm 提供安全性事件記錄檔監視。 資訊安全中心會在所有支援的 Azure Vm 上布建 Microsoft Monitoring Agent，以及在啟用自動布建或您可以手動安裝代理程式時所建立的任何新虛擬機器。 代理程式支援處理序建立事件 4688，及事件 4688 中的 CommandLine 欄位。 EventLog 會記錄在 VM 上建立的新處理序，並由資訊安全中心的偵測服務監視。
 
 * [Azure 資訊安全中心的資料收集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
 
@@ -325,17 +325,17 @@ ms.locfileid: "86044170"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的詳細目錄
 
-**指引**：在 Azure Data Factory 中，請務必定期追蹤和協調使用者存取。 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為「參與者」或「擁有者」角色，或是 Azure 訂用帳戶的「管理員」。
+**指導**方針： Azure Data Factory 中，請務必定期追蹤和協調使用者存取權。 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為「參與者」或「擁有者」角色，或是 Azure 訂用帳戶的「管理員」。
 
-此外，在租使用者層級，Azure Active Directory （AD）具有必須明確指派且可供查詢的內建角色。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索具有 Azure Data Factory 實例之控制平面管理許可權的系統管理群組成員帳戶。
+此外，在租使用者層級，Azure Active Directory (AD) 具有必須明確指派且可查詢的內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶，而這些帳戶具有您 Azure Data Factory 實例控制平面的系統管理存取權。
 
-雖然 Azure AD 是管理使用者存取權的建議方法，但請記住，如果您在 Azure 虛擬機器（VM）中執行 Integration Runtime，您的 VM 可能也會有本機帳戶。 本機和網域帳戶都應該經過檢查和管理，通常會有最少的使用量。 此外，我們也建議您針對「及時」功能檢查特殊許可權身分識別管理員，以降低系統管理許可權的可用性。
+雖然 Azure AD 是管理使用者存取權的建議方法，但請記住，如果您是在 Azure 虛擬機器中執行 Integration Runtime (VM) ，則您的 VM 也可能有本機帳戶。 本機和網域帳戶都應該以最少的使用量進行審核及管理。 此外，我們也建議您針對「即時」功能審核特殊許可權身分識別管理員，以降低系統管理許可權的可用性。
 
 * [Azure Data Factory 的角色和權限](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
-* [許可權身分識別管理員的資訊](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [特殊許可權身分識別管理員的資訊](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
 
-* [如何使用 PowerShell 取得 Azure AD 中的目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
 * [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
@@ -347,7 +347,7 @@ ms.locfileid: "86044170"
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在適用的情況下變更預設密碼
 
-**指導**方針： Azure Data Factory 使用 AZURE ACTIVE DIRECTORY （AD）來提供 Azure 入口網站以及 Azure Data Factory 主控台的存取權。 Azure AD 沒有預設密碼的概念，但是您必須負責變更或不允許任何自訂或協力廠商應用程式的預設密碼。
+**指導**方針： Azure Data Factory 使用 AZURE ACTIVE DIRECTORY (AD) 來提供 Azure 入口網站和 Azure Data Factory 主控台的存取權。 Azure AD 沒有預設密碼的概念，但是您必須負責變更或不允許任何自訂或協力廠商應用程式的預設密碼。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -355,20 +355,20 @@ ms.locfileid: "86044170"
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用專用的系統管理帳戶
 
-**指導**方針：建立使用專用系統管理帳戶的標準操作程式，以存取 Azure 控制平面（Azure 入口網站）以及 Azure Data Factory 主控台。 使用 Azure 資訊安全中心身分識別和存取管理來監視 Azure AD 內的系統管理帳戶數目。
+**指導**方針：使用專用的系統管理帳戶來建立標準作業程式，以存取 Azure 控制平面 (Azure 入口網站) 以及 Azure Data Factory 主控台。 使用 Azure 資訊安全中心身分識別和存取管理來監視 Azure AD 內的系統管理帳戶數目。
 
 此外，為了協助您追蹤專用系統管理帳戶，您可使用來自 Azure 資訊安全中心或內建 Azure 原則的建議，例如：
 - 應將一個以上的擁有者指派給您的訂用帳戶
 - 具有擁有者權限的已取代帳戶應該從您的訂用帳戶中移除
 - 具有擁有者權限的外部帳戶應該從您的訂用帳戶中移除
 
-如果您是在 Azure 虛擬機器上執行 Integration Runtime，Azure 虛擬機器上的系統管理員帳戶也可以使用 Azure 特殊許可權身分識別管理員（PIM）進行設定。 Azure 特殊許可權身分識別管理員提供數個選項，例如 [時間提升]、[多重要素驗證] 和 [委派選項]，因此許可權僅適用于特定的時間範圍，而且需要第二個人員核准。
+如果您是在 Azure 虛擬機器上執行 Integration Runtime，Azure 虛擬機器上的系統管理員帳戶也可以使用 Azure 特殊許可權身分識別管理員設定 (PIM) 。 Azure 特殊許可權身分識別管理員提供數個選項，例如及時提高許可權、Multi-Factor Authentication 和委派選項，因此許可權僅適用于特定的時間範圍，而且需要第二人核准。
 
-* [瞭解 Azure 資訊安全中心身分識別和存取](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [瞭解 Azure 資訊安全中心身分識別和存取權](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
 * [如何使用 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-* [許可權身分識別管理員的資訊](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [特殊許可權身分識別管理員的資訊](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
 
 * [Azure Data Factory 的角色和權限](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
@@ -378,11 +378,11 @@ ms.locfileid: "86044170"
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
-**指引**：使用 Azure 應用程式註冊（服務主體）來抓取權杖，讓您的應用程式或函式可以用來存取及與您的復原服務保存庫進行互動。
+**指導**方針：使用 Azure 應用程式註冊 (服務主體) 來取出您的應用程式或函式可用來存取和與您的復原服務保存庫進行互動的權杖。
 
 * [如何呼叫 Azure REST Api](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-* [如何向 Azure AD 註冊您的用戶端應用程式（服務主體）](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+* [如何使用 Azure AD 向 (服務主體) 註冊用戶端應用程式](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
 
 * [Azure 復原服務 API 資訊](https://docs.microsoft.com/rest/api/recoveryservices/)
 
@@ -416,11 +416,11 @@ ms.locfileid: "86044170"
 
 **責任**：客戶
 
-### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：從系統管理客戶紀錄及警示可疑活動
+### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：來自系統管理帳戶的可疑活動記錄和警示
 
-**指導**方針：當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory 的安全性報告來產生記錄檔和警示。 使用 Azure 資訊安全中心來監視身分識別和存取活動。
+**指導**方針：當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory 的安全性報告來產生記錄和警示。 使用 Azure 資訊安全中心來監視身分識別和存取活動。
 
-如果您是在 Azure 虛擬機器（VM）上執行 Integration Runtime，您也可以將 VM 上線以 Azure Sentinel。 Microsoft Azure Sentinel 是可調整的雲端原生安全性資訊事件管理 (SIEM) 和安全性協調流程自動化回應 (SOAR) 解決方案。 Azure Sentinel 提供整個企業的智慧型安全性分析和威脅情報，並針對警示偵測、威脅可見性、主動式搜捕及回應威脅提供單一解決方案。
+如果您是在 Azure 虛擬機器上執行 Integration Runtime (VM) ，您也可以將 VM 上線以進行 Azure Sentinel。 Microsoft Azure Sentinel 是可調整的雲端原生安全性資訊事件管理 (SIEM) 和安全性協調流程自動化回應 (SOAR) 解決方案。 Azure Sentinel 提供整個企業的智慧型安全性分析和威脅情報，並針對警示偵測、威脅可見性、主動式搜捕及回應威脅提供單一解決方案。
 
 * [如何識別已標示為有風險活動的 Azure AD 使用者](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
@@ -444,17 +444,17 @@ ms.locfileid: "86044170"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導**方針：資料處理站可與 Azure 資源的受控識別相關聯，以代表特定的資料處理站。 您可以使用此受控識別來進行 Azure SQL Database 驗證。 指定的處理站可以使用此身分識別從您資料庫存取資料，或從您的資料庫複製資料。
+**指導**方針：資料處理站可以與代表特定資料處理站的 Azure 資源受控識別相關聯。 您可以使用此受控識別來進行 Azure SQL Database 驗證。 指定的處理站可以使用此身分識別從您資料庫存取資料，或從您的資料庫複製資料。
 
-如果您在 Azure 虛擬機器上執行 Integration Runtime （IR），您可以使用受控識別來向任何支援 Azure AD 驗證的服務進行驗證，包括 Key Vault，而不需要在您的程式碼中有任何認證。 在虛擬機器上執行的程式碼可以使用受控識別來要求支援 Azure AD authentication 之服務的存取權杖。
+如果您是在 Azure 虛擬機器上執行 Integration Runtime (IR) ，則可以使用受控識別向任何支援 Azure AD 驗證的服務進行驗證，包括 Key Vault，而不需要在您的程式碼中使用任何認證。 您在虛擬機器上執行的程式碼可以使用受控識別來要求支援 Azure AD authentication 之服務的存取權杖。
 
 * [如何建立和設定 Azure AD 實例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
-* [什麼是適用於 Azure 資源的受控識別？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* [什麼是 Azure 資源受控識別？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-* [使用 Azure Data Factory 複製和轉換 Azure SQL Database 中的資料](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#using-service-principal-authentication)
+* [使用 Azure Data Factory 在 Azure SQL Database 中複製和轉換資料](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#using-service-principal-authentication)
 
-* [如何使用 Azure SQL Database 設定和管理 Azure Active Directory 驗證](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
+* [如何使用 Azure SQL Database 來設定和管理 Azure Active Directory authentication](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
 
 **Azure 資訊安全中心監視**：是
 
@@ -462,9 +462,9 @@ ms.locfileid: "86044170"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
-**指引**： AZURE ACTIVE DIRECTORY （AD）提供可協助您探索過時帳戶的記錄檔。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。
+**指導**方針： AZURE ACTIVE DIRECTORY (AD) 提供記錄檔，以協助您探索過時的帳戶。 此外，使用 Azure 身分識別存取審核來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。
 
-如果您在 Azure 虛擬機器中執行執行時間整合，您將需要檢查本機安全性群組和使用者，以確定沒有任何可能危害系統的非預期帳戶。
+如果您執行的是 Azure 虛擬機器中的執行時間整合，您將需要檢查本機安全性群組和使用者，以確定沒有任何未預期的帳戶可能會危害系統。
 
 * [如何使用 Azure 身分識別存取權檢閱](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 
@@ -478,13 +478,13 @@ ms.locfileid: "86044170"
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：監視嘗試存取已停用的認證
 
-**指引**：您可以存取 AZURE ACTIVE DIRECTORY （AD）登入活動、audit 和風險事件記錄檔來源，讓您可以與任何 SIEM/監視工具整合。 若要簡化此程式，您可以建立 Azure AD 使用者帳戶的診斷設定，並將 audit 記錄和登入記錄傳送到 Log Analytics 工作區。 您可以在 Log Analytics 中設定所需的記錄警示。
+**指導**方針：您可以存取 AZURE ACTIVE DIRECTORY (AD) 登入活動、audit 和風險事件記錄檔來源，讓您可以與任何 SIEM/監視工具整合。 您可以建立 Azure AD 使用者帳戶的診斷設定，並將審核記錄和登入記錄傳送至 Log Analytics 工作區，以簡化此程式。 您可以在 Log Analytics 中設定所需的記錄警示。
 
-如果您是在 Azure 虛擬機器（VM）中執行您的 Integration Runtime，請在該 VM 上 Azure Sentinel。 Microsoft Azure Sentinel 是可調整的雲端原生安全性資訊事件管理 (SIEM) 和安全性協調流程自動化回應 (SOAR) 解決方案。 Azure Sentinel 提供整個企業的智慧型安全性分析和威脅情報，並針對警示偵測、威脅可見性、主動式搜捕及回應威脅提供單一解決方案。
+如果您是在 Azure 虛擬機器中執行 Integration Runtime (VM) ，請在該 VM 上進行 Azure Sentinel。 Microsoft Azure Sentinel 是可調整的雲端原生安全性資訊事件管理 (SIEM) 和安全性協調流程自動化回應 (SOAR) 解決方案。 Azure Sentinel 提供整個企業的智慧型安全性分析和威脅情報，並針對警示偵測、威脅可見性、主動式搜捕及回應威脅提供單一解決方案。
 
 * [如何將 Azure 活動記錄整合到 Azure 監視器中](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
-* [使用 Azure Active Directory 授權事件中樞資源的存取權](https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory)
+* [使用 Azure Active Directory 授權存取事件中樞資源](https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory)
 
 * [如何讓 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
@@ -494,7 +494,7 @@ ms.locfileid: "86044170"
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差警示
 
-**指導**方針：使用 AZURE ACTIVE DIRECTORY （AD）做為您 Azure Data Factory 資源（例如 Azure SQL Database 或 Azure 虛擬機器）的中央驗證和授權系統。 如需控制平面（Azure 入口網站）上的帳戶登入行為偏差，請使用 Azure AD Identity Protection 和風險偵測功能來設定對偵測到與使用者身分識別相關之可疑動作的自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
+**指導**方針：使用 AZURE ACTIVE DIRECTORY (AD) 作為 Azure Data Factory 資源（例如 Azure SQL Database 或 Azure 虛擬機器）的中央驗證和授權系統。 針對控制項平面上的帳戶登入行為偏差 (Azure 入口網站) ，請使用 Azure AD Identity Protection 和風險偵測功能，來設定偵測到與使用者身分識別相關的可疑動作的自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
 * [如何檢視有風險的 Azure AD 登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
@@ -512,7 +512,7 @@ ms.locfileid: "86044170"
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支援案例期間為 Microsoft 提供相關客戶資料的存取權
 
-**指引**：在 Microsoft 需要存取客戶資料的支援案例中，Azure 客戶加密箱會提供介面供客戶審查及核准或拒絕客戶資料存取要求。 請注意，雖然 Azure 加密箱無法供 Azure Data Factory 本身使用，但 Azure 加密箱確實支援 Azure SQL Database 和 Azure 虛擬機器。
+**指導**方針：在 Microsoft 需要存取客戶資料的支援案例中，Azure 客戶加密箱會提供一個介面，讓客戶可以檢查及核准或拒絕客戶資料存取要求。 請注意，雖然 Azure 加密箱無法用於 Azure Data Factory 本身，但 Azure 加密箱可支援 Azure SQL Database 和 Azure 虛擬機器。
 
 * [瞭解客戶加密箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
@@ -528,7 +528,7 @@ ms.locfileid: "86044170"
 
 **指引**：使用標籤協助追蹤可儲存或處理敏感性資訊的 Azure 資源。
 
-使用 Azure SQL Database 資料探索和分類功能。 資料探索和分類提供了內建于 Azure SQL Database 的先進功能，可用於探索、分類、標記 &amp; 保護資料庫中的敏感性資料。
+使用 Azure SQL Database 資料探索和分類功能。 資料探索和分類提供內建于 Azure SQL Database 的先進功能，可用於探索、分類、標記 &amp; 保護資料庫中的敏感性資料。
 
 * [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -540,7 +540,7 @@ ms.locfileid: "86044170"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 整合執行時間應該以虛擬網路（VNet）/子網區隔，並適當地標記。
+**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 整合執行時間應以虛擬網路 (VNet) /子網，並適當地標記。
 
  您也可以使用私人端點來執行網路隔離。 Azure 私人端點是一種網路介面，可讓您以私人且安全地方式連線至 Azure Private Link 所支援的服務。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。
 
@@ -550,7 +550,7 @@ ms.locfileid: "86044170"
 
 * [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-* [瞭解私用連結](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
+* [瞭解 Private Link](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -558,15 +558,15 @@ ms.locfileid: "86044170"
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的敏感性資訊傳輸
 
-**指導**方針：若為數據源（例如 Azure SQL Database）儲存或處理 Azure Data Factory 部署的機密資訊，請使用標記將相關資源標示為機密。
+**指導**方針：針對資料來源 (例如 Azure SQL Database) 儲存或處理 Azure Data Factory 部署的機密資訊，請使用標記將相關的資源標記為機密。
 
-若有可用的私用連結，請使用私人端點來保護任何連結到您 Azure Data Factory 管線的資源。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您也可以在網路安全性群組（NSG）上設定一組嚴格的輸出規則，並將該 NSG 與您的子網產生關聯，藉此降低資料外泄的風險。
+如果有可用的 Private Link，請使用私人端點來保護任何連結至 Azure Data Factory 管線的資源。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您也可以在網路安全性群組上設定一組嚴格的輸出規則 (NSG) ，並將該 NSG 與您的子網產生關聯，以降低資料遭到外泄的風險。
 
 * [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 * [如何建立具有安全性設定的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
-* [瞭解 Azure 私人連結](https://docs.microsoft.com/azure/private-link/private-link-overview)
+* [瞭解 Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
 * [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -576,11 +576,11 @@ ms.locfileid: "86044170"
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
-**指導**方針：如果雲端資料存放區支援 HTTPS 或 tls，Data Factory 和雲端資料存放區之間的資料移動服務之間的所有資料傳輸都會透過安全通道 HTTPS 或 TLS 進行。 使用的 TLS 版本為 1.2。
+**指導**方針：如果雲端資料存放區支援 HTTPS 或 tls，則 Data Factory 中的資料移動服務與雲端資料存放區之間的所有資料傳輸，都會透過安全通道 HTTPS 或 tls。 使用的 TLS 版本為 1.2。
 
 所有連到 Azure SQL Database 和「Azure SQL 資料倉儲」的連線在資料透過傳輸進出資料庫時，需要加密 (SSL/TLS)。 當您使用 JSON 編輯器來編寫管線時，在連接字串中新增 encryption 屬性，並將它設定為 true。 針對「Azure 儲存體」，您可以在連接字串中使用 HTTPS。
 
-* [瞭解 Azure Data Factory 中的傳輸中加密](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
+* [瞭解 Azure Data Factory 中的傳輸加密](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 
 **Azure 資訊安全中心監視**：是
 
@@ -588,9 +588,9 @@ ms.locfileid: "86044170"
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用作用中探索工具來識別敏感性資料
 
-**指導**方針：如果您使用 Azure Data Factory 來複製和轉換 Azure SQL Database 實例，請使用 Azure SQL Database 資料探索和分類功能。 資料探索和分類提供了內建于 Azure SQL Database 的先進功能，可用於探索、分類、標記 &amp; 保護資料庫中的敏感性資料。
+**指導**方針：如果您使用 Azure Data Factory 複製和轉換 Azure SQL Database 實例，請使用 Azure SQL Database 資料探索和分類功能。 資料探索和分類提供內建于 Azure SQL Database 的先進功能，可用於探索、分類、標記 &amp; 保護資料庫中的敏感性資料。
 
-資料探索和分類功能尚無法供其他 Azure 服務使用。
+其他 Azure 服務尚無法使用資料探索和分類功能。
 
 * [如何使用 Azure SQL Server 的資料探索和分類](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
 
@@ -598,15 +598,15 @@ ms.locfileid: "86044170"
 
 **責任**：客戶
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用以角色為基礎的存取控制來控制對資源的存取
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指導**方針：使用 AZURE ACTIVE DIRECTORY （AD）角色型存取控制（RBAC）來控制 Azure Data Factory 控制平面（Azure 入口網站）的存取權。
+**指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來控制 Azure 入口網站)  (Azure Data Factory 控制平面的存取權。
 
 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為「參與者」或「擁有者」角色，或是 Azure 訂用帳戶的「管理員」。
 
-如需 Data Factory 資料來源（例如 Azure SQL Database），請參閱該服務的安全性基準，以取得有關 RBAC 的詳細資訊。
+針對您的 Data Factory 資料來源（例如 Azure SQL Database），請參閱該服務的安全性基準，以取得有關 Azure RBAC 的詳細資訊。
 
-* [如何在 Azure 中設定 RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [如何設定 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 * [Azure Data Factory 的角色和權限](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
@@ -628,13 +628,13 @@ ms.locfileid: "86044170"
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
-**指導**方針：建議您為與 Azure Data Factory 部署相關的任何資料存放區啟用資料加密機制。 如需有關待用資料加密的詳細資訊，您可以參考該服務的安全性基準。
+**指導**方針：建議您針對與 Azure Data Factory 部署相關的任何資料存放區啟用資料加密機制。 您可以參考該服務的安全性基準，以取得待用資料加密的相關資訊。
 
-如果您是在 Azure 虛擬機器中執行 Integration Runtime，Windows 虛擬機器（VM）上的虛擬磁片會使用伺服器端加密或 Azure 磁片加密（ADE）在待用狀態中進行加密。 Azure 磁碟加密會利用 Windows 的 BitLocker 功能，在來賓 VM 中使用客戶管理的金鑰來加密受控磁碟。 使用客戶管理的金鑰進行伺服器端加密，可讓您藉由加密儲存庫服務中的資料，對您的 VM 使用任何作業系統類型和映像，而改善 ADE 的效能。
+如果您是在 Azure 虛擬機器中執行 Integration Runtime，Windows 虛擬機器 (VM) 上的虛擬磁片會使用伺服器端加密或 Azure 磁片加密 (ADE) 進行靜態加密。 Azure 磁碟加密會利用 Windows 的 BitLocker 功能，在來賓 VM 中使用客戶管理的金鑰來加密受控磁碟。 使用客戶管理的金鑰進行伺服器端加密，可讓您藉由加密儲存庫服務中的資料，對您的 VM 使用任何作業系統類型和映像，而改善 ADE 的效能。
 
-您可以在 Azure Key Vault 中儲存認證或秘密值，並在管線執行期間將其用於傳遞至您的活動。 您也可以在 Azure Key Vault 中儲存資料存放區和計算的認證。 執行活動 (該活動使用資料存放區/計算) 時，Azure Data Factory 會擷取認證。
+您可以將認證或秘密值儲存在 Azure Key Vault 中，並在管線執行期間使用它們來傳遞至您的活動。 您也可以在 Azure Key Vault 中儲存資料存放區和計算的認證。 執行活動 (該活動使用資料存放區/計算) 時，Azure Data Factory 會擷取認證。
 
-* [瞭解 Azure Data Factory 中的待用加密](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
+* [瞭解 Azure Data Factory 中的靜止加密](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 
 * [Azure 受控磁片的伺服器端加密](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption)
 
@@ -650,13 +650,13 @@ ms.locfileid: "86044170"
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：針對重要 Azure 資源的變更留下記錄和發出警示
 
-**指導**方針：使用 Azure 監視器搭配 Azure 活動記錄來建立 Azure Data Factory 和相關資源發生變更時的警示。
+**指導**方針：使用 Azure 監視器搭配 Azure 活動記錄檔，以建立 Azure Data Factory 和相關資源發生變更時的警示。
 
 * [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
 * [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
-* [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging) (部分機器翻譯)
+* [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -668,15 +668,15 @@ ms.locfileid: "86044170"
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
-**指導**方針：如果您使用 Azure SQL Database 做為資料存放區，請啟用 Azure SQL Database 的 Advanced data Security，並遵循在 Azure SQL server 上執行弱點評定 Azure 資訊安全中心上的建議。
+**指導**方針：如果您使用 Azure SQL Database 作為資料存放區，請啟用 Azure SQL Database 的 Advanced data Security，並遵循 Azure 資訊安全中心在 Azure SQL server 上執行弱點評定的建議。
 
-如果您是在 Azure 虛擬機器（VM）中執行 Integration Runtime，請遵循在 Vm 上執行弱點評定 Azure 資訊安全中心中的建議。 使用 Azure 安全性建議或協力廠商解決方案來執行虛擬機器的弱點評量。
+如果您是在 Azure 虛擬機器 (VM) 中執行 Integration Runtime，請遵循 Azure 資訊安全中心在 Vm 上執行弱點評定的建議。 使用「Azure 安全性建議」或協力廠商解決方案來執行虛擬機器的弱點評定。
 
 * [如何在 Azure SQL Database 上執行弱點評定](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
 * [如何啟用 Advanced Data Security](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
-* [如何實行 Azure 資訊安全中心弱點評估建議](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+* [如何實行 Azure 資訊安全中心弱點評定建議](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
 
 **Azure 資訊安全中心監視**：是
 
@@ -684,7 +684,7 @@ ms.locfileid: "86044170"
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自動化的作業系統修補程式管理解決方案
 
-**指導**方針：如果您在 Azure 虛擬機器（VM）中執行 Integration Runtime，請使用 azure 更新管理解決方案來管理 vm 的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher （Updates Publisher）之類的工具可讓您將自訂更新發佈至 Windows Server Update Services （WSUS）。 此案例可讓更新管理利用協力廠商軟體，修補使用 Configuration Manager 作為其更新存放庫的機器。
+**指導**方針：如果您是在 Azure 虛擬機器 (VM) 中執行 Integration Runtime，請使用 Azure 更新管理解決方案來管理 vm 的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理修補使用 Configuration Manager 作為其更新存放庫（具有協力廠商軟體）的機器。
 
 針對 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力防範客戶資料外洩和暴露。 為確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制和功能。
 
@@ -698,9 +698,9 @@ ms.locfileid: "86044170"
 
 **責任**：共用
 
-### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：為協力廠商軟體標題部署自動修補程式管理解決方案
+### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：為協力廠商軟體專案部署自動化的修補程式管理解決方案
 
-**指導**方針：如果您在 Azure 虛擬機器（VM）中執行 Integration Runtime，您可以使用協力廠商的修補程式管理解決方案。 您可以使用 Azure 更新管理解決方案來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher （Updates Publisher）之類的工具可讓您將自訂更新發佈至 Windows Server Update Services （WSUS）。 此案例可讓更新管理利用協力廠商軟體，修補使用 Configuration Manager 作為其更新存放庫的機器。
+**指導**方針：如果您要在 Azure 虛擬機器中執行 INTEGRATION RUNTIME (VM) ，您可以使用協力廠商修補程式管理解決方案。 您可以使用 Azure 更新管理解決方案來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理修補使用 Configuration Manager 作為其更新存放庫（具有協力廠商軟體）的機器。
 
 * [Azure 中的更新管理解決方案](https://docs.microsoft.com/azure/automation/automation-update-management)
 
@@ -712,7 +712,7 @@ ms.locfileid: "86044170"
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比較連續性弱點掃描
 
-**指導**方針：如果您在 Azure 虛擬機器上執行 Integration Runtime，請以一致的間隔匯出掃描結果，並比較結果，以確認是否已補救弱點。 當您使用 Azure 資訊安全中心建議的弱點管理建議時，您可以將資料透視到選取的解決方案入口網站，以查看歷程記錄掃描資料。
+**指導**方針：如果您是在 Azure 虛擬機器上執行 Integration Runtime，請在一致的間隔匯出掃描結果，並比較結果，以確認已補救弱點。 使用 Azure 資訊安全中心建議的弱點管理建議時，您可能會進入所選解決方案的入口網站以查看歷史掃描資料。
 
 * [瞭解虛擬機器的整合式弱點掃描器](https://docs.microsoft.com/azure/security-center/built-in-vulnerability-assessment)
 
@@ -722,9 +722,9 @@ ms.locfileid: "86044170"
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
-**指導**方針：如果您在 Azure 虛擬機器中執行 Integration Runtime，您可以使用原生弱點掃描器。 Azure 資訊安全中心隨附的弱點掃描器是由 Qualys 提供技術支援。 Qualys 的掃描器是用來即時識別 Azure 虛擬機器中弱點的引領工具。
+**指導**方針：如果您在 Azure 虛擬機器中執行您的 Integration Runtime，您可以使用原生弱點掃描器。 Azure 資訊安全中心隨附的弱點掃描器是由 Qualys 提供技術支援。 Qualys 的掃描器是用來即時識別 Azure 虛擬機器中弱點的引領工具。
 
-資訊安全中心會在發現弱點時，以建議的形式來呈現結果和相關資訊。 相關資訊包括補救步驟、相關的 CVE、CVSS 分數等等。 您可以針對一或多個訂用帳戶或特定虛擬機器，來查看已識別的弱點。
+資訊安全中心會在發現弱點時，以建議的形式來呈現結果和相關資訊。 相關資訊包括補救步驟、相關的 CVE、CVSS 分數等等。 您可以針對一或多個訂用帳戶或特定的虛擬機器，查看已識別的弱點。
 
 * [虛擬機器的整合式弱點掃描器](https://docs.microsoft.com/azure/security-center/built-in-vulnerability-assessment)
 
@@ -766,7 +766,7 @@ ms.locfileid: "86044170"
 
 **指引**：在適當的情況下，使用標籤、管理群組和個別訂閱來組織及追蹤 Azure 資源。 請定期調節清查，並確保會及時刪除訂閱中未經授權的資源。
 
-此外，使用 Azure 原則來限制可以使用下列內建原則定義，在客戶訂用帳戶中建立的資源類型：
+此外，您也可以使用下列內建原則定義，使用 Azure 原則對可在客戶訂用帳戶 () s 中建立的資源類型進行限制：
 - 不允許的資源類型
 - 允許的資源類型
 
@@ -790,7 +790,7 @@ ms.locfileid: "86044170"
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 
-**指引**：使用 Azure 原則來限制可在您的訂用帳戶中建立的資源類型。
+**指導**方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型（ (s) ）施加限制。
 
 使用 Azure Resource Graph 來查詢/探索其訂閱內的資源。 確保已核准環境中的所有 Azure 資源。
 
@@ -804,9 +804,9 @@ ms.locfileid: "86044170"
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：監視計算資源內未經核准的軟體應用程式
 
-**指導**方針：如果您在 Azure 虛擬機器（VM）中執行 Integration Runtime，請利用 Azure 虛擬機器清查，自動收集有關虛擬機器上所有軟體的資訊。 Azure 自動化會在部署、作業和解除委任工作負載與資源期間，提供完整的控制權。
+**指導**方針：如果您要在 Azure 虛擬機器中執行 INTEGRATION RUNTIME (VM) ，請利用 Azure 虛擬機器清查，將虛擬機器上所有軟體的相關資訊收集自動化。 Azure 自動化會在部署、作業和解除委任工作負載與資源期間，提供完整的控制權。
 
-注意： [軟體名稱]、[版本]、[發行者] 和 [重新整理時間] 可從 Azure 入口網站取得。 若要取得安裝日期和其他資訊的存取權，客戶必須啟用來賓層級診斷，並將 Windows 事件記錄檔帶入 Log Analytics 工作區。
+注意：您可以從 Azure 入口網站取得軟體名稱、版本、發行者和重新整理時間。 若要取得安裝日期和其他資訊的存取權，客戶必須啟用來賓層級的診斷，並將 Windows 事件記錄檔帶入 Log Analytics 工作區。
 
 * [Azure 自動化簡介](https://docs.microsoft.com/azure/automation/automation-intro)
 
@@ -818,7 +818,7 @@ ms.locfileid: "86044170"
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未經核准的 Azure 資源和軟體應用程式
 
-**指導**方針：如果您在 Azure 虛擬機器中執行 Integration Runtime，Azure 自動化會在部署、操作和解除委任工作負載和資源期間，提供完整的控制權。 您可以使用變更追蹤來識別虛擬機器上安裝的所有軟體。 您可以執行自己的進程，或使用 Azure 自動化狀態設定來移除未經授權的軟體。
+**指導**方針：如果您是在 Azure 虛擬機器中執行 Integration Runtime，Azure 自動化在部署、作業和解除委任工作負載和資源時，提供完整的控制權。 您可以使用變更追蹤來識別安裝在虛擬機器上的所有軟體。 您可以執行自己的處理常式，或使用 Azure 自動化狀態設定來移除未經授權的軟體。
 
 * [Azure 自動化簡介](https://docs.microsoft.com/azure/automation/automation-intro)
 
@@ -832,7 +832,7 @@ ms.locfileid: "86044170"
 
 ### <a name="68-use-only-approved-applications"></a>6.8：僅使用已核准的應用程式
 
-**指導**方針：如果您是在 Azure 虛擬機器（VM）中執行 Integration Runtime，請使用 Azure 資訊安全中心彈性應用程式控制，以確保只有已授權的軟體會執行，而且所有未經授權的軟體都會遭到封鎖而無法在 vm 上執行。
+**指導**方針：如果您要在 Azure 虛擬機器中執行 INTEGRATION RUNTIME (VM) ，請使用 Azure 資訊安全中心的彈性應用程式控制，以確保只有授權的軟體會執行，而且所有未經授權的軟體都會在 vm 上遭到封鎖而無法執行。
 
 * [如何使用 Azure 資訊安全中心適應性應用程式控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
@@ -856,9 +856,9 @@ ms.locfileid: "86044170"
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：維護已核准軟體標題的清查
 
-**指導**方針：彈性應用程式控制是來自 Azure 資訊安全中心的智慧型、自動化、端對端解決方案，可協助您控制哪些應用程式可在您的 azure 和非 azure 機器上執行（Windows 和 Linux）。 如果這不符合您組織的需求，請執行協力廠商解決方案。
+**指導**方針：自我調整應用程式控制是 Azure 資訊安全中心的智慧型、自動化、端對端解決方案，可協助您控制哪些應用程式可以在 azure 和非 azure 電腦上執行 (Windows 和 Linux) 。 如果這不符合您組織的需求，請執行協力廠商解決方案。
 
-請注意，這僅適用于您的 Integration Runtime 在 Azure 虛擬機器中執行的情況。
+請注意，這只適用于您的 Integration Runtime 正在 Azure 虛擬機器中執行時。
 
 * [如何使用 Azure 資訊安全中心適應性應用程式控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
@@ -878,9 +878,9 @@ ms.locfileid: "86044170"
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制使用者在計算資源內執行指令碼的能力
 
-**指導**方針：如果您在 Azure 虛擬機器中執行執行時間整合，視腳本類型而定，您可以使用作業系統特定的設定或協力廠商資源來限制使用者在 azure 計算資源內執行腳本的能力。 您也可以利用 Azure 資訊安全中心的彈性應用程式控制，確保只有授權的軟體會執行，而且所有未經授權的軟體都遭封鎖而無法在 Azure 虛擬機器上執行。
+**指導**方針：如果您是在 Azure 虛擬機器中執行執行時間整合，則根據腳本的類型，您可能會使用作業系統特定設定或協力廠商資源，以限制使用者在 azure 計算資源內執行腳本的能力。 您也可以運用 Azure 資訊安全中心的自我調整應用程式控制，以確保只有授權的軟體會執行，而且所有未經授權的軟體都會在 Azure 虛擬機器上遭到封鎖而無法執行。
 
-* [如何控制 Windows 環境中的 PowerShell 腳本執行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [如何在 Windows 環境中控制 PowerShell 腳本執行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 * [如何使用 Azure 資訊安全中心適應性應用程式控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
@@ -890,7 +890,7 @@ ms.locfileid: "86044170"
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以實體或邏輯方式隔離高風險的應用程式
 
-**指導**方針：在您的 azure 環境中部署的高風險應用程式可能會使用虛擬網路、子網、訂用帳戶、管理群組等來進行隔離，並使用 Azure 防火牆、Web 應用程式防火牆（WAF）或網路安全性群組（NSG）進行充分的保護。
+**指導**方針：在 azure 環境中部署的高風險應用程式可能會使用虛擬網路、子網、訂用帳戶、管理群組等來隔離，並使用 Azure 防火牆、Web 應用程式防火牆 (WAF) 或網路安全性群組 (NSG) 來充分保護這些應用程式。
 
 * [Azure 中的虛擬網路和虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/network-overview)
 
@@ -916,7 +916,7 @@ ms.locfileid: "86044170"
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
-**指引**：使用 Azure 原則定義和執行 Azure Data Factory 的標準安全性設定。 使用 "DataFactory" 命名空間中 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure Data Factory 實例的設定。
+**指導**方針：使用 Azure 原則定義和實行 Azure Data Factory 的標準安全性設定。 使用 "DataFactory" 命名空間中 Azure 原則別名來建立自訂原則，以對 Azure Data Factory 實例的設定進行審核或強制執行。
 
 * [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -928,11 +928,11 @@ ms.locfileid: "86044170"
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的作業系統設定
 
-**指導**方針：如果您在 Azure 虛擬機器中執行執行時間整合，請使用 Azure 資訊安全中心建議 [修復您虛擬機器] 上安全性設定中的弱點，以維護所有計算資源的安全性設定。
+**指導**方針：如果您要在 Azure 虛擬機器中執行您的執行時間整合，請使用 Azure 資訊安全中心建議 [補救您虛擬機器上安全性設定中的弱點]，以維護所有計算資源上的安全性設定。
 
 * [如何監視 Azure 資訊安全中心建議](https://docs.microsoft.com/azure/security-center/security-center-recommendations)
 
-* [如何補救 Azure 資訊安全中心建議](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+* [如何修復 Azure 資訊安全中心建議](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
 
 **Azure 資訊安全中心監視**：是
 
@@ -954,11 +954,11 @@ ms.locfileid: "86044170"
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：維護安全的作業系統設定
 
-**指導**方針：如果您在 Azure 虛擬機器（VM）中執行 Integration Runtime，請注意有數個選項可維護 vm 的安全設定以進行部署：
-- Azure Resource Manager 範本：這些是用來從 Azure 入口網站部署 VM 的 JSON 型檔案，而自訂範本則需要維護。 Microsoft 會在基底範本上執行維護。
-- 自訂虛擬硬碟（VHD）：在某些情況下，可能需要使用自訂 VHD 檔案，例如處理無法透過其他方式管理的複雜環境。 -Azure 自動化狀態設定：部署基本 OS 之後，這可用於更細微的設定控制，並透過自動化架構強制執行。
+**指導**方針：如果您是在 Azure 虛擬機器 (VM) 中執行 Integration Runtime，請注意有幾個選項可維護 vm 的安全設定以進行部署：
+- Azure Resource Manager 範本：這些是以 JSON 為基礎的檔案，用來從 Azure 入口網站部署 VM，而且必須維護自訂範本。 Microsoft 會在基底範本上執行維護。
+- 自訂虛擬硬碟 (VHD) ：在某些情況下，可能需要使用自訂 VHD 檔案，例如在處理無法透過其他方式管理的複雜環境時。 -Azure 自動化狀態設定：一旦部署基底作業系統之後，就可以使用它來更細微地控制設定，並透過自動化架構強制執行。
 
-在大部分的情況下，與 Azure 自動化 Desired State Configuration 結合的 Microsoft 基底 VM 範本，可以協助滿足和維護安全性需求。
+在大部分的情況下，與 Azure 自動化 Desired State Configuration 結合的 Microsoft 基底 VM 範本，可協助滿足和維護安全性需求。
 
 * [如何下載 VM 範本的資訊](https://docs.microsoft.com/azure/virtual-machines/windows/download-template)
 
@@ -984,15 +984,15 @@ ms.locfileid: "86044170"
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全地儲存自訂作業系統映像
 
-**指導**方針：如果使用自訂映射，請使用角色型存取控制（RBAC），以確保只有授權的使用者可以存取映射。 針對容器映射，請將其儲存在 Azure Container Registry 中，並利用 RBAC 來確保只有授權的使用者可以存取影像。
+**指導**方針：如果使用自訂映射，請使用 azure 角色型存取控制 (azure RBAC) ，以確保只有獲得授權的使用者可以存取影像。 針對容器映射，請將它們儲存在 Azure Container Registry 中，並利用 Azure RBAC 來確保只有授權的使用者可以存取影像。
 
 Data Factory 參與者角色可以用來建立和管理 Data factory，以及其中的子資源。
 
-* [瞭解 Azure 中的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-* [瞭解 Container Registry 的 RBAC](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [瞭解適用于 Container Registry 的 Azure RBAC](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-* [如何在 Azure 中設定 RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [如何設定 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 * [Azure Data Factory 的角色和權限](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
@@ -1002,7 +1002,7 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署適用于 Azure 資源的設定管理工具
 
-**指引**：在 "DataFactory" 命名空間中使用內建的 Azure 原則定義和 Azure 原則別名，以建立自訂原則來警示、審查和強制執行系統組態。 此外，開發流程和管線以管理原則例外狀況。
+**指導**方針：使用內建的 Azure 原則定義以及 "DataFactory" 命名空間中的 Azure 原則別名來建立自訂原則，以警示、審核和強制執行系統組態。 此外，開發流程和管線以管理原則例外狀況。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -1012,7 +1012,7 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8：部署作業系統的設定管理工具
 
-**指導**方針：如果您的 Integration Runtime 在 Azure 虛擬機器中執行，則可適用此建議。 Azure 自動化狀態設定是適用于任何雲端或內部部署資料中心內 Desired State Configuration （DSC）節點的設定管理服務。 它可讓您從中央、安全的位置快速且輕鬆地延展性到數千部電腦。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。
+**指導**方針：如果您的 Integration Runtime 是在 Azure 虛擬機器中執行，則可以套用這項建議。 Azure 自動化狀態設定是在任何雲端或內部部署資料中心內 Desired State Configuration (DSC) 節點的設定管理服務。 它可讓您從中央、安全的位置快速且輕鬆地延展性到數千部電腦。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。
 
 * [將機器上架交由 Azure Automation State Configuration 管理](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
 
@@ -1022,7 +1022,7 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：執行 Azure 資源的自動化設定監視
 
-**指引**：在 "DataFactory" 命名空間中使用內建的 Azure 原則定義和 Azure 原則別名，以建立自訂原則來警示、審查和強制執行系統組態。 使用 Azure 原則 [audit]、[deny] 和 [deploy if not 存在] 自動強制執行 Azure 資源的設定。
+**指導**方針：使用內建的 Azure 原則定義以及 "DataFactory" 命名空間中的 Azure 原則別名來建立自訂原則，以警示、審核和強制執行系統組態。 使用 Azure 原則 [audit]、[拒絕] 和 [部署（如果不存在）]，自動強制執行 Azure 資源的設定。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -1032,7 +1032,7 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：為作業系統實作自動化的設定監視
 
-**指導**方針：如果您的 Integration Runtime 在 Azure 虛擬機器中執行，則可適用此建議。 Azure 自動化狀態設定是適用于任何雲端或內部部署資料中心內 Desired State Configuration （DSC）節點的設定管理服務。 它可讓您從中央、安全的位置快速且輕鬆地延展性到數千部電腦。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。
+**指導**方針：如果您的 Integration Runtime 是在 Azure 虛擬機器中執行，則可以套用這項建議。 Azure 自動化狀態設定是在任何雲端或內部部署資料中心內 Desired State Configuration (DSC) 節點的設定管理服務。 它可讓您從中央、安全的位置快速且輕鬆地延展性到數千部電腦。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。
 
 * [將機器上架交由 Azure Automation State Configuration 管理](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
 
@@ -1042,15 +1042,15 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 秘密
 
-**指導**方針：搭配 Azure Key Vault 使用受控服務識別，以簡化及保護雲端應用程式的秘密管理。
+**指導**方針：使用受控服務識別搭配 Azure Key Vault，以簡化和保護雲端應用程式的秘密管理。
 
-您也可以在 Azure Key Vault 中儲存認證或秘密值，並在管線執行期間將其用於傳遞至您的活動。 請確定已啟用虛刪除。
+您也可以將認證或秘密值儲存在 Azure Key Vault 中，並在管線執行期間使用它們來傳遞至您的活動。 確定已啟用虛刪除。
 
 * [如何與 Azure 受控識別整合](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
 
 * [如何建立 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [如何使用受控識別提供 Key Vault 驗證](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [如何使用受控識別來提供 Key Vault authentication](https://docs.microsoft.com/azure/key-vault/managed-identity)
 
 * [在管線活動中使用 Azure Key Vault 祕密](https://docs.microsoft.com/azure/data-factory/how-to-use-azure-key-vault-secrets-pipeline-activities)
 
@@ -1062,7 +1062,7 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
-**指導**方針：建立資料處理站時，可以建立受控識別，並搭配 factory 建立。 受控識別是向 Azure Active Directory 註冊的受控應用程式，代表此特定的 data factory。
+**指導**方針：建立資料處理站時，可以建立受控識別，以及建立 factory。 受控識別是已向 Azure Active Directory 註冊的受控應用程式，並代表這個特定的資料處理站。
 
 * [Azure Data Factory 的受控識別](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)
 
@@ -1086,7 +1086,7 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
-**指導**方針：如果您在 Azure 虛擬機器中執行 Integration Runtime，您可以使用 azure Windows 虛擬機器的 Microsoft Antimalware 持續監視及保護您的資源。
+**指導**方針：如果您是在 Azure 虛擬機器中執行您的 Integration Runtime，您可以使用 azure Windows 虛擬機器的 Microsoft Antimalware，持續監視及保護您的資源。
 
 * [如何設定雲端服務和虛擬機器的 Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 
@@ -1098,9 +1098,9 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 **指引**：支援 Azure 服務的基礎主機 (例如 Azure App Service) 已啟用 Microsoft 反惡意程式碼功能，但不會在您的內容上執行該功能。
 
-預先掃描任何正在上傳到非計算 Azure 資源的檔案，例如 App Service、Data Lake Storage、Blob 儲存體等等。
+預先掃描即將上傳至非計算 Azure 資源的任何檔案，例如 App Service、Data Lake Storage、Blob 儲存體等等。
 
-使用適用于資料服務的 Azure 資訊安全中心威脅偵測來偵測已上傳至儲存體帳戶的惡意程式碼。
+使用 Azure 資訊安全中心的資料服務威脅偵測來偵測上傳至儲存體帳戶的惡意程式碼。
 
 * [瞭解 Azure 雲端服務和虛擬機器的 Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 
@@ -1112,7 +1112,7 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3：確保更新反惡意程式碼軟體和簽章
 
-**指導**方針：部署之後，Azure 的 Microsoft Antimalware 預設會自動安裝最新的簽章、平臺及引擎更新。 遵循 Azure 資訊安全中心中的建議：「計算 &amp; 應用程式」，以確保所有端點都是最新的簽章。 Windows OS 可以使用額外的安全性進一步保護，以使用與 Azure 資訊安全中心整合的 Microsoft Defender Advanced 威脅防護服務來限制病毒或惡意程式碼攻擊的風險。
+**指導**方針：部署時，適用于 Azure 的 Microsoft Antimalware 預設會自動安裝最新的簽章、平臺和引擎更新。 遵循 Azure 資訊安全中心中的建議：「計算 &amp; 應用程式」，以確保所有端點都是最新的簽章。 Windows OS 可利用額外的安全性進一步保護，以利用與 Azure 資訊安全中心整合的 Microsoft Defender 進階威脅防護服務，來限制病毒或惡意軟體攻擊的風險。
 
 * [如何部署 Azure 雲端服務和虛擬機器的 Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 
@@ -1128,11 +1128,11 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
-**指導**方針：如果您在 Azure 虛擬機器（VM）中執行 Integration Runtime，請啟用 Azure 備份並設定 VM，以及自動備份所需的頻率和保留期限。
+**指導**方針：如果您要在 Azure 虛擬機器中執行 INTEGRATION RUNTIME (VM) ，請啟用 Azure 備份並設定 vm，以及自動備份所需的頻率和保留期限。
 
-針對您的任何資料存放區，請參閱該服務的安全性基準，以取得如何執行定期、自動備份的建議。
+針對您的任何資料存放區，請參閱該服務的安全性基準，以取得有關如何執行定期自動備份的建議。
 
-* [Azure VM 備份總覽](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
+* [Azure VM 備份的總覽](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 
 * [從 VM 設定備份 Azure VM](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)
 
@@ -1140,13 +1140,13 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 **責任**：客戶
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份，並備份任何客戶管理的金鑰
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份並備份任何客戶管理的金鑰
 
-**指導**方針：如果您在 Azure 虛擬機器（VM）中執行 Integration Runtime，請啟用 Azure 備份和目標 azure vm，以及所需的頻率和保留週期。 備份 Azure Key Vault 中客戶管理的金鑰。
+**指導**方針：如果您要在 Azure 虛擬機器中執行 INTEGRATION RUNTIME (VM) ，請啟用 Azure 備份和目標 azure vm，以及所需的頻率和保留期限。 Azure Key Vault 內備份客戶管理的金鑰。
 
-針對您的任何資料存放區，請參閱該服務的安全性基準，以取得如何執行定期、自動備份的建議。
+針對您的任何資料存放區，請參閱該服務的安全性基準，以取得有關如何執行定期自動備份的建議。
 
-* [Azure VM 備份總覽](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
+* [Azure VM 備份的總覽](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 
 * [如何在 Azure 中備份金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
@@ -1156,7 +1156,7 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：驗證所有備份，包括客戶管理的金鑰
 
-**指導**方針：如果您在 Azure 虛擬機器中執行 Integration Runtime，請確定在 Azure 備份內定期執行內容資料還原的能力。 如有必要，請測試將內容還原至隔離的 VLAN。 定期測試已備份客戶管理金鑰的還原。
+**指導**方針：如果您是在 Azure 虛擬機器中執行 Integration Runtime，請確保能夠定期執行 Azure 備份內內容的資料還原。 如有必要，請測試將內容還原至隔離的 VLAN。 定期測試已備份之客戶管理金鑰的還原。
 
 針對您的任何資料存放區，請參閱該服務的安全性基準，以取得驗證備份的指引。
 
@@ -1168,9 +1168,9 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 **責任**：客戶
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理金鑰的保護
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰的保護
 
-**指導**方針：如果您在 Azure 虛擬機器（VM）中執行 Integration Runtime，並將該 vm 與 Azure 備份搭配使用，您的 vm 會使用儲存體服務加密（SSE）進行待用加密。 Azure 備份也可以使用 Azure 磁碟加密來備份已加密的 Azure Vm。 Azure 磁碟加密與 BitLocker 加密金鑰（Bek）整合，其在金鑰保存庫中受到保護以作為秘密。 Azure 磁碟加密也會與 Azure Key Vault 金鑰加密金鑰（Kek）整合。 在 Key Vault 中啟用虛刪除，以防止金鑰遭到意外或惡意刪除。
+**指導**方針：如果您要在 Azure 虛擬機器中執行 INTEGRATION RUNTIME (VM) 然後使用 Azure 備份將該 vm 還原，您的 vm 會使用儲存體服務加密 (SSE) 進行待用加密。 Azure 備份也可以使用 Azure 磁碟加密來備份已加密的 Azure Vm。 Azure 磁碟加密與 BitLocker 加密金鑰整合 (Bek) ，這些金鑰會在金鑰保存庫中做為秘密進行保護。 Azure 磁碟加密也會與 (Kek) 的 Azure Key Vault 金鑰加密金鑰整合。 在 Key Vault 中啟用虛刪除，以防止金鑰遭到意外或惡意刪除。
 
 * [Vm 的虛刪除](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete)
 
@@ -1194,7 +1194,7 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 * [Microsoft 安全性回應中心的事件剖析](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-* [客戶也可以利用 NIST 的「電腦安全性性」事件處理指南，協助建立自己的事件回應計畫](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
+* [客戶也可以利用 NIST 的電腦安全性性事件處理指南來協助建立自己的事件回應計畫](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1256,11 +1256,11 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 *如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期滲透測試您的 Azure 資源，並確保修復所有重要的安全性結果
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
 **指導**方針： 
 
-* [請遵循 Microsoft Engagement 規則，以確保您的滲透測試不會違反 Microsoft 原則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+* [遵循 Microsoft 的參與規則，以確保您的滲透測試不違反 Microsoft 原則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
 * [對於 Microsoft 管理的雲端基礎結構、服務和應用程式，您可在此找到 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行詳細資訊：](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 

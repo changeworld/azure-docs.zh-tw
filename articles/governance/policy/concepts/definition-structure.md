@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 描述如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3b6509f684e611fbb79184383e1b332d793458b9
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 076493fa8fd54e9585d09a3dd352eabdee652f18
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958774"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079025"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -653,7 +653,7 @@ Azure 原則支援下列類型的效果：
   ```
 
   > [!NOTE]
-  > 若要尋找可搭配 [modify](./effects.md#modify) 效果使用的別名，請使用下列命令：
+  > 若要尋找可搭配 [modify](./effects.md#modify) 效果使用的別名，請在 Azure PowerShell **4.6.0** 或更高版本中使用下列命令：
   >
   > ```azurepowershell-interactive
   > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }

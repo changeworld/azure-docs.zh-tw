@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 85056710c8072c55e2661021795d9aedb407b629
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a2b3bfa8553e7c350c08fa7e1a7376ca08d9644
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012999"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079771"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 數位 Twins 模型
 
@@ -170,9 +170,9 @@ Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 
 模型上傳至您的實例之後，整個模型介面都是不可變的。 這表示沒有傳統的「編輯」模型。
 
-相反地，如果您想要對 Azure 數位 Twins 中的模型進行變更，例如變更 `DisplayName` 或 `Description` ，執行這項作業的方式是上傳相同模型的 **較新版本** 。 這將會覆寫原始模型。
+相反地，如果您想要對 Azure 數位 Twins 中的模型進行變更，執行這項作業的方式是上傳相同模型的 **較新版本** 。 在預覽期間，前進模型版本只允許您移除欄位，而不是加入新欄位 (加入新欄位，您應該只 [建立全新的模型](#create-models)) 。
 
-若要這樣做，請從原始模型的 DTDL 開始。 更新您想要變更的任何欄位。
+若要建立現有模型的新版本，請從原始模型的 DTDL 開始。 更新您想要變更的欄位。
 
 然後，藉由更新模型的欄位，將此標示為較新版本的模型 `id` 。 模型識別碼的最後一個區段（在之後） `;` 表示模型編號。 若要指出這現在是此模型的更新版本，請將值結尾的數位遞增 `id` 到大於目前版本號碼的任何數位。
 

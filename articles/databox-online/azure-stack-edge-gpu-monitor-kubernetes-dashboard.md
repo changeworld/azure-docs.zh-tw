@@ -1,0 +1,115 @@
+---
+title: 透過 Kubernetes 儀表板監視您的 Azure Stack Edge 裝置 |Microsoft Docs
+description: 說明如何存取和使用 Kubernetes 儀表板來監視您的 Azure Stack Edge 裝置。
+services: databox
+author: alkohli
+ms.service: databox
+ms.subservice: edge
+ms.topic: how-to
+ms.date: 08/27/2020
+ms.author: alkohli
+ms.openlocfilehash: 9224888a38c86e35df9ad516c761fd7012824c15
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89083383"
+---
+# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>使用 Kubernetes 儀表板來監視您的 Azure Stack Edge GPU 裝置
+
+本文說明如何存取和使用 Kubernetes 儀表板來監視您的 Azure Stack Edge GPU 裝置。 若要監視您的裝置，您可以使用 Azure 入口網站中的圖表、觀看 Kubernetes 儀表板，或透過 `kubectl` 裝置的 PowerShell 介面執行命令。 
+
+本文僅著重于可在 Kubernetes 儀表板上執行的監視工作。
+
+在本文中，您將學會如何：
+
+> [!div class="checklist"]
+>
+> * 存取您裝置上的 Kubernetes 儀表板
+> * 查看裝置上部署的模組
+> * 取得部署在裝置上的應用程式 IP 位址
+> * 查看裝置上部署之模組的容器記錄
+
+
+## <a name="about-kubernetes-dashboard"></a>關於 Kubernetes 儀表板
+
+Kubernetes 儀表板是一個 web 型使用者介面，可讓您用來針對容器化應用程式進行疑難排解。 Kubernetes 儀表板是 Kubernetes 命令列以 UI 為基礎的替代方案 `kubectl` 。 
+
+在您的 Azure Stack Edge 裝置上，您可以在唯讀模式中使用 Kubernetes 儀表板，以深入瞭解在 Azure Stack Edge 裝置上執行的應用程式、查看 Kubernetes 叢集資源的狀態，以及查看裝置上發生的任何錯誤。
+
+## <a name="access-dashboard"></a>存取儀表板
+
+Kubernetes 儀表板是唯讀的，會在埠31000的 Kubernetes 主要節點上執行。 遵循下列步驟以存取儀表板： 
+
+1. 在裝置的本機 UI 中，移至 [ **裝置** ]，然後移至 **裝置端點**。 選取 Kubernetes 儀表板 URL，以在瀏覽器中開啟儀表板。
+
+    ![在本機 UI 的 [裝置] 頁面中 Kubernetes 儀表板 URL](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-url-local-ui-1.png)
+
+1. 在 [ **Kubernetes 儀表板** ] 的 [登入] 頁面上，選取 [ **權杖**]。 
+1. 提供權杖。 
+    1. 若要取得權杖，請透過 [您裝置的 PowerShell 介面進行連接](azure-stack-edge-gpu-connect-powershell-interface.md)。
+    1. 執行命令：  `Get-HcsKubernetesDashboardToken`
+    
+    1. 在提示字元中，複製顯示的權杖字串。 以下是範例輸出：
+        
+        ```powershell
+        [10.100.10.10]: PS>Get-HcsKubernetesDashboardToken
+        eyJhbGciOiJSUzI1NiIsImtpZCI6IkpFTEtBYTMyZ0Ezb01OYTVFSnVaUV85OWtLdXNETTZQR0k0UlFybGdReFUifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi03czZ6ayIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjU3NzY3ZDAzLTJlYWUtNDlkMi1hNDEyLTNkOTU3MDFiMThiMyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.UgNrpVYVJBEaWxFlljuENUQQmzFXMYG2VsJUIYFdp2AO20zX0k5dRvwcCpeGlqSKb9MyYjG0c6RmT9uCOZk-vAwt7btszQLD7KPCwh_nn_NiIyO8ApgGRYZP8NuP8CBTX3tl_hpwfHtZ0ksbuKAduIL-0uPF0rG5wgLk9cTEw6fKSc2UZW6bIzhNSp_uSiP6MexOS6OftF9JFZejkIGd33dSp-k-tgFlm2Zy96sdFJC0q-XsH7jygiVnfxA9XMs5wqW26LkCh0rfO2WI3C1XFK-4TpufRZLJHo5WPlu-Tnsxa8xmtk2jQ3us-sXcBRrvhPNPrNKkbqc9hbjmWfGD0Q
+        [10.100.10.10]: PS>
+        ```
+        
+1. 選取 [登入]。
+
+    ![登入 Kubernetes 儀表板](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png)
+
+6. 您現在可以在唯讀模式中，針對 Azure Stack Edge 裝置來查看 Kubernetes 儀表板。
+
+    ![Kubernetes 儀表板主頁面](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-main-page-1.png)
+
+## <a name="view-module-status"></a>查看模組狀態
+
+計算模組是已實行商務邏輯的容器。 您可以使用儀表板來確認計算模組是否已成功部署到您的 Azure Stack Edge 裝置上。
+
+若要查看模組狀態，請在儀表板上執行下列步驟：
+
+1. 在 [儀表板] 的左窗格中，移至 [ **命名空間**]。 依命名空間篩選 IoT Edge 模組的顯示位置，在此案例中為 **iotedge**。
+1. 在左窗格中，移至 [ **工作負載 > 部署**]。
+1. 在右窗格中，您會看到部署在裝置上的所有模組。 在此情況下，GettingStartedWithGPU 模組會部署在 Azure Stack Edge 上。 您可以看到模組已部署。
+
+    ![查看模組部署](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-module-deployment-1.png)
+
+ 
+## <a name="get-ip-address-for-services-or-modules"></a>取得服務或模組的 IP 位址
+
+您可以使用儀表板來取得您想要在 Kubernetes 叢集外部公開之服務或模組的 IP 位址。 
+
+您可以透過 [ **計算網路設定** ] 頁面中裝置的本機 web UI，指派這些外部服務的 IP 範圍。 部署 IoT Edge 模組之後，您可能會想要取得指派給特定模組或服務的 IP 位址。 
+
+若要取得 IP 位址，請在儀表板上執行下列步驟：
+
+1. 在 [儀表板] 的左窗格中，移至 [ **命名空間**]。 依部署外部服務的命名空間篩選，在此案例中為 **iotedge**。
+1. 在左窗格中，移至 [ **探索和負載平衡 > 服務**]。
+1. 在右窗格中，您會看到在 `iotedge` Azure Stack Edge 裝置上的命名空間中執行的所有服務。
+
+    ![取得外部服務的 IP](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-get-ip-external-service-1.png)
+
+## <a name="view-container-logs"></a>檢視容器記錄
+
+在某些情況下，您需要查看容器記錄。 您可以使用儀表板來取得您已在 Kubernetes 叢集上部署之特定容器的記錄。
+
+若要查看容器記錄，請在儀表板上執行下列步驟：
+
+1. 在 [儀表板] 的左窗格中，移至 [ **命名空間**]。 依部署 IoT Edge 模組的命名空間進行篩選，在此案例中為 **iotedge**。
+1. 在左窗格中，移至 > pod 的 **工作負載**。
+1. 在右窗格中，您會看到所有在您的裝置上執行的 pod。 識別正在執行您想要查看其記錄之模組的 pod。 選取您所識別之 pod 的垂直省略號，然後從內容功能表中選取 [ **記錄**]。
+
+    ![View container logs 1](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-container-logs-1.png)
+
+1. 記錄檔會顯示在儀表板內建的記錄檢視器中。 您也可以下載記錄檔。
+
+    ![查看容器記錄2](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-container-logs-1.png)
+    
+
+## <a name="next-steps"></a>後續步驟
+
+瞭解如何針對 Kubernetes 問題進行疑難排解 <!--insert link-->.

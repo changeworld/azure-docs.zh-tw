@@ -129,6 +129,8 @@
       href: security-hardened-vm-host-image.md
     - name: Azure Kubernetes Service 診斷概觀
       href: concepts-diagnostics.md
+    - name: 持續性軟體工程
+      href: concepts-sustainable-software-engineering.md
 - name: 操作指南
   items:
     - name: 叢集作業

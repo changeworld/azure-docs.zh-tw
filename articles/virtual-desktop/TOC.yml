@@ -94,6 +94,8 @@
       href: configure-automatic-updates.md
     - name: 安裝語言套件
       href: language-packs.md
+    - name: 解析建議
+      href: azure-advisor-recommendations.md
 - name: 概念
   items:
     - name: 驗證

@@ -5,54 +5,54 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 037e07a1d8a6a3b4016d00f1b5a68bffc9caf335
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: f9bc0cd229888d952821509ced6cc5410000ee52
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543362"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078719"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用 kubenet 網路與您自己的 IP 位址範圍
 
 根據預設，AKS 叢集會使用 [kubenet][kubenet]，並為您建立 Azure 虛擬網路和子網路。 使用 *kubenet*，節點會從 Azure 虛擬網路子網路取得 IP 位址。 Pod 會接收到 IP 位址，從邏輯上不同位址空間到節點的 Azure 虛擬網路子網路。 網路位址轉譯 (NAT) 接著會進行設定，使 Pod 可以連接 Azure 虛擬網路上的資源。 流量的來源 IP 位址會被轉譯為節點的主要 IP 位址。 這種方法可大幅減少您需要在網路空間中保留，以供 Pod 使用的 IP 位址數目。
 
-使用 [Azure 容器網路介面 (CNI)][cni-networking]，每個 Pod 都會從子網路取得 IP 位址，並且可以直接存取。 這些 IP 位址在您的網路空間中必須是唯一的，且必須事先規劃。 每個節點都有一個組態參數，用於所支援的最大 Pod 數目。 然後，為該節點預先保留每個節點的相同 IP 位址數目。 此方法需要更多規劃，並且通常會導致 IP 位址耗盡，或者隨著應用程式需求增加，需要在更大型子網路中重建叢集。 您可以在叢集建立時間或建立新的節點集區時，設定可部署至節點的最大 pod 數。 如果您在建立新的節點集區時未指定 maxPods，則會收到 kubenet 的預設值110。
+使用 [Azure 容器網路介面 (CNI)][cni-networking]，每個 Pod 都會從子網路取得 IP 位址，並且可以直接存取。 這些 IP 位址在您的網路空間中必須是唯一的，且必須事先規劃。 每個節點都有一個組態參數，用於所支援的最大 Pod 數目。 然後，為該節點預先保留每個節點的相同 IP 位址數目。 此方法需要更多規劃，並且通常會導致 IP 位址耗盡，或者隨著應用程式需求增加，需要在更大型子網路中重建叢集。 您可以在叢集建立時或建立新的節點集區時，設定可部署到節點的最大 pod 數目。 如果您在建立新的節點集區時未指定 maxPods，則會收到 kubenet 的預設值110。
 
 本文將說明如何使用 *kubenet* 網路來建立虛擬網路子網路，並將其與 AKS 叢集搭配使用。 如需網路選項與考量的詳細資訊，請參閱 [Kubernetes 和 AKS 的網路概念][aks-network-concepts]。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 適用於 AKS 叢集的虛擬網路必須允許輸出網際網路連線.
 * 請勿在相同子網路中建立多個 AKS 叢集。
-* AKS 叢集可能不會使用 `169.254.0.0/16` 、、 `172.30.0.0/16` `172.31.0.0/16` 或 `192.0.2.0/24` 作為 Kubernetes 服務位址範圍。
-* AKS 叢集所使用的服務主體在虛擬網路中的子網上必須至少具有[網路參與者](../role-based-access-control/built-in-roles.md#network-contributor)角色。 如果您想要定義[自訂角色](../role-based-access-control/custom-roles.md)，而不使用內建的網路參與者角色，則需要下列權限：
+* AKS 叢集可能不會 `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` `192.0.2.0/24` 針對 Kubernetes 服務位址範圍使用、、或。
+* AKS 叢集所使用的服務主體，在您虛擬網路內的子網上必須至少有 [網路參與者](../role-based-access-control/built-in-roles.md#network-contributor) 角色。 您也必須擁有適當的許可權（例如訂用帳戶擁有者），才能建立服務主體並指派其許可權。 如果您想要定義[自訂角色](../role-based-access-control/custom-roles.md)，而不使用內建的網路參與者角色，則需要下列權限：
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
 > [!WARNING]
-> 若要使用 Windows Server 節點集區，您必須使用 Azure CNI。 使用 kubenet 作為網路模型不適用於 Windows Server 容器。
+> 若要使用 Windows Server 節點集區，您必須使用 Azure CNI。 使用 kubenet 做為網路模型，不適用於 Windows Server 容器。
 
 ## <a name="before-you-begin"></a>開始之前
 
-您需要安裝並設定 Azure CLI 版本2.0.65 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您需要安裝並設定 Azure CLI 2.0.65 版版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>使用您自己的子網路的 Kubenet 網路概觀
 
 在許多環境中，您已定義具有已配置的 IP 位址範圍的虛擬網路和子網路。 這些虛擬網路資源用來支援多個服務和應用程式。 若要提供網路連線，AKS 叢集可以使用 *kubenet* (基本網路) 或 Azure CNI (*進階網路*)。
 
-使用 *kubenet*，只有節點在虛擬網路子網路中接收 IP 位址。 Pod 無法彼此直接通訊。 相反地，使用者定義路由 (UDR) 和 IP 轉送會用來進行 跨節點的 Pod 之間的連線。 根據預設，Udr 和 IP 轉送設定是由 AKS 服務所建立和維護，但您必須選擇將[自己的路由表帶入自訂路由管理][byo-subnet-route-table]。 您還可以在接收已指派 IP 位址的服務後面部署 Pod，並為應用程式的流量進行負載平衡。 下圖顯示 AKS 節點如何在虛擬網路子網路中 (而不是 Pod 中) 接收 IP 位址：
+使用 *kubenet*，只有節點在虛擬網路子網路中接收 IP 位址。 Pod 無法彼此直接通訊。 相反地，使用者定義路由 (UDR) 和 IP 轉送會用來進行 跨節點的 Pod 之間的連線。 根據預設，Udr 和 IP 轉送設定是由 AKS 服務建立和維護，但是您必須選擇將 [您自己的路由表用於自訂路由管理][byo-subnet-route-table]。 您還可以在接收已指派 IP 位址的服務後面部署 Pod，並為應用程式的流量進行負載平衡。 下圖顯示 AKS 節點如何在虛擬網路子網路中 (而不是 Pod 中) 接收 IP 位址：
 
 ![Kubenet 網路模型與 AKS 叢集](media/use-kubenet/kubenet-overview.png)
 
-Azure 在 UDR 中最多支援 400 條路由，因此您不能擁有超過 400 個節點的 AKS 叢集。 *Kubenet*不支援 AKS[虛擬節點][virtual-nodes]和 Azure 網路原則。  您可以使用[Calico 網路原則][calico-network-policies]，因為它們受到 kubenet 的支援。
+Azure 在 UDR 中最多支援 400 條路由，因此您不能擁有超過 400 個節點的 AKS 叢集。 *Kubenet*不支援 AKS[虛擬節點][virtual-nodes]和 Azure 網路原則。  您可以使用 [Calico 網路原則][calico-network-policies]，因為 kubenet 支援這些原則。
 
-使用 *Azure CNI*，每個 Pod 都會接收 IP 子網路中的 IP 位址，並可以直接與其他 Pod 和服務進行通訊。 您的叢集可以與您指定的 IP 位址範圍一樣大。 不過，必須事先規劃 IP 位址範圍，並且 AKS 節點根據它們可以支援的最大 Pod 數目來使用所有 IP 位址。 *AZURE CNI*支援先進的網路功能和案例，例如[虛擬節點][virtual-nodes]或網路原則（azure 或 Calico）。
+使用 *Azure CNI*，每個 Pod 都會接收 IP 子網路中的 IP 位址，並可以直接與其他 Pod 和服務進行通訊。 您的叢集可以與您指定的 IP 位址範圍一樣大。 不過，必須事先規劃 IP 位址範圍，並且 AKS 節點根據它們可以支援的最大 Pod 數目來使用所有 IP 位址。 *AZURE CNI*支援 Azure 或 Calico) 的 Advanced network 功能和案例，例如[虛擬節點][virtual-nodes]或網路 (原則。
 
 ### <a name="limitations--considerations-for-kubenet"></a>Kubenet 的限制 & 考慮
 
-* Kubenet 的設計中需要額外的躍點，這會增加 pod 通訊的次要延遲。
+* Kubenet 的設計需要額外的躍點，這會增加 pod 通訊的次要延遲。
 * 使用 kubenet 需要路由表和使用者定義的路由，這會增加作業的複雜度。
-* 由於 kubenet 設計的緣故，不支援直接 pod 定址進行 kubenet。
+* 由於 kubenet 設計，kubenet 不支援直接 pod 定址。
 * 不同于 Azure CNI 叢集，多個 kubenet 叢集無法共用子網。
 * **Kubenet 上不支援的**功能包括：
    * [Azure 網路原則](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy)，但 Kubenet 支援 Calico 網路原則
@@ -65,7 +65,7 @@ Azure 在 UDR 中最多支援 400 條路由，因此您不能擁有超過 400 �
 
 作為折衷方案，您可以建立使用 *kubenet* 並連接到現有虛擬網路子網路的 AKS 叢集。 此方法可讓節點接收定義的 IP 位址，而無需事先為叢集中可能執行的所有潛在 Pod 保留大量的 IP 位址。
 
-使用 *kubenet*，您可以使用更小的 IP 位址範圍，並能夠支援大型叢集和應用程式需求。 例如，即使您的子網上有 */27* IP 位址範圍，您還是可以執行具有足夠空間的20-25 節點叢集來進行調整或升級。 此叢集大小可支援最多 *2,200-2,750* 個 Pod (每個節點預設最多 110 個 Pod)。 您可以使用 AKS 中的*kubenet*設定的每個節點的 pod 數目上限為110。
+使用 *kubenet*，您可以使用更小的 IP 位址範圍，並能夠支援大型叢集和應用程式需求。 例如，即使您的子網上有 */27* IP 位址範圍，您也可以執行具有足夠空間來調整或升級的20-25 節點叢集。 此叢集大小可支援最多 *2,200-2,750* 個 Pod (每個節點預設最多 110 個 Pod)。 您可以在 AKS 中使用 *kubenet* 設定的每個節點的 pod 數目上限為110。
 
 下列基本計算會比較網路模型中的差異：
 
@@ -79,7 +79,7 @@ Azure 在 UDR 中最多支援 400 條路由，因此您不能擁有超過 400 �
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>虛擬網路對等互連和 ExpressRoute 連線
 
-若要提供內部部署連線能力，*kubenet* 和 *Azure-CNI* 網路方法都可以使用 [Azure 虛擬網路對等互連][vnet-peering]或是 [ExpressRoute 連線][express-route]。 仔細規劃您的 IP 位址範圍，以避免重疊和不正確的流量路由。 例如，許多內部部署網路使用透過 ExpressRoute 連線通告的 *10.0.0.0/8* 位址範圍。 建議您在此位址範圍外的 Azure 虛擬網路子網中建立 AKS 叢集，例如*172.16.0.0/16*。
+若要提供內部部署連線能力，*kubenet* 和 *Azure-CNI* 網路方法都可以使用 [Azure 虛擬網路對等互連][vnet-peering]或是 [ExpressRoute 連線][express-route]。 仔細規劃您的 IP 位址範圍，以避免重疊和不正確的流量路由。 例如，許多內部部署網路使用透過 ExpressRoute 連線通告的 *10.0.0.0/8* 位址範圍。 建議您在此位址範圍之外的 Azure 虛擬網路子網中建立 AKS 叢集，例如 *172.16.0.0/16*。
 
 ### <a name="choose-a-network-model-to-use"></a>選擇要使用的網路模型
 
@@ -89,16 +89,16 @@ Azure 在 UDR 中最多支援 400 條路由，因此您不能擁有超過 400 �
 
 - 您的 IP 位址空間有限。
 - 大部分的 Pod 通訊是在叢集內。
-- 您不需要先進的 AKS 功能，例如虛擬節點或 Azure 網路原則。  使用[Calico 網路原則][calico-network-policies]。
+- 您不需要先進的 AKS 功能，例如虛擬節點或 Azure 網路原則。  使用 [Calico 網路原則][calico-network-policies]。
 
 *Azure CNI* 使用時機：
 
 - 您有可用的 IP 位址空間。
 - 大部分的 Pod 通訊是在叢集外部的資源。
-- 您不想要管理 pod 連線的使用者定義路由。
-- 您需要 AKS 先進的功能，例如虛擬節點或 Azure 網路原則。  使用[Calico 網路原則][calico-network-policies]。
+- 您不想要管理 pod 連接的使用者定義路由。
+- 您需要 AKS 的 advanced 功能，例如虛擬節點或 Azure 網路原則。  使用 [Calico 網路原則][calico-network-policies]。
 
-如需可協助您決定要使用哪一個網路模型的詳細資訊，請參閱[比較網路模型及其支援範圍][network-comparisons]。
+如需協助您決定要使用哪一種網路模型的詳細資訊，請參閱 [比較網路模型及其支援範圍][network-comparisons]。
 
 ## <a name="create-a-virtual-network-and-subnet"></a>建立虛擬網路和子網路
 
@@ -108,7 +108,7 @@ Azure 在 UDR 中最多支援 400 條路由，因此您不能擁有超過 400 �
 az group create --name myResourceGroup --location eastus
 ```
 
-如果您沒有要使用的現有虛擬網路和子網路，請使用 [az network vnet create][az-network-vnet-create] 命令建立這些網路資源。 在下列範例中，會將虛擬網路命名為*myVnet* ，位址首碼為*192.168.0.0/16*。 建立名為*myAKSSubnet*的子網，位址首碼為*192.168.1.0/24*。
+如果您沒有要使用的現有虛擬網路和子網路，請使用 [az network vnet create][az-network-vnet-create] 命令建立這些網路資源。 在下列範例中，虛擬網路的名稱為 *myVnet* ，位址首碼為 *192.168.0.0/16*。 建立的子網名稱為 *myAKSSubnet* ，位址首碼為 *192.168.1.0/24*。
 
 ```azurecli-interactive
 az network vnet create \
@@ -150,7 +150,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-現在，使用[az role assign create][az-role-assignment-create]命令，針對虛擬網路上的 AKS 叢集*網路參與者*許可權指派服務主體。 提供您自己的 *\<appId>* ，如先前命令的輸出中所示，以建立服務主體：
+現在，使用[az role assign create][az-role-assignment-create]命令，為您的虛擬網路上的 AKS 叢集*網路參與者*許可權指派服務主體。 提供您自己的 *\<appId>* 內容，如先前命令的輸出所示，以建立服務主體：
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Contributor"
@@ -158,20 +158,20 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Co
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>在虛擬網路中建立 AKS 叢集
 
-您現在已經建立虛擬網路和子網路，並為服務主體建立並指派使用這些網路資源的權限。 現在，使用 [az aks create][az-aks-create] 命令在虛擬網路和子網路中建立 AKS 叢集。 定義您自己的服務主體 *\<appId>* 和 *\<password>* ，如先前命令的輸出中所示，以建立服務主體。
+您現在已經建立虛擬網路和子網路，並為服務主體建立並指派使用這些網路資源的權限。 現在，使用 [az aks create][az-aks-create] 命令在虛擬網路和子網路中建立 AKS 叢集。 定義您自己的服務主體 *\<appId>* 和 *\<password>* ，如先前命令的輸出中所示，用來建立服務主體。
 
 下列 IP 位址範圍也定義為叢集建立程序的一部分：
 
-* *--service-cidr* 用於為 AKS 叢集中的內部服務指派 IP 位址。 此 IP 位址範圍應該是您的網路環境中其他未使用的位址空間。 如果您使用 Express Route 或站對站 VPN 連線來連線或規劃連接 Azure 虛擬網路，此範圍會包含任何內部部署網路範圍。
+* *--service-cidr* 用於為 AKS 叢集中的內部服務指派 IP 位址。 此 IP 位址範圍應該是您的網路環境中其他未使用的位址空間。 如果您使用 Express Route 或站對站 VPN 連線連接或計畫連接 Azure 虛擬網路，則此範圍包括任何內部部署網路範圍。
 
 * *--dns-service-ip* 位址應該是服務 IP 位址範圍的 *.10* 位址。
 
-* *--pod-cidr* 應該是您的網路環境中未使用的大型位址空間。 如果您使用 Express Route 或站對站 VPN 連線來連線或規劃連接 Azure 虛擬網路，此範圍會包含任何內部部署網路範圍。
+* *--pod-cidr* 應該是您的網路環境中未使用的大型位址空間。 如果您使用 Express Route 或站對站 VPN 連線連接或計畫連接 Azure 虛擬網路，則此範圍包括任何內部部署網路範圍。
     * 此位址範圍必須大到足以容納您希望相應增加的節點數目。 如果您需要更多位址用於其他節點，則無法在部署叢集之後變更此位址範圍。
-    * Pod IP 位址範圍用來為叢集中的每個節點指派 */24* 位址空間。 在下列範例中， *10.244.0.0/16*的 *--pod-cidr*會指派第一個節點*10.244.0.0/24*、第二個節點*10.244.1.0/24*和第三個節點*10.244.2.0/24*。
+    * Pod IP 位址範圍用來為叢集中的每個節點指派 */24* 位址空間。 在下列範例中， *--pod-* *10.244.0.0/16* 的 cidr 會指派第一個節點 *10.244.0.0/24*、第二個節點 *10.244.1.0/24*和第三個節點 *10.244.2.0/24*。
     * 隨著叢集縮放比例或升級，Azure 平台會繼續為每個新的節點指派一個 Pod IP 位址範圍。
     
-* *--Docker-橋接器位址*可讓 AKS 節點與基礎管理平臺進行通訊。 此 IP 位址不能在您叢集的虛擬網路 IP 位址範圍內，而且不應該與您網路上使用中的其他位址範圍重疊。
+* *--Docker 橋接器位址*可讓 AKS 節點與基礎管理平臺進行通訊。 此 IP 位址不能在您叢集的虛擬網路 IP 位址範圍內，而且不應該與您網路上使用中的其他位址範圍重疊。
 
 ```azurecli-interactive
 az aks create \
@@ -189,7 +189,7 @@ az aks create \
 ```
 
 > [!Note]
-> 如果您想要讓 AKS 叢集包含[Calico 網路原則][calico-network-policies]，可以使用下列命令。
+> 如果您想要讓 AKS 叢集包含 [Calico 網路原則][calico-network-policies] ，您可以使用下列命令。
 
 ```azurecli-interactive
 az aks create \
@@ -206,31 +206,31 @@ az aks create \
     --client-secret <password>
 ```
 
-當您建立 AKS 叢集時，系統會自動建立網路安全性群組和路由表。 這些網路資源是由 AKS 控制平面所管理。 網路安全性群組會自動與您節點上的虛擬 Nic 相關聯。 路由表會自動與虛擬網路子網建立關聯。 當您建立和公開服務時，會自動更新網路安全性群組規則和路由表。
+當您建立 AKS 叢集時，系統會自動建立網路安全性群組和路由表。 這些網路資源是由 AKS 控制平面所管理。 網路安全性群組會自動與您節點上的虛擬 Nic 相關聯。 路由表會自動與虛擬網路子網產生關聯。 當您建立和公開服務時，網路安全性群組規則和路由表會自動更新。
 
 ## <a name="bring-your-own-subnet-and-route-table-with-kubenet"></a>使用 kubenet 攜帶您自己的子網和路由表
 
-使用 kubenet 時，路由表必須存在於您的叢集子網中。 AKS 支援攜帶您自己現有的子網和路由表。
+使用 kubenet 時，您的叢集子網 (s) 必須有路由表。 AKS 支援攜帶您自己的現有子網和路由表。
 
-如果您的自訂子網不包含路由表，AKS 會為您建立一個，並在整個叢集生命週期中為其新增規則。 當您建立叢集時，如果您的自訂子網包含路由表，AKS 會在叢集作業期間認可現有的路由表，並據此新增/更新規則以用於雲端提供者作業。
+如果您的自訂子網不包含路由表，AKS 會為您建立一個，並將規則新增至整個叢集生命週期。 當您建立叢集時，如果您的自訂子網包含路由表，AKS 會在叢集操作期間認可現有的路由表，並據此新增/更新規則以進行雲端提供者作業。
 
 > [!WARNING]
-> 自訂規則可以新增至自訂路由表，並更新。 不過，Kubernetes 雲端提供者會新增規則，而此服務不得加以更新或移除。 0.0.0.0/0 之類的規則必須一律存在於指定的路由表中，並對應到網際網路閘道的目標，例如 NVA 或其他輸出閘道。 更新只修改您自訂規則的規則時，請務必小心。
+> 自訂規則可以新增至自訂路由表，並加以更新。 不過，Kubernetes 雲端提供者不一定要更新或移除規則。 0.0.0.0/0 這類規則必須一律存在於指定的路由表中，並對應至網際網路閘道的目標，例如 NVA 或其他輸出閘道。 更新只修改您自訂規則的規則時，請務必小心。
 
-深入瞭解如何設定[自訂路由表][custom-route-table]。
+深入瞭解如何設定 [自訂路由表][custom-route-table]。
 
-Kubenet 網路需要組織的路由表規則，才能成功路由傳送要求。 由於這項設計，您必須針對依賴它的每個叢集，仔細維護路由表。 多個叢集無法共用路由表，因為來自不同叢集的 pod CIDRs 可能會重迭，而導致非預期且中斷的路由。 在相同的虛擬網路上設定多個叢集，或將虛擬網路專用於每個叢集時，請務必考慮下列限制。
+Kubenet 網路需要組織的路由表規則，才能成功地路由傳送要求。 由於這項設計的緣故，因此必須針對依賴它的每個叢集謹慎維護路由表。 多個叢集無法共用路由表，因為來自不同叢集的 pod Cidr 可能會重迭，而導致非預期和中斷的路由。 在相同的虛擬網路上設定多個叢集或專門為每個叢集設定虛擬網路時，請確定已考慮下列限制。
 
 限制：
 
-* 必須先指派許可權才能建立叢集，請確定您使用的服務主體具有自訂子網和自訂路由表的寫入權限。
+* 必須在建立叢集之前指派許可權，請確定您使用的服務主體具有您自訂子網和自訂路由表的寫入權限。
 * 受控識別目前不支援 kubenet 中的自訂路由表。
-* 在您建立 AKS 叢集之前，必須先將自訂路由表與子網產生關聯。
-* 建立叢集之後，無法更新相關聯的路由表資源。 雖然無法更新路由表資源，但是可以在路由表上修改自訂規則。
-* 每個 AKS 叢集都必須針對與叢集相關聯的所有子網使用單一唯一的路由表。 因為可能會有重迭的 pod CIDRs 和衝突的路由規則，所以您無法重複使用具有多個叢集的路由表。
+* 建立 AKS 叢集之前，必須先將自訂路由表與子網建立關聯。
+* 建立叢集之後，即無法更新相關聯的路由表資源。 當路由表資源無法更新時，可以在路由表上修改自訂規則。
+* 每個 AKS 叢集都必須針對所有與叢集相關聯的子網使用單一、唯一的路由表。 您無法重複使用具有多個叢集的路由表，因為可能會有重迭的 pod Cidr 和衝突的路由規則。
 
-建立自訂路由表並將它與您虛擬網路中的子網產生關聯之後，您可以建立新的 AKS 叢集來使用您的路由表。
-您必須將子網識別碼用於您打算部署 AKS 叢集的位置。 此子網也必須與您的自訂路由表相關聯。
+建立自訂路由表，並將其與虛擬網路中的子網建立關聯之後，您可以建立新的 AKS 叢集，以使用您的路由表。
+您必須針對規劃部署 AKS 叢集的位置使用子網識別碼。 此子網也必須與您的自訂路由表相關聯。
 
 ```azurecli-interactive
 # Find your subnet ID
@@ -246,7 +246,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
 
 ## <a name="next-steps"></a>後續步驟
 
-透過將 AKS 叢集部署到您現有的虛擬網路子網路中，您現在可以如往常一樣使用叢集。 開始使用[Azure Dev Spaces 建立應用程式][dev-spaces]、[使用 Helm 部署現有的應用][use-helm]程式，或[使用 Helm 建立新的應用][develop-helm]程式。
+透過將 AKS 叢集部署到您現有的虛擬網路子網路中，您現在可以如往常一樣使用叢集。 開始使用 [Azure Dev Spaces 建立應用程式][dev-spaces]、 [使用 Helm 部署現有的應用][use-helm]程式，或 [使用 Helm 建立新的應用程式][develop-helm]。
 
 <!-- LINKS - External -->
 [dev-spaces]: ../dev-spaces/index.yml
