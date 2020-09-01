@@ -14,19 +14,21 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: bb94703a78cd2c025efc1f3c6c16e296fece206e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 746fe9132dcb06678e2a0a975c8eed0aba6c3fad
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559997"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269619"
 ---
-# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>使用通道，從內部部署編碼器接收多位元率即時串流
+# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>使用從內部部署編碼器接收多位元率即時串流的通道
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 從 2018 年 5 月 12 日開始，即時通道將不再支援 RTP/MPEG-2 傳輸串流內嵌通訊協定。 請從 RTP/MPEG-2 移轉到 RTMP 或分散式 MP4 (Smooth Streaming) 內嵌通訊協定。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 在 Azure 媒體服務中，通道** 代表處理即時串流內容的管線。 通道會以兩種方式之一收到即時輸入串流：
 
 * 內部部署即時編碼器會將多位元速率 RTMP 或 Smooth Streaming (分散式 MP4) 串流傳送到未啟用執行媒體服務即時編碼的通道。 內嵌的串流會通過通道，而不需任何進一步處理。 此方法稱為 *傳遞*。 即時編碼器也會將單一位元速率串流傳送至無法用於即時編碼的通道，但是不建議您使用此方法。 媒體服務會將串流傳遞給要求的客戶。
@@ -45,7 +47,7 @@ ms.locfileid: "85559997"
 > [!NOTE]
 > 本文討論未啟用而無法執行即時編碼的通道屬性。 如需使用已啟用執行即時編碼通道的相關資訊，請參閱 [使用 Azure 媒體服務建立多位元速率串流的即時串流](media-services-manage-live-encoder-enabled-channels.md)。
 >
->如需有關建議的內部部署編碼器的詳細資訊，請參閱[建議的內部部署編碼器](media-services-recommended-encoders.md)。
+>如需有關建議的內部部署編碼器的詳細資訊，請參閱 [建議的內部部署編碼器](media-services-recommended-encoders.md)。
 
 下圖顯示一個即時串流工作流程，這個流程利用內部部署即時編碼器以多位元速率 RTMP 或 Fragmented MP4 (Smooth Streaming) 串流做為輸出。
 
@@ -112,7 +114,7 @@ ms.locfileid: "85559997"
 
 當您建立通道時，您可以取得內嵌 URL。 若您要取得這些 URL，通道不一定要在 **執行** 狀態。 當您準備好開始將資料推入通道，通道必須處於 **執行** 狀態。 通道開始內嵌資料後，您可以透過預覽 URL 來預覽資料流。
 
-您可以選擇透過 TLS 連線來內嵌分散的未處理（Smooth Streaming）即時串流。 若要透過 TLS 內嵌，請務必將內嵌 URL 更新為 HTTPS。 目前，您無法透過 TLS 內嵌 RTMP。
+您可以選擇擷取分散的， (Smooth Streaming) 透過 TLS 連接的即時串流。 若要透過 TLS 內嵌，請務必將內嵌 URL 更新為 HTTPS。 您目前無法透過 TLS 內嵌 RTMP。
 
 #### <a name="keyframe-interval"></a><a id="keyframe_interval"></a>主要畫面格間隔
 當您使用內部部署即時編碼器來產生多位元速率資料流時，主要畫面格間隔會指定圖片群組 (GOP) 持續期間以供該外部編碼器使用。 在通道收到此內送串流之後，您可以再將即時串流傳遞至下列任一形式的用戶端播放應用程式：Smooth Streaming、HTTP 動態調適性串流 (DASH) 及 HTTP 即時串流 (HLS)。 在執行即時資料流時，會一律動態封裝 HLS。 依預設，媒體服務會根據從即時編碼器收到的主要畫面格間隔，自動計算 HLS 區段封裝比例 (每一個區段的片段)。
@@ -187,9 +189,9 @@ ms.locfileid: "85559997"
 | 通道狀態 | 入口網站 UI 指標 | 是否計費？ |
 | --- | --- | --- |
 | **啟動中** |**啟動中** |無 (暫時性狀態) |
-| **執行中** |**就緒** (沒有執行中的程式)<p><p>或<p>**串流** (至少一個執行中的程式) |Yes |
+| **執行中** |**就緒** (沒有執行中的程式)<p><p>或<p>**串流** (至少一個執行中的程式) |是 |
 | **停止中** |**停止中** |無 (暫時性狀態) |
-| **已停止** |**已停止** |No |
+| **已停止** |**已停止** |否 |
 
 ## <a name="closed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>隱藏式字幕和廣告插入
 下表示範支援的隱藏式字幕和廣告插入標準。
@@ -225,7 +227,7 @@ ms.locfileid: "85559997"
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="suggestions-and-feedback"></a>建議與意見反應
+## <a name="suggestions-and-feedback"></a>建議和意見反應
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

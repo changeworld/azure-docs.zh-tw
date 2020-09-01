@@ -1,7 +1,7 @@
 ---
 title: Azure 媒體服務 v3 輸入中繼資料架構
-description: 本文提供 Azure 媒體服務 v3 輸入中繼資料架構的總覽。
-author: Juliako
+description: 本文概述 Azure 媒體服務 v3 輸入中繼資料架構。
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,24 +11,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2020
-ms.author: juliako
-ms.openlocfilehash: 40e61061878c8aec6bad353bfd0c5f2f4178ce14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: a9b8fec7e69b6ede15f99cae01e89c962996e280
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095547"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269143"
 ---
-# <a name="input-metadata"></a>輸入中繼資料 
+# <a name="input-metadata"></a>輸入中繼資料
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 編碼作業會與您要在其上執行一些編碼工作的輸入資產相關聯。  完成工作時，就會產生輸出資產。 輸出資產包含影片、音訊、縮圖、資訊清單和其他檔案。 
 
-輸出資產也包含隨附關於輸入資產中繼資料的檔案。 中繼資料 JSON 檔案的名稱具有隨機識別碼，請勿使用它來識別輸出資產所屬的輸入資產。 若要識別其所屬的輸入資產，請使用 `Uri` 欄位（如需詳細資訊，請參閱[其他子項目](#other-child-elements)）。  
+輸出資產也包含隨附關於輸入資產中繼資料的檔案。 中繼資料 JSON 檔案的名稱具有隨機識別碼，請勿用來識別輸出資產所屬的輸入資產。 若要識別其所屬的輸入資產，請使用 `Uri` 欄位 (如需詳細資訊，請參閱) 的 [其他子項目](#other-child-elements) 。  
 
-媒體服務不會事先掃描輸入資產以產生中繼資料。 輸入中繼資料只會在工作中處理輸入資產時，產生為成品。 因此，此成品會寫入至輸出資產。 使用不同的工具來產生輸入資產和輸出資產的中繼資料。 因此，輸入中繼資料與輸出中繼資料會有稍微不同的結構描述。
+媒體服務不會事先掃描輸入資產來產生中繼資料。 在工作中處理輸入資產時，只會以成品的形式產生輸入中繼資料。 因此，此成品會寫入至輸出資產。 使用不同的工具來產生輸入資產和輸出資產的中繼資料。 因此，輸入中繼資料與輸出中繼資料會有稍微不同的結構描述。
 
-本文討論輸入中繼資料（ &lt; asset_id_metadata.js上）所依據的 JSON 架構元素和類型 &gt; 。 如需包含輸出資產相關中繼資料之檔案的詳細資訊，請參閱[輸出中繼資料](output-metadata-schema.md)。  
+本文討論 ) 所依據之輸入中繼資料 (asset_id_metadata.js的 JSON 架構元素和類型 &lt; &gt; 。 如需包含輸出資產相關中繼資料之檔案的相關資訊，請參閱 [輸出中繼資料](output-metadata-schema.md)。  
 
 您可以在本文結尾處找到 JSON 架構範例。  
 
@@ -43,23 +45,23 @@ ms.locfileid: "85095547"
 
 | Name  | 說明 |
 | --- | --- | 
-| **VideoTracks**|每個實體資產檔案可以包含零個或多個交錯形成適當容器格式的視訊播放軌。 如需詳細資訊，請參閱[VideoTracks](#videotracks)。 |
-| **AudioTracks**|每個實體資產檔案可以包含零個或多個交錯形成適當容器格式的音訊播放軌。 如需詳細資訊，請參閱[AudioTracks](#audiotracks) |
+| **VideoTracks**|每個實體資產檔案可以包含零個或多個交錯形成適當容器格式的視訊播放軌。 如需詳細資訊，請參閱 [VideoTracks](#videotracks)。 |
+| **AudioTracks**|每個實體資產檔案可以包含零個或多個交錯形成適當容器格式的音訊播放軌。 如需詳細資訊，請參閱 [AudioTracks](#audiotracks) |
 | **中繼資料**  |資產檔案的中繼資料 (以索引鍵\值字串表示)。 <br />例如：`<Metadata key="language" value="eng" />` |
 
 ### <a name="other-child-elements"></a>其他子項目
 
-| Name | 描述 |
+| Name | 說明 |
 | --- | --- |
 | **名稱**<br />必要 |資產檔案名稱。 <br /><br />範例：`"Name": "Ignite-short.mp4"` |
-| **Uri**<br />必要 |輸入資產所在的 URL。 若要識別輸出資產所屬的輸入資產，請使用 `Uri` 欄位，而不是識別碼。|
+| **Uri**<br />必要 |輸入資產所在的 URL。 若要識別輸出資產所屬的輸入資產，請使用 `Uri` 欄位而非識別碼。|
 | **大小**<br />必要 |資產檔案大小 (以位元組為單位)。  <br /><br />範例：`"Size": 75739259`|
 | **有效期間**<br />必要 |內容播放持續時間。 <br /><br />範例： `"Duration": "PT1M10.304S"`. |
 | **NumberOfStreams**<br />必要 |資產檔案中的資產數目。  <br /><br />範例：`"NumberOfStreams": 2`|
 | **FormatNames**<br />必要 |Format names.  <br /><br />範例：`"FormatNames": "mov,mp4,m4a,3gp,3g2,mj2"`|
 | **FormatVerboseName**<br /> 必要 |格式詳細資訊名稱。 <br /><br />範例：`"FormatVerboseName": "QuickTime / MOV"` |
 | **StartTime** |內容開始時間。  <br /><br />範例：`"StartTime": "PT0S"` |
-| **OverallBitRate** |資產檔案的平均位元速率（以每秒位數為單位）。  <br /><br />範例：`"OverallBitRate": 8618539`|
+| **OverallBitRate** |資產檔案的平均位元速率（以位/秒為單位）。  <br /><br />範例：`"OverallBitRate": 8618539`|
 
 ## <a name="videotracks"></a>VideoTracks
 
@@ -76,7 +78,7 @@ ms.locfileid: "85095547"
 | **SampleAspectRatioNumerator** |視訊樣本長寬比的分子。 <br /><br />範例：`"SampleAspectRatioNumerator": 1.0`|
 | **SampleAspectRatioDenominator**|範例：`"SampleAspectRatioDenominator": 1.0`|
 | **頻**<br />必要 |測量的視訊畫面格速率 (採用 .3f 格式)。 <br /><br />範例：`"FrameRate": 29.970`|
-| **Bitrate** |從資產檔案計算出來的平均影片位元速率（以每秒位數為單位）。 只會計算基本串流承載，而不會納入封裝負荷。 <br /><br />範例：`"Bitrate": 8421583`|
+| **Bitrate** |從資產檔案計算出來的平均影片位速率（以位/秒為單位）。 只會計算基本串流承載，而不會納入封裝負荷。 <br /><br />範例：`"Bitrate": 8421583`|
 | **HasBFrames** |B 畫面格的視訊播放軌數目。 <br /><br />範例：`"HasBFrames": 2`|
 | **中繼資料** |可以用來保存各種資訊的泛型索引鍵/值字串。 <br />請參閱本文結尾的完整範例。 |
 | **識別碼**<br />必要 |此音訊或視訊播放軌之以零為起始的索引。<br /><br /> 此**識別碼**不一定是用於 MP4 檔案中的 TrackID。 <br /><br />範例：`"Id": 2`|
@@ -94,7 +96,7 @@ ms.locfileid: "85095547"
 | --- | --- | 
 | **SampleFormat** |樣本格式。 <br /><br />範例：`"SampleFormat": "fltp"`|
 | **ChannelLayout** |聲道配置。 <br /><br />範例：`"ChannelLayout": "stereo"`|
-| **Channels**<br />必要 |音訊聲道數目 (0 個或多個)。 <br /><br />範例：`"Channels": 2`|
+| **聲道**<br />必要 |音訊聲道數目 (0 個或多個)。 <br /><br />範例：`"Channels": 2`|
 | **SamplingRate**<br />必要 |音訊取樣率 (每秒或每 Hz 的樣本數)。 <br /><br />範例：`"SamplingRate": 48000`|
 | **Bitrate** |從資產檔案計算出來的平均音訊位元速率 (位元 / 秒)。 只會計算基本串流承載，而封裝負荷不會納入此計數中。 <br /><br />範例：`"Bitrate": 192080`|
 | **中繼資料** |可以用來保存各種資訊的泛型索引鍵/值字串。  <br />請參閱本文結尾的完整範例。 |
@@ -103,7 +105,7 @@ ms.locfileid: "85095547"
 | **CodecLongName** |音訊或視訊播放軌轉碼器長名稱。 <br /><br />範例：`"CodecLongName": "AAC (Advanced Audio Coding)"`|
 | **TimeBase**<br />必要 |時間基準。<br /><br />範例：`"TimeBase": "1/48000"` |
 | **NumberOfFrames** |畫面格數 (針對視訊播放軌呈現)。 <br /><br />範例：`"NumberOfFrames": 3294`|
-| **StartTime** |播放軌開始時間。 如需詳細資訊，請參閱[ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html)。 <br /><br />範例：`"StartTime": "PT0S"` |
+| **StartTime** |播放軌開始時間。 如需詳細資訊，請參閱 [ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html)。 <br /><br />範例：`"StartTime": "PT0S"` |
 | **有效期間** |播放軌持續時間。 <br /><br />範例：`"Duration": "PT1M10.272S"` |
 
 ## <a name="metadata"></a>中繼資料

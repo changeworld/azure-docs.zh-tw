@@ -1,5 +1,5 @@
 ---
-title: Azure 隨選媒體編碼器的總覽 |Microsoft Docs
+title: Azure 隨選媒體編碼器總覽 |Microsoft Docs
 description: Azure 媒體服務提供多個用於將雲端中之媒體編碼的選項。 本文提供 Azure 隨選媒體編碼器的總覽。
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: ef558b9339fe1d4525156cf58efe5056862de0a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c98d265f2d21c1e16ca787d4055eb4c2b1a89133
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052750"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269075"
 ---
-# <a name="overview-of-azure-on-demand-media-encoders"></a>Azure 隨選媒體編碼器的總覽 
+# <a name="overview-of-azure-on-demand-media-encoders"></a>Azure 隨選媒體編碼器的總覽
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
@@ -32,7 +34,7 @@ Azure 媒體服務提供多個用於將雲端中之媒體編碼的選項。
 
 媒體服務提供動態封裝，這讓您以媒體服務支援的串流格式 (MPEG DASH、HLS、Smooth Streaming) 提供調適性位元速率 MP4 或 Smooth Streaming 編碼內容，而不必重新封裝成這些串流格式。
 
-建立媒體服務帳戶時，**預設**串流端點會新增至您的帳戶處於 [**已停止**] 狀態。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中] 狀態。 當端點處於執行中狀態時，就會發生串流**端點的計費**。
+當您建立媒體服務帳戶時， **預設** 串流端點會新增至您的帳戶處於 **已停止** 狀態。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中] 狀態。 當端點處於執行中狀態時，就會產生串流 **端點的計費** 。
 
 媒體服務支援本文中所描述的下列隨選編碼器：
 
@@ -60,7 +62,7 @@ Media Encoder Standard 使用 [這裡](https://go.microsoft.com/fwlink/?linkid=6
 [這裡](media-services-output-metadata-schema.md)說明編碼器輸出中繼資料。
 
 ### <a name="generate-thumbnails"></a>產生縮圖
-如需相關資訊，請參閱 [如何使用媒體編碼器標準產生縮圖](media-services-advanced-encoding-with-mes.md#thumbnails)。
+如需相關資訊，請參閱 [如何使用媒體編碼器標準產生縮圖](media-services-advanced-encoding-with-mes.md)。
 
 ### <a name="trim-videos-clipping"></a>修剪視訊 (裁剪)
 如需相關資訊，請參閱 [如何使用媒體編碼器標準修剪視訊](media-services-advanced-encoding-with-mes.md#trim_video)。
@@ -68,11 +70,11 @@ Media Encoder Standard 使用 [這裡](https://go.microsoft.com/fwlink/?linkid=6
 ### <a name="create-overlays"></a>建立疊加層
 如需相關資訊，請參閱 [如何使用媒體編碼器標準建立覆疊](media-services-advanced-encoding-with-mes.md#overlay)。
 
-### <a name="see-also"></a>請參閱
+### <a name="see-also"></a>另請參閱
 [媒體服務部落格](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
 ## <a name="media-encoder-premium-workflow"></a>媒體編碼器高階工作流程
-### <a name="overview"></a>總覽
+### <a name="overview"></a>概觀
 [介紹 Azure 媒體服務中的 Premium 編碼](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
 
 ### <a name="how-to-use"></a>如何使用

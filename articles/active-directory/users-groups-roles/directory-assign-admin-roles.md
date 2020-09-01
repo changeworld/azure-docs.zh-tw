@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 08/13/2020
+ms.date: 08/31/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 953217d15e6aede86d863bcd5be6df583d15df6d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 09664de9ab2040ad04127ee1556c21244ac6bc2d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180077"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269670"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -27,7 +27,7 @@ ms.locfileid: "89180077"
 
 ## <a name="limit-use-of-global-administrator"></a>限制全域管理員的使用
 
-獲指派全域管理員角色的使用者可以讀取及修改 Azure AD 組織中的每個系統管理設定。 根據預設，註冊 Azure 訂用帳戶的人員會獲指派 Azure AD 組織的全域管理員角色。 只有全域管理員和特殊權限角色管理員才能委派系統管理員角色。 為了降低業務風險，建議您將此角色指派給貴組織中的極少可能人員。
+獲指派全域管理員角色的使用者可以讀取及修改 Azure AD 組織中的每個系統管理設定。 根據預設，當使用者註冊 Microsoft 雲端服務時，會建立 Azure AD 租使用者，且使用者會成為全域管理員角色的成員。 當您將訂用帳戶新增至現有的租使用者時，您不會指派給全域管理員角色。 只有全域管理員和特殊權限角色管理員才能委派系統管理員角色。 為了降低業務風險，建議您將此角色指派給貴組織中的極少可能人員。
 
 建議的最佳做法是將此角色指派給組織中的少於五個人員。 如果您在組織中有超過五個系統管理員獲指派全域管理員角色，以下是一些減少其使用的方法。
 

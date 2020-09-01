@@ -1,7 +1,7 @@
 ---
 title: 媒體服務和 Apple FairPlay 授權支援 - Azure | Microsoft Docs
 description: 本主題提供 Apple FairPlay 授權需求和設定的總覽。
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0c2a699a57ce43b4d0b6f02c850dbda8082fbaea
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cded51fa1cc1a1411f59915382f3c310660f8b19
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009724"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269296"
 ---
-# <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 授權需求和設定 
+# <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 授權需求和設定
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure 媒體服務可讓您使用 **Apple FairPlay** (AES-128 CBC) 來加密您的 HLS 內容。 媒體服務也提供傳遞 FairPlay 授權的服務。 當播放程式嘗試播放以 FairPlay 保護的內容時，會將要求傳送到授權傳遞服務來取得授權。 如果授權服務核准要求，就會發出授權以傳送給用戶端，並將它用來解密和播放所指定內容。
 

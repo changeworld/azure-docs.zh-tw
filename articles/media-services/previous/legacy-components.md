@@ -1,6 +1,6 @@
 ---
 title: Azure 媒體服務舊版元件 |Microsoft Docs
-description: 本主題討論 Azure 媒體服務的舊版元件。
+description: 本主題討論 Azure 媒體服務舊版元件。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,20 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: juliako
-ms.openlocfilehash: d8d961ab58e900a6d619ec64297c783abdb7b6ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c3e50fd64c113aafd2d70cc76c7f789e080ad23
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091686"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269517"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure 媒體服務舊版元件
 
-經過一段時間，媒體服務元件已有穩定的改良功能和增強功能。 因此，某些舊版元件已淘汰。 您可以在下列文章中找到如何將應用程式從舊版元件遷移至目前元件的指示。
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
+經過一段時間後，媒體服務元件的改進和增強功能也已經過穩定。 因此，某些舊版元件已淘汰。 您可以在下列文章中找到有關如何將應用程式從舊版元件遷移至目前元件的指示。
  
 ## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>舊版元件和遷移指引的淘汰計畫
 
-我們宣布淘汰「Windows Azure 媒體編碼器」(WAME) 和「Azure 媒體編碼器」(AME) 媒體處理器。 這些處理器將于2020年3月31日淘汰。
+我們宣布淘汰「Windows Azure 媒體編碼器」(WAME) 和「Azure 媒體編碼器」(AME) 媒體處理器。 這些處理器即將于2020年3月31日淘汰。
 
 * [從 Windows Azure 媒體編碼器遷移至媒體編碼器標準](migrate-windows-azure-media-encoder.md)
 * [從 Azure 媒體編碼器遷移至媒體編碼器標準](migrate-azure-media-encoder.md)
@@ -35,13 +37,13 @@ ms.locfileid: "87091686"
  
 |媒體處理器名稱|停用日期|其他注意事項|
 |---|---|
-|[Azure 媒體索引器 2](media-services-process-content-with-indexer2.md)|2020年1月1日|[Azure 媒體服務影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 如需詳細資訊，請參閱[從 Azure 媒體索引子2遷移至 Azure 媒體服務影片索引子](migrate-indexer-v1-v2.md)。|
-|[Azure Media Indexer](media-services-index-content.md)|2023年3月1日|[Azure 媒體服務影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 如需詳細資訊，請參閱[從 Azure 媒體索引子遷移至 Azure 媒體服務影片索引子](migrate-indexer-v1-v2.md)|
-|[動作偵測](media-services-motion-detection.md)|2020年6月1日|目前沒有任何取代計畫。|
-|[影片摘要](media-services-video-summarization.md)|2020年6月1日|目前沒有任何取代計畫。|
-|[影片光學字元辨識](media-services-video-optical-character-recognition.md)|2020年6月1日|[Azure 媒體服務影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 此外，請考慮使用[Azure 媒體服務 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>請參閱[比較 Azure 媒體服務 v3 預設值和影片索引子](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
-|[臉部偵測](media-services-face-and-emotion-detection.md)|2020年6月1日|[Azure 媒體服務影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 此外，請考慮使用[Azure 媒體服務 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>請參閱[比較 Azure 媒體服務 v3 預設值和影片索引子](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
-|[內容仲裁](media-services-content-moderation.md)|2020年6月1日|[Azure 媒體服務影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 此外，請考慮使用[Azure 媒體服務 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>請參閱[比較 Azure 媒體服務 v3 預設值和影片索引子](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
+|[Azure 媒體索引器 2](media-services-process-content-with-indexer2.md)|2020年1月1日|[Azure 媒體服務的影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 如需詳細資訊，請參閱 [從 Azure 媒體索引子2遷移至 Azure 媒體服務影片索引子](migrate-indexer-v1-v2.md)。|
+|[Azure Media Indexer](media-services-index-content.md)|2023年3月1日|[Azure 媒體服務的影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 如需詳細資訊，請參閱 [從 Azure 媒體索引子遷移至 Azure 媒體服務影片索引子](migrate-indexer-v1-v2.md)|
+|[動作偵測](media-services-motion-detection.md)|2020年6月1日|目前沒有取代方案。|
+|[影片摘要](media-services-video-summarization.md)|2020年6月1日|目前沒有取代方案。|
+|[影片光學字元辨識](media-services-video-optical-character-recognition.md)|2020年6月1日|[Azure 媒體服務的影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 此外，請考慮使用 [Azure 媒體服務 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>請參閱 [比較 Azure 媒體服務 v3 預設和影片索引子](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
+|[臉部偵測](media-services-face-and-emotion-detection.md)|2020年6月1日|[Azure 媒體服務的影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 此外，請考慮使用 [Azure 媒體服務 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>請參閱 [比較 Azure 媒體服務 v3 預設和影片索引子](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
+|[內容仲裁](media-services-content-moderation.md)|2020年6月1日|[Azure 媒體服務的影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 此外，請考慮使用 [Azure 媒體服務 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>請參閱 [比較 Azure 媒體服務 v3 預設和影片索引子](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
 
 ## <a name="next-steps"></a>後續步驟
 

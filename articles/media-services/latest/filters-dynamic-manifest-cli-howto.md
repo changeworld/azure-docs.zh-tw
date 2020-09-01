@@ -3,7 +3,7 @@ title: 使用 CLI 搭配 Azure 媒體服務建立篩選器 | Microsoft Docs
 description: 本文說明如何使用 CLI 搭配 Azure 媒體服務 v3 來建立篩選器。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,26 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 2385171a501d00f91c58f3fde9b487505ec21c60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 024136ab6f660ecc5b6c5c7c0ecae62c83238659
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023206"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269534"
 ---
-# <a name="creating-filters-with-cli"></a>使用 CLI 建立篩選器 
+# <a name="creating-filters-with-cli"></a>使用 CLI 建立篩選器
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 當您提供內容給客戶 (串流即時活動或點播視訊) 時，用戶端需要的彈性可能比預設資產資訊清單檔案中所述的還多。 Azure 媒體服務可讓您為您的內容定義帳戶篩選器與資產篩選器。 
 
-如需這項功能和使用方式的詳細描述，請參閱[動態資訊清單](filters-dynamic-manifest-overview.md)和[篩選](filters-concept.md)。
+如需這項功能的詳細說明，以及使用它的案例，請參閱 [動態資訊清單](filters-dynamic-manifest-overview.md) 和 [篩選器](filters-concept.md)。
 
 此主題說明如何為點播視訊資產設定篩選器，以及如何使用適用於第三版媒體服務的 CLI 來建立[帳戶篩選器](/cli/azure/ams/account-filter?view=azure-cli-latest)與[資產篩選器](/cli/azure/ams/asset-filter?view=azure-cli-latest)。 
 
 > [!NOTE]
-> 請務必參閱[presentationTimeRange](filters-concept.md#presentationtimerange)。
+> 請務必查看 [presentationTimeRange](filters-concept.md#presentationtimerange)。
 
 ## <a name="prerequisites"></a>Prerequisites 
 
@@ -43,7 +45,7 @@ ms.locfileid: "87023206"
 下列範例定義新增到最終資訊清單的曲目選取條件。 此篩選包含格式為 EC-3 的所有音軌，以及位元速率介於 0-1000000 的所有影像軌。
 
 > [!TIP]
-> 如果您打算在 REST 中定義**篩選**，請注意您必須包含 "Properties" 包裝函式 JSON 物件。  
+> 如果您打算在 REST 中定義 **篩選** ，請注意，您必須包含 "Properties" 包裝函式 JSON 物件。  
 
 ```json
 [
@@ -100,11 +102,11 @@ az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-
 
 此外，也請參閱[篩選器的 JSON 範例](/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)。
 
-## <a name="associate-filters-with-streaming-locator"></a>將篩選器與串流定位器建立關聯
+## <a name="associate-filters-with-streaming-locator"></a>將篩選準則與串流定位器建立關聯
 
-您可以指定資產或帳戶篩選器的清單，其適用于您的串流定位器。 動態封裝程式[（串流端點）](dynamic-packaging-overview.md)會將這份篩選器清單與您的用戶端在 URL 中指定的篩選準則一起套用。 這個組合會產生[動態資訊清單](filters-dynamic-manifest-overview.md)，這是根據 URL 中的篩選器，以及您在串流定位器上指定的篩選準則。 如果您想要套用篩選，但不想要在 URL 中公開篩選名稱，建議您使用這項功能。
+您可以指定資產或帳戶篩選器的清單，這會套用至您的串流定位器。 [動態封裝 (串流端點) ](dynamic-packaging-overview.md)會將這份篩選清單與您的用戶端在 URL 中指定的篩選準則一起套用。 此組合會產生 [動態資訊清單](filters-dynamic-manifest-overview.md)，這是以 URL 中的篩選器和您在串流定位器上指定的篩選器為基礎。 如果您想要套用篩選，但不想公開 URL 中的篩選名稱，建議您使用這項功能。
 
-下列 CLI 程式碼顯示如何建立串流定位器並指定 `filters` 。 這是選擇性的屬性，可採用以空格分隔的資產篩選器名稱和/或帳戶篩選名稱清單。
+下列 CLI 程式碼顯示如何建立串流定位器並指定 `filters` 。 這是選擇性屬性，可採用以空格分隔的資產篩選名稱和/或帳戶篩選名稱清單。
 
 ```azurecli
 az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocatorName \
@@ -114,7 +116,7 @@ az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocat
                                 
 ```
 
-## <a name="stream-using-filters"></a>使用篩選器串流
+## <a name="stream-using-filters"></a>使用篩選的資料流程
 
 定義篩選條件後，您的用戶端就可以在串流 URL 中使用它們。 篩選器可以套用至自適性串流通訊協定：Apple HTTP 即時串流 (HLS)、MPEG-DASH 和 Smooth Streaming。
 

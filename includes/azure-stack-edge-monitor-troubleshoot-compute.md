@@ -2,16 +2,51 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 08/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 350d41980e3128a8747a673ebea82afbe4fab49b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92ccb6127e624ace9e719ffd23324b3a1b971f72
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85313200"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89272176"
 ---
-在已設定計算角色的 Azure Stack Edge 裝置上，可使用 docker 命令的子集來監視或疑難排解模組。 若要查看可用的命令清單，請[連接到 PowerShell 介面](#connect-to-the-powershell-interface)，並使用函式 `dkrdbe` 。
+在已設定計算角色的 Azure Stack Edge 裝置上，您可以使用兩組不同的命令對裝置進行疑難排解或監視。
+
+- 使用 `iotedge` 命令。 這些命令適用于您裝置的基本作業。
+- 使用 `dkrdbe` 命令。 這些命令適用于您裝置的一組大量作業。
+
+若要執行上述其中一組命令，您需要 [連接到 PowerShell 介面](#connect-to-the-powershell-interface)。
+
+### <a name="use-iotedge-commands"></a>使用 `iotedge` 命令
+
+若要查看可用命令的清單，請 [連接到 PowerShell 介面](#connect-to-the-powershell-interface) 並使用函式 `iotedge` 。
+
+```powershell
+[10.100.10.10]: PS>iotedge -?                                                                                                                                                                                                 Usage: iotedge COMMAND
+
+Commands:
+   check
+   list
+   logs
+   restart
+
+[10.100.10.10]: PS>
+```
+
+下表提供下列命令的簡短描述 `iotedge` ：
+
+|命令  |說明 |
+|---------|---------|
+|`check`     | 針對常見的設定和連線能力問題執行自動檢查       |
+|`list`     | 列出模組         |
+|`logs`     | 提取模組的記錄        |
+|`restart`     | 停止並重新啟動模組         |
+
+
+### <a name="use-dkrdbe-commands"></a>使用 `dkrdbe` 命令
+
+若要查看可用命令的清單，請 [連接到 PowerShell 介面](#connect-to-the-powershell-interface) 並使用函式 `dkrdbe` 。
 
 ```powershell
 [10.100.10.10]: PS>dkrdbe -?
@@ -35,24 +70,24 @@ Commands:
 
 [10.100.10.10]: PS>
 ```
-下表提供可供使用之命令的簡短描述 `dkrdbe` ：
+下表提供下列命令的簡短描述 `dkrdbe` ：
 
-|命令  |Description |
+|命令  |說明 |
 |---------|---------|
-|`image`     | 管理影像。 若要移除未使用的映射，請使用：`dkrdbe image prune -a -f`       |
+|`image`     | 管理映射。 若要移除未使用的映射，請使用： `dkrdbe image prune -a -f`       |
 |`images`     | 列出映像         |
 |`inspect`     | 傳回 Docker 物件的低層級資訊         |
 |`login`     | 登入 Docker 登錄         |
-|`logout`     | 從 Docker registry 登出         |
+|`logout`     | 從 Docker 登錄登出         |
 |`logs`     | 提取容器的記錄        |
 |`port`     | 列出埠對應或容器的特定對應        |
 |`ps`     | 列出容器        |
-|`pull`     | 從登錄中提取映射或存放庫         |
+|`pull`     | 從登錄提取映射或存放庫         |
 |`start`     | 啟動一或多個已停止的容器         |
-|`stats`     | 顯示容器資源使用方式統計資料的即時串流         |
+|`stats`     | 顯示容器 (的即時串流) 資源使用量統計資料         |
 |`stop`     | 停止一或多個正在執行的容器        |
 |`system`     | 管理 Docker         |
-|`top`     | 顯示容器的執行中進程         |
+|`top`     | 顯示正在執行的容器進程         |
 
 若要取得任何可用命令的說明，請使用 `dkrdbe <command-name> --help` 。
 
@@ -78,27 +113,27 @@ Options:
 [10.100.10.10]: PS>
 ```
 
-函式的可用命令會 `dkrdbe` 使用與一般 docker 命令所使用的相同參數。 如需搭配 docker 命令使用的選項和參數，請移至[使用 docker 命令列](https://docs.docker.com/engine/reference/commandline/docker/)。
+函式的可用命令會 `dkrdbe` 使用與用於一般 docker 命令的參數相同的參數。 如需使用 docker 命令的選項和參數，請移至 [使用 docker 命令列](https://docs.docker.com/engine/reference/commandline/docker/)。
 
-### <a name="to-check-if-the-module-deployed-successfully"></a>檢查模組是否已成功部署
+### <a name="to-check-if-the-module-deployed-successfully"></a>若要檢查是否已成功部署模組
 
-計算模組是已實作為商務邏輯的容器。 若要檢查是否已成功部署計算模組，請執行 `ps` 命令，並檢查容器（對應至計算模組）是否正在執行。
+計算模組是已實行商務邏輯的容器。 若要檢查是否已成功部署計算模組，請執行 `ps` 命令，並檢查對應到計算模組) 的容器 (是否正在執行。
 
-若要取得所有容器（包括已暫停的容器）的清單，請執行 `ps -a` 命令。
+若要取得所有容器的清單 (包括已暫停) 的容器，請執行 `ps -a` 命令。
 
 ```powershell
 [10.100.10.10]: P> dkrdbe ps -a
 CONTAINER ID        IMAGE                                                COMMAND                   CREATED             STATUS              PORTS                                                                  NAMES
-d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  movefile
-0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  filemove
-2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
-acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days                                                                                  edgeAgent
+d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  movefile
+0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  filemove
+2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
+acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
 [10.100.10.10]: PS>
 ```
 
-如果在建立容器映射或提取映射時發生錯誤，請執行 `logs edgeAgent` 。  `EdgeAgent`是負責布建其他容器的 IoT Edge 執行時間容器。
+如果建立容器映射時發生錯誤，或是在提取映射時發生錯誤，請執行 `logs edgeAgent` 。  `EdgeAgent` 是負責布建其他容器的 IoT Edge 執行時間容器。
 
-因為傾印 `logs edgeAgent` 所有的記錄，所以查看最近錯誤的好方法是使用選項 `--tail 20` 。
+因為傾印 `logs edgeAgent` 所有記錄檔，所以若要查看最近的錯誤，最好的方法就是使用選項 `--tail 20` 。
 
 
 ```powershell
@@ -119,21 +154,21 @@ reateOptions":"{\"HostConfig\":{\"Binds\":[\"/home/hcsshares/share4-dl460:/home/
 
 ### <a name="to-get-container-logs"></a>取得容器記錄
 
-若要取得特定容器的記錄，請先列出容器，然後取得您感興趣之容器的記錄。
+若要取得特定容器的記錄，請先列出容器，然後取得您感興趣的容器記錄。
 
 1. [連接到 PowerShell 介面](#connect-to-the-powershell-interface)。
-2. 若要取得執行中容器的清單，請執行 `ps` 命令。
+2. 若要取得正在執行的容器清單，請執行 `ps` 命令。
 
     ```powershell
     [10.100.10.10]: P> dkrdbe ps
     CONTAINER ID        IMAGE                                                COMMAND                   CREATED             STATUS              PORTS                                                                  NAMES
-    d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  movefile
-    0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  filemove
-    2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
-    acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days                                                                                  edgeAgent
+    d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  movefile
+    0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  filemove
+    2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
+    acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
     ```
 
-3. 記下您需要記錄之容器的容器識別碼。
+3. 記下您需要記錄的容器的容器識別碼。
 
 4. 若要取得特定容器的記錄，請執行 `logs` 提供容器識別碼的命令。
 
@@ -150,12 +185,12 @@ reateOptions":"{\"HostConfig\":{\"Binds\":[\"/home/hcsshares/share4-dl460:/home/
     02/26/2019 18:23:38: Info: Processed event.
     ```
 
-### <a name="to-monitor-the-usage-statistics-of-the-device"></a>監視裝置的使用方式統計資料
+### <a name="to-monitor-the-usage-statistics-of-the-device"></a>監視裝置的使用量統計資料
 
 若要監視裝置上的記憶體、CPU 使用量和 IO，請使用 `stats` 命令。
 
 1. [連接到 PowerShell 介面](#connect-to-the-powershell-interface)。
-2. 執行命令，以 `stats` 停用即時資料流，並只提取第一個結果。
+2. 執行 `stats` 命令以停用即時資料流，並只提取第一個結果。
 
    ```powershell
    dkrdbe stats --no-stream
