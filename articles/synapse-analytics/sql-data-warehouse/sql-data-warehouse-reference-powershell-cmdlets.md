@@ -1,6 +1,6 @@
 ---
 title: PowerShell & REST Api
-description: 尋找 Azure Synapse Analytics SQL 集區的熱門 PowerShell Cmdlet，包括如何暫停和繼續資料庫。
+description: 尋找 Azure Synapse Analytics SQL 集區的最上層 PowerShell Cmdlet，包括如何暫停和繼續資料庫。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: b1063d4a74fa1360cfb0804266a46b97be508e97
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.openlocfilehash: aaf290fac71fec0ff4106e3f8a1895dd65b94e09
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495647"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072887"
 ---
 # <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>適用于 Azure Synapse Analytics SQL 集區的 PowerShell & REST Api
 
-您可以使用 Azure PowerShell Cmdlet 或 REST Api 來管理許多 Azure Synapse Analytics SQL 集區管理工作。  以下是一些範例，說明如何使用 PowerShell 命令來自動化 SQL 集區中的一般工作。  如需一些良好的 REST 範例，請參閱[使用 REST 管理延展性](sql-data-warehouse-manage-compute-rest-api.md)一文。
+許多 Azure Synapse Analytics SQL 集區管理工作可以使用 Azure PowerShell Cmdlet 或 REST Api 來管理。  以下是一些範例，說明如何使用 PowerShell 命令將 SQL 集區中的一般工作自動化。  如需一些良好的 REST 範例，請參閱[使用 REST 管理延展性](sql-data-warehouse-manage-compute-rest-api.md)一文。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "86495647"
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
 
-一種變化，此範例會使用管線將抓取的物件傳送至[set-azsqldatabase 搭配](/powershell/module/az.sql/suspend-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。  結果就是暫停資料庫。 最終的命令會顯示結果。
+一種變化，此範例會使用管線將已抓取的物件傳送至暫止的 [>set-azsqldatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。  結果就是暫停資料庫。 最終的命令會顯示結果。
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -51,7 +51,7 @@ $resultDatabase = $database | Suspend-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="start-data-warehouse-example"></a>啟動資料倉儲範例
+## <a name="start-data-warehouse-example"></a>開始資料倉儲範例
 
 繼續 "Server01" 伺服器上託管之 "Database02" 資料庫的作業。 此伺服器包含在「ResourceGroup1」這個資源群組中。
 
@@ -59,7 +59,7 @@ $resultDatabase
 Resume-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-一種變化，此範例會從 "ResourceGroup1" 資源群組包含的 "Server01" 伺服器中，擷取 "Database02" 資料庫。 它會以管線將抓取的物件傳送至[set-azsqldatabase 搭配](/powershell/module/az.sql/resume-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+一種變化，此範例會從 "ResourceGroup1" 資源群組包含的 "Server01" 伺服器中，擷取 "Database02" 資料庫。 它會將已抓取的物件傳送至 [>set-azsqldatabase](/powershell/module/az.sql/resume-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -79,9 +79,9 @@ Azure Synapse Analytics 資料倉儲支援這些 PowerShell Cmdlet。
 * [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 * [Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 * [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-* [繼續-Set-azsqldatabase 搭配](/powershell/module/az.sql/resume-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+* [繼續->set-azsqldatabase](/powershell/module/az.sql/resume-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 * [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-* [暫止-Set-azsqldatabase 搭配](/powershell/module/az.sql/suspend-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+* [暫止->set-azsqldatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -90,4 +90,4 @@ Azure Synapse Analytics 資料倉儲支援這些 PowerShell Cmdlet。
 * [使用 PowerShell 建立資料倉儲](create-data-warehouse-powershell.md)
 * [資料庫還原](sql-data-warehouse-restore-points.md)
 
-如需可使用 PowerShell 自動化的其他工作，請參閱[Azure SQL Database Cmdlet](/powershell/module/az.sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 並非所有的 Azure SQL Database Cmdlet 都支援 Azure Synapse 分析資料倉儲。 如需可以使用 REST 來自動化的工作清單，請參閱[Azure SQL Database 的作業](/rest/api/sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+如需可使用 PowerShell 自動化的其他工作，請參閱 [Azure SQL Database Cmdlet](/powershell/module/az.sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 Azure Synapse Analytics 資料倉儲不支援所有 Azure SQL Database Cmdlet。 如需可使用 REST 自動化的工作清單，請參閱 [Azure SQL Database 的作業](/rest/api/sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。

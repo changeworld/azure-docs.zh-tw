@@ -97,7 +97,11 @@
     - name: 安全性
       items:
         - name: 網路安全性群組
-          href: security-overview.md
+          items:
+            - name: 概觀
+              href: security-overview.md
+            - name: 運作方式
+              href: network-security-group-how-it-works.md
         - name: 應用程式安全性群組
           href: application-security-groups.md
         - name: 服務標籤

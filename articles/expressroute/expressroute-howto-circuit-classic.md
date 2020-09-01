@@ -7,12 +7,13 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2f2aac6dd7e073634d4114d33fae6bebd51fe176
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 801032e3df9dcb778fa4e591ef37eabc317e997a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736317"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073330"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 修改 ExpressRoute 線路 (傳統)
 
@@ -22,7 +23,7 @@ ms.locfileid: "84736317"
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager 範本](expressroute-howto-circuit-resource-manager-template.md)
 > * [影片-Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [PowerShell （傳統）](expressroute-howto-circuit-classic.md)
+> * [ (傳統) 的 PowerShell ](expressroute-howto-circuit-classic.md)
 >
 
 本文將逐步引導您檢查狀態、更新或刪除，以及取消佈建 ExpressRoute 傳統部署模型線路。 本文適用於傳統部署模型。
@@ -194,7 +195,7 @@ At line:1 char:1
 ### <a name="considerations"></a>考量
 
 * 您必須取消連結 ExpressRoute 線路的所有虛擬網路，此作業才會成功。 如果此作業失敗，請檢查您是否有任何虛擬網路連結至線路。
-* 如果 ExpressRoute 線路服務提供者布建狀態為 [布建] 或 [已布建]，您必須與服務提供者合作，以在其端取消布**建**線路。 **Provisioning** 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
+* 如果 ExpressRoute 線路服務提供者布建狀態為 [布建] 或 [已布建]，您就必須與服務提供者合作，在其端取消布**建**電路。 **Provisioning** 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
 * 若服務提供者已取消佈建線路 (服務提供者佈建狀態設定為 [未佈建]****)，您便可以刪除線路。 這樣會停止針對線路計費。
 
 #### <a name="delete-a-circuit"></a>刪除電路

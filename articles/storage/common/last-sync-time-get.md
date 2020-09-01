@@ -10,13 +10,13 @@ ms.date: 05/28/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 00f6085414e5a48647846830f93ba3fb98c382f2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: cad80a554db0424ad8635e81cbfb4225705e9c89
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502506"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073007"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>檢查儲存體帳戶的 [上次同步時間] 屬性
 
@@ -38,7 +38,7 @@ ms.locfileid: "87502506"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要使用 PowerShell 取得儲存體帳戶的上次同步處理時間，請安裝1.11.0 或更新版本的[Az. storage](https://www.powershellgallery.com/packages/Az.Storage)模組。 然後檢查儲存體帳戶的 **GeoReplicationStats.LastSyncTime** 屬性。 請記得以您自己的值取代預留位置值：
+若要使用 PowerShell 取得儲存體帳戶的上次同步處理時間，請安裝1.11.0 版或更新版本的 [Az](https://www.powershellgallery.com/packages/Az.Storage) 模組。 然後檢查儲存體帳戶的 **GeoReplicationStats.LastSyncTime** 屬性。 請記得以您自己的值取代預留位置值：
 
 ```powershell
 $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `

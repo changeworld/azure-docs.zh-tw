@@ -10,12 +10,12 @@ ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7e8d712a3477fe7dd9b963f203b3374dd5fa2a2e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b34664d36be2f18bc6821d5b13ca8bd403f2b6fc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001054"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074401"
 ---
 # <a name="enable-and-manage-blob-versioning-preview"></a>啟用和管理 blob 版本設定 (預覽) 
 
@@ -24,6 +24,8 @@ ms.locfileid: "89001054"
 本文說明如何使用 Azure 入口網站或 Azure Resource Manager 範本，啟用或停用儲存體帳戶的 blob 版本設定。
 
 啟用 blob 版本設定之前，您必須先註冊預覽版。 若要深入瞭解 blob 版本設定（包括如何註冊預覽版），請參閱 [blob 版本設定 (預覽) ](versioning-overview.md)。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="enable-blob-versioning"></a>啟用 Blob 版本設定
 

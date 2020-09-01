@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 097b3c71b01a8ad0e930d7aa0d7be46a1e835e1a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: edbce017b1090a029d49c9f2f8812e7e65133fcb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495160"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073126"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>區塊 Blob 的物件複寫 (預覽)
 
@@ -32,6 +32,8 @@ ms.locfileid: "87495160"
 
 若要了解如何設定物件複寫，請參閱[設定物件複寫 (預覽)](object-replication-configure.md)。
 
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
+
 ## <a name="object-replication-policies-and-rules"></a>物件複寫原則和規則
 
 當您設定物件複寫時，您會建立複寫原則，指定來源儲存體帳戶和目的地帳戶。 複寫原則包含一或多個規則，可指定來源容器和目的地容器，並指出將複寫來源容器中的哪些區塊 Blob。
@@ -45,7 +47,7 @@ ms.locfileid: "87495160"
 
 當您設定物件複寫時，會透過 Azure 儲存體資源提供者，在來源帳戶和目的地帳戶上建立複寫原則。 複寫原則是以原則識別碼進行識別。 來源和目的地帳戶上的原則必須擁有相同的原則識別碼，才能進行複寫。
 
-儲存體帳戶最多可作為兩個目的地帳戶的來源帳戶。 而目的地帳戶可能不會有兩個以上的來源帳戶。 來源和目的地帳戶可能都在不同的區域中。 您可以設定個別的複寫原則，將資料複寫到每個目的地帳戶。
+儲存體帳戶最多可作為兩個目的地帳戶的來源帳戶。 目的地帳戶可能不會有兩個以上的來源帳戶。 來源和目的地帳戶可能都在不同的區域中。 您可以設定個別的複寫原則，將資料複寫到每個目的地帳戶。
 
 ### <a name="replication-rules"></a>複寫規則
 
@@ -55,7 +57,7 @@ ms.locfileid: "87495160"
 
 您也可以指定一或多個篩選作為複製規則的一部分，以依前置詞篩選區塊 Blob。 當您指定前置詞時，只有符合來源容器中該前置詞的 Blob 才會複製到目的地容器。
 
-來源和目的地容器必須同時存在，您才能在規則中加以指定。 建立複寫原則之後，目的地容器會變成唯讀。 任何寫入目的地容器的嘗試都會失敗，錯誤碼為 409 (衝突)。 不過，您可以在目的地容器中的 blob 上呼叫「[設定 Blob 層](/rest/api/storageservices/set-blob-tier)」作業，以將其移至封存層。 如需封存層的詳細資訊，請參閱[Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層](storage-blob-storage-tiers.md#archive-access-tier)。
+來源和目的地容器必須同時存在，您才能在規則中加以指定。 建立複寫原則之後，目的地容器會變成唯讀。 任何寫入目的地容器的嘗試都會失敗，錯誤碼為 409 (衝突)。 不過，您可以在目的地容器中的 blob 上呼叫「 [設定 Blob 層](/rest/api/storageservices/set-blob-tier) 」作業，以將它移至封存層。 如需封存層的詳細資訊，請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取層和封存存取層](storage-blob-storage-tiers.md#archive-access-tier)。
 
 ## <a name="about-the-preview"></a>關於預覽
 

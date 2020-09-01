@@ -1,19 +1,19 @@
 ---
 title: Azure 磁碟加密範例指令碼
-description: 本文是 Linux Vm 的 Microsoft Azure 磁片加密附錄。
+description: 本文是適用于 Linux Vm 的 Microsoft Azure 磁片加密的附錄。
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: ab6ef302d2ac3cbca8bb91c05f994c1ddf19bd1e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: abf805d24d164ba31daa4d77d6360629632bfcf0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370252"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072701"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>適用于 Linux Vm 的 Azure 磁碟加密範例腳本
 
@@ -43,15 +43,15 @@ ms.locfileid: "87370252"
 下表顯示可在 PowerShell 指令碼中使用的參數： 
 
 
-|參數|說明|是否為強制？|
+|參數|描述|是否為強制？|
 |------|------|------|
-|$resourceGroupName| 金鑰保存庫所屬資源群組的名稱。  如果不存在此名稱的應用程式，將會以此名稱建立新的資源群組。| True|
-|$keyVaultName|要用來放置加密金鑰的金鑰保存庫名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的保存庫。| True|
-|$location|金鑰保存庫的位置。 請確定金鑰保存庫和要加密的 VM 位於相同位置。 使用 `Get-AzLocation` 取得位置清單。|True|
-|$subscriptionId|要使用的 Azure 訂用帳戶識別碼。  您可以使用 `Get-AzSubscription` 取得您的訂用帳戶識別碼。|True|
-|$aadAppName|會用來將祕密寫入到金鑰保存庫的 Azure AD 應用程式名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的應用程式。 如果此應用程式已經存在，請將 aadClientSecret 參數傳遞至指令碼。|False|
-|$aadClientSecret|稍早建立的 Azure AD 應用程式用戶端密碼。|False|
-|$keyEncryptionKeyName|金鑰保存庫中選用金鑰加密金鑰的名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的金鑰。|False|
+|$resourceGroupName| 金鑰保存庫所屬資源群組的名稱。  如果不存在此名稱的應用程式，將會以此名稱建立新的資源群組。| 是|
+|$keyVaultName|要用來放置加密金鑰的金鑰保存庫名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的保存庫。| 是|
+|$location|金鑰保存庫的位置。 請確定金鑰保存庫和要加密的 VM 位於相同位置。 使用 `Get-AzLocation` 取得位置清單。|是|
+|$subscriptionId|要使用的 Azure 訂用帳戶識別碼。  您可以使用 `Get-AzSubscription` 取得您的訂用帳戶識別碼。|是|
+|$aadAppName|會用來將祕密寫入到金鑰保存庫的 Azure AD 應用程式名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的應用程式。 如果此應用程式已經存在，請將 aadClientSecret 參數傳遞至指令碼。|否|
+|$aadClientSecret|稍早建立的 Azure AD 應用程式用戶端密碼。|否|
+|$keyEncryptionKeyName|金鑰保存庫中選用金鑰加密金鑰的名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的金鑰。|否|
 
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>加密或解密沒有 Azure AD 應用程式的 VM
@@ -80,7 +80,7 @@ ms.locfileid: "87370252"
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>OS 磁碟加密的必要條件
 
-* VM 必須使用與作業系統磁片加密相容的散發套件，如[Azure 磁碟加密支援的作業系統](disk-encryption-overview.md#supported-vms)中所列 
+* VM 必須使用與 OS 磁片加密相容的散發套件，如[Azure 磁碟加密支援的作業系統](disk-encryption-overview.md#supported-vms)所列 
 * 必須從 Azure Resource Manager 的Marketplace 映像建立 VM。
 * 具有至少 4 GB RAM 的 Azure VM (建議大小為 7 GB)。
 * (適用於 RHEL 和 CentOS) 停用 SELinux。 若要停用 SELinux，請參閱「4.4.2. 停用 SELinux」，其位於 VM 上的 [SELinux 使用者和系統管理員指南](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)。
@@ -101,14 +101,14 @@ ms.locfileid: "87370252"
 
 3. 登出 SSH 工作階段。
 
-4. 若要加密 OS，請在啟用加密時將 volumeType 指定為**All**或**OS** 。
+4. 若要加密 OS，請在啟用加密時，將 volumeType 指定為 **All** 或 **OS** 。
 
    > [!NOTE]
    > 未以 `systemd` 服務的形式執行的所有使用者空間程序皆應使用 `SIGKILL` 來終止。 重新啟動 VM。 當您在執行中的 VM 上啟用 OS 磁碟加密時，請規劃 VM 停機時間。
 
 5. 使用[下一節](#monitoring-os-encryption-progress)的指示定期監視加密進度。
 
-6. AzVmDiskEncryptionStatus 顯示「VMRestartPending」之後，請登入或使用入口網站、PowerShell 或 CLI 來重新開機您的 VM。
+6. >get-azvmdiskencryptionstatus 顯示「>vmrestartpending」之後，請使用入口網站、PowerShell 或 CLI 來重新開機您的 VM。
     ```powershell
     C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
@@ -227,7 +227,7 @@ ms.locfileid: "87370252"
     fi
    ```
 
-2. 在 */etc/crypttab* 中變更 crypt 設定。 它看起來應該像這樣：
+2. 在 */etc/crypttab* 中變更 crypt 設定。 其看起來應該如下：
    ```
     xxx_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
     ```
@@ -294,7 +294,7 @@ ms.locfileid: "87370252"
    ```bash
     if [ 1 ]; then
    ```
-4. 編輯/usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh 並將它附加至 "# Open LUKS device"：
+4. 編輯/usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh，並將它附加至「# Open LUKS device」：
 
     ```bash
     MountPoint=/tmp-keydisk-mount
@@ -371,11 +371,11 @@ ms.locfileid: "87370252"
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
-   to
+   至
    ```bash
     if [ 1 ]; then
    ```
-4. 編輯/usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh，並在 "# Open LUKS device" 後面附加下列內容：
+4. 編輯/usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh，並在 "# Open LUKS device" 之後附加下列內容：
     ```bash
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
@@ -396,7 +396,7 @@ ms.locfileid: "87370252"
     fi
     done
     ```    
-5. 執行 "/usr/sbin/dracut-f-v" 以更新 initrd。
+5. 執行 "/usr/sbin/dracut-f-v" 來更新 initrd。
 
     ![CentOS 7 設定 - 執行 /usr/sbin/dracut -f -v](./media/disk-encryption/centos-encrypt-fig5.png)
 
@@ -419,7 +419,7 @@ ms.locfileid: "87370252"
 ``` 
 
 ### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>未使用 KEK 加密的磁碟加密密碼
-若要在金鑰保存庫中設定密碼，請使用[AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)。 複雜密碼會編碼為 base64 字串，然後上傳至金鑰保存庫。 此外，請確定在金鑰保存庫中建立密碼時會設定下列標籤。
+若要在金鑰保存庫中設定秘密，請使用 [set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)。 複雜密碼會以 base64 字串編碼，然後上傳至金鑰保存庫。 此外，請確定在金鑰保存庫中建立密碼時會設定下列標籤。
 
 ```powershell
 
@@ -439,7 +439,7 @@ ms.locfileid: "87370252"
 在下一個步驟中使用 `$secretUrl`，以便[在不使用 KEK 的狀況下連接 OS 磁碟](#without-using-a-kek)。
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>使用 KEK 加密的磁碟加密密碼
-將密碼上傳至金鑰保存庫之前，您可以選擇性地使用金鑰加密金鑰來加密密碼。 使用包裝 [API](/rest/api/keyvault/wrapkey) 先加密使用金鑰加密金鑰的密碼。 此 wrap 作業的輸出是 base64 URL 編碼的字串，您可以使用 Cmdlet 上傳為秘密 [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) 。
+將密碼上傳至金鑰保存庫之前，您可以選擇性地使用金鑰加密金鑰來加密密碼。 使用包裝 [API](/rest/api/keyvault/wrapkey) 先加密使用金鑰加密金鑰的密碼。 這項包裝作業的輸出是 base64 URL 編碼的字串，您接著可以使用指令程式，以秘密的形式上傳 [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) 。
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

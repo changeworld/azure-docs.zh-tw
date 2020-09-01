@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 562a0fbd64fca530598a58599160dbdd7e479557
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f5e8d9efdacf6d5c281cabebc08bd525d517f9d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485521"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074707"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>適用于 Azure 應用程式閘道的 Azure 安全性基準
 
@@ -26,11 +26,11 @@ ms.locfileid: "84485521"
 
 *如需詳細資訊，請參閱[安全性控制：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
 
-### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路中的 Azure 資源
+### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路內的 Azure 資源
 
-**指導**方針：請確定所有虛擬網路 Azure 應用程式閘道子網部署都有一個網路安全性群組（NSG）套用至應用程式受信任埠和來源的特定網路存取控制。 雖然 Azure 應用程式閘道上支援網路安全性群組，但還是必須遵守一些限制和需求，才能讓您的 NSG 和 Azure 應用程式閘道如預期般運作。
+**指導**方針：確定所有虛擬網路 Azure 應用程式閘道子網部署都有網路安全性群組 (NSG) 套用至應用程式的受信任埠和來源特定的網路存取控制。 Azure 應用程式閘道支援網路安全性群組時，必須遵守一些限制和需求，才能讓您的 NSG 和 Azure 應用程式閘道如預期般運作。
 
-* [瞭解使用 Nsg 搭配 Azure 應用程式 Gateway 的限制和需求](https://docs.microsoft.com/azure/application-gateway/configuration-overview)
+* [瞭解搭配 Azure 應用程式閘道使用 Nsg 的限制和需求](https://docs.microsoft.com/azure/application-gateway/configuration-overview)
 
 * [如何建立具有安全性設定的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
@@ -40,7 +40,7 @@ ms.locfileid: "84485521"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：監視和記錄虛擬網路、子網和 Nic 的設定和流量
 
-**指導**方針：針對與您 Azure 應用程式閘道子網相關聯的網路安全性群組（nsg），啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶以進行流量審核。 您也可以將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用「分析」來提供 Azure 雲端中流量的深入解析。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
+**指導**方針：若為網路安全性群組 (nsg) 與 Azure 應用程式閘道子網相關聯，請啟用 NSG 流量記錄，並將記錄傳送至儲存體帳戶以進行流量審核。 您也可以將 NSG 流量記錄傳送至 Log Analytics 工作區，並使用流量分析來提供 Azure 雲端中流量的深入解析。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
 注意：在某些情況下，與 Azure 應用程式閘道子網相關聯的 NSG 流量記錄不會顯示已允許的流量。 如果您的設定符合下列情況，則在 NSG 流量記錄中就看不到允許的流量：
 - 您已部署應用程式閘道 v2
@@ -61,7 +61,7 @@ ms.locfileid: "84485521"
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保護重要的 Web 應用程式
 
-**指引**：在重要 Web 應用程式前方部署 Azure Web 應用程式防火牆（WAF），以進行連入流量的額外檢查。 Web 應用程式防火牆（WAF）是一項服務（Azure 應用程式閘道的功能），可提供 web 應用程式的集中式保護，免于遭受常見的攻擊和弱點。 Azure WAF 可以藉由檢查輸入的 web 流量來封鎖攻擊（例如 SQL 插入、跨網站腳本、惡意程式碼上傳和 DDoS 攻擊），以協助保護您的 Azure App Service web 應用程式。 WAF 會根據 OWASP (Open Web Application Security Project) 核心規則集 3.1 (僅限 WAF_v2)、3.0 或 2.2.9 中的規則提供保護。
+**指導**方針：將 Azure Web 應用程式防火牆 (WAF) 部署在重要的 Web 應用程式前面，以額外檢查連入流量。 Web 應用程式防火牆 (WAF) 是 Azure 應用程式網) 關的服務 (功能，可為 web 應用程式提供集中式保護，使其免于遭受常見的惡意探索和弱點攻擊。 Azure WAF 可透過檢查輸入的網路流量來防止攻擊，例如 SQL 插入、跨網站腳本、惡意程式碼上傳和 DDoS 攻擊，藉此協助保護您 Azure App Service web 應用程式的安全。 WAF 會根據 OWASP (Open Web Application Security Project) 核心規則集 3.1 (僅限 WAF_v2)、3.0 或 2.2.9 中的規則提供保護。
 
 * [瞭解 Azure 應用程式閘道功能](https://docs.microsoft.com/azure/application-gateway/features)
 
@@ -75,7 +75,7 @@ ms.locfileid: "84485521"
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
 
-**指引**：在與 Azure 應用程式閘道生產實例相關聯的 Azure 虛擬網路上啟用 DDoS 標準保護，以防範 ddos 攻擊。 使用 Azure 資訊安全中心整合式威脅情報來拒絕與已知惡意 IP 位址的通訊。
+**指導**方針：在與 Azure 應用程式閘道的生產實例相關聯的 Azure 虛擬網路上啟用 ddos 標準保護，以防範 ddos 攻擊。 使用 Azure 資訊安全中心整合式威脅情報來拒絕與已知惡意 IP 位址的通訊。
 
 * [如何設定 DDoS 保護](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
 
@@ -87,7 +87,7 @@ ms.locfileid: "84485521"
 
 ### <a name="15-record-network-packets"></a>1.5：記錄網路封包
 
-**指導**方針：針對與您 Azure 應用程式閘道子網相關聯的網路安全性群組（nsg），啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶以進行流量審核。 您也可以將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用「分析」來提供 Azure 雲端中流量的深入解析。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
+**指導**方針：若為網路安全性群組 (nsg) 與 Azure 應用程式閘道子網相關聯，請啟用 NSG 流量記錄，並將記錄傳送至儲存體帳戶以進行流量審核。 您也可以將 NSG 流量記錄傳送至 Log Analytics 工作區，並使用流量分析來提供 Azure 雲端中流量的深入解析。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
 注意：在某些情況下，與 Azure 應用程式閘道子網相關聯的 NSG 流量記錄不會顯示已允許的流量。 如果您的設定符合下列情況，則在 NSG 流量記錄中就看不到允許的流量：
 - 您已部署應用程式閘道 v2
@@ -108,9 +108,9 @@ ms.locfileid: "84485521"
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統 (IDS/IPS)
 
-**指引**：在重要 Web 應用程式前方部署 Azure Web 應用程式防火牆（WAF），以進行連入流量的額外檢查。 Web 應用程式防火牆（WAF）是一項服務（Azure 應用程式閘道的功能），可提供 web 應用程式的集中式保護，免于遭受常見的攻擊和弱點。 Azure WAF 可以藉由檢查輸入的 web 流量來封鎖攻擊（例如 SQL 插入、跨網站腳本、惡意程式碼上傳和 DDoS 攻擊），以協助保護您的 Azure App Service web 應用程式。 WAF 會根據 OWASP (Open Web Application Security Project) 核心規則集 3.1 (僅限 WAF_v2)、3.0 或 2.2.9 中的規則提供保護。
+**指導**方針：將 Azure Web 應用程式防火牆 (WAF) 部署在重要的 Web 應用程式前面，以額外檢查連入流量。 Web 應用程式防火牆 (WAF) 是 Azure 應用程式網) 關的服務 (功能，可為 web 應用程式提供集中式保護，使其免于遭受常見的惡意探索和弱點攻擊。 Azure WAF 可透過檢查輸入的網路流量來防止攻擊，例如 SQL 插入、跨網站腳本、惡意程式碼上傳和 DDoS 攻擊，藉此協助保護您 Azure App Service web 應用程式的安全。 WAF 會根據 OWASP (Open Web Application Security Project) 核心規則集 3.1 (僅限 WAF_v2)、3.0 或 2.2.9 中的規則提供保護。
 
-或者，有多個 marketplace 選項，如 Barracuda WAF for Azure，其可在包含 IDS/IPS 功能的 Azure Marketplace 上取得。
+另外還有多個 marketplace 選項（例如 Barracuda WAF for Azure）可用於 Azure Marketplace，其中包含 IDS/IPS 功能。
 
 * [瞭解 Azure 應用程式閘道功能](https://docs.microsoft.com/azure/application-gateway/features)
 
@@ -126,11 +126,11 @@ ms.locfileid: "84485521"
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 Web 應用程式的流量
 
-**指導**方針：為已啟用受信任憑證的 HTTPS/SSL 的 web 應用程式部署 Azure 應用程式閘道。
+**指導**方針：針對已啟用受信任憑證的 HTTPS/SSL 的 web 應用程式部署 Azure 應用程式閘道。
 
 * [如何部署應用程式閘道](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 
-* [如何設定應用程式閘道使用 HTTPS](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+* [如何將應用程式閘道設定為使用 HTTPS](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
 
 * [瞭解 Azure web 應用程式閘道的第7層負載平衡](https://docs.microsoft.com/azure/application-gateway/overview)
 
@@ -140,11 +140,11 @@ ms.locfileid: "84485521"
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負荷降至最低
 
-**指引**：使用虛擬網路服務標籤來定義網路安全性群組或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由在規則的適當 [來源] 或 [目的地] 欄位中指定服務標籤名稱（例如，GatewayManager），您可以允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
+**指導**方針：使用虛擬網路服務標籤來定義網路安全性群組或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由在規則的適當來源或目的地欄位中指定服務標記名稱 (例如，GatewayManager) ，您可以允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
 
-針對與您 Azure 應用程式閘道子網相關聯的網路安全性群組（Nsg），您必須允許應用程式閘道 v1 SKU 的 TCP 埠65503-65534 上的連入網際網路流量，以及使用目的地子網做為任何和來源作為 GatewayManager 服務標籤之 v2 SKU 的 TCP 埠65200-65535。 Azure 基礎結構通訊需要此連接埠範圍。 這些埠會受到 Azure 憑證的保護（鎖定）。 外部實體（包括這些閘道的客戶）無法在這些端點上進行通訊。
+針對與 Azure 應用程式閘道子網相關聯 (Nsg) 的網路安全性群組，您必須在應用程式閘道 v1 SKU 的 TCP 通訊埠65503-65534 上允許連入的網際網路流量，以及使用目的地子網做為 GatewayManager 服務標籤的任何來源和來源，以取得 v2 SKU 的 TCP 埠65200-65535。 Azure 基礎結構通訊需要此連接埠範圍。 這些埠受到保護， (Azure 憑證) 鎖定。 外部實體（包括這些閘道的客戶）無法在這些端點上進行通訊。
 
-* [瞭解及使用服務標記](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [瞭解和使用服務標記](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
 * [Azure 應用程式閘道設定總覽](https://docs.microsoft.com/azure/application-gateway/configuration-overview)
 
@@ -154,9 +154,9 @@ ms.locfileid: "84485521"
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
-**指導**方針：針對與您 Azure 應用程式閘道部署相關的網路設定，定義及執行標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure 應用程式閘道、Azure 虛擬網路和網路安全性群組的網路設定。 您也可以利用內建的原則定義。
+**指導**方針：定義和實行與 Azure 應用程式閘道部署相關之網路設定的標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對 Azure 應用程式閘道、Azure 虛擬網路和網路安全性群組的網路設定進行審核或強制執行。 您也可以利用內建原則定義。
 
-您也可以使用 Azure 藍圖，在單一藍圖定義中封裝金鑰環境成品 (例如 Azure Resource Manager 範本、角色型存取控制 (RBAC) 和原則)，以簡化大規模的 Azure 部署。 您可以輕鬆地將藍圖套用至新的訂用帳戶、環境，以及透過版本控制來微調控制和管理。
+您也可以使用 Azure 藍圖，將金鑰環境成品（例如 Azure Resource Manager 範本、Azure 角色型存取控制 (Azure RBAC) 和原則）封裝在單一藍圖定義中，以簡化大規模的 Azure 部署。 您可以輕鬆地將藍圖套用至新的訂用帳戶、環境，以及透過版本控制來微調控制和管理。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -168,11 +168,11 @@ ms.locfileid: "84485521"
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
-**指引**：使用與 Azure 應用程式閘道子網相關聯之網路安全性群組（nsg）的標籤，以及與網路安全性和流量相關的任何其他資源。 對於個別的 NSG 規則，使用 [描述] 欄位，針對允許進出網路流量的任何規則指定商務需求和/或持續時間 (等等)。
+**指導**方針：將標記用於網路安全性群組 (nsg) 與 Azure 應用程式閘道子網相關聯，以及任何與網路安全性和流量相關的其他資源。 對於個別的 NSG 規則，使用 [描述] 欄位，針對允許進出網路流量的任何規則指定商務需求和/或持續時間 (等等)。
 
-使用與標記相關的任何內建 Azure 原則定義，例如「需要標記和其值」，以確保所有資源都是以標籤建立，並通知您現有的未標記資源。
+使用任何與標記相關的內建 Azure 原則定義，例如「需要標籤和其值」，以確保所有資源都是使用標籤建立的，並會通知您現有的未標記資源。
 
-您可以使用 Azure PowerShell 或 Azure CLI，根據其標記來查閱或執行資源的動作。
+您可以使用 Azure PowerShell 或 Azure CLI，根據其標記查閱或執行資源的動作。
 
 * [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -186,7 +186,7 @@ ms.locfileid: "84485521"
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
-**指引**：使用 Azure 活動記錄來監視網路資源設定，並偵測與您的 Azure 應用程式閘道部署相關之網路設定和資源的變更。 在 Azure 監視器中建立警示，以在重大網路設定或資源的變更發生時觸發。
+**指導**方針：使用 Azure 活動記錄監視網路資源設定，以及偵測與您的 Azure 應用程式閘道部署相關之網路設定和資源的變更。 在 Azure 監視器中建立警示，在發生重大網路設定或資源的變更時，將會觸發這些警示。
 
 * [如何檢視及擷取 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
 
@@ -202,7 +202,7 @@ ms.locfileid: "84485521"
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
-**指引**： Microsoft 會維護用於 Azure 資源的時間來源，例如 Azure App Service。
+**指導**方針： Microsoft 會維護 Azure 資源（例如 Azure App Service）所使用的時間來源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -210,11 +210,11 @@ ms.locfileid: "84485521"
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
-**指引**：針對控制平面的審核記錄，啟用 Azure 活動記錄診斷設定，並將記錄傳送到 Log Analytics 工作區、azure 事件中樞或 azure 儲存體帳戶。 使用 Azure 活動記錄資料，您可以判斷在 Azure 應用程式閘道的控制平面層級執行的任何寫入作業（PUT、POST、DELETE）的「內容、物件和時間」（例如，網路安全性群組（Nsg）），用來保護 Azure 應用程式閘道子網。
+**指導**方針：若要控制平面審核記錄，請啟用 Azure 活動記錄診斷設定，並將記錄傳送至 Log Analytics 工作區、azure 事件中樞或 azure 儲存體帳戶。 您可以使用 Azure 活動記錄資料來判斷任何寫入作業的「內容、物件和時間」 (PUT、POST、DELETE) 在 Azure 應用程式閘道的控制平面層級執行，以及用來保護) 閘道子網的相關資源，例如網路安全性群組 (Nsg Azure 應用程式。
 
-除了活動記錄，您還可以設定 Azure 應用程式閘道部署的診斷設定。 診斷設定是用來設定將資源串流匯出至您所選目的地的平臺記錄和計量（儲存體帳戶、事件中樞和 Log Analytics）。
+除了活動記錄之外，您還可以設定 Azure 應用程式閘道部署的診斷設定。 診斷設定可用來設定將資源串流匯出至您選擇的目的地 (儲存體帳戶、事件中樞和 Log Analytics) 的資源。
 
-Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合。 Application Insights 會收集記錄、效能和錯誤資料。 Application Insights 會自動偵測效能異常，並包含強大的分析工具，可協助您診斷問題，並瞭解您的 web 應用程式的使用方式。 您可以啟用 [連續匯出]，將遙測從 Application Insights 匯出至集中位置，以保留資料超過標準保留期間。
+Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合。 Application Insights 會收集記錄檔、效能和錯誤資料。 Application Insights 會自動偵測效能異常，並包含強大的分析工具，可協助您診斷問題，並瞭解您的 web 應用程式的使用方式。 您可以啟用連續匯出，將遙測從 Application Insights 匯出至集中位置，以保留資料超過標準保留期限。
 
 * [如何啟用 Azure 活動記錄的診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
@@ -230,11 +230,11 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
-**指引**：針對控制平面的審核記錄，啟用 Azure 活動記錄診斷設定，並將記錄傳送到 Log Analytics 工作區、azure 事件中樞或 azure 儲存體帳戶。 使用 Azure 活動記錄資料，您可以判斷在 Azure 應用程式閘道的控制平面層級執行的任何寫入作業（PUT、POST、DELETE）的「內容、物件和時間」（例如，網路安全性群組（Nsg）），用來保護 Azure 應用程式閘道子網。
+**指導**方針：若要控制平面審核記錄，請啟用 Azure 活動記錄診斷設定，並將記錄傳送至 Log Analytics 工作區、azure 事件中樞或 azure 儲存體帳戶。 您可以使用 Azure 活動記錄資料來判斷任何寫入作業的「內容、物件和時間」 (PUT、POST、DELETE) 在 Azure 應用程式閘道的控制平面層級執行，以及用來保護) 閘道子網的相關資源，例如網路安全性群組 (Nsg Azure 應用程式。
 
-除了活動記錄，您還可以設定 Azure 應用程式閘道部署的診斷設定。 診斷設定是用來設定將資源串流匯出至您所選目的地的平臺記錄和計量（儲存體帳戶、事件中樞和 Log Analytics）。
+除了活動記錄之外，您還可以設定 Azure 應用程式閘道部署的診斷設定。 診斷設定可用來設定將資源串流匯出至您選擇的目的地 (儲存體帳戶、事件中樞和 Log Analytics) 的資源。
 
-Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合。 Application Insights 會收集記錄、效能和錯誤資料。 Application Insights 會自動偵測效能異常，並包含強大的分析工具，可協助您診斷問題，並瞭解您的 web 應用程式的使用方式。 您可以啟用 [連續匯出]，將遙測從 Application Insights 匯出至集中位置，以保留資料超過標準保留期間。
+Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合。 Application Insights 會收集記錄檔、效能和錯誤資料。 Application Insights 會自動偵測效能異常，並包含強大的分析工具，可協助您診斷問題，並瞭解您的 web 應用程式的使用方式。 您可以啟用連續匯出，將遙測從 Application Insights 匯出至集中位置，以保留資料超過標準保留期限。
 
 * [如何啟用 Azure 活動記錄的診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
@@ -268,9 +268,9 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
-**指導**方針：啟用 Azure 活動記錄診斷設定，以及 Azure 應用程式閘道的診斷設定，並將記錄傳送到 Log Analytics 工作區。 在 Log Analytics 中執行查詢以搜尋字詞、找出趨勢、分析模式，以及提供許多其他以所收集資料為基礎的見解。
+**指導**方針：啟用 Azure 活動記錄診斷設定以及 Azure 應用程式閘道的診斷設定，並將記錄傳送至 Log Analytics 工作區。 在 Log Analytics 中執行查詢以搜尋字詞、找出趨勢、分析模式，以及提供許多其他以所收集資料為基礎的見解。
 
-使用網路 Azure 監視器，全面瞭解所有已部署的網路資源（包括您的 Azure 應用程式閘道）的健全狀況和計量。
+針對所有已部署的網路資源（包括您的 Azure 應用程式閘道），使用 Azure 監視器的網路來全面查看健康情況和計量。
 
 (選擇性) 您可啟用 Azure Sentinel 或第三方 SIEM，並且讓資料上線。
 
@@ -286,11 +286,11 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：啟用異常活動的警示
 
-**指引**：在重要 Web 應用程式前方部署 Azure Web 應用程式防火牆（WAF） v2 SKU，以額外檢查傳入流量。 Web 應用程式防火牆（WAF）是一項服務（Azure 應用程式閘道的功能），可提供 web 應用程式的集中式保護，免于遭受常見的攻擊和弱點。 Azure WAF 可以藉由檢查輸入的 web 流量來封鎖攻擊（例如 SQL 插入、跨網站腳本、惡意程式碼上傳和 DDoS 攻擊），以協助保護您的 Azure App Service web 應用程式。 WAF 會根據 OWASP (Open Web Application Security Project) 核心規則集 3.1 (僅限 WAF_v2)、3.0 或 2.2.9 中的規則提供保護。
+**指導**方針：在重要的 web 應用程式前面部署 Azure Web 應用程式防火牆 (WAF) v2 SKU，以額外檢查連入流量。 Web 應用程式防火牆 (WAF) 是 Azure 應用程式網) 關的服務 (功能，可為 web 應用程式提供集中式保護，使其免于遭受常見的惡意探索和弱點攻擊。 Azure WAF 可透過檢查輸入的網路流量來防止攻擊，例如 SQL 插入、跨網站腳本、惡意程式碼上傳和 DDoS 攻擊，藉此協助保護您 Azure App Service web 應用程式的安全。 WAF 會根據 OWASP (Open Web Application Security Project) 核心規則集 3.1 (僅限 WAF_v2)、3.0 或 2.2.9 中的規則提供保護。
 
-啟用 Azure 活動記錄診斷設定，以及 Azure WAF 的診斷設定，並將記錄傳送到 Log Analytics 工作區。 在 Log Analytics 中執行查詢以搜尋字詞、找出趨勢、分析模式，以及提供許多其他以所收集資料為基礎的見解。 您可以根據 Log Analytics 工作區查詢來建立警示。
+啟用 Azure 活動記錄診斷設定以及 Azure WAF 的診斷設定，並將記錄傳送至 Log Analytics 工作區。 在 Log Analytics 中執行查詢以搜尋字詞、找出趨勢、分析模式，以及提供許多其他以所收集資料為基礎的見解。 您可以根據 Log Analytics 工作區查詢來建立警示。
 
-使用網路 Azure 監視器，全面瞭解所有已部署的網路資源（包括您的 Azure 應用程式閘道）的健全狀況和計量。 在 [網路的 Azure 監視器] 主控台中，您可以查看並建立 Azure 應用程式閘道的警示。
+針對所有已部署的網路資源（包括您的 Azure 應用程式閘道），使用 Azure 監視器的網路來全面查看健康情況和計量。 在 [網路] 主控台的 [Azure 監視器] 中，您可以查看並建立 Azure 應用程式閘道的警示。
 
 * [如何部署 Azure WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
 
@@ -308,9 +308,9 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中化反惡意程式碼記錄
 
-**指引**：在重要 Web 應用程式前方部署 Azure Web 應用程式防火牆（WAF） v2，以額外檢查傳入的流量。 Web 應用程式防火牆（WAF）是一項服務（Azure 應用程式閘道的功能），可提供 web 應用程式的集中式保護，免于遭受常見的攻擊和弱點。 Azure WAF 可以藉由檢查輸入的 web 流量來封鎖攻擊（例如 SQL 插入、跨網站腳本、惡意程式碼上傳和 DDoS 攻擊），以協助保護您的 Azure App Service web 應用程式。
+**指導**方針：在重要的 web 應用程式前面部署 Azure Web 應用程式防火牆 (WAF) v2，以額外檢查連入流量。 Web 應用程式防火牆 (WAF) 是 Azure 應用程式網) 關的服務 (功能，可為 web 應用程式提供集中式保護，使其免于遭受常見的惡意探索和弱點攻擊。 Azure WAF 可透過檢查輸入的網路流量來防止攻擊，例如 SQL 插入、跨網站腳本、惡意程式碼上傳和 DDoS 攻擊，藉此協助保護您 Azure App Service web 應用程式的安全。
 
-設定 Azure 應用程式閘道部署的診斷設定。 診斷設定是用來設定將資源串流匯出至您所選目的地的平臺記錄和計量（儲存體帳戶、事件中樞和 Log Analytics）。
+設定 Azure 應用程式閘道部署的診斷設定。 診斷設定可用來設定將資源串流匯出至您選擇的目的地 (儲存體帳戶、事件中樞和 Log Analytics) 的資源。
 
 * [如何部署 Azure WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
 
@@ -342,9 +342,9 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的詳細目錄
 
-**指導**方針： AZURE ACTIVE DIRECTORY （AD）具有必須明確指派且可查詢的內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
+**指導**方針： AZURE ACTIVE DIRECTORY (AD) 具有必須明確指派且可供查詢的內建角色。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-* [如何使用 PowerShell 取得 Azure AD 中的目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
 * [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
@@ -354,7 +354,7 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在適用的情況下變更預設密碼
 
-**指導**方針： Azure 應用程式閘道的控制平面存取是透過 AZURE ACTIVE DIRECTORY （AD）來控制。 Azure AD 沒有預設密碼的概念。
+**指導**方針： Azure 應用程式閘道的控制平面存取權是透過 AZURE ACTIVE DIRECTORY (AD) 來控制。 Azure AD 沒有預設密碼的概念。
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -379,11 +379,11 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
-**指引**：使用 Azure 應用程式註冊（服務主體）來抓取權杖，其可透過 API 呼叫來與您的 Azure 應用程式閘道進行互動。
+**指導**方針：使用 Azure 應用程式註冊 (服務主體) 來取得權杖，此權杖可用來透過 API 呼叫來與您的 Azure 應用程式閘道互動。
 
 * [如何呼叫 Azure REST Api](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-* [如何向 Azure AD 註冊您的用戶端應用程式（服務主體）](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+* [如何使用 Azure AD 向 (服務主體) 註冊用戶端應用程式](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
 
 * [Azure 復原服務 API 資訊](https://docs.microsoft.com/rest/api/recoveryservices/)
 
@@ -415,9 +415,9 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 **責任**：客戶
 
-### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：從系統管理客戶紀錄及警示可疑活動
+### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：來自系統管理帳戶的可疑活動記錄和警示
 
-**指導**方針：當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory 的安全性報告來產生記錄檔和警示。 使用 Azure 資訊安全中心來監視身分識別和存取活動。
+**指導**方針：當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory 的安全性報告來產生記錄和警示。 使用 Azure 資訊安全中心來監視身分識別和存取活動。
 
 * [如何識別已標示為有風險活動的 Azure AD 使用者](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
@@ -439,7 +439,7 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導**方針：使用 AZURE ACTIVE DIRECTORY （AAD）做為中央驗證和授權系統。 AAD 會對待用和傳輸中資料使用強式加密以保護資料。 AAD 也會 salts、雜湊並安全地儲存使用者認證。
+**指導**方針：使用 AZURE ACTIVE DIRECTORY (AAD) 作為中央驗證和授權系統。 AAD 會對待用和傳輸中資料使用強式加密以保護資料。 AAD 也會 salts、雜湊並安全地儲存使用者認證。
 
 * [如何建立和設定 AAD 執行個體](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -449,7 +449,7 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
-**指引**：Azure AD 會提供記錄來協助探索過時的帳戶。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。
+**指引**：Azure AD 會提供記錄來協助探索過時的帳戶。 此外，使用 Azure 身分識別存取審核來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。
 
 * [瞭解 Azure AD 報告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
 
@@ -463,7 +463,7 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 **指引**：您可以存取 Azure AD 登入活動、稽核和風險事件記錄檔來源，讓您可以與任何 SIEM/監視工具整合。
 
-若要簡化此程式，您可以建立 Azure Active Directory 使用者帳戶的診斷設定，並將 audit 記錄和登入記錄傳送到 Log Analytics 工作區。 您可以在 Log Analytics 工作區中設定所需的警示。
+您可以建立 Azure Active Directory 使用者帳戶的診斷設定，並將審核記錄和登入記錄傳送至 Log Analytics 工作區，以簡化此程式。 您可以在 Log Analytics 工作區中設定所需的警示。
 
 * [如何將 Azure 活動記錄整合到 Azure 監視器中](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -473,7 +473,7 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差警示
 
-**指引**：使用 Azure AD Identity Protection 和風險偵測功能，設定對偵測到與使用者身分識別相關之可疑動作的自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
+**指導**方針：使用 Azure AD Identity Protection 和風險偵測功能，對偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
 * [如何檢視有風險的 Azure AD 登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
@@ -501,7 +501,7 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
-**指引**：使用標記來協助追蹤儲存或處理敏感資訊的 Azure 資源。
+**指導**方針：使用標籤協助追蹤儲存或處理敏感性資訊的 Azure 資源。
 
 * [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -511,7 +511,7 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 請確定所有虛擬網路 Azure 應用程式閘道子網部署都有一個網路安全性群組（NSG），其適用于應用程式受信任埠和來源的特定網路存取控制。 雖然 Azure 應用程式閘道上支援網路安全性群組，但還是必須遵守一些限制和需求，才能讓您的 NSG 和 Azure 應用程式閘道如預期般運作。
+**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 確定所有虛擬網路 Azure 應用程式閘道子網部署都有網路安全性群組 (NSG) 套用至應用程式的受信任埠和來源特定的網路存取控制。 Azure 應用程式閘道支援網路安全性群組時，必須遵守一些限制和需求，才能讓您的 NSG 和 Azure 應用程式閘道如預期般運作。
 
 * [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -519,7 +519,7 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 * [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-* [瞭解使用 Nsg 搭配 Azure 應用程式 Gateway 的限制和需求](https://docs.microsoft.com/azure/application-gateway/configuration-overview)
+* [瞭解搭配 Azure 應用程式閘道使用 Nsg 的限制和需求](https://docs.microsoft.com/azure/application-gateway/configuration-overview)
 
 * [如何建立具有安全性設定的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
@@ -529,9 +529,9 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的敏感性資訊傳輸
 
-**指導**方針：請確定所有虛擬網路 Azure 應用程式閘道子網部署都有一個網路安全性群組（NSG）套用至應用程式受信任埠和來源的特定網路存取控制。 將輸出流量限制為只有信任的位置，以協助降低資料外泄的威脅。 雖然 Azure 應用程式閘道上支援網路安全性群組，但還是必須遵守一些限制和需求，才能讓您的 NSG 和 Azure 應用程式閘道如預期般運作。
+**指導**方針：確定所有虛擬網路 Azure 應用程式閘道子網部署都有網路安全性群組 (NSG) 套用至應用程式的受信任埠和來源特定的網路存取控制。 將輸出流量限制為僅限信任的位置，以協助降低資料遭到外泄的威脅。 Azure 應用程式閘道支援網路安全性群組時，必須遵守一些限制和需求，才能讓您的 NSG 和 Azure 應用程式閘道如預期般運作。
 
-* [瞭解使用 Nsg 搭配 Azure 應用程式 Gateway 的限制和需求](https://docs.microsoft.com/azure/application-gateway/configuration-overview)
+* [瞭解搭配 Azure 應用程式閘道使用 Nsg 的限制和需求](https://docs.microsoft.com/azure/application-gateway/configuration-overview)
 
 * [如何建立具有安全性設定的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
@@ -541,7 +541,7 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
-**指引**：使用 Azure 應用程式閘道的 TLS 設定端對端加密。
+**指導**方針：針對您的 Azure 應用程式閘道，使用 TLS 設定端對端加密。
 
 * [如何使用 Azure 應用程式閘道設定端對端 TLS](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal)
 
@@ -553,7 +553,7 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 **指導**方針：不適用，Azure 應用程式閘道不會儲存待用的客戶資料。
 
-Microsoft 會管理 Azure 應用程式閘道的基礎結構，並已實行嚴格的控制，以避免遺失或公開客戶資料。
+Microsoft 會管理 Azure 應用程式閘道的基礎結構，並已實行嚴格的控制，以防止客戶資料遺失或洩漏。
 
 * [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -561,11 +561,11 @@ Microsoft 會管理 Azure 應用程式閘道的基礎結構，並已實行嚴格
 
 **責任**：不適用
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用以角色為基礎的存取控制來控制對資源的存取
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指引**：使用 AZURE ACTIVE DIRECTORY （AD）角色型存取控制（RBAC）來控制 Azure 應用程式閘道控制平面（Azure 入口網站）的存取權。
+**指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來控制 Azure 應用程式閘道控制平面 (Azure 入口網站) 的存取權。
 
-* [如何在 Azure 中設定 RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [如何設定 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -589,7 +589,7 @@ Microsoft 會管理 Azure 應用程式閘道的基礎結構，並已實行嚴格
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：針對重要 Azure 資源的變更留下記錄和發出警示
 
-**指導**方針：使用 Azure 監視器搭配 Azure 活動記錄，以針對生產 Azure 應用程式閘道實例以及其他重要或相關資源進行變更時，建立警示。
+**指導**方針：使用 Azure 監視器搭配 Azure 活動記錄來建立生產 Azure 應用程式閘道實例的變更，以及其他重要或相關資源時的警示。
 
 * [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
@@ -603,11 +603,11 @@ Microsoft 會管理 Azure 應用程式閘道的基礎結構，並已實行嚴格
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
-**指導**方針：目前無法使用;Azure 應用程式閘道尚未提供 Azure 資訊安全中心中的弱點評定。
+**指導**方針：目前無法使用;Azure 應用程式閘道尚無法使用 Azure 資訊安全中心中的弱點評定。
 
-Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘道可用的安全性控制，以減少與服務設定相關的弱點。
+Microsoft 所掃描和修補的基礎平台。 複習 Azure 應用程式閘道可用的安全性控制，以減少服務設定的相關弱點。
 
-* [Azure PaaS 服務的功能涵蓋範圍（包括弱點評估）](https://docs.microsoft.com/azure/security-center/features-paas)
+* [功能涵蓋範圍 (包括 Azure PaaS 服務的弱點評定) ](https://docs.microsoft.com/azure/security-center/features-paas)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -621,7 +621,7 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 **責任**：不適用
 
-### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：為協力廠商軟體標題部署自動修補程式管理解決方案
+### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：為協力廠商軟體專案部署自動化的修補程式管理解決方案
 
 **指導**方針：不適用;這項建議適用于 IaaS 計算資源。
 
@@ -631,11 +631,11 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比較連續性弱點掃描
 
-**指引**：尚未提供;Azure 應用程式閘道尚未提供 Azure 資訊安全中心中的弱點評定。
+**指導**：尚未提供;Azure 應用程式閘道尚無法使用 Azure 資訊安全中心中的弱點評定。
 
-Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘道可用的安全性控制，以減少與服務設定相關的弱點。
+Microsoft 所掃描和修補的基礎平台。 複習 Azure 應用程式閘道可用的安全性控制，以減少服務設定的相關弱點。
 
-* [Azure PaaS 服務的功能涵蓋範圍（包括弱點評估）](https://docs.microsoft.com/azure/security-center/features-paas)
+* [功能涵蓋範圍 (包括 Azure PaaS 服務的弱點評定) ](https://docs.microsoft.com/azure/security-center/features-paas)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -643,11 +643,11 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
-**指引**：尚未提供;Azure 應用程式閘道尚未提供 Azure 資訊安全中心中的弱點評定。
+**指導**：尚未提供;Azure 應用程式閘道尚無法使用 Azure 資訊安全中心中的弱點評定。
 
-Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘道可用的安全性控制，以減少與服務設定相關的弱點。
+Microsoft 所掃描和修補的基礎平台。 複習 Azure 應用程式閘道可用的安全性控制，以減少服務設定的相關弱點。
 
-* [Azure PaaS 服務的功能涵蓋範圍（包括弱點評估）](https://docs.microsoft.com/azure/security-center/features-paas)
+* [功能涵蓋範圍 (包括 Azure PaaS 服務的弱點評定) ](https://docs.microsoft.com/azure/security-center/features-paas)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -703,7 +703,7 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定義和維護已核准 Azure 資源的清查
 
-**指引**：定義已核准的 Azure 資源。
+**指導**方針：定義核准的 Azure 資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -711,7 +711,7 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 
-**指引**：使用 Azure 原則來限制可在您的訂用帳戶中建立的資源類型。
+**指導**方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型（ (s) ）施加限制。
 
 使用 Azure Resource Graph 來查詢/探索其訂閱內的資源。 確保已核准環境中的所有 Azure 資源。
 
@@ -789,7 +789,7 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以實體或邏輯方式隔離高風險的應用程式
 
-**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 請確定所有虛擬網路 Azure 應用程式閘道子網部署都有一個網路安全性群組（NSG），其適用于應用程式受信任埠和來源的特定網路存取控制。 雖然 Azure 應用程式閘道上支援網路安全性群組，但還是必須遵守一些限制和需求，才能讓您的 NSG 和 Azure 應用程式閘道如預期般運作。
+**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 確定所有虛擬網路 Azure 應用程式閘道子網部署都有網路安全性群組 (NSG) 套用至應用程式的受信任埠和來源特定的網路存取控制。 Azure 應用程式閘道支援網路安全性群組時，必須遵守一些限制和需求，才能讓您的 NSG 和 Azure 應用程式閘道如預期般運作。
 
 * [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -797,7 +797,7 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 * [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-* [瞭解使用 Nsg 搭配 Azure 應用程式 Gateway 的限制和需求](https://docs.microsoft.com/azure/application-gateway/configuration-overview)
+* [瞭解搭配 Azure 應用程式閘道使用 Nsg 的限制和需求](https://docs.microsoft.com/azure/application-gateway/configuration-overview)
 
 * [如何建立具有安全性設定的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
@@ -811,7 +811,7 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
-**指導**方針：針對與您 Azure 應用程式閘道部署相關的網路設定，定義及執行標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure 應用程式閘道、Azure 虛擬網路和網路安全性群組的網路設定。 您也可以利用內建的原則定義。
+**指導**方針：定義和實行與 Azure 應用程式閘道部署相關之網路設定的標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對 Azure 應用程式閘道、Azure 虛擬網路和網路安全性群組的網路設定進行審核或強制執行。 您也可以利用內建原則定義。
 
 * [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -831,7 +831,7 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
-**指引**：使用 azure 原則 [拒絕] 和 [不存在時部署]，在您的 Azure 資源上強制執行安全設定。
+**指導**方針：使用 azure 原則 [拒絕] 和 [部署是否不存在]，在您的 Azure 資源上強制執行安全設定。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -871,7 +871,7 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署適用于 Azure 資源的設定管理工具
 
-**指引**：使用內建的 Azure 原則定義以及 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以警示、audit 及強制執行系統設定。 此外，開發流程和管線以管理原則例外狀況。
+**指導**方針：使用內建的 Azure 原則定義以及 "Microsoft. Network" 命名空間中 Azure 原則的別名來建立自訂原則，以警示、審核和強制執行系統組態。 此外，開發流程和管線以管理原則例外狀況。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -889,7 +889,7 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：執行 Azure 資源的自動化設定監視
 
-**指引**：使用內建的 Azure 原則定義以及 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以警示、audit 及強制執行系統設定。 使用 Azure 原則 [audit]、[deny] 和 [deploy if not 存在] 自動強制執行 Azure 資源的設定。
+**指導**方針：使用內建的 Azure 原則定義以及 "Microsoft. Network" 命名空間中 Azure 原則的別名來建立自訂原則，以警示、審核和強制執行系統組態。 使用 Azure 原則 [audit]、[拒絕] 和 [部署（如果不存在）]，自動強制執行 Azure 資源的設定。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -907,9 +907,9 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 祕密
 
-**指導**方針：使用受控識別，在 AZURE ACTIVE DIRECTORY （AD）中提供自動管理的身分識別給您的 Azure 應用程式閘道。 受控識別可供對支援 Azure AD 驗證的任何服務進行驗證 (包括 Key Vault)，不需要程式碼中的任何認證。
+**指導**方針：使用受控識別，在 AZURE ACTIVE DIRECTORY (AD) 中，為您的 Azure 應用程式閘道提供自動管理的身分識別。 受控識別可供對支援 Azure AD 驗證的任何服務進行驗證 (包括 Key Vault)，不需要程式碼中的任何認證。
 
-使用 Azure Key Vault 安全地儲存憑證。 Azure Key Vault 是平臺管理的秘密存放區，可讓您用來保護秘密、金鑰和 SSL 憑證。 Azure 應用程式閘道支援與 Key Vault 整合，以使用連結到 HTTPS 所支援接聽程式的伺服器憑證。 此支援僅限於應用程式閘道 v2 SKU。
+使用 Azure Key Vault 來安全地儲存憑證。 Azure Key Vault 是平臺管理的秘密存放區，您可以用來保護秘密、金鑰和 SSL 憑證。 Azure 應用程式閘道支援與 Key Vault 整合，以使用連結到 HTTPS 所支援接聽程式的伺服器憑證。 此支援僅限於應用程式閘道 v2 SKU。
 
 * [如何使用 Azure PowerShell 以 Key Vault 憑證設定 SSL 終止](https://docs.microsoft.com/azure/application-gateway/configure-keyvault-ps)
 
@@ -919,9 +919,9 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
-**指導**方針：使用受控識別，在 AZURE ACTIVE DIRECTORY （AD）中提供自動管理的身分識別給您的 Azure 應用程式閘道。 受控識別可供對支援 Azure AD 驗證的任何服務進行驗證 (包括 Key Vault)，不需要程式碼中的任何認證。
+**指導**方針：使用受控識別，在 AZURE ACTIVE DIRECTORY (AD) 中，為您的 Azure 應用程式閘道提供自動管理的身分識別。 受控識別可供對支援 Azure AD 驗證的任何服務進行驗證 (包括 Key Vault)，不需要程式碼中的任何認證。
 
-使用 Azure Key Vault 安全地儲存憑證。 Azure Key Vault 是平臺管理的秘密存放區，可讓您用來保護秘密、金鑰和 SSL 憑證。 Azure 應用程式閘道支援與 Key Vault 整合，以使用連結到 HTTPS 所支援接聽程式的伺服器憑證。 此支援僅限於應用程式閘道 v2 SKU。
+使用 Azure Key Vault 來安全地儲存憑證。 Azure Key Vault 是平臺管理的秘密存放區，您可以用來保護秘密、金鑰和 SSL 憑證。 Azure 應用程式閘道支援與 Key Vault 整合，以使用連結到 HTTPS 所支援接聽程式的伺服器憑證。 此支援僅限於應用程式閘道 v2 SKU。
 
 * [如何使用 Azure PowerShell 以 Key Vault 憑證設定 SSL 終止](https://docs.microsoft.com/azure/application-gateway/configure-keyvault-ps)
 
@@ -945,9 +945,9 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
-**指引**：在重要 Web 應用程式前方部署 Azure Web 應用程式防火牆（WAF） v2，以額外檢查傳入的流量。 Web 應用程式防火牆（WAF）是一項服務（Azure 應用程式閘道的功能），可提供 web 應用程式的集中式保護，免于遭受常見的攻擊和弱點。 Azure WAF 可以藉由檢查輸入的 web 流量來封鎖攻擊（例如 SQL 插入、跨網站腳本、惡意程式碼上傳和 DDoS 攻擊），以協助保護您的 Azure App Service web 應用程式。
+**指導**方針：在重要的 web 應用程式前面部署 Azure Web 應用程式防火牆 (WAF) v2，以額外檢查連入流量。 Web 應用程式防火牆 (WAF) 是 Azure 應用程式網) 關的服務 (功能，可為 web 應用程式提供集中式保護，使其免于遭受常見的惡意探索和弱點攻擊。 Azure WAF 可透過檢查輸入的網路流量來防止攻擊，例如 SQL 插入、跨網站腳本、惡意程式碼上傳和 DDoS 攻擊，藉此協助保護您 Azure App Service web 應用程式的安全。
 
-設定 Azure 應用程式閘道部署的診斷設定。 診斷設定是用來設定將資源串流匯出至您所選目的地的平臺記錄和計量（儲存體帳戶、事件中樞和 Log Analytics）。
+設定 Azure 應用程式閘道部署的診斷設定。 診斷設定可用來設定將資源串流匯出至您選擇的目的地 (儲存體帳戶、事件中樞和 Log Analytics) 的資源。
 
 * [如何部署 Azure WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
 
@@ -967,7 +967,7 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3：確保更新反惡意程式碼軟體和簽章
 
-**指引**：使用 Azure Web 應用程式防火牆（WAF）時，您可以設定 WAF 原則。 WAF 原則是由兩種類型的安全性規則所組成：由客戶撰寫的自訂規則，以及由 Azure 管理之預先設定的一組規則集合的受控規則集。 Azure 管理的規則集可讓您以簡單的方式部署防護，以抵禦一組常見的安全性威脅。 由於這類規則集是由 Azure 所管理，因此會視需要更新規則，以防止新的攻擊簽章。
+**指導**方針：使用 Azure Web 應用程式防火牆 (WAF) 時，您可以設定 WAF 原則。 WAF 原則包含兩種類型的安全性規則：客戶所撰寫的自訂規則，以及屬於 Azure 管理之預先設定規則集合的受控規則集。 Azure 管理的規則集可讓您以簡單的方式部署防護，以抵禦一組常見的安全性威脅。 由於這類規則集是由 Azure 所管理，因此會視需要更新規則，以防止新的攻擊簽章。
 
 * [瞭解 Azure 管理的 WAF 規則集](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview#waf-policy)
 
@@ -981,9 +981,9 @@ Microsoft 所掃描和修補的基礎平台。 請參閱 Azure 應用程式閘�
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
-**指導**方針： Azure 應用程式閘道不會儲存客戶資料。 不過，如果使用自訂的 Azure 原則定義，請使用 Azure DevOps 或 Azure Repos 來安全地儲存和管理您的程式碼。
+**指導**方針： Azure 應用程式閘道不會儲存客戶資料。 不過，如果使用自訂的 Azure 原則定義，請使用 Azure DevOps 或 Azure Repos 安全地儲存和管理您的程式碼。
 
-Azure DevOps Services 利用許多 Azure 儲存體功能，確保發生硬體故障、服務中斷或區域嚴重損壞時的資料可用性。 此外，Azure DevOps 小組會遵循程式來防止資料遭到意外或惡意刪除。
+Azure DevOps Services 會利用許多 Azure 儲存體功能，以確保在發生硬體故障、服務中斷或區域嚴重損壞的情況下，可進行資料的可用性。 此外，Azure DevOps 團隊會遵循程式來防止資料遭到意外或惡意刪除。
 
 * [瞭解 Azure DevOps 中的資料可用性](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
 
@@ -997,7 +997,7 @@ Azure DevOps Services 利用許多 Azure 儲存體功能，確保發生硬體故
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份，並備份客戶管理的任何金鑰
 
-**指引**：在 Azure Key Vault 內備份客戶管理的憑證。
+**指導**方針： Azure Key Vault 內備份客戶管理的憑證。
 
 * [如何在 Azure 中備份金鑰保存庫憑證](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate)
 
@@ -1007,7 +1007,7 @@ Azure DevOps Services 利用許多 Azure 儲存體功能，確保發生硬體故
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：驗證所有備份，包括客戶管理的金鑰
 
-**指導**方針：測試已備份客戶受管理憑證的還原。
+**指導**方針：測試已備份之客戶管理憑證的還原。
 
 * [如何還原金鑰保存庫憑證](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate)
 
@@ -1017,7 +1017,7 @@ Azure DevOps Services 利用許多 Azure 儲存體功能，確保發生硬體故
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰受到保護
 
-**指導**方針：確定已針對 Azure Key Vault 啟用虛刪除。 虛刪除可復原已刪除的金鑰保存庫和保存庫物件，例如金鑰、秘密和憑證。
+**指導**方針：確定已啟用 Azure Key Vault 的虛刪除。 虛刪除可讓您復原已刪除的金鑰保存庫和保存庫物件，例如金鑰、秘密和憑證。
 
 * [如何使用 Azure Key Vault 的虛刪除](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)
 
@@ -1039,7 +1039,7 @@ Azure DevOps Services 利用許多 Azure 儲存體功能，確保發生硬體故
 
 * [Microsoft 安全性回應中心的事件剖析](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-* [客戶也可以利用 NIST 的「電腦安全性性」事件處理指南，協助建立自己的事件回應計畫](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
+* [客戶也可以利用 NIST 的電腦安全性性事件處理指南來協助建立自己的事件回應計畫](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1101,11 +1101,11 @@ Azure DevOps Services 利用許多 Azure 儲存體功能，確保發生硬體故
 
 *如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期滲透測試您的 Azure 資源，並確保修復所有重要的安全性結果
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
 **指導**方針： 
 
-* [請遵循 Microsoft Engagement 規則，以確保您的滲透測試不會違反 Microsoft 原則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+* [遵循 Microsoft 的參與規則，以確保您的滲透測試不違反 Microsoft 原則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
 * [對於 Microsoft 管理的雲端基礎結構、服務和應用程式，您可在此找到 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行詳細資訊：](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 

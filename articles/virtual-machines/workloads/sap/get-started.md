@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 08/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 704d4c1b4e4e4229f35526748494aaac2e351f99
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 0f26c83f87811acc5853f1bff5303cd37092b33f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871372"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075948"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載及執行 SAP 工作負載案例
 
@@ -88,6 +88,7 @@ ms.locfileid: "88871372"
 
 ## <a name="change-log"></a>變更記錄檔
 
+- 08/28/2020：在 [SLES WITH ANF 上的 Azure vm 上變更 SAP NW 的 HA](./high-availability-guide-suse-netapp-files.md) ，以修正打字問題
 - 08/25/2020： [SAP ASCS/scs 與 wsfc 和共用磁片的 HA 指南](./sap-high-availability-guide-wsfc-shared-disk.md)變更，使用 wsfc 和共用磁片 [準備適用于 SAP ASCS/scs 的 Azure 基礎結構](./sap-high-availability-infrastructure-wsfc-shared-disk.md) ，並 [安裝具有 WSFC 和共用磁片的 sap NW HA](./sap-high-availability-guide-wsfc-shared-disk.md) ，以引入使用 AZURE 共用磁片和檔 sap ERS2 架構的選項
 - 08/25/2020：[使用 WSFC 和 Azure 共用磁片的 SAP ASCS/SCS 的多重 SID HA 指南](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)版本
 - 08/25/2020： [SAP ASCS/SCS 的 HA 指南變更了 WSFC 和 Azure NetApp Files (SMB) ](./high-availability-guide-windows-netapp-files-smb.md)，使用 wsfc 和檔案 [共用準備適用于 SAP ASCS/scs 的 Azure 基礎結構](./sap-high-availability-infrastructure-wsfc-file-share.md)、搭配 wsfc 和 [共用磁片的 sap ASCS/scs 的多重 sid HA 指南](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) ，以及搭配 wsfc 和 SOFS 檔案共用的 sap [ASCS/scs 的多重 SID ha 指南](./sap-ascs-ha-multi-sid-wsfc-file-share.md) ，以搭配使用 WFC 和共用磁片的 sap ASCS/scs ha 指南中的內容更新和重建 
