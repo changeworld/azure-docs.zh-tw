@@ -3,25 +3,27 @@ title: 使用 Azure 媒體服務 v3 .NET 從原則取得簽署金鑰
 description: 本主題示範如何使用媒體服務 v3 .NET SDK，從現有原則取得簽署金鑰。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/15/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 2dea262fadb61adc9e219b76f9ac048c11e650d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d98f008e77fd56a369d298e26165ca29007c8128
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80065970"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267339"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>從現有原則取得簽署金鑰
 
-v3 API 的金鑰設計原則之一，是讓 API 更為安全。 v3 Api 不會在**取得**或**列出**作業時傳回秘密或認證。 請參閱這裡的詳細說明：如需詳細資訊，請參閱[RBAC 和媒體服務帳戶](rbac-overview.md)
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+v3 API 的金鑰設計原則之一，是讓 API 更為安全。 v3 Api 不會傳回 **取得** 或 **列出** 作業的秘密或認證。 請參閱此處的詳細說明：如需詳細資訊，請參閱 [RBAC 和媒體服務帳戶](rbac-overview.md)
 
 本文中的範例示範如何使用 .NET 從現有原則取得簽署金鑰。 
  

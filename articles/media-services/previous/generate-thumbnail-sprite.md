@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: e5d32d1bc3bd704b03e58c62251a323ed3f4662c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d05e73bc9aa51bf20121790de94b1b6d0e26615
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61229045"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268565"
 ---
-# <a name="generate-a-thumbnail-sprite"></a>產生縮圖原件  
+# <a name="generate-a-thumbnail-sprite"></a>產生縮圖原件
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 您可以使用媒體編碼器標準產生縮圖原件，其中包含以多個低解析度縮圖結合成單一 (大型) 影像的 JPEG 檔案，和一個 VTT 檔案。 這個 VTT 檔案會在每個縮圖所代表的輸入影像中指定時間範圍，以及該縮圖在大型 JPEG 檔案中的大小和座標。 影片播放程式會使用 VTT 檔案和原件影像顯示「視覺化」搜尋列，讓檢視者在使用影片時間軸向前或向後刪除時獲得視覺化回饋。
 
@@ -33,7 +35,7 @@ ms.locfileid: "61229045"
 
     1. 如果 SpriteColumn 設定為 M >= 1，輸出影像將是含有 M 個資料行的矩形。 如果透過 #2 產生的縮圖數目不是 M 的倍數，最後一個資料列就會不完整，並顯示為黑色像素。  
 
-範例如下：
+請看以下範例：
 
 ```json
 {

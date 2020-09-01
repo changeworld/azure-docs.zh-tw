@@ -1,9 +1,9 @@
 ---
-title: 透過入口網站使用事件方格監視 Azure 媒體服務事件
+title: 使用入口網站監視事件方格的 Azure 媒體服務事件
 description: 本文說明如何訂閱事件方格以監視 Azure 媒體服務事件。
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -13,20 +13,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 01/21/2020
-ms.author: juliako
-ms.openlocfilehash: 602ff0a29f3fd8717e581b6ac15d493e3ad475f7
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 26e6e56d7c14cfa0ab54776003ae4489bb254094
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542390"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265842"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>在 Azure 入口網站中使用事件方格建立和監視媒體服務事件
 
-Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions)將事件訊息路由傳送至訂閱者。 媒體事件包含了回應資料變更時所需的一切資訊。 因為 eventType 屬性開頭為 “Microsoft.Media”，所以您可以藉此識別出媒體服務事件。 如需詳細資訊，請參閱[媒體服務事件結構描述](media-services-event-schemas.md)。
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-在本文中，您會使用 Azure 入口網站訂閱 Azure 媒體服務帳戶的事件。 然後，您會觸發事件以檢視結果。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 在本文中，我們會將事件傳送至 web 應用程式，以收集並顯示訊息。
+Azure Event Grid 是一項雲端事件服務。 此服務會使用 [事件訂閱](../../event-grid/concepts.md#event-subscriptions) 將事件訊息路由傳送給訂閱者。 媒體事件包含了回應資料變更時所需的一切資訊。 因為 eventType 屬性開頭為 “Microsoft.Media”，所以您可以藉此識別出媒體服務事件。 如需詳細資訊，請參閱[媒體服務事件結構描述](media-services-event-schemas.md)。
+
+在本文中，您會使用 Azure 入口網站訂閱 Azure 媒體服務帳戶的事件。 然後，您會觸發事件以檢視結果。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 在本文中，我們會將事件傳送至 web 應用程式，以收集和顯示訊息。
 
 當您完成時，您會看到事件資料已傳送至 Web 應用程式。
 
@@ -41,7 +43,7 @@ Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂閱]
 
 1. 選取 [部署至 Azure]，將解決方案部署至您的訂用帳戶。 在 Azure 入口網站中，提供參數的值。
 
-   [![顯示標示為「部署至 Azure」之按鈕的影像。](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
+   [![顯示標示為「部署至 Azure」的按鈕影像。](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
 
 1. 部署需要幾分鐘的時間才能完成。 成功部署之後，檢視 Web 應用程式，確定它正在執行。 在網頁瀏覽器中，瀏覽至：`https://<your-site-name>.azurewebsites.net`
 
@@ -59,7 +61,7 @@ Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂閱]
    ![選取 Web Hook](./media/monitor-events-portal/select-web-hook.png)
 
 1. 事件訂用帳戶中會預先填入您媒體服務帳戶的值。 
-1. 針對**端點類型**選取 [網頁攔截]。
+1. 針對 [ **端點類型**] 選取 [webhook]。
 1. 在此主題中，我們將 [訂閱所有事件類型]**** 保留為核取狀態。 不過，您可以將其取消核取，並篩選特定事件類型。 
 1. 按一下 [選取端點]**** 連結。
 

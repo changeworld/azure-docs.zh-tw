@@ -1,21 +1,21 @@
 ---
-title: 部署 Azure Stack Edge 裝置的預先部署檢查清單 |Microsoft Docs
-description: 本文說明在您部署 Azure Stack Edge 裝置之前可以搜集的資訊。
+title: 部署 Azure Stack Edge GPU 裝置的預先部署檢查清單 |Microsoft Docs
+description: 本文說明在您部署 Azure Stack Edge GPU 裝置之前，可以搜集的資訊。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/29/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: e1233e17dfe2a56e6ea995190b243ed9c64b8945
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9d7b3388b7e3a31c23b34b21017f012d40e9f849
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181352"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268137"
 ---
-# <a name="deployment-checklist-for-your-azure-stack-edge-device"></a>Azure Stack Edge 裝置的部署檢查清單  
+# <a name="deployment-checklist-for-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU 裝置的部署檢查清單  
 
 本文說明可在 Azure Stack Edge 裝置的實際部署之前搜集的資訊。 
 

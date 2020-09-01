@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 87c96ef6487895d3230541f0ae5fe15c5a645368
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3f354655a612d4085b0a0de45ae1a6e5ee097ade
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083385"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266658"
 ---
-# <a name="azure-stack-edge-technical-specifications-and-compliance"></a>Azure Stack Edge 技術規格和合規性
+# <a name="technical-specifications-and-compliance-for-azure-stack-edge-with-gpu"></a>使用 GPU Azure Stack Edge 的技術規格和合規性 
 
 您 Azure Stack Edge 的硬體元件具有上架圖形處理單位 (GPU) 遵守本文中所述的技術規格與法規標準。 技術規格說明硬體、電源供應器 (Psu) 、存放裝置容量、主機殼和環境標準。
 
@@ -65,9 +65,9 @@ Azure Stack Edge 裝置有兩個 100-240 V 電源供應器單位 (Psu) 具有高
 
 以下是 Mellanox 卡的詳細資料：
 
-| 參數           | 描述                 |
+| 參數           | 說明                 |
 |-------------------------|----------------------------|
-| 模型    | ConnectX®-4 Lx EN 網路介面卡                      |
+| 型號    | ConnectX®-4 Lx EN 網路介面卡                      |
 | 模型描述               | 25GbE 雙埠 SFP28;PCIe 3.0 x8;ROHS R6                    |
 | 裝置零件編號 (R640)  | MCX4121A-ACAT  |
 | PSID (R640)            | MT_2420110034                         |

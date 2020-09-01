@@ -3,23 +3,25 @@ title: 媒體服務帳戶的角色型存取控制-Azure |Microsoft Docs
 description: 本文討論 Azure 媒體服務帳戶 (RBAC) 的角色型存取控制。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/23/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 03e6c54ae9931f8f209a5f59150db2801827da06
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a29280815a1c9cf3d578f0d304bc679bf234c185
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003758"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267117"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>媒體服務帳戶 (RBAC) 的角色型存取控制
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 目前，Azure 媒體服務不會定義服務特定的任何自訂角色。 若要取得媒體服務帳戶的完整存取權，客戶可以使用 **擁有** 者或 **參與者**的內建角色。 這些角色之間的主要差異在於： **擁有** 者可以控制誰可以存取資源，而 **參與者** 無法存取。 您也可以使用內建的「 **讀取** 者」角色，但使用者或應用程式只會有媒體服務 api 的讀取權限。 
 

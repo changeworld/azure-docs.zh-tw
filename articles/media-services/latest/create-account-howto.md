@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/15/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 23a26e01c8329fa384d29443a143b173c58a2c6e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 93f5e4d659b94bd79345a5e687de14ab6a5e8ba6
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88539099"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267950"
 ---
 # <a name="create-a-media-services-account"></a>建立媒體服務帳戶
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 若要在 Azure 中開始加密、編碼、分析、管理和串流處理媒體內容，您需要建立 Media Services 帳戶。 媒體服務帳戶必須與一或多個儲存體帳戶產生關聯。 本文說明建立新 Azure 媒體服務帳戶的步驟。
 
@@ -54,7 +56,7 @@ Azure 入口網站提供快速建立 Azure 媒體服務帳戶的方法。 您可
 1. 按一下 [ **+ 建立資源**  >  **媒體**  >  **媒體服務**]。
 1. 在 [ **建立媒體服務帳戶** ] 區段中，輸入必要的值。
 
-    | Name | 描述 |
+    | Name | 說明 |
     | ---|---|
     |**帳戶名稱**|輸入新媒體服務帳戶的名稱。 媒體服務帳戶名稱為全部小寫且不含空格的字母或數字，且長度是 3 到 24 個字元。|
     |**訂用帳戶**|如果您有一個以上的訂用帳戶，請從您有權存取的 Azure 訂用帳戶清單中選取一個訂用帳戶。|
@@ -89,13 +91,13 @@ Azure 入口網站提供快速建立 Azure 媒體服務帳戶的方法。 您可
 
 [!INCLUDE [Create a Media Services account with CLI](./includes/task-create-media-services-account-cli.md)]
 
-### <a name="see-also"></a>請參閱
+### <a name="see-also"></a>另請參閱
 
 * [Azure CLI](/cli/azure/ams?view=azure-cli-latest)
 * [將次要儲存體附加至媒體服務帳戶](/cli/azure/ams/account/storage?view=azure-cli-latest#az-ams-account-storage-add)
 
 ---
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [串流處理檔案](stream-files-dotnet-quickstart.md)

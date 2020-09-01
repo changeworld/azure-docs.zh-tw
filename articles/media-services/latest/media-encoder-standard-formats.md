@@ -3,7 +3,7 @@ title: 標準編碼器格式和編解碼器-Azure
 description: 本文件包含您可以藉由 StandardEncoderPreset 使用的最常見匯入和匯出檔案格式列出的清單。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: dd8c38f9f08bbcaccc39d2f0d1843af720c12932
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c8c111d046bfaefac11df576e455162d20acecd0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053239"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266556"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>標準編碼器格式和編解碼器
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 本文件包含您可以藉由 [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) 使用的最常見匯入和匯出檔案格式列出的清單。 如需如何使用 **StandardEncoderPreset** 建立自訂預設設定的詳細資訊，請參閱[使用自訂預設建立轉換](customize-encoder-presets-how-to.md)。
 
@@ -82,8 +84,8 @@ ms.locfileid: "87053239"
 | MP3 (MPEG-1 音訊層 3) |是 |
 | Windows Media 音訊 |是 |
 | WAV/PCM |是 |
-| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |是 |
-| [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |是 |
+| [Flac](https://en.wikipedia.org/wiki/FLAC)</a> |是 |
+| [作品](https://go.microsoft.com/fwlink/?LinkId=822667) |是 |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |
 | AMR (可變多速率) |是 |
 | AES (SMPTE 331M 和 302M，AES3-2003) |否 |

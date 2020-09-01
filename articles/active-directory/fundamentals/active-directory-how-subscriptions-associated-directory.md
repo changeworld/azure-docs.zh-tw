@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 08/31/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbc1286b6c434d1c7a110c75dd5085de2043012d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6cd095939009c39c48456d330f975303f06a841a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179091"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267525"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租用戶
 
@@ -28,6 +28,8 @@ Azure 訂用帳戶與 Azure Active Directory (Azure AD) 有信任關係。 訂�
 
 若您的訂用帳戶已過期，您將無法再存取與訂用帳戶關聯的所有其他資源。 不過，Azure AD 目錄仍會保留在 Azure 中。 您可以使用不同的 Azure 訂用帳戶來建立和管理目錄的關聯。
 
+根據預設，當使用者註冊 Microsoft 雲端服務時，會建立 Azure AD 租使用者，且使用者會成為全域管理員角色的成員。 當您將訂用帳戶新增至現有的目錄時，不會將您指派給全域管理員角色。
+
 您所有的使用者都有單一 *主* 目錄來進行驗證。 您的使用者也可以是其他目錄中的來賓。 您可以同時為 Azure AD 中的每個使用者使用主目錄與來賓目錄。
 
 > [!Important]
@@ -36,7 +38,6 @@ Azure 訂用帳戶與 Azure Active Directory (Azure AD) 有信任關係。 訂�
 > 當訂用帳戶與不同目錄建立關聯時，也會從訂用帳戶移除原則指派。
 >
 > 將 Azure Kubernetes Service (AKS) 叢集移至不同的訂用帳戶，或將叢集擁有的訂用帳戶移至新的租使用者，會導致叢集因為遺失角色指派和服務主體的許可權而遺失功能。 如需 AKS 的詳細資訊，請參閱 [Azure Kubernetes Service (AKS) ](https://docs.microsoft.com/azure/aks/)。
-
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -66,19 +67,19 @@ Azure 訂用帳戶與 Azure Active Directory (Azure AD) 有信任關係。 訂�
 
 1. 選取 [ **變更目錄**]。
 
-    ![已反白顯示 [變更目錄] 選項的 [訂用帳戶] 頁面](media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png)
+   ![已反白顯示 [變更目錄] 選項的 [訂用帳戶] 頁面](media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png)
 
 1. 檢查出現的任何警告，然後選取 [ **變更**]。
 
-    ![顯示要變更之目錄的 [變更目錄] 頁面](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
+   ![顯示要變更之目錄的 [變更目錄] 頁面](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
-    變更訂用帳戶的目錄之後，您會收到成功訊息。
+   變更訂用帳戶的目錄之後，您會收到成功訊息。
 
-  1. 選取 [訂用帳戶] 頁面上的 [ **切換目錄** ]，移至您的新目錄。 
+1. 選取 [訂用帳戶] 頁面上的 [ **切換目錄** ]，移至您的新目錄。
 
-      ![包含範例資訊的目錄切換器頁面](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+   ![包含範例資訊的目錄切換器頁面](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-      所有專案可能需要數小時才能正確顯示。 如果似乎花費太長時間，請檢查 **全域訂閱篩選準則**。 請確定移動的訂用帳戶不會隱藏。 您可能需要登出 Azure 入口網站並重新登入，才能看到新的目錄。
+   所有專案可能需要數小時才能正確顯示。 如果似乎花費太長時間，請檢查 **全域訂閱篩選準則**。 請確定移動的訂用帳戶不會隱藏。 您可能需要登出 Azure 入口網站並重新登入，才能看到新的目錄。
 
 變更訂用帳戶目錄是服務層級作業，因此不會影響訂用帳戶帳單擁有權。 帳戶系統管理員仍然可以從[帳戶中心](https://account.azure.com/subscriptions)變更服務系統管理員。 若要刪除原始目錄，您必須將訂用帳戶帳單擁有權轉移給新的帳戶管理員。若要深入瞭解如何轉移帳單擁有權，請參閱將 [Azure 訂用帳戶的擁有權轉移給另一個帳戶](../../cost-management-billing/manage/billing-subscription-transfer.md)。
 

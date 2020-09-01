@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 153540ce0bf49740d0b3387715d83c8efd7af2cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 722db99da3c46a4ea1e31ed329a8e3448cc5626b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011866"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268820"
 ---
 # <a name="upload-and-index-your-videos"></a>上傳影片及編製影片索引  
 
@@ -101,7 +101,7 @@ ms.locfileid: "89011866"
 - 索引狀態變更： 
     - 屬性：    
     
-        |名稱|描述|
+        |Name|描述|
         |---|---|
         |id|影片識別碼|
         |state|影片狀態|  
@@ -118,7 +118,7 @@ ms.locfileid: "89011866"
         
     - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>注意
+##### <a name="notes"></a>備註
 
 - 影片索引器會傳回原始 URL 中提供的任何現有參數。
 - 提供的 URL 必須進行編碼。
@@ -167,7 +167,7 @@ ms.locfileid: "89011866"
 
 下列 C# 程式碼片段會示範一起使用所有影片索引器 API 的方式。
 
-#### <a name="instructions-for-running-this-code-sample"></a>執行此程式碼範例的指示
+**執行下列程式碼範例的指示**
 
 將此程式碼複製到您的開發平臺之後，您必須提供兩個參數： API 管理驗證金鑰和影片 URL。
 
@@ -359,7 +359,7 @@ public class AccountContractSlim
 
 下表列出上傳作業可能會傳回的狀態碼。
 
-|狀態碼|ErrorType (在回應本文中)|描述|
+|狀態碼|ErrorType (在回應本文中)|說明|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|指定帳戶中已有正在處理的相同影片。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小時前，指定帳戶中有相同的影片處理失敗。 API 用戶端應該等待至少 2 小時，才能重新上傳影片。|

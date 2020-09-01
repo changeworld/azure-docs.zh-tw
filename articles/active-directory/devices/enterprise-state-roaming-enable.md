@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5f6e44aa89c1e2815d70bb4ba2ae5f5680252ac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541884"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268599"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中啟用企業狀態漫遊
 
@@ -26,17 +26,17 @@ ms.locfileid: "87541884"
 當您啟用企業狀態漫遊時，您的組織會自動從 Azure 資訊保護獲得 Azure Rights Management 保護的免費但有使用限制的授權。 此免費訂用帳戶只能加密和解密由企業狀態漫遊所同步的企業設定和應用程式資料。 您必須擁有[付費訂用帳戶](https://azure.microsoft.com/pricing/details/information-protection/)，才能使用 Azure Rights Management 服務的完整功能。
 
 > [!NOTE]
-> 本文適用于2015年7月以 Windows 10 啟動的 Microsoft Edge 舊版 HTML 型瀏覽器。 本文不適用於2020年1月15日發行的新 Microsoft Edge Chromium 型瀏覽器。 如需新 Microsoft Edge 同步處理行為的詳細資訊，請參閱[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)處理一文。
+> 本文適用于2015年7月以 Windows 10 啟動的舊版 Microsoft Edge HTML 瀏覽器。 本文不適用於2020年1月15日發行的新 Microsoft Edge Chromium 式瀏覽器。 如需新 Microsoft Edge 之同步處理行為的詳細資訊，請參閱 [Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)處理的文章。
 
 ## <a name="to-enable-enterprise-state-roaming"></a>啟用企業狀態漫遊
 
 1. 登入 [Azure AD 系統管理中心](https://aad.portal.azure.com/)。
-1. 選取 [ **Azure Active Directory**  >  **裝置**  >  **企業狀態漫遊**]。
-1. 選取 [使用者可以在裝置間同步設定及應用程式資料]****。 如需詳細資訊，請參閱[如何進行裝置設定](/azure/active-directory/device-management-azure-portal)。
+1. 選取**企業狀態漫遊 Azure Active Directory**  >  **裝置**  >  ** **。
+1. 選取 [使用者可以在裝置間同步設定及應用程式資料]****。 如需詳細資訊，請參閱[如何進行裝置設定](./device-management-azure-portal.md)。
   
    ![標示為 [使用者可以在裝置間同步設定及應用程式資料] 的裝置設定影像](./media/enterprise-state-roaming-enable/device-settings.png)
   
-若要讓 Windows 10 裝置使用企業狀態漫遊服務，裝置必須使用 Azure AD 身分識別進行驗證。 對於已加入 Azure AD 的裝置，使用者的主要登入身分識別就是其 Azure AD 身分識別，不需要額外設定。 對於使用內部部署 Active Directory 的裝置，IT 管理員必須[設定已加入混合式 Azure Active Directory 的裝置](hybrid-azuread-join-manual-steps.md)。 
+若要讓 Windows 10 裝置使用企業狀態漫遊服務，裝置必須使用 Azure AD 身分識別進行驗證。 對於已加入 Azure AD 的裝置，使用者的主要登入身分識別就是其 Azure AD 身分識別，不需要額外設定。 對於使用內部部署 Active Directory 的裝置，IT 管理員必須[設定已加入混合式 Azure Active Directory 的裝置](./hybrid-azuread-join-plan.md)。 
 
 ## <a name="data-storage"></a>資料儲存體
 
@@ -56,7 +56,7 @@ ms.locfileid: "87541884"
 請遵循下列步驟來檢視每個使用者裝置同步處理狀態報告。
 
 1. 登入 [Azure AD 系統管理中心](https://aad.portal.azure.com/)。
-1. 選取 [ **Azure Active Directory**  >  **使用者**] [  >  **所有使用者**]。
+1. 選取**Azure Active Directory**  >  **使用者**  >  的**所有使用者**。
 1. 選取使用者，然後選取 [裝置]****。
 1. 在 [顯示]**** 底下，選取 [裝置同步設定和應用程式資料]****，以顯示同步處理狀態。
   
@@ -83,7 +83,7 @@ ms.locfileid: "87541884"
 一年 (「保留期限」) 未存取的資料將視為過時，可能會從 Microsoft 雲端中刪除。 保留期限可能有所變更，但不會小於 90 天。 過時的資料可能是一組特定的 Windows/應用程式設定或使用者的所有設定。 例如：
 
 * 如果沒有任何裝置存取特定的設定集合 (例如，從裝置中移除應用程式，或針對使用者的所有裝置停用設定群組，例如「佈景主題」)，則該集合在保留期限之後就會變成過時，可能會被刪除。 
-* 如果使用者已關閉所有裝置上的設定同步處理，則不會存取任何設定資料，而且該使用者的所有設定資料都會變成過時，而且可能會在保留期限後刪除。 
+* 如果使用者在其所有裝置上關閉設定同步處理，則不會存取任何設定資料，而且該使用者的所有設定資料都會變成過時，而且可能會在保留期限之後刪除。 
 * 如果 Azure AD 目錄管理員針對整個目錄關閉企業狀態漫遊，則該目錄中的所有使用者會停止同步處理設定，且所有使用者的所有設定資料會變成過時，並且可能在保留期限之後刪除。 
 
 ### <a name="deleted-data-recovery"></a>已刪除的資料復原

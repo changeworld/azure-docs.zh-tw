@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: c03105326b6d189b3c6fde72ff959211b3009517
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6bf82e85bfe36466010ce1cc8914bbd1221fe51a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837035"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267848"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 診斷擴充功能監視計量與記錄
 
@@ -75,7 +75,7 @@ Linux 診斷擴充功能支援下列散發套件和版本。 散發套件和版�
 ### <a name="sample-installation"></a>範例安裝
 
 > [!NOTE]
-> 針對其中一個範例，在執行之前，請先在第一個區段中填入正確的變數值。 
+> 針對其中一個範例，請在執行之前，為第一個區段中的變數填入正確的值。 
 
 在這些範例中下載的範例設定會收集一組標準資料，並將資料傳送到資料表儲存體。 範例組態的 URL 及其內容可能會變更。 在大部分情況下，請下載一份入口網站設定 JSON 檔案，並依據您的需求進行自訂，然後讓您建構的任何範本或自動化使用您自己的設定檔版本，而不是每次都下載該 URL。
 
@@ -128,7 +128,7 @@ $publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
 # If you have your own customized public settings, you can inline those rather than using the template above: $publicSettings = '{"ladCfg":  { ... },}'
 
 # Generate a SAS token for the agent to use to authenticate with the storage account
-$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context
+$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context -ExpiryTime $([System.DateTime]::Now.AddYears(10))
 
 # Build the protected settings (storage account SAS token)
 $protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
@@ -443,7 +443,7 @@ sinks | (選擇性) 原始樣本計量結果應發佈至的額外接收名稱，
 控制記錄檔的擷取。 LAD 會在新文字行寫入檔案時擷取這些文字行，並寫入資料表資料列和/或任何指定的接收 (JsonBlob 或 EventHub)。
 
 > [!NOTE]
-> fileLogs 是由名為的 LAD 子元件所捕捉 `omsagent` 。 若要收集 fileLogs，您必須確定 `omsagent` 使用者具有所指定檔案的讀取權限，以及該檔案路徑中所有目錄的執行許可權。 您可以在安裝 LAD 之後執行來檢查此項 `sudo su omsagent -c 'cat /path/to/file'` 。
+> fileLogs 是由名為 LAD 的子元件所捕捉 `omsagent` 。 若要收集 fileLogs，您必須確定 `omsagent` 使用者具有您指定之檔案的讀取權限，以及該檔案之路徑中所有目錄的執行許可權。 您可以在 `sudo su omsagent -c 'cat /path/to/file'` 安裝 LAD 之後執行此檢查。
 
 ```json
 "fileLogs": [
@@ -574,7 +574,7 @@ WriteBytesPerSecond | 每秒寫入的位元組數
 
 ### <a name="azure-cli"></a>Azure CLI
 
-假設您的受保護設定位於 ProtectedSettings.js的檔案中，而您的公用設定資訊在 PublicSettings.js中，請執行此命令：
+假設受保護的設定位於 ProtectedSettings.js的檔案中，而您的公用設定資訊在 PublicSettings.js中，請執行下列命令：
 
 ```azurecli
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
@@ -584,7 +584,7 @@ az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnost
 
 ### <a name="powershell"></a>PowerShell
 
-假設您的受保護設定位於 `$protectedSettings` 變數中，而您的公用設定資訊是在 `$publicSettings` 變數中，請執行此命令：
+假設受保護的設定位於 `$protectedSettings` 變數中，而您的公用設定資訊在 `$publicSettings` 變數中，請執行下列命令：
 
 ```powershell
 Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0
@@ -595,7 +595,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 根據前述的定義，以下為範例 LAD 3.0 擴充功能及一些說明。 若要將此範例套用到您的案例，您應使用自己的儲存體帳戶、帳戶 SAS 權杖，以及 EventHubs SAS 權杖。
 
 > [!NOTE]
-> 根據您是否使用 Azure CLI 或 PowerShell 安裝 LAD，提供公用和受保護設定的方法將會不同。 如果使用 Azure CLI，請將下列設定儲存至上的 ProtectedSettings.js，並 PublicSettings.js在上，以與上述範例命令搭配使用。 如果使用 PowerShell，請執行，將設定儲存至 `$protectedSettings` 和 `$publicSettings` `$protectedSettings = '{ ... }'` 。
+> 根據您是否使用 Azure CLI 或 PowerShell 安裝 LAD，提供公用和受保護設定的方法會有所不同。 如果使用 Azure CLI，請將下列設定儲存至 ProtectedSettings.js開啟和 PublicSettings.js，以搭配上述的範例命令使用。 如果使用 PowerShell，請執行以將設定儲存至 `$protectedSettings` 和 `$publicSettings` `$protectedSettings = '{ ... }'` 。
 
 ### <a name="protected-settings"></a>受保護的設定
 

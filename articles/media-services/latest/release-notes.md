@@ -3,22 +3,24 @@ title: Azure 媒體服務 v3 版本資訊 | Microsoft Docs
 description: 為了讓您隨時掌握最新的開發訊息，本文提供 Azure 媒體服務 v3 最新資訊。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/03/2020
-ms.author: juliako
-ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2e637392328c7a09fb23adeca61a352707f05e0e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072137"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267492"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 >將 URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` 複製並貼到 RSS 摘要閱讀程式中，以獲知何時該重新造訪此頁面來取得最新消息。
 
@@ -32,31 +34,31 @@ ms.locfileid: "87072137"
 ## <a name="known-issues"></a>已知問題
 
 > [!NOTE]
-> 您可以使用[Azure 入口網站](https://portal.azure.com/)來管理 v3[即時事件](live-events-outputs-concept.md)、查看 v3[資產](assets-concept.md)和作業、取得存取 api、加密內容的相關資訊。 針對所有其他管理工作（例如，管理轉換和作業），請使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的[sdk](media-services-apis-overview.md#sdks)。
+> 您可以使用 [Azure 入口網站](https://portal.azure.com/) 來管理 v3 [實況活動](live-events-outputs-concept.md)、查看 v3 [資產](assets-concept.md) 和作業、取得存取 api、加密內容的相關資訊。 針對其他所有管理工作 (例如，管理) 的轉換和作業，請使用 [REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的 [sdk](media-services-apis-overview.md#sdks)。
 >
-> 如需詳細資訊，請參閱：[媒體服務 v3 的 Azure 入口網站限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
+> 如需詳細資訊，請參閱： [媒體服務 v3 的 Azure 入口網站限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
 
 ## <a name="july-2020"></a>2020 年 7 月
 
 ### <a name="live-transcriptions"></a>即時轉譯
 
-即時轉譯現在支援19種語言和8個區域。
+Live 轉譯現在支援19種語言和8個區域。
 
 ## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>使用媒體服務和 Azure AD 保護您的內容
 
-我們已發佈名[為端對端內容保護的教學課程，使用 Azure AD](./azure-ad-content-protection.md)。
+我們發佈了一個教學課程 [，稱為使用 Azure AD 的端對端內容保護](./azure-ad-content-protection.md)。
 
 ### <a name="high-availablity"></a>高可用性
 
-我們發佈了具有媒體服務和隨選影片（VOD）[總覽](./media-services-high-availability-encoding.md)和[範例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)的高可用性。
+我們已透過媒體服務和隨選影片隨選發佈高可用性 (VOD) [總覽](./media-services-high-availability-encoding.md) 和 [範例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)。
 
 ## <a name="june-2020"></a>2020 年 6 月
 
-### <a name="live-video-analytics-on-iot-edge-preview-release"></a>IoT Edge preview 版本上的即時影片分析
+### <a name="live-video-analytics-on-iot-edge-preview-release"></a>IoT Edge 預覽版本的即時影片分析
 
-即時影片分析的預覽已公開 IoT Edge。 如需詳細資訊，請參閱[版本](../live-video-analytics-edge/release-notes.md)資訊。
+IoT Edge 的實況影片分析預覽已公開。 如需詳細資訊，請參閱 [版本](../live-video-analytics-edge/release-notes.md)資訊。
 
-IoT Edge 上的即時影片分析是媒體服務系列的擴充。 它可讓您在自己的邊緣裝置上使用您選擇的 AI 模型來分析即時影片，並選擇性地捕捉並錄製該影片。 您現在可以在邊緣使用即時影片分析來建立應用程式，而不必擔心建立和操作即時影片管線的複雜性。
+IoT Edge 的即時影片分析是媒體服務系列的延伸。 它可讓您在自己的邊緣裝置上，使用您選擇的 AI 模型來分析即時影片，並選擇性地捕捉及錄製該影片。 您現在可以在邊緣使用即時影片分析來建立應用程式，而不需擔心建立和操作即時影片管線的複雜度。
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -139,7 +141,7 @@ Azure 媒體播放器文件已遷移至 [Azure 文件](../azure-media-player/azu
 
 ###  <a name="media-services-v2"></a>媒體服務 v2  
 
-#### <a name="deprecation-of-media-processors"></a>淘汰媒體處理器
+#### <a name="deprecation-of-media-processors"></a>取代媒體處理器
 
 我們宣布取代「Azure 媒體索引器」和「Azure 媒體索引器 2 預覽版」。 關於淘汰日期，請參閱[舊版元件](../previous/legacy-components.md)主題。 [Azure 媒體服務影片索引器](../video-indexer/index.yml)取代這些舊版媒體處理器。
 
@@ -392,7 +394,7 @@ Azure CLI 2.0 模組即將推出，內含所有功能的操作 (包括即時、�
 
 ## <a name="see-also"></a>另請參閱
 
-[從媒體服務 v2 移至 v3 的遷移指引](migrate-from-v2-to-v3.md#known-issues)。
+[從媒體服務 v2 移至 v3 的遷移指導](migrate-from-v2-to-v3.md#known-issues)方針。
 
 ## <a name="next-steps"></a>後續步驟
 

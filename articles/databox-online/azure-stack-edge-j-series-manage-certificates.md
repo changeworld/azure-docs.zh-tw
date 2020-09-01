@@ -1,21 +1,21 @@
 ---
 title: 使用 Azure Stack Edge GPU 的憑證 |Microsoft Docs
 description: 說明如何使用 Azure Stack Edge GPU 裝置的憑證，包括使用原因、哪些類型，以及如何將憑證上傳至您的裝置。
-services: Azure Stack Edge
+services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7742d036857525ce6be64a53234f7aa717d4bdca
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: bf7f9236c8f0835d0041b4b0c454a492330ef878
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147077"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268871"
 ---
-# <a name="use-certificates-with-azure-stack-edge-series"></a>使用 Azure Stack Edge 系列的憑證 
+# <a name="use-certificates-with-azure-stack-edge-gpu-device"></a>使用 Azure Stack Edge GPU 裝置的憑證
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -370,7 +370,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     ![匯出憑證8](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-8.png)
 
-9. 您會收到已成功匯出的訊息。 選取 [確定]。
+9. 您會收到已成功匯出的訊息。 選取 [確定]  。
 
     ![匯出憑證9](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-9.png)
 
@@ -385,7 +385,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     ![匯出憑證1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
 
-2. 憑證嚮導隨即開啟。 選取格式為 **DER 編碼的二進位 x.509 ( .cer) **。 選取 [下一步]。
+2. 憑證嚮導隨即開啟。 選取格式為 **DER 編碼的二進位 x.509 ( .cer) **。 選取 [下一步]  。
 
     ![匯出憑證2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
 
@@ -416,6 +416,6 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
 在裝置本機 web UI 的 [ **憑證** ] 頁面上，查看憑證到期日。 憑證到期後，請根據 [建立和上傳憑證](azure-stack-edge-j-series-manage-certificates.md)中的詳細指示來建立和上傳新的憑證。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [部署 Azure Stack Edge 裝置](azure-stack-edge-gpu-deploy-prep.md)

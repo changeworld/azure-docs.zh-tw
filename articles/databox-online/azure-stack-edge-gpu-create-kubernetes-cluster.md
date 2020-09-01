@@ -1,21 +1,21 @@
 ---
-title: 在 Microsoft Azure Stack Edge 裝置上建立和管理 Kubernetes 叢集 |Microsoft Docs
-description: 說明如何透過 Windows PowerShell 介面，在 Microsoft Azure Stack Edge 裝置上建立和管理 Kubernetes 叢集。
+title: 在 Azure Stack Edge GPU 裝置上建立和管理 Kubernetes 叢集 |Microsoft Docs
+description: 說明如何透過 Windows PowerShell 介面，在 Azure Stack Edge GPU 裝置上建立和管理 Kubernetes 叢集。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 74f86ed48f363031fcab5d9d89046c349a1c3667
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 95663553bc68d34eebd90be0d4032ee53900479b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181387"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267953"
 ---
-# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-device"></a>透過您 Azure Stack Edge 裝置上的 kubectl 來連線及管理 Kubernetes 叢集
+# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>透過您 Azure Stack Edge GPU 裝置上的 kubectl 來連線及管理 Kubernetes 叢集
 
 在您的 Azure Stack Edge 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 建立 Kubernetes 叢集之後，您就可以從用戶端電腦在本機連線到叢集，並透過 *kubectl*之類的原生工具來管理叢集。
 

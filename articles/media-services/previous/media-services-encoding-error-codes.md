@@ -14,20 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b40bc8521755fae08e851e5b324979d5798e3dcd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e56dbe1d1236a567ed6f59acfcca325a6c9ee7e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042863"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269024"
 ---
 # <a name="encoding-error-codes"></a>編碼錯誤碼
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 下表列出在編碼工作執行期間發生錯誤的情況下可能傳回的錯誤碼。  若要取得 .NET 程式碼中的錯誤詳細資料，請使用 [ErrorDetails](/previous-versions/azure/jj126075(v=azure.100)) 類別。 若要取得 REST 程式碼中的錯誤詳細資料，請使用 [ErrorDetail](/rest/api/media/operations/errordetail) REST API。
 
 | ErrorDetail.Code | 導致發生錯誤的可能原因 |
 | --- | --- |
-| 未知 |執行工作時發生不明錯誤 |
+| Unknown |執行工作時發生不明錯誤 |
 | ErrorDownloadingInputAssetMalformedContent |涵蓋下載輸入資產中之錯誤 (例如無效的檔案名稱、長度為零檔案、錯誤格式等等) 的錯誤類別。 |
 | ErrorDownloadingInputAssetServiceFailure |涵蓋服務端問題 (例如下載時發生網路或儲存體錯誤) 的錯誤類別。 |
 | ErrorParsingConfiguration |工作 \<see cref="MediaTask.PrivateData"/> (設定) 無效時的錯誤類別，例如設定不是有效的系統預設或包含無效的 XML。 |

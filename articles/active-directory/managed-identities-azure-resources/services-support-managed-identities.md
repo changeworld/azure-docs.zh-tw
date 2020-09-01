@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 1d9bd6ccc0f92ab28088e886c5bd17d79bc6cea3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e62fc34ad02303f61214f754f6506c39af76fc94
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007622"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267440"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支援適用於 Azure 資源的受控識別服務
 
@@ -39,7 +39,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 請參閱下列清單來設定 Azure APIM 的受控識別 (若區域提供)：
 
-- [Azure Resource Manager 範本](/azure/api-management/api-management-howto-use-managed-service-identity)
+- [Azure Resource Manager 範本](../../api-management/api-management-howto-use-managed-service-identity.md)
 
 
 ### <a name="azure-app-service"></a>Azure App Service
@@ -51,10 +51,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 請參閱下列清單來設定 Azure App Service 的受控識別 (若區域提供)：
 
-- [Azure 入口網站](/azure/app-service/overview-managed-identity#using-the-azure-portal)
-- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
-- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Azure Resource Manager 範本](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Azure 入口網站](../../app-service/overview-managed-identity.md#using-the-azure-portal)
+- [Azure CLI](../../app-service/overview-managed-identity.md#using-the-azure-cli)
+- [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
+- [Azure Resource Manager 範本](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
 ### <a name="azure-arc-enabled-kubernetes"></a>已啟用 Azure Arc 的 Kubernetes
 
@@ -63,7 +63,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 | 系統指派 | 預覽 | 無法使用 | 無法使用 | 無法使用 | 
 | 使用者指派 | 無法使用 | 無法使用 | 無法使用 | 無法使用 |
 
-Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#azure-arc-agents-for-kubernetes)的身分識別。 所有 Azure Arc 啟用的 Kubernetes 代理程式都會使用受控服務識別憑證來與 Azure 進行通訊。
+Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes)的身分識別。 所有 Azure Arc 啟用的 Kubernetes 代理程式都會使用受控服務識別憑證來與 Azure 進行通訊。
 
 ### <a name="azure-blueprints"></a>Azure 藍圖
 
@@ -165,10 +165,10 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](https://docs.microsof
 
 請參閱下列清單來設定 Azure Functions 的受控識別 (若區域提供)：
 
-- [Azure 入口網站](/azure/app-service/overview-managed-identity#using-the-azure-portal)
-- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
-- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Azure Resource Manager 範本](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Azure 入口網站](../../app-service/overview-managed-identity.md#using-the-azure-portal)
+- [Azure CLI](../../app-service/overview-managed-identity.md#using-the-azure-cli)
+- [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
+- [Azure Resource Manager 範本](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
 ### <a name="azure-iot-hub"></a>Azure IoT 中樞
 
@@ -196,7 +196,7 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](https://docs.microsof
 | 使用者指派 | ![可用][check] | ![可用][check] | 無法使用 | ![可用][check] |
 
 
-如需詳細資訊，請參閱[在 Azure Kubernetes Service 中使用受控識別](https://docs.microsoft.com/azure/aks/use-managed-identity) \(部分機器翻譯\)。
+如需詳細資訊，請參閱[在 Azure Kubernetes Service 中使用受控識別](../../aks/use-managed-identity.md) \(部分機器翻譯\)。
 
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps
@@ -209,8 +209,8 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](https://docs.microsof
 
 請參閱下列清單來設定 Azure Logic Apps 的受控識別 (若區域提供)：
 
-- [Azure 入口網站](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Azure Resource Manager 範本](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
+- [Azure 入口網站](../../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)
+- [Azure Resource Manager 範本](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
 
 ### <a name="azure-policy"></a>Azure 原則
@@ -224,14 +224,14 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](https://docs.microsof
 
 - [Azure 入口網站](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
-- [Azure 資源管理員範本](https://docs.microsoft.com/azure/templates/microsoft.authorization/policyassignments)
-- [REST](https://docs.microsoft.com/rest/api/resources/policyassignments/create)
+- [Azure CLI](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
+- [Azure 資源管理員範本](/azure/templates/microsoft.authorization/policyassignments)
+- [REST](/rest/api/resources/policyassignments/create)
 
 
 ### <a name="azure-service-fabric"></a>Azure Service Fabric
 
-適用于[Service Fabric 應用程式的受控識別](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)可在所有區域中使用。
+適用于[Service Fabric 應用程式的受控識別](../../service-fabric/concepts-managed-identity.md)可在所有區域中使用。
 
 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -291,10 +291,10 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](https://docs.microsof
 | 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | 系統指派 | 無法使用 | 無法使用 | 無法使用 | 無法使用 | 
-| 使用者指派 | [可在支援的區域中使用](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) | 無法使用 | 無法使用 | 無法使用 |
+| 使用者指派 | [可在支援的區域中使用](../../virtual-machines/windows/image-builder-overview.md#regions) | 無法使用 | 無法使用 | 無法使用 |
 
-若要瞭解如何為 Azure VM 映射產生器設定受控識別 (在可用) 的區域中，請參閱影像產生器 [總覽](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions)。
-### <a name="azure-signalr-service"></a>Azure SignalR 服務
+若要瞭解如何為 Azure VM 映射產生器設定受控識別 (在可用) 的區域中，請參閱影像產生器 [總覽](../../virtual-machines/windows/image-builder-overview.md#permissions)。
+### <a name="azure-signalr-service"></a>Azure SignalR Service
 
 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -397,7 +397,7 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](https://docs.microsof
 | Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![可用][check] |
 
 > [!Note]
-> Microsoft Power BI 也[支援受控識別](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity) \(部分機器翻譯\)。
+> Microsoft Power BI 也[支援受控識別](../../stream-analytics/powerbi-output-managed-identity.md) \(部分機器翻譯\)。
 
 
 [check]: media/services-support-managed-identities/check.png "可用"

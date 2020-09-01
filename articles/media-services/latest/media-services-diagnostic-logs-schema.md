@@ -3,7 +3,7 @@ title: Azure 媒體服務診斷記錄架構-Azure
 description: 本文示範 Azure 媒體服務診斷記錄架構。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,40 +11,42 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/20/2019
-ms.author: juliako
-ms.openlocfilehash: 2bc688a61235a31c3d6b6e88cbb90c0d14cca179
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 6f09a0ab88273aa10bb5f3cb55f89d014897df12
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092009"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268446"
 ---
 # <a name="diagnostic-logs-schemas"></a>診斷記錄結構描述
 
-[Azure 監視器](../../azure-monitor/overview.md)可讓您監視計量和診斷記錄，以協助您瞭解應用程式的執行狀況。 您可以監視媒體服務診斷記錄，並為所收集的計量和記錄建立警示和通知。 您可以將記錄傳送至[Azure 儲存體](https://azure.microsoft.com/services/storage/)、將它們串流至[Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)，並將它們匯出至[Log Analytics](https://azure.microsoft.com/services/log-analytics/)，或使用協力廠商服務。
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-如需詳細資訊，請參閱[Azure 監視器計量](../../azure-monitor/platform/data-platform.md)和[Azure 監視器診斷記錄](../../azure-monitor/platform/platform-logs-overview.md)。
+[Azure 監視器](../../azure-monitor/overview.md) 可讓您監視計量和診斷記錄，以協助您瞭解應用程式的執行情況。 您可以監視媒體服務診斷記錄，並為收集的計量和記錄建立警示和通知。 您可以將記錄傳送至 [Azure 儲存體](https://azure.microsoft.com/services/storage/)、將記錄串流至 [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)，並將它們匯出至 [Log Analytics](https://azure.microsoft.com/services/log-analytics/)，或使用協力廠商服務。
 
-本文說明媒體服務診斷記錄架構。
+如需詳細資訊，請參閱 [Azure 監視器計量](../../azure-monitor/platform/data-platform.md) 和 [Azure 監視器診斷記錄](../../azure-monitor/platform/platform-logs-overview.md)。
+
+本文描述媒體服務診斷記錄架構。
 
 ## <a name="top-level-diagnostic-logs-schema"></a>最上層診斷記錄結構描述
 
-如需最上層診斷記錄架構的詳細描述，請參閱[支援的服務、架構和 Azure 診斷記錄的類別](../../azure-monitor/platform/resource-logs-schema.md)。
+如需最上層診斷記錄架構的詳細說明，請參閱 [Azure 診斷記錄支援的服務、架構和類別](../../azure-monitor/platform/resource-logs-schema.md)。
 
 ## <a name="key-delivery-log-schema"></a>金鑰傳遞記錄架構
 
-### <a name="properties"></a>[內容]
+### <a name="properties"></a>屬性
 
-這些是金鑰傳遞記錄架構特有的屬性。
+這些屬性是金鑰傳遞記錄架構特有的。
 
-|名稱|說明|
+|Name|說明|
 |---|---|
-|keyId|所要求之金鑰的識別碼。|
-|keyType|可能是下列其中一個值： "Clear" （無加密）、"FairPlay"、"PlayReady" 或 "Widevine"。|
+|keyId|要求的索引鍵識別碼。|
+|keyType|可以是下列其中一個值：「清除」 (沒有加密) 、「FairPlay」、「PlayReady」或「Widevine」。|
 |policyName|原則的 Azure Resource Manager 名稱。|
 |tokenType|Token 類型。|
-|statusMessage|狀態訊息。|
+|>statusmessage|狀態訊息。|
 
 ### <a name="examples"></a>範例
 

@@ -1,6 +1,6 @@
 ---
-title: 如何搭配 Azure 媒體服務使用 Shaka 播放機
-description: 本文說明如何搭配使用 Shaka 播放機與 Azure 媒體服務
+title: 如何搭配 Azure 媒體服務使用 Shaka player
+description: 本文說明如何使用 Shaka player 搭配 Azure 媒體服務
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -10,34 +10,36 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 5882b79232e858bbc8ad7e0da94ad4b04f5165ca
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5988a3ca2d44df161a27144d7bfb47ecab1e236e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422975"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267304"
 ---
-# <a name="how-to-use-the-shaka-player-with-azure-media-services"></a>如何搭配 Azure 媒體服務使用 Shaka 播放機
+# <a name="how-to-use-the-shaka-player-with-azure-media-services"></a>如何搭配 Azure 媒體服務使用 Shaka player
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 ## <a name="overview"></a>概觀
 
-Shaka Player 是適用于彈性媒體的開放原始碼 JavaScript 程式庫。 它會在瀏覽器中播放適應性媒體格式（例如破折號和 HLS），而不需要使用外掛程式或 Flash。 相反地，Shaka Player 會使用開放式 web 標準媒體來源延伸模組和加密媒體延伸模組。
+Shaka Player 是適用于調適型媒體的開放原始碼 JavaScript 程式庫。 它會在瀏覽器中播放自動調整媒體格式 (例如破折號和 HLS) ，而不需要使用外掛程式或 Flash。 相反地，Shaka Player 會使用開放式 web 標準媒體來源延伸模組和加密的媒體延伸模組。
 
-我們建議使用[Mux.js](https://github.com/videojs/mux.js/) ，但若不這麼做，Shaka player 會支援 HLS CMAF 格式，但無法 HLS TS。
+我們建議您在沒有Mux.js的情況下使用[Mux.js](https://github.com/videojs/mux.js/) ，因為 Shaka player 會支援 HLS CMAF 格式，但不支援 HLS TS。
 
-您可以在[Shaka player 檔](https://shaka-player-demo.appspot.com/docs/api/tutorial-welcome.html)中找到其官方檔。
+您可以在 [Shaka player 檔](https://shaka-player-demo.appspot.com/docs/api/tutorial-welcome.html)中找到其官方檔。
 
 ## <a name="sample-code"></a>範例程式碼
-本文的範例程式碼位於[Azure-範例/媒體-服務-3rdparty-播放程式範例](https://github.com/Azure-Samples/media-services-3rdparty-player-samples)。
+本文的範例程式碼可在 Azure 中取得 [-範例/媒體服務-協力廠商-播放機-範例](https://github.com/Azure-Samples/media-services-3rdparty-player-samples)。
 
-## <a name="implementing-the-player"></a>執行 player
+## <a name="implementing-the-player"></a>執行播放機
 
 如果您需要執行自己的播放程式實例，請遵循下列指示：
 
-1. 建立 `index.html` 要裝載播放程式的檔案。 新增下列幾行程式碼（如果適用，您可以取代較新的版本）：
+1. 建立 `index.html` 您將在其中裝載播放程式的檔案。 新增下列幾行程式碼 (您可以在適用的) 中取代較新的版本：
 
     ```html
     <html>
@@ -66,16 +68,16 @@ Shaka Player 是適用于彈性媒體的開放原始碼 JavaScript 程式庫。 
     player.load(manifestUrl);
     ```
 
-1. 將取代 `manifestUrl` 為您資產的串流定位器中的 HLS 或破折號 URL，可以在 Azure 入口網站的串流定位器頁面上找到。
+1. `manifestUrl`以 HLS 或虛線 URL 取代您資產的串流定位器，您可以在 Azure 入口網站的 [串流定位器] 頁面上找到該 URL。
     ![串流定位器 Url](media/how-to-shaka-player/streaming-urls.png)
 
-1. 執行伺服器（例如使用 `npm http-server` ），而您的播放程式應該正在運作 .。。
+1. 使用) 執行伺服器 (例如 `npm http-server` ，您的播放程式應可運作 .。。
 
 ## <a name="set-up-captions"></a>設定標題
 
-### <a name="set-up-vod-captions"></a>設定 VOD 標題
+### <a name="set-up-vod-captions"></a>設定 VOD 輔助字幕
 
-執行下列幾行程式碼，並將取代 `captionUrl` 為您的 vtt 目錄（vtt 檔案必須位於相同的主控制項，以避免 CORS 錯誤）、 `lang` 語言的兩個字母代碼，以及 `type` `caption` 或 `subtitle` ：
+執行下列幾行程式碼，並 `captionUrl` 以您的 vtt 目錄取代 (vtt 檔必須位於相同的主控制項中，以避免發生 CORS 錯誤) 、 `lang` 語言的兩個字母代碼，以及下列 `type` 兩者 `caption` `subtitle` ：
 
 ```javascript
 player.configure('streaming.alwaysStreamText', true)
@@ -88,7 +90,7 @@ player.load(manifestUrl).then(function(){
 
 ### <a name="set-up-live-stream-captions"></a>設定即時資料流標題
 
-啟用即時資料流中的標題時，會將下列程式程式碼設定為：
+啟用即時資料流中的標題會設定為新增下列程式程式碼：
 
 ```javascript
 player.setTextTrackVisibility(true)
@@ -96,7 +98,7 @@ player.setTextTrackVisibility(true)
 
 ## <a name="set-up-token-authentication"></a>設定權杖驗證
 
-執行下列幾行程式碼，並 `token` 以您的 token 字串取代：
+執行下列幾行程式碼，並 `token` 以您的權杖字串取代：
 
 ```javascript
 player.getNetworkingEngine().registerRequestFilter(function (type, request) {
@@ -110,17 +112,17 @@ player.getNetworkingEngine().registerRequestFilter(function (type, request) {
 
 Shaka Player 目前不支援 AES-128 加密。
 
-GitHub[問題](https://github.com/google/shaka-player/issues/850)的連結，以遵循這項功能的狀態。
+GitHub [問題](https://github.com/google/shaka-player/issues/850) 的連結，以遵循這項功能的狀態。
 
 ## <a name="set-up-drm-protection"></a>設定 DRM 保護
 
-Shaka Player 會使用加密的媒體延伸模組（EME），這需要安全的 URL 才能使用。 因此，若要測試任何受 DRM 保護的內容，則必須使用 HTTPs。 如果網站使用 HTTPs，則資訊清單和每個區段也都必須使用 HTTPs。 這是因為混合內容的需求。
+Shaka Player 使用加密的媒體延伸 (EME) ，需要使用安全的 URL。 因此，若要測試任何受 DRM 保護的內容，必須使用 HTTPs。 如果網站使用 HTTPs，則資訊清單和每個區段也都必須使用 HTTPs。 這是因為混合的內容需求。
 
-對其授權伺服器的 URL 進行 Shaka 管理的喜好設定順序：
+ () 的授權伺服器 () 的 URL 管理喜好設定順序：
 
-1. ClearKey config 用於進行偵錯工具，應該覆寫所有其他專案。 （應用程式仍可指定 ClearKey 授權伺服器）。
-2. 應用程式設定的伺服器（如果有的話）應該覆寫資訊清單中的任何專案。
-3. 只有在未指定任何其他內容時，才會使用資訊清單提供的授權伺服器。
+1. ClearKey 設定（用於偵錯工具）應該覆寫其他所有專案。  (應用程式仍然可以指定 ClearKey 授權伺服器。 ) 
+2. 應用程式設定的伺服器（如果有的話）應該覆寫資訊清單中的任何一個。
+3. 只有在未指定任何其他專案時，才會使用資訊清單提供的授權伺服器。
 
 若要指定 Widevine 或 PlayReady 的授權伺服器 URL，我們可以使用下列程式碼：
 
@@ -136,7 +138,7 @@ player.configure({
 
 ```
 
-所有 FairPlay 內容都需要設定伺服器憑證。 它是在 Player 設定中設定：
+所有 FairPlay 內容都需要設定伺服器憑證。 它是在播放程式設定中設定：
 
 ```javascript
 const req = await fetch("YOUR FAIRPLAY CERTIFICATE URL");
@@ -144,7 +146,7 @@ const cert = await req.arrayBuffer();
 player.configure('drm.advanced.com\\.apple\\.fps\\.1_0.serverCertificate', new Uint8Array(cert));
 ```
 
-如需詳細資訊，請參閱[Shaka PLAYER DRM 保護檔](https://shaka-player-demo.appspot.com/docs/api/tutorial-drm-config.html)。
+如需詳細資訊，請參閱 [Shaka PLAYER DRM 保護檔](https://shaka-player-demo.appspot.com/docs/api/tutorial-drm-config.html)。
 
 ## <a name="next-steps"></a>後續步驟
 

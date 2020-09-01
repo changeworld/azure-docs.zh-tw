@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: faf0db31b458ed6b8dd4961fffbf2a810990574d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f9f1b51ce09577bf17fa4d92273348665987848
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084478"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266607"
 ---
-# <a name="publish-content-in-the-azure-portal"></a>在 Azure 入口網站中發佈內容  
+# <a name="publish-content-in-the-azure-portal"></a>在 Azure 入口網站中發佈內容
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [入口網站](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -29,15 +32,15 @@ ms.locfileid: "87084478"
 > 
 > 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 > [!NOTE]
-> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
+> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
 > 
 > 
 
 若要提供 URL 給使用者，讓使用者可以利用這個 URL 來傳送或下載內容，您必須先建立定位器來發佈您的資產。 定位器可供存取資產檔案。 Azure 媒體服務支援兩種類型的定位器： 
 
-* **串流 (OnDemandOrigin) 定位器**。 串流定位器可用於彈性資料流。 彈性資料流的範例包括 Apple HTTP Live Streaming (HLS)、Microsoft Smooth Streaming 和 Dynamic Adaptive Streaming over HTTP (DASH，也稱為 MPEG-DASH)。 若要建立串流定位器，您的資產必須包含 .ism 檔案。 例如： `http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest` 。
+* **串流 (OnDemandOrigin) 定位器**。 串流定位器可用於彈性資料流。 彈性資料流的範例包括 Apple HTTP Live Streaming (HLS)、Microsoft Smooth Streaming 和 Dynamic Adaptive Streaming over HTTP (DASH，也稱為 MPEG-DASH)。 若要建立串流定位器，您的資產必須包含 .ism 檔案。 例如 `http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest`。
 * **漸進式 (共用存取簽章) 定位器**。 漸進式定位器用於透過漸進式下載傳遞影片。
 
 若要建立 HLS 資料流 URL，請在 URL 加上 (format=m3u8-aapl)**：
@@ -70,10 +73,10 @@ ms.locfileid: "87084478"
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>使用入口網站發佈資產
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure 媒體服務帳戶。
-2. 選取 [**設定**] [  >  **資產**]。 選取您要發佈的資產。
+2. 選取 **設定** > **資產**。 選取您要發佈的資產。
 3. 選取 [發佈] 按鈕。
 4. 選取定位器類型。
-5. 選取 [新增]。
+5. 選取 [新增]  。
    
     ![發佈影片](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

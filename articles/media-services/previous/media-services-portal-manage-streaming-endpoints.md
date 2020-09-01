@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 627eca1f9a775f12fc9d504629c2a3abbcc919a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b7ea61a1f09a9340661f333e452f70c5ad8cf877
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084495"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266641"
 ---
-# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>透過 Azure 入口網站管理串流端點 
+# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>透過 Azure 入口網站管理串流端點
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 本文說明如何使用 Azure 入口網站來管理串流端點。 
 
@@ -55,7 +57,7 @@ ms.locfileid: "87084495"
     如果您打算有不同的 CDN 或一個 CDN 和直接存取，您可能需要有多個串流端點。
 
 2. 若要刪除串流端點，請按下 [刪除] **** 按鈕。      
-3. 按一下 [**啟動**] 按鈕以啟動串流端點。
+3. 按一下 [ **開始** ] 按鈕以啟動串流端點。
    
     ![串流端點](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
@@ -75,7 +77,7 @@ ms.locfileid: "87084495"
 若要設定串流端點，請執行以下作業：
 
 1. 選取您想要設定的串流端點。
-2. 按一下 [設定] 。
+2. 按一下 [設定]。
 
 隨時顯示簡要的欄位說明。
 
@@ -97,7 +99,7 @@ ms.locfileid: "87084495"
 
 中國和聯邦政府區域除外，其他所有 Azure 資料中心都啟用 CDN 整合。
 
-一旦啟用，就會停用 [**存取控制**]、[自訂主機名稱] 和 [Akamai 簽章**驗證**] 設定。
+啟用之後，就會停用 [ **存取控制**]、[自訂主機名稱] 和 [Akamai 簽章 **驗證** ] 設定。
  
 > [!IMPORTANT]
 > 如果是標準串流端點，Azure 媒體服務與 Azure CDN 的整合是在**來自 Verizon 的 Azure CDN** 上實作。 您可以使用所有 **Azure CDN 定價層和提供者**來設定進階串流端點。 如需 Azure CDN 功能的詳細資訊，請參閱 [CDN 概觀](../../cdn/cdn-overview.md)。

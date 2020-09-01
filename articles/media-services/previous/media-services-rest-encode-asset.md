@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: e9cf5a65c664df321e8cee1c867e637a4718c9ee
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d2e7be89b3319445a69d5b91990e9888cccd484a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837324"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268616"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>如何使用媒體編碼器標準為資產編碼
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
 > * [REST](media-services-rest-encode-asset.md)
@@ -42,7 +45,7 @@ ms.locfileid: "87837324"
 
 我們建議一律將來源檔案編碼為調適型位元速率 MP4 集，然後使用[動態封裝](media-services-dynamic-packaging-overview.md)，將該集合轉換為所需的格式。
 
-如果您的輸出資產是已加密的儲存體，就必須設定資產傳遞原則。 如需詳細資訊，請參閱設定[資產傳遞原則](media-services-rest-configure-asset-delivery-policy.md)。
+如果您的輸出資產是已加密的儲存體，就必須設定資產傳遞原則。 如需詳細資訊，請參閱設定 [資產傳遞原則](media-services-rest-configure-asset-delivery-policy.md)。
 
 ## <a name="considerations"></a>考量
 
@@ -59,7 +62,7 @@ ms.locfileid: "87837324"
 > [!NOTE]
 > 使用媒體服務 REST API 時，適用下列考量事項：
 >
-> 在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱[媒體服務 REST API 開發的設定](media-services-rest-how-to-use.md)。
+> 在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱 [REST API 開發媒體服務的設定](media-services-rest-how-to-use.md)。
 >
 > 使用 JSON 並指定在要求中使用 **__metadata** 關鍵字時 (例如，為了參考連結的物件)，您必須將 **Accept** 標頭設為 [JSON Verbose 格式 (英文)](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)：Accept: application/json;odata=verbose。
 >

@@ -1,6 +1,6 @@
 ---
 title: H264 多重位元率 4K 媒體編碼器標準預設值 - Azure | Microsoft Docs
-description: 本文概述媒體編碼器標準**H264 多重位元速率 4k**工作預設值。
+description: 本文概述媒體編碼器標準 **H264 多重位元速率 4k** 工作預設值。
 author: Juliako
 manager: femila
 editor: ''
@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b077dc2fe3ba7528d03490a19312de946647a522
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 967919d1e9e37216621b4df34cba67f3baf24752
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086297"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268395"
 ---
 # <a name="h264-multiple-bitrate-4k"></a>H264 多重位元速率 4K
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 `Media Encoder Standard` 定義一組編碼預設，供您在建立編碼作業時使用。 您可以使用 `preset name` 來指定您想要將媒體檔案編碼成哪一種格式。 或者，您可以建立自己的 JSON 或 XML 型預設 (使用 UTF-8 或 UTF-16 編碼)。 然後，您要將自訂預設傳遞給編碼器。 如需這個 `Media Encoder Standard` 編碼器支援的所有預設名稱清單，請參閱[媒體編碼器標準的工作預設](media-services-mes-presets-overview.md)。  
   
  本主題說明 XML 和 JSON 格式的 `H264 Multiple Bitrate 4K` 預設。  

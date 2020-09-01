@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 330186b12efcc31e9f99d7c4bdbff3e081311c23
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5b69d10bc2f3c5ec737e026059c82c3efac681b5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083418"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268154"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-device-via-templates"></a>透過範本在您的 Azure Stack Edge 裝置上部署 Vm
+# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>透過範本在您的 Azure Stack Edge GPU 裝置上部署 Vm
 
 本教學課程說明如何使用範本在您的 Azure Stack Edge 裝置上建立和管理 VM。 這些範本 JavaScript 物件標記法 (的 JSON) 檔案，這些檔案會定義您 VM 的基礎結構和設定。 在這些範本中，您會指定要部署的資源，以及這些資源的屬性。
 
@@ -185,11 +185,11 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
     ![連接到 Azure 儲存體1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. 選取 [使用儲存體帳戶名稱和金鑰]****。 選取 [下一步]。
+5. 選取 [使用儲存體帳戶名稱和金鑰]****。 選取 [下一步]  。
 
     ![連接到 Azure 儲存體2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. 在 [ **使用名稱和金鑰連接]** 中，提供 **顯示名稱**、 **儲存體帳戶名稱**Azure 儲存體 **帳戶金鑰**。 選取 **其他** 儲存體網域，然後提供 `<device name>.<DNS domain>` 連接字串。 如果您未在儲存體總管中安裝憑證，請核取 [ **使用 HTTP** ] 選項。 選取 [下一步]。
+6. 在 [ **使用名稱和金鑰連接]** 中，提供 **顯示名稱**、 **儲存體帳戶名稱**Azure 儲存體 **帳戶金鑰**。 選取 **其他** 儲存體網域，然後提供 `<device name>.<DNS domain>` 連接字串。 如果您未在儲存體總管中安裝憑證，請核取 [ **使用 HTTP** ] 選項。 選取 [下一步]  。
 
     ![使用名稱和金鑰連接](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 

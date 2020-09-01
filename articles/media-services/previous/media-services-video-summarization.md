@@ -16,14 +16,16 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0e342e5509aaba05228c7d1032023a6f4710f1f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e6810e20373aa6fcaab447d6b6be51a47f400e24
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999507"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268582"
 ---
-# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒體視訊縮圖建立視訊摘要  
+# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒體視訊縮圖建立視訊摘要
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > **Azure 媒體影片縮圖**媒體處理器將會淘汰。 如需淘汰日期，請參閱 [舊版元件](legacy-components.md) 主題。
@@ -60,7 +62,7 @@ ms.locfileid: "88999507"
 
 目前，您可以變更下列參數：
 
-| Param | 描述 |
+| Param | 說明 |
 | --- | --- |
 | outputAudio |指定結果視訊是否要包含任何音訊。 <br/>允許的值為 True 或 False。 預設值是 True。 |
 | fadeInFadeOut |指定不同的動作縮圖之間是否要使用淡化轉換。  <br/>允許的值為 True 或 False。  預設值是 True。 |

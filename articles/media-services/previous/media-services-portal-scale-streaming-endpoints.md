@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 40820170bae275f090c5f898387698fc562e59ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 814d6b55e5ae04bf27dfb70d4e7b5ea2d5a4315c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80985536"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266811"
 ---
 # <a name="scale-streaming-endpoints-with-the-azure-portal"></a>透過 Azure 入口網站調整串流端點
-## <a name="overview"></a>總覽
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
+## <a name="overview"></a>概觀
 
 > [!NOTE]
 > 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
@@ -33,7 +36,7 @@ ms.locfileid: "80985536"
  
 本主題說明如何調整串流端點。
 
-如需定價詳細資料的相關資訊，請參閱[媒體服務定價詳細資料](https://azure.microsoft.com/pricing/details/media-services/)。
+如需定價詳細資料的詳細資訊，請參閱 [媒體服務定價詳細資料](https://azure.microsoft.com/pricing/details/media-services/)。
 
 ## <a name="scale-streaming-endpoints"></a>調整串流端點
 

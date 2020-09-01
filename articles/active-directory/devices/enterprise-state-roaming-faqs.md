@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35669a7d80907e2335c68b1da9010f5879aa6c7c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274080"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268531"
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定和資料漫遊常見問題集
 
@@ -29,19 +29,19 @@ ms.locfileid: "87274080"
 * 佈景主題，包括桌面佈景主題和工作列設定等功能。
 * Internet Explorer 設定，包括最近所開啟索引標籤和我的最愛。
 * *Microsoft Edge 瀏覽器設定*- 例如我的最愛和閱讀清單。
-* *密碼*，包括網際網路密碼、wi-fi 設定檔及其他。
+* *密碼*，包括網際網路密碼、wi-fi 設定檔和其他密碼。
 * 語言喜好設定，包括鍵盤配置、系統語言、日期和時間等設定。
 * 輕鬆存取功能，例如高對比主題、朗讀程式和放大鏡。
 * 其他 Windows 設定，例如滑鼠設定。
 
 > [!NOTE]
-> 本文適用于2015年7月以 Windows 10 啟動的 Microsoft Edge 舊版 HTML 型瀏覽器。 本文不適用於2020年1月15日發行的新 Microsoft Edge Chromium 型瀏覽器。 如需新 Microsoft Edge 同步處理行為的詳細資訊，請參閱[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)處理一文。
+> 本文適用于2015年7月以 Windows 10 啟動的舊版 Microsoft Edge HTML 瀏覽器。 本文不適用於2020年1月15日發行的新 Microsoft Edge Chromium 式瀏覽器。 如需新 Microsoft Edge 之同步處理行為的詳細資訊，請參閱 [Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)處理的文章。
 
-**應用程式資料**：通用 Windows 應用程式可以將設定資料寫入漫遊資料夾中，而系統會對寫入這個資料夾中的任何資料自動進行同步處理。 由個別應用程式開發人員設計應用程式以充分利用這項功能。 如需如何開發使用漫遊之通用 Windows 應用程式的詳細資訊，請參閱[appdata 儲存體 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx)和[Windows 8 appdata 漫遊開發人員的 blog](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/)。
+**應用程式資料**：通用 Windows 應用程式可以將設定資料寫入漫遊資料夾中，而系統會對寫入這個資料夾中的任何資料自動進行同步處理。 由個別應用程式開發人員設計應用程式以充分利用這項功能。 如需有關如何開發使用漫遊的通用 Windows 應用程式的詳細資訊，請參閱 [appdata 儲存體 API](/windows/uwp/design/app-settings/store-and-retrieve-app-data) 和 [Windows 8 appdata 漫遊開發人員 blog](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/)。
 
 ## <a name="what-account-is-used-for-settings-sync"></a>哪些帳戶用於設定同步處理？
 
-在 Windows 8.1 中，設定同步處理一律使用取用者 Microsoft 帳戶。 企業使用者可以將 Microsoft 帳戶連線到其 Active Directory 網域帳戶，以取得設定同步處理的存取權。在 Windows 10 中，這項連線的 Microsoft 帳戶功能會以主要/次要帳戶架構取代。
+在 Windows 8.1 中，設定同步處理一律使用取用者 Microsoft 帳戶。 企業使用者能夠將 Microsoft 帳戶連接到其 Active Directory 網域帳戶，以取得設定同步的存取權。在 Windows 10 中，此連線 Microsoft 帳戶功能會取代為主要/次要帳戶架構。
 
 主要帳戶的定義是用來登入 Windows 的帳戶。 這可以是 Microsoft 帳戶、Azure Active Directory (Azure AD) 帳戶、內部部署 Active Directory 帳戶或本機帳戶。 除了主要帳戶，Windows 10 使用者可以將一或多個次要雲端帳戶新增至他們的裝置。 次要帳戶通常是 Microsoft 帳戶、Azure AD 帳戶或一些像是 Gmail 或 Facebook 的其他帳戶。 這些次要帳戶提供其他服務 (例如單一登入和 Windows 市集) 的存取權，但是無法進行設定同步處理。
 
@@ -50,7 +50,7 @@ ms.locfileid: "87274080"
 裝置上不同使用者帳戶之間的資料永遠不會混合。 有兩個設定可用來同步處理設定：
 
 * Windows 設定一律會使用主要帳戶進行漫遊。
-* 應用程式資料將會利用用來取得應用程式的帳戶來標記。 只有使用主要帳戶標記的應用程式才會同步。應用程式擁有權標記是由透過 Windows Store 或行動裝置管理（MDM）側載應用程式時所決定。
+* 應用程式資料將會利用用來取得應用程式的帳戶來標記。 只有標記為主要帳戶的應用程式才會進行同步處理。當應用程式透過 Windows Store 或行動裝置管理 (MDM) 來側載應用程式時，會決定應用程式擁有權標記。
 
 如果無法識別應用程式的擁有者，它會以主要帳戶漫遊。 如果裝置是從 Windows 8 或 Windows 8.1 升級到 Windows 10，則所有應用程式都會被標記成由 Microsoft 帳戶取得。 這是因為大多數使用者都是透過 Windows 市集取得應用程式，而在 Windows 10 之前，並沒有為 Azure AD 帳戶提供 Windows 市集支援。 如果應用程式是透過離線授權安裝，則會使用裝置上的主要帳戶標記應用程式。
 
@@ -86,9 +86,9 @@ ms.locfileid: "87274080"
 漫遊僅適用於通用 Windows 應用程式。 有兩個選項可用來在現有 Windows 傳統型應用程式上啟用漫遊：
 
 * [傳統型應用程式橋接器](https://aka.ms/desktopbridge) 可協助您輕鬆地將現有的 Windows 傳統型應用程式帶到「通用 Windows 平台」。 從這裡，只需進行最低限度的程式碼變更，即可利用 Azure AD 的應用程式資料漫遊功能。 桌面橋接器會為應用程式提供應用程式身分識別，需要有此身分識別才能為現有的傳統型應用程式啟用應用程式資料漫遊。
-* [User Experience Virtualization (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) 可協助您為現有的 Windows 傳統型應用程式建立自訂設定範本，並為 Win32 應用程式啟用漫遊功能。 這個選項不需要應用程式開發人員變更應用程式的程式碼。 UE-V 僅限於已購買 Microsoft Desktop Optimization Pack 之客戶的內部部署 Active Directory 漫遊。
+* [User Experience Virtualization (UE-V)](/previous-versions//dn458947(v=vs.85)) 可協助您為現有的 Windows 傳統型應用程式建立自訂設定範本，並為 Win32 應用程式啟用漫遊功能。 這個選項不需要應用程式開發人員變更應用程式的程式碼。 UE-V 僅限於已購買 Microsoft Desktop Optimization Pack 之客戶的內部部署 Active Directory 漫遊。
 
-系統管理員可以設定讓 UE-V 漫遊 Windows 傳統型應用程式資料，方法是透過 [UE-V 群組原則](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2)變更 Windows OS 設定與通用應用程式資料的漫遊，包括：
+系統管理員可以設定讓 UE-V 漫遊 Windows 傳統型應用程式資料，方法是透過 [UE-V 群組原則](/microsoft-desktop-optimization-pack/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2)變更 Windows OS 設定與通用應用程式資料的漫遊，包括：
 
 * 「漫遊 Windows 設定」群組原則
 * 「不要同步處理 Windows 應用程式」群組原則
@@ -96,7 +96,7 @@ ms.locfileid: "87274080"
 
 在未來，Microsoft 可能會調查讓 UE-V 深度整合到 Windows 及透過 Azure AD 雲端擴充 UE-V 漫遊設定的方式。
 
-## <a name="can-i-store-synced-settings-and-data-on-premises"></a>我可以將同步處理的設定和資料儲存在內部部署嗎？
+## <a name="can-i-store-synced-settings-and-data-on-premises"></a>我可以將同步的設定和資料儲存在內部部署嗎？
 
 「企業狀態漫遊」會將所有同步處理的資料儲存在 Microsoft 雲端。 UE-V 提供一個內部部署漫遊解決方案。
 
@@ -121,7 +121,7 @@ Microsoft 提供數個不同的設定漫遊解決方案可供使用，包括漫�
 使用企業狀態漫遊和 UE-V 時，適用下列規則：
 
 * 企業狀態漫遊是裝置上主要的漫遊代理程式。 UE-V 是用來補充「Win32 間距」。
-* 使用 UE-V 群組原則時，應該停用 Windows 設定和新式 UWP 應用程式資料的 UE-V 漫遊。 「企業狀態漫遊」已經涵蓋這些漫遊。
+* 使用 UE-V 群組原則時，應停用適用于 Windows 設定的 UE-V 漫遊和新式 UWP 應用程式資料。 「企業狀態漫遊」已經涵蓋這些漫遊。
 
 ## <a name="how-does-enterprise-state-roaming-support-virtual-desktop-infrastructure-vdi"></a>企業狀態漫遊如何支援虛擬桌面基礎結構 (VDI)？
 
@@ -133,8 +133,8 @@ Windows 10 用戶端 SKU 支援「企業狀態漫遊」，但伺服器 SKU 則�
 
 ## <a name="known-issues"></a>已知問題
 
-如需已知問題的清單，請參閱[疑難排解](enterprise-state-roaming-troubleshooting.md)一節中的檔。 
+如需已知問題的清單，請參閱 [疑難排解](enterprise-state-roaming-troubleshooting.md) 一節中的檔。 
 
 ## <a name="next-steps"></a>後續步驟 
 
-如需總覽，請參閱[企業狀態漫遊總覽](enterprise-state-roaming-overview.md)
+如需總覽，請參閱 [企業狀態漫遊總覽](enterprise-state-roaming-overview.md)

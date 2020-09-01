@@ -1,5 +1,5 @@
 ---
-title: 如何規劃您的 Azure Active Directory 聯結執行
+title: 如何規劃 Azure Active Directory 聯結的執行
 description: 說明在您的環境中實作已加入 Azure AD 的裝置所需執行的步驟。
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d43e6e89faa8eca720e3aeafc873af1a18b9753b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555015"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268222"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：規劃 Azure AD Join 實作
 
@@ -24,9 +24,9 @@ Azure AD Join 可讓您直接將裝置加入 Azure AD，而不需要加入內部
 
 本文將為您提供規劃 Azure AD Join 實作所需的資訊。
  
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-本文假設您熟悉 [Azure Active Directory 中的裝置管理簡介](../device-management-introduction.md)。
+本文假設您熟悉 [Azure Active Directory 中的裝置管理簡介](./overview.md)。
 
 ## <a name="plan-your-implementation"></a>計劃您的實作
 
@@ -58,7 +58,7 @@ Azure AD Join 在受控和同盟環境中均可運作。
 
 ### <a name="managed-environment"></a>受控環境
 
-受控環境可使用無縫單一登入透過[密碼雜湊同步](/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)或[傳遞驗證](/azure/active-directory/hybrid/how-to-connect-pta-quick-start)進行部署。
+受控環境可使用無縫單一登入透過[密碼雜湊同步](../hybrid/how-to-connect-password-hash-synchronization.md)或[傳遞驗證](../hybrid/how-to-connect-pta-quick-start.md)進行部署。
 
 在這些案例中，您不需要設定同盟伺服器以進行驗證。
 
@@ -77,7 +77,7 @@ Azure AD Join 在受控和同盟環境中均可運作。
 如果您的識別提供者不支援這些通訊協定，則 Azure AD Join 無法原生運作。 
 
 >[!NOTE]
-> 目前，Azure AD join 不適用於以[外部驗證提供者設定的 AD FS 2019 做為主要驗證方法](/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary)。 Azure AD join 預設為密碼驗證做為主要方法，這會導致在此案例中發生驗證失敗
+> 目前，Azure AD join 無法搭配以 [外部驗證提供者設定的 AD FS 2019 作為主要驗證方法](/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary)。 Azure AD 聯結預設為密碼驗證作為主要方法，這會在此案例中導致驗證失敗
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>智慧卡和憑證型驗證
@@ -90,7 +90,7 @@ Azure AD Join 在受控和同盟環境中均可運作。
 
 如果您將使用者建立於：
 
-- **內部部署 Active Directory**，您必須使用 [Azure AD Connect](/azure/active-directory/hybrid/how-to-connect-sync-whatis) 將其同步至 Azure AD。 
+- **內部部署 Active Directory**，您必須使用 [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md) 將其同步至 Azure AD。 
 - **Azure AD**，則不需另行設定。
 
 內部部署 UPN 與 Azure AD UPN 不同，加入 Azure AD 的裝置上並不支援它。 如果您使用內部部署 UPN，您應規劃改為使用它們在 Azure AD 中的主要 UPN。
@@ -103,16 +103,16 @@ Azure AD Join：
 
 - 僅適用於 Windows 10 裝置。 
 - 不適用舊版的 Windows 或其他作業系統。 如果您有 Windows 7/8.1 裝置，您必須升級為 Windows 10，以部署 Azure AD Join。
-- 支援 FIPS 相容的 TPM 2.0，但 TPM 1.2 不支援。 如果您的裝置具有 FIPS 相容的 TPM 1.2，您必須先停用它們，再繼續進行 Azure AD 聯結。 Microsoft 不會提供任何工具來停用 Tpm 的 FIPS 模式，因為它相依于 TPM 製造商。 請洽詢您的硬體 OEM 以取得支援。
+- 符合 FIPS 規範的 TPM 2.0 支援，但 TPM 1.2 則不支援。 如果您的裝置具有 FIPS 相容的 TPM 1.2，則必須先停用它們，然後再繼續 Azure AD 聯結。 Microsoft 不會提供任何工具來停用 Tpm 的 FIPS 模式，因為它相依于 TPM 製造商。 請洽詢您的硬體 OEM 以尋求支援。
  
 **建議：** 一律使用最新的 Windows 10 版本，以享有更新的功能。
 
 ### <a name="management-platform"></a>管理平台
 
-Azure AD 已加入裝置的裝置管理是以 MDM 平臺（如 Intune）和 MDM Csp 為基礎。 Windows 10 有內建的 MDM 代理程式，可與所有相容的 MDM 解決方案搭配運作。
+Azure AD 聯結裝置的裝置管理是以 MDM 平臺（例如 Intune）和 MDM Csp 為基礎。 Windows 10 有內建的 MDM 代理程式，可與所有相容的 MDM 解決方案搭配運作。
 
 > [!NOTE]
-> Azure AD 加入的裝置不支援群組原則，因為它們未連線到內部部署 Active Directory。 僅能透過 MDM 來管理已加入 Azure AD 的裝置
+> Azure AD 加入的裝置不支援群組原則，因為它們未連線至內部部署 Active Directory。 只有透過 MDM 才能管理 Azure AD 加入的裝置
 
 有兩種方法可用來管理已加入 Azure AD 的裝置：
 
@@ -128,7 +128,7 @@ Azure AD 已加入裝置的裝置管理是以 MDM 平臺（如 Intune）和 MDM 
 
 如果您的 MDM 解決方案無法透過 Azure AD 應用程式資源庫來啟用，您可以依照 [Azure Active Directory 與 MDM 的整合](/windows/client-management/mdm/azure-active-directory-integration-with-mdm)中所列的程序新增該解決方案。 
 
-透過共同管理，您可以使用 SCCM 來管理裝置的特定層面，同時透過 MDM 平台來提供原則。 Microsoft Intune 可支援與 SCCM 搭配的共同管理。 如需有關 Windows 10 裝置共同管理的詳細資訊，請參閱[什麼是共同管理？](/configmgr/core/clients/manage/co-management-overview)。 如果您使用 Intune 以外的 MDM 產品，請向 MDM 提供者洽詢適用的共同管理案例。
+透過共同管理，您可以使用 SCCM 來管理裝置的特定層面，同時透過 MDM 平台來提供原則。 Microsoft Intune 可支援與 SCCM 搭配的共同管理。 如需 Windows 10 裝置共同管理的詳細資訊，請參閱 [什麼是共同管理？](/configmgr/core/clients/manage/co-management-overview)。 如果您使用 Intune 以外的 MDM 產品，請向 MDM 提供者洽詢適用的共同管理案例。
 
 **建議：** 針對已加入 Azure AD 的裝置，請考慮使用僅限 MDM 的管理。
 
@@ -162,7 +162,7 @@ Azure AD 已加入裝置的裝置管理是以 MDM 平臺（如 Intune）和 MDM 
 
 如果裝置可存取網域控制站，則使用者可從已加入 Azure AD 的裝置進行 SSO。 
 
-**建議：** 部署 [Azure AD App Proxy](/azure/active-directory/manage-apps/application-proxy)，以啟用這些應用程式的安全存取。
+**建議：** 部署 [Azure AD App Proxy](../manage-apps/application-proxy.md)，以啟用這些應用程式的安全存取。
 
 ### <a name="on-premises-network-shares"></a>內部部署網路共用
 
@@ -184,24 +184,24 @@ Azure AD 已加入裝置的裝置管理是以 MDM 平臺（如 Intune）和 MDM 
 
 若要從遠端桌面連線至已加入 Azure AD 的裝置，主機電腦必須已加入 Azure AD 或已加入混合式 Azure AD。 不支援從未加入或非 Windows 的裝置進行遠端桌面連線。 如需詳細資訊，請參閱[連線至已加入 Azure AD 的遠端 PC](/windows/client-management/connect-to-remote-aadj-pc)
 
-從 Windows 10 2004 update 開始，使用者可以 alo 使用遠端桌面，從已註冊的 Windows 10 裝置 Azure AD 到已加入 Azure AD 的裝置。 
+從 Windows 10 2004 更新開始，使用者可以從 Azure AD 註冊的 Windows 10 裝置，將遠端桌面也至已加入 Azure AD 的裝置。 
 
 ## <a name="understand-your-provisioning-options"></a>了解您的佈建選項
 
 您可以使用下列方法來佈建 Azure AD Join：
 
-- **OOBE/設定中的自助模式** - 在自助模式中，使用者可在使用 Windows 全新體驗 (OOBE) 期間或從 [Windows 設定] 中進行 Azure AD Join 程序。 如需詳細資訊，請參閱[了解如何將您的工作裝置加入組織的網路](/azure/active-directory/user-help/user-help-join-device-on-network)。 
+- **OOBE/設定中的自助模式** - 在自助模式中，使用者可在使用 Windows 全新體驗 (OOBE) 期間或從 [Windows 設定] 中進行 Azure AD Join 程序。 如需詳細資訊，請參閱[了解如何將您的工作裝置加入組織的網路](../user-help/user-help-join-device-on-network.md)。 
 - **Windows Autopilot** - Windows Autopilot 可讓您預先設定裝置，以提升在 OOBE 中執行 Azure AD Join 的體驗。 如需詳細資訊，請參閱 [Windows Autopilot 概觀](/windows/deployment/windows-autopilot/windows-10-autopilot)。 
 - **大量註冊** - 大量註冊可讓系統管理員使用大量佈建工具設定裝置，以驅動 Azure AD Join。 如需詳細資訊，請參閱 [Windows 裝置的大量註冊](/intune/windows-bulk-enroll)。
  
 以下是這三種方法的比較 
  
-| 元素 | 自助式設定 | Windows Autopilot | 大量註冊 |
+| 項目 | 自助式設定 | Windows Autopilot | 大量註冊 |
 | --- | --- | --- | --- |
-| 需要使用者手動設定 | Yes | 是 | 否 |
-| 需要 IT 工作 | 否 | 是 | Yes |
+| 需要使用者手動設定 | 是 | 是 | 否 |
+| 需要 IT 工作 | 否 | 是 | 是 |
 | 適用的流程 | OOBE 和設定 | 僅限 OOBE | 僅限 OOBE |
-| 主要使用者的本機管理員權限 | 是，依照預設 | 可設定 | No |
+| 主要使用者的本機系統管理員權限 | 是，依照預設 | 可設定 | 否 |
 | 需要裝置 OEM 支援 | 否 | 是 | 否 |
 | 支援的版本 | 1511+ | 1709+ | 1703+ |
  
@@ -220,17 +220,17 @@ Azure AD 已加入裝置的裝置管理是以 MDM 平臺（如 Intune）和 MDM 
 
 Azure 入口網站可讓您控制如何將已加入 Azure AD 的裝置部署到您的組織中。 若要設定相關設定，請在 [Azure Active Directory ]**** 頁面上選取 `Devices > Device settings`。
 
-### <a name="users-may-join-devices-to-azure-ad"></a>使用者可以將裝置加入 Azure AD
+### <a name="users-may-join-devices-to-azure-ad"></a>使用者可以將裝置加入至 Azure AD
 
 請根據您部署的範圍，和您要允許哪些人設定已加入 Azure AD 的裝置，將此選項設為 [全部]**** 或 [選取的]****。 
 
-![使用者可以將裝置加入 Azure AD](./media/azureadjoin-plan/01.png)
+![使用者可以將裝置加入至 Azure AD](./media/azureadjoin-plan/01.png)
 
-### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>已加入 Azure AD 的裝置上的其他本機系統管理員
+### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>加入 Azure AD 的裝置上其他本機系統管理員
 
 選擇 [選取的]****，然後選取您要在所有已加入 Azure AD 的裝置上新增至本機系統管理員群組的使用者。 
 
-![已加入 Azure AD 的裝置上的其他本機系統管理員](./media/azureadjoin-plan/02.png)
+![加入 Azure AD 的裝置上其他本機系統管理員](./media/azureadjoin-plan/02.png)
 
 ### <a name="require-multi-factor-auth-to-join-devices"></a>需要多因素驗證才能加入裝置
 
@@ -291,13 +291,13 @@ MAM 不適用於 Azure AD Join。
 
 ![符合規範的裝置](./media/azureadjoin-plan/46.png)
 
-您可以使用此執行方式，透過[條件式存取要求受管理的裝置存取雲端應用程式](../conditional-access/require-managed-devices.md)。
+您可以使用此實 [作為要求受管理的裝置，以使用條件式存取來存取雲端應用程式](../conditional-access/require-managed-devices.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> 在[第一次執行期間使用 Azure AD 加入新的 Windows 10 裝置](azuread-joined-devices-frx.md) 
-> 將[您的工作裝置加入組織的網路](/azure/active-directory/user-help/user-help-join-device-on-network)
+> [在第一次執行期間加入具有 Azure AD 的新 Windows 10 裝置](azuread-joined-devices-frx.md) 
+> 將[您的工作裝置加入組織的網路](../user-help/user-help-join-device-on-network.md)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

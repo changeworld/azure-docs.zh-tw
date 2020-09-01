@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: b85586a431a20102035e253537fc45c8a8a54796
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: be7e01644d7d1f232c50b1efbadf100671a262fe
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083403"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268103"
 ---
-# <a name="kubernetes-on-your-azure-stack-edge-device"></a>Azure Stack Edge 裝置上的 Kubernetes
+# <a name="kubernetes-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU 裝置上的 Kubernetes
 
 Kubernetes 是常用的開放原始碼平臺，可協調容器化應用程式。 本文提供 Kubernetes 的總覽，然後說明 Kubernetes 如何在您的 Azure Stack Edge 裝置上運作。 
 
@@ -57,7 +57,7 @@ Kubernetes 主要節點負責維護叢集的預期狀態。 主要節點也會�
 
 如需詳細資訊，請參閱 [Azure Stack Edge 裝置的 Kubernetes 儲存體](azure-stack-edge-gpu-kubernetes-storage.md)中適用于應用程式的儲存體布建選項。
 
-## <a name="networking"></a>網路功能
+## <a name="networking"></a>網路
 
 Kubernetes 網路功能可讓您設定 Kubernetes 網路內的通訊，包括容器對容器網路、pod 對 pod 網路、pod 對服務網路，以及網際網路到服務的網路。 如需詳細資訊，請參閱 [Azure Stack Edge 裝置在 Kubernetes 網路](azure-stack-edge-gpu-kubernetes-networking.md)中的網路功能模型。
 

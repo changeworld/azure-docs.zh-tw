@@ -14,14 +14,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d86cca609f0a494bb012d3393facc14ec23dbbe2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 2d83b114487f882b7ee38d3d71c84b6abec04a2b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054690"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266913"
 ---
 # <a name="filters-and-dynamic-manifests"></a>篩選器與動態資訊清單
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="選取您要使用的媒體服務版本："]
 > * [第 2 版](media-services-dynamic-manifest-overview.md)
@@ -31,7 +33,7 @@ ms.locfileid: "86054690"
 
 本主題探討使用篩選器會對您客戶有幫助的常見案例，並提供主題連結以示範如何以程式設計方式建立篩選器。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 當您將內容傳遞給客戶時 (串流即時事件或點播視訊)，您的目標是要在不同的網路條件下將高品質的視訊傳遞給各種裝置。 若要達成此目標，請執行下列動作：
 
 * 將您的資料流編碼成多位元速率 ([彈性位元速率](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) 視訊串流 (這會處理品質與網路條件)，並 
@@ -127,7 +129,7 @@ ms.locfileid: "86054690"
 ![轉譯篩選][renditions1]
 
 ## <a name="removing-language-tracks"></a>移除語言資料軌
-您的資產可能包括多種音訊語言，例如英文、西班牙文、法文等。通常，Player SDK 管理員會預設音訊軌選取專案，以及每個使用者選取的可用音訊曲目。 開發這類的播放程式 SDK 相當有挑戰性，因為在各個裝置特有的播放程式架構之間有不同的實作方式。 此外，在某些平臺上，播放機 Api 會受到限制，且不包含音訊選取功能，使用者無法選取或變更預設的音訊播放軌。透過資產篩選器，您可以藉由建立只包含所需音訊語言的篩選來控制行為。
+您的資產可能包含多個音訊語言，例如英文、西班牙文、法文等等。通常，播放機 SDK 管理員預設會選取音訊播放軌，以及每個使用者選取的可用音訊曲目。 開發這類的播放程式 SDK 相當有挑戰性，因為在各個裝置特有的播放程式架構之間有不同的實作方式。 此外，在某些平臺上，播放機 Api 會受到限制，而且不包含音訊選擇功能，因為使用者無法選取或變更預設的音訊播放軌。使用資產篩選器，您可以建立只包含所需音訊語言的篩選來控制行為。
 
 ![語言資料軌篩選][language_filter]
 
@@ -184,7 +186,7 @@ ms.locfileid: "86054690"
 
 您可以結合最多三個篩選。 
 
-如需詳細資訊，請參閱[此](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)blog。
+如需詳細資訊，請參閱 [這](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) 篇 blog。
 
 ## <a name="know-issues-and-limitations"></a>已知問題與限制
 * 動態資訊清單會在 GOP 界限 (主要畫面格) 中運作，因此修剪後能夠有精確的 GOP。 

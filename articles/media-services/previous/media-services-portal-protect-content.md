@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8d0e2487632971579a1a473375eb2200f3a63a46
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 061d66f08e79f935c778eb84dd47f71cab1a62d7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084529"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266624"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>使用 Azure 入口網站設定內容保護原則
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 不會在媒體服務 v2 中新增任何新功能或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 媒體服務 v2 未新增任何新功能或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 >
 
  您可以透過 Azure 媒體服務來保護媒體從離開電腦到進行儲存、處理和傳遞時的安全。 您可以利用媒體服務傳遞，使用進階加密標準 (AES) (使用 128 位元加密金鑰) 所動態加密的內容。 您也可以將它與一般加密 (CENC) 搭配使用，方法是使用 PlayReady 和/或 Widevine 數位版權管理 (DRM) 和 Apple FairPlay。 
@@ -38,7 +40,7 @@ ms.locfileid: "87084529"
 
 1. 在[入口網站](https://portal.azure.com/)中，選取您的媒體服務帳戶。
 
-1. 選取 [**設定**] [  >  **內容保護**]。
+1. 選取 [**設定**  >  **內容保護**]。
 
     ![內容保護](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
@@ -90,7 +92,7 @@ Widevine 授權範本會設定已在您 Widevine 授權上啟用的功能。
 若要利用動態封裝功能，請將您的來源檔案編碼成一組調適性位元速率 MP4 檔案。
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>選取您要加密的資產
-若要查看您所有的資產，請選取 [**設定**] [  >  **資產**]。
+若要查看您的所有資產，請選取 [**設定**  >  **資產**]。
 
 ![資產選項](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
@@ -115,7 +117,7 @@ AES 清除金鑰加密會在所有串流通訊協定上啟用︰Smooth Streaming
     
     e. **FairPlay 僅與 HLS** 會使用 FairPlay 將您的 HLS 串流動態加密。
 
-1. 若要啟用 FairPlay 加密，請在 [內容保護全域設定]**** 刀鋒視窗中選取 [FairPlay 設定]****。 然後選取應用程式**憑證**，並輸入**應用程式秘密金鑰**。
+1. 若要啟用 FairPlay 加密，請在 [內容保護全域設定]**** 刀鋒視窗中選取 [FairPlay 設定]****。 然後選取應用程式 **憑證**，並輸入 **應用程式秘密金鑰**。
 
     ![加密類型](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 

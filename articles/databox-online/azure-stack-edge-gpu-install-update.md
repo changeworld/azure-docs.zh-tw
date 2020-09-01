@@ -1,22 +1,23 @@
 ---
 title: 在 Azure Stack Edge GPU 裝置上安裝更新 |Microsoft Docs
-description: 說明如何使用適用于 Azure Stack Edge GPU 裝置的 Azure 入口網站和本機 web UI 來套用更新
+description: 說明如何使用適用于 Azure Stack Edge GPU 裝置的 Azure 入口網站和本機 web UI，以及裝置上的 Kubernetes 叢集來套用更新
 services: databox
 author: alkohli
 ms.service: databox
-ms.topic: article
-ms.date: 06/12/2020
+ms.subservice: edge
+ms.topic: how-to
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 0e973e41493b8e84f31a82d5379a01a0e851a48d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6bafeeeda686dafadc3f5104240f8d018de83aeb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083408"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268239"
 ---
 # <a name="update-your-azure-stack-edge-with-gpu"></a>使用 GPU 更新您的 Azure Stack Edge 
 
-本文說明透過本機 web UI 和透過 Azure 入口網站在您的 Azure Stack Edge 上安裝更新時所需的步驟。 您可以套用軟體更新或修補程式，讓您的 Azure Stack Edge 裝置保持在最新狀態。 
+本文說明透過本機 web UI 和透過 Azure 入口網站在您的 Azure Stack Edge 上安裝更新時所需的步驟。 您可以套用軟體更新或修補程式，以將裝置上的 Azure Stack Edge 裝置和相關聯的 Kubernetes cluaster 保持在最新狀態。 
 
 > [!IMPORTANT]
 > - 更新 **2008** 對應于裝置上的 **2.1.1328.1904** 軟體版本。 如需此更新的詳細資訊，請參閱 [版本](azure-stack-edge-gpu-2008-release-notes.md)資訊。

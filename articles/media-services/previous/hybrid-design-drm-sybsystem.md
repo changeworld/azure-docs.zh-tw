@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: ce2fbe8c706870250973974c7a73a3964dedd04a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1bf01e98e418edfe8f15043d16a199b276b71020
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831884"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266896"
 ---
-# <a name="hybrid-design-of-drm-subsystems"></a>DRM 子系統的混合式設計 
+# <a name="hybrid-design-of-drm-subsystems"></a>DRM 子系統的混合式設計
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 本主題討論使用 Azure 媒體服務的 DRM 子系統混合式設計。
 
@@ -93,7 +95,7 @@ Azure 媒體服務 DRM 是全面雲端視訊平台的一部分，設計富彈性
 
 ## <a name="scenarios-and-samples"></a>案例與範例
 
-根據上一節中的說明，下列五個混合式案例會使用個別的**內容金鑰** - **資產傳遞原則**設定組合， (最後一個資料行中所述的範例會遵循資料表) ：
+根據上一節中的說明，下列五種混合式案例會使用各自的**內容金鑰** - **資產傳遞原則**設定組合 (最後一個資料行中所述的範例會遵循資料表) ：
 
 |**內容裝載與來源**|**DRM 加密**|**DRM 授權傳遞**|**設定內容金鑰**|**設定資產傳遞原則**|**範例**|
 |---|---|---|---|---|---|

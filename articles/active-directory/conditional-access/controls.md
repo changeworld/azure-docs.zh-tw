@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb4efd26502c20a33cb61ab1c9d58f2757bbd70
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 59f83d232874a7702598b6ea5fdd458c101e7e79
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948295"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266573"
 ---
 # <a name="custom-controls-preview"></a>自訂控制項 (預覽)
 
 自訂控制項是 Azure Active Directory 的預覽功能。 使用自訂控制項時，系統會將使用者重新導向至相容的服務，以滿足 Azure Active Directory 之外的驗證需求。 為了滿足此控制項，會將使用者的瀏覽器重新導向至外部服務、執行任何必要的驗證，然後再重新導向回 Azure Active Directory。 Azure Active Directory 會驗證回應，而且如果使用者已成功通過驗證或驗證，使用者會繼續進行條件式存取流程。
 
 > [!NOTE]
-> 如需我們規劃自訂控制項功能之變更的詳細資訊，請參閱2020年2月的 [新功能更新](../fundamentals/whats-new.md#upcoming-changes-to-custom-controls)。
+> 如需我們規劃自訂控制項功能之變更的詳細資訊，請參閱2020年2月的封存 [以瞭解新](../fundamentals/whats-new-archive.md#upcoming-changes-to-custom-controls)功能。
 
 ## <a name="creating-custom-controls"></a>建立自訂控制項
 

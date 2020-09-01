@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 19b6001e7bf5038b4c5e6112266d1e5dfc0a792b
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 419b8beb866711e80b4366df4398eb248256021b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146312"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266947"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-device"></a>在 Azure Stack Edge 裝置上的 GPU 上設定和執行模組
 
@@ -112,6 +112,6 @@ ms.locfileid: "89146312"
     ![將模組設定為使用 GPU 16](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-12.png)
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [您可以搭配 NVIDIA GPU 使用的環境變數](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec)。

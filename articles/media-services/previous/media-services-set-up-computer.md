@@ -1,6 +1,6 @@
 ---
 title: 設定 Azure 媒體服務開發環境 | Microsoft Docs
-description: 本文說明如何設定您的環境，以使用 Azure 媒體服務進行開發。
+description: 本文說明如何設定您的環境，以 Azure 媒體服務進行開發。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 4422c7d360db401233d0cf4c072e88cd4aff16b5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 67cf46fbe86dfd8388c61f3a55b4068e57d0b538
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086263"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266505"
 ---
-# <a name="set-up-your-media-services-development-environment"></a>設定媒體服務開發環境  
+# <a name="set-up-your-media-services-development-environment"></a>設定媒體服務開發環境 
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)

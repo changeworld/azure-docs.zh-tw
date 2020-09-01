@@ -8,20 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/12/2020
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: e74acd3cdb0a0d2e0fbb37d022ff40e1f5798b18
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b4d629351ae7b6154b332a1b1f99374de1187518
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744613"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267865"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>什麼是 Azure 媒體服務影片索引器？
 
 影片索引器 (VI) 是 Azure 媒體服務的 AI 解決方案，並且是 Azure 認知服務品牌的一部分。 影片索引器可讓您使用以多個通道 (語音、人聲、視覺效果) 為基礎的機器學習模型來擷取深入解析 (而不需要資料分析或編碼技能)。 您可以進一步自訂模型並將模型定型。 此服務可實現深度搜尋、降低營運成本、實現新的創造營收商機，並在大型的影片封存上創造新的使用者體驗 (進入障礙很低)。
 
 若要開始使用影片索引器來擷取深入解析，您必須建立帳戶並上傳影片。 當您將影片上傳到影片索引器時，其會執行不同的 AI 模型來分析視覺效果和音訊。 影片索引器會分析您的影片，這是 AI 模型所擷取的深入解析。
+
+當您建立影片索引子帳戶並將它連線至媒體服務時，媒體和中繼資料檔案會儲存在與該媒體服務帳戶相關聯的 Azure 儲存體帳戶中。 如需詳細資訊，請參閱 [建立連線到 Azure 的影片索引子帳戶](connect-to-azure.md)。
 
 下圖是影片索引器如何在後端運作的圖示說明，而非技術說明。
 
@@ -70,8 +72,8 @@ ms.locfileid: "83744613"
 
 ### <a name="audio-insights"></a>音訊見解
 
-* **音訊轉譯**：將語音轉換為 12 種語言的文字，並允許擴充。 支援的語言包括英文、西班牙文、法文、德文、義大利文、國語、日文、阿拉伯文、俄文、葡萄牙文、印度文和韓文。
-* **自動語言偵測**：自動識別主要口說語言。 支援的語言包括英文、西班牙文、法文、德文、義大利文、國語、日文、俄文和葡萄牙文。 如果沒有把握能識別語言，影片索引器就會假設口語為英文。 如需詳細資訊，請參閱[語言識別模型](language-identification-model.md)。
+* **音訊轉譯**：將語音轉換為 12 種語言的文字，並允許擴充。 支援的語言包括英文、西班牙文、法文、德文、義大利文、普通話、日文、阿拉伯文、俄文、葡萄牙文、印度文和韓文。
+* **自動語言偵測**：自動識別主要口說語言。 支援的語言包括英文、西班牙文、法文、德文、義大利文、普通話、日文、俄文和葡萄牙文。 如果沒有把握能識別語言，影片索引器就會假設口語為英文。 如需詳細資訊，請參閱[語言識別模型](language-identification-model.md)。
 * **多語言語音識別和轉譯** (預覽)：自動識別音訊中不同區段的口語。 其會傳送所要轉譯媒體檔案的每個區段，然後將轉譯結果回頭合併為一個整合起來的轉譯。 如需詳細資訊，請參閱[自動識別並轉譯多語言內容](multi-language-identification-transcription.md)。
 * **隱藏式輔助字幕**：建立三種格式的隱藏式輔助字幕：VTT、TTML、SRT。
 * **雙通道處理**：自動偵測分離的文字記錄並合併到單一時間軸。

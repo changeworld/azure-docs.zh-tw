@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 2e2a41f797c6c58597e90ef6bd6e373ab7408a7b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 38c46bdcce64f726b3a7ddf74e0cfd10a14ba663
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182049"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268020"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Kubernetes Azure Stack Edge 裝置上的工作負載管理
 
@@ -47,11 +47,11 @@ ms.locfileid: "89182049"
 
 ![Kubernetes 工作負載部署](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
 
-- **本機部署**：這是透過命令列存取工具 `kubectl` ，例如，可讓您部署 K8 `yamls` 。 您可以使用檔案在您所建立的 Azure Stack Edge 上連接到 K8 叢集 `kubeconfig` 。 如需詳細資訊，請移至透過 [Kubectl 存取 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集。
+- **本機部署**：這是透過命令列存取工具 `kubectl` ，例如，可讓您部署 Kubernetes `yamls` 。 您可以使用檔案在您所建立的 Azure Stack Edge 上連接到 Kubernetes 叢集 `kubeconfig` 。 如需詳細資訊，請移至透過 [Kubectl 存取 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集。
 
-- **IoT Edge 部署**：這是透過連接到 Azure IoT 中樞的 IoT Edge。 您可以透過命名空間連接到 Azure Stack Edge 裝置上的 K8 叢集 `iotedge` 。 部署在此命名空間中的 IoT Edge 代理程式，會負責與 Azure 的連線。 您可以 `IoT Edge deployment.json` 使用 AZURE DEVOPS CI/CD 來套用設定。 命名空間和 IoT Edge 管理是透過雲端操作員進行。
+- **IoT Edge 部署**：這是透過連接到 Azure IoT 中樞的 IoT Edge。 您可以透過命名空間連接到 Azure Stack Edge 裝置上的 Kubernetes 叢集 `iotedge` 。 部署在此命名空間中的 IoT Edge 代理程式，會負責與 Azure 的連線。 您可以 `IoT Edge deployment.json` 使用 AZURE DEVOPS CI/CD 來套用設定。 命名空間和 IoT Edge 管理是透過雲端操作員進行。
 
-- **Azure/Arc 部署**： Azure Arc 是一種混合式管理工具，可讓您在 K8 叢集上部署應用程式。 您可以透過在 Azure Stack Edge 裝置上連接 K8 叢集 `azure-arc namespace` 。 代理程式會部署在此命名空間中，負責與 Azure 的連線。 您可以使用以 Gitops) 將為基礎的設定管理來套用部署設定。 Azure Arc 也可讓您使用 Azure 監視器容器來查看和監視您的叢集。 如需詳細資訊，請移至 [什麼是已啟用 Azure Arc 的 Kubernetes？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)。
+- **Azure/Arc 部署**： Azure Arc 是一種混合式管理工具，可讓您在 Kubernetes 叢集上部署應用程式。 您可以透過在 Azure Stack Edge 裝置上連接 Kubernetes 叢集 `azure-arc namespace` 。 代理程式會部署在此命名空間中，負責與 Azure 的連線。 您可以使用以 Gitops) 將為基礎的設定管理來套用部署設定。 Azure Arc 也可讓您使用 Azure 監視器容器來查看和監視您的叢集。 如需詳細資訊，請移至 [什麼是已啟用 Azure Arc 的 Kubernetes？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)。
 
 ## <a name="choose-the-deployment-type"></a>選擇部署類型
 

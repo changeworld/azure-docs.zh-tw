@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/31/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fd7ce0229d5e26bc4bf3b05f7b97d20d2a23dff
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 887bc083a35a065c4b54590c284bfbc794da18e5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927193"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267814"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 新增功能的封存檔
 
@@ -33,7 +33,120 @@ ms.locfileid: "87927193"
 - 方案變更
 
 ---
+ ## <a name="february-2020"></a>2020 年 2 月
+
+### <a name="upcoming-changes-to-custom-controls"></a>自訂控制項即將進行的變更
+
+**類型：** 方案變更  
+**服務類別：** Mfa  
+**產品功能：** 身分識別安全性 & 保護
  
+我們打算將目前的自訂控制項預覽取代為可讓合作夥伴提供的驗證功能與 Azure Active Directory 系統管理員和終端使用者體驗緊密搭配運作的方法。 目前，合作夥伴 MFA 解決方案面臨下列限制：它們只會在輸入密碼之後運作;在其他重要情況下，它們不會做為 MFA 以進行逐步驗證;而且它們不會與終端使用者或系統管理認證管理功能整合。 新的實施可讓合作夥伴提供的驗證因素與主要案例的內建因素一起運作，包括註冊、使用方式、MFA 宣告、逐步執行驗證、報告和記錄。 
+
+自訂控制項在預覽期間，會隨著新的設計繼續受到支援，直到正式推出為止。 屆時，我們會讓客戶有時間遷移至新的設計。 由於目前方法的限制，我們將不會在新的設計推出之前將新的提供者上線。 我們會與客戶和提供者密切合作，並在我們更深入的時間與時間軸溝通。 [進一步瞭解](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/upcoming-changes-to-custom-controls/ba-p/1144696#)。
+
+---
+
+### <a name="identity-secure-score---mfa-improvement-action-updates"></a>身分識別安全分數-MFA 改進動作更新
+
+**類型：** 方案變更  
+**服務類別：** Mfa  
+**產品功能：** 身分識別安全性 & 保護
+ 
+為了反映企業在套用與企業合作的原則時，必須確保最安全性的需求，Microsoft 安全分數會移除以多重要素驗證為中心的三個改進動作 (MFA) ，並新增兩個。
+
+將會移除下列改進動作：
+
+- 註冊 MFA 的所有使用者
+- 要求所有使用者使用 MFA
+- Azure AD 特殊許可權角色需要 MFA
+
+將會新增下列改進動作：
+
+- 確定所有使用者都可以完成 MFA 以進行安全存取
+- 系統管理角色需要 MFA
+
+這些新的改進動作將需要註冊您的使用者或系統管理員，以在您的目錄中進行 MFA，並建立符合您組織需求的正確原則組。 主要的目標是要有彈性，同時確保所有的使用者和系統管理員都可以使用多個因素或以風險為基礎的身分識別驗證提示進行驗證。 這可能會採用設定安全性預設值的形式，讓 Microsoft 決定何時要挑戰使用者進行 MFA，或有多個原則套用限域決策。 在這些改進動作的更新中，基準保護原則將不會再包含在評分計算中。 [深入瞭解 Microsoft 安全分數即將推出的內容](https://docs.microsoft.com/microsoft-365/security/mtp/microsoft-secure-score-whats-coming?view=o365-worldwide)。
+
+---
+
+### <a name="azure-ad-domain-services-sku-selection"></a>Azure AD Domain Services SKU 選取專案
+
+**類型：** 新功能  
+**服務類別：** Azure AD Domain Services  
+**產品功能：** Azure AD Domain Services
+ 
+我們聽取了意見反應，Azure AD Domain Services 客戶希望能夠更靈活地選取其實例的效能等級。 從2020年2月1日開始，我們從動態模型切換 (，其中 Azure AD 根據自選取模型) 的物件計數來決定效能和定價層。 現在客戶可以選擇符合其環境的效能層級。 這種變更也可讓我們啟用新的案例，例如資源樹系，以及每日備份等 Premium 功能。 所有 Sku 的物件計數現在都沒有限制，但是我們將繼續為每個層提供物件計數建議。
+
+**不需要立即的客戶動作。** 對於現有的客戶而言，在2020年2月1日使用的動態層會決定新的預設層。 這項變更的結果不會影響定價或效能。 未來，Azure AD DS 客戶將需要評估其目錄大小和工作負載特性變更的效能需求。 在服務層級之間切換將會繼續成為無停機作業，而且我們不會再根據其目錄的成長，自動將客戶移至新的層級。 此外，也不會增加價格，而且新的定價會與我們目前的計費模型相符。 如需詳細資訊，請參閱 [AZURE AD DS sku 檔](https://docs.microsoft.com/azure/active-directory-domain-services/administration-concepts#azure-ad-ds-skus) 和 [Azure AD Domain Services 定價頁面](https://azure.microsoft.com/pricing/details/active-directory-ds/)。
+
+---
+ 
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2020"></a>Azure AD App 資源庫中可用的新同盟應用程式-2020 年2月
+
+**類型：** 新功能  
+**服務類別：** 企業應用程式  
+**產品功能：** 協力廠商整合
+ 
+在2020年2月，我們已將具有同盟支援的這31個新應用程式新增至應用程式庫： 
+
+[IamIP 專利平臺](https://docs.microsoft.com/azure/active-directory/saas-apps/iamip-patent-platform-tutorial)、[體驗雲端](https://docs.microsoft.com/azure/active-directory/saas-apps/experience-cloud-tutorial)、 [NS1 SSO For Azure](https://docs.microsoft.com/azure/active-directory/saas-apps/ns1-sso-azure-tutorial)、 [Barracuda 電子郵件安全性服務](https://ess.barracudanetworks.com/sso/azure)、 [ABa 報告](https://myaba.co.uk/client-access/signin/auth/msad)，[以防危機-線上入口網站](https://docs.microsoft.com/azure/active-directory/saas-apps/in-case-of-crisis-online-portal-tutorial)、 [BIC 雲端設計](https://docs.microsoft.com/azure/active-directory/saas-apps/bic-cloud-design-tutorial)、 [Beekeeper Azure AD Data Connector](https://docs.microsoft.com/azure/active-directory/saas-apps/beekeeper-azure-ad-data-connector-tutorial)、 [Korn Ferry 評](https://www.kornferry.com/solutions/kf-digital/kf-assess)量、 [verkada command 命令](https://docs.microsoft.com/azure/active-directory/saas-apps/verkada-command-tutorial)、 [Splashtop](https://docs.microsoft.com/azure/active-directory/saas-apps/splashtop-tutorial)、 [Syxsense](https://docs.microsoft.com/azure/active-directory/saas-apps/syxsense-tutorial)、 [eab navigate 導覽](https://docs.microsoft.com/azure/active-directory/saas-apps/eab-navigate-tutorial) [、Relic ](https://docs.microsoft.com/azure/active-directory/saas-apps/new-relic-limited-release-tutorial)、票證管理員[、團隊](https://docs.microsoft.com/azure/active-directory/saas-apps/ticketmanager-tutorial)的[範本選擇器、](https://links.officeatwork.com/templatechooser-download-teams) [Thulium、](https://admin.thulium.com/login/instance) [Health](https://www.beesy.me/index.php/site/login)Support [System、Beesy](https://docs.microsoft.com/azure/active-directory/saas-apps/health-support-system-tutorial)、 [Hive](https://app.mural.co/signup)、 [>mural.ly](https://docs.microsoft.com/azure/active-directory/saas-apps/hive-tutorial)、 [LavaDo](https://appsource.microsoft.com/product/web-apps/lavaloon.lavado_standard?tab=Overview)、Wakelet Firmex、 [Wakelet](https://wakelet.com/login) [VDR](https://docs.microsoft.com/azure/active-directory/saas-apps/firmex-vdr-tutorial)、 [ThingLink](https://www.thinglink.com/))  (、NearpodApp、 [WEDO、InvitePeople](https://docs.microsoft.com/azure/active-directory/saas-apps/wedo-tutorial)、Reprints、、 [、](https://nearpod.com/signup/?oc=Microsoft&utm_campaign=Microsoft&utm_medium=site&utm_source=product) [、](https://invitepeople.com/login)、[服務台-文章 Galaxy](https://docs.microsoft.com/azure/active-directory/saas-apps/reprints-desk-article-galaxy-tutorial)、 [TeamViewer](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-tutorial) [Coda](https://docs.microsoft.com/azure/active-directory/saas-apps/coda-tutorial)
+
+ 
+如需應用程式的詳細資訊，請參閱[與 Azure Active Directory 整合的 SaaS 應用程式](https://aka.ms/appstutorial)。 如需在 Azure AD 應用程式庫中列出應用程式的詳細資訊，請參閱[在 Azure Active Directory 應用程式庫中列出您的應用程式](https://aka.ms/azureadapprequest)。
+
+---
+ 
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---february-2020"></a>Azure AD 應用程式資源庫中的新布建連接器-2020 年2月
+
+**類型：** 新功能  
+**服務類別：** 企業應用程式  
+**產品功能：** 協力廠商整合
+ 
+您現在可以為這些新整合的應用程式，自動建立、更新和刪除使用者帳戶：
+
+- [Mixpanel](https://docs.microsoft.com/azure/active-directory/saas-apps/mixpanel-provisioning-tutorial)
+- [TeamViewer](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-provisioning-tutorial)
+- [Azure Databricks](https://docs.microsoft.com/azure/active-directory/saas-apps/azure-databricks-scim-connector-provisioning-tutorial)
+- [PureCloud by Genesys](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-provisioning-tutorial)
+- [Zapier](https://docs.microsoft.com/azure/active-directory/saas-apps/zapier-provisioning-tutorial)
+
+如需如何使用自動化使用者帳戶佈建來加強組織安全性的詳細資訊，請參閱[使用 Azure AD 自動將使用者佈建至 SaaS 應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
+
+---
+ 
+### <a name="azure-ad-support-for-fido2-security-keys-in-hybrid-environments"></a>Azure AD 在混合式環境中 FIDO2 安全性金鑰的支援
+
+**類型：** 新功能  
+**服務類別：** 驗證 (登入)  
+**產品功能：** 使用者驗證
+ 
+我們宣佈 Azure AD 支援在混合式環境中 FIDO2 安全性金鑰的公開預覽。 使用者現在可以使用 FIDO2 安全性金鑰來登入其混合式 Azure AD 聯結 Windows 10 裝置，並取得其內部部署和雲端資源的順暢登入。 混合式環境的支援是無密碼客戶最常要求的功能，因為我們最初在已加入 Azure AD 的裝置上啟動了 FIDO2 支援的公開預覽。 使用生物識別和公開/私密金鑰加密等先進技術進行無密碼驗證，可在安全的同時提供便利性與易用性。 在此公開預覽版本中，您現在可以使用 FIDO2 安全性金鑰之類的新式驗證來存取傳統 Active Directory 資源。 如需詳細資訊，請移至 [內部部署資源的 SSO](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises)。 
+
+若要開始使用，請造訪針對 [您的租使用者啟用 FIDO2 安全性金鑰](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key) 以取得逐步指示。 
+
+---
+ 
+### <a name="the-new-my-account-experience-is-now-generally-available"></a>新的我的帳戶體驗現已正式推出
+
+**類型：** 已變更的功能  
+**服務類別：** 我的設定檔/帳戶  
+**產品功能：** 終端使用者體驗
+ 
+我的帳戶已正式推出，這是一個停止的使用者帳戶管理需求，現在已正式運作！ 終端使用者可以透過 URL 或新我的應用程式體驗的標頭來存取這個新網站。 若要深入瞭解新體驗所提供的所有自助功能，請參閱 [我的帳戶入口網站總覽](https://docs.microsoft.com/azure/active-directory/user-help/my-account-portal-overview)。
+
+---
+ 
+### <a name="my-account-site-url-updating-to-myaccountmicrosoftcom"></a>我的帳戶網站 URL 更新至 myaccount.microsoft.com
+
+**類型：** 已變更的功能  
+**服務類別：** 我的設定檔/帳戶  
+**產品功能：** 終端使用者體驗
+ 
+新的我的帳戶終端使用者體驗將會 `https://myaccount.microsoft.com` 在下個月更新其 URL。 在 [我的帳戶入口網站](https://docs.microsoft.com/azure/active-directory/user-help/my-account-portal-overview)說明中尋找其提供給終端使用者的體驗和所有帳戶自助功能的詳細資訊。
+
+---
+
 ## <a name="january-2020"></a>2020 年 1 月
  
 ### <a name="the-new-my-apps-portal-is-now-generally-available"></a>新的我的應用程式入口網站現已正式推出
@@ -42,7 +155,7 @@ ms.locfileid: "87927193"
 **服務類別：** 我的應用程式  
 **產品功能：** 終端使用者體驗
  
-將您的組織升級至現已正式推出的新我的應用程式入口網站！ 在[我的應用程式入口網站上的建立集合中](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections)，尋找新入口網站和集合的詳細資訊。
+將您的組織升級至新的我的應用程式入口網站，此入口網站現已正式推出！ 在 [我的應用程式入口網站上的建立集合](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections)中，尋找新入口網站和集合的詳細資訊。
 
 ---
  
@@ -52,17 +165,17 @@ ms.locfileid: "87927193"
 **服務類別：** 我的應用程式   
 **產品功能：** 終端使用者體驗
  
-工作區是系統管理員可以設定來組織其使用者應用程式的篩選器，現在稱為「集合」。 在[我的應用程式入口網站上的 [建立集合](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections)] 中，尋找如何設定它們的詳細資訊。
+工作區（系統管理員可以設定的篩選器可以設定來組織使用者的應用程式）現在稱為「集合」（collection）。 在我的應用程式入口網站中，尋找有關如何在 [建立集合上](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections)進行設定的詳細資訊。
 
 ---
  
-### <a name="azure-ad-b2c-phone-sign-up-and-sign-in-using-custom-policy-public-preview"></a>使用自訂原則 Azure AD B2C 手機註冊和登入 (公開預覽) 
+### <a name="azure-ad-b2c-phone-sign-up-and-sign-in-using-custom-policy-public-preview"></a>使用自訂原則的 Azure AD B2C 電話註冊和登入 (公開預覽) 
 
 **類型：** 新功能  
 **服務類別：** B2C - 取用者身分識別管理  
 **產品功能：** B2B/B2C
  
-有了電話號碼註冊和登入，開發人員和企業可以讓他們的客戶使用透過 SMS 傳送到使用者電話號碼的一次性密碼來註冊和登入。 這項功能也可讓客戶在無法存取其電話時變更其電話號碼。 藉由自訂原則的威力，電話註冊和登入可讓開發人員和企業透過頁面自訂來傳達其品牌。 瞭解如何[使用 Azure AD B2C 中的自訂原則來設定電話註冊和登入](https://docs.microsoft.com/azure/active-directory-b2c/phone-authentication)。
+透過電話號碼註冊和登入，開發人員和企業可讓客戶使用透過 SMS 傳送給使用者電話號碼的一次性密碼來註冊和登入。 這項功能也可讓客戶在無法存取電話時變更其電話號碼。 透過自訂原則的強大功能，電話註冊與登入可讓開發人員和企業透過網頁自訂來傳達其品牌。 瞭解如何 [使用 Azure AD B2C 中的自訂原則來設定電話註冊和登入](https://docs.microsoft.com/azure/active-directory-b2c/phone-authentication)。
  
 ---
  
@@ -87,9 +200,9 @@ ms.locfileid: "87927193"
 **服務類別：** 企業應用程式  
 **產品功能：** 協力廠商整合
  
-在2020年1月，我們已將這些33新的應用程式與同盟支援新增至應用程式庫： 
+在2020年1月，我們已將這些具有同盟支援的33新應用程式新增至應用程式庫： 
 
-[JOSA](https://docs.microsoft.com/azure/active-directory/saas-apps/josa-tutorial)、 [Fastly Edge Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/fastly-edge-cloud-tutorial)、 [Terraform Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/terraform-enterprise-tutorial)、 [Spintr SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/spintr-sso-tutorial)、 [Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik)、 [SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access)、 [Upshotly](https://docs.microsoft.com/azure/active-directory/saas-apps/upshotly-tutorial)、 [LeaveBot](https://leavebot.io/#home)、 [DataCamp](https://docs.microsoft.com/azure/active-directory/saas-apps/datacamp-tutorial)、 [TripActions](https://docs.microsoft.com/azure/active-directory/saas-apps/tripactions-tutorial)、 [SmartWork、Dotcom](https://www.intumit.com/english/SmartWork.html) [-Monitor](https://docs.microsoft.com/azure/active-directory/saas-apps/dotcom-monitor-tutorial)、 [SSOGEN-Azure AD 適用于 Oracle 電子商務套件的 SSO 閘道-EBS、PeopleSoft 和 JDE](https://docs.microsoft.com/azure/active-directory/saas-apps/ssogen-tutorial)、 [Hosted MyCirqa SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/hosted-mycirqa-sso-tutorial)、 [Yuhu 內容管理平臺](https://docs.microsoft.com/azure/active-directory/saas-apps/yuhu-property-management-platform-tutorial)、 [LumApps](https://sites.lumapps.com/login)、 [Upwork Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/upwork-enterprise-tutorial)、 [Talentsoft](https://docs.microsoft.com/azure/active-directory/saas-apps/talentsoft-tutorial)、 [SmartDB for Microsoft 小組](http://teams.smartdb.jp/login/)、 [PressPage](https://docs.microsoft.com/azure/active-directory/saas-apps/presspage-tutorial)、 [ContractSafe Saml2 SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/contractsafe-saml2-sso-tutorial)、 [Maxient 籌辦經理軟體](https://docs.microsoft.com/azure/active-directory/saas-apps/maxient-conduct-manager-software-tutorial)、 [Helpshift](https://docs.microsoft.com/azure/active-directory/saas-apps/helpshift-tutorial)、PortalTalk [365](https://www.portaltalk.com/)、 [CoreView](https://portal.coreview.com/)、[隱藏 Cloud Office365 Connector](https://laxmi.squelch.io/login)、 [PingFlow Authentication](https://app-staging.pingview.io/)、PrinterLogic [SaaS](https://docs.microsoft.com/azure/active-directory/saas-apps/printerlogic-saas-tutorial)、Taskize [Connect](https://docs.microsoft.com/azure/active-directory/saas-apps/taskize-connect-tutorial)、 [Sandwai](https://app.sandwai.com/)、EZRentOut [、AssetSonar、Akari](https://docs.microsoft.com/azure/active-directory/saas-apps/assetsonar-tutorial) [Virtual Assistant](https://akari.io/akari-virtual-assistant/) [EZRentOut](https://docs.microsoft.com/azure/active-directory/saas-apps/ezrentout-tutorial)
+[JOSA](https://docs.microsoft.com/azure/active-directory/saas-apps/josa-tutorial)、 [Fastly Edge Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/fastly-edge-cloud-tutorial)、 [Terraform Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/terraform-enterprise-tutorial)、 [Spintr SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/spintr-sso-tutorial)、 [Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik)、 [SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access)、 [Upshotly](https://docs.microsoft.com/azure/active-directory/saas-apps/upshotly-tutorial)、 [LeaveBot](https://leavebot.io/#home)、 [DataCamp](https://docs.microsoft.com/azure/active-directory/saas-apps/datacamp-tutorial)、 [TripActions](https://docs.microsoft.com/azure/active-directory/saas-apps/tripactions-tutorial)、 [SmartWork](https://www.intumit.com/english/SmartWork.html)、>DOTCOM-MONITOR、SSOGEN、、、 [-監視器](https://docs.microsoft.com/azure/active-directory/saas-apps/dotcom-monitor-tutorial)、 [-Azure AD 適用于 Oracle 電子商務套件的 SSO 閘道-EBS、PeopleSoft 和 JDE](https://docs.microsoft.com/azure/active-directory/saas-apps/ssogen-tutorial)、 [Hosted MyCirqa SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/hosted-mycirqa-sso-tutorial)、 [yuhu 資產 Property Management Platform](https://docs.microsoft.com/azure/active-directory/saas-apps/yuhu-property-management-platform-tutorial)、 [LumApps](https://sites.lumapps.com/login)、 [Upwork Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/upwork-enterprise-tutorial)、 [Talentsoft](https://docs.microsoft.com/azure/active-directory/saas-apps/talentsoft-tutorial)、 [SmartDB for Microsoft 小組](http://teams.smartdb.jp/login/)、 [PressPage](https://docs.microsoft.com/azure/active-directory/saas-apps/presspage-tutorial)、 [ContractSafe Saml2 SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/contractsafe-saml2-sso-tutorial)、 [maxient conduct 籌辦 Manager Software](https://docs.microsoft.com/azure/active-directory/saas-apps/maxient-conduct-manager-software-tutorial)、 [Helpshift](https://docs.microsoft.com/azure/active-directory/saas-apps/helpshift-tutorial)、 [PortalTalk 365](https://www.portaltalk.com/) [、CoreView、隱藏](https://portal.coreview.com/) [Cloud Office365 Connector](https://laxmi.squelch.io/login)、 [PingFlow Authentication](https://app-staging.pingview.io/)、PrinterLogic [SaaS](https://docs.microsoft.com/azure/active-directory/saas-apps/printerlogic-saas-tutorial)、 [Taskize Connect](https://docs.microsoft.com/azure/active-directory/saas-apps/taskize-connect-tutorial)、 [Sandwai](https://app.sandwai.com/) [、EZRentOut、AssetSonar](https://docs.microsoft.com/azure/active-directory/saas-apps/ezrentout-tutorial) [、Akari](https://docs.microsoft.com/azure/active-directory/saas-apps/assetsonar-tutorial)[虛擬助理](https://akari.io/akari-virtual-assistant/)
 
 如需應用程式的詳細資訊，請參閱[與 Azure Active Directory 整合的 SaaS 應用程式](https://aka.ms/appstutorial)。 如需在 Azure AD 應用程式庫中列出應用程式的詳細資訊，請參閱[在 Azure Active Directory 應用程式庫中列出您的應用程式](https://aka.ms/azureadapprequest)。
 
@@ -101,17 +214,18 @@ ms.locfileid: "87927193"
 **服務類別：** 身分識別保護  
 **產品功能：** 身分識別安全性 & 保護
  
-我們已將兩個新的登入連結偵測類型新增至 Identity Protection：可疑的收件匣操作規則和不可能的移動。 這些離線偵測是由 Microsoft Cloud App Security (MCAS) 探索，並會影響使用者和登入身分識別保護中的風險。 如需這些偵測的詳細資訊，請參閱我們的登[入風險類型](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks#sign-in-risk)。
+我們已將兩個新的登入連結偵測類型新增至 Identity Protection：可疑的收件匣操作規則和不可能的移動。 這些離線偵測是由 Microsoft Cloud App Security (MCAS) 探索，並會影響身分識別保護中的使用者和登入風險。 如需這些偵測的詳細資訊，請參閱我們的登 [入風險類型](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks#sign-in-risk)。
  
 ---
  
-### <a name="breaking-change-uri-fragments-will-not-be-carried-through-the-login-redirect"></a>中斷性變更：不會透過登入重新導向來執行 URI 片段
+### <a name="breaking-change-uri-fragments-will-not-be-carried-through-the-login-redirect"></a>重大變更：不會透過登入重新導向來傳送 URI 片段
 
 **類型：** 已變更的功能  
 **服務類別：** 驗證 (登入)  
 **產品功能：** 使用者驗證
  
-<a name="starting-on-february-8-2020-when-a-request-is-sent-to-loginmicrosoftonlinecom-to-sign-in-a-user-the-service-will-append-an-empty-fragment-to-the-request--this-prevents-a-class-of-redirect-attacks-by-ensuring-that-the-browser-wipes-out-any-existing-fragment-in-the-request-no-application-should-have-a-dependency-on-this-behavior-for-more-information-see-breaking-changes-in-the-microsoft-identity-platform-documentation"></a>從2020年2月8日開始，當要求傳送至 login.microsoftonline.com 以登入使用者時，服務會將空的片段附加至要求。  這可確保瀏覽器抹除要求中任何現有的片段，藉此防止重新導向攻擊的類別。 應用程式不應該依賴此行為。 如需詳細資訊，請參閱 Microsoft 身分識別平臺檔中的[重大變更](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#february-2020)。
+從2020年2月8日開始，當要求傳送至 login.microsoftonline.com 以登入使用者時，服務會將空的片段附加至要求。  這可確保瀏覽器清除要求中的任何現有片段，以防止重新導向攻擊的類別。 沒有任何應用程式應該相依于這項行為。 如需詳細資訊，請參閱 Microsoft 身分識別平臺檔中的 [重大變更](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#february-2020) 。
+
 ---
 
 ## <a name="december-2019"></a>2019 年 12 月
@@ -122,21 +236,21 @@ ms.locfileid: "87927193"
 **服務類別：** 應用程式佈建  
 **產品功能：** 身分識別生命週期管理
 
-您現在可以將 SAP SuccessFactors 整合為 Azure AD 中的授權身分識別來源。 這項整合可協助您自動化端對端身分識別生命週期，包括使用 HR 事件（例如新進員工或終止）來控制 Azure AD 帳戶的布建。
+您現在可以在 Azure AD 中，將 SAP SuccessFactors 整合為授權身分識別來源。 這項整合可協助您自動化端對端身分識別生命週期，包括使用以 HR 為基礎的事件（例如新進員工或終止）來控制 Azure AD 帳戶的布建。
 
-如需有關如何設定 SAP SuccessFactors 輸入布建至 Azure AD 的詳細資訊，請參閱設定[Sap SuccessFactors 自動](https://aka.ms/SAPSuccessFactorsInboundTutorial)布建教學課程。
+如需有關如何設定 SAP SuccessFactors 輸入布建至 Azure AD 的詳細資訊，請參閱設定 [Sap SuccessFactors 自動](https://aka.ms/SAPSuccessFactorsInboundTutorial) 布建教學課程。
 
 ---
 
-### <a name="support-for-customized-emails-in-azure-ad-b2c-public-preview"></a>支援 Azure AD B2C (公開預覽中的自訂電子郵件) 
+### <a name="support-for-customized-emails-in-azure-ad-b2c-public-preview"></a>Azure AD B2C (公開預覽版中的自訂電子郵件支援) 
 
 **類型：** 新功能  
 **服務類別：** B2C - 取用者身分識別管理  
 **產品功能：** B2B/B2C
 
-當您的使用者註冊使用您的應用程式時，您現在可以使用 Azure AD B2C 來建立自訂的電子郵件。 藉由使用預覽) 的 DisplayControls (和協力廠商電子郵件提供者 (例如、 [SendGrid](https://sendgrid.com/)、 [SparkPost](https://sparkpost.com/)或自訂 REST API) ，您可以使用**自己的電子郵件範本、位址**和主旨文字，以及支援當地語系化和自訂的一次性密碼 (OTP) 設定。
+您現在可以在使用者註冊使用您的應用程式時，使用 Azure AD B2C 建立自訂的電子郵件。 藉由使用 DisplayControls 目前為預覽狀態的 () 和協力廠商電子郵件提供者 (例如， [SendGrid](https://sendgrid.com/)、 [SparkPost](https://sparkpost.com/)或自訂 REST API) ，您可以使用自己的電子郵件範本、 **發件** 人位址和主旨文字，以及支援當地語系化和自訂單次密碼 (OTP) 設定。
 
-如需詳細資訊，請參閱[Azure Active Directory B2C 中的自訂電子郵件驗證](https://docs.microsoft.com/azure/active-directory-b2c/custom-email)。
+如需詳細資訊，請參閱 [Azure Active Directory B2C 中的自訂電子郵件驗證](https://docs.microsoft.com/azure/active-directory-b2c/custom-email)。
 
 ---
 
@@ -146,91 +260,91 @@ ms.locfileid: "87927193"
 **服務類別：** 其他  
 **產品功能：** 身分識別安全性與保護
 
-做為驗證的安全預設模型的一部分，我們會從所有租使用者中移除現有的基準保護原則。 這項移除作業的目標是在2月底結束時完成。 這些基準保護原則的取代是安全性預設值。 如果您已使用基準保護原則，您必須規劃移至新的安全性預設原則或條件式存取。 如果您尚未使用這些原則，則不需要採取任何動作。
+為了進行驗證，我們會從所有租使用者中移除現有的基準保護原則，以作為驗證的預設模型。 這項移除的目標是在2月底結束時完成。 這些基準保護原則的取代為安全性預設值。 如果您已經使用基準保護原則，您必須規劃移至新的安全性預設原則或條件式存取。 如果您尚未使用這些原則，則不需要採取任何動作。
 
-如需新安全性預設值的詳細資訊，請參閱[什麼是安全性預設值？](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) 如需條件式存取原則的詳細資訊，請參閱[常見的條件式存取原則](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)。
+如需新安全性預設值的詳細資訊，請參閱 [什麼是安全性預設值？](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) 如需條件式存取原則的詳細資訊，請參閱 [常見的條件式存取原則](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)。
 
 ---
 
 ## <a name="november-2019"></a>2019 年 11 月
 
-### <a name="support-for-the-samesite-attribute-and-chrome-80"></a>支援 SameSite 屬性和 Chrome 80
+### <a name="support-for-the-samesite-attribute-and-chrome-80"></a>SameSite 屬性和 Chrome 80 的支援
 
 **類型：** 方案變更  
 **服務類別：** 驗證 (登入)  
 **產品功能：** 使用者驗證
 
-作為 cookie 的安全預設模型的一部分，Chrome 80 瀏覽器會變更其處理 cookie 的方式，而不需要 `SameSite` 屬性。 任何未指定屬性的 cookie `SameSite` 都會被視為設定為 `SameSite=Lax` ，這會導致 Chrome 封鎖您的應用程式可能相依的某些跨網域 cookie 共用案例。 若要維護較舊的 Chrome 行為，您可以使用 `SameSite=None` 屬性並新增額外的 `Secure` 屬性，因此跨網站 cookie 只能透過 HTTPS 連線來存取。 Chrome 已排程于2020年2月4日完成這項變更。
+作為 cookie 的預設預設模型的一部分，Chrome 80 瀏覽器會變更其處理 cookie 的方式（沒有 `SameSite` 屬性）。 未指定屬性的任何 cookie `SameSite` 都會被視為設定為 `SameSite=Lax` ，因此會導致 Chrome 封鎖您的應用程式可能相依的某些跨網域 cookie 共用案例。 若要維護較舊的 Chrome 行為，您可以使用 `SameSite=None` 屬性並新增其他 `Secure` 屬性，因此只能透過 HTTPS 連線存取跨網站 cookie。 Chrome 已排程在2020年2月4日之前完成這項變更。
 
-我們建議所有開發人員使用此指引來測試其應用程式：
+我們建議所有開發人員使用下列指導方針測試其應用程式：
 
-- 將 [**使用安全 Cookie** ] 設定的預設值設定為 **[是]**。
+- 將 [ **使用安全 Cookie** ] 設定的預設值設定為 **[是]**。
 
-- 將 [ **SameSite** ] 屬性的預設值設定為 [**無**]。
+- 將 [ **SameSite** ] 屬性的預設值設定為 [ **無**]。
 
-- 新增另一個 [ `SameSite` **安全**] 屬性。
+- 新增 `SameSite` **安全**的其他屬性。
 
-如需詳細資訊，請參閱[ASP.NET 和 ASP.NET Core 即將推出的 SameSite Cookie 變更](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)，以及[Chrome 79 版和更新版本中客戶網站和 Microsoft 產品和服務的潛在中斷情形](https://support.microsoft.com/help/4522904/potential-disruption-to-microsoft-services-in-chrome-beta-version-79)。
+如需詳細資訊，請參閱 [ASP.NET 和 ASP.NET Core 中即將推出的 SameSite Cookie 變更](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/) ，以及 [Chrome 79 版和更新版本中客戶網站與 Microsoft 產品和服務的潛在中斷情形](https://support.microsoft.com/help/4522904/potential-disruption-to-microsoft-services-in-chrome-beta-version-79)。
 
 ---
 
-### <a name="new-hotfix-for-microsoft-identity-manager-mim-2016-service-pack-2-sp2"></a>適用于 Microsoft Identity Manager (MIM) 2016 Service Pack 2 (SP2) 的新修補程式
+### <a name="new-hotfix-for-microsoft-identity-manager-mim-2016-service-pack-2-sp2"></a>Microsoft Identity Manager (MIM) 2016 Service Pack 2 (SP2) 的新修正程式
 
 **類型：** 固定  
 **服務類別：** Microsoft Identity Manager  
 **產品功能：** 身分識別生命週期管理
 
- (組建 4.6.34.0) 的修補匯總套件適用于 Microsoft Identity Manager (MIM) 2016 Service Pack 2 (SP2) 。 此匯總套件會解決問題，並新增「此更新中新增的問題已修正」一節中所述的改良功能。
+ (build 4.6.34.0) 的修正程式匯總套件適用于 Microsoft Identity Manager (MIM) 2016 Service Pack 2 (SP2) 。 此匯總套件會解決問題，並新增「在此更新中新增的問題和改進」一節中所述的增強功能。
 
-如需詳細資訊及下載此修補套件，請參閱[Microsoft Identity Manager 2016 Service Pack 2 (組建 4.6.34.0) 更新彙總套件](https://support.microsoft.com/help/4512924/microsoft-identity-manager-2016-service-pack-2-build-4-6-34-0-update-r)。
+如需詳細資訊及下載此修補程式套件，請參閱 [Microsoft Identity Manager 2016 Service Pack 2 (組建 4.6.34.0) 更新彙總套件](https://support.microsoft.com/help/4512924/microsoft-identity-manager-2016-service-pack-2-build-4-6-34-0-update-r)。
 
 ---
 
-### <a name="new-ad-fs-app-activity-report-to-help-migrate-apps-to-azure-ad-public-preview"></a>新的 AD FS 應用程式活動報表，可協助您將應用程式遷移至 Azure AD (公開預覽) 
+### <a name="new-ad-fs-app-activity-report-to-help-migrate-apps-to-azure-ad-public-preview"></a>新的 AD FS 應用程式活動報告，協助您將應用程式遷移至 Azure AD (公開預覽) 
 
 **類型：** 新功能  
 **服務類別：** 企業應用程式  
 **產品功能：** SSO
 
-在 Azure 入口網站中使用新的 Active Directory 同盟服務 (AD FS) 應用程式活動報告，以識別哪些應用程式能夠遷移至 Azure AD。 此報表會評估所有 AD FS 應用程式，以與 Azure AD 相容、檢查是否有任何問題，並提供有關準備個別應用程式以進行遷移的指引。
+使用 Azure 入口網站中的新 Active Directory 同盟服務 (AD FS) 應用程式活動報告，找出哪些應用程式可以遷移至 Azure AD。 報表會評估所有 AD FS 應用程式的相容性 Azure AD、檢查是否有任何問題，並提供準備個別應用程式以進行遷移的指引。
 
-如需詳細資訊，請參閱[使用 AD FS 應用程式活動報告將應用程式遷移至 Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-application-activity)。
+如需詳細資訊，請參閱 [使用 AD FS 應用程式活動報表，將應用程式遷移至 Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-application-activity)。
 
 ---
 
-### <a name="new-workflow-for-users-to-request-administrator-consent-public-preview"></a>新的工作流程，讓使用者要求系統管理員同意 (公開預覽) 
+### <a name="new-workflow-for-users-to-request-administrator-consent-public-preview"></a>新的工作流程，可讓使用者要求系統管理員同意 (公開預覽) 
 
 **類型：** 新功能  
 **服務類別：** 企業應用程式  
 **產品功能：** 存取控制
 
-新的系統管理員同意工作流程可讓系統管理員將存取權授與需要系統管理員核准的應用程式。 如果使用者嘗試存取應用程式，但無法提供同意，他們現在可以傳送要求以進行系統管理員核准。 要求是透過電子郵件傳送，放在可從 Azure 入口網站存取的佇列中，到已指定為審核者的所有系統管理員。 當審查者對暫止的要求採取動作之後，要求的使用者會收到動作的通知。
+新的系統管理員同意工作流程可讓系統管理員將存取權授與需要系統管理員核准的應用程式。 如果使用者嘗試存取應用程式，但無法提供同意，他們現在可以傳送要求以進行系統管理員核准。 要求會透過電子郵件傳送，並放在可從 Azure 入口網站存取的佇列中，指派給所有已被指定為審核者的系統管理員。 在審核者對暫止的要求採取動作之後，要求的使用者會收到動作的通知。
 
-如需詳細資訊，請參閱[設定系統管理員同意工作流程 (預覽) ](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)。
+如需詳細資訊，請參閱 [設定管理員同意工作流程 (預覽) ](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)。
 
 ---
 
-### <a name="new-azure-ad-app-registrations-token-configuration-experience-for-managing-optional-claims-public-preview"></a>新的 Azure AD App 註冊權杖設定體驗，用於管理選擇性宣告 (公開預覽) 
+### <a name="new-azure-ad-app-registrations-token-configuration-experience-for-managing-optional-claims-public-preview"></a>新的 Azure AD App 註冊權杖設定體驗，以管理選擇性宣告 (公開預覽) 
 
 **類型：** 新功能  
 **服務類別：** 其他  
 **產品功能：** 開發人員體驗
 
-Azure 入口網站上新的**Azure AD App 註冊權杖**設定] 分頁現在會向應用程式開發人員顯示其應用程式選擇性宣告的動態清單。 這種新體驗有助於簡化 Azure AD 的應用程式遷移，並將選擇性的宣告錯誤錯誤降至最低。
+Azure 入口網站上新的 **Azure AD App 註冊權杖** 設定分頁現在會為應用程式開發人員顯示其應用程式的選擇性宣告動態清單。 這種新體驗有助於簡化 Azure AD 應用程式的遷移，並將選擇性的宣告錯誤配置降至最低。
 
-如需詳細資訊，請參閱為[您的 Azure AD 應用程式提供選擇性宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)。
+如需詳細資訊，請參閱為 [您的 Azure AD 應用程式提供選擇性宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)。
 
 ---
 
-### <a name="new-two-stage-approval-workflow-in-azure-ad-entitlement-management-public-preview"></a>Azure AD 權利管理 (公開預覽中的新兩階段核准工作流程) 
+### <a name="new-two-stage-approval-workflow-in-azure-ad-entitlement-management-public-preview"></a>Azure AD 權利管理中的新兩階段核准工作流程 (公開預覽) 
 
 **類型：** 新功能  
 **服務類別：** 其他  
 **產品功能：** 權利管理
 
-我們引進了新的兩階段核准工作流程，可讓您要求兩個核准者核准使用者對存取套件的要求。 例如，您可以設定它，要求使用者的管理員必須先核准，然後您也可以要求資源擁有者核准。 如果其中一個核准者未核准，則不會授與存取權。
+我們引進了新的兩階段核准工作流程，可讓您要求兩個核准者核准使用者對存取套件的要求。 例如，您可以將它設定為要求使用者的管理員必須先核准，然後您也可以要求資源擁有者進行核准。 如果其中一個核准者未核准，則不會授與存取權。
 
-如需詳細資訊，請參閱[Azure AD 權利管理中的變更存取套件的要求和核准設定](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-request-policy)。
+如需詳細資訊，請參閱 [Azure AD 權利管理中，變更存取套件的要求和核准設定](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-request-policy)。
 
 ---
 
@@ -240,25 +354,25 @@ Azure 入口網站上新的**Azure AD App 註冊權杖**設定] 分頁現在會�
 **服務類別：** 我的應用程式  
 **產品功能：** 協力廠商整合
 
-您現在可以自訂群組織使用者的觀點，並存取重新整理的我的應用程式體驗。 這項新體驗也包含新的工作區功能，可讓您的使用者更輕鬆地尋找及組織應用程式。
+您現在可以自訂群組織的使用者查看和存取重新整理之我的應用程式體驗的方式。 這項新體驗也包含新的工作區功能，可讓您的使用者更輕鬆地尋找和組織應用程式。
 
-如需新我的應用程式體驗和建立工作區的詳細資訊，請參閱在[我的應用程式入口網站上建立工作區](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces)。
+如需新我的應用程式體驗和建立工作區的詳細資訊，請參閱 [我的應用程式入口網站上的建立工作區](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces)。
 
 ---
 
-### <a name="google-social-id-support-for-azure-ad-b2b-collaboration-general-availability"></a>適用于 Azure AD B2B 共同作業 (正式推出) 的 Google 社交識別碼支援
+### <a name="google-social-id-support-for-azure-ad-b2b-collaboration-general-availability"></a>Azure AD B2B 共同作業 (正式推出) 的 Google 社交識別碼支援
 
 **類型：** 新功能  
 **服務類別：** B2B  
 **產品功能：** 使用者驗證
 
-在 Azure AD 中) 使用 Google 社交識別碼 (Gmail 帳戶的新支援，有助於讓您的使用者和合作夥伴更輕鬆地進行共同作業。 您的合作夥伴不再需要建立及管理新的 Microsoft 特定帳戶。 Microsoft 小組現在完全支援所有用戶端上的 Google 使用者，以及跨一般和租使用者相關的驗證端點。
+在 Azure AD 中) 使用 Google 社交識別碼 (Gmail 帳戶的新支援，有助於讓您的使用者和合作夥伴更輕鬆地進行共同作業。 您的合作夥伴不再需要建立及管理新的 Microsoft 特定帳戶。 Microsoft 小組現在完全支援所有用戶端上的 Google 使用者，以及與一般和租使用者相關的驗證端點。
 
-如需詳細資訊，請參閱[將 Google 新增為 B2B 來賓使用者的身分識別提供者](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)。
+如需詳細資訊，請參閱 [將 Google 新增為 B2B 來賓使用者的身分識別提供者](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)。
 
 ---
 
-### <a name="microsoft-edge-mobile-support-for-conditional-access-and-single-sign-on-general-availability"></a>適用于條件式存取和單一登入的 Microsoft Edge 行動支援 (公開上市) 
+### <a name="microsoft-edge-mobile-support-for-conditional-access-and-single-sign-on-general-availability"></a>Microsoft Edge 條件式存取的行動支援和單一登入 (正式推出) 
 
 **類型：** 新功能  
 **服務類別：** 條件式存取  
@@ -266,25 +380,25 @@ Azure 入口網站上新的**Azure AD App 註冊權杖**設定] 分頁現在會�
 
 IOS 和 Android 上的 Microsoft Edge Azure AD 現在支援 Azure AD 單一登入和條件式存取：
 
-- **SSO) 的 Microsoft Edge 單一登入 (：** 單一登入現在可跨原生用戶端 (，例如 Microsoft Outlook 和 Microsoft Edge) 適用于所有 Azure AD 連線的應用程式。
+- **Microsoft Edge 單一登入 (SSO) ：** 單一登入現在可跨原生用戶端使用 (例如 Microsoft Outlook，以及所有 Azure AD 連線應用程式的 Microsoft Edge) 。
 
-- **Microsoft Edge 條件式存取：** 透過以應用程式為基礎的條件式存取原則，您的使用者必須使用受 Microsoft Intune 保護的瀏覽器，例如 Microsoft Edge。
+- **Microsoft Edge 條件式存取：** 透過以應用程式為基礎的條件式存取原則，您的使用者必須使用 Microsoft Intune 保護的瀏覽器，例如 Microsoft Edge。
 
-如需有關使用 Microsoft Edge 的條件式存取和 SSO 的詳細資訊，請參閱[適用于條件式存取的 Microsoft Edge 行動支援和單一登入現已正式](https://techcommunity.microsoft.com/t5/Intune-Customer-Success/Microsoft-Edge-Mobile-Support-for-Conditional-Access-and-Single/ba-p/988179)運作的 blog 文章。 如需有關如何使用以[應用程式為基礎的條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)或[裝置型條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)來設定用戶端應用程式的詳細資訊，請參閱[使用 Microsoft Intune 受原則保護的瀏覽器來管理 web 存取](https://docs.microsoft.com/intune/apps/app-configuration-managed-browser)。
+如需有關條件式存取的詳細資訊，以及搭配 Microsoft Edge 的 SSO，請參閱「條件式存取」的 [Microsoft Edge 行動支援和單一登入現已正式推出](https://techcommunity.microsoft.com/t5/Intune-Customer-Success/Microsoft-Edge-Mobile-Support-for-Conditional-Access-and-Single/ba-p/988179) 的 blog 文章。 如需有關如何使用以 [應用程式為基礎的條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) 或以裝置為 [基礎的條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)來設定用戶端應用程式的詳細資訊，請參閱 [使用 Microsoft Intune 原則保護的瀏覽器管理 web 存取](https://docs.microsoft.com/intune/apps/app-configuration-managed-browser)。
 
 ---
 
-### <a name="azure-ad-entitlement-management-general-availability"></a>Azure AD 權利管理 (公開上市) 
+### <a name="azure-ad-entitlement-management-general-availability"></a>Azure AD 權利管理 (正式推出) 
 
 **類型：** 新功能  
 **服務類別：** 其他  
 **產品功能：** 權利管理
 
-Azure AD 權利管理是新的身分識別治理功能，可協助組織大規模管理身分識別和存取生命週期。 這項新功能可協助您跨群組、應用程式和 SharePoint Online 網站，自動化存取要求工作流程、存取指派、評論和到期。
+Azure AD 權利管理是新的身分識別治理功能，可協助組織大規模管理身分識別和存取生命週期。 這項新功能可讓您跨群組、應用程式和 SharePoint Online 網站自動化存取要求工作流程、存取指派、評論和到期時間。
 
-有了 Azure AD 的權利管理，您可以更有效率地管理員工的存取權，以及您組織外部需要存取這些資源的使用者。
+利用 Azure AD 權利管理，您可以更有效率地管理員工的存取權，以及組織外部需要存取這些資源的使用者。
 
-如需詳細資訊，請參閱[什麼是 Azure AD 權利管理？](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview#license-requirements)
+如需詳細資訊，請參閱 [什麼是 Azure AD 權利管理？](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview#license-requirements)
 
 ---
 
@@ -296,47 +410,47 @@ Azure AD 權利管理是新的身分識別治理功能，可協助組織大規�
 
 您現在可以為這些新整合的應用程式，自動建立、更新和刪除使用者帳戶：
 
-[SAP Cloud Platform Identity Authentication 服務](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial)、 [RingCentral](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-provisioning-tutorial)、 [SpaceIQ](https://docs.microsoft.com/azure/active-directory/saas-apps/spaceiq-provisioning-tutorial)、 [Miro](https://docs.microsoft.com/azure/active-directory/saas-apps/miro-provisioning-tutorial)、 [Cloudgate](https://docs.microsoft.com/azure/active-directory/saas-apps/soloinsight-cloudgate-sso-provisioning-tutorial)、 [Infor CloudSuite](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloudsuite-provisioning-tutorial)、 [officespace software Software](https://docs.microsoft.com/azure/active-directory/saas-apps/officespace-software-provisioning-tutorial)、 [Priority 對照表](https://docs.microsoft.com/azure/active-directory/saas-apps/priority-matrix-provisioning-tutorial)
+[SAP Cloud Platform Identity Authentication Service](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial)、 [RingCentral](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-provisioning-tutorial)、 [SpaceIQ](https://docs.microsoft.com/azure/active-directory/saas-apps/spaceiq-provisioning-tutorial)、 [Miro](https://docs.microsoft.com/azure/active-directory/saas-apps/miro-provisioning-tutorial)、 [Cloudgate](https://docs.microsoft.com/azure/active-directory/saas-apps/soloinsight-cloudgate-sso-provisioning-tutorial)、 [Infor CloudSuite](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloudsuite-provisioning-tutorial)、 [officespace software Software](https://docs.microsoft.com/azure/active-directory/saas-apps/officespace-software-provisioning-tutorial)、 [Priority 對照表](https://docs.microsoft.com/azure/active-directory/saas-apps/priority-matrix-provisioning-tutorial)
 
 如需如何使用自動化使用者帳戶佈建來加強組織安全性的詳細資訊，請參閱[使用 Azure AD 自動將使用者佈建至 SaaS 應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---november-2019"></a>Azure AD App 資源庫中提供的新同盟應用程式-2019 年11月
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---november-2019"></a>Azure AD App 資源庫中可用的新同盟應用程式-2019 年11月
 
 **類型：** 新功能  
 **服務類別：** 企業應用程式  
 **產品功能：** 協力廠商整合
 
-在2019年11月，我們已將這些21個具有同盟支援的新應用程式新增至應用程式庫：
+在2019年11月，我們已將下列21個具有同盟支援的全新應用程式新增至應用程式庫：
 
-[Airtable](https://docs.microsoft.com/azure/active-directory/saas-apps/airtable-tutorial)、 [Hootsuite](https://docs.microsoft.com/azure/active-directory/saas-apps/hootsuite-tutorial)、 [BLUE Access for Members (BAM) ](https://docs.microsoft.com/azure/active-directory/saas-apps/blue-access-for-members-tutorial)、 [Bitly](https://docs.microsoft.com/azure/active-directory/saas-apps/bitly-tutorial)、 [RIVA](https://docs.microsoft.com/azure/active-directory/saas-apps/riva-tutorial)、 [ResLife Portal](https://app.reslifecloud.com/hub5_signin/microsoft_azuread/?g=44BBB1F90915236A97502FF4BE2952CB&c=5&uid=0&ht=2&ref=)、 [NegometrixPortal 單一登入 (SSO) ](https://docs.microsoft.com/azure/active-directory/saas-apps/negometrixportal-tutorial)、 [TeamsChamp](https://login.microsoftonline.com/551f45da-b68e-4498-a7f5-a6e1efaeb41c/adminconsent?client_id=ca9bbfa4-1316-4c0f-a9ee-1248ac27f8ab&redirect_uri=https://admin.teamschamp.com/api/adminconsent&state=6883c143-cb59-42ee-a53a-bdb5faabf279)、 [Motus](https://docs.microsoft.com/azure/active-directory/saas-apps/motus-tutorial)、 [MyAryaka](https://docs.microsoft.com/azure/active-directory/saas-apps/myaryaka-tutorial)、BlueMail [、](https://loginself1.bluemail.me/) [Beedle](https://teams-web.beedle.co/#/)、 [Visma](https://docs.microsoft.com/azure/active-directory/saas-apps/visma-tutorial)、 [OneDesk](https://docs.microsoft.com/azure/active-directory/saas-apps/onedesk-tutorial)、 [Foko Retail](https://docs.microsoft.com/azure/active-directory/saas-apps/foko-retail-tutorial)、Qmarkets[觀念 & 創新管理](https://docs.microsoft.com/azure/active-directory/saas-apps/qmarkets-idea-innovation-management-tutorial)、 [Netskope 使用者驗證](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-user-authentication-tutorial)、 [uniFLOW Online](https://docs.microsoft.com/azure/active-directory/saas-apps/uniflow-online-tutorial)、 [Claromentis](https://docs.microsoft.com/azure/active-directory/saas-apps/claromentis-tutorial)、 [Jisc Student 投票者註冊](https://docs.microsoft.com/azure/active-directory/saas-apps/jisc-student-voter-registration-tutorial)、e4enable [e4enable](https://portal.e4enable.com/)
+[Airtable](https://docs.microsoft.com/azure/active-directory/saas-apps/airtable-tutorial)、 [Hootsuite](https://docs.microsoft.com/azure/active-directory/saas-apps/hootsuite-tutorial)、 [BLUE Access for Members (BAM) ](https://docs.microsoft.com/azure/active-directory/saas-apps/blue-access-for-members-tutorial)、 [Bitly](https://docs.microsoft.com/azure/active-directory/saas-apps/bitly-tutorial)、 [RIVA](https://docs.microsoft.com/azure/active-directory/saas-apps/riva-tutorial)、 [ResLife Portal](https://app.reslifecloud.com/hub5_signin/microsoft_azuread/?g=44BBB1F90915236A97502FF4BE2952CB&c=5&uid=0&ht=2&ref=)、 [NegometrixPortal 單一登入 (SSO) ](https://docs.microsoft.com/azure/active-directory/saas-apps/negometrixportal-tutorial)、 [TeamsChamp](https://login.microsoftonline.com/551f45da-b68e-4498-a7f5-a6e1efaeb41c/adminconsent?client_id=ca9bbfa4-1316-4c0f-a9ee-1248ac27f8ab&redirect_uri=https://admin.teamschamp.com/api/adminconsent&state=6883c143-cb59-42ee-a53a-bdb5faabf279)、 [Motus](https://docs.microsoft.com/azure/active-directory/saas-apps/motus-tutorial)、 [MyAryaka](https://docs.microsoft.com/azure/active-directory/saas-apps/myaryaka-tutorial)、BlueMail、 [Beedle](https://teams-web.beedle.co/#/)、Visma、OneDesk、 [Foko、Qmarkets](https://loginself1.bluemail.me/)、 [Netskope](https://docs.microsoft.com/azure/active-directory/saas-apps/visma-tutorial) [、uniFLOW、Claromentis](https://docs.microsoft.com/azure/active-directory/saas-apps/onedesk-tutorial) [Retail](https://docs.microsoft.com/azure/active-directory/saas-apps/foko-retail-tutorial)、 [Jisc 構想 & 創新管理](https://docs.microsoft.com/azure/active-directory/saas-apps/qmarkets-idea-innovation-management-tutorial)、[投票者使用者驗證](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-user-authentication-tutorial)、e4enable [Online](https://docs.microsoft.com/azure/active-directory/saas-apps/uniflow-online-tutorial)、 [ ](https://docs.microsoft.com/azure/active-directory/saas-apps/claromentis-tutorial)、 [Student 註冊](https://docs.microsoft.com/azure/active-directory/saas-apps/jisc-student-voter-registration-tutorial)、 [e4enable](https://portal.e4enable.com/)
 
 如需應用程式的詳細資訊，請參閱[與 Azure Active Directory 整合的 SaaS 應用程式](https://aka.ms/appstutorial)。 如需在 Azure AD 應用程式庫中列出應用程式的詳細資訊，請參閱[在 Azure Active Directory 應用程式庫中列出您的應用程式](https://aka.ms/azureadapprequest)。
 
 ---
 
-### <a name="new-and-improved-azure-ad-application-gallery"></a>新的和改良的 Azure AD 應用程式庫
+### <a name="new-and-improved-azure-ad-application-gallery"></a>新增和改良的 Azure AD 應用程式資源庫
 
 **類型：** 已變更的功能  
 **服務類別：** 企業應用程式  
 **產品功能：** SSO
 
-我們已更新 Azure AD 應用程式庫，讓您更輕鬆地在您的 Azure Active Directory 租使用者上尋找支援布建、OpenID Connect 和 SAML 的預先整合應用程式。
+我們已更新 Azure AD 應用程式資源庫，讓您更輕鬆地尋找在 Azure Active Directory 租使用者上支援布建、OpenID Connect 和 SAML 的預先整合應用程式。
 
-如需詳細資訊，請參閱[將應用程式新增至您的 Azure Active Directory 租使用者](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal)。
+如需詳細資訊，請參閱 [將應用程式新增至您的 Azure Active Directory 租使用者](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal)。
 
 ---
 
-### <a name="increased-app-role-definition-length-limit-from-120-to-240-characters"></a>將應用程式角色定義長度限制從120增加至240個字元
+### <a name="increased-app-role-definition-length-limit-from-120-to-240-characters"></a>增加應用程式角色定義長度限制（從120到240個字元）
 
 **類型：** 已變更的功能  
 **服務類別：** 企業應用程式  
 **產品功能：** SSO
 
-我們聽說客戶，在某些應用程式和服務中，應用程式角色定義值的長度限制太短（120個字元）。 為了回應，我們已將角色值定義的最大長度增加為240個字元。
+我們聽說客戶的應用程式角色定義值長度限制為120個字元，但有些應用程式和服務的長度限制太短。 為了回應，我們將角色值定義的最大長度增加為240個字元。
 
-如需使用應用程式專屬角色定義的詳細資訊，請參閱在[您的應用程式中加入應用程式角色，並在權杖中接收它們](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)。
+如需使用應用程式特定角色定義的詳細資訊，請參閱在 [您的應用程式中新增應用程式角色，並在權杖中接收這些角色](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)。
 
 ---
 
@@ -582,7 +696,7 @@ Azure AD B2C 現在支援每月作用中使用者 (MAU) 計費。 MAU 計費以�
 
 ### <a name="new-azure-ad-global-reader-role"></a>新增 Azure AD 全域讀者角色
 
-**類型：** 新功能 **服務類別：** RBAC **產品功能：** 存取控制
+**輸入：** 新功能 **服務類別：** Azure AD 角色 **產品功能：** 存取控制
 
 從 2019 年 9 月 24 日起，我們推出一個新的 Azure Active Directory (AD) 角色，稱為「全域讀者」。 此推出從生產環境和全球雲端客戶 (GCC) 開始，在 10 月全球推出完畢。
 
@@ -671,7 +785,7 @@ AzureADPreview 模組中加入新的 Cmdlet，以協助在 Azure AD 中定義和
 
 ### <a name="new-custom-roles-are-available-for-app-registration-management-public-preview"></a>有新的自訂角色適用於應用程式註冊管理 (公開預覽)
 
-**類型：** 新功能 **服務類別：** RBAC **產品功能：** 存取控制
+**輸入：** 新功能 **服務類別：** Azure AD 角色 **產品功能：** 存取控制
 
 自訂角色 (隨附於 Azure AD P1 或 P2 訂用帳戶) 現在可以提供更細緻的存取權給您，讓您以特定權限建立角色定義，然後將這些角色指派給特定的資源。 目前，您是以管理應用程式註冊的權限來建立自訂角色，然後將角色指派給特定的應用程式。 如需自訂角色的詳細資訊，請參閱 [Azure Active Directory 中的自訂管理員角色 (預覽)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-custom-overview)。
 
@@ -3403,11 +3517,11 @@ Azure AD 目錄角色的核准工作流程已正式運作。
 
 **類型：** 已變更的功能 **服務類別：** Privileged Identity Management **產品功能：** Privileged Identity Management
 
-透過 Azure AD Privileged Identity Management (PIM) 的公開預覽重新整理， (Azure RBAC) 的 Azure 角色型存取控制，您現在可以：
+透過 Azure AD Privileged Identity Management (PIM) 的公開預覽， (Azure RBAC) 的 Azure 角色型存取控制，您現在可以：
 
 * 使用恰到好處的系統管理。
 * 要求必須經過核准才能啟用資源角色。
-* 排定未來啟用需要核准 Azure AD 和 Azure 角色的角色。
+* 針對 Azure AD 和 Azure 角色需要核准的角色，排程未來的啟用。
 
 如需詳細資訊，請參閱[適用於 Azure 資源的 Privileged Identity Management (預覽)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac) \(機器翻譯\)。
 

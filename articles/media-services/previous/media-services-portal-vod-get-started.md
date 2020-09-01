@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 62754c455ec6aad4a3990bf4af749dcdcd425e55
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 223779dfba5faa77e38221d6f6f4e26dbc44b0cc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060230"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268378"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>使用 Azure 入口網站開始傳遞點播內容
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
@@ -31,8 +33,8 @@ ms.locfileid: "87060230"
 ## <a name="prerequisites"></a>先決條件
 需要有下列項目，才能完成教學課程：
 
-* Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
-* 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
+* 一個 Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
+* 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱 [如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 
 本教學課程內容包括以下工作：
 
@@ -52,16 +54,16 @@ ms.locfileid: "87060230"
 若要啟動串流端點：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 選取 [**設定**] [  >  **串流端點**]。 
-3. 選取預設串流端點。 [**預設串流端點詳細資料**] 視窗隨即出現。
+2. 選取**設定**  >  **串流端點**。 
+3. 選取預設串流端點。 [ **預設串流端點詳細資料** ] 視窗隨即出現。
 4. 選取 [啟動]**** 圖示。
-5. 選取 [儲存]**** 按鈕。
+5. 選取 [儲存] 按鈕。
 
 ## <a name="upload-files"></a>上傳檔案
 若要使用媒體服務串流處理視訊，請上傳來源影片、將它們編碼成多個位元速率，以及發佈結果。 這一節涵蓋第一個步驟。 
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure 媒體服務帳戶。
-2. 選取 [**設定**] [  >  **資產**]。 然後，選取 [上傳]**** 按鈕。
+2. 選取 **設定** > **資產**。 然後，選取 [上傳]**** 按鈕。
    
     ![上傳檔案](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
@@ -84,14 +86,14 @@ ms.locfileid: "87060230"
 在 Azure 入口網站中使用媒體編碼器標準為資產編碼：
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure 媒體服務帳戶。
-2. 選取 [**設定**] [  >  **資產**]。 選取您要編碼的資產。
+2. 選取 **設定** > **資產**。 選取您要編碼的資產。
 3. 選取 [編碼]**** 按鈕。
 4. 在 [為資產編碼]**** 窗格中，選取 [媒體編碼器標準]**** 處理器和預設值。 如需預設值的相關資訊，請參閱[自動產生位元速率排行榜](media-services-autogen-bitrate-ladder-with-mes.md)和[媒體編碼器標準的工作預設值](media-services-mes-presets-overview.md)。 請務必選擇最適合輸入影片的預設值。 例如，如果您知道您的輸入視訊的解析度為 1920 &#215; 1080 像素，您可選擇 [H264 多位元速率 1080p]**** 預設值。 如果您有低解析度 (640 &#215; 360) 影片，您不應該使用 [H264 多重位元速率 1080p]**** 預設值。
    
    為了協助您管理資源，您可以編輯輸出資產的名稱和作業的名稱。
    
    ![為資產編碼](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. 選取 [建立]。
+5. 選取 [建立]  。
 
 ### <a name="monitor-encoding-job-progress"></a>監視編碼作業進度
 若要監視編碼作業的進度，請按一下 [設定]****，然後選取 [作業]****。
@@ -132,10 +134,10 @@ ms.locfileid: "87060230"
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>使用入口網站發佈資產
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure 媒體服務帳戶。
-2. 選取 [**設定**] [  >  **資產**]。 選取您要發佈的資產。
+2. 選取 **設定** > **資產**。 選取您要發佈的資產。
 3. 選取 [發佈] 按鈕。
 4. 選取定位器類型。
-5. 選取 [新增]。
+5. 選取 [新增]  。
    
     ![發佈影片](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

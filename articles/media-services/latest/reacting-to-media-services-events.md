@@ -3,22 +3,24 @@ title: 回應 Azure 媒體服務事件 | Microsoft Docs
 description: 本文說明如何使用 Azure 事件方格來訂閱媒體服務事件。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/08/2019
-ms.author: juliako
-ms.openlocfilehash: e24bacb0ea7ab406442022915872fc77e9cc1a5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: d2dffc90d78d5d173e25232010171a5c0109e028
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74887879"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267495"
 ---
 # <a name="handling-event-grid-events"></a>處理事件方格事件
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 媒體服務事件可讓應用程式利用現代無伺服器架構，針對不同事件做出反應，例如，工作狀態變更事件。 它不需要複雜的程式碼或昂貴且無效率的輪詢服務來執行此動作。 而是改為透過 [Azure 事件格線](https://azure.microsoft.com/services/event-grid/)，將事件推送給事件處理常式，例如 [Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)，甚至推送到您自己的Webhook，而且只有使用時，才須支付相關費用。 如需價格的資訊，請參閱[事件格線價格](https://azure.microsoft.com/pricing/details/event-grid/)。
 
@@ -40,7 +42,7 @@ Event Grid 使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions
 * 使用 "subject" 前置詞和後置詞相符，將事件限制為特定的事件。
 
 > [!NOTE]
-> 事件會受到事件方格[服務等級協定（SLA）](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)所約束。 如果您想要使用 Api 取得事件通知，請參閱如何使用[.NET sdk](https://github.com/Azure-Samples/media-services-v3-dotnet)或[JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java)來取用事件的範例。
+> 事件會受限於事件方格 [服務等級協定 (SLA) ](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)。 如果您想要使用 Api 取得事件通知，請參閱如何使用 [.NET sdk](https://github.com/Azure-Samples/media-services-v3-dotnet) 或 [JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java)來取用事件的範例。
 
 ## <a name="next-steps"></a>後續步驟
 

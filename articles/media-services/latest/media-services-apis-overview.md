@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: 了解使用媒體服務 v3 開發時，適用於實體與 API 的規則。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/21/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: dcec4d0bc93433c768faf10e4520131aeecc5e77
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 6cb771b8df4ab81ff9c538a38b084856b1dfbc39
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719184"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267270"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>使用媒體服務 v3 API 開發
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 身為開發人員，您可以使用媒體服務 [REST API](/rest/api/media/)，或是可讓您與 REST API 互動的用戶端程式庫，輕鬆建立、管理及維護自訂媒體工作流程。 [媒體服務 v3](https://aka.ms/ams-v3-rest-sdk) API 以 OpenAPI 規格 (先前稱為 Swagger) 作為基礎。
 

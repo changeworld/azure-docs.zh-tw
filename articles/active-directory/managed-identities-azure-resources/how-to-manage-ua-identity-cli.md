@@ -16,12 +16,12 @@ ms.date: 04/17/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 79ced126cb209759502e2960bf401349f811ca32
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5c3af6c46dd8ad69915e8f870d739f33375dba5e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014291"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266403"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>使用 Azure CLI 建立、列出和刪除使用者指派的受控識別
 
@@ -37,7 +37,7 @@ ms.locfileid: "89014291"
 - 若要執行 CLI 指令碼範例，您有三個選項：
     - 從 Azure 入口網站使用 [Azure Cloud Shell](../../cloud-shell/overview.md) (請參閱下一節)。
     - 透過位於每個程式碼區塊右上角的 [試試看] 按鈕，使用內嵌的 Azure Cloud Shell。
-    - 如果您偏好使用本機 CLI 主控台，請[安裝最新版的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 或更新版本)。 使用 `az login` 登入 Azure，使用與 Azure 訂用帳戶相關聯的帳戶，而您要以此帳戶部署使用者指派受控識別。
+    - 如果您偏好使用本機 CLI 主控台，請[安裝最新版的 Azure CLI](/cli/azure/install-azure-cli) (2.0.13 或更新版本)。 使用 `az login` 登入 Azure，使用與 Azure 訂用帳戶相關聯的帳戶，而您要以此帳戶部署使用者指派受控識別。
 
 
 > [!NOTE]
@@ -49,7 +49,7 @@ ms.locfileid: "89014291"
 
 ## <a name="create-a-user-assigned-managed-identity"></a>建立使用者指派的受控識別 
 
-若要建立使用者指派的受控識別，您的帳戶需要[受控識別參與者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色指派。
+若要建立使用者指派的受控識別，您的帳戶需要[受控識別參與者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)角色指派。
 
 請使用 [az identity create](/cli/azure/identity#az-identity-create) 命令，建立使用者指派的受控識別。 `-g` 參數會指定要建立使用者指派之受控識別的資源群組，而 `-n` 參數則指定其名稱。 將 `<RESOURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>` 參數取代為您自己的值：
 
@@ -60,7 +60,7 @@ az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```
 ## <a name="list-user-assigned-managed-identities"></a>列出使用者指派的受控識別
 
-若要列出/讀取使用者指派的受控識別，您的帳戶需要[受控識別操作者](/azure/role-based-access-control/built-in-roles#managed-identity-operator)或[受控識別參與者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色指派。
+若要列出/讀取使用者指派的受控識別，您的帳戶需要[受控識別操作者](../../role-based-access-control/built-in-roles.md#managed-identity-operator)或[受控識別參與者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)角色指派。
 
 若要列出使用者指派的受控識別，請使用 [az identity list](/cli/azure/identity#az-identity-list) 命令。 將 `<RESOURCE GROUP>` 取代為您自己的值：
 
@@ -73,7 +73,7 @@ az identity list -g <RESOURCE GROUP>
 
 ## <a name="delete-a-user-assigned-managed-identity"></a>刪除使用者指派的受控識別
 
-若要刪除使用者指派的受控識別，您的帳戶需要[受控識別參與者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色指派。
+若要刪除使用者指派的受控識別，您的帳戶需要[受控識別參與者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)角色指派。
 
 若要刪除使用者指派的受控識別，請使用 [az identity delete](/cli/azure/identity#az-identity-delete) 命令。  -n 參數會指定其名稱，而 -g 參數會指定建立使用者指派之受控識別所在的資源群組。 將 `<USER ASSIGNED IDENTITY NAME>` 和 `<RESOURCE GROUP>` 參數取代為您自己的值：
 
@@ -90,4 +90,3 @@ az identity delete -n <USER ASSIGNED IDENTITY NAME> -g <RESOURCE GROUP>
 如需如何將使用者指派之受控識別指派至 Azure VM 的相關資訊，請參閱[使用 Azure CLI 對 Azure VM 設定 Azure 資源的受控識別](qs-configure-cli-windows-vm.md#user-assigned-managed-identity)
 
 
- 

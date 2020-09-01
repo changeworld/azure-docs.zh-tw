@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f22d2022ae095ea7178859b1c036f78e39c10152
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5ad40feacdccc847ed66caed3d586db2490b0b50
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019448"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266522"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>如何：透過下載來傳遞資產  
+# <a name="how-to-deliver-an-asset-by-download"></a>如何：透過下載來傳遞資產
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 本文將討論有哪些選項可傳遞已上傳至媒體服務的媒體資產。 您可以透過多種應用程式案例來傳遞媒體服務內容。 編碼之後，下載所產生的媒體資產，或使用串流定位器來存取它們。 若要改善效能和延展性，您也可以使用內容傳遞網路 (CDN) 傳遞內容。
 
 這個範例示範如何從媒體服務下載媒體資產到本機電腦。 程式碼會以工作 ID 查詢與媒體服務帳戶相關聯的工作，並存取其 **OutputMediaAssets** 集合 (這是執行工作後所產生的一或多個輸出媒體資產)。 此範例將說明如何從工作下載輸出媒體資產，但您也可以用相同的方式來下載其他資產。

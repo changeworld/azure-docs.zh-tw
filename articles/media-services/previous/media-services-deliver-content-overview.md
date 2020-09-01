@@ -10,14 +10,17 @@ ms.workload: media
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7a6a717f663e6e1ee5c2371c35557c7c374246fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b636d1cdf2e4b9bd137768e22240d8a47d724a97
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060360"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266029"
 ---
 # <a name="deliver-content-to-customers"></a>將內容傳遞給客戶
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 當您將串流或點播視訊內容傳遞給客戶時，您的目標是在不同的網路條件下將高品質的視訊傳遞到各種裝置。
 
 若要達成此目標，您可以：
@@ -44,7 +47,7 @@ ms.locfileid: "87060360"
 
 動態封裝適用於標準和高階串流端點。 
 
-如需詳細資訊，請參閱[動態封裝](media-services-dynamic-packaging-overview.md)。
+如需詳細資訊，請參閱 [動態封裝](media-services-dynamic-packaging-overview.md)。
 
 ## <a name="filters-and-dynamic-manifests"></a>篩選器與動態資訊清單
 您可以使用媒體服務為資產定義篩選器。 這些篩選器是伺服器端規則，可協助您的客戶執行如下的動作：播放一段特定視訊，或指定您客戶裝置可以處理的一部分音訊和視訊轉譯 (而非與該資產相關的所有轉譯)。 透過當您的客戶要求根據一或多個指定的篩選器來串流視訊時所建立的 *動態資訊清單* ，可達成此篩選。
@@ -75,35 +78,35 @@ ms.locfileid: "87060360"
 ## <a name="adaptive-streaming"></a>彈性資料流
 調適性位元速率技術可讓視訊播放器應用程式判斷網路狀況，並由數種位元速率中進行選擇。 當網路通訊降級時，用戶端可以選取較低的位元速率，讓播放能夠以較低的視訊品質繼續。 當網路狀況改善時，用戶端可以切換至較高的位元速率，以提高視訊品質。 Azure 媒體服務支援下列調適性位元速率技術：HTTP 即時串流 (HLS)、Smooth Streaming 和 MPEG-DASH。
 
-若要提供漸進式下載 URL 給使用者，您必須先建立 OnDemandOrigin 定位器。 建立定位器可針對包含您要串流之內容的資產，提供其基底路徑。 不過，若要能夠串流此內容，您還需要進一步修改此路徑。 若要建構串流資訊清單檔案的完整 URL，您必須串連定位器的路徑值和資訊清單 (filename.ism) 的檔案名稱。 然後，將 **/Manifest**和適當的格式（如有需要）附加至定位器路徑。
+若要提供漸進式下載 URL 給使用者，您必須先建立 OnDemandOrigin 定位器。 建立定位器可針對包含您要串流之內容的資產，提供其基底路徑。 不過，若要能夠串流此內容，您還需要進一步修改此路徑。 若要建構串流資訊清單檔案的完整 URL，您必須串連定位器的路徑值和資訊清單 (filename.ism) 的檔案名稱。 然後，視需要將 **/Manifest** 和適當的格式 (設定為定位器路徑) 。
 
 > [!NOTE]
-> 您也可以透過 TLS 連線來串流處理您的內容。 若要這樣做，請確定您的串流 URL 以 HTTPS 開頭。 請注意，目前 AMS 不支援使用自訂網域的 TLS。  
+> 您也可以透過 TLS 連接來串流您的內容。 若要這樣做，請確定您的串流 URL 以 HTTPS 開頭。 請注意，目前 AMS 不支援使用自訂網域的 TLS。  
 > 
 
-如果您傳遞內容的來源串流端點是在2014年9月10日之後建立的，您只能透過 TLS 串流。 如果您的串流 URL 是根據 2014 年 9 月 10 日之後建立的串流端點，則 URL 會包含 "streaming.mediaservices.windows.net"。 包含 "origin.mediaservices.windows.net" （舊格式）的串流 Url 不支援 TLS。 如果您的 URL 是舊格式，而且您想要能夠透過 TLS 串流，請建立新的串流端點。 使用以新串流端點為基礎的 Url，透過 TLS 串流您的內容。
+如果您傳遞內容的來源串流端點是在2014年9月10日之後建立的，則您只能透過 TLS 進行串流。 如果您的串流 URL 是根據 2014 年 9 月 10 日之後建立的串流端點，則 URL 會包含 "streaming.mediaservices.windows.net"。 包含 "origin.mediaservices.windows.net" 的串流 Url (舊格式) 不支援 TLS。 如果您的 URL 是舊格式，而且您想要能夠透過 TLS 串流，請建立新的串流端點。 使用以新串流端點為基礎的 Url，以透過 TLS 串流您的內容。
 
 ## <a name="streaming-url-formats"></a><a name="URLs"></a>Streaming URL 格式
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH 格式
 {串流端點名稱-媒體服務帳戶名稱}.streaming.mediaservices.windows.net/{定位器識別碼}/{檔案名稱}.ism/Manifest(format=mpd-time-csf)
 
-HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest （format = mpd-time-csf）
+HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = mpd csf) 
 
 ### <a name="apple-http-live-streaming-hls-v4-format"></a>Apple HTTP Live Streaming (HLS) V4 格式
 {串流端點名稱-媒體服務帳戶名稱}.streaming.mediaservices.windows.net/{定位器識別碼}/{檔案名稱}.ism/Manifest(format=m3u8-aapl)
 
-HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest （format = m3u8-m3u8-aapl-v3）
+HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-m3u8-aapl-v3) 
 
 ### <a name="apple-http-live-streaming-hls-v3-format"></a>Apple HTTP Live Streaming (HLS) V3 格式
 {串流端點名稱-媒體服務帳戶名稱}.streaming.mediaservices.windows.net/{定位器識別碼}/{檔案名稱}.ism/Manifest(format=m3u8-aapl-v3)
 
-HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest （format = m3u8-m3u8-aapl-v3-v3）
+HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-m3u8-aapl-v3-v3) 
 
 ### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Apple HTTP Live Streaming (HLS) 格式搭配僅限音訊的篩選條件
 根據預設，只有音訊的播放軌是包含在 HLS 資訊清單中。 這對於行動電話通訊網路的 Apple Store 認證是必要條件。 在此情況下，如果用戶端沒有足夠的頻寬，或透過 2G 網路連線，播放就會切換成只有音訊。 這可協助保護內容串流，而不需要緩衝處理，但是沒有視訊。 在某些情況中，播放程式緩衝處理可能比只有音訊更好。 如果您想要移除只有音訊的播放軌，可以將 **audio-only=false** 加入 URL。
 
-HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest （format = m3u8-m3u8-aapl-v3-v3，僅限音訊 = false）
+HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-m3u8-aapl-v3-v3，僅限音訊 = false) 
 
 如需詳細資訊，請參閱 [Dynamic Manifest Composition support and HLS output additional features (動態資訊清單組合支援和 HLS 輸出額外功能)](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)。
 
@@ -151,7 +154,7 @@ HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb2
 
 ## <a name="known-issues"></a>已知問題
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Smooth Streaming 資訊清單版本變更
-在 2016 年 7 月之前的服務版本 -- 使用動態封裝串流媒體編碼器標準、媒體編碼器高階工作流程或舊版 Azure 媒體編碼器所產生的資產時 -- 傳回的 Smooth Streaming 資訊清單會符合 2.0 版。 在 2.0 版中，片段持續期間不使用所謂的重複 ('r') 標籤。 例如:
+在 2016 年 7 月之前的服務版本 -- 使用動態封裝串流媒體編碼器標準、媒體編碼器高階工作流程或舊版 Azure 媒體編碼器所產生的資產時 -- 傳回的 Smooth Streaming 資訊清單會符合 2.0 版。 在 2.0 版中，片段持續期間不使用所謂的重複 ('r') 標籤。 例如：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -166,7 +169,7 @@ HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb2
 </SmoothStreamingMedia>
 ```
 
-在 2016 年 7 月之後的服務版本中，產生的 Smooth Streaming 資訊清單會符合 2.2 版，即片段持續時間使用重複標籤。 例如:
+在 2016 年 7 月之後的服務版本中，產生的 Smooth Streaming 資訊清單會符合 2.2 版，即片段持續時間使用重複標籤。 例如：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

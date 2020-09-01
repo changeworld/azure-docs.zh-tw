@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896c1909c8cc920e53fc2f43fbc4dbca41ad7db4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bd49c60a23a0ad58f0907d3c1d7c38178ac08c97
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014229"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266352"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>使用 Azure Resource Manager 來建立、列出及刪除使用者指派的受控識別
 
@@ -44,12 +44,12 @@ ms.locfileid: "89014229"
 
 - 使用 [Azure Marketplace 的自訂範本](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)，可讓您從頭開始建立範本，或是以現有的一般或 [快速入門範本](https://azure.microsoft.com/documentation/templates/)作為基礎。
 - 衍生自現有的資源群組，方法是從[原始部署](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)，或從[部署的目前狀態](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)匯出範本。
-- 使用本機 [JSON 編輯器 (例如 VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md)，然後使用 PowerShell 或 CLI 上傳和部署。
+- 使用本機 [JSON 編輯器 (例如 VS Code)](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)，然後使用 PowerShell 或 CLI 上傳和部署。
 - 使用 Visual Studio 的 [Azure 資源群組專案](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)來建立和部署範本。 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>建立使用者指派的受控識別 
 
-若要建立使用者指派的受控識別，您的帳戶需要[受控識別參與者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色指派。
+若要建立使用者指派的受控識別，您的帳戶需要[受控識別參與者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)角色指派。
 
 若要建立使用者指派的受控識別，請使用下列範本。 使用您自己的值取代 `<USER ASSIGNED IDENTITY NAME>` 值：
 
@@ -88,4 +88,3 @@ ms.locfileid: "89014229"
 如需如何使用 Azure Resource Manager 範本將使用者指派之受控識別指派至 Azure VM 的相關資訊，請參閱[使用範本對 Azure VM 設定 Azure 資源的受控識別](qs-configure-template-windows-vm.md)。
 
 
- 

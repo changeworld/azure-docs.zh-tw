@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 88a528e8e7f8713a766c715faaea9bb0f29f046e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 57574b66ddb20e592a5979a4b827347f7c8e09af
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083398"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268086"
 ---
-# <a name="kubernetes-storage-management-on-your-azure-stack-edge-device"></a>Azure Stack Edge 裝置上的 Kubernetes 儲存體管理
+# <a name="kubernetes-storage-management-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU 裝置上的 Kubernetes 儲存體管理
 
 在您的 Azure Stack Edge 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 建立 Kubernetes 叢集之後，就可以將容器化應用程式部署到 pod 中的 Kubernetes 叢集。 有不同的方式可提供儲存體給 Kubernetes 叢集中的 pod。 
 

@@ -3,12 +3,12 @@ title: 在 Azure VM 上管理備份的 SAP HANA 資料庫
 description: 在本文中，可了解在 Azure 虛擬機器上執行的 SAP HANA 資料庫的一般管理和監視工作。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 6de1144237366806bb06c28a0777f62d69004e8b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 40761415042cc619893ab3a712a763d4fb046e38
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006560"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267474"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>管理和監視已備份的 SAP Hana 資料庫
 
@@ -65,6 +65,8 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 2. 在 [備份項目] 中，選取執行 SAP Hana 資料庫的 VM，然後按一下 [立即備份]。
 3. 在 [ **立即備份**] 中，選擇您想要執行的備份類型。 然後按一下 [確定] 。 系統會根據與此備份專案相關聯的原則來保留此備份。
 4. 監視入口網站通知。 您可以在保存庫儀表板中監視作業進度 > [備份作業] > [進行中]。 根據您的資料庫大小，建立初始備份可能需要花一點時間。
+
+依預設，隨選備份的保留期為45天。
 
 ### <a name="hana-native-client-integration"></a>HANA 原生用戶端整合
 

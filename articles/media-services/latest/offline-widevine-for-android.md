@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b603b800dfdfb96e9b6b1074dc1e39d31b994c06
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a1e85f37a0dfdbb7ff10db13e53b1998ef391caa
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997773"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267185"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>使用媒體服務 v3 進行 Android 的離線 Widevine 串流
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 除了保護線上串流的內容之外，媒體內容訂用帳戶與租賃服務能提供可在未連線到網際網路時使用的可下載內容。 在和網路中斷連線的飛行途中，您可能需要先將內容下載至手機或平板電腦，以在飛航模式中播放。 您可能會想要下載內容的其他案例如下：
 

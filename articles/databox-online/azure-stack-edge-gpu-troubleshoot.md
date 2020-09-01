@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 入口網站對 GPU 進行 Azure Stack Edge 的疑難排解 |Microsoft Docs
-description: 說明如何針對 Azure Stack Edge 問題進行疑難排解。
+description: 說明如何針對 Azure Stack Edge GPU 問題進行疑難排解。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: b92d590756ddd98d145d1728c89ea4cf98662d0d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 22f0c63c2b60b6c72ad297492045df17e10dd06c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083358"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268317"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-gpu-device"></a>針對 Azure Stack Edge GPU 裝置上的問題進行疑難排解 
 

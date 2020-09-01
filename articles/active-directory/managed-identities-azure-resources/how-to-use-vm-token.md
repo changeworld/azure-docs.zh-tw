@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0bcf6d99511f744b321a7a47913b44dc376143f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4683a77b9467775fbe368e2017416e0fbff9718c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016133"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266284"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>了解如何在 Azure VM 上使用 Azure 資源受控識別來取得存取權杖 
 
@@ -125,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>使用適用於 .NET 的 Microsoft.Azure.Services.AppAuthentication 程式庫取得權杖
 
-對於 .NET 應用程式和函式，使用 Azure 資源受控識別的最簡單方式就是透過 Microsoft.Azure.Services.AppAuthentication 套件。 該程式庫還能讓您使用來自 Visual Studio、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 或 Active Directory 整合式驗證的使用者帳戶，在部署機器上以本機方式測試程式碼。 如需使用此程式庫之本機開發選項的詳細資訊，請參閱 [Microsoft.Azure.Services.AppAuthentication 參考](/azure/key-vault/service-to-service-authentication)。 本節示範如何在您的程式碼中開始使用程式庫。
+對於 .NET 應用程式和函式，使用 Azure 資源受控識別的最簡單方式就是透過 Microsoft.Azure.Services.AppAuthentication 套件。 該程式庫還能讓您使用來自 Visual Studio、[Azure CLI](/cli/azure?view=azure-cli-latest) 或 Active Directory 整合式驗證的使用者帳戶，在部署機器上以本機方式測試程式碼。 如需使用此程式庫之本機開發選項的詳細資訊，請參閱 [Microsoft.Azure.Services.AppAuthentication 參考](../../key-vault/general/service-to-service-authentication.md)。 本節示範如何在您的程式碼中開始使用程式庫。
 
 1. 將 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 套件的參考新增至應用程式。
 
@@ -141,7 +141,7 @@ Content-Type: application/json
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-若要深入了解 Microsoft.Azure.Services.AppAuthentication 和它公開的作業，請參閱 [Microsoft.Azure.Services.AppAuthentication 參考](/azure/key-vault/service-to-service-authentication)和[採用 Azure 資源受控識別的 App Service 和 KeyVault .NET 範例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
+若要深入了解 Microsoft.Azure.Services.AppAuthentication 和它公開的作業，請參閱 [Microsoft.Azure.Services.AppAuthentication 參考](../../key-vault/general/service-to-service-authentication.md)和[採用 Azure 資源受控識別的 App Service 和 KeyVault .NET 範例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
 
 ## <a name="get-a-token-using-c"></a>使用 C# 取得權杖
 
@@ -381,7 +381,7 @@ Azure 資源受控識別端點會透過 HTTP 回應訊息標頭的狀態碼欄�
 |           | access_denied | 資源擁有者或授權伺服器已拒絕要求。 |  |
 |           | unsupported_response_type | 授權伺服器不支援使用此方法取得存取權杖。 |  |
 |           | invalid_scope | 要求的範圍無效、未知或格式不正確。 |  |
-| 500 內部伺服器錯誤 | 未知 | 無法從 Active 目錄擷取權杖。 如需詳細資訊，請參閱中的登入 *\<file path\>* | 確認已在虛擬機器上啟用 Azure 資源受控識別。 如果您需要設定虛擬機器的協助，請參閱[使用 Azure 入口網站在虛擬機器上設定 Azure 資源受控識別](qs-configure-portal-windows-vm.md)。<br><br>也請確認 HTTP GET 要求 URI 的格式正確，尤其是查詢字串中指定的資源 URI。 相關範例請參閱前一節 REST 中的「範例要求」，或請參閱[支援 Azure AD 驗證的 Azure 服務](services-support-msi.md)，以取得服務及其各自資源識別碼的清單。
+| 500 內部伺服器錯誤 | 未知 | 無法從 Active 目錄擷取權杖。 如需詳細資訊，請參閱中的登入 *\<file path\>* | 確認已在虛擬機器上啟用 Azure 資源受控識別。 如果您需要設定虛擬機器的協助，請參閱[使用 Azure 入口網站在虛擬機器上設定 Azure 資源受控識別](qs-configure-portal-windows-vm.md)。<br><br>也請確認 HTTP GET 要求 URI 的格式正確，尤其是查詢字串中指定的資源 URI。 相關範例請參閱前一節 REST 中的「範例要求」，或請參閱[支援 Azure AD 驗證的 Azure 服務](./services-support-managed-identities.md)，以取得服務及其各自資源識別碼的清單。
 
 ## <a name="retry-guidance"></a>重試指引 
 
@@ -397,17 +397,9 @@ Azure 資源受控識別端點會透過 HTTP 回應訊息標頭的狀態碼欄�
 
 ## <a name="resource-ids-for-azure-services"></a>Azure 服務的資源識別碼
 
-關於支援 Azure AD 且經過 Azure 資源受控識別所測試的資源及其各自資源識別碼的清單，請參閱[支援 Azure AD 驗證的 Azure 服務](services-support-msi.md)。
+關於支援 Azure AD 且經過 Azure 資源受控識別所測試的資源及其各自資源識別碼的清單，請參閱[支援 Azure AD 驗證的 Azure 服務](./services-support-managed-identities.md)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
 - 若要在 Azure VM 上啟用 Azure 資源受控識別，請參閱[使用 Azure 入口網站在虛擬機器上設定 Azure 資源受控識別](qs-configure-portal-windows-vm.md)。
-
-
-
-
-
-
-
-

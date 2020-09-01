@@ -1,35 +1,33 @@
 ---
-title: 建立已啟用磁片加密的集區
+title: 建立已啟用磁碟加密的集區
 description: 瞭解如何使用磁片加密設定，以平臺管理的金鑰來加密節點。
 author: pkshultz
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 5210ead0a85cff27c38d9ff9fb0d387e3799428c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9b0f7f9963ee0edd3986f7ec808a8a4060d857f8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89038479"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267034"
 ---
-# <a name="create-a-pool-with-disk-encryption-enabled"></a>建立已啟用磁片加密的集區
+# <a name="create-a-pool-with-disk-encryption-enabled"></a>建立已啟用磁碟加密的集區
 
-當您使用虛擬機器設定建立 Azure Batch 集區時，您可以藉由指定磁片加密設定，以平臺管理的金鑰來加密集區中的計算節點。 
+當您使用虛擬機器設定建立 Azure Batch 集區時，您可以藉由指定磁片加密設定，以平臺管理的金鑰來加密集區中的計算節點。
 
-本文說明如何建立已啟用磁片加密的 Batch 集區。 
+本文說明如何建立已啟用磁片加密的 Batch 集區。
 
 ## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>為何要使用具有磁片加密設定的集區？
 
 有了 Batch 集區，您就可以存取和儲存計算節點的作業系統和暫存磁片上的資料。 使用平臺管理的金鑰來加密伺服器端磁片，可保護此資料的額外負荷和便利性。  
 
-Batch 會根據集區設定和區域支援，在計算節點上套用這些磁片加密技術的其中一種。 
+Batch 會根據集區設定和區域支援，在計算節點上套用這些磁片加密技術的其中一種。
 
-* [使用平臺管理的金鑰進行靜態受控磁片加密](../virtual-machines/windows/disk-encryption.md#platform-managed-keys) 
-
-* [使用平臺管理的金鑰在主機上加密](../virtual-machines/windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) 
-
-* [Azure 磁碟加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md) 
+- [使用平臺管理的金鑰進行靜態受控磁片加密](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)
+- [使用平臺管理的金鑰在主機上加密](../virtual-machines/windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+- [Azure 磁碟加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)
 
 > [!IMPORTANT]
 > 在 Azure Batch 中使用平臺管理金鑰的主機加密支援目前為美國東部、美國西部2、美國中南部、US Gov 維吉尼亞州和 US Gov 亞利桑那州區域提供公開預覽。
@@ -42,17 +40,17 @@ Batch 會根據集區設定和區域支援，在計算節點上套用這些磁�
 
 在 Azure 入口網站中建立 Batch 集區時，請選取 [**磁片加密**設定] 下的 [ **TemporaryDisk** ] 或 [ **OsAndTemporaryDisk** ]。
 
-![Azure 入口網站中 [磁片加密] 設定選項的螢幕擷取畫面。](./media/disk-encryption/portal-view.png)
+:::image type="content" source="media/disk-encryption/portal-view.png" alt-text="Azure 入口網站中 [磁片加密] 設定選項的螢幕擷取畫面。":::
 
 建立集區之後，您可以在集區的 [ **屬性** ] 區段中看到磁片加密設定目標。
 
-![顯示 Azure 入口網站中磁片加密設定目標的螢幕擷取畫面。](./media/disk-encryption/disk-encryption-configuration-target.png)
+:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="顯示 Azure 入口網站中磁片加密設定目標的螢幕擷取畫面。":::
 
 ## <a name="examples"></a>範例
 
 下列範例示範如何使用 Batch .NET SDK、Batch REST API 和 Azure CLI 來加密 Batch 集區上的 OS 和暫存磁片。
 
-### <a name="batch-net-sdk"></a>Batch .NET SDK 
+### <a name="batch-net-sdk"></a>Batch .NET SDK
 
 ```csharp
 pool.VirtualMachineConfiguration.DiskEncryptionConfiguration = new DiskEncryptionConfiguration(
@@ -61,7 +59,6 @@ pool.VirtualMachineConfiguration.DiskEncryptionConfiguration = new DiskEncryptio
 ```
 
 ### <a name="batch-rest-api"></a>Batch REST API
-
 
 REST API URL：
 ```
@@ -107,3 +104,8 @@ az batch pool create \
     --node-agent-sku-id "batch.node.ubuntu 18.04" \
     --disk-encryption-targets OsDisk TemporaryDisk
 ```
+
+## <a name="next-steps"></a>後續步驟
+
+- 深入瞭解 [Azure 磁碟儲存體的伺服器端加密](../virtual-machines/windows/disk-encryption.md)。
+- 如需更深入的 Batch 概觀，請參閱 [Batch 服務工作流程和資源](batch-service-workflow-features.md)。

@@ -3,16 +3,16 @@ title: Azure Migrate 中的 VMware 評估支援
 description: 了解使用 Azure Migrate 伺服器評估來評估 VMware VM 的支援。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9c9b1f7687d1ab1af36ac603501ecbaa7affd9b6
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 4f724297f216267dadda31be4bd548eb241b9845
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387025"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266964"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評估的支援矩陣 
 
-本文摘要說明當您探索及評估 VMware Vm 以遷移至 Azure 時的必要條件和支援需求，請使用[Azure Migrate： Server 評定](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具。 若要評估 VMware Vm，請建立 Azure Migrate 專案，並將伺服器評估工具加入至專案。 新增工具之後，請部署 Azure Migrate 設備。 設備會持續探索內部部署機器，並將機器的中繼資料和效能資料傳送至 Azure。 探索完成之後，請將探索到的機器收集到群組中，然後為群組執行評估。 
+本文摘要說明當您使用 [Azure Migrate：伺服器評估](migrate-services-overview.md#azure-migrate-server-assessment-tool) 工具探索和評估 VMware vm 以遷移至 Azure 時的必要條件和支援需求。 若要評估 VMware Vm，請建立 Azure Migrate 專案，並將伺服器評定工具新增至專案。 新增工具之後，請部署 Azure Migrate 設備。 設備會持續探索內部部署機器，並將機器的中繼資料和效能資料傳送至 Azure。 探索完成之後，請將探索到的機器收集到群組中，然後為群組執行評估。 
 
 如果您想要將 VMware VM 遷移至 Azure，請檢閱[遷移支援矩陣](migrate-support-matrix-vmware-migration.md)。
 
@@ -33,13 +33,14 @@ ms.locfileid: "87387025"
 
 **VMware** | **詳細資料**
 --- | ---
-**vCenter Server** | 您想要探索及評估的機器必須受到 vCenter Server 5.5、6.0、6.5 或6.7 版的管理。
-**權限** | 伺服器評估需要 vCenter Server 唯讀帳戶來進行探索和評估。<br/><br/> 如果您想要執行應用程式探索或相依性視覺效果，帳戶需要**虛擬機器**  >  **來賓作業**的許可權。
+**vCenter Server** | 您要探索和評估的機器必須由 vCenter Server 版本5.5、6.0、6.5 或6.7 來管理。
+**權限** | 伺服器評定需要 vCenter Server 唯讀帳戶才能進行探索和評量。<br/><br/> 如果您想要進行應用程式探索或相依性視覺效果，則帳戶必須啟用**虛擬機器**  >  **來賓作業**的許可權。
 
 ## <a name="vm-requirements"></a>VM 需求
 **VMware** | **詳細資料**
 --- | ---
 **VMware VM** | 所有作業系統都可以進行評估以進行遷移。 
+**存放裝置** | 支援連接至 SCSI、IDE 和以 SATA 為基礎之控制器的磁片。
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate 設備需求
@@ -48,7 +49,7 @@ Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探
 
 - 了解 VMware 的[設備需求](migrate-appliance.md#appliance---vmware)。
 - 在 Azure Government 中，您必須[使用指令碼](deploy-appliance-script-government.md)來部署設備。
-- 檢查設備在[公用](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)雲端中所需存取的 url。
+- 查看設備在 [公用](migrate-appliance.md#public-cloud-urls) 和 [政府](migrate-appliance.md#government-cloud-urls) 雲端中需要存取的 url。
 
 
 ## <a name="port-access-requirements"></a>埠存取需求
@@ -57,32 +58,32 @@ Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探
 --- | ---
 **設備** | TCP 連接埠 3389上的輸入連線，以允許遠端桌面對設備連線。<br/><br/> 連接埠 44368 上的輸入連線，以使用 URL 從遠端存取設備管理應用程式：```https://<appliance-ip-or-name>:44368``` <br/><br/>連接埠 443 (HTTPS) 上的輸出連線，以將探索和效能中繼資料傳送至 Azure Migrate。
 **vCenter 伺服器** | TCP 連接埠 443 上的輸入連線，以允許設備收集設定和效能中繼資料以進行評估。 <br/><br/> 根據預設，設備會連線到連接埠 443 上的 vCenter。 如果 vCenter 伺服器接聽不同的連接埠，您可以在設定探索時修改連接埠。
-**ESXi 主機** | 如果您想要執行[應用程式探索](how-to-discover-applications.md)或[無代理](concepts-dependency-visualization.md#agentless-analysis)程式相依性分析，則設備會連線到 TCP 通訊埠443上的 ESXi 主機，以探索應用程式，並在 vm 上執行無代理程式相依性視覺效果。
+**ESXi 主機** | 如果您想要執行 [應用程式探索](how-to-discover-applications.md)或 [無代理](concepts-dependency-visualization.md#agentless-analysis)程式相依性分析，則設備會連接到 TCP 埠443上的 ESXi 主機，以探索應用程式，並在 vm 上執行無代理程式相依性視覺效果。
 
 ## <a name="application-discovery-requirements"></a>應用程式探索需求
 
-除了探索機器以外，伺服器評估也可以探索在機器上執行的應用程式、角色和功能。 探索應用程式詳細目錄可讓您找出並規劃專為內部部署工作負載量身打造的遷移路徑。 
+除了探索機器之外，伺服器評量還可以探索機器上執行的應用程式、角色和功能。 探索應用程式詳細目錄可讓您找出並規劃專為內部部署工作負載量身打造的遷移路徑。 
 
 **支援** | **詳細資料**
 --- | ---
 **支援的機器** | 應用程式探索目前僅支援 VMware VM。
 **探索** | 應用程式探索不需要代理程式。 其會使用機器來賓認證，並使用 WMI 和 SSH 呼叫從遠端存取機器。
 **VM 支援** | 執行所有 Windows 和 Linux 版本的 Vm 都支援應用程式探索。
-**vCenter** | 用於評估的 vCenter Server 唯讀帳戶，需要為**虛擬機器**  >  **來賓作業**啟用許可權，才能與 VM 進行應用程式探索。
-**VM 存取** | 應用程式探索需要 VM 上的本機使用者帳戶，才能進行應用程式探索。<br/><br/> Azure Migrate 目前支援所有 Windows 伺服器使用一個認證，而所有 Linux 伺服器都有一個認證。<br/><br/> 請為 Windows VM 建立來賓使用者帳戶，以及為所有 Linux VM 建立常規/一般使用者帳戶 (非 sudo 存取權)。
+**vCenter** | 用於評量的 vCenter Server 唯讀帳戶，需要**虛擬機器**  >  **來賓作業**啟用的許可權，才能與 VM 互動以進行應用程式探索。
+**VM 存取** | 應用程式探索需要 VM 上的本機使用者帳戶，才能進行應用程式探索。<br/><br/> Azure Migrate 目前支援在所有 Windows 伺服器上使用一個認證，以及為所有 Linux 伺服器使用一個認證。<br/><br/> 請為 Windows VM 建立來賓使用者帳戶，以及為所有 Linux VM 建立常規/一般使用者帳戶 (非 sudo 存取權)。
 **VMware 工具** | 您想要探索的 VM 上必須安裝並執行 VMware 工具。 <br/><br/> VMware 工具版本必須為 10.2.0 之後。
 **PowerShell** | VM 必須安裝 PowerShell 2.0 版或更新版本。
 **連接埠存取** | 在想要探索的 VM 執行所在的 ESXi 主機上，Azure Migrate 設備必須能夠連線到 TCP 連接埠 443。
 **限制** | 針對應用程式探索，您最多可以在每個 Azure Migrate 設備上探索 10,000 部 VM。
 
 
-## <a name="dependency-analysis-requirements-agentless"></a>相依性分析需求（無代理程式）
+## <a name="dependency-analysis-requirements-agentless"></a> (無代理程式) 的相依性分析需求
 
 [相依性分析](concepts-dependency-visualization.md)可協助您識別所要評估並遷移至 Azure 的內部部署機器之間的相依性。 下表摘要說明用於設定無代理程式相依性分析的需求。
 
 **需求** | **詳細資料**
 --- | --- 
-**部署之前** | 請先備妥 Azure Migrate 專案，並已在專案中新增伺服器評估工具。<br/><br/>  您會在設定 Azure Migrate 設備以探索內部部署 VMware 機器之後，部署相依性視覺效果。<br/><br/> [了解如何](create-manage-projects.md)第一次建立專案。<br/> [了解如何](how-to-assess.md)將評估工具新增至現有專案。<br/> [了解如何](how-to-set-up-appliance-vmware.md)設定 Azure Migrate 設備以評估 VMware VM。
+**部署之前** | 請先備妥 Azure Migrate 專案，並已在專案中新增伺服器評估工具。<br/><br/>  在設定 Azure Migrate 設備之後，您會部署相依性視覺效果，以探索您的內部部署 VMware 機器。<br/><br/> [了解如何](create-manage-projects.md)第一次建立專案。<br/> [了解如何](how-to-assess.md)將評估工具新增至現有專案。<br/> [了解如何](how-to-set-up-appliance-vmware.md)設定 Azure Migrate 設備以評估 VMware VM。
 **支援的機器** | 目前僅支援 VMware VM。
 **Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 位元)。
 **vCenter Server 認證** | 相依性視覺效果需要具有唯讀存取權的 vCenter Server 帳戶，以及為 [虛擬機器] > [來賓作業] 啟用權限。
@@ -93,17 +94,17 @@ Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探
 **VMware 工具** | 您想要分析的每個 VM 上必須安裝並執行 VMware 工具 (10.2 之後的版本)。
 
 **PowerShell** |Windows Vm 必須安裝 PowerShell 2.0 版或更新版本。
-**埠存取**|在執行您想要分析之 Vm 的 ESXi 主機上，Azure Migrate 設備必須能夠連線到 TCP 通訊埠443。
+**埠存取** |在執行您想要分析之 Vm 的 ESXi 主機上，Azure Migrate 設備必須能夠連線到 TCP 埠443。
 
 
-## <a name="dependency-analysis-requirements-agent-based"></a>相依性分析需求（以代理程式為基礎）
+## <a name="dependency-analysis-requirements-agent-based"></a>以代理程式為基礎的)  (相依性分析需求
 
 [相依性分析](concepts-dependency-visualization.md)可協助您識別所要評估並遷移至 Azure 的內部部署機器之間的相依性。 下表摘要說明用於設定代理程式型相依性分析的需求。 
 
 **需求** | **詳細資料** 
 --- | --- 
 **部署之前** | 請先備妥 Azure Migrate 專案，並將「Azure Migrate：伺服器評估」工具新增至專案中。<br/><br/>  請在設定 Azure Migrate 設備以探索內部部署機器之後，部署相依性視覺效果。<br/><br/> [了解如何](create-manage-projects.md)第一次建立專案。<br/> [了解如何](how-to-assess.md)將評估工具新增至現有專案。<br/> 了解如何設定 Azure Migrate 設備，以評估 [Hyper-V](how-to-set-up-appliance-hyper-v.md)、[VMware](how-to-set-up-appliance-vmware.md) 或實體伺服器。
-**支援的機器** | 支援所有電腦。
+**支援的機器** | 支援所有機器。
 **Azure Government** | 在 Azure Government 中無法使用相依性視覺效果。
 **Log Analytics** | Azure Migrate 會使用 [Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)中的[服務對應](../azure-monitor/insights/service-map.md)解決方案來實現相依性視覺效果。<br/><br/> 請將新的或現有的 Log Analytics 工作區與 Azure Migrate 專案建立關聯。 Azure Migrate 專案的工作區在新增之後就無法進行修改。 <br/><br/> 此工作區必須位於和 Azure Migrate 專案相同的訂用帳戶中。<br/><br/> 此工作區必須位於「美國東部」、「東南亞」或「西歐」區域。 其他區域中的工作區則無法與專案相關聯。<br/><br/> 此工作區必須位於[支援服務對應](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)的區域中。<br/><br/> 在 Log Analytics 中，與 Azure Migrate 相關聯的工作區會標記上遷移專案金鑰和專案名稱。
 **所需的代理程式** | 在您要分析的每部機器上安裝下列代理程式：<br/><br/> [Microsoft Monitoring agent (MMA)](../azure-monitor/platform/agent-windows.md)。<br/> [相依性代理程式](../azure-monitor/platform/agents-overview.md#dependency-agent)。<br/><br/> 如果內部部署機器未連線到網際網路，則需要下載 Log Analytics 閘道並安裝到機器上。<br/><br/> 深入了解如何安裝 [Dependency Agent](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) 和 [MMA](how-to-create-group-machine-dependencies.md#install-the-mma)。

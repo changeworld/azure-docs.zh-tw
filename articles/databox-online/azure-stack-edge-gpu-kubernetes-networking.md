@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 8394ddbc4247eb992532fb11d06d8f5432edd1c7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4eab89710e031ead0a3758afd2367e60d26f395b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083406"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268120"
 ---
-# <a name="kubernetes-networking-in-your-azure-stack-edge-device"></a>Azure Stack Edge 裝置中的 Kubernetes 網路
+# <a name="kubernetes-networking-in-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU 裝置中的 Kubernetes 網路
 
 在您的 Azure Stack Edge 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 建立 Kubernetes 叢集之後，就可以將容器化應用程式部署到 pod 中的 Kubernetes 叢集。 有不同的方式可將網路功能用於 Kubernetes 叢集中的 pod。 
 

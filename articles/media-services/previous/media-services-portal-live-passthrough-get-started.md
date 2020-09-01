@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 51d3d859bbd176a6e1fac92b75c6120301a5066f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15b876104dfa1a35077a34aa178d650e2d68855e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084512"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266726"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>使用 Azure 入口網站以內部部署編碼器執行即時串流
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [入口網站](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -47,7 +50,7 @@ ms.locfileid: "87084512"
 * [使用 Azure 媒體服務之即時串流的概觀](media-services-manage-channels-overview.md)
 * [使用會建立多位元速率串流的內部部署編碼器執行即時串流](media-services-live-streaming-with-onprem-encoders.md)
 
-## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>常見的即時串流案例
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>常見即時串流案例
 
 下列步驟描述當我們建立一般即時串流應用程式 (其使用針對即時通行傳遞設定的通道) 時，會涉及到的各種工作。 本教學課程示範如何建立及管理即時通行通道和即時事件。
 
@@ -55,7 +58,7 @@ ms.locfileid: "87084512"
 > 確定您想要串流內容的串流端點已處於 [執行中]**** 狀態。 
     
 1. 將攝影機連接到電腦。 <br/>如需了解裝備，請參閱[簡單的可攜式活動視訊器材裝備]( https://link.medium.com/KNTtiN6IeT) \(英文\)。
-1. 啟動並設定內部部署即時編碼器，讓它輸出多位元速率 RTMP 或 Fragmented MP4 串流。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](https://go.microsoft.com/fwlink/?LinkId=532824)。<br/>此外，請參閱此 blog：[使用 OBS 的即時串流生產](https://link.medium.com/ttuwHpaJeT)。
+1. 啟動並設定內部部署即時編碼器，讓它輸出多位元速率 RTMP 或 Fragmented MP4 串流。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](https://go.microsoft.com/fwlink/?LinkId=532824)。<br/>另請參閱此 blog： [使用 OBS 的即時串流生產](https://link.medium.com/ttuwHpaJeT)。
    
     此步驟也可以在您建立通道之後執行。
 1. 建立並啟動即時通行通道。

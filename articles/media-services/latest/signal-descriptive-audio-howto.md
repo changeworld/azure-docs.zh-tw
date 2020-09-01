@@ -3,23 +3,25 @@ title: 使用 Azure 媒體服務 v3 來為描述性音訊曲目提供信號 |Mic
 description: 遵循本教學課程的步驟來上傳檔案、編碼影片、新增描述性音訊播放軌，並使用媒體服務 v3 串流您的內容。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.date: 09/25/2019
-ms.author: juliako
-ms.openlocfilehash: cce2dfe943519f39fbe0660338babf782fee4336
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 1a8986dcba9dc64eb77d8bc8c6e77704fa212abb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006647"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267423"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>指示描述性音訊曲目
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 您可以在影片中加入旁白曲目，協助視障用戶藉由聽取旁白來追蹤錄影。 在媒體服務 v3 中，您可以將資訊清單檔中的音訊播放軌加上批註，以發出描述性的音訊曲目。
 

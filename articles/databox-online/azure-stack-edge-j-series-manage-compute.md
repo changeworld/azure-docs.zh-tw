@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 46041e963fc57467b0445db5857acfd4b0e28ed7
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 1ea52c393ec9897d43714d69ff448038b65ee555
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147009"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268786"
 ---
-# <a name="manage-compute-on-your-azure-stack-edge"></a>管理您 Azure Stack Edge 上的計算
+# <a name="manage-compute-on-your-azure-stack-edge-gpu"></a>管理 Azure Stack Edge GPU 上的計算
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -131,6 +131,6 @@ ms.locfileid: "89147009"
 
 3. 在同步完成後結束對話方塊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何針對 [您的 Azure Stack Edge 進行疑難排解](azure-stack-edge-gpu-troubleshoot.md)。

@@ -1,6 +1,6 @@
 ---
 title: Azure 媒體服務串流端點概觀 | Microsoft Docs
-description: 本文提供 Azure 媒體服務串流端點的總覽。
+description: 本文概述 Azure 媒體服務串流端點。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,21 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: dbd460b584789aa7d40de9ba6430ff6202c3764b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a541e1b068ec3667120bbb31e65ca7bc35febadb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052529"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265910"
 ---
 # <a name="streaming-endpoints-overview"></a>串流端點概觀  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 在「Microsoft Azure 媒體服務」(AMS) 中，「串流端點」**** 代表可以直接將內容傳遞給用戶端播放程式應用程式，或傳遞給「內容傳遞網路」(CDN) 以進行進一步散發的串流服務。 媒體服務也提供順暢的 Azure CDN 整合。 來自 StreamingEndpoint 服務的輸出資料流可以是即時資料流、隨選視訊，也可以是媒體服務帳戶中漸進式的資產下載。 每個「Azure 媒體服務」帳戶皆包含一個預設的 StreamingEndpoint。 您可以在該帳戶下建立額外的 StreamingEndpoint。 StreamingEndpoint 有 1.0 和 2.0 兩個版本。 從 2017 年 1 月 10 日開始，所有新建立的 AMS 帳戶都會包含 2.0 版**預設** StreamingEndpoint。 您新增到此帳戶的額外串流端點也將會是 2.0 版。 這項變更不會影響現有的帳戶，現有的 StreamingEndpoint 會是 1.0 版並可升級到 2.0 版。 隨著這項變更，將會有行為、計費及功能變更 (如需詳細資訊，請參閱下列**串流類型和版本**一節)。
 
-Azure 媒體服務將下列屬性新增至串流端點實體： **CdnProvider**、 **CdnProfile**、 **StreamingEndpointVersion**。 如需這些屬性的詳細概觀，請參閱[這裡](/rest/api/media/operations/streamingendpoint)。 
+Azure 媒體服務將下列屬性新增至串流端點實體： **>cdnprovider**、 **>cdnprofile**、 **>streamingendpointversion**。 如需這些屬性的詳細概觀，請參閱[這裡](/rest/api/media/operations/streamingendpoint)。 
 
 當您建立 Azure 媒體服務帳戶時，系統會為您建立預設標準串流端點 (處於**已停止**狀態)。 您無法刪除預設串流端點。 根據目標區域中的 Azure CDN 可用性而定，依預設，新建立的預設串流端點也包含 "StandardVerizon" CDN 提供者整合。 
                 
@@ -47,15 +49,15 @@ Azure 媒體服務將下列屬性新增至串流端點實體： **CdnProvider**�
 
 ### <a name="standardpremium-types-version-20"></a>標準/進階類型 (2.0 版)
 
-從2017年1月版本的媒體服務開始，您有兩種串流類型： **Standard** （預覽）和**Premium**。 這些類型是串流端點 "2.0" 版的一部分。
+從媒體服務的2017年1月版本開始，您有兩種串流類型： **標準** (預覽版) 和 **Premium**。 這些類型是串流端點 "2.0" 版的一部分。
 
 
 |類型|說明|
 |--------|--------|  
-|**Standard**|預設的串流端點是一種**標準**類型，可以藉由調整串流單位來變更為 Premium 類型。|
-|**高級** |這個選項適用於需要更大規模或控制的專業案例。 您可以藉由調整串流單位來移至**Premium**類型。<br/>專用的串流端點會存留在隔離的環境中，而不會競爭資源。|
+|**Standard**|預設串流端點是 **標準** 型別，可以藉由調整串流單位來變更為 Premium 類型。|
+|**高級** |這個選項適用於需要更大規模或控制的專業案例。 您可以藉由調整串流單位來移至 **Premium** 類型。<br/>專用串流端點存留于隔離的環境中，且不會競爭資源。|
 
-對於想要將內容傳遞給大型網際網路物件的客戶，我們建議您在串流端點上啟用 CDN。
+如果客戶想要將內容傳遞給大型網際網路觀眾，建議您在串流端點上啟用 CDN。
 
 如需詳細資訊，請參閱下列[比較串流類型](#comparing-streaming-types)一節。
 
@@ -78,7 +80,7 @@ Azure 媒體服務將下列屬性新增至串流端點實體： **CdnProvider**�
 |類型|StreamingEndpointVersion|ScaleUnits|CDN|計費|
 |--------------|----------|-----------------|-----------------|-----------------|
 |傳統|1.0|0|NA|免費|
-|標準串流端點（預覽）|2.0|0|是|已支付|
+|標準串流端點 (預覽) |2.0|0|是|已支付|
 |進階串流單位|1.0|>0|是|已支付|
 |進階串流單位|2.0|>0|是|已支付|
 
@@ -86,19 +88,19 @@ Azure 媒體服務將下列屬性新增至串流端點實體： **CdnProvider**�
 
 功能|標準|Premium
 ---|---|---
-輸送量 |在使用 CDN 時，最高可達 600 Mbps，並可提供更高的有效輸送量。|每個串流單位 (SU) 200 Mbps。 使用 CDN 時，可以提供更高的有效輸送量。
+Throughput |最高可達 600 Mbps，並可在使用 CDN 時提供更高的有效輸送量。|每個串流單位 (SU) 200 Mbps。 使用 CDN 時，可提供更高的有效輸送量。
 CDN|Azure CDN、協力廠商 CDN 或沒有 CDN。|Azure CDN、協力廠商 CDN 或沒有 CDN。
 按比例計費| 每日|每日
 動態加密|是|是
 動態封裝|是|是
 調整|自動相應增加至目標輸送量。|其他串流單位。
-IP 篩選/G20/自訂主機<sup>1</sup>|是|是
+IP 篩選/G20/自訂主機 <sup>1</sup>|是|是
 漸進式下載|是|是
 建議用法 |建議用於絕大多數的串流案例。|專業用法。 
 
-<sup>1</sup>只有在未在端點上啟用 CDN 時，才直接用於串流端點。<br/>
+只有當端點上未啟用 CDN 時，才會直接在串流端點上使用<sup>1</sup> 。<br/>
 
-如需 SLA 資訊，請參閱[定價和 SLA](https://azure.microsoft.com/pricing/details/media-services/)。
+如需 SLA 資訊，請參閱 [定價和 sla](https://azure.microsoft.com/pricing/details/media-services/)。
 
 ## <a name="migration-between-types"></a>在類型之間移轉
 
