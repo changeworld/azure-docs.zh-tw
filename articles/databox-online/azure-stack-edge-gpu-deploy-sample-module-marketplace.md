@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 1532283be8521ad5c6cd5a9e2252e5ba839a4aa3
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: ac9ff084476f37348b72bdb42b9b74660132b762
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083492"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254622"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-device"></a>從 Azure Stack Edge 裝置上的 Azure Marketplace 部署已啟用 GPU 的 IoT 模組
+# <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-gpu-device"></a>從 Azure Stack Edge GPU 裝置上的 Azure Marketplace 部署已啟用 GPU 的 IoT 模組
 
 本文說明如何從 Azure Stack Edge 裝置上的 Azure Marketplace，將圖形處理單元部署 (GPU) 啟用的 IoT Edge 模組。 
 
@@ -28,7 +28,7 @@ ms.locfileid: "89083492"
 
 本文中的 GPU 範例模組包含適用于 GPU 之 CPU 的 PyTorch 和 TensorFlow 基準範例程式碼。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請確定您擁有：
 

@@ -3,20 +3,20 @@ title: 使用 Azure 媒體播放器播放 - Azure | Microsoft Docs
 description: Azure 媒體播放器是一款網頁視訊播放器，可以在各種瀏覽器和裝置上播放 Microsoft Azure 媒體服務的媒體內容。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
-ms.author: juliako
-ms.openlocfilehash: ca2da842d9a2d529cf5ea01211efaff2047a9e9a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.author: inhenkel
+ms.openlocfilehash: a3b32110a7236d47946c3a1f901aaedf51b47775
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836015"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89253976"
 ---
 # <a name="playback-with-azure-media-player"></a>使用 Azure 媒體播放機播放
 
@@ -25,7 +25,7 @@ Azure 媒體播放器是一款網頁視訊播放器，可以在各種瀏覽器�
 我們可以利用 Microsoft Azure 媒體服務播放 HLS、DASH、Smooth Streaming 資料流等格式的內容。 Azure Media Player 會考量這些不同的格式，並根據平台/瀏覽器功能自動播放最合適的連結。 媒體服務也允許利用 PlayReady 加密或 AES 128 位元信封加密，進行資產的動態加密。 只要設定正確，Azure Media Player 允許解密 PlayReady 和 AES 128 位元加密的內容。
 
 > [!NOTE]
-> Widevine 加密內容需要 HTTPS 播放。
+> 需要 HTTPS 播放才能 Widevine 加密的內容。
 
 ## <a name="use-azure-media-player-demo-page"></a>使用 Azure 媒體播放器示範頁面
 

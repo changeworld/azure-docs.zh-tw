@@ -13,23 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 84e4e34ab7b9f0250ae7bc94248fa98cbf23cd6c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3da6dd877a94da64f85f093ae98a0b8a109ab2e1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084376"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255098"
 ---
-# <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>從媒體索引子和媒體索引子2遷移到影片索引子
+# <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>從媒體索引子和媒體索引子2遷移至影片索引子
 
-[Azure 媒體索引子](media-services-index-content.md)媒體處理器和[Azure 媒體索引子 2 Preview](media-services-process-content-with-indexer2.md)媒體處理器已淘汰。 如需淘汰日期，請參閱此[舊版元件](legacy-components.md)主題。 [Azure 媒體服務影片索引器](../video-indexer/index.yml)將取代這些舊版媒體處理器。
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-Azure 媒體服務影片索引子建基於 Azure 媒體分析、Azure 認知搜尋、認知服務（例如臉部 API、Microsoft Translator、電腦視覺 API 和自訂語音服務）。 它可讓您使用影片索引器的影片與音訊模型，從影片中擷取見解。 若要查看影片索引子可以在哪些案例中使用、它所提供的功能，以及如何開始進行，請參閱[影片索引子的影片和音訊模型](../video-indexer/video-indexer-overview.md)。 
+[Azure 媒體索引子](media-services-index-content.md)媒體處理器和[Azure 媒體索引子 2 Preview](media-services-process-content-with-indexer2.md)媒體處理器即將淘汰。 如需淘汰日期，請參閱此[舊版元件](legacy-components.md)主題。 [Azure 媒體服務影片索引器](../video-indexer/index.yml)將取代這些舊版媒體處理器。
 
-您可以使用[Azure 媒體服務 v3 分析器](../latest/analyzing-video-audio-files-concept.md)預設，或直接使用[影片索引子 api](https://api-portal.videoindexer.ai/)，從您的影片和音訊檔案中摘錄見解。 目前，影片索引子 Api 和媒體服務 v3 Api 所提供的功能有重迭。
+Azure 媒體服務影片索引子建基於 Azure 媒體分析、Azure 認知搜尋、認知服務 (例如臉部 API、Microsoft Translator、電腦視覺 API 和自訂語音服務) 。 它可讓您使用影片索引器的影片與音訊模型，從影片中擷取見解。 若要瞭解影片索引子可用於哪些案例、它提供哪些功能，以及如何開始使用，請參閱 [影片索引子影片和音訊模型](../video-indexer/video-indexer-overview.md)。 
+
+您可以使用 [Azure 媒體服務 v3 分析器](../latest/analyzing-video-audio-files-concept.md) 預設，或直接使用 [影片索引子 api](https://api-portal.videoindexer.ai/)，從影片和音訊檔案中解壓縮見解。 目前，影片索引子 Api 和媒體服務 v3 Api 所提供的功能有重迭。
 
 > [!NOTE]
-> 若要瞭解何時要使用影片索引子與媒體服務分析器預設值，請參閱[比較檔](../video-indexer/compare-video-indexer-with-media-services-presets.md)。 
+> 若要瞭解何時要使用影片索引子與媒體服務分析器預設值，請參閱 [比較檔](../video-indexer/compare-video-indexer-with-media-services-presets.md)。 
 
 本文討論從 Azure 媒體索引子和 Azure 媒體索引子2遷移至 Azure 媒體服務影片索引子的步驟。  
 
@@ -37,41 +39,41 @@ Azure 媒體服務影片索引子建基於 Azure 媒體分析、Azure 認知搜�
 
 |如果您需要  |然後在受影響的網域控制站上執行 |
 |---|---|
-|針對隱藏式輔助字幕檔案格式的任何媒體檔案格式，提供語音轉換文字轉譯的解決方案： VTT、SRT 或 TTML<br/>還有其他的音訊深入資訊，例如關鍵字、主題推斷、聲場活動、喇叭 diarization、實體的提取和轉譯。| 透過影片索引子 v2 REST API 或 Azure 媒體服務 v3 音訊分析器預設值，將您的應用程式更新為使用 Azure 影片索引子功能。|
+|針對隱藏式輔助字幕檔案格式的任何媒體檔案格式，提供語音轉換文字轉譯的解決方案： VTT、SRT 或 TTML<br/>以及其他音訊見解，例如：關鍵字、主題推斷、聲場活動、喇叭 diarization、實體解壓縮和轉譯| 將您的應用程式更新為透過影片索引子 v2 REST API 或 Azure 媒體服務 v3 音訊分析器預設值來使用 Azure 影片索引子功能。|
 |語音轉換文字功能| 直接使用認知服務語音 API。|  
 
 ## <a name="getting-started-with-video-indexer"></a>開始使用影片索引子
 
-下一節會將您指向相關的連結：[如何開始使用影片索引子？](../video-indexer/video-indexer-overview.md#how-can-i-get-started-with-video-indexer) 
+下一節會將您指向相關連結： [如何開始使用影片索引子？](../video-indexer/video-indexer-overview.md#how-can-i-get-started-with-video-indexer) 
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>開始使用媒體服務 v3 Api
 
-Azure 媒體服務 v3 API 可讓您透過[Azure 媒體服務 v3 分析器](../latest/analyzing-video-audio-files-concept.md)預設值，從您的影片和音訊檔案中摘錄見解。 
+Azure 媒體服務 v3 API 可讓您透過 [Azure 媒體服務 v3 分析器](../latest/analyzing-video-audio-files-concept.md)預設，從影片和音訊檔案中解壓縮見解。 
 
-**AudioAnalyzerPreset** 可讓您從音訊檔案或視訊檔案擷取多個音訊深入資訊。 輸出包含音訊文字記錄的 VTT 或 TTML 檔案，以及 JSON 檔案（包含所有其他的音訊深入解析）。 音訊深入解析包含關鍵字、說話者索引和語音情感分析。 AudioAnalyzerPreset 也支援特定語言的語言偵測。 如需詳細資訊，請參閱[轉換](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)。
+**AudioAnalyzerPreset** 可讓您從音訊檔案或視訊檔案擷取多個音訊深入資訊。 輸出中會包含音訊文字記錄的 VTT 或 TTML 檔案，以及與所有其他音訊深入解析)  (的 JSON 檔案。 音訊見解包括關鍵字、說話者索引和語音情感分析。 AudioAnalyzerPreset 也支援特定語言的語言偵測。 如需詳細資訊，請參閱 [轉換](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)。
 
 ### <a name="get-started"></a>開始使用
 
 若要開始使用，請參閱：
 
 * [教學課程](../latest/analyze-videos-tutorial-with-api.md)
-* AudioAnalyzerPreset 範例： [JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer)或[.net sdk](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)
-* VideoAnalyzerPreset 範例： [JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java/tree/master/VideoAnalytics/VideoAnalyzer)或[.net sdk](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/VideoAnalytics/VideoAnalyzer)
+* AudioAnalyzerPreset 範例： [JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer) 或 [.net sdk](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)
+* VideoAnalyzerPreset 範例： [JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java/tree/master/VideoAnalytics/VideoAnalyzer) 或 [.net sdk](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/VideoAnalytics/VideoAnalyzer)
 
-## <a name="getting-started-with-cognitive-services-speech-services"></a>認知服務語音服務入門
+## <a name="getting-started-with-cognitive-services-speech-services"></a>開始使用認知服務語音服務
 
-[Azure 認知服務](../../cognitive-services/index.yml)提供語音轉換文字服務，可即時可將音訊串流至文字，讓您的應用程式、工具或裝置可以取用或顯示。 您可以使用語音轉換文字[來自訂您自己的聲場模型、語言模型或發音模型](../../cognitive-services/speech-service/how-to-custom-speech-train-model.md)。 如需詳細資訊，請參閱[認知服務語音轉換文字](../../cognitive-services/speech-service/speech-to-text.md)。 
+[Azure 認知服務](../../cognitive-services/index.yml) 提供語音轉換文字服務，可即時將音訊串流轉譯至文字，讓您的應用程式、工具或裝置可以使用或顯示。 您可以使用語音轉換文字 [來自訂您自己的聲場模型、語言模型或發音模型](../../cognitive-services/speech-service/how-to-custom-speech-train-model.md)。 如需詳細資訊，請參閱 [認知服務語音轉換文字](../../cognitive-services/speech-service/speech-to-text.md)。 
 
 > [!NOTE] 
-> 語音轉換文字服務不會採用影片檔案格式，而且只會採用[特定的音訊格式](../../cognitive-services/speech-service/rest-speech-to-text.md#audio-formats)。 
+> 語音轉換文字服務不會採用影片檔案格式，而且只會採用 [特定的音訊格式](../../cognitive-services/speech-service/rest-speech-to-text.md#audio-formats)。 
 
-如需文字轉換語音服務以及如何開始使用的詳細資訊，請參閱[什麼是語音轉換文字？](../../cognitive-services/speech-service/speech-to-text.md)
+如需文字轉換語音服務及如何開始使用的詳細資訊，請參閱 [什麼是語音轉文字？](../../cognitive-services/speech-service/speech-to-text.md)
 
-## <a name="known-differences-from-deprecated-services"></a>與已淘汰服務的已知差異 
+## <a name="known-differences-from-deprecated-services"></a>已淘汰服務的已知差異 
 
-您會發現影片索引子、Azure 媒體服務 v3 AudioAnalyzerPreset 和認知服務語音服務服務較可靠，並產生比淘汰的 Azure 媒體索引子1和 Azure 媒體索引子2處理器更佳的品質輸出。  
+您會發現影片索引子、Azure 媒體服務 v3 AudioAnalyzerPreset 和認知服務語音服務服務更可靠，而且會產生比淘汰的 Azure 媒體索引子1和 Azure 媒體索引子2處理器更高的品質輸出。  
 
-一些已知的差異包括： 
+有一些已知的差異，包括： 
 
 * 認知服務語音服務不支援關鍵字解壓縮。 不過，影片索引子和媒體服務 v3 AudioAnalyzerPreset 都提供一組更健全的 JSON 檔案格式關鍵字。 
 

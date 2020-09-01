@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Stack Edge 裝置上使用 kubectl 透過靜態布建的共用來部署 Kubernetes 具狀態應用程式 |Microsoft Docs
-description: 說明如何使用 Microsoft Azure Stack Edge 裝置上的 kubectl，透過靜態布建的共用來建立和管理 Kubernetes 具狀態應用程式部署。
+description: 說明如何使用 Azure Stack Edge GPU 裝置上的 kubectl，透過靜態布建的共用來建立和管理 Kubernetes 具狀態應用程式部署。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: cabd27849445c0eab93a6649d228a172b66bd1a4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 17be54536f785049aef6831e01f1f12219225b90
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083472"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254367"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>使用 kubectl 搭配 Azure Stack Edge 裝置上的 PersistentVolume 來執行 Kubernetes 具狀態應用程式
 
@@ -22,7 +22,7 @@ ms.locfileid: "89083472"
 此程式適用于已 [在 Azure Stack Edge 裝置上審核 Kubernetes 儲存體](azure-stack-edge-gpu-kubernetes-storage.md) ，並熟悉 [Kubernetes 儲存體](https://kubernetes.io/docs/concepts/storage/)概念的人。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 部署可設定狀態的應用程式之前，請確定您已在裝置和您將用來存取裝置的用戶端上完成下列必要條件：
 

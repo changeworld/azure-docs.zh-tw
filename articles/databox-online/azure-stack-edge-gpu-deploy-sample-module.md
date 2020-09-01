@@ -1,23 +1,23 @@
 ---
-title: 在您的 Microsoft Azure Stack Edge 裝置上部署 GPU 模組 |Microsoft Docs
+title: 在您的 Azure Stack Edge GPU 裝置上部署 GPU 模組 |Microsoft Docs
 description: 說明如何啟用計算，並透過本機 UI 讓您的 Azure Stack Edge 裝置計算就緒。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 68badb1524c869309a0e2d96eaf6c9e490111bf7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5af86001d46bf194c9b61f325052a4cde0d86d5e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083473"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254554"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-device"></a>在 Azure Stack Edge 裝置上部署已啟用 GPU 的 IoT 模組
+# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-gpu-device"></a>在 Azure Stack Edge GPU 裝置上部署已啟用 GPU 的 IoT 模組
 
-本文說明如何在 Azure Stack Edge 裝置上部署已啟用的 GPU IoT Edge 模組。 
+本文說明如何在 Azure Stack Edge GPU 裝置上部署已啟用的 GPU IoT Edge 模組。 
 
 在本文中，您將學會如何：
   - 準備 Azure Stack Edge 以執行 GPU 模組。
@@ -31,7 +31,7 @@ ms.locfileid: "89083473"
 
 本文中的 GPU 範例模組包含適用于 GPU 之 CPU 的 PyTorch 和 TensorFlow 基準範例程式碼。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請確定您擁有：
 

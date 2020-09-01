@@ -1,6 +1,6 @@
 ---
 title: 設定 Postman 以進行 Azure 媒體服務 REST API 呼叫
-description: 本文說明如何設定媒體服務 REST API 呼叫的 Postman。
+description: 本文說明如何針對媒體服務 REST API 呼叫設定 Postman。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: 21eb3d9862c8fa2b840117d5f0e9fbd0ad2214c9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4cdc3efc766daff38b566e71f06dc4db0f38fe7a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091720"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255506"
 ---
-# <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>設定媒體服務 v2 REST API 呼叫的 Postman  
+# <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>針對媒體服務 v2 REST API 呼叫設定 Postman
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
@@ -29,13 +31,13 @@ ms.locfileid: "87091720"
 
 說明如何使用 Azure 媒體服務 REST API 來完成各項工作的文章中，都會使用此環境和集合。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 安裝 [Postman](https://www.getpostman.com/) \(英文\) REST 用戶端，來執行在某些 AMS REST 教學課程中所示範的 REST API。 
 
     我們使用的是 **Postman**，但任何 REST 工具都適用。 其他替代方案為：搭配 REST 外掛程式的 **Visual Studio Code**，或 **Telerik Fiddler**。 
 
-## <a name="configure-the-environment"></a>建立環境 
+## <a name="configure-the-environment"></a>設定環境 
 
 1. 建立包含用於 AMS 教學課程中之環境變數的 .json 檔案。 命名檔案 (例如，**AzureMediaServices.postman_environment.json**)。 開啟該檔案，並將[此程式碼清單](postman-environment.md)中定義 Postman 環境的程式碼貼上。 
 2. 開啟 **Postman**。

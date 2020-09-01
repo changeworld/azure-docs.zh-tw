@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: d64db4ab8da1f5f0f4c2dc69b2bc6d4da66c8e91
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 6a59510b342f7ebd3969a4bb4fcfd75fffd04804
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146278"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254146"
 ---
-# <a name="set-azure-resource-manager-password"></a>設定 Azure Resource Manager 密碼
+# <a name="set-azure-resource-manager-password-on-azure-stack-edge-gpu-device"></a>在 Azure Stack Edge GPU 裝置上設定 Azure Resource Manager 密碼
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -146,6 +146,6 @@ ms.locfileid: "89146278"
     ```
 使用新密碼連接到 Azure Resource Manager。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [連接到 Azure Resource Manager](azure-stack-edge-j-series-connect-resource-manager.md)

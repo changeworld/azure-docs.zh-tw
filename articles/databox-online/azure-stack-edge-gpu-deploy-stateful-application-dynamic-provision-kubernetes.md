@@ -1,6 +1,6 @@
 ---
-title: 使用 kubectl 透過 Azure Stack Edge 裝置上動態布建的共用來部署 Kubernetes 具狀態應用程式 |Microsoft Docs
-description: 說明如何使用在 Microsoft Azure Stack Edge 裝置上的 kubectl，透過動態布建的共用來建立和管理 Kubernetes 具狀態應用程式部署。
+title: 使用 kubectl 透過 Azure Stack Edge GPU 裝置上動態布建的共用來部署 Kubernetes 具狀態應用程式 |Microsoft Docs
+description: 描述如何在 Microsoft Azure Stack Edge GPU 裝置上，使用 kubectl，透過動態布建的共用來建立和管理 Kubernetes 具狀態應用程式部署。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: e83b2b1cb7013b9d72bd2c2de8c7636d5c9d8773
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c787fc4c37c8fc3b4b8f007b1a84a5989a15fbc4
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083454"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254316"
 ---
-# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-device"></a>使用 kubectl 在 Azure Stack Edge 裝置上執行具有 StorageClass 的 Kubernetes 具狀態應用程式
+# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-gpu-device"></a>使用 kubectl 在 Azure Stack Edge GPU 裝置上執行具有 StorageClass 的 Kubernetes 具狀態應用程式
 
 本文說明如何使用 StorageClass 動態布建儲存體和部署，在 Kubernetes 中部署單一實例的可設定狀態應用程式。 部署會 `kubectl` 在現有的 Kubernetes 叢集上使用命令，並部署 MySQL 應用程式。 
 
 此程式適用于已 [在 Azure Stack Edge 裝置上審核 Kubernetes 儲存體](azure-stack-edge-gpu-kubernetes-storage.md) ，並熟悉 [Kubernetes 儲存體](https://kubernetes.io/docs/concepts/storage/)概念的人。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 部署可設定狀態的應用程式之前，請確定您已在裝置和您將用來存取裝置的用戶端上完成下列必要條件：
 

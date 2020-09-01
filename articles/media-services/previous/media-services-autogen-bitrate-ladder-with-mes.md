@@ -13,16 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0309579a674533ebd056c8493b149cc78beef607
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74896025"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254050"
 ---
-#  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>使用媒體編碼器標準自動產生位元速率階梯  
+#  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>使用媒體編碼器標準自動產生位元速率階梯
 
-## <a name="overview"></a>總覽
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
+
+## <a name="overview"></a>概觀
 
 本文章說明如何使用媒體編碼器標準 (MES) 根據解析度和位元速率自動產生輸入位元速率階梯 (位元速率解析組)。 自動產生的預設值絕對不會超過輸入解析度和位元速率。 例如，如果輸入是 720p 3 Mbps，則輸出會維持在最多 720p，且速率啟動低於 3 Mbps。
 
@@ -47,7 +49,7 @@ ms.locfileid: "74896025"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
+設定您的開發環境，並在 app.config 檔案中填入連線資訊，如 [使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)所述。 
 
 #### <a name="example"></a>範例
 
@@ -174,7 +176,7 @@ namespace AdaptiveStreamingMESPresest
 ### <a name="example-1"></a>範例 1
 高度 "1080" 和畫面播放速率 "29.970" 的來源會產生 6 個視訊層︰
 
-|階層|高度|寬度|位元速率 (kbps)|
+|層|高度|寬度|位元速率 (kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -186,7 +188,7 @@ namespace AdaptiveStreamingMESPresest
 ### <a name="example-2"></a>範例 2
 高度 "720" 和畫面播放速率 "23.970" 的來源會產生 5 個視訊層︰
 
-|階層|高度|寬度|位元速率 (kbps)|
+|層|高度|寬度|位元速率 (kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -197,7 +199,7 @@ namespace AdaptiveStreamingMESPresest
 ### <a name="example-3"></a>範例 3
 高度 "360" 和畫面播放速率 "29.970" 的來源會產生 3 個視訊層︰
 
-|階層|高度|寬度|位元速率 (kbps)|
+|層|高度|寬度|位元速率 (kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|

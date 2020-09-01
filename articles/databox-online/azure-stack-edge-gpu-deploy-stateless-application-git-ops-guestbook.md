@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Stack Edge 裝置上的啟用 Arc 的 Kubernetes 上部署 PHP 意見簿應用程式 |Microsoft Docs
+title: 在 Azure Stack Edge GPU 裝置上的已啟用 Arc 的 Kubernetes 上部署 PHP 意見簿應用程式 |Microsoft Docs
 description: 描述如何在 Azure Stack Edge 裝置的啟用 Arc 的 Kubernetes 叢集上，使用 Gitops) 將在已啟用 Arc 的叢集上部署具有 Redis 的 PHP 意見簿無狀態應用程式。
 services: databox
 author: alkohli
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 46cef291a447a7c243ee9ef66ee64e9c6264ad23
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 83ac012c861a0d066bdc47d8e15cbe7ac398aa23
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083464"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254214"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge"></a>在 Azure Stack Edge 上已啟用 Arc 的 Kubernetes 叢集上部署 PHP 意見簿無狀態應用程式（含 Redis）
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>在 Azure Stack Edge GPU 上已啟用 Arc 的 Kubernetes 叢集上部署 PHP 意見簿無狀態應用程式（含 Redis）
 
 本文說明如何使用 Kubernetes 和 Azure Arc 來建立和部署簡單的多層式 web 應用程式。此範例包含下列元件：
 
@@ -28,7 +28,7 @@ ms.locfileid: "89083464"
 此程式適用于已 [在 Azure Stack Edge 裝置上審核 Kubernetes 工作負載](azure-stack-edge-gpu-kubernetes-workload-management.md) 的人員，並熟悉 [Azure Arc 啟用的功能 Kubernetes (預覽) ](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在您可以部署無狀態應用程式之前，請確定您已在裝置上完成下列必要條件，以及用來存取裝置的用戶端：
 
@@ -83,7 +83,7 @@ ms.locfileid: "89083464"
 
 1. 在 [ **新增**設定] 中，為欄位輸入適當的值， **然後選取 [** 套用]。
 
-    |參數  |描述 |
+    |參數  |說明 |
     |---------|---------|
     |組態名稱     | 設定資源的名稱。        |
     |運算子實例名稱     |用來識別特定設定之操作員的實例名稱。 Name 是最多253個字元的字串，必須是小寫、英數位元、連字號和句點。         |

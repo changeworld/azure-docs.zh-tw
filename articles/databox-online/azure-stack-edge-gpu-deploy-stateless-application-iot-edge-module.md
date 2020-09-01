@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack Edge 上管理計算網路以存取模組 |Microsoft Docs
-description: 說明如何在您的 Azure Stack Edge 上擴充計算網路，以透過外部 IP 存取模組。
+title: 透過 IoT Edge 模組在 Azure Stack Edge GPU 上部署 Kubernetes 無狀態應用程式 |Microsoft Docs
+description: 說明如何使用透過外部 IP 存取的 IoT Edge 模組，在 Azure Stack Edge GPU 裝置上部署 Kubernetes 無狀態應用程式。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 8de3dbd754cd0cbef947d2cde44542f9f3f77a08
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 15316cbdd44053bfaf7403815ba42d92e2264b7b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083445"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254163"
 ---
-# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-device"></a>使用 IoT Edge 模組在 Azure Stack Edge 裝置上執行 Kubernetes 無狀態應用程式
+# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-gpu-device"></a>使用 IoT Edge 模組在 Azure Stack Edge GPU 裝置上執行 Kubernetes 無狀態應用程式
 
 本文說明如何使用 IoT Edge 模組，在 Azure Stack Edge 裝置上部署無狀態應用程式。
 
@@ -27,7 +27,7 @@ ms.locfileid: "89083445"
 
 在此操作說明文章中，您將使用 web 伺服器應用程式模組來示範此案例。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，您需要：
 
@@ -74,7 +74,7 @@ ms.locfileid: "89083445"
         }
         ```
 
-        此設定可讓您透過 *TCP 通訊埠 8080 (上的* 計算網路 IP 來存取此模組，並使用預設的 web 伺服器埠 80) 。 選取 [新增]。
+        此設定可讓您透過 *TCP 通訊埠 8080 (上的* 計算網路 IP 來存取此模組，並使用預設的 web 伺服器埠 80) 。 選取 [新增]  。
 
         ![在 IoT Edge 自訂模組分頁中指定埠資訊](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/verify-module-status-1.png)
 

@@ -1,7 +1,7 @@
 ---
 title: 實驗追蹤和部署模型
 titleSuffix: Azure Data Science Virtual Machine
-description: 瞭解如何使用 Azure Machine Learning 和/或 MLFlow，從 DSVM 追蹤並記錄實驗。
+description: 瞭解如何使用 Azure Machine Learning 和/或 MLFlow，從資料科學虛擬機器追蹤並記錄實驗。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 943e8bd9f272f3dc8cefbfbccd326cf520497bb2
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146890"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254751"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>在 Azure Machine Learning 中追蹤實驗和部署模型
 
@@ -24,9 +24,9 @@ ms.locfileid: "89146890"
 
 ![追蹤實驗](./media/how-to-track-experiments/mlflow-diagram-track.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-* 您將需要布建 [Azure Machine Learning 工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)
+* 您必須布建 [Azure Machine Learning 工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)
 
 ## <a name="create-a-new-notebook"></a>建立新的 Notebook
 
@@ -40,7 +40,7 @@ Azure Machine Learning 和 MLFlow SDK 會預先安裝在資料科學 VM 上，�
 
 ![取得設定檔](./media/how-to-track-experiments/experiment-tracking-2.png)
 
-此設定包含工作區名稱、訂用帳戶等的資訊，這表示您不需要硬編碼這些參數。
+設定包含工作區名稱、訂用帳戶等的資訊，這表示您不需要硬編碼這些參數。
 
 ## <a name="track-dsvm-runs"></a>追蹤 DSVM 執行
 
@@ -123,19 +123,19 @@ with mlflow.start_run():
 
 ![Mse](./media/how-to-track-experiments/mlflow-experiments-2.png)
 
-如果您按一下 [執行]，將會在__輸出 + 記錄__檔中看到其他詳細資料和序列化模型
+如果您按一下執行，您將會在__輸出 + 記錄__檔中看到其他詳細資料和序列化模型
 
 ## <a name="deploy-model-in-azure-machine-learning"></a>在 Azure Machine Learning 中部署模型
 
-在本節中，我們將概述如何將 DSVM 上定型的模型部署至 Azure Machine Learning。
+在本節中，我們會概述如何將 DSVM 上定型的模型部署至 Azure Machine Learning。
 
 ### <a name="step-1-create-inference-compute"></a>步驟1：建立推斷計算
 
-在 [AzureML Studio](https://ml.azure.com) 的左側功能表上，依序按一下 [ __計算__ ] 和 [ __推斷__ 叢集] 索引標籤。接著，按一下 [ __+ 新增__ ]，如下所示：
+在 [AzureML Studio](https://ml.azure.com) 的左側功能表上，依序按一下 [ __計算__ ] 和 [ __推斷__ 叢集] 索引標籤。接著，按一下 [ __+ 新增__ ]，如下所述：
 
 ![建立推斷計算](./media/how-to-track-experiments/mlflow-experiments-6.png)
 
-在 [ __新增推斷__ 叢集] 窗格中，填入詳細資料：
+在 [ __新增推斷__ 叢集] 窗格中，填滿詳細資料：
 
 * 計算名稱
 * Kubernetes 服務-選取 [建立新的]
@@ -151,7 +151,7 @@ with mlflow.start_run():
 
 ### <a name="step-2-deploy-no-code-inference-service"></a>步驟2：部署無程式碼推斷服務
 
-當我們在程式碼中使用我們將 `register_model` 架構指定為 sklearn 時，註冊模型。 Azure Machine Learning 不支援下列架構的程式碼部署：
+當我們使用在程式碼中註冊模型時 `register_model` ，我們將架構指定為 sklearn。 Azure Machine Learning 不支援下列架構的程式碼部署：
 
 * scikit-learn
 * Tensorflow SaveModel 格式
@@ -167,17 +167,17 @@ with mlflow.start_run():
 
 ![部署](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
-我們會將模型部署至推斷叢集 (Azure Kubernetes Service 我們在步驟1中建立的) 。 藉由提供服務的名稱，以及在步驟 1) 中建立 (AKS 計算叢集的名稱，填寫下列詳細資料。 此外，我們也建議您將 __CPU 保留容量__ 增加為 1 (從 0.1) ，並將 __記憶體保留容量__ 增加至 0.5) 的 1 (-您可以按一下 [ __Advanced__ ] 並填入詳細資料，來完成這項作業。 然後按一下 [ __部署__]。
+我們會將模型部署至推斷叢集 (Azure Kubernetes Service 我們在步驟1中建立的) 。 藉由提供服務的名稱，以及在步驟 1) 中建立 (AKS 計算叢集的名稱，填寫下列詳細資料。 此外，我們也建議您將 __CPU 保留容量__ 增加為 1 (從 0.1) ，並將 __記憶體保留容量__ 增加至 0.5) 的 1 (-您可以按一下 [ __Advanced__ ] 並填入詳細資料，以增加這項功能。 然後按一下 [ __部署__]。
 
 ![部署詳細資料](./media/how-to-track-experiments/mlflow-experiments-5.png)
 
 ### <a name="step-3-consume"></a>步驟3：使用
 
-成功部署模型時，您應該會看到下列 (若要前往此頁面，請按一下左側功能表中的端點 > 然後按一下已部署服務的名稱) ：
+當模型部署成功時，您應該會看到下列 (若要前往此頁面，請按一下左側功能表中的端點 > 然後按一下已部署之服務的名稱) ：
 
 ![取用模型](./media/how-to-track-experiments/mlflow-experiments-8.png)
 
-您應該會注意到，部署狀態從 __轉換__ 到 __狀況良好__。 此外，此詳細資料區段提供 REST 端點和 Swagger Url，可讓應用程式開發人員用來將您的 ML 模型整合至其應用程式。
+您應該會看到部署狀態從 __轉換__ 成 __狀況良好__。 此外，此詳細資料區段提供 REST 端點和 Swagger Url，可讓應用程式開發人員用來將您的 ML 模型整合至其應用程式。
 
 您可以使用 [Postman](https://www.postman.com/)來測試端點，也可以使用 AzureML SDK：
 
@@ -200,7 +200,7 @@ print(output)
 
 ### <a name="step-4-clean-up"></a>步驟4：清除
 
-您應該刪除您在步驟1中建立的推斷計算，如此就不會產生進行中的計算費用。 在 Azure Machine Learning Studio 的左側功能表上，按一下 [計算 > 推斷叢集]，> 選取 [計算] > [刪除]。
+刪除您在步驟1中建立的推斷計算，如此您就不會產生進行中的計算費用。 在 Azure Machine Learning Studio 的左側功能表上，按一下 [計算 > 推斷叢集]，> 選取 [計算] > [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 
