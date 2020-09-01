@@ -15,21 +15,24 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
-ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17b54b2adb21419de61d2309752987f6e4a48e41
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74969134"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264482"
 ---
-# <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 castLabs 將 Widevine 授權傳遞到 Azure 媒體服務 
+# <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 castLabs 將 Widevine 授權傳遞到 Azure 媒體服務
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+ 
 > [!div class="op_single_selector"]
 > * [Axinom](media-services-axinom-integration.md)
 > * [castLabs](media-services-castlabs-integration.md)
 > 
 > 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文說明如何使用 Azure 媒體服務 (AMS) 來傳遞 AMS 使用 PlayReady 與 Widevine DRM 動態加密的資料流。 PlayReady 授權來自媒體服務 PlayReady 授權伺服器，Widevine 授權則來自 **castLabs** 授權伺服器。
 
@@ -59,7 +62,7 @@ castLabs 與 AMS 皆支援使用 JWT (JSON Web Token) 權杖格式進行授權�
 | Issuer | 所選安全權杖服務 (STS) 中的簽發者字串 |
 | --- | --- |
 | 對象 |所使用 STS 中的對象字串 |
-| Claims |一組宣告 |
+| 宣告 |一組宣告 |
 | NotBefore |權杖的生效日期 |
 | 到期 (Expires) |權杖的有效期限 |
 | SigningCredentials |PlayReady 授權伺服器、castLabs 授權伺服器與 STS 之間共用的金鑰，可以是對稱或非對稱金鑰。 |

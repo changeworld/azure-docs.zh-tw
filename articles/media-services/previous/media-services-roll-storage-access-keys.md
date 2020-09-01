@@ -15,18 +15,20 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
-ms.openlocfilehash: d0a449a84bebcc0a296bde51234b0ceb128b2d23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c68bedb37722fb6a8b7ad9dccdeaaaa4fab9d020
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000088"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264125"
 ---
-# <a name="update-media-services-after-rolling-storage-access-keys"></a>更換儲存體存取金鑰之後更新媒體服務 
+# <a name="update-media-services-after-rolling-storage-access-keys"></a>更換儲存體存取金鑰之後更新媒體服務
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 在建立新的 Azure 媒體服務 (AMS) 帳戶時，您需要選取用來儲存媒體內容的 Azure 儲存體帳戶。 您可以在媒體服務帳戶新增一個以上的儲存體帳戶。 本文說明如何更換儲存體金鑰。 其中也示範如何在媒體帳戶新增儲存體帳戶。 
 
-若要執行本文中描述的動作，您應該使用 [Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [Powershell](/powershell/module/az.media)。  如需詳細資訊，請參閱[如何使用 PowerShell 管理 Azure 資源和 Resource Manager](../../azure-resource-manager/management/manage-resource-groups-powershell.md)。
+若要執行本文中描述的動作，您應該使用 [Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [Powershell](/powershell/module/az.media)。  如需詳細資訊，請參閱 [如何使用 PowerShell 和 Resource Manager 管理 Azure 資源](../../azure-resource-manager/management/manage-resource-groups-powershell.md)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -45,7 +47,7 @@ ms.locfileid: "87000088"
 ## <a name="steps-to-rotate-storage-keys"></a>更換儲存體金鑰的步驟 
  
  1. 透過 PowerShell Cmdlet 或 [Azure](https://portal.azure.com/) 入口網站來變更儲存體帳戶主要金鑰。
- 2. 呼叫 AzMediaServiceStorageKeys Cmdlet 搭配適當的參數來強制媒體帳戶收取儲存體帳戶金鑰
+ 2. 使用適當的參數呼叫 AzMediaServiceStorageKeys Cmdlet，以強制媒體帳戶挑選儲存體帳戶金鑰
  
     以下範例示範如何將金鑰同步到儲存體帳戶。
   

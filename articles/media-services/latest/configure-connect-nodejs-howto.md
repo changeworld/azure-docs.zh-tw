@@ -3,7 +3,7 @@ title: 連接到 Azure 媒體服務 v3 API-Node.js
 description: 本文示範如何使用 Node.js 連接到媒體服務 v3 API。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,31 +11,33 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8e54fec584f8961dfc44a7c93f95772ea03e1259
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 95059710ce759a1536bcaacd35c0d2cf6497269b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424421"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265587"
 ---
-# <a name="connect-to-media-services-v3-api---nodejs"></a>連接到媒體服務 v3 API-Node.js
+# <a name="connect-to-media-services-v3-api---nodejs"></a>連接至媒體服務 v3 API-Node.js
 
-本文說明如何使用服務主體登入方法來連線到 Azure 媒體服務 v3 node.js SDK。
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-## <a name="prerequisites"></a>必要條件
+本文說明如何使用服務主體登入方法，連線到 Azure 媒體服務 v3 node.js SDK。
+
+## <a name="prerequisites"></a>先決條件
 
 - 安裝 [Node.js](https://nodejs.org/en/download/)。
 - [建立媒體服務帳戶](./create-account-howto.md)。 請務必記住資源組名和媒體服務帳戶名稱。
 
 > [!IMPORTANT]
-> 檢查[命名慣例](media-services-apis-overview.md#naming-conventions)。
+> 複習 [命名慣例](media-services-apis-overview.md#naming-conventions)。
 
-## <a name="create-packagejson"></a>建立 package.js
+## <a name="create-packagejson"></a>建立 package.js于
 
-1. 使用您慣用的編輯器，在檔案上建立 package.js。
+1. 使用您最愛的編輯器，在檔案上建立 package.js。
 1. 開啟檔案，並貼上下列程式碼：
 
 ```json
@@ -53,12 +55,12 @@ ms.locfileid: "87424421"
 }
 ```
 
-應指定下列套件：
+應指定下列封裝：
 
 |Package|描述|
 |---|---|
-|`azure-arm-mediaservices`|Azure 媒體服務 SDK。 <br/>若要確定您使用的是最新的 Azure 媒體服務套件，請核取 [ [NPM 安裝] [Azure-arm-windowsazure.mediaservices.extensions](https://www.npmjs.com/package/azure-arm-mediaservices/)]。|
-|`azure-storage`|儲存體 SDK。 將檔案上傳到資產時使用。|
+|`azure-arm-mediaservices`|Azure 媒體服務 SDK。 <br/>若要確定您使用的是最新的 Azure 媒體服務套件，請核取 [ [NPM 安裝 Azure-arm-windowsazure.mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)]。|
+|`azure-storage`|儲存體 SDK。 在將檔案上傳至資產時使用。|
 |`ms-rest-azure`| 用來登入。|
 
 您可以執行下列命令，以確定您使用的是最新的套件：
@@ -71,7 +73,7 @@ npm install azure-arm-mediaservices
 
 1. 使用您慣用的編輯器建立 .js 檔案。
 1. 開啟該檔案，並貼上下列程式碼。
-1. 將 "endpoint config" 區段中的值設定為您從[存取 api](./access-api-howto.md)取得的值。
+1. 將 "endpoint config" 區段中的值設定為您從 [存取 api](./access-api-howto.md)取得的值。
 
 ```js
 'use strict';

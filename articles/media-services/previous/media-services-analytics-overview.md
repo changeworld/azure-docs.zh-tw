@@ -16,14 +16,16 @@ ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 45a23f55f87f086e4f5be8058a68ada1513f8975
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 79665531e5faa9766c62b87a002efafdea2f3221
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020995"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264703"
 ---
-# <a name="media-analytics-on-the-media-services-platform"></a>媒體服務平台上的媒體分析 
+# <a name="media-analytics-on-the-media-services-platform"></a>媒體服務平台上的媒體分析
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="retirement-plans"></a>淘汰方案
 
@@ -65,7 +67,7 @@ Azure 媒體修訂器是媒體分析媒體處理器，可在雲端提供可調�
 ### <a name="content-moderation"></a>內容仲裁
 Azure 內容仲裁可讓您針對影片使用機器輔助仲裁。 例如，您可能會想要偵測影片中潛在的成人和猥褻內容，並由您的人力仲裁小組檢閱這些被標記的內容。 但手動仲裁不需要的影片內容是很耗費時間和成本的工作。 透過此服務和相關聯的檢閱工具，您可以結合機器輔助仲裁和人機互動 (human-in-the-loop) 功能，以有效率且符合成本效益的方式獲得最佳結果。 若要進一步了解，請參閱[使用 Azure 內容仲裁處理您的視訊](media-services-content-moderation.md)一文。
 
-## <a name="common-scenarios"></a>常見的案例
+## <a name="common-scenarios"></a>常見案例
 媒體分析可協助組織和企業從影片中得到新的見解，並更有效地管理大量的影片內容。 以下是幾個案例︰
 
 * **通話中心**。 即使社交媒體出現，但客服中心仍能協助處理大量的客戶服務交易。 客服中心的語音資料經編碼後可成為大量的客戶資訊，企業可分析這些資訊以提高客戶滿意度。 組織可使用媒體索引器擷取文字，及建置搜尋索引與儀表板。 接著便可以從一般客訴、客訴來源及其他相關資料中獲取情報。

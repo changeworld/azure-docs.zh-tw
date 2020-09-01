@@ -3,25 +3,27 @@ title: 在 CLI 中使用事件方格監視 Azure 媒體服務事件 | Microsoft 
 description: 本文說明如何訂閱事件方格以監視 Azure 媒體服務事件。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 11/09/2018
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5292318d2e5432ec7c0a2df7306011c3dea5147
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 6aac37b354275539bfc5374a170c348b8ce993b0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542122"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265519"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>在 Azure CLI 中使用事件方格建立和監視媒體服務事件
 
-Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions)將事件訊息路由傳送至訂閱者。 媒體事件包含了回應資料變更時所需的一切資訊。 因為 eventType 屬性開頭為 “Microsoft.Media”，所以您可以藉此識別出媒體服務事件。 如需詳細資訊，請參閱[媒體服務事件結構描述](media-services-event-schemas.md)。
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+Azure Event Grid 是一項雲端事件服務。 此服務會使用 [事件訂閱](../../event-grid/concepts.md#event-subscriptions) 將事件訊息路由傳送給訂閱者。 媒體事件包含了回應資料變更時所需的一切資訊。 因為 eventType 屬性開頭為 “Microsoft.Media”，所以您可以藉此識別出媒體服務事件。 如需詳細資訊，請參閱[媒體服務事件結構描述](media-services-event-schemas.md)。
 
 在本文中，您會使用 Azure CLI 訂閱 Azure 媒體服務帳戶的事件。 然後，您會觸發事件以檢視結果。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 在本文中，您會將事件傳送至可收集及顯示訊息的 Web 應用程式。
 
@@ -42,7 +44,7 @@ Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂閱]
 
 1. 選取 [部署至 Azure]，將解決方案部署至您的訂用帳戶。 在 Azure 入口網站中，提供參數的值。
 
-   [![顯示標示為「部署至 Azure」之按鈕的影像。](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
+   [![顯示標示為「部署至 Azure」的按鈕影像。](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
 
 1. 部署需要幾分鐘的時間才能完成。 成功部署之後，檢視 Web 應用程式，確定它正在執行。 在網頁瀏覽器中，瀏覽至：`https://<your-site-name>.azurewebsites.net`
 
@@ -60,7 +62,7 @@ az account set --subscription mySubscriptionId
 
 ## <a name="subscribe-to-media-services-events"></a>訂閱媒體服務事件
 
-您訂閱文章，告訴事件方格您想要追蹤的事件。下列範例會訂閱您所建立的媒體服務帳戶，並從您建立的網站傳遞 URL 作為事件通知的端點。 
+您可以訂閱文章，告知事件方格您想要追蹤的事件。下列範例會訂閱您所建立的媒體服務帳戶，並傳遞您所建立的網站 URL 作為事件通知的端點。 
 
 將 `<event_subscription_name>` 換成事件訂用帳戶的唯一名稱。 針對 `<resource_group_name>` 和 `<ams_account_name>`，請使用您建立「媒體服務」帳戶時所使用的值。 針對 `<endpoint_URL>`，提供您的 Web 應用程式 URL，並將 `api/updates` 新增至首頁 URL。 藉由在訂閱時指定端點，事件方格即可將事件路由至該端點。 
 

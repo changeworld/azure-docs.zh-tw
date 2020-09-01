@@ -3,23 +3,25 @@ title: 內容感知編碼的預設值-Azure 媒體服務
 description: 本文討論 Microsoft Azure 媒體服務 v3 中的內容感知編碼。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c29909d70b0fd55e4b680c79928cdc5d05b494fa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 853381dbccea5374806fbeadb1d29632f0525fdb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003723"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265604"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>使用內容感知編碼預設值，為指定的解決方式找出最佳位元速率值
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 為了準備以彈性 [位元速率串流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)傳遞的內容，必須以多個位元速率編碼的影片 (高至低) 。 這可確保品質的正常降低，因為位元速率會降低，因此是影片的解析度。 這種多重位元速率編碼方式會使用所謂的編碼階梯：解析度和位元速率的表格，請參閱媒體服務 [內建編碼](/rest/api/media/transforms/createorupdate#encodernamedpreset)預設值。
 

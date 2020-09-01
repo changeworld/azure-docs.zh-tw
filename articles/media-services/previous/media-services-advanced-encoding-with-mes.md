@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 32b3207fc86f9aab7194d63a0e57eea459fd7eac
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4288e2e955f8205f3b6551c83a5c883eecf02501
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018020"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264805"
 ---
-# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>自訂 MES 預設值來執行進階編碼 
+# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>自訂 MES 預設值來執行進階編碼
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>概觀
 
@@ -51,7 +53,7 @@ ms.locfileid: "89018020"
 <Height>100%</Height>
 ```
 
-## <a name="generate-thumbnails"></a><a id="thumbnails"></a>產生縮圖
+## <a name="generate-thumbnails"></a>產生縮圖
 
 本節說明如何自訂產生縮圖的預設值。 下面定義的預設值包含有關如何將檔案編碼的資訊，以及產生縮圖時所需的資訊。 您可以使用[此](media-services-mes-presets-overview.md)節記載的任何 MES 預設值，並加入可產生縮圖的程式碼。  
 
@@ -64,7 +66,7 @@ ms.locfileid: "89018020"
 
 請務必閱讀 [考量](#considerations) 一節。
 
-### <a name="json-preset"></a><a id="json"></a>JSON 預設值
+### <a name="json-preset"></a>JSON 預設值
 
 ```json
 {
@@ -166,7 +168,7 @@ ms.locfileid: "89018020"
 }
 ```
 
-### <a name="xml-preset"></a><a id="xml"></a>XML 預設值
+### <a name="xml-preset"></a>XML 預設值
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>

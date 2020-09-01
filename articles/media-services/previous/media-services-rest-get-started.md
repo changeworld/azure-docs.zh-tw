@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8c15883f4e2a515e8c6015a39951a8729cf77274
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c21ddd0aacde277f4cf796f133a3169a69798dda
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543991"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264465"
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>使用 REST 傳遞點播內容入門  
+# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>使用 REST 傳遞點播內容入門
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 版本變更為 v3 版本的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
@@ -34,7 +36,7 @@ ms.locfileid: "87543991"
 
 按一下影像可以完整大小檢視。  
 
-[![此圖顯示 Azure 媒體服務物件資料模型中一些最常使用的物件，以便開發隨選影片的應用程式。](./media/media-services-rest-get-started/media-services-overview-object-model-small.png)](./media/media-services-rest-get-started/media-services-overview-object-model.png#lightbox)
+[![顯示 Azure 媒體服務物件資料模型中，用來開發隨選應用程式之影片的一些最常用物件的圖表。](./media/media-services-rest-get-started/media-services-overview-object-model-small.png)](./media/media-services-rest-get-started/media-services-overview-object-model.png#lightbox)
 
 ## <a name="prerequisites"></a>Prerequisites
 需要下列必要條件，才能開始使用 REST API 用媒體服務進行開發。

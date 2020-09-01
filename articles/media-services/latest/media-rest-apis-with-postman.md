@@ -3,7 +3,7 @@ title: 針對 Azure 媒體服務 v3 REST API 呼叫設定 Postman
 description: 本文說明如何設定 Postman，以便用來呼叫 Azure 媒體服務 (AMS) REST API。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2019
-ms.author: juliako
-ms.openlocfilehash: e35a5fe2243c3a9880359900c63f74c6dc90e586
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 1232c47040a5577731121ee0bb17eb264240e765
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654356"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264873"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>針對媒體服務 v3 REST API 呼叫設定 Postman
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 本文說明如何設定 **Postman**，以便用來呼叫 Azure 媒體服務 (AMS) REST API。 本文說明如何將環境和集合檔案匯入 **Postman**。 集合包含呼叫 Azure 媒體服務 (AMS) REST API 之 HTTP 要求的分組定義。 環境檔案包含集合所使用的變數。
 
@@ -47,7 +49,7 @@ ms.locfileid: "88654356"
 
 ## <a name="configure-postman"></a>設定 Postman
 
-### <a name="configure-the-environment"></a>建立環境 
+### <a name="configure-the-environment"></a>設定環境 
 
 1. 開啟 **Postman** 應用程式。
 2. 選取畫面右側的 [管理環境]**** 選項。
@@ -97,7 +99,7 @@ ms.locfileid: "88654356"
 * 如果您的應用程式失敗，並出現「HTTP 504：閘道超時」，請確定位置變數未明確設定為媒體服務帳戶預期位置以外的值。 
 * 如果您收到「找不到帳戶」錯誤，也請檢查以確定本文 JSON 訊息中的 location 屬性已設定為媒體服務帳戶所在的位置。 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [使用媒體服務建立篩選 - REST](filters-dynamic-manifest-rest-howto.md)
 - [以 Azure Resource Manager 為基礎的 REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)

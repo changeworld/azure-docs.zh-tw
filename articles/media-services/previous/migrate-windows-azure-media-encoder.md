@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c1a9f98373ac872bb315c1ae621b3895760dc18
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a4a5f2f448cc5e954cf21f9785f788925d5a461e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013379"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263938"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>從 Windows Azure 媒體編碼器遷移至媒體編碼器標準
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 本文討論從舊版 Windows Azure 媒體編碼器 (WAME) 媒體處理器 (（即將淘汰) 至媒體編碼器標準媒體處理器）的步驟。 如需淘汰日期，請參閱此[舊版元件](legacy-components.md)主題。
 

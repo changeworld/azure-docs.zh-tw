@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 93b449636282568ab614b42a46d939935f576895
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 70db1ff63e3c2a7e7806e5ef3c55b4e4af4a5259
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021301"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263564"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在用戶端插入廣告
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 本文包含如何在用戶端上插入各種類型廣告的相關資訊。
 
 如需了解即時串流視訊的隱藏式字幕和廣告支援，請參閱 [隱藏式字幕支援和廣告插入標準](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads)。

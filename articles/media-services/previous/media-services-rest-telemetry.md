@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9409b340e8c1bd06b689acb849a9f47d24ed0391
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7fec4a958e730c485c998d1f0591b8e4d61df050
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170763"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264193"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>使用 REST 設定 Azure 媒體服務遙測
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 本主題說明您使用 REST API 設定 Azure 媒體服務 (AMS) 遙測時可能採取的一般步驟。 
 
@@ -34,7 +36,7 @@ ms.locfileid: "86170763"
 - 取得通知端點
 - 建立用於監視的通知端點。 
 
-    若要建立通知端點，請將 EndPointType 設定為 AzureTable (2) 和將 endpontaddress 設定為儲存體資料表 (例如，HTTPs： \/ /telemetryvalidationstore.table.core.windows.net/) 。
+    若要建立通知端點，請將 EndPointType 設定為 AzureTable (2) ，並將將 endpontaddress 設定為儲存體資料表 (例如，HTTPs： \/ /telemetryvalidationstore.table.core.windows.net/) 。
   
 - 取得監視組態
 

@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5e6a834e98d3b8447a68d149bb40e75d74959f39
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 26a3f3ff600de4418ccf6f6b09dea4b091678065
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038463"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265723"
 ---
-# <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>從 Azure StorSimple 將檔案上傳至 Azure 媒體服務帳戶  
+# <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>從 Azure StorSimple 將檔案上傳至 Azure 媒體服務帳戶 
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
@@ -30,9 +32,9 @@ ms.locfileid: "87038463"
 > Azure StorSimple Data Manager 目前處於私人預覽階段。 
 > 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
-在媒體服務中，您會將數位檔案上傳到到資產。 資產可以包含影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案（以及這些檔案的相關中繼資料）。檔案上傳之後，您的內容就會安全地儲存在雲端，以進行進一步的處理和串流。
+在媒體服務中，您會將數位檔案上傳到到資產。 資產可以包含影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案 (以及這些檔案的相關中繼資料。 ) 檔案上傳之後，您的內容就會安全地儲存在雲端，以進一步處理和串流處理。
 
 [Azure StorSimple](../../storsimple/index.yml) 使用雲端儲存體做為內部部署解決方案的擴充功能，並且跨內部部署儲存體和雲端儲存體自動將資料分層。 StorSimple 裝置會先刪除重複資料並加以壓縮，再將資料傳送至雲端，以非常有效率的方式將大型檔案傳送至雲端。 [StorSimple Data Manager](../../storsimple/storsimple-data-manager-overview.md) 服務提供 API，可讓您從 StorSimple 擷取資料並將它呈現為 AMS 資產。
 
@@ -45,7 +47,7 @@ ms.locfileid: "87038463"
 
     當作業開始執行時，會建立儲存體佇列。 此佇列中會填入已轉換的 blob 備妥時的相關訊息。 此佇列的名稱與作業定義的名稱相同。 您可以使用此佇列來判斷資產何時準備就緒，並呼叫您所需的媒體服務作業以在其上執行。 例如，您可以使用此佇列來觸發 Azure Function，其中有所需的媒體服務程式碼。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [使用 .NET SDK 來觸發資料管理員中的作業](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
 

@@ -9,17 +9,19 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b4aa523c6f2fe1e833fa7dfe99cc870bf6014eb7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bc1ac986ffb8e15df5dab14403aac5eca05c5b5d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009911"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263717"
 ---
 # <a name="download-the-results-of-a-job"></a>下載作業的結果
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 在 Azure 媒體服務中，處理您的影片 (例如，編碼或分析) 您需要建立輸出 [資產](assets-concept.md) 來儲存 [作業](transforms-jobs-concept.md)的結果。 然後，您可以使用媒體服務和儲存體 Api，將這些結果下載至本機資料夾。 
 

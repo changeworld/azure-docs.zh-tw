@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/18/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4d7e6d9daa5d30c5cbf5b198a147564d0c05c074
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: b983602c94acc9ffc0048a9753693d7c16869494
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607237"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265553"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>從本機檔案建立工作輸入
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 在媒體服務 v3 中，當您提交工作來處理視訊時，必須告知媒體服務到何處尋找輸入視訊。 輸入視訊可以儲存為媒體服務資產，在這種情況下，您會建立一個以檔案為基礎的輸入資產 (儲存在本機或 Azure Blob 儲存體)。 本主題說明如何從本機檔案建立工作輸入。 如需完整的範例，請參閱此 [GitHub 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs)。
 

@@ -3,23 +3,25 @@ title: 建立具有多個轉換輸出的 Azure 媒體服務作業
 description: 本主題示範如何建立具有多個轉換輸出的 Azure 媒體服務作業。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a0592af43987e89556aee57ea44e07dc2c00828
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 63e6da53e542172d474f9ca5de9ab136f38f42f5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006783"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265536"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>建立具有多個轉換輸出的作業
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 本主題說明如何建立具有兩個轉換輸出的轉換。 第一個會呼叫輸入，以使用內建 [>adaptivestreaming](encoding-concept.md#builtinstandardencoderpreset) 預設值進行自動調整位元速率串流處理。 第二個呼叫輸入影片中要使用 [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets)處理的音訊信號。 建立轉換之後，您可以提交將會據以處理影片的作業。 因為在此範例中，我們要指定兩個轉換輸出，所以我們必須指定兩個作業輸出。 您可以選擇將這兩個作業輸出導向相同的資產 (如下所示) ，也可以讓結果寫入個別的資產。
  

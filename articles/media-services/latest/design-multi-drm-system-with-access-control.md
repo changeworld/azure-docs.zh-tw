@@ -1,6 +1,6 @@
 ---
 title: 多重 DRM 內容保護系統-Azure 媒體服務 v3
-description: 這篇文章提供如何使用 Azure 媒體服務設計多重 DRM 內容保護系統的詳細說明。
+description: 本文提供如何使用 Azure 媒體服務來設計多重 DRM 內容保護系統的詳細說明。
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2018
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 79f06bd5d6af05e334faf4e1f6d8cd3e358f89ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dba0f82ced5500dc85c3254bea6a2a0066770b1e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039186"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265655"
 ---
-# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>設計具有存取控制的多重 DRM 內容保護系統 
+# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>設計具有存取控制的多重 DRM 內容保護系統
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 設計及建置適用於 Over-The-Pop (OTT) 或線上串流解決方案的數位版權管理 (DRM) 子系統是一項複雜的工作。 操作員/線上視訊提供者通常會將這個工作外包給專門的 DRM 服務提供者。 這份文件的目標是要呈現 OTT 或線上串流解決方案中端對端 DRM 子系統的參考設計和參考實作。
 
@@ -134,7 +136,7 @@ DRM 子系統可能包含下列元件：
 | **建置組塊** | **技術** |
 | --- | --- |
 | **球員** |[Azure 媒體播放器](https://azure.microsoft.com/services/media-services/media-player/) |
-| **識別提供者（IDP）** |Azure Active Directory (Azure AD) |
+| **身分識別提供者 (IDP) ** |Azure Active Directory (Azure AD) |
 | **安全權杖服務 (STS)** |Azure AD |
 | **DRM 保護工作流程** |Azure 媒體服務動態保護 |
 | **DRM 授權傳遞** |* 媒體服務授權傳遞 (PlayReady、Widevine、FairPlay) <br/>* Axinom 授權伺服器 <br/>* 自訂 PlayReady 授權伺服器 |
@@ -176,7 +178,7 @@ DRM 子系統可能包含下列元件：
 ### <a name="implementation-procedures"></a>實作程序
 實作包含下列步驟：
 
-1. 準備測試資產。 編碼/封裝測試視訊為媒體服務中的多位元速率分散 MP4。 此資產*不*受 DRM 保護。 DRM 保護稍後會由動態保護完成。
+1. 準備測試資產。 編碼/封裝測試視訊為媒體服務中的多位元速率分散 MP4。 此資產 *不* 受 DRM 保護。 DRM 保護稍後會由動態保護完成。
 
 2. 建立金鑰識別碼和內容金鑰 (選擇性地從金鑰種子)。 在本例中，並不需要金鑰管理系統，因為數個測試資產只需要單一金鑰識別碼和內容金鑰。
 
@@ -209,7 +211,7 @@ DRM 子系統可能包含下列元件：
 
 如需如何針對 ASP.NET MVC 播放器應用程式設定 Azure AD 的相關資訊，請參閱[整合 Azure 媒體服務 OWIN MVC 型應用程式與 Azure Active Directory 並根據 JWT 宣告限制內容金鑰傳遞](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)。
 
-如需詳細資訊，請參閱[Azure 媒體服務和動態加密中的 JWT 權杖驗證](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。  
+如需詳細資訊，請參閱 [Azure 媒體服務和動態加密中的 JWT 權杖驗證](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。  
 
 如需 Azure AD 的資訊：
 

@@ -15,21 +15,23 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-java
-ms.openlocfilehash: 73dfa45361f2c111934ee7b938c44824112c6c8d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8a95ee631797c4dcca87f3506a6cf29245328159
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322681"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263442"
 ---
-# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>開始在 Azure 媒體服務上使用 Java 用戶端 SDK  
+# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>開始在 Azure 媒體服務上使用 Java 用戶端 SDK
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 本教學課程會逐步引導您使用 Java 用戶端 SDK，來實作搭配 Azure 媒體服務的基本視訊內容傳遞服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 需要有下列項目，才能完成本教學課程：
 
@@ -54,7 +56,7 @@ ms.locfileid: "87322681"
 ## <a name="how-to-use-azure-media-services-with-java"></a>作法：搭配使用 Azure 媒體服務和 Java
 
 >[!NOTE]
->建立媒體服務帳戶時，**預設**串流端點會新增至您的帳戶處於 [**已停止**] 狀態。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中] 狀態。
+>當您建立媒體服務帳戶時， **預設** 串流端點會新增至您的帳戶處於 **已停止** 狀態。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中] 狀態。
 
 下列程式碼將示範如何建立資產、上傳媒體檔案到資產、使用工作 (Task) 執行作業 (Job) 來轉換此資產，以及建立定位器以便串流您的影片。
 

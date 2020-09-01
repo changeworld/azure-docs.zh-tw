@@ -1,6 +1,6 @@
 ---
 title: Azure 媒體服務錯誤代碼 | Microsoft Docs
-description: 視問題而定，您可能會收到來自服務的 HTTP 錯誤碼，例如驗證權杖過期至媒體服務中不支援的動作。 本文提供 Azure 媒體服務 v2 API 錯誤碼的總覽。
+description: 您可能會根據問題（例如驗證權杖即將過期）到媒體服務中不支援的動作，從服務收到 HTTP 錯誤碼。 本文概述 Azure 媒體服務 v2 API 錯誤碼。
 author: Juliako
 manager: femila
 editor: ''
@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6911b16c3fdf5bb94d42a40198943c3b1baa00da
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c30808a46b5cecfaf2e761b3f7a611020cd2cdfb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042833"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263666"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure 媒體服務錯誤代碼
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 使用 Microsoft Azure 媒體服務時，您可能會根據問題從服務收到 HTTP 錯誤代碼，例如驗證權杖過期到媒體服務中不支援的動作。 以下是媒體服務可能會傳回的「HTTP 錯誤代碼」**** 的清單，以及其可能原因。  
 
 ## <a name="400-bad-request"></a>400 不正確的要求
@@ -119,7 +122,7 @@ ms.locfileid: "87042833"
 ## <a name="see-also"></a>另請參閱
 [媒體服務管理錯誤代碼](/rest/api/media/)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>提供意見反應

@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: 6d199271d20b9094ffaac0384863a404c7d0ed0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d2ef02ea77ad2bca37f1e397b784d06481538fa
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000001"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264006"
 ---
 # <a name="scaling-media-processing-overview"></a>調整媒體處理概觀 
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 此頁面提供調整媒體處理的方式及原因的概觀。 
 
 ## <a name="overview"></a>概觀
@@ -33,9 +36,9 @@ ms.locfileid: "87000001"
 
 |RU 類型|案例|[7 分鐘 1080p 視訊](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)的結果範例|
 |---|---|---|
-| **S1**|單一位元速率編碼。 <br/>在 SD或如下解決方法的檔案、對時間不敏感、低成本。|使用「H264 單一位元速率 SD 16x9」編碼為單一位元速率 SD 解析的檔檔案大約需要7分鐘的時間。|
-| **S2**|單一位元速率和多重位元速率編碼。<br/>SD 和 HD 編碼的一般使用方式。|具有「H264 單一位元速率720p」預設值的編碼需要大約6分鐘的時間。<br/><br/>具有「H264 多重位元速率720p」預設值的編碼需要大約12分鐘的時間。|
-| **S3**|單一位元速率和多重位元速率編碼。<br/>Full HD 和 4K 解析度影片。 對時間敏感、周轉時間更快的編碼。|具有「H264 單一位元速率1080p」預設值的編碼需要大約3分鐘的時間。<br/><br/>具有「H264 多重位元速率 1080p」預設值的編碼需要大約 8 分鐘。|
+| **S1**|單一位元速率編碼。 <br/>在 SD或如下解決方法的檔案、對時間不敏感、低成本。|使用「H264 單一位元速率 SD 16x9」進行編碼為單一位元速率 SD 解析度的檔，大約需要7分鐘。|
+| **S2**|單一位元速率和多重位元速率編碼。<br/>SD 和 HD 編碼的一般使用方式。|具有「H264 單一位元速率720p」預設值的編碼需要大約6分鐘的時間。<br/><br/>具有「H264 多重位元速率720p」預設值的編碼需要大約12分鐘。|
+| **S3**|單一位元速率和多重位元速率編碼。<br/>Full HD 和 4K 解析度影片。 對時間敏感、周轉時間更快的編碼。|具有「H264 單一位元速率1080p」預設值的編碼需要大約3分鐘。<br/><br/>具有「H264 多重位元速率 1080p」預設值的編碼需要大約 8 分鐘。|
 
 ## <a name="considerations"></a>考量
 > [!IMPORTANT]
@@ -48,7 +51,7 @@ ms.locfileid: "87000001"
 
 ## <a name="billing"></a>計費
 
-系統會根據您帳戶中布建媒體保留單元的分鐘數向您收費。 這會與您的帳戶中是否有任何執行中的作業無關。 如需詳細說明，請參閱[媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)頁面的＜常見問題集＞一節。   
+系統會根據您的帳戶中布建媒體保留單元的分鐘數向您收費。 這是因為您的帳戶中是否有任何工作正在執行。 如需詳細說明，請參閱[媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)頁面的＜常見問題集＞一節。   
 
 ## <a name="quotas-and-limitations"></a>配額和限制
 如需配額和限制以及如何開啟支援票證的相關資訊，請參閱 [配額和限制](media-services-quotas-and-limitations.md)。
