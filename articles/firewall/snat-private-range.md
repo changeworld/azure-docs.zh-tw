@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.author: victorh
-ms.openlocfilehash: 25c2096de4c3643a4e6a3ba7bdad1e69ae93a179
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 272f5b747efbc3776b1b2ba7c3546ade717c2452
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019074"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231362"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure 防火牆 SNAT 私人 IP 位址範圍
 
@@ -20,7 +20,7 @@ Azure 防火牆會針對公用 IP 位址的所有輸出流量提供自動 SNAT�
 
 當您將流量直接路由傳送到網際網路時，此邏輯的運作效果很好。 不過，如果您已啟用 [強制通道](forced-tunneling.md)，則會將網際網路系結流量 Snat 轉譯至 AzureFirewallSubnet 中的其中一個防火牆私人 IP 位址，並將來源從內部部署防火牆中隱藏。
 
-如果您的組織使用私人網路的公用 IP 位址範圍，Azure 防火牆會將流量 SNAT 轉譯到 AzureFirewallSubnet 其中一個防火牆私人 IP 位址。 不過，您可以將 Azure 防火牆設定為 **不** 會 SNAT 公用 IP 位址範圍。
+如果您的組織使用私人網路的公用 IP 位址範圍，Azure 防火牆會將流量 SNAT 轉譯到 AzureFirewallSubnet 其中一個防火牆私人 IP 位址。 不過，您可以將 Azure 防火牆設定為 **不** 會 SNAT 公用 IP 位址範圍。 例如，若要指定個別的 IP 位址，您可以指定它，如下所示： `192.168.1.10` 。 若要指定 IP 位址範圍，您可以指定它，如下所示： `192.168.1.0/24` 。
 
 若要將 Azure 防火牆設定為永遠不使用 SNAT，而不考慮目的地 IP 位址，請使用 **0.0.0.0/0** 做為您的私人 ip 位址範圍。 使用此設定時，Azure 防火牆永遠不會將流量直接路由傳送到網際網路。 若要將防火牆設定為一律使用 SNAT （不論目的地位址為何），請使用 **255.255.255.255/32** 做為您的私人 IP 位址範圍。
 

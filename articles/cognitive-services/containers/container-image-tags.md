@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: e0df3de5eadfd2cc5c00c52da5c4942b42a68b2b
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 2a57c5244630c2328320d7d99eed98c892d49897
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722563"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230750"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure 認知服務容器映射標記
 
@@ -29,7 +29,7 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 
 此容器映射有下列可用的標記：
 
-| 影像標記                    | 注意 |
+| 影像標記                    | 備註 |
 |-------------------------------|:------|
 | `latest`                      |       |
 
@@ -39,7 +39,7 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 
 此容器映射有下列可用的標記：
 
-| 影像標記                    | 注意 |
+| 影像標記                    | 備註 |
 |-------------------------------|:------|
 | `latest ( (2.0.013250001-amd64-preview)` | •進一步減少容器的記憶體使用量。 |
 |                                          | •需要外部快取以進行多 pod 設定。 例如，設定快取的 Redis。 |
@@ -68,7 +68,7 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 
 此容器映射有下列可用的標記：
 
-| 影像標記                    | 注意 |
+| 影像標記                    | 備註 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -86,7 +86,7 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 
 此容器映射有下列可用的標記：
 
-| 影像標記                    | 注意 |
+| 影像標記                    | 備註 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -99,7 +99,7 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 
 此容器映射有下列可用的標記：
 
-| 影像標記                    | 注意 |
+| 影像標記                    | 備註 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.010330004-amd64-preview` |       |
@@ -117,9 +117,11 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 
 此容器映射有下列可用的標記：
 
-| 影像標記            | 注意 |
+| 影像標記            | 備註 |
 |-----------------------|:------|
 | `latest`              |       |
+| `2.3.1-amd64-preview` |       | 
+| `2.3.0-amd64-preview` |       |
 | `2.2.0-amd64-preview` |       |
 | `2.1.1-amd64-preview` |       |
 | `2.1.0-amd64-preview` |       |
@@ -132,20 +134,141 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 
 此容器映射有下列可用的標記：
 
-| 影像標記            | 注意 |
+| 影像標記            | 備註 |
 |-----------------------|:------|
 | `latest`              |       |
+| `1.6.0-amd64-preview` |       |
+| `1.5.0-amd64-preview` |       |
+| `1.4.0-amd64-preview` |       |
 | `1.3.0-amd64-preview` |       |
 
 ## <a name="speech-to-text"></a>語音轉文字
 
 [語音轉換文字][sp-stt]容器映射可在 `containerpreview.azurecr.io` container registry 上找到。 它位於存放 `microsoft` 庫中，並命名為 `cognitive-services-speech-to-text` 。 完整的容器映射名稱是、 `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` 。
+2.4.0 支援 *美國政府佛吉尼亞* 版的語音轉換文字影像，可在上找到 `containerpreview.azurecr.io/microsoft/fairfax/cognitive-services-speech-to-text` 。
 
 此容器映射有下列可用的標記：
 
-| 影像標記                  | 注意                                    |
+| 影像標記                  | 備註                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | 具有地區設定的容器映射 `en-US` 。 |
+| `2.4.0-amd64-ar-ae-preview` | 具有地區設定的容器映射 `ar-AE` 。 |
+| `2.4.0-amd64-ar-eg-preview` | 具有地區設定的容器映射 `ar-EG` 。 |
+| `2.4.0-amd64-ar-kw-preview` | 具有地區設定的容器映射 `ar-KW` 。 |
+| `2.4.0-amd64-ar-qa-preview` | 具有地區設定的容器映射 `ar-QA` 。 |
+| `2.4.0-amd64-ar-sa-preview` | 具有地區設定的容器映射 `ar-SA` 。 |
+| `2.4.0-amd64-ca-es-preview` | 具有地區設定的容器映射 `ca-ES` 。 |
+| `2.4.0-amd64-da-dk-preview` | 具有地區設定的容器映射 `da-DK` 。 |
+| `2.4.0-amd64-de-de-preview` | 具有地區設定的容器映射 `de-DE` 。 |
+| `2.4.0-amd64-en-au-preview` | 具有地區設定的容器映射 `en-AU` 。 |
+| `2.4.0-amd64-en-ca-preview` | 具有地區設定的容器映射 `en-CA` 。 |
+| `2.4.0-amd64-en-gb-preview` | 具有地區設定的容器映射 `en-GB` 。 |
+| `2.4.0-amd64-en-in-preview` | 具有地區設定的容器映射 `en-IN` 。 |
+| `2.4.0-amd64-en-nz-preview` | 具有地區設定的容器映射 `en-NZ` 。 |
+| `2.4.0-amd64-en-us-preview` | 具有地區設定的容器映射 `en-US` 。 |
+| `2.4.0-amd64-es-es-preview` | 具有地區設定的容器映射 `es-ES` 。 |
+| `2.4.0-amd64-es-mx-preview` | 具有地區設定的容器映射 `es-MX` 。 |
+| `2.4.0-amd64-fi-fi-preview` | 具有地區設定的容器映射 `fi-FI` 。 |
+| `2.4.0-amd64-fr-ca-preview` | 具有地區設定的容器映射 `fr-CA` 。 |
+| `2.4.0-amd64-fr-fr-preview` | 具有地區設定的容器映射 `fr-FR` 。 |
+| `2.4.0-amd64-gu-in-preview` | 具有地區設定的容器映射 `gu-IN` 。 |
+| `2.4.0-amd64-hi-in-preview` | 具有地區設定的容器映射 `hi-IN` 。 |
+| `2.4.0-amd64-it-it-preview` | 具有地區設定的容器映射 `it-IT` 。 |
+| `2.4.0-amd64-ja-jp-preview` | 具有地區設定的容器映射 `ja-JP` 。 |
+| `2.4.0-amd64-ko-kr-preview` | 具有地區設定的容器映射 `ko-KR` 。 |
+| `2.4.0-amd64-mr-in-preview` | 具有地區設定的容器映射 `mr-IN` 。 |
+| `2.4.0-amd64-nb-no-preview` | 具有地區設定的容器映射 `nb-NO` 。 |
+| `2.4.0-amd64-nl-nl-preview` | 具有地區設定的容器映射 `nl-NL` 。 |
+| `2.4.0-amd64-pl-pl-preview` | 具有地區設定的容器映射 `pl-PL` 。 |
+| `2.4.0-amd64-pt-br-preview` | 具有地區設定的容器映射 `pt-BR` 。 |
+| `2.4.0-amd64-pt-pt-preview` | 具有地區設定的容器映射 `pt-PT` 。 |
+| `2.4.0-amd64-ru-ru-preview` | 具有地區設定的容器映射 `ru-RU` 。 |
+| `2.4.0-amd64-sv-se-preview` | 具有地區設定的容器映射 `sv-SE` 。 |
+| `2.4.0-amd64-ta-in-preview` | 具有地區設定的容器映射 `ta-IN` 。 |
+| `2.4.0-amd64-te-in-preview` | 具有地區設定的容器映射 `te-IN` 。 |
+| `2.4.0-amd64-th-th-preview` | 具有地區設定的容器映射 `th-TH` 。 |
+| `2.4.0-amd64-tr-tr-preview` | 具有地區設定的容器映射 `tr-TR` 。 |
+| `2.4.0-amd64-zh-cn-preview` | 具有地區設定的容器映射 `zh-CN` 。 |
+| `2.4.0-amd64-zh-hk-preview` | 具有地區設定的容器映射 `zh-HK` 。 |
+| `2.4.0-amd64-zh-tw-preview` | 具有地區設定的容器映射 `zh-TW` 。 |
+| `2.3.1-amd64-ar-ae-preview` | 具有地區設定的容器映射 `ar-AE` 。 |
+| `2.3.1-amd64-ar-eg-preview` | 具有地區設定的容器映射 `ar-EG` 。 |
+| `2.3.1-amd64-ar-kw-preview` | 具有地區設定的容器映射 `ar-KW` 。 |
+| `2.3.1-amd64-ar-qa-preview` | 具有地區設定的容器映射 `ar-QA` 。 |
+| `2.3.1-amd64-ar-sa-preview` | 具有地區設定的容器映射 `ar-SA` 。 |
+| `2.3.1-amd64-ca-es-preview` | 具有地區設定的容器映射 `ca-ES` 。 |
+| `2.3.1-amd64-da-dk-preview` | 具有地區設定的容器映射 `da-DK` 。 |
+| `2.3.1-amd64-de-de-preview` | 具有地區設定的容器映射 `de-DE` 。 |
+| `2.3.1-amd64-en-au-preview` | 具有地區設定的容器映射 `en-AU` 。 |
+| `2.3.1-amd64-en-ca-preview` | 具有地區設定的容器映射 `en-CA` 。 |
+| `2.3.1-amd64-en-gb-preview` | 具有地區設定的容器映射 `en-GB` 。 |
+| `2.3.1-amd64-en-in-preview` | 具有地區設定的容器映射 `en-IN` 。 |
+| `2.3.1-amd64-en-nz-preview` | 具有地區設定的容器映射 `en-NZ` 。 |
+| `2.3.1-amd64-en-us-preview` | 具有地區設定的容器映射 `en-US` 。 |
+| `2.3.1-amd64-es-es-preview` | 具有地區設定的容器映射 `es-ES` 。 |
+| `2.3.1-amd64-es-mx-preview` | 具有地區設定的容器映射 `es-MX` 。 |
+| `2.3.1-amd64-fi-fi-preview` | 具有地區設定的容器映射 `fi-FI` 。 |
+| `2.3.1-amd64-fr-ca-preview` | 具有地區設定的容器映射 `fr-CA` 。 |
+| `2.3.1-amd64-fr-fr-preview` | 具有地區設定的容器映射 `fr-FR` 。 |
+| `2.3.1-amd64-gu-in-preview` | 具有地區設定的容器映射 `gu-IN` 。 |
+| `2.3.1-amd64-hi-in-preview` | 具有地區設定的容器映射 `hi-IN` 。 |
+| `2.3.1-amd64-it-it-preview` | 具有地區設定的容器映射 `it-IT` 。 |
+| `2.3.1-amd64-ja-jp-preview` | 具有地區設定的容器映射 `ja-JP` 。 |
+| `2.3.1-amd64-ko-kr-preview` | 具有地區設定的容器映射 `ko-KR` 。 |
+| `2.3.1-amd64-mr-in-preview` | 具有地區設定的容器映射 `mr-IN` 。 |
+| `2.3.1-amd64-nb-no-preview` | 具有地區設定的容器映射 `nb-NO` 。 |
+| `2.3.1-amd64-nl-nl-preview` | 具有地區設定的容器映射 `nl-NL` 。 |
+| `2.3.1-amd64-pl-pl-preview` | 具有地區設定的容器映射 `pl-PL` 。 |
+| `2.3.1-amd64-pt-br-preview` | 具有地區設定的容器映射 `pt-BR` 。 |
+| `2.3.1-amd64-pt-pt-preview` | 具有地區設定的容器映射 `pt-PT` 。 |
+| `2.3.1-amd64-ru-ru-preview` | 具有地區設定的容器映射 `ru-RU` 。 |
+| `2.3.1-amd64-sv-se-preview` | 具有地區設定的容器映射 `sv-SE` 。 |
+| `2.3.1-amd64-ta-in-preview` | 具有地區設定的容器映射 `ta-IN` 。 |
+| `2.3.1-amd64-te-in-preview` | 具有地區設定的容器映射 `te-IN` 。 |
+| `2.3.1-amd64-th-th-preview` | 具有地區設定的容器映射 `th-TH` 。 |
+| `2.3.1-amd64-tr-tr-preview` | 具有地區設定的容器映射 `tr-TR` 。 |
+| `2.3.1-amd64-zh-cn-preview` | 具有地區設定的容器映射 `zh-CN` 。 |
+| `2.3.1-amd64-zh-hk-preview` | 具有地區設定的容器映射 `zh-HK` 。 |
+| `2.3.1-amd64-zh-tw-preview` | 具有地區設定的容器映射 `zh-TW` 。 |
+| `2.3.0-amd64-ar-ae-preview` | 具有地區設定的容器映射 `ar-AE` 。 |
+| `2.3.0-amd64-ar-eg-preview` | 具有地區設定的容器映射 `ar-EG` 。 |
+| `2.3.0-amd64-ar-kw-preview` | 具有地區設定的容器映射 `ar-KW` 。 |
+| `2.3.0-amd64-ar-qa-preview` | 具有地區設定的容器映射 `ar-QA` 。 |
+| `2.3.0-amd64-ar-sa-preview` | 具有地區設定的容器映射 `ar-SA` 。 |
+| `2.3.0-amd64-ca-es-preview` | 具有地區設定的容器映射 `ca-ES` 。 |
+| `2.3.0-amd64-da-dk-preview` | 具有地區設定的容器映射 `da-DK` 。 |
+| `2.3.0-amd64-de-de-preview` | 具有地區設定的容器映射 `de-DE` 。 |
+| `2.3.0-amd64-en-au-preview` | 具有地區設定的容器映射 `en-AU` 。 |
+| `2.3.0-amd64-en-ca-preview` | 具有地區設定的容器映射 `en-CA` 。 |
+| `2.3.0-amd64-en-gb-preview` | 具有地區設定的容器映射 `en-GB` 。 |
+| `2.3.0-amd64-en-in-preview` | 具有地區設定的容器映射 `en-IN` 。 |
+| `2.3.0-amd64-en-nz-preview` | 具有地區設定的容器映射 `en-NZ` 。 |
+| `2.3.0-amd64-en-us-preview` | 具有地區設定的容器映射 `en-US` 。 |
+| `2.3.0-amd64-es-es-preview` | 具有地區設定的容器映射 `es-ES` 。 |
+| `2.3.0-amd64-es-mx-preview` | 具有地區設定的容器映射 `es-MX` 。 |
+| `2.3.0-amd64-fi-fi-preview` | 具有地區設定的容器映射 `fi-FI` 。 |
+| `2.3.0-amd64-fr-ca-preview` | 具有地區設定的容器映射 `fr-CA` 。 |
+| `2.3.0-amd64-fr-fr-preview` | 具有地區設定的容器映射 `fr-FR` 。 |
+| `2.3.0-amd64-gu-in-preview` | 具有地區設定的容器映射 `gu-IN` 。 |
+| `2.3.0-amd64-hi-in-preview` | 具有地區設定的容器映射 `hi-IN` 。 |
+| `2.3.0-amd64-it-it-preview` | 具有地區設定的容器映射 `it-IT` 。 |
+| `2.3.0-amd64-ja-jp-preview` | 具有地區設定的容器映射 `ja-JP` 。 |
+| `2.3.0-amd64-ko-kr-preview` | 具有地區設定的容器映射 `ko-KR` 。 |
+| `2.3.0-amd64-mr-in-preview` | 具有地區設定的容器映射 `mr-IN` 。 |
+| `2.3.0-amd64-nb-no-preview` | 具有地區設定的容器映射 `nb-NO` 。 |
+| `2.3.0-amd64-nl-nl-preview` | 具有地區設定的容器映射 `nl-NL` 。 |
+| `2.3.0-amd64-pl-pl-preview` | 具有地區設定的容器映射 `pl-PL` 。 |
+| `2.3.0-amd64-pt-br-preview` | 具有地區設定的容器映射 `pt-BR` 。 |
+| `2.3.0-amd64-pt-pt-preview` | 具有地區設定的容器映射 `pt-PT` 。 |
+| `2.3.0-amd64-ru-ru-preview` | 具有地區設定的容器映射 `ru-RU` 。 |
+| `2.3.0-amd64-sv-se-preview` | 具有地區設定的容器映射 `sv-SE` 。 |
+| `2.3.0-amd64-ta-in-preview` | 具有地區設定的容器映射 `ta-IN` 。 |
+| `2.3.0-amd64-te-in-preview` | 具有地區設定的容器映射 `te-IN` 。 |
+| `2.3.0-amd64-th-th-preview` | 具有地區設定的容器映射 `th-TH` 。 |
+| `2.3.0-amd64-tr-tr-preview` | 具有地區設定的容器映射 `tr-TR` 。 |
+| `2.3.0-amd64-zh-cn-preview` | 具有地區設定的容器映射 `zh-CN` 。 |
+| `2.3.0-amd64-zh-hk-preview` | 具有地區設定的容器映射 `zh-HK` 。 |
+| `2.3.0-amd64-zh-tw-preview` | 具有地區設定的容器映射 `zh-TW` 。 |
 | `2.2.0-amd64-ar-ae-preview` | 具有地區設定的容器映射 `ar-AE` 。 |
 | `2.2.0-amd64-ar-eg-preview` | 具有地區設定的容器映射 `ar-EG` 。 |
 | `2.2.0-amd64-ar-kw-preview` | 具有地區設定的容器映射 `ar-KW` 。 |
@@ -465,9 +588,252 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 
 此容器映射有下列可用的標記：
 
-| 影像標記                                  | 注意                                                                      |
+| 影像標記                                  | 備註                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
-| `latest`                                    | 具有地區設定和語音的容器映射 `en-US` `en-US-JessaRUS` 。        |
+| `latest`                                    | 具有地區設定和語音的容器映射 `en-US` `en-US-AriaRUS` 。         |
+| `1.6.0-amd64-ar-eg-hoda-preview`            | 具有地區設定和語音的容器映射 `ar-EG` `ar-EG-Hoda` 。            |
+| `1.6.0-amd64-ar-sa-naayf-preview`           | 具有地區設定和語音的容器映射 `ar-SA` `ar-SA-Naayf` 。           |
+| `1.6.0-amd64-bg-bg-ivan-preview`            | 具有地區設定和語音的容器映射 `bg-BG` `bg-BG-Ivan` 。            |
+| `1.6.0-amd64-ca-es-herenarus-preview`       | 具有地區設定和語音的容器映射 `ca-ES` `ca-ES-HerenaRUS` 。       |
+| `1.6.0-amd64-cs-cz-jakub-preview`           | 具有地區設定和語音的容器映射 `cs-CZ` `cs-CZ-Jakub` 。           |
+| `1.6.0-amd64-da-dk-hellerus-preview`        | 具有地區設定和語音的容器映射 `da-DK` `da-DK-HelleRUS` 。        |
+| `1.6.0-amd64-de-at-michael-preview`         | 具有地區設定和語音的容器映射 `de-AT` `de-AT-Michael` 。         |
+| `1.6.0-amd64-de-ch-karsten-preview`         | 具有地區設定和語音的容器映射 `de-CH` `de-CH-Karsten` 。         |
+| `1.6.0-amd64-de-de-hedda-preview`           | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Hedda` 。           |
+| `1.6.0-amd64-de-de-heddarus-preview`        | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Hedda` 。           |
+| `1.6.0-amd64-de-de-stefan-apollo-preview`   | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Stefan-Apollo` 。   |
+| `1.6.0-amd64-el-gr-stefanos-preview`        | 具有地區設定和語音的容器映射 `el-GR` `el-GR-Stefanos` 。        |
+| `1.6.0-amd64-en-au-catherine-preview`       | 具有地區設定和語音的容器映射 `en-AU` `en-AU-Catherine` 。       |
+| `1.6.0-amd64-en-au-hayleyrus-preview`       | 具有地區設定和語音的容器映射 `en-AU` `en-AU-HayleyRUS` 。       |
+| `1.6.0-amd64-en-ca-heatherrus-preview`      | 具有地區設定和語音的容器映射 `en-CA` `en-CA-HeatherRUS` 。      |
+| `1.6.0-amd64-en-ca-linda-preview`           | 具有地區設定和語音的容器映射 `en-CA` `en-CA-Linda` 。           |
+| `1.6.0-amd64-en-gb-george-apollo-preview`   | 具有地區設定和語音的容器映射 `en-GB` `en-GB-George-Apollo` 。   |
+| `1.6.0-amd64-en-gb-hazelrus-preview`        | 具有地區設定和語音的容器映射 `en-GB` `en-GB-HazelRUS` 。        |
+| `1.6.0-amd64-en-gb-susan-apollo-preview`    | 具有地區設定和語音的容器映射 `en-GB` `en-GB-Susan-Apollo` 。    |
+| `1.6.0-amd64-en-ie-sean-preview`            | 具有地區設定和語音的容器映射 `en-IE` `en-IE-Sean` 。            |
+| `1.6.0-amd64-en-in-heera-apollo-preview`    | 具有地區設定和語音的容器映射 `en-IN` `en-IN-Heera-Apollo` 。    |
+| `1.6.0-amd64-en-in-priyarus-preview`        | 具有地區設定和語音的容器映射 `en-IN` `en-IN-PriyaRUS` 。        |
+| `1.6.0-amd64-en-in-ravi-apollo-preview`     | 具有地區設定和語音的容器映射 `en-IN` `en-IN-Ravi-Apollo` 。     |
+| `1.6.0-amd64-en-us-benjaminrus-preview`     | 具有地區設定和語音的容器映射 `en-US` `en-US-BenjaminRUS` 。     |
+| `1.6.0-amd64-en-us-guy24krus-preview`       | 具有地區設定和語音的容器映射 `en-US` `en-US-Guy24kRUS` 。       |
+| `1.6.0-amd64-en-us-aria24krus-preview`      | 具有地區設定和語音的容器映射 `en-US` `en-US-Aria24kRUS` 。     |
+| `1.6.0-amd64-en-us-ariarus-preview`         | 具有地區設定和語音的容器映射 `en-US` `en-US-AriaRUS` 。        |
+| `1.6.0-amd64-en-us-zirarus-preview`         | 具有地區設定和語音的容器映射 `en-US` `en-US-ZiraRUS` 。         |
+| `1.6.0-amd64-es-es-helenarus-preview`       | 具有地區設定和語音的容器映射 `es-ES` `es-ES-HelenaRUS` 。       |
+| `1.6.0-amd64-es-es-laura-apollo-preview`    | 具有地區設定和語音的容器映射 `es-ES` `es-ES-Laura-Apollo` 。    |
+| `1.6.0-amd64-es-es-pablo-apollo-preview`    | 具有地區設定和語音的容器映射 `es-ES` `es-ES-Pablo-Apollo` 。    |
+| `1.6.0-amd64-es-mx-hildarus-preview`        | 具有地區設定和語音的容器映射 `es-MX` `es-MX-HildaRUS` 。        |
+| `1.6.0-amd64-es-mx-raul-apollo-preview`     | 具有地區設定和語音的容器映射 `es-MX` `es-MX-Raul-Apollo` 。     |
+| `1.6.0-amd64-fi-fi-heidirus-preview`        | 具有地區設定和語音的容器映射 `fi-FI` `fi-FI-HeidiRUS` 。        |
+| `1.6.0-amd64-fr-ca-caroline-preview`        | 具有地區設定和語音的容器映射 `fr-CA` `fr-CA-Caroline` 。        |
+| `1.6.0-amd64-fr-ca-harmonierus-preview`     | 具有地區設定和語音的容器映射 `fr-CA` `fr-CA-HarmonieRUS` 。     |
+| `1.6.0-amd64-fr-ch-guillaume-preview`       | 具有地區設定和語音的容器映射 `fr-CH` `fr-CH-Guillaume` 。       |
+| `1.6.0-amd64-fr-fr-hortenserus-preview`     | 具有地區設定和語音的容器映射 `fr-FR` `fr-FR-HortenseRUS` 。     |
+| `1.6.0-amd64-fr-fr-julie-apollo-preview`    | 具有地區設定和語音的容器映射 `fr-FR` `fr-FR-Julie-Apollo` 。    |
+| `1.6.0-amd64-fr-fr-paul-apollo-preview`     | 具有地區設定和語音的容器映射 `fr-FR` `fr-FR-Paul-Apollo` 。     |
+| `1.6.0-amd64-he-il-asaf-preview`            | 具有地區設定和語音的容器映射 `he-IL` `he-IL-Asaf` 。            |
+| `1.6.0-amd64-hi-in-hemant-preview`          | 具有地區設定和語音的容器映射 `hi-IN` `hi-IN-Hemant` 。          |
+| `1.6.0-amd64-hi-in-kalpana-apollo-preview`  | 具有地區設定和語音的容器映射 `hi-IN` `hi-IN-Kalpana-Apollo` 。  |
+| `1.6.0-amd64-hi-in-kalpana-preview`         | 具有地區設定和語音的容器映射 `hi-IN` `hi-IN-Kalpana` 。         |
+| `1.6.0-amd64-hr-hr-matej-preview`           | 具有地區設定和語音的容器映射 `hr-HR` `hr-HR-Matej` 。           |
+| `1.6.0-amd64-hu-hu-szabolcs-preview`        | 具有地區設定和語音的容器映射 `hu-HU` `hu-HU-Szabolcs` 。        |
+| `1.6.0-amd64-id-id-andika-preview`          | 具有地區設定和語音的容器映射 `id-ID` `id-ID-Andika` 。          |
+| `1.6.0-amd64-it-it-cosimo-apollo-preview`   | 具有地區設定和語音的容器映射 `it-IT` `it-IT-Cosimo-Apollo` 。   |
+| `1.6.0-amd64-it-it-luciarus-preview`        | 具有地區設定和語音的容器映射 `it-IT` `it-IT-LuciaRUS` 。        |
+| `1.6.0-amd64-ja-jp-ayumi-apollo-preview`    | 具有地區設定和語音的容器映射 `ja-JP` `ja-JP-Ayumi-Apollo` 。    |
+| `1.6.0-amd64-ja-jp-harukarus-preview`       | 具有地區設定和語音的容器映射 `ja-JP` `ja-JP-HarukaRUS` 。       |
+| `1.6.0-amd64-ja-jp-ichiro-apollo-preview`   | 具有地區設定和語音的容器映射 `ja-JP` `ja-JP-Ichiro-Apollo` 。   |
+| `1.6.0-amd64-ko-kr-heamirus-preview`        | 具有地區設定和語音的容器映射 `ko-KR` `ko-KR-HeamiRUS` 。        |
+| `1.6.0-amd64-ms-my-rizwan-preview`          | 具有地區設定和語音的容器映射 `ms-MY` `ms-MY-Rizwan` 。          |
+| `1.6.0-amd64-nb-no-huldarus-preview`        | 具有地區設定和語音的容器映射 `nb-NO` `nb-NO-HuldaRUS` 。        |
+| `1.6.0-amd64-nl-nl-hannarus-preview`        | 具有地區設定和語音的容器映射 `nl-NL` `nl-NL-HannaRUS` 。        |
+| `1.6.0-amd64-pl-pl-paulinarus-preview`      | 具有地區設定和語音的容器映射 `pl-PL` `pl-PL-PaulinaRUS` 。      |
+| `1.6.0-amd64-pt-br-daniel-apollo-preview`   | 具有地區設定和語音的容器映射 `pt-BR` `pt-BR-Daniel-Apollo` 。   |
+| `1.6.0-amd64-pt-br-heloisarus-preview`      | 具有地區設定和語音的容器映射 `pt-BR` `pt-BR-HeloisaRUS` 。      |
+| `1.6.0-amd64-pt-pt-heliarus-preview`        | 具有地區設定和語音的容器映射 `pt-PT` `pt-PT-HeliaRUS` 。        |
+| `1.6.0-amd64-ro-ro-andrei-preview`          | 具有地區設定和語音的容器映射 `ro-RO` `ro-RO-Andrei` 。          |
+| `1.6.0-amd64-ru-ru-ekaterinarus-preview`    | 具有地區設定和語音的容器映射 `ru-RU` `ru-RU-EkaterinaRUS` 。    |
+| `1.6.0-amd64-ru-ru-irina-apollo-preview`    | 具有地區設定和語音的容器映射 `ru-RU` `ru-RU-Irina-Apollo` 。    |
+| `1.6.0-amd64-ru-ru-pavel-apollo-preview`    | 具有地區設定和語音的容器映射 `ru-RU` `ru-RU-Pavel-Apollo` 。    |
+| `1.6.0-amd64-sk-sk-filip-preview`           | 具有地區設定和語音的容器映射 `sk-SK` `sk-SK-Filip` 。           |
+| `1.6.0-amd64-sl-si-lado-preview`            | 具有地區設定和語音的容器映射 `sl-SI` `sl-SI-Lado` 。            |
+| `1.6.0-amd64-sv-se-hedvigrus-preview`       | 具有地區設定和語音的容器映射 `sv-SE` `sv-SE-HedvigRUS` 。       |
+| `1.6.0-amd64-ta-in-valluvar-preview`        | 具有地區設定和語音的容器映射 `ta-IN` `ta-IN-Valluvar` 。        |
+| `1.6.0-amd64-te-in-chitra-preview`          | 具有地區設定和語音的容器映射 `te-IN` `te-IN-Chitra` 。          |
+| `1.6.0-amd64-th-th-pattara-preview`         | 具有地區設定和語音的容器映射 `th-TH` `th-TH-Pattara` 。         |
+| `1.6.0-amd64-tr-tr-sedarus-preview`         | 具有地區設定和語音的容器映射 `tr-TR` `tr-TR-SedaRUS` 。         |
+| `1.6.0-amd64-vi-vn-an-preview`              | 具有地區設定和語音的容器映射 `vi-VN` `vi-VN-An` 。              |
+| `1.6.0-amd64-zh-cn-huihuirus-preview`       | 具有地區設定和語音的容器映射 `zh-CN` `zh-CN-HuihuiRUS` 。       |
+| `1.6.0-amd64-zh-cn-kangkang-apollo-preview` | 具有地區設定和語音的容器映射 `zh-CN` `zh-CN-Kangkang-Apollo` 。 |
+| `1.6.0-amd64-zh-cn-yaoyao-apollo-preview`   | 具有地區設定和語音的容器映射 `zh-CN` `zh-CN-Yaoyao-Apollo` 。   |
+| `1.6.0-amd64-zh-hk-danny-apollo-preview`    | 具有地區設定和語音的容器映射 `zh-HK` `zh-HK-Danny-Apollo` 。    |
+| `1.6.0-amd64-zh-hk-tracy-apollo-preview`    | 具有地區設定和語音的容器映射 `zh-HK` `zh-HK-Tracy-Apollo` 。    |
+| `1.6.0-amd64-zh-hk-tracyrus-preview`        | 具有地區設定和語音的容器映射 `zh-HK` `zh-HK-TracyRUS` 。        |
+| `1.6.0-amd64-zh-tw-hanhanrus-preview`       | 具有地區設定和語音的容器映射 `zh-TW` `zh-TW-HanHanRUS` 。       |
+| `1.6.0-amd64-zh-tw-yating-apollo-preview`   | 具有地區設定和語音的容器映射 `zh-TW` `zh-TW-Yating-Apollo` 。   |
+| `1.6.0-amd64-zh-tw-zhiwei-apollo-preview`   | 具有地區設定和語音的容器映射 `zh-TW` `zh-TW-Zhiwei-Apollo` 。   |
+| `1.5.0-amd64-ar-eg-hoda-preview`            | 具有地區設定和語音的容器映射 `ar-EG` `ar-EG-Hoda` 。            |
+| `1.5.0-amd64-ar-sa-naayf-preview`           | 具有地區設定和語音的容器映射 `ar-SA` `ar-SA-Naayf` 。           |
+| `1.5.0-amd64-bg-bg-ivan-preview`            | 具有地區設定和語音的容器映射 `bg-BG` `bg-BG-Ivan` 。            |
+| `1.5.0-amd64-ca-es-herenarus-preview`       | 具有地區設定和語音的容器映射 `ca-ES` `ca-ES-HerenaRUS` 。       |
+| `1.5.0-amd64-cs-cz-jakub-preview`           | 具有地區設定和語音的容器映射 `cs-CZ` `cs-CZ-Jakub` 。           |
+| `1.5.0-amd64-da-dk-hellerus-preview`        | 具有地區設定和語音的容器映射 `da-DK` `da-DK-HelleRUS` 。        |
+| `1.5.0-amd64-de-at-michael-preview`         | 具有地區設定和語音的容器映射 `de-AT` `de-AT-Michael` 。         |
+| `1.5.0-amd64-de-ch-karsten-preview`         | 具有地區設定和語音的容器映射 `de-CH` `de-CH-Karsten` 。         |
+| `1.5.0-amd64-de-de-hedda-preview`           | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Hedda` 。           |
+| `1.5.0-amd64-de-de-heddarus-preview`        | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Hedda` 。           |
+| `1.5.0-amd64-de-de-stefan-apollo-preview`   | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Stefan-Apollo` 。   |
+| `1.5.0-amd64-el-gr-stefanos-preview`        | 具有地區設定和語音的容器映射 `el-GR` `el-GR-Stefanos` 。        |
+| `1.5.0-amd64-en-au-catherine-preview`       | 具有地區設定和語音的容器映射 `en-AU` `en-AU-Catherine` 。       |
+| `1.5.0-amd64-en-au-hayleyrus-preview`       | 具有地區設定和語音的容器映射 `en-AU` `en-AU-HayleyRUS` 。       |
+| `1.5.0-amd64-en-ca-heatherrus-preview`      | 具有地區設定和語音的容器映射 `en-CA` `en-CA-HeatherRUS` 。      |
+| `1.5.0-amd64-en-ca-linda-preview`           | 具有地區設定和語音的容器映射 `en-CA` `en-CA-Linda` 。           |
+| `1.5.0-amd64-en-gb-george-apollo-preview`   | 具有地區設定和語音的容器映射 `en-GB` `en-GB-George-Apollo` 。   |
+| `1.5.0-amd64-en-gb-hazelrus-preview`        | 具有地區設定和語音的容器映射 `en-GB` `en-GB-HazelRUS` 。        |
+| `1.5.0-amd64-en-gb-susan-apollo-preview`    | 具有地區設定和語音的容器映射 `en-GB` `en-GB-Susan-Apollo` 。    |
+| `1.5.0-amd64-en-ie-sean-preview`            | 具有地區設定和語音的容器映射 `en-IE` `en-IE-Sean` 。            |
+| `1.5.0-amd64-en-in-heera-apollo-preview`    | 具有地區設定和語音的容器映射 `en-IN` `en-IN-Heera-Apollo` 。    |
+| `1.5.0-amd64-en-in-priyarus-preview`        | 具有地區設定和語音的容器映射 `en-IN` `en-IN-PriyaRUS` 。        |
+| `1.5.0-amd64-en-in-ravi-apollo-preview`     | 具有地區設定和語音的容器映射 `en-IN` `en-IN-Ravi-Apollo` 。     |
+| `1.5.0-amd64-en-us-benjaminrus-preview`     | 具有地區設定和語音的容器映射 `en-US` `en-US-BenjaminRUS` 。     |
+| `1.5.0-amd64-en-us-guy24krus-preview`       | 具有地區設定和語音的容器映射 `en-US` `en-US-Guy24kRUS` 。       |
+| `1.5.0-amd64-en-us-aria24krus-preview`      | 具有地區設定和語音的容器映射 `en-US` `en-US-Aria24kRUS` 。     |
+| `1.5.0-amd64-en-us-ariarus-preview`         | 具有地區設定和語音的容器映射 `en-US` `en-US-AriaRUS` 。        |
+| `1.5.0-amd64-en-us-zirarus-preview`         | 具有地區設定和語音的容器映射 `en-US` `en-US-ZiraRUS` 。         |
+| `1.5.0-amd64-es-es-helenarus-preview`       | 具有地區設定和語音的容器映射 `es-ES` `es-ES-HelenaRUS` 。       |
+| `1.5.0-amd64-es-es-laura-apollo-preview`    | 具有地區設定和語音的容器映射 `es-ES` `es-ES-Laura-Apollo` 。    |
+| `1.5.0-amd64-es-es-pablo-apollo-preview`    | 具有地區設定和語音的容器映射 `es-ES` `es-ES-Pablo-Apollo` 。    |
+| `1.5.0-amd64-es-mx-hildarus-preview`        | 具有地區設定和語音的容器映射 `es-MX` `es-MX-HildaRUS` 。        |
+| `1.5.0-amd64-es-mx-raul-apollo-preview`     | 具有地區設定和語音的容器映射 `es-MX` `es-MX-Raul-Apollo` 。     |
+| `1.5.0-amd64-fi-fi-heidirus-preview`        | 具有地區設定和語音的容器映射 `fi-FI` `fi-FI-HeidiRUS` 。        |
+| `1.5.0-amd64-fr-ca-caroline-preview`        | 具有地區設定和語音的容器映射 `fr-CA` `fr-CA-Caroline` 。        |
+| `1.5.0-amd64-fr-ca-harmonierus-preview`     | 具有地區設定和語音的容器映射 `fr-CA` `fr-CA-HarmonieRUS` 。     |
+| `1.5.0-amd64-fr-ch-guillaume-preview`       | 具有地區設定和語音的容器映射 `fr-CH` `fr-CH-Guillaume` 。       |
+| `1.5.0-amd64-fr-fr-hortenserus-preview`     | 具有地區設定和語音的容器映射 `fr-FR` `fr-FR-HortenseRUS` 。     |
+| `1.5.0-amd64-fr-fr-julie-apollo-preview`    | 具有地區設定和語音的容器映射 `fr-FR` `fr-FR-Julie-Apollo` 。    |
+| `1.5.0-amd64-fr-fr-paul-apollo-preview`     | 具有地區設定和語音的容器映射 `fr-FR` `fr-FR-Paul-Apollo` 。     |
+| `1.5.0-amd64-he-il-asaf-preview`            | 具有地區設定和語音的容器映射 `he-IL` `he-IL-Asaf` 。            |
+| `1.5.0-amd64-hi-in-hemant-preview`          | 具有地區設定和語音的容器映射 `hi-IN` `hi-IN-Hemant` 。          |
+| `1.5.0-amd64-hi-in-kalpana-apollo-preview`  | 具有地區設定和語音的容器映射 `hi-IN` `hi-IN-Kalpana-Apollo` 。  |
+| `1.5.0-amd64-hi-in-kalpana-preview`         | 具有地區設定和語音的容器映射 `hi-IN` `hi-IN-Kalpana` 。         |
+| `1.5.0-amd64-hr-hr-matej-preview`           | 具有地區設定和語音的容器映射 `hr-HR` `hr-HR-Matej` 。           |
+| `1.5.0-amd64-hu-hu-szabolcs-preview`        | 具有地區設定和語音的容器映射 `hu-HU` `hu-HU-Szabolcs` 。        |
+| `1.5.0-amd64-id-id-andika-preview`          | 具有地區設定和語音的容器映射 `id-ID` `id-ID-Andika` 。          |
+| `1.5.0-amd64-it-it-cosimo-apollo-preview`   | 具有地區設定和語音的容器映射 `it-IT` `it-IT-Cosimo-Apollo` 。   |
+| `1.5.0-amd64-it-it-luciarus-preview`        | 具有地區設定和語音的容器映射 `it-IT` `it-IT-LuciaRUS` 。        |
+| `1.5.0-amd64-ja-jp-ayumi-apollo-preview`    | 具有地區設定和語音的容器映射 `ja-JP` `ja-JP-Ayumi-Apollo` 。    |
+| `1.5.0-amd64-ja-jp-harukarus-preview`       | 具有地區設定和語音的容器映射 `ja-JP` `ja-JP-HarukaRUS` 。       |
+| `1.5.0-amd64-ja-jp-ichiro-apollo-preview`   | 具有地區設定和語音的容器映射 `ja-JP` `ja-JP-Ichiro-Apollo` 。   |
+| `1.5.0-amd64-ko-kr-heamirus-preview`        | 具有地區設定和語音的容器映射 `ko-KR` `ko-KR-HeamiRUS` 。        |
+| `1.5.0-amd64-ms-my-rizwan-preview`          | 具有地區設定和語音的容器映射 `ms-MY` `ms-MY-Rizwan` 。          |
+| `1.5.0-amd64-nb-no-huldarus-preview`        | 具有地區設定和語音的容器映射 `nb-NO` `nb-NO-HuldaRUS` 。        |
+| `1.5.0-amd64-nl-nl-hannarus-preview`        | 具有地區設定和語音的容器映射 `nl-NL` `nl-NL-HannaRUS` 。        |
+| `1.5.0-amd64-pl-pl-paulinarus-preview`      | 具有地區設定和語音的容器映射 `pl-PL` `pl-PL-PaulinaRUS` 。      |
+| `1.5.0-amd64-pt-br-daniel-apollo-preview`   | 具有地區設定和語音的容器映射 `pt-BR` `pt-BR-Daniel-Apollo` 。   |
+| `1.5.0-amd64-pt-br-heloisarus-preview`      | 具有地區設定和語音的容器映射 `pt-BR` `pt-BR-HeloisaRUS` 。      |
+| `1.5.0-amd64-pt-pt-heliarus-preview`        | 具有地區設定和語音的容器映射 `pt-PT` `pt-PT-HeliaRUS` 。        |
+| `1.5.0-amd64-ro-ro-andrei-preview`          | 具有地區設定和語音的容器映射 `ro-RO` `ro-RO-Andrei` 。          |
+| `1.5.0-amd64-ru-ru-ekaterinarus-preview`    | 具有地區設定和語音的容器映射 `ru-RU` `ru-RU-EkaterinaRUS` 。    |
+| `1.5.0-amd64-ru-ru-irina-apollo-preview`    | 具有地區設定和語音的容器映射 `ru-RU` `ru-RU-Irina-Apollo` 。    |
+| `1.5.0-amd64-ru-ru-pavel-apollo-preview`    | 具有地區設定和語音的容器映射 `ru-RU` `ru-RU-Pavel-Apollo` 。    |
+| `1.5.0-amd64-sk-sk-filip-preview`           | 具有地區設定和語音的容器映射 `sk-SK` `sk-SK-Filip` 。           |
+| `1.5.0-amd64-sl-si-lado-preview`            | 具有地區設定和語音的容器映射 `sl-SI` `sl-SI-Lado` 。            |
+| `1.5.0-amd64-sv-se-hedvigrus-preview`       | 具有地區設定和語音的容器映射 `sv-SE` `sv-SE-HedvigRUS` 。       |
+| `1.5.0-amd64-ta-in-valluvar-preview`        | 具有地區設定和語音的容器映射 `ta-IN` `ta-IN-Valluvar` 。        |
+| `1.5.0-amd64-te-in-chitra-preview`          | 具有地區設定和語音的容器映射 `te-IN` `te-IN-Chitra` 。          |
+| `1.5.0-amd64-th-th-pattara-preview`         | 具有地區設定和語音的容器映射 `th-TH` `th-TH-Pattara` 。         |
+| `1.5.0-amd64-tr-tr-sedarus-preview`         | 具有地區設定和語音的容器映射 `tr-TR` `tr-TR-SedaRUS` 。         |
+| `1.5.0-amd64-vi-vn-an-preview`              | 具有地區設定和語音的容器映射 `vi-VN` `vi-VN-An` 。              |
+| `1.5.0-amd64-zh-cn-huihuirus-preview`       | 具有地區設定和語音的容器映射 `zh-CN` `zh-CN-HuihuiRUS` 。       |
+| `1.5.0-amd64-zh-cn-kangkang-apollo-preview` | 具有地區設定和語音的容器映射 `zh-CN` `zh-CN-Kangkang-Apollo` 。 |
+| `1.5.0-amd64-zh-cn-yaoyao-apollo-preview`   | 具有地區設定和語音的容器映射 `zh-CN` `zh-CN-Yaoyao-Apollo` 。   |
+| `1.5.0-amd64-zh-hk-danny-apollo-preview`    | 具有地區設定和語音的容器映射 `zh-HK` `zh-HK-Danny-Apollo` 。    |
+| `1.5.0-amd64-zh-hk-tracy-apollo-preview`    | 具有地區設定和語音的容器映射 `zh-HK` `zh-HK-Tracy-Apollo` 。    |
+| `1.5.0-amd64-zh-hk-tracyrus-preview`        | 具有地區設定和語音的容器映射 `zh-HK` `zh-HK-TracyRUS` 。        |
+| `1.5.0-amd64-zh-tw-hanhanrus-preview`       | 具有地區設定和語音的容器映射 `zh-TW` `zh-TW-HanHanRUS` 。       |
+| `1.5.0-amd64-zh-tw-yating-apollo-preview`   | 具有地區設定和語音的容器映射 `zh-TW` `zh-TW-Yating-Apollo` 。   |
+| `1.5.0-amd64-zh-tw-zhiwei-apollo-preview`   | 具有地區設定和語音的容器映射 `zh-TW` `zh-TW-Zhiwei-Apollo` 。   |
+| `1.4.0-amd64-ar-eg-hoda-preview`            | 具有地區設定和語音的容器映射 `ar-EG` `ar-EG-Hoda` 。            |
+| `1.4.0-amd64-ar-sa-naayf-preview`           | 具有地區設定和語音的容器映射 `ar-SA` `ar-SA-Naayf` 。           |
+| `1.4.0-amd64-bg-bg-ivan-preview`            | 具有地區設定和語音的容器映射 `bg-BG` `bg-BG-Ivan` 。            |
+| `1.4.0-amd64-ca-es-herenarus-preview`       | 具有地區設定和語音的容器映射 `ca-ES` `ca-ES-HerenaRUS` 。       |
+| `1.4.0-amd64-cs-cz-jakub-preview`           | 具有地區設定和語音的容器映射 `cs-CZ` `cs-CZ-Jakub` 。           |
+| `1.4.0-amd64-da-dk-hellerus-preview`        | 具有地區設定和語音的容器映射 `da-DK` `da-DK-HelleRUS` 。        |
+| `1.4.0-amd64-de-at-michael-preview`         | 具有地區設定和語音的容器映射 `de-AT` `de-AT-Michael` 。         |
+| `1.4.0-amd64-de-ch-karsten-preview`         | 具有地區設定和語音的容器映射 `de-CH` `de-CH-Karsten` 。         |
+| `1.4.0-amd64-de-de-hedda-preview`           | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Hedda` 。           |
+| `1.4.0-amd64-de-de-heddarus-preview`        | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Hedda` 。           |
+| `1.4.0-amd64-de-de-stefan-apollo-preview`   | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Stefan-Apollo` 。   |
+| `1.4.0-amd64-el-gr-stefanos-preview`        | 具有地區設定和語音的容器映射 `el-GR` `el-GR-Stefanos` 。        |
+| `1.4.0-amd64-en-au-catherine-preview`       | 具有地區設定和語音的容器映射 `en-AU` `en-AU-Catherine` 。       |
+| `1.4.0-amd64-en-au-hayleyrus-preview`       | 具有地區設定和語音的容器映射 `en-AU` `en-AU-HayleyRUS` 。       |
+| `1.4.0-amd64-en-ca-heatherrus-preview`      | 具有地區設定和語音的容器映射 `en-CA` `en-CA-HeatherRUS` 。      |
+| `1.4.0-amd64-en-ca-linda-preview`           | 具有地區設定和語音的容器映射 `en-CA` `en-CA-Linda` 。           |
+| `1.4.0-amd64-en-gb-george-apollo-preview`   | 具有地區設定和語音的容器映射 `en-GB` `en-GB-George-Apollo` 。   |
+| `1.4.0-amd64-en-gb-hazelrus-preview`        | 具有地區設定和語音的容器映射 `en-GB` `en-GB-HazelRUS` 。        |
+| `1.4.0-amd64-en-gb-susan-apollo-preview`    | 具有地區設定和語音的容器映射 `en-GB` `en-GB-Susan-Apollo` 。    |
+| `1.4.0-amd64-en-ie-sean-preview`            | 具有地區設定和語音的容器映射 `en-IE` `en-IE-Sean` 。            |
+| `1.4.0-amd64-en-in-heera-apollo-preview`    | 具有地區設定和語音的容器映射 `en-IN` `en-IN-Heera-Apollo` 。    |
+| `1.4.0-amd64-en-in-priyarus-preview`        | 具有地區設定和語音的容器映射 `en-IN` `en-IN-PriyaRUS` 。        |
+| `1.4.0-amd64-en-in-ravi-apollo-preview`     | 具有地區設定和語音的容器映射 `en-IN` `en-IN-Ravi-Apollo` 。     |
+| `1.4.0-amd64-en-us-benjaminrus-preview`     | 具有地區設定和語音的容器映射 `en-US` `en-US-BenjaminRUS` 。     |
+| `1.4.0-amd64-en-us-guy24krus-preview`       | 具有地區設定和語音的容器映射 `en-US` `en-US-Guy24kRUS` 。       |
+| `1.4.0-amd64-en-us-aria24krus-preview`      | 具有地區設定和語音的容器映射 `en-US` `en-US-Aria24kRUS` 。     |
+| `1.4.0-amd64-en-us-ariarus-preview`         | 具有地區設定和語音的容器映射 `en-US` `en-US-AriaRUS` 。        |
+| `1.4.0-amd64-en-us-zirarus-preview`         | 具有地區設定和語音的容器映射 `en-US` `en-US-ZiraRUS` 。         |
+| `1.4.0-amd64-es-es-helenarus-preview`       | 具有地區設定和語音的容器映射 `es-ES` `es-ES-HelenaRUS` 。       |
+| `1.4.0-amd64-es-es-laura-apollo-preview`    | 具有地區設定和語音的容器映射 `es-ES` `es-ES-Laura-Apollo` 。    |
+| `1.4.0-amd64-es-es-pablo-apollo-preview`    | 具有地區設定和語音的容器映射 `es-ES` `es-ES-Pablo-Apollo` 。    |
+| `1.4.0-amd64-es-mx-hildarus-preview`        | 具有地區設定和語音的容器映射 `es-MX` `es-MX-HildaRUS` 。        |
+| `1.4.0-amd64-es-mx-raul-apollo-preview`     | 具有地區設定和語音的容器映射 `es-MX` `es-MX-Raul-Apollo` 。     |
+| `1.4.0-amd64-fi-fi-heidirus-preview`        | 具有地區設定和語音的容器映射 `fi-FI` `fi-FI-HeidiRUS` 。        |
+| `1.4.0-amd64-fr-ca-caroline-preview`        | 具有地區設定和語音的容器映射 `fr-CA` `fr-CA-Caroline` 。        |
+| `1.4.0-amd64-fr-ca-harmonierus-preview`     | 具有地區設定和語音的容器映射 `fr-CA` `fr-CA-HarmonieRUS` 。     |
+| `1.4.0-amd64-fr-ch-guillaume-preview`       | 具有地區設定和語音的容器映射 `fr-CH` `fr-CH-Guillaume` 。       |
+| `1.4.0-amd64-fr-fr-hortenserus-preview`     | 具有地區設定和語音的容器映射 `fr-FR` `fr-FR-HortenseRUS` 。     |
+| `1.4.0-amd64-fr-fr-julie-apollo-preview`    | 具有地區設定和語音的容器映射 `fr-FR` `fr-FR-Julie-Apollo` 。    |
+| `1.4.0-amd64-fr-fr-paul-apollo-preview`     | 具有地區設定和語音的容器映射 `fr-FR` `fr-FR-Paul-Apollo` 。     |
+| `1.4.0-amd64-he-il-asaf-preview`            | 具有地區設定和語音的容器映射 `he-IL` `he-IL-Asaf` 。            |
+| `1.4.0-amd64-hi-in-hemant-preview`          | 具有地區設定和語音的容器映射 `hi-IN` `hi-IN-Hemant` 。          |
+| `1.4.0-amd64-hi-in-kalpana-apollo-preview`  | 具有地區設定和語音的容器映射 `hi-IN` `hi-IN-Kalpana-Apollo` 。  |
+| `1.4.0-amd64-hi-in-kalpana-preview`         | 具有地區設定和語音的容器映射 `hi-IN` `hi-IN-Kalpana` 。         |
+| `1.4.0-amd64-hr-hr-matej-preview`           | 具有地區設定和語音的容器映射 `hr-HR` `hr-HR-Matej` 。           |
+| `1.4.0-amd64-hu-hu-szabolcs-preview`        | 具有地區設定和語音的容器映射 `hu-HU` `hu-HU-Szabolcs` 。        |
+| `1.4.0-amd64-id-id-andika-preview`          | 具有地區設定和語音的容器映射 `id-ID` `id-ID-Andika` 。          |
+| `1.4.0-amd64-it-it-cosimo-apollo-preview`   | 具有地區設定和語音的容器映射 `it-IT` `it-IT-Cosimo-Apollo` 。   |
+| `1.4.0-amd64-it-it-luciarus-preview`        | 具有地區設定和語音的容器映射 `it-IT` `it-IT-LuciaRUS` 。        |
+| `1.4.0-amd64-ja-jp-ayumi-apollo-preview`    | 具有地區設定和語音的容器映射 `ja-JP` `ja-JP-Ayumi-Apollo` 。    |
+| `1.4.0-amd64-ja-jp-harukarus-preview`       | 具有地區設定和語音的容器映射 `ja-JP` `ja-JP-HarukaRUS` 。       |
+| `1.4.0-amd64-ja-jp-ichiro-apollo-preview`   | 具有地區設定和語音的容器映射 `ja-JP` `ja-JP-Ichiro-Apollo` 。   |
+| `1.4.0-amd64-ko-kr-heamirus-preview`        | 具有地區設定和語音的容器映射 `ko-KR` `ko-KR-HeamiRUS` 。        |
+| `1.4.0-amd64-ms-my-rizwan-preview`          | 具有地區設定和語音的容器映射 `ms-MY` `ms-MY-Rizwan` 。          |
+| `1.4.0-amd64-nb-no-huldarus-preview`        | 具有地區設定和語音的容器映射 `nb-NO` `nb-NO-HuldaRUS` 。        |
+| `1.4.0-amd64-nl-nl-hannarus-preview`        | 具有地區設定和語音的容器映射 `nl-NL` `nl-NL-HannaRUS` 。        |
+| `1.4.0-amd64-pl-pl-paulinarus-preview`      | 具有地區設定和語音的容器映射 `pl-PL` `pl-PL-PaulinaRUS` 。      |
+| `1.4.0-amd64-pt-br-daniel-apollo-preview`   | 具有地區設定和語音的容器映射 `pt-BR` `pt-BR-Daniel-Apollo` 。   |
+| `1.4.0-amd64-pt-br-heloisarus-preview`      | 具有地區設定和語音的容器映射 `pt-BR` `pt-BR-HeloisaRUS` 。      |
+| `1.4.0-amd64-pt-pt-heliarus-preview`        | 具有地區設定和語音的容器映射 `pt-PT` `pt-PT-HeliaRUS` 。        |
+| `1.4.0-amd64-ro-ro-andrei-preview`          | 具有地區設定和語音的容器映射 `ro-RO` `ro-RO-Andrei` 。          |
+| `1.4.0-amd64-ru-ru-ekaterinarus-preview`    | 具有地區設定和語音的容器映射 `ru-RU` `ru-RU-EkaterinaRUS` 。    |
+| `1.4.0-amd64-ru-ru-irina-apollo-preview`    | 具有地區設定和語音的容器映射 `ru-RU` `ru-RU-Irina-Apollo` 。    |
+| `1.4.0-amd64-ru-ru-pavel-apollo-preview`    | 具有地區設定和語音的容器映射 `ru-RU` `ru-RU-Pavel-Apollo` 。    |
+| `1.4.0-amd64-sk-sk-filip-preview`           | 具有地區設定和語音的容器映射 `sk-SK` `sk-SK-Filip` 。           |
+| `1.4.0-amd64-sl-si-lado-preview`            | 具有地區設定和語音的容器映射 `sl-SI` `sl-SI-Lado` 。            |
+| `1.4.0-amd64-sv-se-hedvigrus-preview`       | 具有地區設定和語音的容器映射 `sv-SE` `sv-SE-HedvigRUS` 。       |
+| `1.4.0-amd64-ta-in-valluvar-preview`        | 具有地區設定和語音的容器映射 `ta-IN` `ta-IN-Valluvar` 。        |
+| `1.4.0-amd64-te-in-chitra-preview`          | 具有地區設定和語音的容器映射 `te-IN` `te-IN-Chitra` 。          |
+| `1.4.0-amd64-th-th-pattara-preview`         | 具有地區設定和語音的容器映射 `th-TH` `th-TH-Pattara` 。         |
+| `1.4.0-amd64-tr-tr-sedarus-preview`         | 具有地區設定和語音的容器映射 `tr-TR` `tr-TR-SedaRUS` 。         |
+| `1.4.0-amd64-vi-vn-an-preview`              | 具有地區設定和語音的容器映射 `vi-VN` `vi-VN-An` 。              |
+| `1.4.0-amd64-zh-cn-huihuirus-preview`       | 具有地區設定和語音的容器映射 `zh-CN` `zh-CN-HuihuiRUS` 。       |
+| `1.4.0-amd64-zh-cn-kangkang-apollo-preview` | 具有地區設定和語音的容器映射 `zh-CN` `zh-CN-Kangkang-Apollo` 。 |
+| `1.4.0-amd64-zh-cn-yaoyao-apollo-preview`   | 具有地區設定和語音的容器映射 `zh-CN` `zh-CN-Yaoyao-Apollo` 。   |
+| `1.4.0-amd64-zh-hk-danny-apollo-preview`    | 具有地區設定和語音的容器映射 `zh-HK` `zh-HK-Danny-Apollo` 。    |
+| `1.4.0-amd64-zh-hk-tracy-apollo-preview`    | 具有地區設定和語音的容器映射 `zh-HK` `zh-HK-Tracy-Apollo` 。    |
+| `1.4.0-amd64-zh-hk-tracyrus-preview`        | 具有地區設定和語音的容器映射 `zh-HK` `zh-HK-TracyRUS` 。        |
+| `1.4.0-amd64-zh-tw-hanhanrus-preview`       | 具有地區設定和語音的容器映射 `zh-TW` `zh-TW-HanHanRUS` 。       |
+| `1.4.0-amd64-zh-tw-yating-apollo-preview`   | 具有地區設定和語音的容器映射 `zh-TW` `zh-TW-Yating-Apollo` 。   |
+| `1.4.0-amd64-zh-tw-zhiwei-apollo-preview`   | 具有地區設定和語音的容器映射 `zh-TW` `zh-TW-Zhiwei-Apollo` 。   |
 | `1.3.0-amd64-ar-eg-hoda-preview`            | 具有地區設定和語音的容器映射 `ar-EG` `ar-EG-Hoda` 。            |
 | `1.3.0-amd64-ar-sa-naayf-preview`           | 具有地區設定和語音的容器映射 `ar-SA` `ar-SA-Naayf` 。           |
 | `1.3.0-amd64-bg-bg-ivan-preview`            | 具有地區設定和語音的容器映射 `bg-BG` `bg-BG-Ivan` 。            |
@@ -477,7 +843,6 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 | `1.3.0-amd64-de-at-michael-preview`         | 具有地區設定和語音的容器映射 `de-AT` `de-AT-Michael` 。         |
 | `1.3.0-amd64-de-ch-karsten-preview`         | 具有地區設定和語音的容器映射 `de-CH` `de-CH-Karsten` 。         |
 | `1.3.0-amd64-de-de-hedda-preview`           | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Hedda` 。           |
-| `1.3.0-amd64-de-de-heddarus-preview`        | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Hedda` 。           |
 | `1.3.0-amd64-de-de-heddarus-preview`        | 具有地區設定和語音的容器映射 `de-DE` `de-DE-HeddaRUS` 。        |
 | `1.3.0-amd64-de-de-stefan-apollo-preview`   | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Stefan-Apollo` 。   |
 | `1.3.0-amd64-el-gr-stefanos-preview`        | 具有地區設定和語音的容器映射 `el-GR` `el-GR-Stefanos` 。        |
@@ -511,8 +876,7 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 | `1.3.0-amd64-fr-fr-paul-apollo-preview`     | 具有地區設定和語音的容器映射 `fr-FR` `fr-FR-Paul-Apollo` 。     |
 | `1.3.0-amd64-he-il-asaf-preview`            | 具有地區設定和語音的容器映射 `he-IL` `he-IL-Asaf` 。            |
 | `1.3.0-amd64-hi-in-hemant-preview`          | 具有地區設定和語音的容器映射 `hi-IN` `hi-IN-Hemant` 。          |
-| `1.3.0-amd64-hi-in-kalpana-apollo-preview`  | 具有地區設定和語音的容器映射 `hi-IN` `hi-IN-Kalpana-Apollo` 。  |
-| `1.3.0-amd64-hi-in-kalpana-apollo-preview`  | 具有地區設定和語音的容器映射 `hi-IN` `hi-IN-Kalpana` 。         |
+| `1.3.0-amd64-hi-in-kalpana-preview`         | 具有地區設定和語音的容器映射 `hi-IN` `hi-IN-Kalpana` 。         |
 | `1.3.0-amd64-hi-in-kalpana-preview`         | 具有地區設定和語音的容器映射 `hi-IN` `hi-IN-Kalpana` 。         |
 | `1.3.0-amd64-hr-hr-matej-preview`           | 具有地區設定和語音的容器映射 `hr-HR` `hr-HR-Matej` 。           |
 | `1.3.0-amd64-hu-hu-szabolcs-preview`        | 具有地區設定和語音的容器映射 `hu-HU` `hu-HU-Szabolcs` 。        |
@@ -551,7 +915,7 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 | `1.3.0-amd64-zh-tw-hanhanrus-preview`       | 具有地區設定和語音的容器映射 `zh-TW` `zh-TW-HanHanRUS` 。       |
 | `1.3.0-amd64-zh-tw-yating-apollo-preview`   | 具有地區設定和語音的容器映射 `zh-TW` `zh-TW-Yating-Apollo` 。   |
 | `1.3.0-amd64-zh-tw-zhiwei-apollo-preview`   | 具有地區設定和語音的容器映射 `zh-TW` `zh-TW-Zhiwei-Apollo` 。   |
-| `1.2.0-amd64-de-de-heddarus-preview`        | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Hedda` 。           |
+| `1.2.0-amd64-de-de-hedda-preview`           | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Hedda` 。           |
 | `1.2.0-amd64-de-de-heddarus-preview`        | 具有地區設定和語音的容器映射 `de-DE` `de-DE-HeddaRUS` 。        |
 | `1.2.0-amd64-de-de-stefan-apollo-preview`   | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Stefan-Apollo` 。   |
 | `1.2.0-amd64-en-au-catherine-preview`       | 具有地區設定和語音的容器映射 `en-AU` `en-AU-Catherine` 。       |
@@ -589,7 +953,6 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 | `1.2.0-amd64-zh-cn-kangkang-apollo-preview` | 具有地區設定和語音的容器映射 `zh-CN` `zh-CN-Kangkang-Apollo` 。 |
 | `1.2.0-amd64-zh-cn-yaoyao-apollo-preview`   | 具有地區設定和語音的容器映射 `zh-CN` `zh-CN-Yaoyao-Apollo` 。   |
 | `1.1.0-amd64-de-de-hedda-preview`           | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Hedda` 。           |
-| `1.1.0-amd64-de-de-heddarus-preview`        | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Hedda` 。           |
 | `1.1.0-amd64-de-de-heddarus-preview`        | 具有地區設定和語音的容器映射 `de-DE` `de-DE-HeddaRUS` 。        |
 | `1.1.0-amd64-de-de-stefan-apollo-preview`   | 具有地區設定和語音的容器映射 `de-DE` `de-DE-Stefan-Apollo` 。   |
 | `1.1.0-amd64-en-au-catherine-preview`       | 具有地區設定和語音的容器映射 `en-AU` `en-AU-Catherine` 。       |
@@ -641,7 +1004,7 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 
 此容器映射有下列可用的標記：
 
-| 影像標記                    | 注意 |
+| 影像標記                    | 備註 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -656,7 +1019,7 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 
 此容器映射有下列可用的標記：
 
-| 影像標記                    | 注意 |
+| 影像標記                    | 備註 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -671,7 +1034,7 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 
 此容器映射有下列可用的標記：
 
-| 影像標記 | 注意                                         |
+| 影像標記 | 備註                                         |
 |------------|:----------------------------------------------|
 | `latest`   |                                               |
 | `3.0-en`   | 情感分析 v3 (英文)                |

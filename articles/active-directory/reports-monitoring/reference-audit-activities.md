@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80891504"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231141"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 稽核活動參考
 
@@ -35,8 +35,8 @@ Azure AD 中的報告架構包含下列元件：
     - [稽核記錄](concept-audit-logs.md) - 可針對各種功能在 Azure AD 內進行的所有變更，提供記錄追蹤功能。 
     
 - **安全性報告** 
-    - [有風險的登入](concept-risky-sign-ins.md) - 有風險的登入表示非使用者帳戶合法擁有者的某人嘗試登入。 
-    - [標幟為有風險的使用者](concept-user-at-risk.md) - 有風險的使用者表示可能被盜用的使用者帳戶。 
+    - [有風險的登入](../identity-protection/overview-identity-protection.md) - 有風險的登入表示非使用者帳戶合法擁有者的某人嘗試登入。 
+    - [標幟為有風險的使用者](../identity-protection/overview-identity-protection.md) - 有風險的使用者表示可能被盜用的使用者帳戶。 
 
 本文列出可以在稽核記錄中記錄的稽核活動。
 
@@ -256,17 +256,17 @@ Azure AD 中的報告架構包含下列元件：
 |目錄管理|取得租用戶資訊|
 |目錄管理|取得租用戶允許的功能|
 |目錄管理|取得 tenantDomains|
-|答案|取得租用戶的類型|
-|答案|驗證是否已啟用 B2C 功能|
-|答案|驗證是否已啟用功能|
-|答案|將夥伴新增至公司|
-|答案|新增未驗證的網域|
-|答案|新增已驗證的網域|
-|答案|建立公司|
-|答案|建立公司設定|
-|答案|刪除公司設定|
-|答案|將夥伴降級|
-|答案|已刪除的目錄|
+|Key|取得租用戶的類型|
+|Key|驗證是否已啟用 B2C 功能|
+|Key|驗證是否已啟用功能|
+|Key|將夥伴新增至公司|
+|Key|新增未驗證的網域|
+|Key|新增已驗證的網域|
+|Key|建立公司|
+|Key|建立公司設定|
+|Key|刪除公司設定|
+|Key|將夥伴降級|
+|Key|已刪除的目錄|
 |其他|永久刪除的目錄|
 |其他|排程刪除的目錄|
 |資源|將公司升級為夥伴|
@@ -624,5 +624,5 @@ Azure AD 中的報告架構包含下列元件：
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure AD 報告概觀](overview-reports.md)。
-- [Audit logs 報告](concept-audit-logs.md)。 
+- [審核記錄報告](concept-audit-logs.md)。 
 - [以程式設計方式存取 Azure AD 報告](concept-reporting-api.md)

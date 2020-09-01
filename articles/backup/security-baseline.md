@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: bb4cc150fab388846b35dc9adebfacf7a56e9bbc
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 224623f7851c35b12e1f2e1d028355c202128fa1
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073500"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89244750"
 ---
 # <a name="azure-security-baseline-for-backup"></a>適用于備份的 Azure 安全性基準
 
@@ -186,7 +186,7 @@ ms.locfileid: "89073500"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
-**指導**方針： Azure 備份提供復原服務保存庫中的內建監視與警示功能。 您不需要任何額外的管理基礎結構，即可使用這些功能。 您也可以使用 Azure 監視器來擴大監視和報告的規模。
+**指導**方針： Azure 備份提供復原服務保存庫中的內建監視與警示功能。 這些功能不需要任何額外的管理基礎結構即可供使用。 您也可以使用 Azure 監視器來擴大監視和報告的規模。
 
 啟用 Azure 活動記錄診斷設定，並將記錄傳送至 Log Analytics 工作區。 在 Log Analytics 中執行查詢，以搜尋詞彙、識別趨勢、分析模式，以及根據可能已針對復原服務保存庫收集的活動記錄資料，提供許多其他見解。
 
@@ -202,7 +202,7 @@ ms.locfileid: "89073500"
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：啟用異常活動的警示
 
-**指導**方針： Azure 備份提供復原服務保存庫中的內建監視與警示功能。 您不需要任何額外的管理基礎結構，即可使用這些功能。 您也可以使用 Azure 監視器來擴大監視和報告的規模。
+**指導**方針： Azure 備份提供復原服務保存庫中的內建監視與警示功能。 這些功能不需要任何額外的管理基礎結構即可供使用。 您也可以使用 Azure 監視器來擴大監視和報告的規模。
 
 警示的主要案例是通知使用者，讓他們可以採取相關動作。 [備份警示] 區段會顯示 Azure 備份服務產生的警示。 這些警示是由服務所定義，而您無法自訂建立任何警示。
 
@@ -426,7 +426,7 @@ ms.locfileid: "89073500"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指導**方針：備份 Azure IaaS vm 時，Azure 備份提供獨立且隔離的備份，以防止意外損毀原始資料。 備份會儲存在復原服務保存庫中，其具有內建的復原點管理功能。
+**指導**方針：備份 Azure IaaS vm 時，Azure 備份提供獨立且隔離的備份，以防止意外損毀原始資料。 備份會儲存在復原服務保存庫中，並進行內建的復原點管理。
 
 針對開發、測試和生產復原服務保存庫，執行個別的訂用帳戶和/或管理群組。 資源應該以 VNet/子網分隔，並適當地標記，並受到 NSG 或 Azure 防火牆的保護。 儲存或處理敏感性資料的資源應該要充分隔離。 針對儲存或處理敏感性資料的虛擬機器，請在不使用時將原則和程式 (的) 將其關閉。
 

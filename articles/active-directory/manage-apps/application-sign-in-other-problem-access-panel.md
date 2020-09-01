@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 9dd407ce2727582039089c0abe31b68bfe5d0f30
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 472ab82e6941be5c1485773b1115d91eda701666
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070321"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231175"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>針對從 Azure AD 我的應用程式登入應用程式的問題進行疑難排解
 
@@ -27,10 +27,16 @@ ms.locfileid: "89070321"
 在 Azure AD 入口網站中可代表使用者設定這些應用程式。 必須正確設定應用程式，並將其指派給使用者或使用者所屬的群組，才能在我的應用程式中看到應用程式。 
 
 使用者能看見的應用程式類型可分為以下類別：
--   Office 365 應用程式
+-   Microsoft 365 和 Office 365 應用程式
 -   已設定同盟 SSO 的 Microsoft 及第三方應用程式
 -   密碼型 SSO 應用程式
 -   含現有 SSO 解決方案的應用程式
+
+以下是檢查應用程式是否出現或未出現的一些事項。
+- 請確定應用程式已新增至 Azure AD，並確定已指派使用者。 若要深入瞭解，請參閱 [應用程式管理的快速入門系列](view-applications-portal.md)。
+- 如果最近已新增應用程式，請讓使用者再次登出，然後重新登入。 
+- 如果應用程式需要授權（例如 Office），請確定使用者已獲指派適當的授權。
+- 授權變更所需的時間會根據群組的大小和複雜度而有所不同。
 
 ## <a name="general-issues-to-check-first"></a>首先檢查的一般問題
 

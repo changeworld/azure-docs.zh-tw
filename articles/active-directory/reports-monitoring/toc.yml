@@ -36,11 +36,11 @@
     - name: 使用量和深入解析報告
       href: concept-usage-insights-report.md
     - name: 有風險的登入
-      href: concept-risky-sign-ins.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: 風險偵測
-      href: concept-risk-events.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: 有風險的使用者
-      href: concept-user-at-risk.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: 佈建記錄
       href: concept-provisioning-logs.md
     - name: 報告 API
@@ -94,9 +94,9 @@
     - name: 適用於報表的 Azure AD PowerShell Cmdlet
       href: reference-powershell-reporting.md
     - name: 稽核記錄 API 參考
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
+      href: /graph/api/resources/directoryaudit?view=graph-rest-beta
     - name: 登入記錄 API 參考
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin'
+      href: /graph/api/resources/signin?view=graph-rest-beta
     - name: 稽核活動
       href: reference-audit-activities.md
     - name: 資料保留期原則

@@ -6,13 +6,13 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: a7014e6721cb6985ddff5ddaf773de4e85a048e0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 37ebd1702ed8ef059b38378b89f5a5cb61748568
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071494"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231294"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>適用于適用於 PostgreSQL 的 Azure 資料庫的 Azure 安全性基準-超大規模
 

@@ -238,12 +238,6 @@
               href: application-types.md
             - name: 指派未預期的使用者
               href: ways-users-get-assigned-to-applications.md
-        - name: 針對我的應用程式進行疑難排解
-          items:
-            - name: 未顯示的應用程式
-              href: access-panel-troubleshoot-application-not-appearing.md
-            - name: 出現未預期的應用程式
-              href: access-panel-troubleshoot-unexpected-application.md
         - name: 針對內部部署應用程式進行疑難排解
           items:
             - name: 應用程式 Proxy 疑難排解

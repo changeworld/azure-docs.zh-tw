@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08d56a13d0a2e373a725320e132df739d806f2e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ab60cb83e68a0c325ec1e2ac102870493016b57
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608223"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231226"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來分析 Azure AD 活動記錄
 
@@ -36,9 +36,9 @@ ms.locfileid: "85608223"
 
 若要繼續，您需要：
 
-* Azure 訂用帳戶中的 Log Analytics 工作區。 了解如何[建立 Log Analytics 工作區](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
+* Azure 訂用帳戶中的 Log Analytics 工作區。 了解如何[建立 Log Analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)。
 * 首先，請完成[將 Azure AD 活動記錄路由至 Log Analytics 工作區](howto-integrate-activity-logs-with-log-analytics.md)的步驟。
-*  [存取](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions)記錄分析工作區
+*  [存取](../../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)記錄分析工作區
 * Azure Active Directory 中的下列角色 (如果是透過 Azure Active Directory 入口網站存取 Log Analytics)
     - 安全性系統管理員
     - 安全性讀取者
@@ -96,7 +96,7 @@ AuditLogs
 
 3. 輸入警示的名稱和描述，並選擇嚴重性層級。 在我們的範例中，我們可以將它設定為**資訊**。
 
-4. 選取訊號發生時會收到警示的**動作群組**。 您可以選擇透過電子郵件或文字訊息來通知團隊，或者使用 Webhook、Azure Functions 或 Logic Apps 來自動化動作。 深入了解[在 Azure 入口網站中建立及管理警示群組](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)。
+4. 選取訊號發生時會收到警示的**動作群組**。 您可以選擇透過電子郵件或文字訊息來通知團隊，或者使用 Webhook、Azure Functions 或 Logic Apps 來自動化動作。 深入了解[在 Azure 入口網站中建立及管理警示群組](../../azure-monitor/platform/action-groups.md)。
 
 5. 一旦設定警示之後，請選取 [建立警示] 來加以啟用。 
 
@@ -113,6 +113,6 @@ AuditLogs
 
 ## <a name="next-steps"></a>後續步驟
 
-* [開始使用 Azure 監視器記錄中的查詢](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
-* [在 Azure 入口網站中建立和管理警示群組](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)
+* [開始使用 Azure 監視器記錄中的查詢](../../azure-monitor/log-query/get-started-queries.md)
+* [在 Azure 入口網站中建立和管理警示群組](../../azure-monitor/platform/action-groups.md)
 * [安裝與使用適用於 Azure Active Directory 的記錄分析檢視](howto-install-use-log-analytics-views.md)

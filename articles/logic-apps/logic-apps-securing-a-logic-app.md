@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 08/20/2020
-ms.openlocfilehash: 883eede5296f3f280bf30c9a459c02a9243f9081
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.date: 08/27/2020
+ms.openlocfilehash: 442b5acf3a6786b9fcaf0a96015a6df31215653c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719524"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231413"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure Logic Apps 中保護存取和資料
 
@@ -19,11 +19,11 @@ Azure Logic Apps 依賴 [Azure 儲存體](../storage/index.yml) 來儲存和自�
 
 若要進一步控制存取權並保護 Azure Logic Apps 中的敏感性資料，您可以在下欄區域中設定額外的安全性：
 
-* [存取以要求為基礎的觸發程序](#secure-triggers)
+* [以要求為基礎的觸發程式之撥入電話的存取權](#secure-inbound-requests)
 * [存取邏輯應用程式作業](#secure-operations)
 * [存取執行歷程記錄輸入和輸出](#secure-run-history)
 * [存取參數輸入](#secure-action-parameters)
-* [存取從邏輯應用程式呼叫的服務和系統](#secure-outbound-requests)
+* [存取其他服務和系統的輸出呼叫](#secure-outbound-requests)
 * [封鎖建立特定連接器的連接](#block-connections)
 * [邏輯應用程式的隔離指引](#isolation-logic-apps)
 * [適用于 Azure Logic Apps 的 Azure 安全性基準](../logic-apps/security-baseline.md)
@@ -34,18 +34,29 @@ Azure Logic Apps 依賴 [Azure 儲存體](../storage/index.yml) 來儲存和自�
 * [Azure 資料靜態加密](../security/fundamentals/encryption-atrest.md)
 * [Azure 安全性效能評定](../security/benchmarks/overview.md)
 
-<a name="secure-triggers"></a>
+<a name="secure-inbound-requests"></a>
 
-## <a name="access-to-request-based-triggers"></a>存取以要求為基礎的觸發程序
+## <a name="access-for-inbound-calls-to-request-based-triggers"></a>以要求為基礎的觸發程式之撥入電話的存取權
 
-如果邏輯應用程式使用以要求為基礎的觸發程序，以接收輸入呼叫或要求 (例如[要求](../connectors/connectors-native-reqres.md)或 [Webhook](../connectors/connectors-native-webhook.md) 觸發程序)，您可以限制存取，只允許獲授權的用戶端呼叫邏輯應用程式。 邏輯應用程式收到的所有要求都會透過傳輸層安全性 (TLS) 通訊協定進行加密及保護，之前稱為安全通訊端層 (SSL) 。
+邏輯應用程式透過以要求為基礎的觸發程式接收的輸入呼叫（例如 [要求](../connectors/connectors-native-reqres.md) 觸發程式或 [HTTP Webhook](../connectors/connectors-native-webhook.md) 觸發程式）支援加密，並且會以 [最少的傳輸層安全性來保護 (TLS) 1.2](https://en.wikipedia.org/wiki/Transport_Layer_Security)，之前稱為安全通訊端層 (SSL) 。 Logic Apps 在接收要求觸發程式的輸入呼叫或 HTTP Webhook 觸發程式或動作的回呼時，會強制執行此版本。 如果收到 TLS 交握錯誤，請確定您使用 TLS 1.2。 如需詳細資訊，請參閱[解決 TLS 1.0 問題](/security/solving-tls1-problem)。
 
-以下選項可協助您保護此觸發程序類型的存取安全性：
+輸入呼叫支援下列加密套件：
 
-* [產生共用存取簽章](#sas)
+* TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+
+以下是您可以限制存取觸發程式的其他方法，這些觸發程式會接收邏輯應用程式的撥入電話，讓只有經過授權的用戶端可以呼叫您的邏輯應用程式：
+
+* [產生共用存取簽章 (SAS)](#sas)
 * [啟用 Azure Active Directory 開放式驗證 (Azure AD OAuth)](#enable-oauth)
+* [使用 Azure API 管理公開您的邏輯應用程式](#azure-api-management)
 * [限制輸入 IP 位址](#restrict-inbound-ip-addresses)
-* [新增 Azure Active Directory 開放式驗證 (Azure AD OAuth) 或其他安全性](#add-authentication)
 
 <a name="sas"></a>
 
@@ -108,9 +119,21 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 <a name="enable-oauth"></a>
 
-### <a name="enable-azure-active-directory-oauth"></a>啟用 Azure Active Directory OAuth
+### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>啟用 Azure Active Directory 開放式驗證 (Azure AD OAuth)
 
-如果邏輯應用程式是以 [要求觸發](../connectors/connectors-native-reqres.md)程式開始，您可以藉由定義或新增要求觸發程式之輸入呼叫的授權原則，來啟用 [Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) 。 當您的邏輯應用程式收到包含驗證權杖的輸入要求時，Azure Logic Apps 會將權杖的宣告與每個授權原則中的宣告進行比較。 如果權杖的宣告與至少一個原則中的所有宣告相符，則會成功授權輸入要求。 權杖的宣告可以比授權原則指定的數目更多。
+如果邏輯應用程式是以 [要求觸發](../connectors/connectors-native-reqres.md)程式開始，您可以藉由定義或新增要求觸發程式之輸入呼叫的授權原則，來啟用 [Azure Active Directory Open Authentication (Azure AD OAuth) ](../active-directory/develop/index.yml) 。
+
+啟用此驗證之前，請檢閱下列考量：
+
+* 要求觸發程式的輸入呼叫只能使用一個授權配置，Azure AD OAuth 使用驗證權杖（僅支援要求觸發程式），或使用 [共用存取簽章 (SAS) URL](#sas) 無法使用這兩種架構。
+
+  雖然使用一個配置並不會停用其他配置，但同時使用兩者都會導致錯誤，因為服務不知道要選擇哪一個配置。 此外，只有要求觸發程式才支援 OAuth 驗證權杖的 [持有人類型](../active-directory/develop/active-directory-v2-protocols.md#tokens) 授權配置。 驗證權杖必須 `Bearer-type` 在授權標頭中指定。
+
+* 邏輯應用程式受限於授權原則數目上限。 每個授權原則也有[宣告](../active-directory/develop/developer-glossary.md#claim)數目上限。 如需詳細資訊，請參閱 [Azure Logic Apps 的限制和設定](../logic-apps/logic-apps-limits-and-config.md#authentication-limits)。
+
+* 授權原則必須至少包含 **簽發者** 宣告，此宣告的值開頭為 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` (OAuth V2) 作為 Azure AD 簽發者識別碼。 如需存取權杖的詳細資訊，請參閱 [Microsoft 身分識別平臺存取權杖](../active-directory/develop/access-tokens.md)。
+
+當您的邏輯應用程式收到包含 OAuth 驗證權杖的輸入要求時，Azure Logic Apps 會將權杖的宣告與每個授權原則中的宣告進行比較。 如果權杖的宣告與至少一個原則中的所有宣告相符，則會成功授權輸入要求。 權杖的宣告可以比授權原則指定的數目更多。
 
 例如，假設您的邏輯應用程式具有需要兩個宣告類型、 **簽發者** 和 **物件**的授權原則。 此範例解碼的[存取權杖](../active-directory/develop/access-tokens.md)同時包含這兩種宣告類型：
 
@@ -154,16 +177,6 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
    "ver": "1.0"
 }
 ```
-
-#### <a name="considerations-for-enabling-azure-oauth"></a>啟用 Azure OAuth 的考慮
-
-啟用此驗證之前，請檢閱下列考量：
-
-* 輸入呼叫邏輯應用程式時只能使用一種授權配置：Azure AD OAuth 或[共用存取簽章 (SAS)](#sas)。 使用一個配置並不會停用另一個配置，但同時使用兩者會導致錯誤，因為服務不知道要選擇哪一個配置。 只有要求觸發程式才支援 OAuth 權杖的 [持有人類型](../active-directory/develop/active-directory-v2-protocols.md#tokens) 授權配置。
-
-* 邏輯應用程式受限於授權原則數目上限。 每個授權原則也有[宣告](../active-directory/develop/developer-glossary.md#claim)數目上限。 如需詳細資訊，請參閱 [Azure Logic Apps 的限制和設定](../logic-apps/logic-apps-limits-and-config.md#authentication-limits)。
-
-* 授權原則必須至少包含 **簽發者** 宣告，此宣告的值開頭為 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` (OAuth V2) 作為 Azure AD 簽發者識別碼。 如需存取權杖的詳細資訊，請參閱 [Microsoft 身分識別平臺存取權杖](../active-directory/develop/access-tokens.md)。
 
 <a name="define-authorization-policy-portal"></a>
 
@@ -242,6 +255,12 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 如需有關章節的詳細資訊 `accessControl` ，請參閱 [限制 Azure Resource Manager 範本中的輸入 IP 範圍](#restrict-inbound-ip-template) 和 [Microsoft. 邏輯工作流程範本參考](/azure/templates/microsoft.logic/2019-05-01/workflows)。
 
+<a name="azure-api-management"></a>
+
+### <a name="expose-your-logic-app-with-azure-api-management"></a>使用 Azure API 管理公開您的邏輯應用程式
+
+若要將更多的 [驗證通訊協定](../active-directory/develop/authentication-vs-authorization.md) 新增至邏輯應用程式，請考慮使用 [Azure API 管理](../api-management/api-management-key-concepts.md) 服務。 此服務協助您將邏輯應用程式公開為 API，並為任何端點提供豐富的監視、安全性、原則和文件。 API 管理可以公開邏輯應用程式的公用或私人端點。 若要授與此端點的存取權，您可以使用 Azure AD OAuth、 [用戶端憑證](#client-certificate-authentication)或其他安全性標準來授權存取該端點。 當 API 管理收到要求時，服務會傳送要求至您的邏輯應用程式，也會在過程中進行任何必要的轉換或限制。 若只要讓 API 管理呼叫您的邏輯應用程式，您可以 [限制邏輯應用程式的輸入 IP 位址](#restrict-inbound-ip)。
+
 <a name="restrict-inbound-ip"></a>
 
 ### <a name="restrict-inbound-ip-addresses"></a>限制輸入 IP 位址
@@ -311,12 +330,6 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
    "outputs": {}
 }
 ```
-
-<a name="add-authentication"></a>
-
-### <a name="add-azure-active-directory-open-authentication-or-other-security"></a>新增 Azure Active Directory 開放式驗證或其他安全性
-
-若要將更多[驗證](../active-directory/develop/authentication-vs-authorization.md)通訊協定新增至邏輯應用程式，請考慮使用 [Azure API 管理](../api-management/api-management-key-concepts.md)服務。 此服務協助您將邏輯應用程式公開為 API，並為任何端點提供豐富的監視、安全性、原則和文件。 API 管理可以公開邏輯應用程式的公用或私人端點。 若要授權存取此端點，您可以使用 [Azure Active Directory 開放式驗證](#azure-active-directory-oauth-authentication) (Azure AD OAuth)、[用戶端憑證](#client-certificate-authentication)，或其他可授權存取該端點的安全性標準。 當 API 管理收到要求時，服務會傳送要求至您的邏輯應用程式，也會在過程中進行任何必要的轉換或限制。 若只要讓 API 管理觸發邏輯應用程式，您可以使用邏輯應用程式的輸入 IP 範圍設定。
 
 <a name="secure-operations"></a>
 
@@ -719,13 +732,21 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 <a name="secure-outbound-requests"></a>
 
-## <a name="access-to-services-and-systems-called-from-logic-apps"></a>存取從邏輯應用程式呼叫的服務和系統
+## <a name="access-for-outbound-calls-to-other-services-and-systems"></a>存取其他服務和系統的輸出呼叫
 
-如果端點接收來自邏輯應用程式的呼叫或要求，以下一些方法有助於保護端點：
+根據目標端點的功能， [HTTP 觸發程式或 HTTP 動作](../connectors/connectors-native-http.md)所傳送的輸出呼叫支援加密，並且會使用 [傳輸層安全性來保護 (TLS) 1.0、1.1 或 1.2](https://en.wikipedia.org/wiki/Transport_Layer_Security)，之前稱為安全通訊端層 (SSL) 。 Logic Apps 使用支援的最高可能版本來協商目標端點。 例如，如果目標端點支援1.2，HTTP 觸發程式或動作會先使用1.2。 否則，連接器會使用下一個支援的最高版本。
 
-* 將驗證新增至輸出要求。
+以下是 TLS/SSL 自我簽署憑證的相關資訊：
 
-  當您使用以 HTTP 為基礎的觸發程式或動作（例如，HTTP）時，您可以將驗證新增至您的邏輯應用程式所傳送的要求。 例如，您可以選取下列驗證類型：
+* 針對全域、多租使用者 Azure 環境中的邏輯應用程式，HTTP 連接器不允許自我簽署的 TLS/SSL 憑證。 如果您的邏輯應用程式對伺服器進行 HTTP 呼叫，並顯示 TLS/SSL 自我簽署憑證，則 HTTP 呼叫會失敗並出現 `TrustFailure` 錯誤。
+
+* 若為 [整合服務環境 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，HTTP 連接器允許使用自我簽署憑證進行 TLS/SSL 交握。 不過，您必須先使用 Logic Apps REST API 啟用現有 ISE 或新 ISE 的 [自我簽署憑證支援](../logic-apps/create-integration-service-environment-rest-api.md#request-body) ，並在該位置安裝公開憑證 `TrustedRoot` 。
+
+以下是您可以用來協助保護處理從邏輯應用程式傳送之呼叫的端點安全的方法：
+
+* [將驗證新增至輸出要求](#add-authentication-outbound)。
+
+  當您使用 HTTP 觸發程式或動作來傳送輸出呼叫時，可以將驗證新增至您的邏輯應用程式所傳送的要求。 例如，您可以選取下列驗證類型：
 
   * [基本驗證](#basic-authentication)
 
@@ -734,8 +755,6 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
   * [Active Directory OAuth 驗證](#azure-active-directory-oauth-authentication)
 
   * [受控識別驗證](#managed-identity-authentication)
-
-  如需詳細資訊，請參閱本主題稍後的[將驗證新增至輸出呼叫](#add-authentication-outbound)。
 
 * 限制來自邏輯應用程式 IP 位址的存取。
 
@@ -776,7 +795,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 <a name="add-authentication-outbound"></a>
 
-## <a name="add-authentication-to-outbound-calls"></a>將驗證新增至輸出呼叫
+### <a name="add-authentication-to-outbound-calls"></a>將驗證新增至輸出呼叫
 
 HTTP 和 HTTPS 端點支援各種類型的驗證。 在您用來將輸出呼叫或要求傳送至這些端點的某些觸發程式和動作上，您可以指定驗證類型。 在邏輯應用程式設計工具中，支援選擇驗證類型的觸發程式和動作都具有 **驗證** 屬性。 不過，預設不一定會顯示此屬性。 在這些情況下，請在 [觸發程式] 或 [動作] 上，開啟 [ **加入新參數** ] 清單，然後選取 [ **驗證**]。
 
@@ -869,7 +888,7 @@ HTTP 和 HTTPS 端點支援各種類型的驗證。 在您用來將輸出呼叫�
 
 ### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory 開放式驗證
 
-在要求觸發程序上，為您的邏輯應用程式[設定 Azure AD 授權原則](#enable-oauth)之後，您可以使用 [Azure Active Directory 開放式驗證](../active-directory/develop/index.yml) (Azure AD OAuth) 來驗證傳入的呼叫。 對於有 **Active Directory OAuth** 驗證類型可供您選擇的其他所有觸發程序和動作，請指定下列屬性值：
+在要求觸發程式上，您可以在設定邏輯應用程式的[Azure AD 授權原則](#enable-oauth)之後，使用[Azure Active Directory 的 Open Authentication (Azure AD OAuth) ](../active-directory/develop/index.yml)）來驗證傳入的呼叫。 對於有 **Active Directory OAuth** 驗證類型可供您選擇的其他所有觸發程序和動作，請指定下列屬性值：
 
 | 屬性 (設計工具) | 屬性 (JSON) | 必要 | 值 | 描述 |
 |---------------------|-----------------|----------|-------|-------------|

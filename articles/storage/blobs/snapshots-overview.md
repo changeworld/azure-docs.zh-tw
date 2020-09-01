@@ -1,27 +1,27 @@
 ---
 title: Blob 快照集
 titleSuffix: Azure Storage
-description: 瞭解如何建立 blob 的唯讀快照集，以在指定的時間點備份 blob 資料。
+description: 瞭解 blob 快照集的運作方式，以及它們的計費方式。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/19/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4c6c2774e0d71ec33449565efab797c040aa264f
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 8a1c61b77ab799cead319bfaf6cfa7ebd6af431b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640594"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230327"
 ---
 # <a name="blob-snapshots"></a>Blob 快照集
 
 快照集是在某個點時間取得的唯讀 Blob 版本。
 
 > [!NOTE]
-> Blob 版本設定 (預覽版) 提供另一種方式來維護先前版本的 blob。 如需詳細資訊，請參閱 [ (preview) 的 Blob 版本 ](versioning-overview.md)設定。
+> Blob 版本設定提供更佳的方式來維護舊版的 blob。 如需詳細資訊，請參閱 [Blob 版本](versioning-overview.md)設定。
 
 ## <a name="about-blob-snapshots"></a>關於 blob 快照集
 
@@ -31,7 +31,6 @@ Blob 的快照集與其基底 Blob 相同，除了 Blob URI 附加了 [日期時
 
 > [!NOTE]
 > 所有快照集會共用基底 blob 的 URI。 基底 blob 與快照集之間的唯一差別在於附加的 **DateTime** 值。
->
 
 Blob 可包含任意數目的快照集。 快照集會保存到明確地刪除為止，因為它們會獨立或作為基底 blob 之 [刪除 Blob](/rest/api/storageservices/delete-blob) 作業的一部分。 您可以列舉與基底 Blob 相關聯的快照集，以追蹤目前的快照集。
 
@@ -42,8 +41,6 @@ Blob 可包含任意數目的快照集。 快照集會保存到明確地刪除�
 VHD 檔案是用來儲存 VM 磁碟目前的資訊和狀態。 您可以從 VM 內卸離磁碟或關閉 VM，然後製作其 VHD 檔案的快照集。 稍後您可以使用快照集檔案來擷取該時間點的 VHD 檔案，並重新建立 VM。
 
 ## <a name="understand-how-snapshots-accrue-charges"></a>了解快照集產生費用的方式
-
-建立快照集 (即 Blob 的唯讀複本) 可能會為您的帳戶產生額外的資料儲存體費用。 設計您的應用程式時，請務必留意產生這些費用的可能方式，以便將成本降至最低。
 
 ### <a name="important-billing-considerations"></a>重要的計費考量
 
@@ -65,34 +62,95 @@ VHD 檔案是用來儲存 VM 磁碟目前的資訊和狀態。 您可以從 VM �
 
 下列案例示範如何針對區塊 Blob 及其快照集產生費用。
 
+## <a name="pricing-and-billing"></a>價格和計費
+
+建立快照集 (即 Blob 的唯讀複本) 可能會為您的帳戶產生額外的資料儲存體費用。 設計您的應用程式時，請務必留意產生這些費用的可能方式，以便將成本降至最低。
+
+Blob 快照集（例如 blob 版本）的計費方式與使用中資料的費率相同。 快照集的計費方式取決於您是否已明確設定基底 blob 的層級，或其任何快照集 (或) 的版本。 如需 blob 層的詳細資訊，請參閱 [Azure Blob 儲存體：經常性存取層、非經常性存取層，以及封存存取層](storage-blob-storage-tiers.md)。
+
+如果您未變更 blob 或快照集層，則會向您收取跨該 blob 的唯一資料區塊、其快照集，以及任何可能擁有的版本。 如需詳細資訊，請參閱 [未明確設定 blob 層時的計費](#billing-when-the-blob-tier-has-not-been-explicitly-set)。
+
+如果您已變更 blob 或快照集的層級，則會向您收取整個物件的費用，而不論 blob 和快照集最終是否會再次在相同的階層中。 如需詳細資訊，請參閱在 [明確設定 blob 層時的計費](#billing-when-the-blob-tier-has-been-explicitly-set)。
+
+如需 blob 版本計費詳細資料的詳細資訊，請參閱 [blob 版本](versioning-overview.md)設定。
+
+### <a name="billing-when-the-blob-tier-has-not-been-explicitly-set"></a>未明確設定 blob 層時的帳單
+
+如果您未明確設定基底 blob 的 blob 層或其任何快照集，則會向您收取唯一的區塊或頁面的快照集、其快照集，以及任何可能擁有的版本。 跨 blob 和其快照集共用的資料只需支付一次。 更新 blob 時，基底 blob 中的資料會從其快照中儲存的資料分歧，而唯一的資料會依每個區塊或頁面收費。
+
+當您取代區塊 Blob 內的某個區塊時，後續即會將該區塊視為唯一區塊進行收費。 即使該區塊的區塊識別碼和資料與其在快照集中擁有的相同，也是如此。 當封鎖再次認可之後，它會從快照中的對應項分歧，並向您收取其資料的費用。 這同樣適用分頁 Blob 中以相同資料更新的頁面。
+
+Blob 儲存體沒有方法可判斷兩個區塊是否包含相同的資料。 已上傳且認可的每個區塊都會被視為唯一，即使它具有相同資料和相同的區塊識別碼也一樣。 因為唯一的區塊會產生費用，請務必記住，當 blob 有快照集或版本時，更新 blob 將會導致額外的唯一區塊及額外費用。
+
+當 blob 有快照集時，請呼叫區塊 blob 上的更新作業，讓它們更新可能的區塊數目上限。 允許對區塊進行細微控制的寫入作業是 [放置區塊](/rest/api/storageservices/put-block) 和 [放置區塊清單](/rest/api/storageservices/put-block-list)。 另一方面， [Put blob](/rest/api/storageservices/put-blob) 作業會取代整個 blob 的內容，因此可能會導致額外的費用。
+
+下列案例示範在未明確設定 blob 層時，如何針對區塊 blob 和其快照集產生費用。
+
 #### <a name="scenario-1"></a>實例 1
 
 在案例 1 中，基底 Blob 在擷取快照之後尚未更新，因此只會針對唯一區塊 1、2 和 3 產生費用。
 
-![Azure 儲存體資源](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
+![圖1顯示基底 blob 和快照中唯一區塊的計費](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>案例 2
 
 在案例 2 中，基底 Blob 已更新，但快照集並未更新。 區塊 3 已更新，而且即使它包含相同資料及相同的識別碼，它還是與快照集中的區塊 3 不一樣。 因此，此帳戶必須支付四個區塊的費用。
 
-![Azure 儲存體資源](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
+![圖2顯示基底 blob 和快照中唯一區塊的計費](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>案例 3
 
 在案例 3 中，基底 Blob 已更新，但快照集並未更新。 區塊 3 已使用基底 Blob 中的區塊 4 來取代，但快照集仍然反映區塊 3。 因此，此帳戶必須支付四個區塊的費用。
 
-![Azure 儲存體資源](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
+![圖3顯示基底 blob 和快照中唯一區塊的計費](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>案例 4
 
 在案例 4 中，基底 Blob 已完全更新，且未包含它的任何原始區塊。 因此，此帳戶必須支付所有八個唯一區塊的費用。
 
-![Azure 儲存體資源](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
+![圖4顯示基底 blob 和快照中唯一區塊的計費](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
 
 > [!TIP]
 > 避免呼叫覆寫整個 blob 的方法，並改為更新個別的區塊，以降低成本。
 
+### <a name="billing-when-the-blob-tier-has-been-explicitly-set"></a>在明確設定 blob 層時進行計費
+
+如果您已明確設定 blob 或快照集 (或版本) 的 blob 層，則會向您收取新層中物件的完整內容長度的費用，不論它是否與原始層中的物件共用區塊。 您也必須支付原始層中最舊版本的完整內容長度。 保留在原始階層中的任何版本或快照集會針對它們可共用的唯一區塊收費，如 [未明確設定 blob 層時的計費](#billing-when-the-blob-tier-has-not-been-explicitly-set)中所述。
+
+#### <a name="moving-a-blob-to-a-new-tier"></a>將 blob 移至新的層
+
+下表說明將 blob 或快照移至新階層時的計費行為。
+
+| 當 blob 層明確設定時 .。。 | 然後您需要支付 .。。 |
+|-|-|
+| 具有快照集的基底 blob | 新層中的基底 blob 和原始層中最舊的快照集，再加上其他快照集中的任何唯一區塊。<sup>1</sup> |
+| 具有舊版和快照集的基底 blob | 新階層中的基底 blob、原始階層中最舊的版本，以及原始層中最舊的快照集，再加上其他版本或快照<sup>1</sup>中的任何唯一區塊。 |
+| 快照集 | 新階層中的快照集和原始層次中的基底 blob，以及其他快照集中的任何唯一區塊。<sup>1</sup> |
+
+<sup>1</sup>如果有其他先前的版本或尚未從其原始階層移動的快照集，則會根據所包含的唯一區塊數目來收費這些版本或快照集，如 [未明確設定 blob 層的計費](#billing-when-the-blob-tier-has-not-been-explicitly-set)中所述。
+
+明確設定 blob、版本或快照集的層級無法復原。 如果您將 blob 移至新的階層，然後再將它移回其原始階層，則會向您收取物件的完整內容長度，即使它與原始層中的其他物件共用區塊也一樣。
+
+明確設定 blob、版本或快照集層的作業包括：
+
+- [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
+- 使用指定的階層[放置 Blob](/rest/api/storageservices/put-blob)
+- 使用指定的層級[放置區塊清單](/rest/api/storageservices/put-block-list)
+- [複製](/rest/api/storageservices/copy-blob) 具有指定層的 Blob
+
+#### <a name="deleting-a-blob-when-soft-delete-is-enabled"></a>啟用虛刪除時刪除 blob
+
+啟用 blob 虛刪除時，如果您刪除或覆寫已明確設定其層級的基底 blob，則任何先前的虛刪除 blob 版本或快照集會以完整內容長度計費。 如需 blob 版本控制和虛刪除如何一起運作的詳細資訊，請參閱 [blob 版本設定和虛刪除](versioning-overview.md#blob-versioning-and-soft-delete)。
+
+下表描述已虛刪除之 blob 的計費行為，取決於是否已啟用或停用版本控制。 啟用版本控制時，會在將 blob 虛刪除時建立新的版本。 停用版本控制時，虛刪除 blob 會建立虛刪除快照集。
+
+| 當您以明確設定的層級覆寫基底 blob 時 .。。 | 然後您需要支付 .。。 |
+|-|-|
+| 如果同時啟用 blob 虛刪除和版本控制 | 所有具有完整內容長度的現有版本（不論層級為何）。 |
+| 如果已啟用 blob 虛刪除，但停用版本設定 | 所有現有的虛刪除快照集，不論層級為何，都有完整的內容長度。 |
+
 ## <a name="next-steps"></a>後續步驟
 
+- [Blob 版本設定](versioning-overview.md)
 - [在 .NET 中建立和管理 Blob 快照集](snapshots-manage-dotnet.md)
 - [以遞增快照集備份 Azure 非受控 VM 磁碟](../../virtual-machines/windows/incremental-snapshots.md)

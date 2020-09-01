@@ -17,12 +17,12 @@ ms.date: 04/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92f6f32298dcccca4eba08fd25de0504416e5560
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b48a84bb69a356815cccd1e33c555eeb667699f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608138"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89244716"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>作法：管理 Azure AD 中的非使用中使用者帳戶
 
@@ -58,7 +58,7 @@ ms.locfileid: "85608138"
 
 ### <a name="how-can-i-access-this-property"></a>如何存取這個屬性？
 
-**lastSignInDateTime** 屬性是由 [Microsoft Graph REST API](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) 的 [signInActivity 資源類型](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta)所公開。   
+**lastSignInDateTime** 屬性是由 [Microsoft Graph REST API](/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) 的 [signInActivity 資源類型](/graph/api/resources/signinactivity?view=graph-rest-beta)所公開。   
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>lastSignInDateTime 屬性是否可透過 Get-AzureAdUser Cmdlet 取得？
 
@@ -91,5 +91,5 @@ ms.locfileid: "85608138"
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure Active Directory 報告 API 搭配憑證來取得資料](tutorial-access-api-with-certificates.md)
-* [稽核 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [登入活動報告 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [稽核 API 參考](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [登入活動報告 API 參考](/graph/api/resources/signin?view=graph-rest-beta)

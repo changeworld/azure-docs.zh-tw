@@ -1,6 +1,6 @@
 ---
 title: 將 Azure Active Directory 記錄串流至 Azure 監視器記錄 |Microsoft Docs
-description: 瞭解如何將 Azure Active Directory 記錄與 Azure 監視器記錄整合
+description: 瞭解如何整合 Azure Active Directory 記錄與 Azure 監視器記錄
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,14 +17,14 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a0c68bf11d81925c1b9c3e408434a6f7b1b2694
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f70d1caacfd655c956d4fcc36e3f0d3848d8f0fe
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608988"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230563"
 ---
-# <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>將 Azure AD 記錄與 Azure 監視器記錄整合
+# <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>整合 Azure AD 記錄與 Azure 監視器記錄
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -51,24 +51,24 @@ Ignite 工作階段中的下列影片，會示範在特定使用者案例中針�
 > 目前不支援與 B2C 相關的稽核和登入活動記錄。
 >
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>先決條件 
 
-若要使用此功能，您必須要有：
+若要使用此功能，您需要：
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以[註冊免費試用](https://azure.microsoft.com/free/)。
 * Azure AD 租用戶。
-* 使用者，身分是該 Azure AD 租用戶的「全域管理員」** 或「安全性管理員」**。
-* Azure 訂用帳戶中的 Log Analytics 工作區。 了解如何[建立 Log Analytics 工作區](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
+* 屬於 Azure AD 租使用者之 *全域管理員* 或 *安全性系統管理員* 的使用者。
+* Azure 訂用帳戶中的 Log Analytics 工作區。 了解如何[建立 Log Analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)。
 
 ## <a name="licensing-requirements"></a>授權需求
 
-使用這項功能需要 Azure AD Premium P1 或 P2 授權。 若要尋找適用於您需求的正確授權，請參閱[比較 Free、Basic 及 Premium 版本的正式運作功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+使用此功能需要 Azure AD Premium P1 或 P2 授權。 若要尋找適用於您需求的正確授權，請參閱[比較 Free、Basic 及 Premium 版本的正式運作功能](https://azure.microsoft.com/pricing/details/active-directory/)。
 
-## <a name="send-logs-to-azure-monitor"></a>將記錄傳送至 Azure 監視器
+## <a name="send-logs-to-azure-monitor"></a>將記錄傳送給 Azure 監視器
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 
-2. 選取 [ **Azure Active Directory**  >  **診斷設定**] [  ->  **新增診斷設定**]。 您也可以在 [稽核記錄]**** 或 [登入]**** 頁面中選取 [匯出設定]****，以移至診斷設定組態頁面。  
+2. 選取**Azure Active Directory**  >  **診斷**設定  ->  **新增診斷設定**。 您也可以在 [稽核記錄]**** 或 [登入]**** 頁面中選取 [匯出設定]****，以移至診斷設定組態頁面。  
     
 3. 在 [診斷設定]**** 功能表中選取 [傳送至 Log Analytics 工作區]**** 核取方塊，然後選取 [設定]****。
 

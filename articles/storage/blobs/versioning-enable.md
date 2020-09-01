@@ -1,29 +1,27 @@
 ---
-title: '啟用和管理 blob 版本設定 (預覽) '
+title: 啟用和管理 Blob 版本設定
 titleSuffix: Azure Storage
-description: 瞭解如何在 Azure 入口網站中或使用 Azure Resource Manager 範本啟用 blob 版本設定 (預覽) 。
+description: 瞭解如何在 Azure 入口網站中或使用 Azure Resource Manager 範本啟用 blob 版本設定。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b34664d36be2f18bc6821d5b13ca8bd403f2b6fc
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1df7afb5a029ff7770a64d6bf698a462c8ab9735
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074401"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230665"
 ---
-# <a name="enable-and-manage-blob-versioning-preview"></a>啟用和管理 blob 版本設定 (預覽) 
+# <a name="enable-and-manage-blob-versioning"></a>啟用和管理 Blob 版本設定
 
-您可以 (預覽) 啟用 Blob 儲存體版本設定，以自動維護舊版的物件。  啟用 blob 版本設定時，您可以還原舊版的 blob 來復原您的資料（如果錯誤遭到修改或刪除）。
+您可以啟用 Blob 儲存體版本設定，以自動維護舊版的物件。  啟用 blob 版本設定時，您可以還原舊版的 blob 來復原您的資料（如果錯誤遭到修改或刪除）。
 
-本文說明如何使用 Azure 入口網站或 Azure Resource Manager 範本，啟用或停用儲存體帳戶的 blob 版本設定。
-
-啟用 blob 版本設定之前，您必須先註冊預覽版。 若要深入瞭解 blob 版本設定（包括如何註冊預覽版），請參閱 [blob 版本設定 (預覽) ](versioning-overview.md)。
+本文說明如何使用 Azure 入口網站或 Azure Resource Manager 範本，啟用或停用儲存體帳戶的 blob 版本設定。 若要深入瞭解 blob 版本設定，請參閱 [blob 版本](versioning-overview.md)設定。
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -75,7 +73,7 @@ ms.locfileid: "89074401"
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>修改 blob 以觸發新的版本
 
-下列程式碼範例示範如何使用適用于 .NET 的 Azure 儲存體用戶端程式庫（版本 [12.5.0-preview. 5](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) 或更新版本）來觸發新版本的建立。 執行此範例之前，請確定您已啟用儲存體帳戶的版本設定。
+下列程式碼範例示範如何使用適用于 .NET 的 Azure 儲存體用戶端程式庫（ [12.5.1](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.1) 版或更新版本）來觸發新版本的建立。 執行此範例之前，請確定您已啟用儲存體帳戶的版本設定。
 
 此範例會建立區塊 blob，然後更新 blob 的中繼資料。 更新 blob 的中繼資料會觸發新版本的建立。 此範例會抓取初始版本和目前的版本，並顯示只有目前的版本包含中繼資料。
 
@@ -161,5 +159,5 @@ static void PrintMetadata(Response<BlobProperties> propertiesResponse)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Blob 版本設定 (預覽)](versioning-overview.md)
+- [Blob 版本設定](versioning-overview.md)
 - [Azure 儲存體 Blob 的虛刪除](soft-delete-overview.md)

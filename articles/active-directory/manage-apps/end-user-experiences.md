@@ -11,56 +11,49 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c2ec85af2c954c2189f0df1b407a2c40967f096
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3b7dbbb9aab29e083795025ad5bf7381a4fa0ee
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763392"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231209"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory 中的應用程式使用者體驗
 
 Azure Active Directory (Azure AD) 提供幾種可自訂的方式，來對您組織中的使用者部署應用程式：
 
-* Azure AD 存取面板
+* Azure AD 我的應用程式
 * Office 365 應用程式啟動程式
 * 直接登入同盟應用程式
 * 同盟、密碼或現有應用程式的深層連結
 
 您選擇要在組織中部署哪一種方法由您自行決定。
 
-## <a name="azure-ad-access-panel"></a>Azure AD 存取面板
+## <a name="azure-ad-my-apps"></a>Azure AD 我的應用程式
 
-中的存取面板 https://myapps.microsoft.com 是網頁型入口網站，可讓使用者在 Azure Active Directory 中具有組織帳戶，以查看並啟動 Azure AD 系統管理員已授與他們存取權的應用程式。 如果您是 [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) 的使用者，也可以透過 [存取面板] 使用自助式群組管理功能。
+我的應用程式 https://myapps.microsoft.com 是以網頁為基礎的入口網站，可讓使用者在 Azure Active Directory 中具有組織帳戶的使用者，來查看和啟動 Azure AD 系統管理員已授與存取權的應用程式。 如果您是 [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/)的終端使用者，您也可以透過我的應用程式使用自助式群組管理功能。
 
-![螢幕擷取畫面顯示 Azure AD 存取面板入口網站](media/what-is-single-sign-on/azure-ad-access-panel.png)
+依預設，所有應用程式都會在單一頁面上一起列出。 但是，您可以使用集合將相關的應用程式群組在一起，並將它們顯示在不同的索引標籤上，使其更容易尋找。 例如，您可以使用集合來建立特定工作角色、工作、專案等的應用程式邏輯群組。 如需詳細資訊，請參閱 [我的應用程式入口網站上的建立集合](access-panel-collections.md)。 
 
-根據預設，所有應用程式會同時列在單一頁面上。 但是，您可以使用集合將相關的應用程式群組在一起，並將它們顯示在不同的索引標籤上，使其更容易尋找。 例如，您可以使用集合，針對特定的作業角色、工作、專案等，建立應用程式的邏輯群組。 如需相關資訊，請參閱[如何使用我的應用程式集合自訂使用者存取面板](access-panel-collections.md)。 
+我的應用程式與 Azure 入口網站分開，而且不需要使用者擁有 Azure 訂用帳戶或 Office 365 訂用帳戶。
 
-存取面板與 Azure 入口網站不同，使用者不需要具備 Azure 訂用帳戶或 Office 365 訂用帳戶。
-
-如需有關 Azure AD 存取面板的詳細資訊，請參閱 [存取面板簡介](../user-help/active-directory-saas-access-panel-introduction.md)。
+如需有關 Azure AD 我的應用程式的詳細資訊，請參閱 [我的應用程式的簡介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="office-365-application-launcher"></a>Office 365 應用程式啟動程式
 
-針對已部署 Office 365 的組織，透過 Azure AD 指派給使用者的應用程式也會出現在 Office 365 入口網站中，網址為 [https://portal.office.com/myapps](https://portal.office.com/myapps) 。 這對於組織中的使用者來說，能夠啟動應用程式又不需要使用第二個入口網站，非常簡單而且方便，建議使用 Office 365 的組織採取這個應用程式啟動解決方案。
-
-![螢幕擷取畫面顯示 Office 365 入口網站](./media/end-user-experiences/microsoft-365-portal-office-com.png)
+針對已部署 Office 365 的組織，透過 Azure AD 指派給使用者的應用程式也會出現在 Office 365 入口網站中 [https://portal.office.com/myapps](https://portal.office.com/myapps) 。 這對於組織中的使用者來說，能夠啟動應用程式又不需要使用第二個入口網站，非常簡單而且方便，建議使用 Office 365 的組織採取這個應用程式啟動解決方案。
 
 如需有關 Office 365 應用程式啟動程式的詳細資訊，請參閱 [讓您的應用程式出現在 Office 365 應用程式啟動程式中](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher)。
 
 ## <a name="direct-sign-on-to-federated-apps"></a>直接登入同盟應用程式
 
-大部分支援 SAML 2.0、WS-同盟或 OpenID Connect 的同盟應用程式也支援使用者在應用程式啟動，然後再透過 Azure AD 的自動重新導向或按一下連結登入。 這稱為服務提供者起始的登入，Azure AD 應用程式資源庫中大部分的同盟應用程式都支援這個方式 (請參閱 Azure 入口網站中應用程式的單一登入設定精靈連結的文件來了解詳細資訊)。
-
-![行動應用程式登入頁面的範例](./media/end-user-experiences/workdaymobile.png)
+大部分支援 SAML 2.0、WS-同盟或 OpenID Connect 的同盟應用程式也支援使用者在應用程式啟動，然後再透過 Azure AD 的自動重新導向或按一下連結登入。 這就是所謂的服務提供者起始登入，而 Azure AD 應用程式資源庫中大部分的同盟應用程式都支援此 (如需詳細資料) ，請參閱 Azure 入口網站中的應用程式的單一登入設定 wizard 連結的檔。
 
 ## <a name="direct-sign-on-links"></a>直接登入連結
 
 Azure AD 也支援對支援密碼單一登入、已連結的單一登入，以及任何形式的同盟單一登入的個別應用程式使用直接單一登入連結。
 
-這些連結是特別撰寫的 URL，會透過 Azure AD 登入程序針對特定應用程式傳送給使用者，使用者不需要從 Azure AD 存取面板或 Office 365 啟動。 您可以在 [可用的企業應用程式] 的屬性底下找到這些**使用者存取 url** 。 在 Azure 入口網站中，選取 [Azure Active Directory] > [企業應用程式]。 選取應用程式，然後選取 [**屬性**]。
+這些連結是特別撰寫的 Url，會透過特定應用程式的 Azure AD 登入程式傳送給使用者，而不需要使用者從 Azure AD 我的應用程式或 Office 365 啟動它們。 這些 **使用者存取 url** 可在 [可用的企業應用程式] 的屬性下找到。 在 Azure 入口網站中，選取 [Azure Active Directory] > [企業應用程式]。 選取應用程式，然後選取 [ **屬性**]。
 
 ![Twitter 屬性中的使用者存取 URL 範例](media/end-user-experiences/direct-sign-on-link.png)
 
@@ -68,14 +61,16 @@ Azure AD 也支援對支援密碼單一登入、已連結的單一登入，以�
 
 `https://myapps.microsoft.com/signin/Twitter/230848d52c8745d4b05a60d29a40fced`
 
-類似於存取面板的組織特定 URL，您可以在 myapps.microsoft.com 網域之後加入其中一個作用中或經過驗證的網域做為您的目錄，進一步自訂這個 URL。 這樣可以確保使用者不需要先輸入其使用者識別碼，登入頁面就可以立即載入任何組織品牌：
+類似于我的應用程式的組織特定 Url，您可以在 *myapps.microsoft.com* 網域之後，為您的目錄新增其中一個作用中或已驗證的網域，以進一步自訂此 URL。 這樣可以確保使用者不需要先輸入其使用者識別碼，登入頁面就可以立即載入任何組織品牌：
 
 `https://myapps.microsoft.com/contosobuild.com/signin/Twitter/230848d52c8745d4b05a60d29a40fced`
 
-當授權的使用者按一下其中一個應用程式特定連結時，他們會先看到其組織登入頁面 (假設他們尚未登入)，登入之後會重新導向至該應用程式而不會先停在存取面板。 如果使用者遺漏存取應用程式所需的先決條件，例如密碼單一登入瀏覽器延伸，則連結將會提示使用者安裝遺漏的延伸。 如果應用程式的單一登入組態有變更，連結 URL 也會維持不變。
+當授權的使用者按一下其中一個應用程式特定的連結時，他們會先看到組織的登入頁面 (假設他們尚未登入) ，而且登入之後會重新導向至其應用程式，而不會先在我的應用程式上停止。 如果使用者遺漏存取應用程式所需的先決條件，例如密碼單一登入瀏覽器延伸，則連結將會提示使用者安裝遺漏的延伸。 如果應用程式的單一登入組態有變更，連結 URL 也會維持不變。
 
-這些連結使用與存取面板和 Office 365 相同的存取控制機制，只有在 Azure 入口網站中已指派給應用程式的使用者或群組能夠順利通過驗證。 不過，任何未經授權的使用者都會看到一個訊息，說明他們未獲得存取權，且會獲得一個載入存取面板的連結，以檢視可存取的應用程式。
+這些連結使用與我的應用程式和 Office 365 相同的存取控制機制，而且只有已在 Azure 入口網站中指派給應用程式的使用者或群組才能成功驗證。 不過，未經授權的使用者將會看到一則訊息，說明它們尚未被授與存取權，並提供載入我的應用程式的連結，以查看他們具有存取權的可用應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需部署方案的相關資訊，請參閱 [Azure Active Directory 部署方案](../fundamentals/active-directory-deployment-plans.md)
+* [應用程式管理快速入門系列](view-applications-portal.md)
+* [什麼是單一登入？](what-is-single-sign-on.md)
+* [整合 Azure Active Directory 與應用程式入門指南](plan-an-application-integration.md)

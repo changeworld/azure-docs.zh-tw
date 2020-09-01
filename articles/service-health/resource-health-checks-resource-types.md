@@ -3,12 +3,12 @@ title: 透過 Azure 資源健康狀態支援的資源類型 | Microsoft Docs
 description: 透過 Azure 資源健康狀態支援的資源類型
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 2c002ab89b1cae4db6d3337908bb401039cb2295
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: d797b9fb9b843f114e01820fa666e56749c7983f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611937"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230155"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 資源健康狀態中的資源類型和健康情況檢查
 以下是依資源類型透過資源健康狀態執行之所有檢查的完整清單。
@@ -22,6 +22,11 @@ ms.locfileid: "88611937"
 |執行的檢查|
 |---|
 |<ul><li>Api 管理服務是否已啟動並執行？</li></ul>|
+
+## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Spring
+|執行的檢查|
+|---|
+|<ul><li>Azure 春季雲端實例是否可供使用？</li></ul>|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 |執行的檢查|
@@ -56,12 +61,17 @@ ms.locfileid: "88611937"
 ## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroups/hosts
 |執行的檢查|
 |---|
-|<ul><li>主機是否已啟動且正在執行</li><li>主機硬體的效能是否降低？</li><li>主機是否已解除配置？</li><li>主機硬體服務是否已修復到其他硬體？</li></ul>|
+|<ul><li>主機是否已啟動且正在執行？</li><li>主機硬體的效能是否降低？</li><li>主機是否已解除配置？</li><li>主機硬體服務是否已修復到其他硬體？</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |執行的檢查|
 |---|
 |<ul><li>裝載此虛擬機器的伺服器是否已啟動且執行中？</li><li>主機 OS 是否已開機完成？</li><li>虛擬機器容器是否已佈建和啟動？</li><li>主機和儲存體帳戶之間是否有網路連線能力？</li><li>客體 OS 是否已完成開機？</li><li>是否有持續性的規劃維護？</li><li>主機硬體的效能是否降低且預期即將失敗？</li></ul>|
+
+## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
+|執行的檢查|
+|---|
+|<ul><li>叢集是否已啟動且正在執行？</li><li>叢集上是否有可用的核心服務？</li><li>所有叢集節點是否就緒？</li><li>服務主體目前是否有效？</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
 |執行的檢查|
@@ -124,10 +134,20 @@ ms.locfileid: "88611937"
 |---|
 |<ul><li>HDInsight 叢集上是否有可用的核心服務？</li><li>HDInsight 叢集是否可存取待用 BYOK 加密的金鑰？</li></ul>|
 
+## <a name="microsoftiotcentraliotapps"></a>Microsoft.iotcentral/IoTApps
+|執行的檢查|
+|---|
+|<ul><li>IoT Central 應用程式是否可供使用？</li></ul>|
+
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 |執行的檢查|
 |---|
 |<ul><li>對金鑰保存庫執行的要求是否因為 Azure KeyVault 平台問題而失敗？</li><li>對金鑰保存庫執行的要求是否因為客戶發出太多要求而遭到節流？</li></ul>|
+
+## <a name="microsoftkustoclusters"></a>Kusto/叢集
+|執行的檢查|
+|---|
+|<ul><li>叢集是否遇到的內嵌成功率很低？</li><li>叢集是否遇到高內嵌延遲？</li><li>叢集是否遇到大量查詢失敗？</li></ul>|
 
 ## <a name="microsoftmachinelearningwebservices"></a>Microsoft.MachineLearning/webServices
 |執行的檢查|
@@ -164,6 +184,11 @@ ms.locfileid: "88611937"
 |---|
 |<ul><li>負載平衡端點是否可用？</li></ul>|
 
+## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. network/trafficmanagerprofiles
+|執行的檢查|
+|---|
+|<ul><li>是否有任何影響流量管理員設定檔的問題？</li></ul>|
+
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |執行的檢查|
 |---|
@@ -183,11 +208,6 @@ ms.locfileid: "88611937"
 |執行的檢查|
 |---|
 |<ul><li>容量資源是否已啟動並執行中？</li><li>所有工作負載是否已啟動並執行中？</li></ul>|
-
-## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
-|執行的檢查|
-|---|
-|<ul><li>主機作業系統是否已啟動且執行中？</li><li>是否可從資料中心外部觸達 workspaceCollection？</li><li>Power BI 資源提供者是否可用？</li><li>適當區域中是否有可用的 Power BI 服務？</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |執行的檢查|

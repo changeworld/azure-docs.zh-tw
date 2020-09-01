@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 入口網站中標示有風險的使用者 |Microsoft Docs
+title: 在 Azure Active Directory 入口網站中標示為有風險的使用者 |Microsoft Docs
 description: 了解 Azure Active Directory 入口網站中標幟為有風險的使用者安全性報告
 services: active-directory
 author: MarkusVi
@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3037dd2e03062ebab0c48438aa4345a766a22fc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 725b3b712313c199382cebe32bed98f2115fc262
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608920"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231158"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>補救 Azure Active Directory 入口網站中標幟為有風險的使用者
 
@@ -40,13 +40,13 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 - 要求使用者在下次登入時安全地重設其密碼
 - 解除使用者風險，但不採取任何補救動作。
 
-如需詳細資訊，請參閱[標幟為有風險的使用者安全性報告](concept-user-at-risk.md)。
+如需詳細資訊，請參閱[標幟為有風險的使用者安全性報告](../identity-protection/overview-identity-protection.md)。
 
 ### <a name="azure-ad-subscription-for-office-365-customers"></a>Office 365 客戶的 Azure AD 訂用帳戶
 
 您也可以使用 Office 365 認證來存取 **Azure 系統管理中心**。 在您啟動 Azure AD 存取後，您就會重新導向至 Azure AD 入口網站。 在基本訂閱等級，報告中提供的詳細資料數量有限。 其他資料和分析資料則適用於 Azure 進階訂閱者。
 
-若要存取 Microsoft 365 系統管理中心內**標示為有風險的使用者**報告：
+若要存取 Microsoft 365 系統管理中心中 **標示為有風險** 報告的使用者：
 
 1.  從左側的導覽功能表中，選取 [系統管理中心]****。 
 2.  選取 [Azure AD]****。
@@ -75,7 +75,7 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
     f. 將帳戶的密碼複雜性設定為很高。
 
-    如 啟用信箱稽核。
+    g. 啟用信箱稽核。
 
     h. 產生稽核記錄，以供系統管理員檢閱。
 
@@ -91,5 +91,5 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-* [標示有風險的使用者](concept-user-at-risk.md)
+* [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
+* [標示有風險的使用者](../identity-protection/overview-identity-protection.md)

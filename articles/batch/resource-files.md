@@ -3,12 +3,12 @@ title: 建立和使用資源檔
 description: 了解如何從各種輸入來源建立 Batch 資源檔。 此文章涵蓋一些常見的方法，說明如何建立並將其放置在 VM 上。
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: e1bf7520774a0f4143aadd2298f300b3ac5c75a3
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 22c0220d08660402bef3fd4aaf0add6adc12a295
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146295"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230937"
 ---
 # <a name="creating-and-using-resource-files"></a>建立和使用資源檔
 
@@ -99,7 +99,7 @@ ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt",
 
 如果針對工作指定了數百個資源檔，Batch 可能會因為太大而拒絕工作。 最好是將工作本身的資源檔數目減至最少，讓您的工作變小。
 
-如果沒有任何方法可將您工作所需的檔案數目減至最少，您可以建立能夠參考資源檔儲存體容器的單一資源檔，以便將工作最佳化。 若要這麼做，請將您的資源檔放入 Azure 儲存體容器中，並針對資源檔使用不同的「容器」[方法](/dotnet/api/microsoft.azure.batch.resourcefileazure-dotnet#methods)。 使用 Blob 前置詞選項指定要為您的工作下載的檔案集合。
+如果沒有任何方法可將您工作所需的檔案數目減至最少，您可以建立能夠參考資源檔儲存體容器的單一資源檔，以便將工作最佳化。 若要這麼做，請將您的資源檔放入 Azure 儲存體容器中，並針對資源檔使用不同的「容器」[方法](/dotnet/api/microsoft.azure.batch.resourcefile#methods)。 使用 Blob 前置詞選項指定要為您的工作下載的檔案集合。
 
 ## <a name="next-steps"></a>後續步驟
 

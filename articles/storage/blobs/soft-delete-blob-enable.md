@@ -10,16 +10,16 @@ ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: cba56e699afed8178f93bceddf6bf32a242ed124
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07e306c6c428a0e3a3f64a29a2574cb0378bb81f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020842"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230223"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>啟用及管理 Blob 的虛刪除
 
-Blob 虛刪除可保護您的資料免于不慎或錯誤地修改或刪除。 針對儲存體帳戶啟用 blob 虛刪除時，blob、blob 版本 (預覽) ，而且該儲存體帳戶中的快照集在您指定的保留期限內，可能會在刪除之後復原。
+Blob 虛刪除可保護您的資料免于不慎或錯誤地修改或刪除。 針對儲存體帳戶啟用 blob 虛刪除時，該儲存體帳戶中的 blob、blob 版本和快照集，在您指定的保留期限內可能會復原。
 
 如果應用程式或其他儲存體帳戶使用者可能不小心修改或刪除您的資料，Microsoft 建議開啟 blob 虛刪除。 本文說明如何啟用 blob 的虛刪除。 如需有關 blob 虛刪除的詳細資訊，請參閱 [blob 的虛刪除](soft-delete-blob-overview.md)。
 
@@ -195,4 +195,4 @@ blockBlob.StartCopy(copySource);
 ## <a name="next-steps"></a>後續步驟
 
 - [Blob 儲存體的虛刪除](soft-delete-overview.md)
-- [Blob 版本設定 (預覽)](versioning-overview.md)
+- [Blob 版本設定](versioning-overview.md)

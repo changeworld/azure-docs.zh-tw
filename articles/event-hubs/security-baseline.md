@@ -6,17 +6,17 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: e49a6b8000def0fe175930629b33203adec1b0f5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: a6beb1023b3c934cdbb4b7dc479d87e23a7c96be
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537049"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230359"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>適用于事件中樞的 Azure 安全性基準
 
-適用于事件中樞的 Azure 安全性基準包含可協助您改善部署之安全性狀態的建議。
+適用于事件中樞的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
 
 此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
@@ -28,21 +28,21 @@ ms.locfileid: "86537049"
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虛擬網路上使用網路安全性群組或 Azure 防火牆來保護資源
 
-**指引**：事件中樞與虛擬網路服務端點的整合，可讓您安全地從工作負載（例如系結至虛擬網路的虛擬機器）存取訊息功能，而兩端的網路流量路徑都受到保護。
+**指導**方針：事件中樞與虛擬網路服務端點的整合可讓您安全地存取工作負載（例如系結至虛擬網路的虛擬機器）的訊息功能，並在兩端保護網路流量路徑。
 
-一旦系結到至少一個虛擬網路子網服務端點，個別的事件中樞命名空間就不會再接受來自虛擬網路中任何來自于已授權子網的流量。 從虛擬網路的觀點來看，將您的事件中樞命名空間系結至服務端點，會設定從虛擬網路子網到訊息服務的隔離網路通道。 
+一旦系結至至少一個虛擬網路子網服務端點，個別的事件中樞命名空間就不再接受來自虛擬網路中已授權子網的流量。 從虛擬網路的觀點來看，將事件中樞命名空間系結至服務端點，會設定從虛擬網路子網到訊息服務的隔離式網路通道。 
 
-您也可以建立私人端點，這是一種網路介面，可讓您私下安全地使用 Azure 私人連結服務 Azure 事件中樞服務。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute 或 VPN 連線或公用 IP 位址。 
+您也可以建立私人端點，這是一種網路介面，可讓您私下安全地使用 Azure Private Link 服務 Azure 事件中樞服務。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute 或 VPN 連線或公用 IP 位址。 
 
-您也可以使用防火牆來保護您的 Azure 事件中樞命名空間。 Azure 事件中樞支援以 IP 為基礎的存取控制，以提供輸入防火牆支援。 您可以使用 [Azure 入口網站]、[Azure Resource Manager 範本] 或 [Azure CLI] 或 [Azure PowerShell] 來設定防火牆規則。
+您也可以使用防火牆來保護 Azure 事件中樞命名空間。 Azure 事件中樞支援以 IP 為基礎的存取控制進行輸入防火牆支援。 您可以使用 Azure 入口網站、Azure Resource Manager 範本，或透過 Azure CLI 或 Azure PowerShell 來設定防火牆規則。
 
-如何搭配 Azure 事件中樞使用虛擬網路服務端點：https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
+如何搭配使用虛擬網路服務端點與 Azure 事件中樞： https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
 
-如需詳細資訊，請參閱整合 Azure 事件中樞與 Azure 私人連結： https://docs.microsoft.com/azure/event-hubs/private-link-service 。
+如需詳細資訊，請參閱整合 Azure 事件中樞與 Azure Private Link： https://docs.microsoft.com/azure/event-hubs/private-link-service 。
 
-啟用事件中樞命名空間上的虛擬網路整合和防火牆：https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls
+在事件中樞命名空間上啟用虛擬網路整合和防火牆： https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls
 
-如何設定 Azure 事件中樞命名空間的 IP 防火牆規則：https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
+如何設定 Azure 事件中樞命名空間的 IP 防火牆規則： https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
 **Azure 資訊安全中心監視**：是
 
@@ -50,11 +50,11 @@ ms.locfileid: "86537049"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：監視和記錄 VNet、子網路與 NIC 的設定和流量
 
-**指導**方針：使用 Azure 資訊安全中心並遵循網路保護建議，協助保護您在 Azure 中的事件中樞資源。 如果您使用 Azure 虛擬機器來存取您的事件中樞，請啟用網路安全性群組（NSG）流量記錄，並將記錄傳送到儲存體帳戶以進行流量審核。
+**指導**方針：使用 Azure 資訊安全中心，並遵循網路保護建議來協助保護 Azure 中的事件中樞資源。 如果使用 Azure 虛擬機器來存取您的事件中樞，請啟用網路安全性群組 (NSG) 流量記錄，並將記錄傳送至儲存體帳戶以進行流量審核。
 
 如何啟用 NSG 流量記錄： https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-瞭解 Azure 資訊安全中心所提供的網路安全性：https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
+瞭解 Azure 資訊安全中心所提供的網路安全性： https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
 **Azure 資訊安全中心監視**：是
 
@@ -70,11 +70,11 @@ ms.locfileid: "86537049"
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址通訊
 
-**指導**方針：在與事件中樞相關聯的虛擬網路上啟用 DDoS 保護標準，以防範分散式阻斷服務（DDoS）攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，以拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
+**指導**方針：在與您的事件中樞相關聯的虛擬網路上啟用 DDoS 保護標準，以防止分散式阻絕服務 (DDoS) 攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，以拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
 
-如何設定 DDoS 保護：[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](../virtual-network/manage-ddos-protection.md)
+如何設定 DDoS 保護： [https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](../virtual-network/manage-ddos-protection.md)
 
-如需 Azure 資訊安全中心整合式威脅情報的詳細資訊：https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+如需 Azure 資訊安全中心整合式威脅情報的詳細資訊： https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
 **Azure 資訊安全中心監視**：是
 
@@ -82,15 +82,15 @@ ms.locfileid: "86537049"
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5：記錄網路封包和流量記錄
 
-**指導**方針：如果使用 Azure 虛擬機器來存取您的事件中樞，請啟用網路安全性群組（NSG）流量記錄，並將記錄傳送到儲存體帳戶以進行流量審核。 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
+**指導**方針：如果使用 Azure 虛擬機器來存取事件中樞，請啟用網路安全性群組 (NSG) 流量記錄，並將記錄傳送至儲存體帳戶以進行流量審核。 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
-如果需要調查異常活動，請啟用網路監看員封包捕捉。
+如果需要調查異常活動，請啟用網路監看員封包捕獲。
 
 如何啟用 NSG 流量記錄： https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
 如何啟用及使用流量分析： https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
-如何啟用網路監看員：https://docs.microsoft.com/azure/network-watcher/network-watcher-create
+如何啟用網路監看員： https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 **Azure 資訊安全中心監視**：是
 
@@ -98,13 +98,13 @@ ms.locfileid: "86537049"
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統 (IDS/IPS)
 
-**指導**方針：如果使用 Azure 虛擬機器來存取您的事件中樞，請從支援具有承載檢查功能之 IDS/IPS 功能的 Azure Marketplace 中選取供應專案。 如果您的組織不需要以承載檢查為基礎的入侵偵測和/或防護，您可以使用 Azure 事件中樞的內建防火牆功能。 您可以使用防火牆規則，針對限制範圍的 IP 位址或特定的 IP 位址，限制事件中樞命名空間的存取權。
+**指導**方針：如果使用 Azure 虛擬機器來存取您的事件中樞，請從支援「具有承載檢查功能的 IDS/IPS」功能的 Azure Marketplace 選取供應專案。 如果您的組織不需要根據承載檢查進行入侵偵測及/或預防，您可以使用 Azure 事件中樞的內建防火牆功能。 您可以使用防火牆規則，限制只有有限範圍的 IP 位址，或特定 IP 位址的事件中樞命名空間的存取權。
 
 Azure Marketplace：
 
 https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
-如何在事件中樞中為指定的 IP 位址新增防火牆規則：
+如何在事件中樞內為指定的 IP 位址新增防火牆規則：
 
  https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
@@ -130,13 +130,13 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
-**指導**方針：使用 Azure 原則，為與您的 Azure 事件中樞命名空間相關聯的網路資源定義和實施標準安全性設定。 使用 "node.js" 和 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以審核或強制執行事件中樞命名空間的網路設定。 您也可以使用與 Azure 事件中樞相關的內建原則定義，例如：
+**指導**方針：使用 Azure 原則為與您的 Azure 事件中樞命名空間相關聯的網路資源定義和執行標準安全性設定。 使用 "Microsoft. EventHub" 和 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對事件中樞命名空間的網路設定進行審核或強制執行。 您也可以使用與 Azure 事件中樞相關的內建原則定義，例如：
 
 - 事件中樞應使用虛擬網路服務端點。
 
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-適用于事件中樞命名空間的 Azure 內建原則：https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
+適用于事件中樞命名空間的 Azure 內建原則：  https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
 
 
@@ -152,7 +152,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
-**指導**方針：使用虛擬網路的標籤，以及與事件中樞相關聯的網路安全性和流量的其他相關資源。
+**指導**方針：使用虛擬網路的標記，以及與事件中樞相關聯的網路安全性和流量流程相關的其他資源。
 
 如何建立和使用標籤： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
@@ -162,7 +162,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
-**指引**：使用 Azure 活動記錄來監視網路資源設定，並偵測與 Azure 事件中樞相關的網路資源變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
+**指導**方針：使用 Azure 活動記錄監視網路資源設定，並偵測與 Azure 事件中樞相關之網路資源的變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
 
 如何檢視及擷取 Azure 活動記錄事件： https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
@@ -178,7 +178,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
-**指導**方針：不適用;Microsoft 會針對記錄檔中的時間戳記，維護用於 Azure 資源的時間來源，例如 Azure 事件中樞。
+**指導**方針：不適用;Microsoft 會針對記錄檔中的時間戳記，維護 Azure 資源（例如 Azure 事件中樞）所使用的時間來源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -186,11 +186,11 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
-**指導**方針：在 Azure 監視器中，設定活動記錄檔和事件中樞診斷設定中與事件中樞相關的記錄，以將記錄傳送到 Log Analytics 工作區，以供查詢或儲存到儲存體帳戶以進行長期保存儲存。
+**指導**方針：在 Azure 監視器中，請在活動記錄檔和事件中樞診斷設定中設定與事件中樞相關的記錄，以將記錄傳送至 Log Analytics 工作區，以供長期封存儲存體進行查詢或儲存至儲存體帳戶。
 
-如何設定 Azure 事件中樞的診斷設定：https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
+如何設定 Azure 事件中樞的診斷設定： https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
 
-瞭解 Azure 活動記錄檔：https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
+瞭解 Azure 活動記錄： https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
 **Azure 資訊安全中心監視**：是
 
@@ -198,13 +198,13 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
-**指引**：啟用 Azure 事件中樞命名空間的診斷設定。 Azure 事件中樞的診斷設定有三種類別：封存記錄、作業記錄和自動調整記錄。 啟用作業記錄以捕捉事件中樞操作期間發生之情況的相關資訊，具體而言，就是操作類型，包括建立事件中樞、使用的資源，以及作業的狀態。
+**指導**方針：啟用 Azure 事件中樞命名空間的診斷設定。 Azure 事件中樞的診斷設定有三個類別：封存記錄、作業記錄和自動調整記錄。 啟用作業記錄，以捕獲事件中樞作業期間發生什麼情況的相關資訊，尤其是作業類型（包括建立事件中樞）、使用的資源，以及作業的狀態。
 
-此外，您可以啟用 Azure 活動記錄診斷設定，並將它們傳送至 Azure 儲存體帳戶、事件中樞或 Log Analytics 工作區。 活動記錄可讓您深入瞭解在您的 Azure 事件中樞和其他資源上執行的作業。 使用活動記錄，您可以決定對 Azure 事件中樞命名空間採取的任何寫入作業（PUT、POST、DELETE）的「內容、物件和時間」。
+此外，您可以啟用 Azure 活動記錄診斷設定，並將其傳送至 Azure 儲存體帳戶、事件中樞或 Log Analytics 工作區。 活動記錄可讓您深入瞭解在 Azure 事件中樞和其他資源上執行的作業。 您可以使用活動記錄來判斷任何寫入作業的「內容、物件和時間」 (PUT、POST、DELETE) 在 Azure 事件中樞命名空間上執行。
 
-如何啟用 Azure 事件中樞的診斷設定：https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
+如何啟用 Azure 事件中樞的診斷設定： https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
 
-如何啟用 Azure 活動記錄的診斷設定：https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+如何啟用 Azure 活動記錄的診斷設定： https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 **Azure 資訊安全中心監視**：是
 
@@ -220,9 +220,9 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
 
-**指引**：在 Azure 監視器中，根據貴組織的相容性法規來設定您的 Log Analytics 工作區保留期間，以捕捉及查看事件中樞相關事件。
+**指導**方針：在 Azure 監視器中，您可以根據組織的合規性法規來設定 Log Analytics 工作區保留期限，以捕捉和檢查事件中樞的相關事件。
 
-如何設定 Log Analytics 工作區的記錄檔保留參數：https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+如何設定 Log Analytics 工作區的記錄保留參數： https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -230,10 +230,10 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
-**指引**：分析和監視記錄中的異常行為，並定期查看與事件中樞相關的結果。 使用 Azure 監視器的 Log Analytics 檢閱記錄，並對記錄資料執行查詢。 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。
+**指導**方針：分析和監視記錄中的異常行為，並定期查看與事件中樞相關的結果。 使用 Azure 監視器的 Log Analytics 檢閱記錄，並對記錄資料執行查詢。 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。
  
 
-如需 Log Analytics 工作區的詳細資訊：https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+如需 Log Analytics 工作區的詳細資訊： https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
 如何在 Azure 監視器中執行自訂查詢： https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
@@ -245,15 +245,15 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：啟用異常活動的警示
 
-**指引**：在 Azure 監視器中，設定與活動記錄檔中 Azure 事件中樞相關的記錄，並事件中樞診斷設定，將記錄傳送到 Log Analytics 工作區，以供查詢或長期保存儲存體的儲存體帳戶。 使用 Log Analytics 工作區，針對在安全性記錄檔和事件中找到的異常活動建立警示。
+**指導**方針：在 Azure 監視器中，設定與活動記錄中 Azure 事件中樞相關的記錄，以及事件中樞診斷設定，以將記錄傳送至 Log Analytics 工作區，以供長期封存儲存體進行查詢或儲存至儲存體帳戶。 使用 Log Analytics 工作區，針對在安全性記錄檔和事件中找到的異常活動建立警示。
 
-或者，您可以啟用和麵板上的資料來 Azure Sentinel。 
+或者，您也可以啟用和麵板上的資料以 Azure Sentinel。 
 
-瞭解 Azure 活動記錄：https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
+瞭解 Azure 活動記錄： https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
-如何設定 Azure 事件中樞的診斷設定：https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
+如何設定 Azure 事件中樞的診斷設定： https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
 
-如何對 Log Analytics 工作區記錄資料發出警示：https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
+如何對 Log Analytics 工作區記錄資料發出警示： https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 如何讓 Azure Sentinel 上線： https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
@@ -271,7 +271,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：啟用 DNS 查詢記錄
 
-**指導**方針：不適用;事件中樞不會處理或產生 DNS 相關的記錄。
+**指導**方針：不適用;事件中樞不會處理或產生 DNS 相關記錄。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -291,11 +291,11 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指導**方針： AZURE ACTIVE DIRECTORY （AD）具有必須明確指派且可查詢的內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。 
+**指導**方針： AZURE ACTIVE DIRECTORY (AD) 具有必須明確指派且可供查詢的內建角色。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。 
 
-如何使用 PowerShell 在 Azure AD 中取得目錄角色：https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+如何使用 PowerShell 在 Azure AD 中取得目錄角色： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員：https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
 **Azure 資訊安全中心監視**：是
 
@@ -303,11 +303,11 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在適用的情況下變更預設密碼
 
-**指導**方針：事件中樞的控制平面存取是透過 AZURE ACTIVE DIRECTORY （AD）來控制。 Azure AD 沒有預設密碼的概念。
+**指導**方針：事件中樞的控制平面存取權是透過 AZURE ACTIVE DIRECTORY (AD) 來控制。 Azure AD 沒有預設密碼的概念。
 
-事件中樞的資料平面存取是透過受控識別或應用程式註冊的 Azure AD，以及共用存取簽章來控制。 連線至事件中樞的用戶端會使用共用存取簽章，而且可以隨時重新產生。
+事件中樞的資料平面存取權是透過具有受控識別或應用程式註冊的 Azure AD 以及共用存取簽章來控制。 連接到您事件中樞的用戶端會使用共用存取簽章，而且可以隨時重新產生。
 
-瞭解事件中樞的共用存取簽章：https://docs.microsoft.com/azure/event-hubs/authenticate-shared-access-signature
+瞭解事件中樞的共用存取簽章： https://docs.microsoft.com/azure/event-hubs/authenticate-shared-access-signature
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -325,9 +325,9 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 - 具有擁有者權限的外部帳戶應該從您的訂用帳戶中移除
 
-如何使用 Azure 資訊安全中心來監視身分識別和存取（預覽）：https://docs.microsoft.com/azure/security-center/security-center-identity-access
+如何使用 Azure 資訊安全中心來監視身分識別和存取 (預覽) ： https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-如何使用 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何使用 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure 資訊安全中心監視**：是
 
@@ -335,11 +335,11 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
-**指導**方針： Microsoft Azure 針對以 AZURE ACTIVE DIRECTORY （AD）為基礎的資源和應用程式，提供整合式存取控制管理。 搭配 Azure 事件中樞使用 Azure AD 的主要優點是您不再需要將認證儲存在程式碼中。 相反地，您可以從 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 要求權杖的資源名稱為 HTTPs： \/ /eventhubs.azure.net/。 Azure AD 會驗證執行應用程式的安全性主體（使用者、群組或服務主體）。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權 Azure 事件中樞資源的要求。
+**指導**方針： Microsoft Azure 會根據 AZURE ACTIVE DIRECTORY (AD) ，提供資源和應用程式的整合式存取控制管理。 使用 Azure AD 搭配 Azure 事件中樞的主要優點是您不再需要將認證儲存在程式碼中。 相反地，您可以從 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 要求權杖的資源名稱為 HTTPs： \/ /eventhubs.azure.net/。 Azure AD 會 (使用者、群組或服務主體) 執行應用程式來驗證安全性主體。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權 Azure 事件中樞資源的要求。
 
-如何使用 Azure AD 存取事件中樞資源來驗證應用程式：https://docs.microsoft.com/azure/event-hubs/authenticate-application
+如何使用 Azure AD 來驗證應用程式，以存取事件中樞資源： https://docs.microsoft.com/azure/event-hubs/authenticate-application
 
-瞭解具有 Azure AD 的 SSO：https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+瞭解具有 Azure AD 的 SSO： https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -347,7 +347,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
-**指引**：啟用 Azure Active Directory 多重要素驗證（MFA），並遵循 Azure 資訊安全中心身分識別和存取管理建議來協助保護已啟用事件中樞的資源。
+**指導**方針：啟用 Azure Active Directory MULTI-FACTOR AUTHENTICATION (MFA) ，並遵循 Azure 資訊安全中心身分識別和存取管理的建議，以協助保護您的已啟用事件中樞資源。
 
 如何在 Azure 中啟用 MFA： https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -359,7 +359,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 
-**指導**方針：使用具有多重要素驗證（MFA）的特殊許可權存取工作站（PAW），其設定為登入並設定已啟用事件中樞的資源。
+**指導**方針：使用特殊許可權存取工作站 (PAW) 與 MULTI-FACTOR AUTHENTICATION (MFA) 設定為登入和設定啟用事件中樞的資源。
 
 了解特殊權限存取工作站： https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
@@ -371,13 +371,13 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：針對來自系統管理帳戶的可疑活動留下記錄和發出警示
 
-**指引**：當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory (AD) 的 Privileged Identity Management (PIM) 來產生記錄和警示。 使用 Azure AD 風險偵測來根據有風險的使用者行為來查看警示和報告。 如需其他記錄，請將 Azure 資訊安全中心風險偵測警示傳送至 Azure 監視器，並使用動作群組來設定自訂警示/通知。
+**指引**：當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory (AD) 的 Privileged Identity Management (PIM) 來產生記錄和警示。 使用 Azure AD 風險偵測來查看警示和報告有風險的使用者行為。 如需其他記錄，請將 Azure 資訊安全中心風險偵測警示傳送至 Azure 監視器，並使用動作群組設定自訂警示/通知。
 
 如何部署 Privileged Identity Management (PIM)： https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
 了解 Azure AD 風險偵測： https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-如何設定自訂警示和通知的動作群組：https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
+如何設定自訂警示和通知的動作群組： https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 **Azure 資訊安全中心監視**：是
 
@@ -397,11 +397,11 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導**方針：使用 AZURE ACTIVE DIRECTORY （AD）做為 Azure 資源（例如事件中樞）的中央驗證和授權系統。 這可允許以角色為基礎的存取控制（RBAC）來管理機密資源。
+**指導**方針：使用 AZURE ACTIVE DIRECTORY (AD) 作為 Azure 資源（例如事件中樞）的中央驗證和授權系統。 這可讓您對系統管理敏感資源 (RBAC) 的角色型存取控制。
 
- 如何建立和設定 Azure AD 實例：https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
+ 如何建立和設定 Azure AD 實例： https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
-若要瞭解 Azure 事件中樞如何與 Azure Active Directory （AAD）整合，請參閱使用 Azure Active Directory 授權存取事件中樞資源：https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+若要瞭解 Azure 事件中樞如何與 Azure Active Directory (AAD) 整合，請參閱使用 Azure Active Directory 授權存取事件中樞資源： https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -409,15 +409,15 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
-**指引**： AZURE ACTIVE DIRECTORY （AD）提供可協助您探索過時帳戶的記錄檔。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。
+**指導**方針： AZURE ACTIVE DIRECTORY (AD) 提供記錄檔，以協助您探索過時的帳戶。 此外，使用 Azure 身分識別存取審核來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。
 
-另外，請定期輪替您事件中樞的共用存取簽章。
+另外，請定期輪替您的事件中樞共用存取簽章。
 
-瞭解 Azure AD 報告：https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+瞭解 Azure AD 報告： https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
 如何使用 Azure 身分識別存取權檢閱： https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-瞭解事件中樞的共用存取簽章：https://docs.microsoft.com/azure/event-hubs/authenticate-shared-access-signature
+瞭解事件中樞的共用存取簽章： https://docs.microsoft.com/azure/event-hubs/authenticate-shared-access-signature
 
 **Azure 資訊安全中心監視**：是
 
@@ -425,13 +425,13 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：監視對已停用帳戶的存取嘗試
 
-**指引**：您可以存取 AZURE ACTIVE DIRECTORY （AD）登入活動、audit 和風險事件記錄檔來源，讓您可以與任何 SIEM/監視工具整合。
+**指導**方針：您可以存取 AZURE ACTIVE DIRECTORY (AD) 登入活動、audit 和風險事件記錄檔來源，讓您可以與任何 SIEM/監視工具整合。
 
-若要簡化此程式，您可以建立 Azure AD 使用者帳戶的診斷設定，並將 audit 記錄和登入記錄傳送到 Log Analytics 工作區。 您可以在 Log Analytics 中設定所需的記錄警示。
+您可以建立 Azure AD 使用者帳戶的診斷設定，並將審核記錄和登入記錄傳送至 Log Analytics 工作區，以簡化此程式。 您可以在 Log Analytics 中設定所需的記錄警示。
 
 如何將 Azure 活動記錄整合到 Azure 監視器中： https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-使用 Azure Active Directory 授權事件中樞資源的存取權：https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+使用 Azure Active Directory 來授權事件中樞資源的存取權： https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -439,11 +439,11 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差警示
 
-**指導**方針：使用 Azure Active Directory 的身分識別保護和風險偵測功能，針對偵測到已啟用事件中樞資源的可疑動作設定自動回應。 您應該透過 Azure Sentinel 啟用自動回應，以執行貴組織的安全性回應。
+**指導**方針：使用 Azure Active Directory 的身分識別保護和風險偵測功能，對偵測到已啟用事件中樞之資源的相關可疑動作，設定自動回應。 您應該透過 Azure Sentinel 啟用自動回應，以執行您組織的安全性回應。
 
 如何檢視 Azure AD 風險性登入： https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-如何設定和啟用身分識別保護風險原則：https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+如何設定及啟用 Identity Protection 風險原則： https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
 如何讓 Azure Sentinel 上線： https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
@@ -455,7 +455,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 **指導**方針：目前無法使用;事件中樞尚不支援客戶加密箱。
 
-客戶加密箱支援的服務清單：https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+客戶加密箱支援的服務清單： https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -467,7 +467,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的清查
 
-**指引**：在與您的事件中樞相關的資源上使用標記，以協助追蹤儲存或處理敏感資訊的 Azure 資源。
+**指導**方針：在與您的事件中樞相關的資源上使用標籤，以協助追蹤儲存或處理敏感性資訊的 Azure 資源。
 
 如何建立和使用標籤： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
@@ -477,19 +477,19 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 事件中樞命名空間應該以已啟用服務端點並適當標記的虛擬網路分隔。
+**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 事件中樞命名空間應該以已啟用服務端點的虛擬網路區隔，並適當地標記。
 
-您也可以使用防火牆來保護您的 Azure 事件中樞命名空間。 Azure 事件中樞支援以 IP 為基礎的存取控制，以提供輸入防火牆支援。 您可以使用 [Azure 入口網站]、[Azure Resource Manager 範本] 或 [Azure CLI] 或 [Azure PowerShell] 來設定防火牆規則。
+您也可以使用防火牆來保護您的 Azure 事件中樞命名空間。 Azure 事件中樞支援以 IP 為基礎的存取控制進行輸入防火牆支援。 您可以使用 Azure 入口網站、Azure Resource Manager 範本，或透過 Azure CLI 或 Azure PowerShell 來設定防火牆規則。
 
 如何建立其他 Azure 訂用帳戶： https://docs.microsoft.com/azure/billing/billing-create-subscription
 
 如何建立管理群組： https://docs.microsoft.com/azure/governance/management-groups/create
 
-設定 Azure 事件中樞命名空間的 IP 防火牆規則：https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
+設定 Azure 事件中樞命名空間的 IP 防火牆規則： https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
-如何建立和使用標記：https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+如何建立及利用標記： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-如何建立虛擬網路：https://docs.microsoft.com/azure/virtual-network/quick-create-portal
+如何建立虛擬網路： https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -497,17 +497,17 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的敏感性資訊傳輸
 
-**指引**：使用虛擬機器來存取您的事件中樞時，請使用虛擬網路、服務端點、事件中樞防火牆、網路安全性群組和服務標籤，以降低資料外泄的可能性。
+**指導**方針：使用虛擬機器來存取事件中樞時，請使用虛擬網路、服務端點、事件中樞防火牆、網路安全性群組和服務標籤來減輕資料遭到外泄的可能性。
 
-Microsoft 會管理 Azure 事件中樞的基礎結構，並已實行嚴格的控制，以避免遺失或公開客戶資料。
+Microsoft 管理 Azure 事件中樞的基礎結構，並已實行嚴格的控制，以防止客戶資料遺失或洩漏。
 
-設定 Azure 事件中樞命名空間的 IP 防火牆規則：https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
+設定 Azure 事件中樞命名空間的 IP 防火牆規則： https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
-瞭解 Azure 事件中樞的虛擬網路服務端點：https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
+使用 Azure 事件中樞瞭解虛擬網路服務端點： https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
 
-將 Azure 事件中樞與 Azure 私人連結整合：https://docs.microsoft.com/azure/event-hubs/private-link-service
+整合 Azure 事件中樞與 Azure Private Link： https://docs.microsoft.com/azure/event-hubs/private-link-service
 
-瞭解網路安全性群組和服務標記：https://docs.microsoft.com/azure/virtual-network/security-overview
+瞭解網路安全性群組和服務標記： https://docs.microsoft.com/azure/virtual-network/security-overview
 
 了解 Azure 中的客戶資料保護： https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
@@ -517,9 +517,9 @@ Microsoft 會管理 Azure 事件中樞的基礎結構，並已實行嚴格的控
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
-**指導**方針： Azure 事件中樞預設會強制執行 TLS 加密的通訊。 目前支援 TLS 版本1.0、1.1 和1.2。 不過，TLS 1.0 和1.1 位於整個產業的淘汰路徑，因此，請盡可能使用 TLS 1.2。
+**指導**方針： Azure 事件中樞預設會強制執行 TLS 加密通訊。 目前支援 TLS 版本1.0、1.1 和1.2。 不過，TLS 1.0 和1.1 都是在整個產業淘汰的路徑上，因此請盡可能使用 TLS 1.2。
 
-若要瞭解事件中樞的安全性功能，請參閱網路安全性：https://docs.microsoft.com/azure/event-hubs/network-security
+若要瞭解事件中樞的安全性功能，請參閱網路安全性：  https://docs.microsoft.com/azure/event-hubs/network-security
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -539,9 +539,9 @@ Microsoft 會管理 Azure 事件中樞的基礎結構，並已實行嚴格的控
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指引**： Azure 事件中樞支援使用 AZURE ACTIVE DIRECTORY （AD）來授權事件中樞資源的要求。 使用 Azure AD，您可以使用角色型存取控制（RBAC），將許可權授與安全性主體，這可能是使用者或應用程式服務主體。
+**指導**方針： Azure 事件中樞支援使用 AZURE ACTIVE DIRECTORY (AD) 來授權事件中樞資源的要求。 使用 Azure AD 時，您可以使用角色型存取控制 (RBAC) ，將許可權授與安全性主體（可能是使用者或應用程式服務主體）。
 
-瞭解 Azure AD RBAC 和適用于 Azure 事件中樞的角色：https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+瞭解 Azure 事件中樞 Azure AD RBAC 和可用角色： https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -551,7 +551,7 @@ Microsoft 會管理 Azure 事件中樞的基礎結構，並已實行嚴格的控
 
 **指引**：不適用，這項準則主要用於計算資源。
 
-Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，以避免遺失或公開客戶資料。
+Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，以防止客戶資料遺失或洩漏。
 
 了解 Azure 中的客戶資料保護： https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
@@ -561,9 +561,9 @@ Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，�
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
-**指導**方針： Azure 事件中樞支援使用 Microsoft 管理的金鑰或客戶管理的金鑰來加密待用資料的選項。 這項功能可讓您建立、輪替、停用及撤銷用來加密待用資料 Azure 事件中樞的客戶管理金鑰的存取權。
+**指導**方針： Azure 事件中樞支援使用 Microsoft 管理的金鑰或由客戶管理的金鑰來加密待用資料的選項。 這項功能可讓您建立、輪替、停用及撤銷客戶管理金鑰的存取權，這些金鑰是用來加密待用 Azure 事件中樞資料。
 
-如何設定客戶管理的金鑰來加密 Azure 事件中樞：https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
+如何設定客戶管理的金鑰來加密 Azure 事件中樞： https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -571,7 +571,7 @@ Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，�
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：針對重要 Azure 資源的變更留下記錄和發出警示
 
-**指導**方針：使用 Azure 監視器搭配 Azure 活動記錄，以針對 Azure 事件中樞的生產實例和其他重要或相關資源進行變更時，建立警示。
+**指導**方針：使用 Azure 監視器搭配 Azure 活動記錄，以針對 Azure 事件中樞和其他重要或相關資源的生產實例進行變更時，建立警示。
 
 如何建立 Azure 活動記錄事件的警示： https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
@@ -629,7 +629,7 @@ Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，�
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 資產探索
 
-**指引**：使用 Azure Resource Graph 來查詢和探索訂用帳戶內的所有資源（包括 Azure 事件中樞命名空間）。 確保租用戶中有適當的 (讀取) 權限，且能列舉所有 Azure 訂用帳戶以及訂用帳戶中的資源。
+**指導**方針：使用 Azure Resource Graph 來查詢及探索所有資源 (包括訂用帳戶 () 中) 的 Azure 事件中樞命名空間。 確保租用戶中有適當的 (讀取) 權限，且能列舉所有 Azure 訂用帳戶以及訂用帳戶中的資源。
 
 如何使用 Azure Resource Graph 建立查詢： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -653,7 +653,7 @@ Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，�
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
-**指引**.. 適當地使用標記、管理群組和個別的訂用帳戶來組織和追蹤 Azure 事件中樞命名空間和相關資源。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
+**指導**方針：使用標記、管理群組和個別的訂用帳戶（如果適當）來組織和追蹤 Azure 事件中樞命名空間和相關資源。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
 如何建立其他 Azure 訂用帳戶： https://docs.microsoft.com/azure/billing/billing-create-subscription
 
@@ -681,7 +681,7 @@ Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，�
 
 - 允許的資源類型
 
-此外，請使用 Azure Resource Graph 來查詢/探索訂用帳戶內的資源。
+此外，您也可以使用 Azure Resource Graph 來查詢/探索訂用帳戶 () 中的資源。
 
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -771,13 +771,13 @@ Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，�
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
-**指引**：定義和執行 Azure 事件中樞部署的標準安全性設定。 使用 "Microsoft EventHub" 命名空間中 Azure 原則別名來建立自訂原則，以進行審核或強制執行設定。 您也可以利用內建的原則定義來進行 Azure 事件中樞，例如：
+**指導**方針：定義和實行 Azure 事件中樞部署的標準安全性設定。 使用 "node.js" 命名空間中 Azure 原則別名來建立自訂原則，以進行審核或強制執行設定。 您也可以使用內建原則定義進行 Azure 事件中樞例如：
 
 - 應啟用事件中樞內的診斷記錄
 
 - 事件中樞應該使用虛擬網路服務端點
 
-適用于事件中樞命名空間的 Azure 內建原則：https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
+適用于事件中樞命名空間的 Azure 內建原則： https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
 如何檢視可用的 Azure 原則別名： https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -797,12 +797,12 @@ Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
-**指導**方針：使用 Azure 原則 [拒絕] 和 [不存在時部署]，在已啟用事件中樞的資源上強制執行安全設定。 
+**指導**方針：使用 Azure 原則 [拒絕] 和 [部署是否不存在]，在啟用事件中樞的資源之間強制執行安全的設定。 
 
-如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則：  https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
  
-如需 Azure 原則效果的詳細資訊：https://docs.microsoft.com/azure/governance/policy/concepts/effects
+如需 Azure 原則效果的詳細資訊：  https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -818,7 +818,7 @@ Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，�
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
-**指導**方針：如果您事件中樞或相關資源使用自訂 Azure 原則定義，請使用 Azure Repos 安全地儲存和管理您的程式碼。
+**指導**方針：如果針對您的事件中樞或相關資源使用自訂 Azure 原則定義，請使用 Azure Repos 安全地儲存和管理您的程式碼。
 
 如何在 Azure DevOps 中儲存程式碼： https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
@@ -838,7 +838,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7.7：部署系統設定管理工具
 
-**指引**：在 "node.js" 命名空間中使用 Azure 原則別名來建立自訂原則，以警示、審查和強制執行系統設定。 此外，開發流程和管線以管理原則例外狀況。
+**指導**方針：使用 "node.js" 命名空間中 Azure 原則別名來建立自訂原則，以警示、審核和強制執行系統組態。 此外，開發流程和管線以管理原則例外狀況。
 
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -856,7 +856,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9：為 Azure 服務實作自動化的設定監視
 
-**指引**：在 "node.js" 命名空間中使用 Azure 原則別名來建立自訂原則，以警示、審查和強制執行系統設定。 使用 Azure 原則 [audit]、[deny] 和 [deploy if not 存在]，自動為您的 Azure 事件中樞部署和相關資源強制執行設定。
+**指導**方針：使用 "node.js" 命名空間中 Azure 原則別名來建立自訂原則，以警示、審核和強制執行系統組態。 使用 Azure 原則 [audit]、[拒絕] 和 [部署是否不存在]，自動強制執行 Azure 事件中樞部署和相關資源的設定。
 
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -874,11 +874,11 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 祕密
 
-**指導**方針：針對在 Azure App Service 用來存取事件中樞的 Azure 虛擬機器或 web 應用程式，請使用受控服務識別搭配 Azure Key Vault，以簡化及保護 Azure 事件中樞部署的共用存取簽章管理。 請確定已啟用 Key Vault 虛刪除。
+**指導**方針：適用于在 Azure App Service 用來存取事件中樞的 Azure 虛擬機器或 web 應用程式，請使用受控服務識別搭配 Azure Key Vault，以簡化和保護 Azure 事件中樞部署的共用存取簽章管理。 確定已啟用 Key Vault 虛刪除。
 
-使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源：https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest
+使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源： https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest
 
-為事件中樞設定客戶管理的金鑰：https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key 
+為事件中樞設定客戶管理的金鑰： https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key 
 
 如何與 Azure 受控識別整合： https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
@@ -892,13 +892,13 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
-**指引**：針對在 Azure App Service 用來存取事件中樞的 Azure 虛擬機器或 web 應用程式，請使用受控服務識別搭配 Azure Key Vault，以簡化 Azure 事件中樞的保護。 請確定已啟用 Key Vault 虛刪除。
+**指導**方針：適用于在 Azure App Service 用來存取事件中樞的 Azure 虛擬機器或 web 應用程式，請使用受控服務識別搭配 Azure Key Vault，以簡化 Azure 事件中樞的安全。 確定已啟用 Key Vault 虛刪除。
 
-使用受控識別，在 Azure Active Directory (AD) 中為 Azure 服務提供自動受控識別。 受控識別可讓您向任何支援 Azure AD 驗證的服務進行驗證，包括 Azure Key Vault，而您的程式碼中沒有任何認證。
+使用受控識別，在 Azure Active Directory (AD) 中為 Azure 服務提供自動受控識別。 受控識別可讓您向任何支援 Azure AD 驗證的服務進行驗證，包括 Azure Key Vault，而不需要在您的程式碼中提供任何認證。
 
-使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源：https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest 
+使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源： https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest 
 
-為事件中樞設定客戶管理的金鑰：https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key 
+為事件中樞設定客戶管理的金鑰： https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key 
 
 如何設定受控識別： https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
@@ -934,9 +934,9 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
-**指引**：預先掃描要上傳至非計算 Azure 資源的任何內容，例如 Azure 事件中樞、App Service、Data Lake Storage、Blob 儲存體、適用於 PostgreSQL 的 Azure 資料庫等等。Microsoft 無法存取您在這些實例中的資料。
+**指導**方針：預先掃描任何上傳至非計算 Azure 資源的內容，例如 Azure 事件中樞、App Service、Data Lake Storage、Blob 儲存體、適用於 PostgreSQL 的 Azure 資料庫等。Microsoft 無法在這些實例中存取您的資料。
 
-支援 Azure 服務的基礎主機上已啟用 Microsoft 反惡意程式碼（例如 Azure Cache for Redis），但它不會在客戶內容上執行。
+支援 Azure 服務的基礎主機上已啟用 Microsoft 反惡意程式碼 (例如 Azure Cache for Redis) ，但不會對客戶內容執行。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -956,9 +956,9 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
-**指導**方針：設定 Azure 事件中樞的異地嚴重損壞修復。 當整個 Azure 區域或資料中心 (如果未使用可用性區域) 遇到停機時，最重要的是資料處理作業能夠繼續在不同的區域或資料中心運作。 因此，「地理災害復原」和「異地複寫」對於任何企業而言都是重要的功能。 Azure 事件中樞支援命名空間層級的地理災害復原和異地複寫。 
+**指導**方針：設定 Azure 事件中樞的異地災難復原。 當整個 Azure 區域或資料中心 (如果未使用可用性區域) 遇到停機時，最重要的是資料處理作業能夠繼續在不同的區域或資料中心運作。 因此，「地理災害復原」和「異地複寫」對於任何企業而言都是重要的功能。 Azure 事件中樞支援命名空間層級的地理災害復原和異地複寫。 
 
-瞭解 Azure 事件中樞的異地嚴重損壞修復：https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones
+瞭解 Azure 事件中樞的地理故障復原： https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -966,13 +966,13 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份，並備份客戶管理的任何金鑰
 
-**指導**方針： Azure 事件中樞使用 Azure 儲存體服務加密（Azure SSE）提供待用資料的加密。 事件中樞依賴 Azure 儲存體來儲存資料，而且根據預設，與 Azure 儲存體一起儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 如果您使用 Azure Key Vault 來儲存客戶管理的金鑰，請確保金鑰的定期自動備份。
+**指導**方針： Azure 事件中樞使用 Azure SSE)  (的 Azure 儲存體服務加密，提供待用資料加密。 事件中樞依賴 Azure 儲存體儲存資料，而以 Azure 儲存體儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 如果您使用 Azure Key Vault 儲存客戶管理的金鑰，請確定金鑰的定期自動備份。
 
-使用下列 PowerShell 命令，確保定期自動備份您的 Key Vault 秘密：備份-AzKeyVaultSecret
+使用下列 PowerShell 命令，確保 Key Vault 秘密定期自動備份：備份-AzKeyVaultSecret
 
-如何設定客戶管理的金鑰來加密待用 Azure 事件中樞資料：https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
+如何設定客戶管理的金鑰來加密待用 Azure 事件中樞資料： https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
 
-如何備份 Key Vault 秘密：https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+如何備份 Key Vault 秘密： https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -980,11 +980,11 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：驗證所有備份，包括客戶管理的金鑰
 
-**指引**：測試已備份的客戶管理金鑰的還原。
+**指導**方針：測試已備份客戶管理金鑰的還原。
 
  
 
-如何在 Azure 中還原金鑰保存庫金鑰：https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+如何在 Azure 中還原金鑰保存庫金鑰： https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -992,15 +992,15 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰受到保護
 
-**指引**：在 Key Vault 中啟用虛刪除，以防止意外或惡意刪除的金鑰。 Azure 事件中樞需要客戶管理的金鑰才能進行虛刪除，而且不會進行清除設定。
+**指導**方針：啟用 Key Vault 中的虛刪除，以防止金鑰遭到意外或惡意刪除。 Azure 事件中樞需要客戶管理的金鑰才能進行虛刪除，且不會清除設定。
 
-針對用來捕獲事件中樞資料的 Azure 儲存體帳戶設定虛刪除。 請注意，Azure Data Lake Storage Gen 2 尚不支援這項功能。
+針對用來捕捉事件中樞資料的 Azure 儲存體帳戶設定虛刪除。 請注意，Azure Data Lake Storage Gen 2 尚不支援這項功能。
 
-如何在 Key Vault 中啟用虛刪除：https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+如何在 Key Vault 中啟用虛刪除： https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-使用金鑰來設定金鑰保存庫：https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
+使用金鑰設定金鑰保存庫： https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
 
-Azure 儲存體 blob 的虛刪除：https://docs.microsoft.com//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+Azure 儲存體 blob 的虛刪除： https://docs.microsoft.com//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
 **Azure 資訊安全中心監視**：是
 
@@ -1012,7 +1012,7 @@ Azure 儲存體 blob 的虛刪除：https://docs.microsoft.com//azure/storage/bl
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
-**指導**方針：確定有撰寫的事件回應計畫會定義人員的角色，以及事件處理/管理的階段。
+**指導**方針：確定有撰寫的事件回應計畫，可定義人員角色以及事件處理/管理階段。
 
 如何設定 Azure 資訊安全中心內的工作流程自動化： https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
@@ -1024,7 +1024,7 @@ Azure 儲存體 blob 的虛刪除：https://docs.microsoft.com//azure/storage/bl
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：建立事件評分和優先順序程序
 
-**指導**方針：資訊安全中心指派警示的嚴重性，協助您排定參與每個警示的順序，如此一來，當資源遭到入侵時，您就可以立即開始使用。 嚴重性的依據，在於資訊安全中心對於據以發出警示的發現結果或分析結果有多少信心，以及認定導致警示的活動背後存在惡意意圖的把握程度。
+**指導**方針：資訊安全中心會將嚴重性指派給警示，以協助您優先處理每個警示的順序，如此一來，當資源遭到入侵時，您就可以立即取得。 嚴重性的依據，在於資訊安全中心對於據以發出警示的發現結果或分析結果有多少信心，以及認定導致警示的活動背後存在惡意意圖的把握程度。
 
 **Azure 資訊安全中心監視**：是
 
@@ -1032,7 +1032,7 @@ Azure 儲存體 blob 的虛刪除：https://docs.microsoft.com//azure/storage/bl
 
 ### <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程式
 
-**指導**方針：執行練習以定期測試系統的事件回應功能。 找出弱點和落差，並視需要修訂計畫。
+**指導**方針：進行練習以定期測試系統的事件回應功能。 找出弱點和落差，並視需要修訂計畫。
 
 請參閱 NIST 的出版物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities (IT 計畫和能力的測試、訓練和練習方案指南)： https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
@@ -1078,8 +1078,8 @@ Azure 儲存體 blob 的虛刪除：https://docs.microsoft.com//azure/storage/bl
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：進行 Azure 資源的定期滲透測試，並確保在 60 天內補救所有重大安全性發現
 
-**指導**方針：請遵循 Microsoft Engagement 規則，以確保您的滲透測試不會違反 microsoft 原則： https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 。
-您可以在這裡找到有關 Microsoft 受管理的雲端基礎結構、服務和應用程式的 Microsoft 策略與執行的 Red 小組和即時網站滲透測試的詳細資訊：https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+**指導**方針：請遵循 Microsoft 的 Engagement 規則，以確保您的滲透測試不違反 Microsoft 原則： https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 。
+您可以在以下位置找到 Microsoft 針對 Microsoft 受控雲端基礎結構、服務和應用程式進行的 Microsoft 策略、Red 小組和即時網站滲透測試的詳細資訊： https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Azure 資訊安全中心監視**：是
 

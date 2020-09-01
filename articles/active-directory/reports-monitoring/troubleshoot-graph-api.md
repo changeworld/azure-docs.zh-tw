@@ -17,16 +17,16 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eec5c5a3d810fdd2d561313e3a355e872fb525c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abc8badf261e631dd6ceb7af9a6a0cb3676ae25d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608087"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231005"
 ---
 # <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>針對 Azure Active Directory 報告 API 中的錯誤進行疑難排解
 
-本文列出當您使用 Microsoft Graph API 存取活動報告時，可能會遇到的常見錯誤訊息，以及其解決方式的步驟。
+本文列出使用 Microsoft Graph API 來存取活動報告時可能會遇到的常見錯誤訊息，以及其解決方式的步驟。
 
 ### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>存取 Microsoft Graph V2 端點時發生 500 HTTP 內部伺服器錯誤
 
@@ -44,11 +44,11 @@ ms.locfileid: "85608087"
 
 請遵循[存取 Azure Active Directory 報告 API 的必要條件](howto-configure-prerequisites-for-reporting-api.md)中的步驟，以確保應用程式是以正確的權限集執行。 
 
-### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>錯誤：應用程式遺失 Microsoft Graph API 「讀取所有的 audit 記錄資料」許可權
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>錯誤：應用程式遺漏 Microsoft Graph API 「讀取所有審核記錄資料」許可權
 
 請遵循[存取 Azure Active Directory 報告 API 的必要條件](howto-configure-prerequisites-for-reporting-api.md)中的步驟，以確保應用程式是以正確的權限集執行。 
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 AUDIT API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-[使用登入活動報告 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+[使用 AUDIT API 參考](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+[使用登入活動報告 API 參考](/graph/api/resources/signin?view=graph-rest-beta)

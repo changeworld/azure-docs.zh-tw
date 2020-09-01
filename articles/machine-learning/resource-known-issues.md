@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: cd9b015c292d262430d3fd845e06e38866bc6239
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4dced0e0597e4df2fe215c9f4b85e3e8defd92c3
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018717"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230376"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 的已知問題與疑難排解
 
@@ -318,6 +318,26 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>自動化機器學習
 
+* **最新版本的 AutoML 相依性最新升級將會中斷 compatibilitity**：從 SDK 的版本1.13.0 開始，由於我們在先前的套件中釘選的舊版本與較新版本的版本不相容，因此不會在舊版 sdk 中載入模型。 您將會看到如下的錯誤：
+  * 找不到模組：例如 `No module named 'sklearn.decomposition._truncated_svd` ，
+  * 匯入錯誤：例如 `ImportError: cannot import name 'RollingOriginValidator'` ，
+  * 屬性錯誤：例如 `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
+  
+  若要解決這個問題，請根據您的 AutoML SDK 訓練版本，執行下列兩個步驟之一：
+  1. 如果您的 AutoML SDK 定型版本大於1.13.0，您需要 `pandas == 0.25.1` 和 `sckit-learn==0.22.1` 。 如果版本不符，請將 scikit-learn-學習及/或 pandas 升級為正確的版本，如下所示：
+  
+  ```bash
+     pip install --upgrade pandas==0.25.1
+     pip install --upgrade scikit-learn==0.22.1
+  ```
+  
+  2. 如果您的 AutoML SDK 定型版本小於或等於1.12.0，您需要 `pandas == 0.23.4` 和 `sckit-learn==0.20.3` 。 如果版本不符，請將 scikit-learn-學習和/或 pandas 降級為正確的版本，如下所示：
+  
+  ```bash
+    pip install --upgrade pandas==0.23.4
+    pip install --upgrade scikit-learn==0.20.3
+  ```
+ 
 * **TensorFlow**：從 SDK 版本1.5.0 版來，自動化機器學習預設不會安裝 TensorFlow 模型。 若要安裝 TensorFlow 並搭配自動化 ML 實驗使用，請透過 CondaDependecies 安裝 TensorFlow = = 1.12.0。 
  
    ```python
@@ -360,9 +380,9 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   
 * 匯**入 AutoMLConfig 失敗**：自動化機器學習版1.0.76 中有套件變更，需要先卸載舊版本，然後再更新為新版本。 如果在 `ImportError: cannot import name AutoMLConfig` v 1.0.76 至 v 1.0.76 或更新版本之前從 SDK 版本升級之後遇到，請執行下列程式來解決錯誤： `pip uninstall azureml-train automl` `pip install azureml-train-auotml` Automl_setup .cmd 腳本會自動執行此工作。 
 
-* **工作區。 from_config 失敗**：如果呼叫 Ws = workspace. from_config ( # A1 ' 失敗-
+* **workspace.from_config 失敗**：如果呼叫 ws = Workspace.from_config ( # A1 ' 失敗-
   1. 確定已成功執行 .ipynb 筆記本。
-  2. 如果正在從執行所在資料夾下的資料夾中執行筆記本 `configuration.ipynb` ，請將資料夾 aml_config，並將其包含的檔案 config.js複製到新資料夾。 工作區。 from_config 讀取筆記本資料夾或其父資料夾的 config.js。
+  2. 如果正在從執行所在資料夾下的資料夾中執行筆記本 `configuration.ipynb` ，請將資料夾 aml_config，並將其包含的檔案 config.js複製到新資料夾。 Workspace.from_config 讀取筆記本資料夾或其父資料夾的 config.js。
   3. 如果使用新的訂用帳戶、資源群組、工作區或區域，請確定您已再次執行 `configuration.ipynb` 筆記本。 如果工作區已存在於指定的訂用帳戶下的指定資源群組中，則直接變更 config.js將會運作。
   4. 如果您想要變更區域，請變更工作區、資源群組或訂用帳戶。 `Workspace.create` 將不會建立或更新工作區（如果已存在），即使指定的區域不同也是一樣。
   

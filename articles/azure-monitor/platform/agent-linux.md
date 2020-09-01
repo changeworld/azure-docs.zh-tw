@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: eb68aa1dae69134cfdab057a95de8a2393f9a32c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 997064ad030d22531277f1c412add6916eb7733f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998929"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230461"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>在 Linux 電腦上安裝 Log Analytics 代理程式
 本文將詳細說明如何使用下列方法，在 Linux 電腦上安裝 Log Analytics 代理程式：
@@ -51,11 +51,19 @@ ms.locfileid: "88998929"
  - Ubuntu、Debian： `apt-get install -y python2`
  - SUSE：`zypper install -y python2`
 
-使用下列命令，python2 可執行檔必須以「python」為別名：
+Python2 可執行檔必須以 *python*為別名。 以下是您可以用來設定此別名的其中一種方法：
 
-```
-alternatives --set python `which python2`
-```
+1. 執行下列命令以移除任何現有的別名。
+ 
+    ```
+    sudo update-alternatives --remove-all python
+    ```
+
+2. 執行下列命令以建立別名。
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+    ```
 
 ## <a name="supported-linux-hardening"></a>支援的 Linux 強化
 OMS 代理程式對 Linux 有有限的自訂支援。 
@@ -64,7 +72,8 @@ OMS 代理程式對 Linux 有有限的自訂支援。
 - Fips
 
 已規劃但尚未支援下列各項：
-- CIS-SELINUX
+- Cis
+- SELINUX
 
 不支援其他強化和自訂方法，也不會規劃 OMS 代理程式。  
 
@@ -91,7 +100,7 @@ OMS 代理程式對 Linux 有有限的自訂支援。
 
 適用于 Linux 的 Log Analytics 代理程式是由多個套件所組成。 發行檔案包含下列套件，可透過使用參數執行 shell 組合來取得 `--extract` ：
 
-**套件** | **版本** | **說明**
+**套件** | **版本** | **描述**
 ----------- | ----------- | --------------
 omsagent | 1.12.15 | 適用于 Linux 的 Log Analytics 代理程式
 omsconfig | 1.1.1 | Log Analytics 代理程式的設定代理程式
