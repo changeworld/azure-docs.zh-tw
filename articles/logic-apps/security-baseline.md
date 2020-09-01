@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 2e3b6845b66978b4892303549dabca4034a870b2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 263f018155aa6effada3d509c907d825b65a8d45
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079637"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228387"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>適用于 Logic Apps 的 Azure 安全性基準
 
@@ -94,9 +94,9 @@ ms.locfileid: "89079637"
 
 使用 Azure 資訊安全中心調適型網路強化，根據實際的流量和威脅情報，建議可限制埠和來源 Ip 的 NSG 設定。
 
-* [如何保護 Logic Apps 的輸入呼叫](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [如何保護 Logic Apps 的輸入呼叫](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
-* [如何限制輸入 IP 位址](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
+* [如何限制輸入 IP 位址](logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 * [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
 
@@ -368,7 +368,7 @@ ms.locfileid: "89079637"
 
 * [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [如何使用 SAS 保護 Azure Logic Apps 中的存取和資料](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [如何使用 SAS 保護 Azure Logic Apps 中的存取和資料](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 **Azure 資訊安全中心監視**：N/A
 
@@ -382,7 +382,7 @@ ms.locfileid: "89079637"
 
 如果您使用基礎結構即程式碼，請避免在程式碼中儲存密碼，而改為使用 Azure Key Vault 儲存和取出認證。
 
-* [如何保護及存取 Logic Apps 中的資料](./logic-apps-securing-a-logic-app.md)
+* [如何保護及存取 Logic Apps 中的資料](logic-apps-securing-a-logic-app.md)
 
 * [如何從 Azure Key Vault 設定及取出秘密](../key-vault/secrets/quick-create-portal.md)
 
@@ -473,7 +473,7 @@ ms.locfileid: "89079637"
 
 * [如何在 Azure 中設定具名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-* [瞭解如何限制 Logic Apps 中的輸入 IP 位址](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
+* [瞭解如何限制 Logic Apps 中的輸入 IP 位址](logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 **Azure 資訊安全中心監視**：N/A
 
@@ -611,11 +611,11 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 遵循 Azure 資訊安全中心待用加密及傳輸中加密的建議（適用時）。
 
-* [保護 Azure Logic Apps 中的存取權和資料](./logic-apps-securing-a-logic-app.md)
+* [保護 Azure Logic Apps 中的存取權和資料](logic-apps-securing-a-logic-app.md)
 
-* [在 Azure Logic Apps 中接收和回應輸入 HTTPS 要求](../connectors/connectors-native-reqres.md#tls-support)
+* [在 Azure Logic Apps 中接收和回應輸入 HTTPS 要求](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
-* [從 Azure Logic Apps 透過 HTTP 或 HTTPS 呼叫服務端點](../connectors/connectors-native-http.md#tls-support)
+* [從 Azure Logic Apps 透過 HTTP 或 HTTPS 呼叫服務端點](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 * [瞭解 Azure 中的傳輸加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -633,7 +633,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制，以防止客戶資料遺失或洩漏。
 
-* [安全存取以執行歷程記錄資料](./logic-apps-securing-a-logic-app.md#access-to-run-history-data)
+* [安全存取以執行歷程記錄資料](logic-apps-securing-a-logic-app.md#access-to-run-history-data)
 
 * [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
@@ -649,7 +649,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 若要防止變更或刪除邏輯應用程式，您可以使用 Azure 資源鎖定。 這項功能可防止其他人變更或刪除生產資源。
 
-* [安全存取 Azure Logic Apps 作業](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [安全存取 Azure Logic Apps 作業](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure 資訊安全中心監視**：N/A
 
@@ -885,7 +885,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 * [如何建立管理群組](../governance/management-groups/create.md)
 
-* [如何透過 Azure RBAC 安全地存取 Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [如何透過 Azure RBAC 安全地存取 Logic Apps](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure 資訊安全中心監視**：N/A
 
@@ -911,9 +911,9 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 * [Azure 入口網站中的單一和多重資源匯出至範本](../azure-resource-manager/templates/export-template-portal.md)
 
-* [如何部署 Azure Logic Apps 的 Azure Resource Manager 範本](./logic-apps-deploy-azure-resource-manager-templates.md)
+* [如何部署 Azure Logic Apps 的 Azure Resource Manager 範本](logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [瞭解安全動作參數](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
+* [瞭解安全動作參數](logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
 * [參數的安全性建議](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
@@ -947,11 +947,11 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 * [Azure 入口網站中的單一和多重資源匯出至範本](../azure-resource-manager/templates/export-template-portal.md)
 
-* [如何部署 Azure Logic Apps 的 Azure Resource Manager 範本](./logic-apps-deploy-azure-resource-manager-templates.md)
+* [如何部署 Azure Logic Apps 的 Azure Resource Manager 範本](logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [安全存取執行歷程記錄輸入和輸出](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [安全存取執行歷程記錄輸入和輸出](logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [安全存取參數輸入](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
+* [安全存取參數輸入](logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
 * [參數的安全性建議](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
@@ -1033,11 +1033,11 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 當您建立整合服務環境 (ISE) 來裝載您的邏輯應用程式，而且您想要更充分掌控 Azure 儲存體所使用的加密金鑰時，可以使用 Azure Key Vault 來設定、使用和管理您自己的金鑰。 這項功能也稱為「攜帶您自己的金鑰」 (BYOK) ，而您的金鑰稱為「客戶管理的金鑰」。
 
-* [在 Azure Logic Apps 中保護執行歷程記錄中的輸入和輸出](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [在 Azure Logic Apps 中保護執行歷程記錄中的輸入和輸出](logic-apps-securing-a-logic-app.md#obfuscate)
 
 * [參數的安全性建議](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [安全存取 Azure Logic Apps 中的參數輸入](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
+* [安全存取 Azure Logic Apps 中的參數輸入](logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
 * [使用 Azure Key Vault 在部署期間傳遞安全的參數值](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -1069,11 +1069,11 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 您也可以執行認證掃描器來識別程式碼中的認證。 認證掃描器也有助於將探索到的認證移至更安全的位置，例如 Azure Key Vault。
 
-* [在 Azure Logic Apps 中保護執行歷程記錄中的輸入和輸出](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [在 Azure Logic Apps 中保護執行歷程記錄中的輸入和輸出](logic-apps-securing-a-logic-app.md#obfuscate)
 
 * [參數的安全性建議](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [安全存取 Azure Logic Apps 中的參數輸入](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
+* [安全存取 Azure Logic Apps 中的參數輸入](logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
 * [使用 Azure Key Vault 在部署期間傳遞安全的參數值](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -1133,7 +1133,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 * [深入瞭解 Azure Logic Apps 的商務持續性和嚴重損壞修復](./business-continuity-disaster-recovery-guidance.md)
 
-* [如何使用 Azure Resource Manager 範本將 Azure Logic Apps 的部署自動化](./logic-apps-azure-resource-manager-templates-overview.md)
+* [如何使用 Azure Resource Manager 範本將 Azure Logic Apps 的部署自動化](logic-apps-azure-resource-manager-templates-overview.md)
 
 **Azure 資訊安全中心監視**：N/A
 
@@ -1151,9 +1151,9 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 * [深入瞭解 Azure Logic Apps 的商務持續性和嚴重損壞修復](./business-continuity-disaster-recovery-guidance.md)
 
-* [如何使用 Azure Resource Manager 範本將 Azure Logic Apps 的部署自動化](./logic-apps-azure-resource-manager-templates-overview.md)
+* [如何使用 Azure Resource Manager 範本將 Azure Logic Apps 的部署自動化](logic-apps-azure-resource-manager-templates-overview.md)
 
-* [如何使用 SAS 保護 Azure Logic Apps 中的存取和資料](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [如何使用 SAS 保護 Azure Logic Apps 中的存取和資料](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 * [如何備份 Key Vault 金鑰](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 

@@ -9,12 +9,12 @@ ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4bed663b66e6c1a8c537ac9bac17ccdd8a8b152c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 71c470bd1bb71b55d6643ac6305a054f1c934948
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004148"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229034"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a> (Acl) 遞迴方式設定存取控制清單 Azure Data Lake Storage Gen2
 
@@ -343,7 +343,7 @@ public async void SetACLRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-藉由呼叫 DataLakeDirectoryClient，以遞迴方式設定 ACL。 **set_access_control_recursive** 方法。
+藉由呼叫 **DataLakeDirectoryClient.set_access_control_recursive** 方法，以遞迴方式設定 ACL。
 
 此範例會設定名為之目錄的 ACL `my-parent-directory` 。 這些專案會提供擁有使用者的讀取、寫入和執行許可權，僅授與擁有群組讀取和執行許可權，並提供所有其他人無存取權。 此範例中的最後一個 ACL 專案會提供物件識別碼為 "" xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx "read and execute 許可權的特定使用者。
 
@@ -417,7 +417,7 @@ public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-藉由呼叫 DataLakeDirectoryClient，以遞迴方式更新 ACL。 **update_access_control_recursive** 方法。 
+藉由呼叫 **DataLakeDirectoryClient.update_access_control_recursive** 方法，以遞迴方式更新 ACL。 
 
 此範例會更新具有寫入權限的 ACL 專案。 
 
@@ -490,7 +490,7 @@ public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-藉由呼叫 DataLakeDirectoryClient 方法來移除 ACL 專案。 **remove_access_control_recursive** 方法。 
+藉由呼叫 **DataLakeDirectoryClient.remove_access_control_recursive** 方法來移除 ACL 專案。 
 
 此範例會從名為的目錄的 ACL 中移除 ACL 專案 `my-parent-directory` 。 
 
@@ -640,7 +640,7 @@ def resume_set_acl_recursive(continuation_token):
 
 ### <a name="provide-feedback-or-report-issues"></a>提供意見反應或報告問題
 
-您可以使用下列任何頁面來提供您的意見反應或回報問題： [PowerShell](https://github.com/Azure/azure-powershell/issues/new?assignees=&labels=triage&template=az-module-bug-report.md&title=)、 [.net](https://github.com/Azure/azure-sdk-for-net/issues/new?assignees=&labels=&template=bug_report.md&title=)、 [Python](https://github.com/Azure/azure-sdk-for-python/issues/new?assignees=&labels=&template=bug_report.md&title=)
+您可以在中提供意見反應或回報問題  [recursiveACLfeedback@microsoft.com](mailto:recursiveACLfeedback@microsoft.com) 。
 
 ## <a name="see-also"></a>另請參閱
 

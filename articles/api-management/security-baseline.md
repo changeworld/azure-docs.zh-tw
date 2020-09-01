@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 4e951b7eb2d3d5e49ab80af2604d5b44565dd25e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: d6c954d6336a0b88f57ba1f70571263af5d1c583
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008535"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229798"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>適用於 API 管理的 Azure 安全性基準
 
@@ -604,7 +604,7 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控制項，以避免遺失或公開客戶資料。
 
-* [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
+* [了解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -640,7 +640,7 @@ Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控�
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指引**：使用角色型存取控制來控制對 Azure API 管理的存取。 Azure API 管理依賴 Azure 角色型存取控制（Azure RBAC）來為 API 管理服務和實體（例如 Api 和原則）啟用更細緻的存取管理。
+**指引**：使用角色型存取控制來控制對 Azure API 管理的存取。 Azure API 管理依賴 Azure 角色型存取控制 (Azure RBAC) ，以針對 API 管理服務和 (實體啟用更細緻的存取管理，例如 Api 和原則) 。
 
 * [如何在 Azure API 管理中使用角色型存取控制](./api-management-role-based-access-control.md)
 
@@ -654,7 +654,7 @@ Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控�
 
 Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控制項，以避免遺失或公開客戶資料。
 
-* [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
+* [了解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：不適用
 

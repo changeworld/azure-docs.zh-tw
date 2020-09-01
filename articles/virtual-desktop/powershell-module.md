@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 11742b00b62437b3acd6fa804a668cf83c2860f6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c99aa1bdb246d242c4c1cbd33672367b66f923ea
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007253"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229965"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>設定適用於 Windows 虛擬桌面的 PowerShell 模組
 
@@ -41,6 +41,12 @@ Install-Module -Name Az.DesktopVirtualization
 Connect-AzAccount
 ```
 
+>!須知如果您要連線到 US Gov 入口網站，請改為執行下列 Cmdlet：
+> 
+> ```powershell
+> Connect-AzAccount -EnvironmentName AzureUSGovernment
+> ```
+
 登入 Azure 帳戶會需要您在執行 Connect Cmdlet 時所產生的驗證碼。 若要登入，請移至 <https://microsoft.com/devicelogin>、輸入驗證碼，然後使用您的 Azure 系統管理員認證登入。
 
 ```powershell
@@ -61,7 +67,7 @@ Youradminupn subscriptionname AzureADTenantID AzureCloud
 Select-AzSubscription -Subscription <preferredsubscriptionname>
 ```
 
-您也可以使用 Out-GridView Cmdlet 從清單中選取一個：
+您也可以使用 Out GridView Cmdlet 從清單中選取一個：
 
 ```powershell
 Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription

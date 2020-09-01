@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6440e71eade32bfea4ed19448fd2f2007b519cc8
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e84fb04d967311fede3be7f20b45f01fb442e69e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816077"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228761"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的登入活動報告
 
@@ -32,12 +32,12 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
     - **登入** – 受控應用程式和使用者登入活動的使用情況相關資訊。
     - **審核記錄**  - [Audit 記錄](concept-audit-logs.md)檔提供有關使用者和群組管理、受控應用程式和目錄活動的系統活動資訊。
 - **安全性** 
-    - 有**風險**的登入：有[風險](concept-risky-sign-ins.md)的登入是指使用者帳戶不是合法擁有者的登入指示。
-    - **標示為有風險的使用者** -有 [風險的使用者](concept-user-at-risk.md) 是指可能遭到盜用的使用者帳戶指標。
+    - 有**風險**的登入：有[風險](../identity-protection/overview-identity-protection.md)的登入是指使用者帳戶不是合法擁有者的登入指示。
+    - **標示為有風險的使用者** -有 [風險的使用者](../identity-protection/overview-identity-protection.md) 是指可能遭到盜用的使用者帳戶指標。
 
 本文提供登入報告的總覽。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 ### <a name="who-can-access-the-data"></a>誰可以存取資料？
 
@@ -142,14 +142,14 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 ![用戶端應用程式篩選](./media/concept-sign-ins/client-app-filter.png)
 
 
-|名稱|新式驗證|描述|
+|Name|新式驗證|說明|
 |---|:-:|---|
 |驗證的 SMTP| |由 POP 和 IMAP 用戶端用來傳送電子郵件訊息。|
 |發現| |Outlook 和 EAS 用戶端用來尋找並連接到 Exchange Online 中的信箱。|
 |Exchange ActiveSync| |此篩選器會顯示已嘗試過 EAS 通訊協定的所有登入嘗試。|
 |瀏覽器|![勾選](./media/concept-sign-ins/check.png)|顯示使用網頁瀏覽器之使用者的所有登入嘗試|
 |Exchange ActiveSync| | 顯示使用者使用 Exchange ActiceSync 連線到 Exchange Online 的用戶端應用程式的所有登入嘗試|
-|Exchange Online PowerShell| |用來透過遠端 PowerShell 連接到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，則必須使用 Exchange Online PowerShell 模組進行連線。 如需相關說明，請參閱[使用多重要素驗證連線至 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
+|Exchange Online PowerShell| |用來透過遠端 PowerShell 連接到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，則必須使用 Exchange Online PowerShell 模組進行連線。 如需相關說明，請參閱[使用多重要素驗證連線至 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
 |Exchange Web 服務| |Outlook、Outlook for Mac 和協力廠商應用程式所使用的程式設計介面。|
 |IMAP4| |使用 IMAP 抓取電子郵件的舊版郵件用戶端。|
 |透過 HTTP 的 MAPI| |由 Outlook 2010 和更新版本使用。|
@@ -230,11 +230,11 @@ Azure AD 和 Azure 入口網站都提供您登入資料的額外進入點：
 - User
 - 使用者名稱
 - 應用程式識別碼
-- Application
+- 應用程式
 - 用戶端
 - Location
 - IP 位址
-- Date
+- 日期
 - 需要 MFA
 - 登入狀態
 
@@ -271,13 +271,12 @@ Azure AD 和 Azure 入口網站都提供您登入資料的額外進入點：
 
 ## <a name="office-365-activity-logs"></a>Office 365 活動記錄
 
-您可以從 [Microsoft 365 系統管理中心](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活動記錄。 請考慮 Office 365 活動和 Azure AD 活動記錄共用大量目錄資源的點。 只有 Microsoft 365 系統管理中心提供 Office 365 活動記錄的完整觀點。 
+您可以從 [Microsoft 365 系統管理中心](/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活動記錄。 請考慮 Office 365 活動和 Azure AD 活動記錄共用大量目錄資源的點。 只有 Microsoft 365 系統管理中心提供 Office 365 活動記錄的完整觀點。 
 
-您也可以使用 [office 365 管理 api](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)，以程式設計方式存取 office 365 活動記錄。
+您也可以使用 [office 365 管理 api](/office/office-365-management-api/office-365-management-apis-overview)，以程式設計方式存取 office 365 活動記錄。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [登入活動報告錯誤碼](reference-sign-ins-error-codes.md)
 * [Azure AD 資料保留原則](reference-reports-data-retention.md)
 * [Azure AD 報告延遲](reference-reports-latencies.md)
-

@@ -10,12 +10,12 @@ ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 60c7ac6a86c963a4a133f06ba6d9d602cb9090d0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f41caf61ac23b05ba0ff95d785be2e7449adf75d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854530"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228625"
 ---
 # <a name="soft-delete-for-containers-preview"></a>適用于容器的虛刪除 (預覽) 
 
@@ -25,7 +25,7 @@ ms.locfileid: "88854530"
 
 - 容器虛刪除，以防止意外刪除或覆寫容器。 若要瞭解如何啟用容器虛刪除，請參閱 [啟用及管理容器的虛刪除](soft-delete-container-enable.md)。
 - Blob 虛刪除，以防止意外刪除或覆寫個別的 blob。 若要瞭解如何啟用 blob 虛刪除，請參閱 [適用于 blob 的虛刪除](soft-delete-blob-overview.md)。
-- Blob 版本設定 (預覽版) ，以自動維護舊版的 blob。 啟用 blob 版本設定時，您可以還原舊版的 blob 來復原您的資料（如果錯誤遭到修改或刪除）。 若要瞭解如何啟用 blob 版本設定，請參閱 [啟用和管理 blob 版本](versioning-enable.md)設定。
+- Blob 版本設定，以自動維護舊版的 blob。 啟用 blob 版本設定時，您可以還原舊版的 blob 來復原您的資料（如果錯誤遭到修改或刪除）。 若要瞭解如何啟用 blob 版本設定，請參閱 [啟用和管理 blob 版本](versioning-enable.md)設定。
 
 > [!WARNING]
 > 無法復原刪除儲存體帳戶。 虛刪除無法防止刪除儲存體帳戶。 若要防止意外刪除儲存體帳戶，請在儲存體帳戶資源上設定 **CannotDelete** 鎖定。 如需有關鎖定 Azure 資源的詳細資訊，請參閱 [鎖定資源以防止非預期的變更](../../azure-resource-manager/management/lock-resources.md)。
@@ -123,4 +123,4 @@ az feature show --namespace Microsoft.Storage --name ContainerSoftDelete
 
 - [設定容器虛刪除](soft-delete-container-enable.md)
 - [Blob 的虛刪除](soft-delete-blob-overview.md)
-- [Blob 版本設定 (預覽)](versioning-overview.md)
+- [Blob 版本設定](versioning-overview.md)

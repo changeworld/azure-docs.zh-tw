@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: ed85678cefe45bbe27595488211173d4fa5418bd
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 9612c61945a41b30fb5d4768e1eb0909a07911d3
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146414"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229390"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure Pipelines 來建置和部署 HPC 解決方案
 
@@ -29,7 +29,7 @@ Azure Pipelines 提供各種新式 CI/CD 程序來建置、部署、測試及監
 若要遵循本文中的步驟，您需要 Azure DevOps 組織和小組專案。
 
 * [建立 Azure DevOps 組織](/azure/devops/organizations/accounts/create-organization)
-* [在 Azure DevOps 中建立專案](/azure/devops/organizations/projects/create-projects)
+* [在 Azure DevOps 中建立專案](/azure/devops/organizations/projects/create-project)
 
 ### <a name="source-control-for-your-environment"></a>您環境的原始檔控制
 
@@ -325,7 +325,7 @@ Azure Pipelines 提供各種新式 CI/CD 程序來建置、部署、測試及監
 
     a. [使用視覺化設計工具](/azure/devops/pipelines/get-started-designer)。 若要使用此工具，請按一下 [新管線] 頁面上的 [使用視覺化設計工具]。
 
-    b. [使用 YAML 組建](/azure/devops/pipelines/get-started-yamls)。 您可以按一下 [新管線] 頁面上的 Azure Repos 或 GitHub 選項，建立新的 YAML 管線。 或者，可以將下列範例儲存在原始檔控制中，按一下 [視覺化設計工具]，然後使用 YAML 範本來參考現有的 YAML 檔案。
+    b. [使用 YAML 組建](/azure/devops/pipelines/get-started-yaml)。 您可以按一下 [新管線] 頁面上的 Azure Repos 或 GitHub 選項，建立新的 YAML 管線。 或者，可以將下列範例儲存在原始檔控制中，按一下 [視覺化設計工具]，然後使用 YAML 範本來參考現有的 YAML 檔案。
 
     ```yml
     # To publish an application into Azure Batch, we need to

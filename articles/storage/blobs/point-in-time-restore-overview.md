@@ -10,12 +10,12 @@ ms.date: 06/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 2840e82508ee4f4046aec8f23c00a5c275bf5b67
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 07a1e81f2fe63ea8d34f362627ad79ab6729f3f0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074452"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229118"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>區塊 blob 的時間點還原 (預覽) 
 
@@ -56,7 +56,7 @@ Azure 儲存體會分析在要求的還原點（以 UTC 時間指定）和目前
 
 - [虛刪除](soft-delete-overview.md)
 - [變更摘要 (預覽) ](storage-blob-change-feed.md)
-- [Blob 版本設定 (預覽)](versioning-overview.md)
+- [Blob 版本設定](versioning-overview.md)
 
 啟用還原時間點之前，請先為儲存體帳戶啟用這些功能。 請務必先註冊變更摘要和 Blob 版本設定預覽，然後才能加以啟用。
 
@@ -105,7 +105,7 @@ Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Mic
 # Register for change feed (preview)
 Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
 
-# Register for blob versioning (preview)
+# Register for Blob versioning
 Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.Storage
 
 # Refresh the Azure Storage provider namespace

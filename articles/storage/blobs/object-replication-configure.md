@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9964a10b85d9f388a4498766c6e81ee52498aa37
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c28e869bff1d0e921a1e5a952dbfcb21ee97d16b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076169"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228319"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>設定區塊 Blob 的物件複寫 (預覽)
 
@@ -36,7 +36,7 @@ ms.locfileid: "89076169"
 開始之前，請確定您已註冊下列功能預覽：
 
 - [物件複寫 (預覽)](object-replication-overview.md)
-- [Blob 版本設定 (預覽)](versioning-overview.md)
+- [Blob 版本設定](versioning-overview.md)
 - [Azure Blob 儲存體中的變更摘要支援 (預覽)](storage-blob-change-feed.md)
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 55a4f06b93aafbd1e94a3bf6573ba39dc25022b5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f84298c2c43afbb9e0379516be1e83002a7e3926
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077002"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228676"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 儲存體功能
 
@@ -45,7 +45,6 @@ Blob 儲存體功能 (例如[診斷記錄](../common/storage-analytics-logging.m
 |快照集|預覽|尚不支援|[Blob 快照集](snapshots-overview.md)|
 |靜態網站|預覽|尚不支援|[Azure 儲存體中的靜態網站代管](storage-blob-static-website.md)|
 |固定儲存體|預覽|尚不支援|[使用不可變儲存體儲存業務關鍵 Blob 資料](storage-blob-immutable-storage.md)|
-|生命週期管理原則|預覽|尚不支援|[管理 Azure Blob 儲存體生命週期](storage-lifecycle-management-concepts.md)|
 |容器虛刪除|預覽|預覽|[適用于容器的虛刪除 (預覽) ](soft-delete-container-overview.md)|
 |Blob 虛刪除|尚不支援|尚不支援|[Blob 的虛刪除](storage-blob-soft-delete.md)|
 |Blobfuse|預覽|尚不支援|[如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統](storage-how-to-mount-container-linux.md)|

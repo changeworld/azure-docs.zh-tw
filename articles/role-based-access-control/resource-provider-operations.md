@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/16/2020
+ms.date: 08/31/2020
 ms.custom: generated
-ms.openlocfilehash: 5809a2325b825bde74c7a8859c3a96f94c05b170
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 685fdf8180f54c87fe6677268bd289ee00912c96
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272038"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227758"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 資源提供者作業
 
@@ -40,7 +40,7 @@ ms.locfileid: "88272038"
 | [Microsoft.Cdn](#microsoftcdn) |
 | [Microsoft.ClassicNetwork](#microsoftclassicnetwork) |
 | [Microsoft.Network](#microsoftnetwork) |
-| **Storage** |
+| **存放裝置** |
 | [Microsoft.ClassicStorage](#microsoftclassicstorage) |
 | [Microsoft.DataBox](#microsoftdatabox) |
 | [Microsoft.ImportExport](#microsoftimportexport) |
@@ -569,7 +569,7 @@ Azure 服務： [虛擬機器](../virtual-machines/index.yml)、 [虛擬機器�
 > | Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ipConfigurations/read | 取得使用虛擬機器擴展集建立的網路介面其中一個或所有 IP 設定屬性。 IP 設定代表私人 IP |
 > | Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ipConfigurations/publicIPAddresses/read | 取得使用虛擬機器擴展集建立的公用 IP 位址屬性。 虛擬機器擴展集最多可以在每個 ipconfiguration (私人 IP) 建立一個公用 IP |
 > | Microsoft. Compute/virtualMachineScaleSets/Vmsize/read | 列出在虛擬機器擴展集中建立或更新虛擬機器的可用大小 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Compute/virtualMachines/login/action | 以一般使用者身分登入虛擬機器 |
 > | Microsoft.Compute/virtualMachines/loginAsAdmin/action | 以 Windows 系統管理員或 Linux 根使用者權限登入虛擬機器 |
 
@@ -797,6 +797,7 @@ Azure 服務： [應用程式閘道](../application-gateway/index.yml)、 [azure
 > | Microsoft. Network/applicationGateways/privateEndpointConnections/read | 取得應用程式閘道 PrivateEndpoint 連接 |
 > | Microsoft. Network/applicationGateways/privateEndpointConnections/write | 更新應用程式閘道 PrivateEndpoint 連接 |
 > | Microsoft. Network/applicationGateways/privateEndpointConnections/delete | 刪除應用程式閘道 PrivateEndpoint 連接 |
+> | Microsoft. Network/applicationGateways/privateLinkConfigurations/read | 取得應用程式閘道 Private Link 設定 |
 > | Microsoft. Network/applicationGateways/privateLinkResources/read | 取得 ApplicationGateway PrivateLink 資源 |
 > | Microsoft. Network/ApplicationGatewayWebApplicationFirewallPolicies/read | 取得應用程式閘道 WAF 原則 |
 > | Microsoft. Network/ApplicationGatewayWebApplicationFirewallPolicies/write | 建立應用程式閘道 WAF 原則或更新應用程式閘道 WAF 原則 |
@@ -880,6 +881,9 @@ Azure 服務： [應用程式閘道](../application-gateway/index.yml)、 [azure
 > | Microsoft.Network/dnszones/TXT/read | 以 JSON 格式取得 ' TXT ' 類型的記錄集。 記錄集包含記錄清單以及 TTL、標記和 etag。 |
 > | Microsoft.Network/dnszones/TXT/write | 在 DNS 區域內建立或更新 ' TXT ' 類型的記錄集。 指定的記錄將會取代記錄集內的目前記錄。 |
 > | Microsoft.Network/dnszones/TXT/delete | 從 DNS 區域中移除指定名稱的記錄集，並輸入 ' TXT '。 |
+> | Microsoft. Network/dscpConfiguration/write | 放置 DSCP 設定的操作 |
+> | Microsoft. Network/dscpConfiguration/read | 放置 DSCP 設定的操作 |
+> | Microsoft. Network/dscpConfiguration/join/action | 加入 DSCP 設定 |
 > | Microsoft.Network/expressRouteCircuits/read | 取得 ExpressRouteCircuit |
 > | Microsoft.Network/expressRouteCircuits/write | 建立或更新現有的 ExpressRouteCircuit |
 > | Microsoft.Network/expressRouteCircuits/join/action | 加入 Express Route 線路。 不可警示。 |
@@ -916,6 +920,7 @@ Azure 服務： [應用程式閘道](../application-gateway/index.yml)、 [azure
 > | Microsoft.Network/expressRoutePorts/write | 建立或更新 ExpressRoutePorts |
 > | Microsoft.Network/expressRoutePorts/join/action | 加入 Express Route 埠。 不可警示。 |
 > | Microsoft.Network/expressRoutePorts/delete | 刪除 ExpressRoutePorts |
+> | Microsoft. Network/expressRoutePorts/generateloa/action | 產生 ExpressRoutePorts 的 LOA |
 > | Microsoft.Network/expressRoutePorts/links/read | 取得 ExpressRouteLink |
 > | Microsoft.Network/expressRoutePortsLocations/read | 取得 Express Route 連接埠位置 |
 > | Microsoft.Network/expressRouteServiceProviders/read | 取得 ExpressRoute 服務提供者 |
@@ -1568,7 +1573,7 @@ Azure 服務： [儲存體](../storage/index.yml)
 > | Microsoft. Storage/storageAccounts/tableServices/tables/read |  |
 > | Microsoft. Storage/storageAccounts/tableServices/tables/write |  |
 > | Microsoft.Storage/usages/read | 傳回指定訂用帳戶資源的限制和目前的使用量計數 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | 傳回 Blob 或 Blob 清單 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | 傳回寫入 Blob 的結果 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | 傳回刪除 Blob 的結果 |
@@ -1897,7 +1902,7 @@ Azure 服務： [Azure 地圖服務](../azure-maps/index.yml)
 > | Microsoft. Maps/accounts/privateAtlases/read | 取得私人的塔。 |
 > | Microsoft. Maps/accounts/privateAtlases/delete | 刪除私人的塔。 |
 > | Microsoft. Maps/operations/read | 讀取提供者作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft. Maps/accounts/services/data/read | 允許讀取資料上傳服務和私用的資料。 |
 > | Microsoft. Maps/accounts/services/data/delete | 允許刪除資料上傳服務和私用的資料 |
 > | Microsoft. Maps/accounts/services/data/write | 允許寫入或更新資料上傳服務和私用的資料。 |
@@ -2041,6 +2046,10 @@ Azure 服務： [Azure 搜尋](../search/index.yml)服務
 > | Microsoft. Search/searchServices/privateEndpointConnectionProxies/write | 使用指定的參數建立私人端點連線 proxy，或更新指定私人端點連接 proxy 的屬性或標記 |
 > | Microsoft. Search/searchServices/privateEndpointConnectionProxies/read | 傳回私人端點連接 proxy 的清單，或取得指定私人端點連線 proxy 的屬性。 |
 > | Microsoft. Search/searchServices/privateEndpointConnectionProxies/delete | 刪除現有的私人端點連線 proxy |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/write | 使用指定的參數建立新的共用私人連結資源，或更新指定之共用私人連結資源的屬性 |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/read | 傳回共用的私人連結資源清單，或取得指定之共用 private link 資源的屬性。 |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/delete | 刪除現有的共用私人連結資源 |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/operationStatuses/read | 取得長時間執行的共用私用連結資源作業的詳細資料 |
 
 ### <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 
@@ -2074,10 +2083,19 @@ Azure 服務： [Azure SignalR Service](../azure-signalr/index.yml)
 > | Microsoft.signalrservice/SignalR/privateEndpointConnections/write | 核准或拒絕私人端點連線 |
 > | Microsoft.signalrservice/SignalR/privateEndpointConnections/read | 讀取私人端點連線 |
 > | Microsoft.signalrservice/SignalR/privateLinkResources/read | 列出所有 SignalR Private Link 資源 |
-> | **DataAction** | **說明** |
-> | Microsoft.signalrservice/SignalR/serverConnection/write | 啟動伺服器連接。 |
+> | **DataAction** | **描述** |
+> | Microsoft.signalrservice/SignalR/serverConnection/action | 啟動伺服器連接。 |
+> | Microsoft.signalrservice/SignalR/clientConnection/action | 新增/移除群組的用戶端連線，或關閉用戶端連接。 |
+> | Microsoft.signalrservice/SignalR/user/action | 新增/移除群組中的使用者。 |
+> | Microsoft.signalrservice/SignalR/clientConnection/read | 檢查連接是否存在。 |
+> | Microsoft.signalrservice/SignalR/clientConnection/write | 將訊息直接傳送至用戶端連接。 |
+> | Microsoft.signalrservice/SignalR/group/read | 檢查群組是否存在。 |
+> | Microsoft.signalrservice/SignalR/group/write | 將訊息廣播到群組/部分群組中的用戶端連接。 |
+> | Microsoft.signalrservice/SignalR/hub/write | 將訊息廣播到連接到此中樞的所有用戶端連線。 |
 > | Microsoft.signalrservice/SignalR/service/accessKey/action | 取得用於簽署 ClientTokens 的暫時 AccessKey。 |
 > | Microsoft.signalrservice/SignalR/service/clientToken/action | 取得開始用戶端連接的 ClientToken。 |
+> | Microsoft.signalrservice/SignalR/user/read | 檢查使用者是否存在，以及它是否在群組中。 |
+> | Microsoft.signalrservice/SignalR/user/write | 將訊息傳送給可能有多個用戶端連接的使用者。 |
 
 ### <a name="microsoftweb"></a>microsoft.web
 
@@ -2724,7 +2742,7 @@ Azure 服務： [Azure Kubernetes Service (AKS) ](../aks/index.yml)
 > | Microsoft.ContainerService/openShiftManagedClusters/write | 建立新的或更新現有的 Open Shift 受控叢集 |
 > | Microsoft.ContainerService/openShiftManagedClusters/delete | 刪除 Open Shift 受控叢集 |
 > | Microsoft.ContainerService/operations/read | 列出 Microsoft.ContainerService 資源提供者的可用作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | >microsoft.containerservice/managedClusters/admissionregistration. k8s. io/initializerconfigurations/read | 讀取 initializerconfigurations |
 > | >microsoft.containerservice/managedClusters/admissionregistration. k8s. io/initializerconfigurations/write | 寫入 initializerconfigurations |
 > | >microsoft.containerservice/managedClusters/admissionregistration. k8s. io/initializerconfigurations/delete | 刪除/DeletesCollection initializerconfigurations 資源 |
@@ -4386,6 +4404,12 @@ Azure 服務： [事件中樞](../event-hubs/index.yml)
 > | Microsoft EventHub/命名空間/privateEndpointConnectionProxies/read | 取得私人端點連線 Proxy |
 > | Microsoft EventHub/命名空間/privateEndpointConnectionProxies/write | 建立私人端點連接 Proxy |
 > | Microsoft EventHub/命名空間/privateEndpointConnectionProxies/delete | 刪除私人端點連線 Proxy |
+> | Microsoft. EventHub/命名空間/privateEndpointConnectionProxies/>operationstatus/read | 取得非同步私人端點操作的狀態 |
+> | Microsoft EventHub/命名空間/privateEndpointConnections/read | 取得私人端點連線 |
+> | Microsoft EventHub/命名空間/privateEndpointConnections/write | 建立或更新私人端點連線 |
+> | Microsoft EventHub/命名空間/privateEndpointConnections/delete | 移除私人端點連線 |
+> | Microsoft. EventHub/命名空間/privateEndpointConnections/>operationstatus/read | 取得非同步私人端點操作的狀態 |
+> | Microsoft EventHub/命名空間/privateLinkResources/read | 取得支援私人端點連接的資源類型 |
 > | Microsoft.EventHub/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | 取得命名空間診斷設定資源描述的清單 |
 > | Microsoft.EventHub/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | 取得命名空間診斷設定資源描述的清單 |
 > | Microsoft.EventHub/namespaces/providers/Microsoft.Insights/logDefinitions/read | 取得命名空間記錄資源描述的清單 |
@@ -4399,7 +4423,7 @@ Azure 服務： [事件中樞](../event-hubs/index.yml)
 > | Microsoft.EventHub/operations/read | 取得作業 |
 > | Microsoft.EventHub/sku/read | 取得 SKU 資源描述的清單 |
 > | Microsoft.EventHub/sku/regions/read | 取得 SkuRegions 資源描述的清單 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft EventHub/命名空間/訊息/傳送/動作 | 傳送訊息 |
 > | Microsoft EventHub/命名空間/訊息/接收/動作 | 接收訊息 |
 > | Microsoft EventHub/命名空間/架構/讀取 | 取出架構 |
@@ -4582,7 +4606,7 @@ Azure 服務： [Azure 區塊鏈服務](../blockchain/workbench/index.yml)
 > | 區塊鏈/位置/checkNameAvailability/動作 | 檢查資源名稱是否有效且不在使用中。 |
 > | 區塊鏈/位置/blockchainMemberOperationResults/讀取 | 取得區塊鏈成員的作業結果。 |
 > | 區塊鏈/operations/read | 列出 Microsoft 區塊鏈資源提供者中的所有作業。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Blockchain/blockchainMembers/transactionNodes/connect/action | 連線至區塊鏈成員交易節點。 |
 
 ## <a name="ai--machine-learning"></a>AI + 機器學習
@@ -4661,7 +4685,7 @@ Azure 服務： [認知服務](../cognitive-services/index.yml)
 > | Microsoft.CognitiveServices/locations/checkSkuAvailability/action | 讀取訂用帳戶的可用 Sku。 |
 > | CognitiveServices/位置/operationresults/讀取 | 讀取非同步作業的狀態。 |
 > | Microsoft.CognitiveServices/Operations/read | 列出所有可用的作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | CognitiveServices/accounts/AnomalyDetector/時間序列/整個/偵測/動作 | 這項作業會使用整個數列產生模型，且每個點都會使用相同的模型來偵測。<br>使用這個方法時，會使用特定點前後的點來判斷它是否為異常。<br>整個偵測可為使用者提供時間序列的整體狀態。 |
 > | CognitiveServices/accounts/AnomalyDetector/時間序列/last/偵測/action | 這項作業會使用最新的點來產生模型。 使用這個方法時，只有歷程記錄點會用來判斷目標點是否為異常。 偵測到的最新點會符合即時監視商務計量的案例。 |
 > | CognitiveServices/accounts/自動建議/search/action | 這種作業會針對給定的查詢或部分查詢提供建議。 |
@@ -5082,6 +5106,15 @@ Azure 服務： [Machine Learning 服務](../machine-learning/index.yml)
 > | MachineLearningServices/工作區/實驗/執行/讀取 | 會在 Machine Learning Services 工作區 (s 中執行)  |
 > | MachineLearningServices/工作區/實驗/執行/寫入 | 建立或更新會在 Machine Learning Services 工作區 (s 中執行)  |
 > | MachineLearningServices/workspace/features/read | 取得 Machine Learning 服務工作區的所有已啟用功能 |
+> | MachineLearningServices/workspace/inferenceEndpoints/read | 取得 Machine Learning Services 工作區 (s 中的推斷端點)  |
+> | MachineLearningServices/workspace/inferenceEndpoints/write | 在 Machine Learning Services 工作區 (s 中建立或更新推斷端點)  |
+> | MachineLearningServices/workspace/inferenceEndpoints/delete | 刪除 Machine Learning Services 工作區 (s 中的推斷端點)  |
+> | MachineLearningServices/workspace/inferenceEndpoints/checkNameAvailability/read | 在 Machine Learning Services 工作區 (s 中檢查推斷端點的名稱)  |
+> | MachineLearningServices/workspace/inferenceEndpoints/部署/讀取 | 在 Machine Learning Services 工作區 (s 中取得推斷端點的部署)  |
+> | MachineLearningServices/workspace/inferenceEndpoints/部署/寫入 | 在 Machine Learning Services 工作區 (s 中的推斷端點建立或更新部署)  |
+> | MachineLearningServices/workspace/inferenceEndpoints/部署/刪除 | 在 Machine Learning Services 工作區 (s 中刪除推斷端點的部署)  |
+> | MachineLearningServices/workspace/inferenceEndpoints/部署/checkNameAvailability/read | 在 Machine Learning Services 工作區 (s 中的推斷端點中檢查部署的名稱)  |
+> | MachineLearningServices/workspace/inferenceEndpoints/部署/sku/read | 針對 Machine Learning Services 工作區 (s 中的推斷端點部署，取得擴展 sku 設定)  |
 > | MachineLearningServices/工作區/標籤/匯出/動作 | 在 Machine Learning Services 工作區中匯出標記專案的標籤 (s)  |
 > | MachineLearningServices/工作區/標籤/標籤/讀取 | 取得 Machine Learning Services 工作區中標記專案的標籤 (s)  |
 > | MachineLearningServices/工作區/標籤/標籤/寫入 | 在 Machine Learning Services 工作區 (s 中建立標籤專案的標籤)  |
@@ -5307,6 +5340,9 @@ Azure 服務： [通知中樞](../notification-hubs/index.yml)
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/delete | 刪除命名空間授權規則。 您無法刪除預設的命名空間授權規則。  |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/listkeys/action | 取得命名空間的連接字串 |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/regenerateKeys/action | 命名空間授權規則會重新產生主要/次要金鑰，指定需要重新產生的金鑰 |
+> | NotificationHubs/命名空間/diagnosticSettings/read | 取得命名空間診斷設定資源描述的清單 |
+> | NotificationHubs/命名空間/diagnosticSettings/write | 取得命名空間診斷設定資源描述的清單 |
+> | NotificationHubs/命名空間/logDefinitions/read | 取得命名空間記錄資源描述的清單 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/write | 建立通知中樞，並更新其屬性。 其屬性主要包括 PNS 認證。 授權規則與 TTL |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/read | 取得通知中樞資源描述的清單 |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/Delete | 刪除通知中樞資源 |
@@ -5370,7 +5406,7 @@ Azure 服務： [Azure 空間錨點](../spatial-anchors/index.yml)
 > | MixedReality/spatialAnchorsAccounts/providers/Microsoft. Insights/diagnosticSettings/read | 取得 MixedReality/spatialAnchorsAccounts 的診斷設定 |
 > | MixedReality/spatialAnchorsAccounts/providers/Microsoft. Insights/diagnosticSettings/write | 建立或更新 MixedReality/spatialAnchorsAccounts 的診斷設定 |
 > | MixedReality/spatialAnchorsAccounts/providers/Microsoft. Insights/metricDefinitions/read | 取得 MixedReality/spatialAnchorsAccounts 的可用計量 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | MixedReality/ObjectUnderstandingAccounts/內嵌/動作 | 建立模型內嵌作業 |
 > | MixedReality/ObjectUnderstandingAccounts/內嵌/讀取 | 取得模型內嵌作業狀態 |
 > | MixedReality/RemoteRenderingAccounts/convert/action | 開始資產轉換 |
@@ -5643,7 +5679,7 @@ Azure 服務：核心
 > | AppConfiguration/configurationStores/providers/Microsoft. Insights/metricDefinitions/read | 取得 Microsoft 應用程式設定的所有度量定義。 |
 > | AppConfiguration/位置/operationsStatus/讀取 | 取得作業的狀態。 |
 > | AppConfiguration/operations/read | 列出 Microsoft 應用程式設定所支援的所有作業。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | AppConfiguration/configurationStores/keyValues/read | 從設定存放區讀取機碼值。 |
 > | AppConfiguration/configurationStores/keyValues/write | 建立或更新設定存放區中的索引鍵/值。 |
 > | AppConfiguration/configurationStores/keyValues/delete | 從設定存放區刪除現有的索引鍵/值。 |
@@ -6006,6 +6042,12 @@ Azure 服務： [Azure 轉送](../service-bus-relay/relay-what-is-it.md)
 > | Microsoft. 轉送/命名空間/privateEndpointConnectionProxies/read | 取得私人端點連線 Proxy |
 > | Microsoft. 轉送/命名空間/privateEndpointConnectionProxies/write | 建立私人端點連接 Proxy |
 > | Microsoft. 轉送/命名空間/privateEndpointConnectionProxies/刪除 | 刪除私人端點連線 Proxy |
+> | Microsoft. 轉送/命名空間/privateEndpointConnectionProxies/>operationstatus/read | 取得非同步私人端點操作的狀態 |
+> | Microsoft. 轉送/命名空間/privateEndpointConnections/read | 取得私人端點連線 |
+> | Microsoft. 轉送/命名空間/privateEndpointConnections/write | 建立或更新私人端點連線 |
+> | Microsoft. 轉送/命名空間/privateEndpointConnections/刪除 | 移除私人端點連線 |
+> | Microsoft. 轉送/命名空間/privateEndpointConnections/>operationstatus/read | 取得非同步私人端點操作的狀態 |
+> | Microsoft. 轉送/命名空間/privateLinkResources/read | 取得支援私人端點連接的資源類型 |
 > | Microsoft. 轉送/命名空間/提供者/Microsoft. Insights/diagnosticSettings/read | 取得命名空間診斷設定資源描述的清單 |
 > | Microsoft. 轉送/命名空間/提供者/Microsoft. Insights/diagnosticSettings/write | 取得命名空間診斷設定資源描述的清單 |
 > | Microsoft. 轉送/命名空間/提供者/Microsoft. Insights/logDefinitions/read | 取得命名空間記錄資源描述的清單 |
@@ -6077,6 +6119,12 @@ Azure 服務： [服務匯流排](../service-bus/index.md)
 > | Microsoft.：//命名空間/privateEndpointConnectionProxies/read | 取得私人端點連線 Proxy |
 > | Microsoft.：//命名空間/privateEndpointConnectionProxies/write | 建立私人端點連接 Proxy |
 > | Microsoft.：//命名空間/privateEndpointConnectionProxies/刪除 | 刪除私人端點連線 Proxy |
+> | Microsoft.：//命名空間/privateEndpointConnectionProxies/>operationstatus/read | 取得非同步私人端點操作的狀態 |
+> | Microsoft.：//命名空間/privateEndpointConnections/read | 取得私人端點連線 |
+> | Microsoft.：//命名空間/privateEndpointConnections/write | 建立或更新私人端點連線 |
+> | Microsoft.：//命名空間/privateEndpointConnections/刪除 | 移除私人端點連線 |
+> | Microsoft.：//命名空間/privateEndpointConnections/>operationstatus/read | 取得非同步私人端點操作的狀態 |
+> | Microsoft.：//命名空間/privateLinkResources/read | 取得支援私人端點連接的資源類型 |
 > | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | 取得命名空間診斷設定資源描述的清單 |
 > | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | 取得命名空間診斷設定資源描述的清單 |
 > | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/logDefinitions/read | 取得命名空間記錄資源描述的清單 |
@@ -6112,7 +6160,7 @@ Azure 服務： [服務匯流排](../service-bus/index.md)
 > | Microsoft.ServiceBus/operations/read | 取得作業 |
 > | Microsoft.ServiceBus/sku/read | 取得 SKU 資源描述的清單 |
 > | Microsoft.ServiceBus/sku/regions/read | 取得 SkuRegions 資源描述的清單 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft. 執行空間/命名空間/訊息/傳送/動作 | 傳送訊息 |
 > | Microsoft. 執行空間/命名空間/訊息/接收/動作 | 接收訊息 |
 
@@ -6309,7 +6357,7 @@ Azure 服務： [Key Vault](../key-vault/index.yml)
 > | KeyVault/保存庫/eventGridFilters/刪除 | 通知 KeyVault，正在刪除 Key Vault 的 EventGrid 訂用帳戶 |
 > | Microsoft.KeyVault/vaults/secrets/read | 查看秘密的屬性，而非其值。 |
 > | Microsoft.KeyVault/vaults/secrets/write | 建立新的秘密，或更新現有秘密的值。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | KeyVault/保存庫/certificatecas/刪除 | 刪除憑證簽發者 |
 > | KeyVault/保存庫/certificatecas/read | 讀取憑證簽發者 |
 > | KeyVault/保存庫/certificatecas/寫入 | 寫入憑證簽發者 |
@@ -6511,6 +6559,9 @@ Azure 服務： [Azure Sentinel](../sentinel/index.yml)
 > | SecurityInsights/threatintelligence/計量/動作 | 收集威脅情報計量 |
 > | SecurityInsights/threatintelligence/bulkDelete/action | 大量刪除威脅情報 |
 > | SecurityInsights/threatintelligence/bulkTag/action | 大量標記威脅情報 |
+> | SecurityInsights/Watchlists/read | 取得 Watchlists |
+> | SecurityInsights/Watchlists/write | 建立 Watchlists |
+> | SecurityInsights/Watchlists/delete | 刪除 Watchlists |
 
 ## <a name="devops"></a>DevOps
 
@@ -7213,14 +7264,85 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft.Insights/LogProfiles/Delete | 刪除活動記錄的記錄設定檔 |
 > | Microsoft.Insights/LogProfiles/Read | 讀取活動記錄的記錄設定檔 |
 > | Microsoft.Insights/Logs/Read | 從您的所有記錄讀取資料 |
+> | Microsoft Insights/Logs/AADDomainServicesAccountLogon/Read | 從 AADDomainServicesAccountLogon 資料表讀取資料 |
+> | Microsoft Insights/Logs/AADDomainServicesAccountManagement/Read | 從 AADDomainServicesAccountManagement 資料表讀取資料 |
+> | Microsoft Insights/Logs/AADDomainServicesDirectoryServiceAccess/Read | 從 AADDomainServicesDirectoryServiceAccess 資料表讀取資料 |
+> | Microsoft Insights/Logs/AADDomainServicesLogonLogoff/Read | 從 AADDomainServicesLogonLogoff 資料表讀取資料 |
+> | Microsoft Insights/Logs/AADDomainServicesPolicyChange/Read | 從 AADDomainServicesPolicyChange 資料表讀取資料 |
+> | Microsoft Insights/Logs/AADDomainServicesPrivilegeUse/Read | 從 AADDomainServicesPrivilegeUse 資料表讀取資料 |
+> | Microsoft Insights/Logs/AADDomainServicesSystemSecurity/Read | 從 AADDomainServicesSystemSecurity 資料表讀取資料 |
+> | Microsoft Insights/Logs/AADManagedIdentitySignInLogs/Read | 從 AADManagedIdentitySignInLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AADNonInteractiveUserSignInLogs/Read | 從 AADNonInteractiveUserSignInLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AADServicePrincipalSignInLogs/Read | 從 AADServicePrincipalSignInLogs 資料表讀取資料 |
 > | Microsoft.Insights/Logs/ADAssessmentRecommendation/Read | 從 ADAssessmentRecommendation 資料表讀取資料 |
+> | Microsoft Insights/Logs/AddonAzureBackupAlerts/Read | 從 AddonAzureBackupAlerts 資料表讀取資料 |
+> | Microsoft Insights/Logs/AddonAzureBackupJobs/Read | 從 AddonAzureBackupJobs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AddonAzureBackupPolicy/Read | 從 AddonAzureBackupPolicy 資料表讀取資料 |
+> | Microsoft Insights/Logs/AddonAzureBackupProtectedInstance/Read | 從 AddonAzureBackupProtectedInstance 資料表讀取資料 |
+> | Microsoft Insights/Logs/AddonAzureBackupStorage/Read | 從 AddonAzureBackupStorage 資料表讀取資料 |
+> | Microsoft Insights/Logs/ADFActivityRun/Read | 從 ADFActivityRun 資料表讀取資料 |
+> | Microsoft Insights/Logs/ADFPipelineRun/Read | 從 ADFPipelineRun 資料表讀取資料 |
+> | Microsoft Insights/Logs/ADFSSISIntegrationRuntimeLogs/Read | 從 ADFSSISIntegrationRuntimeLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/ADFSSISPackageEventMessageCoNtext/Read | 從 ADFSSISPackageEventMessageCoNtext 資料表讀取資料 |
+> | Microsoft Insights/Logs/ADFSSISPackageEventMessages/Read | 從 ADFSSISPackageEventMessages 資料表讀取資料 |
+> | Microsoft Insights/Logs/ADFSSISPackageExecutableStatistics/Read | 從 ADFSSISPackageExecutableStatistics 資料表讀取資料 |
+> | Microsoft Insights/Logs/ADFSSISPackageExecutionComponentPhases/Read | 從 ADFSSISPackageExecutionComponentPhases 資料表讀取資料 |
+> | Microsoft Insights/Logs/ADFSSISPackageExecutionDataStatistics/Read | 從 ADFSSISPackageExecutionDataStatistics 資料表讀取資料 |
+> | Microsoft Insights/Logs/ADFTriggerRun/Read | 從 ADFTriggerRun 資料表讀取資料 |
 > | Microsoft.Insights/Logs/ADReplicationResult/Read | 從 ADReplicationResult 資料表讀取資料 |
 > | Microsoft.Insights/Logs/ADSecurityAssessmentRecommendation/Read | 從 ADSecurityAssessmentRecommendation 資料表讀取資料 |
+> | Microsoft Insights/Logs/ADTDigitalTwinsOperation/Read | 從 ADTDigitalTwinsOperation 資料表讀取資料 |
+> | Microsoft Insights/Logs/ADTEventRoutesOperation/Read | 從 ADTEventRoutesOperation 資料表讀取資料 |
+> | Microsoft Insights/Logs/ADTModelsOperation/Read | 從 ADTModelsOperation 資料表讀取資料 |
+> | Microsoft Insights/Logs/ADTQueryOperation/Read | 從 ADTQueryOperation 資料表讀取資料 |
+> | Microsoft Insights/Logs/AegDeliveryFailureLogs/Read | 從 AegDeliveryFailureLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AegPublishFailureLogs/Read | 從 AegPublishFailureLogs 資料表讀取資料 |
 > | Microsoft.Insights/Logs/Alert/Read | 從 Alert 資料表讀取資料 |
 > | Microsoft.Insights/Logs/AlertHistory/Read | 從 AlertHistory 資料表讀取資料 |
+> | Microsoft Insights/Logs/AmlComputeClusterEvent/Read | 從 AmlComputeClusterEvent 資料表讀取資料 |
+> | Microsoft Insights/Logs/AmlComputeClusterNodeEvent/Read | 從 AmlComputeClusterNodeEvent 資料表讀取資料 |
+> | Microsoft Insights/Logs/AmlComputeCpuGpuUtilization/Read | 從 AmlComputeCpuGpuUtilization 資料表讀取資料 |
+> | Microsoft Insights/Logs/AmlComputeJobEvent/Read | 從 AmlComputeJobEvent 資料表讀取資料 |
+> | Microsoft Insights/Logs/AmlRunStatusChangedEvent/Read | 從 AmlRunStatusChangedEvent 資料表讀取資料 |
+> | Microsoft Insights/Logs/ApiManagementGatewayLogs/Read | 從 ApiManagementGatewayLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppAvailabilityResults/Read | 從 AppAvailabilityResults 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppBrowserTimings/Read | 從 AppBrowserTimings 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppCenterError/Read | 從 AppCenterError 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppDependencies/Read | 從 AppDependencies 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppEvents/Read | 從 AppEvents 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppExceptions/Read | 從 AppExceptions 資料表讀取資料 |
 > | Microsoft.Insights/Logs/ApplicationInsights/Read | 從 ApplicationInsights 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppMetrics/Read | 從 AppMetrics 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppPageViews/Read | 從 AppPageViews 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppPerformanceCounters/Read | 從 AppPerformanceCounters 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppPlatformLogsforSpring/Read | 從 AppPlatformLogsforSpring 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppPlatformSystemLogs/Read | 從 AppPlatformSystemLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppRequests/Read | 從 AppRequests 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppServiceAntivirusScanLogs/Read | 從 AppServiceAntivirusScanLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppServiceAppLogs/Read | 從 AppServiceAppLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppServiceAuditLogs/Read | 從 AppServiceAuditLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppServiceConsoleLogs/Read | 從 AppServiceConsoleLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppServiceEnvironmentPlatformLogs/Read | 從 AppServiceEnvironmentPlatformLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppServiceFileAuditLogs/Read | 從 AppServiceFileAuditLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppServiceHTTPLogs/Read | 從 AppServiceHTTPLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppServicePlatformLogs/Read | 從 AppServicePlatformLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppSystemEvents/Read | 從 AppSystemEvents 資料表讀取資料 |
+> | Microsoft Insights/Logs/AppTraces/Read | 從 AppTraces 資料表讀取資料 |
+> | Microsoft Insights/Logs/AuditLogs/Read | 從 AuditLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/AutoscaleEvaluationsLog/Read | 從 AutoscaleEvaluationsLog 資料表讀取資料 |
+> | Microsoft Insights/Logs/AutoscaleScaleActionsLog/Read | 從 AutoscaleScaleActionsLog 資料表讀取資料 |
+> | Microsoft Insights/Logs/AWSCloudTrail/Read | 從 AWSCloudTrail 資料表讀取資料 |
 > | Microsoft.Insights/Logs/AzureActivity/Read | 從 AzureActivity 資料表讀取資料 |
+> | Microsoft Insights/Logs/AzureAssessmentRecommendation/Read | 從 AzureAssessmentRecommendation 資料表讀取資料 |
+> | Microsoft Insights/Logs/AzureDevOpsAuditing/Read | 從 AzureDevOpsAuditing 資料表讀取資料 |
+> | Microsoft Insights/Logs/AzureDiagnostics/Read | 從 AzureDiagnostics 資料表讀取資料 |
 > | Microsoft.Insights/Logs/AzureMetrics/Read | 從 AzureMetrics 資料表讀取資料 |
+> | Microsoft Insights/Logs/BaiClusterEvent/Read | 從 BaiClusterEvent 資料表讀取資料 |
+> | Microsoft Insights/Logs/BaiClusterNodeEvent/Read | 從 BaiClusterNodeEvent 資料表讀取資料 |
+> | Microsoft Insights/Logs/BaiJobEvent/Read | 從 BaiJobEvent 資料表讀取資料 |
+> | Microsoft Insights/Logs/BehaviorAnalytics/Read | 從 BehaviorAnalytics 資料表讀取資料 |
+> | Microsoft Insights/Logs/BlockchainApplicationLog/Read | 從 BlockchainApplicationLog 資料表讀取資料 |
+> | Microsoft Insights/Logs/BlockchainProxyLog/Read | 從 BlockchainProxyLog 資料表讀取資料 |
 > | Microsoft.Insights/Logs/BoundPort/Read | 從 BoundPort 資料表讀取資料 |
 > | Microsoft.Insights/Logs/CommonSecurityLog/Read | 從 CommonSecurityLog 資料表讀取資料 |
 > | Microsoft.Insights/Logs/ComputerGroup/Read | 從 ComputerGroup 資料表讀取資料 |
@@ -7229,7 +7351,22 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/ContainerImageInventory/Read | 從 ContainerImageInventory 資料表讀取資料 |
 > | Microsoft.Insights/Logs/ContainerInventory/Read | 從 ContainerInventory 資料表讀取資料 |
 > | Microsoft.Insights/Logs/ContainerLog/Read | 從 ContainerLog 資料表讀取資料 |
+> | Microsoft Insights/Logs/ContainerNodeInventory/Read | 從 ContainerNodeInventory 資料表讀取資料 |
+> | Microsoft Insights/Logs/ContainerRegistryLoginEvents/Read | 從 ContainerRegistryLoginEvents 資料表讀取資料 |
+> | Microsoft Insights/Logs/ContainerRegistryRepositoryEvents/Read | 從 ContainerRegistryRepositoryEvents 資料表讀取資料 |
 > | Microsoft.Insights/Logs/ContainerServiceLog/Read | 從 ContainerServiceLog 資料表讀取資料 |
+> | Microsoft Insights/Logs/CoreAzureBackup/Read | 從 CoreAzureBackup 資料表讀取資料 |
+> | Microsoft Insights/Logs/DatabricksAccounts/Read | 從 DatabricksAccounts 資料表讀取資料 |
+> | Microsoft Insights/Logs/DatabricksClusters/Read | 從 DatabricksClusters 資料表讀取資料 |
+> | Microsoft Insights/Logs/DatabricksDBFS/Read | 從 DatabricksDBFS 資料表讀取資料 |
+> | Microsoft Insights/Logs/DatabricksInstancePools/Read | 從 DatabricksInstancePools 資料表讀取資料 |
+> | Microsoft Insights/Logs/DatabricksJobs/Read | 從 DatabricksJobs 資料表讀取資料 |
+> | Microsoft Insights/Logs/DatabricksNotebook/Read | 從 DatabricksNotebook 資料表讀取資料 |
+> | Microsoft Insights/Logs/DatabricksSecrets/Read | 從 DatabricksSecrets 資料表讀取資料 |
+> | Microsoft Insights/Logs/DatabricksSQLPermissions/Read | 從 DatabricksSQLPermissions 資料表讀取資料 |
+> | Microsoft Insights/Logs/DatabricksSSH/Read | 從 DatabricksSSH 資料表讀取資料 |
+> | Microsoft Insights/Logs/DatabricksTables/Read | 從 DatabricksTables 資料表讀取資料 |
+> | Microsoft Insights/Logs/DatabricksWorkspace/Read | 從 DatabricksWorkspace 資料表讀取資料 |
 > | Microsoft.Insights/Logs/DeviceAppCrash/Read | 從 DeviceAppCrash 資料表讀取資料 |
 > | Microsoft.Insights/Logs/DeviceAppLaunch/Read | 從 DeviceAppLaunch 資料表讀取資料 |
 > | Microsoft.Insights/Logs/DeviceCalendar/Read | 從 DeviceCalendar 資料表讀取資料 |
@@ -7244,6 +7381,7 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/DeviceSleepState/Read | 從 DeviceSleepState 資料表讀取資料 |
 > | Microsoft.Insights/Logs/DHAppFailure/Read | 從 DHAppFailure 資料表讀取資料 |
 > | Microsoft.Insights/Logs/DHAppReliability/Read | 從 DHAppReliability 資料表讀取資料 |
+> | Microsoft Insights/Logs/DHCPActivity/Read | 從 DHCPActivity 資料表讀取資料 |
 > | Microsoft.Insights/Logs/DHDriverReliability/Read | 從 DHDriverReliability 資料表讀取資料 |
 > | Microsoft.Insights/Logs/DHLogonFailures/Read | 從 DHLogonFailures 資料表讀取資料 |
 > | Microsoft.Insights/Logs/DHLogonMetrics/Read | 從 DHLogonMetrics 資料表讀取資料 |
@@ -7252,15 +7390,28 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/DHWipAppLearning/Read | 從 DHWipAppLearning 資料表讀取資料 |
 > | Microsoft.Insights/Logs/DnsEvents/Read | 從 DnsEvents 資料表讀取資料 |
 > | Microsoft.Insights/Logs/DnsInventory/Read | 從 DnsInventory 資料表讀取資料 |
+> | Microsoft Insights/Logs/Dynamics365Activity/Read | 從 Dynamics365Activity 資料表讀取資料 |
 > | Microsoft.Insights/Logs/ETWEvent/Read | 從 ETWEvent 資料表讀取資料 |
 > | Microsoft.Insights/Logs/Event/Read | 從 Event 資料表讀取資料 |
 > | Microsoft.Insights/Logs/ExchangeAssessmentRecommendation/Read | 從 ExchangeAssessmentRecommendation 資料表讀取資料 |
 > | Microsoft.Insights/Logs/ExchangeOnlineAssessmentRecommendation/Read | 從 ExchangeOnlineAssessmentRecommendation 資料表讀取資料 |
+> | Microsoft Insights/Logs/FailedIngestion/Read | 從 FailedIngestion 資料表讀取資料 |
+> | Microsoft Insights/Logs/FunctionAppLogs/Read | 從 FunctionAppLogs 資料表讀取資料 |
 > | Microsoft.Insights/Logs/Heartbeat/Read | 從 Heartbeat 資料表讀取資料 |
+> | Microsoft Insights/Logs/HuntingBookmark/Read | 從 HuntingBookmark 資料表讀取資料 |
 > | Microsoft.Insights/Logs/IISAssessmentRecommendation/Read | 從 IISAssessmentRecommendation 資料表讀取資料 |
 > | Microsoft.Insights/Logs/InboundConnection/Read | 從 InboundConnection 資料表讀取資料 |
+> | Microsoft Insights/Logs/InsightsMetrics/Read | 從 InsightsMetrics 資料表讀取資料 |
+> | Microsoft Insights/Logs/IntuneAuditLogs/Read | 從 IntuneAuditLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/IntuneDeviceComplianceOrg/Read | 從 IntuneDeviceComplianceOrg 資料表讀取資料 |
+> | Microsoft Insights/Logs/IntuneOperationalLogs/Read | 從 IntuneOperationalLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/IoTHubDistributedTracing/Read | 從 IoTHubDistributedTracing 資料表讀取資料 |
+> | Microsoft Insights/Logs/KubeEvents/Read | 從 KubeEvents 資料表讀取資料 |
+> | Microsoft Insights/Logs/KubeHealth/Read | 從 KubeHealth 資料表讀取資料 |
+> | Microsoft Insights/Logs/KubeMonAgentEvents/Read | 從 KubeMonAgentEvents 資料表讀取資料 |
 > | Microsoft.Insights/Logs/KubeNodeInventory/Read | 從 KubeNodeInventory 資料表讀取資料 |
 > | Microsoft.Insights/Logs/KubePodInventory/Read | 從 KubePodInventory 資料表讀取資料 |
+> | Microsoft Insights/Logs/KubeServices/Read | 從 KubeServices 資料表讀取資料 |
 > | Microsoft.Insights/Logs/LinuxAuditLog/Read | 從 LinuxAuditLog 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAApplication/Read | 從 MAApplication 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAApplicationHealth/Read | 從 MAApplicationHealth 資料表讀取資料 |
@@ -7271,6 +7422,8 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/MAApplicationReadiness/Read | 從 MAApplicationReadiness 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MADeploymentPlan/Read | 從 MADeploymentPlan 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MADevice/Read | 從 MADevice 資料表讀取資料 |
+> | Microsoft Insights/Logs/MADeviceNotEnrolled/Read | 從 MADeviceNotEnrolled 資料表讀取資料 |
+> | Microsoft Insights/Logs/MADeviceNRT/Read | 從 MADeviceNRT 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MADevicePnPHealth/Read | 從 MADevicePnPHealth 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MADevicePnPHealthAlternativeVersions/Read | 從 MADevicePnPHealthAlternativeVersions 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MADevicePnPHealthIssues/Read | 從 MADevicePnPHealthIssues 資料表讀取資料 |
@@ -7278,19 +7431,27 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/MADriverInstanceReadiness/Read | 從 MADriverInstanceReadiness 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MADriverReadiness/Read | 從 MADriverReadiness 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeAddin/Read | 從 MAOfficeAddin 資料表讀取資料 |
+> | Microsoft Insights/Logs/MAOfficeAddinEntityHealth/Read | 從 MAOfficeAddinEntityHealth 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeAddinHealth/Read | 從 MAOfficeAddinHealth 資料表讀取資料 |
+> | Microsoft Insights/Logs/MAOfficeAddinHealthEventNRT/Read | 從 MAOfficeAddinHealthEventNRT 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeAddinHealthIssues/Read | 從 MAOfficeAddinHealthIssues 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeAddinInstance/Read | 從 MAOfficeAddinInstance 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeAddinInstanceReadiness/Read | 從 MAOfficeAddinInstanceReadiness 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeAddinReadiness/Read | 從 MAOfficeAddinReadiness 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeApp/Read | 從 MAOfficeApp 資料表讀取資料 |
+> | Microsoft Insights/Logs/MAOfficeAppCrashesNRT/Read | 從 MAOfficeAppCrashesNRT 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeAppHealth/Read | 從 MAOfficeAppHealth 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeAppInstance/Read | 從 MAOfficeAppInstance 資料表讀取資料 |
+> | Microsoft Insights/Logs/MAOfficeAppInstanceHealth/Read | 從 MAOfficeAppInstanceHealth 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeAppReadiness/Read | 從 MAOfficeAppReadiness 資料表讀取資料 |
+> | Microsoft Insights/Logs/MAOfficeAppSessionsNRT/Read | 從 MAOfficeAppSessionsNRT 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeBuildInfo/Read | 從 MAOfficeBuildInfo 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeCurrencyAssessment/Read | 從 MAOfficeCurrencyAssessment 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeCurrencyAssessmentDailyCounts/Read | 從 MAOfficeCurrencyAssessmentDailyCounts 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeDeploymentStatus/Read | 從 MAOfficeDeploymentStatus 資料表讀取資料 |
+> | Microsoft Insights/Logs/MAOfficeDeploymentStatusNRT/Read | 從 MAOfficeDeploymentStatusNRT 資料表讀取資料 |
+> | Microsoft Insights/Logs/MAOfficeMacroErrorNRT/Read | 從 MAOfficeMacroErrorNRT 資料表讀取資料 |
+> | Microsoft Insights/Logs/MAOfficeMacroGlobalHealth/Read | 從 MAOfficeMacroGlobalHealth 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeMacroHealth/Read | 從 MAOfficeMacroHealth 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeMacroHealthIssues/Read | 從 MAOfficeMacroHealthIssues 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAOfficeMacroIssueInstanceReadiness/Read | 從 MAOfficeMacroIssueInstanceReadiness 資料表讀取資料 |
@@ -7303,7 +7464,16 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/MAWindowsCurrencyAssessment/Read | 從 MAWindowsCurrencyAssessment 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAWindowsCurrencyAssessmentDailyCounts/Read | 從 MAWindowsCurrencyAssessmentDailyCounts 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAWindowsDeploymentStatus/Read | 從 MAWindowsDeploymentStatus 資料表讀取資料 |
+> | Microsoft Insights/Logs/MAWindowsDeploymentStatusNRT/Read | 從 MAWindowsDeploymentStatusNRT 資料表讀取資料 |
 > | Microsoft.Insights/Logs/MAWindowsSysReqInstanceReadiness/Read | 從 MAWindowsSysReqInstanceReadiness 資料表讀取資料 |
+> | Microsoft Insights/Logs/McasShadowItReporting/Read | 從 McasShadowItReporting 資料表讀取資料 |
+> | Microsoft Insights/Logs/MicrosoftAzureBastionAuditLogs/Read | 從 MicrosoftAzureBastionAuditLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/MicrosoftDataShareReceivedSnapshotLog/Read | 從 MicrosoftDataShareReceivedSnapshotLog 資料表讀取資料 |
+> | Microsoft Insights/Logs/MicrosoftDataShareSentSnapshotLog/Read | 從 MicrosoftDataShareSentSnapshotLog 資料表讀取資料 |
+> | Microsoft Insights/Logs/MicrosoftDataShareShareLog/Read | 從 MicrosoftDataShareShareLog 資料表讀取資料 |
+> | Microsoft Insights/Logs/MicrosoftDynamicsTelemetryPerformanceLogs/Read | 從 MicrosoftDynamicsTelemetryPerformanceLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/MicrosoftDynamicsTelemetrySystemMetricsLogs/Read | 從 MicrosoftDynamicsTelemetrySystemMetricsLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/MicrosoftHealthcareApisAuditLogs/Read | 從 MicrosoftHealthcareApisAuditLogs 資料表讀取資料 |
 > | Microsoft.Insights/Logs/NetworkMonitoring/Read | 從 NetworkMonitoring 資料表讀取資料 |
 > | Microsoft.Insights/Logs/OfficeActivity/Read | 從 OfficeActivity 資料表讀取資料 |
 > | Microsoft.Insights/Logs/Operation/Read | 從 Operation 資料表讀取資料 |
@@ -7319,18 +7489,33 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/SecurityBaselineSummary/Read | 從 SecurityBaselineSummary 資料表讀取資料 |
 > | Microsoft.Insights/Logs/SecurityDetection/Read | 從 SecurityDetection 資料表讀取資料 |
 > | Microsoft.Insights/Logs/SecurityEvent/Read | 從 SecurityEvent 資料表讀取資料 |
+> | Microsoft Insights/Logs/SecurityIncident/Read | 從 SecurityIncident 資料表讀取資料 |
+> | Microsoft Insights/Logs/SecurityIoTRawEvent/Read | 從 SecurityIoTRawEvent 資料表讀取資料 |
+> | Microsoft Insights/Logs/SecurityNestedRecommendation/Read | 從 SecurityNestedRecommendation 資料表讀取資料 |
+> | Microsoft Insights/Logs/SecurityRecommendation/Read | 從 SecurityRecommendation 資料表讀取資料 |
 > | Microsoft.Insights/Logs/ServiceFabricOperationalEvent/Read | 從 ServiceFabricOperationalEvent 資料表讀取資料 |
 > | Microsoft.Insights/Logs/ServiceFabricReliableActorEvent/Read | 從 ServiceFabricReliableActorEvent 資料表讀取資料 |
 > | Microsoft.Insights/Logs/ServiceFabricReliableServiceEvent/Read | 從 ServiceFabricReliableServiceEvent 資料表讀取資料 |
 > | Microsoft.Insights/Logs/SfBAssessmentRecommendation/Read | 從 SfBAssessmentRecommendation 資料表讀取資料 |
 > | Microsoft.Insights/Logs/SfBOnlineAssessmentRecommendation/Read | 從 SfBOnlineAssessmentRecommendation 資料表讀取資料 |
 > | Microsoft.Insights/Logs/SharePointOnlineAssessmentRecommendation/Read | 從 SharePointOnlineAssessmentRecommendation 資料表讀取資料 |
+> | Microsoft Insights/Logs/SignalRServiceDiagnosticLogs/Read | 從 SignalRServiceDiagnosticLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/SigninLogs/Read | 從 SigninLogs 資料表讀取資料 |
 > | Microsoft.Insights/Logs/SPAssessmentRecommendation/Read | 從 SPAssessmentRecommendation 資料表讀取資料 |
 > | Microsoft.Insights/Logs/SQLAssessmentRecommendation/Read | 從 SQLAssessmentRecommendation 資料表讀取資料 |
+> | Microsoft Insights/Logs/SqlDataClassification/Read | 從 SqlDataClassification 資料表讀取資料 |
 > | Microsoft.Insights/Logs/SQLQueryPerformance/Read | 從 SQLQueryPerformance 資料表讀取資料 |
+> | Microsoft Insights/Logs/SqlVulnerabilityAssessmentResult/Read | 從 SqlVulnerabilityAssessmentResult 資料表讀取資料 |
+> | Microsoft Insights/Logs/StorageBlobLogs/Read | 從 StorageBlobLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/StorageFileLogs/Read | 從 StorageFileLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/StorageQueueLogs/Read | 從 StorageQueueLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/StorageTableLogs/Read | 從 StorageTableLogs 資料表讀取資料 |
+> | Microsoft Insights/Logs/SucceededIngestion/Read | 從 SucceededIngestion 資料表讀取資料 |
 > | Microsoft.Insights/Logs/Syslog/Read | 從 Syslog 資料表讀取資料 |
 > | Microsoft.Insights/Logs/SysmonEvent/Read | 從 SysmonEvent 資料表讀取資料 |
 > | Microsoft Insights/Logs/資料表。自訂/讀取 | 從任何自訂記錄檔讀取資料 |
+> | Microsoft Insights/Logs/ThreatIntelligenceIndicator/Read | 從 ThreatIntelligenceIndicator 資料表讀取資料 |
+> | Microsoft Insights/Logs/TSIIngress/Read | 從 TSIIngress 資料表讀取資料 |
 > | Microsoft.Insights/Logs/UAApp/Read | 從 UAApp 資料表讀取資料 |
 > | Microsoft.Insights/Logs/UAComputer/Read | 從 UAComputer 資料表讀取資料 |
 > | Microsoft.Insights/Logs/UAComputerRank/Read | 從 UAComputerRank 資料表讀取資料 |
@@ -7347,6 +7532,12 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/UpdateRunProgress/Read | 從 UpdateRunProgress 資料表讀取資料 |
 > | Microsoft.Insights/Logs/UpdateSummary/Read | 從 UpdateSummary 資料表讀取資料 |
 > | Microsoft.Insights/Logs/Usage/Read | 從 Usage 資料表讀取資料 |
+> | Microsoft Insights/Logs/UserAccessAnalytics/Read | 從 UserAccessAnalytics 資料表讀取資料 |
+> | Microsoft Insights/Logs/UserPeerAnalytics/Read | 從 UserPeerAnalytics 資料表讀取資料 |
+> | Microsoft Insights/Logs/VMBoundPort/Read | 從 VMBoundPort 資料表讀取資料 |
+> | Microsoft Insights/Logs/VMComputer/Read | 從 VMComputer 資料表讀取資料 |
+> | Microsoft Insights/Logs/VMConnection/Read | 從 VMConnection 資料表讀取資料 |
+> | Microsoft Insights/Logs/VMProcess/Read | 從 VMProcess 資料表讀取資料 |
 > | Microsoft.Insights/Logs/W3CIISLog/Read | 從 W3CIISLog 資料表讀取資料 |
 > | Microsoft.Insights/Logs/WaaSDeploymentStatus/Read | 從 WaaSDeploymentStatus 資料表讀取資料 |
 > | Microsoft.Insights/Logs/WaaSInsiderStatus/Read | 從 WaaSInsiderStatus 資料表讀取資料 |
@@ -7354,11 +7545,19 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft.Insights/Logs/WDAVStatus/Read | 從 WDAVStatus 資料表讀取資料 |
 > | Microsoft.Insights/Logs/WDAVThreat/Read | 從 WDAVThreat 資料表讀取資料 |
 > | Microsoft.Insights/Logs/WindowsClientAssessmentRecommendation/Read | 從 WindowsClientAssessmentRecommendation 資料表讀取資料 |
+> | Microsoft Insights/Logs/Windowsevent 進行篩選/Read | 從 WindowsEvent 資料表讀取資料 |
 > | Microsoft.Insights/Logs/WindowsFirewall/Read | 從 WindowsFirewall 資料表讀取資料 |
 > | Microsoft.Insights/Logs/WindowsServerAssessmentRecommendation/Read | 從 WindowsServerAssessmentRecommendation 資料表讀取資料 |
 > | Microsoft.Insights/Logs/WireData/Read | 從 WireData 資料表讀取資料 |
+> | Microsoft Insights/Logs/WorkloadMonitoringPerf/Read | 從 WorkloadMonitoringPerf 資料表中讀取資料 |
 > | Microsoft.Insights/Logs/WUDOAggregatedStatus/Read | 從 WUDOAggregatedStatus 資料表讀取資料 |
 > | Microsoft.Insights/Logs/WUDOStatus/Read | 從 WUDOStatus 資料表讀取資料 |
+> | Microsoft Insights/Logs/WVDCheckpoints/Read | 從 WVDCheckpoints 資料表讀取資料 |
+> | Microsoft Insights/Logs/WVDConnections/Read | 從 WVDConnections 資料表讀取資料 |
+> | Microsoft Insights/Logs/WVDErrors/Read | 從 WVDErrors 資料表讀取資料 |
+> | Microsoft Insights/Logs/WVDFeeds/Read | 從 WVDFeeds 資料表讀取資料 |
+> | Microsoft Insights/Logs/WVDHostRegistrations/Read | 從 WVDHostRegistrations 資料表讀取資料 |
+> | Microsoft Insights/Logs/WVDManagement/Read | 從 WVDManagement 資料表讀取資料 |
 > | Microsoft.Insights/MetricAlerts/Write | 建立或更新計量警示 |
 > | Microsoft.Insights/MetricAlerts/Delete | 刪除計量警示 |
 > | Microsoft.Insights/MetricAlerts/Read | 讀取計量警示 |
@@ -7405,7 +7604,7 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft Insights/活頁簿/撰寫 | 建立或更新活頁簿 |
 > | Microsoft Insights/活頁簿/刪除 | 刪除活頁簿 |
 > | Microsoft Insights/活頁簿/讀取 | 讀取活頁簿 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft Insights/DataCollectionRules/資料/寫入 | 將資料傳送至資料收集規則 |
 > | Microsoft.Insights/Metrics/Write | 寫入計量 |
 
@@ -7576,9 +7775,18 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/DeviceCleanup/read | 從 DeviceCleanup 資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceConnectSession/read | 從 DeviceConnectSession 資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceEtw/read | 從 DeviceEtw 資料表讀取資料 |
+> | OperationalInsights/workspace/query/DeviceEvents/read | 從 DeviceEvents 資料表讀取資料 |
+> | OperationalInsights/workspace/query/DeviceFileEvents/read | 從 DeviceFileEvents 資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceHardwareHealth/read | 從 DeviceHardwareHealth 資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceHealth/read | 從 DeviceHealth 資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceHeartbeat/read | 從 DeviceHeartbeat 資料表讀取資料 |
+> | OperationalInsights/workspace/query/DeviceImageLoadEvents/read | 從 DeviceImageLoadEvents 資料表讀取資料 |
+> | OperationalInsights/workspace/query/DeviceInfo/read | 從 DeviceInfo 資料表讀取資料 |
+> | OperationalInsights/workspace/query/DeviceLogonEvents/read | 從 DeviceLogonEvents 資料表讀取資料 |
+> | OperationalInsights/workspace/query/DeviceNetworkEvents/read | 從 DeviceNetworkEvents 資料表讀取資料 |
+> | OperationalInsights/workspace/query/DeviceNetworkInfo/read | 從 DeviceNetworkInfo 資料表讀取資料 |
+> | OperationalInsights/workspace/query/DeviceProcessEvents/read | 從 DeviceProcessEvents 資料表讀取資料 |
+> | OperationalInsights/workspace/query/DeviceRegistryEvents/read | 從 DeviceRegistryEvents 資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceSkypeHeartbeat/read | 從 DeviceSkypeHeartbeat 資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceSkypeSignIn/read | 從 DeviceSkypeSignIn 資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/DeviceSleepState/read | 從 DeviceSleepState 資料表讀取資料 |
@@ -7629,6 +7837,7 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | OperationalInsights/workspace/query/HDInsightStormLogs/read | 從 HDInsightStormLogs 資料表讀取資料 |
 > | OperationalInsights/workspace/query/HDInsightStormMetrics/read | 從 HDInsightStormMetrics 資料表讀取資料 |
 > | OperationalInsights/workspace/query/HDInsightStormTopologyMetrics/read | 從 HDInsightStormTopologyMetrics 資料表讀取資料 |
+> | OperationalInsights/workspace/query/HealthStateChangeEvent/read | 從 HealthStateChangeEvent 資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/Heartbeat/read | 從 Heartbeat 資料表讀取資料 |
 > | OperationalInsights/workspace/query/HuntingBookmark/read | 從 HuntingBookmark 資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/IISAssessmentRecommendation/read | 從 IISAssessmentRecommendation 資料表讀取資料 |
@@ -7712,6 +7921,8 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/Operation/read | 從 Operation 資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/OutboundConnection/read | 從 OutboundConnection 資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/Perf/read | 從 Perf 資料表讀取資料 |
+> | OperationalInsights/workspace/query/PowerBIDatasetsTenantPreview/read | 從 PowerBIDatasetsTenantPreview 資料表讀取資料 |
+> | OperationalInsights/workspace/query/PowerBIDatasetsWorkspacePreview/read | 從 PowerBIDatasetsWorkspacePreview 資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/ProtectionStatus/read | 從 ProtectionStatus 資料表讀取資料 |
 > | OperationalInsights/workspace/query/requests/read | 從要求資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/SCCMAssessmentRecommendation/read | 從 SCCMAssessmentRecommendation 資料表讀取資料 |
@@ -7919,9 +8130,6 @@ Azure 服務： [Azure 原則](../governance/policy/overview.md)、 [azure RBAC]
 > | Microsoft.Authorization/policyDefinitions/read | 取得關於原則定義的資訊。 |
 > | Microsoft.Authorization/policyDefinitions/write | 建立自訂的原則定義。 |
 > | Microsoft.Authorization/policyDefinitions/delete | 刪除原則定義。 |
-> | Microsoft. 授權/policyExemptions/讀取 | 取得原則豁免的相關資訊。 |
-> | Microsoft. Authorization/policyExemptions/write | 在指定的範圍內建立原則豁免。 |
-> | Microsoft. 授權/policyExemptions/刪除 | 刪除指定範圍的原則豁免。 |
 > | Microsoft.Authorization/policySetDefinitions/read | 取得原則集合定義的相關資訊。 |
 > | Microsoft.Authorization/policySetDefinitions/write | 建立自訂原則集合定義。 |
 > | Microsoft.Authorization/policySetDefinitions/delete | 刪除原則集合定義。 |
@@ -8107,7 +8315,7 @@ Azure 服務： [批次](../batch/index.yml)
 > | Microsoft.Batch/locations/accountOperationResults/read | 取得長時間執行 Batch 帳戶作業的結果 |
 > | Microsoft.Batch/locations/quotas/read | 取得指定訂用帳戶在指定 Azure 區域內的 Batch 配額 |
 > | Microsoft.Batch/operations/read | 列出可對 Microsoft.Batch 資源提供者進行的作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Batch/batchAccounts/jobs/read | 列出 Batch 帳戶的作業或取得作業的屬性 |
 > | Microsoft.Batch/batchAccounts/jobs/write | 在 Batch 帳戶上建立新的作業，或更新現有的作業 |
 > | Microsoft.Batch/batchAccounts/jobs/delete | 從 Batch 帳戶刪除作業 |
@@ -8369,7 +8577,7 @@ Azure 服務： [Azure Arc 啟用 Kubernetes](https://docs.microsoft.com/azure/a
 > | Kubernetes/connectedClusters/Delete | 刪除 connectedClusters |
 > | Kubernetes/connectedClusters/listClusterUserCredentials/action | 列出 clusterUser 認證 |
 > | Kubernetes/RegisteredSubscriptions/read | 讀取已註冊的訂閱 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Kubernetes/connectedClusters/admissionregistration. k8s. io/initializerconfigurations/read | 讀取 initializerconfigurations |
 > | Kubernetes/connectedClusters/admissionregistration. k8s. io/initializerconfigurations/write | 寫入 initializerconfigurations |
 > | Kubernetes/connectedClusters/admissionregistration. k8s. io/initializerconfigurations/delete | 刪除 initializerconfigurations |
@@ -8736,7 +8944,7 @@ Azure 服務： [Azure 原則](../governance/policy/index.yml)
 > | Microsoft.PolicyInsights/remediations/delete | 刪除原則補救。 |
 > | Microsoft.PolicyInsights/remediations/cancel/action | 取消進行中的 Microsoft 原則補救。 |
 > | Microsoft.PolicyInsights/remediations/listDeployments/read | 列出原則補救所需的部署。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.PolicyInsights/checkDataPolicyCompliance/action | 根據資料原則檢查給定元件的合規性狀態。 |
 > | Microsoft.PolicyInsights/policyEvents/logDataEvents/action | 記錄資源元件原則事件。 |
 
@@ -9076,12 +9284,14 @@ Azure 服務：核心
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | Microsoft.Subscription/CreateSubscription/action | 建立 Azure 訂用帳戶 |
-> | Microsoft.Subscription/register/action | 向 Microsoft.Subscription 資源提供者註冊訂用帳戶 |
 > | Microsoft. 訂用帳戶/取消/動作 | 取消訂用帳戶 |
 > | Microsoft. 訂用帳戶/重新命名/動作 | 重新命名訂用帳戶 |
-> | Microsoft.Subscription/SubscriptionDefinitions/read | 取得管理群組中的 Azure 訂用帳戶定義。 |
-> | Microsoft.Subscription/SubscriptionDefinitions/write | 建立 Azure 訂用帳戶定義 |
+> | Microsoft. 訂用帳戶/啟用/動作 | 啟用訂用帳戶 |
+> | Microsoft.Subscription/CreateSubscription/action | 建立 Azure 訂用帳戶 |
+> | Microsoft.Subscription/register/action | 向 Microsoft.Subscription 資源提供者註冊訂用帳戶 |
+> | Microsoft. 訂用帳戶/updateTenant/動作 | 更新訂用帳戶的租使用者 |
+> | Microsoft. 訂用帳戶/別名/寫入 | 建立訂用帳號別名 |
+> | Microsoft. 訂用帳戶/訂閱/寫入 | 建立或更新訂用帳戶 |
 
 ## <a name="intune"></a>Intune
 

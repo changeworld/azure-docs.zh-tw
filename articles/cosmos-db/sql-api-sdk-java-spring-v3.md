@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 04a50d37606754ff4540d1056e378d46388e2592
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e67e6911eeac29036dee2b68c19395b34e1d11da
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590585"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228030"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>適用于 Core (SQL) API 的春季資料 Azure Cosmos DB v3：版本資訊和資源
 > [!div class="op_single_selector"]
@@ -122,13 +122,15 @@ cosmos.queryMetricsEnabled=true
 
 ## <a name="helpful-content"></a>有用的內容
 
-| 內容 | 春季 Data framework 2。2 | 春季 Data framework 2.3 版 |
+| Content | 春季 Data framework 2。2 | 春季 Data framework 2.3 版 |
 |---|---|
 | **SDK 下載** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-2-cosmos) | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-3-cosmos) |
 |**參與 SDK** | [GitHub 上的春季資料 Azure Cosmos DB 存放庫](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-2-cosmos) | [GitHub 上的春季資料 Azure Cosmos DB 存放庫](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-3-cosmos) | 
 |**教學課程**| [GitHub 上的春季資料 Azure Cosmos DB 教學課程](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-2-cosmos-java-getting-started) | [GitHub 上的春季資料 Azure Cosmos DB 教學課程](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-3-cosmos-java-getting-started) |
 
 ## <a name="release-history"></a>版本歷程記錄
+
+### <a name="300-beta2-unreleased"></a>3.0.0-Beta. 2 (未發行) 
 
 ### <a name="300-beta1-2020-08-17"></a>3.0.0-Beta. 1 (2020-08-17) 
 #### <a name="new-features"></a>新功能

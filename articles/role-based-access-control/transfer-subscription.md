@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 73f426fdcc020320989f0d09410066b66a131cfa
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9873bd8f94c80caccd75033e2a8a4bc2cffcde03
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177273"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227027"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽) 
 
@@ -42,7 +42,7 @@ ms.locfileid: "89177273"
 
 1. 準備轉移
 
-1. 將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶
+1. 將 Azure 訂用帳戶轉移至不同的目錄
 
 1. 重新建立目標目錄中的資源，例如角色指派、自訂角色和受控識別
 
@@ -269,7 +269,7 @@ ms.locfileid: "89177273"
 > [!WARNING]
 > 當您傳輸訂用帳戶時，來原始目錄中的所有角色指派都會 **永久** 刪除，而且無法還原。 一旦轉移訂用帳戶，您就無法返回。 執行此步驟之前，請務必先完成上述步驟。
 
-1. 判斷您是否也要轉移帳單擁有權。
+1. 判斷您是否也要將帳單擁有權轉移至另一個帳戶。
 
 1. 將訂用帳戶轉移至不同的目錄。
 

@@ -4,12 +4,12 @@ description: 瞭解如何藉由新增節點類型來調整 Service Fabric 叢集
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: b34f3f77dab6c4dcd8b7653f552c32a669d257c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: a18a40cc9e467b089ea9d6be3d0ca81a21d2c474
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854630"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228710"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>藉由新增節點類型來擴大 Service Fabric 叢集的主要節點類型
 本文說明如何將額外的節點類型新增至叢集，以擴大 Service Fabric 叢集的主要節點類型。 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 屬於叢集一部分的機器或 VM 都稱為節點。 虛擬機器擴展集是一個 Azure 計算資源，可以用來將一組虛擬機器當做一個集合加以部署和管理。 在 Azure 叢集中定義的每個節點類型，會[設定為不同的擴展集](service-fabric-cluster-nodetypes.md)。 隨後，您即可個別管理每個節點類型。
@@ -99,7 +99,7 @@ New-AzResourceGroupDeployment `
     "[concat('Microsoft.Network/publicIPAddresses/',concat(variables('lbIPName'),'-',variables('vmNodeType1Name')))]"
 ]
 ```
-4. 建立新的虛擬機器擴展集，以使用新的 VM SKU，以及您想要擴大至的作業系統 SKU。 
+4. 建立新的虛擬機器擴展集，以使用您想要擴大至的新 VM SKU 和 OS SKU。 
 
 節點類型參考 
 ```json
@@ -124,6 +124,134 @@ VM SKU
     "version": "[parameters('vmImageVersion1')]"
 }
 ```
+
+下列程式碼片段是新的虛擬機器擴展集資源範例，可用來為 Service Fabric 叢集建立新的節點類型。 您會想要確保您包含工作負載所需的任何其他擴充功能。 
+
+```json
+    {
+      "apiVersion": "[variables('vmssApiVersion')]",
+      "type": "Microsoft.Compute/virtualMachineScaleSets",
+      "name": "[variables('vmNodeType1Name')]",
+      "location": "[variables('computeLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+        "[concat('Microsoft.Network/loadBalancers/', concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType1Name')))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]"
+      ],
+      "properties": {
+        "overprovision": "[variables('overProvision')]",
+        "upgradePolicy": {
+          "mode": "Automatic"
+        },
+        "virtualMachineProfile": {
+          "extensionProfile": {
+            "extensions": [
+              {
+                "name": "[concat('ServiceFabricNodeVmExt_',variables('vmNodeType1Name'))]",
+                "properties": {
+                  "type": "ServiceFabricNode",
+                  "autoUpgradeMinorVersion": true,
+                  "protectedSettings": {
+                    "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
+                    "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
+                  },
+                  "publisher": "Microsoft.Azure.ServiceFabric",
+                  "settings": {
+                    "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+                    "nodeTypeRef": "[variables('vmNodeType1Name')]",
+                    "dataPath": "D:\\SvcFab",
+                    "durabilityLevel": "Bronze",
+                    "enableParallelJobs": true,
+                    "nicPrefixOverride": "[variables('subnet1Prefix')]",
+                    "certificate": {
+                      "thumbprint": "[parameters('certificateThumbprint')]",
+                      "x509StoreName": "[parameters('certificateStoreValue')]"
+                    }
+                  },
+                  "typeHandlerVersion": "1.0"
+                }
+              }
+            ]
+          },
+          "networkProfile": {
+            "networkInterfaceConfigurations": [
+              {
+                "name": "[concat(variables('nicName'), '-1')]",
+                "properties": {
+                  "ipConfigurations": [
+                    {
+                      "name": "[concat(variables('nicName'),'-',1)]",
+                      "properties": {
+                        "loadBalancerBackendAddressPools": [
+                          {
+                            "id": "[variables('lbPoolID1')]"
+                          }
+                        ],
+                        "loadBalancerInboundNatPools": [
+                          {
+                            "id": "[variables('lbNatPoolID1')]"
+                          }
+                        ],
+                        "subnet": {
+                          "id": "[variables('subnet1Ref')]"
+                        }
+                      }
+                    }
+                  ],
+                  "primary": true
+                }
+              }
+            ]
+          },
+          "osProfile": {
+            "adminPassword": "[parameters('adminPassword')]",
+            "adminUsername": "[parameters('adminUsername')]",
+            "computernamePrefix": "[variables('vmNodeType1Name')]",
+            "secrets": [
+              {
+                "sourceVault": {
+                  "id": "[parameters('sourceVaultValue')]"
+                },
+                "vaultCertificates": [
+                  {
+                    "certificateStore": "[parameters('certificateStoreValue')]",
+                    "certificateUrl": "[parameters('certificateUrlValue')]"
+                  }
+                ]
+              }
+            ]
+          },
+          "storageProfile": {
+            "imageReference": {
+              "publisher": "[parameters('vmImagePublisher1')]",
+              "offer": "[parameters('vmImageOffer1')]",
+              "sku": "[parameters('vmImageSku1')]",
+              "version": "[parameters('vmImageVersion1')]"
+            },
+            "osDisk": {
+              "caching": "ReadOnly",
+              "createOption": "FromImage",
+              "managedDisk": {
+                "storageAccountType": "[parameters('storageAccountType')]"
+              }
+            }
+          }
+        }
+      },
+      "sku": {
+        "name": "[parameters('vmNodeType1Size')]",
+        "capacity": "[parameters('nt1InstanceCount')]",
+        "tier": "Standard"
+      },
+      "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+      }
+    },
+
+```
+
 5. 將新的節點類型新增至叢集，以參考上面建立的虛擬機器擴展集。 此節點類型上的 **isPrimary** 屬性應該設定為 true。 
 ```json
 "name": "[variables('vmNodeType1Name')]",
@@ -339,7 +467,7 @@ foreach($node in $nodes)
 ```
 10. 從 ARM 範本中移除與原始節點類型相關的所有其他資源。 請參閱 Service Fabric-已移除所有這些原始資源的範本的 [新節點類型群集](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) 。
 
-11. 部署修改過的 Azure Resource Manager 範本。 * * 此步驟需要一段時間，通常最多兩個小時。 這項升級會將設定變更為 InfrastructureService，因此需要重新開機節點。 在此情況下，forceRestart 會被忽略。 參數 upgradeReplicaSetCheckTimeout 會指定 Service Fabric 等候分割區處於安全狀態（如果尚未處於安全狀態）的最長時間。 一旦為節點上的所有資料分割傳遞安全性檢查，Service Fabric 會在該節點上繼續進行升級。 參數 >upgradetimeout 的值可以縮減為6小時，但應使用最大的安全12小時。
+11. 部署修改過的 Azure Resource Manager 範本。 * * 此步驟需要一段時間，通常最多兩個小時。 此升級會將設定變更為 InfrastructureService;因此需要重新開機節點。 在此情況下，會忽略 forceRestart。 參數 upgradeReplicaSetCheckTimeout 會指定 Service Fabric 等候分割區處於安全狀態（如果尚未處於安全狀態）的最長時間。 一旦為節點上的所有資料分割傳遞安全性檢查，Service Fabric 會在該節點上繼續進行升級。 參數 >upgradetimeout 的值可以縮減為6小時，但應使用最大的安全12小時。
 然後驗證入口網站中 Service Fabric 資源顯示為 [就緒]。 
 
 ```powershell

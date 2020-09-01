@@ -12,16 +12,16 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: e78044faabfd5ff3dccb1e7ea04149fbef212c01
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843703"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228880"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>資料內嵌管線的 DevOps
 
-在大部分的情況下，資料內嵌解決方案是腳本、服務叫用的組合，以及協調所有活動的管線。 在本文中，您將瞭解如何將 DevOps 做法套用至通用資料內嵌管線的開發生命週期，以準備資料以進行機器學習模型定型。 管線是使用下列 Azure 服務所建立：
+在大部分的情況下，資料內嵌解決方案是腳本、服務調用和協調所有活動的管線組合。 在本文中，您將瞭解如何將 DevOps 實務套用至常見資料內嵌管線的開發生命週期，以準備資料以進行機器學習模型定型。 管線是使用下列 Azure 服務所建立：
 
 * __Azure Data Factory__：讀取原始資料並協調資料準備。
 * __Azure Databricks__：執行可轉換資料的 Python 筆記本。
@@ -32,58 +32,58 @@ ms.locfileid: "87843703"
 資料內嵌管線會執行下列工作流程：
 
 1. 原始資料會讀入 Azure Data Factory (ADF) 管線中。
-1. ADF 管線會將資料傳送至 Azure Databricks 叢集，此叢集會執行 Python 筆記本以轉換資料。
-1. 資料會儲存至 blob 容器，可供 Azure Machine Learning 用來將模型定型。
+1. ADF 管線會將資料傳送到 Azure Databricks 叢集，以執行 Python 筆記本來轉換資料。
+1. 資料會儲存至 blob 容器，Azure Machine Learning 可以使用它來定型模型。
 
 ![資料內嵌管線工作流程](media/how-to-cicd-data-ingestion/data-ingestion-pipeline.png)
 
 ## <a name="continuous-integration-and-delivery-overview"></a>持續整合與傳遞總覽
 
-就像許多軟體解決方案一樣，還有一個小組 (，例如，資料工程師) 處理。 它們會共同作業和共用相同的 Azure 資源，例如 Azure Data Factory、Azure Databricks 和 Azure 儲存體帳戶。 這些資源的集合是一個開發環境。 資料工程師會參與相同的原始程式碼基底。
+就像許多軟體解決方案一樣，有一個小組 (例如，資料工程師) 處理它。 它們會共同作業並共用相同的 Azure 資源，例如 Azure Data Factory、Azure Databricks 和 Azure 儲存體帳戶。 這些資源的集合是開發環境。 資料工程師會參與相同的原始程式碼基底。
 
-持續整合與傳遞系統會將建立、測試及提供 (部署) 解決方案的程式自動化。 持續整合 (CI) 程式會執行下列工作：
+持續整合和傳遞系統會將建立、測試及傳遞 (部署) 解決方案的程式自動化。 持續整合 (CI) 進程會執行下列工作：
 
-* 組裝程式碼
-* 使用程式碼品質測試來檢查
+* 組合程式碼
+* 使用程式碼品質測試進行檢查
 * 執行單元測試
-* 產生測試程式碼和 Azure Resource Manager 範本之類的成品
+* 產生成品，例如已測試的程式碼和 Azure Resource Manager 範本
 
 持續傳遞 (CD) 程式會將構件部署至下游環境。
 
 ![cicd 資料內嵌圖表](media/how-to-cicd-data-ingestion/cicd-data-ingestion.png)
 
-本文示範如何使用[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)將 CI 和 CD 進程自動化。
+本文示範如何使用 [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)將 CI 和 CD 處理常式自動化。
 
 ## <a name="source-control-management"></a>原始檔控制管理
 
-需要原始檔控制管理以追蹤變更，並啟用小組成員之間的共同作業。
-例如，程式碼會儲存在 Azure DevOps、GitHub 或 GitLab 存放庫中。 共同作業工作流程是以分支模型為基礎。 例如， [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html)。
+需要原始檔控制管理才能追蹤變更，以及啟用小組成員之間的共同作業。
+例如，程式碼會儲存在 Azure DevOps、GitHub 或 GitLab 存放庫中。 共同作業工作流程是以分支模型為基礎。 例如， [>gitflow](https://datasift.github.io/gitflow/IntroducingGitFlow.html)。
 
-### <a name="python-notebook-source-code"></a>Python 筆記本原始程式碼
+### <a name="python-notebook-source-code"></a>Python 筆記本來源程式碼
 
-資料工程師會在 IDE 本機使用 Python 筆記本原始程式碼 (例如， [Visual Studio Code](https://code.visualstudio.com)) 或直接在 Databricks 工作區中。 程式碼變更完成後，就會依照分支原則，將它們合併到存放庫。
+資料工程師可以在 IDE 本機使用 Python 筆記本原始程式碼 (例如 [Visual Studio Code](https://code.visualstudio.com)) 或直接在 Databricks 工作區中。 程式碼變更完成後，就會將它們合併至分支原則之後的儲存機制。
 
 > [!TIP] 
-> 我們建議您將程式碼儲存在檔案中， `.py` 而不是 `.ipynb` Jupyter 筆記本格式。 它可以改善程式碼的可讀性，並在 CI 進程中啟用自動程式碼品質檢查。
+> 建議您將程式碼儲存在檔案中， `.py` 而不是 `.ipynb` Jupyter Notebook 格式。 它可提升程式碼的可讀性，並在 CI 程式中啟用自動程式碼品質檢查。
 
-### <a name="azure-data-factory-source-code"></a>Azure Data Factory 原始碼
+### <a name="azure-data-factory-source-code"></a>Azure Data Factory 來源程式碼
 
-Azure Data Factory 管線的原始程式碼是由 Azure Data Factory 工作區所產生的 JSON 檔案集合。 一般來說，資料工程師會在 Azure Data Factory 工作區中使用視覺化設計工具，而不是直接使用原始程式碼檔案。 
+Azure Data Factory 管線的原始程式碼是 Azure Data Factory 工作區所產生的 JSON 檔案集合。 資料工程師通常會在 Azure Data Factory 工作區中使用視覺化設計工具，而不是直接使用原始程式碼檔。 
 
-若要將工作區設定為使用原始檔控制存放庫，請參閱[使用 Azure Repos Git 整合的作者](../data-factory/source-control.md#author-with-azure-repos-git-integration)。   
+若要將工作區設定為使用原始檔控制儲存機制，請參閱 [使用 Azure Repos Git 整合的作者](../data-factory/source-control.md#author-with-azure-repos-git-integration)。   
 
 ## <a name="continuous-integration-ci"></a> (CI) 的持續整合
 
-持續整合程式的最終目標，是要收集來自原始程式碼的聯合小組工作，並準備將它部署到下游環境。 如同原始程式碼管理，Python 筆記本和 Azure Data Factory 管線的此程式不同。 
+持續整合程式的最終目標是要從原始程式碼收集聯合小組工作，並準備好部署到下游環境。 如同原始程式碼管理，Python 筆記本和 Azure Data Factory 管線的此程式不同。 
 
 ### <a name="python-notebook-ci"></a>Python 筆記本 CI
 
-Python 筆記本的 CI 程式會從共同作業分支取得程式碼 (例如， ***master***或***開發***) 並執行下列活動：
+Python 筆記本的 CI 進程會從共同作業分支取得程式碼 (例如， ***master*** 或 ***開發***) 並執行下列活動：
 * 程式碼 linting
 * 單元測試
 * 將程式碼儲存為成品
 
-下列程式碼片段示範如何在 Azure DevOps ***yaml***管線中執行這些步驟：
+下列程式碼片段示範如何在 Azure DevOps ***yaml*** 管線中執行這些步驟：
 
 ```yaml
 steps:
@@ -108,23 +108,23 @@ steps:
     artifact: di-notebooks
 ```
 
-管線會使用[flake8](https://pypi.org/project/flake8/)來執行 Python 程式碼 linting。 它會執行原始程式碼中定義的單元測試，併發布 linting 和測試結果，使其可在 Azure 管線執行畫面中使用：
+管線會使用 [flake8](https://pypi.org/project/flake8/) 來進行 Python 程式碼 linting。 它會執行在原始程式碼中定義的單元測試，併發布 linting 和測試結果，使其可在 Azure 管線執行畫面中使用：
 
 ![linting 單元測試](media/how-to-cicd-data-ingestion/linting-unit-tests.png)
 
-如果 linting 和單元測試成功，管線會將原始程式碼複製到成品存放庫，以供後續的部署步驟使用。
+如果 linting 和單元測試成功，管線就會將原始程式碼複製到成品存放庫，以供後續的部署步驟使用。
 
 ### <a name="azure-data-factory-ci"></a>Azure Data Factory CI
 
-Azure Data Factory 管線的 CI 進程是資料內嵌管線的瓶頸。 沒有持續整合。 Azure Data Factory 的可部署成品是 Azure Resource Manager 範本的集合。 產生這些範本的唯一方式，是按一下 [Azure Data Factory] 工作區中的 [***發佈***] 按鈕。
+Azure Data Factory 管線的 CI 進程是資料內嵌管線的瓶頸。 沒有持續整合。 Azure Data Factory 可部署的成品是 Azure Resource Manager 範本的集合。 產生這些範本的唯一方法是按一下 [Azure Data Factory] 工作區中的 [ ***發佈*** ] 按鈕。
 
-1. 資料工程師會將原始程式碼從其功能分支合併到共同作業分支中，例如***master***或***開發***。 
-1. 具有授與許可權的人按一下 [***發佈***] 按鈕，從共同作業分支中的原始程式碼產生 Azure Resource Manager 範本。 
-1. 工作區會驗證管線 (將其視為 linting 和單元測試) 、產生 Azure Resource Manager 範本 (將其視為建立) ，並將產生的範本儲存至相同程式碼存放庫中的技術分支***adf_publish*** (將其視為發佈成品) 。 Azure Data Factory 工作區會自動建立此分支。 
+1. 資料工程師會將其功能分支中的原始程式碼合併到共同作業分支，例如 ***master*** 或 ***開發***。 
+1. 具有授與許可權的使用者按一下 [ ***發佈*** ] 按鈕，從共同作業分支的原始程式碼產生 Azure Resource Manager 範本。 
+1. 工作區會驗證管線 (將它視為 linting 和單元測試) 、產生 Azure Resource Manager 的範本 (將它視為建立) ，然後將產生的範本儲存至相同程式碼存放 ***庫中的技術分支 adf_publish，*** (在發行成品) 時將其視為。 此分支是由 Azure Data Factory 工作區自動建立。 
 
-如需此程式的詳細資訊，請參閱[Azure Data Factory 中的持續整合與傳遞](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)。
+如需此程式的詳細資訊，請參閱 [Azure Data Factory 中的持續整合和傳遞](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)。
 
-請務必確定產生的 Azure Resource Manager 範本與環境無關。 這表示環境中可能不同的所有值都會參數化。 Azure Data Factory 非常聰明，可將大部分的這類值公開為參數。 例如，在下列範本中，Azure Machine Learning 工作區的連接屬性會公開為參數：
+請務必確定產生的 Azure Resource Manager 範本是環境中立的。 這表示在環境之間可能會有不同的值參數化。 Azure Data Factory 的智慧足以將大部分的這類值公開為參數。 例如，在下列範本中，Azure Machine Learning 工作區的連接屬性會公開為參數：
 
 ```json
 {
@@ -153,7 +153,7 @@ Azure Data Factory 管線的 CI 進程是資料內嵌管線的瓶頸。 沒有�
 }
 ```
 
-不過，您可能會想要公開預設不是由 Azure Data Factory 工作區處理的自訂屬性。 在本文的案例中，Azure Data Factory 管線會叫用處理資料的 Python 筆記本。 筆記本接受具有輸入資料檔案名稱的參數。
+不過，根據預設，您可能會想要公開不是由 Azure Data Factory 工作區處理的自訂屬性。 在本文的案例中，Azure Data Factory 管線會叫用處理資料的 Python 筆記本。 筆記本接受具有輸入資料檔案名稱的參數。
 
 ```Python
 import pandas as pd
@@ -166,15 +166,15 @@ labels = np.array(data['target'])
 ...
 ```
 
-針對***Dev***、 ***QA***、 ***UAT***和***生產***環境，此名稱不同。 在具有多個活動的複雜管線中，可以有數個自訂屬性。 最佳做法是在一個位置收集所有這些值，並將它們定義為管線***變數***：
+針對 ***開發***、 ***QA***、 ***UAT***和 ***生產*** 環境，此名稱是不同的。 在具有多個活動的複雜管線中，可以有數個自訂屬性。 最好是在一個位置收集所有這些值，並將它們定義為管線 ***變數***：
 
 ![adf-變數](media/how-to-cicd-data-ingestion/adf-variables.png)
 
-管線活動可能會參考管線變數，而實際使用它們：
+管線活動可能會在實際使用時參考管線變數：
 
 ![adf-筆記本-參數](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
-Azure Data Factory 工作區預設***不會***將管線變數公開為 Azure Resource Manager 樣板參數。 工作區會使用[預設參數化範本](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template)，以決定應該將哪些管線屬性公開為 Azure Resource Manager 範本參數。 若要將管線變數新增至清單，請 `"Microsoft.DataFactory/factories/pipelines"` 使用下列程式碼片段更新[預設參數化範本](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template)的區段，並將結果 json 檔案放在源資料夾的根目錄中：
+Azure Data Factory 工作區預設 ***不會*** 將管線變數公開為 Azure Resource Manager 範本參數。 工作區會使用 [預設的參數化範本](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) ，以聽寫哪些管線屬性應該公開為 Azure Resource Manager 範本參數。 若要將管線變數加入至清單，請 `"Microsoft.DataFactory/factories/pipelines"` 使用下列程式碼片段更新 [預設參數化範本](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) 的區段，並將結果 json 檔案放在源資料夾的根目錄中：
 
 ```json
 "Microsoft.DataFactory/factories/pipelines": {
@@ -188,7 +188,7 @@ Azure Data Factory 工作區預設***不會***將管線變數公開為 Azure Res
     }
 ```
 
-這麼做會在按一下 [***發佈***] 按鈕時，強制 Azure Data Factory 工作區將變數新增至 [參數] 清單：
+這樣做會在按一下 [ ***發佈*** ] 按鈕時，強制 Azure Data Factory 工作區將變數新增至 [參數] 清單：
 
 ```json
 {
@@ -206,24 +206,24 @@ Azure Data Factory 工作區預設***不會***將管線變數公開為 Azure Res
 }
 ```
 
-JSON 檔案中的值是在管線定義中設定的預設值。 部署 Azure Resource Manager 範本時，應該會使用目標環境值來覆寫它們。
+JSON 檔案中的值是在管線定義中設定的預設值。 部署 Azure Resource Manager 範本時，應以目標環境值覆寫這些值。
 
 ## <a name="continuous-delivery-cd"></a>持續傳遞 (CD) 
 
-持續傳遞程式會接受成品，並將它們部署到第一個目標環境。 它會藉由執行測試，確保解決方案運作正常。 如果成功，它會繼續到下一個環境。 
+持續傳遞程式會使用成品，並將其部署至第一個目標環境。 它會藉由執行測試來確定解決方案是否正常運作。 如果成功，則會繼續進行下一個環境。 
 
-CD Azure 管線包含代表環境的多個階段。 每個階段都包含執行下列步驟的[部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)和[作業](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml)：
+CD Azure 管線是由代表環境的多個階段所組成。 每個階段都包含執行下列步驟的 [部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) 和 [作業](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml) ：
 
 * 將 Python 筆記本部署到 Azure Databricks 工作區
 * 部署 Azure Data Factory 管線 
 * 執行管道
 * 檢查資料內嵌結果
 
-您可以使用[核准](https://docs.microsoft.com/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass)和網[關](https://docs.microsoft.com/azure/devops/pipelines/release/approvals/gates?view=azure-devops)來設定管線階段，讓您進一步控制部署程式如何透過環境鏈來發展。
+您可以使用 [核准](https://docs.microsoft.com/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass) 和網 [關](https://docs.microsoft.com/azure/devops/pipelines/release/approvals/gates?view=azure-devops) 來設定管線階段，以提供部署程式如何透過環境鏈進行的額外控制。
 
 ### <a name="deploy-a-python-notebook"></a>部署 Python 筆記本
 
-下列程式碼片段會定義將 Python 筆記本複製到 Databricks 叢集的 Azure 管線[部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)：
+下列程式碼片段會定義將 Python 筆記本複製到 Databricks 叢集的 Azure 管線 [部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) ：
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -259,13 +259,13 @@ CD Azure 管線包含代表環境的多個階段。 每個階段都包含執行�
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-CI 所產生的成品會自動複製到部署代理程式，並可在資料夾中使用 `$(Pipeline.Workspace)` 。 在此情況下，部署工作會參考 `di-notebooks` 包含 Python 筆記本的成品。 此[部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)會使用[Databricks Azure DevOps 擴充](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)功能，將筆記本檔案複製到 Databricks 工作區。
+CI 所產生的成品會自動複製到部署代理程式，並可在資料夾中使用 `$(Pipeline.Workspace)` 。 在此情況下，部署工作是指 `di-notebooks` 包含 Python 筆記本的成品。 此 [部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) 會使用 [Databricks Azure DevOps 擴充](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) 功能，將筆記本檔案複製到 Databricks 工作區。
 
-`Deploy_to_QA`階段包含 `devops-ds-qa-vg` Azure DevOps 專案中所定義之變數群組的參考。 此階段中的步驟會參考此變數群組中的變數 (例如， `$(DATABRICKS_URL)` 和 `$(DATABRICKS_TOKEN)`) 。 其概念是，下一個階段 (例如， `Deploy_to_UAT`) 會使用它自己的 UAT 範圍變數群組中所定義的相同變數名稱來運作。
+`Deploy_to_QA`階段包含 `devops-ds-qa-vg` Azure DevOps 專案中定義之變數群組的參考。 此階段中的步驟會參考此變數群組中的變數 (例如， `$(DATABRICKS_URL)` 以及 `$(DATABRICKS_TOKEN)`) 。 其構想是下一個階段 (例如， `Deploy_to_UAT`) 將會使用其本身 UAT 範圍變數群組中定義的相同變數名稱來運作。
 
 ### <a name="deploy-an-azure-data-factory-pipeline"></a>部署 Azure Data Factory 管線
 
-Azure Data Factory 的可部署成品是 Azure Resource Manager 範本。 它將會使用***Azure 資源群組部署***工作進行部署，如下列程式碼片段所示：
+Azure Data Factory 可部署的成品是 Azure Resource Manager 的範本。 它會使用 ***Azure 資源群組部署*** 工作進行部署，如下列程式碼片段所示：
 
 ```yaml
   - deployment: "Deploy_to_ADF"
@@ -286,11 +286,11 @@ Azure Data Factory 的可部署成品是 Azure Resource Manager 範本。 它將
                 csmParametersFile: '$(Pipeline.Workspace)/adf-pipelines/ARMTemplateParametersForFactory.json'
                 overrideParameters: -data-ingestion-pipeline_properties_variables_data_file_name_defaultValue "$(DATA_FILE_NAME)"
 ```
-資料 filename 參數的值來自于 `$(DATA_FILE_NAME)` QA 階段變數群組中定義的變數。 同樣地，在***ARMTemplateForFactory.js***中定義的所有參數都可以覆寫。 如果不是，則會使用預設值。
+資料檔案名參數的值來自于 `$(DATA_FILE_NAME)` QA 階段變數群組中定義的變數。 同樣地，您可以覆寫 ***ARMTemplateForFactory.js*** 中定義的所有參數。 如果不是，則會使用預設值。
 
 ### <a name="run-the-pipeline-and-check-the-data-ingestion-result"></a>執行管線並檢查資料內嵌結果
 
-下一個步驟是確定已部署的解決方案可以運作。 下列作業定義會使用[PowerShell 腳本](https://github.com/microsoft/DataOps/tree/master/adf/utils)執行 Azure Data Factory 管線，並在 Azure Databricks 叢集上執行 Python 筆記本。 此筆記本會檢查是否已正確內嵌資料，並以名稱驗證結果資料檔案 `$(bin_FILE_NAME)` 。
+下一步是確定已部署的解決方案可正常運作。 下列工作定義會使用 [PowerShell 腳本](https://github.com/microsoft/DataOps/tree/master/adf/utils) 來執行 Azure Data Factory 管線，並在 Azure Databricks 叢集上執行 Python 筆記本。 筆記本會檢查資料是否已正確內嵌，並以名稱驗證結果資料檔案 `$(bin_FILE_NAME)` 。
 
 ```yaml
   - job: "Integration_test_job"
@@ -333,7 +333,7 @@ Azure Data Factory 的可部署成品是 Azure Resource Manager 範本。 它將
 
 作業中的最後一個工作會檢查筆記本執行的結果。 如果傳回錯誤，則會將管線執行的狀態設定為 failed。
 
-## <a name="putting-pieces-together"></a>將片段放在一起
+## <a name="putting-pieces-together"></a>將元件放在一起
 
 完整的 CI/CD Azure 管線包含下列階段：
 * CI
@@ -341,9 +341,9 @@ Azure Data Factory 的可部署成品是 Azure Resource Manager 範本。 它將
     * 部署至 Databricks + 部署至 ADF
     * 整合測試
 
-其中包含數個***部署***階段，與您擁有的目標環境數目相等。 每個***部署***階段都包含兩個平行執行的[部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)，以及在部署之後執行的[作業](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml)，以在環境上測試解決方案。
+它包含數個 ***部署*** 階段，相當於您擁有的目標環境數目。 每個 ***部署*** 階段包含兩個平行執行的 [部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) ，以及在部署後執行的 [作業](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml) ，以便在環境上測試解決方案。
 
-下列***yaml***程式碼片段中會組合管線的範例執行：
+管線的範例執行會在下列 ***yaml*** 程式碼片段中組合：
 
 ```yaml
 variables:

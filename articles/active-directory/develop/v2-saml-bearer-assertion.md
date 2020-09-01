@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 46f3ef775f3b17e0ebc93fc4145a5b8037b901e5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 6e7e4dd6383b1f264ff2da7893d9f86a3708217d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949349"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227911"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 SAML 持有人判斷提示流程
 OAuth 2.0 SAML 持有人判斷提示流程可供在用戶端需要使用現有的信任關係時，使用 SAML 判斷提示來要求 OAuth 存取權杖。 套用至 SAML 判斷提示的簽章會提供授權應用程式其驗證。 SAML 判斷提示是一種由識別提供者發行，並由服務提供者取用的 XML 安全性權杖。 服務提供者會針對與安全性相關的用途，依賴其內容來識別判斷提示的主旨。
@@ -27,7 +27,7 @@ SAML 持有人判斷提示流程在從 Microsoft Graph API (僅支援委派權�
 
 針對執行以瀏覽器為基礎互動式登入以取得 SAML 判斷提示，然後想要將存取新增至受 OAuth 保護 API (例如 Microsoft Graph) 的應用程式，您可發出 OAuth 要求來取得 API 的存取權杖。 當瀏覽器重新導向至 Azure AD 以對使用者進行驗證時，瀏覽器會挑選 SAML 登入的工作階段，讓使用者無須輸入其認證。
 
-OAuth SAML 持有人判斷提示流程也支援使用識別提供者 (例如與 Azure Active Directory 同盟的 Active Directory 同盟服務 (ADFS)) 進行驗證的使用者。  從 ADFS 取得的 SAML 判斷提示可在 OAuth 流程中用來驗證使用者。
+只有驗證身分識別提供者的使用者（例如 Active Directory 同盟服務 (ADFS) 同盟至 Azure Active Directory 時，才支援 OAuth SAML 持有人判斷提示流程。  從 ADFS 取得的 SAML 判斷提示可在 OAuth 流程中用來驗證使用者。
 
 ![OAuth 流程](./media/v2-saml-bearer-assertion/1.png)
 

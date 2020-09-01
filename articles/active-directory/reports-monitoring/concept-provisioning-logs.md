@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/25/2020
+ms.date: 09/01/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a45e6cff7d62dd8841d9d482f799be6977340e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 16b2ab39e9bcd6dff44387edc60be9bfc649f224
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826866"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229866"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 入口網站中布建報表 (預覽) 
 
@@ -34,8 +34,8 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
     - 布建**記錄**：提供 Azure AD 布建服務所布建之使用者、群組和角色的相關系統活動。 
 
 - **安全性** 
-    - 有**風險**的登入：有[風險](concept-risky-sign-ins.md)的登入是指登入嘗試的指標，該嘗試可能是使用者帳戶的合法擁有者所執行。
-    - **標示為有風險的使用者** -有 [風險的使用者](concept-user-at-risk.md) 是指可能遭到盜用的使用者帳戶指標。
+    - 有**風險**的登入：有[風險](../identity-protection/overview-identity-protection.md)的登入是指登入嘗試的指標，該嘗試可能是使用者帳戶的合法擁有者所執行。
+    - **標示為有風險的使用者** -有 [風險的使用者](../identity-protection/overview-identity-protection.md) 是指可能遭到盜用的使用者帳戶指標。
 
 本主題提供布建報告的總覽。
 
@@ -85,7 +85,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 選取清單檢視中的項目，即可取得更詳細的資訊。
 
-![詳細資訊](./media/concept-provisioning-logs/steps.png "篩選")
+![詳細資訊](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ## <a name="filter-provisioning-activities"></a>篩選布建活動
@@ -94,12 +94,12 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 在預設視圖中，您可以選取下列篩選準則：
 
 - 身分識別
-- Date
+- 日期
 - 狀態
 - 動作
 
 
-![Filter](./media/concept-provisioning-logs/default-filter.png "篩選")
+![Filter](./media/concept-provisioning-logs/default-filter.png "Filter")
 
 身分 **識別** 篩選器可讓您指定您關心的名稱或身分識別。 此身分識別可以是使用者、群組、角色或其他物件。 您可以依物件的名稱或識別碼進行搜尋。 此識別碼會因案例而異。 例如，從 Azure AD 將物件布建到 SalesForce 時，來源識別碼是 Azure AD 中使用者的物件識別碼，而 TargetID 是 Salesforce 中使用者的識別碼。 從 Workday 布建至 Active Directory 時，來源識別碼是 Workday 背景工作員工識別碼。 請注意，使用者的名稱不一定會出現在識別欄位中。 一律會有一個識別碼。 
 
@@ -140,7 +140,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 - 變更識別碼
 - 來源識別碼
 - 目標識別碼
-- Application
+- 應用程式
 
 
 ![挑選欄位](./media/concept-provisioning-logs/add-filter.png "挑選欄位")
@@ -172,7 +172,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - 修改的屬性
 
-- 摘要
+- [摘要]
 
 
 ![Filter](./media/concept-provisioning-logs/provisioning-tabs.png "定位點")
@@ -190,7 +190,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 
 
-![Filter](./media/concept-provisioning-logs/steps.png "篩選")
+![Filter](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>疑難排解和建議
@@ -204,7 +204,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 **修改過的屬性**會顯示舊值和新值。 在沒有舊值的情況下，舊的值資料行是空白的。 
 
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>[摘要]
 
 [ **摘要** ] 索引標籤提供來源和目標系統中物件的發生狀況和識別碼的總覽。 
 
@@ -218,7 +218,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - 目前不支援 log analytics。
 
-- 當您從應用程式的內容存取布建記錄時，它不會自動以 audit 記錄檔的方式將事件篩選至特定的應用程式。
+- 您可能會看到不在範圍中的使用者略過的事件。 這是預期的情況，特別是當同步處理範圍設定為 [所有使用者和群組] 時。 我們的服務會評估租使用者中的所有物件，甚至是超出範圍的物件。 
 
 ## <a name="error-codes"></a>錯誤碼
 
@@ -226,28 +226,26 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 |錯誤碼|描述|
 |---|---|
-|衝突，EntryConflict|更正 Azure AD 或應用程式中衝突的屬性值，或者如果衝突的使用者帳戶應該進行比對和接管，請檢查相符的屬性設定。 如需設定相符屬性的詳細資訊，請參閱下列 [檔](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) 。|
+|衝突，EntryConflict|更正 Azure AD 或應用程式中衝突的屬性值，或者如果衝突的使用者帳戶應該進行比對和接管，請檢查相符的屬性設定。 如需設定相符屬性的詳細資訊，請參閱下列 [檔](../app-provisioning/customize-application-attributes.md) 。|
 |TooManyRequests|目標應用程式拒絕此嘗試更新使用者，因為它已多載且收到太多要求。 不需要執行任何動作。 這次嘗試將會自動淘汰。 Microsoft 也已收到此問題的通知。|
 |InternalServerError |目標應用程式傳回未預期的錯誤。 目標應用程式可能發生服務問題，導致無法運作。 這項嘗試會在40分鐘內自動淘汰。|
-|InsufficientRights、MethodNotAllowed、NotPermitted、未經授權| Azure AD 可以向目標應用程式進行驗證，但未獲授權執行更新。 請參閱目標應用程式所提供的任何指示，以及個別的應用程式 [教學](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)課程。|
+|InsufficientRights、MethodNotAllowed、NotPermitted、未經授權| Azure AD 可以向目標應用程式進行驗證，但未獲授權執行更新。 請參閱目標應用程式所提供的任何指示，以及個別的應用程式 [教學](../saas-apps/tutorial-list.md)課程。|
 |UnprocessableEntity|目標應用程式傳回未預期的回應。 目標應用程式的設定可能不正確，或目標應用程式可能發生服務問題，導致無法運作。|
 |WebExceptionProtocolError |連接到目標應用程式時發生 HTTP 通訊協定錯誤。 不需要執行任何動作。 這項嘗試會在40分鐘內自動淘汰。|
-|InvalidAnchor|先前由布建服務所建立或比對的使用者已不存在。 檢查以確定使用者存在。 若要強制重新符合所有的使用者，請使用 MS 圖形 API [重新開機作業](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 請注意，重新開機布建將會觸發初始迴圈，這可能需要一些時間才能完成。 它也會刪除布建服務用來操作的快取，這表示租使用者中的所有使用者和群組都必須重新評估，而且可能會卸載某些布建事件。|
-|NotImplemented | 目標應用程式傳回未預期的回應。 應用程式的設定可能不正確，或目標應用程式可能發生服務問題，導致無法運作。 請參閱目標應用程式所提供的任何指示，以及個別的應用程式 [教學](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)課程。 |
-|MandatoryFieldsMissing, MissingValues |因為遺漏必要的值，所以無法建立使用者。 更正來源記錄中遺漏的屬性值，或檢查相符的屬性設定，以確保不會省略必要的欄位。 [深入瞭解](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) 如何設定相符的屬性。|
-|SchemaAttributeNotFound |無法執行作業，因為指定了不存在於目標應用程式中的屬性。 請參閱有關屬性自訂的 [檔](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) ，並確保您的設定正確無誤。|
+|InvalidAnchor|先前由布建服務所建立或比對的使用者已不存在。 檢查以確定使用者存在。 若要強制重新符合所有的使用者，請使用 MS 圖形 API [重新開機作業](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)。 請注意，重新開機布建將會觸發初始迴圈，這可能需要一些時間才能完成。 它也會刪除布建服務用來操作的快取，這表示租使用者中的所有使用者和群組都必須重新評估，而且可能會卸載某些布建事件。|
+|NotImplemented | 目標應用程式傳回未預期的回應。 應用程式的設定可能不正確，或目標應用程式可能發生服務問題，導致無法運作。 請參閱目標應用程式所提供的任何指示，以及個別的應用程式 [教學](../saas-apps/tutorial-list.md)課程。 |
+|MandatoryFieldsMissing, MissingValues |因為遺漏必要的值，所以無法建立使用者。 更正來源記錄中遺漏的屬性值，或檢查相符的屬性設定，以確保不會省略必要的欄位。 [深入瞭解](../app-provisioning/customize-application-attributes.md) 如何設定相符的屬性。|
+|SchemaAttributeNotFound |無法執行作業，因為指定了不存在於目標應用程式中的屬性。 請參閱有關屬性自訂的 [檔](../app-provisioning/customize-application-attributes.md) ，並確保您的設定正確無誤。|
 |InternalError |Azure AD 布建服務內發生內部服務錯誤。 不需要執行任何動作。 這次嘗試將會在40分鐘內自動重試。|
 |InvalidDomain |因為屬性值包含不正確功能變數名稱，所以無法執行作業。 更新使用者的功能變數名稱，或將其新增至目標應用程式中的允許清單。 |
 |逾時 |無法完成作業，因為目標應用程式花費的時間太長而無法回應。 不需要執行任何動作。 這次嘗試將會在40分鐘內自動重試。|
 |LicenseLimitExceeded|因為沒有此使用者的可用授權，所以無法在目標應用程式中建立使用者。 針對目標應用程式購買額外的授權，或查看您的使用者指派和屬性對應設定，以確保已使用正確的屬性來指派正確的使用者。|
-|DuplicateTargetEntries  |無法完成作業，因為找不到目標應用程式中有一個以上的使用者具有設定的相符屬性。 請從目標應用程式中移除重複的使用者，或重新設定屬性對應，[如下所述。](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)|
-|DuplicateSourceEntries | 無法完成作業，因為發現多個使用者具有設定的相符屬性。 請移除重複的使用者，或重新設定您的屬性對應[，如下所述。](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)|
+|DuplicateTargetEntries  |無法完成作業，因為找不到目標應用程式中有一個以上的使用者具有設定的相符屬性。 請從目標應用程式中移除重複的使用者，或重新設定屬性對應，[如下所述。](../app-provisioning/customize-application-attributes.md)|
+|DuplicateSourceEntries | 無法完成作業，因為發現多個使用者具有設定的相符屬性。 請移除重複的使用者，或重新設定您的屬性對應[，如下所述。](../app-provisioning/customize-application-attributes.md)|
 |ImportSkipped | 評估每位使用者時，我們會嘗試從來源系統匯入使用者。 當匯入的使用者缺少屬性對應中定義的相符屬性時，通常會發生這個錯誤。 在使用者物件上沒有符合屬性的值時，我們無法評估範圍、比對或匯出變更。 請注意，此錯誤是否存在，不表示使用者在範圍內，但尚未評估使用者的範圍。|
 |EntrySynchronizationSkipped | 布建服務已成功查詢來源系統並識別使用者。 使用者沒有採取任何進一步的動作，而且已略過。 略過的原因可能是使用者超出範圍，或使用者已存在於目標系統中，因此不需要進一步變更。|
 
 ## <a name="next-steps"></a>後續步驟
 
-* [檢查使用者布建的狀態](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)
-* [設定 Azure AD 資源庫應用程式的使用者佈建時遇到的問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
-
-
+* [檢查使用者布建的狀態](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
+* [設定 Azure AD 資源庫應用程式的使用者佈建時遇到的問題](../app-provisioning/application-provisioning-config-problem.md)
