@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e73f53fe983c1ebe77044993a281847ad362a840
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c8aca69c709743afb468657d1d7534ab308fcd29
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496768"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071562"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫 Azure 安全性基準
 
@@ -336,7 +336,7 @@ ms.locfileid: "87496768"
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
-**指引**：可支援透過資料庫中直接設定的使用者名稱/密碼，以及使用 Azure Active Directory (AD) 身分識別並利用 Azure AD 權杖進行連線，來登入適用於 MySQL 的 Azure 資料庫。 使用 Azure AD 權杖時，則支援不同的方法，例如使用 Azure AD 使用者、Azure AD 群組，或連線至資料庫的 Azure AD 應用程式。
+**指引**：可支援透過資料庫中直接設定的使用者名稱/密碼，以及使用 Azure Active Directory (AD) 身分識別並利用 Azure AD 權杖進行連線，來登入適用於 MySQL 的 Azure 資料庫。 使用 Azure AD 權杖時，則可支援不同的方法，例如使用 Azure AD 使用者、Azure AD 群組，或連線至資料庫的 Azure AD 應用程式。
 
 另外可透過 REST API 提供 MySQL 的控制平面存取權，並支援 SSO。 若要驗證，請將授權標頭設為從 Azure Active Directory 取得的 JSON Web 權杖。
 
@@ -547,9 +547,9 @@ Microsoft 會管理適用於 MySQL 的 Azure 資料庫的基礎結構，並已�
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指引**：使用 Azure 角色型存取控制（azure RBAC）來控制適用於 MySQL 的 Azure 資料庫控制平面的存取權（例如 Azure 入口網站）。 針對資料平面存取 (在該資料庫本身內)，請使用 SQL 查詢來建立使用者和設定使用者權限。 RBAC 不會影響資料庫中的使用者權限。
+**指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來控制適用於 MySQL 的 Azure 資料庫控制平面的存取 (例如 Azure 入口網站) 。 針對資料平面存取 (在該資料庫本身內)，請使用 SQL 查詢來建立使用者和設定使用者權限。 Azure RBAC 不會影響資料庫中的使用者許可權。
 
-如何在 Azure 中設定 RBAC： https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+如何設定 Azure RBAC： https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
 如何使用 SQL為適用於 MySQL 的 Azure 資料庫設定使用者存取權： https://docs.microsoft.com/azure/mysql/howto-create-users
 

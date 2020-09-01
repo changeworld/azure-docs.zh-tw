@@ -1,7 +1,7 @@
 ---
 title: 建立儲存體帳戶
 titleSuffix: Azure Storage
-description: 瞭解如何使用 Azure 入口網站、Azure PowerShell 或 Azure CLI 來建立儲存體帳戶。 Azure 儲存體帳戶會在 Microsoft Azure 中提供唯一命名空間來儲存及存取您的資料。
+description: 瞭解如何使用 Azure 入口網站、Azure PowerShell 或 Azure CLI 來建立儲存體帳戶。 Azure 儲存體帳戶會在 Microsoft Azure 中提供唯一的命名空間，以儲存及存取您的資料。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,23 +9,23 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 636efe27ec82fa870267d2cf69d5cdf990fd509a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 8b6f5f302465d075b7a0bcb0e6b12c75b1379bb5
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501350"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069811"
 ---
 # <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 
-Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔案、佇列、資料表和磁碟。 儲存體帳戶會為您的 Azure 儲存體資料提供唯一的命名空間，可透過 HTTP 或 HTTPS 從世界各地存取。 您的 Azure 儲存體帳戶中的資料既持久又高可用性、安全且可大幅擴充。
+Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔案、佇列、資料表和磁碟。 儲存體帳戶會為您的 Azure 儲存體資料提供唯一的命名空間，此命名空間可透過 HTTP 或 HTTPS 從世界各地存取。 您 Azure 儲存體帳戶中的資料具有持久性、高度可用、安全且可大規模調整。
 
-在此操作說明文章中，您將瞭解如何使用[Azure 入口網站](https://portal.azure.com/)、 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)、 [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)或[Azure Resource Manager 範本](../../azure-resource-manager/management/overview.md)來建立儲存體帳戶。  
+在此操作說明文章中，您將瞭解如何使用 [Azure 入口網站](https://portal.azure.com/)、 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)、 [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)或 [Azure Resource Manager 範本](../../azure-resource-manager/management/overview.md)來建立儲存體帳戶。  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -35,7 +35,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要使用 PowerShell 建立 Azure 儲存體帳戶，請確定您已安裝 Azure PowerShell 模組 Az 0.7 版或更新版本。 如需詳細資訊，請參閱[Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
+若要使用 PowerShell 建立 Azure 儲存體帳戶，請確定您已安裝 Azure PowerShell 模組 Az 0.7 版或更新版本。 如需詳細資訊，請參閱 [Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
 
 若要尋找您目前的版本，請執行下列命令：
 
@@ -43,7 +43,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 Get-InstalledModule -Name "Az"
 ```
 
-若要安裝或升級 Azure PowerShell，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
+若要安裝或升級 Azure PowerShell，請參閱 [安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -54,17 +54,17 @@ Get-InstalledModule -Name "Az"
 
 ### <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
-Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 Azure CLI 可預先安裝和設定，以便與您的帳戶搭配使用。 在 Azure 入口網站右上方區段的功能表上，按一下 [ **Cloud Shell** ] 按鈕：
+Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 Azure CLI 可預先安裝和設定，以便與您的帳戶搭配使用。 在 Azure 入口網站的右上方區段中，按一下功能表上的 [ **Cloud Shell** ] 按鈕：
 
 [![Cloud Shell](./media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
-按鈕會啟動互動式 shell，讓您用來執行本操作說明文章中所述的步驟：
+按鈕會啟動互動式 shell，可讓您用來執行此操作說明文章中所述的步驟：
 
 [![顯示 Cloud Shell 視窗的螢幕擷取畫面](./media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
 
 ### <a name="install-the-cli-locally"></a>在本機安裝 CLI
 
-您也可以在本機安裝及使用 Azure CLI。 本操作說明文章需要您執行 Azure CLI 版本2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
+您也可以在本機安裝及使用 Azure CLI。 此操作說明文章會要求您執行 Azure CLI 2.0.4 版版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
 
 # <a name="template"></a>[範本](#tab/template)
 
@@ -88,9 +88,9 @@ Connect-AzAccount
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要啟動 Azure Cloud Shell，請登入[Azure 入口網站](https://portal.azure.com)。
+若要啟動 Azure Cloud Shell，請登入 [Azure 入口網站](https://portal.azure.com)。
 
-若要登入您的本機安裝 CLI，請執行[az login](/cli/azure/reference-index#az-login)命令：
+若要登入您的本機 CLI 安裝，請執行 [az login](/cli/azure/reference-index#az-login) 命令：
 
 ```azurecli-interactive
 az login
@@ -108,7 +108,7 @@ N/A
 
 每個儲存體帳戶都必須屬於 Azure 資源群組。 資源群組是用來群組 Azure 服務的邏輯容器。 當您建立儲存體帳戶時，可以選擇建立新的資源群組，或使用現有的資源群組。 本文說明如何建立新的資源群組。
 
-**一般用途 v2** 儲存體帳戶提供所有 Azure 儲存體服務的存取權：Blob、檔案、佇列、資料表和磁碟。 這裡所述的步驟會建立一般用途 v2 儲存體帳戶，但建立任何類型儲存體帳戶的步驟都很類似。
+**一般用途 v2** 儲存體帳戶提供所有 Azure 儲存體服務的存取權：Blob、檔案、佇列、資料表和磁碟。 此處所述的步驟會建立一般用途 v2 儲存體帳戶，但建立任何類型儲存體帳戶的步驟都很類似。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -132,7 +132,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 Get-AzLocation | select Location
 ```
 
-接下來，使用[new-azstorageaccount](/powershell/module/az.storage/New-azStorageAccount)命令，建立具有讀取權限異地多餘儲存體（RA-GRS）的一般用途 v2 儲存體帳戶。 請記住，您的儲存體帳戶名稱在 Azure 中必須是唯一的，因此請將括弧中的預留位置值取代為您自己的唯一值：
+接下來，使用 [new-azstorageaccount](/powershell/module/az.storage/New-azStorageAccount) 命令，建立具有讀取權限異地冗余儲存體 (GRS) 的一般用途 v2 儲存體帳戶。 請記住，您的儲存體帳戶名稱在 Azure 中必須是唯一的，因此請將括弧中的預留位置值取代為您自己的唯一值：
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName $resourceGroup `
@@ -143,9 +143,9 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 ```
 
 > [!IMPORTANT]
-> 如果您打算使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請將包含 `-EnableHierarchicalNamespace $True` 在此參數清單中。
+> 如果您打算使用 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請 `-EnableHierarchicalNamespace $True` 在此參數清單中包含。
 
-若要使用不同的複寫選項來建立一般用途 v2 儲存體帳戶，請將下表中所需的值取代為**SkuName**參數。
+若要使用不同的複寫選項來建立一般用途 v2 儲存體帳戶，請在下表中以所需的值取代 **SkuName** 參數。
 
 |複寫選項  |SkuName 參數  |
 |---------|---------|
@@ -174,7 +174,7 @@ az account list-locations \
     --out table
 ```
 
-接下來，使用[az storage account create](/cli/azure/storage/account#az_storage_account_create)命令，建立具有讀取權限異地多餘儲存體的一般用途 v2 儲存體帳戶。 請記住，您的儲存體帳戶名稱在 Azure 中必須是唯一的，因此請將括弧中的預留位置值取代為您自己的唯一值：
+接下來，使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令，建立具有讀取權限異地多餘儲存體的一般用途 v2 儲存體帳戶。 請記住，您的儲存體帳戶名稱在 Azure 中必須是唯一的，因此請將括弧中的預留位置值取代為您自己的唯一值：
 
 ```azurecli-interactive
 az storage account create \
@@ -186,9 +186,9 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> 如果您打算使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請將包含 `--enable-hierarchical-namespace true` 在此參數清單中。 
+> 如果您打算使用 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請 `--enable-hierarchical-namespace true` 在此參數清單中包含。 
 
-若要使用不同的複寫選項來建立一般用途 v2 儲存體帳戶，請以下表中所需的值取代**sku**參數。
+若要使用不同的複寫選項來建立一般用途 v2 儲存體帳戶，請將下表中的所需值取代為 **sku** 參數。
 
 |複寫選項  |sku 參數  |
 |---------|---------|
@@ -201,7 +201,7 @@ az storage account create \
 
 # <a name="template"></a>[範本](#tab/template)
 
-您可以使用 Azure PowerShell 或 Azure CLI 來部署 Resource Manager 範本，以建立儲存體帳戶。 本操作說明文章中使用的範本是來自[Azure Resource Manager 快速入門範本](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要執行腳本，請選取 [**試試看**] 以開啟 Azure Cloud Shell。 若要貼上指令碼，請以滑鼠右鍵按一下 Shell，然後選取 [貼上]。
+您可以使用 Azure PowerShell 或 Azure CLI 部署 Resource Manager 範本以建立儲存體帳戶。 本操作說明文章中使用的範本是來自 [Azure Resource Manager 快速入門範本](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要執行腳本，請選取 [ **試試看** ] 以開啟 Azure Cloud Shell。 若要貼上指令碼，請以滑鼠右鍵按一下 Shell，然後選取 [貼上]。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -221,7 +221,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 ```
 
 > [!NOTE]
-> 此範本僅作為範例。 有許多儲存體帳戶設定未設定為此範本的一部分。 例如，如果您想要使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，您可以藉由將物件的屬性設定 `isHnsEnabledad` `StorageAccountPropertiesCreateParameters` 為來修改此範本 `true` 。 
+> 此範本僅作為範例。 有許多儲存體帳戶設定未設定為此範本的一部分。 例如，如果您想要使用 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請將物件的屬性設定為，以修改此範本 `isHnsEnabledad` `StorageAccountPropertiesCreateParameters` `true` 。 
 
 若要瞭解如何修改此範本或建立新範本，請參閱：
 
@@ -239,12 +239,12 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-1. 流覽至[Azure 入口網站](https://portal.azure.com)中的儲存體帳戶。
+1. 流覽至 [Azure 入口網站](https://portal.azure.com)中的儲存體帳戶。
 1. 按一下 **[刪除]** 。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要刪除儲存體帳戶，請使用[new-azstorageaccount](/powershell/module/az.storage/remove-azstorageaccount)命令：
+若要刪除儲存體帳戶，請使用 [new-azstorageaccount](/powershell/module/az.storage/remove-azstorageaccount) 命令：
 
 ```powershell
 Remove-AzStorageAccount -Name <storage-account> -ResourceGroupName <resource-group>
@@ -252,7 +252,7 @@ Remove-AzStorageAccount -Name <storage-account> -ResourceGroupName <resource-gro
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要刪除儲存體帳戶，請使用[az storage account delete](/cli/azure/storage/account#az-storage-account-delete)命令：
+若要刪除儲存體帳戶，請使用 [az storage account delete](/cli/azure/storage/account#az-storage-account-delete) 命令：
 
 ```azurecli-interactive
 az storage account delete --name <storage-account> --resource-group <resource-group>
@@ -278,16 +278,16 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 ---
 
-或者，您可以刪除資源群組，這會刪除該資源群組中的儲存體帳戶和任何其他資源。 如需有關刪除資源群組的詳細資訊，請參閱[刪除資源群組和資源](../../azure-resource-manager/management/delete-resource-group.md)。
+或者，您可以刪除資源群組，這會刪除儲存體帳戶和該資源群組中的任何其他資源。 如需有關刪除資源群組的詳細資訊，請參閱 [刪除資源群組和資源](../../azure-resource-manager/management/delete-resource-group.md)。
 
 > [!WARNING]
 > 您無法還原已刪除的儲存體帳戶，也無法擷取刪除之前所包含的任何內容。 請務必先備份您想要儲存的任何資料，再刪除帳戶。 這也適用於帳戶中的任何資源 - 一旦刪除 Blob、資料表、佇列或檔案，就是永久刪除。
 >
-> 如果您嘗試刪除與 Azure 虛擬機器相關聯的儲存體帳戶，您可能會收到儲存體帳戶仍在使用中的相關錯誤。 如需針對此錯誤進行疑難排解的協助，請參閱針對[刪除儲存體帳戶時的錯誤進行疑難排解](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md)。
+> 如果您嘗試刪除與 Azure 虛擬機器相關聯的儲存體帳戶，您可能會收到儲存體帳戶仍在使用中的相關錯誤。 如需針對此錯誤進行疑難排解的協助，請參閱針對 [刪除儲存體帳戶時的錯誤進行疑難排解](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-在此操作說明文章中，您已建立一般用途 v2 標準儲存體帳戶。 若要瞭解如何在您的儲存體帳戶之間上傳和下載 blob，請繼續進行其中一個 Blob 儲存體快速入門。
+在此操作說明文章中，您已建立一般用途 v2 標準儲存體帳戶。 若要瞭解如何在儲存體帳戶中上傳和下載 blob，請繼續進行其中一個 Blob 儲存體快速入門。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 

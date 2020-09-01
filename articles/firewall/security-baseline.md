@@ -1,30 +1,30 @@
 ---
 title: Azure 防火牆的 azure 安全性基準
-description: Azure 防火牆安全性基準提供程式指引和資源，可用於執行 Azure 安全性基準測試中所指定的安全性建議。
+description: Azure 防火牆安全性基準提供程式指引和資源，可讓您執行 Azure 安全性基準測試中所指定的安全性建議。
 author: msmbaldwin
 ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 869c6590146561f6f2f50694c5cc3f79530dad25
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 9b5cc1cdae31039fe3f94bc49fadf848032cfd86
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854233"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069284"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Azure 防火牆的 azure 安全性基準
 
-此安全性基準會將[Azure 安全性基準測試](../security/benchmarks/overview.md)的指引套用至 azure 防火牆。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。 內容是由 Azure 安全性基準測試所定義的**安全性控制**，以及適用于 azure 防火牆的相關指導方針組成群組。 不適用 Azure 防火牆的**控制項**已排除。 若要查看 Azure 防火牆如何完全對應到 Azure 安全性基準，請參閱[完整的 Azure 防火牆安全性基準對應](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)檔案。
+此安全性基準會將 [Azure 安全性基準測試](../security/benchmarks/overview.md) 的指引套用至 azure 防火牆。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。 內容會將 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 azure 防火牆的相關指引分組。 已排除不適用 Azure 防火牆的**控制項**。 若要瞭解 Azure 防火牆如何完全對應至 Azure 安全性基準測試，請參閱 [完整的 Azure 防火牆安全性基準對應](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)檔案。
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱[Azure 安全性基準測試：網路安全性](/azure/security/benchmarks/security-control-network-security)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：網路安全性](/azure/security/benchmarks/security-control-network-security)。*
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：監視和記錄虛擬網路、子網和網路介面的設定和流量
 
-**指引**： Azure 防火牆已與用來記錄防火牆所處理之流量的 Azure 監視器整合。
+**指導**方針： Azure 防火牆已與 Azure 監視器整合，以記錄防火牆所處理的流量。
 
 此外，請使用 Azure 資訊安全中心並遵循網路保護建議，以協助保護與 Azure 防火牆相關的網路資源。
 
@@ -36,7 +36,7 @@ ms.locfileid: "87854233"
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
 
-**指導**方針：啟用以威脅情報為基礎的篩選，以警示和拒絕來自或的已知惡意 IP 位址和網域的流量。 您可以為您的防火牆啟用以威脅情報為基礎的篩選，以警示和拒絕來自/傳向已知惡意 IP 位址和網域的流量。
+**指導**方針：啟用以威脅情報為基礎的篩選，以警示及拒絕從已知惡意 IP 位址和網域的流量。 您可以為您的防火牆啟用以威脅情報為基礎的篩選，以警示及拒絕來自/傳至已知惡意 IP 位址和網域的流量。
 
 - [以 Azure 防火牆威脅情報為主的篩選](threat-intel.md)
 
@@ -48,13 +48,13 @@ ms.locfileid: "87854233"
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負荷降至最低
 
-**指引**：在 Azure 防火牆中，服務標籤代表一組 IP 位址首碼，可協助將安全性規則建立的複雜度降到最低。
+**指導**方針：在 Azure 防火牆中，服務標籤代表一組 IP 位址首碼，以協助將建立安全性規則的複雜性降至最低。
 
-Azure 防火牆服務標籤可用於 [網路規則] [目的地] 欄位，並在 Azure 防火牆上定義網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。
+Azure 防火牆服務標籤可用於網路規則目的地欄位，並定義 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。
 
-此外，也支援客戶定義的標籤（例如 IP 群組），並可用於網路規則或應用程式規則。 應用程式規則中的 FQDN 標籤受到支援，可允許必要的輸出網路流量通過您的防火牆。
+此外，也支援客戶定義的標籤（例如 IP 群組），並可用於網路規則或應用程式規則。 支援應用程式規則中的 FQDN 標記，以允許必要的輸出網路流量通過防火牆。
 
-請注意，您無法建立自己的服務標籤，也不能指定要包含在標籤內的 IP 位址。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
+請注意，您無法建立自己的服務標籤，也無法指定標籤中包含哪些 IP 位址。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
 
  
 
@@ -72,13 +72,13 @@ Azure 防火牆服務標籤可用於 [網路規則] [目的地] 欄位，並在 
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
-**指引**： azure 防火牆尚未完全支援 azure 原則。 Azure 防火牆管理員可以用來達成安全性設定的標準化。
+**指導**方針： azure 防火牆尚未完全支援 azure 原則。 Azure 防火牆管理員可以用來達成安全性設定的標準化。
 
-您也可以使用 Azure 藍圖，在單一藍圖定義中封裝金鑰環境成品（例如 Azure 資源管理員範本、RBAC 控制項和原則），以簡化大規模的 Azure 部署。 您可以將藍圖套用至新的訂用帳戶，並透過版本控制來微調控制和管理。
+您也可以使用 Azure 藍圖，藉由在單一藍圖定義中封裝重要環境成品（例如 Azure 資源管理員範本、Azure RBAC 控制項和原則）來簡化大規模的 Azure 部署。 您可以將藍圖套用至新的訂用帳戶，並透過版本控制來微調控制和管理。
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [網路的 Azure 原則範例](/azure/governance/policy/samples/#network)
+- [適用于網路的 Azure 原則範例](/azure/governance/policy/samples/#network)
 
 - [如何建立 Azure 藍圖](../governance/blueprints/create-blueprint-portal.md)
 
@@ -88,7 +88,7 @@ Azure 防火牆服務標籤可用於 [網路規則] [目的地] 欄位，並在 
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
-**指引**：使用 Azure 活動記錄來監視資源設定，並偵測 Azure 防火牆資源的變更。 在 Azure 監視器中建立警示，以在重大資源的變更發生時觸發。
+**指導**方針：使用 Azure 活動記錄來監視資源設定，以及偵測 Azure 防火牆資源的變更。 在 Azure 監視器中建立警示，在發生重大資源變更時將會觸發此警示。
 
 - [監視 Azure 防火牆記錄和計量](/azure/firewall/tutorial-diagnostics)
 
@@ -102,11 +102,11 @@ Azure 防火牆服務標籤可用於 [網路規則] [目的地] 欄位，並在 
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*如需詳細資訊，請參閱[Azure 安全性基準測試：記錄和監視](/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和監視](/azure/security/benchmarks/security-control-logging-monitoring)。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
-**指引**： Microsoft 會維護 azure 防火牆的 azure 資源的時間來源。 客戶必須建立網路規則，以允許這項存取，或用於您在其環境中使用的時間伺服器。
+**指導**方針： Microsoft 會為 azure 防火牆維護 azure 資源的時間來源。 客戶必須建立網路規則，以允許此存取，或您在環境中使用的時間伺服器。
 
 - [NTP 伺服器存取](protect-windows-virtual-desktop.md#additional-considerations)
 
@@ -116,23 +116,23 @@ Azure 防火牆服務標籤可用於 [網路規則] [目的地] 欄位，並在 
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
-**指引**：您可以啟用和使用中的記錄資料，以 Azure Sentinel 或適用于各種記錄集中安全性記錄管理的協力廠商 SIEM。
+**指導**方針：您可以啟用和麵板上的記錄資料，以 Azure Sentinel 或針對各種記錄集中安全性記錄檔管理的協力廠商 SIEM。
 
-活動記錄可以用來對 Azure 防火牆上的作業進行審核，並監視資源上的動作。 活動記錄包含資源的所有寫入作業 (PUT、POST、DELETE) ，但讀取作業 (取得) 除外。 當您進行疑難排解時，可以使用活動記錄來尋找錯誤，或是監視組織中的使用者修改資源的方式。
+活動記錄可以用來在 Azure 防火牆上審核作業，並監視對資源的動作。 活動記錄包含 (PUT、POST、DELETE) 資源的所有寫入作業，但讀取作業 (取得) 。 當您進行疑難排解時，可以使用活動記錄來尋找錯誤，或是監視組織中的使用者修改資源的方式。
 
-Azure 防火牆也提供下列診斷記錄，以提供客戶應用程式和網路規則的相關資訊。
+Azure 防火牆也會提供下列診斷記錄，以提供客戶應用程式和網路規則的相關資訊。
 
 應用程式規則記錄：符合其中一個已設定應用程式規則的每個新連線，都會產生接受/拒絕連線的記錄。
 
-網路規則記錄檔：每個符合所設定網路規則的新連線都會產生接受/拒絕連線的記錄檔
+網路規則記錄：符合您設定的其中一個網路規則的每個新連線，都會產生接受/拒絕連線的記錄檔
 
-注意：這兩個記錄可以儲存至儲存體帳戶、串流處理至事件中樞，以及（或）只有在針對環境中的每個 Azure 防火牆啟用時，才會傳送至 Azure 監視器記錄。
+注意：這兩個記錄都可以儲存至儲存體帳戶、串流至事件中樞及/或僅在環境中針對每個 Azure 防火牆啟用時，才會傳送至 Azure 監視器記錄。
 
 - [Azure 防火牆記錄](logs-and-metrics.md)
 
 活動記錄中的資源動作清單： Azure Resource Manager 資源提供者作業
 
-- [如何使用 Azure 監視器收集平臺記錄和計量](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure 監視器收集平臺記錄和計量 ](../azure-monitor/platform/diagnostic-settings.md)
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
@@ -144,13 +144,13 @@ Azure 防火牆也提供下列診斷記錄，以提供客戶應用程式和網�
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
-**指引**：活動記錄可用來在 Azure 防火牆上審核作業，以及監視資源上的動作。 活動記錄包含 Azure 資源的所有寫入作業 (PUT、POST、DELETE) ，但讀取作業 (取得) 除外。 Azure 防火牆也提供下列診斷記錄，以提供客戶應用程式和網路規則的相關資訊。 
+**指導**方針：活動記錄可以用來在 Azure 防火牆上審核作業，並監視對資源的動作。 活動記錄包含所有的寫入作業， (PUT、POST、DELETE) for Azure 資源，但讀取作業 (取得) 。 Azure 防火牆也會提供下列診斷記錄，以提供客戶應用程式和網路規則的相關資訊。 
 
 應用程式規則記錄：符合其中一個已設定應用程式規則的每個新連線，都會產生接受/拒絕連線的記錄。
 
-網路規則記錄檔：每個符合所設定網路規則的新連線都會產生接受/拒絕連線的記錄檔
+網路規則記錄：符合您設定的其中一個網路規則的每個新連線，都會產生接受/拒絕連線的記錄檔
 
-請注意，這兩個記錄可以儲存至儲存體帳戶、串流處理至事件中樞及/或傳送至 Azure 監視器記錄，但僅適用于環境中的每個 Azure 防火牆啟用時。
+請注意，這兩個記錄都可以儲存至儲存體帳戶、串流至事件中樞及/或傳送至 Azure 監視器記錄，但僅適用于環境中的每個 Azure 防火牆啟用時。
 
 - [Azure 防火牆記錄](logs-and-metrics.md)
 
@@ -162,9 +162,9 @@ Azure 防火牆也提供下列診斷記錄，以提供客戶應用程式和網�
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
 
-**指引**：您可以根據組織在 Azure 監視器內的合規性法規來設定 Log Analytics 工作區保留期間。 根據選擇的定價層，您可以將資料保留時間設定為30到730天 (2 年) 適用于所有工作區。
+**指導**方針：您可以根據 Azure 監視器內的組織合規性法規來設定 Log Analytics 工作區保留期限。 您可以根據所選的定價層，為所有工作區將資料保留設定為30到730天 (2 年) 。
 
-有3個選項可儲存記錄儲存體保留：
+儲存記錄儲存體保留有3個選項：
 
 如果記錄會儲存一段較長的持續期間，並在需要時加以檢閱，則最好針對記錄使用儲存體帳戶。
 
@@ -184,19 +184,19 @@ Azure 監視器記錄最適合用來進行應用程式的一般即時監視，�
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和審核記錄
 
-**指引**： Azure 防火牆已與用於查看和分析防火牆記錄的 Azure 監視器整合。 記錄可以傳送至 Log Analytics、「Azure 儲存體」或「事件中樞」。 這些記錄可以在 Log Analytics 中進行分析，或透過不同的工具 (例如 Excel 和 Power BI) 進行分析。 Azure 防火牆記錄有幾種不同的類型。
+**指導**方針： Azure 防火牆已與 Azure 監視器整合，可供您用來查看和分析防火牆記錄。 記錄可以傳送至 Log Analytics、「Azure 儲存體」或「事件中樞」。 這些記錄可以在 Log Analytics 中進行分析，或透過不同的工具 (例如 Excel 和 Power BI) 進行分析。 有幾種不同類型的 Azure 防火牆記錄。
 
-活動記錄可以用來對 Azure 防火牆上的作業進行審核，並監視資源上的動作。 活動記錄包含資源的所有寫入作業 (PUT、POST、DELETE) ，但讀取作業 (取得) 除外。 當您進行疑難排解時，可以使用活動記錄來尋找錯誤，或是監視組織中的使用者修改資源的方式。
+活動記錄可以用來在 Azure 防火牆上審核作業，並監視對資源的動作。 活動記錄包含 (PUT、POST、DELETE) 資源的所有寫入作業， () 的讀取作業除外。 當您進行疑難排解時，可以使用活動記錄來尋找錯誤，或是監視組織中的使用者修改資源的方式。
 
 Azure 防火牆也會提供診斷記錄，以提供客戶應用程式和網路規則的相關資訊。
 
-當符合其中一個已設定應用程式規則的每個新連線產生接受/拒絕連線的記錄時，就會建立應用程式規則記錄。 
+當符合您設定的其中一個應用程式規則的每個新連線都產生可接受/拒絕連線的記錄檔時，就會建立應用程式規則記錄。 
 
-當符合其中一個已設定網路規則的每個新連線導致記錄接受/拒絕連接時，會建立網路規則記錄
+當符合您設定的其中一個網路規則的每個新連線都產生可接受/拒絕連線的記錄檔時，就會建立網路規則記錄檔。
 
-請注意，這兩個記錄可以儲存至儲存體帳戶、串流處理至事件中樞及/或傳送至 Azure 監視器記錄，但僅限於針對環境中的每個 Azure 防火牆加以啟用時。
+請注意，這兩個記錄都可以儲存至儲存體帳戶、串流至事件中樞及/或傳送至 Azure 監視器記錄，但僅限在環境中的每個 Azure 防火牆啟用時。
 
-Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨勢。
+Azure 監視器記錄可以用來進行應用程式的一般即時監視，或查看趨勢。
 
 - [Azure 防火牆記錄和計量](logs-and-metrics.md)
 
@@ -208,13 +208,13 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：啟用異常活動的警示
 
-**指導**方針：使用 Azure 資訊安全中心搭配 Log Analytics 工作區，以在安全性記錄和事件中找到的異常活動上進行監視和警示。 
+**指導**方針：搭配使用 Azure 資訊安全中心與 Log Analytics 工作區來監視和警示在安全性記錄和事件中找到的異常活動。 
 
-或者，您可以啟用和麵板上的資料來 Azure Sentinel。 
+或者，您也可以啟用和麵板上的資料以 Azure Sentinel。 
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-- [如何管理 Azure 資訊安全中心中的警示](../security-center/security-center-managing-and-responding-alerts.md)
+- [如何在 Azure 資訊安全中心中管理警示](../security-center/security-center-managing-and-responding-alerts.md)
 
 - [如何對 log analytics 記錄資料發出警示](../azure-monitor/learn/tutorial-response.md)
 
@@ -224,13 +224,13 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*如需詳細資訊，請參閱[Azure 安全性基準測試：身分識別和存取控制](/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：身分識別與存取控制](/azure/security/benchmarks/security-control-identity-access-control)。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指導**方針： Azure AD 具有必須明確指派且可供查詢的內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
+**指導**方針： Azure AD 有必須明確指派且可供查詢的內建角色。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-- [如何使用 PowerShell 取得 Azure AD 中的目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
@@ -242,7 +242,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 **指引**：建立使用專用系統管理帳戶的標準作業程序。 使用 Azure 資訊安全中心的身分識別與存取管理來監視系統管理帳戶的數目。
 
-您也可以使用 Microsoft 服務 Azure AD Privileged Identity Management 特殊許可權角色，並 Azure Resource Manager，啟用僅限時間/僅供存取。
+您也可以使用適用于 Microsoft 服務 Azure AD Privileged Identity Management 特殊許可權角色，並 Azure Resource Manager，來啟用及時且足夠的存取權。
 
 - [深入瞭解 Privileged Identity Management](/azure/active-directory/privileged-identity-management)
 
@@ -252,9 +252,9 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 單一登入 (SSO) 
 
-**指導**方針：盡可能使用 Azure Active Directory SSO，而不是設定個別服務的獨立認證。 使用 Azure 資訊安全中心身分識別和存取管理建議。
+**指導**方針：盡可能使用 Azure Active Directory SSO，而不是針對個別服務設定個別的獨立認證。 使用 Azure 資訊安全中心身分識別和存取管理建議。
 
-- [瞭解使用 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
+- [瞭解 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -262,7 +262,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：所有以 Azure Active Directory 為基礎的存取都使用多重要素驗證
 
-**指引**： (MFA) 啟用 Azure Active Directory 多重要素驗證，並遵循 Azure 資訊安全中心身分識別和存取管理建議。
+**指導**方針： (MFA) 啟用 Azure Active Directory 多重要素驗證，並遵循 Azure 資訊安全中心身分識別和存取管理建議。
 
 - [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -274,7 +274,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 
-**指導**方針：使用 paw (特殊許可權存取工作站) 搭配多重要素驗證 (MFA) 設定為登入及設定 Azure 防火牆和相關資源。 
+**指導**方針：使用 paw (特殊許可權的存取工作站) 搭配多重要素驗證 (MFA) 設定為登入及設定 Azure 防火牆和相關資源。 
 
 - [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations) 
 
@@ -284,9 +284,9 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 **責任**：客戶
 
-### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：從系統管理客戶紀錄及警示可疑活動
+### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：來自系統管理帳戶的可疑活動記錄和警示
 
-**指導**方針：當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory 的安全性報告來產生記錄檔和警示。 使用 Azure 資訊安全中心來監視身分識別和存取活動。 
+**指導**方針：當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory 的安全性報告來產生記錄和警示。 使用 Azure 資訊安全中心來監視身分識別和存取活動。 
 
 - [如何識別已標示為有風險活動的 Azure AD 使用者](/azure/active-directory/reports-monitoring/concept-user-at-risk) 
 
@@ -318,7 +318,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
-**指引**：Azure AD 會提供記錄來協助探索過時的帳戶。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。 
+**指引**：Azure AD 會提供記錄來協助探索過時的帳戶。 此外，使用 Azure 身分識別存取審核來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。 
 
 - [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring/)
 
@@ -332,7 +332,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 **指引**：您可以存取 Azure AD 登入活動、稽核和風險事件記錄檔來源，讓您可以與任何 SIEM/監視工具整合。 
 
-若要簡化此程式，您可以建立 Azure Active Directory 使用者帳戶的診斷設定，並將 audit 記錄和登入記錄傳送到 Log Analytics 工作區。 您可以在 Log Analytics 工作區中設定所需的警示。 
+您可以建立 Azure Active Directory 使用者帳戶的診斷設定，並將審核記錄和登入記錄傳送至 Log Analytics 工作區，以簡化此程式。 您可以在 Log Analytics 工作區中設定所需的警示。 
 
 - [如何將 Azure 活動記錄整合到 Azure 監視器中](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -356,11 +356,11 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱[Azure 安全性基準測試：資料保護](/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料保護](/azure/security/benchmarks/security-control-data-protection)。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的清查
 
-**指引**：使用標籤協助追蹤 Azure 防火牆和儲存或處理敏感資訊的相關資源。 
+**指導**方針：使用標籤協助追蹤 Azure 防火牆和儲存或處理敏感性資訊的相關資源。 
 
 - [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -370,7 +370,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指導**方針：使用個別的訂用帳戶和管理群組來執行隔離，以用於環境類型和資料敏感度層級等個別的安全性網域。 您可以限制您的應用程式和企業環境所需的 Azure 防火牆資源存取層級。 您可以透過 Azure Active Directory 角色型存取控制來控制對 Azure 資源的存取。 
+**指導**方針：針對個別的安全性網域（例如環境類型和資料敏感度層級），使用不同的訂用帳戶和管理群組來執行隔離。 您可以限制您的應用程式和企業環境所需的 Azure 防火牆資源存取層級。 您可以透過 Azure Active Directory 角色型存取控制，來控制 Azure 資源的存取權。 
 
 - [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
 
@@ -384,9 +384,9 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的敏感性資訊傳輸
 
-**指導**方針：運用協力廠商的解決方案，從 Azure Marketplace 的周邊網路，監視是否有未經授權的機密資訊傳輸，並在警示資訊安全性專業人員時封鎖這類傳輸。 
+**指導**方針：利用從網路周邊 Azure Marketplace 的協力廠商解決方案，監視是否有未經授權的機密資訊傳輸並封鎖這類傳輸，同時警示資訊安全專業人員。 
 
-針對由 Microsoft 管理的基礎平臺，Microsoft 會將所有客戶內容視為機密，並防止客戶資料遺失和曝光。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。 
+針對 Microsoft 所管理的基礎平臺，Microsoft 會將所有客戶內容視為機密，並防止客戶資料遺失和公開。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。 
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
@@ -396,11 +396,11 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
-**指引**：加密傳輸中的所有機密資訊。 請確定任何連線到您 Azure 防火牆的用戶端和相關資源都能夠協商 TLS 1.2 或更高版本。 
+**指導**方針：加密傳輸中的所有機密資訊。 確定任何連線至 Azure 防火牆和相關資源的用戶端都能夠協商 TLS 1.2 或更高的版本。 
 
-遵循 Azure 資訊安全中心的待用加密建議和傳輸中的加密（如果適用）。 
+遵循 Azure 資訊安全中心待用加密及傳輸中加密的建議（適用時）。 
 
-- [瞭解使用 Azure 傳輸加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
+- [瞭解 Azure 中的傳輸加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 **Azure 資訊安全中心監視**：是
 
@@ -408,7 +408,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用作用中探索工具來識別敏感性資料
 
-**指導**方針：使用協力廠商的 active discovery 工具，透過 azure 防火牆和相關資源來識別儲存在 azure 資源中的所有機密資訊，並更新組織的機密資訊清查。
+**指導**方針：使用協力廠商主動式探索工具，以使用 azure 防火牆和相關資源來識別儲存在 Azure 資源中的所有機密資訊，並更新組織的機密資訊清查。
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
@@ -416,11 +416,11 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 **責任**：共用
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用以角色為基礎的存取控制來控制對資源的存取
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指引**：使用 Azure Active Directory 以角色為基礎的存取控制 (RBAC) 來控制 Azure 防火牆和相關資源的存取權。
+**指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來控制 azure 防火牆和相關資源的存取權。
 
-- [如何在 Azure 中設定 RBAC](../role-based-access-control/role-assignments-portal.md)
+- [如何設定 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -428,7 +428,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
-**指導**方針：使用 azure 防火牆和相關資源，在所有 Azure 資源上使用靜態加密。 Microsoft 建議讓 Azure 管理您的加密金鑰，但在某些情況下，您可以選擇管理您自己的金鑰。 
+**指導**方針：使用 azure 防火牆和相關資源，在所有 Azure 資源上使用待用加密。 Microsoft 建議讓 Azure 管理您的加密金鑰，但在某些情況下，您可以選擇管理您自己的金鑰。 
 
 - [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
 
@@ -440,7 +440,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：針對重要 Azure 資源的變更留下記錄和發出警示
 
-**指導**方針：使用 Azure 監視器搭配 Azure 活動記錄，以建立 azure 防火牆中發生變更時的警示。
+**指導**方針：使用 Azure 監視器搭配 Azure 活動記錄來建立 azure 防火牆中發生變更時的警示。
 
 - [如何建立 Azure 活動記錄事件的警示](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -450,11 +450,11 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱[Azure 安全性基準測試：清查和資產管理](/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：清查和資產管理](/azure/security/benchmarks/security-control-inventory-asset-management)。*
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：維護資產中繼資料
 
-**指引**：將標籤套用至 Azure 防火牆，以及提供中繼資料以邏輯方式將其組織成分類法的相關資源。 
+**指導**方針：將標記套用至 Azure 防火牆，以及提供中繼資料的相關資源，以邏輯方式將它們組織成分類法。 
 
 - [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -464,7 +464,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
-**指引**.. 適當地使用標記、管理群組和個別訂用帳戶來組織和追蹤 Azure 防火牆和相關資源。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
+**指導**方針：使用標記、管理群組和個別訂用帳戶（如果適用）來組織和追蹤 Azure 防火牆和相關資源。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
 - [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
 
@@ -476,9 +476,9 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 **責任**：客戶
 
-### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定義並維護已核准 Azure 資源的清查
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定義和維護已核准 Azure 資源的清查
 
-**指引**：根據您的組織需求建立已核准 Azure 防火牆資源的清查，包括設定。
+**指導**方針：根據您的組織需求，建立核准的 Azure 防火牆資源（包括設定）的清查。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -486,9 +486,9 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 
-**指導**方針：使用 Azure 原則來對可在訂用帳戶 (s) 中建立的資源類型施加限制。
+**指導**方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型（ (s) ）施加限制。
 
-使用 Azure Resource Graph 在其訂用帳戶 (s) 中查詢/探索 Azure 防火牆資源。 請確定已核准環境中的所有 Azure 防火牆和相關資源。
+使用 Azure Resource Graph 來查詢/探索其訂用帳戶 () 中的 Azure 防火牆資源。 確認環境中的所有 Azure 防火牆和相關資源都已核准。
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -500,7 +500,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未經核准的 Azure 資源和軟體應用程式
 
-**指引**：執行您自己的程式，以移除未經授權的 Azure 防火牆和相關資源。 您也可以使用協力廠商解決方案來識別未核准的 Azure 防火牆和相關資源
+**指導**方針：執行您自己的流程，以移除未授權的 Azure 防火牆和相關資源。 您也可以使用協力廠商解決方案來識別未核准的 Azure 防火牆和相關資源
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -520,7 +520,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制使用者與 Azure Resource Manager 互動的能力
 
-**指引**：使用 azure 條件式存取，藉由設定「Microsoft Azure 管理」應用程式的「封鎖存取」，限制使用者與「Azure 資源管理員」互動的能力。 
+**指導**方針：使用 azure 條件式存取，藉由設定「Microsoft Azure 管理」應用程式的「封鎖存取」，來限制使用者與 Azure 資源管理員互動的能力。 
 
 - [如何設定條件式存取以封鎖對 Azure 資源管理員的存取](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -530,13 +530,13 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以實體或邏輯方式隔離高風險的應用程式
 
-**指導**方針：商務作業所需的應用程式，或組織中具有不同風險設定檔的環境，應該隔離並與個別的 Azure 防火牆實例分開。
+**指導**方針：商務作業可能需要的應用程式，或組織的風險設定檔不同的環境，應該隔離並與個別的 Azure 防火牆實例分開。
 
 - [使用 Azure 入口網站部署和設定 Azure 防火牆](deploy-cli.md)
 
 - [如何建立虛擬網路](../virtual-network/quick-create-portal.md)
 
-- [如何建立具有安全性設定的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
+- [如何使用安全性設定建立 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -544,17 +544,17 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ## <a name="secure-configuration"></a>安全設定
 
-*如需詳細資訊，請參閱[Azure 安全性基準測試：安全](/azure/security/benchmarks/security-control-secure-configuration)設定。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：安全](/azure/security/benchmarks/security-control-secure-configuration)設定。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
-**指導**方針： Azure Resource Manager 能夠在 JAVASCRIPT 物件標記法 (JSON) 中匯出範本，這應該進行檢查，以確保設定符合/超過貴組織的安全性需求。
+**指導**方針： Azure Resource Manager 能夠在 JAVASCRIPT 物件標記法 (JSON) 中匯出範本，您應該檢查這些設定，以確保設定符合/超過組織的安全性需求。
 
-您也可以使用來自 Azure 資訊安全中心的建議，做為 Azure 資源的安全設定基準。
+您也可以使用 Azure 資訊安全中心中的建議作為 Azure 資源的安全設定基準。
 
-目前未完全支援 Azure 原則。 
+目前並未完全支援 Azure 原則。 
 
-- [單一和多重資源匯出至 Azure 入口網站中的範本](../azure-resource-manager/templates/export-template-portal.md)
+- [Azure 入口網站中的單一和多重資源匯出至範本](../azure-resource-manager/templates/export-template-portal.md)
 
 - [安全性建議 - 參考指南](../security-center/recommendations-reference.md)
 
@@ -564,7 +564,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
-**指引**：使用 azure 原則 [拒絕] 和 [部署（如果不存在）]，在您的 Azure 防火牆和相關資源上強制執行安全設定。  此外，您可以使用 Azure Resource Manager 範本來維護貴組織所需的 Azure 防火牆和相關資源的安全性設定。
+**指導**方針：使用 azure 原則 [拒絕] 和 [部署是否不存在]，在您的 Azure 防火牆和相關資源上強制執行安全設定。  此外，您可以使用 Azure Resource Manager 範本，維護您的組織所需的 Azure 防火牆和相關資源的安全性設定。
 
 - [瞭解 Azure 原則效果](../governance/policy/concepts/effects.md)
 
@@ -578,7 +578,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
-**指引**：使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂 Azure 原則和 Azure Resource Manager 範本。 若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中所定義之群組的許可權，或 Active Directory （如果與 TFS 整合）。
+**指導**方針：使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂 Azure 原則和 Azure Resource Manager 範本。 若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中定義的群組，或與 TFS 整合的 Active Directory。
 
 - [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -590,7 +590,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署適用于 Azure 資源的設定管理工具
 
-**指引**：使用 Azure 原則定義和執行 Azure 防火牆的標準安全性設定和相關資源。 使用 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure 防火牆資源的網路設定。 您也可以使用與特定資源相關的內建原則定義。  
+**指導**方針：使用 Azure 原則定義和實行 Azure 防火牆和相關資源的標準安全性設定。 使用 Azure 原則別名來建立自訂原則，以針對 Azure 防火牆資源的網路設定進行審核或強制執行。 您也可以使用與特定資源相關的內建原則定義。  
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -602,7 +602,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
-**指引**：在 Azure AD 中使用受控識別，以自動管理的身分識別來提供 Azure 服務。 受控識別可讓您向支援 Azure AD authentication 的任何服務進行驗證，以 Azure Resource Manager，並可搭配 API/Azure 入口網站/CLI/PowerShell 使用。
+**指導**方針：使用受控識別，在 Azure AD 中為 Azure 服務提供自動管理的身分識別。 受控識別可讓您向支援 Azure Resource Manager Azure AD 驗證的任何服務進行驗證，並可搭配 API/Azure 入口網站/CLI/PowerShell 使用。
 
 - [如何設定受控識別](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
@@ -622,17 +622,17 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ## <a name="data-recovery"></a>資料復原
 
-*如需詳細資訊，請參閱[Azure 安全性基準測試：資料](/azure/security/benchmarks/security-control-data-recovery)復原。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料](/azure/security/benchmarks/security-control-data-recovery)復原。*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保週期性自動化備份
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確定定期自動備份
 
-**指引**：使用 Azure Resource Manager 在 JAVASCRIPT 物件標記法 (JSON) 範本中匯出 azure 防火牆和相關資源，這可用於 Azure 防火牆和相關設定的備份。  您也可以從 Azure 入口網站使用 Azure 防火牆的 [匯出範本] 功能來匯出 Azure 防火牆設定。  使用 Azure 自動化自動執行備份腳本。
+**指導**方針：使用 Azure Resource Manager，在 JAVASCRIPT 物件標記法 (JSON) 範本中匯出 azure 防火牆和相關資源，此範本可用來做為 Azure 防火牆和相關設定的備份。  您也可以從 Azure 入口網站使用 Azure 防火牆的「匯出範本」功能來匯出 Azure 防火牆設定。  使用 Azure 自動化自動執行備份腳本。
 
-- [單一和多重資源匯出至 Azure 入口網站中的範本](../azure-resource-manager/templates/export-template-portal.md)
+- [Azure 入口網站中的單一和多重資源匯出至範本](../azure-resource-manager/templates/export-template-portal.md)
 
 - [使用範本來部署 Azure 防火牆](deploy-template.md)
 
-- [Microsoft 網路 Azure 防火牆範本參考](/azure/templates/microsoft.network/azurefirewalls)
+- [Microsoft Network Azure 防火牆範本參考](/azure/templates/microsoft.network/azurefirewalls)
 
 - [關於 Azure 自動化](../automation/automation-intro.md)
 
@@ -640,13 +640,13 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 **責任**：客戶
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份，並備份任何客戶管理的金鑰
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份並備份任何客戶管理的金鑰
 
-**指引**：使用 Azure Resource Manager 在 JAVASCRIPT 物件標記法 (JSON) 範本中匯出 azure 防火牆和相關資源，這可用於 Azure 防火牆和相關設定的備份。  您也可以從 Azure 入口網站使用 Azure 防火牆的 [匯出範本] 功能來匯出 Azure 防火牆設定。
+**指導**方針：使用 Azure Resource Manager，在 JAVASCRIPT 物件標記法 (JSON) 範本中匯出 azure 防火牆和相關資源，此範本可用來做為 Azure 防火牆和相關設定的備份。  您也可以從 Azure 入口網站使用 Azure 防火牆的「匯出範本」功能來匯出 Azure 防火牆設定。
 
 - [使用範本來部署 Azure 防火牆](deploy-template.md)
 
-- [Microsoft 網路 Azure 防火牆範本參考](/azure/templates/microsoft.network/azurefirewalls)
+- [Microsoft Network Azure 防火牆範本參考](/azure/templates/microsoft.network/azurefirewalls)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -654,19 +654,19 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：驗證所有備份，包括客戶管理的金鑰
 
-**指導**方針：確保能夠使用 Azure Resource Manager 範本備份的檔案定期執行還原。  
+**指導**方針：確定能夠使用 Azure Resource Manager 範本支援的檔案定期執行還原。  
 
 - [使用範本來部署 Azure 防火牆](deploy-template.md)
 
-- [Microsoft 網路 Azure 防火牆範本參考](/azure/templates/microsoft.network/azurefirewalls)
+- [Microsoft Network Azure 防火牆範本參考](/azure/templates/microsoft.network/azurefirewalls)
 
 **Azure 資訊安全中心監視**：不適用
 
 **責任**：客戶
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理金鑰的保護
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰的保護
 
-**指引**：使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂的 Azure 原則、Azure Resource Manager 範本。 若要保護您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD 中定義之群組的許可權) 如果與 Azure DevOps 整合，或 Active Directory 與 TFS 整合。
+**指導**方針：使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂 Azure 原則、Azure Resource Manager 範本。 若要保護您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中定義的群組，或與 TFS 整合的 Active Directory。
 
 - [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -678,7 +678,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱[Azure 安全性基準測試：事件回應](/azure/security/benchmarks/security-control-incident-response)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：事件回應](/azure/security/benchmarks/security-control-incident-response)。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
@@ -744,7 +744,7 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自動回應安全性警示
 
-**指導**方針：使用 Azure 資訊安全中心中的工作流程自動化功能，透過「Logic Apps」來自動觸發安全性警示和建議的回應，以保護您的 Azure 資源。 
+**指導**方針：使用 Azure 資訊安全中心中的工作流程自動化功能，透過「Logic Apps」安全性警示和建議來自動觸發回應，以保護您的 Azure 資源。 
 
 - [如何設定工作流程自動化和 Logic Apps](../security-center/workflow-automation.md)
 
@@ -754,13 +754,13 @@ Azure 監視器記錄可用於應用程式的一般即時監視，或查看趨�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*如需詳細資訊，請參閱[Azure 安全性基準測試：滲透測試和 red team 練習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：滲透測試和 red team 練習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期滲透測試您的 Azure 資源，並確保修復所有重要的安全性結果
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導**方針：遵循 Microsoft Engagement 規則，確保您的滲透測試不會違反 microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的 Red 小組和即時網站滲透測試策略和執行。 
+**指導**方針：遵循 Microsoft 的 Engagement 規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。 
 
-- [Engagement 的滲透測試規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+- [滲透測試的參與規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
 - [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 

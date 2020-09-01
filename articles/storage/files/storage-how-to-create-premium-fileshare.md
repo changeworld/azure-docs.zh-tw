@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 27bedb2a5d9f95632141ce332773e0f4f9c696d5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 7c178f0bb54cb815b25259c819d15d10b3671c79
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930633"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070933"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>如何建立 Azure premium 檔案共用
 
@@ -59,7 +59,7 @@ Premium 檔案共用是在固態硬碟 (SSD) 儲存體媒體上提供，適用�
     ![如何建立 premium 檔案共用的儲存體帳戶](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
 1. 選取 [檢閱 + 建立]  ，以檢閱您的儲存體帳戶設定並建立帳戶。
-1. 選取 [建立]  。
+1. 選取 [建立]。
 
 建立儲存體帳戶資源之後，請流覽至該資源。
 

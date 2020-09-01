@@ -1,19 +1,19 @@
 ---
-title: 部署 & 使用 PowerShell 在混合式網路中設定 Azure 防火牆
+title: 使用 PowerShell 在混合式網路中部署 & 設定 Azure 防火牆
 description: 在本文中，您將瞭解如何使用 Azure PowerShell 來部署和設定 Azure 防火牆。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 01/08/2020
+ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 802df45e7434fd0cb425137964880a281f885ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a91d0e11c44657a2d4cdd267ffa6490ca89532a9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611164"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069403"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>使用 Azure PowerShell 在混合式網路中部署及設定 Azure 防火牆
 
@@ -25,44 +25,43 @@ ms.locfileid: "85611164"
 
 - **VNet-Hub** - 防火牆位於此虛擬網路中。
 - **VNet-Spoke** - 輪輻虛擬網路代表位於 Azure 的工作負載。
-- **VNet-Onprem** - 內部部署虛擬網路代表內部部署網路。 在實際部署中，它可經由 VPN 或 ExpressRoute 連線來連線。 為了簡單起見，本文使用 VPN 閘道連線，而 Azure 位置的虛擬網路則用來代表內部部署網路。
+- **VNet-Onprem** - 內部部署虛擬網路代表內部部署網路。 在實際部署中，它可經由 VPN 或 ExpressRoute 連線來連線。 為了簡單起見，本文會使用 VPN 閘道連線，並使用 Azure 位置的虛擬網路來代表內部部署網路。
 
 ![混合式網路中的防火牆](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
-> * 宣告變數
-> * 建立防火牆中樞虛擬網路
-> * 建立輪輻虛擬網路
-> * 建立內部部署虛擬網路
-> * 設定及部署防火牆
-> * 建立及連線 VPN 閘道
-> * 對等互連中樞與輪輻虛擬網路
-> * 建立路由
-> * 建立虛擬機器
-> * 測試防火牆
+* 宣告變數
+* 建立防火牆中樞虛擬網路
+* 建立輪輻虛擬網路
+* 建立內部部署虛擬網路
+* 設定及部署防火牆
+* 建立及連線 VPN 閘道
+* 對等互連中樞與輪輻虛擬網路
+* 建立路由
+* 建立虛擬機器
+* 測試防火牆
 
-如果您想要改為使用 Azure 入口網站來完成本教學課程，請參閱[教學課程：使用 Azure 入口網站在混合式網路中部署和設定 Azure 防火牆](tutorial-hybrid-portal.md)。
+如果您想要改為使用 Azure 入口網站來完成本教學課程，請參閱 [教學課程：使用 Azure 入口網站在混合式網路中部署及設定 Azure 防火牆](tutorial-hybrid-portal.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>必要條件
 
-本文會要求您在本機執行 PowerShell。 您必須已安裝 Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 驗證 PowerShell 版本之後，請執行 `Login-AzAccount` 以建立與 Azure 的連線。
+本文需要您在本機執行 PowerShell。 您必須已安裝 Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 驗證 PowerShell 版本之後，請執行 `Login-AzAccount` 以建立與 Azure 的連線。
 
 要讓此案例正常運作有三項重要需求：
 
-- 輪輻子網路上使用者定義的路由 (UDR) 會指向 Azure 防火牆 IP 位址，作為預設閘道。 必須**停用**此路由表上的虛擬網路閘道路由傳播。
+- 輪輻子網路上使用者定義的路由 (UDR) 會指向 Azure 防火牆 IP 位址，作為預設閘道。 此路由表上必須 **停用** 虛擬網路閘道路由傳播。
 - 中樞閘道子網路上的 UDR 必須指向防火牆 IP 位址，作為輪輻網路的下一個躍點。
 
    Azure 防火牆子網路不需要任何 UDR，因為可從 BGP 得知路由。
 - 請務必在將 VNet-Hub 對等互連至 VNet-Spoke 時設定 **AllowGatewayTransit**，以及在將 VNet-Spoke 對等互連至 VNet-Hub 時設定 **UseRemoteGateways**。
 
-請參閱本文中的[建立路由](#create-the-routes)一節，以瞭解如何建立這些路由。
+請參閱本文中的 [建立路由](#create-the-routes) 一節，以瞭解如何建立這些路由。
 
 >[!NOTE]
->「Azure 防火牆」必須能夠直接連線到網際網路。 如果您的 AzureFirewallSubnet 學習到透過 BGP 連至您內部部署網路的預設路由，您必須將其覆寫為 0.0.0.0/0 UDR，且 **NextHopType** 值必須設為 [網際網路]****，以保有直接網際網路連線。
+>「Azure 防火牆」必須能夠直接連線到網際網路。 如果您的 AzureFirewallSubnet 學習到透過 BGP 連至您內部部署網路的預設路由，您必須將其覆寫為 0.0.0.0/0 UDR，且 **NextHopType** 值必須設為 [網際網路]，以保有直接網際網路連線。
 >
 >您可將 Azure 防火牆設定為支援強制通道。 如需詳細資訊，請參閱 [Azure 防火牆強制通道](forced-tunneling.md)。
 
@@ -71,11 +70,11 @@ ms.locfileid: "85611164"
 
 若要檢閱相關的 Azure PowerShell 參考文件，請參閱 [Azure PowerShell 參考](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如您尚未擁有 Azure 訂用帳戶，請在開始之前先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="declare-the-variables"></a>宣告變數
 
-下列範例會使用本文的值宣告變數。 在某些情況下，您可能需要以自己的值取代一些值，才能在您的訂用帳戶中運作。 視需要修改變數，然後將其複製並貼到您的 PowerShell 主控台中。
+下列範例會使用本文中的值來宣告變數。 在某些情況下，您可能需要以自己的值取代一些值，才能在您的訂用帳戶中運作。 視需要修改變數，然後將其複製並貼到您的 PowerShell 主控台中。
 
 ```azurepowershell
 $RG1 = "FW-Hybrid-Test"
@@ -478,7 +477,7 @@ $NIC.IpConfigurations.privateipaddress
 - 您可以瀏覽輪輻虛擬網路上的網頁伺服器。
 - 您可以使用 RDP 連線到輪輻虛擬網路上的伺服器。
 
-接下來，將防火牆網路規則集合動作變更為 [拒絕]****，確認防火牆規則會如預期般運作。 請執行下列指令碼，將規則集合動作變更為 [拒絕]****。
+接下來，將防火牆網路規則集合動作變更為 [拒絕]，確認防火牆規則會如預期般運作。 請執行下列指令碼，將規則集合動作變更為 [拒絕]****。
 
 ```azurepowershell
 $rcNet = $azfw.GetNetworkRuleCollectionByName("RCNet01")

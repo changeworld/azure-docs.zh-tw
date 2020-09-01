@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 92cc742fce101b67bfb359381b4eabf9cf2a404e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: ade5972226a735ce5d093890091536baf02f5eff
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869570"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068978"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure 串流分析的輸出
 
@@ -24,7 +24,7 @@ Azure 串流分析作業是由輸入、查詢及輸出所組成。 有數種輸�
 
 | 輸出類型 | 資料分割 | 安全性 | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Azure Active Directory 使用者 </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|是|Azure Active Directory 使用者 </br> MSI|
 |[Azure SQL Database](sql-database-output.md)|是，必須啟用。|SQL 使用者驗證 </br> MSI (預覽) |
 |[Azure Synapse Analytics (預覽)](azure-synapse-analytics-output.md)|否|SQL 使用者驗證|
 |[Blob 儲存體和 Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|是|MSI </br> 存取金鑰|

@@ -1,17 +1,18 @@
 ---
-title: 使用服務主體部署 Windows 虛擬桌面 (傳統) 的管理工具-Azure
-description: 如何使用 PowerShell 部署 Windows 虛擬桌面 (傳統) 的管理工具。
+title: 使用服務主體部署適用于 Windows 虛擬桌面 (傳統) 的管理工具-Azure
+description: 如何使用 PowerShell 部署適用于 Windows 虛擬桌面的管理工具 (傳統) 。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: lizross
-ms.openlocfilehash: 08366735308e8b3c6fb79efd1adca469272dd053
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d7219751d584eb458cded9f4e30cccb1439dfa1b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005766"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069012"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>使用 PowerShell 部署 Windows 虛擬桌面 (傳統) 管理工具
 
@@ -22,9 +23,9 @@ ms.locfileid: "88005766"
 
 ## <a name="important-considerations"></a>重要考量
 
- (Azure AD) 租使用者訂用帳戶的每個 Azure Active Directory 都需要自己個別部署的管理工具。 此工具不支援企業對企業 (B2B) 案例 Azure AD。
+每個 Azure Active Directory (Azure AD) 租使用者的訂用帳戶都需要個別的管理工具部署。 此工具不支援企業對企業 (B2B) 案例的 Azure AD。
 
-這個管理工具很簡單。 Microsoft 將提供重要安全性與品質更新。 [原始程式碼可在 GitHub 中](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)取得。 無論您是客戶或合作夥伴，我們都建議您自訂工具以滿足您的商務需求。
+這個管理工具很簡單。 Microsoft 將提供重要安全性與品質更新。 [原始程式碼可在 GitHub 中](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)取得。 無論您是客戶或合作夥伴，我們都建議您自訂工具，以滿足您的業務需求。
 
 下列瀏覽器與管理工具相容：
 
@@ -46,14 +47,14 @@ ms.locfileid: "88005766"
 
 從登入 Az 和 Azure AD PowerShell 模組開始著手。 以下是登入的方式：
 
-1. 以系統管理員身分開啟 PowerShell，然後流覽至您儲存 PowerShell 腳本的目錄。
-2. 藉由執行下列 Cmdlet，在您打算用來建立管理工具的 Azure 訂用帳戶上，使用具有擁有者或參與者許可權的帳戶登入 Azure：
+1. 以系統管理員身分開啟 PowerShell，並流覽至您儲存 PowerShell 腳本的目錄。
+2. 藉由執行下列 Cmdlet，使用您打算用來建立管理工具的 Azure 訂用帳戶上具有擁有者或參與者許可權的帳戶登入 Azure：
 
     ```powershell
     Login-AzAccount
     ```
 
-3. 執行下列 Cmdlet，使用您用於 Az PowerShell 模組的相同帳戶來登入 Azure AD：
+3. 執行下列 Cmdlet 以使用您用於 Az PowerShell 模組的相同帳戶登入 Azure AD：
 
     ```powershell
     Connect-AzureAD
@@ -61,11 +62,11 @@ ms.locfileid: "88005766"
 
 4. 之後，流覽至您從 RDS 範本 GitHub 存放庫儲存兩個 PowerShell 腳本的資料夾。
 
-將您用來登入的 PowerShell 視窗保持開啟，以在登入時執行其他 PowerShell Cmdlet。
+將您用來登入的 PowerShell 視窗保持在開啟狀態，以在登入時執行額外的 PowerShell Cmdlet。
 
 ## <a name="create-an-azure-active-directory-app-registration"></a>建立 Azure Active Directory 應用程式註冊
 
-為了成功部署及設定管理工具，您必須先從[RDS 範本 GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy/scripts)存放庫下載下列 PowerShell 腳本
+為了成功部署及設定管理工具，您必須先從[RDS 範本 github](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy/scripts)存放庫下載下列 PowerShell 腳本。
 
 ```powershell
 Set-Location -Path "c:\temp"
@@ -75,7 +76,7 @@ $uri = "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templat
 Invoke-WebRequest -Uri $uri -OutFile ".\updateWvdMgmtUxApiUrl.ps1"
 ```
 
-執行下列命令，以必要的 API 許可權建立應用程式註冊：
+執行下列命令，以使用必要的 API 許可權來建立應用程式註冊：
 
 ```powershell
 $appName = Read-Host -Prompt "Enter a unique name for the management tool's app registration. The name can't contain spaces or special characters."
@@ -86,11 +87,11 @@ Get-AzSubscription -SubscriptionId $subscriptionId | Select-AzSubscription
 .\createWvdMgmtUxAppRegistration.ps1 -AppName $appName -SubscriptionId $subscriptionId
 ```
 
-既然您已完成 Azure AD 應用程式註冊，就可以部署管理工具。
+現在您已完成 Azure AD 應用程式註冊，您可以部署管理工具。
 
 ## <a name="deploy-the-management-tool"></a>部署管理工具
 
-執行下列 PowerShell 命令來部署管理工具，並將它與您剛建立的服務主體產生關聯：
+執行下列 PowerShell 命令來部署管理工具，並將它與您剛才建立的服務主體產生關聯：
 
 ```powershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -113,7 +114,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 ## <a name="set-the-redirect-uri"></a>設定重新導向 URI
 
-執行下列 PowerShell 命令來抓取 web 應用程式 URL，並將它設定為驗證重新導向 URI， (也稱為回復 URL) ：
+執行下列 PowerShell 命令來取出 web 應用程式 URL，並將它設定為驗證重新導向 URI， (也稱為回復 URL) ：
 
 ```powershell
 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName
@@ -121,7 +122,7 @@ $redirectUri = "https://" + $webApp.DefaultHostName + "/"
 Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri
 ```
 
-既然您已新增重新導向 URI，接下來您必須更新 API URL，讓管理工具可以與 API 後端服務互動。
+現在您已新增重新導向 URI，接下來您必須更新 API URL，讓管理工具可以與 API 後端服務互動。
 
 ## <a name="update-the-api-url-for-the-web-application"></a>更新 web 應用程式的 API URL
 
@@ -131,20 +132,20 @@ Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCre
 .\updateWvdMgmtUxApiUrl.ps1 -AppName $appName -SubscriptionId $subscriptionId
 ```
 
-既然您已完全設定管理工具 web 應用程式，現在可以驗證 Azure AD 應用程式並提供同意。
+現在您已完整設定管理工具 web 應用程式，接下來就是驗證 Azure AD 應用程式並提供同意的時候了。
 
-## <a name="verify-the-azure-ad-application-and-provide-consent"></a>驗證 Azure AD 應用程式並提供同意
+## <a name="verify-the-azure-ad-application-and-provide-consent"></a>確認 Azure AD 的應用程式並提供同意
 
-若要確認 Azure AD 的應用程式設定並提供同意：
+確認 Azure AD 的應用程式設定，並提供同意：
 
-1. 開啟網際網路瀏覽器，並使用您的系統管理帳戶登入[Azure 入口網站](https://portal.azure.com/)。
-2. 從 Azure 入口網站頂端的搜尋列中，搜尋**應用程式註冊**並選取 [**服務**] 底下的專案。
-3. 選取 [**所有應用程式**]，並搜尋您在[建立 Azure Active Directory 應用程式註冊](#create-an-azure-active-directory-app-registration)中為 PowerShell 腳本提供的唯一應用程式名稱。
-4. 在瀏覽器左側的面板中，選取 [**驗證**]，並確認 [重新導向 URI] 與管理工具的 web 應用程式 URL 相同，如下圖所示。
+1. 開啟您的網際網路瀏覽器，並使用您的系統管理帳戶登入 [Azure 入口網站](https://portal.azure.com/) 。
+2. 從 Azure 入口網站頂端的搜尋列中，搜尋 **應用程式註冊** ，然後選取 [ **服務**] 底下的專案。
+3. 選取 [ **所有應用程式** ]，並在 [ [建立 Azure Active Directory 應用程式註冊](#create-an-azure-active-directory-app-registration)] 中，搜尋您在 PowerShell 腳本中提供的唯一應用程式名稱。
+4. 在瀏覽器左側的面板中，選取 [ **驗證** ]，並確定 [重新導向 URI] 與管理工具的 [web 應用程式 URL] 相同，如下圖所示。
 
    [![具有所輸入重新導向 URI ](../media/management-ui-redirect-uri-inline.png) 的驗證頁面](../media/management-ui-redirect-uri-expanded.png#lightbox)
 
-5. 在左面板中，選取 [ **API 許可權**] 以確認已新增許可權。 如果您是全域系統管理員，請選取 [**授與系統 `tenantname` 管理員同意**] 按鈕，並遵循對話方塊提示，為您的組織提供系統管理員同意。
+5. 在左面板中，選取 [ **API 許可權** ] 以確認已新增許可權。 如果您是全域管理員，請選取 [**授與系統管理員 `tenantname` 同意**] 按鈕，並遵循對話方塊提示以提供貴組織的系統管理員同意。
 
     [![[API 許可權] 頁面 ](../media/management-ui-permissions-inline.png)](../media/management-ui-permissions-expanded.png#lightbox)
 
@@ -152,15 +153,15 @@ Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCre
 
 ## <a name="use-the-management-tool"></a>使用管理工具
 
-既然您已隨時設定管理工具，就可以隨時隨地啟動它。 以下是啟動工具的方法：
+現在您已設定管理工具，您可以隨時隨地啟動它。 以下是啟動工具的方式：
 
-1. 在網頁瀏覽器中開啟 web 應用程式的 URL。 如果您不記得 URL，您可以登入 Azure，尋找您為管理工具部署的 app service，然後選取該 URL。
+1. 在網頁瀏覽器中開啟 web 應用程式的 URL。 如果您不記得 URL，可以登入 Azure，尋找您為管理工具部署的 app service，然後選取 URL。
 2. 使用您的 Windows 虛擬桌面認證登入。
 
    > [!NOTE]
-   > 如果您在設定管理工具時未授與系統管理員同意，則每位登入的使用者都必須提供他們自己的使用者同意，才能使用此工具。
+   > 如果您在設定管理工具時未授與系統管理員同意，每位登入的使用者都必須提供自己的使用者同意，才能使用此工具。
 
-3. 當系統提示您選擇租使用者群組時，從下拉式清單中選取 [**預設租使用者群組**]。
+3. 當系統提示您選擇租使用者群組時，請從下拉式清單中選取 [ **預設租使用者群組** ]。
 4. 選取 [預設租用戶群組]**** 時，視窗的左側應該會出現一個功能表。 在此功能表上，尋找租用戶群組的名稱並選取。
 
    > [!NOTE]

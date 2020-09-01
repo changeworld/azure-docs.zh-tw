@@ -12,17 +12,17 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5d88c685f1e55bd361ac50662d9eaf931cba15c3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: da99468b1582c4acab192ad3b96761172aa69580
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115793"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068655"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory 圖形 API
 
 > [!IMPORTANT]
-> 強烈建議您使用[Microsoft Graph](https://developer.microsoft.com/graph) ，而不要使用 Azure AD 圖形 API 來存取 Azure Active Directory (Azure AD 資源。 我們的開發工作現在是針對 Microsoft Graph，並沒有針對 Azure AD Graph API 規劃的進一步增強功能 。 Azure AD 圖形 API 可能仍適用的案例數量非常有限;如需詳細資訊，請參閱[Microsoft Graph 或 Azure AD 圖的圖表](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/)blog 文章，並[將 Azure AD 圖形應用程式遷移至 Microsoft Graph](/graph/migrate-azure-ad-graph-overview)。
+> 強烈建議您使用 [Microsoft Graph](https://developer.microsoft.com/graph) 而不是 Azure AD 圖形 API 來存取 Azure Active Directory (Azure AD 資源。 我們的開發工作現在是針對 Microsoft Graph，並沒有針對 Azure AD Graph API 規劃的進一步增強功能 。 Azure AD 圖形 API 可能仍適用的案例數量非常有限;如需詳細資訊，請參閱 [Microsoft Graph 或 Azure AD 圖形](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/) 的 blog 文章，並 [將 Azure AD Graph 應用程式遷移至 Microsoft Graph](/graph/migrate-azure-ad-graph-planning-checklist)。
 
 本文適用於 Azure AD Graph API。 如需與 Microsoft Graph API 相關的類似資訊，請參閱[使用 Microsoft Graph API](/graph/use-the-api)。
 
@@ -31,12 +31,12 @@ Azure Active Directory 圖形 API 支援以程式設計方式透過 REST API 端
 * 在目錄中建立新的使用者
 * 取得使用者的詳細屬性，例如其群組
 * 更新使用者的屬性，例如其位置和電話號碼，或變更其密碼
-* 檢查使用者的群組成員資格以取得角色型存取
+* 檢查使用者的群組成員資格以進行角色型存取
 * 停用使用者的帳戶或完全刪除
 
 此外，您也可以在其他物件上執行類似的作業，例如群組和應用程式。 若要在目錄上呼叫 Azure AD 圖形 API，應用程式必須向 Azure AD 註冊。 您還必須對應用程式授與 Azure AD 圖形 API 的存取權。 此存取權通常是透過使用者或系統管理員同意流程來實現。
 
-若要開始使用 Azure Active Directory 圖形 API，請參閱[Azure AD 圖形 API 快速入門手冊](./microsoft-graph-intro.md)，或觀看[互動式 Azure AD 圖形 API 參考檔](/previous-versions/azure/ad/graph/api/api-catalog)。
+若要開始使用 Azure Active Directory 圖形 API，請參閱 [Azure AD 圖形 API 快速入門手冊](./microsoft-graph-intro.md)，或查看 [互動式 Azure AD 圖形 API 參考檔](/previous-versions/azure/ad/graph/api/api-catalog)。
 
 ## <a name="features"></a>特性
 
@@ -52,14 +52,14 @@ Azure AD 圖形 API 提供下列功能：
   * 透過登入使用者 (委派) 授權而獲得資料委派存取權的使用者介面
   * 未顯示登入使用者而在背景中作業，並使用應用程式所定義的角色型存取控制服務/精靈應用程式
     
-    委派和應用程式權限都代表 Azure AD 圖形 API 公開的權限，而且用戶端應用程式可以透過應用程式註冊權限要求它們 ([Azure 入口網站中的功能](https://portal.azure.com))。 [Azure AD 圖形 API 許可權範圍](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes)會提供可供用戶端應用程式使用之內容的相關資訊。
+    委派和應用程式權限都代表 Azure AD 圖形 API 公開的權限，而且用戶端應用程式可以透過應用程式註冊權限要求它們 ([Azure 入口網站中的功能](https://portal.azure.com))。 [Azure AD 圖形 API 許可權範圍](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes) 會提供可供用戶端應用程式使用的相關資訊。
 
 ## <a name="scenarios"></a>案例
 
 Azure AD 圖形 API 支援許多應用程式案例。 以下是最常見的案例：
 
 * **企業營運 (單一租用戶) 應用程式**：在此案例中，企業開發人員任職於具有 Office 365 訂用帳戶的組織中。 開發人員正在建置的 Web 應用程式會與 Azure AD 互動來執行工作，例如指派授權給使用者。 這項工作需要存取 Azure AD 圖形 API，所以開發人員在 Azure Ad 中註冊單一租用戶應用程式，並設定 Azure AD 圖形 API 的讀取和寫入權限。 然後，將應用程式設定為使用它自己的認證，或目前登入的使用者認證，以取得權杖來呼叫 Azure AD 圖形 API。
-* **軟體即服務應用程式 (多租用戶)**：在此案例中，獨立軟體廠商 (ISV) 正在開發託管的多租用戶 Web 應用程式，目的是為使用 Azure AD 的其他組織提供使用者管理功能。 這些功能需要存取目錄物件，所以此應用程式需要呼叫 Azure AD 圖形 API。 開發人員在 Azure AD 中註冊此應用程式，將它設定為需要 Azure AD 圖形 API 的讀取和寫入權限，然後啟用外部存取，讓其他組織同意在其目錄中使用此應用程式。 當另一個組織中的使用者第一次向應用程式驗證時，就會出現同意對話方塊及此應用程式所要求的權限。 授與同意之後，應用程式會提供所要求的許可權，以 Azure AD 使用者目錄中的圖形 API。 如需同意架構的詳細資訊，請參閱 [同意架構的概觀](consent-framework.md)。
+* **軟體即服務應用程式 (多租用戶)**：在此案例中，獨立軟體廠商 (ISV) 正在開發託管的多租用戶 Web 應用程式，目的是為使用 Azure AD 的其他組織提供使用者管理功能。 這些功能需要存取目錄物件，所以此應用程式需要呼叫 Azure AD 圖形 API。 開發人員在 Azure AD 中註冊此應用程式，將它設定為需要 Azure AD 圖形 API 的讀取和寫入權限，然後啟用外部存取，讓其他組織同意在其目錄中使用此應用程式。 當另一個組織中的使用者第一次向應用程式驗證時，就會出現同意對話方塊及此應用程式所要求的權限。 授與同意之後，就會將這些要求的許可權授與應用程式，以在使用者的目錄中 Azure AD 圖形 API。 如需同意架構的詳細資訊，請參閱 [同意架構的概觀](consent-framework.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

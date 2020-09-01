@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 433cfa3789aa37f4145982da97719526c0abfc47
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1b1ff8a54037392ac01402056ada0f3040dbd123
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719490"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068927"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>啟用個別使用者的 Azure Multi-Factor Authentication 以保護登入事件
 
@@ -43,7 +44,7 @@ ms.locfileid: "88719490"
 | State | 描述 | 受影響的舊版驗證 | 受影響的瀏覽器應用程式 | 受影響的新式驗證 |
 |:---:| --- |:---:|:--:|:--:|
 | 已停用 | 未在每位使用者的 Azure Multi-Factor Authentication 中註冊之使用者的預設狀態。 | 否 | 否 | 否 |
-| 啟用 | 使用者會在每個使用者的 Azure Multi-Factor Authentication 中註冊，但仍可使用其密碼進行舊版驗證。 如果使用者尚未註冊 MFA 驗證方法，則會在下一次使用新式驗證 (（例如透過網頁瀏覽器) ）登入時收到註冊的提示。 | 否。 舊版驗證會繼續運作，直到註冊程式完成為止。 | 是。 工作階段到期之後，必須進行 Azure Multi-Factor Authentication 註冊。| 是。 存取權杖到期之後，必須進行 Azure Multi-Factor Authentication 註冊。 |
+| 啟用 | 使用者會在每個使用者的 Azure Multi-Factor Authentication 中註冊，但仍可使用其密碼進行舊版驗證。 如果使用者尚未註冊 MFA 驗證方法，則會在下一次使用新式驗證 (（例如透過網頁瀏覽器) ）登入時收到註冊的提示。 | 不知道。 舊版驗證會繼續運作，直到註冊程式完成為止。 | 是。 工作階段到期之後，必須進行 Azure Multi-Factor Authentication 註冊。| 是。 存取權杖到期之後，必須進行 Azure Multi-Factor Authentication 註冊。 |
 | 已強制 | 使用者會在 Azure Multi-Factor Authentication 中向每位使用者註冊。 如果使用者尚未註冊驗證方法，則會在下一次使用新式驗證 (（例如透過網頁瀏覽器) ）登入時收到註冊的提示。 在 *啟用* 狀態下完成註冊的使用者會自動移至 *強制執行* 的狀態。 | 是。 應用程式需要應用程式密碼。 | 是。 登入時需要 Azure Multi-Factor Authentication。 | 是。 登入時需要 Azure Multi-Factor Authentication。 |
 
 所有使用者一開始都是「已停用」狀態。 當您在每位使用者的 Azure Multi-Factor Authentication 中註冊使用者時，他們的狀態會變更為「 *已啟用*」。 當已啟用的使用者登入並完成註冊程序之後，他們的狀態就會變更為「已強制」。 系統管理員可以在狀態之間移動使用者，包括從 *強制執行* 到 *已啟用* 或 *已停用*。
