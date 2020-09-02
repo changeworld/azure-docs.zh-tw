@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84353dd3c8b803f27073d113d6946152f059d9be
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: efa4b625afb641209d3920c8663ed810ee27e1ad
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873410"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228642"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>什麼是 Azure Active Directory 監視？
 
@@ -63,7 +63,7 @@ ms.locfileid: "87873410"
 
 ## <a name="send-logs-to-azure-monitor-logs"></a>將記錄傳送至 Azure 監視器記錄
 
-[Azure 監視器記錄](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)解決方案可合併不同來源的監視資料，並提供查詢語言和分析引擎，讓您深入解析應用程式和資源的作業。 將 Azure AD 活動記錄傳送至 Azure 監視器記錄，您即可快速擷取、監視及警示所收集的資料。 了解如何[將資料傳送至 Azure 監視器記錄](howto-integrate-activity-logs-with-log-analytics.md)。
+[Azure 監視器記錄](../../azure-monitor/log-query/log-query-overview.md)解決方案可合併不同來源的監視資料，並提供查詢語言和分析引擎，讓您深入解析應用程式和資源的作業。 將 Azure AD 活動記錄傳送至 Azure 監視器記錄，您即可快速擷取、監視及警示所收集的資料。 了解如何[將資料傳送至 Azure 監視器記錄](howto-integrate-activity-logs-with-log-analytics.md)。
 
 您也可以安裝預先建立的 Azure AD 活動記錄檢視，以監視有關登入和稽核事件的常見案例。 了解如何[安裝與使用適用於 Azure AD 活動記錄的記錄分析檢視](howto-install-use-log-analytics-views.md)。
 

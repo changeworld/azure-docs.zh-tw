@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: ecbdb6dc73082fc0fab04c8802c43219cabb6a79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2cec55b7c9450070d2e692fae50eff9ea880c54e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519757"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013736"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>快速入門：將 Windows 電腦上架到 Azure 資訊安全中心
 將 Azure 訂用帳戶上架之後，您可以透過佈建 Log Analytics 代理程式，為在 Azure 外 (例如，內部部署或其他雲端服務) 執行的資源啟用資訊安全中心。
@@ -74,7 +74,7 @@ ms.locfileid: "86519757"
 
 完成時，[Log Analytics 代理程式]  會出現在 [控制台]  中。 您可以在該處檢閱您的設定，並確認代理程式已連線。
 
-如需安裝及設定代理程式的詳細資訊，請參閱[連線到 Windows 電腦](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
+如需安裝及設定代理程式的詳細資訊，請參閱[連線到 Windows 電腦](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)。
 
 您現在可於同一處監視您的 Azure VM 和非 Azure 電腦。 在 [計算]  下，您可以檢視所有 VM 和電腦的概觀及建議。 每一欄表示一組建議。 色彩代表 VM 或電腦目前對於該建議的安全性狀態。 資訊安全中心也會在安全性警示中顯示針對這些電腦所偵測到的任何項目。
 

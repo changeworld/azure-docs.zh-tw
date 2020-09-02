@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Azure 媒體服務 v3 的高階概觀，其中包含快速入門、教學課程和程式碼範例的連結。
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -14,17 +14,19 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: mvc
-ms.openlocfilehash: d5f54d65fcfd8a124b30a785697d53ad120fbf9c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b11cd602850d23ac6ec37a9be51912adceb9afbc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000920"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267576"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure 媒體服務 v3 概觀
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure 媒體服務是雲端式平台，可讓您建置的解決方案擁有廣播品質的視訊串流、增強協助工具和散佈、分析內容等等。 不論您是應用程式開發人員、話務中心、政府機構，還是娛樂公司，媒體服務都能協助您建立應用程式，為時下最熱門的行動裝置和瀏覽器上的廣大愛用者，提供優異品質的媒體體驗。
 

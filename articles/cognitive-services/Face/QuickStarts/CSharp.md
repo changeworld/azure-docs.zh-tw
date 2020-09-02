@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 781fecd199d23ffd6c338d767e52479c07d23387
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fe6def8a935fcc6f093c4489409a3bcde829ac10
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549502"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294929"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入門：使用 Face REST API 和 C# 偵測影像中的臉部
 
@@ -23,7 +23,7 @@ ms.locfileid: "88549502"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="建立 Face 資源"  target="_blank">建立 Face 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
@@ -70,7 +70,7 @@ namespace DetectFace
 
         // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
-            "https://<myresourcename>.cognitive.microsoft.com/face/v1.0/detect";
+            "https://<myresourcename>.cognitiveservices.azure.com/face/v1.0/detect";
 ```
 
 ### <a name="receive-image-input"></a>接收影像輸入

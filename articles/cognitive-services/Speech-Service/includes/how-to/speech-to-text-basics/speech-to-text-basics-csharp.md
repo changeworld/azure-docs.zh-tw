@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 982c3c6011936c184c55dd92a76d4aec023baaf6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8a8647e7f19b55547bbb7eff6f1f3bc1f5282c89
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399741"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934528"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -222,7 +223,7 @@ speechConfig.EnableDictation();
 speechConfig.SpeechRecognitionLanguage = "it-IT";
 ```
 
-[`SpeechRecognitionLanguage`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage?view=azure-dotnet) 屬性需要語言/地區設定格式字串。 您可以提供支援的[地區設定/語言](../../../language-support.md)清單中位於 [地區設定]  資料行內的任何值。
+[`SpeechRecognitionLanguage`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage?view=azure-dotnet) 屬性需要語言/地區設定格式字串。 您可以提供支援的[地區設定/語言](../../../language-support.md)清單中位於 [地區設定] 資料行內的任何值。
 
 ## <a name="improve-recognition-accuracy"></a>提高辨識精確度
 

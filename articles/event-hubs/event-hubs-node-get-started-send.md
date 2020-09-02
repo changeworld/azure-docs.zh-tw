@@ -1,192 +1,190 @@
 ---
-title: 使用 JavaScript 從 Azure 事件中樞傳送或接收事件 (舊版)
-description: 本文將逐步解說如何建立 JavaScript 應用程式，以使用舊有的 azure/event-hubs 第 2 版套件對 Azure 事件中樞傳送事件或接收事件。
+title: 使用 JavaScript 從 Azure 事件中樞傳送或接收事件 (最新)
+description: 本文將逐步解說如何建立 JavaScript 應用程式，以使用最新的 azure/event-hubs 第 5 版套件對 Azure 事件中樞傳送事件或接收事件。
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ffa6b821d617731bd6ee5cbb9bec8bd6d856a7a6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 6f1fe30cad3a1bc0d5bce7a885650dd84fcb2215
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414117"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933982"
 ---
-# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-javascript-azureevent-hubs-version-2"></a>快速入門：使用 JavaScript 將事件傳送至 Azure 事件中樞或從中接收事件 (@azure/event-hubs 第 2 版)
-本快速入門說明如何使用 azure/event-hubs 第 2 版 JavaScript 套件，來建立 JavaScript 應用程式以傳送事件至事件中樞和從事件中樞接收事件。 
-
-> [!WARNING]
-> 本快速入門會使用舊有的 azure/event-hubs 第 2 版套件。 如需如何使用套件最新**第 5 版**的快速入門，請參閱[使用 azure/eventhubs 第 5 版傳送和接收事件](get-started-node-send-v2.md)。 若要將應用程式從使用舊套件改為使用新套件，請參閱[從 azure/eventhubs 第 1 版遷移至第 5 版的指南](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)。 
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>使用 JavaScript (azure/event-hubs 第 5 版) 將事件傳送至事件中樞或從中接收事件
+本快速入門說明如何使用 **azure/event-hubs 第 5 版** JavaScript 套件，來傳送事件至事件中樞和從事件中樞接收事件。 
 
 
 ## <a name="prerequisites"></a>Prerequisites
-
 如果您對 Azure 事件中樞並不熟悉，在進行此快速入門之前，請先參閱[事件中樞概述](event-hubs-about.md)。 
 
 若要完成本快速入門，您必須符合下列必要條件：
 
 - **Microsoft Azure 訂用帳戶**。 若要使用 Azure 服務 (包括 Azure 事件中樞)，您需要訂用帳戶。  如果您沒有現有的 Azure 帳戶，您可以申請[免費試用](https://azure.microsoft.com/free/)，或是在[建立帳戶](https://azure.microsoft.com)時使用 MSDN 訂閱者權益。
-- Node.js 8.x 版和更新版本。 從 [https://nodejs.org](https://nodejs.org) 下載最新的 LTS 版本。
-- Visual Studio Code (建議採用) 或任何其他的 IDE
-- **建立事件中樞命名空間和事件中樞**。 第一個步驟是使用 [Azure 入口網站](https://portal.azure.com)來建立「事件中樞」類型的命名空間，然後取得您應用程式與「事件中樞」進行通訊所需的管理認證。 若要建立命名空間和「事件中樞」，請依照[這篇文章](event-hubs-create.md)中的程序操作，然後繼續進行此教學課程中的下列步驟。 然後，依照下列文章中的指示，取得事件中樞命名空間的連接字串：[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 您稍後會在本教學課程中使用連接字串。
+- Node.js 8.x 版或更新版本， 下載最新的[長期支援 (LTS) 版本](https://nodejs.org)。  
+- Visual Studio Code (建議) 或任何其他整合式開發環境 (IDE)。  
+- 作用中的事件中樞命名空間和事件中樞。 若要建立這些項目，請執行下列步驟： 
 
+   1. 在 [Azure 入口網站](https://portal.azure.com)中，建立「事件中樞」  類型的命名空間，然後取得您的應用程式與事件中樞進行通訊所需的管理認證。 
+   1. 若要建立命名空間和事件中樞，請遵循[快速入門：使用 Azure 入口網站建立事件中樞](event-hubs-create.md)。
+   1. 遵循本快速入門中的指示以繼續。 
+   1. 若要取得事件中樞命名空間的連接字串，請依照[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)中的指示進行。 記下連接字串，以便稍後於本快速入門中使用。
+- **建立事件中樞命名空間和事件中樞**。 第一個步驟是使用 [Azure 入口網站](https://portal.azure.com)來建立「事件中樞」類型的命名空間，然後取得您應用程式與「事件中樞」進行通訊所需的管理認證。 若要建立命名空間和事件中樞，請依照[這篇文章](event-hubs-create.md)中的程序操作。 然後，依照下列文章中的指示，取得**事件中樞命名空間的連接字串**：[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 您稍後會在本快速入門中使用連接字串。
 
-### <a name="install-npm-package"></a>安裝 npm 套件
-若要安裝[事件中樞的 npm 套件](https://www.npmjs.com/package/@azure/event-hubs/v/2.1.0)，請開啟在路徑中有 `npm` 的命令提示字元，並將目錄切換至您要用來存放範例的資料夾，然後執行下列命令
+### <a name="install-the-npm-package"></a>安裝 npm 套件
+若要安裝[適用於事件中樞的 Node Package Manager (npm) 套件](https://www.npmjs.com/package/@azure/event-hubs)，請開啟在路徑中有 npm  的命令提示字元，並將目錄切換至您要用來存放範例的資料夾，然後執行下列命令：
 
 ```shell
-npm install @azure/event-hubs@2
+npm install @azure/event-hubs
 ```
 
-若要安裝[事件處理器主機的 npm 套件](https://www.npmjs.com/package/@azure/event-processor-host)，請改為執行下列命令
+針對接收端，您需要再安裝兩個套件。 在本快速入門中，您會使用 Azure Blob 儲存體來保存檢查點，讓程式不用再讀取已讀取過的事件。 該儲存體會在 Blob 中定期對接收的訊息執行中繼資料檢查點檢查。 此方法可在稍後輕鬆地從您離開的地方繼續接收訊息。
+
+執行下列命令：
 
 ```shell
-npm install @azure/event-processor-host
+npm install @azure/storage-blob
+```
+
+```shell
+npm install @azure/eventhubs-checkpointstore-blob
 ```
 
 ## <a name="send-events"></a>傳送事件
 
-本節說明如何建立可將事件傳送至事件中樞的 JavaScript 應用程式。 
+在本節中，您會建立可將事件傳送至事件中樞的 JavaScript 應用程式。
 
-> [!NOTE]
-> 您可以從 [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) 下載此快速入門來作為範例，並以您事件中樞的值取代 `EventHubConnectionString` 和 `EventHubName` 字串，然後執行。 或者，您可以遵循本教學課程中的步驟，來建立自己的解決方案。
-
-1. 開啟您慣用的編輯器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
-2. 建立名為 `send.js` 的檔案，並在其中貼上下列程式碼。 遵循以下文章中的指示，取得事件中樞命名空間的連接字串：[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 
+1. 開啟您慣用的編輯器，例如 [Visual Studio Code](https://code.visualstudio.com)。
+1. 建立名為 send.js  的檔案，並將以下程式碼張貼在該檔案內：
 
     ```javascript
-    const { EventHubClient } = require("@azure/event-hubs@2");
+    const { EventHubProducerClient } = require("@azure/event-hubs");
 
-    // Connection string - primary key of the Event Hubs namespace. 
-    // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    const connectionString = "Endpoint=sb://<EVENT HUBS NAMESPACE NAME>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<SHARED ACCESS KEY>";
-
-    // Name of the event hub. For example: myeventhub
-    const eventHubsName = "<EVENT HUB NAME>";
+    const connectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
+    const eventHubName = "EVENT HUB NAME";
 
     async function main() {
-      const client = EventHubClient.createFromConnectionString(connectionString, eventHubsName);
 
-      for (let i = 0; i < 100; i++) {
-        const eventData = {body: `Event ${i}`};
-        console.log(`Sending message: ${eventData.body}`);
-        await client.send(eventData);
-      }
+      // Create a producer client to send messages to the event hub.
+      const producer = new EventHubProducerClient(connectionString, eventHubName);
 
-      await client.close();
+      // Prepare a batch of three events.
+      const batch = await producer.createBatch();
+      batch.tryAdd({ body: "First event" });
+      batch.tryAdd({ body: "Second event" });
+      batch.tryAdd({ body: "Third event" });    
+
+      // Send the batch to the event hub.
+      await producer.sendBatch(batch);
+
+      // Close the producer client.
+      await producer.close();
+
+      console.log("A batch of three events have been sent to the event hub");
     }
 
-    main().catch(err => {
+    main().catch((err) => {
       console.log("Error occurred: ", err);
     });
     ```
-3. 在上述程式碼中，輸入事件中樞的連接字串和名稱
-4. 然後，在命令提示字元中執行命令 `node send.js`，以執行此檔案。 這會將 100 個事件傳送至事件中樞
+1. 在程式碼中，請使用實際值來取代下列各項：
+    * `EVENT HUBS NAMESPACE CONNECTION STRING` 
+    * `EVENT HUB NAME`
+1. 執行 `node send.js` 來執行此檔案。 此命令會將一個內含三個事件的批次傳送至您的事件中樞。
+1. 在 Azure 入口網站中，確認事件中樞是否已收到訊息。 在 [計量]  區段中，切換至 [訊息]  檢視。 請重新整理頁面來更新圖表。 可能需要幾秒鐘的時間，頁面才會顯示已收到訊息。
+
+    [![確認事件中樞已收到訊息](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
+
+    > [!NOTE]
+    > 如需完整的原始程式碼 (包括其他資訊註解)，請移至 [GitHub sendEvents.js 頁面](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/samples/javascript/sendEvents.js)。
 
 恭喜！ 您現在已將事件傳送至事件中樞。
 
 
 ## <a name="receive-events"></a>接收事件
+在本節中，您會使用 JavaScript 應用程式中的 Azure Blob 儲存體檢查點存放區，從事件中樞接收事件。 其會在 Azure 儲存體 Blob 中，定期對接收的訊息執行中繼資料檢查點檢查。 此方法可在稍後輕鬆地從您離開的地方繼續接收訊息。
 
-本節說明如何建立 JavaScript 應用程式，以從事件中樞的預設取用者群組中的單一分割區接收事件。 
+> [!NOTE]
+> 如果您在 Azure Stack Hub 上執行，該平台可能支援不同版本的儲存體 Blob SDK，而不是 Azure 上一般可用的版本。 例如，如果您在 [Azure Stack Hub 2002 版](/azure-stack/user/event-hubs-overview)上執行 ，儲存體服務的最高可用版本為 2017-11-09。 在此情況下，除了本節中的以下步驟外，您還需要新增程式碼，以將儲存體服務 API 版本設為 2017-11-09 為目標。 如需如何設定特定儲存體 API 版本目標的範例，請參閱 GitHub 上的 [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) 和 [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) 範例。 如需 Azure Stack Hub 支援的 Azure 儲存體服務版本詳細資訊，請參閱 [Azure Stack Hub 儲存體：差異與注意事項](/azure-stack/user/azure-stack-acs-differences)。
 
-1. 開啟您慣用的編輯器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
-2. 建立名為 `receive.js` 的檔案，並在其中貼上下列程式碼。
+
+### <a name="create-an-azure-storage-account-and-a-blob-container"></a>建立 Azure 儲存體帳戶和 Blob 容器
+若要建立 Azure 儲存體帳戶及其中的 Blob 容器，請執行下列動作：
+
+1. [建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)  
+2. [在儲存體帳戶中建立 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
+3. [取得儲存體帳戶的連接字串](../storage/common/storage-configure-connection-string.md)
+
+請務必記下連接字串和容器名稱，以便稍後在接收程式碼中使用。
+
+### <a name="write-code-to-receive-events"></a>撰寫程式碼來接收事件
+
+1. 開啟您慣用的編輯器，例如 [Visual Studio Code](https://code.visualstudio.com)。
+1. 建立名為 receive.js  的檔案，並將以下程式碼張貼在該檔案內：
+
     ```javascript
-    const { EventHubClient, delay } = require("@azure/event-hubs@2");
+    const { EventHubConsumerClient } = require("@azure/event-hubs");
+    const { ContainerClient } = require("@azure/storage-blob");    
+    const { BlobCheckpointStore } = require("@azure/eventhubs-checkpointstore-blob");
 
-    // Connection string - primary key of the Event Hubs namespace. 
-    // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    const connectionString = "Endpoint=sb://<EVENT HUBS NAMESPACE NAME>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<SHARED ACCESS KEY>";
-
-    // Name of the event hub. For example: myeventhub
-    const eventHubsName = "<EVENT HUB NAME>";
+    const connectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";    
+    const eventHubName = "EVENT HUB NAME";
+    const consumerGroup = "$Default"; // name of the default consumer group
+    const storageConnectionString = "AZURE STORAGE CONNECTION STRING";
+    const containerName = "BLOB CONTAINER NAME";
 
     async function main() {
-      const client = EventHubClient.createFromConnectionString(connectionString, eventHubsName);
-      const allPartitionIds = await client.getPartitionIds();
-      const firstPartitionId = allPartitionIds[0];
+      // Create a blob container client and a blob checkpoint store using the client.
+      const containerClient = new ContainerClient(storageConnectionString, containerName);
+      const checkpointStore = new BlobCheckpointStore(containerClient);
 
-      const receiveHandler = client.receive(firstPartitionId, eventData => {
-        console.log(`Received message: ${eventData.body} from partition ${firstPartitionId}`);
-      }, error => {
-        console.log('Error when receiving message: ', error)
-      });
+      // Create a consumer client for the event hub by specifying the checkpoint store.
+      const consumerClient = new EventHubConsumerClient(consumerGroup, connectionString, eventHubName, checkpointStore);
 
-      // Sleep for a while before stopping the receive operation.
-      await delay(15000);
-      await receiveHandler.stop();
+      // Subscribe to the events, and specify handlers for processing the events and errors.
+      const subscription = consumerClient.subscribe({
+          processEvents: async (events, context) => {
+            for (const event of events) {
+              console.log(`Received event: '${event.body}' from partition: '${context.partitionId}' and consumer group: '${context.consumerGroup}'`);
+            }
+            // Update the checkpoint.
+            await context.updateCheckpoint(events[events.length - 1]);
+          },
 
-      await client.close();
-    }
-
-    main().catch(err => {
-      console.log("Error occurred: ", err);
-    });
-    ```
-3. 在上述程式碼中，輸入事件中樞的連接字串和名稱。
-4. 然後，在命令提示字元中執行命令 `node receive.js`，以執行此檔案。 這會從事件中樞的預設取用者群組中的一個分割區接收事件
-
-恭喜！ 您現在已從事件中樞接收事件。
-
-## <a name="receive-events-using-event-processor-host"></a>使用事件處理器主機接收事件
-
-本節說明如何在 JavaScript 應用程式中，使用 Azure [EventProcessorHost](event-hubs-event-processor-host.md) 從事件中樞接收事件。 EventProcessorHost (EPH) 可藉由在事件中樞取用者群組中的所有分割區上建立接收者，協助您有效率地從事件中樞接收事件。 它會在 Azure 儲存體 Blob 中，定期針對所接收訊息的中繼資料進行檢查點檢查。 此方法可在稍後輕鬆地從您離開的地方繼續接收訊息。
-
-1. 開啟您慣用的編輯器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
-2. 建立名為 `receiveAll.js` 的檔案，並在其中貼上下列程式碼。
-    ```javascript
-    const { EventProcessorHost, delay } = require("@azure/event-processor-host");
-
-    // Connection string - primary key of the Event Hubs namespace. 
-    // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    const eventHubConnectionString = "Endpoint=sb://<EVENT HUBS NAMESPACE NAME>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<SHARED ACCESS KEY>";
-
-    // Name of the event hub. For example: myeventhub
-    const eventHubName = "<EVENT HUB NAME>";
-
-    // Azure Storage connection string
-    const storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=<STORAGE ACCOUNT NAME>;AccountKey=<STORAGE ACCOUNT KEY>;EndpointSuffix=core.windows.net";
-
-    async function main() {
-      const eph = EventProcessorHost.createFromConnectionString(
-        "my-eph",
-        storageConnectionString,
-        "my-storage-container-name",
-        eventHubConnectionString,
-        {
-          eventHubPath: eventHubName,
-          onEphError: (error) => {
-            console.log("[%s] Error: %O", error);
+          processError: async (err, context) => {
+            console.log(`Error : ${err}`);
           }
         }
       );
 
-
-      eph.start((context, eventData) => {
-        console.log(`Received message: ${eventData.body} from partition ${context.partitionId}`);
-      }, error => {
-        console.log('Error when receiving message: ', error)
+      // After 30 seconds, stop processing.
+      await new Promise((resolve) => {
+        setTimeout(async () => {
+          await subscription.close();
+          await consumerClient.close();
+          resolve();
+        }, 30000);
       });
-
-      // Sleep for a while before stopping the receive operation.
-      await delay(15000);
-      await eph.stop();
     }
 
-    main().catch(err => {
+    main().catch((err) => {
       console.log("Error occurred: ", err);
-    });
-
+    });    
     ```
-3. 在上述程式碼中，輸入事件中樞的連接字串和名稱，以及 Azure Blob 儲存體的連接字串
-4. 然後，在命令提示字元中執行命令 `node receiveAll.js`，以執行此檔案。
+1. 在程式碼中，請使用實際值來取代下列值：
+    - `EVENT HUBS NAMESPACE CONNECTION STRING`
+    - `EVENT HUB NAME`
+    - `AZURE STORAGE CONNECTION STRING`
+    - `BLOB CONTAINER NAME`
+1. 在命令提示字元中執行 `node receive.js` 來執行這個檔案。 視窗應該會顯示已接收事件的相關訊息。
 
-恭喜！ 您現在已使用事件處理器主機從事件中樞接收事件。 這會從事件中樞的預設取用者群組中的所有分割區接收事件
+    > [!NOTE]
+    > 如需完整的原始程式碼 (包括其他資訊註解)，請移至 [GitHub receiveEventsUsingCheckpointStore.js 頁面](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsUsingCheckpointStore.js)。
+
+恭喜！ 您現在已從事件中樞接收事件。 接收者程式會從事件中樞的所有預設取用者群組分割區接收事件。
 
 ## <a name="next-steps"></a>後續步驟
-請閱讀下列文章：
+在 GitHub 上查看這些範例：
 
-- [EventProcessorHost](event-hubs-event-processor-host.md)
-- [Azure 事件中樞的功能與術語](event-hubs-features.md)
-- [事件中樞常見問題集](event-hubs-faq.md)
-- 在 GitHub 上查看[事件中樞](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples)和[事件處理器主機](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-processor-host/samples)的其他 JavaScript 範例
+- [JavaScript 範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/javascript) \(英文\)
+- [TypeScript 範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/typescript)

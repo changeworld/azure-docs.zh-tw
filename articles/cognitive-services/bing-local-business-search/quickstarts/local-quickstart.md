@@ -10,12 +10,13 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: 812061bf161a33e4151b7b23265196895e039414
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 127834034cf1de00b61794c6cfd51a041a37a8c3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611232"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925142"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>快速入門：傳送查詢至以 C# 撰寫的 Bing 當地商家搜尋 API
 

@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: b064f6515c8ff4b3be4219cc6516ef25dabf0679
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 65465c97f4457756fb376219caeb9cb066a2ec77
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510082"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929106"
 ---
 開始使用適用於 .NET 的 Content Moderator 用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 Content Moderator 是一項認知服務，可檢查文字、影像和視訊內容是否含有可能具冒犯意味、有風險或不當的資料。 找到這類資料時，服務會對內容套用適當的標籤 (旗標)。 加上旗標的內容隨後可由您的應用程式處理，以遵循法規或維護使用者應有的環境。
 

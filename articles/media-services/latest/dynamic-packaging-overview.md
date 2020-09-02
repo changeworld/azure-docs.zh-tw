@@ -11,17 +11,19 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: overview
-ms.date: 08/18/2020
+ms.topic: conceptual
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8a5d52f2705a04c290f1122335430c12db8d294c
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: dfa87921bc6a5a6c34b4dec33f4aae1907507730
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604586"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291614"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒體服務 v3 中的動態封裝
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼。 它會透過不同的串流通訊協定 (不論是否有內容保護) 來傳遞這些格式，以聯繫所有主要裝置 (例如 iOS 和 Android 裝置)。 這些用戶端了解不同的通訊協定。 例如，iOS 需要以 HTTP 即時串流 (HLS) 格式傳遞串流，而 Android 裝置則支援 HLS 和 MPEG DASH。
 

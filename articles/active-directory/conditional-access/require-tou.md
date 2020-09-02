@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34cc8154660db8afcd5859d45ccfd622bc7ca88f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 53f99456449e778ff7c1fd3ab096e1afd3562c1e
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039818"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948856"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>快速入門：必須接受使用規定才可存取雲端應用程式
 
@@ -25,7 +25,7 @@ ms.locfileid: "86039818"
 - 設定 ToU 的簡易方法
 - 要求透過條件式存取原則接受使用規定的選項  
 
-本快速入門說明如何設定 [Azure AD 條件式存取原則](../active-directory-conditional-access-azure-portal.md)，以要求必須對您環境中選定的雲端應用程式接受 ToU。
+本快速入門說明如何設定 [Azure AD 條件式存取原則](./overview.md)，以要求必須對您環境中選定的雲端應用程式接受 ToU。
 
 ![建立原則](./media/require-tou/5555.png)
 
@@ -209,4 +209,4 @@ ms.locfileid: "86039818"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [特定應用程式需要 MFA](app-based-mfa.md)
+> [特定應用程式需要 MFA](../authentication/tutorial-enable-azure-mfa.md)

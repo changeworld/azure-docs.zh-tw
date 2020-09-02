@@ -8,12 +8,13 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: eb1821537e6e25b05dfdca3107729eecf4c6e1bf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3b9aadf7d9cd27763cafb878d0b35d13a140a304
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75750507"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008398"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>佇列儲存體的效能和延展性檢查清單
 
@@ -40,7 +41,7 @@ Azure 儲存體具有容量、交易速率和頻寬的延展性和效能目標�
 | &nbsp; |工具 |[您是否使用 Microsoft 所提供的最新用戶端程式庫和工具版本？](#client-libraries-and-tools) |
 | &nbsp; |重試 |[您是否針對節流錯誤和逾時使用重試原則搭配指數輪詢？](#timeout-and-server-busy-errors) |
 | &nbsp; |重試 |[您的應用程式是否避免重試不能再嘗試的錯誤？](#non-retryable-errors) |
-| &nbsp; |組態 |[您是否已關閉 Nagle 演算法以提高小型要求的效能？](#disable-nagle) |
+| &nbsp; |設定 |[您是否已關閉 Nagle 演算法以提高小型要求的效能？](#disable-nagle) |
 | &nbsp; |訊息大小 |[您的訊息是否精簡以提高佇列效能？](#message-size) |
 | &nbsp; |大量擷取 |[您是否在單一 Get 作業中擷取多則訊息？](#batch-retrieval) |
 | &nbsp; |輪詢頻率 |[您是否夠常輪詢以降低可察覺的應用程式延遲？](#queue-polling-interval) |
@@ -84,7 +85,7 @@ Azure 儲存體具有容量、交易速率和頻寬的延展性和效能目標�
 
 與任何網路使用方式一樣，請記住導致錯誤和封包遺失的網路狀況將會減慢有效的輸送量。  使用 WireShark 或 NetMon 可能有助於診斷此問題。  
 
-### <a name="location"></a>Location
+### <a name="location"></a>位置
 
 在任何分散式環境中，將用戶端放置於伺服器附近可提供最佳的效能。 若要以最低的延遲時間存取 Azure 儲存體，對用戶端而言的最佳位置是在同一個 Azure 區域內。 例如，如果您擁有使用 Azure 儲存體的 Azure Web 應用程式，則將這兩者置於單一區域內 (例如，美國西部或東南亞)。 共置資源可降低延遲和成本，因為單一區域內的頻寬使用量是免費的。  
 
@@ -183,7 +184,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 ## <a name="use-update-message"></a>使用更新訊息
 
-您可以使用 [更新訊息]  作業來增加隱藏逾時，或更新訊息的狀態資訊。 相較於在作業的每個步驟完成時，將作業從一個佇列傳遞到下一個佇列的工作流程，使用 [更新訊息]  更有效率。 您的應用程式可以將作業狀態儲存到訊息，然後繼續工作，而不是每次步驟完成時，便重新佇列訊息以進行作業的下一個步驟。 請記住，每個 [更新訊息]  作業都會算在延展性目標內。
+您可以使用 [更新訊息]**** 作業來增加隱藏逾時，或更新訊息的狀態資訊。 相較於在作業的每個步驟完成時，將作業從一個佇列傳遞到下一個佇列的工作流程，使用 [更新訊息]**** 更有效率。 您的應用程式可以將作業狀態儲存到訊息，然後繼續工作，而不是每次步驟完成時，便重新佇列訊息以進行作業的下一個步驟。 請記住，每個 [更新訊息]**** 作業都會算在延展性目標內。
 
 ## <a name="application-architecture"></a>應用程式架構
 

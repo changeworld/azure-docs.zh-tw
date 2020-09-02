@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python
-ms.openlocfilehash: 7515fe7b7e3d2a9d0f1e0497aa226ceb3e6be16c
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 88a3876757c3f51d1fc70692976987560ee1b991
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083383"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961630"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>設定適用於 Azure App Service 的 Linux Python 應用程式
 
@@ -21,7 +21,7 @@ ms.locfileid: "88083383"
 本指南為在 App Service 中使用內建 Linux 容器的 Python 開發人員提供了重要概念和指示。 如果您從未使用過 Azure App Service，則首先應該遵循 [Python 快速入門](quickstart-python.md)和 [Python with PostgreSQL 教學課程](tutorial-python-postgresql-app.md)。
 
 > [!NOTE]
-> Linux 目前是在 App Service 中執行 Python 應用程式的建議選項。 如需 Windows 選項的資訊，請參閱 [Windows風格 App Service 的 Python](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service)。
+> Linux 目前是在 App Service 中執行 Python 應用程式的建議選項。 如需 Windows 選項的資訊，請參閱 [Windows風格 App Service 的 Python](/visualstudio/python/managing-python-on-azure-app-service)。
 >
 
 ## <a name="show-python-version"></a>顯示 Python 版本

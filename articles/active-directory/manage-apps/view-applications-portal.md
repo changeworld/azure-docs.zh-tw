@@ -12,12 +12,12 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.openlocfilehash: 8f6d9c3409e0b91b6744d406fb1af674f73dbe3c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a79078977d25c55edfb4ad72bbd4602a073231f6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117884"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277930"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>快速入門：檢視使用您 Azure Active Directory (Azure AD) 租用戶進行身分識別管理的應用程式清單
 
@@ -27,7 +27,7 @@ ms.locfileid: "88117884"
 
 若要檢視已在 Azure AD 租用戶中註冊的應用程式，您需要：
 
-- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 一個 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 >[!IMPORTANT]
 >若要測試本教學課程中的步驟，我們建議您使用非實際執行環境。

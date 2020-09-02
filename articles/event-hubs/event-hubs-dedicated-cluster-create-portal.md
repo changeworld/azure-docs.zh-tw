@@ -3,12 +3,12 @@ title: 使用 Azure 入口網站建立事件中樞專用叢集
 description: 在本快速入門中，您將了解如何使用 Azure 入口網站建立 Azure 事件中樞叢集。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: cb657619e16f7be1d633bab61625026a40a378b8
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2759d1e25519b69311c369f3f58239cc0889a9a7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323092"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927760"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>快速入門：使用 Azure 入口網站建立專用的事件中樞叢集 
 事件中樞叢集可為有極嚴苛串流需求的客戶提供單一租用戶部署。 此供應項目可保證 99.99 % 的 SLA，且僅適用於專用定價層。 [事件中樞叢集](event-hubs-dedicated-overview.md)可在保證容量與提供亞秒延遲的情況下，每秒輸入數百萬個事件。 叢集內所建立的命名空間和事件中樞會包含標準供應項目以上的所有功能，但沒有任何輸入限制。 專案供應項目也包含熱門的[事件中樞擷取](event-hubs-capture-overview.md)功能，此功能完全免費，可讓您自動地對資料流進行批次處理並記錄至 [Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)或 [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)。
@@ -100,9 +100,9 @@ ms.locfileid: "85323092"
 在本文中，您已建立事件中樞叢集。 如需逐步指示以了解如何在事件中樞內傳送和接收事件，以及如何將事件擷取至 Azure 儲存體或 Azure Data Lake Store，請參閱下列教學課程：
 
 - 傳送及接收事件 
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 - [使用 Azure 入口網站啟用事件中樞擷取](event-hubs-capture-enable-through-portal.md)
 - [使用適用於 Apache Kafka 的 Azure 事件中樞](event-hubs-for-kafka-ecosystem-overview.md)

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 19d46c034d56c1c54f8a00f08a7e3e72e758984f
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488200"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929783"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>快速入門：使用搜尋總管在入口網站中執行查詢
 
 **搜尋總管**是內建的查詢工具，可用來對 Azure 認知搜尋中的搜尋索引執行查詢。 這項工具可讓您輕鬆學習查詢語法、測試查詢或篩選運算式，或檢查索引中是否有新內容，以確認資料重新整理。
 
-本快速入門會使用現有的索引來示範搜尋總管。 要求會使用[搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 來編寫，並以 JSON 文件的形式傳回回應。
+本快速入門會使用現有的索引來示範搜尋總管。 要求會使用[搜尋 REST API](/rest/api/searchservice/) 來編寫，並以 JSON 文件的形式傳回回應。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -133,7 +133,7 @@ Azure 認知搜尋服務會根據搜尋排名傳回前 50 個相符項目。 若
 
    ![OrderBy 運算式](./media/search-explorer/search-explorer-example-ordery.png "變更排序次序")
 
-**$filter** 和 **$orderby** 運算式都是 OData 建構。 如需詳細資訊，請參閱[篩選 OData 語法](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)。
+**$filter** 和 **$orderby** 運算式都是 OData 建構。 如需詳細資訊，請參閱[篩選 OData 語法](/rest/api/searchservice/odata-expression-syntax-for-azure-search)。
 
 <a name="start-search-explorer"></a>
 
@@ -147,7 +147,7 @@ Azure 認知搜尋服務會根據搜尋排名傳回前 50 個相符項目。 若
 
 + 自由格式查詢類似於您在商業 Web 瀏覽器中輸入的內容，適合用於測試使用者體驗。 比方說，假設內建的房地產 範例索引，您可以輸入 "Seattle apartments lake washington"，然後您可以使用 Ctrl-F 在搜尋結果中尋找字詞。 
 
-+ 查詢和篩選條件運算式會以 Azure 認知搜尋所支援的語法表達。 預設值是[簡單語法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)，但您可以選擇使用[完整 Lucene 功能](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)進行更強大的查詢。 [篩選條件運算式](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)是 OData 語法。
++ 查詢和篩選條件運算式會以 Azure 認知搜尋所支援的語法表達。 預設值是[簡單語法](/rest/api/searchservice/simple-query-syntax-in-azure-search)，但您可以選擇使用[完整 Lucene 功能](/rest/api/searchservice/lucene-query-syntax-in-azure-search)進行更強大的查詢。 [篩選條件運算式](/rest/api/searchservice/odata-expression-syntax-for-azure-search)是 OData 語法。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -159,7 +159,7 @@ Azure 認知搜尋服務會根據搜尋排名傳回前 50 個相符項目。 若
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解查詢結構和語法，請使用 Postman 或對等工具來建立利用 API 更多部分的查詢運算式。 [搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 特別有助於學習和探索。
+若要深入了解查詢結構和語法，請使用 Postman 或對等工具來建立利用 API 更多部分的查詢運算式。 [搜尋 REST API](/rest/api/searchservice/) 特別有助於學習和探索。
 
 > [!div class="nextstepaction"]
 > [在 Postman 中建立基本查詢](search-query-simple-examples.md)

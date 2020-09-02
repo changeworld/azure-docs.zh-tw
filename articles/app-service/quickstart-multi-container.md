@@ -7,19 +7,19 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 228e6f144a1d6e3d0fc4f8fd8cb35c6f4e989ee9
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 562185697f8f80fc52b06be80a9f15271f16c0a3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083663"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961413"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>使用 Docker Compose 設定建立多容器 (預覽) 應用程式
 
 > [!NOTE]
 > 多容器處於預覽狀態。
 
-[適用於容器的 Web 應用程式](overview.md#app-service-on-linux)提供彈性的 Docker 映像使用方式。 本快速入門說明如何使用 Docker Compose 組態，在 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中將多容器應用程式 (預覽) 部署至用於容器的 Web App。
+[適用於容器的 Web 應用程式](overview.md#app-service-on-linux)提供彈性的 Docker 映像使用方式。 本快速入門說明如何使用 Docker Compose 組態，在 [Cloud Shell](../cloud-shell/overview.md) 中將多容器應用程式 (預覽) 部署至用於容器的 Web App。
 
 您將會在 Cloud Shell 中完成本快速入門，但您也可以在本機使用 [Azure CLI](/cli/azure/install-azure-cli) (2.0.32 或更新版本) 來執行這些命令。 
 

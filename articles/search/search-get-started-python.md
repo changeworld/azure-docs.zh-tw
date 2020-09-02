@@ -10,24 +10,24 @@ ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aa2357e31bf2fba97ae8547948cacdffc70cc741
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: e4141bc4887a166876d1fc4590b73f382abd0b95
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705005"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936668"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>快速入門：使用 Jupyter Notebook 在 Python 中建立 Azure 認知搜尋索引
 
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
-> * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
+> * [PowerShell (REST)](./search-get-started-powershell.md)
+> * [C#](./search-get-started-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
 > * [入口網站](search-get-started-portal.md)
 > 
 
-建置 Jupyter Notebook，以使用 Python 和 [Azure 認知搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 來建立、載入和查詢 Azure 認知搜尋索引。 本文將說明如何逐步建立筆記本。 或是，您可以[下載並執行已完成的 Jupyter Python 筆記本](https://github.com/Azure-Samples/azure-search-python-samples)。
+建置 Jupyter Notebook，以使用 Python 和 [Azure 認知搜尋 REST API](/rest/api/searchservice/) 來建立、載入和查詢 Azure 認知搜尋索引。 本文將說明如何逐步建立筆記本。 或是，您可以[下載並執行已完成的 Jupyter Python 筆記本](https://github.com/Azure-Samples/azure-search-python-samples)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -93,7 +93,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 ## <a name="1---create-an-index"></a>1 - 建立索引
 
-除非您使用入口網站，否則服務上必須有索引，您才能載入資料。 此步驟會使用[建立索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) 將索引結構描述推送至服務。
+除非您使用入口網站，否則服務上必須有索引，您才能載入資料。 此步驟會使用[建立索引 REST API](/rest/api/searchservice/create-index) 將索引結構描述推送至服務。
 
 索引的必要元素包括名稱、欄位集合和索引鍵。 欄位集合會定義「文件」  的結構。 每個欄位都有名稱、類型和用於決定欄位使用方式的屬性 (例如，該欄位是否可在搜尋結果中進行全文檢索搜尋、篩選或擷取)。 在索引內，類型為 `Edm.String` 的其中一個欄位必須指定為識別文件所需的「索引鍵」  。
 
@@ -149,7 +149,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 ## <a name="2---load-documents"></a>2 - 載入文件
 
-若要推送文件，可將 HTTP POST 要求發送至您索引的 URL 端點。 該 REST API 為[新增、更新或刪除文件](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 這些文件來自 GitHub 上的 [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON)。
+若要推送文件，可將 HTTP POST 要求發送至您索引的 URL 端點。 該 REST API 為[新增、更新或刪除文件](/rest/api/searchservice/addupdate-or-delete-documents)。 這些文件來自 GitHub 上的 [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON)。
 
 1. 在新的資料格中，請提供符合索引結構描述的四份文件。 指定每份文件的上傳動作。
 
@@ -251,7 +251,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 ## <a name="3---search-an-index"></a>3 - 搜尋索引
 
-此步驟將說明如何使用[搜尋文件 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 來查詢索引。
+此步驟將說明如何使用[搜尋文件 REST API](/rest/api/searchservice/search-documents) 來查詢索引。
 
 1. 在資料格中，提供查詢運算式來執行空的搜尋 (search=*)，並傳回未排名的雜亂文件清單 (搜尋分數 = 1.0)。 根據預設，Azure 認知搜尋一次會傳回 50 個相符項目。 經過結構化後，此查詢會傳回整個文件結構和值。 新增 $count = true 可取得結果中所有文件的計數。
 

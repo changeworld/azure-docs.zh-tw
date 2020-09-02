@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/25/2020
 ms.author: pafarley
-ms.openlocfilehash: 91050311e5e0604af44731f7bf6e1a818ec464cc
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 6118f8109f44081c797cb09a6157abaf4044965e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852733"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377807"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用範例標籤工具，以標籤定型表單辨識器模型
 
@@ -81,7 +81,7 @@ ms.locfileid: "88852733"
     ```
     # <a name="v21-preview"></a>[v2.1 預覽](#tab/v2-1)    
     ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview    
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview eula=accept    
     ```
 
     --- 

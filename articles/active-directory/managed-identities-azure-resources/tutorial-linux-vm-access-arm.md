@@ -3,7 +3,7 @@ title: 快速入門`:` 使用受控識別來存取 Azure Resource Manager - Azur
 description: 本快速入門會逐步引導您使用 Linux VM 系統指派的受控識別，以存取 Azure Resource Manager。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: bryanla
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ee10a73579e8533cd14ecfeeebab44e726ba16b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 623aba3616ed95c64612c0e32f6ba0344bb2b464
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74326327"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255430"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>使用 Linux VM 系統指派的受控識別來存取 Azure Resource Manager
 
@@ -52,7 +52,7 @@ ms.locfileid: "74326327"
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-resource-manager"></a>使用 VM 系統指派的受控識別取得存取權杖，以用來呼叫 Resource Manager 
 
-若要完成這些步驟，您需要 SSH 用戶端。 如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](https://msdn.microsoft.com/commandline/wsl/about)中使用 SSH 用戶端。 如果您需要設定 SSH 用戶端金鑰的協助，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](../../virtual-machines/linux/ssh-from-windows.md)，或[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](../../virtual-machines/linux/mac-create-ssh-keys.md)。
+若要完成這些步驟，您需要 SSH 用戶端。 如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](/windows/wsl/about)中使用 SSH 用戶端。 如果您需要設定 SSH 用戶端金鑰的協助，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](../../virtual-machines/linux/ssh-from-windows.md)，或[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 1. 在入口網站中，瀏覽至 [Linux VM]，並在 [概觀]  中按一下 [連線]  。  
 2. 使用您所選擇的 SSH 用戶端來**連線**到 VM。 
@@ -81,7 +81,7 @@ ms.locfileid: "74326327"
     "token_type":"Bearer"} 
     ```
     
-    您可以使用此存取權杖來存取 Azure Resource Manager，例如讀取您先前授與此 VM 存取的資源群組詳細資料。 將 \<SUBSCRIPTION ID\>、\<RESOURCE GROUP\> 和 \<ACCESS TOKEN\> 的值以您稍早建立的值取代。 
+    您可以使用此存取權杖來存取 Azure Resource Manager，例如讀取您先前授與此 VM 存取的資源群組詳細資料。使用您稍早建立的值來取代 \<SUBSCRIPTION ID\>、\<RESOURCE GROUP\>和 \<ACCESS TOKEN\>。 
     
     > [!NOTE]
     > URL 區分大小寫，因此請確定您使用的是稍早在命名資源群組時所使用的相同大小寫，而且 “resourceGroup” 中的 “G” 為大寫。  
@@ -100,5 +100,5 @@ ms.locfileid: "74326327"
 在本快速入門中，您已了解如何使用系統指派的受控識別，來存取 Azure Resource Manager API。  若要深入了解 Azure Resource Manager，請參閱：
 
 > [!div class="nextstepaction"]
->[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
+>[Azure Resource Manager](../../azure-resource-manager/management/overview.md)
 >[使用 Azure PowerShell 來建立、列出及刪除使用者指派的受控識別](how-to-manage-ua-identity-powershell.md)

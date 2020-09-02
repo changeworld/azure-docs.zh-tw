@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2ae9e7654fa468d499ca6ef8543b98b1e372ca
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 5c07500ec432d176b2cf74aa95f0a1c943348f9f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85481386"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229511"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Azure Active Directory 報告是什麼？
 
@@ -44,9 +44,9 @@ Azure Active Directory (Azure AD) 報告可提供環境中活動的全面性檢�
 
 安全性報告可協助您保護貴組織的身分識別。 安全性報告有兩種類型：
 
-- **標幟為有風險的使用者** - 從[有風險的使用者安全性報告](concept-user-at-risk.md)，取得可能受危害之使用者帳戶的概觀。
+- **標幟為有風險的使用者** - 從[有風險的使用者安全性報告](../identity-protection/overview-identity-protection.md)，取得可能受危害之使用者帳戶的概觀。
 
-- **有風險的登入** - 透過[有風險的登入安全性報告](concept-risky-sign-ins.md)，取得非使用者帳戶合法擁有者的某人嘗試登入的指示器。 
+- **有風險的登入** - 透過[有風險的登入安全性報告](../identity-protection/overview-identity-protection.md)，取得非使用者帳戶合法擁有者的某人嘗試登入的指示器。 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>您需要哪項 Azure AD 授權才能存取安全性報告？  
 
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) 報告可提供環境中活動的全面性檢�
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>您需要哪項 Azure AD 授權才能存取稽核記錄報告？  
 
-稽核記錄報告可用於您擁有授權的功能。 如果您有特定功能的授權，也可以存取其稽核記錄資訊。 依據[不同類型授權](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#what-are-the-azure-ad-licenses)的詳細功能比較，可以在 [Azure Active Directory 定價頁面](https://azure.microsoft.com/pricing/details/active-directory/)上看到。 如需詳細資訊，請參閱 [Azure Active Directory 功能和功用](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad)。
+稽核記錄報告可用於您擁有授權的功能。 如果您有特定功能的授權，也可以存取其稽核記錄資訊。 依據[不同類型授權](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)的詳細功能比較，可以在 [Azure Active Directory 定價頁面](https://azure.microsoft.com/pricing/details/active-directory/)上看到。 如需詳細資訊，請參閱 [Azure Active Directory 功能和功用](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad)。
 
 ### <a name="sign-ins-report"></a>登入報告
 
@@ -101,6 +101,6 @@ Azure Active Directory (Azure AD) 報告可提供環境中活動的全面性檢�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [有風險的登入報告](concept-risky-sign-ins.md)
+- [有風險的登入報告](../identity-protection/overview-identity-protection.md)
 - [稽核記錄報告](concept-audit-logs.md)
 - [登入記錄報告](concept-sign-ins.md)

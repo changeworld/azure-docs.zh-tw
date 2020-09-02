@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 615815f11264578bc2a5930553c8e6f5bfed937f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 337baae97d426fe05ac59290a882865038f60c02
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121896"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019737"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>快速入門：將功能旗標新增至 Spring Boot 應用程式
 
@@ -97,7 +97,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
     ```
 
 > [!Note]
-> 有一個非 Web 功能管理程式庫不會相依於 Spring Web。 請參閱 GitHub 的[文件](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management)以了解其差異。
+> 有一個非 Web 功能管理程式庫不會相依於 Spring Web。 請參閱 GitHub 的[文件](https://github.com/microsoft/spring-cloud-azure)以了解其差異。
 
 ## <a name="connect-to-an-app-configuration-store"></a>連線至應用程式組態存放區
 

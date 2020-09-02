@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e60c35a32152d4adec72fb507becc0db535036f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02a30aa4d553910c52a7dde89719450baf9037ce
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80631731"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278831"
 ---
 # <a name="what-is-azure-ad-connect"></a>何謂 Azure AD Connect？
 
@@ -26,7 +26,7 @@ Azure AD Connect 是一種 Microsoft 工具，其設計目的是要符合並完�
 - [傳遞驗證](how-to-connect-pta.md) - 一種登入方法，可讓使用者在內部部署環境與雲端中使用相同的密碼，但不需要額外的同盟環境基礎結構。
 - [同盟整合](how-to-connect-fed-whatis.md) - 同盟是 Azure AD Connect 的選用組件，可用來以內部部署 AD FS 基礎結構設定混合式環境。 它也提供 AD FS 管理功能，例如憑證更新及額外的 AD FS 伺服器部署。
 - [同步處理](how-to-connect-sync-whatis.md) - 負責建立使用者、群組及其他物件。  此外，也確保您內部部署使用者和群組的身分識別資訊與雲端相符。  此同步處理也包括密碼雜湊。
-- [狀況監控](whatis-hybrid-identity-health.md) - Azure AD Connect Health 可以提供健全監控，並在 Azure 入口網站中提供檢視此活動的中央位置。 
+- [狀況監控]() - Azure AD Connect Health 可以提供健全監控，並在 Azure 入口網站中提供檢視此活動的中央位置。 
 
 
 ![何謂 Azure AD Connect](./media/whatis-hybrid-identity/arch.png)
@@ -76,4 +76,4 @@ Azure Active Directory (Azure AD) Connect Health 可為您的內部部署身分�
 - [硬體和先決條件](how-to-connect-install-prerequisites.md) 
 - [快速設定](how-to-connect-install-express.md)
 - [自訂設定](how-to-connect-install-custom.md)
-- [安裝 Azure AD Connect Health 代理程式](how-to-connect-health-agent-install.md) 
+- [安裝 Azure AD Connect Health 代理程式](how-to-connect-health-agent-install.md)

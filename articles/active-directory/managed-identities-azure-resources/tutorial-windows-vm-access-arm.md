@@ -3,7 +3,7 @@ title: 教學課程`:` 使用受控識別來存取 Azure Resource Manager - Wind
 description: 本教學課程會逐步引導您使用 Windows VM 系統指派的受控識別，以存取 Azure Resource Manager。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6edd926c0a91519f4c75228d8230c71ff7b96442
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 646be410cceb214efad19757378c74f086e58578
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018820"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263058"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>使用 Windows VM 系統指派的受控識別來存取 Resource Manager
 
@@ -51,7 +51,7 @@ ms.locfileid: "87018820"
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 系統指派的受控識別來取得存取權杖，以用來呼叫 Azure Resource Manager 
 
-在這裡您必須使用 **PowerShell**。  如果您尚未安裝 **PowerShell**，請在[這裡](https://docs.microsoft.com/powershell/azure/)下載。 
+在這裡您必須使用 **PowerShell**。  如果您尚未安裝 **PowerShell**，請在[這裡](/powershell/azure/)下載。 
 
 1.  在入口網站中，瀏覽至 [虛擬機器]  並移至您的 Windows 虛擬機器，在 [概觀]  中按一下 [連線]  。 
 2.  輸入您建立 Windows VM 時新增的**使用者名稱**和**密碼**。 
@@ -95,5 +95,4 @@ ms.locfileid: "87018820"
 在本快速入門中，您已了解如何使用系統指派的受控識別，來存取 Azure Resource Manager API。  若要深入了解 Azure Resource Manager，請參閱：
 
 > [!div class="nextstepaction"]
->[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
-
+>[Azure Resource Manager](../../azure-resource-manager/management/overview.md)

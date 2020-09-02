@@ -6,15 +6,17 @@ ms.service: media-services
 ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
-ms.date: 04/16/2020
-ms.openlocfilehash: 671609fc1db7325823e8ac40b2b8153682596588
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.date: 08/31/2020
+ms.openlocfilehash: 04b0ef0d6a480270b1f0a3546319b2608d638677
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84147812"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265502"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>使用 OBS 建立 Azure 媒體服務即時串流
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 本快速入門將協助您使用 Azure 入口網站和 Open Broadcasting Studio (OBS) 來建立 Azure 媒體服務即時串流。 本使用者入門指南假設您有 Azure 訂用帳戶，並已建立媒體服務帳戶。
 

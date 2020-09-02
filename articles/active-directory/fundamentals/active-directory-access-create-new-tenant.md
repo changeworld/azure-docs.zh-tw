@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f658b5670c42ab03770a3082f8eca740f6869dc3
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 5d6341aeb6db89d43ef887a3ae50c4439e3867e6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797639"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318602"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>快速入門：在 Azure Active Directory 中建立新的租用戶
 您可以使用 Azure Active Directory (Azure AD) 入口網站執行所有的系統管理工作，包括為您的組織建立新的租用戶。 
@@ -72,6 +72,6 @@ ms.locfileid: "87797639"
 
 - 新增群組與成員，請參閱[建立基本群組並新增成員](active-directory-groups-create-azure-portal.md)
 
-- 深入了解[使用 Privileged Identity Management 的角色型存取](../../role-based-access-control/pim-azure-resource.md)與[條件式存取](../../role-based-access-control/conditional-access-azure-management.md)，以協助您管理貴組織的應用程式與資源的存取。
+- 深入了解[使用 Privileged Identity Management 的角色型存取](../../role-based-access-control/best-practices.md)與[條件式存取](../../role-based-access-control/conditional-access-azure-management.md)，以協助您管理貴組織的應用程式與資源的存取。
 
 - 了解 Azure AD，包括[基本授權資訊、術語和相關聯的功能](active-directory-whatis.md)。
