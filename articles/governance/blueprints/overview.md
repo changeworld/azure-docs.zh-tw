@@ -1,14 +1,14 @@
 ---
 title: Azure 藍圖概觀
 description: 了解 Azure 藍圖服務如何讓您在 Azure 環境中建立、定義及部署成品。
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: overview
-ms.openlocfilehash: a8cec34bb5bdd52b22063a4109153c7f455aaa65
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e5c08f4211f03ddc6d2f48eee4fc84a824732e43
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530384"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050772"
 ---
 # <a name="what-is-azure-blueprints"></a>什麼是 Azure 藍圖？
 

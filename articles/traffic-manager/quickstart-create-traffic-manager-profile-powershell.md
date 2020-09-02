@@ -2,7 +2,7 @@
 title: 快速入門：建立設定檔以讓應用程式具有高可用性 - Azure PowerShell - Azure 流量管理員
 description: 本快速入門文章會說明如何建立流量管理員設定檔，以建置高可用性的 Web 應用程式。
 services: traffic-manager
-author: rohinkoul
+author: duongau
 mnager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/04/2019
-ms.author: rohink
-ms.openlocfilehash: 0ab7392b4fa6e248d51392706fedaed156344a99
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 08/25/2020
+ms.author: duau
+ms.openlocfilehash: f3ecdfb03a6e6d1aab355edf7c370b29240e0543
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76934809"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929511"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立流量管理員設定檔以獲得高可用性的 Web 應用程式
 

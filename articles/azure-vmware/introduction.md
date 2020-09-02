@@ -3,12 +3,12 @@ title: 簡介
 description: 了解 Azure VMware 解決方案在 Azure 中部署和管理 VMware 工作負載的功能和優點。
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 9d39cb759190eef535519decccec943ab66de2c7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3d6801a6cdec7600cc6003711a08e6af8c86483e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752140"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005049"
 ---
 # <a name="what-is-azure-vmware-solution-preview"></a>什麼是 Azure VMware 解決方案預覽？
 
@@ -46,7 +46,7 @@ vSAN 待用資料加密預設為啟用，並用來提供 vSAN 資料存放區的
 
 ## <a name="monitoring-your-private-cloud"></a>監視為您的私人雲端
 
-您可以使用[ Azure 監視器中的記錄](../azure-monitor/overview.md)，在 Azure VMware 解決方案私人雲端中執行的虛擬機器上收集記錄。 您可以使用在內部部署 VM 上執行的相同查詢，[下載並安裝在您的 Azure VMware 解決方案私人雲端中執行之 Linux 和 Windows 虛擬機器上的 MMA 代理程式](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)。 您可以執行通常會在虛擬機器上執行的相同查詢。 若要深入了解如何建立查詢，請參閱[如何撰寫查詢](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)。
+您可以使用[ Azure 監視器中的記錄](../azure-monitor/overview.md)，在 Azure VMware 解決方案私人雲端中執行的虛擬機器上收集記錄。 您可以使用在內部部署 VM 上執行的相同查詢，[下載並安裝在您的 Azure VMware 解決方案私人雲端中執行之 Linux 和 Windows 虛擬機器上的 MMA 代理程式](../azure-monitor/platform/log-analytics-agent.md#installation-options)。 您可以執行通常會在虛擬機器上執行的相同查詢。 若要深入了解如何建立查詢，請參閱[如何撰寫查詢](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)。
 
 ## <a name="next-steps"></a>後續步驟
 

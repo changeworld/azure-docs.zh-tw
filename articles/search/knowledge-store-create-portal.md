@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/30/2020
-ms.openlocfilehash: 5d21508a794683096009f53314bebca4e4f2ac98
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 75cacf0dc899f47d55c44e5262b23bae73bfa7ab
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565304"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924362"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 認知搜尋知識存放區
 
@@ -31,7 +31,7 @@ ms.locfileid: "85565304"
 
 + Azure 認知搜尋服務。 在目前的訂閱下，[建立服務](search-create-service-portal.md) 或 [尋找現有的服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
 
-+ 具有 [Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/)的 Azure 儲存體帳戶。
++ 具有 [Blob 儲存體](../storage/blobs/index.yml)的 Azure 儲存體帳戶。
 
 > [!NOTE]
 > 此快速入門也會為 AI 使用 [Azure 認知服務](https://azure.microsoft.com/services/cognitive-services/)。 由於工作負載很小，因此認知服務會在幕後連線以進行免費處理，最多 20 筆交易。 這表示您可以完成此練習，而不必建立其他認知服務資源。
@@ -42,7 +42,7 @@ ms.locfileid: "85565304"
 
 1. [下載 HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D)。 這項資料是儲存在 CSV 檔案中的飯店評論資料 (源自於 Kaggle.com)，其中包含 19 個關於單一飯店的客戶意見反應。 
 
-1. [建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)，或在您目前的訂用帳戶下方[尋找現有帳戶](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。 您會將 Azure 儲存體同時用於要匯入的原始內容，以及作為最終結果的知識存放區。
+1. [建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)，或在您目前的訂用帳戶下方[尋找現有帳戶](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。 您會將 Azure 儲存體同時用於要匯入的原始內容，以及作為最終結果的知識存放區。
 
    + 選擇 **StorageV2 (一般用途 V2)** 帳戶類型。
 

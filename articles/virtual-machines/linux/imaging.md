@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 220aa4e0d545eedcd1eb0e6f5a6555b17a361da2
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815295"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319537"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>在 Azure 中帶入並建立 Linux 映像
 
@@ -46,7 +46,7 @@ Azure 提供兩種主要映像類型：一般化和特殊化。 一般化和特�
 
 ### <a name="generalized-images"></a>一般化映像
 
-一般化映像是一種映像，需要在第一次開機時完成設定。 例如，在第一次開機時，您會設定主機名稱、管理使用者和其他 VM 特定設定。 當您想要多次重複使用映像，以及當您想要在建立期間傳入參數時，這會很有用。 如果一般化映像包含 Azure 代理程式，代理程式將會處理參數，並且將初始設定已完成的訊號傳回平台。 這個程序稱為**佈建**。 
+一般化映像是一種映像，需要在第一次開機時完成設定。 例如，在第一次開機時，您會設定主機名稱、管理使用者和其他 VM 特定設定。 當您想要多次重複使用映像，以及當您想要在建立期間傳入參數時，這會很有用。 如果一般化映像包含 Azure 代理程式，代理程式將會處理參數，並且將初始設定已完成的訊號傳回平台。 這個程序稱為[佈建](https://docs.microsoft.com/azure/virtual-machines/linux/provisioning)。 
 
 佈建需要映像中包含佈建程式。 有兩個佈建程式：
 - [Azure Linux 代理程式](../extensions/agent-linux.md)

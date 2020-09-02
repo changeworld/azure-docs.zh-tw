@@ -6,12 +6,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 085eedf3a3ce09689a5a7b7d4c69d1aade42ffb3
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 178f990e46801cd51e9feb88bbd20181842e4400
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185431"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077682"
 ---
 # <a name="use-azure-powershell-to-create-a-service-bus-namespace-and-a-queue"></a>使用 Azure PowerShell 建立服務匯流排命名空間和佇列
 本快速入門會說明如何使用 Azure PowerShell 來建立服務匯流排命名空間和佇列。 同時也會示範如何取得授權認證，讓用戶端應用程式用來將訊息傳送至佇列，或從佇列接收訊息。 

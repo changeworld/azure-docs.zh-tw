@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.custom: devx-track-java
-ms.openlocfilehash: b67480f2b6de37822d74162f46caa4d7e50dc193
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 544f200e749b1b125e8077ee65f20a06779fb13d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321780"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050568"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入門：使用 Java 搭配 Azure Functions 與 SignalR Service 來建立聊天室
 
@@ -37,13 +37,21 @@ Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，�
 > [!NOTE]
 > 此快速入門可以在 macOS、Windows 或 Linux 上執行。
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjava)
+
 ## <a name="log-in-to-azure"></a>登入 Azure
 
 使用您的 Azure 帳戶登入 Azure 入口網站 (<https://portal.azure.com/>)。
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjava)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjava)
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjava)
 
 ## <a name="configure-and-run-the-azure-function-app"></a>設定及執行 Azure Function 應用程式
 
@@ -51,7 +59,7 @@ Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，�
 
     ![搜尋 SignalR 服務執行個體](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-1. 選取 [金鑰]  以檢視 SignalR 服務執行個體的連接字串。
+1. 選取 [金鑰]**** 以檢視 SignalR 服務執行個體的連接字串。
 
 1. 選取並複製主要連接字串。
 
@@ -79,10 +87,15 @@ Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，�
     ```bash
     mvn azure-functions:run
     ```
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjava)
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjava)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjava)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -90,3 +103,5 @@ Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，�
 
 > [!div class="nextstepaction"]
 > [使用 Java 和 Maven 建立您的第一個函式](../azure-functions/functions-create-first-java-maven.md)
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjava)

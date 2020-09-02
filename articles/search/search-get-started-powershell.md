@@ -9,23 +9,24 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: b74deaecd1a71fec14e31f0a6aca2fed34361d76
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f803532e7d08d0de21541cb5d1b52639b623bb90
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506000"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078294"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>快速入門：使用 REST API 在 PowerShell 中建立 Azure 認知搜尋索引
 > [!div class="op_single_selector"]
-> * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
+> * [PowerShell (REST)]()
+> * [C#](./search-get-started-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 > * [入口網站](search-get-started-portal.md)
 > 
 
-本文將逐步引導您完成使用 PowerShell 和 [Azure 認知搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 來建立、載入及查詢 Azure 認知搜尋索引的程序。 本文將說明如何以互動方式執行 PowerShell 命令。 或者，您可以[下載並執行 PowerShell 指令碼](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)來執行相同的作業。
+本文將逐步引導您完成使用 PowerShell 和 [Azure 認知搜尋 REST API](/rest/api/searchservice/) 來建立、載入及查詢 Azure 認知搜尋索引的程序。 本文將說明如何以互動方式執行 PowerShell 命令。 或者，您可以[下載並執行 PowerShell 指令碼](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)來執行相同的作業。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -33,7 +34,7 @@ ms.locfileid: "88506000"
 
 此快速入門需要下列服務和工具。 
 
-+ [PowerShell 5.1 或更新版本](https://github.com/PowerShell/PowerShell)，並使用 [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) 進行後續的互動式步驟。
++ [PowerShell 5.1 或更新版本](https://github.com/PowerShell/PowerShell)，並使用 [Invoke-RestMethod](/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) 進行後續的互動式步驟。
 
 + [建立 Azure 認知搜尋服務](search-create-service-portal.md)，或在您目前的訂用帳戶下方[尋找現有服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
 
@@ -85,7 +86,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 ## <a name="1---create-an-index"></a>1 - 建立索引
 
-除非您使用入口網站，否則服務上必須有索引，您才能載入資料。 此步驟會定義索引並將其推送至服務。 此步驟會使用[建立索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) \(英文\)。
+除非您使用入口網站，否則服務上必須有索引，您才能載入資料。 此步驟會定義索引並將其推送至服務。 此步驟會使用[建立索引 REST API](/rest/api/searchservice/create-index) \(英文\)。
 
 索引的必要元素包括名稱和欄位集合。 欄位集合會定義「文件」  的結構。 每個欄位都有名稱、類型和用於決定其使用方式的屬性 (例如，該欄位是否可在搜尋結果中進行全文檢索搜尋、篩選或擷取)。 在索引內，類型為 `Edm.String` 的其中一個欄位必須指定為識別文件所需的「索引鍵」  。
 
@@ -179,7 +180,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 ## <a name="2---load-documents"></a>2 - 載入文件
 
-若要推送文件，可將 HTTP POST 要求發送至您索引的 URL 端點。 此工作的 REST API 為[新增、更新或刪除文件](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) \(英文\)。
+若要推送文件，可將 HTTP POST 要求發送至您索引的 URL 端點。 此工作的 REST API 為[新增、更新或刪除文件](/rest/api/searchservice/addupdate-or-delete-documents) \(英文\)。
 
 1. 將此範例貼入 PowerShell，即可建立包含所要上傳文件的 **$body** 物件。 
 
@@ -281,7 +282,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    結果看起來應該會類似以下的範例。 您應該會看到[狀態碼 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
+    結果看起來應該會類似以下的範例。 您應該會看到[狀態碼 201](/rest/api/searchservice/HTTP-status-codes)。
 
     ```
     {
@@ -317,7 +318,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 ## <a name="3---search-an-index"></a>3 - 搜尋索引
 
-此步驟將說明如何使用[搜尋文件 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 來查詢索引。
+此步驟將說明如何使用[搜尋文件 API](/rest/api/searchservice/search-documents) 來查詢索引。
 
 請務必在搜尋 $urls 時使用單引號。 因為查詢字串會包含 **$** 字元，如果整個字串以單引號括住，您就可以不用使用逸出字元。
 

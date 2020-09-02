@@ -3,7 +3,7 @@ title: 在 Azure VMSS 上設定受控識別 - Azure AD
 description: 使用 Azure 入口網站在虛擬機器擴展集上設定 Azure 資源受控識別的逐步指示。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d05ee1be18b315c63ccf9d564ea95391a163826e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e9ab1adeac5f8c67e06682f49fdded88e6a350e7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924490"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262667"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>使用 Azure 入口網站在虛擬機器擴展集上設定 Azure 資源受控識別
 
@@ -37,7 +37,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
     > [!NOTE]
     > 不需要其他 Azure AD 目錄角色指派。
 
-    - [虛擬機器參與者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)，可從虛擬機器擴展集啟用和移除系統指派的受控識別。
+    - [虛擬機器參與者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)，可從虛擬機器擴展集啟用和移除系統指派的受控識別。
 
 ## <a name="system-assigned-managed-identity"></a>系統指派的受控識別
 

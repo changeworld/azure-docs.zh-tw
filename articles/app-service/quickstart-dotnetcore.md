@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b7402dc3f7c1e5c7ff5552b2f454156ef1539711
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5604153d31a2828bcefbeccbd2f4fea428e878b5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212672"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961528"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>快速入門：在 Azure 中建立 ASP.NET Core Web 應用程式
 
@@ -59,8 +59,8 @@ ms.locfileid: "88212672"
 
 在設定 App Service 的過程中，您將建立：
 
-- 新的[資源群組](https://docs.microsoft.com/azure/azure-resource-manager/management/overview#terminology)，以包含此服務的所有 Azure 資源。
-- 新的[主控方案](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)，以指定用來裝載應用程式的 Web 伺服器陣列位置、大小和功能。
+- 新的[資源群組](../azure-resource-manager/management/overview.md#terminology)，以包含此服務的所有 Azure 資源。
+- 新的[主控方案](./overview-hosting-plans.md)，以指定用來裝載應用程式的 Web 伺服器陣列位置、大小和功能。
 
 請遵循下列步驟來建立您的 App Service，然後發佈您的 Web 應用程式：
 
@@ -160,7 +160,7 @@ Web 應用程式的**概觀**頁面，其中包含瀏覽、停止、啟動、重
 ::: zone-end  
 
 ::: zone pivot="platform-linux"
-[Linux 上的 App Service](overview.md#app-service-on-linux) 使用 Linux 作業系統提供可高度擴充、自我修復的 Web 主機服務。 本快速入門示範如何在 Linux 上的 App Service上建立 [.NET Core](https://docs.microsoft.com/aspnet/core/) 應用程式。 您可使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 建立應用程式，而且使用 Git 將 .NET Core 程式碼部署至應用程式。
+[Linux 上的 App Service](overview.md#app-service-on-linux) 使用 Linux 作業系統提供可高度擴充、自我修復的 Web 主機服務。 本快速入門示範如何在 Linux 上的 App Service上建立 [.NET Core](/aspnet/core/) 應用程式。 您可使用 [Azure CLI](/cli/azure/get-started-with-azure-cli) 建立應用程式，而且使用 Git 將 .NET Core 程式碼部署至應用程式。
 
 ![在 Azure 中執行的範例應用程式](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -322,4 +322,4 @@ git push azure master
 > [!div class="nextstepaction"]
 > [設定 ASP.NET Core 應用程式](configure-language-dotnetcore.md)
 
-::: zone-end  
+::: zone-end

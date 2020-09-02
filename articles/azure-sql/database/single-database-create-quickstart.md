@@ -11,18 +11,18 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
 ms.date: 04/19/2020
-ms.openlocfilehash: 20f8a08cfe31534abe24c7af1055e0945e021643
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6572f2e71b794f9f147278970b3f5f29fceb29d7
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081582"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962684"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>快速入門：建立 Azure SQL Database 單一資料庫
 
 在此快速入門中，您可以使用 Azure 入口網站、PowerShell 指令碼或 Azure CLI 指令碼，在 Azure SQL Database 中建立單一資料庫。 接著，您可以使用 Azure 入口網站中的**查詢編輯器**來查詢資料庫。
 
-[單一資料庫](single-database-overview.md)是最快速且最簡單的 Azure SQL Database 選項。 您可以在特定 Azure 區域中的 [Azure 資源群組](../../active-directory-b2c/overview.md)內，管理[伺服器](logical-servers.md)中的單一資料庫。 在本快速入門中，您會為新資料庫建立新的資源群組與伺服器。
+[單一資料庫](single-database-overview.md)是最快速且最簡單的 Azure SQL Database 選項。 您可以在特定 Azure 區域中的 [Azure 資源群組](../../azure-resource-manager/management/manage-resource-groups-portal.md)內，管理[伺服器](logical-servers.md)中的單一資料庫。 在本快速入門中，您會為新資料庫建立新的資源群組與伺服器。
 
 您可以在「已佈建」或「無伺服器」的計算層中建立單一資料庫。 已佈建的資料庫會預先配置固定數量的計算資源 (包括 CPU 和記憶體)，並使用兩種[購買模型](purchasing-models.md)的其中一種。 本快速入門會使用[以虛擬核心為基礎的購買模型](service-tiers-vcore.md)來建立已佈建的資料庫，但您也可以選擇[以 DTU 為基礎的模型](service-tiers-dtu.md)。
 

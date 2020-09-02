@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 2aed6a2fea38f10a2e06ea51edb7fb529c8a2dde
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212513"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961358"
 ---
 # <a name="run-a-custom-container-in-azure"></a>在 Azure 中執行自訂容器
 
@@ -103,7 +103,7 @@ ms.locfileid: "88212513"
 
    ![設定用於容器的 Web App](media/quickstart-custom-container/configure-web-app-continer.png)
 
-    如果您在他處有用於 Web 應用程式的自訂映像 (例如，在 [Azure Container Registry](/azure/container-registry/) 中或任何其他私人存放庫中)，您可以在此處加以設定。
+    如果您在他處有用於 Web 應用程式的自訂映像 (例如，在 [Azure Container Registry](../container-registry/index.yml) 中或任何其他私人存放庫中)，您可以在此處加以設定。
 
 1. 選取 [檢閱並建立]，然後 [建立] 並等候 Azure 建立所需的資源。
 
@@ -173,8 +173,8 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 
 您可以自由使用不同的自訂 Docker 映像來執行應用程式。 不過，您必須為您要的架構選擇正確的[父映像 (基礎映像)](https://docs.docker.com/develop/develop-images/baseimages/)：
 
-- 若要部署 .NET Framework 應用程式，請根據 Windows Server Core 2019 [長期維護通道 (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 版本使用正確的父映像。 
-- 若要部署 .NET Core 應用程式，請根據 Windows Server Nano 1809 [半年維護通道 (SAC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) 版本使用正確的父映像。 
+- 若要部署 .NET Framework 應用程式，請根據 Windows Server Core 2019 [長期維護通道 (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 版本使用正確的父映像。 
+- 若要部署 .NET Core 應用程式，請根據 Windows Server Nano 1809 [半年維護通道 (SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) 版本使用正確的父映像。 
 
 在應用程式啟動期間，下載父映像需要一些時間。 不過，您可以使用下列其中一個已在 Azure App Service 中快取的父映像，以縮短啟動時間：
 
@@ -188,7 +188,7 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 ::: zone-end  
 
 ::: zone pivot="container-linux"
-Linux 上的 App Service 提供 Linux 上的預先定義應用程式堆疊，且支援 .NET、PHP、Node.js 等其他語言。 您也可以使用自訂 Docker 映像，在尚未於 Azure 中定義的應用程式堆疊上執行 Web 應用程式。 本快速入門說明如何將映像從 [Azure Container Registry](/azure/container-registry) (ACR) 部署至 App Service。
+Linux 上的 App Service 提供 Linux 上的預先定義應用程式堆疊，且支援 .NET、PHP、Node.js 等其他語言。 您也可以使用自訂 Docker 映像，在尚未於 Azure 中定義的應用程式堆疊上執行 Web 應用程式。 本快速入門說明如何將映像從 [Azure Container Registry](../container-registry/index.yml) (ACR) 部署至 App Service。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -200,7 +200,7 @@ Linux 上的 App Service 提供 Linux 上的預先定義應用程式堆疊，且
 
 ## <a name="create-an-image"></a>建立映像
 
-若要完成本快速入門，您將需要一個儲存在 [Azure Container Registry](/azure/container-registry) 中的適當 Web 應用程式映像。 遵循[快速入門：使用 Azure 入口網站建立私人容器登錄](/azure/container-registry/container-registry-get-started-portal)中的指示，但使用 `mcr.microsoft.com/azuredocs/go` 映像，而不是 `hello-world` 映像。 如需參考，[在 Azure 範例存放庫中可找到範例 Dockerfile](https://github.com/Azure-Samples/go-docs-hello-world)。
+若要完成本快速入門，您將需要一個儲存在 [Azure Container Registry](../container-registry/index.yml) 中的適當 Web 應用程式映像。 遵循[快速入門：使用 Azure 入口網站建立私人容器登錄](../container-registry/container-registry-get-started-portal.md)中的指示，但使用 `mcr.microsoft.com/azuredocs/go` 映像，而不是 `hello-world` 映像。 如需參考，[在 Azure 範例存放庫中可找到範例 Dockerfile](https://github.com/Azure-Samples/go-docs-hello-world)。
 
 > [!IMPORTANT]
 > 當您建立容器登錄時，請務必將 [管理使用者]**** 選項設定為 [啟用]****。 您也可以在 Azure 入口網站中，從登錄頁面的 [存取金鑰]**** 區段擷取它。 這是 App Service 存取的必要設定。
@@ -261,4 +261,4 @@ docker --version
 
 或藉由安裝 [Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) 擴充功能套件來取得以上所有擴充功能。
 
-::: zone-end  
+::: zone-end

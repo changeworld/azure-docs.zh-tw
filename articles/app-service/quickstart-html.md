@@ -7,16 +7,16 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: bd1e44aefed310826465dbf44dee1324f5a085b3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d624d332fa35bf458e9158e00aaf83ce495b9061
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083669"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961330"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中建立靜態 HTML Web 應用程式
 
-[Azure App Service](overview.md) 可提供可高度擴充、自我修復的 Web 主控服務。 本快速入門顯示如何將基本 HTML+CSS 網站部署至 Azure App Service。 您將會在 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中完成本快速入門，但您也可以在本機使用 [Azure CLI](/cli/azure/install-azure-cli) 來執行這些命令。
+[Azure App Service](overview.md) 可提供可高度擴充、自我修復的 Web 主控服務。 本快速入門顯示如何將基本 HTML+CSS 網站部署至 Azure App Service。 您將會在 [Cloud Shell](../cloud-shell/overview.md) 中完成本快速入門，但您也可以在本機使用 [Azure CLI](/cli/azure/install-azure-cli) 來執行這些命令。
 
 ![範例應用程式首頁](media/quickstart-html/hello-world-in-browser-az.png)
 
@@ -58,7 +58,7 @@ az webapp up --location westeurope --name <app_name> --html
 
 - 建立具有所指定名稱的應用程式。
 
-- [以 Zip 檔進行部署](https://docs.microsoft.com/azure/app-service/deploy-zip)，將目前工作目錄中的檔案部署到 Web 應用程式。
+- [以 Zip 檔進行部署](./deploy-zip.md)，將目前工作目錄中的檔案部署到 Web 應用程式。
 
 此命令可能會花數分鐘執行。 執行上述命令時，會顯示類似下列範例的資訊：
 

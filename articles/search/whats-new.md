@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: c5990faab1e06961a2c3d577a4677d2e1d504699
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 788b3f5e9f4012e418ece691ebb5fbc5d2f866af
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904059"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931840"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
@@ -31,50 +31,50 @@ ms.locfileid: "87904059"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [Azure.Search.Documents 用戶端程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | 適用於 .NET 的 Azure SDK | Azure SDK 團隊發行了 .NET 用戶端程式庫，其設計是為了與其他 .NET 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30，但尚不支援知識存放區、地理空間類型或 [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet)。 <br/><br/>如需詳細資訊，請參閱[快速入門：建立索引](search-get-started-dotnet.md)和[升級至 Azure.Search.Documents (v11)](search-dotnet-sdk-migration-version-11.md)。 | 正式推出。 </br> 安裝來自 NuGet 的 [Azure.Search.Documents 套件](https://www.nuget.org/packages/Azure.Search.Documents/)。 |
-| [azure.search.documents 用戶端程式庫](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | 適用於 Python 的 Azure SDK| Azure SDK 團隊發行了 Python 用戶端程式庫，其設計是為了與其他 Python 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30。 | 正式推出。 </br> 安裝來自 PyPI 的 [azure-search-documents 套件](https://pypi.org/project/azure-search-documents/)。 |
-| [@azure/search-documents用戶端程式庫](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | 適用於 JavaScript 的 Azure SDK | Azure SDK 團隊發行了 JavaScript 用戶端程式庫，其設計是為了與其他 JavaScript 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30。 | 正式推出。 </br> 從 npm 安裝[@azure/search-documents 套件](https://www.npmjs.com/package/@azure/search-documents)。 |
+| [Azure.Search.Documents 用戶端程式庫](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | 適用於 .NET 的 Azure SDK | Azure SDK 團隊發行了 .NET 用戶端程式庫，其設計是為了與其他 .NET 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30，但尚不支援知識存放區、地理空間類型或 [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet)。 <br/><br/>如需詳細資訊，請參閱[快速入門：建立索引](search-get-started-dotnet.md)和[升級至 Azure.Search.Documents (v11)](search-dotnet-sdk-migration-version-11.md)。 | 正式推出。 </br> 安裝來自 NuGet 的 [Azure.Search.Documents 套件](https://www.nuget.org/packages/Azure.Search.Documents/)。 |
+| [azure.search.documents 用戶端程式庫](/python/api/overview/azure/search-documents-readme?view=azure-python)  | 適用於 Python 的 Azure SDK| Azure SDK 團隊發行了 Python 用戶端程式庫，其設計是為了與其他 Python 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30。 | 正式推出。 </br> 安裝來自 PyPI 的 [azure-search-documents 套件](https://pypi.org/project/azure-search-documents/)。 |
+| [@azure/search-documents用戶端程式庫](/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | 適用於 JavaScript 的 Azure SDK | Azure SDK 團隊發行了 JavaScript 用戶端程式庫，其設計是為了與其他 JavaScript 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30。 | 正式推出。 </br> 從 npm 安裝[@azure/search-documents 套件](https://www.npmjs.com/package/@azure/search-documents)。 |
 
 ### <a name="june-2020"></a>2020 年 6 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
-[**知識存放區**](knowledge-store-concept-intro.md) | AI 擴充 | 以 AI 擴充的索引子輸出，將內容儲存在 Azure 儲存體中，以用於其他應用程式和程序。 | 正式推出。 </br> 使用[搜尋 REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) 或更新版本，或是入口網站。 |
-| [**搜尋 REST API 2020-06-30**](https://docs.microsoft.com/rest/api/searchservice/) | REST | REST API 的新穩定版本。 除了知識存放區之外，此版本還包含搜尋相關性和評分的增強功能。 | 正式推出。 |
-| [**Okapi BM25 相關性演算法**](https://en.wikipedia.org/wiki/Okapi_BM25) | 查詢 | 7 月 15 日之後建立的所有新搜尋服務都會使用新的相關性排名演算法。 針對之前建立的服務，您可以藉由在索引欄位上設定 `similarity` 屬性來加入。 | 正式推出。 </br> 使用[搜尋 REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) 或更新版本，或是 REST API 2019-05-06。 |
-| **executionEnvironment** | 安全性 (索引子) | 明確地將此索引子設定屬性設為 `private`，以強制透過私人端點連線到外部資料來源。 僅適用於利用 Azure Private Link 的搜尋服務。 | 正式推出。 </br> 使用[搜尋 REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) 來設定此一般設定參數。 |
+[**知識存放區**](knowledge-store-concept-intro.md) | AI 擴充 | 以 AI 擴充的索引子輸出，將內容儲存在 Azure 儲存體中，以用於其他應用程式和程序。 | 正式推出。 </br> 使用[搜尋 REST API 2020-06-30](/rest/api/searchservice/) 或更新版本，或是入口網站。 |
+| [**搜尋 REST API 2020-06-30**](/rest/api/searchservice/) | REST | REST API 的新穩定版本。 除了知識存放區之外，此版本還包含搜尋相關性和評分的增強功能。 | 正式推出。 |
+| [**Okapi BM25 相關性演算法**](https://en.wikipedia.org/wiki/Okapi_BM25) | 查詢 | 7 月 15 日之後建立的所有新搜尋服務都會使用新的相關性排名演算法。 針對之前建立的服務，您可以藉由在索引欄位上設定 `similarity` 屬性來加入。 | 正式推出。 </br> 使用[搜尋 REST API 2020-06-30](/rest/api/searchservice/) 或更新版本，或是 REST API 2019-05-06。 |
+| **executionEnvironment** | 安全性 (索引子) | 明確地將此索引子設定屬性設為 `private`，以強制透過私人端點連線到外部資料來源。 僅適用於利用 Azure Private Link 的搜尋服務。 | 正式推出。 </br> 使用[搜尋 REST API 2020-06-30](/rest/api/searchservice/) 來設定此一般設定參數。 |
 
 ### <a name="may-2020-microsoft-build"></a>2020 年 5 月 (Microsoft 組建)
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
 | [**偵錯工作階段**](cognitive-search-debug-session.md) | AI 擴充 | 偵錯工作階段提供以入口網站為基礎的介面，用來調查和解決現有技能集的問題。 在偵錯工作階段中建立的修正程式可以儲存到生產環境技能集。 開始使用[本教學課程](cognitive-search-tutorial-debug-sessions.md)。 | 公開預覽，位在入口網站中。 |
-| [**適用於內建防火牆支援的 IP 規則**](service-configure-firewall.md) | 安全性 | 將搜尋服務端點的存取限制為特定 IP 位址。 | 正式推出。 </br> 使用[管理 REST API 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) 或更新版本，或是入口網站。 |
-| [**私人搜尋端點的 Azure Private Link**](service-create-private-endpoint.md) | 安全性| 藉由以私人連結資源的形式執行搜尋服務，可使其在公用網際網路中受到保護，並且只能讓相同虛擬網路上的用戶端應用程式和其他 Azure 服務存取。 | 正式推出。 </br> 使用[管理 REST API 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) 或更新版本，或是入口網站。 |
+| [**適用於內建防火牆支援的 IP 規則**](service-configure-firewall.md) | 安全性 | 將搜尋服務端點的存取限制為特定 IP 位址。 | 正式推出。 </br> 使用[管理 REST API 2020-03-13](/rest/api/searchmanagement/) 或更新版本，或是入口網站。 |
+| [**私人搜尋端點的 Azure Private Link**](service-create-private-endpoint.md) | 安全性| 藉由以私人連結資源的形式執行搜尋服務，可使其在公用網際網路中受到保護，並且只能讓相同虛擬網路上的用戶端應用程式和其他 Azure 服務存取。 | 正式推出。 </br> 使用[管理 REST API 2020-03-13](/rest/api/searchmanagement/) 或更新版本，或是入口網站。 |
 | [**系統管理的識別 (預覽)** ](search-howto-managed-identities-data-sources.md) | 安全性 (索引子) | 使用 Azure Active Directory 將搜尋服務註冊為受信任的服務，即可對支援的 Azure 資料來源設定連線來進行索引。 適用於來自 Azure 資料來源 (例如 Azure SQL Database、Azure Cosmos DB 和 Azure 儲存體) 內嵌內容的[索引子](search-indexer-overview.md)。 | 公開預覽。 </br> 使用入口網站來註冊搜尋服務。 |
-| [**sessionId 查詢參數**](index-similarity-and-scoring.md)，[scoringStatistics=global 參數](index-similarity-and-scoring.md#scoring-statistics) | 查詢 (相關性) | 將 sessionID 新增至查詢，以建立計算搜尋分數的工作階段，並使用 scoringStatistics=global 來收集所有分區的分數，以提供更一致的搜尋分數計算。 | 正式推出。 </br> 使用[搜尋 REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) 或更新版本，或是 REST API 2019-05-06。 |
-| [**featuresMode (預覽)** ](index-similarity-and-scoring.md#featuresMode-param) | 查詢 | 新增此查詢參數來展開相關性分數，可顯示更多詳細資料：每個欄位的相似性分數、每個欄位的字詞頻率，以及每個欄位的相符唯一語彙基元數目。 您可以使用自訂評分演算法中的這些資料點。 如需示範此功能的範例，請參閱[新增機器學習服務 (LearnToRank) 以搜尋相關性](https://github.com/Azure-Samples/search-ranking-tutorial)。 | 公開預覽。 </br> 使用[搜尋 REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
+| [**sessionId 查詢參數**](index-similarity-and-scoring.md)，[scoringStatistics=global 參數](index-similarity-and-scoring.md#scoring-statistics) | 查詢 (相關性) | 將 sessionID 新增至查詢，以建立計算搜尋分數的工作階段，並使用 scoringStatistics=global 來收集所有分區的分數，以提供更一致的搜尋分數計算。 | 正式推出。 </br> 使用[搜尋 REST API 2020-06-30](/rest/api/searchservice/) 或更新版本，或是 REST API 2019-05-06。 |
+| [**featuresMode (預覽)** ](index-similarity-and-scoring.md#featuresMode-param) | 查詢 | 新增此查詢參數來展開相關性分數，可顯示更多詳細資料：每個欄位的相似性分數、每個欄位的字詞頻率，以及每個欄位的相符唯一語彙基元數目。 您可以使用自訂評分演算法中的這些資料點。 如需示範此功能的範例，請參閱[新增機器學習服務 (LearnToRank) 以搜尋相關性](https://github.com/Azure-Samples/search-ranking-tutorial)。 | 公開預覽。 </br> 使用[搜尋 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
 
 ### <a name="march-2020"></a>2020 年 3 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [**原生 Blob 虛刪除 (預覽)** ](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | 索引子 | Azure 認知搜尋中的 Azure Blob 儲存體索引子會辨識處於虛刪除狀態的 Blob，並在編製索引期間移除對應的搜尋文件。 | 公開預覽。 </br> 使用[搜尋 REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) 和 REST API 2019-05-06-Preview，針對已啟用原生「虛刪除」的 Azure Blob 資料來源執行索引子。 |
-| [**管理 REST API (2020-03-13)** ](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | 建立和管理搜尋服務的新穩定 REST API。 新增 IP 防火牆和 Private Link 支援 | 正式推出。 |
+| [**原生 Blob 虛刪除 (預覽)** ](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | 索引子 | Azure 認知搜尋中的 Azure Blob 儲存體索引子會辨識處於虛刪除狀態的 Blob，並在編製索引期間移除對應的搜尋文件。 | 公開預覽。 </br> 使用[搜尋 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 和 REST API 2019-05-06-Preview，針對已啟用原生「虛刪除」的 Azure Blob 資料來源執行索引子。 |
+| [**管理 REST API (2020-03-13)** ](/rest/api/searchmanagement/management-api-versions) | REST | 建立和管理搜尋服務的新穩定 REST API。 新增 IP 防火牆和 Private Link 支援 | 正式推出。 |
 
 ### <a name="february-2020"></a>2020 年 2 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [**PII 偵測 (預覽)** ](cognitive-search-skill-pii-detection.md) | AI 擴充 | 在編制索引期間使用的新認知技能，可從輸入文字中擷取個人識別資訊，並可讓您選擇以各種方式將該文字遮罩。 | 公開預覽。 </br> 使用入口網站或[搜尋 REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
-| [**自訂實體查閱 (預覽)** ](cognitive-search-skill-custom-entity-lookup.md )| AI 擴充 | 新的認知技能，可從自訂、使用者定義的單字和片語清單中尋找文字。 使用這份清單，其會以任何相符的實體標記所有文件。 此技能也支援某種程度的模糊比對，可加以套用以尋找類似但不精確的相符項目。 | 公開預覽。 </br> 使用入口網站或[搜尋 REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
+| [**PII 偵測 (預覽)** ](cognitive-search-skill-pii-detection.md) | AI 擴充 | 在編制索引期間使用的新認知技能，可從輸入文字中擷取個人識別資訊，並可讓您選擇以各種方式將該文字遮罩。 | 公開預覽。 </br> 使用入口網站或[搜尋 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
+| [**自訂實體查閱 (預覽)** ](cognitive-search-skill-custom-entity-lookup.md )| AI 擴充 | 新的認知技能，可從自訂、使用者定義的單字和片語清單中尋找文字。 使用這份清單，其會以任何相符的實體標記所有文件。 此技能也支援某種程度的模糊比對，可加以套用以尋找類似但不精確的相符項目。 | 公開預覽。 </br> 使用入口網站或[搜尋 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
 
 ### <a name="january-2020"></a>2020 年 1 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
 | [**客戶管理的加密金鑰**](search-security-manage-encryption-keys.md) |安全性 | 除了平台的內建加密之外，新增額外的加密層。 藉由使用您建立和管理的加密金鑰，您可以在承載到達搜尋服務之前，先將索引內容和同義字對應加密。 | 正式推出。 </br> 使用搜尋 REST API 2019-05-06 或更新版本。 對於受控程式碼，即使功能並未納入預覽版中，正確的套件仍然是 [.NET SDK version 8.0-preview](search-dotnet-sdk-migration-version-9.md)。 |
-| [**適用於內建防火牆支援的 IP 規則 (預覽)** ](service-configure-firewall.md) | 安全性 | 將搜尋服務端點的存取限制為特定 IP 位址。 預覽 API 在 [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) 中有新的 **IpRule** 和 **NetworkRuleSet** 屬性。 此預覽功能可在幾個區域中使用。 |  使用 api-version=2019-10-01-Preview 的公開預覽版。  |
+| [**適用於內建防火牆支援的 IP 規則 (預覽)** ](service-configure-firewall.md) | 安全性 | 將搜尋服務端點的存取限制為特定 IP 位址。 預覽 API 在 [CreateOrUpdate API](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) 中有新的 **IpRule** 和 **NetworkRuleSet** 屬性。 此預覽功能可在幾個區域中使用。 |  使用 api-version=2019-10-01-Preview 的公開預覽版。  |
 | [**私人搜尋端點的 Azure Private Link (預覽)** ](service-create-private-endpoint.md) | 安全性| 藉由以私人連結資源的形式執行搜尋服務，可使其在公用網際網路中受到保護，並且只能讓相同虛擬網路上的用戶端應用程式和其他 Azure 服務存取。 | 使用 api-version=2019-10-01-Preview 的公開預覽版。  |
 
 ## <a name="feature-announcements-in-2019"></a>2019 的功能公告
@@ -102,7 +102,7 @@ ms.locfileid: "87904059"
 
 ### <a name="july-2019"></a>2019 年 7 月
 
-+ 已在 [Azure Government 雲端](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search)中正式推出。
++ 已在 [Azure Government 雲端](../azure-government/compare-azure-government-global-azure.md#azure-cognitive-search)中正式推出。
 
 <a name="new-service-name"></a>
 

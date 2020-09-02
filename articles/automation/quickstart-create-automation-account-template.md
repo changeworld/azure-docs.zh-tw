@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2020
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 37a619fe3279d1cb03763b14c3dfc9e315d850b9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 441e53123512a9611f9568edccfd40a3e17c981f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685624"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055425"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>快速入門：使用 ARM 範本建立自動化帳戶
 
@@ -60,7 +60,7 @@ Azure 自動化會提供以雲端為基礎的自動化和設定服務，在您�
 |:---|:---|:---|
 | [工作區](/azure/templates/microsoft.operationalinsights/workspaces) | workspaces | 2020-03-01-preview |
 | [自動化帳戶](/azure/templates/microsoft.automation/automationaccounts) | automation | 2020-01-13-preview |
-| [工作區連結服務](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | worksapces | 2020-03-01-preview |
+| [工作區連結服務](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | workspaces | 2020-03-01-preview |
 
 ### <a name="before-you-use-the-template"></a>使用範本之前
 

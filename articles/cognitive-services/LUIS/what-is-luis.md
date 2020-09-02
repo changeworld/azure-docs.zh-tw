@@ -5,12 +5,12 @@ keywords: Azure, 人工智慧, ai, 自然語言處理, nlp, 自然語言理解, 
 ms.topic: overview
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 22fe99e1552a9612adfbc455d60852f1591a1a54
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 98d801f6a34feb40d56215f8b6257a68ec628e10
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752141"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320047"
 ---
 # <a name="what-is-language-understanding-luis"></a>何謂 Language Understanding Intelligent Service (LUIS)？
 
@@ -64,7 +64,7 @@ LUIS 應用程式會提供智慧，讓用戶端應用程式得以做出聰明的
 |`When does your store open?`|StoreHoursAndLocation|開啟|
 |`Schedule a meeting at 1pm with Bob in Distribution`|ScheduleMeeting|下午 1 點、Bob|
 
-使用[撰寫](https://go.microsoft.com/fwlink/?linkid=2092087) API 和 (或) 使用 [**LUIS 入口網站**](https://www.luis.ai)建置模型。 深入了解如何使用[入口網站](get-started-portal-build-app.md)和 [SDK 用戶端程式庫](quickstart-sdk.md)來建置。
+使用[撰寫](https://go.microsoft.com/fwlink/?linkid=2092087) API 和 (或) 使用 [**LUIS 入口網站**](https://www.luis.ai)建置模型。 深入了解如何使用[入口網站](get-started-portal-build-app.md)和 [SDK 用戶端程式庫](azure-sdk-quickstart.md)來建置。
 
 ## <a name="step-2-get-the-query-prediction"></a>步驟 2:取得查詢預測
 
@@ -126,7 +126,7 @@ LUIS 會提供文字分析中的功能作為現有 LUIS 資源的一部分。 �
 
 ## <a name="learn-with-the-quickstarts"></a>使用快速入門來了解
 
-使用[入口網站](get-started-portal-build-app.md)和 [SDK 用戶端程式庫](quickstart-sdk.md)進行實際操作快速入門來了解 LUIS。
+使用[入口網站](get-started-portal-build-app.md)和 [SDK 用戶端程式庫](azure-sdk-quickstart.md)進行實際操作快速入門來了解 LUIS。
 
 
 ## <a name="next-steps"></a>後續步驟
