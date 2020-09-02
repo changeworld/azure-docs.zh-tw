@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 59063912b2976890976e3c27bc4f2d93b6392e37
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: fcfefb2b6cd5c23e9b77d7d27413d1ff6d775bfe
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607607"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321544"
 ---
 [參考文件](https://docs.microsoft.com/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices) | [套件 (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices) | [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
@@ -22,15 +22,9 @@ ms.locfileid: "88607607"
 * 有效的 Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)。
 * 最新版的 [Node.js](https://nodejs.org/)
 
-## <a name="create-an-azure-service-principal"></a>建立 Azure 服務主體
+[!INCLUDE [Create a service principal](./create-service-principal.md)]
 
-若要讓您的應用程式與您的 Azure 帳戶互動，您需要 Azure 服務主體來管理權限。 依照[建立 Azure 服務主體](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-4.4.0&viewFallbackFrom=azps-3.3.0)中的指示進行。
-
-建立服務主體時，您會看到服務主體有一個祕密值、一個識別碼和一個應用程式識別碼。 將應用程式識別碼和祕密儲存至暫存位置，以供後續步驟使用。
-
-## <a name="create-a-resource-group"></a>建立資源群組
-
-建立認知服務資源之前，您的帳戶必須有包含資源的 Azure 資源群組。 如果還沒有資源群組，請在 [Azure 入口網站](https://ms.portal.azure.com/)中建立一個。
+[!INCLUDE [Create a resource group](./create-resource-group.md)]
 
 ## <a name="create-a-new-nodejs-application"></a>建立新的 Node.js 應用程式
 
@@ -90,71 +84,7 @@ npm install @azure/ms-rest-nodeauth
 
 [!INCLUDE [cognitive-services-subscription-types](../../../../includes/cognitive-services-subscription-types.md)]
 
-請參閱下方的 SKU 和定價資訊清單。 
-
-#### <a name="multi-service"></a>多服務
-
-| 服務                    | 種類                      |
-|----------------------------|---------------------------|
-| 多種服務。 如需詳細資訊，請參閱[定價](https://azure.microsoft.com/pricing/details/cognitive-services/)頁面。            | `CognitiveServices`     |
-
-
-#### <a name="vision"></a>視覺
-
-| 服務                    | 種類                      |
-|----------------------------|---------------------------|
-| 電腦視覺            | `ComputerVision`          |
-| 自訂視覺 - 預測 | `CustomVision.Prediction` |
-| 自訂視覺 - 訓練   | `CustomVision.Training`   |
-| 臉部                       | `Face`                    |
-| 表單辨識器            | `FormRecognizer`          |
-| 筆跡辨識器             | `InkRecognizer`           |
-
-#### <a name="search"></a>搜尋
-
-| 服務            | 種類                  |
-|--------------------|-----------------------|
-| Bing 自動建議   | `Bing.Autosuggest.v7` |
-| Bing 自訂搜尋 | `Bing.CustomSearch`   |
-| Bing 實體搜尋 | `Bing.EntitySearch`   |
-| Bing 搜尋        | `Bing.Search.v7`      |
-| Bing 拼字檢查   | `Bing.SpellCheck.v7`  |
-
-#### <a name="speech"></a>語音
-
-| 服務            | 種類                 |
-|--------------------|----------------------|
-| 語音服務    | `SpeechServices`     |
-| 語音辨識 | `SpeakerRecognition` |
-
-#### <a name="language"></a>Language
-
-| 服務            | 種類                |
-|--------------------|---------------------|
-| Form Understanding | `FormUnderstanding` |
-| LUIS               | `LUIS`              |
-| QnA Maker          | `QnAMaker`          |
-| 文字分析     | `TextAnalytics`     |
-| 文字翻譯   | `TextTranslation`   |
-
-#### <a name="decision"></a>決策
-
-| 服務           | 種類               |
-|-------------------|--------------------|
-| 異常偵測器  | `AnomalyDetector`  |
-| 內容仲裁 | `ContentModerator` |
-| 個人化工具      | `Personalizer`     |
-
-
-#### <a name="pricing-tiers-and-billing"></a>定價層和計費
-
-定價層 (以及您支付的金額) 是根據您使用驗證資訊傳送的交易數目而定。 每個定價層都會指定：
-* 每秒允許的交易數目上限 (TPS)。
-* 在該定價層中啟用的服務功能。
-* 預先定義的交易數目成本。 超過此數目會產生額外的費用，如您服務的[定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)中所述。
-
-> [!NOTE]
-> 許多認知服務都具有免費層，您可以用來試用服務。 若要使用免費層，請使用 `F0` 作為資源的 SKU。
+[!INCLUDE [SKUs and pricing](./sku-pricing.md)]
 
 ## <a name="create-a-cognitive-services-resource"></a>建立認知服務資源
 

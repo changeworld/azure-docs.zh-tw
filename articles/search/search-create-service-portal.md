@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 6813db0b7416695fb9433a701114f2684dd0e122
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554017"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927114"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入門：在入口網站中建立 Azure 認知搜尋服務
 
@@ -96,7 +96,7 @@ Azure 認知搜尋可在大部分區域中使用。 支援的區域清單可在[
 
  如果您使用 AI 擴充資料，請在與認知服務相同的區域中建立您的搜尋服務。 *將 Azure 認知搜尋與認知服務共置於相同區域中，是 AI 擴充的需求之一*。
 
- 具有商務持續性和災害復原 (BCDR) 需求的客戶應在[區域配對](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs) \(部分機器翻譯\) 中建立其服務。 例如，如果您是在北美洲營運，可以針對每個服務選擇美國東部與美國西部，或美國中北部與美國中南部。
+ 具有商務持續性和災害復原 (BCDR) 需求的客戶應在[區域配對](../best-practices-availability-paired-regions.md#azure-regional-pairs) \(部分機器翻譯\) 中建立其服務。 例如，如果您是在北美洲營運，可以針對每個服務選擇美國東部與美國西部，或美國中北部與美國中南部。
 
 ### <a name="recommendations"></a>建議
 
@@ -160,7 +160,7 @@ Azure 認知搜尋可在大部分區域中使用。 支援的區域清單可在[
 
 雖然大部分的客戶只使用單一服務，但如果操作需求包含下列項目，則可能需要服務備援：
 
-+ [商務持續性和災害復原 (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) \(部分機器翻譯\)。 Azure 認知搜尋不提供中斷時的即時容錯移轉功能。
++ [商務持續性和災害復原 (BCDR)](../best-practices-availability-paired-regions.md) \(部分機器翻譯\)。 Azure 認知搜尋不提供中斷時的即時容錯移轉功能。
 
 + [多租用戶架構](search-modeling-multitenant-saas-applications.md)有時會呼叫兩個以上的服務。
 

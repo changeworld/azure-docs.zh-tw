@@ -5,14 +5,15 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: ec5b7a75bced4b7cd81a120925558b8c1be57818
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8797d17ac439882415a9f5360fded28cb55484d5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74158186"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050528"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>快速入門：使用 ASP.NET 和 SignalR 服務建立聊天室
 
@@ -30,15 +31,21 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.0](https://docs.mic
 * [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
 * [ASP.NET SignalR 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnet)
+
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
 使用您的 Azure 帳戶登入 [Azure 入口網站](https://portal.azure.com/) 。
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnet)
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
 *無伺服器*模式不支援 ASP.NET SignalR 應用程式。 對於 Azure SignalR 服務執行個體，務必使用*預設*或*傳統*。
 
 您也可以使用[建立 SignalR 服務指令碼](scripts/signalr-cli-create-service.md)，建立此快速入門中使用的 Azure 資源。
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnet)
 
 ## <a name="clone-the-sample-application"></a>複製範例應用程式
 
@@ -52,13 +59,15 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.0](https://docs.mic
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnet)
+
 ## <a name="configure-and-run-chat-room-web-app"></a>設定並執行聊天室的 Web 應用程式
 
 1. 啟動 Visual Studio 並開啟複製之存放庫的 *aspnet-samples/ChatRoom/* 資料夾中的方案。
 
 1. 在開啟 Azure 入口網站的瀏覽器中，尋找並選取您建立的執行個體。
 
-1. 選取 [金鑰]  以檢視 SignalR 服務執行個體的連接字串。
+1. 選取 [金鑰]**** 以檢視 SignalR 服務執行個體的連接字串。
 
 1. 選取並複製主要連接字串。
 
@@ -83,7 +92,7 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.0](https://docs.mic
     }
     ```
 
-    您也需要參考服務 SDK，才能使用這些 API。 開啟 [工具] | [NuGet 套件管理員] | [套件管理員主控台]  ，並執行命令：
+    您也需要參考服務 SDK，才能使用這些 API。 開啟 [工具] | [NuGet 套件管理員] | [套件管理員主控台]****，並執行命令：
 
     ```powershell
     Install-Package Microsoft.Azure.SignalR.AspNet
@@ -96,6 +105,8 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.0](https://docs.mic
 
 1. 按 **F5** 以在偵錯模式中執行專案。 您可以看到應用程式在本機執行。 此時會連線到 Azure SignalR 服務，而不會裝載應用程式本身的 SignalR 執行階段。
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnet)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
 
@@ -105,14 +116,16 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.0](https://docs.mic
 > 
 > 
 
-登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]  。
+登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]。
 
-在 [依名稱篩選...]  文字方塊中，輸入您的資源群組名稱。 本快速入門的指示是使用名為 *SignalRTestResources* 的資源群組。 在結果清單中的目標資源群組上方，按一下 **...** ，然後按一下 [刪除資源群組]  。
+在 [依名稱篩選...] 文字方塊中，輸入您的資源群組名稱。 本快速入門的指示是使用名為 *SignalRTestResources* 的資源群組。 在結果清單中的目標資源群組上方，按一下 **...** ，然後按一下 [刪除資源群組]。
 
    
 ![刪除](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
 片刻過後，系統便會刪除該資源群組及其所有內含的資源。
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnet)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -120,3 +133,6 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.0](https://docs.mic
 
 > [!div class="nextstepaction"]
 > [Azure SignalR Service 搭配 ASP.NET Core](./signalr-quickstart-dotnet-core.md)
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnet)
+

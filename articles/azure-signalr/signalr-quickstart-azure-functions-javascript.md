@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3f1051b81666a036203eb1c810875d837ef9816f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 74f0a1c163380b88986b6866e346a5f044772a0e
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386872"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050551"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入門：使用 JavaScript 搭配 Azure Functions 與 SignalR Service 來建立聊天室
 
@@ -32,13 +32,21 @@ Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，�
 > [!NOTE]
 > 此快速入門可以在 macOS、Windows 或 Linux 上執行。
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)
+
 ## <a name="log-in-to-azure"></a>登入 Azure
 
 使用您的 Azure 帳戶登入 Azure 入口網站 (<https://portal.azure.com/>)。
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)
 
 ## <a name="configure-and-run-the-azure-function-app"></a>設定及執行 Azure Function 應用程式
 
@@ -46,7 +54,7 @@ Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，�
 
     ![搜尋 SignalR 服務執行個體](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-1. 選取 [金鑰]  以檢視 SignalR 服務執行個體的連接字串。
+1. 選取 [金鑰]**** 以檢視 SignalR 服務執行個體的連接字串。
 
 1. 選取並複製主要連接字串。
 
@@ -71,9 +79,15 @@ Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，�
 
     ![建立 SignalR 服務](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-run-application.png)
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -81,3 +95,5 @@ Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，�
 
 > [!div class="nextstepaction"]
 > [使用 VS Code 部署 Azure Functions](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)

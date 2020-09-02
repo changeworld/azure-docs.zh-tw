@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 0e17ecea6c85329b22310ebe1d06e2fe63cdd773
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042814"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003842"
 ---
 # <a name="what-is-azure-digital-twins"></a>什麼是 Azure Digital Twins？
 
@@ -105,5 +105,4 @@ Azure Digital Twins 通常會與其他 Azure 服務搭配使用，以做為大�
 
 或者，藉由第一個教學課程來深入探索 Azure Digital Twins 的使用：
 
-> [!div class="nextstepaction"]
-> [*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)
+[*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)

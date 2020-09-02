@@ -5,14 +5,15 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 75d9977546c2a085765310a5654897f739a271ae
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 54a4c9374c064073620f2679e7c7511e30c45de6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "65595406"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050636"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>快速入門：使用 C\# 搭配 Azure Functions 與 SignalR 服務來建立聊天室
 
@@ -26,13 +27,21 @@ Azure SignalR 服務可讓您輕鬆地新增即時功能到您的應用程式。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)
+
 ## <a name="log-in-to-azure"></a>登入 Azure
 
 使用您的 Azure 帳戶登入 Azure 入口網站 (<https://portal.azure.com/>)。
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)
 
 ## <a name="configure-and-run-the-azure-function-app"></a>設定及執行 Azure Function 應用程式
 
@@ -42,7 +51,7 @@ Azure SignalR 服務可讓您輕鬆地新增即時功能到您的應用程式。
 
     ![搜尋 SignalR 服務執行個體](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-1. 選取 [金鑰]  以檢視 SignalR 服務執行個體的連接字串。
+1. 選取 [金鑰]**** 以檢視 SignalR 服務執行個體的連接字串。
 
 1. 選取並複製主要連接字串。
 
@@ -57,7 +66,7 @@ Azure SignalR 服務可讓您輕鬆地新增即時功能到您的應用程式。
 
 1. 請使用下列其中一個選項在本機啟動 Azure 函式應用程式。
 
-    - **Visual Studio**：在 [偵錯]  功能表中，選取 [開始偵錯]  以執行應用程式。
+    - **Visual Studio**：在 [偵錯] 功能表中，選取 [開始偵錯] 以執行應用程式。
 
         ![偵錯應用程式](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-debug-vs.png)
 
@@ -66,10 +75,15 @@ Azure SignalR 服務可讓您輕鬆地新增即時功能到您的應用程式。
         ```bash
         func start
         ```
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -77,3 +91,5 @@ Azure SignalR 服務可讓您輕鬆地新增即時功能到您的應用程式。
 
 > [!div class="nextstepaction"]
 > [使用 Visual Studio 來開發 Azure Functions](../azure-functions/functions-develop-vs.md)
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)

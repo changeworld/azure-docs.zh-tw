@@ -9,16 +9,17 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
-ms.openlocfilehash: a2a860a2ff96c74f9d19fe7abfd845bbae8023cd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7901254463ef052f3c13b2c9fc49c31bd8ebc454
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922263"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020859"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>快速入門：使用 Azure.Search.Documents 用戶端程式庫建立搜尋索引
 
-使用新的 [Azure.Search.Documents (第 11 版) 用戶端程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)在 C# 中建立 .NET Core 主控台應用程式，以建立、載入及查詢搜尋索引。
+使用新的 [Azure.Search.Documents (第 11 版) 用戶端程式庫](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)在 C# 中建立 .NET Core 主控台應用程式，以建立、載入及查詢搜尋索引。
 
 [下載原始程式碼](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v11)以使用已完成的專案來開始，或遵循本文中的步驟來建立您自己的程式碼。
 
@@ -77,7 +78,7 @@ ms.locfileid: "87922263"
    using Azure.Search.Documents.Models;
    ```
 
-1. 建立兩個用戶端：[SearchIndexClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient) 負責建立索引，而 [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) 則用來處理現有索引。 兩者都需要服務端點和管理員 API 金鑰，以使用 create/delete 權限進行驗證。
+1. 建立兩個用戶端：[SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) 負責建立索引，而 [SearchClient](/dotnet/api/azure.search.documents.searchclient) 則用來處理現有索引。 兩者都需要服務端點和管理員 API 金鑰，以使用 create/delete 權限進行驗證。
 
    ```csharp
    static void Main(string[] args)
@@ -99,7 +100,7 @@ ms.locfileid: "87922263"
 
 本快速入門會建置供您隨著飯店資料一起載入並對其執行查詢的 Hotels 索引。 在此步驟中，請定義索引中的欄位。 每個欄位定義都包含名稱、資料類型和屬性，以決定欄位的使用方式。
 
-為求簡化並方便閱讀，此範例會使用 Azure.Search.Documents 程式庫的同步方法。 不過，在生產案例中，則請使用非同步方法，以讓應用程式保持可調整和能回應的狀態。 例如，使用 [CreateIndexAsync](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) 而非 [CreateIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex)。
+為求簡化並方便閱讀，此範例會使用 Azure.Search.Documents 程式庫的同步方法。 不過，在生產案例中，則請使用非同步方法，以讓應用程式保持可調整和能回應的狀態。 例如，使用 [CreateIndexAsync](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) 而非 [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex)。
 
 1. 將空的類別定義新增至專案中：**Hotel.cs**
 
@@ -131,7 +132,7 @@ ms.locfileid: "87922263"
     }
     ```
 
-1. 在 **Program.cs** 中，指定欄位和屬性。 使用 [SearchIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) 和 [CreateIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) 來建立索引。
+1. 在 **Program.cs** 中，指定欄位和屬性。 使用 [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) 和 [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) 來建立索引。
 
    ```csharp
     // Define an index schema using SearchIndex
@@ -154,9 +155,9 @@ ms.locfileid: "87922263"
 
 欄位上的屬性決定它如何在應用程式中使用。 例如，必須將 `IsFilterable` 屬性指派給支援篩選條件運算式的每個欄位。
 
-相較於可搜尋字串欄位上需要 [IsSearchable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable) 的舊版 .NET SDK，您可以使用 [SearchableField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchablefield) 和 [SimpleField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.simplefield) 來簡化欄位定義。
+相較於可搜尋字串欄位上需要 [IsSearchable](/dotnet/api/microsoft.azure.search.models.field.issearchable) 的舊版 .NET SDK，您可以使用 [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield) 和 [SimpleField](/dotnet/api/azure.search.documents.indexes.models.simplefield) 來簡化欄位定義。
 
-與之前的版本類似，定義本身仍需要其他屬性。 例如，[IsFilterable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable)、[IsSortable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable) 和 [IsFacetable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) 必須明確屬性化，如上述範例所示。 
+與之前的版本類似，定義本身仍需要其他屬性。 例如，[IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable)、[IsSortable](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable) 和 [IsFacetable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) 必須明確屬性化，如上述範例所示。 
 
 <a name="load-documents"></a>
 
@@ -166,7 +167,7 @@ Azure 認知搜尋會搜尋服務中儲存的內容。 在此步驟中，您會�
 
 在 Azure 認知搜尋中，文件是同時屬於索引輸入與查詢輸出的資料結構。 如同從外部資料來源所取得的一樣，文件輸入可能是資料庫中的資料列，Blob 儲存體中的 Blob 或磁碟上的 JSON 文件。 在此範例中，我們採用捷徑，並針對程式碼本身中的五家飯店內嵌 JSON 文件。 
 
-上傳文件時，您必須使用 [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) 物件。 IndexDocumentsBatch 包含[動作](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions)的集合，每個動作都包含文件與屬性，以告知 Azure 認知搜尋所應執行的動作 ([上傳、合併、刪除及 mergeOrUpload](search-what-is-data-import.md#indexing-actions))。
+上傳文件時，您必須使用 [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) 物件。 IndexDocumentsBatch 包含[動作](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions)的集合，每個動作都包含文件與屬性，以告知 Azure 認知搜尋所應執行的動作 ([上傳、合併、刪除及 mergeOrUpload](search-what-is-data-import.md#indexing-actions))。
 
 1. 在 **Program.cs** 中，建立文件和索引動作的陣列，然後將陣列傳遞到 `ndexDocumentsBatch`。下列文件符合飯店類別所定義的 hotels-quickstart-v11 索引。
 
@@ -185,7 +186,7 @@ Azure 認知搜尋會搜尋服務中儲存的內容。 在此步驟中，您會�
     qryclient.IndexDocuments(batch, idxoptions);
     ```
 
-    一旦將 [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) 物件初始化之後，您就可以將其傳送至索引，方法是在 [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) 物件上呼叫 [IndexDocuments](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.indexdocuments)。
+    一旦將 [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) 物件初始化之後，您就可以將其傳送至索引，方法是在 [SearchClient](/dotnet/api/azure.search.documents.searchclient) 物件上呼叫 [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments)。
 
 1. 因為這是會循序執行所有命令的主控台應用程式，因此請在索引編製和查詢之間新增 2 秒的等候時間。
 
@@ -201,9 +202,9 @@ Azure 認知搜尋會搜尋服務中儲存的內容。 在此步驟中，您會�
 
 您可以在系統為第一個文件編製索引之後立即取得結果，但索引的實際測試應該等到系統為所有文件編製索引之後才進行。
 
-此節新增兩個功能：查詢邏輯，以及結果。 針對查詢，請使用[搜尋](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search)方法。 這個方法會接受搜尋文字 (查詢字串) 以及其他[選項](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions)。
+此節新增兩個功能：查詢邏輯，以及結果。 針對查詢，請使用[搜尋](/dotnet/api/azure.search.documents.searchclient.search)方法。 這個方法會接受搜尋文字 (查詢字串) 以及其他[選項](/dotnet/api/azure.search.documents.searchoptions)。
 
-[SearchResults](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.searchresults-1) 類別代表結果。
+[SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1) 類別代表結果。
 
 1. 在 **Program.cs** 中，建立會將結果列印到主控台的 WriteDocuments 方法。
 
@@ -267,17 +268,17 @@ Azure 認知搜尋會搜尋服務中儲存的內容。 在此步驟中，您會�
 
 + 全文檢索搜尋會查詢索引中可搜尋欄位內的一或多個字詞。 第一個查詢會是全文檢索搜尋。 全文檢索搜尋會產生用來排名結果的相關性分數。
 
-+ 篩選則是布林運算式，會針對索引中的 [IsFilterable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) 欄位來進行評估。 篩選會查詢包含或排除值。 因此，沒有與篩選查詢相關聯的相關性分數。 最後兩個查詢會示範篩選搜尋。
++ 篩選則是布林運算式，會針對索引中的 [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) 欄位來進行評估。 篩選會查詢包含或排除值。 因此，沒有與篩選查詢相關聯的相關性分數。 最後兩個查詢會示範篩選搜尋。
 
 您可以一起使用全文檢索搜尋與篩選或個別使用它們。
 
-搜尋和篩選都會使用 [SearchClient.Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search) 方法來執行。 搜尋查詢可以在 `searchText` 字串中傳遞，而篩選運算式則可以在 [SearchOptions](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions) 類別的[篩選](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions.filter)屬性中傳遞。 若要篩選而不進行搜尋，只要針對[搜尋](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search)方法的 `searchText` 參數傳遞 `"*"` 即可。 若要在不進行篩選的情況下搜尋，則請將 `Filter` 屬性保留在未設定狀態，或完全不要傳入 `SearchOptions` 執行個體。
+搜尋和篩選都會使用 [SearchClient.Search](/dotnet/api/azure.search.documents.searchclient.search) 方法來執行。 搜尋查詢可以在 `searchText` 字串中傳遞，而篩選運算式則可以在 [SearchOptions](/dotnet/api/azure.search.documents.searchoptions) 類別的[篩選](/dotnet/api/azure.search.documents.searchoptions.filter)屬性中傳遞。 若要篩選而不進行搜尋，只要針對[搜尋](/dotnet/api/azure.search.documents.searchclient.search)方法的 `searchText` 參數傳遞 `"*"` 即可。 若要在不進行篩選的情況下搜尋，則請將 `Filter` 屬性保留在未設定狀態，或完全不要傳入 `SearchOptions` 執行個體。
 
 ## <a name="run-the-program"></a>執行程式
 
 按下 F5 以重建應用程式並完整執行程式。 
 
-輸出中包含來自 [Console.WriteLIne](https://docs.microsoft.com/dotnet/api/system.console.writeline) 的訊息，並且會加上查詢資訊和結果。
+輸出中包含來自 [Console.WriteLIne](/dotnet/api/system.console.writeline) 的訊息，並且會加上查詢資訊和結果。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -297,4 +298,4 @@ Azure 認知搜尋會搜尋服務中儲存的內容。 在此步驟中，您會�
 想要最佳化並節省您的雲端費用嗎？
 
 > [!div class="nextstepaction"]
-> [使用成本管理開始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [使用成本管理開始分析成本](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

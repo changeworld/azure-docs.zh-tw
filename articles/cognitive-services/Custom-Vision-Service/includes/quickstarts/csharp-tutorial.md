@@ -3,12 +3,13 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 08/17/2020
-ms.openlocfilehash: 758d288480c8d6a7ef5185cff33a857633c5e95b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ba09deda155ac446693a7e1037390a3f1fd2700f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508505"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919367"
 ---
 本文提供資訊和範例程式碼，可協助您開始使用自訂視覺用戶端程式庫與 C# 來建置影像分類模型。 建立它之後，您就可以新增標記、上傳影像、為專案定型、取得專案的預設預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 .NET 應用程式。 如果您想要進行「不用」  程式碼來建置及使用分類模型的程序，請改為參閱[以瀏覽器為基礎的指引](../../getting-started-build-a-classifier.md)。
 

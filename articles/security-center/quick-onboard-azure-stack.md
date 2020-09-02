@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: memildin
-ms.openlocfilehash: 67017bdc98b997c728c4d5dcfab92e0804498060
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7469d60095026c8a016fc1ecaa1a4f92361800f3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084002"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019373"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>快速入門：將 Azure Stack 虛擬機器登入至資訊安全中心
 將您的 Azure 訂用帳戶登入後，您即可從 Azure Stack Marketplace 新增 **Azure 監視器、更新和組態管理**虛擬機器擴充功能，讓資訊安全中心保護您在 Azure Stack 上執行的虛擬機器。
@@ -72,7 +72,7 @@ ms.locfileid: "87084002"
 7. 提供必要的組態設定後，請按一下 [確定]  。
 8. 擴充功能安裝完成後，其狀態會顯示為 [佈建成功]  。 虛擬機器最多可能需要一小時才會出現在資訊安全中心入口網站中。
 
-如需為 Windows 安裝及設定代理程式的詳細資訊，請參閱[連線到 Windows 電腦](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
+如需為 Windows 安裝及設定代理程式的詳細資訊，請參閱[連線到 Windows 電腦](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)。
 
 若要對 Linux 的代理程式問題進行疑難排解，請參閱[對 Azure Log Analytics Linux 代理程式進行疑難排解](../azure-monitor/platform/agent-linux-troubleshoot.md)。
 

@@ -8,17 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 08/06/2020
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 7bcda79403e021384fc987a67865441dd8732885
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6c1a720e7e9bd9c71f925f104ca7fc70a1a5ef59
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927448"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051061"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>什麼是筆跡辨識器 API？
 
+[!INCLUDE [ink-recognizer-deprecation](includes/deprecation-note.md)]
 
 筆墨辨識器認知服務會提供雲端式 REST API 來分析及辨識數位筆跡內容。 不同於使用光學字元辨識 (OCR) 的服務，此 API 需要以數位筆跡筆觸資料作為輸入。 數位筆跡筆觸是按時間排序的 2D 位置點 (X,Y 座標) 集合，可表示數位筆或手指等輸入工具的動作。 然後，其會辨識輸入的圖形和手寫內容，並傳回包含所有已辨識實體的 JSON 回應。
 

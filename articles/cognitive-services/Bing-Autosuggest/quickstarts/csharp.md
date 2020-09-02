@@ -10,18 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: cf74d686a9156d6ccff1753a4f53abb5ecc6b7df
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.custom: devx-track-csharp
+ms.openlocfilehash: af64e80137b375e6e7b7037f72240e814b4b1e15
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929684"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919415"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>快速入門：使用 Bing 自動建議 REST API 與 C# 建議搜尋查詢
 
 本快速入門說明如何呼叫 Bing 自動建議 API，並讀取 JSON 回應。 這個簡單的 C# 應用程式會將部分搜尋查詢傳送至 API，並傳回搜尋建議。 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) 上有此範例的原始程式碼。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [Visual Studio 2017 或更新版本](https://www.visualstudio.com/downloads/)的任何版本。
 * 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/) 來執行此應用程式。

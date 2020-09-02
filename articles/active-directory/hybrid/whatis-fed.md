@@ -13,12 +13,12 @@ ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd7a5b186ebc98babe1baacc9f56f39dc8fbc093
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb1c3bc9f89db3f4b694803a63293a5537d4b98b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80049366"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278747"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>什麼是與 Azure AD 同盟？
 
@@ -35,7 +35,7 @@ ms.locfileid: "80049366"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [什麼是混合式身分識別？](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
+- [什麼是混合式身分識別？](./whatis-hybrid-identity.md)
 - [什麼是 Azure AD Connect 和 Connect Health？](whatis-azure-ad-connect.md)
 - [什麼是密碼雜湊同步處理？](whatis-phs.md)
 - [什麼是同盟？](whatis-fed.md)

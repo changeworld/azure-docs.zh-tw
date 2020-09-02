@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 38ae6bec99498440d7bf7e68e2d5c397e696192a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604908"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923682"
 ---
 # <a name="about-azure-key-vault-certificates"></a>關於 Azure Key Vault 憑證
 
@@ -44,7 +44,8 @@ Key Vault 憑證建立後，該憑證將可透過可定址秘密和 PFX 或 PEM 
 
 可定址的金鑰會變成與不可匯出的 KV 憑證有較高相關性。 用來建立 KV 憑證的 KV 憑證原則欄位 keyusage  ，會對應至可定址 KV 金鑰的作業。  
 
-支援金鑰類型有兩種 – 具有憑證的 RSA  或 RSA HSM  。 可匯出金鑰允許使用 RSA，不支援 RSA HSM。  
+ - 支援的金鑰類型：RSA、RSA-HSM、EC、EC-HSM、oct (列於[此處](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)) 僅允許匯出 RSA、EC。 HSM 金鑰不可匯出。
+
 
 ## <a name="certificate-attributes-and-tags"></a>憑證屬性與標記
 

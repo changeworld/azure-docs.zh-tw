@@ -10,19 +10,19 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 043d5224c9bfefb189e36c0f4b744c93b376ace0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2c97a770dc10168284bebbc038d8c48145c2a385
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420850"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917885"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>快速入門：使用 REST API 在 Node.js 中建立 Azure 認知搜尋索引
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
 > * [入口網站](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
@@ -130,7 +130,7 @@ ms.locfileid: "87420850"
 
 ## <a name="1---create-index"></a>1 - 建立索引 
 
-建立 **hotels_quickstart_index.json** 檔案。  此檔案會定義 Azure 認知搜尋將如何處理您要在下一個步驟中載入的文件。 每個欄位都會由 `name` 識別，並具有指定的 `type`。 每個欄位也有一系列的索引屬性，可指定 Azure 認知搜尋是否可在欄位上進行搜尋、篩選、排序和 Facet 處理。 大部分的欄位都是簡單的資料類型，但有些 (像是 `AddressType`) 則為複雜類型，其可讓您在索引中建立豐富的資料結構。  您可以深入了解[支援的資料類型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)和[索引屬性](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)。 
+建立 **hotels_quickstart_index.json** 檔案。  此檔案會定義 Azure 認知搜尋將如何處理您要在下一個步驟中載入的文件。 每個欄位都會由 `name` 識別，並具有指定的 `type`。 每個欄位也有一系列的索引屬性，可指定 Azure 認知搜尋是否可在欄位上進行搜尋、篩選、排序和 Facet 處理。 大部分的欄位都是簡單的資料類型，但有些 (像是 `AddressType`) 則為複雜類型，其可讓您在索引中建立豐富的資料結構。  您可以深入了解[支援的資料類型](/rest/api/searchservice/supported-data-types)和[索引屬性](./search-what-is-an-index.md#index-attributes)。 
 
 將下列內容新增至 **hotels_quickstart_index.json**，或[下載檔案](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json)。 
 
@@ -610,7 +610,7 @@ const run = async () => {
 
 ## <a name="3---search-an-index"></a>3 - 搜尋索引
 
-返回 [索引]  標籤 (位於 Azure 入口網站的搜尋服務 [概觀]  中)。 您的索引現在會包含四個文件，並且會耗用一些儲存體 (UI 可能需要幾分鐘的時間，才能正確反映索引的基礎狀態)。 按一下索引名稱，以移至 [搜尋總管]  。 此頁面可讓您試驗資料查詢。 若嘗試搜尋 `*&$count=true` 的查詢字串，您應該會收到所有文件和結果數目。 若嘗試 `historic&highlight=Description&$filter=Rating gt 4` 查詢字串，您應該會收到單一文件，其中 "historic" 一詞會以 `<em></em>` 標記括住。 深入了解[如何在 Azure 認知搜尋中撰寫查詢](https://docs.microsoft.com/azure/search/search-query-overview)。 
+返回 [索引]  標籤 (位於 Azure 入口網站的搜尋服務 [概觀]  中)。 您的索引現在會包含四個文件，並且會耗用一些儲存體 (UI 可能需要幾分鐘的時間，才能正確反映索引的基礎狀態)。 按一下索引名稱，以移至 [搜尋總管]  。 此頁面可讓您試驗資料查詢。 若嘗試搜尋 `*&$count=true` 的查詢字串，您應該會收到所有文件和結果數目。 若嘗試 `historic&highlight=Description&$filter=Rating gt 4` 查詢字串，您應該會收到單一文件，其中 "historic" 一詞會以 `<em></em>` 標記括住。 深入了解[如何在 Azure 認知搜尋中撰寫查詢](./search-query-overview.md)。 
 
 藉由開啟 **index.js** 並將此程式碼加入至頂端附近的位置，以在程式碼中重現這些查詢：
 
