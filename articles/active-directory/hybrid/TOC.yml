@@ -31,7 +31,7 @@
         - name: 什麼是 Azure AD Connect 和 Connect Health？
           href: whatis-azure-ad-connect.md
         - name: 選擇正確的驗證
-          href: 'https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn'
+          href: ./choose-ad-authn.md
         - name: 身分識別同步處理和重複屬性恢復功能
           href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     - name: 密碼雜湊同步處理
@@ -339,7 +339,7 @@
     - name: Azure AD 傳遞驗證代理程式版本歷程
       href: reference-connect-pta-version-history.md
     - name: 連接器版本記錄
-      href: reference-connect-sync-connector-version-history.md
+      href: /microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history
     - name: 帳戶和權限
       href: reference-connect-accounts-permissions.md
     - name: Azure AD Connect 常見問題集

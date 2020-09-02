@@ -4,6 +4,10 @@
   items:
     - name: 什麼是 ExpressRoute？
       href: expressroute-introduction.md
+- name: 快速入門
+  items:
+    - name: 建立 ExpressRoute 線路 - ARM 範本
+      href: quickstart-create-expressroute-vnet-template.md
 - name: 教學課程
   items:
     - name: 建立及修改電路
@@ -30,7 +34,7 @@
           href: expressroute-locations-providers.md
         - name: 依提供者的位置
           href: expressroute-locations.md
-    - name: 必要條件
+    - name: Prerequisites
       href: expressroute-prerequisites.md
     - name: 工作流程
       href: expressroute-workflows.md

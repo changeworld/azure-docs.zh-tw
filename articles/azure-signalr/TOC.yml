@@ -31,8 +31,6 @@
       href: 'https://github.com/aspnet/AzureSignalR-samples'
     - name: Azure CLI
       href: signalr-reference-cli.md
-    - name: Azure 原則內建
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Azure SignalR Service 內部項目
@@ -103,6 +101,9 @@
       href: 'https://docs.microsoft.com/aspnet/core/signalr'
     - name: Azure SignalR Service 通訊協定
       href: 'https://github.com/Azure/azure-signalr/blob/dev/specs/ServiceProtocol.md'
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: 方案

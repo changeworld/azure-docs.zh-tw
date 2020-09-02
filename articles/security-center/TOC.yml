@@ -107,12 +107,12 @@
           href: update-regulatory-compliance-packages.md
     - name: 掃描 VM 的弱點
       items:
-        - name: 弱點掃描概觀
-          href: security-center-vulnerability-assessment-recommendations.md
-        - name: VM 的整合式弱點掃描器
-          href: built-in-vulnerability-assessment.md
-        - name: 使用外部掃描器
-          href: partner-vulnerability-assessment.md
+        - name: 將整合式弱點掃描器部署至 VM
+          href: deploy-vulnerability-assessment-vm.md
+        - name: 將 BYOL 弱點解決方案部署至 VM
+          href: deploy-vulnerability-assessment-byol-vm.md
+        - name: 檢閱並修復 VM 上的弱點
+          href: remediate-vulnerability-findings-vm.md
     - name: 設定威脅防護並處理警示
       items:
         - name: 管理安全性警示

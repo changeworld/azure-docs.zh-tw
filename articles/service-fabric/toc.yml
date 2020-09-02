@@ -116,9 +116,6 @@
       href: service-fabric-powershell-samples.md
     - name: Service Fabric CLI
       href: samples-cli.md
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 了解微服務
@@ -895,6 +892,9 @@
           href: service-fabric-service-model-schema-element-groups.md
     - name: 環境變數
       href: service-fabric-environment-variables-reference.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: Azure 藍圖

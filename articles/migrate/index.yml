@@ -3,19 +3,21 @@ title: Azure Migrate 文件
 summary: 尋找可協助您使用 Azure Migrate 中樞中的工具來探索、評估及遷移內部部署環境的文章。
 metadata:
   title: Azure Migrate 文件
-  description: 了解如何使用 Azure Migrate 中樞中的工具來探索、評估及遷移內部部署環境，並將其遷移至 Azure。
+  description: 尋找 Azure 移轉教學課程、資源和移轉評量工具。 了解如何使用 Azure Migrate 中樞中的工具來探索、評估及遷移內部部署環境，並將其遷移至 Azure。
   ms.service: azure-migrate
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
   ms.date: 07/08/2020
-  ms.openlocfilehash: a3c9be5e123892d5d1b8d8e4a0677eb520e34dc6
-  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+  ms.custom: seo-azure-migrate
+  keywords: azure migrate, azure migration, azure migrate assessment tool, azure migrate tool, azure migrate documentation, azure migration documentation
+  ms.openlocfilehash: b38df4b4a9c9cd0741e9bc4d69e42ebaf2feefb7
+  ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 07/08/2020
-  ms.locfileid: "86112658"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89228336"
 landingContent:
 - title: 關於 Azure Migrate
   linkLists:

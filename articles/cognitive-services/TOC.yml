@@ -26,10 +26,6 @@
       href: resource-manager-template.md
     - name: 診斷記錄
       href: diagnostic-logging.md
-- name: 範例
-  items:
-    - name: Azure 原則內建
-      href: ./policy-samples.md
 - name: 安全性
   items:
     - name: 認知服務安全性
@@ -86,6 +82,11 @@
           href: ./big-data/recipes/anomaly-detection.md
         - name: 配方：藝術總管
           href: ./big-data/recipes/art-explorer.md
+- name: 參考
+  items:
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: Azure 藍圖

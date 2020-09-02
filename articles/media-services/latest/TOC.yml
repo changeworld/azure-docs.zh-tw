@@ -49,20 +49,22 @@
   items:
     - name: .NET
       items:
-        - name: 編碼和串流遠端檔案 REST
-          href: stream-files-tutorial-with-rest.md
         - name: 編碼和串流遠端檔案 .NET
           href: stream-files-dotnet-quickstart.md
-        - name: 編碼和串流上傳的檔案
+        - name: 編碼和串流上傳的檔案 .NET
           href: stream-files-tutorial-with-api.md
-        - name: 即時串流
+        - name: 使用 .NET 來即時串流
           href: stream-live-tutorial-with-api.md
-        - name: 分析您的影片
+        - name: 使用 .NET 分析影片
           href: analyze-videos-tutorial-with-api.md
         - name: 透過 AES-128 進行動態加密
           href: protect-with-aes128.md
         - name: 透過 DRM 進行動態加密
           href: protect-with-drm.md
+    - name: REST
+      items:
+        - name: 編碼和串流遠端檔案 REST
+          href: stream-files-tutorial-with-rest.md
     - name: CLI
       items:
         - name: 編碼和串流遠端檔案 CLI

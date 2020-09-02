@@ -40,9 +40,6 @@
   items:
     - name: 程式碼範例
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 選擇串流分析技術
@@ -655,6 +652,9 @@
       href: /azure/templates/microsoft.streamanalytics/allversions
     - name: Azure CLI
       href: /cli/azure/ext/stream-analytics/stream-analytics
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: 串流分析預覽

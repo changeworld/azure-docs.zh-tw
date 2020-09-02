@@ -657,6 +657,8 @@
           href: instance-metadata-service.md
         - name: 啟用巢狀虛擬化
           href: nested-virtualization.md
+        - name: 自動 VM 來賓修補 (預覽)
+          href: automatic-vm-guest-patching.md
     - name: 平台維修
       items:
         - name: 維修通知

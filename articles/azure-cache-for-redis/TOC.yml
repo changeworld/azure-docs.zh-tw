@@ -161,7 +161,8 @@
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.cache/allversions
     - name: Azure 原則內建
-      href: ./policy-samples.md
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: Redis 命令
       href: 'https://redis.io/commands#'
 - name: 資源

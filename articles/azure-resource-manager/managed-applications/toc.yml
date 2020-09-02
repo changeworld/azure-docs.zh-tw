@@ -25,9 +25,6 @@
       href: powershell-samples.md
     - name: 受控應用程式解決方案
       href: sample-projects.md
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 檢視定義成品
@@ -157,6 +154,9 @@
               href: microsoft-storage-multistorageaccountcombo.md
             - name: StorageAccountSelector
               href: microsoft-storage-storageaccountselector.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: Azure 藍圖

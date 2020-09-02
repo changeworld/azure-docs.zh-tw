@@ -93,9 +93,6 @@
           href: ./scripts/powershell-single-av-zone-scale-set.md
         - name: 建立區域備援擴展集
           href: ./scripts/powershell-sample-zone-redundant-scale-set.md
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Azure Resource Manager
@@ -394,6 +391,9 @@
       href: /rest/api/virtualmachinescalesets/
     - name: Azure 範本
       href: /azure/templates/microsoft.compute/virtualmachinescalesets
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: Azure 藍圖

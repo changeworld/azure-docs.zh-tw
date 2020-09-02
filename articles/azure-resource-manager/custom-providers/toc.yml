@@ -21,11 +21,6 @@
       href: tutorial-custom-providers-create.md
     - name: 擴充資源
       href: tutorial-resource-onboarding.md
-- name: 範例
-  items:
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 適用於關聯的 Azure 原則
@@ -50,6 +45,9 @@
       href: /rest/api/customproviders/
     - name: Azure CLI
       href: /cli/azure/ext/custom-providers/custom-providers/
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: Azure 藍圖

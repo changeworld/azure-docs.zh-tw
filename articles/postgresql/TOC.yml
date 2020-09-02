@@ -73,9 +73,6 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 單一伺服器
@@ -393,6 +390,9 @@
           href: reference-hyperscale-parameters.md
         - name: 系統資料表
           href: reference-hyperscale-metadata.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: 透過 Microsoft Learn 增進您的技巧

@@ -46,6 +46,8 @@
       href: disable-private-link-service-network-policy.md
     - name: 管理私人端點
       href: manage-private-endpoint.md
+    - name: 使用 Azure 防火牆檢查流量
+      href: inspect-traffic-with-azure-firewall.md
     - name: 疑難排解
       items:
         - name: 針對私人端點連線問題進行疑難排解

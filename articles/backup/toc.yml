@@ -44,11 +44,6 @@
           href: tutorial-sap-hana-restore-cli.md
         - name: 管理備份的 SAP HANA 資料庫 - CLI
           href: tutorial-sap-hana-manage-cli.md
-- name: 範例
-  items:
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 支援矩陣
@@ -428,6 +423,9 @@
       href: /rest/api/recoveryservices/
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.recoveryservices/allversions
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: 法規遵循

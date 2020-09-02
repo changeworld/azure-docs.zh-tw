@@ -79,9 +79,6 @@
       href: samples-powershell.md
     - name: Resource Manager 範本
       href: samples-resource-manager-templates.md
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
     - name: Terraform
       href: samples-terraform.md
 - name: 概念
@@ -285,6 +282,9 @@
       href: /rest/api/appservice/
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.web/allversions
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: App Service 部落格

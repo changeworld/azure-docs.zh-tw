@@ -166,6 +166,8 @@
       href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
     - name: Azure 範例案例
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
+    - name: 電子郵件探索
+      href: /windows-server/remote/remote-desktop-services/rds-email-discovery
 - name: 資源
   items:
     - name: PowerShell

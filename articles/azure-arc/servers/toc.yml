@@ -4,6 +4,8 @@
   items:
     - name: 關於已啟用 Azure Arc 的伺服器
       href: overview.md
+    - name: Connected Machine 代理程式的新功能
+      href: agent-release-notes.md
 - name: 快速入門
   items:
     - name: 啟用已啟用 Arc 的伺服器代理程式

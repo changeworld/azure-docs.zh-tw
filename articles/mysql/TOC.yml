@@ -74,9 +74,6 @@
       href: sample-scripts-azure-cli.md
     - name: Java 連線集區
       href: sample-scripts-java-connection-pooling.md
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: DB 和伺服器
@@ -332,6 +329,9 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: 預存程序管理
       href: reference-stored-procedures.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: 部署範本

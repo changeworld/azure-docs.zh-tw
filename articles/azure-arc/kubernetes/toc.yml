@@ -4,12 +4,6 @@
   items:
     - name: 關於已啟用 Arc 的 Kubernetes
       href: overview.md
-- name: 範例
-  items:
-    - name: Azure 原則內建
-      items:
-        - name: 已啟用 Arc 的 Kubernetes
-          href: policy-samples.md
 - name: 操作指南
   items:
     - name: 連線至 Azure Arc
@@ -34,3 +28,8 @@
           href: deploy-azure-iot-edge-workloads.md
     - name: 疑難排解
       href: Troubleshooting.md
+- name: 參考
+  items:
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md

@@ -40,11 +40,6 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7 - 升級叢集
       href: tutorial-kubernetes-upgrade-cluster.md
-- name: 範例
-  items:
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 叢集與工作負載
@@ -388,6 +383,9 @@
       href: /javascript/api/overview/azure/container-service
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.containerservice/managedclusters
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: 透過 Microsoft Learn 增進您的技巧

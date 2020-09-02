@@ -75,9 +75,6 @@
   items:
     - name: 程式碼範例
       href: event-hubs-samples.md
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 事件中樞詞彙
@@ -290,6 +287,9 @@
       href: event-hubs-quotas.md
     - name: Apache Kafka 設定
       href: apache-kafka-configurations.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: 透過 Microsoft Learn 增進您的技巧

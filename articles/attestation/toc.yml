@@ -1,0 +1,48 @@
+- name: Microsoft Azure 證明 (預覽)
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 關於 Microsoft Azure 證明
+      href: overview.md
+- name: 快速入門
+  items:
+    - name: ARM 範本
+      href: quickstart-template.md
+    - name: PowerShell
+      href: quickstart-powershell.md
+- name: 教學課程
+  items:
+    - name: 撰寫和簽署證明原則
+      href: author-sign-policy.md
+    - name: SGX 證明程式碼範例
+      href: 'https://docs.microsoft.com/en-us/samples/browse/?expanded=azure&terms=attestation'
+- name: 範例
+  items:
+    - name: 證明原則
+      href: policy-examples.md
+    - name: 原則簽署者憑證
+      href: policy-signer-examples.md
+- name: 概念
+  items:
+    - name: 基本概念
+      href: basic-concepts.md
+    - name: 證明原則宣告
+      items:
+        - name: 宣告規則文法
+          href: claim-rule-grammar.md
+        - name: 宣告集
+          href: claim-sets.md
+    - name: 工作流程
+      href: workflow.md
+- name: 參考資料
+  items:
+    - name: 常見問題集
+      href: faq.md
+    - name: REST
+      href: /rest/api/attestation/
+    - name: Azure PowerShell
+      href: /powershell/module/az.attestation/?view=azps-4.3.0#attestation
+    - name: 適用於 Windows 的 Azure DCAP 程式庫
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.DCAP/'
+    - name: 適用於 Linux 的 Azure DCAP 程式庫
+      href: 'https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/'

@@ -4,11 +4,6 @@
   items:
     - name: 什麼是 Resource Manager？
       href: overview.md
-- name: 範例
-  items:
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 訂用帳戶與服務限制
@@ -17,8 +12,6 @@
       href: resource-name-rules.md
     - name: Resource Manager 與傳統部署
       href: deployment-models.md
-    - name: Azure 常見安全性屬性
-      href: azure-resource-manager-security-controls.md
     - name: 依服務的資源提供者
       href: azure-services-resource-providers.md
     - name: 延伸模組資源類型
@@ -30,6 +23,8 @@
         - name: Azure 原則的安全性控制
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: Azure 常見安全性屬性
+          href: azure-resource-manager-security-controls.md
 - name: 如何
   items:
     - name: 移動 - 資源群組/訂用帳戶
@@ -172,6 +167,9 @@
       href: /java/api/com.microsoft.azure.management.resources
     - name: Python
       href: /python/api/overview/azure/resources?view=azure-python
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: Azure 藍圖

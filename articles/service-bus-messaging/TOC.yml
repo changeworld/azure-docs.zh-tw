@@ -72,9 +72,6 @@
   items:
     - name: 服務匯流排範例
       href: service-bus-samples.md
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 進階傳訊
@@ -272,6 +269,9 @@
       href: service-bus-messaging-sql-filter.md
     - name: SQLRuleAction 語法
       href: service-bus-messaging-sql-rule-action.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: 常見問題集

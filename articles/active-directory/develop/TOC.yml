@@ -273,7 +273,9 @@
               href: msal-net-adfs-support.md
             - name: 遷移至 MSAL.NET
               href: msal-net-migration.md
-            - name: 使用訊息代理程式將 Xamarin 應用程式遷移到 MSAL.NET
+            - name: 使用訊息代理程式將 Xamarin Android 應用程式遷移至 MSAL.NET
+              href: msal-net-migration-android-broker.md
+            - name: 使用訊息代理程式將 Xamarin iOS 應用程式遷移至 MSAL.NET
               href: msal-net-migration-ios-broker.md
             - name: Web 瀏覽器考量
               href: msal-net-web-browsers.md

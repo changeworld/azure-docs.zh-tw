@@ -116,6 +116,10 @@
               href: howto-authentication-passwordless-security-key-windows.md
             - name: SSO 至內部部署資源
               href: howto-authentication-passwordless-security-key-on-premises.md
+            - name: Hybrid 常見問題
+              href: howto-authentication-passwordless-faqs.md
+            - name: 對混合式進行疑難排解
+              href: howto-authentication-passwordless-troubleshoot.md
         - name: 手機無密碼登入
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello 企業版
@@ -209,7 +213,7 @@
               href: howto-mfa-nps-extension-errors.md
     - name: 疑難排解
       items:
-        - name: SSPR 疑難排解
+        - name: SSPR
           href: active-directory-passwords-troubleshoot.md
         - name: SSPR 常見問題集
           href: active-directory-passwords-faq.md
