@@ -11,12 +11,12 @@ metadata:
   ms.author: kgremban
   manager: philmea
   ms.date: 08/05/2019
-  ms.openlocfilehash: 7c190dd3421d0eef9ce0aac3487644be9e758e4c
-  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+  ms.openlocfilehash: d3a71cd919660686c77b866b9e7fab461678da96
+  ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82130808"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89300352"
 landingContent:
 - title: 針對 Linux 裝置開發
   linkLists:
@@ -101,7 +101,7 @@ landingContent:
     - text: 使用 Azure CLI 大規模部署與監視
       url: how-to-deploy-cli-at-scale.md
     - text: 利用 Azure Pipelines 建立 CI/CD 管線
-      url: how-to-ci-cd.md
+      url: how-to-continuous-integration-continuous-deployment.md
   - linkListType: deploy
     links:
     - text: 適用於 IoT 中樞的 REST API

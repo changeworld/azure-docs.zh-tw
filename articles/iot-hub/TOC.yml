@@ -84,11 +84,6 @@
       href: tutorial-firmware-update.md
     - name: 測試裝置連線能力
       href: tutorial-connectivity.md
-- name: 範例
-  items:
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: TLS 支援
@@ -461,6 +456,9 @@
       href: 'https://docs.microsoft.com/rest/api/iothub/certificates'
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.devices/iothub-allversions
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: 功能與 API 淘汰
       items:
         - name: 作業監視

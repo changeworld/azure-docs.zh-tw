@@ -16,12 +16,6 @@
       href: ./learn/tutorial-assign-policy-portal.md
     - name: 監視機器
       href: ./learn/tutorial-enable-vm-insights.md
-- name: 範例
-  items:
-    - name: Azure 原則內建
-      items:
-        - name: 已啟用 Arc 的伺服器
-          href: policy-samples.md
 - name: 概念
   items:
     - name: 安全性
@@ -57,3 +51,6 @@
           href: data-residency.md
         - name: REST
           href: /rest/api/hybridcompute
+        - name: Azure 原則內建
+          displayName: 'samples, policies, definitions'
+          href: policy-reference.md
