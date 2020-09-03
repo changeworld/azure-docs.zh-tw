@@ -8,18 +8,19 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
-ms.openlocfilehash: 693a7006a9f5742341a11af23b64bcd8c501618f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 09273cf901830e850acca05c57c0b110ffd7e28a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705889"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002857"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>教學課程：使用 .NET SDK 以 AI 方式從 Azure Blob 產生可搜尋的內容
 
 如果您在 Azure Blob 儲存體中有非結構化的文字或影像，您可以利用 [AI 擴充管線](cognitive-search-concept-intro.md)來擷取資訊，並建立適用於全文檢索搜尋或知識採礦案例的新內容。 在此 C# 教學課程中，我們將對影像套用光學字元辨識 (OCR) 功能，並執行自然語言處理，以建立可在查詢、Facet 和篩選器中運用的新欄位。
 
-本教學課程將使用 C# 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 執行下列工作：
+本教學課程將使用 C# 和 [.NET SDK](/dotnet/api/overview/azure/search) 執行下列工作：
 
 > [!div class="checklist"]
 > * 從 Azure Blob 儲存體中的應用程式檔案和影像開始著手。
@@ -127,7 +128,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 ### <a name="install-nuget-packages"></a>安裝 NuGet 套件
 
-[Azure 認知搜尋 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 包含數個用戶端程式庫，可讓您管理索引、資料來源、索引子及技能集，以及上傳和管理文件，還可以執行查詢，而且一律不需要處理 HTTP 和 JSON 的細節。 這些用戶端程式庫都以 NuGet 套件來散發。
+[Azure 認知搜尋 .NET SDK](/dotnet/api/overview/azure/search) 包含數個用戶端程式庫，可讓您管理索引、資料來源、索引子及技能集，以及上傳和管理文件，還可以執行查詢，而且一律不需要處理 HTTP 和 JSON 的細節。 這些用戶端程式庫都以 NuGet 套件來散發。
 
 針對此專案，請安裝第 9 版或更新版本的 `Microsoft.Azure.Search` NuGet 套件。
 
@@ -680,7 +681,7 @@ private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 using Index = Microsoft.Azure.Search.Models.Index;
 ```
 
-若要深入了解如何定義索引，請參閱[建立索引 (Azure 認知搜尋 REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+若要深入了解如何定義索引，請參閱[建立索引 (Azure 認知搜尋 REST API)](/rest/api/searchservice/create-index)。
 
 ### <a name="step-4-create-and-run-an-indexer"></a>步驟 4：建立及執行索引子
 
@@ -905,7 +906,7 @@ catch (Exception e)
 }
 ```
 
-對其他欄位重複前述步驟：此練習中的內容、語言程式碼、關鍵片語和組織。 您可以透過使用逗號分隔清單的 [Select](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) 屬性傳回多個欄位。
+對其他欄位重複前述步驟：此練習中的內容、語言程式碼、關鍵片語和組織。 您可以透過使用逗號分隔清單的 [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) 屬性傳回多個欄位。
 
 <a name="reset"></a>
 

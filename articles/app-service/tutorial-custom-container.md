@@ -7,18 +7,18 @@ ms.author: msangapu
 keywords: azure app service, web 應用程式, linux, windows, docker, 容器
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a3579ba805d0da08184e6274de60086a9d55a938
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: df46d61ddfba5f4da977b19db3158691c78168f8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212949"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958451"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>使用自訂容器將自訂軟體遷移至 Azure App Service
 
 ::: zone pivot="container-windows"  
 
-[Azure App Service](overview.md) 會在 Windows 上提供預先定義的應用程式堆疊 (例如 ASP.NET 或 Node.js)，執行於 IIS 上。 預先設定的 Windows 環境會鎖定作業系統的系統管理存取、軟體安裝、對全域組件快取的變更等作業 (請參閱 [Azure App Service 上的作業系統功能](operating-system-functionality.md))。 但是，在 App Service 中使用自訂 Windows 容器 (預覽) 可讓您進行應用程式所需的作業系統變更，因此能夠很容易地移轉需要自訂作業系統與軟體設定的內部部署應用程式。 此教學課程會示範如何將使用 Windows 字型庫中已安裝自訂字型的 ASP.NET 應用程式移轉至 App Service。 您會將自訂的 Windows 映像從 Visual Studio 部署到 [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)，然後在 App Service 中執行。
+[Azure App Service](overview.md) 會在 Windows 上提供預先定義的應用程式堆疊 (例如 ASP.NET 或 Node.js)，執行於 IIS 上。 預先設定的 Windows 環境會鎖定作業系統的系統管理存取、軟體安裝、對全域組件快取的變更等作業 (請參閱 [Azure App Service 上的作業系統功能](operating-system-functionality.md))。 但是，在 App Service 中使用自訂 Windows 容器 (預覽) 可讓您進行應用程式所需的作業系統變更，因此能夠很容易地移轉需要自訂作業系統與軟體設定的內部部署應用程式。 此教學課程會示範如何將使用 Windows 字型庫中已安裝自訂字型的 ASP.NET 應用程式移轉至 App Service。 您會將自訂的 Windows 映像從 Visual Studio 部署到 [Azure Container Registry](../container-registry/index.yml)，然後在 App Service 中執行。
 
 ![顯示在 Windows 容器中執行的 Web 應用程式。](media/tutorial-custom-container/app-running.png)
 
@@ -92,7 +92,7 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 ## <a name="publish-to-azure-container-registry"></a>發佈至 Azure Container Registry
 
-[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) 可儲存映像以用於容器部署。 您可以設定 App Service 使用 Azure Container Registry 中裝載的映像。
+[Azure Container Registry](../container-registry/index.yml) 可儲存映像以用於容器部署。 您可以設定 App Service 使用 Azure Container Registry 中裝載的映像。
 
 ### <a name="open-publish-wizard"></a>開啟發佈精靈
 
@@ -439,7 +439,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
     
     如需此環境變數的詳細資訊，請參閱[範例的 GitHub 存放庫中的讀我檔案](https://github.com/Azure-Samples/docker-django-webapp-linux)。
 
-1. 使用 [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) 命令，為 Web 應用程式啟用[受控識別](/azure/app-service/overview-managed-identity)：
+1. 使用 [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) 命令，為 Web 應用程式啟用[受控識別](./overview-managed-identity.md)：
 
     ```azurecli-interactive
     az webapp identity assign --resource-group AppSvc-DockerTutorial-rg --name <app-name> --query principalId --output tsv
@@ -466,7 +466,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
     - `<registry-name>` 使用您的容器登錄名稱
     - `<subscription-id>` 使用 `az account show` 命令中擷取的訂用帳戶識別碼
 
-如需這些權限的詳細資訊，請參閱[什麼是 Azure 角色型存取控制](/azure/role-based-access-control/overview)和 
+如需這些權限的詳細資訊，請參閱[什麼是 Azure 角色型存取控制](../role-based-access-control/overview.md)和 
 
 ## <a name="deploy-the-image-and-test-the-app"></a>部署映像並測試應用程式
 
