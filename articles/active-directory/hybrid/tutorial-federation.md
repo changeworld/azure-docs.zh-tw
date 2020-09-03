@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3a17eb7fdde6840ce04fb0cbce13ec3f1a121e0
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3a68c3719ea742a5c02f8be167fc1989ae4683c0
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "80673692"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279188"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>教學課程：將單一 AD 樹系環境整合至雲端
 
@@ -29,9 +29,9 @@ ms.locfileid: "80673692"
 
 ## <a name="prerequisites"></a>Prerequisites
 下列是完成此教學課程的必要條件
-- 已安裝 [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) 的電腦。  建議您在 [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) 或 [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) 電腦上執行此作業。
+- 已安裝 [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) 的電腦。  建議您在 [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) 或 [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) 電腦上執行此作業。
 - [Azure 訂用帳戶](https://azure.microsoft.com/free)
-- - [外部網路介面卡](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network)用於讓虛擬機器與網際網路通訊。
+- - [外部網路介面卡](/virtualization/hyper-v-on-windows/quick-start/connect-to-network)用於讓虛擬機器與網際網路通訊。
 - Windows Server 2016 複本
 - 可驗證的[自訂網域](../../active-directory/fundamentals/add-custom-domain.md)
 
@@ -140,7 +140,7 @@ Restart-Computer
 $DatabasePath = "c:\windows\NTDS"
 $DomainMode = "WinThreshold"
 $DomainName = "contoso.com"
-$DomaninNetBIOSName = "CONTOSO"
+$DomainNetBIOSName = "CONTOSO"
 $ForestMode = "WinThreshold"
 $LogPath = "c:\windows\NTDS"
 $SysVolPath = "c:\windows\SYSVOL"
@@ -292,4 +292,3 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 - [硬體和先決條件](how-to-connect-install-prerequisites.md) 
 - [自訂設定](how-to-connect-install-custom.md)
 - [Azure AD Connect 和同盟](how-to-connect-fed-whatis.md)
-
