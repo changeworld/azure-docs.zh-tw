@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 08/11/2020
-ms.openlocfilehash: 809011df3c8cd6dbc1ee2a2129a261102adb43c0
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: c1527161948a6312fc0877748b2818b3ccc2143e
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067846"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322614"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>對應資料流程影片教學課程
 
@@ -107,8 +107,6 @@ ms.locfileid: "88067846"
 
 [資料譜系](https://www.youtube.com/watch?v=5KvqYF-y93s)
 
-[最佳化提示](https://www.youtube.com/watch?v=a2KtwUJngHo)
-
 [使用參數來逐一查看檔案](http://youtu.be/uEgz0ptYRDM?hd=1)
 
 [縮短啟動時間](https://youtu.be/FFCbU4ujCiY?t=528)
@@ -121,7 +119,7 @@ ms.locfileid: "88067846"
 
 [最佳化資料流程啟動時間](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
 
-[資料流程的 Azure Integration Runtime](https://mssqldude.wordpress.com/)
+[資料流程的 Azure Integration Runtime](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
 
 ## <a name="mapping-data-flow-scenarios"></a>對應資料流案例
 
@@ -131,7 +129,7 @@ ms.locfileid: "88067846"
 
 [清除位址模式](https://youtu.be/axEYbuU3lmw)
 
-[重複](https://www.youtube.com/watch?v=OLenvYwg__I)
+[重複](https://youtu.be/QOi26ETtPTw)
 
 [合併檔案](http://youtu.be/WbDTBAyYte8)
 

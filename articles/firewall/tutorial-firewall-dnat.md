@@ -1,19 +1,19 @@
 ---
-title: 使用入口網站以 Azure 防火牆 DNAT 篩選輸入網際網路流量
+title: 教學課程：使用入口網站以 Azure 防火牆 DNAT 篩選輸入網際網路流量
 description: 在本教學課程中，您將了解如何使用 Azure 入口網站部署及設定 Azure 防火牆 DNAT。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 03/02/2020
+ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7220e48c6103352108bdb89e107bb862ee194040
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8f528c6be68258400cb3e29582943f1d657c557d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78251496"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069267"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站以 Azure 防火牆 DNAT 篩選輸入網際網路流量
 
@@ -28,12 +28,11 @@ ms.locfileid: "78251496"
 > * 設定 DNAT 規則
 > * 測試防火牆
 
+## <a name="prerequisites"></a>必要條件
+
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-針對本教學課程，您會建立兩個對等互連 Vnet：
 
-- **VN-Hub** - 防火牆位於此 VNet 中。
-- **VN-Spoke** - 工作負載伺服器位於此 VNet 中。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -45,6 +44,11 @@ ms.locfileid: "78251496"
 6. 選取 [建立]  。
 
 ## <a name="set-up-the-network-environment"></a>設定網路環境
+
+針對本教學課程，您會建立兩個對等互連 Vnet：
+
+- **VN-Hub** - 防火牆位於此 VNet 中。
+- **VN-Spoke** - 工作負載伺服器位於此 VNet 中。
 
 首先建立 Vnet，然後將其對等互連。
 

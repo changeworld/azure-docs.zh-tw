@@ -3,7 +3,7 @@ title: 教學課程`:` 使用受控識別來存取 Azure Cosmos DB - Linux - Azu
 description: 本教學課程會逐步引導您使用 Linux VM 系統指派的受控識別，以存取 Azure Cosmos DB。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f15a269656f205b0acb6a49740dd4c625c0bdd41
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2006c44d68d9570af0bfa410cc7fe908502d2ba5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78248288"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267984"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教學課程：使用 Linux VM 系統指派的受控識別來存取 Azure Cosmos DB 
 
@@ -44,7 +44,7 @@ ms.locfileid: "78248288"
 若要執行本教學課程中的 CLI 指令碼範例，您有兩個選項：
 
 - 透過 Azure 入口網站或是每個程式碼區塊右上角的 [試試看] 按鈕，使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
-- 如果您需要使用本機 CLI 主控台，請[安裝最新版的 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 或更新版本)。
+- 如果您需要使用本機 CLI 主控台，請[安裝最新版的 CLI 2.0](/cli/azure/install-azure-cli) (2.0.23 或更新版本)。
 
 ## <a name="create-a-cosmos-db-account"></a>建立 Cosmos DB 帳戶 
 
@@ -114,7 +114,7 @@ az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --sco
 
 其餘課程要從稍早建立的 VM 繼續進行。
 
-若要完成這些步驟，您需要 SSH 用戶端。 如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](https://msdn.microsoft.com/commandline/wsl/install_guide)中使用 SSH 用戶端。 如果您需要設定 SSH 用戶端金鑰的協助，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](../../virtual-machines/linux/ssh-from-windows.md)，或[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](../../virtual-machines/linux/mac-create-ssh-keys.md)。
+若要完成這些步驟，您需要 SSH 用戶端。 如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](/windows/wsl/install-win10)中使用 SSH 用戶端。 如果您需要設定 SSH 用戶端金鑰的協助，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](../../virtual-machines/linux/ssh-from-windows.md)，或[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 1. 在 Azure 入口網站中，瀏覽至 [虛擬機器]  ，移至您的 Linux 虛擬機器，然後在 [概觀]  頁面中，按一下頂端的 [連線]  。 複製字串以連線到您的 VM。 
 2. 使用 SSH 用戶端連線到 VM。  
@@ -228,5 +228,4 @@ az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection
 在本教學課程中，您已了解如何在 Linux 虛擬機器上使用系統指派的受控識別，來存取 Cosmos DB。  若要深入了解 Cosmos DB，請參閱：
 
 > [!div class="nextstepaction"]
->[Azure Cosmos DB 概觀](/azure/cosmos-db/introduction)
-
+>[Azure Cosmos DB 概觀](../../cosmos-db/introduction.md)

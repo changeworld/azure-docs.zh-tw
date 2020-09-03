@@ -3,7 +3,7 @@ title: 教學課程`:` 使用受控識別透過存取金鑰存取 Azure 儲存�
 description: 本教學課程會逐步引導您使用 Linux VM 系統指派的受控識別，以存取 Azure 儲存體。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/04/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4c00c723c23e2f0d962009d33a6abe1008c734a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78273826"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266267"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>教學課程：使用 Linux VM 系統指派的受控識別，透過存取金鑰來存取 Azure 儲存體
 
@@ -78,7 +78,7 @@ ms.locfileid: "78273826"
 
 其餘課程要從稍早建立的 VM 繼續進行。
 
-若要完成這些步驟，您需要 SSH 用戶端。 如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](https://msdn.microsoft.com/commandline/wsl/install_guide)中使用 SSH 用戶端。 如果您需要設定 SSH 用戶端金鑰的協助，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](../../virtual-machines/linux/ssh-from-windows.md)，或[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](../../virtual-machines/linux/mac-create-ssh-keys.md)。
+若要完成這些步驟，您需要 SSH 用戶端。 如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](/windows/wsl/install-win10)中使用 SSH 用戶端。 如果您需要設定 SSH 用戶端金鑰的協助，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](../../virtual-machines/linux/ssh-from-windows.md)，或[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 1. 在 Azure 入口網站中，瀏覽至 [虛擬機器]  ，移至您的 Linux 虛擬機器，然後在 [概觀]  頁面中，按一下頂端的 [連線]  。 複製字串以連線到您的 VM。 
 2. 使用 SSH 用戶端連線到 VM。  
@@ -127,7 +127,7 @@ CURL 回應提供索引鍵的清單：
 echo "This is a test file." > test.txt
 ```
 
-然後，使用儲存體存取金鑰透過 CLI `az storage` 命令進行驗證，並將檔案上傳至 blob 容器。 此步驟中，您必須在 VM 上[安裝最新的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (如果您還沒有這麼做)。
+然後，使用儲存體存取金鑰透過 CLI `az storage` 命令進行驗證，並將檔案上傳至 blob 容器。 此步驟中，您必須在 VM 上[安裝最新的 Azure CLI](/cli/azure/install-azure-cli) (如果您還沒有這麼做)。
  
 
 ```azurecli-interactive
@@ -199,4 +199,4 @@ az storage blob download -c <CONTAINER NAME> -n test.txt -f test-download.txt --
 在本教學課程中，您已了解如何使用 Linux VM 系統指派的受控識別，以利用存取金鑰來存取 Azure 儲存體。  若要深入了解 Azure 儲存體存取金鑰，請參閱：
 
 > [!div class="nextstepaction"]
->[管理儲存體存取金鑰](/azure/storage/common/storage-create-storage-account)
+>[管理儲存體存取金鑰](../../storage/common/storage-account-create.md)

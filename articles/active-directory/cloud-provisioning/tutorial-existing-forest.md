@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d369395cc06902f31bdf17b427ecbb9f71f42001
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: eba35d6ffb4cbeb25d64d42adb2429636f1d56ce
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86146829"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228462"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>將現有及全新樹系與單一 Azure AD 租用戶整合
 
@@ -31,12 +31,12 @@ ms.locfileid: "86146829"
 ## <a name="prerequisites"></a>Prerequisites
 ### <a name="in-the-azure-active-directory-admin-center"></a>於 Azure Active Directory 管理中心
 
-1. 在 Azure AD 租用戶上建立僅限雲端的全域管理員帳戶。 如此一來，如果您的內部部署服務失敗或無法使用，您便可以管理租用戶組態。 了解如何[新增僅限雲端管理員帳戶](../active-directory-users-create-azure-portal.md)。 這是確保您不會遭租用戶封鎖的關鍵步驟。
-2. 將一或多個[自訂網域名稱](../active-directory-domains-add-azure-portal.md)新增至 Azure AD 租用戶。 您的使用者可以使用其中一個網域名稱登入。
+1. 在 Azure AD 租用戶上建立僅限雲端的全域管理員帳戶。 如此一來，如果您的內部部署服務失敗或無法使用，您便可以管理租用戶組態。 了解如何[新增僅限雲端管理員帳戶](../fundamentals/add-users-azure-active-directory.md)。 這是確保您不會遭租用戶封鎖的關鍵步驟。
+2. 將一或多個[自訂網域名稱](../fundamentals/add-custom-domain.md)新增至 Azure AD 租用戶。 您的使用者可以使用其中一個網域名稱登入。
 
 ### <a name="in-your-on-premises-environment"></a>在內部部署環境中
 
-1. 識別且已加入網域、執行 Windows Server 2012 R2 或更新版本，且至少有 4 GB 的 RAM 和 .NET 4.7.1+ 執行階段的主機伺服器 
+1. 識別已加入網域、執行 Windows Server 2012 R2 或更新版本，且至少有 4 GB RAM 和 .NET 4.7.1+ 執行階段的主機伺服器 
 
 2. 如果您的伺服器和 Azure AD 之間有防火牆，請設定下列項目：
    - 確定代理程式可透過下列連接埠對 Azure AD 提出*輸出*要求：

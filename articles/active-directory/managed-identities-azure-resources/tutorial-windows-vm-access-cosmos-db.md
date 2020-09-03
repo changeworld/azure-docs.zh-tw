@@ -3,7 +3,7 @@ title: 教學課程：使用受控識別來存取 Azure Cosmos DB - Windows - Az
 description: 本教學課程會逐步引導您在 Windows VM 上使用系統指派的受控識別，以存取 Azure Cosmos DB。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11b7f8eeb94fb2d6f197af2d40b120c5f74d6128
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 17cdebb1291f78706178e129a62b932d45f38537
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583071"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263055"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教學課程：使用 Windows VM 系統指派的受控識別來存取 Azure Cosmos DB
 
@@ -84,7 +84,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 
 本節將說明如何使用 Windows VM 系統指派受控識別的存取權杖來呼叫 Azure Resource Manager。 其餘課程要從稍早建立的 VM 繼續進行。 
 
-您必須在 Windows VM 上安裝最新版的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+您必須在 Windows VM 上安裝最新版的 [Azure CLI](/cli/azure/install-azure-cli)。
 
 
 
@@ -204,6 +204,4 @@ az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection
 在本教學課程中，您已了解如何使用 Windows VM 系統指派的身分識別，來存取 Cosmos DB。  若要深入了解 Cosmos DB，請參閱：
 
 > [!div class="nextstepaction"]
->[Azure Cosmos DB 概觀](/azure/cosmos-db/introduction)
-
-
+>[Azure Cosmos DB 概觀](../../cosmos-db/introduction.md)

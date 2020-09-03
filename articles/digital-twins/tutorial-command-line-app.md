@@ -1,5 +1,5 @@
 ---
-title: 使用範例用戶端應用程式探索基本概念
+title: 教學課程：探索範例用戶端應用程式的基本概念
 titleSuffix: Azure Digital Twins
 description: 使用範例命令列應用程式探索 Azure Digital Twins SDK 的教學課程
 author: baanders
@@ -7,23 +7,24 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d02766d82690d2f546fdcbad76efcda043f54471
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: a1dc42815167da308fd87b541c0f21d02b47329b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986266"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022508"
 ---
-# <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>使用範例用戶端應用程式探索 Azure Digital Twins
+# <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>教學課程：使用範例用戶端應用程式探索 Azure Digital Twins
 
 本教學課程介紹實作命令列用戶端應用程式的範例應用程式，可用於與 Azure Digital Twins 執行個體進行互動。 該用戶端應用程式與[*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)中撰寫的用戶端應用程式類似。
 
 您可以使用此範例來執行基本的 Azure Digital Twins 動作，例如上傳模型、建立與修改分身，以及建立關聯性。 您也可以查看範例的程式碼以了解 Azure Digital Twins API，並依您想要的方式修改範例專案來練習實作命令。
 
 在本教學課程中，您將會…
-1. 設定 Azure Digital Twins 執行個體
-2. 設定範例命令列應用程式以與執行個體互動
-3. 使用命令列應用程式探索 Azure Digital Twins，包括**模型**、**數位分身**、**關聯性**與**查詢**
+> [!div class="checklist"]
+> * 設定 Azure Digital Twins 執行個體
+> * 設定範例命令列應用程式以與執行個體互動
+> * 使用命令列應用程式探索 Azure Digital Twins，包括**模型**、**數位分身**、**關聯性**與**查詢**
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -288,24 +289,7 @@ Azure Digital Twins 的主要功能是能夠輕鬆且有效率地[查詢](concep
 本教學課程中的專案形成下一個教學課程：[*教學課程：連線端對端解決方案*](tutorial-end-to-end.md)。 若您希望繼續進行下一個教學課程，您可以保留在此處設定的資源，以繼續使用此 Azure Digital Twins 執行個體以及已設定的範例應用程式。
 * 在此情況下，您可以使用範例應用程式的 `DeleteAllTwins` 與 `DeleteAllModels` 命令來分別清除您執行個體中的分身及模型。 如此一來，您就能以全新狀態進行下一個教學課程。
 
-若您不再需要於本教學課程中建立的資源時，請遵循這些步驟將其刪除。
-
-使用 [Azure Cloud Shell](https://shell.azure.com)，您可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令刪除資源群組中的所有 Azure 資源。 這會移除資源群組及 Azure Digital Twins 執行個體。
-
-> [!IMPORTANT]
-> 刪除資源群組是無法回復的動作。 資源群組和其中包含的所有資源都將永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 
-
-開啟 Azure Cloud Shell 並執行以下命令，以刪除資源群組及其包含的所有內容。
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
-
-接下來，使用此命令刪除您為用戶端應用程式所建立的 Azure Active Directory 應用程式註冊：
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
 最後，刪除下載到您本機電腦的專案範例資料夾。
 
@@ -314,12 +298,5 @@ az ad app delete --id <your-application-ID>
 在本教學課程中，您已透過設定執行個體及用戶端應用程式與執行個體進行互動，來開始使用 Azure Digital Twins。 您使用了用戶端應用程式來探索 Azure Digital Twins、建立模型、數位分身及關聯性。 您也在解決方案上執行了一些查詢，了解 Azure Digital Twins 可以針對環境回答的問題種類。
 
 請繼續下一個教學課程以搭配其他 Azure 服務使用範例命令列應用程式，來完成資料驅動的端對端案例：
-
 > [!div class="nextstepaction"]
 > [*教學課程：連線端對端解決方案*](tutorial-end-to-end.md)
-
-或者，開始查看概念文件，以深入了解您在本教學課程中使用過的元素：
-* [概念：自訂模型](concepts-models.md)
-
-您也可以開始閱讀新的操作指南文章，深入了解本教學課程中的流程：
-* [操作說明：*使用 Azure Digital Twins CLI*](how-to-use-cli.md)
