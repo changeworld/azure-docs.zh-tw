@@ -3,7 +3,7 @@ title: 教學課程`:` 使用受控識別來存取 Azure SQL Database - Windows 
 description: 本教學課程逐步引導您使用 Windows VM 系統指派的受控識別，以存取 Azure SQL Database。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 ms.service: active-directory
 ms.subservice: msi
@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13be33843172f505ed8f12293137c0808e9bd2a0
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: d576fb4f5dea10a2adf0d7488aa422e1397fd6d1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920372"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255744"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>教學課程：使用 Windows VM 系統指派的受控識別來存取 Azure SQL
 
@@ -44,7 +44,7 @@ ms.locfileid: "85920372"
 
 ## <a name="grant-access"></a>授與存取權
 
-若要為 Azure SQL Database 中的資料庫授與您的 VM 存取權，您可以使用現有的[邏輯 SQL 伺服器](../../azure-sql/database/logical-servers.md)，或建立新的伺服器。 若要使用 Azure 入口網站建立新的伺服器和資料庫，請遵循此 [Azure SQL 快速入門](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)的作法。 在 [Azure SQL 文件](https://docs.microsoft.com/azure/sql-database/)中也有使用 Azure CLI 和 Azure PowerShell 的快速入門作法。
+若要為 Azure SQL Database 中的資料庫授與您的 VM 存取權，您可以使用現有的[邏輯 SQL 伺服器](../../azure-sql/database/logical-servers.md)，或建立新的伺服器。 若要使用 Azure 入口網站建立新的伺服器和資料庫，請遵循此 [Azure SQL 快速入門](../../azure-sql/database/single-database-create-quickstart.md)的作法。 在 [Azure SQL 文件](/azure/sql-database/)中也有使用 Azure CLI 和 Azure PowerShell 的快速入門作法。
 
 為資料庫授與 VM 存取權的作業有兩個步驟：
 
@@ -53,7 +53,7 @@ ms.locfileid: "85920372"
 
 ### <a name="enable-azure-ad-authentication"></a>啟用 Azure AD 驗證
 
-**若要[設定 Azure AD 驗證](/azure/sql-database/sql-database-aad-authentication-configure)：**
+**若要[設定 Azure AD 驗證](../../azure-sql/database/authentication-aad-configure.md)：**
 
 1. 在 Azure 入口網站中，選取左側導覽中的 [SQL 伺服器]。
 2. 按一下要啟用 Azure AD 驗證的 SQL 伺服器。
@@ -64,10 +64,10 @@ ms.locfileid: "85920372"
 
 ### <a name="create-contained-user"></a>建立內含的使用者
 
-本節將說明如何在資料庫中建立內含的使用者，以代表 VM 系統指派的身分識別。 在此步驟中，您需要 [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 在開始之前，先閱讀以下文章了解 Azure AD 整合的背景會很有幫助：
+本節將說明如何在資料庫中建立內含的使用者，以代表 VM 系統指派的身分識別。 在此步驟中，您需要 [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 在開始之前，先閱讀以下文章了解 Azure AD 整合的背景會很有幫助：
 
-- [SQL Database 和 Azure Synapse Analytics 的通用驗證 (MFA 的 SSMS 支援)](/azure/sql-database/sql-database-ssms-mfa-authentication)
-- [使用 SQL Database 或 Azure Synapse Analytics 設定和管理 Azure Active Directory 驗證](/azure/sql-database/sql-database-aad-authentication-configure)
+- [SQL Database 和 Azure Synapse Analytics 的通用驗證 (MFA 的 SSMS 支援)](../../azure-sql/database/authentication-mfa-ssms-overview.md)
+- [使用 SQL Database 或 Azure Synapse Analytics 設定和管理 Azure Active Directory 驗證](../../azure-sql/database/authentication-aad-configure.md)
 
 SQL DB 需要唯一的 AAD 顯示名稱。 因此，AAD 帳戶 (例如使用者、群組和服務主體 (應用程式)) 和針對受控識別啟用的 VM 名稱，在 AAD 中都必須具有唯一定義的顯示名稱。 SQL DB 會在 T-SQL 建立這類使用者時檢查 AAD 顯示名稱，如果這不是唯一的名稱，命令就無法要求為指定的帳戶提供唯一的 AAD 顯示名稱。
 
@@ -208,4 +208,4 @@ if (accessToken != null) {
 在本教學課程中，您已了解如何使用系統指派的受控識別，來存取 Azure SQL Database。 若要深入了解 Azure SQL Database，請參閱：
 
 > [!div class="nextstepaction"]
-> [Azure SQL Database](/azure/sql-database/sql-database-technical-overview)
+> [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)

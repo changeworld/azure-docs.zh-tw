@@ -10,18 +10,18 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/12/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5dfa105b7af146086da6b72dd55f6fe679832f44
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 39891b69cdb8e7f392657514d255f5f85b3eba60
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845046"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936022"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程：使用 Python 和 AI 從 Azure Blob 產生可搜尋的內容
 
 如果您在 Azure Blob 儲存體中有非結構化的文字或影像，您可以利用 [AI 擴充管線](cognitive-search-concept-intro.md)來擷取資訊，並建立適用於全文檢索搜尋或知識採礦案例的新內容。 雖然管線可以處理影像，但此 Python 教學課程將著重於文字，套用語言偵測和自然語言處理，以建立可讓您在查詢、Facet 和篩選器中運用的新欄位。
 
-本教學課程將使用 Python 和[搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 執行下列工作：
+本教學課程將使用 Python 和[搜尋 REST API](/rest/api/searchservice/) 執行下列工作：
 
 > [!div class="checklist"]
 > * 我們將從 Azure Blob 儲存體中的完整文件 (非結構化文字) 開始，例如 PDF、HTML、DOCX 和 PPTX。
@@ -163,7 +163,7 @@ params = {
 
 ### <a name="step-1-create-a-data-source"></a>步驟 1:建立資料來源
 
-[資料來源物件](https://docs.microsoft.com/rest/api/searchservice/create-data-source)會對包含檔案的 Blob 容器提供連接字串。
+[資料來源物件](/rest/api/searchservice/create-data-source)會對包含檔案的 Blob 容器提供連接字串。
 
 在下列指令碼中，將 YOUR-BLOB-RESOURCE-CONNECTION-STRING 預留位置取代為您在上一個步驟中建立之 Blob 的連接字串。 取代容器的預留位置文字。 接著，執行該指令碼以建立名為 `cogsrch-py-datasource` 的資料來源。
 
@@ -375,11 +375,11 @@ print(r.status_code)
 
 此要求應該會傳回確認成功的狀態碼 201。
 
-若要深入了解如何定義索引，請參閱[建立索引 (Azure 認知搜尋 REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+若要深入了解如何定義索引，請參閱[建立索引 (Azure 認知搜尋 REST API)](/rest/api/searchservice/create-index)。
 
 ### <a name="step-4-create-and-run-an-indexer"></a>步驟 4：建立及執行索引子
 
-[索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)會驅動管線。 到目前為止所建立的三個元件 (資料來源、技能集、索引) 都是索引子的輸入。 在 Azure 認知搜尋上建立索引子，是用以啟動整個管線的事件。 
+[索引子](/rest/api/searchservice/create-indexer)會驅動管線。 到目前為止所建立的三個元件 (資料來源、技能集、索引) 都是索引子的輸入。 在 Azure 認知搜尋上建立索引子，是用以啟動整個管線的事件。 
 
 若要在索引子中結合這些物件，您必須定義欄位對應。
 
@@ -512,7 +512,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 針對其他欄位重複執行：此練習中的 `content`、`languageCode`、`keyPhrases` 和 `organizations`。 您可以透過使用逗號分隔清單的 `$select` 傳回多個欄位。
 
-您可以使用 GET 或 POST，視查詢字串的複雜度和長度而定。 如需詳細資訊，請參閱[使用 REST API 進行查詢](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
+您可以使用 GET 或 POST，視查詢字串的複雜度和長度而定。 如需詳細資訊，請參閱[使用 REST API 進行查詢](/rest/api/searchservice/search-documents)。
 
 <a name="reset"></a>
 

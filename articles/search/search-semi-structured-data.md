@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 0e6759837519feccf6069e805e3fe0f72562fb7b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8a615dc02b78993a18a86def9d8f496ba0bba922
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85559024"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929698"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>教學課程：使用 REST 為 Azure 儲存體中的 JSON Blob 編製索引
 
 Azure 認知搜尋可以在 Azure Blob 儲存體中，使用[索引子](search-indexer-overview.md)為 JSON 文件和陣列編製索引，以了解如何讀取半結構化資料。 半結構化資料會包含在資料內分隔內容的標籤或標記。 這些資料會將不同的內容區分為必須完整編製索引的未結構化資料，以及遵循資料模型 (例如關聯式資料庫結構描述) 且可依據欄位逐一編製索引的正式結構化資料。
 
-本教學課程將使用 Postman 和[搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 執行下列工作：
+本教學課程將使用 Postman 和[搜尋 REST API](/rest/api/searchservice/) 執行下列工作：
 
 > [!div class="checklist"]
 > * 設定 Azure Blob 容器的 Azure 認知搜尋資料來源
@@ -31,7 +31,7 @@ Azure 認知搜尋可以在 Azure Blob 儲存體中，使用[索引子](search-i
 
 ## <a name="prerequisites"></a>Prerequisites
 
-+ [Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure 儲存體](../storage/common/storage-account-create.md)
 + [Postman 桌面應用程式](https://www.getpostman.com/)
 + [建立](search-create-service-portal.md)或[尋找現有的搜尋服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
@@ -72,7 +72,7 @@ Azure 認知搜尋可以在 Azure Blob 儲存體中，使用[索引子](search-i
 
 1. 按一下 [Blob]  服務。
 
-1. [建立 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)以容納範例資料。 您可以將公用存取層級設定為任何有效值。
+1. [建立 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)以容納範例資料。 您可以將公用存取層級設定為任何有效值。
 
 1. 建立容器之後，請加以開啟，然後選取命令列的 [上傳]  。
 
@@ -116,7 +116,7 @@ URI 必須指定 api-version，且每個呼叫都應傳回 **201 已建立**。 
 
 ## <a name="3---create-a-data-source"></a>3 - 建立資料來源
 
-[建立資料來源 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 會建立一個 Azure 認知搜尋物件，以指定要編製索引的資料。
+[建立資料來源 API](/rest/api/searchservice/create-data-source) 會建立一個 Azure 認知搜尋物件，以指定要編製索引的資料。
 
 1. 將此呼叫的端點設定為 `https://[service name].search.windows.net/datasources?api-version=2020-06-30`。 使用您的搜尋服務名稱來取代 `[service name]`。 
 
@@ -159,7 +159,7 @@ URI 必須指定 api-version，且每個呼叫都應傳回 **201 已建立**。 
 
 ## <a name="4---create-an-index"></a>4 - 建立索引
     
-第二個呼叫為[建立索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)，進而建立可儲存所有可搜尋資料的 Azure 認知搜尋索引。 索引會指定所有參數及其屬性。
+第二個呼叫為[建立索引 API](/rest/api/searchservice/create-index)，進而建立可儲存所有可搜尋資料的 Azure 認知搜尋索引。 索引會指定所有參數及其屬性。
 
 1. 將此呼叫的端點設定為 `https://[service name].search.windows.net/indexes?api-version=2020-06-30`。 使用您的搜尋服務名稱來取代 `[service name]`。
 
@@ -234,7 +234,7 @@ URI 必須指定 api-version，且每個呼叫都應傳回 **201 已建立**。 
 
 ## <a name="5---create-and-run-an-indexer"></a>5 - 建立及執行索引子
 
-索引子會連線至資料來源、將資料匯入至目標搜尋索引，並選擇性地提供排程將資料重新整理自動化。 REST API 為[建立索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
+索引子會連線至資料來源、將資料匯入至目標搜尋索引，並選擇性地提供排程將資料重新整理自動化。 REST API 為[建立索引子](/rest/api/searchservice/create-indexer)。
 
 1. 將此呼叫的 URI 設定為 `https://[service name].search.windows.net/indexers?api-version=2020-06-30`。 使用您的搜尋服務名稱來取代 `[service name]`。
 

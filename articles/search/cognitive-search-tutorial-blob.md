@@ -8,18 +8,18 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.openlocfilehash: ba30584ca40e7d093ecd9090b82b977d71fc1e0e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 99d477bb9e8291721022e276c5933ec0ef7f1e37
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503297"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936005"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程：使用 REST 和 AI 從 Azure Blob 產生可搜尋的內容
 
 如果您在 Azure Blob 儲存體中有非結構化的文字或影像，您可以利用 [AI 擴充管線](cognitive-search-concept-intro.md)來擷取資訊，並建立適用於全文檢索搜尋或知識採礦案例的新內容。 雖然管線可以處理影像，但此 REST 教學課程將著重於文字，套用語言偵測和自然語言處理，以建立可讓您在查詢、Facet 和篩選器中運用的新欄位。
 
-本教學課程將使用 Postman 和[搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 執行下列工作：
+本教學課程將使用 Postman 和[搜尋 REST API](/rest/api/searchservice/) 執行下列工作：
 
 > [!div class="checklist"]
 > * 我們將從 Azure Blob 儲存體中的完整文件 (非結構化文字) 開始，例如 PDF、HTML、DOCX 和 PPTX。
@@ -135,7 +135,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 ### <a name="step-1-create-a-data-source"></a>步驟 1:建立資料來源
 
-[資料來源物件](https://docs.microsoft.com/rest/api/searchservice/create-data-source)會對包含檔案的 Blob 容器提供連接字串。
+[資料來源物件](/rest/api/searchservice/create-data-source)會對包含檔案的 Blob 容器提供連接字串。
 
 1. 使用 **POST** 和下列 URL，並將 YOUR-SERVICE-NAME 取代為您服務的實際名稱。
 
@@ -165,7 +165,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 ### <a name="step-2-create-a-skillset"></a>步驟 2:建立技能集
 
-[技能集物件](https://docs.microsoft.com/rest/api/searchservice/create-skillset)是一組套用至內容的擴充步驟。 
+[技能集物件](/rest/api/searchservice/create-skillset)是一組套用至內容的擴充步驟。 
 
 1. 使用 **PUT** 和下列 URL，並將 YOUR-SERVICE-NAME 取代為您服務的實際名稱。
 
@@ -250,7 +250,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 ### <a name="step-3-create-an-index"></a>步驟 3：建立索引
 
-[索引](https://docs.microsoft.com/rest/api/searchservice/create-index)會提供結構描述，用來在 Azure 認知搜尋的反向索引和其他建構中建立內容的實體運算式。 索引的最大元件是欄位集合，其中的資料類型和屬性會決定 Azure 認知搜尋中的內容和行為。
+[索引](/rest/api/searchservice/create-index)會提供結構描述，用來在 Azure 認知搜尋的反向索引和其他建構中建立內容的實體運算式。 索引的最大元件是欄位集合，其中的資料類型和屬性會決定 Azure 認知搜尋中的內容和行為。
 
 1. 使用 **PUT** 和下列 URL，並將 YOUR-SERVICE-NAME 取代為您服務的實際名稱，以命名您的索引。
 
@@ -334,7 +334,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 ### <a name="step-4-create-and-run-an-indexer"></a>步驟 4：建立及執行索引子
 
-[索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)會驅動管線。 到目前為止所建立的三個元件 (資料來源、技能集、索引) 都是索引子的輸入。 在 Azure 認知搜尋上建立索引子，是用以啟動整個管線的事件。 
+[索引子](/rest/api/searchservice/create-indexer)會驅動管線。 到目前為止所建立的三個元件 (資料來源、技能集、索引) 都是索引子的輸入。 在 Azure 認知搜尋上建立索引子，是用以啟動整個管線的事件。 
 
 1. 使用 **PUT** 和下列 URL，並將 YOUR-SERVICE-NAME 取代為您服務的實際名稱，以命名您的索引子。
 
@@ -486,7 +486,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
-這些查詢說明在認知搜尋所建立的新欄位上，您可使用的一些查詢語法和篩選方式。 如需更多查詢範例，請參閱[搜尋文件 REST API 中的範例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[簡單的語法查詢範例](search-query-simple-examples.md)及[完整的 Lucene 查詢範例](search-query-lucene-examples.md)。
+這些查詢說明在認知搜尋所建立的新欄位上，您可使用的一些查詢語法和篩選方式。 如需更多查詢範例，請參閱[搜尋文件 REST API 中的範例](/rest/api/searchservice/search-documents#bkmk_examples)、[簡單的語法查詢範例](search-query-simple-examples.md)及[完整的 Lucene 查詢範例](search-query-lucene-examples.md)。
 
 <a name="reset"></a>
 

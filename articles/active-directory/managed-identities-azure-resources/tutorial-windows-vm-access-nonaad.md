@@ -3,7 +3,7 @@ title: 教學課程`:` 使用受控識別來存取 Azure Key Vault - Windows - A
 description: 本教學課程會逐步引導您使用 Windows VM 系統指派的受控識別，以存取 Azure Key Vault。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/10/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7648f0c41731968c6cf8d2b2b2e55fffd9b5f53d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2890eb2211ac0a105363742a0e900e52a577ed27
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018769"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255820"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>教學課程：使用 Windows VM 系統指派的受控識別來存取 Azure Key Vault 
 
@@ -75,7 +75,7 @@ ms.locfileid: "87018769"
  
 ## <a name="access-data"></a>存取資料  
 
-本節將說明如何使用 VM 身分識別取得存取權杖，並用其來擷取 Key Vault 的密碼。 如果您未安裝 PowerShell 4.3.1 或更新版本，則必須[下載並安裝最新版](https://docs.microsoft.com/powershell/azure/)。
+本節將說明如何使用 VM 身分識別取得存取權杖，並用其來擷取 Key Vault 的密碼。 如果您未安裝 PowerShell 4.3.1 或更新版本，則必須[下載並安裝最新版](/powershell/azure/)。
 
 首先，我們會使用 VM 系統指派的受控識別來取得存取權杖，以向 Key Vault 進行驗證：
  
@@ -128,4 +128,4 @@ ms.locfileid: "87018769"
 在本教學課程中，您已了解如何使用 Windows VM 系統指派的受控識別，來存取 Azure Key Vault。  若要深入了解 Azure Key Vault，請參閱：
 
 > [!div class="nextstepaction"]
->[Azure 金鑰保存庫](/azure/key-vault/key-vault-overview)
+>[Azure 金鑰保存庫](../../key-vault/general/overview.md)
