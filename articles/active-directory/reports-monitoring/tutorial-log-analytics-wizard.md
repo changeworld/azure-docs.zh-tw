@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cffd72171693499365f31b6eb51fd2586187b98b
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271257"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226202"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>教學課程：設定記錄分析精靈
 
@@ -41,15 +41,15 @@ ms.locfileid: "88271257"
 
 熟悉下列文章：
 
-- [教學課程：從 Azure 資源收集資源記錄並加以分析](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)
+- [教學課程：從 Azure 資源收集資源記錄並加以分析](../../azure-monitor/learn/tutorial-resource-logs.md)
 
-- [如何整合活動記錄與 Log Analytics](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何整合活動記錄與 Log Analytics](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [在 Azure AD 中管理緊急存取帳戶](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [在 Azure AD 中管理緊急存取帳戶](../users-groups-roles/directory-emergency-access.md)
 
-- [KQL 快速參考](https://docs.microsoft.com/azure/data-explorer/kql-quick-reference)
+- [KQL 快速參考](/azure/data-explorer/kql-quick-reference)
 
-- [Azure 監視器活頁簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
+- [Azure 監視器活頁簿](../../azure-monitor/platform/workbooks-overview.md)
 
 
 

@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: fd7f860eb6e18edeb2096c12102e74c7446d050f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 90becfb79973ba45851b0e30384b0f05a7b887e3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213758"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962242"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>教學課程：使用 Azure SQL Database 將 ASP.NET 應用程式部署至 Azure
 
@@ -199,7 +199,7 @@ Visual Studio 可讓您在 **SQL Server 物件總管**中，輕鬆地探索和�
 
 您可以使用 Visual Studio 中熟悉的工具，來更新您在 Azure 中的資料庫與應用程式。 在此步驟中，您會使用 Entity Framework 中的 Code First 移轉來變更資料庫結構描述，然後將它發佈至 Azure。
 
-如需有關使用 Entity Framework Code First 移轉的詳細資訊，請參閱[使用 MVC 5 開始使用 Entity Framework 6 Code First](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
+如需有關使用 Entity Framework Code First 移轉的詳細資訊，請參閱[使用 MVC 5 開始使用 Entity Framework 6 Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
 
 ### <a name="update-your-data-model"></a>更新資料模型
 
@@ -419,4 +419,4 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 想要最佳化並節省您的雲端費用嗎？
 
 > [!div class="nextstepaction"]
-> [使用成本管理開始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [使用成本管理開始分析成本](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

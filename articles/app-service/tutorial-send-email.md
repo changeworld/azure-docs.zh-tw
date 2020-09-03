@@ -4,12 +4,12 @@ description: 了解如何從您的 App Service 應用程式叫用商務流程。
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 9d4136099a8cadc43a53298f367f6eeb784e5ce1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212848"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962191"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>教學課程：傳送電子郵件並從 App Service 叫用其他商務流程
 
@@ -84,7 +84,7 @@ ms.locfileid: "88212848"
 1. 在設計工具的底部，按一下 [新增步驟]  ，在動作搜尋方塊中輸入 **Gmail**，然後尋找並選取 [傳送電子郵件 (V2)]  。
     
     > [!TIP]
-    > 您可以搜尋其他類型的整合，例如 SendGrid、MailChimp、Office 365 和 SalesForce。 如需詳細資訊，請參閱 [Logic Apps 文件](https://docs.microsoft.com/azure/logic-apps/)。
+    > 您可以搜尋其他類型的整合，例如 SendGrid、MailChimp、Office 365 和 SalesForce。 如需詳細資訊，請參閱 [Logic Apps 文件](../logic-apps/index.yml)。
 1. 在 [Gmail]  對話方塊中，選取 [登入]  並登入您想用來傳送電子郵件的 Gmail 帳戶。
 
     ![顯示 Gmail 對話方塊的螢幕擷取畫面，您使用此對話方塊來登入要從中傳送電子郵件的 Gmail 帳戶。](./media/tutorial-send-email/gmail-sign-in.png)
@@ -152,7 +152,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-在 ASP.NET 中，您可以使用 [System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) 類別傳送 HTTP Post。 例如：
+在 ASP.NET 中，您可以使用 [System.Net.Http.HttpClient](/dotnet/api/system.net.http.httpclient) 類別傳送 HTTP Post。 例如：
 
 ```csharp
 // requires using System.Net.Http;
@@ -177,7 +177,7 @@ var statusCode = result.StatusCode.ToString();
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-在 ASP.NET Core 中，您可以使用 [System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) 類別傳送 HTTP Post。 例如：
+在 ASP.NET Core 中，您可以使用 [System.Net.Http.HttpClient](/dotnet/api/system.net.http.httpclient) 類別傳送 HTTP Post。 例如：
 
 ```csharp
 // requires using System.Net.Http;
@@ -199,7 +199,7 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> 撰寫此程式碼的目的是為了簡化示範。 實際上，請勿將每個要求的 `HttpClient` 物件具現化。 請依照[使用 IHttpClientFactory 來實作復原性 HTTP 要求](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)的指引操作。
+> 撰寫此程式碼的目的是為了簡化示範。 實際上，請勿將每個要求的 `HttpClient` 物件具現化。 請依照[使用 IHttpClientFactory 來實作復原性 HTTP 要求](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)的指引操作。
 
 如果您要在[教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](tutorial-dotnetcore-sqldb-app.md)的範例應用程式上測試此程式碼，可以在新增 `Todo` 項目之後，使用此程式碼在 [Create 動作](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)中傳送電子郵件確認。
 

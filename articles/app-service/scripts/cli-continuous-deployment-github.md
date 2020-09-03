@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 09/02/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 0578ea7f677e1abaa5687295fc7bc871e6db2d3f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9282eaa98675abf1d2006b182739297bfb478bba
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80044775"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962745"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>使用 CLI 建立可從 GitHub 持續部署的 App Service 應用程式
 
@@ -48,6 +48,6 @@ ms.locfileid: "80044775"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
 您可以在 [Azure App Service 文件](../samples-cli.md)中找到其他的 App Service CLI 指令碼範例。

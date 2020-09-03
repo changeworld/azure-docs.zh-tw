@@ -8,18 +8,19 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: a3a7657aa83a675982adc304de01ba0fcc26d193
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9c8647e28701316ecd7305e206918c53281deb6b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045445"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004250"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>教學課程：使用 .NET SDK 為 Azure SQL 資料編製索引
 
 設定[索引子](search-indexer-overview.md)，以從 Azure SQL Database 中擷取可搜尋的資料，並將其傳送至 Azure 認知搜尋中的搜尋索引。 
 
-本教學課程將使用 C# 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 執行下列工作：
+本教學課程將使用 C# 和 [.NET SDK](/dotnet/api/overview/azure/search) 執行下列工作：
 
 > [!div class="checklist"]
 > * 建立會連線到 Azure SQL Database 的資料來源
@@ -144,7 +145,7 @@ public string HotelName { get; set; }
 
 主要程式包含用於建立用戶端、索引、資料來源和索引子的邏輯。 在您可能會執行此程式多次的假設之下，此程式碼會檢查並刪除現有的同名資源。
 
-資料來源物件上會配置專屬於 Azure SQL Database 資源的設定，包括[部份或增量索引編製](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)，以充分利用 Azure SQL 的內建[變更偵測功能](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 在 Azure SQL 中，示範用的飯店資料庫具有名為 **IsDeleted** 的「虛刪除」資料行。 當此資料行在資料庫中設定為 true 時，索引子就會從 Azure 認知搜尋索引中移除對應文件。
+資料來源物件上會配置專屬於 Azure SQL Database 資源的設定，包括[部份或增量索引編製](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)，以充分利用 Azure SQL 的內建[變更偵測功能](/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 在 Azure SQL 中，示範用的飯店資料庫具有名為 **IsDeleted** 的「虛刪除」資料行。 當此資料行在資料庫中設定為 true 時，索引子就會從 Azure 認知搜尋索引中移除對應文件。
 
   ```csharp
   Console.WriteLine("Creating data source...");

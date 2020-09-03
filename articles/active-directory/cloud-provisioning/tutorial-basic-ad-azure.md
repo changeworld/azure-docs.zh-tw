@@ -10,12 +10,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe2d0a16aeacfc551a6a07a72b58b5f461f93433
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8a6fc1291615760320deb488511fdd9d964d25d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360515"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227860"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>教學課程：基本 Azure Active Directory 環境
 
@@ -28,8 +28,8 @@ ms.locfileid: "85360515"
 本教學課程包含
 ## <a name="prerequisites"></a>必要條件
 下列是完成此教學課程的必要條件
-- 已安裝 [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) 的電腦。  建議您在 [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) 或 [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) 電腦上執行此作業。
-- [外部網路介面卡](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network)用於讓虛擬機器與網際網路通訊。
+- 已安裝 [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) 的電腦。  建議您在 [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) 或 [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) 電腦上執行此作業。
+- [外部網路介面卡](/virtualization/hyper-v-on-windows/quick-start/connect-to-network)用於讓虛擬機器與網際網路通訊。
 - [Azure 訂用帳戶](https://azure.microsoft.com/free)
 - Windows Server 2016 複本
 - [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115)

@@ -9,17 +9,19 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: tutorial
-ms.date: 08/11/2020
+ms.topic: how-to
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a046a3caba9a0909d873356bda8d1fa6cf1f9860
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 0bdb2c36bc895c9229e4c04e9e0d76aa852bd139
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719252"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297300"
 ---
 # <a name="upload-media-for-streaming-or-encoding"></a>上傳媒體以進行串流或編碼
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 在媒體服務中，您會將數位檔案 (媒體) 上傳到與資產相關聯的 Blob 容器。 [資產](/rest/api/media/operations/asset)實體可以包含視訊、音訊、影像、縮圖集合、文字播放軌及隱藏式輔助字幕檔案 (以及這些檔案的相關中繼資料)。 一旦檔案會上傳到資產的容器，您的內容會安全地儲存在雲端，以便進行進一步的處理和串流。
 
