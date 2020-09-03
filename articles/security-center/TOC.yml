@@ -61,8 +61,6 @@
           href: security-center-recommendations.md
         - name: 安全性原則概觀
           href: tutorial-security-policy.md
-        - name: 內建安全性原則
-          href: security-center-policy-definitions.md
         - name: 使用增強安全性的建議
           href: security-center-using-recommendations.md
         - name: 安全性基準
@@ -157,7 +155,7 @@
       href: asset-inventory.md
     - name: 與其他工具和服務整合
       items:
-        - name: 與 Windows Admin Center 整合
+        - name: 保護您的 Windows Admin Center 伺服器
           href: windows-admin-center-integration.md
         - name: 保護您的 Azure App Service Web 應用程式和 API
           href: security-center-app-services.md
@@ -211,6 +209,9 @@
       href: security-center-features-retirement-july2019.md
     - name: 端點保護評量和建議
       href: security-center-endpoint-protection.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: 透過 Microsoft Learn 增進您的技巧

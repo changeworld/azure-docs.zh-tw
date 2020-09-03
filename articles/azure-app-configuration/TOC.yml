@@ -76,9 +76,6 @@
   items:
     - name: Azure CLI
       href: cli-samples.md
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 索引鍵和值
@@ -151,6 +148,9 @@
       items:
         - name: REST API
           href: 'https://docs.microsoft.com/rest/api/appconfiguration/'
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: 定價
@@ -165,7 +165,7 @@
           href: 'https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210'
         - name: 在雲端原生節目 (Cloud Native Show) 上的 Azure 應用程式組態
           href: 'https://www.youtube.com/watch?v=DJqmA5PcfzE'
-        - name: Azure Friday 的功能篩選
-          url: 'https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553'
+        - name: 推出新功能
+          href: 'https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553'
     - name: 提供產品意見反應
       href: 'https://github.com/Azure/AppConfiguration/issues'

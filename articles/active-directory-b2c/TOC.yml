@@ -81,6 +81,8 @@
       href: user-profile-attributes.md
     - name: SSO 工作階段
       href: session-overview.md
+    - name: 身分識別保護和條件式存取
+      href: conditional-access-identity-protection-overview.md
 - name: 操作指南
   items:
     - name: 應用程式整合
@@ -111,6 +113,8 @@
               href: configure-ropc.md
             - name: 設定自助密碼重設
               href: user-flow-self-service-password-reset.md
+        - name: 新增條件式存取
+          href: conditional-access-user-flow.md
         - name: UX 自訂
           items:
             - name: 自訂 UI
@@ -164,6 +168,8 @@
           href: user-flow-custom-attributes.md
         - name: 傳遞外部 IdP 權杖
           href: idp-pass-through-user-flow.md
+    - name: 身分識別保護和條件式存取
+      href: conditional-access-identity-protection-setup.md
     - name: 自訂原則
       items:
         - name: 建立原則
@@ -333,6 +339,9 @@
                       href: aad-sspr-technical-profile.md
                     - name: 宣告轉換
                       href: claims-transformation-technical-profile.md
+                    - name: 條件式存取技術設定檔
+                      href: conditional-access-technical-profile.md
+                      displayName: ca
                     - name: JWT 權杖簽發者
                       href: jwt-issuer-technical-profile.md
                     - name: OAuth1

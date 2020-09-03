@@ -16,6 +16,8 @@
       href: add-application-portal.md
     - name: 設定應用程式
       href: add-application-portal-configure.md
+    - name: 將使用者指派至應用程式
+      href: add-application-portal-assign-users.md
     - name: 設定單一登入
       href: add-application-portal-setup-sso.md
     - name: 刪除應用程式

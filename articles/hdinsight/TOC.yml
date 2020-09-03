@@ -3,7 +3,7 @@
 - name: HDInsight 服務
   expanded: true
   items:
-    - name: 總覽
+    - name: 概觀
       items:
         - name: 什麼是 Azure HDInsight？
           href: ./hdinsight-overview.md
@@ -949,6 +949,8 @@
           href: ./disk-encryption.md
         - name: Ranger 和 Apache Ambari 中的 LDAP 同步處理
           href: ./domain-joined/ldap-sync.md
+        - name: 傳輸中的雙重加密
+          href: ./domain-joined/encryption-in-transit.md
     - name: 操作指南
       items:
         - name: 使用識別碼訊息代理程式進行認證管理

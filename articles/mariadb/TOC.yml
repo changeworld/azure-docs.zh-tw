@@ -72,6 +72,9 @@
           href: concepts-data-access-security-private-link.md
         - name: 進階威脅防護
           href: concepts-data-access-and-security-threat-protection.md
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全性基準
           href: security-baseline.md
     - name: 業務持續性

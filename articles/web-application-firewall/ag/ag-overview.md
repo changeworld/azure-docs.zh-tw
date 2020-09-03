@@ -1,21 +1,21 @@
 ---
-title: Azure Web 應用程式防火牆的簡介
+title: 什麼是 Azure 應用程式閘道上的 Web 應用程式防火牆?
 titleSuffix: Azure Web Application Firewall
 description: 本文將概述應用程式閘道上的 Web 應用程式防火牆 (WAF)
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: overview
-ms.openlocfilehash: d7eaff980b50cc463efc09e49febd4a947a7543c
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.topic: conceptual
+ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142858"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226993"
 ---
-# <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure 應用程式閘道上的 Web 應用程式防火牆
+# <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>什麼是 Azure 應用程式閘道上的 Web 應用程式防火牆?
 
 Azure 應用程式閘道上的 Azure Web 應用程式防火牆 (WAF) 可為 Web 應用程式提供集中式保護，使其免於遭遇常見的攻擊和弱點。 Web 應用程式已逐漸成為利用常見已知弱點進行惡意攻擊的目標。 在這之中，SQL 插入式和跨網站指令碼攻擊是最常見的攻擊。
 
@@ -158,7 +158,7 @@ Microsoft Azure Sentinel 是可調整的雲端原生安全性資訊事件管理 
 透過內建 Azure WAF 防火牆事件活頁簿，您可以在 WAF 上取得安全性事件的概觀。 這包括事件、相符和封鎖的規則，以及其他記錄在防火牆記錄中的一切。 如需詳細資訊，請參閱下面的記錄。 
 
 
-![Sentinel](../media/ag-overview/sentinel.png)
+![Azure WAF 防火牆事件活頁簿](../media/ag-overview/sentinel.png)
 
 #### <a name="logging"></a>記錄
 
@@ -206,10 +206,12 @@ Microsoft Azure Sentinel 是可調整的雲端原生安全性資訊事件管理 
 
 WAF_v1 和 WAF_v2 SKU 的定價模式不同。 若要深入了解，請參閱[應用程式閘道定價](https://azure.microsoft.com/pricing/details/application-gateway/)頁面。 
 
+## <a name="whats-new"></a>最新消息
+
+若要了解 Azure Web 應用程式防火牆的新功能，請參閱 [Azure 更新](https://azure.microsoft.com/updates/?category=networking&query=Web%20Application%20Firewall)。
+
 ## <a name="next-steps"></a>後續步驟
 
-- 從[建立 WAF 原則](create-waf-policy-ag.md)開始著手
 - 深入了解 [WAF 受控規則](application-gateway-crs-rulegroups-rules.md)
 - 深入了解[自訂規則](custom-waf-rules-overview.md)
 - 深入了解 [Azure Front Door 上的 Web 應用程式防火牆](../afds/afds-overview.md)
-

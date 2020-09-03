@@ -9,9 +9,9 @@
       href: supported-data-stores.md
 - name: 快速入門
   items:
-    - name: 建立資料共用 - Azure 入口網站
+    - name: 共用資料 - Azure 入口網站
       href: share-your-data-portal.md
-    - name: 建立資料共用 - ARM 範本
+    - name: 共用資料 - ARM 範本
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: 教學課程
@@ -39,6 +39,10 @@
   items:
     - name: 依據來源共用及接收資料
       items:
+        - name: 從 Azure 儲存體共用
+          href: how-to-share-from-storage.md
+        - name: 從 Azure SQL Database 或 Synapse Analytics 共用
+          href: how-to-share-from-sql.md
         - name: 從 Azure 資料總管共用
           href: /azure/data-explorer/data-share
           maintainContext: true

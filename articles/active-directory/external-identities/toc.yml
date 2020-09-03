@@ -30,10 +30,10 @@
     - name: 概念
       expanded: false
       items:
+        - name: 外部身分識別定價
+          href: external-identities-pricing.md
         - name: B2B 最佳做法
           href: b2b-fundamentals.md
-        - name: B2B 授權
-          href: licensing-guidance.md
         - name: B2B 和 Office 365 外部共用
           href: o365-external-user.md
         - name: 兌換邀請

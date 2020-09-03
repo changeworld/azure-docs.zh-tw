@@ -15,7 +15,7 @@
     - name: 撰寫和簽署證明原則
       href: author-sign-policy.md
     - name: SGX 證明程式碼範例
-      href: 'https://docs.microsoft.com/en-us/samples/browse/?expanded=azure&terms=attestation'
+      href: /samples/browse/?expanded=azure&terms=attestation
 - name: 範例
   items:
     - name: 證明原則

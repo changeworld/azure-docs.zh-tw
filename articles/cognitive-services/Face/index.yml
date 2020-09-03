@@ -1,22 +1,22 @@
 ### YamlMime:Landing
 title: 臉部文件
-summary: 雲端式臉部辨識服務可供開發人員存取進階人臉演算法。 Microsoft Face 演算法啟用了臉部屬性偵測及臉部辨識。 透過快速入門、教學課程及範例，了解如何以不同的方式分析內容。
+summary: Microsoft 於 2020 年 6 月 11 日宣佈，除非已制訂立基於人權的健全監管法規，否則不會將臉部辨識技術銷銷售給美國的警察部門。 因此，如果客戶隸屬於美國警察部門，或允許美國警察部門使用此類服務，則客戶可能無法使用包含在 Azure 服務中的臉部識別功能 (例如「臉部索引器」或「影片索引器」)。
 metadata:
   title: 臉部辨識文件 - 快速入門、教學課程和 API 參考 - Azure 認知服務 | Microsoft Docs
-  description: 雲端式臉部辨識服務可供開發人員存取進階人臉演算法。 Microsoft Face 演算法啟用了臉部屬性偵測及臉部辨識。 透過快速入門、教學課程及範例，了解如何以不同的方式分析內容。
+  description: 雲端式臉部辨識服務可供開發人員存取進階人臉演算法。 Microsoft Face 演算法啟用了臉部屬性偵測及臉部辨識。 了解如何使用快速入門、教學課程和範例，以不同的方式分析內容。# 必要；在搜尋結果中顯示的文章描述。 < 160 個字元。
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: face-api
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
-  ms.date: 10/24/2019
-  ms.openlocfilehash: e4d53baf1a083e9dafa6bd43186b507c5e724db3
-  ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+  ms.date: 9/01/2020
+  ms.openlocfilehash: 67af472ea968501902255d3dbec18d3b6201f9e2
+  ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 06/01/2020
-  ms.locfileid: "84268029"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89278219"
 landingContent:
 - title: 關於臉部辨識服務
   linkLists:

@@ -70,23 +70,23 @@
             - name: VHD 上傳的 VM
               href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
             - name: 連結 OS 磁碟
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md
+              href: ./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md
             - name: 來自快照集的 VM
               href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
         - name: 管理儲存體
           items:
             - name: 從 VHD 建立受控磁碟
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md
             - name: 從快照集建立受控磁碟
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md
             - name: 複製受控磁碟
               href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: 將快照集以 VHD 形式匯出到儲存體帳戶
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
             - name: 將受控磁碟的 VHD 匯出到儲存體帳戶
-              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md
             - name: 從 VDH 建立快照集
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md
             - name: 複製快照集
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
         - name: 安全
@@ -118,15 +118,15 @@
         - name: 管理儲存體
           items:
             - name: 從 VHD 建立受控磁碟
-              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md
             - name: 從快照集建立受控磁碟
-              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-snapshot.md
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md
             - name: 複製受控磁碟
               href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: 將快照集以 VHD 格式匯出至儲存體帳戶
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
             - name: 將受控磁碟的 VHD 匯出到儲存體帳戶
-              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md
             - name: 複製快照集
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md
         - name: 網路
@@ -172,7 +172,7 @@
         - name: VM 大小
           href: ../sizes.md
         - name: 第 2 代 VM
-          href: generation-2.md
+          href: ../generation-2.md
         - name: 一般用途
           items:
             - name: 概觀
@@ -621,7 +621,7 @@
     - name: 管理 VM
       items:
         - name: VM 使用方式
-          href: vm-usage.md
+          href: ../vm-usage.md
         - name: 一般 PowerShell 工作
           href: ps-common-ref.md
         - name: 變更 VM 大小

@@ -71,17 +71,17 @@
           items:
             - name: 透過 kubectl
               items:
-                - name: 存取 Kubernetes 叢集
+                - name: Kubernetes 叢集存取
                   href: azure-stack-edge-gpu-create-kubernetes-cluster.md
-                - name: 公開無狀態應用程式
+                - name: 無狀態應用程式
                   href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
-                - name: 部署具狀態應用程式 (靜態佈建)
+                - name: 靜態佈建的具狀態應用程式
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
-                - name: 部署具狀態應用程式 (動態佈建)
+                - name: 動態佈建的具狀態應用程式
                   href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
             - name: 透過 IoT Edge
               items:
-                - name: 公開無狀態應用程式
+                - name: 無狀態應用程式
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
             - name: 透過 Azure Arc
               items:
@@ -119,8 +119,8 @@
               href: azure-stack-edge-j-series-create-certificates-tool.md
             - name: 針對憑證錯誤進行疑難排解
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
-            - name: 開發 C# 模組
-              href: azure-stack-edge-j-series-create-iot-edge-module.md
+        - name: 開發 C# 模組
+          href: azure-stack-edge-j-series-create-iot-edge-module.md
         - name: 管理 Edge 計算
           href: azure-stack-edge-j-series-manage-compute.md
         - name: 管理儲存體閘道

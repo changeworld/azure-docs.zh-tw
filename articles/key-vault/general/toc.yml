@@ -39,9 +39,6 @@
   items:
     - name: Key Vault 程式碼範例
       href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: 概念
   items:
     - name: 基本概念
@@ -90,6 +87,8 @@
           href: managed-identity.md
         - name: 使用存取控制原則
           href: group-permissions-for-apps.md
+        - name: 使用 Azure 角色型存取控制 (預覽)
+          href: rbac-guide.md
         - name: 疑難排解存取問題
           href: troubleshooting-access-issues.md
     - name: 開發
@@ -163,6 +162,9 @@
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: 資源
   items:
     - name: 透過 Microsoft Learn 增進您的技巧
