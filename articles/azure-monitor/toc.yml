@@ -160,6 +160,8 @@
       href: platform/partners.md
     - name: 安全性
       items:
+        - name: 安全性基準
+          href: security-baseline.md
         - name: Azure 原則的安全性控制
           displayName: 'regulatory, compliance, standards, domains'
           href: ./platform/security-controls-policy.md
