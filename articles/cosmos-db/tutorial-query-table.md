@@ -8,12 +8,13 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 06/05/2020
 ms.reviewer: sngun
-ms.openlocfilehash: bab0487b09d7088e75ce762c9e4f0338cea507eb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 481f1353e16fecd0e413152db89a4ae54824a0f8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85391888"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019278"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>教學課程：使用資料表 API 查詢 Azure Cosmos DB
 

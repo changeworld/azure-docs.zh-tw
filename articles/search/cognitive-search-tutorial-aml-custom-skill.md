@@ -8,16 +8,16 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245325"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924583"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>教學課程：使用 Azure Machine Learning 建置和部署自訂技能 
 
-在本教學課程中，您將使用[飯店評論資料集](https://www.kaggle.com/datafiniti/hotel-reviews) (依據 Creative Commons 授權 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt) 散佈)，使用 Azure Machine Learning 建立[自訂技能](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill)，以從評論擷取層面式情感。 這可讓您在相同評論內指派正面和負面情感，以正確歸類至已識別的實體，例如員工、會議室、大廳或集區。
+在本教學課程中，您將使用[飯店評論資料集](https://www.kaggle.com/datafiniti/hotel-reviews) (依據 Creative Commons 授權 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt) 散佈)，使用 Azure Machine Learning 建立[自訂技能](./cognitive-search-aml-skill.md)，以從評論擷取層面式情感。 這可讓您在相同評論內指派正面和負面情感，以正確歸類至已識別的實體，例如員工、會議室、大廳或集區。
 
 若要對 Azure Machine Learning 中的層面式情感模型定型，您將使用 [nlp 食譜存放庫](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)。 然後，此模型會部署為 Azure Kubernetes 叢集上的端點。 部署之後，端點就會新增至擴充管線，做為認知搜尋服務所使用的 AML 技能。
 
@@ -36,10 +36,10 @@ ms.locfileid: "86245325"
 ## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - 取得[免費的訂用帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [認知搜尋服務](https://docs.microsoft.com/azure/search/search-get-started-arm)
-* [認知服務資源](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)
-* [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)
-* [Azure Machine Learning 工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
+* [認知搜尋服務](./search-get-started-arm.md)
+* [認知服務資源](../cognitive-services/cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)
+* [Azure 儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Azure Machine Learning 工作區](../machine-learning/how-to-manage-workspace.md)
 
 ## <a name="setup"></a>安裝程式
 
@@ -47,9 +47,9 @@ ms.locfileid: "86245325"
 * 如果下載是 zip 檔案，則解壓縮內容。 確定檔案可讀寫。
 * 設定 Azure 帳戶和服務時，請將名稱和索引鍵複製到容易存取的文字檔案中。 名稱和索引鍵會新增至筆記本中的第一個資料格，其中會定義用來存取 Azure 服務的變數。
 * 如果您不熟悉 Azure Machine Learning 及其需求，在開始使用之前，您會想要先檢閱這些文件：
- * [設定 Azure Machine Learning 的開發環境](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment)
- * [在 Azure 入口網站中建立和管理 Azure Machine Learning 工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
- * 設定 Azure Machine Learning 的開發環境時，請考慮使用[雲端型計算執行個體](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#compute-instance)，以快速且輕鬆地開始使用。
+ * [設定 Azure Machine Learning 的開發環境](../machine-learning/how-to-configure-environment.md)
+ * [在 Azure 入口網站中建立和管理 Azure Machine Learning 工作區](../machine-learning/how-to-manage-workspace.md)
+ * 設定 Azure Machine Learning 的開發環境時，請考慮使用[雲端型計算執行個體](../machine-learning/how-to-configure-environment.md#compute-instance)，以快速且輕鬆地開始使用。
 * 將資料集檔案上傳至儲存體帳戶中的容器。 如果您想要在筆記本中執行定型步驟，則需要較大的檔案。 如果您偏好略過定型步驟，則建議使用較小的檔案。
 
 ## <a name="open-notebook-and-connect-to-azure-services"></a>開啟筆記本並連線到 Azure 服務
@@ -68,9 +68,9 @@ ms.locfileid: "86245325"
 
 筆記本的第 3 節會對在第 2 節中建立的模型定型、註冊這些模型，並將其部署為 Azure Kubernetes 叢集中的端點。 如果您不熟悉 Azure Kubernetes，強烈建議您先檢閱下列文章，再嘗試建立推斷叢集：
 
-* [Azure Kubernetes 服務概觀](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-* [Azure Kubernetes Service (AKS) 的 Kubernetes 核心概念](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads)
-* [Azure Kubernetes Service 中的配額、虛擬機器大小限制和區域可用性 (AKS)](https://docs.microsoft.com/azure/aks/quotas-skus-regions)
+* [Azure Kubernetes 服務概觀](../aks/intro-kubernetes.md)
+* [Azure Kubernetes Service (AKS) 的 Kubernetes 核心概念](../aks/concepts-clusters-workloads.md)
+* [Azure Kubernetes Service 中的配額、虛擬機器大小限制和區域可用性 (AKS)](../aks/quotas-skus-regions.md)
 
 建立和部署推斷叢集最多可能需要 30 分鐘的時間。 建議您先測試 Web 服務，再繼續進行最後的步驟，並更新您的技能和執行索引子。
 
@@ -108,5 +108,5 @@ ms.locfileid: "86245325"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [檢閱自訂技能 Web API](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-web-api)
-> [深入了解如何將自訂技能新增至擴充管線](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface)
+> [檢閱自訂技能 Web API](./cognitive-search-custom-skill-web-api.md)
+> [深入了解如何將自訂技能新增至擴充管線](./cognitive-search-custom-skill-interface.md)

@@ -7,14 +7,14 @@ manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/24/2020
+ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: e4364c3c5bcba1a04837f3f9e7a0576579211c72
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 35814f34550ac7bf4ad85a96d0838df62fe63be6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796590"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073177"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure 金鑰保存庫的可用性與備援
 
@@ -32,8 +32,6 @@ Azure 金鑰保存庫具備多層備援功能，以確保您的金鑰和密碼�
 
 * 發生區域容錯移轉時，可能需要幾分鐘讓服務進行容錯移轉。 在容錯移轉之前於這段時間內所提出的要求可能會失敗。
 * 在容錯移轉期間，您的金鑰保存庫會處於唯讀模式。 在此模式中支援的要求是：
-  * 列出金鑰保存庫
-  * 取得金鑰保存庫的屬性
   * 列出憑證
   * 取得憑證
   * 列出密碼

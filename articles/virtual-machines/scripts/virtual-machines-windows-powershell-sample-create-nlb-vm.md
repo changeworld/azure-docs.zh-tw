@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: b7dad64d7c3e3ab7caa56db26719996b3519b6d5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 2501a2476c1a26b09cbc33bb4e12463eb2c734d3
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082404"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078795"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>對高可用性虛擬機器之間的流量進行負載平衡
 

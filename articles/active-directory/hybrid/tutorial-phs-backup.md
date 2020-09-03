@@ -12,12 +12,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5ad7badfa44a006fd7e71d3b0e42ee95ac698d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a9cd70d534cebf35938285208dc76bd4a6d94533
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "64918999"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279001"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>教學課程：在 Azure AD Connect 中將 PHS 設定為 AD FS 的備份
 
@@ -33,7 +33,7 @@ ms.locfileid: "64918999"
 本教學課程的建置基礎為[教學課程：將單一 AD 樹系環境與雲端建立同盟](tutorial-federation.md)，必須先加以完成，才能嘗試進行本教學課程。  如果您尚未完成該教學課程，請先加以完成，再嘗試執行本文件中的步驟。
 
 >[!IMPORTANT]
->切換至 PHS 之前，您應先建立 AD FS 環境的備份。  您可以使用 [AD FS 快速還原工具](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool)完成此作業。
+>切換至 PHS 之前，您應先建立 AD FS 環境的備份。  您可以使用 [AD FS 快速還原工具](/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool)完成此作業。
 
 ## <a name="enable-phs-in-azure-ad-connect"></a>在 Azure AD Connect 中啟用 PHS
 我們現在已有使用同盟的 Azure AD Connect 環境，因此第一個步驟就是開啟密碼雜湊同步，並允許 Azure AD Connect 同步處理這些雜湊。

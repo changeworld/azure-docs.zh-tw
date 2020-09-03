@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: d63e437090b2875c7e6a8273fdf22d49597d408f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d3dd75d246c1f74253a9ce910e50b05402065464
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85262203"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998453"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>教學課程：使用 .NET SDK 從多個資料來源編製索引
 
@@ -21,7 +22,7 @@ Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一合�
 
 此教學課程說明如何為來自 Azure Cosmos DB 資料來源的旅館資料編製索引，並將該資料與從 Azure Blob 儲存體文件繪製的旅館房間詳細資料合併。 結果將會產生一個已合併的旅館搜尋索引，其中包含複雜資料類型。
 
-本教學課程使用 C# 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)。 在本教學課程中，您將執行下列工作：
+本教學課程使用 C# 和 [.NET SDK](/dotnet/api/overview/azure/search)。 在本教學課程中，您將執行下列工作：
 
 > [!div class="checklist"]
 > * 上傳範例資料並建立資料來源
@@ -34,8 +35,8 @@ Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一合�
 
 ## <a name="prerequisites"></a>Prerequisites
 
-+ [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
-+ [Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure Cosmos DB](../cosmos-db/create-cosmosdb-resources-portal.md)
++ [Azure 儲存體](../storage/common/storage-account-create.md)
 + [Visual Studio 2019](https://visualstudio.microsoft.com/)
 + [建立](search-create-service-portal.md)或[尋找現有的搜尋服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
@@ -80,7 +81,7 @@ Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一合�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)、瀏覽至您的 Azure 儲存體帳戶、按一下 [Blob]  ，然後按一下 [+ 容器]  。
 
-1. [建立 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) (名稱為 **hotel-rooms**) 來儲存範例旅館房間 JSON 檔案。 您可以將公用存取層級設定為任何有效值。
+1. [建立 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md) (名稱為 **hotel-rooms**) 來儲存範例旅館房間 JSON 檔案。 您可以將公用存取層級設定為任何有效值。
 
    ![建立 Blob 容器](media/tutorial-multiple-data-sources/blob-add-container.png "建立 Blob 容器")
 
@@ -171,7 +172,7 @@ Azure 認知搜尋服務索引子可以使用欄位對應來重新命名，甚�
 
 ### <a name="create-an-index"></a>建立索引
 
-此範例程式會使用 .NET SDK 來定義並建立 Azure 認知搜尋服務索引。 它會利用 [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) \(英文\) 類別，從 C# 資料模型類別產生索引結構。
+此範例程式會使用 .NET SDK 來定義並建立 Azure 認知搜尋服務索引。 它會利用 [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) \(英文\) 類別，從 C# 資料模型類別產生索引結構。
 
 資料模型會透過旅館類別來定義，其中也包含對地址和房間類別的參考。 FieldBuilder 會向下鑽研多個類別定義，以針對索引產生複雜的資料結構。 中繼資料標記可用來定義每個欄位的屬性，例如，它是可搜尋或可排序的。
 
@@ -319,7 +320,7 @@ JSON Blob 包含名為 **`Id`** (而非 **`HotelId`** ) 的索引鍵欄位。 �
 
 Blob 儲存體索引子可以使用參數來識別要使用的剖析模式。 對於代表單一文件的 Blob 或相同 Blob 中有多份文件的 Blob 而言，剖析模式不一樣。 在此範例中，每個 Blob 均代表單一索引文件，因此，程式碼會使用 `IndexingParameters.ParseJson()` 參數。
 
-如需用以剖析 JSON Blob 參數的索引子詳細資訊，請參閱[為 JSON Blob 編製索引](search-howto-index-json-blobs.md)。 如需使用 .NET SDK 指定這些參數的詳細資訊，請參閱 [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) \(英文\) 類別。
+如需用以剖析 JSON Blob 參數的索引子詳細資訊，請參閱[為 JSON Blob 編製索引](search-howto-index-json-blobs.md)。 如需使用 .NET SDK 指定這些參數的詳細資訊，請參閱 [IndexerParametersExtension](/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) \(英文\) 類別。
 
 假如您想要多次執行此範例，程式將會先刪除任何具有相同名稱的現有索引子，然後再建立新的索引子。
 
