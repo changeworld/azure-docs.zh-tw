@@ -10,18 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: b64a3e9d3e6f5393fb47c41ad34a9f1ed78cb44a
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e5f772fe8152f209a8188ab5bf2d0010248feabf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872768"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934305"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>快速入門：使用 Bing 圖像式搜尋 REST API 和 C# 來取得影像見解
 
 本快速入門示範如何將影像上傳給 Bing 圖像式搜尋 API，以及如何檢視其所傳回的見解。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 任何版本的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 * [Json.NET 架構](https://www.newtonsoft.com/json) (以 NuGet 套件形式提供)。

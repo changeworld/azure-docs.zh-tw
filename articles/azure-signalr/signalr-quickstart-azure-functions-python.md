@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
 ms.custom: devx-track-python
-ms.openlocfilehash: 1a044569c39ae2667c83ac881f1908b1d7b27cab
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d7d893d3de5541bf1108a9182dfee6ad995e061b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848361"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050602"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>快速入門：使用 Python 搭配 Azure Functions 與 SignalR Service 來建立聊天室
 
@@ -31,13 +31,21 @@ Azure Functions 需要 [Python 3.6 或 3.7](https://www.python.org/downloads/)�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qspython)
+
 ## <a name="log-in-to-azure"></a>登入 Azure
 
 使用您的 Azure 帳戶登入 Azure 入口網站 (<https://portal.azure.com/>)。
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qspython)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qspython)
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qspython)
 
 ## <a name="configure-and-run-the-azure-function-app"></a>設定及執行 Azure Function 應用程式
 
@@ -45,7 +53,7 @@ Azure Functions 需要 [Python 3.6 或 3.7](https://www.python.org/downloads/)�
 
     ![搜尋 SignalR 服務執行個體](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-1. 選取 [金鑰]  以檢視 SignalR 服務執行個體的連接字串。
+1. 選取 [金鑰]**** 以檢視 SignalR 服務執行個體的連接字串。
 
 1. 選取並複製主要連接字串。
 
@@ -91,10 +99,16 @@ Azure Functions 需要 [Python 3.6 或 3.7](https://www.python.org/downloads/)�
     ```
 
     ![執行函式應用程式](media/signalr-quickstart-azure-functions-python/signalr-quickstart-run-application.png)
+    
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qspython)
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qspython)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qspython)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -102,3 +116,5 @@ Azure Functions 需要 [Python 3.6 或 3.7](https://www.python.org/downloads/)�
 
 > [!div class="nextstepaction"]
 > [使用 VS Code 部署 Azure Functions](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qspython)

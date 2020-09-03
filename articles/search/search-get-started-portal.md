@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f405219701e910159de6f4fc91e9960a76f5a0cd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083554"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935308"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 認知搜尋索引
 > [!div class="op_single_selector"]
@@ -140,7 +140,7 @@ ms.locfileid: "86083554"
 
 接下來，您現在應該有搜尋索引，準備好要使用內建的 [[搜尋總管]](search-explorer.md) 查詢頁面進行查詢。 它會提供搜尋方塊，讓您能夠測試任意的查詢字串。
 
-**搜尋總管**只能用來處理 [REST API 要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)，但可接受[簡單查詢語法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和[完整 Lucene 查詢剖析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)的語法，以及[搜尋文件 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) 作業中可用的所有搜尋參數。
+**搜尋總管**只能用來處理 [REST API 要求](/rest/api/searchservice/search-documents)，但可接受[簡單查詢語法](/rest/api/searchservice/simple-query-syntax-in-azure-search)和[完整 Lucene 查詢剖析器](/rest/api/searchservice/lucene-query-syntax-in-azure-search)的語法，以及[搜尋文件 REST API](/rest/api/searchservice/search-documents#bkmk_examples) 作業中可用的所有搜尋參數。
 
 > [!TIP]
 > 下列步驟會在 [Azure 認知搜尋概觀影片](https://channel9.msdn.com/Events/Connect/2016/138)的 6 分 08 秒處示範。
@@ -188,7 +188,7 @@ ms.locfileid: "86083554"
 
 * **$filter** 參數會傳回符合您提供之準則的結果。 在此案例中為大於 4 的評等。
 
-* 篩選語法是 OData 建構。 如需詳細資訊，請參閱[篩選 OData 語法](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)。
+* 篩選語法是 OData 建構。 如需詳細資訊，請參閱[篩選 OData 語法](/rest/api/searchservice/odata-expression-syntax-for-azure-search)。
 
 ### <a name="facet-the-query"></a><a name="facet-query"></a> 將查詢面向化
 
@@ -207,7 +207,7 @@ Facet 篩選器會包含在搜尋要求中。 您可以使用 facet 參數，傳
 
 * 只有可篩選的欄位可以面向化。 只有可擷取的欄位可以在結果中傳回。
 
-* [評等] 欄位是雙精確度浮點數，且分組會採用精確值。 如需依間隔分組 (例如，「3 星級評等」、「4 星級評等」) 的詳細資訊，請參閱[如何在 Azure 認知搜尋中實作多面向導覽](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range)。
+* [評等] 欄位是雙精確度浮點數，且分組會採用精確值。 如需依間隔分組 (例如，「3 星級評等」、「4 星級評等」) 的詳細資訊，請參閱[如何在 Azure 認知搜尋中實作多面向導覽](./search-faceted-navigation.md#filter-based-on-a-range)。
 
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> 醒目提示搜尋結果
@@ -240,11 +240,11 @@ Facet 篩選器會包含在搜尋要求中。 您可以使用 facet 參數，傳
 
 模糊搜尋和萬用字元搜尋會影響搜尋輸出。 不會以這些查詢格式執行語言分析。 在使用模糊及萬用字元搜尋之前，請檢閱[全文檢索搜尋如何在 Azure 認知搜尋中運作](search-lucene-query-architecture.md#stage-2-lexical-analysis)，並尋找語彙分析例外狀況的相關章節。
 
-如需完整查詢剖析器所啟用查詢案例的詳細資訊，請參閱 [Azure 認知搜尋中的 Lucene 查詢語法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)。
+如需完整查詢剖析器所啟用查詢案例的詳細資訊，請參閱 [Azure 認知搜尋中的 Lucene 查詢語法](/rest/api/searchservice/lucene-query-syntax-in-azure-search)。
 
 ### <a name="try-geospatial-search"></a><a name="geo-search"></a> 嘗試地理空間搜尋
 
-地理空間搜尋是透過含有座標之欄位上的 [edm.GeographyPoint 資料類型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)提供支援。 地理搜尋是在[篩選 OData 語法](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)中指定的一種篩選器。
+地理空間搜尋是透過含有座標之欄位上的 [edm.GeographyPoint 資料類型](/rest/api/searchservice/supported-data-types)提供支援。 地理搜尋是在[篩選 OData 語法](/rest/api/searchservice/odata-expression-syntax-for-azure-search)中指定的一種篩選器。
 
 #### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-12212-4767-le-5"></a>範例 (地理座標篩選)：`search=*&$count=true&$filter=geo.distance(Location,geography'POINT(-122.12 47.67)') le 5`
 
@@ -256,7 +256,7 @@ Facet 篩選器會包含在搜尋要求中。 您可以使用 facet 參數，傳
 
 本教學課程提供了使用 Azure 入口網站執行 Azure 認知搜尋的快速簡介。
 
-您已了解如何使用**匯入資料**精靈建立搜尋索引。 您已了解[索引子](search-indexer-overview.md)，以及索引設計的基本工作流程，包括[對已發佈索引支援的修改](https://docs.microsoft.com/rest/api/searchservice/update-index)。
+您已了解如何使用**匯入資料**精靈建立搜尋索引。 您已了解[索引子](search-indexer-overview.md)，以及索引設計的基本工作流程，包括[對已發佈索引支援的修改](/rest/api/searchservice/update-index)。
 
 藉由在 Azure 入口網站中使用**搜尋總管**，您已透過實際操作的範例了解某些基本查詢語法，這些範例示範了篩選、搜尋結果醒目提示、模糊搜尋和地理搜尋等主要功能。
 
@@ -280,4 +280,4 @@ Facet 篩選器會包含在搜尋要求中。 您可以使用 facet 參數，傳
 想要最佳化並節省您的雲端費用嗎？
 
 > [!div class="nextstepaction"]
-> [使用成本管理開始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [使用成本管理開始分析成本](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -13,12 +13,12 @@ ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3d681dd06f07f6174e31b59cccf42df5dc16a1e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f74798eeed4764bf2f7b71cb5049fb1c6b3ae077
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "68779840"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278644"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>什麼是 Azure Active Directory 的混合式身分識別？
 
@@ -36,7 +36,7 @@ Microsoft 的身分識別解決方案可跨越內部部署和雲端架構功能�
 
 這些驗證方法也會提供[單一登入](how-to-connect-sso.md)功能。  使用者位於連線到貴公司網路的公司裝置時，單一登入功能會自動將他們登入。
 
-如需其他資訊，請參閱[針對 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)。 
+如需其他資訊，請參閱[針對 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](./choose-ad-authn.md)。 
 
 ## <a name="common-scenarios-and-recommendations"></a>常見案例和建議 
 
@@ -60,7 +60,7 @@ Microsoft 的身分識別解決方案可跨越內部部署和雲端架構功能�
 > 
 > <sup>3</sup> 與 AD FS 同盟的單一登入。  
 >  
-> <sup>4</sup> AD FS 可與您的企業 PKI 整合，以允許使用憑證登入。 這些憑證可以是透過信任的佈建管道 (例如 MDM、GPO、智慧卡憑證 (包括 PIV/CAC 卡) 或 Hello for Business (cert-trust)) 部署的軟性憑證。 如需智慧卡驗證支援的詳細資訊，請參閱[這個部落格](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/)。 
+> <sup>4</sup> AD FS 可與您的企業 PKI 整合，以允許使用憑證登入。 這些憑證可以是透過信任的佈建管道 (例如 MDM、GPO、智慧卡憑證 (包括 PIV/CAC 卡) 或 Hello for Business (cert-trust)) 部署的軟性憑證。 如需智慧卡驗證支援的詳細資訊，請參閱[這個部落格](/archive/blogs/samueld/adfs-certauth-aad-o365)。 
 > 
 
 ## <a name="license-requirements-for-using-azure-ad-connect"></a>使用 Azure AD Connect 的授權需求
@@ -73,5 +73,4 @@ Microsoft 的身分識別解決方案可跨越內部部署和雲端架構功能�
 - [什麼是密碼雜湊同步處理 (PHS)？](whatis-phs.md) 
 - [什麼是傳遞驗證 (PTA)？](how-to-connect-pta.md) 
 - [什麼是同盟？](whatis-fed.md) 
-- [什麼是單一登入？](how-to-connect-sso.md) 
-
+- [什麼是單一登入？](how-to-connect-sso.md)
