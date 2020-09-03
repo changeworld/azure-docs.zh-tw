@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 244809db8efac00124a11ab5c163bfefc9ea7dd2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 47c846f0d8d1cccd91301c7424b2618fffddd565
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420595"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998436"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>教學課程：使用 .NET SDK 新增自動完成和建議
 
@@ -145,7 +145,7 @@ ms.locfileid: "87420595"
  
     ![將 fuzzy 設定為 true 時，輸入 "pa"](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
 
-    如果您感興趣，[Azure 認知搜尋服務中的 Lucene 查詢語法](https://docs.microsoft.com/azure/search/query-lucene-syntax)詳細描述模糊搜尋中使用的邏輯。
+    如果您感興趣，[Azure 認知搜尋服務中的 Lucene 查詢語法](./query-lucene-syntax.md)詳細描述模糊搜尋中使用的邏輯。
 
 ## <a name="add-highlighting-to-the-suggestions"></a>在建議中加入醒目提示
 
@@ -244,7 +244,7 @@ ms.locfileid: "87420595"
 
     請注意，我們在自動完成搜尋中使用的*建議工具*功能 (稱為 "sg") 與我們用於建議的相同 (因此我們只要嘗試自動完成旅館名稱)。
 
-    有多種 **AutocompleteMode** 設定，而我們會使用 **OneTermWithContext**。 如需其他選項的說明，請參閱[自動完成 API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)。
+    有多種 **AutocompleteMode** 設定，而我們會使用 **OneTermWithContext**。 如需其他選項的說明，請參閱[自動完成 API](/rest/api/searchservice/autocomplete)。
 
 4. 執行應用程式。 請注意，下拉式清單中所顯示的選項範圍是單一文字。 請嘗試輸入開頭為 "re" 的文字。 請注意，輸入的字母越多，選項的數量越少。
 
@@ -464,5 +464,3 @@ ms.locfileid: "87420595"
 
 > [!div class="nextstepaction"]
 > [C# 教學課程：使用 Facet 協助導覽 - Azure 認知搜尋](tutorial-csharp-facets.md)
-
-

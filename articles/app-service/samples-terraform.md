@@ -9,12 +9,12 @@ author: ericgre
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 8b15b3c4444a6f26734b133f169cea7074956ae7
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: f88ccd077c857826271484c9929b37f8c5d751fe
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042890"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962701"
 ---
 # <a name="terraform-samples-for-azure-app-service"></a>Azure App Service 的 Terraform 範例
 
@@ -24,5 +24,5 @@ ms.locfileid: "88042890"
 |-|-|
 |**建立應用程式**||
 | [建立兩個應用程式並以私人端點和 VNet 整合安全地連線](./scripts/terraform-secure-backend-frontend.md )| 建立兩個 App Service 應用程式，並以私人端點和 VNet 整合將應用程式連結在一起。 |
-| [佈建 App Service 並使用位置交換來進行部署](https://docs.microsoft.com/azure/developer/terraform/provision-infrastructure-using-azure-deployment-slots)| 使用 Azure 部署位置佈建 App Service 基礎結構。 |
+| [佈建 App Service 並使用位置交換來進行部署](/azure/developer/terraform/provision-infrastructure-using-azure-deployment-slots)| 使用 Azure 部署位置佈建 App Service 基礎結構。 |
 | | |

@@ -1,18 +1,18 @@
 ---
 title: 建立 Kubernetes 開發人員空間：Visual Studio 和 .NET Core
 services: azure-dev-spaces
-ms.custom: vs-azure, devx-track-azurecli
+ms.custom: vs-azure, devx-track-azurecli, devx-track-csharp
 ms.workload: azure-vs
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio 對 Azure Kubernetes Service 上的 .NET Core 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: 436ef1b83bd23c78aed6e793e237423110ca6bc6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 78ad3c643b839d2a0901ac2c1d930d73b718cd8d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077698"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999252"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>建立 Kubernetes 開發人員空間：搭配 Azure Dev Spaces 使用 Visual Studio 和 .NET Core
 

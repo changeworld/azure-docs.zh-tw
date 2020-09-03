@@ -5,13 +5,14 @@ author: Heidilohr
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: lizross
-ms.openlocfilehash: 67527967e76174fd0152775aed140ec89e1674ec
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 91bb14a174d5bd5c16b38513825579097e1d6f7f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008826"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078523"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell-in-windows-virtual-desktop-classic"></a>教學課程：在 Windows 虛擬桌面 (傳統) 中使用 PowerShell 來建立服務主體和角色指派
 

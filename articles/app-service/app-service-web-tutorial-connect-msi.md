@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate
-ms.openlocfilehash: bb1c947a388811efb5d161b7739664bea9fc85c8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 882188c638c77fa0055f1c2d2e664d97a4fe9359
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213703"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962259"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教學課程：使用受控識別保護來自 App Service 的 Azure SQL Database 連線
 
@@ -37,7 +37,7 @@ ms.locfileid: "88213703"
 > * 使用 Azure AD 驗證從 Visual Studio 連線至 SQL Database
 
 > [!NOTE]
->Azure AD 驗證與內部部署 Active Directory (AD DS) 中的[整合式 Windows 驗證](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10))_不同_。 AD DS 和 Azure AD 使用完全不同的驗證通訊協定。 如需詳細資訊，請參閱 [Azure AD Domain Services 文件](https://docs.microsoft.com/azure/active-directory-domain-services/)。
+>Azure AD 驗證與內部部署 Active Directory (AD DS) 中的[整合式 Windows 驗證](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10))_不同_。 AD DS 和 Azure AD 使用完全不同的驗證通訊協定。 如需詳細資訊，請參閱 [Azure AD Domain Services 文件](../active-directory-domain-services/index.yml)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -83,7 +83,7 @@ Visual Studio for Windows 會與 Azure AD 驗證整合。 若要啟用在 Visual
 
 ### <a name="macos-client"></a>macOS 用戶端
 
-Visual Studio for Mac 不會與 Azure AD 驗證整合。 不過，稍後會用到的 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 程式庫可以使用 Azure CLI 中的權杖。 若要在 Visual Studio 中啟用開發和偵錯工具，您必須先在本機電腦上安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+Visual Studio for Mac 不會與 Azure AD 驗證整合。 不過，稍後會用到的 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 程式庫可以使用 Azure CLI 中的權杖。 若要在 Visual Studio 中啟用開發和偵錯工具，您必須先在本機電腦上安裝 [Azure CLI](/cli/azure/install-azure-cli)。
 
 在本機電腦上安裝 Azure CLI 後，請使用 Azure AD 使用者以下列命令登入 Azure CLI：
 

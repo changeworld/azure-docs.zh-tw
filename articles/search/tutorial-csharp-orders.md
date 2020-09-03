@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f2182dcfd3db83580dfbec9b4f09479650dd62ca
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9819615039a6dd6aceec796a3ec1c7338f6f3968
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420629"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998521"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>教學課程：使用 .NET SDK 排序搜尋結果
 
@@ -462,8 +462,8 @@ ms.locfileid: "87420629"
 
 4. 現在，您必須將這些概念繫結在一起。 不過，這些程式碼片段僅止於我們的教學課程內容，建置地圖型應用程式留給讀者當作練習。 若要進一步修改此範例，請考慮輸入包含半徑的城市名稱，或在地圖上定位某個點並選取半徑。 若要進一步調查這些選項，請參閱下列資源：
 
-* [Azure 的地圖文件](https://docs.microsoft.com/azure/azure-maps/)
-* [使用 Azure 地圖服務搜尋服務來尋找地址](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address) \(部分機器翻譯\)
+* [Azure 的地圖文件](../azure-maps/index.yml)
+* [使用 Azure 地圖服務搜尋服務來尋找地址](../azure-maps/how-to-search-for-address.md) \(部分機器翻譯\)
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>根據評分設定檔排序結果
 
@@ -959,7 +959,7 @@ ms.locfileid: "87420629"
 
 ### <a name="resources"></a>資源
 
-如需詳細資訊，請參閱下列[將評分設定檔新增至 Azure 認知搜尋索引](https://docs.microsoft.com/azure/search/index-add-scoring-profiles)。
+如需詳細資訊，請參閱下列[將評分設定檔新增至 Azure 認知搜尋索引](/azure/search/index-add-scoring-profiles)。
 
 ## <a name="takeaways"></a>重要心得
 
@@ -975,4 +975,4 @@ ms.locfileid: "87420629"
 
 您已完成這一系列的 C# 教學課程，您應該獲得了寶貴的 Azure 認知搜尋 API 知識。
 
-如需進一步的參考和教學課程，您可以瀏覽 [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)，或 [Azure 認知搜尋文件](https://docs.microsoft.com/azure/search/)中的其他教學課程。
+如需進一步的參考和教學課程，您可以瀏覽 [Microsoft Learn](/learn/browse/?products=azure)，或 [Azure 認知搜尋文件](./index.yml)中的其他教學課程。

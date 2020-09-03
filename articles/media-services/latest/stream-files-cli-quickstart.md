@@ -3,7 +3,7 @@ title: 使用 Azure 媒體服務和 Azure CLI 來串流影片檔案
 description: 按照本教學課程的步驟建立新的 Azure 媒體服務帳戶、對檔案進行編碼，然後將它串流到 Azure 媒體播放器。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 keywords: Azure 媒體服務, 串流
@@ -11,16 +11,18 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: devx-track-azurecli
-ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: 5a90e1fdc50a6e2b1544a06f587362bf43b80369
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8c8db31ae51e1fb80ae9baad6a5d6329cd963bab
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504444"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267406"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - Azure CLI
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 此教學課程說明如何使用 Azure 媒體服務和 Azure CLI，在各種不同的瀏覽器和裝置上輕鬆地編碼和串流視訊。 您可以使用 HTTPS、SAS URL 或 Azure Blob 儲存體中的檔案路徑來指定輸入內容。
 

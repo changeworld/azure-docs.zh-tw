@@ -3,7 +3,7 @@ title: 教學課程`:` 使用受控識別來存取 Azure 儲存體 - Linux - Azu
 description: 本教學課程會逐步引導您使用 Linux VM 系統指派的受控識別，以存取 Azure 儲存體。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b11df2e1a6140d251801a3243f3eaa9458b77d29
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9b61d3ed21d053fc7166b47c94a9ec61e355d199
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75971925"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263156"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教學課程：使用 Linux VM 系統指派的受控識別來存取 Azure 儲存體 
 
@@ -44,7 +44,7 @@ ms.locfileid: "75971925"
 若要執行本教學課程中的 CLI 指令碼範例，您有兩個選項：
 
 - 透過 Azure 入口網站或是每個程式碼區塊右上角的 [試試看] 按鈕，使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
-- 如果您需要使用本機 CLI 主控台，請[安裝最新版的 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 或更新版本)。
+- 如果您需要使用本機 CLI 主控台，請[安裝最新版的 CLI 2.0](/cli/azure/install-azure-cli) (2.0.23 或更新版本)。
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶 
 
@@ -95,7 +95,7 @@ ms.locfileid: "75971925"
 
 Azure 儲存體原生支援 Azure AD 驗證，因此可以直接接受使用受控身分識別取得的存取權杖。 這是 Azure AD 與 Azure 儲存體整合的一部分，與在連接字串上提供認證不同。
 
-若要完成下列步驟，您必須從稍早建立的 VM 中進行，且需要 SSH 用戶端來加以連線。 如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](https://msdn.microsoft.com/commandline/wsl/about)中使用 SSH 用戶端。 如果您需要設定 SSH 用戶端金鑰的協助，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](~/articles/virtual-machines/linux/ssh-from-windows.md)，或[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](~/articles/virtual-machines/linux/mac-create-ssh-keys.md)。
+若要完成下列步驟，您必須從稍早建立的 VM 中進行，且需要 SSH 用戶端來加以連線。 如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](/windows/wsl/about)中使用 SSH 用戶端。 如果您需要設定 SSH 用戶端金鑰的協助，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](~/articles/virtual-machines/linux/ssh-from-windows.md)，或[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](~/articles/virtual-machines/linux/mac-create-ssh-keys.md)。
 
 1. 在 Azure 入口網站中，巡覽至 [虛擬機器]  ，移至您的 Linux 虛擬機器，然後在 [概觀]  頁面中，按一下 [連線]  。 複製字串以連線到您的 VM。
 2. 使用您所選擇的 SSH 用戶端來**連線**到 VM。 
@@ -121,4 +121,4 @@ Azure 儲存體原生支援 Azure AD 驗證，因此可以直接接受使用受�
 在本教學課程中，您已了解如何讓 Linux VM 系統指派的受控識別存取 Azure 儲存體。  若要深入了解 Azure 儲存體，請參閱：
 
 > [!div class="nextstepaction"]
-> [Azure 儲存體](/azure/storage/common/storage-introduction)
+> [Azure 儲存體](../../storage/common/storage-introduction.md)

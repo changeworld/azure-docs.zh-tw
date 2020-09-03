@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428372"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268548"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教學課程：手動設定已加入混合式 Azure Active Directory 的裝置
 
@@ -39,7 +39,7 @@ ms.locfileid: "87428372"
 
 本教學課程假設您已熟悉：
 
-* [Azure Active Directory 中的裝置管理簡介](../device-management-introduction.md)
+* [Azure Active Directory 中的裝置管理簡介](./overview.md)
 * [規劃混合式 Azure Active Directory Join 實作](hybrid-azuread-join-plan.md)
 * [控制裝置的混合式 Azure AD 聯結](hybrid-azuread-join-control.md)
 
@@ -94,7 +94,7 @@ Azure AD Connect：
 
 您的裝置會在註冊期間使用服務連接點 (SCP) 物件來探索 Azure AD 租用戶資訊。 在內部部署 Active Directory 執行個體中，已加入混合式 Azure AD 的裝置所使用的 SCP 物件必須存在於電腦樹系的組態命名內容分割區中。 每個樹系只有一個組態命名內容。 在多樹系 Active Directory 組態中，服務連接點必須存在於有已加入網域的電腦包含在其中的所有樹系中。
 
-您可以使用 [**Get-ADRootDSE**](https://technet.microsoft.com/library/ee617246.aspx) Cmdlet 來擷取樹系的組態命名內容。  
+您可以使用 [**Get-ADRootDSE**](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617246(v=technet.10)) Cmdlet 來擷取樹系的組態命名內容。  
 
 如果樹系的 Active Directory 網域名稱為 fabrikam.com，則組態命名內容為：
 
@@ -167,7 +167,7 @@ Azure AD Connect：
 
 在上述指令碼中，`$verifiedDomain = "contoso.com"` 是預留位置。 請將其取代為您在 Azure AD 中已驗證的網域名稱之一。 您必須擁有網域，才能加以使用。
 
-如需已驗證之網域名稱的資訊，請參閱[將自訂網域名稱新增至 Azure Active Directory](../active-directory-domains-add-azure-portal.md)。
+如需已驗證之網域名稱的資訊，請參閱[將自訂網域名稱新增至 Azure Active Directory](../fundamentals/add-custom-domain.md)。
 
 若要取得已驗證之公司網域的清單，您可以使用 [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) Cmdlet。
 
@@ -326,7 +326,7 @@ Azure AD Connect：
 
 在上述宣告中，`<verified-domain-name>` 是預留位置。 請將其取代為您在 Azure AD 中已驗證的網域名稱之一。 例如，使用 `Value = "http://contoso.com/adfs/services/trust/"`。
 
-如需已驗證之網域名稱的資訊，請參閱[將自訂網域名稱新增至 Azure Active Directory](../active-directory-domains-add-azure-portal.md)。  
+如需已驗證之網域名稱的資訊，請參閱[將自訂網域名稱新增至 Azure Active Directory](../fundamentals/add-custom-domain.md)。  
 
 若要取得已驗證之公司網域的清單，您可以使用 [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) Cmdlet。
 
@@ -614,7 +614,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 如果您在為已加入網域的 Windows 裝置完成混合式 Azure AD Join 時遇到問題，請參閱：
 
-- [使用 dsregcmd 命令針對裝置進行疑難排解](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [使用 dsregcmd 命令針對裝置進行疑難排解](./troubleshoot-device-dsregcmd.md)
 - [針對已進行混合式 Azure Active Directory Join 的裝置進行疑難排解](troubleshoot-hybrid-join-windows-current.md)
 - [針對已加入混合式 Azure Active Directory 的下層裝置進行疑難排解](troubleshoot-hybrid-join-windows-legacy.md)
 
