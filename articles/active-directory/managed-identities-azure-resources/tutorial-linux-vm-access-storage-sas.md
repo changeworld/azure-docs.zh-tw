@@ -3,7 +3,7 @@ title: 教學課程：使用 SAS 認證存取 Azure 儲存體 - Linux - Azure AD
 description: 本教學課程說明如何使用 Linux VM 系統指派的受控識別，以利用 SAS 認證 (而非儲存體帳戶來存取金鑰) 來存取 Azure 儲存體。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,20 +13,20 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a173fe36c20e9f13f1b1c1f27efc36821c8264a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 04e265ea0128411eb483c84b1317051089a0550a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266299"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260232"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>教學課程：使用 Linux VM 系統指派的受控識別，以透過 SAS 認證存取 Azure 儲存體
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教學課程說明如何將系統指派的受控識別用於 Linux 虛擬機器 (VM)，以取得儲存體共用存取簽章 (SAS) 認證。 具體而言，即[服務 SAS 認證](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures)。 
+本教學課程說明如何將系統指派的受控識別用於 Linux 虛擬機器 (VM)，以取得儲存體共用存取簽章 (SAS) 認證。 具體而言，即[服務 SAS 認證](../../storage/common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures)。 
 
 > [!NOTE]
 > 本教學課程所產生的 SAS 金鑰將不會受限/繫結至 VM。  
@@ -86,7 +86,7 @@ Azure 儲存體原生並不支援 Azure AD 驗證。  不過，您可以使用 V
 
 其餘課程要從稍早建立的 VM 繼續進行。
 
-若要完成這些步驟，您需要 SSH 用戶端。 如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](https://msdn.microsoft.com/commandline/wsl/install_guide)中使用 SSH 用戶端。 如果您需要設定 SSH 用戶端金鑰的協助，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](../../virtual-machines/linux/ssh-from-windows.md)，或[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](../../virtual-machines/linux/mac-create-ssh-keys.md)。
+若要完成這些步驟，您需要 SSH 用戶端。 如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](/windows/wsl/install-win10)中使用 SSH 用戶端。 如果您需要設定 SSH 用戶端金鑰的協助，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](../../virtual-machines/linux/ssh-from-windows.md)，或[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 1. 在 Azure 入口網站中，瀏覽至 [虛擬機器]，移至您的 Linux 虛擬機器，然後在 [概觀] 頁面中，按一下頂端的 [連線]。 複製字串以連線到您的 VM。 
 2. 使用 SSH 用戶端連線到 VM。  
@@ -152,7 +152,7 @@ CURL 回應會傳回 SAS 認證：
 echo "This is a test file." > test.txt
 ```
 
-然後使用 SAS 認證透過 `az storage` CLI 命令進行驗證，並將檔案上傳至 blob 容器。 此步驟中，您必須在 VM 上[安裝最新的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (如果您還沒有這麼做)。
+然後使用 SAS 認證透過 `az storage` CLI 命令進行驗證，並將檔案上傳至 blob 容器。 此步驟中，您必須在 VM 上[安裝最新的 Azure CLI](/cli/azure/install-azure-cli) (如果您還沒有這麼做)。
 
 ```azurecli-interactive
  az storage blob upload --container-name 
@@ -231,4 +231,4 @@ az storage blob download --container-name
 在本教學課程中，您已了解如何使用 Linux VM 系統指派的受控識別，以利用 SAS 認證來存取 Azure 儲存體。  若要深入了解 Azure 儲存體 SAS，請參閱：
 
 > [!div class="nextstepaction"]
->[使用共用存取簽章 (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+>[使用共用存取簽章 (SAS)](../../storage/common/storage-sas-overview.md)

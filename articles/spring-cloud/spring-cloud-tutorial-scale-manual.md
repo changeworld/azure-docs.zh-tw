@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: edbb3c1b2ed3e696c304f72c7b40fa926cae2c54
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3c660c5e301081ee82a12275b6e9125f0fc781b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021183"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289812"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>教學課程：在 Azure Spring Cloud 中調整應用程式
 
@@ -27,7 +27,7 @@ ms.locfileid: "87021183"
 若要遵循這些程序，您需要：
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-* 已部署的 Azure Spring Cloud 服務執行個體。  請遵循[關於如何透過 Azure CLI 來部署應用程式的快速入門](spring-cloud-quickstart-launch-app-cli.md)來開始使用。
+* 已部署的 Azure Spring Cloud 服務執行個體。  請遵循[關於如何透過 Azure CLI 來部署應用程式的快速入門](spring-cloud-quickstart.md)來開始使用。
 * 服務執行個體中至少已建立一個應用程式。
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>在 Azure 入口網站中，瀏覽至 [調整] 頁面

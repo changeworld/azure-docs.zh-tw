@@ -6,12 +6,13 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 520022be8ee2054d6c0c89ee3f027de9094ae1af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 74211df6f925aaa09a4c87a518056e8ef3206b87
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055251"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078396"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure 監視器 PowerShell 範例
 本文說明可協助您存取 Azure 監視器 功能的範例 PowerShell 命令。

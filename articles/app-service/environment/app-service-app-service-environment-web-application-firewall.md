@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: d629aca791794de6c3e065fdc9f4a9e7f6d8a5df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e40a42afc99d505dc48794d5ad919e4d682b7070
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833176"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961834"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>設定 App Service 環境的 Web 應用程式防火牆 (WAF)
 ## <a name="overview"></a>概觀
 
-Web 應用程式防火牆 (WAF) 會檢查輸入的 Web 流量以封鎖 SQL 插入、跨網站指令碼、惡意程式碼上傳和應用程式 DDoS 以及其他攻擊，以保護您的 Web 應用程式。 它們也會檢查來自後端 Web 伺服器的回應，以進行資料外洩防護 (DLP)。 這與隔離以及 App Service 環境所提供的額外調整合併使用，以提供裝載商務關鍵 Web 應用程式的理想環境，而這些 Web 應用程式需要防禦惡意要求和大量流量。 Azure 提供隨附於[應用程式閘道](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)的 WAF 功能。  若想了解如何整合您的 App Service 環境與應用程式閘道，請參閱[整合您的 ILB ASE 與應用程式閘道](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)一文。
+Web 應用程式防火牆 (WAF) 會檢查輸入的 Web 流量以封鎖 SQL 插入、跨網站指令碼、惡意程式碼上傳和應用程式 DDoS 以及其他攻擊，以保護您的 Web 應用程式。 它們也會檢查來自後端 Web 伺服器的回應，以進行資料外洩防護 (DLP)。 這與隔離以及 App Service 環境所提供的額外調整合併使用，以提供裝載商務關鍵 Web 應用程式的理想環境，而這些 Web 應用程式需要防禦惡意要求和大量流量。 Azure 提供隨附於[應用程式閘道](../../application-gateway/overview.md)的 WAF 功能。  若想了解如何整合您的 App Service 環境與應用程式閘道，請參閱[整合您的 ILB ASE 與應用程式閘道](./integrate-with-application-gateway.md)一文。
 
 除了 Azure 應用程式閘道以外，[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice) 還提供多個市集選項，例如 [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure)。 本文的其餘內容將著重於如何整合您的 App Service 環境與 Barracuda WAF 裝置。
 
@@ -34,7 +34,7 @@ Web 應用程式防火牆 (WAF) 會檢查輸入的 Web 流量以封鎖 SQL 插�
 > 
 
 ## <a name="configuring-your-app-service-environment"></a>設定 App Service 環境
-若要設定 App Service 環境，請參閱有關本主題的[文件](app-service-web-how-to-create-an-app-service-environment.md)。 建立 App Service 環境之後，即可在此環境中建立 Web App、API App 和 [Mobile Apps](../../app-service-mobile/app-service-mobile-value-prop.md)，而這些都是由下一節中設定的 WAF 所保護。
+若要設定 App Service 環境，請參閱有關本主題的[文件](app-service-web-how-to-create-an-app-service-environment.md)。 建立 App Service 環境之後，即可在此環境中建立 Web App、API App 和 [Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop)，而這些都是由下一節中設定的 WAF 所保護。
 
 ## <a name="configuring-your-barracuda-waf-cloud-service"></a>設定 Barracuda WAF 雲端服務
 Barracuda 具有在 Azure 中於虛擬機器上部署其 WAF 的 [詳細文章](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) 。 但是，因為我們想要具有備援性，且不想要引進單一失敗點，您在遵循這些指示時要將至少 2 個 WAF 執行個體 VM 部署至相同的雲端服務。

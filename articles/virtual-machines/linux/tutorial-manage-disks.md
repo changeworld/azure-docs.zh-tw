@@ -9,12 +9,12 @@ ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: 4806fa51be859bd1bdc2a2abd5410f8aa8f4a32b
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 948a4ae8c329d69e404ef8d0f609748b955b0ecc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757668"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078844"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教學課程 - 使用 Azure CLI 管理 Azure 磁碟
 
@@ -157,7 +157,7 @@ sudo -i blkid
 輸出會顯示磁碟機的 UUID，在此情況下為 `/dev/sdc1`。
 
 ```bash
-/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
+/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="xfs"
 ```
 
 > [!NOTE]
@@ -172,7 +172,7 @@ sudo nano /etc/fstab
 將類似下面的一行新增至 */etc/fstab* 檔案，並以您自己的值取代 UUID 值。
 
 ```bash
-UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  ext4    defaults,nofail   1  2
+UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  xfs    defaults,nofail   1  2
 ```
 
 當您完成檔案的編輯時，請使用 `Ctrl+O` 來寫入檔案，並使用 `Ctrl+X` 來結束編輯器。

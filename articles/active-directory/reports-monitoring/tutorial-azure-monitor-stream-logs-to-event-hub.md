@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eba44252672248b983d7f6e0c843f638e5f73447
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4cf35b2c15c0d85c93e69ef4e3b6c76932cbd75d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74007644"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229373"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>教學課程：將 Azure Active Directory 記錄串流到 Azure 事件中樞
 
@@ -35,7 +35,7 @@ ms.locfileid: "74007644"
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以[註冊免費試用](https://azure.microsoft.com/free/)。
 * Azure AD 租用戶。
 * 使用者，身分是該 Azure AD 租用戶的「全域管理員」  或「安全性管理員」  。
-* Azure 訂用帳戶中的事件中樞命名空間和事件中樞。 了解如何[建立事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)。
+* Azure 訂用帳戶中的事件中樞命名空間和事件中樞。 了解如何[建立事件中樞](../../event-hubs/event-hubs-create.md)。
 
 ## <a name="stream-logs-to-an-event-hub"></a>將記錄串流至事件中樞
 
@@ -79,19 +79,19 @@ ms.locfileid: "74007644"
     
     * **ArcSight**：如需如何將 Azure AD 記錄與 Splunk 整合在一起的詳細資訊，請參閱[使用 Azure 監視器將 Azure Active Directory 記錄與 ArcSight 整合](howto-integrate-activity-logs-with-arcsight.md)。
     
-    * **Splunk**：如需如何將 Azure AD 記錄與 Splunk 整合在一起的詳細資訊，請參閱[如何使用 Azure 監視器將 Azure AD 記錄與 Splunk 整合在一起](tutorial-integrate-activity-logs-with-splunk.md)。
+    * **Splunk**：如需如何將 Azure AD 記錄與 Splunk 整合在一起的詳細資訊，請參閱[如何使用 Azure 監視器將 Azure AD 記錄與 Splunk 整合在一起](./howto-integrate-activity-logs-with-splunk.md)。
     
     * **IBM QRadar**：DSM 與 Azure 事件中樞通訊協定均可在 [IBM 支援](https://www.ibm.com/support)中下載取得。 如需有關與 Azure 整合的詳細資訊，請移至 [IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0) 網站。
     
     * **Sumo Logic**：若要將 Sumo Logic 設定為從事件中樞取用資料，請參閱[安裝 Azure AD 應用程式及檢視儀表板](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)。 
 
-* **設定自訂工具**。 如果 Azure 監視器診斷尚未支援您目前的 SIEM，可以使用事件中樞 API 來設定自訂工具。 若要深入了解，請參閱[開始從事件中樞接收訊息](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph)。
+* **設定自訂工具**。 如果 Azure 監視器診斷尚未支援您目前的 SIEM，可以使用事件中樞 API 來設定自訂工具。 若要深入了解，請參閱[開始從事件中樞接收訊息](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure 監視器將 Azure Active Directory 記錄與 ArcSight 整合](howto-integrate-activity-logs-with-arcsight.md)
-* [使用 Azure 監視器將 Azure AD 記錄與 Splunk 整合](tutorial-integrate-activity-logs-with-splunk.md)
+* [使用 Azure 監視器將 Azure AD 記錄與 Splunk 整合](./howto-integrate-activity-logs-with-splunk.md)
 * [使用 Azure 監視器將 Azure AD 記錄與 SumoLogic 整合](howto-integrate-activity-logs-with-sumologic.md)
 * [解譯 Azure 監視器中的稽核記錄結構描述](reference-azure-monitor-audit-log-schema.md)
 * [解譯 Azure 監視器中的登入記錄結構描述](reference-azure-monitor-sign-ins-log-schema.md)
