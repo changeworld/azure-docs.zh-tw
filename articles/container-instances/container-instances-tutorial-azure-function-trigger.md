@@ -3,13 +3,13 @@ title: 教學課程 - 依 Azure 函式觸發容器群組
 description: 建立 HTTP 觸發的無伺服器 PowerShell 函式來自動建立 Azure 容器執行個體
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.custom: ''
-ms.openlocfilehash: 298cf1452e514ede540e23d4e64f6dd1059cceab
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ec4b2273f6be6ea4aabed2b660e0b7553f861d0d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259739"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072038"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>教學課程：使用 HTTP 觸發的 Azure 函式來建立容器群組
 

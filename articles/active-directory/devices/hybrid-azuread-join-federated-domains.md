@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cf30324371043d8b702d3e22ec3ecd98e114ba6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 3a37353615e35cd75c126c268de71d10077a9071
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428592"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268429"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教學課程：設定適用於同盟網域的混合式 Azure Active Directory Join
 
@@ -88,7 +88,7 @@ ms.locfileid: "87428592"
 
 如果組織需要透過輸出 Proxy 存取網際網路，Microsoft 建議[實作 Web Proxy 自動探索 (WPAD)](/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) \(英文\)，讓 Windows 10 電腦能向 Azure AD 進行裝置註冊。 如果您在設定和管理 WPAD 方面遇到問題，請參閱[針對自動偵測進行疑難排解](/previous-versions/tn-archive/cc302643(v=technet.10))。 
 
-如果您未使用 WPAD 且想要在電腦上設定 Proxy 設定，您可以從 Windows 10 1709 開始執行操作。 如需詳細資訊，請參閱[使用群組原則物件 (GPO) 設定 WinHTTP 設定](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/) \(英文\)。
+如果您未使用 WPAD 且想要在電腦上設定 Proxy 設定，您可以從 Windows 10 1709 開始執行操作。 如需詳細資訊，請參閱[使用群組原則物件 (GPO) 設定 WinHTTP 設定](/archive/blogs/netgeeks/winhttp-proxy-settings-deployed-by-gpo) \(英文\)。
 
 > [!NOTE]
 > 如果您使用 WinHTTP 設定在電腦上設定 Proxy 設定，則任何無法連線到所設定 Proxy 的電腦將無法連線到網際網路。
@@ -193,7 +193,7 @@ ms.locfileid: "87428592"
 ### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
 1. 使用[直接連結](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)移至裝置頁面。
-2. 如需如何找出裝置的資訊，請參閱[如何使用 Azure 入口網站管理裝置身分識別](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)。
+2. 如需如何找出裝置的資訊，請參閱[如何使用 Azure 入口網站管理裝置身分識別](./device-management-azure-portal.md)。
 3. 如果**已註冊**資料行顯示為**擱置**，表示混合式 Azure AD Join 尚未完成。 在同盟環境中，只有在無法註冊，而且 AAD connect 已設定為同步裝置時，才會發生這種情況。
 4. 如果**已註冊**資料行包含**日期/時間**，表示混合式 Azure AD Join 已完成。
 
@@ -243,7 +243,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 如果您為已加入網域的 Windows 裝置完成混合式 Azure AD Join 時遇到問題，請參閱：
 
-- [使用 dsregcmd 命令針對裝置進行疑難排解](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [使用 dsregcmd 命令針對裝置進行疑難排解](./troubleshoot-device-dsregcmd.md)
 - [針對現行 Windows 裝置的混合式 Azure AD Join 進行疑難排解](troubleshoot-hybrid-join-windows-current.md)
 - [針對舊版 Windows 裝置的混合式 Azure AD Join 進行疑難排解](troubleshoot-hybrid-join-windows-legacy.md)
 

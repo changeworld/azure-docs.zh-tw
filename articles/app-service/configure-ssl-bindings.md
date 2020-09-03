@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: fb62d4d2ca22b6043e63645006c2d60cf0b7859b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 6c3f4cfe7c896b317edc5897098a1c18c98dc826
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078626"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962633"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱
 
-本文說明如何藉由建立憑證繫結，在您的 [App Service 應用程式](https://docs.microsoft.com/azure/app-service/)或[函式應用程式](https://docs.microsoft.com/azure/azure-functions/)中保護[自訂網域](app-service-web-tutorial-custom-domain.md)。 完成此作業後，您將可在自訂 DNS 名稱的 `https://` 端點存取您的 App Service 應用程式 (例如 `https://www.contoso.com`)。 
+本文說明如何藉由建立憑證繫結，在您的 [App Service 應用程式](./index.yml)或[函式應用程式](../azure-functions/index.yml)中保護[自訂網域](app-service-web-tutorial-custom-domain.md)。 完成此作業後，您將可在自訂 DNS 名稱的 `https://` 端點存取您的 App Service 應用程式 (例如 `https://www.contoso.com`)。 
 
 ![Web 應用程式與自訂 TLS/SSL 憑證](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "88078626"
 
 若要遵循本操作說明指南：
 
-- [建立 App Service 應用程式](/azure/app-service/)
+- [建立 App Service 應用程式](./index.yml)
 - [將網域名稱對應至您的應用程式](app-service-web-tutorial-custom-domain.md)或[在 Azure 中購買並設定它](manage-custom-dns-buy-domain.md)
 - [將私人憑證新增至您的應用程式](configure-ssl-certificate.md)
 
@@ -168,4 +168,4 @@ ms.locfileid: "88078626"
 ## <a name="more-resources"></a>其他資源
 
 * [在 Azure App Service 的程式碼中使用 TLS/SSL 憑證](configure-ssl-certificate-in-code.md)
-* [常見問題集：App Service 憑證](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [常見問題集：App Service 憑證](./faq-configuration-and-management.md)

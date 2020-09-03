@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 4608e8b818fcb75d91d7daf5278ba1dd30c9d667
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 36a90dee086a0ada705a0c067f3ad9d717542d52
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555879"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077512"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datasite"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Datasite 整合
 
@@ -42,6 +42,9 @@ ms.locfileid: "88555879"
 * Datasite 支援 **SP** 起始的 SSO
 
 * 設定 Datasite 之後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+
+> [!NOTE]
+> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
 
 ## <a name="adding-datasite-from-the-gallery"></a>從資源庫新增 Datasite
 
@@ -80,12 +83,9 @@ ms.locfileid: "88555879"
 
 1. 在 [基本 SAML 組態] 區段上，輸入下列欄位的值：
 
-    在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://auth.<ENVIRONMENT>.com/sp/ACS.saml2`
+    在 [登入 URL] 文字方塊中，輸入 URL：`https://auth.datasite.com/sp/ACS.saml2`
 
-    > [!NOTE]
-    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Datasite 客戶支援小組](mailto:service@datasite.com)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
-
-1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/certificatebase64.png)
 

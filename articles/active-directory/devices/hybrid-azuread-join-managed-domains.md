@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4f30202b08328854296b45e0279fc51b25b0a7c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 56b0685dee518399ae8328ddac18f03e82918a38
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428458"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268412"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教學課程：設定適用於受控網域的混合式 Azure Active Directory Join
 
@@ -73,9 +73,9 @@ ms.locfileid: "87428458"
 > [!WARNING]
 > 如果您的組織使用的 Proxy 伺服器會在防止資料遺失或 Azure AD 租用戶限制等案例中攔截 SSL 流量，請確認已從 TLS 中斷和檢查 (TLS break-and-inspect) 中排除 'https://device.login.microsoftonline.com ' 的流量。 無法排除 'https://device.login.microsoftonline.com ' 可能會造成用戶端憑證驗證的干擾，進而產生裝置註冊和裝置型條件式存取的問題。
 
-如果組織需要透過輸出 Proxy 來存取網際網路，您可以使用[實作 Web Proxy 自動探索 (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) \(英文\)，讓 Windows 10 電腦能向 Azure AD 進行裝置註冊。 若要解決 WPAD 的設定和管理問題，請參閱[針對自動偵測進行疑難排解](/previous-versions/tn-archive/cc302643(v=technet.10))。 在 1709 更新之前的 Windows 10 裝置中，WPAD 是唯一可用來將 Proxy 設定為使用混合式 Azure AD 聯結的選項。 
+如果組織需要透過輸出 Proxy 來存取網際網路，您可以使用[實作 Web Proxy 自動探索 (WPAD)](/previous-versions/tn-archive/cc995261(v=technet.10)) \(英文\)，讓 Windows 10 電腦能向 Azure AD 進行裝置註冊。 若要解決 WPAD 的設定和管理問題，請參閱[針對自動偵測進行疑難排解](/previous-versions/tn-archive/cc302643(v=technet.10))。 在 1709 更新之前的 Windows 10 裝置中，WPAD 是唯一可用來將 Proxy 設定為使用混合式 Azure AD 聯結的選項。 
 
-如果您未使用 WPAD，則從 Windows 10 1709 開始，您可以在電腦上設定 WinHTTP Proxy 設定。 如需詳細資訊，請參閱 [GPO 所部署的 WinHTTP Proxy 設定](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。
+如果您未使用 WPAD，則從 Windows 10 1709 開始，您可以在電腦上設定 WinHTTP Proxy 設定。 如需詳細資訊，請參閱 [GPO 所部署的 WinHTTP Proxy 設定](/archive/blogs/netgeeks/winhttp-proxy-settings-deployed-by-gpo)。
 
 > [!NOTE]
 > 如果您使用 WinHTTP 設定在電腦上設定 Proxy 設定，則任何無法連線到所設定 Proxy 的電腦將無法連線到網際網路。
@@ -174,7 +174,7 @@ ms.locfileid: "87428458"
 ### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
 1. 使用[直接連結](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)移至裝置頁面。
-2. 如需如何找出裝置的資訊，請參閱[如何使用 Azure 入口網站管理裝置身分識別](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)。
+2. 如需如何找出裝置的資訊，請參閱[如何使用 Azure 入口網站管理裝置身分識別](./device-management-azure-portal.md)。
 3. 如果**已註冊**資料行顯示為**擱置**，表示混合式 Azure AD Join 尚未完成。
 4. 如果**已註冊**資料行包含**日期/時間**，表示混合式 Azure AD Join 已完成。
 
@@ -224,7 +224,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 如果您在為已加入網域的 Windows 裝置完成混合式 Azure AD Join 時遇到問題，請參閱：
 
-- [使用 dsregcmd 命令針對裝置進行疑難排解](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [使用 dsregcmd 命令針對裝置進行疑難排解](./troubleshoot-device-dsregcmd.md)
 - [針對已進行混合式 Azure Active Directory Join 的裝置進行疑難排解](troubleshoot-hybrid-join-windows-current.md)
 - [針對已加入混合式 Azure Active Directory 的下層裝置進行疑難排解](troubleshoot-hybrid-join-windows-legacy.md)
 
