@@ -3,20 +3,20 @@ title: 教學課程 - 使用 Azure 流量管理員設定子網路流量路由
 description: 本教學課程說明如何設定流量管理員，以將流量從使用者子網路路由傳送到特定端點。
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
-ms.author: rohink
-ms.openlocfilehash: 49e0bce6eea8fac32f49bb905c225e898e709af0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.author: duau
+ms.openlocfilehash: 5c6551e721a4bf197ea7091b8c0b71829693ba76
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77136292"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398285"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>教學課程：使用流量管理員根據使用者子網路將流量導向特定端點
 

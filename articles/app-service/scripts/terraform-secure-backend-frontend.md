@@ -8,21 +8,21 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 238cd5e79fe749052206cfdf25d576f88f1020e8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 76591b9f397bd84e5afac19a56dd2c6467f4650f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065432"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962225"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>建立兩個以私人端點和 VNet 整合安全連線的 Web 應用程式
 
-本文以範例說明如何使用下列步驟，透過[私人端點](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)和區域 [VNet 整合](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)來安全地連結兩個 Web 應用程式 (前端和後端)：
+本文以範例說明如何使用下列步驟，透過[私人端點](../networking/private-endpoint.md)和區域 [VNet 整合](../web-sites-integrate-with-vnet.md)來安全地連結兩個 Web 應用程式 (前端和後端)：
 - 部署 VNet
 - 建立用於整合的第一個子網路
 - 建立用於私人端點的第二個子網路，您必須設定特定參數來停用網路原則
 - 部署一個 PremiumV2 類型的 App Service 方案 (私人端點功能需要最低 SKU)
-- 建立具有特定應用程式設定的前端 Web 應用程式，以取用私人 DNS 區域，[更多詳細資料](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#azure-dns-private-zones)
+- 建立具有特定應用程式設定的前端 Web 應用程式，以取用私人 DNS 區域，[更多詳細資料](../web-sites-integrate-with-vnet.md#azure-dns-private-zones)
 - 將前端 Web 應用程式連線到整合子網路
 - 建立後端 Web 應用程式
 - 使用 Web 應用程式的私人連結區域名稱 privatelink.azurewebsites.net 建立 DNS 私人區域
@@ -31,7 +31,7 @@ ms.locfileid: "88065432"
 
 ## <a name="how-to-use-terraform-in-azure"></a>如何在 Azure 中使用 Terraform
 
-瀏覽至 [Azure 文件](https://docs.microsoft.com/azure/developer/terraform/)，以了解如何搭配使用 Terraform 與 Azure。
+瀏覽至 [Azure 文件](/azure/developer/terraform/)，以了解如何搭配使用 Terraform 與 Azure。
 
 ## <a name="the-complete-terraform-file"></a>完整的 Terraform 檔案
 
@@ -149,4 +149,4 @@ resource "azurerm_private_endpoint" "privateendpoint" {
 ## <a name="next-steps"></a>後續步驟
 
 
-> [深入了解如何使用 Azure 中的 Terraform](https://docs.microsoft.com/azure/developer/terraform/)
+> [深入了解如何使用 Azure 中的 Terraform](/azure/developer/terraform/)

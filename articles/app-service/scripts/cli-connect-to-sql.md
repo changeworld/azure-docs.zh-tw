@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 297ef15cbf2b8e261d38dabe3a91cb26f3b449d2
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 5bdb09acf9adeaf0165512b144de0348ad4df743
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250735"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959661"
 ---
 # <a name="connect-an-app-service-app-to-sql-database-using-cli"></a>使用 CLI 將 App Service 應用程式連線至 SQL Database
 
@@ -48,6 +48,6 @@ ms.locfileid: "85250735"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
 您可以在 [Azure App Service 文件](../samples-cli.md)中找到其他的 App Service CLI 指令碼範例。

@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 911282e71491c86fefa86d342e916cdff4fa8c9b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d2afcc19c5c2e67321ec24847dc9a6f0129eec8e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80058657"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962310"
 ---
 # <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>使用 CLI 將 App Service 應用程式連線至 Cosmos DB
 
@@ -47,6 +47,6 @@ ms.locfileid: "80058657"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
 您可以在 [Azure App Service 文件](../samples-cli.md)中找到其他的 App Service CLI 指令碼範例。

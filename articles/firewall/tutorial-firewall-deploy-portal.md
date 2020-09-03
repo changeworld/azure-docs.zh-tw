@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8b4d58163c28e00c30c5b0f9db3a6ff259fbf5ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d6f72231e84650a17850932979b43c21dd045f30
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536915"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069318"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站部署和設定 Azure 防火牆
 
@@ -47,6 +47,8 @@ ms.locfileid: "86536915"
 > * 測試防火牆
 
 您可以使用 [Azure PowerShell](deploy-ps.md) 完成本教學課程。
+
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -118,7 +120,7 @@ ms.locfileid: "86536915"
 8. 確定您已選取 [Test-FW-VN] 作為虛擬網路，而且子網路是 [Workload-SN]。
 9. 在 [公用 IP] 中，選取 [無]。
 11. 接受其他預設值，然後選取 [下一步：管理]。
-12. 選取 [關閉] 來停用開機診斷。 接受其他預設值，然後選取 [檢閱 + 建立]。
+12. 選取 [關閉]  來停用開機診斷。 接受其他預設值，然後選取 [檢閱 + 建立]。
 13. 檢閱摘要頁面上的設定，然後選取 [建立]。
 
 ## <a name="deploy-the-firewall"></a>部署防火牆

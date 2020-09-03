@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 04/23/2020
+ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 81574f25e2132a7079fa0242284fb67b0132a8af
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e1094befcc6b3a6e9d56ba3b603dc45fcb91ba13
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119322"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825489"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>教學課程：使用部署指令碼建立自我簽署憑證 (預覽)
 
@@ -42,7 +42,7 @@ ms.locfileid: "86119322"
 
 * **[Visual Studio Cod](https://code.visualstudio.com/) 搭配 Resource Manager Tools 擴充功能**。 請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](./quickstart-create-templates-use-visual-studio-code.md)。
 
-* **使用者指派的受控識別，且在訂用帳戶層級上具有參與者角色**。 此身分識別會用來執行部署指令碼。 若要建立身分識別，請參閱[使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)。 您在部署範本時將需要身分識別的識別碼。 此身分識別的格式為：
+* **使用者指派的受控識別，且在訂用帳戶層級上具有參與者角色**。 此身分識別會用來執行部署指令碼。 若要建立身分識別，請參閱[使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 您在部署範本時將需要身分識別的識別碼。 此身分識別的格式為：
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>

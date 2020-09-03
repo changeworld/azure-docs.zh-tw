@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: d9d8694c8ac81352ab36f3d610f02f3751090b27
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 368a87d1054e4a5ad12fa1e8c78bcde39f76ee63
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120587"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959403"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>教學課程：在 Azure App Service 中使用 PostgreSQL 部署 Django Web 應用程式
 
@@ -121,7 +121,7 @@ djangoapp 範例包含資料驅動的 Django 投票應用程式，您可以依�
 ## <a name="create-postgres-database-in-azure"></a>在 Azure 中建立 Postgres 資料庫
 
 <!-- > [!NOTE]
-> Before you create an Azure Database for PostgreSQL server, check which [compute generation](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) is available in your region. -->
+> Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. -->
 
 安裝適用於 Azure CLI 的 `db-up` 延伸模組：
 

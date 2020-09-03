@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: 106427a6b26386e6ff881862f836e9108a27aa96
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c34cf47a5b8c20c10b160ac6e55309b3c18448f3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88081930"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959012"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>教學課程：使用 Azure 監視器針對 App Service 應用程式進行疑難排解
 
@@ -18,9 +18,9 @@ ms.locfileid: "88081930"
 > Azure 監視器與 App Service 的整合目前處於[預覽](https://aka.ms/appsvcblog-azmon)狀態。
 >
 
-本教學課程說明如何使用 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview) 對 [App Service](overview.md) 應用程式進行疑難排解。 範例應用程式包含用來耗盡記憶體並造成 HTTP 500 錯誤的程式碼，因此您可使用 Azure 監視器來診斷和修正問題。 完成後，將會有一個範例應用程式在 Linux 上與 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)整合的 App Service 上執行。
+本教學課程說明如何使用 [Azure 監視器](../azure-monitor/overview.md) 對 [App Service](overview.md) 應用程式進行疑難排解。 範例應用程式包含用來耗盡記憶體並造成 HTTP 500 錯誤的程式碼，因此您可使用 Azure 監視器來診斷和修正問題。 完成後，將會有一個範例應用程式在 Linux 上與 [Azure 監視器](../azure-monitor/overview.md)整合的 App Service 上執行。
 
-[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)可藉由提供全方位的解決方案，以便收集、分析及處理來自雲端和內部部署環境的遙測資料，進而將應用程式與服務的可用性和效能最大化。
+[Azure 監視器](../azure-monitor/overview.md)可藉由提供全方位的解決方案，以便收集、分析及處理來自雲端和內部部署環境的遙測資料，進而將應用程式與服務的可用性和效能最大化。
 
 在本教學課程中，您會了解如何：
 
@@ -38,7 +38,7 @@ ms.locfileid: "88081930"
 若要完成此課程，您會需要：
 
 - [Azure 訂用帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Azure CLI](/cli/azure/install-azure-cli)
 - [Git](https://git-scm.com/)
 
 ## <a name="create-azure-resources"></a>建立 Azure 資源
@@ -73,12 +73,12 @@ az monitor log-analytics workspace create --resource-group myResourceGroup --wor
 
 ### <a name="create-a-diagnostic-setting"></a>建立診斷設定
 
-診斷設定可用來將特定 Azure 服務的計量收集到 Azure 監視器記錄中，以便使用記錄查詢進行其他監視資料的分析。 在本教學課程中，您會啟用 Web 伺服器和標準輸出/錯誤記錄。 如需記錄類型和描述的完整清單，請參閱[支援的記錄類型](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types)。
+診斷設定可用來將特定 Azure 服務的計量收集到 Azure 監視器記錄中，以便使用記錄查詢進行其他監視資料的分析。 在本教學課程中，您會啟用 Web 伺服器和標準輸出/錯誤記錄。 如需記錄類型和描述的完整清單，請參閱[支援的記錄類型](./troubleshoot-diagnostic-logs.md#supported-log-types)。
 
 您會執行下列命令，以建立 AppServiceConsoleLogs (標準輸出/錯誤) 和 AppServiceHTTPLogs (Web 伺服器記錄) 的診斷設定。 以您自己的值取代 _\<app-name>_ 和 _\<workspace-name>_ 。 
 
 > [!NOTE]
-> 前兩個命令 (`resourceID` 和 `workspaceID`) 是 `az monitor diagnostic-settings create` 命令中所要使用的變數。 如需此命令的詳細資訊，請參閱[使用 Azure CLI 建立診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-using-azure-cli)。
+> 前兩個命令 (`resourceID` 和 `workspaceID`) 是 `az monitor diagnostic-settings create` 命令中所要使用的變數。 如需此命令的詳細資訊，請參閱[使用 Azure CLI 建立診斷設定](../azure-monitor/platform/diagnostic-settings.md#create-using-azure-cli)。
 >
 
 ```bash
@@ -129,7 +129,7 @@ az monitor diagnostic-settings create --resource $resourceID \
 
 ### <a name="log-queries"></a>記錄查詢
 
-記錄查詢可協助您充分利用 Azure 監視器記錄中收集的資料值。 您可以使用記錄查詢來識別 AppServiceHTTPLogs 和 AppServiceConsoleLogs 中的記錄。 如需記錄查詢的詳細資訊，請參閱[記錄查詢概觀](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
+記錄查詢可協助您充分利用 Azure 監視器記錄中收集的資料值。 您可以使用記錄查詢來識別 AppServiceHTTPLogs 和 AppServiceConsoleLogs 中的記錄。 如需記錄查詢的詳細資訊，請參閱[記錄查詢概觀](../azure-monitor/log-query/log-query-overview.md)。
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>使用記錄查詢來檢視 AppServiceHTTPLogs
 

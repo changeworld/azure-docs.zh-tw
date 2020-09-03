@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b6164ef955ac92a7ef8776e560ea4d3a92abaf8d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290685"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935971"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>教學課程：診斷、修復及認可技能集的變更
 
@@ -39,7 +39,7 @@ ms.locfileid: "87290685"
 
 * [下載包含 19 個檔案的範例資料](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19)。
 
-* [建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)，或[尋找現有帳戶](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。 
+* [建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)，或[尋找現有帳戶](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。 
 
    選擇與 Azure 認知搜尋相同的區域，以避免產生頻寬費用。
    
@@ -258,5 +258,5 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [深入了解技能集](https://docs.microsoft.com/azure/search/cognitive-search-working-with-skillsets)
-> [深入了解增量擴充和快取](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual)
+> [深入了解技能集](./cognitive-search-working-with-skillsets.md)
+> [深入了解增量擴充和快取](./cognitive-search-incremental-indexing-conceptual.md)
