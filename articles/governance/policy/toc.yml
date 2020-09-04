@@ -93,6 +93,9 @@
     - name: 評估新原則的影響
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: 建議的原則
+      displayName: 'VMs, virtual machines'
+      href: ./concepts/recommended-policies.md
     - name: 法規合規性
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md
