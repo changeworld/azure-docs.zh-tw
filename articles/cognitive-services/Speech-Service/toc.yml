@@ -241,11 +241,8 @@
   items:
     - name: 意圖辨識文件
       href: index-intent-recognition.yml
-    - name: 快速入門
-      items:
-        - name: 辨識語音、意圖和實體
-          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
-          href: quickstarts/intent-recognition.md
+    - name: 意圖辨識快速入門
+      href: quickstarts/intent-recognition.md
     - name: 操作指南
       items:
         - name: 以 LUIS 辨識語音意圖 (C#)
@@ -466,18 +463,14 @@
           href: custom-keyword-basics.md
 - name: 說話者辨識
   items:
-    - name: 概觀
-      items:
-        - name: 什麼是說話者辨識？
-          href: speaker-recognition-overview.md
-        - name: 說話者辨識基本概念
-          href: speaker-recognition-basics.md
+    - name: 說話者辨識概觀
+      href: speaker-recognition-overview.md
+    - name: 說話者辨識快速入門
+      href: get-started-speaker-recognition.md
     - name: 參考
       items:
-        - name: REST API
-          items:
-            - name: 說話者辨識 REST API
-              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+        - name: 說話者辨識 REST API
+          href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hosting
   items:
     - name: 裝載文件

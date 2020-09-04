@@ -17,12 +17,16 @@
               href: ./lead-management-for-cloud-marketplace.md
             - name: 在商業市集中交易
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
+            - name: 方案和定價
+              href: plans-pricing.md
             - name: 私人供應項目
               href: ./private-offers.md
             - name: 標準合約
               href: ./standard-contract.md
             - name: Azure 合作夥伴客戶使用狀況屬性
               href: ./azure-partner-customer-usage-attribution.md
+            - name: 支援的國家/區域
+              href: ./sell-from-countries.md
         - name: 依供應項目類型的發行指南
           href: ./publisher-guide-by-offer-type.md
           items:
@@ -32,8 +36,6 @@
               href: ./marketplace-solution-templates.md
             - name: Azure 應用程式受控應用程式
               href: ./marketplace-managed-apps.md
-            - name: SaaS 應用程式
-              href: ./marketplace-saas-applications-technical-publishing-guide.md
             - name: 容器
               href: ./marketplace-containers.md
             - name: IoT Edge 模組
@@ -131,7 +133,7 @@
                       href: ./partner-center-portal/common-sas-uri-issues.md
         - name: 諮詢服務
           items:
-            - name: 必要條件
+            - name: Prerequisites
               href: ./partner-center-portal/consulting-service-prerequisites.md
             - name: 建立諮詢服務供應項目
               href: ./partner-center-portal/create-consulting-service-offer.md
@@ -165,10 +167,8 @@
               href: ./partner-center-portal/create-power-bi-app-offer.md
         - name: SaaS 供應項目
           items:
-            - name: SaaS 供應項目建立檢查清單
-              href: ./partner-center-portal/offer-creation-checklist.md
-            - name: 建立 SaaS 供應項目
-              href: ./partner-center-portal/create-new-saas-offer.md
+            - name: 計畫 SaaS 供應項目
+              href: plan-saas-offer.md
             - name: SaaS 的 Azure AD 驗證
               items:
                 - name: Azure AD 和 SaaS 概觀
@@ -177,6 +177,26 @@
                   href: ./azure-ad-transactable-saas-landing-page.md
                 - name: 免費或試用版供應項目的登陸頁面
                   href: ./azure-ad-free-or-trial-landing-page.md
+            - name: SaaS 計量帳單
+              href: ./partner-center-portal/saas-metered-billing.md
+            - name: 建立及發佈 SaaS 供應項目
+              items:
+                - name: 建立 SaaS 供應項目
+                  href: create-new-saas-offer.md
+                - name: 設定 SaaS 供應項目屬性
+                  href: create-new-saas-offer-properties.md
+                - name: 設定 SaaS 供應項目清單
+                  href: create-new-saas-offer-listing.md
+                - name: 新增預覽對象
+                  href: create-new-saas-offer-preview.md
+                - name: 新增技術詳細資訊
+                  href: create-new-saas-offer-technical.md
+                - name: 建立方案
+                  href: create-new-saas-offer-plans.md
+                - name: 測試及發佈 SaaS 供應項目
+                  href: test-publish-saas-offer.md
+            - name: 行銷您的 SaaS 供應項目
+              href: create-new-saas-offer-marketing.md
             - name: SaaS 履行 API
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -188,8 +208,6 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: SaaS 履行 API - 常見問題集
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
-            - name: SaaS 計量帳單
-              href: ./partner-center-portal/saas-metered-billing.md
         - name: 潛在客戶管理概觀
           href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
           items:
@@ -207,8 +225,6 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Marketplace 計量服務
           items:
-            - name: 異常偵測服務
-              href: ./partner-center-portal/anomaly-detection-service-for-metered-billing.md
             - name: 驗證策略
               href: ./partner-center-portal/marketplace-metering-service-authentication.md
             - name: Marketplace 計量服務 API
@@ -234,7 +250,7 @@
       href: review-publish-offer.md
     - name: 更新現有供應項目
       href: ./partner-center-portal/update-existing-offer.md
-    - name: 啟動權益
+    - name: 啟動管理 Marketplace 獎勵
       href: ./partner-center-portal/marketplace-rewards.md
     - name: 合作夥伴中心分析
       items:
@@ -276,7 +292,7 @@
       items:
         - name: 概觀
           href: ./cloud-partner-portal-api-overview.md
-        - name: 必要條件
+        - name: Prerequisites
           href: ./cloud-partner-portal-api-prerequisites.md
         - name: 考量
           href: ./cloud-partner-portal-api-considerations.md
@@ -304,3 +320,7 @@
           href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: 支援選項
       href: ./partner-center-portal/support.md
+    - name: 資源
+      items:
+        - name: 支援的 HTML 標籤
+          href: supported-html-tags.md

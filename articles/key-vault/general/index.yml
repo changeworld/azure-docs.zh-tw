@@ -11,12 +11,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 09/19/2019
-  ms.openlocfilehash: ada202a8683b64144f2adacc759b9461472e4a31
-  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+  ms.openlocfilehash: 080cf9d8b7816b28f299396de2fe147fc2f9b27e
+  ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/17/2020
-  ms.locfileid: "88262563"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89378877"
 landingContent:
 - title: 關於 Azure Key Vault
   linkLists:
@@ -54,14 +54,20 @@ landingContent:
       url: security-recommendations.md
     - text: 安全性基準
       url: security-baseline.md
+  - linkListType: how-to-guide
+    links:
+    - text: 驗證 Key Vault
+      url: authentication.md
+    - text: 指派存取原則 (CLI)
+      url: assign-access-policy-CLI.md
+    - text: 指派存取原則 (PowerShell)
+      url: assign-access-policy-powershell.md
+    - text: 指派存取原則 (入口網站)
+      url: assign-access-policy-portal.md
   - linkListType: tutorial
     links:
     - text: 使用 Private Link
       url: private-link-service.md
-    - text: 建立受控識別
-      url: managed-identity.md
-    - text: 使用存取原則
-      url: group-permissions-for-apps.md
 - title: 用戶端程式庫
   linkLists:
   - linkListType: reference

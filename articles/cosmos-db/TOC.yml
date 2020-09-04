@@ -661,6 +661,14 @@
               href: cassandra-secondary-index.md
         - name: 操作指南
           items:
+            - name: 遷移到 Cassandra API
+              items:
+                - name: 遷移 - 使用 Striim 將 Oracle DB 遷移至 Cassandra API
+                  href: cosmosdb-cassandra-api-migrate-data-striim.md
+                - name: 遷移 - 使用 Blitzz 將 Oracle DB 遷移至 Cassandra API
+                  href: oracle-migrate-cosmos-db-blitzz.md
+                - name: 遷移 - 使用 Blitzz 將 Apache Cassandra 遷移至 Cassandra API
+                  href: cassandra-migrate-cosmos-db-blitzz.md
             - name: 變更摘要
               href: cassandra-change-feed.md
             - name: 儲存和管理 Spring 資料
@@ -736,12 +744,9 @@
                       href: tutorial-develop-mongodb-nodejs-part6.md
                 - name: Node.js 和 React 應用程式
                   href: tutorial-develop-mongodb-react.md
-            - name: 2 - 遷移資料
-              displayName: import
-              href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-            - name: 3 - 查詢資料
+            - name: 2 - 查詢資料
               href: tutorial-query-mongodb.md
-            - name: 4 - 全域散發資料
+            - name: 3 - 全域散發資料
               href: tutorial-global-distribution-mongodb.md
         - name: 概念
           items:
@@ -753,10 +758,16 @@
               href: mongodb-api-faq.md
         - name: 操作指南
           items:
-            - name: 預先移轉指南
-              href: mongodb-pre-migration.md
-            - name: 後續移轉指南
-              href: mongodb-post-migration.md
+            - name: 遷移至 MongoDB API
+              items:
+                - name: 預先移轉指南
+                  href: mongodb-pre-migration.md
+                - name: 資料庫移轉服務 (上線)
+                  href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+                - name: 資料庫移轉服務 (上線)
+                  href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+                - name: 後續移轉指南
+                  href: mongodb-post-migration.md
             - name: 取得連接字串
               href: connect-mongodb-account.md
             - name: 使用 Studio 3T 連線
@@ -1235,12 +1246,6 @@
           href: cosmosdb-migrationchoices.md
         - name: 使用 Striim 遷移到 SQL API
           href: cosmosdb-sql-api-migrate-data-striim.md
-        - name: 使用 Striim 遷移到 Cassandra API
-          href: cosmosdb-cassandra-api-migrate-data-striim.md
-        - name: 遷移 - 使用 Blitzz 將 Oracle DB 遷移至 Cassandra API
-          href: oracle-migrate-cosmos-db-blitzz.md
-        - name: 遷移 - 使用 Blitzz 將 Apache Cassandra 遷移至 Cassandra API
-          href: cassandra-migrate-cosmos-db-blitzz.md
         - name: 將數百 TB 的資料遷移至 Azure Cosmos DB
           href: migrate-cosmosdb-data.md
         - name: 遷移一對多關聯式資料

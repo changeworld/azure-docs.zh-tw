@@ -59,6 +59,9 @@
           href: security-baseline.md
         - name: Azure Key Vault 的安全性建議
           href: security-recommendations.md
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
     - name: 通知 (預覽)
       items:
         - name: 使用 Azure 事件方格進行監視 (預覽)
@@ -83,13 +86,17 @@
       items:
         - name: 驗證 Key Vault
           href: authentication.md
-        - name: 使用 App Service 受控識別
-          href: managed-identity.md
-        - name: 使用存取控制原則
-          href: group-permissions-for-apps.md
-        - name: 使用 Azure 角色型存取控制 (預覽)
+        - name: 指派存取原則
+          items:
+            - name: CLI
+              href: assign-access-policy-cli.md
+            - name: PowerShell
+              href: assign-access-policy-powershell.md
+            - name: 入口網站
+              href: assign-access-policy-portal.md
+        - name: 使用 Azure RBAC 來管理金鑰、秘密和憑證的存取權 (預覽)
           href: rbac-guide.md
-        - name: 疑難排解存取問題
+        - name: 針對存取問題進行疑難排解
           href: troubleshooting-access-issues.md
     - name: 開發
       items:

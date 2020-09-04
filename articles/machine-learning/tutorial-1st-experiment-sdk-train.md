@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 ms.author: sgilley
 author: sdgilley
-ms.date: 02/10/2020
+ms.date: 08/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: be8f0c85f62779dec9231a9f44155d4608e88b52
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: fb380e4b71ba68daf694ab725c41be64f066805e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852696"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854937"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教學課程：定型第一個 ML 模型
 
@@ -43,21 +43,24 @@ ms.locfileid: "87852696"
 
 1. 開啟資料夾中的 **tutorial-1st-experiment-sdk-train.ipynb**，如[第一部分](tutorial-1st-experiment-sdk-setup.md#open)所說明。
 
-
-> [!Warning]
-> 請**不要**在 Jupyter 介面中建立新的 Notebook！ 筆記本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb 包含本教學課程**所需的所有程式碼和資料**。
+請**不要**在 Jupyter 介面中建立新的 Notebook！ 筆記本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb 包含本教學課程**所需的所有程式碼和資料**。
 
 ## <a name="connect-workspace-and-create-experiment"></a>連結工作區並建立實驗
 
-> [!Important]
-> 本文的其餘部分包含與您在 Notebook 中所見相同的內容。  
->
-> 如果您想要在執行程式碼時進行閱讀，請立即切換到 Jupyter Notebook。 
-> 若要在 Notebook 中執行單一程式碼資料格，請按一下程式碼資料格，然後按 **Shift+Enter**。 或者，從頂端工具列中選擇 [全部執行]，以執行整個 Notebook。
+<!-- nbstart https://raw.githubusercontent.com/Azure/MachineLearningNotebooks/master/tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb -->
 
-使用 `from_config().` 函式匯入 `Workspace` 類別，並從 `config.json` 檔案載入您的訂用帳戶資訊。根據預設，此功能會在目前的目錄中尋找 JSON 檔案，但您也可以使用 `from_config(path="your/file/path")` 指定路徑參數來指向檔案。 在雲端 Notebook 伺服器中，檔案會自動位於根目錄中。
+> [!TIP]
+> 「tutorial-1st-experiment-sdk-train.ipynb」的內容。 如果您想要在執行程式碼時進行閱讀，請立即切換到 Jupyter Notebook。 若要在 Notebook 中執行單一程式碼資料格，請按一下程式碼資料格，然後按 **Shift+Enter**。 或者，從頂端工具列中選擇 [全部執行]，以執行整個 Notebook。
 
-如果下列程式碼要求額外的驗證，只需在瀏覽器中貼上連結並輸入驗證權杖即可。
+
+使用 `from_config().` 函式匯入 `Workspace` 類別，並從 `config.json` 檔案載入您的訂用帳戶資訊。根據預設，此功能會在目前的目錄中尋找 JSON 檔案，但您也可以使用 `from_config(path="your/file/path")` 指定路徑參數來指向檔案。 如果您是在工作區的雲端 Notebook 伺服器上執行此 Notebook，則檔案會自動位於根目錄中。
+
+如果下列程式碼要求額外的驗證，只需在瀏覽器中貼上連結並輸入驗證權杖即可。 此外，如果您有多個租用戶連結到使用者，您將需要新增下列幾行：
+```
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+Additional details on authentication can be found here: https://aka.ms/aml-notebook-auth 
+```
 
 ```python
 from azureml.core import Workspace
@@ -105,16 +108,16 @@ alphas = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 for alpha in alphas:
     run = experiment.start_logging()
     run.log("alpha_value", alpha)
-
+    
     model = Ridge(alpha=alpha)
     model.fit(X=X_train, y=y_train)
     y_pred = model.predict(X=X_test)
     rmse = math.sqrt(mean_squared_error(y_true=y_test, y_pred=y_pred))
     run.log("rmse", rmse)
-
+    
     model_name = "model_alpha_" + str(alpha) + ".pkl"
     filename = "outputs/" + model_name
-
+    
     joblib.dump(value=model, filename=filename)
     run.upload_file(name=model_name, path_or_stream=filename)
     run.complete()
@@ -162,7 +165,7 @@ for run in experiment.get_runs():
     # each logged metric becomes a key in this returned dict
     run_rmse = run_metrics["rmse"]
     run_id = run_details["runId"]
-
+    
     if minimum_rmse is None:
         minimum_rmse = run_rmse
         minimum_rmse_runid = run_id
@@ -172,15 +175,15 @@ for run in experiment.get_runs():
             minimum_rmse_runid = run_id
 
 print("Best run_id: " + minimum_rmse_runid)
-print("Best run_id rmse: " + str(minimum_rmse))
+print("Best run_id rmse: " + str(minimum_rmse))    
 ```
-
 ```output
 Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
 Best run_id rmse: 57.234760283951765
 ```
 
 使用最佳執行識別碼搭配實驗物件的 `Run` 建構函式來提取個別執行。 然後呼叫 `get_file_names()`來查看可從此執行下載的所有檔案。 在此案例中，您在訓練期間只會為每個執行上傳一個檔案。
+
 
 ```python
 from azureml.core import Run
@@ -194,9 +197,11 @@ print(best_run.get_file_names())
 
 在執行物件上呼叫 `download()`，並指定要下載的模型檔案名稱。 根據預設，此函式會將項目下載至目前的目錄。
 
+
 ```python
 best_run.download_file(name="model_alpha_0.1.pkl")
 ```
+<!-- nbend -->
 
 ## <a name="clean-up-resources"></a>清除資源
 

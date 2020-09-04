@@ -39,6 +39,10 @@
       href: application-management-fundamentals.md
     - name: 應用程式管理常見案例
       href: common-scenarios.md
+    - name: 在您的租用戶中檢視應用程式
+      href: application-types.md
+    - name: 將使用者指派給應用程式
+      href: ways-users-get-assigned-to-applications.md
     - name: 規劃雲端應用程式整合
       items:
         - name: 開始使用應用程式整合
@@ -114,7 +118,7 @@
           href: grant-admin-consent.md
         - name: 設定管理員同意工作流程 (預覽)
           href: configure-admin-consent-workflow.md
-        - name: 將使用者或群組指派給應用程式
+        - name: 為應用程式管理使用者指派
           href: assign-user-or-group-access-portal.md
         - name: 檢閱授與給應用程式的權限
           href: manage-application-permissions.md
@@ -124,8 +128,6 @@
           href: access-panel-manage-self-service-access.md
         - name: 將使用者存取權從應用程式移除的方法
           href: methods-for-removing-user-access.md
-        - name: 移除使用者或群組存取權
-          href: remove-user-or-group-access-portal.md
         - name: 隱藏來自使用者的應用程式
           href: hide-application-from-user-portal.md
         - name: 停用使用者登入
@@ -203,11 +205,7 @@
     - name: 疑難排解
       items:
         - name: 新增應用程式疑難排解
-          items:
-            - name: 常見問題 - 資源庫應用程式
-              href: adding-gallery-app-common-problems.md
-            - name: 常見問題 - 非資源庫應用程式
-              href: adding-non-gallery-app-common-problems.md
+          href: troubleshoot-adding-apps.md
         - name: 使用者登入疑難排解
           items:
             - name: 未預期的同意提示
@@ -234,12 +232,6 @@
               href: configure-federated-single-sign-on-gallery-applications-problems.md
             - name: 設定同盟常見問題 - 非資源庫應用程式
               href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-        - name: 應用程式清單和指派疑難排解
-          items:
-            - name: 管理租用戶應用程式清單
-              href: application-types.md
-            - name: 指派未預期的使用者
-              href: ways-users-get-assigned-to-applications.md
         - name: 針對內部部署應用程式進行疑難排解
           items:
             - name: 應用程式 Proxy 疑難排解
