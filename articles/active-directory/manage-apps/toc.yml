@@ -206,6 +206,10 @@
       items:
         - name: 新增應用程式疑難排解
           href: troubleshoot-adding-apps.md
+        - name: 針對密碼式單一登入進行疑難排解
+          href: troubleshoot-password-based-sso.md
+        - name: 針對 SAML 型單一登入進行疑難排解
+          href: troubleshoot-saml-based-sso.md
         - name: 使用者登入疑難排解
           items:
             - name: 未預期的同意提示
@@ -224,14 +228,6 @@
               href: application-sign-in-problem-federated-sso-gallery.md
             - name: 自訂開發應用程式問題
               href: application-sign-in-problem-custom-dev.md
-        - name: 單一登入疑難排解
-          items:
-            - name: 針對密碼式單一登入進行疑難排解
-              href: troubleshoot-password-based-sso.md
-            - name: 設定同盟常見問題 - 資源庫應用程式
-              href: configure-federated-single-sign-on-gallery-applications-problems.md
-            - name: 設定同盟常見問題 - 非資源庫應用程式
-              href: configure-federated-single-sign-on-non-gallery-applications-problems.md
         - name: 針對內部部署應用程式進行疑難排解
           items:
             - name: 應用程式 Proxy 疑難排解

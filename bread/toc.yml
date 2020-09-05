@@ -114,6 +114,16 @@
     - name: Synapse Analytics
       tocHref: /azure/synapse-analytics/
       topicHref: /azure/synapse-analytics/
+    - name: Azure Arc
+      tocHref: /azure/azure-arc/
+      topicHref: /azure/azure-arc/
+      items:
+        - name: 已啟用 Arc 的 Kubernetes
+          tocHref: /azure/azure-arc/kubernetes/
+          topicHref: /azure/azure-arc/kubernetes/
+        - name: 已啟用 Arc 的伺服器
+          tocHref: /azure/azure-arc/servers/
+          topicHref: /azure/azure-arc/servers/
     - name: 適用於 IoT 的 ASC
       tocHref: /azure/asc-for-iot/
       topicHref: /azure/asc-for-iot/
