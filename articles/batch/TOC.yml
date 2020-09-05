@@ -109,8 +109,6 @@
           href: credential-access-key-vault.md
         - name: 搭配 Batch 使用憑證
           href: batch-certificates.md
-    - name: 使用應用程式封裝
-      href: batch-application-packages.md
     - name: 將檔案和應用程式複製到集區節點
       items:
         - name: 將應用程式和資料複製到集區節點

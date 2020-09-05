@@ -229,7 +229,7 @@
     - name: 整備藍圖
       href: security-center-readiness-roadmap.md
     - name: Azure 安全性、隱私權和相容性部落格
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: Stack Overflow 上的 Azure 資訊安全中心
       href: 'https://stackoverflow.com/search?q=azure-security-center'
     - name: 影片

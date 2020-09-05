@@ -94,6 +94,6 @@
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Azure 安全性、隱私權和相容性部落格
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'

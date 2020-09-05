@@ -307,14 +307,6 @@
           href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: vCPU 配額
           href: quotas.md
-        - name: 保留執行個體
-          items:
-            - name: VM 預付
-              href: prepay-reserved-vm-instances.md
-            - name: 什麼是 Azure 保留？
-              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
-            - name: VM 執行個體大小彈性
-              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 基準測試分數
           href: compute-benchmark-scores.md
     - name: 背書發佈
