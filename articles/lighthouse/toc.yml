@@ -47,6 +47,9 @@
     - name: 檢視和管理客戶
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: 連結合作夥伴識別碼
+      displayName: 'partner earned credit, pec, mpn'
+      href: ./how-to/partner-earned-credit.md
     - name: 移除委派的存取權
       displayName: 'delete, undelegate'
       href: ./how-to/remove-delegation.md

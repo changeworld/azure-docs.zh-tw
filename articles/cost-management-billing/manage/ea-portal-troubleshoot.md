@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: d3199eb67e5672cd6f4a6d99219f184e7fbbdf6f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5402ee3283e5ae11f43884b4002486e8bdefae2c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687394"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294402"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>針對 Azure EA 入口網站存取進行疑難排解
 
@@ -32,7 +32,7 @@ ms.locfileid: "88687394"
 - 跨租用戶的公司或學校帳戶 - 適用於已設定 Active Directory 與雲端同盟，且在多個租用戶上有帳戶的組織。
 - 混合帳戶 - 可讓您使用 Microsoft 帳戶和/或使用公司或學校帳戶新增使用者。
 
-新增至註冊的第一個公司或學校帳戶會決定「預設」或「主要」網域。 若要以另一個租用戶新增公司或學校帳戶，您必須將註冊下的驗證層級變更為跨租用戶驗證。
+新增至註冊的第一個公司或學校帳戶會決定「預設」網域。 若要以另一個租用戶新增公司或學校帳戶，您必須將註冊下的驗證層級變更為跨租用戶驗證。
 
 若要更新驗證層級：
 

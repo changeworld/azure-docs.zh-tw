@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 217c564a6bdb340ec15262c1eaf54a75bbffc833
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b0435daee7f5bbd1435d5e69fc32f27c21e5e4a3
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585010"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300284"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用動態設定
 
@@ -53,13 +53,11 @@ ASP.NET Core 具有插入式設定系統，可從各種來源讀取設定資料�
 Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您的應用程式會監視 Sentinel 金鑰是否有變更。 偵測到變更時，您會重新整理所有設定值。 相較於監視所有金鑰的變更，此方法可減少您應用程式對應用程式組態所提出的要求總數。
 
 1. 在 Azure 入口網站中，選取 [組態總管] > [建立] > [金鑰/值]  。
-
 1. 針對 [金鑰]  ，請輸入 TestApp:Settings:Sentinel  。 針對 [值]  ，輸入 1。 請將 [標籤]  和 [內容類型]  保留空白。
-
 1. 選取 [套用]  。
 
-    > [!NOTE]
-    > 如果您並非使用 Sentinel 金鑰，將需要手動註冊想要監看的每個金鑰。
+> [!NOTE]
+> 如果您並非使用 Sentinel 金鑰，則需要手動註冊想要監看的每個金鑰。
 
 ## <a name="reload-data-from-app-configuration"></a>從應用程式設定重新載入資料
 
@@ -162,9 +160,8 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
     }
     ```
     ---
-
-    > [!TIP]
-    > 若要深入了解讀取組態值時的選項模式，請參閱  [ASP.NET Core 中的選項模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)。
+    > [!Tip]
+    > 若要深入了解讀取組態值時的選項模式，請參閱  [ASP.NET Core 中的選項模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)。
 
 4. 更新 `Configure` 方法以新增 `UseAzureAppConfiguration` 中介軟體，讓已註冊要重新整理的組態設定可以進行更新，同時讓 ASP.NET Core Web 應用程式繼續接收要求。
 
@@ -316,15 +313,15 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
 
 1. 若要使用 .NET Core CLI 來建置應用程式，請在命令殼層中執行下列命令：
 
-```console
+    ```console
         dotnet build
-```
+    ```
 
 1. 建置成功完成後，請執行下列命令以在本機執行 Web 應用程式：
 
-```console
+    ```console
         dotnet run
-```
+    ```
 
 1. 開啟瀏覽器視窗，然後移至 `dotnet run` 輸出中所顯示的 URL。
 

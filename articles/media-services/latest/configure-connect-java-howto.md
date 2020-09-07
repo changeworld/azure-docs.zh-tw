@@ -1,6 +1,6 @@
 ---
-title: 連接到 Azure 媒體服務 v3 API-JAVA
-description: 本文說明如何使用 JAVA 連接到 Azure 媒體服務 v3 API。
+title: 連線到 Azure 媒體服務 v3 API - Java
+description: 本文說明如何使用 Java 來連線到 Azure 媒體服務 v3 API。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -10,57 +10,57 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 08/31/2020
 ms.custom: devx-track-java
 ms.author: inhenkel
-ms.openlocfilehash: dc667a46d9802332d0f8c8dc673b28a9aeab96ea
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
-ms.translationtype: MT
+ms.openlocfilehash: 0f099a1b807cb860aaeda95a442cfdd7fd3c2869
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265621"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297377"
 ---
-# <a name="connect-to-media-services-v3-api---java"></a>連接至媒體服務 v3 API-JAVA
+# <a name="connect-to-media-services-v3-api---java"></a>連線到媒體服務 v3 API - Java
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-本文說明如何使用服務主體登入方法連接到 Azure 媒體服務 v3 JAVA SDK。
+本文說明如何使用服務主體登入方法來連線到 Azure 媒體服務 v3 Java SDK。
 
-在本文中，Visual Studio Code 是用來開發範例應用程式。
+在本文中，Visual Studio Code 用來開發範例應用程式。
 
 ## <a name="prerequisites"></a>先決條件
 
-- 遵循 [使用 Visual Studio Code 來撰寫 JAVA](https://code.visualstudio.com/docs/java/java-tutorial) 以安裝：
+- 請遵循[透過 Visual Studio Code 撰寫 Java](https://code.visualstudio.com/docs/java/java-tutorial) 以安裝：
 
    - JDK
    - Apache Maven
-   - JAVA 延伸模組套件
+   - Java 擴充套件
 - 請務必設定 `JAVA_HOME` 和 `PATH` 環境變數。
-- [建立媒體服務帳戶](./create-account-howto.md)。 請務必記住資源組名和媒體服務帳戶名稱。
-- 遵循「 [存取 api](./access-api-howto.md) 」主題中的步驟。 記錄訂用帳戶識別碼、應用程式識別碼 (用戶端識別碼) 、驗證金鑰 (秘密) ，以及您在後續步驟中需要的租使用者識別碼。
+- [建立媒體服務帳戶](./create-account-howto.md)。 請務必記住資源群組名稱和「媒體服務」帳戶名稱。
+- 請依照[存取 API](./access-api-howto.md) 主題中的步驟進行。 記錄訂用帳戶識別碼、應用程式識別碼 (用戶端識別碼)、驗證金鑰 (秘密)，以及您在稍後步驟中需要的租用戶識別碼。
 
-另請參閱：
+同時檢閱：
 
-- [Visual Studio Code 中的 JAVA](https://code.visualstudio.com/docs/languages/java)
-- [VS Code 中的 JAVA 專案管理](https://code.visualstudio.com/docs/java/java-project)
+- [Visual Studio Code 中的 Java](https://code.visualstudio.com/docs/languages/java)
+- [VS Code 中的 Java 專案管理](https://code.visualstudio.com/docs/java/java-project)
 
 > [!IMPORTANT]
-> 複習 [命名慣例](media-services-apis-overview.md#naming-conventions)。
+> 檢閱[命名慣例](media-services-apis-overview.md#naming-conventions)。
 
 ## <a name="create-a-maven-project"></a>建立 Maven 專案
 
-開啟命令列工具和您要在 `cd` 其中建立專案的目錄。
+開啟命令列工具並 `cd` 至您要在其中建立專案的目錄。
     
 ```
 mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
 
-當您執行命令時， `pom.xml` `App.java` 會建立、和其他檔案。 
+當您執行命令時，會建立 `pom.xml`、`App.java` 和其他檔案。 
 
 ## <a name="add-dependencies"></a>新增相依性
 
-1. 在 Visual Studio Code 中，開啟您的專案所在的資料夾
+1. 在 Visual Studio Code 中，開啟專案所在的資料夾
 1. 尋找並開啟 `pom.xml`
 1. 新增所需的相依性
 
@@ -82,9 +82,9 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
    </dependency>
     ```
 
-## <a name="connect-to-the-java-client"></a>連接至 JAVA 用戶端
+## <a name="connect-to-the-java-client"></a>連線到 Java 用戶端
 
-1. 開啟 `App.java` 下的檔案 `src\main\java\com\azure\ams` ，並確定您的套件已包含在頂端：
+1. 開啟 `src\main\java\com\azure\ams` 之下的 `App.java` 檔案，並確定您的套件包含在最上方：
 
     ```java
     package com.azure.ams;
@@ -97,7 +97,7 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-1. 若要建立您需要提出要求的 Active Directory 認證，請將下列程式碼新增至 App 類別的 main 方法，並設定您從 [存取 api](./access-api-howto.md)取得的值：
+1. 若要建立您提出要求所需的 Active Directory 認證，請將下列程式碼新增至 App 類別的 Main 方法並設定您從[存取 API](./access-api-howto.md) 取得的值：
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -126,11 +126,11 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
 
 - [媒體服務概念](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)
-- [JAVA 參考](https://aka.ms/ams-v3-java-ref)
-- [com.microsoft.azure.mediaservices.v2018_07_01： azure-管理-媒體](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar)
+- [Java 參考](https://aka.ms/ams-v3-java-ref)
+- [com.microsoft.azure.mediaservices.v2018_07_01:azure-mgmt-media](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar)
 
 ## <a name="next-steps"></a>後續步驟
 
 您現在可以包含 `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` 並開始操作實體。
 
-如需更多程式碼範例，請參閱 [JAVA SDK 範例](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) 存放庫。
+如需更多程式碼範例，請參閱 [Java SDK 範例](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/)存放庫。

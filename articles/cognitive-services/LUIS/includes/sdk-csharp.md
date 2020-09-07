@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 8/13/2020
+ms.date: 09/01/2020
 ms.topic: include
-ms.custom: include file
+ms.custom: include file, devx-track-dotnet, cog-serv-seo-aug-2020
 ms.author: diberry
-ms.openlocfilehash: d0ae5fa41d039be235ff0c9abb4facf95b1f3b2e
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: fff4e8c43263dfcc49be6cb6269078643118e8df
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246390"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89323065"
 ---
 使用適用於 .NET 的 Language Understanding (LUIS) 用戶端程式庫可以：
 * 建立應用程式
@@ -66,7 +66,6 @@ ms.locfileid: "88246390"
     ...
     ```
 
-
 ### <a name="install-the-nuget-libraries"></a>安裝 NuGet 程式庫
 
 在應用程式目錄中，使用下列命令安裝適用於 .NET 的 Language Understanding (LUIS) 用戶端程式庫：
@@ -79,6 +78,8 @@ dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime --ver
 ## <a name="authoring-object-model"></a>製作物件模型
 
 Language Understanding (LUIS) 撰寫用戶端是向 Azure 進行驗證的 [LUISAuthoringClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.luisauthoringclient?view=azure-dotnet)物件，其中包含您的撰寫金鑰。
+
+## <a name="code-examples-for-authoring"></a>可供撰寫的程式碼範例
 
 建立用戶端之後，請使用此用戶端來存取功能，包括：
 
@@ -94,6 +95,8 @@ Language Understanding (LUIS) 撰寫用戶端是向 Azure 進行驗證的 [LUISA
 
 Language Understanding (LUIS) 預測執行階段用戶端是向 Azure 進行驗證的 [LUISRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.luisruntimeclient?view=azure-dotnet)物件，其中包含您的資源金鑰。
 
+## <a name="code-examples-for-prediction-runtime"></a>預測執行階段的程式碼範例
+
 建立用戶端之後，請使用此用戶端來存取功能，包括：
 
 * [依預備或生產位置](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.predictionoperationsextensions.getslotpredictionasync?view=azure-dotnet)進行預測
@@ -104,9 +107,11 @@ Language Understanding (LUIS) 預測執行階段用戶端是向 Azure 進行驗�
 
 ## <a name="add-the-dependencies"></a>新增相依性
 
-1. 從專案目錄，在慣用的編輯器或 IDE 中開啟 *Program.cs* 檔案。 將現有的 `using` 程式碼取代為下列 `using` 指示詞：
+從專案目錄，在慣用的編輯器或 IDE 中開啟 *Program.cs* 檔案。 將現有的 `using` 程式碼取代為下列 `using` 指示詞：
 
-    [!code-csharp[Add NuGet libraries to code file](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=Dependencies)]
+[!code-csharp[Add NuGet libraries to code file](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=Dependencies)]
+
+## <a name="add-boilerplate-code"></a>新增未定案程式碼
 
 1. 將 `Main` 方法的簽章變更為允許非同步呼叫：
 
@@ -117,6 +122,8 @@ Language Understanding (LUIS) 預測執行階段用戶端是向 Azure 進行驗�
 1. 除非另有指定，否則請在 `Program` 類別的 `Main` 方法中新增其餘程式碼。
 
 ## <a name="create-variables-for-the-app"></a>為應用程式建立變數
+
+建立兩組變數：您可變更第一組，第二組則保留為其出現在程式碼範例中的樣子。 
 
 1. 建立變數來保存您的製作金鑰和資源名稱。
 
@@ -130,7 +137,7 @@ Language Understanding (LUIS) 預測執行階段用戶端是向 Azure 進行驗�
 
 使用您的金鑰建立 [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.apikeyserviceclientcredentials?view=azure-dotnet) 物件，並使用該物件與您的端點建立 [LUISAuthoringClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.luisauthoringclient?view=azure-dotnet) 物件。
 
-[!code-csharp[Create LUIS authoring client object](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringCreateClient)]
+[!code-csharp[Authenticate the client](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringCreateClient)]
 
 ## <a name="create-a-luis-app"></a>建立 LUIS 應用程式
 
@@ -147,7 +154,7 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 `intentName` 值已硬式編碼為 `OrderPizzaIntent`，作為 [為應用程式建立變數](#create-variables-for-the-app)區段中的一部分變數。
 
-[!code-csharp[Create intent](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AddIntent)]
+[!code-csharp[Create intent for the app](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AddIntent)]
 
 ## <a name="create-entities-for-the-app"></a>建立應用程式的實體
 
@@ -159,9 +166,9 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 實體建立程式碼會建立機器學習實體，其中包含套用至 `Quantity` 子實體的子實體和功能。
 
-:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="實體建立程式碼會建立機器學習實體，其中包含套用至 `Quantity` 子實體的子實體和功能。":::
+:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="入口網站中顯示所建立實體的部分螢幕擷取畫面，這是一個機器學習實體，其中包含套用至 `Quantity` 子實體的子實體和功能。":::
 
-[!code-csharp[Create entities](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddEntities)]
+[!code-csharp[Create entities for the app](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddEntities)]
 
 使用下列類別方法尋找數量子實體列的識別碼，以將功能指派給該子實體。
 
@@ -173,11 +180,11 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 藉由建立 [ExampleLabelObject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.examplelabelobject?view=azure-dotnet) 物件的清單來新增範例語句，每個範例語句各有一個物件。 每個範例都應以實體名稱和實體值的名稱/值配對字典來標示所有實體。 實體值應與範例語句的文字中所顯示的完全相同。
 
-:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="實體值應與範例語句的文字中所顯示的完全相同。":::
+:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="在入口網站中顯示標記範例語句的部分螢幕擷取畫面。":::
 
-使用應用程式識別碼、版本識別碼和範例呼叫 [Examples.AddAsync](https://docs.microsoft.com//dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.addasync?view=azure-dotnet)。 
+使用應用程式識別碼、版本識別碼和範例呼叫 [Examples.AddAsync](https://docs.microsoft.com//dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.addasync?view=azure-dotnet)。
 
-[!code-csharp[Add example utterance to a specific intent](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddLabeledExamples)]
+[!code-csharp[Add example utterance to intent](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddLabeledExamples)]
 
 ## <a name="train-the-app"></a>進行應用程式定型
 
@@ -187,9 +194,9 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 非常小的模型 (如本快速入門所示) 會非常快速地進行定型。 針對生產層級的應用程式，在為應用程式定型時，必須進行 [GetStatusAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.getstatusasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_TrainExtensions_GetStatusAsync_Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_ITrain_System_Guid_System_String_System_Threading_CancellationToken_) 方法的輪詢呼叫，以確認定型成功的時間或是否成功。 其回應是 [ModelTrainingInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.modeltraininginfo?view=azure-dotnet) 物件的清單，每個物件各有不同的狀態。 所有物件都必須成功，才會將定型視為完成。
 
-[!code-csharp[Train the app's version](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=TrainAppVersion)]
+[!code-csharp[Train the app](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=TrainAppVersion)]
 
-## <a name="publish-a-language-understanding-app"></a>發佈 Language Understanding 應用程式
+## <a name="publish-app-to-production-slot"></a>將應用程式發佈至生產位置
 
 使用 [PublishAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.publishasync?view=azure-dotnet) 方法發佈 LUIS 應用程式。 這會將目前的定型版本發佈至端點上的指定位置。 您的用戶端應用程式會使用此端點來傳送使用者語句，以進行意圖和實體擷取的預測。
 
@@ -201,7 +208,7 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 [!INCLUDE [Caution about using authoring key](caution-authoring-key.md)]
 
-[!code-csharp[Create LUIS runtime client object](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=PredictionCreateClient)]
+[!code-csharp[Authenticate the prediction runtime client](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=PredictionCreateClient)]
 
 
 ## <a name="get-prediction-from-runtime"></a>從執行階段取得預測
@@ -212,7 +219,7 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 **GetSlotPredictionAsync** 方法需要數個參數，例如應用程式識別碼、位置名稱，以及用來完成要求的預測要求物件。 其他選項 (例如詳細資訊、顯示所有意圖和記錄) 是選擇性的。
 
-[!code-csharp[Get prediction based on query](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=QueryPredictionEndpoint)]
+[!code-csharp[Get prediction from runtime](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=QueryPredictionEndpoint)]
 
 [!INCLUDE [Prediction JSON response](sdk-json.md)]
 

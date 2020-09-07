@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
-ms.date: 04/20/2020
-ms.openlocfilehash: 1869671b465b7175cf3160c41debc66cbd0818ad
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.date: 08/24/2020
+ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367099"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292974"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企業安全性概觀
 
@@ -59,7 +59,7 @@ Hadoop 系統管理員可以設定角色型存取控制 (RBAC)。 這些設定�
 
 若要符合組織安全性和合規性需求，保護資料就非常重要。 除了限制未經授權的員工存取資料之外，您還應該將資料加密。
 
-Azure 儲存體和 Azure Data Lake Storage Gen1/Gen2 都支援透明伺服器端的待用[資料加密](../../storage/common/storage-service-encryption.md)。 安全的 HDInsight 叢集會完美地與伺服器端待用資料加密配合運作。
+HDInsight 支援使用平台管理與[客戶管理金鑰](../disk-encryption.md)進行待用資料加密。 傳輸中資料加密會透過 TLS 和 IPSec 處理。 如需詳細資訊，請參閱 [Azure HDInsight 的傳輸中加密](encryption-in-transit.md)。
 
 ### <a name="compliance"></a>法規遵循
 
@@ -79,7 +79,7 @@ Azure 合規性供應項目是以各種類型的保證為基礎，包括正式�
 |  | 在儲存體帳戶上啟用 [[需要安全傳輸]](../../storage/common/storage-require-secure-transfer.md) 屬性。 | 客戶 |
 |  | 設定 [Azure 儲存體防火牆](../../storage/common/storage-network-security.md)和虛擬網路 | 客戶 |
 |  | 設定 Cosmos DB 和 [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 的 [Azure 虛擬網路服務端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) | 客戶 |
-|  | 確定已針對傳輸中的資料啟用 [TLS 加密](../../storage/common/storage-security-tls.md)。 | 客戶 |
+|  | 請確定已啟用[傳輸中加密](./encryption-in-transit.md)功能，以使用 TLS 和 IPSec 進行叢集內部通訊。 | 客戶 |
 |  | 設定[客戶管理的金鑰](../../storage/common/storage-encryption-keys-portal.md)以進行 Azure 儲存體加密 | 客戶 |
 |  | 使用[客戶加密箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)，利用 Azure 支援來控制對資料的存取 | 客戶 |
 | 應用程式和中介軟體安全性 | 與 AAD-DS 整合並[設定驗證](apache-domain-joined-configure-using-azure-adds.md) | 客戶 |

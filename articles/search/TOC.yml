@@ -114,6 +114,8 @@
         - name: Azure 原則的安全性控制
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: 保護索引子資源
+          href: search-indexer-securing-resources.md
 - name: 操作指南
   items:
     - name: 建立索引和建構
@@ -354,6 +356,14 @@
               href: search-security-trimming-for-azure-search.md
             - name: 使用者身分識別的篩選條件
               href: search-security-trimming-for-azure-search-with-aad.md
+        - name: 輸出安全性 (索引子)
+          items:
+            - name: 在 IP 範圍內存取
+              href: search-indexer-howto-access-ip-restricted.md
+            - name: 透過信任的服務例外狀況存取
+              href: search-indexer-howto-access-trusted-service-exception.md
+            - name: 透過私人端點存取
+              href: search-indexer-howto-access-private.md
     - name: 管理
       items:
         - name: 入口網站
@@ -392,14 +402,14 @@
       href: /azure/templates/microsoft.search/searchservices
     - name: REST
       items:
-        - name: 搜尋 2020-06-30
+        - name: 搜尋 API (穩定)
           href: /rest/api/searchservice
-        - name: 搜尋 2020-06-30-預覽
+        - name: 搜尋 API (預覽)
           href: /rest/api/searchservice/index-preview
-        - name: 管理 2020-03-13
+        - name: 管理 API (穩定)
           href: /rest/api/searchmanagement
-        - name: 管理 2019-10-01-預覽
-          href: /rest/api/searchmanagement/index-2019-10-01-preview
+        - name: 管理 API (預覽)
+          href: /rest/api/searchmanagement/index-preview
     - name: .NET
       items:
         - name: 搜尋 API

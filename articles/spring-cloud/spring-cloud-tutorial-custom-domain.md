@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: d6e4b77c6eba976de052295e4a0001924ad90644
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 05107d0246be2273c09e91573bd30a4108ac7795
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374196"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290322"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>將現有的自訂網域對應至 Azure Spring Cloud
 網域名稱服務 (DNS) 是一種在整個網路中儲存網路節點名稱的技術。 本教學課程會使用 CNAME 記錄來對應網域，例如 www.contoso.com。 其會使用憑證來保護自訂網域，並示範如何強制執行傳輸層安全性 (TLS)，也稱為安全通訊端層 (SSL)。 
@@ -20,7 +20,7 @@ ms.locfileid: "87374196"
 憑證會將網路流量加密。 這些 TLS/SSL 憑證可以儲存在 Azure Key Vault 中。 
 
 ## <a name="prerequisites"></a>Prerequisites
-* 部署至 Azure Spring Cloud 的應用程式 (請參閱[快速入門：使用 Azure 入口網站來啟動現有的 Azure Spring Cloud 應用程式](spring-cloud-quickstart-launch-app-portal.md)，或使用現有應用程式)。
+* 部署至 Azure Spring Cloud 的應用程式 (請參閱[快速入門：使用 Azure 入口網站來啟動現有的 Azure Spring Cloud 應用程式](spring-cloud-quickstart.md)，或使用現有應用程式)。
 * 網域名稱，其可存取網域提供者 (例如 GoDaddy) 的 DNS 登錄。
 * 來自第三方提供者的私人憑證 (也就是您的自我簽署憑證)。 此憑證必須符合網域。
 * [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)的已部署執行個體
@@ -145,7 +145,7 @@ az spring-cloud app custom-domain list --app <app name>
 1. 選取您的 [憑證] 或將其匯入。
 1. 按一下 [檔案] 。
 
-    ![新增 SSL 繫結](./media/custom-dns-tutorial/add-ssl-binding.png)
+    ![新增 SSL 繫結 1](./media/custom-dns-tutorial/add-ssl-binding.png)
 
 或者，您也可以使用 Azure CLI 來**新增 SSL 繫結**：
 ```
@@ -154,14 +154,14 @@ az spring-cloud app custom-domain update --domain-name <domain name> --certifica
 
 成功新增 SSL 繫結之後，網域狀態會是安全的：[良好]。 
 
-![新增 SSL 繫結](./media/custom-dns-tutorial/secured-domain-state.png)
+![新增 SSL 繫結 2](./media/custom-dns-tutorial/secured-domain-state.png)
 
 ## <a name="enforce-https"></a>強制使用 HTTPS
 根據預設，任何人仍然可使用 HTTP 存取您的應用程式，但您可以將所有 HTTP 要求重新導向至 HTTPS 連接埠。
 
 在應用程式頁面的左側導覽中，選取 [自訂網域]。 然後，將 [僅限 HTTPS] 設為 [True]。
 
-![新增 SSL 繫結](./media/custom-dns-tutorial/enforce-http.png)
+![新增 SSL 繫結 3](./media/custom-dns-tutorial/enforce-http.png)
 
 或者，您也可以使用 Azure CLI 來強制執行 HTTPS：
 ```

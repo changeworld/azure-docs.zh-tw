@@ -1,14 +1,14 @@
 ---
 title: 快速入門：在入口網站中建立藍圖
 description: 在本快速入門中，您將在 Azure 入口網站中使用 Azure 藍圖建立、定義和部署成品。
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: dfd0aeb22801776fc9effdf8d0418a9c9b6ab802
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a37c621e0a90a0748d3ddc3fda34612c54712ed9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045207"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051517"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>快速入門：在入口網站中定義和指派藍圖
 
@@ -61,7 +61,7 @@ ms.locfileid: "86045207"
 
    1. 將 [類型] 變更為 [內建]。 在 [搜尋] 中，輸入**標記**。
 
-   1. 按一下 [搜尋] 進行篩選。 選取 [將標籤即其預設值附加至資源群組]。
+   1. 將焦點變更到 [搜尋] 之外，以便進行篩選。 選取 [將標籤即其預設值附加至資源群組]。
 
    1. 選取 [新增] 以將此成品新增至藍圖。
 

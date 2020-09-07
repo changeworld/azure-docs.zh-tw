@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9277842339d7c4fa74e2e0f1febcf5916d86f4a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496041"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180774"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>什麼是 Azure Synapse Analytics (工作區預覽)？
 
@@ -24,7 +24,7 @@ ms.locfileid: "86496041"
 
 建立、設定、保護和維護這類解決方案相當不容易，因此會延遲智慧型深入解析的即時擷取。
 
-**Azure Synapse** 是一種整合式分析服務，可讓您在資料倉儲和巨量資料分析系統之間，更快地取得所有資料的深入解析，且不論資料規模為何。 此服務將企業資料倉儲中所用的 **SQL** 技術、巨量資料分析中所用的 **Spark** 技術，以及協調活動和資料移動的**管線**完美地結合在一起。
+**Azure Synapse** 是一種整合式分析服務，可讓您在資料倉儲和巨量資料分析系統之間，更快地取得所有資料的深入解析，且不論資料規模為何。 此服務將企業資料倉儲中所用的 **SQL** 技術、巨量資料分析中所用的 **Spark** 技術及**管線**完美地結合在一起，以便進行資料整合與 ETL/ELT。
 
 Azure Synapse 隨附 Web 原生的 **Studio** 使用者體驗，可提供管理、監視、編碼和安全性的單一體驗和模型。
 
@@ -59,13 +59,13 @@ Azure Synapse 移除了同時使用 SQL 和 Spark 的傳統技術障礙。 您�
 * SQL 和 Spark 可以直接探索和分析儲存在資料湖中的 Parquet、CSV、TSV 和 JSON 檔案。
 * 可快速調整 SQL 和 Spark 資料庫之間的資料載入和卸載
 
-### <a name="built-in-orchestration-via-pipelines"></a>透過管線進行的內建協調流程
+### <a name="built-in-data-integration-via-pipelines"></a>透過管線的內建資料整合
 
-Azure Synapse 內建與 Azure Data Factory 相同的資料整合引擎和體驗，可讓您建立豐富的資料管線，而不需要使用個別的協調流程引擎。
+Azure Synapse 內建與 Azure Data Factory 相同的資料整合引擎和體驗，可讓您建立豐富的大規模 ETL 管線，而不需離開 Synapse Analytics。
 
-* 在 Azure Synapse 與 90 個以上的內部部署資料來源之間移動資料
-* 可協調 Notebook、管線、Spark 作業、SQL 指令碼、預存程序
+* 從 90 個以上的資料來源內嵌資料
 * 搭配資料流程活動的無程式碼 ETL
+* 協調 Notebook、Spark 作業、預存程序、SQL 指令碼等等
 
 ### <a name="unified-management-monitoring-and-security"></a>統一的管理、監視和安全性
 

@@ -5,14 +5,14 @@ keywords: 應用程式服務, Azure 應用程式服務, 網域對應, 網域名�
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/13/2020
+ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 1496f46eb29831dfb858f061ccc00c9e3dbc2e75
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 4a2c65e2685dada6412adf8c8ad9c63f472b91e8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782306"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962276"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教學課程：將現有的自訂 DNS 名稱對應至 Azure App Service
 
@@ -33,7 +33,7 @@ ms.locfileid: "88782306"
 
 若要完成本教學課程：
 
-* [建立 App Service 應用程式](/azure/app-service/)，或使用您針對另一個教學課程建立的應用程式。
+* [建立 App Service 應用程式](./index.yml)，或使用您針對另一個教學課程建立的應用程式。
 * 購買網域名稱，並確定您擁有網域提供者 (例如 GoDaddy) 之 DNS 登錄的存取權。
 
   例如，若要為 `contoso.com` 和 `www.contoso.com` 新增 DNS 項目，您必須有權設定 `contoso.com` 根網域的 DNS 設定。
@@ -138,38 +138,34 @@ ms.locfileid: "88782306"
 
 #### <a name="enable-the-cname-record-mapping-in-azure"></a>在 Azure 中啟用 CNAME 記錄對應
 
-在 Azure 入口網站之應用程式分頁的左側導覽中，選取 [自訂網域]。
+1. 在 Azure 入口網站之應用程式分頁的左側導覽中，選取 [自訂網域]。
 
-![[自訂網域] 功能表](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![[自訂網域] 功能表](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-在應用程式的 [自訂網域] 分頁中，在清單中新增自訂的完整 DNS 名稱 (`www.contoso.com`)。
+1. 在應用程式的 [自訂網域] 分頁中，在清單中新增自訂的完整 DNS 名稱 (`www.contoso.com`)。
 
-選取 [新增自訂網域] 旁的 **+** 圖示。
+1. 選取 [新增自訂網域]。
 
-![新增主機名稱](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![新增主機名稱](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-輸入您新增 CNAME 記錄的完整網域名稱，例如 `www.contoso.com`。
+1. 輸入您新增 CNAME 記錄的完整網域名稱，例如 `www.contoso.com`。
 
-選取 [驗證]。
+1. 選取 [驗證]。 [新增自訂網域] 頁面隨即顯示。
 
-[新增自訂網域] 頁面隨即顯示。
+1. 確定 [主機名稱記錄類型] 已設定為 [CNAME (www\.example.com 或任何子網域)]。 選取 [新增自訂網域]。
 
-確定 [主機名稱記錄類型] 已設定為 [CNAME (www\.example.com 或任何子網域)]。
+    ![將 DNS 名稱新增至應用程式](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-選取 [新增自訂網域]。
+    可能需要一些時間，新的自訂網域才會反映在應用程式的 [自訂網域] 頁面中。 嘗試重新整理瀏覽器以更新資料。
 
-![將 DNS 名稱新增至應用程式](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+    ![CNAME 記錄已新增](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-可能需要一些時間，新的自訂網域才會反映在應用程式的 [自訂網域] 頁面中。 嘗試重新整理瀏覽器以更新資料。
+    > [!NOTE]
+    > 自訂網域的警告標籤表示其尚未繫結到 TLS/SSL 憑證，任何從瀏覽器傳送至您自訂網域的 HTTPS 要求將會收到錯誤或警告 (視瀏覽器而定)。 若要新增 TLS 繫結，請參閱[在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
 
-![CNAME 記錄已新增](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
+    如果稍早錯過某個步驟，或在某處打錯字，您在頁面底部會看到驗證錯誤。
 
-> [!NOTE]
-> 自訂網域的**不安全**標籤表示其尚未繫結到 TLS/SSL 憑證，任何從瀏覽器傳送至您自訂網域的 HTTPS 要求將會收到錯誤或警告 (視瀏覽器而定)。 若要新增 TLS 繫結，請參閱[在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
-
-如果稍早錯過某個步驟，或在某處打錯字，您在頁面底部會看到驗證錯誤。
-
-![驗證錯誤](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
+    ![驗證錯誤](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
 <a name="a" aria-hidden="true"></a>
 
@@ -223,33 +219,29 @@ ms.locfileid: "88782306"
 
 回到 Azure 入口網站中的應用程式 [自訂網域] 分頁，在清單中新增自訂的完整 DNS 名稱 (例如，`contoso.com`)。
 
-選取 [新增自訂網域] 旁的 **+** 圖示。
+1. 選取 [新增自訂網域]。
 
-![新增主機名稱](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![新增主機名稱](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-輸入您設定 A 記錄的完整網域名稱，例如 `contoso.com`。
+1. 輸入您設定 A 記錄的完整網域名稱，例如 `contoso.com`。 
 
-選取 [驗證]。
+1. 選取 [驗證]。 [新增自訂網域] 頁面隨即顯示。
 
-[新增自訂網域] 頁面隨即顯示。
+1. 請確定 [主機名稱記錄類型] 設為 [A 記錄 (example.com)]。 選取 [新增自訂網域]。
 
-請確定 [主機名稱記錄類型] 設為 [A 記錄 (example.com)]。
+    ![將 DNS 名稱新增至應用程式](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-選取 [新增自訂網域]。
+    可能需要一些時間，新的自訂網域才會反映在應用程式的 [自訂網域] 頁面中。 嘗試重新整理瀏覽器以更新資料。
 
-![將 DNS 名稱新增至應用程式](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
+    ![A 記錄已新增](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
-可能需要一些時間，新的自訂網域才會反映在應用程式的 [自訂網域] 頁面中。 嘗試重新整理瀏覽器以更新資料。
-
-![A 記錄已新增](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
-
-> [!NOTE]
-> 自訂網域的**不安全**標籤表示其尚未繫結到 TLS/SSL 憑證，任何從瀏覽器傳送至您自訂網域的 HTTPS 要求將會收到錯誤或警告 (視瀏覽器而定)。 若要新增 TLS 繫結，請參閱[在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
-
-如果稍早錯過某個步驟，或在某處打錯字，您在頁面底部會看到驗證錯誤。
-
-![驗證錯誤](./media/app-service-web-tutorial-custom-domain/verification-error.png)
-
+    > [!NOTE]
+    > 自訂網域的警告標籤表示其尚未繫結到 TLS/SSL 憑證，任何從瀏覽器傳送至您自訂網域的 HTTPS 要求將會收到錯誤或警告 (視瀏覽器而定)。 若要新增 TLS 繫結，請參閱[在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
+    
+    如果稍早錯過某個步驟，或在某處打錯字，您在頁面底部會看到驗證錯誤。
+    
+    ![驗證錯誤](./media/app-service-web-tutorial-custom-domain/verification-error.png)
+    
 <a name="wildcard" aria-hidden="true"></a>
 
 ### <a name="map-a-wildcard-domain"></a>對應萬用字元網域
@@ -279,33 +271,31 @@ ms.locfileid: "88782306"
 
 您現在可以將符合萬用字元名稱的任何子網域新增至應用程式 (例如，`sub1.contoso.com`、`sub2.contoso.com` 和 `*.contoso.com` 均符合 `*.contoso.com`)。
 
-在 Azure 入口網站之應用程式分頁的左側導覽中，選取 [自訂網域]。
+1. 在 Azure 入口網站之應用程式分頁的左側導覽中，選取 [自訂網域]。
 
-![[自訂網域] 功能表](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![[自訂網域] 功能表](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-選取 [新增自訂網域] 旁的 **+** 圖示。
+1. 選取 [新增自訂網域]。
 
-![新增主機名稱](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![新增主機名稱](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-輸入符合萬用字元網域的完整網域名稱 (例如，`sub1.contoso.com`)，然後選取 [驗證]。
+1. 輸入符合萬用字元網域的完整網域名稱 (例如，`sub1.contoso.com`)，然後選取 [驗證]。
 
-[新增自訂網域] 按鈕會啟用。
+    [新增自訂網域] 按鈕會啟用。
 
-確定 [主機名稱記錄類型] 已設定為 [CNAME 記錄 (www\.example.com 或任何子網域)]。
+1. 確定 [主機名稱記錄類型] 已設定為 [CNAME 記錄 (www\.example.com 或任何子網域)]。 選取 [新增自訂網域]。
 
-選取 [新增自訂網域]。
+    ![將 DNS 名稱新增至應用程式](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-![將 DNS 名稱新增至應用程式](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
+    可能需要一些時間，新的自訂網域才會反映在應用程式的 [自訂網域] 頁面中。 嘗試重新整理瀏覽器以更新資料。
 
-可能需要一些時間，新的自訂網域才會反映在應用程式的 [自訂網域] 頁面中。 嘗試重新整理瀏覽器以更新資料。
+1. 再次選取 **+** 圖示，以新增另一個與萬用字元網域相符的自訂網域。 例如，新增 `sub2.contoso.com`。
 
-再次選取 **+** 圖示，以新增另一個與萬用字元網域相符的自訂網域。 例如，新增 `sub2.contoso.com`。
+    ![CNAME 記錄已新增](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard-2.png)
 
-![CNAME 記錄已新增](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
-
-> [!NOTE]
-> 自訂網域的**不安全**標籤表示其尚未繫結到 TLS/SSL 憑證，任何從瀏覽器傳送至您自訂網域的 HTTPS 要求將會收到錯誤或警告 (視瀏覽器而定)。 若要新增 TLS 繫結，請參閱[在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
-
+    > [!NOTE]
+    > 自訂網域的警告標籤表示其尚未繫結到 TLS/SSL 憑證，任何從瀏覽器傳送至您自訂網域的 HTTPS 要求將會收到錯誤或警告 (視瀏覽器而定)。 若要新增 TLS 繫結，請參閱[在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
+    
 ## <a name="test-in-browser"></a>在瀏覽器中測試
 
 瀏覽至您稍早設定的 DNS 名稱 (`contoso.com`、`www.contoso.com`、`sub1.contoso.com` 和 `sub2.contoso.com`)。

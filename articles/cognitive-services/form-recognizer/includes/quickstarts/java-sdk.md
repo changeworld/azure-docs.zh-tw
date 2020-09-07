@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 7ddf72fdf49bf8fede369b67b639d13b6230e9f4
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 30c486ccb7bf3b7d537cd1ed3475a8dadc5b4f6d
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88864943"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89324060"
 ---
 > [!IMPORTANT]
 > * 表單辨識器 SDK 目前鎖定的目標是表單辨識器服務 2.0 版。
@@ -29,19 +29,13 @@ ms.locfileid: "88864943"
 * 包含一組訓練資料的 Azure 儲存體 Blob。 請參閱[為自訂模型建置訓練資料集](../../build-training-data-set.md) (機器翻譯)，以獲得產生訓練資料集的提示和選項。 在本快速入門中，您可以使用[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)中 **Train** 資料夾底下的檔案。
 * 最新版的 [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle 建置工具](https://gradle.org/install/)，或其他相依性管理員。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="建立表單辨識器資源"  target="_blank">建立表單辨識器資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至表單辨識器 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
 ## <a name="setting-up"></a>設定
 
-### <a name="create-a-form-recognizer-azure-resource"></a>建立表單辨識器 Azure 資源
-
-[!INCLUDE [create resource](../create-resource.md)]
-
-### <a name="create-environment-variables"></a>建立環境變數
-
-[!INCLUDE [environment-variables](../environment-variables.md)]
-
 ### <a name="create-a-new-gradle-project"></a>建立新的 Gradle 專案
-
 
 在主控台視窗 (例如 cmd、PowerShell 或 Bash) 中，為您的應用程式建立新的目錄，並瀏覽至該目錄。 
 
@@ -57,49 +51,88 @@ gradle init --type basic
 
 出現選擇 **DSL** 的提示時，請選取 [Kotlin]。
 
-建立範例應用程式的資料夾。 從工作目錄執行下列命令：
+從工作目錄執行下列命令：
 
 ```console
 mkdir -p src/main/java
-```
-
-巡覽至新的資料夾，並建立名為 formrecognizer-quickstart.java 的檔案。 在您慣用的編輯器或 IDE 中開啟該檔案，並新增下列 `import` 陳述式：
-
-```java
-import Azure.AI.FormRecognizer;
-import Azure.AI.FormRecognizer.Models;
-
-import java.util.concurrent.atomic.AtomicReference;
-import com.azure.core.http.rest.PagedIterable;
-import com.azure.core.util.Context;
-```
-
-在應用程式的 `main` 方法中，為資源的 Azure 端點和金鑰建立變數。 如果您在啟動應用程式後才建立環境變數，則必須關閉編輯器、IDE 或殼層，再重新開啟，才能存取該變數。 您會在稍後定義方法。
-
-
-```java
-public static void main(String[] args)
-{
-    String key = System.getenv("FORM_RECOGNIZER_KEY");
-    String endpoint = System.getenv("FORM_RECOGNIZER_ENDPOINT");
-}
 ```
 
 ### <a name="install-the-client-library"></a>安裝用戶端程式庫
 
 本快速入門會使用 Gradle 相依性管理員。 您可以在 [Maven 中央存放庫](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)中找到用戶端程式庫和其他相依性管理員的資訊。
 
-在專案的 build.gradle.kts 檔案中，請務必將用戶端程式庫納入為 `implementation` 陳述式。 
+在專案的 build.gradle.kts 檔案中，將用戶端程式庫納入為 `implementation` 陳述式，以及必要的外掛程式和設定。
 
 ```kotlin
+plugins {
+    java
+    application
+}
+application {
+    mainClass.set("FormRecognizer")
+}
+repositories {
+    mavenCentral()
+}
 dependencies {
-    implementation group: 'com.azure', name: 'azure-ai-formrecognizer', version: '3.0.0'
+    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
 }
 ```
 
-<!-- 
-    Object model tbd
--->
+瀏覽至新的 **src/main/java** 資料夾，並建立名為 Management.java的檔案。 在您慣用的編輯器或 IDE 中開啟該檔案，並新增下列 `import` 陳述式：
+
+```java
+import com.azure.ai.formrecognizer.*;
+import com.azure.ai.formrecognizer.training.*;
+import com.azure.ai.formrecognizer.models.*;
+import com.azure.ai.formrecognizer.training.models.*;
+
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.List;
+import java.util.Map;
+import java.time.LocalDate;
+
+import com.azure.core.credential.AzureKeyCredential;
+import com.azure.core.http.rest.PagedIterable;
+import com.azure.core.util.Context;
+import com.azure.core.util.polling.SyncPoller;
+```
+
+新增類別和 `main` 方法，以及為資源的 Azure 端點和金鑰建立變數。 如果您在啟動應用程式後才建立環境變數，則必須關閉編輯器、IDE 或殼層，再重新開啟，才能存取該變數。 您會在稍後定義方法。
+
+
+```java
+public class FormRecognizer {
+    public static void main(String[] args)
+    {
+        String key = "<replace-with-your-form-recognizer-key>";
+        String endpoint = "<replace-with-your-form-recognizer-endpoint>";
+    }
+}
+```
+
+## <a name="object-model"></a>物件模型 
+
+透過表單辨識器，您可以建立兩種不同的用戶端類型。 第一個是 `FormRecognizerClient`，可用來查詢服務，以辨識出表單欄位和內容。 第二個是 `FormTrainingClient`，可用來建立和管理自訂模型，以供您改善辨識效果。 
+
+### <a name="formrecognizerclient"></a>FormRecognizerClient
+
+`FormRecognizerClient` 會提供用於下列目的的作業：
+
+- 使用已定型的自訂模型辨識表單欄位和內容，以辨識自訂表單。  這些值會在 `RecognizedForm` 物件的集合中傳回。 請參閱[分析自訂表單](#analyze-forms-with-a-custom-model)範例。
+- 辨識表單內容，包括資料表、線條和字組，而不需要將模型定型。  表單內容會在 `FormPage` 物件的集合中傳回。 請參閱[辨識表單內容](#recognize-form-content)範例。
+- 使用表單辨識器服務上已預先定型的收據模型，辨識美國收據的常見欄位。  這些欄位和中繼資料會在 `RecognizedForm` 物件的集合中傳回。 請參閱[辨識收據](#recognize-receipts)範例。
+
+### <a name="formtrainingclient"></a>FormTrainingClient
+
+`FormTrainingClient` 會提供用於下列目的的作業：
+
+- 將自訂模型定型，以辨識在自訂表單中找到的所有欄位和值。  傳回的 `CustomFormModel` 會指出模型將辨識的表單類型，以及其會針對每個表單類型來擷取的欄位。
+- 將自訂模型定型，藉由為自訂表單加上標籤來辨識您指定的特定欄位和值。  傳回的 `CustomFormModel` 會指出模型將會擷取的欄位，以及每個欄位的預估正確性。
+- 管理在您的帳戶中建立的模型。
+- 將自訂模型從一個表單辨識器資源複製到另一個。
+
+請注意，您也可以使用圖形化使用者介面 (例如[表單辨識器標籤工具](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)) 來將模型定型。
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -116,20 +149,29 @@ dependencies {
 
 在您的 `Main` 方法中新增下列程式碼。 在此，您將使用在上方定義的訂用帳戶變數來驗證兩個用戶端物件。 您會使用 **AzureKeyCredential** 物件，這樣當您有需要時，不必建立新的用戶端物件就能更新 API 金鑰。
 
+> [!IMPORTANT]
+> 從 Azure 入口網站取得您的金鑰和端點。 如果您在 [必要條件] 區段中建立的表單辨識器資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 
+>
+> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 例如，[Azure金鑰保存庫](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
+
 ```java
-FormRecognizerClient recognizerClient = new FormRecognizerClientBuilder()
-    .credential(new AzureKeyCredential("{key}"))
-    .endpoint("{endpoint}")
+    FormRecognizerClient recognizerClient = new FormRecognizerClientBuilder()
+    .credential(new AzureKeyCredential(key))
+    .endpoint(endpoint)
     .buildClient();
     
-FormTrainingClient trainingClient = recognizerClient.getFormTrainingClient();
+    FormTrainingClient trainingClient = new FormTrainingClientBuilder()
+    .credential(new AzureKeyCredential(key))
+    .endpoint(endpoint)
+    .buildClient();
 ```
 
 ### <a name="call-client-specific-methods"></a>呼叫用戶端專用方法
 
 下一個程式碼區塊會使用用戶端物件，針對表單辨識器 SDK 中每個主要工作來呼叫方法。 您稍後將會定義這些方法。
 
-您也需要為訓練和測試資料新增 URL 的參考。 
+您也需要為訓練和測試資料新增 URL 的參考。
+
 * 若要為您的自訂模型訓練資料擷取 SAS URL，請開啟 Microsoft Azure 儲存體總管、以滑鼠右鍵按一下您的容器，然後選取 [取得共用存取簽章]。 確定 [讀取] 和 [列出] 權限均已勾選，再按一下 [建立]。 然後，複製 [URL] 區段的值。 其格式應該為：`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
 * 若要取得要測試的表單 URL，您可以使用上述步驟來取得 Blob 儲存體中個別文件的 SAS URL， 或使用位於他處的文件 URL。
 * 也請使用上述方法取得收據影像的 URL。
@@ -151,13 +193,13 @@ FormTrainingClient trainingClient = recognizerClient.getFormTrainingClient();
     AnalyzeReceipt(recognizerClient, receiptUrl);
 
     System.out.println("Train Model with training data...");
-    modelId = TrainModel(trainingClient, trainingDataUrl);
+    String modelId = TrainModel(trainingClient, trainingDataUrl);
 
     System.out.println("Analyze PDF form...");
     AnalyzePdfForm(recognizerClient, modelId, formUrl);
 
     System.out.println("Manage models...");
-    ManageModels(trainingClient, trainingDataUrl) ;
+    ManageModels(trainingClient, trainingDataUrl);
 ```
 
 
@@ -172,7 +214,7 @@ private static void GetContent(
     FormRecognizerClient recognizerClient, String invoiceUri)
 {
     String analyzeFilePath = invoiceUri;
-    SyncPoller<OperationResult, List<FormPage>> recognizeContentPoller =
+    SyncPoller<FormRecognizerOperationResult, List<FormPage>> recognizeContentPoller =
         recognizerClient.beginRecognizeContentFromUrl(analyzeFilePath);
     
     List<FormPage> contentResult = recognizeContentPoller.getFinalResult();
@@ -199,6 +241,25 @@ private static void GetContent(
 }
 ```
 
+### <a name="output"></a>輸出
+
+```console
+Get form content...
+----Recognizing content ----
+Has width: 8.500000 and height: 11.000000, measured with unit: inch.
+Table has 2 rows and 6 columns.
+Cell has text Invoice Number.
+Cell has text Invoice Date.
+Cell has text Invoice Due Date.
+Cell has text Charges.
+Cell has text VAT ID.
+Cell has text 458176.
+Cell has text 3/28/2018.
+Cell has text 4/16/2018.
+Cell has text $89,024.34.
+Cell has text ET.
+```
+
 ## <a name="recognize-receipts"></a>辨識收據
 
 本節示範如何使用預先訓練的收據模型，辨識並擷取美國收據中的常見欄位。
@@ -209,40 +270,40 @@ private static void GetContent(
 private static void AnalyzeReceipt(
     FormRecognizerClient recognizerClient, String receiptUri)
 {
-    SyncPoller<OperationResult, List<RecognizedReceipt>> syncPoller =
-        formRecognizerClient.beginRecognizeReceiptsFromUrl(receiptUri);
-    List<RecognizedReceipt> receiptPageResults = syncPoller.getFinalResult();
+    SyncPoller<FormRecognizerOperationResult, List<RecognizedForm>> syncPoller =
+    recognizerClient.beginRecognizeReceiptsFromUrl(receiptUri);
+    List<RecognizedForm> receiptPageResults = syncPoller.getFinalResult();
 ```
 
 下一個程式碼區塊會逐一查看收據，並將其詳細資料列印至主控台。
 
 ```java
     for (int i = 0; i < receiptPageResults.size(); i++) {
-        RecognizedReceipt recognizedReceipt = receiptPageResults.get(i);
-        Map<String, FormField> recognizedFields = recognizedReceipt.getRecognizedForm().getFields();
+        RecognizedForm recognizedForm = receiptPageResults.get(i);
+        Map<String, FormField> recognizedFields = recognizedForm.getFields();
         System.out.printf("----------- Recognized Receipt page %d -----------%n", i);
         FormField merchantNameField = recognizedFields.get("MerchantName");
         if (merchantNameField != null) {
-            if (merchantNameField.getFieldValue().getType() == FieldValueType.STRING) {
+            if (FieldValueType.STRING == merchantNameField.getValue().getValueType()) {
+                String merchantName = merchantNameField.getValue().asString();
                 System.out.printf("Merchant Name: %s, confidence: %.2f%n",
-                    merchantNameField.getFieldValue().asString(),
-                    merchantNameField.getConfidence());
+                    merchantName, merchantNameField.getConfidence());
             }
         }
         FormField merchantAddressField = recognizedFields.get("MerchantAddress");
         if (merchantAddressField != null) {
-            if (merchantAddressField.getFieldValue().getType() == FieldValueType.STRING) {
+            if (FieldValueType.STRING == merchantAddressField.getValue().getValueType()) {
+                String merchantAddress = merchantAddressField.getValue().asString();
                 System.out.printf("Merchant Address: %s, confidence: %.2f%n",
-                    merchantAddressField.getFieldValue().asString(),
-                    merchantAddressField.getConfidence());
+                    merchantAddress, merchantAddressField.getConfidence());
             }
         }
         FormField transactionDateField = recognizedFields.get("TransactionDate");
         if (transactionDateField != null) {
-            if (transactionDateField.getFieldValue().getType() == FieldValueType.DATE) {
+            if (FieldValueType.DATE == transactionDateField.getValue().getValueType()) {
+                LocalDate transactionDate = transactionDateField.getValue().asDate();
                 System.out.printf("Transaction Date: %s, confidence: %.2f%n",
-                    transactionDateField.getFieldValue().asDate(),
-                    transactionDateField.getConfidence());
+                    transactionDate, transactionDateField.getConfidence());
             }
         }
 ```
@@ -252,45 +313,62 @@ private static void AnalyzeReceipt(
         FormField receiptItemsField = recognizedFields.get("Items");
         if (receiptItemsField != null) {
             System.out.printf("Receipt Items: %n");
-            if (receiptItemsField.getFieldValue().getType() == FieldValueType.LIST) {
-                List<FormField> receiptItems = receiptItemsField.getFieldValue().asList();
-                receiptItems.forEach(receiptItem -> {
-                    if (receiptItem.getFieldValue().getType() == FieldValueType.MAP) {
-                        receiptItem.getFieldValue().asMap().forEach((key, formField) -> {
-                            if (key.equals("Name")) {
-                                if (formField.getFieldValue().getType() == FieldValueType.STRING) {
-                                    System.out.printf("Name: %s, confidence: %.2fs%n",
-                                        formField.getFieldValue().asString(),
-                                        formField.getConfidence());
-                                }
+            if (FieldValueType.LIST == receiptItemsField.getValue().getValueType()) {
+                List<FormField> receiptItems = receiptItemsField.getValue().asList();
+                receiptItems.stream()
+                    .filter(receiptItem -> FieldValueType.MAP == receiptItem.getValue().getValueType())
+                    .map(formField -> formField.getValue().asMap())
+                    .forEach(formFieldMap -> formFieldMap.forEach((key, formField) -> {
+                        if ("Name".equals(key)) {
+                            if (FieldValueType.STRING == formField.getValue().getValueType()) {
+                                String name = formField.getValue().asString();
+                                System.out.printf("Name: %s, confidence: %.2fs%n",
+                                    name, formField.getConfidence());
                             }
-                            if (key.equals("Quantity")) {
-                                if (formField.getFieldValue().getType() == FieldValueType.INTEGER) {
-                                    System.out.printf("Quantity: %d, confidence: %.2f%n",
-                                        formField.getFieldValue().asInteger(), formField.getConfidence());
-                                }
+                        }
+                        if ("Quantity".equals(key)) {
+                            if (FieldValueType.FLOAT == formField.getValue().getValueType()) {
+                                Float quantity = formField.getValue().asFloat();
+                                System.out.printf("Quantity: %f, confidence: %.2f%n",
+                                    quantity, formField.getConfidence());
                             }
-                            if (key.equals("Price")) {
-                                if (formField.getFieldValue().getType() == FieldValueType.FLOAT) {
-                                    System.out.printf("Price: %f, confidence: %.2f%n",
-                                        formField.getFieldValue().asFloat(),
-                                        formField.getConfidence());
-                                }
+                        }
+                        if ("Price".equals(key)) {
+                            if (FieldValueType.FLOAT == formField.getValue().getValueType()) {
+                                Float price = formField.getValue().asFloat();
+                                System.out.printf("Price: %f, confidence: %.2f%n",
+                                    price, formField.getConfidence());
                             }
-                            if (key.equals("TotalPrice")) {
-                                if (formField.getFieldValue().getType() == FieldValueType.FLOAT) {
-                                    System.out.printf("Total Price: %f, confidence: %.2f%n",
-                                        formField.getFieldValue().asFloat(),
-                                        formField.getConfidence());
-                                }
+                        }
+                        if ("TotalPrice".equals(key)) {
+                            if (FieldValueType.FLOAT == formField.getValue().getValueType()) {
+                                Float totalPrice = formField.getValue().asFloat();
+                                System.out.printf("Total Price: %f, confidence: %.2f%n",
+                                    totalPrice, formField.getConfidence());
                             }
-                        });
-                    }
-                });
+                        }
+                }));
             }
         }
     }
 }
+```
+
+### <a name="output"></a>輸出 
+
+```console
+Analyze receipt...
+----------- Recognized Receipt page 0 -----------
+Merchant Name: Contoso Contoso, confidence: 0.62
+Merchant Address: 123 Main Street Redmond, WA 98052, confidence: 0.99
+Transaction Date: 2020-06-10, confidence: 0.90
+Receipt Items:
+Name: Cappuccino, confidence: 0.96s
+Quantity: null, confidence: 0.957s]
+Total Price: 2.200000, confidence: 0.95
+Name: BACON & EGGS, confidence: 0.94s
+Quantity: null, confidence: 0.927s]
+Total Price: null, confidence: 0.93
 ```
 
 ## <a name="train-a-custom-model"></a>定型自訂模型
@@ -308,30 +386,30 @@ private static void AnalyzeReceipt(
 
 ```java
 private static String TrainModel(
-    FormRecognizerClient trainingClient, String trainingDataUrl)
+    FormTrainingClient trainingClient, String trainingDataUrl)
 {
-    String trainingSetSource = "{unlabeled_training_set_SAS_URL}";
-    SyncPoller<OperationResult, CustomFormModel> trainingPoller =
-        formTrainingClient.beginTraining(trainingSetSource, false);
+    SyncPoller<FormRecognizerOperationResult, CustomFormModel> trainingPoller =
+        trainingClient.beginTraining(trainingDataUrl, false);
     
     CustomFormModel customFormModel = trainingPoller.getFinalResult();
     
     // Model Info
     System.out.printf("Model Id: %s%n", customFormModel.getModelId());
     System.out.printf("Model Status: %s%n", customFormModel.getModelStatus());
-    System.out.printf("Model created on: %s%n", customFormModel.getCreatedOn());
-    System.out.printf("Model last updated: %s%n%n", customFormModel.getCompletedOn());
+    System.out.printf("Training started on: %s%n", customFormModel.getTrainingStartedOn());
+    System.out.printf("Training completed on: %s%n%n", customFormModel.getTrainingCompletedOn());
 ```
 傳回的 **CustomFormModel** 物件包含模型可辨識的表單類型資訊，及其可從每個表單類型中擷取的欄位。 下列程式碼區塊會將此資訊列印至主控台。
 
 ```java 
     System.out.println("Recognized Fields:");
-    // looping through the sub-models, which contains the fields they were trained on
+    // looping through the subModels, which contains the fields they were trained on
     // Since the given training documents are unlabeled, we still group them but they do not have a label.
-    customFormModel.getSubmodels().forEach(customFormSubModel -> {
+    customFormModel.getSubmodels().forEach(customFormSubmodel -> {
         // Since the training data is unlabeled, we are unable to return the accuracy of this model
-        customFormSubModel.getFieldMap().forEach((field, customFormModelField) ->
-            System.out.printf("Field: %s Field Label: %s%n",
+        System.out.printf("The subModel has form type %s%n", customFormSubmodel.getFormType());
+        customFormSubmodel.getFields().forEach((field, customFormModelField) ->
+            System.out.printf("The model found field '%s' with label: %s%n",
                 field, customFormModelField.getLabel()));
     });
 ```
@@ -343,42 +421,83 @@ private static String TrainModel(
 }
 ```
 
+### <a name="output"></a>輸出
+
+```console
+Train Model with training data...
+Model Id: 20c3544d-97b4-49d9-b39b-dc32d85f1358
+Model Status: ready
+Training started on: 2020-08-31T16:52:09Z
+Training completed on: 2020-08-31T16:52:23Z
+
+Recognized Fields:
+The subModel has form type form-0
+The model found field 'field-0' with label: Address:
+The model found field 'field-1' with label: Charges
+The model found field 'field-2' with label: Invoice Date
+The model found field 'field-3' with label: Invoice Due Date
+The model found field 'field-4' with label: Invoice For:
+The model found field 'field-5' with label: Invoice Number
+The model found field 'field-6' with label: VAT ID
+```
+
 ### <a name="train-a-model-with-labels"></a>訓練具備標籤的模型
 
 您也可以手動標記訓練文件來訓練自訂模型。 在某些情況下，使用標籤來訓練會讓效能更佳。 若要使用標籤來訓練，您的 Blob 儲存體容器中除了訓練文件以外，還必須要有特殊的標籤資訊檔案 ( *\<filename\>.pdf.labels.json*)。 [表單辨識器範例標籤工具](../../quickstarts/label-tool.md)提供可協助您建立這些標籤檔案的 UI。 只要有了這些檔案，即可呼叫 **beginTraining** 方法，且將 *useTrainingLabels* 參數設為 `true`。
 
 ```java
 private static String TrainModelWithLabels(
-    FormRecognizerClient trainingClient, String trainingDataUrl)
+    FormTrainingClient trainingClient, String trainingDataUrl)
 {
     // Train custom model
     String trainingSetSource = trainingDataUrl;
-    SyncPoller<OperationResult, CustomFormModel> trainingPoller = client.beginTraining(trainingSetSource, true);
+    SyncPoller<FormRecognizerOperationResult, CustomFormModel> trainingPoller = trainingClient.beginTraining(trainingSetSource, true);
 
     CustomFormModel customFormModel = trainingPoller.getFinalResult();
 
     // Model Info
     System.out.printf("Model Id: %s%n", customFormModel.getModelId());
     System.out.printf("Model Status: %s%n", customFormModel.getModelStatus());
-    System.out.printf("Model created on: %s%n", customFormModel.getRequestedOn());
-    System.out.printf("Model last updated: %s%n%n", customFormModel.getCompletedOn());
+    System.out.printf("Training started on: %s%n", customFormModel.getTrainingStartedOn());
+    System.out.printf("Training completed on: %s%n%n", customFormModel.getTrainingCompletedOn());
 ```
 
 傳回的 **CustomFormModel** 會指出模型可擷取的欄位，及其在每個欄位中的預估正確性。 下列程式碼區塊會將此資訊列印至主控台。
 
 ```java
-    // looping through the sub-models, which contains the fields they were trained on
+    // looping through the subModels, which contains the fields they were trained on
     // The labels are based on the ones you gave the training document.
     System.out.println("Recognized Fields:");
     // Since the data is labeled, we are able to return the accuracy of the model
-    customFormModel.getSubmodels().forEach(customFormSubModel -> {
-        System.out.printf("Sub-model accuracy: %.2f%n", customFormSubModel.getAccuracy());
-        customFormSubModel.getFieldMap().forEach((label, customFormModelField) ->
-            System.out.printf("Field: %s Field Name: %s Field Accuracy: %.2f%n",
+    customFormModel.getSubmodels().forEach(customFormSubmodel -> {
+        System.out.printf("The subModel with form type %s has accuracy: %.2f%n",
+            customFormSubmodel.getFormType(), customFormSubmodel.getAccuracy());
+        customFormSubmodel.getFields().forEach((label, customFormModelField) ->
+            System.out.printf("The model found field '%s' to have name: %s with an accuracy: %.2f%n",
                 label, customFormModelField.getName(), customFormModelField.getAccuracy()));
     });
     return customFormModel.getModelId();
 }
+```
+
+### <a name="output"></a>輸出
+
+```console
+Train Model with training data...
+Model Id: 20c3544d-97b4-49d9-b39b-dc32d85f1358
+Model Status: ready
+Training started on: 2020-08-31T16:52:09Z
+Training completed on: 2020-08-31T16:52:23Z
+
+Recognized Fields:
+The subModel has form type form-0
+The model found field 'field-0' with label: Address:
+The model found field 'field-1' with label: Charges
+The model found field 'field-2' with label: Invoice Date
+The model found field 'field-3' with label: Invoice Due Date
+The model found field 'field-4' with label: Invoice For:
+The model found field 'field-5' with label: Invoice Number
+The model found field 'field-6' with label: VAT ID
 ```
 
 ## <a name="analyze-forms-with-a-custom-model"></a>使用自訂模型分析表單
@@ -395,9 +514,8 @@ private static String TrainModelWithLabels(
 private static void AnalyzePdfForm(
     FormRecognizerClient formClient, String modelId, String pdfFormUrl)
 {    
-    String modelId = modelId;
-    SyncPoller<OperationResult, List<RecognizedForm>> recognizeFormPoller =
-        client.beginRecognizeCustomFormsFromUrl(pdfFormUrl, modelId);
+    SyncPoller<FormRecognizerOperationResult, List<RecognizedForm>> recognizeFormPoller =
+    formClient.beginRecognizeCustomFormsFromUrl(modelId, pdfFormUrl);
 
     List<RecognizedForm> recognizedForms = recognizeFormPoller.getFinalResult();
 ```
@@ -405,26 +523,42 @@ private static void AnalyzePdfForm(
 下列程式碼會將分析結果列印至主控台。 列印內容包括辨識到的每個欄位和對應的值，以及信賴分數。
 
 ```java
-    recognizedForms.forEach(form -> {
-        System.out.println("----------- Recognized Form -----------");
+    for (int i = 0; i < recognizedForms.size(); i++) {
+        final RecognizedForm form = recognizedForms.get(i);
+        System.out.printf("----------- Recognized custom form info for page %d -----------%n", i);
         System.out.printf("Form type: %s%n", form.getFormType());
-        form.getFields().forEach((label, formField) -> {
-            System.out.printf("Field %s has value %s with confidence score of %.2f.%n", label,
-                formField.getFieldValue(),
-                formField.getConfidence());
-        });
-        System.out.print("-----------------------------------");
-    });
+        form.getFields().forEach((label, formField) ->
+            // label data is populated if you are using a model trained with unlabeled data,
+            // since the service needs to make predictions for labels if not explicitly given to it.
+            System.out.printf("Field '%s' has label '%s' with a confidence "
+                + "score of %.2f.%n", label, formField.getLabelData().getText(), formField.getConfidence()));
+    }
 }
 ```
 
-## <a name="manage-your-custom-models"></a>管理您的自訂模型
+### <a name="output"></a>輸出
+
+```console
+Analyze PDF form...
+----------- Recognized custom form info for page 0 -----------
+Form type: form-0
+Field 'field-0' has label 'Address:' with a confidence score of 0.91.
+Field 'field-1' has label 'Invoice For:' with a confidence score of 1.00.
+Field 'field-2' has label 'Invoice Number' with a confidence score of 1.00.
+Field 'field-3' has label 'Invoice Date' with a confidence score of 1.00.
+Field 'field-4' has label 'Invoice Due Date' with a confidence score of 1.00.
+Field 'field-5' has label 'Charges' with a confidence score of 1.00.
+Field 'field-6' has label 'VAT ID' with a confidence score of 1.00.
+```
+
+
+## <a name="manage-custom-models"></a>管理自訂模型
 
 本節示範如何管理您的帳戶中儲存的自訂模型。 下列程式碼範例會在單一方法中執行所有模型管理工作。 請先複製下面的方法簽章：
 
 ```java
 private static void ManageModels(
-    FormRecognizerClient trainingClient, String trainingFileUrl)
+    FormTrainingClient trainingClient, String trainingFileUrl)
 {
 ```
 
@@ -436,9 +570,15 @@ private static void ManageModels(
     AtomicReference<String> modelId = new AtomicReference<>();
 
     // First, we see how many custom models we have, and what our limit is
-    AccountProperties accountProperties = client.getAccountProperties();
+    AccountProperties accountProperties = trainingClient.getAccountProperties();
     System.out.printf("The account has %s custom models, and we can have at most %s custom models",
         accountProperties.getCustomModelCount(), accountProperties.getCustomModelLimit());
+```
+
+#### <a name="output"></a>輸出 
+
+```console
+The account has 12 custom models, and we can have at most 250 custom models
 ```
 
 ### <a name="list-the-models-currently-stored-in-the-resource-account"></a>列出目前儲存於資源帳戶中的模型
@@ -447,29 +587,48 @@ private static void ManageModels(
 
 ```java    
     // Next, we get a paged list of all of our custom models
-    PagedIterable<CustomFormModelInfo> customModels = client.getModelInfos();
+    PagedIterable<CustomFormModelInfo> customModels = trainingClient.listCustomModels();
     System.out.println("We have following models in the account:");
     customModels.forEach(customFormModelInfo -> {
         System.out.printf("Model Id: %s%n", customFormModelInfo.getModelId());
         // get custom model info
         modelId.set(customFormModelInfo.getModelId());
-        CustomFormModel customModel = client.getCustomModel(customFormModelInfo.getModelId());
+        CustomFormModel customModel = trainingClient.getCustomModel(customFormModelInfo.getModelId());
         System.out.printf("Model Id: %s%n", customModel.getModelId());
         System.out.printf("Model Status: %s%n", customModel.getModelStatus());
-        System.out.printf("Created on: %s%n", customModel.getRequestedOn());
-        System.out.printf("Updated on: %s%n", customModel.getCompletedOn());
-        customModel.getSubmodels().forEach(customFormSubModel -> {
-            System.out.printf("Custom Model Form type: %s%n", customFormSubModel.getFormType());
-            System.out.printf("Custom Model Accuracy: %.2f%n", customFormSubModel.getAccuracy());
-            if (customFormSubModel.getFieldMap() != null) {
-                customFormSubModel.getFieldMap().forEach((fieldText, customFormModelField) -> {
+        System.out.printf("Training started on: %s%n", customModel.getTrainingStartedOn());
+        System.out.printf("Training completed on: %s%n", customModel.getTrainingCompletedOn());
+        customModel.getSubmodels().forEach(customFormSubmodel -> {
+            System.out.printf("Custom Model Form type: %s%n", customFormSubmodel.getFormType());
+            System.out.printf("Custom Model Accuracy: %.2f%n", customFormSubmodel.getAccuracy());
+            if (customFormSubmodel.getFields() != null) {
+                customFormSubmodel.getFields().forEach((fieldText, customFormModelField) -> {
                     System.out.printf("Field Text: %s%n", fieldText);
                     System.out.printf("Field Accuracy: %.2f%n", customFormModelField.getAccuracy());
                 });
             }
-
         });
     });
+```
+
+#### <a name="output"></a>輸出 
+
+為了方便閱讀，此回應已截斷。
+
+```console
+We have following models in the account:
+Model Id: 0b048b60-86cc-47ec-9782-ad0ffaf7a5ce
+Model Id: 0b048b60-86cc-47ec-9782-ad0ffaf7a5ce
+Model Status: ready
+Training started on: 2020-06-04T18:33:08Z
+Training completed on: 2020-06-04T18:33:10Z
+Custom Model Form type: form-0b048b60-86cc-47ec-9782-ad0ffaf7a5ce
+Custom Model Accuracy: 1.00
+Field Text: invoice date
+Field Accuracy: 1.00
+Field Text: invoice number
+Field Accuracy: 1.00
+...
 ```
 
 ### <a name="delete-a-model-from-the-resource-account"></a>從資源帳戶中刪除模型
@@ -478,15 +637,15 @@ private static void ManageModels(
 
 ```java
     // Delete Custom Model
-    System.out.printf("Deleted model with model Id: %s operation completed with status: %s%n", modelId.get(),
-        client.deleteModelWithResponse(modelId.get(), Context.NONE).getStatusCode());
+    System.out.printf("Deleted model with model Id: %s, operation completed with status: %s%n", modelId.get(),
+    trainingClient.deleteModelWithResponse(modelId.get(), Context.NONE).getStatusCode());
 }
 ```
 
 
 ## <a name="run-the-application"></a>執行應用程式
 
-您可以使用下列命令來建置應用程式：
+巡覽回到您的主要專案目錄。 然後，使用下列命令建置應用程式：
 
 ```console
 gradle build
@@ -518,6 +677,7 @@ try {
 ```
 
 ### <a name="enable-client-logging"></a>啟用用戶端記錄
+
 適用於 Java 的 Azure SDK 會提供一致的記錄案例，來協助針對應用程式錯誤進行疑難排解，並加快解決速度。 產生的記錄會在到達終端狀態之前，先擷取應用程式流程來協助尋找根本問題。 如需啟用記錄的相關指引，請檢視[記錄 Wiki](https://github.com/Azure/azure-sdk-for-java/wiki/Logging-with-Azure-SDK) (英文)。
 
 ## <a name="next-steps"></a>後續步驟

@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4cdeff5e08813140c45d0a30877c3789d1bc21b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 30a51f4b07f62b6e3491f74de78ea0d04bbb1775
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718844"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399968"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教學課程：讓使用者使用 Azure Active Directory 自助式密碼重設來解除鎖定其帳戶或重設密碼
 
@@ -37,7 +37,8 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 
 若要完成此教學課程，您需要下列資源和權限：
 
-* 至少已啟用 Azure AD Premium P1 或試用版授權的有效 Azure AD 租用戶。
+* 至少已啟用 Azure AD Free 或試用版授權的有效 Azure AD 租用戶。 在免費層中，SSPR 僅可供 Azure AD 中的雲端使用者使用。
+    * 如需此系列的後續教學課程，需要 Azure AD Premium P1 或試用版授權才能回寫內部部署密碼。
     * 如有需要，[請建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 具有「全域系統管理員」權限的帳戶。
 * 具有已知密碼的非系統管理員使用者，例如 testuser。 在本教學課程中，您會使用此帳戶來測試終端使用者 SSPR 體驗。

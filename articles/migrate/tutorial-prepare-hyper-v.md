@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 準備進行 VMware VM 的評量/�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8ecb886b5d5cd9d6811788043b924880b4c366c4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86109615"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928916"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>準備 Hyper-V VM 的評量並將其移轉至 Azure
 
@@ -38,6 +38,7 @@ ms.locfileid: "86109615"
 **建立 Azure Migrate 專案** | Azure Migrate 專案提供一個集中位置，讓您使用 Azure Migrate 工具、Microsoft 工具和第三方產品來協調和管理評量和移轉。 | 您的 Azure 帳戶需要專案所在資源群組中的「參與者」或「擁有者」權限。
 **註冊設備** | Azure Migrate 會使用輕量型 Azure Migrate 設備來探索和評估 Hyper-V VM。 [深入了解](migrate-appliance-architecture.md#appliance-registration)。 | 若要註冊設備，您的 Azure 帳戶需要 Azure 訂用帳戶的「參與者」或「擁有者」權限。
 **建立 Azure AD 應用程式** | 註冊設備時，Azure Migrate 會建立一個 Azure Active Directory (Azure AD) 應用程式，用於在設備上執行的代理程式與 Azure Migrate 之間的通訊。 | 您的 Azure 帳戶必須建立 Azure AD 應用程式的權限。
+**建立 Key Vault** | 該 Key Vault 會建立為設備註冊的一部分，並用於管理在設定設備期間下載的憑證。| 若要允許 Azure Migrate 建立 Key Vault，您的 Azure 帳戶必須在 Azure Migrate 專案所在的資源群組上擁有參與者權限。
 **建立 VM** | 您需要權限，才能在資源群組和虛擬網路中建立 VM，以及寫入至 Azure 受控磁碟。 | 您的 Azure 帳戶需要「虛擬機器參與者」角色。
 
 
@@ -68,8 +69,8 @@ ms.locfileid: "86109615"
 
 租用戶/全域管理員可以授與權限，如下所示：
 
-1. 在 Azure AD 中，租用戶/全域管理員應該瀏覽至 [Azure Active Directory]**** > [使用者]**** > [使用者設定]****。
-2. 管理員應將 [應用程式註冊]**** 設定為 [是]****。
+1. 在 Azure AD 中，租用戶/全域管理員應該瀏覽至 [Azure Active Directory] > [使用者] > [使用者設定]。
+2. 管理員應將 [應用程式註冊] 設定為 [是]。
 
     ![Azure AD 權限](./media/tutorial-prepare-hyper-v/aad.png)
 
@@ -81,6 +82,7 @@ ms.locfileid: "86109615"
 #### <a name="assign-application-developer-role"></a>指派應用程式開發人員角色
 
 租用戶/全域管理員可為帳戶指派應用程式開發人員角色。 [深入了解](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
+
 
 ### <a name="assign-azure-account-permissions"></a>指派 Azure 帳戶權限
 

@@ -1,6 +1,6 @@
 ### YamlMime:Landing
-title: 筆跡辨識器 API 文件
-summary: 了解如何使用筆跡辨識器 API 將數位筆跡辨識功能帶入您的應用程式和服務。 API 是一種雲端式服務，使用機器學習來辨識任何內容中的手寫圖案和文字。
+title: 筆跡辨識器 API 文件 (即將淘汰)
+summary: 筆跡辨識器 API 已於 2020 年 8 月 26 日結束其預覽。 如果您有現有的筆跡辨識器資源，則可以繼續使用，直到該服務在 2021 年 1 月 31 日完全淘汰為止。 了解如何使用筆跡辨識器 API 將數位筆跡辨識功能帶入您的應用程式和服務。 API 是一種雲端式服務，使用機器學習來辨識任何內容中的手寫圖案和文字。
 metadata:
   title: 筆跡辨識器 API - 教學課程、快速入門、API 參考
   titleSuffix: Azure Cognitive Services
@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/23/2019
   ms.author: aahi
-  ms.openlocfilehash: f7e273639e5a5efd5e52517d9729bb7ba8908604
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: e0886171d074863009dd83163599c888db10e187
+  ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "79415710"
+  ms.lasthandoff: 09/03/2020
+  ms.locfileid: "89419583"
 landingContent:
 - title: 關於筆跡辨識器 API
   linkLists:

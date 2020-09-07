@@ -1,24 +1,26 @@
 ---
 title: 快速入門：使用筆跡辨識器 REST API 與 Node.js 來辨識數位筆跡
 titleSuffix: Azure Cognitive Services
-description: 在本快速入門中使用筆跡辨識器 API 開始辨識數位筆跡筆觸。
+description: 在本快速入門中使用筆跡辨識器 API 和 JavaScript 開始辨識數位筆跡筆觸。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 59cd4711ec3604779e57434af72460534b378af4
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: b8d8464fb9defb64c039ef9026812de89436091c
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407042"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050894"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>快速入門：使用筆跡辨識器 REST API 與 JavaScript 來辨識數位筆跡
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 使用本快速入門，開始針對數位筆跡筆觸使用筆跡辨識器 API。 此 JavaScript 應用程式會傳送包含 JSON 格式筆跡筆觸資料的 API 要求，並顯示回應。
 
@@ -30,7 +32,7 @@ ms.locfileid: "87407042"
 
 此快速入門的原始程式碼可以在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905) 上找到。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 網頁瀏覽器
 - 此快速入門的範例筆跡筆觸資料可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json) 上找到。

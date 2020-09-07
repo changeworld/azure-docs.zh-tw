@@ -3,15 +3,15 @@ title: Windows 虛擬桌面主機集區 Azure 入口網站 - Azure
 description: 如何使用 Azure 入口網站建立 Windows 虛擬桌面主機集區。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 09/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 30101d4e9125b0ac283710ebb26205c2bb120766
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755478"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322580"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教學課程：透過 Azure 入口網站建立主機集區
 
@@ -47,6 +47,8 @@ ms.locfileid: "88755478"
 若要開始建立新的主機集區：
 
 1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com/)。
+   
+   >![NOTE] 如果您要登入 US Gov 入口網站，請改為移至 [https://portal.azure.us/](https://portal.azure.us/)。
 
 2. 在搜尋列中輸入 **Windows 虛擬桌面**，然後尋找並選取 [服務] 底下的 [Windows 虛擬桌面]。
 
@@ -72,7 +74,7 @@ ms.locfileid: "88755478"
       > [!div class="mx-imgBorder"]
       > ![指派類型 欄位下拉式功能表的螢幕擷取畫面。 使用者已選取 自動。](media/assignment-type-field.png)
 
-9. 如果您選擇 [集區]，請輸入下列資訊：
+9.  如果您選擇 [集區]，請輸入下列資訊：
 
      - 針對 [最大工作階段限制]，請輸入您想要負載平衡至單一工作階段主機的最大使用者數目。
      - 針對 [負載平衡演算法]，請根據您的使用模式，選擇 [廣度優先] 或 [深度優先]。
@@ -129,9 +131,11 @@ ms.locfileid: "88755478"
 
 7. 選擇您想要讓 VM 使用的 OS 磁碟類型：標準 SSD、進階 SSD 或標準 HDD。
 
-8. 在 [網路和安全性] 底下，選取您要在放置所建立虛擬機器的 [虛擬網路] 和 [子網路]。 請確定虛擬網路可以連線到網域控制站，因為您必須將虛擬網路內的虛擬機器加入網域。 接下來，選取您是否需要虛擬機器的公用 IP。 我們建議您選取 [否]，因為私人 IP 較安全。
+8. 在 [網路和安全性] 底下，選取您要在放置所建立虛擬機器的 [虛擬網路] 和 [子網路]。 請確定虛擬網路可以連線到網域控制站，因為您必須將虛擬網路內的虛擬機器加入網域。 您所選取之虛擬網路的 DNS 伺服器應該設定為使用網域控制站的 IP。
 
-9. 選取您想要的安全性群組類型：**基本**、**進階**或**無**。
+9. 接下來，選取您是否要讓虛擬機器使用公用 IP。 建議您選取 [否]，因為私人 IP 較安全。
+
+10. 選取您想要的安全性群組類型：**基本**、**進階**或**無**。
 
     如果您選取 [基本]，則必須選取是否要開啟任何輸入連接埠。 如果您選取 [是]，請從標準連接埠清單中選擇，以允許對其進行輸入連線。
 
@@ -143,11 +147,13 @@ ms.locfileid: "88755478"
 
     如果您選擇 [進階]，請選取您已設定的現有網路安全性群組。
 
-10. 然後，請選取您是否要將虛擬機器加入特定網域和組織單位。 如果您選擇 [是]，請指定要加入的網域。 您可以選擇是否要新增特定組織單位來將虛擬機器加入其中。 如果您選擇 [否]，則 VM 將會加入與 [AD 網域加入 UPN] 的尾碼相符的網域。
+11. 然後，請選取您是否要將虛擬機器加入特定網域和組織單位。 如果您選擇 [是]，請指定要加入的網域。 您可以選擇是否要新增特定組織單位來將虛擬機器加入其中。 如果您選擇 [否]，則 VM 將會加入與 [AD 網域加入 UPN] 的尾碼相符的網域。
 
-11. 在 [系統管理員帳戶] 下，輸入所選取虛擬網路的 Active Directory 網域系統管理員認證。
+  - 指定 OU 時，請確定您使用的是完整路徑 (辨別名稱)，而且沒有引號。
 
-12. 完成時，選取 [下一步:工作區 >]。
+12. 在 [系統管理員帳戶] 下，輸入所選取虛擬網路的 Active Directory 網域系統管理員認證。 此帳戶無法啟用多重要素驗證 (MFA)。 加入 Azure Active Directory Domain Services (Azure AD DS) 網域時，該帳戶必須是 Azure AD DC 系統管理員群組的一部分，而且帳戶密碼必須可在 Azure AD DS 中使用。
+
+13. 完成時，選取 [下一步:工作區 >]。
 
 如此一來，我們就可以開始設定您主機集區的下一個階段：將您的應用程式群組註冊到工作區。
 

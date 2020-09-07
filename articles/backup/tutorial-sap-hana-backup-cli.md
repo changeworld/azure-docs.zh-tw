@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何使用 Azure CLI 將執�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a0b6683183d6bf73b5376c6320106373ffd4ba78
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: eb6b9f4d58a94cc8a4b9f70b5ead7d319a0d51b5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762397"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007565"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教學課程：使用 Azure CLI 在 Azure VM 中備份 SAP Hana 資料庫
 
@@ -141,7 +141,7 @@ Name                                  Operation         Status     Item Name   S
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2019-12-03T03:09:210831+00:00  
 ```
 
-[az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) Cmdlet 會列出所有已執行或目前正在受保護資料庫上執行的備份作業 (已排定或隨選的備份)，還會列出註冊、設定備份、刪除備份資料等其他作業。
+[az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) Cmdlet 會列出所有已執行或目前正在受保護資料庫上執行的備份作業 (已排定或隨選的備份)，還會列出註冊、設定備份、和刪除備份資料。
 
 >[!NOTE]
 >在 Azure VM 中執行 SAP HANA 資料庫備份時，Azure 備份不會自動調整日光節約時間變更。

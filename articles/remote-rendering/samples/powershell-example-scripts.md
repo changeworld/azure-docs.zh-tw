@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: 07055025eff9ab81c7321624daed9b4a6e993a60
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fbac172952c9feea92341dbc028567235b9250bc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506506"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075268"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell 指令碼範例
 
@@ -21,7 +22,10 @@ Azure 遠端轉譯提供下列兩個 REST API：
 
 [ARR 範例存放庫](https://github.com/Azure/azure-remote-rendering)的 *Scripts* 資料夾中包含範例指令碼，可供與服務的 REST API 互動。 本文說明其使用方式。
 
-## <a name="prerequisites"></a>必要條件
+> [!CAUTION]
+太過頻繁呼叫 REST API 函式，最後會導致伺服器節流並傳回失敗。 在此情況下，HTTP 失敗代碼識別碼為 429 (「要求過多」)。 根據經驗法則，**後續的呼叫之間應該會有 5-10 秒**的延遲。
+
+## <a name="prerequisites"></a>Prerequisites
 
 若要執行範例指令碼，您需要 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) 的功能設定。
 

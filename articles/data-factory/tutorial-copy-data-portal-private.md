@@ -12,33 +12,32 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 9458c89922fab8450b7cb8e202491d4c47e250e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b2e666419a702832243c69bdb059f4447b02d756
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540452"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079450"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>使用私人端點將資料從 Azure Blob 儲存體安全地複製到 SQL 資料庫
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教學課程中，您會使用 Azure Data Factory 使用者介面 (UI) 建立資料處理站。 **此資料處理站中的管線會將資料從 Azure Blob 儲存體安全地複製到 Azure SQL 資料庫 (兩者都只允許存取選取的網路)，方法是使用 [Azure Data Factory 受控虛擬網路](managed-virtual-network-private-endpoint.md)中的私人端點。** 本教學課程中的設定模式從以檔案為基礎的資料存放區複製到關聯式資料存放區。 如需支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)表格。
+在本教學課程中，您會使用 Azure Data Factory 使用者介面 (UI) 建立資料處理站。 此資料處理站中的管線會將資料從 Azure Blob 儲存體安全地複製到 Azure SQL 資料庫 (兩者都只允許存取選取的網路)，方法是使用 [Azure Data Factory 受控虛擬網路](managed-virtual-network-private-endpoint.md)中的私人端點。 本教學課程中的設定模式從以檔案為基礎的資料存放區複製到關聯式資料存放區。 如需支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區和格式](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)資料表。
 
 > [!NOTE]
->
-> - 如果您不熟悉 Data Factory，請參閱 [Data Factory 簡介](https://docs.microsoft.com/azure/data-factory/introduction)。
+> 如果您不熟悉 Data Factory，請參閱 [Data Factory 簡介](https://docs.microsoft.com/azure/data-factory/introduction)。
 
 在本教學課程中，您會執行下列步驟：
 
-> * 建立 Data Factory
-> * 建立具有複製活動的管線
+* 建立資料處理站。
+* 建立具有複製活動的管線。
 
 
 ## <a name="prerequisites"></a>必要條件
 * **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
-* **Azure 儲存體帳戶**。 您會使用 Blob 儲存體作為*來源*資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)，按照步驟建立此帳戶。 **請確定儲存體帳戶只允許從「選取的網路」進行存取。** 
-* **Azure SQL Database**。 您會使用資料庫作為*接收*資料存放區。 如果您沒有 Azure SQL 資料庫，請參閱[建立 SQL 資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)，按照步驟來建立 SQL 資料庫。 **請確定 Azure SQL Database 帳戶只允許從「選取的網路」進行存取。** 
+* **Azure 儲存體帳戶**。 您會使用 Blob 儲存體作為*來源*資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)，按照步驟建立此帳戶。 請確定儲存體帳戶只允許從選取的網路存取。 
+* **Azure SQL Database**。 您會使用資料庫作為*接收*資料存放區。 如果您沒有 Azure SQL 資料庫，請參閱[建立 SQL 資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)，按照步驟來建立 SQL 資料庫。 請確定 SQL Database 帳戶只允許從選取的網路進行存取。 
 
 ### <a name="create-a-blob-and-a-sql-table"></a>建立 Blob 和 SQL 資料表
 
@@ -46,7 +45,7 @@ ms.locfileid: "86540452"
 
 #### <a name="create-a-source-blob"></a>建立來源 Blob
 
-1. 啟動 [記事本]。 複製下列文字，並在磁碟上將其儲存為 **emp.txt** 檔案：
+1. 開啟記事本。 複製下列文字，並在磁碟上將其儲存為 **emp.txt** 檔案：
 
     ```
     FirstName,LastName
@@ -72,52 +71,51 @@ ms.locfileid: "86540452"
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. 允許 Azure 服務存取 SQL Server。 確定 SQL Server 的 [允許存取 Azure 服務]  已**開啟**，讓 Data Factory 能夠將資料寫入至您的 SQL Server。 若要確認並開啟此設定，請前往 Azure SQL Server > [概觀] > [設定伺服器防火牆] > 將 [允許存取 Azure 服務]  選項設定為 [開啟]  。
+1. 允許 Azure 服務存取 SQL Server。 確定 SQL 伺服器的 [允許存取 Azure 服務] 已**開啟**，讓 Data Factory 能夠將資料寫入至您的 SQL 伺服器。 若要確認並開啟此設定，請移至 **Azure SQL Server** > **概觀** > **設定伺服器防火牆**。 將 [允許存取 Azure 服務] 選項設為 [開啟]。
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 在此步驟中，您可以建立資料處理站，並啟動 Data Factory 使用者介面，在資料處理站中建立管線。
 
-1. 開啟 **Microsoft Edge** 或 **Google Chrome**。 目前，只有 Microsoft Edge 和 Google Chrome 網頁瀏覽器支援 Data Factory UI。
+1. 開啟 Microsoft Edge 或 Google Chrome。 目前，只有 Microsoft Edge 和 Google Chrome 網頁瀏覽器支援 Data Factory UI。
 
+1. 在左側功能表上，選取 [建立資源] > [分析] > [資料處理站]。
 
-2. 在左側功能表上，選取 [建立資源] > [分析] > [資料處理站]。
+1. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory**。
 
-3. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory**。
+   Azure Data Factory 的名稱必須是 *全域唯一的*。 如果您收到有關名稱值的錯誤訊息，請輸入不同的資料處理站名稱 (例如 yournameADFTutorialDataFactory)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](https://docs.microsoft.com/azure/data-factory/naming-rules)。
 
-   Azure Data Factory 的名稱必須是 *全域唯一的*。 如果您收到有關名稱值的錯誤訊息，請輸入不同的資料處理站名稱。 (例如，使用 yournameADFTutorialDataFactory)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](https://docs.microsoft.com/azure/data-factory/naming-rules)。
+1. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。
 
-4. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。
+1. 針對 [資源群組]，採取下列其中一個步驟︰
 
-5. 針對 [資源群組]，採取下列其中一個步驟︰
-
-    a. 選取 [使用現有的] ，然後從下拉式清單選取現有的資源群組。
-
-    b. 選取 [建立新的] ，然後輸入資源群組的名稱。 
-         
+    - 選取 [使用現有的] ，然後從下拉式清單選取現有的資源群組。
+    - 選取 [建立新的] ，然後輸入資源群組的名稱。 
+     
     若要了解資源群組，請參閱[使用資源群組管理您的 Azure 資源](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)。 
 
-6. 在 [版本] 下，選取 [V2]。
+1. 在 [版本] 下，選取 [V2]。
 
-7. 在 [位置] 下，選取資料處理站的位置。 只有受到支援的位置會顯示在下拉式清單中。 資料處理站所使用的資料存放區 (例如 Azure 儲存體和 SQL Database) 和計算 (例如 Azure HDInsight) 可位於其他區域。
+1. 在 [位置] 下，選取資料處理站的位置。 只有受到支援的位置會出現在下拉式清單中。 資料處理站所使用的資料存放區 (例如 Azure 儲存體和 SQL Database) 和計算 (例如 Azure HDInsight) 可位於其他區域。
 
+1. 選取 [建立]  。
 
-8. 選取 [建立]。
+1. 建立完成後，您會在通知中心看到通知。 選取 [移至資源]，以移至 **Data Factory** 頁面。
 
+1. 選取 [編寫與監視]，以在個別索引標籤中啟動 Data Factory 使用者介面。
 
-9. 建立完成後，您會在 [通知中心] 看到通知。 選取 [移至資源]，以瀏覽至 Data Factory 頁面。
+## <a name="create-an-azure-integration-runtime-in-data-factory-managed-virtual-network"></a>在 Data Factory 受控虛擬網路中建立 Azure 整合執行階段
+在此步驟中，您會在 Data Factory 受控虛擬網路中建立 Azure Integration Runtime。
 
-10. 選取 [編寫與監視]，以在個別索引標籤中啟動 Data Factory 使用者介面。
+1. 在 Data Factory 入口網站中，移至**管理**，然後選取 [新增] 以建立新的 Azure Integration Runtime。
 
-## <a name="create-an-azure-integration-runtime-in-adf-managed-virtual-network"></a>在 ADF 受控虛擬網路中建立 Azure Integration Runtime
-在此步驟中，您會在 ADF 受控虛擬網路中建立 Azure Integration Runtime。
+   ![顯示建立新 Azure 整合執行階段的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
+1. 選擇建立 **Azure** 整合執行階段。
 
-1. 在 ADF 入口網站中，移至**管理中樞**，然後按一下 [新增] 以建立新的 Azure Integration Runtime。
-   ![建立 Azure Integration Runtime](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-2. 選擇建立 Azure** Integration Runtime。
-   ![新增 Azure Integration Runtime](./media/tutorial-copy-data-portal-private/azure-ir.png)
-3. 啟用**虛擬網路**。
-   ![新增 Azure Integration Runtime](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
-4. 選取 [建立]。
+   ![顯示新 Azure 整合執行階段的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/azure-ir.png)
+1. 在 [虛擬網路設定 (預覽)] 中，選取 [啟用]。
+
+   ![顯示啟用新 Azure 整合執行階段的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
+1. 選取 [建立]。
 
 ## <a name="create-a-pipeline"></a>建立管線
 在此步驟中，您會在資料處理站中建立具有「複製」活動的管線。 複製活動會將資料從 Blob 儲存體複製到 SQL Database。 在[快速入門教學課程](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal)中，您已依照下列步驟建立管線：
@@ -130,69 +128,72 @@ ms.locfileid: "86540452"
 
 1. 在 [現在就開始吧] 頁面中，選取 [建立管線]。
 
-   ![建立管線](./media/doc-common-process/get-started-page.png)
-1. 在管線的 [屬性] 窗格中，輸入 **CopyPipeline** 作為管線的**名稱**。
+   ![顯示建立管線的螢幕擷取畫面。](./media/doc-common-process/get-started-page.png)
+1. 在管線的屬性窗格中，輸入 **CopyPipeline** 作為管線名稱。
 
-1. 在 [活動] 工具箱中展開 [移動和轉換] 類別，並將 [複製資料] 活動從工具箱中拖放至管線設計工具介面。 指定 **CopyFromBlobToSql** 作為 [名稱]。
+1. 在**活動** 工具箱中展開**移動和轉換**類別，並將**複製資料**活動從工具箱中拖曳至管線設計工具介面。 輸入 **CopyFromBlobToSql** 作為名稱。
 
-    ![複製活動](./media/tutorial-copy-data-portal-private/drag-drop-copy-activity.png)
+    ![顯示複製活動的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/drag-drop-copy-activity.png)
 
-### <a name="configure-source"></a>設定來源
+### <a name="configure-a-source"></a>設定來源
 
 >[!TIP]
->在本教學課程中，您會使用「帳戶金鑰」 作為來源資料存放區的驗證類型，但可以選擇其他支援的驗證方法：SAS URI、服務主體，以及受控識別 (如有需要)。 如需詳細資訊，請參閱[本文](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)的對應章節。
->若要安全地儲存資料存放區的秘密，也建議您使用 Azure Key Vault。 如需詳細說明，請參閱[本文](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
+>在本教學課程中，您會使用**帳戶金鑰**作為來源資料存放區的驗證類型。 如有需要，您也可以選擇其他支援的驗證方法，例如 **SAS URI**、**服務主體**和**受控識別**。 如需詳細資訊，請參閱[使用 Azure Data Factory 複製和轉換 Azure Blob 儲存體中的資料](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)中對應的章節。
+>
+>若要安全地儲存資料存放區的祕密，也建議您使用 Azure Key Vault。 如需詳細資訊和圖例，請參閱[在 Azure Key Vault 中儲存認證](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
 
-#### <a name="create-source-dataset-and-linked-service"></a>建立資料集和連結服務
+#### <a name="create-a-source-dataset-and-linked-service"></a>建立來源資料集和已連結的服務
 
 1. 移至 [來源] 索引標籤。選取 [+ 新增] 以建立來源資料集。
 
 1. 在 [新增資料集] 對話方塊中，選取 [Azure Blob 儲存體]，然後選取 [繼續]。 來源資料位於 Blob 儲存體中，因此您選取 [Azure Blob 儲存體] 作為來源資料集。
 
-1. 在 [選取格式] 對話方塊中，選擇您資料的格式類型，然後選取 [繼續]。
+1. 在 [選取格式] 對話方塊中，選取您資料的格式類型，然後選取 [繼續]。
 
-1. 在 [設定屬性] 對話方塊中，輸入 **SourceBlobDataset** 作為 [名稱]。 選取**第一個資料列做為標頭**的核取方塊。 在 [已連結的服務] 文字方塊下，選取 [+ 新增]。
+1. 在 [設定屬性] 對話方塊中，輸入 **SourceBlobDataset** 作為**名稱**。 選取**第一個資料列作為標頭**的核取方塊。 在 [已連結的服務] 文字方塊下，選取 [+ 新增]。
 
-1. 在 [新增連結服務 (Azure Blob 儲存體)] 對話方塊中輸入 **AzureStorageLinkedService** 作為名稱，然後從 [儲存體帳戶名稱] 清單中選取您的儲存體帳戶。 
+1. 在 [新增已連結的服務 (Azure Blob 儲存體)] 對話方塊中輸入 **AzureStorageLinkedService** 作為**名稱**，然後從 [儲存體帳戶名稱] 清單中選取您的儲存體帳戶。 
 
-1. 請務必啟用**互動式撰寫**。 可能需要約 1 分鐘的時間才能啟用。
+1. 請務必啟用**互動式製作**。 可能需要約一分鐘的時間才能啟用。
 
-    ![互動式撰寫](./media/tutorial-copy-data-portal-private/interactive-authoring.png)
+    ![顯示互動式製作的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/interactive-authoring.png)
 
-1. 選取 [測試連線]，當儲存體帳戶只允許從「選取的網路」存取，而且需要 Azure Data Factory 來建立應該在使用其之前核准的私人端點時，就會發生失敗。 在錯誤訊息中，您應該會看到一個連結，可讓您建立**私人端點**，以供您建立受控私人端點。 另一個替代方式是直接前往 [管理] 索引標籤，並遵循[下一節](#create-a-managed-private-endpoint)中的指示建立受控私人端點
-> [!NOTE]
-> 並非所有資料處理站執行個體圴可使用 [管理] 索引標籤。 如果您看不到該索引標籤，仍然可以透過 [建立者] 索引標籤 --> [連線] --> [私人端點] 存取私人端點
-1. 讓對話方塊保持開啟，然後移至上面選取的儲存體帳戶。
+1. 選取 [測試連線]。 當儲存體帳戶只允許從**選取的網路**存取，而且需要 Data Factory 來建立應該在使用其之前核准的私人端點時，就會發生失敗。 在錯誤訊息中，您應該會看到一個連結，可讓您建立私人端點，以供您建立受控私人端點。 另一個替代方式是直接前往**管理**索引標籤，並遵循[下一節](#create-a-managed-private-endpoint)中的指示建立受控私人端點。
 
-1. 遵循[本節](#approval-of-a-private-link-in-storage-account)的指示來核准私人連結。
+   > [!NOTE]
+   > 並非所有資料處理站執行個體圴可使用**管理**索引標籤。 如果您沒有看到該索引標籤，可以選取 [作者] > [連線] > [私人端點] 來存取私人端點。
+1. 讓對話方塊保持開啟，然後移至儲存體帳戶。
 
-1. 返回對話方塊。 再次**測試連線**，然後選取 [建立] 以部署連結服務。
+1. 遵循[本節](#approval-of-a-private-link-in-a-storage-account)的指示來核准私人連結。
 
-1. 建立連結服務之後，系統會將您導回 [設定屬性] 頁面。 在 [檔案路徑] 旁，選取 [瀏覽]。
+1. 返回對話方塊。 選取 [測試連線]，然後選取 [建立] 以部署已連結的服務。
 
-1. 瀏覽至 **adftutorial/input** 資料夾，選取 **emp.txt** 檔案，然後選取 [確定]。
+1. 建立已連結的服務之後，您會回到**設定屬性**頁面。 在 [檔案路徑] 旁，選取 [瀏覽]。
 
-1. 選取 [確定]。 系統會自動導覽至管線頁面。 在 [來源] 索引標籤中，確認已選取 [SourceBlobDataset]。 若要預覽此頁面上的資料，請選取 [預覽資料]。
+1. 移至 **adftutorial/input** 資料夾，選取 **emp.txt** 檔案，然後選取 [確定]。
 
-    ![來源資料集](./media/tutorial-copy-data-portal-private/source-dataset-selected.png)
+1. 選取 [確定]。 系統會自動前往管線頁面。 在**來源** 索引標籤中，確認已選取 [SourceBlobDataset]。 若要預覽此頁面上的資料，請選取 [預覽資料]。
+
+    ![顯示來源資料集的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/source-dataset-selected.png)
 
 #### <a name="create-a-managed-private-endpoint"></a>建立受控私人端點
 
-如果您在測試上述連線時未按下超連結，請遵循下列路徑。 現在您需要建立受控私人端點，以連線至上面所建立的連結服務。
+如果您未在測試連線時選取超連結，請遵循路徑。 現在您需要建立受控私人端點，以連線至所建立的已連結服務。
 
-1. 移至 [管理] 索引標籤。
-> [!NOTE]
-> 並非所有資料處理站執行個體圴可使用 [管理] 索引標籤。 如果您看不到該索引標籤，仍然可以透過 [建立者] 索引標籤 --> [連線] --> [私人端點] 存取私人端點
+1. 移至**管理**索引標籤。
 
-1. 移至受控私人端點區段。
+   > [!NOTE]
+   > 並非所有 Data Factory 執行個體圴可使用**管理**索引標籤。 如果您沒有看到該索引標籤，可以選取 [作者] > [連線] > [私人端點] 來存取私人端點。
 
-1. 在受控私人端點之下選取 [+新增]。
+1. 移至**受控私人端點**區段。
 
-    ![新增受控私人端點](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png) 
+1. 在**受控私人端點**之下選取 [+新增]。
 
-1. 從清單中選取 Azure Blob 儲存體圖格，然後選取 [繼續]。
+    ![顯示 [受控私人端點新增] 按鈕的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png) 
 
-1. 輸入先前建立的儲存體帳戶名稱。
+1. 從清單中選取 **Azure Blob 儲存體**圖格，然後選取 [繼續]。
+
+1. 輸入建立之儲存體帳戶的名稱。
 
 1. 選取 [建立]。
 
@@ -200,89 +201,90 @@ ms.locfileid: "86540452"
 
 1. 選取之前建立的私人端點。 您會看到超連結，引導您在儲存體帳戶層級核准私人端點。
 
-    ![管理私人端點](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png) 
+    ![顯示受控私人端點窗格的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png) 
 
-#### <a name="approval-of-a-private-link-in-storage-account"></a>在儲存體帳戶中核准私人連結
-1. 在儲存體帳戶中，移至 [設定] 區段下的 [私人端點連線]。
+#### <a name="approval-of-a-private-link-in-a-storage-account"></a>在儲存體帳戶中核准私人連結
+1. 在儲存體帳戶中，移至**設定**區段下的**私人端點連線**。
 
-1. 勾選您先前建立的私人端點，然後選取 [核准]。
+1. 選取您建立的私人端點核取方塊，然後選取 [核准]。
 
-    ![核准私人端點](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
+    ![顯示私人端點之核准按鈕的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
 
-1. 新增 [描述]，然後按一下 [是]
-1. 回到 Azure Data Factory 中 [管理] 索引標籤的 [受控私人端點] 區段。
-1. 需要大約 1-2 分鐘的時間，Azure Data Factory UI 才會反映私人端點已獲核准的資訊。
+1. 新增描述，然後選取 [是]。
+1. 回到 Data Factory 中**管理**索引標籤的**受控私人端點**區段。
+1. 大約一或兩分鐘後，您應該會看到 Data Factory UI 中出現私人端點的核准狀態。
 
 
-### <a name="configure-sink"></a>設定接收
+### <a name="configure-a-sink"></a>設定接收
 >[!TIP]
->在本教學課程中，您會使用「SQL 驗證」 作為接收資料存放區的驗證類型，但可以選擇其他支援的驗證方法：服務主體和受控識別 (如有需要)。 如需詳細資訊，請參閱[本文](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties)的對應章節。
->若要安全地儲存資料存放區的秘密，也建議您使用 Azure Key Vault。 如需詳細說明，請參閱[本文](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
+>在本教學課程中，您會使用 **SQL 驗證**作為接收資料存放區的驗證類型。 如有需要，您也可以選擇其他支援的驗證方法，例如 **服務主體**和**受控識別**。 如需詳細資訊，請參閱[使用 Azure Data Factory 複製和轉換 Azure SQL Database 中的資料](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties)中對應的章節。
+>
+>若要安全地儲存資料存放區的祕密，也建議您使用 Azure Key Vault。 如需詳細資訊和圖例，請參閱[在 Azure Key Vault 中儲存認證](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
 
-#### <a name="create-sink-dataset-and-linked-service"></a>建立接收資料集和連結服務
+#### <a name="create-a-sink-dataset-and-linked-service"></a>建立接收資料集和已連結的服務
 1. 移至 [接收] 索引標籤，然後選取 [+ 新增] 以建立接收資料集。
 
-1. 在 [新增資料集] 對話方塊中，於搜尋方塊中輸入 "SQL" 以篩選連接器，並選取 [Azure SQL Database]，然後選取 [繼續]。 在本教學課程中，您會將資料複製到 SQL 資料庫。
+1. 在**新增資料集**對話方塊的搜尋方塊中，輸入 **SQL** 以篩選連接器。 選取 [Azure SQL Database]，然後選取 [繼續]。 在本教學課程中，您會將資料複製到 SQL 資料庫。
 
-1. 在 [設定屬性] 對話方塊中，輸入 **OutputSqlDataset** 作為 [名稱]。 從 [已連結的服務] 下拉式清單中，選取 [+ 新增]。 資料集必須與連結的服務相關聯。 連結服務具有連接字串，可供 Data Factory 在執行階段中用來連線到 SQL 資料庫。 資料集會指定要作為資料複製目的地的容器、資料夾和檔案 (選擇性)。
+1. 在 [設定屬性] 對話方塊中，輸入 **OutputSqlDataset** 作為**名稱**。 從 [已連結的服務] 下拉式清單中，選取 [+ 新增]。 資料集必須與連結的服務相關聯。 連結服務具有連接字串，可供 Data Factory 在執行階段中用來連線到 SQL 資料庫。 資料集會指定要作為資料複製目的地的容器、資料夾和檔案 (選擇性)。
 
-1. 在 [新增連結服務 (Azure SQL Database)] 對話方塊中，執行下列步驟：
+1. 在 [新增已連結的服務 (Azure SQL Database)] 對話方塊中，執行下列步驟：
 
     1. 在 [名稱] 下，輸入 **AzureSqlDatabaseLinkedService**。
     1. 在 [伺服器名稱] 下，選取您的 SQL Server 執行個體。
-    1. 請務必啟用**互動式撰寫**。
+    1. 請務必啟用**互動式製作**。
     1. 在 [資料庫名稱] 下，選取您的 SQL 資料庫。
     1. 在 [使用者名稱] 下，輸入使用者名稱。
     1. 在 [密碼] 下，輸入使用者的密碼。
-    1. 選取 [測試連線]。 由於 SQL 伺服器只允許從「選取的網路」存取，而且需要 Azure Data Factory 來建立應該在使用其之前核准的私人端點，因此應該會發生失敗的情況。 在錯誤訊息中，您應該會看到一個連結，可讓您建立**私人端點**，以供您建立受控私人端點。 另一個替代方式是直接前往 [管理] 索引標籤，並遵循下一節中的指示建立受控私人端點
-    1. 讓對話方塊保持開啟，然後移至上面選取的 SQL 伺服器。    
+    1. 選取 [測試連線]。 由於 SQL 伺服器只允許從**選取的網路**存取，而且需要 Data Factory 來建立應該在使用其之前核准的私人端點，因此應該會發生失敗的情況。 在錯誤訊息中，您應該會看到一個連結，可讓您建立私人端點，以供您建立受控私人端點。 另一個替代方式是直接前往**管理**索引標籤，並遵循下一節中的指示建立受控私人端點。
+    1. 讓對話方塊保持開啟，然後移至您選取的 SQL 伺服器。
     1. 遵循[本節](#approval-of-a-private-link-in-sql-server)的指示來核准私人連結。
-    1. 返回對話方塊。 再次**測試連線**，然後選取 [建立] 以部署連結服務。
+    1. 返回對話方塊。 選取 [測試連線]，然後選取 [建立] 以部署已連結的服務。
 
-1. 這會自動導覽至 [設定屬性] 對話方塊。 在 [資料表] 中，選取 **[dbo].[emp]** 。 然後選取 [確定]。
+1. 如此會自動前往**設定屬性**對話方塊。 在 [資料表] 中，選取 **[dbo].[emp]** 。 然後選取 [確定]。
 
-1. 移至含有管線的索引標籤，然後在 [接收資料集] 中確認已選取 **OutputSqlDataset**。
+1. 移至含有管線的索引標籤，然後在**接收資料集**中確認已選取 **OutputSqlDataset**。
 
-    ![管線索引標籤](./media/tutorial-copy-data-portal-private/pipeline-tab-2.png)       
+    ![顯示管線索引標籤的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/pipeline-tab-2.png)
 
 您可以藉由遵循[複製活動中的結構描述對應](https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping)，選擇性地將來源的結構描述對應至目的地的相對應結構描述。
 
 #### <a name="create-a-managed-private-endpoint"></a>建立受控私人端點
 
-如果您在測試上述連線時未按下超連結，請遵循下列路徑。 現在您需要建立受控私人端點，以連線至上面所建立的連結服務。
+如果您未在測試連線時選取超連結，請遵循路徑。 現在您需要建立受控私人端點，以連線至所建立的已連結服務。
 
-1. 移至 [管理] 索引標籤。
-1. 移至受控私人端點區段。
-1. 在受控私人端點之下選取 [+新增]。
+1. 移至**管理**索引標籤。
+1. 移至**受控私人端點**區段。
+1. 在**受控私人端點**之下選取 [+新增]。
 
-    ![新增受控私人端點](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png) 
+    ![顯示 [受控私人端點新增] 按鈕的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png) 
 
-1. 從清單中選取 Azure SQL Database 圖格，然後選取 [繼續]。
-1. 輸入您之前選取的 SQL 伺服器名稱。
-1. 選取 [建立]。
+1. 從清單中選取 **Azure SQL Database** 圖格，然後選取 [繼續]。
+1. 輸入您選取的 SQL 伺服器名稱。
+1. 選取 [建立]  。
 1. 在等候幾秒鐘之後，您應該會看到建立的私人連結需要核准。
 1. 選取之前建立的私人端點。 您會看到超連結，引導您在 SQL 伺服器層級核准私人端點。
 
 
-#### <a name="approval-of-a-private-link-in-sql-server"></a>在 SQL 伺服器中核准私人連結
-1. 在 SQL 伺服器中，移至 [設定] 區段下的 [私人端點連線]。
-1. 勾選您先前建立的私人端點，然後選取 [核准]。
-1. 新增 [描述]，然後按一下 [是]。
-1. 回到 Azure Data Factory 中 [管理] 索引標籤的 [受控私人端點] 區段。
-1. 需要大約 1-2 分鐘的時間，系統才會反映私人端點已獲核准的資訊。
+#### <a name="approval-of-a-private-link-in-sql-server"></a>在 SQL Server 中核准私人連結
+1. 在 SQL 伺服器中，移至**設定**區段下的**私人端點連線**。
+1. 選取您建立的私人端點核取方塊，然後選取 [核准]。
+1. 新增描述，然後選取 [是]。
+1. 回到 Data Factory 中**管理**索引標籤的**受控私人端點**區段。
+1. 系統應該需要一或兩分鐘的時間，才會核准您的私人端點。
 
 #### <a name="debug-and-publish-the-pipeline"></a>偵錯和發佈管線
 
 您可以先對管線執行偵錯，再將成品 (連結服務、資料集和管線) 發佈至 Data Factory 或您自己的 Azure Repos Git 存放庫。
 
 1. 若要對管線進行偵錯，請選取工具列上的 [偵錯]。 您可以在視窗底部的 [輸出] 索引標籤中檢視管線執行的狀態。
-2. 當管線可成功執行後，請在頂端的工具列中選取 [全部發佈]。 此動作會將您已建立的實體 (資料集和管線) 發佈至 Data Factory。
-3. 請靜待 [發佈成功] 訊息顯示。 若要檢視通知訊息，請按一下右上方的 [顯示通知] (鈴鐺按鈕)。
+1. 當管線可成功執行後，請在頂端的工具列中選取 [全部發佈]。 此動作會將您已建立的實體 (資料集和管線) 發佈至 Data Factory。
+1. 請靜待 [發佈成功] 訊息顯示。 若要查看通知訊息，請選取右上角的 [顯示通知] (鐘形按鈕)。
 
 
 #### <a name="summary"></a>摘要
-此範例中的管線會使用受控虛擬網路中的私人端點，將資料從 Blob 儲存體複製到 Azure SQL DB。 您已了解如何︰
+此範例中的管線會使用 Data Factory 受控虛擬網路中的私人端點，將資料從 Blob 儲存體複製到 SQL Database。 您已了解如何︰
 
-> * 建立 Data Factory
-> * 建立具有複製活動的管線
+* 建立資料處理站。
+* 建立具有複製活動的管線。
 

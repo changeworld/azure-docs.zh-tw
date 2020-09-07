@@ -1,7 +1,7 @@
 ---
 title: 媒體服務實體的篩選、排序和分頁
 titleSuffix: Azure Media Services
-description: 瞭解 Azure 媒體服務 v3 實體的篩選、排序和分頁。
+description: 了解 Azure 媒體服務 v3 實體的篩選、排序和分頁。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -9,55 +9,55 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: overview
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 96f08f75d0921fdf88b71c8e8dd2398a6b85ec6d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
-ms.translationtype: MT
+ms.openlocfilehash: 9a8cff3685cdaad011332adf58dc76f74976cd44
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258464"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300182"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒體服務實體的篩選、排序和分頁
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-本主題討論當您列出 Azure 媒體服務 v3 實體時，可用的 OData 查詢選項和分頁支援。
+本主題討論當您列出 Azure 媒體服務 v3 實體時可用的 OData 查詢選項和分頁支援。
 
 ## <a name="considerations"></a>考量
 
-* 類型之實體的屬性 `Datetime` 一律採用 UTC 格式。
-* 在您傳送要求之前，查詢字串中的空白字元應以 URL 編碼。
+* 屬於 `Datetime` 類型的實體屬性一律為 UTC 格式。
+* 查詢字串的空白應在您傳送要求之前以 URL 編碼。
 
 ## <a name="comparison-operators"></a>比較運算子
 
-您可以使用下列運算子，將欄位與常數值進行比較：
+您可以使用下列運算子來比較欄位與常數值：
 
-等號比較運算子：
+相等運算子：
 
-- `eq`：測試欄位是否 *等於* 常數值。
-- `ne`：測試欄位是否 *不等於* 常數值。
+- `eq`:測試欄位是否「等於」常數值。
+- `ne`:測試欄位是否「不等於」常數值。
 
 範圍運算子：
 
-- `gt`：測試欄位是否 *大於* 常數值。
-- `lt`：測試欄位是否 *小於* 常數值。
-- `ge`：測試欄位是否 *大於或等於* 常數值。
-- `le`：測試欄位是否 *小於或等於* 常數值。
+- `gt`:測試欄位是否「大於」常數值。
+- `lt`:測試欄位是否「小於」常數值。
+- `ge`:測試欄位是否「大於或等於」常數值。
+- `le`:測試欄位是否「小於或等於」常數值。
 
-## <a name="filter"></a>篩選
+## <a name="filter"></a>Filter
 
-用 `$filter` 來提供 OData 篩選參數，只找出您感興趣的物件。
+使用 `$filter` 來提供 OData 篩選參數，只尋找您感興趣的物件。
 
-下列 REST 範例會篩選資產的 `alternateId` 值：
+下列 REST 範例會依據資產的 `alternateId` 值篩選：
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
 ```
 
-下列 c # 範例會篩選資產的建立日期：
+下列 C# 範例會依據資產的建立日期篩選：
 
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
@@ -66,30 +66,30 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ## <a name="order-by"></a>排序依據
 
-用 `$orderby` 來依指定的參數排序傳回的物件。 例如：  
+使用 `$orderby`，依據指定的參數排序傳回的物件。 例如：  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-若要以遞增或遞減順序排序結果，請將 `asc` 或附加 `desc` 到功能變數名稱，並以空格分隔。 例如：`$orderby properties/created desc`。
+若要以遞增或遞減順序排序結果，請將 `asc` 或 `desc` 附加至欄位名稱，並以空格分隔。 例如：`$orderby properties/created desc`。
 
 ## <a name="skip-token"></a>略過權杖
 
-如果查詢回應包含許多專案，則服務會傳回 `$skiptoken` `@odata.nextLink` 您用來取得下一個結果頁面的 () 值。 您可以使用它來逐頁查看整個結果集。
+如果查詢回應包含許多項目，服務會傳回 `$skiptoken` (`@odata.nextLink`) 值，您用於取得下一頁的結果。 將其用來逐頁查看整個結果集。
 
-在媒體服務 v3 中，您無法設定頁面大小。 頁面大小會因實體類型而異。 閱讀下列各節以取得詳細資料。
+在媒體服務 v3 中，您無法設定頁面大小。 頁面大小會因實體的類型而異。 閱讀後續各節以取得詳細資訊。
 
-如果在您逐頁查看集合時建立或刪除實體，則變更會反映在傳回的結果中 (如果這些變更屬於尚未下載) 的集合部分。
+如果逐頁查看集合時建立或刪除了實體，則所做的變更會反映在傳回的結果中 (如果這些變更屬於尚未下載的集合)。
 
 > [!TIP]
-> 一律使用 `nextLink` 來列舉集合，而不相依于特定頁面大小。
+> 一律使用 `nextLink` 來列舉集合，而不依存於特定頁面大小。
 >
-> `nextLink`只有當有一個以上的實體頁面時，才會出現此值。
+> 只有在有一頁以上的實體時，才會顯示 `nextLink` 值。
 
-請考慮下列使用位置的範例 `$skiptoken` 。 請務必將 amstestaccount** 取代為您的帳戶名稱，並將 api-version** 值設為最新版本。
+請參考下列使用 `$skiptoken` 的範例。 請務必將 amstestaccount** 取代為您的帳戶名稱，並將 api-version** 值設為最新版本。
 
-如果您要求資產清單，如下所示：
+如果您要求的資產清單如下：
 
 ```
 GET  https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
@@ -97,7 +97,7 @@ x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
 Content-Type: application/json; charset=utf-8
 ```
 
-您將會得到類似以下的回應：
+您將會收到如下所示的回應：
 
 ```
 HTTP/1.1 200 OK
@@ -125,7 +125,7 @@ HTTP/1.1 200 OK
 https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
 ```
 
-下列 c # 範例顯示如何列舉帳戶中的所有串流定位器。
+下列 C# 範例說明如何列舉帳戶中的所有 StreamingLocator。
 
 ```csharp
 var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
@@ -137,9 +137,9 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-## <a name="using-logical-operators-to-combine-query-options"></a>使用邏輯運算子來合併查詢選項
+## <a name="using-logical-operators-to-combine-query-options"></a>使用邏輯運算子來結合查詢選項
 
-媒體服務 v3 支援 **OR** 和 **and 邏輯運算子** 。 
+媒體服務 v3 支援 **OR** 和 **AND** 邏輯運算子。 
 
 下列 REST 範例會檢查作業的狀態：
 
@@ -147,18 +147,18 @@ while (currentPage.NextPageLink != null)
 https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qbtest/providers/Microsoft.Media/mediaServices/qbtest/transforms/VideoAnalyzerTransform/jobs?$filter=properties/state%20eq%20Microsoft.Media.JobState'Scheduled'%20or%20properties/state%20eq%20Microsoft.Media.JobState'Processing'&api-version=2018-07-01
 ```
 
-您可以用 c # 來建立相同的查詢，如下所示： 
+您會在 C# 中建構相同的查詢，如下所示： 
 
 ```csharp
 var odataQuery = new ODataQuery<Job>("properties/state eq Microsoft.Media.JobState'Scheduled' or properties/state eq Microsoft.Media.JobState'Processing'");
 client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransformName, odataQuery);
 ```
 
-## <a name="filtering-and-ordering-options-of-entities"></a>篩選和排序實體的選項
+## <a name="filtering-and-ordering-options-of-entities"></a>實體的篩選和排序選項
 
-下表說明如何將篩選和排序選項套用至不同的實體：
+下表顯示如何將篩選和排序選項套用至不同的實體：
 
-|實體名稱|屬性名稱|篩選|單|
+|實體名稱|屬性名稱|Filter|單|
 |---|---|---|---|
 |[資產](/rest/api/media/assets/)|名稱|`eq`, `gt`, `lt`, `ge`, `le`|`asc` 和 `desc`|
 ||properties.alternateId |`eq`||

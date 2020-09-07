@@ -222,6 +222,8 @@
                   href: ./spark/apache-spark-version-support.md
             - name: Azure Synapse Studio 筆記本
               href: ./spark/apache-spark-development-using-notebooks.md
+            - name: 使用 TokenLibrary 保護認證
+              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
             - name: 適用於 Apache Spark 的 .NET
               href: ./spark/spark-dotnet.md
             - name: Apache Spark 機器學習
@@ -248,7 +250,7 @@
               href: sql/best-practices-sql-on-demand.md
             - name: SQL 集區最佳做法
               href: sql/best-practices-sql-pool.md
-        - name: 載入資料
+        - name: 資料內嵌和準備
           items:
             - name: 概觀
               href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -416,7 +418,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 升級至 Gen2
               href: ./sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: 載入資料
+    - name: 資料內嵌和準備
       items:
         - name: 匯入資料倉儲
           items:

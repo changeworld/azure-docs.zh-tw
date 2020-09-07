@@ -4,14 +4,14 @@ description: 教學課程：了解如何使用開放原始碼 Azure Cosmos DB �
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 08/31/2020
 ms.author: dech
-ms.openlocfilehash: 5c9eb2409b67d71882406c21728fbf2429eb16a9
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9992d6f1f9f1d0aad6f451d6a974f4df9f655881
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118758"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255982"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>教學課程：使用資料移轉工具將您的資料移轉至 Azure Cosmos DB
 
@@ -40,6 +40,9 @@ ms.locfileid: "85118758"
 * **增加輸送量：** 資料移轉的持續時間長短取決於您為個別集合或一組集合設定的輸送量。 針對較大資料移轉，請務必增加輸送量。 完成移轉之後，再降低輸送量以節省成本。 如需在 Azure 入口網站增加輸送量的詳細資訊，請參閱 Azure Cosmos DB 中的[效能等級](performance-levels.md)和[定價層](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 
 * **建立 Azure Cosmos DB 資源：** 在您開始移轉資料之前，請先從 Azure 入口網站預先建立所有集合。 若要遷移至具有資料庫層級輸送量的 Azure Cosmos DB 帳戶，請在建立 Azure Cosmos 容器時提供分割區索引鍵。
+
+> [!IMPORTANT]
+> 若要確定資料移轉工具在連線到您的 Azure Cosmos 帳戶時使用傳輸層安全性 (TLS) 1.2，請使用 .NET Framework 版本 4.7，或遵循[這篇文章](https://docs.microsoft.com/dotnet/framework/network-programming/tls)中的指示進行。
 
 ## <a name="overview"></a><a id="Overviewl"></a>概觀
 

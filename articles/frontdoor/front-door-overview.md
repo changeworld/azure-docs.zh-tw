@@ -3,21 +3,21 @@ title: Azure Front Door | Microsoft Docs
 description: 本文提供 Azure Front Door 的概觀。 了解其是否為平衡應用程式使用者流量負載的最佳選擇。
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2019
-ms.author: sharadag
-ms.openlocfilehash: 081305170020aa35511ad574bd8c5575c192d577
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.date: 09/02/2020
+ms.author: duau
+ms.openlocfilehash: 003903a941b0d9ce36f28ce5e4d640e5746a7de3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322291"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378180"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door 是什麼？
 Azure Front Door 可讓您針對最佳效能和快速全域容錯移轉以獲得高可用性最佳化，定義、管理及監視網路流量的全域路由。 透過 Front Door，您可以將全球 (多區域) 消費者和企業應用程式轉換成健全、高效能的個人化新式應用程式、API，以及觸及 Azure 全球對象的內容。
@@ -81,6 +81,10 @@ HTTP/2 通訊協定都可透過長時間執行的 TCP 連線，讓應用程式�
 ## <a name="pricing"></a>定價
 
 如需定價資訊，請參閱 [Front Door 定價](https://azure.microsoft.com/pricing/details/frontdoor/)。
+
+## <a name="whats-new"></a>新功能
+
+訂閱 RSS 摘要，並在 [Azure 更新](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door)頁面上檢視最新的 Azure Load Balancer 功能更新。
 
 ## <a name="next-steps"></a>後續步驟
 

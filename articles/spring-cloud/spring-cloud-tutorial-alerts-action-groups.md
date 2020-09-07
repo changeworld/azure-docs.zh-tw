@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: c31c52d278c1e40b18b3308ca154b934d060d403
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071169"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299221"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>教學課程：如何使用警示和動作群組監視 Spring Cloud 資源
 
@@ -24,7 +24,7 @@ Azure Spring Cloud 警示支援根據可用的儲存體、要求率或資料使�
 
 ## <a name="prerequisites"></a>必要條件
 
-除了 Azure Spring 需求，本教學課程中的程序也會使用已部署的 Azure Spring Cloud 執行個體。  請遵循[快速入門](spring-cloud-quickstart-launch-app-cli.md)以開始使用。
+除了 Azure Spring 需求，本教學課程中的程序也會使用已部署的 Azure Spring Cloud 執行個體。  請遵循[快速入門](spring-cloud-quickstart.md)以開始使用。
 
 下列程序會同時初始化從 Spring Cloud 執行個體左側導覽窗格中的 [警示] 選項啟動的 [動作群組] 和 [警示]。 (此程序也可以從 Azure 入口網站的 [監視器概觀] 頁面啟動。) 
 
@@ -76,11 +76,11 @@ Azure Spring Cloud 警示支援根據可用的儲存體、要求率或資料使�
 
 1. 選取條件。 此範例會使用 [系統 CPU 使用量百分比]。
 
-   ![入口網站新增警示規則的螢幕擷取畫面](media/alerts-action-groups/alerts-3-1.png)
+   ![入口網站新增警示規則的螢幕擷取畫面 2](media/alerts-action-groups/alerts-3-1.png)
 
 1. 向下捲動 [設定訊號邏輯] 窗格，以設定要監視的 [閾值]。
 
-   ![入口網站新增警示規則的螢幕擷取畫面](media/alerts-action-groups/alerts-3-2.png)
+   ![入口網站新增警示規則的螢幕擷取畫面 3](media/alerts-action-groups/alerts-3-2.png)
 
 1. 按一下 [完成] 。
 
@@ -88,7 +88,7 @@ Azure Spring Cloud 警示支援根據可用的儲存體、要求率或資料使�
 
  在 [動作] 下方，按一下 [選取動作群組]。 從 [動作] 窗格中選取先前定義的 [動作群組]。
 
-   ![入口網站新增警示規則的螢幕擷取畫面](media/alerts-action-groups/alerts-3-3.png) 
+   ![入口網站新增警示規則的螢幕擷取畫面 4](media/alerts-action-groups/alerts-3-3.png) 
 
 1. 向下捲動，並在 [警示詳細資料] 下方為警示規則命名。
 
@@ -96,15 +96,15 @@ Azure Spring Cloud 警示支援根據可用的儲存體、要求率或資料使�
 
 1. 按一下 [建立警示規則]。
 
-   ![入口網站新增警示規則的螢幕擷取畫面](media/alerts-action-groups/alerts-3-4.png)
+   ![入口網站新增警示規則的螢幕擷取畫面 5](media/alerts-action-groups/alerts-3-4.png)
 
 確認新的警示規則已啟用。
 
-   ![入口網站新增警示規則的螢幕擷取畫面](media/alerts-action-groups/alerts-4.png)
+   ![入口網站新增警示規則的螢幕擷取畫面 6](media/alerts-action-groups/alerts-4.png)
 
 您也可以使用 [計量] 頁面來建立規則：
 
-   ![入口網站新增警示規則的螢幕擷取畫面](media/alerts-action-groups/alerts-5.png)
+   ![入口網站新增警示規則的螢幕擷取畫面 7](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>後續步驟
 

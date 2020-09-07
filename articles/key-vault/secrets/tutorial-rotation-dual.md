@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 0d2ee8fbcb71d8703702f2c72e0bf629563667b9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: bf4864e0c6342cbd4729d5b99479eb2ef1a2c48c
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542190"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378214"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>針對使用兩組驗證認證的資源，將秘密的輪替自動化
 
-向 Azure 服務進行驗證的最佳方式是使用[受控識別](../general/managed-identity.md)，但在某些情況下並無法使用此選項。 在這類情況下，應使用存取金鑰或密碼。 存取金鑰和密碼應經常輪替。
+向 Azure 服務進行驗證的最佳方式是使用[受控識別](../general/authentication.md)，但在某些情況下並無法使用此選項。 在這類情況下，應使用存取金鑰或密碼。 存取金鑰和密碼應經常輪替。
 
 本教學課程示範如何針對使用兩組驗證認證的資料庫和服務自動執行定期的秘密輪替。 具體而言，本教學課程會使用 Azure 事件方格通知所觸發的函式，來輪替儲存在 Azure Key Vault 中做為祕密的 Azure 儲存體帳戶金鑰。 所解碼的字元：
 
@@ -91,7 +91,7 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 1. 請選取 [檢閱 + 建立]。
 1. 選取 [建立] 
 
-   ![檢閱 + 建立](../media/secrets/rotation-dual/dual-rotation-2.png)
+   ![檢閱並建立第一個儲存體帳戶](../media/secrets/rotation-dual/dual-rotation-2.png)
 
 完成上述步驟之後，您將會有儲存體帳戶、伺服器陣列、函數應用程式、Application Insights。 完成部署後，您應該會看到下列畫面：![部署完成](../media/secrets/rotation-dual/dual-rotation-3.png)
 > [!NOTE]
@@ -136,13 +136,13 @@ az keyvault secret set --name storageKey --vault-name akvrotation-kv --value <ke
 ```azurecli
 az keyvault secret show --vault-name akvrotation-kv --name storageKey
 ```
-請注意，`CredentialId` 會更新為替代 `keyName`，`value` 會重新產生![秘密顯示](../media/secrets/rotation-dual/dual-rotation-4.png)
+請注意，`CredentialId` 會更新為替代的 `keyName` 並會重新產生`value` ![第一個儲存體帳戶的 az keyvault secret show 輸出](../media/secrets/rotation-dual/dual-rotation-4.png)。
 
 取出存取金鑰以驗證值
 ```azurecli
 az storage account keys list -n akvrotationstorage 
 ```
-![存取金鑰清單](../media/secrets/rotation-dual/dual-rotation-5.png)
+![第一個儲存體帳戶的 az 儲存體帳戶金鑰清單輸出](../media/secrets/rotation-dual/dual-rotation-5.png)
 
 ## <a name="add-additional-storage-accounts-for-rotation"></a>新增其他儲存體帳戶以進行輪替
 
@@ -164,7 +164,7 @@ az storage account keys list -n akvrotationstorage
 1. 請選取 [檢閱 + 建立]。
 1. 選取 [建立] 
 
-   ![檢閱 + 建立](../media/secrets/rotation-dual/dual-rotation-7.png)
+   ![檢閱並建立第二個儲存體帳戶](../media/secrets/rotation-dual/dual-rotation-7.png)
 
 ### <a name="add-another-storage-account-access-key-to-key-vault"></a>將另一個儲存體帳戶存取金鑰新增至 Key Vault
 
@@ -190,13 +190,13 @@ az keyvault secret set --name storageKey2 --vault-name akvrotation-kv --value <k
 ```azurecli
 az keyvault secret show --vault-name akvrotation-kv --name storageKey2
 ```
-請注意，`CredentialId` 會更新為替代 `keyName`，`value` 會重新產生![秘密顯示](../media/secrets/rotation-dual/dual-rotation-8.png)
+請注意，`CredentialId` 會更新為替代的 `keyName` 並會重新產生`value` ![第二個儲存體帳戶的 az keyvault secret show 輸出](../media/secrets/rotation-dual/dual-rotation-8.png)。
 
 取出存取金鑰以驗證值
 ```azurecli
 az storage account keys list -n akvrotationstorage 
 ```
-![存取金鑰清單](../media/secrets/rotation-dual/dual-rotation-9.png)
+![第二個儲存體帳戶的 az 儲存體帳戶金鑰清單輸出](../media/secrets/rotation-dual/dual-rotation-9.png)
 
 ## <a name="available-key-vault-dual-credential-rotation-functions"></a>可用 Key Vault 雙重認證輪替函式
 

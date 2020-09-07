@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 898f63cbfba082f8c268587bcd2ea7f575d07f81
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420323"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299196"
 ---
 # <a name="what-is-azure-load-balancer"></a>什麼是 Azure Load Balancer？
 
@@ -74,6 +74,10 @@ Standard Load Balancer 在本質上建置於零信任網路安全性模型上。
 如需 Standard Load Balancer 的定價資訊，請參閱 [Load Balancer 定價](https://azure.microsoft.com/pricing/details/load-balancer/)。
 基本 Load Balancer 則是免費提供。
 請參閱[負載平衡器的 SLA](https://aka.ms/lbsla)。 基本負載平衡器沒有 SLA。
+
+## <a name="whats-new"></a>新功能
+
+訂閱 RSS 摘要，並在 [Azure 更新](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer)頁面上檢視最新的 Azure Load Balancer 功能更新。
 
 ## <a name="next-steps"></a>後續步驟
 請參閱[升級 Basic Load Balancer](upgrade-basic-standard.md)，將 Basic Load Balancer 升級為 Standard Load Balancer。

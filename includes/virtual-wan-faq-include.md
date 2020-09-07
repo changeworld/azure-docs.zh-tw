@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: eec99ae353d4e5ca1bede1afef135def96207c50
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604696"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89304080"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>使用者是否需要具有 SD-WAN/VPN 裝置的中樞與輪輻才能使用 Azure 虛擬 WAN？
 
@@ -249,9 +249,12 @@ ER 對 ER 之間的傳輸一律透過全域範圍進行。 虛擬中樞閘道會
 
 目前的行為是偏好透過中樞對中樞的 ExpressRoute 線路路徑來進行 VNet 對 VNet 連線。 不過，在虛擬 WAN 設定中不鼓勵這麼做。 虛擬 WAN 小組正致力於修正，啟用透過 ExpressRoute 路徑的中樞對中樞喜好設定。 建議適用於多個 ExpressRoute 線路 (不同的提供者) 來連線到一個中樞，並且針對區域間流量使用虛擬 WAN 提供的中樞對中樞連線。
 
+### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>可以在虛擬 WAN 的不同資源群組中建立中樞嗎？
+是。 此選項目前僅可透過 Powershell 取得。 虛擬 WAN 入口網站會在與虛擬 WAN 資源本身相同的資源群組中託管中樞。
+
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>虛擬 WAN 中是否支援 IPv6？
 
-虛擬 WAN 中樞和其閘道不支援 IPv6。 如果您的 VNet 具有 IPv6 支援，並且想要將 VNet 連線至虛擬 WAN，則此情況目前不受支援。
+虛擬 WAN 中樞和其閘道不支援 IPv6。 如果您的 VNet 具有 IPv4 與 IPv6 支援，並且想要將 VNet 連線至虛擬 WAN，則此情況目前不受支援。 
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>自動化各種虛擬 WAN 功能的指令碼所使用的建議 API 版本為何？
 

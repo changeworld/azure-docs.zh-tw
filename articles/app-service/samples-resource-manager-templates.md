@@ -4,15 +4,15 @@ description: 尋找部分常見 App Service 案例的 Azure Resource Manager 範
 author: tfitzmac
 tags: azure-service-management
 ms.topic: sample
-ms.date: 01/04/2019
+ms.date: 08/26/2020
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 4ac8e7d51ce9a3d5694f2853219bb04869a91734
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5129fccceb633991767cdd3b52bbb5b6af067270
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517700"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891040"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Azure Resource Manager 的 App Service 範本
 
@@ -44,6 +44,7 @@ ms.locfileid: "86517700"
 | [在 Azure SQL Database 中具有資料庫的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| 在「基本」服務層級部署 App Service 應用程式與 Azure SQL Database 中的資料庫。 |
 | [具有 Blob 儲存體連線的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection) \(英文\)| 使用 Azure Blob 儲存體連接字串來部署 App Service 應用程式。 如此，您便可以從該應用程式使用 Blob 儲存體。 |
 | [具有 Azure Redis 快取的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache) \(英文\)| 部署具有「Azure Redis 快取」的 App Service 應用程式。 |
+| [連線到後端 webapp 的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection)| 部署兩個 Web 應用程式 (前端和後端)，確保可安全地與 VNet 插入和私人端點連線。 |
 |**App Service 環境**| **說明** |
 | [建立 App Service Environment v2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | 在虛擬網路中建立 App Service Environment v2。 |
 | [建立具有 ILB 位址的 App Service Environment v2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | 在虛擬網路中建立具有私人內部負載平衡位址的 App Service Environment v2。 |

@@ -4,12 +4,12 @@ description: 了解如何還原磁碟，並在 Azure 中使用備份與復原服
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 56ea3de451e625ef5c55f92daa1b86bd34b1c4c4
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: d93f3d24762f4b9a3da4a9e725d28810f6700fe0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141341"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890661"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>使用 Azure CLI 來還原 VM
 
@@ -59,7 +59,7 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>還原 VM 磁碟
 
 > [!IMPORTANT]
-> 強烈建議使用 Az CLI 2.0.74 版或更新版本，以取得快速還原的所有優點，包括受控磁碟還原。 使用者最好能一律使用最新版本。
+> 強烈建議使用 Az CLI 2.0.74 版或更新版本，以取得快速還原的所有優點，包括受控磁碟還原。 如果您一律使用最新版本，則建議您這麼做。
 
 ### <a name="managed-disk-restore"></a>受控磁碟還原
 
@@ -88,7 +88,7 @@ az backup recoverypoint list \
     ```
 
     > [!WARNING]
-    > 若未提供目標資源群組，則受控磁碟將會以非受控磁碟的形式還原至指定的儲存體帳戶。 這對還原時間會有明顯的影響，因為還原磁碟所花費的時間完全取決於指定的儲存體帳戶。 只有在指定 target-resource-group 參數時，客戶才能享有「立即還原」的好處。 如果想要將受控磁碟還原為非受控，則不要提供 target-resource-group 參數，而是改為提供 restore-as-unmanaged-disk 參數，如下所示。 此參數從 az 3.4.0 版之後開始提供。
+    > 若未提供**目標資源群組**，則受控磁碟將會以非受控磁碟的形式還原至指定的儲存體帳戶。 這對還原時間會有明顯的影響，因為還原磁碟所花費的時間完全取決於指定的儲存體帳戶。 只有在指定 target-resource-group 參數時，您才能享有「立即還原」的好處。 如果想要將受控磁碟還原為非受控，則不要提供 **target-resource-group** 參數，而是改為提供 **restore-as-unmanaged-disk** 參數，如下所示。 此參數從 az 3.4.0 版之後開始提供。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -101,11 +101,11 @@ az backup recoverypoint list \
     --restore-as-unmanaged-disk
     ```
 
-這會將受控磁碟當做非受控磁碟來還原至指定的儲存體帳戶，而不會利用「立即」還原功能。 在未來的 CLI 版本中，您必須提供 target-resource-group 參數或 'restore-as-unmanaged-disk' 參數。
+這會將受控磁碟當做非受控磁碟來還原至指定的儲存體帳戶，而不會利用「立即」還原功能。 在未來的 CLI 版本中，您必須提供 **target-resource-group** 參數或 **restore-as-unmanaged-disk** 參數。
 
 ### <a name="unmanaged-disks-restore"></a>非受控磁碟還原
 
-如果備份的 VM 具有非受控磁碟，且其目的是要從復原點還原磁碟，您必須先提供 Azure 儲存體帳戶。 此儲存體帳戶會用來儲存 VM 組態和部署範本，以便後續用來從還原的磁碟部署 VM。 根據預設，非受控磁碟會還原至其原始儲存體帳戶。 如果使用者想要將所有非受控磁碟還原至單一位置，則也可以使用指定的儲存體帳戶作為這些磁碟的暫存位置。
+如果備份的 VM 具有非受控磁碟，且其目的是要從復原點還原磁碟，您必須先提供 Azure 儲存體帳戶。 此儲存體帳戶會用來儲存 VM 組態和部署範本，以便後續用來從還原的磁碟部署 VM。 根據預設，非受控磁碟會還原至其原始儲存體帳戶。 如果想要將所有非受控磁碟還原至單一位置，則也可以使用指定的儲存體帳戶作為這些磁碟的暫存位置。
 
 在其他步驟中，已還原的磁碟用來建立 VM。
 

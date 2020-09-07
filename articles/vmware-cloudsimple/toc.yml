@@ -178,3 +178,7 @@
               href: on-premises-connection.md
             - name: 透過 ExpressRoute 的 Azure 虛擬網路連線
               href: azure-expressroute-connection.md
+    - name: 版本資訊
+      items:
+        - name: CloudSimple 2020 年 9 月更新
+          href: update-plan-sept-2020.md

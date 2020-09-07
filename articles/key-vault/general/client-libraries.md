@@ -9,16 +9,16 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9cc8c1e9406f6b92a445cd52a4ad26e71d83ef5a
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 34321ac9baf3d3cb43dace33b574cb582c2d72a0
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263778"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378945"
 ---
 # <a name="client-libraries-for-azure-key-vault"></a>Azure Key Vault 的用戶端程式庫
 
-Azure Key Vault 的用戶端程式庫可讓您以程式設計方式存取各種語言的 Key Vault 功能，包括 .NET、Python、Java 和 Javascript。
+Azure Key Vault 的用戶端程式庫可讓您以程式設計方式存取各種語言的 Key Vault 功能，包括 .NET、Python、Java 和 JavaScript。
 
 ## <a name="client-libraries-per-language-and-object"></a>每個語言和物件的用戶端程式庫
 
@@ -34,4 +34,4 @@ Azure Key Vault 的用戶端程式庫可讓您以程式設計方式存取各種�
 ## <a name="next-steps"></a>後續步驟
 
 - 參閱 [Azure Key Vault 開發人員指南](developers-guide.md)
-- 深入了解[適用於 Azure Key Vault 的受控識別](managed-identity.md)
+- 深入了 [向金鑰保存庫進行驗證](authentication.md)

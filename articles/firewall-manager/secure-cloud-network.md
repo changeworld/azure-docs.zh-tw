@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420816"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079110"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>教學課程：使用 Azure 防火牆管理員來保護您的虛擬中樞
 
@@ -32,6 +32,10 @@ ms.locfileid: "87420816"
 > * 部署伺服器
 > * 建立防火牆原則並保護您的中樞
 > * 測試防火牆
+
+## <a name="prerequisites"></a>必要條件
+
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>建立中樞和輪輻架構
 
@@ -150,7 +154,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 8. 針對虛擬網路選取 **Spoke-01**，然後針對子網路選取 **Workload-01-SN**。
 9. 在 [公用 IP] 中，選取 [無]。
 11. 接受其他預設值，然後選取 [下一步：管理]。
-12. 選取 [關閉] 來停用開機診斷。 接受其他預設值，然後選取 [檢閱 + 建立]。
+12. 選取 [關閉]  來停用開機診斷。 接受其他預設值，然後選取 [檢閱 + 建立]。
 13. 檢閱摘要頁面上的設定，然後選取 [建立]。
 
 使用下表中的資訊來設定另一個名為 **Srv-Workload-02** 的虛擬機器。 其餘的組態與 **Srv-workload-01** 虛擬機器相同。
@@ -220,7 +224,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 3. 在 [中樞] 索引標籤上，選取 [建立虛擬中樞的關聯]。
 4. 選取 **Hub-01**，然後選取 [新增]。
 5. 選取 [檢閱 + 建立]。
-6. 選取 [建立]。
+6. 選取 [建立]  。
 
 這可能需要大約 5 分鐘或更久的時間才能完成。
 
@@ -252,7 +256,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 
    您應該會看到 Microsoft 首頁。
 
-5. 瀏覽至 https://www.google.com 。
+5. 瀏覽至 https://www.google.com。
 
    您應該會遭到防火牆封鎖。
 
@@ -270,6 +274,10 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 
 因此，現在您已確認防火牆網路規則正在運作：
 * 您可以將遠端桌面連線到位於另一個虛擬網路中的伺服器。
+
+## <a name="clean-up-resources"></a>清除資源
+
+當您完成防火牆資源的測試時，請刪除 **fw-manager** 資源群組，以刪除所有防火牆相關資源。
 
 ## <a name="next-steps"></a>後續步驟
 

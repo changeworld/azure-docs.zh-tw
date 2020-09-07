@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b88d9132ec1548c9d94fc418af35b55ac2836e96
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3ea9923dd98a49b1533defa3e95616655b7ea78d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121233"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299298"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務設定地理柵欄
 
@@ -258,15 +258,15 @@ Azure 地圖服務支援三種事件類型。 您可以在[這裡](https://docs.
 
 5. 針對您在上一節中建立的邏輯應用程式退出端點，重複步驟 1-4。 在步驟 3 中，請務必選擇 `Geofence Exited` 作為事件種類。
 
-## <a name="use-search-geofence-get-api"></a>使用 Search Geofence Get API
+## <a name="use-spatial-geofence-get-api"></a>使用 Spatial Geofence Get API
 
-現在，我們將使用 [Search Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)，在設備進入或離開地理柵欄時，傳送電子郵件通知給 Operations Manager。
+現在，我們將使用 [Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)，在設備進入或離開地理柵欄時，傳送電子郵件通知給 Operations Manager。
 
 每個設備都有一個 `deviceId`。 在本教學課程中，我們將追蹤單一設備，其唯一識別碼為 `device_1`。
 
 為了清楚起見，下圖顯示裝置在一段時間內的五個位置，從「開始」位置開始，也就是地理柵欄以外的地方。 基於本教學課程的目的，「開始」 位置並未定義，因為我們不會在該位置查詢裝置。
 
-當我們查詢 [Search Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 了解指出初始地理柵欄進入或結束的設備位置時，事件方格會呼叫適當的邏輯應用程式端點，將電子郵件通知傳送至 Operations Manager。
+當我們查詢 [Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 了解指出初始地理柵欄進入或結束的設備位置時，事件方格會呼叫適當的邏輯應用程式端點，將電子郵件通知傳送至 Operations Manager。
 
 下列各節會使用五個不同的設備位置座標，讓 HTTP GET Geofencing API 發出要求。
 

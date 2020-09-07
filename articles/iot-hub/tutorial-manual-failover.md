@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 26679a7111e11eaf48e948fa6d3622814327433a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 69a0795b9c299b5113c39ce2c4556573f730e4b7
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252567"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013940"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>教學課程：執行手動容錯移轉 IoT 中樞
 
@@ -30,6 +30,8 @@ ms.locfileid: "86252567"
 > * 查看在次要位置中執行的中樞。
 > * 執行容錯回復以將 IoT 中樞的作業傳回主要位置。 
 > * 確認中樞在正確的位置中正確執行。
+
+如需有關使用 IoT 中樞進行手動容錯移轉和 Microsoft 起始容錯移轉的詳細資訊，請參閱[跨區域災害復原](iot-hub-ha-dr.md#cross-region-dr)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -83,7 +85,7 @@ ms.locfileid: "86252567"
 
    執行手動容錯移轉所花費的時間與您中樞註冊的裝置數目成正比。 例如，如果您有 100,000 部裝置，可能需要 15 分鐘，但如果您有 5,000,000 部裝置，則可能需要一小時或更久。
 
-   ![顯示 [手動容錯移轉] 窗格的螢幕擷取畫面](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
+   ![顯示 [手動容錯移轉] 確認窗格的螢幕擷取畫面](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
    執行手動容錯移轉程序時會出現橫幅，告知您正在進行手動容錯移轉。 
 

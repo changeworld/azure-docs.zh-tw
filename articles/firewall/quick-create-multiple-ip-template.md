@@ -1,19 +1,19 @@
 ---
 title: 快速入門：阵立具有多個公用 IP 位址的 Azure 防火牆 - Resource Manager 範本
-description: 了解如何使用 Azure Resource Manager 範本 (ARM 範本) 建立具有多個公用 IP 位址的 Azure 防火牆和 IP 群組。
+description: 在本快速入門中，了解如何使用 Azure Resource Manager 範本 (ARM 範本) 建立具有多個公用 IP 位址的 Azure 防火牆和 IP 群組。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 04/14/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 41190cd52e29b187182589f93e9d494d05943cf8
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 282ce16c926c61008d0ebd70106b161425a15c9e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705430"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079076"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>快速入門：建立具有多個公用 IP 位址的 Azure 防火牆 - ARM 範本
 

@@ -3,190 +3,126 @@ title: 向 Azure Key Vault 進行驗證
 description: 了解如何向 Azure Key Vault 進行驗證
 author: ShaneBala-keyvault
 ms.author: sudbalas
-ms.date: 06/08/2020
+ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6336a0d4d8aa9c781befed0470d9a190af5aa9eb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1ef5b2229aadc4be46361a7319351a1f27b28b63
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930854"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378964"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>向 Azure Key Vault 進行驗證
 
-## <a name="overview"></a>概觀
+Azure Key Vault 可讓您在集中式、安全的雲端存放庫中儲存祕密並控管其散發，而不需要將認證儲存在應用程式中。 應用程式只需要在執行階段使用 Key Vault 進行驗證，即可存取這些祕密。
 
-Azure Key Vault 是一種秘密管理解決方案，可讓您集中儲存應用程式秘密，並控制其散發。 Azure Key Vault 不需要在應用程式中儲存認證。 您的應用程式可以向金鑰保存庫進行驗證，以擷取所需的認證。 本文件將涵蓋向金鑰保存庫進行驗證的基本概念。
+## <a name="app-identity-and-service-principals"></a>應用程式身分識別與服務主體
 
-本文件將協助您了解金鑰保存庫驗證的運作方式。 本文件將說明驗證流程、示範如何授與金鑰保存庫的存取權，以及包含一個教學課程，教導如何從範例 python 應用程式擷取金鑰保存庫中儲存的秘密。
+使用 Key Vault 進行驗證時，會與 [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) 搭配使用，其會負責驗證任何指定**安全性主體**的身分識別。
 
-本文件將涵蓋：
+安全性主體是一個物件，代表要求存取 Azure 資源的使用者、群組、服務或應用程式。 Azure 會為每個安全性主體指派唯一的**物件識別碼**。
 
-* 重要概念
-* 安全性主體註冊
-* 了解 Key Vault 驗證流程
-* 授與服務主體存取 Key Vault 的權限
-* 教學課程 (Python)
+* **使用者**安全性主體會識別在 Azure Active Directory 中具有設定檔的個人。
 
-## <a name="key-concepts"></a>重要概念
+* **群組**安全性主體會識別在 Azure Active Directory 中建立的一組使用者。 指派給群組的任何角色或權限都會授與群組中的所有使用者。
 
-### <a name="azure-active-directory-concepts"></a>Azure Active Directory 概念
+* **服務主體**是一種安全性主體，會識別應用程式或服務 (也就是一段程式碼，而不是使用者或群組)。 服務主體的物件識別碼稱為其**用戶端識別碼**，作用就像其使用者名稱。 服務主體的**用戶端密碼**作用就像其密碼。
 
-* Azure Active Directory (AAD) - Azure Active Directory (Azure AD) 是 Microsoft 的雲端型身分識別和存取管理服務，可協助您的員工登入及存取資源
+有兩種方式可取得應用程式服務主體：
 
-* 角色定義 - 角色定義是權限集合。  AAD 具有標準角色 (擁有者、參與者或讀者)，其中包含在 Azure 資源上執行讀取、寫入和刪除等作業的權限層級。 角色也可以是自訂定義，而這些自訂定義是由具有特定細微權限的使用者所建立。
+* 建議您為應用程式啟用系統指派的**受控識別**。
 
-* 應用程式註冊 - 當您註冊 Azure AD 應用程式時，Azure AD 租用戶中會建立兩個物件︰應用程式物件和服務主體物件。 將應用程式物件視為應用程式的全域代表 (用於所有租用戶)，而將服務主體看做是本機代表 (用於特定租用戶)。
+    使用受控識別，Azure 會在內部管理應用程式的服務主體，並使用其他 Azure 服務自動驗證應用程式。 部署至各種服務的應用程式均可使用受控識別。
 
-### <a name="security-principal-concepts"></a>安全性主體概念
+    如需詳細資訊，請參閱[受控識別概觀](/azure/active-directory/managed-identities-azure-resources/overview)。 另請參閱[支援受控識別的 Azure 服務](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)連結，包括描述如何為特定服務 (例如 App Service、Azure Functions、虛擬機器等等) 啟用受控識別的文章。
 
-* 安全性主體 - 安全性主體是一個物件，代表要求存取 Azure 資源的使用者、群組、服務主體或受控識別。
+* 如果無法使用受控識別，請改為向 Azure AD 租用戶**註冊**應用程式，如[快速入門：向 Microsoft 身分識別平台註冊應用程式](/azure/active-directory/develop/quickstart-register-app)中所述。 註冊也會建立可在所有租用戶中識別應用程式的第二個應用程式物件。
 
-* 使用者 - 在 Azure Active Directory 中具有設定檔的個人。
+## <a name="authorize-a-service-principal-to-access-key-vault"></a>授權服務主體存取 Key Vault
 
-* 群組 - 在 Azure Active Directory 中建立的一組使用者。 當您將角色指派給群組時，該群組內的所有使用者都具有該角色。
+Key Vault 適用於兩種不同的授權層級：
 
-* 服務主體 - 應用程式或服務用來存取特定 Azure 資源的安全性身分識別。 您可以將其視為應用程式的使用者身分識別 (使用者名稱和密碼或憑證)。
+- **存取原則**控制是否授權使用者、群組或服務主體存取現有 Key Vault 資源「內」的祕密、金鑰和憑證 (有時也稱為「資料平面」作業)。 存取原則通常會授與使用者、群組和應用程式。
 
-* 受控識別 - 在 Azure Active Directory 中由 Azure 自動管理的身分識別。
+    若要指派存取原則，請參閱下列文章：
 
-* 物件識別碼 - Azure AD 所產生的唯一識別碼，會在其初始佈建期間繫結至服務主體。
+    - [Azure 入口網站](assign-access-policy-portal.md)
+    - [Azure CLI](assign-access-policy-cli.md)
+    - [Azure PowerShell](assign-access-policy-portal.md)
 
-## <a name="security-principal-registration"></a>安全性主體註冊
+- **角色權限**會控制是否授權使用者、群組或服務主體建立、刪除及管理 Key Vault 資源 (也稱為「管理平面」作業)。 通常只會將這類角色授與管理員。
+ 
+    若要指派和管理角色，請參閱下列文章：
 
-1. 管理員會在 Azure Active Directory 中註冊使用者或應用程式 (服務主體)。
+    - [Azure 入口網站](/azure/role-based-access-control/role-assignments-portal)
+    - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
+    - [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 
-2. 管理員會建立 Azure Key Vault 並設定存取原則 (ACL)。
+    Key Vault 目前支援[參與者](/azure/role-based-access-control/built-in-roles#key-vault-contributor)角色，允許在 Key Vault 資源上進行管理作業。 有一些其他角色目前為預覽狀態。 您也可以建立自訂角色，如 [Azure 自訂角色](/azure/role-based-access-control/custom-roles)所述。
 
-3. (選擇性) 管理員會設定 Azure Key Vault 防火牆。
+    如需角色的一般資訊，請參閱[什麼是角色型存取控制 (RBAC)？](/azure/role-based-access-control/overview)。
 
-![IMAGE](../media/authentication-1.png)
 
-## <a name="understand-the-key-vault-authentication-flow"></a>了解 Key Vault 驗證流程
+> [!IMPORTANT]
+> 為了達到最佳安全性，請一律遵循最低權裉的主體，並僅授與所需的最特定存取原則和角色。 
+    
+## <a name="configure-the-key-vault-firewall"></a>設定 Key Vault 防火牆
 
-1. 服務主體會進行呼叫，以向 AAD 進行驗證，這種情況可能會以數種方式發生：
+根據預設，Key Vault 允許透過公用 IP 位址來存取資源。 為了達到最佳安全性，也可以限制只能存取特定 IP 範圍、服務端點、虛擬網路或私人端點。
+
+如需詳細資訊，請參閱[存取防火牆後方的 Azure Key Vault](/azure/key-vault/general/access-behind-firewall)。
+
+
+## <a name="the-key-vault-authentication-flow"></a>Key Vault 驗證流程
+
+1. 服務主體會要求向 Azure AD 進行驗證，例如：
     * 使用者可以藉由使用者名稱和密碼登入 Azure 入口網站。
-    * 應用程式會使用用戶端識別碼，並將用戶端密碼或用戶端憑證呈現給 AAD
-    * Azure 資源 (例如虛擬機器) 具有指派的 MSI，並會聯繫 IMDS REST 端點以取得存取權杖。
+    * 應用程式會叫用 Azure REST API，並出示用戶端識別碼和祕密或用戶端憑證。
+    * Azure 資源 (例如具有受控識別的虛擬機器) 會連線到 [Azure Instance Metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) REST 端點，以取得存取權杖。
 
-2. 如果向 AAD 進行驗證成功，則會將 OAuth 權杖授與服務主體。
-3. 服務主體會呼叫 Key Vault。
-4. Azure Key Vault 防火牆決定是否允許呼叫。
-    * 案例 1：Key Vault 防火牆已停用，可從公用網際網路觸達金鑰保存庫的公用端點 (URI)。 允許呼叫。
-    * 案例 2：呼叫者是 Azure Key Vault 信任的服務。 如果選取此選項，某些 Azure 服務可以略過金鑰保存庫防火牆。 [Key Vault 信任的服務清單](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
-    * 案例 3：呼叫者會依 IP 位址、虛擬網路或服務端點列示在 Azure Key Vault 防火牆中。
-    * 案例 4：呼叫者可以透過設定的私人連結連線觸達 Azure Key Vault。
-    * 案例 5：呼叫者未獲授權，且會傳回禁止回應。
-5. Key Vault 會呼叫 AAD 來驗證服務主體的存取權杖。
-6. Key Vault 會檢查服務主體是否有足夠的存取原則權限來執行要求的作業，在此範例中，作業是取得祕密。
-7. Key Vault 會將祕密提供給服務主體。
+1. 如果成功向 AAD 驗證，則會將 OAuth 權杖授與服務主體。
 
-![IMAGE](../media/authentication-2.png)
+1. 服務主體會透過 Key Vault 的端點 (URI) 呼叫 Key Vault REST API。
 
-## <a name="grant-a-service-principal-access-to-key-vault"></a>授與服務主體存取 Key Vault 的權限
+1. Key Vault 防火牆會檢查下列準則。 如果符合任一條件，則允許呼叫。 否則會封鎖呼叫，並傳回禁止的回應。
 
-1. 如果您還沒有服務主體，請建立一個。 [建立服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
-2. 在 Azure Key Vault IAM 設定中，將角色指派新增至您的服務主體。 您可以新增預先指派的擁有者、參與者或讀者角色。 也可以為您的服務主體建立自訂角色。 您應遵循最低權限的主體，並只提供服務主體所需的最小存取權。 
-3.  設定金鑰保存庫防火牆。 您可以讓金鑰保存庫防火牆保持停用狀態，並允許從公用網際網路存取 (較不安全，但更容易設定)。 也可以限制只能存取特定 IP 範圍、服務端點、虛擬網路或私人端點 (更安全)。
-4.  為您的服務主體新增存取原則，這是您服務主體可在金鑰保存庫上執行的作業清單。 您應該使用最低權限的主體，並限制服務主體可以執行的作業。 不過，如果您未提供足夠的權限，您的服務主體將會遭到拒絕存取。
+    * 防火牆已停用，且可從公用網際網路連線 Key Vault 的公用端點。
+    * 呼叫者是 [Key Vault 信任的服務](/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)，可讓其略過防火牆。
+    * 呼叫者會依 IP 位址、虛擬網路或服務端點列示在防火牆中。
+    * 呼叫者可以透過設定的私人連結連線觸達 Key Vault。    
 
-## <a name="tutorial"></a>教學課程
+1. 如果防火牆允許呼叫，Key Vault 會呼叫 Azure AD 來驗證服務主體的存取權杖。
 
-在本教學課程中，您將了解如何設定服務主體，以向 key vault 進行驗證並擷取秘密。 
+1. Key Vault 會檢查服務主體是否具有所要求之作業的必要存取原則。 如果沒有，Key Vault 會傳回禁止的回應。
 
-### <a name="part-1--create-a-service-principal-in-the-azure-portal"></a>第 1 部分：在 Azure 入口網站中建立服務主體
+1. Key Vault 會執行要求的作業並傳回結果。
 
-1. 登入 Azure 入口網站
-1. 搜尋 Azure Active Directory
-1. 按一下 [應用程式註冊] 索引標籤
-1. 按一下 [+ 新增註冊]
-1. 建立服務主體的名稱
-1. 選取 [註冊]
+下圖說明應用程式呼叫 Key Vault「取得秘密」API 的程序：
 
-此時您有已註冊的服務主體。 您可以選取 [應用程式註冊] 來檢視此服務主體。 現在會將用戶端識別碼 GUID 指派給您的服務主體，請將此視為您服務主體的「使用者名稱」。 現在，我們需要為您的服務主體建立「密碼」，您可以使用用戶端密碼或用戶端憑證。 請注意，使用用戶端密碼進行驗證並不安全，而且應該僅用於測試目的。 本教學課程將說明如何使用用戶端憑證。
+![Azure Key Vault 驗證流程](../media/authentication/authentication-flow.png)
 
-### <a name="part-2-create-a-client-certificate-for-your-service-principal"></a>第 2 部分：為您的服務主體建立用戶端憑證
+## <a name="code-examples"></a>程式碼範例
 
-1. 建立憑證
+下表會連結到不同文章，示範如何使用 Azure SDK 程式庫來處理應用程式程式碼中的 Key Vault，以取得有問題的語言。 為了方便起見，會納入例如 Azure CLI 和 Azure 入口網站等其他介面。
 
-    * 選項 1：使用 [OpenSSL](https://www.openssl.org/) 建立憑證 (僅供測試之用，請不要在生產環境中使用自我簽署憑證)
-    * 選項 2：使用金鑰保存庫建立憑證。 [在 Azure Key Vault 中建立憑證](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#creating-your-first-key-vault-certificate)
-
-1. 以 PEM/PFX 格式下載憑證
-1. 登入 Azure 入口網站，然後瀏覽至 Azure Active Directory
-1. 按一下 [應用程式註冊]
-1. 選取您在第 1 部分中建立的服務主體。
-1. 按一下服務主體的 [憑證和祕密] 索引標籤
-1. 使用 [上傳憑證] 按鈕來上傳憑證
-
-### <a name="part-3-configure-an-azure-key-vault"></a>第 3 部分：設定 Azure Key Vault
-
-1. 建立 Azure Key Vault [連結](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault)
-
-2. 設定 Key Vault IAM 權限
-    1. 瀏覽至您的金鑰保存庫
-    1. 選取 [存取控制 (IAM)] 索引標籤
-    1. 按一下 [新增角色指派]
-    1. 從下拉式清單中選取 [參與者] 角色
-    1. 輸入所建立服務主體的名稱或用戶端識別碼
-    1. 按一下 [檢視角色指派]，確認您的服務主體已列出
-
-3. 設定 Key Vault 存取原則權限
-    1. 瀏覽至您的金鑰保存庫
-    1. 選取 [設定] 底下的 [存取原則] 索引標籤
-    1. 選取 [+ 新增存取原則] 連結
-    1. 在 [秘密權限] 下拉式清單中，勾選 [取得] 和 [列出] 權限。
-    1. 依名稱或用戶端識別碼選取您的服務主體。
-    1. 選取 [新增]
-    1. 選取 [儲存]
-
-4. 在您的金鑰保存庫中建立秘密。
-    1. 瀏覽至您的金鑰保存庫
-    1. 按一下 [設定] 底下的 [秘密] 索引標籤
-    1. 選取 [+ 產生/匯入]
-    1. 建立祕密的名稱，在此範例中，我會將祕密命名為 "test"
-    1. 建立祕密的值，在此範例中，我會設定 "password123" 一值
-
-現在，從本機電腦執行程式碼時，您可以藉由呈現用戶端識別碼和憑證的路徑，藉以取得存取權杖，向金鑰保存庫進行驗證。
-
-### <a name="part-4-retrieve-the-secret-from-your-azure-key-vault-in-an-application-python"></a>第 4 部分：從應用程式中的 Azure Key Vault 擷取祕密 (Python)
-
-使用下列程式碼範例，測試您的應用程式是否可以使用您設定的服務主體，從金鑰保存庫中擷取秘密。 
-
-```python
-from azure.keyvault.secrets import SecretClient
-from azure.identity import CertificateCredential
-
-
-tenant_id = ""                                             ##ENTER AZURE TENANT ID
-vault_url = "https://{VAULT NAME}.vault.azure.net/"        ##ENTER THE URL OF YOUR KEY VAULT
-client_id = ""                                             ##ENTER CLIENT ID OF SERVICE PRINCIPAL
-cert_path = r"C:\Users\{USERNAME}\{PATH}\{CERT_NAME}.pem"  ##ENTER PATH TO CERTIFICATE
-
-def main():
-
-    #AUTHENTICATION TO AAD USING CLIENT ID AND CLIENT CERTIFICATE
-    token = CertificateCredential(tenant_id= tenant_id, client_id=client_id, certificate_path=cert_path)
-
-    #AUTHENTICATION TO KEY VAULT PRESENTING AAD TOKEN
-    client = SecretClient(vault_url=vault_url, credential=token)
-
-    #CALL TO KEY VAULT TO GET SECRET
-    secret = client.get_secret('{SECRET_NAME}')            ##ENTER NAME OF SECRET IN KEY VAULT
-
-    #GET PLAINTEXT OF SECRET
-    print(secret.value)
-
-#CALL MAIN()
-if __name__ == "__main__":
-    main()
-```
-
-![IMAGE](../media/authentication-3.png)
-
+| Key Vault 祕密 | Key Vault 金鑰 | Key Vault 憑證 |
+|  --- | --- | --- |
+| [Python](/azure/key-vault/secrets/quick-create-python) | [Python](/azure/key-vault/keys/quick-create-python) | [Python](/azure/key-vault/certificates/quick-create-python) | 
+| [.NET (SDK v4)](/azure/key-vault/secrets/quick-create-net) | -- | -- |
+| [.NET (SDK v3)](/azure/key-vault/secrets/quick-create-net-v3) | -- | -- |
+| [Java](/azure/key-vault/secrets/quick-create-java) | -- | -- |
+| [JavaScript](/azure/key-vault/secrets/quick-create-node) | -- | -- | 
+| | | |
+| [Azure 入口網站](/azure/key-vault/secrets/quick-create-portal) | [Azure 入口網站](/azure/key-vault/keys/quick-create-portal) | [Azure 入口網站](/azure/key-vault/certificates/quick-create-portal) |
+| [Azure CLI](/azure/key-vault/secrets/quick-create-cli) | [Azure CLI](/azure/key-vault/keys/quick-create-cli) | [Azure CLI](/azure/key-vault/certificates/quick-create-cli) |
+| [Azure PowerShell](/azure/key-vault/secrets/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/keys/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/certificates/quick-create-powershell) |
+| [ARM 範本](/azure/key-vault/secrets/quick-create-net) | -- | -- |
 
 ## <a name="next-steps"></a>後續步驟
 
-1. 了解如何對金鑰保存庫驗證錯誤進行疑難排解。 [Key Vault 疑難排解指南](https://docs.microsoft.com/azure/key-vault/general/rest-error-codes)
+- [Key Vault 存取原則疑難排解](troubleshooting-access-issues.md)
+- [Key Vault REST API 錯誤碼](rest-error-codes.md)
+- [金鑰保存庫開發人員指南](developers-guide.md)
+- [什麼是 Azure 角色型存取控制 (RBAC)？](/azure/role-based-access-control/overview)

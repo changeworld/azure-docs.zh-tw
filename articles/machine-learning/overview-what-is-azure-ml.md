@@ -9,18 +9,18 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 53ccd610c6f0f36d4ab04efbada2070a22975023
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 2c043ab535504a02a151d308de0562debdba950a
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650106"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145887"
 ---
 # <a name="what-is-azure-machine-learning"></a>什麼是 Azure Machine Learning？
 
 在本文中，您會了解 Azure Machine Learning，這是一種雲端式環境，可用來定型、部署、自動化、管理及追蹤 ML 模型。 
 
-Azure Machine Learning 可用於任何一種機器學習，從傳統 ML 到深度學習、受監督和不受監督的學習。 無論您想要撰寫 Python 或 R 程式碼或使用零程式碼/低程式碼選項 (例如[設計工具](tutorial-designer-automobile-price-train-score.md))，都可以在 Azure Machine Learning 工作區中建立、定型和追蹤高精確度的機器學習和深度學習模型。 
+Azure Machine Learning 可用於任何一種機器學習，從傳統 ML 到深度學習、受監督和不受監督的學習。 無論您偏好使用 SDK 撰寫 Python 或 R 程式碼或在 [Studio](#build-ml-models-in-the-studio) 中使用零程式碼/低程式碼選項，都可以在 Azure Machine Learning 工作區中建立、定型及追蹤機器學習和深度學習模型。 
 
 開始訓練您的本機電腦，然後向外擴增到雲端。 
 
@@ -63,27 +63,31 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 
 使用 Azure Machine Learning <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> 或 <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>，開始訓練您的本機電腦。 然後可以擴增至雲端。 
 
-透過許多可用的[計算目標](how-to-set-up-training-targets.md) (例如 Azure Machine Learning Compute 和 [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)) 及[進階的超參數微調服務](how-to-tune-hyperparameters.md)，您可以使用雲端功能更快地建置更好的模型。
+透過許多可用的[計算目標](how-to-create-attach-compute-sdk.md) (例如 Azure Machine Learning Compute 和 [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)) 及[進階的超參數微調服務](how-to-tune-hyperparameters.md)，您可以使用雲端功能更快地建置更好的模型。
 
 您也可以使用 SDK，[自動進行模型定型和微調](tutorial-auto-train-models.md)。
 
-## <a name="build-ml-models-with-no-code-tools"></a>使用無程式碼的工具建置 ML 模型
+## <a name="build-ml-models-in-the-studio"></a>在 Studio 中建置 ML 模型
 
-若要進行無程式碼或低程式碼的訓練和部署，請嘗試：
+[Azure Machine Learning Studio](https://www.ml.azure.com) 是 Azure Machine Learning 中的 Web 入口網站，適用於可供模型定型、部署和資產管理的低程式碼和無程式碼選項。 Studio 會與 Azure Machine Learning SDK 整合，以提供順暢的體驗。 如需詳細資訊，請參閱[什麼是 Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md)。
 
 + **Azure Machine Learning 設計工具 (預覽)**
 
-  使用設計工具來準備資料、定型、測試、部署、管理和追蹤機器學習模型，而不需撰寫任何程式碼。 不需要設計程式，就能以視覺化方式連線資料集和模組來建構模型。 試用[設計工具教學課程](tutorial-designer-automobile-price-train-score.md)。
+  使用[設計工具](concept-designer.md)來定型和部署機器學習模型，而不需撰寫任何程式碼。 請嘗試[設計工具教學課程](tutorial-designer-automobile-price-train-score.md)以開始使用。 
 
-  若要深入了解，請參閱 [Azure Machine Learning 設計工具概觀文章](concept-designer.md)。 
+  ![Azure Machine Learning 設計工具之拖放式介面的動畫 gif](media/concept-designer/designer-drag-and-drop.gif)
 
-  ![Azure Machine Learning 設計工具範例](./media/overview-what-is-azure-ml/designer-drag-and-drop.gif)
++ **追蹤實驗**
 
-+ **自動化機器學習 UI**
+  了解如何在 Studio 中 [追蹤和視覺化資料科學實驗](tutorial-first-experiment-automated-ml.md)。 
 
-  了解如何在易於使用的介面中建立[自動化 ML 實驗](tutorial-first-experiment-automated-ml.md)。 
+    ![Azure Machine Learning Studio 中的執行詳細資料](media/how-to-track-experiments/experimentation-tab.gif)
 
-  [![Azure Machine Learning Studio 導覽窗格](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)
+
++ **不勝枚舉...**
+
+  請造訪位於 [ml.azure.com](https://www.ml.azure.com)的 Azure Machine Learning Studio。 
+
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps：部署和生命週期管理
 當您有正確的模型時，您可以在 Web 服務中、在 IoT 裝置上或從 Power BI 輕鬆使用它。 如需詳細資訊，請參閱有關[如何部署和部署位置](how-to-deploy-and-where.md)的文章。

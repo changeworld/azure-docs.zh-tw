@@ -1,16 +1,16 @@
 ---
 title: 已啟用 Azure Arc 的伺服器 (預覽) 概觀
-description: 了解如何使用已啟用伺服器的 Azure Arc (預覽) 來管理裝載於 Azure 外部的機器，就如同管理 Azure 資源一樣。
+description: 了解如何使用已啟用 Azure Arc 的伺服器 (預覽) 來管理裝載於 Azure 外部的伺服器，如同 Azure 資源一樣。
 keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新管理, 變更追蹤, 清查, Runbook, python, 圖形, 混合式
 ms.custom: references_regions
 ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: dfc4d8e046cef5af7c3eaf0d31ce2d6120dfc8f2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: c368307df911f5143541bb5337eb76a208416909
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211328"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228082"
 ---
 # <a name="what-is-azure-arc-enabled-servers-preview"></a>什麼是已啟用 Azure Arc 的伺服器 (預覽)？
 
@@ -51,4 +51,4 @@ Connected Machine 代理程式每隔 5 分鐘會定期將活動訊號訊息傳�
 
 ## <a name="next-steps"></a>後續步驟
 
-在為多部混合式電腦評估或啟用已啟用 Arc 的伺服器 (預覽) 之前，請參閱[連線的電腦代理程式概觀](agent-overview.md)一文，了解所需的項目、代理程式的相關技術詳細資料，以及部署方法。
+在為多部混合式電腦評估或啟用已啟用 Arc 的伺服器 (預覽) 之前，請參閱[連線的電腦代理程式概觀](agent-overview.md)來了解需求、代理程式的相關技術詳細資料，以及部署方法。

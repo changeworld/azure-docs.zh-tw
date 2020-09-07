@@ -1,7 +1,7 @@
 ---
-title: 使用 AES 加密影片-128
+title: 使用 AES-128 加密影片
 titleSuffix: Azure Media Services
-description: 瞭解如何使用 AES 128 位加密來加密影片，以及如何使用 Azure 媒體服務中的金鑰傳遞服務。
+description: 了解如何使用 AES 128 位元加密來加密影片，以及如何在 Azure 媒體服務中使用金鑰傳遞服務。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -11,56 +11,56 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d8bc270549f702f9ba277b3514a3332d16b52d8d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
-ms.translationtype: MT
+ms.openlocfilehash: 5347479d32dc9f4909483dc63891e8057fd7ff86
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267168"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289319"
 ---
-# <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>教學課程：使用 AES-128 來加密影片，並使用金鑰傳遞服務
+# <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>教學課程：以 AES-128 加密影片並使用金鑰傳遞服務
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
 > 雖然教學課程使用 [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 範例，但是 [REST API](/rest/api/media/liveevents)、[CLI](/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支援 [SDK](media-services-apis-overview.md#sdks) 的一般步驟都相同。
 
-您可以利用 128 位元加密金鑰，使用媒體服務提供 HTTP 即時串流 (HLS)、MPEG-DASH，和透過 AES 加密的 Smooth Streaming。 媒體服務也提供加密金鑰傳遞服務，將加密金鑰傳遞至授權的使用者。 如果您想要媒體服務動態加密您的影片，您可以建立加密金鑰與串流定位器的關聯，同時設定內容金鑰原則。 當播放程式要求串流時，媒體服務會使用指定的金鑰，以 AES-128 動態加密您的內容。 為了將串流解密，播放程式將向金鑰傳遞服務要求金鑰。 為了判斷使用者是否有權取得金鑰，服務會評估您為金鑰指定的內容金鑰原則。
+您可以利用 128 位元加密金鑰，使用媒體服務提供 HTTP 即時串流 (HLS)、MPEG-DASH，和透過 AES 加密的 Smooth Streaming。 媒體服務也提供加密金鑰傳遞服務，將加密金鑰傳遞至授權的使用者。 如果您需要媒體服務動態加密影片，就需要建立加密金鑰與 StreamingLocator 的關聯，同時設定內容金鑰原則。 播放程式要求串流時，媒體服務便會使用指定的金鑰動態透過 AES-128 加密您的內容。 為了將串流解密，播放程式將向金鑰傳遞服務要求金鑰。 為了判斷使用者是否有權取得金鑰，服務會評估您為金鑰指定的內容金鑰原則。
 
-您可以使用多種加密類型 (AES-128、PlayReady、Widevine、FairPlay) 來加密每項資產。 請參閱[串流通訊協定和加密類型](content-protection-overview.md#streaming-protocols-and-encryption-types)，以查看哪些組合可行。 此外，請參閱 [如何使用 DRM 進行保護](protect-with-drm.md)。
+您可以使用多種加密類型 (AES-128、PlayReady、Widevine、FairPlay) 來加密每項資產。 請參閱[串流通訊協定和加密類型](content-protection-overview.md#streaming-protocols-and-encryption-types)，以查看哪些組合可行。 另請參閱[如何使用 DRM 保護](protect-with-drm.md)。
 
-本文範例的輸出包含 Azure 媒體播放機的 URL、資訊清單 URL，以及播放內容所需的 AES 權杖。 此範例會將 JSON Web 權杖的到期時間 (JWT) Token 設定為1小時。 您可以開啟瀏覽器並貼上產生的 URL，以啟動 Azure 媒體播放器示範頁面，其中已為您填入 URL 和權杖，格式如下：```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```。
+本文中範例的輸出包括 Azure 媒體播放器 URL、資訊清單 URL 以及播放內容所需的 DASH 資訊清單和 AES 權杖。 範例會將 JSON Web 權杖 (JWT) 權杖的到期時間設定為 1 小時。 您可以開啟瀏覽器並貼上產生的 URL，以啟動 Azure 媒體播放器示範頁面，其中已為您填入 URL 和權杖，格式如下：```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```。
 
 本教學課程說明如何：
 
 > [!div class="checklist"]
-> * 下載本文中所述的 [>encryptwithaes](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) 範例。
-> * 開始搭配使用媒體服務 Api 與 .NET SDK。
+> * 下載本文中所述的 [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) 範例。
+> * 開始使用媒體服務 API 搭配 .NET SDK。
 > * 建立輸出資產。
 > * 建立編碼轉換。
 > * 提交作業。
-> * 等候作業完成。
+> * 等待作業完成。
 > * 建立內容金鑰原則
 > * 設定原則以使用 JWT 權杖限制。
 > * 建立串流定位器。
-> * 使用 AES (ClearKey) 設定串流定位器來加密影片。
+> * 設定串流定位器以 AES (ClearKey) 加密影片。
 > * 取得測試權杖。
-> * 建立串流 URL。
+> * 建置串流 URL。
 > * 清除資源。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 需要有下列項目，才能完成教學課程。
 
 * 請檢閱[內容保護概觀](content-protection-overview.md)文章。
 * 安裝 Visual Studio Code 或 Visual Studio。
 * [建立媒體服務帳戶](./create-account-howto.md)。
-* 透過下列 [存取 api](./access-api-howto.md)取得使用媒體服務 api 所需的認證。
+* 藉由遵循[存取 API](./access-api-howto.md) 以取得使用媒體服務 API 所需的認證。
 
 ## <a name="download-code"></a>下載程式碼
 
@@ -73,11 +73,11 @@ ms.locfileid: "89267168"
 「使用 AES-128 加密」範例位於 [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) 資料夾中。
 
 > [!NOTE]
-> 此範例會在您每次執行應用程式時建立唯一的資源。 一般來說，您會重複使用現有的資源，例如轉換和原則 (如果現有的資源有必要的設定) 。
+> 此範例會在您每次執行應用程式時建立唯一的資源。 一般而言，您會重複使用現有的資源，例如轉換和原則 (如果現有資源具有必要的組態)。
 
 ## <a name="start-using-media-services-apis-with-net-sdk"></a>開始搭配使用媒體服務 API 與 .NET SDK
 
-若要開始搭配使用媒體服務 Api 與 .NET，請建立 **AzureMediaServicesClient** 物件。 若要建立物件，您需要提供必要的認證，讓用戶端使用 Azure AD 連線至 Azure。 在您於本文一開始複製的程式碼中，**GetCredentialsAsync** 函式會根據本機設定檔中提供的認證建立 ServiceClientCredentials 物件。
+若要開始搭配使用媒體服務 API 與 .NET，請建立 **AzureMediaServicesClient** 物件。 若要建立物件，您需要提供必要的認證，讓用戶端使用 Azure AD 連線至 Azure。 在您於本文一開始複製的程式碼中，**GetCredentialsAsync** 函式會根據本機設定檔中提供的認證建立 ServiceClientCredentials 物件。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateMediaServicesClient)]
 
@@ -89,9 +89,9 @@ ms.locfileid: "89267168"
 
 ## <a name="get-or-create-an-encoding-transform"></a>取得或建立編碼轉換
 
-建立新的[轉換](/rest/api/media/transforms)執行個體時，您需要指定想要其產生的輸出是什麼。 必要的參數是 **TransformOutput** 物件，如下列程式碼所示。 每個 **TransformOutput** 都會包含 **Preset (預設)** 。 **Preset** 會描述影片和/或音訊處理作業的逐步指示，以產生所需的 **TransformOutput**。 本文中所述的範例會使用稱為 **AdaptiveStreaming** 的內建 Preset。 預設會根據輸入解析度和位元速率，將輸入影片編碼為自動產生的位元速率階梯 (位元速率解析組) ，然後使用 h.264 影片和 AAC 音訊（對應至每個位元速率解析組）來產生 ISO 的檔。
+建立新的[轉換](/rest/api/media/transforms)執行個體時，您需要指定想要其產生的輸出是什麼。 必要的參數是 **TransformOutput** 物件，如下列程式碼所示。 每個 **TransformOutput** 都會包含 **Preset (預設)** 。 **Preset** 會描述影片和/或音訊處理作業的逐步指示，以產生所需的 **TransformOutput**。 本文中所述的範例會使用稱為 **AdaptiveStreaming** 的內建 Preset。 Preset 會根據輸入解析度和位元速率，將輸入影片編碼為自動產生的位元速率階梯 (位元速率-解析度配對)，並產生 H.264 影片與 AAC 音訊標準 (對應到每個 位元速率-解析度配對) 的 ISO MP4 檔案。
 
-建立新 [轉換](/rest/api/media/transforms)之前，請先使用 **Get** 方法檢查是否已存在，如下列程式碼所示。 在媒體服務 v3 中，如果實體不存在，對實體執行的 **Get** 方法會傳回 **null** (檢查名稱時不區分大小寫)。
+在建立新的[轉換](/rest/api/media/transforms)之前，請先使用 **Get** 方法檢查是否已有轉換存在，如後續程式碼所示。 在媒體服務 v3 中，如果實體不存在，對實體執行的 **Get** 方法會傳回 **null** (檢查名稱時不區分大小寫)。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#EnsureTransformExists)]
 
@@ -99,7 +99,7 @@ ms.locfileid: "89267168"
 
 如同前面所述，[轉換](/rest/api/media/transforms)物件是配方，而[作業](/rest/api/media/jobs)則是實際要求媒體服務，將**轉換**套用至指定的輸入影片或音訊內容。 **作業**會指定輸入影片的位置、輸出的位置等資訊。
 
-在本教學課程中，我們會根據直接從 [HTTPs 來源 URL](job-input-from-http-how-to.md)內嵌的檔案來建立作業的輸入。
+在本教學課程中，我們會根據直接從 [HTTP 來源 URL](job-input-from-http-how-to.md) 內嵌的檔案，建立作業的輸入。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#SubmitJob)]
 
@@ -113,45 +113,45 @@ ms.locfileid: "89267168"
 
 ## <a name="create-a-content-key-policy"></a>建立內容金鑰原則
 
-內容金鑰可提供資產的安全存取。 您必須建立 **內容金鑰原則** ，以設定將內容金鑰傳遞給終端用戶端的方式。 內容金鑰會與 **串流定位器**相關聯。 媒體服務也提供加密金鑰傳遞服務，將加密金鑰傳遞至授權的使用者。
+內容金鑰可提供資產的安全存取。 您必須建立**內容金鑰原則**，該原則會設定內容金鑰傳送給終端用戶端的方式。 內容金鑰會與**串流定位器**相關聯。 媒體服務也提供加密金鑰傳遞服務，將加密金鑰傳遞至授權的使用者。
 
-當播放程式要求串流時，媒體服務會使用指定的金鑰動態加密您的內容 (在這種情況下，使用 AES 加密。 ) 將串流解密，播放程式會向金鑰傳遞服務要求金鑰。 為了判斷使用者是否有權取得金鑰，服務會評估您為金鑰指定的內容金鑰原則。
+播放器要求串流時，媒體服務會使用指定的金鑰動態加密您的內容 (在此案例中是使用 AES 加密)。為了將串流解密，播放程式將向金鑰傳遞服務要求金鑰。 為了判斷使用者是否有權取得金鑰，服務會評估您為金鑰指定的內容金鑰原則。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetOrCreateContentKeyPolicy)]
 
 ## <a name="create-a-streaming-locator"></a>建立串流定位器
 
-編碼完成且設定好內容金鑰原則後，下一個步驟是要讓用戶端可播放輸出資產中的視訊。 您可以利用兩個步驟來提供影片：
+編碼完成且設定好內容金鑰原則後，下一個步驟是要讓用戶端可播放輸出資產中的視訊。 您可以使用兩個步驟來提供影片：
 
-1. 建立 [串流定位器](/rest/api/media/streaminglocators)。
+1. 建立[串流定位器](/rest/api/media/streaminglocators)。
 2. 建置用戶端可使用的串流 URL。
 
-建立 **串流定位器** 的程式稱為「發佈」。 根據預設， **串流定位器** 會在您進行 API 呼叫後立即生效。 除非您設定選擇性的開始和結束時間，否則它會一直持續到刪除為止。
+建立**串流定位器**的程序稱為發佈。 根據預設，在您進行 API 呼叫之後，**串流定位器**就會立即生效。 除非您設定了開始和結束時間 (選用)，否則定位器會持續到刪除為止。
 
-建立 [串流定位器](/rest/api/media/streaminglocators)時，您必須指定所需的 **>streamingpolicyname**。 在本教學課程中，我們會使用其中一個 PredefinedStreamingPolicies，告訴 Azure 媒體服務如何發行內容以進行串流。 在此範例中，會套用 AES 信封加密 (此加密也稱為 ClearKey 加密，因為金鑰是透過 HTTPS 傳遞給播放用戶端，而不是 DRM 授權) 。
+建立[串流定位器](/rest/api/media/streaminglocators)時，您必須指定所需的 **StreamingPolicyName**。 在本教學課程中，我們會使用其中一個 PredefinedStreamingPolicies，這會告訴 Azure 媒體服務如何發行內容以進行串流。 在此範例中，會套用 AES Envelope 加密 (此加密也稱為 ClearKey 加密，因為金鑰傳遞至播放用戶端是透過 HTTPS 而不是 DRM 授權)。
 
 > [!IMPORTANT]
-> 使用自訂的 [StreamingPolicy](/rest/api/media/streamingpolicies) 時，您應該為媒體服務帳戶設計一組受限的這類原則，並且在需要相同的加密選項和通訊協定時，對 StreamingLocators 重新使用這些原則。 媒體服務帳戶有 StreamingPolicy 項目的數量配額。 您不應該為每個串流定位器建立新的 StreamingPolicy。
+> 使用自訂的 [StreamingPolicy](/rest/api/media/streamingpolicies) 時，您應該為媒體服務帳戶設計一組受限的這類原則，並且在需要相同的加密選項和通訊協定時，對 StreamingLocators 重新使用這些原則。 媒體服務帳戶有 StreamingPolicy 項目的數量配額。 您不應為每個串流定位器建立新的串流原則。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateStreamingLocator)]
 
 ## <a name="get-a-test-token"></a>取得測試權杖
 
-在本教學課程中，我們會指定內容金鑰原則具有權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援 [JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) 格式的權杖，這就是我們在範例中設定的內容。
+在本教學課程中，我們會指定內容金鑰原則具有權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援 [JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) 格式的權杖，這就是我們在範例中設定的項目。
 
-ContentKeyIdentifierClaim 用於 **內容金鑰原則**中，這表示向金鑰傳遞服務提出的權杖必須具有內容金鑰的識別碼。 在此範例中，我們並未在建立串流定位器時指定內容金鑰，系統為我們建立了一個隨機金鑰。 若要產生測試權杖，我們必須取得要放入 ContentKeyIdentifierClaim 宣告中的 ContentKeyId。
+ContentKeyIdentifierClaim 用於**內容金鑰原則**，表示向金鑰傳遞服務提出的權杖必須具有 ContentKey 的識別碼。 在此範例中，我們在建立串流定位器時不指定內容金鑰，系統會為我們隨機建立一個金鑰。 為了產生測試權杖，我們必須取得 ContentKeyId，以將其放入 ContentKeyIdentifierClaim 宣告中。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
 
 ## <a name="build-a-dash-streaming-url"></a>建置 DASH 串流 URL
 
-現在已建立 [串流定位器](/rest/api/media/streaminglocators) ，您可以取得串流 url。 若要建立 URL，您需要串連 [StreamingEndpoint](/rest/api/media/streamingendpoints) 主機名稱和 **串流定位器** 路徑。 此範例會使用預設的**串流端點**。 初次建立媒體服務帳戶時，此預設的**串流端點**會處於停止狀態，因此您需要呼叫 **Start**。
+建立了[串流定位器](/rest/api/media/streaminglocators)之後，現在您就可以取得串流 URL。 若要建置 URL，您需要串連 [StreamingEndpoint](/rest/api/media/streamingendpoints) 主機名稱和**串流定位器**路徑。 此範例會使用預設的**串流端點**。 初次建立媒體服務帳戶時，此預設的**串流端點**會處於停止狀態，因此您需要呼叫 **Start**。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>清除媒體服務帳戶中的資源
 
-一般而言，您應該清除您打算重複使用的物件以外的所有專案 (通常會重複使用轉換、串流定位器等) 。 如果您想要在實驗之後有乾淨的帳戶，請刪除您不打算重複使用的資源。 例如，下列程式碼會刪除作業、已建立的資產和內容金鑰原則：
+一般而言，您應清除所有項目，而只保留您預計要重複使用的物件 (您通常會重複使用轉換、串流定位器等)。 如果您想要在實驗之後有乾淨的帳戶，請刪除您不打算重複使用的資源。 例如，下列程式碼會刪除作業、已建立的資產和內容金鑰原則：
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CleanUp)]
 

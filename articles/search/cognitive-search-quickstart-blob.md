@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: db9e8f71787026abea74fbbfeed51a227a295601
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 8fba7245475c9873a3e2d3abeda4806d1376e7ca
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488948"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300029"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 認知搜尋的認知技能集
 
@@ -29,7 +29,7 @@ ms.locfileid: "84488948"
 
 + Azure 認知搜尋服務。 在目前的訂用帳戶下，[建立服務](search-create-service-portal.md)或[尋找現有的服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
 
-+ 具有 [Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/)的 Azure 儲存體帳戶。
++ 具有 [Blob 儲存體](../storage/blobs/index.yml)的 Azure 儲存體帳戶。
 
 > [!NOTE]
 > 此快速入門也會為 AI 使用 [Azure 認知服務](https://azure.microsoft.com/services/cognitive-services/)。 由於工作負載很小，因此認知服務會在幕後連線以進行免費處理，最多 20 筆交易。 這表示您可以完成此練習，而不必建立其他認知服務資源。
@@ -40,7 +40,7 @@ ms.locfileid: "84488948"
 
 1. [下載範例資料](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，其中有不同類型的小型檔案集。 將檔案解壓縮。
 
-1. [建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)，或[尋找現有帳戶](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。 
+1. [建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)，或[尋找現有帳戶](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。 
 
    + 選擇與 Azure 認知搜尋相同的區域，以避免產生頻寬費用。 
 
@@ -76,7 +76,7 @@ ms.locfileid: "84488948"
 
 1. 在本快速入門中，我們將使用**免費**的認知服務資源。 範例資料包含 14 個檔案，因此認知服務20 筆交易的免費配額就足以供本快速入門使用。 
 
-   ![附加認知服務](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   ![附加認知服務附加基底服務](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
 1. 展開 [新增擴充]，然後進行四項選擇。 
 
@@ -86,7 +86,7 @@ ms.locfileid: "84488948"
 
    選擇實體辨識 (人員、組織、位置) 和影像分析技能。
 
-   ![附加認知服務](media/cognitive-search-quickstart-blob/skillset.png)
+   ![附加認知服務選取技能集的服務](media/cognitive-search-quickstart-blob/skillset.png)
 
    繼續進行下一頁。
 
@@ -169,7 +169,7 @@ ms.locfileid: "84488948"
 
 輸出會導向至搜尋索引，且在編製索引期間建立的名稱/值配對會與索引中的個別欄位相對應。 就內部而言，入口網站會設定[註解](cognitive-search-concept-annotations-syntax.md)並定義[技能集](cognitive-search-defining-skillset.md)，以建立作業順序和一般流程。 這些步驟會隱藏在入口網站中，但是當您開始撰寫程式碼時，這些概念就會變得很重要。
 
-最後，您已了解可以藉由查詢索引來驗證內容。 最終，Azure 認知搜尋所提供的就是可搜尋的索引，且您可以使用[簡單](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)或[完全展開的查詢語法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)加以查詢。 包含擴充欄位的索引都彼此類似。 無論您想要加入標準或[自訂分析器](search-analyzers.md)、[評分設定檔](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[同義字](search-synonyms.md)、[多面向篩選](search-filters-facets.md)、地理搜尋，或任何其他 Azure 認知搜尋功能，全都沒有問題。
+最後，您已了解可以藉由查詢索引來驗證內容。 最終，Azure 認知搜尋所提供的就是可搜尋的索引，且您可以使用[簡單](/rest/api/searchservice/simple-query-syntax-in-azure-search)或[完全展開的查詢語法](/rest/api/searchservice/lucene-query-syntax-in-azure-search)加以查詢。 包含擴充欄位的索引都彼此類似。 無論您想要加入標準或[自訂分析器](search-analyzers.md)、[評分設定檔](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[同義字](search-synonyms.md)、[多面向篩選](search-filters-facets.md)、地理搜尋，或任何其他 Azure 認知搜尋功能，全都沒有問題。
 
 ## <a name="clean-up-resources"></a>清除資源
 

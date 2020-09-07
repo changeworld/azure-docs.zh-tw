@@ -1,20 +1,20 @@
 ---
 title: 快速入門：使用 PowerShell 引導網路流量
 titleSuffix: Azure Application Gateway
-description: 深入了解如何使用 Azure PowerShell 建立 Azure 應用程式閘道，該應用程式閘道會將網路流量導向至後端集區中的虛擬機器。
+description: 在本快速入門中，深入了解如何使用 Azure PowerShell 建立 Azure 應用程式閘道，該應用程式閘道會將網路流量導向至後端集區中的虛擬機器。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3e1ca14d967b0e88ea7eb559fd9962a3824ff9b0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 115f01bffc4664798682923cb83a99a23a8ce274
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406216"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958315"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>快速入門：透過 Azure PowerShell 使用 Azure 應用程式閘道引導網路流量
 
@@ -24,14 +24,14 @@ ms.locfileid: "81406216"
 
 您也可以使用 [Azure CLI](quick-create-cli.md) 或 [Azure 入口網站](quick-create-portal.md)完成本快速入門。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>Prerequisites
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Azure PowerShell 1.0.0 版或更新版本](/powershell/azure/install-az-ps) (如果您在本機執行 Azure PowerShell)。
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="connect-to-azure"></a>連線到 Azure
 

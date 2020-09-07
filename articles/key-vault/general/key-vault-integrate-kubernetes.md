@@ -1,19 +1,22 @@
 ---
 title: 整合 Azure Key Vault 與 Kubernetes
 description: 在本教學課程中，您將使用祕密存放區容器儲存體介面 (CSI) 驅動程式從 Azure 金鑰保存庫存取及擷取祕密，以便掛接至 Kubernetes Pod。
-author: rkarlin
-ms.author: rkarlin
+author: ShaneBala-keyvault
+ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
-ms.date: 06/04/2020
-ms.openlocfilehash: 1942576037c7367612580a04d4187ccf4655aade
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 08/25/2020
+ms.openlocfilehash: bfcaf9d4b1d03457f2e4cddd2e0eaf9d9d58eee2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685879"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869179"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教學課程：在 Kubernetes 上，為祕密存放區 CSI 驅動程式設定及執行 Azure Key Vault 提供者
+
+> [!IMPORTANT]
+> CSI Driver 是一項開放原始碼專案，不受 Azure 技術支援。 請在頁面底部的 github 連結中，回報有關 CSI Driver Key Vault 整合的所有意見反應和問題。 此工具可供使用者自行安裝到叢集，並從社群收集意見反應。
 
 在本教學課程中，您將使用祕密存放區容器儲存體介面 (CSI) 驅動程式從 Azure 金鑰保存庫存取及擷取祕密，以便將祕密掛接至 Kubernetes Pod。
 

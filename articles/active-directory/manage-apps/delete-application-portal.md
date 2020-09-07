@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 422c174116bb6973993f5c6093a83f8bdb42a62a
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 659d136695943d846fe57986d4b64a37f0d8f30e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808230"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300114"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>快速入門：從您的 Azure Active Directory (Azure AD) 租用戶中刪除應用程式
 
@@ -30,6 +30,7 @@ ms.locfileid: "87808230"
 - 選擇性：完成[檢視您的應用程式](view-applications-portal.md)。
 - 選擇性：完成[新增應用程式](add-application-portal.md)。
 - 選擇性：完成[設定應用程式](add-application-portal-configure.md)。
+- 選擇性：完成[將使用者指派至應用程式](add-application-portal-assign-users.md)。
 - 選擇性：完成[設定單一登入](add-application-portal-setup-sso.md)。
 
 >[!IMPORTANT]

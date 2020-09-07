@@ -4,41 +4,32 @@ description: 了解 Azure Migrate 服務中的新功能和最新更新。
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e32c7433649cc6716a57a6aa2384c1e2d266e102
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85556927"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927165"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新功能
 
 [Azure Migrate](migrate-services-overview.md) 可協助您探索及評定內部部署伺服器、應用程式與資料，並將其移轉至 Microsoft Azure 雲端。 此文章摘要說明 Azure Migrate 中的新版本及新功能。
+
+## <a name="update-august-2020"></a>更新 (2020 年 8 月)
+
+- 改善的上線體驗，其中 Azure Migrate 專案金鑰會從入口網站產生並用於完成設備註冊。
+- 從入口網站下載 OVA/VHD 檔案或安裝程式指令碼，以便分別設定 VMware 和 Hyper-V 設備的選項。
+- 以增強的使用者體驗，重新整理了設備設定管理員。
+- 用於 Hyper-V VM 探索的多個認證支援。
+- 已改善新增認證和探索來源的搜尋、排序和篩選功能。
+- 單一項目輸入、多個項目輸入和匯入 CSV 選項，可讓使用者新增 Hyper-V 主機/叢集和實體伺服器的探索來源。
+- 針對資料表中每個新增的來源進行驗證和探索作業的狀態更新，進而增強錯誤體驗。 
 
 ## <a name="update-june-2020"></a>更新 (2020 年 6 月)
 
 - 現在支援將內部部署 VMware VM 遷移至 [Azure VMware 解決方案 (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) 的評量。 [深入了解](how-to-create-azure-vmware-solution-assessment.md)
 - 支援應用裝置上的多個認證以進行實體伺服器探索。
 - 對於已設定租用戶限制的租用戶，支援允許從設備進行 Azure 登入。
-- 新的 Azure Migrate 設備版本如下所列。
-
-### <a name="azure-public-cloud"></a>Azure 公用雲端
-
-**案例** | **下載** | **SHA256**
---- | --- | ---
-Hyper-V (8.93 GB) | [最新版本](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
-VMware (10.9 GB) | [最新版本](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
-實體 (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
-
-
-### <a name="azure-government"></a>Azure Government
-
-**案例** | **下載** | **SHA256**
---- | --- | ---
-Hyper-V (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
-VMware (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
-實體 (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
-
 
 
 ## <a name="update-april-2020"></a>更新 (2020 年 4 月)

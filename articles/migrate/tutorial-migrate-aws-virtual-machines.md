@@ -4,12 +4,12 @@ description: 本文說明如何使用 Azure Migrate 將 AWS VM 遷移至 Azure�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 0ef9adfe7ee88141b67bb9e8c9586c5cc6e5df6f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 386f5cbefe8ad6a375437eea7fea75b5fb5a7f65
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762414"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048528"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>探索、評估 Amazon Web Services (AWS) VM，並將其遷移至 Azure
 
@@ -20,6 +20,7 @@ ms.locfileid: "88762414"
 
 在本教學課程中，您將學會如何：
 > [!div class="checklist"]
+>
 > * 驗證移轉的必要條件。
 > * 使用 Azure Migrate 來準備 Azure 資源：伺服器移轉。 設定 Azure 帳戶和資源的權限，以搭配使用 Azure Migrate。
 > * 準備要遷移的 AWS EC2 執行個體。
@@ -57,7 +58,7 @@ ms.locfileid: "88762414"
 
 ## <a name="prerequisites"></a>Prerequisites 
 
-- 確定您想要遷移的 AWS VM 正執行支援的 OS 版本。 基於此移轉的目的，我們會將 AWS VM 視為實體機器來處理。 請參閱實體伺服器移轉工作流程所[支援的作業系統](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)。 建議您執行測試移轉 (測試容錯移轉) 來驗證 VM 是否如預期般運作，然後再繼續進行實際的移轉。
+- 確定您想要遷移的 AWS VM 正執行支援的 OS 版本。 基於此移轉的目的，我們會將 AWS VM 視為實體機器來處理。 請檢閱實體伺服器移轉工作流程[支援的作業系統和核心版本](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)。 您可以使用標準命令，例如 hostnamectl 或 uname -a 來檢查 Linux VM 的 OS 和核心版本。  建議您執行測試移轉 (測試容錯移轉) 來驗證 VM 是否如預期般運作，然後再繼續進行實際的移轉。
 - 請確定您的 AWS VM 符合[支援的設定](./migrate-support-matrix-physical-migration.md#physical-server-requirements)，以順利遷移至 Azure。
 - 確認您複寫到 Azure 的 AWS VM 符合 [Azure VM 需求](./migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
 - 在您將 VM 遷移至 Azure 之前，VM 需要進行一些變更。
@@ -252,7 +253,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 4. 在 [處理序伺服器] 中，選取複寫設備的名稱。 
 5. 在**來賓認證**中，請選取先前在[複寫安裝程式安裝](#download-the-replication-appliance-installer)期間建立的虛擬帳戶以手動安裝行動服務 (不支援推送安裝)。 然後按 [下一步：**虛擬機器]** 。   
  
-    ![複寫 VM](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
+    ![複寫設定](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 6. 在 [虛擬機器] 的 [從評量匯入移轉設定?] 中，保留預設設定 [否，我將手動指定移轉設定]。
 7. 檢查您要遷移的每個 VM。 然後按 [下一步：目標設定]。
 
@@ -381,11 +382,23 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 **問：** 嘗試探索 AWS VM 時，我收到「無法提取 BIOS GUID」錯誤   
 **答：** 請一律使用根登入進行驗證，而不要使用任何虛擬使用者。 也請檢閱 AWS VM 支援的作業系統。  
 
-**問：** 我的複寫狀態沒有進展    
+**問：** 我的複寫狀態沒有進展   
 **答：** 請檢查您的複寫設備是否符合需求。 請確定您已在複寫設備 TCP 連接埠 9443 和 HTTPS 443 上啟用資料傳輸所需的連接埠。 請確定沒有任何過時且重複的複寫設備版本連線到相同的專案。   
 
 **問：** 由於遠端 Windows 管理服務發出 HTTP 狀態碼 504，我無法使用 Azure Migrate 來探索 AWS 執行個體    
-**答：** 請務必檢閱 Azure 遷移設備需求和 URL 存取需求。 請確定沒有任何 Proxy 設定封鎖了設備註冊。   
+**答：** 請務必檢閱 Azure 遷移設備需求和 URL 存取需求。 請確定沒有任何 Proxy 設定封鎖了設備註冊。
+
+**問：** 我必須在將 AWS VM 遷移至 Azure 之前進行任何變更嗎   
+**答：** 您可能必須先進行這些變更，才能將 EC2 VM 遷移至 Azure：
+
+- 如果您使用雲端初始佈建 VM，建議您先在 VM 上停用雲端初始，再複寫至 Azure。 VM 上的雲端初始所執行的佈建步驟可能是 AWS 特有步驟，而且在遷移至 Azure 之後將變為無效。 
+- 如果 VM 為 PV VM (半虛擬化)，而並非 HVM VM，您可能無法在 Azure 上依原樣執行，因為在 AWS 中，半虛擬化 VM 會使用自訂開機順序。 在執行 Azure 移轉之前，您可以先將 PV 驅動程式解除安裝以克服這項挑戰。  
+- 我們建議您在進行最後移轉之前，先執行測試移轉。  
+
+
+**問：** 我可以遷移執行 Amazon Linux 作業系統的 AWS VM 嗎  
+**答：** 執行 Amazon Linux 的 VM 無法依原樣遷移，因為只有 AWS 支援 Amazon Linux OS。
+若要遷移在 Amazon Linux 上執行的工作負載，您可以在 Azure 中啟動 CentOS/RHEL VM，並使用相關的工作負載移轉方法，遷移在 AWS Linux 電腦上執行的工作負載。 例如，視工作負載而定，可能有工作負載專屬的工具可協助移轉，例如適用於 Web 伺服器的資料庫或部署工具。
 
 ## <a name="next-steps"></a>後續步驟
 

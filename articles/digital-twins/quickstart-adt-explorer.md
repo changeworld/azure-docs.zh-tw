@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: b199a50443445b983011d755c3ffacaa71131faf
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: bbb1378419c68db07be5ca14ca6834810f2fc9f5
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893861"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055459"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>使用 ADT Explorer 探索 Azure Digital Twins 案例的範例
 
@@ -26,6 +26,10 @@ ms.locfileid: "88893861"
 1. 上傳預先建立的模型和圖形資料，以建立範例案例
 1. 探索建立的案例圖形
 1. 變更圖形
+
+您將使用的範例圖形代表具有兩個樓層和兩個房間的建築物。 圖表會如下所示：
+
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="由以箭號連結的 4 個圓形節點組成的圖形檢視。標示 'Floor1' 的圓形由標示 'contains' 的箭號連結到標示 'Room1' 的圓形；標示 'Floor0' 的圓形由標示 'contains' 的箭號連結到標示 'Room0' 的圓形。'Floor1' 和 'Floor0' 未連結。":::
 
 ## <a name="prerequisites"></a>先決條件
 
@@ -98,7 +102,7 @@ ms.locfileid: "88893861"
 輸入您稍早在＜[必要條件](#prerequisites)＞一節中收集的重要資訊：
 * 應用程式 (用戶端) 識別碼
 * 目錄 (租用戶) 識別碼
-* ADT URL，格式為 *https://<instance host name>*
+* ADT URL，格式為 https://{instance host name}
 
 >[!NOTE]
 > 若要重新瀏覽/編輯此資訊，您可以隨時選取相同圖示來再次提取登入方塊。 其會保留您傳入的值。
@@ -170,7 +174,7 @@ ADT Explorer 現在會將這些模型檔案上傳到您的 Azure Digital Twins �
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="在 [圖形檢視] 方塊中醒目提示圖示。其會顯示指向雲端的箭號。" lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-在 [檔案選取器] 方塊中，再次瀏覽至 client/examples 資料夾，然後選擇 _**buildingScenario.xlsx**_ 試算表檔案。 此檔案包含範例圖形的描述。 點擊 [確定]。
+在檔案選取器方塊中，瀏覽至 *Azure_Digital_Twins_samples/AdtSampleApp/SampleClientApp* 資料夾並選擇 _**buildingScenario.xlsx**_ 試算表檔案。 此檔案包含範例圖形的描述。 點擊 [確定]。
 
 幾秒後，ADT Explorer 會開啟 [匯入] 視圖，顯示即將載入的圖形預覽。
 

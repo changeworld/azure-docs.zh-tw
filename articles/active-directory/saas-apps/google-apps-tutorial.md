@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 5ff34b967e2ba42c01c904b8854ecfa04c394e17
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d20d527c35eac422efdc3719f153b6d7e8f4ef07
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551512"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017498"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Google Cloud (G Suite) Connector 整合
 
@@ -225,15 +225,18 @@ ms.locfileid: "88551512"
 
     b. 在 Google Cloud (G Suite) Connector 的 [登入頁面 URL]  欄位中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
-    c. 在 Google Cloud (G Suite) Connector 的 [登出頁面 URL]  欄位中，貼上您從 Azure 入口網站複製的 [登出 URL]  值。
+    c. 在 Google Cloud (G Suite) Connector 的 [登出頁面 URL] 欄位中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 
-    d. 在 Google Cloud (G Suite) Connector 的 [變更密碼 URL]  欄位中，貼上您從 Azure 入口網站複製的 [變更密碼 URL]  值。
+    > [!NOTE]
+    > Google 雲端 (G Suite) 是以 SAML 登出通訊協定為基礎。 因此，在 **登出頁面 URL** 欄位中，我們必須使用 SAML 登出 URL，也就是登入 URL 作為相同的值。
 
-    e. 在 Google Cloud (G Suite) Connector 中，對於 [驗證憑證]  ，上傳您已從 Azure 入口網站下載的憑證。
+    d. 在 Google Cloud (G Suite) Connector 中，對於 [驗證憑證]  ，上傳您已從 Azure 入口網站下載的憑證。   
 
-    f. 根據 Azure AD 中上述 [基本 SAML 設定]  區段中提及的每個注意事項，勾選/取消勾選 [使用網域特定簽發者]  選項。
+    e. 根據 Azure AD 中上述 [基本 SAML 設定]  區段中提及的每個注意事項，勾選/取消勾選 [使用網域特定簽發者]  選項。
 
-    g. 按一下 **[儲存變更]** 。
+    f. 在 Google Cloud (G Suite) Connector 的 [變更密碼 URL] 欄位中，貼上您從 Azure 入口網站複製的 [變更密碼 URL] 值。
+
+    g. 按一下 [檔案] 。
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>建立 Google Cloud (G Suite) Connector 測試使用者
 

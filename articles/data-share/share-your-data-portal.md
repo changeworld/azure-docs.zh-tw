@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
 ms.date: 08/19/2020
-ms.openlocfilehash: 7dd81afb3189055c194b8a94b4bcbdf48f85d6f2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5ceaf949df88468b2239bd901f639ba6096b0d5f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658338"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269636"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中使用 Azure Data Share 來共用資料
 
@@ -47,7 +47,7 @@ Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[
 
 1. 部署完成後，請選取 [移至資源]  。
 
-## <a name="create-a-data-share"></a>建立 Data Share
+## <a name="create-a-share"></a>建立共用
 
 1. 瀏覽至 [Data Share 概觀] 頁面。
 
@@ -57,15 +57,15 @@ Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[
 
 1. 選取 [建立]  。
 
-1. 填寫 Data Share 的詳細資料。 指定名稱、共用類型、共用內容的說明和使用規定 (選擇性)。 
+1. 填寫共用的詳細資料。 指定名稱、共用類型、共用內容的說明和使用規定 (選擇性)。 
 
    ![EnterShareDetails](./media/enter-share-details.png "輸入共用詳細資料") 
 
 1. 選取 [繼續]。
 
-1. 若要將資料集新增至 Data Share，請選取 [新增資料集]****。 
+1. 若要將資料集新增至共用，請選取 [新增資料集]。 
 
-   ![資料集](./media/datasets.png "資料集")
+   ![將資料集新增至共用](./media/datasets.png "資料集")
 
 1. 選取您想要新增的資料集類型。 根據您在先前的步驟中選取的共用類型 (快照集或就地)，您將看到不同的資料集類型清單。 如果從 Azure SQL Database 或 Azure SQL 資料倉儲共用，系統將會提示您提供某些 SQL 認證。 使用您建立為必要條件的使用者進行驗證。
 

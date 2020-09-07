@@ -4,12 +4,12 @@ description: 說明如何使用 Azure Migrate 伺服器評量來評估內部部�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 4c95916bf5f92f8a82b9dfae50aa311891857e7a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: eae7e2d371ed8156debe9ae24cf0744bd6273943
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86114239"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950267"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 伺服器評估來評估 Hyper-V VM
 
@@ -75,15 +75,23 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 
 建立設備之後，您會檢查其是否可以連線到 Azure Migrate：伺服器評量、進行第一次設，以及向 Azure Migrate 專案註冊設備。
 
+### <a name="generate-the-azure-migrate-project-key"></a>產生 Azure Migrate 專案金鑰
+
+1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評估]** 中，選取 [探索]。
+2. 在 [探索機器]**** > [機器是否已虛擬化?]**** 中，選取 [是，使用 Hyper-V]****。
+3. 在 **1：產生 Azure Migrate 專案金鑰**中，為您要為探索之 Hyper-V VM 設定的 Azure Migrate 設備命名。名稱應使用英數位元，且長度不超過 14 個字元。
+1. 按一下 [產生金鑰] ，開始建立必要的 Azure 資源。 在建立資源期間，請勿關閉探索的電腦頁面。
+1. 成功建立 Azure 資源之後，系統會產生 **Azure Migrate 專案金鑰**。
+1. 複製金鑰，您在設定期間需要此金鑰才能完成設備的註冊。
+
 ### <a name="download-the-vhd"></a>下載 VHD
 
-下載設備的已壓縮 VHD 範本。
+在 **2：下載 Azure Migrate 設備**中，選取 .VHD 檔案，然後按一下 [下載]。 
 
-1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]。
-2. 在 [探索機器] > [機器是否已虛擬化?] 中，按一下 [是，使用 Hyper-V]。
-3. 按一下 [下載] 以下載 VHD 檔案。
+   ![探索電腦的選取項目](./media/tutorial-assess-hyper-v/servers-discover.png)
 
-    ![下載 VM](./media/tutorial-assess-hyper-v/download-appliance-hyperv.png)
+
+   ![產生金鑰的選取項目](./media/tutorial-assess-hyper-v/generate-key-hyperv.png)
 
 
 ### <a name="verify-security"></a>確認安全性
@@ -102,13 +110,13 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 
         **案例** | **下載** | **SHA256**
         --- | --- | ---
-        Hyper-V (8.93 GB) | [最新版本](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+        Hyper-V (10.4 GB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
 
     - 對於 Azure Government：
 
         **案例*** | **下載** | **SHA256**
         --- | --- | ---
-        Hyper-V (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+        Hyper-V (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140424) |  8025f315e41c01ebdb4ffb1de87982ae6cc4ea7c4cce612612c7e90a44e79b44
 
 
 ### <a name="create-the-appliance-vm"></a>建立設備 VM
@@ -125,9 +133,9 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
     ![部署 VHD](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. 在 [匯入虛擬機器精靈] > [開始之前]，按 [下一步]。
-3. 在 [尋找資料夾] 中，選取 [虛擬機器] 資料夾。 然後按一下 [下一步]。
+3. 在 [尋找資料夾] 中，選取 [虛擬機器] 資料夾。 然後按一下 [下一步]  。
 1. 在 [選取虛擬機器] 中，按 [下一步]。
-2. 在 [選擇匯入類型] 中，按一下 [複製虛擬機器 (建立新的唯一識別碼)]。 然後按一下 [下一步]。
+2. 在 [選擇匯入類型] 中，按一下 [複製虛擬機器 (建立新的唯一識別碼)]。 然後按一下 [下一步]  。
 3. 在 [選擇目的地] 中，保留預設設定。 按 [下一步] 。
 4. 在 [儲存資料夾] 中，保留預設設定。 按 [下一步] 。
 5. 在 [選擇網路] 中，指定 VM 會使用的虛擬交換器。 此交換器必須能夠連線到網際網路，以將資料傳送至 Azure。 [了解](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)如何建立虛擬交換器。
@@ -151,25 +159,27 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 3. 在任何可連線至 VM 的機器上開啟瀏覽器，並開啟設備 Web 應用程式的 URL：**https://設備名稱或 IP 位址:44368**。
 
    或者，您也可以按一下應用程式捷徑，從設備桌面開啟應用程式。
+1. 接受**授權條款**，並閱讀第三方資訊。
 1. 在 [Web 應用程式] > [設定必要條件] 中，執行下列動作：
-    - **授權**：接受授權條款，並閱讀第三方資訊。
     - **連線能力**：應用程式會確認 VM 是否能夠存取網際網路。 如果 VM 使用 Proxy：
-      - 按一下 [Proxy 設定]，然後以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定 Proxy 位址和接聽連接埠。
+      - 按一下 [設定 Proxy] 以指定 Proxy 位址 (格式為 http://ProxyIPAddress 或 http://ProxyFQDN) ) 和接聽連接埠。
       - 如果 Proxy 需要驗證，請指定認證。
       - 僅支援 HTTP Proxy。
+      - 如果您已新增 Proxy 詳細資料，或已停用 Proxy 和/或驗證，請按一下 [儲存] 以再次觸發連線檢查。
     - **時間同步**：系統會確認時間。 設備上的時間應該與網際網路時間同步，VM 探索才能正常運作。
-    - **安裝更新**：Azure Migrate 伺服器評估會確認設備是否已安裝最新的更新。
+    - **安裝更新**：Azure Migrate Server 評估會檢查設備是否已安裝最新的更新。檢查完成之後，您可以按一下 [檢視設備服務] 以查看設備上執行之元件的狀態和版本。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>向 Azure Migrate 註冊設備
 
-1. 按一下 [登入]。 如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
-2. 在新的索引標籤上，使用您的 Azure 認證登入。
-    - 以您的使用者名稱和密碼登入。
-    - 不支援使用 PIN 登入。
-3. 成功登入後，返回 Web 應用程式。
-4. 選取 Azure Migrate 專案建立所在的訂用帳戶。 然後選取專案。
-5. 指定設備的名稱。 名稱應該是英數位元，且長度不超過 14 個字元。
-6. 按一下 [註冊] 。
+1. 貼上從入口網站複製的 **Azure Migrate 專案金鑰**。 如果沒有金鑰，請移至**伺服器評估 > 探索 > 管理現有的設備**，選取在金鑰產生時提供的設備名稱，並複製對應的金鑰。
+1. 按一下 [登入]。 系統會在新的瀏覽器索引標籤中開啟 Azure 登入提示。如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
+1. 在新的索引標籤上，使用您的 Azure 使用者名稱和密碼登入。
+   
+   不支援使用 PIN 登入。
+3. 成功登入後，返回 Web 應用程式。 
+4. 如果用於記錄的 Azure 使用者針對在金鑰產生期間建立的 Azure 資源帳戶具有正確的[權限](tutorial-prepare-hyper-v.md#prepare-azure)，就會起始設備註冊。
+1. 成功註冊設備之後，您可以按一下 [檢視詳細資料]查看註冊詳細資料。
+
 
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>委派 SMB VHD 的認證
@@ -201,16 +211,27 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, Hype
 
 從設備連線至 Hyper-V 主機或叢集，然後開始探索 VM。
 
-1. 在 [使用者名稱] 和 [密碼] 中，指定設備會用來探索 VM 的帳戶認證。 為認證指定自訂名稱，然後按一下 [儲存詳細資料]。
-2. 按一下 [新增主機]，然後指定 Hyper-V 主機/叢集詳細資料。
-3. 按一下 **[驗證]** 。 通過驗證後，系統就會顯示每個主機/叢集上可探索的 VM 數目。
-    - 如果主機驗證失敗，請將滑鼠停留在 [狀態 ] 資料行中的圖示上，以檢閱錯誤。 修正問題，然後再次驗證。
-    - 若要移除主機或叢集，請選取 [刪除]。
+1. 在 [步驟 1：選取復原點]**提供 Hyper-V 主機認證**中，按一下 [新增認證] 以指定認證的自訂名稱，並新增 Hyper-V 主機/叢集的**使用者名稱**和**密碼**，設備將使用此資訊探索  VM。 按一下 [ **儲存**]。
+1. 如果想要一次新增多個認證，請按一下 [新增更多] 以儲存並新增更多認證。 Hyper-V VM 探索支援使用多個認證。
+1. 在**步驟 2：提供 Hyper-V 主機/叢集詳細資料**中，按一下 [新增探索來源] 來指定 Hyper-V 主機/叢集 **IP 位址/FQDN** 和認證的自訂名稱，以連線到主機/叢集。
+1. 您可以一次**新增單一項目**，或**新增多個項目**。 另外也可透過**匯入 CSV** 提供 Hyper-V 主機/叢集詳細資料。
+
+    ![新增探索來源的選取項目](./media/tutorial-assess-hyper-v/add-discovery-source-hyperv.png)
+
+    - 如果您選擇**新增單一項目**，需要指定認證的自訂名稱和 Hyper-V 主機/叢集的 **IP 位址/FQDN**，然後按一下 [儲存]。
+    - 如果您選擇**新增多個項目**  _(預設選項)_ ，可以在文字方塊中指定Hyper-V 主機/叢集的 **IP 位址/FQDN** 和認證的自訂名稱，一次新增多筆記錄。**確認**新增的記錄，然後按一下 [儲存]。
+    - 如果您選擇**匯入 CSV**，可以下載 CSV 範本檔案，並在檔案中填入 Hyper-V 主機/叢集的 **IP 位址/FQDN** 和憑證的自訂名稱。 然後將檔案匯入設備，**確認**檔案中的記錄，然後按一下 [儲存]。
+
+1. 按一下儲存時，設備會嘗試驗證已新增的 Hyper-V 主機/叢集連線，並在資料表中顯示每部主機/叢集的**驗證狀態**。
+    - 對於成功驗證的主機/叢集，您可以按一下其 IP 位址/FQDN 以檢視更多詳細資料。
+    - 如果主機驗證失敗，請按一下資料表狀態欄中的 [驗證失敗] 以檢閱錯誤。 修正問題，然後再次驗證。
+    - 若要移除主機或叢集，請按一下 [刪除]。
     - 您無法從叢集中移除特定主機。 您只能移除整個叢集。
     - 即使叢集中的特定主機有問題，您還是可以新增叢集。
-4. 驗證之後，按一下 [儲存並開始探索] 來開始探索程序。
+1. 您可以在啟動探索之前，隨時**重新驗證**主機/叢集的連線功能是否正常。
+1. 按一下 [開始探索]，以開始探索成功驗證的 VM 主機/叢集。 成功起始探索之後，您可以在資料表中檢查每部主機/叢集的探索狀態。
 
-這會開始探索。 每部主機大約耗用 1.5 分鐘，讓所探索到伺服器的中繼資料出現在 Azure 入口網站中。
+這會開始探索。 每部主機大約會需要 2 分鐘，才能讓探索到之伺服器的中繼資料出現在 Azure 入口網站中。
 
 ### <a name="verify-vms-in-the-portal"></a>在入口網站中確認 VM
 

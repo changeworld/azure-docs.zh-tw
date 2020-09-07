@@ -1,32 +1,37 @@
 ---
-title: 快速入門：電腦視覺用戶端程式庫 | Microsoft Docs
+title: 快速入門：電腦視覺用戶端程式庫
 titleSuffix: Azure Cognitive Services
-description: 使用此快速入門將應用程式連線至 Azure 認知服務中的電腦視覺 API。
+description: 了解如何透過採用所選語言的原生用戶端程式庫，在應用程式中使用 Azure 電腦視覺。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 06/29/2020
+ms.date: 08/31/2020
 ms.author: pafarley
-ms.custom: devx-track-python, devx-track-javascript
+ms.custom:
+- devx-track-python
+- devx-track-javascript
+- devx-track-csharp
+- cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 699f2c3b16346a88bdd5828c32dc64225a712e05
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+keywords: 電腦視覺, 電腦視覺服務
+ms.openlocfilehash: 87ff6a03f45fe61b44712166966a1fe3851ffb41
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852033"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321826"
 ---
 # <a name="quickstart-use-the-computer-vision-client-library"></a>快速入門：使用電腦視覺用戶端程式庫
 
-開始使用電腦視覺用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 電腦視覺可供您存取進階演算法，以處理影像及傳回資訊。
+開始使用電腦視覺用戶端程式庫。 電腦視覺服務為您提供 AI 演算法，以便處理影像及傳回其視覺功能的資訊。 請遵循下列步驟將套件安裝至您的應用程式，並試用基本工作的程式碼範例。
 
 使用電腦視覺用戶端程式庫可執行下列作業：
 
 * 分析影像中的標籤、文字描述、臉部、成人內容等等。
-* 透過 Batch 讀取 API 辨識印刷和手寫文字。
+* 透過讀取 API 讀取印刷和手寫文字。
 
 ::: zone pivot="programming-language-csharp"
 

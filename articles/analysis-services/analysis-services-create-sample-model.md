@@ -4,15 +4,15 @@ description: 在本教學課程中，了解如何在 Azure Analysis Services 中
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 88ed58ea1eea80b4b890c31260fc65153377eaaa
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b84c2e50ae7f5038cf9cb8a96c0c51d6537c929
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83697513"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230886"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>教學課程：從入口網站新增範例模型
 
@@ -24,7 +24,7 @@ ms.locfileid: "83697513"
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，您需要：
 
@@ -45,7 +45,7 @@ ms.locfileid: "83697513"
 
 2. 在 [新增模型]   > [選擇資料來源]  中，確認已選取 [範例資料]  ，然後按一下 [新增]  。
 
-    ![選取範例資料](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
+    ![選取新模型](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
 3. 在 [概觀]  中，確認已新增 `adventureworks` 範例模型。
 

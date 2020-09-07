@@ -8,12 +8,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
-ms.openlocfilehash: 69a0fec0dd5036b021926045ff3a63a011966654
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118877"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051284"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>教學課程：使用 .NET SDK，透過 Azure Cosmos DB 開發 ASP NET Core MVC Web 應用程式
 
@@ -116,36 +117,19 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 ### <a name="add-views"></a><a name="add-views"></a>新增檢視
 
-接下來，讓我們建立下列三個檢視。
+接下來，讓我們新增下列檢視。
 
-* 新增清單項目檢視
-* 新增項目檢視
-* 新增編輯項目檢視
+* 建立項目檢視
+* 刪除項目檢視
+* 用來取得項目詳細資料的檢視
+* 編輯項目檢視
+* 用來列出所有項目的檢視
 
-#### <a name="add-a-list-item-view"></a><a name="AddItemIndexView"></a>新增清單項目檢視
+#### <a name="create-item-view"></a><a name="AddNewIndexView"></a>建立項目檢視
 
 1. 在 [方案總管] 中，以滑鼠右鍵按一下 [Views] 資料夾，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Item*。
 
 1. 以滑鼠右鍵按一下空的 [Item] 資料夾，然後選取 [新增] > [檢視]。
-
-1. 在 [新增 MVC 檢視] 中提供下列值：
-
-   * 在 [檢視名稱] 中，輸入 [索引]。
-   * 在 [範本] 中選取 [清單]。
-   * 在 [模型類別] 中，選取 [項目 (todo.Models)]。
-   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
-
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="顯示 [新增 MVC 檢視] 對話方塊的螢幕擷取畫面":::
-
-1. 新增這些值之後，請選取 [新增]，並讓 Visual Studio 建立新的範本檢視。
-
-完成後，Visual Studio 會開啟它所建立的 *cshtml*檔案。 您可以在 Visual Studio 中關閉該檔案。 我們稍後會再回來。
-
-#### <a name="add-a-new-item-view"></a><a name="AddNewIndexView"></a>新增新項目檢視
-
-與您建立檢視以列出項目的方法類似，請使用下列步驟建立新的檢視，來建立項目：
-
-1. 在 [方案總管] 中，再次以滑鼠右鍵按一下 [Item] 資料夾，選取 [新增] > [檢視]。
 
 1. 在 [新增 MVC 檢視] 中，進行下列變更：
 
@@ -155,9 +139,44 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
    * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
    * 選取 [新增]。
 
-#### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>新增編輯項目檢視
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="顯示 [新增 MVC 檢視] 對話方塊的螢幕擷取畫面":::
 
-最後，請新增檢視以透過下列步驟編輯項目：
+1. 接下來選取 [新增]，並讓 Visual Studio 建立新的範本檢視。 使用下列內容取代已產生檔案中的程式碼：
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Create.cshtml":::
+
+#### <a name="delete-item-view"></a><a name="AddEditIndexView"></a>刪除項目項目
+
+1. 在 [方案總管] 中，再次以滑鼠右鍵按一下 [Item] 資料夾，選取 [新增] > [檢視]。
+
+1. 在 [新增 MVC 檢視] 中，進行下列變更：
+
+   * 在**檢視名稱**方塊中，輸入「刪除」。
+   * 在 [範本] 方塊中，選取 [刪除]。
+   * 在 [模型類別] 方塊中，選取 [項目 (todo.Models)]。
+   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
+   * 選取 [新增]。
+
+1. 接下來選取 [新增]，並讓 Visual Studio 建立新的範本檢視。 使用下列內容取代已產生檔案中的程式碼：
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Delete.cshtml":::
+
+#### <a name="add-a-view-to-get-an-item-details"></a><a name="AddItemIndexView"></a>新增用來取得項目詳細資料的檢視
+
+1. 在 [方案總管] 中，再次以滑鼠右鍵按一下 [Item] 資料夾，選取 [新增] > [檢視]。
+
+1. 在 [新增 MVC 檢視] 中提供下列值：
+
+   * 在 [檢視名稱] 中，輸入「詳細資料」。
+   * 在**範本** 中選取 [詳細資料]。
+   * 在 [模型類別] 中，選取 [項目 (todo.Models)]。
+   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
+
+1. 接下來選取 [新增]，並讓 Visual Studio 建立新的範本檢視。 使用下列內容取代已產生檔案中的程式碼：
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Details.cshtml":::
+
+#### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>新增編輯項目檢視
 
 1. 在 [方案總管] 中，再次以滑鼠右鍵按一下 [Item] 資料夾，選取 [新增] > [檢視]。
 
@@ -169,7 +188,29 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
    * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
    * 選取 [新增]。
 
-完成這些步驟後，請將 Visual Studio 中的所有 cshtml 文件關閉，您稍後會回頭使用這些檢視。
+1. 接下來選取 [新增]，並讓 Visual Studio 建立新的範本檢視。 使用下列內容取代已產生檔案中的程式碼：
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Edit.cshtml":::
+
+#### <a name="add-a-view-to-list-all-the-items"></a><a name="AddEditIndexView"></a>新增用來列出所有項目的檢視
+
+最後，請新增檢視以透過下列步驟取得所有項目：
+
+1. 在 [方案總管] 中，再次以滑鼠右鍵按一下 [Item] 資料夾，選取 [新增] > [檢視]。
+
+1. 在 [新增 MVC 檢視] 中，進行下列變更：
+
+   * 在 [檢視名稱]**** 方塊中，輸入*索引*。
+   * 在 [範本]**** 方塊中，選取 [清單]****。
+   * 在 [模型類別] 方塊中，選取 [項目 (todo.Models)]。
+   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
+   * 選取 [新增]。
+
+1. 接下來選取 [新增]，並讓 Visual Studio 建立新的範本檢視。 使用下列內容取代已產生檔案中的程式碼：
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Index.cshtml":::
+
+完成這些步驟後，請將 Visual Studio 中的所有 cshtml 文件關閉。
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>宣告並初始化服務
 

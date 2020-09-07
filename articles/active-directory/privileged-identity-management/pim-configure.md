@@ -10,24 +10,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 07/01/2020
+ms.date: 08/08/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c85f273a0b245d54b966a43d7a69abe761a2dcaf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a4a081bc5a8040fa3ccd0599341eb2671bbe2d4d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023904"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047814"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什麼是 Azure AD Privileged Identity Management？
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 是一項服務，可供您管理、控制和監視組織內重要資源的存取。 這些資源包括 Azure AD、Azure 與其他 Microsoft 線上服務 (如 Office 365 或 Microsoft Intune) 中的資源。
+ Privileged Identity Management (PIM) 是 Azure Active Directory (Azure AD) 中的一項服務，可供您管理、控制和監視組織內重要資源的存取。 這些資源包括 Azure AD、Azure 與其他 Microsoft 線上服務 (如 Office 365 或 Microsoft Intune) 中的資源。
 
 ## <a name="reasons-to-use"></a>使用的理由
 
-組織想要將能夠存取安全資訊或資源的人數降到最低，因為這樣可以降低惡意執行者取得該存取權，或者授權使用者無意中影響到敏感資源的機率。 不過，使用者仍然需要在 Azure AD、Azure、Office 365 或 SaaS 應用程式中執行特殊權限作業。 組織可以將 Azure 資源和 Azure AD 的 Just-In-Time (JIT) 特殊存取權限提供給使用者。 需要針對這些使用者使用其系統管理員權限的方式進行監督。
+組織想要將能夠存取安全資訊或資源的人數降到最低，因為這樣可以降低惡意執行者取得該存取權，或者授權使用者無意中影響到敏感資源的機率。 不過，使用者仍然需要在 Azure AD、Azure、Office 365 或 SaaS 應用程式中執行特殊權限作業。 組織可以將 Azure 資源和 Azure AD 的 Just-In-Time 特殊存取權限提供給使用者。 需要針對這些使用者使用其系統管理員權限的方式進行監督。
 
 ## <a name="what-does-it-do"></a>用途
 
@@ -44,7 +44,7 @@ Privileged Identity Management 提供以時間為基礎和以核准為基礎的�
 
 ## <a name="what-can-i-do-with-it"></a>用途為何？
 
-設定 Privileged Identity Management 後，您會在左側導覽功能表中看到 [工作]  、[管理]  和 [活動]  選項。 身為系統管理員，您會在管理 **Azure AD 角色**和 **Azure 資源**角色之間做選擇。 當您選擇要管理的角色類型時，您會看到該角色類型適用的一組類似選項。
+設定 Privileged Identity Management 後，您會在左側導覽功能表中看到 [工作]  、[管理]  和 [活動]  選項。 身為系統管理員，您將在選項之間做選擇，例如管理 **Azure AD 角色**、管理 **Azure 資源**角色或特殊權限存取群組。 當您選擇想要管理的內容時，您會看到該選項的適當選項組。
 
 ![Azure 入口網站中的 Privileged Identity Management 螢幕擷取畫面](./media/pim-configure/pim-quickstart.png)
 

@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 01/31/2020
+ms.date: 09/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8b27a7c2fd03ed0a80f1775465f1f1bbb44f0202
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 680eb8414696109e8cc15d82d8bd5f2c5740f488
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270337"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291869"
 ---
 # <a name="what-is-azure-bastion"></a>何謂 Azure Bastion？
 
@@ -26,7 +26,7 @@ Azure Bastion 部署依虛擬網路來進行，而非以訂用帳戶/帳戶或�
 
 RDP 和 SSH 是一些基本的方式，讓您可以與 Azure 中執行的工作負載連線。 透過網際網路公開 RDP/SSH 連接埠並非預期，而且會視為重大威脅。 這通常是因為通訊協定弱點。 若要控制這個威脅，您可以周邊網路的公用端部署堡壘主機 (也稱為跳板機)。 堡壘主機伺服器是設計及設定來防禦攻擊。 堡壘伺服器也會提供與位於堡壘後方 (以及進一步的網路內) 工作負載的 RDP 和 SSH 連線。
 
-![架構](./media/bastion-overview/architecture.png)
+![Azure Bastion 架構](./media/bastion-overview/architecture.png)
 
 此圖顯示 Azure Bastion 部署的架構。 在此圖表中：
 
@@ -46,6 +46,10 @@ RDP 和 SSH 是一些基本的方式，讓您可以與 Azure 中執行的工作�
 * **管理 NSG 不麻煩：** Azure Bastion 是 Azure 的完全受控平台 PaaS 服務，在內部經過強化，為您提供安全的 RDP/SSH 連線。 您在 Azure Bastion 子網路上不需要套用任何 NSG。 因為 Azure Bastion 是透過私人 IP 連線到您的虛擬機器，所以您可以設定您的 NSG 只允許來自 Azure Bastion 的 RDP/SSH。 這樣會減輕每次想要安全地連線到虛擬機器時就需要管理 NSG 的負擔。
 * **針對連接埠掃描的保護：** 因為您不需要將虛擬機器公開到公用網際網路，所以您的 VMs 受到保護，免於位在虛擬網路外部惡意使用者所做的連接埠掃描。
 * **保護免於零時差攻擊。僅在一個地方強化：** Azure Bastion 是完全平台受控 PaaS 服務。 因為它位在您虛擬網路的周邊網路，所以您不需要擔心要對虛擬網路中的每一部虛擬機器進行強化。 Azure 平台會藉由保持 Azure Bastion 強化及維持最新狀態，保護您免於零時差攻擊。
+
+## <a name="whats-new"></a><a name="new"></a>新功能
+
+訂閱 RSS 摘要，並在 [Azure 更新](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Bastion)頁面上檢視最新的 Azure Bastion 功能更新。
 
 ## <a name="faq"></a>常見問題集
 

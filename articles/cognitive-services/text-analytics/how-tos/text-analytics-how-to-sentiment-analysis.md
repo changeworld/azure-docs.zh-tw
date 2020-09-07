@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 05/18/2020
+ms.date: 08/25/2020
 ms.author: aahi
-ms.openlocfilehash: acd8fae81baa7ad65b8d9c321c55a6311cbf4c72
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: a0557c3ccf6510ab3ee2ae29cbef1fc754473345
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141240"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933013"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文字分析 API 來偵測情感
 
@@ -40,7 +40,7 @@ ms.locfileid: "84141240"
 
 v3 中的情感分析會將情感標籤套用至文字 (在句子和文件層級傳回)，每個都有信賴分數。 
 
-標籤為 `positive`、`negative` 和 `neutral`。 在文件層級也可傳回 `mixed` 情感標籤。 文件情感的判定方式如下：
+標籤分別為「正面」、「負面」和「中立」。 在文件層級也可能傳回「混合」的情感標籤。 文件情感的判定方式如下：
 
 | 句子情感                                                                            | 傳回的文件標籤 |
 |-----------------------------------------------------------------------------------------------|-------------------------|
@@ -49,7 +49,7 @@ v3 中的情感分析會將情感標籤套用至文字 (在句子和文件層級
 | 文件中至少有一個 `negative` 句子和至少一個 `positive` 句子。    | `mixed`                 |
 | 文件中的所有句子皆為 `neutral`。                                                  | `neutral`               |
 
-信賴分數的範圍是從 1 到 0。 接近 1 的分數表示標籤分類的信賴度更高，而較低的分數則表示較低的信賴度。 每個文件或句子中的信賴分數增加最多至 1。
+信賴分數的範圍是從 1 到 0。 接近 1 的分數表示標籤分類的信賴度更高，而較低的分數則表示較低的信賴度。 針對每個檔案或每個句子，與標籤 (正面、負面和中性) 相關聯的預測分數最多會加到 1 為止。
 
 ### <a name="opinion-mining"></a>意見挖掘
 

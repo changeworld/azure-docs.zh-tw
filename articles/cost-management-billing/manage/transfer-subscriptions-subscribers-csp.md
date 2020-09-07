@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ffb72b4b06b8925cae57989a171d7efbd88c3866
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 52dd9d2f6299f8d574934e7baec54333d2ffc0c8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686600"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997569"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在訂閱者與 CSP 之間轉移 Azure 訂用帳戶
 
@@ -24,6 +24,9 @@ ms.locfileid: "88686600"
 已認證為 [Azure Expert 受控服務提供者 (MSP) 的](https://partner.microsoft.com/membership/azure-expert-msp)可以要求為具有直接 Enterprise 合約 (EA) 的客戶轉移 Azure 訂用帳戶。 只有已接受 Microsoft 客戶合約 (MCA) 並購買 Azure 方案的客戶才能轉移訂用帳戶。
 
 當要求獲得核准後，CSP 就可以為其客戶提供合併的發票。 若要深入了解 CSP 的訂用帳戶轉移，請參閱[取得您 MPA 帳戶的 Azure 訂用帳戶帳單擁有權](mpa-request-ownership.md)。
+
+>[!IMPORTANT]
+> 將 EA 訂用帳戶轉移給 CSP 合作夥伴之後，先前套用到 EA 訂用帳戶的所有配額增加都會重設為預設值。 如果在訂用帳戶轉移之後需要額外的配額，請讓您的 CSP 提供者提交[配額增加](https://docs.microsoft.com/azure/azure-portal/supportability/regional-quota-requests)要求。 
 
 ## <a name="other-subscription-transfers-to-a-csp-partner"></a>其他訂用帳戶轉移至 CSP 合作夥伴
 

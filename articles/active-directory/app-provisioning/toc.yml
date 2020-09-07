@@ -55,6 +55,8 @@
           href: check-status-user-account-provisioning.md
         - name: 匯出及匯入您的組態
           href: export-import-provisioning-configuration.md
+        - name: 佈建報告
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: 對應用程式佈建進行疑難排解
       items:
         - name: 已知問題

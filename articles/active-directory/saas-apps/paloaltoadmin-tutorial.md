@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/12/2020
+ms.date: 08/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 8bd41034d6d4cfa444ae4c0711fd46cb2924d009
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d8a4a4360265cabc179c8cd41d0a33a0575f55a6
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554068"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855007"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>教學課程：Azure Active Directory 與 Palo Alto Networks - Admin UI 整合
 
@@ -43,6 +43,7 @@ ms.locfileid: "88554068"
 
 * Palo Alto Networks - Admin UI 支援 **SP** 起始的 SSO
 * Palo Alto Networks - Admin UI 支援 **Just-In-Time** 使用者佈建
+* 設定 Palo Alto Networks - Admin UI 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-palo-alto-networks---admin-ui-from-the-gallery"></a>從資源庫新增 Palo Alto 網路 - 系統管理 UI
 
@@ -55,8 +56,7 @@ ms.locfileid: "88554068"
 1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Palo Alto Networks - Admin UI**。
 1. 從結果面板中選取 [Palo Alto Networks - Admin UI]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
-
+## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
 在本節中，您會以名為 **B.Simon** 的測試使用者身分，設定及測試與 Palo Alto Networks - Admin UI 搭配運作的 Azure AD 單一登入。
 若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 Palo Alto Networks - Admin UI 中相關使用者之間的連結關聯性。
 
@@ -79,7 +79,7 @@ ms.locfileid: "88554068"
 
     ![設定單一登入連結](common/select-sso.png)
 
-1. 在 [選取單一登入方法] 對話方塊中，選取 [SAML/WS-Fed] 模式以啟用單一登入。
+1. 在 [選取單一登入方法]  對話方塊中，選取 [SAML/WS-Fed]  模式以啟用單一登入。
 
     ![單一登入選取模式](common/select-saml-option.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "88554068"
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態] 區段上，執行下列步驟：
+1. 在 [基本 SAML 組態]  區段上，執行下列步驟：
 
     a. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<Customer Firewall FQDN>/php/login.php`
 
@@ -118,6 +118,9 @@ ms.locfileid: "88554068"
     | | |
 
     > [!NOTE]
+    > adminrole 值應該與在步驟 9 中於 **Palo Alto Networks** 中設定的角色名稱相同。 
+
+    > [!NOTE]
     > 如需關於這些屬性的詳細資訊，請參閱下列文章：
     > * [系統管理 UI (adminrole) 的系統管理角色設定檔](https://www.paloaltonetworks.com/documentation/80/pan-os/pan-os/firewall-administration/manage-firewall-administrators/configure-an-admin-role-profile)
     > * [系統管理 UI (accessdomain) 的裝置存取網域](https://docs.paloaltonetworks.com/pan-os/8-0/pan-os-web-interface-help/device/device-access-domain.html)
@@ -140,7 +143,7 @@ ms.locfileid: "88554068"
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 1. 在畫面頂端選取 [新增使用者]。
 1. 在 [使用者] 屬性中，執行下列步驟：
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
@@ -272,5 +275,3 @@ Palo Alto 網路 - 系統管理 UI 支援 Just-In-Time 使用者佈建。 如果
 - [嘗試搭配 Azure AD 使用 Palo Alto Networks - Admin UI](https://aad.portal.azure.com/)
 
 - [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [如何使用進階可見性和控制項保護 Palo Alto Networks - Admin UI](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

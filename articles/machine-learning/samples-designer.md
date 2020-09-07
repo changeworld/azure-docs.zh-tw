@@ -10,12 +10,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: c1d927583ecf0ac5684c607b7d203c3224fe87b1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318822"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812932"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning 設計工具的範例管線和資料集 (預覽)
 
@@ -55,9 +55,9 @@ ms.locfileid: "87318822"
 
 1. 在管線完成執行之後，您可以檢閱管線及檢視每個模組的輸出，以便深入了解。 請使用下列步驟來檢視模組輸出：
 
-   1. 選取畫布中的模組。
+   1. 以滑鼠右鍵按一下要在畫布上看到輸出結果的模組。
+   1. 選取 [視覺化]。
 
-   1. 在畫布右側的 [模組詳細資料] 窗格中，選取 [輸出 + 記錄]。 選取圖形圖示![視覺化圖示](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png)，以查看每個模組的結果。 
 
    針對一些最常見的機器學習案例，使用範例作為起點。
 

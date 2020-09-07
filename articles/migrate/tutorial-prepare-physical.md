@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 準備進行實體伺服器的評�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 55e6039e5844c575808210cde7ee348f658b40ec
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: aba1608c9219e7e8dffe66344b04fa3f085b06f3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420782"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927369"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>準備評估實體伺服器並將其移轉至 Azure
 
@@ -40,15 +40,16 @@ ms.locfileid: "87420782"
 **建立 Azure Migrate 專案** | 您的 Azure 帳戶需要參與者或擁有者權限，才能建立專案。 
 **註冊資源提供者 (僅限評定)** | Azure Migrate 會使用輕量型 Azure Migrate 設備搭配「Azure Migrate：伺服器評定」來探索和評定電腦。<br/><br/> 在設備註冊期間，資源提供者會使用設備中選擇的訂用帳戶進行註冊。 [深入了解](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 若要註冊資源提供者，您必須具有訂用帳戶的「參與者」或「擁有者」角色。
 **建立 Azure AD 應用程式 (僅限評定)** | 註冊設備時，Azure Migrate 會建立一個 Azure Active Directory (Azure AD) 應用程式，用於溝通設備上執行的代理程式，使其各自的服務能在 Azure 上執行。 [深入了解](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 您需要建立 Azure AD 應用程式 (可在應用程式開發人員中取得) 角色的權限。
+**建立 Key Vault** | 該 Key Vault 會建立為設備註冊的一部分，並用於管理在設定設備期間下載的憑證。<br/><br/>若要允許 Azure Migrate 建立 Key Vault，您的 Azure 帳戶必須在 Azure Migrate 專案所在的資源群組上擁有參與者權限。
 
 
 ### <a name="assign-permissions-to-create-project"></a>指派建立專案的權限 
 
 檢查您是否有建立 Azure Migrate 專案的權限。
 
-1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]。
-2. 在 [檢查存取權] 中，尋找相關的帳戶，然後按一下以查看權限。
-3. 您應該會具有「參與者」或「擁有者」權限。
+1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]****。
+2. 在 [檢查存取權]**** 中，尋找相關的帳戶，然後按一下以查看權限。
+3. 您應該會具有「參與者」**** 或「擁有者」**** 權限。
     - 如果您剛建立免費的 Azure 帳戶，您就是訂用帳戶的擁有者。
     - 如果您不是訂用帳戶擁有者，請與擁有者合作以指派角色。
 
@@ -95,9 +96,9 @@ ms.locfileid: "87420782"
 
 ### <a name="assign-permissions-to-create-project"></a>指派建立專案的權限
 
-1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]。
-2. 在 [檢查存取權] 中，尋找相關的帳戶，然後按一下以查看權限。
-3. 您應該會具有「參與者」或「擁有者」權限。
+1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]****。
+2. 在 [檢查存取權]**** 中，尋找相關的帳戶，然後按一下以查看權限。
+3. 您應該會具有「參與者」**** 或「擁有者」**** 權限。
     - 如果您剛建立免費的 Azure 帳戶，您就是訂用帳戶的擁有者。
     - 如果您不是訂用帳戶擁有者，請與擁有者合作以指派角色。
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 276b6cc8038a7ac8e0ddd27a3c3eb7c87f05ed1b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795893"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376378"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>在 Azure Active Directory 中的管理單位管理 (預覽)
 
@@ -27,7 +27,7 @@ ms.locfileid: "88795893"
 
 管理單位可讓您授與系統管理權限，這些權限受限於您所定義組織的部門、區域或其他區段。 您可以使用管理單位將權限委派給區域管理員或以細微的層級設定原則。 例如，使用者帳戶管理員可以更新設定檔資訊、重設密碼，且只針對其管理單位中的使用者指派授權。
 
- 例如，委派給地區支援專家的[服務台管理員](directory-assign-admin-roles.md#helpdesk-administrator)角色，受限於僅只管理其所支援區域中的使用者。
+例如，委派給地區支援專家的[服務台管理員](directory-assign-admin-roles.md#helpdesk-administrator)角色，受限於僅只管理其所支援區域中的使用者。
 
 ## <a name="deployment-scenario"></a>部署案例
 
@@ -54,7 +54,7 @@ ms.locfileid: "88795893"
 
 管理單位可用於以邏輯方式將 Azure AD 資源分組。 例如，對於 IT 部門分散在全球各地的組織而言，建立可定義這些地理界限的管理單位可能很合理。 在多國組織具有不同「子組織」(半自主運作) 的另一種情況下，可能會以管理單位來表示每個子組織。
 
-組織的獨特需求將會引導管理單位的建立準則。 管理單位是跨 M365 服務定義結構的常見方式。 我們建議您在準備管理單位時考量到其跨 M365 服務使用的特性。 如果您可讓管理單位之下跨 M365 的通用資源產生關聯，即可從管理單位獲得最大價值。
+組織的獨特需求將會引導管理單位的建立準則。 管理單位是跨 Microsoft 365 服務定義結構的常見方式。 我們建議您在準備管理單位時考量到其跨 Microsoft 365 服務使用的特性。 如果您可讓管理單位之下跨 Microsoft 365 的通用資源產生關聯，即可從管理單位獲得最大價值。
 
 您可預期在組織中建立管理單位，以進行下列階段：
 
@@ -64,7 +64,7 @@ ms.locfileid: "88795893"
 
 ## <a name="currently-supported-scenarios"></a>目前支援的案例
 
-全域管理員或特殊權限的角色管理員可以使用 Azure AD 入口網站來建立管理單位、將使用者新增為管理單位的成員，然後將 IT 人員指派給管理單位範圍的系統管理員角色。 管理單位範圍的系統管理員可接著使用 Office 365 入口網站，在其管理單位中進行使用者的基本管理。
+全域管理員或特殊權限的角色管理員可以使用 Azure AD 入口網站來建立管理單位、將使用者新增為管理單位的成員，然後將 IT 人員指派給管理單位範圍的系統管理員角色。 管理單位範圍的系統管理員可接著使用 Microsoft 365 系統管理中心，在其管理單位中進行使用者的基本管理。
 
 此外，您可將群組新增為管理單位的成員，而管理單位範圍的群組管理員可使用 PowerShell、Microsoft Graph 和 Azure AD 入口網站來管理成員。
 
@@ -99,7 +99,7 @@ ms.locfileid: "88795893"
 >
 > 具有管理單位範圍的系統管理員無法管理動態群組成員資格規則。
 
-管理單位只會將範圍套用至管理權限。 其不會阻止成員或系統管理員使用其[預設使用者權限](../fundamentals/users-default-permissions.md)來瀏覽管理單位以外的其他使用者、群組或資源。 在 Office 365 入口網站中，系統會篩選出限域系統管理員的管理單位以外的使用者，但您可以在 Azure AD 入口網站、PowerShell 和其他 Microsoft 服務中瀏覽其他使用者。
+管理單位只會將範圍套用至管理權限。 其不會阻止成員或系統管理員使用其[預設使用者權限](../fundamentals/users-default-permissions.md)來瀏覽管理單位以外的其他使用者、群組或資源。 在 Microsoft 365 系統管理中心，系統會篩選出限域系統管理員的管理單位以外的使用者，但您可以在 Azure AD 入口網站、PowerShell 和其他 Microsoft 服務中瀏覽其他使用者。
 
 ## <a name="next-steps"></a>後續步驟
 

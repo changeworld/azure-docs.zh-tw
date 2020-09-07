@@ -1,14 +1,14 @@
 ---
 title: 藍圖範例索引
 description: 使用 Azure 藍圖部署環境、原則和雲端採用架構基礎的合規性和標準範例索引。
-ms.date: 07/01/2020
+ms.date: 07/10/2020
 ms.topic: sample
-ms.openlocfilehash: ef85ef0615fa0817a574240e65b7670daeaff33b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: cf8109dc8446fe1e3625e4f7c6fd0b5493c352d6
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86181551"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488349"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 藍圖範例
 
@@ -26,7 +26,7 @@ ms.locfileid: "86181551"
 | [DoD 影響等級 5](./dod-impact-level-5/index.md) | 提供一組原則，以協助符合 DoD 影響等級 5 的規範。 |
 | [FedRAMP 適中等級](./fedramp-m/index.md) | 提供一組原則，以協助符合 FedRAMP 適中等級的規範。 |
 | [FedRAMP 高等級](./fedramp-h/index.md) | 提供一組原則，以協助符合 FedRAMP 高等級的規範。 |
-| [HIPAA HITRUST](./HIPAA-HITRUST/index.md) | 提供一組原則，以協助符合 HIPAA HITRUST。 |
+| [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md) | 提供一組原則，以協助符合 HIPAA HITRUST。 |
 | [IRS 1075](./irs-1075/index.md) | 提供成立條件以符合 IRS 1075。|
 | [ISO 27001](./iso27001/index.md) | 提供成立條件以符合 ISO 27001。 |
 | [ISO 27001 共用服務](./iso27001-shared/index.md) | 提供一組符合規範的基礎結構模式和原則防護措施，可協助您取得 ISO 27001 證明。 |

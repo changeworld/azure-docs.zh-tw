@@ -2,13 +2,14 @@
 title: Azure Resource Manager 概觀
 description: 描述如何使用 Azure Resource Manager 在 Azure 上進行資源的部署、管理及存取控制。
 ms.topic: overview
-ms.date: 04/21/2020
-ms.openlocfilehash: 089919e227b33859dbeabd98ecd75845a28a3f42
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 09/01/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 2dc33093df0d9bc0bd75410bac8d200fe6555257
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087022"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293943"
 ---
 # <a name="what-is-azure-resource-manager"></a>什麼是 Azure Resource Manager？
 
@@ -68,25 +69,33 @@ Azure 提供四個範圍層級：[管理群組](../../governance/management-grou
 
 定義資源群組時，必須考慮一些重要因素：
 
-* 群組中的所有資源應該共用相同的生命週期。 您可一起部署、更新和刪除它們。 如果類似伺服器這樣的資源必須存在於不同的部署週期，該資源應該位於另一個資源群組中。
+* 資源群組中的所有資源應該共用相同的生命週期。 您可一起部署、更新和刪除它們。 如果類似伺服器這樣的資源必須存在於不同的部署週期，該資源應該位於另一個資源群組中。
 
 * 每個資源只能存在於一個資源群組中。
-
-* 有些資源可存在於資源群組外部。 這些資源會部署至[訂用帳戶](../templates/deploy-to-subscription.md)、[管理群組](../templates/deploy-to-management-group.md)或[租用戶](../templates/deploy-to-tenant.md)。 這些範圍僅支援特定的資源類型。
 
 * 您可以隨時在資源群組中新增或移除資源。
 
 * 您可以將資源從一個資源群組移動到另一個群組。 如需詳細資訊，請參閱 [將資源移動到新的資源群組或訂用帳戶](move-resource-group-and-subscription.md)。
 
-* 資源群組可以包含位於不同區域的資源。
+* 資源群組中的資源可位於與資源群組不同的區域中。
 
-* 資源群組可以用來設定系統管理動作的存取控制範圍。
+* 建立資源群組時，您需要提供該資源群組的位置。 您可能會想：「為什麼資源群組需要位置？ 而且，如果資源可以有不同於資源群組的位置，為什麼資源群組位置這麼重要？」 資源群組會儲存資源相關中繼資料。 當您指定資源群組的位置時，您便是指定中繼資料的儲存位置。 基於相容性理由，您可能需要確保您的資料存放在特定區域中。
 
-* 資源可與其他資源群組中的資源互動。 此互動常見於兩個資源彼此連結，但未共用相同的生命週期 (例如，連接至某個資料庫的 Web 應用程式) 時。
+   如果資源群組的區域暫時無法使用，您就無法更新資源群組中的資源，因為中繼資料無法使用。 其他區域中的資源仍可如預期般運作，但您無法更新這些資源。 如需如何建置可靠應用程式的詳細資訊，請參閱[設計可靠的 Azure 應用程式](/azure/architecture/checklist/resiliency-per-service)。
 
-建立資源群組時，您需要提供該資源群組的位置。 您可能會想：「為什麼資源群組需要位置？ 而且，如果資源可以有不同於資源群組的位置，為什麼資源群組位置這麼重要？」 資源群組會儲存資源相關中繼資料。 當您指定資源群組的位置時，您便是指定中繼資料的儲存位置。 基於相容性理由，您可能需要確保您的資料存放在特定區域中。
+* 資源群組可以用來設定系統管理動作的存取控制範圍。 若要管理資源群組，您可以指派 [Azure 原則](../../governance/policy/overview.md)、[RBAC 角色](../../role-based-access-control/role-assignments-portal.md)或[資源鎖定](lock-resources.md)。
 
-如果資源群組的區域暫時無法使用，您就無法更新資源群組中的資源，因為中繼資料無法使用。 其他區域中的資源仍可如預期般運作，但您無法更新這些資源。 如需如何建置可靠應用程式的詳細資訊，請參閱[設計可靠的 Azure 應用程式](/azure/architecture/checklist/resiliency-per-service)。
+* 您可以[將標記套用](tag-resources.md)至資源群組。 資源群組中的資源不會繼承這些標記。
+
+* 資源可以連線至其他資源群組中的資源。 當這兩個資源相關，但不共用相同的生命週期時，此案例很常見。 例如，您可以有一個 Web 應用程式連線到不同資源群組中的資料庫。
+
+* 當您刪除資源群組時，也會一併刪除資源群組中的所有資源。 如需 Azure Resource Manager 如何協調這些刪除作業的詳細資訊，請參閱 [Azure Resource Manager 資源群組和資源刪除](delete-resource-group.md)。
+
+* 您可以在每個資源群組中最多部署某個資源類型的 800 個執行個體。 有些資源類型[免除 800 個執行個體的限制](resources-without-resource-group-limit.md)。
+
+* 有些資源可存在於資源群組外部。 這些資源會部署至[訂用帳戶](../templates/deploy-to-subscription.md)、[管理群組](../templates/deploy-to-management-group.md)或[租用戶](../templates/deploy-to-tenant.md)。 這些範圍僅支援特定的資源類型。
+
+* 若要建立資源群組，您可以使用[入口網站](manage-resource-groups-portal.md#create-resource-groups)、[PowerShell](manage-resource-groups-powershell.md#create-resource-groups)、[Azure CLI](manage-resource-groups-cli.md#create-resource-groups) 或 [Azure Resource Manager (ARM) 範本](../templates/deploy-to-subscription.md#resource-groups)。
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager 的復原
 

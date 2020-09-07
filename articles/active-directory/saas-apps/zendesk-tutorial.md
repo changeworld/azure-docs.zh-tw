@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/13/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: c7d452803d15bab77df8e85a861de914a5ed08d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 85e198def03ab4f6d3e18047ccea0152f96694fd
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546051"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814995"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Zendesk 整合
 
@@ -54,7 +54,7 @@ ms.locfileid: "88546051"
 1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Zendesk**。
 1. 從結果面板選取 [Zendesk]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-zendesk"></a>設定及測試 Zendesk 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-zendesk"></a>設定和測試 Zendesk 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Zendesk 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Zendesk 中相關使用者之間的連結關聯性。
 
@@ -149,50 +149,29 @@ ms.locfileid: "88546051"
 
 1. 如果您想要手動設定 Zendesk，請開啟新的網頁瀏覽器視窗，並以管理員身分登入 Zendesk 公司網站，然後執行下列步驟：
 
-1. 按一下 Admin  。
+1. 在 **Zendesk 管理中心**中，按一下**安全性**索引標籤中的 [安全性設定]。
 
-1. 在左側導覽窗格中按一下 [設定]  ，然後按一下 [安全性]  。
+    ![安全性](./media/zendesk-tutorial/settings.png "安全性")
 
-1. 在 [安全性]  頁面上執行下列步驟：
+1. 移至 [單一登入] 頁面，然後按一下 **SAML** 中的 [編輯]。
 
-    ![安全性](./media/zendesk-tutorial/ic773089.png "安全性")
+    ![安全性](./media/zendesk-tutorial/saml-sso.png "安全性")
 
-    ![單一登入](./media/zendesk-tutorial/ic773090.png "單一登入")
+1. 在 **SSO** 頁面中，執行下列步驟。
 
-    a. 按一下 [系統管理員和代理程式]  索引標籤。
+    ![單一登入](./media/zendesk-tutorial/saml-configuration.png "單一登入")
 
-    b. 選取 [單一登入 (SSO) 和 SAML]  ，然後選取 [SAML]  。
+    a. 在 [SAML SSO URL]  文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
 
-    c. 在 [SAML SSO URL]  文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
+    b. 在 [憑證指紋]  文字方塊中，貼上您從 Azure 入口網站複製的憑證 [指紋]  值。
 
-    d. 在 [遠端登出 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]  值。
+    c. 在 [遠端登出 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]  值。
 
-    e. 在 [憑證指紋]  文字方塊中，貼上您從 Azure 入口網站複製的憑證 [指紋]  值。
-
-    f. 按一下 [檔案]  。
+    d. 按一下 [檔案]  。
 
 ### <a name="create-zendesk-test-user"></a>建立 Zendesk 測試使用者
 
 本節的目標是要在 Zendesk 中建立名為 Britta Simon 的使用者。 Zendesk 支援自動使用者佈建，該功能預設為啟用。 您可以在[這裡](Zendesk-provisioning-tutorial.md)找到關於如何設定自動使用者佈建的更多詳細資料。
-
-**如果您需要手動建立使用者，請執行下列步驟：**
-
-> [!NOTE]
-> [使用者]  帳戶會在登入時自動佈建。 登入之前，必須在 **Zendesk** 中手動佈建 [代理程式]  和 [系統管理員]  帳戶。
-
-1. 登入您的 **Zendesk** 租用戶。
-
-2. 選取 [客戶清單]  索引標籤。
-
-3. 選取 [使用者]  索引標籤，然後按一下 [新增]  。
-
-    ![新增使用者](./media/zendesk-tutorial/ic773632.png "新增使用者")
-4. 輸入您要佈建之現有 Azure AD 帳戶的**名稱**和**電子郵件**，然後按一下 [儲存]  。
-
-    ![新增使用者](./media/zendesk-tutorial/ic773633.png "新增使用者")
-
-> [!NOTE]
-> 您可以使用任何其他的 Zendesk 使用者帳戶建立工具或 Zendesk 提供的 API，來佈建 Azure AD 使用者帳戶。
 
 ## <a name="test-sso"></a>測試 SSO 
 

@@ -1,24 +1,26 @@
 ---
 title: 快速入門：使用筆跡辨識器 REST API 與 Java 來辨識數位筆跡
 titleSuffix: Azure Cognitive Services
-description: 在本快速入門中使用筆跡辨識器 API 開始辨識數位筆跡筆觸。
+description: 在本快速入門中使用筆跡辨識器 API 和 Java 開始辨識數位筆跡筆觸。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-java
-ms.openlocfilehash: 902d8a592893a70b8a694ab888bb3c22c6c9670a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b73f5013fdbef34344ece672bacff90db9bac60b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371544"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051571"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>快速入門：使用筆跡辨識器 REST API 與 Java 來辨識數位筆跡
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 使用本快速入門，開始針對數位筆跡筆觸使用筆跡辨識器 API。 此 Java 應用程式會傳送包含 JSON 格式筆跡筆觸資料的 API 要求，並取得回應。
 

@@ -10,16 +10,17 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b61ba7f160d012cc3d9ad9f477e969a626fdc38e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541414"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378010"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>針對使用一組驗證認證的資源，將秘密的輪替自動化
 
-向 Azure 服務進行驗證的最佳方式是使用[受控識別](../general/managed-identity.md)，但在某些情況下並無法使用此選項。 在這類情況下，應使用存取金鑰或祕密。 您應該定期輪替存取金鑰或祕密。
+向 Azure 服務進行驗證的最佳方式是使用[受控識別](../general/authentication.md)，但在某些情況下並無法使用此選項。 在這類情況下，應使用存取金鑰或祕密。 您應該定期輪替存取金鑰或祕密。
 
 本教學課程示範如何針對使用一組驗證認證的資料庫和服務自動執行定期的秘密輪替。 具體而言，此教學課程會使用 Azure 事件方格通知所觸發的函式，來輪替儲存在 Azure Key Vault 中的 SQL Server 密碼：
 
@@ -112,7 +113,7 @@ akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/sites
 akvrotation-fnapp        akvrotation       eastus      Microsoft.insights/components
 ```
 
-如需如何建立函式應用程式和使用受控識別來存取 Key Vault 的相關資訊，請參閱[從 Azure 入口網站建立函式應用程式](../../azure-functions/functions-create-function-app-portal.md)和[使用受控識別提供金鑰保存庫驗證](../general/managed-identity.md)。
+如需如何建立函式應用程式和使用受控識別來存取 Key Vault 的相關資訊，請參閱[從 Azure 入口網站建立函式應用程式](/azure/azure-functions/functions-create-function-app-portal)、[如何使用 App Service 和 Azure Functions 的受控識別](/azure/app-service/overview-managed-identity)以及[使用 Azure 入口網站指派 Key Vault 存取金鑰](../general/assign-access-policy-portal.md)。
 
 ### <a name="rotation-function"></a>輪替函式
 前一個步驟中部署的函式會透過更新 Key Vault 和 SQL 資料庫，使用事件來觸發密碼輪替。 

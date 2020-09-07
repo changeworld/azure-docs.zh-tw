@@ -6,20 +6,19 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 08/25/2020
+ms.date: 08/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: c7fbea977904145aa2e8851f45a4b70f9ce0c560
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.custom: contperfq1
+ms.openlocfilehash: 23d8d28a03217b1359462332da736f852cfaf8ea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855601"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015385"
 ---
 # <a name="what-is-vpn-gateway"></a>什麼是 VPN 閘道？
 
 VPN 閘道是特定的虛擬網路閘道類型，可透過公用網際網路在 Azure 虛擬網路與內部部署位置之間傳送加密流量。 您也可以使用 VPN 閘道，透過 Microsoft 網路來傳送 Azure 虛擬網路之間的已加密流量。 每個虛擬網路只能有一個 VPN 閘道。 不過，您可以對相同的 VPN 閘道建立多個連線。 當您對相同的 VPN 閘道建立多個連線時，所有 VPN 通道都會共用可用的閘道頻寬。
-
-您可以在 Azure 可用性區域中部署 VPN 閘道。 此方式可為虛擬網路閘道帶來復原力、延展性和更高的可用性。 在 Azure 可用性區域中部署閘道可從根本上和邏輯上分隔區域內的閘道，同時還能在發生區域層級的失敗時，保護您內部部署項目與 Azure 的網路連線。 請參閱[關於在 Azure 可用性區域中的區域備援虛擬網路閘道](about-zone-redundant-vnet-gateways.md) (機器翻譯)。
 
 ## <a name="what-is-a-virtual-network-gateway"></a><a name="whatis"></a>什麼是虛擬網路閘道？
 
@@ -33,9 +32,15 @@ VPN 閘道是特定的虛擬網路閘道類型，可透過公用網際網路在 
 
 VPN 閘道連線需仰賴多個具有特定設定的資源。 大部分的資源可以分別進行設定，雖然必須以特定順序設定某些資源。
 
-### <a name="design-connection-topology-diagrams"></a><a name="diagrams"></a>設計：連線拓撲圖表
+### <a name="design"></a><a name="diagrams"></a>設計
 
-請務必知道 VPN 閘道連線有不同的組態可用。 您必須決定哪個組態最符合您的需求。 例如，點對站、站對站及共存的 ExpressRoute/站對站連線，都有不同的指示與設定需求。 如需設計和連線拓撲圖表的相關資訊，請參閱[設計](design.md)。
+請務必知道 VPN 閘道連線有不同的組態可用。 您必須決定哪個組態最符合您的需求。 例如，點對站、站對站及共存的 ExpressRoute/站對站連線，都有不同的指示與設定需求。 如需設計相關資訊及檢視連線拓撲圖表，請參閱[設計](design.md)。
+
+### <a name="planning-table"></a><a name="planningtable"></a>規劃表
+
+下表可以協助您為您的解決方案決定最佳的連線選項。
+
+[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ### <a name="settings"></a><a name="settings"></a>設定
 
@@ -44,12 +49,6 @@ VPN 閘道連線需仰賴多個具有特定設定的資源。 大部分的資源
 ### <a name="deployment-tools"></a><a name="tools"></a>部署工具
 
 您可以使用設定工具 (例如 Azure 入口網站) 開始建立及設定資源。 您可以稍後再決定切換到另一個工具 (如 PowerShell) 來設定其他資源，或是在適用的時機修改現有資源。 您目前無法在 Azure 入口網站中進行每一項資源和資源設定。 文章中各連線拓撲的指示會指定何時需要特定組態工具。
-
-### <a name="planning-table"></a><a name="planningtable"></a>規劃表
-
-下表可以協助您為您的解決方案決定最佳的連線選項。
-
-[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ## <a name="gateway-skus"></a><a name="gwsku"></a>閘道 SKU
 
@@ -61,6 +60,10 @@ VPN 閘道連線需仰賴多個具有特定設定的資源。 大部分的資源
 ### <a name="gateway-skus-by-tunnel-connection-and-throughput"></a><a name="benchmark"></a>依通道、連線和輸送量區分的閘道 SKU
 
 [!INCLUDE [Aggregated throughput by SKU](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
+
+## <a name="availability-zones"></a><a name="availability"></a>可用性區域
+
+您可以在 Azure 可用性區域中部署 VPN 閘道。 此方式可為虛擬網路閘道帶來復原力、延展性和更高的可用性。 在 Azure 可用性區域中部署閘道可從根本上和邏輯上分隔區域內的閘道，同時還能在發生區域層級的失敗時，保護您內部部署項目與 Azure 的網路連線。 請參閱[關於在 Azure 可用性區域中的區域備援虛擬網路閘道](about-zone-redundant-vnet-gateways.md) (機器翻譯)。
 
 ## <a name="pricing"></a><a name="pricing"></a>定價
 

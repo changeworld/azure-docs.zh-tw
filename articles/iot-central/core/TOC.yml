@@ -107,10 +107,10 @@
           href: howto-run-a-job.md
     - name: 轉換
       items:
-        - name: 將資料匯出至 Azure 中的目的地 (舊版)
-          href: howto-export-data.md
         - name: 將資料匯出至雲端目的地 (預覽)
-          href: howto-use-data-export.md
+          href: howto-export-data.md
+        - name: 將資料匯出至雲端目的地 (舊版)
+          href: howto-export-data-legacy.md
         - name: 建立規則的 Webhook
           href: howto-create-webhooks.md
         - name: 使用工作流程與其他服務整合

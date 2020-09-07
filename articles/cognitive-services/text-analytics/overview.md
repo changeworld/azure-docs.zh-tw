@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/04/2020
+ms.date: 08/27/2020
 ms.author: aahi
-ms.openlocfilehash: 1e9928359f314ed57004df0264ac843871083eba
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: a3c538f3a9e7a2d8d71fff38fb927dbcdf725732
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141852"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000952"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什麼是文字分析 API？
 
@@ -82,26 +82,7 @@ ms.locfileid: "84141852"
 
 ## <a name="data-limits"></a>資料限制
 
-所有的文字分析 API 端點均接受原始文字資料。 目前的限制是每個文件 5,120 個字元；如果您需要分析較大的文件，您可以其分成較小的區塊。
-
-| 限制 | 值 |
-|------------------------|---------------|
-| 單一文件的大小上限 | 依 [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) 測量的 5,120 個字元。 |
-| 整體要求的大小上限 | 1 MB |
-| 要求中的文件數上限 | 最多 1,000 份文件 ([依各項功能而異](concepts/data-limits.md)) |
-
-您的速率限制會隨著定價層而不同。
-
-| 層          | 每秒要求 | 每分鐘要求 |
-|---------------|---------------------|---------------------|
-| S / 多服務 | 1000                | 1000                |
-| S0 / F0         | 100                 | 300                 |
-| S1            | 200                 | 300                 |
-| S2            | 300                 | 300                 |
-| S3            | 500                 | 500                 |
-| S4            | 1000                | 1000                |
-
-要求是針對每個「文字分析」功能個別進行測量。 例如，您可以同時將適用於定價層的要求數量上限傳送到每個功能。      
+所有的文字分析 API 端點均接受原始文字資料。 如需詳細資訊，請參閱[資料限制](concepts/data-limits.md)一文。
 
 ## <a name="unicode-encoding"></a>Unicode 編碼
 

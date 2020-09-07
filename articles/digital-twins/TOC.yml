@@ -36,12 +36,6 @@
       href: concepts-security.md
 - name: 操作指南
   items:
-    - name: 開發
-      items:
-        - name: 使用 API 和 SDK
-          href: how-to-use-apis-sdks.md
-        - name: 使用 AutoRest 建立自訂 SDK
-          href: how-to-create-custom-sdks.md
     - name: 部署
       items:
         - name: 使用 Azure Digital Twins CLI
@@ -78,6 +72,14 @@
           href: how-to-create-azure-function.md
         - name: 查詢對應項圖形
           href: how-to-query-graph.md
+    - name: 開發用戶端應用程式
+      items:
+        - name: 使用 API 和 SDK
+          href: how-to-use-apis-sdks.md
+        - name: 使用 AutoRest 建立自訂 SDK
+          href: how-to-create-custom-sdks.md
+        - name: 與 Azure SignalR Service 整合
+          href: how-to-integrate-azure-signalr.md
     - name: 連線輸入
       items:
         - name: 從 IoT 中樞內嵌遙測
@@ -188,6 +190,8 @@
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/'
         - name: Azure Digital Twins 自訂 Swagger
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/'
+        - name: SignalR 整合範例
+          href: 'https://docs.microsoft.com/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/'
     - name: Azure 工具
       items:
         - name: Azure Cloud Shell

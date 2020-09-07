@@ -62,7 +62,7 @@
       href: walkthroughs-azure-data-lake.md
     - name: R、Python 和 T-SQL 與 SQL Server
       href: walkthroughs-sql-server.md
-    - name: T-SQL 和 Python 與 SQL DW
+    - name: 使用 Azure Synapse Analytics 的 T-SQL 和 Python
       href: walkthroughs-sql-data-warehouse.md
 - name: 公用事業和工具
   items:

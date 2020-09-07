@@ -1,15 +1,15 @@
 ---
 title: 透過 Azure Pipelines 的持續整合
 description: 了解如何持續建置、測試及部署 Azure Resource Manager 範本。
-ms.date: 04/22/2020
+ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b8163c357f184ac41ce72dc8c89fcc5030c3180d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118914"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892672"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教學課程：Azure Resource Manager 範本與 Azure Pipelines 的持續整合
 
@@ -175,14 +175,14 @@ azuredeploy.json 已新增至本機存放庫。 接下來您會將範本推送�
     * **位置**：選取資源群組的位置，例如**美國中部**。
     * **範本位置**：選取 [連結的成品]，這表示工作會直接從已連線的存放庫中尋找範本檔案。
     * **範本**：輸入 **CreateWebApp/azuredeploy.json**。 如果您變更了資料夾名稱和檔案名稱，就必須變更此值。
-    * **範本參數**：將此欄位保留空白。 您將在 **覆寫範本參數中指定參數值。
-    * **overrideParameters**：輸入 **-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]** 。 請取代專案名稱和連結的範本 URL。 連結的範本 URL 是您在[建立 GitHub 存放庫](#create-a-github-repository)結束時記下的內容。
+    * **範本參數**：將此欄位保留空白。 您將在**覆寫範本參數**中指定參數值。
+    * **覆寫範本參數**：輸入 **-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]** 。 請取代專案名稱和連結的範本 URL。 連結的範本 URL 是您在[建立 GitHub 存放庫](#create-a-github-repository)結束時記下的內容。 一開始的配置為 **https://raw.githubusercontent.com** 。
     * **部署模式**：選取 [增量]。
     * **部署名稱**：輸入 **DeployPipelineTemplate**。 選取 [進階]，才能看到 [部署名稱]。
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines 步驟](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
-1. 選取 [新增]。
+1. 選取 [新增]  。
 
     如需有關工作的詳細資訊，請參閱 [Azure 資源群組部署工作](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)和 [Azure Resource Manager 範本部署工作](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 

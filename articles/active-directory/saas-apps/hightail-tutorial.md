@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 3b3f279b28bf78114556623865a9f132174c6e41
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0348e5c773f37606a3975a8e62e556bef291a758
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550532"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297241"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Hightail 整合
 
@@ -109,7 +109,7 @@ ms.locfileid: "88550532"
     ![複製組態 URL](common/copy-configuration-urls.png)
 
 > [!NOTE]
-> 在 Hightail 應用程式設定單一登入之前，請透過 Hightail 小組將您的電子郵件網域列入允許清單，以便使用此網域的所有使用者都可以使用單一登入功能。
+> 在 Hightail 應用程式設定單一登入之前，請透過 Hightail 小組將您的電子郵件網域加入允許清單，以便使用此網域的所有使用者都可以使用單一登入功能。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 

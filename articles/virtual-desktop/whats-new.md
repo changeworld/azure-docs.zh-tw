@@ -3,16 +3,17 @@ title: Windows 虛擬桌面的新增功能？ - Azure
 description: Windows 虛擬桌面的新功能和產品更新。
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/07/2020
+ms.date: 09/02/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 8663fc3f016fadcd4f4c99acd800cd0ccf8844f8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: references_regions
+ms.openlocfilehash: d698470f450f6fe903ab68334764e0918d659d7f
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003523"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319809"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虛擬桌面的新增功能？
 
@@ -24,6 +25,31 @@ Windows 虛擬桌面會定期更新。 本文可讓您了解：
 - 錯誤修正
 
 本文每月更新。 務必經常回到這裡查看，以掌握新的更新。
+
+## <a name="august-2020"></a>2020 年 8 月
+
+以下是 2020 年 8 月的變更：
+
+- 我們已改善效能，以減少下列 Azure 區域中的連線延遲： 
+
+    - 英國
+    - 法國
+    - 挪威
+    - 南韓
+
+   您可以使用[體驗估算器](https://azure.microsoft.com/services/virtual-desktop/assessment/)，大致了解這些變更對您的使用者有何影響。
+
+- Microsoft Store 遠端桌面用戶端 (v10.2.1522+) 現已正式推出！ 這個版本的 Microsoft Store 遠端桌面用戶端與 Windows 虛擬桌面相容。 我們也引進了重新整理的 UI 流程，以提升使用者體驗。 此更新包括流暢的設計、淺色與深色模式，以及許多其他令人興奮的改變。 我們也將用戶端重寫為使用與 iOS、macOS 和 Android 用戶端相同的基礎遠端桌面通訊協定 (RDP) 引擎。 這可讓我們以更快的速度在所有平台上提供新功能。 [下載用戶端](https://www.microsoft.com/p/microsoft-remote-desktop/9wzdncrfj3ps?rtc=1&activetab=pivot:overviewtab)並試試看！
+
+- 我們已修正 Teams 桌面用戶端 (版本 1.3.00.21759) 的問題：用戶端僅顯示聊天、頻道和行事曆中的 UTC 時區。 更新的用戶端現在改為顯示遠端工作階段的時區。
+
+- Azure Advisor 現在屬於 Windows 虛擬桌面的一部分。 當您透過 Azure 入口網站存取 Windows 虛擬桌面時，您可以看到最佳化 Windows 虛擬桌面環境的建議。 深入了解 [Azure Advisor](azure-advisor.md)。
+
+- Azure CLI 現在支援 Windows 虛擬桌面 (`az desktopvirtualization`)，協助您將 Windows 虛擬桌面部署自動化。 如需擴充命令的清單，請參閱 [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest)。
+
+- 我們已更新部署範本，使其與 Windows 虛擬桌面 Azure Resource Manager 介面完全相容。 您可以在 [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates) 上找到範本。
+
+- Windows 虛擬桌面 US Gov 入口網站現為公開預覽版。 若要進一步了解，請參閱[我們的公告](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-available-in-the-azure-government-cloud-in-preview/)。
 
 ## <a name="july-2020"></a>2020 年 7 月  
 
@@ -105,9 +131,7 @@ Windows 虛擬桌面現在整合至 Azure Resource Manager。 在最新的更新
 
 若要進一步了解，請參閱[我們的部落格文章](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/)。
 
-## <a name="next-steps"></a>後續步驟
-
-在 [Microsoft 365 Windows 虛擬桌面藍圖](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop)深入了解未來的計劃。
+## <a name="client-updates"></a>用戶端更新
 
 請參閱這些文章，以了解哪些用戶端更新適用於 Windows 虛擬桌面和遠端桌面服務：
 
@@ -116,3 +140,8 @@ Windows 虛擬桌面現在整合至 Azure Resource Manager。 在最新的更新
 - [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="next-steps"></a>後續步驟
+
+在 [Microsoft 365 Windows 虛擬桌面藍圖](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop)深入了解未來的計劃。
+

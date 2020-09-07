@@ -1,14 +1,14 @@
 ---
 title: 教學課程：新環境的藍圖範例
 description: 在本教學課程中，您將使用藍圖範例建立藍圖定義，以設定兩個資源群組及其各自的角色指派。
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: tutorial
-ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 891240dcafe0cbfbfab4ff1fd415cba4abf682a5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677082"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048727"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>教學課程：從藍圖範例建立環境
 
@@ -122,7 +122,7 @@ ms.locfileid: "80677082"
 
 1. 選取左側的 [指派的藍圖]  頁面。 使用篩選來尋找「Assignment-two-rgs-with-role-assignments」  藍圖指派，然後加以選取。
 
-   在這個頁面中，我們可以看到指派已成功建立，並可看到所建立資源的清單及其藍圖鎖定狀態。 如果更新指派，則 [指派作業]  下拉式清單會顯示每個定義版本的部署詳細資料。 所列出的每個已建立資源均可點按，並於點按後開啟該資源屬性頁。
+   在這個頁面中，我們可以看到指派已成功建立，並可看到所建立資源的清單及其藍圖鎖定狀態。 如果更新指派，則 [指派作業]  下拉式清單會顯示每個定義版本的部署詳細資料。 所列出的每個已建立資源均可點按，並於選取後開啟該資源屬性頁面。
 
 1. 選取 [ProductionRG]  資源群組。
 
@@ -169,7 +169,7 @@ ms.locfileid: "80677082"
 
 1. 選取左側的 [存取控制 (IAM)]  頁面，然後選取 [角色指派]  索引標籤。
 
-每個資源群組的安全性仍會具有所部署的角色指派，但藍圖指派則不再具有「擁有者」  存取權。
+每個資源群組的安全性仍會具有所部署的角色指派，但藍圖指派則不再具有「擁有者」存取權。
 
 出現**成功移除藍圖指派**的入口網站通知後，請移至下一個步驟。
 

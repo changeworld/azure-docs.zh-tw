@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 182cf54f58b4fbb8b80fb4ff9d7c1a9c1e353470
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 1554722308675a44a9c144059cc9886996fa3166
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723906"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918429"
 ---
 # <a name="language-support-for-form-recognizer"></a>表單辨識器的語言支援
 
@@ -26,11 +26,11 @@ ms.locfileid: "88723906"
 |:-----|:----:|:-----:|:---:|:---:|
 |簡體中文 | `zh-Hans`| | ✔ |
 |荷蘭文 | `nl` | |✔ |
-|英文 | `en` |✔ |
+|英文 (列印和手寫) | `en` |✔ |
 |法文 | `fr` | |✔ |
 |德文 | `de` | |✔ |
 |義大利文 | `it` | |✔ |
 |葡萄牙文 | `pt` | |✔ |
 |西班牙文 | `es` | |✔ |
 
-* 表單辨識器 v2.1 公開預覽可支援使用這些語言來進行 `Analyze Layout` 和 `Train Custom Model` (_使用標籤來定型_和_不使用標籤來定型_) 作業。 `Analyze Receipt` 和 `Analyze Business Card` 則只支援英文。
+* 表單辨識器 v2.1 公開預覽版支援這些適用於版面配置和自訂的語言。 預先建立的收據和預先建立的名片僅以英文支援。

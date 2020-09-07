@@ -3,12 +3,12 @@ title: SWIFT CSP-CSCF v2020 藍圖範例控制項
 description: SWIFT CSP-CSCF v2020 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
 ms.date: 08/18/2020
 ms.topic: sample
-ms.openlocfilehash: ee9ba86c41f37aac8eba3dbf973d2853a493547a
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 06a334ff05db1cfc7ad1fb09e370963486ee1515
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612736"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297412"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 藍圖範例的控制項對應
 
@@ -121,19 +121,19 @@ Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中�
 
 ## <a name="11-least-functionality--prevent-program-execution"></a>1.1 最少的功能 | 防止程式執行
 
-「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制能以強制模式執行，禁止執行未經核准的應用程式。 此藍圖指派一個 Azure 原則定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
+「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式篩選解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制能以強制模式執行，禁止執行未經核准的應用程式。 此藍圖會指派一個 Azure 原則定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
 
 - 您的電腦應啟用自適性應用程式控制，以定義安全應用程式
 
 ## <a name="11-least-functionality--authorized-software--whitelisting"></a>1.1 最少的功能 | 已授權的軟體/加入允許清單
 
-「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制可協助您建立虛擬機器的已核准應用程式清單。 此藍圖指派一個 [Azure 原則](../../../policy/overview.md)定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
+「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式篩選解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制可協助您建立虛擬機器的已核准應用程式清單。 此藍圖會指派一個 [Azure 原則](../../../policy/overview.md)定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
 
 - 您的電腦應啟用自適性應用程式控制，以定義安全應用程式
 
 ## <a name="11-user-installed-software"></a>1.1 使用者安裝的軟體
 
-「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制可協助您強制執行軟體限制原則，並監視其合規性。 此藍圖指派一個 [Azure 原則](../../../policy/overview.md)定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
+「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式篩選解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制可協助您強制執行軟體限制原則，並監視其合規性。 此藍圖會指派一個 [Azure 原則](../../../policy/overview.md)定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
 
 - 您的電腦應啟用自適性應用程式控制，以定義安全應用程式
 - 虛擬機器應移轉到新的 Azure Resource Manager 資源

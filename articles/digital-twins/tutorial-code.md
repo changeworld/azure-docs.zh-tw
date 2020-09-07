@@ -1,5 +1,5 @@
 ---
-title: 撰寫用戶端應用程式程式碼
+title: 教學課程：撰寫用戶端應用程式的程式碼
 titleSuffix: Azure Digital Twins
 description: 使用 .NET (C#) SDK 撰寫用戶端應用程式基礎程式碼的教學課程。
 author: baanders
@@ -7,16 +7,23 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 52a22dd215769208b60f180b576ae5763d67eade
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: c000d48043a46ecdbdfee263cc5c8ce877f66b4b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723464"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923699"
 ---
-# <a name="coding-with-the-azure-digital-twins-apis"></a>使用 Azure Digital Twins API 撰寫程式碼
+# <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>教學課程：使用 Azure Digital Twins API 撰寫程式碼
 
 開發人員使用 Azure Digital Twins 撰寫用戶端應用程式，與其 Azure Digital Twins 服務執行個體互動，是很常見的情況。 這項以開發人員為主的教學課程，會介紹使用[適用於 .NET 的 Azure IoT Digital Twin 用戶端程式庫 (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) (英文) 設計 Azure Digital Twins 服務的程式。 逐步引導您從頭開始撰寫 C# 主控台用戶端應用程式。
+
+> [!div class="checklist"]
+> * 設定專案
+> * 開始使用專案程式碼   
+> * 完整的程式碼範例
+> * 清除資源
+> * 後續步驟
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -48,7 +55,7 @@ dotnet new console
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity --version 1.1.1
+dotnet add package Azure.identity
 ```
 
 第一個相依性是[適用於 .NET 的 Azure IoT Digital Twin 用戶端程式庫](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) (英文)。 第二個相依性會提供協助驗證 Azure 的工具。
@@ -419,7 +426,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Azure;
-using Azure.DigitalTwins.Core.Models;
 using Azure.DigitalTwins.Core.Serialization;
 using System.Text.Json;
 
@@ -532,24 +538,7 @@ namespace minimal
  
 本教學課程中使用的執行個體可以在下一個教學課程中重複使用，[教學課程：探索範例用戶端應用程式的基本概念](tutorial-command-line-app.md)。 如果打算繼續下一項教學課程，您可以保留在此設定的 Azure Digital Twins 執行個體。
  
-當您不再需要於本教學課程中建立的資源時，請遵循這些步驟加以刪除。
-
-使用 [Azure Cloud Shell](https://shell.azure.com)，您可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令刪除資源群組中的所有 Azure 資源。 這會移除資源群組及 Azure Digital Twins 執行個體。
-
-> [!IMPORTANT]
-> 刪除資源群組是無法回復的動作。 資源群組和其中包含的所有資源都將永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 
-
-開啟 Azure Cloud Shell 並執行以下命令，以刪除資源群組及其包含的所有內容。
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
-
-接下來，使用此命令刪除您為用戶端應用程式所建立的 Azure Active Directory 應用程式註冊：
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
 最後，刪除您在本機電腦上建立的專案資料夾。
 
@@ -561,7 +550,3 @@ az ad app delete --id <your-application-ID>
 
 > [!div class="nextstepaction"]
 > [教學課程：探索範例用戶端應用程式的基本概念](tutorial-command-line-app.md)
-
-您也可以在操作說明文章中深入了解管理作業，新增至您在本教學課程中撰寫的程式碼，或開始查看概念文件，以深入了解您在教學課程中使用的元素。
-* [操作說明：管理自訂模型](how-to-manage-model.md)
-* [概念：自訂模型](concepts-models.md)

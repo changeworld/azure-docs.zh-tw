@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0615830e525ab60bbb2167dd39d9c4bf14cc91b3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 9bb3f0d57f7d47e4cb754305627c52003273ca09
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81391570"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377007"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 受控應用程式概觀
 
@@ -71,13 +71,13 @@ Azure 中的所有資料提供者目前都不支援限制存取[資料作業](..
 
 這個資源群組會保存受控應用程式所需的所有資源。 例如，這個資源群組包含解決方案的虛擬機器、儲存體帳戶和虛擬網路。 因為取用者不會為受控應用程式管理個別資源，所以取用者具有這個資源群組的有限存取權。 這個資源群組的發行者存取權會對應至受控應用程式定義中指定的角色。 例如，發行者可能會要求這個資源群組的「擁有者」或「參與者」角色。 存取可以是永久或限制在特定時間。
 
-[將受控應用程式發佈至市集](publish-marketplace-app.md)時，發行者可以授與取用者針對受控資源群組中的資源執行特定動作的能力。 例如，發行者能指定取用者可以重新啟動虛擬機器。 系統仍然會拒絕讀取動作以外的所有其他動作。
+[將受控應用程式發佈至市集](publish-marketplace-app.md)時，發行者可以授與取用者針對受控資源群組中的資源執行特定動作的能力。 例如，發行者能指定取用者可以重新啟動虛擬機器。 系統仍然會拒絕讀取動作以外的所有其他動作。 由取用者透過授與的動作對受控資源群組中的資源所做的變更，受限於取用者租用戶內包含受控資源群組的 [Azure 原則](../../governance/policy/overview.md)指派。
 
 當取用者刪除受控應用程式時，也會刪除受控資源群組。
 
 ## <a name="azure-policy"></a>Azure 原則
 
-您可以將 [Azure 原則](../../governance/policy/overview.md)套用至您的受控應用程式。 您要套用原則，以確保受控應用程式的已部署執行個體符合資料和安全性需求。 如果您的應用程式與敏感性資料互動，請確定您已評估其保護方式。 例如，如果您的應用程式是與 Office 365 中的資料互動，則套用原則以確定資料加密已啟用。
+您可以套用 [Azure 原則](../../governance/policy/overview.md)，以便稽核您的受控應用程式。 您可套用原則定義，以確保受控應用程式的已部署執行個體符合資料和安全性需求。 如果您的應用程式與敏感性資料互動，請確定您已評估其保護方式。 例如，如果您的應用程式是與 Office 365 中的資料互動，則套用原則定義以確定資料加密已啟用。
 
 ## <a name="next-steps"></a>後續步驟
 

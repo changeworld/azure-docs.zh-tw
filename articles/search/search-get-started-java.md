@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 993dff37f9bde5e674dbe5d41d6d4c6da92f0bc9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e9a2ff5d46557ddf8f5f62b456e8a3d54bf90c55
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327526"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290339"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>快速入門：使用 REST API 在 Java 中建立 Azure 認知搜尋索引
 > [!div class="op_single_selector"]
@@ -23,7 +23,7 @@ ms.locfileid: "87327526"
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [入口網站](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
@@ -373,7 +373,7 @@ ms.locfileid: "87327526"
 
 1. 確認您的專案具有下列結構。
 
-    ![專案目錄結構](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
+    ![專案目錄結構加上類別](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
 
 1. 開啟 [Maven]  工具視窗，並執行下列 Maven 目標：`verify exec:java`
 ![執行 Maven 目標：驗證 exec:java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 8132358dcd0ad9d87dc6687afd2adef1942f3b67
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 5e27aaebc015f47e0fcdb5da81770d49b86ad000
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823899"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934322"
 ---
 # <a name="quickstart-extract-business-card-data-using-the-form-recognizer-rest-api-with-python"></a>快速入門：搭配使用表單辨識器 REST API 和 Python 來擷取名片資料
 
@@ -38,33 +38,35 @@ ms.locfileid: "88823899"
 
 ## <a name="analyze-a-business-card"></a>分析名片
 
-若要開始分析名片，請使用下面的 Python 指令碼，呼叫 **[分析名片](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)** API。 執行指令碼之前，請進行下列變更：
+若要開始分析名片，請使用下面的 Python 指令碼，呼叫 **[分析名片](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)** API。 執行指令碼之前，請進行下列變更：
 
-1. 將 `<Endpoint>` 取代為您使用表單辨識器訂用帳戶取得的端點。
-1. 將 `<path to your business card>` 取代為本機表單文件的路徑。
+1. 將 `<endpoint>` 取代為您使用表單辨識器訂用帳戶取得的端點。
+1. 將 `<path to your business card>` 取代為您名片影像或 PDF 的本機路徑。
 1. 將 `<subscription key>` 取代為您在先前的步驟中複製的訂用帳戶金鑰。
+1. 以 'image/jpeg'、'image/png'、'application/pdf' 或 'image/tiff' 取代 `<file type>`。
 
     ```python
-    ########### Python Form Recognizer Async Business cards #############
+    ########### Python Form Recognizer Async Business Cards #############
 
     import json
     import time
     from requests import get, post
     
     # Endpoint URL
-    endpoint = r"<Endpoint>"
+    endpoint = r"<endpoint>"
     apim_key = "<subscription key>"
     post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyze"
     source = r"<path to your business card>"
+    content_type = "<file type>"
     
     headers = {
         # Request headers
-        'Content-Type': '<file type>',
+        'Content-Type': content_type,
         'Ocp-Apim-Subscription-Key': apim_key,
     }
     
     params = {
-        "includeTextDetails": True
+        "includeTextDetails": True  # True to output all recognized text
     }
     
     with open(source, "rb") as f:
@@ -86,15 +88,15 @@ ms.locfileid: "88823899"
 1. 開啟 [命令提示字元] 視窗。
 1. 出現提示時，使用 `python` 命令執行範例。 例如： `python form-recognizer-businesscards.py` 。
 
-您會收到包含 **Operation-Location** 標頭的 `202 (Success)` 回應，而指令碼會將其輸出至主控台。 此標頭包含可用來查詢非同步作業狀態並取得結果的作業識別碼。 在下列範例值中，`operations/` 之後的字串就是作業識別碼。
+您會收到包含 **Operation-Location** 標頭的 `202 (Success)` 回應，而指令碼會將其輸出至主控台。 此標頭包含結果識別碼，您可用來查詢長時間執行的作業狀態並取得結果。 在下列範例值中，`operations/` 之後的字串就是結果識別碼。
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeresults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-business-card-results"></a>取得名片結果
 
-呼叫**分析名片** API 之後，您可以呼叫 **[取得分析名片結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeReceiptResult)** API 來取得作業狀態並擷取資料。 將下列程式碼新增到 Python 指令碼底部。 這會在新的 API 呼叫中使用作業識別碼值。 此指令碼會定期呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
+呼叫**分析名片** API 之後，您可以呼叫 **[取得分析名片結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeBusinessCardResult)** API 來取得作業狀態並擷取資料。 將下列程式碼新增到 Python 指令碼底部。 這會在新的 API 呼叫中使用結果識別碼值。 此指令碼會定期呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
 
 ```python
 n_tries = 10
@@ -129,7 +131,7 @@ while n_try < n_tries:
 ### <a name="examine-the-response"></a>檢查回應
 ![Contoso 公司的名片](../media/business-card-english.jpg)
 
-這個範例說明表單辨識器所傳回的 JSON 輸出。 為了方便您閱讀範例，此範例已截斷。
+這個範例說明表單辨識器所傳回的 JSON 輸出。 為了方便閱讀，此值已截斷。
 
 ```json
 {
@@ -243,7 +245,7 @@ while n_try < n_tries:
 }
 ```
 
-指令碼會將回應輸出到主控台，直到**分析名片**作業完成。 `"readResults"` 節點包含所有已辨識的文字。 文字會依頁面彙整，然後依文字行，再依個別字組彙整。 `"documentResults"` 節點包含此模型所探索到的名片專屬值。 您可以在這裡找到有用的索引鍵/值組，例如公司名稱、名字、姓氏、電話等等。
+指令碼會將回應輸出到主控台，直到**分析名片**作業完成。 `"readResults"` 節點包含所有已辨識的文字。 文字會依頁面彙整，然後依文字行，再依個別字組彙整。 `"documentResults"` 節點包含此模型所探索到的名片專屬值。 您可以在這裡找到有用的資訊，例如公司名稱、名字、姓氏、電話號碼等等。
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -251,4 +253,4 @@ while n_try < n_tries:
 在本快速入門中，您使用表單辨識器 REST API 搭配 Python 來擷取名片上的內容。 接下來，請參閱參考文件來深入探索表單辨識器 API。
 
 > [!div class="nextstepaction"]
-> [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)
+> [REST API 參考文件](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)

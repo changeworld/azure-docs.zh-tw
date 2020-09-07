@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/22/2020
-ms.openlocfilehash: a9c2a5beae8a9206554dd6c432c1d8442b652696
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e714c58827ebb4ee7e50696db27644fa65a73af1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021880"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290305"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>教學課程：建立電話號碼的自訂分析器
 
@@ -21,7 +21,7 @@ ms.locfileid: "87021880"
 
 在某些情況下，像是使用任意格式的文字欄位時，只要選取正確的[語言分析器](index-add-language-analyzers.md)就能改善搜尋結果。 不過，某些案例 (例如，正確搜尋電話號碼、URL 或電子郵件) 則可能需要使用自訂分析器。
 
-本教學課程使用 Postman 和 Azure 認知搜尋的 [REST API](https://docs.microsoft.com/rest/api/searchservice/) 來執行下列作業：
+本教學課程使用 Postman 和 Azure 認知搜尋的 [REST API](/rest/api/searchservice/) 來執行下列作業：
 
 > [!div class="checklist"]
 > * 說明分析器的運作方式
@@ -225,7 +225,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 
 ## <a name="4---debug-search-results"></a>4 - 對搜尋結果進行偵錯
 
-若要了解這些搜尋結果，請務必先了解分析器的運作方式。 從這裡，我們可以使用[分析文字 API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) 來測試預設分析器，然後建立符合我們需求的分析器。
+若要了解這些搜尋結果，請務必先了解分析器的運作方式。 從這裡，我們可以使用[分析文字 API](/rest/api/searchservice/test-analyzer) 來測試預設分析器，然後建立符合我們需求的分析器。
 
 ### <a name="how-analyzers-work"></a>分析器的運作方式
 
@@ -239,7 +239,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 
 在下圖中，您可以看到這三個元件如何合作將句子化為權杖：
 
-  ![分析器程序圖](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  ![權杖化句子的分析器流程圖表](media/tutorial-create-custom-analyzer/analyzers-explained.png)
 
 然後，這些權杖會儲存在反向索引中，以實現快速的全文檢索搜尋。  反向索引會將在語彙分析期間擷取的所有唯一詞彙對應到其發生所在的文件，以實現全文檢索搜尋。 您可以在下圖中看到範例：
 
@@ -251,7 +251,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 1. 接著，會掃描反向索引，以尋找具有相符詞彙的文件。
 1. 最後，所擷取的文件會依照[相似性演算法](index-ranking-similarity.md)排序。
 
-  ![分析器程序圖](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  ![分析器流程次序相似度圖表](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
 
 如果查詢詞彙不符合反向索引中的詞彙，則不會傳回結果。 若要深入了解查詢的運作方式，請參閱關於[全文檢索搜尋](search-lucene-query-architecture.md)的這篇文章。
 
@@ -260,7 +260,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 
 ### <a name="test-analyzer-using-the-analyze-text-api"></a>使用分析文字 API 來測試分析器
 
-Azure 認知搜尋會提供[分析文字 API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)，以讓您測試分析器來了解其如何處理文字。
+Azure 認知搜尋會提供[分析文字 API](/rest/api/searchservice/test-analyzer)，以讓您測試分析器來了解其如何處理文字。
 
 您可以使用下列要求來呼叫分析文字 API：
 

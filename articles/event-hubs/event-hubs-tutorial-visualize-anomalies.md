@@ -3,12 +3,12 @@ title: Azure 事件中樞 - 即時事件中的資料異常視覺化
 description: 教學課程：在傳送至 Microsoft Azure 事件中樞的即時事件中視覺化資料異常
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1394f9bedfdfc3715090bdb8a9028d2654a1e4e3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85315618"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934050"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教學課程：將傳送給 Azure 事件中樞之即時事件中的資料異常視覺化
 
@@ -308,7 +308,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
    ![指定資料集的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. 選取 [卡片]  作為視覺效果類型。 在 [欄位]  下按一下 [新增值]  ，然後選取 [fraudulentuses]  。
+9. 選取 [卡片]  作為視覺效果類型。 在**欄位**下按一下 [新增值]，然後選取 `fraudulentuses`。
 
    ![指定視覺效果類型和欄位的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
@@ -329,9 +329,9 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 12. 在 [視覺效果類型]  下選取 [折線圖]  。
 
-13. 在 [軸]  下方按一下 [新增值]  ，然後選取 [windowend]  。 
+13. 在**軸**下方按一下 [新增值]，然後選取 `windowend`。 
 
-14. 在 [值]  下方按一下 [新增值]  ，然後選取 [fraudulentuses]  。
+14. 在**值**下方按一下 [新增值]，然後選取 `fraudulentuses`。
 
 15. 在 [要顯示的時間範圍]  下，選取過去 5 分鐘。 按 [下一步]  。
 
@@ -378,6 +378,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 請前往下一篇文章，以深入了解 Azure 事件中樞。
 
 > [!div class="nextstepaction"]
-> [開始在 .NET Standard 中傳送訊息至 Azure 事件中樞](get-started-dotnet-standard-send-v2.md)
+> [開始在 .NET Standard 中傳送訊息至 Azure 事件中樞](event-hubs-dotnet-standard-getstarted-send.md)
 
 [建立免費帳戶]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

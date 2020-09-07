@@ -10,23 +10,22 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 274228ea5aa9ac9de9725176c8b6221ee9e9542e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 7130ed2965e2df0d366635f6ce84c822c1359b59
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182692"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378146"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>快速入門：在 Azure App Service 上建立 Java 應用程式
 
-[Azure App Service](overview.md) 可提供可高度擴充、自我修復的 Web 主控服務。  本快速入門說明如何使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 搭配[適用於 Maven 的 Azure Web 應用程式外掛程式](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，部署 Java Web 封存 (WAR) 檔案。
+[Azure App Service](overview.md) 可提供可高度擴充、自我修復的 Web 主控服務。  本快速入門說明如何使用 [Azure CLI](/cli/azure/get-started-with-azure-cli) 搭配[適用於 Maven 的 Azure Web 應用程式外掛程式](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，部署 .jar 檔案或 .war 檔案。 使用索引標籤，在 Java SE 與 Tomcat 指令之間切換。
 
-> [!NOTE]
-> 在本文中，我們只會使用封裝在 WAR 檔案中的 JAVA 應用程式。 此外掛程式也支援 JAR Web 應用程式，請瀏覽[將 Java SE JAR 檔案部署至 Linux 上的 App Service](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，並加以試用。
 
 > [!NOTE]
 > 使用 IntelliJ 和 Eclipse 等熱門 IDE 也可以執行相同的動作。 請參閱 [Azure Toolkit for IntelliJ 快速入門](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app)或 [Azure Toolkit for Eclipse 快速入門](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)中的類似文件。
->
+
+
 ![在 Azure App Service 中執行的範例應用程式](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -34,6 +33,22 @@ ms.locfileid: "88182692"
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-java-app"></a>建立 Java 應用程式
+
+# <a name="java-se"></a>[Java SE](#tab/javase)
+
+複製 [Spring Boot Getting Started](https://github.com/spring-guides/gs-spring-boot) 範例專案。
+
+```bash
+git clone https://github.com/spring-guides/gs-spring-boot
+```
+
+將目錄變更至已完成的專案。
+
+```bash
+cd gs-spring-boot/complete
+```
+
+# <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 在 Cloud Shell 提示字元中執行下列 Maven 命令，以建立名為 `helloworld` 的新應用程式：
 
@@ -47,146 +62,140 @@ mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-Darc
 cd helloworld
 ```
 
+---
+
 ## <a name="configure-the-maven-plugin"></a>設定 Maven 外掛程式
 
-部署到 Azure App Service 的程序可自動從 Azure CLI 收取您的 Azure 認證。 如果您沒有在本機安裝 Azure CLI，Maven 外掛程式會使用 Oauth 或裝置登入將您登入。 如有需要，請參閱[以 Maven 外掛程式驗證](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)的詳細資料。
+部署到 Azure App Service 的程序會自動從 Azure CLI 使用您的 Azure 認證。 如果 Azure CLI 未安裝在本機，則 Maven 外掛程式會使用 Oauth 或裝置登入進行驗證。 如需詳細資訊，請參閱[使用 Maven 外掛程式進行驗證](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)。
 
-您可以執行下列 maven 命令來設定部署
+執行下列 Maven 命令來設定部署。 此命令可協助您設定 App Service 作業系統、Java 版本和 Tomcat 版本。
+
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 
-::: zone pivot="platform-windows" 
-系統會要求您選取 
-* **作業系統 (預設值：`linux`)**
-* **Java 版本 (預設值：`1.8`)**
-* **Web 容器 (預設值：`tomcat 8.5`)** 
- 
-請小心輸入 **`2`** ，以在第一個步驟選擇 **Windows** OS。 您可以按下[輸入]，將其他設定保留為預設值。 最後，按 **`Y`** **確認 (Y/N)** 提示完成設定。
+::: zone pivot="platform-windows"
 
-範例程序如下所示：
+# <a name="java-se"></a>[Java SE](#tab/javase)
 
-```console
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
-[INFO] Scanning for projects...
-[INFO]
-[INFO] ----------------------< example.demo:helloworld >-----------------------
-[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
-[INFO] --------------------------------[ war ]---------------------------------
-[INFO]
-[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
-[WARNING] The plugin may not work if you change the os of an existing webapp.
-Define value for OS(Default: Linux):
-1. linux [*]
-2. windows
-3. docker
-Enter index to use: 2
-Define value for javaVersion(Default: 1.8): 
-1. 1.7
-2. 1.7.0_191_ZULU
-3. 1.7.0_51
-4. 1.7.0_71
-5. 1.7.0_80
-6. 1.8 [*]
-7. 1.8.0_102
-8. 1.8.0_111
-9. 1.8.0_144
-10. 1.8.0_172
-11. 1.8.0_172_ZULU
-12. 1.8.0_181
-13. 1.8.0_181_ZULU
-14. 1.8.0_202
-15. 1.8.0_202_ZULU
-16. 1.8.0_25
-17. 1.8.0_60
-18. 1.8.0_73
-19. 1.8.0_92
-20. 11
-21. 11.0.2_ZULU
-Enter index to use:
-Define value for webContainer(Default: tomcat 8.5): 
-1. jetty 9.1
-2. jetty 9.1.0.20131115
-3. jetty 9.3
-4. jetty 9.3.13.20161014
-5. tomcat 7.0
-6. tomcat 7.0.50
-7. tomcat 7.0.62
-8. tomcat 8.0
-9. tomcat 8.0.23
-10. tomcat 8.5 [*]
-11. tomcat 8.5.20
-12. tomcat 8.5.31
-13. tomcat 8.5.34
-14. tomcat 8.5.37
-15. tomcat 8.5.6
-16. tomcat 9.0
-17. tomcat 9.0.0
-18. tomcat 9.0.12
-19. tomcat 9.0.14
-20. tomcat 9.0.8
-Enter index to use:
-Please confirm webapp properties
-AppName : helloworld-1590394316693
-ResourceGroup : helloworld-1590394316693-rg
-Region : westeurope
-PricingTier : PremiumV2_P1v2
-OS : Windows
-Java : 1.8
-WebContainer : tomcat 8.5
-Deploy to slot : false
-Confirm (Y/N)? :
-[INFO] Saving configuration to pom.
-```
+1. 出現提示時，請輸入 `2` 以選取 **windows**。
+2. 按 Enter 鍵，使用預設 Java 版本 1.8。
+3. 最後，在最後一個提示時按 Enter 鍵以確認您的選擇。
+
+    您的摘要輸出看起來類似如下所示的程式碼片段。
+
+    ```
+    Please confirm webapp properties
+    AppName : spring-boot-1599007390755
+    ResourceGroup : spring-boot-1599007390755-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Windows
+    Java : 1.8
+    WebContainer : java 8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 41.118 s
+    [INFO] Finished at: 2020-09-01T17:43:45-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+# <a name="tomcat"></a>[Tomcat](#tab/tomcat)
+
+1. 出現提示時，請輸入 `2` 以選取 **windows**。
+1. 按 Enter 鍵，使用預設 Java 版本 1.8。
+1. 按 Enter 鍵，使用預設 Web 容器 Tomcat 8.5。
+1. 最後，在最後一個提示時按 Enter 鍵以確認您的選擇。
+
+    您的摘要輸出看起來類似如下所示的程式碼片段。
+
+    ```
+    Please confirm webapp properties
+    AppName : helloworld-1599003152123
+    ResourceGroup : helloworld-1599003152123-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Windows
+    Java : 1.8
+    WebContainer : tomcat 8.5
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 03:03 min
+    [INFO] Finished at: 2020-09-01T16:35:30-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+---
+
 ::: zone-end
-::: zone pivot="platform-linux"  
+::: zone pivot="platform-linux"
 
-系統會要求您選取 
-* **作業系統 (預設值：`linux`)**
-* **Java 版本 (預設值：`Java 8`)**
-* **Web 容器 (預設值：`Tomcat 8.5`)** 
+### <a name="java-se"></a>[Java SE](#tab/javase)
 
-按下[輸入]，將所有設定保留為預設值。 最後，按 **`Y`** **確認 (Y/N)** 提示完成設定。
-範例程序如下所示：
+1. 出現提示時，按 Enter 鍵以選取 **linux**。
+2. 按 Enter 鍵，使用預設 Java 版本 1.8。
+3. 最後，在最後一個提示時按 Enter 鍵以確認您的選擇。
 
-```cmd
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
-[INFO] Scanning for projects...
-[INFO]
-[INFO] ----------------------< example.demo:helloworld >-----------------------
-[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
-[INFO] --------------------------------[ war ]---------------------------------
-[INFO]
-[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
-[WARNING] The plugin may not work if you change the os of an existing webapp.
-Define value for OS(Default: Linux):
-1. linux [*]
-2. windows
-3. docker
-Enter index to use:
-Define value for javaVersion(Default: jre8):
-1. Java 11
-2. Java 8 [*]
-Enter index to use:
-Define value for runtimeStack(Default: TOMCAT 8.5):
-1. TOMCAT 9.0
-2. TOMCAT 8.5 [*]
-Enter index to use:
-Please confirm webapp properties
-AppName : helloworld-1558400876966
-ResourceGroup : helloworld-1558400876966-rg
-Region : westeurope
-PricingTier : Premium_P1V2
-OS : Linux
-RuntimeStack : TOMCAT 8.5-jre8
-Deploy to slot : false
-Confirm (Y/N)? : Y
-```
+    ```
+    Please confirm webapp properties
+    AppName : spring-boot-1599007116351
+    ResourceGroup : spring-boot-1599007116351-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Linux
+    RuntimeStack : JAVA 8-jre8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 20.925 s
+    [INFO] Finished at: 2020-09-01T17:38:51-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
+
+1. 出現提示時，按 Enter 鍵以選取 **linux**。
+1. 按 Enter 鍵，使用預設 Java 版本 1.8。
+1. 按 Enter 鍵，使用預設 Web 容器 Tomcat 8.5。
+1. 最後，在最後一個提示時按 Enter 鍵以確認您的選擇。
+
+    ```
+    Please confirm webapp properties
+    AppName : helloworld-1599003744223
+    ResourceGroup : helloworld-1599003744223-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Linux
+    RuntimeStack : TOMCAT 8.5-jre8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 50.785 s
+    [INFO] Finished at: 2020-09-01T16:43:09-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+---
+
 ::: zone-end
 
-您可視需要，直接在 `pom.xml` 中修改 App Service 的其他設定，以下列出一些常見的設定：
+您可視需要，直接在 `pom.xml` 中修改 App Service 的其他設定。 以下列出一些常見的設定：
 
- 屬性 | 必要 | 描述 | 版本
+屬性 | 必要 | 描述 | 版本
 ---|---|---|---
 `<schemaVersion>` | false | 指定組態結構描述的版本。 支援的值包括：`v1`、`v2`。 | 1.5.2
 `<resourceGroup>` | true | Web 應用程式的 Azure 資源群組。 | 0.1.0+
@@ -203,12 +212,13 @@ Confirm (Y/N)? : Y
 
 ## <a name="deploy-the-app"></a>部署應用程式
 
-部署到 Azure App Service 的程序從 Azure CLI 使用帳戶認證。 繼續執行前，請[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
+Maven 外掛程式會從 Azure CLI 使用帳戶認證來部署至 App Services。 繼續執行前，請[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
 ```azurecli
 az login
 ```
-接著，可以使用下列命令將您的 Java 應用程式部署至 Azure：
+
+接著，可以使用下列命令將您的 Java 應用程式部署至 Azure。
 
 ```bash
 mvn package azure-webapp:deploy
@@ -235,13 +245,13 @@ az group delete --name <your resource group name; for example: helloworld-155840
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]
-> [使用 Java 連線至 Azure SQL Database](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+> [使用 Java 連線至 Azure SQL Database](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
 
 > [!div class="nextstepaction"]
-> [使用 Java 連線至適用於 MySQL 的 Azure DB](/azure/mysql/connect-java)
+> [使用 Java 連線至適用於 MySQL 的 Azure DB](../mysql/connect-java.md)
 
 > [!div class="nextstepaction"]
-> [使用 Java 連線至適用於 PostgreSQL 的 Azure DB](/azure/postgresql/connect-java)
+> [使用 Java 連線至適用於 PostgreSQL 的 Azure DB](../postgresql/connect-java.md)
 
 > [!div class="nextstepaction"]
 > [適用於 Java 開發人員的 Azure 資源](/java/azure/)
@@ -250,7 +260,7 @@ az group delete --name <your resource group name; for example: helloworld-155840
 > [設定 Java 應用程式](configure-language-java.md)
 
 > [!div class="nextstepaction"]
-> [使用 Jenkins 的 CI/CD](/azure/jenkins/deploy-jenkins-app-service-plugin)
+> [使用 Jenkins 的 CI/CD](/azure/developer/jenkins/deploy-to-azure-app-service-using-plugin)
 
 > [!div class="nextstepaction"]
 > [對應自訂網域](app-service-web-tutorial-custom-domain.md)

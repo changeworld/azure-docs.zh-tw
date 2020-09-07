@@ -3,14 +3,14 @@ title: 在 Linux 上使用自訂映像建立 Azure Functions
 description: 了解如何建立在自訂 Linux 映像上執行的 Azure Functions。
 ms.date: 03/30/2020
 ms.topic: tutorial
-ms.custom: devx-track-csharp, mvc, devx-track-python
+ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: efe1706f2ea97c3eadab8deade7e13123af17752
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: f068f91a104c15099809343438cc925fb8856248
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225660"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146856"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自訂容器建立函式
 
@@ -81,17 +81,19 @@ func init LocalFunctionsProject --worker-runtime node --language typescript --do
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=8 -Ddocker
 ```
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" "-Ddocker"
 ```
 # <a name="cmd"></a>[Cmd](#tab/cmd)
 ```cmd
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" "-Ddocker"
 ```
 ---
+
+`-DjavaVersion` 參數會告知函式執行階段要使用哪個 JAVA 版本。 如果您希望函式在 Java 11 上執行 (目前為預覽版本)，請使用 `-DjavaVersion=11`。 若未指定 `-DjavaVersion`，Maven 預設為 JAVA 8。 如需詳細資訊，請參閱 [JAVA 版本](functions-reference-java.md#java-versions)。
 
 Maven 會要求您提供在部署時完成產生專案所需的值。   
 當系統提示時，提供下列值：
@@ -106,8 +108,6 @@ Maven 會要求您提供在部署時完成產生專案所需的值。
 輸入 `Y` 或按 Enter 進行確認。
 
 Maven 會以 _artifactId_ 名稱在新資料夾中建立專案檔案，在此例中為 `fabrikam-functions`。 
-
-若要在 Azure 的 Java 11 上執行，您必須修改 pom.xml 檔案中的值。 若要深入了解，請參閱 [Java 版本](functions-reference-java.md#java-versions)。
 ::: zone-end
 `--docker` 選項會產生專案的 `Dockerfile`，這會定義適合用於 Azure Functions 和所選執行階段的自訂容器。
 
@@ -159,14 +159,6 @@ mvn azure-functions:run
 ## <a name="build-the-container-image-and-test-locally"></a>建立容器映像並在本機進行測試
 
 (選用) 檢查專案根資料夾中的 *Dockerfile*。 Dockerfile 描述在 Linux 上執行函式應用程式所需的環境。  在 [Azure Functions 基底映像頁面](https://hub.docker.com/_/microsoft-azure-functions-base)中可找到針對 Azure Functions 支援的完整基底映像清單。
-
-::: zone pivot="programming-language-java"  
-如果您在 Java 11 (預覽) 上執行，請在產生的 Dockerfile 中，將 `JAVA_VERSION` 建置引數變更為下列內容： 
-
-```docker
-ARG JAVA_VERSION=11
-```
-::: zone-end
     
 在根專案資料夾中，執行 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令，然後提供名稱、`azurefunctionsimage` 和標記 (`v1.0.0`)。 將 `<DOCKER_ID>` 取代為 Docker Hub 帳戶識別碼。 此命令會建置容器的 Docker 映像。
 
@@ -311,17 +303,17 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
 
     1. 在左側導覽面板中選取 [函式]，然後選取您要驗證的函式。
 
-        ![Azure 入口網站上的取得函式 URL 命令](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
+        ![選擇 Azure 入口網站中的函式](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
 
     
     1. 選取 [取得函式 URL]。
 
-        ![Azure 入口網站上的取得函式 URL 命令](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
+        ![從 Azure 入口網站取得函式 URL](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
 
     
     1. 在快顯視窗中選取 [預設 (函式金鑰)]，然後將 URL 複製到剪貼簿。 此金鑰是緊接在 `?code=` 後面的字元字串。
 
-        ![Azure 入口網站上的取得函式 URL 命令](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
+        ![選擇預設函式存取金鑰](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
 
 
     > [!NOTE]  

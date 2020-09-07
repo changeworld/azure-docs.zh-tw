@@ -6,18 +6,18 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 0dd0b86a11c7060040f8734c0102252f18d9f114
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: d45852326a7f771b2cf79e20c784e2c441fef0d6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987166"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401481"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure App Service 中新增 TLS/SSL 憑證
 
 [Azure App Service](overview.md) 可提供可高度擴充、自我修復的 Web 主控服務。 本文說明如何將私人憑證或公開憑證建立、上傳或匯入到 App Service。 
 
-一旦將憑證新增至您的 App Service 應用程式或[函數應用程式](https://docs.microsoft.com/azure/azure-functions/)後，您就可以[使用它來保護自訂 DNS 名稱](configure-ssl-bindings.md)，或[用於應用程式程式碼中](configure-ssl-certificate-in-code.md)。
+一旦將憑證新增至您的 App Service 應用程式或[函數應用程式](../azure-functions/index.yml)後，您就可以[使用它來保護自訂 DNS 名稱](configure-ssl-bindings.md)，或[用於應用程式程式碼中](configure-ssl-certificate-in-code.md)。
 
 下表列出您在 App Service 中所擁有可新增憑證的選項：
 
@@ -25,7 +25,7 @@ ms.locfileid: "87987166"
 |-|-|
 | 建立免費 App Service 受控憑證 (預覽) | 如果您只需要保護 `www` [自訂網域](app-service-web-tutorial-custom-domain.md)或 App Service 中的任何非裸網域時，此為您可輕鬆使用的私人憑證。 |
 | 購買 App Service 憑證 | 此為由 Azure 管理的私人憑證。 它具有自動化憑證管理的簡易性，並兼具更新和匯出選項的彈性。 |
-| 從金鑰保存庫匯入憑證 | 如果您使用 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) 管理您的 [PKCS12 憑證](https://wikipedia.org/wiki/PKCS_12)，這會很有用。 請參閱[私人憑證需求](#private-certificate-requirements)。 |
+| 從金鑰保存庫匯入憑證 | 如果您使用 [Azure Key Vault](../key-vault/index.yml) 管理您的 [PKCS12 憑證](https://wikipedia.org/wiki/PKCS_12)，這會很有用。 請參閱[私人憑證需求](#private-certificate-requirements)。 |
 | 上傳私人憑證 | 如果您已經有協力廠商提供者的私人憑證，您可以將該憑證上傳。 請參閱[私人憑證需求](#private-certificate-requirements)。 |
 | 上傳公開憑證 | 公開憑證無法用來保護自訂網域，但如果您需要公開憑證來存取遠端資源，則可將公開憑證載入程式碼中。 |
 
@@ -33,7 +33,7 @@ ms.locfileid: "87987166"
 
 若要遵循本操作說明指南：
 
-- [建立 App Service 應用程式](/azure/app-service/)。
+- [建立 App Service 應用程式](./index.yml)。
 - 僅適用於免費憑證：透過 [CNAME 記錄](app-service-web-tutorial-custom-domain.md#map-a-cname-record)將子網域 (例如 `www.contoso.com`) 對應至 App Service。
 
 ## <a name="private-certificate-requirements"></a>私人憑證需求
@@ -123,6 +123,10 @@ ms.locfileid: "87987166"
 | 憑證 SKU | 決定要建立的憑證類型：標準憑證或[萬用字元憑證](https://wikipedia.org/wiki/Wildcard_certificate)。 |
 | 法律條款 | 按一下以確認您同意法律條款。 憑證是從 GoDaddy 取得的。 |
 
+> [!NOTE]
+> 從 Azure 購買的 App Service 憑證是由 GoDaddy 所簽發。 針對某些最上層網域，您必須使用下列值建立 [CAA 網域記錄](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)，以明確允許 GoDaddy 作為憑證簽發者：`0 issue godaddy.com`
+> 
+
 ### <a name="store-in-azure-key-vault"></a>儲存在 Azure Key Vault 中
 
 憑證購買程序完成後，您必須先完成一些其他的步驟，才能開始使用此憑證。 
@@ -131,18 +135,18 @@ ms.locfileid: "87987166"
 
 ![設定 App Service 憑證的 Key Vault 儲存體](./media/configure-ssl-certificate/configure-key-vault.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 是一項 Azure 服務，可協助保護雲端應用程式和服務所使用的密碼編譯金鑰和祕密。 這是 App Service 憑證的儲存體選擇。
+[Key Vault](../key-vault/general/overview.md) 是一項 Azure 服務，可協助保護雲端應用程式和服務所使用的密碼編譯金鑰和祕密。 這是 App Service 憑證的儲存體選擇。
 
 在 [Key Vault 狀態] 頁面中，按一下 [Key Vault 存放庫] 來建立新的保存庫或選擇現有的保存庫。 如果您選擇建立新的保存庫，請使用下表來協助您設定保存庫並按一下 [建立]。 在與 App Service 應用程式相同的訂用帳戶和資源群組內建立新的 Key Vault。
 
-| 設定 | 說明 |
+| 設定 | 描述 |
 |-|-|
 | 名稱 | 包含英數字元和虛線的唯一名稱。 |
 | 資源群組 | 建議選取相同的資源群組作為您的 App Service 憑證。 |
 | Location | 選取與 App Service 應用程式相同的位置。 |
 | 定價層 | 如需詳細資訊，請參閱 [Azure Key Vault 定價詳細資料](https://azure.microsoft.com/pricing/details/key-vault/)。 |
-| 存取原則| 定義應用程式以及允許的保存庫資源存取權。 您可以稍後設定它，並遵循[將金鑰保存庫的存取權授與數個應用程式](../key-vault/general/group-permissions-for-apps.md)中的步驟。 |
-| 虛擬網路存取 | 限制某些 Azure 虛擬網路的保存庫存取權。 您可以稍後設定它，並遵循[設定 Azure Key Vault 防火牆和虛擬網路](../key-vault/general/network-security.md)中的步驟。 |
+| 存取原則| 定義應用程式以及允許的保存庫資源存取權。 您可以稍後設定，並遵循[指派 Key Vault 存取原則](/azure/key-vault/general/assign-access-policy-portal)中的步驟。 |
+| 虛擬網路存取 | 限制某些 Azure 虛擬網路的保存庫存取權。 您可以稍後設定它，並遵循[設定 Azure Key Vault 防火牆和虛擬網路](/azure/key-vault/general/network-security)中的步驟。 |
 
 選取保存庫之後，關閉 [Key Vault 存放庫] 頁面。 [步驟 1：儲存] 選項應該會顯示綠色核取記號來表示已成功。 讓頁面保持開啟，以供下一個步驟使用。
 
@@ -248,7 +252,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 請在出現提示時定義一個匯出密碼。 您之後將 TLS/SSL 憑證上傳至 App Service 時，將會用到這組密碼。
 
-如果您使用 IIS 或 _Certreq.exe_ 產生憑證要求，請將憑證安裝至本機電腦，然後[將憑證匯出為 PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx)。
+如果您使用 IIS 或 _Certreq.exe_ 產生憑證要求，請將憑證安裝至本機電腦，然後[將憑證匯出為 PFX](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11))。
 
 ### <a name="upload-certificate-to-app-service"></a>上傳憑證至 App Service
 
@@ -327,9 +331,9 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ### <a name="export-certificate"></a>匯出憑證
 
-由於 App Service 憑證是 [Key Vault 秘密](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets)，因此您可以匯出其 PFX 複本，並將它用於其他 Azure 服務或 Azure 外部。
+由於 App Service 憑證是 [Key Vault 秘密](../key-vault/general/about-keys-secrets-certificates.md)，因此您可以匯出其 PFX 複本，並將它用於其他 Azure 服務或 Azure 外部。
 
-若要將 App Service 憑證匯出為 PFX 檔案，請在 [Cloud Shell](https://shell.azure.com) 中執行下列命令。 如果您已[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)，則也可以在本機執行。 以您在[建立 App Service 憑證](#start-certificate-order)時使用的名稱取代預留位置。
+若要將 App Service 憑證匯出為 PFX 檔案，請在 [Cloud Shell](https://shell.azure.com) 中執行下列命令。 如果您已[安裝 Azure CLI](/cli/azure/install-azure-cli)，則也可以在本機執行。 以您在[建立 App Service 憑證](#start-certificate-order)時使用的名稱取代預留位置。
 
 ```azurecli-interactive
 secretname=$(az resource show \
@@ -376,4 +380,4 @@ az keyvault secret download \
 * [強制使用 HTTPS](configure-ssl-bindings.md#enforce-https)
 * [強制使用 TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
 * [在 Azure App Service 的程式碼中使用 TLS/SSL 憑證](configure-ssl-certificate-in-code.md)
-* [常見問題集：App Service 憑證](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [常見問題集：App Service 憑證](./faq-configuration-and-management.md)

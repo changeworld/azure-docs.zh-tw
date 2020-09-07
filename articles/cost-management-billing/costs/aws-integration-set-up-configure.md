@@ -3,17 +3,17 @@ title: 設定 AWS 與 Azure 成本管理的整合
 description: 本文會逐步引導您設定 AWS 成本和使用量報告與 Azure 成本管理的整合。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 08/28/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 639d63df060a680e8c135a9be054ac412d1ca8dd
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8bf3df25d4702b4a0cc6361f20ad08e618e7d62b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684995"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266058"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>設定 AWS 成本和使用量報告的整合
 
@@ -71,7 +71,6 @@ Azure 成本管理一天會存取成本和使用量報告儲存所在的 S3 貯�
 5. 在 [帳戶識別碼]  中，輸入 **432263259397**。
 6. 在 [選項]  中，選取 [需要外部識別碼 (這是第三方會擔任此角色時的最佳做法)]  。
 7. 在 [外部識別碼]  中輸入外部識別碼，這是 AWS 角色與 Azure 成本管理所共用的密碼。 相同的外部識別碼也會用於成本管理中的 [新增連接器]  頁面上。 Microsoft 建議您在輸入外部識別碼時使用強式密碼原則。
-
     > [!NOTE]
     > 請勿變更 [需要 MFA]  的選取狀態。 其應該保持清除狀態。
 8. 完成時，選取 [下一步:**權限]** 。
@@ -148,23 +147,23 @@ Azure 成本管理一天會存取成本和使用量報告儲存所在的 S3 貯�
 }
 ```
 
-## <a name="set-up-a-new-aws-connector-in-azure"></a>在 Azure 中設定新的 AWS 連接器
+## <a name="set-up-a-new-connector-for-aws-in-azure"></a>在 Azure 中設定適用於 AWS 的新連接器
 
 使用下列資訊來建立 AWS 連接器，並開始監視您的 AWS 成本：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 移至 [成本管理 + 計費]   > [成本管理]  。
-3. 在 [設定]  底下，選取 [雲端連接器 (預覽)]  。  
-    ![顯示雲端連接器 (預覽) 設定的範例](./media/aws-integration-setup-configure/cloud-connectors-preview01.png)。
-4. 選取頁面頂端的 [+新增]  以建立連接器。
-5. 在 [建立 AWS 連接器]  頁面上的 [顯示名稱]  中，輸入連接器的名稱。  
-    ![用於建立 AWS 連接器的頁面範例](./media/aws-integration-setup-configure/create-aws-connector01.png)
-6. (選擇性) 選取 [預設管理群組]。 其會儲存所有已探索到的連結帳戶。 您可以稍後再設定。
-7. 如果您想要確保預覽版到期時可繼續作業，請在 [計費]  區段中選取 [正式推出後自動收取 1% 費用]  。 如果您選取 [自動] 選項，則必須選取計費訂用帳戶。
-8. 在 [角色 ARN]  中，輸入您在 AWS 中設定角色時所使用的值。
-9. 在 [外部識別碼]  中，輸入您在 AWS 中設定角色時所使用的值。
-10. 在 [報告名稱]  中，輸入您在 AWS 中建立的名稱。
-11. 選取 [下一步]  ，然後選取 [建立]  。
+3. 在 [設定] 底下，選取 [AWS 連接器]。  
+4. 選取頁面頂端的 [+新增]  以建立連接器。  
+    :::image type="content" source="./media/aws-integration-setup-configure/aws-connector.png" alt-text="顯示 AWS 連接器設定的範例" :::
+1. 在 [建立連接器] 頁面上的 [顯示名稱] 中，輸入連接器的名稱。  
+    :::image type="content" source="./media/aws-integration-setup-configure/create-aws-connector01.png" alt-text="用於建立 AWS 連接器的頁面範例" :::
+1. (選擇性) 選取 [預設管理群組]。 其會儲存所有已探索到的連結帳戶。 您可以稍後再設定。
+1. 在 [計費] 區段中，如果您想要確保持續作業，請選取 [自動更新] 加以 [開啟]。 如果您選取 [自動] 選項，則必須選取計費訂用帳戶。
+1. 在 [角色 ARN]  中，輸入您在 AWS 中設定角色時所使用的值。
+1. 在 [外部識別碼]  中，輸入您在 AWS 中設定角色時所使用的值。
+1. 在 [報告名稱]  中，輸入您在 AWS 中建立的名稱。
+1. 選取 [下一步]  ，然後選取 [建立]  。
 
 新的 AWS 範圍、AWS 合併帳戶、AWS 連結帳戶及其成本資料可能需要幾個小時才會出現。
 
@@ -178,16 +177,19 @@ Azure 成本管理一天會存取成本和使用量報告儲存所在的 S3 貯�
 - 確認已將新的範圍新增至範圍選擇器。 選取 [重新整理]  以檢視最新資料。
 - 在 [雲端連接器]  頁面上選取您的連接器，然後選取 [移至計費帳戶]  將連結帳戶指派給管理群組。
 
-## <a name="manage-cloud-connectors"></a>管理雲端連接器
+> [!NOTE]
+> Microsoft 客戶合約 (MCA) 客戶目前不支援管理群組。 MCA 客戶可以建立連接器及檢視其 AWS 資料。 不過，MCA 客戶無法在管理群組下同時檢視其 Azure 成本和 AWS 成本。
 
-當您選取 [雲端連接器]  頁面上的連接器時，您可以：
+## <a name="manage-aws-connectors"></a>管理 AWS 連接器
+
+當您選取 [AWS 連接器] 頁面上的連接器時，您可以：
 
 - 選取 [移至計費帳戶]  以檢視 AWS 合併帳戶的資訊。
 - 選取 [存取控制]  來管理連接器的角色指派。
 - 選取 [編輯]  以更新連接器。 您無法變更 AWS 帳戶號碼，因為其出現在角色 ARN 中。 但是，您可以建立新的連接器。
 - 選取 [確認]  來重新執行驗證測試，以確定成本管理可以使用連接器設定來收集資料。
 
-![已建立的 AWS 連接器範例清單](./media/aws-integration-setup-configure/list-aws-connectors.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-connector-details.png" alt-text="範例 AWS 連接器詳細資料" :::
 
 ## <a name="set-up-azure-management-groups"></a>設定 Azure 管理群組
 
@@ -197,9 +199,9 @@ Azure 成本管理一天會存取成本和使用量報告儲存所在的 S3 貯�
 
 ## <a name="set-up-an-aws-consolidated-account"></a>設定 AWS 合併帳戶
 
-AWS 合併帳戶會結合多個 AWS 帳戶的計費和付款。 其也會作為 AWS 連結帳戶。
+AWS 合併帳戶會結合多個 AWS 帳戶的計費和付款。 其也會作為 AWS 連結帳戶。 您可以使用 AWS 連接器頁面上的連結，檢視 AWS 合併帳戶的詳細資料。 
 
-![AWS 合併帳戶的範例詳細資料](./media/aws-integration-setup-configure/aws-consolidated-account01.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-consolidated-account01.png" alt-text="AWS 合併帳戶的範例詳細資料" :::
 
 您可以從該頁面執行下列動作：
 
@@ -221,7 +223,7 @@ AWS 連結帳戶是用來建立和管理 AWS 資源的地方。 連結帳戶也�
 - 選取 [更新]  以更新 AWS 連結帳戶與管理群組的關聯。
 - 選取 [存取控制]  以設定範圍的角色指派。
 
-![AWS 連結帳戶頁面的範例](./media/aws-integration-setup-configure/aws-linked-account01.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-linked-account01.png" alt-text="AWS 連結帳戶頁面的範例" :::
 
 ### <a name="permissions-for-an-aws-linked-account"></a>AWS 連結帳戶的權限
 

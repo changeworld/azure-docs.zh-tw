@@ -3,18 +3,18 @@ title: 在 Azure 成本管理中管理 AWS 成本和使用量
 description: 本文協助您了解如何使用 Azure 成本管理中的成本分析和預算，來管理 AWS 成本和使用量。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 08/28/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 4d6a961388c9794a7584e8529dac75d068f91ed4
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7df27a6ed288555d0f4815223fd0bb6dddff6f44
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685012"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266161"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>在 Azure 中管理 AWS 成本和使用量
 
@@ -36,17 +36,18 @@ _開始之前：_ 如果您不熟悉成本分析，請參閱[使用成本分析�
 
 ### <a name="view-aws-linked-accounts-under-a-management-group"></a>檢視管理群組下的 AWS 連結帳戶
 
-想要查看來自不同訂用帳戶和連結帳戶的匯總成本，使用管理群組範圍來查看成本是唯一方法。 使用管理群組可提供跨雲端的檢視。
+想要查看來自不同 Azure 訂用帳戶和 AWS 連結帳戶的彙總成本，使用管理群組範圍來查看成本是唯一方法。 使用管理群組可提供跨雲端的檢視，以同時查看 Azure 和 AWS 的成本。
 
 在成本分析中，開啟範圍選擇器，然後選取保存您 AWS 連結帳戶的管理群組。 以下是 Azure 入口網站的範例圖：
 
-![選取範圍檢視的範例](./media/aws-integration-manage/select-scope01.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope01.png" alt-text="管理群組下包含已連結帳戶的「選取範圍」檢視範例" :::
 
 以下範例顯示成本分析中的管理群組成本，並依提供者 (Azure 和 AWS) 分組。
 
-![顯示成本分析中一季的 Azure 和 AWS 成本範例](./media/aws-integration-manage/cost-analysis-aws-azure.png)
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="顯示成本分析中一季的 Azure 和 AWS 成本範例" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
+
+> [!NOTE]
+> Microsoft 客戶合約 (MCA) 客戶目前不支援管理群組。 MCA 客戶可以建立連接器及檢視其 AWS 資料。 不過，MCA 客戶無法在管理群組下同時檢視其 Azure 成本和 AWS 成本。
 
 ### <a name="view-aws-linked-account-costs"></a>檢視 AWS 連結帳戶成本
 
@@ -54,21 +55,17 @@ _開始之前：_ 如果您不熟悉成本分析，請參閱[使用成本分析�
 
 以下範例顯示如何選取 AWS 連結帳戶範圍。
 
-![選取範圍檢視的範例](./media/aws-integration-manage/select-scope02.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="顯示 AWS 連結帳戶的「選取範圍」檢視範例" :::
 
 ### <a name="view-aws-consolidated-account-costs"></a>檢視 AWS 合併帳戶成本
 
 若要檢視 AWS 合併帳戶的成本，請開啟範圍選擇器，然後選取 AWS 合併帳戶。 以下範例顯示如何選取 AWS 合併帳戶範圍。
 
-![選取範圍檢視的範例](./media/aws-integration-manage/select-scope03.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="包含合併帳戶的「選取範圍」檢視範例" :::
 
 此範圍會提供與 AWS 合併帳戶相關聯之所有 AWS 連結帳戶的彙總檢視。 以下範例顯示 AWS 合併帳戶的成本，並依服務名稱分組。
 
-![成本分析中顯示 AWS 合併成本的範例](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="成本分析中顯示 AWS 合併成本的範例" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
 
 ### <a name="dimensions-available-for-filtering-and-grouping"></a>可供篩選和分組的維度
 
@@ -77,7 +74,7 @@ _開始之前：_ 如果您不熟悉成本分析，請參閱[使用成本分析�
 | 維度 | Amazon CUR 標頭 | 範圍 | 註解 |
 | --- | --- | --- | --- |
 | 可用性區域 | lineitem/AvailabilityZone | 全部 |   |
-| Location | product/Region | 全部 |   |
+| 位置 | product/Region | 全部 |   |
 | 計量 |   | 全部 |   |
 | 計量類別 | lineItem/ProductCode | 全部 |   |
 | 計量子類別 | lineitem/UsageType | 全部 |   |
@@ -86,10 +83,10 @@ _開始之前：_ 如果您不熟悉成本分析，請參閱[使用成本分析�
 | 資源類型 | product/instanceType | 全部 | 如果 product/instanceType 為 null，則使用 lineItem/UsageType。 |
 | ResourceGuid | N/A | 全部 | Azure 計量 GUID。 |
 | 服務名稱 | product/ProductName | 全部 | 如果 product/ProductName 為 null，則使用 lineItem/ProductCode。 |
-| 服務層 |   |   |   |
+| 服務層級 |   |   |   |
 | 訂用帳戶識別碼 | lineItem/UsageAccountId | 合併帳戶和管理群組 |   |
 | 訂閱名稱 | N/A | 合併帳戶和管理群組 | 帳戶名稱是使用 AWS 組織 API 所收集。 |
-| Tag | resourceTags/\* | 全部 | 會從使用者定義的標籤中移除 _user:_ 首碼，以允許跨雲端標籤。 _aws:_ 前置詞保留不變。 |
+| Tag | resourceTags | 全部 | 會從使用者定義的標籤中移除 _user:_ 首碼，以允許跨雲端標籤。 _aws:_ 前置詞保留不變。 |
 | 計費帳戶識別碼 | bill/PayerAccountId | 管理群組 |   |
 | 計費帳戶名稱 | N/A | 管理群組 | 帳戶名稱是使用 AWS 組織 API 所收集。 |
 | 提供者 | N/A | 管理群組 | AWS 或 Azure。 |
@@ -98,7 +95,7 @@ _開始之前：_ 如果您不熟悉成本分析，請參閱[使用成本分析�
 
 使用預算來主動管理成本，並在您的組織中推動責任。 預算的範圍設定在 AWS 合併帳戶和 AWS 連結帳戶。 以下的預算範例是 Azure 成本管理中顯示的 AWS 合併帳戶：
 
-![顯示 AWS 合併帳戶預算的範例](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
+:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="顯示 AWS 合併帳戶預算的範例" :::
 
 ## <a name="aws-data-collection-process"></a>AWS 資料收集程序
 
@@ -110,15 +107,15 @@ _開始之前：_ 如果您不熟悉成本分析，請參閱[使用成本分析�
 
 ## <a name="aws-integration-pricing"></a>AWS 整合價格
 
-每個 AWS 連接器都有 90 天的免費試用。 在公開預覽期間無須付費。
+每個 AWS 連接器都有 90 天的免費試用。
 
 定價是您 AWS 每月成本的 1%。 每個月都會根據您上個月的已開發票成本向您收費。
 
-存取 AWS API 可能會引發額外成本。
+存取 AWS API 可能會增加 AWS 的額外成本。
 
 ## <a name="aws-integration-limitations"></a>AWS 整合的限制
 
-- Azure 成本管理不支援包含多個貨幣類型的成本報告。 如果您選取的範圍有多個貨幣，則會顯示錯誤訊息。
+- 成本管理中的預算不支援包含多種貨幣的管理群組。 包含多種貨幣的管理群組不會看到預算評估。 建立預算時，如果您選取的管理群組包含多種貨幣，則會顯示錯誤訊息。
 - 雲端連接器不支援 AWS GovCloud (US)、AWS Gov 或 AWS China。
 - Azure 成本管理只會顯示 AWS _使用量成本_。 尚不支援稅金、支持、退款、RI、點數或任何其他費用類型。
 
@@ -128,7 +125,7 @@ _開始之前：_ 如果您不熟悉成本分析，請參閱[使用成本分析�
 
 ### <a name="no-permission-to-aws-linked-accounts"></a>沒有 AWS 連結帳戶的許可權
 
-**錯誤碼：** Unauthorized 
+**錯誤碼：** Unauthorized
 
 有兩種方式可取得存取 AWS 連結帳戶成本的許可權：
 
@@ -141,42 +138,42 @@ _開始之前：_ 如果您不熟悉成本分析，請參閱[使用成本分析�
 
 ### <a name="collection-failed-with-assumerole"></a>AssumeRole 收集失敗
 
-**錯誤碼：** FailedToAssumeRole 
+**錯誤碼：** FailedToAssumeRole
 
 此錯誤表示 Azure 成本管理無法呼叫 AWS AssumeRole API。 此問題可能是因為角色定義發生問題所造成。 請確認符合下列所有條件：
 
 - 外部識別碼與角色定義和連接器定義中的識別碼相同。
 - 角色類型設定為**屬於您或第三方的另一個 AWS 帳戶**。
 - 已清除**需要 MFA** 選擇。
-- AWS 角色中的受信任 AWS 帳戶是 432263259397  。
+- AWS 角色中的受信任 AWS 帳戶是 432263259397__。
 
 ### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>收集因拒絕存取而失敗 - CUR 報表定義
 
-**錯誤碼：** AccessDeniedReportDefinitions 
+**錯誤碼：** AccessDeniedReportDefinitions
 
 此錯誤表示 Azure 成本管理無法看到成本和使用量報告的定義。 這個許可權是用來確認 CUR 是否已如 Azure 成本管理預期的定義。 請參閱[在 AWS 中建立成本和使用量報告](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)。
 
 ### <a name="collection-failed-with-access-denied---list-reports"></a>收集因拒絕存取而失敗 - 列出報告
 
-**錯誤碼：** AccessDeniedListReports 
+**錯誤碼：** AccessDeniedListReports
 
 此錯誤表示 Azure 成本管理無法列出 CUR 所在 S3 貯體中的物件。 AWS IAM 原則需要貯體的許可權和貯體中的物件。 請參閱[在 AWS 中建立角色和原則](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws)。
 
 ### <a name="collection-failed-with-access-denied---download-report"></a>收集因拒絕存取而失敗 - 下載報告
 
-**錯誤碼：** AccessDeniedDownloadReport 
+**錯誤碼：** AccessDeniedDownloadReport
 
 此錯誤表示 Azure 成本管理無法存取和下載儲存在 Amazon S3 貯體中的 CUR 檔案。 請確定附加至角色的 AWS JSON 原則類似[在 AWS 中建立角色和原則](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws)一節最後所示的範例。
 
 ### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>收集失敗，因為我們找不到成本和使用量報告
 
-**錯誤碼：** FailedToFindReport 
+**錯誤碼：** FailedToFindReport
 
 此錯誤表示 Azure 成本管理找不到連接器中定義的成本和使用量報告。 請確定報告沒被刪除，且附加至角色的 AWS JSON 原則類似[在 AWS 中建立角色和原則](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws)一節最後所示的範例。
 
 ### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>因為成本和使用量報告的定義不符，無法建立或確認連接器
 
-**錯誤碼：** ReportIsNotValid 
+**錯誤碼：** ReportIsNotValid
 
 此錯誤與 AWS 成本和使用量報告的定義有關，我們需要這份報告的特定設定，請參閱[在 AWS 中建立成本和使用量報告](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)中的需求
 

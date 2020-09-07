@@ -2,23 +2,23 @@
 title: 快速入門：建立應用程式 HA 的設定檔 - Azure CLI - Azure 流量管理員
 description: 本快速入門文章會說明如何建立流量管理員設定檔，以建置高可用性的 Web 應用程式。
 services: traffic-manager
-author: rohinkoul
-mnager: twooley
+author: duongau
+mnager: kumud
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/29/2019
-ms.author: rohink
+ms.date: 08/26/2020
+ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1de651d5321fa3a0dea4da33c5d41839e67ad9dc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 429d107a68c8631983bf791108f5091f31a480c3
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491182"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178075"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>快速入門：使用 Azure CLI 建立流量管理員設定檔以獲得高可用性的 Web 應用程式
 
@@ -112,12 +112,12 @@ az webapp create \
 ## <a name="add-traffic-manager-endpoints"></a>新增流量管理員端點
 使用 [az network traffic-manager endpoint create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)，將兩個 Web 應用程式當作流量管理員端點新增到流量管理員設定檔，如下所示：
 
-- 決定 Web 應用程式識別碼，並將位於「美國東部」  Azure 區域的 Web 應用程式新增為主要端點，以便路由傳送所有的使用者流量。 
-- 決定 Web 應用程式識別碼，並將位於「西歐」  Azure 區域的 Web 應用程式新增為容錯移轉端點。 
+- 決定 Web 應用程式識別碼，並將位於「美國東部」Azure 區域的 Web 應用程式新增為主要端點，以便路由傳送所有的使用者流量。 
+- 決定 Web 應用程式識別碼，並將位於「西歐」Azure 區域的 Web 應用程式新增為容錯移轉端點。 
 
 當主要端點無法使用時，流量就會自動路由傳送到容錯移轉端點。
 
-在下列範例中，以上一節中為每個區域建立的應用程式名稱取代 **<app1name_eastus>** 和 **<app2name_westeurope>** ，以上一節中用來建立 App Service 方案的名稱取代 **<appspname_eastus>** 和 **<appspname_westeurope>** ，並以上一節中使用的設定檔名稱取代 **<profile_name>** 。 
+在下列範例中，將 **<app1name_eastus>** 和 **<app2name_westeurope>** 取代為上一節中為每個區域所建立的應用程式名稱。 然後使用上一節中使用的設定檔名稱取代 **<profile_name>** 。 
 
 **美國東部端點**
 
@@ -174,7 +174,7 @@ az network traffic-manager endpoint create \
 
 在本節中，您會檢查流量管理員設定檔的網域名稱。 您也會將主要端點設定為無法使用。 最後，您可以看到 Web 應用程式仍可使用。 這是因為流量管理員將流量傳送至容錯移轉端點。
 
-在下列範例中，以上一節中為每個區域建立的應用程式名稱取代 **<app1name_eastus>** 和 **<app2name_westeurope>** ，以上一節中用來建立 App Service 方案的名稱取代 **<appspname_eastus>** 和 **<appspname_westeurope>** ，並以上一節中使用的設定檔名稱取代 **<profile_name>** 。
+在下列範例中，將 **<app1name_eastus>** 和 **<app2name_westeurope>** 取代為上一節中為每個區域所建立的應用程式名稱。 然後使用上一節中使用的設定檔名稱取代 **<profile_name>** 。
 
 ### <a name="determine-the-dns-name"></a>確定 DNS 名稱
 
@@ -195,7 +195,7 @@ az network traffic-manager profile show \
 1. 在網頁瀏覽器中，輸入流量管理員設定檔的 DNS 名稱 (*http://<* relativednsname *>.trafficmanager.net*)，以檢視 Web 應用程式的預設網站。
 
     > [!NOTE]
-    > 在此快速入門案例中，所有要求都會路由傳送至主要端點。 它會設定為 [優先順序 1]  。
+    > 在此快速入門案例中，所有要求都會路由傳送至主要端點。 它會設定為 [優先順序 1]****。
 2. 若要檢視進行中的流量管理員容錯移轉，請使用 [az network traffic-manager endpoint update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) 來停用主要網站。
 
    ```azurecli-interactive

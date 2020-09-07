@@ -1,20 +1,20 @@
 ---
 title: 快速入門：使用 Resource Manager 範本來引導網路流量
 titleSuffix: Azure Application Gateway
-description: 了解如何使用 Resource Manager 範本來建立 Azure 應用程式閘道，以將網路流量引導至後端集區中的虛擬機器。
+description: 在本快速入門中，了解如何使用 Resource Manager 範本來建立 Azure 應用程式閘道，以將網路流量引導至後端集區中的虛擬機器。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: ebcb51dc4de9283752d61831eb0cad801ec1ac4b
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: f492521469281615d4182294feaefffff688bd21
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705940"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961681"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>快速入門：使用 Azure 應用程式閘道引導網路流量 - ARM 範本
 

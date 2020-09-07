@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9011c56096d61e50ae3655a76a396ec3f2dd97c5
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 65b35c30d796f733e91c71e569634b61f9f7c52b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352573"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959284"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>快速入門：將在 Linux 或 Windows 上執行的範例 IoT 隨插即用預覽版裝置應用程式連線至 IoT 中樞 (C)
 
@@ -117,7 +117,10 @@ git clone --depth 1 --recurse-submodules https://github.com/Azure/azure-iot-sdk-
 
 若要在 SDK 中執行範例應用程式，以模擬將遙測傳送到 IoT 中樞的 IoT 隨插即用裝置：
 
-建立名為 **IOTHUB_DEVICE_CONNECTION_STRING** 的環境變數，來儲存您先前記下的裝置連接字串。
+建立兩個環境變數，將範例設定為使用連接字串來連線到您的 IoT 中樞：
+
+- 值為 `"connectionString"` 的 **IOTHUB_DEVICE_SECURITY_TYPE**
+- **IOTHUB_DEVICE_CONNECTION_STRING**用以儲存您先前記下的裝置連接字串。
 
 從 _cmake_ 資料夾瀏覽至包含可執行檔的資料夾並且執行：
 
@@ -139,7 +142,7 @@ cd  iothub_client\samples\pnp\pnp_simple_thermostat\Debug\pnp_simple_thermostat.
 
 ## <a name="use-azure-iot-explorer-to-validate-the-code"></a>使用 Azure IoT 總管來驗證程式碼
 
-當裝置用戶端範例啟動之後，使用 Azure IoT 總管工具來驗證其是否正確運作。
+當裝置用戶端範例啟動之後，請使用 Azure IoT 總管工具來驗證其是否正確運作。
 
 [!INCLUDE [iot-pnp-iot-explorer.md](../../includes/iot-pnp-iot-explorer.md)]
 

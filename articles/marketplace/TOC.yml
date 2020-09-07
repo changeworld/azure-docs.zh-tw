@@ -59,6 +59,8 @@
               href: ./marketplace-criteria-content-validation.md
             - name: 雲端解決方案提供者
               href: ./cloud-solution-providers.md
+            - name: Connect 計畫上線指南
+              href: ./cloud-partner-portal/business-applications-isv-program.md
         - name: 您的 Marketplace 權益
           href: ./gtm-your-marketplace-benefits.md
           items:

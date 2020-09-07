@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 準備進行 VMware VM 的評量/�
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8d4d6ac1149c397442a8ca7dd01f46f04ffc89b4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86109570"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927301"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>準備 VMware VM 以進行評量並移轉至 Azure
 
@@ -36,15 +36,15 @@ ms.locfileid: "86109570"
 --- | --- | ---
 **建立 Azure Migrate 專案** | Azure Migrate 專案提供一個集中位置，讓您使用 Azure Migrate 工具、Microsoft 工具和第三方產品來協調和管理評量和移轉。 | 您的 Azure 帳戶需要專案所在資源群組中的「參與者」或「擁有者」權限。
 **註冊設備** | Azure Migrate 會使用輕量型 Azure Migrate 設備來探索 VM、使用伺服器評量工具來評估 VM，以及使用無代理程式移轉搭配伺服器移轉工具來遷移 VM。 [深入了解](migrate-appliance-architecture.md#appliance-registration)註冊。 | 若要註冊設備，您的 Azure 帳戶需要 Azure 訂用帳戶的「參與者」或「擁有者」權限。
-**建立 Azure AD 應用程式** | 在註冊設備時，Azure Migrate 會建立 Azure Active Directory (Azure AD) 應用程式。 <br/><br/> - 第一個應用程式可供在設備上執行的代理程式與 Azure Migrate 之間進行通訊。 <br/><br/> - 第二個應用程式專門用來存取在使用者的訂用帳戶中建立的 KeyVault，以進行無代理程式 VMware VM 移轉。   | 您的 Azure 帳戶必須建立 Azure AD 應用程式的權限。
-**建立 Key Vault** | 若要使用無代理程式移轉來遷移 VMware VM，Azure Migrate 必須建立 Key Vault 來管理訂用帳戶中的複寫帳戶的存取金鑰。 | 若要允許 Azure Migrate 建立 Key Vault，您可以在 Azure Migrate 專案所在的資源群組上設定權限 (擁有者、參與者及使用者存取管理員)。
+**建立 Azure AD 應用程式** | 在註冊設備時，Azure Migrate 會建立兩個 Azure Active Directory (Azure AD) 應用程式。 <br/><br/> - 第一個應用程式可供在設備上執行的代理程式與 Azure Migrate 之間進行通訊。 <br/><br/> - 第二個應用程式專門用來存取在使用者的訂用帳戶中建立的 KeyVault，以進行無代理程式 VMware VM 移轉。   | 您的 Azure 帳戶需要這些[權限](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware#assign-permissions-to-create-azure-ad-apps)才能建立 Azure AD 應用程式。
+**建立 Key Vault** | - 第一個 Key Vault 會建立為設備註冊的一部分，並用於管理在設定設備期間下載的憑證。 <br/><br/> 若要使用無代理程式移轉來遷移 VMware VM，Azure Migrate 必須建立另一個 Key Vault 來管理訂用帳戶中的複寫帳戶的存取金鑰。| 若要允許 Azure Migrate 建立 Key Vault，您可以在 Azure Migrate 專案所在的資源群組上設定權限 (擁有者、參與者及使用者存取管理員)。
 
 
 ### <a name="assign-permissions-to-create-project"></a>指派建立專案的權限
 
-1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]。
-2. 在 [檢查存取權] 中，尋找相關的帳戶，然後按一下以查看權限。
-3. 您應該會具有「參與者」或「擁有者」權限。
+1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]****。
+2. 在 [檢查存取權]**** 中，尋找相關的帳戶，然後按一下以查看權限。
+3. 您應該會具有「參與者」**** 或「擁有者」**** 權限。
     - 如果您剛建立免費的 Azure 帳戶，您就是訂用帳戶的擁有者。
     - 如果您不是訂用帳戶擁有者，請與擁有者合作以指派角色。
 

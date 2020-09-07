@@ -9,18 +9,18 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 739d300faf77564891b2b783a3eb1cca50373015
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: fab6422300dd3db7dd0d02055721bd57354668bf
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718348"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322274"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
 成本管理中的預算可協助您進行規劃並促進組織責任歸屬。 透過預算，您可以說明您在特定期間所取用或訂閱的 Azure 服務。 它們可協助您通知其他人其費用的相關資訊以主動管理成本，並監視費用在經過一段時間的進展方式。 當超過您所建立的預算閾值時，只會觸發通知。 您的資源都會不受到影響，而您的使用量並不會停止。 當您分析成本時，您可以使用預算來比較及追蹤費用。
 
-成本和使用方式資料通常會在 20 小時內提供，而其後將會根據這些成本每 12-14 時評估一次預算。 達到預算閾值時，通常會在評估的一小時內收到電子郵件通知。
+成本和使用方式資料通常會在 8-24 小時內提供，而其後將會根據這些成本每 12-14 時評估一次預算。 請務必熟悉[成本和使用量資料更新](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data#cost-and-usage-data-updates-and-retention) 詳細資訊。 達到預算閾值時，通常會在評估的一小時內收到電子郵件通知。
 
 當您在未來選取到期日時，預算會在期間 (每月、每季或每年) 結束時自動重設相同的預算金額。 因為它們會使用相同的預算金額重設，所以，在預算的貨幣金額與未來期間不同時您需要另外建立預算。
 
@@ -37,7 +37,7 @@ ms.locfileid: "88718348"
 > * 使用 PowerShell 建立和編輯預算
 > * 使用 Azure Resource Manager 範本建立預算
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 預算受下列類型的 Azure 帳戶類型和範圍支援：
 
@@ -86,7 +86,7 @@ ms.locfileid: "88718348"
 
 建立預算之後，會針對它們顯示您目前費用的簡單檢視。
 
-選取 [新增]。
+選取 [新增]  。
 
 ![此範例顯示已建立的預算清單](./media/tutorial-acm-create-budgets/budgets01.png)
 

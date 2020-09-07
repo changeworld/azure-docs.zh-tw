@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4f2c0a51f7c8d2441c9ddff2520dae2f5cc13565
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 40f820a32c7848b5370cb664d706e9f20928bc5c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495332"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296476"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>快速入門：使用簡單的 Azure CLI 命令建立適用於 MySQL 的 Azure 資料庫 - az mysql up (預覽)
 
@@ -75,7 +75,7 @@ admin-password | 由系統產生 | 系統管理員使用者的密碼。
 
 您的伺服器建立好之後，它會隨附下列設定：
 
-- 會建立名為 "devbox" 的防火牆規則。 Azure CLI 會嘗試偵測 `az mysql up` 命令執行來源的電腦 IP 位址，並將該 IP 位址加入允許清單。
+- 會建立名為 "devbox" 的防火牆規則。 Azure CLI 會嘗試偵測 `az mysql up` 命令執行來源的電腦 IP 位址並允許該 IP 位址。
 - [允許存取 Azure 服務] 設為 [開啟]。 此設定會將伺服器的防火牆設定為接受來自所有 Azure 資源的連線，其中也包括您未訂閱的資源。
 - `wait_timeout` 參數設為 8 小時
 - 建立名為 "sampledb" 的空白資料庫

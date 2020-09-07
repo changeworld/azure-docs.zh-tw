@@ -4,12 +4,12 @@ description: 在本教學課程中，您將使用 Intel 提供的 AI 模型伺�
 ms.topic: tutorial
 ms.date: 07/24/2020
 titleSuffix: Azure
-ms.openlocfilehash: 2268300f711a939ed808d1f39bbde1653e8832c8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212336"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950250"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>教學課程：使用 Intel 提供的 AI 擴充功能 OpenVINO™ Model Server 來分析即時影片 - Intel 提供的 AI 擴充功能 
 
@@ -53,7 +53,7 @@ HTTP 延伸模組節點扮演 Proxy 的角色。 其會將影片畫面轉換成�
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>關於 Intel 提供的 AI 擴充功能 OpenVINO™ Model Server
 Intel® 發佈的 [OpenVINO™ 工具組](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) (開放式視覺化推斷和類神經網路最佳化) 是免費的軟體套件，可協助開發人員和資料科學家加速電腦視覺工作負載、簡化深度學習推斷和部署，並跨 Intel® 平台輕鬆地從邊緣到雲端執行。 其中包含使用模型最佳化程式和推斷引擎的 Intel® Deep Learning Deployment Toolkit，以及 [Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo) 存放庫，其中包含超過 40 個已最佳化的預先定型模型。
 
-為了建立複雜、高效能的即時影片分析解決方案，IoT Edge 模組上的即時影片分析應該與可利用邊緣規模的強大的推斷引擎配對。 在本教學課程中，推斷要求會傳送至 [Intel 提供的 AI 擴充功能 OpenVINO™ Model Server](https://aka.ms/lva-intel-ovms)，這是一個 Edge 模組，其設計訴求是在 IoT Edge 上使用即時影片分析。 此推斷伺服器模組包含 OpenVINO™ Model Server (OVMS)，這是由 OpenVINO™ 工具組所提供的推斷伺服器，已針對電腦視覺工作負載進行高度最佳化，並針對 Intel 架構進行開發。 擴充功能已新增至 OVMS，可讓您輕鬆地交換影格，以及推斷伺服器與 IoT Edge 模組上即時影片分析之間的推斷結果，並可讓您執行任何支援 OpenVINO 的模型 (您可以藉由修改[這裡](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)的程式碼來自訂推斷伺服器模組)。 您可以進一步從 Intel 硬體提供的各種加速機制中選擇。 包括 CPU (Atom、Core、Xeon)、FPGA、VPU。
+為了建立複雜、高效能的即時影片分析解決方案，IoT Edge 模組上的即時影片分析應該與可利用邊緣規模的強大的推斷引擎配對。 在本教學課程中，推斷要求會傳送至 [Intel 提供的 AI 擴充功能 OpenVINO™ Model Server](https://aka.ms/lva-intel-ovms)，這是一個 Edge 模組，其設計訴求是在 IoT Edge 上使用即時影片分析。 此推斷伺服器模組包含 OpenVINO™ Model Server (OVMS)，這是由 OpenVINO™ 工具組所提供的推斷伺服器，已針對電腦視覺工作負載進行高度最佳化，並針對 Intel® 架構進行開發。 擴充功能已新增至 OVMS，可讓您輕鬆地交換影格，以及推斷伺服器與 IoT Edge 模組上即時影片分析之間的推斷結果，並可讓您執行任何支援 OpenVINO™ 工具組的模型 (您可以藉由修改[程式碼](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)來自訂推斷伺服器模組)。 您可以進一步從 Intel® 硬體提供的各種加速機制中選擇。 包括 CPU (Atom、Core、Xeon)、FPGA、VPU。
 
 在此推斷伺服器的初始版本中，您可以存取下列[模型](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_models)：
 

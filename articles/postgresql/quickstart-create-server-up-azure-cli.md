@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a2b7ceea74091931c92d28f8fa47b9046b545fc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 662d34d3ed89a7d440a604de4338de334ea0bd11
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496571"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300012"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>快速入門：使用 Azure CLI 命令 az postgres up (預覽) 建立適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 
@@ -75,7 +75,7 @@ admin-password | 由系統產生 | 系統管理員使用者的密碼。
 
 您的伺服器建立好之後，它會隨附下列設定：
 
-- 會建立名為 "devbox" 的防火牆規則。 Azure CLI 會嘗試偵測 `az postgres up` 命令執行來源的電腦 IP 位址，並將該 IP 位址加入允許清單。
+- 會建立名為 "devbox" 的防火牆規則。 Azure CLI 會嘗試偵測 `az postgres up` 命令執行來源的電腦 IP 位址並允許該 IP 位址。
 - [允許存取 Azure 服務] 設為 [開啟]。 此設定會將伺服器的防火牆設定為接受來自所有 Azure 資源的連線，其中也包括您未訂閱的資源。
 - 建立名為 "sampledb" 的空白資料庫
 - 建立名為 "root"，且具有 "sampledb" 權限的新使用者

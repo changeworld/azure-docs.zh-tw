@@ -52,6 +52,8 @@
           href: users-sharing-accounts.md
         - name: 將使用者指派為管理員角色
           href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
+        - name: 使用者管理增強功能
+          href: users-search-enhanced.md
         - name: 大量刪除使用者
           href: users-bulk-delete.md
         - name: 還原已刪除的使用者

@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 8/13/2020
+ms.date: 09/01/2020
 ms.topic: include
-ms.custom: include file, devx-track-javascript
+ms.custom: include file, devx-track-javascript, cog-serv-seo-aug-2020
 ms.author: diberry
-ms.openlocfilehash: e52aba2fe6189c8964fd6525581b0bd6ee6def48
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: b961bb0598a1f6e9cdc7b4df27af50e7af1d9d81
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246242"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89323060"
 ---
 使用適用於 Node.js 的 Language Understanding (LUIS) 用戶端程式庫，可以：
 
@@ -43,13 +43,13 @@ ms.locfileid: "88246242"
     mkdir quickstart-sdk && cd quickstart-sdk
     ```
 
-1. 藉由建立 `package.json` 檔案，將目錄初始化為 JavaScript 應用程式。 
+1. 藉由建立 `package.json` 檔案，將目錄初始化為 JavaScript 應用程式。
 
     ```console
     npm init -y
     ```
 
-1. 針對您的 JavaScript 程式碼，建立名為 `index.js` 的檔案。 
+1. 針對您的 JavaScript 程式碼，建立名為 `index.js` 的檔案。
 
     ```console
     touch index.js
@@ -61,7 +61,7 @@ ms.locfileid: "88246242"
 
 ```console
 npm install @azure/ms-rest-js
-npm install @azure/cognitiveservices-luis-authoring 
+npm install @azure/cognitiveservices-luis-authoring
 npm install @azure/cognitiveservices-luis-runtime
 ```
 
@@ -91,6 +91,8 @@ npm install @azure/cognitiveservices-luis-runtime
 
 Language Understanding (LUIS) 撰寫用戶端是向 Azure 進行驗證的 [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest)物件，其中包含您的撰寫金鑰。
 
+## <a name="code-examples-for-authoring"></a>可供撰寫的程式碼範例
+
 建立用戶端之後，請使用此用戶端來存取功能，包括：
 
 * 應用程式 - [新增](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#add-applicationcreateobject--msrest-requestoptionsbase-)、[刪除](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#deletemethod-string--models-appsdeletemethodoptionalparams-)、[發佈](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#publish-string--applicationpublishobject--msrest-requestoptionsbase-)
@@ -105,6 +107,8 @@ Language Understanding (LUIS) 撰寫用戶端是向 Azure 進行驗證的 [LUISA
 
 Language Understanding (LUIS) 撰寫用戶端是向 Azure 進行驗證的 [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/luisruntimeclient?view=azure-node-latest)物件，其中包含您的撰寫金鑰。
 
+## <a name="code-examples-for-prediction-runtime"></a>預測執行階段的程式碼範例
+
 建立用戶端之後，請使用此用戶端來存取功能，包括：
 
 * 依 `staging` 或 `production` 位置進行[預測](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-)
@@ -118,16 +122,16 @@ Language Understanding (LUIS) 撰寫用戶端是向 Azure 進行驗證的 [LUISA
 
 [!code-javascript[Add NPM libraries to code file](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=Dependencies)]
 
-## <a name="add-boilerplate-code"></a>新增未定案程式碼 
+## <a name="add-boilerplate-code"></a>新增未定案程式碼
 
-1. 新增 `quickstart` 方法和其呼叫。 這個方法會保存剩下的大部分程式碼。 這個方法會在檔案結尾呼叫。 
+1. 新增 `quickstart` 方法和其呼叫。 這個方法會保存剩下的大部分程式碼。 這個方法會在檔案結尾呼叫。
 
     ```javascript
     const quickstart = async () => {
-    
+
         // add calls here
-    
-    
+
+
     }
     quickstart()
         .then(result => console.log("Done"))
@@ -136,9 +140,11 @@ Language Understanding (LUIS) 撰寫用戶端是向 Azure 進行驗證的 [LUISA
             })
     ```
 
-1. 除非另有指定，否則請在快速入門方法中新增其餘的程式碼。 
+1. 除非另有指定，否則請在快速入門方法中新增其餘的程式碼。
 
 ## <a name="create-variables-for-the-app"></a>為應用程式建立變數
+
+建立兩組變數：您可變更第一組，第二組則保留為其出現在程式碼範例中的樣子。 
 
 1. 建立變數來保存您的製作金鑰和資源名稱。
 
@@ -152,7 +158,7 @@ Language Understanding (LUIS) 撰寫用戶端是向 Azure 進行驗證的 [LUISA
 
 使用您的金鑰建立 [CognitiveServicesCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest) 物件，並使用該物件與您的端點建立 [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest) 物件。
 
-[!code-javascript[Create LUIS authoring client object](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateClient)]
+[!code-javascript[Authenticate the client](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateClient)]
 
 ## <a name="create-a-luis-app"></a>建立 LUIS 應用程式
 
@@ -160,7 +166,7 @@ LUIS 應用程式包含納入意圖、實體和範例語句的自然語言處理
 
 建立 [AppsOperation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest) 物件用來建立應用程式的 [add](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest) 方法。 名稱和語言文化特性是必要屬性。
 
-[!code-javascript[Create LUIS client app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateApplication)]
+[!code-javascript[Create a LUIS app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateApplication)]
 
 
 ## <a name="create-intent-for-the-app"></a>建立應用程式的意圖
@@ -170,7 +176,7 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 `intentName` 值已硬式編碼為 `OrderPizzaIntent`，作為 [為應用程式建立變數](#create-variables-for-the-app)區段中的一部分變數。
 
-[!code-javascript[Create intent](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AddIntent)]
+[!code-javascript[Create intent for the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AddIntent)]
 
 ## <a name="create-entities-for-the-app"></a>建立應用程式的實體
 
@@ -182,7 +188,7 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 實體建立程式碼會建立機器學習實體，其中包含套用至 `Quantity` 子實體的子實體和功能。
 
-:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="實體建立程式碼會建立機器學習實體，其中包含套用至 `Quantity` 子實體的子實體和功能。":::
+:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="入口網站中顯示所建立實體的部分螢幕擷取畫面，這是一個機器學習實體，其中包含套用至 `Quantity` 子實體的子實體和功能。":::
 
 [!code-javascript[Create entities for the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddEntities)]
 
@@ -196,11 +202,11 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 藉由建立 [ExampleLabelObject](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/examplelabelobject?view=azure-node-latest) 物件的清單來新增範例語句，每個範例語句各有一個物件。 每個範例都應以實體名稱和實體值的名稱/值配對字典來標示所有實體。 實體值應與範例語句的文字中所顯示的完全相同。
 
-:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="實體值應與範例語句的文字中所顯示的完全相同。":::
+:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="在入口網站中顯示標記範例語句的部分螢幕擷取畫面。":::
 
 使用應用程式識別碼、版本識別碼和範例呼叫 [examples.add](https://docs.microsoft.com//javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-latest#add-string--string--examplelabelobject--models-examplesaddoptionalparams-)。
 
-[!code-javascript[Add example utterance to a specific intent](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddLabeledExamples)]
+[!code-javascript[Add example utterance to intent](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddLabeledExamples)]
 
 ## <a name="train-the-app"></a>進行應用程式定型
 
@@ -210,9 +216,9 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 非常小的模型 (如本快速入門所示) 會非常快速地進行定型。 針對生產層級的應用程式，在為應用程式定型時，必須進行 [get_status](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/train?view=azure-node-latest#getstatus-string--string--msrest-requestoptionsbase-) 方法的輪詢呼叫，以確認定型成功的時間或是否成功。 其回應是 [ModelTrainingInfo](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/modeltraininginfo?view=azure-node-latest) 物件的清單，每個物件各有不同的狀態。 所有物件都必須成功，才會將定型視為完成。
 
-[!code-javascript[Train the app's version](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=TrainAppVersion)]
+[!code-javascript[Train the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=TrainAppVersion)]
 
-## <a name="publish-a-language-understanding-app"></a>發佈 Language Understanding 應用程式
+## <a name="publish-app-to-production-slot"></a>將應用程式發佈至生產位置
 
 使用 [app.publish](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#publish-string--applicationpublishobject--msrest-requestoptionsbase-) 方法發佈 LUIS 應用程式。 這會將目前的定型版本發佈至端點上的指定位置。 您的用戶端應用程式會使用此端點來傳送使用者語句，以進行意圖和實體擷取的預測。
 
@@ -225,7 +231,7 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 [!INCLUDE [Caution about using authoring key](caution-authoring-key.md)]
 
-[!code-javascript [Create LUIS runtime client object](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=PredictionCreateClient)]
+[!code-javascript [Authenticate the prediction runtime client](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=PredictionCreateClient)]
 
 ## <a name="get-prediction-from-runtime"></a>從執行階段取得預測
 
@@ -233,7 +239,7 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 **[luisRuntimeClient.prediction.getSlotPrediction](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-)** 方法需要數個參數，例如應用程式識別碼、位置名稱，以及用來完成要求的預測要求物件。 其他選項 (例如詳細資訊、顯示所有意圖和記錄) 是選擇性的。
 
-[!code-javascript [Get prediction based on query](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=QueryPredictionEndpoint)]
+[!code-javascript [Get prediction from runtime](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=QueryPredictionEndpoint)]
 
 [!INCLUDE [Prediction JSON response](sdk-json.md)]
 

@@ -187,6 +187,14 @@
           href: azure-netapp-files.md
         - name: 使用 Azure Ultra 磁碟 (預覽)
           href: use-ultra-disks.md
+        - name: CSI 儲存體驅動程式
+          items:
+            - name: 啟用 CSI 儲存體驅動程式 (預覽)
+              href: csi-storage-drivers.md
+            - name: Azure 磁碟 CSI 驅動程式 (預覽)
+              href: azure-disk-csi.md
+            - name: Azure 檔案 CSI 驅動程式 (預覽)
+              href: azure-files-csi.md
     - name: 設定網路功能
       items:
         - name: 建立或使用現有的虛擬網路
@@ -252,9 +260,9 @@
           href: update-credentials.md
         - name: 啟用 Azure Active Directory 整合
           items:
-            - name: AKS 受控 AAD
+            - name: AKS 管理的 Azure AD
               href: managed-aad.md
-            - name: AAD 整合 (舊版)
+            - name: Azure AD 整合 (舊版)
               href: azure-ad-integration-cli.md
         - name: 使用適用於 Kubernetes 的 Azure RBAC 授權 (預覽)
           href: manage-azure-rbac.md

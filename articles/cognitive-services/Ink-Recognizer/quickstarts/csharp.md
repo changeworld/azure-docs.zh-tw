@@ -1,23 +1,26 @@
 ---
 title: 快速入門：使用筆跡辨識器 REST API 與 C# 來辨識數位筆跡
 titleSuffix: Azure Cognitive Services
-description: 本快速入門說明如何使用筆跡辨識器 API 開始辨識數位筆跡筆觸。
+description: 本快速入門說明如何使用筆跡辨識器 API 和 C# 開始辨識數位筆跡筆觸。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: f61566c3d5efa7f973141253353fde7e4893bc6e
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a4bb02f11c7a9a75ddc96e0ee8e9f4b868f8ade5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986069"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051588"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>快速入門：使用筆跡辨識器 REST API 與 C# 來辨識數位筆跡
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 使用本快速入門，開始將數位筆跡筆觸傳送到筆跡辨識器 API。 此 C# 應用程式會傳送包含 JSON 格式筆跡筆觸資料的 API 要求，並取得回應。
 

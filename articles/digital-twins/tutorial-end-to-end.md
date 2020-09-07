@@ -1,5 +1,5 @@
 ---
-title: 連線端對端解決方案
+title: 教學課程：連線端對端解決方案
 titleSuffix: Azure Digital Twins
 description: 建置由裝置資料驅動的端對端 Azure Digital Twins 解決方案教學課程。
 author: baanders
@@ -7,22 +7,23 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b22505d5152b005a054d36fafb965006d04b201e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827306"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401770"
 ---
-# <a name="build-out-an-end-to-end-solution"></a>建置端對端解決方案
+# <a name="tutorial-build-out-an-end-to-end-solution"></a>教學課程：建置端對端解決方案
 
 若要設定由環境即時資料驅動的完整端對端解決方案，您可以將 Azure Digital Twins 執行個體連線到其他 Azure 服務，以管理裝置和資料。
 
 在本教學課程中，您將...
-* 設定 Azure Digital Twins 執行個體
-* 了解範例建築案例以及具現化預先撰寫的元件
-* 使用 [Azure Functions](../azure-functions/functions-overview.md) 應用程式，將模擬的遙測從 [IoT 中樞](../iot-hub/about-iot-hub.md)裝置路由至數位分身屬性
-* 藉由使用 Azure Functions、端點和路由處理數位分身通知，透過**對應項圖形**傳播變更
+> [!div class="checklist"]
+> * 設定 Azure Digital Twins 執行個體
+> * 了解範例建築案例以及具現化預先撰寫的元件
+> * 使用 [Azure Functions](../azure-functions/functions-overview.md) 應用程式，將模擬的遙測從 [IoT 中樞](../iot-hub/about-iot-hub.md)裝置路由至數位分身屬性
+> * 藉由使用 Azure Functions、端點和路由處理數位分身通知，透過**對應項圖形**傳播變更
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -365,6 +366,8 @@ az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-nam
 
 接下來，建立 Azure Digital Twins 路由，將事件傳送至您剛才建立的 Azure Digital Twins 端點。
 
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
 ```azurecli
 az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> --route-name <name-for-your-Azure-Digital-Twins-route>
 ```
@@ -433,7 +436,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 當您不再需要於本教學課程中建立的資源時，請遵循這些步驟加以刪除。 
 
-使用 Azure Cloud Shell，您可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令刪除資源群組中的所有 Azure 資源。 這會移除資源群組、Azure Digital Twins 執行個體、IoT 中樞和中樞裝置註冊、事件方格主題和相關聯的訂用帳戶，以及兩個 Azure Functions 應用程式，包括儲存體等相關聯的資源。
+使用 [Azure Cloud Shell](https://shell.azure.com)，您可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令刪除資源群組中的所有 Azure 資源。 這會移除資源群組、Azure Digital Twins 執行個體、IoT 中樞和中樞裝置註冊、事件方格主題和相關聯的訂用帳戶，以及 Azure Functions 應用程式，包括兩個函式和儲存體等相關聯的資源。
 
 > [!IMPORTANT]
 > 刪除資源群組是無法回復的動作。 資源群組和其中包含的所有資源都將永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 
@@ -448,14 +451,13 @@ az group delete --name <your-resource-group>
 az ad app delete --id <your-application-ID>
 ```
 
-最後，刪除本機電腦中所下載的專案範例資料夾。
+最後，刪除下載到您本機電腦的專案範例資料夾。
 
 ## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您建立的端對端案例，顯示由即時裝置資料驅動的 Azure Digital Twins。
 
 接下來，開始查看概念文件，以深入了解您在本教學課程中使用過的元素：
-* [概念：自訂模型](concepts-models.md)
 
-或者，啟動操作說明文章，更深入了解本教學課程中的過程：
-* [操作說明：*使用 Azure Digital Twins CLI*](how-to-use-cli.md)
+> [!div class="nextstepaction"]
+> [概念：自訂模型](concepts-models.md)

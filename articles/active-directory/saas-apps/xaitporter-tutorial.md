@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: bdea7fc3c295016204a80772bdf367dda7e194fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 80900f8a63d29e8c36ec190945efc3c44f713a3f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546299"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>教學課程：Azure Active Directory 與 XaitPorter 整合
 
@@ -112,7 +112,7 @@ XaitPorter 與 Azure AD 整合提供下列優點：
 
     ![憑證下載連結](common/copy-metadataurl.png)
 
-6. 將 **IP 位址**或**應用程式同盟中繼資料 Url** 提供給 [SmartRecruiters 支援小組](https://www.smartrecruiters.com/about-us/contact-us/)，讓 XaitPorter 自行設定允許清單，以確保可以從您 XaitPorter 執行個體可觸達 IP 位址。 
+6. 將 **IP 位址**或**應用程式同盟中繼資料 Url** 提供給 [SmartRecruiters 支援小組](https://www.smartrecruiters.com/about-us/contact-us/)，讓 XaitPorter 自行設定核准清單，以確保可以從您 XaitPorter 執行個體可觸達 IP 位址。 
 
 ### <a name="configure-xaitporter-single-sign-on"></a>設定 XaitPorter 單一登入
 
@@ -213,4 +213,3 @@ XaitPorter 與 Azure AD 整合提供下列優點：
 - [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

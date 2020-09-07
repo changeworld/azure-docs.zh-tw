@@ -1,6 +1,6 @@
 ---
-title: 快速入門：建立適用於 Azure Synapse Analytics 的 Apache Spark 筆記本
-description: 本快速入門將說明如何使用 Web 工具在 Azure Synapse Analytics 中建立 Apache Spark 集區 (預覽)，以及執行 Spark SQL 查詢。
+title: 快速入門：使用 Web 工具在 Azure Synapse Analytics 中建立 Apache Spark 集區
+description: 本快速入門將說明如何使用 Web 工具在 Azure Synapse Analytics 中建立 Apache Spark 集區，以及執行 Spark SQL 查詢。
 services: synapse-analytics
 author: euangMS
 ms.author: euang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: d89033a8d26c5ee71d505b85a4ebbe91b86d3e50
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4ca718db8d2d2d57c73e8e492e2edbee221cb3ec
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496242"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049803"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>快速入門：使用 Web 工具在 Azure Synapse Analytics 中建立 Apache Spark 集區
 

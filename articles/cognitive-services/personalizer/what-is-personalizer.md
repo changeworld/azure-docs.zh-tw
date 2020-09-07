@@ -1,24 +1,25 @@
 ---
 title: 什麼是個人化工具？
-description: 個人化工具是雲端式 API 服務，可讓您選擇最佳體驗來對使用者展現，進而從其即時行為中學習。
+description: 個人化工具是雲端式服務，可讓您選擇最佳體驗來對使用者展現，進而從其即時行為中學習。
 ms.topic: overview
-ms.date: 04/20/2020
-ms.openlocfilehash: cf046ada21c4920ea9e3853668a5928b2ca9f33a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 08/27/2020
+ms.custom: cog-serv-seo-aug-2020
+keywords: 個人化工具, Azure 個人化工具, 機器學習
+ms.openlocfilehash: 93b1f0487818cf783cc4a19f79618cfe2285cbd1
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586213"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055612"
 ---
 # <a name="what-is-personalizer"></a>什麼是個人化工具？
 
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最佳內容項目來向您的使用者顯示。 您可使用個人化工具服務來判斷要向購物者推薦哪些產品，或找出廣告的最佳位置。 將內容顯示給使用者之後，系統會監視即時使用者行為，並向個人化工具服務回報獎勵分數。 這可確保機器學習模型的持續改進，以及個人化工具能夠根據所收到的內容資訊來選取最佳內容項目。
 
-Azure 個人化工具是雲端式 API 服務，可協助您的用戶端應用程式選擇單一最佳「內容」項目來顯示每個使用者。 此服務會根據您就內容和關係提供的相關集體即時資訊，從內容項目中選取最佳項目。
+> [!TIP]
+> 內容是您想要從中選取並向使用者顯示的任何資訊單位，例如文字、影像、URL、電子郵件或任何其他資訊。
 
-在您向使用者呈現內容項目之後，您的系統會監視使用者行為並向個人化工具回報獎勵分數，以根據其收到的關係資訊來改善選取最佳內容的能力。
-
-**內容**可以是您想要從中選取以向使用者顯示的任何資訊單位，例如文字、影像、url 或電子郵件。
+在您開始之前，請透過[此互動式示範](https://personalizationdemo.azurewebsites.net/)放心地試用個人化工具。
 
 <!--
 ![What is personalizer animation](./media/what-is-personalizer.gif)
@@ -26,7 +27,7 @@ Azure 個人化工具是雲端式 API 服務，可協助您的用戶端應用程
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>個人化工具如何選取最佳內容項目？
 
-個人化工具會使用 **增強式學習**，根據所有使用者的集體行為和獎勵分數來選取最佳項目 (_動作_)。 動作是內容項目，例如可供選擇的新聞文章、特定電影或產品。
+個人化工具會使用 **增強式學習**，根據所有使用者的集體行為和獎勵分數來選取最佳項目 (_動作_)。 動作是內容項目，例如新聞文章、特定電影或產品。
 
 **排名**呼叫會取得動作項目和動作特性及關係特性，以選取頂端動作項目：
 
@@ -34,27 +35,31 @@ Azure 個人化工具是雲端式 API 服務，可協助您的用戶端應用程
 * **關係特性** - 使用者在使用您的應用程式時，其特性、其關係或其環境
 
 排名呼叫會在 [獎勵動作識別碼] 欄位中，傳回內容項目 (__動作__) 的識別碼以對使用者顯示。
-向使用者顯示的__動作__會與機器學習模型一起選擇，並嘗試將一段時間內的獎勵總量最大化。
 
-以下是幾個範例案例：
+向使用者顯示的__動作__會與機器學習模型一起選擇，以嘗試將一段時間內的獎勵總量最大化。
 
-|內容類型|**動作 (具有特性)**|**關係特性**|傳回的獎勵動作識別碼<br>(顯示此內容)|
+### <a name="sample-scenarios"></a>範例案例
+
+讓我們看一下一些案例，其中個人化工具可用來選取要為使用者呈現的最佳內容。
+
+|內容類型|動作 (具有特性)|內容特性|傳回的獎勵動作識別碼<br>(顯示此內容)|
 |--|--|--|--|
 |新聞清單|a. `The president...` (national, politics, [text])<br>b. `Premier League ...` (global, sports, [text, image, video])<br> c. `Hurricane in the ...` (regional, weather, [text,image]|裝置新聞讀取自<br>月或季<br>|`The president...`|
 |電影清單|1.`Star Wars` (1977, [action, adventure, fantasy], George Lucas)<br>2.`Hoop Dreams` (1994, [documentary, sports], Steve James<br>3.`Casablanca` (1942, [romance, drama, war], Michael Curtiz)|裝置電影觀賞自<br>螢幕大小<br>使用者類型<br>|3. `Casablanca`|
 |產品清單|i. `Product A` (3 kg, $$$$, deliver in 24 hours)<br>ii. `Product B` (20 kg, $$, 2 week shipping with customs)<br>iii. `Product C` (3 kg, $$$, delivery in 48 hours)|裝置購物讀取自<br>使用者的消費層<br>月或季|ii. `Product B`|
 
-個人化工具使用了增強式學習，以根據下列組合選取單一最佳動作，也稱為「獎勵動作識別碼」：
-* 定型的模型 - 個人化工具服務收到的過去資訊
+個人化工具使用了增強式學習，選取單一最佳動作，也稱為「獎勵動作識別碼」。 機器學習模型會使用： 
+
+* 已定型的模型 - 先前從個人化服務收到的資訊用於改善機器學習模型
 * 目前資料 - 具有特性的特定動作和關係特性
 
-## <a name="when-to-call-personalizer"></a>個人化工具的呼叫時機
+## <a name="when-to-use-personalizer"></a>個人化工具的使用時機
 
-個人化工具的**排名** [API](https://go.microsoft.com/fwlink/?linkid=2092082) 會在您「每次」即時呈現內容時呼叫。 這也稱為**事件**，並以「事件識別碼」加以註記。
+每次應用程式呈現內容時，都會呼叫個人化工具的**排名** [API](https://go.microsoft.com/fwlink/?linkid=2092082)。 這也稱為**事件**，並以「事件識別碼」加以註記。
 
 個人化工具的**獎勵** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) 可即時呼叫，或延遲以更加符合您的基礎結構。 您可以根據您的業務需求判斷獎勵分數。 獎勵分數介於 0 到 1 之間。 這可以是單一值，例如 1 表示良好，0 表示不良，或由您建立的演算法所產生的數字，其會考慮您的業務目標和計量。
 
-## <a name="personalizer-content-requirements"></a>個人化工具內容需求
+## <a name="content-requirements"></a>內容需求
 
 當您的內容如下時，請使用個人化工具：
 
@@ -67,9 +72,9 @@ Azure 個人化工具是雲端式 API 服務，可協助您的用戶端應用程
 * 記錄個別使用者的喜好設定或歷程記錄
 * 需要已清除且已加上標籤的內容
 
-## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>如何針對用戶端應用程式設計和實作個人化工具
+## <a name="how-to-design-for-and-implement-personalizer"></a>如何設計和實作個人化工具
 
-1. 針對內容、**_動作_** 及 **_關係_** 進行[設計](concepts-features.md)與規劃。 決定 **獎勵** 分數的獎勵演算法。
+1. 針對內容、**_動作_** 及**_關係_** 進行[設計](concepts-features.md)與規劃。 決定**獎勵**分數的獎勵演算法。
 1. 您所建立的每個[個人化工具資源](how-to-settings.md)都會被視為 1 個學習迴圈。 迴圈將會接收該內容或使用者體驗的排名和獎勵呼叫。
 
     |資源類型| 目的|
@@ -94,13 +99,28 @@ Azure 個人化工具是雲端式 API 服務，可協助您的用戶端應用程
         * 或稍後在離線系統中進行
     1. 在使用一段時間之後，利用離線評估來[評估您的迴圈](concepts-offline-evaluation.md)。 離線評估可讓您測試及評估個人化工具服務的效用，而這不會變更您的程式碼或影響使用者體驗。
 
+## <a name="complete-a-quickstart"></a>完成快速入門
+
+我們會提供 C#、JavaScript 和 Python 的快速入門。 每個快速入門的設計訴求都是要教您基本的設計模式，並讓您能在 10 分鐘內執行程式碼。 
+
+* [快速入門：如何使用個人化工具用戶端程式庫](sdk-learning-loop.md)
+
+在您有機會開始使用個人化工具服務之後，請嘗試我們的教學課程，並了解如何在 Web 應用程式、聊天機器人或 Azure Notebook 中使用個人化工具。
+
+* [教學課程：在 .NET Web 應用程式中使用個人化工具](tutorial-use-personalizer-web-app.md)
+* [教學課程：在 .NET 聊天機器人中使用個人化工具](tutorial-use-personalizer-chat-bot.md)
+* [教學課程：在 Azure Notebook 中使用個人化工具](tutorial-use-azure-notebook-generate-loop-data.md)
+
+## <a name="reference"></a>參考資料 
+
+* [個人化工具 C#/.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
+* [個人化工具 Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)
+* [個人化工具 JavaScript SDK](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
+* [個人化工具 Python SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
+* [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
+
 ## <a name="next-steps"></a>後續步驟
 
-
-* [個人化工具的運作方式](how-personalizer-works.md)
-* [什麼是增強式學習？](concepts-reinforcement-learning.md)
-* [了解排名要求的功能和動作](concepts-features.md)
-* [了解如何判斷獎勵要求的分數](concept-rewards.md)
-* [快速入門](sdk-learning-loop.md)
-* [教學課程](tutorial-use-azure-notebook-generate-loop-data.md)
-* [使用互動式示範](https://personalizationdemo.azurewebsites.net/)
+> [!div class="nextstepaction"]
+> [個人化工具的運作方式](how-personalizer-works.md)
+> [什麼是增強式學習？](concepts-reinforcement-learning.md)

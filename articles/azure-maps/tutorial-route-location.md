@@ -1,42 +1,46 @@
 ---
-title: 教學課程：尋找前往位置的路線 | Microsoft Azure 地圖服務
-description: 了解如何尋找前往景點的路線。 請參閱如何設定地址座標和查詢 Azure 地圖服務路線規劃服務，以取得前往該景點的指示。
+title: 教學課程：如何使用 Microsoft Azure 地圖服務路線規劃服務和地圖控制項顯示路線方向
+description: 了解如何使用 Microsoft Azure 地圖服務路線規劃服務和地圖控制項顯示路線方向。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/14/2020
+ms.date: 09/01/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 0ff604e920ca3e0708fc21a1cadfe61646f4e30b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 992640424f6fdb632327866e132fdbb1c6244492
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037570"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400325"
 ---
-# <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>教學課程：使用 Azure 地圖服務的景點路線
+# <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>教學課程：如何使用 Azure 地圖服務路線規劃服務和地圖控制項顯示路線方向
 
-本教學課程說明如何使用 Azure 地圖服務帳戶和路線規劃服務 SDK，來尋找景點路線。 在本教學課程中，您會了解如何：
+本教學課程說明如何使用 Azure 地圖服務[路線規劃服務 API](https://docs.microsoft.com/rest/api/maps/route) 以及[地圖控制項](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)顯示從起點到終點的路線方向。 在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
-> * 使用地圖控制項 API 建立新的網頁
-> * 設定地址座標
-> * 查詢路線規劃服務，以了解如何前往景點
+> * 在網頁上建立和顯示地圖控制項。 
+> * 定義[符號圖層](map-add-pin.md)和[線條圖層](map-add-line-layer.md)，以定義路線的顯示呈現。
+> * 建立 GeoJSON 物件並新增至地圖，以代表起點和終點。
+> * 使用[取得路線指示 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)，取得起點和終點的路線方向。
 
-## <a name="prerequisites"></a>先決條件
+您可以在[這裡](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)取得範例的完整原始程式碼。 您可以在[這裡](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)找到即時範例。
 
-在繼續作業之前，依照[建立帳戶](quick-demo-map-app.md#create-an-azure-maps-account)中的指示，您需要 S1 定價層的訂用帳戶。 請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟取得帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
+## <a name="prerequisites"></a>Prerequisites
+
+1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。
 
 <a id="getcoordinates"></a>
 
-## <a name="create-a-new-map"></a>建立新的地圖
+## <a name="create-and-display-the-map-control"></a>建立和顯示地圖控制項
 
-下列步驟顯示如何建立內嵌地圖控制項 API 的靜態 HTML 網頁。
+下列步驟示範如何在網頁中建立和顯示地圖控制項。
 
 1. 在您的本機機器上建立新檔案，並將其命名為 **MapRoute.html**。
-2. 在檔案中新增下列 HTML 元件：
+2. 複製下列 HTML 標記並貼到檔案中。
 
     ```HTML
     <!DOCTYPE html>
@@ -81,7 +85,7 @@ ms.locfileid: "88037570"
     </html>
     ```
 
-    請注意，HTML 標頭包含 Azure 地圖控制項程式庫所裝載的 CSS 和 JavaScript 資源檔案。 請注意頁面本文上的 `onload` 事件，此事件在頁面本文載入時將會呼叫 `GetMap` 函式。 此函式會包含內嵌的 JavaScript 程式碼，以便存取 Azure 地圖服務 API。 
+    HTML 標頭包含 Azure 地圖控制項程式庫所裝載的 CSS 和 JavaScript 資源檔案。 主體的 `onload` 事件會呼叫 `GetMap` 函式。 在下一個步驟中，我們將新增地圖控制項初始化程式碼。
 
 3. 在 `GetMap` 函式中新增下列 JavaScript 程式碼。 將字串 `<Your Azure Maps Key>` 取代為您從地圖服務帳戶複製的主要金鑰。
 
@@ -96,17 +100,15 @@ ms.locfileid: "88037570"
    });
    ```
 
-    `atlas.Map` 是 Azure 地圖控制項 API 的元件，可供您控制視覺化互動式網路地圖。
+4. 儲存檔案並在瀏覽器中將其開啟。 隨即顯示範例。
 
-4. 儲存檔案並在瀏覽器中將其開啟。 至此，您已擁有可以進一步發展的基本地圖了。
+     :::image type="content" source="./media/tutorial-route-location/basic-map.png" alt-text="地圖控制項的基本地圖呈現":::
 
-   ![檢視基本地圖](media/tutorial-route-location/basic-map.png)
+## <a name="define-route-display-rendering"></a>定義路線顯示呈現
 
-## <a name="define-how-the-route-will-be-rendered"></a>定義呈現路線的方式
+在本教學課程中，我們將使用線條圖層來呈現路線。 開始和結束點會使用符號圖層呈現。 如需新增線條圖層的詳細資訊，請參閱[將線條圖層新增至地圖](map-add-line-layer.md)。 若要深入了解符號圖層，請參閱[將符號圖層新增至地圖](map-add-pin.md)。
 
-在本教學課程中，將使用路線起點和終點的符號圖示以及路線路徑的線條來呈現簡易路線。
-
-1. 在地圖完成初始化後，請新增下列 JavaScript 程式碼。
+1. 在 `GetMap` 函式中附加下列 JavaScript 程式碼。 此程式碼會實作地圖控制項的 `ready` 事件處理常式。 本教學課程中的其餘程式碼將會放在 `ready` 事件處理常式內。
 
     ```JavaScript
     //Wait until the map resources are ready.
@@ -138,10 +140,12 @@ ms.locfileid: "88037570"
         }));
     });
     ```
-    
-    在地圖 `ready` 事件處理常式中，會建立資料來源以儲存路線以及起點和終點。 系統會建立線條圖層並將其附加至資料來源，以定義呈現路線的方式。 路線會呈現鮮明的藍色。 其寬度為五個像素，並採用圓角的線條聯結和線蓋。 將圖層新增至地圖時，會傳入值為 `'labels'` 的第二個參數，而指定要將此圖層呈現在地圖標籤下方。 這樣可以確保路線不會遮住道路標籤。 系統會建立符號圖層，並將其附加至資料來源。 此圖層會指定起點和終點的呈現方式。 此案例中已新增運算式，用以從每個點物件的屬性中擷取圖示影像和文字標籤資訊。 
-    
-2. 在此教學課程中，將起點設在 Microsoft，並將終點設在西雅圖的加油站。 在地圖 `ready` 事件處理常式中，新增下列程式碼。
+
+    在地圖控制項的 `ready` 事件處理常式中，系統會建立資料來源以儲存路線起點和終點。 系統會建立線條圖層並將其附加至資料來源，以定義呈現路線的方式。  為了確保路線不會涵蓋道路標籤，我們傳遞了第二個參數，其值為 `'labels'`。
+
+    接下來系統會建立符號圖層，並將其附加至資料來源。 此圖層會指定起點和終點的呈現方式。 此案例中已新增運算式，用以從每個點物件的屬性中擷取圖示影像和文字標籤資訊。
+
+2. 將起點設在 Microsoft，並將終點設在西雅圖的加油站。  在地圖控制項的 `ready` 事件處理常式中，附加下列程式碼。
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end points of the route.
@@ -164,19 +168,19 @@ ms.locfileid: "88037570"
     });
     ```
 
-    此程式碼會建立兩個 [GeoJSON 點物件](https://en.wikipedia.org/wiki/GeoJSON)以代表路線的起點和終點，且會為資料來源加上點。 `title` 和 `icon` 屬性會新增至每個點。 最後一個區塊會使用起點和終點的經緯度，以地圖 [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 屬性設定相機檢視。
+    此程式碼會建立兩個 [GeoJSON 點物件](https://en.wikipedia.org/wiki/GeoJSON)，代表起點和終點，此資訊也會新增到資料來源。 最後一個程式碼區塊會使用起點和終點的經緯度設定相機檢視。 如需地圖控制項的 setCamera 屬性詳細資訊，請參閱 [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 屬性。
 
-3. 儲存 **MapRoute.html** 檔案並重新整理瀏覽器。 現在地圖會以西雅圖作為中心，而且您會看到以藍色圖釘標示的起點，和以圓形藍色圖釘標示的終點。
+3. 儲存 **MapRoute.html** 並重新整理瀏覽器。 現在地圖會以西雅圖作為中心。 淚珠形藍色圖釘會標示起點。 圓形藍色圖釘會標示終點。
 
-   ![在地圖上檢視路線的起點和終點](media/tutorial-route-location/map-pins.png)
+    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="在地圖上檢視路線的起點和終點":::
 
 <a id="getroute"></a>
 
-## <a name="get-directions"></a>取得指示
+## <a name="get-route-directions"></a>取得路線方向
 
-本節說明如何使用 Azure 地圖服務的路線規劃服務 API。 路線規劃服務 API 會尋找從給定起點到終點的路線。 此服務中有相關 API 可用來規劃兩個位置之間「最快速」**、「最短」**、「最環保」** 或「驚心動魄」** 的路線。 此服務也可讓使用者使用 Azure 廣泛的歷史路況資料庫來規劃日後的路線。 使用者可以查看任何所選日期和時間的路線時間預測。 如需詳細資訊，請參閱[取得路線指示](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。 以下所有功能都應該新增至**地圖備妥 eventListener 內**，以確保它們會在地圖資源可供存取之後載入。
+本節說明如何使用 Azure 地圖服務路線規劃服務 API，取得從某個點到另一個點的方向。 此服務中有其他 API 可讓您規劃兩個位置之間「最快速」、「最短」、「最環保」或「刺激」的路線。 此服務也可讓使用者根據歷程記錄交通流量條件來規劃未來的路由。 使用者可以查看任何指定時間的路由持續期間預測。 如需詳細資訊，請參閱[取得路線方向 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。
 
-1. 在 GetMap 函式中，將下列內容新增至 JavaScript 程式碼。
+1. 在 `GetMap` 函式之控制項的 `ready` 事件處理常式內，將下列內容新增至 JavaScript 程式碼。
 
     ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key
@@ -191,7 +195,7 @@ ms.locfileid: "88037570"
 
    `SubscriptionKeyCredential` 會建立 `SubscriptionKeyCredentialPolicy`，以使用訂用帳戶金鑰驗證對「Azure 地圖服務」的 HTTP 要求。 `atlas.service.MapsURL.newPipeline()` 會採用 `SubscriptionKeyCredential` 原則，並建立[管線](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)執行個體。 `routeURL` 代表 Azure 地圖服務[路線規劃](https://docs.microsoft.com/rest/api/maps/route)作業的 URL。
 
-2. 設定認證和 URL 之後，請新增下列 JavaScript 程式碼以建構從起點到終點的路線。 `routeURL` 會要求 Azure 地圖服務的路線規劃服務計算路線方向。 接著，系統會使用 `geojson.getFeatures()` 方法擷取回應中的 GeoJSON 特性集合，並將其新增至資料來源。
+2. 設定認證和 URL 後，請在控制項的 `ready` 事件處理常式中附加下列程式碼。 此程式碼會從起點到終點來建構路線。 `routeURL` 會要求 Azure 地圖服務路線規劃服務 API 計算路線方向。 接著，系統會使用 `geojson.getFeatures()` 方法擷取回應中的 GeoJSON 特性集合，並將其新增至資料來源。
 
     ```JavaScript
     //Start and end point input to the routeURL
@@ -205,26 +209,15 @@ ms.locfileid: "88037570"
     });
     ```
 
-3. 儲存 **MapRoute.html** 檔案並重新整理網頁瀏覽器。 如果您成功連線到地圖服務的 API，您應該會看到類似下面的地圖。
+3. 儲存 **MapRoute.html** 檔案並重新整理網頁瀏覽器。 地圖現在應該會顯示從起點到終點的路線。
 
-    ![Azure 地圖控制項和路線規劃服務](./media/tutorial-route-location/map-route.png)
+     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Azure 地圖控制項和路線規劃服務":::
+
+    您可以在[這裡](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)取得範例的完整原始程式碼。 您可以在[這裡](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)找到即時範例。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何：
-
-> [!div class="checklist"]
-> * 使用地圖控制項 API 建立新的網頁
-> * 設定地址座標
-> * 查詢路線規劃服務以了解如何前往景點
-
-> [!div class="nextstepaction"]
-> [檢視完整的原始程式碼](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)
-
-> [!div class="nextstepaction"]
-> [檢視即時範例](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)
-
-下一個教學課程會示範如何建立具有限制 (例如，行進模式或貨物類型) 的路線查詢 ，然後在同一個地圖上顯示多條路線。
+下一個教學課程會示範如何建立具有限制 (例如旅遊模式或貨物類型) 的路線查詢， 然後您可以在同一個地圖上顯示多條路線。
 
 > [!div class="nextstepaction"]
 > [尋找不同行進模式的路線](./tutorial-prioritized-routes.md)

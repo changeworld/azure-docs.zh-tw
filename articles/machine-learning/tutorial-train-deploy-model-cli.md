@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: b4167f8958f7a1613c4d48625f7a79a02c7588d0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 4028d6732220dba4848c88306a501ce22af7487a
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543396"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144017"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教學課程：透過 CLI 訓練和部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -300,7 +300,7 @@ runconfig 檔案也包含用來設定執行訓練時所用環境的資訊。 若
 > [!TIP]
 > 雖然您可以手動建立 runconfig 檔案，但此範例中所使用的 runconfig 檔案使用存放庫內含的 `generate-runconfig.py` 檔案建立而成。 此檔案會取得註冊資料集的參考、透過程式設計方式建立執行設定，然後將其保存到檔案。
 
-如需執行設定檔的詳細資訊，請參閱[設定及使用計算目標來將模型定型](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)。 如需完整的 JSON 參考，請參閱 [runconfigschema.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)。
+如需執行設定檔的詳細資訊，請參閱[使用計算目標來將模型定型](how-to-set-up-training-targets.md#whats-a-run-configuration)。 如需完整的 JSON 參考，請參閱 [runconfigschema.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)。
 
 ## <a name="submit-the-training-run"></a>提交訓練執行
 

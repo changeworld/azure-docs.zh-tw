@@ -4,12 +4,12 @@ description: 說明如何使用 Azure Migrate 伺服器評量來評估內部部�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: dd00f800003724b3a5c15d265a5428272e1762fb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8c2784e999e751972883b6c9ffba2485bb9fe9e1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290211"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950080"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>透過伺服器評量評估 VMware
 
@@ -66,19 +66,30 @@ ms.locfileid: "87290211"
 
 Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備會執行 VM 探索，並將 VM 的中繼資料和效能資料傳送至 Azure Migrate。 您可以透過數種方式來設定設備。
 
-- 使用下載的 OVA 範本，在 VMware VM 上進行設定。 這是本教學課程使用的方法。
+- 使用下載的 OVA 範本，在 VMware VM 上進行設定。 **這是本教學課程使用的方法。**
 - 使用 PowerShell 安裝程式指令碼在 VMware VM 或實體機器上進行設定。 如果您無法使用 OVA 範本設定 VM，或如果您是在 Azure Government 中，則應該使用[此方法](deploy-appliance-script.md)。
 
 建立設備之後，您會檢查其是否可以連線到 Azure Migrate：伺服器評量、進行第一次設，以及向 Azure Migrate 專案註冊設備。
 
 
-### <a name="download-the-ova-template"></a>下載 OVA 範本
+### <a name="generate-the-azure-migrate-project-key"></a>產生 Azure Migrate 專案金鑰
 
 1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評估]** 中，選取 [探索]。
 2. 在 [探索機器] > [機器是否已虛擬化?] 中，選取 [是，使用 VMware vSphere Hypervisor]。
-3. 選取 [下載] 以下載 OVA 範本檔案。
+3. 在 **1：產生 Azure Migrate 專案金鑰**中，為您要為探索之 VMware VM 設定的 Azure Migrate 設備命名。名稱應使用英數位元，且長度不超過 14 個字元。
+1. 按一下 [產生金鑰] ，開始建立必要的 Azure 資源。 在建立資源期間，請勿關閉探索的電腦頁面。
+1. 成功建立 Azure 資源之後，系統會產生 **Azure Migrate 專案金鑰**。
+1. 複製金鑰，您在設定期間需要此金鑰才能完成設備的註冊。
 
-   ![用於下載 OVA 檔案的選項](./media/tutorial-assess-vmware/download-ova.png)
+### <a name="download-the-ova-template"></a>下載 OVA 範本
+在 **2：下載 Azure Migrate 設備**中，選取 .OVA 檔案，然後按一下 [下載]。 
+
+
+   ![探索電腦的選取項目](./media/tutorial-assess-vmware/servers-discover.png)
+
+
+   ![產生金鑰的選取項目](./media/tutorial-assess-vmware/generate-key-vmware.png)
+
 
 ### <a name="verify-security"></a>確認安全性
 
@@ -97,13 +108,13 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
     
         **演算法** | **下載** | **SHA256**
         --- | --- | ---
-        VMware (10.9 GB) | [最新版本](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
+        VMware (11.6 GB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
 
     - 對於 Azure Government：
     
         **演算法** | **下載** | **SHA256**
         --- | --- | ---
-        VMware (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
+        VMware (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140337) | 7dab9445a89b47302994d6de4caddaa092c1c582c8f3c1fc5b9c4908c7d2f9f7
 
 
 ### <a name="create-the-appliance-vm"></a>建立設備 VM
@@ -138,49 +149,49 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 3. 在任何可連線至 VM 的機器上開啟瀏覽器，並開啟設備 Web 應用程式的 URL：**https://設備名稱或 IP 位址:44368**。
 
    或者，您也可以選取應用程式捷徑，從設備桌面開啟應用程式。
+1. 接受**授權條款**，並閱讀第三方資訊。
 1. 在 [Web 應用程式] > [設定必要條件] 中，執行下列動作：
-   - **授權**：接受授權條款，並閱讀第三方資訊。
    - **連線能力**：應用程式會確認 VM 是否能夠存取網際網路。 如果 VM 使用 Proxy：
-     - 選取 [Proxy 設定]，然後以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定 Proxy 位址和接聽連接埠。
+     - 按一下 [設定 Proxy] 以指定 Proxy 位址 (格式為 http://ProxyIPAddress 或 http://ProxyFQDN) ) 和接聽連接埠。
      - 如果 Proxy 需要驗證，請指定認證。
      - 僅支援 HTTP Proxy。
+     - 如果您已新增 Proxy 詳細資料，或已停用 Proxy 和/或驗證，請按一下 [儲存] 以再次觸發連線檢查。
    - **時間同步**：設備上的時間應該與網際網路時間同步，探索才能正常運作。
-   - **安裝更新**：設備會確保已安裝最新的更新。
-   - **安裝 VDDK**：設備會檢查是否已安裝 VMware vSphere 虛擬磁碟開發套件 (VDDK)。 如果未安裝，則會從 VMware 下載 VDDK 6.7，並將下載的 zip 內容解壓縮到設備上的指定位置。
+   - **安裝更新**：設備會確保已安裝最新的更新。 檢查完成之後，您可以按一下 [檢視設備服務] 查看設備上執行之元件的狀態和版本。
+   - **安裝 VDDK**：設備會檢查是否已安裝 VMware vSphere 虛擬磁碟開發套件 (VDDK)。 如果未安裝，則會從 VMware 下載 VDDK 6.7，並將下載的 zip 內容解壓縮到設備上的指定位置、如**安裝指示**中提供的內容所述。
 
-     在遷移至 Azure 期間，Azure Migrate 伺服器移轉會使用 VDDK 來複寫機器。       
+     在遷移至 Azure 期間，Azure Migrate 伺服器移轉會使用 VDDK 來複寫機器。 
+1. 如有需要，可以在設備設定期間隨時**重新執行必要條件**，以檢查設備是否符合所有必要條件。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>向 Azure Migrate 註冊設備
 
-1. 選取 [登入]。 如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
-2. 在新的索引標籤上，使用您的 Azure 使用者名稱和密碼登入。
+1. 貼上從入口網站複製的 **Azure Migrate 專案金鑰**。 如果沒有金鑰，請移至**伺服器評估 > 探索 > 管理現有的設備**，選取在金鑰產生時提供的設備名稱，並複製對應的金鑰。
+1. 按一下 [登入]。 系統會在新的瀏覽器索引標籤中開啟 Azure 登入提示。如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
+1. 在新的索引標籤上，使用您的 Azure 使用者名稱和密碼登入。
    
    不支援使用 PIN 登入。
-3. 成功登入後，返回 Web 應用程式。
-4. 選取 Azure Migrate 專案建立所在的訂用帳戶，然後選取專案。
-5. 指定設備的名稱。 名稱應該是英數位元，且長度不超過 14 個字元。
-6. 選取 [註冊]。
+3. 成功登入後，返回 Web 應用程式。 
+4. 如果用於記錄的 Azure 使用者針對在金鑰產生期間建立的 Azure 資源帳戶具有正確的[權限](tutorial-prepare-vmware.md#prepare-azure)，就會起始設備註冊。
+1. 成功註冊設備之後，您可以按一下 [檢視詳細資料]查看註冊詳細資料。
 
 
 ## <a name="start-continuous-discovery"></a>開始連續探索
 
 設備必須連線到 vCenter Server，才能探索 VM 的設定與效能資料。
 
-### <a name="specify-vcenter-server-details"></a>指定 vCenter Server 詳細資料
-1. 在 [指定 vCenter Server 詳細資料] 中，指定 vCenter Server 執行個體的名稱 (FQDN) 或 IP 位址。 您可以保留預設的連接埠，或指定 vCenter Server 接聽的自訂連接埠。
-2. 在 [使用者名稱] 和 [密碼] 中，指定設備要用來在 vCenter Server 執行個體上探索 VM 的 vCenter Server 帳戶認證。 
-
+1. 在 [步驟 1：選取復原點]**提供 vCenter Server 認證**中，按一下 [新增認證] 以指定認證的自訂名稱，並新增 vCenter Server 帳戶的**使用者名稱**和**密碼**，設備將使用此 vCenter Server 帳戶探索 vCenter Server 執行個體上的 VM。
     - 您應該已在[上一個教學課程](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)中設定具有必要權限的帳戶。
     - 如果您想要將探索範圍限定成特定的 VMware 物件 (vCenter Server 資料中心、叢集、叢集的資料夾、主機、主機的資料夾或個別的 VM)，請參閱本文的[指示](set-discovery-scope.md)來限制 Azure Migrate 所使用的帳戶。
-
-3. 選取 [驗證連線] 以確定設備可以連線到 vCenter Server。
-4. 在 [探索 VM 上的應用程式和相依性] 中，選擇性地按一下 [新增認證]，並指定與認證相關的作業系統，以及認證的使用者名稱和密碼。 然後按一下 [ **新增**]。
+1. 在**步驟 2：提供 vCenter Server 詳細資料**中，按一下 [新增探索來源]，從下拉式選單選取自訂的認證名稱，指定 vCenter Server 執行個體的 **IP 位址/FQDN**。 您可以將**連接埠**保留為預設 (443)，或指定 vCenter Server 接聽的自訂連接埠並按一下 [儲存]。
+1. 按一下 [儲存] 時，設備會嘗試使用提供的認證驗證與 vCenter Server 的連線，並根據 vCenter Server 的 IP 位址/FQDN，在資料表中顯示**驗證狀態** 。
+1. 您可以在啟動探索之前，隨時**重新驗證** vCenter Server 的連線功能是否正常。
+1. 在**步驟 3：提供 VM 認證以探索已安裝的應用程式，並執行無代理程式相依性對應**中，按一下 [新增認證]，並指定要提供認證的作業系統、認證的自訂名稱以及**使用者名稱**和**密碼**。 然後按一下 [儲存]。
 
     - 如果您已建立可用於[應用程式探索功能](how-to-discover-applications.md)，或[無代理程式相依性分析功能](how-to-create-group-machine-dependencies-agentless.md)的認證，您可以選擇性地在此新增認證。
-    - 如果您不使用這些功能，則可以略過這項設定。
-    - 請檢閱[應用程式探索](migrate-support-matrix-vmware.md#application-discovery-requirements)或[無代理程式分析](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)所需的認證。
+    - 如果不想使用這些功能，可以按一下滑桿來略過步驟。 您之後可以隨時改變心意。
+    - 請檢閱[應用程式探索](migrate-support-matrix-vmware.md#application-discovery-requirements)或[無代理程式相依性分析](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)所需的認證。
 
-5. **儲存並啟動探索**，即可啟動 VM 探索。
+5. 按一下 [開始探索]，即可啟動 VM 探索。 成功起始探索之後，您可以在資料表中檢查 vCenter Server IP 位址/FQDN 的探索狀態。
 
 探索的運作方式如下：
 - 所探索到的 VM 中繼資料會在大約 15 分鐘後出現在入口網站中。

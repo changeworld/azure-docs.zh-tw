@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6b8b7c0dbdce160a19b5bb5ecb67bf2fb0a204ee
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82203254"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295256"
 ---
 # <a name="add-an-api-manually"></a>手動新增 API
 
@@ -45,7 +45,7 @@ ms.locfileid: "82203254"
 此時，APIM 中沒有對應至後端 API 中任何作業的作業。 如果您呼叫透過後端公開的作業，而不是呼叫透過 APIM 公開的作業，您會收到 **404**。
 
 >[!NOTE] 
-> 依預設，當您新增 API 時 (即使 API 已連線到某些後端服務)，APIM 不會公開任何作業，直到您將作業加入允許清單。 若要將您的後端服務作業加入允許清單，請建立對應至後端作業的 APIM 作業。
+> 依預設，當您新增 API 時 (即使 API 已連線到某些後端服務)，APIM 不會公開任何作業，直到您允許為止。 若要允許您的後端服務作業，請建立對應至後端作業的 APIM 作業。
 
 ## <a name="add-and-test-an-operation"></a>新增和測試作業
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 0029761f8a1c48ab595dfa5bc2a87fca12d90e3d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 753f45257f820f87f2e4bfb1893f581bee167a4a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873920"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230920"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>教學課程：在 Azure HDInsight 中建置 Apache Spark 機器學習應用程式
 
@@ -41,7 +41,7 @@ ms.locfileid: "87873920"
 
 此應用程式會使用 Spark [ML 管線](https://spark.apache.org/docs/2.2.0/ml-pipeline.html)來執行文件分類。 ML 管線提供一組以 DataFrames 為基礎的相同高階 API。 DataFrame 可協助使用者建立及調整實用的機器學習服務管線。 在管線中，您要將文件分割成單字、將單字轉換成數值特性向量，最後再使用特性向量和標籤建立預測模型。 執行下列步驟以建立應用程式。
 
-1. 使用 PySpark 核心建立 Jupyter Notebook。 如需指示，請參閱[建立 Jupyter Notebook](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)。
+1. 使用 PySpark 核心建立 Jupyter Notebook。 如需指示，請參閱[建立 Jupyter Notebook 檔案](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file)。
 
 1. 匯入此案例所需的類型。 將下列程式碼片段貼到空白儲存格中，然後按 **SHIFT + ENTER**。
 

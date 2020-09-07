@@ -1,18 +1,18 @@
 ---
 title: 快速入門 - 在 Azure 入口網站建立 Analysis Services 伺服器 | Microsoft Docs
-description: 了解如何使用 Azure 入口網站，快速建立 Azure Analysis Services 伺服器執行個體。
+description: 本快速入門說明如何使用 Azure 入口網站，建立 Azure Analysis Services 伺服器執行個體。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 36899aa789f4947fe860621bc1795bfbe2ff1ecf
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 488e7c84e481edd1b136fe90ab948d3cfb51ed2c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697479"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230775"
 ---
 # <a name="quickstart-create-a-server---portal"></a>快速入門：建立伺服器 - 入口網站
 
@@ -59,5 +59,3 @@ ms.locfileid: "83697479"
 
 > [!div class="nextstepaction"]
 > [快速入門：設定伺服器防火牆 - 入口網站](analysis-services-qs-firewall.md)   
-> [!div class="nextstepaction"]
-> [教學課程：將範例模型新增至您的伺服器](analysis-services-create-sample-model.md)

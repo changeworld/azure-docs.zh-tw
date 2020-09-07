@@ -65,6 +65,8 @@
       href: ../../firewall/security-baseline.md
     - name: Azure Functions 安全性基準
       href: ../../azure-functions/security-baseline.md
+    - name: Azure IoT 中樞安全性基準
+      href: ../../iot-hub/security-baseline.md
     - name: 適用於安全性基準的 Azure 監視器
       href: ../../azure-monitor/security-baseline.md
     - name: Azure Machine Learning 安全性基準

@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 12d87d6d458d6cda21ca581337012e800a3d4bce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 726caa0c4a7bbd6b8d0c17ffdfade5f9cc3c2a34
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324313"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020366"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>使用 Azure 監視器從混合式環境中的 Windows 電腦收集資料
 
 [Azure 監視器](../overview.md)可將來自環境中實體或虛擬 Windows 電腦的資料直接收集到 Log Analytics 工作區，以供詳細分析和相互關聯。 安裝 [Log Analytics 代理程式](../platform/log-analytics-agent.md)可讓 Azure 監視器從資料中心或其他雲端環境收集資料。 本快速入門向您示範如何以幾個簡單步驟來設定和收集 Windows 電腦的資料。 如需 Azure Windows VM 的相關資訊，請參閱[收集關於 Azure 虛擬機器的資料](./quick-collect-azurevm.md)。  
 
-若要了解支援的組態，請參閱[支援的 Windows 作業系統](../platform/log-analytics-agent.md#supported-windows-operating-systems)和[網路防火牆組態](../platform/log-analytics-agent.md#network-requirements)。
+若要了解支援的組態，請參閱[支援的作業系統](../platform/agents-overview.md#supported-operating-systems)和[網路防火牆組態](../platform/log-analytics-agent.md#network-requirements)。
  
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

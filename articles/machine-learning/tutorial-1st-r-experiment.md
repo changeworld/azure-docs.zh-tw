@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: bb2a7d8ef55e993726b185e5652c8dff9e96b23e
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 887b2da46fdcd6ad275f18913fd7ba675700ad3b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056358"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015980"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>教學課程：使用 R 建立機器學習模型 (預覽)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,8 +29,8 @@ ms.locfileid: "88056358"
 在本教學課程中，您會執行下列工作：
 > [!div class="checklist"]
 > * 建立 Azure Machine Learning 工作區
-> * 使用執行本教學課程所需的檔案，將筆記本資料夾複製到您的工作區
 > * 從您的工作區開啟 RStudio
+> * 將執行本教學課程所需的 https://github.com/Azure/azureml-sdk-for-r 檔案複製到您的工作區
 > * 載入資料並準備進行訓練
 > * 將資料上傳至資料存放區，使其可用於遠端定型
 > * 建立計算資源，以便從遠端訓練模型
@@ -53,33 +53,11 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 > 記下您的**工作區**和**訂用帳戶**。 您會需要這些項目，以確保您在正確位置建立實驗。 
 
 
-## <a name="clone-a-notebook-folder"></a><a name="azure"></a>複製 Notebook 資料夾
-
-此範例會使用您工作區中的雲端 Notebook 伺服器，讓您擁有免安裝和預先設定的體驗。 如果您想要控制您的環境、套件和相依性，[請使用您自己的環境](https://azure.github.io/azureml-sdk-for-r/articles/installation.html)。
-
-您在 Azure Machine Learning Studio 中完成下列實驗設定及執行步驟，該頁面是統一的介面，為所有技能等級的資料科學從業人員，提供執行資料科學情節的機器學習工具。
-
-1. 登入 [Azure Machine Learning Studio](https://ml.azure.com/)。
-
-1. 選取訂用帳戶與您建立的工作區。
-
-1. 選取左側的 [筆記本]。
-
-1. 開啟 **samples** 資料夾。
-
-1. 開啟 [R] 資料夾。
-
-1. 開啟其上有版本號碼的資料夾。  此號碼代表 R SDK 的目前版本。
-
-1. 選取 **vignettes** 資料夾右側的 **"..."** ，然後選取 [複製]。
-
-    ![複製資料夾](media/tutorial-1st-r-experiment/clone-folder.png)
-
-1. 資料夾清單隨即顯示，其中顯示每位存取工作區的使用者。  選取您的資料夾，以將 **vignettes** 資料夾複製到該處。
-
 ## <a name="open-rstudio"></a><a name="open"></a>開啟 RStudio
 
-在計算執行個體或 Notebook VM 上使用 RStudio 來執行本教學課程。  
+此範例會使用您工作區中的計算執行個體，讓您擁有免安裝和預先設定的體驗。 如果想要控制您電腦上的環境、套件和相依性，請使用[您自己的環境](https://azure.github.io/azureml-sdk-for-r/articles/installation.html)。
+
+在 Azure ML 計算執行個體上使用 RStudio 來執行本教學課程。  
 
 1. 選取左側的 [計算]。
 
@@ -87,10 +65,19 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 1. 計算執行後，請使用 [RStudio] 連結來開啟 RStudio。
 
-1. 在 RStudio 中，您的 [vignettes] 資料夾會在 [使用者] 的下面幾層，位於右下方的 [檔案] 區段中。  在 [vignettes] 底下選取 [train-and-deploy-to-aci] 資料夾，以尋找本教學課程中所需的檔案。
+
+## <a name="clone-the-sample-vignettes"></a><a name="azure"></a>複製範例片段 
+
+複製 https://github.com/azure/azureml-sdk-for-r GitHub 存放庫，以取得您將在本教學課程中執行的片段檔案複本。
+
+1. 在 RStudio 中，瀏覽至「終端機」索引標籤，並將其放入您要複製存放庫的目錄中。
+
+1. 在終端機中執行 "git clone https://github.com/Azure/azureml-sdk-for-r.git" 以複製存放庫。
+
+1. 在 RStudio 中，瀏覽至複製 azureml-sdk-for-r 資料夾的「片段」資料夾。  在「片段」下，選取 train-and-deploy-first-model.Rmd 檔案，以尋找本教學課程中使用的片段。 用於片段的其他檔案位於 train-and-deploy-first-model 子資料夾中。 開啟片段之後，請透過 **工作階段 > 設定工作目錄 > 至來源檔案位置**，將工作目錄設定至檔案的位置。 
 
 > [!Important]
-> 本文的其餘部分會包含您在 *train-and-deploy-to-aci.Rmd* 檔案中看到的相同內容。 如果您曾使用過 RMarkdown，則可以使用該檔案中的程式碼。  或者，您也可以從該處複製/貼上程式碼片段，或從本文複製/貼到 R 指令碼或命令列中。  
+> 本文的其餘部分會包含您在 train-and-deploy-first-model.Rmd 檔案中看到的相同內容。 如果您曾使用過 RMarkdown，則可以使用該檔案中的程式碼。  或者，您也可以從該處複製/貼上程式碼片段，或從本文複製/貼到 R 指令碼或命令列中。 
 
 
 ## <a name="set-up-your-development-environment"></a>設定開發環境
@@ -197,7 +184,7 @@ upload_files_to_datastore(ds,
 * 提交工作
 
 ### <a name="prepare-the-training-script"></a>建立定型指令碼
-在與本教學課程相同的目錄中，提供了名為 `accidents.R` 的定型指令碼。 請留意下列在**定型指令碼**中完成以利用 Azure Machine Learning 進行定型的詳細操作：
+在 train-and-deploy-first-model 目錄中，提供了名為 `accidents.R` 的訓練指令碼。 請留意下列在**定型指令碼**中完成以利用 Azure Machine Learning 進行定型的詳細操作：
 
 * 定型指令碼會使用引數 `-d` 尋找包含定型資料的目錄。 您在稍後定義並提交作業時，會指向此引數的資料存放區。 Azure ML 會將儲存體資料夾掛接至遠端叢集，以進行定型作業。
 * 定型指令碼會使用 `log_metric_to_run()`，將最終正確性以計量的形式記錄到 Azure ML 中的執行記錄。 Azure ML SDK 會提供一組記錄 API，用以記錄定型執行期間的各種計量。 這些計量會記錄並保存在實驗執行記錄中。 其後，您可以從 [Studio](https://ml.azure.com) 的執行詳細資料頁面中隨時存取或檢視這些計量。 如需完整的記錄方法集 `log_*()`，請參閱[參考](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)。
@@ -216,7 +203,7 @@ Azure ML 估計工具會封裝在計算目標上執行定型指令碼所需的�
 * 定型所需的任何環境相依性。 為定型建置的預設 Docker 映像已包含定型指令碼所需的三個套件 (`caret`、`e1071` 和 `optparse`)。  因此，您不需要指定其他資訊。 如果您使用依預設未包含的 R 套件，請使用估計工具的 `cran_packages` 參數來新增其他 CRAN 套件。 如需完整的可設定選項集，請參閱 [`estimator()`](https://azure.github.io/azureml-sdk-for-r/reference/estimator.html) 參考。
 
 ```R
-est <- estimator(source_directory = ".",
+est <- estimator(source_directory = "train-and-deploy-first-model",
                  entry_script = "accidents.R",
                  script_params = list("--data_folder" = ds$path(target_path)),
                  compute_target = compute_target
@@ -331,6 +318,7 @@ r_env <- r_environment(name = "basic_env")
 ```R
 inference_config <- inference_config(
   entry_script = "accident_predict.R",
+  source_directory = "train-and-deploy-first-model",
   environment = r_env)
 ```
 

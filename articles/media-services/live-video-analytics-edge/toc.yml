@@ -93,10 +93,10 @@
       href: troubleshoot-how-to.md
 - name: 參考
   items:
-    - name: HTTP 資料合約
-      href: http-data-contract.md
-    - name: gRPC 資料合約
-      href: grpc-data-contract.md
+    - name: HTTP 擴充通訊協定
+      href: http-extension-protocol.md
+    - name: gRPC 擴充通訊協定
+      href: grpc-extension-protocol.md
     - name: 推斷中繼資料結構描述
       href: inference-metadata-schema.md
     - name: 直接方法

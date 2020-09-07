@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 49984349ce8d9d1bc43778c0042dd21485eded15
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1b6fdbdfaef601751961d022858545d731fe62a8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829674"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856022"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>使用 Azure Application Insights 建立自訂 KPI 儀表板
 
@@ -40,6 +40,9 @@ ms.locfileid: "87829674"
 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 ## <a name="create-a-new-dashboard"></a>建立新的儀表板
+> [!WARNING]
+> 如果您將應用程式深入解析資源移到不同的資源群組或訂用帳戶，則需要移除舊的圖格，並在新位置中相同的應用程式深入解析資源中釘選新的圖格，以手動方式更新儀表板。 
+
 單一儀表板可包含來自多個應用程式、資源群組和訂用帳戶的資源。  請從為您的應用程式建立新的儀表板，以開始本教學課程。  
 
 1. 在儀表板窗格中，選取 [新增儀表板]。

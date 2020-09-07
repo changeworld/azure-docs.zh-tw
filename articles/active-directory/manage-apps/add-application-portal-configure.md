@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 1873cd14883e8b1a5174b8761e4a0bc9ba1ef872
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 1cc7d7755d22568b9b66216709dc0c3765d58657
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641852"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300148"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入門：針對您 Azure Active Directory (Azure AD) 租用戶中的應用程式設定屬性
 
@@ -93,6 +93,6 @@ ms.locfileid: "88641852"
 
 ## <a name="next-steps"></a>後續步驟
 
-前往下一篇文章，了解如何設定應用程式單一登入。
+前往下一篇文章，了解如何將使用者指派至應用程式。
 > [!div class="nextstepaction"]
-> [設定單一登入](add-application-portal-setup-sso.md)
+> [將使用者指派至應用程式](add-application-portal-assign-users.md)

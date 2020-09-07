@@ -1,17 +1,17 @@
 ---
 title: 教學課程：在貴組織外部共用 - Azure Data Share
 description: 教學課程 - 使用 Azure Data Share 與客戶及合作夥伴共用資料
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/30/2020
-ms.openlocfilehash: 1de793dc2f4f72efb67c954e60262c3d7f1b74fc
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/28/2020
+ms.openlocfilehash: 4f3c9d739f959670700182baf80c4a08e53d8587
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511968"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259059"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>教學課程：使用 Azure Data Share 共用資料  
 
@@ -73,7 +73,7 @@ ms.locfileid: "87511968"
 
 在 Azure 資源群組中建立 Azure Data Share 資源。
 
-1. 選取入口網站左上角的 [建立資源]  按鈕 (+)。
+1. 選取入口網站左上角的功能表按鈕，再選取 [建立資源] (+)。
 
 1. 搜尋「Data Share」  。
 
@@ -83,17 +83,17 @@ ms.locfileid: "87511968"
 
      **設定** | **建議的值** | **欄位描述**
     |---|---|---|
-    | 名稱 | datashareacount  | 指定資料共用帳戶的名稱。 |
     | 訂用帳戶 | 您的訂用帳戶 | 選取您要用於資料共用帳戶的 Azure 訂用帳戶。|
     | 資源群組 | *test-resource-group* | 使用現有資源群組，或建立新的資源群組。 |
-    | Location | 美國東部 2  | 選取資料共用帳戶的區域。
+    | Location | *美國東部 2* | 選取資料共用帳戶的區域。
+    | 名稱 | *datashareaccount* | 指定資料共用帳戶的名稱。 |
     | | |
 
-1. 選取 [建立]  來佈建資料共用帳戶。 佈建新的資料共用帳戶一般需要大約不到 2 分鐘的時間。 
+1. 選取 [檢閱 + 建立]，然後選取 [建立] 來佈建您的資料共用帳戶。 佈建新的資料共用帳戶一般需要大約不到 2 分鐘的時間。 
 
 1. 部署完成後，請選取 [移至資源]  。
 
-## <a name="create-a-data-share"></a>建立 Data Share
+## <a name="create-a-share"></a>建立共用
 
 1. 瀏覽至 [Data Share 概觀] 頁面。
 
@@ -103,15 +103,15 @@ ms.locfileid: "87511968"
 
 1. 選取 [建立]  。   
 
-1. 填寫 Data Share 的詳細資料。 指定名稱、共用類型、共用內容的說明和使用規定 (選擇性)。 
+1. 填寫共用的詳細資料。 指定名稱、共用類型、共用內容的說明和使用規定 (選擇性)。 
 
     ![EnterShareDetails](./media/enter-share-details.png "輸入共用詳細資料") 
 
-1. 選取 [繼續] 
+1. 選取 [繼續]。
 
-1. 若要將資料集新增至 Data Share，請選取 [新增資料集]  。 
+1. 若要將資料集新增至共用，請選取 [新增資料集]。 
 
-    ![資料集](./media/datasets.png "資料集")
+    ![將資料集新增至共用](./media/datasets.png "資料集")
 
 1. 選取您想要新增的資料集類型。 根據您在先前的步驟中選取的共用類型 (快照集或就地)，您將看到不同的資料集類型清單。 如果從 Azure SQL Database 或 Azure SQL 資料倉儲共用，系統將會提示您提供某些 SQL 認證。 使用您建立為必要條件的使用者進行驗證。
 
@@ -125,7 +125,7 @@ ms.locfileid: "87511968"
 
     ![AddRecipients](./media/add-recipient.png "新增收件者") 
 
-1. 選取 [繼續] 
+1. 選取 [繼續]。
 
 1. 如果您已選取快照集共用類型，則可以設定快照集排程，將資料的更新提供給資料取用者。 
 
@@ -133,9 +133,9 @@ ms.locfileid: "87511968"
 
 1. 選取開始時間和週期間隔。 
 
-1. 選取 [繼續] 
+1. 選取 [繼續]。
 
-1. 在 [檢閱 + 建立] 索引標籤中，檢閱 [套件內容]、[設定]、[收件者] 及 [同步處理設定]。 選取 [建立] 
+1. 在 [檢閱 + 建立] 索引標籤中，檢閱 [套件內容]、[設定]、[收件者] 及 [同步處理設定]。 選取 [建立]  。
 
 Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備好接受邀請。 
 

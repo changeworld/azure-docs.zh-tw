@@ -64,7 +64,7 @@
   items:
     - name: 在事件中樞資料流上將資料異常視覺化
       href: event-hubs-tutorial-visualize-anomalies.md
-    - name: 將已擷取的資料儲存在 SQL 資料倉儲中
+    - name: 將擷取的資料儲存至 Azure Synapse Analytics
       href: store-captured-data-data-warehouse.md
     - name: 使用串流分析處理適用於事件中樞的 Apache Kafka
       href: event-hubs-kafka-stream-analytics.md
