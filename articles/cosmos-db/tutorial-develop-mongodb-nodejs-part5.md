@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-javascript
 ms.reviewer: sngun
-ms.openlocfilehash: 4c64502ac1fa4837d6052fd399fd2c44b6ab4a09
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 59acb2e851be69a9bb928d9b3aae73d8136493e0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423876"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440910"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式
 
@@ -114,7 +114,7 @@ Mongoose 是適用於 MongoDB 及 Node.js 的物件資料模型 (ODM) 程式庫�
 
 1. 在終端機視窗中使用下列的 CLI 命令，擷取 Azure Cosmos DB 帳戶的主索引鍵： 
 
-    ```azure-cli-interactive
+    ```azurecli-interactive
     az cosmosdb list-keys --name <cosmosdb-name> -g myResourceGroup
     ```    
     

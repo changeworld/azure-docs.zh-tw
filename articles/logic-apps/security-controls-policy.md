@@ -1,22 +1,22 @@
 ---
 title: 適用於 Azure Logic Apps 的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure Logic Apps 的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 07/22/2020
+ms.date: 09/04/2020
 ms.topic: sample
 author: ecfan
 ms.author: estfan
 ms.service: logic-apps
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 9c451a44af4cf10eaf116eeb7e07d35c3e54a2ed
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fe0b8518bda695126f67d35c123aa60288b76f8a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293329"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484406"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-logic-apps"></a>適用於 Azure Logic Apps 的 Azure 原則法規合規性控制項
 
-[Azure 原則中的法規合規性](../governance/policy/concepts/regulatory-compliance.md)可針對與不同合規性標準相關的**合規性網域**和**安全性控制**，提供 Microsoft 建立和管理的方案定義 (稱為「內建項目」)。 此頁面會列出適用於 Azure Logic Apps 的**合規性網域**和**安全性控制**。 您可以針對**安全性控制**個別指派內建項目，以協助讓您的 Azure 資源符合特定標準的規範。
+[Azure 原則中的法規合規性](../governance/policy/concepts/regulatory-compliance.md)可針對與不同合規性標準相關的**合規性網域**和**安全性控制**，提供 Microsoft 建立和管理的方案定義 (稱為「內建」)。 此頁面會列出適用於 Azure Logic Apps 的**合規性網域**和**安全性控制**。 您可以針對**安全性控制**個別指派內建項目，以協助讓您的 Azure 資源符合特定標準的規範。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 

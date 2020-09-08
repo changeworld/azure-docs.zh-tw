@@ -2,13 +2,13 @@
 title: 教學課程 - 在 Azure 中部署 vSphere 叢集
 description: 了解如何使用 Azure VMWare 解決方案在 Azure 中部署 vSphere 叢集
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: 8aeedeeb785f149239f2bf9a4b58a18ec8bfeb77
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/07/2020
+ms.openlocfilehash: 69a29a459ba283bb34169112ac2fa174ac6a14af
+ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750488"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89512352"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>教學課程：在 Azure 中部署 Azure VMware 解決方案私人雲端
 
@@ -30,14 +30,7 @@ Azure VMware 解決方案讓您能夠在 Azure 中部署 vSphere 叢集。 初�
 
 ## <a name="register-the-resource-provider"></a>註冊資源提供者
 
-若要使用 Azure VMware 解決方案，您必須先向您的訂用帳戶註冊資源提供者。
-
-```
-azurecli-interactive
-az provider register -n Microsoft.AVS --subscription <your subscription ID>
-```
-
-如需註冊資源提供者的其他方式，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)。
+[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 
 
 ## <a name="create-a-private-cloud"></a>建立私人雲端
@@ -46,34 +39,7 @@ az provider register -n Microsoft.AVS --subscription <your subscription ID>
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-
-1. 選取 [建立新的資源]。 在 [搜尋 Marketplace] 文字方塊中，輸入 `Azure VMware Solution`，然後從清單中選取 [Azure VMware 解決方案]。 在 [Azure VMware 解決方案] 視窗中，選取 [建立]
-
-1. 在 [基本概念] 索引標籤上，輸入欄位的值。 下表列出欄位的屬性。
-
-   | 欄位   | 值  |
-   | ---| --- |
-   | **訂用帳戶** | 您計畫用於部署的訂用帳戶。|
-   | **資源群組** | 私人雲端資源的資源群組。 |
-   | **位置** | 選取一個位置，例如 [美國東部]。|
-   | **資源名稱** | Azure VMware 解決方案私人雲端的名稱。 |
-   | **SKU** | 選取下列 SKU 值：AV36 |
-   | **主控件** | 要新增至私人雲端叢集的主機數目。 預設值為 3，您可以在部署之後提高或降低此值。  |
-   | **vCenter 管理密碼** | 輸入雲端管理員密碼。 |
-   | **NSX-T 管理員密碼** | 輸入 NSX-T 管理員密碼。 |
-   | **位址封鎖** | 為私人雲端輸入 CIDR 網路的 IP 位址區塊，例如，10.175.0.0/22。 |
-
-   :::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="在 [基本資料] 索引標籤上，輸入欄位的值。" border="true":::
-
-1. 在完成後，選取 [檢閱+建立]。 在下一個畫面上，驗證輸入的資訊。 如果資訊都正確無誤，請選取 [建立]。
-
-   > [!NOTE]
-   > 這個步驟需要大約 2 小時。 
-
-1. 驗證部署是否成功。 瀏覽至您所建立的資源群組，然後選取您的私人雲端。  當部署完成時，您會看到 [成功] 的狀態。 
-
-   :::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="驗證部署是否成功。" border="true":::
+[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-avs-private-cloud-azure-portal-steps.md)]
 
 ### <a name="azure-cli"></a>Azure CLI
 

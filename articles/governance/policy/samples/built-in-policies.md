@@ -1,15 +1,15 @@
 ---
 title: 內建原則定義的清單
 description: 列出 Azure 原則的內建原則定義。 分類包括標籤、法規合規性、Key Vault、Kubernetes、來賓設定等等。
-ms.date: 07/10/2020
+ms.date: 09/04/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 7982627197a7524093ab56828b24528ebd903c67
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: a664c740649135c7586c77da43eacfd0a73e34a9
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298410"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487578"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure 原則的內建原則定義
 
@@ -112,10 +112,6 @@ Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 
 ## <a name="logic-apps"></a>Logic Apps
 
 [!INCLUDE [azure-policy-reference-policies-logic-apps](../../../../includes/policy/reference/bycat/policies-logic-apps.md)]
-
-## <a name="machine-learning"></a>Machine Learning
-
-[!INCLUDE [azure-policy-reference-policies-machine-learning](../../../../includes/policy/reference/bycat/policies-machine-learning.md)]
 
 ## <a name="managed-application"></a>受控應用程式
 

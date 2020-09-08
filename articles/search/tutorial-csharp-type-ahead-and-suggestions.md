@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 47c846f0d8d1cccd91301c7424b2618fffddd565
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1afeca4f627236c5172dd07a44751015c16d2f58
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998436"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462015"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>教學課程：使用 .NET SDK 新增自動完成和建議
 
@@ -31,7 +31,7 @@ ms.locfileid: "88998436"
 
 此教學課程是系列中的一部分，建置於 [C# 教學課程：搜尋結果分頁 - Azure 認知搜尋](tutorial-csharp-paging.md)中建立的分頁專案。
 
-或者，您可以下載並執行此特定教學課程的解決方案：[3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)。
+或者，您可以下載並執行此特定教學課程的解決方案：[3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)。
 
 ## <a name="add-suggestions"></a>新增建議
 

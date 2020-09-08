@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何使用 Kestrel 將 HTTPS 
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6b8587982a8cbe496427960495055adbd68a07a7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b309a13288c8ea95f453c1e80549a979e3f89921
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997280"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441522"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教學課程：使用 Kestrel 將 HTTPS 端點新增至 ASP.NET Core Web API 前端服務
 
@@ -238,7 +238,7 @@ private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonNa
 
 若要從 **SetupEntryPoint** 點執行 PowerShell，您可以在指向 PowerShell 檔案的批次檔中執行 PowerShell.exe。 首先，新增服務專案的批次檔案。  在 [方案總管] 中，以滑鼠右鍵按一下 **VotingWeb**，選取 [新增]  -> [新項目]  ，然後新增名為 "Setup.bat" 的檔案。  編輯 Setup.bat  檔案並新增以下組態：
 
-```bat
+```cmd
 powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 ```
 

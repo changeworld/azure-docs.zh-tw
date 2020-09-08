@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: 140365abad266617443d58b7ed59f05a27009f59
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c83a67f7d524a062485f2c68e0adb7fdd2855a84
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433056"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462168"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>教學課程：使用 Azure DevOps Services 和 Azure Pipelines 在 Azure 中將應用程式部署至 Linux 虛擬機器
 
@@ -84,9 +84,10 @@ https://github.com/azure-devops/fabrikam-node
 
 #### <a name="java"></a>[Java](#tab/java)
 
-- 若要部署以 Java Spring Boot 和 Spring Cloud 為基礎的應用程式，請使用[這個](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804)範本在 Azure 中建立 Linux VM，以提供完整支援的 OpenJDK 型執行階段。
-- 若要在 Tomcat 伺服器上部署 Java Servlet，請使用[這個](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) Azure 範本建立具有 Java 8 的 Linux VM，並[將 Tomcat 9.x 設定為服務](https://tomcat.apache.org/tomcat-9.0-doc/setup.html)。
-- 若要部署 Java EE 型應用程式，請使用 Azure 範本建立 [Linux VM + Java + WebSphere 9.x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) 或 [Linux VM + Java + WebLogic 12.x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) 或 [Linux VM +Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) + WildFly/JBoss 14 
+- 若要部署以 Java Spring Boot 和 Spring Cloud 為基礎的應用程式，請使用[這個](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004)範本在 Azure 中建立 Linux VM，以提供完整支援的 OpenJDK 型執行階段。
+- 若要在 Tomcat 伺服器上部署 Java Servlet，請使用[這個](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004) Azure 範本建立具有 Java 8 的 Linux VM，並[將 Tomcat 9.x 設定為服務](https://tomcat.apache.org/tomcat-9.0-doc/setup.html)。
+- 若要部署 Java EE 型應用程式，請使用 Azure 範本建立 [Linux VM + Java + WebSphere 9.x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) 或 [Linux VM + Java + WebLogic 12.x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) 或 [Linux VM +Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004) + WildFly/JBoss 14 
+
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
