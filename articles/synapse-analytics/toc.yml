@@ -36,6 +36,8 @@
   items:
     - name: 使用 Azure 入口網站建立 Synapse 工作區
       href: quickstart-create-workspace.md
+    - name: 透過範本進行部署
+      href: quickstart-deployment-template-workspaces.md
     - name: 使用 Azure CLI 建立 Synapse 工作區
       href: quickstart-create-workspace-cli.md
     - name: 使用 Synapse Studio
@@ -210,6 +212,8 @@
               href: ./spark/apache-spark-delta-lake-overview.md
             - name: Apache Spark 效能
               href: ./spark/apache-spark-performance.md
+            - name: 使用 Hyperspace 索引將 Apache Spark 的效能最佳化
+              href: ./spark/apache-spark-performance-hyperspace.md
             - name: Apache Spark 自動調整行為
               href: ./spark/apache-spark-autoscale.md
         - name: 部署
@@ -920,7 +924,7 @@
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 問題與答案
-      href: 'https://docs.microsoft.com/en-us/answers/questions/topics/single/25423.html'
+      href: 'https://docs.microsoft.com/answers/questions/topics/single/25423.html'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
     - name: Stack Overflow
