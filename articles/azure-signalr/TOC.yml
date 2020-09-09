@@ -35,6 +35,8 @@
   items:
     - name: Azure SignalR Service 內部項目
       href: signalr-concept-internals.md
+    - name: 服務模式
+      href: concept-service-mode.md
     - name: 調整 ASP.NET Core SignalR
       href: signalr-concept-scale-aspnet-core.md
     - name: 無伺服器

@@ -4,14 +4,6 @@
   items:
     - name: 何謂 Azure 防火牆？
       href: overview.md
-- name: 教學課程
-  items:
-    - name: 部署及設定
-      href: tutorial-firewall-deploy-portal.md
-    - name: 在混合式網路中部署
-      href: tutorial-hybrid-portal.md
-    - name: 使用 DNAT 篩選輸入流量
-      href: tutorial-firewall-dnat.md
 - name: 快速入門
   expanded: true
   items:
@@ -24,6 +16,14 @@
     - name: 使用可用性區域進行部署 - ARM 範本
       displayName: Resource Manager
       href: deploy-template.md
+- name: 教學課程
+  items:
+    - name: 部署及設定
+      href: tutorial-firewall-deploy-portal.md
+    - name: 在混合式網路中部署
+      href: tutorial-hybrid-portal.md
+    - name: 使用 DNAT 篩選輸入流量
+      href: tutorial-firewall-dnat.md
 - name: 範例
   items:
     - name: Azure PowerShell

@@ -102,6 +102,7 @@
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 區域
+      displayName: location
       href: regions.md
     - name: 常見問題集
       href: faq.md
