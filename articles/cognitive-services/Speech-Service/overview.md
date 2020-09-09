@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: cc29eb959876a0c9c6f8c8e5dee2d18aaa5443ac
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 57577c840c93888b2b96971994724f085ad44ebe
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825342"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569300"
 ---
 # <a name="what-is-the-speech-service"></a>什麼是語音服務？
 
@@ -90,7 +90,7 @@ ms.locfileid: "88825342"
 
 我們會以最熱門的程式設計語言提供快速入門，目的是教您基本的設計模式，並讓您能在 10 分鐘內執行程式碼。 請參閱下列清單，以取得每項功能的快速入門。
 
-* [語音轉換文字快速入門](speech-to-text-basics.md)
+* [語音轉換文字快速入門](get-started-speech-to-text.md)
 * [文字轉換語音快速入門](get-started-text-to-speech.md)
 * [語音翻譯快速入門](speech-translation-basics.md)
 * [意圖辨識快速入門](quickstarts/intent-recognition.md)

@@ -4,15 +4,15 @@ description: 說明 Azure HPC Cache，這是高效能運算的檔案存取加速
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 07/16/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c898b0d5a58654547cb6205ee0c845c9cfa4aa9
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053675"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611751"
 ---
 # <a name="what-is-azure-hpc-cache"></a>什麼是 Azure HPC Cache？
 
@@ -65,11 +65,11 @@ Azure HPC Cache 佈署可協助加速量化的分析計算、風險分析工作�
 * US Gov 亞利桑那州
 * US Gov 維吉尼亞州
 
-## <a name="service-availability"></a>服務可用性
+<!-- ## Service availability
 
-您必須針對每個將與 Azure HPC Cache 搭配使用的訂用帳戶要求存取權。 此限制有助於確保服務品質。
+You must request access for each subscription you will use with Azure HPC Cache. This restriction helps ensure service quality.
 
-填寫[這份表單](https://aka.ms/onboard-hpc-cache)以要求存取權。 將訂用帳戶新增至存取清單之後，即可建立快取。
+Request access by filling out [this form](https://aka.ms/onboard-hpc-cache). After your subscription is added to the access list, you can create caches. -->
 
 ## <a name="next-steps"></a>後續步驟
 

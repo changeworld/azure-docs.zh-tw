@@ -4,18 +4,18 @@ description: 本快速入門說明如何透過程式設計方式呼叫直接方�
 ms.topic: quickstart
 ms.date: 08/10/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 45595e8e6aa53b41d6d8b0d9d11457468dc47013
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4d8b91529eaf5a9ee93cff28153b28b26fb7e685
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690915"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566891"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>快速入門：偵測動作並發出事件
 
 本快速入門會逐步引導您完成在 IoT Edge 上開始使用 Live Video Analytics 的步驟。 這裡使用 Azure VM 作為 IoT Edge 裝置，以及模擬的即時影片串流。 完成設定步驟之後，您將能夠透過媒體圖表執行模擬的即時影片串流，以偵測並報告該串流中的任何動作。 下圖顯示該媒體圖表的圖表表示。
 
-![以動作偵測為基礎的 Live Video Analytics](./media/analyze-live-video/motion-detection.png) 
+![以動作偵測為基礎的 Live Video Analytics](./media/analyze-live-video/motion-detection.svg) 
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [header](includes/detect-motion-emit-events-quickstart/csharp/header.md)]

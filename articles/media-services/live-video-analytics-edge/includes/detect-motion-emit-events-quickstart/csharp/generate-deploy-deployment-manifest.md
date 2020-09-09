@@ -1,13 +1,11 @@
 ---
-ms.openlocfilehash: 38d96ccb9f2c7b24e57b1096996df1ea760aca37
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 055448eacf1cc12c6d021c6571a0478cb35442ba
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690920"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566890"
 ---
-## <a name="generate-and-deploy-the-deployment-manifest"></a>產生和部署部署資訊清單
-
 部署資訊清單會定義要將哪些模組部署至邊緣裝置。 其也會定義這些模組的組態設定。 
 
 請遵循下列步驟，從範本檔案產生資訊清單，然後將其部署到邊緣裝置。
