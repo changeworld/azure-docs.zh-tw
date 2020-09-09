@@ -3,7 +3,7 @@ title: 教學課程：設定規則引擎 - Azure Front Door
 description: 本文提供如何在 Azure 入口網站和 CLI 中設定規則引擎的教學課程。
 services: frontdoor
 documentationcenter: ''
-author: megan-beatty
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
@@ -11,14 +11,14 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
-ms.author: mebeatty
+ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2ab9bc72aa30ddb16d0719827b6d7baeab86c057
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1ff8ca7d7c5972869de4c0d394129c591c7f4a7c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491301"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399067"
 ---
 # <a name="configure-your-rules-engine"></a>設定規則引擎
 

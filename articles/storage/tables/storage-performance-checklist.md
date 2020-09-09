@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a60683b8dbf809bc3e91ffd8720b545db4c361d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9d3f7d5f496634f10b48e7509c21cd634fd92d3c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008670"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458327"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>表格儲存體的效能和延展性檢查清單
 
@@ -43,8 +43,8 @@ Azure 儲存體具有容量、交易速率和頻寬的延展性和效能目標�
 | &nbsp; |工具 |[您是否使用 Microsoft 所提供的最新用戶端程式庫和工具版本？](#client-libraries-and-tools) |
 | &nbsp; |重試 |[您是否針對節流錯誤和逾時使用重試原則搭配指數輪詢？](#timeout-and-server-busy-errors) |
 | &nbsp; |重試 |[您的應用程式是否避免重試不能再嘗試的錯誤？](#non-retryable-errors) |
-| &nbsp; |組態 |[您是否使用 JSON 來處理資料表要求？](#use-json) |
-| &nbsp; |組態 |[您是否已關閉 Nagle 演算法以提高小型要求的效能？](#disable-nagle) |
+| &nbsp; |設定 |[您是否使用 JSON 來處理資料表要求？](#use-json) |
+| &nbsp; |設定 |[您是否已關閉 Nagle 演算法以提高小型要求的效能？](#disable-nagle) |
 | &nbsp; |資料表和資料分割 |[您是否已正確分割您的資料？](#schema) |
 | &nbsp; |常用資料分割 |[您是否避免只開頭附加和只結尾附加模式？](#append-only-and-prepend-only-patterns) |
 | &nbsp; |常用資料分割 |[您的插入/更新是否散佈到許多資料分割中？](#high-traffic-data) |
@@ -106,7 +106,7 @@ Azure 儲存體具有容量、交易速率和頻寬的延展性和效能目標�
 
 與任何網路使用方式一樣，請記住導致錯誤和封包遺失的網路狀況將會減慢有效的輸送量。  使用 WireShark 或 NetMon 可能有助於診斷此問題。  
 
-### <a name="location"></a>Location
+### <a name="location"></a>位置
 
 在任何分散式環境中，將用戶端放置於伺服器附近可提供最佳的效能。 若要以最低的延遲時間存取 Azure 儲存體，對用戶端而言的最佳位置是在同一個 Azure 區域內。 例如，如果您擁有使用 Azure 儲存體的 Azure Web 應用程式，則將這兩者置於單一區域內 (例如，美國西部或東南亞)。 共置資源可降低延遲和成本，因為單一區域內的頻寬使用量是免費的。  
 
@@ -189,7 +189,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 如需 Azure 儲存體錯誤碼的詳細資訊，請參閱[狀態和錯誤碼](/rest/api/storageservices/status-and-error-codes2)。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 本節將列出數個快速組態設定，可用來在資料表服務中大幅改善效能：
 
@@ -197,7 +197,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 自儲存體服務版本 2013-08-15 開始，資料表服務支援使用 JSON (而非以 XML 為基礎的 AtomPub 格式) 來轉換資料表資料。 使用 JSON 可降低約 75% 的裝載大小，並可大幅提高您的應用程式效能。
 
-如需詳細資訊，請參閱 [Microsoft Azure 資料表：JSON 簡介](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)和[資料表服務作業的裝載格式](https://msdn.microsoft.com/library/azure/dn535600.aspx)。
+如需詳細資訊，請參閱 [Microsoft Azure 資料表：JSON 簡介](https://docs.microsoft.com/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json)和[表格服務作業的裝載格式](https://msdn.microsoft.com/library/azure/dn535600.aspx)。
 
 ### <a name="disable-nagle"></a>停用 Nagle
 

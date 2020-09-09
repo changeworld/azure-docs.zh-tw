@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 428aa25bc40b556ffd7ca6e59948fc79c8bef1c5
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f924347b99d270ac97da5f6d6f4edf7a13efacee
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89238018"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89449616"
 ---
 > [!IMPORTANT]
 > * 表單辨識器 SDK 目前鎖定的目標是表單辨識器服務 2.0 版。
@@ -539,7 +539,7 @@ static async Task TrainCustomModelWithLabels()
 ```csharp
 static void Main(string[] args)
 {
-    var trainCustomModel = TrainCustomModelNoLabels();
+    var trainCustomModel = TrainCustomModelWithLabels();
     Task.WaitAll(trainCustomModel);
 }
 ```
@@ -596,6 +596,7 @@ Submodel Form Type: form-63c013e3-1cab-43eb-84b0-f4b20cb9214c
 您會使用 `StartRecognizeCustomFormsFromUri` 方法。 傳回的值會是 `RecognizedForm` 物件的集合：提交的文件每頁各一個。 下列程式碼會將分析結果列印至主控台。 列印內容包括辨識到的每個欄位和對應的值，以及信賴分數。
 
 ```csharp
+static async Task RecognizeContentCustomModel()
 {
     // Use the custom model ID returned in the previous example.
     string modelId = "<modelId>";

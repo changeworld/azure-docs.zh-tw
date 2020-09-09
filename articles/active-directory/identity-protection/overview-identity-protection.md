@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815176"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437695"
 ---
 # <a name="what-is-identity-protection"></a>什麼是 Identity Protection？
 
@@ -102,17 +102,17 @@ Identity Protection 要求使用者必須是安全性讀取者、安全性操作
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| 功能 | 詳細資料 | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Free/Office 365 應用程式 |
+| 功能 | 詳細資料  | Azure AD Free/Office 365 應用程式 | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| 風險原則 | 使用者風險原則 (透過 Identity Protection) | 是 | 否 | 否 |
-| 風險原則 | 登入風險原則 (透過 Identity Protection 或條件式存取) | 是 | 否 | 否 |
-| 安全性報告 | 概觀 | 是 | 否 | 否 |
-| 安全性報告 | 具風險使用者 | 完整存取 | 有限資訊 | 有限資訊 |
-| 安全性報告 | 有風險的登入 | 完整存取 | 有限資訊 | 有限資訊 |
-| 安全性報告 | 風險偵測 | 完整存取 | 有限資訊 | 否 |
-| 通知 | 偵測到具風險使用者的警示 | 是 | 否 | 否 |
-| 通知 | 每週提要 | 是 | 否 | 否 |
-| | MFA 註冊原則 | 是 | 否 | 否 |
+| 風險原則 | 使用者風險原則 (透過 Identity Protection)  | 否 | 否 |是 | 
+| 風險原則 | 登入風險原則 (透過 Identity Protection 或條件式存取)  | 否 |  否 |是 |
+| 安全性報告 | 概觀 |  否 | 否 |是 |
+| 安全性報告 | 具風險使用者  | 有限資訊 | 有限資訊 | 完整存取|
+| 安全性報告 | 有風險的登入  | 有限資訊 | 有限資訊 | 完整存取|
+| 安全性報告 | 風險偵測   | 否 | 有限資訊| 完整存取|
+| 通知 | 偵測到具風險使用者的警示  | 否 | 否 |是 |
+| 通知 | 每週提要| 否 | 否 | 是 | 
+| | MFA 註冊原則 | 否 | 否 | 是 |
 
 ## <a name="next-steps"></a>後續步驟
 

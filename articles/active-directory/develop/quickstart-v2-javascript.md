@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 1e537c6f61a7c461b2a9edb4097fba95f5c66a6f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ed94b44972ffc8c53ce96c0240f11ad44535531b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120519"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434600"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入門：登入使用者並取得 JavaScript SPA 中的存取權杖
 
@@ -151,7 +151,7 @@ ms.locfileid: "88120519"
 使用 [Node.js](https://nodejs.org/en/download/) 以網頁伺服器執行專案：
 
 1. 若要啟動伺服器，請從專案目錄執行下列命令：
-    ```batch
+    ```cmd
     npm install
     npm start
     ```
@@ -179,7 +179,7 @@ MSAL 程式庫會登入使用者並要求權杖，該權杖是用來存取受 Mi
 
 或者，如果您已安裝 Node.js，可以透過 Node.js 套件管理員 (npm) 下載最新版本：
 
-```batch
+```cmd
 npm install msal
 ```
 

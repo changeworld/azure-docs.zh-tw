@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 55ed71c6947c70ac797656f2f18cf71dd8aaae9d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a09f20b2c392dbf219750a76e9570239227dc865
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852475"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458556"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>快速入門：透過 Python 使用 Azure 服務匯流排佇列
 
@@ -81,7 +81,7 @@ queue_client.send(msg)
 佇列用戶端會在 **ServiceBusClient** 物件上使用 `get_receiver` 方法，接收來自佇列的訊息。 下列程式碼範例會建立佇列用戶端，並接收來自 `taskqueue` 佇列的訊息。 使用您的服務匯流排主要連接字串值取代 `<connectionstring>`。 
 
 ```python
-from azure.servicebus import QueueClient, Message
+from azure.servicebus import QueueClient
 
 # Create the QueueClient
 queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")

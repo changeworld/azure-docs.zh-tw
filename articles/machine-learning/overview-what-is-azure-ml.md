@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 2c043ab535504a02a151d308de0562debdba950a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 233eb06714dc8ac614cceef157f87d175c3f455b
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145887"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462457"
 ---
 # <a name="what-is-azure-machine-learning"></a>什麼是 Azure Machine Learning？
 
@@ -69,7 +69,7 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 
 ## <a name="build-ml-models-in-the-studio"></a>在 Studio 中建置 ML 模型
 
-[Azure Machine Learning Studio](https://www.ml.azure.com) 是 Azure Machine Learning 中的 Web 入口網站，適用於可供模型定型、部署和資產管理的低程式碼和無程式碼選項。 Studio 會與 Azure Machine Learning SDK 整合，以提供順暢的體驗。 如需詳細資訊，請參閱[什麼是 Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md)。
+[Azure Machine Learning Studio](https://studio.azureml.net) 是 Azure Machine Learning 中的 Web 入口網站，適用於可供模型定型、部署和資產管理的低程式碼和無程式碼選項。 Studio 會與 Azure Machine Learning SDK 整合，以提供順暢的體驗。 如需詳細資訊，請參閱[什麼是 Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md)。
 
 + **Azure Machine Learning 設計工具 (預覽)**
 
@@ -86,7 +86,7 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 
 + **不勝枚舉...**
 
-  請造訪位於 [ml.azure.com](https://www.ml.azure.com)的 Azure Machine Learning Studio。 
+  請造訪位於 [ml.azure.com](https://studio.azureml.net)的 Azure Machine Learning Studio。 
 
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps：部署和生命週期管理

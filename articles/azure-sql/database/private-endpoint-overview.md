@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 5fcc50670973c361d830e4e6bbf2ce26101b8582
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f8c7e2cfb17ca48a67a009f532a9cbb6894cc05d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213377"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442593"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>適用於 Azure SQL Database 和 Azure Synapse Analytics 的 Azure Private Link
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "88213377"
 Private Link 可讓您透過**私人端點**連線到 Azure 中的各種 PaaS 服務。 如需支援 Private Link 功能的 PaaS 服務清單，請移至 [Private Link 文件](../../private-link/index.yml)頁面。 私用端點為特定 [VNet](../../virtual-network/virtual-networks-overview.md) 和子網路內的私用 IP 位址。
 
 > [!IMPORTANT]
-> 本文適用於 Azure SQL Database 和 Azure Synapse Analytics (前身為Azure SQL 資料倉儲)。 簡單來說，「資料庫」一詞同時指稱 Azure SQL Database 和 Azure Synapse Analytics 中的資料庫。 同樣地，只要提到「伺服器」，也都是指裝載 Azure SQL Database 和 Azure Synapse Analytics 的[邏輯 SQL 伺服器](logical-servers.md)。 本文「不」適用於 **Azure SQL Database 受控執行個體**。
+> 本文適用於 Azure SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲)。 簡單來說，「資料庫」一詞同時指稱 Azure SQL Database 和 Azure Synapse Analytics 中的資料庫。 同樣地，只要提到「伺服器」，也都是指裝載 Azure SQL Database 和 Azure Synapse Analytics 的[邏輯 SQL 伺服器](logical-servers.md)。 本文「不」適用於 **Azure SQL Database 受控執行個體**。
 
 ## <a name="data-exfiltration-prevention"></a>預防資料外洩
 
