@@ -27,6 +27,8 @@
       href: quickstart-ruby.md
     - name: 靜態 HTML 網站
       href: quickstart-html.md
+    - name: ARM 範本
+      href: quickstart-arm-template.md
     - name: 自訂容器
       href: quickstart-custom-container.md
     - name: 多個容器應用程式

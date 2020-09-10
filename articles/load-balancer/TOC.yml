@@ -81,6 +81,8 @@
       href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: 如何
   items:
+    - name: 入口網站設定
+      href: manage.md
     - name: 虛擬機器擴展集
       items:
         - name: 與現有的 Azure Load Balancer 搭配使用 - 入口網站

@@ -136,7 +136,11 @@
       items:
         - name: 補救建議
           href: security-center-remediate-recommendations.md
+        - name: 防止錯誤設定強制/拒絕
+          displayName: recommendations
+          href: prevent-misconfigurations.md
         - name: 鞏固安全性現況
+          displayName: recommendations
           href: security-center-monitoring.md
         - name: 建議參考清單
           href: recommendations-reference.md

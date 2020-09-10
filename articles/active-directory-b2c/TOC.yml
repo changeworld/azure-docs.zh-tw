@@ -69,6 +69,8 @@
           href: tokens-overview.md
         - name: 要求存取權杖
           href: access-tokens.md
+    - name: 原則金鑰
+      href: policy-keys-overview.md
     - name: 使用者流程和原則
       items:
         - name: 使用者流程

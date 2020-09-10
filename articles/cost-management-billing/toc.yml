@@ -114,6 +114,8 @@
           href: understand/mca-overview.md
         - name: Microsoft 合作夥伴合約的計費帳戶
           href: understand/mpa-overview.md
+        - name: 在合作夥伴之間轉移訂閱 (預覽)
+          href: manage/azure-plan-subscription-transfer-partners.md
 - name: 操作指南
   items:
     - name: 設定成本管理 + 計費

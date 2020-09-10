@@ -29,6 +29,8 @@
           href: quickstart-service-python.md
 - name: 教學課程
   items:
+    - name: 連接多個元件裝置 (C)
+      href: tutorial-multiple-components-c.md
     - name: 連接多個元件裝置 (C#)
       href: tutorial-multiple-components-csharp.md
     - name: 連接多個元件裝置 (Java)

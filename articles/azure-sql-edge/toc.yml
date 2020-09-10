@@ -77,3 +77,11 @@
       items:
         - name: Date_Bucket (Transact-SQL)
           href: date-bucket-tsql.md
+        - name: 日期保留和清除
+          items:
+            - name: 資料保留概觀
+              href: data-retention-overview.md
+            - name: 啟用或停用資料保留
+              href: data-retention-enable-disable.md
+            - name: 資料保留清除
+              href: data-retention-cleanup.md

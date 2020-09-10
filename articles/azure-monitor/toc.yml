@@ -324,7 +324,7 @@
           href: platform/metric-chart-samples.md
         - name: 針對計量圖表進行疑難排解
           href: platform/metrics-troubleshoot.md
-    - name: 資料收集
+    - name: 資料集合
       items:
         - name: 資料收集規則
           href: platform/data-collection-rule-overview.md
@@ -566,6 +566,8 @@
               href: platform/itsmc-overview.md
             - name: IT 服務管理連線
               href: platform/itsmc-connections.md
+            - name: 安全匯出整合
+              href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: 建立服務管理員 Web 應用程式
               href: platform/itsmc-service-manager-script.md
             - name: 修正 ServiceNow ITSM 同步的問題
@@ -720,6 +722,10 @@
                       href: app/monitor-performance-live-website-now.md
                 - name: Java
                   href: app/java-on-premises.md
+        - name: OpenTelemetry
+          items:
+            - name: 常見問題集
+              href: faq.md#opentelemetry
         - name: 建立資源 (傳統)
           href: app/create-new-resource.md
         - name: 建立資源 (工作區型)
@@ -1010,6 +1016,8 @@
           href: insights/container-insights-health.md
         - name: 監視 GPU 效能
           href: insights/container-insights-gpu-monitoring.md
+        - name: 監視部署和 HPA
+          href: insights/container-insights-deployment-hpa-metrics.md
         - name: 檢視即時資料
           items:
             - name: 即時資料 (預覽) 概觀
