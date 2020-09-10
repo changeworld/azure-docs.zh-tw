@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: bdf2bf4102795d35df7eae658e3a24028da79b33
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2500a22d4d3775f7cfea7afbf4e8d106ec2da139
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551297"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647967"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>教學課程：設定 Cisco Webex 來自動佈建使用者
 
@@ -97,7 +97,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![Cisco Webex 佈建](./media/cisco-webex-provisioning-tutorial/secrettoken1.png)
 
-6.  在 [租用戶 URL]  欄位中，以 `https://api.ciscoweb.com/v1/scim/[OrgId]` 的格式輸入值。 若要取得 `[OrgId]`，請登入您的 [Cisco Webex 控制中樞](https://admin.webex.com/login)。 按一下左下方的 [組織名稱]，然後從 [組織識別碼]  複製值。 
+6.  在 [租用戶 URL]  欄位中，以 `https://api.ciscospark.com/v1/scim/[OrgId]` 的格式輸入值。 若要取得 `[OrgId]`，請登入您的 [Cisco Webex 控制中樞](https://admin.webex.com/login)。 按一下左下方的 [組織名稱]，然後從 [組織識別碼]  複製值。 
 
     * 若要取得**祕密權杖**的值，請瀏覽至此 [URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose)。 在出現的 [Webex 登入] 頁面中，使用您組織的完整 Cisco Webex 系統管理帳戶登入。 此時會出現錯誤頁面，指出無法連線到網站，但這是正常情況。
 

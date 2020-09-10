@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 09/08/2020
 ms.author: victorh
-ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9d1e2d257074555e7a2e78930e1f9be6cd4d90fe
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079110"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535997"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>教學課程：使用 Azure 防火牆管理員來保護您的虛擬中樞
 
@@ -110,30 +110,6 @@ ms.locfileid: "89079110"
 
 重複以連線 **Spoke-02** 虛擬網路：連線名稱 - **hub-spoke-02**
 
-### <a name="configure-the-hub-and-spoke-routing"></a>設定中樞和輪輻路由
-
-從 Azure 入口網站開啟 Cloud Shell，然後執行下列 Azure PowerShell 來設定所需的中樞和輪輻路由。 對等互連輪輻/分支連線必須將傳播設定為 **NONE**。 這可防止輪輻之間的任何通訊，而會使用預設路由將流量路由傳送到防火牆。
-
-```azurepowershell
-$noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
-                  -HubName hub-01 -Name noneRouteTable
-$vnetConns = Get-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-             -ParentResourceName hub-01
-
-$vnetConn = $vnetConns[0]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name `
-   -RoutingConfiguration $vnetConn.RoutingConfiguration
-
-$vnetConn = $vnetConns[1]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name -RoutingConfiguration $vnetConn.RoutingConfiguration
-```
-
 ## <a name="deploy-the-servers"></a>部署伺服器
 
 1. 在 Azure 入口網站中，選取 [建立資源]  。
@@ -224,7 +200,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 3. 在 [中樞] 索引標籤上，選取 [建立虛擬中樞的關聯]。
 4. 選取 **Hub-01**，然後選取 [新增]。
 5. 選取 [檢閱 + 建立]。
-6. 選取 [建立]  。
+6. 選取 [建立]。
 
 這可能需要大約 5 分鐘或更久的時間才能完成。
 

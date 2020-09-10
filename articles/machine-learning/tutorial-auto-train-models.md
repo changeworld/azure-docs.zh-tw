@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 884e97815a048d3e37dba57d362d71e72ef5e103
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: efe2f062cc75fb05484fe810a3ae16c07e93339b
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120842"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651742"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教學課程：使用自動化機器學習預測計程車車資
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -173,7 +173,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>設定工作區
 
-從現有的工作區建立工作區物件。 [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) \(英文\) 是會接受您 Azure 訂用帳戶和資源資訊的類別。 它也會建立雲端資源來監視及追蹤您的模型執行。 `Workspace.from_config()` 會讀取 **config.json** 檔案，並將驗證詳細資料載入名為 `ws` 的物件中。 `ws` 用於本教學課程的其餘程式碼。
+從現有的工作區建立工作區物件。 [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) \(英文\) 是會接受您 Azure 訂用帳戶和資源資訊的類別。 它也會建立雲端資源來監視及追蹤您的模型執行。 `Workspace.from_config()` 會讀取 **config.json** 檔案，並將驗證詳細資料載入名為 `ws` 的物件中。 `ws` 用於本教學課程的其餘程式碼。
 
 ```python
 from azureml.core.workspace import Workspace
@@ -300,7 +300,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-the-results"></a>探索結果
 
-使用 [Jupyter 小工具](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)，探索自動定型的結果。 這項小工具可讓您查看所有個別執行反覆項目的圖表和資料表，以及定型精確度計量和中繼資料。 此外，您也可以使用下拉式清單選取器，來篩選主要計量以外的不同精確度計量。
+使用 [Jupyter 小工具](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)，探索自動定型的結果。 這項小工具可讓您查看所有個別執行反覆項目的圖表和資料表，以及定型精確度計量和中繼資料。 此外，您也可以使用下拉式清單選取器，來篩選主要計量以外的不同精確度計量。
 
 ```python
 from azureml.widgets import RunDetails

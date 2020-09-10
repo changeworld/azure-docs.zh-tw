@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 0fb46f4b9fd29c47e9cd38920665b2791f678847
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651194"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647234"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure Machine Learning 對大量資料執行批次推斷
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,7 +67,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-compute-target"></a>建立計算目標
 
-在 Azure Machine Learning 中，*計算* (或*計算目標*) 係指會在您機器學習管線中執行計算步驟的機器或叢集。 請執行下列程式碼來建立以 CPU 為基礎的 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) 目標。
+在 Azure Machine Learning 中，*計算* (或*計算目標*) 係指會在您機器學習管線中執行計算步驟的機器或叢集。 請執行下列程式碼來建立以 CPU 為基礎的 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) 目標。
 
 ```python
 from azureml.core.compute import AmlCompute, ComputeTarget
@@ -134,9 +134,9 @@ def_data_store = ws.get_default_datastore()
 
 ### <a name="create-the-data-inputs"></a>建立資料輸入
 
-批次推斷的輸入是您想要分割以進行平行處理的資料。 批次推斷管線會透過 [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)接受資料輸入。
+批次推斷的輸入是您想要分割以進行平行處理的資料。 批次推斷管線會透過 [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true)接受資料輸入。
 
-`Dataset` 可用來在 Azure Machine Learning 中探索、轉換和管理資料。 有兩種類型：[`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 和 [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py)。 在此範例中，您將使用 `FileDataset` 作為輸入。 `FileDataset` 讓您將檔案下載或掛接至您的計算。 您可以建立資料集，以建立資料來源位置的參考。 如果您對資料集套用任何子集轉換，這些轉換也會儲存在資料集中。 資料會保留在現有的位置，因此不會產生額外的儲存成本。
+`Dataset` 可用來在 Azure Machine Learning 中探索、轉換和管理資料。 有兩種類型：[`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) 和 [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true)。 在此範例中，您將使用 `FileDataset` 作為輸入。 `FileDataset` 讓您將檔案下載或掛接至您的計算。 您可以建立資料集，以建立資料來源位置的參考。 如果您對資料集套用任何子集轉換，這些轉換也會儲存在資料集中。 資料會保留在現有的位置，因此不會產生額外的儲存成本。
 
 如需 Azure Machine Learning 資料集的詳細資訊，請參閱[建立和存取資料集 (預覽)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)。
 
@@ -147,7 +147,7 @@ path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
 ```
 
-若要在執行批次推斷管線時使用動態資料輸入，您可以將輸入 `Dataset` 定義為 [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py)。 您可以在每次重新提交批次推斷管線執行時，指定輸入資料集。
+若要在執行批次推斷管線時使用動態資料輸入，您可以將輸入 `Dataset` 定義為 [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py&preserve-view=true)。 您可以在每次重新提交批次推斷管線執行時，指定輸入資料集。
 
 ```python
 from azureml.data.dataset_consumption_config import DatasetConsumptionConfig
@@ -159,7 +159,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 
 ### <a name="create-the-output"></a>建立輸出
 
-[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 物件可用來在管線步驟之間傳輸中繼資料。 在此範例中，您會將其用於推斷輸出。
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) 物件可用來在管線步驟之間傳輸中繼資料。 在此範例中，您會將其用於推斷輸出。
 
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
@@ -353,7 +353,7 @@ parallelrun_step = ParallelRunStep(
 ```
 ### <a name="create-and-run-the-pipeline"></a>建立並執行管線
 
-現在，請執行管線。 首先，使用工作區參考和您建立的管線步驟來建立 [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) 物件。 `steps` 參數是步驟的陣列。 在此案例中，批次推斷只有一個步驟。 若要建置有多個步驟的管線，請在此陣列中依序放置步驟。
+現在，請執行管線。 首先，使用工作區參考和您建立的管線步驟來建立 [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py&preserve-view=true) 物件。 `steps` 參數是步驟的陣列。 在此案例中，批次推斷只有一個步驟。 若要建置有多個步驟的管線，請在此陣列中依序放置步驟。
 
 接下來，使用 `Experiment.submit()` 函式來提交管線以供執行。
 
@@ -371,7 +371,7 @@ pipeline_run = experiment.submit(pipeline)
 批次推斷作業需要很長的時間才能完成。 此範例會使用 Jupyter 小工具來監視進度。 您也可以使用下列方式來監視作業的進度：
 
 * Azure Machine Learning Studio。 
-* 來自 [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) 物件的主控台輸出。
+* 來自 [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py&preserve-view=true) 物件的主控台輸出。
 
 ```python
 from azureml.widgets import RunDetails
