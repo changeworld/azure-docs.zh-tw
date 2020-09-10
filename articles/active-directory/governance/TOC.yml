@@ -31,6 +31,8 @@
           href: manage-user-access-with-access-reviews.md
         - name: 管理條件式存取以外的使用者
           href: conditional-access-exclusion.md
+    - name: 檢閱並移除外部組織的使用者
+      href: access-reviews-external-users.md
 - name: 操作指南
   expanded: true
   items:

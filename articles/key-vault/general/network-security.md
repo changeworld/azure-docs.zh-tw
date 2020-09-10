@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d416c6fdef85b83d91ca0e341659f87618d268e0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8617b0b71e58d22ccd2cf753e4ddc862932f68da
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504512"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536050"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>設定 Azure Key Vault 防火牆和虛擬網路
 
-本文提供設定 Azure Key Vault 防火牆和虛擬網路的逐步指示，以限制金鑰保存庫的存取權。 [Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md)) 可讓您將存取權限制為指定的虛擬網路和 IPv4 (網際網路通訊協定第 4 版) 位址範圍集合。
+本文提供設定 Azure Key Vault 防火牆和虛擬網路的逐步指示，以限制金鑰保存庫的存取權。 [Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md)可讓您將存取權限制為指定的虛擬網路和 IPv4 (網際網路通訊協定第 4 版) 位址範圍集合。
 
 > [!IMPORTANT]
 > 防火牆規則生效後，使用者只能在其要求源自允許的虛擬網路或 IPV4 位址範圍時，才可以執行 Key Vault [資料平面](secure-your-key-vault.md#data-plane-access-control)作業。 這也適用於從 Azure 入口網站存取 Key Vault。 雖然使用者可以從 Azure 入口網站瀏覽金鑰保存庫，但是如果其用戶端電腦不在允許的清單中，他們就無法列出金鑰、祕密或憑證。 這也會影響其他 Azure 服務的 [金鑰保存庫選擇器]。 使用者可以看到金鑰保存庫清單，但是如果防火牆規則阻止其用戶端電腦，則不會列出金鑰。
@@ -129,5 +129,5 @@ ms.locfileid: "87504512"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md))
-* [保護您的金鑰保存庫](secure-your-key-vault.md))
+* [Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md)
+* [保護您的金鑰保存庫](secure-your-key-vault.md)
