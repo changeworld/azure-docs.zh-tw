@@ -2,7 +2,7 @@
 title: Azure Resource Mover 文件
 summary: 在 Azure Resource Mover 中樞的 Azure 區域之間移動 Azure 資源。
 metadata:
-  title: Azure Resource Manager 文件
+  title: Azure Resource Mover 文件
   description: 尋找關於跨 Azure 區域移動資源的教學課程和資訊。
   ms.service: resource-move
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: raynew
   ms.date: 09/09/2020
   keywords: azure resource mover, azure regions, move across regions
-  ms.openlocfilehash: 4dec18e3000373953c93ee99a6b5500ffb515807
-  ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+  ms.openlocfilehash: 3dab9d313ab9564e860d78495d375bd0116ac9e0
+  ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
   ms.translationtype: HT
   ms.contentlocale: zh-TW
   ms.lasthandoff: 09/10/2020
-  ms.locfileid: "89652121"
+  ms.locfileid: "89669664"
 landingContent:
 - title: 關於 Azure Resource Mover
   linkLists:
