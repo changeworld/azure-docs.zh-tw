@@ -1,0 +1,48 @@
+### YamlMime:Landing
+title: Azure Resource Mover 文件
+summary: 在 Azure Resource Mover 中樞的 Azure 區域之間移動 Azure 資源。
+metadata:
+  title: Azure Resource Manager 文件
+  description: 尋找關於跨 Azure 區域移動資源的教學課程和資訊。
+  ms.service: resource-move
+  ms.topic: landing-page
+  ms.collection: collection
+  author: rayne-wiselman
+  ms.author: raynew
+  ms.date: 09/09/2020
+  keywords: azure resource mover, azure regions, move across regions
+  ms.openlocfilehash: 4dec18e3000373953c93ee99a6b5500ffb515807
+  ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 09/10/2020
+  ms.locfileid: "89652121"
+landingContent:
+- title: 關於 Azure Resource Mover
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Resource Mover
+      url: ./overview.md
+    - text: 選取一項工具來移動資源
+      url: ./select-move-tool.md
+    - text: 常見問題
+      url: ./common-questions.md
+- title: 開始使用
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 將 Azure VM 移動到另一個區域
+      url: ./tutorial-move-region-virtual-machines.md
+    - text: 將 Azure SQL 資料庫和彈性集區移動到另一個區域
+      url: ./tutorial-move-region-sql.md
+- title: 深入了解
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 了解移動流程
+      url: ./about-move-process.md
+    - text: 檢閱移動 Azure VM 的支援矩陣
+      url: ./support-matrix-move-region-azure-vm.md
+    - text: 檢閱移動 Azure SQL 資源的支援矩陣
+      url: ./support-matrix-move-region-sql.md

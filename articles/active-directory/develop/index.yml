@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: 115c2b7058941512bf75f2b45b17d4a0a806c1af
-  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+  ms.openlocfilehash: f6893522b66f20dd26905084e5b09d303cbfd5b3
+  ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/20/2020
-  ms.locfileid: "88690284"
+  ms.lasthandoff: 09/09/2020
+  ms.locfileid: "89612764"
 landingContent:
 - title: 關於 Microsoft 身分識別平台
   linkLists:
@@ -120,6 +120,14 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: 快速入門：註冊應用程式 (重寫)
+      url: quickstart-register-app.md
+    - text: 快速入門：公開 Web API (重寫)
+      url: quickstart-configure-app-expose-web-apis.md
+    - text: 快速入門：存取 Web API (重寫)
+      url: quickstart-configure-app-access-web-apis.md
+    - text: 將 Xamarin Android 代理應用程式遷移至 MSAL.NET
+      url: msal-net-migration-android-broker.md
     - text: 處理錯誤和例外狀況 - Android
       url: msal-android-handling-exceptions.md
     - text: 宣告中的目錄結構描述擴充屬性

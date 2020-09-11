@@ -9,8 +9,8 @@
     - name: 在 Azure AD 中新增使用者
       href: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
     - name: 將授權指派給使用者
-      href: ../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
-    - name: 授與無限制應用程式註冊的權限
+      href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 建立無限制的應用程式註冊
       href: roles-quickstart-app-registration-limits.md
     - name: 設定群組到期日
       href: groups-quickstart-expiration.md
@@ -175,6 +175,8 @@
               href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
             - name: 在 PowerShell 中指派自訂角色
               href: roles-assign-powershell.md
+            - name: 企業應用程式的自訂角色
+              href: custom-enterprise-apps.md
             - name: 自訂角色權限
               href: roles-custom-available-permissions.md
             - name: 委派應用程式管理權限

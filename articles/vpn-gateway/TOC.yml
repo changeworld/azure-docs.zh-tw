@@ -154,6 +154,8 @@
               href: openvpn-azure-ad-client.md
             - name: 關於用戶端 VPN 設定檔的下載檔案
               href: about-vpn-profile-download.md
+            - name: Intune - 部署 VPN 用戶端設定檔
+              href: vpn-profile-intune.md
         - name: OpenVPN
           items:
             - name: 針對點對站連線設定 OpenVPN

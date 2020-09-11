@@ -52,8 +52,20 @@
           href: how-application-gateway-works.md
         - name: 應用程式閘道元件
           href: application-gateway-components.md
-        - name: 組態概觀
-          href: configuration-overview.md
+        - name: 設定
+          items:
+            - name: 總覽
+              href: configuration-overview.md
+            - name: 基礎結構
+              href: configuration-infrastructure.md
+            - name: 前端 IP 位址
+              href: configuration-front-end-ip.md
+            - name: 接聽程式
+              href: configuration-listeners.md
+            - name: 要求路由規則
+              href: configuration-request-routing-rules.md
+            - name: HTTP 設定
+              href: configuration-http-settings.md
     - name: 高流量支援
       href: high-traffic-support.md
     - name: 自動調整 v2 SKU

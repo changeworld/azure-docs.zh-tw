@@ -17,6 +17,8 @@
           href: dns-getstarted-powershell.md
         - name: 建立公用區域 - CLI
           href: dns-getstarted-cli.md
+        - name: 建立公用區域 - ARM 範本
+          href: dns-get-started-template.md
     - name: 私人 DNS
       items:
         - name: 建立私人區域 - 入口網站
