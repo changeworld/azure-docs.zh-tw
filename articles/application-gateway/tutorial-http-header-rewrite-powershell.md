@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: f8aec788e5370bd0c6f0e2f1b6ff032ca68cac87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e18288dbc2a09c7e9dd5b0c0e96dfd04ec192596
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806428"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595898"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>建立應用程式閘道及重寫 HTTP 標題
 
@@ -20,15 +20,13 @@ ms.locfileid: "84806428"
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
->
-> * 建立自動調整虛擬網路
-> * 建立保留公用 IP
-> * 設定應用程式閘道基礎結構
-> * 指定 HTTP 標頭重寫規則設定
-> * 指定自動調整
-> * 建立應用程式閘道
-> * 測試應用程式閘道
+* 建立自動調整虛擬網路
+* 建立保留公用 IP
+* 設定應用程式閘道基礎結構
+* 指定 HTTP 標頭重寫規則設定
+* 指定自動調整
+* 建立應用程式閘道
+* 測試應用程式閘道
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -173,6 +171,6 @@ Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
 
 `Remove-AzResourceGroup -Name $rg`
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [建立包含 URL 路徑型路由規則的應用程式閘道](./tutorial-url-route-powershell.md)

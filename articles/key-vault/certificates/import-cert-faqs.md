@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: b7a2c78238de58ee8851462aa7193121b35f72a9
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3b87d68fb9b5fa5f5f8dec43c39ea8b7dbf08b93
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588816"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651858"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>匯入 Azure Key Vault 憑證常見問題
 
@@ -54,7 +54,7 @@ ms.locfileid: "88588816"
 
 ### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>如何解決「錯誤類型：建立憑證時的衝突」？
     
-每個憑證名稱都必須是唯一的。 與另一個憑證同名的憑證可能會處於虛刪除狀態。 此外，根據 Azure Key Vault 中的 [憑證組成](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) ，如果金鑰保存庫中有另一個金鑰或秘密與您嘗試為憑證指定的名稱相同，則憑證建立將會失敗，而且您必須移除該金鑰或密碼，或為您的憑證使用不同的名稱。 
+每個憑證名稱都必須是唯一的。 具有相同名稱的憑證可能會處於已虛刪除的狀態。 此外，根據憑證的 [組成](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)，建立新的憑證時，會建立具有相同名稱的可定址秘密，因此如果金鑰保存庫中有另一個金鑰或秘密與您嘗試為憑證指定的名稱相同，則憑證建立將會失敗，而且您必須移除該金鑰或密碼，或為您的憑證使用不同的名稱。 
 
 如需詳細資訊，請參閱 [取得已刪除的憑證](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate)作業。
 
@@ -75,12 +75,12 @@ ms.locfileid: "88588816"
 是的，您可以從任何 CA 匯入憑證，但您的金鑰保存庫將無法自動更新憑證。 您可以設定提醒以收到憑證到期的通知。
 
 ### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-autorenewal-feature-still-work"></a>如果我從夥伴 CA 匯入憑證，自動更新功能是否仍然有效？
-是。 上傳憑證之後，請務必在憑證的發佈原則中指定 autorotation。 在下一個週期或憑證版本發行之前，您的設定仍會保持有效。
+可以。 上傳憑證之後，請務必在憑證的發佈原則中指定 autorotation。 在下一個週期或憑證版本發行之前，您的設定仍會保持有效。
 
 ### <a name="why-cant-i-see-the-app-service-certificate-that-i-imported-to-key-vault"></a>為什麼我看不到匯入 Key Vault 的 App Service 憑證？ 
 如果您已成功匯入憑證，您應該可以前往 [ **秘密** ] 窗格來確認憑證。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [Azure Key Vault 憑證](/azure/key-vault/certificates/about-certificates)

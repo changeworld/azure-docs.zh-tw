@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 40761b8b187d864c7b93b8aa4ee49233683fcad7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4baafe9f3356e3134626c819c47939b96ab48a79
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502746"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595831"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>使用 Azure CLI 建立裝載多個網站的應用程式閘道
 
@@ -22,13 +22,12 @@ ms.locfileid: "87502746"
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
-> * 設定網路
-> * 建立應用程式閘道
-> * 建立後端接聽程式
-> * 建立路由規則
-> * 建立包含後端集區的虛擬機器擴展集
-> * 在網域中建立 CNAME 記錄
+* 設定網路
+* 建立應用程式閘道
+* 建立後端接聽程式
+* 建立路由規則
+* 建立包含後端集區的虛擬機器擴展集
+* 在網域中建立 CNAME 記錄
 
 :::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="多網站應用程式閘道":::
 
@@ -38,7 +37,7 @@ ms.locfileid: "87502746"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 版2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0.4 版版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -106,7 +105,7 @@ az network application-gateway create \
 
 ### <a name="add-the-backend-pools"></a>新增後端集區
 
-使用[az 網路應用程式-閘道位址池建立](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create)，新增所需的後端集區以包含後端伺服器
+使用[az network application-gateway address-pool create](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create)來新增包含後端伺服器所需的後端集區
 ```azurecli-interactive
 az network application-gateway address-pool create \
   --gateway-name myAppGateway \
@@ -121,11 +120,11 @@ az network application-gateway address-pool create \
 
 ### <a name="add-listeners"></a>新增接聽程式
 
-使用[az network application-gateway HTTP-接聽程式建立](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create)來新增路由流量所需的接聽程式。
+使用 [az network application-gateway HTTP-接聽程式 create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create)來新增路由流量所需的接聽程式。
 
 >[!NOTE]
-> 使用應用程式閘道或 WAF v2 SKU 時，您也可以為每個接聽程式設定最多5個主機名稱，而且可以在主機名稱中使用萬用字元。 如需詳細資訊，請參閱接聽程式[中的萬用字元主機名稱](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
->若要在使用 Azure CLI 的接聽程式中使用多個主機名稱和萬用字元，您必須使用， `--host-names` 而不是 `--host-name` 。 使用主機名稱時，您最多可以提及5個主機名稱做為逗號分隔值。 例如， `--host-names "*.contoso.com,*.fabrikam.com"`
+> 使用應用程式閘道或 WAF v2 SKU，您也可以為每個接聽程式設定最多5個主機名稱，而且可以在主機名稱中使用萬用字元。 如需詳細資訊，請參閱接聽程式 [中的萬用字元主機名稱](multiple-site-overview.md#wildcard-host-names-in-listener-preview) 。
+>若要使用 Azure CLI 在接聽程式中使用多個主機名稱和萬用字元，您必須使用 `--host-names` 而不是 `--host-name` 。 使用主機名稱，您最多可以將5個主機名稱視為逗點分隔值。 例如， `--host-names "*.contoso.com,*.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -147,9 +146,9 @@ az network application-gateway http-listener create \
 
 ### <a name="add-routing-rules"></a>新增路由規則
 
-規則會依照其列出的順序進行處理。 流量會使用符合的第一個規則來導向，而不論其是否明確。 例如，如果您在相同的連接埠上同時使用基本接聽程式的規則和多站台接聽程式的規則，則必須將多站台接聽程式的規則列於基本接聽程式的規則之前，多站台規則才能如預期般運作。 
+規則會依列出的順序進行處理。 流量會使用第一個符合的規則來導向（不論是否明確）。 例如，如果您在相同的連接埠上同時使用基本接聽程式的規則和多站台接聽程式的規則，則必須將多站台接聽程式的規則列於基本接聽程式的規則之前，多站台規則才能如預期般運作。 
 
-在此範例中，您會建立兩個新的規則，並刪除部署應用程式閘道時所建立的預設規則。 您可以使用 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) 來新增規則。
+在此範例中，您會建立兩個新規則，並刪除部署應用程式閘道時所建立的預設規則。 您可以使用 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) 來新增規則。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -236,7 +235,7 @@ az network public-ip show \
   --output tsv
 ```
 
-不建議使用 A 記錄，因為當應用程式閘道重新開機時，VIP 可能會變更。
+不建議使用 A 記錄，因為 VIP 可能會在應用程式閘道重新開機時變更。
 
 ## <a name="test-the-application-gateway"></a>測試應用程式閘道
 

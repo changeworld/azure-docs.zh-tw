@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 90d3de9dff2d3af99c720868d3342d39f8fb47e8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6bc5761f4e629a90dacf06cd7503ca86a5448fe4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502747"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595845"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>使用 Azure CLI 以應用程式閘道管理網路流量
 
@@ -21,10 +21,9 @@ ms.locfileid: "87502747"
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
-> * 設定網路
-> * 建立應用程式閘道
-> * 建立包含預設後端集區的虛擬機器擴展集
+* 設定網路
+* 建立應用程式閘道
+* 建立包含預設後端集區的虛擬機器擴展集
 
 如果您想要的話，可以使用 [Azure PowerShell](tutorial-manage-web-traffic-powershell.md) 完成本程序。
 
@@ -72,7 +71,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>建立應用程式閘道
 
-使用 [az network application-gateway create](/cli/azure/network/application-gateway)，建立名為 myAppGateway** 的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet** 和 myPublicIPAddress**。 
+使用 [az network application-gateway create](/cli/azure/network/application-gateway) 來建立名為 *myAppGateway*的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet** 和 myPublicIPAddress**。 
 
 ```azurecli-interactive
 az network application-gateway create \

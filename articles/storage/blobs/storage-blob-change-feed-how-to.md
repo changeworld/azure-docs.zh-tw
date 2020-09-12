@@ -1,29 +1,26 @@
 ---
-title: Azure Blob 儲存體 (Preview 中處理變更摘要) |Microsoft Docs
+title: Azure Blob 儲存體中的處理變更摘要 |Microsoft Docs
 description: 瞭解如何在 .NET 用戶端應用程式中處理變更摘要記錄
 author: normesta
 ms.author: normesta
-ms.date: 06/18/2020
+ms.date: 09/08/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cc70204a56c3a853c6c6c7f0e1573c71854c0f19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f0e89fdfba852fc056cf48efd1b92daabb272cf0
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018955"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568246"
 ---
-# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Azure Blob 儲存體 (Preview 中處理變更摘要) 
+# <a name="process-change-feed-in-azure-blob-storage"></a>Azure Blob 儲存體中的處理變更摘要
 
 變更摘要提供 blob 和儲存體帳戶中 blob 中繼資料所發生之所有變更的交易記錄。 本文說明如何使用 blob 變更摘要處理器程式庫來讀取變更摘要記錄。
 
-若要深入瞭解變更摘要，請參閱 [Azure Blob 儲存體 (Preview) 的變更 ](storage-blob-change-feed.md)摘要。
-
-> [!NOTE]
-> 變更摘要處於公開預覽狀態，可在有限區域中使用。 若要深入瞭解這項功能以及已知問題和限制，請參閱 [Azure Blob 儲存體中的變更摘要支援](storage-blob-change-feed.md)。 變更摘要處理器程式庫可能會在現在與此程式庫正式推出時進行變更。
+若要深入瞭解變更摘要，請參閱 [Azure Blob 儲存體中的變更](storage-blob-change-feed.md)摘要。
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>取得 blob 變更摘要處理器程式庫
 
@@ -217,6 +214,6 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
 
 您提供的開始時間會四捨五入到最接近的小時，而結束時間則會四捨五入到最接近的小時。 使用者可能會看到在開始時間之前和結束時間之後發生的事件。 在開始與結束時間之間發生的某些事件也可能不會出現。 這是因為事件可能會在開始時間之前的一小時內，或在結束時間之後的一小時內記錄。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-深入瞭解變更摘要記錄。 請參閱 [Azure Blob 儲存體 (預覽中的變更摘要) ](storage-blob-change-feed.md)
+深入瞭解變更摘要記錄。 請參閱[Azure Blob 儲存體中的變更](storage-blob-change-feed.md)摘要

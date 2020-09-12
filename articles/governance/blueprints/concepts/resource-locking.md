@@ -3,12 +3,12 @@ title: 了解資源鎖定
 description: 瞭解 Azure 藍圖中的鎖定選項，以在指派藍圖時保護資源。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 9d400abce5d428c01b43cdda38a5c6f0df2d4db8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051497"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651940"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 藍圖中的資源鎖定
 
@@ -103,7 +103,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 如果指派選取了 [唯讀]**** 或 [不要刪除]**** 選項，則在藍圖指派期間，會將 RBAC [拒絕指派](../../../role-based-access-control/deny-assignments.md)的拒絕動作套用到成品資源。 拒絕動作會由藍圖指派的受控身分識別來新增，並且只能透過相同的受控身分識別從成品資源中移除。 此安全性措施會強制執行鎖定機制，並防止移除 Azure 藍圖外部的藍圖鎖定。
 
-:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="資源群組上的藍圖拒絕指派" border="false":::
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="資源群組的 [存取控制 (我的 M) ] 頁面和 [拒絕指派] 索引標籤的螢幕擷取畫面。" border="false":::
 
 每個模式的 [拒絕指派屬性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) 如下所示：
 
@@ -179,7 +179,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 雖然 **excludedPrincipals** 必須是明確的，但 **excludedActions** 專案可以使用 `*` 來與 RBAC 作業進行萬用字元比對。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 遵循 [ [保護新資源](../tutorials/protect-new-resources.md) ] 教學課程。
 - 了解[藍圖生命週期](./lifecycle.md)。

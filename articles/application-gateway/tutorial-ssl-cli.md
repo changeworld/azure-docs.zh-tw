@@ -1,6 +1,6 @@
 ---
 title: 使用 CLI Azure 應用程式閘道的 TLS 終止
-description: 瞭解如何建立應用程式閘道，並使用 Azure CLI 新增 TLS 終止的憑證。
+description: 瞭解如何使用 Azure CLI 來建立應用程式閘道，以及新增 TLS 終止的憑證。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,24 +8,23 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cf6cfdc00d38b72f292f2b3ed41a633fb9cf989d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d2a49c1ba90c35575116ed6cf1482683c45e0b5e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502727"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595813"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>使用 Azure CLI 建立具有 TLS 終止的應用程式閘道
 
-您可以使用 Azure CLI 來建立具有[TLS 終止](ssl-overview.md)憑證的[應用程式閘道](overview.md)。 對於後端伺服器，您可以使用[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 在此範例中，該擴展集包含兩個虛擬機器執行個體，這些執行個體會新增至應用程式閘道的預設後端集區。
+您可以使用 Azure CLI 來建立具有[TLS 終止](ssl-overview.md)憑證的[應用程式閘道](overview.md)。 針對後端伺服器，您可以使用 [虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) 。 在此範例中，該擴展集包含兩個虛擬機器執行個體，這些執行個體會新增至應用程式閘道的預設後端集區。
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
-> * 建立自我簽署憑證
-> * 設定網路
-> * 建立包含憑證的應用程式閘道
-> * 建立包含預設後端集區的虛擬機器擴展集
+* 建立自我簽署憑證
+* 設定網路
+* 建立包含憑證的應用程式閘道
+* 建立包含預設後端集區的虛擬機器擴展集
 
 如果您想要的話，可以使用 [Azure PowerShell](tutorial-ssl-powershell.md) 完成本程序。
 

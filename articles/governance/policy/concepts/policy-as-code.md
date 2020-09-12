@@ -3,12 +3,12 @@ title: 設計原則即程式碼工作流程
 description: 了解如何設計將您的 Azure 原則定義部署為程式碼並自動驗證資源的工作流程。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047321"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651886"
 ---
 # <a name="design-policy-as-code-workflows"></a>設計原則即程式碼工作流程
 
@@ -43,7 +43,9 @@ ms.locfileid: "89047321"
 
 針對原則即程式碼而建議的一般工作流程如下圖所示：
 
-:::image type="content" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="原則即程式碼工作流程概觀" border="false":::
+:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="顯示原則即程式碼工作流程方塊的圖表，從建立到測試要部署。" border="false":::
+   顯示原則即程式碼工作流程方塊的圖表。 建立涵蓋原則和計畫定義的建立。 測試涵蓋已停用強制模式的指派。 相容性狀態的閘道檢查會接著授與指派 M S 許可權，並修復資源。  部署涵蓋更新已啟用強制模式的指派。
+:::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>建立及更新原則定義
 
