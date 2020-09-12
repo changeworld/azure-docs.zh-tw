@@ -1,5 +1,5 @@
 ---
-title: 在 studio 中建立計算資源
+title: '建立定型 & 部署 (studio 的計算) '
 titleSuffix: Azure Machine Learning
 description: 使用 studio 來建立訓練和部署計算資源 (針對機器學習) 的計算目標
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 2e32eb9a2a13b8e247388e8da80dd5f5967fdc6d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 37253ccfb249eb8b510af5e314c3167ddd979a87
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147408"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661969"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>在 Azure Machine Learning studio 中建立模型定型和部署的計算目標
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -66,7 +66,7 @@ ms.locfileid: "89147408"
 
 1. 填寫您計算類型的表單：
 
-  * [計算實例](#compute-instance)
+  * [計算執行個體](#compute-instance)
   * [計算叢集](#amlcompute)
   * [推斷叢集](#inference-clusters)
   * [附加的計算](#attached-compute)
@@ -120,6 +120,9 @@ ms.locfileid: "89147408"
 
 ### <a name="inference-clusters"></a>推斷叢集
 
+> [!IMPORTANT]
+> 搭配使用 Azure Kubernetes Service 與 Azure Machine Learning 有多個設定選項。 某些案例（例如網路）需要額外的設定和設定。 如需搭配使用 AKS 與 Azure ML 的詳細資訊，請參閱 [建立和附加 Azure Kubernetes Service](how-to-create-attach-kubernetes.md)叢集。
+
 針對大規模推斷建立或附加 Azure Kubernetes Service (AKS) 叢集。 使用 [上述步驟](#portal-create) 來建立 AKS 叢集。  然後填寫表單，如下所示：
 
 
@@ -127,7 +130,7 @@ ms.locfileid: "89147408"
 |---------|---------|
 |計算名稱     |  <li>需要名稱。 名稱的長度必須介於2到16個字元之間。 </li><li>有效字元是大寫和小寫字母、數位及  **-** 字元。</li><li>名稱必須以字母開頭</li><li>名稱在 Azure 區域內的所有現有計算中都必須是唯一的。 如果您選擇的名稱不是唯一的，您會看到警示</li><li>如果 **-**  使用字元，則在名稱後面必須接著至少一個字母</li>     |
 |Kubernetes Service | 選取 [ **建立新** 的]，填寫表單的其餘部分。  或選取 [ **使用現有** 的]，然後從您的訂用帳戶中選取現有的 AKS 叢集。
-|區域 |  選取將在其中建立叢集的區域 |
+|Region |  選取將在其中建立叢集的區域 |
 |虛擬機器大小     |  受支援的虛擬機器大小可能會在您的區域中受到限制。 檢查 [可用性清單](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |叢集用途  | 選取 **生產** 或 **開發/測試** |
 |節點數目 | 節點數目乘以虛擬機器的核心數目 (個 vcpu) 必須大於或等於12。 |

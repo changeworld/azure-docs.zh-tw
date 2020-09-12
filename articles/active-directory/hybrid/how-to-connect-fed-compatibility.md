@@ -16,18 +16,18 @@ ms.date: 08/23/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3ca659535c225ca6736fe7bba8aa5b0120c684c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 895e7347feea3190ba9bdc273200d2985dfaa0d1
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359818"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661824"
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Azure AD 同盟相容性清單
-Azure Active Directory 在不需要任何第三方解決方案的情況下，針對 Office 365 和混合式與僅限雲端實作的其他 Microsoft 線上服務，提供單一登入和增強的應用程式存取安全性。 Office 365，就像大部分 Microsoft 線上服務一樣，已經與 Azure Active Directory 整合以提供目錄服務、驗證及授權。 Azure Active Directory 也為數千個 SaaS 應用程式和內部部署 Web 應用程式提供單一登入。 請參閱 Azure Active Directory [應用程式庫](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)以了解支援的 SaaS 應用程式有哪些。 
+Azure Active Directory 為 Microsoft 365 和其他 Microsoft 線上服務提供單一登入和增強的應用程式存取安全性，以進行混合式和僅限雲端的部署，而不需要任何協力廠商解決方案。 Microsoft 365，就像大部分的 Microsoft 線上服務一樣，都與目錄服務、驗證和授權的 Azure Active Directory 整合。 Azure Active Directory 也為數千個 SaaS 應用程式和內部部署 Web 應用程式提供單一登入。 請參閱 Azure Active Directory [應用程式庫](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)以了解支援的 SaaS 應用程式有哪些。 
 
 ## <a name="idp-validation"></a>IDP 驗證
-如果貴組織使用第三方同盟解決方案，您可以使用 Microsoft Online Services (例如，Office 365) 為內部部署 Active Directory 使用者設定單一登入，但前提是第三方同盟解決方案可與 Azure Active Directory 相容。  如有關於相容性的問題，請連絡識別提供者。  如果您想要查看先前已通過 Microsoft 所進行的 Azure AD 相容性測試的識別提供者清單，請按一下[這裡](https://www.microsoft.com/download/details.aspx?id=56843)。 
+如果您的組織使用協力廠商同盟解決方案，則可以使用 Microsoft Online services （例如 Microsoft 365）來設定內部部署 Active Directory 使用者的單一登入，但前提是協力廠商同盟解決方案與 Azure Active Directory 相容。  如有關於相容性的問題，請連絡識別提供者。  如果您想要查看先前已測試過的身分識別提供者清單，以瞭解 Microsoft 是否與 Azure AD 的相容性，請參閱 [Azure AD 身分識別提供者相容性](https://www.microsoft.com/download/details.aspx?id=56843)檔。 
 
 >[!NOTE]
 >Microsoft 已不再針對獨立身分識別提供者提供驗證測試，以確認與 Azure Active Directory 之間的相容性。 如果您想要測試您的產品是否具有互通性，請參閱這些[指導方針](https://www.microsoft.com/download/details.aspx?id=56843)。 

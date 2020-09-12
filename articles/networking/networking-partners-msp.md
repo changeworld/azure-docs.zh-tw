@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 237ca65d5feadd019b734dd751d943c06c9a2213
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: fc3c4055feedeb7c1c41a53dc26ac7c29a2cb4fe
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586999"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007497"
 ---
 # <a name="about-azure-networking-msp-partners"></a>關於 Azure 網路 MSP 合作夥伴
 
@@ -46,6 +46,7 @@ Azure 網路 MSP 是一組特製化的受控服務提供者，可解決雲端和
 |[Liquid Telecom](https://liquidcloud.africa/azure-networking)|[雲端就緒 - 2 小時評量](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/liquidtelecommunicationsoperationslimited.liquid_cloud_readiness_assessment)|||||
 |[Macquarie Telecom](https://macquariecloudservices.com/azure-managed-services/)|[Macquarie 雲端的 Azure 受控服務](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.managed_services?tab=Overview)||[透過 Macquarie Cloud 安裝的 SD-WAN 虛擬邊緣](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.nanaged_network_services?tab=Overview)|||
 |[Megaport](https://www.megaport.com/services/microsoft-expressroute/)||[mcr](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/megaport1582290752989.megaport_mcr?tab=Overview)||||
+|[Nokia](https://www.nokia.com/networks/services/managed-services/)|||[NBConsult Nokia NUAGE SDWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/nbconsult1588859334197.nbconsult-nokia-nuage?tab=Overview); [NUAGE SD-WAN 2.0 Azure 虛擬 WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/nokiaofamericacorporation1591716055441.nuage_sd-wan_2-0_azure_virtual_wan?tab=Overview)|[Nokia 4G & 5G 私用無線 (NDAC) ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/nokiaofamericacorporation1591716055441.ndac_5g-ready_private_wireless?tab=Overview)|
 |[Oncore 雲端服務]( https://www.oncore.cloud/services/ue-for-expressroute/)|[企業雲端基礎：研討會 (約 10 天)](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/oncore_cloud_services-4944214.oncore_cloud_onboard_201810)|[適用於 Azure ExpressRoute 的 UniversalEdge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oncore_cloud_services-4944214.universaledge_for_expressroute?tab=Overview)||||
 |[Orixcom]( https://www.orixcom.com/cloud-solutions/)||[Orixcom 受控 ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_managed_expressroute?tab=Overview)|[Orixcom SD-WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_sd_wan?tab=Overview)|||
 |[SoftBank]( https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_az/)|[Azure 網路諮詢服務：1 週評量](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_nw_msp_service_azure)；[Azure 評量服務：1 週](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_msp_service_azure_01?tab=Overview&pub_source=email&pub_status=success)|||||
@@ -55,7 +56,7 @@ Azure 網路 MSP 是一組特製化的受控服務提供者，可解決雲端和
 |[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure 健康情況檢查：5 天評量](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute：5 天實作](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis 受控 ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[由 Fortinet 提供技術支援的 Vandis 受控 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview)；[由 Palo Alto Networks 提供技術支援的 Vandis 受控 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-下列 Azure 網路 MSP 合作夥伴提供的受控 ExpressRoute、虛擬 WAN、安全性服務和私人 Edge 區域服務 Azure Marketplace 供應專案位於我們的藍圖： [Amdocs](https://www.amdocs.com/);  [德國 Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [IX 觸及](https://www.ixreach.com/services/sdn-cloud-connect/);  [InterCloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/); [橙色商務服務](https://www.orange-business.com/en/solutions/cloud-computing); [Sejong 電信](https://www.sejongtelecom.net/en/pages/service/cloud_ms);
+下列 Azure 網路 MSP 合作夥伴提供的受控 ExpressRoute、虛擬 WAN、安全性服務和私人 Edge 區域服務 Azure Marketplace 供應專案位於我們的藍圖： [Amdocs](https://www.amdocs.com/);  [德國 Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [IX 觸及](https://www.ixreach.com/services/sdn-cloud-connect/);  [InterCloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/); [OpenSystem](https://open-systems.com/solutions/cloud-enablement/); [橙色商務服務](https://www.orange-business.com/en/partners/orange-business-services-become-microsoft-azure-networking-managed-services-provider); [Sejong 電信](https://www.sejongtelecom.net/en/pages/service/cloud_ms)
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute 合作夥伴
 

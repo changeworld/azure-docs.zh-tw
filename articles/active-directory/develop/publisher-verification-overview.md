@@ -1,6 +1,6 @@
 ---
 title: 發行者驗證概觀 - Microsoft 身分識別平台 | Azure
-description: 提供 Microsoft 身分識別平台的發行者驗證計畫 (預覽) 概觀。 列出優點、計畫需求和常見問題。 當應用程式標示為「發行者已驗證」時，表示發行者已使用完成驗證程序的 Microsoft 合作夥伴網路 (MPN) 帳戶來通過身分驗證，並將此 MPN 帳戶與應用程式註冊相關聯。
+description: 提供 Microsoft 身分識別平臺的發行者驗證程式總覽。 列出優點、計畫需求和常見問題。 當應用程式標示為「發行者已驗證」時，表示發行者已使用完成驗證程序的 Microsoft 合作夥伴網路 (MPN) 帳戶來通過身分驗證，並將此 MPN 帳戶與應用程式註冊相關聯。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 286f813c825bcc05ce8e9fa43df5dc0299625277
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 07e8f1d0cf173a8ab41f8feb105743a7559cdd2f
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068468"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005786"
 ---
-# <a name="publisher-verification-preview"></a>發行者驗證 (預覽)
+# <a name="publisher-verification"></a>發行者驗證
 
-發行者驗證 (預覽) 可協助系統管理員和終端使用者了解與 Microsoft 身分識別平台整合的應用程式開發人員是否真實。 當應用程式標示為「發行者已驗證」時，表示發行者已使用完成[驗證](/partner-center/verification-responses)程序的 [Microsoft 合作夥伴網路 (MPN)](https://partner.microsoft.com/membership) 帳戶來通過身分驗證，並將此 MPN 帳戶與應用程式註冊相關聯。 
+發行者驗證可協助系統管理員和終端使用者瞭解應用程式開發人員與 Microsoft 身分識別平臺整合的真實性。 當應用程式標示為「發行者已驗證」時，表示發行者已使用完成[驗證](/partner-center/verification-responses)程序的 [Microsoft 合作夥伴網路 (MPN)](https://partner.microsoft.com/membership) 帳戶來通過身分驗證，並將此 MPN 帳戶與應用程式註冊相關聯。 
 
 Azure AD 同意提示和其他畫面上會出現一個藍色的「已驗證」徽章：![同意提示](./media/publisher-verification-overview/consent-prompt.png)
 

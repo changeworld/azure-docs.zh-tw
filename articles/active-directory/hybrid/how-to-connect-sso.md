@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf7db5f27ed6f612d0896bff0899feda3311883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357744"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658358"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 無縫單一登入
 
@@ -56,10 +56,10 @@ ms.locfileid: "85357744"
 - 如果應用程式 (例如 `https://myapps.microsoft.com/contoso.com`) 在其 Azure AD 登入要求中轉送 `domain_hint` (OpenID Connect) 或 `whr` (SAML) 參數來識別您的租用戶，或是轉送 `login_hint` 參數來識別使用者，則會自動將使用者登入，而不需要輸入使用者名稱或密碼。
 - 如果應用程式 (例如，`https://contoso.sharepoint.com`) 將登入要求傳送至 Azure AD 之設定為租用戶的端點 (也就是 `https://login.microsoftonline.com/contoso.com/<..>` 或 `https://login.microsoftonline.com/<tenant_ID>/<..>`) 而不是 Azure AD 的一般端點 (也就是 `https://login.microsoftonline.com/common/<...>`)，使用者也可獲得無訊息登入體驗。
 - 支援登出。 這可讓使用者選擇使用另一個 Azure AD 帳戶來進行登入，而不自動使用「無縫 SSO」來自動登入。
-- 使用非互動式流程，來支援 Office 365 Win32 用戶端 (Outlook、Word、Excel 和其他產品) 16.0.8730.xxxx 版和更新版本。 針對 OneDrive，您必須啟用 [OneDrive 無訊息設定功能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) \(英文\) 以獲得無訊息登入體驗。
+- 使用非互動式流程可支援 Microsoft 365 的 Win32 用戶端 (Outlook、Word、Excel 和使用版本16.0.8730 的其他) 。 針對 OneDrive，您必須啟用 [OneDrive 無訊息設定功能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) \(英文\) 以獲得無訊息登入體驗。
 - 您可以透過 Azure AD Connect 啟用它。
 - 這是免費功能，您不需要任何付費的 Azure AD 版本即可使用。
-- 它是在能夠使用 Kerberos 驗證的平台和瀏覽器上，支援[新式驗證](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016)的網頁瀏覽器型用戶端和 Office 用戶端來支援：
+- 它是在能夠使用 Kerberos 驗證的平台和瀏覽器上，支援[新式驗證](/office365/enterprise/modern-auth-for-office-2013-and-2016)的網頁瀏覽器型用戶端和 Office 用戶端來支援：
 
 | 作業系統\瀏覽器 |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
@@ -88,4 +88,3 @@ ms.locfileid: "85357744"
 - [**常見問題集**](how-to-connect-sso-faq.md) - 常見問題集的答案。
 - [**疑難排解**](tshoot-connect-sso.md) - 了解如何解決此功能的常見問題。
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用於提出新的功能要求。
-

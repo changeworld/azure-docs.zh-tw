@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/21/2020
-ms.openlocfilehash: 6eb4aee1cfe62b09210f62d016028485594a9474
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 09/02/2020
+ms.openlocfilehash: 2a0c95e45dc529d779d6b06e1e5bdb32ba80b241
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000782"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007531"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure 監視器代理程式的總覽
 
@@ -35,7 +35,7 @@ ms.locfileid: "89000782"
 | | Azure 監視器代理程式 (預覽)  | 診斷<br>延伸模組 (WAD)  | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
 |:---|:---|:---|:---|:---|
 | **支援的環境** | Azure | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | 
-| **代理程式需求**  | 無 | 無 | 無 | 需要 Log Analytics 代理程式 |
+| **代理程式需求**  | None | None | None | 需要 Log Analytics 代理程式 |
 | **收集的資料** | 事件記錄<br>效能 | 事件記錄<br>ETW 事件<br>效能<br>檔案型記錄<br>IIS 記錄<br>.NET 應用程式記錄檔<br>損毀傾印<br>代理程式診斷記錄 | 事件記錄<br>效能<br>檔案型記錄<br>IIS 記錄<br>見解和解決方案<br>其他服務 | 程序相依性<br>網路連接計量 |
 | **傳送至的資料** | Azure 監視器記錄<br>Azure 監視器計量 | Azure 儲存體<br>Azure 監視器計量<br>事件中樞 | Azure 監視器記錄 | Azure 監視器記錄<br>透過 Log Analytics 代理程式 ()  |
 | **服務和**<br>**特徵**<br>**支援** | Log Analytics<br>計量瀏覽器 | 計量瀏覽器 | 適用於 VM 的 Azure 監視器<br>Log Analytics<br>Azure 自動化<br>Azure 資訊安全中心<br>Azure Sentinel | 適用於 VM 的 Azure 監視器<br>服務對應 |
@@ -45,7 +45,7 @@ ms.locfileid: "89000782"
 | | Azure 監視器代理程式 (預覽)  | 診斷<br>延伸模組 (LAD)  | Telegraf<br>代理程式 | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
 |:---|:---|:---|:---|:---|:---|
 | **支援的環境** | Azure | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 |
-| **代理程式需求**  | 無 | 無 | 無 | 無 | 需要 Log Analytics 代理程式 |
+| **代理程式需求**  | None | None | None | None | 需要 Log Analytics 代理程式 |
 | **收集的資料** | syslog<br>效能 | syslog<br>效能 | 效能 | syslog<br>效能| 程序相依性<br>網路連接計量 |
 | **傳送至的資料** | Azure 監視器記錄<br>Azure 監視器計量 | Azure 儲存體<br>事件中樞 | Azure 監視器計量 | Azure 監視器記錄 | Azure 監視器記錄<br>透過 Log Analytics 代理程式 ()  |
 | **服務和**<br>**特徵**<br>**支援** | Log Analytics<br>計量瀏覽器 | | 計量瀏覽器 | 適用於 VM 的 Azure 監視器<br>Log Analytics<br>Azure 自動化<br>Azure 資訊安全中心<br>Azure Sentinel | 適用於 VM 的 Azure 監視器<br>服務對應 |
@@ -148,7 +148,7 @@ Azure 診斷擴充功能的限制包括：
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2                                   |   | X | X | X |
-| Windows 10 Enterprise<br> (包括多會話) 和 Pro  |   | X | X | X |
+| Windows 10 Enterprise<br> (包括多會話) 和 Pro  | X | X | X | X |
 | Windows 8 企業版和專業版                             |   | X | X |   |
 | Windows 7 SP1                                            |   | X | X |   |
 
@@ -159,6 +159,7 @@ Azure 診斷擴充功能的限制包括：
 |:---|:---:|:---:|:---:|:---:
 | Amazon Linux 2017.09                                     |   | X |   |   |
 | CentOS Linux 7                                           | X | X |   | X |
+| CentOS Linux 7。8                                         | X | X | X | X |
 | CentOS Linux 7。6                                         | X | X | X | X |
 | CentOS Linux 6                                           | X | X |   |   |
 | CentOS Linux 6.5 +                                        | X | X |   | X |
@@ -170,11 +171,11 @@ Azure 診斷擴充功能的限制包括：
 | Oracle Linux 7                                           | X | X |   | X |
 | Oracle Linux 6                                           | X | X |   |   |
 | Oracle Linux 6.4+                                        | X | X |   | X |
-| Red Hat Enterprise Linux Server 8                        | X | X |   |   |
+| Red Hat Enterprise Linux Server 8                        |   | X |   |   |
 | Red Hat Enterprise Linux Server 7                        | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                        | X | X | X |   |
 | Red Hat Enterprise Linux Server 6.7 +                     | X | X | X | X |
-| SUSE Linux Enterprise Server 15                          | X | X | X |   |
+| SUSE Linux Enterprise Server 15                          | X | X |   |   |
 | SUSE Linux Enterprise Server 12                          | X | X | X | X |
 | Ubuntu 18.04 LTS                                         | X | X | X | X |
 | Ubuntu 16.04 LTS                                         | X | X | X | X |
@@ -202,7 +203,7 @@ Azure 診斷擴充功能的限制包括：
 | Debian                          | 9      | 4.9  | 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在下列位置取得每個代理程式的詳細資料：
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: d086f8f3a2f4939012691d5bd03cc92a50ac4613
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: ca8f2e1721c99c79188917e5b44950b8db6895ce
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078311"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006392"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商業市集交易功能
 
@@ -146,7 +146,7 @@ BYOL 具有下列成本結構：
 
 ### <a name="reduced-service-fee"></a>降低服務費用
 
-針對您在商業市集中發佈的特定供應專案，Microsoft 會將其 Marketplace 服務費用從 20% (降低，如 [Microsoft 發行者合約](https://go.microsoft.com/fwlink/?LinkID=699560)) 至10% 所述。 若您的供應專案 () 符合資格，則您的供應專案 (s) 必須由 Microsoft 指定為 Azure IP 共同銷售受到激勵。 在每個行事曆月份結束前至少必須符合五個工作天的資格，才能獲得每月減少的 Marketplace 服務費用。 降低的 Marketplace 服務費用適用于 Azure IP 共同銷售受到激勵 SaaS、Vm、受控應用程式，以及透過商業市場提供的任何其他合格可交易 IaaS 供應專案。
+針對您在商業市集中發佈的特定供應專案，Microsoft 會將其 Marketplace 服務費用從 20% (降低，如 [Microsoft 發行者合約](https://go.microsoft.com/fwlink/?LinkID=699560)) 至10% 所述。 若您的供應專案 () 符合資格，則您的供應專案 (s) 必須由 Microsoft 指定為 Azure IP 共同銷售受到激勵。 在每個行事曆月份結束前至少必須符合五個工作天的資格，才能獲得每月減少的 Marketplace 服務費用。 降低的 Marketplace 服務費用適用于 Azure IP 共同銷售受到激勵 SaaS、Vm、受控應用程式，以及透過商業市場提供的任何其他合格可交易 IaaS 供應專案。 與一個 Microsoft 小組應用程式相關聯的付費 SaaS 供應專案，或至少兩個 Microsoft 365 增益集 (Excel、PowerPoint、Word、Outlook 和 SharePoint) ，並在 AppSource 上發佈也會收到這項折扣。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>客戶發票開立、付款和收帳
 
@@ -185,6 +185,7 @@ BYOL 具有下列成本結構：
 
 - 交易發行選項需要 Microsoft 帳戶和財務資訊，不論該供應項目的定價模型為何。
 - 必要的財務資訊包括付款帳戶和稅務設定檔。
+- 發行者必須存留在支援的 [國家或地區](sell-from-countries.md)。
 
 如需有關設定這些帳戶的詳細資訊，請參閱 [合作夥伴中心中的管理您的商業 marketplace 帳戶](partner-center-portal/manage-account.md)。
 

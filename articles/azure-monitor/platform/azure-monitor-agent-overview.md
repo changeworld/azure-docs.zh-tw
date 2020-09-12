@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ff70beef89f6db240db244de1e11e54193858be0
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 0fc9139e9456a62bf3586fb358046e7c868b834a
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705770"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005219"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure 監視器代理程式總覽 (預覽) 
 Azure 監視器代理程式 (AMA) 會從虛擬機器的客體作業系統收集監視資料，並將其傳遞至 Azure 監視器。 本文概述 Azure 監視器代理程式，包括如何安裝，以及如何設定資料收集。
@@ -88,12 +88,12 @@ Azure 監視器代理程式目前支援下列作業系統。
   - CentOS 6<sup>1</sup>、7
   - Debian 9，10
   - Oracle Linux 6<sup>1</sup>，7
-  - RHEL 6<sup>1</sup>、7、8
+  - RHEL 6<sup>1</sup>、7
   - SLES 11、12、15
   - Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS
 
 > [!IMPORTANT]
-> <sup>1</sup>若要讓這些散發套件傳送 Syslog 資料，您必須移除 rsyslog 並安裝 syslog-ng。
+> <sup>1</sup>若要讓這些散發套件傳送 Syslog 資料，您必須在安裝代理程式之後，一次重新開機 rsyslog 服務。
 
 
 ## <a name="security"></a>安全性
