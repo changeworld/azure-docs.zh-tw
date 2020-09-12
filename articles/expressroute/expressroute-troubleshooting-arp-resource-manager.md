@@ -2,18 +2,18 @@
 title: Azure ExpressRoute： ARP 資料表-疑難排解
 description: 此頁面提供相關指示，協助您取得適用於 ExpressRoute 線路的 ARP 表格
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
 ms.date: 01/30/2017
-ms.author: charwen
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 5819717443de1d5742d46994dca2f23579e527a0
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 9272bb8bac2054d7a02a7eac8c214395a86ceebf
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986451"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394851"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>在 Resource Manager 部署模型中取得 ARP 表格
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ Age InterfaceProperty IpAddress  MacAddress
 * 您必須擁有適用於 Azure 的最新 PowerShell 模組 (版本 1.50 或更新版本)。
 
 > [!NOTE]
-> 如果第3層是由服務提供者提供，而且入口網站/輸出中的 ARP 資料表是空白的，請使用入口網站上的 [重新整理] 按鈕重新整理線路設定。 此作業將套用在您線路上的正確路由組態。 
+> 如果第3層是由服務提供者提供，且入口網站/輸出中的 ARP 資料表為空白，請使用入口網站上的 [重新整理] 按鈕來重新整理電路設定。 此作業將套用在您線路上的正確路由組態。 
 >
 >
 
@@ -164,7 +164,7 @@ Age InterfaceProperty IpAddress  MacAddress
 ```
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>當內部部署 / 連線提供者端發生問題時的 ARP 表格
-如果內部部署或連線提供者發生問題，您可能會看到 ARP 資料表中只有一個專案會出現，或內部部署 MAC 位址顯示 [不完整]。 並為 Microsoft 端所使用的 MAC 位址與 IP 位址顯示其間的對應。 
+如果內部部署或連線提供者發生問題，您可能會看到 ARP 資料表中只有一個專案，或內部部署 MAC 位址顯示為不完整。 並為 Microsoft 端所使用的 MAC 位址與 IP 位址顯示其間的對應。 
   
 ```output
 Age InterfaceProperty IpAddress  MacAddress    

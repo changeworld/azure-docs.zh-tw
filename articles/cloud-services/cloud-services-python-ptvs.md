@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
 ms.custom: devx-track-python
-ms.openlocfilehash: 7025d042fa021c6ee5311566d66bfd090dbd06cd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 503e37d0e339cacc9c21a2b2f3ad739e1385c955
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851574"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443189"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>採用 Python Tools for Visual Studio 的 Python Web 和背景工作角色
 
@@ -34,7 +34,7 @@ ms.locfileid: "87851574"
 ## <a name="what-are-python-web-and-worker-roles"></a>什麼是 Python Web 和背景工作角色？
 Azure 提供三種運算模型來執行應用程式：[Azure App Service 中的 Web Apps 功能][execution model-web sites]、[Azure 虛擬機器][execution model-vms]和 [Azure 雲端服務][execution model-cloud services]。 這三種模型都支援 Python。 雲端服務 (包含 Web 和背景工作角色) 可提供*平台即服務 (PaaS)*。 在雲端服務中，Web 角色應用程式會提供專用的 Internet Information Services (IIS) Web 伺服器，用以代管前端 Web 應用程式，而背景工作角色則可執行獨立於使用者互動或輸入以外的非同步、長時間執行或持續性工作。
 
-如需詳細資訊，請參閱[什麼是雲端服務？]。
+如需詳細資訊，請參閱 [什麼是雲端服務？]。
 
 > [!NOTE]
 >  尋求建置簡單的網站？**
@@ -288,7 +288,7 @@ else
 #### <a name="pscmd"></a>ps.cmd
 Visual Studio 範本應已在 **./bin** 資料夾中建立 **ps.cmd** 檔案。 此 shell 指令碼會呼叫上述 PowerShell 包裝函式指令碼，並根據所呼叫 PowerShell 包裝函式的名稱提供記錄。 如果未建立此檔案，以下是該檔案所應包含的內容。 
 
-```bat
+```cmd
 @echo off
 
 cd /D %~dp0
@@ -326,7 +326,7 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 ### <a name="investigate-logs"></a>調查記錄
 雲端服務虛擬機器啟動並安裝 Python 之後，您可以查看記錄，以找出任何失敗訊息。 這些記錄位於 **C:\Resources\Directory\\{role}\LogFiles** 資料夾中。 當指令碼嘗試偵測是否已安裝 Python 時，**PrepPython.err.txt** 中至少會有一個錯誤，而 **PipInstaller.err.txt** 可能會抱怨 pip 的版本過時。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需在 Python Tools for Visual Studio 中使用 Web 和背景工作角色的相關詳細資訊，請參閱 PTVS 文件：
 
 * [雲端服務專案][Cloud Service Projects]

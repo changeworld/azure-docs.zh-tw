@@ -2,21 +2,21 @@
 title: 關於 ExpressRoute 虛擬網路閘道 - Azure | Microsoft Docs
 description: 了解 ExpressRoute 的虛擬網路閘道。 本文包含閘道 SKU 和類型的相關資訊。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.author: mialdrid
-ms.openlocfilehash: e7779e0638ea61c70758394dc212910ba8f1d7f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 65e44acd1fe6ecb389f81cbd0ed88d1c161dfcdb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081129"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397860"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>關於 ExpressRoute 虛擬網路閘道
 
-若要透過 ExpressRoute 連接您的 Azure 虛擬網路和內部部署網路，您必須先建立虛擬網路閘道。 虛擬網路閘道有兩個用途：在網路之間交換 IP 路由，並路由傳送網路流量。 本文說明閘道類型、閘道 Sku，以及 SKU 的預估效能。 本文也會說明 ExpressRoute [FastPath](#fastpath)，這項功能可讓來自內部部署網路的網路流量略過虛擬網路閘道，以改善效能。
+若要透過 ExpressRoute 連接您的 Azure 虛擬網路和內部部署網路，您必須先建立虛擬網路閘道。 虛擬網路閘道有兩個用途：在網路之間交換 IP 路由，以及路由網路流量。 本文說明閘道類型、閘道 Sku，以及 SKU 的預估效能。 本文也說明 ExpressRoute [FastPath](#fastpath)，這項功能可讓您的內部部署網路中的網路流量略過虛擬網路閘道，以改善效能。
 
 ## <a name="gateway-types"></a>閘道類型
 
@@ -31,7 +31,7 @@ ms.locfileid: "87081129"
 ## <a name="gateway-skus"></a><a name="gwsku"></a>閘道 SKU
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-如果您想要將閘道升級為更強大的閘道 SKU，在大多數情況下，您可以使用「調整大小-Set-azvirtualnetworkgateway」 PowerShell Cmdlet。 這適用於升級至 Standard 和 HighPerformance SKU。 不過，若要升級至 UltraPerformance SKU，您必須重新建立閘道器。 重新建立閘道時會導致停機。
+如果您想要將閘道升級為更強大的閘道 SKU，在大部分情況下，您可以使用 Set-azvirtualnetworkgateway 的 PowerShell Cmdlet。 這適用於升級至 Standard 和 HighPerformance SKU。 不過，若要升級至 UltraPerformance SKU，您必須重新建立閘道器。 重新建立閘道時會導致停機。
 
 ### <a name="estimated-performances-by-gateway-sku"></a><a name="aggthroughput"></a>閘道 SKU 預估的效能
 下表顯示閘道類型和預估的效能。 此資料表適用於資源管理員與傳統部署模型。
@@ -45,7 +45,7 @@ ms.locfileid: "87081129"
 
 ## <a name="gateway-subnet"></a><a name="gwsub"></a>閘道子網路
 
-建立 ExpressRoute 閘道之前，您必須先建立閘道子網。 閘道子網路包含虛擬網路閘道 VM 與服務所使用的 IP 位址。 當您建立虛擬網路閘道時，閘道 Vm 會部署到閘道子網，並使用必要的 ExpressRoute 閘道設定進行設定。 絕對不要將任何其他專案（例如其他 Vm）部署到閘道子網。 此閘道子網路必須命名為 'GatewaySubnet' 才能正常運作。 將閘道子網路命名為 'GatewaySubnet' 可讓 Azure 知道這是要用來部署虛擬網路閘道 VM 和服務的子網路。
+建立 ExpressRoute 閘道之前，您必須先建立閘道子網。 閘道子網路包含虛擬網路閘道 VM 與服務所使用的 IP 位址。 當您建立虛擬網路閘道時，閘道 Vm 會部署至閘道子網，並使用必要的 ExpressRoute 閘道設定進行設定。 絕不部署任何其他 (例如，其他 Vm) 至閘道子網。 此閘道子網路必須命名為 'GatewaySubnet' 才能正常運作。 將閘道子網路命名為 'GatewaySubnet' 可讓 Azure 知道這是要用來部署虛擬網路閘道 VM 和服務的子網路。
 
 >[!NOTE]
 >[!INCLUDE [vpn-gateway-gwudr-warning.md](../../includes/vpn-gateway-gwudr-warning.md)]
@@ -53,7 +53,7 @@ ms.locfileid: "87081129"
 
 當您建立閘道子網路時，您可指定子網路包含的 IP 位址數目。 閘道子網路中的 IP 位址會配置給閘道 VM 和閘道服務。 有些組態需要的 IP 位址比其他組態多。 
 
-當您規劃閘道子網大小時，請參閱您打算建立之設定的檔。 例如，ExpressRoute/VPN 閘道並存設定所需的閘道子網，必須比其他大部分的設定還要大。 此外，您可能會想要確定閘道子網路包含足夠的 IP 位址，以因應未來可能的額外組態需求。 雖然您可以建立小至/29 的閘道子網，但建議您建立/27 或更大（/27、/26 等）的閘道子網（如果您有可用的位址空間）。 這會容納大部分的設定。
+當您規劃閘道子網大小時，請參閱您打算建立的設定檔。 例如，ExpressRoute/VPN 閘道並存設定需要較大的閘道子網，而不是大部分的其他設定。 此外，您可能會想要確定閘道子網路包含足夠的 IP 位址，以因應未來可能的額外組態需求。 雖然您可以建立小至/29 的閘道子網，但建議您建立/27 或更大 (/27、/26 等閘道子網，) 是否有可用的位址空間。 這會容納大部分的設定。
 
 下列 Resource Manager PowerShell 範例顯示名為 GatewaySubnet 的閘道子網路。 您可以看到 CIDR 標記法指定 /27，這可提供足以供大多數現有組態使用的 IP 位址。
 
@@ -79,9 +79,9 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ## <a name="fastpath"></a><a name="fastpath"></a>FastPath
 
-ExpressRoute 虛擬網路閘道的設計是用來切換式網路路由和路由傳送網路流量。 FastPath 的設計目的是要改善內部部署網路與虛擬網路之間的資料路徑效能。 啟用時，FastPath 會直接將網路流量傳送到虛擬網路中的虛擬機器，並略過閘道。
+ExpressRoute 虛擬網路閘道的設計目的是要切換式網路路由及路由網路流量。 FastPath 的設計目的是要改善您的內部部署網路與虛擬網路之間的資料路徑效能。 啟用時，FastPath 會將網路流量直接傳送到虛擬網路中的虛擬機器，略過閘道。
 
-如需 FastPath 的詳細資訊，包括限制和需求，請參閱[關於 FastPath](about-fastpath.md)。
+如需 FastPath 的詳細資訊，包括限制和需求，請參閱 [關於 FastPath](about-fastpath.md)。
 
 ## <a name="rest-apis-and-powershell-cmdlets"></a><a name="resources"></a>REST API 和 PowerShell Cmdlet
 如需將 REST API 和 PowerShell Cmdlet 使用於虛擬網路閘道組態時的其他技術資源和特定語法需求，請參閱下列頁面︰
@@ -93,10 +93,10 @@ ExpressRoute 虛擬網路閘道的設計是用來切換式網路路由和路由�
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關可用連線設定的詳細資訊，請參閱[ExpressRoute 總覽](expressroute-introduction.md)。
+如需可用連接設定的詳細資訊，請參閱 [ExpressRoute 總覽](expressroute-introduction.md)。
 
-如需建立 ExpressRoute 閘道的詳細資訊，請參閱[建立 expressroute 的虛擬網路閘道](expressroute-howto-add-gateway-resource-manager.md)。
+如需建立 ExpressRoute 閘道的詳細資訊，請參閱 [建立 expressroute 的虛擬網路閘道](expressroute-howto-add-gateway-resource-manager.md)。
 
-如需設定區域多餘閘道的詳細資訊，請參閱[建立區域-多餘的虛擬網路閘道](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md)。
+如需設定區域冗余閘道的詳細資訊，請參閱 [建立區域冗余的虛擬網路閘道](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md)。
 
-如需 FastPath 的詳細資訊，請參閱[關於 FastPath](about-fastpath.md)。
+如需 FastPath 的詳細資訊，請參閱 [關於 FastPath](about-fastpath.md)。

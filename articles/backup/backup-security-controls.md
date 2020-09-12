@@ -3,12 +3,12 @@ title: 安全性控制
 description: 瞭解 Azure 備份服務中所使用的安全性控制項。 這些控制項可協助服務防止、偵測及回應安全性弱點。
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: ce1ca0a79476e4985569c677b58892fad91866a5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 7ff3ff5c1b024a228778b0214e67239d3c8ab721
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892957"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418750"
 ---
 # <a name="security-controls-for-azure-backup"></a>Azure 備份的安全性控制
 
@@ -22,8 +22,9 @@ ms.locfileid: "88892957"
 |---|---|--|--|
 | 服務端點支援| 否 |  |  |
 | VNet 插入支援| 否 |  |  |
-| 網路隔離和防火牆支援| 是 | 支援以強制通道進行 VM 備份。 在 Vm 內執行的工作負載不支援強制通道。 |  |
-| 強制通道支援| 否 |  |  |
+| 網路隔離和防火牆支援| 是 | |  |
+| Azure Vm 的強制通道支援 | 是  |  |  |
+| 在 Azure Vm 中執行之應用程式的強制通道支援| 否  |  |  |
 
 ## <a name="monitoring--logging"></a>監視 & 記錄
 

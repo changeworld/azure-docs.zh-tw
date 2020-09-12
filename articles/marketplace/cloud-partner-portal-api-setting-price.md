@@ -6,18 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: d49f9df9fdc7dd8d2fb53b9ad6eb6eae64965fb7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 09/02/2020
+ms.openlocfilehash: fe8024c60e204a4ec72002c878f7753ae35aa00d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87271717"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393814"
 ---
 # <a name="pricing-for-virtual-machine-offers"></a>虛擬機器供應項目定價
 
 > [!NOTE]
-> Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼在轉換至合作夥伴中心後繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
+> Cloud Partner 入口網站 Api 已與整合，並且將繼續在合作夥伴中心中運作。 轉換導入了少量的變更。 請參閱 [CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md) 中所列的變更，以確保您的程式碼在轉換至合作夥伴中心之後仍繼續運作。 CPP Api 應該僅用於已整合的現有產品，然後轉換為合作夥伴中心;新產品應使用合作夥伴中心提交 Api。
 
 指定虛擬機器供應項目定價的方法有三種：自訂核心定價、每一核心定價，以及試算表定價。
 
@@ -96,9 +96,9 @@ ms.locfileid: "87271717"
      }
 ```
 
-## <a name="new-core-sizes-added-on-722019"></a>7/2/2019 新增的核心大小
+## <a name="new-core-sizes-added-on-722019"></a>7/2/2019 中新增的核心大小
 
-針對新的 Azure 虛擬機器大小（根據核心數目），在2019年7月2日新增新價格的 VM 發行者已收到通知。  新的價格是針對核心大小10、44、48、60、120、208和416。  針對現有的 VM，會根據目前的價格自動計算這些核心大小的新價格。  發行者必須等到2019年8月1日，才能查看額外的價格，並進行任何想要的變更。  在此日期之後（如果發行者尚未重新發行），這些新核心大小自動計算的價格將會生效。
+從2019年7月2日起，已針對新的 Azure 虛擬機器大小新增新價格，將于年7月2日收到通知， (根據) 的核心數目。  新的價格適用于核心大小：10、44、48、60、120、208和416。  針對現有的 VM，提供這些核心大小的新價格會根據目前的價格自動計算。 發行者會在2019年8月1日之前，檢查額外的價格並進行任何所需的變更。  在此日期之後，如果「發行者」尚未重新發佈，則會自動計算這些新核心大小的價格。
 
 ## <a name="regions"></a>區域
 
@@ -121,7 +121,7 @@ ms.locfileid: "87271717"
 | CR         | 哥斯大黎加           | CRC               |
 | HR         | 克羅埃西亞              | HRK               |
 | CY         | 賽浦路斯               | 歐元               |
-| CZ         | 捷克共和國       | CZK               |
+| CZ         | 捷克       | CZK               |
 | DK         | 丹麥              | 丹麥幣               |
 | DO         | 多明尼加共和國   | 美元               |
 | EC         | 厄瓜多              | 美元               |
@@ -151,7 +151,6 @@ ms.locfileid: "87271717"
 | LI         | 列支敦斯登        | 瑞士法郎               |
 | LT         | 立陶宛            | 歐元               |
 | LU         | 盧森堡           | 歐元               |
-| MK         | 北馬其頓      | MKD               |
 | MY         | 馬來西亞             | 馬來西亞林吉特               |
 | MT         | 馬爾他                | 歐元               |
 | MX         | 墨西哥               | 墨西哥批索               |
@@ -160,6 +159,7 @@ ms.locfileid: "87271717"
 | NL         | 荷蘭          | 歐元               |
 | NZ         | 紐西蘭          | 紐西蘭幣               |
 | NG         | 奈及利亞              | NGN               |
+| MK         | 北馬其頓      | MKD               |
 | 否         | 挪威               | 挪威克朗               |
 | OM         | 阿曼                 | OMR               |
 | PK         | 巴基斯坦             | PKR               |

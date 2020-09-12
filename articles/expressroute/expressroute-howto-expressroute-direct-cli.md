@@ -1,19 +1,19 @@
 ---
 title: Azure ExpressRoute：設定 ExpressRoute Direct： CLI
-description: 瞭解如何使用 Azure CLI 來設定 Azure ExpressRoute Direct，以直接連線到全球對等互連位置的 Microsoft 全球網路。
+description: 瞭解如何使用 Azure CLI 將 Azure ExpressRoute Direct 設定為直接連接到全球對等互連位置的 Microsoft 全球網路。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/20/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5d1e1d6ab5a8d4444ad4a5a4748859fd12aa3c1e
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 4eea79d6166ef4beae3b2d61e47e7df0bc82624c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192266"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395956"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 設定 ExpressRoute Direct
 
@@ -39,7 +39,7 @@ ms.locfileid: "88192266"
    az account set --subscription "<subscription ID>"
    ```
 
-2. 將您的訂用帳戶重新註冊至 Microsoft，以存取 expressrouteportslocation 和 expressrouteport Api
+2. 重新註冊您的訂用帳戶至 Microsoft，以存取 expressrouteportslocation 和 expressrouteport Api
 
    ```azurecli
    az provider register --namespace Microsoft.Network
@@ -287,7 +287,7 @@ ms.locfileid: "88192266"
 
 **SkuTier** 可以是 Local、Standard 或 Premium。
 
-只有在 ExpressRoute Direct 不支援**SkuFamily**時，才必須 MeteredData 為無限制。
+只有在 ExpressRoute Direct 不支援無限制時， **SkuFamily**必須是 [metereddata。
 在 ExpressRoute Direct 資源上建立線路：
 
   ```azurecli
@@ -332,6 +332,6 @@ ms.locfileid: "88192266"
   }  
   ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需有關 ExpressRoute Direct 的詳細資訊，請參閱[概觀](expressroute-erdirect-about.md)。

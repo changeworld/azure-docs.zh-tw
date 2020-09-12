@@ -1,30 +1,30 @@
 ---
 title: Azure VPN 閘道：公告 P2S VPN 用戶端的自訂路由
-description: 將自訂路由公告至您的點對站用戶端的步驟
+description: 將自訂路由公告至點對站用戶端的步驟
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 11/11/2019
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: ad007514e48ea751257884ba6e9ccb3965442d36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a02bd5519b776a063646c11be2a34366fe429f99
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987575"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392386"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>公告 P2S VPN 用戶端的自訂路由
 
-您可能想要將自訂路由公告至您所有的點對站 VPN 用戶端。 例如，當您在 VNet 中啟用儲存體端點，並希望遠端使用者能夠透過 VPN 連線來存取這些儲存體帳戶時。 您可以將儲存體端點的 IP 位址公告給所有遠端使用者，讓儲存體帳戶的流量通過 VPN 通道，而不是公用網際網路。
+您可能會想要對所有點對站 VPN 用戶端通告自訂路由。 例如，當您在 VNet 中啟用儲存體端點，且希望遠端使用者能夠透過 VPN 連線存取這些儲存體帳戶時。 您可以將儲存體端點的 IP 位址通告給所有遠端使用者，讓儲存體帳戶的流量通過 VPN 通道，而不是公用網際網路。
 
 ![Azure VPN 閘道多網站連接範例](./media/vpn-gateway-p2s-advertise-custom-routes/custom-routes.png)
 
-## <a name="to-advertise-custom-routes"></a>公告自訂路由
+## <a name="to-advertise-custom-routes"></a>若要通告自訂路由
 
-若要通告自訂路由，請使用 `Set-AzVirtualNetworkGateway cmdlet` 。 下列範例說明如何公告[Contoso 儲存體帳戶資料表](https://contoso.table.core.windows.net)的 IP。
+若要通告自訂路由，請使用 `Set-AzVirtualNetworkGateway cmdlet` 。 下列範例示範如何通告 [Contoso 儲存體帳戶資料表](https://contoso.table.core.windows.net)的 IP。
 
-1. Ping *contoso.table.core.windows.net*並記下 IP 位址。 例如：
+1. 偵測 *contoso.table.core.windows.net* 並記下 IP 位址。 例如：
 
     ```cmd
     C:\>ping contoso.table.core.windows.net
@@ -51,14 +51,14 @@ ms.locfileid: "84987575"
   $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
   $gw.CustomRoutes | Format-List
   ```
-## <a name="to-delete-custom-routes"></a>若要刪除自訂路由
+## <a name="to-delete-custom-routes"></a>刪除自訂路由
 
-使用下列範例來刪除自訂路由：
+使用下列範例刪除自訂路由：
 
   ```azurepowershell-interactive
   $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
   Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute @0
   ```
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如需其他 P2S 路由資訊，請參閱[關於點對站路由](vpn-gateway-about-point-to-site-routing.md)。
+如需其他 P2S 路由資訊，請參閱 [關於點對站路由](vpn-gateway-about-point-to-site-routing.md)。

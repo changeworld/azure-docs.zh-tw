@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecfc532ea859c78b72a15dc85e0d3fc740ffe19a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 6f3918016e35029ea6cc1b60d407ad475b35895b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797537"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565459"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>使用 Azure Active Directory 從另一個群組新增或移除群組
 本文可協助您使用 Azure Active Directory 從另一個群組新增或移除群組。
@@ -30,7 +30,7 @@ ms.locfileid: "87797537"
 您可以將現有的安全性群組新增到另一個現有安全性群組中 (也稱為巢狀群組)，如此一來會建立一個成員群組 (子群組) 和一個父群組。 成員群組會繼承父群組的屬性與內容，為您省下設定時間。
 
 >[!Important]
->我們目前不支援：<ul><li>將群組新增至與內部部署 Active Directory 同步的群組。</li><li>將安全性群組新增至 Office 365 群組。</li><li>將 Office 365 群組新增至安全性群組或其他 Office 365 群組。</li><li>將應用程式指派給巢狀群組。</li><li>將授權套用至巢狀群組。</li><li>在嵌套案例中新增通訊群組。</li></ul>
+>我們目前不支援：<ul><li>將群組新增至與內部部署 Active Directory 同步的群組。</li><li>將安全性群組新增至 Microsoft 365 群組。</li><li>將 Microsoft 365 群組新增至安全性群組或其他 Microsoft 365 群組。</li><li>將應用程式指派給巢狀群組。</li><li>將授權套用至巢狀群組。</li><li>在嵌套案例中新增通訊群組。</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>若要新增群組作為另一個群組的成員
 

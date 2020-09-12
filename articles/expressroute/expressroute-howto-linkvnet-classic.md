@@ -2,26 +2,26 @@
 title: Azure ExpressRoute：將 VNet 連結至線路：傳統
 description: 本文提供以下內容的概觀：如何使用傳統部署模型和 PowerShell 將虛擬網路 (VNet) 連結到 ExpressRoute 線路。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1b89d944b4106a8fc3f5d4119c30af1ab2039af2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a731962f22985268093c547b09a8cd77c5b92660
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079705"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395803"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 將虛擬網路連接到 ExpressRoute 線路 (傳統)
 > [!div class="op_single_selector"]
 > * [Azure 入口網站](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [影片-Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> * [ (傳統) 的 PowerShell ](expressroute-howto-linkvnet-classic.md)
+> * [影片 - Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [PowerShell (傳統)](expressroute-howto-linkvnet-classic.md)
 >
 
 本文將協助您使用 PowerShell 將虛擬網路 (VNet) 連結到 Azure ExpressRoute 線路。 單一 VNet 最多可連結到四個 ExpressRoute 線路。 使用本文中的步驟來建立您要連線之每個 ExpressRoute 線路的新連結。 ExpressRoute 線路可以位於相同的訂用帳戶、不同的訂用帳戶或兩者的混合。 本文適用於使用傳統部署模型所建立的虛擬網路。

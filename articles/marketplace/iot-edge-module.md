@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
-ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6eeb27f6382585e883fbebc40a9f70feb33adb4f
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816247"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420603"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模組
 
@@ -30,7 +30,7 @@ ms.locfileid: "88816247"
 
 ## <a name="what-is-an-iot-edge-module"></a>什麼是 IoT Edge 模組？
 
-Azure IoT Edge 可讓您以模組形式，在邊緣上部署及管理商務邏輯。 Azure IoT Edge 模組是 IoT Edge 所管理的最小計算單位，並可包含 Microsoft 服務 (例如「Azure 串流分析」)、第三方服務，或您自己的解決方案特定程式碼。 若要深入了解 IoT Edge 模組，請參閱[了解 Azure IoT Edge 模組](../iot-edge/iot-edge-modules.md)。
+Azure IoT Edge 可讓您以模組形式，在邊緣上部署及管理商務邏輯。 Azure IoT Edge 模組是由 IoT Edge 管理的最小計算單位，並可包含 Microsoft 服務 (，例如 Azure 串流分析) 、協力廠商服務或您自己的解決方案特定程式碼。 若要深入了解 IoT Edge 模組，請參閱[了解 Azure IoT Edge 模組](../iot-edge/iot-edge-modules.md)。
 
 **容器供應項目類型與 IoT Edge 模組供應項目類型之間有何差異？**
 
@@ -40,7 +40,7 @@ IoT Edge 模組供應項目類型是一種在 IoT Edge 裝置上執行的特定�
 
 **選取正確的線上商店**
 
-IoT Edge 模組只會發佈至 Azure Marketplace;AppSource 不適用。 如需跨線上商店的差異與目標物件的詳細資訊，請參閱 [決定您的發佈選項](determine-your-listing-type.md)。
+IoT Edge 模組只會發佈至 Azure Marketplace;AppSource 不適用。 如需線上商店之間差異的詳細資訊，請參閱 [決定您的發佈選項](determine-your-listing-type.md)。
 
 **帳單選項**
 
@@ -73,8 +73,7 @@ Marketplace 目前針對 IoT Edge 模組支援 [免費] 和 [自備授權 (BYOL)
 
 [準備 IoT Edge 模組技術資產](./partner-center-portal/create-iot-edge-module-asset.md)詳細說明了 IoT Edge 模組的主要技術需求，以便讓該模組通過認證並發佈於 Azure Marketplace 中。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- [瞭解](https://azuremarketplace.microsoft.com/sell) 商用 marketplace。
 - 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，以建立或完成您的供應項目。
 - 在合作夥伴中心中[建立 IoT Edge 模組供應](./partner-center-portal/azure-iot-edge-module-creation.md)專案。

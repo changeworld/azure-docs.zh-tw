@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 224623f7851c35b12e1f2e1d028355c202128fa1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 9e960914f86f2f9fc63a62d62fe1f923d21b9d31
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89244750"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394613"
 ---
 # <a name="azure-security-baseline-for-backup"></a>適用于備份的 Azure 安全性基準
 
@@ -818,7 +818,9 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 - [如何建立 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-- [如何使用受控識別來提供 Key Vault authentication](../key-vault/general/managed-identity.md)
+* [如何驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [如何指派 Key Vault 存取原則](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure 資訊安全中心監視**：不適用
 

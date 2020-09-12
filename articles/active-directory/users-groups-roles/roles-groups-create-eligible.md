@@ -13,49 +13,49 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f816c95b5e210e86e2215cadf8407f442d69ebe
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 1c5efbbd5f9f5dfe701deb50b51605ab324c081a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476033"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401668"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>在 Azure Active Directory 中建立可指派角色的群組
 
-您只能將角色指派給使用設定為 True 的 ' isAssignableToRole ' 屬性所建立的群組，或在 Azure AD 入口網站中建立，並**可將 Azure AD 角色指派**給已開啟的群組。 此群組屬性可將群組指派給 Azure Active Directory （Azure AD）中的角色。 本文說明如何建立這種特殊的群組。
+您只能將角色指派給使用設定為 True 的 ' isAssignableToRole ' 屬性所建立的群組，或是在 Azure AD 入口網站中建立， **Azure AD 角色可以指派給開啟的群組** 。 此群組屬性會讓群組之一可以指派給 Azure Active Directory (Azure AD) 中的角色。 本文說明如何建立這種特殊的群組。 **注意：** 將 isAssignableToRole 屬性設定為 true 的群組不能是動態成員資格類型。 如需詳細資訊，請參閱 [使用群組管理 Azure AD 角色指派](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept)。
 
 ## <a name="using-azure-ad-admin-center"></a>使用 Azure AD 系統管理中心
 
-1. 使用特殊權限角色管理員或全域管理員 Azure AD 組織中的許可權登入[Azure AD 系統管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
-1. 選取 [**群組**] [  >  **所有群組**] [  >  **新增群組**]。
+1. 使用 Azure AD 組織的特殊權限角色管理員或全域系統管理員許可權登入 [Azure AD admin center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
+1. 選取 [**群組**  >  **所有群組**]  >  **新群組**。
 
-    [![開啟 Azure Active Directory，並建立新的群組。](media/roles-groups-create-eligible/new-group.png "開啟 Azure Active Directory，並建立新的群組。")](media/roles-groups-create-eligible/new-group.png#<lightbox>)
+    [![開啟 Azure Active Directory 並建立新的群組。](media/roles-groups-create-eligible/new-group.png "開啟 Azure Active Directory 並建立新的群組。")](media/roles-groups-create-eligible/new-group.png#<lightbox>)
 
-1. 在 [**新增群組**] 索引標籤上，提供群組類型、名稱和描述。
-1. [開啟] **Azure AD 角色可以指派給群組**。 只有特殊許可權角色管理員和全域管理員可以看到此切換參數，因為這些只有兩個可設定交換器的角色。
+1. 在 [ **新增群組** ] 索引標籤上，提供群組類型、名稱和描述。
+1. 開啟 **Azure AD 角色可以指派給群組**。 只有特殊許可權角色管理員和全域管理員可以看到此切換參數，因為這些只有兩個可設定交換器的角色。
 
-    [![讓新群組適用于角色指派](media/roles-groups-create-eligible/eligible-switch.png "讓新群組適用于角色指派")](media/roles-groups-create-eligible/eligible-switch.png#<lightbox>)
+    [![讓新群組符合角色指派的資格](media/roles-groups-create-eligible/eligible-switch.png "讓新群組符合角色指派的資格")](media/roles-groups-create-eligible/eligible-switch.png#<lightbox>)
 
-1. 選取群組的成員和擁有者。 您也可以選擇將角色指派給群組，但此處不需要指派角色。
+1. 選取群組的成員和擁有者。 您也可以選擇將角色指派給群組，但是這裡不需要指派角色。
 
-    [![將成員新增至角色可指派的群組，並指派角色。](media/roles-groups-create-eligible/specify-members.png "將成員新增至角色可指派的群組，並指派角色。")](media/roles-groups-create-eligible/specify-members.png#<lightbox>)
+    [![將成員新增至角色可指派的群組並指派角色。](media/roles-groups-create-eligible/specify-members.png "將成員新增至角色可指派的群組並指派角色。")](media/roles-groups-create-eligible/specify-members.png#<lightbox>)
 
-1. 指定成員和擁有者之後，請選取 [**建立**]。
+1. 指定成員和擁有者之後，請選取 [ **建立**]。
 
-    [![[建立] 按鈕位於頁面底部。](media/roles-groups-create-eligible/create-button.png "[建立] 按鈕位於頁面底部。")](media/roles-groups-create-eligible/create-button.png#<lightbox>)
+    [![[建立] 按鈕位於頁面的底部。](media/roles-groups-create-eligible/create-button.png "[建立] 按鈕位於頁面的底部。")](media/roles-groups-create-eligible/create-button.png#<lightbox>)
 
-系統會使用您已指派給它的任何角色來建立群組。
+系統會以您指派給群組的任何角色來建立群組。
 
 ## <a name="using-powershell"></a>使用 PowerShell
 
-### <a name="install-the-azure-ad-preview-module"></a>安裝 Azure AD 預覽模組
+### <a name="install-the-azure-ad-preview-module"></a>安裝 Azure AD preview 模組
 
 ```powershell
 install-module azureadpreview
 import-module azureadpreview
 ```
 
-若要確認模組已準備好可供使用，請發出下列命令：
+若要確認模組可供使用，請發出下列命令：
 
 ```powershell
 get-module azureadpreview
@@ -67,9 +67,9 @@ get-module azureadpreview
 $group = New-AzureADMSGroup -DisplayName "Contoso_Helpdesk_Administrators" -Description "This group is assigned to Helpdesk Administrator built-in role in Azure AD." -MailEnabled $true -SecurityEnabled $true -MailNickName "contosohelpdeskadministrators" -IsAssignableToRole $true
 ```
 
-對於這種類型的群組，一定會 `isPublic` 是 false，而且 `isSecurityEnabled` 一律為 true。
+若為這種類型的群組，則 `isPublic` 一律為 false，而且 `isSecurityEnabled` 一律會是 true。
 
-### <a name="copy-one-groups-users-and-service-principals-into-a-role-assignable-group"></a>將一個群組的使用者和服務主體複製到可指派給角色的群組
+### <a name="copy-one-groups-users-and-service-principals-into-a-role-assignable-group"></a>將一個群組的使用者和服務主體複製到可指派角色的群組
 
 ```powershell
 #Basic set up
@@ -122,10 +122,10 @@ POST https://graph.microsoft.com/beta/groups
 }
 ```
 
-對於這種類型的群組，一定會 `isPublic` 是 false，而且 `isSecurityEnabled` 一律為 true。
+若為這種類型的群組，則 `isPublic` 一律為 false，而且 `isSecurityEnabled` 一律會是 true。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [將角色指派給雲端群組](roles-groups-assign-role.md)
 - [使用雲端群組來管理角色指派](roles-groups-concept.md)
-- [針對指派給雲端群組的角色進行疑難排解](roles-groups-faq-troubleshooting.md)
+- [對指派給雲端群組的角色進行疑難排解](roles-groups-faq-troubleshooting.md)

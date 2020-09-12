@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5f16a902980b8cf88fb3e8a7f888a0f58ed34355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35631c8a0b66ade1457228ba16150f94f761f7b3
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986561"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419906"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>建立和安裝 VPN 用戶端組態檔以便進行 P2S RADIUS 驗證
 
@@ -27,7 +27,7 @@ ms.locfileid: "84986561"
 P2S RADIUS 驗證的設定工作流程如下所示：
 
 1. [設定 P2S 連線的 AZURE VPN 閘道](point-to-site-how-to-radius-ps.md)。
-2. [設定 RADIUS 伺服器以進行驗證](point-to-site-how-to-radius-ps.md#radius)。 
+2. [設定您的 RADIUS 伺服器進行驗證](point-to-site-how-to-radius-ps.md#radius)。 
 3. **取得所選驗證選項適用的 VPN 用戶端組態，並用它設定 VPN 用戶端** (本文章)。
 4. [完成 P2S 設定並連線](point-to-site-how-to-radius-ps.md)。
 
@@ -45,18 +45,18 @@ P2S RADIUS 驗證的設定工作流程如下所示：
 
 設定使用者名稱/密碼驗證時，您只能建立 EAP-MSCHAPv2 使用者名稱/密碼驗證通訊協定的組態。 在命令中，`-AuthenticationMethod` 是 `EapMSChapv2`。
 
-### <a name="1-generate-vpn-client-configuration-files"></a><a name="usernamefiles"></a>1. 產生 VPN 用戶端設定檔
+### <a name="1-generate-vpn-client-configuration-files"></a><a name="usernamefiles"></a> 1. 產生 VPN 用戶端設定檔
 
-您可以使用 Azure 入口網站或使用 Azure PowerShell 來產生 VPN 用戶端設定檔。
+您可以使用 Azure 入口網站，或使用 Azure PowerShell 來產生 VPN 用戶端設定檔。
 
 #### <a name="azure-portal"></a>Azure 入口網站
 
 1. 流覽至虛擬網路閘道。
-2. 按一下 [**點對站**設定]。
-3. 按一下 [**下載 VPN 用戶端**]。
-4. 選取用戶端，並填寫任何要求的資訊。
-5. 按一下 [**下載**] 以產生 .zip 檔案。
-6. .Zip 檔案將會下載，通常是在您的 [下載] 資料夾中。
+2. 按一下 [ **點對站**設定]。
+3. 按一下 [ **下載 VPN 用戶端**]。
+4. 選取用戶端，並填寫所要求的任何資訊。
+5. 按一下 [ **下載** ] 以產生 .zip 檔。
+6. .Zip 檔案將會下載，通常會下載到您的 [下載] 資料夾。
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -66,7 +66,7 @@ P2S RADIUS 驗證的設定工作流程如下所示：
 New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapMSChapv2"
 ```
  
-執行會傳回連結的命令。 複製並貼上網頁瀏覽器的連結，以下載**VpnClientConfiguration.zip**。 將該檔案解壓縮以檢視下列資料夾： 
+執行會傳回連結的命令。 複製並貼上網頁瀏覽器的連結，以下載 **VpnClientConfiguration.zip**。 將該檔案解壓縮以檢視下列資料夾： 
  
 * **WindowsAmd64** 和 **WindowsX86**：這些資料夾分別包含 Windows 32 位元和 64 位元的安裝程式套件。 
 * **Generic**：這個資料夾包含您用來建立自有 VPN 用戶端組態的一般資訊。 使用者名稱/密碼驗證設定不需要此資料夾。
@@ -80,12 +80,12 @@ New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -Authen
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ```
 
-### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a>2. 設定 VPN 用戶端
+### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a> 2. 設定 VPN 用戶端
 
 您可以設定下列 VPN 用戶端：
 
 * [Windows](#adwincli)
-* [Mac （OS X）](#admaccli)
+* [Mac (OS X) ](#admaccli)
 * [使用 strongSwan 的 Linux](#adlinuxcli)
  
 #### <a name="windows-vpn-client-setup"></a><a name="adwincli"></a>Windows VPN 用戶端設定
@@ -94,8 +94,8 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 
 請使用下列步驟來設定原生 Windows VPN 用戶端的憑證驗證：
 
-1. 選取 Windows 電腦架構所對應的 VPN 用戶端組態檔。 若是64位的處理器架構，請選擇**VpnClientSetupAmd64**安裝程式套件。 若是32位的處理器架構，請選擇**VpnClientSetupX86**安裝程式套件。 
-2. 若要安裝，請按兩下套件。 如果您看到 SmartScreen 快顯視窗，請選取 [**其他資訊**] [  >  **仍要執行**]。
+1. 選取 Windows 電腦架構所對應的 VPN 用戶端組態檔。 若為64位處理器架構，請選擇 **>vpnclientsetupamd64.exe** 安裝程式套件。 若為32位處理器架構，請選擇 **VpnClientSetupX86** 安裝程式套件。 
+2. 若要安裝，請按兩下套件。 如果您看到 SmartScreen 快顯視窗，請選取 [**其他資訊**]  >  ** **。
 3. 在用戶端電腦上，瀏覽至 [網路設定]****，然後選取 [VPN]****。 VPN 連線會顯示其連線的虛擬網路名稱。 
 
 #### <a name="mac-os-x-vpn-client-setup"></a><a name="admaccli"></a>Mac (OS X) VPN 用戶端設定
@@ -142,7 +142,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 10. VPN 連線會顯示為 [IkeV2-VPN]****。 更新 **mobileconfig** 檔案，即可變更名稱。
 
     ![VPN 連線的詳細資料](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
-11. 選取 [驗證設定]****。 在清單中選擇 [使用者名稱]****，然後輸入您的認證。 如果您先前已輸入認證，則會自動在清單中選擇 [使用者名稱]**** 並預先填入使用者名稱和密碼。 選取 [確定]**** 來儲存設定。
+11. 選取 [驗證設定]****。 在清單中選擇 [使用者名稱]****，然後輸入您的認證。 如果您先前已輸入認證，則會自動在清單中選擇 [使用者名稱]**** 並預先填入使用者名稱和密碼。 選取 [確定]  來儲存設定。
 
     ![驗證設定](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 12. 回到 [網路]**** 對話方塊，選取 [套用]**** 以儲存變更。 若要起始連線，請選取 [連線]****。
@@ -211,18 +211,18 @@ New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -Authen
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
  
-### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a>2. 設定 VPN 用戶端
+### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a> 2. 設定 VPN 用戶端
 
 您可以設定下列 VPN 用戶端：
 
 * [Windows](#certwincli)
-* [Mac （OS X）](#certmaccli)
+* [Mac (OS X) ](#certmaccli)
 * Linux (支援，尚未有文章提供步驟)
 
 #### <a name="windows-vpn-client-setup"></a><a name="certwincli"></a>Windows VPN 用戶端設定
 
-1. 選取組態套件並將它安裝在用戶端裝置上。 若是64位的處理器架構，請選擇**VpnClientSetupAmd64**安裝程式套件。 若是32位的處理器架構，請選擇**VpnClientSetupX86**安裝程式套件。 如果您看到 SmartScreen 快顯視窗，請選取 [**其他資訊**] [  >  **仍要執行**]。 您也可以儲存要在其他用戶端電腦上安裝的套件。
-2. 每個用戶端都需要用戶端憑證才能驗證。 請安裝用戶端憑證。 如需用戶端憑證的詳細資訊，請參閱[點對站的用戶端憑證](vpn-gateway-certificates-point-to-site.md)。 若要安裝所產生的憑證，請參閱[在 Windows 用戶端上安裝憑證](point-to-site-how-to-vpn-client-install-azure-cert.md)。
+1. 選取組態套件並將它安裝在用戶端裝置上。 若為64位處理器架構，請選擇 **>vpnclientsetupamd64.exe** 安裝程式套件。 若為32位處理器架構，請選擇 **VpnClientSetupX86** 安裝程式套件。 如果您看到 SmartScreen 快顯視窗，請選取 [**其他資訊**]  >  ** **。 您也可以儲存要在其他用戶端電腦上安裝的套件。
+2. 每個用戶端都需要用戶端憑證才能驗證。 請安裝用戶端憑證。 如需用戶端憑證的詳細資訊，請參閱 [點對站的用戶端憑證](vpn-gateway-certificates-point-to-site.md)。 若要安裝所產生的憑證，請參閱[在 Windows 用戶端上安裝憑證](point-to-site-how-to-vpn-client-install-azure-cert.md)。
 3. 在用戶端電腦上，瀏覽至 [網路設定]****，然後選取 [VPN]****。 VPN 連線會顯示其連線的虛擬網路名稱。
 
 #### <a name="mac-os-x-vpn-client-setup"></a><a name="certmaccli"></a>Mac (OS X) VPN 用戶端設定
@@ -279,7 +279,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
    
    **GenericDevice** 資料夾也包含一個稱為 **VpnServerRoot** 的 .cer 檔案。 此檔案包含在 P2S 連線設定期間驗證 Azure VPN 閘道所需的根憑證。 在將連線到 Azure 虛擬網路的所有裝置上安裝憑證。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 回到本文以[完成 P2S 設定](point-to-site-how-to-radius-ps.md)。
 

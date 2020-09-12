@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 99985ba8540a347977b9eaf2e733a308fa777b97
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 051f6e6ef15cc94e2b607c74e666bae9c91c1160
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231396"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401617"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>適用于 Cosmos DB 的 Azure 安全性基準
 
@@ -890,9 +890,11 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 如何與 Azure 受控識別整合： https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-如何建立 Key Vault： https://docs.microsoft.com/azure/key-vault/quick-create-portal
+如何建立 Key Vault： https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-如何使用受控識別提供 Key Vault 驗證： https://docs.microsoft.com/azure/key-vault/managed-identity
+如何驗證 Key Vault： https://docs.microsoft.com/azure/key-vault/general/authentication
+
+如何指派 Key Vault 存取原則： https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure 資訊安全中心監視**：是
 

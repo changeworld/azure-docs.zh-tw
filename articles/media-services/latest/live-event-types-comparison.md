@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 41df31cde95ae7ed1d05dac572718622067194c9
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265247"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397299"
 ---
 # <a name="live-event-types-comparison"></a>實況活動類型比較
 
@@ -86,8 +86,7 @@ ms.locfileid: "89265247"
 | 200 |340 |192 |30 |高 |
 
 > [!NOTE]
-> 如果您需要自訂即時編碼預設值，請透過 Azure 入口網站開啟支援票證。 您應指定解析度和位元速率的所需資料表。 請確認只有一個圖層為 720p，且最多只有 6 個圖層。 也請指定您要求標準即時編碼器的預設值。
-> 位元速率和解決方式的特定值可能會隨著時間而調整
+> 如果您需要自訂即時編碼預設值，請透過 Azure 入口網站開啟支援票證。 您應指定所需的影片解析度和位元速率表。 不支援自訂音訊編碼位元速率。 請確認只有一個圖層為 720p，且最多只有 6 個圖層。 也請指定您要要求預設值。
 
 ### <a name="output-video-streams-for-default1080p"></a>輸出 Default1080p 的影片串流
 
@@ -103,8 +102,7 @@ ms.locfileid: "89265247"
 | 200 |320 |180 |30 |高 |
 
 > [!NOTE]
-> 如果您需要自訂即時編碼預設值，請透過 Azure 入口網站開啟支援票證。 您應指定解析度和位元速率的所需資料表。 請確認只有一個層級為1080p，最多6層。 也請指定您要求 Premium1080p 即時編碼器的預設值。
-> 位元速率和解決方式的特定值可能會隨著時間而調整。
+> 如果您需要自訂即時編碼預設值，請透過 Azure 入口網站開啟支援票證。 您應指定解析度和位元速率的所需資料表。 請確認只有一個層級為1080p，最多6層。 此外，指定您要求 Premium1080p 即時編碼器的預設值。 位元速率和解決方式的特定值可能會隨著時間而調整。
 
 ### <a name="output-audio-stream-for-default720p-and-default1080p"></a>Default720p 和 Default1080p 的輸出音訊串流
 
@@ -132,6 +130,6 @@ ms.locfileid: "89265247"
 
 即時編碼器設定為接受預設值中的位元速率設定，而不考慮貢獻摘要的位元速率。 因此，輸出層的位元速率可能會超過投稿摘要的位元速率。 例如，如果您以720p （1 Mbps）的解析度傳送投稿摘要，輸出層將維持與上 [表](live-event-types-comparison.md#output-video-streams-for-default720p) 相同。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [即時串流概觀](live-streaming-overview.md)

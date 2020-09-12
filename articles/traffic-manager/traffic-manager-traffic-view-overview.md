@@ -1,23 +1,23 @@
 ---
 title: Azure 流量管理員中的流量檢視
-description: 在此簡介中，瞭解「流量管理員」流量視圖的運作方式。
+description: 在此簡介中，您將瞭解流量管理員流量視圖的運作方式。
 services: traffic-manager
 documentationcenter: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: rohink
+ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: d5a03fde564b14baee97f50fa63fd58bf83694b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1a3cc5ccb326d6a198895f9f459e661f7805b1e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938348"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401532"
 ---
 # <a name="traffic-manager-traffic-view"></a>流量管理員流量檢視
 
@@ -36,7 +36,7 @@ ms.locfileid: "76938348"
 流量檢視的運作方式是讓流量管理員查看在過去七天內針對已啟用此功能之設定檔所收到的連入查詢。 流量檢視會根據連入查詢資訊擷取 DNS 解析程式的來源 IP，然後用來作為使用者位置的代表。 然後會在 DNS 解析程式層級資料粒度群組在一起，藉由使用由流量管理員維護之 IP 位址的地理資訊，來建立使用者群體區域。 流量管理員接著會查看查詢路由前往的 Azure 區域，並且為這些區域的使用者建構流量流程對應。  
 在下一個步驟中，流量管理員會將 Azure 區域對應的使用者群組區域與它為不同使用者網路維護的網路智慧延遲資料表相互關聯，以了解當連接到 Azure 區域時，這些區域的使用者所體驗的平均延遲。 所有這些計算接著會在呈現給您之前，在每個本機 DNS 解析程式 IP 層級上合併。 您可以用各種方式使用該資訊。
 
-流量視圖資料更新的頻率取決於多個內部服務變數。 不過，資料通常會每隔24小時更新一次。
+流量視圖資料更新的頻率取決於多個內部服務變數。 不過，資料通常會每24小時更新一次。
 
 >[!NOTE]
 >流量檢視中所述的延遲是使用者與已連線 Azure 區域間的代表性延遲，不是 DNS 查詢延遲。 流量檢視對本機 DNS 解析程式與查詢路由前往的 Azure 區域之間的延遲進行最佳投入量估算，如果資料不足，則傳回的延遲將為 Null。 
@@ -45,7 +45,7 @@ ms.locfileid: "76938348"
 
 當您瀏覽至流量管理員頁面中的 [流量檢視]**** 區段時，您會看到覆蓋流量檢視深入分析的地理區域地圖。 地圖會提供流量管理員設定檔的使用者群體和端點相關資訊。
 
-![流量管理員流量視圖地理視圖][1]
+![流量管理員流量視圖地理位置視圖][1]
 
 ### <a name="user-base-information"></a>使用者群體資訊
 
@@ -90,7 +90,7 @@ ms.locfileid: "76938348"
 
 * [「流量檢視」如何計費？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 了解 [流量管理員的運作方式](traffic-manager-overview.md)
 - 深入了解流量管理員支援的 [流量路由方法](traffic-manager-routing-methods.md)

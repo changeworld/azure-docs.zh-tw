@@ -1,24 +1,24 @@
 ---
-title: Azure VPN 閘道：為 P2S 產生 & 匯出憑證： MakeCert
+title: Azure VPN 閘道：產生 P2S： MakeCert 的 & 匯出憑證
 description: 建立自我簽署的根憑證、匯出公開金鑰，以及使用 MakeCert 產生用戶端憑證。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/05/2018
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7903dc7f614d16380626f27579363b1529665cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 926de9f3fd357cd9d9ca067e4f7beff7d03eec95
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988112"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394175"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>使用 MakeCert 來產生並匯出點對站連線的憑證
 
 點對站連線使用憑證進行驗證。 本文說明如何建立自我簽署的根憑證，以及使用 MakeCert 來產生用戶端憑證。 如果您要尋找不同的憑證指示，請參閱[憑證 - PowerShell](vpn-gateway-certificates-point-to-site.md) 或[憑證 - Linux](vpn-gateway-certificates-point-to-site-linux.md)。
 
-雖然建議您使用 [Windows 10 PowerShell 步驟](vpn-gateway-certificates-point-to-site.md)建立您的憑證，但是提供這些 MakeCert 指示作為選擇性方法。 使用任一種方法所產生的憑證可以安裝在[任何支援的用戶端作業系統](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)上。 不過，MakeCert 具有下列限制：
+雖然建議您使用 [Windows 10 PowerShell 步驟](vpn-gateway-certificates-point-to-site.md)建立您的憑證，但是提供這些 MakeCert 指示作為選擇性方法。 使用任一種方法所產生的憑證可以安裝在 [任何支援的用戶端作業系統](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)上。 不過，MakeCert 具有下列限制：
 
 * MakeCert 已被取代。 這表示無法在任何時間點移除這項工具。 當無法再使用 MakeCert 時，任何您已經使用 MakeCert 所產生的憑證將不會受到影響。 MakeCert 只用來產生憑證，而不是驗證機制。
 
@@ -26,8 +26,8 @@ ms.locfileid: "84988112"
 
 下列步驟說明如何使用 MakeCert 來建立自我簽署憑證。 這些並非部署模型特定的步驟。 它們同樣適用於資源管理員和傳統部署模型。
 
-1. 下載並安裝[MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx)。
-2. 安裝之後，您通常可以在此路徑底下找到 makecert.exe 公用程式： ' C:\Program Files （x86） \Windows Kits\10\bin arch> \<arch> '。 雖然，它有可能已安裝到另一個位置。 以系統管理員身分開啟命令提示字元，然後瀏覽至 MakeCert 公用程式的位置。 您可以使用下列範例，並針對適當的位置進行調整：
+1. 下載並安裝 [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx)。
+2. 安裝之後，您通常可以在此路徑下找到 makecert.exe 公用程式：「C:\Program Files (x86) \Windows Kits\10\bin」 \<arch> 。 雖然，它有可能已安裝到另一個位置。 以系統管理員身分開啟命令提示字元，然後瀏覽至 MakeCert 公用程式的位置。 您可以使用下列範例，並針對適當的位置進行調整：
 
    ```cmd
    cd C:\Program Files (x86)\Windows Kits\10\bin\x64
@@ -52,7 +52,7 @@ ms.locfileid: "84988112"
 
 您未直接在用戶端電腦上安裝自我簽署的憑證。 您需要從自我簽署憑證產生用戶端憑證。 您接著會將用戶端憑證匯出並安裝到用戶端電腦。 下列步驟並非針對特定部署模型。 它們同樣適用於資源管理員和傳統部署模型。
 
-### <a name="generate-a-client-certificate"></a><a name="clientcert"></a>產生用戶端憑證 
+### <a name="generate-a-client-certificate"></a><a name="clientcert"></a>產生用戶端憑證
 
 每個使用點對站連線至 VNet 的用戶端電腦都必須安裝用戶端憑證。 您可以從自我簽署根憑證產生用戶端憑證，然後匯出及安裝用戶端憑證。 如果未安裝用戶端憑證，則驗證會失敗。 
 
@@ -77,7 +77,7 @@ ms.locfileid: "84988112"
 
 若要安裝用戶端憑證，請參閱[安裝用戶端憑證](point-to-site-how-to-vpn-client-install-azure-cert.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 繼續使用您的點對站設定。 
 

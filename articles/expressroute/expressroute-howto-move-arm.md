@@ -2,18 +2,18 @@
 title: Azure ExpressRoute：將傳統電路移至 Resource Manager
 description: 本頁面會描述如何使用 PowerShell 將傳統的電路移至 Resource Manager 部署模型。
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.author: charwen
+ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1e1096fcb0f1175df67f47d4ca6c8caf4dc1a0e4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2b88fb32fd4bc07bbaaaf8834646e8d585491dc6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079688"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395684"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>使用 PowerShell 將 ExpressRoute 線路從傳統部署模型移至 Resource Manager 部署模型
 
@@ -155,7 +155,7 @@ Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Locati
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [建立和修改 ExpressRoute 線路的路由](expressroute-howto-routing-arm.md)
 * [將虛擬網路連結至 ExpressRoute 線路](expressroute-howto-linkvnet-arm.md)

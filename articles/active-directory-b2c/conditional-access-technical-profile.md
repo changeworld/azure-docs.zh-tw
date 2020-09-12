@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 080b5a224f3d4a720d8009933ddd9161f56dba0a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d2a62b55ce7f8cd408afeb2f10fd40f42b36d53d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270040"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393933"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義條件式存取技術設定檔
 
@@ -47,11 +47,11 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 ## <a name="conditional-access-evaluation"></a>條件式存取評估
 
-針對每個登入，Azure AD B2C 會評估所有原則，並在授與使用者存取權之前，確保符合所有需求。 「封鎖存取」會覆寫所有其他的設定。 條件式存取技術設定檔的 **評估** 模式會評估使用本機帳戶登入期間 Azure AD B2C 收集的信號。 條件式存取技術設定檔的結果是條件式存取評估所產生的一組宣告。 Azure AD B2C 原則會在下一個協調流程步驟中使用這些宣告來採取行動，例如封鎖使用者或挑戰使用多重要素驗證。 您可以針對此模式設定下列選項。
+針對每個登入，Azure AD B2C 會評估所有原則，並在授與使用者存取權之前，確保符合所有需求。 「封鎖存取」會覆寫所有其他的設定。 條件式存取技術設定檔的 **評估** 模式會評估使用本機帳戶登入期間 Azure AD B2C 收集的信號。 條件式存取技術設定檔的結果是條件式存取評估所產生的一組宣告。 Azure AD B2C 原則會在下一個協調流程步驟中使用這些宣告來採取行動，例如封鎖使用者或使用多重要素驗證來挑戰使用者。 您可以針對此模式設定下列選項。
 
 ### <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | OperationType | 是 | 必須是 **評估**。  |
 
@@ -113,7 +113,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 ### <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | OperationType | 是 | 必須是 **補救**。  |
 

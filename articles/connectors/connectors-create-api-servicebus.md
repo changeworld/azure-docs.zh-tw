@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 09/03/2020
 tags: connectors
-ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 68b81fa8cf110b47581e482e7e546821d40aef62
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853298"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435145"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure Logic Apps 和 Azure 服務匯流排在雲端中交換訊息
 
@@ -167,7 +167,7 @@ ms.locfileid: "88853298"
 
 ## <a name="connector-reference"></a>連接器參考
 
-服務匯流排連接器一次最多可省下1500個唯一會話，從服務匯流排到連接器快取。 如果會話計數超過此限制，就會從快取中移除舊的會話。 如需詳細資訊，請參閱 [訊息會話](../service-bus-messaging/message-sessions.md)。
+從服務匯流排，服務匯流排連接器一次最多可將1500個唯一會話儲存至連接器快取，每個 [服務匯流排訊息實體，例如訂用帳戶或主題](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)。 如果會話計數超過此限制，就會從快取中移除舊的會話。 如需詳細資訊，請參閱 [訊息會話](../service-bus-messaging/message-sessions.md)。
 
 如需有關觸發程式、動作和限制的其他技術詳細資料（如連接器的 Swagger 說明所述），請參閱 [連接器參考頁面](/connectors/servicebus/)。 如需 Azure 服務匯流排訊息的詳細資訊，請參閱 [Azure 服務匯流排是什麼](../service-bus-messaging/service-bus-messaging-overview.md)？
 

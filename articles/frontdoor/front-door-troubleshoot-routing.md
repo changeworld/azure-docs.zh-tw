@@ -1,9 +1,9 @@
 ---
-title: 針對 Azure Front 門板設定問題進行疑難排解
+title: 針對 Azure Front Door 設定問題進行疑難排解
 description: 在本教學課程中，您會了解如何自行排解您可能會面臨的一些 Front Door 常見問題。
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
@@ -11,41 +11,41 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/22/2018
-ms.author: sharadag
-ms.openlocfilehash: 40809fae312401cb62fabb10140b9bb7f60e3715
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.author: duau
+ms.openlocfilehash: babe24d0c934cffac00a5100d1da7ee252d147da
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234766"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399050"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>針對常見路由問題進行疑難排解
 
-本文說明如何針對您的 Azure Front 門板設定，針對您可能會面臨的一些常見路由問題進行疑難排解。
+本文說明如何針對您的 Azure Front Door 設定所面臨的一些常見路由問題進行疑難排解。
 
-## <a name="503-response-from-front-door-after-a-few-seconds"></a>503幾秒後面板的回應
+## <a name="503-response-from-front-door-after-a-few-seconds"></a>在幾秒鐘後，來自 Front Door 的503回應
 
 ### <a name="symptom"></a>徵狀
 
-- 傳送至後端的一般要求若未通過 Front，就會繼續進行，但透過 Front 大門會產生503錯誤回應。
+- 傳送至您的後端但未通過 Front Door 的一般要求已成功，但透過 Front Door 會導致503錯誤回應。
 
-- Front 門板的失敗會在幾秒後顯示 (通常會在30秒後) 
+- Front Door 的失敗會在幾秒後顯示 (通常會在30秒後出現) 
 
 ### <a name="cause"></a>原因
 
-當您的後端超過超時設定時，就會發生此徵兆 (預設值為30秒，) 接收來自 Front 的要求，或超出此超時值，以將回應傳送至來自 Front 門的要求。 
+當您的後端超過 timeout 設定時，就會發生此徵兆 (預設為30秒) 接收來自 Front Door 的要求，或超過此超時值，以將回應傳送至 Front Door 的要求。 
 
 ### <a name="troubleshooting-steps"></a>疑難排解步驟
 
-- 直接將要求傳送給您的後端 (而不需要透過 Front) ，並查看您的後端需要多久的時間才會回應。
-- 透過前門傳送要求，並查看您是否看到任何503回應。 如果沒有，則這可能不是超時問題。 請聯絡支援人員。
-- 如果透過 Front 門板進行，會產生503錯誤回應碼，然後設定 Front sendReceiveTimeout 欄位以將預設的超時時間延長為4分鐘， (240 秒) 。 設定位於底下 `backendPoolSettings` ，而且會呼叫 `sendRecvTimeoutSeconds` 。 
+-  (直接將要求傳送至您的後端，而不需要 Front Door 的) ，並查看您的後端需要多久的時間才能回應。
+- 透過 Front Door 傳送要求，並查看是否看到任何503回應。 如果沒有，則這可能不是超時問題。 請聯絡支援人員。
+- 如果透過 Front Door 會導致503錯誤回應碼，請為您的 Front Door 設定 sendReceiveTimeout 欄位，將預設的超時時間延長為4分鐘 (240 秒) 。 設定是在底下， `backendPoolSettings` 並且會呼叫 `sendRecvTimeoutSeconds` 。 
 
 ## <a name="requests-sent-to-the-custom-domain-returns-400-status-code"></a>傳送至自訂網域的要求會傳回400狀態碼
 
 ### <a name="symptom"></a>徵狀
 
-- 您已建立 Front 門，但對網域或前端主機的要求傳回 HTTP 400 狀態碼。
+- 您已建立 Front Door，但對網域或前端主機的要求傳回 HTTP 400 狀態碼。
 
 - 您已建立從自訂網域到您所設定前端主機的 DNS 對應。 不過，將要求傳送至自訂網域主機名稱會傳回 HTTP 400 狀態碼，而且似乎不會路由傳送至您已設定的後端。
 
@@ -57,15 +57,15 @@ ms.locfileid: "88234766"
 
 新增從自訂網域到所需後端集區的路由規則。
 
-## <a name="front-door-is-not-redirecting-http-to-https"></a>Front 門不會將 HTTP 重新導向至 HTTPS
+## <a name="front-door-is-not-redirecting-http-to-https"></a>Front Door 不會將 HTTP 重新導向至 HTTPS
 
 ### <a name="symptom"></a>徵狀
 
-您的 Front，有一條路由規則顯示 [將 HTTP 重新導向至 HTTPS]，但存取網域仍會將 HTTP 維護為通訊協定。
+您的 Front Door 有一條路由規則，指出將 HTTP 重新導向至 HTTPS，但存取網域仍會以通訊協定的形式維護 HTTP。
 
 ### <a name="cause"></a>原因
 
-如果您沒有正確設定 Front 的路由規則，就可能會發生這種行為。 基本上，您目前的設定並不明確，而且可能會有衝突的規則。
+如果您未正確設定 Front Door 的路由規則，則可能會發生這種行為。 基本上，您目前的設定不是特定的，而且可能會有衝突的規則。
 
 ### <a name="troubleshooting-steps"></a>疑難排解步驟
 
@@ -79,8 +79,8 @@ ms.locfileid: "88234766"
 
 這個徵狀的可能原因有幾個，包括︰
 
-- 後端不是公開的後端，因此不會顯示在 Front 中。
-- 後端設定錯誤，這會導致前門傳送錯誤的要求 (也就是說，您的後端只接受 HTTP，但未核取 [允許 HTTPS]，因此 Front 門會嘗試將 HTTPS 要求轉送) 。
+- 後端不是對外公開的後端，且 Front Door 看不到。
+- 後端的設定不正確，這會導致 Front Door 傳送錯誤的要求 (也就是說，您的後端只接受 HTTP，但是您未取消核取 [允許 HTTPS]，Front Door 嘗試將 HTTPS 要求轉寄) 。
 - 後端會拒絕已透過要求轉送至後端的主機標頭。
 - 尚未完整部署後端的組態。
 
@@ -98,7 +98,7 @@ ms.locfileid: "88234766"
 
 
 3. 檢查路由規則設定
-    - 瀏覽到應會從有問題的前端主機名稱路由傳送至後端集區的路由規則。 確定接受的通訊協定設定正確，若非如此，請確定已正確設定 Front Door 在轉送要求時會使用的通訊協定。 [ _接受的通訊協定_ ] 欄位會決定 front 門板應接受的要求，而 _轉送通訊協定_ 則決定 front 門板應使用哪一個通訊協定來將要求轉送至後端。
+    - 瀏覽到應會從有問題的前端主機名稱路由傳送至後端集區的路由規則。 確定接受的通訊協定設定正確，若非如此，請確定已正確設定 Front Door 在轉送要求時會使用的通訊協定。 [ _接受的通訊協定_ ] 欄位會決定 Front Door 應接受哪些要求，且 _轉送通訊協定_ 會決定 Front Door 應該使用哪一個通訊協定將要求轉送至後端。
          - 例如，如果後端只接受 HTTP 要求，則下列組態會有效：
             - [接受的通訊協定]__ 為 HTTP 和 HTTPS。 [轉送通訊協定]__ 為 HTTP。 比對要求無法運作，因為 HTTPS 是允許的通訊協定，而如果要求以 HTTPS 形式傳入，Front Door 會嘗試使用 HTTPS 轉送它。
 

@@ -7,24 +7,24 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: b08324654a046b5a2296f6e533107c1b26a0e1fc
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 14c4877e9692a35cb5b20e8d357c74fbb1dc909a
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606887"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419787"
 ---
 # <a name="lead-management-for-the-commercial-marketplace"></a>商業 marketplace 的潛在客戶管理
 
 客戶是所有優秀企業的核心。 在現今的產品併購變革中，行銷人員需要著重在直接與客戶連結，建立關係。 這也是為什麼產生高品質潛在客戶，對您的銷售循環而言是一個相當關鍵的工具。 在 [合作夥伴中心](https://partner.microsoft.com/)中列出您的供應項目後，系統會為您啟用工具，讓您在客戶對您市集中的產品表達興趣，或部署您的產品後，能以程式化方式，立即收到客戶連絡資訊。 
 
-## <a name="what-are-leads-in-the-marketplace"></a>什麼是市集中的潛在客戶？
+## <a name="what-are-leads-in-the-commercial-marketplace"></a>商業 marketplace 中有哪些潛在客戶？
 
-潛在客戶是對您在 Marketplace 中的產品有興趣，或從 Marketplace 部署您產品的客戶。 無論您的產品是列在 Azure Marketplace 或 AppSource 上，只要將產品從您的 CRM 正確地設定到合作夥伴中心的清單中，您就能夠從客戶端接收到潛在客戶。 
+潛在客戶來自于有興趣或從商業 marketplace 部署您產品的客戶。 當您在合作夥伴中心中將 CRM 與您的清單 () 連線後，您就能從 Azure Marketplace 和 AppSource 客戶獲得潛在客戶。
 
 ## <a name="how-to-connect-your-crm-system-with-partner-center"></a>如何將 CRM 系統與合作夥伴中心連線
 
-為了能開始取得潛在客戶，我們在合作夥伴中心上設計了潛在客戶管理連接器，可讓您輕鬆地將可用 CRM 系統清單的 CRM 資訊插入合作夥伴中心。 現在您無須耗費浩大的工程心力來整合外部系統，便可以輕鬆地運用由 Marketplace 產生的潛在客戶。
+合作夥伴中心中的潛在客戶管理連接器的設計，是為了讓您可以輕鬆地將 CRM 資訊插入 crm 系統清單。 現在您無須耗費浩大的工程心力來整合外部系統，便可以輕鬆地運用由 Marketplace 產生的潛在客戶。
 
 以下逐步指示將說明如何連線每個潛在客戶目的地：
 
@@ -38,25 +38,25 @@ ms.locfileid: "88606887"
 
 **HTTPS 端點** - 如需如何設定 HTTPS 端點以取得潛在客戶的說明，請參閱[使用 HTTPS 端點來管理商業市集潛在客戶](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md)。
 
-您妥善設定您的潛在客戶目的地，並按下您供應項目上的 [發佈] 後，我們將驗證連接，並傳送測試用潛在客戶給您。 在上架前檢視供應項目時，您也可以試著在預覽環境中自行取得供應項目，藉此測試您的潛在客戶連線。 關鍵是，請務必確定您的潛在客戶設定保持在最新狀態，如此您將不會流失潛在客戶；因此您的商務若有變更，請記得更新這些連接。
+當您正確設定您的潛在客戶目的地並要求發佈您的供應專案時，我們會驗證連線，並將測試潛在客戶傳送給您。 在上架前檢視供應項目時，您也可以試著在預覽環境中自行取得供應項目，藉此測試您的潛在客戶連線。 關鍵是，請務必確定您的潛在客戶設定保持在最新狀態，如此您將不會流失潛在客戶；因此您的商務若有變更，請記得更新這些連接。
 
 ### <a name="what-are-the-next-steps"></a>後續步驟是什麼？
 
-技術設定完成後，您應該將這些潛在客戶整合至您目前的銷售與行銷策略，以及營運流程當中。 我們有興趣進一步了解您的整體銷售流程，並想與您密切合作，為您提供高品質潛在客戶及足夠的資料，讓您獲致成功。 我們歡迎您針對我們如何能最佳化及改善我們傳送給您的潛在客戶，及提供額外資料協助這些客戶達成您的成就，提出您的意見反應。 如果您有興趣提供意見反應及建議，讓我們的銷售團隊能推出更成功的 Marketplace 潛在客戶，請告訴我們。
+技術設定完成後，您應該將這些潛在客戶整合至您目前的銷售與行銷策略，以及營運流程當中。 我們想要瞭解您的整體銷售流程，並想要與您密切合作，為您提供高品質的潛在客戶和足夠的資料，讓您能夠成功。 我們歡迎您針對我們如何能最佳化及改善我們傳送給您的潛在客戶，及提供額外資料協助這些客戶達成您的成就，提出您的意見反應。 如果您有興趣提供意見反應及建議，讓我們的銷售團隊能推出更成功的商業市集潛在客戶，請告訴我們。
 
 ## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a>在合作夥伴中心發佈時的常見潛在客戶設定錯誤
 
 **無法將潛在客戶儲存至 Dynamics CRM。請檢查 Dynamics CRM 帳戶設定。LastCRMError：無法登入 Dynamics CRM、LastCRMException：** 
 
-> 如果已選取 O365 驗證，請檢查使用者帳戶和密碼是否有效。 如果已選取 AAD，請檢查租用戶識別碼、應用程式識別碼和應用程式祕密金鑰是否符合 AAD 上已設定的項目。 遵循[這裡](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)的指示。 如果帳戶使用者名稱/密碼有效，請確定其可以存取 Dynamics 365，並已指派授權 (如果是使用 Azure Active Directory，請參考步驟 11-15，如果使用 Office 使用者，請參考安全性設定)。 
+> 如果已選取 O365 驗證，請檢查使用者帳戶和密碼是否有效。 如果選取了 Azure Active Directory，請檢查租使用者識別碼、應用程式識別碼和應用程式秘密金鑰是否符合 Azure Active Directory 上設定的專案。 遵循[這裡](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)的指示。 如果帳戶使用者名稱/密碼有效，請確定其可以存取 Dynamics 365，並已指派授權 (如果是使用 Azure Active Directory，請參考步驟 11-15，如果使用 Office 使用者，請參考安全性設定)。 
 
 **無法將潛在客戶儲存至 Dynamics CRM。使用者沒有在潛在客戶實體中建立 leadsourcecode 屬性的權限** 
 
-> 應用程式/使用者遺失 Microsoft Marketplace 潛在客戶寫入器的安全性角色。 請參閱[此處](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)，如果使用 Azure Active Directory，請遵循步驟 11 至 15，如果是使用 Office 使用者，請遵循安全性設定。
+> 應用程式/使用者遺失 Microsoft Marketplace 潛在客戶寫入器的安全性角色。 如果使用 Azure Active Directory，請遵循步驟11-15，如果 [在此處](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)使用 Office 使用者，請遵循安全性設定。
 
 **無法使用 AAD 將潛在客戶儲存至 Dynamics CRM。例外狀況：找不到租用戶。如果沒有任何作用中的租用戶訂用帳戶，可能會發生這個情況。**  
 
-> 潛在客戶管理一節中提供的目錄識別碼不是有效的目錄。 請根據[此處](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)步驟 2 中的指示取得目錄識別碼 (在 Azure Active Directory 下)。
+> 潛在客戶管理一節中提供的目錄識別碼不是有效的目錄。 請根據 Azure Active Directory) [此處](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)的步驟 2 (中的指示取得目錄識別碼。
 
 **無法將潛在客戶儲存至 Dynamics CRM。LastCRMError：SecLib::RetrievePrivilegeForUser 失敗 - 沒有指派任何角色給使用者。**  
 
@@ -76,7 +76,7 @@ ms.locfileid: "88606887"
 
 **無法將潛在客戶儲存至 Dynamics CRM。LastCRMError：等待回覆至 00:02:00 之後，要求通道逾時。提高傳遞至呼叫要求的逾時值，或增加繫結上的 SendTimeout 值。分配給此作業的時間可能是較長逾時的一部分。**  
 
-> 解決方案：登入合作夥伴中心，查看店面詳細資料 >> 潛在客戶目的地 >> URL，檢查是否為有效的 Dynamics CRM 執行個體。
+> 解決方式：登入合作夥伴中心，檢查供應專案設定 >> 客戶潛在客戶 >> URL，檢查它是否為有效的動態 CRM 實例。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
@@ -139,7 +139,7 @@ title = MSFT_TEST_636573304831318844
 - 動作：
   - 「INS」-代表安裝。 這代表客戶在 Azure Marketplace 或 AppSource按下按鈕，取得您的產品。
   - "PLT"-代表合作夥伴主導的試用。 這代表客戶在 AppSource 按下「與我連絡」按鈕。
-  - "DNC"-代表「請勿聯絡」。 這代表在 AppSource，交叉列於您的應用程式頁面的合作夥伴，收到連絡要求。 我們分享此客戶交叉列於您的應用程式的通知，但無須連絡他們。
+  - "DNC"-代表「請勿聯絡」。 這代表在 AppSource，交叉列於您的應用程式頁面的合作夥伴，收到連絡要求。 我們即將共用此客戶在您的應用程式上的交叉列，但不需要聯繫。
   - "Create"-這只會在 Azure 入口網站內部，而且客戶會在其帳戶中購買您的供應專案時使用。
   - "StartTestDrive"-這只適用于測試磁片磁碟機，而且每次客戶啟動其試用產品時都是如此。
 
@@ -190,4 +190,4 @@ title = MSFT_TEST_636573304831318844
 
 **我已將 Azure 儲存體 (BLOB/資料表) 設定為我的潛在客戶目的地，它的售價如何？** 
 
-潛在客戶的一般資料很小 (幾乎所有的發行者都 < 1 GB)。 售價取決於所收到的潛在客戶數量，如果在一個月內收到 1,000 個潛在客戶，則成本大約 50 分。 
+對於幾乎所有發行者) 而言，潛在客戶產生資料的 ( # B0 1 GB 都很低。 售價取決於所收到的潛在客戶數量，如果在一個月內收到 1,000 個潛在客戶，則成本大約 50 分。 

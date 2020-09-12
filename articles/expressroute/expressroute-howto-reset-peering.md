@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute：重設線路對等互連
-description: 瞭解如何使用 Azure PowerShell 來停用和啟用 Azure ExpressRoute 電路的對等互連。 當您設定對等互連時，預設會啟用它們。
+description: 瞭解如何使用 Azure PowerShell 來停用和啟用 Azure ExpressRoute 線路的對等互連。 當您設定對等互連時，預設會啟用這些設定。
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/13/2018
-ms.author: charwen
-ms.openlocfilehash: e576fe2f08d54d2642603e3b7974e00feec8ce93
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: duau
+ms.openlocfilehash: f3b34966aa46ca8d663f83ab2aceafa4b0dda2eb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192183"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395735"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>重設 ExpressRoute 線路對等互連
 
@@ -20,7 +20,7 @@ ms.locfileid: "88192183"
 
 有數個案例可能會讓您覺得重設 ExpressRoute 對等互連很實用。
 * 測試您的災害復原設計和實作。 例如，您有兩個 ExpressRoute 線路。 您可以停用一個線路的對等互連，並強制將網路流量容錯移轉至另一個線路。
-* 在 Azure 私用對等互連或 ExpressRoute 線路的 Microsoft 對等互連上，啟用 (BFD) 的雙向轉送偵測。 如果您的 ExpressRoute 線路是在 1 2018 年8月之後建立，則在 Azure 私用對等互連上預設會啟用 BFD，如果您的 ExpressRoute 線路是在 10 2020 年1月之後建立的， 如果您的線路是在那之前建立的，則不會啟用 BFD。 您可以藉由停用對等互連並重新啟用它來啟用 BFD。 
+* 在 Azure 私人對等互連或 ExpressRoute 線路的 Microsoft 對等互連上啟用雙向轉送偵測 (BFD) 。 如果您的 expressroute 線路是在 1 2018 年8月之後建立的，則在 Azure 私人對等互連上預設會啟用 BFD，如果您的 ExpressRoute 線路是在 10 2020 年1月之後建立的。 如果您的線路是在那之前建立的，則不會啟用 BFD。 您可以藉由停用對等互連並重新啟用它來啟用 BFD。 
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
@@ -141,7 +141,7 @@ ms.locfileid: "88192183"
    ```
    對等互連應該處於您所設定的狀態。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如果您需要協助以進行 ExpressRoute 問題的疑難排解，請參閱下列文章：
 * [確認 ExpressRoute 連線](expressroute-troubleshooting-expressroute-overview.md)
 * [網路效能疑難排解](expressroute-troubleshooting-network-performance.md)

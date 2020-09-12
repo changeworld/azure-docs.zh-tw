@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: fd44c07ea44e7487a22b0de67737dcc135c813b6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: ce4c44ef17f456a776fde3addc5ec4ed29c8ebbd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038033"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434447"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
 
 服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤，而盡可能簡化網路安全性規則頻繁的更新。
 
-您可以使用服務標籤來定義[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) 或 [Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)的網路存取控制。 建立安全性規則時，請以服務標籤取代特定的 IP 位址。 您可以在規則的適當*來源* 或 *目的地* 欄位中指定服務標籤名稱 (例如 **ApiManagement**)，以允許或拒絕對應服務的流量。
+您可以使用服務標籤來定義[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) 或 [Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)的網路存取控制。 建立安全性規則時，請以服務標籤取代特定的 IP 位址。 藉由在規則的適當*來源*或目的地欄位中指定服務標籤名稱（例如**ApiManagement**）    *destination*   ，您可以允許或拒絕對應服務的流量。
 
 您可以使用服務標籤進行網路隔離，以及在存取具有公用端點的 Azure 服務時，防止一般網際網路存取您的 Azure 資源。 建立輸入/輸出網路安全性群組規則，可拒絕進出於**網際網路**的流量，並允許 **AzureCloud** 或特定 Azure 服務的其他[可用服務標籤](#available-service-tags)的輸入/輸出流量。
 
@@ -54,7 +54,7 @@ ms.locfileid: "86038033"
 | **AzureBackup** |Azure 備份。<br/><br/>*注意：* 此標籤相依於 **Storage** 和 **AzureActiveDirectory** 標籤。 | 輸出 | 否 | 是 |
 | **AzureBotService** | Azure Bot Service。 | 輸出 | 否 | 否 |
 | **AzureCloud** | 所有的[資料中心公用 IP 位址](https://www.microsoft.com/download/details.aspx?id=56519)。 | 輸出 | 是 | 是 |
-| **AzureCognitiveSearch** | Azue 認知搜尋。 <br/><br/>此標籤或其涵蓋的 IP 位址可用來授與索引子對資料來源的安全存取。 如需詳細資訊，請參閱[索引子連線文件](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors)。 <br/><br/> *注意*：搜尋服務的 IP 未包含在此服務標籤的 IP 範圍清單中，且**還必須新增至**資料來源的 IP 防火牆。 | 輸入 | 否 | 否 |
+| **AzureCognitiveSearch** | Azue 認知搜尋。 <br/><br/>此標籤或其涵蓋的 IP 位址可用來授與索引子對資料來源的安全存取。 如需詳細資訊，請參閱 [索引子連接檔](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors) 。 <br/><br/> *注意*：搜尋服務的 IP 未包含在此服務標籤的 IP 範圍清單中，且**還必須新增至**資料來源的 IP 防火牆。 | 輸入 | 否 | 否 |
 | **AzureConnectors** | 用於探查/後端連線的 Azure Logic Apps 連接器。 | 輸入 | 是 | 是 |
 | **AzureContainerRegistry** | Azure Container Registry。 | 輸出 | 是 | 是 |
 | **AzureCosmosDB** | Azure Cosmos DB。 | 輸出 | 是 | 是 |
@@ -96,7 +96,7 @@ ms.locfileid: "86038033"
 | **PowerQueryOnline** | Power Query Online。 | 兩者 | 否 | 否 |
 | **ServiceBus** | 使用進階服務層級的 Azure 服務匯流排流量。 | 輸出 | 是 | 是 |
 | **ServiceFabric** | Azure Service Fabric。<br/><br/>*注意：* 此標籤代表各區域控制平面的 Service Fabric 服務端點。 此標籤可讓客戶從其 VNET 執行 Service Fabric 叢集的管理作業 (端點，例如 https:// westus.servicefabric.azure.com) | 兩者 | 否 | 否 |
-| **Sql** | Azure SQL Database、適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫和 Azure SQL 資料倉儲。<br/><br/>*注意：* 此標籤代表服務，但不代表服務的特定執行個體。 例如，標籤代表 SQL Database 或伺服器服務，但不代表特定的 Azure SQL Database。 此標記不適用於 SQL 受控執行個體。 | 輸出 | 是 | 是 |
+| **Sql** | Azure SQL Database、適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫和 Azure Synapse Analytics。<br/><br/>*注意：* 此標籤代表服務，但不代表服務的特定執行個體。 例如，標籤代表 SQL Database 或伺服器服務，但不代表特定的 Azure SQL Database。 此標籤不適用於 SQL 受控執行個體。 | 輸出 | 是 | 是 |
 | **SqlManagement** | SQL 專用部署的管理流量。 | 兩者 | 否 | 是 |
 | **Storage** | Azure 儲存體。 <br/><br/>*注意：* 此標籤代表服務，但不代表服務的特定執行個體。 例如，標籤代表 Azure 儲存體服務，但不代表特定的 Azure 儲存體帳戶。 | 輸出 | 是 | 是 |
 | **StorageSyncService** | 儲存體同步服務。 | 兩者 | 否 | 否 |
@@ -140,7 +140,7 @@ ms.locfileid: "86038033"
 - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062) 
 - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)   
 
-這些檔案中的 IP 位址範圍是 CIDR 標記法。 
+這些檔案中的 IP 位址範圍是以 CIDR 標記法表示。 
 
 > [!NOTE]
 >這項資訊的子集已發佈在 XML 檔案中，適用於 [Azure 公用](https://www.microsoft.com/download/details.aspx?id=41653)、[Azure 中國](https://www.microsoft.com/download/details.aspx?id=42064)和 [Azure 德國](https://www.microsoft.com/download/details.aspx?id=54770)。 這些 XML 下載將於 2020 年 6 月 30 日淘汰，且在該日期後即無法使用。 您應依照先前幾節的說明進行遷移，以使用探索 API 或 JSON 檔案下載。

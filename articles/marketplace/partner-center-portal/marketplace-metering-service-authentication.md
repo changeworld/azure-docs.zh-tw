@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 42a76a2cf583a57ae5b38fe051ee48d16d705dd2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e8f9a8e1d10e39e37480e06a25fcc0e203a104ec
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319961"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378724"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Marketplace 計量服務驗證策略
 
@@ -25,11 +25,11 @@ Marketplace 計量服務支援兩種驗證策略：
 
 ## <a name="using-the-azure-ad-security-token"></a>使用 Azure AD 安全性權杖
 
-適用的供應專案類型為 transactable SaaS 和具備受控應用程式方案類型的 Azure 應用程式。  
+適用的供應專案類型為可交易 SaaS 和具有受控應用程式方案類型的 Azure 應用程式。  
 
-使用預先定義的固定 Azure AD 應用程式識別碼來提交自訂計量以進行驗證。
+使用預先定義的固定 Azure AD 應用程式識別碼來提交自訂計量，以進行驗證。
 
-針對 SaaS 供應專案，這是唯一可用的選項。 如[註冊 saas 應用程式](./pc-saas-registration.md)中所述，這是發佈任何 saas 供應專案的必要步驟。
+針對 SaaS 供應專案，這是唯一可用的選項。 如 [註冊 saas 應用程式](./pc-saas-registration.md)中所述，發佈任何 saas 供應專案是必要的步驟。
 
 若為具有受控應用程式方案的 Azure 應用程式，建議於下列情況考慮使用此策略：
 
@@ -68,10 +68,10 @@ Marketplace 計量服務支援兩種驗證策略：
 
 |  **屬性名稱**  |  **必要**  |  **說明**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   True         | 授與類型。 使用 `client_credentials`。 |
+|  `Grant_type`       |   True         | 授與類型。 請使用 `client_credentials`。 |
 |  `Client_id`        |   True         | 與 Azure AD 應用程式相關聯的用戶端/應用程式識別碼。|
 |  `client_secret`    |   True         | 與 Azure AD 應用程式相關聯的密碼。  |
-|  `Resource`         |   True         | 要求權杖的目標資源。 使用 `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`。 |
+|  `Resource`         |   True         | 要求權杖的目標資源。 請使用 `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`。 |
 | | | |
 
 #### <a name="response"></a>*回應*
@@ -106,7 +106,7 @@ Marketplace 計量服務支援兩種驗證策略：
 >[!Note]
 >發行者應確保發出使用量的資源已鎖定，不會遭到篡改。
 
-您的受控應用程式可以含有從虛擬機器到 Azure Functions 等不同類型的資源。  如需有關如何使用不同服務的受控識別進行驗證的詳細資訊，請參閱[如何使用適用于 Azure 資源的受控](../../active-directory/managed-identities-azure-resources/overview.md#how-can-i-use-managed-identities-for-azure-resources)識別）。
+您的受控應用程式可以含有從虛擬機器到 Azure Functions 等不同類型的資源。  如需有關如何使用不同服務的受控識別進行驗證的詳細資訊，請參閱 [如何使用適用于 Azure 資源的受控](../../active-directory/managed-identities-azure-resources/overview.md#how-can-i-use-managed-identities-for-azure-resources) 識別) 。
 
 舉例來說，請按照下列步驟以使用 Windows VM 進行驗證。
 
@@ -115,7 +115,7 @@ Marketplace 計量服務支援兩種驗證策略：
     * [CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
     * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
     * [Azure Resource Manager 範本](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-    * [REST](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity)）
+    * [REST](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity)) 
     * [Azure SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 1. 使用系統身分識別取得 Marketplace 計量服務應用程式識別碼的存取權杖 (`20e940b3-4c77-4b0b-9a53-9e16a1b010a7`)、透過 RDP 連接到 VM、開啟 PowerShell 主控台，然後執行下列命令
@@ -145,7 +145,7 @@ Marketplace 計量服務支援兩種驗證策略：
 
     ```powershell
     # Get resourceUsageId from the managed app
-    $managedAppUrl = "https://management.azure.com" + $managedappId + "\?api-version=2019-07-01"
+    $managedAppUrl = "https://management.azure.com/subscriptions/" + $metadata.compute.subscriptionId + "/resourceGroups/" + $metadata.compute.resourceGroupName + "/providers/Microsoft.Solutions/applications/" + $managedappId + "\?api-version=2019-07-01"
     $ManagedApp = curl $managedAppUrl -H $Headers | Select-Object -Expand Content | ConvertFrom-Json
     # Use this resource ID to emit usage 
     $resourceUsageId = $ManagedApp.properties.billingDetails.resourceUsageId
@@ -156,4 +156,4 @@ Marketplace 計量服務支援兩種驗證策略：
 ## <a name="next-steps"></a>後續步驟
 
 * [建立 Azure 應用程式供應項目](./create-new-azure-apps-offer.md)
-* [建立 transactable SaaS 供應專案](./offer-creation-checklist.md)
+* [計畫 SaaS 供應項目](../plan-saas-offer.md)

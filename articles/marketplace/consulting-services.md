@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9745dce03d87b447dfd606f021891794cb343593
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814717"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419749"
 ---
 # <a name="consulting-service-offers"></a>諮詢服務供應項目
 
@@ -22,16 +22,16 @@ ms.locfileid: "88814717"
 
 ## <a name="compare-consulting-services"></a>比較諮詢服務
 
-商業 marketplace 線上商店、Microsoft AppSource 和 Azure Marketplace 會與物件和雲端產品保持一致，以協助客戶找到所需的內容。 每個線上商店都有專門的發佈選項，可協助您將發佈投資最大化。 若要深入瞭解這兩個線上商店之間的差異，請參閱 [比較 Microsoft AppSource 和 Azure Marketplace](comparing-appsource-azure-marketplace.md)。
+商業 marketplace 線上商店、Microsoft AppSource 和 Azure Marketplace 都與解決方案類型和雲端產品一致，以協助客戶找到所需的內容。 每個線上商店都有專門的發佈選項，可協助您將發佈投資最大化。 若要深入瞭解這兩個線上商店之間的差異，請參閱 [比較 Microsoft AppSource 和 Azure Marketplace](comparing-appsource-azure-marketplace.md)。
 
 以 Dynamics 365、Power Apps 和 Power BI 為基礎的諮詢服務供應項目有資格在 AppSource 上列出。 如需詳細資訊，請參閱 [Microsoft AppSource 諮詢服務清單清單指導方針](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF 檔案。
 
 以 Microsoft Azure 為基礎的諮詢服務和受控服務供應項目，都有資格在 Azure Marketplace 上列出。 如需詳細資訊，請參閱[發佈 Azure 諮詢服務供應項目](./partner-center-portal/create-consulting-service-offer.md)和[將受控服務供應項目發佈到 Azure Marketplace](../lighthouse/how-to/publish-managed-services-offers.md)。
 
 > [!Note]
-> Azure Marketplace 中的諮詢服務應專注於技術受重的供應項目，並著重於 Azure 技術解決方案和服務。
+> Azure Marketplace 中的諮詢服務應著重于 Azure 技術解決方案和服務。
 >
-> AppSource 中的諮詢服務應專注於具備專業知識而有能力提供高品質的 Dynamics 365、Power BI 或 Power 應用程式解決方案的使用者所適用的供應項目。
+> AppSource 中的諮詢服務應著重于 Dynamics 365、Power BI 或 Power Apps 的商務解決方案。
  
 > [!TIP]
 > 若要發佈至 Azure Marketplace，請在 [合作夥伴中心 **主要產品** ] 下拉式清單中選取 [ **Azure**]。
@@ -131,7 +131,7 @@ ms.locfileid: "88814717"
 > * **親自** – 客戶所在地點或合作夥伴的設施。
 > * **虛擬** – 透過電話會議、Web 會議或遠端實作。
 
-一旦您已設定先前所列的必要元素，內容檢閱小組將會針對您的目標對象，驗證供應項目描述是否具有足夠資訊且完整。 
+在您設定先前列出的必要元素之後，內容審查小組將會驗證您的供應專案描述是否為資訊和完整。 
 
 ### <a name="the-listing-title"></a>清單標題
 
@@ -171,9 +171,5 @@ ms.locfileid: "88814717"
 
 ## <a name="next-steps"></a>後續步驟
 
-了解如何[使用 Azure Marketplace 來拓展您的雲端業務](https://azuremarketplace.microsoft.com/sell) (若您尚不了解)。
-
-若要註冊並開始使用合作夥伴中心：
-
-* [登入合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，以建立或完成您的供應項目。
-* 如需詳細資訊，請參閱[建立諮詢服務供應項目](./partner-center-portal/create-consulting-service-offer.md)。
+- [利用 Azure Marketplace 拓展您的雲端業務](https://azuremarketplace.microsoft.com/sell)。
+- [建立諮詢服務供應項目](./partner-center-portal/create-consulting-service-offer.md)

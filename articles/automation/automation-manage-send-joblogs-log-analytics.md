@@ -3,14 +3,14 @@ title: 將 Azure 自動化作業資料轉送至 Azure 監視器記錄
 description: 本文說明如何將作業狀態和 Runbook 作業串流傳送至 Azure 監視器記錄。
 services: automation
 ms.subservice: process-automation
-ms.date: 05/22/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2fe6cbdbcb0cf5b5c28d34f2059a2b070b059566
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6dcd2005971927de30ca96173cb2bdb063e46663
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004744"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397420"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>將 Azure 自動化作業資料轉送至 Azure 監視器記錄
 
@@ -22,37 +22,57 @@ Azure 自動化可以將 Runebook 作業狀態和作業資料流傳送到您的 
 * 將「自動化」帳戶之間的作業相互關聯。
 * 使用自訂檢視和搜尋查詢，以視覺化方式檢視您的 Runbook 結果、Runbook 作業狀態，以及其他相關的關鍵指標或計量。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
-## <a name="prerequisites-and-deployment-considerations"></a>先決條件和部署考量
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始將自動化記錄傳送到 Azure 監視器記錄，您需要：
 
 * 最新版的 [Azure PowerShell](/powershell/azure/)。
-* Log Analytics 工作區。 如需詳細資訊，請參閱[開始使用 Azure 監視器記錄](../azure-monitor/overview.md)。
-* 您「Azure 自動化」帳戶的資源識別碼。
 
-使用下列命令尋找您「Azure 自動化」帳戶的資源識別碼：
+* Log Analytics 工作區及其資源識別碼。 如需詳細資訊，請參閱[開始使用 Azure 監視器記錄](../azure-monitor/overview.md)。
 
-```powershell-interactive
-# Find the ResourceId for the Automation account
-Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
-```
+* 您 Azure 自動化帳戶的資源識別碼。
 
-若要尋找您 Log Analytics 工作區的資源識別碼，請執行下列 PowerShell 命令：
+## <a name="how-to-find-resource-ids"></a>如何尋找資源識別碼
 
-```powershell-interactive
-# Find the ResourceId for the Log Analytics workspace
-Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
-```
+1. 使用下列命令尋找您「Azure 自動化」帳戶的資源識別碼：
+
+    ```powershell-interactive
+    # Find the ResourceId for the Automation account
+    Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
+    ```
+
+2. 複製 **ResourceID**的值。
+
+3. 使用下列命令來尋找 Log Analytics 工作區的資源識別碼：
+
+    ```powershell-interactive
+    # Find the ResourceId for the Log Analytics workspace
+    Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
+    ```
+
+4. 複製 **ResourceID**的值。
+
+若要傳回特定資源群組的結果，請包含 `-ResourceGroupName` 參數。 如需詳細資訊，請參閱 [get-azresource](/powershell/module/az.resources/get-azresource)。
 
 如果您在上述命令的輸出中有一個以上的自動化帳戶或工作區，您可以執行下列動作，以尋找屬於自動化帳戶完整資源識別碼的名稱和其他相關屬性：
 
-1. 在 **Azure 入口網站**中，從 [自動化帳戶] 頁面選取您的自動化帳戶。 
-2. 在所選自動化帳戶頁面的 [帳戶設定] 下，選取 [內容]。  
-3. 在 [屬性] 頁面上，記下如下所示的詳細資料。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 在 **Azure 入口網站**中，從 [自動化帳戶] 頁面選取您的自動化帳戶。
+1. 在所選自動化帳戶頁面的 [帳戶設定] 下，選取 [內容]。
+1. 在 [屬性] 頁面上，記下如下所示的詳細資料。
 
-    ![自動化帳戶屬性](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png)。
+    ![自動化帳戶屬性](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
+
+## <a name="configure-diagnostic-settings"></a>設定診斷設定
+
+自動化診斷設定支援轉送下列平臺記錄和度量資料：
+
+* JobLogs
+* JobStreams
+* DSCNodeStatus
+* 計量-作業總計、更新部署機器執行總數、更新部署執行總數
+
+若要開始將自動化記錄傳送至 Azure 監視器記錄檔，請參閱 [建立診斷設定](../azure-monitor/platform/diagnostic-settings.md) 以瞭解可用來設定診斷設定以傳送平臺記錄檔的功能和方法。
 
 ## <a name="azure-monitor-log-records"></a>Azure 監視器記錄
 
@@ -102,38 +122,9 @@ Azure 自動化診斷會在 Azure 監視器記錄檔中建立兩種類型的記�
 | ResourceProvider | 資源提供者。 該值是 MICROSOFT.AUTOMATION. |
 | ResourceType | 資源類型。 此值為 AUTOMATIONACCOUNTS。 |
 
-## <a name="set-up-integration-with-azure-monitor-logs"></a>設定與 Azure 監視器記錄進行的整合
-
-1. 在您的電腦上，從 [開始] 畫面啟動 Windows PowerShell。
-2. 執行下列 PowerShell 命令，然後使用先前區段的值來編輯 `$automationAccountId` 和 `$workspaceId` 的值。
-
-   ```powershell-interactive
-   $workspaceId = "resource ID of the log analytics workspace"
-   $automationAccountId = "resource ID of your Automation account"
-
-   Set-AzDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled 1
-   ```
-
-執行這個指令碼之後，可能在一小時後，您才會開始在 Azure 監視器記錄中看見寫入新 `JobLogs` 或 `JobStreams` 的記錄。
-
-若要查看記錄，請在 Log Analytics 記錄搜尋中執行下列查詢：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
-
-### <a name="verify-configuration"></a>驗證組態
-
-若要確認您的「自動化」帳戶會將記錄傳送到 Log Analytics 工作區，請使用下列 PowerShell 命令來確認已在「自動化」帳戶上正確設定診斷。
-
-```powershell-interactive
-Get-AzDiagnosticSetting -ResourceId $automationAccountId
-```
-
-在輸出中，確定：
-
-* 在 `Logs` 底下，`Enabled` 的值為 True。
-* `WorkspaceId` 是設定為 Log Analytics 工作區的 `ResourceId` 值。
-
 ## <a name="view-automation-logs-in-azure-monitor-logs"></a>檢視 Azure 監視器記錄中的自動化記錄
 
-既然您已經開始將「自動化」作業記錄傳送到 Azure 監視器記錄，讓我們來看看這些記錄在 Azure 監視器記錄中的運用方式。
+既然您已經開始將自動化工作串流和記錄傳送至 Azure 監視器記錄，讓我們看看您可以如何在 Azure 監視器記錄檔中使用這些記錄。
 
 若要查看記錄，請執行下列查詢：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
@@ -163,26 +154,41 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 
 ### <a name="view-job-streams-for-a-job"></a>檢視工作的工作資料流
 
-當您在針對作業進行偵錯時，也可以深入查看作業串流。 下列查詢會顯示單一作業具有 GUID 2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0 的所有資料流：
+當您在針對作業進行偵錯時，也可以深入查看作業串流。 下列查詢會顯示具有 GUID 的單一作業的所有資料流程 `2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0` ：
 
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and JobId_g == "2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0" | sort by TimeGenerated asc | project ResultDescription`
+```kusto
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and JobId_g == "2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0"
+| sort by TimeGenerated asc
+| project ResultDescription
+```
 
 ### <a name="view-historical-job-status"></a>檢視歷史工作狀態
 
 最後，您可能會想以視覺化方式呈現一段時間的作業記錄。 您可以使用此查詢來搜尋您的工作在一段時間的狀態。
 
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`
-<br> ![Log Analytics 歷史工作狀態圖表](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
-
-## <a name="remove-diagnostic-settings"></a>移除診斷設定
-
-若要從自動化帳戶中移除診斷設定，請執行下列命令：
-
-```powershell-interactive
-$automationAccountId = "[resource ID of your Automation account]"
-
-Remove-AzDiagnosticSetting -ResourceId $automationAccountId
+```kusto
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started"
+| summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)
 ```
+
+![Log Analytics 歷史工作狀態圖表](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)
+
+### <a name="filter-job-status-output-converted-into-a-json-object"></a>篩選作業狀態輸出轉換為 JSON 物件
+
+最近我們已變更如何將 Automation 記錄資料寫入 `AzureDiagnostics` Log Analytics 服務中的資料表，而不再將 JSON 屬性細分為個別的欄位。 如果您將 runbook 設定為將輸出資料流程中的物件格式化為個別的資料行，則必須重新設定您的查詢，以將該欄位剖析為 JSON 物件，才能存取這些屬性。 這是使用 [parsejson](../azure-monitor/log-query/json-data-structures.md#parsejson) 存取已知路徑中的特定 JSON 元素來完成。
+
+例如，runbook 會以 JSON 格式將輸出資料流程中的 *ResultDescription* 屬性格式化為多個欄位。 若要搜尋處於 [**狀態**] 欄位中所指定之失敗狀態的作業狀態，請使用此範例查詢來搜尋狀態為 [**失敗**] 的*ResultDescription* ：
+
+```kusto
+AzureDiagnostics
+| where Category == 'JobStreams'
+| extend jsonResourceDescription = parse_json(ResultDescription)
+| where jsonResourceDescription.Status == 'Failed'
+```
+
+![Log Analytics 歷程記錄作業串流 JSON 格式](media/automation-manage-send-joblogs-log-analytics/job-status-format-json.png)
 
 ## <a name="next-steps"></a>後續步驟
 

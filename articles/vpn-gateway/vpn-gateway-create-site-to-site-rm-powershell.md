@@ -1,19 +1,19 @@
 ---
-title: 將內部部署網路連線至 Azure 虛擬網路：站對站 VPN： PowerShell
-description: 使用 PowerShell，建立從內部部署網路到 Azure 虛擬網路的 IPsec 站對站 VPN 閘道連接。
+title: 將您的內部部署網路連線到 Azure 虛擬網路：站對站 VPN： PowerShell
+description: 使用 PowerShell，透過公用網際網路，建立從您的內部部署網路到 Azure 虛擬網路的 IPsec 站對站 VPN 閘道連線。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/15/2020
+ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2abbab0d6a0fd39b2adf0eade77d355c18b3cc03
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 759436477563065d9b03bffa314a4a843ec694b9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036074"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435944"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>使用 PowerShell 建立具有站對站 VPN 連接的 VNet
 
@@ -160,7 +160,7 @@ New-AzResourceGroup -Name TestRG1 -Location 'East US'
 
 VPN 閘道必須具有公用 IP 位址。 您會先要求 IP 位址資源，然後在建立虛擬網路閘道時參考它。 建立 VPN 閘道時，系統會將 IP 位址動態指派給此資源。 
 
-VPN 閘道目前僅支援*動態*公用 IP 位址配置。 您無法要求靜態公用 IP 位址指派。 不過，這不表示 IP 位址被指派至您的 VPN 閘道之後會變更。 公用 IP 位址只會在刪除或重新建立閘道時變更。 它不會因為重新調整、重設或 VPN 閘道的其他內部維護/升級而變更。
+VPN 閘道目前僅支援 *動態* 公用 IP 位址配置。 您無法要求靜態公用 IP 位址指派。 不過，這不表示 IP 位址被指派至您的 VPN 閘道之後會變更。 公用 IP 位址只會在刪除或重新建立閘道時變更。 它不會因為重新調整、重設或 VPN 閘道的其他內部維護/升級而變更。
 
 請要求公用 IP 位址，以指派給虛擬網路 VPN 閘道。
 
@@ -185,7 +185,7 @@ $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $s
 輸入下列值：
 
 * 網站間組態的 -GatewayType** 是 Vpn**。 閘道器類型永遠是您實作的組態的特定類型。 例如，其他閘道器組態可能需要 -GatewayType ExpressRoute。
-* 在某些檔) 中，可以將 *-VpnType* *RouteBased* (稱為動態閘道，或在某些檔) 中將*原則式* (稱為靜態閘道。 如需 VPN 閘道類型的詳細資訊，請參閱[關於 VPN 閘道](vpn-gateway-about-vpngateways.md)。
+* *VpnType*可以是*路由式* (在某些檔中稱為動態閘道) 或*原則式* (在某些檔) 中稱為靜態閘道。 如需 VPN 閘道類型的詳細資訊，請參閱[關於 VPN 閘道](vpn-gateway-about-vpngateways.md)。
 * 選取您想要使用的閘道 SKU。 某些 SKU 有組態限制。 如需詳細資訊，請參閱[閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。 如果您在建立有關 -GatewaySku 的 VPN 閘道時發生錯誤，請確認您已安裝最新版的 PowerShell Cmdlet。
 
 ```azurepowershell-interactive
@@ -196,7 +196,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 
 執行此命令後，可能需要 45 分鐘的時間才能完成閘道設定。
 
-## <a name="6-configure-your-vpn-device"></a><a name="ConfigureVPNDevice"></a>6. 設定 VPN 裝置
+## <a name="6-configure-your-vpn-device"></a><a name="ConfigureVPNDevice"></a>6. 設定您的 VPN 裝置
 
 內部部署網路的站對站連線需要 VPN 裝置。 在此步驟中，設定 VPN 裝置。 設定 VPN 裝置時，您需要下列項目：
 
@@ -210,7 +210,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 [!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 
-## <a name="7-create-the-vpn-connection"></a><a name="CreateConnection"></a>7. 建立 VPN 連線
+## <a name="7-create-the-vpn-connection"></a><a name="CreateConnection"></a>7. 建立 VPN 連接
 
 接下來，在虛擬網路閘道與 VPN 裝置之間建立網站間 VPN 連線。 請務必將值取代為您自己的值。 共用的金鑰必須符合您用於 VPN 裝置設定的值。 請注意，網站間的「-ConnectionType」為 IPsec****。
 
@@ -250,18 +250,18 @@ VPN 連線有幾種不同的驗證方式。
 
 [!INCLUDE [Modify gateway IP address](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
-## <a name="to-delete-a-gateway-connection"></a><a name="deleteconnection"></a>若要刪除閘道連線
+## <a name="to-delete-a-gateway-connection"></a><a name="deleteconnection"></a>刪除閘道連線
 
-如果您不知道連線的名稱，您可以使用 ' Get-azvirtualnetworkgatewayconnection ' Cmdlet 來尋找它。
+如果您不知道連線的名稱，可以使用 ' Get-azvirtualnetworkgatewayconnection ' Cmdlet 來尋找它。
 
 ```azurepowershell-interactive
 Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 `
 -ResourceGroupName TestRG1
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 *  一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](https://docs.microsoft.com/azure/)。
 * 如需 BGP 的相關資訊，請參閱 [BGP 概觀](vpn-gateway-bgp-overview.md)和[如何設定 BGP](vpn-gateway-bgp-resource-manager-ps.md)。
-* 如需使用 Azure Resource Manager 範本建立站對站 VPN 連線的相關資訊，請參閱[建立站對站 vpn](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/)連線。
-* 如需使用 Azure Resource Manager 範本建立 vnet 對 vnet VPN 連線的相關資訊，請參閱[部署 HBase 異地](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)複寫。
+* 如需使用 Azure Resource Manager 範本來建立站對站 VPN 連線的相關資訊，請參閱 [建立站對站 Vpn 連接](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/)。
+* 如需使用 Azure Resource Manager 範本建立 vnet 對 vnet VPN 連線的相關資訊，請參閱 [部署 HBase 異地](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)複寫。

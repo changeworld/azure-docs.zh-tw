@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 11/29/2017
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: c4809c51a59805ac996bd4c5971ec633ae6c2aed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5656b60b3c94720ad0a5952f8f6524f90dc6c17
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987068"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392624"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>使用 Azure CLI 修改區域網路閘道設定
 
@@ -39,7 +39,7 @@ ms.locfileid: "84987068"
 
 [!INCLUDE [modify-gateway-IP](../../includes/vpn-gateway-modify-lng-gateway-ip-cli-include.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您可以驗證閘道連線。 請參閱 [驗證閘道連線](vpn-gateway-verify-connection-resource-manager.md)。
 

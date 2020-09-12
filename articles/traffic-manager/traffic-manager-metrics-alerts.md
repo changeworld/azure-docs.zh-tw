@@ -1,21 +1,21 @@
 ---
 title: Azure 流量管理員中的計量與警示
-description: 在本文中，瞭解 Azure 中可供流量管理員的計量和警示。
+description: 在本文中，瞭解適用于 Azure 中流量管理員的計量和警示。
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
-ms.author: rohink
-ms.openlocfilehash: 521e6ac605d187c0f95545611a17a86cfda6e1dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 997e2e97161e6db7cdca04c1b79f5149a2e4c409
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938594"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392845"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>流量管理員的計量與警示
 
@@ -63,6 +63,6 @@ ms.locfileid: "76938594"
 ## <a name="alerts-on-traffic-manager-metrics"></a>流量管理員計量的警示
 除了處理及顯示來自流量管理員的計量，Azure 監視器也能讓客戶設定和接收與計量相關聯的警示。 您可以選擇這些計量中需要滿足什麼條件才會出現警示、監視這些條件的頻率為何，以及傳送警示給您的方式。 如需詳細資訊，請參閱 [Azure 監視器警示文件](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - 深入了解 [Azure 監視器服務](../azure-monitor/platform/metrics-supported.md)
 - 深入了解如何[使用 Azure 監視器建立圖表](../azure-monitor/platform/metrics-getting-started.md#create-your-first-metric-chart)

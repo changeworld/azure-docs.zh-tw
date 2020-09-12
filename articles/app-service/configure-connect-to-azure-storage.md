@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 8ca3688ad11bc7a694327990be22b8eccd8f8161
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c240399f1368862a969561409371e075a010e8f2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962854"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435604"
 ---
 # <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>從 App Service 中的容器存取 Azure 儲存體為網路共用
 
@@ -27,7 +27,7 @@ ms.locfileid: "88962854"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ::: zone pivot="container-windows"
 
@@ -57,7 +57,7 @@ ms.locfileid: "88962854"
 - App Service 中的 Azure 儲存體目前 **不支援** 將您自己的程式碼案例提供給 (非容器化 Windows 應用程式) 。
 - App Service 中的 Azure 儲存體 **不支援** 使用 **儲存體防火牆** 設定，因為基礎結構的限制。
 - Azure 儲存體與 App Service 可讓您針對每個應用程式指定 **最多五個** 掛接點。
-- 無法透過 App Service FTP/FTPs 端點來存取掛接至應用程式 Azure 儲存體。 使用 [Azure 儲存體 explorer](https://azure.microsoft.com/features/storage-explorer/)。
+- 無法透過 App Service FTP/FTPs 端點來存取掛接至應用程式 Azure 儲存體。 使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)。
 
 ::: zone-end
 
@@ -67,7 +67,7 @@ ms.locfileid: "88962854"
 - App Service 中的 Azure 儲存體支援裝載 **Azure 檔案儲存體容器** (讀取/寫入) 和 **Azure Blob 容器** (唯讀) 
 - App Service 中的 Azure 儲存體 **不支援** 使用 **儲存體防火牆** 設定，因為基礎結構的限制。
 - App Service 中的 Azure 儲存體可讓您針對每個應用程式指定 **最多五個** 掛接點。
-- 無法透過 App Service FTP/FTPs 端點來存取掛接至應用程式 Azure 儲存體。 使用 [Azure 儲存體 explorer](https://azure.microsoft.com/features/storage-explorer/)。
+- 無法透過 App Service FTP/FTPs 端點來存取掛接至應用程式 Azure 儲存體。 使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)。
 
 ::: zone-end
 
@@ -114,7 +114,7 @@ az webapp config storage-account add --resource-group <group-name> --name <app-n
 az webapp config storage-account list --resource-group <resource-group> --name <app-name>
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 ::: zone pivot="container-windows"
 

@@ -1,5 +1,5 @@
 ---
-title: 備份與還原-Azure CLI-適用於 MySQL 的 Azure 資料庫
+title: 備份和還原-Azure CLI-適用於 MySQL 的 Azure 資料庫
 description: 了解如何使用 Azure CLI，在適用於 MySQL 的 Azure 資料庫中備份和還原伺服器。
 author: ajlam
 ms.author: andrela
@@ -8,20 +8,20 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 27d1841458e8c5e1854d6fcd0810c36d4272cc1d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2116b5be4c5d40076aae10ecc2e81d73e7806e6d
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500533"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419464"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>如何使用 Azure CLI 在適用於 MySQL 的 Azure 資料庫中備份和還原伺服器
 
 為了能使用還原功能，適用於 MySQL 的 Azure 資料庫伺服器會定期備份。 透過此功能，您可以將伺服器和其所有資料庫還原至更早的時間點 (在新的伺服器上)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 若要完成本操作說明指南，您需要：
-- [適用於 MySQL 的 Azure 資料庫的伺服器和資料庫](quickstart-create-mysql-server-database-using-azure-cli.md)
+- [適用於 MySQL 的 Azure 資料庫伺服器和資料庫](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -78,7 +78,13 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 
 已還原伺服器的位置與定價層值與原始伺服器相同。 
 
-完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器具有相同的伺服器管理員登入名稱和密碼，在起始還原時對現有的伺服器而言是有效的。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
+完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器的伺服器管理員登入名稱和密碼，在起始還原時對現有的伺服器而言是有效的。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
+
+此外，在還原作業完成之後，有兩個伺服器參數會重設為預設值 (而且不會在還原作業之後從主伺服器) 複製
+*   time_zone-此值會設定為預設值 **系統**
+*   event_scheduler-已還原伺服器上的 event_scheduler 設定為**OFF**
+
+您必須從主伺服器複製值，並藉由重新設定[伺服器參數](howto-server-parameters.md)在還原的伺服器上設定它。
 
 在還原期間建立的新伺服器不會有原始伺服器中的 VNet 服務端點。 您必須為新伺服器分別設定這些規則。 系統會還原原始伺服器的防火牆規則。
 
@@ -117,11 +123,11 @@ az mysql server georestore --resource-group newresourcegroup --name mydemoserver
 
 透過異地還原建立新伺服器時，它會繼承與來源伺服器相同的儲存體大小和定價層。 在建立期間無法變更這些值。 在建立新伺服器之後，您可以調高儲存體大小。
 
-完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器具有相同的伺服器管理員登入名稱和密碼，在起始還原時對現有的伺服器而言是有效的。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
+完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器的伺服器管理員登入名稱和密碼，在起始還原時對現有的伺服器而言是有效的。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
 在還原期間建立的新伺服器不會有原始伺服器中的 VNet 服務端點。 您必須為新伺服器分別設定這些規則。 系統會還原原始伺服器的防火牆規則。
 
 ## <a name="next-steps"></a>後續步驟
-- 深入瞭解服務的[備份](concepts-backup.md)
-- 瞭解[複本](concepts-read-replicas.md)
-- 深入瞭解[商務持續性](concepts-business-continuity.md)選項
+- 深入瞭解服務的 [備份](concepts-backup.md)
+- 深入瞭解 [複本](concepts-read-replicas.md)
+- 深入瞭解 [商務持續性](concepts-business-continuity.md) 選項

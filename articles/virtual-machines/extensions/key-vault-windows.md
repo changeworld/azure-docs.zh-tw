@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 70dcee1cce49c658a60e98821a3ce60ec443408a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f4a345fe62a1d13a6be7dc71ecc0529fec2a6a4e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932571"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401498"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>適用於 Windows 的金鑰保存庫虛擬機器擴充功能
 
@@ -206,7 +206,7 @@ Azure CLI 可以用來將金鑰保存庫 VM 擴充功能部署到現有的虛擬
 請留意下列限制/需求：
 - 金鑰保存庫限制：
   - 部署時必須存在 
-  - Key Vault 使用 MSI 為 VM/VMSS 身分識別設定的存取原則
+  - 您必須使用受控識別來設定 VM/VMSS 身分識別的 Key Vault 存取原則。 瞭解 [如何驗證 Key Vault](/azure/key-vault/general/authentication) 並 [指派 Key Vault 存取原則](/azure/key-vault/general/assign-access-policy-cli)。
 
 
 ## <a name="troubleshoot-and-support"></a>疑難排解與支援

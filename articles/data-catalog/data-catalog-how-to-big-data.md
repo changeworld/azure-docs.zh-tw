@@ -1,25 +1,25 @@
 ---
-title: 如何在 Azure 資料目錄中將海量資料分類
+title: 如何在 Azure 資料目錄中將大型資料分類
 description: 強調如何將 Azure 資料目錄與「巨量資料」資料來源 (包括 Azure Blob 儲存體、Azure Data Lake 及 Hadoop HDFS) 搭配使用的操作說明文章。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: c6f7355b4505324c562ae39b05155a2902da2790
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e79e5e16b300fd02b9c9124f9677747834f22813
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523446"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443138"
 ---
-# <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>如何在 Azure 資料目錄中將海量資料分類
+# <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>如何在 Azure 資料目錄中將大型資料分類
 
 ## <a name="introduction"></a>簡介
 
 **Microsoft Azure 資料目錄** 是完全受控的雲端服務，可作為企業資料來源的註冊系統和探索系統。 其重點在於協助人們探索、了解和使用資料來源，並可協助組織從現有的資料來源 (包括巨量資料) 獲得更多價值。
 
-**Azure 資料目錄** 支援註冊 Azure Blob 儲存體 blob 和目錄，以及 Hadoop HDFS 檔案和目錄。 這些資料來源的半結構化本質提供很大的彈性。 不過，若要透過向 **Azure 資料目錄**註冊資料來源來獲得最多價值，使用者必須考慮如何組織資料來源。
+**Azure 資料目錄** 支援 Azure 儲存體 blob 和目錄的註冊，以及 Hadoop HDFS 檔案和目錄。 這些資料來源的半結構化本質提供很大的彈性。 不過，若要透過向 **Azure 資料目錄**註冊資料來源來獲得最多價值，使用者必須考慮如何組織資料來源。
 
 ## <a name="directories-as-logical-data-sets"></a>將目錄視為邏輯資料集
 

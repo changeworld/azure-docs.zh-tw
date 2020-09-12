@@ -3,7 +3,7 @@ title: 疑難排解 Azure 流量管理員上的已降級狀態
 description: 如何在流量管理員顯示為降級狀態時疑難排解流量管理員設定檔。
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,17 +11,17 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: rohink
-ms.openlocfilehash: 88c2536ad53be0beb583dc64e633322b2a531d15
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.author: duau
+ms.openlocfilehash: 83dc432a1f88b443d500bf9a977abfed69211156
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183438"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401549"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>疑難排解 Azure 流量管理員上的已降級狀態
 
-本文說明如何針對顯示降級狀態的 Azure 流量管理員設定檔進行疑難排解。 針對 Azure 流量管理員降級狀態進行疑難排解的第一個步驟是啟用記錄。  如需詳細資訊，請參閱[啟用資源記錄](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs)檔。 在此案例中，假設您已設定流量管理員設定檔來指向您的一些 cloudapp.net 託管服務。 如果流量管理員的健康情況顯示 [降級]**** 狀態，則可能有一或多個端點的狀態是 [降級]****：
+本文說明如何針對顯示降級狀態的 Azure 流量管理員設定檔進行疑難排解。 針對 Azure 流量管理員降級狀態進行疑難排解的第一個步驟是啟用記錄。  如需詳細資訊，請參閱 [啟用資源記錄](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) 檔。 在此案例中，假設您已設定流量管理員設定檔來指向您的一些 cloudapp.net 託管服務。 如果流量管理員的健康情況顯示 [降級]**** 狀態，則可能有一或多個端點的狀態是 [降級]****：
 
 ![降級端點狀態](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
@@ -31,11 +31,11 @@ ms.locfileid: "86183438"
 
 ## <a name="understanding-traffic-manager-probes"></a>了解流量管理員探查
 
-* 只有當探查收到探查路徑傳回 HTTP 200 回應時，流量管理員才會將端點視為在「線上」。 如果您的應用程式傳回任何其他 HTTP 回應碼，您應該將該回應碼新增至流量管理員設定檔的[預期狀態碼範圍](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring)。
-* 除非您已在流量管理員設定檔的[預期狀態碼範圍](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring)中指定此回應碼，否則會將30倍重新導向回應視為失敗。 流量管理員不會探查重新導向目標。
+* 只有當探查收到探查路徑傳回 HTTP 200 回應時，流量管理員才會將端點視為在「線上」。 如果您的應用程式會傳回任何其他 HTTP 回應碼，您應該將該回應程式碼新增至流量管理員設定檔的 [預期狀態碼範圍](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) 。
+* 除非您已在流量管理員設定檔的 [預期狀態碼範圍](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) 中指定此回應碼作為有效的回應碼，否則會將30倍的重新導向回應視為失敗。 流量管理員不會探查重新導向目標。
 * 若為 HTTP 探查，會忽略憑證錯誤。
 * 只要傳回 200，探查路徑的實際內容並不重要。 探查靜態內容 (例如 "/favicon.ico") 的 URL 是常用的技巧。 即使應用程式狀況良好，動態內容 (例如 ASP 頁面) 也不一定會傳回 200。
-* 最佳做法是將探查路徑設定為具有足夠邏輯的專案，以判斷網站已啟動或關閉。 在上述範例中，您將路徑設為 "favicon.ico"，只是測試 w3wp.exe 是否有回應。 此探查可能不會指出您的 Web 應用程式狀況良好。 較好的選擇是將路徑設為 "/Probe.aspx" 之類的項目，它具有邏輯可判斷網站的健康狀態。 例如，您可以使用效能計數器來監視 CPU 使用率，或測量失敗的要求數。 或者，您可以嘗試存取資料庫資源或工作階段狀態，以確定 Web 應用程式正在運作。
+* 最佳做法是將探查路徑設定為具有足夠邏輯的內容，以判斷該網站為啟動或關閉。 在上述範例中，您將路徑設為 "favicon.ico"，只是測試 w3wp.exe 是否有回應。 此探查可能不會指出您的 Web 應用程式狀況良好。 較好的選擇是將路徑設為 "/Probe.aspx" 之類的項目，它具有邏輯可判斷網站的健康狀態。 例如，您可以使用效能計數器來監視 CPU 使用率，或測量失敗的要求數。 或者，您可以嘗試存取資料庫資源或工作階段狀態，以確定 Web 應用程式正在運作。
 * 如果設定檔中的所有端點都已降級，流量管理員會將所有端點視為狀況良好，並將流量路由傳送至所有端點。 此行為可確保探查機制的問題不會造成您的服務完全中斷。
 
 ## <a name="troubleshooting"></a>疑難排解
@@ -44,11 +44,11 @@ ms.locfileid: "86183438"
 
 * [Fiddler](https://www.telerik.com/fiddler)
 * [curl](https://curl.haxx.se/)
-* [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
+* [Wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
 您也可以在 Internet Explorer 中，使用 [F12 偵錯工具] 的 [網路] 索引標籤來檢視 HTTP 回應。
 
-在此範例中，我們想要查看來自探查 URL 的回應： HTTP： \/ /watestsdp2008r2.cloudapp.net:80/Probe。 下列 PowerShell 範例說明問題。
+在此範例中，我們想要查看探查 URL 的回應： HTTP： \/ /watestsdp2008r2.cloudapp.net:80/Probe。 下列 PowerShell 範例說明問題。
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription

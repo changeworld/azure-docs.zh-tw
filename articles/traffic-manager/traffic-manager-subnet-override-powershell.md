@@ -1,34 +1,34 @@
 ---
-title: 使用 Azure PowerShell 的 Azure 流量管理員子網覆寫 |Microsoft Docs
-description: 本文將協助您瞭解如何使用流量管理員子網覆寫來覆寫流量管理員設定檔的路由方法，以根據使用者 IP 位址，透過預先定義的 IP 範圍，將流量導向端點，並使用 Azure PowerShell 的端點對應。
+title: 使用 Azure PowerShell Azure 流量管理員子網覆寫 |Microsoft Docs
+description: 本文將協助您瞭解如何使用流量管理員子網覆寫來覆寫流量管理員設定檔的路由方法，以使用 Azure PowerShell，透過預先定義的 IP 範圍，將流量導向端點。
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: rohink
-ms.openlocfilehash: 3b58a0aef4df71649e657c04b44c31b6bbfe019c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 01bd3b1e945ee7c9ac16af7048536c0a9e2d731a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689566"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401583"
 ---
-# <a name="traffic-manager-subnet-override-using-azure-powershell"></a>使用 Azure Powershell 流量管理員子網覆寫
+# <a name="traffic-manager-subnet-override-using-azure-powershell"></a>使用 Azure Powershell 的流量管理員子網覆寫
 
-流量管理員子網覆寫可讓您變更設定檔的路由方法。  新增覆寫將會根據使用者的 IP 位址，以預先定義的 IP 範圍將流量導向端點對應。 
+流量管理員子網覆寫可讓您變更設定檔的路由方法。  新增覆寫會根據終端使用者的 IP 位址將流量導向至端點對應的預先定義 IP 範圍。 
 
 ## <a name="how-subnet-override-works"></a>子網覆寫的運作方式
 
-將子網覆寫新增至流量管理員設定檔時，流量管理員會先檢查是否有使用者 IP 位址的子網覆寫。 如果找到，則會將使用者的 DNS 查詢導向至對應的端點。  如果找不到對應，流量管理員會回到設定檔的原始路由方法。 
+將子網覆寫新增至流量管理員設定檔時，流量管理員會先檢查終端使用者的 IP 位址是否有子網覆寫。 如果找到一個，就會將使用者的 DNS 查詢導向至對應的端點。  如果找不到對應，流量管理員會切換回設定檔的原始路由方法。 
 
-IP 位址範圍可以指定為 CIDR 範圍（例如，1.2.3.0/24）或做為位址範圍（例如，1.2.3.4-5.6.7.8）。 與每個端點相關聯的 IP 範圍，對該端點而言必須是唯一的。 不同端點間的任何 IP 範圍重迭，會導致流量管理員拒絕設定檔。
+您可以將 IP 位址範圍指定為 CIDR 範圍 (例如，1.2.3.0/24) 或位址範圍 (例如 1.2.3.4-5.6.7.8) 。 與每個端點相關聯的 IP 範圍對該端點而言必須是唯一的。 不同端點之間的任何 IP 範圍重迭，都會導致流量管理員拒絕設定檔。
 
-有兩種類型的路由設定檔支援子網覆寫：
+有兩種類型的路由設定檔可支援子網覆寫：
 
-* **地理**-如果流量管理員找到 DNS 查詢之 IP 位址的子網覆寫，則會將該查詢路由至端點的健康情況所在的端點。
-* **效能**-如果流量管理員找到 DNS 查詢之 IP 位址的子網覆寫，它只會將流量路由傳送至端點（如果狀況良好）。  如果子網覆寫端點狀況不良，流量管理員將會切換回效能路由啟發學習法。
+* **地理** -如果流量管理員找到 DNS 查詢之 IP 位址的子網覆寫，它就會將查詢路由傳送至端點的任何健康情況。
+* **效能** -如果流量管理員找到 DNS 查詢之 IP 位址的子網覆寫，它只會將流量路由至端點（如果其狀況良好）。  如果子網覆寫端點的狀況不良，流量管理員會切換回效能路由啟發學習法。
 
 ## <a name="create-a-traffic-manager-subnet-override"></a>建立流量管理員子網覆寫
 
@@ -43,9 +43,9 @@ IP 位址範圍可以指定為 CIDR 範圍（例如，1.2.3.0/24）或做為位�
 
 1. **取出流量管理員端點：**
 
-    若要啟用子網覆寫，請取出您想要新增覆寫的端點，並使用[AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)將它儲存在變數中。
+    若要啟用子網覆寫，請取得您想要新增覆寫的端點，然後使用 [AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)將其儲存在變數中。
 
-    將 Name、ProfileName 和 ResourceGroupName 取代為您要變更的端點值。
+    以您要變更的端點值取代 Name、ProfileName 和 ResourceGroupName。
 
     ```powershell
 
@@ -54,7 +54,7 @@ IP 位址範圍可以指定為 CIDR 範圍（例如，1.2.3.0/24）或做為位�
     ```
 2. **將 IP 位址範圍新增至端點：**
     
-    若要將 IP 位址範圍新增至端點，您將使用[AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0)來新增範圍。
+    若要將 IP 位址範圍新增至端點，您將使用 [AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) 新增範圍。
 
     ```powershell
 
@@ -68,20 +68,20 @@ IP 位址範圍可以指定為 CIDR 範圍（例如，1.2.3.0/24）或做為位�
     Add-AzTrafficManagerIPAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
  
     ```
-    新增範圍之後，請使用[AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0)來更新端點。
+    一旦加入範圍之後，請使用 [AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) 來更新端點。
 
     ```powershell
 
     Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
 
     ```
-若要移除 IP 位址範圍，您可以使用[AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0)來完成。
+您可以使用 [Remove-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0)來完成移除 IP 位址範圍。
 
 1.  **取出流量管理員端點：**
 
-    若要啟用子網覆寫，請取出您想要新增覆寫的端點，並使用[AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)將它儲存在變數中。
+    若要啟用子網覆寫，請取得您想要新增覆寫的端點，然後使用 [AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)將其儲存在變數中。
 
-    將 Name、ProfileName 和 ResourceGroupName 取代為您要變更的端點值。
+    以您要變更的端點值取代 Name、ProfileName 和 ResourceGroupName。
 
     ```powershell
 
@@ -102,7 +102,7 @@ IP 位址範圍可以指定為 CIDR 範圍（例如，1.2.3.0/24）或做為位�
     Remove-AzTrafficManagerIpAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
 
     ```
-     移除範圍之後，請使用[AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0)來更新端點。
+     移除範圍之後，請使用 [AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) 來更新端點。
 
     ```powershell
 
@@ -110,7 +110,7 @@ IP 位址範圍可以指定為 CIDR 範圍（例如，1.2.3.0/24）或做為位�
 
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 深入了解「流量管理員」的 [流量路由方法](traffic-manager-routing-methods.md)。
 
-瞭解[子網流量路由方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)
+深入瞭解 [子網流量路由方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)

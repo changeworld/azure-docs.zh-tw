@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 3d39ad2016da1525658944f4f13185e9df9855af
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d0d0465e2e60945649958911c508e06aee877ac9
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007089"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378860"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 連線服務在 Web 應用程式中新增 Key Vault
 
@@ -22,7 +22,7 @@ ms.locfileid: "89007089"
 
 針對「連線服務」在您專案中為啟用 Key Vault 所做的變更，如需詳細資料，請參閱 [Key Vault 連線服務 - 我的 ASP.NET 4.7.1 專案發生什麼情形](#how-your-aspnet-framework-project-is-modified)或 [Key Vault 連線服務 - 我的 ASP.NET Core 專案發生什麼情形](#how-your-aspnet-core-project-is-modified)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - **Azure 訂用帳戶**。 如果您沒有訂用帳戶，請註冊 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 - **Visual Studio 2019 16.3 版** 或更新版本 [，請立即下載](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
@@ -40,7 +40,7 @@ ms.locfileid: "89007089"
 
 1. 選取您要使用的訂用帳戶，然後選擇現有的 Key Vault 然後按一下 **[完成]**。 
 
-   ![選取訂用帳戶](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
+   ![選取您的訂用帳戶](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
 現在，已建立與 Key Vault 的連線，您可以在程式碼中存取您的秘密。 後續步驟會根據您使用的是 ASP.NET 4.7.1 或 ASP.NET Core 而有所差異。
 
@@ -127,7 +127,7 @@ ms.locfileid: "89007089"
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您的 Key Vault 在不同于您登入 (Visual Studio 的 Microsoft 帳戶上執行，則 Key Vault 會在您的工作帳戶上執行，但 Visual Studio 會使用您的私人帳戶) 您會在 Program.cs 檔案中收到錯誤，Visual Studio 無法取得 Key Vault 的存取權。 若要修正此問題：
+如果您的 Key Vault 在不同于您登入 (Visual Studio 的 Microsoft 帳戶上執行，則 Key Vault 會在您的工作帳戶上執行，但 Visual Studio 會使用您的私人帳戶) 您會在 Program.cs 檔案中收到錯誤，Visual Studio 無法取得 Key Vault 的存取權。 解決此問題：
 
 1. 移至 [Azure 入口網站](https://portal.azure.com) 並開啟您的 Key Vault。
 
@@ -199,8 +199,8 @@ ms.locfileid: "89007089"
 - 已新增連線服務 ItemGroup 和 ConnectedServices.json 檔案。
 - 對[新增的參考](#added-references-for-aspnet-framework)一節中所述 .NET 組件的參考。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如果您遵循本教學課程的指示，您的 Key Vault 許可權會設定為與您自己的 Azure 訂用帳戶一起執行，但在生產環境中可能不需要。 您可以建立受控識別，以管理應用程式的 Key Vault 存取權。 請參閱 [提供受控識別的 Key Vault 驗證](/azure/key-vault/managed-identity)。
+如果您遵循本教學課程的指示，您的 Key Vault 許可權會設定為與您自己的 Azure 訂用帳戶一起執行，但在生產環境中可能不需要。 您可以建立受控識別，以管理應用程式的 Key Vault 存取權。 瞭解 [如何驗證 Key Vault](/azure/key-vault/general/authentication) 並 [指派 Key Vault 存取原則](/azure/key-vault/general/assign-access-policy-portal)。
 
 閱讀 [Key Vault 開發人員指南](developers-guide.md)，以深入瞭解 Key Vault 開發。

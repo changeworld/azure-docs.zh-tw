@@ -3,17 +3,17 @@ title: 設定 ExpressRoute 和 S2S VPN 並存連接：傳統
 description: 本文會引導您針對傳統部署模型設定可以並存的 ExpressRoute 和站對站 VPN 連線。
 documentationcenter: na
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.author: charwen
-ms.openlocfilehash: 673c0e7af4be330f3d63d2fe6ed68c73142da5d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 4291e0df9f3a99cb45d4f96d4a316f9bb29a9c79
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084801"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396143"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>設定 ExpressRoute 和站對站並存連線 (傳統)
 > [!div class="op_single_selector"]
@@ -251,6 +251,6 @@ ms.locfileid: "87084801"
     ```
 6. 此時，您必須使用沒有閘道器的 VNet。 若要建立新的閘道器並完成連接，您可以繼續進行 [步驟 4 - 建立 ExpressRoute 閘道器](#gw)(您可以在先前的步驟組中找到)。
 
-## <a name="next-steps"></a>後續步驟
-如需 ExpressRoute 的詳細資訊，請參閱[EXPRESSROUTE 常見問題](expressroute-faqs.md)
+## <a name="next-steps"></a>接下來的步驟
+如需 ExpressRoute 的詳細資訊，請參閱 [EXPRESSROUTE 常見問題](expressroute-faqs.md)
 

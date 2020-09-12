@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f2e3e9376c26bae2c0b3c0dda06b781b5f2f7c4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 425809339cf4c468293801460fdeb79d9e467968
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799152"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565594"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>註冊 Azure Active Directory Premium 版本
 您可以使用您的 Azure 訂用帳戶來購買 Azure Active Directory (Azure AD) Premium 版本並與其產生關聯。 如果您需要建立新的 Azure 訂用帳戶，您也需要啟用授權方案及 Azure AD 服務存取。
@@ -28,7 +28,7 @@ ms.locfileid: "87799152"
 
 在註冊 Active Directory Premium 1 或 Premium 2 之前，您必須先決定要使用哪一個現有的訂用帳戶或方案：
 
-- 透過現有的 Azure 或 Office 365 訂用帳戶
+- 透過您現有的 Azure 或 Microsoft 365 訂用帳戶
 
 - 透過 Enterprise Mobility + Security 授權方案
 
@@ -36,8 +36,8 @@ ms.locfileid: "87799152"
 
 使用具有先前已購買並啟用之 Azure AD 授權的 Azure 訂用帳戶註冊，將能自動在相同的目錄中啟用授權。 如果沒有自動啟用，您仍必須啟用您的授權方案和 Azure AD 存取。 如需啟用授權方案的詳細資訊，請參閱[啟用您的新授權方案](#activate-your-new-license-plan)。 如需啟用 Azure AD 存取的詳細資訊，請參閱[啟用您的 Azure AD 存取](#activate-your-azure-ad-access)。 
 
-## <a name="sign-up-using-your-existing-azure-or-office-365-subscription"></a>使用現有的 Azure 或 Office 365 訂用帳戶註冊
-身為 Azure 或 Office 365 訂閱者，您可以在線上購買 Azure Active Directory Premium 版本。 如需詳細步驟，請參閱[如何購買 Azure Active Directory Premium - 新客戶](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers) \(英文\)。
+## <a name="sign-up-using-your-existing-azure-or-microsoft-365-subscription"></a>使用您現有的 Azure 或 Microsoft 365 訂用帳戶註冊
+如果您是 Azure 或 Microsoft 365 訂閱者，您可以在線上購買 Azure Active Directory Premium 版本。 如需詳細步驟，請參閱[如何購買 Azure Active Directory Premium - 新客戶](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers) \(英文\)。
 
 ## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>使用 Enterprise Mobility + Security 授權方案註冊
 Enterprise Mobility + Security 是一個套件，其中包含 Azure AD Premium、Azure 資訊保護，以及 Microsoft Intune。 如果您已經擁有 EMS 授權，則可以利用下列其中一個授權選項開始使用 Azure AD：

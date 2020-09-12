@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure Kubernetes Service (AKS) 叢集中啟用和�
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 6ad739a128839eac4d664ffb6f9e3b2fcd07f2d9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3f15f075604c104b467af289f6f5d4b92dc12659
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650174"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420858"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Azure Kubernetes Service (preview 上使用 Azure ultra 磁片) 
 
@@ -21,11 +21,6 @@ ms.locfileid: "88650174"
 
 > [!IMPORTANT]
 > Azure ultra 磁片需要在支援這些磁片的可用性區域和區域中部署 nodepools，以及僅限特定的 VM 系列。 請參閱 [**Ultra 磁片 GA 範圍和限制**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)。
-
-### <a name="prerequisites"></a>先決條件
-
-- 確定已 `EnableUltraSSD` 啟用功能旗標。
-- 確定您已安裝最新的 `aks-preview` [CLI 擴充][az-extension-add] 功能。
 
 ### <a name="register-the-enableultrassd-preview-feature"></a>註冊 `EnableUltraSSD` 預覽功能
 
@@ -78,7 +73,7 @@ az extension update --name aks-preview
 az group create --name myResourceGroup --location westus2
 ```
 
-使用受控 Azure AD 整合和適用于 Kubernetes 授權的 Azure RBAC 來建立 AKS 叢集。
+建立支援 Ultra 磁片的 AKS 叢集。
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
@@ -133,7 +128,7 @@ storageclass.storage.k8s.io/ultra-disk-sc created
 
 ## <a name="create-a-persistent-volume-claim"></a>建立永續性磁碟區宣告
 
-永續性磁碟區宣告 (PVC) 可用來根據儲存體類別，動態佈建儲存體。 在此情況下，PVC 可以使用其中一個預先建立的儲存體類別，來建立標準或進階 Azure 受控磁碟。
+永續性磁碟區宣告 (PVC) 可用來根據儲存體類別，動態佈建儲存體。 在此情況下，PVC 可以使用先前建立的儲存類別來建立 ultra 磁片。
 
 建立名為 `azure-ultra-disk-pvc.yaml` 的檔案，然後將下列資訊清單複製進來。 宣告會要求名為 `ultra-disk` 的磁片，其大小為 *1000 GB* ，且具有 *>readwriteonce* 存取權。 *Ultra 磁片 sc*儲存類別會指定為儲存類別。
 
@@ -224,7 +219,7 @@ Events:
 ```
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 如需 ultra 磁片的詳細資訊，請參閱 [使用 Azure ultra 磁片](../virtual-machines/disks-enable-ultra-ssd.md)。
 - 如需儲存體最佳作法的詳細資訊，請參閱 [Azure Kubernetes Service (AKS 中儲存體和備份的最佳作法) ][operator-best-practices-storage]

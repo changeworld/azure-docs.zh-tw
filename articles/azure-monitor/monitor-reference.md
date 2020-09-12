@@ -3,15 +3,15 @@ title: Azure 監視器監視的項目為何
 description: Azure 監視器監視的所有服務和其他資源的參考資訊。
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 06/15/2020
-ms.openlocfilehash: 48eb8674a7d3f0fbeb8cc012debfc8a08752d5ff
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+author: rboucher
+ms.author: robb
+ms.date: 08/15/2020
+ms.openlocfilehash: 1841c4eb8975c865c5f15a0e8fe3a6b5f0522820
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080859"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435400"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure 監視器監視的項目為何？
 本文說明 Azure 監視器監視的不同應用程式和服務。 
@@ -32,7 +32,7 @@ ms.locfileid: "88080859"
 [適用於資源群組的 Azure 監視器 (預覽)](insights/resource-group-insights.md) |  將個別資源碰到的任何問題加以分級與診斷，同時就資源群組整體的健康狀態與效能提供內容。 |
 | [適用於儲存體的 Azure 監視器](insights/storage-insights-overview.md) | 藉由提供 Azure 儲存體服務效能、容量和可用性的統一檢視，讓您能夠全面監視 Azure 儲存體帳戶。 |
 | [適用於 VM 的 Azure 監視器](insights/vminsights-overview.md) | 會大規模監視您的 Azure 虛擬機器 (VM) 和虛擬機器擴展集。 此服務會分析您 Windows 和 Linux VM 的效能與健康情況，並且在其他資源和外部處理序上監視其處理序及相依性。 |
-| [適用於 Key Vault 的 Azure 監視器 (預覽)](./insights/key-vault-insights-overview.md) | 藉由提供 Key Vault 要求、效能、失敗和延遲的統一觀點，提供金鑰保存庫的全面監視。 |
+| [適用於 Key Vault 的 Azure 監視器 (預覽)](./insights/key-vault-insights-overview.md) | 藉由提供您的 Key Vault 要求、效能、失敗和延遲的統一觀點，提供金鑰保存庫的全面監視。 |
 | [適用於 Azure Cache for Redis 的 Azure 監視器 (預覽)](insights/redis-cache-insights-overview.md) |  提供整體效能、失敗、容量、作業健康情況的統一、互動檢視。 |
 
 
@@ -120,7 +120,7 @@ ms.locfileid: "88080859"
 |IoT 中樞 | 是 | 是 | 否 |  |
 |Key Vault | 是 | 是 | [是](./insights/key-vault-insights-overview.md) |  |
 |Kubernetes Service (AKS) | 否 | 否 | [是](insights/container-insights-overview.md)  |  |
-|負載平衡器 | 是 | 是 | 否 |  |
+|負載平衡器 | 是 | 否 | 否 |  |
 |Logic Apps | 是 | 是 | 否 |  |
 |機器學習服務 | 否 | 否 | 否 |  |
 |受控應用程式  | 否 | 否 | 否 |  |
@@ -151,7 +151,7 @@ ms.locfileid: "88080859"
 |註冊入口網站 | 否 | 否 | 否 |  |
 |Site Recovery | 否 | 是 | 否 |  |
 |Spring Cloud Service | 否 | 否 | 否 |  |
-|SQL 資料倉儲 | 是 | 是 | 否 |  |
+|Azure Synapse Analytics | 是 | 是 | 否 |  |
 |SQL Database | 是 | 是 | 否 |  |
 |SQL Server Stretch Database | 是 | 是 | 否 |  |
 |Stack | 否 | 否 | 否 |  |
@@ -220,7 +220,7 @@ Azure 監視器可以使用下表所列的方法，從 Azure 外部的資源收�
 | 資源 | 方法 |
 |:---|:---|
 | 應用程式 | 使用 Application Insights 監視 Azure 外部的 Web 應用程式。 請參閱[什麼是 Application Insights？](./app/app-insights-overview.md)。 |
-| 虛擬機器 | 使用代理程式，從其他雲端環境或內部部署中虛擬機器的客體作業系統收集資料。 請參閱[Azure 監視器代理程式的總覽](platform/agents-overview.md)。 |
+| 虛擬機器 | 使用代理程式從其他雲端環境或內部部署虛擬機器的客體作業系統收集資料。 請參閱 [Azure 監視器代理程式的總覽](platform/agents-overview.md)。 |
 | REST API 用戶端 | 有不同的 API 可用來將來自任何 REST API 用戶端的資料寫入 Azure 監視器記錄和計量。 針對記錄請參閱[使用 HTTP 資料收集器 API 將記錄資料傳送給 Azure 監視器](platform/data-collector-api.md)，針對計量請參閱[使用 REST API 將 Azure 資源的自訂計量傳送至 Azure 監視器計量的存放區](platform/metrics-store-custom-rest-api.md)。 |
 
 

@@ -1,19 +1,19 @@
 ---
-title: 適用于 S2S VPN & VNet 對 VNet 連線的 IPsec/IKE 原則
+title: S2S VPN & VNet 對 VNet 連線的 IPsec/IKE 原則
 titleSuffix: Azure VPN Gateway
 description: 使用 Azure Resource Manager 和 PowerShell，設定與 Azure VPN 閘道之 S2S 或 VNet 對 VNet 連線的 IPsec/IKE 原則。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/14/2018
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 21c24fba2cbe03b17a057c09f95d9dd0d3665dc2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6039eeed2e1bcb348920be986e72089164c614ae
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064540"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392645"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>設定 S2S VPN 或 VNet 對 VNet 連線的 IPsec/IKE 原則
 
@@ -28,7 +28,7 @@ IPsec 和 IKE 通訊協定標準支援各種不同的密碼編譯演算法的各
 
 * [第 1 部分 - 建立和設定 IPsec/IKE 原則的工作流程](#workflow)
 * [第 2 部分 - 支援的密碼編譯演算法和金鑰長度](#params)
-* [第3部分-使用 IPsec/IKE 原則建立新的 S2S VPN 連線](#crossprem)
+* [第3部分-使用 IPsec/IKE 原則建立新的 S2S VPN 連接](#crossprem)
 * [第4部分-使用 IPsec/IKE 原則建立新的 VNet 對 VNet 連線](#vnet2vnet)
 * [第 5 部分 - 管理 (建立、新增、移除) 連線的 IPsec/IKE 原則](#managepolicy)
 
@@ -64,7 +64,7 @@ IPsec 和 IKE 通訊協定標準支援各種不同的密碼編譯演算法的各
 | IPsec 加密 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、無    |
 | IPsec 完整性  | GCMASE256、GCMAES192、GCMAES128、SHA256、SHA1、MD5 |
 | PFS 群組        | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、無 
-| QM SA 存留期   | （**選擇性**：如果未指定，則會使用預設值）<br>秒 (整數；**最小 300**/預設值 27000 秒)<br>KB 數 (整數；**最小 1024**/預設值 102400000 KB 數)   |
+| QM SA 存留期   |  (**選擇性**：如果未指定，則會使用預設值) <br>秒 (整數；**最小 300**/預設值 27000 秒)<br>KB 數 (整數；**最小 1024**/預設值 102400000 KB 數)   |
 | 流量選取器 | UsePolicyBasedTrafficSelectors** ($True/$False；**選擇性**，如果未指定，即為預設的 $False)    |
 |  |  |
 
@@ -79,7 +79,7 @@ IPsec 和 IKE 通訊協定標準支援各種不同的密碼編譯演算法的各
 >    * 流量選取器 (如果使用 UsePolicyBasedTrafficSelectors)
 >    * SA 存留期只需要在本機指定，不需要相符。
 >
-> 2. **如果使用 GCMAES 作為 IPsec 加密演算法，您必須針對 IPsec 完整性選取相同的 GCMAES 演算法和金鑰長度;例如，針對這兩個使用 GCMAES128**
+> 2. **如果 GCMAES 用於 IPsec 加密演算法，您必須為 IPsec 完整性選取相同的 GCMAES 演算法和金鑰長度;例如，同時使用 GCMAES128**
 > 3. 在上表中：
 >    * IKEv2 會對應到主要模式或第 1 階段
 >    * IPsec 會對應到快速模式或第 2 階段
@@ -117,7 +117,7 @@ IPsec 和 IKE 通訊協定標準支援各種不同的密碼編譯演算法的各
 
 ### <a name="before-you-begin"></a><a name="before"></a>開始之前
 
-* 請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用[MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* 請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用 [MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) 或註冊 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 * 您必須安裝 Azure Resource Manager PowerShell Cmdlet。 如需安裝 PowerShell Cmdlet 的詳細資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/)。
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>步驟1 - 建立虛擬網路、VPN 閘道和區域網路閘道
@@ -199,7 +199,7 @@ $ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -Dh
 
 如果您針對 IPsec 使用 GCMAES，就必須針對 IPsec 加密和完整性使用相同的 GCMAES 演算法和金鑰長度。 就上述範例而言，當使用 GCMAES256 時，對應參數將會是"-IpsecEncryption GCMAES256 -IpsecIntegrity GCMAES256"。
 
-#### <a name="2-create-the-s2s-vpn-connection-with-the-ipsecike-policy"></a>2. 使用 IPsec/IKE 原則建立 S2S VPN 連線
+#### <a name="2-create-the-s2s-vpn-connection-with-the-ipsecike-policy"></a>2. 使用 IPsec/IKE 原則建立 S2S VPN 連接
 
 建立 S2S VPN 連線，並套用稍早建立的 IPsec/IKE 原則。
 
@@ -341,7 +341,7 @@ DhGroup             : DHGroup24
 PfsGroup            : PFS24
 ```
 
-如果未設定 IPsec/IKE 原則，則命令（PS> $connection 6。IpsecPolicies）取得空的傳回。 這並不表示連線上未設定 IPsec/IKE，而是沒有自訂 IPsec/IKE 原則。 實際連線會使用內部部署 VPN 裝置與 Azure VPN 閘道之間交涉的預設原則。
+如果未設定 IPsec/IKE 原則，命令 (PS> $connection 6。IpsecPolicies) 會取得空的傳回。 這並不表示連線上未設定 IPsec/IKE，而是沒有自訂 IPsec/IKE 原則。 實際連線會使用內部部署 VPN 裝置與 Azure VPN 閘道之間交涉的預設原則。
 
 #### <a name="2-add-or-update-an-ipsecike-policy-for-a-connection"></a>2.新增或更新連線的 IPsec/IKE 原則
 

@@ -1,19 +1,19 @@
 ---
-title: 從電腦 P2S VPN 和原生 Azure 憑證驗證連接到 VNet： PowerShell
+title: 從電腦連線到 VNet-P2S VPN 和原生 Azure 憑證驗證： PowerShell
 description: 使用 P2S 和自我簽署或 CA 核發的憑證，將 Windows 和 Mac OS X 用戶端安全地連線至 Azure 虛擬網路。 本文使用 PowerShell。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/15/2020
+ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3a17b56d3abed30ccb495fd9111ff1299165175c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b7522e4c1074c3c52e62453e815cce859a86148
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988085"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435757"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>使用原生 Azure 憑證驗證設定 VNet 的點對站 VPN 連線： PowerShell
 
@@ -32,7 +32,7 @@ ms.locfileid: "84988085"
 
 ## <a name="before-you-begin"></a>開始之前
 
-請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用[MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial)。
+請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用 [MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) 或註冊 [免費帳戶](https://azure.microsoft.com/pricing/free-trial)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -56,7 +56,7 @@ ms.locfileid: "84988085"
   * **閘道子網路位址範圍：192.168.200.0/24** 
 * **VPN 用戶端位址集區：172.16.201.0/24**<br>使用這個點對站連線來連線到 VNet 的 VPN 用戶端，會收到來自 VPN 用戶端位址集區的 IP 位址。
 * **訂用帳戶：** 如果您有一個以上的訂用帳戶，請確認您使用正確的訂用帳戶。
-* **資源群組： TestRG**
+* **資源群組： >testrg**
 * **位置：美國東部**
 * **DNS 伺服器：** 您想要用於名稱解析的 DNS 伺服器的 IP 位址。 (選用)
 * **GW 名稱：Vnet1GW**
@@ -120,7 +120,7 @@ ms.locfileid: "84988085"
    $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
    $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
    ```
-5. VPN 閘道必須具有公用 IP 位址。 您會先要求 IP 位址資源，然後在建立虛擬網路閘道時參考它。 建立 VPN 閘道時，系統會將 IP 位址動態指派給此資源。 VPN 閘道目前僅支援*動態*公用 IP 位址配置。 您無法要求靜態公用 IP 位址指派。 不過，這不表示之後的 IP 位址變更已指派至您的 VPN 閘道。 公用 IP 位址只會在刪除或重新建立閘道時變更。 它不會因為重新調整、重設或 VPN 閘道的其他內部維護/升級而變更。
+5. VPN 閘道必須具有公用 IP 位址。 您會先要求 IP 位址資源，然後在建立虛擬網路閘道時參考它。 建立 VPN 閘道時，系統會將 IP 位址動態指派給此資源。 VPN 閘道目前僅支援 *動態* 公用 IP 位址配置。 您無法要求靜態公用 IP 位址指派。 不過，這不表示之後的 IP 位址變更已指派至您的 VPN 閘道。 公用 IP 位址只會在刪除或重新建立閘道時變更。 它不會因為重新調整、重設或 VPN 閘道的其他內部維護/升級而變更。
 
    要求動態指派的公用 IP 位址。
 
@@ -134,7 +134,7 @@ ms.locfileid: "84988085"
 設定和建立 VNet 的虛擬網路閘道。
 
 * -GatewayType 必須是 **Vpn**，而且 -VpnType 必須是 **RouteBased**。
-* 使用 -VpnClientProtocol 可指定您想要啟用的通道類型。 通道選項為**OpenVPN、SSTP**和**IKEv2**。 您可以選擇啟用其中一個或任何支援的組合。 如果您想要啟用多個類型，請指定以逗號分隔的名稱。 無法同時啟用 OpenVPN 和 SSTP。 Android 和 Linux 上的 strongSwan 用戶端以及 iOS 和 OSX 上的原生 IKEv2 VPN 用戶端只會使用 IKEv2 通道來進行連線。 Windows 用戶端會先嘗試 IKEv2，如果無法連線，就會切換回使用 SSTP。 您可以使用 OpenVPN 用戶端連接到 OpenVPN 通道類型。
+* 使用 -VpnClientProtocol 可指定您想要啟用的通道類型。 通道選項為 **OpenVPN、SSTP** 和 **IKEv2**。 您可以選擇啟用其中一個或任何支援的組合。 如果您想要啟用多個類型，請指定以逗號分隔的名稱。 OpenVPN 和 SSTP 無法一起啟用。 Android 和 Linux 上的 strongSwan 用戶端以及 iOS 和 OSX 上的原生 IKEv2 VPN 用戶端只會使用 IKEv2 通道來進行連線。 Windows 用戶端會先嘗試 IKEv2，如果無法連線，就會切換回使用 SSTP。 您可以使用 OpenVPN 用戶端連接到 OpenVPN 通道類型。
 * 虛擬網路閘道的「基本」 SKU 不支援 IKEv2、OpenVPN 或 RADIUS 驗證。 如果您打算讓 Mac 用戶端連線到您的虛擬網路，請勿使用「基本」SKU。
 * 視您選取的[閘道 sku](vpn-gateway-about-vpn-gateway-settings.md) 而定，VPN 閘道可能需要 45 分鐘的時間才能完成。 此範例使用 IKEv2。
 
@@ -173,7 +173,7 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPoo
 確認 VPN 閘道已完成建立。 完成之後，您可以將受信任根憑證的 .cer 檔案 (其中包含公開金鑰資訊) 上傳至 Azure。 一旦上傳 .cer 檔案，Azure 就可以使用它來驗證已安裝從受信任根憑證產生之用戶端憑證的用戶端。 如有需要，您稍後可以上傳其他受信任的根憑證檔案 (最多總計 20 個檔案)。
 
 >[!NOTE]
-> 您無法使用 Azure Cloud Shell 上傳 .cer 檔案。 您可以在本機電腦上使用 PowerShell，也可以使用[Azure 入口網站步驟](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。
+> 您無法使用 Azure Cloud Shell 上傳 .cer 檔案。 您可以在本機電腦上使用 PowerShell，也可以使用 [Azure 入口網站步驟](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。
 >
 
 1. 宣告您的憑證名稱的變數，以自己的值取代。
@@ -189,7 +189,7 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPoo
    $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
    $p2srootcert = New-AzVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
    ```
-3. 將公開金鑰資訊上傳至 Azure。 一旦上傳憑證資訊，Azure 會將它視為受信任的根憑證。 上傳時，請確定您是在本機電腦上執行 PowerShell，或者您可以使用[Azure 入口網站步驟](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。 您無法使用 Azure Cloud Shell 上傳。
+3. 將公開金鑰資訊上傳至 Azure。 一旦上傳憑證資訊，Azure 會將它視為受信任的根憑證。 上傳時，請確定您是在電腦本機上執行 PowerShell，您也可以使用 [Azure 入口網站步驟](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。 您無法使用 Azure Cloud Shell 上傳。
 
    ```azurepowershell
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64
@@ -207,7 +207,7 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPoo
 
 VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S 連線來連線至 VNet。 如需產生和安裝 VPN 用戶端組態檔的指示，請參閱[建立和安裝適用於原生 Azure 憑證驗證 P2S 組態的 VPN 用戶端組態檔](point-to-site-vpn-client-configuration-azure-cert.md)。
 
-## <a name="9-connect-to-azure"></a><a name="connect"></a>9. 連接到 Azure
+## <a name="9-connect-to-azure"></a><a name="connect"></a>9. 連接至 Azure
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>從 Windows VPN 用戶端連線
 
@@ -356,7 +356,7 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
 
 ### <a name="revoke-a-client-certificate"></a><a name="revokeclientcert"></a>撤銷用戶端憑證
 
-1. 擷取用戶端憑證指紋。 如需詳細資訊，請參閱[如何取得憑證的指紋](https://msdn.microsoft.com/library/ms734695.aspx)。
+1. 擷取用戶端憑證指紋。 如需詳細資訊，請參閱 [如何取出憑證的憑證指紋](https://msdn.microsoft.com/library/ms734695.aspx)。
 2. 將資訊複製到文字編輯器，並移除所有的空格，讓它是連續字串。 這個字串在下一個步驟中會宣告為變數。
 3. 宣告變數。 請確定宣告您在上一個步驟中擷取的指紋。
 
@@ -408,7 +408,7 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](https://docs.microsoft.com/azure/)。 若要了解網路與虛擬機器的詳細資訊，請參閱 [Azure 與 Linux VM 網路概觀](../virtual-machines/linux/azure-vm-network-overview.md)。
 
 如需 P2S 疑難排解詳細資訊，請參閱[疑難排解：Azure 點對站連線問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。

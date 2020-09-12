@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/25/2018
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: f3a6dd70bf57cabe8014c49e2cd3ee38c8de72b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a69ce0592b79be0868dd7c15ac054910eee75fc7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064778"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393593"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>如何使用 CLI 在 Azure VPN 閘道上設定 BGP
 
@@ -99,7 +99,7 @@ az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic
 az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP -g TestBGPRG1 --vnet TestVNet1 --gateway-type Vpn --sku HighPerformance --vpn-type RouteBased --asn 65010 --no-wait
 ```
 
-#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3. 取得 Azure BGP 對等互連 IP 位址
+#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3. 取得 Azure BGP 對等 IP 位址
 
 建立閘道後，您必須取得 Azure VPN 閘道上的 BGP 對等體 IP 位址。 需要有此位址，才能將 VPN 閘道設定為內部部署 VPN 裝置的 BGP 對等體。
 
@@ -130,7 +130,7 @@ az network vnet-gateway list -g TestBGPRG1 
 本練習將繼續建置圖中所示的組態。 請務必使用您想用於設定的值來取代該值。 處理區域網路閘道時，請留意下列事項：
 
 * 區域網路閘道可以位於與 VPN 閘道相同的位置和資源群組中，或位於不同的位置和資源群組中。 此範例會顯示閘道位於不同位置的不同資源群組中。
-* 您需要針對區域網路閘道宣告的最小前置詞是 VPN 裝置上 BGP 對等體 IP 位址的主機位址。 在此情況下，它是/32 首碼 10.51.255.254/32。
+* 您需要針對區域網路閘道宣告的最小前置詞是 VPN 裝置上 BGP 對等體 IP 位址的主機位址。 在此情況下，它是 10.51.255.254/32 的/32 前置詞。
 * 請注意，您必須在內部部署網路與 Azure 虛擬網路之間使用不同的 BGP ASN。 在兩者相同的情況下，如果內部部署 VPN 裝置已經使用您的 VNet ASN 來與其他 BGP 芳鄰進行對等，您就需要變更該 ASN。
 
 繼續進行之前，請確定您已完成本練習的[為您的 VPN 閘道啟用 BGP](#enablebgp)一節，且仍然與訂用帳戶 1 保持連線。 請注意，在此範例中，您會建立新的資源群組。 同時，也請注意區域網路閘道的兩個額外參數︰`Asn` 與 `BgpPeerAddress`。

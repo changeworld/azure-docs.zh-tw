@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 27c284ff7e806c9f194005ed26c05e99c4697083
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757637"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443053"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上使用 GPU 處理計算密集型工作負載
 
@@ -162,7 +162,7 @@ az extension update --name aks-preview
 
 設定叢集，以在建立叢集時使用 AKS 專用 GPU 映射。 在 `--aks-custom-headers` 新叢集上使用 GPU 代理程式節點的旗標，以使用 AKS 專用 GPU 映射。
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
@@ -173,7 +173,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-siz
 
 設定新的節點集區，以使用 AKS 專用 GPU 映射。 `--aks-custom-headers`針對新節點集區上的 GPU 代理程式節點使用旗標旗標，以使用 AKS 專用的 gpu 映射。
 
-```azure-cli
+```azurecli
 az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
@@ -181,7 +181,7 @@ az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myRe
 
 > [!NOTE]
 > 如果您的 GPU sku 需要第2代虛擬機器，您可以建立：
-> ```azure-cli
+> ```azurecli
 > az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
 > ```
 
@@ -394,7 +394,7 @@ Adding run metadata for 499
 kubectl delete jobs samples-tf-mnist-demo
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要執行 Apache Spark 作業，請參閱[在 AKS 上執行 Apache Spark 作業][aks-spark]。
 

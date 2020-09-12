@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/12/2017
+ms.date: 09/02/2020
 ms.author: yushwang
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3cb2bc7046ba8e81fae9beeda6557964fa34e477
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5abfa26f5d897ade963253da81927a48cc65d781
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078430"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394069"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>如何使用 PowerShell 在 Azure VPN 閘道上設定 BGP
 本文將逐步引導您進行使用 Resource Manager 部署模型和 PowerShell 在跨單位網站間 (S2S) VPN 連線和 VNet 對 VNet 連線上啟用 BGP 的步驟。
@@ -313,6 +313,6 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 
 ![VNet 對 VNet 的 BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 請參閱 [建立網站的虛擬機器](../virtual-machines/windows/quick-create-portal.md) 以取得相關步驟。

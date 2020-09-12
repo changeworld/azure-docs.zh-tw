@@ -1,52 +1,58 @@
 ---
 title: Azure HDInsight 管理 IP 位址
-description: 瞭解您必須允許輸入流量的 IP 位址，以便適當地設定網路安全性群組和使用者定義的路由，以使用 Azure HDInsight 的虛擬網路。
+description: 瞭解您必須允許輸入流量的 IP 位址，才能使用 Azure HDInsight 適當地設定虛擬網路的網路安全性群組和使用者定義的路由。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 03/03/2020
-ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/11/2020
+ms.openlocfilehash: 4f7db88da646c9787c70d04ff7e3478a27a09275
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82778255"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401634"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 位址
 
-> [!Important]
-> 在大部分情況下，您現在可以使用網路安全性群組的[服務標記](hdinsight-service-tags.md)功能，而不是手動新增 IP 位址。 只有服務標籤才會新增新的區域，而靜態 IP 位址最後會被取代。
+本文列出 Azure HDInsight 健康情況和管理服務所使用的 IP 位址。 如果您使用網路安全性群組 (Nsg) 或使用者定義路由 (Udr) 您可能需要將其中一些 IP 位址新增至輸入網路流量的允許清單。
 
-如果您使用網路安全性群組（Nsg）或使用者定義的路由（Udr）來控制 HDInsight 叢集的輸入流量，您必須確定您的叢集可以與重要的 Azure 健康狀態和管理服務進行通訊。  這些服務的某些 IP 位址是特定區域，而其中一些會套用到所有 Azure 區域。 如果您不是使用自訂 DNS，您可能也需要允許來自 Azure DNS 服務的流量。
+## <a name="introduction"></a>簡介
+ 
+> [!Important]
+> 在大多數情況下，您現在可以使用網路安全性群組的 [服務](hdinsight-service-tags.md) 標籤，而不是手動新增 IP 位址。 系統將不會為新的 Azure 區域發佈 IP 位址，而且只會有已發佈的服務標記。 管理 IP 位址的靜態 IP 位址最終將會被取代。
+
+如果您使用網路安全性群組 (Nsg) 或使用者定義的路由 (Udr) 控制您 HDInsight 叢集的輸入流量，您必須確定您的叢集可以與重要的 Azure 健康狀態和管理服務通訊。  這些服務的部分 IP 位址是區域專屬的，有些則適用于所有 Azure 區域。 如果您不是使用自訂 DNS，您可能也需要允許來自 Azure DNS 服務的流量。
+
+如果您需要此處未列出之區域的 IP 位址，您可以使用 [服務標記探索 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 來尋找您區域的 ip 位址。 如果您無法使用 API，請下載 [服務標記 JSON](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) 檔案，並搜尋您想要的區域。
 
 下列各節將討論必須允許的特定 IP 位址。
 
 ## <a name="azure-dns-service"></a>Azure DNS 服務
 
-如果您使用的是 Azure 提供的 DNS 服務，允許從埠53上的__168.63.129.16__進行存取。 如需詳細資訊，請參閱[vm 和角色實例的名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)檔。 如果您使用的是自訂 DNS，請略過此步驟。
+如果您使用 Azure 提供的 DNS 服務，允許在埠53上從 __168.63.129.16__ 存取。 如需詳細資訊，請參閱 [vm 的名稱解析和角色實例](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) 檔。 如果您是使用自訂 DNS，請略過此步驟。
 
 ## <a name="health-and-management-services-all-regions"></a>健全狀況和管理服務：所有區域
 
-允許來自下列 IP 位址的流量，以進行 Azure HDInsight 健康狀態和管理服務（適用于所有 Azure 區域）：
+允許來自下列 IP 位址的流量，以適用于所有 Azure 區域的 Azure HDInsight 健康情況和管理服務：
 
-| 來源 IP 位址 | Destination  | Direction |
+| 來源 IP 位址 | 目的地  | 方向 |
 | ---- | ----- | ----- |
-| 168.61.49.99 | \*：443 | 輸入 |
-| 23.99.5.239 | \*：443 | 輸入 |
-| 168.61.48.131 | \*：443 | 輸入 |
+| 168.61.49.99 | \*：443 | 連入 |
+| 23.99.5.239 | \*：443 | 連入 |
+| 168.61.48.131 | \*：443 | 連入 |
 | 138.91.141.162 | \*：443 | 輸入 |
 
 ## <a name="health-and-management-services-specific-regions"></a>健全狀況和管理服務：特定區域
 
-允許在資源所在的特定 Azure 區域中，針對 Azure HDInsight 健康狀態和管理服務列出的 IP 位址進行流量：
+在您的資源所在的特定 Azure 區域中，允許針對 Azure HDInsight 健康情況和管理服務列出的 IP 位址的流量：
 
 > [!IMPORTANT]  
-> 如果未列出您使用的 Azure 區域，請使用網路安全性群組的[服務](hdinsight-service-tags.md)標籤功能。
+> 如果未列出您使用的 Azure 區域，請使用網路安全性群組的 [服務標記](hdinsight-service-tags.md) 功能。
 
-| 國家/地區 | 區域 | 允許的來源 IP 位址 | 允許的目的地 | Direction |
+| Country | Region | 允許的來源 IP 位址 | 允許的目的地 | 方向 |
 | ---- | ---- | ---- | ---- | ----- |
 | Asia | 東亞 | 23.102.235.122</br>52.175.38.134 | \*：443 | 輸入 |
 | &nbsp; | 東南亞 | 13.76.245.160</br>13.76.136.249 | \*：443 | 輸入 |
@@ -82,11 +88,11 @@ ms.locfileid: "82778255"
 
 如需用於 Azure Government 之 IP 位址的資訊，請參閱 [Azure Government Intelligence + Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) 文件。
 
-如需詳細資訊，請參閱[控制網路流量](./control-network-traffic.md)。
+如需詳細資訊，請參閱 [控制網路流量](./control-network-traffic.md)。
 
-如果您使用的是使用者定義的路由（Udr），您應該指定路由，並允許從虛擬網路到上述 Ip 的輸出流量，並將下一個躍點設為「網際網路」。
+如果您 (Udr) 使用使用者定義的路由，則應該指定路由，並允許從虛擬網路到上述 Ip 的輸出流量，並將下一個躍點設定為 [網際網路]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [建立 Azure HDInsight 叢集的虛擬網路](hdinsight-create-virtual-network.md)
-* [Azure HDInsight 的網路安全性群組（NSG）服務標記](hdinsight-service-tags.md)
+* [Azure HDInsight 的網路安全性群組 (NSG) 服務標記](hdinsight-service-tags.md)

@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 3c2fef4ebd7db076a502f63101c80c4e08683b39
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145360"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394727"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>將 Azure Key Vault 移至另一個訂用帳戶
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 > [!IMPORTANT]
 > **將金鑰保存庫移至另一個訂用帳戶，將會對您的環境造成重大變更。**
@@ -97,11 +97,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 
 既然您的保存庫已與正確的租用戶識別碼相關聯，而且移除了舊的存取原則項目，請使用 Azure PowerShell [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) Cmdlet 或 Azure CLI [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令，設定新的存取原則項目。
 
-如果您使用 Azure 資源的受控識別，您也必須將其更新為新的 Azure AD 租用戶。 如需有關受控識別的詳細資訊，請參閱[使用受控識別提供金鑰保存庫驗證](managed-identity.md)。
+如果您使用適用于 Azure 資源的受控識別，您也必須將其更新為新的 Azure Active Directory 租使用者。 如需受控識別的詳細資訊，請 [流覽受控識別](/azure/active-directory/managed-identities-azure-resources/overview)。
 
-如果您使用的是 MSI，您也必須更新 MSI 身分識別，因為舊的身分識別不會再出現在正確的 AAD 租用戶中。 請參閱下列檔，以協助解決此問題。 
+如果您使用受控識別，您也必須更新身分識別，因為舊的身分識別將不再位於正確的 Azure Active Directory 租使用者中。 請參閱下列檔，以協助解決此問題。 
 
 * [更新 MSI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)
 * [將訂用帳戶轉移至新的目錄](https://docs.microsoft.com/azure/role-based-access-control/transfer-subscription)
-
-

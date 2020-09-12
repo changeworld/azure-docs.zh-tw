@@ -1,18 +1,18 @@
 ---
 title: 移除伺服器與停用保護 | Microsoft Docs
 description: 本文說明如何取消註冊 Site Recovery 保存庫中的伺服器，並停用虛擬機器和實體伺服器的保護。
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.author: rajanaki
-ms.openlocfilehash: 77dc21b4a04ec5de440b1a17da4747a3dcc711f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: sharrai
+ms.openlocfilehash: a4f6c318a7521e1fbc03ff3a47e34e992cce44df
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083713"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424781"
 ---
 # <a name="remove-servers-and-disable-protection"></a>移除伺服器並停用保護
 
@@ -30,11 +30,11 @@ ms.locfileid: "87083713"
 ## <a name="unregister-a-vmm-server"></a>取消註冊 VMM 伺服器
 
 1. 在您想要移除的 VMM 伺服器上，停止在雲端複寫虛擬機器。
-2. 在您想要刪除的 VMM 伺服器上，刪除任何由雲端使用的網路對應。 在**Site Recovery Infrastructure**  >  [**System Center VMM**網路對應 Site Recovery 基礎結構] 中  >  ** **，以滑鼠右鍵按一下網路對應 > [**刪除**]。
+2. 在您想要刪除的 VMM 伺服器上，刪除任何由雲端使用的網路對應。 在**Site Recovery Infrastructure**  >  [**System Center VMM**網路對應的 Site Recovery 基礎結構] 中  >  ** **，以滑鼠右鍵按一下 [網路對應] > [**刪除**]。
 3. 記下 VMM 伺服器的識別碼。
 4. 將您想要移除的 VMM 伺服器上取消雲端和複寫原則的關聯。  在**Site Recovery Infrastructure**  >  [**System Center VMM**複寫原則的 Site Recovery 基礎結構] 中  >   ** **，按兩下相關聯的原則。 以滑鼠右鍵按一下雲端 > [取消關聯]****。
-5. 刪除 VMM 伺服器或作用中的節點。 在**Site Recovery Infrastructure**  >  **System Center vmm**  >  **vmm 伺服器**Site Recovery 基礎結構中，以滑鼠右鍵按一下伺服器 >**刪除**]。
-6. 如果您的 VMM 伺服器處於中斷連線的狀態，則在 VMM 伺服器上下載並執行[清除指令碼](https://aka.ms/asr-cleanup-script-vmm)。 使用 [以**系統管理員身分執行**] 選項開啟 PowerShell，以變更預設（LocalMachine）範圍的執行原則。 在指令碼中，指定您想要移除的 VMM 伺服器的識別碼。 該指令碼會從伺服器移除註冊及雲端配對資訊。
+5. 刪除 VMM 伺服器或作用中的節點。 在**Site Recovery Infrastructure**  >  **System Center vmm**  >  **vmm 伺服器**的 Site Recovery 基礎結構中，以滑鼠右鍵按一下伺服器 >**刪除**]。
+6. 如果您的 VMM 伺服器處於中斷連線的狀態，則在 VMM 伺服器上下載並執行[清除指令碼](https://aka.ms/asr-cleanup-script-vmm)。 使用 [以 **系統管理員身分執行** ] 選項開啟 PowerShell，以變更預設 (LocalMachine) 範圍的執行原則。 在指令碼中，指定您想要移除的 VMM 伺服器的識別碼。 該指令碼會從伺服器移除註冊及雲端配對資訊。
 5. 在任何次要 VMM 伺服器上執行清除指令碼。
 6. 在已安裝提供者的任何其他被動 VMM 叢集節點上執行清除指令碼。
 7. 在 VMM 伺服器上手動將提供者解除安裝。 如果您有叢集，請將它從所有節點中移除。
@@ -45,9 +45,9 @@ ms.locfileid: "87083713"
 未受 VMM 管理的 Hyper-V 主機會集合成 Hyper-V 站台。 移除 Hyper-V 站台中的主機，方法如下：
 
 1. 針對主機上的 Hyper-V VM 停用複寫。
-2. 取消關聯 Hyper-V 站台的原則。 在 [hyper-v 網站複寫原則的**Site Recovery 基礎結構**] 中  >  **For Hyper-V Sites**  >   ** **，按兩下相關聯的原則。 以滑鼠右鍵按一下站台 > [取消關聯]****。
-3. 刪除 Hyper-V 主機。 在 [hyper-v 主機的**Site Recovery 基礎結構**] 中  >  **For Hyper-V Sites**  >  ** **，以滑鼠右鍵按一下伺服器 > [**刪除**]。
-4. 從 Hyper-V 站台移除所有主機之後，將 Hyper-V 站台刪除。 在 [hyper-v 網站的**Site Recovery 基礎結構**] 中  >  **For Hyper-V Sites**  >  ** **，以滑鼠右鍵按一下網站 > [**刪除**]。
+2. 取消關聯 Hyper-V 站台的原則。 在 [hyper-v 網站的**Site Recovery 基礎結構**]  >  **For Hyper-V Sites**  >   **複寫原則**中，按兩下相關聯的原則。 以滑鼠右鍵按一下站台 > [取消關聯]****。
+3. 刪除 Hyper-V 主機。 在 [hyper-v 網站的**Site Recovery 基礎結構**] 中  >  **For Hyper-V Sites**  >  ** **，以滑鼠右鍵按一下伺服器 >**刪除**]。
+4. 從 Hyper-V 站台移除所有主機之後，將 Hyper-V 站台刪除。 在 [hyper-v 網站的**Site Recovery 基礎結構**] 中  >  **For Hyper-V Sites**  >  ** **，以滑鼠右鍵按一下該網站 >**刪除**]。
 5. 如果您的 HYPER-V 主機處於**中斷連線的**狀態，則在您移除的每一部 HYPER-V 主機上執行下列指令碼。 該指令碼會清除伺服器上的設定，並從保存庫取消註冊該伺服器。
 
 
@@ -143,19 +143,19 @@ ms.locfileid: "87083713"
 
 ## <a name="disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure"></a>停用 VMware VM 或實體伺服器的保護 (VMware 至 Azure)
 
-1. 在 [**受保護的專案**]  >  [複寫的**專案**] 中，以滑鼠右鍵按一下機器 >**停**用複寫
+1. 在 [**受保護的專案**] 複寫  >  **專案**中，以滑鼠右鍵按一下電腦，>**停**用複寫]。
 2. 在 [停用複寫]**** 頁面中，選取下列其中一個選項：
-    - **停用複寫並移除（建議）** -此選項會將複寫的專案從 Azure Site Recovery 中移除，且機器的複寫會停止。 系統會清除組態伺服器上的複寫設定，並停止此受保護伺服器的 Site Recovery 計費。 請注意，此選項僅適用於組態伺服器處於連線狀態時。
+    - **停用複寫並移除 (建議的) ** -這個選項會從 Azure Site Recovery 中移除複寫的專案，並停止該機器的複寫。 系統會清除組態伺服器上的複寫設定，並停止此受保護伺服器的 Site Recovery 計費。 請注意，此選項僅適用於組態伺服器處於連線狀態時。
     - **移除** - 只有在來源環境遭到刪除或無法存取 (未連線) 時，才使用此選項。 這會將複寫的項目從 Azure Site Recovery 移除 (停止計費)。 組態伺服器上的複寫設定**將不會**遭到清除。 
 
 > [!NOTE]
 > 在這兩個選項中，行動服務將無法從受保護的伺服器解除安裝，您必須手動解除安裝。 如果您打算再次使用相同的組態伺服器保護伺服器，可以略過解除安裝行動服務。
 
 > [!NOTE]
-> 如果您已故障切換 VM，而且它正在 Azure 中執行，請注意停用保護不會移除/影響已故障的 VM。
-## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>停用 Azure VM 的保護（Azure 至 Azure）
+> 如果您已容錯移轉 VM，且該 VM 正在 Azure 中執行，請注意停用保護並不會移除/影響已容錯移轉的 VM。
+## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>停用 azure VM (Azure 至 Azure) 的保護
 
--  在 [**受保護的專案**]  >  [複寫的**專案**] 中，以滑鼠右鍵按一下機器 >**停**用複寫
+-  在 [**受保護的專案**] 複寫  >  **專案**中，以滑鼠右鍵按一下電腦，>**停**用複寫]。
 > [!NOTE]
 > 行動服務將無法從受保護的伺服器解除安裝，您必須手動解除安裝。 如果您打算再次保護伺服器，可以略過解除安裝行動服務。
 
@@ -164,7 +164,7 @@ ms.locfileid: "87083713"
 > [!NOTE]
 > 如果您是在沒有 VMM 伺服器的情況下將 Hyper-V VM 複寫到 Azure，請使用此程序。 如果您要使用 **System Center VMM 至 Azure** 案例複寫虛擬機器，則依照「使用 System Center VMM 至 Azure 案例，停用 Hyper-V 虛擬機器複寫的保護」中的指示進行
 
-1. 在 [**受保護的專案**]  >  [複寫的**專案**] 中，以滑鼠右鍵按一下機器 >**停**用複寫
+1. 在 [**受保護的專案**] 複寫  >  **專案**中，以滑鼠右鍵按一下電腦，>**停**用複寫]。
 2. 在 [停用複寫]**** 中，您可以選取下列選項：
    - **停用複寫並移除 (建議)** - 此選項會將複寫的項目從 Azure Site Recovery 移除，且機器的複寫會遭到停止。 系統將會清除內部部署虛擬機器上的複寫設定，並停止此受保護伺服器的 Site Recovery 計費。
    - **移除** - 只有在來源環境遭到刪除或無法存取 (未連線) 時，才使用此選項。 這會將複寫的項目從 Azure Site Recovery 移除 (停止計費)。 內部部署虛擬機器上的複寫設定**將不會**遭到清除。 
@@ -173,7 +173,7 @@ ms.locfileid: "87083713"
     > 如果您選擇 [移除]**** 選項，則執行下列一組指令碼來清除內部部署 Hyper-V 伺服器上的複寫設定。
 
     > [!NOTE]
-    > 如果您已故障切換 VM，而且它正在 Azure 中執行，請注意停用保護不會移除/影響已故障的 VM。
+    > 如果您已容錯移轉 VM，且該 VM 正在 Azure 中執行，請注意停用保護並不會移除/影響已容錯移轉的 VM。
 
 1. 在來源 Hyper-V 主機伺服器上，移除虛擬機器的複寫。 將 SQLVM1 取代為您虛擬機器的名稱，並從系統管理 PowerShell 執行指令碼
 
@@ -186,7 +186,7 @@ ms.locfileid: "87083713"
 
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario"></a>使用 System Center VMM 至 Azure 案例停用複寫至 Azure 之 HYPER-V 虛擬機器的保護
 
-1. 在 [**受保護的專案**]  >  [複寫的**專案**] 中，以滑鼠右鍵按一下機器 >**停**用複寫
+1. 在 [**受保護的專案**] 複寫  >  **專案**中，以滑鼠右鍵按一下電腦，>**停**用複寫]。
 2. 在 [停用複寫]**** 中，選取下列其中一個選項：
 
    - **停用複寫並移除 (建議)** - 此選項會將複寫的項目從 Azure Site Recovery 移除，且機器的複寫會遭到停止。 系統會清除內部部署虛擬機器上的複寫設定，並停止此受保護伺服器的 Site Recovery 計費。
@@ -213,7 +213,7 @@ ms.locfileid: "87083713"
 
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario"></a>使用 System Center VMM 至 VMM 案例停用複寫至次要 VMM 伺服器之 Hyper-V 虛擬機器的保護
 
-1. 在 [**受保護的專案**]  >  [複寫的**專案**] 中，以滑鼠右鍵按一下機器 >**停**用複寫
+1. 在 [**受保護的專案**] 複寫  >  **專案**中，以滑鼠右鍵按一下電腦，>**停**用複寫]。
 2. 在 [停用複寫]**** 中，選取下列其中一個選項：
 
    - **停用複寫並移除 (建議)** - 此選項會將複寫的項目從 Azure Site Recovery 移除，且機器的複寫會遭到停止。 系統會清除內部部署虛擬機器上的複寫設定，並停止此受保護伺服器的 Site Recovery 計費。

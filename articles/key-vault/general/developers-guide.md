@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2f90ba0bb732930b4cf3b1c832c6954683119f5f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b18ca88f9a97b09b7c5e15e78a2301bee712df5e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585860"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394749"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 金鑰保存庫開發人員指南
 
@@ -67,7 +67,7 @@ Azure Key Vault 可安全地儲存認證和其他金鑰及密碼，但是您的�
 - [使用 CLI 設定和取出憑證](../certificates/quick-create-cli.md)
 - [使用 PowerShell 設定和取出憑證](../certificates/quick-create-powershell.md)
 - [使用 Azure 入口網站設定及取出憑證](../certificates/quick-create-portal.md)
-- [使用 REST 的按鍵作業](/rest/api/keyvault/#certificate-operations)
+- [使用 REST 的憑證作業](/rest/api/keyvault/#certificate-operations)
 - [使用 Python 設定和取出憑證](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>撰寫金鑰保存庫的程式碼
@@ -125,7 +125,7 @@ Azure Key Vault 可安全地儲存認證和其他金鑰及密碼，但是您的�
 - [如何搭配使用金鑰保存庫與 SQL Server 進行可延伸金鑰管理](https://msdn.microsoft.com/library/dn198405.aspx) - 適用於 Azure 金鑰保存庫的 SQL Server 連接器會啟用 SQL Server 和 SQL-in-a-VM，利用 Azure 金鑰保存庫服務作為可延伸金鑰管理 (EKM) 提供者來保護其針對應用程式連結的加密金鑰；透明資料加密、備份加密和資料行層級加密。
 - [如何將憑證從金鑰保存庫部署至 VM](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) - 在 Azure 上的 VM 中執行的雲端應用程式需要憑證。 現在應如何讓此憑證進入此 VM？
 - [透過金鑰保存庫部署 Azure Web 應用程式憑證]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)提供逐步指示，以便將儲存在金鑰保存庫的憑證部署為 [App Service 憑證](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)供應項目的一部分。
-- [對許多應用程式授與金鑰保存庫的存取權限](group-permissions-for-apps.md) Key Vault 存取控制原則最多支援 1024 個項目。 不過，您可以建立 Azure Active Directory 安全性群組。 將所有相關聯的服務主體新增至這個安全性群組，然後對 Key Vault 授與此安全性群組的存取權。
+-  ([CLI](assign-access-policy-cli.md)  |  [PowerShell](assign-access-policy-powershell.md)  |  [入口網站](assign-access-policy-portal.md)) 指派存取原則。 Key Vault 支援最多1024的存取原則專案。 若要與使用者保持在此限制內，請建立 Azure Active Directory 安全性群組、將所有相關聯的服務主體新增至該群組，然後將 Key Vault 的存取權授與群組。
 - 如需整合及搭配使用金鑰保存庫和 Azure 的具體工作指引，請參閱 [Ryan Jones 的金鑰保存庫 Azure Resource Manager 範本範例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)。
 - [如何以 CLI 使用金鑰保存庫虛刪除](soft-delete-cli.md)引導您完成金鑰保存庫和各種金鑰保存庫物件的使用和生命週期，並啟用虛刪除。
 - [如何以 Powershell 使用金鑰保存庫虛刪除](soft-delete-powershell.md)引導您完成金鑰保存庫和各種金鑰保存庫物件的使用和生命週期，並啟用虛刪除。

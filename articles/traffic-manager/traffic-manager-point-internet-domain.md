@@ -2,20 +2,20 @@
 title: 將網際網路網域指向流量管理員-Azure 流量管理員
 description: 本文將協助您將公司網域名稱指向流量管理員網域名稱。
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
-ms.author: rohink
-ms.openlocfilehash: 69bdf9a0e04b4d9c2a55f1c0f346d601830ded09
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.author: duau
+ms.openlocfilehash: 93a8076f12b8f006d600cbd32ce39169f4b47c67
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053060"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392590"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>將公司網際網路網域指向 Azure 流量管理員網域
 
@@ -25,12 +25,12 @@ ms.locfileid: "88053060"
 
 `www.contoso.com IN CNAME contoso.trafficmanager.net.`
 
-*Www \. contoso.com*的所有流量要求都會導向至*contoso.trafficmanager.net*。
+所有對 *www \. contoso.com* 的流量要求都會被導向至 *contoso.trafficmanager.net*。
 
 > [!IMPORTANT]
 > 您無法將第二層網域 (例如 *contoso.com*) 指向流量管理員網域。 DNS 通訊協定標準不允許第二層網域名稱的 CNAME 記錄。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [流量管理員路由傳送方法](traffic-manager-routing-methods.md)
 * [流量管理員 - 停用、啟用或刪除設定檔](disable-enable-or-delete-a-profile.md)

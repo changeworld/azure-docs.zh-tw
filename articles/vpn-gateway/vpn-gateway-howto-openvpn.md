@@ -1,22 +1,22 @@
 ---
 title: 如何在 Azure VPN 閘道上設定 OpenVPN： PowerShell
-description: 瞭解如何使用 PowerShell 在 Azure VPN 閘道上啟用 OpenVPN 通訊協定，以取得點對站環境。
+description: 瞭解如何使用 PowerShell 在 Azure VPN 閘道上為點對站環境啟用 OpenVPN 通訊協定。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 05/21/2019
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: c13d14ad2d06cbc43d80c05258bdbd3303da4838
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 57bc53c28866b3f16e742c27b6a1600bfe6f44ab
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036822"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418818"
 ---
-# <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>設定 OpenVPN 以進行 Azure 點對站 VPN 閘道
+# <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>設定適用于 Azure 點對站 VPN 閘道的 OpenVPN
 
-本文可協助您在 Azure VPN 閘道上設定**OpenVPN®通訊協定**。 本文假設您已具有可用的點對站環境。 如果還沒有，請使用步驟 1 中的指示來建立點對站 VPN。
+本文可協助您在 Azure VPN 閘道上設定 **OpenVPN®的通訊協定** 。 本文假設您已具有可用的點對站環境。 如果還沒有，請使用步驟 1 中的指示來建立點對站 VPN。
 
 
 
@@ -36,8 +36,8 @@ $gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $name
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientProtocol OpenVPN
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要設定 OpenVPN 的用戶端，請參閱[設定 OpenVPN 用戶端](vpn-gateway-howto-openvpn-clients.md)。
 
-**「OpenVPN」是 OpenVPN Inc. 的商標。**
+**"OpenVPN" 是 OpenVPN Inc. 的商標。**

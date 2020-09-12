@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：路由器設定範例-NAT
 description: 此頁面提供適用於 Cisco 和 Juniper 路由器的路由器組態範例。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
-ms.author: cherylmc
-ms.openlocfilehash: 3393c661240ae5619597256a6691ae43608d622b
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.author: duau
+ms.openlocfilehash: 4b57dec32a3a008cadf68c19ea52353a23fb2cd3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856716"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397489"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>設定和管理 NAT 的路由器組態範例
 
@@ -56,7 +56,7 @@ nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static
 
 **介面和方向：**
 
-來源介面（流量進入 ASA 的位置）：在目的地介面內（流量離開 ASA 的位置）：外部
+來源介面 (流量進入 ASA) ：在目的地介面 (流量離開 ASA) ：外部
 
 **組態：**
 
@@ -165,7 +165,7 @@ nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT dest
 ```
 
 
-### <a name="3-create-security-policies-between-zones"></a>3. 在區域之間建立安全性原則
+### <a name="3-create-security-policies-between-zones"></a>3. 建立區域間的安全性原則
 
 ```console
     security {
@@ -259,8 +259,8 @@ nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT dest
        }
 ```
 
-### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. 設定 BGP 以公告每個方向的選擇性前置詞
-請參閱路由設定[範例](expressroute-config-samples-routing.md)頁面中的範例。
+### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. 設定 BGP 以通告每個方向的選擇性首碼
+請參閱路由設定 [範例](expressroute-config-samples-routing.md) 頁面中的範例。
 
 ### <a name="6-create-policies"></a>6. 建立原則
 

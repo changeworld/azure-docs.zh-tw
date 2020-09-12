@@ -1,21 +1,21 @@
 ---
 title: 驗證 Azure 流量管理員設定
-description: 在本文中，您將瞭解如何驗證您的流量管理員設定，並測試流量路由方法。
+description: 在本文中，您將瞭解如何驗證流量管理員設定，並測試流量路由方法。
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: rohink
-ms.openlocfilehash: 894f01244fef94e9f5a60823ba06ff38c01288a1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.author: duau
+ms.openlocfilehash: 4bb7458d4258dffb074d663e5cf712c7a0245cc7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186991"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401515"
 ---
 # <a name="verify-traffic-manager-settings"></a>驗證流量管理員設定
 
@@ -68,7 +68,7 @@ ms.locfileid: "86186991"
 
 或者，您可以找到免費的 Web 型 DNS 查閱和挖掘服務。 其中一些工具提供您從全球不同位置檢查 DNS 名稱解析的能力。 例如，搜尋 "DNS lookup" 相關資料。 協力廠商服務 (如 Gomez、Keynote) 可用於確認您的設定檔正如預期般分配流量。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [關於流量管理員流量路由方法](traffic-manager-routing-methods.md)
 * [流量管理員的效能考量](traffic-manager-performance-considerations.md)

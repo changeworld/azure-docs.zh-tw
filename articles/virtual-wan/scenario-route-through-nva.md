@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6b62f8c33c73ded978c0c2e3a8c3b7fadea49c96
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2fdc1cd36c037f163b6b04907248e08ef20e961d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852097"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400019"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>案例：透過 NVA 路由傳送流量
 
@@ -42,11 +42,11 @@ ms.locfileid: "88852097"
 | 寄件者             | 變更為：|   *NVA 輪輻*|*NVA Vnet*|*非 NVA Vnet*|*分支*|
 |---|---|---|---|---|---|
 | **NVA 輪輻**   | &#8594; | 0/0 UDR  |  對等互連 |   0/0 UDR    |  0/0 UDR  |
-| **NVA Vnet**    | &#8594; |   靜態 |      X   |        X     |      X    |
-| **非 NVA Vnet**| &#8594; |   靜態 |      X   |        X     |      X    |
-| **分支**     | &#8594; |   靜態 |      X   |        X     |      X    |
+| **NVA Vnet**    | &#8594; |   Static |      X   |        X     |      X    |
+| **非 NVA Vnet**| &#8594; |   Static |      X   |        X     |      X    |
+| **分支**     | &#8594; |   Static |      X   |        X     |      X    |
 
-連接矩陣中的每個資料格都會描述虛擬 WAN 連線是否 (流程的「來源」端、資料表中的資料列標頭) 學習目的地前置詞 (流程的「到」端，也就是資料表中的資料行標頭，) 特定的流量。 請考慮下列事項：
+連接矩陣中的每個資料格都會描述虛擬 WAN 連線是否 (流程的「來源」端、資料表中的資料列標頭) 學習目的地前置詞 (流程的「到」端，也就是資料表中的資料行標頭，) 特定的流量。 「X」表示連線是由虛擬 WAN 原生提供的，而「靜態」表示連線是由虛擬 WAN 使用靜態路由所提供。 請考慮下列事項：
 
 * NVA 輪輻並非由虛擬 WAN 管理。 因此，與其他 Vnet 或分支通訊的機制會由使用者維護。 NVA VNet 的連線是由 VNet 對等互連所提供，而 0.0.0.0/0 的預設路由則指向 NVA，因為下一個躍點應該涵蓋網際網路、其他輪輻和分支的連線能力。
 * NVA Vnet 將知道自己的 NVA 輪輻，而不是連接到其他 NVA Vnet 的 NVA 輪輻。 例如，在表1中，VNet 2 知道 VNet 5 和 VNet 6，但不適用於 VNet 7 和 VNet 8 等其他輪輻。 需要靜態路由，才能將其他輪輻的首碼插入 NVA Vnet

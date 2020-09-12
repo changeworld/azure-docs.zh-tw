@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 5b69d10bc2f3c5ec737e026059c82c3efac681b5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4f5fb02239fa48d96b0b779af7c970fc67fbcb99
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268154"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419821"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>透過範本在您的 Azure Stack Edge GPU 裝置上部署 Vm
 
@@ -139,7 +139,7 @@ key1 GsCm7QriXurqfqx211oKdfQ1C9Hyu5ZutP6Xl0dqlNNhxLxDesDej591M8y7ykSPN4fY9vmVpgc
 key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/ZjvoBWsQ1klqQ== ll
 ```
 
-### <a name="add-blob-uri-to-hosts-file"></a>將 blob URI 新增至 hosts 檔案
+### <a name="add-blob-uri-to-hosts-file"></a>將 Blob URI 新增至 hosts 檔案
 
 確定您已針對用來連線到 Blob 儲存體的用戶端，在 [主機] 檔案中新增 blob URI。 **以系統管理員身分執行 [記事本** ]，並在中為 blob URI 新增下列專案 `C:\windows\system32\drivers\etc\hosts` ：
 
@@ -185,11 +185,11 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
     ![連接到 Azure 儲存體1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. 選取 [使用儲存體帳戶名稱和金鑰]****。 選取 [下一步]  。
+5. 選取 [使用儲存體帳戶名稱和金鑰]****。 選取 [下一步] 。
 
     ![連接到 Azure 儲存體2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. 在 [ **使用名稱和金鑰連接]** 中，提供 **顯示名稱**、 **儲存體帳戶名稱**Azure 儲存體 **帳戶金鑰**。 選取 **其他** 儲存體網域，然後提供 `<device name>.<DNS domain>` 連接字串。 如果您未在儲存體總管中安裝憑證，請核取 [ **使用 HTTP** ] 選項。 選取 [下一步]  。
+6. 在 [ **使用名稱和金鑰連接]** 中，提供 **顯示名稱**、 **儲存體帳戶名稱**Azure 儲存體 **帳戶金鑰**。 選取 **其他** 儲存體網域，然後提供 `<device name>.<DNS domain>` 連接字串。 如果您未在儲存體總管中安裝憑證，請核取 [ **使用 HTTP** ] 選項。 選取 [下一步] 。
 
     ![使用名稱和金鑰連接](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
@@ -245,11 +245,14 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
 
 ```json
 "parameters": {
+        "osType": {
+              "value": "<Operating system corresponding to the VHD you upload can be Windows or Linux>"
+        },
         "imageName": {
             "value": "<Name for the VM iamge>"
         },
         "imageUri": {
-      "value": "<Path to the VHD that you uploaded in the Storage account>"
+              "value": "<Path to the VHD that you uploaded in the Storage account>"
         },
         "vnetName": {
             "value": "<Name for the virtual network where you will deploy the VM>"
@@ -340,7 +343,7 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
 > [!NOTE]
 > 當您在收到驗證錯誤時部署範本時，此會話的 Azure 認證可能已過期。 重新執行 `login-AzureRM` 命令，以再次連接到 Azure Stack Edge 裝置上的 Azure Resource Manager。
 
-1. 執行下列命令： 
+1. 執行以下命令： 
     
     ```powershell
     $templateFile = "Path to CreateImageAndVnet.json"
@@ -494,14 +497,14 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
 
 部署 VM 建立範本 `CreateVM.json` 。 此範本會從現有的 VNet 建立網路介面，並從已部署的映射建立 VM。
 
-1. 執行下列命令： 
+1. 執行以下命令： 
     
     ```powershell
     Command:
         
         $templateFile = "<Path to CreateVM.json>"
         $templateParameterFile = "<Path to CreateVM.parameters.json>"
-        $RGName = "RG1"
+        $RGName = "<Resource group name>"
              
         New-AzureRmResourceGroupDeployment `
             -ResourceGroupName $RGName `
@@ -547,15 +550,47 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
         
         PS C:\07-30-2020>
     ```   
- 
-7. 檢查是否已成功布建 VM。 執行下列命令：
+您也可以 `New-AzureRmResourceGroupDeployment` 使用參數以非同步方式執行命令 `–AsJob` 。 以下是當 Cmdlet 在背景中執行時的範例輸出。 然後，您可以查詢使用指令程式所建立之作業的狀態 `Get-Job` 。
+
+    ```powershell   
+    PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment `
+    >>     -ResourceGroupName $RGName `
+    >>     -TemplateFile $templateFile `
+    >>     -TemplateParameterFile $templateParameterFile `
+    >>     -Name "Deployment2" `
+    >>     -AsJob
+     
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    2      Long Running... AzureLongRun... Running       True            localhost            New-AzureRmResourceGro...
+     
+    PS C:\WINDOWS\system32> Get-Job -Id 2
+     
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    2      Long Running... AzureLongRun... Completed     True            localhost            New-AzureRmResourceGro...
+    ```
+
+7. 檢查是否已成功布建 VM。 執行以下命令：
 
     `Get-AzureRmVm`
 
 
 ## <a name="connect-to-a-vm"></a>連接到 VM
 
+根據您建立的是 Windows 或 Linux VM，連接的步驟可能會不同。
+
+### <a name="connect-to-windows-vm"></a>連接到 Windows VM
+
+遵循下列步驟以連線至 Windows VM。
+
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
+
+### <a name="connect-to-linux-vm"></a>連接至 Linux VM
+
+遵循下列步驟以連線至 Linux VM。
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
 
 <!--## Manage VM
 
@@ -592,6 +627,6 @@ To verify if the environment variable for AzCopy was set correctly, take the fol
 2. Find `AZCOPY_DEFAULT_SERVICE_API_VERSION` parameter. This should have the value you set in the preceding steps.-->
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [Azure Resource Manager Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.resources/?view=azurermps-6.13.0)

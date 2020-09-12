@@ -1,19 +1,19 @@
 ---
-title: Azure ExpressRoute 私人對等互連：設定 IPsec 傳輸模式-Windows 主機
+title: Azure ExpressRoute 私用對等互連：設定 IPsec 傳輸模式-Windows 主機
 description: 如何透過 ExpressRoute 私人對等互連使用 GPO 和 OU 在 Azure Windows VM 與內部部署 Windows 主機之間啟用 IPsec 傳輸模式。
 services: expressroute
-author: fabferri
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 10/17/2018
-ms.author: fabferri
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 32ad4f643ff0b217460403245cbb4e99f139aef9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 026b7ee6cf8061c7cff25b4f9f8d46b6ec3e6a8d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737252"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396483"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>設定 ExpressRoute 私人對等互連的 IPsec 傳輸模式
 
@@ -120,7 +120,7 @@ ms.locfileid: "84737252"
 
    [![12]][12]
 
-## <a name="3-define-the-ip-filter-action"></a><a name="filteraction"></a>3. 定義 IP 篩選器動作
+## <a name="3-define-the-ip-filter-action"></a><a name="filteraction"></a>3. 定義 IP 篩選動作
 
 1. 在下拉式清單中以滑鼠右鍵按一下 [Active Directory 上的 IP 安全性原則]****，然後按一下 [管理 IP 篩選清單和篩選動作...]****。
 
@@ -151,17 +151,17 @@ ms.locfileid: "84737252"
 
    [![23]][23]
 
-## <a name="4-define-an-ip-filter-list"></a><a name="filterlist1"></a>4. 定義 IP 篩選器清單
+## <a name="4-define-an-ip-filter-list"></a><a name="filterlist1"></a>4. 定義 IP 篩選清單
 
 建立篩選清單，並為其指定目的地連接埠為 8080 的加密 HTTP 流量。
 
 1. 若要限定哪些類型的流量必須加密，請使用 **IP 篩選清單**。 在 [管理 IP 篩選清單]**** 索引標籤中按一下 [新增]****，以新增 IP 篩選清單。
 
    [![24]][24]
-2. 在 [名稱]**** 欄位中，輸入 IP 篩選清單的名稱。 例如 **azure-onpremises-HTTP8080**。 然後，按一下 [**新增**]。
+2. 在 [名稱]**** 欄位中，輸入 IP 篩選清單的名稱。 例如 **azure-onpremises-HTTP8080**。 然後按一下 [ **新增**]。
 
    [![25]][25]
-3. 在 [IP 篩選描述和鏡像屬性]**** 頁面上，選取 [鏡像]****。 鏡像設定會比對雙向傳輸、而支援雙向通訊的封包。 然後按一下 [下一步] 。
+3. 在 [IP 篩選描述和鏡像屬性]**** 頁面上，選取 [鏡像]****。 鏡像設定會比對雙向傳輸、而支援雙向通訊的封包。 然後按一下 [下一步]  。
 
    [![26]][26]
 4. 在 [IP 流量來源]**** 頁面上，從 [來源位址：]**** 下拉式清單中選擇 [特定的 IP 位址或子網路]****。 

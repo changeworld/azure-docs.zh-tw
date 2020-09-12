@@ -1,7 +1,7 @@
 ---
-title: 自動化 ML 中的可解釋性（預覽）
+title: '自動化 ML (預覽版中的可解釋性) '
 titleSuffix: Azure Machine Learning
-description: 瞭解如何取得自動化 ML 模型判斷功能重要性的說明，並在使用 Azure Machine Learning SDK 時進行預測。
+description: 瞭解如何在使用 Azure Machine Learning SDK 時，取得自動化 ML 模型如何判斷功能重要性以及進行預測的說明。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,35 +10,43 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 0ddfb0c9b10d96acd511b7bfaee4c6ef85d04812
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 921132947fbf52fbd187941b96d8b75197763387
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306412"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419107"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretability：自動化機器學習中的模型說明（預覽）
+# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>可解譯性：自動化機器學習中的模型說明 (預覽) 
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將瞭解如何在 Azure Machine Learning 中取得自動化機器學習（ML）的說明。 自動化 ML 可協助您瞭解工程特性的重要性。 
+在本文中，您將瞭解如何在 Azure Machine Learning 中取得自動化機器學習 (ML) 的說明。 自動化 ML 可協助您瞭解設計的功能重要性。 
 
-預設會設定1.0.85 之後的所有 SDK 版本 `model_explainability=True` 。 在 SDK 版本1.0.85 和較舊版本中，使用者必須在物件中設定，才能 `model_explainability=True` `AutoMLConfig` 使用模型 interpretability。 
+1.0.85 預設設定之後的所有 SDK 版本 `model_explainability=True` 。 在 SDK 版本1.0.85 和較早的版本中，使用者必須在物件中設定，才能 `model_explainability=True` `AutoMLConfig` 使用 [模型可解譯性]。 
 
 在本文中，您將學會如何：
 
-- 在最佳模型或任何模型的定型期間執行 interpretability。
-- 啟用視覺效果，協助您查看資料和說明中的模式。
-- 在推斷或評分期間，執行 interpretability。
+- 在定型期間，針對最佳模型或任何模型執行可解譯性。
+- 啟用視覺效果，以協助您查看資料中的模式和說明。
+- 在推斷或評分期間執行可解譯性。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-- Interpretability 功能。 執行 `pip install azureml-interpret azureml-contrib-interpret` 以取得必要的套件。
-- 建立自動化 ML 實驗的知識。 如需如何使用 Azure Machine Learning SDK 的詳細資訊，請完成此[回歸模型教學](tutorial-auto-train-models.md)課程，或查看如何[設定自動化 ML 實驗](how-to-configure-auto-train.md)。
+- 可解譯性功能。 執行 `pip install azureml-interpret azureml-contrib-interpret` 以取得必要的套件。
+- 建立自動化 ML 實驗的知識。 如需有關如何使用 Azure Machine Learning SDK 的詳細資訊，請完成此 [回歸模型教學](tutorial-auto-train-models.md) 課程，或瞭解如何 [設定自動化 ML 實驗](how-to-configure-auto-train.md)。
 
-## <a name="interpretability-during-training-for-the-best-model"></a>在訓練期間 Interpretability 最佳模型
+## <a name="interpretability-during-training-for-the-best-model"></a>在訓練期間可解譯性最佳模型
 
-從取得說明 `best_run` ，其中包含工程化功能的說明。
+從取得的說明 `best_run` ，其中包括設計功能的說明。
+
+> [!Warning]
+> 可解譯性，最佳模型說明無法用於建議下列演算法做為最佳模型的自動 ML 預測實驗： 
+> * ForecastTCN
+> * 平均 
+> * 貝氏
+> * 季節性平均 
+> * 季節性貝氏
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>從成品存放區下載設計的功能重要性
 
@@ -52,11 +60,11 @@ engineered_explanations = client.download_model_explanation(raw=False)
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-## <a name="interpretability-during-training-for-any-model"></a>在定型期間 Interpretability 任何模型 
+## <a name="interpretability-during-training-for-any-model"></a>在定型期間可解譯性任何模型 
 
-當您計算模型說明並將其視覺化時，您不限於自動化 ML 模型的現有模型說明。 您也可以使用不同的測試資料來取得模型的說明。 本節中的步驟示範如何根據您的測試資料來計算和視覺化工程特性的重要性。
+當您計算模型說明並將其視覺化時，不限於自動化 ML 模型的現有模型說明。 您也可以使用不同的測試資料來取得模型的說明。 本節中的步驟說明如何根據您的測試資料來計算和視覺化設計功能重要性。
 
-### <a name="retrieve-any-other-automl-model-from-training"></a>從定型取得任何其他 AutoML 模型
+### <a name="retrieve-any-other-automl-model-from-training"></a>從定型取出任何其他 AutoML 模型
 
 ```python
 automl_run, fitted_model = local_run.get_output(metric='accuracy')
@@ -64,11 +72,11 @@ automl_run, fitted_model = local_run.get_output(metric='accuracy')
 
 ### <a name="set-up-the-model-explanations"></a>設定模型說明
 
-使用 `automl_setup_model_explanations` 來取得工程化的說明。 `fitted_model`可以產生下列專案：
+使用 `automl_setup_model_explanations` 來取得工程的說明。 `fitted_model`可以產生下列專案：
 
 - 來自定型或測試範例的精選資料
-- 工程功能名稱清單
-- 分類案例中已加上標籤的資料行中的 Findable 類別
+- 設計功能名稱清單
+- 分類案例中標示資料行的 Findable 類別
 
 `automl_explainer_setup_obj`包含上述清單中的所有結構。
 
@@ -80,7 +88,7 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
                                                              task='classification')
 ```
 
-### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>初始化功能重要性的模擬說明
+### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>初始化功能重要性的模仿說明
 
 若要產生 AutoML 模型的說明，請使用 `MimicWrapper` 類別。 您可以使用下列參數來初始化 MimicWrapper：
 
@@ -88,7 +96,7 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 - 您的工作區
 - 用來說明 `fitted_model` 自動化 ML 模型的代理模型
 
-MimicWrapper 也會使用物件，將會在 `automl_run` 其中上傳工程用的說明。
+MimicWrapper 也會採用將 `automl_run` 上傳設計說明的物件。
 
 ```python
 from azureml.explain.model.mimic_wrapper import MimicWrapper
@@ -105,20 +113,20 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 
 ### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>使用 MimicExplainer 進行運算，並以視覺化方式設計功能重要性
 
-您可以使用已 `explain()` 轉換的測試範例，在 MimicWrapper 中呼叫方法，以取得所產生之工程化功能的功能重要性。 您也可以使用 `ExplanationDashboard` ，透過自動化 ML 有來查看所產生之工程功能的功能重要性值的儀表板視覺效果。
+您可以使用已 `explain()` 轉換的測試範例，在 MimicWrapper 中呼叫方法，以取得所產生之工程功能的重要性。 您也可以使用 `ExplanationDashboard` 來查看自動化 ML 有所產生之設計功能的功能重要性值的儀表板視覺效果。
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-### <a name="interpretability-during-inference"></a>推斷期間的 Interpretability
+## <a name="interpretability-during-inference"></a>在推斷期間可解譯性
 
-在本節中，您將瞭解如何使用說明（用來計算上一節中的說明）來讓自動化 ML 模型。
+在本節中，您將瞭解如何使用說明來讓自動化 ML 模型，以用來計算上一節中的說明。
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>註冊模型和評分說明
 
-使用 `TreeScoringExplainer` 來建立評分說明，以便在推斷階段計算工程化的功能重要性值。 您可以使用先前所計算的來初始化評分說明 `feature_map` 。 
+使用 `TreeScoringExplainer` 建立計分說明，以在推斷時計算設計的特徵重要性值。 您可以使用先前計算的來初始化評分說明 `feature_map` 。 
 
 儲存評分說明，然後向模型管理服務註冊模型和評分說明。 執行下列程式碼：
 
@@ -140,9 +148,9 @@ automl_run.upload_file('scoring_explainer.pkl', 'scoring_explainer.pkl')
 scoring_explainer_model = automl_run.register_model(model_name='scoring_explainer', model_path='scoring_explainer.pkl')
 ```
 
-### <a name="create-the-conda-dependencies-for-setting-up-the-service"></a>建立用於設定服務的 conda 相依性
+### <a name="create-the-conda-dependencies-for-setting-up-the-service"></a>建立 conda 相依性來設定服務
 
-接下來，在容器中為已部署的模型建立必要的環境相依性。 請注意，>= 1.0.45 版本的 azureml 預設值，必須列為 pip 相依性，因為它包含裝載模型做為 web 服務所需的功能。
+接下來，在已部署模型的容器中建立必要的環境相依性。 請注意，>= 1.0.45 版 azureml-defaults 版的 azureml 預設值必須列為 pip 相依性，因為它包含將模型裝載為 web 服務所需的功能。
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -190,9 +198,9 @@ service = Model.deploy(ws,
 service.wait_for_deployment(show_output=True)
 ```
 
-### <a name="inference-with-test-data"></a>使用測試資料推斷
+### <a name="inference-with-test-data"></a>使用測試資料的推斷
 
-使用一些測試資料進行推斷，以查看自動化 ML 模型的預測值。 查看預測值的工程功能重要性。
+使用某些測試資料進行推斷，以查看自動化 ML 模型的預測值。 查看預測值的工程功能重要性。
 
 ```python
 if service.state == 'Healthy':
@@ -207,12 +215,12 @@ if service.state == 'Healthy':
     print(output['engineered_local_importance_values'])
 ```
 
-### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>視覺化以在定型時間探索資料和說明中的模式
+### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>視覺化以探索資料中的模式和定型時間的說明
 
-您可以在[Azure Machine Learning studio](https://ml.azure.com)的工作區中，將功能重要性圖表視覺化。 當您的自動化 ML 執行完成之後，請選取 [**視圖模型詳細資料**] 以查看特定的執行。 選取 [**說明**] 索引標籤，以查看說明視覺效果儀表板。
+您可以在 [Azure Machine Learning studio](https://ml.azure.com)中，將工作區中的功能重要性圖表視覺化。 在自動化 ML 執行完成後，請選取 [ **視圖模型詳細資料** ] 來查看特定執行。 選取 [ **說明** ] 索引標籤，以查看 [說明視覺效果] 儀表板。
 
-[![Machine Learning Interpretability 架構](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
+[![Machine Learning 可解譯性架構](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如需如何在「自動化機器學習」以外的 Azure Machine Learning SDK 區域中啟用模型說明和功能重要性的詳細資訊，請參閱[interpretability 上的概念文章](how-to-machine-learning-interpretability.md)。
+如需如何在自動化機器學習以外的 Azure Machine Learning SDK 區域中啟用模型說明和功能重要性的詳細資訊，請參閱 [可解譯性上的概念文章](how-to-machine-learning-interpretability.md)。
