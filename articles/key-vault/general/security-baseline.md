@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d939c03aef8d155d83d20c7d8211e04fae26c228
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230274"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400461"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>適用於 Key Vault 的 Azure 安全性基準
 
@@ -411,7 +411,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：針對來自系統管理帳戶的可疑活動留下記錄和發出警示
 
-**指導**方針：當環境中發生可疑或不安全的活動時，請使用 AZURE ACTIVE DIRECTORY (AAD) PRIVILEGED IDENTITY MANAGEMENT (PIM) 來產生記錄和警示。 使用 AAD 風險偵測來查看警示和報告有風險的使用者行為。 如需其他記錄，請將 Azure 資訊安全中心風險偵測警示傳送至 Azure 監視器，並使用動作群組設定自訂警示/通知。
+**指導**方針：當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory (Azure AD) PRIVILEGED IDENTITY MANAGEMENT (PIM) 來產生記錄和警示。 使用 Azure AD 風險偵測來查看警示和報告有風險的使用者行為。 如需其他記錄，請將 Azure 資訊安全中心風險偵測警示傳送至 Azure 監視器，並使用動作群組設定自訂警示/通知。
 
 啟用「advanced 威脅防護」 (ATP) ，讓 Azure Key Vault 產生可疑活動的警示。
 
@@ -445,7 +445,7 @@ Azure Active Directory 條件式存取中的位置條件為何？： https://doc
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導**方針：使用 AZURE ACTIVE DIRECTORY (AAD) 作為 Azure 資源（例如 Key Vault）的中央驗證和授權系統。 這可讓 (RBAC) 的角色型存取控制管理敏感性資源。
+**指導**方針：使用 Azure Active Directory (Azure AD) 作為 Azure 資源（例如 Key Vault）的中央驗證和授權系統。 這可讓 (RBAC) 的角色型存取控制管理敏感性資源。
 
  
 
@@ -460,7 +460,7 @@ https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
-**指導**方針：請參閱 AZURE ACTIVE DIRECTORY (AAD) 記錄檔，以協助探索具有 Azure Key Vault 系統管理角色的過時帳戶。 此外，您也可以使用 AAD 存取審核來有效率地管理群組成員資格、存取可用於存取 Azure Key Vault 和角色指派的企業應用程式。 應定期檢查使用者存取，例如每隔90天，以確定只有適當的使用者可以繼續存取。
+**指導**方針：請參閱 Azure Active Directory (Azure AD) 記錄檔，以協助探索具有 Azure Key Vault 系統管理角色的過時帳戶。 此外，使用 Azure AD 存取評論，有效率地管理群組成員資格、存取可用來存取 Azure Key Vault 的企業應用程式，以及角色指派。 應定期檢查使用者存取，例如每隔90天，以確定只有適當的使用者可以繼續存取。
 
 Azure Active Directory 報表和監視檔：
 
@@ -1009,11 +1009,15 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 如何建立 Key Vault： 
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-如何使用受控識別提供 Key Vault 驗證：  
+如何驗證 Key Vault：
 
-https://docs.microsoft.com/azure/key-vault/managed-identity
+https://docs.microsoft.com/azure/key-vault/general/authentication
+
+如何指派 Key Vault 存取原則：
+
+https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure 資訊安全中心監視**：是
 
@@ -1025,16 +1029,13 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
   
 
-如何與 Azure 受控識別整合：  
+* [如何與 Azure 受控識別整合](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
 
-https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity  
+* [如何建立 Key Vault](quick-create-portal.md)
 
-如何建立 Key Vault：  
+* [如何驗證 Key Vault](authentication.md)
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal    
-
-如何使用受控識別提供 Key Vault 驗證：   
-https://docs.microsoft.com/azure/key-vault/managed-identity
+* [如何指派 Key Vault 存取原則](assign-access-policy-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 

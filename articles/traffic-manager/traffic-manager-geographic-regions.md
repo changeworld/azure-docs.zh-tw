@@ -1,9 +1,9 @@
 ---
-title: 地理路由所使用的國家/區域階層-Azure 流量管理員
+title: 地理路由使用的國家/地區階層-Azure 流量管理員
 description: 本文列出 Azure 流量管理員地理路由類型使用的國家/地區階層
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
-ms.author: rohink
-ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 83300a5c518a3acf853968164031a80e1c882187
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938637"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401232"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Azure 流量管理員用於地理流量路由方法的國家/地區階層
 
@@ -99,7 +99,7 @@ ms.locfileid: "76938637"
 
         - ME(蒙特內哥羅)
 
-        - MK （北馬其頓）
+        - MK (北美洲馬其頓共和國) 
 
         - MT(馬爾他)
 
@@ -270,7 +270,7 @@ ms.locfileid: "76938637"
 
         - TT(千里達及托巴哥)
 
-        - UM （美國外島）
+        -  (美國離島) 的 UM
 
         - US(美國)
 
@@ -380,7 +380,7 @@ ms.locfileid: "76938637"
 
         - VG(英屬維京群島)
 
-        - VI （美屬英屬維爾京群島）
+        - VI (美國維爾京群島) 
 
         - XE(聖佑達修斯)
 
@@ -688,6 +688,6 @@ ms.locfileid: "76938637"
 
         - WS(薩摩亞)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入了解 [Azure 流量管理員中的地理流量路由方法](traffic-manager-routing-methods.md#geographic)。

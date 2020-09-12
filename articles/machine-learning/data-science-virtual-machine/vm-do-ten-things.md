@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: dba0f22f1dfece7edd92a80ae1c3a91616a4236c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b570968a66a0cfd60ac4d6ce6dd7dc31a1003240
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815907"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440451"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>使用 Windows 資料科學虛擬機器的資料科學
 
@@ -255,7 +255,7 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure Synapse Analytics (先前的 SQL DW) 和資料庫
 Azure Synapse Analytics (先前的 SQL DW) 是彈性的資料倉儲即服務，具備企業級的 SQL Server 體驗。
 
-您可以 [遵循本文中](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)的指示來布建 Azure Synapse Analytics。 布建您的 SQL 資料倉儲之後，您可以使用 [此逐步](../team-data-science-process/sqldw-walkthrough.md) 解說，利用 SQL 資料倉儲中的資料來進行資料上傳、探索及模型化。
+您可以 [遵循本文中](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)的指示來布建 Azure Synapse Analytics。 布建 Azure Synapse Analytics 之後，您可以使用 [此逐步](../team-data-science-process/sqldw-walkthrough.md) 解說，利用 Azure Synapse Analytics 內的資料來進行資料上傳、探索及模型化。
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB 是雲端中的一種 NoSQL 資料庫。 您可以使用它來處理 JSON 等檔，以及儲存和查詢檔。

@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: c919e8abc55dd5cb36325ae060340c1ee147a1a0
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d356bd43e5e09dfce96a801732e79d2efe8c08bd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816298"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440332"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>參考： Ubuntu (Linux) 資料科學虛擬機器
 
@@ -232,7 +232,7 @@ VM 上安裝了下列 Azure 工具：
 * **Azure 儲存體總管**： Azure 儲存體總管是一種圖形化工具，可用來流覽您儲存在 azure 儲存體帳戶中的物件，以及上傳及下載 azure blob 的資料。 您可以從桌面捷徑圖示存取儲存體總管。 您也可以輸入 **StorageExplorer**，從殼層提示字元加以開啟。 您必須從 X2Go 用戶端登入，或是已設定 X11 轉寄。
 * **Azure 程式庫**：下列是一些預先安裝的程式庫。
   
-  * **Python**： python 中的 azure 相關連結庫為 *azure*、 *azureml*、 *pydocumentdb*和 *pyodbc*。 透過前三個程式庫，您可以存取 Azure 儲存體服務、Azure Machine Learning 和 Azure Cosmos DB (Azure 上的 NoSQL 資料庫)。 第四個程式庫 pyodbc (以及 Microsoft ODBC Driver for SQL Server) 可讓您使用 ODBC 介面，從 Python 中存取 SQL Server、Azure SQL Database 和 Azure SQL 資料倉儲。 輸入 **pip list** 以查看所有列出的程式庫。 請務必在 Python 2.7 和 3.5 的環境中執行此命令。
+  * **Python**： python 中的 azure 相關連結庫為 *azure*、 *azureml*、 *pydocumentdb*和 *pyodbc*。 透過前三個程式庫，您可以存取 Azure 儲存體服務、Azure Machine Learning 和 Azure Cosmos DB (Azure 上的 NoSQL 資料庫)。 第四個程式庫、pyodbc (以及適用于 SQL Server) 的 Microsoft ODBC 驅動程式，可讓您使用 ODBC 介面，從 Python 存取 SQL Server、Azure SQL Database 和 Azure Synapse Analytics。 輸入 **pip list** 以查看所有列出的程式庫。 請務必在 Python 2.7 和 3.5 的環境中執行此命令。
   * **R**： r 中的 Azure 相關連結庫為 AZUREML 和 RODBC。
   * **Java**︰Azure Java 程式庫清單位於 VM 上的 /dsvm/sdk/AzureSDKJava 目錄中。 關鍵的程式庫為 Azure 儲存體和管理 API、Azure Cosmos DB 和 JDBC Driver for SQL Server。  
 
@@ -344,6 +344,6 @@ rattle()
 
 您可以結束 Rattle 和 R。現在，您可以修改產生的 R 指令碼。 或者，您可以照原樣使用，並且隨時執行，以便重複執行在 Rattle UI 中完成的所有動作。 這是特別適合 R 初學者的方法，他們將可在簡單的圖形化介面中快速進行分析和機器學習，同時自動產生 R 程式碼來修改或學習。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 仍有其他問題嗎？ 請考慮建立 [支援票證](https://azure.microsoft.com/support/create-ticket/)。

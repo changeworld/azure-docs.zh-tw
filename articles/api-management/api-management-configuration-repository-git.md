@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: fb252ac0b4863138fb2a9c3008dc6475bc988e5f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 18cc42c3447de733447c27db52a9a6d664539464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723940"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400345"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 儲存和設定 API 管理服務組態
 
@@ -47,7 +47,7 @@ ms.locfileid: "88723940"
 
 ## <a name="access-git-configuration-in-your-service"></a>存取服務中的 Git 組態
 
-若要檢視並設定您的 Git 組態設定，您可以按一下 [安全性] 功能表，然後瀏覽至 [設定存放庫] 索引標籤。
+若要查看及設定您的 Git 設定，您可以按一下 [ **部署] 和 [基礎結構** ] 功能表，然後流覽至 [存放 **庫** ] 索引標籤。
 
 ![啟用 GIT][api-management-enable-git]
 
@@ -62,7 +62,7 @@ ms.locfileid: "88723940"
 
 複製儲存機制之前的第一個步驟是將服務組態的目前狀態儲存至儲存機制。 按一下 [儲存到存放庫]。
 
-在 [確認] 畫面上進行任何所需的變更，然後按一下 [確定]  以儲存。
+在確認畫面上進行任何所需的變更，然後按一下 [ **儲存** ] 以儲存。
 
 儲存組態一段時間後，儲存機制的組態狀態隨即顯示，包括最後組態變更和上次同步處理服務組態和儲存機制的日期與時間。
 
@@ -112,7 +112,7 @@ git clone https://username:url encoded password@{name}.scm.azure-api.net/
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>使用最新的服務執行個體組態更新本機儲存機制
 
-如果您在 Azure 入口網站中或使用 REST API 變更您的 API 管理服務執行個體，您必須先將這些變更儲存至存放庫，才能使用最新的變更來更新本機存放庫。 若要這樣做，請按一下 Azure 入口網站中 [設定存放庫] 索引標籤上的 [將設定儲存到存放庫]，然後在本機存放庫中發出下列命令。
+如果您在 Azure 入口網站中或使用 REST API 變更您的 API 管理服務執行個體，您必須先將這些變更儲存至存放庫，才能使用最新的變更來更新本機存放庫。 若要這樣做，請按一下 Azure 入口網站的 [存放**庫**] 索引標籤上的 [儲存**至儲存**機制]，然後在您的本機存放庫中發出下列命令。
 
 ```
 git pull
@@ -198,7 +198,7 @@ git push
 }
 ```
 
-前四個設定 (`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled` 和 `UserRegistrationTermsConsentRequired`) 對應至 [安全性] 區段的 [身分識別] 索引標籤中的下列設定。
+前四個設定 (`RegistrationEnabled` 、 `UserRegistrationTerms` 、 `UserRegistrationTermsEnabled` 和 `UserRegistrationTermsConsentRequired`) 對應至**開發人員入口網站**區段中**Identities** [身分識別] 索引標籤上的下列設定。
 
 | 身分識別設定 | 對應至 |
 | --- | --- |
@@ -208,7 +208,7 @@ git push
 | UserRegistrationTermsConsentRequired | 核取方塊 |
 | RequireUserSigninEnabled | 核取方塊 |
 
-接下來四個設定 (`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled` 和 `DelegationValidationKey`) 對應至 [安全性] 區段的 [委派] 索引標籤中的下列設定。
+接下來的四項設定 (`DelegationEnabled` 、、 `DelegationUrl` `DelegatedSubscriptionEnabled` 和 `DelegationValidationKey`) 對應至**開發人員入口網站**區段中 [**委派**] 索引標籤上的下列設定。
 
 | 委派設定 | 對應至 |
 | --- | --- |

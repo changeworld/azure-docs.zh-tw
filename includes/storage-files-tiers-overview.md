@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7fd91e898c12a13e35ae8b9055ebb5a57de2a051
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1a08459d0f5a0321d8fa6635b7a2c7b9c9f8ebba
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89272170"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89422710"
 ---
 Azure 檔案儲存體提供了四種不同的儲存體，分別是進階、交易最佳化、經常性存取和非經常性存取，使您可以根據案例的效能和價格需求來量身打造檔案共用：
 
@@ -56,5 +56,7 @@ Azure 檔案儲存體提供了四種不同的儲存體，分別是進階、交�
 - 英國西部
 - 美國中北部
 - 美國中南部
+- 美國中西部
+- 美國西部 2
 
 若要部署經常性存取或非經常性存取檔案共用，請參閱[建立經常性存取或非經常性存取檔案共用](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share)。 

@@ -1,18 +1,18 @@
 ---
-title: 將 Cisco ASA 裝置連線到 Azure VPN 閘道的範例設定
+title: 將 Cisco ASA 裝置連接到 Azure VPN 閘道的範例設定
 description: 本文提供將 Cisco ASA 裝置連線到 Azure VPN 閘道的範例設定。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/19/2018
+ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: f693f6a40b87d024430c7626736fab0d0a032238
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 82e00e0b519040c57fdfd798d8992086c61e5481
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081996"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426165"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>範例組態：Cisco ASA 裝置 (IKEv2/無 BGP)
 本文提供將 Cisco Adaptive Security Appliance (ASA) 裝置連線到 Azure VPN 閘道的範例設定。 此範例適用於執行 IKEv2 且不含邊界閘道協定 (BGP) 的 Cisco ASA 裝置。 
@@ -21,12 +21,12 @@ ms.locfileid: "87081996"
 
 * 裝置廠商： **Cisco**
 * 裝置型號： **ASA**           
-* 目標版本： **8.4 和更新版本**
+* 目標版本： **8.4 和更新**版本
 * 測試的模型： **ASA 5505**
 * 測試的版本： **9.2**             
 * IKE 版本： **IKEv2**                  
-* BGP：**否**      
-* Azure VPN 閘道類型：**路由式 VPN 閘道**
+* BGP： **否**      
+* Azure VPN 閘道類型：以 **路由為基礎的 VPN 閘道**
 
 > [!NOTE]
 > 範例設定會將 Cisco ASA 裝置連線到 Azure **路由式** VPN 閘道。 連線會使用自訂 IPsec/IKE 原則與 **UsePolicyBasedTrafficSelectors** 選項，如[本文](vpn-gateway-connect-multiple-policybased-rm-ps.md)所述。
@@ -50,7 +50,7 @@ Azure VPN 閘道會使用標準的 IPsec/IKE 通訊協定組合來建立站對�
 ### <a name="virtual-network-and-vpn-gateway-information"></a>虛擬網路和 VPN 閘道資訊
 本節會列出適用於此範例的參數。
 
-| **參數**                | **ReplTest1**                    |
+| **參數**                | **值**                    |
 | ---                          | ---                          |
 | 虛擬網路位址首碼        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN 閘道 IP         | Azure_Gateway_Public_IP      |
@@ -108,13 +108,13 @@ Azure VPN 閘道會使用標準的 IPsec/IKE 通訊協定組合來建立站對�
 * 確定所有名稱和原則編號在裝置上都是唯一的。
 * 確定您的裝置上支援密碼編譯演算法。
 * 將下列**預留位置值**取代為設定的實際值：
-  - 外部介面名稱：**外部**
+  - 外部介面名稱： **外部**
   - **Azure_Gateway_Public_IP**
   - **OnPrem_Device_Public_IP**
   - IKE： **Pre_Shared_Key**
   - 虛擬網路與區域網路閘道名稱：**VNetName** 和 **LNGName**
   - 虛擬網路和內部部署網路位址**首碼**
-  - 適當的**網路遮罩**
+  - 適當的 **網路遮罩**
 
 #### <a name="sample-script"></a>範例指令碼
 
@@ -297,5 +297,5 @@ sysopt connection tcpmss 1350
     show run tunnel-group
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 若要設定主動-主動跨單位和 VNet 對 VNet 連線，請參閱[設定主動-主動 VPN 閘道](vpn-gateway-activeactive-rm-powershell.md)。

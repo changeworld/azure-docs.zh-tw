@@ -4,12 +4,12 @@ description: Sdk、REST Api、CLI 可協助您以程式設計語言開發 Langua
 ms.topic: reference
 ms.date: 05/19/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 759111ee7e77ce00fec3762b1a20494c2771ef8f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 43c9ca244f02ffe1485fbd7316901d607d6e2479
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931194"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321220"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding (LUIS) 的 SDK、REST 和 CLI 開發人員資源
 
@@ -86,11 +86,11 @@ LUIS 目前有2種類型的端點：
 
 |語言 |參考文件|套件|快速入門|
 |--|--|--|--|
-|C#|[編寫](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[預測](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 撰寫](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 預測](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[編寫](quickstart-sdk.md?pivots=programming-language-csharp)<br>[查詢預測](quickstart-sdk.md?pivots=programming-language-csharp)|
+|C#|[編寫](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[預測](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 撰寫](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 預測](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[編寫](azure-sdk-quickstart.md?pivots=programming-language-csharp)<br>[查詢預測](azure-sdk-quickstart.md?pivots=programming-language-csharp)|
 |Go|[撰寫和預測](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
 |Java|[撰寫和預測](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven 撰寫](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven 預測](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
-|JavaScript|[編寫](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[預測](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM 撰寫](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM 預測](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[編寫](quickstart-sdk.md?pivots=programming-language-javascript)<br>[預測](quickstart-sdk.md?pivots=programming-language-javascript)|
-|Python|[撰寫和預測](quickstart-sdk.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[編寫](quickstart-sdk.md?pivots=programming-language-python)<br>[預測](quickstart-sdk.md?pivots=programming-language-python)|
+|JavaScript|[編寫](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[預測](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM 撰寫](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM 預測](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[編寫](azure-sdk-quickstart.md?pivots=programming-language-javascript)<br>[預測](azure-sdk-quickstart.md?pivots=programming-language-javascript)|
+|Python|[撰寫和預測](azure-sdk-quickstart.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[編寫](azure-sdk-quickstart.md?pivots=programming-language-python)<br>[預測](azure-sdk-quickstart.md?pivots=programming-language-python)|
 
 
 ### <a name="containers"></a>容器
@@ -125,7 +125,7 @@ Bot framework 提供 [數種工具](https://github.com/microsoft/botbuilder-tool
 * [Bot Framework 模擬器](https://github.com/Microsoft/BotFramework-Emulator/releases) -桌面應用程式，可讓 bot 開發人員測試及偵測使用 Bot Framework SDK 建立的 bot
 * [Bot Framework 編輯器](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) -適用于開發人員的整合式開發工具，以及用來建立 bot 和對話式體驗的專業團隊 Microsoft Bot Framework
 * [Bot Framework 範例](https://github.com/microsoft/botbuilder-samples) -#C、JavaScript、TypeScript 和 Python
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 深入瞭解常見的 [HTTP 錯誤碼](luis-reference-response-codes.md)
 * 所有 Api 和 Sdk 的[參考檔](https://docs.microsoft.com/azure/index)

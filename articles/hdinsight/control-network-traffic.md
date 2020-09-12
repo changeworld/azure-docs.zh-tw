@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 54a55789cf867c97cf2384b48f1e5545ee54dafc
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.date: 09/02/2020
+ms.openlocfilehash: a33bc5816ded7cdca75737b02add0a6ca8821700
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773401"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400189"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>控制 Azure HDInsight 中的網路流量
 
@@ -32,7 +32,11 @@ HDInsight 為受控服務，需要不受限制地存取 HDInsight 健康情況�
 
 1. 識別您要用於 HDInsight 的 Azure 區域。
 
-2. 識別您的區域中 HDInsight 所需的服務標記。 如需詳細資訊，請參閱 [Azure HDInsight 的網路安全性群組 (NSG) 服務標記](hdinsight-service-tags.md)。
+2. 識別您的區域中 HDInsight 所需的服務標記。 有多種方式可取得這些服務標記：
+    1. 請參閱網路安全性群組中已發佈的服務標籤清單 [ (NSG) Azure HDInsight 的服務](hdinsight-service-tags.md)標籤。 
+    2. 如果您的區域不在清單中，請使用 [服務標記探索 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 來尋找您區域的服務標籤。
+    3. 如果您無法使用 API，請下載 [服務標記 JSON](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) 檔案，並搜尋您想要的區域。
+
 
 3. 建立或修改您要安裝 HDInsight 之子網路的網路安全性群組。
 
@@ -51,10 +55,6 @@ HDInsight 為受控服務，需要不受限制地存取 HDInsight 健康情況�
 有興趣設定強制通道的客戶應該使用[自訂中繼存放區](./hdinsight-use-external-metadata-stores.md)，並設定從叢集子網或內部部署網路到這些自訂中繼存放區的適當連線。
 
 若要查看使用 Azure 防火牆進行 UDR 設定的範例，請參閱[設定 Azure HDInsight 叢集的輸出網路流量限制](hdinsight-restrict-outbound-traffic.md)。
-
-## <a name="required-ip-addresses"></a>所需的 IP 位址
-
-如果您使用網路安全性群組或使用者定義的路由來控制流量，請參閱 [HDInsight 管理 IP 位址](hdinsight-management-ip-addresses.md)。
 
 ## <a name="required-ports"></a>所需連接埠
 

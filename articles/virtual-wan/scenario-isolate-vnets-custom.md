@@ -1,27 +1,27 @@
 ---
 title: 案例： Vnet 的自訂隔離
 titleSuffix: Azure Virtual WAN
-description: 路由的案例-防止選取的 Vnet 能夠彼此聯繫
+description: 路由的案例-防止選取的 Vnet 無法彼此聯繫
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 84c7b72e3ac7a5726dea38b21b14b5bd83b42340
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0a3665f1719c7a5f8ed9bd6acf518b642e06320d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831017"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400053"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>案例： Vnet 的自訂隔離
 
-使用虛擬 WAN 虛擬中樞路由時，有很多可用的案例。 在 Vnet 的自訂隔離案例中，目標是要防止特定 Vnet 集能夠連線到其他特定的 Vnet 集。 不過，Vnet 必須達到 (VPN/ER/使用者 VPN) 的所有分支。 如需虛擬中樞路由的詳細資訊，請參閱[關於虛擬中樞路由](about-virtual-hub-routing.md)。
+使用虛擬 WAN 虛擬中樞路由時，有很多可用的案例。 在 Vnet 的自訂隔離案例中，其目標是要防止特定的 Vnet 集合能夠觸及其他特定的 Vnet 集。 不過， (VPN/ER/使用者 VPN) 的所有分支都必須要有 Vnet。 如需虛擬中樞路由的詳細資訊，請參閱 [關於虛擬中樞路由](about-virtual-hub-routing.md)。
 
 ## <a name="design"></a><a name="design"></a>設計
 
-為了找出需要多少個路由表，您可以建立連接矩陣。 在此案例中，其外觀如下所示，其中每個資料格都代表來源 (資料列) 是否可以與目的地 (資料行通訊) ：
+為了找出需要多少個路由表，您可以建立連接矩陣。 在此案例中，它看起來會如下所示，其中每個資料格都代表來源 (資料列) 是否可以與目的地 (資料行) ：
 
 | 寄件者 | 變更為：| *藍色 Vnet* | *Red Vnet* | *分支*|
 |---|---|---|---|---|
@@ -29,44 +29,44 @@ ms.locfileid: "87831017"
 | **Red Vnet**  |   &#8594;|              |       X       |       X      |
 | **分支**   |   &#8594;|     X        |       X       |       X      |
 
-上表中的每個儲存格都會描述虛擬 WAN 連線是否 (流程的「來源」端、資料表中的資料列標頭) 學習到目的地前置詞 (流程的「到」端，而資料表中的資料行標頭則) 特定的流量流程。
+上表中的每個資料格都會描述虛擬 WAN 連線是否 (流程的「來源」端、資料表中的資料列標頭) 學習目的地前置詞 (流程的「到」端、在資料表中為斜體的資料行標頭) 特定的流量，其中「X」表示連線是由虛擬 WAN 提供。
 
-不同的資料列模式數目將是我們在此案例中所需的路由表數目。 在此情況下，我們將會呼叫三個路由路由表， **RT_BLUE**和**RT_RED**虛擬網路，以及分支的**預設值**。 請記住，分支一律必須與預設路由表相關聯。
+不同資料列模式的數目將是此案例中所需的路由表數目。 在此情況下，我們將會針對虛擬網路呼叫 **RT_BLUE** 和 **RT_RED** 的三個路由路由表，並為分支的 **預設值** 。 請記住，分支永遠必須與預設路由表相關聯。
 
-分支必須瞭解紅色和藍色 Vnet 的前置詞，因此所有 Vnet 都必須**RT_BLUE**或**RT_RED**) 傳播到預設 (。 Blue 和 Red Vnet 必須瞭解分支前置詞，因此分支也會傳播至這兩個路由表**RT_BLUE**和**RT_RED** 。 因此，這是最後的設計：
+分支將需要從 Red 和 Blue Vnet 學習前置詞，因此所有 Vnet 都必須 **RT_BLUE** 或 **RT_RED**) 傳播至預設 (。 Blue 和 Red Vnet 需要學習分支前置詞，因此分支也會傳播至路由表 **RT_BLUE** 和 **RT_RED** 。 因此，這是最後的設計：
 
 * 藍色虛擬網路：
   * 相關聯的路由表： **RT_BLUE**
-  * 傳播至路由表： **RT_BLUE**和**預設值**
+  * 傳播至路由表： **RT_BLUE** 和 **預設值**
 * 紅色虛擬網路：
   * 相關聯的路由表： **RT_RED**
-  * 傳播至路由表： **RT_RED**和**預設值**
-* 網點
-  * 關聯的路由表：**預設值**
-  * 傳播至路由表： **RT_BLUE**、 **RT_RED**和**預設值**
+  * 傳播至路由表： **RT_RED** 和 **預設值**
+* 分支：
+  * 相關聯的路由表： **預設值**
+  * 傳播至路由表： **RT_BLUE**、 **RT_RED** 和 **預設值**
 
 > [!NOTE]
-> 因為所有分支都必須與預設路由表相關聯，而且要傳播到相同的路由表集，所以所有分支都有相同的連線設定檔。 換句話說，Vnet 的紅色/藍色概念無法套用到分支。
+> 由於所有分支都必須與預設路由表相關聯，而且要傳播至同一組路由表，因此所有分支都會有相同的連線設定檔。 換句話說，Vnet 的 Red/Blue 概念無法套用至分支。
 
 > [!NOTE]
-> 如果您的虛擬 WAN 部署在多個區域，您將需要在每個中樞建立**RT_BLUE**和**RT_RED**路由表，而且每個 VNet 連線的路由都必須使用傳播標籤傳播到每個虛擬中樞的路由表。
+> 如果您的虛擬 WAN 部署于多個區域，您將需要在每個中樞內建立 **RT_BLUE** 和 **RT_RED** 路由表，而且每個 VNet 連線的路由都必須使用傳播標籤傳播到每個虛擬中樞內的路由表。
 
-如需虛擬中樞路由的詳細資訊，請參閱[關於虛擬中樞路由](about-virtual-hub-routing.md)。
+如需虛擬中樞路由的詳細資訊，請參閱 [關於虛擬中樞路由](about-virtual-hub-routing.md)。
 
 ## <a name="workflow"></a><a name="architecture"></a>工作流程
 
-在 [**圖 1**] 中，有藍色和紅色的 VNet 連接。
+在 [ **圖 1**] 中，有 Blue 和 Red VNet 連接。
 
-* 藍色連線的 Vnet 可以彼此接觸，也能觸及所有分支， (VPN/ER/P2S) 連接。
-* 紅色 Vnet 可以彼此接觸，並觸及所有分支 (VPN/ER/P2S) 連線。
+* 藍色連接的 Vnet 可以彼此聯繫，也可以觸及所有分支 (VPN/ER/P2S) 連線。
+* Red Vnet 可以彼此聯繫，也可以觸及所有分支 (VPN/ER/P2S) 連線。
 
 設定路由時，請考慮下列步驟。
 
-1. 在 Azure 入口網站、 **RT_BLUE**和**RT_RED**中建立兩個自訂路由表。
-2. 針對 [路由表**RT_BLUE**]，針對下列設定：
-   * **關聯**：選取 [所有藍色 vnet]。
-   * **傳播**：若是分支，請選取 [分支] 選項，選擇 [分支] (VPN/ER/P2S) 連接會將路由傳播到此路由表。
-3. 針對**RT_RED** (VPN/ER/P2S) 的 RED vnet 和分支的路由表，重複相同的步驟。
+1. 在 Azure 入口網站、 **RT_BLUE** 和 **RT_RED**中建立兩個自訂路由表。
+2. 針對路由表 **RT_BLUE**，請進行下列設定：
+   * **關聯**：選取所有 Blue vnet。
+   * **傳播**：若為分支，請選取分支的選項，意指分支 (VPN/ER/P2S) 連接會將路由傳播至此路由表。
+3. 針對 Red Vnet 和分支的 **RT_RED** 路由表重複相同步驟， (VPN/ER/P2S) 。
 
 這會導致路由設定變更，如下圖所示
 
@@ -77,4 +77,4 @@ ms.locfileid: "87831017"
 ## <a name="next-steps"></a>後續步驟
 
 * 如需虛擬 WAN 的詳細資訊，請參閱[常見問題集](virtual-wan-faq.md)。
-* 如需虛擬中樞路由的詳細資訊，請參閱[關於虛擬中樞路由](about-virtual-hub-routing.md)。
+* 如需虛擬中樞路由的詳細資訊，請參閱 [關於虛擬中樞路由](about-virtual-hub-routing.md)。

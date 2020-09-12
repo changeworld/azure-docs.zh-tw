@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 0ebd3d97c3d7a2218bcfd821e1cc81c6bd74adf6
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605763"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400308"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -118,6 +118,7 @@ Azure Cosmos 容器可根據所使用的 API，分別代表集合、資料表或
 | 編製索引原則中的路徑數目上限| 100 <sup>*</sup>|
 | 每個容器的唯一索引鍵數目上限|10 <sup>*</sup>|
 | 每個唯一索引鍵條件約束的路徑數目上限|16 <sup>*</sup>|
+| 最大 TTL 值 |2147483647|
 
 <sup>*</sup> 您可連絡 Azure 支援人員來增加任一項的每個容器限制。
 
@@ -136,6 +137,7 @@ Azure Cosmos 項目可根據所使用的 API，分別代表集合中的文件、
 | 屬性值的長度上限 | 沒有實際限制 |
 | 字串屬性值的長度上限 | 沒有實際限制 |
 | 數值屬性值的長度上限 | IEEE754 雙精確度 64 位元 |
+| 最大 TTL 值 |2147483647|
 
 除了分割區索引鍵和識別碼值的長度限制，以及 2 MB 的整體大小限制以外，項目裝載 (例如屬性數目和巢狀深度) 沒有任何限制。 您可能必須針對具有大型或複雜項目結構的容器設定編製索引原則，以減少 RU 耗用量。 如需真實世界範例以及用來管理大型項目的模式，請參閱 [Cosmos DB 中的模型項目](how-to-model-partition-example.md)。
 

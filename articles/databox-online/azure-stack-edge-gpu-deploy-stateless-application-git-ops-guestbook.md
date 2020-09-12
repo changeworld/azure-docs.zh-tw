@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 83ac012c861a0d066bdc47d8e15cbe7ac398aa23
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7fdd9b8ca0fd62d55f5a9412af9486bfb2b942c1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254214"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319287"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>在 Azure Stack Edge GPU 上已啟用 Arc 的 Kubernetes 叢集上部署 PHP 意見簿無狀態應用程式（含 Redis）
 
@@ -28,7 +28,7 @@ ms.locfileid: "89254214"
 此程式適用于已 [在 Azure Stack Edge 裝置上審核 Kubernetes 工作負載](azure-stack-edge-gpu-kubernetes-workload-management.md) 的人員，並熟悉 [Azure Arc 啟用的功能 Kubernetes (預覽) ](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在您可以部署無狀態應用程式之前，請確定您已在裝置上完成下列必要條件，以及用來存取裝置的用戶端：
 
@@ -57,7 +57,7 @@ ms.locfileid: "89254214"
       - 在 Azure Stack Edge 裝置的本機 UI 中，移至 **[總覽** ] 並記下 Kubernetes 軟體號碼。 
       - 確認這兩個版本是否相容于支援的 Kubernetes 版本中提供的對應 <!--insert link-->.
 
-1. 您有 [可用來執行 Azure Arc 部署的 gitops) 將](https://github.com/kagoyal/dbehaikudemo)設定。 您將使用下列檔案 `yaml` ，在 Azure Stack Edge 裝置上部署。
+1. 您有 [可用來執行 Azure Arc 部署的 gitops) 將](https://github.com/kagoyal/dbehaikudemo)設定。 在此範例中，您將使用下列檔案， `yaml` 在 Azure Stack Edge 裝置上部署。
 
     - `frontend-deployment.yaml`<!-- - The guestbook application has a web frontend serving the HTTP requests written in PHP. It is configured to connect to the redis-master Service for write requests and the redis-slave service for Read requests. This file describes a deployment that runs the frontend of the guestbook application.-->
     - `frontend-service.yaml` <!-- - This allows you to configure an externally visible frontend Service that can be accessed from outside the Kubernetes cluster on your device.-->
@@ -83,7 +83,7 @@ ms.locfileid: "89254214"
 
 1. 在 [ **新增**設定] 中，為欄位輸入適當的值， **然後選取 [** 套用]。
 
-    |參數  |說明 |
+    |參數  |描述 |
     |---------|---------|
     |組態名稱     | 設定資源的名稱。        |
     |運算子實例名稱     |用來識別特定設定之操作員的實例名稱。 Name 是最多253個字元的字串，必須是小寫、英數位元、連字號和句點。         |
@@ -174,6 +174,6 @@ C:\Users\user>
 ```-->
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 瞭解如何 [使用 Kubernetes 儀表板來監視 Azure Stack Edge 裝置上的部署](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)
