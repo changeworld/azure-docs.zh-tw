@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d48483697970333c542f140567ca6a6d3fcf7d2
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179142"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278678"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>對重複屬性同步處理錯誤進行診斷和修復
 
@@ -133,7 +133,7 @@ ms.locfileid: "89179142"
 
 ## <a name="failures-and-error-messages"></a>失敗和錯誤訊息
 **具有衝突屬性的使用者已在 Azure Active Directory 中虛刪除。請確定使用者已在重試之前被實刪除。**  
-應先清除 Azure AD 中具有衝突屬性的使用者，才能套用修正程式。 請參閱[如何在 Azure AD 中永久刪除使用者](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore)，再重試此修正程式。 進入虛刪除狀態 30 天後，也會自動永久刪除使用者。 
+應先清除 Azure AD 中具有衝突屬性的使用者，才能套用修正程式。 請參閱[如何在 Azure AD 中永久刪除使用者](../fundamentals/active-directory-users-restore.md)，再重試此修正程式。 進入虛刪除狀態 30 天後，也會自動永久刪除使用者。 
 
 **不支援對租用戶中的雲端式使用者更新來源錨點。**  
 Azure AD 中的雲端式使用者不應擁有來源錨點。 在此情況下，不支援更新來源錨點。 必須從內部部署環境手動修正。 

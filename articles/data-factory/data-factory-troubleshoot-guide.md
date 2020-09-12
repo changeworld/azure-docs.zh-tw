@@ -5,15 +5,15 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 8/26/2019
+ms.date: 09/01/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 568739ebdce632ae955da5e1cec12635c86af57c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 783e48139cf057bb17278d98e3683cb2b4cbad89
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522851"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279545"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>針對 Azure Data Factory 進行疑難排解
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -128,9 +128,9 @@ ms.locfileid: "86522851"
 
 - **訊息**：`An error occurred while sending the request.`
 
-- **原因**： Databricks 服務的網路連線已中斷。
+- **原因**： Databricks 服務的網路連接已中斷。
 
-- **建議**：如果您使用自我裝載整合執行時間，請確定網路連線可從整合執行時間節點可靠地執行。 如果您使用的是 Azure integration runtime，重試通常會運作。
+- **建議**：如果您使用的是自我裝載的整合執行時間，請確定網路連線是由 integration runtime 節點可靠。 如果您使用的是 Azure integration runtime，重試通常可以運作。
  
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
@@ -821,7 +821,7 @@ ms.locfileid: "86522851"
 
 - **訊息**：`User name and password cannot be null or empty to connect to the HDInsight cluster.`
 
-- **原因**︰使用者名稱或密碼是空的。
+- **原因**：使用者名稱或密碼是空的。
 
 - **建議**：請提供正確的認證以連線到 HDI，然後再試一次。
 
@@ -1053,6 +1053,11 @@ ms.locfileid: "86522851"
 1. 請移至：[檔案] > [儲存] > [所有工作階段]。
 
 如需詳細資訊，請參閱[開始使用 Azure Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)
+
+## <a name="general"></a>一般
+
+### <a name="activity-stuck-issue"></a>活動停滯問題
+當您觀察到活動所執行的時間比平常沒有進度的一般回合還長時，可能會停滯。 您可以嘗試取消它，然後再試一次，看看它是否有説明。 如果是複製活動，您可以從 [疑難排解複製活動效能](copy-activity-performance-troubleshooting.md)，瞭解效能監視和疑難排解。如果是資料流程，請從 [對應資料流程的效能](concepts-data-flow-performance.md) 和微調指南中學習。
 
 ## <a name="next-steps"></a>後續步驟
 

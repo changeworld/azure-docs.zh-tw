@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 881005c2597eadc3b3b0be9a01fbf9d82d35d050
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: HT
+ms.openlocfilehash: 7fb1f88ab5eaf22047f5a696ec9cb021981cdd5e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070774"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297173"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>將 Azure Cosmos DB 資料庫繫結至 Azure Spring Cloud 應用程式
 
@@ -20,7 +20,7 @@ ms.locfileid: "87070774"
 
 必要條件：
 
-* 已部署的 Azure Spring Cloud 執行個體。 請遵循[關於如何透過 Azure CLI 來部署的快速入門](spring-cloud-quickstart-launch-app-cli.md)來開始使用。
+* 已部署的 Azure Spring Cloud 執行個體。 請遵循[關於如何透過 Azure CLI 來部署的快速入門](spring-cloud-quickstart.md)來開始使用。
 * 具有參與者最低權限水準的 Azure Cosmos DB 帳戶。
 
 ## <a name="bind-azure-cosmos-db"></a>繫結 Azure Cosmos DB

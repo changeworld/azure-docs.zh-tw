@@ -16,18 +16,18 @@ ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 467b9b2e613e43b95007142a120d39be1272de93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2aa1a30c548ef60cd9b596031f4115297dd20844
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357829"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278593"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>使用者隱私權與 Azure AD 無縫單一登入
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 
 Azure AD 無縫 SSO 會建立下列記錄類型，其中可以包含個人資料： 
@@ -64,9 +64,9 @@ Foreach ($file in $Files) {
 
 ### <a name="note-about-domain-controller-logs"></a>請注意網域控制站記錄
 
-如果已啟用稽核記錄，這項產品可能會針對您的網域控制站產生安全性記錄。 若要深入了解設定稽核原則，請閱讀[這篇文章](https://technet.microsoft.com/library/dd277403.aspx)。
+如果已啟用稽核記錄，這項產品可能會針對您的網域控制站產生安全性記錄。 若要深入了解設定稽核原則，請閱讀[這篇文章](/previous-versions/tn-archive/dd277403(v=technet.10))。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [在信任中心檢閱 Microsoft 隱私權原則](https://www.microsoft.com/trustcenter)
   - [**疑難排解**](tshoot-connect-sso.md) - 了解如何解決此功能的常見問題。

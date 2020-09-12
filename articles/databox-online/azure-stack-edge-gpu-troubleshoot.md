@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 22f0c63c2b60b6c72ad297492045df17e10dd06c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 92b82631ca78826dd927c6773c47072038eb4ab1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268317"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290118"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-gpu-device"></a>針對 Azure Stack Edge GPU 裝置上的問題進行疑難排解 
 
@@ -189,8 +189,8 @@ Advanced security 記錄可以是 Azure Stack Edge 裝置的軟體或硬體入�
 |無法取出子資源。 其中一個 HTTP 標頭之值的格式不正確。| 從 [ **編輯** ] 功能表中選取 [ **目標 Azure Stack api**]。 然後，重新開機 Azure 儲存體總管。|
 |getaddrinfo ENOTFOUND <accountname> blob ... <serialnumber>microsoftdatabox.com|檢查端點名稱 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 是否已新增至位於此路徑的主機檔案： `C:\Windows\System32\drivers\etc\hosts` 在 Windows 或 `/etc/hosts` Linux 上。|
 |無法取出子資源。<br> 詳細資料：自我簽署憑證 |將您裝置的 SSL 憑證匯入 Azure 儲存體總管： <ol><li>從 Azure 入口網站下載憑證。 如需詳細資訊，請參閱 [下載憑證](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。</li><li>從 [ **編輯** ] 功能表選取 [SSL 憑證]，然後選取 [匯 **入憑證**]。</li></ol>|
-|在顯示此錯誤之前，AzCopy 命令似乎停止回應一分鐘：<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|檢查端點名稱 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 是否已新增至 hosts 檔案，網址為： `C:\Windows\System32\drivers\etc\hosts` 。|
-|在顯示此錯誤之前，AzCopy 命令似乎停止回應一分鐘：<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |將裝置的 SSL 憑證匯入系統的憑證存放區中。 如需詳細資訊，請參閱 [下載憑證](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。|
+|顯示此錯誤之前，AzCopy 命令似乎停止回應一分鐘：<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|檢查端點名稱 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 是否已新增至 hosts 檔案，網址為： `C:\Windows\System32\drivers\etc\hosts` 。|
+|顯示此錯誤之前，AzCopy 命令似乎停止回應一分鐘：<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |將裝置的 SSL 憑證匯入系統的憑證存放區中。 如需詳細資訊，請參閱 [下載憑證](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。|
 |AzCopy 命令似乎停止回應20分鐘，再顯示此錯誤：<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`. |檢查端點名稱 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 是否已新增至 hosts 檔案，網址為： `/etc/hosts` 。|
 |AzCopy 命令似乎停止回應20分鐘，再顯示此錯誤：<br>`Error parsing source location… The SSL connection could not be established`. |將裝置的 SSL 憑證匯入系統的憑證存放區中。 如需詳細資訊，請參閱 [下載憑證](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。|
 |AzCopy 命令似乎停止回應20分鐘，再顯示此錯誤：<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|檢查端點名稱 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 是否已新增至 hosts 檔案，網址為： `/etc/hosts` 。|
@@ -200,6 +200,6 @@ Advanced security 記錄可以是 Azure Stack Edge 裝置的軟體或硬體入�
 |連接逾時。|登入 Azure Stack Edge，然後檢查它是否已解除鎖定。 裝置重新開機時，會一直鎖定，直到有人登入為止。|
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入了解[此版本中的已知問題](azure-stack-edge-gpu-2008-release-notes.md)。

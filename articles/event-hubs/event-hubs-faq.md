@@ -3,12 +3,12 @@ title: 常見問題集 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供 Azure 事件中樞的常見問題集 (FAQ) 清單及其答案。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: bec50da97bc826eb1bd26452e8f69f5c11f2d65d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9995588e618679ae38a11aff26485d1ba0b60688
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537175"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89288962"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中樞常見問題集
 
@@ -70,8 +70,8 @@ Azure 事件中樞的標準層提供比基本層更多的功能。 標準層包�
 | HTTP、HTTPS | 80、443 |  |
 | Kafka | 9093 | 請參閱[從 Kafka 應用程式使用事件中樞](event-hubs-for-kafka-ecosystem-overview.md)
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>需要將哪些 IP 位址列入白名單中？
-若要針對您的連線尋找適當的 IP 位址以列入白名單中，請遵循下列步驟：
+### <a name="what-ip-addresses-do-i-need-to-allow"></a>我需要允許哪些 IP 位址？
+若要尋找要新增至連線允許清單的正確 IP 位址，請遵循下列步驟：
 
 1. 從命令提示字元執行下列命令： 
 
@@ -96,10 +96,10 @@ Azure 事件中樞的標準層提供比基本層更多的功能。 標準層包�
     ```
 3. 針對尾碼為 s1、s2 和 s3 的每個名稱執行 nslookup，以取得三個執行個體全都在三個可用性區域執行的 IP 位址。 
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>哪裡可以找到用戶端 IP 傳送或接收到我的命名空間的相關資訊？
-首先，在命名空間上啟用[IP 篩選](event-hubs-ip-filtering.md)。 
+### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>哪裡可以找到用戶端 IP 傳送或接收到命名空間的消息？
+首先，在命名空間上啟用 [IP 篩選](event-hubs-ip-filtering.md) 。 
 
-然後，遵循[啟用診斷記錄](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)中的指示，啟用[事件中樞虛擬網路線上活動](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)的診斷記錄。 您會看到拒絕連線的 IP 位址。
+然後，遵循「[啟用診斷記錄](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)」中的指示，啟用[事件中樞虛擬網路線上活動](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)的診斷記錄。 您會看到連線遭到拒絕的 IP 位址。
 
 ```json
 {

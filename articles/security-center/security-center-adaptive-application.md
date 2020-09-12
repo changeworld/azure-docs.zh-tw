@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691474"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276757"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用適應性應用程式控制來減少電腦的攻擊面
 
@@ -76,7 +76,7 @@ ms.locfileid: "88691474"
     - **建議** -一致執行相同應用程式且未設定允許清單的電腦群組。 建議您為這些群組啟用適應性應用程式控制。
     
       > [!TIP]
-      > 如果您看到名為 "REVIEWGROUP" 的組名，它會包含具有部分一致性應用程式清單的電腦。 安全性中心無法看到模式，但建議您檢查此群組以查看 _您_ 是否可以手動定義某些自動調整應用程式控制規則，如 [編輯群組的自我調整應用程式控制規則](#editing-a-groups-adaptive-application-controls-rule)中所述。
+      > 如果您看到名為 "REVIEWGROUP" 的組名，它會包含具有部分一致性應用程式清單的電腦。 安全性中心無法看到模式，但建議您檢查此群組以查看 _您_ 是否可以手動定義某些自動調整應用程式控制規則，如 [編輯群組的自我調整應用程式控制規則](#edit-a-groups-adaptive-application-controls-rule)中所述。
       >
       > 您也可以將機器從此群組移至其他群組，如 [將機器從某個群組移至另一個群組](#move-a-machine-from-one-group-to-another)所述。
 
@@ -115,7 +115,7 @@ ms.locfileid: "88691474"
 
 
 
-## <a name="editing-a-groups-adaptive-application-controls-rule"></a>編輯群組的自我調整應用程式控制規則
+## <a name="edit-a-groups-adaptive-application-controls-rule"></a>編輯群組的自我調整應用程式控制規則
 
 您可能會因為組織已知的變更，而決定編輯一組電腦的允許清單。 
 
@@ -150,7 +150,7 @@ ms.locfileid: "88691474"
 
 
 
-## <a name="responding-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>回應「您的適應性應用程式控制原則中的允許清單規則應該更新」的建議
+## <a name="respond-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>回應「您的適應性應用程式控制原則中的允許清單規則應該更新」的建議
 
 當安全性中心的機器學習找出先前未允許的合法行為時，您將會看到這種建議。 建議建議您現有定義的新規則，以減少誤報的誤報數目。
 
@@ -167,7 +167,7 @@ ms.locfileid: "88691474"
 
 
 
-## <a name="auditing-alerts-and-violations"></a>審核警示和違規
+## <a name="audit-alerts-and-violations"></a>審核警示和違規
 
 1. 從 [安全性中心] 的功能表中，選取 [ **自我調整應用**程式控制]。
 
@@ -199,7 +199,7 @@ ms.locfileid: "88691474"
 
 
 
-## <a name="managing-application-controls-via-the-rest-api"></a>透過 REST API 管理應用程式控制 
+## <a name="manage-application-controls-via-the-rest-api"></a>透過 REST API 管理應用程式控制 
 
 若要以程式設計方式管理您的自我調整應用程式控制，請使用我們的 REST API。 
 
@@ -221,7 +221,7 @@ REST API 中提供的部分函數：
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 在本檔中，您已瞭解如何在 Azure 資訊安全中心中使用自動調整應用程式控制，以定義在 Azure 和非 Azure 電腦上執行之應用程式的允許清單。 若要深入瞭解資訊安全中心的其他雲端工作負載保護功能，請參閱：
 
 * [瞭解 (JIT) VM 存取的即時](just-in-time-explained.md)

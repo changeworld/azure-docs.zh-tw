@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a1304ad05e05285aa75167ec21519ec90d157662
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9e8625724f67caac99ae799674f9db9399e11ad8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922883"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294249"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>設定從 Azure 認知搜尋索引子到 SQL 受控執行個體的連接
 
@@ -27,7 +27,7 @@ ms.locfileid: "88922883"
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>啟用 Azure SQL 受控執行個體公用端點
 您也可以在**安全性**  >  **虛擬網路**  >  **公用端點**  >  **啟用**的現有 SQL 受控執行個體上啟用公用端點。
 
-   ![啟用公用端點](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "啟用公用端點")
+   ![使用受控實例 VNET 啟用公用端點](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "啟用公用端點")
 
 ## <a name="verify-nsg-rules"></a>確認 NSG 規則
 檢查網路安全性群組的 **輸入安全性規則** 是否正確，可允許來自 Azure 服務的連線。
@@ -49,5 +49,5 @@ ms.locfileid: "88922883"
 
    ![公用端點連接字串](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-connection-string.png "公用端點連接字串")
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 在設定的過程中，您現在可以使用入口網站或 REST API，將 SQL 受控執行個體指定為 Azure 認知搜尋索引子的資料來源。 如需詳細資訊，請參閱 [使用索引子將 Azure SQL Database 連接到 Azure 認知搜尋](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) 。

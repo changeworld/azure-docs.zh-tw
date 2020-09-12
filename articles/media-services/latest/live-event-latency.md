@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7f874491f392f320a6cdf833864c7b3eddc2f5e2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 114efe668fba47e9d83741b8fa45e1f396725198
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265310"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291509"
 ---
 # <a name="live-event-low-latency-settings"></a>實況活動低延遲設定
 
@@ -78,7 +78,7 @@ LiveEvent liveEvent = new LiveEvent(
 > [!NOTE]
 > 端對端延遲可能會因區域網路狀況或引進 CDN 快取層而有所不同。 建議您測試實際的設定。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [即時串流概觀](live-streaming-overview.md)
 - [即時串流教學課程](stream-live-tutorial-with-api.md)

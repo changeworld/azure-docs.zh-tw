@@ -16,19 +16,19 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f480118aaabf24bd7c5ca472bf04b12ee1405010
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446989"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275918"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>針對 Azure Active Directory 傳遞驗證進行疑難排解
 
 這篇文章可協助您尋找有關 Azure AD 傳遞驗證常見問題的疑難排解資訊。
 
 >[!IMPORTANT]
->如果傳遞驗證發生使用者登入的問題，請不要在沒有可切換的僅限雲端全域管理員帳戶的情況下，停用此功能或解除安裝傳遞驗證代理程式。 瞭解如何[新增僅限雲端的全域系統管理員帳戶](../active-directory-users-create-azure-portal.md)。 這是確保您不會被租用戶封鎖的關鍵步驟。
+>如果傳遞驗證發生使用者登入的問題，請不要在沒有可切換的僅限雲端全域管理員帳戶的情況下，停用此功能或解除安裝傳遞驗證代理程式。 瞭解如何 [新增僅限雲端的全域系統管理員帳戶](../fundamentals/add-users-azure-active-directory.md)。 這是確保您不會被租用戶封鎖的關鍵步驟。
 
 ## <a name="general-issues"></a>一般問題
 
@@ -54,7 +54,7 @@ ms.locfileid: "87446989"
 
 ### <a name="users-get-invalid-usernamepassword-error"></a>使用者收到不正確使用者名稱/密碼錯誤 
 
-當使用者的內部部署 UserPrincipalName （UPN）不同于使用者的雲端 UPN 時，就可能發生這種情況。
+當使用者的內部部署 UserPrincipalName (UPN) 與使用者的雲端 UPN 不同時，就會發生這種情況。
 
 若要確認這是問題，請先測試傳遞驗證代理程式是否正常運作：
 
@@ -70,12 +70,12 @@ ms.locfileid: "87446989"
  ```powershell
  Invoke-PassthroughAuthOnPremLogonTroubleshooter 
  ``` 
-4. 當系統提示您輸入認證時，請輸入用來登入的相同使用者名稱和密碼（ https://login.microsoftonline.com) 。
+4. 當系統提示您輸入認證時，請輸入用來登入 (的相同使用者名稱和密碼 https://login.microsoftonline.com) 。
 
-如果您收到相同的使用者名稱/密碼錯誤，這表示傳遞驗證代理程式正常運作，而問題可能是內部部署 UPN 無法路由傳送。 若要深入瞭解，請參閱設定[替代登入識別碼]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)。
+如果您收到相同的使用者名稱/密碼錯誤，這表示傳遞驗證代理程式正常運作，問題可能是內部部署 UPN 無法路由傳送。 若要深入瞭解，請參閱設定 [替代登入識別碼]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)。
 
 > [!IMPORTANT]
-> 如果 Azure AD Connect 伺服器未加入網域，則[Azure AD Connect：必要條件](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#installation-prerequisites)中所述的需求，會發生不正確使用者名稱/密碼問題。
+> 如果 Azure AD Connect 伺服器未加入網域，則 [Azure AD Connect：必要條件](./how-to-connect-install-prerequisites.md#installation-prerequisites)中所述的需求，就會發生不正確使用者名稱/密碼問題。
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory 管理中心上的登入失敗原因 (需要 Premium 授權)
 
@@ -83,7 +83,7 @@ ms.locfileid: "87446989"
 
 ![Azure Active Directory 管理中心 - 登入報告](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-流覽至 Azure Active Directory 系統管理中心的**Azure Active Directory**登  ->  **入**，然後按一下特定使用者的登入活動。 [Azure Active Directory admin center](https://aad.portal.azure.com/) 尋找 [登入錯誤碼]**** 欄位。 使用下表，將該欄位的值對應至失敗的原因和解決方式：
+流覽至**Azure Active Directory**  ->  Azure Active Directory 系統[管理中心](https://aad.portal.azure.com/)的 Azure Active Directory**登入**，然後按一下特定使用者的登入活動。 尋找 [登入錯誤碼]**** 欄位。 使用下表，將該欄位的值對應至失敗的原因和解決方式：
 
 |登入錯誤碼|登入失敗原因|解決方案
 | --- | --- | ---
@@ -98,7 +98,7 @@ ms.locfileid: "87446989"
 | 80011 | 驗證代理程式無法擷取解密金鑰。 | 如果問題一再出現，請安裝並註冊新的驗證代理程式。 然後解除安裝目前的代理程式。
 
 >[!IMPORTANT]
->傳遞驗證代理程式會藉由呼叫[Win32 LOGONUSER API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)，針對 Active Directory 驗證其使用者名稱和密碼，藉以驗證 Azure AD 使用者。 因此，如果您已在 Active Directory 中設定 [登入] 設定以限制工作站登入存取，您就必須將裝載「傳遞驗證代理程式」的伺服器新增到「登入」伺服器的清單中。 如果無法這麼做，將會封鎖您的使用者登入 Azure AD。
+>傳遞驗證代理程式會藉由呼叫 [Win32 LOGONUSER API](/windows/win32/api/winbase/nf-winbase-logonusera)來驗證使用者的使用者名稱和 Active Directory 密碼，藉以驗證 Azure AD 使用者。 如此一來，如果您已在 Active Directory 中設定 [登入] 設定以限制工作站登入存取，您也必須將裝載傳遞驗證代理程式的伺服器新增至 [登入] 伺服器的清單。 若無法這樣做，將會封鎖使用者登入 Azure AD。
 
 ## <a name="authentication-agent-installation-issues"></a>驗證代理程式安裝問題
 

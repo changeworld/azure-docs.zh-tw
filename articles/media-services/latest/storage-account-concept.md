@@ -9,15 +9,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 120bd403d84f9912bd309f965f3b69306fabcc24
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f37b453a294a0d0a7b9a99bfebe8f3eff09e8956
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267066"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291189"
 ---
 # <a name="azure-storage-accounts"></a>Azure 儲存體帳戶
 
@@ -47,7 +47,7 @@ ms.locfileid: "89267066"
 
 為了保護您的待用資產，資產應以儲存體端加密來加密。 下表顯示儲存端加密在媒體服務 v3 中的運作方式：
 
-|加密選項|說明|媒體服務 v3|
+|加密選項|描述|媒體服務 v3|
 |---|---|---|
 |媒體服務儲存體加密| AES-256 加密、媒體服務所管理的金鑰。 |不支援。<sup> (1) </sup>|
 |[待用資料的儲存體服務加密](../../storage/common/storage-service-encryption.md)|由 Azure 或客戶管理的 Azure 儲存體、金鑰所提供的伺服器端加密。|支援。|
@@ -70,6 +70,6 @@ ms.locfileid: "89267066"
 
 Azure 媒體服務不支援已啟用 Azure 儲存體防火牆或 [私人端點](../../storage/common/storage-network-security.md) 的儲存體帳戶。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解如何將儲存體帳戶附加到媒體服務帳戶，請參閱[建立帳戶](./create-account-howto.md)。

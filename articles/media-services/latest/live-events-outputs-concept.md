@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: da91e37c47db6d944aa6974123dd80ec982453e4
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9a32cd4db9a4c4dbd2b5f36c16feef4717790c3c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265179"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291461"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒體服務中的即時事件和即時輸出
 
@@ -133,7 +133,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 ### <a name="live-ingest-url-naming-rules"></a>即時內嵌 URL 命名規則
 
 * 下方的 *random* \(隨機\) 字串是 128 位元的十六進位數字 (由 32 個字元的 0-9 a-f 所組成)。
-* *您的存取權杖*：您在使用虛名模式時所設定的有效 GUID 字串。 例如 `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`。
+* *您的存取權杖*：您在使用虛名模式時所設定的有效 GUID 字串。 例如： `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` 。
 * *資料流程名稱*：指出特定連接的資料流程名稱。 資料流程名稱值通常是由您所使用的即時編碼器所加入。 您可以設定即時編碼器使用任何名稱來描述連接，例如： "video1_audio1"、"video2_audio1"、"stream"。
 
 #### <a name="non-vanity-url"></a>非虛名 URL

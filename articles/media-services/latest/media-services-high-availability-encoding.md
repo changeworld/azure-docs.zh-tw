@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.subservice: ''
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2b20668ea08186f42eed89f82fb1ae8d85cf090d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c3aaba6939f9e5e3f5d7c169cd3a199cc93f527d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267695"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296764"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>隨選媒體服務和影片隨選 (VOD) 的高可用性
 
@@ -36,7 +36,7 @@ Azure 架構檔中有一個稱為 [Geodes](/azure/architecture/patterns/geodes) 
 
 此範例架構中使用的服務包括：
 
-| 圖示 | Name | 說明 |
+| 圖示 | Name | 描述 |
 | :--: | ---- | ----------- |
 |![image](media/media-services-high-availability-encoding/azure-media-services.svg)| 媒體服務帳戶 | **描述：**<br>媒體服務帳戶是在 Azure 中管理、加密、編碼、分析和串流處理媒體內容的起點。 它會與 Azure 儲存體帳戶資源相關聯。 帳戶和所有相關聯的儲存體都必須位於相同的 Azure 訂用帳戶中。<br><br>**VOD 用途：**<br>這些是您用來編碼和傳遞影片和音訊資產的服務。  為了達到高可用性，您至少要設定兩個媒體服務帳戶，每個帳戶都在不同的區域中。 [深入瞭解 Azure 媒體服務](media-services-overview.md)。 |
 |![image](media/media-services-high-availability-encoding/storage-account.svg)| 儲存體帳戶 | **描述：**<br>Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件： blob、檔案、佇列、資料表和磁片。 資料可透過 HTTP 或 HTTPS 從世界各地存取。<br><br>每個區域中的每個媒體服務帳戶都會有相同區域中的儲存體帳戶。<br><br>**VOD 用途：**<br>您可以儲存用於 VOD 處理和串流處理的輸入和輸出資料。 [深入瞭解 Azure 儲存體](../../storage/common/storage-introduction.md)。 |
@@ -85,6 +85,6 @@ Azure 架構檔中有一個稱為 [Geodes](/azure/architecture/patterns/geodes) 
     * 如果您的工作處於已排程狀態，但在指定區域的合理時間內尚未前進到處理狀態，請從目前使用的帳戶清單中移除該區域。 根據您的業務需求，您可以決定立即取消這些作業，並將其重新提交到另一個區域。 或者，您可以讓他們有更多時間移到下一個狀態。
     * 如果區域已從帳戶清單中移除，請監視該區域以進行復原，然後再將其新增回清單。 區域健康情況可以透過區域中現有的工作進行監視 (如果未取消和重新提交) ，請在一段時間後將帳戶新增回清單，以及藉由操作員監視可能會影響 Azure 媒體服務的中斷情況。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 查看程式 [代碼範例](/samples/browse/?products=azure-media-services)

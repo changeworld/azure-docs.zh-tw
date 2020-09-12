@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a725831efe6b92ba522900fac67b317e42bc959
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d15b12b758adbf99ddabc88eb06be9daba1ece3e
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182372"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276196"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常見問題集
 本文會回答有關 Azure Active Directory (Azure AD) Connect Health 的常見問題 (FAQ)。 這些常見問題涵蓋如何使用服務的相關問題，包括計費模型、功能、限制及支援。
@@ -68,7 +68,7 @@ ms.locfileid: "89182372"
 
 德國雲端不支援 Azure AD Connect Health，但[同步處理錯誤報告功能](how-to-connect-health-sync.md#object-level-synchronization-error-report)除外。
 
-| 角色 | 特性 | 德國雲端中支援 |
+| 角色 | 功能 | 德國雲端中支援 |
 | ------ | --------------- | --- |
 | 適用於同步處理的 Connect Health | 監視/見解/警示/分析 | 否 |
 |  | 同步處理錯誤報告 | 是 |
@@ -98,13 +98,13 @@ ms.locfileid: "89182372"
 
 **問：在安裝 Azure AD Connect Health 代理程式期間，我是否需要重新啟動我的伺服器？**
 
-否。 安裝代理程式不需要您重新啟動伺服器。 不過，安裝某些先決條件的步驟可能需要重新啟動伺服器。
+不會。 安裝代理程式不需要您重新啟動伺服器。 不過，安裝某些先決條件的步驟可能需要重新啟動伺服器。
 
 例如，在 Windows Server 2008 R2 上安裝 .NET 4.5 Framework 需要重新啟動伺服器。
 
 **問：Azure AD Connect Health 是否透過傳遞 Http Proxy 運作？**
 
-是。 若是進行中的作業，您可以將 Health 代理程式設定為使用 HTTP Proxy 來轉送輸出 HTTP 要求。
+可以。 若是進行中的作業，您可以將 Health 代理程式設定為使用 HTTP Proxy 來轉送輸出 HTTP 要求。
 深入瞭解設定 [健康情況代理程式的 HTTP Proxy](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)。
 
 如果需要在代理程式註冊期間設定 Proxy，您可能需要預先修改 Internet Explorer 的 Proxy 設定。
@@ -115,7 +115,7 @@ ms.locfileid: "89182372"
 
 **問：連線到 HTTP Proxy 時，Azure AD Connect Health 是否支援基本驗證？**
 
-否。 目前不支援為基本驗證指定任意使用者名稱和密碼的機制。
+不會。 目前不支援為基本驗證指定任意使用者名稱和密碼的機制。
 
 **問：我需要開放哪些防火牆連接埠，Azure AD Connect Health 代理程式才能運作？**
 
@@ -190,18 +190,18 @@ CheckForMS17-010
 
 **問：為什麼 PowerShell Cmdlet <i>Get MsolDirSyncProvisioningError</i> 在結果中顯示的同步錯誤比較少？**
 
-<i>Get MsolDirSyncProvisioningError</i> 只會傳回 DirSync 佈建錯誤。 除此之外，Connect Health 入口網站還會顯示其他同步錯誤類型，例如匯出錯誤。 這與 Azure AD Connect 差異結果一致。 深入瞭解 [Azure AD Connect 同步錯誤](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)。
+<i>Get MsolDirSyncProvisioningError</i> 只會傳回 DirSync 佈建錯誤。 除此之外，Connect Health 入口網站還會顯示其他同步錯誤類型，例如匯出錯誤。 這與 Azure AD Connect 差異結果一致。 深入瞭解 [Azure AD Connect 同步錯誤](./tshoot-connect-sync-errors.md)。
 
 **問：為何系統並未產生我的 ADFS 稽核？**
 
-請使用 PowerShell Cmdlet <i>Get-AdfsProperties -AuditLevel</i> 以確保稽核記錄不是處於停用狀態。 深入瞭解 [ADFS audit 記錄](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)。 請注意，若系統將進階稽核設定推送至 ADFS 伺服器，將會覆寫 auditpol.exe 的任何變更 (即使並未設定產生的應用程式)。 在此情況下，請將本機本機安全性原則設定為記錄已產生應用程式的失敗和成功項目。
+請使用 PowerShell Cmdlet <i>Get-AdfsProperties -AuditLevel</i> 以確保稽核記錄不是處於停用狀態。 深入瞭解 [ADFS audit 記錄](/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)。 請注意，若系統將進階稽核設定推送至 ADFS 伺服器，將會覆寫 auditpol.exe 的任何變更 (即使並未設定產生的應用程式)。 在此情況下，請將本機本機安全性原則設定為記錄已產生應用程式的失敗和成功項目。
 
 **問：代理程式憑證何時會在到期前自動更新？**
 代理程式認證會在到期日之前的 **6 個月內** 自動更新。 如果未更新，請確定代理程式的網路連線是穩定的。 重新開機代理程式服務或更新至最新版本也可以解決此問題。
 
 
 ## <a name="related-links"></a>相關連結
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health 代理程式安裝](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health 作業](how-to-connect-health-operations.md)
 * [使用 Azure AD Connect Health 搭配 AD FS](how-to-connect-health-adfs.md)

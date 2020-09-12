@@ -17,19 +17,19 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c915898d3eec4494b6a300e88ffde216f21d5d68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358118"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279511"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>使用者隱私權與 Azure Active Directory 傳遞驗證
 
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure AD 傳遞驗證會建立下列記錄類型，其中可能會包含「個人資料」：
 
@@ -67,13 +67,13 @@ Foreach ($file in $Files) {
 
 ### <a name="delete-authentication-agent-event-logs"></a>刪除驗證代理程式事件記錄
 
-此產品也可能會建立 **Windows 事件記錄**。 若要深入了解，請閱讀[這篇文章](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx)。
+此產品也可能會建立 **Windows 事件記錄**。 若要深入了解，請閱讀[這篇文章](/windows/win32/wes/windows-event-log)。
 
 若要檢視與傳遞驗證代理程式相關的記錄，請開啟伺服器上的**事件檢視器**應用程式，並於 **Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** 下查看。
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>刪除驗證代理程式追蹤記錄檔
 
-您應該定期檢查 **%PROGRAMDATA%\MICROSOFT\AZURE AD Connect Authentication Agent\Trace**的內容，並每隔48小時刪除此資料夾的內容。 
+您應定期檢查 **%PROGRAMDATA%\MICROSOFT\AZURE AD Connect Authentication Agent\Trace** 的內容，並每隔48小時刪除此資料夾的內容。 
 
 >[!IMPORTANT]
 >如果驗證代理程式服務正在執行中，您就無法刪除資料夾中目前的記錄檔。 在重試之前停止服務。 若要避免使用者登入失敗，您應該為傳遞驗證設定[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
@@ -92,19 +92,19 @@ Foreach ($file in $files) {
 
 1.  將指令碼儲存在副檔名為 ".PS1" 的檔案中。
 2.  開啟 [控制台]****，然後按一下 [系統與安全性]****。
-3.  在 [系統**管理工具**] 標題下，按一下 [**排程**工作]。
+3.  在 [系統 **管理工具** ] 標題下，按一下 [**排程**工作]。
 4.  在 [工作排程器]**** 中，以滑鼠右鍵按一下 [工作排程程式庫]****，然後按一下 [建立基本工作...]****。
 5.  輸入新工作的名稱，然後按 [下一步]****。
 6.  針對 [工作觸發程序]**** 選取 [每天]****，然後按 [下一步]****。
 7.  將週期設定為 2 天，然後按 [下一步]****。
 8.  選取 [啟動程式]**** 作為動作，然後按 [下一步]****。
-9.  在程式/腳本的方塊中輸入 "PowerShell"，並在標示為 [**新增引數（選擇性）**] 的方塊中輸入 "**PowerShell**"，並輸入您稍早建立之腳本的完整路徑，然後按 **[下一步]**。
-10. 下一個畫面會顯示您即將建立之工作的摘要。 確認值，然後按一下 **[完成]** 來建立工作：
+9.  在程式/腳本的方塊中輸入 "**PowerShell**"，然後在標示為 [**新增引數 (選擇性) **] 的方塊中，輸入您稍早建立之腳本的完整路徑，然後按 **[下一步]**。
+10. 下一個畫面會顯示您即將建立之工作的摘要。 確認值並按一下 **[完成]** ，以建立工作：
  
 ### <a name="note-about-domain-controller-logs"></a>請注意網域控制站記錄
 
-如果已啟用稽核記錄，這項產品可能會針對您的網域控制站產生安全性記錄。 若要深入了解設定稽核原則，請閱讀[這篇文章](https://technet.microsoft.com/library/dd277403.aspx)。
+如果已啟用稽核記錄，這項產品可能會針對您的網域控制站產生安全性記錄。 若要深入了解設定稽核原則，請閱讀[這篇文章](/previous-versions/tn-archive/dd277403(v=technet.10))。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [在信任中心檢閱 Microsoft 隱私權原則](https://www.microsoft.com/trustcenter)
 * [**疑難排解**](tshoot-connect-pass-through-authentication.md) - 了解如何解決此功能的常見問題。

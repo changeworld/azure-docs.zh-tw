@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d27018a19db85e8544029db4f1b638ef7cae448a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d0507f7751305af5e626cbd7dd6e0dfd1a63a74
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358135"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279477"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory 傳遞驗證：將預覽驗證代理程式升級
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文適用於透過預覽版使用 Azure AD 傳遞驗證的客戶。 我們最近已將驗證代理程式軟體升級 (及改版)。 您需要 _手動_ 升級在內部部署伺服器上安裝的預覽驗證代理程式。 此手動升級只是一次性動作。 驗證代理程式的所有未來更新都是自動的。 升級的原因如下所示：
 
@@ -39,10 +39,10 @@ ms.locfileid: "85358135"
 
 遵循下列步驟來檢查驗證代理程式的安裝位置：
 
-1. 使用您租使用者的全域管理員認證來登入[Azure Active Directory 系統管理中心](https://aad.portal.azure.com)。
+1. 使用您租使用者的全域管理員認證來登入 [Azure Active Directory admin center](https://aad.portal.azure.com) 。
 2. 按一下左側導覽上的 [Azure Active Directory]****。
 3. 選取 [Azure AD Connect]****。 
-4. 選取 [**傳遞驗證**]。 此刀鋒視窗會列出驗證代理程式的安裝位置。
+4. 選取 [ **傳遞驗證**]。 此刀鋒視窗會列出驗證代理程式的安裝位置。
 
 ![Azure Active Directory 管理中心 - 傳遞驗證刀鋒視窗](./media/how-to-connect-pta-upgrade-preview-authentication-agents/pta8.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "85358135"
 
 升級之前，請確定您已備妥下列項目：
 
-1. **建立僅限雲端的全域管理員帳戶**：在傳遞驗證代理程式無法正常運作的緊急情況下，若沒有僅限雲端的全域管理員帳戶可使用，則不要升級。 瞭解如何[新增僅限雲端的全域系統管理員帳戶](../active-directory-users-create-azure-portal.md)。 這是確保您不會被租用戶封鎖的關鍵步驟。
+1. **建立僅限雲端的全域管理員帳戶**：在傳遞驗證代理程式無法正常運作的緊急情況下，若沒有僅限雲端的全域管理員帳戶可使用，則不要升級。 瞭解如何 [新增僅限雲端的全域系統管理員帳戶](../fundamentals/add-users-azure-active-directory.md)。 這是確保您不會被租用戶封鎖的關鍵步驟。
 2.  **確保高可用性**：如果先前未完成，則使用相關[指示](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)來安裝第二個獨立驗證代理程式，以提供高可用性來滿足登入要求。
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>將 Azure AD Connect 伺服器上的驗證代理程式升級
@@ -74,7 +74,7 @@ ms.locfileid: "85358135"
 5. **已安裝最新版本**：如之前所示，請移至 [控制台]-> [程式]-> [程式和功能]****，並確認有 [Microsoft Azure AD Connect 驗證代理程式]**** 項目。
 
 >[!NOTE]
->完成前述步驟後，若到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)查看傳遞驗證刀鋒視窗，將會發現每個伺服器有兩個驗證代理程式項目：一個項目會顯示驗證代理程式為**使用中**，另一個則顯示為**非使用中**。 這是_預期_的情況。 **非使用中**的項目會在幾天後自動卸除。
+>完成前述步驟後，若到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)查看傳遞驗證刀鋒視窗，將會發現每個伺服器有兩個驗證代理程式項目：一個項目會顯示驗證代理程式為**使用中**，另一個則顯示為**非使用中**。 這是 _預期_的情況。 **非使用中**的項目會在幾天後自動卸除。
 
 ## <a name="upgrading-the-authentication-agent-on-other-servers"></a>在其他伺服器上升級驗證代理程式
 
@@ -86,7 +86,7 @@ ms.locfileid: "85358135"
 4. **已安裝最新版本**：如之前所示，請移至 [控制台]-> [程式]-> [程式和功能]****，並確認有一個叫做 [Microsoft Azure AD Connect 驗證代理程式]**** 的項目。
 
 >[!NOTE]
->完成前述步驟後，若到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)查看傳遞驗證刀鋒視窗，將會發現每個伺服器有兩個驗證代理程式項目：一個項目會顯示驗證代理程式為**使用中**，另一個則顯示為**非使用中**。 這是_預期_的情況。 **非使用中**的項目會在幾天後自動卸除。
+>完成前述步驟後，若到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)查看傳遞驗證刀鋒視窗，將會發現每個伺服器有兩個驗證代理程式項目：一個項目會顯示驗證代理程式為**使用中**，另一個則顯示為**非使用中**。 這是 _預期_的情況。 **非使用中**的項目會在幾天後自動卸除。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - [**疑難排解**](tshoot-connect-pass-through-authentication.md) - 了解如何解決此功能的常見問題。

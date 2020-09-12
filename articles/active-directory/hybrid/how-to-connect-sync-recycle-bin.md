@@ -17,31 +17,31 @@ ms.date: 12/17/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed71e53a8cedc2907ac06dd75f11f9c762a78772
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12073a75cd248c9226c7ce5ecc21b64617823b32
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357200"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279630"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect 同步處理︰啟用 AD 資源回收筒
 建議您為會同步處理至 Azure AD 的內部部署 Active Directory 啟用 AD 資源回收筒功能。 
 
-如果您不小心刪除內部部署 AD 使用者物件，並使用此功能還原該物件，Azure AD 會還原對應的 Azure AD 使用者物件。  如需 AD 資源回收筒功能的相關資訊，請參閱[還原已刪除之 Active Directory 物件的案例概觀](https://technet.microsoft.com/library/dd379542.aspx)一文。
+如果您不小心刪除內部部署 AD 使用者物件，並使用此功能還原該物件，Azure AD 會還原對應的 Azure AD 使用者物件。  如需 AD 資源回收筒功能的相關資訊，請參閱[還原已刪除之 Active Directory 物件的案例概觀](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd379542(v=ws.10))一文。
 
 ## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>啟用 AD 資源回收筒的好處
 這項功能可協助還原 Azure AD 使用者物件，方法是執行下列動作︰
 
 * 如果您不小心刪除內部部署 AD 使用者物件，系統會在下一個同步處理循環刪除對應的 Azure AD 使用者物件。 根據預設，Azure AD 會讓已刪除的 Azure AD 使用者物件保持 30 天的虛刪除狀態。
 
-* 如果您已啟用內部部署 AD 資源回收筒功能，您可以還原已刪除的內部部署 AD 使用者物件，而不必變更其來源錨點值。 當復原後的內部部署 AD 使用者物件同步處理至 Azure AD 時，Azure AD 會還原對應的虛刪除 Azure AD 使用者物件。 如需來源錨點屬性的相關資訊，請參閱[Azure AD Connect：設計概念](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor)一文。
+* 如果您已啟用內部部署 AD 資源回收筒功能，您可以還原已刪除的內部部署 AD 使用者物件，而不必變更其來源錨點值。 當復原後的內部部署 AD 使用者物件同步處理至 Azure AD 時，Azure AD 會還原對應的虛刪除 Azure AD 使用者物件。 如需來源錨點屬性的相關資訊，請參閱[Azure AD Connect：設計概念](./plan-connect-design-concepts.md#sourceanchor)一文。
 
 * 如果您未啟用內部部署 AD 資源回收筒功能，您可能需要建立 AD 使用者物件來取代已刪除的物件。 如果您將 Azure AD Connect 同步處理服務設定為使用系統產生的 AD 屬性 (例如 ObjectGuid) 作為來源錨點屬性，新建立的 AD 使用者物件所具有的來源錨點值不會和已刪除之 AD 使用者物件的值相同。 當新建立的 AD 使用者物件同步處理至 Azure AD 時，Azure AD 會建立新的 Azure AD 使用者物件，而不是還原虛刪除的 Azure AD 使用者物件。
 
 > [!NOTE]
 > 根據預設，Azure AD 會讓已刪除的 Azure AD 使用者物件保持 30 天的虛刪除狀態，再將其永久刪除。 不過，系統管理員也可以提早刪除這類物件。 物件在永久刪除後就無法再復原，即使您已啟用內部部署 AD 資源回收筒功能也是一樣。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 **概觀主題**
 
 * [Azure AD Connect 同步：了解並自訂同步處理](how-to-connect-sync-whatis.md)

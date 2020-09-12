@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: afc9f8e29cf27734787da9cab3e3456e5414d9ac
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3c469d7274bb90e194478af2464cb352efe7490c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918021"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294861"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 認知搜尋中建立簡單的查詢
 
@@ -37,13 +37,13 @@ ms.locfileid: "88918021"
 
 在指定要求標頭後，您可以將其重複用於本文中的所有查詢，只要替換掉 **search=** 字串即可。 
 
-  ![Postman 要求標頭](media/search-query-lucene-examples/postman-header.png)
+  ![Postman 要求標頭設定參數](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>設定要求 URL
 
 要求是與包含 Azure 認知搜尋端點和搜尋字串的 URL 配對的 GET 命令。
 
-  ![Postman 要求標頭](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  ![Postman 要求標頭 GET](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL 組合具有下列元素：
 
@@ -285,7 +285,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 嘗試在您的程式碼中指定查詢。 下列連結說明如何使用預設的簡單語法設定 .NET 和 REST API 的搜尋查詢。
 
 * [使用 .NET SDK 查詢您的索引](./search-get-started-dotnet.md)

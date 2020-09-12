@@ -12,16 +12,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: de22cfd3505fe4d632a722cfec923a0eb8e66062
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c46fe5a4199e73cd22aeef4df62daeed4b58db06
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254101"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291308"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>使用媒體服務 v3 的適用于 iOS 的離線 FairPlay 串流
 
@@ -49,7 +49,7 @@ ms.locfileid: "89254101"
 > [!NOTE]
 > 離線 DRM 只會在您下載內容時，針對授權提出單一要求付費。 任何錯誤都不計費。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在 iOS 10+ 裝置上實作適用於 FairPlay 的離線 DRM 之前：
 
@@ -209,6 +209,6 @@ func requestApplicationCertificate() throws -> Data {
 
 請參閱 [常見問題以提供疑難排解的協助](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 了解如何[使用 AES-128 保護](protect-with-aes128.md)

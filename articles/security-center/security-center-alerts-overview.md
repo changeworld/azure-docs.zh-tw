@@ -10,20 +10,20 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: 25b5569c123a4c7376aecd01b8e36f68b0a8e9b5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd52cb9ba10cbbc7823cf631cea146cdccdad4e1
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519590"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278134"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 資訊安全中心的安全性警示
 
 在 Azure 資訊安全中心中，提供了許多不同資源類型的各種警示。 資訊安全中心會針對部署在 Azure 上的資源產生警示，也會針對內部部署和部署於混合式雲端環境的資源產生警示。
 
-安全性警示會由「先進偵測」觸發，而且僅適用于 Azure 資訊安全中心的「標準」層級。 有免費試用版可用。 您可以從 [**定價 & 設定**] 頁面進行升級。 深入瞭解[資訊安全中心定價](https://azure.microsoft.com/pricing/details/security-center/)。
+安全性警示是由 advanced 偵測所觸發，且僅適用于 Azure 資訊安全中心的標準層。 有免費試用版可用。 您可以從 [ **定價 & 設定** ] 頁面進行升級。 深入瞭解資訊 [安全中心的定價](https://azure.microsoft.com/pricing/details/security-center/)。
 
-## <a name="responding-to-todays-threats"></a>回應現今的威脅<a name="respond-threats"> </a>
+## <a name="respond-to-todays-threats"></a>回應現今的威脅<a name="respond-threats"> </a>
 
 威脅態勢在過去 20 年來已有重大變更。 在過去，公司通常只需擔心網站遭到大多想要查看「他們能做些什麼」的個別攻擊者竄改。 現今的攻擊者更加複雜且有組織性。 他們通常會有特定的財務和策略性目標。 他們也有更多的資源可供利用，因為它們可能是由民族國家或組織型犯罪所資助。
 
@@ -53,7 +53,7 @@ Microsoft 資訊安全研究人員會持續監視威脅。 由於 Microsoft 的�
 
 資訊安全中心會運用進階安全性分析，其遠勝於以簽章為基礎的方法。 巨量資料和 [機器學習](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) 技術突破可用來評估整個雲端網狀架構的事件 – 使用手動方式來偵測無法識別的威脅，以及預測攻擊的演化。 這些安全性分析包括︰
 
-* **整合性威脅情報**：Microsoft 有大量全域威脅情報。 遙測會流入多個來源，例如 Azure、Microsoft 365、Microsoft CRM online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft 數位犯罪單位（DCU）和 Microsoft Security Response Center （MSRC）。 研究人員也會收到主要雲端服務提供者之間共用的威脅情報資訊，以及來自其他協力廠商的摘要內容。 Azure 資訊安全中心可以使用這項資訊來警示您來自已知不良執行者的威脅。
+* **整合性威脅情報**：Microsoft 有大量全域威脅情報。 遙測會從多個來源（例如 Azure、Microsoft 365、Microsoft CRM online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft 數位犯罪單位 (DCU) 和 Microsoft 安全性回應中心 (MSRC) ）流入。 研究人員也會收到主要雲端服務提供者之間共用的威脅情報資訊，以及來自其他協力廠商的摘要內容。 Azure 資訊安全中心可以使用這項資訊來警示您來自已知不良執行者的威脅。
 
 * **行為分析**：行為分析是一種可分析及比較資料與一組已知模式的技術。 不過，這些模式並非簡單的簽章。 它們會透過已套用至大型資料集的複雜機器學習演算法來決定。 它們也能透過專業分析師仔細分析惡意行為來判定。 Azure 資訊安全中心可以使用行為分析，根據虛擬機器記錄、虛擬網路裝置記錄、網狀架構記錄和其他來源的分析，來識別遭到入侵的資源。
 

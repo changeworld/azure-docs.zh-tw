@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 49a237a122b97fc44df4525ca02dbb478be104ab
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c03950d64c9ead17dfa5c07ef70ab2b7ee0e90bb
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267600"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296646"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>透過 Azure 監視器監視媒體服務計量和診斷記錄
 
@@ -44,7 +44,7 @@ ms.locfileid: "89267600"
 
 您可以監視下列帳戶計量。
 
-|度量名稱|顯示名稱|說明|
+|度量名稱|顯示名稱|描述|
 |---|---|---|
 |AssetCount|資產計數|您帳戶中的資產。|
 |AssetQuota|資產配額|帳戶中的資產配額。|
@@ -62,7 +62,7 @@ ms.locfileid: "89267600"
 
 以下是支援的媒體服務 [串流端點](/rest/api/media/streamingendpoints) 計量：
 
-|度量名稱|顯示名稱|說明|
+|度量名稱|顯示名稱|描述|
 |---|---|---|
 |Requests|Requests|提供串流端點所服務的 HTTP 要求總數。|
 |輸出|輸出|每分鐘的輸出位元組總計（每個串流端點）。|
@@ -94,7 +94,7 @@ ms.locfileid: "89267600"
 
 ### <a name="key-delivery"></a>金鑰傳遞
 
-|Name|說明|
+|Name|描述|
 |---|---|
 |金鑰傳遞服務要求|顯示金鑰傳遞服務要求資訊的記錄。 如需詳細資訊，請參閱 [架構](media-services-diagnostic-logs-schema.md)。|
 
@@ -111,7 +111,7 @@ ms.locfileid: "89267600"
 
 請參閱 [如何監視媒體服務診斷記錄](media-services-diagnostic-logs-howto.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [如何收集和取用來自 Azure 資源的記錄資料](../../azure-monitor/platform/platform-logs-overview.md)
 * [使用 Azure 監視器建立、檢視及管理計量警示](../../azure-monitor/platform/alerts-metric.md)

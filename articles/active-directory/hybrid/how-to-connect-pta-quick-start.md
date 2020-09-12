@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3aad90a3894d3abc1a850ae21946e8895619a188
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 0aefe95f3e78afc4b449539fd683ffc1fe525a15
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849888"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280174"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory 傳遞驗證：快速入門
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 >如果您要從 AD FS (或其他同盟技術) 遷移至傳遞驗證，強烈建議您遵循我們在[此處](https://aka.ms/adfstoPTADPDownload) \(英文\) 發佈的詳細部署指南。
 
 >[!NOTE]
->如果您使用 Azure Government 雲端部署傳遞驗證，請參閱[Azure Government 的混合式身分識別考慮](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud)。
+>如果您使用 Azure Government 雲端來部署 Pass 驗證，請參閱 [Azure Government 的混合式身分識別考慮](./reference-connect-government-cloud.md)。
 
 請依照下列指示，在您的租用戶上部署傳遞驗證：
 
@@ -42,12 +42,12 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 請確保已具備下列必要條件。
 
 >[!IMPORTANT]
->從安全性的觀點來看，系統管理員應該將執行 PTA 代理程式的伺服器視為網域控制站。  PTA 代理程式伺服器應該與[保護網域控制站免于遭受攻擊](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)時所述的同一行一起強化
+>從安全性的觀點來看，系統管理員應該將執行 PTA 代理程式的伺服器視為網域控制站。  PTA 代理程式伺服器應該[依照保護網域控制站免于攻擊](/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)的相同程式列來強化
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>於 Azure Active Directory 管理中心
 
-1. 在 Azure AD 租用戶上建立僅限雲端的全域管理員帳戶。 如此一來，如果您的內部部署服務失敗或無法使用，您便可以管理租用戶組態。 了解如何[新增僅限雲端管理員帳戶](../active-directory-users-create-azure-portal.md)。 這是確保您不會遭租用戶封鎖的關鍵步驟。
-2. 將一或多個[自訂網域名稱](../active-directory-domains-add-azure-portal.md)新增至 Azure AD 租用戶。 您的使用者可以使用其中一個網域名稱登入。
+1. 在 Azure AD 租用戶上建立僅限雲端的全域管理員帳戶。 如此一來，如果您的內部部署服務失敗或無法使用，您便可以管理租用戶組態。 了解如何[新增僅限雲端管理員帳戶](../fundamentals/add-users-azure-active-directory.md)。 這是確保您不會遭租用戶封鎖的關鍵步驟。
+2. 將一或多個[自訂網域名稱](../fundamentals/add-custom-domain.md)新增至 Azure AD 租用戶。 您的使用者可以使用其中一個網域名稱登入。
 
 ### <a name="in-your-on-premises-environment"></a>在內部部署環境中
 
@@ -55,12 +55,12 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 2. 在上一個步驟中識別的伺服器上，安裝[最新版本的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。 如果您已執行 Azure AD Connect，請確定版本是 1.1.750.0 或更新版本。
 
     >[!NOTE]
-    >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有與密碼雜湊同步處理相關的問題。 如果您「不」__ 想要使用密碼雜湊同步處理搭配傳遞驗證，請閱讀 [Azure AD Connect 版本資訊](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470)。
+    >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有與密碼雜湊同步處理相關的問題。 如果您「不」__ 想要使用密碼雜湊同步處理搭配傳遞驗證，請閱讀 [Azure AD Connect 版本資訊](./reference-connect-version-history.md)。
 
 3. 識別一或多部額外伺服器 (執行 Windows Server 2012 R2 或更新版本並啟用 TLS 1.2) 來執行獨立驗證代理程式。 需要有這些額外的伺服器，才能確保登入要求的高可用性。 根據需要驗證密碼之使用者所在的 Active Directory 樹系，將伺服器新增至同一個樹系。
 
     >[!IMPORTANT]
-    >在生產環境中，我們建議至少要有 3 個驗證代理程式在您的租用戶上執行。 系統限制每個租用戶只能有 40 個驗證代理程式。 因此，最佳做法是將執行驗證代理程式的所有伺服器視為階層 0 的系統 (請參閱[參考](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) \(機器翻譯\))。
+    >在生產環境中，我們建議至少要有 3 個驗證代理程式在您的租用戶上執行。 系統限制每個租用戶只能有 40 個驗證代理程式。 因此，最佳做法是將執行驗證代理程式的所有伺服器視為階層 0 的系統 (請參閱[參考](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) \(機器翻譯\))。
 
 4. 如果您的伺服器和 Azure AD 之間有防火牆，請設定下列項目：
    - 確定驗證代理程式會透過以下連接埠對 Azure AD 提出*輸出*要求：
@@ -72,14 +72,14 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
      | **8080** (選擇性) | 如果無法使用連接埠 443，則驗證代理程式會透過連接埠 8080 每隔十分鐘報告其狀態。 此狀態會顯示在 Azure 入口網站上。 連接埠 8080 「不」__ 會用於使用者登入。 |
      
      如果您的防火牆會根據原始使用者強制執行規則，請開啟這些連接埠，讓來自以網路服務形式執行之 Windows 服務的流量得以通行。
-   - 如果您的防火牆或 proxy 允許 DNS 允許清單，請將連線新增至** \* msappproxy.net**和** \* servicebus.windows.net**。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
+   - 如果您的防火牆或 proxy 允許 DNS 允許清單，請將連接新增至** \* msappproxy.net**和** \* . servicebus.windows.net**。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
    - 您的驗證代理程式必須存取 **login.windows.net** 與 **login.microsoftonline.com**才能進行初始註冊， 因此也請針對這些 URL 開啟您的防火牆。
    - 為了驗證憑證，請解除封鎖以下 URL：**mscrl.microsoft.com:80**、**crl.microsoft.com:80**、**ocsp.msocsp.com:80** 和 **www\.microsoft.com:80**。 由於這些 URL 會用於其他 Microsoft 產品的憑證驗證，因此您可能已將這些 URL 解除封鎖。
 
-### <a name="azure-government-cloud-prerequisite"></a>Azure Government 雲端必要條件
-透過步驟2的 Azure AD Connect 啟用傳遞驗證之前，請先從 Azure 入口網站下載最新版本的 PTA 代理程式。  您必須確保代理程式的版本是**1.5.1742.0。** 或更新版本。  若要驗證您的代理程式，請參閱[升級驗證代理](how-to-connect-pta-upgrade-preview-authentication-agents.md)程式
+### <a name="azure-government-cloud-prerequisite"></a>Azure Government 雲端先決條件
+在步驟2的 Azure AD Connect 啟用傳遞驗證之前，請從 Azure 入口網站下載最新版本的 PTA 代理程式。  您必須確定您的代理程式是 **1.5.1742.0 版。** 或更新版本。  若要確認您的代理程式，請參閱[升級驗證代理](how-to-connect-pta-upgrade-preview-authentication-agents.md)程式
 
-下載最新版本的代理程式之後，請繼續進行下列指示，透過 Azure AD Connect 設定傳遞驗證。
+下載最新版本的代理程式之後，請繼續進行下列指示，以透過 Azure AD Connect 設定傳遞驗證。
 
 ## <a name="step-2-enable-the-feature"></a>步驟 2︰啟用功能
 
@@ -120,13 +120,13 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 如果您打算在生產環境中部署傳遞驗證，您應該安裝額外的獨立驗證代理程式。 請在執行 Azure AD Connect「以外」__ 的伺服器上安裝這些「驗證代理程式」。 此設定可提供高可用性來滿足使用者登入要求。
 
 >[!IMPORTANT]
->在生產環境中，我們建議至少要有 3 個驗證代理程式在您的租用戶上執行。 系統限制每個租用戶只能有 40 個驗證代理程式。 因此，最佳做法是將執行驗證代理程式的所有伺服器視為階層 0 的系統 (請參閱[參考](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) \(機器翻譯\))。
+>在生產環境中，我們建議至少要有 3 個驗證代理程式在您的租用戶上執行。 系統限制每個租用戶只能有 40 個驗證代理程式。 因此，最佳做法是將執行驗證代理程式的所有伺服器視為階層 0 的系統 (請參閱[參考](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) \(機器翻譯\))。
 
-安裝多個傳遞驗證代理程式可確保高可用性，但不會在驗證代理程式之間進行具決定性的負載平衡。 若要判斷您的租使用者需要多少個驗證代理程式，請考慮您預期會在租使用者上看到的登入要求尖峰和平均負載。 在標準的 4 核心 CPU、16-GB RAM 伺服器上，單一驗證代理程式每秒可處理 300 到 400 次驗證，乃是效能評定的基準。
+安裝多個傳遞驗證代理程式可確保高可用性，但不會在驗證代理程式之間提供決定性的負載平衡。 若要判斷您的租使用者需要多少個驗證代理程式，請考慮您預期會在租使用者上看到的登入要求的尖峰和平均負載。 在標準的 4 核心 CPU、16-GB RAM 伺服器上，單一驗證代理程式每秒可處理 300 到 400 次驗證，乃是效能評定的基準。
 
 若要估計網路流量，請使用下列調整大小指導方針：
-- 每個要求的承載大小為（0.5 K + 1K * num_of_agents）個位元組，也就是從 Azure AD 到驗證代理程式的資料。 在這裡，"num_of_agents" 表示已在您的租用戶上註冊的驗證代理程式數目。
-- 每個回應都有 1 kb 位元組的承載大小，也就是來自驗證代理程式的資料，以 Azure AD。
+- 每個要求的承載大小都 (0.5 K + 1K * num_of_agents) 個位元組，也就是從 Azure AD 到驗證代理程式的資料。 在這裡，"num_of_agents" 表示已在您的租用戶上註冊的驗證代理程式數目。
+- 每個回應都有1千位元組的承載大小，也就是從驗證代理程式到 Azure AD 的資料。
 
 對於大部分的客戶而言，總共有三個驗證代理程式就足以應付高可用性和容量。 應在靠近網域控制站的地方安裝驗證代理程式，以改善登入的延遲情形。
 
@@ -142,7 +142,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 ![Azure Active Directory 管理中心：下載代理程式窗格](./media/how-to-connect-pta-quick-start/pta10.png)
 
 >[!NOTE]
->您也可以直接[下載驗證代理程式軟體](https://aka.ms/getauthagent)。 _在安裝之前_，請先審查並接受驗證代理程式的[服務條款](https://aka.ms/authagenteula)。
+>您也可以直接[下載驗證代理程式軟體](https://aka.ms/getauthagent)。 進行安裝之前，請_先_檢查並接受驗證代理程式的[服務條款](https://aka.ms/authagenteula)。
 
 部署獨立「驗證代理程式」的方式有兩種：
 
@@ -166,13 +166,13 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
   ```
 
 >[!IMPORTANT]
->如果在虛擬機器上安裝驗證代理程式，您就無法複製虛擬機器來設定另一個驗證代理程式。 不**支援**這個方法。
+>如果虛擬機器上已安裝驗證代理程式，您就無法複製虛擬機器來設定另一個驗證代理程式。 **不支援**這個方法。
 
 ## <a name="step-5-configure-smart-lockout-capability"></a>步驟5：設定智慧鎖定功能
 
-智慧鎖定可協助鎖定嘗試猜測使用者密碼或使用暴力方法取得的不良執行者。 藉由在內部部署 Active Directory 的 Azure AD 和（或）適當的鎖定設定中設定智慧型鎖定設定，攻擊可以先篩選掉，然後才會進入 Active Directory。 請[閱讀本文](../authentication/howto-password-smart-lockout.md)，以深入瞭解如何在您的租使用者上設定智慧鎖定設定，以保護您的使用者帳戶。
+智慧型鎖定可協助鎖定不良的動作專案，而這些動作專案試圖猜測使用者的密碼或使用暴力密碼破解方法來進入。 藉由在內部部署 Active Directory 的 Azure AD 和/或適當的鎖定設定中設定智慧鎖定設定，就可以在使用者到達 Active Directory 之前，先篩選出攻擊。 請 [閱讀本文](../authentication/howto-password-smart-lockout.md) ，以深入瞭解如何在您的租使用者上設定智慧鎖定設定，以保護您的使用者帳戶。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - [從 AD FS 遷移到傳遞驗證](https://aka.ms/adfstoptadp) \(英文\) - 從 AD FS (或其他同盟技術) 遷移到傳遞驗證的詳細指南。
 - [智慧鎖定](../authentication/howto-password-smart-lockout.md)：了解如何在租用戶中設定智慧鎖定功能以保護使用者帳戶。
 - [目前的限制](how-to-connect-pta-current-limitations.md)：了解傳遞驗證支援的情節和不支援的情節。

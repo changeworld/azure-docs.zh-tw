@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1e3579f79f9daa80c3d3f2206be7a76cc5505e80
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: HT
+ms.openlocfilehash: 1ff76c38031ac367bf81f6d152642a4d9a209bb7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037014"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293994"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>搭配使用分散式追蹤與 Azure Spring Cloud
 
@@ -28,7 +28,7 @@ ms.locfileid: "87037014"
 
 ## <a name="prerequisites"></a>必要條件
 
-若要遵循這些程序，您需要已佈建好且正在執行的 Azure Spring Cloud 服務。 請完成[關於如何透過 Azure CLI 來部署應用程式的快速入門](spring-cloud-quickstart-launch-app-cli.md)，以佈建和執行 Azure Spring Cloud 服務。
+若要遵循這些程序，您需要已佈建好且正在執行的 Azure Spring Cloud 服務。 請完成[關於如何透過 Azure CLI 來部署應用程式的快速入門](spring-cloud-quickstart.md)，以佈建和執行 Azure Spring Cloud 服務。
     
 ## <a name="add-dependencies"></a>新增相依性
 

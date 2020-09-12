@@ -16,19 +16,19 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60245511"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280208"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步處理：了解宣告式佈建運算式
 Azure AD Connect 同步處理是以 Forefront Identity Manager 2010 中最先引進的宣告式佈建為基礎。 它可讓您實作完整的身分識別整合商務邏輯，而不需要撰寫已編譯的程式碼。
 
 宣告式佈建最主要的部分是在屬性流程中使用運算式語言。 使用的語言是 Microsoft® Visual Basic® for Applications (VBA) 的子集。 此語言用於 Microsoft Office，而且擁有 VBScript 經驗的使用者也可以辨識它。 宣告式佈建運算式語言只會使用函式，而不是結構化語言。 沒有任何方法或陳述式。 函式會改為巢狀函式來表示程式流程。
 
-如需詳細資訊，請參閱 [歡迎使用適用於 Office 2013 的 Visual Basic for Applications 語言參考](https://msdn.microsoft.com/library/gg264383.aspx)。
+如需詳細資訊，請參閱 [歡迎使用適用於 Office 2013 的 Visual Basic for Applications 語言參考](/office/vba/api/overview/language-reference)。
 
 屬性是強型別。 函式只會接受正確類型的屬性。 它也區分大小寫。 函式名稱和屬性名稱兩者都必須有正確的大小寫，否則會擲回錯誤。
 
@@ -68,7 +68,7 @@ Active Directory 連接器對於輸入同步處理規則提供下列參數：
 以下範例會以使用者所在網域的 netbios 名稱填入 Metaverse 屬性網域：  
 `domain` <- `%Domain.Netbios%`
 
-### <a name="operators"></a>運算子
+### <a name="operators"></a>操作員
 可以使用下列運算子：
 
 * **比較**：<、<=、<>、=、>、>=
@@ -100,4 +100,3 @@ Active Directory 連接器對於輸入同步處理規則提供下列參數：
 **參考主題**
 
 * [Azure AD Connect 同步處理：函式參考](reference-connect-sync-functions-reference.md)
-

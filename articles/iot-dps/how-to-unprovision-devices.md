@@ -1,18 +1,18 @@
 ---
 title: 取消布建使用 Azure IoT 中樞裝置布建服務布建的裝置
-description: 如何取消布建使用 Azure IoT 中樞裝置布建服務（DPS）布建的裝置
+description: '如何取消布建使用 Azure IoT 中樞裝置布建服務布建的裝置 (DPS) '
 author: wesmc7777
 ms.author: wesmc
 ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 8a3677ba285f5b02407ca3d176979bf6c016ef9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efd19d9dc1fdc857a51d7af34c54bbe2d6077767
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974831"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294385"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>如何取消佈建先前自動佈建的裝置 
 
@@ -57,22 +57,10 @@ ms.locfileid: "74974831"
 對於註冊群組，有兩個案例要加以考慮：
 
 - 若要取消佈建所有透過註冊群組佈建的裝置：
-  1. 停用註冊群組，將其簽署憑證列入封鎖清單。 
+  1. 停用註冊群組，不允許其簽署憑證。 
   2. 請使用該註冊群組的佈建裝置清單，從個別的 IoT 中樞身分識別登錄中停用或刪除每個裝置。 
   3. 從個別的 IoT 中樞停用或刪除所有裝置之後，可以選擇是否要刪除註冊群組。 不過請注意，如果您刪除註冊群組，而憑證鏈結之中一個或多個更上層裝置的簽署憑證有已啟用的註冊群組，這些裝置可以重新註冊。 
 
 - 若要從註冊群組取消佈建單一裝置：
   1. 為其分葉 (裝置) 憑證建立已停用的個別註冊。 如此會撤銷該裝置的佈建服務存取權限，但是仍允許鏈結之中具有註冊群組簽署憑證的其他裝置進行存取。 請勿刪除裝置已停用的個別註冊。 否則會使得裝置透過註冊群組重新註冊。 
   2. 使用該註冊群組的已佈建裝置清單來尋找佈建裝置的 IoT 中樞，再從該中樞的身分識別登錄停用或刪除裝置。 
-  
-  
-
-
-
-
-
-
-
-
-
-

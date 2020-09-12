@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a16e989a6da8daa4a290c7eaa4363eef09c9749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1111b56a08343f1e12c3b2d582e350907ab37b46
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356333"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276026"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>針對 Azure AD Connect 中不會同步處理屬性的問題進行疑難排解
 
@@ -30,24 +30,24 @@ ms.locfileid: "85356333"
 
   ![Azure AD Connect 同步處理程序](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/syncingprocess.png)
 
-### <a name="terminology"></a>**術語**
+### <a name="terminology"></a>**詞彙**
 
-* **CS：** 連接器空間，這是資料庫中的資料表。
-* **MV：**「中繼資料」，這是資料庫中的資料表。
+* **CS：** 連接器空間，資料庫中的資料表。
+* **MV：** 中繼資料，資料庫中的資料表。
 * **AD：** Active Directory
 * **AAD：** Azure Active Directory
 
 ### <a name="synchronization-steps"></a>**同步處理步驟**
 
-* 從 AD 匯入： Active Directory 物件會帶入 AD CS。
+* 從 AD 匯入： Active Directory 物件進入 AD CS。
 
 * 從 AAD 匯入： Azure Active Directory 物件會帶入 AAD CS。
 
-* 同步處理：**輸入同步處理規則**和**輸出同步處理規則**會依優先順序數位從低到高的循序執行。 若要檢視同步化規則，您可以從桌面應用程式移至**同步化規則編輯器**。 **輸入同步化規則**會從 CS 將資料帶入到 MV。 **輸出同步化規則**會從 MV 將資料帶入到 CS。
+* 同步處理： **輸入同步處理規則** 和 **輸出同步處理規則** 的執行順序是從低到高的優先順序數位。 若要檢視同步化規則，您可以從桌面應用程式移至**同步化規則編輯器**。 **輸入同步化規則**會從 CS 將資料帶入到 MV。 **輸出同步化規則**會從 MV 將資料帶入到 CS。
 
-* 匯出至 AD：執行同步處理之後，物件會從 AD CS 匯出到**Active Directory**。
+* 匯出至 AD：執行同步處理之後，物件會從 AD CS 匯出至 **Active Directory**。
 
-* 匯出至 AAD：執行同步處理之後，物件會從 AAD CS 匯出到**Azure Active Directory**。
+* 匯出至 AAD：執行同步處理之後，物件會從 AAD CS 匯出至 **Azure Active Directory**。
 
 ### <a name="step-by-step-investigation"></a>**逐步進行調查**
 
@@ -80,13 +80,13 @@ ms.locfileid: "85356333"
 * 同樣地，您可以檢視 **Azure Active Directory 連接器空間**物件，並且可以產生**預覽**來檢視從 **Metaverse** 到**連接器空間**的屬性流程，反之亦然，如此一來，您就能調查屬性不會同步處理的原因。
 
 ## <a name="recommended-documents"></a>**建議的文件**
-* [Azure AD Connect 同步：技術概念](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
-* [Azure AD Connect 同步處理：了解架構](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
-* [Azure AD Connect 同步處理：了解宣告式佈建](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Azure AD Connect 同步處理：瞭解宣告式布建運算式](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
-* [Azure AD Connect 同步處理：了解預設組態](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
-* [Azure AD Connect 同步處理：了解使用者、群組和連絡人](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Azure AD Connect 同步：陰影屬性](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Azure AD Connect 同步：技術概念](./how-to-connect-sync-technical-concepts.md)
+* [Azure AD Connect 同步處理：了解架構](./concept-azure-ad-connect-sync-architecture.md)
+* [Azure AD Connect 同步處理：了解宣告式佈建](./concept-azure-ad-connect-sync-declarative-provisioning.md)
+* [Azure AD Connect 同步：瞭解宣告式布建運算式](./concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
+* [Azure AD Connect 同步處理：了解預設組態](./concept-azure-ad-connect-sync-default-configuration.md)
+* [Azure AD Connect 同步處理：了解使用者、群組和連絡人](./concept-azure-ad-connect-sync-user-and-contacts.md)
+* [Azure AD Connect 同步：陰影屬性](./how-to-connect-syncservice-shadow-attributes.md)
 
 ## <a name="next-steps"></a>後續步驟
 

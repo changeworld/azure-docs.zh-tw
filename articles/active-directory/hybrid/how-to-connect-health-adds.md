@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc7e8e3219cc2b11ed123889973c375edd22664d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d75b439c2753db17cffecdc97b6389a7b31b833e
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359393"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279868"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>在 AD DS 使用 Azure AD Connect Health
 下列文件適用於使用 Azure AD Connect Health 來監視 Active Directory 網域服務。 AD DS 支援的版本：Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 及 Windows Server 2016。
@@ -57,11 +57,10 @@ ms.locfileid: "85359393"
 根據預設，已預先選取四個效能計數器；不過，您可以按篩選命令並選取或取消選取任何想要的效能計數器。 此外，您可以連按兩下效能計數器圖形以開啟新的刀鋒視窗，其中包含每個受監視網域控制站的資料點。
 
 ## <a name="related-links"></a>相關連結
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health 代理程式安裝](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health 操作](how-to-connect-health-operations.md)
 * [使用 Azure AD Connect Health 搭配 AD FS](how-to-connect-health-adfs.md)
 * [使用 Azure AD Connect Health 進行同步處理](how-to-connect-health-sync.md)
 * [Azure AD Connect Health 常見問題集](reference-connect-health-faq.md)
 * [Azure AD Connect Health 版本歷程記錄](reference-connect-health-version-history.md)
-

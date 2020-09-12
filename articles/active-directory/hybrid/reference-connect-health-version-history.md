@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abc0417fc6f97501566f03d7eae0e4274d1dbced
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182338"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279409"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health︰版本發行歷程記錄
 Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Connect Health。 本文列出已發行的版本和功能。  
@@ -30,7 +30,7 @@ Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Co
 > 發行新版本時，會自動更新 Connect Health 代理程式。 請確定已從 Azure 入口網站啟用自動升級設定。
 >
 
-Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 深入了解 [Azure AD Connect 版本歷程記錄](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) 如需功能意見反應，請在 [Connect Health User Voice 頻道](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)投票
+Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 深入了解 [Azure AD Connect 版本歷程記錄](./reference-connect-version-history.md) 如需功能意見反應，請在 [Connect Health User Voice 頻道](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)投票
 
 ## <a name="april-2020"></a>2020 年 4 月
 **代理程式更新**
@@ -50,11 +50,11 @@ Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 
    1. 在 CheckOffice365Endpoints 測試中新增 TestWindowsTransport 測試和移除 WsTrust 端點檢查
    2. 記錄 OS 和 .NET 資訊
    3. 將 RP 設定訊息上傳大小增加為1MB。
-   4. Bug 修正
+   4. 錯誤修正
    
 * 適用于 AD DS (版本3.1.56.0 的 Azure AD Connect Health 代理程式)  
    1. 記錄 OS 和 .NET 資訊 
-   2. Bug 修正
+   2. 錯誤修正
 
 ## <a name="may-2019"></a>2019 年 5 月
 **代理程式更新：** 
@@ -161,7 +161,7 @@ Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 
   2. 代理程式可用性改善 
   3. Bug 修正和一般改善
   
-## <a name="october-2017"></a>2017年 10 月
+## <a name="october-2017"></a>2017 年 10 月
 **代理程式更新：**
 
  * 隨著 Azure AD Connect 1.1.649.0 版發行的 Azure AD Connect Health Agent for Sync (3.0.129.0 版)
@@ -259,5 +259,5 @@ Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 
 * 依應用程式、錯誤類型等分組，顯示 AD FS 伺服器上失敗要求的趨勢。
 * 使用 Azure AD 全域管理員認證更輕鬆部署代理程式。  
 
-## <a name="next-steps"></a>後續步驟
-深入了解 [在雲端中監視內部部署身分識別基礎結構和同步處理服務](whatis-hybrid-identity-health.md)。
+## <a name="next-steps"></a>接下來的步驟
+深入了解 [在雲端中監視內部部署身分識別基礎結構和同步處理服務](./whatis-azure-ad-connect.md)。

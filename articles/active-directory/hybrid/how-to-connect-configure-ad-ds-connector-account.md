@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ce6f0e5e6e958e72ddc04608c5f207fedb18daf9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9a082270e2c113bcdf31ed6bd6db3d38a7117500
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072259"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279290"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect： 設定 AD DS 連接器帳戶權限 
 
@@ -39,12 +39,12 @@ ms.locfileid: "89072259"
 | 密碼雜湊同步處理 |<li>複寫目錄變更</li>  <li>複寫目錄變更 (全部) |
 | Exchange 混合式部署 |[Exchange 混合回寫](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)中記載了使用者、群組和連絡人屬性的讀取和寫入權限。 |
 | Exchange 郵件公用資料夾 |公用資料夾屬性 (詳情記載於 [Exchange 郵件公用資料夾](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)) 的讀取權限。 | 
-| 密碼回寫 |[開始使用密碼管理](../authentication/howto-sspr-writeback.md)中記載了使用者屬性的讀取和寫入權限。 |
+| 密碼回寫 |[開始使用密碼管理](../authentication/tutorial-enable-sspr-writeback.md)中記載了使用者屬性的讀取和寫入權限。 |
 | 裝置回寫 |[裝置回寫](how-to-connect-device-writeback.md)中記載了裝置物件和容器的讀取和寫入權限。 |
 | 群組回寫 |讀取、建立、更新和刪除已同步處理之 **Office 365 群組**的群組物件。|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>使用 ADSyncConfig PowerShell 模組 
-ADSyncConfig 模組需要[適用於 AD DS 的遠端伺服器管理工具 (RSAT)](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools)，因為它依存於 AD DS PowerShell 模組和工具。 若要安裝適用於 AD DS 的 RSAT，請使用 [以系統管理員身分執行] 開啟 Windows PowerShell 視窗並執行： 
+ADSyncConfig 模組需要[適用於 AD DS 的遠端伺服器管理工具 (RSAT)](/windows-server/remote/remote-server-administration-tools)，因為它依存於 AD DS PowerShell 模組和工具。 若要安裝適用於 AD DS 的 RSAT，請使用 [以系統管理員身分執行] 開啟 Windows PowerShell 視窗並執行： 
 
 ``` powershell
 Install-WindowsFeature RSAT-AD-Tools 
@@ -311,4 +311,3 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 - [快速安裝](how-to-connect-install-express.md)
 - [自訂安裝](how-to-connect-install-custom.md)
 - [ADSyncConfig 參考](reference-connect-adsyncconfig.md)
-

@@ -9,15 +9,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: cd2b9848ef1358c1aeaaed43e55d9914ac701564
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e1ea0a43783fb7abdc17655e3a3431d125d426f8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267100"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291274"
 ---
 # <a name="stream-content-with-cdn-integration"></a>使用 CDN 整合來串流內容
 
@@ -32,7 +32,7 @@ CDN 會快取從媒體服務 [串流端點串流處理的內容 (來源) ](strea
 您也需要考量彈性資料流的運作方式。 每個個別的影片片段都會快取為它自己的實體。 例如，想像一下第一次觀看特定影片的時間。 如果檢視器略過只觀賞幾秒鐘的時間，而且只有與監看過的人相關的影片片段會在 CDN 中快取。 因為有彈性資料流，您通常會有 5 到 7 個位元速率不同的視訊。 如果有一位人監看一個位元速率，而另一個人監看不同的位元速率，則它們會分別在 CDN 中快取。 即使兩人監看相同的位元速率，也可以透過不同的通訊協定進行串流處理。 每個通訊協定 (HLS、MPEG DASH、Smooth Streaming) 會分別進行快取。 因此，每一個位元速率和通訊協定都會分別進行快取，而且只會快取已要求的那些視訊片段。
 
 除了測試環境以外，我們建議針對標準和高階串流端點啟用 CDN。 每種類型的串流端點都有不同的支援輸送量限制。
-很難精確地計算串流端點所支援的並行資料流程數目上限，因為有許多因素需要考慮。 其中包含：
+很難精確地計算串流端點所支援的並行資料流程數目上限，因為有許多因素需要考慮。 它們包括：
 
 - 用於串流處理的位元速率上限
 - 播放的前置緩衝區和切換行為。 播放程式會嘗試從原點高載區段，並使用載入速度來計算自動調整位元速率切換。 如果串流端點接近飽和，回應時間可能會不同，而玩家會開始切換為較低的品質。 因為這會減少串流端點播放程式的負載，所以請將建立不需要的切換觸發程式調整回更高的品質。
@@ -155,7 +155,7 @@ CDN 快取是一個回應的程式。 如果 CDN 可以預測下一個物件將�
 
 * 這項功能是否適用于 UHD/HEVC 內容？
 
-    是。
+    可以。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出問題、提供意見反應、取得更新
 

@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698592"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279647"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：設計概念
 本文件旨在說明 Azure AD Connect 實作設計期間必須考量的領域。 本文件是特定領域的深入探討，而在其他文件中也會簡短描述這些概念。
@@ -140,7 +140,7 @@ Azure AD Connect (1.1.524.0 版和更新版本) 現在可協助您使用 ms-DS-C
 
 3. 輸入 Azure AD 系統管理員認證，然後按一下 [下一步]****。
 
-4. Azure AD Connect 精靈會分析內部部署 Active Directory 中的 ms-DS-ConsistencyGuid 屬性狀態。 如果未在目錄的任何物件上設定此屬性，則 Azure AD Connect 會結束，而且其他應用程式目前未使用此屬性，可安全地使用它作為「來源錨點」屬性。 按一下 [下一步] 以繼續。
+4. Azure AD Connect 精靈會分析內部部署 Active Directory 中的 ms-DS-ConsistencyGuid 屬性狀態。 如果未在目錄的任何物件上設定此屬性，則 Azure AD Connect 會結束，而且其他應用程式目前未使用此屬性，可安全地使用它作為「來源錨點」屬性。 按一下 [下一步]  以繼續。
 
    ![啟用現有部署的 ConsistencyGuid - 步驟 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
@@ -156,7 +156,7 @@ Azure AD Connect (1.1.524.0 版和更新版本) 現在可協助您使用 ms-DS-C
 
 ![啟用現有部署的 ConsistencyGuid - 錯誤](./media/plan-connect-design-concepts/consistencyguidexistingdeploymenterror.png)
 
- 如果您確定其他現有的應用程式不會使用此屬性，您可以使用指定的 **/SkipLdapSearch**參數重新開機 Azure AD Connect wizard 來隱藏錯誤。 若要這樣做，在命令提示字元中執行下列命令：
+ 如果您確定屬性不是由其他現有的應用程式使用，您可以使用指定的 **/SkipLdapSearch** 參數重新開機 Azure AD Connect wizard 來抑制錯誤。 若要這樣做，在命令提示字元中執行下列命令：
 
 ```
 "c:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe" /SkipLdapSearch
@@ -165,12 +165,12 @@ Azure AD Connect (1.1.524.0 版和更新版本) 現在可協助您使用 ms-DS-C
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>對 AD FS 或第三方同盟設定的影響
 如果您要使用 Azure AD Connect 來管理內部部署 AD FS 的部署，Azure AD Connect 會自動將宣告規則更新為使用同樣的 AD 屬性來作為 sourceAnchor。 這種作法可確保 ADFS 所產生的 ImmutableID 宣告會與匯出至 Azure AD 的 sourceAnchor 值保持一致。
 
-如果您要在 Azure AD Connect 之外管理 AD FS，或是要使用第三方同盟伺服器來進行驗證，則必須手動更新 ImmutableID 宣告的宣告規則，使其與匯出到 Azure AD 的 sourceAnchor 值保持一致，詳情如[修改 AD FS 宣告規則](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims)一節所述。 安裝完成後，精靈會傳回下列警告︰
+如果您要在 Azure AD Connect 之外管理 AD FS，或是要使用第三方同盟伺服器來進行驗證，則必須手動更新 ImmutableID 宣告的宣告規則，使其與匯出到 Azure AD 的 sourceAnchor 值保持一致，詳情如[修改 AD FS 宣告規則](./how-to-connect-fed-management.md#modclaims)一節所述。 安裝完成後，精靈會傳回下列警告︰
 
 ![第三方同盟設定](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>在現有部署中新增目錄
-假設您已部署 Azure AD Connect 並啟用 ConsistencyGuid 功能，而現在您想要在部署中新增另一個目錄。 當您嘗試新增目錄時，Azure AD Connect 精靈會檢查目錄中 ms-DS-ConsistencyGuid 屬性的狀態。 如果目錄中有一或多個物件設定了此屬性，則精靈會認為其他應用程式正在使用此屬性，並傳回如下圖所示的錯誤。 如果您確定現有的應用程式不會使用此屬性，您可以重新開機 Azure AD Connect wizard 並依照上述指定的 **/SkipLdapSearch**參數來隱藏錯誤，或者您必須聯絡支援人員以取得詳細資訊。
+假設您已部署 Azure AD Connect 並啟用 ConsistencyGuid 功能，而現在您想要在部署中新增另一個目錄。 當您嘗試新增目錄時，Azure AD Connect 精靈會檢查目錄中 ms-DS-ConsistencyGuid 屬性的狀態。 如果目錄中有一或多個物件設定了此屬性，則精靈會認為其他應用程式正在使用此屬性，並傳回如下圖所示的錯誤。 如果您確定現有的應用程式未使用此屬性，您可以使用指定的 **/SkipLdapSearch** 參數重新開機 Azure AD Connect wizard，以隱藏錯誤，否則您必須聯絡支援人員以取得詳細資訊。
 
 ![在現有部署中新增目錄](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 
@@ -193,7 +193,7 @@ John 是 contoso.com 中的使用者。 在將使用者同步至 Azure AD 目錄
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>無法路由傳送的內部部署網域與 Azure AD 的 UPN
 有些組織有無法路由傳送的網域，例如 contoso.local 或簡單單一標籤網域，例如 contoso。 您無法確認在 Azure AD 中無法路由傳送的網域。 Azure AD Connect 可以僅同步至 Azure AD 中已驗證的網域。 當您建立 Azure AD 目錄時，它會建立可路由傳送的網域，而該網域會成為 Azure AD 的預設網域，例如 contoso.onmicrosoft.com。 因此，如果您不想要同步至預設的 .onmicrosoft.com 網域，則必須在此類案例中驗證所有其他可路由傳送的網域。
 
-如需有關如何新增和驗證網域的詳細資訊，請參閱 [將您的自訂網域名稱新增至 Azure Active Directory](../active-directory-domains-add-azure-portal.md) 。
+如需有關如何新增和驗證網域的詳細資訊，請參閱 [將您的自訂網域名稱新增至 Azure Active Directory](../fundamentals/add-custom-domain.md) 。
 
 Azure AD Connect 會偵測您是否在無法路由傳送的網域環境中執行，並且會適當地警告您不要繼續進行快速設定。 如果您是在不可路由傳送的網域中操作，則使用者的 UPN 可能也有無法路由傳送的尾碼。 例如，如果您是在 contoso.local 之下執行，Azure AD Connect 會建議您使用自訂設定，而不是使用快速設定。 使用自訂設定，在使用者同步至 Azure AD 之後，您能夠指定應做為 UPN 以供登入 Azure 的屬性。
 

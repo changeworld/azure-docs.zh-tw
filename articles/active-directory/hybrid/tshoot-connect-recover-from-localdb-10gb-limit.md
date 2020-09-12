@@ -16,17 +16,17 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6a61a4a26176ee353d1f182579e1f8d80a95aab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ca5361d8500ecd4ea22a577d0a4dc7ced606eab
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355993"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275897"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect：如何從 LocalDB 10-GB 的限制復原
 Azure AD Connect 需要 SQL Server 資料庫來儲存身分識別資料。 您可以使用 Azure AD Connect 安裝的預設 SQL Server 2012 Express LocalDB 或使用您自己的完整 SQL。 SQL Server Express 會實行 10 GB 的大小限制。 使用 LocalDB 且達到這個限制時，Azure AD Connect 同步處理服務無法再啟動或正確同步處理。 本文提供復原步驟。
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 有兩個常見的徵兆︰
 
 * Azure AD Connect 同步處理服務**執行**，但無法同步處理並出現 “stopped-database-disk-full” ** 錯誤。
@@ -55,7 +55,7 @@ Azure AD Connect 需要 SQL Server 資料庫來儲存身分識別資料。 您�
 5. 如果非執行中，請嘗試啟動服務。 如果服務成功啟動，略過[壓縮資料庫](#shrink-the-database)步驟並移至[刪除執行記錄資料](#delete-run-history-data)步驟。 否則，請以[壓縮資料庫](#shrink-the-database)步驟繼續進行。
 
 ### <a name="shrink-the-database"></a>壓縮資料庫
-請使用壓縮作業釋出足夠的 DB 空間，以啟動同步處理服務。 它會藉由在資料庫中移除空格來釋放 DB 空間。 這個步驟是最佳方式，因為不保證一律可以復原空間。 若要深入了解壓縮作業，請閱讀[壓縮資料庫](https://msdn.microsoft.com/library/ms189035.aspx)文章。
+請使用壓縮作業釋出足夠的 DB 空間，以啟動同步處理服務。 它會藉由在資料庫中移除空格來釋放 DB 空間。 這個步驟是最佳方式，因為不保證一律可以復原空間。 若要深入了解壓縮作業，請閱讀[壓縮資料庫](/sql/relational-databases/databases/shrink-a-database?view=sql-server-ver15)文章。
 
 > [!IMPORTANT]
 > 如果您可以取得要執行的同步處理服務，請略過此步驟。 不建議壓縮 SQL DB，因為它可能會導致因片段增加的效能不佳。
@@ -100,8 +100,8 @@ Azure AD Connect 需要 SQL Server 資料庫來儲存身分識別資料。 您�
 
 ## <a name="long-term-solution--migrate-to-full-sql"></a>長期解決方案 – 移轉至完整的 SQL
 一般情況下，問題顯示 10 GB 資料庫大小不足，Azure AD Connect 無法再同步處理您的內部部署 Active Directory 到 Azure AD。 建議您改為使用完整版的 SQL Server。 您無法直接將現有的 Azure AD Connect 部署取代為完整版的 SQL 資料庫 LocalDB。 相反地，您必須部署新的 Azure AD Connect 伺服器與 SQL 的完整版本。 建議您將部署新 Azure AD Connect 伺服器 (含 SQL DB) 做為預備伺服器的變換移轉，其位於現有 Azure AD Connect 伺服器 (含 LocalDB) 旁。 
-* 如需有關如何使用 Azure AD Connect 設定遠端 SQL 的指示，請參閱 [Azure AD Connect 的自訂安裝](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom)文章。
-* 如需 Azure AD Connect 升級的變換移轉指示，請參閱 [Azure AD Connect︰從舊版升級至最新版本](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration)文章。
+* 如需有關如何使用 Azure AD Connect 設定遠端 SQL 的指示，請參閱 [Azure AD Connect 的自訂安裝](./how-to-connect-install-custom.md)文章。
+* 如需 Azure AD Connect 升級的變換移轉指示，請參閱 [Azure AD Connect︰從舊版升級至最新版本](./how-to-upgrade-previous-version.md#swing-migration)文章。
 
 ## <a name="next-steps"></a>後續步驟
 深入了解 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

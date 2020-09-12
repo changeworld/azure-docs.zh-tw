@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b139441adb02f5fb33ae8c4a70aaa9b423f0d0e
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447087"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279256"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：啟用裝置回寫
 > [!NOTE]
@@ -31,10 +31,10 @@ ms.locfileid: "87447087"
 
 以下文件提供有關在 Azure AD Connect 中啟用裝置回寫功能的資訊。 裝置回寫用於下列案例：
 
-* [使用混合式憑證信任部署啟用 Windows Hello 企業版](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
-* 啟用以裝置至 ADFS （2012 R2 或更高版本）保護的應用程式（信賴憑證者信任）為基礎的條件式存取。
+* [使用混合式憑證信任部署啟用 Windows Hello 企業版](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
+* 啟用以裝置至 ADFS (2012 R2 或更高) 受保護應用程式 (信賴憑證者信任) 的條件式存取。
 
-這提供額外的安全性，確保只授權信任的裝置才能存取應用程式。 如需條件式存取的詳細資訊，請參閱透過[條件式存取管理風險](../active-directory-conditional-access-azure-portal.md)和[使用 Azure Active Directory 裝置註冊設定內部部署條件式存取](../../active-directory/active-directory-device-registration-on-premises-setup.md)。
+這提供額外的安全性，確保只授權信任的裝置才能存取應用程式。 如需條件式存取的詳細資訊，請參閱使用 [條件式存取管理風險](../conditional-access/overview.md) ，以及 [使用 Azure Active Directory 裝置註冊設定內部部署條件式存取](../devices/overview.md)。
 
 > [!IMPORTANT]
 > <li>裝置必須位於使用者所在的樹系中。 由於裝置必須回寫到單一樹系中，因此這項功能目前並不支援利用多重使用者樹系的部署。</li>
@@ -61,7 +61,7 @@ ms.locfileid: "87447087"
 
     a. **提供企業系統管理員認證**：如果針對裝置需要回寫的樹系提供企業系統管理員認證，則 Azure AD Connect 會在裝置回寫的設定期間自動準備樹系。
 
-    b. **下載 PowerShell 指令碼**：Azure AD Connect 會自動產生 PowerShell 指令碼，以便針對裝置回寫準備 Active Directory。 為了避免無法在 Azure AD Connect 中提供企業系統管理員認證，建議下載 PowerShell 指令碼。 提供下載的 PowerShell 腳本**CreateDeviceContainer.ps1**給樹系的企業系統管理員，以將裝置寫回其中。
+    b. **下載 PowerShell 指令碼**：Azure AD Connect 會自動產生 PowerShell 指令碼，以便針對裝置回寫準備 Active Directory。 為了避免無法在 Azure AD Connect 中提供企業系統管理員認證，建議下載 PowerShell 指令碼。 提供下載的 PowerShell 腳本 **CreateDeviceContainer.ps1** 給要將裝置回寫至的樹系的企業系統管理員。
     ![準備 Active Directory 樹系](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     執行下列作業以準備 Active Directory 樹系：
@@ -83,7 +83,7 @@ ms.locfileid: "87447087"
    ![Active Directory 管理中心已註冊的裝置清單](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
 ## <a name="enable-conditional-access"></a>啟用條件式存取
-如需如何啟用此案例的詳細指示，請參閱 [使用 Azure Active Directory 裝置註冊設定內部部署條件式存取](../../active-directory/active-directory-device-registration-on-premises-setup.md)。
+如需如何啟用此案例的詳細指示，請參閱 [使用 Azure Active Directory 裝置註冊設定內部部署條件式存取](../devices/overview.md)。
 
 ## <a name="troubleshooting"></a>疑難排解
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>回寫核取方塊仍然停用
@@ -97,7 +97,7 @@ ms.locfileid: "87447087"
   * 從 [開始] 功能表開啟 [同步處理服務] ****。
   * 開啟 [連接器] **** 索引標籤。
   * 尋找類型為 Active Directory 網域服務的連接器並加以選取。
-  * 在 [**動作**] 底下，選取 [**屬性**]。
+  * 在 [ **動作**] 底下，選取 [ **屬性**]。
   * 前往 [連線至 Active Directory 樹系] ****。 請確認此畫面上所指定的網域和使用者名稱，與提供給指令碼的帳戶相符。
     ![Sync Service Manager 中的連接器帳戶](./media/how-to-connect-device-writeback/connectoraccount.png)
 
@@ -126,9 +126,8 @@ ms.locfileid: "87447087"
 ![疑難排解，，驗證裝置註冊組態的權限](./media/how-to-connect-device-writeback/troubleshoot6.png)
 
 ## <a name="additional-information"></a>其他資訊
-* [使用條件式存取管理風險](../active-directory-conditional-access-azure-portal.md)
-* [使用 Azure Active Directory 裝置註冊設定內部部署條件式存取](../../active-directory/active-directory-device-registration-on-premises-setup.md)
+* [使用條件式存取管理風險](../conditional-access/overview.md)
+* [使用 Azure Active Directory 裝置註冊設定內部部署條件式存取](../devices/overview.md)
 
 ## <a name="next-steps"></a>後續步驟
 深入了解 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。
-

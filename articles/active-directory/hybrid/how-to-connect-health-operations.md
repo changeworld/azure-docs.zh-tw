@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdcf5ded2f2cf49048b70dedb11f25e67766e938
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 4a83d1a4bdc2496f874a963b8858192273260cc8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177613"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276264"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 作業
 本主題說明您可以使用 Azure Active Directory (Azure AD) Connect Health 來執行的各種作業。
@@ -111,7 +111,7 @@ Azure AD Connect Health 支援下列內建角色：
 
 | 角色 | 權限 |
 | --- | --- |
-| Owner |擁有者可以在 Azure AD Connect Health 內「管理存取」**(例如將角色指派給使用者或群組)、「檢視入口網站中的所有資訊」**(例如檢視警示)，以及「變更設定」**(例如電子郵件通知)。 <br>預設會指派此角色給 Azure AD 全域管理員，而且無法變更。 |
+| 擁有者 |擁有者可以在 Azure AD Connect Health 內「管理存取」**(例如將角色指派給使用者或群組)、「檢視入口網站中的所有資訊」**(例如檢視警示)，以及「變更設定」**(例如電子郵件通知)。 <br>預設會指派此角色給 Azure AD 全域管理員，而且無法變更。 |
 | 參與者 |參與者可以在 Azure AD Connect Health 內「檢視入口網站中的所有資訊」**(例如檢視警示)，以及「變更設定」**(例如電子郵件通知)。 |
 | 讀取者 |讀者可以在 Azure AD Connect Health 內「檢視入口網站中的所有資訊」**(例如檢視警示)。 |
 
@@ -136,7 +136,7 @@ Azure AD Connect Health 支援在兩個層級上管理存取：
 2. 選取 [新增]。
 3. 在 [選取角色]**** 窗格中，選取角色 (例如，**擁有者**)。<br>
    ![Azure AD Connect Health 和 Azure RBAC [設定] 功能表的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_add.png)
-4. 輸入目標使用者或群組的名稱或識別碼。 您可以同時選取一或多個使用者或群組。 按一下 [選取]。
+4. 輸入目標使用者或群組的名稱或識別碼。 您可以同時選取一或多個使用者或群組。 按一下 [選取]  。
    ![Azure AD Connect Health 和 Azure RBAC 角色清單的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. 選取 [確定]。<br>
 6. 完成角色指派之後，使用者和群組就會出現在清單中。<br>
@@ -166,8 +166,8 @@ Azure AD Connect Health 支援在兩個層級上管理存取：
 
 [//]: # (End of RBAC section)
 
-## <a name="next-steps"></a>後續步驟
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+## <a name="next-steps"></a>接下來的步驟
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health 代理程式安裝](how-to-connect-health-agent-install.md)
 * [使用 Azure AD Connect Health 搭配 AD FS](how-to-connect-health-adfs.md)
 * [使用 Azure AD Connect Health 進行同步處理](how-to-connect-health-sync.md)

@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327d365cd1b110a6b57b11f92e70d221d3712cfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d8ec8eec28d66cf93608393ddca45f78460d831
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550175"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279766"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步處理：函式參考
 在 Azure AD Connect 中，函數是用來在同步處理期間操作屬性值。  
@@ -98,7 +98,7 @@ ms.locfileid: "85550175"
   * [DNComponent](#dncomponent)
   * [DNComponentRev](#dncomponentrev)
   * [EscapeDNComponent](#escapedncomponent)
-* **求**
+* **評估**
   * [IsBitSet](#isbitset)
   * [IsDate](#isdate)
   * [IsEmpty](#isempty)
@@ -113,43 +113,43 @@ ms.locfileid: "85550175"
   * [BitOr](#bitor)
   * [RandomNum](#randomnum)
 * **多重 * 值**
-  * [包含](#contains)
+  * [Contains](#contains)
   * [Count](#count)
   * [Item](#item)
   * [ItemOrNull](#itemornull)
-  * [Join](#join)
+  * [聯結](#join)
   * [RemoveDuplicates](#removeduplicates)
-  * [平分](#split)
+  * [分割](#split)
 * **程式流程**
   * [錯誤](#error)
   * [IIF](#iif)
   * [選取](#select)
-  * [參數](#switch)
-  * [希望](#where)
-  * [熟悉](#with)
-* **文字**
+  * [開關](#switch)
+  * [其中](#where)
+  * [並](#with)
+* **Text**
   * [GUID](#guid)
   * [InStr](#instr)
   * [InStrRev](#instrrev)
   * [LCase](#lcase)
-  * [左面](#left)
-  * [Len](#len)
+  * [離開](#left)
+  * [萊恩](#len)
   * [LTrim](#ltrim)
   * [Mid](#mid)
   * [PadLeft](#padleft)
   * [PadRight](#padright)
   * [PCase](#pcase)
-  * [取代](#replace)
+  * [Replace](#replace)
   * [ReplaceChars](#replacechars)
-  * [再](#right)
+  * [對](#right)
   * [RTrim](#rtrim)
-  * [物](#trim)
+  * [修剪](#trim)
   * [UCase](#ucase)
   * [Word](#word)
 
 ---
 ### <a name="bitand"></a>BitAnd
-**描述:**  
+**描述：**  
 BitAnd 函式會在值中設定指定的位元。
 
 **語法：**  
@@ -157,7 +157,7 @@ BitAnd 函式會在值中設定指定的位元。
 
 * value1，value2：應該使用 AND 連結在一起的數值
 
-**標記**  
+**言論：**  
 此函式會將這兩個參數轉換為二進位表示法，並將某一個位元設為：
 
 * 0 - 如果 *value1* 和 *value2* 中有一或兩個對應位元為 0
@@ -171,7 +171,7 @@ BitAnd 函式會在值中設定指定的位元。
 
 ---
 ### <a name="bitor"></a>BitOr
-**描述:**  
+**描述：**  
 BitOr 函式會在值中設定指定的位元。
 
 **語法：**  
@@ -179,18 +179,18 @@ BitOr 函式會在值中設定指定的位元。
 
 * value1，value2：應該使用 OR 連結在一起的數值
 
-**標記**  
+**言論：**  
 此函式會將這兩個參數轉換成二進位表示法，而且，如果 mask 和 flag 中有一個的對應位元為 1 或兩者都是，就會將某一個位元設為 1，如果這兩個對應位元都為 0，則會設為 0。 換句話說，除非這兩個參數的對應位元都是 0，否則在所有情況下都會傳回 1。
 
 ---
 ### <a name="cbool"></a>CBool
-**描述:**  
+**描述：**  
 CBool 函式會根據評估的運算式傳回布林值
 
 **語法：**  
 `bool CBool(exp Expression)`
 
-**標記**  
+**言論：**  
 如果運算式評估為非零值，CBool 就會傳回 True，否則會傳回 False。
 
 **範例︰**  
@@ -200,7 +200,7 @@ CBool 函式會根據評估的運算式傳回布林值
 
 ---
 ### <a name="cdate"></a>CDate
-**描述:**  
+**描述：**  
 CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的原生屬性類型，但有部分函式會用到。
 
 **語法：**  
@@ -208,7 +208,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 * Value：包含日期、時間和選擇性時區的字串
 
-**標記**  
+**言論：**  
 傳回的字串一律以 UTC 來表示。
 
 **範例︰**  
@@ -221,7 +221,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certextensionoids"></a>CertExtensionOids
-**描述:**  
+**描述：**  
 傳回所有憑證物件重要延伸模組的 Oid 值。
 
 **語法：**  
@@ -230,7 +230,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certformat"></a>CertFormat
-**描述:**  
+**描述：**  
 傳回此 X.509v3 憑證的格式名稱。
 
 **語法：**  
@@ -239,7 +239,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certfriendlyname"></a>CertFriendlyName
-**描述:**  
+**描述：**  
 傳回憑證的相關聯別名。
 
 **語法：**  
@@ -248,7 +248,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certhashstring"></a>CertHashString
-**描述:**  
+**描述：**  
 為傳回 X.509v3 憑證的 SHA1 雜湊值作為十六進位字串。
 
 **語法：**  
@@ -257,7 +257,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certissuer"></a>CertIssuer
-**描述:**  
+**描述：**  
 傳回發出 X.509v3 憑證的憑證授權單位名稱。
 
 **語法：**  
@@ -266,7 +266,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certissuerdn"></a>CertIssuerDN
-**描述:**  
+**描述：**  
 傳回憑證簽發者的辨別名稱。
 
 **語法：**  
@@ -275,7 +275,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certissueroid"></a>CertIssuerOid
-**描述:**  
+**描述：**  
 傳回憑證簽發者的 Oid。
 
 **語法：**  
@@ -284,7 +284,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
-**描述:**  
+**描述：**  
 傳回此 X.509v3 憑證的金鑰演算法資訊作為字串。
 
 **語法：**  
@@ -293,7 +293,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
-**描述:**  
+**描述：**  
 傳回此 X.509v3 憑證的金鑰演算法參數作為十六進位字串。
 
 **語法：**  
@@ -302,7 +302,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certnameinfo"></a>CertNameInfo
-**描述:**  
+**描述：**  
 傳回憑證的主體與簽發者名稱。
 
 **語法：**  
@@ -313,7 +313,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certnotafter"></a>CertNotAfter
-**描述:**  
+**描述：**  
 傳回憑證失效的當地時間日期。
 
 **語法：**  
@@ -322,7 +322,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certnotbefore"></a>CertNotBefore
-**描述:**  
+**描述：**  
 傳回憑證開始生效的當地時間日期。
 
 **語法：**  
@@ -331,7 +331,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certpublickeyoid"></a>CertPublicKeyOid
-**描述:**  
+**描述：**  
 傳回 X.509v3 憑證公開金鑰的 Oid。
 
 **語法：**  
@@ -340,7 +340,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
-**描述:**  
+**描述：**  
 傳回 X.509v3 憑證公開金鑰參數的 Oid。
 
 **語法：**  
@@ -349,7 +349,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certserialnumber"></a>CertSerialNumber
-**描述:**  
+**描述：**  
 傳回 X.509v3 憑證的序號。
 
 **語法：**  
@@ -358,7 +358,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
-**描述:**  
+**描述：**  
 傳回建立憑證簽章所用演算法的 Oid。
 
 **語法：**  
@@ -367,7 +367,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certsubject"></a>CertSubject
-**描述:**  
+**描述：**  
 取得憑證的主體辨別名稱。
 
 **語法：**  
@@ -376,7 +376,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certsubjectnamedn"></a>CertSubjectNameDN
-**描述:**  
+**描述：**  
 傳回憑證的主體辨別名稱。
 
 **語法：**  
@@ -385,7 +385,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certsubjectnameoid"></a>CertSubjectNameOid
-**描述:**  
+**描述：**  
 傳回憑證主體名稱的 Oid。
 
 **語法：**  
@@ -394,7 +394,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certthumbprint"></a>CertThumbprint
-**描述:**  
+**描述：**  
 傳回憑證的指紋。
 
 **語法：**  
@@ -403,7 +403,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="certversion"></a>CertVersion
-**描述:**  
+**描述：**  
 傳回憑證的 X.509 格式版本。
 
 **語法：**  
@@ -412,7 +412,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 
 ---
 ### <a name="cguid"></a>CGuid
-**描述:**  
+**描述：**  
 CGuid 函式會將 GUID 的字串表示法轉換為二進位表示法。
 
 **語法：**  
@@ -422,7 +422,7 @@ CGuid 函式會將 GUID 的字串表示法轉換為二進位表示法。
 
 ---
 ### <a name="contains"></a>包含
-**描述:**  
+**描述：**  
 Contains 函式會在多重值屬性內尋找字串
 
 **語法：**  
@@ -436,7 +436,7 @@ Contains 函式會在多重值屬性內尋找字串
 
 傳回在多重值屬性中找到字串的索引。 如果找不到該字串，即會傳回 0。
 
-**標記**  
+**言論：**  
 針對多重值字串屬性，搜尋會在值中尋找子字串。  
 針對參考屬性，搜尋的字串必須完全符合要被視為相符的值。
 
@@ -446,7 +446,7 @@ Contains 函式會在多重值屬性內尋找字串
 
 ---
 ### <a name="convertfrombase64"></a>ConvertFromBase64
-**描述:**  
+**描述：**  
 ConvertFromBase64 函式會將指定的 base64 編碼值轉換為一般字串。
 
 **語法：**  
@@ -464,7 +464,7 @@ ConvertFromBase64 函式會將指定的 base64 編碼值轉換為一般字串。
 
 ---
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
-**描述:**  
+**描述：**  
 ConvertFromUTF8Hex 函式會將指定的 UTF8 十六進位編碼值轉換為字串。
 
 **語法：**  
@@ -472,7 +472,7 @@ ConvertFromUTF8Hex 函式會將指定的 UTF8 十六進位編碼值轉換為字�
 
 * source：UTF8 2 個位元組的編碼字串
 
-**標記**  
+**言論：**  
 此函式與 ConvertFromBase64([],UTF8) 之間的差異在於結果支援 DN 屬性。  
 Azure Active Directory 會使用此格式做為 DN。
 
@@ -482,7 +482,7 @@ Azure Active Directory 會使用此格式做為 DN。
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
-**描述:**  
+**描述：**  
 ConvertToBase64 函式會將字串轉換為 Unicode Base64 字串。  
 將整數陣列的值轉換為其對等的字串表示法，此表示法是以 Base-64 數字編碼的。
 
@@ -495,13 +495,13 @@ ConvertToBase64 函式會將字串轉換為 Unicode Base64 字串。
 
 ---
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
-**描述:**  
+**描述：**  
 ConvertToUTF8Hex 函式會將字串轉換為 UTF8 十六進位編碼值。
 
 **語法：**  
 `str ConvertToUTF8Hex(str source)`
 
-**標記**  
+**言論：**  
 Azure Active Directory 會使用此函式的輸出格式做為 DN 屬性格式。
 
 **範例︰**  
@@ -509,8 +509,8 @@ Azure Active Directory 會使用此函式的輸出格式做為 DN 屬性格式�
  傳回 48656C6C6F20776F726C6421
 
 ---
-### <a name="count"></a>Count
-**描述:**  
+### <a name="count"></a>計數
+**描述：**  
 Count 函式會傳回多重值屬性中的元素個數
 
 **語法：**  
@@ -518,7 +518,7 @@ Count 函式會傳回多重值屬性中的元素個數
 
 ---
 ### <a name="cnum"></a>CNum
-**描述:**  
+**描述：**  
 CNum 函式會取得字串，並傳回數值資料類型。
 
 **語法：**  
@@ -526,7 +526,7 @@ CNum 函式會取得字串，並傳回數值資料類型。
 
 ---
 ### <a name="cref"></a>CRef
-**描述:**  
+**描述：**  
 將字串轉換為參考屬性
 
 **語法：**  
@@ -537,7 +537,7 @@ CNum 函式會取得字串，並傳回數值資料類型。
 
 ---
 ### <a name="cstr"></a>CStr
-**描述:**  
+**描述：**  
 CStr 函式會轉換為字串資料類型。
 
 **語法：**  
@@ -553,7 +553,7 @@ CStr 函式會轉換為字串資料類型。
 
 ---
 ### <a name="dateadd"></a>DateAdd
-**描述:**  
+**描述：**  
 傳回日期，其中包含已新增指定時間間隔的日期。
 
 **語法：**  
@@ -579,7 +579,7 @@ CStr 函式會轉換為字串資料類型。
 
 ---
 ### <a name="datefromnum"></a>DateFromNum
-**描述:**  
+**描述：**  
 DateFromNum 函式會將 AD 日期格式的值轉換為 DateTime 類型。
 
 **語法：**  
@@ -592,7 +592,7 @@ DateFromNum 函式會將 AD 日期格式的值轉換為 DateTime 類型。
 
 ---
 ### <a name="dncomponent"></a>DNComponent
-**描述:**  
+**描述：**  
 DNComponent 函式會從左邊傳回指定 DN 元件的值。
 
 **語法：**  
@@ -607,7 +607,7 @@ DNComponent 函式會從左邊傳回指定 DN 元件的值。
 
 ---
 ### <a name="dncomponentrev"></a>DNComponentRev
-**描述:**  
+**描述：**  
 DNComponentRev 函式會從右邊 (結尾處) 傳回指定 DN 元件的值。
 
 **語法：**  
@@ -626,7 +626,7 @@ DNComponentRev 函式會從右邊 (結尾處) 傳回指定 DN 元件的值。
 
 ---
 ### <a name="error"></a>錯誤
-**描述:**  
+**描述：**  
 Error 函式是用來傳回自訂錯誤。
 
 **語法：**  
@@ -638,7 +638,7 @@ Error 函式是用來傳回自訂錯誤。
 
 ---
 ### <a name="escapedncomponent"></a>EscapeDNComponent
-**描述:**  
+**描述：**  
 EscapeDNComponent 函式會接受 DN 的一個元件並逸出它，以便在 LDAP 中顯示它。
 
 **語法：**  
@@ -650,7 +650,7 @@ EscapeDNComponent 函式會接受 DN 的一個元件並逸出它，以便在 LDA
 
 ---
 ### <a name="formatdatetime"></a>FormatDateTime
-**描述:**  
+**描述：**  
 FormatDateTime 函式可用來將 DateTime 格式化為具有指定格式的字串
 
 **語法：**  
@@ -659,8 +659,8 @@ FormatDateTime 函式可用來將 DateTime 格式化為具有指定格式的字�
 * value：DateTime 格式的值
 * format：字串，表示要轉換的目標格式。
 
-**標記**  
-您可以在這裡找到格式的可能值： [format 函數的自訂日期和時間格式](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function)。
+**言論：**  
+您可以在這裡找到格式的可能值： [format 函數的自訂日期和時間格式](/dax/custom-date-and-time-formats-for-the-format-function)。
 
 **範例︰**  
 
@@ -672,7 +672,7 @@ FormatDateTime 函式可用來將 DateTime 格式化為具有指定格式的字�
 
 ---
 ### <a name="guid"></a>Guid
-**描述:**  
+**描述：**  
 函式 GUID 會產生新的隨機 GUID
 
 **語法：**  
@@ -680,7 +680,7 @@ FormatDateTime 函式可用來將 DateTime 格式化為具有指定格式的字�
 
 ---
 ### <a name="iif"></a>IIF
-**描述:**  
+**描述：**  
 IIF 函式會根據指定的條件傳回其中一組可能值。
 
 **語法：**  
@@ -696,7 +696,7 @@ IIF 函式會根據指定的條件傳回其中一組可能值。
 
 ---
 ### <a name="instr"></a>InStr
-**描述:**  
+**描述：**  
 InStr 函式會在字串中尋找第一個出現的子字串
 
 **語法：**  
@@ -710,7 +710,7 @@ InStr 函式會在字串中尋找第一個出現的子字串
 * start：開始尋找子字串的位置
 * compare：vbTextCompare 或 vbBinaryCompare
 
-**標記**  
+**言論：**  
 會傳回找到子字串的位置，如果找不到，則傳回 0。
 
 **範例︰**  
@@ -722,7 +722,7 @@ InStr 函式會在字串中尋找第一個出現的子字串
 
 ---
 ### <a name="instrrev"></a>InStrRev
-**描述:**  
+**描述：**  
 InStrRev 函式會在字串中尋找最後一個出現的子字串
 
 **語法：**  
@@ -735,7 +735,7 @@ InStrRev 函式會在字串中尋找最後一個出現的子字串
 * start：開始尋找子字串的位置
 * compare：vbTextCompare 或 vbBinaryCompare
 
-**標記**  
+**言論：**  
 會傳回找到子字串的位置，如果找不到，則傳回 0。
 
 **範例︰**  
@@ -744,7 +744,7 @@ InStrRev 函式會在字串中尋找最後一個出現的子字串
 
 ---
 ### <a name="isbitset"></a>IsBitSet
-**描述:**  
+**描述：**  
 IsBitSet 函式會測試是否已設定位元
 
 **語法：**  
@@ -758,18 +758,18 @@ IsBitSet 函式會測試是否已設定位元
 
 ---
 ### <a name="isdate"></a>IsDate
-**描述:**  
+**描述：**  
 如果運算式可評估為 DateTime 類型，則 IsDate 函式會評估為 True。
 
 **語法：**  
 `bool IsDate(var Expression)`
 
-**標記**  
+**言論：**  
 用來判斷 CDate() 是否可能成功。
 
 ---
 ### <a name="iscert"></a>IsCert
-**描述:**  
+**描述：**  
 如果原始資料可以序列化為 .NET X509Certificate2 憑證物件，則傳回 true。
 
 **語法：**  
@@ -777,7 +777,7 @@ IsBitSet 函式會測試是否已設定位元
 *   certificateRawData：X.509 憑證的位元組陣列表示。 位元組陣列可以是編碼的二進位 (DER) 或 Base64 編碼的 X.509 資料。
 ---
 ### <a name="isempty"></a>IsEmpty
-**描述:**  
+**描述：**  
 如果屬性存在於 CS 或 MV 中，但評估為空字串，則 IsEmpty 函式會評估為 True。
 
 **語法：**  
@@ -785,13 +785,13 @@ IsBitSet 函式會測試是否已設定位元
 
 ---
 ### <a name="isguid"></a>IsGuid
-**描述:**  
+**描述：**  
 如果字串可轉換為 GUID，則 IsGuid 函式會評估為 True。
 
 **語法：**  
 `bool IsGuid(str GUID)`
 
-**標記**  
+**言論：**  
 GUID 定義為下列其中一種模式的字串： xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 或 {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
 用來判斷 CGuid() 是否可能成功。
@@ -802,13 +802,13 @@ GUID 定義為下列其中一種模式的字串： xxxxxxxx-xxxx-xxxx-xxxx-xxxxx
 
 ---
 ### <a name="isnull"></a>IsNull
-**描述:**  
+**描述：**  
 如果運算式評估為 Null，則 IsNull 函式會傳回 True。
 
 **語法：**  
 `bool IsNull(var Expression)`
 
-**標記**  
+**言論：**  
 針對屬性，Null 表示該屬性不存在。
 
 **範例︰**  
@@ -817,13 +817,13 @@ GUID 定義為下列其中一種模式的字串： xxxxxxxx-xxxx-xxxx-xxxx-xxxxx
 
 ---
 ### <a name="isnullorempty"></a>IsNullOrEmpty
-**描述:**  
+**描述：**  
 如果運算式為 Null 或空字串，則 IsNullOrEmpty 函式會傳回 True。
 
 **語法：**  
 `bool IsNullOrEmpty(var Expression)`
 
-**標記**  
+**言論：**  
 針對屬性，如果屬性不存在，或存在但為空字串，即會評估為 True。  
 此函式的相反函式名稱為 IsPresent。
 
@@ -833,43 +833,43 @@ GUID 定義為下列其中一種模式的字串： xxxxxxxx-xxxx-xxxx-xxxx-xxxxx
 
 ---
 ### <a name="isnumeric"></a>IsNumeric
-**描述:**  
+**描述：**  
 IsNumeric 函式會傳回布林值，指出運算式是否可評估為數字類型。
 
 **語法：**  
 `bool IsNumeric(var Expression)`
 
-**標記**  
+**言論：**  
 用來判斷 CNum() 是否可成功剖析運算式。
 
 ---
 ### <a name="isstring"></a>IsString
-**描述:**  
+**描述：**  
 如果運算式可評估為字串類型，則 IsString 函式會評估為 True。
 
 **語法：**  
 `bool IsString(var expression)`
 
-**標記**  
+**言論：**  
 用來判斷 CStr() 是否可成功剖析運算式。
 
 ---
 ### <a name="ispresent"></a>IsPresent
-**描述:**  
+**描述：**  
 如果運算式評估為非 Null 且不是空字串，則 IsPresent 函式會傳回 True。
 
 **語法：**  
 `bool IsPresent(var expression)`
 
-**標記**  
+**言論：**  
 這個函式的相反函式名稱為 IsNullOrEmpty。
 
 **範例︰**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
-### <a name="item"></a>項目
-**描述:**  
+### <a name="item"></a>Item
+**描述：**  
 Item 函式會從多重值字串/屬性傳回一個項目。
 
 **語法：**  
@@ -878,7 +878,7 @@ Item 函式會從多重值字串/屬性傳回一個項目。
 * attribute：多重值的屬性
 * index：多重值字串中項目的索引。
 
-**標記**  
+**言論：**  
 Item 函式可以與 Contains 函式搭配使用，因為後者會將索引傳回多重值屬性中的項目。
 
 如果索引超出範圍，即會擲回錯誤。
@@ -889,7 +889,7 @@ Item 函式可以與 Contains 函式搭配使用，因為後者會將索引傳�
 
 ---
 ### <a name="itemornull"></a>ItemOrNull
-**描述:**  
+**描述：**  
 ItemOrNull 函式會從多重值字串/屬性傳回一個項目。
 
 **語法：**  
@@ -898,14 +898,14 @@ ItemOrNull 函式會從多重值字串/屬性傳回一個項目。
 * attribute：多重值的屬性
 * index：多重值字串中項目的索引。
 
-**標記**  
+**言論：**  
 ItemOrNull 函式可以與 Contains 函式搭配使用，因為後者會將索引傳回多重值屬性中的項目。
 
 如果索引超出範圍，則會傳回 Null 值。
 
 ---
 ### <a name="join"></a>Join
-**描述:**  
+**描述：**  
 Join 函式會接受多重值的字串，並傳回單一值的字串，其中每個項目之間都插入指定的分隔符號。
 
 **語法：**  
@@ -924,7 +924,7 @@ Join 函式會接受多重值的字串，並傳回單一值的字串，其中每
 
 ---
 ### <a name="lcase"></a>LCase
-**描述:**  
+**描述：**  
 LCase 函式會將字串中的所有字元轉換為小寫。
 
 **語法：**  
@@ -936,7 +936,7 @@ LCase 函式會將字串中的所有字元轉換為小寫。
 
 ---
 ### <a name="left"></a>Left
-**描述:**  
+**描述：**  
 Left 函式會從字串左邊傳回指定的字元數。
 
 **語法：**  
@@ -945,7 +945,7 @@ Left 函式會從字串左邊傳回指定的字元數。
 * string：要傳回字元的字串
 * NumChars：數字，識別從 string 開頭 (左邊) 傳回的字元數
 
-**標記**  
+**言論：**  
 包含 string 中前 numChars 個字元的字串：
 
 * 如果 numChars = 0，會傳回空字串。
@@ -960,7 +960,7 @@ Left 函式會從字串左邊傳回指定的字元數。
 
 ---
 ### <a name="len"></a>Len
-**描述:**  
+**描述：**  
 Len 函式會傳回字串中的字元數。
 
 **語法：**  
@@ -972,7 +972,7 @@ Len 函式會傳回字串中的字元數。
 
 ---
 ### <a name="ltrim"></a>LTrim
-**描述:**  
+**描述：**  
 LTrim 函式會從字串中移除開頭空白字元。
 
 **語法：**  
@@ -984,7 +984,7 @@ LTrim 函式會從字串中移除開頭空白字元。
 
 ---
 ### <a name="mid"></a>Mid
-**描述:**  
+**描述：**  
 Mid 函式會從字串中的指定位置傳回指定的字元數。
 
 **語法：**  
@@ -994,7 +994,7 @@ Mid 函式會從字串中的指定位置傳回指定的字元數。
 * start：數字，可識別 string 中要傳回字元的起始位置
 * NumChars：數字，可識別要從 string 中的位置傳回的字元數
 
-**標記**  
+**言論：**  
 從 string 中的位置 start 開始傳回 numChars 個字元。  
 包含從 string 中的位置 start 起算的 numChars 個字元的字串：
 
@@ -1015,7 +1015,7 @@ Mid 函式會從字串中的指定位置傳回指定的字元數。
 
 ---
 ### <a name="now"></a>Now
-**描述:**  
+**描述：**  
 Now 函式會根據您電腦的系統日期和時間，傳回指定目前日期和時間的 DateTime。
 
 **語法：**  
@@ -1023,7 +1023,7 @@ Now 函式會根據您電腦的系統日期和時間，傳回指定目前日期�
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
-**描述:**  
+**描述：**  
 NumFromDate 函式會以 AD 的日期格式傳回日期。
 
 **語法：**  
@@ -1035,7 +1035,7 @@ NumFromDate 函式會以 AD 的日期格式傳回日期。
 
 ---
 ### <a name="padleft"></a>PadLeft
-**描述:**  
+**描述：**  
 PadLeft 函式會使用提供的填補字元，將字串左側填補到指定的長度。
 
 **語法：**  
@@ -1045,7 +1045,7 @@ PadLeft 函式會使用提供的填補字元，將字串左側填補到指定的
 * length：表示 string 所需長度的整數。
 * padCharacter：字串，由用來做為填補字元的單一字元所組成
 
-**標記**
+**言論：**
 
 * 如果 string 的長度小於 length，則會將 padCharacter 重複附加至 string 的開頭 (左邊)，直到它的長度等於 length 為止。
 * PadCharacter 可以是空白字元，但不能是 Null 值。
@@ -1060,7 +1060,7 @@ PadLeft 函式會使用提供的填補字元，將字串左側填補到指定的
 
 ---
 ### <a name="padright"></a>PadRight
-**描述:**  
+**描述：**  
 PadRight 函式會使用提供的填補字元，將字串右側填補到指定的長度。
 
 **語法：**  
@@ -1070,7 +1070,7 @@ PadRight 函式會使用提供的填補字元，將字串右側填補到指定�
 * length：表示 string 所需長度的整數。
 * padCharacter：字串，由用來做為填補字元的單一字元所組成
 
-**標記**
+**言論：**
 
 * 如果 string 的長度小於 length，則會將 padCharacter 重複附加至 string 的結尾 (右邊)，直到它的長度等於 length 為止。
 * PadCharacter 可以是空白字元，但不能是 Null 值。
@@ -1085,13 +1085,13 @@ PadRight 函式會使用提供的填補字元，將字串右側填補到指定�
 
 ---
 ### <a name="pcase"></a>PCase
-**描述:**  
+**描述：**  
 PCase 函式會將字串中每個空格分隔之單字的第一個字元轉換為大寫，並將其他所有字元轉換為小寫。
 
 **語法：**  
 `String PCase(string)`
 
-**標記**
+**言論：**
 
 * 此函式目前未提供可轉換全大寫文字 (例如縮略字) 的正確大小寫。
 
@@ -1104,7 +1104,7 @@ PCase 函式會將字串中每個空格分隔之單字的第一個字元轉換�
 
 ---
 ### <a name="randomnum"></a>RandomNum
-**描述:**  
+**描述：**  
 RandomNum 函式會傳回指定區間內的隨機數字。
 
 **語法：**  
@@ -1119,7 +1119,7 @@ RandomNum 函式會傳回指定區間內的隨機數字。
 
 ---
 ### <a name="removeduplicates"></a>RemoveDuplicates
-**描述:**  
+**描述：**  
 RemoveDuplicates 函式會接受多重值的字串，並確定每個值都是唯一的。
 
 **語法：**  
@@ -1130,8 +1130,8 @@ RemoveDuplicates 函式會接受多重值的字串，並確定每個值都是唯
  傳回處理過的 proxyAddress 屬性，其中已移除所有重複的值。
 
 ---
-### <a name="replace"></a>Replace
-**描述:**  
+### <a name="replace"></a>取代
+**描述：**  
 Replace 函式會將所有出現的字串取代為另一個字串。
 
 **語法：**  
@@ -1141,7 +1141,7 @@ Replace 函式會將所有出現的字串取代為另一個字串。
 * OldValue：要搜尋並取代的字串。
 * NewValue：要取代的字串。
 
-**標記**  
+**言論：**  
 這個函式會辨識下列特殊的 Moniker：
 
 * \n – 新行
@@ -1154,7 +1154,7 @@ Replace 函式會將所有出現的字串取代為另一個字串。
 
 ---
 ### <a name="replacechars"></a>ReplaceChars
-**描述:**  
+**描述：**  
 ReplaceChars 函式會取代 ReplacePattern 字串中找到的所有出現的字元。
 
 **語法：**  
@@ -1165,7 +1165,7 @@ ReplaceChars 函式會取代 ReplacePattern 字串中找到的所有出現的字
 
 格式為 {source1}:{target1},{source2}:{target2},{sourceN},{targetN}，其中 source 為要尋找的字元，而 target 則為要取代的字串。
 
-**標記**
+**言論：**
 
 * 此函式會取得已定義之來源的每個出現項目，並使用目標來取代它們。
 * 來源必須是一個 (unicode) 字元。
@@ -1187,7 +1187,7 @@ ReplaceChars 函式會取代 ReplacePattern 字串中找到的所有出現的字
 
 ---
 ### <a name="right"></a>Right
-**描述:**  
+**描述：**  
 Right 函式會從字串右邊 (結尾處) 傳回指定的字元數。
 
 **語法：**  
@@ -1196,7 +1196,7 @@ Right 函式會從字串右邊 (結尾處) 傳回指定的字元數。
 * string：要傳回字元的字串
 * NumChars：數字，可識別要從 string 結尾 (右邊) 傳回的字元數
 
-**標記**  
+**言論：**  
 會從 string 的最後一個位置傳回 NumChars 個字元。
 
 包含 string 中最後 numChars 個字元的字串：
@@ -1213,7 +1213,7 @@ Right 函式會從字串右邊 (結尾處) 傳回指定的字元數。
 
 ---
 ### <a name="rtrim"></a>RTrim
-**描述:**  
+**描述：**  
 RTrim 函式會從字串移除結尾空白字元。
 
 **語法：**  
@@ -1225,7 +1225,7 @@ RTrim 函式會從字串移除結尾空白字元。
 
 ---
 ### <a name="select"></a>選取
-**描述:**  
+**描述：**  
 在以指定函式為基礎的多重值屬性 (或運算式的輸出) 中處理所有值。
 
 **語法：**  
@@ -1242,8 +1242,8 @@ RTrim 函式會從字串移除結尾空白字元。
 傳回移除連字號 (-) 後，多重值屬性 otherPhone 中所有值。
 
 ---
-### <a name="split"></a>Split
-**描述:**  
+### <a name="split"></a>分割
+**描述：**  
 Split 函式會接受以分隔符號分隔的字串，並使其成為多重值的字串。
 
 **語法：**  
@@ -1260,7 +1260,7 @@ Split 函式會接受以分隔符號分隔的字串，並使其成為多重值�
 
 ---
 ### <a name="stringfromguid"></a>StringFromGuid
-**描述:**  
+**描述：**  
 StringFromGuid 函式會接受二進位 GUID，並將其轉換為字串
 
 **語法：**  
@@ -1268,15 +1268,15 @@ StringFromGuid 函式會接受二進位 GUID，並將其轉換為字串
 
 ---
 ### <a name="stringfromsid"></a>StringFromSid
-**描述:**  
+**描述：**  
 StringFromSid 函式會將包含安全性識別碼的位元組陣列轉換為字串。
 
 **語法：**  
 `str StringFromSid(bin ObjectSID)`  
 
 ---
-### <a name="switch"></a>參數
-**描述:**  
+### <a name="switch"></a>交換器
+**描述：**  
 Switch 函式可用來根據評估的條件傳回單一值。
 
 **語法：**  
@@ -1285,7 +1285,7 @@ Switch 函式可用來根據評估的條件傳回單一值。
 * expr：您想要評估的 Variant 運算式。
 * value：當對應的運算式為 True 時要傳回的值。
 
-**標記**  
+**言論：**  
 Switch 函式引數清單是由運算式和值的配對所組成。 運算式是以從左到右的方式進行評估，並會傳回與要評估為 True 的第一個運算式相關聯的值。 如果未正確配對組件，就會發生執行階段錯誤。
 
 例如，如果 expr1 為 True，Switch 就會傳回 value1。 如果 expr-1 為 False，但 expr-2 為 True，Switch 就會傳回 value-2，依此類推。
@@ -1305,7 +1305,7 @@ Value 也可以是會傳回自訂字串的 Error 函式。
 
 ---
 ### <a name="trim"></a>Trim
-**描述:**  
+**描述：**  
 Trim 函式會從字串移除開頭和結尾的空白字元。
 
 **語法：**  
@@ -1320,7 +1320,7 @@ Trim 函式會從字串移除開頭和結尾的空白字元。
 
 ---
 ### <a name="ucase"></a>UCase
-**描述:**  
+**描述：**  
 UCase 函式會將字串中的所有字元轉換為大寫。
 
 **語法：**  
@@ -1333,7 +1333,7 @@ UCase 函式會將字串中的所有字元轉換為大寫。
 ---
 ### <a name="where"></a>Where
 
-**描述:**  
+**描述：**  
 傳回以指定條件為基礎的多重值屬性 (或運算式的輸出) 的值子集。
 
 **語法：**  
@@ -1350,10 +1350,10 @@ UCase 函式會將字串中的所有字元轉換為大寫。
 
 ---
 ### <a name="with"></a>含有
-**描述:**  
+**描述：**  
 With 函式可以簡化複雜的運算式，使用變數代表在複雜運算式中會出現一或多次的子運算式。
 
-**語法**
+**語法：**
 `With(var variable, exp subExpression, exp complexExpression)`  
 * variable：代表子運算式。
 * subExpression：變數代表的子運算式。
@@ -1368,7 +1368,7 @@ With 函式可以簡化複雜的運算式，使用變數代表在複雜運算式
 
 ---
 ### <a name="word"></a>Word
-**描述:**  
+**描述：**  
 Word 函式會根據描述要使用之分隔符號及要傳回之字數的參數，傳回字串內含的單字。
 
 **語法：**  
@@ -1378,7 +1378,7 @@ Word 函式會根據描述要使用之分隔符號及要傳回之字數的參數
 * WordNumber：一個數字，用於識別可傳回的字數。
 * delimiters：字串，表示應用來識別單字的分隔符號
 
-**標記**  
+**言論：**  
 string 內以 delimiters 其中一個字元來分隔之字元的每個字串，都會被識別為單字：
 
 * 如果 number < 1，會傳回空字串。
@@ -1395,5 +1395,5 @@ string 內以 delimiters 其中一個字元來分隔之字元的每個字串，�
 
 ## <a name="additional-resources"></a>其他資源
 * [了解宣告式佈建運算式](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
-* [Azure AD Connect 同步處理：自訂同步處理選項](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：自訂同步處理選項](how-to-connect-sync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c748df10e432e3bebbce0dc8cb39dd2101d52e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e105d4909705622a931c51bcb7cf0a9db4179525
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680031"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279596"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName 填入
 
@@ -52,11 +52,11 @@ Azure AD Connect 會同步處理屬性。  在安裝期間，您可以檢視已�
 
 替代登入識別碼可讓您設定登入體驗，讓使用者可以透過其 UPN 以外的屬性 (例如 mail) 來登入。
 
-若要在 Azure AD 啟用替代登入識別碼，且您使用的是 Azure AD Connect，則不需要進行額外的設定步驟。 您可以直接從精靈設定替代識別碼。 請參閱同步處理一節之下的使用者 Azure AD 登入設定。在 [**使用者主體名稱**] 下拉式選單中，選取替代登入識別碼的屬性。
+若要在 Azure AD 啟用替代登入識別碼，且您使用的是 Azure AD Connect，則不需要進行額外的設定步驟。 您可以直接從精靈設定替代識別碼。 請參閱同步處理一節下的使用者 Azure AD 登入設定。在 [ **使用者主體名稱** ] 下拉式清單中，選取替代登入識別碼的屬性。
 
 ![未驗證的網域](./media/plan-connect-userprincipalname/altloginid.png)  
 
-如需詳細資訊，請參閱[設定替代登入識別碼](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) \(機器翻譯\) 和 [Azure AD 登入設定](how-to-connect-install-custom.md#azure-ad-sign-in-configuration)
+如需詳細資訊，請參閱[設定替代登入識別碼](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) \(機器翻譯\) 和 [Azure AD 登入設定](how-to-connect-install-custom.md#azure-ad-sign-in-configuration)
 
 ## <a name="non-verified-upn-suffix"></a>未驗證的 UPN 尾碼
 如果未向 Azure AD 租用戶驗證內部部署 UserPrincipalName 屬性/替代登入識別碼尾碼，系統會將 Azure AD UserPrincipalName 屬性值設定為 MOERA。 Azure AD 會將 Azure AD MailNickName 屬性的 MOERA 和 Azure AD 初始網域計算為 &lt;MailNickName&gt;&#64;&lt;初始網域&gt;。

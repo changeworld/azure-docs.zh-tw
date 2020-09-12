@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5be97414a2e4270870d976a9922415b227c66e27
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 91e75b60f5324288c9f1adac59e31b9c1a1b0e9e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924345"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289166"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>使用 Power BI 連線到知識存放區
 
@@ -68,7 +68,7 @@ ms.locfileid: "88924345"
 
 1. 按一下資料表右上方具有反向箭號的圖示，以展開 [內容]**。 當資料行清單出現時，選取所有資料行，然後取消選取以 'metadata ' 開頭的資料行。 按一下 [確定]**** 以顯示選取的資料行。
 
-   ![編輯資料表](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "展開內容")
+   ![展開內容](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "展開內容")
 
 1. 按一下資料行左上方的 ABC-123 圖示，變更下列資料行的資料類型。
 
@@ -108,7 +108,7 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](../
 
   ![Create a Cognitive Services resource](media/knowledge-store-connect-power-bi/create-cognitive-service.png "Create a Cognitive Services resource") -->
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 如果您是在自己的訂用帳戶中進行，建議您在專案結束時判斷自己是否仍需要先前所建立的資源。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
 

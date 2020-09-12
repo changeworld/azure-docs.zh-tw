@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 500d226fcb60646becc49144f206dcb0dee49bd8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60381155"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278389"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>判斷目錄同步處理需求
 同步處理的重點是根據使用者的內部部署身分識別，為他們提供雲端中的身分識別。 不論使用者是否將使用同步處理的帳戶來進行驗證或同盟驗證，他們仍然需要在雲端中具備身分識別。  這個身分識別必須定期維護和更新。  更新可以有許多形式，範圍可從標題變更到密碼變更。  
@@ -64,7 +64,7 @@ ms.locfileid: "60381155"
   * 您能夠開啟所需的防火牆連接埠來支援同步處理嗎？
 * 您有任何適用於同步處理伺服器的災害復原計畫嗎？
 * 針對您想要同步處理的所有樹系，您是否擁有具備正確權限的帳戶？
-  * 如果貴公司不知道這個問題的解答，請檢閱 [安裝 Azure Active Directory 同步處理服務](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) 一文中的＜密碼同步化的權限 ＞一節，並判斷您是否已經擁有具備這些權限的帳戶，或者您是否需要建立一個帳戶。
+  * 如果貴公司不知道這個問題的解答，請檢閱 [安裝 Azure Active Directory 同步處理服務](/previous-versions/azure/azure-services/dn757602(v=azure.100)#BKMK_CreateAnADAccountForTheSyncService) 一文中的＜密碼同步化的權限 ＞一節，並判斷您是否已經擁有具備這些權限的帳戶，或者您是否需要建立一個帳戶。
 * 如果您擁有多重樹系的同步處理，則同步處理伺服器能夠送達每個樹系嗎？
 
 > [!NOTE]
@@ -72,9 +72,8 @@ ms.locfileid: "60381155"
 > 
 > 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [判斷多重要素驗證需求](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="see-also"></a>另請參閱
 [設計考量概觀](plan-hybrid-identity-design-considerations-overview.md)
-

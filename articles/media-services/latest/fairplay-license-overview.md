@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: cded51fa1cc1a1411f59915382f3c310660f8b19
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 09068064f24594ef35a8a1bf64213b48d83873ca
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269296"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296858"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 授權需求和設定
 
@@ -29,7 +29,7 @@ Azure 媒體服務可讓您使用 **Apple FairPlay** (AES-128 CBC) 來加密您�
 
 媒體服務也會提供您可以用來設定 FairPlay 授權的 API。 本主題討論 FairPlay 授權需求，並示範如何使用媒體服務 API 設定 **FairPlay** 授權。 
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 當使用媒體服務搭配 **Apple FairPlay** 來加密您的 HLS 內容，以及使用媒體服務來傳遞 FairPlay 授權時，需要下列項目：
 
@@ -120,6 +120,6 @@ private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOpti
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 查看如何[使用 DRM 保護](protect-with-drm.md)

@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中，使用�
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: dbab9df3acf7de801a4e75502863fff698232458
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: be4856beac69d11de12ec764f313fa59f3b24e9f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852566"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290543"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用靜態公用 IP 位址建立輸入控制器
 
@@ -50,7 +50,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> 上述命令會建立將會刪除的 IP 位址（如果您刪除 AKS 叢集）。 或者，您可以在不同的資源群組中建立 IP 位址，此 IP 位址可以與您的 AKS 叢集分開管理。 如果您在不同的資源群組中建立 IP 位址，請確定 AKS 叢集所使用的服務主體具有其他資源群組（例如 *網路參與者*）的委派許可權。
+> 上述命令會建立將會刪除的 IP 位址（如果您刪除 AKS 叢集）。 或者，您可以在不同的資源群組中建立 IP 位址，此 IP 位址可以與您的 AKS 叢集分開管理。 如果您在不同的資源群組中建立 IP 位址，請確定 AKS 叢集所使用的服務主體具有其他資源群組（例如 *網路參與者*）的委派許可權。 如需詳細資訊，請參閱搭配 [使用靜態公用 IP 位址和 DNS 標籤與 AKS 負載平衡器][aks-static-ip]。
 
 現在，使用 Helm 部署 nginx-ingress** 圖表。 為了新增備援，您必須使用 `--set controller.replicaCount` 參數部署兩個 NGINX 輸入控制器複本。 為充分享有執行輸入控制器複本的好處，請確定 AKS 叢集中有多個節點。
 
@@ -441,7 +441,7 @@ kubectl delete namespace ingress-basic
 az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 本文包含 AKS 的一些外部元件。 若要深入了解這些元件，請參閱下列專案頁面：
 
@@ -483,3 +483,4 @@ az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eas
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [client-source-ip]: concepts-network.md#ingress-controllers
 [install-azure-cli]: /cli/azure/install-azure-cli
+[aks-static-ip]: static-ip.md

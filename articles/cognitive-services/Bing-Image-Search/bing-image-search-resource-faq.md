@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 2d919640431ce014d34372812d9c07bb84d750b2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 19c5c5280b8ff4fb997366375b4300958d694d6c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184050"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293654"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Bing 影像搜尋 API 的常見問題集 (FAQ)
 
@@ -35,7 +35,7 @@ ms.locfileid: "86184050"
 
 不過，當您從 JavaScript 呼叫 Bing 影像搜尋 API 時，您的瀏覽器內建安全性功能 (CORS) 可能會讓您無法存取這些標頭的值。
 
-若要取得標頭的存取權，您可以透過 CORS Proxy 提出 Bing 影像搜尋 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可將回應標頭列入允許清單並提供給 JavaScript 使用。
+若要取得標頭的存取權，您可以透過 CORS Proxy 提出 Bing 影像搜尋 API 要求。 來自這類 proxy 的回應會有一個 `Access-Control-Expose-Headers` 標頭，可篩選回應標頭，並將其提供給 JavaScript 使用。
 
 您可以輕鬆地安裝 CORS Proxy，讓我們的[教學課程應用程式](tutorial-bing-image-search-single-page-app.md)存取選擇性用戶端標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (若尚未安裝)。 在命令提示字元中，輸入下列命令。
 
@@ -62,7 +62,7 @@ cors-proxy-server
 
 這個方法也會保護您的 API 金鑰，以免對大眾公開，因為只有伺服器端指令碼需要它。 此指令碼可以使用其他方法 (例如 HTTP 參照位址) 來確定要求已獲得授權。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您的問題是否與缺少特性或功能相關？ 請考慮在我們的 [User Voice 網站](https://cognitive.uservoice.com/forums/555907-bing-search)上要求或對它投票。
 

@@ -16,15 +16,15 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356697c4843742c12aa39d82602815e38dcca74a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef1e988bef3876fafdee4f7f6f109858e85d75d0
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359138"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278729"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 監視 Azure AD Connect 同步處理
-下列文件適用於使用 Azure AD Connect Health 來監視 Azure AD Connect (同步處理)。  如需使用 Azure AD Connect Health 來監視 AD FS 的詳細資訊，請參閱 [在 AD FS 使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，如需使用 Azure AD Connect Health 監視 Active Directory Domain Services 的詳細資訊，請參閱搭配[使用 Azure AD Connect Health 與 AD DS](how-to-connect-health-adds.md)。
+下列文件適用於使用 Azure AD Connect Health 來監視 Azure AD Connect (同步處理)。  如需使用 Azure AD Connect Health 來監視 AD FS 的詳細資訊，請參閱 [在 AD FS 使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，如需使用 Azure AD Connect Health 監視 Active Directory Domain Services 的詳細資訊，請參閱 [使用 Azure AD Connect Health 搭配 AD DS](how-to-connect-health-adds.md)。
 
 ![適用於同步處理的 Azure AD Connect Health](./media/how-to-connect-health-sync/syncsnapshot.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "85359138"
 * 此報告涵蓋同步處理用戶端所記錄的錯誤 (Azure AD Connect 1.1.281.0 版或更高版本)
 * 它包含同步處理引擎上執行的最後一個同步處理作業所發生的錯誤 (Azure AD Connector 上的「匯出」)。
 * 用於同步處理的 Azure AD Connect Health 代理程式必須有指向所需端點的輸出連線，此報告才會包含最新的資料。
-* 報表會**每隔30分鐘更新一次**，並使用 Azure AD Connect Health 代理程式所上傳的資料進行同步處理。它提供下列主要功能
+* **每隔30分鐘就會更新一次**報表，使用 Azure AD Connect Health 代理程式上傳的資料進行同步處理。它提供下列重要功能：
 
   * 錯誤分類
   * 依各類別之錯誤列出物件
@@ -116,7 +116,7 @@ ms.locfileid: "85359138"
 ## <a name="related-links"></a>相關連結
 * [針對同步處理期間的錯誤進行疑難排解](tshoot-connect-sync-errors.md)
 * [重複屬性恢復功能](how-to-connect-syncservice-duplicate-attribute-resiliency.md)
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health 代理程式安裝](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health 操作](how-to-connect-health-operations.md)
 * [使用 Azure AD Connect Health 搭配 AD FS](how-to-connect-health-adfs.md)

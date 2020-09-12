@@ -1,21 +1,21 @@
 ---
 title: Windows 虛擬桌面安全 URL 清單-Azure
-description: 您應該解除封鎖的 Url 清單，以確保您的 Windows 虛擬桌面部署如預期運作。
+description: 您應解除封鎖的 Url 清單，以確保您的 Windows 虛擬桌面部署如預期運作。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135856"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291104"
 ---
 # <a name="safe-url-list"></a>安全 URL 清單
 
-您必須解除封鎖特定 Url，讓您的 Windows 虛擬桌面部署正常運作。 本文列出這些 Url，讓您知道哪些是安全的。
+您將需要解除封鎖某些 Url，讓您的 Windows 虛擬桌面部署能夠正常運作。 本文列出這些 Url，讓您知道哪些是安全的。
 
 ## <a name="virtual-machines"></a>虛擬機器
 
@@ -52,15 +52,15 @@ ms.locfileid: "88135856"
 |*.digicert.com|443|憑證撤銷檢查|None|
 
 >[!NOTE]
->Windows 虛擬桌面目前沒有可解除封鎖的 IP 位址範圍清單以允許網路流量。 我們目前只支援解除封鎖特定的 Url。
+>Windows 虛擬桌面目前沒有 IP 位址範圍的清單，您可以將其解除封鎖以允許網路流量。 我們目前僅支援解除封鎖特定的 Url。
 >
->如需安全的 Office 相關 Url 清單，包括必要的 Azure Active Directory 相關 Url，請參閱[Office 365 url 和 IP 位址範圍](/office365/enterprise/urls-and-ip-address-ranges)。
+>如需安全的 Office 相關 Url 清單，包括必要的 Azure Active Directory 相關 Url，請參閱 [office 365 url 和 IP 位址範圍](/office365/enterprise/urls-and-ip-address-ranges)。
 >
 >對於涉及服務流量的 URL，必須使用萬用字元 (*)。 如果您不想使用 * 來表示代理程式相關流量，下列方法可讓您不使用萬用字元來尋找 URL：
 >
 >1. 向 Windows 虛擬桌面主機集區註冊您的虛擬機器。
->2. 開啟 [**事件檢視器]**，然後移至 [ **Windows 記錄**] [  >  **應用程式**  >  **WVD** ]，並尋找事件識別碼3701。
->3. 將您在 [事件識別碼 3701] 下找到的 Url 列入白名單。 事件識別碼3701下的 Url 是區域特定的。 您必須針對您想要在其中部署虛擬機器的每個區域，使用相關的 Url 來重複解除封鎖處理常式。
+>2. 開啟 [**事件檢視器]**，然後移至 [ **Windows 記錄**  >  **應用程式**  >  **WVD-代理**程式]，然後尋找事件識別碼3701。
+>3. 將您在事件識別碼3701下找到的 Url 解除封鎖。 事件識別碼3701下的 Url 是區域特定的。 您必須針對想要在其中部署虛擬機器的每個區域，使用相關的 Url 重複解除封鎖程式。
 
 ## <a name="remote-desktop-clients"></a>遠端桌面用戶端
 
@@ -79,4 +79,4 @@ ms.locfileid: "88135856"
 >[!IMPORTANT]
 >開啟這些 URL 是擁有可靠用戶端體驗所必需的。 不支援封鎖這些 URL 的存取，而且會影響服務功能。
 >
->這些 Url 只會對應至用戶端網站和資源。 此清單不包含其他服務的 Url，例如 Azure Active Directory。 您可以在 [ [Office 365 url] 和 [IP 位址範圍](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)] 的識別碼56下找到 Azure Active Directory url。
+>這些 Url 僅對應至用戶端網站與資源。 這份清單不包含其他服務（例如 Azure Active Directory）的 Url。 您可以在 [Office 365 url 和 IP 位址範圍](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)的識別碼56下找到 Azure Active Directory 的 url。

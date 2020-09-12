@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 4a57719ec9e7b22ed81ee6f07a568a993846de42
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: af7238ca4229bac678061c742f13953299a96ba4
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374315"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290016"
 ---
 # <a name="drawing-package-requirements"></a>繪圖套件需求
 
@@ -21,7 +21,7 @@ ms.locfileid: "87374315"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-繪圖套件包含以 DWG 格式儲存的繪圖，這是 Autodesk 的 AutoCAD®軟體（ [Autodesk，inc. 的商標）](https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use#section12)的原生檔案格式。
+繪圖套件包含以 DWG 格式儲存的繪圖，也就是 Autodesk 的 AutoCAD® software （即 [Autodesk，inc. 的商標）](https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use#section12)的原生檔案格式。
 
 在繪圖套件中，您可以選擇任何 CAD 軟體來產生繪圖。  
 
@@ -175,7 +175,7 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 
 | Object | 必要 | 描述 |
 | :----- | :------- | :------- |
-| version | true |資訊清單架構版本。 目前僅支援版本1.1。|
+| version | true |資訊清單架構版本。 目前只支援1.1 版。|
 | directoryInfo | true | 概述設施的地理和連絡資訊。 其也可以用來概述住戶的地理和連絡資訊。 |
 | buildingLevels | true | 指定建築物的樓層，以及包含樓層設計的檔案。 |
 | georeference | true | 包含設施繪圖的數值地理資訊。 |
@@ -187,7 +187,7 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 
 ### <a name="directoryinfo"></a>directoryInfo
 
-| 屬性  | type | 必要 | 說明 |
+| 屬性  | type | 必要 | 描述 |
 |-----------|------|----------|-------------|
 | NAME      | 字串 | true   |  建築物的名稱。 |
 | streetAddress|    字串 |    false    | 建築物的地址。 |
@@ -212,21 +212,21 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 |-----------|------|----------|-------------|
 |LevelName    |字串    |true |    描述性樓層名稱。 例如：1 樓 (Floor 1)、大廳 (Lobby)、藍色停車區 (Blue Parking) 或地下室 (Basement) 等等。|
 |序數 | integer |    true | 序數會用來判斷樓層的垂直順序。 每個設施都必須具有序數 0 的樓層。 |
-|heightAboveFacilityAnchor | NUMERIC | false |    錨點上方的層級高度（以量為單位）。 |
+|heightAboveFacilityAnchor | NUMERIC | false |    層級的高度高度（以量為單位）。 |
 | verticalExtent | NUMERIC | false | 樓層的地板到天花板高度 (厚度)，以公尺為單位。 |
 |filename |    字串 |    true |    建築物樓層 CAD 繪圖的檔案系統路徑。 其必須相對於建築物 zip 檔案的根目錄。 |
 
 ### <a name="georeference"></a>georeference
 
-| 屬性  | 類型 | 必要 | 說明 |
+| 屬性  | 類型 | 必要 | 描述 |
 |-----------|------|----------|-------------|
 |lat    | NUMERIC |    true |    設施繪圖的原始緯度十進位標記法。 原始座標必須在 WGS84 Web Mercator (`EPSG:3857`) 中。|
 |lon    |NUMERIC|    true|    設施繪圖的原始經度十進位標記法。 原始座標必須在 WGS84 Web Mercator (`EPSG:3857`) 中。 |
-|角度|    NUMERIC|    true|   以度為單位的順時針角度，介於真北部和繪圖的垂直（Y）軸之間。   |
+|角度|    NUMERIC|    true|   以度為單位的順時針角度（以度為單位），介於 true 北部和繪圖的垂直 (Y) 軸之間。   |
 
 ### <a name="dwglayers"></a>dwgLayers
 
-| 屬性  | 類型 | 必要 | 說明 |
+| 屬性  | 類型 | 必要 | 描述 |
 |-----------|------|----------|-------------|
 |exterior    |字串陣列|    true|    定義外部建築物概況的圖層名稱。|
 |unit|    字串陣列|    true|    用於定義單位的圖層名稱。|
@@ -254,7 +254,7 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 |verticalPenetrationDirection|    字串|    false    |如果已定義 `verticalPenetrationCategory`，則可選擇定義有效的行進方向。 允許的值為 `lowToHigh`、`highToLow`、`both` 和 `closed`。 預設值為 `both`。|
 | nonPublic | bool | false | 指出單位是否要向外公開。 |
 | isRoutable | bool | false | 設定為 `false` 時，將無法通行或穿過單位。 預設值為 `true`。 |
-| isOpenArea | bool | false | 允許流覽代理程式輸入單位，而不需要開啟連接到單位。 根據預設，此值會設為， `true` 代表沒有任何空缺的單位; `false` 針對具有開頭的單位。  在沒有開頭的單元上，手動將設定 `isOpenArea` 為，會 `false` 產生警告。 這是因為流覽代理程式無法觸達產生的單位。|
+| isOpenArea | bool | false | 允許流覽代理程式進入單位，而不需要將開啟連接至單位。 依預設，此值會設定為，而沒有任何下值的 `true` 單位; `false` 適用于具有下傳的單位。  在 `isOpenArea` `false` 沒有任何開啟結果的單位上手動將設定為，會產生警告。 這是因為所產生的單元將無法由流覽代理程式來觸達。|
 
 ### <a name="the-zoneproperties-object"></a>zoneProperties 物件
 
@@ -266,7 +266,7 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 |categoryName|    字串|    false    |類別名稱。 如需類別的完整清單，請參閱[類別](https://aka.ms/pa-indoor-spacecategories)。 |
 |zoneNameAlt|    字串|    false    |區域的替代名稱。  |
 |zoneNameSubtitle|    字串 |    false    |區域的子標題。 |
-|zoneSetId|    字串 |    false    | 設定 ID 以建立多個區域之間的關聯性，讓它們可以查詢或選取為群組。 例如，跨多個層級的區域。 |
+|zoneSetId|    字串 |    false    | 設定識別碼以建立多個區域之間的關聯性，讓它們可作為群組進行查詢或選取。 例如，跨多個層級的區域。 |
 
 ### <a name="sample-drawing-package-manifest"></a>繪圖套件資訊清單範例
 
@@ -359,7 +359,6 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
             "nameAlt": "Basement01", 
             "nameSubtitle": "01", 
             "addressRoomNumber": "B01", 
-            "nonWheelchairAccessible": false, 
             "nonPublic": true, 
             "isRoutable": true, 
             "isOpenArea": true 

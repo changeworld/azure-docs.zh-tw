@@ -1,14 +1,14 @@
 ---
 title: 使用 Azure DevTest Labs 進行訓練 | Microsoft Docs
-description: 本文提供詳細的步驟，可讓您在 Azure DevTest Labs 中設定實驗室以進行定型。
+description: 本文提供您在 Azure DevTest Labs 中設定實驗室以進行定型時，可以遵循的詳細步驟。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1a4b39d104d2ffdb45c23db2ad16cc4ee4627fb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2de9550c62f04286a4f9ad42238bfefb9846477
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484140"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294844"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>使用 Azure DevTest Labs 進行訓練
 除了進行開發/測試，Azure DevTest Labs 還可用來實作許多重要案例。 這些案例的其中之一便是設置訓練實驗室。 Azure DevTest Labs 可讓您建立實驗室，在其中提供自訂範本供每位受訓者建立相同且隔離的訓練環境。 您可以新增原則，以確保訓練環境只會在受訓者需要時才提供給他們使用，且包含足夠的訓練所需資源，例如虛擬機器。 最後，您可以輕易地與受訓者共用實驗室，讓他們只要按一下就能存取。
@@ -44,7 +44,7 @@ Azure DevTest Labs 符合下列在任何虛擬環境進行訓練所必須具備�
    
    | Task | 您學到什麼 |
    | --- | --- |
-   | [設定 Azure Marketplace 映像](devtest-lab-configure-marketplace-images.md) |了解如何將 Azure Marketplace 映像加入允許清單；只讓想要用於進行訓練的映像可供選取。 |
+   | [設定 Azure Marketplace 映像](devtest-lab-configure-marketplace-images.md) |瞭解您可以如何允許 Azure Marketplace 映射;僅供選取您要用於定型的影像。 |
    | [建立自訂映像](devtest-lab-create-template.md) |預先安裝訓練所需軟體以建立自訂映像，讓受訓者可以使用自訂映像快速建立 VM。 |
 3. **建立可重複用於訓練機器的範本** 
    
@@ -91,4 +91,3 @@ Azure DevTest Labs 符合下列在任何虛擬環境進行訓練所必須具備�
    | [使用 Resource Manager 範本建立實驗室](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |在 Azure DevTest Labs 中使用 Resource Manager 範本建立實驗室。 |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

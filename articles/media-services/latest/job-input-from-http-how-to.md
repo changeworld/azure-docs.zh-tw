@@ -8,15 +8,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c6ab5051b436d12ca86501e4c71bbbea0a8d3107
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e440e4393065d2bc1cad1a96b4f8c975624faa11
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269058"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295507"
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>從 HTTPS URL 建立工作輸入
 
@@ -37,6 +37,6 @@ ms.locfileid: "89269058"
 
 請參閱[錯誤碼](/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [從本機檔案建立工作輸入](job-input-from-local-file-how-to.md).

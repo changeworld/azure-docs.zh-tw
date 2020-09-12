@@ -9,15 +9,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa54bc6b8b0912158a5dcd369b12801d51ca7141
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9f17e8a09715ce9ff51715f17a449ec0a5b3f770
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256492"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297190"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒體服務中 (原始) 的串流端點
 
@@ -51,7 +51,7 @@ ms.locfileid: "89256492"
 
 類型描述如下表所示：
 
-|類型|縮放單位|說明|
+|類型|縮放單位|描述|
 |--------|--------|--------|  
 |**Standard**|0|預設串流端點是 **標準** 型別，可以藉由調整來變更為 Premium 類型 `scaleUnits` 。|
 |**高級**|>0|**Premium** 串流端點適用于先進的工作負載，並提供專用且可調整的頻寬容量。 您可以藉由**Premium**調整 `scaleUnits` (串流單位) 來移至 Premium 類型。 `scaleUnits` 提供您專用的輸出容量，您可以透過每次增量 200 Mbps 的方式來購買。 使用 **Premium** 類型時，每個啟用的單位都會提供額外的頻寬容量給應用程式。 |
@@ -169,6 +169,6 @@ IP 篩選/G20/自訂主機 <sup>1</sup>|是|是
 
 [動態封裝](dynamic-packaging-overview.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [管理串流端點](manage-streaming-endpoints-howto.md)

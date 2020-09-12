@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 75ccfe7a8e62e519b1df89792211433260a6abf6
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183627"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294708"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在執行 CentOS 的 StorSimple 主機上設定 MPIO
 本文說明在 Centos 6.6 主機伺服器上設定多重路徑 IO (MPIO) 所需的步驟。 主機伺服器會連線到您的 Microsoft Azure StorSimple 裝置，以透過 iSCSI 啟動器取得高可用性。 文中詳細描述多重路徑裝置的自動探索，以及 StorSimple 磁碟區特有的設定。
@@ -346,18 +346,18 @@ A. 確定這兩個路徑位於相同的子網路上並可路由傳送。 如果�
 
 Q. 當我列出可用的路徑時，我看不到任何輸出。
 
-A. 一般來說，看不到任何多重路徑路徑，都是指多重路徑 daemon 的問題，而這裡很有可能發生任何問題 `multipath.conf` 。
+A. 一般情況下，看不到任何多重路徑路徑會對多重路徑的背景程式造成問題，因此在此檔案中很有可能發生任何問題 `multipath.conf` 。
 
-此外，您也可以檢查連線到目標之後，實際看到一些磁片，因為從多重路徑清單中沒有任何回應也可能表示您沒有任何磁片。
+您也可以在連線到目標之後，檢查是否確實可以看到某些磁片，因為多重路徑清單的回應也可能表示您沒有任何磁片。
 
 * 使用下列命令來重新掃描 SCSI 匯流排：
   
-    `$ rescan-scsi-bus.sh` (sg3_utils 套件的一部分) 
+    `$ rescan-scsi-bus.sh` Sg3_utils 套件的 (部分) 
 * 輸入下列命令：
   
     `$ dmesg | grep sd*`
      
-     Or
+     或
   
     `$ fdisk -l`
   
@@ -366,7 +366,7 @@ A. 一般來說，看不到任何多重路徑路徑，都是指多重路徑 daem
   
     `cat /sys/block/<DISK>/device/model`
   
-    這會傳回一個字串，它會判斷它是否為 StorSimple 磁片。
+    這將會傳回字串，以判斷它是否為 StorSimple 磁片。
 
 有一個比較不可能的可能原因也可能是 iscsid pid 過時。 使用下列命令從 iSCSI 工作階段登出：
 
@@ -377,9 +377,9 @@ A. 一般來說，看不到任何多重路徑路徑，都是指多重路徑 daem
 `iscsiadm -m node --login -T <TARGET_IQN>`
 
 
-Q. 我不確定我的裝置是否已列入允許清單。
+Q. 我不確定是否允許我的裝置。
 
-A. 若要驗證您的裝置是否已列入允許清單，請使用下列疑難排解互動式命令︰
+A. 若要確認是否允許您的裝置，請使用下列疑難排解互動式命令：
 
 ```console
 multipathd -k
@@ -420,7 +420,7 @@ dm-3 devnode blacklisted, unmonitored
 ```
 
 
-如需詳細資訊，請移至[多重路徑的疑難排解](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)。
+如需詳細資訊，請移至 [多重路徑的疑難排解](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)。
 
 ## <a name="list-of-useful-commands"></a>有用的命令清單
 | 類型 | Command | 描述 |
@@ -444,9 +444,8 @@ dm-3 devnode blacklisted, unmonitored
 | &nbsp; |`mpathconf --enable` |在 `/etc/mulitpath.conf` |
 |  | | |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 當您在 Linux 主機上設定 MPIO 時，您可能也需要參考下列 CentoS 6.6 文件︰
 
 * [在 CentOS 上設定 MPIO](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
 * [Linux 訓練指南](http://linux-training.be/linuxsys.pdf)
-

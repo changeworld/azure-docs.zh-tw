@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6f11de7f38ff97b1141afa48c26788a171727cb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 065c6661ffc9f618a5dfd32a9f45d26569a56003
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559562"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278168"
 ---
 # <a name="using-custom-security-policies"></a>使用自訂安全性原則
 
@@ -38,7 +38,7 @@ ms.locfileid: "85559562"
 
 1. 在 [安全性原則] 頁面的自訂方案底下，按一下 [新增自訂方案]。
 
-    [![按一下 [新增自訂計畫]](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+    [![按一下 [新增自訂方案]](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
     下列頁面隨即出現：
 
@@ -69,7 +69,7 @@ ms.locfileid: "85559562"
 
     [![自訂建議](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
-## <a name="enhancing-your-custom-recommendations-with-detailed-information"></a>使用詳細資料來增強您的自訂建議
+## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>使用詳細資訊增強您的自訂建議
 
 隨著 Azure 資訊安全中心提供的內建建議會包含詳細資料，例如嚴重性層級和補救指示。 如果您想要將這類資訊新增至您的自訂建議，使其出現在 Azure 入口網站或任何您存取建議的位置，您將需要使用 REST API。 
 

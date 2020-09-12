@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 37098b8268d5a451935c925114fb762c574fa55c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1b058eefe22238b60c3482c55b5ae340f4e597f0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265295"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296731"
 ---
 # <a name="live-event-states-and-billing"></a>實況活動狀態和計費
 
@@ -41,11 +41,11 @@ ms.locfileid: "89265295"
 |**啟動中**| 正在啟動「實況活動」並配置資源。 此狀態中不會計費。 在此狀態期間，不允許任何更新或串流。 如果發生錯誤，「實況活動」會回到 [已停止] 狀態。|
 |**執行中**| 已配置、內嵌「實況活動」資源，並已產生預覽 URL，而能夠接收即時資料流。 此時已開始計費。 您必須對「實況活動」資源明確呼叫「停止」，才能終止進一步計費。|
 |**停止中**| 正在停止「實況活動」並將資源取消佈建。 此暫時性狀態中不會計費。 在此狀態期間，不允許任何更新或串流。|
-|**刪除中**| 正在刪除「實況活動」。 此暫時性狀態中不會計費。 在此狀態期間，不允許任何更新或串流。|
+|**刪除**| 正在刪除「實況活動」。 此暫時性狀態中不會計費。 在此狀態期間，不允許任何更新或串流。|
 
 當您建立實況活動時，可以選擇啟用即時轉譯。 如果您這樣做，只要實況活動處於執行中狀態，您就必須支付即時轉譯 **的費用** 。 請注意，即使沒有任何音訊流經實況活動，也會向您收費。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [即時串流概觀](live-streaming-overview.md)
 - [即時串流教學課程](stream-live-tutorial-with-api.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 17e39a7b94384827af19b2362d478456cde8f167
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e9a78690128c2406277ab4e8fb6e6e4625d2787f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181454"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280089"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>設定 Azure 數位 Twins 實例和驗證 (CLI) 
 
@@ -148,7 +148,11 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 [!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-瞭解如何藉由撰寫用戶端應用程式的驗證碼，將用戶端應用程式連線至您的實例：
+使用 Azure 數位 Twins CLI 命令，在您的實例上測試個別 REST API 呼叫： 
+* [az dt 參考](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [操作說明：*使用 Azure Digital Twins CLI*](how-to-use-cli.md)
+
+或者，請參閱如何藉由撰寫用戶端應用程式的驗證碼，將用戶端應用程式連接至您的實例：
 * [*How to：撰寫應用程式驗證碼*](how-to-authenticate-client.md)

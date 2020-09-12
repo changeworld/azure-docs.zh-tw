@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: error-reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d6dfaa3491a9d15a3cc54b82d5c116ee2442f70c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 13277c3d46d5b68aa5705699f45a2bf9e97a78d8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265366"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291529"
 ---
 # <a name="media-services-live-event-error-codes"></a>媒體服務實況活動錯誤碼
 
@@ -30,7 +30,7 @@ ms.locfileid: "89265366"
 
 當您訂閱 [事件方格](../../event-grid/index.yml) 事件以進行實況活動時，您可能會在 [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected)  事件中看到下列其中一個錯誤。
 
-| 結果碼 | 說明 |
+| 結果碼 | 描述 |
 | ----------- | ----------- |
 | MPE_RTMP_APPID_AUTH_FAILURE | 不正確的內嵌 URL |
 | MPE_INGEST_ENCODER_CONNECTION_DENIED | 編碼器 IP 不存在於所設定的 IP 允許清單中 |
@@ -48,7 +48,7 @@ ms.locfileid: "89265366"
 
 您可能會在 [LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) 事件中看到下列其中一個錯誤。
 
-|結果碼|說明|
+|結果碼|描述|
 |---|---|
 |MPE_RTMP_SESSION_IDLE_TIMEOUT|RTMP 工作階段在閒置達允許時間限制後逾時。|
 |MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID|來自 RTMP 編碼器的視訊或音訊 FLVTag 時間戳記無效。|
@@ -60,6 +60,6 @@ ms.locfileid: "89265366"
 
 [串流端點 (原始碼) 錯誤碼](streaming-endpoint-error-codes.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [教學課程：使用媒體服務即時串流](stream-live-tutorial-with-api.md)

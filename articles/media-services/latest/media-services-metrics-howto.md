@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dc532df51b4bbe2e7da1b47dfcc8d2e05e42f796
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f5a3488be3fdc0eb3bc8956db66c06df25ff18c0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267580"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296616"
 ---
 # <a name="monitor-media-services-metrics"></a>監視媒體服務計量
 
@@ -75,6 +75,6 @@ az monitor metrics list --resource \
 * [Azure 監視器計量](../../azure-monitor/platform/data-platform.md)
 * [使用 Azure 監視器建立、查看和管理計量警示](../../azure-monitor/platform/alerts-metric.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [診斷記錄](media-services-diagnostic-logs-howto.md)

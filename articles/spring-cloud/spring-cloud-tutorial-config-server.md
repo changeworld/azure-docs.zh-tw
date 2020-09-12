@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 38ef1188503d0076cfd98843f6f68c990fba7463
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 665d508a7d95e177d0db09ad86e2a5f0ee4d605b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762352"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291291"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>為您的服務設定 Spring Cloud Config Server 執行個體
 
@@ -22,7 +22,7 @@ Spring Cloud Config 能夠在分散式系統中提供外部化設定的伺服器
 
 ## <a name="prerequisites"></a>必要條件
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-* 已佈建且正在執行的 Azure Spring Cloud 服務。 若要設定和啟動 Azure Spring Cloud 服務，請參閱[快速入門：使用 Azure CLI 來啟動 Java Spring 應用程式](spring-cloud-quickstart-launch-app-cli.md)。
+* 已佈建且正在執行的 Azure Spring Cloud 服務。 若要設定和啟動 Azure Spring Cloud 服務，請參閱[快速入門：使用 Azure CLI 來啟動 Java Spring 應用程式](spring-cloud-quickstart.md)。
 
 ## <a name="restriction"></a>限制
 

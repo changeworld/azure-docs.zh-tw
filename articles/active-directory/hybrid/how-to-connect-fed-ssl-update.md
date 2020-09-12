@@ -16,25 +16,25 @@ author: billmath
 ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1983b5090604516265ea8e041ac68200ca2dc7b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 451b50e70b98849dfc4654566d09a5a961abe451
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359580"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279902"
 ---
-# <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>更新 Active Directory 同盟服務（AD FS）伺服器陣列的 TLS/SSL 憑證
+# <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>更新 Active Directory 同盟服務 (AD FS) 伺服器陣列的 TLS/SSL 憑證
 
-## <a name="overview"></a>總覽
-本文說明如何使用 Azure AD Connect 來更新 Active Directory 同盟服務（AD FS）伺服器陣列的 TLS/SSL 憑證。 您可以使用 Azure AD Connect 工具，輕鬆地更新 AD FS 伺服器陣列的 TLS/SSL 憑證，即使選取的使用者登入方法不 AD FS 也一樣。
+## <a name="overview"></a>概觀
+本文說明如何使用 Azure AD Connect 來更新 Active Directory 同盟服務 (AD FS) 伺服器陣列的 TLS/SSL 憑證。 您可以使用 Azure AD Connect 工具來輕鬆地更新 AD FS 伺服器陣列的 TLS/SSL 憑證，即使選取的使用者登入方法不 AD FS。
 
-您可以透過三個簡單的步驟，針對所有同盟和 Web 應用程式 Proxy （WAP）伺服器上的 AD FS 伺服器陣列，執行更新 TLS/SSL 憑證的整個作業：
+您可以用三個簡單的步驟，在所有同盟和 Web 應用程式 Proxy (WAP) 伺服器上，對 AD FS 伺服器陣列的 TLS/SSL 憑證執行整個作業：
 
 ![三個步驟](./media/how-to-connect-fed-ssl-update/threesteps.png)
 
 
 >[!NOTE]
->若要深入了解 AD FS 所使用的憑證，請參閱[了解 AD FS 所使用的憑證](https://technet.microsoft.com/library/cc730660.aspx)。
+>若要深入了解 AD FS 所使用的憑證，請參閱[了解 AD FS 所使用的憑證](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc730660(v=ws.11))。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -49,7 +49,7 @@ Azure AD Connect 會透過下列方式，嘗試自動取得 AD FS 伺服器陣�
 1. 自 AD FS (Windows Server 2016 或更新版本) 查詢伺服器陣列資訊。
 2. 參照來自前次執行的資訊 (使用 Azure AD Connect 儲存在本機)。
 
-您可以修改所顯示之伺服器的清單，方法是新增或移除伺服器以反映 AD FS 伺服器陣列的目前組態。 一旦提供伺服器資訊，Azure AD Connect 會顯示連線能力和目前的 TLS/SSL 憑證狀態。
+您可以修改所顯示之伺服器的清單，方法是新增或移除伺服器以反映 AD FS 伺服器陣列的目前組態。 提供伺服器資訊之後，Azure AD Connect 會顯示連線能力和目前的 TLS/SSL 憑證狀態。
 
 ![AD FS 伺服器資訊](./media/how-to-connect-fed-ssl-update/adfsserverinfo.png)
 
@@ -62,7 +62,7 @@ Azure AD Connect 會透過下列方式，嘗試自動取得 AD FS 伺服器陣�
 
 ## <a name="step-2-provide-a-new-tlsssl-certificate"></a>步驟2：提供新的 TLS/SSL 憑證
 
-確認 AD FS 伺服器陣列伺服器的相關資訊之後，Azure AD Connect 要求提供新的 TLS/SSL 憑證。 提供使用密碼保護的 PFX 憑證以繼續安裝。
+確認 AD FS 伺服器陣列伺服器的相關資訊之後，Azure AD Connect 會要求新的 TLS/SSL 憑證。 提供使用密碼保護的 PFX 憑證以繼續安裝。
 
 ![TLS/SSL 憑證](./media/how-to-connect-fed-ssl-update/certificate.png)
 
@@ -85,7 +85,7 @@ Azure AD Connect 會透過下列方式，嘗試自動取得 AD FS 伺服器陣�
 
 ## <a name="faqs"></a>常見問題集
 
-* **新的 AD FS TLS/SSL 憑證的憑證主體名稱是什麼？**
+* **新 AD FS TLS/SSL 憑證的憑證主體名稱是什麼？**
 
     Azure AD Connect 會檢查憑證的主體名稱/替代主體名稱是否包含同盟服務名稱。 例如，如果同盟服務名稱為 fs.contoso.com，則主體名稱/替代主體名稱必須是 fs.contoso.com。  也接受萬用字元憑證。
 
@@ -97,16 +97,15 @@ Azure AD Connect 會透過下列方式，嘗試自動取得 AD FS 伺服器陣�
 
     如果伺服器已離線，Azure AD Connect 即無法執行任何作業。 如果伺服器是 AD FS 伺服器陣列的一部分，請檢查伺服器的連線。 在解決問題之後，按下 [重新整理] 圖示，以更新精靈中的狀態。 如果伺服器稍早是伺服器陣列的一部分，但現在已不存在，請按一下 [移除]****，以將它從 Azure AD Connect 維護的伺服器清單中刪除。 從 Azure AD Connect 的清單中移除伺服器並不會改變 AD FS 組態本身。 如果您在 Windows Server 2016 或更新版本中使用 AD FS，則伺服器會保持在組態設定，並且會在下一次執行工作再次顯示。
 
-* **我可以使用新的 TLS/SSL 憑證來補救伺服器陣列伺服器的子集嗎？**
+* **我可以使用新的 TLS/SSL 憑證來更新我的伺服器陣列伺服器子集嗎？**
 
-    是。 您永遠可以再次執行工作「更新 SSL 憑證」**** 來更新其餘的伺服器。 在 [選取要進行 SSL 憑證更新的伺服器]**** 頁面上，您可以依「SSL 到期日」**** 來排序伺服器清單，以便輕鬆地存取尚未更新的伺服器。
+    可以。 您永遠可以再次執行工作「更新 SSL 憑證」**** 來更新其餘的伺服器。 在 [選取要進行 SSL 憑證更新的伺服器]**** 頁面上，您可以依「SSL 到期日」**** 來排序伺服器清單，以便輕鬆地存取尚未更新的伺服器。
 
-* **我在上一次執行中移除了伺服器，但它仍然顯示為離線，並且列在 [AD FS 伺服器] 頁面上。為什麼離線服務器即使在移除之後仍然存在？**
+* **我在上一次執行中移除了伺服器，但它仍然顯示為離線，並且列在 [AD FS 伺服器] 頁面上。為何即使在移除後，離線服務器仍會存在？**
 
     從 Azure AD Connect 的清單中移除伺服器並不會在 AD FS 組態中將它移除。 Azure AD Connect 會參考 AD FS (Windows Server 2016 或更新版本) 以取得伺服器陣列的任何相關資訊。 如果伺服器仍然出現在 AD FS 組態中，它會列回到清單中。  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [Azure AD Connect 和同盟](how-to-connect-fed-whatis.md)
 - [使用 Azure AD Connect 管理和自訂 Active Directory Federation Services](how-to-connect-fed-management.md)
-

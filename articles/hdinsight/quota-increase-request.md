@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 4de32bad763c0bbf0e143a7ce639efec8c9c41ae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f8411176e0979bdb894983bcf866abd0e1109e21
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079610"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291662"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>要求增加 Azure HDInsight 的配額
 
@@ -65,7 +65,7 @@ CPU 核心配額有助於確保特定 Azure 區域中的所有客戶之間能夠
 1. 在 [檢閱 + 建立] 索引標籤中，選取 [建立]。
 
 > [!NOTE]  
-> 如果需要在私人區域中新增 HDInsight 核心配額，請[提交允許清單要求](https://aka.ms/canaryintwhitelist)。
+> 如果您需要增加私人區域中的 HDInsight 核心配額，請 [提交核准清單要求](https://aka.ms/canaryintwhitelist)。
 
 您可以[連絡支援人員以要求增加配額](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。
 

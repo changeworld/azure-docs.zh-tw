@@ -16,12 +16,12 @@ ms.date: 09/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cedf1419a763fe0b0f528bee6e1b48e435ec0e2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90d8cc39174f6392b0c532948305fa713535f0c9
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360022"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279222"
 ---
 # <a name="azure-ad-connect-device-options"></a>Azure AD Connect：裝置選項
 
@@ -43,8 +43,7 @@ ms.locfileid: "85360022"
 2.  提供 Azure AD 的認證後，您可以選擇要在 [裝置選項] 頁面上執行的作業。
     ![裝置作業](./media/how-to-connect-device-options/deviceoptionsselection.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* [設定混合式 Azure AD 聯結](../device-management-hybrid-azuread-joined-devices-setup.md)
+* [設定混合式 Azure AD 聯結](../devices/hybrid-azuread-join-plan.md)
 * [設定/停用裝置回寫](how-to-connect-device-writeback.md)
-

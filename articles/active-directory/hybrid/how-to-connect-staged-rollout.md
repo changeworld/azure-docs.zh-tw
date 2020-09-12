@@ -10,22 +10,22 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e260ff55c3039b7943137ff1656068e9b5b9cb28
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 8f800c11bb878ca1788c7258cde25266847e2a90
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053214"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278576"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分段推出移轉至雲端驗證 (預覽)
 
-分段推出可讓您選擇性地使用雲端驗證功能來測試使用者群組，例如 Azure 多重要素驗證 (MFA) 、條件式存取、洩漏認證的身分識別保護、身分識別控管等等，然後在您的網域之前進行。  本文討論如何進行此切換。 不過，在開始分段推出前，如果下列一或多個條件成立，則您應思考其含意：
+分段推出可讓您選擇性地測試具有雲端驗證功能的使用者群組，例如 Azure Multi-Factor Authentication (MFA) 、條件式存取、洩漏認證的身分識別保護、身分識別控管等，然後再移至您的網域。  本文討論如何進行此切換。 不過，在開始分段推出前，如果下列一或多個條件成立，則您應思考其含意：
     
 -  您目前正在使用內部部署 Multi-Factor Authentication 伺服器。 
 -  您正在使用智慧卡進行驗證。 
 -  目前伺服器提供某些僅限同盟的功能。
 
-在嘗試這項功能前，建議先檢閱指南，以了解如何選擇正確的驗證方法。 如需詳細資訊，請參閱[針對 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn#comparing-methods) (機器翻譯)。
+在嘗試這項功能前，建議先檢閱指南，以了解如何選擇正確的驗證方法。 如需詳細資訊，請參閱[針對 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](./choose-ad-authn.md#comparing-methods) (機器翻譯)。
 
 如需此功能的概觀，請檢視此「Azure Active Directory：什麼是階段式推出？」 影片：
 
@@ -38,20 +38,20 @@ ms.locfileid: "88053214"
 -   您擁有具有同盟網域的 Azure Active Directory (Azure AD) 租用戶。
 
 -   您決定移至這兩個選項的其中之一：
-    - **選項 A**  - *密碼雜湊同步處理 (同步) *  + *無縫單一登入 (SSO) *。  如需詳細資訊，請參閱[什麼是密碼雜湊同步](whatis-phs.md)處理和[什麼是無縫 SSO](how-to-connect-sso.md)
-    - **選項 B**  - *傳遞驗證*  + *無縫 SSO*。  如需詳細資訊，請參閱[什麼是傳遞驗證](how-to-connect-pta.md)  
+    - **選項 A**  - * (同步) *  +  的密碼雜湊同步處理*無縫單一登入 (SSO) *。  如需詳細資訊，請參閱 [什麼是密碼雜湊同步處理](whatis-phs.md) 以及 [什麼是無縫 SSO](how-to-connect-sso.md)
+    - **選項 B**  - *傳遞驗證*  + *無縫 SSO*。  如需詳細資訊，請參閱 [什麼是傳遞驗證](how-to-connect-pta.md)  
     
     雖然「無縫 SSO」為選擇，但我們建議將其啟用，以為正在公司網路內部執行已加入網域電腦的使用者提供無訊息登入體驗。
 
 -   針對正在移轉至雲端驗證的使用者，您已為其設定了所需的所有適當租用戶商標和條件式存取原則。
 
--   如果您打算使用 Azure 多重要素驗證，建議您使用[結合註冊來進行自助式密碼重設 (SSPR) 和多重要素驗證](../authentication/concept-registration-mfa-sspr-combined.md)，讓您的使用者註冊其驗證方法一次。
+-   如果您打算使用 Azure Multi-Factor Authentication，我們建議您 [針對自助式密碼重設 (SSPR) 和 Multi-Factor Authentication 使用合併的註冊](../authentication/concept-registration-mfa-sspr-combined.md) ，讓您的使用者可以註冊其驗證方法一次。
 
 -   若要使用分段推出功能，則您必須是租用戶的全域管理員。
 
 -   若要在特定 Active Directory 樹系上啟用「無縫 SSO」，則您必須是網域系統管理員。
 
--  如果您要部署混合式 Azure AD 或 Azure AD 加入，您必須升級至 Windows 10 1903 update。
+-  如果您要部署混合式 Azure AD 或 Azure AD 加入，則必須升級至 Windows 10 1903 update。
 
 
 ## <a name="supported-scenarios"></a>支援的案例
@@ -78,20 +78,20 @@ ms.locfileid: "88053214"
     - 「不支援」動態群組進行分段推出。
     - 群組內的連絡人物件會禁止新增群組。
 
-- 您仍然需要使用 Azure AD Connect 或 PowerShell 來進行從同盟到雲端驗證最後的完全移轉。 分段推出不會將網域從同盟切換至受控。  如需有關網域切換的詳細資訊，請參閱[從同盟遷移至密碼雜湊同步](plan-migrate-adfs-password-hash-sync.md)[處理和從同盟遷移至傳遞驗證](plan-migrate-adfs-pass-through-authentication.md)
+- 您仍然需要使用 Azure AD Connect 或 PowerShell 來進行從同盟到雲端驗證最後的完全移轉。 分段推出不會將網域從同盟切換至受控。  如需有關網域切換的詳細資訊，請參閱 [從同盟遷移至密碼雜湊同步](plan-migrate-adfs-password-hash-sync.md) 處理，以及 [從同盟遷移至傳遞驗證](plan-migrate-adfs-pass-through-authentication.md)
 
 
 
 - 在第一次新增安全性群組以進行分段推出時，會限制為 200 位使用者，以避免 UX 逾時。新增群組後，即可視需要將更多使用者直接新增至群組。
 
-- 當使用者在分段推出時，如果啟用 EnforceCloudPasswordPolicyForPasswordSyncedUsers，密碼到期原則會設定為90天，而且不會有自訂的選項。 
+- 當使用者處於分段推出時，當啟用 EnforceCloudPasswordPolicyForPasswordSyncedUsers 時，密碼到期原則會設定為90天，而且沒有可供自訂的選項。 
 
 
 ## <a name="get-started-with-staged-rollout"></a>開始使用分段推出
 
 若要使用分段推出測試「密碼雜湊同步」登入，請遵循下一節中的前置工作指示。
 
-如需應使用哪些 PowerShell Cmdlet 的資訊，請參閱 [Azure AD 2.0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)。
+如需應使用哪些 PowerShell Cmdlet 的資訊，請參閱 [Azure AD 2.0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)。
 
 ## <a name="pre-work-for-password-hash-sync"></a>密碼雜湊同步的前置工作
 
@@ -177,7 +177,7 @@ ms.locfileid: "88053214"
 
    >[!NOTE]
    >群組中的成員會自動啟用，以進行分段推出。 不支援巢狀和動態群組進行分段推出。
-   >新增群組時，群組中的使用者 (最多200個新群組的使用者) 將會更新為使用受控驗證 immidiatly。 編輯群組 (新增或移除) 的使用者，最多可能需要24小時的時間，變更才會生效。
+   >新增群組時，群組中的使用者 (最多200的使用者，而新群組) 將會更新為使用受控驗證 immidiatly。 編輯群組 (新增或移除使用者) ，最多可能需要24小時的時間，變更才會生效。
 
 ## <a name="auditing"></a>稽核
 
@@ -225,7 +225,7 @@ ms.locfileid: "88053214"
 
 1. 藉由篩選 UserPrincipalName 來確保 [Azure AD 登入活動報告](../reports-monitoring/concept-sign-ins.md)中顯示登入成功。
 
-   若要追蹤仍會在所選分段推出使用者 Active Directory 同盟服務 (AD FS) 上發生的使用者登入，請遵循 [AD FS 疑難排解：事件與記錄](https://docs.microsoft.com/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events) (機器翻譯) 中的指示。 請參閱廠商文件，以了解如何透過協力廠商同盟提供者對此進行檢查。
+   若要追蹤仍會在所選分段推出使用者 Active Directory 同盟服務 (AD FS) 上發生的使用者登入，請遵循 [AD FS 疑難排解：事件與記錄](/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events) (機器翻譯) 中的指示。 請參閱廠商文件，以了解如何透過協力廠商同盟提供者對此進行檢查。
 
 ## <a name="remove-a-user-from-staged-rollout"></a>將使用者從分段推出移除
 
@@ -243,7 +243,7 @@ A：不可以，這項功能設計用來在各階段從同盟移轉至雲端驗�
 
 **問：我可使用 PowerShell 來執行分段推出嗎？**
 
-A：是。 若要了解如何使用 PowerShell 來執行分段推出，請參閱 [Azure AD Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout) (英文)。
+A：是。 若要了解如何使用 PowerShell 來執行分段推出，請參閱 [Azure AD Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout) (英文)。
 
 ## <a name="next-steps"></a>後續步驟
-- [Azure AD 2.0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Azure AD 2.0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

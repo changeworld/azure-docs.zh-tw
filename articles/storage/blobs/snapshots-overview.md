@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8a1c61b77ab799cead319bfaf6cfa7ebd6af431b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ab4c152f30ab96fe5e221a605a2339c773e32547
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230327"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295390"
 ---
 # <a name="blob-snapshots"></a>Blob 快照集
 
@@ -90,25 +90,25 @@ Blob 儲存體沒有方法可判斷兩個區塊是否包含相同的資料。 �
 
 在案例 1 中，基底 Blob 在擷取快照之後尚未更新，因此只會針對唯一區塊 1、2 和 3 產生費用。
 
-![圖1顯示基底 blob 和快照中唯一區塊的計費](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
+![圖1顯示基底 blob 和快照中唯一區塊的計費。](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>案例 2
 
 在案例 2 中，基底 Blob 已更新，但快照集並未更新。 區塊 3 已更新，而且即使它包含相同資料及相同的識別碼，它還是與快照集中的區塊 3 不一樣。 因此，此帳戶必須支付四個區塊的費用。
 
-![圖2顯示基底 blob 和快照中唯一區塊的計費](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
+![圖2顯示基底 blob 和快照中唯一區塊的計費。](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>案例 3
 
 在案例 3 中，基底 Blob 已更新，但快照集並未更新。 區塊 3 已使用基底 Blob 中的區塊 4 來取代，但快照集仍然反映區塊 3。 因此，此帳戶必須支付四個區塊的費用。
 
-![圖3顯示基底 blob 和快照中唯一區塊的計費](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
+![圖3顯示基底 blob 和快照中唯一區塊的計費。](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>案例 4
 
 在案例 4 中，基底 Blob 已完全更新，且未包含它的任何原始區塊。 因此，此帳戶必須支付所有八個唯一區塊的費用。
 
-![圖4顯示基底 blob 和快照中唯一區塊的計費](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
+![圖4顯示基底 blob 和快照中唯一區塊的計費。](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
 
 > [!TIP]
 > 避免呼叫覆寫整個 blob 的方法，並改為更新個別的區塊，以降低成本。
@@ -128,6 +128,10 @@ Blob 儲存體沒有方法可判斷兩個區塊是否包含相同的資料。 �
 | 快照集 | 新階層中的快照集和原始層次中的基底 blob，以及其他快照集中的任何唯一區塊。<sup>1</sup> |
 
 <sup>1</sup>如果有其他先前的版本或尚未從其原始階層移動的快照集，則會根據所包含的唯一區塊數目來收費這些版本或快照集，如 [未明確設定 blob 層的計費](#billing-when-the-blob-tier-has-not-been-explicitly-set)中所述。
+
+下圖說明當具有快照集的 blob 移至不同的層級時，物件的計費方式。
+
+:::image type="content" source="media/snapshots-overview/snapshot-billing-tiers.png" alt-text="此圖顯示當具有快照集的 blob 明確分層時，物件如何計費。":::
 
 明確設定 blob、版本或快照集的層級無法復原。 如果您將 blob 移至新的階層，然後再將它移回其原始階層，則會向您收取物件的完整內容長度，即使它與原始層中的其他物件共用區塊也一樣。
 
@@ -149,7 +153,7 @@ Blob 儲存體沒有方法可判斷兩個區塊是否包含相同的資料。 �
 | 如果同時啟用 blob 虛刪除和版本控制 | 所有具有完整內容長度的現有版本（不論層級為何）。 |
 | 如果已啟用 blob 虛刪除，但停用版本設定 | 所有現有的虛刪除快照集，不論層級為何，都有完整的內容長度。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [Blob 版本設定](versioning-overview.md)
 - [在 .NET 中建立和管理 Blob 快照集](snapshots-manage-dotnet.md)

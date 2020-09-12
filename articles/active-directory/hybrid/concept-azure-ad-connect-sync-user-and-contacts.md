@@ -15,12 +15,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9470e9af38fdd814f5059538656e6a3dbb8e3a7
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60245484"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279307"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同步處理：了解使用者、群組和連絡人
 您可能有幾種不同的原因，而擁有多個 Active Directory 樹系並且具有幾種不同的部署拓撲。 常見的模型包括合併與收購之後的帳戶-資源部署與 GAL 同步處理的樹系。 雖然有單純的模型，但混合模型也同樣常見。 Azure AD Connect 同步處理中的預設組態不會採用任何特定的模型，但是根據在安裝指南中選取使用者比對的方式，可以觀察到不同的行為。
@@ -39,9 +39,9 @@ ms.locfileid: "60245484"
 
 * Azure AD Connect 會將內建安全性群組從目錄同步作業中排除。
 
-* Azure AD Connect 不支援將[主要群組成員資格](https://technet.microsoft.com/library/cc771489(v=ws.11).aspx)同步至 Azure AD。
+* Azure AD Connect 不支援將[主要群組成員資格](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771489(v=ws.11))同步至 Azure AD。
 
-* Azure AD Connect 不支援將[動態通訊群組成員資格](https://technet.microsoft.com/library/bb123722(v=exchg.160).aspx)同步至 Azure AD。
+* Azure AD Connect 不支援將[動態通訊群組成員資格](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups?view=exchserver-2019)同步至 Azure AD。
 
 * 若要將 Active Directory 群組同步至 Azure AD 做為擁有郵件功能的群組：
 
@@ -51,9 +51,9 @@ ms.locfileid: "60245484"
     
       * proxyAddress 屬性值為 *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* 的 Active Directory 群組在 Azure AD 中不會擁有郵件功能。 該群組沒有 SMTP 位址。
       
-      * 其 proxyAddress 屬性值為 *{"X500：/0 = contoso .com/ou = users/cn = testgroup"，"SMTP： johndoe \@ contoso.com"}* 的 Active Directory 群組，將會在 Azure AD 中啟用郵件功能。
+      * ProxyAddress 屬性值為 *{"X500：/0 = contoso.com/ou = users/cn = testgroup"，"SMTP： johndoe \@ contoso.com"}* 的 Active Directory 群組，將會在 Azure AD 中啟用郵件功能。
       
-      * 其 proxyAddress 屬性值為 *{"X500：/0 = contoso .com/ou = users/cn = testgroup"，"smtp： johndoe \@ contoso.com"}* 的 Active Directory 群組，也會在 Azure AD 中啟用郵件功能。
+      * ProxyAddress 屬性值為 *{"X500：/0 = contoso.com/ou = users/cn = testgroup"，"smtp： johndoe \@ contoso.com"}* 的 Active Directory 群組也會在 Azure AD 中啟用郵件功能。
 
 ## <a name="contacts"></a>連絡人
 在合併與收購時使用 GALSync 解決方案橋接兩個或多個 Exchange 樹系之後，常會有多個連絡人代表不同樹系中的某個使用者。 連絡人物件一律從連接器空間使用 mail 屬性加入 Metaverse。 如果已經有具相同郵件地址的連絡人物件或使用者物件，則物件會一起加入。 這是在規則 **In from AD – Contact Join** 中設定。 還有一個名為 **In from AD – Contact Common** 的規則，其屬性流程指向具有常數 **Contact** 的 Metaverse 屬性 **sourceObjectType**。 此規則的優先順序非常低，如果有任何使用者物件聯結至相同的 Metaverse 物件，則規則 **In from AD – User Common** 會提供值 User 給此屬性。 有了這項規則，如果沒有使用者加入，此屬性的值就會是 Contact，如果至少找到了一個使用者，則屬性的值就會是 User。
@@ -74,6 +74,5 @@ ms.locfileid: "60245484"
 當物件匯出到 Azure AD 之後，則不允許再變更 sourceAnchor。 當物件匯出之後，Metaverse 屬性 **cloudSourceAnchor** 就會設為 Azure AD 所接受的 **sourceAnchor** 值。 如果 **sourceAnchor** 變更，且不符合 **cloudSourceAnchor**，則規則 **Out to AAD – User Join** 會擲回錯誤 **sourceAnchor attribute has changed**。 在此情況下，必須先更正組態或資料，讓 Metaverse 中再度具有相同的 sourceAnchor，才能再次同步處理物件。
 
 ## <a name="additional-resources"></a>其他資源
-* [Azure AD Connect 同步處理：自訂同步處理選項](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：自訂同步處理選項](how-to-connect-sync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)
-

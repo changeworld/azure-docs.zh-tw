@@ -16,18 +16,18 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a14249f28da15f04a214c2a1cb4bd415fb59ce9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69373e039320cd733fb859bb84e03e5493e05403
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356622"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277199"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：從舊版升級到最新版本
 本主題說明各種可用於將 Azure Active Directory (Azure AD) Connect 安裝升級到最新版本的方法。 我們建議您讓自己的 Azure AD Connect 保持在最新版本。 當您進行大幅組態變更時，也會使用[變換移轉](#swing-migration)一節中的步驟。
 
 >[!NOTE]
-> 目前支援從任何版本的 Azure AD Connect 升級到目前的版本。 不支援就地升級 DirSync 或 ADSync，而且需要旋轉遷移。  如果您想要從 DirSync 升級，請參閱[從 Azure AD 同步處理工具（DirSync）](how-to-dirsync-upgrade-get-started.md)或[旋轉遷移](#swing-migration)一節升級。  </br>在實務上，非常舊版本的客戶可能會遇到與 Azure AD Connect 不直接相關的問題。 已進入生產階段的伺服器已有數年的時間，通常會套用數個修補程式，而不是全部都適用。  一般而言，在12-18 個月內未升級的客戶，應該考慮改用變換升級，因為這是最不保守且最不具風險的選項。
+> 目前支援從任何版本的 Azure AD Connect 升級到目前的版本。 不支援就地升級 DirSync 或 ADSync，且需要進行 swing 遷移。  如果您想要從 DirSync 升級，請參閱 [從 Azure AD 同步工具升級 (DirSync) ](how-to-dirsync-upgrade-get-started.md) 或 [變換 [遷移](#swing-migration) ] 區段。  </br>在實務上，極舊版本的客戶可能會遇到與 Azure AD Connect 沒有直接相關的問題。 在生產環境中的伺服器多年來，通常會套用數個修補程式，但並非全部都適用。  一般來說，在12-18 個月內未升級的客戶，應該考慮改為使用 swing 升級，因為這是最保守且最不具風險的選項。
 
 如果您想要從 DirSync 升級，請改為參閱[從 Azure AD 同步作業工具 (DirSync) 升級](how-to-dirsync-upgrade-get-started.md)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "85356622"
 如需權限資訊，請參閱[升級所需的權限](reference-connect-accounts-permissions.md#upgrade)。
 
 > [!NOTE]
-> 當您啟用新的 Azure AD Connect 伺服器開始將變更同步處理至 Azure AD 後，就不能回復為使用 DirSync 或 Azure AD 同步。不支援從 Azure AD Connect 降級至舊版用戶端，包括 DirSync 和 Azure AD 同步，而且可能會導致 Azure AD 中的資料遺失等問題。
+> 當您啟用新的 Azure AD Connect 伺服器以開始將變更同步處理至 Azure AD 之後，您就不能使用 DirSync 或 Azure AD 同步復原。不支援從 Azure AD Connect 降級至舊版用戶端，包括 DirSync 和 Azure AD 同步，而且可能會導致問題，例如 Azure AD 的資料遺失。
 
 ## <a name="in-place-upgrade"></a>就地升級
 就地升級適用於從 Azure AD Sync 或 Azure AD Connect 移轉， 但不適用於從 DirSync 移轉，也不適用於任何利用 Forefront Identity Manager (FIM) + Azure AD 連接器的解決方案。
@@ -54,7 +54,7 @@ ms.locfileid: "85356622"
 
 在就地升級期間，可能會傳入變更而必須在升級完成之後執行特定的同步處理活動 (包括「完整匯入」步驟和「完整同步處理」步驟)。 若要延遲這類活動，請參閱[如何延遲升級之後的完整同步處理](#how-to-defer-full-synchronization-after-upgrade)一節。
 
-如果您使用 Azure AD Connect 搭配非標準連接器 (例如「一般 LDAP 連接器」和「一般 SQL 連接器」)，就必須在進行就地升級之後，在 [Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) 中重新整理對應的連接器設定。 如需有關如何重新整理連接器設定的詳細資料，請參閱[連接器版本發行歷程記錄 - 疑難排解](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting)文章小節。 如果您未重新整理設定，該連接器的匯入和匯出執行步驟將無法正確運作。 您將會在應用程式事件記錄檔中收到下列訊息：*"Assembly version in AAD Connector configuration ("X.X.XXX.X") is earlier than the actual version ("X.X.XXX.X") of "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll"* (AAD 連接器設定中的組件版本 ("X.X.XXX.X") 比 "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll" 的實際版本舊)。
+如果您使用 Azure AD Connect 搭配非標準連接器 (例如「一般 LDAP 連接器」和「一般 SQL 連接器」)，就必須在進行就地升級之後，在 [Synchronization Service Manager](./how-to-connect-sync-service-manager-ui-connectors.md) 中重新整理對應的連接器設定。 如需有關如何重新整理連接器設定的詳細資料，請參閱[連接器版本發行歷程記錄 - 疑難排解](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#troubleshooting)文章小節。 如果您未重新整理設定，該連接器的匯入和匯出執行步驟將無法正確運作。 您將會在應用程式事件記錄檔中收到下列訊息：*"Assembly version in AAD Connector configuration ("X.X.XXX.X") is earlier than the actual version ("X.X.XXX.X") of "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll"* (AAD 連接器設定中的組件版本 ("X.X.XXX.X") 比 "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll" 的實際版本舊)。
 
 ## <a name="swing-migration"></a>變換移轉
 如果您的伺服器部署很複雜，或是您的物件很多，在使用中的系統上進行就地升級可能並不實際。 就某些客戶而言，此程序可能需花好幾天的時間，而在這段期間並不會處理任何差異變更。 當您打算對您的組態進行大幅變更，而且想要在這些變更推送至雲端前試用看看，也可以使用這個方法。
@@ -75,7 +75,7 @@ ms.locfileid: "85356622"
 3. 如果您要從舊版的 Azure AD Connect 升級，請將預備伺服器升級到最新版本。 如果您要從 Azure AD 同步進行移動，請在預備伺服器上安裝 Azure AD Connect。
 4. 讓同步處理引擎在預備伺服器上執行完整匯入及完整同步處理的作業。
 5. 請使用[驗證伺服器的組態](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server)中「驗證」之下的步驟，以確認新的組態並未造成任何非預期的變更。 如果發現預期以外的變更，請遵循相關步驟，加以修正、執行匯入及同步處理作業，然後驗證資料，直到資料看起來沒問題為止。
-6. 將預備伺服器切換成作用中伺服器。 這是[確認伺服器](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server)設定中的最後一個步驟「切換作用中伺服器」。
+6. 將預備伺服器切換成作用中伺服器。 這是 [驗證服務器](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server)設定中的最後一個步驟「切換使用中的伺服器」。
 7. 如果您要升級 Azure AD Connect，請將目前處於預備模式的伺服器升級到最新版本。 依照與先前相同的步驟，來為資料及組態升級。 如果您是從 Azure AD Sync 進行升級，現在可以關閉舊伺服器並解除任務。
 
 ### <a name="move-a-custom-configuration-from-the-active-server-to-the-staging-server"></a>將自訂組態從作用中伺服器移到預備伺服器
@@ -104,7 +104,7 @@ ms.locfileid: "85356622"
 
 在某些情況下，您可能不想在升級之後立即進行這些覆寫。 例如，您有很多個同步處理的物件，而且想要讓這些同步處理步驟在下班之後執行。 移除這些覆寫：
 
-1. 在升級期間，**取消**核取 [設定**完成時啟動同步處理**程式] 選項。 這會停用同步處理排程器，並且避免在移除覆寫之前自動開始同步處理週期。
+1. 在升級期間， **取消** 核取 [設定 **完成時啟動同步處理**程式] 選項。 這會停用同步處理排程器，並且避免在移除覆寫之前自動開始同步處理週期。
 
    ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
@@ -167,5 +167,5 @@ At line:1 char:1
 
 
 
-## <a name="next-steps"></a>後續步驟
-深入瞭解如何[整合您的內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。
+## <a name="next-steps"></a>接下來的步驟
+深入瞭解如何 [整合您](whatis-hybrid-identity.md)的內部部署身分識別與 Azure Active Directory。

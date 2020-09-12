@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8cc3bc176798efda46f03c80fe9cce2edd7daf6b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262629"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291542"
 ---
 # <a name="filters"></a>篩選器
 
@@ -49,7 +49,7 @@ ms.locfileid: "89262629"
 
 您可以使用下列屬性來描述篩選器。 
 
-|Name|說明|
+|Name|描述|
 |---|---|
 |firstQuality|篩選器的首次品質位元速率。|
 |presentationTimeRange|簡報時間範圍。 此屬性用於篩選資訊清單起始/結束點、簡報視窗長度，以及即時起始位置。 <br/>如需詳細資訊，請參閱 [PresentationTimeRange](#presentationtimerange)。|
@@ -59,7 +59,7 @@ ms.locfileid: "89262629"
 
 將此屬性與**資產篩選器**搭配使用。 不建議搭配**帳戶篩選器**設定此屬性。
 
-|Name|說明|
+|Name|描述|
 |---|---|
 |**endTimestamp**|適用於點播視訊 (VoD)。<br/>若為即時串流展示，則會以無訊息方式忽略它並在簡報結束時套用，而資料流程會變成 VoD。<br/>這是長數值，表示簡報的絕對結束點，四捨五入到最接近的下一個 GOP 開始。 此單位為時間刻度，因此1800000000的 endTimestamp 會是3分鐘。<br/>使用 startTimestamp 和 endTimestamp 來修剪播放清單 (資訊清單) 中的片段。<br/>例如，startTimestamp = 40000000 and endTimestamp = 100000000 使用預設的時間刻度將會產生播放清單，其中包含從 VoD 簡報的4秒到10秒之間的片段。 如果片段跨越界限，則整個片段都會包含在資訊清單中。|
 |**forceEndTimestamp**|僅適用于即時串流。<br/>指出是否必須有 endTimestamp 屬性。 若為 true，則必須指定 endTimestamp，否則會傳回不正確的要求碼。<br/>允許的值：false、true。|
@@ -74,13 +74,13 @@ ms.locfileid: "89262629"
 
 篩選器資料軌屬性條件描述資料軌類型、值 (下表中所述) 和運算 (Equal、NotEqual)。 
 
-|Name|說明|
+|Name|描述|
 |---|---|
 |**Bitrate**|使用資料軌的位元速率來篩選。<br/><br/>建議的值是位元速率範圍 (以每秒位元數為單位)。 例如，"0-2427000"。<br/><br/>注意：雖然您可以使用特定的位元速率值，如 250000 (每秒位元數)，但不建議使用此方法，因為資產之間的確切位元速率可能會變動。|
 |**FourCC**|將資料軌的 FourCC 值用於篩選。<br/><br/>該值是轉碼器格式的第一個元素，如 [RFC 6381](https://tools.ietf.org/html/rfc6381) \(英文\) 中所指定。 目前支援下列轉碼器： <br/>視訊："avc1"、"hev1"、"hvc1"<br/>音訊："mp4a"、"ec-3"<br/><br/>若要判斷 Asset 中資料軌的 FourCC 值，請取得並檢查資訊清單檔案。|
 |**語言**|使用資料軌的語言來篩選。<br/><br/>此值是您要包含之語言的標籤，如 RFC 5646 中所指定。 例如，"en"。|
 |**名稱**|使用資料軌的名稱來篩選。|
-|**類型**|使用資料軌的類型來篩選。<br/><br/>允許下列值："video"、"audio" 或 "text"。|
+|**型別**|使用資料軌的類型來篩選。<br/><br/>允許下列值："video"、"audio" 或 "text"。|
 
 ### <a name="example"></a>範例
 
@@ -156,7 +156,7 @@ ms.locfileid: "89262629"
 
 如果需要變更篩選定義，請考慮建立新的篩選器，並將它新增至 **串流定位器** URL，或發行直接參考篩選的新 **串流定位器** 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 下列文章說明如何以程式設計方式建立篩選器。  
 

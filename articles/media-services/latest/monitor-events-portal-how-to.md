@@ -10,17 +10,17 @@ tags: ''
 keywords: Azure 媒體服務, 串流, 廣播, 即時, 離線
 ms.service: media-services
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 26e6e56d7c14cfa0ab54776003ae4489bb254094
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 65459dbdf8eaa92525fa20eda158f4beacf58780
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265842"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294368"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>在 Azure 入口網站中使用事件方格建立和監視媒體服務事件
 
@@ -32,7 +32,7 @@ Azure Event Grid 是一項雲端事件服務。 此服務會使用 [事件訂閱
 
 當您完成時，您會看到事件資料已傳送至 Web 應用程式。
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 
 * 擁有有效的 Azure 訂用帳戶。
 * 建立新的 Azure 媒體服務帳戶，如[此快速入門](./create-account-howto.md)所述。
@@ -88,6 +88,6 @@ Azure Event Grid 是一項雲端事件服務。 此服務會使用 [事件訂閱
 
 ![訂用訂用帳戶事件](./media/monitor-events-portal/view-subscription-event.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [上傳、編碼和串流](stream-files-tutorial-with-api.md)

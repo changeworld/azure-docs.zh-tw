@@ -8,15 +8,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d2dffc90d78d5d173e25232010171a5c0109e028
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4ef6a920e9334c6e98b18d1db1abf39136c6f4e2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267495"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289147"
 ---
 # <a name="handling-event-grid-events"></a>處理事件方格事件
 
@@ -44,7 +44,7 @@ Event Grid 使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions
 > [!NOTE]
 > 事件會受限於事件方格 [服務等級協定 (SLA) ](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)。 如果您想要使用 Api 取得事件通知，請參閱如何使用 [.NET sdk](https://github.com/Azure-Samples/media-services-v3-dotnet) 或 [JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java)來取用事件的範例。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [監視事件-入口網站](monitor-events-portal-how-to.md)
 * [監視事件 - CLI](job-state-events-cli-how-to.md)

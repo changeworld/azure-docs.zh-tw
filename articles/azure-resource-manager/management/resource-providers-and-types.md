@@ -1,15 +1,15 @@
 ---
 title: 資源提供者和資源類型
-description: 說明支援資源管理員、其結構描述及可用 API 版本的資源提供者，以及可裝載資源的區域。
+description: 描述支援 Azure Resource Manager 的資源提供者。 它描述其架構、可用的 API 版本，以及可裝載資源的區域。
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 581b653c6d4769f7777b0ca56f136d25443c1ae4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8b1a9e6d539d37fb26d8fb0e3a541415dd574e9a
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500005"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278848"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 資源提供者和類型
 
@@ -26,9 +26,19 @@ ms.locfileid: "87500005"
 * 檢視資源類型的有效位置
 * 檢視資源類型的有效 API 版本
 
-您可以透過 [Azure 入口網站]、[Azure PowerShell] 或 [Azure CLI] 執行這些步驟。
+您可以透過 Azure 入口網站、Azure PowerShell 或 Azure CLI 來執行這些步驟。
 
 如需將資源提供者對應至 Azure 服務的清單，請參閱 [Azure 服務的資源提供者](azure-services-resource-providers.md)。
+
+## <a name="register-resource-provider"></a>註冊資源提供者
+
+使用資源提供者之前，您必須為您的 Azure 訂用帳戶註冊資源提供者。 此步驟會將您的訂用帳戶設定為使用資源提供者。 註冊範圍一律是訂用帳戶。 許多資源提供者都會預設為自動註冊。 不過，您可能需要手動註冊某些資源提供者。
+
+本文說明如何檢查資源提供者的註冊狀態，並視需要進行註冊。 您必須擁有對資源提供者進行作業的許可權 `/register/action` 。 許可權包含在「參與者」和「擁有者」角色中。
+
+您的應用程式程式碼不應針對處於 **註冊** 狀態的資源提供者封鎖資源的建立。 當您註冊資源提供者時，會針對每個支援的區域個別執行此作業。 若要在區域中建立資源，註冊只需要在該區域中完成。 藉由不封鎖註冊狀態的資源提供者，您的應用程式可以比等候所有區域完成更快。
+
+當您的訂用帳戶中仍有來自該資源提供者的資源類型時，您無法取消註冊資源提供者。
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
@@ -45,9 +55,7 @@ ms.locfileid: "87500005"
 
     ![顯示資源提供者](./media/resource-providers-and-types/show-resource-providers.png)
 
-6. 註冊資源提供者可將您的訂用帳戶設定為可搭配資源提供者使用。 註冊範圍一律是訂用帳戶。 許多資源提供者都會預設為自動註冊。 不過，您可能需要手動註冊某些資源提供者。 若要註冊資源提供者，您必須有權執行 `/register/action` 資源提供者的作業。 這項作業包含在「參與者」和「擁有者」角色中。 若要註冊資源提供者，請選取 [註冊]****。 在前一個螢幕擷取畫面中，已針對 **Microsoft.Blueprint** 醒目提示 [註冊]**** 連結。
-
-    當您的訂用帳戶中仍有該資源提供者的資源類型時，您無法取消註冊該資源提供者。
+6. 若要註冊資源提供者，請選取 [註冊]****。 在前一個螢幕擷取畫面中，已針對 **Microsoft.Blueprint** 醒目提示 [註冊]**** 連結。
 
 若要查看特定資源提供者的資訊：
 
@@ -65,7 +73,7 @@ ms.locfileid: "87500005"
 
     ![選取 [資源類型]](./media/resource-providers-and-types/select-resource-type.png)
 
-6. 所有區域都支援資源管理員，但您部署的資源可能無法在所有區域中受到支援。 此外，您的訂用帳戶上可能會有一些限制，以防止您使用某些支援該資源的區域。 資源總管會顯示資源類型的有效位置。
+6. 所有區域都支援資源管理員，但您部署的資源可能無法在所有區域中受到支援。 此外，您的訂用帳戶可能會有限制，以防止您使用某些支援該資源的區域。 資源總管會顯示資源類型的有效位置。
 
     ![顯示位置](./media/resource-providers-and-types/show-locations.png)
 
@@ -95,7 +103,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-註冊資源提供者可將您的訂用帳戶設定為可搭配資源提供者使用。 註冊範圍一律是訂用帳戶。 許多資源提供者都會預設為自動註冊。 不過，您可能需要手動註冊某些資源提供者。 若要註冊資源提供者，您必須有權執行 `/register/action` 資源提供者的作業。 這項作業包含在「參與者」和「擁有者」角色中。
+若要註冊資源提供者，請使用：
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -109,8 +117,6 @@ RegistrationState : Registering
 ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
 Locations         : {West Europe, East US, East US 2, West US...}
 ```
-
-當您的訂用帳戶中仍有該資源提供者的資源類型時，您無法取消註冊該資源提供者。
 
 若要查看特定資源提供者的資訊，請使用：
 
@@ -162,7 +168,7 @@ API 版本會對應至資源提供者所發行的 REST API 作業版本。 當�
 2015-07-01
 ```
 
-所有區域都支援資源管理員，但您部署的資源可能無法在所有區域中受到支援。 此外，您的訂用帳戶上可能會有一些限制，以防止您使用某些支援該資源的區域。
+所有區域都支援資源管理員，但您部署的資源可能無法在所有區域中受到支援。 此外，您的訂用帳戶可能會有限制，以防止您使用某些支援該資源的區域。
 
 若要取得資源類型支援的位置，請使用：
 
@@ -200,15 +206,13 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-註冊資源提供者可將您的訂用帳戶設定為可搭配資源提供者使用。 註冊範圍一律是訂用帳戶。 許多資源提供者都會預設為自動註冊。 不過，您可能需要手動註冊某些資源提供者。 若要註冊資源提供者，您必須有權執行 `/register/action` 資源提供者的作業。 這項作業包含在「參與者」和「擁有者」角色中。
+若要註冊資源提供者，請使用：
 
 ```azurecli
 az provider register --namespace Microsoft.Batch
 ```
 
 它會傳回一則訊息說明註冊持續進行中。
-
-當您的訂用帳戶中仍有該資源提供者的資源類型時，您無法取消註冊該資源提供者。
 
 若要查看特定資源提供者的資訊，請使用：
 
@@ -266,7 +270,7 @@ Result
 2015-07-01
 ```
 
-所有區域都支援資源管理員，但您部署的資源可能無法在所有區域中受到支援。 此外，您的訂用帳戶上可能會有一些限制，以防止您使用某些支援該資源的區域。
+所有區域都支援資源管理員，但您部署的資源可能無法在所有區域中受到支援。 此外，您的訂用帳戶可能會有限制，以防止您使用某些支援該資源的區域。
 
 若要取得資源類型支援的位置，請使用：
 
@@ -286,9 +290,9 @@ West US
 ...
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 若要瞭解如何建立 Resource Manager 範本，請參閱[編寫 Azure Resource Manager 範本](../templates/template-syntax.md)。 
+* 若要瞭解如何建立 Resource Manager 範本，請參閱 [撰寫 Azure Resource Manager 範本](../templates/template-syntax.md)。 
 * 若要檢視資源提供者範本結構描述，請參閱[範本參考](/azure/templates/)。
 * 如需將資源提供者對應至 Azure 服務的清單，請參閱 [Azure 服務的資源提供者](azure-services-resource-providers.md)。
 * 若要檢視資源提供者的作業，請參閱 [Azure REST API](/rest/api/)。

@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75300824d94ecbd77f426539ce99da6caaa2e27a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f33cbb8caaf81b862198d694b0562d461de8a74
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359988"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279273"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>如何自訂同步規則
 
@@ -43,13 +43,13 @@ ms.locfileid: "85359988"
 * 若要修改**輸出**規則，請在同步化規則編輯器中變更篩選條件。
 
 ## <a name="recommended-documents"></a>**建議的文件**
-* [Azure AD Connect 同步：技術概念](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
-* [Azure AD Connect 同步處理：了解架構](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
-* [Azure AD Connect 同步處理：了解宣告式佈建](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Azure AD Connect 同步處理：瞭解宣告式布建運算式](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
-* [Azure AD Connect 同步處理：了解預設組態](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
-* [Azure AD Connect 同步處理：了解使用者、群組和連絡人](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Azure AD Connect 同步：陰影屬性](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Azure AD Connect 同步：技術概念](./how-to-connect-sync-technical-concepts.md)
+* [Azure AD Connect 同步處理：了解架構](./concept-azure-ad-connect-sync-architecture.md)
+* [Azure AD Connect 同步處理：了解宣告式佈建](./concept-azure-ad-connect-sync-declarative-provisioning.md)
+* [Azure AD Connect 同步：瞭解宣告式布建運算式](./concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
+* [Azure AD Connect 同步處理：了解預設組態](./concept-azure-ad-connect-sync-default-configuration.md)
+* [Azure AD Connect 同步處理：了解使用者、群組和連絡人](./concept-azure-ad-connect-sync-user-and-contacts.md)
+* [Azure AD Connect 同步：陰影屬性](./how-to-connect-syncservice-shadow-attributes.md)
 
 ## <a name="next-steps"></a>後續步驟
 - [Azure AD Connect 同步](how-to-connect-sync-whatis.md)。

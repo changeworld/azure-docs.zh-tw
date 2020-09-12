@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 79bf6c50c1b0b1c8454999cbefa8c933a73eae8e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 66f4e426ee6d77b9faa1efab3deb3d7ee4baf47d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267197"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289364"
 ---
 # <a name="output-metadata"></a>輸出中繼資料
 
@@ -36,14 +36,14 @@ ms.locfileid: "89267197"
 
 編碼作業的 AssetFile 項目集合。  
 
-| Name | 說明 |
+| Name | 描述 |
 | --- | --- |
-| **來源** |為了產生此 AssetFile 所處理之輸入/來源媒體檔案的集合。<br />範例：`"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
+| **來源** |為了產生此 AssetFile 所處理之輸入/來源媒體檔案的集合。<br />範例： `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **VideoTracks**|每個實體 AssetFile 都可以內含零或多個交錯形成適當容器格式的視訊播放軌。 <br />請參閱 [VideoTracks](#videotracks)。 |
 | **AudioTracks**|每個實體資產檔案可以內含零個或多個交錯形成適當容器格式的音訊播放軌。 這是所有音訊播放軌的集合。<br /> 如需詳細資訊，請參閱 [AudioTracks](#audiotracks)。 |
-| **名稱**<br />必要 |媒體資產檔案名稱。 <br /><br />範例：`"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
-| **大小**<br />必要 |資產檔案大小 (以位元組為單位)。 <br /><br />範例：`"Size": 32414631`|
-| **有效期間**<br />必要 |內容播放持續時間。 如需詳細資訊，請參閱 [ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html) 格式。 <br /><br />範例：`"Duration": "PT1M10.315S"`|
+| **名稱**<br />必要 |媒體資產檔案名稱。 <br /><br />範例： `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
+| **大小**<br />必要 |資產檔案大小 (以位元組為單位)。 <br /><br />範例： `"Size": 32414631`|
+| **有效期間**<br />必要 |內容播放持續時間。 如需詳細資訊，請參閱 [ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html) 格式。 <br /><br />範例： `"Duration": "PT1M10.315S"`|
 
 ## <a name="videotracks"></a>VideoTracks 
 
@@ -51,17 +51,17 @@ ms.locfileid: "89267197"
 
 | Name | 說明 |
 | --- | --- |
-| **識別碼**<br /> 必要 |此影片播放軌以零為起始的索引。 **注意：**  此 **識別碼** 不一定是在用於 trackid 中使用的檔案。 <br /><br />範例：`"Id": 1`|
-| **FourCC**<br />必要 | Ffmpeg 所報告的影片編解碼器 FourCC 程式碼。  <br /><br />範例：`"FourCC": "avc1"`|
-| **設定檔** |H264 設定檔 (僅適用於 H264 轉碼器)。  <br /><br />範例：`"Profile": "High"` |
-| **Level** |H264 層級 (僅適用於 H264 轉碼器)。  <br /><br />範例：`"Level": "3.2"`|
-| **寬度**<br />必要 |編碼的視訊寬度 (以像素為單位)。  <br /><br />範例：`"Width": "1280"`|
-| **高度**<br />必要 |編碼的視訊高度 (以像素為單位)。  <br /><br />範例：`"Height": "720"`|
-| **DisplayAspectRatioNumerator**<br />必要|視訊顯示長寬比的分子。  <br /><br />範例：`"DisplayAspectRatioNumerator": 16.0`|
-| **DisplayAspectRatioDenominator**<br />必要 |視訊顯示長寬比的分母。  <br /><br />範例：`"DisplayAspectRatioDenominator": 9.0`|
-| **Framerate**<br />必要 |測量的視訊畫面格速率 (採用 .3f 格式)。  <br /><br />範例：`"Framerate": 29.970`|
-| **Bitrate**<br />必要 |從 AssetFile 計算所得的平均影片位速率（以位/秒為單位）。 只會計算基本串流承載，而不會納入封裝負荷。  <br /><br />範例：`"Bitrate": 3551567`|
-| **TargetBitrate**<br />必要 |此影片播放軌的目標平均位元速率（以每秒位數為單位），如透過編碼預設值所要求。 <br /><br />範例：`"TargetBitrate": 3520000` |
+| **識別碼**<br /> 必要 |此影片播放軌以零為起始的索引。 **注意：**  此 **識別碼** 不一定是在用於 trackid 中使用的檔案。 <br /><br />範例： `"Id": 1`|
+| **FourCC**<br />必要 | Ffmpeg 所報告的影片編解碼器 FourCC 程式碼。  <br /><br />範例： `"FourCC": "avc1"`|
+| **設定檔** |H264 設定檔 (僅適用於 H264 轉碼器)。  <br /><br />範例： `"Profile": "High"` |
+| **Level** |H264 層級 (僅適用於 H264 轉碼器)。  <br /><br />範例： `"Level": "3.2"`|
+| **寬度**<br />必要 |編碼的視訊寬度 (以像素為單位)。  <br /><br />範例： `"Width": "1280"`|
+| **高度**<br />必要 |編碼的視訊高度 (以像素為單位)。  <br /><br />範例： `"Height": "720"`|
+| **DisplayAspectRatioNumerator**<br />必要|視訊顯示長寬比的分子。  <br /><br />範例： `"DisplayAspectRatioNumerator": 16.0`|
+| **DisplayAspectRatioDenominator**<br />必要 |視訊顯示長寬比的分母。  <br /><br />範例： `"DisplayAspectRatioDenominator": 9.0`|
+| **Framerate**<br />必要 |測量的視訊畫面格速率 (採用 .3f 格式)。  <br /><br />範例： `"Framerate": 29.970`|
+| **Bitrate**<br />必要 |從 AssetFile 計算所得的平均影片位速率（以位/秒為單位）。 只會計算基本串流承載，而不會納入封裝負荷。  <br /><br />範例： `"Bitrate": 3551567`|
+| **TargetBitrate**<br />必要 |此影片播放軌的目標平均位元速率（以每秒位數為單位），如透過編碼預設值所要求。 <br /><br />範例： `"TargetBitrate": 3520000` |
 
 ## <a name="audiotracks"></a>AudioTracks 
 
@@ -69,12 +69,12 @@ ms.locfileid: "89267197"
 
 | Name  | 說明 |
 | --- | --- |
-| **識別碼**<br />必要  |此音訊播放軌以零為基底的索引。 **注意：**  這不一定是在用於 trackid 中使用的檔案。  <br /><br />範例：`"Id": 2`|
-| **轉碼器**  |音訊播放軌轉碼器字串。  <br /><br />範例：`"Codec": "aac"`|
-| **語言**|範例：`"Language": "eng"`|
-| **聲道**<br />必要|音訊聲道數目。  <br /><br />範例：`"Channels": 2`|
-| **SamplingRate**<br />必要 |音訊取樣率 (每秒或每 Hz 的樣本數)。  <br /><br />範例：`"SamplingRate": 48000`|
-| **Bitrate**<br />必要 |從 AssetFile 計算出來的平均音訊位元速率 (位元 / 秒)。 只會計算基本串流承載，而不會納入封裝負荷。  <br /><br />範例：`"Bitrate": 128041`|
+| **識別碼**<br />必要  |此音訊播放軌以零為基底的索引。 **注意：**  這不一定是在用於 trackid 中使用的檔案。  <br /><br />範例： `"Id": 2`|
+| **轉碼器**  |音訊播放軌轉碼器字串。  <br /><br />範例： `"Codec": "aac"`|
+| **語言**|範例： `"Language": "eng"`|
+| **聲道**<br />必要|音訊聲道數目。  <br /><br />範例： `"Channels": 2`|
+| **SamplingRate**<br />必要 |音訊取樣率 (每秒或每 Hz 的樣本數)。  <br /><br />範例： `"SamplingRate": 48000`|
+| **Bitrate**<br />必要 |從 AssetFile 計算出來的平均音訊位元速率 (位元 / 秒)。 只會計算基本串流承載，而不會納入封裝負荷。  <br /><br />範例： `"Bitrate": 128041`|
 
 ## <a name="json-schema-example"></a>JSON 結構描述範例
 
@@ -260,6 +260,6 @@ ms.locfileid: "89267197"
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [從 HTTPS URL 建立工作輸入](job-input-from-http-how-to.md)
