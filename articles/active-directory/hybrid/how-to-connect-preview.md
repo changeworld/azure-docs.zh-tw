@@ -16,19 +16,19 @@ ms.date: 05/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bb7305fe8ee96697c5c8b2172e32a2a97e5bd6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b543cf4655d0b961a144e9180385a532ae4216d6
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358424"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657101"
 ---
 # <a name="more-details-about-features-in-preview"></a>有關預覽中之功能的其他詳細資料
 本主題描述如何使用預覽中目前的功能。
 
 ## <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect sync V2 端點 API (公開預覽) 
 
-我們已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure Active Directory 同步處理服務作業的效能。 藉由使用新的 V2 端點，您將會在匯出和匯入至 Azure AD 時，經歷顯著的效能提升。 此新端點也支援同步具有最多 25 萬名成員的群組。 使用此端點也可供在啟用群組回寫時，將 O365 整合群組寫回至內部部署 Active Directory，而沒有成員資格上限。   如需詳細資訊，請參閱 [Azure AD Connect sync V2 端點 API (公開預覽)](how-to-connect-sync-endpoint-api-v2.md)。
+我們已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure Active Directory 同步處理服務作業的效能。 藉由使用新的 V2 端點，您將會在匯出和匯入至 Azure AD 時，經歷顯著的效能提升。 此新端點也支援同步具有最多 25 萬名成員的群組。 當群組回寫啟用時，使用此端點也可讓您將 Microsoft 365 的統一群組（沒有最大成員資格限制）回寫至內部部署 Active Directory。 如需詳細資訊，請參閱 [Azure AD Connect sync V2 端點 API (公開預覽)](how-to-connect-sync-endpoint-api-v2.md)。
 
 ## <a name="user-writeback"></a>使用者回寫
 > [!IMPORTANT]

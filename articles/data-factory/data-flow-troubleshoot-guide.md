@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/16/2020
-ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.date: 09/08/2020
+ms.openlocfilehash: 6f2bf98e1c527be27ba0f08a43785ae7d3aea726
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263464"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594146"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>針對 Azure Data Factory 中的資料流程進行疑難排解
 
@@ -45,6 +45,8 @@ ms.locfileid: "88263464"
 - **訊息**：廣播聯結逾時錯誤，請確定廣播串流會在執行偵錯的 60 秒內產生資料，以及在執行作業的 300 秒內產生資料
 - **原因**：在執行偵錯時，廣播的預設逾時為 60 秒，而在執行作業時則為 300 秒。 選擇要廣播的串流似乎太大，所以無法在此限制內產生資料。
 - **建議**：在資料流程轉換上查看 [最佳化] 索引標籤中的 [聯結]、[存在] 和 [查閱]。 [廣播] 的預設選項是 [自動]。 若已設定，或如果您手動將左側或右側設定為 [固定] 底下的廣播，則可以設定較大的 Azure Integration Runtime 設定，或關閉廣播。 要在資料流程中獲得最佳效能的建議方法是允許 Spark 使用「自動」進行廣播，並使用「記憶體最佳化的 Azure IR」。
+
+如果您是從 debug 管線執行的 debug 測試執行中執行資料流程，您可能會更頻繁地遇到此狀況。 這是因為 ADF 會將廣播等待時間節流至60秒，以維持更快的 debug 體驗。 如果您想要將其從觸發的執行延伸至300秒的時間，您可以使用 Debug > Use 活動 Runtime 選項來利用執行資料流程管線活動中定義的 Azure IR。
 
 ### <a name="error-code-df-executor-conversion"></a>錯誤碼：DF-Executor-Conversion
 

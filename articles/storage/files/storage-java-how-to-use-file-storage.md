@@ -8,12 +8,12 @@ ms.date: 09/19/2017
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b1edc13888a42086cdcd3c3c7756491bd5f43241
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2c80d741ca1cf0b4d66bc18488af8ef1da44fd14
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314470"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462593"
 ---
 # <a name="develop-for-azure-files-with-java"></a>使用 Java 開發 Azure 檔案服務
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -122,7 +122,7 @@ try
 ```
 
 ## <a name="create-a-directory"></a>建立目錄
-您也可以組織儲存體，方法是將檔案放在子目錄中，而不是將所有檔案都放在根目錄中。 Azure 檔案服務可讓您建立帳戶允許數量的目錄。 下列程式碼會在根目錄底下建立名為**根目錄 sampledir**的子目錄。
+您也可以組織儲存體，方法是將檔案放在子目錄中，而不是將所有檔案都放在根目錄中。 Azure 檔案服務可讓您建立帳戶允許數量的目錄。 下列程式碼會在根目錄底下建立名為 **>sampledir** 的子目錄。
 
 ```java
 //Get a reference to the root directory for the share.
@@ -155,7 +155,7 @@ if ( containerDir.deleteIfExists() ) {
 ```
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>列舉 Azure 檔案共用的檔案和目錄
-藉由在 CloudFileDirectory 參考上呼叫**listFilesAndDirectories** ，即可輕鬆取得共用內的檔案和目錄清單。 方法會傳回您可以逐一查看的 ListFileItem 物件清單。 例如，下列程式碼會列出根目錄內的檔案和目錄。
+藉由呼叫 CloudFileDirectory 參考上的 **listFilesAndDirectories** ，即可輕鬆地取得共用中的檔案和目錄清單。 方法會傳回您可以逐一查看的 ListFileItem 物件清單。 例如，下列程式碼會列出根目錄內的檔案和目錄。
 
 ```java
 //Get a reference to the root directory for the share.
@@ -222,14 +222,14 @@ if ( file.deleteIfExists() ) {
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如果您想要深入了解其他 Azure 儲存體 API，請參考下列連結。
 
-* [適用于 JAVA 開發人員的 Azure](/java/azure)/）
-* [適用于 JAVA 的 Azure 儲存體 SDK](https://github.com/azure/azure-storage-java)
+* [適用于 JAVA 開發人員/) 的 Azure](/java/azure)
+* [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
 * [Azure Storage SDK for Android](https://github.com/azure/azure-storage-android)
 * [Azure 儲存體用戶端 SDK 參考](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [Azure 儲存體服務 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Azure 儲存體團隊部落格](https://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure 儲存體團隊部落格](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 * [使用 AzCopy 命令列公用程式傳輸資料](../common/storage-use-azcopy.md)
 * [針對 Azure 檔案服務問題進行疑難排解 - Windows](storage-troubleshoot-windows-file-connection-problems.md)

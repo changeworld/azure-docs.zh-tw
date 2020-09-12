@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/28/2020
+ms.date: 09/08/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f26c83f87811acc5853f1bff5303cd37092b33f
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 986e4fd8c7043f5c01868302ffc2b554e2ce76f7
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075948"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567073"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載及執行 SAP 工作負載案例
 
@@ -62,23 +62,17 @@ ms.locfileid: "89075948"
 ## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>在 Azure 虛擬機器上部署的 SAP NetWeaver
 本節列出 Azure 上的 SAP NetWeaver、SAP LaMa 和 Business One 的規劃和部署檔。 文件會專注在於 Azure 上搭配 SAP 工作負載之非 HANA 資料庫的基本概念及使用方式。 高可用性的檔和文章也是在 Azure 中 SAP Hana 高可用性的基礎
 
-如需 Azure 上 SAP 工作負載之高可用性的相關資訊，請參閱：
-
-- [SAP NetWeaver 的 Azure 虛擬機器高可用性](./sap-high-availability-guide-start.md)
-
+## <a name="sap-netweaver-and-s4hana-high-availability"></a>SAP NetWeaver 和 S/4HANA 高可用性
+SAP 應用層和 DBMS 的高可用性記載于從[適用于 Sap NetWeaver 的 Azure 虛擬機器高可用性](./sap-high-availability-guide-start.md)檔開始的詳細資料中
 
 
-如需 Azure Active Directory (Azure AD) 和 SAP 服務之間的整合及單一登入的相關資訊，請參閱：
 
-- [教學課程：Azure Active Directory 與 SAP Cloud for Customer 整合](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [教學課程：Azure Active Directory 與 SAP Cloud Platform Identity Authentication 整合](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [教學課程：Azure Active Directory 與 SAP 雲端平台整合](../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [教學課程：Azure Active Directory 與 SAP NetWeaver 整合](../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [教學課程：Azure Active Directory 與 SAP Business ByDesign 整合](../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [教學課程：Azure Active Directory 與 SAP HANA 整合](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [您的 S/4HANA 環境：使用 Azure AD 進行 Fiori Launchpad SAML 單一登入](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad/) \(英文\)
+## <a name="integrate-azure-ad-with-sap-services"></a>整合 Azure AD 與 SAP 服務
+在本節中，您可以找到有關如何使用大部分的 SAP SaaS 和 PaaS 服務（NetWeaver 和 Fiori）設定 SSO 的資訊。 
 
-如需將 Azure 服務整合到 SAP 元件的相關資訊，請參閱：
+
+
+## <a name="documentation-on-integration-of-azure-services-into-sap-components"></a>將 Azure 服務整合至 SAP 元件的檔
 
 - [在 Power BI Desktop 中使用 SAP HANA](/power-bi/desktop-sap-hana)
 - [DirectQuery 和 SAP HANA](/power-bi/desktop-directquery-sap-hana)
@@ -88,6 +82,9 @@ ms.locfileid: "89075948"
 
 ## <a name="change-log"></a>變更記錄檔
 
+- 09/08/2020：在 [SLES 上變更 Azure vm 上 SAP Hana 的高可用性](./sap-hana-high-availability.md) ，以闡明 stonith 定義
+- 09/03/2020： [SAP Hana Azure 虛擬機器儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) 設定中的變更，可使用 Ultra 磁片以每 1 GB 容量調整為基本 2 IOPS
+- 09/02/2020：在 [可用的 sku](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) 中變更，以在哪些 sku 已通過 HANA 認證時變得更透明
 - 08/28/2020：在 [SLES WITH ANF 上的 Azure vm 上變更 SAP NW 的 HA](./high-availability-guide-suse-netapp-files.md) ，以修正打字問題
 - 08/25/2020： [SAP ASCS/scs 與 wsfc 和共用磁片的 HA 指南](./sap-high-availability-guide-wsfc-shared-disk.md)變更，使用 wsfc 和共用磁片 [準備適用于 SAP ASCS/scs 的 Azure 基礎結構](./sap-high-availability-infrastructure-wsfc-shared-disk.md) ，並 [安裝具有 WSFC 和共用磁片的 sap NW HA](./sap-high-availability-guide-wsfc-shared-disk.md) ，以引入使用 AZURE 共用磁片和檔 sap ERS2 架構的選項
 - 08/25/2020：[使用 WSFC 和 Azure 共用磁片的 SAP ASCS/SCS 的多重 SID HA 指南](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)版本
@@ -110,19 +107,19 @@ ms.locfileid: "89075948"
 - 06/22/2020：將適用于 SAP 的新 VM 擴充功能的安裝步驟新增至 [部署指南](deployment-guide.md)
 - 06/16/2020： [在 SAP HA 案例中使用 Azure 標準 ILB 來變更 vm 的公用端點連線能力](./high-availability-guide-standard-load-balancer-outbound-connections.md) ，以新增 SUSE 公用雲端基礎結構101檔的連結 
 - 06/10/2020：將新的！ Sku 新增至 [適用于紐約的可用 sku](./hana-available-skus.md) 和 [SAP Hana (大型實例) 儲存體架構](./hana-storage-architecture.md)
-- 2020/05/21：於[在 Azure 中於 SLES 上設定 Pacemaker](./high-availability-guide-suse-pacemaker.md) \(部分機器翻譯\) 及[在 Azure 中於 RHEL 上設定 Pacemaker](./high-availability-guide-rhel-pacemaker.md) \(部分機器翻譯\) 中進行變更，以新增[在 SAP HA 案例中使用 Azure Standard ILB 取得 VM 的公用端點連線能力](./high-availability-guide-standard-load-balancer-outbound-connections.md) \(部分機器翻譯\) 的連結  
-- 2020/05/19：在 [SAP HANA Azure 虛擬機器儲存體設定](./hana-vm-operations-storage.md) \(部分機器翻譯\) 中新增「針對 HANA 相關磁碟區使用 LVM 時不要使用根磁碟區群組」的重要訊息
-- 05/19/2020：在[適用于 Hana 大型實例的相容作業系統](/- azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance)中為 Hana 大型實例類型 II 新增支援的 OS
-- 2020/05/12：在[於 SAP HA 案例中使用 Azure Standard ILB 取得 VM 的公用端點連線能力](./high-availability-guide-standard-load-balancer-outbound-connections.md) \(部分機器翻譯\) 中進行變更，以更新連結並新增協力廠商防火牆設定的資訊
-- 2020/05/11：在 [SLES 上之 Azure VM 上的 SAP HANA 高可用性](./sap-hana-high-availability.md) \(部分機器翻譯\) 中進行變更，以針對 netcat 資源將資源黏著度設定為 0，因為該設定能使容錯移轉更加順暢 
-- 2020/05/05：在 [SAP NetWeaver 的 Azure 虛擬機器規劃和實作](./planning-guide.md) \(部分機器翻譯\) 中進行變更，以表示 Gen2 部署可供 Mv1 VM 系列使用
-- 2020/04/24：在[於 SLES 上使用 ANF 在 Azure VM 上搭配待命節點進行 SAP HANA 擴增](./sap-hana-scale-out-standby-netapp-files-suse.md) \(部分機器翻譯\)、[於 RHEL 上使用 ANF 在 Azure VM 上搭配待命節點進行 SAP HANA 擴增](./sap-hana-scale-out-standby-netapp-files-rhel.md) \(部分機器翻譯\)、[於 SLES 上使用 ANF 在 Azure VM 上取得 SAP NetWeaver 高可用性](./high-availability-guide-suse-netapp-files.md) \(部分機器翻譯\)，以及[於 RHEL 上使用 ANF 在 Azure VM 上取得 SAP NetWeaver 高可用性](./high-availability-guide-rhel-netapp-files.md) \(部分機器翻譯\) 中進行變更，以釐清系統會自動指派 ANF 磁碟區的 IP 位址
-- 2020/04/22：在 [SLES 上之 Azure VM 上的 SAP HANA 高可用性](./sap-hana-high-availability.md) \(部分機器翻譯\) 中進行變更，以從指示中移除中繼屬性 `is-managed`，因為其會與使叢集進入或結束維護模式產生衝突
-- 2020/04/21：在 [Azure 部署支援哪些 SAP 軟體](./sap-supported-product-on-azure.md) \(部分機器翻譯\) 和[於 Microsoft Azure 上執行的 SAP 認證和設定](./sap-certifications.md) \(部分機器翻譯\) 文章中，新增 SQL Azure DB 作為 SAP (Hybris) Commerce Platform 1811 及更新版本所支援的 DBMS
-- 2020/04/16：在 [Azure 部署支援哪些 SAP 軟體](./sap-supported-product-on-azure.md) \(部分機器翻譯\) 和[於 Microsoft Azure 上執行的 SAP 認證和設定](./sap-certifications.md) \(部分機器翻譯\) 文章中，新增 SAP HANA 作為 SAP (Hybris) Commerce Platform 所支援的 DBMS
-- 2020/04/13：在[適用於 SAP 工作負載的 SAP ASE Azure 虛擬機器 DBMS 部署](./dbms_guide_sapase.md) \(部分機器翻譯\) 中修正為確切的 SAP ASE 版本號碼
-- 2020/04/07：於[在 Azure 中於 SLES 上設定 Pacemaker](./high-availability-guide-suse-pacemaker.md) \(部分機器翻譯\) 中進行變更，以釐清 cloud-netconfig-azure 指示
-- 2020/04/06：在[於 SLES 上使用 Azure NetApp Files 在 Azure VM 上搭配待命節點進行 SAP HANA 擴增](./sap-hana-scale-out-standby-netapp-files-suse.md) \(部分機器翻譯\) 和[於 RHEL 上使用 Azure NetApp Files 在 Azure VM 上搭配待命節點進行 SAP HANA 擴增](./sap-hana-scale-out-standby-netapp-files-rhel.md) \(部分機器翻譯\) 中進行變更，以移除對 NetApp [TR-4435](https://www.netapp.com/us/media/tr-4746.pdf) \(英文\) 的參考 (以 [TR-4746](https://www.netapp.com/us/media/tr-4746.pdf) \(英文\) 取代)
+- 5月 21 2020：在[azure 中的 SLES 上設定 Pacemaker](./high-availability-guide-suse-pacemaker.md)的變更，以及在[AZURE 中設定 RHEL](./high-availability-guide-rhel-pacemaker.md)上的 PACEMAKER，以[在 SAP HA 案例中使用 Azure 標準 ILB 新增 vm 的公用端點](./high-availability-guide-standard-load-balancer-outbound-connections.md)連線連結  
+- 5月 19 2020：在[SAP Hana Azure 虛擬機器儲存體](./hana-vm-operations-storage.md)設定中使用 HANA 相關磁片區的 LVM 時，請新增重要訊息，不要使用根磁片區群組
+- 5月 19 2020：在[適用于 Hana 大型實例的相容作業系統](/- azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance)中，為 Hana 大型實例類型 II 新增支援的 OS
+- 5月 12 2020： [使用 SAP HA 案例中的 Azure 標準 ILB 來變更 vm 的公用端點連線能力](./high-availability-guide-standard-load-balancer-outbound-connections.md) ，以更新連結並新增協力廠商防火牆設定的資訊
+- 5月 11 2020：在 [SLES 上的 Azure vm 上 SAP Hana 的高可用性](./sap-hana-high-availability.md) 變更，以將 netcat 資源的資源內容設定為0，這會導致更簡化的容錯移轉 
+- 5月 05 2020： [Azure 虛擬機器規劃和執行的變更，適用于 SAP NetWeaver](./planning-guide.md) 以表示 Gen2 部署適用于 Mv1 VM 系列
+- 24 2020 年4月：在具有 [ANF ON sles 的 Azure vm 上使用待命節點進行 SAP Hana 相應](./sap-hana-scale-out-standby-netapp-files-suse.md)放大的變更，在 [SAP Hana 向外擴充 azure vm 上的待命節點](./sap-hana-scale-out-standby-netapp-files-rhel.md)（使用 azure vm 上的 ANF）、azure vm 上的 azure vm 上的 azure vm 上的 Azure vm 上的 azure vm [高可用性](./high-availability-guide-suse-netapp-files.md) ，以及磁片區的 azure vm 上的 [sap](./high-availability-guide-rhel-netapp-files.md) NetWeaver
+- 22 2020 年4月：變更 [SLES 上的 Azure vm 上 SAP Hana 的高可用性](./sap-hana-high-availability.md) ，以移除指示中的中繼屬性 `is-managed` ，因為它與將叢集放入或移出維護模式發生衝突
+- 21 2020 年4月：已將 SQL Azure DB 新增為 SAP (Hybris) Commerce Platform 1811 和更新版本中的支援的 DBMS，以[瞭解 Azure 部署支援的 sap 軟體](./sap-supported-product-on-azure.md)，以及[在 Microsoft Azure 上執行的 sap 認證和](./sap-certifications.md)設定
+- 16 2020 年4月：已將 SAP Hana 新增為 SAP (Hybris) Commerce 平臺的支援 DBMS 文章中的[Azure 部署支援的 sap 軟體](./sap-supported-product-on-azure.md)，以及[在 Microsoft Azure 上執行的 sap 認證和](./sap-certifications.md)設定。
+- 13 2020 年4月：適用于 sap [Ase Azure 虛擬機器 DBMS 部署中 sap 工作負載的](./dbms_guide_sapase.md)精確 sap ase 版本號碼
+- 07 2020 年4月：在 [azure 中的 SLES 上設定 Pacemaker](./high-availability-guide-suse-pacemaker.md) 的變更，以闡明雲端 netconfig-Azure 指示
+- 06 2020 年4月：在 azure Vm 上使用 azure NetApp Files 的 azure Vm 上的 [待命節點進行 SAP Hana 相應](./sap-hana-scale-out-standby-netapp-files-suse.md) 放大的變更，並 [SAP Hana 在 azure vm](./sap-hana-scale-out-standby-netapp-files-rhel.md) 上使用 azure Netapp files 的 azure vm 上的待命節點來移除對 NetApp [TR-4435](https://www.netapp.com/us/media/tr-4746.pdf) 的參考，並以 [TR-4746](https://www.netapp.com/us/media/tr-4746.pdf)) 取代 (
 - 2020年3月31日：在 Azure vm 上的 SLES 和[高 SAP Hana 可用性](./sap-hana-high-availability-rhel.md)上變更[azure vm 上的 SAP Hana 高可用性](./sap-hana-high-availability.md)，以新增在建立等量磁片區時如何指定等量大小的指示
 - 2020年3月27日：在 SLES 上的 [Azure vm 上，使用 ANF FOR sap 應用程式變更 SAP NW 的高可用性](./high-availability-guide-suse-netapp-files.md) ，以將檔案系統掛接選項對應至 NetApp TR-4746 (移除同步裝載選項) 
 - 2020年3月26日：在 [Azure vm 上的 SAP NetWeaver 變更高可用性（SLES 多重 SID 指南](./high-availability-guide-suse-multi-sid.md) ），以新增對 NetApp TR-4746 的參考

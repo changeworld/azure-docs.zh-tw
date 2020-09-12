@@ -3,16 +3,16 @@ title: 在商業市集中建立 Dynamics 365 for Operations 供應項目
 description: 如何使用 Microsoft 合作夥伴中心的商業市集入口網站，在 Azure Marketplace、AppSource 或透過雲端解決方案提供者(CSP) 計畫，建立新的 Dynamics 365 for Operations 供應項目以列出清單或銷售。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 79bf5f0d6b7e3fa4735d94c7b26c1736ab25113e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e5fb00eadaa8d1702b46a03c03b55bbd0ef693f6
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816995"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646697"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>建立 Dynamics 365 for Operations 供應項目
 

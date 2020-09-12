@@ -3,7 +3,7 @@ title: Azure 流量管理員的運作方式 | Microsoft Docs
 description: 本文將協助您了解流量管理員如何路由傳送流量，以提高 Web 應用程式的效能和可用性
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: rohink
-ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 471895f1a615770521584a627e6bca850b87d0ac
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294861"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462627"
 ---
 # <a name="how-traffic-manager-works"></a>流量管理員的運作方式
 
@@ -28,7 +28,7 @@ Azure 流量管理員可讓您控制流量分散到應用程式端點的方式�
 - 根據幾個 [流量路由方法](traffic-manager-routing-methods.md)
 - [連續監視端點健康狀態](traffic-manager-monitoring.md) 以及在端點失敗時自動容錯移轉
 
-當用戶端嘗試連接至服務時，它必須先將服務的 DNS 名稱解析為 IP 位址。 然後用戶端才能連接到該 IP 位址以存取服務。
+當用戶端嘗試連接至服務時，它必須先將服務的 DNS 名稱解析為 IP 位址。 然後用戶端才能連線到該 IP 位址以存取服務。
 
 **最重要的一點是了解流量管理員是在 DNS 層級上運作。**  流量管理員會使用 DNS，根據流量路由方法的規則，將用戶端導向特定的服務端點。 用戶端會**直接**連接至選取的端點。 流量管理員不是 Proxy 或閘道。 流量管理員看不到在用戶端與服務之間傳遞的流量。
 
@@ -60,10 +60,10 @@ Contoso Corp 開發出新的合作夥伴入口網站。 此入口網站的 URL �
 
     - 每個端點已設定的狀態 (不會傳回已停用的端點)
     - 每個端點目前的健康狀態，由流量管理員健康狀態檢查所決定。 如需詳細資訊，請參閱 [流量管理員端點監視](traffic-manager-monitoring.md)。
-    - 所選的流量路由方法。 如需詳細資訊，請參閱[流量管理員路由方法](traffic-manager-routing-methods.md)。
+    - 所選的流量路由方法。 如需詳細資訊，請參閱 [流量管理員路由方法](traffic-manager-routing-methods.md)。
 
-5. 選擇的端點會傳回成為另一筆 DNS CNAME 記錄。 在此例子中，我們假設傳回 contoso us.cloudapp.net。
-6. 接下來，遞迴 DNS 服務會尋找 'cloudapp.net' 網域的名稱伺服器。 它會連絡這些名稱伺服器，以要求 'contoso-us.cloudapp.net' DNS 記錄。 將會傳回一筆 DNS 'A' 記錄，內含美國地區服務端點的 IP 位址。
+5. 選擇的端點會傳回成為另一筆 DNS CNAME 記錄。 在此情況下，讓我們假設會傳回 contoso-eu.cloudapp.net。
+6. 接下來，遞迴 DNS 服務會尋找 'cloudapp.net' 網域的名稱伺服器。 它會聯繫這些名稱伺服器，要求 ' contoso-eu.cloudapp.net ' DNS 記錄。 會傳回 DNS ' A ' 記錄，其中包含以 EU 為基礎之服務端點的 IP 位址。
 7. 遞迴 DNS 服務會合併結果，並傳回單一 DNS 回應給用戶端。
 8. 用戶端收到 DNS 結果，然後連接至指定的 IP 位址。 用戶端會直接連接至應用程式服務端點，而不透過流量管理員。 因為它是 HTTPS 端點，用戶端會執行必要的 SSL/TLS 交握，然後提出 '/login.aspx' 頁面的 HTTP GET 要求。
 
@@ -75,7 +75,7 @@ Contoso Corp 開發出新的合作夥伴入口網站。 此入口網站的 URL �
 
 * [哪種類型的流量可以使用流量管理員路由傳送？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
 
-* [流量管理員支援「粘滯」會話嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
+* [流量管理員是否支援「粘滯」會話？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
 
 * [我在使用流量管理員時為何看到 HTTP 錯誤？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
 
@@ -83,7 +83,7 @@ Contoso Corp 開發出新的合作夥伴入口網站。 此入口網站的 URL �
 
 * [我可以搭配「流量管理員」使用哪些應用程式通訊協定？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
 
-* [我可以使用具有「naked」功能變數名稱的流量管理員嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
+* [我可以使用流量管理員搭配「裸」功能變數名稱嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
 
 * [處理 DNS 查詢時，流量管理員會考量用戶端子網路位址嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
 
@@ -93,7 +93,7 @@ Contoso Corp 開發出新的合作夥伴入口網站。 此入口網站的 URL �
 
 * [如何了解傳給我的設定檔的查詢量？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入了解「流量管理員」的 [端點監視和自動容錯移轉](traffic-manager-monitoring.md)。
 

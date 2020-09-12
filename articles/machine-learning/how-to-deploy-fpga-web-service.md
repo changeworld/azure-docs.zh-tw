@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 263038ee1be8b31d493282cd920f386132420156
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a5f56beb179f7c72fe66c7423999201f3460b143
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648780"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646292"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>什麼是可現場程式化閘道陣列 (FPGA) 以及如何部署
 
@@ -30,7 +30,7 @@ FPGA 包含可程式化邏輯區塊的陣列，以及可重新設定互連的階
 
 ![Azure Machine Learning FPGA 比較的圖表](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|處理器| 縮寫 |說明|
+|處理器| 縮寫 |描述|
 |---|:-------:|------|
 |應用程式特定的積體電路|ASIC|自訂電路 (例如，Google 的 TensorFlow 處理器 (TPU)) 可提供最高效率。 它們無法隨著您需求的變更加以重新設定。|
 |現場可程式化閘陣列|FPGA|FPGA (例如 Azure 上所提供的那些陣列) 可提供接近 ASIC 的效能。 它們也會隨著時間而具有彈性且可重新設定，以實作新邏輯。|
@@ -78,7 +78,7 @@ Fpga 適用于下列 Azure 區域：
 
 ## <a name="deploy-models-on-fpgas"></a>在 FPGA 上部署模型
 
-您可以使用 [Azure Machine Learning 硬體加速模型](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py)，在 fpga 上將模型部署為 web 服務。 使用 Fpga 可提供超低延遲推斷，即使是單一批次大小也是如此。 推斷或模型計分是部署的模型用於預測的階段，最常見的是生產資料。
+您可以使用 [Azure Machine Learning 硬體加速模型](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true)，在 fpga 上將模型部署為 web 服務。 使用 Fpga 可提供超低延遲推斷，即使是單一批次大小也是如此。 推斷或模型計分是部署的模型用於預測的階段，最常見的是生產資料。
 
 將模型部署至 FPGA 包含下列步驟：
 
@@ -89,7 +89,7 @@ Fpga 適用于下列 Azure 區域：
 
 在此範例中，您會建立 TensorFlow 圖來預先處理輸入影像、使其成為在 FPGA 上使用 ResNet 50 的 featurizer，然後透過針對 ImageNet 資料集定型的分類器來執行這些功能。 然後，此模型會部署至 AKS 叢集。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶。 如果您沒有帳戶，您將需要建立 [隨用隨付](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go) 帳戶 (免費的 Azure 帳戶不符合 FPGA 配額) 資格。
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -121,7 +121,7 @@ Fpga 適用于下列 Azure 區域：
     ```
 ### <a name="1-define-the-tensorflow-model"></a>1. 定義 TensorFlow 模型
 
-使用[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 來建立服務定義。 服務定義是根據 TensorFlow 來描述圖形管線 (輸入、功能化器和分類器) 的檔案。 部署命令會自動將定義和圖表壓縮為 ZIP 檔案，然後將 ZIP 檔案上傳到 Azure Blob 儲存體。 DNN 已部署為在 FPGA 上執行。
+使用[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 來建立服務定義。 服務定義是根據 TensorFlow 來描述圖形管線 (輸入、功能化器和分類器) 的檔案。 部署命令會自動將定義和圖表壓縮為 ZIP 檔案，然後將 ZIP 檔案上傳到 Azure Blob 儲存體。 DNN 已部署為在 FPGA 上執行。
 
 1. 載入 Azure Machine Learning 工作區
 
@@ -401,7 +401,7 @@ registered_model.delete()
 converted_model.delete()
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 查看這些筆記本、影片和 blog：
 

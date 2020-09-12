@@ -1,6 +1,6 @@
 ---
 title: Azure Windows 虛擬機器上的 SQL Server 概觀 | Microsoft Docs
-description: 瞭解如何在 Azure 虛擬機器的雲端中執行完整版的 SQL Server，而不需要管理任何內部部署硬體。
+description: 瞭解如何在雲端的 Azure 虛擬機器上執行完整版的 SQL Server，而不需要管理任何內部部署硬體。
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -13,49 +13,52 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4bf5b9b6f683783a39b7d34c430f1c6671c35885
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 541f3e5ada69568506969f6406564a8ff59c0ba6
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236364"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613225"
 ---
-# <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure 虛擬機器上的 SQL Server 是 (Windows) 
+# <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a> (Windows) 的 Azure 虛擬機器 SQL Server
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [Windows](sql-server-on-azure-vm-iaas-what-is-overview.md)
 > * [Linux](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 
-[Azure 虛擬機器上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 可讓您在雲端中使用完整版的 SQL Server，而不需要管理任何內部部署硬體。 SQL Server 虛擬機器 (Vm) 也會在您隨用隨付時簡化授權成本。
+[Azure 虛擬機器上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 可讓您在雲端中使用完整版的 SQL Server，而不需要管理任何內部部署硬體。 SQL Server 虛擬機器 (Vm) 也會在隨用隨付時簡化授權成本。
 
-Azure 虛擬機器會在全球許多不同的[地理區域](https://azure.microsoft.com/regions/)中執行。 此外，也提供各種[機器大小](../../../virtual-machines/windows/sizes.md)。 虛擬機器映像庫可讓您使用正確的版本、版次及作業系統建立 SQL Server VM。 這讓虛擬機器成為許多不同 SQL Server 工作負載的理想選擇。
+Azure 虛擬機器會在全球許多不同的[地理區域](https://azure.microsoft.com/regions/)中執行。 此外，也提供各種[機器大小](../../../virtual-machines/windows/sizes.md)。 虛擬機器映像庫可讓您使用正確的版本、版次及作業系統建立 SQL Server VM。 這讓虛擬機器成為許多不同 SQL Server 工作負載的絕佳選項。
+
+如果您不熟悉 Azure Vm 上的 SQL Server，請參閱 *AZURE Vm 總覽* 影片中的 SQL Server，深入瞭解 azure [SQL 影片系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)：
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
 
 ## <a name="automated-updates"></a>自動化更新
 
-SQL Server 在 Azure 虛擬機器可以使用 [自動修補](automated-patching.md) 來排程維護期間，以便自動安裝重要的 windows 和 SQL Server 更新。
+Azure 虛擬機器上的 SQL Server 可以使用 [自動修補](automated-patching.md) 來排程維護期間，以便自動安裝重要的 windows 和 SQL Server 更新。
 
 ## <a name="automated-backups"></a>自動備份
 
-Azure 虛擬機器上的 SQL Server 可以利用 [自動備份](automated-backup.md)，這會定期建立資料庫的備份至 blob 儲存體。 您也可以手動使用此技術。 如需詳細資訊，請參閱 [使用 Azure 儲存體進行 SQL Server 備份與還原](azure-storage-sql-server-backup-restore-use.md)。
+Azure 虛擬機器上的 SQL Server 可以利用 [自動備份](automated-backup.md)，以定期建立資料庫的備份至 blob 儲存體。 您也可以手動使用此技術。 如需詳細資訊，請參閱 [使用 Azure 儲存體進行 SQL Server 備份與還原](azure-storage-sql-server-backup-restore-use.md)。
 
 Azure 也針對在 Azure VM 中執行的 SQL Server 提供企業級備份解決方案。 完全受控備份解決方案，其支援 Always On 可用性群組、長期保留、時間點復原，以及集中管理和監視。 如需詳細資訊，請參閱 [Azure vm 中 SQL Server 的 Azure 備份](https://docs.microsoft.com/azure/backup/backup-azure-sql-database)。
   
 
 ## <a name="high-availability"></a>高可用性
 
-如果您需要高可用性，請考慮設定 SQL Server 可用性群組。 這牽涉到虛擬網路中 Azure 虛擬機器的多個 SQL Server 實例。 您可以手動設定高可用性解決方案，也可以使用 Azure 入口網站中的範本進行自動設定。 如需所有高可用性選項的總覽，請參閱 [Azure 虛擬機器中 SQL Server 的高可用性和嚴重損壞修復](business-continuity-high-availability-disaster-recovery-hadr-overview.md)。
+如果您需要高可用性，請考慮設定 SQL Server 可用性群組。 這牽涉到虛擬網路中的多個 Azure 虛擬機器上的 SQL Server 實例。 您可以手動設定高可用性解決方案，也可以使用 Azure 入口網站中的範本進行自動設定。 如需所有高可用性選項的總覽，請參閱 [Azure 虛擬機器中 SQL Server 的高可用性和嚴重損壞修復](business-continuity-high-availability-disaster-recovery-hadr-overview.md)。
 
 ## <a name="performance"></a>效能
 
-Azure 虛擬機器提供不同的機器大小，以符合各種工作負載需求。 SQL Server Vm 也會提供自動化儲存體設定，其已針對您的效能需求進行優化。 如需有關為 SQL Server Vm 設定儲存體的詳細資訊，請參閱 [SQL Server vm 的儲存體](storage-configuration.md)設定。 若要微調效能，請參閱 [Azure 虛擬機器上 SQL Server 的效能最佳作法](performance-guidelines-best-practices.md)。
+Azure 虛擬機器提供不同的機器大小，以符合各種工作負載需求。 SQL Server Vm 也提供自動化的儲存體設定，可針對您的效能需求進行優化。 如需針對 SQL Server Vm 設定儲存體的詳細資訊，請參閱 [SQL Server vm 的儲存體](storage-configuration.md)設定。 若要微調效能，請參閱 [Azure 虛擬機器上 SQL Server 的效能最佳做法](performance-guidelines-best-practices.md)。
 
-## <a name="get-started-with-sql-server-vms"></a>開始使用 SQL Server Vm
+## <a name="get-started-with-sql-server-vms"></a>SQL Server Vm 入門
 
 若要開始使用，請選擇具有您所需版本、版次及作業系統的 SQL Server 虛擬機器映像。 下列各節提供 Azure 入口網站中 SQL Server 虛擬機器資源庫映像的直接連結。
 
 > [!TIP]
-> 如需如何瞭解 SQL Server 映射定價的詳細資訊，請參閱 [Azure 虛擬機器上 SQL Server 的定價指導](pricing-guidance.md)方針。 
+> 如需有關如何瞭解 SQL Server 映射定價的詳細資訊，請參閱 [Azure 虛擬機器上 SQL Server 的定價指導](pricing-guidance.md)方針。 
 
 ### <a name="pay-as-you-go"></a><a id="payasyougo"></a> 隨用隨付方案
 下表提供隨用隨付 SQL Server 映像的對照表。
@@ -69,7 +72,7 @@ Azure 虛擬機器提供不同的機器大小，以符合各種工作負載需�
 | **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2012SP4EnterpriseWindowsServer2012R2)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2012SP4StandardWindowsServer2012R2)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2012SP4WebWindowsServer2012R2)、[Express](https://portal.azure.com/#create/Microsoft.SQLServer2012SP4ExpressWindowsServer2012R2) |
 | **SQL Server 2008 R2 SP3** |Windows Server 2008 R2|[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3EnterpriseWindowsServer2008R2)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3StandardWindowsServer2008R2)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3WebWindowsServer2008R2)、[Express](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3ExpressWindowsServer2008R2) |
 
-若要查看可用的 Linux 上的 SQL Server 虛擬機器映射，請參閱 [Azure 虛擬機器 (Linux) 上 SQL Server 的總覽 ](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)。
+若要查看可用的 Linux 上的 SQL Server 虛擬機器映射，請參閱 [Azure 虛擬機器 (Linux) SQL Server 的總覽 ](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)。
 
 > [!NOTE]
 > 現在已可將 SQL Server VM 的依使用量付費授權模式變更成使用自己的授權。 如需詳細資訊，請參閱[如何變更 SQL Server VM 的授權模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
@@ -77,7 +80,7 @@ Azure 虛擬機器提供不同的機器大小，以符合各種工作負載需�
 ### <a name="bring-your-own-license"></a><a id="BYOL"></a> 自備授權
 您也可以自備授權 (BYOL)。 在此案例中，您只需支付 VM 費用，而 SQL Server 授權不需任何額外的費用。  長期下來，自備授權可以讓您節省連續生產工作負載的成本。 如需使用此選項的相關需求，請參閱 [SQL Server Azure VM 的價格指引](pricing-guidance.md#byol)。
 
-若要攜帶您自己的授權，您可以將現有的依使用量付費 SQL Server VM，也可以部署前面加上 **{BYOL}** 的映射。 如需有關在依使用量付費和 BYOL 之間切換授權模型的詳細資訊，請參閱 [如何變更 SQL SERVER VM 的授權模型](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
+若要攜帶您自己的授權，您可以將現有的依使用量付費 SQL Server VM，也可以部署具有首碼 **{BYOL}** 的映射。 如需有關在依使用量付費和 BYOL 之間切換授權模型的詳細資訊，請參閱 [如何變更 SQL SERVER VM 的授權模型](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
 
 | 版本 | 作業系統 | 版本 |
 | --- | --- | --- |
@@ -97,10 +100,10 @@ Azure 虛擬機器提供不同的機器大小，以符合各種工作負載需�
 
 
 ### <a name="connect-to-the-vm"></a>連接至 VM
-建立 SQL Server VM 之後，從 SQL Server Management Studio (SSMS) 等應用程式或工具來連線該 VM。 如需指示，請參閱 [連接到 Azure 上的 SQL Server 虛擬機器](ways-to-connect-to-sql.md)。
+建立 SQL Server VM 之後，從 SQL Server Management Studio (SSMS) 等應用程式或工具來連線該 VM。 如需相關指示，請參閱 [連接到 Azure 上的 SQL Server 虛擬機器](ways-to-connect-to-sql.md)。
 
 ### <a name="migrate-your-data"></a>遷移資料
-如果您有現有的資料庫，您會想要將它移至新布建的 SQL Server VM。 如需移轉選項的清單和指引，請參閱 [將資料庫移轉至 Azure VM 上的 SQL Server](migrate-to-vm-from-sql-server.md)。
+如果您有現有的資料庫，您會想要將它移到新布建的 SQL Server VM。 如需移轉選項的清單和指引，請參閱 [將資料庫移轉至 Azure VM 上的 SQL Server](migrate-to-vm-from-sql-server.md)。
 
 ## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>使用 Azure 入口網站來建立及管理 Azure SQL 資源
 

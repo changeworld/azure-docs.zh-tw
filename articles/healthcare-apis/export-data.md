@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: 10d901f73006051e8b1ddd02aeb36b229c6a7761
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 83509b5f452ab7cf88774561c12d7aa2cf3b46cf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270060"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482312"
 ---
 # <a name="how-to-export-fhir-data"></a>如何匯出 FHIR 資料
 
@@ -35,10 +35,17 @@ $Export 命令也可以用來從 FHIR 伺服器匯出已取消識別的資料。
 
  `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
 
-|查詢參數            | 範例 |Optionality| 說明|
+|查詢參數            | 範例 |Optionality| 描述|
 |---------------------------|---------|-----------|------------|
 | _\_anonymizationConfig_   |DemoConfig.js開啟|取消識別的匯出所需 |設定檔案的名稱。 請參閱 [這裡](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format)的設定檔案格式。 在設定為匯出位置的相同 Azure 儲存體帳戶內，此檔案應該保留在名為 **匿名化** 的容器內。 |
-| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|取消識別匯出的選擇性|這是設定檔的 Etag。 您可以使用 Azure 儲存體 explorer 從 blob 屬性取得 Etag|
+| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|取消識別匯出的選擇性|這是設定檔的 Etag。 您可以使用 blob 屬性中的 Azure 儲存體總管來取得 Etag|
 
 > [!IMPORTANT]
 > 請注意，原始匯出和取消識別的匯出都會寫入至指定為匯出設定一部分的相同 Azure 儲存體帳戶。 建議您使用不同的容器對應至不同的已取消識別設定，並在容器層級管理使用者存取。
+
+## <a name="next-steps"></a>接下來的步驟
+
+在本文中，您已瞭解如何使用 $export 命令匯出 FHIR 資源，包括已取消識別的資料。 接下來，您可以設定匯出資料：
+ 
+>[!div class="nextstepaction"]
+>[設定匯出資料](configure-export-data.md)

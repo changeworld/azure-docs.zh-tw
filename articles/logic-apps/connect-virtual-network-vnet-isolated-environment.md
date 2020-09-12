@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 624668ad80d72933d6dd1e67fcac799fd210d659
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/10/2020
+ms.openlocfilehash: 41fdc342d82b07e82bb6e7b32e1a4f98f94d2a8e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816655"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647542"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>透過使用整合服務環境 (ISE) 從 Azure Logic Apps 連線至 Azure 虛擬網路
 
@@ -44,7 +44,14 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
   > [!IMPORTANT]
   > Logic Apps、內建動作，以及在您 ISE 中執行的連接器，其使用的定價方案不同於耗用量式定價方案。 若要了解適用於 ISE 的定價和計費方式，請參閱 [Logic Apps 定價模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 如需定價費率，請參閱 [Logic Apps 定價](../logic-apps/logic-apps-pricing.md)。
 
-* [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)。 您的虛擬網路必須有四個 *空* 的子網，這是在 ISE 中建立和部署資源所需的子網，供內部 Logic Apps 元件使用，例如連接器和快取效能。 您可以事先建立子網，也可以等到您建立 ISE 之後，才能同時建立子網。 不過，在您建立子網之前，請先檢查 [子網需求](#create-subnet)。
+* [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)。 您的虛擬網路必須有四個 *空* 的子網，這是在 ISE 中建立和部署資源所需的子網，並且由這些內部和隱藏元件使用：
+
+  * Logic Apps 計算
+  * 內部 App Service 環境 (連接器) 
+  * 內部 API 管理 (連接器) 
+  * 快取和效能的內部 Redis
+  
+  您可以事先建立子網，也可以等到您建立 ISE 之後，才能同時建立子網。 不過，在您建立子網之前，請先檢查 [子網需求](#create-subnet)。
 
   > [!IMPORTANT]
   >

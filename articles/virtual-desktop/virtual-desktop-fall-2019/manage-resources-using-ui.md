@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c261ea174f37de51a8fbd5b36aeb40c26d44e6a9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 09e0b3bbac0bdc1d268aa7f24741aeb12a7d366d
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691389"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462576"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本部署 Windows 虛擬桌面 (傳統) 管理工具
 
@@ -98,7 +98,7 @@ ms.locfileid: "88691389"
 
 依照下列指示啟動工具：
 
-1. 選取具有您在範本中提供之名稱 (例如 Apr3UX) 的 Azure App Services 資源並瀏覽到與它關聯的 URL，例如 <https://rdmimgmtweb-210520190304.azurewebsites.net>。
+1. 選取具有您在範本中提供之名稱 (例如 Apr3UX) 的 Azure App Services 資源並瀏覽到與它關聯的 URL，例如 `https://rdmimgmtweb-210520190304.azurewebsites.net`。
 2. 使用您的 Windows 虛擬桌面認證登入。
 3. 當系統提示您選擇租用戶群組時，請從下拉式清單選取 [預設租用戶群組]****。
 4. 選取 [預設租用戶群組]**** 時，視窗的左側應該會出現一個功能表。 在此功能表上，尋找租用戶群組的名稱並選取。
@@ -110,6 +110,6 @@ ms.locfileid: "88691389"
 
 如果管理工具或其他 Windows 虛擬桌面工具發生任何問題，請依照[遠端桌面服務的 Azure Resource Manager 範本](https://github.com/Azure/RDS-Templates/blob/master/README.md)中的指示，在 GitHub 上回報問題。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 既然您已學到如何部署並連線到管理工具，您可以學習如何使用 Azure 服務來監視服務問題與健康情況諮詢。 若要深入了解，請參閱我們的[設定服務警示教學課程](set-up-service-alerts-2019.md)。

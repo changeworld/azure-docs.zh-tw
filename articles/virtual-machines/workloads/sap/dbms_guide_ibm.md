@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 08/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5805fe1f3fe25a1e2d7fbc5c0d0fb443586479d2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bc881b1b366a152c2d592463c8025ea1087307cf
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649607"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461956"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 IBM DB2 Azure 虛擬機器 DBMS 部署
 
@@ -56,7 +56,8 @@ ms.locfileid: "88649607"
 ### <a name="storage-configuration"></a>儲存體組態
 若要瞭解適用于 SAP 工作負載的 Azure 儲存體類型，請參閱 [Azure 儲存體類型： sap 工作負載](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) 所有資料庫檔案都必須儲存在 azure 區塊存放裝置的已掛接磁片上 (WINDOWS： NFFS、Linux： xfs、ext4 或 ext3) 。 資料庫檔案 **不** 支援任何種類的網路磁碟機機或遠端共用（例如下列 Azure 服務）： 
 
-* [Microsoft Azure 檔案服務](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Microsoft Azure 檔案服務](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+
 * [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
 使用以 Azure 分頁 Blob 儲存體或受控磁碟為基礎的磁碟時，[針對 SAP 工作負載而部署 Azure 虛擬機器 DBMS 時的考量](dbms_guide_general.md)中的描述，同樣適用於利用 Db2 DBMS 所做的部署。
@@ -71,7 +72,7 @@ ms.locfileid: "88649607"
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-如果磁碟包含適用於您 sapdata 和 saptmp 目錄的 Db2 儲存路徑，您必須將實體磁碟磁區大小指定為 512 KB。 使用 Windows 儲存集區時，您必須透過命令列介面，使用參數 `-LogicalSectorSizeDefault`，以手動方式建立儲存集區。 如需詳細資訊，請參閱 <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>。
+對於包含和目錄之 Db2 儲存體路徑的磁片 `sapdata` `saptmp` ，您必須指定 512 KB 的實體磁片磁區大小。 使用 Windows 儲存集區時，您必須透過命令列介面，使用參數 `-LogicalSectorSizeDefault`，以手動方式建立儲存集區。 如需詳細資訊，請參閱 <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>。
 
 和「Azure 進階儲存體」相比之下，使用 Azure 寫入加速器時，會有諸多因素造成寫入交易記錄的延遲時間被縮短。 因此，您應該針對組成 Db2 交易記錄磁碟區的 VHD 來部署 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](../../how-to-enable-write-accelerator.md)文件。
 
@@ -82,7 +83,7 @@ SAP 支援附注 [1928533]中列出的任何 VM 類型都支援 IBM DB2 For Sap 
 以下是各種大小的基準設定，以及從小規模到很大的 SAP on Db2 部署使用方式：
 
 #### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>超小型 SAP 系統：資料庫大小 50-200 GB：範例解決方案管理員
-| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | 快取 |
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  ||  |
 |vCPU：4 |/db2/ <SID> /sapdata |P10 |2 |1.000  |200  |256  |7.000  |340  |256 KB |唯讀 |
@@ -91,7 +92,7 @@ SAP 支援附注 [1928533]中列出的任何 VM 類型都支援 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3.500  |170  || |
 
 #### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>小型 SAP 系統：資料庫大小 200-750 GB： small Business Suite
-| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | 快取 |
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
 |vCPU：16 |/db2/ <SID> /sapdata |P15 |4 |4.400  |500  |1.024  |14.000  |680  |256 KB |唯讀 |
@@ -100,7 +101,7 @@ SAP 支援附注 [1928533]中列出的任何 VM 類型都支援 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3.500  |170  ||| 
 
 #### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>中 SAP 系統：資料庫大小 500-1000 GB： small Business Suite
-| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | 快取 |
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
 |vCPU：32 |/db2/ <SID> /sapdata |P30 |2 |10.000  |400  |2.048  |10.000  |400  |256 KB |唯讀 |
@@ -109,7 +110,7 @@ SAP 支援附注 [1928533]中列出的任何 VM 類型都支援 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P15 |1 |1.100  |125  |256  |3.500  |170  ||| 
 
 #### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>大型 SAP 系統：資料庫大小 750-2000 GB： Business Suite
-| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | 快取 |
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
 |vCPU：64 |/db2/ <SID> /sapdata |P30 |4 |20.000  |800  |4.096  |20.000  |800  |256 KB |唯讀 |
@@ -118,7 +119,7 @@ SAP 支援附注 [1928533]中列出的任何 VM 類型都支援 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P20 |1 |2.300  |150  |512  |3.500  |170  || |
 
 #### <a name="large-multi-terabyte-sap-system-database-size-2tb-global-business-suite-system"></a>大型多 tb 的 SAP 系統：資料庫大小 2TB +：通用 Business Suite 系統
-| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | 快取 |
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |M128s |/db2 |P10 |1 |500  |100  |128  |3.500  |170  || |
 |vCPU：128 |/db2/ <SID> /sapdata |P40 |4 |30.000  |1.000  |8.192  |30.000  |1.000  |256 KB |唯讀 |

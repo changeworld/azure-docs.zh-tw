@@ -4,21 +4,21 @@ description: 瞭解如何從儲存體分析計量轉換 (傳統計量) 至 Azure
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 09/04/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: c8eae70b88aa454e5d712b3c5b7930b12d169912
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f0357c153a068b1f857e4595fa17a9ac6bc22104
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078243"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500261"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>轉換至 Azure 監視器中的計量
 
-**2023 年8月 31**日儲存體分析計量，也稱為*傳統計量*將會淘汰。 如果您使用傳統計量，請務必在該日期之前轉換成 Azure 監視器中的計量。 本文可協助您進行轉換。
+**2023 年8月 31**日儲存體分析計量，也稱為*傳統計量*將會淘汰。 如需詳細資訊，請參閱 [官方公告](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)。 如果您使用傳統計量，請務必在該日期之前轉換成 Azure 監視器中的計量。 本文可協助您進行轉換。 
 
 ## <a name="steps-to-complete-the-transition"></a>完成轉換的步驟
 

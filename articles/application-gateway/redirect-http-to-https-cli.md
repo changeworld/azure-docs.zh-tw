@@ -1,32 +1,31 @@
 ---
-title: 使用 CLI 的 HTTP 至 HTTPS 重新導向
+title: 使用 CLI 進行 HTTP 至 HTTPS 重新導向
 titleSuffix: Azure Application Gateway
-description: 瞭解如何建立應用程式閘道，並使用 Azure CLI 新增 TLS 終止的憑證。
+description: 瞭解如何使用 Azure CLI 來建立應用程式閘道，以及新增 TLS 終止的憑證。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: 19bfaf611093f6ca178a627123d4d0f9c8ccf3ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 828012e7e41f8710dc57f1c830b81d403507d27d
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804418"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594219"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>使用 Azure CLI 來建立具有 HTTP 到 HTTPS 重新導向功能的應用程式閘道
 
-您可以使用 Azure CLI 來建立具有 TLS/SSL 終止憑證的[應用程式閘道](overview.md)。 路由規則可用來將 HTTP 流量重新導向至您應用程式閘道中的 HTTPS 連接埠。 在此範例中，您也會為應用程式閘道的後端集區，建立一個包含兩個虛擬機器執行個體的[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
+您可以使用 Azure CLI 來建立具有 TLS/SSL 終止憑證的 [應用程式閘道](overview.md) 。 路由規則可用來將 HTTP 流量重新導向至您應用程式閘道中的 HTTPS 連接埠。 在此範例中，您也會為應用程式閘道的後端集區，建立一個包含兩個虛擬機器執行個體的[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
-> * 建立自我簽署憑證
-> * 設定網路
-> * 建立包含憑證的應用程式閘道
-> * 新增接聽程式和重新導向規則
-> * 建立包含預設後端集區的虛擬機器擴展集
+* 建立自我簽署憑證
+* 設定網路
+* 建立包含憑證的應用程式閘道
+* 新增接聽程式和重新導向規則
+* 建立包含預設後端集區的虛擬機器擴展集
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -54,7 +53,7 @@ openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.cr
 
 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用 [az group create](/cli/azure/group) 建立資源群組。
 
-下列範例會在 eastus** 位置建立名為 myResourceGroupAG** 的資源群組。
+下列範例會在 eastus 位置建立名為 myResourceGroupAG 的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus

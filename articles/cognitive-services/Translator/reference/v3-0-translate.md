@@ -1,7 +1,7 @@
 ---
 title: 翻譯工具轉譯方法
 titleSuffix: Azure Cognitive Services
-description: 瞭解 Azure 認知服務 Translator 的「翻譯」方法的參數、標頭和內文訊息，以翻譯文字。
+description: 瞭解 Azure 認知服務翻譯工具翻譯方法翻譯文字的參數、標頭和主體訊息。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 59e064dc2b9d33bda966eb50544c8383b0394dd3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903981"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566597"
 ---
-# <a name="translator-30-translate"></a>翻譯工具3.0：轉譯
+# <a name="translator-30-translate"></a>Translator 3.0：轉譯
 
 翻譯文字。
 
@@ -43,7 +43,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td><em>必要參數</em>。<br/>用戶端要求的 API 版本。 值必須為 <code>3.0</code>。</td>
   </tr>
   <tr>
-    <td>to</td>
+    <td>至</td>
     <td><em>必要參數</em>。<br/>指定輸出文字的語言。 目標語言必須是 <code>translation</code> 範圍內包含的<a href="./v3-0-languages.md">支援語言</a>之一。 例如，使用 <code>to=de</code> 翻譯為德文。<br/>在查詢字串中重複參數，可能會同時翻譯為多種語言。 例如，使用 <code>to=de&to=it</code> 翻譯為德文和義大利文。</td>
   </tr>
 </table>
@@ -63,7 +63,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>category</td>
-    <td><em>選擇性參數</em>。<br/>字串，指定翻譯的分類 (定義域)。 此參數用來從使用 <a href="../customization.md">Custom Translator</a> 所建置的自訂系統取得翻譯。 將自訂翻譯<a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">專案詳細資料</a>中的分類識別碼新增至這個參數，以使用您已部署的自訂系統。 預設值為：<code>general</code>。</td>
+    <td><em>選擇性參數</em>。<br/>字串，指定翻譯的分類 (定義域)。 此參數用來從使用 <a href="../customization.md">Custom Translator</a> 所建置的自訂系統取得翻譯。 將自訂翻譯 <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">專案詳細資料</a> 中的分類識別碼新增至這個參數，以使用您已部署的自訂系統。 預設值為：<code>general</code>。</td>
   </tr>
   <tr>
     <td>profanityAction</td>
@@ -234,7 +234,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
 </table> 
 
-如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在[V3 Translator 參考頁面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到一般錯誤碼。 
+如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在 [V3 Translator](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)的 [參考] 頁面上找到常見的錯誤碼。 
 
 ## <a name="examples"></a>範例
 
@@ -280,7 +280,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
     }
 ]
 ```
-回應與前一個範例的回應類似。 因為要求語言自動偵測，所以回應也會包括針對輸入文字偵測到之語言的相關資訊。 
+回應與前一個範例的回應類似。 因為要求語言自動偵測，所以回應也會包括針對輸入文字偵測到之語言的相關資訊。 語言自動偵測的運作方式較長的輸入文字。
 
 ### <a name="translate-with-transliteration"></a>含轉換的翻譯
 
@@ -317,7 +317,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
-回應包含所有文字片段的轉譯，其順序與要求中完全相同。
+回應會以與要求中完全相同的順序，包含所有文字片段的轉譯。
 回應本文如下：
 
 ```
@@ -384,7 +384,7 @@ Translator 服務通常會在翻譯中保留存在於來源的粗話。 粗話�
     <td>不雅字眼會取代為輸出中的標記。 標記取決於 <code>ProfanityMarker</code> 參數。<br/><br/>
 對於 <code>ProfanityMarker=Asterisk</code>，不雅字眼會取代為 <code>***</code>：<br/>
     <strong>範例來源 (日文)</strong>：彼はジャッカスです。<br/>
-    <strong> (英文) 的翻譯範例</strong>：他是 \* \* \* 。<br/><br/>
+    <strong>範例轉譯 (英文) </strong>：他是 \* \* \* 。<br/><br/>
 對於 <code>ProfanityMarker=Tag</code>，不雅字眼會括上 XML 標籤 &lt;profanity&gt; 和 &lt;/profanity&gt;：<br/>
     <strong>範例來源 (日文)</strong>：彼はジャッカスです。<br/>
     <strong>範例翻譯 (英文)</strong>：He is a &lt;profanity&gt;jackass&lt;/profanity&gt;.
@@ -488,16 +488,16 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 對齊方式資訊開始於 `0:2-0:1`，表示來源文字中的前三個字元 (`The`) 對應至翻譯文字中的前兩個字元 (`La`)。
 
 #### <a name="limitations"></a>限制
-取得對齊資訊是一項實驗性功能，我們已針對原型研究和使用潛在片語對應的經驗啟用了。 我們可能會在未來選擇停止支援此功能。 以下是不支援對齊的一些值得注意的限制：
+取得對齊資訊是一項實驗性功能，我們已針對可能的片語對應，使用原型設計研究和體驗。 未來可能會選擇停止支援。 以下是不支援對齊的一些值得注意的限制：
 
-* HTML 格式的文字無法使用對齊方式，例如，textType = html
+* HTML 格式的文字未提供對齊，亦即 textType = html
 * 只會傳回一部分語言組的對齊方式：
-  - 英文 to/from 繁體中文以外的任何其他語言，廣東話 (傳統) 或塞爾維亞 (斯拉夫文) 。
+  - 除了繁體中文、廣東話 (傳統) 或塞爾維亞文 (斯拉夫文) 以外的其他任何語言的英文。
   - 從日文到韓文，或從韓文到日文。
-  - 從日文到簡體中文、簡體中文到日文。 
-  - 從簡體中文到繁體中文和繁體中文，也就是簡體中文。 
+  - 從日文到簡體中文，以及簡體中文至日文。 
+  - 從簡體中文到中文繁體，繁體中文到簡體中文。 
 * 若句子是已定義的翻譯，則您收不到對齊方式。 已定義的翻譯範例是 "This is a test"、"I love you" 和其他高頻率出現句子。
-* 當您套用任何方法來避免轉譯時，無法使用對齊方式，如[這裡](../prevent-translation.md)所述
+* 當您套用任何方法來防止轉譯[（如下所述）](../prevent-translation.md)時，將無法使用對齊
 
 ### <a name="obtain-sentence-boundaries"></a>取得句子界限
 
@@ -525,7 +525,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="translate-with-dynamic-dictionary"></a>使用動態字典翻譯
 
-如果已經知道想要套用至單字或片語的翻譯，則可以在要求內以標記來提供。 動態字典僅適用于適當名詞，例如個人名稱和產品名稱。
+如果已經知道想要套用至單字或片語的翻譯，則可以在要求內以標記來提供。 動態字典只有適當的名詞才安全，例如個人名稱和產品名稱。
 
 要提供的標記會使用下列語法。
 

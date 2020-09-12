@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 的外部重新導向
+title: 使用 PowerShell 進行外部重新導向
 titleSuffix: Azure Application Gateway
 description: 了解如何使用 Azure Powershell 建立應用程式閘道，以將 Web 流量重新導向至外部網站。
 services: application-gateway
@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: f6480bdd5139d5bc7a5a1887b80f43c3903bf579
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55b5b5419734999ebd50ca364251602112e29987
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804597"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594283"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>使用 Azure PowerShell 建立具有外部重新導向的應用程式閘道
 
@@ -21,10 +21,9 @@ ms.locfileid: "84804597"
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
-> * 設定網路
-> * 建立接聽程式和重新導向規則
-> * 建立應用程式閘道
+* 設定網路
+* 建立接聽程式和重新導向規則
+* 建立應用程式閘道
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -44,7 +43,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>建立網路資源
 
-使用[new-azvirtualnetworksubnetconfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)建立子網設定*myAGSubnet* 。 使用[new-azvirtualnetwork](/powershell/module/az.network/new-azvirtualnetwork)搭配子網設定來建立名為*myVNet*的虛擬網路。 最後，使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 建立公用 IP 位址。 這些資源可用來為應用程式閘道及其相關聯的資源提供網路連線。
+使用[新的->new-azvirtualnetworksubnetconfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)建立子網設定*myAGSubnet* 。 使用[new-azvirtualnetwork](/powershell/module/az.network/new-azvirtualnetwork)與子網設定建立名為*myVNet*的虛擬網路。 最後，使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 建立公用 IP 位址。 這些資源可用來為應用程式閘道及其相關聯的資源提供網路連線。
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -87,7 +86,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>建立後端集區和設定
 
-使用[add-azapplicationgatewaybackendaddresspool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)，為應用程式閘道建立名為*defaultPool*的後端集區。 使用 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) 設定集區的設定。
+使用[>appgatewaybackendpool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)為應用程式閘道建立名為*defaultPool*的後端集區。 使用 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) 設定集區的設定。
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -102,7 +101,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-listener-and-rule"></a>建立接聽程式和規則
 
-需要接聽程式才能讓應用程式閘道適當地路由傳送流量。 使用 New-azapplicationgatewayHTTPlistener 搭配您先前建立的前端設定和前端埠，來建立接聽[程式](/powershell/module/az.network/new-azapplicationgatewayhttplistener)。 接聽程式需要規則才能知道要將傳入流量傳送到何處。 使用[new-azapplicationgatewayrequestroutingrule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)建立名為*redirectRule*的基本規則。
+需要接聽程式才能讓應用程式閘道適當地路由傳送流量。 使用 >new-azapplicationgatewayHTTPlistener 搭配您先前建立的前端設定和前端埠，來建立接聽 [程式](/powershell/module/az.network/new-azapplicationgatewayhttplistener) 。 接聽程式需要規則才能知道要將傳入流量傳送到何處。 使用[New->new-azapplicationgatewayrequestroutingrule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)建立名為 *>new-azurermapplicationgatewayrequestroutingrule*的基本規則。
 
 ```azurepowershell-interactive
 $defaultListener = New-AzApplicationGatewayHttpListener `

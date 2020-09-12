@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: fbe3f0109ca3af2cf9ff44061c7882e6bd72c8a6
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: ab8a49f62735a47c4ccc9fa488eed60088cd9c20
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508597"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658596"
 ---
 # <a name="enterprise-preview-and-basic-editions-of-azure-machine-learning"></a>Enterprise (preview) 和基本版本的 Azure Machine Learning 
 
@@ -113,12 +113,12 @@ Azure Machine Learning 針對您的機器學習服務需求提供兩種版本。
 | 功能     | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
 | [Azure 角色型存取控制 (AZURE RBAC) ](how-to-assign-roles.md) 支援                                           | 全部                     |
-| [虛擬網路 (VNet) ](how-to-enable-virtual-network.md) 支援計算                                         | 全部                     |
+| [虛擬網路 (VNet) ](how-to-secure-training-vnet.md) 支援計算                                         | 全部                     |
 | 評分端點驗證                                                    | 全部                     |
 | [工作區私用連結](how-to-configure-private-link.md)                                                            | 全部                     |
 | 跨工作區的[配額管理](how-to-manage-quotas.md)                                                 | 僅限企業版 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入瞭解 Azure Machine Learning [edition 總覽和定價頁面](https://azure.microsoft.com/pricing/details/machine-learning/)中的可用功能。 
 

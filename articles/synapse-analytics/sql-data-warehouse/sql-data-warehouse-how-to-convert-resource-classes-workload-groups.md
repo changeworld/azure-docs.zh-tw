@@ -1,6 +1,6 @@
 ---
 title: 將資源類別轉換成工作負載群組
-description: 了解如何建立與 Azure SQL 資料倉儲中資源類別類似的工作負載群組。
+description: 瞭解如何建立類似 Azure Synapse Analytics 中資源類別的工作負載群組。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c61e8df05c4bc199c0d91b8ed0cbd73fa6f196cf
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: fe65aa8c69bc4bd3837ea68bc48ffdbbeed87e0e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192319"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461369"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>將資源類別轉換成工作負載群組
 
@@ -44,7 +44,7 @@ SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant
 
 使用已知的 `REQUEST_MIN_RESOURCE_GRANT_PERCENT`，您可以使用 CREATE WORKLOAD GROUP <link> 語法來建立工作負載群組。  您可以選擇性地指定大於零的 `MIN_PERCENTAGE_RESOURCE`，以隔離工作負載群組的資源。  此外，您可以選擇性地指定小於 100 的 `CAP_PERCENTAGE_RESOURCE`，以限制工作負載群組可以使用的資源量。  
 
-使用 mediumrc 做為範例的基礎，下列程式碼會將設定 `MIN_PERCENTAGE_RESOURCE` 為專用於10% 的系統資源， `wgDataLoads` 並保證一個查詢能夠執行所有的時間。  此外， `CAP_PERCENTAGE_RESOURCE` 會設定為40%，並將此工作負載群組限制為四個並行要求。  藉由將 `QUERY_EXECUTION_TIMEOUT_SEC` 參數設定為 3600，任何執行超過 1 小時的查詢都會自動取消。
+使用 mediumrc 作為範例的基礎，下列程式碼會將設定 `MIN_PERCENTAGE_RESOURCE` 為專用於10% 的系統資源， `wgDataLoads` 並保證一個查詢能夠執行所有的時間。  此外， `CAP_PERCENTAGE_RESOURCE` 會設定為40%，並將此工作負載群組限制為四個並行要求。  藉由將 `QUERY_EXECUTION_TIMEOUT_SEC` 參數設定為 3600，任何執行超過 1 小時的查詢都會自動取消。
 
 ```sql
 CREATE WORKLOAD GROUP wgDataLoads WITH  

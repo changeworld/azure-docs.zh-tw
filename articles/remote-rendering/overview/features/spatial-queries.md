@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b378fe3f01e6ef1d54a89341bbac3a26b9d6b33
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5a80681a641757d71288dfaee4c779121030a9db
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013141"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613598"
 ---
 # <a name="spatial-queries"></a>空間查詢
 
@@ -112,6 +112,11 @@ TODO : Add an API to make that possible.
 * **`HitPosition`：** 光線與物件有交集的世界空間位置。
 * **`HitNormal`：** 位於交集位置的網格一般世界空間表面。
 * **`DistanceToHit`：** 從光線開始位置到接觸位置的距離。
+
+## <a name="api-documentation"></a>API 文件
+
+* [C # RemoteManager. RayCastQueryAsync ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.raycastqueryasync)
+* [C + + RemoteManager：： RayCastQueryAsync ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#raycastqueryasync)
 
 ## <a name="next-steps"></a>後續步驟
 

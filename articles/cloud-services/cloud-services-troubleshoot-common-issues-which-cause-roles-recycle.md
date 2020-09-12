@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 61f555dc8f24ce303934187d36ee994b25b31920
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 4bf33db28d68b600d860a132027e5be440377b34
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920096"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460281"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>導致角色回收的常見問題
 本文討論部署問題的常見原因，和可協助您解決這些問題的疑難排解秘訣。 應用程式出現問題的徵候之一，是角色執行個體無法啟動，或是在初始化中、忙碌和停止中狀態之間循環。
@@ -51,7 +51,7 @@ Azure 是 64 位元環境。 因此，針對 32 位元目標編譯的 .NET 組�
 
 * `DiagnosticsConnectionString` 設定指向 Azure 中的有效儲存體帳戶。  
   根據預設，此設定會指向模擬儲存體帳戶，因此您必須在部署應用程式封裝之前明確變更這項設定。 若未變更此設定，當角色執行個體嘗試啟動診斷監視器時，將會擲回例外狀況。 這可能會導致角色執行個體無限期地回收。
-* 連接字串是以下列 [格式](../storage/common/storage-configure-connection-string.md)指定。 （通訊協定必須指定為 HTTPS）。將*MyAccountName*取代為您的儲存體帳戶名稱，並使用您的存取金鑰來*MyAccountKey* ：    
+* 連接字串是以下列 [格式](../storage/common/storage-configure-connection-string.md)指定。  (通訊協定必須指定為 HTTPS。 ) 將 *MyAccountName* 取代為您的儲存體帳戶名稱，並以您的存取金鑰 *MyAccountKey* ：    
 
 ```console
 DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
@@ -62,12 +62,12 @@ DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 ## <a name="exported-certificate-does-not-include-private-key"></a>匯出的憑證未包含私密金鑰
 若要在 TLS 下執行 web 角色，您必須確定匯出的管理憑證包含私密金鑰。 如果您使用「Windows 憑證管理員」** 匯出憑證，請務必針對 [匯出私密金鑰]**** 選項選取 [是]****。 憑證必須匯出為 PFX 格式，這是目前唯一支援的格式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 檢視更多雲端服務的 [疑難排解文章](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) 。
 
-在以下位置檢視多個角色回收案例： [Kevin Williamson 的部落格系列](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)。
+在以下位置檢視多個角色回收案例： [Kevin Williamson 的部落格系列](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。
 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
 [OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
-[O]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
+[S]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
 [執行]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx

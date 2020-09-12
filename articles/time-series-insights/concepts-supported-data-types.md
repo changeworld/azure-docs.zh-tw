@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 4e6586453469797458bc60fc7499a45a9aad9b9b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 9dbc66e3331325e9b79d0434fb452d01d69d550a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226738"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482584"
 ---
 # <a name="supported-data-types"></a>支援的資料類型
 
@@ -27,10 +27,10 @@ ms.locfileid: "89226738"
 | **double** | 雙精確度64位數位  | `"value": 31.0482941` | `$event.value.Double` 或 `$event['value'].Double` |  `value_double`
 | **long** | 帶正負號的64位整數  | `"value" : 31` | `$event.value.Long` 或 `$event['value'].Long` |  `value_long`
 | **string** | 文字值必須由有效的 UTF-8 組成。 Null 和空字串的處理方式相同。 |  `"site": "DIM_MLGGG"`| `$event.site.String` 或 `$event['site'].String`| `site_string`
-| **動態** | 複雜 (非基本) 類型，其中包含陣列或屬性包 (字典) 。 目前只有 stringified 的基本或物件陣列的 JSON 陣列不包含 TS 識別碼或時間戳記屬性 () 將會儲存為動態。 請閱讀 [本文，以瞭解](./concepts-json-flattening-escaping-rules.md) 如何將物件壓平合併，以及如何展開陣列。 只有 `Explore Events` 在 TSI Explorer 中選取以查看原始事件，或透過 [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)   查詢 API 進行用戶端剖析時，才可存取儲存為此類型的承載屬性。 |  `"values": "[197, 194, 189, 188]"` | 尚未支援在時間序列運算式中參考動態類型 | `values_dynamic`
+| **動態** | 複雜 (非基本) 類型，其中包含陣列或屬性包 (字典) 。 目前只有 stringified 的基本或物件陣列的 JSON 陣列不包含 TS 識別碼或時間戳記屬性 () 將會儲存為動態。 請閱讀 [本文，以瞭解](./concepts-json-flattening-escaping-rules.md) 如何將物件壓平合併，以及如何展開陣列。 只有 `Explore Events` 在時間序列深入解析總管中選取以查看原始事件，或透過 [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)   查詢 API 進行用戶端剖析時，才可存取儲存為此類型的承載屬性。 |  `"values": "[197, 194, 189, 188]"` | 尚未支援在時間序列運算式中參考動態類型 | `values_dynamic`
 
 > [!NOTE]
-> 支援64位整數值，但 Azure 時間序列深入解析 Explorer 可以安全地表示的最大數位是 9007199254740991 (2 ^ 53-1) 因為 JavaScript 的限制。 如果您使用上述資料模型中的數位，您可以藉由建立 [時間序列模型變數](/concepts-variables#numeric-variables) 並 [轉換](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions) 該值來縮減大小。
+> 支援64位整數值，但 Azure 時間序列深入解析 Explorer 可以安全地表示的最大數位是 9007199254740991 (2 ^ 53-1) 因為 JavaScript 的限制。 如果您使用上述資料模型中的數位，您可以藉由建立 [時間序列模型變數](/azure/time-series-insights/concepts-variables#numeric-variables) 並 [轉換](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions) 該值來縮減大小。
 
 > [!NOTE]
 > **字串** 類型不可為 null：
@@ -51,7 +51,7 @@ Azure 時間序列深入解析 Explorer 提供了一種方式，可自動合併�
 
 您可以將物件和陣列等複雜類型傳送為事件裝載的一部分。 嵌套物件將會壓平合併，而陣列將儲存為 `dynamic` 或壓平合併，以根據您的環境設定和 JSON 圖形來產生多個事件。 深入瞭解 JSON 簡維 [和轉義規則](./concepts-json-flattening-escaping-rules.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 閱讀 JSON 簡維 [和轉義規則](./concepts-json-flattening-escaping-rules.md) ，以瞭解事件的儲存方式。
 

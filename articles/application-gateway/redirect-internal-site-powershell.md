@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: victorh
-ms.openlocfilehash: ab1cedf324c0391ce54773202b030b519c3e4766
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e3f53cc14b22e7d689e246c3f0609ce80c29ec4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804253"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594300"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>使用 Azure PowerShell 來建立具有內部重新導向的應用程式閘道
 
@@ -21,12 +21,11 @@ ms.locfileid: "84804253"
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
-> * 設定網路
-> * 建立應用程式閘道
-> * 新增接聽程式和重新導向規則
-> * 建立包含後端集區的虛擬機器擴展集
-> * 在網域中建立 CNAME 記錄
+* 設定網路
+* 建立應用程式閘道
+* 新增接聽程式和重新導向規則
+* 建立包含後端集區的虛擬機器擴展集
+* 在網域中建立 CNAME 記錄
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

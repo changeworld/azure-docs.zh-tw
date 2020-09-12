@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 9facbc1629b8e1330c6bbafb4444d5bfc237d16f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 60d3c9df270561c94b8eb162595e4fe01713c0b5
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752305"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536474"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files 的資源限制
 
@@ -56,11 +56,11 @@ Azure NetApp Files 磁片區有一個稱為 *maxfiles*的限制。 Maxfiles 限�
 
 |    磁片區大小 (配額)      |  自動 readjustment maxfiles 限制    |
 |----------------------------|-------------------|
-|    < 1 TiB                 |    2 千萬     |
-|    >= 1 TiB 但 < 2 TiB    |    40000000     |
-|    >= 2 TiB 但 < 3 TiB    |    6000 萬     |
-|    >= 3 TiB 但 < 4 TiB    |    80000000     |
-|    >= 4 TiB                |    1 億    |
+|    <= 1 TiB                |    2 千萬     |
+|    > 1 TiB 但 <= 2 TiB    |    40000000     |
+|    > 2 TiB 但 <= 3 TiB    |    6000 萬     |
+|    > 3 TiB 但 <= 4 TiB    |    80000000     |
+|    > 4 TiB                 |    1 億    |
 
 如果您已經為磁片區配置至少 4 TiB 配額，您可以起始 [支援要求](#limit_increase) ，將 maxfiles 限制增加到100000000以上。
 

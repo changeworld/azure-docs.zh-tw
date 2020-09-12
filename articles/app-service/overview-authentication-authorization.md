@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 19d6a646df22e2f8c9bdfc03f15453a520e527a4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: e984332e6e93fc9a42123d06f320a66073585bff
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962820"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596034"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service 和 Azure Functions 中的驗證和授權
 
@@ -149,11 +149,11 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 
 ## <a name="more-resources"></a>其他資源
 
-[教學課程：在 Azure App Service 中端對端驗證和授權使用者 (Windows)](tutorial-auth-aad.md)  
-[教學課程：在適用於 Linux 的 Azure App Service 中端對端驗證和授權使用者](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
-[自訂 App Service](app-service-authentication-how-to.md) 
- 中的驗證和授權[Azure AppService EasyAuth (協力廠商) ](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
- 的 .net Core 整合使用[.Net Core (協力廠商) 取得 Azure App Service 驗證](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+* [教學課程：在 Azure App Service 中端對端驗證和授權使用者 (Windows)](tutorial-auth-aad.md)  
+* [教學課程：在適用於 Linux 的 Azure App Service 中端對端驗證和授權使用者](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
+* [自訂 App Service 中的驗證與授權](app-service-authentication-how-to.md)
+* [Azure AppService EasyAuth (協力廠商) 的 .NET Core 整合 ](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+* [使用 .NET Core (協力廠商) 取得 Azure App Service 驗證 ](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 提供者專屬的使用說明指南：
 

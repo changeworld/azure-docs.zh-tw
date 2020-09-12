@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbbc86b44c95219677b520cc54fbad51be06104a
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: abec780deb7834e67618c74e556a1bc20154b0b4
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182406"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658542"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>判斷混合式身分識別生命週期採用策略
 在這項工作中，您將為混合式身分識別解決方案定義身分識別管理策略，以滿足您在 [判斷混合式身分識別管理工作](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)中定義的商務需求。
@@ -38,7 +38,7 @@ ms.locfileid: "89182406"
 
 | 生命週期管理階段 | 內部部署 | Cloud | 混合式 |
 | --- | --- | --- | --- |
-| 帳戶管理和佈建 |您可以利用 Active Directory ® 網域服務 (AD DS) 伺服器角色，建立可擴充、安全且容易管理的基礎結構來管理使用者與資源，並支援 Microsoft® Exchange Server 等具有目錄功能的應用程式。 <br><br> [您可以透過身分識別管理員在 AD DS 中佈建群組](https://technet.microsoft.com/library/ff686261.aspx) <br>[您可以在 AD DS 中布建使用者](https://technet.microsoft.com/library/ff686263.aspx) <br><br>  基於安全性考量，系統管理員可以使用存取控制來管理使用者對共用資源的存取權。 在 Active Directory 中，存取控制的管理方式是在物件層級設定物件的不同存取層級 (或權限)，例如完全控制、寫入、讀取或沒有存取權。 Active Directory 中的存取控制定義不同的使用者如何使用 Active Directory 物件。 根據預設，Active Directory 中的物件權限會設定為最安全的設定。 |您必須為每一個會存取 Microsoft 雲端服務的使用者建立帳戶。 您也可以變更使用者帳戶，或在已不需要時將它們刪除。 根據預設，使用者沒有系統管理員權限，但是您可以選擇性地指派給他們。 <br><br>  Azure Active Directory 的其中一項主要功能是管理對資源的存取權。 這些資源可以是目錄的一部分，例如透過目錄中的角色或目錄外部的資源 (例如 SaaS 應用程式、Azure 服務以及 SharePoint 網站或內部部署資源) 管理物件的權限。 <br><br>  Azure Active Directory 的存取管理解決方案以安全性群組為核心。 資源擁有者 (或目錄的系統管理員) 可以指派群組，對所擁有的資源提供特定的存取權限。 群組的成員會取得存取權，而資源擁有者可以將管理群組成員清單的權限委派給其他人 – 例如部門經理或服務台系統管理員<br> <br> ＜在 Azure AD 中管理群組＞一節中提供有關透過群組來管理存取權的詳細資訊。 |透過同步處理與同盟將 Active Directory 身分識別延伸至雲端 |
+| 帳戶管理和佈建 |您可以利用 Active Directory ® 網域服務 (AD DS) 伺服器角色，建立可擴充、安全且容易管理的基礎結構來管理使用者與資源，並支援 Microsoft® Exchange Server 等具有目錄功能的應用程式。 <br><br> [您可以透過身分識別管理員在 AD DS 中佈建群組](/previous-versions/mim/ff686261(v=ws.10)) <br>[您可以在 AD DS 中布建使用者](/previous-versions/mim/ff686263(v=ws.10)) <br><br>  基於安全性考量，系統管理員可以使用存取控制來管理使用者對共用資源的存取權。 在 Active Directory 中，存取控制的管理方式是在物件層級設定物件的不同存取層級 (或權限)，例如完全控制、寫入、讀取或沒有存取權。 Active Directory 中的存取控制定義不同的使用者如何使用 Active Directory 物件。 根據預設，Active Directory 中的物件權限會設定為最安全的設定。 |您必須為每一個會存取 Microsoft 雲端服務的使用者建立帳戶。 您也可以變更使用者帳戶，或在已不需要時將它們刪除。 根據預設，使用者沒有系統管理員權限，但是您可以選擇性地指派給他們。 <br><br>  Azure Active Directory 的其中一項主要功能是管理對資源的存取權。 這些資源可以是目錄的一部分，例如透過目錄中的角色或目錄外部的資源 (例如 SaaS 應用程式、Azure 服務以及 SharePoint 網站或內部部署資源) 管理物件的權限。 <br><br>  Azure Active Directory 的存取管理解決方案以安全性群組為核心。 資源擁有者 (或目錄的系統管理員) 可以指派群組，對所擁有的資源提供特定的存取權限。 群組的成員會取得存取權，而資源擁有者可以將管理群組成員清單的權限委派給其他人 – 例如部門經理或服務台系統管理員<br> <br> ＜在 Azure AD 中管理群組＞一節中提供有關透過群組來管理存取權的詳細資訊。 |透過同步處理與同盟將 Active Directory 身分識別延伸至雲端 |
 
 ## <a name="role-based-access-control"></a>角色型存取控制
 Azure 角色型存取控制 (Azure RBAC) 使用角色和布建原則來評估、測試和強制執行您的商務程式，以及將存取權授與使用者的規則。 金鑰系統管理員建立佈建原則，將使用者指派到角色，並定義這些角色對資源的權限集。 Azure RBAC 延伸了身分識別管理解決方案，以使用以軟體為基礎的處理常式，並減少布建程式中的使用者手動互動。
@@ -74,14 +74,14 @@ Azure AD 中的群組型授權管理可讓系統管理員將使用者指派到�
 
 ## <a name="integration-with-other-3rd-party-providers"></a>」 與其他協力廠商提供者整合
 
-Azure Active Directory 為數千個 SaaS 應用程式和內部部署 Web 應用程式提供單一登入和增強的應用程式存取安全性。 如需詳細資訊，請參閱 [整合應用程式與 Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+Azure Active Directory 為數千個 SaaS 應用程式和內部部署 Web 應用程式提供單一登入和增強的應用程式存取安全性。 如需詳細資訊，請參閱 [整合應用程式與 Azure Active Directory](../develop/quickstart-register-app.md)
 
 ## <a name="define-synchronization-management"></a>定義同步處理管理
 將內部部署目錄與 Azure AD 整合可提供一個通用身分識別來存取雲端和內部部署資源，讓使用者變得更有生產力。 透過此整合，使用者和組織可以享受到下列優點：
 
 * 組織可以運用 Windows Server Active Directory，然後連線到 Azure Active Directory，提供跨內部部署或雲端架構服務的通用混合式身分識別給使用者。
 * 系統管理員可以根據應用程式資源、裝置和使用者身分識別、網路位置和多重要素驗證來提供條件式存取。
-* 使用者可以透過 Azure AD 中的帳戶，將通用身分識別運用到 Office 365、Intune、SaaS 應用程式和協力廠商應用程式。
+* 使用者可以透過 Azure AD Microsoft 365、Intune、SaaS 應用程式和協力廠商應用程式的帳戶，利用他們的通用身分識別。
 * 開發人員可以利用通用身分識別模型來建置應用程式，將應用程式整合到 Active Directory 內部部署或 Azure，成為雲端架構應用程式
 
 下圖提供身分識別同步處理程序的高階觀點範例。
@@ -104,4 +104,3 @@ Azure Active Directory 為數千個 SaaS 應用程式和內部部署 Web 應用�
 
 ## <a name="see-also"></a>另請參閱
 [設計考量概觀](plan-hybrid-identity-design-considerations-overview.md)
-

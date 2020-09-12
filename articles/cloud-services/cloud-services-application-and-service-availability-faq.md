@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c294d4583ba2690e1f4952441ffb43bff1459059
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7a2596d4f6a8aa9fb4c95dfb5a3ccab7d7206f3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75386913"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461301"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之應用程式和服務可用性問題：常見問題集 (FAQ)
 
@@ -33,7 +33,7 @@ Microsoft 大約一個月會發行一次適用於 Windows Azure PaaS VM 的新�
 
 如需最新客體 OS 更新的完整詳細資訊，請參閱 [Azure 客體 OS 版本與 SDK 相容性矩陣](cloud-services-guestos-update-matrix.md)。
 
-如需有關重新啟動的實用資訊，以及客體和主機 OS 更新的技術細節線索，請參閱[角色執行個體因 OS 升級而重新啟動 (英文)](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx) 的 MSDN 部落格文章。
+如需有關重新啟動的實用資訊，以及客體和主機 OS 更新的技術細節線索，請參閱[角色執行個體因 OS 升級而重新啟動 (英文)](https://docs.microsoft.com/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades) 的 MSDN 部落格文章。
 
 ## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>為什麼在服務已閒置一段時間後，對我雲端服務的第一個要求所花費時間比平常更久？
 當網頁伺服器收到第一個要求時，會先重新編譯程式碼，然後再處理要求。 這就是第一個要求比其他要求更費時的原因。 依預設，應用程式集區在使用者閒置的情況下會加以關閉。 應用程式集區也會進行回收，預設為每隔 1,740 分鐘 (29 小時)。

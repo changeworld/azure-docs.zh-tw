@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb39f1053abeb201c413db7c6bbd3e9f261bd95
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011339"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461029"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>規劃 Azure Active Directory 存取審查部署
 
@@ -93,7 +93,7 @@ ms.locfileid: "89011339"
 
 * **It 管理** 管理您的 it 基礎結構，並管理您的雲端投資和軟體即服務 (SaaS) 應用程式。 此小組將：
 
-   * 檢查基礎結構和應用程式的特殊許可權存取，包括 Office 365 和 Azure AD。
+   * 檢查基礎結構和應用程式的特殊許可權存取，包括 Microsoft 365 和 Azure AD。
 
    * 在用來維護例外狀況清單或 IT 試驗專案的群組上，排程並執行存取權審核，以維護最新的存取清單。
 
@@ -180,7 +180,7 @@ ms.locfileid: "89011339"
 
 * [整合了 Azure AD 的應用程式，可進行單一登入](../manage-apps/what-is-application-management.md) (例如 SaaS、企業營運) 。
 
-* 群組 [成員資格](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (同步處理至 Azure AD，或在 Azure AD 或 Office 365 中建立，包括 Microsoft 小組) 。
+* 群組 [成員資格](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (同步處理至 Azure AD，或在 Azure AD 或 Microsoft 365 中建立，包括 Microsoft 小組) 。
 
 * 將資源群組、應用程式和網站群組 (群組、應用程式和網站的[存取套件](/azure/active-directory/governance/entitlement-management-overview)，) 成單一套件來管理存取權。
 
@@ -304,7 +304,7 @@ ms.locfileid: "89011339"
 
 ## <a name="plan-access-reviews-for-groups"></a>規劃群組的存取權審核
 
-除了存取套件之外，審核群組成員資格是管理存取權最有效的方式。 建議您透過 [安全性群組或 Office 365 群組](../fundamentals/active-directory-manage-groups.md)指派資源的存取權，並將該使用者新增至這些群組以取得存取權。
+除了存取套件之外，審核群組成員資格是管理存取權最有效的方式。 建議您透過 [安全性群組或 Microsoft 365 群組](../fundamentals/active-directory-manage-groups.md)指派資源的存取權，並將使用者新增至這些群組以取得存取權。
 
 單一群組可以被授與所有適當資源的存取權。 您可以將群組存取權指派給個別資源，或指派給群組應用程式和其他資源的存取套件。 使用這個方法，您可以檢查群組的存取權，而不是個別存取每個應用程式的許可權。 
 
@@ -322,9 +322,9 @@ ms.locfileid: "89011339"
 
 我們建議群組擁有者審核成員資格，因為他們最好是知道誰需要存取權。 群組的擁有權與群組的類型不同：
 
-在 Office 365 和 Azure AD 中建立的群組有一或多個定義完善的擁有者。 在大部分的情況下，這些擁有者會為他們自己的群組建立完美的審核者，因為他們知道誰應該擁有存取權。 
+在 Microsoft 365 中建立的群組，以及 Azure AD 有一或多個定義完善的擁有者。 在大部分的情況下，這些擁有者會為他們自己的群組建立完美的審核者，因為他們知道誰應該擁有存取權。 
 
-例如，Microsoft 小組會使用 Office 365 群組作為基礎授權模型，將 SharePoint、Exchange、OneNote 或其他 Office 365 服務中的資源存取權授與使用者。 小組的建立者會自動成為擁有者，且應負責證明至該群組的成員資格。 
+例如，Microsoft 小組使用 Microsoft 365 群組作為基礎授權模型，將 SharePoint、Exchange、OneNote 或其他 Microsoft 365 服務中的資源存取權授與使用者。 小組的建立者會自動成為擁有者，且應負責證明至該群組的成員資格。 
 
 在 Azure AD 入口網站中手動建立的群組，或透過 Microsoft Graph 的腳本，可能不一定會定義擁有者。 我們建議您在群組的「擁有者」區段中或透過 Graph，透過 Azure AD 入口網站來定義它們。
 
@@ -403,7 +403,7 @@ ms.locfileid: "89011339"
 
 * 安全性系統管理員
 
-* 所有 Office 365 和 Dynamics 服務管理角色
+* 所有 Microsoft 365 和 Dynamics 服務管理角色
 
 此處選取的角色包括永久和合格的角色。 
 
@@ -511,7 +511,7 @@ ms.locfileid: "89011339"
 
 如需更高階的查詢和存取權檢查分析，以及追蹤變更和完成評論，建議您將 Azure AD 審核記錄匯出至 [Azure Log Analytics](../reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) 或 Azure 事件中樞。 當您儲存在 Azure Log Analytics 中時，您可以使用 [功能強大的分析語言](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md) –並建立您自己的儀表板。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入瞭解下列相關技術。
 

@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 216cff03ac6ce64dee9aae1e9daa4a86385eeb0e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: e230d3a4029d97a328280f581c126c7ec2d0bdb3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783326"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460791"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>針對 Azure AD 權利管理進行疑難排解
 
@@ -47,7 +47,7 @@ ms.locfileid: "88783326"
 
 * 當您移除小組成員時，也會從 Microsoft 365 群組移除這些成員。 移除小組的交談功能方面可能會延遲。 如需詳細資訊，請參閱 [群組成員資格](/microsoftteams/office-365-groups#group-membership)。
 
-* 請確定您的目錄未設定為多地理位置。 權利管理目前不支援 SharePoint Online 的多地理位置。 SharePoint Online 網站必須位於預設地理位置，才能與權利管理一同控管。 如需詳細資訊，請參閱 [OneDrive 和 SharePoint Online 中的多地理位置功能](/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)。
+* 請確定您的目錄未設定為多地理位置。 權利管理目前不支援 SharePoint Online 的多地理位置。 SharePoint Online 網站必須位於預設地理位置，才能與權利管理一同控管。 如需詳細資訊，請參閱 [OneDrive 和 SharePoint Online 中的多地理位置功能](/Microsoft 365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)。
 
 ## <a name="access-packages"></a>存取套件
 
@@ -141,7 +141,7 @@ ms.locfileid: "88783326"
 
 * 套用多個原則時，系統會根據下列優先順序邏輯，自動選取的原則或向要求者顯示的原則：
 
-    | 原則優先順序 | 範圍 |
+    | 原則優先順序 | 影響範圍 |
     | --- | --- |
     | P1 | 您目錄中的特定使用者和群組，或特定的已連線組織 |
     | P2 | 目錄中的所有成員 (不包括來賓)  |
@@ -150,7 +150,7 @@ ms.locfileid: "88783326"
     
     如果有任何原則的優先順序較高，則會忽略較低優先順序的類別。 如需對要求者顯示多個具有相同優先順序之原則的範例，請參閱 [選取原則](entitlement-management-request-access.md#select-a-policy)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [管控外部使用者的存取](entitlement-management-external-users.md)
 - [查看使用者在權利管理中如何獲得存取權的報告](entitlement-management-reports.md)

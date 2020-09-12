@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 09/09/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 66855260bd44ef83972fa251d076d0204cba32da
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2059c473c8429e7498992e26c0a2c90ea835c537
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795234"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646590"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 身分識別平臺識別碼權杖
 
@@ -78,13 +78,15 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`name` | String | `name` 宣告會提供人類看得懂的值，用以識別權杖的主體。 此值不保證是唯一的，而是可變動的，而且是設計成僅供顯示之用。 `profile`需要範圍才能接收此宣告。 |
 |`nonce`| String | Nonce 符合對 IDP 的原始 /authorize 要求中包含的參數。 如果不符，您的應用程式應該拒絕權杖。 |
 |`oid` | 字串，GUID | 物件在 Microsoft 身分識別系統中的不可變識別碼，在此案例為使用者帳戶。 此識別碼可跨應用程式唯一識別使用者，同一位使用者登入兩個不同的應用程式會在 `oid` 宣告中收到相同的值。 Microsoft Graph 會傳回這個識別碼做為指定使用者帳戶的 `id` 屬性。 因為 `oid` 可讓多個應用程式與使用者相互關聯，所以 `profile` 必須要有範圍才能接收此宣告。 請注意，如果有單一使用者存在於多個租使用者中，使用者將會在每個租使用者中包含不同的物件識別碼-系統會將它們視為不同的帳戶，即使使用者以相同的認證登入每個帳戶也是一樣。 宣告 `oid` 是 GUID，無法重複使用。 |
-|`roles`| 字串的陣列 | 指派給登入之使用者的一組角色。 |
+|`roles`| 字串陣列 | 指派給登入之使用者的一組角色。 |
 |`rh` | 不透明字串 |Azure 用來重新驗證權杖的內部宣告。 應該予以忽略。 |
 |`sub` | String | 權杖判斷提示其相關資訊的主體，例如應用程式的使用者。 這個值不可變，而且無法重新指派或重複使用。 主體是成對識別碼，對於特定應用程式識別碼來說，主體是唯一的。 如果單一使用者使用兩個不同的用戶端識別碼登入兩個不同的應用程式，則這些應用程式將會收到兩個不同的主體宣告值。 視您的架構和隱私權需求而定，可能也不會想要這樣做。 |
 |`tid` | 字串，GUID | 代表使用者是來自哪個 Azure AD 租用戶的 GUID。 就工作和學校帳戶而言，GUID 是使用者所屬組織的不可變租用戶識別碼。 就個人帳戶而言，此值會是 `9188040d-6c67-4c5b-b112-36a304b66dad`。 `profile`需要範圍才能接收此宣告。 |
 |`unique_name` | String | 提供人類看得懂的值，用以識別權杖的主體。 這個值在任何給定的時間點都是唯一的，但是當電子郵件和其他識別碼可以重複使用時，這個值可能會重新出現在其他帳戶上，因此只能用於顯示用途。 僅在 v1.0 `id_tokens` 中發出。 |
 |`uti` | 不透明字串 | Azure 用來重新驗證權杖的內部宣告。 應該予以忽略。 |
 |`ver` | 字串，1.0 或 2.0 | 表示 id_token 的版本。 |
+|`hasgroups`|布林值|如果有的話，一律為 true，表示使用者至少在一個群組中。 在隱含授與流程中用來取代 Jwt 的群組宣告，如果完整群組宣告會將 URI 片段延伸到超過 URL 長度限制 (目前) 的6個或更多群組。 表示用戶端應該使用 Microsoft Graph API 來判斷使用者的群組 (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`)。|
+|`groups:src1`|JSON 物件 | 若為沒有長度限制 (請參閱上面的 `hasgroups`) 但是對權杖而言仍然太大的權杖要求，則會包含使用者的完整 groups 清單連結。 在 JWT 中以分散式宣告形式取代 `groups` 宣告，在 SAML 中則以新宣告形式取代。 <br><br>**範例 JWT 值**： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }`<br><br> 如需詳細資訊，請參閱 [群組超額](#groups-overage-claim)宣告。|
 
 > [!NOTE]
 > V1.0 和 v2.0 id_token 在上述範例中所見的資訊數量有所差異。 版本是根據其要求所在的端點。 雖然現有的應用程式可能會使用 Azure AD 端點，但新的應用程式應該使用 v2.0 「Microsoft 身分識別平臺」端點。
@@ -103,6 +105,26 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 >
 > 來賓案例（使用者位於某個租使用者中，並在另一個租使用者中進行驗證）應將使用者視為服務的新使用者。  您的 Contoso 租使用者中的檔和許可權不應套用於 Fabrikam 租使用者中。 這一點很重要，可避免跨租使用者意外資料洩漏。
 
+### <a name="groups-overage-claim"></a>群組超額宣告
+為確保權杖大小不超過 HTTP 標頭大小限制，Azure AD 會限制在宣告中包含的物件識別碼數目 `groups` 。 如果使用者隸屬於超出超額限制 (SAML 權杖為 150，JWT 權杖為 200) 的群組，則 Azure AD 不會在權杖中發出群組宣告。 相反地，其會在權杖中包含超額宣告，以指示應用程式查詢 Microsoft Graph API 來取得使用者的群組成員資格。
+
+```json
+{
+  ...
+  "_claim_names": {
+   "groups": "src1"
+    },
+    {
+  "_claim_sources": {
+    "src1": {
+        "endpoint":"[Url to get this user's group membership from]"
+        }
+       }
+     }
+  ...
+ }
+```
+
 ## <a name="validating-an-id_token"></a>驗證 id_token
 
 驗證的 `id_token` 方式類似于 [驗證存取權杖](access-tokens.md#validating-tokens) 的第一個步驟-您的用戶端可以驗證正確的簽發者是否已傳回權杖，而且該權杖並未遭到篡改。 因為 `id_tokens` 一律為 JWT 權杖，所以有許多程式庫可以驗證這些權杖，我們建議您使用其中一種程式庫，而不是自行進行。  請注意，只有機密用戶端 (具有秘密) 的用戶端應該驗證識別碼權杖。  公用應用程式 (程式碼完全在您無法控制的裝置或網路上執行，例如，使用者的瀏覽器或其家用網路) 不會因為驗證識別碼權杖而受益，因為惡意使用者可以攔截和編輯用於驗證權杖的金鑰。
@@ -113,7 +135,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 * 對象：`aud` 宣告應符合您應用程式的應用程式識別碼。
 * Nonce：承載中的 `nonce` 宣告必須符合在初始要求期間傳入 /authorize 端點的 nonce 參數。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 瞭解 [存取權杖](access-tokens.md)
 * 使用 [選擇性宣告](active-directory-optional-claims.md)自訂您 id_token 中的 JWT 宣告。

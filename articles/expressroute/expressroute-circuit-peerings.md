@@ -2,26 +2,26 @@
 title: Azure ExpressRoute：線路和對等互連
 description: 此頁面提供 ExpressRoute 線路和路由網域/對等互連的概觀。
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: mialdrid
-ms.openlocfilehash: e2c730906e8dcb31c3365259088240c74e416855
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: 072eeb0bee0d0441549d2edad448f3b1c85a28a4
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537015"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566495"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 線路和對等互連
 
 ExpressRoute 線路可透過連線提供者將內部部署基礎結構連線到 Microsoft。 本文將協助您了解 ExpressRoute 線路和路由網域/對等互連。 下圖所示的是 WAN 與 Microsoft 之間連線的邏輯表示法。
 
-![此圖顯示 ExpressRoute 線路如何透過連線提供者，將您的內部部署基礎結構連線到 Microsoft。](./media/expressroute-circuit-peerings/expressroute-basic.png)
+![此圖顯示 ExpressRoute 線路如何透過連線提供者將您的內部部署基礎結構連線至 Microsoft。](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
 > [!IMPORTANT]
-> Azure 公用對等互連已被取代，不適用於新的 ExpressRoute 線路。 新線路支援 Microsoft 對等互連和私用對等互連。  
+> Azure 公用對等互連已被取代，無法用於新的 ExpressRoute 線路。 新線路支援 Microsoft 對等互連和私用對等互連。  
 >
 
 ## <a name="expressroute-circuits"></a><a name="circuits"></a>ExpressRoute 線路
@@ -42,7 +42,7 @@ ExpressRoute 線路不對應至任何實體裝置。 線路由一個稱為服務
 
 ExpressRoute 線路有多個相關聯的路由網域/對等互連： Azure 公用、Azure 私用和 Microsoft。 每個對等互連在一對路由器上的設定完全相同 (使用主動-主動或載入共用設定)，以確保高可用性。 Azure 服務分成 *Azure 公用*和 *Azure 私用*兩類來代表 IP 定址配置。
 
-![此圖顯示如何在 ExpressRoute 線路中設定 Azure 公用、Azure 私用和 Microsoft 對等互連。](./media/expressroute-circuit-peerings/expressroute-peerings.png)
+![顯示如何在 ExpressRoute 線路中設定 Azure 公用、Azure 私用和 Microsoft 對等互連的圖表。](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
 ### <a name="azure-private-peering"></a><a name="privatepeering"></a>Azure 私用對等互連
 
@@ -54,7 +54,7 @@ ExpressRoute 線路有多個相關聯的路由網域/對等互連： Azure 公�
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-Microsoft 線上服務（Office 365 和 Azure PaaS 服務）的連線會透過 Microsoft 對等互連進行。 我們會透過 Microsoft 對等路由網域啟用 WAN 與 Microsoft 雲端服務之間的雙向連線。 您只能透過您或連線提供者所擁有的公用 IP 位址連線到 Microsoft 雲端服務，且必須遵守所有已定義的規則。 如需詳細資訊，請參閱 [ExpressRoute 必要條件](expressroute-prerequisites.md)頁面。
+Microsoft 線上服務 (Microsoft 365 和 Azure PaaS 服務的連線會透過 Microsoft 對等互連進行) 。 我們會透過 Microsoft 對等路由網域啟用 WAN 與 Microsoft 雲端服務之間的雙向連線。 您只能透過您或連線提供者所擁有的公用 IP 位址連線到 Microsoft 雲端服務，且必須遵守所有已定義的規則。 如需詳細資訊，請參閱 [ExpressRoute 必要條件](expressroute-prerequisites.md)頁面。
 
 如需支援的服務、費用和組態的詳細資訊，請參閱 [常見問題集頁面](expressroute-faqs.md) 。 如需有關提供 Microsoft 對等支援的連線提供者清單的詳細資訊，請參閱 [ExpressRoute 位置](expressroute-locations.md) 頁面。
 
@@ -74,7 +74,7 @@ Microsoft 線上服務（Office 365 和 Azure PaaS 服務）的連線會透過 M
 
 NPM 會監視 Azure 私用對等互連和 Microsoft 對等互連的健康情況。 如需詳細資訊，請參閱我們的[文章](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) \(英文\)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 尋找服務提供者。 請參閱 [ExpressRoute 服務提供者和位置](expressroute-locations.md)。
 * 請確定符合所有必要條件。 請參閱 [ExpressRoute 必要條件](expressroute-prerequisites.md)。

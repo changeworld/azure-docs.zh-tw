@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: ca76ec5bef1d908ca3cea6ce0f58b1205c1676ca
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: da48b593b8f645566b2f9775fabc5d8e62e625b6
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144085"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661562"
 ---
 # <a name="submit-a-training-run-to-a-compute-target"></a>將訓練回合提交至計算目標
 
@@ -31,7 +31,7 @@ ms.locfileid: "89144085"
 ## <a name="prerequisites"></a>必要條件
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)
-* [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)、`ws`
 * 計算目標 `my_compute_target` 。  建立具有下列內容的計算目標：
   * [Python SDK](how-to-create-attach-compute-sdk.md) 
@@ -39,11 +39,11 @@ ms.locfileid: "89144085"
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>什麼是腳本執行設定？
 
-您可以使用 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) 物件提交訓練實驗。  此物件包含：
+您可以使用 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 物件提交訓練實驗。  此物件包含：
 
 * **source_directory**：包含定型指令碼的來源目錄
 * **指令碼**：識別定型指令碼
-* **run_config**：回合 [設定，它](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py)接著會定義定型的發生位置。 在中， `run_config` 您會指定執行定型腳本時要使用的計算目標和環境。  
+* **run_config**：回合 [設定，它](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true)接著會定義定型的發生位置。 在中， `run_config` 您會指定執行定型腳本時要使用的計算目標和環境。  
 
 ## <a name="whats-an-environment"></a>什麼是環境？
 
@@ -167,7 +167,7 @@ run = experiment.submit(config=script_run_config)
 ## <a name="next-steps"></a>後續步驟
 
 * [教學課程：定型模型](tutorial-train-models-with-aml.md)會使用受控計算目標來定型模型。
-* 了解如何[有效率地微調超參數](how-to-tune-hyperparameters.md)以便建置更好的模型。
+* 瞭解如何 [有效率地調整超參數](how-to-tune-hyperparameters.md) 來建立更好的模型。view = azure-ml-.py&preserve-view = true) 
 * 擁有定型的模型之後，請了解[部署模型的方式和位置](how-to-deploy-and-where.md)。
-* 檢視 [RunConfiguration 類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK 參考。
+* 檢視 [RunConfiguration 類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py&preserve-view=true) SDK 參考。
 * [搭配使用 Azure Machine Learning 與 Azure 虛擬網路](how-to-enable-virtual-network.md)

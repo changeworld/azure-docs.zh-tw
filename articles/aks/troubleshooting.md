@@ -4,12 +4,12 @@ description: 了解在使用 Azure Kubernetes Service (AKS) 時，如何針對�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a28ebd047e4d5e610ea0c895063eb87ce051d45
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056522"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460315"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑難排解
 
@@ -31,12 +31,12 @@ ms.locfileid: "87056522"
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>當我使用進階網路設定部署 AKS 叢集時，收到 insufficientSubnetSize 錯誤。 我該怎麼辦？
 
-此錯誤表示叢集使用中的子網不再具有 CIDR 中的可用 Ip，因此無法成功指派資源。 針對 Kubenet 叢集，此需求是叢集中每個節點的足夠 IP 空間。 針對 Azure CNI 叢集，需求是叢集中每個節點和 pod 的足夠 IP 空間。
-深入瞭解[AZURE CNI 的設計，以將 ip 指派給](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)pod。
+此錯誤表示叢集中使用的子網不再有可在其 CIDR 中使用的 Ip，以進行成功的資源指派。 針對 Kubenet 叢集，叢集內的每個節點都需要有足夠的 IP 空間。 針對 Azure CNI 叢集，叢集內的每個節點和 pod 都需要有足夠的 IP 空間。
+深入瞭解 [AZURE CNI 的設計，以將 ip 指派給](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)pod。
 
-這些錯誤也會出現在[AKS 診斷](./concepts-diagnostics.md)中，這會主動呈現子網大小不足的問題。
+這些錯誤也會出現在 [AKS 診斷](./concepts-diagnostics.md) 中，以主動呈現子網大小不足的問題。
 
-下列三（3）個案例會導致子網大小不足的錯誤：
+下列三 (3) 案例會導致子網大小不足的錯誤：
 
 1. AKS Scale 或 AKS Nodepool scale
    1. 如果使用 Kubenet，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of new nodes requested` 。
@@ -46,18 +46,18 @@ ms.locfileid: "87056522"
    1. 如果使用 Kubenet，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of buffer nodes needed to upgrade` 。
    1. 如果使用 Azure CNI，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` 。
    
-   根據預設，AKS 叢集會設定一（1）的最大浪湧（升級緩衝區）值，但您可以藉由設定[節點集區的最大浪湧值](upgrade-cluster.md#customize-node-surge-upgrade-preview)來自訂此升級行為，這會增加完成升級所需的可用 ip 數目。
+   根據預設，AKS 叢集會將最大的 (升級緩衝區) 值設定為一個 (1) ，但您可以藉由設定 [節點集區的最大激增值](upgrade-cluster.md#customize-node-surge-upgrade-preview) 來自訂此升級行為，這會增加完成升級所需的可用 ip 數目。
 
-1. AKS 建立或 AKS Nodepool 新增
+1. AKS create 或 AKS Nodepool add
    1. 如果使用 Kubenet，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of nodes requested for the node pool` 。
    1. 如果使用 Azure CNI，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of nodes requested times (*) the node pool's --max-pod value` 。
 
-藉由建立新的子網，可以採取下列緩和措施。 因為無法更新現有子網的 CIDR 範圍，所以必須要有建立新子網的許可權。
+建立新的子網可以採取下列緩和措施。 因為無法更新現有子網的 CIDR 範圍，所以需要建立新子網的許可權。
 
-1. 重建具有較大 CIDR 範圍的新子網，以滿足作業目標：
+1. 以較大的 CIDR 範圍重建新的子網，以滿足操作目標：
    1. 使用新的所需非重迭範圍來建立新的子網。
    1. 在新的子網上建立新的 nodepool。
-   1. 從舊的子網中的舊 nodepool 清空 pod，以予以取代。
+   1. 從位於舊子網的舊 nodepool 中清空 pod，以取代。
    1. 刪除舊的子網和舊的 nodepool。
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>我的 Pod 會在 CrashLoopBackOff 模式中停滯。 我該怎麼辦？
@@ -69,22 +69,22 @@ ms.locfileid: "87056522"
 
 如需有關如何針對 Pod 問題進行疑難排解的詳細資訊，請參閱[偵錯應用程式](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)。
 
-## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>我 `TCP timeouts` 在使用 `kubectl` 或其他協力廠商工具連接到 API 伺服器時收到
-AKS 具有 HA 控制平面，會根據核心數目垂直調整，以確保其服務等級目標（Slo）和服務等級協定（Sla）。 如果您遇到連線超時的問題，請檢查下列內容：
+## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>我 `TCP timeouts` 在使用 `kubectl` 或其他連接至 API 伺服器的協力廠商工具時收到
+AKS 具有 HA 控制平面，可根據核心數目垂直調整，以確保其服務等級目標 (Slo) 和服務等級協定 (Sla) 。 如果您遇到連線超時，請檢查下列內容：
 
-- **您的所有 API 命令是否一致地計時，或只是幾個？** 如果只有少數幾個，您的 `tunnelfront` pod 或 `aks-link` pod （負責節點 > 的控制平面通訊）可能不會處於執行中狀態。 請確定裝載此 pod 的節點未過度使用或在壓力下。 請考慮將它們移至自己的[ `system` 節點集](use-system-pools.md)區。
-- **您是否已開啟[AKS 限制輸出流量](limit-egress-traffic.md)檔中所述的所有必要端口、Fqdn 和 ip？** 否則，可能會有數個命令呼叫失敗。
-- **您目前的 IP 是否由[API Ip 授權範圍](api-server-authorized-ip-ranges.md)所涵蓋？** 如果您使用這項功能，而且您的 IP 未包含在範圍內，則會封鎖您的呼叫。 
-- **您是否有用戶端或應用程式正在洩漏對 API 伺服器的呼叫？** 請務必使用監看式，而不是頻繁的 get 呼叫，而您的協力廠商應用程式不會洩漏這類呼叫。 例如，Istio 混音器中的錯誤會導致每次在內部讀取秘密時，都會建立新的 API 伺服器監看式連線。 因為此行為會定期發生，監看連接會快速累積，而且最終會導致 API 伺服器因為調整模式而變得多載。 https://github.com/istio/istio/issues/19481
-- **您的 helm 部署中有多個版本嗎？** 此案例可能會導致這兩個 tiller 在節點上使用過多的記憶體，以及大量的 `configmaps` ，這可能會造成 API 伺服器上不必要的尖峰。 請考慮在 `--history-max` 中設定 `helm init` ，並利用新的 Helm 3。 下列問題的詳細資訊： 
+- **您的所有 API 命令都是以一致或只是幾個方式來進行？** 如果只有少數，您的 `tunnelfront` pod 或 `aks-link` pod （負責節點 > 的控制平面通訊）可能不是處於執行中狀態。 請確定裝載此 pod 的節點未過度使用或在壓力下。 請考慮將它們移至自己的[ `system` 節點集](use-system-pools.md)區。
+- **您是否已開啟 [AKS 限制輸出流量](limit-egress-traffic.md)檔上所述的所有必要端口、Fqdn 和 ip？** 否則數個命令呼叫可能會失敗。
+- **您目前的 IP 是否包含在 [API Ip 授權範圍內](api-server-authorized-ip-ranges.md)？** 如果您使用這項功能，而您的 IP 未包含在範圍內，則您的呼叫將會遭到封鎖。 
+- **您是否有用戶端或應用程式正在洩漏對 API 伺服器的呼叫？** 請務必使用監看式，而不是頻繁的 get 呼叫，且您的協力廠商應用程式未洩漏這類呼叫。 例如，Istio 混音器中的錯誤會導致每次在內部讀取秘密時，都會建立新的 API 伺服器監看連接。 由於這種行為會定期發生，因此，監看連線會快速累積，而且最終會導致 API 伺服器因為調整模式而超載。 https://github.com/istio/istio/issues/19481
+- **您的 helm 部署中有多個版本嗎？** 這種情況可能會導致這兩個 tiller 在節點上使用太多記憶體，以及大量的 `configmaps` ，這可能會導致 API 伺服器上不必要的尖峰。 請考慮 `--history-max` 在中設定 `helm init` ，並利用新的 Helm 3。 下列問題的詳細資料： 
     - https://github.com/helm/helm/issues/4821
     - https://github.com/helm/helm/issues/3500
     - https://github.com/helm/helm/issues/4543
-- **[要封鎖的節點之間是否有內部流量？](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)**
+- **[節點之間的內部流量是否遭到封鎖？](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)**
 
-## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>我收到 `TCP timeouts` 的是，例如`dial tcp <Node_IP>:10250: i/o timeout`
+## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>我收到 `TCP timeouts` ，例如 `dial tcp <Node_IP>:10250: i/o timeout`
 
-這些超時可能與被封鎖的節點之間的內部流量有關。 確認未封鎖此流量，例如叢集節點的子網上的[網路安全性群組](concepts-security.md#azure-network-security-groups)。
+這些超時可能與節點封鎖之間的內部流量有關。 確認未封鎖此流量，例如，您叢集節點的子網上的 [網路安全性群組](concepts-security.md#azure-network-security-groups) 。
 
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>我正嘗試在現有叢集上啟用角色型存取控制 (RBAC)。 如何執行該作業？
 
@@ -97,6 +97,10 @@ AKS 具有 HA 控制平面，會根據核心數目垂直調整，以確保其服
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>我無法使用 kubectl 記錄取得記錄，或無法連線到 API 伺服器。 我收到「伺服器發生錯誤: 撥接後端時發生錯誤: 撥接 tcp...」。 我該怎麼辦？
 
 請確定已開啟連接埠 22、9000 和 1194，以連線至 API 伺服器。 使用 `kubectl get pods --namespace kube-system` 命令，檢查 `tunnelfront` 或 `aks-link` Pod 是否正在 *kube-system* 命名空間中執行。 若非如此，請強制刪除該 Pod，而它會重新啟動。
+
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>當我連線 `"tls: client offered only unsupported versions"` 到 AKS API 時，我是從我的用戶端取得。 我該怎麼辦？
+
+AKS 中支援的最低 TLS 版本是 TLS 1.2。
 
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>我正嘗試升級或調整，卻收到 `"Changing property 'imageReference' is not allowed"` 錯誤。 如何修正此問題？
 
@@ -153,7 +157,7 @@ AKS 具有 HA 控制平面，會根據核心數目垂直調整，以確保其服
 * AKS 節點/*MC_* 資源群組名稱會合併資源群組名稱與資源名稱。 自動產生的 `MC_resourceGroupName_resourceName_AzureRegion` 語法不得超過 80 個字元。 視需要縮短資源群組名稱或 AKS 叢集名稱的長度。 您也可以[自訂節點資源群組名稱](cluster-configuration.md#custom-resource-group-name)。
 * *dnsPrefix* 必須以英數字元值開頭和結束，且必須介於 1-54 個字元之間。 有效字元包含英數字元值和連字號 (-)。 *dnsPrefix* 不能包含特殊字元，例如句號 (.)。
 * 針對 Linux 節點集區，AKS 節點集區名稱必須全部小寫且為 1-11 個字元，針對 Windows 節點集區則是 1-6 個字元。 名稱的開頭必須是字母，而唯一允許的字元為字母與數字。
-* *管理員使用者名稱*（可設定 Linux 節點的系統管理員使用者名稱）必須以字母開頭，且只能包含字母、數位、連字號和底線，且長度上限為64個字元。
+* 系統管理員使用者 *名稱*（設定 Linux 節點的系統管理員使用者名稱）必須以字母開頭，且只可包含字母、數位、連字號和底線，且長度上限為64個字元。
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>我在嘗試建立、更新、調整、刪除或升級叢集時收到錯誤，指出因為另一個作業正在進行，所以不允許該作業。
 
@@ -176,9 +180,9 @@ AKS 具有 HA 控制平面，會根據核心數目垂直調整，以確保其服
 * 如果使用自動化指令碼，請在建立服務主體與建立 AKS 叢集之間新增時間延遲。
 * 如果使用 Azure 入口網站，需在建立期間返回叢集設定，並在幾分鐘之後重試驗證頁面。
 
+## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>我 `"AADSTS7000215: Invalid client secret is provided."` 在使用 AKS API 時遇到。 我該怎麼辦？
 
-
-
+這通常是因為服務主體認證過期所致。 [更新 AKS 叢集的認證。](update-credentials.md)
 
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>我在限制連出流量之後收到錯誤
 
@@ -201,7 +205,7 @@ AKS 具有 HA 控制平面，會根據核心數目垂直調整，以確保其服
 
 在 Kubernetes 1.10 版中，MountVolume.WaitForAttach 可能會因為 Azure 磁碟重新掛接而失敗。
 
-在 Linux 上，您可能會看到不正確的 DevicePath 格式錯誤。 例如:
+在 Linux 上，您可能會看到不正確的 DevicePath 格式錯誤。 例如：
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
@@ -255,7 +259,7 @@ spec:
   >[!NOTE]
   > 因為 gid 和 uid 預設會以根目錄或 0 形式掛接。 如果 gid 或 uid 並未設定為根目錄，例如 1000，則 Kubernetes 將使用 `chown` 來變更該磁碟底下的所有目錄和檔案。 此作業可能非常耗時，而且可能會讓磁碟的載入速度變慢。
 
-* 使用 initContainers 中的 `chown` 來設定 gid 和 uid。 例如:
+* 使用 initContainers 中的 `chown` 來設定 gid 和 uid。 例如：
 
 ```yaml
 initContainers:
@@ -278,7 +282,7 @@ initContainers:
 | 1.12 | 1.12.9 或更新版本 |
 | 1.13 | 1.13.6 或更新版本 |
 | 1.14 | 1.14.2 或更新版本 |
-| 1.15 及更新版本 | 不適用 |
+| 1.15 及更新版本 | N/A |
 
 如果您使用的 Kubernetes 版本沒有此問題的修正程式，而且您的節點具有過時的磁碟清單，則您能以大量作業形式從 VM 中斷連結所有不存在的磁碟來減輕。 **個別中斷連結不存在的磁碟可能會失敗。**
 
@@ -297,7 +301,7 @@ initContainers:
 | 1.12 | 1.12.10 或更新版本 |
 | 1.13 | 1.13.8 或更新版本 |
 | 1.14 | 1.14.4 或更新版本 |
-| 1.15 及更新版本 | 不適用 |
+| 1.15 及更新版本 | N/A |
 
 如果您使用的 Kubernetes 版本沒有此問題的修正程式，而且您的節點處於失敗狀態，則您可以使用下列其中一種方式，手動更新 VM 狀態來減輕：
 
@@ -414,7 +418,7 @@ E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"k
 
 您可以使用 base64 編碼的儲存體帳戶金鑰，以手動方式在 Azure 檔案祕密中手動更新 `azurestorageaccountkey` 欄位來減輕。
 
-若要以 base64 來為您的儲存體帳戶金鑰進行編碼，您可以使用 `base64`。 例如:
+若要以 base64 來為您的儲存體帳戶金鑰進行編碼，您可以使用 `base64`。 例如：
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64

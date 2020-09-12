@@ -3,12 +3,12 @@ title: MABS & System Center DPM 支援矩陣
 description: 本文摘要說明當您使用 Microsoft Azure 備份 Server (MABS) 或 System Center DPM 來備份內部部署和 Azure VM 資源時的 Azure 備份支援。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 71f188ffca125bc13eb2e9a43f466aeb61c64b75
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e3ca83b8a2874304521d84f6901fcb9627ce80db
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181998"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506605"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 備份 Server 或 System Center DPM 進行備份的支援矩陣
 
@@ -43,7 +43,7 @@ DPM 和 MABS 皆提供備份多種不同應用程式和伺服器與用戶端作�
 1. 在 DPM 伺服器/MABS 上安裝 Microsoft Azure 復原服務 (MARS) 代理程式。
 1. MARS 代理程式會使用 Azure 備份，將 DPM/MABS 磁片備份到 Azure 中的備份復原服務保存庫。
 
-其他資訊：
+如需詳細資訊：
 
 - [深入了解](backup-architecture.md#architecture-back-up-to-dpmmabs) MABS 架構。
 - [複習](backup-support-matrix-mars-agent.md) MARS 代理程式支援的功能。
@@ -85,7 +85,7 @@ Azure 備份可以備份正在執行下列任何作業系統的 DPM/MABS 實例�
 **安裝** | 在單一用途的電腦上安裝 DPM/MABS。<br/><br/> 請勿在網域控制站上、執行 Microsoft Exchange Server 或 System Center Operations Manager 的電腦上，或在叢集節點上安裝 DPM/MABS。<br/><br/> [檢查所有 DPM 系統需求](/system-center/dpm/prepare-environment-for-dpm#dpm-server)。
 **網域** | DPM/MABS 應該加入網域。 請先安裝 DPM/MABS，再將其加入網域。 不支援在部署之後將 DPM/MABS 移至新網域。
 **存放裝置** | DPM 2016/MABS v2 和更新版本支援新式備份儲存體 (MB) 。 MBS 不適用於 MABS v1。
-**MABS 升級** | 您可以直接安裝 MABS v3，或是從 MABS v2 升級至 MABS v3。 [進一步瞭解](backup-azure-microsoft-azure-backup.md#upgrade-mabs)。
+**MABS 升級** | 您可以直接安裝 MABS v3，或是從 MABS v2 升級至 MABS v3。 [深入了解](backup-azure-microsoft-azure-backup.md#upgrade-mabs)。
 **移動 MABS** | 使用 MABS 時，支援將 MABS 移至新伺服器，同時保留儲存體。<br/><br/> 伺服器必須與原始伺服器同名。 如果您想要保留相同的儲存體集區，並使用相同的 MABS 資料庫來儲存資料復原點，則不可變更名稱。<br/><br/> 您將需要 MABS 資料庫的備份，因為您需要加以還原。
 
 ## <a name="mabs-support-on-azure-stack"></a>Azure Stack 上的 MABS 支援
@@ -114,10 +114,10 @@ Azure 備份可以備份正在執行下列任何作業系統的 DPM/MABS 實例�
 DPM 伺服器/MABS 需要存取下列 URL：
 
 - `http://www.msftncsi.com/ncsi.txt`
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.microsoftonline.com
-- *.windows.net
+- `*.Microsoft.com`
+- `*.WindowsAzure.com`
+- `*.microsoftonline.com`
+- `*.windows.net`
 
 ### <a name="azure-expressroute-support"></a>Azure ExpressRoute 支援
 
@@ -190,7 +190,7 @@ DPM 伺服器/MABS 需要存取下列 URL：
 - DPM/MABS 備份的叢集工作負載應位於與 DPM/MABS 相同的網域中，或位於子域/受信任的網域中。
 - 您可以使用 NTLM/憑證驗證，在不受信任的網域或工作群組中備份資料。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [深入了解](backup-architecture.md#architecture-back-up-to-dpmmabs) MABS 架構。
 - [檢閱](backup-support-matrix-mars-agent.md) MARS 代理程式支援的作業。

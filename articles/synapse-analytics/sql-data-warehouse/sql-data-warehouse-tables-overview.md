@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eaea80ae874b93a640c885e0d4b7afde2a165c16
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0138b4dcc547b961f941522abd03cd351d4d3737
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798562"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460542"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中設計資料表
 
@@ -46,7 +46,7 @@ CREATE SCHEMA wwi;
 
 | WideWorldImportersDW 資料表  | 資料表類型 | SQL 集區 |
 |:-----|:-----|:------|:-----|
-| City | 維度 | wwi.DimCity |
+| 城市 | 尺寸 | wwi.DimCity |
 | 單 | 事實 | wwi.FactOrder |
 
 ## <a name="table-persistence"></a>資料表持續性
@@ -106,12 +106,12 @@ SQL 集區的基本功能，是它 [可以跨散發](massively-parallel-processi
 | 資料表類別 | 建議的散發選項 |
 |:---------------|:--------------------|
 | 事實           | 使用具有叢集資料行存放區索引的雜湊散發。 在相同的散發資料行上聯結兩個雜湊資料表時，可以改善效能。 |
-| 維度      | 對較小的資料表使用複寫。 如果資料表太大而無法儲存在每個計算節點上，請使用雜湊散發。 |
+| 尺寸      | 對較小的資料表使用複寫。 如果資料表太大而無法儲存在每個計算節點上，請使用雜湊散發。 |
 | 預備        | 對暫存資料表使用循環配置資源。 使用 CTAS 的載入速度較快。 一旦資料位於臨時表中，請使用 INSERT .。。選取即可將資料移至生產資料表。 |
 
 ## <a name="table-partitions"></a>資料表的資料分割
 
-分割的資料表會並根據資料範圍儲存在資料表資料列上，並執行作業。 例如，資料表可能會依日、月或年進行分割。 您可以透過「資料分割消除」將查詢掃描限定於某個資料分割內的資料，進而提升查詢效能。 您也可以透過資料分割切換來維護資料。 由於 SQL 資料倉儲中的資料已散發，資料分割過多可能會降低查詢效能。 如需詳細資訊，請參閱[資料分割指引](sql-data-warehouse-tables-partition.md)。  當資料分割切換至非空白的資料表分割區時，如果要截斷現有的資料，請考慮在 [ALTER table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 語句中使用 TRUNCATE_TARGET 選項。 下列程式碼會將轉換後的每日資料切換至 [Salesfact，以覆寫任何現有的資料。
+分割的資料表會並根據資料範圍儲存在資料表資料列上，並執行作業。 例如，資料表可能會依日、月或年進行分割。 您可以透過「資料分割消除」將查詢掃描限定於某個資料分割內的資料，進而提升查詢效能。 您也可以透過資料分割切換來維護資料。 因為 Azure Synapse Analytics 中的資料已經散發，所乙太多資料分割可能會降低查詢效能。 如需詳細資訊，請參閱[資料分割指引](sql-data-warehouse-tables-partition.md)。  當資料分割切換至非空白的資料表分割區時，如果要截斷現有的資料，請考慮在 [ALTER table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 語句中使用 TRUNCATE_TARGET 選項。 下列程式碼會將轉換後的每日資料切換至 [Salesfact，以覆寫任何現有的資料。
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -295,9 +295,6 @@ FROM size
 ;
 ```
 
->[!TIP]
-> 為了改善 Synapse SQL 中的效能，請考慮在永久使用者資料表上使用 **sys. pdw_permanent_table_mappings** 而不是 **sys. pdw_table_mappings** 。 如需詳細資訊，請參閱 **[sys. pdw_permanent_table_mappings &#40;transact-sql&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 。
-
 ### <a name="table-space-summary"></a>資料表空間摘要
 
 此查詢會傳回資料表的資料列和空格。  它可讓您查看哪些資料表是最大的資料表，以及它們是迴圈配置資源、複寫或雜湊散發。  若為雜湊分散式資料表，則查詢也會顯示散發資料行。  
@@ -376,6 +373,6 @@ ORDER BY    distribution_id
 ;
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 為您的 SQL 集區建立資料表之後，下一個步驟是將資料載入資料表中。  如需載入教學課程，請參閱 [將資料載入至 SQL 集](load-data-wideworldimportersdw.md)區。

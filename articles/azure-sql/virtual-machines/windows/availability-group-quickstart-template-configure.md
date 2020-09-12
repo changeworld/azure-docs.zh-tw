@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1359acfb768f7ac2fa3527afd041595d313249d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d1dedfcd4a93446b615d84e86666059fd210c18
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669234"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485748"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 Azure 快速入門範本在 Azure VM 上設定 SQL Server 的可用性群組
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -49,7 +49,7 @@ ms.locfileid: "84669234"
 - 控制 SQL Server 的網域使用者帳戶。 
 
 
-## <a name="step-1-create-the-failover-cluster-and-join-sql-server-vms-to-the-cluster-by-using-a-quickstart-template"></a>步驟 1:使用快速入門範本建立容錯移轉叢集，並將 SQL Server VM 加入該叢集 
+## <a name="create-cluster"></a>建立叢集
 在 SQL Server VM 註冊到 SQL VM 資源提供者之後，即可將 SQL Server VM 加入 *SqlVirtualMachineGroups* 中。 這項資源會定義 Windows 容錯移轉叢集的中繼資料。 中繼資料包括版本、版次、完整網域名稱，用來管理叢集和 SQL Server 的 Active Directory 帳戶，以及作為雲端見證的儲存體帳戶。 
 
 將 SQL Server VM 新增至 SqlVirtualMachineGroup 資源群組，會啟動 Windows 容錯移轉叢集服務建立叢集，然後將 SQL Server VM 加入該叢集。 此步驟會使用 **101-sql-vm-ag-setup** 快速入門範本進行自動化。 您可使用下列步驟進行實作：
@@ -83,13 +83,25 @@ ms.locfileid: "84669234"
 > 範本部署期間提供的認證僅於部署期間儲存。 部署完成之後，就會移除這些密碼。 如果將更多 SQL Server VM 新增至叢集，則系統會要求再次提供。 
 
 
-## <a name="step-2-manually-create-the-availability-group"></a>步驟 2:手動建立可用性群組 
+
+## <a name="validate-cluster"></a>驗證叢集 
+
+若要讓 Microsoft 支援容錯移轉叢集，必須通過叢集驗證。 使用您慣用的方法（例如遠端桌面通訊協定 (RDP) ）連接到 VM，並驗證您的叢集通過驗證後再繼續進行。 若未這麼做，則會讓您的叢集處於不支援的狀態。 
+
+您可以使用容錯移轉叢集管理員 (FCM) 或下列 PowerShell 命令來驗證叢集：
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   ```
+
+
+## <a name="create-availability-group"></a>建立可用性群組 
 像平常一樣，使用 [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio)、[PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell) 或 [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql) 手動建立可用性群組。 
 
 >[!IMPORTANT]
 > 此時請勿建立接聽程式，因為 **101-sql-vm-aglistener-setup** 快速入門範本會在步驟 4 中自動執行此動作。 
 
-## <a name="step-3-manually-create-the-internal-load-balancer"></a>步驟 3：手動建立內部負載平衡器
+## <a name="create-load-balancer"></a>建立負載平衡器
 Always On 可用性群組接聽程式需要 Azure Load Balancer 的內部執行個體。 內部負載平衡器會為可用性群組接聽程式提供「浮動」IP 位址，以加快容錯移轉和重新連線的速度。 如果可用性群組中的 SQL Server VM 屬於相同可用性設定組，則可使用基本的負載平衡器。 否則，即須使用標準負載平衡器。 
 
 > [!IMPORTANT]
@@ -122,7 +134,7 @@ Always On 可用性群組接聽程式需要 Azure Load Balancer 的內部執行�
 >[!IMPORTANT]
 > 每部 SQL Server VM 的公用 IP 資源都應有標準 SKU，以便與標準負載平衡器相容。 若要確認 VM 公用 IP 資源的 SKU，請移至 [資源群組]，並為 SQL Server VM 選取 [公用 IP 位址] 資源，然後在 [概觀] 窗格的 [SKU] 下方找出其值。 
 
-## <a name="step-4-create-the-availability-group-listener-and-configure-the-internal-load-balancer-by-using-the-quickstart-template"></a>步驟 4：使用快速入門範本來建立可用性群組接聽程式，並設定內部負載平衡器
+## <a name="create-listener"></a>建立接聽程式 
 
 使用 **101-sql-vm-aglistener-setup** 快速入門範本可自動建立可用性群組接聽程式，並設定內部負載平衡器。 此範本會佈建 Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListener 資源。 **101-sql-vm-aglistener-setup** 快速入門範本會透過 SQL VM 資源提供者執行下列動作：
 
@@ -159,9 +171,9 @@ Always On 可用性群組接聽程式需要 Azure Load Balancer 的內部執行�
 1. 若要監視部署，請從頂端瀏覽橫幅中的**通知**鈴鐺圖示選取部署，或移至 Azure 入口網站中的 [資源群組]。 選取 [設定] 下的 [部署]，然後選擇 [Microsoft.Template] 部署。 
 
 >[!NOTE]
->如果部署中途失敗，則必須使用 PowerShell 以手動方式[移除新建立的接聽程式](#remove-the-availability-group-listener)，再重新部署 **101-sql-vm-aglistener-setup** 快速入門範本。 
+>如果部署中途失敗，則必須使用 PowerShell 以手動方式[移除新建立的接聽程式](#remove-listener)，再重新部署 **101-sql-vm-aglistener-setup** 快速入門範本。 
 
-## <a name="remove-the-availability-group-listener"></a>移除可用性群組接聽程式
+## <a name="remove-listener"></a>移除接聽程式
 如果稍後需要移除範本設定的可用性群組接聽程式，則必須透過 SQL VM 資源提供者來執行。 由於接聽程式是透過 SQL VM 資源提供者註冊的，因此僅透過 SQL Server Management Studio 加以刪除並不足夠。 
 
 最好的方法是在 PowerShell 中使用下列程式碼片段，透過 SQL VM 資源提供者加以刪除。 這麼做可從 SQL VM 資源提供者中移除可用性群組接聽程式的中繼資料。 同時實際從可用性群組中刪除該接聽程式。 
@@ -175,19 +187,15 @@ Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<r
 ## <a name="common-errors"></a>常見錯誤
 本節將討論一些已知問題和可能的解決方法。 
 
-### <a name="availability-group-listener-for-availability-group-ag-name-already-exists"></a>可用性群組 '\<AG-Name>' 已有可用性群組接聽程式
-在 Azure 快速入門範本中用於可用性群組接聽程式的已選取可用性群組包含了一個接聽程式。 其實際上是在可用性群組內，或其中繼資料仍保留在 SQL VM 資源提供者內。 請先使用 [PowerShell](#remove-the-availability-group-listener) 移除接聽程式，再重新部署 **101-sql-vm-aglistener-setup** 快速入門範本。 
+可用性群組 **' ' 的可用性群組接聽程式 \<AG-Name> 已存在**： Azure 快速入門範本中用於可用性群組接聽程式的選定可用性群組已經包含接聽程式。 其實際上是在可用性群組內，或其中繼資料仍保留在 SQL VM 資源提供者內。 請先使用 [PowerShell](#remove-listener) 移除接聽程式，再重新部署 **101-sql-vm-aglistener-setup** 快速入門範本。 
 
-### <a name="connection-only-works-from-primary-replica"></a>只能從主要複本進行連線
-之所以出現此行為，可能是因為失敗的 **101-sql-vm-aglistener-setup** 範本部署導致內部負載平衡器設定處於不一致的狀態。 請確認後端集區有列出可用性設定組，且健康情況探查和負載平衡都有其規則。 如果遺漏任何項目，內部負載平衡器的設定就會處於不一致狀態。 
+**連接僅適用于主要複本** 這種行為可能來自失敗的 **101->101-sql-vm-aglistener-setup-設定** 範本部署，其已將內部負載平衡器設定為不一致的狀態。 請確認後端集區有列出可用性設定組，且健康情況探查和負載平衡都有其規則。 如果遺漏任何項目，內部負載平衡器的設定就會處於不一致狀態。 
 
-若要消除此行為，請使用 [PowerShell](#remove-the-availability-group-listener) 移除接聽程式、透過 Azure 入口網站刪除內部負載平衡器，然後重新執行步驟 3。 
+若要消除此行為，請使用 [PowerShell](#remove-listener) 移除接聽程式、透過 Azure 入口網站刪除內部負載平衡器，然後重新執行步驟 3。 
 
-### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>BadRequest - 只能更新 SQL 虛擬機器清單
-在部署 **101-sql-vm-aglistener-setup** 範本時，如果已透過 SQL Server Management Studio (SSMS) 刪除接聽程式，但並未將其從 SQL VM 資源提供者中刪除，就可能發生此錯誤。 透過 SSMS 刪除接聽程式，並不會從 SQL VM 資源提供者中移除接聽程式的中繼資料。 您必須透過 [PowerShell](#remove-the-availability-group-listener)，將接聽程式從資源提供者中刪除。 
+**僅限 BadRequest 的 SQL 虛擬機器清單可以更新** 如果已透過 SQL Server Management Studio (SSMS) 刪除接聽程式，但未從 SQL VM 資源提供者中刪除接聽程式，則當您部署 **101->101-sql-vm-aglistener-setup-安裝** 範本時，可能會發生此錯誤。 透過 SSMS 刪除接聽程式，並不會從 SQL VM 資源提供者中移除接聽程式的中繼資料。 您必須透過 [PowerShell](#remove-listener)，將接聽程式從資源提供者中刪除。 
 
-### <a name="domain-account-does-not-exist"></a>網域帳戶不存在
-此錯誤可能有兩個原因。 指定的網域帳戶不存在，或缺少[使用者主體名稱 (UPN)](/windows/desktop/ad/naming-properties#userprincipalname) 資料。 **101-sql-vm-ag-setup** 範本會預期 UPN 格式 (也就是 user@domain.com) 的網域帳戶，但部分網域帳戶可能沒有。 會發生這種情況通常是由於伺服器已升級為網域控制站，或已透過 PowerShell 建立使用者，而本機使用者經過移轉成為第一個網域系統管理員帳戶。 
+**網域帳戶不存在** 此錯誤可能有兩個原因。 指定的網域帳戶不存在，或缺少[使用者主體名稱 (UPN)](/windows/desktop/ad/naming-properties#userprincipalname) 資料。 **101-sql-vm-ag-setup** 範本會預期 UPN 格式 (也就是 user@domain.com) 的網域帳戶，但部分網域帳戶可能沒有。 會發生這種情況通常是由於伺服器已升級為網域控制站，或已透過 PowerShell 建立使用者，而本機使用者經過移轉成為第一個網域系統管理員帳戶。 
 
 請確認該帳戶存在。 存在的話，您可能會發生第二種情況。 若要解決此問題，請執行下列動作：
 
@@ -202,7 +210,6 @@ Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<r
 6. 選取 [套用] 儲存變更，並選取 [確定] 關閉對話方塊。 
 
 進行這些變更後，請嘗試再次部署 Azure 快速入門範本。 
-
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efcf2df4e472d022fcdec0c9b7c69c73192c503f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: HT
+ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518465"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658372"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Azure Active Directory Connect 雲端布建常見問題
 
@@ -32,9 +32,9 @@ ms.locfileid: "86518465"
 
 這是預期行為。 失敗的原因是使用者物件不存在於 Azure AD 中。 使用者佈建到 Azure AD 後，應該會接著執行密碼雜湊的佈建。 請等候幾次執行，並確認密碼雜湊同步作業不再發生錯誤。
 
-**問：如果 Active Directory 實例具有雲端布建不支援的屬性（例如，目錄延伸模組），會發生什麼事？**
+**問：如果 Active Directory 實例具有雲端布建 (不支援的屬性（例如目錄延伸) ），會發生什麼事？**
 
-雲端佈建將會執行及佈建支援的屬性。 不支援的屬性將不會佈建到 Azure AD。 請參閱 Active Directory 中的目錄延伸模組，並確定您不需要這些屬性流入 Azure AD。 如果需要一個或多個屬性，請考慮使用 Azure AD Connect 同步，或將所需的資訊移至其中一個支援的屬性 (例如，延伸模組屬性 1-15)。
+雲端佈建將會執行及佈建支援的屬性。 不支援的屬性將不會佈建到 Azure AD。 請參閱 Active Directory 中的目錄延伸，並確定您不需要將這些屬性傳送至 Azure AD。 如果需要一個或多個屬性，請考慮使用 Azure AD Connect 同步，或將所需的資訊移至其中一個支援的屬性 (例如，延伸模組屬性 1-15)。
 
 **問：Azure AD Connect 同步與雲端佈建之間有何差異？**
 
@@ -62,7 +62,7 @@ Microsoft 會自動升級代理程式。 對於 IT 小組而言，這會減輕�
 
 **問：如果已同步的使用者在下次登入時需要變更密碼，會發生什麼情況？**
 
-如果已在雲端布建中啟用密碼雜湊同步處理，且在內部部署 AD 中的下次登入時需要已同步處理的使用者變更密碼，則雲端布建不會將「已變更」密碼雜湊提供給 Azure AD。 使用者變更密碼後，就會將使用者密碼雜湊從 AD 佈建到 Azure AD。
+如果已在雲端布建中啟用密碼雜湊同步處理，且已同步處理的使用者在內部部署 AD 中的下一次登入時需要變更密碼，則雲端布建不會將「變更」密碼雜湊布建至 Azure AD。 使用者變更密碼後，就會將使用者密碼雜湊從 AD 佈建到 Azure AD。
 
 **問：雲端佈建是否支援任何物件的 ms-ds-consistencyGUID 回寫？**
 
@@ -74,7 +74,7 @@ Microsoft 會自動升級代理程式。 對於 IT 小組而言，這會減輕�
 
 **問：Exchange 混合不受支援是什麼意思？**
 
-Exchange 混合部署功能允許在內部部署和 Office 365 中並存 Exchange 信箱。 Azure AD Connect 會將一組特定的屬性從 Azure AD 同步處理回內部部署目錄。  雲端佈建代理程式目前不會將這些屬性同步處理回您的內部部署目錄，因此不支援使用該代理程式來取代 Azure AD Connect。
+Exchange 混合式部署功能可讓您同時存在內部部署和 Microsoft 365 中的 Exchange 信箱。 Azure AD Connect 會將一組特定的屬性從 Azure AD 同步處理回內部部署目錄。  雲端佈建代理程式目前不會將這些屬性同步處理回您的內部部署目錄，因此不支援使用該代理程式來取代 Azure AD Connect。
 
 **問：我是否可在 Windows Server Core 上安裝雲端佈建代理程式？**
 

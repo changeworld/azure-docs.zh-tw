@@ -1,5 +1,5 @@
 ---
-title: 在 TSI Explorer 中將資料視覺化-Azure 時間序列深入解析 Gen2 |Microsoft Docs
+title: 將時間序列深入解析總管-Azure 時間序列深入解析 Gen2 中的資料視覺化 |Microsoft Docs
 description: 瞭解 Azure 時間序列深入解析 Explorer 中可用的功能和選項。
 author: deepakpalled
 ms.author: dpalled
@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 31ed5f93fc7d1b44ae8a4afb1f4368d0b52eb2fd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0933e34e5bdd8469b827ed03c0eff51a4ecba0d5
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227044"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488162"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 時間序列深入解析總管
 
 本文說明 Azure 時間序列深入解析 Gen2 [示範環境](https://insights.timeseries.azure.com/preview/demo)內可用的各種功能和選項。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用 Azure 時間序列深入解析 Explorer，您必須：
 
@@ -47,7 +47,7 @@ Azure 時間序列深入解析 Explorer 包含下列七個元素：
 
 ## <a name="1-environment-panel"></a>1. 環境面板
 
-[環境] 面板會顯示您有權存取的所有 Azure 時間序列深入解析 Gen2 環境。 此清單包含 Gen2 環境和 Gen 1 環境。 只要選取您想要用來立即使用的環境。
+[環境] 面板會顯示您有權存取的所有 Azure 時間序列深入解析 Gen2 環境。 此清單包含 Gen2 環境以及 Gen1 環境。 只要選取您想要用來立即使用的環境。
 
 1. 選取顯示的環境旁的下拉箭號。
 
@@ -200,11 +200,11 @@ Azure 時間序列深入解析 Explorer 支援兩個主題：
 
   [![選取的深色主題](media/v2-update-explorer/tsi-preview-dark-theme-selected.png)](media/v2-update-explorer/tsi-preview-dark-theme-selected.png#lightbox)
 
-## <a name="gen-1-environment-controls"></a>Gen 1 環境控制項
+## <a name="gen1-environment-controls"></a>Gen1 環境控制項
 
 ### <a name="gen2-terms-panel"></a>Gen2 條款面板
 
-本節只適用于在更新的 UI 中嘗試使用瀏覽器的現有 Gen 1 環境。 您可能會想要搭配使用 Gen 1 product 和 Gen2 產品。 我們已從現有的 UI 將一些功能新增至更新的 Explorer，但是您可以在新的 Azure 時間序列深入解析 Explorer 中取得 Gen 1 環境的完整 UI 體驗。
+本節只適用于在更新的 UI 中嘗試使用瀏覽器的現有 Gen1 環境。 您可能會想要搭配使用 Gen1 product 和 Gen2 產品。 我們已將現有 UI 的一些功能新增至更新的瀏覽器，但您可以在新的 Azure 時間序列深入解析 Explorer 中取得 Gen1 環境的完整 UI 體驗。
 
 Azure 時間序列深入解析的 Gen2 條款面板會顯示，而不是階層。 [詞彙] 面板可讓您在環境中定義查詢。 您也可以使用它來根據述詞來篩選資料。
 
@@ -219,7 +219,7 @@ Azure 時間序列深入解析的 Gen2 條款面板會顯示，而不是階層�
 | `<`, `>`, `<=`, `>=` | Double、DateTime、TimeSpan | |
 | `=`, `!=`, `<>` | String、Bool、Double、DateTime、TimeSpan、NULL |
 | `IN` | String、Bool、Double、DateTime、TimeSpan、NULL | 所有的運算元都應該是相同的類型或是 NULL 常數。 |
-| `HAS` | 字串 | 右邊只允許常數位串常值。 不允許空字串和 Null。 |
+| `HAS` | String | 右邊只允許常數位串常值。 不允許空字串和 Null。 |
 
 若要深入瞭解支援的查詢作業和資料類型，請參閱 [ (TSX) 的時間序列運算式 ](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
@@ -237,7 +237,7 @@ Azure 時間序列深入解析的 Gen2 條款面板會顯示，而不是階層�
 
   [![取消已查詢和已篩選的選項](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png)](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png#lightbox)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 瞭解如何將 [資料擷取](./concepts-ingestion-overview.md) 至您的環境。
 

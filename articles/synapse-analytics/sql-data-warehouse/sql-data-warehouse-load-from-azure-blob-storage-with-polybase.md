@@ -1,6 +1,6 @@
 ---
-title: 將 Contoso 零售資料載入 Synapse SQL 資料倉儲
-description: 使用 PolyBase 和 T-sql 命令，將來自 Contoso 零售資料的兩個數據表載入至 Synapse SQL。
+title: 將 Contoso 零售資料載入至 Synapse SQL
+description: 使用 PolyBase 和 T-sql 命令將兩個數據表從 Contoso 零售資料載入至 Synapse SQL。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 90da35b76bbe6ec933b3a1fd200f0f5bad643759
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 904ce55f376e42156b014056b1226512b2784742
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213307"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461692"
 ---
 # <a name="load-contoso-retail-data-to-synapse-sql"></a>將 Contoso 零售資料載入至 Synapse SQL 
 
-在本教學課程中，您將瞭解如何使用 PolyBase 和 T-sql 命令，將來自 Contoso 零售資料的兩個數據表載入至 Synapse SQL 資料倉儲。
+在本教學課程中，您將瞭解如何使用 PolyBase 和 T-sql 命令將兩個數據表從 Contoso 零售資料載入至 Synapse SQL。
 
 在本教學課程中，您將：
 
@@ -30,17 +30,17 @@ ms.locfileid: "85213307"
 
 ## <a name="before-you-begin"></a>開始之前
 
-若要執行本教學課程，您需要已有 Synapse SQL 資料倉儲的 Azure 帳戶。 如果您尚未布建資料倉儲，請參閱[建立資料倉儲和設定伺服器層級防火牆規則](create-data-warehouse-portal.md)。
+若要執行本教學課程，您需要已有 Synapse SQL 的 Azure 帳戶。 如果您沒有布建資料倉儲，請參閱 [建立資料倉儲並設定伺服器層級防火牆規則](create-data-warehouse-portal.md)。
 
 ## <a name="configure-the-data-source"></a>設定資料來源
 
-PolyBase 使用 T-SQL 外部物件以定義外部資料的位置和屬性。 外部物件定義會儲存在您的 Synapse SQL 資料倉儲中。 資料會儲存在外部。
+PolyBase 使用 T-SQL 外部物件以定義外部資料的位置和屬性。 外部物件定義會儲存在 Synapse SQL 中。 資料會儲存在外部。
 
 ## <a name="create-a-credential"></a>建立認證
 
-如果您要載入 Contoso 公用資料，**請略過此步驟**。 您不需要安全存取公用資料，因為任何人都可以存取它。
+如果您要載入 Contoso 公用資料，**請略過此步驟**。 您不需要安全地存取公用資料，因為任何人都可以存取這些資料。
 
-如果您使用本教學課程作為載入您自己的資料的範本，**請勿略過此步驟**。 若要透過認證存取資料，請使用下列腳本來建立資料庫範圍認證。 然後在定義資料來源的位置時，使用它。
+如果您使用本教學課程作為載入您自己的資料的範本，**請勿略過此步驟**。 若要透過認證來存取資料，請使用下列腳本來建立資料庫範圍的認證。 然後在定義資料來源的位置時使用它。
 
 ```sql
 -- A: Create a master key.
@@ -77,7 +77,7 @@ WITH (
 
 ## <a name="create-the-external-data-source"></a>建立外部資料來源
 
-使用此 [[建立外部資料源](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)] 命令來儲存資料的位置，以及資料類型。
+使用 [ [建立外部資料源](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ] 命令來儲存資料的位置，以及資料類型。
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -109,7 +109,7 @@ WITH
 
 ## <a name="create-the-schema-for-the-external-tables"></a>建立外部資料表的架構
 
-既然您已指定資料來源和檔案格式，您就可以開始建立外部資料表的架構。
+既然您已指定資料來源和檔案格式，就可以開始建立外部資料表的架構。
 
 若要在您的資料庫中建立儲存 Contoso 資料的位置，請建立結構描述。
 
@@ -120,7 +120,7 @@ GO
 
 ## <a name="create-the-external-tables"></a>建立外部資料表
 
-執行下列腳本來建立 DimProduct 和 FactOnlineSales 外部資料表。 您在這裡所做的就是定義資料行名稱和資料類型，並將它們系結至 Azure blob 儲存體檔案的位置和格式。 定義會儲存在資料倉儲中，而資料仍會在 Azure 儲存體 Blob 中。
+執行下列腳本來建立 DimProduct 和 FactOnlineSales 外部資料表。 您在這裡所做的只是定義資料行名稱和資料類型，並將它們系結至 Azure blob 儲存體檔案的位置和格式。 定義會儲存在資料倉儲中，而資料仍位於 Azure 儲存體 Blob 中。
 
 **LOCATION**參數是 Azure 儲存體 Blob 中根資料夾下的資料夾。 每個資料表都位於不同的資料夾中。
 
@@ -208,7 +208,7 @@ WITH
 
 ## <a name="load-the-data"></a>載入資料
 
-有不同的方式可存取外部資料。  您可以直接從外部資料表查詢資料、將資料載入資料倉儲中的新資料表，或將外部資料加入現有的資料倉儲資料表。  
+存取外部資料的方式有很多種。  您可以直接從外部資料表查詢資料、將資料載入資料倉儲中的新資料表，或將外部資料新增至現有的資料倉儲資料表。  
 
 ### <a name="create-a-new-schema"></a>建立新的結構描述
 
@@ -221,7 +221,7 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>將資料載入新資料表
 
-若要將資料從 Azure blob 儲存體載入資料倉儲資料表，請使用[CREATE TABLE AS SELECT （transact-sql）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語句。 使用[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)載入時，會利用您所建立的強型別外部資料表。 若要將資料載入至新的資料表，請針對每個資料表使用一個 CTAS 語句。
+若要將資料從 Azure blob 儲存體載入資料倉儲資料表中，請使用 [CREATE TABLE 作為 SELECT (transact-sql) ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 語句。 使用 [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 載入會利用您所建立的強型別外部資料表。 若要將資料載入新的資料表，請針對每個資料表使用一個 CTAS 語句。
 
 CTAS 建立新的資料表，並將選取陳述式的結果填入該資料表。 CTAS 定義新資料表，以使它擁有和選取陳述式之結果相同的資料行和資料類型。 如果您選取外部資料表上的所有資料行，則新資料表將會是外部資料表中資料行和資料類型的複本。
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>最佳化資料行存放區壓縮
 
-根據預設，Synapse SQL 資料倉儲會將資料表儲存為叢集資料行存放區索引。 載入完成後，某些資料列可能不會被壓縮為資料行存放區。  發生這種情況的原因有很多種。 若要深入了解，請參閱[管理資料行存放區索引](sql-data-warehouse-tables-index.md)。
+根據預設，Synapse SQL 會將資料表儲存為叢集資料行存放區索引。 載入完成後，某些資料列可能不會被壓縮為資料行存放區。  發生這種情況的原因有很多種。 若要深入了解，請參閱[管理資料行存放區索引](sql-data-warehouse-tables-index.md)。
 
 若要最佳化載入後的查詢效能和資料行存放區壓縮，請重建資料表以強制資料行存放區索引對所有資料列進行壓縮。
 
@@ -290,7 +290,7 @@ ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 
 ## <a name="optimize-statistics"></a>最佳化統計資料
 
-最好是在載入之後立即建立單一資料行統計資料。 如果您知道特定資料行不會在查詢述詞中，您可以略過建立這些資料行的統計資料。 如果您在每個資料行上建立單一資料行統計資料，可能需要很長的時間才能重建所有的統計資料。
+最好在載入後立即建立單一資料行統計資料。 如果您知道某些資料行不會在查詢述詞中，則可以略過建立這些資料行的統計資料。 如果您在每個資料行上建立單一資料行統計資料，則重建所有統計資料可能需要很長的時間。
 
 如果您決定要在每個資料表的每個資料行上建立單一資料行統計資料，便可以使用[統計資料](sql-data-warehouse-tables-statistics.md)一文中的預存程序程式碼範例 `prc_sqldw_create_stats`。
 
@@ -352,7 +352,7 @@ JOIN    [cso].[DimProduct]      AS p ON f.[ProductKey] = p.[ProductKey]
 GROUP BY p.[BrandName]
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-若要載入完整的資料集，請從 Microsoft SQL Server 範例儲存機制執行[載入完整 Contoso 零售資料倉儲](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md)範例。
-如需更多開發秘訣，請參閱[資料倉儲的設計決策和程式碼撰寫技術](sql-data-warehouse-overview-develop.md)。
+若要載入完整的資料集，請執行範例從 Microsoft SQL Server 範例存放庫 [載入完整的 Contoso 零售資料倉儲](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md) 。
+如需更多開發秘訣，請參閱 [資料倉儲的設計決策和程式碼撰寫技巧](sql-data-warehouse-overview-develop.md)。

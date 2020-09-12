@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3d72b70248e317d1caee4527be38fe304cfe7f16
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589039"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658339"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 無縫單一登入：常見問題集
 
@@ -37,7 +37,7 @@ ms.locfileid: "88589039"
 
 **問：[Microsoft Azure 德國雲端](https://www.microsoft.de/cloud-deutschland)和 [Microsoft Azure Government 雲端](https://azure.microsoft.com/features/gov/)是否有提供「無縫 SSO」功能？**
 
-無縫 SSO 適用於 Azure Government 雲端。 如需詳細資訊，請參閱 [Azure Government 的混合式身分識別考量](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud)。
+無縫 SSO 適用於 Azure Government 雲端。 如需詳細資訊，請參閱 [Azure Government 的混合式身分識別考量](./reference-connect-government-cloud.md)。
 
 **問：哪些應用程式利用無縫 SSO 的 `domain_hint` 或 `login_hint` 參數功能？**
 
@@ -62,11 +62,11 @@ ms.locfileid: "88589039"
 
 **問：無縫 SSO 支援 `Alternate ID` 作為使用者名稱，而不是 `userPrincipalName`？**
 
-是。 如[這裡](how-to-connect-install-custom.md)所述設定於 Azure AD Connect 時，無縫 SSO 支援 `Alternate ID` 作為使用者名稱。 並非所有 Office 365 應用程式都支援 `Alternate ID`。 請參閱支援陳述式的特定應用程式文件。
+是。 如[這裡](how-to-connect-install-custom.md)所述設定於 Azure AD Connect 時，無縫 SSO 支援 `Alternate ID` 作為使用者名稱。 並非所有 Microsoft 365 的應用程式都支援 `Alternate ID` 。 請參閱支援陳述式的特定應用程式文件。
 
-**問：[Azure AD 聯結](../active-directory-azureadjoin-overview.md)與「無縫 SSO」所提供的單一登入體驗有何差異？**
+**問：[Azure AD 聯結](../devices/overview.md)與「無縫 SSO」所提供的單一登入體驗有何差異？**
 
-[Azure AD 聯結](../active-directory-azureadjoin-overview.md)可為裝置已向 Azure AD 註冊的使用者提供 SSO。 這些裝置不一定要加入網域。 提供 SSO 時，使用的是「主要重新整理權杖」(或稱 *PRT*)，而不是 Kerberos。 在 Windows 10 裝置上可獲得最佳使用者體驗。 SSO 在 Microsoft Edge 瀏覽器上會自動執行。 在 Chrome 上則藉由使用瀏覽器擴充功能也能運作。
+[Azure AD 聯結](../devices/overview.md)可為裝置已向 Azure AD 註冊的使用者提供 SSO。 這些裝置不一定要加入網域。 提供 SSO 時，使用的是「主要重新整理權杖」(或稱 *PRT*)，而不是 Kerberos。 在 Windows 10 裝置上可獲得最佳使用者體驗。 SSO 在 Microsoft Edge 瀏覽器上會自動執行。 在 Chrome 上則藉由使用瀏覽器擴充功能也能運作。
 
 您可以在租用戶上同時使用「Azure AD 聯結」和「無縫 SSO」。 這兩個功能是互補的。 如果同時開啟這兩個功能，則來自「Azure AD 聯結」的 SSO 優先順序會高於「無縫 SSO」。
 
@@ -85,7 +85,7 @@ ms.locfileid: "88589039"
 
    **步驟 1.取得已啟用無縫 SSO 的 AD 樹系清單**
 
-   1. 首先，下載並安裝 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)。
+   1. 首先，下載並安裝 [Azure AD PowerShell](/powershell/azure/active-directory/overview)。
    2. 瀏覽到 `%programfiles%\Microsoft Azure Active Directory Connect` 資料夾。
    3. 使用此命令匯入順暢 SSO PowerShell 模組：`Import-Module .\AzureADSSO.psd1`。
    4. 以系統管理員身分執行 PowerShell。 在 PowerShell 中，呼叫 `New-AzureADSSOAuthenticationContext`。 此命令應提供一個快顯視窗，以便輸入租用戶的全域管理員認證。
@@ -130,7 +130,7 @@ ms.locfileid: "88589039"
 
    請在執行 Azure AD Connect 的內部部署伺服器上執行下列步驟：
 
-   1. 首先，下載並安裝 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)。
+   1. 首先，下載並安裝 [Azure AD PowerShell](/powershell/azure/active-directory/overview)。
    2. 瀏覽到 `%programfiles%\Microsoft Azure Active Directory Connect` 資料夾。
    3. 使用此命令匯入順暢 SSO PowerShell 模組：`Import-Module .\AzureADSSO.psd1`。
    4. 以系統管理員身分執行 PowerShell。 在 PowerShell 中，呼叫 `New-AzureADSSOAuthenticationContext`。 此命令應提供一個快顯視窗，以便輸入租用戶的全域管理員認證。
@@ -145,7 +145,7 @@ ms.locfileid: "88589039"
 
    如果您已使用 Azure AD Connect 停用無縫 SSO，請依照下方的工作 1 到 4 操作。 如果您改為使用 PowerShell 停用無縫 SSO，請跳至下方的工作 5。
 
-   1. 首先，下載並安裝 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)。
+   1. 首先，下載並安裝 [Azure AD PowerShell](/powershell/azure/active-directory/overview)。
    2. 瀏覽到 `%programfiles%\Microsoft Azure Active Directory Connect` 資料夾。
    3. 使用此命令匯入順暢 SSO PowerShell 模組：`Import-Module .\AzureADSSO.psd1`。
    4. 以系統管理員身分執行 PowerShell。 在 PowerShell 中，呼叫 `New-AzureADSSOAuthenticationContext`。 此命令應提供一個快顯視窗，以便輸入租用戶的全域管理員認證。

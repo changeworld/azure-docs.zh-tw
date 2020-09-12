@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75603593e8c290b6bcb059207858d663ab5c96d9
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71122737"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460111"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>對無法啟動的雲端服務角色進行疑難排解
 以下是與無法啟動的 Azure 雲端服務角色相關的一些常見問題和解決方案。
@@ -69,7 +69,7 @@ ms.locfileid: "71122737"
 7. 輸入 `IPconfig`。
 8. 記下 IPV4 位址值。
 9. 開啟 Internet Explorer。
-10. 輸入 Web 應用程式的位址和名稱。 例如：`http://<IPV4 Address>/default.aspx`。
+10. 輸入 Web 應用程式的位址和名稱。 例如： `http://<IPV4 Address>/default.aspx` 。
 
 瀏覽至網站現在會傳回更明確的錯誤訊息：
 
@@ -121,7 +121,7 @@ ms.locfileid: "71122737"
 
 在確認所有錯誤皆已修正後，即可在未勾選 [為 .NET 4 角色啟用 IntelliTrace] **** 核取方塊的情況下部署服務。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 檢視更多雲端服務的 [疑難排解文章](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) 。
 
-若要了解如何利用 Azure PaaS 電腦診斷資料對雲端服務角色問題進行疑難排解，請參閱 [Kevin Williamson 的部落格系列](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)。
+若要了解如何利用 Azure PaaS 電腦診斷資料對雲端服務角色問題進行疑難排解，請參閱 [Kevin Williamson 的部落格系列](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。

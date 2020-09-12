@@ -3,12 +3,12 @@ title: 讓客戶在 Azure Lighthouse 上線
 description: 瞭解如何將客戶上架到 Azure Lighthouse，讓其資源可透過您自己的租使用者使用 Azure 委派的資源管理來存取及管理。
 ms.date: 08/20/2020
 ms.topic: how-to
-ms.openlocfilehash: db6a819c72f1ef46f542ed47cad6caae23c0d191
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 4de31a0ad2cdc3134cd61654a71ebe803982b52e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719048"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483791"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>讓客戶在 Azure Lighthouse 上線
 
@@ -19,7 +19,7 @@ ms.locfileid: "88719048"
 
 您可以針對多個客戶重複上架程式。 當具有適當許可權的使用者登入您的管理租使用者時，該使用者可以跨客戶租使用者範圍獲得授權，以執行管理作業，而不需要登入每個個別的客戶租使用者。
 
-為了追蹤您對客戶參與的整體影響及接受表彰，您可將 Microsoft 合作夥伴網路 (MPN) 識別碼與能存取每個已上線訂用帳戶的至少一個使用者帳戶建立關聯。 您必須在服務提供者租使用者中執行此關聯。 為了簡化作業，建議在租用戶中建立與 MPN 識別碼建立關聯的服務主體帳戶，並授與其每個上架客戶的讀取存取權。 如需詳細資訊，請參閱[將合作夥伴識別碼連結到 Azure 帳戶](../../cost-management-billing/manage/link-partner-id.md)。
+為了追蹤您對客戶參與的整體影響及接受表彰，您可將 Microsoft 合作夥伴網路 (MPN) 識別碼與能存取每個已上線訂用帳戶的至少一個使用者帳戶建立關聯。 您必須在服務提供者租使用者中執行此關聯。 建議您在租使用者中建立與您的 MPN 識別碼相關聯的服務主體帳戶，然後在您每次上架客戶時包含該服務主體。 如需詳細資訊，請參閱 [連結您的合作夥伴識別碼，讓合作夥伴在委派的資源上](partner-earned-credit.md)獲得點數。
 
 > [!NOTE]
 > 當客戶購買的受控服務供應專案 (您 [發佈到 Azure Marketplace](publish-managed-services-offers.md)的公用或私用) 時，也可以上線至 Azure Lighthouse。 您也可以使用此處所述的上架程式，以及發佈至 Azure Marketplace 的供應專案。

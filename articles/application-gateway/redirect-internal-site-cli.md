@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: d889d0c13c911e02d73bb1de76b7c3d1aa240027
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0730148a3da41d0d72961ea521577fa370b183d
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806809"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596085"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>使用 Azure CLI 以建立具有內部重新導向的應用程式閘道
 
@@ -21,12 +21,11 @@ ms.locfileid: "84806809"
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
-> * 設定網路
-> * 建立應用程式閘道
-> * 新增接聽程式和重新導向規則
-> * 建立包含後端集區的虛擬機器擴展集
-> * 在網域中建立 CNAME 記錄
+* 設定網路
+* 建立應用程式閘道
+* 新增接聽程式和重新導向規則
+* 建立包含後端集區的虛擬機器擴展集
+* 在網域中建立 CNAME 記錄
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -38,7 +37,7 @@ ms.locfileid: "84806809"
 
 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用 [az group create](/cli/azure/group) 建立資源群組。
 
-下列範例會在 eastus** 位置建立名為 myResourceGroupAG** 的資源群組。
+下列範例會在 eastus 位置建立名為 myResourceGroupAG 的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -120,7 +119,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>新增重新導向設定
 
-使用[az network application-gateway 重新導向-config create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)，在應用程式閘道中新增將流量從*www \. consoto.org*傳送至* \. contoso.com*的接聽程式。
+新增重新導向設定，以將流量從 *www \. consoto.org* 傳送至應用程式閘道中的 *www \. contoso.com* 接聽程式，其方式是使用 [az network application-gateway 重新導向-config create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -213,7 +212,7 @@ az network public-ip show \
 
 ![在應用程式閘道中測試 contoso 網站](./media/redirect-internal-site-cli/application-gateway-nginxtest.png)
 
-將位址變更為您的其他網域，例如 HTTP： \/ /www.contoso.org，您應該會看到流量已重新導向回到 www contoso.com 的接聽程式 \. 。
+將位址變更為您的其他網域（例如 HTTP： \/ /www.contoso.org），您應該會看到流量已重新導向回 www contoso.com 的接聽程式 \. 。
 
 ## <a name="next-steps"></a>後續步驟
 

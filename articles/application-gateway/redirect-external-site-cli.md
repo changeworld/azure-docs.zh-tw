@@ -1,5 +1,5 @@
 ---
-title: 使用 CLI Azure 應用程式閘道進行外部流量重新導向
+title: 使用 CLI Azure 應用程式閘道的外部流量重新導向
 description: 了解如何使用 Azure CLI，建立會將內部 Web 流量重新導向至適當集區的應用程式閘道。
 services: application-gateway
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: b671af46d34e3b45796186cd10282d060fa8c537
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7566122e4edf4357562e830197fade746f18a16f
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804676"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594216"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>使用 Azure CLI 建立具有外部重新導向的應用程式閘道
 
@@ -20,10 +20,9 @@ ms.locfileid: "84804676"
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
-> * 設定網路
-> * 建立接聽程式和重新導向規則
-> * 建立應用程式閘道
+* 設定網路
+* 建立接聽程式和重新導向規則
+* 建立應用程式閘道
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -35,7 +34,7 @@ ms.locfileid: "84804676"
 
 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用 [az group create](/cli/azure/group) 建立資源群組。
 
-下列範例會在 eastus** 位置建立名為 myResourceGroupAG** 的資源群組。
+下列範例會在 eastus 位置建立名為 myResourceGroupAG 的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -88,7 +87,7 @@ az network application-gateway create \
 
 ### <a name="add-the-redirection-configuration"></a>新增重新導向設定
 
-使用[az network application-gateway 重新導向-config create](/cli/azure/network/application-gateway/redirect-config)，將將流量從*www \. consoto.org*傳送至* \. contoso.com*至應用程式閘道的重新導向設定。
+新增重新導向設定，以將流量從*www \. consoto.org*傳送至使用[az network application-閘道重新導向-config create](/cli/azure/network/application-gateway/redirect-config)的應用程式閘道的*www \. contoso.com*接聽程式。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \

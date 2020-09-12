@@ -1,6 +1,6 @@
 ---
-title: 我們即將于2023年3月1日淘汰 Azure 傳統 Vm
-description: 文章提供傳統 VM 淘汰的高階總覽
+title: 我們即將于2023年3月1日淘汰 (傳統) 的 Azure Vm
+description: 本文提供使用傳統部署模型所建立之 Vm 淘汰的概要說明。
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
@@ -8,56 +8,64 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 0b2b995a6fe4cedd14b2e4ceeddc5747ec2423cf
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 7f2db507176d65e7794607e83db8605b2f892c1c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754798"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646635"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>在2023年3月1日前將 IaaS 資源遷移至 Azure Resource Manager 
 
-在2014中，我們已在 Azure Resource Manager 上啟動 IaaS，而且自之後一直以來都有增強的功能。 因為 [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) 現在已有完整的 IaaS 功能和其他改進，所以我們已在2020年2月28日淘汰透過 [Azure Service Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#what-is-azure-service-manager-and-what-does-it-mean-by-classic) 管理 iaas vm，且此功能將于2023年3月1日完全淘汰。 
+在2014中，我們啟動了基礎結構即服務 (IaaS) [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)。 自之後，我們已經增強了功能。 因為 Azure Resource Manager 現在已有完整的 IaaS 功能和其他改進，所以我們已淘汰在2020年2月28日透過 [Azure Service Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#what-is-azure-service-manager-and-what-does-it-mean-by-classic) (ASM) 管理 iaas 虛擬機器 (vm) 。 此功能將于2023年3月1日完全淘汰。 
 
-目前，大約90% 的 IaaS Vm 會使用 Azure Resource Manager。 如果您透過 Azure Service Manager (ASM) 使用 IaaS 資源，請立即開始規劃您的遷移，並在2023年3月1日前完成，以利用 [Azure Resource Manager](../azure-resource-manager/management/index.yml)。
+目前，大約90% 的 IaaS Vm 使用 Azure Resource Manager。 如果您透過 ASM 使用 IaaS 資源，請立即開始規劃您的遷移。 請于2023年3月1日之前完成，以利用 [Azure Resource Manager](../azure-resource-manager/management/index.yml)。
 
-傳統 Vm 將遵循 [新式生命週期原則](https://support.microsoft.com/help/30881/modern-lifecycle-policy) 來淘汰。
+使用傳統部署模型建立的 Vm 將遵循 [新式生命週期原則](https://support.microsoft.com/help/30881/modern-lifecycle-policy) 來淘汰。
 
 ## <a name="how-does-this-affect-me"></a>此變更會對我造成什麼影響？ 
 
-- 自2020年2月28日起，未在2020年2月的 Azure Service Manager (ASM) 使用 IaaS Vm 的客戶將不再能夠建立傳統 Vm。 
-- 在2023年3月1日，客戶將無法再使用 Azure Service Manager 啟動 IaaS Vm，而且任何仍在執行或配置的虛擬機器都將停止並解除配置。 
-- 在2023年3月1日，未遷移至 Azure Resource Manager 的訂用帳戶，將會收到有關刪除任何剩餘傳統 Vm 的時程表。  
+- 從2020年2月28日起，在2020年2月，未透過 ASM 使用 IaaS Vm 的客戶將無法再建立 (傳統) 的 Vm。 
+- 在2023年3月1日，客戶將無法再使用 ASM 啟動 IaaS Vm。 任何仍在執行或配置的程式都會停止並解除配置。 
+- 在2023年3月1日，未遷移至 Azure Resource Manager 的訂用帳戶，將會收到有關刪除任何剩餘 Vm (傳統) 的時程表。  
 
-下列 Azure 服務和功能 **不** 會受到此淘汰的影響： 
-- 雲端服務 
-- 傳統 Vm **未** 使用的儲存體帳戶 
-- 傳統 Vm **未** 使用 (vnet) 虛擬網路。 
+這項淘汰 *不會影響下列* Azure 服務和功能： 
+- Azure 雲端服務 
+- Vm (傳統) *不* 使用的儲存體帳戶 
+- Vm (傳統) *不* 使用的虛擬網路 
 - 其他傳統資源
 
 ## <a name="what-actions-should-i-take"></a>我應該採取哪些動作？ 
 
-- 立即開始規劃您的遷移至 Azure Resource Manager。 
+立即開始規劃您的遷移至 Azure Resource Manager。 
 
-- 建立所有受影響 Vm 的清單。 [Azure 入口網站 vm](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines)分頁上的 VM 類型「虛擬機器 (傳統) 」是訂用帳戶中所有受影響的 vm。 
+1. 建立所有受影響 Vm 的清單： 
 
-- [深入瞭解](./windows/migration-classic-resource-manager-overview.md) 如何將傳統 [Linux](./linux/migration-classic-resource-manager-plan.md) 和 [Windows](./windows/migration-classic-resource-manager-plan.md) vm 遷移至 Azure Resource Manager。
+   - 在[Azure 入口網站的 VM 窗格](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines)上，**虛擬機器類型 (傳統) **的 vm，全都是訂用帳戶內受影響的所有 vm。 
+   - 您也可以使用 [入口網站](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22) 或 [PowerShell](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) 來查詢 Azure Resource Graph，以查看所有已加上旗標的 vm 清單 (傳統) 以及所選訂用帳戶的相關資訊。 
+   - 在2020年2月8日和9月2日，我們已向訂用帳戶擁有者傳送電子郵件，其中包含這些 Vm (傳統) 的所有訂用帳戶清單。 請使用它們來建立這份清單。 
 
-- 如需詳細資訊，請參閱 [傳統的常見問題以 Azure Resource Manager 遷移](./migration-classic-resource-manager-faq.md)
+1. [深入瞭解](./windows/migration-classic-resource-manager-overview.md) 如何將 [Linux](./linux/migration-classic-resource-manager-plan.md) 和 [Windows](./windows/migration-classic-resource-manager-plan.md) vm (傳統) 遷移至 Azure Resource Manager。 如需詳細資訊，請參閱傳統的常見問題 [至 Azure Resource Manager 的遷移](./migration-classic-resource-manager-faq.md)。
 
-- 如有技術問題、問題，以及將訂閱新增到允許清單，請 [聯絡支援人員](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"})。
+1. 建議您開始使用 [平臺支援遷移工具](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview) 來遷移現有的 vm，方法有三個簡單的步驟：驗證、準備和認可。 此工具的設計是要在最短的時間內遷移您的 Vm，而不需要停機。 
 
-- 針對其他不屬於常見問題和意見反應的問題，請在下方留言。
+   1. 第一個步驟「驗證」不會影響您現有的部署，並提供所有不支援的案例清單來進行遷移。 
+   1. 請流覽因應措施的 [清單](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview#unsupported-features-and-configurations) 來修正您的部署，並讓它準備好進行遷移。 
+   1. 在修正所有驗證錯誤之後，最好不要在準備和認可步驟期間遇到任何問題。 認可成功之後，您的部署會即時移轉至 Azure Resource Manager，然後可以透過 Azure Resource Manager 所公開的新 Api 來管理。 
 
-- 請儘快完成遷移，以防止業務影響並利用改良的效能、安全性 & Azure Resource Manager 所提供的新功能。 
+   如果遷移工具不適用於您的遷移，您可以探索 [其他計算供應](https://docs.microsoft.com/azure/architecture/guide/technology-choices/compute-decision-tree) 專案以進行遷移。 因為有許多 Azure 計算供應專案，而且它們彼此不同，所以我們無法為其提供平臺支援的遷移路徑。  
 
-## <a name="what-resources-are-provided-to-me-for-this-migration"></a>此遷移會提供哪些資源給我？
+1. 針對將訂用帳戶新增至允許清單的技術問題、問題和協助，請 [聯絡支援人員](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"})。
 
-- [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-virtual-machines-migration.html)：適用于遷移的 microsoft & 支援小組
+1. 請儘快完成遷移以防止業務影響，並充分利用 Azure Resource Manager 改善的效能、安全性及新功能。 
 
-- [Azure 遷移支援](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"})：在遷移期間針對技術協助提供專屬的支援小組
+## <a name="what-resources-are-available-for-this-migration"></a>此遷移有哪些資源可用？
 
-- [Microsoft Fast track](https://www.microsoft.com/fasttrack)： Microsoft fast track 小組可以在遷移至合格客戶時，提供技術協助。 
+- [Microsoft 問&答](https://docs.microsoft.com/answers/topics/azure-virtual-machines-migration.html)： microsoft 和社區支援的遷移。
 
-- 如果您的公司/組織與 Microsoft 合作，或與 microsoft 代表合作，例如 (雲端解決方案架構師 (CSA) 、技術客戶經理 (TAMs) # A5，請與他們合作以取得其他資源以進行遷移。 
+- [Azure 遷移支援](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"})：在遷移期間提供技術協助的專屬支援小組。
+
+- [Microsoft Fast Track](https://www.microsoft.com/fasttrack)：可在遷移至合格客戶期間提供技術協助的團隊。 
+
+如果您的公司/組織已與 Microsoft 合作，或與 Microsoft 代表 (（例如雲端解決方案架構設計人員） (Csa) 或技術帳戶管理員 (TAMs) # A5，請與他們合作以取得其他資源來進行遷移。 
 

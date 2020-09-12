@@ -3,16 +3,16 @@ title: Azure 虛擬機器映射驗證-Azure Marketplace
 description: 了解如何在商業 Marketplace 中測試並提交虛擬機器供應項目。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: fd8f41f88b6184eee15477c460dc9d2e521d25e6
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 2d19098ec82fe9361154d798b981341a86decf97
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144143"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647821"
 ---
 # <a name="azure-virtual-machine-image-validation"></a>Azure 虛擬機器映射驗證
 
@@ -589,7 +589,7 @@ Azure 認證的認證測試工具是在本機 Windows 電腦上執行，但可�
 
     :::image type="content" source="media/vm/azure-vm-cert-4.png" alt-text="顯示選取的 VM 使用者名稱和密碼。":::
 
-6. 選取 [下一步]。
+6. 選取 [下一步] 。
 
 #### <a name="run-a-certification-test"></a>執行認證測試
 

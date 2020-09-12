@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: bea9e163e9dde6c42de87048379d663222cb56e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77c4f627668b91c4bc21ad73b3511c1775943229
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82734615"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460196"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>雲端服務 Web/背景工作角色的預設 TEMP 資料夾太小
 雲端服務背景工作角色或 Web 角色的預設暫存目錄大小上限為 100 MB，可能會在某個時間點達到。 本文說明如何避免用盡暫存目錄的空間。
@@ -69,9 +69,9 @@ namespace WorkerRole1
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
-請參閱說明 [如何增加 Azure Web 角色 ASP.NET 暫存資料夾大小](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx)的部落格。
+## <a name="next-steps"></a>接下來的步驟
+請參閱說明 [如何增加 Azure Web 角色 ASP.NET 暫存資料夾大小](https://docs.microsoft.com/archive/blogs/kwill/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder)的部落格。
 
 檢視更多雲端服務的 [疑難排解文章](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview) 。
 
-若要了解如何利用 Azure PaaS 電腦診斷資料，對雲端服務角色的問題進行疑難排解，請檢視 [Kevin Williamson 的部落格系列](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)。
+若要了解如何利用 Azure PaaS 電腦診斷資料，對雲端服務角色的問題進行疑難排解，請檢視 [Kevin Williamson 的部落格系列](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。

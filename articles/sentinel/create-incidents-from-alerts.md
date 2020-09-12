@@ -13,18 +13,18 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 09/07/2020
 ms.author: yelevin
-ms.openlocfilehash: 1593b96ae8412632120e8977635a4193996ca88d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4c631360417afda41b7f48a46b618e7a4328aef
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025113"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660706"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>自動從 Microsoft 安全性警示建立事件
 
-在連線至 Azure Sentinel 的 Microsoft 安全性解決方案 (例如 Microsoft Cloud App Security 和 Azure 進階威脅防護) 中觸發的警示，不會在 Azure Sentinel 中自動建立事件。 根據預設，當您將 Microsoft 解決方案連線到 Azure Sentinel 時，任何在該服務中產生的警示都會以原始資料的形式儲存在 Azure Sentinel 中 (在 Azure Sentinel 工作區的 [安全性警示] 資料表中)。 然後您可以使用該資料，就像您連線到 Sentinel 中的任何其他原始資料一樣。
+在連接到 Azure Sentinel 的 Microsoft 安全性解決方案（例如 Microsoft Cloud App Security 和適用于身分識別 (的 Microsoft Defender 之前 Azure ATP) ）所觸發的警示，請勿在 Azure Sentinel 中自動建立事件。 根據預設，當您將 Microsoft 解決方案連線到 Azure Sentinel 時，任何在該服務中產生的警示都會以原始資料的形式儲存在 Azure Sentinel 中 (在 Azure Sentinel 工作區的 [安全性警示] 資料表中)。 然後您可以使用該資料，就像您連線到 Sentinel 中的任何其他原始資料一樣。
 
 您可以遵循本文中的指示，輕鬆地將 Azure Sentinel 設定為每次在已連線 Microsoft 安全性解決方案中觸發警示時自動建立事件。
 
@@ -33,7 +33,7 @@ ms.locfileid: "82025113"
 
 ## <a name="using-microsoft-security-incident-creation-analytic-rules"></a>使用 Microsoft 安全性事件建立分析規則
 
-使用 Azure Sentinel 中提供的內建規則，選擇哪些已連線的 Microsoft 安全性解決方案應該即時自動建立 Azure Sentinel 事件。 您也可以編輯這些規則來定義更具體的選項，以便篩選 Microsoft 安全性解決方案所產生的哪些警示應該在 Azure Sentinel 中建立事件。 例如，您可以選擇只從高嚴重性的 Azure 資訊安全中心警示，自動建立 Azure Sentinel 事件。
+使用 Azure Sentinel 中提供的內建規則，選擇哪些已連線的 Microsoft 安全性解決方案應該即時自動建立 Azure Sentinel 事件。 您也可以編輯這些規則來定義更具體的選項，以便篩選 Microsoft 安全性解決方案所產生的哪些警示應該在 Azure Sentinel 中建立事件。 例如，您可以選擇只從高嚴重性的 Azure Defender (先前 Azure 資訊安全中心) 警示，自動建立 Azure Sentinel 事件。
 
 1. 在 Azure 入口網站的 [Azure Sentinel] 底下，選取 [分析]。
 
@@ -47,7 +47,7 @@ ms.locfileid: "82025113"
 
 1. 您可以修改規則詳細資料，然後選擇篩選將會依警示嚴重性或依警示名稱內含文字建立事件的警示。  
       
-    例如，如果您在 [Microsoft 安全性服務] 欄位中選擇 [Azure 資訊安全中心]，然後在 [依嚴重性篩選] 欄位中選擇 [高]，則只有高嚴重性 Azure 資訊安全中心警示會在 Azure Sentinel 中自動建立事件。  
+    例如，如果您選擇 [ **Azure defender** (可能仍會被稱為 [ **Microsoft Security service** ] 欄位中的 [Azure 資訊安全中心) ]，然後在 [**依嚴重性篩選**] 欄位中選擇 [**高**]，只有高嚴重性的 Azure Defender 警示會自動在 Azure Sentinel 中建立事件。  
 
     ![建立規則精靈](media/incidents-from-alerts/create-rule-wizard.png)
 

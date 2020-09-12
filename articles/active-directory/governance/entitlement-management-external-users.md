@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef88a15286389c98bb77f982afbc54358897eef4
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 72ed8fede56385248415caf0438b190d5c191bbc
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783853"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460859"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中管理外部使用者的存取權
 
@@ -105,7 +105,7 @@ Azure AD 權利管理會利用 [Azure AD 的企業對企業 (B2B) ](../external-
 
 ### <a name="review-your-microsoft-365-group-sharing-settings"></a>檢查您的 Microsoft 365 群組共用設定
 
-- 如果您想要在存取套件中包含外部使用者的 Microsoft 365 群組，請確認 [ **允許使用者將新的來賓新增至組織** ] 已設為 [ **開啟** ]，以允許來賓存取。 如需詳細資訊，請參閱 [管理對 Microsoft 365 群組的來賓存取](/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access)。
+- 如果您想要在存取套件中包含外部使用者的 Microsoft 365 群組，請確認 [ **允許使用者將新的來賓新增至組織** ] 已設為 [ **開啟** ]，以允許來賓存取。 如需詳細資訊，請參閱 [管理對 Microsoft 365 群組的來賓存取](/Microsoft 365/admin/create-groups/manage-guest-access-in-groups?view=Microsoft 365-worldwide#manage-groups-guest-access)。
 
 - 如果您想要讓外部使用者能夠存取 SharePoint Online 網站和與 Microsoft 365 群組相關聯的資源，請確定您開啟的是 SharePoint Online 外部共用。 如需詳細資訊，請參閱 [開啟或關閉外部共用](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)。
 

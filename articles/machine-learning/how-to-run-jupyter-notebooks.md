@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a59905c1d410ae0ffd4520f3b61fd37e649012e7
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386447"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650915"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作區中執行 Jupyter Notebook
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "87386447"
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="建立新檔案":::
 
 1. 為檔案命名。 
-1. 針對 Jupyter Notebook 檔案，請選取 [Python 筆記本] 做為檔案類型。
+1. 針對 Jupyter Notebook 檔案，請選取 [ **筆記本** ] 作為檔案類型。
 1. 選取檔案目錄。
 1. 選取 [建立]。
 
@@ -57,7 +57,7 @@ ms.locfileid: "87386447"
 您也可以使用 [筆記本] 頁面頂端的工具上傳資料夾和檔案，包括筆記本。  在 [預覽] 區段中會顯示筆記本和大部分的文字檔案類型。  其他檔案類型大多不能預覽。
 
 > [!IMPORTANT]
-> 筆記本和腳本中的內容可能會從您的會話讀取資料，並在 Azure 中存取資料，而不需要您的組織。  僅從信任的來源載入檔案。 如需詳細資訊，請參閱[安全程式碼最佳作法](concept-secure-code-best-practice.md#azure-ml-studio-notebooks)。
+> 筆記本和腳本中的內容可能會從您的會話讀取資料，並在您的 Azure 中存取資料，而不需要您的組織。  只從受信任的來源載入檔案。 如需詳細資訊，請參閱 [安全程式碼的最佳做法](concept-secure-code-best-practice.md#azure-ml-studio-notebooks)。
 
 ### <a name="clone-samples"></a>複製範例
 
@@ -77,12 +77,12 @@ ms.locfileid: "87386447"
 1. 在 [Azure Machine Learning Studio](https://ml.azure.com) 中開啟您的工作區。
 1. 選取左側的 [筆記本]。
 1. 選取位於左側 [使用者檔案] 區段中的任何筆記本。  如果您沒有任何筆記本，請先[建立筆記本](#create)。
-1. 選取 [計算] 目標或建立一個新的目標，然後等候它執行。
+1. 選取 **計算** 目標，或建立一個新的，並等候它正在執行。
 1. 選取**開啟終端機**圖示。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="開啟終端機":::
 
-1. 如果您沒看到此圖示，請選取計算目標右邊的 [...]，然後選取 [開啟終端機]。
+1. 如果您沒有看到此圖示，請選取計算目標右邊的 **...** ，然後選取 [ **開啟終端**機]。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="從 ... 開啟終端機":::
 
@@ -92,35 +92,51 @@ ms.locfileid: "87386447"
 
 ### <a name="share-notebooks-and-other-files"></a>共用筆記本和其他檔案
 
-複製並貼上 URL，以共用筆記本或檔案。  只有工作區的其他使用者才能存取此 URL。  瞭解如何[授與對工作區的存取權](how-to-assign-roles.md)。
+複製並貼上 URL，以共用筆記本或檔案。  只有工作區的其他使用者可以存取此 URL。  瞭解如何[授與對工作區的存取權](how-to-assign-roles.md)。
 
 ## <a name="edit-a-notebook"></a>編輯筆記本
 
 若要編輯筆記本，開啟工作區的 [使用者檔案] 區段中的任何筆記本。 按一下您要編輯的儲存格。 
 
-您可以編輯筆記本，而不需要連接到計算實例。  當您想要執行筆記本中的資料格時，請選取或建立計算實例。  如果您選取已停止的計算實例，它會在您執行第一個資料格時自動啟動。
+您可以編輯筆記本，而不需要連接到計算實例。  當您想要在筆記本中執行資料格時，請選取或建立計算實例。  如果您選取已停止的計算實例，則會在您執行第一個資料格時自動啟動。
 
-當計算實例正在執行時，您也可以使用任何 Python 筆記本中的程式碼完成（由[Intellisense](https://code.visualstudio.com/docs/editor/intellisense)提供技術支援）。
+當計算實例正在執行時，您也可以在任何 Python 筆記本中使用 [Intellisense](https://code.visualstudio.com/docs/editor/intellisense)支援的程式碼完成。
 
 您也可以從 [筆記本] 工具列啟動 Jupyter 或 JupyterLab。  Azure Machine Learning 不會提供 Jupyter 或 JupyterLab 的更新和修正錯誤，因為它們是 Microsoft 支援服務界限外的開放原始碼產品。
 
 ### <a name="use-intellisense"></a>使用 IntelliSense
 
-[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)是一種程式碼完成輔助工具，其中包含許多功能：列出成員、參數資訊、快速諮詢和完整文字。 這些功能有助於深入了解您使用的程式碼、追蹤所鍵入的參數，以及幾個按鍵即可新增屬性和方法呼叫。  
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) 是一種程式碼完成的輔助工具，其中包含許多功能：列出成員、參數資訊、快速諮詢和完成文字。 這些功能有助於深入了解您使用的程式碼、追蹤所鍵入的參數，以及幾個按鍵即可新增屬性和方法呼叫。  
 
 輸入程式碼時，請使用 Ctrl + 空格鍵來觸發 IntelliSense。
 
-### <a name="save-and-checkpoint-a-notebook"></a>儲存和檢查點筆記本
+### <a name="clean-your-notebook-preview"></a>清理您的筆記本 (預覽版) 
 
-當您建立 *ipynb*檔案時，Azure Machine Learning 會建立檢查點檔案   。
+> [!IMPORTANT]
+> 收集功能目前處於公開預覽狀態。
+> 此預覽版本會在沒有服務等級協定的情況下提供，不建議用於實際執行工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-在 [筆記本] 工具列中，選取功能表，然後選取 [檔案] [ ** &gt; 儲存與檢查點**] 以手動儲存筆記本，它會新增與筆記本相關聯的檢查點檔案。
+在建立筆記本的過程中，您通常會得到用於資料探索或偵測的資料格。 *收集*功能可協助您在沒有這些多餘儲存格的情況下產生乾淨的筆記本。
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="筆記本工具列中儲存工具的螢幕擷取畫面":::
+1. 執行您所有的筆記本儲存格。
+1. 選取包含您想要新筆記本執行之程式碼的資料格。 例如，提交實驗的程式碼，或可能註冊模型的程式碼。
+1. 選取出現在資料格工具列上的 **收集** 圖示。
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="螢幕擷取畫面：選取收集圖示":::
+1. 輸入新「收集的」筆記本的名稱。  
 
-每隔30秒會自動儲存每個筆記本。自動儲存只會更新初始 *ipynb*檔案   ，而不是檢查點檔案。
+新的筆記本只會包含程式碼儲存格，而且所有儲存格都需要產生與您選取要收集的資料格相同的結果。
+
+### <a name="save-and-checkpoint-a-notebook"></a>儲存並檢查筆記本的檢查點
+
+當您建立 *.ipynb*檔案時，Azure Machine Learning 建立檢查點檔案   。
+
+在筆記本工具列中，選取功能表，然後選取 **[ &gt; 儲存和檢查點** ] 以手動方式儲存筆記本，它會新增與筆記本相關聯的檢查點檔案。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="筆記本工具列中 [儲存] 工具的螢幕擷取畫面":::
+
+每隔30秒會自動儲存每個筆記本。[自動儲存] 只會更新初始 *.ipynb*檔   ，而不會更新檢查點檔案。
  
-選取 [筆記本] 功能表中的 [**檢查點**] 以建立命名的檢查點，並將筆記本還原至儲存的檢查點。
+選取 [筆記本] 功能表中的 [ **檢查點** ]，以建立命名檢查點，並將筆記本還原至已儲存的檢查點。
 
 
 ### <a name="useful-keyboard-shortcuts"></a>實用的鍵盤快速鍵
@@ -128,7 +144,7 @@ ms.locfileid: "87386447"
 |鍵盤  |動作  |
 |---------|---------|
 |Shift+Enter     |  執行儲存格       |
-|Ctrl+空格鍵 | 啟動 IntelliSense |
+|Ctrl+空格鍵 | 啟用 IntelliSense |
 |Ctrl+M (Windows)     |  啟用/停用筆記本中的 Tab 鍵捕捉。       |
 |Ctrl+Shift+M (Mac 和 Linux)     |    啟用/停用筆記本中的 Tab 鍵捕捉。     |
 |Tab 鍵 (啟用 Tab 鍵捕捉時) | 新增 ' \t ' 字元 (縮排)
@@ -157,7 +173,7 @@ ms.locfileid: "87386447"
 
 ### <a name="view-logs-and-output"></a>檢視記錄和輸出
 
-使用[筆記本小工具](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)檢視執行進度和記錄。 小工具沒有同步，會一直提供更新直到定型完成。 Jupyter 和 JupterLab 也支援 Azure Machine Learning 小工具。
+使用[筆記本小工具](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)檢視執行進度和記錄。 小工具沒有同步，會一直提供更新直到定型完成。 Jupyter 和 JupterLab 也支援 Azure Machine Learning 小工具。
 
 ## <a name="change-the-notebook-environment"></a>變更筆記本環境
 
@@ -194,7 +210,7 @@ ms.locfileid: "87386447"
     ```shell
     conda activate newenv
     ```
-1. 將 pip 和 ipykernel 套件安裝到新環境，並建立該 conda env 的核心
+1. 將 pip 和 ipykernel 套件安裝至新環境，並為該 conda 環境建立核心
 
     ```shell
     conda install pip

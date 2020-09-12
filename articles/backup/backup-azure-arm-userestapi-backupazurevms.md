@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來設定、啟動
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: aa072cb48e12ac89af3be28a9633a82b50122275
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006290"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506622"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>透過 REST API 使用 Azure 備份來備份 Azure VM
 
@@ -274,6 +274,35 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 
 這會確認已為 VM 啟用保護，並根據原則排程觸發第一個備份。
 
+### <a name="excluding-disks-in-azure-vm-backup"></a>排除 Azure VM 備份中的磁片
+
+Azure 備份也提供在 Azure VM 中選擇性備份磁片子集的方法。 [這裡](selective-disk-backup-restore.md)提供更多詳細資料。 如果您想要在啟用保護期間選擇性地備份幾個磁片，則在 [啟用保護期間](#example-request-body)，下列程式碼片段應為要求主體。
+
+```json
+{
+"properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "policyId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupPolicies/DefaultPolicy",
+    "extendedProperties":  {
+      "diskExclusionProperties":{
+          "diskLunList":[0,1],
+          "isInclusionList":true
+        }
+    }
+}
+}
+```
+
+在上述要求主體中，[擴充屬性] 區段中會提供要備份的磁片清單。
+
+|屬性  |值  |
+|---------|---------|
+|diskLunList     | 磁片 LUN 清單是 *資料磁片的 lun*清單。 **作業系統磁片一律會進行備份，而且不需要提及**。        |
+|IsInclusionList     | 應為 **true** ，才會在備份期間包含 lun。 如果為 **false**，則會排除上述 lun。         |
+
+因此，如果需要只備份 OS 磁片，則應該排除 _所有_ 資料磁片。 更簡單的方法是說，不應包含任何資料磁片。 因此，磁片 LUN 清單會是空的，而且 **IsInclusionList** 會是 **true**。 同樣地，您也可以考慮選取子集的更簡單方法：應該一律排除幾個磁片，或一律包含一些磁片。 依序選擇 LUN 清單和布林值變數值。
+
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>針對受保護的 Azure VM 觸發隨選備份
 
 一旦 Azure VM 設定為備份，就會根據原則排程進行備份。 您可以等候第一個排定的備份，或隨時觸發隨選備份。 隨選備份的保留期與備份原則的保留期不同，且可指定為特定的日期時間。 如果未指定，即會假設為從觸發隨選備份當日起算的 30 天。
@@ -389,7 +418,7 @@ X-Powered-By: ASP.NET
 
 若要變更用來保護 VM 的原則，您可以使用與[啟用保護](#enabling-protection-for-the-azure-vm)相同的格式。 只在[要求本文](#example-request-body)中提供新的原則識別碼並提交要求。 例如：若要將 testVM 的原則從 ' DefaultPolicy ' 變更為 ' ProdPolicy '，請在要求主體中提供 ' ProdPolicy ' 識別碼。
 
-```http
+```json
 {
   "properties": {
     "protectedItemType": "Microsoft.Compute/virtualMachines",
@@ -400,6 +429,15 @@ X-Powered-By: ASP.NET
 ```
 
 回應將遵循與[針對啟用保護](#responses-to-create-protected-item-operation)所述相同的格式。
+
+#### <a name="excluding-disks-during-azure-vm-protection"></a>在 Azure VM 保護期間排除磁片
+
+如果已備份 Azure VM，您可以藉由變更保護原則來指定要備份或排除的磁片清單。 請在[啟用保護期間](#excluding-disks-in-azure-vm-backup)，以與排除磁片相同的格式來準備要求
+
+> [!IMPORTANT]
+> 上述要求主體一律是要排除或納入的資料磁片的最終複本。 這不會 *新增* 至先前的設定。 例如：如果您第一次將保護更新為「排除資料磁片1」，然後重複「排除資料磁片2」，則只會在後續的備份中 *排除資料磁片 2* ，並包含資料磁片1。 這一律是將在後續備份中包含/排除的最終清單。
+
+若要取得已排除或包含的目前磁片清單，請取得受保護的專案資訊，[如下所述。](https://docs.microsoft.com/rest/api/backup/protecteditems/get) 回應會提供資料磁片 Lun 的清單，並指出是否要包含或排除它們。
 
 ### <a name="stop-protection-but-retain-existing-data"></a>停止保護，但保留現有資料
 
@@ -466,7 +504,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 回應將遵循與[針對觸發隨選備份](#example-responses-for-on-demand-backup)所述相同的格式。 您應該追蹤結果作業，如[使用 REST API 監視作業文件](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)所述。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [從 Azure 虛擬機器備份還原資料](backup-azure-arm-userestapi-restoreazurevms.md)。
 

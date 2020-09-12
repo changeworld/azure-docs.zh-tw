@@ -1,24 +1,25 @@
 ---
-title: 連接到 SFTP 帳戶
-description: 藉由使用 Azure Logic Apps，透過 SSH 來讓針對 SFTP 伺服器監視、建立、管理、傳送及接收檔案的工作和流程自動化
+title: '連接至 SFTP 帳戶 (已淘汰) '
+description: 使用 Azure Logic Apps，將監視、建立、管理、傳送及接收 SFTP 伺服器檔案的工作和程式自動化
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: divswa, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ROBOTS: NOINDEX
+ms.openlocfilehash: 817c17b0e05180f5c7a616320a25c2bc3c21c5f8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74789268"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651403"
 ---
-# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>藉由使用 Azure Logic Apps 來監視、建立及管理 SFTP 檔案
+# <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>在 Azure Logic Apps 中監視、建立及管理 SFTP 檔案
 
 > [!IMPORTANT]
-> 請使用[SFTP SSH 連接器](../connectors/connectors-sftp-ssh.md)，因為 sftp 連接器已被取代。 您無法再于邏輯應用程式設計工具中選取 SFTP 觸發程式和動作。
+> 請使用 [SFTP SSH 連接器](../connectors/connectors-sftp-ssh.md) ，因為 sftp 連接器已淘汰。 您無法再于邏輯應用程式設計工具中選取 SFTP 觸發程式和動作。
 
 若要在[安全檔案傳輸通訊協定 (SFTP)](https://www.ssh.com/ssh/sftp/) \(英文\) 伺服器上，將監視、建立、傳送及接收檔案的工作自動化，您可以使用 Azure Logic Apps 和 SFTP 連接器來建置整合工作流程並自動化。 SFTP 是一個網路通訊協定，可透過任何可靠的資料流提供檔案存取、檔案傳輸和檔案管理。 以下是一些您可自動化的範例工作：
 
@@ -31,7 +32,7 @@ ms.locfileid: "74789268"
 
 ## <a name="limits"></a>限制
 
-SFTP 連接器只會處理*50 MB 或更小*的檔案，且不支援[訊息區塊](../logic-apps/logic-apps-handle-large-messages.md)化。 針對較大的檔案，請使用[SFTP SSH 連接器](../connectors/connectors-sftp-ssh.md)。 如需 SFTP 連接器與 SFTP SSH 連接器之間的差異，請參閱在 SFTP SSH 文章中[比較 sftp-ssh 與 sftp](../connectors/connectors-sftp-ssh.md#comparison) 。
+SFTP 連接器只會處理 *50 MB 或更小* 且不支援 [訊息區塊](../logic-apps/logic-apps-handle-large-messages.md)處理的檔案。 針對較大的檔案，請使用 [SFTP SSH 連接器](../connectors/connectors-sftp-ssh.md)。 如需 SFTP 連接器與 SFTP SSH 連接器之間的差異，請參閱 SFTP SSH 文章中的「 [sftp-ssh」與 Sftp 比較](../connectors/connectors-sftp-ssh.md#comparison) 。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -51,14 +52,14 @@ SFTP 連接器只會處理*50 MB 或更小*的檔案，且不支援[訊息區塊
 
 * 您要在其中存取 SFTP 帳戶的邏輯應用程式。 若要開始使用 SFTP 觸發程序，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SFTP 動作，請使用其他觸發程序來啟動邏輯應用程式，例如「週期」**** 觸發程序。
 
-## <a name="how-sftp-triggers-work"></a>SFTP 觸發程式的工作方式
+## <a name="how-sftp-triggers-work"></a>SFTP 觸發程式的運作方式
 
-SFTP 觸發程式的工作是輪詢 SFTP 檔案系統，並尋找自上次輪詢後已變更的任何檔案。 某些工具可讓您在檔案變更時保留時間戳記。 在這些情況下，您必須停用此功能，以便讓您的觸發程序可以運作。 以下是一些常見的設定：
+SFTP 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自上次輪詢後已變更的任何檔案。 某些工具可讓您在檔案變更時保留時間戳記。 在這些情況下，您必須停用此功能，以便讓您的觸發程序可以運作。 以下是一些常見的設定：
 
 | SFTP 用戶端 | 動作 |
 |-------------|--------|
 | Winscp | 移至**選項**  >  **喜好**設定  >  **傳輸**  >  **編輯**  >  **保留時間戳**  >  **停**用 |
-| FileZilla | 移至 [**傳輸**] [  >  **保留傳輸的檔案的時間戳記**]  >  **停**用 |
+| FileZilla | 移至 [**傳輸**  >  **保留已傳輸檔案的時間戳記**]  >  **停**用 |
 |||
 
 當觸發程序找到新檔案時，觸發程序會確認該新檔案是完整檔案，而不是部分寫入的檔案。 例如，當觸發程序檢查檔案伺服器時，檔案可能正在進行變更。 為避免傳回部分寫入的檔案，觸發程序會備註最近發生變更之檔案的時間戳記，但不會立即傳回該檔案。 觸發程序只有在再次輪詢伺服器時，才會傳回該檔案。 有時，此行為可能會導致最長可達觸發程序輪詢間隔兩倍的延遲。
@@ -88,7 +89,7 @@ SFTP 觸發程式的工作是輪詢 SFTP 檔案系統，並尋找自上次輪詢
 
    1. 在文字編輯器中開啟您的 SSH 私密金鑰檔案。 這些步驟會使用記事本作為範例。
 
-   1. 在 [記事本**編輯**] 功能表上，選取 [**全選**]。
+   1. 在 [記事本] 的 [ **編輯** ] 功能表上，選取 [ **全選**]。
 
    1. 選取 [**編輯**  >  **複本**]。
 
@@ -113,10 +114,6 @@ SFTP 觸發程式的工作是輪詢 SFTP 檔案系統，並尋找自上次輪詢
 ### <a name="sftp-action-get-content"></a>SFTP 動作：取得內容
 
 此動作會從 SFTP 伺服器上的檔案取得內容。 舉例來說，您可以新增來自上一個範例中的觸發程序，以及新增檔案內容必須符合的條件。 如果條件為 true，則可以執行會取得內容的動作。
-
-## <a name="connector-reference"></a>連接器參考
-
-如需觸發程序、動作和限制的技術詳細資訊，它們是由連接器的 OpenAPI (以前稱為 Swagger) 來描述，請檢閱連接器的[參考頁面](/connectors/sftpconnector/)。
 
 ## <a name="next-steps"></a>後續步驟
 

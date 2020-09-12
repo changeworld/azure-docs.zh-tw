@@ -1,6 +1,6 @@
 ---
-title: 具有 AD FS 具風險的 IP 報告的 Azure AD Connect Health |Microsoft Docs
-description: 描述 Azure AD Connect Health AD FS 具風險的 IP 報告。
+title: 具有 AD FS 具風險 IP 報告的 Azure AD Connect Health |Microsoft Docs
+description: 描述 AD FS 具風險的 IP 報告 Azure AD Connect Health。
 services: active-directory
 documentationcenter: ''
 ms.reviewer: zhiweiwangmsft
@@ -16,15 +16,15 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98109199f489839253965bef3033d27935cff13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 431b45f4ef3431e7fd1d34cf80278892470c36ef
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359343"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660832"
 ---
-# <a name="risky-ip-report-public-preview"></a>有風險的 IP 報告（公開預覽）
-AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證服務讓終端使用者能夠存取 Office 365 之類的 SaaS 應用程式。 在此情況下，不良執行者便有機會嘗試登入您的 AD FS 系統，以猜出終端使用者的密碼並存取應用程式資源。 自 Windows Server 2012 R2 中的 AD FS 開始，AD FS 會提供外部網路帳戶鎖定功能以避免這類攻擊。 如果您使用較低的版本，我們強烈建議您將 AD FS 系統升級至 Windows Server 2016。 <br />
+# <a name="risky-ip-report-public-preview"></a>具風險的 IP 報告 (公開預覽) 
+AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證服務給終端使用者存取 SaaS 應用程式，例如 Microsoft 365。 在此情況下，不良執行者便有機會嘗試登入您的 AD FS 系統，以猜出終端使用者的密碼並存取應用程式資源。 自 Windows Server 2012 R2 中的 AD FS 開始，AD FS 會提供外部網路帳戶鎖定功能以避免這類攻擊。 如果您使用較低的版本，我們強烈建議您將 AD FS 系統升級至 Windows Server 2016。 <br />
 
 此外，單一 IP 位址也有可能會嘗試多次登入多個使用者。 在這些情況下，每位使用者的嘗試次數可能會低於 AD FS 中帳戶鎖定保護的閾值。 Azure AD Connect Health 現在提供「具風險的 IP 報告」，此報告會偵測這種狀況，並在發生此狀況時通知系統管理員。 此報告的主要優點如下： 
 - 可偵測到超過失敗密碼型登入閾值的 IP 位址
@@ -35,13 +35,13 @@ AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證�
 
 > [!NOTE]
 > 若要使用此報告，您必須確定已啟用 AD FS 稽核。 如需詳細資訊，請參閱 [啟用 AD FS 的稽核](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs)。 <br />
-> 若要存取預覽，則需要全域管理員或[安全性讀取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)的權限。  
+> 若要存取預覽，則需要全域管理員或[安全性讀取者](../../role-based-access-control/built-in-roles.md#security-reader)的權限。  
 > 
 
-## <a name="what-is-in-the-report"></a>報表中的內容為何？
+## <a name="what-is-in-the-report"></a>報表中有哪些內容？
 失敗的登入活動用戶端 IP 位址是透過 Web 應用程式 Proxy 伺服器進行匯總。 「具風險的 IP 報告」中的每個項目會顯示有關已超過指定閾值之失敗 AD FS 登入活動的彙總資訊。 此報告可提供下列資訊：![Azure AD Connect Health 入口網站](./media/how-to-connect-health-adfs/report4a.png)
 
-| 報告項目 | Description |
+| 報告項目 | 描述 |
 | ------- | ----------- |
 | 時間戳記 | 根據 Azure 入口網站的本機時間，顯示偵測時間範圍開始時的時間戳記。<br /> 所有每日事件都會在午夜 UTC 時間產生。 <br />每小時事件的時間戳記會四捨五入到該小時的開始。 您可以在所匯出檔案的 “firstAuditTimestamp” 中找到第一個活動的開始時間。 |
 | 觸發程序類型 | 顯示偵測時間範圍的類型。 彙總觸發程序類型是每小時或每日。 這有助於偵測嘗試次數會分散在整天的高頻率暴力密碼破解攻擊與緩慢攻擊。 |
@@ -68,7 +68,7 @@ AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證�
 ## <a name="download-risky-ip-report"></a>下載具風險的 IP 報告 
 使用**下載**功能，即可從 Connect Health 入口網站匯出過去 30 天內的整個「具風險的 IP 位址」清單。匯出結果會包含每個偵測時間範圍中的所有失敗 AD FS 登入活動，以供您在匯出後自訂篩選。 除了入口網站中醒目提示的彙總外，匯出結果還會顯示有關每一 IP 位址之失敗登入活動的更多詳細資料：
 
-|  報告項目  |  Description  | 
+|  報告項目  |  描述  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | 顯示屬於偵測時間範圍內失敗活動開始時間的第一個時間戳記。  | 
 | lastAuditTimestamp | 顯示屬於偵測時間範圍內失敗活動結束時間的最後一個時間戳記。  | 
@@ -83,7 +83,7 @@ AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證�
 
 ![Azure AD Connect Health 入口網站](./media/how-to-connect-health-adfs/report4d.png)
 
-| 閾值項目 | Description |
+| 閾值項目 | 描述 |
 | --- | --- |
 | (錯誤 U/P + 外部網路鎖定) / 天  | 當每**天**的不正確密碼計數加上外部網路鎖定計數超過此閾值設定時，系統會報告活動和觸發程序警示通知。 |
 | (錯誤 U/P + 外部網路鎖定) / 小時 | 當每**小時**的不正確密碼計數加上外部網路鎖定計數超過此閾值設定時，系統會報告活動和觸發程序警示通知。 |
@@ -99,7 +99,7 @@ AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證�
 
 ## <a name="faq"></a>常見問題集
 **為何我會在報告中看到私人 IP 位址範圍？**  <br />
-系統會篩選出私人 IP 位址 (10.x.x.x、172.x.x.x 和 192.168.x.x<i></i>) 和 Exchange IP 位址，並在 IP 允許清單中將這些位址標示為 True。 如果您看見私人 IP 位址範圍，則很可能表示您的外部負載平衡器未在將要求傳遞至 Web 應用程式 Proxy 伺服器時傳送用戶端 IP 位址。
+私人 IP 位址 (2.x. x. x. x. x. x. x. x. x. x. x. x. x <i>& 192.168.</i>) 和 Exchange ip 位址會在 IP 核准清單中篩選並標示為 True。 如果您看見私人 IP 位址範圍，則很可能表示您的外部負載平衡器未在將要求傳遞至 Web 應用程式 Proxy 伺服器時傳送用戶端 IP 位址。
 
 **為何我會在報告中看到負載平衡器 IP 位址？**  <br />
 如果您看見負載平衡器 IP 位址，則很可能表示您的外部負載平衡器未在將要求傳遞至 Web 應用程式 Proxy 伺服器時傳送用戶端 IP 位址。 請正確設定您的負載平衡器，以傳遞轉送用戶端 IP 位址。 
@@ -113,9 +113,9 @@ AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證�
 - AD FS 伺服器陣列中未啟用稽核。
 
 **為何我看不到對報告的存取？**  <br />
-需要全域管理員或[安全性讀取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)權限。 請連絡您的全域管理員以取得存取權。
+需要全域管理員或[安全性讀取者](../../role-based-access-control/built-in-roles.md#security-reader)權限。 請連絡您的全域管理員以取得存取權。
 
 
-## <a name="next-steps"></a>後續步驟
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+## <a name="next-steps"></a>接下來的步驟
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health 代理程式安裝](how-to-connect-health-agent-install.md)

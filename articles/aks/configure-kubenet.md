@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: f9bc0cd229888d952821509ced6cc5410000ee52
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6f773f57bea40ba87f35ca2bbefe424d084afb2e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078719"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462134"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用 kubenet 網路與您自己的 IP 位址範圍
 
@@ -24,7 +24,7 @@ ms.locfileid: "89078719"
 
 * 適用於 AKS 叢集的虛擬網路必須允許輸出網際網路連線.
 * 請勿在相同子網路中建立多個 AKS 叢集。
-* AKS 叢集可能不會 `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` `192.0.2.0/24` 針對 Kubernetes 服務位址範圍使用、、或。
+* AKS 叢集可能不會 `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` `192.0.2.0/24` 針對 Kubernetes 服務位址範圍、pod 位址範圍或叢集虛擬網路位址範圍使用、、或。
 * AKS 叢集所使用的服務主體，在您虛擬網路內的子網上必須至少有 [網路參與者](../role-based-access-control/built-in-roles.md#network-contributor) 角色。 您也必須擁有適當的許可權（例如訂用帳戶擁有者），才能建立服務主體並指派其許可權。 如果您想要定義[自訂角色](../role-based-access-control/custom-roles.md)，而不使用內建的網路參與者角色，則需要下列權限：
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -102,7 +102,7 @@ Azure 在 UDR 中最多支援 400 條路由，因此您不能擁有超過 400 �
 
 ## <a name="create-a-virtual-network-and-subnet"></a>建立虛擬網路和子網路
 
-若要開始使用 *kubenet* 和您自己的虛擬網路子網路，請首先使用 [az group create][az-group-create] 命令建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
+若要開始使用 *kubenet* 和您自己的虛擬網路子網路，請首先使用 [az group create][az-group-create] 命令建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -244,7 +244,7 @@ az network vnet subnet list --resource-group
 az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 透過將 AKS 叢集部署到您現有的虛擬網路子網路中，您現在可以如往常一樣使用叢集。 開始使用 [Azure Dev Spaces 建立應用程式][dev-spaces]、 [使用 Helm 部署現有的應用][use-helm]程式，或 [使用 Helm 建立新的應用程式][develop-helm]。
 

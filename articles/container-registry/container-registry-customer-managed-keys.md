@@ -1,15 +1,15 @@
 ---
 title: 使用客戶管理的金鑰加密待用資料
-description: 瞭解 Azure container registry 的待用加密，以及如何使用儲存在 Azure Key Vault 中客戶管理的金鑰來加密 Premium 登錄
+description: 深入瞭解 Azure container registry 的待用加密，以及如何使用儲存在 Azure Key Vault 中客戶管理的金鑰來加密您的 Premium 登錄
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 08/26/2020
 ms.custom: ''
-ms.openlocfilehash: 67fb58d0e11709b3d801a81f15d856e9b3db922b
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 0e1810c8e3da334570dd1c4d6adb500e2cfa95e3
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225881"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487227"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客戶管理的金鑰來加密登錄
 
@@ -22,10 +22,14 @@ ms.locfileid: "88225881"
 
 ## <a name="things-to-know"></a>須知事項
 
-* 您目前只能在建立登錄時啟用客戶管理的金鑰。
-* 在登錄上啟用客戶管理的金鑰後，您就無法將其停用。
+* 您目前只能在建立登錄時啟用客戶管理的金鑰。 啟用金鑰時，您可以設定 *使用者指派* 的受控識別來存取金鑰保存庫。
+* 在登錄上使用客戶管理的金鑰啟用加密之後，您就無法停用加密。  
 * 在以客戶管理的金鑰加密的登錄中，目前不支援[內容信任](container-registry-content-trust.md)。
 * 在以客戶管理的金鑰加密的登錄中，執行 [ACR 工作](container-registry-tasks-overview.md)的記錄目前僅保留 24 小時。 如果您需要保留記錄較長的時間，請參閱[匯出和儲存工作執行記錄的指引](container-registry-tasks-logs.md#alternative-log-storage)。
+
+
+> [!NOTE]
+> 如果使用具有 [Key Vault 防火牆](../key-vault/general/network-security.md)的虛擬網路來限制存取 Azure key vault，則需要額外的設定步驟。 建立登錄並啟用客戶管理的金鑰之後，請使用登錄 *系統指派* 的受控識別來設定金鑰的存取權，並將登錄設定為略過 Key Vault 防火牆。 請先遵循本文中的步驟，使用客戶管理的金鑰來啟用加密，然後參閱本文稍後的「 [Advanced 案例的指引： Key Vault 防火牆](#advanced-scenario-key-vault-firewall) 」。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -372,7 +376,7 @@ az acr encryption show --name <registry-name>
 
 ## <a name="rotate-key"></a>輪替金鑰
 
-將用於登錄加密的客戶管理金鑰輪替至您的相容性原則。 建立新的金鑰，或更新金鑰版本，然後使用金鑰更新登錄來加密資料。 您也可以使用 Azure CLI 或在入口網站中執行這些步驟。
+根據您的合規性政策，輪替用於登錄加密的客戶管理金鑰。 建立新的金鑰，或更新金鑰版本，然後使用金鑰更新登錄來加密資料。 您也可以使用 Azure CLI 或在入口網站中執行這些步驟。
 
 輪替金鑰時，通常會指定建立登錄時使用的相同身分識別。 (選用) 針對金鑰存取設定新的使用者指派身分識別，或啟用並指定登錄系統指派的身分識別。
 
@@ -439,9 +443,15 @@ az keyvault delete-policy \
 
 撤銷金鑰會有效封鎖對所有登錄資料的存取，因為登錄無法存取加密金鑰。 如果已啟用金鑰的存取權，或已還原刪除的金鑰，您的登錄將會挑選金鑰，讓您可以再次存取加密的登錄資料。
 
-## <a name="advanced-scenarios"></a>進階案例
+## <a name="advanced-scenario-key-vault-firewall"></a>Advanced 案例： Key Vault 防火牆
 
-### <a name="system-assigned-identity"></a>系統指派的身分識別
+如果您的 Azure 金鑰保存庫部署在具有 Key Vault 防火牆的虛擬網路中，請在您的登錄中啟用客戶管理的金鑰加密之後，執行下列額外步驟。
+
+1. 將登錄加密設定為使用登錄系統指派的身分識別
+1. 啟用登錄以略過 Key Vault 防火牆
+1. 輪替客戶管理的金鑰
+
+### <a name="configure-system-assigned-identity"></a>設定系統指派的身分識別
 
 您可以設定登錄系統指派的受控識別，以存取加密金鑰的金鑰保存庫。 如果您不熟悉 Azure 資源的各種受控識別，請參閱[概觀](../active-directory/managed-identities-azure-resources/overview.md)。
 
@@ -466,14 +476,18 @@ az keyvault delete-policy \
 1. 在 [設定]下，選取 [加密] > [變更金鑰]。
 1. 在**身分識別**中，選取 [系統指派]，然後選取 [儲存]。
 
-### <a name="key-vault-firewall"></a>Key Vault 防火牆
+### <a name="enable-key-vault-bypass"></a>啟用金鑰保存庫略過
 
-如果您的 Azure 金鑰保存庫已部署在具有 Key Vault 防火牆的虛擬網路中，請執行下列步驟：
+若要存取 Key Vault 防火牆設定的金鑰保存庫，登錄必須略過防火牆。 將金鑰保存庫設定為允許任何[受信任的服務](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)存取。 Azure Container Registry 是其中一項受信任的服務。
 
-1. 將登錄加密設定為使用登錄的系統指派身分識別。 請參閱上一節。
-2. 將金鑰保存庫設定為允許任何[受信任的服務](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)存取。
+1. 在入口網站中，流覽至您的金鑰保存庫。
+1. 選取 [**設定**  >  **網路**]。
+1. 確認、更新或新增虛擬網路設定。 如需詳細資訊，請參閱[設定 Azure Key Vault 防火牆和虛擬網路](../key-vault/general/network-security.md)。
+1. 在 [ **允許 Microsoft 信任的服務略過此防火牆**] 中，選取 **[是]**。 
 
-如需詳細資訊，請參閱[設定 Azure Key Vault 防火牆和虛擬網路](../key-vault/general/network-security.md)。
+### <a name="rotate-the-customer-managed-key"></a>輪替客戶管理的金鑰
+
+完成上述步驟之後，請將金鑰輪替至防火牆後面的金鑰保存庫中的新金鑰。 如需相關步驟，請參閱本文中的 [旋轉金鑰](#rotate-key) 。
 
 ## <a name="next-steps"></a>後續步驟
 

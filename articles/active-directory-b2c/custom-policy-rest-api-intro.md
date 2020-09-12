@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fe328de9460efb743037f697c7f564e2c628278d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc2b72779460c2b7e3999204ace50ca57388b9a2
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388930"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594181"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>在您的 Azure AD B2C 自訂原則中整合 REST API 宣告交換
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-構成 Azure Active Directory B2C (Azure AD B2C) 基礎的 Identity Experience Framework，可與使用者旅程圖中的 RESTful API 整合。 本文說明如何使用 [RESTful 技術設定檔](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster)，建立與 RESTful 服務互動的使用者旅程圖。
+構成 Azure Active Directory B2C (Azure AD B2C) 基礎的 Identity Experience Framework，可與使用者旅程圖中的 RESTful API 整合。 本文說明如何使用 [RESTful 技術設定檔](restful-technical-profile.md)，建立與 RESTful 服務互動的使用者旅程圖。
 
 您可以使用 Azure AD B2C，呼叫自己的 RESTful 服務，將自己的商務邏輯新增至使用者旅程圖。 Identity Experience Framework 可以從您的 RESTful 服務傳送和接收資料，以交換宣告。 例如，您可以：
 
@@ -34,7 +34,7 @@ ms.locfileid: "85388930"
 ![RESTful 服務宣告交換的圖表](media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
 
 > [!NOTE]
-> 如果 RESTful 服務的回應速度很慢或沒有回應 Azure AD B2C，則超時時間為30秒，而重試計數為2次（表示總共有3個嘗試）。 目前無法設定 [超時] 和 [重試計數] 設定。
+> 如果 RESTful 服務的回應速度很慢或沒有回應 Azure AD B2C，則超時時間為30秒，而重試計數為2次 (表示總) 中有3次嘗試。 目前無法設定 timeout 和重試計數設定。
 
 ## <a name="calling-a-restful-service"></a>呼叫 RESTful 服務
 
@@ -125,9 +125,9 @@ RESTful 宣告提供者所剖析的輸出宣告，一律會預期剖析一般 JS
 
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="contacts.0.person.name" />
-  <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="contacts.0.person.emails.0.email" />
-  <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="contacts.0.person.loyaltyNumber" />
+  <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="contacts[0].person.name" />
+  <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="contacts[0].person.emails[0].email" />
+  <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="contacts[0].person.loyaltyNumber" />
 </OutputClaims>
 ```
 

@@ -8,16 +8,16 @@ author: sabbour
 ms.author: asabbour
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 10a7dc662993327b71d43c27f44d22166a3f3611
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2cb54c202af04996080cda970b3d327145f0e72b
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590314"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469876"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>設定 Azure Red Hat OpenShift 4 叢集 (入口網站的 Azure Active Directory authentication) 
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -50,7 +50,7 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 ## <a name="configure-optional-claims"></a>設定選擇性宣告
 
-應用程式開發人員可以在其 Azure AD 應用程式中使用 [選擇性宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims) ，以指定要在傳送至其應用程式的權杖中使用的宣告。
+應用程式開發人員可以在其 Azure AD 應用程式中使用 [選擇性宣告](../active-directory/develop/active-directory-optional-claims.md) ，以指定要在傳送至其應用程式的權杖中使用的宣告。
 
 您可以使用選擇性宣告來：
 
@@ -68,7 +68,7 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 根據預設，在 Azure Active Directory (Azure AD) 租用戶中註冊的應用程式可供成功通過驗證的所有租用戶使用者使用。 Azure AD 可讓租用戶系統管理員和開發人員將應用程式限制為僅供租用戶中的一組特定使用者或安全性群組存取。
 
-遵循 Azure Active Directory 檔中的指示， [將使用者和群組指派給應用程式](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration)。
+遵循 Azure Active Directory 檔中的指示， [將使用者和群組指派給應用程式](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md#app-registration)。
 
 ## <a name="configure-openshift-openid-authentication"></a>設定 OpenShift OpenID 驗證
 

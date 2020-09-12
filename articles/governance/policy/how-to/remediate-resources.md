@@ -3,12 +3,12 @@ title: 補救不相容的資源
 description: 本指南會逐步引導您補救不符合「Azure 原則」中原則規範的資源。
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 1274b049d7ce19601968697b22da38f0eb2cb5ff
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 52d8ef6dd66c52edd574b2ccfa51da16623a1afb
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958740"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651354"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>補救不符合 Azure 原則規範的資源
 
@@ -19,7 +19,7 @@ ms.locfileid: "88958740"
 當「Azure 原則」執行 **deployIfNotExists** 原則定義中的範本時，會使用[受控識別](../../../active-directory/managed-identities-azure-resources/overview.md)來執行。
 「Azure 原則」會為每個指派項目建立受控識別，但您必須提供有關要將哪些角色授與受控識別的詳細資料。 如果受控識別缺少角色，在指派原則或方案時，就會顯示此錯誤。 使用入口網站時，在開始指派之後，「Azure 原則」會自動將所列出的角色授與受控識別。 受控識別的 _位置_ 不會影響其對 Azure 原則的操作。
 
-:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="受控識別 - 遺漏角色" border="false":::
+:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="DeployIfNotExists 原則的螢幕擷取畫面，其中缺少受控識別上已定義的許可權。" border="false":::
 
 > [!IMPORTANT]
 > 如果 **deployIfNotExists** 或 **modify** 所修改的資源在原則指派的範圍外，或範本會存取在原則指派範圍外資源的屬性，您就必須對該指派項目的受控識別[手動授與存取權](#manually-configure-the-managed-identity)，否則補救部署將會失敗。
@@ -90,15 +90,15 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="grant-defined-roles-through-portal"></a>透過入口網站授與已定義的角色
 
-使用入口網站將已定義的角色授與指派項目的受控識別時，有兩種方法：使用**存取控制 (IAM)** ，或是編輯原則或方案指派，然後按一下 [儲存]。
+有兩種方式可以使用入口網站，將定義的角色授與指派的受控識別，方法是使用 **存取控制 (IAM) ** 或編輯原則或方案指派，然後選取 [ **儲存**]。
 
 若要將角色新增至指派項目的受控識別，請依照下列步驟進行操作：
 
-1. 藉由按一下 [所有服務] 然後搜尋並選取 [原則]，在 Azure 入口網站中啟動 Azure 原則服務。
+1. 選取 [ **所有服務**]，然後搜尋並選取 [ **原則**]，以啟動 Azure 入口網站中的 Azure 原則服務。
 
-1. 選取 Azure 原則分頁左側的 [指派]。
+1. 選取 Azure 原則分頁左側的 [指派]****。
 
-1. 找出具有受控識別的指派項目，然後按一下其名稱。
+1. 找出具有受控識別的指派，然後選取名稱。
 
 1. 在編輯頁面上尋找 [指派識別碼] 屬性。 指派識別碼會類似於：
 
@@ -110,10 +110,10 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 瀏覽至需要手動新增角色定義的資源或資源父容器 (資源群組、訂用帳戶、管理群組)。
 
-1. 按一下資源頁面中的 [存取控制 (IAM)] 連結，然後按一下存取控制頁面頂端的 [+ 新增角色指派]。
+1. 在 [資源] 頁面中選取 [ **存取控制] (IAM) ** 連結，然後選取 [存取控制] 頁面頂端的 [ **+ 新增角色指派** ]。
 
 1. 從原則定義中選取符合 **roleDefinitionIds** 的適當角色。
-   將 [存取權指派對象為] 保留設定為預設的 [Azure AD 使用者、群組或應用程式]。 在 [選取] 方塊中，貼上或輸入稍早找到的指派資源識別碼部分。 在搜尋完成之後，按一下具有相同名稱的物件以選取識別碼，然後按一下 [儲存]。
+   將 [存取權指派對象為] 保留設定為預設的 [Azure AD 使用者、群組或應用程式]。 在 [選取] 方塊中，貼上或輸入稍早找到的指派資源識別碼部分。 搜尋完成後，選取具有相同名稱的物件以選取識別碼，然後選取 [ **儲存**]。
 
 ## <a name="create-a-remediation-task"></a>建立補救工作
 
@@ -123,32 +123,32 @@ if ($roleDefinitionIds.Count -gt 0)
 
 若要建立**補救工作**，請依照下列步驟進行操作：
 
-1. 藉由按一下 [所有服務] 然後搜尋並選取 [原則]，在 Azure 入口網站中啟動 Azure 原則服務。
+1. 選取 [ **所有服務**]，然後搜尋並選取 [ **原則**]，以啟動 Azure 入口網站中的 Azure 原則服務。
 
-   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="搜尋所有服務中的原則" border="false":::
+   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="在所有服務中搜尋原則的螢幕擷取畫面。" border="false":::
 
 1. 選取「Azure 原則」頁面左側的 [補救]。
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="在 [原則] 頁面上選取 [補救]" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="[原則] 頁面上 [補救] 節點的螢幕擷取畫面。" border="false":::
 
-1. [用以補救的原則] 索引標籤和資料表格上會包含所有具有不符合規範資源的 **deployIfNotExists** 和 **modify** 原則指派。 按一下具有不符合規範之資源的原則。 [新的補救工作] 頁面隨即開啟。
+1. [用以補救的原則] 索引標籤和資料表格上會包含所有具有不符合規範資源的 **deployIfNotExists** 和 **modify** 原則指派。 選取具有不符合規範之資源的原則。 [新的補救工作] 頁面隨即開啟。
 
    > [!NOTE]
-   > 有一個開啟 [補救工作] 頁面的替代方式，就是從 [合規性] 頁面尋找並按一下原則，然後按一下 [建立補救工作] 按鈕。
+   > 開啟 **補救** 工作頁面的替代方法是從 [ **合規性** ] 頁面尋找並選取原則，然後選取 [ **建立補救** 工作] 按鈕。
 
 1. 在 [新的補救工作] 頁面上，使用 [範圍] 的省略符號，從已被指派該原則的資源中挑選子資源 (包括一直到個別資源物件)，以篩選要補救的資源。 此外，請使用 [位置] 下拉式清單來進一步篩選資源。 將只會補救表格中所列出的資源。
 
-   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="補救 - 選取要補救的資源" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="修復節點和要補救的資源方格的螢幕擷取畫面。" border="false":::
 
-1. 篩選資源之後，按一下 [補救] 來開始補救工作。 原則合規性頁面會開啟至 [補救工作] 索引標籤，以顯示工作進度的狀態。 補救工作所建立的部署會立即開始。
+1. 選取 [ **補救**] 以篩選資源之後，開始補救工作。 原則合規性頁面會開啟至 [補救工作] 索引標籤，以顯示工作進度的狀態。 補救工作所建立的部署會立即開始。
 
-   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="補救 - 補救工作的進度" border="false":::
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="[補救工作] 索引標籤的螢幕擷取畫面，以及現有補救工作的進度。" border="false":::
 
-1. 從原則合規性頁面按一下 [補救工作] 以取得進度的相關詳細資料。 這會顯示針對該工作所使用的篩選，以及所要補救的資源清單。
+1. 從 [原則合規性] 頁面選取 **補救** 工作，以取得進度的詳細資料。 這會顯示針對該工作所使用的篩選，以及所要補救的資源清單。
 
-1. 從 [補救工作] 頁面中，在資源上按一下滑鼠右鍵，以檢視補救工作的部署或資源。 在資料列結尾，按一下 [相關事件] 以查看詳細資料，例如錯誤訊息。
+1. 在 [ **補救** 工作] 頁面中，以滑鼠右鍵按一下資源，以查看補救工作的部署或資源。 在資料列的結尾，選取 **相關事件** 以查看詳細資料，例如錯誤訊息。
 
-   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="補救 - 資源工作操作功能表" border="false":::
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="[補救工作] 索引標籤上資源內容功能表的螢幕擷取畫面。" border="false":::
 
 透過**補救工作**部署的資源會新增至原則合規性頁面上的 [已部署資源] 索引標籤中。
 

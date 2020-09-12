@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a9cc1ebbe8cfea2548f61ee1d88180ed39a75eb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce676c8966f67aeb233b2b9daf3f8f1c57327e6a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002431"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462083"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>快速入門：使用 Microsoft Azure 搜尋 v10 用戶端程式庫建立搜尋索引
 
@@ -27,7 +27,7 @@ ms.locfileid: "89002431"
 
 使用 c # 建立 .NET Core 主控台應用程式，以使用 Visual Studio 和 [Azure 搜尋用戶端程式庫](/dotnet/api/overview/azure/search/client10?view=azure-dotnet)建立、載入和查詢 Azure 認知搜尋索引。 
 
-本文說明如何建立應用程式。 您也可以 [下載並執行完整的應用程式](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v10)。
+本文說明如何建立應用程式。 您也可以 [下載並執行完整的應用程式](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v10)。
 
 > [!NOTE]
 > 為了簡單起見，本文中的示範程式碼會使用 Azure 認知搜尋版本 10 .NET SDK 的同步方法。 不過，針對生產案例，我們建議您在您自己的應用程式中使用非同步方法，讓應用程式保有可擴充性且回應靈敏。 例如，您可以使用 `CreateAsync` 與 `DeleteAsync`，而非 `Create` 與 `Delete`。
@@ -38,7 +38,7 @@ ms.locfileid: "89002431"
 
 + 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/)。
 
-+ Azure 認知搜尋服務。 在目前的訂閱下，[建立服務](search-create-service-portal.md) 或 [尋找現有的服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
++ Azure 認知搜尋服務。 在目前的訂用帳戶下，[建立服務](search-create-service-portal.md)或[尋找現有的服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/) 的任何版本。 範例程式碼和指示已在免費的 Community 版本上經過測試。
 
@@ -107,9 +107,9 @@ ms.locfileid: "89002431"
 
 1. 新增兩個空類別定義到您的專案：Address.Methods.cs、Hotel.Methods.cs
 
-1. 在 Address.Methods.cs 中，藉由下列程式碼來覆寫預設內容，[lines 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25)。
+1. 在 Address.Methods.cs 中，藉由下列程式碼來覆寫預設內容，[lines 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25)。
 
-1. 在 Hotel.Methods.cs 中，複製 [lines 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68)。
+1. 在 Hotel.Methods.cs 中，複製 [lines 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68)。
 
 ## <a name="1---create-index"></a>1 - 建立索引
 

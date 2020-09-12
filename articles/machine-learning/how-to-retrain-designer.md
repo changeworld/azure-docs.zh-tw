@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 181d79c6aef87999bc1b4242a70870edf60ad7df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 11e04d0aa313a005cfd13bca134c75bb712fd234
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319621"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661603"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure Machine Learning 設計工具 (預覽) 重新定型模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "87319621"
 
 ### <a name="sample-pipeline"></a>範例管線
 
-本文中使用的管線是[範例 3：收入預測](samples-designer.md#classification)的變更版。 此管線會使用[匯入資料](algorithm-module-reference/import-data.md)模組 (而不是範例資料集) 來說明如何使用您自己的資料定型模型。
+本文中使用的管線是在設計工具首頁中變更的範例管線 [收入預測](samples-designer.md#classification) 版本。 此管線會使用[匯入資料](algorithm-module-reference/import-data.md)模組 (而不是範例資料集) 來說明如何使用您自己的資料定型模型。
 
 ![此螢幕擷取畫面顯示已修改的範例管線，其中包含醒目提示「匯入資料」模組的方塊](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
@@ -83,7 +83,8 @@ ms.locfileid: "87319621"
 1. 您可以在 [其他輸出] 中找到您的模型以及執行記錄。
 1. 或者，選取 [檢視輸出] 圖示。 在此處，您可以依照對話方塊中的指示直接瀏覽至資料存放區。 
 
-![此螢幕擷取畫面顯示如何下載已定型的模型](./media/how-to-retrain-designer/trained-model-view-output.png)
+> [!div class="mx-imgBorder"]
+> ![此螢幕擷取畫面顯示如何下載已定型的模型](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>發佈定型管線
 
@@ -101,9 +102,9 @@ ms.locfileid: "87319621"
 
 現在您已有已發佈的定型管線，接下來可使用此管線以新資料重新定型模型。 您可以透過 Studio 工作區或程式設計方式，從管線端點提交執行。
 
-### <a name="submit-runs-by-using-the-designer"></a>使用設計工具提交執行
+### <a name="submit-runs-by-using-the-studio-portal"></a>使用 studio 入口網站提交執行
 
-請使用下列步驟，從設計工具提交參數化管線端點執行：
+使用下列步驟來提交從 studio 入口網站執行的參數化管線端點：
 
 1. 移至 Studio 工作區中的 [端點] 頁面。
 1. 選取 [管線端點] 索引標籤。然後，選取您的管線端點。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 0b5056f221fdd6036e5f6dff3d69a21c3a2dc27e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ce42c0ec75ebed52311fe6aa026f794d6c2f7584
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928559"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513930"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>使用 Azure SignalR Service 來開發與設定 Azure Functions
 
@@ -51,7 +51,9 @@ Azure SignalR Service 可以在不同的模式中設定。 搭配 Azure Function
 
 使用 *SignalR 觸發* 程式系結來處理從 SignalR Service 傳送的訊息。 當用戶端傳送訊息或用戶端連線或中斷連線時，您可以觸發。
 
-如需詳細資訊，請參閱[ *SignalR 觸發*程式系結參考](../azure-functions/functions-bindings-signalr-service-trigger.md)
+如需詳細資訊，請參閱[ *SignalR 觸發*](../azure-functions/functions-bindings-signalr-service-trigger.md)程式系結參考。
+
+您也需要將您的函式端點設定為上游，讓服務會觸發函式，其中有來自用戶端的訊息。 如需有關如何設定上游的詳細資訊，請 [參閱此檔](concept-upstream.md)。
 
 ### <a name="sending-messages-and-managing-group-membership"></a>傳送訊息及管理群組成員資格
 
@@ -109,7 +111,7 @@ public class SignalRTestHub : ServerlessHub
 
 ### <a name="define-hub-method"></a>定義中樞方法
 
-所有中樞方法都 **必須**  具有 `[SignalRTrigger]` 屬性，而且 **必須** 使用無參數的函式。 然後，會將 **方法名稱** 視為參數 **事件**。
+所有中樞方法都 **必須** 有以屬性裝飾的引數 `InvocationContext` `[SignalRTrigger]` ，並使用無參數的函式。 然後，會將 **方法名稱** 視為參數 **事件**。
 
 根據預設， `category=messages` 除了方法名稱是下列其中一個名稱：
 
@@ -202,7 +204,11 @@ const connection = new signalR.HubConnectionBuilder()
 
 ### <a name="sending-messages-from-a-client-to-the-service"></a>從用戶端傳送訊息至服務
 
-雖然 SignalR SDK 可讓用戶端應用程式叫用 SignalR 中樞內的後端邏輯，但是當您使用 SignalR Service 搭配 Azure Functions 時，尚不支援此功能。 使用 HTTP 要求來叫用 Azure Functions。
+如果您已針對 SignalR 資源設定 [上游](concept-upstream.md) ，則可以使用任何 SignalR 用戶端，將訊息從用戶端傳送到您的 Azure Functions。 以下是 JavaScript 中的範例：
+
+```javascript
+connection.send('method1', 'arg1', 'arg2');
+```
 
 ## <a name="azure-functions-configuration"></a>Azure Functions 設定
 
@@ -319,6 +325,6 @@ public static Task SendMessage(
 
 如需其他語言的詳細資訊，請參閱 Azure Functions 參考的 [Azure SignalR Service](../azure-functions/functions-bindings-signalr-service.md) 系結。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本文中，您已瞭解如何使用 Azure Functions 開發和設定無伺服器 SignalR Service 應用程式。 請嘗試使用 [SignalR Service 總覽頁面](index.yml)上的其中一個快速入門或教學課程來自行建立應用程式。
