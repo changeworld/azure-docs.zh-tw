@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 785b42ab963c3784e63cd00eb0baa62b20952a8a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196114"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441080"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>複製活動的效能及微調指南
 
@@ -32,7 +32,7 @@ Azure Data Factory 複製活動會提供安全、可靠、高效能的頂級資�
 
 Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複製活動」則提供一個容易設定的高度最佳化資料載入體驗。 只要使用單一的複製活動，您便可以達成下列目的︰
 
-* 將資料載入至**1.2 GBps**的**Azure SQL 資料倉儲**。 如需使用案例的逐步解說，請參閱[使用 Azure Data Factory 在 15 分鐘內將 1 TB 載入至 Azure SQL 資料倉儲](data-factory-load-sql-data-warehouse.md)。
+* 將資料載入至**1.2 GBps**的**Azure Synapse Analytics** 。 如需使用案例的逐步解說，請參閱使用 [Azure Data Factory 將 1 TB 載入 Azure Synapse Analytics (之前的 SQL 資料倉儲) 15 分鐘](data-factory-load-sql-data-warehouse.md)。
 * 以 **1.0 GBps** 的速度將資料載入 **Azure Blob 儲存體**
 * 以 **1.0 GBps** 的速度將資料載入 **Azure Data Lake Store**
 
@@ -66,7 +66,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
         <td>32 核心 2.20 GHz Intel Xeon E5-2660 v2</td>
     </tr>
     <tr>
-        <td>Memory</td>
+        <td>記憶體</td>
         <td>128 GB</td>
     </tr>
     <tr>
@@ -139,7 +139,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 | 來源和接收 | 由服務決定的預設平行複製計數 |
 | --- | --- |
 | 在檔案型存放區 (Blob 儲存體、Data Lake Store、Amazon S3、內部部署檔案系統、內部部署 HDFS) 之間複製資料 |介於 1 到 32。 取決於檔案大小和用來在兩個雲端資料存放區之間複製資料的雲端資料移動單位數 (DMU)，或用於混合式複製的實體閘道器電腦組態 (複製資料至內部部署資料存放區或從內部部署資料存放區複製資料)。 |
-| 將資料從**任何來源資料存放區複製到 Azure 表格儲存體** |4 |
+| 將資料從 **任何來源資料存放區複製到 Azure 資料表儲存體** |4 |
 | 所有其他來源和接收組 |1 |
 
 通常，預設行為應可提供最佳輸送量。 不過，若要控制裝載資料存放區之電腦上的負載或是調整複製效能，您可以選擇覆寫預設值並指定 **parallelCopies** 屬性的值。 該值必須介於 1 (含) 到 32 (含)。 在執行階段，為獲得最佳效能，複製活動會使用小於或等於設定值的值。
@@ -183,9 +183,9 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 ## <a name="staged-copy"></a>分段複製
 從來源資料存放區將資料複製到接收資料存放區時，您可以選擇使用 Blob 儲存體做為過渡暫存存放區。 暫存在下列情況下特別有用︰
 
-1. **您想要透過 PolyBase 將資料從各種資料存放區內嵌至 SQL 資料倉儲**。 SQL 資料倉儲使用 PolyBase 做為高輸送量機制，將大量資料載入 SQL 資料倉儲。 不過，來源資料必須位於 Blob 儲存體，並符合額外的條件。 當您從 Blob 儲存體以外的資料存放區載入資料時，您可以啟用透過過渡暫存 Blob 儲存體的資料複製。 在該情況下，Data Factory 會執行必要的資料轉換，以確保它符合 PolyBase 的需求。 然後，它會使用 PolyBase 將資料載入 SQL 資料倉儲。 如需詳細資訊，請參閱 [使用 PolyBase 將資料載入 Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。 如需使用案例的逐步解說，請參閱[使用 Azure Data Factory 在 15 分鐘內將 1 TB 載入至 Azure SQL 資料倉儲](data-factory-load-sql-data-warehouse.md)。
+1. **您想要透過 PolyBase 將資料從各種資料存放區內嵌至 Azure Synapse Analytics**。 Azure Synapse Analytics 使用 PolyBase 作為高輸送量機制，將大量資料載入 Azure Synapse Analytics。 不過，來源資料必須位於 Blob 儲存體，並符合額外的條件。 當您從 Blob 儲存體以外的資料存放區載入資料時，您可以啟用透過過渡暫存 Blob 儲存體的資料複製。 在該情況下，Data Factory 會執行必要的資料轉換，以確保它符合 PolyBase 的需求。 然後，它會使用 PolyBase 將資料載入 Azure Synapse Analytics 中。 如需詳細資訊，請參閱 [使用 PolyBase 將資料載入 Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics)。 如需使用案例的逐步解說，請參閱[使用 Azure Data Factory 在 15 分鐘內將 1 TB 載入至 Azure Synapse Analytics](data-factory-load-sql-data-warehouse.md)。
 2. **有時透過慢速網路連接執行混合式資料移動 (也就是，在內部部署資料存放區和雲端資料存放區之間複製資料)**，需要一段時間。 為了提升效能，您可以壓縮內部部署資料，減少移動資料到雲端中的暫存資料存放區所需的時間。 然後，您可以先在暫存存放區中解壓縮資料，再將其載入至目的地資料存放區。
-3. **由於公司 IT 原則，您不想要在您的防火牆中開啟 80 和 443 以外的連接埠**。 例如，從內部部署資料存放區將資料複製到 Azure SQL Database 接收或 Azure SQL 資料倉儲接收時，您必須針對 Windows 防火牆和公司防火牆啟用連接埠 1433 上的輸出 TCP 通訊。 在此案例中，請利用閘道先在連接埠 443 上透過 HTTP 或 HTTPS 將資料複製到 Blob 儲存體暫存執行個體。 接著，將資料從 Blob 儲存體暫存載入到 SQL Database 或 SQL 資料倉儲。 在此流程中，您不需要啟用連接埠 1433。
+3. **由於公司 IT 原則，您不想要在您的防火牆中開啟 80 和 443 以外的連接埠**。 例如，當您將資料從內部部署資料存放區複製到 Azure SQL Database 接收或 Azure Synapse Analytics 接收時，您需要在埠1433上啟用 Windows 防火牆和公司防火牆的輸出 TCP 通訊。 在此案例中，請利用閘道先在連接埠 443 上透過 HTTP 或 HTTPS 將資料複製到 Blob 儲存體暫存執行個體。 然後，將資料從 Blob 儲存體暫存載入 SQL Database 或 Azure Synapse Analytics。 在此流程中，您不需要啟用連接埠 1433。
 
 ### <a name="how-staged-copy-works"></a>分段複製的運作方式
 當您啟用暫存功能時，會先從來源資料存放區複製資料到暫存資料存放區 (自備)， 接著再從暫存資料存放區複製資料到接收資料存放區。 Data Factory 會自動為您管理 2 階段流程， 也會在資料移動完成之後，清除暫存儲存體中的暫存資料。
@@ -202,15 +202,15 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 
 目前您還無法使用暫存存放區在兩個內部部署資料存放區之間複製資料。 我們預計此選項很快就會推出。
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>設定
 在複製活動中設定 **enableStaging** 設定，指定您是否想要讓資料在載入至目的地資料存放區之前，暫存在 Blob 儲存體中。 當您將 **enableStaging** 設定為 TRUE 時，請指定下一份資料表所列出的其他屬性。 如果還未指定，您也需要建立 Azure 儲存體或儲存體共用存取簽章連結服務以供暫存使用。
 
 | 屬性 | 描述 | 預設值 | 必要 |
 | --- | --- | --- | --- |
-| **enableStaging** |指定您是否要透過過渡暫存存放區複製資料。 |False |No |
-| **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 連結服務的名稱，以代表您用來做為過渡暫存存放區的儲存體執行個體。 <br/><br/> 您無法使用具有共用存取簽章的儲存體來透過 PolyBase 將資料載入至 SQL 資料倉儲。 您可以將它用於其他所有案例。 |N/A |是，當 **enableStaging** 設為 TRUE |
+| **enableStaging** |指定您是否要透過過渡暫存存放區複製資料。 |False |否 |
+| **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 連結服務的名稱，以代表您用來做為過渡暫存存放區的儲存體執行個體。 <br/><br/> 您無法使用具有共用存取簽章的儲存體，透過 PolyBase 將資料載入 Azure Synapse Analytics。 您可以將它用於其他所有案例。 |N/A |是，當 **enableStaging** 設為 TRUE |
 | **path** |指定要包含分段資料的 Blob 儲存體路徑。 如果未提供路徑，服務會建立容器來儲存暫存資料。 <br/><br/> 只有在使用具有共用存取簽章的儲存體時，或需要讓暫存資料位於特定位置時，才指定路徑。 |N/A |否 |
-| **enableCompression** |指定將資料複製到目的地之前，是否應該壓縮資料。 此設定可減少傳輸的資料量。 |False |No |
+| **enableCompression** |指定將資料複製到目的地之前，是否應該壓縮資料。 此設定可減少傳輸的資料量。 |False |否 |
 
 以下是具有上表所述屬性的「複製活動」的範例定義︰
 
@@ -263,7 +263,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
      * [分段複製](#staged-copy)
      * [資料管理閘道延展性](data-factory-data-management-gateway-high-availability-scalability.md)
    * [資料管理閘道](#considerations-for-data-management-gateway)
-   * [來源](#considerations-for-the-source)
+   * [Source](#considerations-for-the-source)
    * [接收](#considerations-for-the-sink)
    * [序列化和還原序列化](#considerations-for-serialization-and-deserialization)
    * [壓縮](#considerations-for-compression)
@@ -282,7 +282,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 
 針對 Microsoft 資料存放區，請參閱資料存放區特定的 [監視和微調主題](#performance-reference) ，以協助您了解資料存放區的效能特性、最小化回應時間和最大化輸送量。
 
-如果您要從 Blob 儲存體複製資料到 SQL 資料倉儲，請考慮使用 **PolyBase** 以提升效能。 如需詳細資訊，請參閱 [使用 PolyBase 將資料載入 Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) 。 如需使用案例的逐步解說，請參閱[使用 Azure Data Factory 在 15 分鐘內將 1 TB 載入至 Azure SQL 資料倉儲](data-factory-load-sql-data-warehouse.md)。
+如果您將資料從 Blob 儲存體複製到 Azure Synapse Analytics，請考慮使用 **PolyBase** 來提高效能。 如需詳細資料，請參閱 [使用 PolyBase 將資料載入 Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) 。 如需使用案例的逐步解說，請參閱[使用 Azure Data Factory 在 15 分鐘內將 1 TB 載入至 Azure Synapse Analytics](data-factory-load-sql-data-warehouse.md)。
 
 ### <a name="file-based-data-stores"></a>以檔案為基礎的資料存放區
 *(包括 Blob 儲存體、Data Lake Store、Amazon S3、內部部署檔案系統及內部部署 HDFS)*
@@ -292,7 +292,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 * 對於必須使用**資料管理閘道**的**內部部署檔案系統**案例，請參閱[資料管理閘道的考量](#considerations-for-data-management-gateway)一節。
 
 ### <a name="relational-data-stores"></a>關聯式資料存放區
-*(包括 SQL Database、SQL 資料倉儲、Amazon Redshift、SQL Server 資料庫，以及 Oracle、MySQL、DB2、Teradata、Sybase 和 PostgreSQL 資料庫等)*
+* (包含 SQL Database;Azure Synapse Analytics;Amazon Redshift;SQL Server 資料庫;以及 Oracle、MySQL、DB2、Teradata、Sybase 和于 postgresql 資料庫等 ) *
 
 * **資料模式**︰資料表結構描述對複製輸送量會有影響。 若要複製相同的資料量，較大的資料列大小會有優於較小資料列大小的效能。 這是因為資料庫可以更有效率地擷取包含較少資料列的較少資料批次。
 * **查詢或預存程序**：最佳化您在複製活動來源中指定的查詢或預存程序邏輯，以更有效率地擷取資料。
@@ -304,7 +304,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 
 針對 Microsoft 資料存放區，請參閱資料存放區特定的 [監視和微調主題](#performance-reference) 。 這些主題可協助您了解資料存放區的效能特性，以及如何最小化回應時間和最大化輸送量。
 
-如果您要從 **Blob 儲存體**複製資料到 **SQL 資料倉儲**，請考慮使用 **PolyBase** 以提升效能。 如需詳細資訊，請參閱 [使用 PolyBase 將資料載入 Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) 。 如需使用案例的逐步解說，請參閱[使用 Azure Data Factory 在 15 分鐘內將 1 TB 載入至 Azure SQL 資料倉儲](data-factory-load-sql-data-warehouse.md)。
+如果您要將資料從 **Blob 儲存體** 複製到 **Azure Synapse Analytics**，請考慮使用 **PolyBase** 來提高效能。 如需詳細資料，請參閱 [使用 PolyBase 將資料載入 Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) 。 如需使用案例的逐步解說，請參閱[使用 Azure Data Factory 在 15 分鐘內將 1 TB 載入至 Azure Synapse Analytics](data-factory-load-sql-data-warehouse.md)。
 
 ### <a name="file-based-data-stores"></a>以檔案為基礎的資料存放區
 *(包括 Blob 儲存體、Data Lake Store、Amazon S3、內部部署檔案系統及內部部署 HDFS)*
@@ -315,7 +315,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 * 對於必須使用**資料管理閘道**的**內部部署檔案系統**案例，請參閱[資料管理閘道的考量](#considerations-for-data-management-gateway)一節。
 
 ### <a name="relational-data-stores"></a>關聯式資料存放區
-*(包括 SQL Database、SQL 資料倉儲、SQL Server 資料庫及 Oracle 資料庫)*
+* (包括 SQL Database、Azure Synapse Analytics、SQL Server 資料庫和 Oracle 資料庫) *
 
 * **複製行為**：根據為 **sqlSink** 設定的屬性，複製活動會以不同的方式將資料寫入目的地資料庫中。
   * 根據預設，資料移動服務會使用大量複製 API 以附加模式插入資料，而提供最佳效能。
@@ -385,7 +385,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 
 * **來源**：SQL Server 本身的輸送量偏低，因為負載過重。
 * **資料管理閘道**：
-  * **LAN**：閘道的位置遠離 SQL Server 電腦，且頻寬連線較低。
+  * **LAN**：閘道位於 SQL Server 電腦的最遠，而且具有低頻寬連接。
   * **閘道器**：閘道器已達到其負載限制，而無法執行下列作業：
     * **序列化**：將資料流序列化為 CSV 格式時，輸送量偏低。
     * **壓縮**：您選擇了緩慢的壓縮轉碼器 (例如 bzip2，其採用 Core i7，速度為 2.8 MBps)。
@@ -416,10 +416,10 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 ## <a name="reference"></a>參考
 以下是幾個支援的資料存放區所適用的效能監視及調整參考：
 
-* Azure Blob 儲存體： blob[儲存體的擴充性和效能目標](../../storage/blobs/scalability-targets.md)，以及[Blob 儲存體的效能和擴充性檢查清單](../../storage/blobs/storage-performance-checklist.md)。
-* Azure 資料表儲存體：資料表儲存體[的擴充性和效能目標](../../storage/tables/scalability-targets.md)，以及[資料表儲存體的效能和擴充性檢查清單](../../storage/tables/storage-performance-checklist.md)。
+* Azure Blob 儲存體： [適用于 blob 儲存體的擴充性和效能目標](../../storage/blobs/scalability-targets.md) ，以及 [Blob 儲存體的效能和擴充性檢查清單](../../storage/blobs/storage-performance-checklist.md)。
+* Azure 資料表儲存體：表格儲存體 [的擴充性和效能目標](../../storage/tables/scalability-targets.md) ，以及 [資料表儲存體的效能和擴充性檢查清單](../../storage/tables/storage-performance-checklist.md)。
 * Azure SQL Database：您可以 [監視效能](../../sql-database/sql-database-single-database-monitor.md) ，並檢查資料庫交易單位 (DTU) 百分比
-* Azure SQL 資料倉儲：其能力會以資料倉儲單位 (DWU) 來測量；請參閱 [管理 Azure SQL 資料倉儲中的計算能力 (概觀)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Azure Synapse Analytics：其功能會以資料倉儲單位來測量， (Dwu) ;請參閱 [Azure Synapse Analytics 中的管理計算能力 (總覽) ](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB：[Azure Cosmos DB 中的效能等級](../../cosmos-db/performance-levels.md)
 * 內部部署 SQL Server： [效能的監視與微調](https://msdn.microsoft.com/library/ms189081.aspx)
 * 內部部署檔案伺服器： [檔案伺服器的效能微調](https://msdn.microsoft.com/library/dn567661.aspx)

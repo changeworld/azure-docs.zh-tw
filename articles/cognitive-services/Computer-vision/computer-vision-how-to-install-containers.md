@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 70cbb21430253dc9683cd3803f2a09ef8bb858cb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 13d483507092892187bc13dd23bfa51ed516c890
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545636"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441148"
 ---
 # <a name="install-and-run-read-containers-preview"></a>安裝和執行讀取容器 (預覽) 
 
@@ -55,6 +55,7 @@ ms.locfileid: "88545636"
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
+
 > [!WARNING]
 > *需要*主機電腦才能支援 AVX2。 如果沒有 AVX2 支援，容器 *將無法* 正確運作。
 
@@ -68,14 +69,14 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 | 容器 | Container Registry/存放庫/映射名稱 |
 |-----------|------------|
-| 讀取 | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
+| 讀取 | `containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0` |
 
 使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下載容器映射。
 
 ### <a name="docker-pull-for-the-read-container"></a>讀取容器的 Docker pull
 
 ```bash
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0
 ```
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
@@ -186,13 +187,16 @@ ApiKey={API_KEY}
 }
 ```
 
+> [!IMPORTANT]
+> 如果您在負載平衡器後方部署多個讀取容器，例如 Docker Compose 或 Kubernetes 下，您必須有外部快取。 因為處理容器和 GET 要求容器可能不相同，所以外部快取會儲存結果，並在容器之間共用這些結果。 如需快取設定的詳細資訊，請參閱 [設定電腦視覺 Docker 容器](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config)。
+
 ### <a name="synchronous-read"></a>同步讀取
 
 您可以使用作業 `POST /vision/v2.0/read/core/Analyze` 以同步方式讀取映射。 當影像完整讀取時，則 API 會傳回 JSON 回應。 唯一的例外狀況是發生錯誤。 當發生錯誤時，會傳回下列 JSON：
 
 ```json
 {
-    status: "Failed"
+    "status": "Failed"
 }
 ```
 
@@ -283,7 +287,7 @@ export interface Word {
 ## <a name="next-steps"></a>接下來的步驟
 
 * 檢閱[設定容器](computer-vision-resource-container-config.md)以了解組態設定
-* 檢閱[電腦視覺概觀](Home.md)，以深入了解辨識印刷和手寫的文字
+* 檢閱[電腦視覺概觀](overview.md)，以深入了解辨識印刷和手寫的文字
 * 參閱[電腦視覺 API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)，以取得容器支援的方法之詳細資訊。
 * 參閱[常見問題集 (FAQ)](FAQ.md) 來解決與電腦視覺功能相關的問題。
 * 使用更多[認知服務容器](../cognitive-services-container-support.md)

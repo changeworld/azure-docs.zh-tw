@@ -1,5 +1,5 @@
 ---
-title: 跨多個資料庫的特定報表查詢
+title: 跨多個資料庫的隨選報表查詢
 description: 在多租使用者應用程式範例中，跨多個 Azure SQL 資料庫執行隨選報表查詢。
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
-ms.openlocfilehash: 7564adb6e2e596b95cd138c8e4e2190a4c1e2a57
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 098ac343885db3e267dcefb3785f5abd55d17ee2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042640"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441029"
 ---
-# <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>跨多個資料庫執行臨機操作分析查詢（Azure SQL Database）
+# <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>跨多個資料庫執行臨機操作分析查詢 (Azure SQL Database) 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 在本教學課程中，您會在整個租用戶資料庫集合執行分散式查詢以啟用臨機操作互動式報表。 這些查詢可以擷取藏在 Wingtip Tickets SaaS 應用程式日常操作資料中的深入解析。 若要執行這些擷取，您要將額外的分析資料庫部署到目錄伺服器，並使用「彈性查詢」來啟用分散式查詢。
@@ -34,7 +34,7 @@ ms.locfileid: "86042640"
 
 若要完成本教學課程，請確定已完成下列必要條件：
 
-* 已部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索 Wingtip 票證 SaaS 多租使用者資料庫應用程式](saas-multitenantdb-get-started-deploy.md)
+* 已部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式。 若要在五分鐘內進行部署，請參閱 [部署和探索 Wingtip Ticket SaaS 多租使用者資料庫應用程式](saas-multitenantdb-get-started-deploy.md)
 * 已安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * 已安裝 SQL Server Management Studio (SSMS)。 若要下載和安裝 SSMS，請參閱[下載 SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
@@ -47,13 +47,13 @@ SaaS 應用程式可以分析集中儲存在雲端中的大量租用戶資料。
 
 在單一多租用戶資料庫中存取此資料很容易，但資料大規模分散於可能數千個資料庫時則不太容易存取。 其中一個方法是使用[彈性查詢](elastic-query-overview.md)，這可對一組具有共用結構描述的分散式資料庫啟用查詢。 這些資料庫可以分散於不同的資源群組和訂用帳戶。 但一個一般登入必須可從所有資料庫存取擷取資料。 彈性查詢會使用單一 head** 資料庫，其中定義的外部資料表會鏡射分散式 (租用戶) 資料庫中的資料表或檢視。 提交至此 head 資料庫的查詢會經過編譯，以產生分散式查詢計劃 (包含視需要往下推送到租用戶資料庫的查詢部分)。 彈性查詢會使用目錄資料庫中的分區對應，判斷所有租用戶資料庫的位置。 安裝程式和查詢會直接使用標準 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)，以及支援從 Power BI 和 Excel 等工具進行臨機操作查詢。
 
-彈性查詢將查詢分散到整個租用戶資料庫，能夠立即深入了解即時的實際執行資料。 不過，因為彈性查詢可能會從多個資料庫提取資料，所以查詢延遲有時可能會高於提交至單一多租用戶資料庫的對等查詢。 請務必設計查詢來最小化傳回的資料。 彈性查詢通常最適合查詢少量的即時資料，而非建立常用或複雜的分析查詢或報告。 如果查詢的效能不佳，請查看[執行計畫](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan)以查看查詢的哪個部分已向下推送至遠端資料庫。 並評估會傳回多少資料。 需要複雜分析處理的查詢，透過將擷取的租用戶資料儲存到針對分析查詢最佳化的資料庫來提供服務，可能會比較好。 SQL Database 和 SQL 資料倉儲可以裝載此類分析資料庫。
+彈性查詢將查詢分散到整個租用戶資料庫，能夠立即深入了解即時的實際執行資料。 不過，因為彈性查詢可能會從多個資料庫提取資料，所以查詢延遲有時可能會高於提交至單一多租用戶資料庫的對等查詢。 請務必設計查詢來最小化傳回的資料。 彈性查詢通常最適合查詢少量的即時資料，而非建立常用或複雜的分析查詢或報告。 如果查詢的效能不佳，請查看[執行計畫](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan)以查看查詢的哪個部分已向下推送至遠端資料庫。 並評估會傳回多少資料。 需要複雜分析處理的查詢，透過將擷取的租用戶資料儲存到針對分析查詢最佳化的資料庫來提供服務，可能會比較好。 SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲) 可能會裝載這類分析資料庫。
 
 [租用戶分析教學課程](saas-multitenantdb-tenant-analytics.md)會說明此分析模式。
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>取得 Wingtip Tickets SaaS 多租用戶資料庫應用程式原始碼和指令碼
 
-Wingtip 票證 SaaS 多租使用者資料庫腳本和應用程式原始程式碼可在[.. wingtipticketssaas-multitenantdb-master-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存放庫中取得。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
+Wingtip Ticket SaaS 多租使用者資料庫腳本和應用程式原始程式碼可在 [>wingtipticketssaas-dbpertenant-master MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存放庫中取得。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="create-ticket-sales-data"></a>建立票證銷售資料
 

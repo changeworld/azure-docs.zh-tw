@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: eb7f642e36bd72f963481cb392d7e3a6c2555816
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 4d5cff416c1ac54e54d06e8def121db65bb7d191
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612379"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433922"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>匯出安全性警訊和建議
 
@@ -36,12 +36,12 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 |釋放狀態：|正式推出|
 |定價：|免費層|
 |必要的角色和許可權：|資源群組 (或**擁有**者) 的**安全性系統管理員角色**<br>也必須具有目標資源的寫入權限|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![是](./media/icons/yes-icon.png) 中國 Gov (事件中樞) ，其他 Gov|
 |||
 
 
 
-## <a name="setting-up-a-continuous-export"></a>設定連續匯出
+## <a name="set-up-a-continuous-export"></a>設定連續匯出
 
 無論您是設定連續匯出至 Log Analytics 工作區或 Azure 事件中樞，都必須執行下列步驟。
 
@@ -55,12 +55,24 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 
 1. 選取您要匯出的資料類型，然後從每種類型的篩選中選擇 (例如，[僅匯出高嚴重性警示]) 。
 
+1. （選擇性）如果您的選擇包含這四個建議的其中一個，您可以將弱點評定結果與它們一起包含：
+
+    - 應補救 SQL 資料庫的弱點評定結果
+    - 您應補救電腦上 SQL server 的弱點評定結果 (預覽版) 
+    - Azure Container Registry 映像中應予補救的弱點 (Qualys 技術提供)
+    - 應補救您虛擬機器中的弱點
+
+    若要包含這些建議的結果，請啟用 [ **包含安全性結果** ] 選項。
+
+    :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="在連續匯出設定中包含安全性結果切換" :::
+
+
 1. 從 [匯出目標] 區域中，選擇您想要儲存資料的位置。 資料可以儲存在不同訂用帳戶的目標中 (例如中央事件中樞實例或中央 Log Analytics 工作區) 。
 
 1. 選取 [儲存]。
 
 
-## <a name="setting-up-continuous-export-via-the-rest-api"></a>透過 REST API 設定連續匯出
+## <a name="set-up-continuous-export-via-the-rest-api"></a>透過 REST API 設定連續匯出
 
 您可以透過 Azure 資訊安全中心 [自動化 API](https://docs.microsoft.com/rest/api/securitycenter/automations)來設定和管理連續匯出功能。 您可以使用此 API 來建立或更新自動化，以匯出到下列任何可能的目的地：
 
@@ -83,7 +95,7 @@ API 提供 Azure 入口網站中無法使用的額外功能，例如：
 
 
 
-## <a name="configuring-siem-integration-via-azure-event-hubs"></a>透過 Azure 事件中樞設定 SIEM 整合
+## <a name="configure-siem-integration-via-azure-event-hubs"></a>透過 Azure 事件中樞設定 SIEM 整合
 
 Azure 事件中樞是以程式設計方式使用任何串流資料的絕佳解決方案。 針對 Azure 資訊安全中心警示和建議，這是與協力廠商 SIEM 整合的最佳方式。
 
@@ -168,7 +180,7 @@ Azure 監視器針對各種不同的 Azure 警示（包括診斷記錄、計量�
 深入瞭解 [Azure 事件中樞定價](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本文中，您已瞭解如何設定建議和警示的連續匯出。 您也已瞭解如何以 CSV 檔案的形式下載您的警示資料。 
 

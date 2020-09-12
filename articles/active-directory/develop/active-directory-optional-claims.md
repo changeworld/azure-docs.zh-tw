@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/25/2020
+ms.date: 09/03/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2d895a6703123d8725a375e29e2e26b64b621f23
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068721"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436845"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -130,7 +130,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 **透過 UI 設定選擇性宣告：**
 
-[![示範如何使用 UI 設定選擇性宣告](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
+[![在 UI 中設定選擇性宣告](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. 從 [管理] 區段中，選取 [權杖設定]。
 1. 選取 [新增選擇性宣告]。
@@ -238,7 +238,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 1. 從清單中，選取您要設定選擇性宣告的應用程式
 1. 在 [管理] 區段下，選取 [權杖設定]
 1. 選取 [新增群組宣告]
-1. 選取要傳回的群組類型 (**所有群組**、**SecurityGroup** 或 **DirectoryRole**)。 [所有群組] 選項包含 **SecurityGroup**、**DirectoryRole** 和 **DistributionList**
+1. 選取群組類型，以傳回 (**安全性群組**或 **目錄角色**、 **所有群組**，以及/或 **指派給應用程式) 的群組** 。 **指派給應用程式**選項的群組只會包含指派給應用程式的群組。 [ **所有群組** ] 選項包括 **SecurityGroup**、 **DirectoryRole**和 **DistributionList**，而不是 **指派給應用程式的群組**。 
 1. 選擇性：選取特定的權杖類型屬性，以將群組宣告值修改為包含內部部署群組屬性，或將宣告類型變更為角色
 1. 選取 [儲存]。
 
@@ -256,6 +256,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
    - "All" (此選項包含 SecurityGroup、DirectoryRole 和 DistributionList)
    - "SecurityGroup"
    - "DirectoryRole"
+   - "ApplicationGroup" (此選項只會包含指派給應用程式的群組) 
 
    例如：
 
@@ -307,7 +308,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
     **UI 設定：**
 
-    [![示範如何使用 UI 設定選擇性宣告](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
+    [![設定選擇性宣告](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
 
     **應用程式資訊清單項目：**
 
@@ -328,7 +329,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
     **UI 設定：**
 
-    [![示範如何使用 UI 設定選擇性宣告](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
+    [![資訊清單中的選擇性宣告](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
 
     **應用程式資訊清單項目：**
 
@@ -394,7 +395,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 1. 選取 [新增選擇性宣告]、選取 [SAML] 權杖類型、從宣告清單中選取 [extn.skypeID] (只在已建立名為 skypeID 的 Azure AD 使用者物件時才適用)，然後選取 [新增]。
 
-    [![示範如何使用 UI 設定選擇性宣告](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
+    [![SAML 權杖的選擇性宣告](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
 
 **資訊清單設定：**
 

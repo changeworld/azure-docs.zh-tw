@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7188cb5774699fc6e31fc3b8c78068bb33c6f552
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707288"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441624"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory 中的可重複複製
 
@@ -104,13 +104,13 @@ ID    Product        Quantity    ModifiedDate
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>機制 2：使用 sliceIdentifierColumnName
 > [!IMPORTANT]
-> 目前「Azure SQL 資料倉儲」並不支援 sliceIdentifierColumnName。 
+> 目前，Azure Synapse Analytics (先前的 SQL 資料倉儲) 不支援 sliceIdentifierColumnName。 
 
 達成可重複性的第二個機制是在目標資料表中擁有一個專用的資料行 (sliceIdentifierColumnName)。 Azure Data Factory 會使用這個資料行以確保來源和目的地保持同步。 當目的地 SQL 資料表結構描述可彈性變更或定義，就可以使用這種方法。 
 
 Azure Data Factory 會基於可重複性目的使用此資料行，且在過程中 Azure Data Factory 不會對資料表進行任何結構描述變更。 如何使用這個方法：
 
-1. 在目的地 SQL 資料表中定義 binary 類型的資料行 **（32）** 。 此資料行不應該有任何條件約束。 讓我們針對此範例將這個資料行命名為 AdfSliceIdentifier。
+1. 在目的地 SQL 資料表中定義 **二進位 (32) ** 類型的資料行。 此資料行不應該有任何條件約束。 讓我們針對此範例將這個資料行命名為 AdfSliceIdentifier。
 
 
     來源資料表：
@@ -147,9 +147,9 @@ Azure Data Factory 會根據其需求來填入此資料行，以確保來源和�
 
 與機制 1 類似，「複製活動」也會自動從目的地 SQL 資料表中清除所指定配量的資料。 接著，它會將來自來源的資料插入到目的地資料表中。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需完整的 JSON 範例，請檢閱下列連接器文章： 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
-- [Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

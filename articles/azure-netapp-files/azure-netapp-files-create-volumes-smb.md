@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: b-juche
-ms.openlocfilehash: e85a78582c0f7aac188198ad91f9ac91ddf62961
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 9ac30bdcb137afb26a8461f98a36b568ebe179b0
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950369"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459006"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
@@ -188,7 +188,7 @@ Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、S
 
     隨即顯示您建立的 Active Directory 連線。
 
-    ![Active Directory 連線](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
+    ![建立 Active Directory 連接](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
 
 ## <a name="add-an-smb-volume"></a>新增 SMB 磁碟區
 
@@ -230,7 +230,7 @@ Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、S
     
         ![建立子網路](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * 如果您想要將現有的快照集原則套用到磁片區，請按一下 [ **顯示 advanced] 區段** 將它展開，然後在下拉式功能表中選取快照集原則。 
+    * 如果您想要將現有的快照集原則套用到磁片區，請按一下 [顯示最上層] **區段** 來展開它，指定是否要隱藏快照集路徑，然後在下拉式功能表中選取快照集原則。 
 
         如需建立快照集原則的詳細資訊，請參閱 [管理快照](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)集原則。
 

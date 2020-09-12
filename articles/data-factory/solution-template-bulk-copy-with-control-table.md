@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 46e81242c1fba463f547015a244650ae6e574580
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: be3b82765f2f5268a75147e8e1ef6de34aeb8ff2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629077"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441063"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>使用控制資料表從資料庫進行大量複製
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-若要從 Oracle 伺服器、Netezza、Teradata 或 SQL Server 中的資料倉儲將資料複製到 Azure SQL 資料倉儲時，則必須從多個資料表載入大量資料。 通常，資料必須在每個資料表中進行分割，如此即可從單一資料表使用多個執行緒平行載入資料列。 本文描述要在這些案例中使用的範本。
+若要從 Oracle Server、Netezza、Teradata 或 SQL Server 中的資料倉儲複製資料至 Azure Synapse Analytics (先前為 SQL 資料倉儲) ，您必須從多個資料表載入大量的資料。 通常，資料必須在每個資料表中進行分割，如此即可從單一資料表使用多個執行緒平行載入資料列。 本文描述要在這些案例中使用的範本。
 
- >！注意：如果想要從資料量相對較小的少數資料表將資料複製到 SQL 資料倉儲，則使用 [Azure Data Factory 資料複製工具](copy-data-tool.md)會更有效率。 本文中所述範本其範圍遠超出該案例所需的內容。
+ >!請注意，如果您想要從少量的資料表中，將資料從相對較小的資料磁片區複製到 Azure Synapse Analytics，使用 [Azure Data Factory 資料複製工具](copy-data-tool.md)會更有效率。 本文中所述範本其範圍遠超出該案例所需的內容。
 
 ## <a name="about-this-solution-template"></a>關於此解決方案範本
 
@@ -44,7 +44,7 @@ ms.locfileid: "82629077"
 - *Data_Destination_Container* 是目的地存放區中資料複製目標的根資料夾路徑。 
 - *Data_Destination_Directory* 是根目錄下將資料複製到目的地存放區的目錄路徑。 
 
-最後三個參數會定義目的地存放區的路徑，只有在您所選目的地是檔案型儲存體時，才會顯示這些參數。 如果選擇「Azure Synapse Analytics (先前稱為 SQL DW)」作為目的地存放區，則不需要這些參數。 但是，SQL 資料倉儲中資料表名稱和結構描述必須與來源資料庫中的這些項目相同。
+最後三個參數會定義目的地存放區的路徑，只有在您所選目的地是檔案型儲存體時，才會顯示這些參數。 如果選擇「Azure Synapse Analytics (先前稱為 SQL DW)」作為目的地存放區，則不需要這些參數。 但是，Azure Synapse Analytics 中的資料表名稱和架構必須與源資料庫中的資料表名稱和架構相同。
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解決方案範本
 
@@ -94,7 +94,7 @@ ms.locfileid: "82629077"
 
     ![檢閱結果](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. (選擇性) 如果選擇「Azure Synapse Analytics (先前稱為 SQL DW)」作為資料目的地，則必須依照 SQL 資料倉儲 Polybase 的需求，輸入與 Azure Blob 儲存體的連線以進行暫存。 此範本會自動為 Blob 儲存體產生容器路徑。 檢查是否已在管線執行之後建立容器。
+9.  (選擇性) 如果您選擇「Azure Synapse Analytics (先前的 SQL DW) 」作為資料目的地，則必須輸入 Azure Blob 儲存體的連線以進行預備，如 Azure Synapse Analytics Polybase 所要求。 此範本會自動為 Blob 儲存體產生容器路徑。 檢查是否已在管線執行之後建立容器。
     
     ![Polybase 設定](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

@@ -1,25 +1,25 @@
 ---
 title: 在 Azure 流量管理員中啟用資源記錄
-description: 瞭解如何為您的流量管理員設定檔啟用資源記錄，並存取作為結果而建立的記錄檔。
+description: 瞭解如何為您的流量管理員設定檔啟用資源記錄，並存取作為結果建立的記錄檔。
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
-ms.author: rohink
-ms.openlocfilehash: 09c04d727e42f88bb376a59d66a23688e16abb13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 25c0b18da1690557f11e36dd11dda693ddddb838
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089051"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401311"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>在 Azure 流量管理員中啟用資源記錄
 
-本文說明如何啟用收集流量管理員設定檔的診斷資源記錄和存取記錄檔資料。
+本文說明如何啟用收集診斷資源記錄，以及存取流量管理員設定檔的記錄資料。
 
 Azure 流量管理員資源記錄可讓您深入瞭解流量管理員設定檔資源的行為。 例如，您可以使用設定檔的記錄資料判斷為何針對某個端點進行的個別探查已經逾時。
 
@@ -31,7 +31,7 @@ Azure 流量管理員資源記錄可讓您深入瞭解流量管理員設定檔�
 
 1. **擷取流量管理員設定檔：**
 
-    若要啟用資源記錄，您需要流量管理員設定檔的識別碼。 取得您想要使用[get-aztrafficmanagerprofile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)啟用資源記錄功能的流量管理員設定檔。 輸出會包含流量管理員設定檔的識別碼資訊。
+    若要啟用資源記錄，您需要流量管理員設定檔的識別碼。 使用 [>get-aztrafficmanagerprofile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)來取得您想要啟用資源記錄的流量管理員設定檔。 輸出會包含流量管理員設定檔的識別碼資訊。
 
     ```azurepowershell-interactive
     Get-AzTrafficManagerProfile -Name <TrafficManagerprofilename> -ResourceGroupName <resourcegroupname>
@@ -39,7 +39,7 @@ Azure 流量管理員資源記錄可讓您深入瞭解流量管理員設定檔�
 
 2. **啟用流量管理員設定檔的資源記錄：**
 
-    使用在上一個步驟中取得的識別碼，為流量管理員設定檔啟用資源記錄，並使用[set-azdiagnosticsetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest)。 以下命令會將流量管理員設定檔的詳細資訊記錄儲存至指定的 Azure 儲存體帳戶。 
+    使用上一個步驟中取得的識別碼，為流量管理員設定檔啟用資源記錄，並 [設定 >set-azdiagnosticsetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest)。 以下命令會將流量管理員設定檔的詳細資訊記錄儲存至指定的 Azure 儲存體帳戶。 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
@@ -64,17 +64,17 @@ Azure 流量管理員資源記錄可讓您深入瞭解流量管理員設定檔�
 
 ## <a name="traffic-manager-log-schema"></a>流量管理員記錄結構描述
 
-透過 Azure 監視器所提供的所有資源記錄都會共用通用的最上層架構，而且每個服務都可以彈性地為自己的事件發出唯一的屬性。 如需最上層資源記錄架構，請參閱[Azure 資源記錄的支援服務、架構和類別](../azure-monitor/platform/tutorial-dashboards.md)。
+所有可透過 Azure 監視器共用的資源記錄都會共用通用的最上層架構，而且每個服務都有彈性地發出其本身事件的唯一屬性。 如需最上層資源記錄架構，請參閱 [Azure 資源記錄的支援服務、架構和類別](../azure-monitor/platform/tutorial-dashboards.md)。
 
 下表包含 Azure 流量管理員設定檔資源特定的記錄結構描述。
 
 |欄位名稱|欄位類型|定義|範例|
 |----|----|---|---|
-|EndpointName|字串|正在記錄其健全狀況狀態的流量管理員端點的名稱。|*myPrimaryEndpoint*|
-|狀態|字串|所探查流量管理員端點的健全狀況狀態。 狀態可以是 **Up** 或 **down**。|**設定**|
+|EndpointName|String|正在記錄其健全狀況狀態的流量管理員端點的名稱。|*myPrimaryEndpoint*|
+|狀態|String|所探查流量管理員端點的健全狀況狀態。 狀態可以是 **Up** 或 **down**。|**Up**|
 |||||
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 深入了解[流量管理員監視](traffic-manager-monitoring.md)
 

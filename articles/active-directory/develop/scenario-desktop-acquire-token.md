@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 300bc6acbe7821841b578dcc2166ecfc498ad750
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 0d1946862ec8af6a107ca4f5f963efbcb8912a5e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141290"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440927"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>呼叫 Web API 的傳統型應用程式：取得權杖
 
@@ -38,7 +38,7 @@ Web API 是由其 `scopes` 所定義。 無論您在應用程式中提供的體�
 AuthenticationResult result;
 var accounts = await app.GetAccountsAsync();
 IAccount account = ChooseAccount(accounts); // for instance accounts.FirstOrDefault
-                                            // if the app manages is at most one account  
+                                            // if the app manages is at most one account
 try
 {
  result = await app.AcquireTokenSilent(scopes, account)
@@ -213,7 +213,7 @@ WithParentActivityOrWindow(object parent).
 
 `WithPrompt()` 是用來透過指定提示，以控制使用者的互動性。
 
-![顯示提示結構中欄位的影像。 這些常數值會藉由定義 WithPrompt ( # A1 方法所顯示的提示類型，以控制與使用者的互動。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
+![顯示提示字元結構中欄位的影像。 這些常數值會藉由定義 WithPrompt ( # A1 方法所顯示的提示類型，來控制使用者的互動性。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 類別會定義下列常數：
 
@@ -370,7 +370,7 @@ if accounts:
 if not result:
     result = app.acquire_token_by_authorization_code(
          request.args['code'],
-         scopes=config["scope"])    
+         scopes=config["scope"])
 
 ```
 
@@ -433,7 +433,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
   - 或者，租用戶系統管理員先前必須已同意租用戶中的所有使用者，才能使用該應用程式。
   - 換句話說：
     - 您身為開發人員，請自行選取 Azure 入口網站中的 [授與] 按鈕。
-    - 或者，租用戶系統管理員已在應用程式註冊的 [API 權限] 索引標籤上，選取 [授與/撤銷 {租用戶網域} 系統管理員同意] 按鈕。 如需詳細資訊，請參閱[新增存取 Web API 的許可權](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
+    - 或者，租用戶系統管理員已在應用程式註冊的 [API 權限] 索引標籤上，選取 [授與/撤銷 {租用戶網域} 系統管理員同意] 按鈕。 如需詳細資訊，請參閱 [新增存取 WEB API 的許可權](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)。
     - 或者，您已為使用者提供同意應用程式的方式。 如需詳細資訊，請參閱[要求個別使用者同意](./v2-permissions-and-consent.md#requesting-individual-user-consent)。
     - 或者，您也提供一種方法，讓租用戶系統管理員同意應用程式。 如需詳細資訊，請參閱[管理員同意](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。
 
@@ -925,7 +925,7 @@ MSAL for macOS 不支援此流程。
 
 如果您要撰寫的命令列工具沒有 web 控制項，且您無法或不想要使用先前的流程，則必須使用裝置程式碼流程。
 
-使用 Azure AD 的互動式驗證需要網頁瀏覽器。 如需詳細資訊，請參閱[網頁瀏覽器的使用方式](https://aka.ms/msal-net-uses-web-browser)。 若要在不提供網頁瀏覽器的裝置或作業系統上驗證使用者，裝置程式碼流程可讓使用者使用另一部裝置 (例如電腦或行動電話) 以互動方式登入。 應用程式會使用裝置程式碼流程，透過針對這些裝置或作業系統所設計的兩個步驟程序來取得權杖。 這類應用程式的範例，是在 iOT 或命令列工具 (CLI) 上執行的應用程式。 其概念如下：
+使用 Azure AD 的互動式驗證需要網頁瀏覽器。 如需詳細資訊，請參閱[網頁瀏覽器的使用方式](https://aka.ms/msal-net-uses-web-browser)。 若要在不提供網頁瀏覽器的裝置或作業系統上驗證使用者，裝置程式碼流程可讓使用者使用另一部裝置 (例如電腦或行動電話) 以互動方式登入。 應用程式會使用裝置程式碼流程，透過針對這些裝置或作業系統設計的雙步驟程式取得權杖。 這類應用程式的範例，是在 iOT 或命令列工具 (CLI) 上執行的應用程式。 其概念如下：
 
 1. 每當需要使用者驗證時，應用程式會為使用者提供程式碼。 系統會要求使用者使用另一部裝置 (例如網際網路連線的智慧型手機) 來移至 URL，例如 `https://microsoft.com/devicelogin`。 接著，系統會提示使用者輸入程式碼。 如此一來，網頁會引導使用者完成一般的驗證體驗，其中包括同意提示和多重要素驗證 (如有需要)。
 
@@ -978,7 +978,7 @@ static async Task<AuthenticationResult> GetATokenForGraph()
         // If you want to provide a more complex user experience, check out ex.Classification
 
         return await AcquireByDeviceCodeAsync(pca);
-    }         
+    }
 }
 
 private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientApplication pca)

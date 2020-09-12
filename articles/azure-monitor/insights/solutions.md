@@ -6,22 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/07/2020
-ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 013d8b77a16a4c7cd0efdadce25fd141793070be
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135519"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459516"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的監視解決方案
 
-中的監視解決方案 Azure 監視器提供特定 Azure 應用程式或服務之作業的分析。 本文提供 Azure 中監視解決方案的簡短概觀，以及使用和安裝它們的詳細資料。 您可以針對您使用的任何應用程式和服務，將監視解決方案新增至 Azure 監視器。 這些監視解決方案通常免費提供，但是會收集可能造成使用費用的資料。
+Azure 監視器中的監視解決方案可讓您分析特定 Azure 應用程式或服務的作業。 本文提供 Azure 中監視解決方案的簡短概觀，以及使用和安裝它們的詳細資料。 您可以針對您使用的任何應用程式和服務，將監視解決方案新增至 Azure 監視器。 這些監視解決方案通常免費提供，但是會收集可能造成使用費用的資料。
 
 ## <a name="use-monitoring-solutions"></a>使用監視解決方案
 
-Azure 監視器中的 [解決方案**總覽**] 頁面會顯示 Log Analytics 工作區中所安裝每個解決方案的磚。 若要開啟此頁面，請移至[Azure 入口網站](https://ms.portal.azure.com)中的**Azure 監視器**。 在 [**深入**解析] 功能表底下，選取 [**更多**] 以開啟**Insights 中樞**，然後按一下 [ **Log Analytics 工作區**]。
+Azure 監視器中的 [解決方案 **總覽** ] 頁面會顯示 Log Analytics 工作區中安裝的每個解決方案的磚。 若要開啟此頁面，請移至[Azure 入口網站](https://ms.portal.azure.com)中的**Azure 監視器**。 在 [ **見解** ] 功能表中，選取 [ **更多** ] 以開啟 [ **見解中樞**]，然後按一下 [ **Log Analytics 工作區**]。
 
-[![Insights 中樞](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
+[![見解中樞](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
 
 使用畫面頂端的下拉式清單方塊，來變更針對圖格所使用的工作區或時間範圍。 按一下解決方案的圖格以開啟其檢視，其中包含所收集資料的更詳細分析。
@@ -48,7 +48,7 @@ Azure 監視器中的 [解決方案**總覽**] 頁面會顯示 Log Analytics 工
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-使用[az monitor log analytics solution list](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-list)命令來列出您的訂用帳戶中所安裝的監視解決方案。   `list`執行命令之前，請遵循[安裝監視解決方案](#install-a-monitoring-solution)中的必要條件。
+使用 [az monitor log analytics solution list](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-list) 命令來列出您的訂用帳戶中所安裝的監視解決方案。   `list`執行命令之前，請遵循[安裝監視解決方案](#install-a-monitoring-solution)中的必要條件。
 
 ```azurecli
 # List all log-analytics solutions in the current subscription.
@@ -95,39 +95,39 @@ az monitor log-analytics solution list --resource-group MyResourceGroup
 
 1. 安裝 Azure CLI
 
-   您必須先[安裝 Azure CLI](/cli/azure/install-azure-cli) ，才能執行 CLI 參考命令。  如果您想要的話，也可以使用 Azure Cloud Shell 來完成這篇文章中的步驟。  Azure Cloud Shell 是您透過瀏覽器使用的互動式 Shell 環境。  使用下列其中一種方法啟動 Cloud Shell：
+   您必須先 [安裝 Azure CLI](/cli/azure/install-azure-cli) ，才能執行 CLI 參考命令。  如果您想要的話，也可以使用 Azure Cloud Shell 來完成本文中的步驟。  Azure Cloud Shell 是透過瀏覽器使用的互動式 Shell 環境。  使用下列其中一種方法來開始 Cloud Shell：
 
-   - 前往來開啟 Cloud Shell[https://shell.azure.com](https://shell.azure.com)
+   - 開啟 Cloud Shell，方法是前往 [https://shell.azure.com](https://shell.azure.com)
 
-   - 在[Azure 入口網站](https://portal.azure.com)的右上角功能表列上，選取 [ **Cloud Shell** ] 按鈕
+   - 在 [ [Azure 入口網站](https://portal.azure.com)中右上角的功能表列上，選取 [ **Cloud Shell** ] 按鈕
 
 1. 登入。
 
-   如果您使用的是 CLI 的本機安裝，請使用[az login 命令登](/cli/azure/reference-index#az-login)入。  請遵循您終端機上顯示的步驟，來完成驗證程序。
+   如果您使用的是本機的 CLI 安裝，請使用 [az login 命令登](/cli/azure/reference-index#az-login) 入。  請遵循您終端機上顯示的步驟，來完成驗證程序。
 
     ```azurecli
     az login
     ```
 
-1. 安裝 `log-analytics` 擴充功能
+1. 安裝 `log-analytics-solution` 擴充功能
 
-   此 `log-analytics` 命令是核心 Azure CLI 的實驗性延伸模組。 深入瞭解[使用延伸](/cli/azure/azure-cli-extensions-overview?)模組中 Azure CLI 的延伸模組參考。
+   此 `log-analytics-solution` 命令是核心 Azure CLI 的實驗性延伸模組。 深入瞭解搭配 [Azure CLI 使用延伸](/cli/azure/azure-cli-extensions-overview?)模組中的擴充功能參考。
 
    ```azurecli
-   az extension add --name log-analytics
+   az extension add --name log-analytics-solution
    ```
 
-   應該會出現下列警告。
+   預期會出現下列警告。
 
    ```output
-   The installed extension `log-analytics` is experimental and not covered by customer support.  Please use with discretion.
+   The installed extension `log-analytics-solution` is experimental and not covered by customer support.  Please use with discretion.
    ```
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>使用 Azure CLI 安裝解決方案
 
-當您安裝解決方案時，您必須選取將在其中安裝解決方案且將收集其資料的 [Log Analytics 工作區](../platform/manage-access.md)。  使用 Azure CLI，您可以使用[az monitor log analytics 工作區](/cli/azure/monitor/log-analytics/workspace)參考命令來管理工作區。  依照 [Log Analytics 工作區和自動化帳戶](#log-analytics-workspace-and-automation-account)中所述的程序來連結工作區和帳戶。
+當您安裝解決方案時，您必須選取將在其中安裝解決方案且將收集其資料的 [Log Analytics 工作區](../platform/manage-access.md)。  使用 Azure CLI，您可以使用 [az 監視器記錄分析工作區](/cli/azure/monitor/log-analytics/workspace) 參考命令來管理工作區。  依照 [Log Analytics 工作區和自動化帳戶](#log-analytics-workspace-and-automation-account)中所述的程序來連結工作區和帳戶。
 
-使用[az monitor log analytics 解決方案 create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution)來安裝監視解決方案。  以方括弧括住的參數是選擇性的。
+使用 [az 監視器記錄分析解決方案建立](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) 來安裝監視解決方案。  方括弧中的參數是選擇性的。
 
 ```azurecli
 az monitor log-analytics solution create --name
@@ -139,7 +139,7 @@ az monitor log-analytics solution create --name
                                          [--tags]
 ```
 
-以下程式碼範例會為 OMSGallery/容器的方案產品建立記錄分析解決方案。
+以下程式碼範例會針對 OMSGallery/容器的方案產品建立記錄分析解決方案。
 
 ```azurecli
 az monitor log-analytics solution create --resource-group MyResourceGroup \
@@ -159,7 +159,6 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
 
 * 每次安裝解決方案時，只能使用一個 Log Analytics 工作區和一個自動化帳戶。 您可以將解決方案個別安裝於多個工作區中。
 * 如果解決方案需要自動化帳戶，則 Log Analytics 工作區和自動化帳戶必須彼此連結。 Log Analytics 工作區只能連結到一個自動化帳戶，而自動化帳戶只能連結到一個 Log Analytics 工作區。
-* 若要互相連結，Log Analytics 工作區和自動化帳戶必須位於相同的訂閱中，但可位於部署至相同區域的不同資源群組中。 例外狀況是位於美國東部區域的工作區，以及位於美國東部 2 的自動化帳戶。
 
 當您透過 Azure Marketplace 安裝解決方案時，系統會提示您提供工作區和自動化帳戶。 如果它們尚未連結，則會建立它們之間的連結。
 
@@ -175,11 +174,11 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
 
 ### <a name="portal"></a>[入口網站](#tab/portal)
 
-若要使用入口網站移除已安裝的解決方案，請在[已安裝的解決方案清單](#list-installed-monitoring-solutions)中找到它。 按一下解決方案名稱，以開啟其摘要頁面，然後按一下 [刪除]。
+若要使用入口網站移除已安裝的解決方案，請在 [已安裝的解決方案清單](#list-installed-monitoring-solutions)中找出它。 按一下解決方案名稱，以開啟其摘要頁面，然後按一下 [刪除]。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 移除已安裝的解決方案，請使用[az monitor log analytics 解決方案 delete](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-delete)命令。
+若要使用 Azure CLI 移除已安裝的解決方案，請使用 [az 監視器記錄分析解決方案刪除](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-delete) 命令。
 
 ```azurecli
 az monitor log-analytics solution delete --name
@@ -194,4 +193,4 @@ az monitor log-analytics solution delete --name
 
 * 取得[來自 Microsoft 的監視解決方案清單](../monitor-reference.md)。
 * 了解如何[建立查詢](../log-query/log-query-overview.md)，以分析監視解決方案所收集的資料。
-* 查看[Azure 監視器的所有 Azure CLI 命令](/cli/azure/azure-cli-reference-for-monitor)。
+* 查看 [Azure 監視器的所有 Azure CLI 命令](/cli/azure/azure-cli-reference-for-monitor)。

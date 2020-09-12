@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f56d3a364e38d13931f8e07d749d3a5958dcee67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9318ce7d73f2d05dde6815a0ded4269510760251
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322521"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441981"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>將 Azure Data Lake Storage Gen1 與其他 Azure 服務整合
 Azure Data Lake Storage Gen1 可以與其他 Azure 服務一起使用，以啟用更廣泛的案例。 下列文章列出 Data Lake Storage Gen1 可以整合的服務。
@@ -21,7 +21,7 @@ Azure Data Lake Storage Gen1 可以與其他 Azure 服務一起使用，以啟�
 
 如需如何使用 Data Lake Storage Gen1 佈建 HDInsight 叢集的指示，請參閱：
 
-* [使用 Azure 入口網站佈建 HDInsight 叢集與 Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [使用 Azure 入口網站布建具有 Data Lake Storage Gen1 的 HDInsight 叢集](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [使用 Azure PowerShell 以 Data Lake Storage Gen1 作為預設儲存體佈建 HDInsight 叢集](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [使用 Azure PowerShell 以 Data Lake Storage Gen1 作為額外儲存體佈建 HDInsight 叢集](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
@@ -39,7 +39,7 @@ Azure Data Lake Storage Gen1 可以與其他 Azure 服務一起使用，以啟�
 Azure Data Lake Storage Gen1 提供命令列工具 AdlCopy，可讓您將資料從 Azure Blob 儲存體複製到 Data Lake Storage Gen1 帳戶。 如需詳細資訊，請參閱[將資料從 Azure 儲存體 Blob 複製到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)。
 
 ## <a name="copy-data-between-azure-sql-database-and-data-lake-storage-gen1"></a>在 Azure SQL Database 與 Data Lake Storage Gen1 之間複製資料
-您可以使用 Apache Sqoop 在 Azure SQL Database 與 Data Lake Storage Gen1 之間匯入及匯出資料。 如需詳細資訊，請參閱[使用 Sqoop 在 Data Lake Storage Gen1 和 Azure SQL Database 之間複製資料](data-lake-store-data-transfer-sql-sqoop.md)。
+您可以使用 Apache Sqoop 在 Azure SQL Database 與 Data Lake Storage Gen1 之間匯入及匯出資料。 如需詳細資訊，請參閱 [使用 Sqoop 在 Data Lake Storage Gen1 和 Azure SQL Database 之間複製資料](data-lake-store-data-transfer-sql-sqoop.md)。
 
 ## <a name="use-data-lake-storage-gen1-with-stream-analytics"></a>搭配串流分析使用 Data Lake Storage Gen1
 您可以使用 Data Lake Storage Gen1 做為其中一個使用 Azure 串流分析儲存串流資料的輸出。 如需詳細資訊，請參閱[使用 Azure 串流分析將來自 Azure 儲存體 Blob 的資料串流處理至 Data Lake Storage Gen1](data-lake-store-stream-analytics.md)。
@@ -53,8 +53,8 @@ Azure Data Lake Storage Gen1 提供命令列工具 AdlCopy，可讓您將資料�
 ## <a name="use-data-lake-storage-gen1-with-sql-server-integration-services-ssis"></a>搭配 SQL Server Integration Services (SSIS) 使用 Data Lake Storage Gen1
 您可以使用 SSIS 中的 Data Lake Storage Gen1 連線管理員，以使用 Data Lake Storage Gen1 連線 SSIS 套件。 如需詳細資訊，請參閱[搭配 SSIS 使用 Data Lake Storage Gen1](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)。
 
-## <a name="use-data-lake-storage-gen1-with-sql-data-warehouse"></a>搭配 SQL 資料倉儲使用 Data Lake Storage Gen1
-您可以使用 PolyBase 將 Data Lake Storage Gen1 的資料載入到 SQL 資料倉儲。 如需詳細資訊，請參閱[搭配 SQL 資料倉儲使用 Data Lake Storage Gen1](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)。
+## <a name="use-data-lake-storage-gen1-with-azure-synapse-analytics"></a>搭配使用 Data Lake Storage Gen1 與 Azure Synapse Analytics
+您可以使用 PolyBase 將資料從 Data Lake Storage Gen1 載入至先前的 SQL 資料倉儲) Azure Synapse Analytics (。 如需詳細資訊，請參閱搭配 [使用 Data Lake Storage Gen1 與 Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)。
 
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>搭配 Azure 事件中樞使用 Data Lake Storage Gen1
 您可以使用 Azure Data Lake Storage Gen1 來封存及擷取 Azure 事件中樞所收到的資料。 如需詳細資訊，請參閱[搭配 Azure 事件中樞使用 Data Lake Storage Gen1](data-lake-store-archive-eventhub-capture.md)。
@@ -62,5 +62,5 @@ Azure Data Lake Storage Gen1 提供命令列工具 AdlCopy，可讓您將資料�
 ## <a name="see-also"></a>另請參閱
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)
 * [使用入口網站開始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
-* [使用 PowerShell 開始使用 Data Lake Storage Gen1](data-lake-store-get-started-powershell.md)  
+* [利用 PowerShell 開始使用 Data Lake Storage Gen1](data-lake-store-get-started-powershell.md)  
 

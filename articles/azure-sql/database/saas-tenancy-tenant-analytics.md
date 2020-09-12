@@ -1,6 +1,6 @@
 ---
 title: 使用擷取的資料執行跨租用戶分析
-description: 在單一租使用者應用程式中使用從多個 Azure SQL 資料庫解壓縮的資料進行跨租使用者分析查詢。
+description: 使用在單一租使用者應用程式中從多個 Azure SQL 資料庫解壓縮的資料進行跨租使用者分析查詢。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: cc748e8a816b944a20a12c8e8e345dca21dfaabd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 80658839e804112ae9c8a049943bca54441b015b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043507"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437389"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>在單一租用戶應用程式中使用擷取的資料執行跨租用戶分析
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "86043507"
 
 1.  從每個租用戶資料庫**擷取**資料並**載入**至分析存放區。
 2.  針對分析處理**轉換擷取的資料**。
-3.  使用**商業智慧**工具來繪製出有用的深入解析，這可以引導您進行決策。 
+3.  您可以使用 **商業智慧** 工具來繪製出有用的深入解析，以引導決策進行。 
 
 在本教學課程中，您將了解如何：
 
@@ -44,7 +44,7 @@ ms.locfileid: "86043507"
 
 當所有資料都在一個多租用戶資料庫時，存取所有租用戶的資料就相當簡單。 但是當資料散佈在可能是上千個資料庫時，存取就更加複雜。 駕馭複雜性並且將對於交易資料之分析查詢影響降到最低的一個方法是，將資料擷取至專門設計的分析資料庫或資料倉儲。
 
-此教學課程會呈現 Wingtip Tickets SaaS 應用程式的完整分析案例。 首先，彈性作業** 是用來從每個租用戶資料庫擷取資料，並將其載入至分析存放區中的暫存表格。 分析存放區可以是 SQL Database 或 SQL 資料倉儲。 針對大規模資料擷取，建議使用 [Azure Data Factory](../../data-factory/introduction.md)。
+此教學課程會呈現 Wingtip Tickets SaaS 應用程式的完整分析案例。 首先，彈性作業** 是用來從每個租用戶資料庫擷取資料，並將其載入至分析存放區中的暫存表格。 分析存放區可能是 SQL Database 或 SQL 集區。 針對大規模資料擷取，建議使用 [Azure Data Factory](../../data-factory/introduction.md)。
 
 接下來，彙總的資料會轉換成一組[星狀結構描述](https://www.wikipedia.org/wiki/Star_schema)資料表。 資料表是由一個中央的事實資料表，再加上相關的維度資料表所組成。  針對 Wingtip Tickets：
 
@@ -80,20 +80,20 @@ ms.locfileid: "86043507"
 在本教學課程中，分析是在票證銷售資料上執行。 在目前的步驟中，您會為所有租用戶產生票證資料。  稍後會擷取此資料以進行分析。 請確定您已如先前所述佈建租用戶的批次，以便獲得有意義的資料數量**。 足夠數量的資料可以公開不同票證購買模式的範圍。
 
 1. 在 PowerShell ISE 中，開啟 …\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1**，然後設定下列值：
-    - **$DemoScenario**  = **1**個適用于所有地點的事件購買票證
+    - **$DemoScenario**  = **1**個適用于所有場地事件的購買票證
 2. 按 **F5** 以執行指令碼並建立各地點中各個事件的票證購買歷程記錄。  指令碼會執行數分鐘以產生數以萬計的票證。
 
 ### <a name="deploy-the-analytics-store"></a>部署分析存放區
-通常會有數個交易式資料庫一起保留所有租用戶資料。 您必須從多個交易式資料庫將租用戶資料彙總至一個分析存放區。 彙總可以有效查詢資料。 在本教學課程中，會使用 Azure SQL Database 來儲存匯總的資料。
+通常會有數個交易式資料庫一起保留所有租用戶資料。 您必須從多個交易式資料庫將租用戶資料彙總至一個分析存放區。 彙總可以有效查詢資料。 在本教學課程中，會使用 Azure SQL Database 來儲存匯總資料。
 
 在下列步驟中，您會部署分析存放區，稱為 **tenantanalytics**。 您也可以部署預先定義的資料表，稍後會在本教學課程中填入：
 1. 在 PowerShell ISE 中，開啟 …\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1** 
 2. 在指令碼中設定 $DemoScenario 變數，以符合您對於分析存放區的選擇：
-    - 若要使用不含資料行存放區 SQL Database，請設定 **$DemoScenario**  =  **2**
-    - 若要使用 SQL Database 搭配資料行存放區，請設定 **$DemoScenario**  =  **3**  
+    - 若要使用沒有資料行存放區的 SQL Database，請將 **$DemoScenario**  =  **2**
+    - 若要搭配使用 SQL Database 與資料行存放區，請設定 **$DemoScenario**  =  **3**  
 3. 按 **F5** 以執行可建立租用戶分析存放區的示範指令碼 (它會呼叫 Deploy-TenantAnalytics\<XX>.ps1** 指令碼)。 
 
-現在您已部署應用程式，並使用有趣的租使用者資料加以填入，請使用[SQL Server Management Studio （SSMS）](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)來連接**tenants1-tenants1-dpt user- &lt; user &gt; **和**catalog-tenants1-dpt user- &lt; 使用者 &gt; **伺服器（使用 Login = *developer*，Password = *P \@ ssword1*）。 如需詳細指引，請參閱[簡介教學課程](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)。
+現在您已部署應用程式，並以感興趣的租使用者資料填入該應用程式，請使用[SQL Server Management Studio (SSMS) ](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)以登入 = *developer*，Password = *P \@ ssword1*來連接**tenants1-dpt- &lt; 使用者 &gt; **和**目錄-dpt &lt; 使用者 &gt; **伺服器。 如需詳細指引，請參閱[簡介教學課程](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)。
 
 ![architectureOverView](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -175,7 +175,7 @@ ms.locfileid: "86043507"
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 在左窗格中選取 [**資料庫**]，然後輸入 user name = *developer*，並輸入 password = *P \@ ssword1*。 按一下 [ **連接**]。  
+5. 選取左窗格中的 [ **資料庫** ]，然後輸入 [使用者名稱 = *開發人員*]，然後輸入 password = *P \@ ssword1*。 按一下 [ **連接**]。  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
@@ -240,6 +240,6 @@ AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CA
 
 ## <a name="additional-resources"></a>其他資源
 
-- [以 Wingtip SaaS 應用程式為基礎的其他教學](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)課程。
-- [彈性工作](../../sql-database/elastic-jobs-overview.md)。
+- [以 Wingtip SaaS 應用程式為基礎](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)的其他教學課程。
+- [彈性作業](../../sql-database/elastic-jobs-overview.md)。
 - [使用擷取的資料執行跨租用戶分析 - 多租用戶應用程式](../../sql-database/saas-multitenantdb-tenant-analytics.md)

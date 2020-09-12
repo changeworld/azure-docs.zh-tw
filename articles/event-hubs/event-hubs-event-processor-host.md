@@ -4,12 +4,12 @@ description: 本文將說明 Azure 事件中樞內的事件處理器主機；此
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27b587e6562b5ba0c9bf28a52a00a9d8e7d9201c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a05f2172b266301919d0a800fb863b8f0dbe5884
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010455"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319496"
 ---
 # <a name="event-processor-host"></a>事件處理器主機
 > [!NOTE]
@@ -87,6 +87,8 @@ public class SimpleEventProcessor : IEventProcessor
 
 最後，取用者會向事件中樞服務註冊 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 執行個體。 使用 EventProcessorHost 的執行個體來註冊事件處理器類別，會開始處理事件。 註冊作業會指示事件中樞服務，以預期取用者應用程式會從服務的分割區取用某些事件，以及在其推送事件以進行取用時，叫用 [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 實作程式碼。 
 
+> [!NOTE]
+> ConsumerGroupName 區分大小寫。  對 consumerGroupName 所做的變更可能會導致從資料流程的開頭讀取所有資料分割。
 
 ### <a name="example"></a>範例
 
@@ -186,7 +188,7 @@ Epoch 功能可讓使用者在任何時間點，使用下列規則，確保取�
 > 針對使用 epoch 的應用程式以及不使用 epoch 的應用程式，建議使用不同的取用者群組來避免錯誤。 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在您已熟悉事件處理器主機，請參閱下列文章以深入了解事件中樞：
 

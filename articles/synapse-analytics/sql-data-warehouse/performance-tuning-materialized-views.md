@@ -1,5 +1,5 @@
 ---
-title: 使用具體化視圖進行效能微調
+title: 使用具體化視圖進行效能調整
 description: 使用具體化檢視改善查詢效能時須知的建議和考量事項。
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -10,14 +10,14 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ddab106e11340dd040b99d1e8abf9d93e9338ab7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956384"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441199"
 ---
-# <a name="performance-tune-with-materialized-views"></a>使用具體化視圖進行效能微調
+# <a name="performance-tune-with-materialized-views"></a>使用具體化視圖進行效能調整
 
 Synapse SQL 集區中的具體化檢視提供低維護方法，可以在不變更任何查詢的情況下，讓複雜的分析查詢有快速的效能。 本文討論使用具體化檢視的一般指引。
 
@@ -52,7 +52,7 @@ SQL 集區支援標準和具體化檢視。  兩者都是使用 SELECT 運算式
 
 在 SQL 集區中實作的具體化檢視還有下列額外優點：
 
-相較於其他資料倉儲提供者，在 Azure SQL 資料倉儲中實作的具體化檢視還有下列額外優點：
+相較于其他資料倉儲提供者，在 Azure Synapse Analytics 中實施的具體化視圖也提供下列其他優點：
 
 - 當基底資料表中有資料變更時，系統能自動並同步進行資料重新整理。 使用者不必採取任何動作。
 - 支援廣泛彙總涵式。 請參閱 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。

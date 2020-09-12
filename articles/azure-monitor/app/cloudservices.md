@@ -4,12 +4,12 @@ description: 使用 Application Insights 有效地監視您的 Web 和背景工�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 2de853655524e99e958f043b7801ee73e937e7ad
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1662b45d8243217357d1e69124832c499d587812
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923852"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437321"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure 雲端服務的 Application Insights
 [Application Insights][start] 透過將 Application Insights SDK 的資料與 [Azure 診斷](../platform/diagnostics-extension-overview.md) 資料結合的方式，監視 [Azure 雲端服務應用程式](https://azure.microsoft.com/services/cloud-services/)的可用性、效能、故障與使用狀況。 當您取得有關應用程式在現實世界的效能和效率的意見反應時，您可以在每個開發生命週期中針對設計方向做出明智的抉擇。
@@ -66,6 +66,8 @@ ms.locfileid: "88923852"
 為了避免這種情況，請為您系統的每個組建組態或「戳記」(開發、測試、生產等) 建立個別的資源。 請將每個組建組態的資源放在個別的資源群組中。 
 
 若要將遙測傳送給適當的資源，您可以安裝 Application Insights SDK，讓它根據組建組態挑選不同的檢測金鑰。 
+
+瞭解如何針對不同階段 [動態設定檢測金鑰](https://docs.microsoft.com/azure/azure-monitor/app/separate-resources#dynamic-ikey) 。 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>為每個角色建立 Application Insights 資源
 
@@ -243,7 +245,7 @@ ms.locfileid: "88923852"
 
 若要達成此檢視背景工作角色的目的，您可以使用自訂遙測初始設定式，為所有遙測設定一個通用 Operation.Id 內容屬性。 這可讓您一目了然延遲/失敗問題是相依性或程式碼所造成的。 
 
-方法如下：
+其做法如下：
 
 * 設定相互關聯識別碼到 CallContext 中，如[此範例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36)。 在此案例中，我們使用「要求 ID」做為相互關聯識別碼。
 * 新增自訂的 TelemetryInitializer 實作，其會將 Operation.Id 設為前面所設定的相互關聯識別碼。 例如，請見 [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)。

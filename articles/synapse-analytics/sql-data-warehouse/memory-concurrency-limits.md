@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 443ac9ee1c2f05cf90e866793449220d71e37b89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b72694f93ed5b712a0f684887df5b69a7b35c72
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210656"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441675"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的記憶體和並行存取限制
 
@@ -125,7 +125,7 @@ ms.locfileid: "85210656"
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-當沒有足夠的並行位置可用來啟動查詢執行時，查詢會根據重要性排入佇列並執行。  如果有相等的重要性，查詢會以先進先出的基準執行。  當一個查詢完成，且查詢與位置的數目低於限制時，SQL 資料倉儲就會釋出已排入佇列的查詢。
+當沒有足夠的並行位置可用來啟動查詢執行時，查詢會根據重要性排入佇列並執行。  如果有相等的重要性，查詢會以先進先出的基準執行。  當查詢完成，且查詢和位置的數目低於限制時，Azure Synapse Analytics 會釋出已排入佇列的查詢。
 
 ## <a name="next-steps"></a>後續步驟
 

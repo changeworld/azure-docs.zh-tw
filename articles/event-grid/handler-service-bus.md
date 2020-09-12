@@ -2,13 +2,13 @@
 title: 作為 Azure 事件方格事件之事件處理常式的服務匯流排佇列和主題
 description: 說明如何使用作為 Azure 事件方格事件之事件處理常式的服務匯流排佇列和主題。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: c573f7ee088fe1d88f832623891377d4fd50bd4b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/03/2020
+ms.openlocfilehash: 9edf9ebd66eca2f1a6749d40ee22437bf17e55c4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105688"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440791"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>作為 Azure 事件方格事件之事件處理常式的服務匯流排佇列和主題
 事件處理常式是傳送事件的位置。 處理常式會採取一些進一步的動作來處理事件。 有幾項 Azure 服務已自動設定為會處理事件，**Azure 服務匯流排**是其中之一。 
@@ -62,9 +62,9 @@ az eventgrid event-subscription create \
 | aeg-data-version | <p>事件的資料版本。</p><p>範例："1"。</p><p>針對**事件方格事件結構描述**，此屬性代表資料版本；而針對**雲端事件結構描述**，則不會套用。</p> |
 
 ## <a name="message-headers"></a>郵件標題
-將事件傳送至服務匯流排的佇列或主題作為代理訊息時，代理訊息的 `messageid` 會是**事件識別碼**。
+將事件傳送至服務匯流排佇列或主題作為代理訊息時，代理訊息的 `messageid` 會是內部系統識別碼。
 
-事件識別碼會跨事件重新傳遞維護，讓您可以開啟服務匯流排實體上的**重複偵測**，避免重複傳遞。 建議您在服務匯流排實體上啟用重複偵測的持續時間，使其成為事件的存留時間 (TTL) 或最大重試持續時間 (以較長者為準)。
+訊息的內部系統識別碼會跨事件的日後再次傳遞進行維護，如此您就可以在服務匯流排實體上開啟 **重複偵測** ，以避免重複的傳遞。 建議您在服務匯流排實體上啟用重複偵測的持續時間，使其成為事件的存留時間 (TTL) 或最大重試持續時間 (以較長者為準)。
 
 ## <a name="rest-examples-for-put"></a>REST 範例 (用於 PUT)
 

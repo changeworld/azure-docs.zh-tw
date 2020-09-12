@@ -1,9 +1,9 @@
 ---
-title: 使用網頁進行實際使用者度量-Azure 流量管理員
-description: 在本文中，您將瞭解如何設定您的網頁，以將實際使用者度量傳送至 Azure 流量管理員。
+title: 使用網頁的實際使用者度量-Azure 流量管理員
+description: 在本文中，您將瞭解如何設定網頁，以將實際使用者度量傳送至 Azure 流量管理員。
 services: traffic-manager
 documentationcenter: traffic-manager
-author: rohinkoul
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: rohink
+ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: f297057549263cd62783778b363665bfb4368c91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8606e89a40e9cfd2c0f55df2c65532928c0d11f8
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711641"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401294"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>如何使用網頁將實際使用者度量傳送給 Azure 流量管理員
 
@@ -64,7 +64,7 @@ ms.locfileid: "84711641"
 4. 下一次此網頁在網頁瀏覽器上呈現時，會下載 JavaScript 參考，且指令碼會執行測量並報告作業。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - 深入了解[實際使用者度量](traffic-manager-rum-overview.md)
 - 了解 [流量管理員的運作方式](traffic-manager-overview.md)
 - 深入了解流量管理員支援的 [流量路由方法](traffic-manager-routing-methods.md)

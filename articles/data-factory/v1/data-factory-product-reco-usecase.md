@@ -12,17 +12,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 02d6c11e3880f69f5020fb51f90a72c3233e2f25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d9d41e80f78af7087c80592d927c193e494eab8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195893"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442389"
 ---
 # <a name="use-case---product-recommendations"></a>使用案例 - 產品建議
 Azure Data Factory 是許多服務之一，可用來實作解決方案加速器的 Cortana Intelligence 套件。  請參閱 [Cortana Intelligence 套件](https://www.microsoft.com/cortanaanalytics) 頁面以了解這個套件的詳細資料。 在本文中，我們描述 Azure 使用者已經使用 Azure Data Factory 和其他 Cortana Intelligence 元件服務解決與實作的常見使用案例。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 線上零售商通常會想要向客戶呈現他們最有興趣、也因此最可能購買的產品，藉以誘使客戶購買產品。 若要達成此目的，線上零售商需要使用該特定使用者的個人化產品建議來自訂使用者的線上體驗。 這些個人化建議將會依據其目前和過去的購物行為資料、產品資訊、新引進的品牌以及產品和客戶區隔資料來提出。  此外，它們可以根據所有使用者的結合整體使用行為分析，提供使用者產品建議。
 
 這些零售商的目標是要最佳化使用者的點選-銷售轉換並獲得更高的銷售收益。  他們透過根據客戶興趣和動作提供關聯式、以行為為基礎的產品建議來達成此轉換。 對於此使用案例，我們使用線上零售商做為想要最佳化客戶的企業範例。 但是這些原則適用於所有想要建立客戶及產品和服務之關聯，並利用個人化產品建議強化其客戶購買體驗的所有企業。
@@ -41,7 +41,7 @@ Azure Data Factory 是許多服務之一，可用來實作解決方案加速器�
 ## <a name="solution-overview"></a>方案概觀
 此範例使用案例已被實際的 Azure 使用者透過使用 Azure Data Factory 及其他 Cortana Intelligence 元件服務 (包括 [HDInsight](https://azure.microsoft.com/services/hdinsight/) 和 [Power BI](https://powerbi.microsoft.com/)) 來解決並實作。
 
-線上零售商會使用 Azure Blob 存放區、內部部署 SQL Server、Azure SQL Database，以及關聯式資料超市做為整個工作流程的資料儲存體選項。  Blob 存放區包含客戶資訊、客戶行為資料和產品資訊資料。 產品資訊資料包含 SQL 資料倉儲中的產品品牌資訊和產品目錄預存內部部署。 
+線上零售商使用 Azure Blob 存放區、內部部署 SQL Server、Azure SQL Database 和關聯式資料超市作為工作流程中的資料儲存體選項。  Blob 存放區包含客戶資訊、客戶行為資料和產品資訊資料。 產品資訊資料包含產品品牌資訊，以及儲存在內部部署環境中的產品目錄（Azure Synapse Analytics (先前的 SQL 資料倉儲) ）。 
 
 所有資料都會組合並提供給產品建議系統，使用者在網站上瀏覽目錄中的產品時，可根據客戶興趣和動作提供個人化建議。 根據和所有使用者無關的整體網站使用模式，客戶也會看到與其正在查看之產品相關的產品。
 

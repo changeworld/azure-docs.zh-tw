@@ -1,7 +1,7 @@
 ---
 title: 網路安全性群組的診斷資源記錄
 titlesuffix: Azure Virtual Network
-description: 瞭解如何啟用 Azure 網路安全性群組的事件和規則計數器診斷資源記錄。
+description: 瞭解如何為 Azure 網路安全性群組啟用事件和規則計數器診斷資源記錄。
 services: virtual-network
 author: KumudD
 manager: mtillman
@@ -10,29 +10,29 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: c56b5ac1c1aa6fa5894d1aedcb94fe4694c2db28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 221f7577b3181b1535ab9f544073dac4d031fe66
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695992"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319435"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>網路安全性群組的資源記錄
 
 網路安全性群組 (NSG) 包含允許或拒絕前往虛擬網路子網路、網路介面或兩者流量的規則。 
 
-當您啟用 NSG 的記錄功能時，您可以收集下列類型的資源記錄資訊：
+當您啟用 NSG 記錄時，您可以收集下列類型的資源記錄資訊：
 
 * **事件︰** 記錄要根據 MAC 位址，將哪些 NSG 規則套用至 VM 的項目。
-* **規則計數器：** 包含套用每個 NSG 規則以拒絕或允許流量之次數的項目。 每隔 60 秒會收集一次這些規則的狀態。
+* **規則計數器：** 包含套用每個 NSG 規則以拒絕或允許流量之次數的項目。 這些規則的狀態會每隔300秒收集一次。
 
 資源記錄僅適用于透過 Azure Resource Manager 部署模型部署的 Nsg。 您無法針對透過傳統部署模型部署的 Nsg 啟用資源記錄。 若要深入了解這兩個模型，請參閱[了解 Azure 部署模型](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-針對您想要收集診斷資料的*每個*NSG，會分別啟用資源記錄。 如果您想要改用活動（操作）記錄，請參閱 Azure[活動記錄](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+針對您想要收集診斷資料的 *每個* NSG，會另外啟用資源記錄。 如果您對活動 (操作) 記錄檔有興趣，請參閱 Azure [活動記錄](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="enable-logging"></a>啟用記錄
 
-您可以使用[Azure 入口網站](#azure-portal)、 [PowerShell](#powershell)或[Azure CLI](#azure-cli)來啟用資源記錄。
+您可以使用 [Azure 入口網站](#azure-portal)、 [PowerShell](#powershell)或 [Azure CLI](#azure-cli) 來啟用資源記錄。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
@@ -56,11 +56,11 @@ ms.locfileid: "84695992"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-您可以執行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中採用的命令，或從您的電腦執行 PowerShell。 Azure Cloud Shell 是免費的互動式殼層。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 如果您從電腦執行 PowerShell，您需要 Azure PowerShell 模組1.0.0 版或更新版本。 請在您的電腦上執行 `Get-Module -ListAvailable Az`，以尋找已安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，您也需要 `Connect-AzAccount` 使用具有[必要許可權](virtual-network-network-interface.md#permissions)的帳戶來登入 Azure。
+您可以執行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中採用的命令，或從您的電腦執行 PowerShell。 Azure Cloud Shell 是免費的互動式殼層。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 如果您從電腦執行 PowerShell，則需要 Azure PowerShell 模組1.0.0 版或更新版本。 請在您的電腦上執行 `Get-Module -ListAvailable Az`，以尋找已安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，您也必須 `Connect-AzAccount` 使用具有 [必要許可權](virtual-network-network-interface.md#permissions)的帳戶來執行以登入 Azure。
 
-若要啟用資源記錄，您需要現有 NSG 的識別碼。 如果您沒有現有的 NSG，您可以使用[new-aznetworksecuritygroup](/powershell/module/az.network/new-aznetworksecuritygroup)建立一個。
+若要啟用資源記錄，您需要現有 NSG 的識別碼。 如果您沒有現有的 NSG，您可以使用 >new-aznetworksecuritygroup 建立一個 [新的](/powershell/module/az.network/new-aznetworksecuritygroup)。
 
-取得您想要使用[new-aznetworksecuritygroup](/powershell/module/az.network/get-aznetworksecuritygroup)啟用資源記錄的網路安全性群組。 例如，若要擷取名為 *myNsg* 的 NSG 且該 NSG 存在於名為 *myResourceGroup* 的資源群組中，請輸入下列命令：
+使用 [>new-aznetworksecuritygroup](/powershell/module/az.network/get-aznetworksecuritygroup)來取出您要啟用資源記錄的網路安全性群組。 例如，若要擷取名為 *myNsg* 的 NSG 且該 NSG 存在於名為 *myResourceGroup* 的資源群組中，請輸入下列命令：
 
 ```azurepowershell-interactive
 $Nsg=Get-AzNetworkSecurityGroup `
@@ -68,7 +68,7 @@ $Nsg=Get-AzNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup
 ```
 
-您可以將資源記錄寫入至三個目的地類型。 如需詳細資訊，請參閱[記錄目的地](#log-destinations)。 舉例來說，本文中的內容會將記錄傳送到 *Log Analytics* 目的地。 使用[AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)取得現有的 Log Analytics 工作區。 例如，若要在名為 myWorkspaces** 的資源群組中擷取名為 myWorkspace** 的現有工作區，請輸入下列命令：
+您可以將資源記錄寫入三個目的地類型。 如需詳細資訊，請參閱[記錄目的地](#log-destinations)。 舉例來說，本文中的內容會將記錄傳送到 *Log Analytics* 目的地。 使用 [AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)取得現有的 Log Analytics 工作區。 例如，若要在名為 myWorkspaces** 的資源群組中擷取名為 myWorkspace** 的現有工作區，請輸入下列命令：
 
 ```azurepowershell-interactive
 $Oms=Get-AzOperationalInsightsWorkspace `
@@ -76,9 +76,9 @@ $Oms=Get-AzOperationalInsightsWorkspace `
   -Name myWorkspace
 ```
 
-如果您沒有現有的工作區，您可以使用[AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace)建立一個。
+如果您沒有現有的工作區，您可以使用 [新的-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace)來建立一個工作區。
 
-您可以啟用記錄的記錄類別有兩種。 如需詳細資訊，請參閱[記錄類別](#log-categories)。 使用[set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting)來啟用 NSG 的資源記錄。 下列範例會使用您先前所擷取 NSG 和工作區的識別碼，將事件和計數器類別資料記錄到 NSG 的工作區：
+您可以啟用記錄的記錄類別有兩種。 如需詳細資訊，請參閱[記錄類別](#log-categories)。 使用 [設定 >set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting)來啟用 NSG 的資源記錄。 下列範例會使用您先前所擷取 NSG 和工作區的識別碼，將事件和計數器類別資料記錄到 NSG 的工作區：
 
 ```azurepowershell-interactive
 Set-AzDiagnosticSetting `
@@ -97,7 +97,7 @@ Set-AzDiagnosticSetting `
 
 若要啟用資源記錄，您需要現有 NSG 的識別碼。 如果您目前沒有 NSG，可以使用 [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) 來建立。
 
-使用[az network nsg show](/cli/azure/network/nsg#az-network-nsg-show)來抓取您想要為其啟用資源記錄的網路安全性群組。 例如，若要擷取名為 *myNsg* 的 NSG 且該 NSG 存在於名為 *myResourceGroup* 的資源群組中，請輸入下列命令：
+使用 [az network nsg show](/cli/azure/network/nsg#az-network-nsg-show)來取得您想要啟用資源記錄的網路安全性群組。 例如，若要擷取名為 *myNsg* 的 NSG 且該 NSG 存在於名為 *myResourceGroup* 的資源群組中，請輸入下列命令：
 
 ```azurecli-interactive
 nsgId=$(az network nsg show \
@@ -107,9 +107,9 @@ nsgId=$(az network nsg show \
   --output tsv)
 ```
 
-您可以將資源記錄寫入至三個目的地類型。 如需詳細資訊，請參閱[記錄目的地](#log-destinations)。 舉例來說，本文中的內容會將記錄傳送到 *Log Analytics* 目的地。 如需詳細資訊，請參閱[記錄類別](#log-categories)。
+您可以將資源記錄寫入三個目的地類型。 如需詳細資訊，請參閱[記錄目的地](#log-destinations)。 舉例來說，本文中的內容會將記錄傳送到 *Log Analytics* 目的地。 如需詳細資訊，請參閱[記錄類別](#log-categories)。
 
-使用[az monitor 診斷-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create)來啟用 NSG 的資源記錄。 下列範例會將事件和計數器類別資料都記錄到名為 myWorkspace** 的現有工作區，該工作區存在於名為 myWorkspaces** 的資源群組中，NSG 識別碼則是您先前所擷取的：
+使用 [az monitor 診斷-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create)來啟用 NSG 的資源記錄。 下列範例會將事件和計數器類別資料都記錄到名為 myWorkspace** 的現有工作區，該工作區存在於名為 myWorkspaces** 的資源群組中，NSG 識別碼則是您先前所擷取的：
 
 ```azurecli-interactive
 az monitor diagnostic-settings create \
@@ -131,7 +131,7 @@ az monitor diagnostic-settings create \
 診斷資料可以：
 - [寫入至 Azure 儲存體帳戶](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，以利稽核或手動檢查。 您可以使用資源診斷設定來指定保留時間 (以天為單位)。
 - [串流至事件中樞](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，以供第三方服務或自訂的分析解決方案 (如 PowerBI) 擷取。
-- [寫入 Azure 監視器記錄](../azure-monitor/platform/resource-logs-collect-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- [寫入 Azure 監視器記錄](../azure-monitor/platform/resource-logs-collect-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)檔。
 
 ## <a name="log-categories"></a>記錄類別
 
@@ -197,16 +197,16 @@ az monitor diagnostic-settings create \
 
 ## <a name="view-and-analyze-logs"></a>檢視及分析記錄
 
-若要瞭解如何查看資源記錄資料，請參閱[Azure 平臺記錄總覽](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 如果您將診斷資料傳送到下列位置：
-- **Azure 監視器記錄**：您可以使用[網路安全性群組分析](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
-)解決方案來取得增強的見解。 此解決方案能提供 NSG 規則的視覺效果，以根據 MAC 位址允許或拒絕虛擬機器中網路介面的流量。
+若要瞭解如何查看資源記錄資料，請參閱 [Azure 平臺記錄檔總覽](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 如果您將診斷資料傳送到下列位置：
+- **Azure 監視器記錄**：您可以使用 [網路安全性群組分析](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
+) 解決方案來取得增強的見解。 此解決方案能提供 NSG 規則的視覺效果，以根據 MAC 位址允許或拒絕虛擬機器中網路介面的流量。
 - **Azure 儲存體帳戶**：資料會寫入至 PT1H.json 檔案。 您可以：
   - 在下列路徑中找到事件記錄：`insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
   - 在下列路徑中找到規則計數器記錄：`insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- 深入瞭解[活動記錄](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 預設會針對透過任何一個 Azure 部署模型所建立的 NSG 啟用活動記錄。 若要判斷在 NSG 上已完成哪些作業，請在活動記錄中尋找包含下列資源類型的項目：
+- 深入瞭解 [活動記錄](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 預設會針對透過任何一個 Azure 部署模型所建立的 NSG 啟用活動記錄。 若要判斷在 NSG 上已完成哪些作業，請在活動記錄中尋找包含下列資源類型的項目：
   - Microsoft.ClassicNetwork/networkSecurityGroups
   - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups

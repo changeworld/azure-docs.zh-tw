@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: yexu
-ms.openlocfilehash: a10f7c3dda4d16a264cf52f9fddcf2bf0ed93348
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0ba14a05ac42e9fccc1a146ad5943716652104d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907497"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434192"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory 中的複製資料工具
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,7 +69,7 @@ Azure Data Factory「複製資料」工具把將資料內嵌到 Data Lake 的程
 當您在來源與目的地存放區之間對應資料行時，「複製資料」工具會監視並學習您的行為。 在您從來源資料存放區選取一個或一些資料行，並將其對應至目的地結構描述之後，「複製資料」工具就會開始分析您從兩邊選取之資料行配對的模式。 然後，它會將相同的模式套用至其餘資料行。 因此，在按幾下滑鼠之後，您就會看到所有資料行都已以您想要的方式對應至目的地。  如果您不滿意「複製資料」工具所提供的資料行對應選擇，您可以忽略它，然後繼續手動對應資料行。 在此同時，「複製資料」工具會不斷地學習並更新模式，並在最終達到您想要達成的正確資料行對應模式。 
 
 > [!NOTE]
-> 將資料從 SQL Server 或 Azure SQL Database 複製到「Azure SQL 資料倉儲」時，如果目的地存放區中沒有資料表，「複製資料」工具支援使用來源結構描述來自動建立資料表。 
+> 從 SQL Server 或 Azure SQL Database 複製資料 Azure Synapse Analytics 至 (先前的 SQL 資料倉儲) 中，如果資料表不存在於目的地存放區中，資料複製工具支援使用來源架構自動建立資料表。 
 
 ## <a name="filter-data"></a>篩選資料
 您可以篩選來源資料，只選取需要複製到接收資料存放區的資料。 篩選可減少要複製到接收資料存放區的資料，因此可增強複製作業的輸送量。 「複製資料」工具提供一種彈性方式，可藉由使用 SQL 查詢語言來篩選關聯式資料庫中的資料，或篩選 Azure Blob 資料夾中的檔案。 
