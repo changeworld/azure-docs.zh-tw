@@ -3,12 +3,12 @@ title: 適用於 DPM 和 Azure 備份伺服器的離線備份
 description: 使用 Azure 備份，您可以使用 Azure 匯入/匯出服務，將資料從網路傳送。 本文說明 DPM 和 Azure 備份伺服器的離線備份工作流程。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 909c7cc85590005afd3b6bd32a94020937f96c32
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 368ae846a24ec04ee4b7da9b5971c00180be611d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002006"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378452"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM 和 Azure 備份伺服器 (MABS) 的離線備份工作流程
 
@@ -36,7 +36,7 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
 > * 然後，SATA 磁片磁碟機會傳送至最接近的 Azure 資料中心。
 > * 完成將備份資料上傳至 Azure 之後，Azure 備份會將備份資料複製到備份保存庫，並排定增量備份。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始離線備份工作流程之前，請確定符合下列必要條件：
 
@@ -51,10 +51,10 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
 * 在與復原服務保存庫相同的訂用帳戶中建立 Azure 儲存體帳戶。
 * 請確定您有建立 Azure Active Directory 應用程式的[必要權限](../active-directory/develop/howto-create-service-principal-portal.md) \(部分機器翻譯\)。 離線備份工作流程會在與 Azure 儲存體帳戶相關聯的訂用帳戶中建立 Azure Active Directory 應用程式。 該應用程式的目標是要讓 Azure 備份能夠安全且有範圍地存取必要的 Azure 匯入服務，以執行離線備份工作流程。
 * 向包含 Azure 儲存體帳戶的訂用帳戶註冊 Microsoft.ImportExport 資源提供者。 註冊資源提供者：
-    1. 在主功能表中，按一下 [訂用帳戶]。
+    1. 在主功能表中，選取 [ **訂閱**]。
     2. 如果您訂閱多個訂用帳戶，請選取您要用於離線備份的訂用帳戶。 如果您只使用一個訂用帳戶，則會顯示您的訂用帳戶。
-    3. 在訂用帳戶功能表中，按一下 [資源提供者] 以檢視提供者清單。
-    4. 在提供者清單中，向下捲動至 Microsoft.ImportExport。 如果 [狀態] 為 [NotRegistered]，請按一下 [註冊]。
+    3. 在 [訂用帳戶] 功能表中，選取 [ **資源提供者** ] 以查看提供者清單。
+    4. 在提供者清單中，向下捲動至 Microsoft.ImportExport。 如果狀態為 NotRegistered，請選取 [ **註冊**]。
 
        ![註冊資源提供者](./media/backup-azure-backup-server-import-export/register-import-export.png)
 
@@ -68,7 +68,7 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
 
 ## <a name="initiate-offline-backup"></a>起始離線備份
 
-1. 當您建立使用線上保護的新保護群組，或將線上保護新增至現有的保護群組時，您會看到下列畫面。 若要選取初始線上複寫方法，請選取 [使用我自己的磁碟傳輸]，然後按一下 [下一步]。
+1. 當您建立使用線上保護的新保護群組，或將線上保護新增至現有的保護群組時，您會看到下列畫面。 若要選取初始線上複寫方法，請選取 [ **使用我自己的磁片傳輸** ] 並選取 **[下一步]**。
 
     ![匯入畫面](./media/backup-azure-backup-server-import-export/create-new-protection-group.png)
 
@@ -115,7 +115,7 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
      > [!IMPORTANT]
      > 如果來源電腦是虛擬機器，則必須使用與複製電腦不同的實體伺服器或用戶端電腦。
 
-1. 使用 *AzureOfflineBackupDiskPrep* 公用程式目錄作為目前的目錄，在複製電腦上開啟提高許可權的命令提示字元。 執行下列命令：
+1. 使用 *AzureOfflineBackupDiskPrep* 公用程式目錄作為目前的目錄，在複製電腦上開啟提高許可權的命令提示字元。 執行以下命令：
 
     ```console
     .\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>
@@ -160,7 +160,7 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
 * 您磁碟的退貨詳細資料
 
    1. 登入 Azure 訂用帳戶。
-   2. 在主功能表中，按一下 [所有服務]，然後在 [所有服務] 對話方塊中，輸入「匯入」。 當您看到 [匯入/匯出作業] 時，請按一下該項目。
+   2. 在主功能表中，選取 [ **所有服務** ]，然後在 [所有服務] 對話方塊中輸入匯入。 當您看到匯 **入/匯出作業**時，請選取它。
        ![輸入寄送資訊](./media/backup-azure-backup-server-import-export/search-import-job.png)
 
        [匯入/匯出作業] 功能表清單隨即開啟，並顯示所選訂用帳戶中所有匯入/匯出作業的清單。
@@ -169,11 +169,11 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
 
        ![檢閱寄送資訊](./media/backup-azure-backup-server-import-export/import-job-found.png)
 
-   4. 在匯入作業的 [設定] 功能表上，按一下 [管理傳送資訊]，然後輸入退貨詳細資料。
+   4. 在匯入作業的 [設定] 功能表上，選取 [ **管理寄送資訊** ]，然後輸入退貨出貨詳細資料。
 
        ![儲存寄送資訊](./media/backup-azure-backup-server-import-export/shipping-info.png)
 
-   5. 當您有來自貨運公司的追蹤號碼時，請按一下 Azure 匯入作業概觀頁面中的橫幅並輸入下列詳細資料：
+   5. 當您有來自貨運公司的追蹤號碼時，請選取 [Azure 匯入作業] 總覽頁面中的橫幅，並輸入下列詳細資料：
 
       > [!IMPORTANT]
       > 務必在 Azure 匯入作業建立的兩週內更新貨運公司資訊與追蹤號碼。 如果無法在兩週內驗證此資訊，可能會導致作業遭刪除且沒有處理磁碟機。

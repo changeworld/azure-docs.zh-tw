@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 5cd163b4c7514507d2a0563f1254c83dd22a3af2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3405f28d5f306e8370bae72eb5f3f3c406235c3d
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268188"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322019"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>在 Azure Stack Edge GPU 裝置上啟用 Kubernetes 叢集上的 Azure Arc
 
@@ -22,7 +22,7 @@ ms.locfileid: "89268188"
 此程式適用于已 [在 Azure Stack Edge 裝置上審核 Kubernetes 工作負載](azure-stack-edge-gpu-kubernetes-workload-management.md) 的人員，並熟悉 [Azure Arc 啟用的 Kubernetes (Preview) ](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在 Kubernetes 叢集上啟用 Azure Arc 之前，請確定您已在 Azure Stack Edge 裝置和將用來存取裝置的用戶端上完成下列必要條件：
 
@@ -59,7 +59,7 @@ ms.locfileid: "89268188"
 
 ## <a name="register-kubernetes-resource-providers"></a>註冊 Kubernetes 資源提供者
 
-透過 Azure Arc 設定 Kubernetes 叢集之前，您必須先針對您的訂用帳戶啟用並註冊 `Microsoft.Kubernetes` `Microsoft.KubernetesConfiguration` 。 
+在 Kubernetes 叢集上啟用 Azure Arc 之前，您必須先針對您的訂用帳戶啟用並註冊 `Microsoft.Kubernetes` `Microsoft.KubernetesConfiguration` 。 
 
 1. 若要啟用資源提供者，請在 Azure 入口網站中，移至您打算用於部署的訂用帳戶。 前往 **資源提供者**。 
 1. 在右窗格中，搜尋您想要新增的提供者。 在此範例中為 `Microsoft.Kubernetes` 和 `Microsoft.KubernetesConfiguration` 。
@@ -88,7 +88,7 @@ ms.locfileid: "89268188"
 
 1. 若要建立服務主體，請透過使用下列命令 `az cli` 。
 
-    `az as sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
+    `az ad sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
 
     如需有關如何登入 `az cli` 、[開始 Cloud Shell 的](../cloud-shell/quickstart-powershell.md?view=azure-cli-latest#start-cloud-shell)詳細資訊 Azure 入口網站
 
@@ -142,12 +142,12 @@ ms.locfileid: "89268188"
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    若要在 Azure Stack Edge 裝置上部署 Azure Arc，請確定您是使用 [支援的區域進行 Azure Arc](../azure-arc/kubernetes/overview.md#supported-regions)。Azure Arc 目前為預覽狀態。 
+    若要在 Azure Stack Edge 裝置上部署 Azure Arc，請確定您是使用 [支援的區域進行 Azure Arc](../azure-arc/kubernetes/overview.md#supported-regions)。Azure Arc 目前為預覽狀態。 您也可以使用命令，找出要在 Cmdlet 中傳遞的確切區功能變數名稱稱 `az account list-locations` 。
     
     請看以下範例：
    
     ```powershell
-    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed" -ResourceGroupName "myaserg1" -ResourceName "myasetestresarc" -Location "WestEurope" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ClientId "aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b" -ClientSecret "<password>"
+    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed" -ResourceGroupName "myaserg1" -ResourceName "myasetestresarc" -Location "westeurope" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ClientId "aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b" -ClientSecret "<password>"
         [10.128.44.240]: PS>
     ```
     
@@ -222,6 +222,6 @@ ms.locfileid: "89268188"
     `Remove-HcsKubernetesAzureArcAgent` 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要瞭解如何執行 Azure Arc 部署，請參閱 [在 Azure Stack Edge 裝置上使用 Redis Via Gitops) 將部署無狀態 PHP 來賓應用程式](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 7274cef73bff3fb87d55ad636ff0167c8a064796
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 12fe605fef444b4e0d7439350e350316157f53a5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180672"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297812"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>使用 Kubernetes 儀表板來監視您的 Azure Stack Edge GPU 裝置
 
@@ -26,7 +26,6 @@ ms.locfileid: "89180672"
 > [!div class="checklist"]
 >
 > * 存取您裝置上的 Kubernetes 儀表板
-> * 下載 `aseuser` 設定
 > * 查看裝置上部署的模組
 > * 取得部署在裝置上的應用程式 IP 位址
 > * 查看裝置上部署之模組的容器記錄
@@ -42,26 +41,18 @@ Kubernetes 儀表板是一個 web 型使用者介面，可讓您用來針對容�
 
 Kubernetes 儀表板是 *唯讀* 的，會在埠31000的 Kubernetes 主要節點上執行。 遵循下列步驟以存取儀表板： 
 
-1. 在裝置的本機 UI 中，移至 [ **裝置** ]，然後移至 **裝置端點**。 選取 Kubernetes 儀表板 URL，以在瀏覽器中開啟儀表板。
+1. 在裝置的本機 UI 中，移至 [ **裝置** ]，然後移至 **裝置端點**。 
+1. 選取 [ **下載** 設定] 以下載 `kubeconfig` ，可讓您存取儀表板。 將檔案儲存 `config.json` 在本機系統上。
+1. 選取 Kubernetes 儀表板 URL，以在瀏覽器中開啟儀表板。
 
     ![在本機 UI 的 [裝置] 頁面中 Kubernetes 儀表板 URL](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-url-local-ui-1.png)
 
-1. 在 [ **Kubernetes 儀表板** ] 的 [登入] 頁面上，選取 [ **權杖**]。 
-1. 提供權杖。 
-    1. 若要取得權杖，請透過 [您裝置的 PowerShell 介面進行連接](azure-stack-edge-gpu-connect-powershell-interface.md)。
-    1. 執行命令：  `Get-HcsKubernetesDashboardToken`
+1. 在 [ **Kubernetes 儀表板** ] 登入頁面上：
     
-    1. 在提示字元中，複製顯示的權杖字串。 以下是範例輸出：
-        
-        ```powershell
-        [10.100.10.10]: PS>Get-HcsKubernetesDashboardToken
-        eyJhbGciOiJSUzI1NiIsImtpZCI6IkpFTEtBYTMyZ0Ezb01OYTVFSnVaUV85OWtLdXNETTZQR0k0UlFybGdReFUifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi03czZ6ayIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjU3NzY3ZDAzLTJlYWUtNDlkMi1hNDEyLTNkOTU3MDFiMThiMyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.UgNrpVYVJBEaWxFlljuENUQQmzFXMYG2VsJUIYFdp2AO20zX0k5dRvwcCpeGlqSKb9MyYjG0c6RmT9uCOZk-vAwt7btszQLD7KPCwh_nn_NiIyO8ApgGRYZP8NuP8CBTX3tl_hpwfHtZ0ksbuKAduIL-0uPF0rG5wgLk9cTEw6fKSc2UZW6bIzhNSp_uSiP6MexOS6OftF9JFZejkIGd33dSp-k-tgFlm2Zy96sdFJC0q-XsH7jygiVnfxA9XMs5wqW26LkCh0rfO2WI3C1XFK-4TpufRZLJHo5WPlu-Tnsxa8xmtk2jQ3us-sXcBRrvhPNPrNKkbqc9hbjmWfGD0Q
-        [10.100.10.10]: PS>
-        ```
-        
-1. 選取 [登入]。
-
-    ![登入 Kubernetes 儀表板](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png)
+    1. 選取 [ **kubeconfig**]。 
+        ![選取 kubeconfig 選項](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png) 
+    1. 選取省略號 **...**。流覽並指向您稍 `kubeconfig` 早在本機系統上下載的。 選取 [登入]。
+        ![流覽至 kubeconfig 檔案](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
 6. 您現在可以在唯讀模式中，針對 Azure Stack Edge 裝置來查看 Kubernetes 儀表板。
 
@@ -111,6 +102,21 @@ Kubernetes 儀表板是 *唯讀* 的，會在埠31000的 Kubernetes 主要節點
     ![查看容器記錄2](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-container-logs-1.png)
     
 
-## <a name="next-steps"></a>後續步驟
+## <a name="view-cpu-memory-usage"></a>查看 CPU、記憶體使用量
+
+Azure Stack Edge 裝置的 Kubernetes 儀表板也有 [計量伺服器附加](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) 元件，可匯總 Kubernetes 資源之間的 CPU 和記憶體使用量。
+ 
+例如，您可以在所有命名空間中，查看整個部署所耗用的 CPU 和記憶體。 
+
+![查看所有部署之間的 CPU 和記憶體使用量](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-all-1.png)
+
+您也可以依特定命名空間進行篩選。 在下列範例中，您可以只針對 Azure Arc 部署來查看 CPU 和記憶體耗用量。  
+
+![查看 Azure Arc 部署的 CPU 和記憶體使用量](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-azure-arc-1.png)
+
+Kubernetes 計量伺服器提供自動調整管線，類似于 [水準 Pod 自動調整程式](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)。
+
+
+## <a name="next-steps"></a>接下來的步驟
 
 瞭解如何針對 Kubernetes 問題進行疑難排解 <!--insert link-->.

@@ -13,58 +13,58 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d8e6ed412a0e71e8c85827cfc8fc05cd744e3d
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9fbdccfa7ff16bd63dda1f7c21c07e6d20e086e1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797095"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321084"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 新增或刪除使用者
 
-從您的 Azure Active Directory (Azure AD) 組織新增使用者或刪除現有的使用者。 若要新增或刪除使用者，您必須是使用者系統管理員或全域管理員。
+從您的 Azure Active Directory (Azure AD) 組織新增使用者或刪除現有的使用者。 若要新增或刪除使用者，您必須是「使用者管理員」或「全域管理員」。
 
 ## <a name="add-a-new-user"></a>新增使用者
 
 您可以使用 Azure Active Directory 入口網站建立新使用者。
 
-若要新增使用者，請遵循下列步驟：
+若要加入新的使用者，請遵循下列步驟：
 
-1. 以組織的使用者系統管理員身分登入[Azure 入口網站](https://portal.azure.com/)。
+1. 以組織的使用者系統管理員身分登入 [Azure 入口網站](https://portal.azure.com/) 。
 
 1. 從任何頁面搜尋並選取 [Azure Active Directory]。
 
-1. 選取 [**使用者**]，然後選取 [**新增使用者**]。
+1. 選取 [ **使用者**]，然後選取 [ **新增使用者**]。
 
     ![透過使用者新增使用者-Azure AD 中的所有使用者](media/add-users-azure-active-directory/add-user-in-users-all-users.png)
 
-1. 在 [**使用者**] 頁面上，輸入此使用者的資訊：
+1. 在 [ **使用者** ] 頁面上，輸入此使用者的資訊：
 
    - **名稱**。 必要。 新使用者的姓氏與名字。 例如， *Mary Parker*。
 
    - [使用者名稱]****。 必要。 新使用者的使用者名稱。 例如： `mary@contoso.com` 。
 
-     使用者名稱的網域部分必須使用初始預設功能變數名稱* \<yourdomainname> onmicrosoft.com*，或自訂功能變數名稱（例如*contoso.com*）。 如需有關如何建立自訂功能變數名稱的詳細資訊，請參閱[使用 Azure Active Directory 入口網站新增自訂功能變數名稱](add-custom-domain.md)。
+     使用者名稱的網域部分必須使用初始預設功能變數名稱* \<yourdomainname> onmicrosoft.com*或自訂功能變數名稱，例如*contoso.com*。 如需有關如何建立自訂功能變數名稱的詳細資訊，請參閱 [使用 Azure Active Directory 入口網站新增自訂功能變數名稱](add-custom-domain.md)。
 
-   - **群組**。 (選擇性) 您可以將使用者新增到一或多個現有的群組。 您也可以稍後再將使用者新增到群組。 如需將使用者新增至群組的詳細資訊，請參閱[建立基本群組和使用 Azure Active Directory 新增成員](active-directory-groups-create-azure-portal.md)。
+   - **群組**。 (選擇性) 您可以將使用者新增到一或多個現有的群組。 您也可以稍後再將使用者新增到群組。 如需將使用者新增至群組的詳細資訊，請參閱 [使用 Azure Active Directory 建立基本群組和新增成員](active-directory-groups-create-azure-portal.md)。
 
    - **目錄角色**：如果您需要讓使用者具有 Azure AD 系統管理權限，您可以將他們新增至 Azure AD 角色。 您可以將使用者指派為全域管理員或 Azure AD 中的一或多個受限系統管理員角色。 如需有關指派角色的詳細資訊，請參閱[如何將角色指派給使用者](active-directory-users-assign-role-azure-portal.md)。
 
-   - **作業資訊**：您可以在此新增更多關於使用者的資訊，或稍後再執行。 如需新增使用者資訊的詳細資訊，請參閱[如何新增或變更使用者設定檔資訊](active-directory-users-profile-azure-portal.md)。
+   - **作業資訊**：您可以在此新增更多有關使用者的資訊，或稍後再執行。 如需新增使用者資訊的詳細資訊，請參閱[如何新增或變更使用者設定檔資訊](active-directory-users-profile-azure-portal.md)。
 
-1. 複製 [**密碼**] 方塊中提供的自動產生密碼。 您必須將此密碼授與使用者第一次登入。
+1. 複製 [ **密碼** ] 方塊中提供的自動產生密碼。 您必須將此密碼提供給使用者第一次登入。
 
 1. 選取 [建立]。
 
-系統會建立使用者，並將其新增至您的 Azure AD 組織。
+系統會建立使用者並將其新增至您的 Azure AD 組織。
 
 ## <a name="add-a-new-guest-user"></a>新增來賓使用者
 
-您也可以從 [**新增使用者**] 頁面選取 [**邀請使用者**]，邀請新的來賓使用者與您的組織共同作業。 如果您組織的外部共同作業設定已設定為允許您邀請來賓，則使用者會收到電子郵件給他們必須接受才能開始共同作業的邀請。 如需有關邀請 B2B 共同作業使用者的詳細資訊，請參閱[邀請 b2b 使用者 Azure Active Directory](../b2b/add-users-administrator.md)
+您也可以選取 [**新增使用者**] 頁面中的 [**邀請使用者**]，邀請新的來賓使用者與您的組織共同作業。 如果您組織的外部共同作業設定已設定為允許您邀請來賓，則會以電子郵件傳送電子郵件給使用者，他們必須接受該邀請，才能開始共同作業。 如需有關邀請 B2B 共同作業使用者的詳細資訊，請參閱 [邀請 b2b 使用者 Azure Active Directory](../external-identities/add-users-administrator.md)
 
 ## <a name="add-a-consumer-user"></a>新增取用者使用者
 
-在某些情況下，您可能會想要在 Azure Active Directory B2C (Azure AD B2C) 目錄中手動建立取用者帳戶。 如需建立取用者帳戶的詳細資訊，請參閱[在 Azure AD B2C 中建立和刪除取用者使用者](../../active-directory-b2c/manage-users-portal.md)。
+在某些情況下，您可能會想要以手動方式在 Azure Active Directory B2C (Azure AD B2C) 目錄中建立取用者帳戶。 如需建立取用者帳戶的詳細資訊，請參閱 [Azure AD B2C 中的建立和刪除取用者使用者](../../active-directory-b2c/manage-users-portal.md)。
 
 ## <a name="add-a-new-user-within-a-hybrid-environment"></a>在混合式環境內新增使用者
 
@@ -76,7 +76,7 @@ ms.locfileid: "87797095"
 
 若要刪除使用者，請遵循下列步驟：
 
-1. 使用組織的使用者系統管理員帳戶登入[Azure 入口網站](https://portal.azure.com/)。
+1. 使用組織的使用者系統管理員帳戶登入 [Azure 入口網站](https://portal.azure.com/) 。
 
 1. 從任何頁面搜尋並選取 [Azure Active Directory]。
 
@@ -86,16 +86,16 @@ ms.locfileid: "87797095"
 
     ![使用者 - 已反白顯示 [刪除使用者] 的 [所有使用者] 頁面](media/add-users-azure-active-directory/delete-user-all-users-blade.png)
 
-使用者會被刪除，而且再也不會出現在 [使用者 - 所有使用者]**** 頁面上。 在接下來的 30 天，您可以在 [刪除的使用者]**** 頁面上看到該使用者，而且在此期間內可將該使用者還原。 如需有關還原使用者的詳細資訊，請參閱[使用 Azure Active Directory 還原或移除最近刪除的使用者](active-directory-users-restore.md)。
+使用者會被刪除，而且再也不會出現在 [使用者 - 所有使用者]**** 頁面上。 在接下來的 30 天，您可以在 [刪除的使用者]**** 頁面上看到該使用者，而且在此期間內可將該使用者還原。 如需有關還原使用者的詳細資訊，請參閱 [使用 Azure Active Directory 還原或移除最近刪除的使用者](active-directory-users-restore.md)。
 
-刪除使用者時，使用者所取用的任何授權都可供其他使用者使用。
+當使用者被刪除時，使用者所使用的任何授權都可供其他使用者使用。
 
 >[!Note]
 >您必須使用 Windows Server Active Directory 來更新授權來源為 Windows Server Active Directory 之使用者的身分識別、連絡人資訊或工作資訊。 完成更新之後，您必須等候下一次同步處理循環完成，才能看到您所做的變更。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-新增使用者之後，您可以執行下列基本程式：
+新增您的使用者之後，您可以執行下列基本程式：
 
 - [新增或變更設定檔資訊](active-directory-users-profile-azure-portal.md)
 
@@ -105,4 +105,4 @@ ms.locfileid: "87797095"
 
 - [使用動態群組與使用者](../users-groups-roles/groups-create-rule.md)
 
-或者，您也可以執行其他使用者管理工作，例如[從另一個目錄新增來賓使用者](../b2b/what-is-b2b.md)，或[還原已刪除的使用者](active-directory-users-restore.md)。 如需其他可用動作的詳細資訊，請參閱 [Azure Active Directory 使用者管理文件](../users-groups-roles/index.yml)。
+或者，您也可以進行其他使用者管理工作，例如 [從另一個目錄新增來賓使用者](../external-identities/what-is-b2b.md) 或 [還原已刪除的使用者](active-directory-users-restore.md)。 如需其他可用動作的詳細資訊，請參閱 [Azure Active Directory 使用者管理文件](../users-groups-roles/index.yml)。

@@ -12,14 +12,14 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f85d4203c0fe3978f776b418ab6d7850061416c
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 75081c218536d17798d1ffa788f79130211f72d3
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605381"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318422"
 ---
-# <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署方案
+# <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署計劃
 尋找部署 Azure Active Directory (Azure AD) 功能的端對端指引嗎？ Azure AD 部署計畫會逐步引導您完成商務價值、規劃考慮，以及成功部署常見 Azure AD 功能所需的操作程式。
 
 從任何計畫頁面，使用瀏覽器的 [列印至 PDF] 功能建立檔的最新離線版本。
@@ -81,7 +81,7 @@ ms.locfileid: "88605381"
 | -| -|
 | [以 ADFS 進行密碼雜湊同步處理](../hybrid/plan-migrate-adfs-password-hash-sync.md)| 使用密碼雜湊同步處理時，系統會將使用者密碼的雜湊從內部部署 Active Directory 同步處理至 Azure AD，讓 Azure AD 驗證使用者，而不需要與內部部署進行互動 Active Directory |
 | [以 ADFS 通過驗證](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Azure AD 傳遞驗證可協助您的使用者使用相同的密碼登入內部部署和雲端式應用程式。 這項功能可為使用者提供更好的體驗，也就是一個比較少的密碼，並降低 IT 技術服務人員的成本，因為使用者比較不可能忘記如何登入。 當使用者使用 Azure AD 登入時，此功能會向您的內部部署 Active Directory 直接驗證使用者的密碼。 |
-| [Azure AD 應用程式 Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) |現今的員工想要隨時隨地都能在任何裝置發揮生產力。 他們需要存取雲端中的 SaaS 應用程式和內部部署的公司應用程式。 Azure AD 應用程式 Proxy 可提供這種健全的存取，且不需要昂貴和複雜的虛擬私人網路 (VPN) 或遮蔽式子網路 (DMZ)。 |
+| [Azure AD 應用程式 Proxy](../manage-apps/application-proxy-deployment-plan.md) |現今的員工想要隨時隨地都能在任何裝置發揮生產力。 他們需要存取雲端中的 SaaS 應用程式和內部部署的公司應用程式。 Azure AD 應用程式 Proxy 可提供這種健全的存取，且不需要昂貴和複雜的虛擬私人網路 (VPN) 或遮蔽式子網路 (DMZ)。 |
 | [無縫 SSO](../hybrid/how-to-connect-sso-quick-start.md)| 使用者位於連線到公司網路的公司裝置時，Azure Active Directory 無縫單一登入 (Azure AD 無縫 SSO) 就會自動將他們登入。 使用這項功能時，使用者不需要輸入密碼就能登入 Azure AD，通常不需要輸入其使用者名稱。 這項功能可讓已獲授權的使用者輕鬆存取雲端式應用程式，而不需要任何額外的內部部署元件。 |
 
 ## <a name="deploy-user-provisioning"></a>部署使用者布建

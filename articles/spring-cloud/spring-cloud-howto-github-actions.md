@@ -1,28 +1,28 @@
 ---
-title: 具有 GitHub 動作的 Azure 春季雲端 CI/CD
-description: 如何使用 GitHub 動作來建立 Azure 春季雲端的 CI/CD 工作流程
+title: 使用 GitHub Actions 的 Azure 春季 Cloud CI/CD
+description: 如何使用 GitHub Actions 建立適用于 Azure 春季 Cloud 的 CI/CD 工作流程
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 960e480bc3271a24f1fa898e1af6c55bcaaada7b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f004be0afc6c73fdabe57e568cd57b51e9abcc5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037554"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299677"
 ---
-# <a name="azure-spring-cloud-cicd-with-github-actions"></a>具有 GitHub 動作的 Azure 春季雲端 CI/CD
+# <a name="azure-spring-cloud-cicd-with-github-actions"></a>使用 GitHub Actions 的 Azure 春季 Cloud CI/CD
 
-GitHub 動作支援自動化軟體發展生命週期工作流程。 透過 Azure 春季雲端的 GitHub 動作，您可以在存放庫中建立工作流程，以建立、測試、封裝、發行和部署至 Azure。 
+GitHub Actions 支援自動化軟體發展生命週期工作流程。 您可以使用適用于 Azure 春季雲端的 GitHub Actions，在您的存放庫中建立工作流程，以建立、測試、封裝、發行及部署至 Azure。 
 
 ## <a name="prerequisites"></a>必要條件
-這個範例需要[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+此範例需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="set-up-github-repository-and-authenticate"></a>設定 GitHub 存放庫並進行驗證
-您需要 Azure 服務主體認證，才能授權 Azure 登入動作。 若要取得 Azure 認證，請在您的本機電腦上執行下列命令：
+您必須要有 Azure 服務主體認證，才能授權 Azure 登入動作。 若要取得 Azure 認證，請在您的本機電腦上執行下列命令：
 ```
 az login
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth 
@@ -31,7 +31,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
 ```
-此命令應輸出 JSON 物件：
+此命令應該會輸出 JSON 物件：
 ```JSON
 {
     "clientId": "<GUID>",
@@ -42,18 +42,18 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 }
 ```
 
-這個範例會使用 GitHub 上的[Piggy-back 計量](https://github.com/Azure-Samples/piggymetrics)範例。  派生範例，開啟 GitHub 存放庫頁面，然後按一下 [**設定**] 索引標籤。開啟 [**秘密**] 功能表，然後按一下 [新增**密碼**]：
+此範例會使用 GitHub 上的 [Piggy 計量](https://github.com/Azure-Samples/piggymetrics) 範例。  派生範例，開啟 GitHub 存放庫頁面，然後按一下 [ **設定** ] 索引標籤。開啟 [ **秘密** ] 功能表，然後按一下 [新增 **密碼**]：
 
- ![加入新的秘密](./media/github-actions/actions1.png)
+ ![新增秘密](./media/github-actions/actions1.png)
 
-將秘密名稱設為 `AZURE_CREDENTIALS` ，並將其值設定為您在*設定 GitHub 存放庫和驗證*標題底下找到的 JSON 字串。
+將秘密名稱設為 `AZURE_CREDENTIALS` ，並將其值設定為您在 [ *設定您的 GitHub 存放庫] 和 [驗證*] 標題下找到的 JSON 字串。
 
  ![設定秘密資料](./media/github-actions/actions2.png)
 
-您也可以從 GitHub 動作中的 Key Vault 取得 Azure 登入認證，如在[Github 動作中使用 Key Vault 驗證 Azure 春季](./spring-cloud-github-actions-key-vault.md)中所述。
+您也可以從 GitHub 動作中的 Key Vault 取得 Azure 登入認證，如 [使用 GitHub Actions 中的 Key Vault 驗證 Azure 春季](./spring-cloud-github-actions-key-vault.md)所述。
 
 ## <a name="provision-service-instance"></a>布建服務實例
-若要布建您的 Azure 春季雲端服務實例，請使用 Azure CLI 執行下列命令。
+若要布建您的 Azure 春季 Cloud 服務實例，請使用 Azure CLI 執行下列命令。
 ```
 az extension add --name spring-cloud
 az group create --location eastus --name <resource group name>
@@ -61,10 +61,10 @@ az spring-cloud create -n <service instance name> -g <resource group name>
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/xxx/piggymetrics --label config
 ```
 ## <a name="build-the-workflow"></a>建立工作流程
-工作流程是使用下列選項來定義。
+您可以使用下列選項來定義工作流程。
 
-### <a name="prepare-for-deployment-with-azure-cli"></a>準備使用 Azure CLI 進行部署
-命令 `az spring-cloud app create` 目前不具等冪性。  我們建議您在現有的 Azure 春季雲端應用程式和實例上進行此工作流程。
+### <a name="prepare-for-deployment-with-azure-cli"></a>使用 Azure CLI 準備部署
+此命令 `az spring-cloud app create` 目前不具等冪性。  我們建議您在現有的 Azure 春季雲端應用程式和實例上進行此工作流程。
 
 使用下列 Azure CLI 命令進行準備：
 ```
@@ -75,7 +75,7 @@ az spring-cloud app create --name auth-service
 az spring-cloud app create --name account-service
 ```
 
-### <a name="deploy-with-azure-cli-directly"></a>使用 Azure CLI 直接部署
+### <a name="deploy-with-azure-cli-directly"></a>直接使用 Azure CLI 部署
 在存放 `.github/workflow/main.yml` 庫中建立檔案：
 
 ```
@@ -118,8 +118,8 @@ jobs:
         az spring-cloud app deploy -n account-service --jar-path ${{ github.workspace }}/account-service/target/account-service.jar
         az spring-cloud app deploy -n auth-service --jar-path ${{ github.workspace }}/auth-service/target/auth-service.jar
 ```
-### <a name="deploy-with-azure-cli-action"></a>使用 Azure CLI 動作部署
-Az `run` 命令會使用最新版本的 Azure CLI。 如果有重大變更，您也可以搭配使用特定版本的 Azure CLI 與 Azure/CLI `action` 。 
+### <a name="deploy-with-azure-cli-action"></a>使用 Azure CLI 動作進行部署
+Az `run` 命令將會使用最新版本的 Azure CLI。 如果有重大變更，您也可以使用特定版本的 Azure CLI 搭配 Azure/CLI `action` 。 
 
 > [!Note] 
 > 此命令將會在新容器中執行，因此 `env` 將無法運作，而且跨動作檔案存取可能會有額外的限制。
@@ -164,7 +164,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>使用 Maven 外掛程式部署
-另一個選項是使用[Maven 外掛程式](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-maven)來部署 Jar 和更新應用程式設定。 此命令 `mvn azure-spring-cloud:deploy` 具有等冪性，並且會視需要自動建立應用程式。 您不需要事先建立對應的應用程式。
+另一個選項是使用 [Maven 外掛程式](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart) 來部署 Jar 和更新應用程式設定。 此命令 `mvn azure-spring-cloud:deploy` 為等冪，並且會在需要時自動建立應用程式。 您不需要事先建立對應的應用程式。
 
 ```
 name: AzureSpringCloud
@@ -199,17 +199,17 @@ jobs:
 ```
 
 ## <a name="run-the-workflow"></a>執行工作流程
-在您推送至 GitHub 之後，應該會自動啟用 GitHub**動作** `.github/workflow/main.yml` 。 當您推送新的認可時，將會觸發此動作。 如果您在瀏覽器中建立這個檔案，您的動作應該已經執行。
+您必須在推送至 GitHub 之後，自動啟用 GitHub **動作** `.github/workflow/main.yml` 。 當您推送新的認可時，將會觸發此動作。 如果您在瀏覽器中建立這個檔案，您的動作應該已經執行。
 
-若要確認已啟用此動作，請按一下 [GitHub 存放庫] 頁面上的 [**動作**] 索引標籤：
+若要確認已啟用該動作，請按一下 GitHub 存放庫頁面上的 [ **動作** ] 索引標籤：
 
- ![驗證動作已啟用](./media/github-actions/actions3.png)
+ ![確認動作已啟用](./media/github-actions/actions3.png)
 
-如果您的動作在錯誤中執行（例如，如果您尚未設定 Azure 認證），您可以在修正錯誤之後重新執行檢查。 在 [GitHub 存放庫] 頁面上，按一下 [**動作**]，選取特定的工作流程工作，然後按一下 [**重新執行檢查**] 按鈕以重新執行檢查：
+如果您的動作執行錯誤（例如，如果您尚未設定 Azure 認證），您可以在修正錯誤後重新執行檢查。 在 [GitHub 存放庫] 頁面上，按一下 [ **動作**]，選取特定的工作流程工作，然後按一下 [ **重新執行檢查** ] 按鈕以重新執行檢查：
 
  ![重新執行檢查](./media/github-actions/actions4.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [適用于春季雲端 GitHub 動作的 Key Vault](./spring-cloud-github-actions-key-vault.md)
 * [Azure Active Directory 服務主體](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
 * [適用於 Azure 的 GitHub Actions](https://github.com/Azure/actions/)

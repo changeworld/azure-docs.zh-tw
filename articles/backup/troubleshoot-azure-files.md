@@ -3,12 +3,12 @@ title: Azure 檔案共用備份的移難排解
 description: 本文說明如何排解您在保護 Azure 檔案共用時所發生的問題。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 9e8869ed75350fd4063832932f076fb6fd52d4e5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001734"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376973"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>針對備份 Azure 檔案共用時發生的問題進行疑難排解
 
@@ -51,7 +51,7 @@ ms.locfileid: "89001734"
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>取消保護檔案共用之後，無法刪除復原服務保存庫
 
-在 Azure 入口網站中，開啟您的保存**庫**  >  **備份基礎結構**  >  **儲存體帳戶**，然後按一下 [**取消註冊**]，從復原服務保存庫中移除儲存體帳戶。
+在 Azure 入口網站中，開啟您的保存**庫**  >  **備份基礎結構**  >  **儲存體帳戶**。 選取 [ **取消註冊** ] 以移除復原服務保存庫中的儲存體帳戶。
 
 >[!NOTE]
 >復原服務保存庫只能在取消註冊保存庫中註冊的所有儲存體帳戶之後刪除。
@@ -318,7 +318,7 @@ ms.locfileid: "89001734"
 
 檢查備份的檔案共用是否永久刪除。 如果是，請停止檔案共用的備份，以避免重複的備份失敗。 若要瞭解如何停止保護，請參閱 [停止保護 Azure 檔案共用](./manage-afs-backup.md#stop-protection-on-a-file-share)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需備份 Azure 檔案共用的更多資訊，請參閱︰
 

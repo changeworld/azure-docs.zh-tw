@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9d3f8208af9d5997f5a9e025a54b54b5b035fb85
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8e8c32f5596e469de5402a1f712d234a806a69e4
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934968"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297989"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>使用 "full" Lucene 搜尋語法 (Azure 認知搜尋中的先進查詢) 
 
@@ -40,13 +40,13 @@ Lucene 剖析器支援複雜的查詢結構，例如欄位範圍查詢、模糊�
 
 在指定要求標頭後，您可以將其重複用於本文中的所有查詢，只要替換掉 **search=** 字串即可。 
 
-  ![Postman 要求標頭](media/search-query-lucene-examples/postman-header.png)
+  ![Postman 要求標頭設定參數](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>設定要求 URL
 
 要求是與包含 Azure 認知搜尋端點和搜尋字串的 URL 配對的 GET 命令。
 
-  ![Postman 要求標頭](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  ![Postman 要求標頭 GET](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL 組合具有下列元素：
 
@@ -111,7 +111,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 此查詢的回應會如下列螢幕擷取畫面所示。
 
-  ![Postman 範例回應](media/search-query-lucene-examples/postman-sample-results.png)
+  ![使用分數的 Postman 範例回應](media/search-query-lucene-examples/postman-sample-results.png)
 
 您可能已注意到在回應中的搜尋分數。 沒有排名時，分數一律為 1，這是因為搜尋不是全文檢索搜尋，或是未套用任何準則。 若是未套用任何準則的 Null 搜尋，資料列會以任意順序傳回。 當您包含實際的搜尋準則時，您會看到搜尋分數演進為有意義的值。
 
@@ -137,7 +137,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
-  ![Postman 範例回應](media/search-query-lucene-examples/intrafieldfilter.png)
+  ![Postman 範例回應搜尋運算式](media/search-query-lucene-examples/intrafieldfilter.png)
 
 您可以使用 **fieldName： searchExpression** 語法來定義回復搜尋作業，其中搜尋運算式可以是單一單字或片語，或是以括弧括住的更複雜運算式（選擇性地使用布林運算子）。 部分範例如下：
 
@@ -281,7 +281,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 > 萬用字元查詢不會進行[分析](./search-lucene-query-architecture.md#stage-2-lexical-analysis)。 只能對不完整的查詢詞彙執行小寫轉換。
 >
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 請在您的程式碼中嘗試指定 Lucene 查詢剖析器。 下列連結說明如何設定 .NET 和 REST API 的搜尋查詢。 這些連結會使用預設的簡單語法，因此您必須套用您從本文了解的內容來指定 **queryType**。
 
 * [使用 .NET SDK 查詢您的索引](./search-get-started-dotnet.md)

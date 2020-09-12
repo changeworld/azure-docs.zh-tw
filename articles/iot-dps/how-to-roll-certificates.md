@@ -1,18 +1,18 @@
 ---
-title: 在 Azure IoT 中樞裝置布建服務中輪替 x.509 憑證
-description: 如何使用裝置布建服務（DPS）實例來變換 x.509 憑證
+title: 在 Azure IoT 中樞裝置布建服務中推出 x.509 憑證
+description: 如何使用裝置布建服務將 x.509 憑證變換 (DPS) 實例
 author: wesmc7777
 ms.author: wesmc
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2bbfcb4832adba767750256a25c378356cf4c23
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974882"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299250"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>如何輪替 X.509 裝置憑證
 
@@ -51,7 +51,7 @@ ms.locfileid: "74974882"
 
 新的分葉憑證輪替至裝置後，便無法再連線到 IoT 中樞，因為它目前使用新的憑證進行連線。 IoT 中樞只會辨識使用舊憑證的裝置。 裝置的連線嘗試結果會是「未經授權」的連線錯誤。 若要解決這個錯誤，您必須更新裝置的註冊項目，以將裝置的新分葉憑證納入考量。 然後佈建服務可以在重新佈建裝置時，視需要更新 IoT 中樞裝置登錄資訊。 
 
-此連線失敗有一個可能的例外狀況：您已在佈建服務中為您的裝置建立[註冊群組](concepts-service.md#enrollment-group)。 在此情況下，如果您並未輪替裝置的信任鏈結中的根憑證或中繼憑證，只有新憑證屬於註冊群組中所定義的信任鏈結，就能辨識此裝置。 如果出現這種情況來反應安全性缺口，您應該至少將群組中被視為遭入侵的特定裝置憑證列入封鎖清單中。 如需詳細資訊，請參閱[將註冊群組中的特定裝置列入封鎖清單](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group)。
+此連線失敗有一個可能的例外狀況：您已在佈建服務中為您的裝置建立[註冊群組](concepts-service.md#enrollment-group)。 在此情況下，如果您並未輪替裝置的信任鏈結中的根憑證或中繼憑證，只有新憑證屬於註冊群組中所定義的信任鏈結，就能辨識此裝置。 如果此案例是為了回應安全性缺口，您應該至少不允許群組中被視為被入侵的特定裝置憑證。 如需詳細資訊，請參閱 [禁止註冊群組中的特定裝置](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#disallow-specific-devices-in-an-enrollment-group)。
 
 在 [管理註冊]**** 頁面上，可以完成已輪替憑證的註冊項目更新。 若要存取該頁面，請遵循下列步驟：
 
@@ -94,7 +94,7 @@ ms.locfileid: "74974882"
 
 1. 按一下 [個別註冊]****，然後按一下清單中的註冊識別碼項目。 
 
-2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 [檔案] 。
+2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 [儲存]。
 
     ![使用次要憑證管理個別註冊](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
@@ -177,7 +177,7 @@ ms.locfileid: "74974882"
 
 1. 按一下 [註冊群組]****，然後按一下清單中的群組名稱。 
 
-2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 [檔案] 。
+2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 [儲存]。
 
     這個新中繼憑證應該由已經過驗證並新增至佈建服務的根 CA 憑證簽署。 如需詳細資訊，請參閱 [X.509 憑證](concepts-security.md#x509-certificates)。
 
@@ -197,27 +197,17 @@ ms.locfileid: "74974882"
 重新佈建完成後，裝置就能夠使用新憑證來連線到 IoT 中樞。
 
 
-## <a name="blacklist-certificates"></a>將憑證列入封鎖清單
+## <a name="disallow-certificates"></a>不允許憑證
 
-為了回應安全性缺口，您可能需要將裝置憑證列入封鎖清單。 若要將裝置憑證列入封鎖清單，請停用目標裝置/憑證的註冊項目。 如需詳細資訊，請參閱[管理取消註冊](how-to-revoke-device-access-portal.md)一文中如何將裝置列入封鎖清單。
+為了回應安全性缺口，您可能需要禁止裝置憑證。 若不允許裝置憑證，請停用目標裝置/憑證的註冊專案。 如需詳細資訊，請參閱 [管理取消註冊](how-to-revoke-device-access-portal.md) 一文中不允許的裝置。
 
 一旦將憑證納入已停用的註冊項目中，任何使用該憑證向 IoT 中樞註冊的嘗試都會失敗，即使該憑證已作為其他註冊項目的一部分啟用亦然。
  
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 若要深入了解裝置佈建服務中的 X.509 憑證，請參閱[安全性](concepts-security.md) 
 - 若要了解如何使用 Azure IoT 中樞的裝置佈建服務執行 X.509 CA 憑證擁有權證明，請參閱[如何驗證憑證](how-to-verify-certificates.md)
 - 若要深入了解如何使用入口網站來建立註冊群組，請參閱[使用 Azure 入口網站管理裝置註冊](how-to-manage-enrollments.md)。
-
-
-
-
-
-
-
-
-
-

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202236"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297785"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web 搜尋 API 回應結構和回應類型  
 
@@ -38,7 +38,7 @@ ms.locfileid: "86202236"
 }, ...
 ```
 
-一般而言，Bing Web 搜尋會傳回回答的子集。 例如，如果查詢字詞是*sailing dinghies*，則回應可能包括 `webPages` 、 `images` 和 `rankingResponse` 。 除非您已使用 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) 來篩選網頁，否則回應永遠會包含 `webpages` 和 `rankingResponse` 回答。
+一般而言，Bing Web 搜尋會傳回回答的子集。 例如，如果查詢詞彙是 *sailing dinghies*，則回應可能包括 `webPages` 、 `images` 和 `rankingResponse` 。 除非您已使用 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) 來篩選網頁，否則回應永遠會包含 `webpages` 和 `rankingResponse` 回答。
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -295,7 +295,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 |+|加法|
 |-|減|
 |/|部門|
-|*|乘法|
+|*|乘|
 |^|電源|
 |!|階乘|
 |.|Decimal|
@@ -332,7 +332,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 `timeZone` 回答可提供位置的名稱、指定位置目前的 UTC 日期和時間，以及 UTC 時差。 如果位置的界限在多個時區內，則回答會包含目前的 UTC 日期和時間以及界限內的所有時區。 例如，因為佛羅里達州位於兩個時區內，回應會包含兩個時區的當地日期和時間。  
 
-如果查詢要求的是州或國家/地區的時間，Bing 會判斷位置地理界限內的主要城市，並在欄位中傳回 `primaryCityTime` 。 如果界限包含多個時區，其餘時區會在 `otherCityTimes` 欄位中傳回。
+如果查詢要求狀態或國家/地區的時間，Bing 會判斷位置地理界限內的主要城市，並在欄位中傳回 `primaryCityTime` 。 如果界限包含多個時區，其餘時區會在 `otherCityTimes` 欄位中傳回。
 
 以下顯示查詢傳回 `timeZone` 回答的範例。
 
@@ -445,7 +445,7 @@ Query: What time is it in the U.S.
 
 不過，當您從 JavaScript 呼叫 Bing Web 搜尋 API 時，您的瀏覽器內建安全性功能 (CORS) 可能會讓您無法存取這些標頭的值。
 
-若要取得標頭的存取權，您可以透過 CORS Proxy 提出 Bing Web 搜尋 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可將回應標頭列入允許清單並提供給 JavaScript 使用。
+若要取得標頭的存取權，您可以透過 CORS Proxy 提出 Bing Web 搜尋 API 要求。 來自這類 proxy 的回應會有一個 `Access-Control-Expose-Headers` 標頭，可篩選回應標頭，並將其提供給 JavaScript 使用。
 
 您可以輕鬆地安裝 CORS Proxy，讓我們的[教學課程應用程式](tutorial-bing-web-search-single-page-app.md)存取選擇性用戶端標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (若尚未安裝)。 在命令提示字元中，輸入下列命令。
 
@@ -476,7 +476,7 @@ cors-proxy-server
 
 ![Bing 拼字建議範例](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
 
-## <a name="next-steps"></a>後續步驟  
+## <a name="next-steps"></a>接下來的步驟  
 
 * 檢閱[要求節流](throttling-requests.md)文件。  
 

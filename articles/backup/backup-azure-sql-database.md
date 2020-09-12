@@ -3,12 +3,12 @@ title: 將 SQL Server 資料庫備份到 Azure
 description: 本文說明如何將 SQL Server 備份至 Azure。 本文也將說明 SQL Server 復原。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: d8cdafe215d9271151d8dacee114d40108e907bd
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 3627162ef2f4330a4b6a78625b5e07bdcf56419b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892434"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376531"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>關於 Azure VM 中的 SQL Server 備份
 
@@ -35,7 +35,7 @@ ms.locfileid: "88892434"
 
   ![SQL 備份架構](./media/backup-azure-sql-database/backup-sql-overview.png)
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 開始之前，請確認下列需求：
 
@@ -66,11 +66,11 @@ ms.locfileid: "88892434"
 
       ![在 [登入 - 新增] 對話方塊中，選取 [搜尋]](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. Windows 虛擬服務帳戶 **NT SERVICE\AzureWLBackupPluginSvc** 已於虛擬機器註冊期間和 SQL 探索階段建立。 請輸入 [輸入要選取的物件名稱]**** 中顯示的帳戶名稱。 選取 [檢查名稱]**** 以解析名稱。 按一下 [確定]。
+  4. Windows 虛擬服務帳戶 **NT SERVICE\AzureWLBackupPluginSvc** 已於虛擬機器註冊期間和 SQL 探索階段建立。 請輸入 [輸入要選取的物件名稱]**** 中顯示的帳戶名稱。 選取 [檢查名稱]**** 以解析名稱。 選取 [確定]。
 
       ![選取 [檢查名稱] 以解析未知的服務名稱](./media/backup-azure-sql-database/check-name.png)
 
-  5. 在 [伺服器角色]**** 中，確定已選取**系統管理員**角色。 按一下 [確定]。 現在應該存在必要權限。
+  5. 在 [伺服器角色]**** 中，確定已選取**系統管理員**角色。 選取 [確定]。 現在應該存在必要權限。
 
       ![確定已選取系統管理員伺服器角色](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "88892434"
 
 1. 移至 [物件總管] 中的 SQL Server 執行個體。
 2. 瀏覽至 [安全性] -> [登入]
-3. 以滑鼠右鍵按一下 [登入]，然後按一下 [新增登入...]**
+3. 以滑鼠右鍵按一下 [登入]，然後選取 [*新增登*入]。
 
     ![使用 SSMS 的新登入](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "88892434"
 
     ![在 SSMS 中授與權限](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
 
-7. 按一下 [確定]。
+7. 選取 [確定]。
 8. 重複相同的步驟順序 (上述 1-7)，將 NT Service\AzureWLBackupPluginSvc 登入新增到 SQL Server 執行個體。 如果登入已存在，請確定其具有 sysadmin 伺服器角色，且在 [狀態] 下具有「授與權限連線到資料庫引擎，且 [登入] 為 [已啟用]」。
 9. 授與許可權之後，在入口網站中重新探索 **db** ： **->** Azure VM 中的保存庫備份基礎結構 **->** 工作負載：
 
@@ -148,7 +148,7 @@ catch
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [了解](backup-sql-server-database-azure-vms.md)如何備份 SQL Server 資料庫。
 * [了解](restore-sql-database-azure-vm.md)如何還原已備份的 SQL Server 資料庫。

@@ -1,21 +1,21 @@
 ---
-title: 如何在 Azure 中標記 Windows VM 資源
-description: 了解如何標記 Azure 中使用資源管理員部署模型所建立的 Windows 虛擬機器
+title: 如何使用 PowerShell 標記 VM
+description: 瞭解如何使用 PowerShell 標記虛擬機器
 author: mmccrory
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 84fc6e6fee0b4a85b909c9b43a17381b31f39abf
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3aa40ed396e87b342207fc51576cd28170c7d4e9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291986"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322376"
 ---
-# <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>如何在 Azure 中標記 Windows 虛擬機器
-本文說明在 Azure 中透過 Resource Manager 部署模型標記 Windows 虛擬機器的各種不同方式。 標記是使用者定義的成對「索引鍵/值」，可直接置於資源或資源群組。 Azure 目前最多支援每個資源和資源群組50個標記。 標記可在建立或加入至現有資源時置於資源上。 請注意，標記只支援透過 Resource Manager 部署模型建立的資源。 如果想要標記 Linux 虛擬機器，請參閱 [如何在 Azure 中標記 Linux 虛擬機器](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+# <a name="how-to-tag-a-virtual-machine-in-azure-using-powershell"></a>如何使用 PowerShell 在 Azure 中標記虛擬機器
+本文說明在 Azure 中透過 Resource Manager 部署模型標記 Windows 虛擬機器的各種不同方式。 標記是使用者定義的成對「索引鍵/值」，可直接置於資源或資源群組。 Azure 目前最多支援每個資源和資源群組50個標記。 標記可在建立或加入至現有資源時置於資源上。 請注意，標記只支援透過 Resource Manager 部署模型建立的資源。 如果您想要使用 Azure CLI 來標記虛擬機器，請參閱 [如何使用 Azure CLI 在 Azure 中標記虛擬機器](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 [!INCLUDE [virtual-machines-common-tag](../../../includes/virtual-machines-common-tag.md)]
 
@@ -62,13 +62,13 @@ Created By    MyName
 Environment   Production
 ```
 
-第三個命令會將額外的標記新增至 *$tags*變數。 請注意，使用將 **+=** 新的索引鍵/值組附加至 *$tags*清單。
+第三個命令會將額外的標記新增至 *$tags* 變數。 請注意，使用將 **+=** 新的索引鍵/值組附加至 *$tags* 清單。
 
 ```azurepowershell
 PS C:\> $tags += @{Location="MyLocation"}
 ```
 
-第四個命令會將 *$tags*變數中定義的所有標記設定為指定的資源。 本例中是 MyTestVM。
+第四個命令會將 *$tags* 變數中定義的所有標記設定為指定的資源。 本例中是 MyTestVM。
 
 ```azurepowershell
 PS C:\> Set-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM -ResourceType "Microsoft.Compute/VirtualMachines" -Tag $tags
@@ -92,7 +92,7 @@ Location      MyLocation
 
 [!INCLUDE [virtual-machines-common-tag-usage](../../../includes/virtual-machines-common-tag-usage.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 如需深入了解如何標記您的 Azure 資源，請參閱 [Azure Resource Manager 概觀][Azure Resource Manager Overview]與[使用標記來組織您的 Azure 資源][Using Tags to organize your Azure Resources]。
 * 如需查看標記如何協助您管理使用 Azure 資源，請參閱[了解 Azure 帳單][Understanding your Azure Bill]與[深入了解 Microsoft Azure 資源耗用量][Gain insights into your Microsoft Azure resource consumption]。
 

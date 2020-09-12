@@ -5,14 +5,14 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 09/01/2020
 ms.author: lbosq
-ms.openlocfilehash: ffa30b0fa42abc69c19b5e6c32f4224f3ad1c95a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be38b1cfa698907f44c6deee77bb9b8ca88b77b7
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263053"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318211"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>將資料從 MongoDB 移轉到「適用於 MongoDB 的 Azure Cosmos DB API」的預先移轉步驟
 
@@ -44,11 +44,10 @@ ms.locfileid: "85263053"
 
 |**移轉類型**|**方案**|**考量**|
 |---------|---------|---------|
-|離線|[資料移轉工具](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull; 易於設定，並支援多個來源 <br/>&bull; 不適用於大型資料集。|
-|離線|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull; 易於設定，並支援多個來源 <br/>&bull; 使用 Azure Cosmos DB 大量執行工具程式庫 <br/>&bull; 適合大型資料集 <br/>&bull; 缺少檢查點表示在移轉過程中出現的任何問題，皆需要重新啟動整個移轉流程<br/>&bull; 缺少無效信件佇列表示，只要有幾個錯誤的檔案就可能會停止整個移轉流程 <br/>&bull; 需要自訂程式碼，以增加特定資料來源的讀取輸送量|
+|線上|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; 使用 Azure Cosmos DB 大量執行工具程式庫 <br/>&bull; 適用於大型資料集，並負責複寫即時變更 <br/>&bull; 僅適用於其他 MongoDB 來源|
+|離線|[Azure 資料庫移轉服務](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; 使用 Azure Cosmos DB 大量執行工具程式庫 <br/>&bull; 適用於大型資料集，並負責複寫即時變更 <br/>&bull; 僅適用於其他 MongoDB 來源|
+|離線|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)|&bull; 易於設定，並支援多個來源 <br/>&bull; 使用 Azure Cosmos DB 大量執行工具程式庫 <br/>&bull; 適合大型資料集 <br/>&bull; 缺少檢查點表示在移轉過程中出現的任何問題，皆需要重新啟動整個移轉流程<br/>&bull; 缺少無效信件佇列表示，只要有幾個錯誤的檔案就可能會停止整個移轉流程 <br/>&bull; 需要自訂程式碼，以增加特定資料來源的讀取輸送量|
 |離線|[現有的 Mongo 工具 (mongodump、mongorestore、Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; 易於設定和整合 <br/>&bull; 需要自訂處理節流|
-|線上|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; 完全受控的移轉服務。<br/>&bull; 為遷移工作提供託管和監視解決方案。 <br/>&bull; 適用於大型資料集，並負責複寫即時變更 <br/>&bull; 僅適用於其他 MongoDB 來源|
-
 
 ## <a name="estimate-the-throughput-need-for-your-workloads"></a><a id="estimate-throughput"></a> 估計您的工作負載所需的輸送量
 
@@ -71,18 +70,18 @@ ms.locfileid: "85263053"
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-您也可以使用[診斷設定](cosmosdb-monitor-resource-logs.md)，以了解針對 Azure Cosmos DB 執行查詢的頻率和模式。 診斷記錄的結果可傳送至儲存體帳戶、EventHub 執行個體或 [Azure Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。  
+您也可以使用[診斷設定](cosmosdb-monitor-resource-logs.md)，以了解針對 Azure Cosmos DB 執行查詢的頻率和模式。 診斷記錄的結果可傳送至儲存體帳戶、EventHub 執行個體或 [Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md)。  
 
 ## <a name="choose-your-partition-key"></a><a id="partitioning"></a>選擇分割區索引鍵
 資料分割 (也稱為「分區化」) 是移轉資料前的考量要點。 Azure Cosmos DB 使用完全受控的資料分割，增加資料庫中的容量，以滿足儲存和輸送量的需求。 此功能不需要裝載或設定路由伺服器。   
 
-同樣地，資料分割容量會自動新增容量，並視情況重新平衡資料。 如需為您的資料選擇正確分割區的詳細資料和建議，請參閱[選擇分割區索引鍵一文](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)。 
+同樣地，資料分割容量會自動新增容量，並視情況重新平衡資料。 如需為您的資料選擇正確分割區的詳細資料和建議，請參閱[選擇分割區索引鍵一文](partitioning-overview.md#choose-partitionkey)。 
 
 ## <a name="index-your-data"></a><a id="indexing"></a>為資料編製索引
 
-Azure Cosmos DB 適用于 MongoDB 的 API 伺服器版本3.6 只會自動為欄位編制索引 `_id` 。 此欄位無法卸載。 它會自動強制執行 `_id` 每個分區索引鍵的欄位唯一性。 若要為其他欄位編制索引，請套用 MongoDB 索引管理命令。 此預設索引編制原則與 Azure Cosmos DB SQL API 不同，預設會為所有欄位編制索引。
+Azure Cosmos DB 適用于 MongoDB 伺服器版本3.6 的 API 只會自動為欄位編制索引 `_id` 。 無法卸載此欄位。 它會自動 `_id` 針對每個分區索引鍵強制執列欄位的唯一性。 若要為其他欄位編製索引，請套用 MongoDB 索引管理命令。 這個預設的編製索引原則與 Azure Cosmos DB SQL API 不同，後者預設會為所有欄位編製索引。
 
-Azure Cosmos DB 所提供的編制索引功能包括新增複合索引、唯一索引和存留時間（TTL）索引。 索引管理介面對應至 `createIndex()` 命令。 若要深入瞭解，請參閱[在 Azure Cosmos DB 的 MONGODB API 中編制索引](mongodb-indexing.md)一文。
+Azure Cosmos DB 所提供的索引功能包括將複合索引、唯一索引和存留時間 (TTL) 索引。 索引管理介面對應至 `createIndex()` 命令。 若要深入瞭解，請參閱 [Azure Cosmos DB 適用于 MongoDB 的 API 文章中的索引](mongodb-indexing.md)。
 
 [Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) 會自動移轉具有唯一索引的 MongoDB 集合。 不過，必須先建立唯一索引，然後再進行移轉。 當您的集合中已經有資料時，Azure Cosmos DB 不支援建立唯一索引。 如需詳細資訊，請參閱 [Azure Cosmos DB 中的唯一索引鍵](unique-keys.md)。
 

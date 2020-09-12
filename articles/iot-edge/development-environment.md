@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bee1f95e1f56b65912895fec8af2512c6cd7b85a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76511088"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300369"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>準備 IoT Edge 適用的開發和測試環境
 
@@ -62,11 +62,11 @@ Visual Studio Code 的 Azure IoT Edge 擴充功能提供針對程式設計語言
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Azure IoT Edge Node.js 模組產生器](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Git](https://git-scm.com/) </ul> |
 
-### <a name="visual-studio-20172019-extension"></a>Visual Studio 2017/2019 延伸模組
+### <a name="visual-studio-20172019-extension"></a>Visual Studio 2017/2019 擴充功能
 
-Visual Studio 的 Azure IoT Edge 工具提供以 c # 和 C 為基礎的 IoT Edge 模組範本。
+適用于 Visual Studio 的 Azure IoT Edge 工具提供以 c # 和 C 為基礎的 IoT Edge 模組範本。
 
-如需詳細資訊和下載，請參閱適用于[Visual Studio 2017 的 Azure IoT Edge 工具](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)或[適用于 Visual Studio 2019 的 Azure IoT Edge 工具](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools)。
+如需詳細資訊及下載，請參閱[Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools)的[Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)或 Azure IoT Edge Tools 的 Azure IoT Edge Tools。
 
 ### <a name="iot-edge-dev-tool"></a>IoT Edge 開發人員工具
 
@@ -82,10 +82,10 @@ Azure IoT Edge 開發人員工具會使用命令列功能簡化 IoT Edge 開發�
 
 | 工具 | 也稱為 | 支援的平台 | 適用對象 |
 | ---- | ------------- | ------------------- | --------- |
-| IoT EdgeHub 開發人員工具  | iotedgehubdev | Windows、Linux、MacOS | 模擬裝置為模組偵錯。 |
-| IoT Edge 裝置容器 | microsoft/iotedgedev | Windows、Linux、MacOS | 開發而不需要安裝相依性。 |
-| 容器中的 IoT Edge 執行階段 | iotedgec | Windows、Linux、MacOS、ARM | 在可能不支援執行階段的裝置上測試。 |
-| IoT Edge 裝置容器 | toolboc/azure-iot-edge-device-container | Windows、Linux、MacOS、ARM | 大規模地使用許多 IoT Edge 裝置測試一個案例。 |
+| IoT EdgeHub 開發人員工具  | iotedgehubdev | Windows、Linux、macOS | 模擬裝置為模組偵錯。 |
+| IoT Edge 裝置容器 | microsoft/iotedgedev | Windows、Linux、macOS | 開發而不需要安裝相依性。 |
+| 容器中的 IoT Edge 執行階段 | iotedgec | Windows、Linux、macOS、ARM | 在可能不支援執行階段的裝置上測試。 |
+| IoT Edge 裝置容器 | toolboc/azure-iot-edge-device-container | Windows、Linux、macOS、ARM | 大規模地使用許多 IoT Edge 裝置測試一個案例。 |
 
 ### <a name="iot-edgehub-dev-tool"></a>IoT EdgeHub 開發人員工具
 
@@ -103,13 +103,13 @@ Azure IoT Edge 裝置容器是一種 Docker 容器，具備開發 IoT Edge 所�
 
 ### <a name="iot-edge-runtime-in-a-container"></a>容器中的 IoT Edge 執行階段
 
-容器中的 IoT Edge 執行階段會提供採用裝置連接字串作為環境變數的完整執行階段。 此容器可讓您在原本可能不支援執行階段的系統 (例如 MacOS) 上，測試 IoT Edge 模組和案例。 您所部署的所有模組都將在執行階段容器之外啟動。 如果您希望執行階段以及所有已部署的模組存在於相同的容器內，請改為考慮 IoT Edge 裝置容器。
+容器中的 IoT Edge 執行階段會提供採用裝置連接字串作為環境變數的完整執行階段。 此容器可讓您測試系統上可能不會以原生方式支援執行時間的 IoT Edge 模組和案例，例如 macOS。 您所部署的所有模組都將在執行階段容器之外啟動。 如果您希望執行階段以及所有已部署的模組存在於相同的容器內，請改為考慮 IoT Edge 裝置容器。
 
 如需詳細資訊，請參閱[在容器中執行 Azure IoT Edge](https://github.com/Azure/iotedgedev/tree/master/docker/runtime)。
 
 ### <a name="iot-edge-device-container"></a>IoT Edge 裝置容器
 
-IoT Edge 裝置容器是一個完整的 IoT Edge 裝置，可以在具有容器引擎的任何電腦上啟動。 裝置容器包含 IoT Edge 執行階段和容器引擎本身。 每個容器執行個體都是一個功能完整的自我佈建 IoT Edge 裝置。 裝置容器支援從遠端進行模組偵錯，前提是，該模組具備網路路由。 裝置容器適合用來快速建立大量的 IoT Edge 裝置，以測試大規模的案例或 Azure Pipelines。 它也支援透過 helm 部署到 kubernetes。
+IoT Edge 裝置容器是一個完整的 IoT Edge 裝置，可以在具有容器引擎的任何電腦上啟動。 裝置容器包含 IoT Edge 執行階段和容器引擎本身。 每個容器執行個體都是一個功能完整的自我佈建 IoT Edge 裝置。 裝置容器支援從遠端進行模組偵錯，前提是，該模組具備網路路由。 裝置容器適合用來快速建立大量的 IoT Edge 裝置，以大規模測試案例或 Azure Pipelines。 它也支援透過 helm 部署到 kubernetes。
 
 如需詳細資訊，請參閱 [Azure IoT Edge 裝置容器](https://github.com/toolboc/azure-iot-edge-device-container)。
 
@@ -119,7 +119,7 @@ IoT Edge 裝置容器是一個完整的 IoT Edge 裝置，可以在具有容器�
 
 如需詳細資訊、指引和範例，請參閱下列頁面：
 
-* [Azure IoT Edge 的持續整合與持續部署](how-to-ci-cd.md)
-* [使用 Azure DevOps Projects 建立適用於 IoT Edge 的 CI/CD 管線](how-to-devops-project.md)
+* [Azure IoT Edge 的持續整合與持續部署](how-to-continuous-integration-continuous-deployment.md)
+* [使用 Azure DevOps Starter 建立 IoT Edge 的 CI/CD 管線](how-to-devops-starter.md)
 * [Azure IoT Edge Jenkins 外掛程式](https://plugins.jenkins.io/azure-iot-edge)
 * [IoT Edge DevOps GitHub 存放庫](https://github.com/toolboc/IoTEdge-DevOps)

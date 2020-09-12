@@ -3,12 +3,12 @@ title: 將系統狀態還原到 Windows Server
 description: 從 Azure 中的備份還原 Windows Server 系統狀態的逐步說明。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d3fb88ddbb02327db4388de18d2645519e13d2ec
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 824ed5e71934af370211bfa8b4c266fe4323b4ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178581"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377432"
 ---
 # <a name="restore-system-state-to-windows-server"></a>將系統狀態還原到 Windows Server
 
@@ -56,7 +56,7 @@ ms.locfileid: "89178581"
 
 8. 確認 [ **確認** ] 窗格上的 [復原] 詳細資料，然後選取 [ **復原**]。
 
-   ![按一下 [復原] 以認可復原動作](./media/backup-azure-restore-system-state/confirm-recovery.png)
+   ![選取 [復原] 以確認復原動作](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 9. 將復原目的地中的 WindowsImageBackup** 目錄複製到伺服器的非重要磁碟區。 Windows 作業系統磁碟區通常是重要磁碟區。
 
@@ -104,7 +104,7 @@ ms.locfileid: "89178581"
 
 11. 確認 [確認] 窗格上的 [復原] 詳細資料，然後選取 [ **復原**]。
 
-    ![按一下 [復原] 按鈕以確認復原程序](./media/backup-azure-restore-system-state/confirm-recovery.png)
+    ![選取 [復原] 按鈕以確認修復程式](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 12. 將 WindowsImageBackup** 目錄複製到伺服器的非重要磁碟區 (例如 D:\)。 Windows 作業系統磁碟區通常是重要磁碟區。
 

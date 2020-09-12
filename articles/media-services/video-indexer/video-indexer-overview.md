@@ -10,14 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: b4d629351ae7b6154b332a1b1f99374de1187518
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: bff99cdd44763c0df6bb5b2dd863b27728c23fcd
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267865"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318673"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>什麼是 Azure 媒體服務影片索引器？
+
+[!INCLUDE [regulation](./includes/regulation.md)]
 
 影片索引器 (VI) 是 Azure 媒體服務的 AI 解決方案，並且是 Azure 認知服務品牌的一部分。 影片索引器可讓您使用以多個通道 (語音、人聲、視覺效果) 為基礎的機器學習模型來擷取深入解析 (而不需要資料分析或編碼技能)。 您可以進一步自訂模型並將模型定型。 此服務可實現深度搜尋、降低營運成本、實現新的創造營收商機，並在大型的影片封存上創造新的使用者體驗 (進入障礙很低)。
 

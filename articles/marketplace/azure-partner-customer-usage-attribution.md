@@ -1,21 +1,21 @@
 ---
-title: 商業 marketplace 合作夥伴和客戶使用方式屬性
+title: 商業 marketplace 夥伴和客戶使用方式屬性
 description: 概略了解如何追蹤 Azure Marketplace 解決方案的客戶使用狀況。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 04/14/2020
+ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: c5fc239c32037354547c6818fd507a7a8cfd3657
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031280"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320965"
 ---
-# <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業 marketplace 合作夥伴和客戶使用方式屬性
+# <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業 marketplace 夥伴和客戶使用方式屬性
 
 客戶使用狀況歸因可以將客戶訂用帳戶中執行 (且部署至您的解決方案中執行) 的 Azure 資源，與身為合作夥伴的您建立關聯。 在 Microsoft 內部系統中產生這些關聯，有助於更深入了解哪些 Azure 資源執行您的軟體。 當您採用這項追蹤功能時，您會與 Microsoft 銷售團隊密切合作，並獲得 Microsoft 合作夥伴計畫的信用額度。
 
@@ -45,7 +45,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 建議您為每個產品的每個供應項目與散發通道建立唯一的 GUID。 如果您不想要分割報告，您可以讓產品的多個散發通道使用單一 GUID。
 
-如果您使用範本部署產品，且在 Azure Marketplace 和 GitHub 上皆可使用，您可以建立並註冊兩個不同的 GUID：
+如果您使用範本來部署產品，而且可以在 Azure Marketplace 和 GitHub 上使用，您可以建立並註冊兩個不同的 GUID：
 
 - Azure Marketplace 中的產品 A
 - GitHub 上的產品 A
@@ -61,7 +61,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 將 GUID 新增至範本或使用者代理程式，並在合作夥伴中心註冊 GUID 之後，就會追蹤未來的部署。
 
 > [!NOTE]
-> 如果您要透過合作夥伴中心將您的[Azure 應用程式](./partner-center-portal/create-new-azure-apps-offer.md)供應專案發佈至 Azure Marketplace，則在上傳範本時，您的範本內所使用的任何新 GUID 都會自動註冊到您的合作夥伴中心設定檔。  
+> 如果您要透過合作夥伴中心將 [Azure 應用程式](./partner-center-portal/create-new-azure-apps-offer.md) 供應專案發佈到 Azure Marketplace，在範本內使用的任何新 GUID 都會在上傳範本時自動註冊到您的合作夥伴中心設定檔。  
 
 1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard)。
 
@@ -82,13 +82,13 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 1. 選取 [儲存]。
 
 ## <a name="use-resource-manager-templates"></a>使用 Resource Manager 範本
-許多合作夥伴解決方案都是使用 Azure Resource Manager 範本來部署。 如果您有 Azure Marketplace、GitHub 上或快速入門中提供的 Resource Manager 範本，修改範本以啟用客戶使用屬性的程式會很簡單。
+許多合作夥伴解決方案都是使用 Azure Resource Manager 範本來部署。 如果您有 Azure Marketplace、GitHub 上或作為快速入門提供的 Resource Manager 範本，修改範本以啟用客戶使用方式屬性的程式相當簡單。
 
 > [!NOTE]
 > 如需有關建立及發佈「解決方案範本」的詳細資訊，請參閱
 > * [建立及部署第一個 Resource Manager 範本](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 >* [Azure 應用程式供應項目](./partner-center-portal/create-new-azure-apps-offer.md)。
->* 影片：[建立 Azure Marketplace 的解決方案範本和受控應用程式](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
+>* 影片： [為 Azure Marketplace 建立解決方案範本和受控應用程式](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
 
 
 若要新增全域唯一識別碼 (GUID)，您只需要在主要範本檔案中進行一處修改：
@@ -97,9 +97,9 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 1. 開啟 Resource Manager 範本。
 
-1. 在主要範本檔案中加入新的資源。 資源只需要置於 **mainTemplate.json** 或 **azuredeploy.json** 檔案中，而非任何巢狀或連結的範本中。
+1. 在主要範本檔案中，新增類型為 [Microsoft .resources/部署](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments) 的新資源。 資源只需要置於 **mainTemplate.json** 或 **azuredeploy.json** 檔案中，而非任何巢狀或連結的範本中。
 
-1. 在前置詞 (後面輸入 GUID 值 `pid-` ，例如，pid-前置-pid-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063) 。
+1. 輸入 `pid-` 前置詞作為資源名稱之後的 GUID 值。 例如，如果 GUID 是 eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063，則資源名稱將會是 _pid-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063_-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063。
 
 1. 檢查範本是否有任何錯誤。
 
@@ -112,11 +112,11 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 若要啟用範本的追蹤資源，您必須在資源區段下新增下列其他資源。 在將下列範例程式碼新增至主要範本檔案時，請務必使用您自己的輸入對該範例進行修改。
 資源只需要新增至 **mainTemplate.json** 或 **azuredeploy.json** 檔案，不可新增至任何巢狀或連結的範本。
 
-```
+```json
 // Make sure to modify this sample code with your own inputs where applicable
 
 { // add this resource to the resources section in the mainTemplate.json (do not add the entire file)
-    "apiVersion": "2018-02-01",
+    "apiVersion": "2020-06-01",
     "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
     "properties": {
@@ -138,12 +138,12 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 ### <a name="tag-a-deployment-with-the-resource-manager-apis"></a>使用 Resource Manager API 標記部署
 
-若要啟用客戶使用狀況歸因，當您設計 API 呼叫時，請在要求中的使用者代理程式標頭中包含 GUID。 針對每個供應項目或 SKU 新增 GUID。 使用前置詞將字串格式化 `pid-` ，並包含合作夥伴產生的 GUID。 以下是可插入到使用者代理程式中的 GUID 格式範例：
+若要啟用客戶使用狀況歸因，當您設計 API 呼叫時，請在要求中的使用者代理程式標頭中包含 GUID。 針對每個供應項目或 SKU 新增 GUID。 使用前置詞格式化字串 `pid-` ，並包含夥伴產生的 GUID。 以下是可插入到使用者代理程式中的 GUID 格式範例：
 
 ![範例 GUID 格式](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
 > [!NOTE]
-> 此字串的格式至關重要。 如果 `pid-` 未包含前置詞，就不可能查詢資料。 不同的 SDK 會以不同的方式追蹤。 若要實作此方法，請檢閱支援和適用於慣用 Azure SDK 的方法。
+> 此字串的格式至關重要。 如果 `pid-` 未包含前置詞，則無法查詢資料。 不同的 SDK 會以不同的方式追蹤。 若要實作此方法，請檢閱支援和適用於慣用 Azure SDK 的方法。
 
 #### <a name="example-the-python-sdk"></a>範例：Python SDK
 
@@ -153,6 +153,20 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 > [!NOTE]
 > 為每個用戶端新增屬性。 沒有全域靜態設定。 您可以標記用戶端處理站，以確定每個用戶端都在正在追蹤。 如需詳細資訊，請參閱 [GitHub 上的此用戶端處理站範例](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)。
+
+#### <a name="example-the-net-sdk"></a>範例： .NET SDK
+
+針對 .NET，請務必設定使用者代理程式。 您可以使用 c # ) [中的下列](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) 程式碼 (範例來設定使用者代理程式：
+
+```csharp
+
+var azure = Microsoft.Azure.Management.Fluent.Azure
+    .Configure()
+    // Add your pid in the user agent header
+    .WithUserAgent("pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", String.Empty) 
+    .Authenticate(/* Credentials created via Microsoft.Azure.Management.ResourceManager.Fluent.SdkContext.AzureCredentialsFactory */)
+    .WithSubscription("<subscription ID>");
+```
 
 #### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>使用 Azure PowerShell 標記部署
 
@@ -246,11 +260,11 @@ foreach ($deployment in $deployments){
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Resource Manager 範本部署的通知
 
-當您部署此範本時，Microsoft 可以識別 \<PARTNER> 已部署 Azure 資源的軟體安裝。 Microsoft 可讓用來支援軟體的 Azure 資源相互關聯。 Microsoft 會收集這項資訊，以透過其產品提供最佳體驗以及經營業務。 Microsoft 隱私權原則 (位於 https://www.microsoft.com/trustcenter ) 規範此資料的收集與控管。
+當您部署此範本時，Microsoft 可以透過 \<PARTNER> 已部署的 Azure 資源來識別軟體的安裝。 Microsoft 可讓用來支援軟體的 Azure 資源相互關聯。 Microsoft 會收集這項資訊，以透過其產品提供最佳體驗以及經營業務。 Microsoft 隱私權原則 (位於 https://www.microsoft.com/trustcenter ) 規範此資料的收集與控管。
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>SDK 或 API 部署的通知
 
-當您部署 \<PARTNER> 軟體時，Microsoft 可以識別 \<PARTNER> 已部署之 Azure 資源的軟體安裝。 Microsoft 可讓用來支援軟體的 Azure 資源相互關聯。 Microsoft 會收集這項資訊，以透過其產品提供最佳體驗以及經營業務。 Microsoft 隱私權原則 (位於 https://www.microsoft.com/trustcenter ) 規範此資料的收集與控管。
+當您部署 \<PARTNER> 軟體時，Microsoft 可以透過 \<PARTNER> 已部署的 Azure 資源來識別軟體的安裝。 Microsoft 可讓用來支援軟體的 Azure 資源相互關聯。 Microsoft 會收集這項資訊，以透過其產品提供最佳體驗以及經營業務。 Microsoft 隱私權原則 (位於 https://www.microsoft.com/trustcenter ) 規範此資料的收集與控管。
 
 ## <a name="get-support"></a>取得支援
 
@@ -269,7 +283,7 @@ foreach ($deployment in $deployments){
 1. 針對您的問題選擇 [類別]：
 
    - 針對使用狀況關聯問題，請選取 [其他]。
-   - 如需 Azure Marketplace 的存取問題，請選取 [**存取問題**]。
+   - 針對 Azure Marketplace 的存取問題，請選取 [ **存取問題**]。
 
      ![選擇問題類別](media/marketplace-publishers-guide/lu-article-incident.png)
 
@@ -333,13 +347,13 @@ Azure 儲存體的 GUID 產生器表單保證會產生所需格式的 GUID。 �
 
 **對於 Azure Marketplace 中的解決方案範本供應項目，我可以使用私人自訂的 VHD 嗎？**
 
-不可以。 虛擬機器映射必須來自 Azure Marketplace，請參閱： [Azure Marketplace 上虛擬機器供應專案的發佈指南](marketplace-virtual-machines.md)。
+不可以。 虛擬機器映射必須來自 Azure Marketplace，請參閱： [Azure Marketplace 上的虛擬機器供應專案發佈指南](marketplace-virtual-machines.md)。
 
 您可以在市集使用自訂 VHD 建立 VM 供應項目，並標示為「私人」，不讓任何人看到。 然後，在您的解決方案範本中參考此 VM。
 
 **無法更新主要範本的 *contentVersion* 屬性嗎？**
 
-在某些情況下，從另一個範本使用 TemplateLink 來部署範本時，由於某種原因需要較舊的 contentVersion，就很可能發生問題。 因應措施是使用 metadata 屬性：
+這可能是 bug，在部署範本時，使用的 TemplateLink 來自另一個因為某些原因而預期較舊 contentVersion 的範本。 因應措施是使用 metadata 屬性：
 
 ```
 "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

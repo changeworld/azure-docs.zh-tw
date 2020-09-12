@@ -4,18 +4,18 @@ description: 在本文中，探索使用 Azure 備份服務備份 Azure Vm 的�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: ec79fc7c09f2bc1aeb2c07016365e831932fa1ff
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7206a62e3148c1bbb8d2e3704d991025deeece37
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018105"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377313"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
 本文提供使用 [Azure 備份](./backup-overview.md) 服務來備份 Azure vm 的常見問題解答。
 
-## <a name="backup"></a>備份
+## <a name="backup"></a>Backup
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>當我建立 VM 映射時，可以啟用這些映射以進行備份嗎？
 
@@ -23,7 +23,7 @@ ms.locfileid: "89018105"
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>VM 成本中是否包含備份成本？
 
-不知道。 備份成本與 VM 的成本分開。 深入瞭解 [Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
+不會。 備份成本與 VM 的成本分開。 深入瞭解 [Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
 
 ### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>啟用 VM 備份需要哪些許可權？
 
@@ -43,7 +43,7 @@ ms.locfileid: "89018105"
 
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>隨選備份作業是否會使用與排定備份相同的保留排程？
 
-不知道。 指定隨選備份作業的保留範圍。 根據預設，若從入口網站觸發，則會保留 30 天。
+不會。 指定隨選備份作業的保留範圍。 根據預設，若從入口網站觸發，則會保留 30 天。
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我在最近一些 VM 上啟用了 Azure 磁碟加密。 我的備份是否會繼續運作？
 
@@ -59,11 +59,11 @@ ms.locfileid: "89018105"
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>我的 VM 關閉了。 隨選或排程的備份工作會運作嗎？
 
-是。 備份會在機器關機時執行。 復原點會標示為「當機時保持一致」。
+可以。 備份會在機器關機時執行。 復原點會標示為「當機時保持一致」。
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>我是否可以取消進行中的備份作業？
 
-是。 您可以在 **拍攝快照** 集狀態中取消備份作業。 如果正在從快照集傳輸資料，則無法取消作業。
+可以。 您可以在 **拍攝快照** 集狀態中取消備份作業。 如果正在從快照集傳輸資料，則無法取消作業。
 
 ### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>我已啟用 Azure 備份 Service (所建立資源群組的鎖定，例如 `AzureBackupRG_<geo>_<number>`) 。 我的備份是否會繼續運作？
 
@@ -135,7 +135,7 @@ Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇�
 
 ### <a name="can-i-restore-a-vm-thats-been-deleted"></a>我可以還原已刪除的 VM 嗎？
 
-是。 即使您刪除 VM，您也可以移至保存庫中對應的備份專案，然後從復原點還原。
+可以。 即使您刪除 VM，您也可以移至保存庫中對應的備份專案，然後從復原點還原。
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>如何? 將 VM 還原至相同的可用性設定組？
 
@@ -197,6 +197,6 @@ VM 會使用已修改或新的原則中的排程和保留期設定來備份。
 
 目前，您可以根據指派給 VM 的備份原則，在 (VM) 層級的備份專案上，查看保留設定。
 
-若要查看備份的保留設定，其中一種方式是在 Azure 入口網站中流覽至 VM 的 [備份專案] [儀表板](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) 。 按一下其備份原則的連結，可協助您查看與 VM 相關聯的每日、每週、每月和每年保留點的保留期間。
+若要查看備份的保留設定，其中一種方式是在 Azure 入口網站中流覽至 VM 的 [備份專案] [儀表板](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) 。 選取備份原則的連結，可協助您查看與 VM 相關聯的每日、每週、每月和每年保留點的保留時間。
 
 您也可以使用 [Backup Explorer](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) 來查看單一窗格內所有 vm 的保留設定。 從任何復原服務保存庫流覽至 Backup Explorer，移至 [ **備份專案** ] 索引標籤，然後選取 [Advanced View] 以查看每個 VM 的詳細保留資訊。

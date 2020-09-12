@@ -3,12 +3,12 @@ title: 備份 Azure 檔案服務常見問題集
 description: 在本文中，您可以針對如何使用 Azure 備份服務來保護 Azure 檔案共用的常見問題，找到相關解答。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0db30de655bfc0b98baa81a4ef20532e697fc1f8
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: c62f8376b220911edd26edbe18955d0103440b81
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824724"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377415"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有關備份 Azure 檔案服務的問題
 
@@ -30,7 +30,7 @@ ms.locfileid: "88824724"
 
 是。 保護已連線至同步群組的 Azure 檔案共用，是已啟用的功能。
 
-### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>在嘗試備份檔案共用時，我按了一下 [儲存體帳戶] 來探索其中的檔案共用。 不過，我並未加以保護。 如何使用任何其他保存庫來保護這些檔案共用？
+### <a name="when-trying-to-back-up-file-shares-i-selected-a-storage-account-to-discover-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>當您嘗試備份檔案共用時，我選取了一個儲存體帳戶來探索其中的檔案共用。 不過，我並未加以保護。 如何使用任何其他保存庫來保護這些檔案共用？
 
 嘗試備份，並選取 [儲存體帳戶] 以探索其中的檔案共用時，向保存庫註冊此 [儲存體帳戶]。 如果您選擇使用不同的保存庫來保護檔案共用，從這個保存庫[取消註冊](manage-afs-backup.md#unregister-a-storage-account)所選的儲存體帳戶。
 

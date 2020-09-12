@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 90f5c55922a5fafb29a40faf9af719f77c74c6cf
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b9b72e8340722f8ddc97b3769ce22e607974a508
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265638"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297394"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>連接至媒體服務 v3 API-.NET
 
@@ -33,7 +33,7 @@ ms.locfileid: "89265638"
 - 安裝您想要用於 .NET 開發的工具。 本文中的步驟示範如何使用 [Visual Studio 2019 的社區版](https://www.visualstudio.com/downloads/)。 您可以使用 Visual Studio Code，請參閱使用 [c #](https://code.visualstudio.com/docs/languages/csharp)。 或者，您可以使用不同的程式碼編輯器。
 
 > [!IMPORTANT]
-> 複習 [命名慣例](media-services-apis-overview.md#naming-conventions)。
+> 檢閱[命名慣例](media-services-apis-overview.md#naming-conventions)。
 
 ## <a name="create-a-console-application"></a>建立主控台應用程式
 
@@ -46,7 +46,7 @@ ms.locfileid: "89265638"
 ## <a name="add-required-nuget-packages"></a>新增必要的 NuGet 封裝
 
 1. 在 Visual Studio 中，選取 [**工具**  >  **nuget 封裝管理員**  >  **nuget 管理員主控台**]。
-2. 在 **封裝管理員主控台** 視窗中，使用 `Install-Package` 命令新增下列 NuGet 套件。 例如 `Install-Package Microsoft.Azure.Management.Media`。
+2. 在 **封裝管理員主控台** 視窗中，使用 `Install-Package` 命令新增下列 NuGet 套件。 例如： `Install-Package Microsoft.Azure.Management.Media` 。
 
 |Package|描述|
 |---|---|
@@ -229,7 +229,7 @@ namespace ConsoleApp1
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [教學課程：上傳、編碼和串流影片-.NET](stream-files-tutorial-with-api.md) 
 - [教學課程：使用媒體服務 v3 進行即時串流-.NET](stream-live-tutorial-with-api.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: e55fa377f28572901202b4d722bea70786edae22
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bc41783bf977806b5f9bba5b953f1f581ad07f18
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942081"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299519"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>套用稽核原則設定原則時，虛擬機器沒有回應
 
@@ -27,7 +27,7 @@ ms.locfileid: "88942081"
 
 ## <a name="symptom"></a>徵狀
 
-當您使用 [開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示作業系統 (OS) 在開機期間具有套用 **稽核原則設定原則**的訊息。
+當您使用 [開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示作業系統 (OS) 在開機期間沒有回應，並顯示套用 **稽核原則設定原則**的訊息。
 
   ![OS 開機時，會顯示下列訊息：「套用稽核原則設定原則」](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 

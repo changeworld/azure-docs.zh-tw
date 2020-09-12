@@ -8,16 +8,16 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe448ea5a4d9610ff82beb7cfa1071d2e8249dfd
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 68df5256949db44b2b347002570c64d1aa0d55ea
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89257614"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297955"
 ---
 # <a name="streaming-locators"></a>串流定位器
 
@@ -106,6 +106,6 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 * [內容金鑰原則](content-key-policy-concept.md)
 * [教學課程：使用 .NET 上傳、編碼和串流影片](stream-files-tutorial-with-api.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [如何建立串流定位器和組建 Url](create-streaming-locator-build-url.md)

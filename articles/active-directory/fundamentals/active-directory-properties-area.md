@@ -13,17 +13,17 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfc60eacd70576d9cfa79dbc03368c8e8c4a8636
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f47ae9b087615a77f6bd4d3f14f1b0052037cba6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797388"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321968"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>使用 Azure Active Directory 新增組織的隱私權資訊
 本文說明租使用者系統管理員如何透過 Azure 入口網站將隱私權相關資訊新增至組織的 Azure Active Directory (Azure AD) 租使用者。
 
-我們強烈建議您同時新增您的全球隱私權連絡人和貴組織的隱私權聲明，讓您的內部員工和外部來賓可以檢查您的原則。 由於隱私權聲明是為每個企業量身打造、專屬於該家企業，強烈建議您洽詢律師尋求協助。
+強烈建議您加入您的全球隱私權連絡人和貴組織的隱私權聲明，讓內部員工和外部來賓可以檢查您的原則。 由於隱私權聲明是為每個企業量身打造、專屬於該家企業，強烈建議您洽詢律師尋求協助。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -46,15 +46,15 @@ ms.locfileid: "87797388"
     
     - **全域隱私權聯絡人。** 請輸入負責處理個人資料隱私權問題的聯絡人電子郵件地址。 若發生資料外洩情事，Microsoft 也會連繫此人員。 如果此處沒有列出人員，Microsoft 會聯絡您的全域系統管理員。
 
-    - **隱私權聲明 URL。** 輸入貴組織檔的連結，以描述您的組織如何處理內部和外部來賓的資料隱私權。
+    - **隱私權聲明 URL。** 輸入您組織檔的連結，以描述您的組織如何處理內部和外部來賓的資料隱私權。
 
         >[!Important]
-        >如果您未包含自己的隱私權聲明或隱私權連絡人，則外部來賓會在 [**審查許可權**] 方塊中看到文字，而您的** < _組織名稱_> 未提供其條款的連結供您審查**。 例如，來賓使用者在受邀透過 B2B 共同作業存取組織時，便會看到此訊息。
+        >如果您未包含自己的隱私權聲明或隱私權連絡人，外部來賓會在 [**審核許可權**] 方塊中看到文字，也就是** < _您的組織名稱_> 尚未提供其條款的連結供您查看**。 例如，來賓使用者在受邀透過 B2B 共同作業存取組織時，便會看到此訊息。
 
         ![顯示該訊息的 [B2B 共同作業檢閱使用權限] 方塊](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
 4. 選取 [儲存]。
 
 ## <a name="next-steps"></a>後續步驟
-- [Azure Active Directory B2B 共同作業邀請兌換](../b2b/redemption-experience.md)
+- [Azure Active Directory B2B 共同作業邀請兌換](../external-identities/redemption-experience.md)
 - [在 Azure Active Directory 中新增或變更使用者的設定檔資訊](active-directory-users-profile-azure-portal.md)

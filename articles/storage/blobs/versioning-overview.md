@@ -10,12 +10,12 @@ ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 72597d445be41ede47d043d11653df139bc52d0d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 2e3cfd27d36558587ca35cc1c573999a48092b0d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226257"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297656"
 ---
 # <a name="blob-versioning"></a>Blob 版本設定
 
@@ -66,7 +66,7 @@ Blob 版本設定適用于一般用途 v2、區塊 blob 和 Blob 儲存體帳戶
 
 下圖顯示寫入作業如何影響 blob 版本。 建立 blob 時，該 blob 會是目前的版本。 修改相同的 blob 時，會建立新的版本來儲存 blob 的先前狀態，而更新的 blob 會成為目前的版本。
 
-:::image type="content" source="media/versioning-overview/write-operations-blob-versions.png" alt-text="顯示寫入作業如何影響已建立版本之 blob 的圖表":::
+:::image type="content" source="media/versioning-overview/write-operations-blob-versions.png" alt-text="此圖顯示寫入作業如何影響已建立版本的 blob。":::
 
 > [!NOTE]
 > 在針對儲存體帳戶啟用版本設定之前建立的 blob 沒有版本識別碼。 修改該 blob 時，修改過的 blob 會變成目前的版本，並建立一個版本，以在更新之前儲存 blob 的狀態。 版本會指派為其建立時間的版本識別碼。
@@ -79,11 +79,11 @@ Blob 版本設定適用于一般用途 v2、區塊 blob 和 Blob 儲存體帳戶
 
 下圖顯示針對已建立版本之 blob 的刪除作業效果：
 
-:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="顯示已建立版本 blob 之刪除的圖表":::
+:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="顯示已建立版本 blob 之刪除的圖表。":::
 
 將新資料寫入 blob 會建立新版本的 blob。 任何現有版本都不會受到影響，如下圖所示。
 
-:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="顯示刪除後重新建立已建立版本之 blob 的圖表":::
+:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="此圖顯示刪除後重新建立已建立版本的 blob。":::
 
 ### <a name="blob-types"></a>Blob 類型
 
@@ -122,7 +122,7 @@ Blob 的所有版本都必須是相同的 blob 類型。 如果 blob 有舊版�
 
 下圖顯示停用版本設定之後修改 blob 的方式如何建立未建立版本的 blob。 任何與 blob 相關聯的現有版本都會保存。
 
-:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="顯示停用版本設定之後修改基底 blob 的圖表":::
+:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="顯示停用版本設定之後修改基底 blob 的圖表。":::
 
 ## <a name="blob-versioning-and-soft-delete"></a>Blob 版本設定和虛刪除
 
@@ -138,7 +138,7 @@ Blob 版本設定和 blob 虛刪除會一起運作，以提供您最佳的資料
 
 下圖顯示當您刪除 blob 或 blob 版本時，會發生什麼事。
 
-:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="顯示刪除已啟用虛刪除之版本的圖表":::
+:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="顯示刪除已啟用虛刪除之版本的圖表。":::
 
 如果在儲存體帳戶上啟用版本控制和虛刪除，則修改或刪除 blob 或 blob 版本時，不會建立虛刪除的快照集。
 
@@ -150,7 +150,7 @@ Blob 版本設定和 blob 虛刪除會一起運作，以提供您最佳的資料
 
 下圖顯示如何使用「取消 **刪除 blob** 」作業來還原已虛刪除的 blob 版本，以及如何使用「 **複製 blob** 」作業來還原目前版本的 blob。
 
-:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="顯示如何還原虛刪除版本的圖表":::
+:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="顯示如何還原虛刪除版本的圖表。":::
 
 經過虛刪除保留期限之後，任何虛刪除的 blob 版本都會永久刪除。
 
@@ -169,7 +169,7 @@ Blob 快照集是在特定時間點取得之 blob 的唯讀複本。 Blob 快照
 
 下圖顯示當您取得已建立版本之 blob 的快照時，會發生什麼事。 在圖表中，版本識別碼為2和3的 blob 版本與快照集包含相同的資料。
 
-:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="顯示已建立版本之 blob 快照集的圖表 ":::
+:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="顯示已建立版本之 blob 快照集的圖表。":::
 
 ## <a name="authorize-operations-on-blob-versions"></a>在 blob 版本上授權作業
 
@@ -185,7 +185,7 @@ Blob 版本設定的設計是為了保護您的資料免于遭到意外或惡意
 
 下表顯示支援刪除 blob 或 blob 版本的 RBAC 動作。
 
-| 說明 | Blob 服務作業 | 需要 RBAC 資料動作 | RBAC 內建角色支援 |
+| 描述 | Blob 服務作業 | 需要 RBAC 資料動作 | RBAC 內建角色支援 |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | 正在刪除 blob 的目前版本 | 刪除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | 儲存體 Blob 資料參與者 |
 | 刪除版本 | 刪除 Blob | **Microsoft. Storage/storageAccounts/blobServices/container/blob/deleteBlobVersion/action** | 儲存體 Blob 資料擁有者 |
@@ -231,25 +231,25 @@ Blob 儲存體沒有方法可判斷兩個區塊是否包含相同的資料。 �
 
 在案例1中，blob 有先前的版本。 Blob 自建立版本以來尚未更新，因此只會針對唯一區塊1、2和3產生費用。
 
-![圖1顯示基底 blob 和先前版本中唯一區塊的計費](./media/versioning-overview/versions-billing-scenario-1.png)
+![圖1顯示基底 blob 和先前版本中唯一區塊的計費。](./media/versioning-overview/versions-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>案例 2
 
 在案例2中，blob 中的圖)  (區塊3的一個區塊已更新。 雖然更新的區塊包含相同的資料和相同的識別碼，但它與舊版中的區塊3不同。 因此，此帳戶必須支付四個區塊的費用。
 
-![圖2顯示基底 blob 和先前版本中唯一區塊的計費](./media/versioning-overview/versions-billing-scenario-2.png)
+![圖2顯示基底 blob 和先前版本中唯一區塊的計費。](./media/versioning-overview/versions-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>案例 3
 
 在案例3中，blob 已更新，但版本沒有。 區塊3已由基底 blob 中的區塊4取代，但先前的版本仍會反映區塊3。 因此，此帳戶必須支付四個區塊的費用。
 
-![圖3顯示基底 blob 和先前版本中唯一區塊的計費](./media/versioning-overview/versions-billing-scenario-3.png)
+![圖3顯示基底 blob 和先前版本中唯一區塊的計費。](./media/versioning-overview/versions-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>案例 4
 
 在案例 4 中，基底 Blob 已完全更新，且未包含它的任何原始區塊。 如此一來，帳戶就會針對基底 blob 中的所有八個唯一區塊進行收費 &mdash; ，而在舊版中會收取四個。 如果您要使用 [Put blob](/rest/api/storageservices/put-blob) 作業寫入 blob，就會發生這種情況，因為它會取代基底 blob 的整個內容。
 
-![圖4顯示基底 blob 和先前版本中唯一區塊的計費](./media/versioning-overview/versions-billing-scenario-4.png)
+![圖4顯示基底 blob 和先前版本中唯一區塊的計費。](./media/versioning-overview/versions-billing-scenario-4.png)
 
 ### <a name="billing-when-the-blob-tier-has-been-explicitly-set"></a>在明確設定 blob 層時進行計費
 
@@ -266,6 +266,10 @@ Blob 儲存體沒有方法可判斷兩個區塊是否包含相同的資料。 �
 | 先前的版本 | 新層中的版本和原始層中的基底 blob，以及其他版本中的任何唯一區塊。<sup>1</sup> |
 
 <sup>1</sup>如果有其他先前的版本或尚未從其原始階層移動的快照集，則會根據所包含的唯一區塊數目來收費這些版本或快照集，如 [未明確設定 blob 層的計費](#billing-when-the-blob-tier-has-not-been-explicitly-set)中所述。
+
+下圖說明當已建立版本的 blob 移至不同的層級時，物件的計費方式。
+
+:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="顯示如何在已建立版本的 blob 明確分層時計費物件的圖表。":::
 
 明確設定 blob、版本或快照集的層級無法復原。 如果您將 blob 移至新的階層，然後再將它移回其原始階層，則會向您收取物件的完整內容長度，即使它與原始層中的其他物件共用區塊也一樣。
 

@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 7c5015cb6328dba70fed40053bc234966572ae98
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 64ee8f2daddd53d37aeaf0f02208e02500b48f57
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873716"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320863"
 ---
 # <a name="what-are-security-defaults"></a>什麼是安全性預設值？
 
-與一般身分識別相關的攻擊（例如密碼噴灑、重新執行和網路釣魚）變得越來越普遍，因此管理安全性可能會很棘手。 安全性預設值可供使用預先設定的設安全性定，輕鬆地保護組織免於遭受這些攻擊：
+管理安全性可能很難處理常見的身分識別相關攻擊，例如密碼噴灑、重新執行，以及網路釣魚變得越來越普及。 安全性預設值可供使用預先設定的設安全性定，輕鬆地保護組織免於遭受這些攻擊：
 
 - 要求所有使用者註冊 Azure Multi-Factor Authentication。
 - 要求系統管理員執行多重要素驗證。
@@ -92,7 +92,7 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 > [!WARNING]
 > 啟用安全性預設值之前，請確定系統管理員未使用舊版驗證通訊協定。 如需詳細資訊，請參閱[如何離開舊版驗證](concept-fundamentals-block-legacy-authentication.md)。
 
-- [如何將多功能裝置或應用程式設定為使用 Office 365 和 Microsoft 365 傳送電子郵件](https://docs.microsoft.com/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
+- [如何將多功能裝置或應用程式設定為使用 Office 365 和 Microsoft 365 傳送電子郵件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
 
 ### <a name="protecting-privileged-actions"></a>保護特殊權限動作
 
@@ -109,7 +109,7 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 在租用戶中啟用安全性預設值之後，任何存取 Azure 入口網站、Azure PowerShell 或 Azure CLI 的使用者都必須完成額外的驗證。 此原則適用於所有存取 Azure Resource Manager 的使用者，無論其為系統管理員或使用者。 
 
 > [!NOTE]
-> 2017 之前的 Exchange Online 租用戶預設會停用新式驗證。 為了避免在透過這些租用戶進行驗證時可能發生登入迴圈，您必須[啟用新式驗證](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)。
+> 2017 之前的 Exchange Online 租用戶預設會停用新式驗證。 為了避免在透過這些租用戶進行驗證時可能發生登入迴圈，您必須[啟用新式驗證](/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)。
 
 > [!NOTE]
 > Azure AD Connect 同步處理帳戶會從安全性預設值排除，且不會提示註冊或執行多重要素驗證。 組織不應將此帳戶用於其他用途。

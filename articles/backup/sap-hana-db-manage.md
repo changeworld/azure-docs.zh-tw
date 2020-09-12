@@ -3,12 +3,12 @@ title: 在 Azure VM 上管理備份的 SAP HANA 資料庫
 description: 在本文中，可了解在 Azure 虛擬機器上執行的 SAP HANA 資料庫的一般管理和監視工作。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 40761415042cc619893ab3a712a763d4fb046e38
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e257aa7771f6f76a4d53f16255c2f3cbb80c8967
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267474"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377449"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>管理和監視已備份的 SAP Hana 資料庫
 
@@ -41,7 +41,7 @@ Azure 備份會在 Azure 入口網站的 [備份作業] 區段中顯示所有手
 
   ![備份警示清單](./media/sap-hana-db-manage/backup-alerts-list.png)
 
-* 按一下警示以檢視更多詳細資料：
+* 選取警示以查看更多詳細資料：
 
   ![警示詳細資料](./media/sap-hana-db-manage/alert-details.png)
 
@@ -61,9 +61,9 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 備份會根據原則排程執行。 您可以視需要執行備份，如下所示：
 
-1. 在保存庫功能表中，按一下 [備份項目]。
-2. 在 [備份項目] 中，選取執行 SAP Hana 資料庫的 VM，然後按一下 [立即備份]。
-3. 在 [ **立即備份**] 中，選擇您想要執行的備份類型。 然後按一下 [確定] 。 系統會根據與此備份專案相關聯的原則來保留此備份。
+1. 在保存庫功能表中，選取 [ **備份專案**]。
+2. 在 [ **備份專案**] 中，選取正在執行 SAP Hana 資料庫的 VM，然後選取 [ **立即備份**]。
+3. 在 [ **立即備份**] 中，選擇您想要執行的備份類型。 然後選取 [確定]。 系統會根據與此備份專案相關聯的原則來保留此備份。
 4. 監視入口網站通知。 您可以在保存庫儀表板中監視作業進度 > [備份作業] > [進行中]。 根據您的資料庫大小，建立初始備份可能需要花一點時間。
 
 依預設，隨選備份的保留期為45天。
@@ -114,7 +114,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
   ![選擇 [Azure VM 中的 SAP HANA]](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
 
 * 選擇您想要變更基礎原則的備份項目
-* 按一下現有的備份原則
+* 選取現有的備份原則。
 
   ![選取現有的備份原則](./media/sap-hana-db-manage/existing-backup-policy.png)
 
@@ -173,7 +173,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 如果您選擇保留復原點，請記住下列詳細資料：
 
-* 所有復原點會永遠保持不變，而且所有的剪除都會停止保護，但保留資料。
+* 所有復原點會永遠保持不變，而停止保護但保留資料時，所有清除作業都應該停止。
 * 您需支付受保護執行個體和已使用儲存體的費用。 如需詳細資訊，請參閱 [Azure 備份服務定價](https://azure.microsoft.com/pricing/details/backup/)。
 * 如果您刪除資料來源，但沒有停止備份，新的備份將會失敗。
 

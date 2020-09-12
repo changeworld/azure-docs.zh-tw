@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 38c46bdcce64f726b3a7ddf74e0cfd10a14ba663
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 53bd7a404e4635833b03507e8b5ae93ae40b1c61
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268020"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318976"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Kubernetes Azure Stack Edge 裝置上的工作負載管理
 
@@ -47,7 +47,7 @@ ms.locfileid: "89268020"
 
 ![Kubernetes 工作負載部署](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
 
-- **本機部署**：這是透過命令列存取工具 `kubectl` ，例如，可讓您部署 Kubernetes `yamls` 。 您可以使用檔案在您所建立的 Azure Stack Edge 上連接到 Kubernetes 叢集 `kubeconfig` 。 如需詳細資訊，請移至透過 [Kubectl 存取 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集。
+- **本機部署**：此部署是透過命令列存取工具（例如，可 `kubectl` 讓您部署 Kubernetes） `yamls` 。 您可以透過檔案存取 Azure Stack Edge 上的 Kubernetes 叢集 `kubeconfig` 。 如需詳細資訊，請移至透過 [Kubectl 存取 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集。
 
 - **IoT Edge 部署**：這是透過連接到 Azure IoT 中樞的 IoT Edge。 您可以透過命名空間連接到 Azure Stack Edge 裝置上的 Kubernetes 叢集 `iotedge` 。 部署在此命名空間中的 IoT Edge 代理程式，會負責與 Azure 的連線。 您可以 `IoT Edge deployment.json` 使用 AZURE DEVOPS CI/CD 來套用設定。 命名空間和 IoT Edge 管理是透過雲端操作員進行。
 
@@ -59,12 +59,12 @@ ms.locfileid: "89268020"
 
 - **單一或多個類型**：您可以選擇單一部署選項，或是混合不同的部署選項。
 - **雲端和本機**：視您的應用程式而定，您可以透過 kubectl 或雲端部署，透過 IoT Edge 和 Azure Arc 選擇本機部署。 
-    - 本機部署較適用于開發案例。 當您選擇本機部署時，系統會限制您的 Azure Stack Edge 裝置部署所在的網路。
+    - 當您選擇本機部署時，系統會限制您的 Azure Stack Edge 裝置部署所在的網路。
     - 如果您有可部署的雲端代理程式，您應該部署雲端操作員並使用雲端管理。
-- **IoT 與 Azure Arc**：選擇部署也取決於您產品案例的目的。 如果您要部署的應用程式或容器與 IoT 或 IoT 生態系統有更深入的整合，則您應該挑選部署應用程式的 IoT Edge 方式。 如果您有現有的 Kubernetes 部署，Azure Arc 會是偏好的選擇。
+- **IoT 與 Azure Arc**：選擇部署也取決於您產品案例的目的。 如果您要部署的應用程式或容器與 IoT 或 IoT 生態系統有更深入的整合，請選取 IoT Edge 以部署應用程式。 如果您有現有的 Kubernetes 部署，Azure Arc 會是偏好的選擇。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要透過 kubectl 在本機部署應用程式，請參閱：
 
@@ -76,4 +76,4 @@ ms.locfileid: "89268020"
 
 若要透過 Azure Arc 部署應用程式，請參閱：
 
-- [使用 Azure Arc 部署應用程式](azure-stack-edge-gpu-deploy-sample-module.md)。
+- [使用 Azure Arc 部署應用程式](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)。

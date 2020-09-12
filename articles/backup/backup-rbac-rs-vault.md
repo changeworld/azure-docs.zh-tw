@@ -4,12 +4,12 @@ description: 使用角色型存取控制來管理復原服務保存庫中的備�
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 1a4bb617511f5d5ccf882ccb11e7d88eb7a848ea
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c24d075dcb9ac36ce741db746d69aa9e61fac39d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017799"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376123"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用角色型存取控制來管理 Azure 備份復原點
 
@@ -56,7 +56,7 @@ Azure 備份提供三個內建角色來控制備份管理作業。 深入瞭解 
 | 刪除已註冊的內部部署 Windows Server/用戶端/SCDPM 或 Azure 備份伺服器 | 備份參與者 | 復原服務保存庫 |
 
 > [!IMPORTANT]
-> 如果您指定 VM 資源範圍內的 VM 參與者，並按一下 VM 設定中的 [備份]，它就會開啟 [啟用備份] 畫面 (即使已在呼叫時將 VM 備份)，以確認備份狀態只能在訂用帳戶層級才能運作。 若要避免這個問題，請移至保存庫並開啟 VM 的備份項目檢視，或在訂用帳戶層級指定 VM 參與者角色。
+> 如果您在 VM 資源範圍指定 VM 參與者，並選取 [ **備份** ] 作為 vm 設定的一部分，則會開啟 [ **啟用備份** ] 畫面，即使 vm 已備份也一樣。 這是因為只在訂用帳戶層級上驗證備份狀態的呼叫才會生效。 若要避免這種情況，請移至保存庫並開啟 VM 的備份專案視圖，或在訂用帳戶層級指定 VM 參與者角色。
 
 ## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Azure 檔案共用備份的最小角色需求
 
@@ -75,7 +75,7 @@ Azure 備份提供三個內建角色來控制備份管理作業。 深入瞭解 
 | 從保存庫取消註冊儲存體帳戶 |備份參與者 | 復原服務保存庫 |
 | |儲存體帳戶參與者 | 儲存體帳戶資源|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [Azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)：開始使用 Azure 入口網站中的 RBAC。
 * 了解如何使用下列各項管理存取權：

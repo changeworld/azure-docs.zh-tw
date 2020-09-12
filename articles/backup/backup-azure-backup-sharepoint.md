@@ -3,18 +3,18 @@ title: 使用 DPM 將 SharePoint 伺服器陣列備份至 Azure
 description: 這篇文章概述 SharePoint 伺服器陣列至 Azure 的 DPM/Azure 備份伺服器保護
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: b326ce15cd605f4f768a03b95337bbc5bd6aaabc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a667626fb53920150a4b5a16759228aacbfae75d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032879"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375239"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>使用 DPM 將 SharePoint 伺服器陣列備份至 Azure
 
 您可以使用 System Center Data Protection Manager (DPM)，將 SharePoint 伺服器陣列備份到 Microsoft Azure，其方法與備份其他資料來源極為類似。 Azure 備份提供靈活的備份排程來建立每日、每週、每月或每年備份點，並可讓您針對各種備份點執行保留原則選項。 DPM 可讓您儲存本機磁碟複本來快速達成復原時間目標 (RTO)，也可以將複本儲存到 Azure 來進行經濟實惠的長期保留。
 
-使用 DPM 將 SharePoint 備份至 Azure，是將 SharePoint 備份至本機 DPM 的類似程式。 本文說明 Azure 的特定考量。
+使用 DPM 將 SharePoint 備份至 Azure 的程式，與將 SharePoint 備份到本機 DPM 的流程非常類似。 本文說明 Azure 的特定考量。
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>SharePoint 支援的版本與相關保護案例
 
@@ -28,19 +28,19 @@ ms.locfileid: "87032879"
 
 繼續之前，請確定 [使用 Microsoft Azure 備份來保護工作負載的所有必要條件](backup-azure-dpm-introduction.md#prerequisites-and-limitations) 已滿足。 一些滿足必要條件的工作包括︰建立備份保存庫、下載保存庫認證、安裝 Azure 備份代理程式，以及向保存庫註冊 DPM/Azure 備份伺服器。
 
-您可以在[使用 DPM 備份 SharePoint 一](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#prerequisites-and-limitations)文中找到其他必要條件和限制。
+如需其他必要條件和限制，請參閱 [使用 DPM 的備份 SharePoint](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#prerequisites-and-limitations) 文章。
 
 ## <a name="configure-backup"></a>設定備份
 
-若要備份 SharePoint 伺服器陣列，您要使用 ConfigureSharePoint.exe 設定 SharePoint 保護，然後在 DPM 中建立保護群組。 如需指示，請參閱 DPM 檔中的[設定備份](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup)。
+若要備份 SharePoint 伺服器陣列，您要使用 ConfigureSharePoint.exe 設定 SharePoint 保護，然後在 DPM 中建立保護群組。 如需相關指示，請參閱 DPM 檔中的 [設定備份](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup) 。
 
 ## <a name="monitoring"></a>監視
 
-若要監視備份作業，請依照[監視 DPM 備份](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#monitoring)中的指示進行操作。
+若要監視備份作業，請遵循[監視 DPM 備份](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#monitoring)中的指示。
 
 ## <a name="restore-sharepoint-data"></a>還原 SharePoint 資料
 
-若要瞭解如何使用 DPM 從磁片還原 SharePoint 專案，請參閱[還原 sharepoint 資料](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#restore-sharepoint-data)。
+若要瞭解如何使用 DPM 從磁片還原 SharePoint 專案，請參閱 [還原 sharepoint 資料](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#restore-sharepoint-data)。
 
 ## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>使用 DPM 從 Azure 中還原 SharePoint 資料庫
 
@@ -53,7 +53,7 @@ ms.locfileid: "87032879"
    > 由於 SharePoint 伺服器陣列在 Azure 中受長期保留保護，因此 DPM 伺服器上沒有可用的目錄資訊 (元資料)。 如此一來，每當需要復原時間點 SharePoint 內容資料庫，您就需要重新編目 SharePoint 伺服器陣列。
    >
    >
-3. 按一下 [重新編目] 。
+3. 選取 [ **重新編目**]。
 
     ![DPM SharePoint Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -61,19 +61,19 @@ ms.locfileid: "87032879"
 
     ![DPM SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    完成編目後，狀態會變更為 [成功] 。 按一下 [關閉] 。
+    完成編目後，狀態會變更為 [成功] 。 選取 [關閉]。
 
     ![DPM SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. 按一下 DPM [復原] **** 索引標籤中顯示的 SharePoint 物件，以取得內容資料庫結構。 在項目上按一下滑鼠右鍵，然後按一下 [復原] 。
+4. 選取 **[DPM 復原** ] 索引標籤中顯示的 SharePoint 物件，以取得內容資料庫結構。 以滑鼠右鍵按一下專案，然後選取 [ **復原**]。
 
     ![DPM SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. 此時，依照本文前述的復原步驟，從磁碟復原 SharePoint 內容資料庫。
 
 ## <a name="switching-the-front-end-web-server"></a>切換前端網頁伺服器
 
-如果您有一部以上的前端網頁伺服器，而且想要切換 DPM 用來保護伺服器陣列的伺服器，請遵循[切換前端網頁伺服器](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#switching-the-front-end-web-server)中的指示。
+如果您有一部以上的前端網頁伺服器，而且想要切換 DPM 用來保護伺服器陣列的伺服器，請遵循 [切換前端網頁伺服器](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#switching-the-front-end-web-server)的指示。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [Azure 備份伺服器和 DPM-常見問題](backup-azure-dpm-azure-server-faq.md)
 * [針對 System Center Data Protection Manager 疑難排解](backup-azure-scdpm-troubleshooting.md)

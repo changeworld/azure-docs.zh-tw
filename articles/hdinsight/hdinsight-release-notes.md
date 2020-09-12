@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fd0412459e7d6e51b6abdccbc8782d157acee6b9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826815"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319792"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 版本資訊
 
@@ -49,7 +49,7 @@ Apache Tez View 可用來追蹤和偵測 Hive Tez 作業的執行。 從這個�
 
 ## <a name="behavior-changes"></a>行為變更
 ### <a name="ambari-stack-version-change"></a>Ambari stack 版本變更
-從這個版本開始，Ambari 版本會從2.x 變更為4.1。 您可以從 Ambari UI 取得 Ambari 版本的相關 >。
+在此版本中，Ambari 版本會從 2.x. x 變更為4.1。 您可以在 Ambari： Ambari > 使用者 > 版本中，確認 stack 版本 (HDInsight 4.1) 。
 
 ## <a name="upcoming-changes"></a>即將推出的變更
 不需要注意任何即將推出的重大變更。
@@ -75,4 +75,4 @@ HDInsight 會持續改善叢集的可靠性和效能。
 
 ## <a name="known-issues"></a>已知問題
 
-已在 Azure 入口網站中修正問題，當使用者使用公開金鑰的 SSH 驗證類型建立 Azure HDInsight 叢集時，就會遇到錯誤。 當使用者按一下 [ **審核 + 建立**] 時，他們會收到錯誤「不得包含 SSH 使用者名稱中的三個連續字元」。 已修正此問題，但您可能需要按 CTRL + F5 以載入更正的視圖，以重新整理瀏覽器快取。 解決此問題的因應措施是使用 ARM 範本建立叢集。 
+已修正 Azure 入口網站中的問題，在此問題中，使用者在使用 SSH 驗證類型的公開金鑰建立 Azure HDInsight 叢集時會遇到錯誤。 當使用者按一下 [檢閱 + 建立] 時，會收到「不得包含來自 SSH 使用者名稱的任何三個連續字元」錯誤。 已修正此問題，但您可能需要按下 CTRL + F5 來載入更正的檢視，以重新整理瀏覽器快取。 此問題的因應措施是使用 ARM 範本建立叢集。 

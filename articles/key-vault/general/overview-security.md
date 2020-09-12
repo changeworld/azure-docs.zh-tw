@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault 安全性 | Microsoft Docs
+title: Azure Key Vault 安全性
 description: 針對 Azure Key Vault、金鑰和祕密進行存取權限管理。 包含 Key Vault 的驗證和授權模型以及如何保護金鑰保存庫。
 services: key-vault
 author: msmbaldwin
@@ -10,17 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
-Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: edef64c215f96b34cd0efbff4521a7d5adb98885
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870573"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377568"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
-您需要在雲端保護加密金鑰和祕密 (例如憑證、連接字串和密碼)，因此您要使用 Azure Key Vault。 您要儲存機密和業務關鍵資料，因此您必須採取步驟，將保存庫和其中所儲存之資料的安全性發揮到極致。 此文章將涵蓋您在設計 Azure Key Vault 安全性時，應該考慮的一些概念。
+您可以使用 Azure Key Vault 來保護雲端中的加密金鑰和秘密，例如憑證、連接字串和密碼。 當您儲存機密和商務關鍵資料時，您需要採取步驟，將保存庫的安全性和儲存在其中的資料最大化。
 
 ## <a name="identity-and-access-management"></a>身分識別和存取管理
 
@@ -65,7 +64,7 @@ Key Vault 存取原則可分別授與金鑰、祕密或憑證的權限。 您只
 > [!IMPORTANT]
 > Key Vault 存取原則不支援細微物件層級的權限，例如特定金鑰、祕密或憑證。 對使用者授與金鑰的建立和刪除權限時，其便可對該金鑰保存庫的所有金鑰執行這些作業。
 
-若要設定金鑰保存庫的存取原則，請使用 [Azure 入口網站](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azure/) 或 [Key Vault 管理 REST API](/rest/api/keyvault/)。
+您可以設定金鑰保存庫的存取原則使用 [Azure 入口網站](assign-access-policy-portal.md)、 [Azure CLI](assign-access-policy-cli.md)、 [Azure PowerShell](assign-access-policy-powershell.md)或 [Key Vault 管理 REST api](/rest/api/keyvault/)。
 
 您可以使用 [Azure Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md)來限制資料平面的存取)。 您可以設定[防火牆和虛擬網路規則](network-security.md)來額外加上一層安全性。
 
@@ -93,7 +92,7 @@ Key Vault 記錄會儲存在保存庫上執行之活動的相關資訊。 Key Va
 - 請使用標準的 Azure 存取控制方法限制可存取記錄的人員，藉此來保護記錄。
 - 刪除不想繼續保留在儲存體帳戶中的記錄。
 
-如需安全管理儲存體帳戶的建議，請檢閱 [Azure 儲存體安全性指南](../../storage/blobs/security-recommendations.md)
+如需安全地管理儲存體帳戶的建議，請參閱 [Azure 儲存體安全性指南](../../storage/blobs/security-recommendations.md)
 
 ## <a name="next-steps"></a>後續步驟
 

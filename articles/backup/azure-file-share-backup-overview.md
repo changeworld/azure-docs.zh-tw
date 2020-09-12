@@ -3,12 +3,12 @@ title: 關於 Azure 檔案共用備份
 description: 瞭解如何在復原服務保存庫中備份 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: dd8a17639c006dd1c0e8cc193776bb63cb536ceb
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e955df7662bd18ed1d1d4ec1f0aa6c9474c5386f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180009"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378078"
 ---
 # <a name="about-azure-file-share-backup"></a>關於 Azure 檔案共用備份
 
@@ -44,7 +44,7 @@ Azure 檔案共用備份是以雲端為基礎的原生備份解決方案，可�
 
 6. 您可以從來源檔案共用上可用的快照集，將 Azure 檔案共用內容還原 (個別檔案或完整共用) 。 觸發作業之後，就會從中繼資料存放區中取出快照集 URL，並將資料從來源快照集列出並傳送至您選擇的目標檔案共用。
 
-7. 如果您使用 Azure 檔案同步，則備份服務會向 Azure 檔案同步服務指出正在還原的檔案路徑，然後在這些檔案上觸發背景變更偵測處理常式。 任何已變更的檔案都會同步到伺服器端點。 此程式會與對 Azure 檔案共用的原始還原進行平行處理。
+7. 如果您使用 Azure 檔案同步，則備份服務會向 Azure 檔案同步服務指出正在還原之檔案的路徑，然後在這些檔案上觸發背景變更偵測處理常式。 任何已變更的檔案都會同步到伺服器端點。 此程式會與對 Azure 檔案共用的原始還原進行平行處理。
 
 8. 備份和還原作業監視資料會推送至 Azure 備份的監視服務。 這可讓您在單一儀表板中監視檔案共用的雲端備份。 此外，您也可以在備份健康情況受到影響時，設定警示或電子郵件通知。 電子郵件會透過 Azure 電子郵件服務傳送。
 
@@ -52,9 +52,9 @@ Azure 檔案共用備份是以雲端為基礎的原生備份解決方案，可�
 
 Azure 檔案共用備份解決方案有兩個相關成本：
 
-1. **快照儲存體成本**：快照集產生的儲存體費用會根據[此處](https://azure.microsoft.com/pricing/details/storage/files/)所述的定價詳細資料，隨 Azure 檔案儲存體使用量計費 
+1. **快照儲存體成本**：快照集產生的儲存體費用會根據[此處](https://azure.microsoft.com/pricing/details/storage/files/)所述的定價詳細資料，隨 Azure 檔案儲存體使用量計費
 
-2. **受保護的實例費用** ：自2020年9月1日起，客戶將根據 [此處](https://azure.microsoft.com/en-in/pricing/details/backup/) 所述的定價詳細資料向您收取受保護的實例費用。受保護的實例費用取決於儲存體帳戶中受保護檔案共用的大小總計。
+2. **受保護的實例費用**：自2020年9月1日起，客戶將根據 [此處](https://azure.microsoft.com/pricing/details/backup/)所述的定價詳細資料向您收取受保護的實例費用。受保護的實例費用取決於儲存體帳戶中受保護檔案共用的大小總計。
 
 若要取得備份 Azure 檔案共用的詳細估計值，您可以下載詳細的 [Azure 備份定價估算器](https://aka.ms/AzureBackupCostEstimates)。  
 

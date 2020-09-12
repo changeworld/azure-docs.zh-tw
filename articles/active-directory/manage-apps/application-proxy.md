@@ -1,5 +1,5 @@
 ---
-title: 對內部部署應用程式的遠端存取-Azure AD 應用程式 Proxy
+title: 遠端存取內部部署應用程式-Azure AD 應用程式 Proxy
 description: Azure Active Directory 應用程式 Proxy 為內部部署 Web 應用程式提供安全的遠端存取。 單一登入 Azure AD 後，使用者可以透過外部 URL 或內部應用程式入口網站存取雲端和內部部署應用程式。 例如，應用程式 Proxy 可以為遠端桌面、SharePoint、Teams、Tableau、Qlik 和企業營運 (LOB) 應用程式提供遠端存取和單一登入。
 services: active-directory
 author: kenwith
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 96ebfecf01ff147a874674861c7cb64cb3725d52
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 82e984b629c8d838ba179b25a78262eccf078a04
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164915"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377857"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>透過 Azure AD 應用程式 Proxy 遠端存取內部部署應用程式
 
@@ -43,7 +43,7 @@ Azure AD 應用程式 Proxy 具有下列特性：
 
 應用程式 Proxy 支援單一登入。 如需有關支援的方法的詳細資訊，請參閱[選擇單一登入方法](sso-options.md#choosing-a-single-sign-on-method)。
 
-建議使用應用程式 Proxy，讓遠端使用者存取內部資源。 應用程式 Proxy 會取代 VPN 或反向 Proxy 的需求。 不適合用于公司網路上的內部使用者。  這些不必要地使用應用程式 Proxy 的使用者可能會產生非預期且不想要的效能問題。
+建議應用程式 Proxy 讓遠端使用者存取內部資源。 應用程式 Proxy 會取代 VPN 或反向 Proxy 的需求。 它不適合公司網路上的內部使用者。  不必要地使用應用程式 Proxy 的使用者，可能會導致非預期且不必要的效能問題。
 
 ## <a name="how-application-proxy-works"></a>應用程式 Proxy 的運作方式為何
 
@@ -58,6 +58,11 @@ Azure AD 應用程式 Proxy 具有下列特性：
 5. 連接器會將要求傳送至內部部署應用程式。
 6. 回應會透過應用程式 Proxy 服務與連接器傳送給使用者。
 
+> [!NOTE]
+> 如同大多數 Azure AD 混合式代理程式，應用程式 Proxy 連接器不會要求您透過防火牆開啟輸入連線。 步驟3中的使用者流量會在 Azure AD) 中的應用程式 Proxy 服務 (終止。  (內部部署) 的「應用程式 Proxy 連接器」負責通訊的其餘部分。
+>
+
+
 | 元件 | 描述 |
 | --------- | ----------- |
 | 端點  | 端點可以是 URL 或[使用者入口網站](end-user-experiences.md)。 使用者可以藉由存取外部 URL，來連線網路外部的應用程式。 您網路內的使用者可以透過 URL 或使用者入口網站存取應用程式。 使用者存取這些端點的其中一個時，會在 Azure AD 中進行驗證，然後透過連接器路由至內部部署應用程式。|
@@ -67,6 +72,6 @@ Azure AD 應用程式 Proxy 具有下列特性：
 | Active Directory (AD) | Active Directory 在內部部署執行以對網域帳戶執行驗證。 設定單一登入之後，連接器將與 AD 通訊以執行所需的任何額外的驗證。
 | 內部部署應用程式 | 最後，使用者就能夠存取內部部署應用程式。
 
-## <a name="next-steps"></a>後續步驟
-若要開始使用應用程式 Proxy，請參閱[教學課程：新增內部部署應用程式以透過應用程式 proxy 進行遠端存取](application-proxy-add-on-premises-application.md)。
+## <a name="next-steps"></a>接下來的步驟
+若要開始使用應用程式 Proxy，請參閱 [教學課程：新增內部部署應用程式，以透過應用程式 proxy 進行遠端存取](application-proxy-add-on-premises-application.md)。
 

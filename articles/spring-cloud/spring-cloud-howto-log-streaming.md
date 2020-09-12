@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: fb76f7897b9647a688e21993002f9c96fe9487f8
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 45f892064d0910029db37c56f731a072a6c7514e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046743"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299604"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>即時串流 Azure Spring Cloud 應用程式記錄
 Azure 春季 Cloud 可在 Azure CLI 中進行記錄串流，以取得即時應用程式主控台記錄以進行疑難排解。 您也可以 [使用診斷設定來分析記錄和計量](./diagnostic-services.md)。
@@ -20,7 +20,7 @@ Azure 春季 Cloud 可在 Azure CLI 中進行記錄串流，以取得即時應�
 ## <a name="prerequisites"></a>必要條件
 
 * 安裝適用于春季雲端的 [Azure CLI 擴充](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) 功能，最小版本0.2.0。
-* 具有正在執行之應用程式的 **Azure 春季雲端** 實例，例如 [春季 cloud app](./spring-cloud-quickstart-launch-app-cli.md)。
+* 具有正在執行之應用程式的 **Azure 春季雲端** 實例，例如 [春季 cloud app](./spring-cloud-quickstart.md)。
 
 > [!NOTE]
 >  ASC CLI 擴充功能已從版本0.2.0 更新為0.2.1。 這項變更會影響記錄檔資料流程的命令語法： `az spring-cloud app log tail` ，取代為： `az spring-cloud app logs` 。 命令： `az spring-cloud app log tail` 將在未來的版本中被取代。 如果您使用的是版本0.2.0，可以升級至0.2.1。 首先，使用下列命令來移除舊版本： `az extension remove -n spring-cloud` 。  然後，透過命令安裝0.2.1： `az extension add -n spring-cloud` 。
@@ -86,8 +86,8 @@ az spring-cloud app logs -n auth-service -f
 az spring-cloud app logs -h 
 ```
 
-## <a name="next-steps"></a>後續步驟
-* [快速入門：使用記錄、計量和追蹤來監視 Azure 春季雲端應用程式](spring-cloud-quickstart-logs-metrics-tracing.md)
+## <a name="next-steps"></a>接下來的步驟
+* [快速入門：使用記錄、計量和追蹤來監視 Azure Spring Cloud 應用程式](spring-cloud-quickstart-logs-metrics-tracing.md)
 * [使用診斷設定來分析記錄和計量](./diagnostic-services.md)
 
  

@@ -3,39 +3,25 @@ title: '使用客戶管理的金鑰來加密 Azure Kubernetes Service (AKS 中�
 description: 將您自己的金鑰 (BYOK) ，以加密 AKS OS 和資料磁片。
 services: container-service
 ms.topic: article
-ms.date: 07/17/2020
-ms.openlocfilehash: 5725bc9a4d16b93ba36ac800d25e3c30f090c2df
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 09/01/2020
+ms.openlocfilehash: 8687d95878cde7d0ed3308d67f26ffc266abad1e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796879"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297751"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS 中使用 Azure 磁片 (BYOK) 攜帶您自己的金鑰) 
 
-Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設，資料是以使用 Microsoft 管理的金鑰加密。 若要進一步控制加密金鑰，您可以提供 [客戶管理的金鑰][customer-managed-keys] ，以用於 AKS 叢集的 OS 和資料磁片的靜態加密。
+Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設，資料是以使用 Microsoft 管理的金鑰加密。 若要進一步控制加密金鑰，您可以提供客戶管理的金鑰，以用於 AKS 叢集的 OS 和資料磁片的靜態加密。 深入瞭解 [Linux][customer-managed-keys-linux] 和 [Windows][customer-managed-keys-windows]上客戶管理的金鑰。
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="limitations"></a>限制
+* 資料磁片加密支援僅限於執行 Kubernetes 1.17 版和更新版本的 AKS 叢集。
+* 只有在建立 AKS 叢集時，才可以啟用使用客戶管理的金鑰來加密 OS 和資料磁片。
 
-* 本文假設您要建立 *新的 AKS*叢集。
-
+## <a name="prerequisites"></a>必要條件
 * 使用 Key Vault 加密受控磁片時，您必須啟用 *Azure Key Vault* 的虛刪除和清除保護。
-
-* 您需要 Azure CLI 2.0.79 版或更新版本，以及 aks-preview 0.4.26 擴充功能
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="install-latest-aks-cli-preview-extension"></a>安裝最新的 AKS CLI preview 延伸模組
-
-若要使用客戶管理的金鑰，您需要0.4.26 或更高版本的 *aks-preview* CLI 擴充功能。 請使用 [az extension add][az-extension-add] 命令安裝 aks-preview Azure CLI 擴充功能，然後使用 [az extension update][az-extension-update] 命令檢查是否有任何可用的更新：
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+* 您需要 Azure CLI 2.11.1 版或更新版本。
 
 ## <a name="create-an-azure-key-vault-instance"></a>建立 Azure Key Vault 實例
 
@@ -155,12 +141,7 @@ az aks get-credentials --name myAksCluster --resource-group myResourceGroup --ou
 kubectl apply -f byok-azure-disk.yaml
 ```
 
-## <a name="limitations"></a>限制
-
-* Kubernetes 1.17 版和更新版本支援的資料磁片加密
-* 使用客戶管理的金鑰進行加密目前僅適用于新的 AKS 叢集，無法升級現有的叢集
-
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 檢查 [AKS 叢集安全性的最佳作法][best-practices-security]
 
@@ -171,6 +152,7 @@ kubectl apply -f byok-azure-disk.yaml
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [best-practices-security]: ./operator-best-practices-cluster-security.md
 [byok-azure-portal]: ../storage/common/storage-encryption-keys-portal.md
-[customer-managed-keys]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-windows]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-linux]: ../virtual-machines/linux/disk-encryption.md#customer-managed-keys
 [key-vault-generate]: ../key-vault/general/manage-with-cli2.md
 [supported-regions]: ../virtual-machines/windows/disk-encryption.md#supported-regions

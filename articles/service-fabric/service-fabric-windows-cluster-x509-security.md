@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 43825728da34c027557f6e6d722e39d494451e55
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 477a8e75aef3eb676d17c045f16a5c3f4ecf1b81
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255926"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299695"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>使用 X.509 憑證保護 Windows 上的獨立叢集
 本文說明如何保護獨立 Windows 叢集的不同節點之間的通訊。 此外，也會說明如何藉由使用 X.509 憑證，驗證連線到此叢集的用戶端。 驗證可確保只有已獲授權的使用者可以存取叢集和已部署的應用程式，以及執行管理工作。 憑證安全性應在叢集建立之時先在叢集上啟用。  
@@ -120,13 +120,13 @@ ms.locfileid: "86255926"
 | --- | --- |
 | ClusterCertificate |測試環境建議使用。 需有此憑證，才能保護叢集上節點之間的通訊。 您可以使用兩個不同的憑證 (主要和次要) 進行更新。 在 Thumbprint 區段中設定主要憑證的指紋，以及在 ThumbprintSecondary 變數中設定次要憑證的指紋。 |
 | ClusterCertificateCommonNames |生產環境建議使用。 需有此憑證，才能保護叢集上節點之間的通訊。 您可以使用一或兩個叢集憑證通用名稱。 CertificateIssuerThumbprint 會對應至此憑證的簽發者指紋。 如果您使用多個具有同一個通用名稱的憑證，則可指定多個簽發者指紋。|
-| ClusterCertificateIssuerStores |生產環境建議使用。 此憑證會對應到叢集憑證的簽發者。 您可以在此區段下提供簽發者一般名稱和對應存放區名稱，而不用在 ClusterCertificateCommonNames 底下指定簽發者指紋。  這樣讓變換叢集簽發者憑證變得容易。 如果使用一個以上的叢集憑證，可以指定多個簽發者。 空白的 IssuerCommonName 會讓 X509StoreNames 底下指定之對應存放區中的所有憑證都列入允許清單。|
+| ClusterCertificateIssuerStores |生產環境建議使用。 此憑證會對應到叢集憑證的簽發者。 您可以在此區段下提供簽發者一般名稱和對應存放區名稱，而不用在 ClusterCertificateCommonNames 底下指定簽發者指紋。  這樣讓變換叢集簽發者憑證變得容易。 如果使用一個以上的叢集憑證，可以指定多個簽發者。 空的 IssuerCommonName 允許在 X509StoreNames 下指定的對應存放區中的所有憑證。|
 | ServerCertificate |測試環境建議使用。 用戶端嘗試連線到此叢集時，會向用戶端此憑證顯示此憑證。 為了方便起見，您可以選擇對 ClusterCertificate 和 ServerCertificate 使用相同的憑證。 您可以使用兩個不同的伺服器憑證 (主要和次要) 進行更新。 在 Thumbprint 區段中設定主要憑證的指紋，以及在 ThumbprintSecondary 變數中設定次要憑證的指紋。 |
 | ServerCertificateCommonNames |生產環境建議使用。 用戶端嘗試連線到此叢集時，會向用戶端此憑證顯示此憑證。 CertificateIssuerThumbprint 會對應至此憑證的簽發者指紋。 如果您使用多個具有同一個通用名稱的憑證，則可指定多個簽發者指紋。 為了方便起見，您可以選擇對 ClusterCertificateCommonNames 和 ServerCertificateCommonNames 使用相同的憑證。 您可以使用一或兩個伺服器憑證通用名稱。 |
-| ServerCertificateIssuerStores |生產環境建議使用。 此憑證會對應到伺服器憑證的簽發者。 您可以在此區段下提供簽發者一般名稱和對應存放區名稱，而不用在 ServerCertificateCommonNames 底下指定簽發者指紋。  這樣讓變換伺服器簽發者憑證變得容易。 如果使用一個以上的伺服器憑證，可以指定多個簽發者。 空白的 IssuerCommonName 會讓 X509StoreNames 底下指定之對應存放區中的所有憑證都列入允許清單。|
+| ServerCertificateIssuerStores |生產環境建議使用。 此憑證會對應到伺服器憑證的簽發者。 您可以在此區段下提供簽發者一般名稱和對應存放區名稱，而不用在 ServerCertificateCommonNames 底下指定簽發者指紋。  這樣讓變換伺服器簽發者憑證變得容易。 如果使用一個以上的伺服器憑證，可以指定多個簽發者。 空的 IssuerCommonName 允許在 X509StoreNames 下指定的對應存放區中的所有憑證。|
 | ClientCertificateThumbprints |請在經過驗證的用戶端上安裝這組憑證。 在您要允許存取叢集的電腦上，您可以安裝數個不同的用戶端憑證。 在 CertificateThumbprint 變數中設定每個憑證的指紋。 如果您將 IsAdmin 設為 true，則已安裝此憑證的用戶端可以對叢集執行系統管理員管理活動。 如果 IsAdmin 是 false，有此憑證的用戶端只能執行其使用者存取權限允許的動作，通常是唯讀。 如需角色的詳細資訊，請參閱[角色型存取控制 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)。 |
 | ClientCertificateCommonNames |針對 CertificateCommonName 設定第一個用戶端憑證的一般名稱。 CertificateIssuerThumbprint 是此憑證的簽發者指紋。 若要深入了解通用名稱和簽發者，請參閱[使用憑證](/dotnet/framework/wcf/feature-details/working-with-certificates)。 |
-| ClientCertificateIssuerStores |生產環境建議使用。 此憑證會對應至用戶端憑證 (系統管理員和非系統管理員角色) 的簽發者。 您可以在此區段下提供簽發者一般名稱和對應存放區名稱，而不用在 ClientCertificateCommonNames 底下指定簽發者指紋。  這樣讓變換用戶端簽發者憑證變得容易。 如果使用一個以上的用戶端憑證，可以指定多個簽發者。 空白的 IssuerCommonName 會讓 X509StoreNames 底下指定之對應存放區中的所有憑證都列入允許清單。|
+| ClientCertificateIssuerStores |生產環境建議使用。 此憑證會對應至用戶端憑證 (系統管理員和非系統管理員角色) 的簽發者。 您可以在此區段下提供簽發者一般名稱和對應存放區名稱，而不用在 ClientCertificateCommonNames 底下指定簽發者指紋。  這樣讓變換用戶端簽發者憑證變得容易。 如果使用一個以上的用戶端憑證，可以指定多個簽發者。 空的 IssuerCommonName 允許在 X509StoreNames 下指定的對應存放區中的所有憑證。|
 | ReverseProxyCertificate |測試環境建議使用。 如果您想要保護[反向 Proxy](service-fabric-reverseproxy.md)，則可以指定此選擇性憑證。 如果您使用此憑證，請務必在 nodeTypes 中設定 reverseProxyEndpointPort。 |
 | ReverseProxyCertificateCommonNames |生產環境建議使用。 如果您想要保護[反向 Proxy](service-fabric-reverseproxy.md)，則可以指定此選擇性憑證。 如果您使用此憑證，請務必在 nodeTypes 中設定 reverseProxyEndpointPort。 |
 

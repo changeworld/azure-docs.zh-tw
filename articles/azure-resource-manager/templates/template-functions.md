@@ -2,21 +2,21 @@
 title: 範本函式
 description: 描述要在 Azure 資源管理員範本中用來擷取值、搭配字串和數字使用，並擷取部署資訊的函數。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: d237f5c42c1d1eaab7b2236b15a3122bcb55865b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/01/2020
+ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84331401"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378401"
 ---
 # <a name="arm-template-functions"></a>ARM 範本函式
 
-本文說明您可以在 Azure Resource Manager （ARM）範本中使用的所有功能。 如需在您的範本中使用函式的詳細資訊，請參閱[範本語法](template-expressions.md)。
+本文說明您可以在 Azure Resource Manager (ARM) 範本中使用的所有功能。 如需在範本中使用函式的詳細資訊，請參閱 [範本語法](template-expressions.md)。
 
 若要建立自己的函式，請參閱[使用者定義的函式](template-syntax.md#functions)。
 
-在部署至資源群組、訂用帳戶、管理群組或租使用者時，大部分函式的運作方式都相同。 有些函式不能用在所有範圍中。 它們會在下列清單中注明。
+當部署至資源群組、訂用帳戶、管理群組或租使用者時，大部分的函式都有相同的作用。 有些函式不能用在所有範圍中。 它們會在下列清單中注明。
 
 <a id="array" aria-hidden="true"></a>
 <a id="concatarray" aria-hidden="true"></a>
@@ -36,7 +36,7 @@ ms.locfileid: "84331401"
 
 ## <a name="array-functions"></a>陣列函數
 
-Resource Manager 提供數個函式來處理陣列。
+Resource Manager 提供數個函數來處理陣列。
 
 * [array](template-functions-array.md#array)
 * [concat](template-functions-array.md#concat)
@@ -78,7 +78,7 @@ Resource Manager 提供了幾個用來在範本中進行比較的函式。
 
 ## <a name="date-functions"></a>日期函式
 
-Resource Manager 提供用於處理日期的下列函數。
+Resource Manager 提供下列函數來處理日期。
 
 * [dateTimeAdd](template-functions-date.md#datetimeadd)
 * [utcNow](template-functions-date.md#utcnow)
@@ -88,7 +88,7 @@ Resource Manager 提供用於處理日期的下列函數。
 資源管理員提供下列函式，以從與部署相關的範本和值的區段中取得值：
 
 * [部署](template-functions-deployment.md#deployment)
-* [環境](template-functions-deployment.md#environment)
+* [environment (環境)](template-functions-deployment.md#environment)
 * [parameters](template-functions-deployment.md#parameters)
 * [變數](template-functions-deployment.md#variables)
 
@@ -138,7 +138,7 @@ Resource Manager 提供下列函式以使用邏輯條件：
 
 ## <a name="object-functions"></a>物件函式
 
-Resource Manager 提供數個函式來處理物件。
+Resource Manager 提供數個處理物件的功能。
 
 * [contains](template-functions-object.md#contains)
 * [empty](template-functions-object.md#empty)
@@ -167,11 +167,12 @@ Resource Manager 提供數個函式來處理物件。
 * [listKeys](template-functions-resource.md#listkeys)
 * [listSecrets](template-functions-resource.md#list)
 * [list*](template-functions-resource.md#list)
+* [pickZones](template-functions-resource.md#pickzones)
 * [提供者](template-functions-resource.md#providers)
 * [reference](template-functions-resource.md#reference)
-* [resourceGroup](template-functions-resource.md#resourcegroup) -只能用在資源群組的部署中。
-* [resourceId](template-functions-resource.md#resourceid) -可以用於任何範圍，但有效的參數會根據範圍而變更。
-* [訂](template-functions-resource.md#subscription)用帳戶-只能用在資源群組或訂用帳戶的部署中。
+* [resourceGroup](template-functions-resource.md#resourcegroup) -只能在資源群組的部署中使用。
+* [resourceId](template-functions-resource.md#resourceid) -可用於任何範圍，但有效的參數會根據範圍而變更。
+* [訂](template-functions-resource.md#subscription) 用帳戶-只能在資源群組或訂用帳戶的部署中使用。
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
@@ -243,9 +244,9 @@ Resource Manager 提供數個函式來處理物件。
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 如需 ARM 範本中各區段的說明，請參閱[編寫 arm 範本](template-syntax.md)
-* 若要合併多個範本，請參閱搭配[使用連結的範本與 Azure Resource Manager](linked-templates.md)
+* 如需 ARM 範本中各區段的說明，請參閱 [撰寫 arm 範本](template-syntax.md)
+* 若要合併多個範本，請參閱 [使用連結的範本搭配 Azure Resource Manager](linked-templates.md)
 * 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
-* 若要瞭解如何部署您所建立的範本，請參閱[使用 ARM 範本部署應用程式](deploy-powershell.md)
+* 若要瞭解如何部署已建立的範本，請參閱 [使用 ARM 範本部署應用程式](deploy-powershell.md)

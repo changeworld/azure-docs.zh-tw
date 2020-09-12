@@ -3,12 +3,12 @@ title: 建立 Azure VM 時啟用備份
 description: 說明當您使用 Azure 備份建立 Azure VM 時，如何啟用備份。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: bbc00239a34fc0eb88991fcabd91c5a0eb7dbea7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: ad81300545686d61f42cdd8684e502c937b4fd43
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892298"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377330"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>建立 Azure VM 時啟用備份
 
@@ -16,7 +16,7 @@ ms.locfileid: "88892298"
 
 本文將詳細說明當您在 Azure 入口網站中建立 (VM) 的虛擬機器時，如何啟用備份。  
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - 如果您在建立 VM 時啟用備份，[請檢查](backup-support-matrix-iaas.md#supported-backup-actions)支援的作業系統。
 
@@ -26,14 +26,14 @@ ms.locfileid: "88892298"
 
 ## <a name="create-a-vm-with-backup-configured"></a>建立已設定備份的 VM
 
-1. 在 Azure 入口網站中，按一下 [ **建立資源**]。
+1. 在 [Azure 入口網站中，選取 [ **建立資源**]。
 
-2. 在 Azure Marketplace 中，按一下 [ **計算**]，然後選取 VM 映射。
+2. 在 Azure Marketplace 中，選取 [ **計算**]，然後選取 VM 映射。
 
 3. 根據 [Windows](../virtual-machines/windows/quick-create-portal.md) 或 [LINUX](../virtual-machines/linux/quick-create-portal.md) 指示設定 VM。
 
-4. 在 [ **管理** ] 索引標籤的 [ **啟用備份**] 中，按一下 [ **開啟**]。
-5. Azure 備份復原服務保存庫的備份。 如果您沒有現有的保存庫，請按一下 [ **建立新** 的]。
+4. 在 [ **管理** ] 索引標籤的 [ **啟用備份**] 中，選取 [ **開啟**]。
+5. Azure 備份復原服務保存庫的備份。 如果您沒有現有的保存庫，請選取 [ **建立新** 的]。
 6. 接受建議的保存庫名稱，或指定您自己的名稱。
 7. 指定或建立保存庫所在的資源群組。 資源群組保存庫可以與 VM 資源群組不同。
 
@@ -76,8 +76,8 @@ ms.locfileid: "88892298"
 
 建立 VM 之後，請執行下列動作：
 
-1. 在 VM 屬性中，按一下 [ **備份**]。 VM 狀態為初始備份暫止，直到初始備份執行為止
-2. 按一下 [ **立即備份** ] 以執行隨選備份。
+1. 在 VM 屬性中，選取 [ **備份**]。 在初始備份執行之前，VM 狀態為「初始備份擱置中」。
+2. 選取 [ **立即備份** ] 以執行隨選備份。
 
     ![執行隨選備份](./media/backup-during-vm-creation/run-backup.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "88892298"
 
 先前的步驟說明如何使用 Azure 入口網站來建立虛擬機器，並在復原服務保存庫中加以保護。 若要快速部署一或多部 Vm，並在復原服務保存庫中保護它們，請參閱範本 [部署 WINDOWS VM 並啟用備份](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在您已保護您的 VM，請瞭解如何管理和還原 VM。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5d41a9b638ab023d045060e14488e91dca07b10f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 63bc46f679b71f6965cda8f9db800a125683c093
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181369"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298261"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>設定 Azure 數位 Twins 實例和驗證 (腳本) 
 
@@ -58,6 +58,13 @@ ms.locfileid: "89181369"
     * 針對應用程式註冊： Azure AD 應用程式的 *Azure AD 應用程式回復 URL* 。 請使用 `http://localhost`。 腳本會為其設定 *公用用戶端/原生 (mobile & desktop) * URI。
 
 此腳本會建立 Azure 數位 Twins 實例、為您的 Azure 使用者指派 *Azure 數位 Twins 擁有者 (預覽版) * 角色，以及設定 Azure AD 應用程式註冊以供用戶端應用程式使用。
+
+>[!NOTE]
+>目前已有腳本設定的 **已知問題** ，其中某些使用者 (特別是個人 [Microsoft 帳戶的使用者 (msa) ](https://account.microsoft.com/account)) 可能會發現 **未建立 _Azure 數位 Twins 擁有者 (Preview) _ 的角色指派**。
+>
+>您可以使用本文稍後的 [ [*驗證使用者角色指派*](#verify-user-role-assignment) ] 區段來驗證角色指派，並視需要使用 [Azure 入口網站](how-to-set-up-instance-portal.md#set-up-user-access-permissions) 或 [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions)手動設定角色指派。
+>
+>如需此問題的詳細資訊，請參閱 [*疑難排解： Azure 數位 Twins 中的已知問題*](troubleshoot-known-issues.md#missing-role-assignment-after-scripted-setup)。
 
 以下是來自腳本的輸出記錄摘要：
 
@@ -125,7 +132,11 @@ ms.locfileid: "89181369"
 
 [!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-瞭解如何藉由撰寫用戶端應用程式的驗證碼，將用戶端應用程式連線至您的實例：
+使用 Azure 數位 Twins CLI 命令，在您的實例上測試個別 REST API 呼叫： 
+* [az dt 參考](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [操作說明：*使用 Azure Digital Twins CLI*](how-to-use-cli.md)
+
+或者，請參閱如何藉由撰寫用戶端應用程式的驗證碼，將用戶端應用程式連接至您的實例：
 * [*How to：撰寫應用程式驗證碼*](how-to-authenticate-client.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 995d621ffbabd6743d248812c88ebe7e65da24ca
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: b88d017110f4d7b9859f2d801c5405ecee1589c5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796947"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297462"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
@@ -382,7 +382,9 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 您也可以使用 Azure 數位 Twins CLI 來管理 Twins。 您可以在 how [*to：使用 Azure 數位 TWINS CLI*](how-to-use-cli.md)中找到這些命令。
 
-## <a name="next-steps"></a>後續步驟
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
+## <a name="next-steps"></a>接下來的步驟
 
 瞭解如何建立和管理數位 twins 之間的關聯性：
 * [*How to：使用關聯性管理對應項圖表*](how-to-manage-graph.md)

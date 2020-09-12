@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5599ce6f086ca9c3dcbf7ac406306b6198d3080a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 476cf8013f5dc8b5d54efb573cf305d81fc690b1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797609"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319146"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>什麼是 Azure Active Directory 架構？
 
@@ -41,7 +41,7 @@ Azure AD 分佈各地的架構結合廣泛監視、自動化重設路徑、容�
 
 若要建置可存取且可使用、資料豐富的系統，最常見的方式就是透過獨立建置組塊或縮放單位。 對於 Azure AD 資料層，縮放單位稱之為「分割區」**。
 
-資料層有數個可提供讀寫功能的前端服務。 下圖顯示單一目錄分割的元件如何在地理位置分散的資料中心內傳遞。
+資料層有數個可提供讀寫功能的前端服務。 下圖顯示單一目錄分割的元件如何在各地分散的資料中心提供。
 
   ![單一目錄分割圖表](./media/active-directory-architecture/active-directory-architecture.png)
 
@@ -53,7 +53,7 @@ Azure AD 架構的元件包括主要複本和次要複本。
 
 #### <a name="secondary-replicas"></a>您應該
 
-所有目錄*讀取*都是由*次要複本*提供服務，它們位於實際位於不同地理位置的資料中心。 次要複本有許多個，因為資料會以非同步方式複寫。 目錄讀取（例如驗證要求）是由靠近客戶的資料中心提供服務。 次要複本負責提供讀取延展性。
+所有目錄 *讀取* 都是由 *次要複本*提供服務，而這些複本位於實際位於不同地理位置的資料中心。 次要複本有許多個，因為資料會以非同步方式複寫。 目錄讀取（例如驗證要求）是由接近客戶的資料中心提供服務。 次要複本負責提供讀取延展性。
 
 ### <a name="scalability"></a>延展性
 
@@ -65,7 +65,7 @@ Azure AD 架構的元件包括主要複本和次要複本。
 
 ### <a name="continuous-availability"></a>持續可用性
 
-可用性 (或運作時間) 定義系統執行不中斷的能力。 Azure AD 高可用性的關鍵在於，服務可以快速地將流量轉移到多個地理位置分散的資料中心。 每個資料中心都是獨立的，可啟用「解除關聯失敗」模式。 透過此高可用性設計，Azure AD 不需要停機維護活動。
+可用性 (或運作時間) 定義系統執行不中斷的能力。 Azure AD 高可用性的關鍵是服務可以快速地將流量轉移到多個地理位置分散的資料中心。 每個資料中心都是獨立的，可啟用解除關聯的失敗模式。 透過這種高可用性設計，Azure AD 不需要停機就能進行維護活動。
 
 相較於企業 AD 設計，Azure AD 的分割區設計已經過簡化，使用單一主機設計，其中包含仔細協調且具決定性的主要複本容錯移轉程序。
 
@@ -77,7 +77,7 @@ Azure AD 架構的元件包括主要複本和次要複本。
 
 #### <a name="data-durability"></a>資料耐久性
 
-寫入的永久在認可前至少有兩個資料中心。 發生這種情況的方式是先在主要複本上認可寫入，然後立即將寫入複寫到至少一個其他資料中心。 此寫入動作可確保裝載主要複本的資料中心可能會嚴重遺失，而不會導致資料遺失。
+寫入永久認可到至少兩個資料中心，再進行認可。 這會先在主要複本上認可寫入，然後立即將寫入複寫到至少一個其他資料中心。 此寫入動作可確保裝載主要複本的資料中心可能會嚴重遺失，而不會導致資料遺失。
 
 Azure AD 會將[復原時間目標 (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) 維持為零，因此在容錯移轉時不會遺失資料。 這包括：
 
@@ -86,13 +86,13 @@ Azure AD 會將[復原時間目標 (RTO)](https://en.wikipedia.org/wiki/Recovery
 
 ### <a name="datacenters"></a>資料中心
 
-Azure AD 的複本會儲存在位於世界各地的資料中心。 如需詳細資訊，請參閱[Azure 全域基礎結構](https://azure.microsoft.com/global-infrastructure/)。
+Azure AD 的複本會儲存在位於世界各地的資料中心。 如需詳細資訊，請參閱 [Azure 全球基礎結構](https://azure.microsoft.com/global-infrastructure/)。
 
-Azure AD 會在具有下列特性的資料中心之間運作：
+Azure AD 在具有下列特性的資料中心運作：
 
 * 驗證、圖表和其他 AD 服務位於閘道服務後方。 閘道會管理這些服務的負載平衡。 如果使用交易健康狀態探查偵測到任何狀況不良的伺服器，它就會自動進行容錯移轉。 根據這些健康情況探查，閘道會以動態方式將流量路由傳送至狀況良好的資料中心。
-* 針對*讀取*，目錄具有次要複本，以及在多個資料中心運作的主動-主動設定中對應的前端服務。 萬一整個資料中心失敗，流量會自動路由傳送至不同的資料中心。
- * 對於*寫入*，目錄會透過規劃的 (新的主要複本同步處理至舊的主要) 或緊急容錯移轉程式，來容錯移轉跨資料中心的主要 (master) 複本。 將任何認可複寫到至少兩個資料中心，即可達到資料耐久性。
+* 針對 *讀取*，在多個資料中心的主動-主動設定中，此目錄具有次要複本和對應的前端服務。 如果整個資料中心發生失敗，流量會自動路由傳送至不同的資料中心。
+ * 針對 *寫入*，目錄會透過規劃的 (新的主要複本會同步處理至舊的主要) 或緊急容錯移轉程式，在資料中心內容錯移轉主要 (主要) 複本。 將任何認可複寫到至少兩個資料中心，即可達到資料耐久性。
 
 #### <a name="data-consistency"></a>資料一致性
 
@@ -100,7 +100,7 @@ Azure AD 會在具有下列特性的資料中心之間運作：
 
 Azure AD 會對以次要複本為目標的應用程式提供讀寫一致性，其做法是將其寫入路由傳送至主要複本，並以同步方式將寫入提取回到次要複本。
 
-使用 Azure AD 的 Microsoft Graph API 進行的應用程式寫入，會從針對讀寫一致性的目錄複本維護相似性而抽象化。 Microsoft Graph API 服務會維護一個邏輯會話，其與用於讀取的次要複本具有相似性;相似性會在「複本權杖」中捕捉，服務會使用次要複本資料中心內的分散式快取來快取。 此權杖則會接著用於相同邏輯工作階段中的後續作業。 若要繼續使用相同的邏輯會話，後續要求必須路由傳送至相同的 Azure AD 資料中心。 如果目錄用戶端要求路由傳送至多個 Azure AD 資料中心，則無法繼續邏輯會話;如果發生這種情況，用戶端會有多個具有獨立讀寫一致性的邏輯會話。
+使用 Azure AD 的 Microsoft Graph API 進行的應用程式寫入，會從維護目錄複本的親和性，以達到讀寫一致性的抽象化。 Microsoft Graph API 服務會維護邏輯會話，其與用於讀取的次要複本具有相似性;在「複本權杖」中，會使用次要複本資料中心內的分散式快取來捕捉親和性。 此權杖則會接著用於相同邏輯工作階段中的後續作業。 若要繼續使用相同的邏輯會話，必須將後續的要求路由傳送到相同的 Azure AD 資料中心。 如果目錄用戶端要求路由傳送到多個 Azure AD 資料中心，則無法繼續邏輯會話;如果發生這種情況，用戶端就會有多個具有獨立讀寫一致性的邏輯會話。
 
  >[!NOTE]
  >寫入會立即複寫到邏輯工作階段的讀取所發行至的次要複本。
@@ -121,6 +121,6 @@ Azure AD 會實作所有資料的每日備份，因此可以在任何邏輯刪�
 
 使用任何作業的作業控制項 (例如 Multi-Factor Authentication (MFA))，以及稽核所有的作業。 此外，使用即時提高權限系統，隨時對任何操作工作授與必要的暫時存取權。 如需詳細資訊，請參閱[受信任的雲端](https://azure.microsoft.com/support/trust-center)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-[Azure Active Directory 開發人員指南](https://docs.microsoft.com/azure/active-directory/develop)
+[Azure Active Directory 開發人員指南](../develop/index.yml)

@@ -4,14 +4,14 @@ description: 了解如何啟用適用於 Azure Cosmos 帳戶的 Synapse Link、�
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: rosouz
-ms.openlocfilehash: 4c5f812bf1a5a60a6d1344d6a39fbd95898f55fc
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d77922d5957a0f6602e00621ebbabeaa3f3ac8f9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815567"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322461"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>設定及使用適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽)
 
@@ -228,4 +228,4 @@ container.replace(containerProperties).block();
 
 * [Azure Synapse Analytics 中的 Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md)。
 
-* [Azure Synapse Analytics 中的 SQL 無伺服器/隨選](../synapse-analytics/sql/on-demand-workspace-overview.md)。
+* [Azure Synapse Analytics 中的 SQL 無伺服器執行時間支援](../synapse-analytics/sql/on-demand-workspace-overview.md)。

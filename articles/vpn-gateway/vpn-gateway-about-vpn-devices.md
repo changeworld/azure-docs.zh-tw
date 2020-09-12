@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 09/01/2020
 ms.author: yushwang
-ms.openlocfilehash: 18eaf520c70b064f26cd1da5f50c023f42adb8ee
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 92f589e6a587febc10a4b407fe3616aca42d27d3
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021811"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318942"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>關於 VPN 裝置和站對站 VPN 閘道連線的 IPsec/IKE 參數
 
@@ -46,7 +46,7 @@ ms.locfileid: "89021811"
 | Cisco |ASR |原則式：IOS 15.1<br>路由式：IOS 15.2 |支援 |支援 |
 | Cisco | Csr | 路由式： IOS-XE 16.10 |  (未測試)  | [設定指令碼](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |原則式：IOS 15.0<br>路由式\*：IOS 15.1 |支援 |支援 |
-| Cisco |Meraki |N/A |不相容 |不相容 |
+| Cisco |Meraki (MX)  | MX v 15.12 |不相容 | [設定指南](https://documentation.meraki.com/MX/Site-to-site_VPN/Configuring_Site_to_Site_VPN_tunnels_to_Azure_VPN_Gateway) |
 | Cisco | vEdge (Viptela 作業系統)  | 18.4.0 (主動/被動模式) <br><br>19.2 (主動/主動模式)  | 不相容 |  [手動設定 (主動/被動) ](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Cloud 通往 configuration (Active/Active) ](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX、SDX、VPX |10.1 和更新版本 |[設定指南](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |不相容 |
 | F5 |BIG-IP 系列 |12.0 |[設定指南](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[設定指南](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
@@ -156,24 +156,24 @@ ms.locfileid: "89021811"
 
 |-  |**加密**|**驗證**|**PFS 群組**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |無         |
-| 2 |AES256        |SHA1              |無         |
-| 3 |3DES          |SHA1              |無         |
-| 4 |AES256        |SHA256            |無         |
+| 1 |GCM AES256    |GCM (AES256)      |None         |
+| 2 |AES256        |SHA1              |None         |
+| 3 |3DES          |SHA1              |None         |
+| 4 |AES256        |SHA256            |None         |
 | 5 |AES128        |SHA1              |None         |
-| 6 |3DES          |SHA256            |無         |
+| 6 |3DES          |SHA256            |None         |
 
 #### <a name="azure-gateway-as-responder"></a>Azure 閘道器為回應者
 
 |-  |**加密**|**驗證**|**PFS 群組**|
 |---| ---          | ---              |---          |
-| 1 |GCM AES256    |GCM (AES256)      |無         |
-| 2 |AES256        |SHA1              |無         |
-| 3 |3DES          |SHA1              |無         |
-| 4 |AES256        |SHA256            |無         |
+| 1 |GCM AES256    |GCM (AES256)      |None         |
+| 2 |AES256        |SHA1              |None         |
+| 3 |3DES          |SHA1              |None         |
+| 4 |AES256        |SHA256            |None         |
 | 5 |AES128        |SHA1              |None         |
-| 6 |3DES          |SHA256            |無         |
-| 7 |DES           |SHA1              |無         |
+| 6 |3DES          |SHA256            |None         |
+| 7 |DES           |SHA1              |None         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
@@ -188,7 +188,7 @@ ms.locfileid: "89021811"
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |無         |
+| 22|AES128        |SHA256            |None         |
 | 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |

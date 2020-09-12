@@ -9,17 +9,19 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 78ac75566eac120db4527b2e04324e7e6d40808c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 29d80d2c6dc4e090e30d7a90460dc970ff4d8ca9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258889"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320676"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒體服務分析影片和音訊檔案
+
+[!INCLUDE [regulation](../video-indexer/includes/regulation.md)]
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -153,7 +155,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 |Name|描述|
 |---|---|
 |id|臉部識別碼。|
-|名稱|臉部名稱。 它可能是「未知 #0」、已識別的名人或客戶訓練的人員。|
+|NAME|臉部名稱。 它可能是「未知 #0」、已識別的名人或客戶訓練的人員。|
 |信賴度|臉部識別信賴。|
 |description|名人的描述。 |
 |thumbnailId|該臉部的縮圖識別碼。|
@@ -252,7 +254,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 ### <a name="statistics"></a>統計資料
 
-|Name|說明|
+|Name|描述|
 |---|---|
 |CorrespondenceCount|影片中的對應數目。|
 |WordCount|每個說話者的字數。|
@@ -303,7 +305,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 |Name|描述|
 |---|---|
 |id|標籤識別碼。|
-|名稱|標籤名稱 (例如，電腦、電視)。|
+|NAME|標籤名稱 (例如，電腦、電視)。|
 |語言|標籤名稱語言 (轉譯時)。 BCP-47|
 |執行個體|此標籤曾出現的時間範圍清單 (同一個標籤可以出現多次)。 每個執行個體都有一個信賴度欄位。 |
 
@@ -442,6 +444,6 @@ visualContentModeration 區塊包含影片索引器偵測到可能含有成人�
 }
 ] 
 ```
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [教學課程：使用 Azure 媒體服務分析影片](analyze-videos-tutorial-with-api.md)

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中建立 VHD 的快照集
+title: 使用 Azure CLI 建立 VHD 的快照集
 description: 了解如何在 Azure 中建立 VHD 的複本，以作為備份，或用來針對問題進行疑難排解。
 author: roygara
 manager: twooley
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7f4489b3073462a93319886ee5560ed5a6660111
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6374108247b9bfb950c42495b13b501ded8a02d2
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659961"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89317990"
 ---
-# <a name="create-a-snapshot"></a>建立快照集 
+# <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>使用入口網站或 Azure CLI 建立快照集
 
 製作作業系統或資料磁碟的快照集作為備份，或是用來針對 VM 問題進行疑難排解。 快照集是完整的 VHD 唯讀複本。 
 
@@ -65,10 +65,10 @@ az snapshot list \
 5. 選取現有的資源群組，或輸入新群組的名稱。 
 7. 在 [來源磁碟]**** 中，選取要建立快照集的受控磁碟。
 8. 選取用來儲存快照集的 [帳戶類型]****。 除非需要存放在高效能的 SSD 上，否則請使用 [標準 HDD]****。
-9. 按一下 [建立]。
+9. 按一下 [建立]  。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
  從快照集建立受控磁碟，然後連結新的受控磁碟作為作業系統磁碟，以從快照集建立虛擬機器。 如需詳細資訊，請參閱[從快照集建立 VM](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) 指令碼。
 

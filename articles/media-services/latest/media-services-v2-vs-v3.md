@@ -10,17 +10,17 @@ tags: ''
 keywords: Azure 媒體服務, 串流, 廣播, 即時, 離線
 ms.service: media-services
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: be0c12eacae9bb13a475de4634746e9d38d35e43
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 061ae48de9a73270ed499282c9fc9a4f8f1dba90
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267559"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298941"
 ---
 # <a name="media-services-v2-vs-v3"></a>媒體服務 v2 與 v3
 
@@ -110,7 +110,7 @@ v3 API 與 v2 API 具有下列功能差距。 縮小差距是刻不容緩的工�
 
 若要保護待用資產，資產應該透過儲存端加密來進行加密。 下表顯示儲存端加密在媒體服務中的運作方式：
 
-|加密選項|說明|媒體服務 v2|媒體服務 v3|
+|加密選項|描述|媒體服務 v2|媒體服務 v3|
 |---|---|---|---|
 |媒體服務的儲存體加密|AES-256 加密、媒體服務所管理的金鑰。|支援<sup>(1)</sup>|不支援<sup>(2)</sup>|
 |[待用資料的儲存體服務加密](../../storage/common/storage-service-encryption.md)|由 Azure 或客戶管理的 Azure 儲存體、金鑰所提供的伺服器端加密。|支援|支援|

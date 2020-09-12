@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: d8e6a4e769b08d674b355f6f88a0967316e95c63
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 9c745395026b8b7e8c58fcb4b7cc67971d971a7c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782323"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300216"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文字和語音翻譯的語言和區域支援
 
@@ -28,7 +28,7 @@ ms.locfileid: "88782323"
 ## <a name="text-translation"></a>文字翻譯
 翻譯中提供的任何語言都可以使用翻譯作業來提供文字翻譯。 此 API 也使用偵測作業、使用直譯作業音譯，以及使用字典查閱和字典範例作業的雙語字典，提供語言偵測。 以下列出每個作業的可用語言。 
 
-### <a name="translate"></a>Translate
+### <a name="translate"></a>翻譯
 
 Translator 支援下列適用于文字到文字翻譯的語言。 
 
@@ -155,6 +155,7 @@ Translator 會偵測下列翻譯和音譯語言。
 |史瓦希里文| `sw`    |
 |克林貢文|   `tlh-Latn`  |
 |韓文 |`ko`   |
+|庫爾德 (中部)   |`ku-Arab`  |
 |拉脫維亞文|   `lv`    |
 |立陶宛文|    `lt`    |
 |馬來文| `ms`        |
@@ -198,7 +199,7 @@ Translator 會偵測下列翻譯和音譯語言。
 | 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 拉丁文 `Latn` |
 | 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 簡體中文 `Hans` |
 | 古吉拉特文 | `gu`  | 古吉拉特文 `Gujr` | <--> | 拉丁文 `Latn` |
-| Hebrew | `he` | 希伯來文 `Hebr` | <--> | 拉丁文 `Latn` |
+| 希伯來文 | `he` | 希伯來文 `Hebr` | <--> | 拉丁文 `Latn` |
 | Hindi | `hi` | 梵文字母 `Deva` | <--> | 拉丁文 `Latn` |
 | 日文 | `ja` | 日文 `Jpan` | <--> | 拉丁文 `Latn` |
 | 坎那達文 | `kn` | 坎那達文 `Knda` | <--> | 拉丁文 `Latn` |
@@ -283,10 +284,12 @@ Translator 會偵測下列翻譯和音譯語言。
 
 | Language    | 語言代碼 |
 |:----------- |:-------------:|
+|南非荷蘭文| `af`|
 | 阿拉伯文       | `ar`          |
 | 孟加拉文      | `bn`          |
 | 波士尼亞文 (拉丁文)      | `bs`          |
 | 保加利亞文      | `bg`          |
+|卡達隆尼亞文|   `ca`    |
 | 簡體中文      | `zh-Hans`          |
 |繁體中文|   `zh-Hant`   |
 | 克羅埃西亞文      | `hr`          |
@@ -295,6 +298,8 @@ Translator 會偵測下列翻譯和音譯語言。
 | 荷蘭文      | `nl`          |
 | 英文    | `en`     |
 | 愛沙尼亞文      | `et`          |
+|斐濟文|    `fj`    |
+|菲律賓文|  `fil`   |
 | 芬蘭文      | `fi`          |
 | 法文      | `fr`          |
 | 德文      | `de`          |
@@ -308,12 +313,14 @@ Translator 會偵測下列翻譯和音譯語言。
 | 愛爾蘭文 | `ga`  |
 | 義大利文      | `it`          |
 | 日文      | `ja`          |
+|坎那達文|`kn`|
 | 史瓦希里文|    `sw`    |
 | 韓文      | `ko`          |
 | 拉脫維亞文      | `lv`          |
 | 立陶宛文      | `lt`          |
 | 馬達加斯加文| `mg`    |
 | 馬來文|    `ms`        |
+|馬爾他文|   `mt`    |
 | 毛利文| `mi`  |
 | 馬拉地文| `mr`  |
 | 挪威文      | `nb`          |
@@ -329,7 +336,9 @@ Translator 會偵測下列翻譯和音譯語言。
 | 斯洛維尼亞文      | `sl`          |
 | 西班牙文      | `es`          |
 | 瑞典文      | `sv`          |
+|大溪地文|  `ty`    |
 | 泰文      | `th`          |
+|東加文|    `to`    |
 | 土耳其文      | `tr`          |
 | 烏克蘭文      | `uk`          |
 | 烏都文| `ur`    |

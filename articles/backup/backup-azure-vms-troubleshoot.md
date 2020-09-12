@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: aa9b5a3f6f7ca935e4e6b3645c58da5516384072
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: a574c43c02c759529c5a0907682c06d4d40fb85a
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178006"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376174"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -198,7 +198,7 @@ Azure 備份支援 Azure Marketplace 中可用 Vm 的備份和還原。 當您�
 
 * 確認客體代理程式已安裝且可回應
 * 從 Azure 入口網站中移至 [虛擬機器] > [所有設定] > [擴充]
-* 選取備份擴充 VmSnapshot 或 VmSnapshotLinux，然後按一下 [解除安裝]
+* 選取備份擴充功能 VmSnapshot 或 VmSnapshotLinux，然後選取 [ **卸載**]。
 * 刪除備份擴充後，請再嘗試執行備份作業
 * 後續的備份作業將會以所需狀態安裝新的擴充
 

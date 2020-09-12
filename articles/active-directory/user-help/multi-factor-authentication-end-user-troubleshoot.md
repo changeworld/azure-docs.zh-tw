@@ -9,33 +9,33 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/20/2020
+ms.date: 09/01/2020
 ms.author: curtand
 ms.reviewer: kexia
 metadata ms.custom: contperfq1
-ms.openlocfilehash: 61ba06054e86d544ae4ab1edbdef8d86667ef3b2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3d95ad4aa100b0a185bde015dfe34d747fc77ec9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796573"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322597"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>雙因素驗證和您的公司或學校帳戶常見問題
 
-您的 Azure Active Directory (Azure AD) 組織可以開啟雙因素驗證 (2FV) 。 有一些常見的2FV 問題似乎比任何人想要的來得頻繁。 我們彙集了本文來說明最常見問題的修正程式。
+有一些常見的雙因素驗證問題，似乎會比任何人想要的還要頻繁發生。 我們彙集了本文來說明最常見問題的修正程式。
 
-當2FV 為 on 時，您的帳戶登入需要下列資料的組合：
+您的 Azure Active Directory (Azure AD) 組織可以為您的帳戶開啟雙因素驗證。 當雙因素驗證開啟時，您的帳戶登入需要下列資料的組合：
 
 - 您的使用者名稱
 - 您的密碼
 - 行動裝置或電話
 
-2FV 比單純密碼更安全，因為2FV 需要您 _知道_ 的一些東西，以及您 _擁有_的東西。 沒有任何駭客都有您的實體電話。
+雙因素驗證比單純密碼更安全，因為雙因素驗證需要您 _知道_ 的某些東西，以及您 _擁有_的東西。 沒有任何駭客都有您的實體電話。
 
 >[!Important]
 >如果您是系統管理員，可以在 [Azure AD 文件](../index.yml)中找到更多關於如何設定和管理 Azure AD 環境的資訊。
 
-此內容旨在協助您使用工作或學校帳戶，也就是您組織提供給您的帳戶 (例如 dritan@contoso.com) 。 如果您在個人 Microsoft 帳戶上遇到雙因素驗證的問題，也就是您自行設定的帳戶 (例如 danielle@outlook.com) ，請參閱開啟 [或關閉 Microsoft 帳戶的雙因素驗證](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
+此內容可協助您使用工作或學校帳戶，也就是您組織提供給您的帳戶 (例如 dritan@contoso.com) 。 如果您在個人 Microsoft 帳戶上遇到雙因素驗證的問題，也就是您自行設定的帳戶 (例如 danielle@outlook.com) ，請參閱開啟 [或關閉 Microsoft 帳戶的雙因素驗證](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>我的行動裝置不在身邊
 
@@ -51,7 +51,15 @@ ms.locfileid: "88796573"
 
 2. 選擇您的替代驗證方法，並繼續雙因素驗證的程序。
 
-## <a name="i-lost-my-mobile-device-or-it-was-stolen"></a>我遺失了我的行動裝置或是遭竊
+## <a name="i-cant-turn-two-factor-verification-off"></a>我無法關閉雙因素驗證
+
+- 如果您使用雙因素驗證搭配 Microsoft 服務的個人帳戶（例如 alain@outlook.com ），則可以 [開啟或關閉此功能](https://account.live.com/proofs/Manage)。
+
+- 如果您在工作或學校帳戶使用雙因素驗證，最可能的原因就是您的組織決定您必須使用這項新增的安全性功能。 您無法個別將其關閉。
+
+如果您無法關閉雙因素驗證，也有可能是因為在組織層級套用了安全性預設值。 如需安全性預設值的詳細資訊，請參閱[什麼是安全性預設值？](../fundamentals/concept-fundamentals-security-defaults.md)
+
+## <a name="my-device-was-lost-or-stolen"></a>我的裝置遺失或遭竊
 
 如果您遺失或行動裝置遭竊，您可以採取下列其中一個動作：
 
@@ -72,14 +80,14 @@ ms.locfileid: "88796573"
 請確定您有裝置信號和網際網路連線 | 請確定您的電話來電和文字簡訊會通過您的行動裝置。 讓朋友打電話給您以及傳送文字簡訊給您，以確保您兩者都能收到。 如果您未收到通話或文字，請先檢查以確定您的行動裝置已開啟。 如果您的裝置已開啟，但您仍未收到通話或文字，可能是您的網路有問題。 您必須與您的提供者交談。 如果您經常有訊號相關問題，建議您在行動裝置上使用 [Microsoft Authenticator 應用程式](user-help-auth-app-download-install.md)。 驗證器應用程式可以產生用於登入的隨機安全驗證碼，無須任何手機訊號或網際網路連線。
 關閉請勿打擾 | 請確定您的行動裝置未開啟 [請勿打擾] 功能。 開啟這項功能時，不允許通知在您的行動裝置上發出警示。 如需如何關閉此功能的指示，請參閱行動裝置的手冊。
 解除封鎖電話號碼 | 在美國，Microsoft 的語音電話有下列號碼：+1 (866) 539 4191、+1 (855) 330 8653 和 +1 (877) 668 6536。
-檢查您的電池相關設定 | 這一點在表面上看起來有點奇怪。 但是，如果您已設定電池優化，以停止在背景中剩餘使用中較少使用的應用程式，則您的通知系統可能會受到影響。 若要嘗試修正此問題，請關閉驗證應用程式和訊息應用程式的電池優化。 然後再次嘗試登入您的帳戶。
-停用第三方安全性應用程式 | 某些電話安全性應用程式會封鎖來自討厭未知來電者的文字訊息和通話。 這類應用程式可能會讓您的電話無法接收驗證碼。 嘗試停用手機上的任何協力廠商安全性應用程式，然後要求傳送另一個驗證碼。
+檢查您的電池相關設定 | 如果您將電池優化設定為停止在背景中剩餘使用中的應用程式不常使用，您的通知系統可能會受到影響。 請嘗試為您的驗證應用程式和訊息應用程式關閉電池優化。 然後再次嘗試登入您的帳戶。
+停用第三方安全性應用程式 | 某些電話安全性應用程式會封鎖來自討厭未知來電者的文字訊息和通話。 安全性應用程式可能會讓您的電話無法接收驗證碼。 嘗試停用手機上的任何協力廠商安全性應用程式，然後要求傳送另一個驗證碼。
 
 ## <a name="im-not-being-prompted-for-my-second-verification-information"></a>我不會收到第二次驗證資訊的提示
 
 您可以使用您的使用者名稱和密碼登入公司或學校帳戶。 接下來，系統應該會提示您輸入額外的安全性驗證資訊。 如果未出現提示，可能是您尚未設定裝置。 您的行動裝置必須設定為使用您的特定額外安全性驗證方法。
 
-若要確定您的行動裝置已開啟且可供使用，請參閱 [管理您的雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md) 一文。 如果您知道您尚未設定您的裝置或帳戶，您可以遵循[對我的帳戶進行雙步驟驗證設定](multi-factor-authentication-end-user-first-time.md)一文中的步驟來進行。
+也許您還沒設定過您的裝置。 您的行動裝置必須設定為使用特定的額外安全性驗證方法。 如需讓行動裝置可與您的驗證方法搭配使用的步驟，請參閱 [管理您的雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md)。 如果您知道尚未設定您的裝置或帳戶，您可以依照「 [設定我的帳戶進行雙步驟驗證」一](multi-factor-authentication-end-user-first-time.md) 文中的步驟進行。
 
 ## <a name="i-have-a-new-phone-number-and-i-want-to-add-it"></a>我有新的電話號碼，我想要新增它
 
@@ -95,13 +103,13 @@ ms.locfileid: "88796573"
 
 選擇性步驟：
 
-- 在您的行動裝置上安裝並設定 Microsoft Authenticator 應用程式。 遵循 [下載和安裝 Microsoft Authenticator 應用程式](user-help-auth-app-download-install.md) 文章中的步驟來安裝。
+- 遵循 [下載和安裝 Microsoft Authenticator 應用程式](user-help-auth-app-download-install.md) 文章中的步驟，在您的行動裝置上安裝 Microsoft Authenticator 應用程式。
 
-- 針對信任的裝置開啟雙因素驗證 (2FV) 。 遵循 [[管理您的雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)] 一文中 [在**信任的裝置上開啟雙因素驗證提示**] 一節中的步驟來開啟2FV。
+- 依照[管理您的雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)一文中**在受信任的裝置上開啟雙因素驗證提示**一節的步驟，開啟受信任裝置的雙因素驗證。
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>我在旅行時登入行動裝置遇到問題
 
-當您在國外時，您可能會發現使用行動裝置相關驗證方法 (例如文字簡訊) 更加困難。 您的行動裝置可能會導致產生漫遊費用。 針對這種情況，建議您使用 Microsoft Authenticator 應用程式，並選擇連線到 Wi-Fi 熱點。 如需如何在行動裝置上設定 Microsoft Authenticator 應用程式的詳細資訊，請參閱 [下載並安裝 Microsoft Authenticator 應用程式](user-help-auth-app-download-install.md) 文章。
+當您在國外時，您可能會發現使用行動裝置相關驗證方法 (例如文字簡訊) 更加困難。 您的行動裝置可能會導致產生漫遊費用。 在此情況下，建議您使用 Microsoft Authenticator 應用程式，並選擇連線至 Wi-fi 作用點的選項。 如需如何在行動裝置上設定 Microsoft Authenticator 應用程式的詳細資訊，請參閱 [下載並安裝 Microsoft Authenticator 應用程式](user-help-auth-app-download-install.md) 文章。
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>我無法讓應用程式密碼正常執行
 

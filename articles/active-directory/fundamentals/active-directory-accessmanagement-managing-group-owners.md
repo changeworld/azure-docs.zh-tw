@@ -12,20 +12,20 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e696ff576ffa8e788312344c4ebd103184173fa4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 30b547ecd4ff76e650d7be837fa5bce03046da50
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799577"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318585"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>在 Azure Active Directory 中新增或移除群組擁有者
-Azure Active Directory (Azure AD) 群組是由群組擁有者所擁有及管理。 群組擁有者可以是使用者或服務主體，而且能夠管理包含成員資格的群組。 只有現有的群組擁有者或群組管理的系統管理員可以指派群組擁有者。 群組擁有者不需要是該群組的成員。
+Azure Active Directory (Azure AD) 群組是由群組擁有者所擁有及管理。 群組擁有者可以是使用者或服務主體，而且能夠管理包含成員資格的群組。 只有現有的群組擁有者或群組管理系統管理員可以指派群組擁有者。 群組擁有者不需要是該群組的成員。
 
-當群組沒有擁有者時，群組管理的系統管理員仍然可以管理該群組。 建議每個群組至少有一個擁有者。 將擁有者指定到群組後，就無法移除群組的最後一個擁有者。 從群組移除最後一個擁有者之前，請務必選取另一個擁有者。
+當群組沒有擁有者時，群組管理的系統管理員仍然可以管理群組。 建議每個群組至少要有一個擁有者。 一旦擁有者指定至群組之後，就無法移除該群組的最後一個擁有者。 從群組中移除最後一個擁有者之前，請務必先選取另一個擁有者。
 
 ## <a name="add-an-owner-to-a-group"></a>將擁有者新增至群組
-以下指示說明如何使用 Azure AD 入口網站，將使用者新增為群組的擁有者。 若要將服務主體新增為群組的擁有者，請遵循使用[PowerShell](https://docs.microsoft.com/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0)來執行這項操作的指示。
+以下指示說明如何使用 Azure AD 入口網站將使用者新增為群組的擁有者。 若要將服務主體新增為群組的擁有者，請依照指示使用 [PowerShell](/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0)來執行此作業。
 
 ### <a name="to-add-a-group-owner"></a>新增群組擁有者
 1. 使用目錄的全域系統管理員帳戶登入 [Azure 入口網站](https://portal.azure.com)。
@@ -60,8 +60,8 @@ Azure Active Directory (Azure AD) 群組是由群組擁有者所擁有及管理�
 
     移除擁有者之後，返回 [擁有者]**** 頁面即可看到該名稱已從擁有者清單移除。
 
-## <a name="next-steps"></a>後續步驟
-- [使用 Azure Active Directory 群組來管理資源的存取權](active-directory-manage-groups.md)
+## <a name="next-steps"></a>接下來的步驟
+- [使用 Azure Active Directory 群組管理資源的存取權](active-directory-manage-groups.md)
 
 - [設定群組設定的 Azure Active Directory Cmdlet](../users-groups-roles/groups-settings-cmdlets.md)
 

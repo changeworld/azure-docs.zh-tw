@@ -4,22 +4,22 @@ description: 摘要說明備份 Azure 檔案共用時的支援設定和限制。
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7d01f0f64fd183204fb7617040325e7d1b6e553e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6381170df93fdf52c2d0dc7059ad47bbff734025
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289504"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378027"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure 檔案共用備份的支援矩陣
 
 您可以使用 [Azure 備份服務](./backup-overview.md)來備份 Azure 檔案共用。 本文將摘要說明使用 Azure 備份來備份 Azure 檔案共用時的支援設定與限制。
 
-## <a name="supported-regions"></a>支援的區域
+## <a name="supported-regions"></a>支援區域
 
 ### <a name="ga-regions-for-azure-file-shares-backup"></a>Azure 檔案共用備份的 GA 區域
 
-Azure 檔案共用備份適用于所有區域，**除了**：德國中部（主權）、德國東北部（主權）、中國東部、中國東部2、中國北部、中國北部2、US Gov 愛荷華州
+Azure 檔案共用備份適用于所有區域， **除了** ：德國中部 (主權) 、德國東北部 (主權) 、中國東部、中國東部2、中國北部、中國北部 2 US Gov 愛荷華州
 
 ## <a name="supported-storage-accounts"></a>支援的儲存體帳戶
 
@@ -28,7 +28,7 @@ Azure 檔案共用備份適用于所有區域，**除了**：德國中部（主�
 | 帳戶種類            | Azure 備份支援存在於一般用途 v1、一般用途 v2 和檔案儲存體類型儲存體帳戶中的 Azure 檔案共用 |
 | 效能              | Azure 備份支援標準和進階儲存體帳戶中的檔案共用 |
 | 複寫              | 支援具有任何複寫類型之儲存體帳戶中的 Azure 檔案共用 |
-| 已啟用防火牆         | 儲存體帳戶中的 Azure 檔案共用，並支援允許 Microsoft Azure 服務存取儲存體帳戶的防火牆規則|
+| 已啟用防火牆         | 支援儲存體帳戶中的 Azure 檔案共用，具有允許 Microsoft Azure 服務存取儲存體帳戶的防火牆規則|
 
 ## <a name="supported-file-shares"></a>支援的檔案共用
 
@@ -45,8 +45,8 @@ Azure 檔案共用備份適用于所有區域，**除了**：德國中部（主�
 | ------------------------------------------------------------ | ----- |
 | 每個保存庫每天可以保護的檔案共用數目上限| 200   |
 | 每個保存庫每天可註冊的儲存體帳戶數目上限 | 50    |
-| 每個保存庫可保護的檔案共用數目上限 | 2000   |
-| 可在每個保存庫註冊的儲存體帳戶數目上限 | 200   |
+| 每個保存庫可以保護的檔案共用數目上限 | 2000   |
+| 每個保存庫可以註冊的儲存體帳戶數目上限 | 200   |
 
 ## <a name="backup-limits"></a>備份限制
 

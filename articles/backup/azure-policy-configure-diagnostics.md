@@ -3,12 +3,12 @@ title: 大規模設定保存庫診斷設定
 description: 使用 Azure 原則為指定範圍中的所有保存庫設定 Log Analytics 診斷設定
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 751ce0233fb232ef5d276c88a8c2429a2975b2f9
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 25946bb742c7666e7d394477318f647009b2f50e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179975"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378044"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>大規模設定保存庫診斷設定
 
@@ -22,7 +22,7 @@ Azure 備份所提供的報告解決方案會利用 Log Analytics (LA) 。 針�
 
 * 原則可以一次套用至特定訂用帳戶中的所有復原服務保存庫 (或訂用帳戶) 內的資源群組。 指派原則的使用者必須擁有指派原則之訂用帳戶的 **擁有** 者存取權。
 
-* 由使用者所指定的 LA 工作區 (要將診斷資料傳送到哪個訂用帳戶，) 可以與指派原則的保存庫位於不同的訂用帳戶中。 使用者必須擁有指定之 LA 工作區所在訂用帳戶的 **讀取**者、 **參與者** 或 **擁有** 者存取權。
+* 由使用者所指定的 LA 工作區 (要將診斷資料傳送到哪個訂用帳戶，) 可以與指派原則的保存庫位於不同的訂用帳戶中。 使用者必須擁有指定之 LA 工作區所在訂用帳戶的 **讀取**者、 **參與者**或 **擁有** 者存取權。
 
 * 目前不支援管理群組範圍。
 

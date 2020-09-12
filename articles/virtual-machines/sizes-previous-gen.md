@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 37a687a17df266fe0589c24b392c0527e001f976
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 18389f3058bcc60c22f8598040f4fea4b036f1ee
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683890"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298907"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前幾代的虛擬機器大小
 
@@ -59,7 +59,7 @@ ACU：210 - 250
 
 MBps = 每秒 10^6 位元組，而 GiB = 1024^3 位元組。
 
-<sup>1</sup> Fs 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。  如需詳細資訊，請參閱 [高效能 ( 的設計]。 premium-storage-performance.md) 。
+<sup>1</sup> Fs 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。  如需詳細資訊，請參閱 [高效能的設計](premium-storage-performance.md)。
 
 
 ## <a name="nvv2-series"></a>NVv2 系列
@@ -267,7 +267,7 @@ ACU： 160-250 <sup>1、2</sup>
 | Standard_DS13 | 8  | 56  | 112 | 32 | 32000/256 (288)  | 25600/256 | 8/4000 |
 | Standard_DS14 | 16 | 112 | 224 | 64 | 64000/512 (576)  | 51200/512 | 8/8000 |
 
-<sup>1</sup> DS 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。  如需詳細資訊，請參閱 [高效能 ( 的設計]。 premium-storage-performance.md) 。
+<sup>1</sup> DS 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。  如需詳細資訊，請參閱 [高效能的設計](premium-storage-performance.md)。
 <sup>2</sup> 個 VM 系列可在下列其中一項 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz Intel® e5-2673 V3 (Haswell) 或 2.3 GHz Intel® E5-2673 V4 (Broadwell)   
 
 <br>
@@ -293,7 +293,7 @@ ACU：180 - 240
 | Standard_L16s  | 16 | 128 | 2807 | 64 | 80000/800 | 20000/500 | 8/16000 |
 | Standard_L32s &nbsp; <sup>1</sup> | 32 | 256 | 5630 | 64 | 160000/1600 | 40000/1000 | 8/20000 |
 
-Ls 系列 VM 的最大磁碟輸送量，可能會受到任何連結磁碟的數量、大小和串接所限制。 如需詳細資訊，請參閱 [高效能 ( 的設計]。 premium-storage-performance.md) 。
+Ls 系列 VM 的最大磁碟輸送量，可能會受到任何連結磁碟的數量、大小和串接所限制。 如需詳細資訊，請參閱 [高效能的設計](premium-storage-performance.md)。
 
 <sup>1</sup> 執行個體會隔離至單一客戶專用的硬體。
 
@@ -315,7 +315,7 @@ ACU：180 - 240 <sup>1</sup>
 | Standard_GS4&nbsp;<sup>3</sup> | 16 | 224 | 448 | 64 | 80000/800 (2112)  | 40000/1000 | 8/16000 |
 | Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> | 32 | 448 |896 | 64 |160000/1600 (4224)  | 80000/2000 | 8/20000 |
 
-<sup>1</sup> GS 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。 如需詳細資訊，請參閱 [高效能 ( 的設計]。 premium-storage-performance.md) 。
+<sup>1</sup> GS 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。 如需詳細資訊，請參閱 [高效能的設計](premium-storage-performance.md)。
 
 <sup>2</sup> 執行個體會隔離至單一客戶專用的硬體。
 

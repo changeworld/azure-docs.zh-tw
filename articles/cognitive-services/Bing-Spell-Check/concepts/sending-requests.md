@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: fe540dbb230f033f139e82325bf8e20846f5bfe3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de232ab6c52afa45b40ef7863a0cb35d7b40531f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832537"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299111"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>將要求傳送至 Bing 拼字檢查 API
 
@@ -34,7 +34,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
 要求必須指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey) 標頭。 雖然是選擇性的，但我們仍建議使用以下標頭。 這些標頭可協助 Bing 拼字檢查 API 傳回更精確的結果：  
   
 -   [使用者代理程式](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
--   [X-X-msedge-clientip-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
+-   [X-X-msedge-clientid-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
 -   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientip)  
 -   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#location)  
 
@@ -42,7 +42,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
 
 使用 JavaScript 呼叫 Bing 拼字檢查 API 時，瀏覽器的內建安全性功能可能會讓您無法存取這些標頭的值。
 
-若要解決此問題，您可以透過 CORS Proxy 提出 Bing 拼字檢查 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可將回應標頭列入允許清單並提供給 JavaScript 使用。
+若要解決此問題，您可以透過 CORS Proxy 提出 Bing 拼字檢查 API 要求。 來自這類 proxy 的回應會有一個 `Access-Control-Expose-Headers` 標頭，可篩選回應標頭，並將其提供給 JavaScript 使用。
 
 您可以輕鬆安裝 CORS Proxy，讓[教學課程應用程式](../tutorials/spellcheck.md)存取選擇性用戶端標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (若尚未安裝)。 在命令提示字元中，輸入下列命令。
 
@@ -124,7 +124,7 @@ BingAPIs-Market: en-US
 }  
 ```  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [什麼是 Bing 拼字檢查 API？](../overview.md)
 - [Bing 拼字檢查 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

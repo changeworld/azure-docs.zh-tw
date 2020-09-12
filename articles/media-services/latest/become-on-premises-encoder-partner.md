@@ -6,14 +6,14 @@ author: johndeu
 manager: johndeu
 ms.author: johndeu
 ms.date: 08/31/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: media-services
-ms.openlocfilehash: 5af6a7fc988271fc350ecc6e8be19742ede8ecee
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1383b6afac9ad2332169328ef71981e23e86bdcc
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258634"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297445"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>如何驗證您的內部部署即時串流編碼器
 
@@ -73,6 +73,6 @@ ms.locfileid: "89258634"
 
 [測試的內部部署編碼器](recommended-on-premises-live-encoders.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [使用媒體服務 v3 進行即時串流](live-streaming-overview.md)

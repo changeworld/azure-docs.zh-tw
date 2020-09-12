@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 515e23fa318e8e77024dadefe9a13e795999f820
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 01021530c491fd25a199f32475c031a0e7f6cd0b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761690"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376633"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Functions 的 Azure 佇列儲存體觸發程式
 
@@ -388,7 +388,7 @@ public class QueueTriggerDemo {
 - 找到訊息時，執行時間會等待兩秒，然後檢查是否有其他訊息
 - 找不到任何訊息時，它會等候大約四秒，然後再試一次。
 - 連續嘗試取得佇列訊息失敗後，等候時間會持續增加，直到它到達等待時間上限 (預設值為一分鐘)。
-- 可透過 [host.json 檔案](functions-host-json.md#queues)中的 `maxPollingInterval` 屬性來設定最長等待時間。
+- 可透過 [host.json 檔案](functions-host-json-v1.md#queues)中的 `maxPollingInterval` 屬性來設定最長等待時間。
 
 針對本機開發，最大輪詢間隔預設為兩秒。
 
@@ -406,7 +406,7 @@ public class QueueTriggerDemo {
 
 [host.json](functions-host-json.md#queues) 檔案包含控制佇列觸發程序行為的設定。 如需可用設定的詳細資訊，請參閱 [host.js的設定](functions-bindings-storage-queue-output.md#hostjson-settings) 一節。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [ (輸出系結寫入 blob 儲存體訊息) ](./functions-bindings-storage-blob-output.md)
 

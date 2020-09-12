@@ -3,12 +3,12 @@ title: 針對 SAP Hana 資料庫備份錯誤進行疑難排解
 description: 說明使用 Azure 備份來備份 SAP Hana 資料庫時，如何針對可能發生的常見錯誤進行疑難排解。
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 4958a5e93e27c34772c7c3285470abbc31f5b089
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5cdad55ef849b9ced31646466e2c2c170ebf0827
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004165"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377679"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>針對 Azure 上的 SAP Hana 資料庫備份進行疑難排解
 
@@ -97,7 +97,7 @@ ms.locfileid: "89004165"
 
 - 根據預設，還原的資料庫名稱會以備份項目名稱填入。 在此案例中為 h21(sdc)。
 - 選取目標為 H11 時，不會自動變更還原的資料庫名稱。 **其應該會編輯為 h11(sdc)** 。 關於 SDC，還原的資料庫名稱將會是小寫字母的目標執行個體識別碼加上以括弧括住的 'sdc'。
-- 由於 SDC 只能有單一資料庫，因此您也需要按一下核取方塊，才能允許以復原點資料覆寫現有的資料庫資料。
+- 因為 SDC 只能有單一資料庫，所以您也需要選取核取方塊，以允許以復原點資料覆寫現有的資料庫資料。
 - Linux 會區分大小寫。 因此請小心保留大小寫。
 
 ### <a name="multiple-container-database-mdc-restore"></a>多個容器資料庫 (MDC) 還原
@@ -165,7 +165,7 @@ ms.locfileid: "89004165"
 - 執行升級。 完成之後，Hana 系統現在就是具有系統 DB 和租用戶 DB 的 MDC
 - 重新執行[預先註冊指令碼](https://aka.ms/scriptforpermsonhana)
 - 在 Azure 入口網站中，對同一部機器註冊擴充 ([備份] -> [檢視詳細資料] -> 選取相關的 Azure VM -> 重新註冊)
-- 針對相同 VM，按一下 [重新探索 DB]。 此動作應會將步驟 3 中的新 DB 顯示為 SYSTEMDB 和租用戶 DB，而不是 SDC
+- 選取 [重新探索相同 VM 的 **db** ]。 此動作應會將步驟 3 中的新 DB 顯示為 SYSTEMDB 和租用戶 DB，而不是 SDC
 - 較舊的 SDC 資料庫會繼續存在於保存庫中，並根據原則來保留舊的備份資料
 - 設定這些資料庫的備份
 
@@ -178,7 +178,7 @@ ms.locfileid: "89004165"
 - 執行升級。 完成之後，Hana 系統現在就是具有系統 DB 和租用戶 DB 的 MDC
 - 重新執行[預先註冊指令碼](https://aka.ms/scriptforpermsonhana)，並提供正確的詳細資料 (新的 SID 和 MDC)。 由於 SID 的變更，您可能會遇到無法成功執行指令碼的問題。 如果您遇到問題，請連絡 Azure 備份支援。
 - 在 Azure 入口網站中，對同一部機器註冊擴充 ([備份] -> [檢視詳細資料] -> 選取相關的 Azure VM -> 重新註冊)
-- 針對相同 VM，按一下 [重新探索 DB]。 此動作應會將步驟 3 中的新 DB 顯示為 SYSTEMDB 和租用戶 DB，而不是 SDC
+- 選取 [重新探索相同 VM 的 **db** ]。 此動作應會將步驟 3 中的新 DB 顯示為 SYSTEMDB 和租用戶 DB，而不是 SDC
 - 較舊的 SDC 資料庫會繼續存在於保存庫中，並根據原則來保留舊的備份資料
 - 設定這些資料庫的備份
 

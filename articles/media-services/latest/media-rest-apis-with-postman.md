@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1232c47040a5577731121ee0bb17eb264240e765
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: aa10cb207011051c30866a3a3ed693e7113b5882
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264873"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297698"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>針對媒體服務 v3 REST API 呼叫設定 Postman
 
@@ -37,7 +37,7 @@ ms.locfileid: "89264873"
     我們使用的是 **Postman**，但任何 REST 工具都適用。 其他替代方案為：搭配 REST 外掛程式的 **Visual Studio Code**，或 **Telerik Fiddler**。 
 
 > [!IMPORTANT]
-> 複習 [命名慣例](media-services-apis-overview.md#naming-conventions)。
+> 檢閱[命名慣例](media-services-apis-overview.md#naming-conventions)。
 
 ## <a name="download-postman-files"></a>下載 Postman 檔案
 
@@ -104,7 +104,7 @@ ms.locfileid: "89264873"
 - [使用媒體服務建立篩選 - REST](filters-dynamic-manifest-rest-howto.md)
 - [以 Azure Resource Manager 為基礎的 REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [使用 REST 串流檔案](stream-files-tutorial-with-rest.md)。  
 - [教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - REST](stream-files-tutorial-with-rest.md)

@@ -11,20 +11,18 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 919f3105c1ee9cc8cbdfaf413be56f6dd6291683
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c29ad48e8dc626617786e519e84c92875bc6170
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212678"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378520"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用結果集快取進行效能微調
 
 啟用結果集快取時，Synapse SQL 會在使用者資料庫中自動快取查詢結果，以供重複使用。  這可讓後續的查詢執行直接從永續性快取取得結果，因此不需要重新計算。   結果集快取可改善查詢效能並減少計算資源使用量。  此外，使用快取結果集的查詢不會使用任何並行位置，因此不會計入現有的並行限制。 基於安全性，如果使用者與建立快取結果的使用者具有相同的資料存取權限，則只能存取快取的結果。  
 
 ## <a name="key-commands"></a>主要命令
-
-[開啟/關閉使用者資料庫的結果集快取](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 [開啟/關閉使用者資料庫的結果集快取](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 

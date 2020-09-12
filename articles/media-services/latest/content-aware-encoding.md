@@ -8,16 +8,16 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 853381dbccea5374806fbeadb1d29632f0525fdb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5d08e09905841f6068f2bac45680a8e5a011c158
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265604"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297360"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>使用內容感知編碼預設值，為指定的解決方式找出最佳位元速率值
 
@@ -81,7 +81,7 @@ TransformOutput[] output = new TransformOutput[]
 > [!NOTE]
 > 使用預設值的編碼作業 `ContentAwareEncoding` 會依據輸出分鐘數計費。 
   
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [教學課程：使用媒體服務 v3 上傳、編碼和串流影片](stream-files-tutorial-with-api.md)
 * [教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - REST](stream-files-tutorial-with-rest.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: ebc921e319b5ac16cb39001b5ffba5de48727d84
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c4f3ccce03f91b0567980d55b59bfb15d6985bb7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181930"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299740"
 ---
 # <a name="feature-coverage-for-machines"></a>機器的功能涵蓋範圍
 
@@ -34,7 +34,7 @@ ms.locfileid: "89181930"
 |[虛擬機器行為分析 (和安全性警示) ](threat-protection.md)|✔|✔|✔|標準|
 |[無檔案安全性警示](alerts-reference.md#alerts-windows)|✔|✔|✔|標準|
 |[以網路為基礎的安全性警示](threat-protection.md#network-layer)|✔|✔|-|標準|
-|[即時 VM 存取](security-center-just-in-time.md)|✔|-|-|標準|
+|[Just-In-Time 虛擬機器存取](security-center-just-in-time.md)|✔|-|-|標準|
 |[原生弱點評定](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|標準|
 |[檔案完整性監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|標準|
 |[自適性應用程式控制](security-center-adaptive-application.md)|✔|-|✔|標準|
@@ -58,7 +58,7 @@ ms.locfileid: "89181930"
 |[虛擬機器行為分析 (和安全性警示) ](security-center-alerts-iaas.md)|✔</br> (支援的版本) |✔</br> (支援的版本) |✔|標準|
 |[無檔案安全性警示](alerts-reference.md#alerts-windows)|-|-|-|標準|
 |[以網路為基礎的安全性警示](threat-protection.md#network-layer)|✔|✔|-|標準|
-|[即時 VM 存取](security-center-just-in-time.md)|✔|-|-|標準|
+|[Just-In-Time 虛擬機器存取](security-center-just-in-time.md)|✔|-|-|標準|
 |[原生弱點評定](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|標準|
 |[檔案完整性監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|標準|
 |[自適性應用程式控制](security-center-adaptive-application.md)|✔|-|✔|標準|
@@ -105,7 +105,7 @@ ms.locfileid: "89181930"
 > 在 Windows Server 2008 R2 虛擬機器上偵測 System Center Endpoint Protection (SCEP) 需要在 PowerShell (v3.0 或更新版本) 之後安裝 SCEP。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 瞭解 [安全性中心如何收集資料和 Log Analytics 代理程式](security-center-enable-data-collection.md)。
 - 瞭解 [安全性中心如何管理和保護資料](security-center-data-security.md)。
