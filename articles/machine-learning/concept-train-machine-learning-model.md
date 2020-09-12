@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d0341e5a4d5dc036a4c3f90b2a25003137602694
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 6b40130fb1d965abf76ba9ed1f6ebd45d94c8e01
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144833"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651010"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -42,13 +42,13 @@ Azure Machine Learning 提供數種方式供您將模型定型，從使用 SDK �
 
 適用於 Python 的 Azure Machine Learning SDK 可讓您使用 Azure Machine Learning 來建置及執行機器學習工作流程。 您可以從互動式 Python 工作階段、Jupyter Notebook、Visual Studio Code 或其他 IDE 與服務互動。
 
-* [什麼是適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [安裝/更新 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [什麼是適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
+* [安裝/更新 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [設定 Azure Machine Learning 的開發環境](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>回合組態
 
-您可以使用 [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) 來定義使用 Azure Machine Learning 的一般定型作業。 然後再使用回合組態以及用來在計算目標上將模型定型的定型指令碼。
+您可以使用 [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) 來定義使用 Azure Machine Learning 的一般定型作業。 然後再使用回合組態以及用來在計算目標上將模型定型的定型指令碼。
 
 您可以從本機電腦的回合組態開始，然後視需要切換至雲端式計算目標的回合組態。 變更計算目標時只會變更所使用的回合組態。 回合也會記錄定型作業的相關資訊，例如輸入、輸出和記錄。
 

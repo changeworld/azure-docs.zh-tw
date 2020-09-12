@@ -1,10 +1,10 @@
 ---
 title: 將資料來源連線至 Azure Sentinel | Microsoft Docs
-description: 瞭解如何將資料來源（例如 Microsoft 威脅防護、Microsoft 365 和 Office 365、Azure AD、ATP 和 Cloud App Security）連線到 Azure Sentinel。
+description: 瞭解如何將資料來源（像是 Microsoft 365 Defender (之前的 Microsoft 威脅防護) 、Microsoft 365 和 Office 365、Azure AD、ATP 以及 Cloud App Security）連接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
-manager: angrobe
+manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
@@ -13,32 +13,31 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: a2b9c1602ead56b35c46508ef4d414145eb07432
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4618bb4ba65c48808bc738b51c90a6fd04f0eca3
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555516"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659631"
 ---
 # <a name="connect-data-sources"></a>連線資料來源
 
-啟用 Azure Sentinel 之後，您必須執行的第一件事就是連接您的資料來源。 Azure Sentinel 隨附一些適用于 Microsoft 解決方案的連接器，現成可用並提供即時整合，包括 Microsoft 威脅防護解決方案、Microsoft 365 來源（包括 Office 365）、Azure AD、Azure ATP、Microsoft Cloud App Security 等等。 此外，還有適用於非 Microsoft 解決方案的內建連接器，用於連線至更廣泛的安全性生態系統。 您也可以使用通用事件格式（CEF）、Syslog 或 REST API，將您的資料來源與 Azure Sentinel 連線。
+啟用 Azure Sentinel 之後，您需要做的第一件事就是連接您的資料來源。 Azure Sentinel 隨附許多適用于 Microsoft 解決方案的連接器，並提供即時整合，包括 Microsoft 365 Defender (之前 Microsoft 威脅防護) 解決方案、Microsoft 365 來源 (，包括 Office 365) 、Azure AD、適用于身分識別 (的 Microsoft Defender Azure ATP) 、Microsoft Cloud App Security 等等。 此外，還有適用於非 Microsoft 解決方案的內建連接器，用於連線至更廣泛的安全性生態系統。 您也可以使用常見事件格式 (CEF) (Syslog 或 REST API) 來連線資料來源與 Azure Sentinel。
 
 1. 在功能表上，選取 [資料連接器]。 此頁面可讓您查看 Azure Sentinel 提供的連接器完整清單及其狀態。 選取您想要連線的連接器，然後選取 [開啟連接器頁面]。 
 
-   ![資料收集器](./media/collect-data/collect-data-page.png)
+   ![資料連線器資源庫](./media/collect-data/collect-data-page.png)
 
 1. 在特定連接器頁面上，確定您已符合所有必要條件，並遵循指示將資料連線到 Azure Sentinel。 可能需要一些時間，記錄才能開始與 Azure Sentinel 同步處理。 連線之後，您會在 [接收的資料] 圖表中看見資料摘要，以及資料類型的連線狀態。
 
-   ![連接收集器](./media/collect-data/opened-connector-page.png)
+   ![設定資料連線器](./media/collect-data/opened-connector-page.png)
   
 1. 按一下 [後續步驟] 索引標籤，以取得 Azure Sentinel 針對特定資料類型提供的立即可用內容清單。
 
-   ![資料收集器](./media/collect-data/data-insights.png)
+   ![連接器的後續步驟](./media/collect-data/data-insights.png)
  
-
 ## <a name="data-connection-methods"></a>資料連線方法
 
 Azure Sentinel 支援下列資料連線方法：
@@ -48,13 +47,13 @@ Azure Sentinel 支援下列資料連線方法：
     - [Azure 活動](connect-azure-activity.md)
     - [Azure Active Directory](connect-azure-active-directory.md) -audit 記錄和登入記錄
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Azure 進階威脅防護](connect-azure-atp.md)
+    - [適用于 Identity (的 Microsoft Defender](connect-azure-atp.md) 先前 Azure 進階威脅防護) 
     - [Azure 資訊保護](connect-azure-information-protection.md)
-    - [Azure 資訊安全中心](connect-azure-security-center.md)
+    - [Azure Defender](connect-azure-security-center.md) (先前 Azure 資訊安全中心) 
     - [Cloud App Security](connect-cloud-app-security.md)
     - [網域名稱伺服器](connect-dns.md)
     - [Office 365](connect-office-365.md)
-    - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [適用于端點 (的 Microsoft Defender](connect-microsoft-defender-advanced-threat-protection.md) 先前 Microsoft Defender 進階威脅防護) 
     - [Microsoft Web 應用程式防火牆](connect-microsoft-waf.md)
     - [Windows 防火牆](connect-windows-firewall.md)
     - [Windows 安全性事件](connect-windows-security-events.md)
@@ -73,11 +72,11 @@ Azure Sentinel 支援下列資料連線方法：
     - [Zimperium](connect-zimperium-mtd.md)
 
 
-- 透過**代理程式的外部解決方案**： Azure Sentinel 可以透過代理程式連接到任何其他可使用 Syslog 通訊協定執行即時記錄串流的資料來源。
+- 透過**代理程式的外部解決方案**： Azure Sentinel 可以透過代理程式連接到任何其他可使用 Syslog 通訊協定執行即時記錄資料流程的資料來源。
 
-    大部分設備會使用 Syslog 通訊協定來傳送事件訊息，包含記錄本身和記錄的相關資料。 記錄檔的格式會有所不同，但大部分的設備都支援以 CEF 為基礎的記錄資料格式。 
+    大部分設備會使用 Syslog 通訊協定來傳送事件訊息，包含記錄本身和記錄的相關資料。 記錄檔的格式會有所不同，但大部分的設備也都支援記錄資料以 CEF 為基礎的格式。 
 
-    Azure Sentinel 代理程式實際上是 Log Analytics 代理程式，會將 CEF 格式的記錄轉換成可由 Log Analytics 內嵌的格式。 視裝置類型而定，代理程式會直接安裝在應用裝置上，或安裝在專用的以 Linux 為基礎的記錄轉寄站上。 適用於 Linux 的代理程式會透過 UDP 從 Syslog 精靈接收事件，但如果預期 Linux 機器會收集大量的 Syslog 事件，則會透過 TCP 將事件從 Syslog 精靈傳送到代理程式，然後從該處傳送至 Log Analytics。
+    Azure Sentinel 代理程式（實際上是 Log Analytics 代理程式）會將 CEF 格式的記錄轉換成 Log Analytics 可內嵌的格式。 視裝置類型而定，代理程式會直接安裝在設備上，或安裝在專用的 Linux 記錄轉寄站上。 適用於 Linux 的代理程式會透過 UDP 從 Syslog 精靈接收事件，但如果預期 Linux 機器會收集大量的 Syslog 事件，則會透過 TCP 將事件從 Syslog 精靈傳送到代理程式，然後從該處傳送至 Log Analytics。
 
     - **防火牆、Proxy 和端點：**
         - [AI Vectra Detect](connect-ai-vectra-detect.md)
@@ -135,8 +134,8 @@ Azure Sentinel 支援下列資料連線方法：
 | WireData | [連線 Wire Data](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [連線 Windows 防火牆](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [連線 Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | &#10003; | |
-| AATP SecurityAlert  | [連線 Azure ATP](connect-azure-atp.md) | &#10003; | |
-| ASC SecurityAlert  | [連線 Azure 資訊安全中心](connect-azure-security-center.md)  | &#10003; | |
+| AATP SecurityAlert  | [將適用于身分識別 (的 Microsoft Defender 連接](connect-azure-atp.md) 先前 Azure ATP)  | &#10003; | |
+| ASC SecurityAlert  | 將先前 Azure 資訊安全中心的[Azure Defender](connect-azure-security-center.md) (連線)   | &#10003; | |
 | MCAS SecurityAlert  | [連線 Microsoft Cloud App Security](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon (事件) | [連線 Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [連線 Windows 事件](../azure-monitor/platform/data-sources-windows-events.md) <br> [取得 Sysmon 剖析器](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 預設不會在虛擬機器上安裝 Sysmon 集合。 如需有關如何安裝 Sysmon 代理程式的詳細資訊，請參閱 [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon)。 |

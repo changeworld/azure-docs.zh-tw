@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: b9e33ba8d9610067cb9e844477ec273391fbdb0b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1dcc345260c6a0844344bb33dec94c40d1dd9a54
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751716"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650862"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>在 Azure HDInsight 中設定網路虛擬裝置
 
@@ -55,8 +55,9 @@ Azure 防火牆會自動設定為允許許多常見重要案例的流量。 使�
 | security.ubuntu.com:80                                                |
 | ocsp.msocsp.com:80                                                    |
 | ocsp.digicert.com:80                                                  |
+| microsoft.com:80                                                      |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用防火牆限制輸出流量](./hdinsight-restrict-outbound-traffic.md)
 * [Azure HDInsight 虛擬網路架構](hdinsight-virtual-network-architecture.md)

@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: cc697cd78e929b62f951014f760d644552fa082c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826764"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650985"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商業市集的地理可用性和貨幣支援
 
@@ -57,7 +57,7 @@ ms.locfileid: "88826764"
 | 克羅埃西亞                             | HR        | 歐元          |
 | 古拉果                             | CW        | 美元          |
 | 賽浦路斯                              | CY        | 歐元          |
-| 捷克共和國                      | CZ        | 歐元          |
+| 捷克                      | CZ        | 歐元          |
 | 丹麥                             | DK        | 丹麥幣          |
 | 多明尼加共和國                  | DO        | 美元          |
 | 厄瓜多                             | EC        | 美元          |
@@ -99,7 +99,6 @@ ms.locfileid: "88826764"
 | 立陶宛                           | LT        | 歐元          |
 | 盧森堡                          | LU        | 歐元          |
 | 澳門特別行政區                           | MO        | 美元          |
-| 北馬其頓                     | MK        | 美元          |
 | 馬來西亞                            | MY        | 美元          |
 | 馬爾他                               | MT        | 歐元          |
 | 模里西斯                           | MU        | 美元          |
@@ -115,6 +114,7 @@ ms.locfileid: "88826764"
 | 紐西蘭                         | NZ        | 紐西蘭幣          |
 | 尼加拉瓜                           | NI        | 美元          |
 | 奈及利亞                             | NG        | 美元          |
+| 北馬其頓                     | MK        | 美元          |
 | 挪威                              | 否        | 挪威克朗          |
 | 阿曼                                | OM        | 美元          |
 | 巴基斯坦                            | PK        | 美元          |
@@ -166,7 +166,7 @@ ms.locfileid: "88826764"
 | 辛巴威                            | ZW        | 美元          |
 |   |   |   |
 
-\* 對於巴西的客戶，透過雲端解決方案提供者 (CSP) 的 Marketplace 會使用美元。
+\* 針對巴西的客戶，commcercial marketplace 透過雲端解決方案提供者 (CSP) 使用 USD。
 
 \** 僅限免費和 BYOL VM 映像。
 
@@ -177,7 +177,7 @@ ms.locfileid: "88826764"
 若要在發佈之前調整任何價格，只要匯出定價試算表、加以修改，然後將其上傳至變更。
 
 > [!NOTE]
-> 在您的方案中發佈市場價格之後，之後就無法進行變更。 若要在發佈之前確保價格正確，請匯出定價試算表，並檢閱每個市場的價格。
+> 當您計畫中的市場價格發佈之後，即無法變更。 若要在發佈之前確保價格正確，請匯出定價試算表，並檢閱每個市場的價格。
 
 供應專案的價格一律會以當地貨幣向客戶顯示。 您在合作夥伴中心中選取的價格會根據您在合作夥伴中心中儲存價格時的匯率，轉換成當地貨幣的客戶。 除非您重新發佈您的供應專案，否則在線上商店中向客戶顯示的價格不會變更。
 
@@ -185,6 +185,8 @@ Microsoft 會以當地貨幣接收客戶的款項，並以您的當地貨幣來�
 
 > [!NOTE]
 > Microsoft 會使用 Microsoft 財政部兌換費率來轉換供應專案價格。
+
+[![貨幣轉換流程。](media/marketplace-geo-availability-currencies/currency-exchange-flow.png)](media/marketplace-geo-availability-currencies/currency-exchange-flow.png#lightbox)
 
 ## <a name="retrieving-currency-information-by-api"></a>依 API 抓取貨幣資訊
 
@@ -194,7 +196,7 @@ Microsoft 會以當地貨幣接收客戶的款項，並以您的當地貨幣來�
 
 - [建立 Azure 應用程式供應項目](partner-center-portal/create-new-azure-apps-offer.md)
 - [建立 Azure 容器供應專案](partner-center-portal/create-azure-container-offer.md)
-- [建立 Azure 虛擬機器供應項目](partner-center-portal/azure-vm-create-offer.md)
+- [建立 Azure 虛擬機器供應專案](partner-center-portal/azure-vm-create-offer.md)
 - [建立諮詢服務供應項目](partner-center-portal/create-consulting-service-offer.md)
 - [建立 Dynamics 365 for Customer Engagement 和 PowerApps 供應項目](partner-center-portal/create-new-customer-engagement-offer.md)
 - [建立 Dynamics 365 for Operations 供應項目](partner-center-portal/create-new-operations-offer.md)

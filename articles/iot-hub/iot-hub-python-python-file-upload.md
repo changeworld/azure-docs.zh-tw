@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 7ac634944c9df479617af4c9171faf0f99df4b1b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 988077a8a14339dea51bc36fdf6405b0f2f549ff
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876643"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019456"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中樞 (Python，將檔案從裝置上傳至雲端) 
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中樞將檔案從裝置上傳至雲端 (Python) 
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
@@ -28,11 +28,13 @@ ms.locfileid: "87876643"
 
 [將遙測從裝置傳送至 IoT 中樞](quickstart-send-telemetry-python.md)快速入門會示範 IoT 中樞的基本裝置到雲端傳訊功能。 不過，在某些情況下，您無法輕易地將裝置傳送的資料對應到 IoT 中樞接受且相對較小的裝置到雲端訊息。 當您需要從裝置上傳檔案時，您仍然可以使用安全可靠的 IoT 中樞。
 
-在本教學課程結尾，您會執行 Python 主控台應用程式：
+在本教學課程結尾處，您會執行 Python 主控台應用程式：
 
 * **FileUpload.py**，其會使用 Python 裝置 SDK 將檔案上傳至儲存體。
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -46,19 +48,19 @@ ms.locfileid: "87876643"
 
 在本節中，您可以建立裝置應用程式來將檔案上傳到 IoT 中樞。
 
-1. 在命令提示字元中，執行下列命令來安裝**azure iot 裝置**套件。 您可以使用此套件來協調檔案上傳與您的 IoT 中樞。
+1. 在命令提示字元中執行下列命令，以安裝 **azure iot 裝置** 套件。 您可以使用此套件來協調檔案上傳與 IoT 中樞。
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-1. 在命令提示字元中，執行下列命令以安裝[**azure. 儲存體 blob**](https://pypi.org/project/azure-storage-blob/)套件。 您可以使用此套件來執行檔案上傳。
+1. 在命令提示字元中執行下列命令，以安裝 [**azure. blob**](https://pypi.org/project/azure-storage-blob/) 套件。 您可以使用此封裝來執行檔案上傳。
 
     ```cmd/sh
     pip install azure.storage.blob
     ```
 
-1. 建立要上傳至 blob 儲存體的測試檔案。
+1. 建立您將上傳至 blob 儲存體的測試檔案。
 
 1. 使用文字編輯器，在工作資料夾中建立 **FileUpload.py** 檔案。
 
@@ -75,7 +77,7 @@ ms.locfileid: "87876643"
     PATH_TO_FILE = r"[Full path to local file]"
     ```
 
-1. 在您的檔案中，將 `[Device Connection String]` 更換為您 IoT 中樞裝置的連接字串。 取代為您所建立之測試檔案的 `[Full path to local file]` 路徑，或您要上傳之裝置上的任何檔案。
+1. 在您的檔案中，將 `[Device Connection String]` 更換為您 IoT 中樞裝置的連接字串。 取代為 `[Full path to local file]` 您所建立之測試檔案的路徑，或您想要上傳的裝置上的任何檔案。
 
 1. 建立函式以將檔案上傳至 blob 儲存體：
 
@@ -107,9 +109,9 @@ ms.locfileid: "87876643"
             return (False, ex)
     ```
 
-    此函式會剖析傳入它的*blob_info*結構，以建立用來初始化[BlobClient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)的 URL。 然後，它會使用此用戶端將您的檔案上傳至 Azure blob 儲存體。
+    此函數會剖析傳入的 *blob_info* 結構，以建立用來初始化 [>blobclient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)的 URL。 然後，它會使用此用戶端將檔案上傳至 Azure blob 儲存體。
 
-1. 新增下列程式碼，以連接用戶端並上傳檔案：
+1. 新增下列程式碼以連接用戶端並上傳檔案：
 
     ```python
     async def main():
@@ -169,11 +171,11 @@ ms.locfileid: "87876643"
         #loop.close()
     ```
 
-    此程式碼會建立異步**IoTHubDeviceClient** ，並使用下列 api 來管理使用您的 IoT 中樞的檔案上傳：
+    此程式碼會建立異步 **IoTHubDeviceClient** ，並使用下列 api 來管理您的 IoT 中樞的檔案上傳：
 
-    * **get_storage_info_for_blob**會從您的 IoT 中樞取得您先前建立之連結儲存體帳戶的相關資訊。 此資訊包括主機名稱、容器名稱、blob 名稱和 SAS 權杖。 儲存體資訊會傳遞至 (在上一個步驟) 中建立的**store_blob**函式，因此該函式中的**BlobClient**可以向 Azure 儲存體進行驗證。 **Get_storage_info_for_blob**方法也會傳回 correlation_id，用於**notify_blob_upload_status**方法中。 Correlation_id 是用來標記您正在處理之 blob 的 IoT 中樞方式。
+    * **get_storage_info_for_blob** 會從 IoT 中樞取得您先前建立的連結儲存體帳戶的相關資訊。 此資訊包括主機名稱、容器名稱、blob 名稱和 SAS 權杖。 儲存體資訊會傳遞至在上一個步驟) 所建立的 **store_blob** 函式 (，因此該函式中的 **>blobclient** 可以使用 Azure 儲存體進行驗證。 **Get_storage_info_for_blob**方法也會傳回**notify_blob_upload_status**方法中使用的 correlation_id。 Correlation_id 是 IoT 中樞標示您正在處理之 blob 的方式。
 
-    * **notify_blob_upload_status**會通知 IoT 中樞 blob 儲存體作業的狀態。 您會將**get_storage_info_for_blob**方法取得的 correlation_id 傳遞給它。 IoT 中樞會使用它來通知任何可能接聽檔案上傳工作狀態通知的服務。
+    * **notify_blob_upload_status** 通知 IoT 中樞 blob 儲存體作業的狀態。 您將 **get_storage_info_for_blob** 方法所取得的 correlation_id 傳遞給它。 IoT 中樞會使用它來通知任何可能正在接聽檔案上傳工作狀態通知的服務。
 
 1. 儲存並關閉 **UploadFile.py** 檔案。
 

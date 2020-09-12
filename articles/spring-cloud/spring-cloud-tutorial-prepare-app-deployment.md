@@ -7,22 +7,22 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 79d3829eaea15c8e7909b98b83d1327cd90e4544
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 59318cca33ba1607498546161764aa3aaaaea13e
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260318"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014933"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>準備 Java Spring 應用程式以部署到 Azure Spring Cloud
 
 本主題會示範如何準備現有的 Java Spring 應用程式以部署到 Azure Spring Cloud。 若能夠正確設定，Azure Spring Cloud 將能提供豐富的服務以監視、調整及更新您的 Java Spring Cloud 應用程式。
 
-執行此範例之前，您可以嘗試 [基本快速入門](spring-cloud-quickstart.md)。
+執行此範例之前，您可以嘗試[基本快速入門](spring-cloud-quickstart.md)。
 
 其他範例說明在已設定 POM 檔案時，如何將應用程式部署至 Azure Spring Cloud。 
 * [啟動您的第一個應用程式](spring-cloud-quickstart.md)
-* [建置和執行微服務](spring-cloud-quickstart-sample-app-introduction.md)
+* [建立並執行微服務](spring-cloud-quickstart-sample-app-introduction.md)
 
 本文說明必要的相依性，以及如何將其新增至 POM 檔案。
 
@@ -128,9 +128,9 @@ Azure Spring Cloud 會裝載和管理 Spring Cloud 元件。 這些元件包含 
 
 Spring Boot 版本 | Spring Cloud 版本 | Azure 春季 Cloud 用戶端入門版
 ---|---|---
-2.1 | Greenwich.RELEASE | 2.1.2
-2.2 | Hoxton.SR8 | 不需要
-2.3 | Hoxton.SR8 | 不需要
+2.1.x | Greenwich.RELEASE | 2.1.2
+2.2. x | Hoxton.SR8 | 不需要
+2.3. x | Hoxton.SR8 | 不需要
 
 如果您使用的是春季開機2.1，請在 pom.xml 檔案中包含下列 dependenciy。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 28f8dd4be9e03af9f0b155d6e79949fe522cd7c2
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607324"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007752"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>關於 Microsoft 商業 marketplace 的常見問題
 
@@ -46,7 +46,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業市集是否有清單費用嗎？
 
-否，可以免費在我們的商業市集中發佈供應項目。 我們會以交易費用的形式保留少量的銷售百分比，並將其投資在市集獎勵計畫、平台創新和商業市集作業中。 [AZURE IP 共同銷售](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell)受到激勵優惠會減少此交易費用。
+否，可以免費在我們的商業市集中發佈供應項目。 我們會以交易費用的形式保留少量的銷售百分比，並將其投資在市集獎勵計畫、平台創新和商業市集作業中。 [AZURE IP 共同銷售](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell)受到激勵供應專案和 AppSource 上的付費 SaaS 供應專案（與一個 Microsoft 小組應用程式相關聯），或至少兩個 Microsoft 365 增益集 (Excel、PowerPoint、Word、Outlook 和 SharePoint) 中，會減少此交易費用。
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>如何註冊為 Microsoft 商業市集中的發行者？
 
@@ -320,7 +320,7 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 我們建議下列資源：
 
 - 若要加入 Microsoft 合作夥伴社群，請參閱 [Microsoft AppSource 和 Azure Marketplace](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222)。
-- 了解並加入 [Microsoft 商業市集測試人員計畫](https://crmnamvoc1runtime.crm.dynamics.com/cbdbd59b-ab3d-47bf-8a1c-7452f8e49970/marketplaceinsiders)。
+- 了解並加入 [Microsoft 商業市集測試人員計畫](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/Commercial-Marketplace-Insiders-Program/td-p/13743)。
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>可以在哪裡深入了解合作夥伴中心？
 

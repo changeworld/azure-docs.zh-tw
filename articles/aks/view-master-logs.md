@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 中啟用並檢視 K
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: 721ef4f60d263602b01b5957bfb9bc3b5682a2df
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a0207ebbb1596e41ad65e21a769d7041a239f767
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048273"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004862"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中啟用並檢閱 Kubernetes 主要節點記錄
 
@@ -69,42 +69,43 @@ pod/nginx created
 
 可能需要幾分鐘的時間，才會啟用並顯示診斷記錄。 在 Azure 入口網站中，流覽至您的 AKS 叢集，然後選取左側的 [ **記錄** 檔]。 如果出現 [ *查詢範例* ] 視窗，請加以關閉。
 
-
 選擇左邊的 [記錄]****。 若要查看 *kube-audit* 記錄檔，請在文字方塊中輸入下列查詢：
 
 ```
-AzureDiagnostics
-| where Category == "kube-audit"
-| project log_s
+KubePodInventory
+| where TimeGenerated > ago(1d)
 ```
 
 可能會傳回許多記錄。 若要將查詢範圍縮小以查看上一個步驟中所建立之 NGINX pod 的相關記錄，請新增其他 *where* 語句來搜尋 *NGINX* ，如下列範例查詢所示：
 
 ```
-AzureDiagnostics
-| where Category == "kube-audit"
-| where log_s contains "nginx"
-| project log_s
+KubePodInventory
+| where TimeGenerated > ago(1d)
+| where Name contains "nginx"
 ```
-
-若要檢視其他記錄，您可以更新查詢以將 *Category* 名稱變更為 *kube-controller-manager* 或 *kube-scheduler* (視您所啟用的其他記錄而定)。 您可以接著使用額外的 *where* 陳述式來精簡您想要查詢的事件。
 
 如需有關如何查詢及篩選記錄資料的詳細資訊，請參閱 [查看或分析使用 log analytics 記錄搜尋所收集的資料][analyze-log-analytics]。
 
 ## <a name="log-event-schema"></a>記錄事件結構描述
 
-為了協助分析記錄資料，下表會詳細說明適用於每個事件的結構描述：
+AKS 會記錄下列事件：
 
-| 欄位名稱               | 描述 |
-|--------------------------|-------------|
-| *resourceId*             | 產生記錄的 Azure 資源 |
-| *time*                   | 上傳記錄的時間戳記 |
-| *類別*               | 產生記錄之容器/元件的名稱 |
-| *operationName*          | Always *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
-| *properties.log*         | 來自元件之記錄的全文 |
-| *properties.stream*      | *stderr* 或 *stdout* |
-| *properties.pod*         | 作為記錄來源的 Pod 名稱 |
-| *properties.containerID* | 此記錄來源之 docker 容器的識別碼 |
+* [AzureActivity][log-schema-azureactivity]
+* [AzureMetrics][log-schema-azuremetrics]
+* [ContainerImageInventory][log-schema-containerimageinventory]
+* [ContainerInventory][log-schema-containerinventory]
+* [ContainerLog][log-schema-containerlog]
+* [ContainerNodeInventory][log-schema-containernodeinventory]
+* [ContainerServiceLog][log-schema-containerservicelog]
+* [活動訊號][log-schema-heartbeat]
+* [InsightsMetrics][log-schema-insightsmetrics]
+* [KubeEvents][log-schema-kubeevents]
+* [KubeHealth][log-schema-kubehealth]
+* [KubeMonAgentEvents][log-schema-kubemonagentevents]
+* [KubeNodeInventory][log-schema-kubenodeinventory]
+* [KubePodInventory][log-schema-kubepodinventory]
+* [KubeServices][log-schema-kubeservices]
+* [Perf][log-schema-perf]
 
 ## <a name="log-roles"></a>記錄角色
 
@@ -114,7 +115,7 @@ AzureDiagnostics
 | *masterclient*           | MasterClientCertificate 的 audit 記錄檔中的顯示名稱，您從 az aks get 認證取得的憑證 |
 | *nodeclient*             | 代理程式節點所使用之 ClientCertificate 的顯示名稱 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本文中，您已了解如何在 AKS 叢集中啟用並檢閱 Kubernetes 主要元件的記錄。 若要進行進一步的監視及疑難排解，您也可以[檢視 Kubelet 記錄][kubelet-logs]及[啟用 SSH 節點存取][aks-ssh]。
 
@@ -131,3 +132,19 @@ AzureDiagnostics
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[log-schema-azureactivity]: /azure/azure-monitor/reference/tables/azureactivity
+[log-schema-azuremetrics]: /azure/azure-monitor/reference/tables/azuremetrics
+[log-schema-containerimageinventory]: /azure/azure-monitor/reference/tables/containerimageinventory
+[log-schema-containerinventory]: /azure/azure-monitor/reference/tables/containerinventory
+[log-schema-containerlog]: /azure/azure-monitor/reference/tables/containerlog
+[log-schema-containernodeinventory]: /azure/azure-monitor/reference/tables/containernodeinventory
+[log-schema-containerservicelog]: /azure/azure-monitor/reference/tables/containerservicelog
+[log-schema-heartbeat]: /azure/azure-monitor/reference/tables/heartbeat
+[log-schema-insightsmetrics]: /azure/azure-monitor/reference/tables/insightsmetrics
+[log-schema-kubeevents]: /azure/azure-monitor/reference/tables/kubeevents
+[log-schema-kubehealth]: /azure/azure-monitor/reference/tables/kubehealth
+[log-schema-kubemonagentevents]: /azure/azure-monitor/reference/tables/kubemonagentevents
+[log-schema-kubenodeinventory]: /azure/azure-monitor/reference/tables/kubenodeinventory
+[log-schema-kubepodinventory]: /azure/azure-monitor/reference/tables/kubepodinventory
+[log-schema-kubeservices]: /azure/azure-monitor/reference/tables/kubeservices
+[log-schema-perf]: /azure/azure-monitor/reference/tables/perf

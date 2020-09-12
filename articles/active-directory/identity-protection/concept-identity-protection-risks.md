@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/10/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 629173612f091319f6dec57b1cdfcfea41033bfc
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e3dd4d5f413238e0d0da79ff43deeee6245681f4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047100"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016396"
 ---
 # <a name="what-is-risk"></a>什麼是風險？
 
@@ -29,6 +29,8 @@ Identity Protection 可讓組織存取強大的資源，以快速查看及回應
 ## <a name="risk-types-and-detection"></a>風險類型和偵測
 
 有兩種類型的風險 **使用者** 和登 **入** ，以及 **即時** 和 **離線**的兩種類型的偵測或計算。
+
+即時偵測可能不會在報告中顯示五到十分鐘的時間。 離線偵測可能不會顯示在報告中兩到四個小時。
 
 ### <a name="user-risk"></a>使用者風險
 

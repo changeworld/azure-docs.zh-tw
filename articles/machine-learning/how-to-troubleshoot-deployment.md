@@ -1,7 +1,7 @@
 ---
 title: Docker 部署疑難排解
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning Azure Kubernetes Service 和 Azure 容器實例來解決、解決常見的 Docker 部署錯誤，並對其進行疑難排解。
+description: 瞭解如何使用 Azure Machine Learning Azure Kubernetes Service 和 Azure 容器實例來解決、解決和疑難排解常見的 Docker 部署錯誤。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,21 +11,21 @@ ms.reviewer: jmartens
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, devx-track-python
-ms.openlocfilehash: 3f8a3c705878e212e6a26670e20b5a81a3f2a6ba
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 4a0601e2821920e7de3b389d9acfd78598ef67ee
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904372"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019286"
 ---
-# <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>針對使用 Azure Kubernetes Service 和 Azure 容器實例的模型進行 Docker 部署進行疑難排解 
+# <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>使用 Azure Kubernetes Service 和 Azure 容器實例針對模型的 Docker 部署進行疑難排解 
 
-瞭解如何使用)  (ACI) 和 Azure Kubernetes Service (AKS Azure Machine Learning，針對 Azure 容器實例的常見 Docker 部署錯誤進行疑難排解和解決或解決。
+瞭解如何針對 Azure 容器實例 (ACI) 和 Azure Kubernetes Service (AKS) 使用 Azure Machine Learning，來進行疑難排解並解決問題，或解決這些常見的 Docker 部署錯誤。
 
 ## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [適用於 Azure Machine Learning 的 CLI 擴充功能](reference-azure-machine-learning-cli.md)。
 * 若要在本機偵錯，您必須在本機系統上擁有正常運作的 Docker 安裝。
@@ -36,7 +36,7 @@ ms.locfileid: "87904372"
 
 在 Azure Machine Learning 中部署模型時，系統就會執行數項工作。
 
-模型部署的建議方法是透過模型。使用[環境](how-to-use-environments.md)物件做為輸入參數，[部署 ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API。 在此情況下，服務會在部署階段建立基底 docker 映射，並在一次呼叫中裝載所需的模型。 基礎部署工作包含：
+模型部署的建議方法是透過模型。使用[環境](how-to-use-environments.md)物件將[ ( # B1 API 部署](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)為輸入參數。 在此情況下，服務會在部署階段期間建立基底 docker 映射，並在單一呼叫中裝載所需的模型。 基礎部署工作包含：
 
 1. 在工作區模型登錄中註冊模型。
 
@@ -52,7 +52,7 @@ ms.locfileid: "87904372"
 
 如果您遇到任何問題時，首先要做的事就是將部署工作 (先前所述) 分成個別步驟，以將問題隔離。
 
-假設您透過 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 與[環境](how-to-use-environments.md)物件作為輸入參數，並使用新的/建議方法，您的程式碼可以分成三個主要步驟：
+假設您透過 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 與[環境](how-to-use-environments.md)物件作為輸入參數，並使用新的/建議方法，您的程式碼可以分成三個主要步驟：
 
 1. 註冊模型。 以下是一些範例程式碼：
 
@@ -128,7 +128,7 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-如果您要定義自己的 conda 規格 YAML，您必須以 pip 相依性的版本 >= 1.0.45 來列出 azureml-預設值。 此套件包含將模型裝載為 Web 服務所需的功能。
+如果您要定義自己的 conda 規格 YAML，您必須以 pip 相依性的版本 >= 1.0.45 版 azureml-defaults 列出 azureml 預設值。 此套件包含將模型裝載為 Web 服務所需的功能。
 
 此時，您可以照常使用服務。 例如，下列程式碼示範如何將資料傳送至服務：
 
@@ -153,7 +153,7 @@ print(prediction)
 在本機測試期間，您可能需要更新 `score.py` 檔案，以新增記錄或嘗試解決您發現的任何問題。 若要重新載入 `score.py` 檔案的變更，請使用 `reload()`。 例如，下列程式碼會重新載入服務的指令碼，然後將資料過去。 資料會使用更新後的 `score.py` 檔案進行評分：
 
 > [!IMPORTANT]
-> `reload` 方法僅可用於本機部署。 如需將部署更新至另一個計算目標的詳細資訊，請參閱[如何更新您的 webservice](how-to-deploy-update-web-service.md)。
+> `reload` 方法僅可用於本機部署。 如需將部署更新至另一個計算目標的相關資訊，請參閱 [如何更新您的 webservice](how-to-deploy-update-web-service.md)。
 
 ```python
 service.reload()
@@ -163,7 +163,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > 此指令碼會從服務所使用的 `InferenceConfig` 物件指定的位置重新載入。
 
-若要變更模型、Conda 相依性或部署組態，請使用 [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#update--args-)。 下列範例會更新服務所使用的模型：
+若要變更模型、Conda 相依性或部署組態，請使用 [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=trueupdate--args-)。 下列範例會更新服務所使用的模型：
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -171,7 +171,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>刪除服務
 
-要刪除服務，請使用 [delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#delete--)。
+要刪除服務，請使用 [delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truedelete--)。
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> 檢查 Docker 記錄
 
@@ -184,14 +184,14 @@ print(service.get_logs())
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
 print(ws.webservices['mysvc'].get_logs())
 ```
-如果您在 `Booting worker with pid: <pid>` 記錄中看到出現多次的行，則表示沒有足夠的記憶體可啟動背景工作。
-您可以藉由增加中的值來解決此錯誤 `memory_gb``deployment_config`
+如果您 `Booting worker with pid: <pid>` 在記錄中看到一行出現多次，則表示沒有足夠的記憶體可啟動背景工作。
+您可以藉由增加中的值來解決錯誤。 `memory_gb``deployment_config`
  
 ## <a name="container-cannot-be-scheduled"></a>無法排程容器
 
-將服務部署至 Azure Kubernetes Service 計算目標時，Azure Machine Learning 會嘗試使用要求的資源量來排程服務。 如果在5分鐘之後，叢集中沒有可用的適當資源量的節點，部署將會失敗並顯示訊息 `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` 。 您可以藉由新增更多節點、變更節點的 SKU 或變更服務的資源需求，來解決這個錯誤。 
+將服務部署至 Azure Kubernetes Service 計算目標時，Azure Machine Learning 會嘗試使用要求的資源量來排程服務。 如果在5分鐘之後，叢集中沒有可使用適當資源數量的節點，部署將會失敗並顯示訊息 `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` 。 您可以藉由新增更多節點、變更節點的 SKU 或變更服務的資源需求，來解決這個錯誤。 
 
-錯誤訊息通常會指出您需要更多的資源-例如，如果您看到一則錯誤訊息，表示 `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` 服務需要 gpu，且叢集中有三個節點沒有可用的 gpu。 如果您使用 GPU SKU，請新增更多節點來解決此問題，如果您不是，請切換至已啟用 GPU 的 SKU，或將環境變更為不需要 GPU。  
+錯誤訊息通常會指出您需要更多的資源，例如，如果您看到錯誤訊息，表示 `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` 服務需要 gpu，且叢集中有三個節點沒有可用的 gpu。 如果您使用 GPU SKU，請新增更多節點來解決此問題，如果您不是，請切換至已啟用 GPU 的 SKU，或將環境變更為不需要 GPU。  
 
 ## <a name="service-launch-fails"></a>服務啟動失敗
 
@@ -201,7 +201,7 @@ print(ws.webservices['mysvc'].get_logs())
 
 ## <a name="function-fails-get_model_path"></a>函式錯誤：get_model_path()
 
-通常，在評分指令碼 [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) 的 `init()` 函式中，呼叫該函式是為了找出容器中的模型檔案或模型檔案資料夾。 如果找不到模型檔案或資料夾，則函式會失敗。 若要對此錯誤進行偵錯，最簡單方式是在容器殼層中執行下列 Python 程式碼：
+通常，在評分指令碼 [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) 的 `init()` 函式中，呼叫該函式是為了找出容器中的模型檔案或模型檔案資料夾。 如果找不到模型檔案或資料夾，則函式會失敗。 若要對此錯誤進行偵錯，最簡單方式是在容器殼層中執行下列 Python 程式碼：
 
 ```python
 from azureml.core.model import Model
@@ -276,17 +276,19 @@ Azure Kubernetes Service 部署支援自動調整，可讓您新增複本以支�
     > [!NOTE]
     > 如果您收到的要求尖峰超過新的最小複本可以處理的數目，您可能會再次收到 503 狀態碼。 例如，隨著服務的流量增加，您可能需要增加最小複本數。
 
-如需有關設定 `autoscale_target_utilization`、`autoscale_max_replicas` 和 `autoscale_min_replicas` 的詳細資訊，請參閱 [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) 模組參考。
+如需有關設定 `autoscale_target_utilization`、`autoscale_max_replicas` 和 `autoscale_min_replicas` 的詳細資訊，請參閱 [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true) 模組參考。
 
 ## <a name="http-status-code-504"></a>HTTP 狀態碼 504
 
 504 狀態碼表示要求已逾時。預設的逾時值為 1 分鐘。
 
-您可以修改 score.py 來移除不必要的呼叫，以增加逾時時間或嘗試加快服務速度。 如果這些動作無法修正問題，請使用本文中的資訊來偵錯 score.py 檔案。 程式碼可能處於未回應狀態或無限迴圈。
+您可以修改 score.py 來移除不必要的呼叫，以增加逾時時間或嘗試加快服務速度。 如果這些動作無法修正問題，請使用本文中的資訊來偵錯 score.py 檔案。 程式碼可能處於無回應狀態或無限迴圈。
 
 ## <a name="advanced-debugging"></a>進階偵錯
 
-在某些情況下，您可能需要以互動方式來對模型部署中包含的 Python 程式碼進行偵錯。 例如，如果輸入腳本失敗，而且無法由其他記錄來判斷原因。 藉由使用 Visual Studio Code 和 debugpy，您可以附加至在 Docker 容器內執行的程式碼。 如需詳細資訊，請流覽[VS Code 指南中的互動式調試](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments)程式。
+在某些情況下，您可能需要以互動方式來對模型部署中包含的 Python 程式碼進行偵錯。 例如，如果輸入腳本失敗，而且無法由其他記錄來判斷原因。 藉由使用 Visual Studio Code 和 debugpy，您可以附加至在 Docker 容器內執行的程式碼。 如需詳細資訊，請造訪 [VS Code 指南中的互動式調試](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments)程式。
+
+## <a name="model-deployment-user-forum"></a>[模型部署使用者論壇](https://docs.microsoft.com/answers/topics/azure-machine-learning-inference.html)
 
 ## <a name="next-steps"></a>後續步驟
 

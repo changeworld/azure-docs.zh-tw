@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-javascript
 - devx-track-csharp
-ms.openlocfilehash: f8971faec53830746c76d09a6cf7f22d2c80c45a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3e1de8b5c35c2f62c65b2bdd4751df86127010ad
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017680"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015121"
 ---
 # <a name="control-access-to-iot-hub"></a>控制 IoT 中樞的存取權
 
@@ -361,7 +361,12 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 裝置可以使用 X.509 憑證或安全性權杖來進行驗證，但不可同時使用兩者。
 
-如需使用憑證授權單位進行驗證的詳細資訊，請參閱[使用 X.509 CA 憑證進行裝置驗證](iot-hub-x509ca-overview.md)。
+使用 x.509 CA 驗證的裝置不支援下列功能：
+
+* HTTPS、透過 Websocket 的 MQTT，以及透過 Websocket 通訊協定的 AMQP。
+* 檔案上傳 (所有的通訊協定) 。
+
+如需使用憑證授權單位進行驗證的詳細資訊，請參閱[使用 X.509 CA 憑證進行裝置驗證](iot-hub-x509ca-overview.md)。 如需如何將憑證授權單位單位與 IoT 中樞上傳和驗證的相關資訊，請參閱在 [您的 Azure IoT 中樞中設定 x.509 安全性](iot-hub-security-x509-get-started.md)。
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>註冊裝置的 X.509 憑證
 

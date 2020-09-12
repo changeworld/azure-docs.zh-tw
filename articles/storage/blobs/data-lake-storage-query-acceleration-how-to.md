@@ -1,150 +1,244 @@
 ---
-title: 使用 Azure Data Lake Storage 查詢加速 (預覽) 來篩選資料 |Microsoft Docs
-description: 使用查詢加速 (預覽) 從儲存體帳戶取出資料的子集。
+title: 使用 Azure Data Lake Storage 查詢加速來篩選資料 |Microsoft Docs
+description: 使用查詢加速從儲存體帳戶取出資料的子集。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 09/09/2020
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6de6661e5c970c7c3cbfc944b8539060b8844a36
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 72602e1e74074f21c93950bdb779758e784ce171
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005219"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659864"
 ---
-# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>使用 Azure Data Lake Storage 查詢加速 (預覽版來篩選資料) 
+# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>使用 Azure Data Lake Storage 查詢加速來篩選資料
 
-本文說明如何使用查詢加速 (預覽版) 從儲存體帳戶取出資料的子集。 
+本文說明如何使用查詢加速，從您的儲存體帳戶取出資料的子集。 
 
-查詢加速 (預覽) 是 Azure Data Lake Storage 的新功能，可讓應用程式和分析架構藉由只抓取執行指定作業所需的資料，大幅優化資料處理。 若要深入瞭解，請參閱 [Azure Data Lake Storage Query 加速 (preview) ](data-lake-storage-query-acceleration.md)。
+查詢加速可讓應用程式和分析架構藉由只抓取執行指定作業所需的資料，來大幅優化資料處理。 若要深入瞭解，請參閱 [Azure Data Lake Storage 查詢加速](data-lake-storage-query-acceleration.md)。
 
-> [!NOTE]
-> 查詢加速功能處於公開預覽狀態，可在加拿大中部和法國中部區域中使用。 若要查看限制，請參閱 [已知問題](data-lake-storage-known-issues.md) 文章。 若要註冊預覽，請參閱 [這份表單](https://aka.ms/adls/qa-preview-signup)。  
-
-## <a name="prerequisites"></a>先決條件
-
-### <a name="net"></a>[.NET](#tab/dotnet)
+## <a name="prerequisites"></a>必要條件
 
 - 若要存取 Azure 儲存體，您需要有 Azure 訂用帳戶。 如果您還沒有訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 
 - **一般用途 v2**儲存體帳戶。 請參閱 [建立儲存體帳戶](../common/storage-quickstart-create-account.md)。
 
-- [.NET SDK](https://dotnet.microsoft.com/download)。 
+- 選擇索引標籤以查看任何 SDK 特定的必要條件。
 
-### <a name="java"></a>[Java](#tab/java)
+  ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-- 若要存取 Azure 儲存體，您需要有 Azure 訂用帳戶。 如果您還沒有訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
+  不適用
 
-- **一般用途 v2**儲存體帳戶。 請參閱 [建立儲存體帳戶](../common/storage-quickstart-create-account.md)。
+  ### <a name="net"></a>[.NET](#tab/dotnet)
 
-- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) 第 8 版或更新版本。
+  [.NET SDK](https://dotnet.microsoft.com/download) 
 
-- [Apache Maven](https://maven.apache.org/download.cgi)。 
+  ### <a name="java"></a>[Java](#tab/java)
 
-  > [!NOTE] 
-  > 本文假設您已使用 Apache Maven 建立 JAVA 專案。 如需如何使用 Apache Maven 建立專案的範例，請參閱 [設定](storage-quickstart-blobs-java.md#setting-up)。
+  - [Java 開發套件 (JDK)](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) 8 版或更新版本
+
+  - [Apache Maven](https://maven.apache.org/download.cgi) 
+
+    > [!NOTE] 
+    > 本文假設您已使用 Apache Maven 建立 JAVA 專案。 如需如何使用 Apache Maven 建立專案的範例，請參閱 [設定](storage-quickstart-blobs-java.md#setting-up)。
   
+  ### <a name="python"></a>[Python](#tab/python)
+
+  [Python](https://www.python.org/downloads/) 3.8 或更新版本。
+
+  ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+  使用 Node.js SDK 不需要額外的必要條件。
+
 ---
 
-## <a name="install-packages"></a>安裝套件 
+## <a name="enable-query-acceleration"></a>啟用查詢加速
 
-### <a name="net"></a>[.NET](#tab/dotnet)
+若要使用查詢加速，您必須向您的訂用帳戶註冊查詢加速功能。 確認功能已註冊之後，您必須註冊 Azure 儲存體資源提供者。 
 
-1. 下載查詢加速套件。 您可以使用下列連結，取得包含這些封裝的壓縮 .zip 檔案： [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net) 。 
+### <a name="step-1-register-the-query-acceleration-feature"></a>步驟1：註冊查詢加速功能
 
-2. 將此檔案的內容解壓縮至您的專案目錄。
+若要使用查詢加速，您必須先向訂用帳戶註冊查詢加速功能。 
 
-3. 在文字編輯器中開啟專案檔 (*.csproj*) ，然後在專案內加入這些封裝參考 \<Project\> 。
+#### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-   ```xml
-   <ItemGroup>
-       <PackageReference Include="Azure.Storage.Blobs" Version="12.5.0-preview.1" />
-       <PackageReference Include="Azure.Storage.Common" Version="12.4.0-preview.1" />
-       <PackageReference Include="Azure.Storage.QuickQuery" Version="12.0.0-preview.1" />
-   </ItemGroup>
+1. 開啟 Windows PowerShell 命令視窗。
+
+1. 使用 `Connect-AzAccount` 命令登入 Azure 訂用帳戶並遵循畫面上的指示。
+
+   ```powershell
+   Connect-AzAccount
    ```
 
-4. 還原預覽 SDK 套件。 此範例命令會使用命令來還原預覽 SDK 套件 `dotnet restore` 。 
+2. 如果您的身分識別與多個訂用帳戶相關聯，請設定您的有效訂用帳戶。
+
+   ```powershell
+   $context = Get-AzSubscription -SubscriptionId <subscription-id>
+   Set-AzContext $context
+   ```
+
+   使用訂閱識別碼取代 `<subscription-id>` 預留位置值。
+
+3. 使用 [AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) 命令註冊查詢加速功能。
+
+   ```powershell
+   Register-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuery
+   ```
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. 開啟 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)，或如果您已在本機[安裝](https://docs.microsoft.com/cli/azure/install-azure-cli) Azure CLI，請開啟命令主控台應用程式，例如 Windows PowerShell。
+
+2. 如果您的身分識別與多個訂用帳戶相關聯，請將使用中的訂用帳戶設定為儲存體帳戶的訂用帳戶。
+
+   ```azurecli-interactive
+   az account set --subscription <subscription-id>
+   ```
+
+   使用訂閱識別碼取代 `<subscription-id>` 預留位置值。
+
+3. 使用 [az feature register](/cli/azure/feature#az-feature-register) 命令註冊查詢加速功能。
+
+   ```azurecli
+   az feature register --namespace Microsoft.Storage --name BlobQuery
+   ```
+
+---
+
+### <a name="step-2-verify-that-the-feature-is-registered"></a>步驟2：確認已註冊功能
+
+#### <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+若要確認註冊是否已完成，請使用 [AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) 命令。
+
+```powershell
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuery
+```
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要確認註冊是否完成，請使用 [az feature](/cli/azure/feature#az-feature-show) 命令。
+
+```azurecli
+az feature show --namespace Microsoft.Storage --name BlobQuery
+```
+
+---
+
+### <a name="step-3-register-the-azure-storage-resource-provider"></a>步驟3：註冊 Azure 儲存體資源提供者
+
+註冊經過核准之後，您必須重新註冊 Azure 儲存體資源提供者。 
+
+#### <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+若要註冊資源提供者，請使用 [>register-azresourceprovider](/powershell/module/az.resources/register-azresourceprovider) 命令。
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
+```
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要註冊資源提供者，請使用 [az provider register](/cli/azure/provider#az-provider-register) 命令。
+
+```azurecli
+az provider register --namespace 'Microsoft.Storage'
+```
+
+---
+
+## <a name="set-up-your-environment"></a>設定您的環境
+
+### <a name="step-1-install-packages"></a>步驟1：安裝套件 
+
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+安裝 Az module version 4.6.0 或更高版本。
+
+```powershell
+Install-Module -Name Az -Repository PSGallery -Force
+```
+
+若要從較舊的 Az 版本進行更新，請執行下列命令：
+
+```powershell
+Update-Module -Name Az
+```
+
+#### <a name="net"></a>[.NET](#tab/dotnet)
+
+1. 開啟命令提示字元，並將目錄 () 變更為 `cd` 您的專案資料夾，例如：
 
    ```console
-   dotnet restore --source C:\Users\contoso\myProject
+   cd myProject
    ```
 
-5. 從公用 NuGet 存放庫還原所有其他相依性。
+2. `12.5.0-preview.6`使用命令安裝適用于 .net 套件的 Azure Blob 儲存體用戶端程式庫版本 `dotnet add package` 。 
 
    ```console
-   dotnet restore
+   dotnet add package Azure.Storage.Blobs -v 12.6.0
    ```
 
-### <a name="java"></a>[Java](#tab/java)
+3. 本文中顯示的範例會使用 [CsvHelper](https://www.nuget.org/packages/CsvHelper/) 程式庫來剖析 CSV 檔案。 若要使用該程式庫，請使用下列命令。
 
-1. 在專案的根目錄中建立目錄。 根目錄是包含 **pom.xml** 檔案的目錄。
+   ```console
+   dotnet add package CsvHelper
+   ```
 
-   > [!NOTE]
-   > 本文中的範例假設目錄的名稱是 **lib**。
+#### <a name="java"></a>[Java](#tab/java)
 
-2. 下載查詢加速套件。 您可以使用下列連結，取得包含這些封裝的壓縮 .zip 檔案： [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java) 。 
-
-3. 將這個 .zip 檔案中的檔案解壓縮到您建立的目錄。 在我們的範例中，該目錄名為 **lib**。 
-
-4. 在文字編輯器中開啟 *pom.xml* 檔案。 將下列相依性元素新增至相依性群組。 
+1. 在文字編輯器中開啟專案的 *pom.xml* 檔案。 將下列相依性元素新增至相依性群組。 
 
    ```xml
    <!-- Request static dependencies from Maven -->
    <dependency>
        <groupId>com.azure</groupId>
        <artifactId>azure-core</artifactId>
-       <version>1.3.0</version>
+       <version>1.6.0</version>
    </dependency>
-   <dependency>
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-csv</artifactId>
+        <version>1.8</version>
+    </dependency>    
+    <dependency>
       <groupId>com.azure</groupId>
-      <artifactId>azure-core-http-netty</artifactId>
-      <version>1.3.0</version>
-   </dependency>
-   <dependency>
-      <groupId>org.apache.avro</groupId>
-      <artifactId>avro</artifactId>
-      <version>1.9.2</version>
-   </dependency>
-   <dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-csv</artifactId>
-    <version>1.8</version>
-   </dependency>
-   <!-- Local dependencies -->
-   <dependency>
-       <groupId>com.azure</groupId>
-       <artifactId>azure-storage-blob</artifactId>
-       <version>12.5.0-beta.1</version>
-       <scope>system</scope>
-       <systemPath>${project.basedir}/lib/azure-storage-blob-12.5.0-beta.1.jar</systemPath>
-   </dependency>
-   <dependency>
-       <groupId>com.azure</groupId>
-       <artifactId>azure-storage-common</artifactId>
-       <version>12.5.0-beta.1</version>
-       <scope>system</scope>
-       <systemPath>${project.basedir}/lib/azure-storage-common-12.5.0-beta.1.jar</systemPath>
-   </dependency>
-   <dependency>
-       <groupId>com.azure</groupId>
-       <artifactId>azure-storage-quickquery</artifactId>
-       <version>12.0.0-beta.1</version>
-       <scope>system</scope>
-       <systemPath>${project.basedir}/lib/azure-storage-quickquery-12.0.0-beta.1.jar</systemPath>
-   </dependency>
+      <artifactId>azure-storage-blob</artifactId>
+      <version>12.8.0-beta.1</version>
+    </dependency>
    ```
+
+#### <a name="python"></a>[Python](#tab/python)
+
+使用 [pip](https://pypi.org/project/pip/)安裝適用于 Python 的 Azure Data Lake Storage 用戶端程式庫。
+
+```
+pip install azure-storage-blob==12.4.0
+```
+
+#### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+開啟終端機視窗，然後輸入下列命令，以安裝適用于 JavaScript 的 Data Lake 用戶端程式庫。
+
+```javascript
+    npm install @azure/storage-blob
+    npm install @fast-csv/parse
+```
 
 ---
 
-## <a name="add-statements"></a>Add 語句
+### <a name="step-2-add-statements"></a>步驟2：加入語句
 
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-### <a name="net"></a>[.NET](#tab/dotnet)
+不適用
+
+#### <a name="net"></a>[.NET](#tab/dotnet)
 
 將這些 `using` 語句新增至程式碼檔案的頂端。
 
@@ -152,8 +246,6 @@ ms.locfileid: "89005219"
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
-using Azure.Storage.QuickQuery;
-using Azure.Storage.QuickQuery.Models;
 ```
 
 查詢加速會抓取 CSV 和 Json 格式的資料。 因此，請務必為您選擇要使用的任何 CSV 或 Json 剖析程式庫加入 using 語句。 本文中顯示的範例會使用 NuGet 上提供的 [CsvHelper](https://www.nuget.org/packages/CsvHelper/) 程式庫來剖析 CSV 檔案。 因此，我們會將這些 `using` 語句新增至程式碼檔案的頂端。
@@ -169,22 +261,43 @@ using CsvHelper.Configuration;
 using System.Threading.Tasks;
 using System.IO;
 using System.Globalization;
-using System.Threading;
-using System.Linq;
 ```
 
-### <a name="java"></a>[Java](#tab/java)
+#### <a name="java"></a>[Java](#tab/java)
 
 將這些 `import` 語句新增至程式碼檔案的頂端。
 
 ```java
 import com.azure.storage.blob.*;
+import com.azure.storage.blob.options.*;
 import com.azure.storage.blob.models.*;
 import com.azure.storage.common.*;
-import com.azure.storage.quickquery.*;
-import com.azure.storage.quickquery.models.*;
 import java.io.*;
+import java.util.function.Consumer;
 import org.apache.commons.csv.*;
+```
+
+#### <a name="python"></a>[Python](#tab/python)
+
+將這些 import 語句新增至程式碼檔案的頂端。
+
+```python
+import sys, csv
+from azure.storage.blob import BlobServiceClient, ContainerClient, BlobClient, DelimitedTextDialect, BlobQueryError
+```
+
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+將 `storage-blob` 此語句放在程式碼檔案的頂端，以包含模組。 
+
+```javascript
+const { BlobServiceClient } = require("@azure/storage-blob");
+```
+
+查詢加速會抓取 CSV 和 Json 格式的資料。 因此，請務必為您選擇要使用的任何 CSV 或 Json 剖析模組加入語句。 本文中顯示的範例會使用 [快速 CSV](https://www.npmjs.com/package/fast-csv) 模組來剖析 csv 檔案。 因此，我們會將此語句新增至程式碼檔案的頂端。
+
+```javascript
+const csv = require('@fast-csv/parse');
 ```
 
 ---
@@ -197,14 +310,30 @@ import org.apache.commons.csv.*;
 
 - 資料行參考是指定為 `_N` 第一個資料行的位置 `_1` 。 如果來源檔案包含標頭資料列，則您可以使用標頭資料列中所指定的名稱來參考資料行。 
 
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+Function Get-QueryCsv($ctx, $container, $blob, $query, $hasheaders) {
+    $tempfile = New-TemporaryFile
+    $informat = New-AzStorageBlobQueryConfig -AsCsv -HasHeader:$hasheaders
+    Get-AzStorageBlobQueryResult -Context $ctx -Container $container -Blob $blob -InputTextConfiguration $informat -OutputTextConfiguration (New-AzStorageBlobQueryConfig -AsCsv -HasHeader) -ResultFile $tempfile.FullName -QueryString $query -Force
+    Get-Content $tempfile.FullName
+}
+
+$container = "data"
+$blob = "csv/csv-general/seattle-library.csv"
+Get-QueryCsv $ctx $container $blob "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'" $false
+
+```
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Async 方法會 `BlobQuickQueryClient.QueryAsync` 將查詢傳送至查詢加速 API，然後將結果以 [資料流程](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8) 物件的形式串流回應用程式。
+Async 方法會 `BlobQuickQueryClient.QueryAsync` 將查詢傳送至查詢加速 API，然後將結果以 [資料流程](https://docs.microsoft.com/dotnet/api/system.io.stream) 物件的形式串流回應用程式。
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
 {
-    string query = @"SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest'";
+    string query = @"SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'";
     await DumpQueryCsv(blob, query, false);
 }
 
@@ -212,25 +341,26 @@ private static async Task DumpQueryCsv(BlockBlobClient blob, string query, bool 
 {
     try
     {
-        using (var reader = new StreamReader((await blob.GetQuickQueryClient().QueryAsync(query,
-                new CsvTextConfiguration() { HasHeaders = headers }, 
-                new CsvTextConfiguration() { HasHeaders = false }, 
-                new ErrorHandler(),
-                new BlobRequestConditions(), 
-                new ProgressHandler(),
-                CancellationToken.None)).Value.Content))
+        var options = new BlobQueryOptions() {
+            InputTextConfiguration = new BlobQueryCsvTextOptions() { HasHeaders = headers },
+            OutputTextConfiguration = new BlobQueryCsvTextOptions() { HasHeaders = true },
+            ProgressHandler = new Progress<long>((finishedBytes) => Console.Error.WriteLine($"Data read: {finishedBytes}"))
+        };
+        options.ErrorHandler += (BlobQueryError err) => {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Error.WriteLine($"Error: {err.Position}:{err.Name}:{err.Description}");
+            Console.ResetColor();
+        };
+        // BlobDownloadInfo exposes a Stream that will make results available when received rather than blocking for the entire response.
+        using (var reader = new StreamReader((await blob.QueryAsync(
+                query,
+                options)).Value.Content))
         {
-            using (var parser = new CsvReader(reader, new CsvConfiguration(CultureInfo.CurrentCulture) 
-            { HasHeaderRecord = false }))
+            using (var parser = new CsvReader(reader, new CsvConfiguration(CultureInfo.CurrentCulture) { HasHeaderRecord = true }))
             {
                 while (await parser.ReadAsync())
                 {
-                    parser.Context.Record.All(cell =>
-                    {
-                        Console.Out.Write(cell + "  ");
-                        return true;
-                    });
-                    Console.Out.WriteLine();
+                    Console.Out.WriteLine(String.Join(" ", parser.Context.Record));
                 }
             }
         }
@@ -238,22 +368,6 @@ private static async Task DumpQueryCsv(BlockBlobClient blob, string query, bool 
     catch (Exception ex)
     {
         Console.Error.WriteLine("Exception: " + ex.ToString());
-    }
-}
-
-class ErrorHandler : IBlobQueryErrorReceiver
-{
-    public void ReportError(BlobQueryError err)
-    {
-        Console.Error.WriteLine($"Error: {err.Name}:{ err.Description }");
-    }
-}
-
-class ProgressHandler : IProgress<long>
-{
-    public void Report(long value)
-    {
-        Console.Error.WriteLine("Bytes scanned: " + value.ToString());
     }
 }
 
@@ -265,49 +379,98 @@ class ProgressHandler : IProgress<long>
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
-    String expression = "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest'";
-    DumpQueryCsv(blobClient, expression, false);
+    String expression = "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'";
+    DumpQueryCsv(blobClient, expression, true);
 }
 
 static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
     try {
-    
-        BlobQuickQueryDelimitedSerialization input = new BlobQuickQueryDelimitedSerialization()
+        BlobQuerySerialization input = new BlobQueryDelimitedSerialization()
             .setRecordSeparator('\n')
             .setColumnSeparator(',')
             .setHeadersPresent(headers)
             .setFieldQuote('\0')
             .setEscapeChar('\\');
-
-        BlobQuickQueryDelimitedSerialization output = new BlobQuickQueryDelimitedSerialization()
+        BlobQuerySerialization output = new BlobQueryDelimitedSerialization()
             .setRecordSeparator('\n')
             .setColumnSeparator(',')
-            .setHeadersPresent(false)
+            .setHeadersPresent(true)
             .setFieldQuote('\0')
             .setEscapeChar('\n');
-                
-        BlobRequestConditions requestConditions = null;
-        /* ErrorReceiver determines what to do on errors. */
-        ErrorReceiver<BlobQuickQueryError> errorReceiver = System.out::println;
+        Consumer<BlobQueryError> errorConsumer = System.out::println;
+        Consumer<BlobQueryProgress> progressConsumer = progress -> System.out.println("total bytes read: " + progress.getBytesScanned());
+        BlobQueryOptions queryOptions = new BlobQueryOptions(query)
+            .setInputSerialization(input)
+            .setOutputSerialization(output)
+            .setErrorConsumer(errorConsumer)
+            .setProgressConsumer(progressConsumer);            
 
-        /* ProgressReceiver details how to log progress*/
-        com.azure.storage.common.ProgressReceiver progressReceiver = System.out::println;
-    
-        /* Create a query acceleration client to the blob. */
-        BlobQuickQueryClient qqClient = new BlobQuickQueryClientBuilder(blobClient)
-            .buildClient();
         /* Open the query input stream. */
-        InputStream stream = qqClient.openInputStream(query, input, output, requestConditions, errorReceiver, progressReceiver);
-            
+        InputStream stream = blobClient.openQueryInputStream(queryOptions).getValue();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
             /* Read from stream like you normally would. */
-            for (CSVRecord record : CSVParser.parse(reader, CSVFormat.EXCEL)) {
+            for (CSVRecord record : CSVParser.parse(reader, CSVFormat.EXCEL.withHeader())) {
                 System.out.println(record.toString());
             }
         }
     } catch (Exception e) {
         System.err.println("Exception: " + e.toString());
+        e.printStackTrace(System.err);
     }
+}
+```
+
+### <a name="python"></a>[Python](#tab/python)
+
+```python
+def query_hemingway(blob: BlobClient):
+    query = "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'"
+    dump_query_csv(blob, query, False)
+
+def dump_query_csv(blob: BlobClient, query: str, headers: bool):
+    qa_reader = blob.query_blob(query, blob_format=DelimitedTextDialect(has_header=headers), on_error=report_error, encoding='utf-8')
+    # records() returns a generator that will stream results as received. It will not block pending all results.
+    csv_reader = csv.reader(qa_reader.records())
+    for row in csv_reader:
+        print("*".join(row))
+```
+
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+此範例會將查詢傳送至查詢加速 API，然後再將結果串流回來。
+
+```javascript
+async function queryHemingway(blob)
+{
+    const query = "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'";
+    await dumpQueryCsv(blob, query, false);
+}
+
+async function dumpQueryCsv(blob, query, headers)
+{
+    var response = await blob.query(query, {
+        inputTextConfiguration: {
+            kind: "csv",
+            recordSeparator: '\n',
+            hasHeaders: headers
+        },
+        outputTextConfiguration: {
+            kind: "csv",
+            recordSeparator: '\n',
+            hasHeaders: true
+        },
+        onProgress: (progress) => console.log(`Data read: ${progress.loadedBytes}`),
+        onError: (err) => console.error(`Error: ${err.position}:${err.name}:${err.description}`)});
+    return new Promise(
+        function (resolve, reject) {
+            csv.parseStream(response.readableStreamBody)
+                .on('data', row => console.log(row))
+                .on('error', error => {
+                    console.error(error);
+                    reject(error);
+                })
+                .on('end', rowCount => resolve());
+    });
 }
 ```
 
@@ -317,15 +480,30 @@ static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
 
 您可以將結果的範圍設為數據行的子集。 如此一來，您就只會取出執行指定計算所需的資料行。 這可改善應用程式效能並降低成本，因為透過網路傳送的資料較少。 
 
-此程式碼只會抓取 `PublicationYear` 資料集中所有書籍的資料行。 它也會使用來源檔案的標頭資料列中的資訊，來參考查詢中的資料行。
+此程式碼只會抓取 `BibNum` 資料集中所有書籍的資料行。 它也會使用來源檔案的標頭資料列中的資訊，來參考查詢中的資料行。
 
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+Function Get-QueryCsv($ctx, $container, $blob, $query, $hasheaders) {
+    $tempfile = New-TemporaryFile
+    $informat = New-AzStorageBlobQueryConfig -AsCsv -HasHeader:$hasheaders
+    Get-AzStorageBlobQueryResult -Context $ctx -Container $container -Blob $blob -InputTextConfiguration $informat -OutputTextConfiguration (New-AzStorageBlobQueryConfig -AsCsv -HasHeader) -ResultFile $tempfile.FullName -QueryString $query -Force
+    Get-Content $tempfile.FullName
+}
+
+$container = "data"
+$blob = "csv/csv-general/seattle-library-with-headers.csv"
+Get-QueryCsv $ctx $container $blob "SELECT BibNum FROM BlobStorage" $true
+
+```
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
 ```cs
-static async Task QueryPublishDates(BlockBlobClient blob)
+static async Task QueryBibNum(BlockBlobClient blob)
 {
-    string query = @"SELECT PublicationYear FROM BlobStorage";
+    string query = @"SELECT BibNum FROM BlobStorage";
     await DumpQueryCsv(blob, query, true);
 }
 ```
@@ -333,10 +511,28 @@ static async Task QueryPublishDates(BlockBlobClient blob)
 ### <a name="java"></a>[Java](#tab/java)
 
 ```java
-static void QueryPublishDates(BlobClient blobClient)
+static void QueryBibNum(BlobClient blobClient)
 {
-    String expression = "SELECT PublicationYear FROM BlobStorage";
+    String expression = "SELECT BibNum FROM BlobStorage";
     DumpQueryCsv(blobClient, expression, true);
+}
+```
+
+### <a name="python"></a>[Python](#tab/python)
+
+```python
+def query_bibnum(blob: BlobClient):
+    query = "SELECT BibNum FROM BlobStorage"
+    dump_query_csv(blob, query, True)
+```
+
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```javascript
+async function queryBibNum(blob)
+{
+    const query = "SELECT BibNum FROM BlobStorage";
+    await dumpQueryCsv(blob, query, true);
 }
 ```
 
@@ -344,12 +540,35 @@ static void QueryPublishDates(BlobClient blobClient)
 
 下列程式碼會將資料列篩選和資料行投影合併成相同的查詢。 
 
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+Get-QueryCsv $ctx $container $blob $query $true
+
+Function Get-QueryCsv($ctx, $container, $blob, $query, $hasheaders) {
+    $tempfile = New-TemporaryFile
+    $informat = New-AzStorageBlobQueryConfig -AsCsv -HasHeader:$hasheaders
+    Get-AzStorageBlobQueryResult -Context $ctx -Container $container -Blob $blob -InputTextConfiguration $informat -OutputTextConfiguration (New-AzStorageBlobQueryConfig -AsCsv -HasHeader) -ResultFile $tempfile.FullName -QueryString $query -Force
+    Get-Content $tempfile.FullName
+}
+
+$container = "data"
+$query = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType 
+            FROM BlobStorage 
+            WHERE ItemType IN 
+                ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')"
+
+```
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
 ```cs
-static async Task QueryMysteryBooks(BlockBlobClient blob)
+static async Task QueryDvds(BlockBlobClient blob)
 {
-    string query = @"SELECT BibNum, Title, Author, ISBN, Publisher FROM BlobStorage WHERE Subjects LIKE '%Mystery%'";
+    string query = @"SELECT BibNum, Title, Author, ISBN, Publisher, ItemType 
+        FROM BlobStorage 
+        WHERE ItemType IN 
+            ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')";
     await DumpQueryCsv(blob, query, true);
 }
 ```
@@ -357,17 +576,43 @@ static async Task QueryMysteryBooks(BlockBlobClient blob)
 ### <a name="java"></a>[Java](#tab/java)
 
 ```java
-static void QueryMysteryBooks(BlobClient blobClient)
+static void QueryDvds(BlobClient blobClient)
 {
-    String expression = "SELECT BibNum, Title, Author, ISBN, Publisher FROM BlobStorage WHERE Subjects LIKE '%Mystery%'";
+    String expression = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType " +
+                        "FROM BlobStorage " +
+                        "WHERE ItemType IN " +
+                        "   ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')";
     DumpQueryCsv(blobClient, expression, true);
+}
+```
+
+### <a name="python"></a>[Python](#tab/python)
+
+```python
+def query_dvds(blob: BlobClient):
+    query = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType "\
+        "FROM BlobStorage "\
+        "WHERE ItemType IN "\
+        "   ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')"
+    dump_query_csv(blob, query, True)
+```
+
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```javascript
+async function queryDvds(blob)
+{
+    const query = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType " +
+                  "FROM BlobStorage " +
+                  "WHERE ItemType IN " + 
+                  " ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')";
+    await dumpQueryCsv(blob, query, true);
 }
 ```
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- [查詢加速註冊表單](https://aka.ms/adls/qa-preview-signup)    
-- [Azure Data Lake Storage 查詢加速 (預覽) ](data-lake-storage-query-acceleration.md)
-- [查詢加速 SQL 語言參考 (預覽) ](query-acceleration-sql-reference.md)
+- [Azure Data Lake Storage 查詢加速](data-lake-storage-query-acceleration.md)
+- [查詢加速 SQL 語言參考](query-acceleration-sql-reference.md)

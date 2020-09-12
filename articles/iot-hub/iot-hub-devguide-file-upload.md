@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: c80823513dd65d68d74be62ca1194f843623d2dc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323021"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019524"
 ---
 # <a name="upload-files-with-iot-hub"></a>透過 IoT 中樞上傳檔案
 
@@ -29,6 +29,8 @@ ms.locfileid: "87323021"
 
 接著，您的裝置就可以[初始化上傳](iot-hub-devguide-file-upload.md#initialize-a-file-upload)，然後在上傳完成時[通知 IoT 中樞](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload)。 (選擇性) 當裝置將上傳已完成的狀態通知 IoT 中樞時，服務就會產生[通知訊息](iot-hub-devguide-file-upload.md#file-upload-notifications)。
 
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
+
 ### <a name="when-to-use"></a>使用時機
 
 使用檔案上傳來傳送間歇性連線裝置所上傳或為了節省頻寬而壓縮的媒體檔案和大型遙測批次。
@@ -37,7 +39,7 @@ ms.locfileid: "87323021"
 
 ## <a name="associate-an-azure-storage-account-with-iot-hub"></a>讓 Azure 儲存體帳戶與 IoT 中樞產生關聯
 
-若要使用檔案上傳功能，您必須先將 Azure 儲存體帳戶連結至 IoT 中樞。 您可以透過 Azure 入口網站或透過[IoT 中樞資源提供者 REST api](/rest/api/iothub/iothubresource)以程式設計方式完成此工作。 一旦您將 Azure 儲存體帳戶與 IoT 中樞產生關聯之後，服務會在裝置開始檔案上傳要求時，將 SAS URI 傳回至裝置。
+若要使用檔案上傳功能，您必須先將 Azure 儲存體帳戶連結至 IoT 中樞。 您可以透過 Azure 入口網站完成這項工作，或透過 [IoT 中樞資源提供者 REST api](/rest/api/iothub/iothubresource)以程式設計方式完成。 一旦您將 Azure 儲存體帳戶與 IoT 中樞產生關聯之後，服務會在裝置開始檔案上傳要求時，將 SAS URI 傳回至裝置。
 
 [使用 IoT 中樞將檔案從裝置上傳至雲端](iot-hub-csharp-csharp-file-upload.md)操作指南提供檔案上傳程序的完整逐步解說。 這些操作指南會示範如何使用 Azure 入口網站建立儲存體帳戶與 IoT 中樞的關聯。
 
@@ -99,9 +101,9 @@ IoT 中樞有兩個 REST 端點可以支援檔案上傳，一個用來取得儲�
 
 (選擇性) 當裝置將上傳已完成的狀態通知 IoT 中樞時，IoT 中樞就會產生通知訊息。 此訊息包含檔案的名稱和儲存位置。
 
-如[端點](iot-hub-devguide-endpoints.md)中所述，IoT 中樞會透過面向服務的端點 (**/messages/servicebound/fileuploadnotifications**) 利用訊息來傳遞檔案上傳通知。 檔案上傳通知的接收語義與雲端到裝置訊息相同，而且具有相同的[訊息生命週期](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle)。 從檔案上傳通知端點擷取的每則訊息是具有下列屬性的 JSON 記錄：
+如[端點](iot-hub-devguide-endpoints.md)中所述，IoT 中樞會透過面向服務的端點 (**/messages/servicebound/fileuploadnotifications**) 利用訊息來傳遞檔案上傳通知。 檔案上傳通知的接收語義與雲端到裝置訊息的接收語義相同，且具有相同的 [訊息生命週期](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle)。 從檔案上傳通知端點擷取的每則訊息是具有下列屬性的 JSON 記錄：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | --- | --- |
 | EnqueuedTimeUtc |指出通知建立時間的時間戳記。 |
 | DeviceId |**DeviceId** 。 |
@@ -127,14 +129,14 @@ IoT 中樞有兩個 REST 端點可以支援檔案上傳，一個用來取得儲�
 
 每個 IoT 中樞都具備下列適用於檔案上傳通知的組態選項：
 
-| 屬性 | 說明 | 範圍和預設值 |
+| 屬性 | 描述 | 範圍和預設值 |
 | --- | --- | --- |
 | **enableFileUploadNotifications** |控制是否將檔案上傳通知寫入檔案通知端點。 |布林 預設值：True。 |
 | **fileNotifications.ttlAsIso8601** |檔案上傳通知的預設 TTL。 |ISO_8601 間隔高達 48H (最小為 1 分鐘)。 預設值︰1 小時。 |
 | **fileNotifications.lockDuration** |檔案上傳通知佇列的鎖定持續時間。 |5 到 300 秒 (最小值 5 秒)。 預設值：60 秒。 |
 | **fileNotifications.maxDeliveryCount** |檔案上傳通知佇列的傳遞計數上限。 |1 到 100。 預設值 = 100。 |
 
-您可以使用 [Azure 入口網站]、[Azure CLI] 或 [PowerShell]，在您的 IoT 中樞上設定這些屬性。 若要瞭解作法，請參閱[設定檔案上傳](iot-hub-configure-file-upload.md)底下的主題。
+您可以使用 Azure 入口網站、Azure CLI 或 PowerShell 在 IoT 中樞上設定這些屬性。 若要深入瞭解，請參閱 [設定檔案上傳](iot-hub-configure-file-upload.md)底下的主題。
 
 ## <a name="additional-reference-material"></a>其他參考資料
 
@@ -150,7 +152,7 @@ IoT 中樞開發人員指南中的其他參考主題包括︰
 
 * [IoT 中樞 MQTT 支援](iot-hub-mqtt-support.md)針對 MQTT 通訊協定提供 IoT 中樞支援的詳細資訊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在您已了解如何使用 IoT 中樞從裝置上傳檔案，接下來您可能對下列 IoT 中樞開發人員指南主題感興趣︰
 

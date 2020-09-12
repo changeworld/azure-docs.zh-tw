@@ -2,19 +2,15 @@
 title: 管理 Azure 自動化中的變數
 description: 本文說明如何在 Runbook 和 DSC 組態中使用變數。
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
-ms.date: 05/14/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ee49ae905622b4b76d782f6a31e0c2333b6d54be
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 300bfa2ed801b810bcaaeb5bc4d04775d590015b
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055287"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004557"
 ---
 # <a name="manage-variables-in-azure-automation"></a>管理 Azure 自動化中的變數
 
@@ -30,7 +26,7 @@ ms.locfileid: "88055287"
 
 Azure 自動化會保存變數，並使其可供使用，即使 Runbook 或 DSC 組態失敗也一樣。 此行為可讓一個 Runbook 或 DSC 組態設定另一個 Runbook 所使用的值，或下一次其執行時的相同 Runbook 或 DSC 組態。
 
-Azure 自動化會安全地儲存每個加密變數。 當您建立變數時，您可以 Azure 自動化做為安全資產來指定其加密和儲存體。 建立變數之後，您就無法變更其加密狀態，而不需要重新建立變數。 Azure 資訊安全中心建議將所有 Azure 自動化變數加密，如[自動化帳戶變數](../../security-center/recommendations-reference.md#recs-computeapp)中所述。 
+Azure 自動化會安全地儲存每個加密變數。 當您建立變數時，您可以 Azure 自動化為安全資產來指定其加密和儲存。 建立變數之後，您就無法變更其加密狀態，而不需要重新建立變數。 Azure 資訊安全中心建議將所有 Azure 自動化變數加密，如 [自動化帳戶變數](../../security-center/recommendations-reference.md#recs-computeapp)中所述。
 
 >[!NOTE]
 >Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產都會經過加密，並使用為每個自動化帳戶產生的唯一金鑰，儲存在 Azure 自動化中。 Azure 自動化會將金鑰儲存在系統管理的 Key Vault 中。 在儲存安全資產之前，自動化會從 Key Vault 載入金鑰，然後將其用來加密資產。 
@@ -45,7 +41,7 @@ Azure 自動化會安全地儲存每個加密變數。 當您建立變數時，�
 * Boolean
 * Null
 
-變數不會受限於指定的資料類型。 如果您想要指定不同類型的值，必須使用 Windows PowerShell 來設定變數。 如果您指出 `Not defined`，變數的值會設定為 Null。 您必須使用 [Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) Cmdlet 或內部 `Set-AutomationVariable` Cmdlet 來設定此值。
+變數不會受限於指定的資料類型。 如果您想要指定不同類型的值，必須使用 Windows PowerShell 來設定變數。 如果您指出 `Not defined`，變數的值會設定為 Null。 您必須使用 [Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable) Cmdlet 或內部 `Set-AutomationVariable` Cmdlet 來設定此值。
 
 您無法使用 Azure 入口網站來建立或變更複雜變數類型的值。 不過，您可以使用 Windows PowerShell 提供任何類型的值。 複雜類型會擷取為 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject)。
 
@@ -60,10 +56,10 @@ Azure 自動化會安全地儲存每個加密變數。 當您建立變數時，�
 
 | Cmdlet | 描述 |
 |:---|:---|
-|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | 擷取現有變數的值。 如果值為簡單類型，則會擷取該相同的類型。 如果其為複雜類型，則會擷取 `PSCustomObject` 類型。 <br>**注意：** 您無法使用這個 Cmdlet 來擷取加密變數的值。 若要這麼做，唯一的方法是在 Runbook 或 DSC 組態中使用內部 `Get-AutomationVariable` Cmdlet。 請參閱[存取變數的內部 Cmdlet](#internal-cmdlets-to-access-variables)。 |
-|[New-AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | 建立新的變數並設定其值。|
-|[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable?view=azps-3.5.0)| 移除現有的變數。|
-|[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0)| 設定現有的變數的值。 |
+|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable) | 擷取現有變數的值。 如果值為簡單類型，則會擷取該相同的類型。 如果其為複雜類型，則會擷取 `PSCustomObject` 類型。 <br>**注意：** 您無法使用這個 Cmdlet 來擷取加密變數的值。 若要這麼做，唯一的方法是在 Runbook 或 DSC 組態中使用內部 `Get-AutomationVariable` Cmdlet。 請參閱[存取變數的內部 Cmdlet](#internal-cmdlets-to-access-variables)。 |
+|[New-AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable) | 建立新的變數並設定其值。|
+|[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable)| 移除現有的變數。|
+|[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable)| 設定現有的變數的值。 |
 
 ## <a name="internal-cmdlets-to-access-variables"></a>存取變數的內部 Cmdlet
 
@@ -103,16 +99,16 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 ### <a name="create-and-get-a-variable-using-the-azure-portal"></a>使用 Azure 入口網站建立並取得變數
 
-1. 從您的自動化帳戶中，按一下 [資產] 圖格，然後在 [資產] 刀鋒視窗上選取 [變數]。
-2. 在 [變數] 圖格上，選取 [新增變數]。
-3. 完成 [新增變數] 刀鋒視窗上的選項，然後按一下 [建立] 以儲存新變數。
+1. 從您的自動化帳戶，在左窗格中選取 [**共用資源**] 底下的 [**變數**]。
+2. 在 [ **變數** ] 頁面上，選取 [ **加入變數**]。
+3. 完成 [ **新增變數** ] 頁面上的選項，然後選取 [ **建立** ] 以儲存新變數。
 
 > [!NOTE]
 > 儲存加密變數之後，就無法在入口網站中看到它。 只能將其更新。
 
 ### <a name="create-and-get-a-variable-in-windows-powershell"></a>在 Windows PowerShell 中建立及取得變數
 
-您的 Runbook 或 DSC 組態會使用 `New-AzAutomationVariable` Cmdlet 來建立新的變數，並設定其初始值。 如果變數已加密，則呼叫應該使用 `Encrypted` 參數。 您的指令碼可以使用 `Get-AzAutomationVariable` 來擷取變數的值。 
+您的 Runbook 或 DSC 組態會使用 `New-AzAutomationVariable` Cmdlet 來建立新的變數，並設定其初始值。 如果變數已加密，則呼叫應該使用 `Encrypted` 參數。 您的指令碼可以使用 `Get-AzAutomationVariable` 來擷取變數的值。
 
 >[!NOTE]
 >PowerShell 指令碼無法擷取已加密的值。 若要這麼做，唯一的方法是使用內部 `Get-AutomationVariable` Cmdlet。
@@ -127,7 +123,7 @@ $string = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 ```
 
-下列範例示範如何建立具有複雜類型的變數，然後擷取其屬性。 在此情況下，會使用來自 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) 的虛擬機器物件。
+下列範例示範如何建立具有複雜類型的變數，然後擷取其屬性。 在此情況下，會使用來自 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) 的虛擬機器物件。
 
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01"

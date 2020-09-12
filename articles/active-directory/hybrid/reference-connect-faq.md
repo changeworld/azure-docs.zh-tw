@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4956014e3a950a729ef3993e10ca455ab8aae6f4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256674"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014628"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常見問題集
 
@@ -34,13 +34,13 @@ Microsoft 建議強化您的 Azure AD Connect 伺服器，以降低 IT 環境中
 
 若要深入了解，請參閱： 
 
-* [保護系統管理員群組](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+* [保護系統管理員群組](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
-* [保護內建的系統管理員帳戶](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+* [保護內建的系統管理員帳戶](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
 
-* [透過減少受攻擊面來改善安全性和維持流程](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+* [透過減少受攻擊面來改善安全性和維持流程](/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
 
-* [減少 Active Directory 的受攻擊面](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+* [減少 Active Directory 的受攻擊面](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 **問：如果 Azure Active Directory (Azure AD) 全域管理員已啟用雙重要素驗證 (2FA)，安裝是否可以運作？**  
 從 2016 年 2 月的組建開始，系統已可支援此情況。
@@ -139,10 +139,10 @@ Microsoft 建議強化您的 Azure AD Connect 伺服器，以降低 IT 環境中
 否，不支援透過 NAT 使用 Azure AD Connect。 
 
 ## <a name="federation"></a>同盟
-**問：如果我收到一封電子郵件，要求我更新我的 Office 365 憑證，該怎麼辦？**  
+**問：如果我收到一封電子郵件，要求我更新我的 Microsoft 365 憑證，該怎麼辦？**  
 如需有關更新憑證的指引，請參閱[更新憑證](how-to-connect-fed-o365-certs.md)。
 
-**問：我已經針對 Office 365 信賴憑證者設定 [自動更新信賴憑證者]。當我的權杖簽署憑證自動換用時，需要採取任何動作嗎？**  
+**問：我已針對 Microsoft 365 信賴憑證者設定「自動更新信賴憑證者」。當我的權杖簽署憑證自動換用時，需要採取任何動作嗎？**  
 請參考[更新憑證](how-to-connect-fed-o365-certs.md)一文中概述的指導方針。
 
 ## <a name="environment"></a>環境
@@ -155,14 +155,14 @@ Microsoft 建議強化您的 Azure AD Connect 伺服器，以降低 IT 環境中
 **問：如果我在 Azure 入口網站中停用同步的裝置 (例如：HAADJ)，為什麼裝置又會重新啟用？**<br>
 內部部署中可能已撰寫或主控同步的裝置。 如果內部部署已啟用同步處理的裝置，則即使系統管理員先前已停用也可能在 Azure 入口網站中重新啟用。 若要停用已同步的裝置，請使用內部部署 Active Directory 停用電腦帳戶。
 
-**問：如果我在 Office 365 或 Azure AD 入口網站中，針對同步處理使用者封鎖使用者登入，為什麼它會在再次登入時解除封鎖？**<br>
+**問。如果我在 Microsoft 365 上封鎖使用者登入，或在同步處理的使用者 Azure AD 入口網站中封鎖，為什麼重新登入時會解除封鎖？**<br>
 內部部署中可能已撰寫或主控同步處理的使用者。 如果帳戶已在內部部署中啟用，則可以對系統管理員所設的登入區塊解除封鎖。
 
 ## <a name="identity-data"></a>身分識別資料
 **問：Azure AD 中的 userPrincipalName (UPN) 屬性為什麼與內部部署的 UPN 不符？**  
 如需詳細資訊，請參閱這些文章：
 
-* [Office 365、Azure 或 Intune 中的使用者名稱不符合內部部署的 UPN 或替代登入識別碼](https://support.microsoft.com/kb/2523192)
+* [Microsoft 365、Azure 或 Intune 中的使用者名稱不符合內部部署 UPN 或替代登入識別碼](https://support.microsoft.com/kb/2523192)
 * [在您將使用者帳戶的 UPN 變更為使用不同的同盟網域後，Azure Active Directory 同步作業工具未同步處理變更](https://support.microsoft.com/kb/2669550)
 
 您也可以將 Azure AD 設定為允許同步處理引擎更新 UPN，如 [Azure AD Connect 同步處理服務功能](how-to-connect-syncservice-features.md)中所述。
@@ -253,19 +253,19 @@ Office 小組正在處理 Office 入口網站更新，以反映目前的產品�
 是，您可以自動升級處於預備模式的 Azure AD Connect 伺服器。
 
 **問：如果自動升級失敗，而我的 Azure AD Connect 伺服器並未啟動，該怎麼辦？**  
-在少數情況下，Azure AD Connect 服務不會在執行升級之後啟動。 在這些情況下，請重新啟動伺服器，這樣通常會修正此問題。 如果 Azure AD Connect 服務還是不會啟動，請開啟支援票證。 如需詳細資訊，請參閱[ 建立服務要求以連絡 Office 365 支援人員](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)。 
+在少數情況下，Azure AD Connect 服務不會在執行升級之後啟動。 在這些情況下，請重新啟動伺服器，這樣通常會修正此問題。 如果 Azure AD Connect 服務還是不會啟動，請開啟支援票證。 如需詳細資訊，請參閱 [建立服務要求以聯繫 Microsoft 365 支援服務](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)。 
 
 **問：我不確定升級至較新的 Azure AD Connect 版本時有何風險。您可以打電話給我來協助我升級嗎？**  
-如果您需要升級至較新 Azure AD Connect 版本的協助，請在[建立服務要求以連絡 Office 365 支援人員](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)上開啟支援票證。
+如果您需要升級至較新版本 Azure AD Connect 的協助，請在 [建立服務要求] 上開啟支援票證， [以聯繫 Microsoft 365 支援](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)。
 
 ## <a name="operational-best-practice"></a>操作最佳做法    
-以下是當您在 Windows Server Active Directory 和 Azure Active Directory 之間進行同步處理時，應該執行的一些最佳作法。
+以下是在 Windows Server Active Directory 和 Azure Active Directory 之間進行同步處理時，應執行的一些最佳作法。
 
-**對所有已同步處理的帳戶套用多重要素驗證**Azure 多因素驗證有助於保護對資料和應用程式的存取，同時為使用者維持簡單性。 它藉由要求第二種形式的驗證來提供額外的安全性，並透過一系列易於使用的驗證方法來提供增強式驗證。 因管理員所做的設定決定不同，使用者可能必須也可能無須通過 MFA。 如需 MFA 的詳細資訊，請參閱：https://www.microsoft.com/security/business/identity/mfa?rtc=1
+**對所有同步處理的帳戶套用 Multi-Factor Authentication** Azure Multi-Factor Authentication 可協助保護資料和應用程式的存取，同時為使用者提供簡單的簡化。 它藉由要求第二種形式的驗證來提供額外的安全性，並透過一系列易於使用的驗證方法來提供增強式驗證。 因管理員所做的設定決定不同，使用者可能必須也可能無須通過 MFA。 您可以在這裡閱讀有關 MFA 的詳細資訊： https://www.microsoft.com/security/business/identity/mfa?rtc=1
 
-**遵循 Azure AD Connect 伺服器安全性指導方針**Azure AD Connect 伺服器包含重要的身分識別資料，而且應該視為第0層元件，如[Active Directory 管理層模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)中所述。 另請參閱我們[的指導方針，以保護您的 AADConnect 伺服器](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#azure-ad-connect-server)。
+**遵循 Azure AD Connect server 安全性指導方針** Azure AD Connect 伺服器包含重要的身分識別資料，而且應該視為 [Active Directory 系統管理層級模型](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)中記載的第0層元件。 請參閱我們 [的指導方針，以保護您的 AADConnect 伺服器](./how-to-connect-install-prerequisites.md#azure-ad-connect-server)。
 
-**啟用 PHS 以進行洩漏的認證偵測**密碼雜湊同步處理也可讓您的混合式帳戶有[洩漏的認證偵測](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)。 Microsoft 與深色的 web 研究人員和執法機關合作，尋找公開可用的使用者名稱/密碼配對。 如果其中任何一組符合您的使用者，則會將相關聯的帳戶移至高風險。 
+**啟用 PHS 以進行洩漏的認證偵測** 密碼雜湊同步也會針對您的混合式帳戶啟用 [洩漏的認證偵測](../identity-protection/concept-identity-protection-risks.md) 。 Microsoft 與暗網研究人員和執法機關合作，尋找公開可用的使用者名稱/密碼配對。 如果其中任何一組符合您的使用者，則會將相關聯的帳戶移至高風險。 
 
 
 ## <a name="troubleshooting"></a>疑難排解
@@ -275,11 +275,11 @@ Office 小組正在處理 Office 入口網站更新，以反映目前的產品�
 
 * 針對 Azure AD Connect 支援，在 KB 中搜尋常見協助修正問題的技術解決方案。
 
-[Azure Active Directory 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[Azure Active Directory 的 Microsoft 問與答頁面](/answers/topics/azure-active-directory.html)
 
-* 您可以前往 [Azure AD 社群](https://docs.microsoft.com/answers/topics/azure-active-directory.html) 來搜尋技術問題與解答，或詢問您自己的問題。
+* 您可以前往 [Azure AD 社群](/answers/topics/azure-active-directory.html) 來搜尋技術問題與解答，或詢問您自己的問題。
 
-[取得 Azure AD 支援](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+[取得 Azure AD 支援](../fundamentals/active-directory-troubleshooting-support-howto.md)
 
 **問：為什麼我在同步步驟錯誤之後才看到事件 6311 和 6401？**
 

@@ -2,23 +2,19 @@
 title: 管理 Azure 自動化中的認證
 description: 本文說明如何建立認證資產及在 Runbook 或 DSC 設定中加以使用。
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/31/2020
+ms.date: 09/10/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 6b95eeaf7dd72c85c3940e3cdc2a71c193c35ff5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4fbcf74c2c70d3dffd86728132d58430472271b0
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008603"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004659"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>管理 Azure 自動化中的認證
 
-自動化認證資產會保存物件，其中包含安全性認證，例如使用者名稱和密碼。 Runbook 和 DSC 組態會使用接受 [PSCredential](/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) 物件進行驗證的 Cmdlet。 或者，其可以解壓縮 `PSCredential` 物件的使用者名稱和密碼，以提供給某些需要驗證的應用程式或服務。 
+自動化認證資產會保存物件，其中包含安全性認證，例如使用者名稱和密碼。 Runbook 和 DSC 組態會使用接受 [PSCredential](/dotnet/api/system.management.automation.pscredential) 物件進行驗證的 Cmdlet。 或者，其可以解壓縮 `PSCredential` 物件的使用者名稱和密碼，以提供給某些需要驗證的應用程式或服務。 
 
 >[!NOTE]
 >Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產都會經過加密，並使用為每個自動化帳戶產生的唯一金鑰，儲存在 Azure 自動化中。 Azure 自動化會將金鑰儲存在系統管理的 Key Vault 中。 在儲存安全資產之前，自動化會從 Key Vault 載入金鑰，然後將其用來加密資產。 
@@ -31,10 +27,10 @@ ms.locfileid: "87008603"
 
 | Cmdlet | 描述 |
 |:--- |:--- |
-| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |擷取包含認證相關中繼資料的 [CredentialInfo](/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) 物件。 Cmdlet 不會擷取 `PSCredential` 物件本身。  |
-| [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |建立新的自動化認證。 |
-| [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |移除自動化認證。 |
-| [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |設定現有自動化認證的屬性。 |
+| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential) |擷取包含認證相關中繼資料的 [CredentialInfo](/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo) 物件。 Cmdlet 不會擷取 `PSCredential` 物件本身。  |
+| [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential) |建立新的自動化認證。 |
+| [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential) |移除自動化認證。 |
+| [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential) |設定現有自動化認證的屬性。 |
 
 ## <a name="other-cmdlets-used-to-access-credentials"></a>用來存取認證的其他 Cmdlet
 
@@ -43,8 +39,8 @@ ms.locfileid: "87008603"
 | Cmdlet | 描述 |
 |:--- |:--- |
 | `Get-AutomationPSCredential` |取得要在 Runbook 或 DSC 組態中使用的 `PSCredential` 物件。 最常見的情況是，您應該使用此[內部 Cmdlet](modules.md#internal-cmdlets) 而不是 `Get-AzAutomationCredential` Cmdlet，因為後者只會擷取認證資訊。 這項資訊傳遞給另一個 Cmdlet 通常沒有幫助。 |
-| [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |取得具有使用者名稱和密碼提示的認證。 此 Cmdlet 是預設 Microsoft.PowerShell.Security 模組的一部分。 請參閱[預設模組](modules.md#default-modules)。|
-| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential?view=azuresmps-4.0.0) | 建立認證資產。 此 Cmdlet 是預設 Azure 模組的一部分。 請參閱[預設模組](modules.md#default-modules)。|
+| [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) |取得具有使用者名稱和密碼提示的認證。 此 Cmdlet 是預設 Microsoft.PowerShell.Security 模組的一部分。 請參閱[預設模組](modules.md#default-modules)。|
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential) | 建立認證資產。 此 Cmdlet 是預設 Azure 模組的一部分。 請參閱[預設模組](modules.md#default-modules)。|
 
 若要在程式碼中擷取 `PSCredential` 物件，您必須匯入 `Orchestrator.AssetManagement.Cmdlets` 模組。 如需詳細資訊，請參閱[在 Azure 自動化中管理模組](modules.md)。
 
@@ -72,15 +68,15 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 
 ### <a name="create-a-new-credential-asset-with-the-azure-portal"></a>使用 Azure 入口網站建立新的認證資產
 
-1. 從您的自動化帳戶中，選取 [共用資源] 下的 [認證]。
-1. 選取 [新增認證]。
-2. 在 [新增認證] 窗格中，按照您的命名標準輸入適當的認證名稱。 
-3. 在 [使用者名稱] 欄位中輸入您的存取識別碼。 
+1. 從您的自動化帳戶，在左窗格中選取 [**共用資源**] 底下的 [**認證**]。
+1. 在 [ **認證** ] 頁面上，選取 [ **新增認證**]。
+2. 在 [新增認證] 窗格中，按照您的命名標準輸入適當的認證名稱。
+3. 在 [使用者名稱] 欄位中輸入您的存取識別碼。
 4. 在兩個 [密碼] 欄位中，輸入您的祕密存取金鑰。
 
     ![建立新認證](../media/credentials/credential-create.png)
 
-5. 如果已核取 [多重要素驗證] 方塊，請將其取消選取。 
+5. 如果已核取 [多重要素驗證] 方塊，請將其取消選取。
 6. 按一下 [建立] 以儲存新的憑證資產。
 
 > [!NOTE]
@@ -104,7 +100,7 @@ Runbook 或 DSC 組態會使用內部 `Get-AutomationPSCredential` Cmdlet 來擷
 > [!NOTE]
 > `Get-AzAutomationCredential` Cmdlet 不會擷取可用於驗證的 `PSCredential` 物件。 其只提供有關認證的資訊。 如果您需要在 Runbook 中使用認證，則必須使用 `Get-AutomationPSCredential` 將其擷取做為 `PSCredential` 物件。
 
-或者，您可以使用 [GetNetworkCredential](/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) 方法來擷取代表不安全密碼版本的 [NetworkCredential](/dotnet/api/system.net.networkcredential) 物件。
+或者，您可以使用 [GetNetworkCredential](/dotnet/api/system.management.automation.pscredential.getnetworkcredential) 方法來擷取代表不安全密碼版本的 [NetworkCredential](/dotnet/api/system.net.networkcredential) 物件。
 
 ### <a name="textual-runbook-example"></a>文字式 Runbook 範例
 
@@ -118,7 +114,7 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-您也可以使用認證，透過 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.3.0) 向 Azure 進行驗證。 在大部分的情況下，您應該使用[執行身分帳戶](../manage-runas-account.md)，並使用 [Get-AzAutomationConnection](../automation-connections.md) 來擷取連線。
+您也可以使用認證，透過 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 向 Azure 進行驗證。 在大部分的情況下，您應該使用[執行身分帳戶](../manage-runas-account.md)，並使用 [Get-AzAutomationConnection](../automation-connections.md) 來擷取連線。
 
 
 ```azurepowershell
@@ -136,11 +132,11 @@ Connect-AzAccount -Credential $myPsCred
 
 透過在圖形化編輯器 [文件庫] 窗格的認證上按一下滑鼠右鍵，然後選取 [新增至畫布]，即可將內部 `Get-AutomationPSCredential` Cmdlet 的活動新增至圖形化 Runbook。
 
-![加入認證至畫布](../media/credentials/credential-add-canvas.png)
+![將認證 Cmdlet 新增至畫布](../media/credentials/credential-add-canvas.png)
 
 下圖顯示在圖形化 Runbook 中使用認證的範例。 在此情況下，認證會向 Azure 資源提供 Runbook 的驗證，如[在 Azure 自動化中使用 Azure AD 對 Azure 進行驗證](../automation-use-azure-ad.md)中所述。 第一個活動會擷取可存取 Azure 訂用帳戶的認證。 接著，帳戶連線活動會使用這個認證為隨後的任何活動提供驗證。 在此處使用[管線連結](../automation-graphical-authoring-intro.md#use-links-for-workflow)，因為 `Get-AutomationPSCredential` 預期的是單一物件。  
 
-![加入認證至畫布](../media/credentials/get-credential.png)
+![具有管線連結的認證工作流程範例](../media/credentials/get-credential.png)
 
 ## <a name="use-credentials-in-a-dsc-configuration"></a>在 DSC 組態中使用認證
 
@@ -165,4 +161,4 @@ print cred["password"]
 
 * 若要深入了解用來存取憑證的 Cmdlet，請參閱[管理 Azure 自動化中的模組](modules.md)。
 * 如需 Runbook 的一般資訊，請參閱 [Azure 自動化中的 Runbook 執行](../automation-runbook-execution.md)。
-* 如需 DSC 組態的詳細資訊，請參閱 [Azure 自動化狀態設定總覽](../automation-dsc-overview.md)。 
+* 如需 DSC 組態的詳細資訊，請參閱 [Azure 自動化狀態設定總覽](../automation-dsc-overview.md)。

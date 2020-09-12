@@ -3,13 +3,13 @@ title: 針對一般部署錯誤進行疑難排解
 description: 說明如何解決使用 Azure Resource Manager 將資源部署至 Azure 時的常見錯誤。
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 08/07/2020
-ms.openlocfilehash: 1ab493b0ba2199d8e6778252cf50d963fbd2f387
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/09/2020
+ms.openlocfilehash: a24a95bbf3b3a338102d42fcee06b5e4bd59dd83
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008163"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650942"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解
 
@@ -19,27 +19,27 @@ ms.locfileid: "88008163"
 
 ## <a name="error-codes"></a>錯誤碼
 
-| 錯誤碼 | 降低 | 更多資訊 |
+| 錯誤碼 | 降低 | 詳細資訊 |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | 遵循儲存體帳戶的命名限制。 | [解析儲存體帳戶名稱](error-storage-account-name.md) |
 | AccountPropertyCannotBeSet | 檢查可用儲存體帳戶屬性。 | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | 叢集或區域沒有可用的資源或無法支援所要求的 VM 大小。 稍後重試要求，或要求不同的 VM 大小。 | [Linux 的佈建和配置問題](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md)、[Windows 的佈建和配置問題](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md)以及[配置失敗疑難排解](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | 等候並行作業完成。 | |
-| AuthorizationFailed | 您的帳戶或服務主體沒有完成部署的足夠存取權。 請檢查您的帳戶所屬的角色以及它針對部署範圍的存取權。<br><br>當所需的資源提供者未註冊時，您可能會收到這個錯誤。 | [Azure 角色型存取控制 (Azure RBAC) ](../../role-based-access-control/role-assignments-portal.md)<br><br>[解析註冊](error-register-resource-provider.md) |
+| AuthorizationFailed | 您的帳戶或服務主體沒有完成部署的足夠存取權。 請檢查您的帳戶所屬的角色以及它針對部署範圍的存取權。<br><br>當必要的資源提供者未註冊時，您可能會收到此錯誤。 | [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)<br><br>[解析註冊](error-register-resource-provider.md) |
 | BadRequest | 您傳送的部署值不符合資源管理員的預期。 請查看內部狀態訊息，以取得疑難排解的說明。 | [範本參考](/azure/templates/)和[支援位置](resource-location.md) |
 | 衝突 | 您要求的作業在資源的目前狀態下不允許。 例如，只有在建立 VM 時或解除配置 VM 之後，才可調整磁碟大小。 | |
 | DeploymentActiveAndUneditable | 等候此資源群組的並行部署完成。 | |
-| DeploymentFailedCleanUp | 當您以完整模式部署時，不在範本中的任何資源都會被刪除。 當您沒有足夠的許可權可刪除不在範本中的所有資源時，就會出現此錯誤。 若要避免此錯誤，請將部署模式變更為 [增量]。 | [Azure Resource Manager 部署模式](deployment-modes.md) |
-| DeploymentNameInvalidCharacters | 部署名稱只能包含字母、數位、'-'、'. ' 或 ' _ '。 | |
-| DeploymentNameLengthLimitExceeded | 部署名稱限制為64個字元。  | |
+| DeploymentFailedCleanUp | 當您以完整模式部署時，會刪除不在範本中的任何資源。 當您沒有足夠的許可權可刪除不在範本中的所有資源時，就會收到這個錯誤。 若要避免這個錯誤，請將部署模式變更為累加式。 | [Azure Resource Manager 部署模式](deployment-modes.md) |
+| DeploymentNameInvalidCharacters | 部署名稱只可包含字母、數位、'-'、'. ' 或 ' _ '。 | |
+| DeploymentNameLengthLimitExceeded | 部署名稱的限制為64個字元。  | |
 | DeploymentFailed | DeploymentFailed 錯誤是一般錯誤，不會提供您解決錯誤所需的詳細資料。 尋找錯誤碼的錯誤詳細資料，以提供更多資訊。 | [尋找錯誤碼](#find-error-code) |
-| DeploymentQuotaExceeded | 如果每個資源群組的部署達到 800 個數量限制，請從歷程記錄中刪除不再需要的部署。 | [解決部署計數超過800的錯誤](deployment-quota-exceeded.md) |
-| DnsRecordInUse | DNS 記錄名稱必須是唯一的。 請輸入其他名稱。 | |
+| DeploymentQuotaExceeded | 如果每個資源群組的部署達到 800 個數量限制，請從歷程記錄中刪除不再需要的部署。 | [解決部署計數超過800時的錯誤](deployment-quota-exceeded.md) |
+| DnsRecordInUse | DNS 記錄名稱必須是唯一的。 輸入不同的名稱。 | |
 | ImageNotFound | 檢查 VM 映像設定。 |  |
 | InUseSubnetCannotBeDeleted | 當您嘗試更新資源時，可能會收到此錯誤，並藉由刪除和建立資源來處理要求。 請務必指定所有不變的值。 | [更新資源](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | 取得適當租用戶的存取權杖。 您只能從您的帳戶所屬的租用戶取得權杖。 | |
-| InvalidContentLink | 您最有可能嘗試連結至無法使用的嵌套範本。 再次確認您為巢狀範本提供的 URI。 如果儲存體帳戶中已有範本，請確定 URI 可存取。 您可能需要傳遞 SAS 權杖。 目前，您無法連結到位於[Azure 儲存體防火牆](../../storage/common/storage-network-security.md)後方之儲存體帳戶中的範本。 請考慮將您的範本移至另一個存放庫（例如 GitHub）。 | [連結的範本](linked-templates.md) |
-| InvalidDeploymentLocation | 在訂用帳戶層級部署時，您為先前使用的部署名稱提供了不同的位置。 | [訂用帳戶層級部署](deploy-to-subscription.md) |
+| InvalidContentLink | 您最有可能嘗試連結至無法使用的嵌套範本。 再次確認您為巢狀範本提供的 URI。 如果儲存體帳戶中已有範本，請確定 URI 可存取。 您可能需要傳遞 SAS 權杖。 目前，您無法連結到位於 [Azure 儲存體防火牆](../../storage/common/storage-network-security.md)後方之儲存體帳戶中的範本。 請考慮將您的範本移至另一個存放庫，例如 GitHub。 | [連結的範本](linked-templates.md) |
+| InvalidDeploymentLocation | 在訂用帳戶層級進行部署時，您為先前使用的部署名稱提供不同的位置。 | [訂用帳戶層級部署](deploy-to-subscription.md) |
 | InvalidParameter | 您為資源提供的其中一個值與預期值不相符。 此錯誤的原因可能是許多不同情況。 例如，密碼強度不足，或 blob 名稱不正確。 錯誤訊息應該會指出需要更正的值。 | |
 | InvalidRequestContent | 部署值包含無法辨識的值，或遺漏必要的值。 請確認您的資源類型值。 | [範本參考](/azure/templates/) |
 | InvalidRequestFormat | 執行部署時啟用 debug 記錄，並確認要求的內容。 | [偵錯記錄](#enable-debug-logging) |
@@ -56,14 +56,14 @@ ms.locfileid: "88008163"
 | MissingRegistrationForLocation | 檢查資源提供者註冊狀態和支援的位置。 | [解析註冊](error-register-resource-provider.md) |
 | MissingSubscriptionRegistration | 向資源提供者註冊訂用帳戶。 | [解析註冊](error-register-resource-provider.md) |
 | NoRegisteredProviderFound | 檢查資源提供者註冊狀態。 | [解析註冊](error-register-resource-provider.md) |
-| NotFound | 您可能嘗試以與父資源平行的方式部署相依資源。 檢查是否需要新增相依性。 | [解析相依性](error-not-found.md) |
+| NotFound | 您可能嘗試使用父資源平行部署相依資源。 檢查是否需要新增相依性。 | [解析相依性](error-not-found.md) |
 | OperationNotAllowed | 部署嘗試進行超過訂用帳戶、資源群組或區域配額的作業。 可能的話，請修改您的部署，以維持在配額內。 否則，請考慮要求變更您的配額。 | [解析配額](error-resource-quota.md) |
 | ParentResourceNotFound | 請確定父代資源在建立子系資源之前即已存在。 | [解析父代資源](error-parent-resource.md) |
-| PasswordTooLong | 您可能選取了字元過多的密碼，或將密碼值轉換為安全字串，然後才將它當做參數傳遞。 如果範本包含**安全字串**參數，則不需要將值轉換為安全字串。 提供密碼值作為文字。 |  |
+| PasswordTooLong | 您可能選取了具有太多字元的密碼，或將密碼值轉換為安全字串，然後再將它當作參數傳遞。 如果範本包含**安全字串**參數，則不需要將值轉換為安全字串。 提供密碼值作為文字。 |  |
 | PrivateIPAddressInReservedRange | 指定的 IP 位址包含 Azure 所需的位址範圍。 變更 IP 位址以避免保留的範圍。 | [IP 位址](../../virtual-network/public-ip-addresses.md) |
 | PrivateIPAddressNotInSubnet | 指定的 IP 位址在子網路範圍之外。 變更 IP 位址，使其落在子網路範圍內。 | [IP 位址](../../virtual-network/public-ip-addresses.md) |
 | PropertyChangeNotAllowed | 某些屬性無法在已部署的資源上變更。 更新資源時，將您的變更限制為允許的屬性。 | [更新資源](/azure/architecture/building-blocks/extending-templates/update-resource) |
-| RequestDisallowedByPolicy | 您的訂用帳戶包含的資源原則會防止您在部署期間嘗試執行的動作。 尋找封鎖動作的原則。 可能的話，請變更您的部署，以符合原則的限制。 | [解析原則](error-policy-requestdisallowedbypolicy.md) |
+| RequestDisallowedByPolicy | 您的訂用帳戶包含資源原則，可防止您在部署期間嘗試執行的動作。 尋找封鎖動作的原則。 可能的話，請變更您的部署，以符合原則的限制。 | [解析原則](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | 提供不包含保留名稱的資源名稱。 | [唯一的資源名稱](error-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | 等候刪除完成。 | |
 | ResourceGroupNotFound | 檢查部署的目標資源群組名稱。 目標資源群組必須已存在於您的訂用帳戶中。 檢查訂用帳戶內容。 | [Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/Az.Accounts/Set-AzContext) |
@@ -72,10 +72,10 @@ ms.locfileid: "88008163"
 | SkuNotAvailable | 選取可供您選取之位置使用的 SKU (例如 VM 大小)。 | [解析 SKU](error-sku-not-available.md) |
 | StorageAccountAlreadyExists | 提供儲存體帳戶的唯一名稱。 | [解析儲存體帳戶名稱](error-storage-account-name.md)  |
 | StorageAccountAlreadyTaken | 提供儲存體帳戶的唯一名稱。 | [解析儲存體帳戶名稱](error-storage-account-name.md) |
-| StorageAccountNotFound | 檢查您嘗試使用的儲存體帳戶、資源群組和名稱。 | |
+| StorageAccountNotFound | 檢查您嘗試使用的訂用帳戶、資源群組和儲存體帳戶的名稱。 | |
 | SubnetsNotInSameVnet | 虛擬機器只能有一個虛擬網路。 在部署數個 NIC 時，請確定它們屬於相同的虛擬網路。 | [多個 NIC](../../virtual-machines/windows/multiple-nics.md) |
-| SubscriptionNotFound | 無法存取指定的部署訂用帳戶。 可能是訂用帳戶識別碼錯誤、部署範本的使用者沒有足夠的許可權可部署至訂用帳戶，或訂用帳戶識別碼的格式錯誤。 使用嵌套部署[跨範圍進行部署](cross-scope-deployment.md)時，請提供訂用帳戶的 GUID。 | |
-| SubscriptionNotRegistered | 部署網路資源時，會自動在訂用帳戶中註冊 Microsoft 網路資源提供者。 有時候，自動註冊不會及時完成。 若要避免此間歇性錯誤，請在部署前註冊 Microsoft 網路資源提供者。 | [解析註冊](error-register-resource-provider.md) |
+| SubscriptionNotFound | 無法存取指定的部署訂用帳戶。 可能是訂用帳戶識別碼錯誤、部署範本的使用者沒有足夠的許可權可部署至訂用帳戶，或訂用帳戶識別碼的格式錯誤。 使用嵌套部署 [跨範圍部署](cross-scope-deployment.md)時，請提供訂用帳戶的 GUID。 | |
+| SubscriptionNotRegistered | 部署資源時，必須為您的訂用帳戶註冊資源提供者。 當您使用 Azure Resource Manager 範本進行部署時，會在訂用帳戶中自動註冊資源提供者。 有時候，自動註冊不會及時完成。 若要避免此間歇性錯誤，請在部署之前註冊資源提供者。 | [解析註冊](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | 移除不必要的相依性。 | [解析循環相依性](error-invalid-template.md#circular-dependency) |
 | TooManyTargetResourceGroups | 減少單一部署的資源群組數目。 | [跨領域部署](cross-scope-deployment.md) |
 
@@ -88,7 +88,7 @@ ms.locfileid: "88008163"
 
 驗證錯誤來自可在部署之前判斷的情況。 其中包含您範本中的語法錯誤，或者嘗試部署會超出您訂用帳戶配額的資源。 部署程序期間出現的情況下會發生驗證錯誤。 其中包括嘗試存取以平行方式部署的資源。
 
-這兩種錯誤類型都會傳回錯誤碼，以供您針對部署進行疑難排解。 這兩種錯誤類型都會出現在[活動記錄](../management/view-activity-logs.md)中。 不過，驗證錯誤不會出現在部署歷程記錄中，因為部署永遠不會啟動。
+這兩種錯誤類型都會傳回錯誤碼，以供您針對部署進行疑難排解。 這兩種類型的錯誤都會出現在 [活動記錄](../management/view-activity-logs.md)中。 不過，驗證錯誤不會出現在部署歷程記錄中，因為部署永遠不會啟動。
 
 ### <a name="validation-errors"></a>驗證錯誤
 
@@ -243,10 +243,10 @@ az deployment operation group list \
 }
 ```
 
-或者，假設您所收到的部署錯誤與不正確設定的相依性相關。 將其細分為簡化範本以測試您的範本。 首先，建立可部署單一資源 (例如 SQL Server) 的範本。 當您確定已正確定義該資源時，請新增相依于它的資源 (例如 SQL Database) 。 當您正確定義這兩個資源時，加入其他相依的資源 (例如稽核原則)。 在每個測試部署之間，刪除資源群組以確保您充分測試相依性。
+或者，假設您收到的是您認為與不正確設定相依性相關的部署錯誤。 將其細分為簡化範本以測試您的範本。 首先，建立可部署單一資源 (例如 SQL Server) 的範本。 當您確定已正確定義該資源時，請新增相依于它的資源 (例如 SQL Database) 。 當您正確定義這兩個資源時，加入其他相依的資源 (例如稽核原則)。 在每個測試部署之間，刪除資源群組以確保您充分測試相依性。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 若要進行疑難排解教學課程，請參閱[教學課程：針對 Resource Manager 範本部署進行疑難排解](template-tutorial-troubleshoot.md)
+* 若要進行疑難排解教學課程，請參閱 [教學課程：針對 Resource Manager 範本部署進行疑難排解](template-tutorial-troubleshoot.md)
 * 若要了解稽核動作，請參閱 [使用 Resource Manager 來稽核作業](../management/view-activity-logs.md)。
 * 若要了解部署期間可採取哪些動作來判斷錯誤，請參閱 [檢視部署作業](deployment-history.md)。

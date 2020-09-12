@@ -4,12 +4,12 @@ description: 使用 Azure 監視器 Application Insights 監視 .NET Core/.NET F
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 6f31236e516e44df9f5115e3efeb48db46853e8d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2ca5fc2d8f5e9e399fd7dfd3238d0ec16056d537
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933268"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007208"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>背景工作服務應用程式的 Application Insights (非 HTTP 應用程式) 
 
@@ -19,7 +19,7 @@ Application Insights 正在發行稱為的新 SDK， `Microsoft.ApplicationInsig
 
 ## <a name="supported-scenarios"></a>支援的案例
 
-適用于背景 [工作角色服務的 APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 最適用于非 HTTP 應用程式，無論其執行位置或方式為何。 如果您的應用程式正在執行，且具有與 Azure 的網路連線能力，則可以收集遙測。 支援任何 .NET Core 支援的 Application Insights 監視。 此封裝可用於新引進的 [.Net Core 3.0 背景工作服務](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、 [Asp.Net Core 2.1/2.2 中的背景](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2)工作、主控台應用程式 ( .net Core/.NET Framework) 等等。
+適用于背景 [工作角色服務的 APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 最適用于非 HTTP 應用程式，無論其執行位置或方式為何。 如果您的應用程式正在執行，且具有與 Azure 的網路連線能力，則可以收集遙測。 支援任何 .NET Core 支援的 Application Insights 監視。 此封裝可用於新引進的 [.Net Core 3.0 背景工作服務](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、 [Asp.Net Core 2.1/2.2 中的背景](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true)工作、主控台應用程式 ( .net Core/.NET Framework) 等等。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -124,7 +124,7 @@ Application Insights 正在發行稱為的新 SDK， `Microsoft.ApplicationInsig
 或者，您也可以在下列任一環境變數中指定檢測金鑰。
 `APPINSIGHTS_INSTRUMENTATIONKEY` 或 `ApplicationInsights:InstrumentationKey`
 
-例如：`SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
+例如： `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 或 `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
 通常會 `APPINSIGHTS_INSTRUMENTATIONKEY` 針對部署至 Web Apps 為 Web 作業的應用程式，指定檢測金鑰。
@@ -134,7 +134,7 @@ Application Insights 正在發行稱為的新 SDK， `Microsoft.ApplicationInsig
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>使用託管服務 ASP.NET Core 背景工作
 
-[本](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2) 檔說明如何在 ASP.NET Core 2.1/2.2 應用程式中建立背景工作。
+[本](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2&preserve-view=true) 檔說明如何在 ASP.NET Core 2.1/2.2 應用程式中建立背景工作。
 
 完整範例可在[這裡](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService)共用
 
@@ -358,6 +358,7 @@ Application Insights 正在發行稱為的新 SDK， `Microsoft.ApplicationInsig
 |EnableAdaptiveSampling | 啟用/停用調適型取樣 | true
 |EnableHeartbeat | 啟用/停用會定期 (15 分鐘的預設) 傳送名為 ' HeartBeatState ' 的自訂度量，包含執行時間的相關資訊，例如 .NET 版本、Azure 環境資訊（如果適用的話）等等。 | true
 |AddAutoCollectedMetricExtractor | 啟用/停用 AutoCollectedMetrics 解壓縮程式，這是一種 TelemetryProcessor，會在進行取樣之前，傳送要求/相依性預先匯總的計量。 | true
+|EnableDiagnosticsTelemetryModule | 啟用/停用 `DiagnosticsTelemetryModule` 。 停用此項將會忽略下列設定; `EnableHeartbeat`, `EnableAzureInstanceMetadataTelemetryModule`, `EnableAppServicesHeartbeatTelemetryModule` | true
 
 如需最新清單，請參閱[中 `ApplicationInsightsServiceOptions` 可設定的設定](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)。
 
@@ -508,7 +509,7 @@ Visual Studio IDE 上線目前僅支援 ASP.NET/ASP.NET Core 應用程式。 當
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果我在 Linux 中執行我的應用程式，是否支援所有功能？
 
-是。 此 SDK 的功能支援在所有平臺上都相同，但有下列例外狀況：
+可以。 此 SDK 的功能支援在所有平臺上都相同，但有下列例外狀況：
 
 * 只有在 [即時計量] 中顯示的進程 CPU/記憶體除外，Windows 才支援效能計數器。
 * 雖然 `ServerTelemetryChannel` 預設會啟用，但如果應用程式是在 Linux 或 MacOS 中執行，則通道不會自動建立本機儲存體資料夾，以在發生網路問題時暫時保留遙測。 由於這項限制，當發生暫時性的網路或伺服器問題時，遙測會遺失。 若要解決此問題，請設定通道的本機資料夾：
@@ -533,18 +534,17 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [.Net Core 主控台應用程式](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) 如果您使用以 .NET Core (2.0 或更高版本撰寫的主控台應用程式，) 或 .NET Framework (4.7.2 或更高版本，請使用此範例) 
 
-[使用 HostedServices 的 ASP .Net Core 背景](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService)工作如果您使用的是 Asp.Net Core 2.1/2.2，請使用此範例，並依照[此處](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2)的官方指引建立背景工作
+[使用 HostedServices 的 ASP .Net Core 背景](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService)工作如果您使用的是 Asp.Net Core 2.1/2.2，請使用此範例，並依照[此處](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true)的官方指引建立背景工作
 
-[.Net Core 3.0 背景工作服務](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)如果您有 .NET Core 3.0 背景工作服務應用程式，請依照[此處](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0#worker-service-template)的官方指引使用此範例
+[.Net Core 3.0 背景工作服務](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)如果您有 .NET Core 3.0 背景工作服務應用程式，請依照[此處](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template)的官方指引使用此範例
 
 ## <a name="open-source-sdk"></a>開放原始碼 SDK
 
 [讀取和參與程式碼](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用 API](./api-custom-events-metrics.md) 來傳送您自己的事件和計量，以深入瞭解您的應用程式效能和使用量。
 * [追蹤不會自動追蹤的其他](./auto-collect-dependencies.md)相依性。
 * 擴充[或篩選自動收集的遙測](./api-filtering-sampling.md)。
 * [ASP.NET Core 中的](/aspnet/core/fundamentals/dependency-injection)相依性插入。
-

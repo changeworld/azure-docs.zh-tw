@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: d425953b278a98af35a172d8777ab758db52709e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 0b3e1b3bc296676c44eddf34b35a0d4e06d3b8c4
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89257750"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007327"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure 開機診斷
 
@@ -24,7 +24,7 @@ ms.locfileid: "89257750"
 替代的開機診斷體驗是使用使用者管理的儲存體帳戶。 使用者可以建立新的儲存體帳戶或使用現有的儲存體帳戶。
 
 > [!IMPORTANT]
-> Azure 客戶將不需支付使用受控儲存體帳戶于2020年10月的開機診斷 associted 的儲存體成本。
+> Azure 客戶將不需支付使用受控儲存體帳戶與開機診斷相關聯的儲存體成本到2020年10月的費用。
 
 ## <a name="boot-diagnostics-view"></a>開機診斷視圖
 位於虛擬機器分頁中的 [開機診斷] 選項位於 Azure 入口網站的 [ *支援與疑難排解* ] 區段下。 選取 [開機診斷] 將會顯示幕幕快照和序列記錄檔資訊。 序列記錄檔包含核心訊息，而螢幕擷取畫面則是 Vm 目前狀態的快照集。 根據 VM 是否正在執行 Windows 或 Linux，判斷預期的螢幕擷取畫面。 針對 Windows，使用者會看到桌面背景，而針對 Linux，使用者會看到登入提示。
@@ -36,8 +36,9 @@ ms.locfileid: "89257750"
 ## <a name="limitations"></a>限制
 - 開機診斷僅適用于 Azure Resource Manager Vm。 
 - 開機診斷不支援 premium 儲存體帳戶，如果用於開機診斷的高階儲存體帳戶，使用者將會 `StorageAccountTypeNotSupported` 在啟動 VM 時收到錯誤。 
+- Resource Manager API 版本 "2020-06-01" 和更新版本支援受控儲存體帳戶。
 - Azure 序列主控台目前與用於開機診斷的受控儲存體帳戶不相容。 深入瞭解 [Azure 序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入瞭解 [Azure 序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview) ，以及如何使用開機診斷對 [azure 中的虛擬機器進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)。

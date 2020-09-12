@@ -2,19 +2,15 @@
 title: 管理 Azure 自動化中的排程
 description: 本文說明如何在 Azure 自動化中建立和使用排程。
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/04/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8bd988029b8d78a29de38e995c36ee1860d8cda9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 844a45c9b596522b949443b6edc311308da7806c
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187348"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004607"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>管理 Azure 自動化中的排程
 
@@ -28,17 +24,17 @@ ms.locfileid: "86187348"
 
 ## <a name="powershell-cmdlets-used-to-access-schedules"></a>用來存取排程的 PowerShell Cmdlet
 
-下表中的 Cmdlet 會使用 PowerShell 來建立及管理自動化排程。 其會隨附於 [Az 模組](modules.md#az-modules)中。 
+下表中的 Cmdlet 會使用 PowerShell 來建立及管理自動化排程。 其會隨附於 [Az 模組](modules.md#az-modules)中。
 
 | 指令程式 | 描述 |
 |:--- |:--- |
-| [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |擷取排程。 |
-| [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |擷取排程的 Runbook。 |
-| [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |建立新排程。 |
-| [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |將 Runbook 與排程相關聯。 |
-| [Remove-AzAutomationSchedule](/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |移除排程。 |
-| [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |設定現有排程的屬性。 |
-| [Unregister-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |從排程分離 Runbook。 |
+| [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule) |擷取排程。 |
+| [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook) |擷取排程的 Runbook。 |
+| [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule) |建立新排程。 |
+| [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook) |將 Runbook 與排程相關聯。 |
+| [Remove-AzAutomationSchedule](/powershell/module/Az.Automation/Remove-AzAutomationSchedule) |移除排程。 |
+| [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule) |設定現有排程的屬性。 |
+| [Unregister-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook) |從排程分離 Runbook。 |
 
 ## <a name="create-a-schedule"></a>建立排程
 
@@ -49,23 +45,33 @@ ms.locfileid: "86187348"
 
 ### <a name="create-a-new-schedule-in-the-azure-portal"></a>在 Azure 入口網站中建立新排程
 
-1. 在 Azure 入口網站中，從您的自動化帳戶選取左側 [共用資源] 區段底下的 [排程]。
-1. 在頁面頂端選取 [新增排程]。
-1. 在 [新增排程] 窗格上，為新排程輸入名稱並選擇性地輸入描述。
-1. 透過選取 [一次] 或 [定期]，以決定排程僅執行一次或定期執行。 如果選取 [一次]，請指定開始時間，然後選取 [建立]。 如果您選取 [重複執行]，請指定開始時間。 針對 [重複頻率]，選取您想要讓 Runbook 重複的頻率。 選取依小時、天、週或月。
-    1. 如果您選取 [週]，系統會提供星期幾供您選擇。 選取您需要的天數。 首次執行排程的時間將會是開始時間後所選的第一天。 例如，若要選擇週末排程，請選取星期六和星期日。
-    
-       ![設定週末重複執行排程](../media/schedules/week-end-weekly-recurrence.png)
+1. 從您的自動化帳戶 **，在左窗格中選取 [** **共用資源**] 底下的 [排程]。
+2. **在 [** 排程] 頁面上，選取 [**新增排程**]。
+3. 在 [ **新增排程** ] 頁面上輸入名稱，並選擇性地輸入新排程的描述。
 
-    2. 如果您選取 [月]，系統會提供您不同選項。 若是 [每月發生次數] 選項，請選取 [日期] 或 [星期]。 如果您選取 [日期]，則會出現一個行事曆，讓您可以視需要選擇多個日期。 如果您選擇的日期 (例如 31 日) 未出現在目前月份中，則排程不會執行。 如果您希望在最後一天執行排程，請在 [在每月最後一天執行] 下選取 [是]。 如果您選取 [星期]，[重複頻率] 選項就會出現。 選擇 [第一週]、[第二週]、[第三週]、[第四週] 或 [最後一週]。 最後，請選擇重複執行的日期。
+    >[!NOTE]
+    >自動化排程目前不支援在排程名稱中使用特殊字元。
+    >
 
-       ![每月排定在當月的第一天、第十五天和最後一天](../media/schedules/monthly-first-fifteenth-last.png)
+4. 選取 [ **一次** ] 或 [重複]，以選取排程執行一次或依 **重複**執行的排程執行。 如果選取 [一次]，請指定開始時間，然後選取 [建立]。 如果您選取 [重複執行]，請指定開始時間。 針對 [重複頻率]，選取您想要讓 Runbook 重複的頻率。 選取依小時、天、週或月。
 
-1. 完成之後，選取 [建立]。
+    * 如果您選取 [週]，系統會提供星期幾供您選擇。 選取您需要的天數。 首次執行排程的時間將會是開始時間後所選的第一天。 例如，若要選擇週末排程，請選取星期六和星期日。
+
+    ![設定週末重複執行排程](../media/schedules/week-end-weekly-recurrence.png)
+
+    * 如果您選取 [月]，系統會提供您不同選項。 若是 [每月發生次數] 選項，請選取 [日期] 或 [星期]。 如果您選取 [日期]，則會出現一個行事曆，讓您可以視需要選擇多個日期。 如果您選擇的日期 (例如 31 日) 未出現在目前月份中，則排程不會執行。 如果您希望在最後一天執行排程，請在 [在每月最後一天執行] 下選取 [是]。 如果您選取 [星期]，[重複頻率] 選項就會出現。 選擇 [第一週]、[第二週]、[第三週]、[第四週] 或 [最後一週]。 最後，請選擇重複執行的日期。
+
+    ![每月排定在當月的第一天、第十五天和最後一天](../media/schedules/monthly-first-fifteenth-last.png)
+
+5. 完成之後，選取 [建立]。
 
 ### <a name="create-a-new-schedule-with-powershell"></a>使用 PowerShell 建立新排程
 
-使用 [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) Cmdlet 來建立排程。 您必須指定排程的開始時間，以及其應該執行的頻率。 下列範例顯示如何建立多個不同的排程情節。
+使用 [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule) Cmdlet 來建立排程。 您必須指定排程的開始時間，以及其應該執行的頻率。 下列範例顯示如何建立多個不同的排程情節。
+
+>[!NOTE]
+>自動化排程目前不支援在排程名稱中使用特殊字元。
+>
 
 #### <a name="create-a-one-time-schedule"></a>建立單次排程
 
@@ -128,7 +134,7 @@ Runbook 可以連結至多個排程，而排程可以有多個與其連結的 Ru
 
 ### <a name="link-a-schedule-to-a-runbook-with-powershell"></a>使用 PowerShell 將排程連結至 Runbook
 
-使用 [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) Cmdlet 來連結排程。 您可以使用 Parameters 參數來指定 Runbook 參數的值。 如需如何指定參數值的詳細資訊，請參閱[在 Azure 自動化中啟動 Runbook](../start-runbooks.md)。
+使用 [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook) Cmdlet 來連結排程。 您可以使用 Parameters 參數來指定 Runbook 參數的值。 如需如何指定參數值的詳細資訊，請參閱[在 Azure 自動化中啟動 Runbook](../start-runbooks.md)。
 下列範例顯示如何使用 Azure Resource Manager Cmdlet 搭配參數，將排程連結至 Runbook。
 
 ```azurepowershell-interactive
@@ -155,7 +161,7 @@ Azure 自動化中排程可以設定的最頻繁間隔為一小時。 如果您�
 
 ### <a name="disable-a-schedule-from-the-azure-portal"></a>從 Azure 入口網站停用排程
 
-1. 在您的自動化帳戶中，選取 [共用資源] 下的 [排程]。
+1. 在自動化帳戶的左側窗格中 **，選取 [** **共用資源**] 底下的 [排程]。
 1. 選取排程的名稱以開啟詳細資料窗格。
 1. 將 [已啟用] 變更為 [否]。
 
@@ -164,7 +170,7 @@ Azure 自動化中排程可以設定的最頻繁間隔為一小時。 如果您�
 
 ### <a name="disable-a-schedule-with-powershell"></a>使用 PowerShell 停用排程
 
-使用 [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) Cmdlet 變更現有排程的屬性。 若要停用排程，請將 `IsEnabled` 參數指定為 False。
+使用 [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule) Cmdlet 變更現有排程的屬性。 若要停用排程，請將 `IsEnabled` 參數指定為 False。
 
 下列範例顯示如何使用 Azure Resource Manager Cmdlet 來停用 Runbook 的排程。
 
@@ -181,13 +187,13 @@ Set-AzAutomationSchedule –AutomationAccountName $automationAccountName `
 
 ### <a name="remove-a-schedule-using-the-azure-portal"></a>使用 Azure 入口網站移除排程
 
-1. 在您的自動化帳戶中，選取 [共用資源] 下的 [排程]。
-2. 按一下排程的名稱以開啟詳細資料窗格。
+1. 在自動化帳戶的左側窗格中 **，選取 [** **共用資源**] 底下的 [排程]。
+2. 選取排程的名稱以開啟詳細資料窗格。
 3. 按一下 **[刪除]** 。
 
 ### <a name="remove-a-schedule-with-powershell"></a>使用 PowerShell 移除排程
 
-您可以使用如下所示的 `Remove-AzAutomationSchedule` Cmdlet 來刪除現有的排程。 
+您可以使用如下所示的 `Remove-AzAutomationSchedule` Cmdlet 來刪除現有的排程。
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"
