@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/14/2018
-ms.openlocfilehash: a5d49a16324a5a97f4a0507f9abf47ea602ea072
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fb19524079f84e92e1ddbc98a61917026492663
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72328705"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469893"
 ---
 # <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中使用 Azure 資源的受控識別
 
@@ -43,8 +43,8 @@ echo The MSI access token is $access_token
 
 如果您在程式碼中快取權杖，則應該妥善處理資源指出權杖過期的情節。
 
-若要處理權杖錯誤，請造訪[以 CURL 取得 MSI 存取權杖的 MSI 頁面](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling)。
+若要處理權杖錯誤，請造訪[以 CURL 取得 MSI 存取權杖的 MSI 頁面](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#error-handling)。
 
-## <a name="next-steps"></a>後續步驟
-[深入了解此 MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)  
-[從 MSI VM 取得存取權杖](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)
+## <a name="next-steps"></a>接下來的步驟
+[深入了解此 MSI](../active-directory/managed-identities-azure-resources/overview.md)  
+[從 MSI VM 取得存取權杖](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)

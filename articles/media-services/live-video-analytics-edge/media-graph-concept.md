@@ -3,12 +3,12 @@ title: Media graph 概念-Azure
 description: Media graph 可讓您定義媒體的捕獲來源、處理方式，以及應該傳遞結果的位置。 本文提供 media graph 概念的詳細描述。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6be741ee38cc8f1980fe9aa96883f9aacc1be8e2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 1e280d6fe8303a85bee41adf83ac54e7c96df304
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048412"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567925"
 ---
 # <a name="media-graph"></a>媒體圖表
 
@@ -21,7 +21,8 @@ ms.locfileid: "89048412"
 
 Media graph 可讓您定義媒體的捕獲來源、處理方式，以及應該傳遞結果的位置。 您可以藉由連接元件或節點，以所需的方式來完成這項工作。 下圖提供媒體圖表的圖形表示。  
 
-![Media graph 的圖形表示](./media/media-graph/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/media-graph.svg" alt-text="媒體圖表":::
 
 IoT Edge 上的即時影片分析支援不同類型的來源、處理器和接收器。
 
@@ -39,7 +40,8 @@ IoT Edge 上的即時影片分析可讓您透過兩個概念（「圖形拓撲�
 
 圖形拓撲和圖形實例的生命週期會顯示在下列狀態圖中。
 
-![圖形拓撲和圖形實例生命週期](./media/media-graph/graph-topology-lifecycle.svg)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="圖形拓撲和圖形實例生命週期":::
 
 開始 [建立圖形拓撲](direct-methods.md#graphtopologyset)。 然後，針對您想要使用此拓撲處理的每個即時影片摘要，您會 [建立一個圖形實例](direct-methods.md#graphinstanceset)。 
 
@@ -88,11 +90,11 @@ RTSP 來源節點可讓您從 [RTSP] (伺服器內嵌媒體 https://tools.ietf.o
 
 #### <a name="http-extension-processor"></a>HTTP 擴充處理器
 
-[HTTP 擴充處理器] 節點可讓您將自己的 IoT Edge 模組連接到 media graph。 此節點會取得已解碼的影片畫面作為輸入，並將這類畫面轉送至您的模組所公開的 HTTP REST 端點。 如果需要，此節點可以向 REST 端點進行驗證。 此外，節點也有內建的影像格式器，可在將影片框架轉送至 REST 端點之前進行縮放和編碼。 Scaler 具有要保留、填補或延展的影像外觀比例的選項。 影像編碼器支援 JPEG、PNG 或 BMP 格式。
+[HTTP 擴充處理器] 節點可讓您將自己的 IoT Edge 模組連接到 media graph。 此節點會取得已解碼的影片畫面作為輸入，並將這類畫面轉送至您的模組所公開的 HTTP REST 端點。 如果需要，此節點可以向 REST 端點進行驗證。 此外，節點也有內建的影像格式器，可在將影片框架轉送至 REST 端點之前進行縮放和編碼。 Scaler 具有要保留、填補或延展的影像外觀比例的選項。 影像編碼器支援 JPEG、PNG 或 BMP 格式。 若要深入 [瞭解處理器，](media-graph-extension-concept.md#http-extension-processor)請參閱。
 
 #### <a name="grpc-extension-processor"></a>gRPC 擴充處理器
 
-GRPC 延伸模組處理器節點會以解碼的影片畫面作為輸入，並將這類畫面轉送至您的模組所公開的 [gRPC](terminology.md#grpc) 端點。 此外，節點也有內建的影像格式器，可在將影片框架轉送至 gRPC 端點之前進行縮放和編碼。 Scaler 具有要保留、填補或延展的影像外觀比例的選項。 影像編碼器支援 jpeg、png 或 bmp 格式。
+GRPC 延伸模組處理器節點會以解碼的影片畫面作為輸入，並將這類畫面轉送至您的模組所公開的 [gRPC](terminology.md#grpc) 端點。 節點支援使用 [共用記憶體](https://en.wikipedia.org/wiki/Shared_memory) 傳送資料，或直接將內容內嵌至 gRPC 訊息的主體。 此外，節點也有內建的影像格式器，可在將影片框架轉送至 gRPC 端點之前進行縮放和編碼。 Scaler 具有要保留、填補或延展的影像外觀比例的選項。 影像編碼器支援 jpeg、png 或 bmp 格式。 若要深入 [瞭解處理器，](media-graph-extension-concept.md#grpc-extension-processor)請參閱。
 
 #### <a name="signal-gate-processor"></a>信號閘道處理器  
 

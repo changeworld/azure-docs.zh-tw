@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 46e2563b0d1c26c984616b523a367c8b2cff7aaa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89038457"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482791"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>為 Azure VM 上的 SQL Server 設定可用性群組 (Azure 入口網站-Preview) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "89038457"
    > 這項功能目前處於預覽狀態，正在部署中，因此如果您想要的區域無法使用，請稍後再回來查看。 
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要使用 Azure 入口網站設定 Always On 可用性群組，您必須具備下列必要條件： 
 
@@ -74,9 +74,14 @@ ms.locfileid: "89038457"
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="提供 SQL 服務帳戶、叢集操作員帳戶和叢集啟動程式帳戶的認證":::
 
 1. 選取您要新增至叢集的 SQL Server Vm。 請注意，是否需要重新開機，並謹慎進行。 只有在完整管理性模式下向 SQL VM 資源提供者註冊的 Vm，以及位於與主要 SQL Server VM 相同的位置、網域和相同的虛擬網路上，才會顯示這些 Vm。 
-1. 選取 **[** 套用] 以建立叢集。 
+1. 選取 **[** 套用] 以建立叢集。 您可以在 **活動記錄** 中檢查部署的狀態，您可以從上方導覽列中的鐘圖示存取該記錄。 
+1. 若要讓 Microsoft 支援容錯移轉叢集，必須通過叢集驗證。 使用您慣用的方法 (（例如遠端桌面通訊協定 (RDP) # A3）連線至 VM，並驗證您的叢集通過驗證後再繼續進行。 若未這麼做，則會讓您的叢集處於不支援的狀態。 您可以使用容錯移轉叢集管理員 (FCM) 或下列 PowerShell 命令來驗證叢集：
 
-您可以在 **活動記錄** 中檢查部署的狀態，您可以從上方導覽列中的鐘圖示存取該記錄。 
+    ```powershell
+    Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+    ```
+    
+
 
 ### <a name="onboard-existing-cluster"></a>上架現有叢集
 
@@ -93,6 +98,8 @@ ms.locfileid: "89038457"
 
 1. 檢查叢集的設定。 
 1. 選取 **[** 套用] 以上線您的叢集，然後在出現提示時選取 **[是]** 。
+
+
 
 
 ## <a name="create-availability-group"></a>建立可用性群組
@@ -261,7 +268,7 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 - 驗證入口網站中提供的認證符合 SQL Server 服務的認證。 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 
 如需可用性群組的詳細資訊，請參閱：

@@ -1,6 +1,6 @@
 ---
 title: 管理彈性集區
-description: 使用 Azure 入口網站、PowerShell、Azure CLI、Transact-sql （T-sql）和 Rest API 來建立和管理 Azure SQL Database 彈性集區。
+description: 使用 Azure 入口網站、PowerShell、Azure CLI、Transact-sql (T-sql) 和 Rest API 來建立和管理 Azure SQL Database 彈性集區。
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -10,21 +10,21 @@ ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 0fc4f9c2142011edf78033d36d13ecb9115a8850
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e87a083f5b31237c00bc8421774c14d3ef8ef33f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84031029"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439673"
 ---
-# <a name="manage-elastic-pools-in-azure-sql-database"></a>管理 Azure SQL Database 中的彈性集區
+# <a name="manage-elastic-pools-in-azure-sql-database"></a>在 Azure SQL Database 中管理彈性集區
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 使用彈性集區，您可以判斷彈性集區處理其資料庫工作負載所需的資源數量，以及適用於每個集區資料庫的資源數量。
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
-所有集區設定都可以在一個位置找到：[設定集區]**** 刀鋒視窗。 若要取得此資訊，請在 Azure 入口網站中尋找彈性集區，然後從分頁頂端或左側的 [資源] 功能表按一下 [**設定集**區]。
+所有集區設定都可以在一個位置找到：[設定集區]**** 刀鋒視窗。 若要取得此資訊，請在 Azure 入口網站中尋找彈性集區，然後從分頁頂端或從左側的 [資源] 功能表中，按一下 [ **設定集** 區]。
 
 您可以從這裡進行下列任何變更並將變更全部儲存在一個批次中：
 
@@ -40,15 +40,15 @@ ms.locfileid: "84031029"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az .Sql 模組。 如需這些 Cmdlet，請參閱[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
+> Azure SQL Database 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需瞭解這些 Cmdlet，請參閱[AzureRM。](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) Az 模組和 AzureRm 模組中命令的引數本質上相同。
 
-若要使用 Azure PowerShell 建立和管理 SQL Database 彈性集區和集區資料庫，請使用下列 PowerShell Cmdlet。 如果您需要安裝或升級 PowerShell，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 若要建立及管理彈性集區的伺服器，請參閱[建立和管理伺服器](logical-servers.md)。 若要建立及管理防火牆規則，請參閱[使用 PowerShell 建立及管理防火牆規則](firewall-configure.md#use-powershell-to-manage-server-level-ip-firewall-rules)。
+若要使用 Azure PowerShell 建立和管理 SQL Database 彈性集區和集區資料庫，請使用下列 PowerShell Cmdlet。 如果您需要安裝或升級 PowerShell，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 若要建立及管理彈性集區的伺服器，請參閱 [建立和管理伺服器](logical-servers.md)。 若要建立及管理防火牆規則，請參閱[使用 PowerShell 建立及管理防火牆規則](firewall-configure.md#use-powershell-to-manage-server-level-ip-firewall-rules)。
 
 > [!TIP]
 > 如需 PowerShell 範例指令碼，請參閱[使用 PowerShell 建立彈性集區並在集區之間移動資料庫以及將其移出集區](scripts/move-database-between-elastic-pools-powershell.md)和[使用 PowerShell 在 Azure SQL Database 中監視和調整 SQL 彈性集區](scripts/monitor-and-scale-pool-powershell.md)。
 >
 
-| Cmdlet | Description |
+| Cmdlet | 描述 |
 | --- | --- |
 |[New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool)|建立彈性集區。|
 |[AzSqlElasticPool](/powershell/module/az.sql/get-azsqlelasticpool)|取得彈性集區及其屬性值。|
@@ -68,10 +68,10 @@ ms.locfileid: "84031029"
 若要使用 [Azure CLI](/cli/azure) 建立和管理 SQL Database 彈性集區，請使用下列 [Azure CLI SQL Database](/cli/azure/sql/db) 命令。 使用 [Cloud Shell](/azure/cloud-shell/overview) 在您的瀏覽器中執行 CLI，或在 macOS、Linux 或 Windows 中[安裝](/cli/azure/install-azure-cli)。
 
 > [!TIP]
-> 如 Azure CLI 範例腳本，請參閱[使用 CLI 移動 sql 彈性集區中 SQL Database 的資料庫](scripts/move-database-between-elastic-pools-cli.md)，並[使用 Azure CLI 來調整 AZURE SQL DATABASE 中的 SQL 彈性集](scripts/scale-pool-cli.md)區。
+> 如 Azure CLI 範例腳本，請參閱 [使用 CLI 在 sql 彈性集區中的 SQL Database 移動資料庫](scripts/move-database-between-elastic-pools-cli.md) ，並 [使用 Azure CLI 來調整 AZURE SQL DATABASE 中的 SQL 彈性集](scripts/scale-pool-cli.md)區。
 >
 
-| Cmdlet | Description |
+| Cmdlet | 描述 |
 | --- | --- |
 |[az sql elastic-pool create](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create)|建立彈性集區。|
 |[az sql elastic-pool list](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list)|傳回將伺服器中的彈性集區列出的清單。|
@@ -82,25 +82,25 @@ ms.locfileid: "84031029"
 
 ## <a name="transact-sql-t-sql"></a>Transact-SQL (T-SQL)
 
-若要在現有彈性集區中建立並移動資料庫，或傳回 SQL Database 彈性集區與 Transact-SQL 的資訊，請使用下列 T-SQL 命令。 您可以使用 Azure 入口網站、 [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、 [Visual Studio Code](https://code.visualstudio.com/docs)，或可以連接到伺服器並傳遞 transact-sql 命令的任何其他程式來發出這些命令。 若要使用 T-SQL 建立及管理防火牆規則，請參閱[使用 Transact-SQL 管理防火牆規則](firewall-configure.md#use-transact-sql-to-manage-ip-firewall-rules)。
+若要在現有彈性集區中建立並移動資料庫，或傳回 SQL Database 彈性集區與 Transact-SQL 的資訊，請使用下列 T-SQL 命令。 您可以使用 Azure 入口網站、 [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、 [Visual Studio Code](https://code.visualstudio.com/docs)，或任何其他可連接至伺服器並傳遞 transact-sql 命令的程式來發出這些命令。 若要使用 T-SQL 建立及管理防火牆規則，請參閱[使用 Transact-SQL 管理防火牆規則](firewall-configure.md#use-transact-sql-to-manage-ip-firewall-rules)。
 
 > [!IMPORTANT]
 > 您無法使用 Transact-SQL 建立、更新或刪除 Azure SQL Database 彈性集區。 您可以新增或移除彈性集區中的資料庫，也可以使用 DMV 傳回現有彈性集區的資訊。
 >
 
-| Command | 說明 |
+| Command | 描述 |
 | --- | --- |
 |[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|在現有的集區建立新的資料庫，或建立新的資料庫做為單一資料庫。 您必須連接到 master 資料庫才能建立新的資料庫。|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |將資料庫移入彈性集區、將資料庫移出彈性集區，或在彈性集區之間移動資料庫。|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|刪除資料庫。|
 |[sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|傳回伺服器上所有彈性集區的資源使用量統計資料。 每個彈性集區，每 15 秒報告時間範圍會傳回一列 (每分鐘四列)。 包括集區中所有資料庫的 CPU、IO、記錄、儲存體使用情況和並行的要求/工作階段使用量。|
-|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|針對 SQL Database 或 Azure SQL 資料倉儲中的資料庫，傳回版本（服務層級）、服務目標（定價層）和彈性集區名稱（如果有的話）。 如果登入伺服器中的 master 資料庫，會傳回所有資料庫的資訊。 對於 Azure SQL 資料倉儲，您必須連線到 master 資料庫。|
+|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|針對 SQL Database 或 Azure Synapse Analytics (先前的 SQL 資料倉儲) 中的資料庫，傳回 (服務層級) 、服務目標 (定價層) 和彈性集區名稱（如果有的話）。 如果登入伺服器中的 master 資料庫，則會傳回所有資料庫的資訊。 針對 Azure Synapse Analytics，您必須連接到 master 資料庫。|
 
 ## <a name="rest-api"></a>REST API
 
 若要建立和管理 SQL Database 彈性集區和集區資料庫，請使用這些 REST API 要求。
 
-| Command | 說明 |
+| Command | 描述 |
 | --- | --- |
 |[彈性集區-建立或更新](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|建立新的彈性集區或更新現有的彈性集區。|
 |[彈性集區-刪除](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|刪除彈性集區。|
@@ -115,7 +115,7 @@ ms.locfileid: "84031029"
 |[資料庫-依伺服器列出](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|傳回伺服器中的資料庫清單。|
 |[資料庫 - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)|更新現有的資料庫。|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 若要深入了解使用彈性集區的 SaaS 應用程式的設計模式，請參閱 [採用 Azure SQL Database 的多租用戶 SaaS 應用程式的設計模式](saas-tenancy-app-design-patterns.md)。
 * 如需使用彈性集區的 SaaS 教學課程，請參閱 [Wingtip SaaS 應用程式簡介](saas-dbpertenant-wingtip-app-overview.md)。

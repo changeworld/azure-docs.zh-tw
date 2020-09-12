@@ -1,17 +1,17 @@
 ---
 title: Azure 資料目錄中支援的資料來源
-description: 本文列出 Azure 資料目錄目前支援的資料來源規格。
+description: 本文列出 Azure 資料目錄目前支援之資料來源的規格。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ead1a324d342f818551ac05ac385ba4fa5b8b877
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78898154"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439079"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 資料目錄中支援的資料來源
 
@@ -29,7 +29,7 @@ ms.locfileid: "78898154"
        <td><b>備註</b></td>
     </tr>
     <tr>
-      <td>Azure Data Lake 存放區目錄（僅限 Gen 1）</td>
+      <td>Azure Data Lake 將目錄僅 (Gen 1) </td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -37,7 +37,7 @@ ms.locfileid: "78898154"
       <td></td>
     </tr>
     <tr>
-      <td>Azure Data Lake 存放區檔案（僅限 Gen 1）</td>
+      <td>Azure Data Lake 存放區檔案僅 (Gen 1) </td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -143,7 +143,7 @@ ms.locfileid: "78898154"
       <td></td>
     </tr>
     <tr>
-      <td>Azure SQL 資料倉儲資料表</td>
+      <td>Azure Synapse Analytics 資料表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -151,7 +151,7 @@ ms.locfileid: "78898154"
       <td></td>
     </tr>
     <tr>
-      <td>Azure SQL 資料倉儲視圖</td>
+      <td>Azure Synapse Analytics 視圖</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -236,7 +236,7 @@ ms.locfileid: "78898154"
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>僅適用于英文。 量值不受支援。</td>
+      <td>僅適用于英文。 不支援量值。</td>
     </tr>
     <tr>
       <td>SAP HANA 檢視</td>
@@ -932,7 +932,7 @@ ms.locfileid: "78898154"
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Command</td>
       <td>Stored procedure</td>
       <td>
@@ -948,7 +948,7 @@ ms.locfileid: "78898154"
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>TableValuedFunction</td>
       <td>Table-valued function</td>
       <td>
@@ -964,7 +964,7 @@ ms.locfileid: "78898154"
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Container</td>
       <td>Database</td>
       <td>
@@ -978,7 +978,7 @@ ms.locfileid: "78898154"
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Table</td>
       <td>Table, view</td>
       <td>

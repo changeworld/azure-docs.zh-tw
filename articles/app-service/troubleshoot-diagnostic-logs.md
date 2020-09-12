@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 89162a0b8ca20e59319802f9e2359c2f27ff163f
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 5eaf107861d20cea395209418c343d25461b3836
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962174"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469927"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>在 Azure App Service 中針對應用程式啟用診斷記錄
 ## <a name="overview"></a>概觀
@@ -62,7 +62,7 @@ Azure 提供內建診斷功能，可協助對 [App Service 應用程式](overvie
 
 | 層級 | 包含的類別 |
 |-|-|
-|**Disabled** | 無 |
+|**Disabled** | None |
 |**錯誤** | 錯誤、嚴重 |
 |**警告** | 警告、錯誤、嚴重|
 |**資訊** | 資訊、警告、錯誤、嚴重|
@@ -191,7 +191,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 | AppServiceHTTPLogs | 是 | 是 | Web 伺服器記錄 |
 | AppServiceEnvironmentPlatformLogs | 是 | 是 | App Service 環境：調整、設定變更和狀態記錄|
 | AppServiceAuditLogs | 是 | 是 | 透過 FTP 和 Kudu 的登入活動 |
-| AppServiceFileAuditLogs | 是 | TBD | 透過 FTP 和 Kudu 的檔案變更 |
+| AppServiceFileAuditLogs | 是 | TBD | 對網站內容進行的檔案變更;僅適用于進階層和更新版本 |
 | AppServiceAppLogs | TBA | JAVA SE & Tomcat | 應用程式記錄 |
 | AppServiceIPSecAuditLogs  | 是 | 是 | IP 規則的要求 |
 | AppServicePlatformLogs  | TBA | 是 | 容器記錄 |

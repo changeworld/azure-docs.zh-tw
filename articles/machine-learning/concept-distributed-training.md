@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 8c2867fc5d57cf9ad6eb6bf2d90e02c61e320120
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 62edee6a882191551ce2409646ea8b617576c059
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146652"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651162"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>使用 Azure Machine Learning 的分散式訓練
 
@@ -24,7 +24,7 @@ ms.locfileid: "89146652"
 
 ## <a name="deep-learning-and-distributed-training"></a>深度學習和分散式訓練 
 
-分散式訓練有兩種主要類型： [資料平行](#data-parallelism) 處理原則和 [模型平行](#model-parallelism)處理。 針對深度學習模型的分散式訓練， [Python 中的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 支援與熱門架構（PyTorch 和 TensorFlow）的整合。 這兩種架構都採用資料平行處理來進行分散式訓練，並可利用 [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) 來優化計算速度。 
+分散式訓練有兩種主要類型： [資料平行](#data-parallelism) 處理原則和 [模型平行](#model-parallelism)處理。 針對深度學習模型的分散式訓練， [Python 中的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 支援與熱門架構（PyTorch 和 TensorFlow）的整合。 這兩種架構都採用資料平行處理來進行分散式訓練，並可利用 [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) 來優化計算速度。 
 
 * [使用 PyTorch 的分散式訓練](how-to-train-pytorch.md#distributed-training)
 

@@ -3,18 +3,18 @@ title: 在 IoT Edge 裝置上部署即時影片分析-Azure
 description: 本文列出可協助您在 IoT Edge 裝置上部署即時影片分析的步驟。 例如，如果您有本機 Linux 電腦的存取權，以及（或）先前已建立 Azure 媒體服務帳戶，您就可以這麼做。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 774fdb440307d0df92e9735a8bdf055687f450a2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: eecc17e36f35e7552c0be83f7ecc38f2d644f18d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684094"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439617"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 裝置上部署即時影片分析
 
 本文列出可協助您在 IoT Edge 裝置上部署即時影片分析的步驟。 例如，如果您有本機 Linux 電腦的存取權，以及（或）先前已建立 Azure 媒體服務帳戶，您就可以這麼做。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 符合即時影片分析之 HW/SW 限制的 Linux 機器
 * 您具有擁有者[許可權](../../role-based-access-control/built-in-roles.md#owner)的 Azure 訂用帳戶
@@ -38,7 +38,7 @@ ms.locfileid: "88684094"
 
 這是選擇性步驟。 您可以使用此 Azure CLI 命令來執行此動作：
 
-```azure-cli
+```azurecli
 az ams streaming-endpoint scale --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --scale-units 1
 ```
 
@@ -47,7 +47,7 @@ az ams streaming-endpoint scale --resource-group $RESOURCE_GROUP --account-name 
 > [!IMPORTANT]
 > 您的訂用帳戶將會開始計費。
 
-```azure-cli
+```azurecli
 az ams streaming-endpoint start --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --no-wait
 ```
 
@@ -107,7 +107,7 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
     * **IoT Edge 模組名稱**： lvaEdge
     * **映射 URI**： mcr.microsoft.com/media/live-video-analytics:1。0    
     
-    ![新增](./media/deploy-iot-edge-device/add.png)
+    ![加](./media/deploy-iot-edge-device/add.png)
     
     > [!TIP]
     > 除非您已在 [**模組設定**]、[**容器建立選項**] 和 [模組對應項**設定**] 索引標籤上指定值，如下列程式所述，請勿選取 [**新增**]。
@@ -247,7 +247,7 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
 
     ![狀態200訊息](./media/deploy-iot-edge-device/connection-timeout.png) 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 試用 [快速入門：開始使用 IoT Edge 的即時影片分析](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 

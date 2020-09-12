@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: dpalled
-ms.openlocfilehash: 8d9b166d4ac9290a0389eac23f9d6882f667e1a0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 43d3e80c66d54e3f7518246f7d75c5661995578c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856094"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489029"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>在 Azure 時間序列深入解析 Gen2 中加入 long 資料類型的支援
 
@@ -33,7 +33,7 @@ ms.locfileid: "88856094"
 
 如果任何案例適用于您，請對您的模型進行變更。 使用建議的變更，更新變數定義中 (TSX) 的時間序列運算式。 更新兩者：
 
-- Azure 時間序列深入解析 TSI Explorer
+- Azure 時間序列深入解析總管
 - 使用我們 Api 的任何自訂用戶端
 
 根據您的 IoT 解決方案和條件約束，您可能無法看見傳送至 Azure 時間序列深入解析 Gen2 環境的資料。 如果您不確定您的資料是唯一的，還是整數和非整數，您有幾個選項：
@@ -240,6 +240,6 @@ ms.locfileid: "88856094"
 
 如果您是具有大量屬性的暖存放區使用者，且認為這項變更會將您的環境推送至1000暖存放區屬性名稱限制，請透過 Azure 入口網站提交支援票證，並提及此通訊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 查看 [支援的資料類型](concepts-supported-data-types.md)的完整清單。

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 2f02e579f7679180cecfd8a48736b3af307ba371
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 9c16b3ff013c2985ea381ed4bb002276b1c3fdb8
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874753"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462236"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>在 HDInsight 上搭配 Apache Hive 和 Apache Pig 使用 Python 使用者定義函數 (UDF)
 
@@ -23,22 +23,22 @@ ms.locfileid: "87874753"
 
 HDInsight 3.0 和更新版本上預設已安裝 Python2.7。 Apache Hive 可以與此版本的 Python 搭配使用，以進行資料流處理。 資料流處理會使用 STDOUT 和 STDIN，以在 Hive 和 UDF 之間傳遞資料。
 
-HDInsight 也包含 Jython (以 Java 撰寫的 Python 實作)。 Jython 會直接在 JAVA 虛擬機器上執行，而不會使用串流。 搭配使用 Python 與 Pig 時，建議使用的 Python 解譯器為 Jython。
+HDInsight 也包含 Jython (以 Java 撰寫的 Python 實作)。 Jython 會直接在 JAVA 虛擬機器上執行，並不會使用串流處理。 搭配使用 Python 與 Pig 時，建議使用的 Python 解譯器為 Jython。
 
 ## <a name="prerequisites"></a>必要條件
 
 * **HDInsight 上的 Hadoop**叢集。 請參閱[開始在 Linux 上使用 HDInsight](apache-hadoop-linux-tutorial-get-started.md)。
 * **SSH 用戶端**。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
-* 您叢集主要儲存體的 [URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 這 `wasb://` 適用于 Azure 儲存體， `abfs://` 適用于 Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen2 或 adl://。 如果已啟用 Azure 儲存體的安全傳輸，則 URI 會是 wasbs://。  另請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
-* **儲存體設定的可能變更。**  如果使用儲存體帳戶種類，請參閱[儲存體](#storage-configuration)設定 `BlobStorage` 。
-* 選擇性。  如果打算使用 PowerShell，您將需要安裝[AZ 模組](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
+* 您叢集主要儲存體的 [URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 這適用于 `wasb://` Azure 儲存體，適用于 `abfs://` Azure Data Lake Storage Gen2 或適用于 Azure Data Lake Storage Gen1 的 adl://。 如果已針對 Azure 儲存體啟用安全傳輸，則會 wasbs://URI。  另請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
+* **儲存體設定的可能變更。**  如果使用儲存體帳戶種類，請參閱 [儲存體](#storage-configuration) 設定 `BlobStorage` 。
+* 選擇性。  如果打算使用 PowerShell，您將需要安裝 [AZ 模組](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) 。
 
 > [!NOTE]  
-> 本文中使用的儲存體帳戶已啟用[安全傳輸](../../storage/common/storage-require-secure-transfer.md)Azure 儲存體，因此會在 `wasbs` 本文中使用。
+> 本文中使用的儲存體帳戶已啟用 [安全傳輸](../../storage/common/storage-require-secure-transfer.md) Azure 儲存體，因此將在 `wasbs` 本文中使用。
 
 ## <a name="storage-configuration"></a>儲存體組態
 
-如果使用的儲存體帳戶種類或，則不需要採取任何動作 `Storage (general purpose v1)` `StorageV2 (general purpose v2)` 。  本文中的程式將會產生至少的輸出 `/tezstaging` 。  預設的 hadoop 設定會包含 `/tezstaging` 在 `fs.azure.page.blob.dir` for service 的設定變數中 `core-site.xml` `HDFS` 。  此設定會導致目錄的輸出成為分頁 blob，不支援儲存體帳戶種類 `BlobStorage` 。  若要在 `BlobStorage` 本文中使用，請 `/tezstaging` 從設定變數中移除 `fs.azure.page.blob.dir` 。  您可以從[AMBARI UI](../hdinsight-hadoop-manage-ambari.md)存取設定。  否則，您會收到錯誤訊息：`Page blob is not supported for this account type.`
+如果使用的儲存體帳戶屬於種類或，就不需要採取任何動作 `Storage (general purpose v1)` `StorageV2 (general purpose v2)` 。  本文中的程式至少會產生輸出 `/tezstaging` 。  預設的 hadoop 設定將包含 `/tezstaging` 在 `fs.azure.page.blob.dir` for service 的設定變數中 `core-site.xml` `HDFS` 。  這種設定會導致目錄的輸出成為分頁 blob，但不支援儲存體帳戶種類 `BlobStorage` 。  若要使用本文 `BlobStorage` ，請 `/tezstaging` 從設定變數中移除 `fs.azure.page.blob.dir` 。  您可以從 [AMBARI UI](../hdinsight-hadoop-manage-ambari.md)存取設定。  否則，您會收到錯誤訊息： `Page blob is not supported for this account type.`
 
 > [!WARNING]  
 > 本文件中的這些步驟進行下列假設：  
@@ -46,7 +46,7 @@ HDInsight 也包含 Jython (以 Java 撰寫的 Python 實作)。 Jython 會直�
 > * 您在本機開發環境中建立 Python 指令碼。
 > * 您可以使用 `scp` 命令或提供的 PowerShell 腳本，將腳本上傳至 HDInsight。
 >
-> 如果您想要使用[Azure Cloud Shell (bash) ](https://docs.microsoft.com/azure/cloud-shell/overview)來處理 HDInsight，則必須：
+> 如果您想要使用 [Azure Cloud Shell (bash) ](https://docs.microsoft.com/azure/cloud-shell/overview) 來處理 HDInsight，則必須：
 >
 > * 建立 Cloud Shell 環境內的指令碼。
 > * 使用 `scp` 將檔案從 Cloud Shell 上傳至 HDInsight。
@@ -97,7 +97,7 @@ while True:
 
 此指令碼會執行下列動作：
 
-1. 從 STDIN 讀取一行資料。
+1. 從 STDIN 讀取資料行。
 2. 使用 `string.strip(line, "\n ")` 移除結尾新行字元。
 3. 執行串流處理時，有一行包含所有的值，而每個值之間是一個定位字元。 因此， `string.split(line, "\t")` 可在每個索引標籤進行分割輸入，並只傳回欄位。
 4. 處理完成時，輸出必須以一行寫入 STDOUT，而每一個欄位之間是一個定位字元。 例如： `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])` 。
@@ -105,9 +105,9 @@ while True:
 
 指令碼輸出是 `devicemake` 和 `devicemodel` 的輸入值串連，並且是串連值的雜湊。
 
-### <a name="upload-file-shell"></a>上傳檔 (shell) 
+### <a name="upload-file-shell"></a>上傳檔案 (shell) 
 
-在下列命令中， `sshuser` 將取代為實際的使用者名稱（如果不同的話）。  `mycluster`將取代為實際的叢集名稱。  確定您的工作目錄是檔案所在的位置。
+在下列命令中， `sshuser` 將取代為實際的使用者名稱（如果不同）。  取代 `mycluster` 為實際的叢集名稱。  確定您的工作目錄是檔案所在的位置。
 
 1. 使用 `scp` 將檔案複製到您的 HDInsight 叢集。 編輯並輸入下列命令：
 
@@ -121,7 +121,7 @@ while True:
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-3. 在 SSH 會話中，將先前上傳的 python 檔案新增至叢集的存放裝置。
+3. 從 SSH 會話，將先前上傳的 python 檔案新增至叢集的儲存體。
 
     ```bash
     hdfs dfs -put hiveudf.py /hiveudf.py
@@ -164,9 +164,9 @@ while True:
     !q
     ```
 
-### <a name="upload-file-powershell"></a> (PowerShell) 上傳檔
+### <a name="upload-file-powershell"></a> (PowerShell) 上傳檔案
 
-PowerShell 也可用來從遠端執行 Hive 查詢。 請確定您的工作目錄是所在的位置 `hiveudf.py` 。  使用下列 PowerShell 腳本來執行使用腳本的 Hive 查詢 `hiveudf.py` ：
+PowerShell 也可用來從遠端執行 Hive 查詢。 確定您的工作目錄是位置所在的位置 `hiveudf.py` 。  使用下列 PowerShell 腳本來執行使用腳本的 Hive 查詢 `hiveudf.py` ：
 
 ```PowerShell
 # Login to your Azure subscription
@@ -300,8 +300,8 @@ Get-AzHDInsightJobOutput `
 
 若要指定 Python 解譯器，請在參考 Python 指令碼時使用 `register`。 下列範例使用 Pig 將指令碼註冊為 `myfuncs`：
 
-* **若要使用 Jython**：`register '/path/to/pigudf.py' using jython as myfuncs;`
-* **若要使用 C Python**：`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **若要使用 Jython**： `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **使用 C Python**： `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > 使用 Jython 時，pig_jython 檔案的路徑可以是本機路徑或 WASBS://路徑。 不過，在使用 C Python 時，您必須參考您用來提交 Pig 作業之節點的本機檔案系統上的檔案。
@@ -341,7 +341,7 @@ def create_structure(input):
     return date, time, classname, level, detail
 ```
 
-在 Pig 的拉丁範例中， `LINE` 會將輸入定義為 chararray，因為輸入沒有一致的架構。 Python 指令碼會將資料轉換成一致的結構描述，以便輸出。
+在 Pig 拉丁範例中， `LINE` 輸入定義為 chararray，因為輸入沒有一致的架構。 Python 指令碼會將資料轉換成一致的結構描述，以便輸出。
 
 1. `@outputSchema` 陳述式定義將傳回給 Pig 的資料格式。 在此案例中，這是一個 **data bag**(一種 Pig 資料類型)。 Bag 包含下列欄位，全部都是 chararray (字串)：
 
@@ -361,9 +361,9 @@ def create_structure(input):
 
 當資料傳回至 Pig 時，其將具有如同 `@outputSchema` 陳述式中定義的一致性結構描述。
 
-### <a name="upload-file-shell"></a>上傳檔 (shell) 
+### <a name="upload-file-shell"></a>上傳檔案 (shell) 
 
-在下列命令中， `sshuser` 將取代為實際的使用者名稱（如果不同的話）。  `mycluster`將取代為實際的叢集名稱。  確定您的工作目錄是檔案所在的位置。
+在下列命令中， `sshuser` 將取代為實際的使用者名稱（如果不同）。  取代 `mycluster` 為實際的叢集名稱。  確定您的工作目錄是檔案所在的位置。
 
 1. 使用 `scp` 將檔案複製到您的 HDInsight 叢集。 編輯並輸入下列命令：
 
@@ -377,7 +377,7 @@ def create_structure(input):
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-3. 在 SSH 會話中，將先前上傳的 python 檔案新增至叢集的存放裝置。
+3. 從 SSH 會話，將先前上傳的 python 檔案新增至叢集的儲存體。
 
     ```bash
     hdfs dfs -put pigudf.py /pigudf.py
@@ -385,7 +385,7 @@ def create_structure(input):
 
 ### <a name="use-pig-udf-shell"></a>使用 Pig UDF (shell) 
 
-1. 若要連線到 pig，請從開啟的 SSH 會話使用下列命令：
+1. 若要連接到 pig，請從開啟的 SSH 會話使用下列命令：
 
     ```bash
     pig
@@ -423,7 +423,7 @@ def create_structure(input):
     #from pig_util import outputSchema
     ```
 
-    這行會修改 Python 指令碼以搭配 C Python 使用，而非 Jython。 進行變更之後，請使用**Ctrl + X**結束編輯器。 選取 [ **Y**]，然後按**Enter**以儲存變更。
+    這行會修改 Python 指令碼以搭配 C Python 使用，而非 Jython。 變更完成後，請使用 **Ctrl + X** 結束編輯器。 選取 [ **Y**]，然後 **輸入** 以儲存變更。
 
 6. 使用 `pig` 命令再次啟動 Shell。 進入 `grunt>` 提示字元後，使用下列命令以使用 C Python 解譯器執行 Python 指令碼。
 
@@ -437,9 +437,9 @@ def create_structure(input):
 
     此作業完成後，您應該會看到和先前使用 Jython 執行指令碼時所得到的相同輸出。
 
-### <a name="upload-file-powershell"></a> (PowerShell) 上傳檔
+### <a name="upload-file-powershell"></a> (PowerShell) 上傳檔案
 
-PowerShell 也可用來從遠端執行 Hive 查詢。 請確定您的工作目錄是所在的位置 `pigudf.py` 。  使用下列 PowerShell 腳本來執行使用腳本的 Hive 查詢 `pigudf.py` ：
+PowerShell 也可用來從遠端執行 Hive 查詢。 確定您的工作目錄是位置所在的位置 `pigudf.py` 。  使用下列 PowerShell 腳本來執行使用腳本的 Hive 查詢 `pigudf.py` ：
 
 ```PowerShell
 # Login to your Azure subscription
@@ -581,7 +581,7 @@ Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An e
 
 ### <a name="powershell-scripts"></a>PowerShell 指令碼
 
-用來執行範例的兩個範例 PowerShell 指令碼都包含一行註解，此行會顯示作業的錯誤輸出。 如果您看不到預期的作業輸出，請取消批註下列這一行，並查看錯誤資訊是否表示有問題。
+用來執行範例的兩個範例 PowerShell 指令碼都包含一行註解，此行會顯示作業的錯誤輸出。 如果您看不到預期的作業輸出，請將下列這一行取消批註，並查看錯誤資訊是否表示有問題。
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=135-139)]
 
@@ -594,7 +594,7 @@ Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An e
 
 ## <a name="next-steps"></a><a name="next"></a>後續步驟
 
-如果您需要載入非預設提供的 Python 模組，請參閱 [如何將模組部署至 Azure HDInsight](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx) (英文)。
+如果您需要載入非預設提供的 Python 模組，請參閱 [如何將模組部署至 Azure HDInsight](https://docs.microsoft.com/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight) (英文)。
 
 若要了解使用 MapReduce，及Pig、Hive 的其他使用方式，請參閱下列文件：
 

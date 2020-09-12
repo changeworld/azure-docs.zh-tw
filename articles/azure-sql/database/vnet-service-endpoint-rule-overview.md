@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database 中資料庫的 VNet 端點和規則
-description: 將子網路標示為虛擬網路服務端點。 然後做為虛擬網路規則的端點，寫入您資料庫的 ACL。 接著，您的資料庫會接受來自子網上所有虛擬機器和其他節點的通訊。
+description: 將子網路標示為虛擬網路服務端點。 然後，將端點作為虛擬網路規則，以作為資料庫的 ACL。 然後，您的資料庫會接受來自子網上所有虛擬機器和其他節點的通訊。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,20 +11,20 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 76a31b10c15f2dff3d6d9304dcff6d0fb489ea7f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 827d66b51aa2080c4fb10209439d7781ddf787a7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210379"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436920"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>在 Azure SQL Database 中，使用伺服器的虛擬網路服務端點和規則
+# <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>在 Azure SQL Database 中使用伺服器的虛擬網路服務端點和規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-*虛擬網路規則* 是一項防火牆安全性功能，可控制您的資料庫和彈性集區的伺服器 [Azure SQL Database](sql-database-paas-overview.md) 或 [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 中的資料庫，是否接受從虛擬網路中特定子網傳送的通訊。 本文說明為何虛擬網路規則功能有時是您在 Azure SQL Database 和 SQL 資料倉儲中安全允許與資料庫通訊的最佳選項。
+*虛擬網路規則* 是一項防火牆安全性功能，可控制 [Azure SQL Database](sql-database-paas-overview.md) 中的資料庫和彈性集區的伺服器，或 [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 中的資料庫，是否接受從虛擬網路中的特定子網傳送的通訊。 本文說明為何虛擬網路規則功能有時是在 Azure SQL Database 中安全地允許與您的資料庫進行通訊的最佳選項，並 Azure Synapse Analytics (先前的 SQL 資料倉儲) 。
 
 > [!NOTE]
-> 本文適用於 Azure SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲)。 簡單來說，「資料庫」一詞同時指稱 Azure SQL Database 和 Azure Synapse Analytics 中的資料庫。 同樣地，只要提到「伺服器」，也都是指裝載 Azure SQL Database 和 Azure Synapse Analytics 的[邏輯 SQL 伺服器](logical-servers.md)。
+> 本文同時適用于 Azure SQL Database 和 Azure Synapse Analytics。 簡單來說，「資料庫」一詞同時指稱 Azure SQL Database 和 Azure Synapse Analytics 中的資料庫。 同樣地，只要提到「伺服器」，也都是指裝載 Azure SQL Database 和 Azure Synapse Analytics 的[邏輯 SQL 伺服器](logical-servers.md)。
 
 若要建立虛擬網路規則，必須先有[虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]規則可供參考。
 
@@ -44,7 +44,7 @@ ms.locfileid: "88210379"
 
 ### <a name="server-level-not-database-level"></a>伺服器層級，非資料庫層級
 
-每個虛擬網路規則都適用于您的整部伺服器，而不只是伺服器上的一個特定資料庫。 換句話說，虛擬網路規則是在伺服器層級套用，而不是資料庫層級。
+每個虛擬網路規則都會套用至您的整個伺服器，而不只套用至伺服器上的一個特定資料庫。 換句話說，虛擬網路規則是在伺服器層級套用，而不是資料庫層級。
 
 - 相反地，IP 規則可以在任一個層級套用。
 
@@ -53,16 +53,16 @@ ms.locfileid: "88210379"
 有一組獨立的安全性角色負責管理虛擬網路服務端點。 下列每個角色都需要採取動作：
 
 - **網路管理員：** &nbsp;開啟端點。
-- **資料庫管理員：** &nbsp; 更新存取控制清單 (ACL) ，以將指定的子網新增至伺服器。
+- **資料庫管理員：** &nbsp; 更新 (ACL) 的存取控制清單，以將指定的子網新增至伺服器。
 
 RBAC 替代方案：**
 
 「網路管理員」和「資料庫管理員」角色的能力已超過管理虛擬網路規則所需。 只需要其中一部分能力。
 
-您可以選擇在 Azure 中使用 azure [角色型存取控制 (AZURE RBAC) ][rbac-what-is-813s] 建立僅具有必要功能子集的單一自訂角色。 您可以使用自訂角色，而不是涉及網路系統管理員或資料庫管理員。如果您將使用者新增至自訂角色，而不是將使用者新增至其他兩個主要系統管理員角色，則安全性暴露的介面區會較低。
+您可以選擇在 Azure 中使用 azure [角色型存取控制 (AZURE RBAC) ][rbac-what-is-813s] 來建立單一自訂角色，該角色只具有必要的功能子集。 您可以使用自訂角色，而不是涉及網路系統管理員或資料庫管理員。如果您將使用者新增至自訂角色，而不是將使用者新增至其他兩個主要系統管理員角色，則安全性暴露的介面區會較低。
 
 > [!NOTE]
-> 在某些情況下，Azure SQL Database 和 VNet 子網中的資料庫位於不同的訂用帳戶中。 在這些情況下，您必須確保下列設定：
+> 在某些情況下，Azure SQL Database 中的資料庫和 VNet 子網位於不同的訂用帳戶中。 在這些情況下，您必須確保下列設定：
 >
 > - 兩個訂用帳戶在相同的 Azure Active Directory 租用戶中。
 > - 使用者具備啟動作業的必要權限，例如啟用服務端點、將 VNet 子網路新增至指定的伺服器。
@@ -72,9 +72,9 @@ RBAC 替代方案：**
 
 對於 Azure SQL Database，虛擬網路規則功能具有下列限制：
 
-- 在 Azure SQL Database 的資料庫防火牆中，每個虛擬網路規則都會參考一個子網。 所有這些參考的子網都必須裝載于主控資料庫的相同地理區域中。
+- 在 Azure SQL Database 的資料庫防火牆中，每個虛擬網路規則都會參考一個子網。 所有這些參考的子網都必須裝載在主控資料庫的相同地理區域中。
 
-- 每部伺服器最多可以有128個 ACL 專案供任何指定的虛擬網路使用。
+- 針對任何指定的虛擬網路，每部伺服器最多可以有128個 ACL 專案。
 
 - 虛擬網路規則只套用至 Azure Resource Manager 虛擬網路，而不是[傳統部署模型][arm-deployment-model-568f]網路。
 
@@ -104,24 +104,24 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>使用 VNet 服務端點搭配 Azure 儲存體的影響
 
-Azure 儲存體已實作功能，可讓您限制連線至 Azure 儲存體帳戶的連線。 如果您選擇使用這項功能，並使用 Azure SQL Database 正在使用的 Azure 儲存體帳戶，可能會遇到問題。 接下來是受此影響的 Azure SQL Database 和 Azure SQL 資料倉儲功能清單和討論。
+Azure 儲存體已實作功能，可讓您限制連線至 Azure 儲存體帳戶的連線。 如果您選擇使用這項功能，並使用 Azure SQL Database 正在使用的 Azure 儲存體帳戶，可能會遇到問題。 接下來是受此影響的 Azure SQL Database 和 Azure Synapse Analytics 功能的清單和討論。
 
 ### <a name="azure-synapse-polybase-and-copy-statement"></a>Azure Synapse PolyBase 和 COPY 語句
 
-PolyBase 和 COPY 語句通常用來從 Azure 儲存體帳戶將資料載入至 Azure Synapse 分析，以取得高輸送量資料內嵌。 如果您要載入資料的 Azure 儲存體帳戶僅限於一組 VNet 子網的存取權，使用 PolyBase 時的連線能力和儲存體帳戶的 COPY 語句將會中斷。 若要使用複製和 PolyBase 搭配 Azure Synapse 分析來啟用匯入和匯出案例，以連線至受保護 VNet 的 Azure 儲存體，請遵循下列指示的步驟：
+PolyBase 和 COPY 語句通常用來將資料從 Azure 儲存體帳戶載入 Azure Synapse Analytics，以進行高輸送量資料內嵌。 如果您要載入資料的 Azure 儲存體帳戶限制只能存取一組 VNet 子網，則在使用 PolyBase 和複製語句來儲存儲存體帳戶時，將會中斷連線。 若要使用 COPY 和 PolyBase 來啟用匯入和匯出案例，並將 Azure Synapse Analytics 連接到受限於 VNet 的 Azure 儲存體，請依照下列步驟執行：
 
 #### <a name="prerequisites"></a>必要條件
 
 - 使用此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安裝 Azure PowerShell。
 - 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)先升級至一般用途 v2。
-- 您必須開啟 Azure 儲存體帳戶 [防火牆與虛擬網路] 設定功能表下方的 [允許信任的 Microsoft 服務存取此儲存體帳戶]。 啟用此設定可讓 PolyBase 和 COPY 語句使用增強式驗證連接到儲存體帳戶，其中的網路流量會保留在 Azure 骨幹上。 如需詳細資訊請參閱此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
+- 您必須開啟 Azure 儲存體帳戶 [防火牆與虛擬網路] 設定功能表下方的 [允許信任的 Microsoft 服務存取此儲存體帳戶]。 啟用此設定可讓 PolyBase 和 COPY 語句使用強式驗證來連線到儲存體帳戶，其中網路流量會留在 Azure 骨幹上。 如需詳細資訊請參閱此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
 
 > [!IMPORTANT]
-> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az .Sql 模組。 AzureRM 模組會繼續收到錯誤修正，直到2020年12月為止。  Az 模組和 AzureRm 模組中命令的引數本質上完全相同。 如需其相容性的詳細資訊，請參閱 [新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
+> Azure SQL Database 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 AzureRM 模組將持續收到錯誤修正，直到2020年12月為止。  Az 模組和 AzureRm 模組中命令的引數本質上相同。 如需相容性的詳細資訊，請參閱 [新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
 
 #### <a name="steps"></a>步驟
 
-1. 在 PowerShell 中，使用 Azure Active Directory (AAD) 來註冊裝載 Azure Synapse 的 **伺服器** ：
+1. 在 PowerShell 中，使用 Azure Active Directory (AAD) 註冊裝載 Azure Synapse 的 **伺服器** ：
 
    ```powershell
    Connect-AzAccount
@@ -136,10 +136,10 @@ PolyBase 和 COPY 語句通常用來從 Azure 儲存體帳戶將資料載入至 
    > - 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此 [指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)**升級至 v2**。
    > - 關於 Azure Data Lake Storage Gen2 的已知問題，請參閱此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
 
-1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將 **儲存體 Blob 資料參與者** Azure 角色指派給裝載您已向其註冊之 Azure Synapse 分析的伺服器，如步驟 #1 中所述 AZURE ACTIVE DIRECTORY (AAD) 。
+1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將 **儲存體 Blob 資料參與者** Azure 角色指派給裝載您 Azure Synapse Analytics 的伺服器，您已向 AZURE ACTIVE DIRECTORY (AAD) 註冊，如同步驟 #1 中所述。
 
    > [!NOTE]
-   > 只有在儲存體帳戶上具有擁有者許可權的成員，才能夠執行此步驟。 如需各種 Azure 內建角色，請參閱此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+   > 只有在儲存體帳戶上具有擁有者許可權的成員可以執行此步驟。 如需各種 Azure 內建角色，請參閱此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
   
 1. **Polybase 連線至 Azure 儲存體帳戶：**
 
@@ -160,7 +160,7 @@ PolyBase 和 COPY 語句通常用來從 Azure 儲存體帳戶將資料載入至 
        > - 不需要使用 Azure 儲存體存取金鑰指定 SECRET，因為此機制會秘密使用[受控身分識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
        > - PolyBase 連線的 IDENTITY 名稱應為 **'Managed Service Identity'**，才能搭配使用固定至 VNet 的 Azure 儲存體帳戶。
 
-   1. 建立具有配置的外部資料源，以 `abfss://` 使用 PolyBase 連接到您的一般用途 v2 儲存體帳戶：
+   1. 建立外部資料源，其 `abfss://` 配置可使用 PolyBase 連接到您的一般用途 v2 儲存體帳戶：
 
        ```SQL
        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
@@ -168,8 +168,8 @@ PolyBase 和 COPY 語句通常用來從 Azure 儲存體帳戶將資料載入至 
 
        > [!NOTE]
        >
-       > - 如果您已有與一般用途 v1 或 Blob 儲存體帳戶相關聯的外部資料表，請先卸除這些外部資料表，再卸除對應的外部資料來源。 然後建立外部資料源，並 `abfss://` 將配置連接到一般用途 v2 儲存體帳戶，並使用這個新的外部資料源重新建立所有的外部資料表。 您可以使用[產生和發佈指令碼精靈](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard)，輕鬆地為所有的外部資料表產生建立指令碼。
-       > - 如需有關配置的詳細資訊 `abfss://` ，請參閱本 [指南](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)。
+       > - 如果您已有與一般用途 v1 或 Blob 儲存體帳戶相關聯的外部資料表，請先卸除這些外部資料表，再卸除對應的外部資料來源。 然後，使用與 `abfss://` 上述一般用途 v2 儲存體帳戶連接的配置來建立外部資料源，然後使用這個新的外部資料源重新建立所有外部資料表。 您可以使用[產生和發佈指令碼精靈](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard)，輕鬆地為所有的外部資料表產生建立指令碼。
+       > - 如需配置的詳細資訊 `abfss://` ，請參閱本 [指南](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)。
        > - 如需 CREATE EXTERNAL DATA SOURCE 的詳細資訊，請參閱此[指南](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) (英文)。
 
    1. 以一般方式使用[外部資料表](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)查詢。
@@ -180,7 +180,7 @@ Blob 稽核會將稽核記錄推送到您自己的儲存體帳戶。 如果這�
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在不開啟 VNet 服務端點的情況下將 VNet 防火牆規則新增至伺服器
 
-很久以前，在尚未增強這項功能之前，您必須先開啟 VNet 服務端點，才可以在防火牆中實作即時的 VNet 規則。 指定的 VNet 子網與 Azure SQL Database 中的資料庫相關聯的端點。 但是從 2018 年 1 月起，您不再需要這樣做，只需設定 **IgnoreMissingVNetServiceEndpoint** 旗標即可。
+很久以前，在尚未增強這項功能之前，您必須先開啟 VNet 服務端點，才可以在防火牆中實作即時的 VNet 規則。 與指定的 VNet 子網相關的端點 Azure SQL Database 中的資料庫。 但是從 2018 年 1 月起，您不再需要這樣做，只需設定 **IgnoreMissingVNetServiceEndpoint** 旗標即可。
 
 只是設定防火牆規則不能協助您保護伺服器。 您也必須開啟 VNet 服務端點，安全性才會生效。 當您開啟服務端點時，您的 VNet 子網路會停機，直到完成關閉到開啟的轉換。 特別是大型的 VNet，這會更明顯。 您可以使用 **IgnoreMissingVNetServiceEndpoint** 旗標來減少或排除在轉換期間的停機時間。
 
@@ -194,7 +194,7 @@ Blob 稽核會將稽核記錄推送到您自己的儲存體帳戶。 如果這�
 
 訊息文字：** 無法開啟登入所要求的伺服器 '*[server-name]*'。 用戶端不得存取該伺服器。
 
-錯誤說明：** 用戶端所在的子網路含有虛擬網路伺服器端點。 但是伺服器沒有任何虛擬網路規則會授與子網與資料庫通訊的許可權。
+錯誤說明：** 用戶端所在的子網路含有虛擬網路伺服器端點。 但是伺服器沒有任何虛擬網路規則可將與資料庫通訊的許可權授與子網。
 
 錯誤解決方式：** 在 Azure 入口網站的 [防火牆] 窗格上，使用虛擬網路規則控制來為子網路[新增虛擬網路規則](#anchor-how-to-by-using-firewall-portal-59j)。
 
@@ -202,7 +202,7 @@ Blob 稽核會將稽核記錄推送到您自己的儲存體帳戶。 如果這�
 
 訊息文字：** 無法開啟登入所要求的伺服器 '{0}'。 不允許 IP 位址為 '{1}' 的用戶端存取伺服器。
 
-*錯誤描述：* 用戶端正在嘗試從未獲授權連接到伺服器的 IP 位址進行連線。 伺服器防火牆沒有 IP 位址規則可讓用戶端從指定的 IP 位址與資料庫進行通訊。
+*錯誤描述：* 用戶端嘗試從未獲授權連接至伺服器的 IP 位址進行連接。 伺服器防火牆沒有任何 IP 位址規則，可讓用戶端從指定的 IP 位址與資料庫進行通訊。
 
 錯誤解決方式：** 輸入用戶端的 IP 位址作為 IP 規則。 您可以使用 Azure 入口網站中的 [防火牆] 窗格來執行這項工作。
 
@@ -210,7 +210,7 @@ Blob 稽核會將稽核記錄推送到您自己的儲存體帳戶。 如果這�
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>入口網站可以建立虛擬網路規則
 
-本節說明如何使用 [Azure 入口網站][http-azure-portal-link-ref-477t] ，在 Azure SQL Database 的資料庫中建立 *虛擬網路規則* 。 此規則會指示您的資料庫接受已標記為 *虛擬網路服務端點*之特定子網的通訊。
+本節說明如何使用 [Azure 入口網站][http-azure-portal-link-ref-477t] ，在 Azure SQL Database 的資料庫中建立 *虛擬網路規則* 。 此規則會告知您的資料庫接受已標記為 *虛擬網路服務端點*的特定子網的通訊。
 
 > [!NOTE]
 > 如果您想要將服務端點新增至伺服器的 VNet 防火牆規則，請先確定子網的服務端點已開啟。
@@ -245,7 +245,7 @@ SQL VNet 動作的 PowerShell cmdlet 會在內部呼叫 REST API。 您可以直
 3. 將 [允許存取 Azure 服務]**** 控制項設為 [關閉]。
 
     > [!IMPORTANT]
-    > 如果您將此控制項保持設定為 [開啟]，您的伺服器就會接受來自 Azure 界限內任何子網的通訊，也就是從為 Azure 資料中心定義的範圍中辨識的其中一個 IP 位址。 就安全性觀點而言，讓此控制項保持 [開啟] 可能使存取過多。 Microsoft Azure 虛擬網路服務端點功能，連同 SQL Database 的虛擬網路規則功能，可縮小安全性曝露面。
+    > 如果您讓控制項保持設定為開啟，則您的伺服器會接受來自 Azure 界限內任何子網的通訊，亦即源自 Azure 資料中心定義範圍內的其中一個 IP 位址。 就安全性觀點而言，讓此控制項保持 [開啟] 可能使存取過多。 Microsoft Azure 虛擬網路服務端點功能，連同 SQL Database 的虛擬網路規則功能，可縮小安全性曝露面。
 
 4. 按一下 [虛擬網路]**** 區段中的 [+ 新增現有的]**** 控制項。
 
@@ -280,9 +280,9 @@ SQL VNet 動作的 PowerShell cmdlet 會在內部呼叫 REST API。 您可以直
 - [Azure 虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]
 - [伺服器層級和資料庫層級防火牆規則][sql-db-firewall-rules-config-715d]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- [使用 PowerShell 建立虛擬網路服務端點，然後用 Azure SQL Database 的虛擬網路規則。][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
+- [使用 PowerShell 來建立虛擬網路服務端點，然後使用 Azure SQL Database 的虛擬網路規則。][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 - [虛擬網路規則：的作業][rest-api-virtual-network-rules-operations-862r] (使用 REST API)
 
 <!-- Link references, to images. -->

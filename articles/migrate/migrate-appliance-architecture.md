@@ -3,12 +3,12 @@ title: Azure Migrate 設備架構
 description: 提供伺服器評估和移轉中所使用 Azure Migrate 設備的概觀。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: a83e044acc329572a5f3bfd4856f90379319ba1d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919738"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514557"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate 設備架構
 
@@ -62,15 +62,15 @@ ms.locfileid: "88919738"
 
 ## <a name="discovery-and-collection-process"></a>探索和收集程式
 
-![架構](./media/migrate-appliance-architecture/architecture.png)
+![架構](./media/migrate-appliance-architecture/architecture1.png)
 
 設備會使用下列程式，與 vCenter Server 和 Hyper-v 主機/叢集進行通訊。
 
 1. **開始探索**：
-    - 當您在 Hyper-v 設備上啟動探索時，它會與 WinRM 埠5985上的 Hyper-v 主機通訊 (HTTP) 和 5986 (HTTPS) 。
+    - 當您在 Hyper-v 設備上開始探索時，它會與 WinRM 埠5985上的 Hyper-v 主機通訊 (HTTP) 。
     - 當您在 VMware 設備上開始探索時，它預設會與 TCP 通訊埠443上的 vCenter server 進行通訊。 如果 vCenter server 在不同的埠上接聽，您可以在設備 web 應用程式中進行設定。
 2. **收集中繼資料和效能資料**：
-    - 設備使用通用訊息模型 (CIM) 會話，從埠5985和5986上的 Hyper-v 主機收集 Hyper-v VM 資料。
+    - 設備使用通用訊息模型 (CIM) 會話，從埠5985上的 Hyper-v 主機收集 Hyper-v VM 資料。
     - 根據預設，設備會與埠443通訊，以收集 vCenter Server 的 VMware VM 資料。
 3. **傳送資料**：設備會將收集到的資料傳送到 Azure Migrate 伺服器評量，並透過 SSL 埠443來 Azure Migrate 伺服器遷移。 設備可透過網際網路連線到 Azure，您也可以搭配使用 ExpressRoute 與公用/Microsoft 對等互連。
     - 針對效能資料，設備會收集即時使用量資料。
@@ -81,19 +81,14 @@ ms.locfileid: "88919738"
     - 針對伺服器遷移，設備會開始收集 VM 資料，並將其複製到 Azure。
 4. **評定和遷移**：您現在可以使用 Azure Migrate 伺服器評量，從設備所收集的中繼資料建立評量。 此外，您也可以使用 Azure Migrate Server 遷移來開始遷移 VMware Vm，以協調無代理程式 VM 複寫。
 
-
-
-
-
 ## <a name="appliance-upgrades"></a>設備升級
 
 設備會隨著應用在裝置上執行的 Azure Migrate 代理程式更新而升級。 因為預設會在設備上啟用自動更新，所以會自動發生這種情況。 您可以變更此預設設定，以手動更新代理程式。
 
 您可以將 HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance 「自動更新」機碼設為 0 (DWORD) ，以關閉登錄中的自動更新。
 
- 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請[參閱](migrate-appliance.md)設備支援矩陣。
 

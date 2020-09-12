@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39736f0a369064e1a825ba3f6975a01c5e9ecc40
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 27aabac75516eed2c68b4f14c6593411d0141ef1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147430"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437236"
 ---
 # <a name="continuous-access-evaluation"></a>持續存取評估
 
@@ -108,7 +108,7 @@ Exchange 和 SharePoint 可以同步處理重要的條件式存取原則，以�
 1. 在此情況下，資源提供者會拒絕存取，並將 401 + 宣告挑戰傳送回用戶端。
 1. 支援 CAE 的用戶端瞭解 401 + 索取挑戰。 它會略過快取並回到步驟1，將其重新整理權杖連同宣告挑戰傳送回 Azure AD。 Azure AD 接著會重新評估所有的條件，並提示使用者在此情況下重新驗證。
 
-### <a name="user-condition-change-flow-public-preview"></a>使用者條件變更流程 (公開預覽) ：
+### <a name="user-condition-change-flow-preview"></a>使用者條件變更流程 (預覽) ：
 
 在下列範例中，條件式存取系統管理員已設定以位置為基礎的條件式存取原則，只允許來自特定 IP 範圍的存取：
 
@@ -135,6 +135,13 @@ Exchange 和 SharePoint 可以同步處理重要的條件式存取原則，以�
 
 ## <a name="troubleshooting"></a>疑難排解
 
+### <a name="supported-location-policies"></a>支援的位置原則
+
+針對 CAE，我們只能深入解析以 IP 為基礎的命名位置。 我們無法深入瞭解其他位置設定，例如 [MFA 信任的 ip](../authentication/howto-mfa-mfasettings.md#trusted-ips) 或國家/地區的位置。 當使用者來自 MFA 信任 IP 或包含 MFA 受信任 IP 或國家/地區位置的受信任位置時，將不會在使用者移至不同的位置之後強制執行 CAE。 在這些情況下，我們將發出1小時的 CAE 權杖，而不需要立即 IP 強制執行檢查。
+
+> [!IMPORTANT]
+> 設定持續存取評估的位置時，請只使用以 [IP 為基礎的條件式存取位置條件](../conditional-access/location-condition.md#preview-features) ，並設定您的身分識別提供者和資源提供者可以看到的所有 IP 位址（ **包括 IPv4 和 IPv6**）。 請勿使用 Azure Multi-Factor Authentication 的 [服務設定] 頁面中提供的國家/地區位置條件或信任的 ip 功能。
+
 ### <a name="ip-address-configuration"></a>IP 位址組態
 
 您的身分識別提供者和資源提供者可能會看到不同的 IP 位址。 這種不符的原因可能是您組織中的網路 proxy 執行，或您的身分識別提供者與資源提供者之間的 IPv4/IPv6 設定不正確。 例如：
@@ -144,9 +151,6 @@ Exchange 和 SharePoint 可以同步處理重要的條件式存取原則，以�
 - 您的身分識別提供者所看到的 IP 位址是原則中允許的 IP 範圍的一部分，但是資源提供者的 IP 位址不是。
 
 如果此案例存在於您的環境中以避免無限迴圈，Azure AD 將發出一小時 CAE 權杖，且不會強制執行用戶端位置變更。 即使在此情況下，相較于傳統的一小時權杖，安全性也會獲得改善，因為我們仍在評估用戶端位置變更事件 [以外的其他事件](#critical-event-evaluation) 。
-
-> [!IMPORTANT]
-> 設定持續存取評估的位置時，請只使用以 [IP 為基礎的條件式存取位置條件](../conditional-access/location-condition.md)。 請勿使用 Azure Multi-Factor Authentication 的 [服務設定] 頁面中提供的國家/地區位置條件或信任的 ip 功能。
 
 ### <a name="office-and-web-account-manager-settings"></a>Office 和 Web 帳戶管理員設定
 

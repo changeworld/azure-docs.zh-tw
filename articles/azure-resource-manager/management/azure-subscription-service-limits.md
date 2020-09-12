@@ -2,14 +2,13 @@
 title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制以及最大值的資訊。
 ms.topic: conceptual
-author: davidsmatlak
-ms.date: 06/04/2020
-ms.openlocfilehash: 86c9958818b5439502ab37471ed7a51fb3f21bf9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 09/02/2020
+ms.openlocfilehash: b9b2b7217b854153f03d61713d8b4a1bcf5bfd9d
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854102"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470165"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
@@ -27,6 +26,9 @@ ms.locfileid: "88854102"
 > 當限制可以調整時，資料表會包含 **預設限制** 和 **最大限制** 標頭。 限制可以在預設限制以上引發，但不能超過上限。
 >
 > 如果您想要將限制或配額提高到超過預設限制，請免費 [開啟線上客戶支援要求](../templates/error-resource-quota.md)。
+>
+> 「 *軟* 限制」和「 *固定限制* 」通常會用非正式方式來描述目前的可調整限制， (軟限制) ，而最大限制 () 的固定限制。 如果無法調整限制，就不會有軟限制，只有硬性限制。
+>
 
 [免費試用版](https://azure.microsoft.com/offers/ms-azr-0044p) 訂用帳戶不符合限制或配額增加的資格。 如果您有[免費試用訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0044p)，則可以升級到[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0003p/)訂用帳戶。 如需詳細資訊，請參閱將 [您的 Azure 免費試用版訂用帳戶升級為隨用隨付訂](../../cost-management-billing/manage/upgrade-azure-subscription.md) 用帳戶和 [免費試用訂](https://azure.microsoft.com/free/free-account-faq)用帳戶常見問題。
 
@@ -75,6 +77,10 @@ ms.locfileid: "88854102"
 ## <a name="automation-limits"></a>自動化限制
 
 [!INCLUDE [automation-limits](../../../includes/azure-automation-service-limits.md)]
+
+## <a name="azure-app-configuration"></a>Azure 應用程式組態
+
+[!INCLUDE [app-configuration-limits](../../../includes/app-configuration-limits.md)]
 
 ## <a name="azure-cache-for-redis-limits"></a>Azure Cache for Redis 限制
 

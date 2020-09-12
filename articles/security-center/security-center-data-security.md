@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 115a01fe0b1edc343ed9efd324c4be3b53251566
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9047309854df27ac0721eee51e20d7ccc989f443
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519502"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459686"
 ---
 # <a name="azure-security-center-data-security"></a>Azure 資訊安全中心資料安全性
 為了協助客戶預防、偵測和回應威脅，Azure 資訊安全中心會收集並處理安全性相關的資料，包括設定資訊、中繼資料、事件記錄檔等等。 Microsoft 從撰寫程式碼到運作服務均遵守嚴格的規範與安全性指導方針。
@@ -65,7 +65,7 @@ VM 磁碟快照集會儲存在與 VM 磁碟相同的同一個儲存體帳戶中�
 
 **Azure 資訊安全中心儲存體**：有關安全性警示 (包括夥伴警示) 的資訊會根據相關 Azure 資源的位置以區域性方式儲存，而安全性健康情況狀態和建議的相關資訊則會以客戶的位置作為基礎，集中儲存在美國和歐洲。 機器構件會集中儲存在與 VM 相同的區域。
 
-## <a name="managing-data-collection-from-virtual-machines"></a>從虛擬機器管理資料收集
+## <a name="manage-data-collection-from-virtual-machines"></a>從虛擬機器管理資料收集
 
 當您啟用 Azure 中的資訊安全中心時，已針對每個 Azure 訂用帳戶開啟資料收集。 您也可以在 Azure 資訊安全中心的 [安全性原則] 區段中開啟訂用帳戶的資料收集。 開啟資料收集時，Azure 資訊安全中心會在所有現有支援的 Azure 虛擬機器和任何新建立的虛擬機器上，佈建 Log Analytics 代理程式。
 Log Analytics 代理程式會掃描各種安全性相關設定，並轉換成 [Windows 事件追蹤](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) 的追蹤事件。 此外，作業系統會在執行機器的過程中引發事件記錄檔事件。 這類資料的範例包括︰作業系統類型和版本、作業系統記錄 (Windows 事件記錄)、執行中程序、電腦名稱、IP 位址、已登入的使用者和租用戶識別碼。 Log Analytics 代理程式會讀取事件記錄項目和 ETW 追蹤，並複製到您的工作區進行分析。 Log Analytics 代理程式也會啟用程序建立事件和命令列稽核。
@@ -90,4 +90,4 @@ Log Analytics 代理程式會掃描各種安全性相關設定，並轉換成 [W
 * [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) — 了解如何監視 Azure 資源的健全狀況。
 * [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) — 了解如何管理與回應安全性警示。
 * [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md) — 了解如何監視合作夥伴解決方案的健全狀況。
-* [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/) — 尋找有關 Azure 安全性與相容性的部落格文章。
+* [Azure 安全性部落格](https://docs.microsoft.com/archive/blogs/azuresecurity/) — 尋找有關 Azure 安全性與相容性的部落格文章。

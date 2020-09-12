@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/21/2020
+ms.date: 09/08/2020
 ms.author: ramakk
-ms.openlocfilehash: d81ae835fa62c5188c8d71a5ae0563259ab027f3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: a8d81acc0fcb4afa0f981fca3fd099296a0361df
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797423"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569487"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>適用於 Azure NetApp Files 網路方案的指導方針
 
@@ -42,6 +42,7 @@ Azure NetApp Files 目前不支援下列功能：
 * Azure 虛擬 WAN 
 * 區域備援虛擬網路閘道 (具有 Az 的閘道 SKU) 
 * 主動/主動虛擬網路 GW 
+* 雙重堆疊 (IPv4 和 IPv6) VNet
 
 下列網路限制適用於 Azure NetApp Files：
 

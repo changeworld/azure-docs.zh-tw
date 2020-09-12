@@ -12,18 +12,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 08/17/2020
-ms.openlocfilehash: 3eb1a4cbfcf62617796af6a26cb4688b734eb617
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 22ed36213c932c7e202817fd093e1ec96aec94fd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551835"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434396"
 ---
-# <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 設定及管理 Azure AD authentication
+# <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 設定和管理 Azure AD 驗證
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本文說明如何建立和填入 Azure Active Directory (Azure AD) 實例，然後使用 Azure AD 搭配 [Azure SQL Database](sql-database-paas-overview.md)、 [azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md)和 [AZURE SYNAPSE ANALYTICS (先前的 Azure sql 資料倉儲) ](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。 如需總覽，請參閱 [Azure Active Directory authentication](authentication-aad-overview.md)。
+本文說明如何建立和填入 Azure Active Directory (Azure AD) 實例，然後使用 Azure AD 搭配 [Azure SQL Database](sql-database-paas-overview.md)、 [Azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics (先前的 SQL 資料倉儲 ](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)) 。 如需總覽，請參閱 [Azure Active Directory authentication](authentication-aad-overview.md)。
 
 ## <a name="azure-ad-authentication-methods"></a>Azure AD 驗證方法
 
@@ -73,7 +73,7 @@ Azure (中裝載 SQL Database 或 Azure Synapse) 的每一部 [伺服器](logica
 > [!IMPORTANT]
 > 如果您要布建 Azure SQL 受控執行個體，請只遵循下列步驟。 這項作業只能由全域/公司系統管理員或 Azure AD 中的特殊許可權角色管理員執行。
 >
-> 在 **公開預覽**中，您可以將 **目錄讀取** 者角色指派給 Azure AD 中的群組。 然後，群組擁有者可以將受控實例身分識別新增為此群組的成員，這可讓您為 SQL 受控執行個體布建 Azure AD 系統管理員。 如需這項功能的詳細資訊，請參閱 [AZURE SQL Azure Active Directory 中的目錄讀取者角色](authentication-aad-directory-readers-role.md)。
+> 在 **公開預覽**中，您可以將 **目錄讀取** 者角色指派給 Azure AD 中的群組。 然後，群組擁有者可以將受控實例身分識別新增為此群組的成員，這可讓您為 SQL 受控執行個體布建 Azure AD 系統管理員。 如需這項功能的詳細資訊，請參閱 [Azure Active Directory 中適用於 Azure SQL 的 Directory 讀者角色](authentication-aad-directory-readers-role.md)。
 
 您的 SQL 受控執行個體需要讀取 Azure AD 的許可權，才能順利完成工作，例如透過安全性群組成員資格或建立新使用者來驗證使用者。 若要這樣做，您必須授與 SQL 受控執行個體許可權，以讀取 Azure AD。 您可以使用 Azure 入口網站或 PowerShell 來進行此作業。
 
@@ -190,7 +190,7 @@ else {
 
 下表列出用來布建和管理 SQL 受控執行個體 Azure AD 系統管理員的 Cmdlet：
 
-| Cmdlet 名稱 | Description |
+| Cmdlet 名稱 | 描述 |
 | --- | --- |
 | [設定-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |為目前訂用帳戶中的 SQL 受控執行個體布建 Azure AD 系統管理員。  (必須來自目前的訂用帳戶) |
 | [移除-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |移除目前訂用帳戶中 SQL 受控執行個體的 Azure AD 系統管理員。 |
@@ -279,7 +279,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 用來布建和管理 SQL Database 和 Azure Synapse Azure AD 管理員的 Cmdlet：
 
-| Cmdlet 名稱 | Description |
+| Cmdlet 名稱 | 描述 |
 | --- | --- |
 | [設定-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |為裝載 SQL Database 或 Azure Synapse 的伺服器布建 Azure Active Directory 系統管理員。  (必須來自目前的訂用帳戶)  |
 | [移除-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |移除裝載 SQL Database 或 Azure Synapse 之伺服器的 Azure Active Directory 系統管理員。|
@@ -344,7 +344,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 - 從 .NET Framework 4.6 或更新版本 [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) 。
 - Azure Active Directory SQL Server (*ADAL.DLL*) 的驗證程式庫。 以下是安裝最新 SSMS、ODBC 以及包含 *ADAL.DLL* 程式庫 OLE DB 驅動程式的下載連結。
-  - [Transact-SQL](/sql/ssms/download-sql-server-management-studio-ssms)
+  - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
   - [ODBC Driver 17 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
   - [適用于 SQL Server 的 OLE DB Driver 18](https://www.microsoft.com/download/details.aspx?id=56730)
 

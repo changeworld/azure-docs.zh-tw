@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 06/15/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee6945cec4c2441334e665947568743aaf29226
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ebde1be459078f4f3473ebc3042d8acebcce910a
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013583"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613735"
 ---
 # <a name="debug-rendering"></a>偵錯轉譯
 
@@ -74,6 +74,10 @@ void EnableDebugRenderingEffects(ApiHandle<AzureSession> session, bool highlight
 
 * 啟用文字重疊幾乎不會產生任何效能額外負荷。
 * 啟用線框模式會產生非一般的效能額外負荷，不過這需視場景而異。 針對複雜場景，此模式可能會導致畫面播放速率降到 60-Hz 目標以下。
+
+## <a name="api-documentation"></a>API 文件
+
+* [C + + RemoteManager：:D ebugRenderingSettings ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#debugrenderingsettings)
 
 ## <a name="next-steps"></a>後續步驟
 

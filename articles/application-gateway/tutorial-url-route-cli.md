@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 34553c1b211b9e2c4b13a083f5c3a6732fb65472
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4aee41bc0188676ac0bd168474f1842199af9620
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502693"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595218"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>使用 Azure CLI 根據 URL 路由傳送網路流量
 
@@ -23,13 +23,12 @@ ms.locfileid: "87502693"
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
-> * 為您所需的網路資源建立資源群組
-> * 建立網路資源
-> * 針對來自您應用程式的流量，建立應用程式閘道
-> * 針對不同類型的流量，指定伺服器集區和路由規則
-> * 建立每個集區的擴展集，以便自動調整集區
-> * 執行測試，以便確認不同類型的流量會前往正確的集區
+* 為您所需的網路資源建立資源群組
+* 建立網路資源
+* 針對來自您應用程式的流量，建立應用程式閘道
+* 針對不同類型的流量，指定伺服器集區和路由規則
+* 建立每個集區的擴展集，以便自動調整集區
+* 執行測試，以便確認不同類型的流量會前往正確的集區
 
 您可以依偏好使用 [Azure PowerShell](tutorial-url-route-powershell.md) 或 [Azure 入口網站](create-url-route-portal.md)來完成此程序。
 
@@ -98,7 +97,7 @@ az network application-gateway create \
  可能需要幾分鐘的時間來建立應用程式閘道。 建立應用程式閘道後，您可以看到這些新功能：
 
 
-|功能  |說明  |
+|功能  |描述  |
 |---------|---------|
 |appGatewayBackendPool     |應用程式閘道必須至少有一個後端位址集區。|
 |appGatewayBackendHttpSettings     |指定以連接埠 80 和 HTTP 通訊協定來進行通訊。|
@@ -252,7 +251,7 @@ az network public-ip show \
 
 ![在應用程式閘道中測試影像 URL](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-將 URL 變更為 HTTP:// &lt; ip 位址 &gt; ： 8080/video/test.html，取代 ip 位址的 ip 位址 &lt; &gt; ，您應該會看到類似下列範例的內容。
+將 URL 變更為 HTTP:// &lt; ip 位址 &gt; ： 8080/video/test.html，取代 ip 位址的 ip 位址 &lt; &gt; ，您應該會看到如下列範例所示的內容。
 
 ![在應用程式閘道中測試影片 URL](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 
@@ -264,6 +263,6 @@ az network public-ip show \
 az group delete --name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [建立包含 URL 路徑型重新導向的應用程式閘道](./tutorial-url-redirect-cli.md)

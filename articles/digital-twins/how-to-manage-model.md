@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3a2b3bfa8553e7c350c08fa7e1a7376ca08d9644
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3deb7c0802dbfcdb65bcff6cb2653e73017651f1
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079771"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536450"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 數位 Twins 模型
 
@@ -168,13 +168,18 @@ Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 
 ### <a name="update-models"></a>更新模型
 
-模型上傳至您的實例之後，整個模型介面都是不可變的。 這表示沒有傳統的「編輯」模型。
+將模型上傳至您的 Azure 數位 Twins 實例之後，整個模型介面都是不可變的。 這表示沒有傳統的「編輯」模型。 Azure 數位 Twins 也不允許重新上傳相同的模型。
 
-相反地，如果您想要對 Azure 數位 Twins 中的模型進行變更，執行這項作業的方式是上傳相同模型的 **較新版本** 。 在預覽期間，前進模型版本只允許您移除欄位，而不是加入新欄位 (加入新欄位，您應該只 [建立全新的模型](#create-models)) 。
+相反地，如果您想要變更模型（例如更新或），則請 `displayName` `description` 上傳 **較新版本** 的模型。 
+
+#### <a name="model-versioning"></a>模型版本設定
 
 若要建立現有模型的新版本，請從原始模型的 DTDL 開始。 更新您想要變更的欄位。
 
-然後，藉由更新模型的欄位，將此標示為較新版本的模型 `id` 。 模型識別碼的最後一個區段（在之後） `;` 表示模型編號。 若要指出這現在是此模型的更新版本，請將值結尾的數位遞增 `id` 到大於目前版本號碼的任何數位。
+>[!NOTE]
+>在預覽期間，前進模型版本只會讓您加入新的欄位，而不會移除現有的欄位。 若要移除欄位，您應該只 [建立全新的模型](#create-models)。
+
+接下來，藉由更新模型的欄位，將此標示為較新版本的模型 `id` 。 模型識別碼的最後一個區段（在之後） `;` 表示模型編號。 若要指出這現在是此模型的更新版本，請將值結尾的數位遞增 `id` 到大於目前版本號碼的任何數位。
 
 例如，如果您先前的模型識別碼看起來像這樣：
 
@@ -188,7 +193,17 @@ Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 "@id": "dtmi:com:contoso:PatientRoom;2",
 ```
 
-然後，將新版本的模型上傳至您的實例。 它會取代舊的版本，而您使用此模型建立的新 twins 會使用更新的版本。
+然後，將新版本的模型上傳至您的實例。 
+
+然後，您的實例中將會提供此版本的模型，以用於數位 twins。 它不 **會** 覆寫舊版的模型，因此模型的多個版本會並存于您的實例中，直到您將 [它們移除](#remove-models)為止。
+
+#### <a name="impact-on-twins"></a>對 twins 的影響
+
+當您建立新的對應項時，由於新的模型版本和舊模型版本並存，新的對應項可以使用新版本的模型或較舊的版本。
+
+這也表示上傳新版本的模型不會自動影響現有的 twins。 現有的 twins 只會保留舊模型版本的實例。
+
+您可以藉由修補，將這些現有的 twins 更新為新的模型版本，如「*如何：管理數位 twins*」的「[*更新數位對應項的模型*](how-to-manage-twin.md#update-a-digital-twins-model)」一節中所述。 在相同的修補程式中，您必須將 **模型識別碼** (更新為新版本) 以及 **必須在對應項上更改的任何欄位，使其符合新的模型**。
 
 ### <a name="remove-models"></a>移除模型
 
@@ -274,7 +289,9 @@ Azure 數位 Twins 不會防止此狀態，因此請小心適當地修補 Twins�
 
 您也可以使用 Azure 數位 Twins CLI 來管理模型。 您可以在 how [*to：使用 Azure 數位 TWINS CLI*](how-to-use-cli.md)中找到這些命令。
 
-## <a name="next-steps"></a>後續步驟
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
+## <a name="next-steps"></a>接下來的步驟
 
 瞭解如何根據您的模型建立和管理數位 twins：
 * [*How to：管理數位 twins*](how-to-manage-twin.md)

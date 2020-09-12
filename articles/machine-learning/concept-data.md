@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 958a433cc76f00010fe6fd431d8bea4fe6380a9c
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 85aa78223b8db76cfb430341b19878bc6bbe87d7
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146682"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651168"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 中的安全資料存取
 
@@ -81,9 +81,9 @@ Azure Machine Learning 資料集是指向儲存體服務中資料的參考。 �
 
 有2種類型的資料集： 
 
-+ [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py)會參考資料存放區或公用 url 中的單一或多個檔案。 如果您的資料已清理，而且準備好用於定型實驗，您可以將 FileDatasets 參考的檔案 [下載或掛接](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) 到您的計算目標。
++ [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py&preserve-view=true)會參考資料存放區或公用 url 中的單一或多個檔案。 如果您的資料已清理，而且準備好用於定型實驗，您可以將 FileDatasets 參考的檔案 [下載或掛接](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) 到您的計算目標。
 
-+ [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)藉由剖析提供的檔案或檔案清單，以表格格式代表資料。 您可以將 TabularDataset 載入 pandas 或 Spark 資料框架，以進一步操作和清理。 如需您可以從中建立 TabularDatasets 的完整資料格式清單，請參閱 [TabularDatasetFactory 類別](https://aka.ms/tabulardataset-api-reference)。
++ [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true)藉由剖析提供的檔案或檔案清單，以表格格式代表資料。 您可以將 TabularDataset 載入 pandas 或 Spark 資料框架，以進一步操作和清理。 如需您可以從中建立 TabularDatasets 的完整資料格式清單，請參閱 [TabularDatasetFactory 類別](https://aka.ms/tabulardataset-api-reference)。
 
 您可以在下列檔中找到其他資料集功能：
 

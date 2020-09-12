@@ -1,7 +1,7 @@
 ---
 title: 在文字分析 v3 中指定模型版本
 titleSuffix: Azure Cognitive Services
-description: 瞭解如何指定您的資料所使用的文字分析 API 模型。
+description: 瞭解如何指定用於資料的文字分析 API 模型。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 7d008dc0f7ed90397ac07e12320d861b107f0f46
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e6763633ce27c537f1384e8e51020d44132c0377
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120927"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469842"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>文字分析 API 中的模型版本設定
 
-文字分析 API 的第3版可讓您選擇要在資料上使用的模型版本。 使用選擇性 `model-version` 參數，在您的 API 要求中選取模型的版本。 例如： `<resource-url>/text/analytics/v3.0/sentiment?model-version=2020-04-01` 。 如果未指定此參數，則 API 會預設為最新的穩定版本。 
+文字分析 API 的第3版可讓您選擇用於資料的模型版本。 使用選擇性 `model-version` 參數，在您的 API 要求中選取模型的版本。 例如： `<resource-url>/text/analytics/v3.0/sentiment?model-version=2020-04-01` 。 如果未指定此參數，API 會預設為最新的穩定版本。 
 
 ## <a name="available-versions"></a>可用的版本
 
-使用下表來尋找每個端點支援的模型版本。
+使用下表來尋找每個端點所支援的模型版本。
 
 
 | 端點                        | 支援的版本                                     | 最新版本 |
@@ -36,24 +36,21 @@ ms.locfileid: "88120927"
 | `/keyphrases`                   | `2019-10-01`, `2020-07-01`                             | `2020-07-01`   |
 
 
-您可以在[新功能](../whats-new.md)中找到這些模型更新的詳細資料。
+您可以在 [新功能](../whats-new.md)中找到這些模型更新的詳細資料。
 
 ## <a name="text-analytics-for-health"></a>健康情況的文字分析
 
-健康情況容器的[文字分析](../how-tos/text-analytics-for-health.md)使用與上述 API 端點不同的模型版本設定。  請注意，每個容器映射只能使用一個模型版本。
+Health 容器的 [文字分析](../how-tos/text-analytics-for-health.md) 會使用不同于上述 API 端點的不同模型版本。  請注意，每個容器映射只能有一個可用的模型版本。
 
 | 端點                        | 容器映射標記                     | 模型版本 |
 |---------------------------------|-----------------------------------------|---------------|
-| `/domains/health`               | `1.1.013150001-amd64-preview`或最新版本 | `2020-07-24`  |
+| `/entities/health`               | `1.1.013150001-amd64-preview` 或最新版本 | `2020-07-24`  |
 | `/domains/health`               | `1.1.012640001-amd64-preview`           | `2020-05-08`  |
 | `/domains/health`               | `1.1.012420001-amd64-preview`           | `2020-05-08`  |
 | `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-04-16`  |
-| `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-07-24`  |
 
 
-
-
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [文字分析概觀](../overview.md)
 * [情感分析](../how-tos/text-analytics-how-to-sentiment-analysis.md)

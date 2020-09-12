@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bf2fbb48c34631bc74a3b712e135b618a1718d8e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9ed6690348816229d369bcff5d92c9703a4b3702
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688076"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469910"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>使用建立工具建立室內地圖
 
@@ -120,7 +120,7 @@ ms.locfileid: "88688076"
 4. 在 [產生器] 索引標籤中啟動新的 **GET** HTTP 方法。將您的 Azure 地圖服務主要訂用帳戶金鑰附加至 `status URL`。 在**GET** `status URL` 您于步驟3複製的上提出 GET 要求。 `status URL`看起來如下所示的 URL：
 
     ```http
-    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0
+    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
     如果轉換程序尚未完成，您可能會看到類似下列 JSON 回應的內容：
@@ -208,7 +208,7 @@ ms.locfileid: "88688076"
 3. 對圖格集的 `statusURL` 提出 **GET** 要求。 請附加您的 Azure 地圖服務主要訂用帳戶金鑰，以進行驗證。 要求應會類似於下列 URL：
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 4. 在 **GET** HTTP 要求順利完成後，回應標頭將會包含已建立之圖格集的 `tilesetId`。 複製 `tilesetId`。

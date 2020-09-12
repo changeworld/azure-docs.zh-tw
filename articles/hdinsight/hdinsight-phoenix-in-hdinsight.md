@@ -1,19 +1,19 @@
 ---
 title: HDInsight 中的 Apache Phoenix - Azure HDInsight
 description: Apache Phoenix 總覽
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 14591f334801329e78000a007783c3d6c4c3b5ae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f98021d1e94b3796b2aeb6ba2e883e4e1380b8ca
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082534"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504327"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Phoenix
 
@@ -37,7 +37,7 @@ HBase 有單一索引，依辭典編纂順序儲存在主要資料列索引鍵�
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
 ```
 
-相較於執行單一索引查詢，這種方法可以產生顯著的效能提升。 這種類型的次要索引是**涵蓋索引**，包含查詢中所含的所有資料行。 因此，不需要資料表查閱，而且索引會滿足整個查詢的需求。
+相較於執行單一索引查詢，這種方法可以產生顯著的效能提升。 這種類型的次要索引是**涵蓋索引**，包含查詢中所含的所有資料行。 因此，不需要資料表查閱，索引也會滿足整個查詢。
 
 ### <a name="views"></a>檢視
 
@@ -70,7 +70,7 @@ WHERE metric_type = 'm';
 
 略過掃描會使用一或多個複合式索引的資料行來尋找相異值。 不同於範圍掃描，略過掃描會實作資料列內部掃描，產生[更佳的效能](https://phoenix.apache.org/performance.html#Skip-Scan)。 當掃描時，第一個相符值會略過，同時略過索引，直到找到下一個值。
 
-略過掃描會使用 HBase 篩選的 `SEEK_NEXT_USING_HINT` 列舉。 略過掃描會使用 `SEEK_NEXT_USING_HINT`，追蹤每個資料行中搜尋的索引鍵集合或索引鍵範圍。 然後，略過掃描會使用在篩選評估期間傳遞給它的金鑰，並判斷它是否為其中一個組合。 如果不是，略過掃描會評估下一個最高索引鍵，並跳至該處。
+略過掃描會使用 HBase 篩選的 `SEEK_NEXT_USING_HINT` 列舉。 略過掃描會使用 `SEEK_NEXT_USING_HINT`，追蹤每個資料行中搜尋的索引鍵集合或索引鍵範圍。 略過掃描接著會取得在篩選評估期間傳遞給它的金鑰，並判斷它是否為其中一個組合。 如果不是，略過掃描會評估下一個最高索引鍵，並跳至該處。
 
 ### <a name="transactions"></a>交易
 
@@ -97,7 +97,7 @@ ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 
 ### <a name="salted-tables"></a>以 Salt 處理的資料表
 
-將具有順序索引鍵的記錄寫入至 HBase 時，可能會發生*區域伺服器 hotspotting* 。 雖然您在叢集中可能有多個區域伺服器，但是您的寫入只會在其中一個伺服器中發生。 此集中情形會產生作用區問題，其中您的寫入工作負載並非分散到所有可用的區域伺服器，而是只有一個伺服器會處理負載。 由於每個區域都有預先定義的大小上限，因此當區域達到該大小限制時，它會分割成兩個小型區域。 發生這種情況時，其中一個新區域會採用所有新的記錄，變成新的作用區。
+將具有連續索引鍵的記錄寫入至 HBase 時，可能會發生*區域伺服器作用區*。 雖然您在叢集中可能有多個區域伺服器，但是您的寫入只會在其中一個伺服器中發生。 此集中情形會產生作用區問題，其中您的寫入工作負載並非分散到所有可用的區域伺服器，而是只有一個伺服器會處理負載。 因為每個區域都有預先定義的大小上限，當區域達到該大小限制時，它會分割成兩個社區域。 發生這種情況時，其中一個新區域會採用所有新的記錄，變成新的作用區。
 
 若要減輕這個問題並達到更佳的效能，請預先分割資料表，讓所有區域伺服器的使用都相等。 Phoenix 提供以 Salt 處理的資料表**，明確地將已 Salt 處理的位元組新增至特定資料表的資料列索引鍵。 資料表是在 Salt 位元組界限上預先分割，以確保在資料表初始階段期間，區域伺服器之間的負載分配相等。 這種方法會將寫入工作負載散佈到所有可用的區域伺服器，改善寫入和讀取效能。 若要以 Salt 處理資料表，在建立資料表時指定 `SALT_BUCKETS` 資料表屬性：
 
@@ -138,4 +138,4 @@ HDInsight HBase 叢集包括 [Ambari UI](hdinsight-hadoop-manage-ambari.md)，�
 
 * [在 HDInsight 中搭配 Linux 型 HBase 叢集使用 Apache Phoenix](hbase/apache-hbase-query-with-phoenix.md)
 
-* [使用 Apache Zeppelin 在 Apache HBase 上執行 Apache Phoenix 查詢 Azure HDInsight](./hbase/apache-hbase-phoenix-zeppelin.md)
+* [使用 Apache Zeppelin 在 Azure HDInsight 中透過 Apache HBase 執行 Apache Phoenix 查詢](./hbase/apache-hbase-phoenix-zeppelin.md)

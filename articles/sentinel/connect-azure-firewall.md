@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 167cfe6b8fb1394291866e51ec14ec91bf9035a1
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 05a2869152def0fc9a44defaa21f0643d9fdbb08
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89183590"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504871"
 ---
 # <a name="connect-data-from-azure-firewall"></a>從 Azure 防火牆連接資料
 
@@ -28,7 +28,7 @@ Azure 防火牆是受控、雲端式網路安全性服務，可以保護您的 A
 
 深入瞭解如何 [監視 Azure 防火牆記錄](https://docs.microsoft.com/azure/firewall/tutorial-diagnostics)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您必須擁有 Azure Sentinel 工作區的讀取和寫入權限。
 
@@ -40,7 +40,7 @@ Azure 防火牆是受控、雲端式網路安全性服務，可以保護您的 A
 
 1. 在您想要連接其記錄的所有防火牆上啟用 **診斷記錄** ：
 
-    1. 選取 [ [開啟 Azure 防火牆資源] >](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Network%2FazureFirewalls) 連結。
+    1. 選取 [ **開啟 Azure 防火牆資源] >** 連結。
 
     1. 從 [ **防火牆** ] 導覽功能表中，選取 [ **診斷設定**]。
 
@@ -60,7 +60,7 @@ Azure 防火牆是受控、雲端式網路安全性服務，可以保護您的 A
 >
 > 使用這個特定的資料連線器，線上狀態指標 (資料連線器資源庫中的色彩等量，以及資料類型名稱旁邊的連接圖示) 只會在過去兩周內的某個時間點內嵌資料時，才會顯示為 *已連線* (綠色) 。 一旦經過兩周後未內嵌資料，連接器將會顯示為已中斷連線。 資料越多， *線上狀態就* 會傳回。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 在本檔中，您已瞭解如何將 Azure 防火牆記錄連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。

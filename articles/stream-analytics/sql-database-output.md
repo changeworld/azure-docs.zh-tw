@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d61cad0be25f5aa1a4c63bf3dc128196ad80fdad
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 83fa119a17d319dffe1fcd54173d9a11b29135ca
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875630"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481820"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure 串流分析的 Azure SQL Database 輸出
 
-如果資料的本質上具備關聯性，或者應用程式所需的內容需由關聯式資料庫提供時，您可以使用 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 作為資料輸出。 Azure 串流分析作業會寫入 SQL Database 中的現有資料表。 資料表結構描述必須完全符合作業輸出中的欄位及其類型。 您也可以透過 SQL Database 輸出選項，將 [Azure SQL 資料倉儲](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)指定為輸出。 若要深入了解如何改善寫入輸送量，請參閱[使用 Azure SQL Database 作為輸出的串流分析](stream-analytics-sql-output-perf.md)一文。
+如果資料的本質上具備關聯性，或者應用程式所需的內容需由關聯式資料庫提供時，您可以使用 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 作為資料輸出。 Azure 串流分析作業會寫入 SQL Database 中的現有資料表。 資料表結構描述必須完全符合作業輸出中的欄位及其類型。 您也可以透過 SQL Database 輸出選項，將 [Azure Synapse Analytics](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) 指定為輸出。 若要深入了解如何改善寫入輸送量，請參閱[使用 Azure SQL Database 作為輸出的串流分析](stream-analytics-sql-output-perf.md)一文。
 
 您也可以使用 [AZURE SQL 受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) 作為輸出。 您必須 [在 SQL 受控執行個體中設定公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) ，然後在 Azure 串流分析中手動設定下列設定。 以附加資料庫執行 SQL Server 的 Azure 虛擬機器，也可以透過手動進行下列設定來支援。
 

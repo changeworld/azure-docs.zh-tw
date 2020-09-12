@@ -10,13 +10,13 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/30/2020
-ms.openlocfilehash: 66cc7b0d4f205a93c41f49ecaadac495a98b6da6
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/08/2020
+ms.openlocfilehash: 2f4e0728a863521f772f4d1c9531b07f427bfb3e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949128"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595069"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory 中的原始檔控制
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -242,13 +242,13 @@ Azure Data Factory 一次只能有一個發佈分支。 當您指定新的發佈
 
 ## <a name="switch-to-a-different-git-repository"></a>切換至不同的 Git 存放庫
 
-若要切換至不同的 Git 存放庫，請按一下 Data Factory [概觀] 頁面右上角的 [Git 存放庫設定] 圖示。 如果看不到該圖示，請清除您的本機瀏覽器快取。 選取適當圖示以移除與目前存放庫的關聯。
+若要切換至不同的 Git 存放庫，請移至 [ **原始檔控制**] 下 [管理中樞] 中的 [Git 設定] 頁面。 選取 **[中斷連線]**。 
 
-![Git 圖示](media/author-visually/remove-repo.png)
+![Git 圖示](media/author-visually/remove-repository.png)
 
-出現 [存放庫設定] 窗格之後，請選取 [移除 Git]。 輸入您的資料處理站名稱，然後按一下 [確認] 來移除與資料處理站相關聯的 Git 存放庫。
+輸入您的資料處理站名稱，然後按一下 [確認] 來移除與資料處理站相關聯的 Git 存放庫。
 
-![移除與目前 Git 存放庫的關聯](media/author-visually/remove-repo2.png)
+![移除與目前 Git 存放庫的關聯](media/author-visually/remove-repository-2.png)
 
 移除與目前存放庫的關聯之後，您可以將 Git 設定設為使用不同的存放庫，然後將現有的 Data Factory 資源匯入到新的存放庫。
 

@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight 中的 Phoenix 效能
-description: 優化 Azure HDInsight 叢集 Apache Phoenix 效能的最佳做法
-author: ashishthaps
-ms.author: ashishth
+description: 將 Azure HDInsight 叢集的 Apache Phoenix 效能優化的最佳作法
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
-ms.openlocfilehash: 8d1dff01c9e7b5232cfac0cf5581c077e67f6937
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0dfb93db1af807459c37653189a90b754c933aa4
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079491"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504786"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix 效能最佳做法
 
@@ -27,7 +27,7 @@ Phoenix 資料表的結構描述設計包括主索引鍵設計、資料行系列
 
 ### <a name="primary-key-design"></a>主索引鍵設計
 
-Phoenix 中資料表上定義的主索引鍵，可決定資料儲存在基礎 HBase 資料表的 rowkey 中的方式。 在 HBase 中，存取特定資料列的唯一方式就是使用 rowkey。 而且，儲存在 HBase 資料表中的資料會依照 rowkey 排序。 Phoenix 會以在主鍵中定義的順序，串連資料列中每個資料行的值，以建立 rowkey 值。
+Phoenix 中資料表上定義的主索引鍵，可決定資料儲存在基礎 HBase 資料表的 rowkey 中的方式。 在 HBase 中，存取特定資料列的唯一方式就是使用 rowkey。 而且，儲存在 HBase 資料表中的資料會依照 rowkey 排序。 Phoenix 會藉由串連資料列中每個資料行的值，以其在主鍵中的定義順序來建立 rowkey 值。
 
 例如，連絡人的資料表中有名字、姓氏、電話號碼和地址，全都屬於相同的資料行系列。 您可以遞增的序號來定義主索引鍵：
 
@@ -72,8 +72,8 @@ Phoenix 中資料表上定義的主索引鍵，可決定資料儲存在基礎 HB
 
 ### <a name="column-design"></a>資料行設計
 
-* 因為大型資料行的 i/o 成本，所以將 VARCHAR 資料行保持在約 1 MB 之下。 在處理查詢時，HBase 會先完整地將資料格具體化，再將其傳送給用戶端，而用戶端完整接收它們後，才會將其交給應用程式的程式碼。
-* 使用精簡格式來儲存資料行的值，例如 protobuf、Avro、msgpack 或 BSON。 不建議使用 JSON，因為它較大。
+* 將 VARCHAR 資料行保留在大約 1 MB，因為大型資料行的 i/o 成本。 在處理查詢時，HBase 會先完整地將資料格具體化，再將其傳送給用戶端，而用戶端完整接收它們後，才會將其交給應用程式的程式碼。
+* 使用精簡格式來儲存資料行的值，例如 protobuf、Avro、msgpack 或 BSON。 因為 JSON 較大，所以不建議使用。
 * 請考慮先壓縮資料再儲存，以縮減延遲和 I/O 成本。
 
 ### <a name="partition-data"></a>分割資料
@@ -113,7 +113,7 @@ Phoenix 索引是一個 HBase 資料表，其中儲存索引資料表中部分�
 
 ### <a name="use-covered-indexes"></a>使用涵蓋性索引
 
-涵蓋性索引除了包含檢索的值，還包含資料列中的資料。 找到所需的索引項目之後，就不需要存取主表。
+涵蓋性索引除了包含檢索的值，還包含資料列中的資料。 找出所需的索引項目之後，就不需要存取主表。
 
 例如，在連絡人資料表範例中，您可以只在 socialSecurityNum 資料行上建立次要索引。 此次要索引可加速依 socialSecurityNum 值篩選的查詢，但是擷取其他欄位值則需要零外讀取主資料表。
 
@@ -163,7 +163,7 @@ CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName
 
 例如，假設您有一個名為 FLIGHTS 的資料表，其中儲存航班延誤資訊。
 
-若要選取 airlineid 為的所有航班 `19805` ，其中 airlineid 是不在主鍵或任何索引中的欄位：
+若要選取 airlineid 為的所有航班 `19805` ，其中 airlineid 是不在主要索引鍵或任何索引中的欄位：
 
 ```sql
 select * from "FLIGHTS" where airlineid = '19805';
@@ -236,15 +236,15 @@ CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
 
 ### <a name="read-heavy-workloads"></a>大量讀取工作負載
 
-針對大量讀取的使用案例，請確定您使用的是索引。 此外，若要節省讀取階段額外負荷，請考慮建立涵蓋式索引。
+若為大量讀取的使用案例，請確定您使用的是索引。 此外，若要節省讀取階段額外負荷，請考慮建立涵蓋式索引。
 
 ### <a name="write-heavy-workloads"></a>大量寫入工作負載
 
-針對寫入繁重的工作負載，其中主要金鑰會以單純的速度增加，建立 salt 值區以協助避免寫入熱點，因為需要額外的掃描，而犧牲整體的讀取輸送量。 此外，使用 UPSERT 來寫入大量的記錄時，請關閉 autoCommit 並將記錄批次化。
+如果是以大量寫入的工作負載，其中主鍵是單純增加的，請建立 salt 值區來協助避免寫入的作用區，因為需要額外的掃描，所以會犧牲整體讀取輸送量。 此外，使用 UPSERT 來寫入大量的記錄時，請關閉 autoCommit 並將記錄批次化。
 
 ### <a name="bulk-deletes"></a>大量刪除
 
-刪除大型資料集時，請在發出刪除查詢之前開啟自動認可，讓用戶端不需要記住所有已刪除資料列的資料列索引鍵。 AutoCommit 可以防止用戶端緩衝處理受 DELETE 影響的資料列，因此 Phoenix 可以直接在區域伺服器上將其刪除，免於將其傳回給用戶端。
+在刪除大型資料集時，請先開啟自動認可再發出刪除查詢，如此用戶端就不需要記住所有已刪除資料列的資料列索引鍵。 AutoCommit 可以防止用戶端緩衝處理受 DELETE 影響的資料列，因此 Phoenix 可以直接在區域伺服器上將其刪除，免於將其傳回給用戶端。
 
 ### <a name="immutable-and-append-only"></a>不可變和僅能附加
 
@@ -256,7 +256,7 @@ CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
 
 如需這個選項及其他選項的詳細資料，請參閱 [Apache Phoenix 文法](https://phoenix.apache.org/language/index.html#options)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 * [Apache Phoenix 微調指南](https://phoenix.apache.org/tuning_guide.html)
 * [次要索引](https://phoenix.apache.org/secondary_indexing.html)

@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 61aec3936ffef488b989f54894568d206c759b12
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8068d6ebe67dee1408420441aacd83726a1986df
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014978"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434260"
 ---
 # <a name="automation-account-authentication-overview"></a>自動化帳戶驗證總覽
 
@@ -19,7 +19,7 @@ Azure 自動化可讓您針對 Azure、內部部署以及其他雲端提供者 (
 
 此文章將介紹 Azure 自動化支援的各種驗證案例，並說明如何根據您要管理的一或多個環境來開始使用。
 
-## <a name="automation-account"></a>自動化帳戶 
+## <a name="automation-account"></a>自動化帳戶
 
 當您第一次啟動 Azure 自動化時，您必須建立至少一個自動化帳戶。 自動化帳戶可讓您將您的自動化資源、Runbook、資產、設定與其他帳戶中的資源區隔開來。 您可以使用自動化帳戶將資源分成個別的邏輯環境。 例如，您可能會針對開發、生產和內部部署環境各自使用一個帳戶。 Azure 自動化帳戶與 Microsoft 帳戶或您在 Azure 訂用帳戶中建立的帳戶不同。 如需建立自動化帳戶的簡介，請參閱[建立自動化帳戶](automation-quickstart-create-account.md)。
 
@@ -27,7 +27,7 @@ Azure 自動化可讓您針對 Azure、內部部署以及其他雲端提供者 (
 
 每個自動化帳戶的自動化資源都會與單一 Azure 區域相關聯，但該帳戶可管理 Azure 訂用帳戶中的所有資源。 在不同區域中建立自動化帳戶的主要原因是，如果您有需要將資料和資源隔離到特定區域的原則。
 
-在 Azure 自動化中使用 Azure Resource Manager 和 PowerShell Cmdlet 針對資源所執行的所有工作，都必須使用 Azure Active Directory (Azure AD) 組織身分識別的認證型驗證向 Azure 進行驗證。 
+在 Azure 自動化中使用 Azure Resource Manager 和 PowerShell Cmdlet 針對資源所執行的所有工作，都必須使用 Azure Active Directory (Azure AD) 組織身分識別的認證型驗證向 Azure 進行驗證。
 
 ## <a name="run-as-account"></a>執行身分帳戶
 
@@ -35,15 +35,15 @@ Azure 自動化中的執行身分帳戶可用來提供驗證，以使用 PowerSh
 
 ## <a name="service-principal-for-run-as-account"></a>執行身分帳戶的服務主體
 
-執行身分帳戶的服務主體預設沒有讀取 Azure AD 的權限。 如果您想要新增讀取或管理 Azure AD 的權限，您必須在 [API 權限] 下授與服務主體的權限。 若要深入了解，請參閱[新增存取 Web API 的權限](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
+執行身分帳戶的服務主體預設沒有讀取 Azure AD 的權限。 如果您想要新增讀取或管理 Azure AD 的權限，您必須在 [API 權限] 下授與服務主體的權限。 若要深入瞭解，請參閱 [新增許可權以存取您的 WEB API](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)。
 
 ## <a name="role-based-access-control"></a>角色型存取控制
 
-Azure Resource Manager 提供了角色型存取控制來對 Azure AD 使用者帳戶和執行身分帳戶授與允許的動作，並驗證該服務主體。 若要取得有助於開發自動化權限管理模型的進一步資訊，請閱讀 [Azure 自動化中的角色型存取控制](automation-role-based-access-control.md)一文。  
+Azure Resource Manager 提供了角色型存取控制來對 Azure AD 使用者帳戶和執行身分帳戶授與允許的動作，並驗證該服務主體。 若要取得有助於開發自動化權限管理模型的進一步資訊，請閱讀 [Azure 自動化中的角色型存取控制](automation-role-based-access-control.md)一文。
 
-## <a name="runbook-authentication-with-hybrid-runbook-worker"></a>Runbook 驗證搭配混合式 Runbook 背景工作角色 
+## <a name="runbook-authentication-with-hybrid-runbook-worker"></a>Runbook 驗證搭配混合式 Runbook 背景工作角色
 
-在資料中心的混合式 Runbook 背景工作角色上或針對其他雲端環境 (例如 AWS) 中的運算服務所執行的 Runbook，不能使用向 Azure 資源進行驗證的 Runbook 通常會使用的相同方法。 這是因為這些資源是在 Azure 外執行，因此需要在自動化中定義自己的安全性認證才能向它們要在本機存取的資源進行驗證。 如需 Runbook 驗證搭配 Runbook 背景工作角色的詳細資訊，請參閱[在混合式 Runbook 背景工作角色上執行 Runbook](automation-hrw-run-runbooks.md)。 
+在資料中心的混合式 Runbook 背景工作角色上或針對其他雲端環境 (例如 AWS) 中的運算服務所執行的 Runbook，不能使用向 Azure 資源進行驗證的 Runbook 通常會使用的相同方法。 這是因為這些資源是在 Azure 外執行，因此需要在自動化中定義自己的安全性認證才能向它們要在本機存取的資源進行驗證。 如需 Runbook 驗證搭配 Runbook 背景工作角色的詳細資訊，請參閱[在混合式 Runbook 背景工作角色上執行 Runbook](automation-hrw-run-runbooks.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

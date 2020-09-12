@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: a16a83408587a1b99485140174c45e457ac820f8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 08/31/2020
+ms.openlocfilehash: 9564611ee37c2aa2f104bbb14096a3b2f45fb7cd
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855092"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485364"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure 時間序列深入解析 Gen2 事件來源
 
@@ -64,7 +64,7 @@ Azure 時間序列深入解析的 Gen2 目前不支援使用串流管線來匯�
 
 ## <a name="event-source-timestamp"></a>事件來源時間戳記
 
-設定事件來源時，系統會要求您提供時間戳記識別碼屬性。 時間戳記屬性是用來追蹤一段時間的事件，這是用來做為 $event 的時間。 $ts [查詢 api](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) 和 Azure 時間序列深入解析 TSI Explorer 中的繪圖數列。 如果在建立時未提供任何屬性，或事件中缺少時間戳記屬性，則會使用事件的 IoT 中樞或事件中樞排入佇列的時間作為預設值。 時間戳記屬性值會以 UTC 格式儲存。
+設定事件來源時，系統會要求您提供時間戳記識別碼屬性。 時間戳記屬性是用來追蹤一段時間的事件，這是用來做為 $event 的時間。 $ts 在 [查詢 api](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) 中，以及用於 Azure 時間序列深入解析 Explorer 中的繪圖數列。 如果在建立時未提供任何屬性，或事件中缺少時間戳記屬性，則會使用事件的 IoT 中樞或事件中樞排入佇列的時間作為預設值。 時間戳記屬性值會以 UTC 格式儲存。
 
 一般情況下，使用者會選擇自訂時間戳記屬性，並使用感應器或標記產生讀取的時間，而不是使用預設的中樞排入佇列時間。 當裝置有間歇性的連線遺失，且延遲的訊息批次轉送到 Azure 時間序列深入解析 Gen2 時，這是特別必要的。
 
@@ -80,7 +80,7 @@ Azure 時間序列深入解析的 Gen2 目前不支援使用串流管線來匯�
 ± HH： MM</br>
 ± HH： MMZ</br>
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 閱讀 JSON 簡維 [和轉義規則](./concepts-json-flattening-escaping-rules.md) ，以瞭解事件的儲存方式。
 

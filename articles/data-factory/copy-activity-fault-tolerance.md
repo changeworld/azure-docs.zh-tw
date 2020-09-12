@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: 6b172a6e15cbb22c3a0a16cb1e238ddfe45048bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a0529248c58f7fa7f962d9d1432411c351c7bdd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130767"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440638"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory 中複製活動的容錯
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -81,19 +81,19 @@ linkedServiceName | 可儲存工作階段記錄檔的 [Azure Blob 儲存體](con
 path | 記錄檔的路徑。 | 指定用來儲存記錄檔的路徑。 如不提供路徑，服務會為您建立容器。 | 否
 
 > [!NOTE]
-> 以下是在複製二進位檔案時，在複製活動中啟用容錯功能的必要條件。
-> 若要在從來源存放區中刪除時略過特定檔案：
-> - 源資料集和接收資料集必須是二進位格式，而且無法指定壓縮類型。 
+> 以下是複製二進位檔案時在複製活動中啟用容錯的必要條件。
+> 當您從來源存放區刪除特定檔案時，略過這些檔案：
+> - 源資料集與接收資料集必須是二進位格式，而且無法指定壓縮類型。 
 > - 支援的資料存放區類型包括 Azure Blob 儲存體、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure 檔案儲存體、檔案系統、FTP、SFTP、Amazon S3、Google Cloud Storage 和 HDFS。
-> - 只有當您在源資料集（可以是資料夾、萬用字元或檔案清單）中指定多個檔案時，複製活動才能略過特定的錯誤檔案。 如果要將源資料集內指定的單一檔案複製到目的地，複製活動將會在發生任何錯誤時失敗。
+> - 只有當您在源資料集中指定多個檔案（可以是資料夾、萬用字元或檔案清單）時，複製活動才能略過特定的錯誤檔案。 如果要將源資料集內的單一檔案指定為要複製到目的地，當發生任何錯誤時，複製活動將會失敗。
 >
-> 針對從來源存放區禁止存取特定檔案時略過該檔案：
-> - 源資料集和接收資料集必須是二進位格式，而且無法指定壓縮類型。 
+> 若要在從來源存放區禁止存取特定檔案時略過這些檔案：
+> - 源資料集與接收資料集必須是二進位格式，而且無法指定壓縮類型。 
 > - 支援的資料存放區類型包括 Azure Blob 儲存體、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure 檔案儲存體、SFTP、Amazon S3 和 HDFS。
-> - 只有當您在源資料集（可以是資料夾、萬用字元或檔案清單）中指定多個檔案時，複製活動才能略過特定的錯誤檔案。 如果要將源資料集內指定的單一檔案複製到目的地，複製活動將會在發生任何錯誤時失敗。
+> - 只有當您在源資料集中指定多個檔案（可以是資料夾、萬用字元或檔案清單）時，複製活動才能略過特定的錯誤檔案。 如果要將源資料集內的單一檔案指定為要複製到目的地，當發生任何錯誤時，複製活動將會失敗。
 >
-> 若要在來源和目的地存放區的驗證不一致時略過特定檔案：
-> - 您可以從[這裡](https://docs.microsoft.com/azure/data-factory/copy-activity-data-consistency)取得資料一致性檔的詳細資訊。
+> 當使用者在來源與目的地存放區中驗證為不一致時，略過特定檔案：
+> - 您可以從 [這裡](https://docs.microsoft.com/azure/data-factory/copy-activity-data-consistency)的資料一致性檔取得更多詳細資料。
 
 ### <a name="monitoring"></a>監視 
 
@@ -159,7 +159,7 @@ Timestamp,Level,OperationName,OperationItem,Message
     例如：從 SQL Server 將資料複製到 SQL 資料庫。 會在接收 SQL 資料庫中定義主索引鍵，但是在來源 SQL Server 中不會定義這類主索引鍵。 無法將來源中的重複資料列複製到接收。 複製活動只會將來源資料中的第一個資料列複製到接收。 包含重複主索引鍵值的後續來源資料列會偵測為不相容，並加以跳過。
 
 >[!NOTE]
->- 如需使用 PolyBase 將資料載入到 SQL 資料倉儲，請透過複製活動中的 "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" 來指定拒絕原則，以設定 PolyBase 的原生容錯設定。 如往常，您仍然可以啟用將 PolyBase 不相容的資料列重新導向到 Blob 或 ADLS 的功能，如下所示。
+>- 若要使用 PolyBase 將資料載入 Azure Synapse Analytics (先前的 SQL 資料倉儲) ，請在複製活動中透過 "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" 指定拒絕原則，以設定 polybase 的原生容錯設定。 如往常，您仍然可以啟用將 PolyBase 不相容的資料列重新導向到 Blob 或 ADLS 的功能，如下所示。
 >- 當複製活動設定為叫用 [Amazon Redshift Unload](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift)時，不會套用此功能。
 >- 當複製活動設定為叫用 [SQL 接收中儲存的程序](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)時，不會套用此功能。
 
@@ -185,11 +185,11 @@ Timestamp,Level,OperationName,OperationItem,Message
 }, 
 ```
 
-屬性 | 說明 | 允許的值 | 必要
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | -------- 
-enableSkipIncompatibleRow | 指定是否要在複製期間略過不相容的資料列。 | True<br/>FALSE (預設值) | No
+enableSkipIncompatibleRow | 指定是否要在複製期間略過不相容的資料列。 | True<br/>FALSE (預設值) | 否
 logStorageSettings | 當您想要記錄不相容的資料列時，可指定的一組屬性。 | &nbsp; | 否
-linkedServiceName | [Azure Blob 儲存體](connector-azure-blob-storage.md#linked-service-properties)或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) 的連結服務，儲存包含略過之資料列的記錄。 | `AzureBlobStorage` 或 `AzureBlobFS` 類型連結服務的名稱，以代表您要用來儲存記錄檔的執行個體。 | No
+linkedServiceName | [Azure Blob 儲存體](connector-azure-blob-storage.md#linked-service-properties)或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) 的連結服務，儲存包含略過之資料列的記錄。 | `AzureBlobStorage` 或 `AzureBlobFS` 類型連結服務的名稱，以代表您要用來儲存記錄檔的執行個體。 | 否
 path | 包含略過之資料列的記錄檔路徑。 | 指定需要用來記錄不相容資料的路徑。 如不提供路徑，服務會為您建立容器。 | 否
 
 ### <a name="monitor-skipped-rows"></a>監視略過的資料列
@@ -262,9 +262,9 @@ Timestamp, Level, OperationName, OperationItem, Message
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否要在複製期間略過不相容的資料列。 | True<br/>FALSE (預設值) | 否
-redirectIncompatibleRowSettings | 當您想要記錄不相容的資料列時，可指定的一組屬性。 | &nbsp; | No
+redirectIncompatibleRowSettings | 當您想要記錄不相容的資料列時，可指定的一組屬性。 | &nbsp; | 否
 linkedServiceName | [Azure 儲存體](connector-azure-blob-storage.md#linked-service-properties)或 [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) 的連結服務，儲存包含跳過之資料列的記錄。 | `AzureStorage` 或 `AzureDataLakeStore` 類型連結服務的名稱，以代表您需要用來儲存記錄檔的執行個體。 | 否
-path | 包含跳過之資料列的記錄檔路徑。 | 指定需要用來記錄不相容資料的路徑。 如不提供路徑，服務會為您建立容器。 | No
+path | 包含跳過之資料列的記錄檔路徑。 | 指定需要用來記錄不相容資料的路徑。 如不提供路徑，服務會為您建立容器。 | 否
 
 ### <a name="monitor-skipped-rows"></a>監視略過的資料列
 複製活動執行完成之後，您會在複製活動的輸出中看到略過的資料列數目：

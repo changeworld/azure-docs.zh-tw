@@ -1,30 +1,30 @@
 ---
 title: 針對 Azure 映射產生器服務進行疑難排解
-description: 針對使用 Azure VM 映射產生器服務時常見的問題和錯誤進行疑難排解
+description: 針對使用 Azure VM Image Builder 服務時的常見問題和錯誤進行疑難排解
 author: cynthn
 ms.author: danis
-ms.date: 08/07/2020
+ms.date: 09/03/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 754d9324137632b928e67bbe4c67a3e6c72e452a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: ee65cd1605e23dfd5699f92a900bdb5e7952fe13
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068095"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459924"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>針對 Azure 映射產生器服務進行疑難排解
 
-本文可協助您針對使用 Azure 映射產生器服務時可能會遇到的常見問題進行疑難排解並加以解決。
+本文可協助您針對使用 Azure 映射建立器服務時可能遇到的常見問題進行疑難排解並解決問題。
 
 AIB 失敗可能會發生在2個區域中：
-- 影像範本提交
+- 提交影像範本
 - 映射組建
 
 ## <a name="troubleshoot-image-template-submission-errors"></a>針對影像範本提交錯誤進行疑難排解
 
-映射範本提交錯誤只會在提交時傳回。 影像範本提交錯誤沒有錯誤記錄檔。 如果在提交期間發生錯誤，您可以藉由檢查範本的狀態來傳回錯誤，特別是檢查 `ProvisioningState` 和 `ProvisioningErrorMessage` / `provisioningError` 。
+映射範本提交錯誤只會在提交時傳回。 未提供映射範本提交錯誤的錯誤記錄檔。 如果提交期間發生錯誤，您可以藉由檢查範本的狀態來傳回錯誤，特別是查看 `ProvisioningState` 和 `ProvisioningErrorMessage` / `provisioningError` 。
 
 ```azurecli
 az image builder show --name $imageTemplateName  --resource-group $imageResourceGroup
@@ -34,9 +34,9 @@ az image builder show --name $imageTemplateName  --resource-group $imageResource
 Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGroupName <imageTemplateResourceGroup> | Select-Object ProvisioningState, ProvisioningErrorMessage
 ```
 > [!NOTE]
-> 針對 PowerShell，您將需要安裝[Azure 映射產生器 PowerShell 模組](../windows/image-builder-powershell.md#prerequisites)。
+> 針對 PowerShell，您將需要安裝 [Azure 映射產生器 PowerShell 模組](../windows/image-builder-powershell.md#prerequisites)。
 
-下列各節包含常見影像範本提交錯誤的問題解決指導方針。
+下列各節包含常見影像範本提交錯誤的問題解決指引。
 
 ### <a name="updateupgrade-of-image-templates-is-currently-not-supported"></a>目前不支援更新/升級映射範本
 
@@ -50,11 +50,11 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 範本已經存在。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
-如果您提交影像設定範本，但提交失敗，則範本成品仍然存在。 刪除失敗的範本。
+如果您提交映射設定範本，但提交失敗，則範本成品仍然存在。 刪除失敗的範本。
 
-### <a name="the-resource-operation-completed-with-terminal-provisioning-state-failed"></a>資源作業已完成，但終端機布建狀態為「失敗」
+### <a name="the-resource-operation-completed-with-terminal-provisioning-state-failed"></a>資源作業已完成，終端布建狀態為「失敗」
 
 #### <a name="error"></a>錯誤
 
@@ -71,16 +71,16 @@ Microsoft.VirtualMachineImages/imageTemplates 'helloImageTemplateforSIG01' faile
 ```
 #### <a name="cause"></a>原因
 
-在大多數情況下，由於缺少許可權，因此會發生資源部署失敗的錯誤。
+在大部分情況下，因為缺少許可權，所以會發生資源部署失敗錯誤。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 根據您的案例，Azure 映射產生器可能需要下列許可權：
 - 來源映射或共用映射庫資源群組
-- 散發映射或共用映射庫資源
-- 檔案自訂程式所存取的儲存體帳戶、容器或 blob。 
+- 發佈映射或共用映射庫資源
+- 檔案自訂員正在存取的儲存體帳戶、容器或 blob。 
 
-如需設定許可權的詳細資訊，請參閱[使用 Azure CLI 設定 Azure 映射產生器服務許可權](image-builder-permissions-cli.md)或[使用 PowerShell 設定 azure 映射產生器服務許可權](image-builder-permissions-powershell.md)
+如需設定許可權的詳細資訊，請參閱 [使用 Azure CLI 設定 Azure 映射產生器服務許可權](image-builder-permissions-cli.md) 或 [使用 PowerShell 設定 azure 映射產生器服務許可權](image-builder-permissions-powershell.md)
 
 ### <a name="error-getting-managed-image"></a>取得受控映射時發生錯誤
 
@@ -95,14 +95,14 @@ Status=403 Code="AuthorizationFailed" Message="The client '......' with object i
 
 缺少許可權。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 根據您的案例，Azure 映射產生器可能需要下列許可權：
 * 來源映射或共用映射庫資源群組
-* 散發映射或共用映射庫資源
-* 檔案自訂程式所存取的儲存體帳戶、容器或 blob。 
+* 發佈映射或共用映射庫資源
+* 檔案自訂員正在存取的儲存體帳戶、容器或 blob。 
 
-如需設定許可權的詳細資訊，請參閱[使用 Azure CLI 設定 Azure 映射產生器服務許可權](image-builder-permissions-cli.md)或[使用 PowerShell 設定 azure 映射產生器服務許可權](image-builder-permissions-powershell.md)
+如需設定許可權的詳細資訊，請參閱 [使用 Azure CLI 設定 Azure 映射產生器服務許可權](image-builder-permissions-cli.md) 或 [使用 PowerShell 設定 azure 映射產生器服務許可權](image-builder-permissions-powershell.md)
 
 ### <a name="build--step-failed-for-image-version"></a>映射版本的組建步驟失敗
 
@@ -115,7 +115,7 @@ Status=404 Code="ResourceNotFound" Message="The Resource 'Microsoft.Compute/gall
 
 Azure 映射產生器找不到來源映射。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 請確定來源映射正確，且存在於 Azure 映射產生器服務的位置。
 
@@ -129,15 +129,15 @@ Downloading external file (<myFile>) to local file (xxxxx.0.customizer.fp) [atte
 
 #### <a name="cause"></a>原因
 
-檔案名或位置不正確，或位置無法連線。
+檔案名或位置不正確，或無法連線到該位置。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
-請確定檔案可供連線。 確認名稱和位置正確。
+請確定該檔案可供存取。 請確認名稱和位置是否正確。
 
 ## <a name="troubleshoot-build-failures"></a>針對組建失敗進行疑難排解
 
-對於映射組建失敗，您可以從取得錯誤 `lastrunstatus` ，然後在 [自訂記錄檔] 中查看詳細資料。
+若為映射組建失敗，您可以從取得錯誤 `lastrunstatus` ，然後檢查自訂記錄檔中的詳細資料。
 
 
 ```azurecli
@@ -156,16 +156,16 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 例如， *IT_aibmdi_helloImageTemplateLinux01*。
 
-您可以藉由選取 [**儲存體帳戶**  >  **blob**]，來查看資源群組中的 [登入] 儲存體  >  帳戶。 `packerlogs`  然後選取 [**目錄 > 自訂記錄**]。
+您可以藉由選取 [**儲存體帳戶**  >  **blob**] 來查看自訂。請在資源群組中，選取儲存體帳戶來登  >  入。 `packerlogs`  然後選取 [ **目錄] > 自訂 .log**。
 
 
 ### <a name="understanding-the-customization-log"></a>瞭解自訂記錄檔
 
-記錄檔的詳細資訊。 其中涵蓋映射組建，包括映射發佈的任何問題，例如共用映射庫複寫。 這些錯誤會出現在映射範本狀態的錯誤訊息中。
+記錄檔是詳細資訊。 其中涵蓋映射組建，包括映射發佈的任何問題，例如共用映射庫複寫。 這些錯誤會出現在影像範本狀態的錯誤訊息中。
 
-自訂 .log 包含下列階段：
+自訂記錄包含下列階段：
 
-1. 使用 ARM 範本將組建 VM 和相依性部署到 IT_ 暫存資源群組階段。 此階段包含多個 Azure 映射產生器資源提供者的文章：
+1. 使用 ARM 範本將組建 VM 和相依性部署到 IT_ 預備資源群組階段。 這個階段包含多個 Azure 映射產生器資源提供者的貼文：
     ```text
     Azure request method="POST" request="https://management.azure.com/subscriptions/<subID>/resourceGroups/IT_aibImageRG200_window2019VnetTemplate01_dec33089-1cc3-cccc-cccc-ccccccc/providers/Microsoft.Storage/storageAccounts
     ..
@@ -180,21 +180,21 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 3. 連接到組建 VM 階段。
 
-    如果是 Windows，Azure 映射產生器服務會使用 WinRM 進行連線：
+    若為 Windows，Azure 映射建立器服務會使用 WinRM 進行連線：
     ```text
     PACKER ERR 2020/04/30 23:30:50 packer: 2020/04/30 23:30:50 Waiting for WinRM, up to timeout: 10m0s
     ..
     PACKER OUT     azure-arm: WinRM connected.
     ```
 
-    如果是 Linux，Azure 映射產生器服務會使用 SSH 進行連線：
+    如果是 Linux，Azure 映射產生器服務將會使用 SSH 來連接：
     ```text
     PACKER OUT ==> azure-arm: Waiting for SSH to become available...
     PACKER ERR 2019/12/10 17:20:51 packer: 2020/04/10 17:20:51 [INFO] Waiting for SSH, up to timeout: 20m0s
     PACKER OUT ==> azure-arm: Connected to SSH!
     ```
 
-4. 執行自訂階段。 當自訂執行時，您可以藉由檢查自訂 .log 來識別它們。 搜尋* (遙測) *。
+4. 執行自訂階段。 當自訂執行時，您可以藉由檢查自訂 .log 來識別這些自訂。 搜尋 * (遙測) *。
     ```text
     (telemetry) Starting provisioner windows-update
     (telemetry) ending windows-update
@@ -207,7 +207,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
     
     (telemetry) Finalizing. - This means the build hasfinished
     ```
-5. 取消布建階段。 Azure 映射產生器會新增隱藏的自訂者。 此取消布建步驟負責準備 VM 以進行解除布建。 它會使用 c:\DeprovisioningScript.ps1) 來執行 Windows Sysprep (，或在 Linux waagent 中使用/tmp/DeprovisioningScript.sh) 來取消布建 (。 
+5. 解除布建階段。 Azure 映射產生器會新增隱藏的自訂員。 此取消布建步驟負責準備 VM 以進行解除布建。 它會使用 c:\DeprovisioningScript.ps1) 來執行 Windows Sysprep (，或使用/tmp/DeprovisioningScript.sh) 在 Linux waagent 取消布建 (。 
 
     例如：
     ```text
@@ -219,9 +219,9 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
     ```text
     PACKER ERR 2020/02/04 02:04:23 packer: 2020/02/04 02:04:23 Azure request method="DELETE" request="https://management.azure.com/subscriptions/<subId>/resourceGroups/IT_aibDevOpsImg_t_vvvvvvv_yyyyyy-de5f-4f7c-92f2-xxxxxxxx/providers/Microsoft.Network/networkInterfaces/pkrnijamvpo08eo?[REDACTED]" body=""
     ```
-## <a name="tips-for-troubleshooting-scriptinline-customization"></a>針對腳本/內嵌自訂進行疑難排解的秘訣
-- 先測試程式碼，再將它提供給影像產生器
-- 確定 Azure 原則的和防火牆允許連線到遠端資源。
+## <a name="tips-for-troubleshooting-scriptinline-customization"></a>腳本/內嵌自訂疑難排解的秘訣
+- 先測試程式碼，再將它提供給 Image Builder
+- 確定 Azure 原則和防火牆允許連線至遠端資源。
 - 將批註輸出到主控台，例如使用 `Write-Host` 或 `echo` ，這可讓您搜尋自訂 .log。
 
 ## <a name="troubleshoot-common-build-errors"></a>針對常見的組建錯誤進行疑難排解
@@ -243,9 +243,9 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 自訂失敗。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
-查看記錄檔以找出自設者失敗。 搜尋* (遙測) *。 
+查看記錄以找出自訂失敗。 搜尋 * (遙測) *。 
 
 例如：
 ```text
@@ -261,7 +261,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 (telemetry) Finalizing. - This means the build has finished
 ```
 
-### <a name="timeout-exceeded"></a>超過超時時間
+### <a name="timeout-exceeded"></a>超過 Timeout
 
 #### <a name="error"></a>錯誤
 
@@ -271,23 +271,23 @@ Deployment failed. Correlation ID: xxxxx-xxxx-xxxx-xxxx-xxxxxxxxx. Failed in bui
 
 #### <a name="cause"></a>原因
 
-組建已超過組建的超時時間。 此錯誤會出現在 ' lastrunstatus ' 中。
+組建超過組建的超時時間。 此錯誤會出現在 ' lastrunstatus ' 中。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
-1. 檢查自訂記錄檔。 識別要執行的最後一個自訂器。 `(telemetry)`從記錄檔的底部開始搜尋。 
+1. 檢查自訂 .log。 識別最後一個要執行的自訂器。 `(telemetry)`從記錄檔底部開始搜尋。 
 
-2. 檢查腳本自訂。 自訂可能不會隱藏使用者對命令的互動，例如 `quiet` 選項。 例如，會 `apt-get install -y` 導致腳本執行等候使用者互動。
+2. 檢查腳本自訂專案。 自訂可能不會隱藏命令的使用者互動，例如 `quiet` 選項。 例如，會 `apt-get install -y` 導致腳本執行等候使用者互動。
 
-3. 如果您使用自訂者 `File` 來下載大於 20 MB 的成品，請參閱因應措施一節。
+3. 如果您使用自訂者 `File` 來下載大於 20 MB 的成品，請參閱因應措施區段。
 
-4. 檢查腳本中可能會導致腳本等候的錯誤和相依性。
+4. 檢查腳本中可能會導致腳本等待的錯誤和相依性。
 
-5. 如果您預期自訂需要更多時間，請增加[buildTimeoutInMinutes](image-builder-json.md)。 預設值為四小時。
+5. 如果您預期自訂需要更多時間，請增加 [buildTimeoutInMinutes](image-builder-json.md)。 預設值為4小時。
 
-6. 如果您有需要大量資源的動作（例如下載 gb 的檔案），請考慮基礎組建 VM 大小。 服務會使用 Standard_D1_v2 的 VM。 VM 具有、1 vCPU 和 3.5 GB 的記憶體。 如果您要下載 50 GB，這可能會耗盡 VM 資源，並導致 Azure 映射產生器服務與組建 VM 之間的通訊失敗。 藉由設定[VM_Size](image-builder-json.md#vmprofile)，以較大的記憶體 VM 重試組建。
+6. 如果您有需要大量資源的動作，例如下載 gb 的檔案，請考慮基礎組建 VM 大小。 服務會使用 Standard_D1_v2 VM。 VM 具有 1 vCPU 和 3.5 GB 的記憶體。 如果您要下載 50 GB，這可能會耗盡 VM 資源，並導致 Azure 映射產生器服務與組建 VM 之間的通訊失敗。 藉由設定 [VM_Size](image-builder-json.md#vmprofile)，以較大的記憶體 VM 重試組建。
 
-### <a name="long-file-download-time"></a>長檔案下載時間
+### <a name="long-file-download-time"></a>完整檔案下載時間
 
 #### <a name="error"></a>錯誤
 ```text
@@ -304,13 +304,13 @@ myBigFile.zip 826000 B / 826000 B  100.00%
 ```
 #### <a name="cause"></a>原因 
 
-檔案自訂者正在下載大型檔案。
+檔案自訂員正在下載大型檔案。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
-檔案自訂者僅適用于小於 20 MB 的小型檔案下載。 如需更大的檔案下載，請使用腳本或內嵌命令。 例如，在 Linux 上，您可以使用 `wget` 或 `curl` 。 在 Windows 上，您可以使用 `Invoke-WebRequest` 。
+檔案自訂項僅適用于小於 20 MB 的小型檔案下載。 針對較大的檔案下載，請使用腳本或內嵌命令。 例如，在 Linux 上，您可以使用 `wget` 或 `curl` 。 在 Windows 上，您可以使用 `Invoke-WebRequest` 。
 
-### <a name="error-waiting-on-shared-image-gallery"></a>等候共用映射資源庫時發生錯誤
+### <a name="error-waiting-on-shared-image-gallery"></a>等候共用映射庫時發生錯誤
 
 #### <a name="error"></a>錯誤
 
@@ -320,7 +320,7 @@ Deployment failed. Correlation ID: XXXXXX-XXXX-XXXXXX-XXXX-XXXXXX. Failed in dis
 
 #### <a name="cause"></a>原因
 
-映射產生器在等候映射新增並複寫到共用映射資源庫時，已超時， (SIG) 。 如果映射插入到 SIG 中，可以假設映射組建成功。 不過，由於映射產生器正在等候共用映射資源庫完成複寫，因此整體程式失敗。 即使組建失敗，仍會繼續複寫。 您可以藉由檢查散發*runOutput*來取得映射版本的屬性。
+影像產生器超時，等候將映射新增並複寫到共用映射庫 (SIG) 。 如果映射要插入至 SIG，則可以假設映射組建成功。 但是，整體進程失敗，因為映射產生器正在等待共用映射庫完成複寫。 即使組建失敗，還是會繼續複寫。 您可以藉由檢查散發 *runOutput*來取得映射版本的屬性。
 
 ```bash
 $runOutputName=<distributionRunOutput>
@@ -329,11 +329,11 @@ az resource show \
     --api-version=2019-05-01-preview
 ```
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
-增加**buildTimeoutInMinutes**。
+增加 **buildTimeoutInMinutes**。
  
-### <a name="low-windows-resource-information-events"></a>較低的 Windows 資源資訊事件
+### <a name="low-windows-resource-information-events"></a>低 Windows 資源資訊事件
 
 #### <a name="error"></a>錯誤
 
@@ -382,9 +382,9 @@ az resource show \
 ```
 #### <a name="cause"></a>原因
 
-資源耗盡。 Windows Update 使用預設組建 VM 大小 D1_V2 執行時，通常會看到此問題。
+資源耗盡。 使用預設組建 VM 大小 D1_V2 Windows Update 執行時，通常會看到此問題。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 增加組建 VM 大小。
 
@@ -409,9 +409,9 @@ Done exporting Packer logs to Azure for Packer prefix: [a170b40d-2d77-4ac3-8719-
 ```
 #### <a name="cause"></a>原因
 
-等候所需的 Azure 資源建立所造成的超時時間。
+等候建立所需的 Azure 資源所造成的超時時間。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 請重新執行組建，然後再試一次。
 
@@ -432,13 +432,13 @@ Done exporting Packer logs to Azure for Packer prefix: [a170b40d-2d77-4ac3-8719-
 
 缺少許可權。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 重新檢查 Azure 映射產生器具有其所需的擁有權限。 
 
-如需設定許可權的詳細資訊，請參閱[使用 Azure CLI 設定 Azure 映射產生器服務許可權](image-builder-permissions-cli.md)或[使用 PowerShell 設定 azure 映射產生器服務許可權](image-builder-permissions-powershell.md)
+如需設定許可權的詳細資訊，請參閱 [使用 Azure CLI 設定 Azure 映射產生器服務許可權](image-builder-permissions-cli.md) 或 [使用 PowerShell 設定 azure 映射產生器服務許可權](image-builder-permissions-powershell.md)
 
-### <a name="sysprep-timing"></a>Sysprep 時機
+### <a name="sysprep-timing"></a>Sysprep 時間
 
 #### <a name="error"></a>錯誤
 
@@ -496,18 +496,40 @@ Done exporting Packer logs to Azure for Packer prefix: [a170b40d-2d77-4ac3-8719-
 ```
 #### <a name="cause"></a>原因
 
-原因可能是因為 D1_V2 的 VM 大小而發生時間問題。 如果自訂受到限制，且在三秒內執行，則 sysprep 命令會由 Azure 映射產生器執行以取消布建。 當 Azure 映射產生器取消布建時，sysprep 命令會檢查是否有*WindowsAzureGuestAgent*，而這可能未完整安裝而造成時間問題。 
+原因可能是因為 D1_V2 VM 大小的時間問題。 如果自訂受限且在三秒內執行，則 Azure 映射產生器會執行 sysprep 命令以取消布建。 當 Azure 映射建立器解除布建時，sysprep 命令會檢查是否有 *WindowsAzureGuestAgent*，而這可能不會完整安裝，而導致計時問題。 
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
-增加 VM 大小。 或者，您可以新增60秒的 PowerShell 睡眠自訂，以避免發生時間問題。
+增加 VM 大小。 或者，您可以新增60秒的 PowerShell 睡眠自訂，以避免計時問題。
+
+### <a name="cancelling-builder-after-context-cancellation-context-canceled"></a>取消 builder 內容取消內容之後取消產生器
+
+#### <a name="error"></a>錯誤
+```text
+PACKER ERR 2020/03/26 22:11:23 Cancelling builder after context cancellation context canceled
+PACKER OUT Cancelling build after receiving terminated
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling hook after context cancellation context canceled
+..
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling provisioning due to context cancellation: context canceled
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [ERROR] Remote command exited without exit status or exit signal.
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [INFO] RPC endpoint: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] 148974 bytes written for 'stdout'
+PACKER ERR 2020/03/26 22:11:25 [INFO] 0 bytes written for 'stderr'
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC client: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 2300218
+```
+#### <a name="cause"></a>原因
+映射產生器服務會使用埠 22 (Linux) ，或 5986 (Windows) 連接到組建 VM，這會在映射組建期間服務與組建 VM 中斷連線時發生。 中斷連接的原因可能會有所不同，但在腳本中啟用或設定防火牆可能會封鎖上述埠。
+
+#### <a name="solution"></a>解決方案
+請參閱您的腳本，以進行防火牆變更/啟用，或對 SSH 或 WinRM 的變更，並確保在上述埠上的服務與組建 VM 之間有固定的連線能力。 如需有關 Image Builder 網路功能的詳細資訊，請參閱 [需求](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking)。
 
 ## <a name="devops-task"></a>DevOps 工作 
 
 ### <a name="troubleshooting-the-task"></a>疑難排解工作
-只有在自訂期間發生錯誤時，此工作才會失敗，當這種情況發生時，工作將會報告失敗，並讓預備資源群組與記錄一起執行，讓您可以找出問題。 
+只有在自訂期間發生錯誤時，工作才會失敗。當這種情況發生時，工作將會回報失敗，並保留暫存資源群組和記錄檔，讓您可以找出問題。 
 
-若要找出記錄檔，您必須知道範本名稱、進入管線 > 失敗的組建 > 向 AIB DevOps 工作進行切入，然後您會看到記錄檔和範本名稱：
+若要找出記錄檔，您必須知道範本名稱、進入管線 > 失敗的組建 > 深入探索 AIB DevOps 工作，然後您會看到記錄檔和範本名稱：
 ```text
 start reading task parameters...
 found build at:  /home/vsts/work/r1/a/_ImageBuilding/webapp
@@ -519,15 +541,15 @@ Source for image:  { type: 'SharedImageVersion',
 template name:  t_1556938436xxx
 ``` 
 
-移至入口網站，在 [資源群組] 中搜尋範本名稱，然後使用 IT_ * 尋找資源群組。
-移至儲存體帳戶 > blob > 容器 > 記錄檔。
+移至入口網站，在資源群組中搜尋範本名稱，然後尋找具有 IT_ * 的資源群組。
+移至儲存體帳戶 > blob > 容器 > 記錄。
 
-### <a name="troubleshooting-successful-builds"></a>成功的組建疑難排解
-在某些情況下，您可能需要調查成功的組建，而且想要檢查記錄。 如先前所述，如果映射組建成功，則包含記錄的暫存資源群組將會在清除過程中刪除。 不過，您可以執行的動作是在內嵌命令之後引進睡眠，然後在組建暫停時取得記錄檔。 若要這麼做，請遵循下列步驟：
+### <a name="troubleshooting-successful-builds"></a>針對成功的組建進行疑難排解
+在某些情況下，您可能需要調查成功的組建，而且想要檢查記錄檔。 如前所述，如果映射組建成功，則包含記錄檔的預備資源群組會在清除過程中遭到刪除。 不過，您可以做的是在內嵌命令之後引入睡眠，然後在組建暫停時取得記錄。 若要這樣做，請遵循下列步驟：
  
-1. 更新內嵌命令，並新增：寫入主機/回應「睡眠」–這可讓您在記錄檔中搜尋
-2. 新增至少10mins 的睡眠，您可以使用 [[啟動-睡眠](/powershell/module/microsoft.powershell.utility/start-sleep)] 或 [ `Sleep` Linux] 命令。
-3. 使用上述方法來識別記錄檔位置，然後繼續下載/檢查記錄檔，直到進入睡眠為止。
+1. 更新內嵌命令，並新增： Write-Host/Echo "Sleep"-這可讓您在記錄檔中搜尋
+2. 新增至少10mins 的睡眠，您可以使用 [ [開始-睡眠](/powershell/module/microsoft.powershell.utility/start-sleep)] 或 [ `Sleep` Linux] 命令。
+3. 使用上述方法來識別記錄檔位置，然後繼續下載/檢查記錄直到進入睡眠狀態為止。
 
 
 ### <a name="operation-was-canceled"></a>作業已取消
@@ -562,24 +584,24 @@ template name:  t_1556938436xxx
 ```
 #### <a name="cause"></a>原因
 
-如果組建不是由使用者取消，則會由 Azure DevOps 的使用者代理程式取消。 最有可能因為 Azure DevOps 功能而發生1小時的超時。 如果您使用的是私用專案和代理程式，您會在組建時間60分鐘內取得。 如果組建超過超時時間，DevOps 會取消執行中的工作。
+如果使用者未取消組建，Azure DevOps 的使用者代理程式會將其取消。 由於 Azure DevOps 的功能，最有可能發生1小時的超時時間。 如果您使用的是私用專案和代理程式，則會收到60分鐘的組建時間。 如果組建超過此時間，DevOps 會取消正在執行的工作。
 
-如需 Azure DevOps 功能和限制的詳細資訊，請參閱[Microsoft 主控的代理程式](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
+如需 Azure DevOps 功能和限制的詳細資訊，請參閱 [Microsoft 裝載的代理程式](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
  
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
-您可以裝載自己的 DevOps 代理程式，或尋找以縮短組建的時間。 例如，如果您要發佈至共用映射資源庫，請複寫至一個區域。 如果您想要以非同步方式複寫。 
+您可以裝載自己的 DevOps 代理程式，或查看以縮短組建的時間。 例如，如果您要散發至共用映射庫，請複製到一個區域。 如果您想要以非同步方式複寫。 
  
-## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>從 AIB 映射建立的 Vm 未成功建立
+## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>無法成功建立從 AIB 映射建立的 Vm
 
-根據預設，Azure 映射產生器會在每個映射自訂階段結束時執行*解除布建程式*代碼，以將映射*一般化*。 一般化是設定映射以重複使用以建立多個 Vm 的程式，您可以傳入 VM 設定（例如主機名稱、使用者名稱等）。針對 Windows，Azure 映射產生器會執行*Sysprep*，並針對 Linux azure 映射產生器執行 `waagent -deprovision` 。 
+根據預設，Azure 映射建立器會在每個映射自訂階段結束時執行 *取消布建程式* 代碼，以將映射 *一般化* 。 一般化是將映射設定為重複使用以建立多個 Vm 的程式，您可以傳入 VM 設定，例如主機名稱、使用者名稱等。針對 Windows，Azure 映射建立器會執行 *Sysprep*，並針對 Linux Azure 映射產生器執行 `waagent -deprovision` 。 
 
-針對 Windows，Azure 映射產生器會使用一般 Sysprep 命令。 不過，這可能不適合每個成功的 Windows 一般化。 Azure 映射產生器可讓您自訂 Sysprep 命令。 請注意，Azure 映射產生器是一種影像自動化工具。 負責成功執行 Sysprep 命令。 但是，您可能需要不同的 Sysprep 命令，讓您的映射可重複使用。 針對 Linux，Azure 映射產生器會使用一般 `waagent -deprovision+user` 命令。 如需詳細資訊，請參閱[Microsoft Azure Linux 代理程式檔](https://github.com/Azure/WALinuxAgent#command-line-options)。
+針對 Windows，Azure 映射產生器會使用一般 Sysprep 命令。 不過，這可能不適用於每個成功的 Windows 一般化。 Azure Image Builder 可讓您自訂 Sysprep 命令。 注意： Azure 映射產生器是影像自動化工具。 它負責成功執行 Sysprep 命令。 但您可能需要不同的 Sysprep 命令，才能讓您的映射可供使用。 針對 Linux，Azure 映射產生器會使用一般 `waagent -deprovision+user` 命令。 如需詳細資訊，請參閱 [Microsoft Azure Linux 代理程式檔](https://github.com/Azure/WALinuxAgent#command-line-options)。
 
-如果您要遷移現有的自訂，而且您使用不同的 Sysprep/waagent 命令，您可以嘗試映射產生器的一般命令。 如果 VM 建立失敗，請使用您先前的 Sysprep/waagent 命令。
+如果您要遷移現有的自訂，而且您使用的是不同的 Sysprep/waagent 命令，您可以嘗試映射產生器的一般命令。 如果 VM 建立失敗，請使用您先前的 Sysprep/waagent 命令。
 
 > [!NOTE]
-> 如果 AIB 成功建立 Windows 自訂映射，而且您從它建立 VM，然後發現 VM 將無法成功建立 (例如，VM 建立命令未完成/超時) ，您將需要參閱 Windows Server Sysprep 檔。 或者，您可以向 Windows Server Sysprep 客戶服務支援小組提出支援要求，他們可以在正確的 Sysprep 命令上進行疑難排解和建議。
+> 如果 AIB 成功建立 Windows 自訂映射，而且您從該映射建立 VM，則會發現 VM 將無法成功建立 (例如，VM 建立命令未完成/超時) ，您將需要檢查 Windows Server Sysprep 檔。 或者，您可以向 Windows Server Sysprep 客戶服務支援小組提出支援要求，他們可以針對正確的 Sysprep 命令進行疑難排解並提出建議。
 
 ### <a name="command-locations-and-filenames"></a>命令位置和檔案名
 
@@ -617,7 +639,7 @@ while($true) {
 Write-Output '>>> Sysprep complete ...'
 ```
 
-### <a name="deprovision-command-linux"></a>取消布建命令： Linux
+### <a name="deprovision-command-linux"></a>解除布建命令： Linux
 
 ```bash
 /usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync
@@ -625,19 +647,19 @@ Write-Output '>>> Sysprep complete ...'
 
 ### <a name="overriding-the-commands"></a>覆寫命令
 
-若要覆寫命令，請使用 PowerShell 或 shell 腳本 provisioners 來建立具有正確檔案名的命令檔，並將它們放在先前所列的目錄中。 Azure 映射產生器會讀取這些命令，並將輸出寫入至*自訂 .log*。
+若要覆寫命令，請使用 PowerShell 或 shell 腳本 provisioners 來建立具有確切檔案名的命令檔，並將它們放在先前所列的目錄中。 Azure 映射產生器會讀取這些命令，並將輸出寫入 *自訂 .log*。
 
 ## <a name="getting-support"></a>取得支援
-如果您已參考本指南，而且仍然無法針對問題進行疑難排解，您可以開啟支援案例。 當您這麼做時，請選取 [正確的產品和支援] 主題，這樣會與 Azure VM 映射產生器支援小組接洽。
+如果您已參考指導方針，但仍然無法針對您的問題進行疑難排解，您可以開啟支援案例。 當您這樣做時，請選取正確的產品和支援主題，這樣做會與 Azure VM 映射產生器支援小組接洽。
 
 選取案例產品：
 ```bash
 Product Family: Azure
-Product: Virtual Machine Running Windows
-Support Topic: Management
-Support Subtopic: Issues with Azure Image Builder
+Product: Virtual Machine Running (Window\Linux)
+Support Topic: Azure Features
+Support Subtopic: Azure Image Builder
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如需詳細資訊，請參閱[Azure 映射](image-builder-overview.md)產生器總覽。
+如需詳細資訊，請參閱 [Azure 映射](image-builder-overview.md)建立器總覽。

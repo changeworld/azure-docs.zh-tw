@@ -1,5 +1,5 @@
 ---
-title: 監視 Azure 儲存體 | Microsoft Docs
+title: 監視 Azure 儲存體 |Microsoft Docs
 description: 了解如何監視 Azure 儲存體的效能和可用性。 監視 Azure 儲存體資料、瞭解設定，以及分析計量和記錄資料。
 author: normesta
 services: storage
@@ -9,14 +9,14 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 2cc275028b64c3df06e2c0275bc0f4ac21fa0f6e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0edb50fd72622d3d7d628e0e02ef2c3737f8713a
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020145"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500414"
 ---
-# <a name="monitor-azure-storage"></a>監視 Azure 儲存體
+# <a name="monitoring-azure-storage"></a>監視 Azure 儲存體
 
 當您有依賴 Azure 資源的重要應用程式和商務程序時，您會想要監視這些資源的可用性、效能和操作。 本文說明 Azure 儲存體所產生的監視資料，以如何使用 Azure 監視器的功能來分析此資料的警示。
 
@@ -30,7 +30,7 @@ ms.locfileid: "89020145"
 ## <a name="what-is-azure-monitor"></a>Azure 監視器是什麼？
 Azure 儲存體會使用 [Azure 監視器](../../azure-monitor/overview.md) (這是 Azure 中的完整堆疊監視服務) 來建立監視資料。 Azure 監視器提供一組完整的功能，可監視您的 Azure 資源以及其他雲端和內部部署環境中的資源。 
 
-若要深入了解 Azure 監視器，請參閱[使用 Azure 監視器來監視 Azure 資源](../../azure-monitor/insights/monitor-azure-resource.md)。 本文說明下列主題：
+請從使用下列內容來 [監視 Azure 資源](../../azure-monitor/insights/monitor-azure-resource.md) 的文章開始 Azure 監視器說明下列各項：
 
 - Azure 監視器是什麼？
 - 與監視相關聯的成本
@@ -40,7 +40,7 @@ Azure 儲存體會使用 [Azure 監視器](../../azure-monitor/overview.md) (這
 
 下列各節以本文為基礎，描述從 Azure 儲存體收集的特定資料。 其中的範例示範如何使用 Azure 工具來設定資料收集及分析此資料。
 
-## <a name="monitor-data-from-azure-storage"></a>監視 Azure 儲存體中的資料
+## <a name="monitoring-data-from-azure-storage"></a>監視 Azure 儲存體的資料
 
 Azure 儲存體會收集與其他 Azure 資源相同的監視資料類型，如[監視 Azure 資源中的資料](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)所說明。 如需 Azure 儲存體所建立記錄和計量的詳細資訊，請參閱 [Azure 儲存體監視資料參考](monitor-storage-reference.md)。
 
@@ -90,7 +90,7 @@ Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體�
 | StorageWrite | 對物件進行寫入作業。 |
 | StorageDelete | 刪除物件上的作業。 |
 
-## <a name="analyze-metric-data"></a>分析計量資料
+## <a name="analyzing-metric-data"></a>分析計量資料
 
 您可使用計量瀏覽器，利用其他 Azure 服務的計量來分析 Azure 儲存體的計量。 從 [Azure 監視器] 功能表中選擇 [計量]，以開啟計量瀏覽器。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)。 
 
@@ -115,7 +115,7 @@ Azure 儲存體的所有計量都位於下列命名空間：
 如需包含 Azure 儲存體的所有 Azure 監視器支援計量清單，請參閱 [Azure 監視器支援的計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)。
 
 
-### <a name="access-metrics"></a>存取計量
+### <a name="accessing-metrics"></a>存取計量
 
 > [!TIP]
 > 若要檢視 Azure CLI 或 .NET 範例，請選擇此處所列的對應索引標籤。
@@ -133,7 +133,7 @@ Azure 儲存體的所有計量都位於下列命名空間：
    Get-AzMetricDefinition -ResourceId $resourceId
 ```
 
-#### <a name="read-metric-values"></a>讀取計量值
+#### <a name="reading-metric-values"></a>讀取度量值
 
 您可讀取儲存體帳戶或個別儲存體服務 (例如 Blob、檔案、資料表或佇列服務) 的帳戶層級計量值。 使用 [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric?view=azps-3.3.0) Cmdlet。
 
@@ -203,7 +203,7 @@ Azure 監視器提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.
 
 ```
 
-#### <a name="read-account-level-metric-values"></a>讀取帳戶層級的計量值
+#### <a name="reading-account-level-metric-values"></a>讀取帳戶層級的度量值
 
 下列範例說明如何讀取帳戶層級的 `UsedCapacity` 資料：
 
@@ -249,7 +249,7 @@ Azure 監視器提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.
 
 ```
 
-#### <a name="read-multidimensional-metric-values"></a>讀取多維度計量值
+#### <a name="reading-multidimensional-metric-values"></a>讀取多維度度量值
 
 對於多維度的計量，如果您想要讀取特定維度值的計量資料，就必須定義中繼資料篩選條件。
 
@@ -304,7 +304,7 @@ Azure 監視器提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.
 
 ---
 
-## <a name="analyze-log-data"></a>分析記錄資料
+## <a name="analyzing-log-data"></a>分析記錄資料
 
 您可以儲存體帳戶中的 Blob 形式、以事件資料形式，或透過 Log Analytics 查詢來存取資源記錄。
 
@@ -313,7 +313,7 @@ Azure 監視器提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.
 > [!NOTE]
 > Azure 監視器中的 Azure 儲存體記錄處於公開預覽狀態，可在所有公用雲端區域中進行預覽測試。 若要註冊預覽，請參閱[本頁](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。 此預覽可啟用 Blob (包括 Azure Data Lake Storage Gen2)、檔案、佇列、資料表、一般用途 v1 高階儲存體帳戶及一般用途 v2 儲存體帳戶的記錄。 不支援傳統儲存體帳戶。
 
-### <a name="access-logs-in-a-storage-account"></a>存取儲存體帳戶中的記錄
+### <a name="accessing-logs-in-a-storage-account"></a>存取儲存體帳戶中的記錄
 
 記錄會顯示為儲存在目標儲存體帳戶中容器的 Blob。 系統會以行分隔的 JSON 承載形式將資料收集並儲存在單一 Blob 內。 此 Blob 的名稱會遵循以下命名慣例：
 
@@ -323,7 +323,7 @@ Azure 監視器提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.
 
 `https://mylogstorageaccount.blob.core.windows.net/insights-logs-storagewrite/resourceId=/subscriptions/`<br>`208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default/y=2019/m=07/d=30/h=23/m=12/PT1H.json`
 
-### <a name="access-logs-in-an-event-hub"></a>存取事件中樞內的記錄
+### <a name="accessing-logs-in-an-event-hub"></a>存取事件中樞內的記錄
 
 傳送至事件中樞的記錄不會儲存為檔案，但您可確認事件中樞已收到記錄資訊。 在 Azure 入口網站中，移至您的事件中樞並確認**內送郵件**計數大於零。 
 
@@ -331,7 +331,7 @@ Azure 監視器提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.
 
 您可使用安全性資訊及事件管理和監視工具，存取及讀取傳送到事件中樞的記錄資料。 如需詳細資訊，請參閱[傳送至事件中樞的監視資料有何作用？](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub)。
 
-### <a name="access-logs-in-a-log-analytics-workspace"></a>存取 Log Analytics 工作區中的記錄
+### <a name="accessing-logs-in-a-log-analytics-workspace"></a>存取 Log Analytics 工作區中的記錄
 
 您可使用 Azure 監視器記錄查詢來存取傳送至 Log Analytics 工作區的記錄。
 

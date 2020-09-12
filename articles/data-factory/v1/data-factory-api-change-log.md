@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7936fcd1e4a629a813c4266920f6c34a15cf9b4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74978997"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438937"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory - .NET API 變更記錄
 > [!NOTE]
@@ -75,10 +75,10 @@ ms.locfileid: "74978997"
 ### <a name="feature-additions"></a>新增功能
 * 加入了新的 StorageFormat 類型 [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) 類型，可用來複製最佳化資料列單欄式 (ORC) 格式的檔案。
 * 為 SqlDWSink 新增 [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) 和 PolyBaseSettings 屬性。
-  * 允許使用 PolyBase 將資料複製到「SQL 資料倉儲」。
+  * 可讓您使用 PolyBase 將資料複製到先前的 SQL 資料倉儲)  (Azure Synapse Analytics。
 
 ## <a name="version-461"></a>4.6.1 版
-### <a name="bug-fixes"></a>Bug 修正
+### <a name="bug-fixes"></a>錯誤修正
 * 修正用於列出活動時段的 HTTP 要求。
   * 從要求承載移除資源群組名稱和 Data Factory 名稱。
 
@@ -154,7 +154,7 @@ ms.locfileid: "74978997"
 | 舊名稱 | 新名稱 |
 |:--- |:--- |
 | ITableOperations |[IDatasetOperations](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |
-| 資料表 |[資料集](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
+| Table |[資料集](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
 | TableProperties |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
 | TableTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
 | TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |
@@ -163,7 +163,7 @@ ms.locfileid: "74978997"
 | TableListResponse |[DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
 | CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) |
 
-* **List** 方法現在會傳回分頁式結果。 如果回應包含非空白的 **NextLink** 屬性，用戶端應用程式需要繼續提取下一個頁面，直到傳回了所有頁面為止。  範例如下：
+* **List** 方法現在會傳回分頁式結果。 如果回應包含非空白的 **NextLink** 屬性，用戶端應用程式需要繼續提取下一個頁面，直到傳回了所有頁面為止。  請看以下範例：
 
     ```csharp
     PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");
@@ -181,5 +181,5 @@ ms.locfileid: "74978997"
 * **List** 管線 API 只會傳回管線的摘要，而不是完整的詳細資料。 例如，管線摘要中的活動只包含名稱和類型。
 
 ### <a name="feature-additions"></a>新增功能
-* [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) 類別支援兩個新屬性 ( **SliceIdentifierColumnName** 和 **SqlWriterCleanupScript**)，以支援將資料等冪複製到 Azure SQL 資料倉儲。 如需有關這些屬性的詳細資料，請參閱 [Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md)文章。
-* 我們現在支援對 Azure SQL Database 和 Azure SQL 資料倉儲的來源執行預存程序，做為複製活動的一部分。 [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) 和 [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) 類別具有下列屬性：**SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 如需這些屬性的詳細資料，請參閱 Azure.com 上的 [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) 和 [Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource)文章。  
+* [>sqldwsink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx)類別支援兩個新的屬性（ **SliceIdentifierColumnName**和 **>sqlwritercleanupscript**），以支援對 Azure Azure Synapse Analytics 的等冪複製。 如需這些屬性的詳細資訊，請參閱 [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md) 文章。
+* 我們現在支援針對 Azure SQL Database 和 Azure Synapse Analytics 來源執行預存程式，做為複製活動的一部分。 [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) 和 [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) 類別具有下列屬性：**SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 如需這些屬性的詳細資訊，請參閱 Azure.com 上的 [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) 和 [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) 文章。  

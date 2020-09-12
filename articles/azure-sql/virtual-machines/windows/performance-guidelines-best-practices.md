@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a2ba89a9adec5443ed8ae2a10e0230874b571f46
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9abc6574117b194a626c2697f5297a13566e0447
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690233"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481785"
 ---
-# <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server 效能指導方針
+# <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器中的 SQL Server 效能指導方針
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 本文提供在 Microsoft Azure 虛擬機器中優化 SQL Server 效能的指引。
@@ -198,7 +198,20 @@ Azure 虛擬機器上有三種主要的磁片類型：
 
 如果您使用「儲存空間」但未取消選取 [新增適合的儲存裝置到叢集]，Windows 就會在進行叢集程序時將虛擬機器中斷連結。 因此，它們將不會顯示在「磁碟管理員」或「總管」中，直到您使用 PowerShell 將儲存空間從叢集中移除後再重新連接為止。 儲存空間可將多個磁碟分組為存放集區。 如需詳細資訊，請參閱[儲存空間](/windows-server/storage/storage-spaces/overview)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="multiple-instances"></a>多個執行個體 
+
+將多個 SQL Server 實例部署至單一虛擬機器時，請考慮下列最佳做法： 
+
+- 設定每個 SQL Server 實例的最大伺服器記憶體，以確保作業系統剩餘的記憶體。 如果您變更配置給虛擬機器的記憶體數量，請務必更新 SQL Server 實例的記憶體限制。 
+- 針對資料、記錄和 TempDB 具有不同的 Lun，因為它們都有不同的工作負載模式，而您不想讓它們彼此影響。 
+- 在大量類似生產環境的工作負載下，徹底測試您的環境，以確保它可以處理您應用程式 Sla 內的尖峰工作負載容量。 
+
+多載系統的徵兆可包括（但不限於）工作者執行緒耗盡、回應時間變慢及/或停止發送器系統記憶體。 
+
+
+
+
+## <a name="next-steps"></a>接下來的步驟
 
 如需有關儲存體和效能的詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 儲存體設定指導方針](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/)
 

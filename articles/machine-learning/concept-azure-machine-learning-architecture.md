@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c3abd6a57eac851a5440ecdef6185cb310305434
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: c24e9f58154b1523496a82761a8c48ba06dea46c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146771"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651248"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning 的運作方式：架構和概念
 
@@ -110,7 +110,7 @@ Azure Machine Learning 會記錄所有執行，並在實驗中儲存下列資訊
 
 ### <a name="estimators"></a>估算器
 
-為了能夠利用熱門架構來將模型定型，您可以使用估算器類別來輕鬆地建立回合組態。 您可以建立和使用一般的[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)來提交定型指令碼，以使用您選擇的任何學習架構 (例如 scikit-learn)。
+為了能夠利用熱門架構來將模型定型，您可以使用估算器類別來輕鬆地建立回合組態。 您可以建立和使用一般的[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true)來提交定型指令碼，以使用您選擇的任何學習架構 (例如 scikit-learn)。
 
 如需估算器的詳細資訊，請參閱 [使用估算器將 ML 模型定型](how-to-train-ml-models.md)。
 
@@ -123,7 +123,9 @@ Azure Machine Learning 會記錄所有執行，並在實驗中儲存下列資訊
 
 ### <a name="logging"></a>記錄
 
-開發解決方案時，請在 Python 指令碼中使用 Azure Machine Learning Python SDK 以記錄任意計量。 在該回合之後，請查詢計量以判斷該回合是否產生您要部署的模型。
+Azure Machine Learning 會為您自動記錄標準執行計量。 不過，您也可以 [使用 PYTHON SDK 來記錄任意計量](how-to-track-experiments.md)。
+
+有多種方式可以查看您的記錄：即時監視執行狀態，或在完成時查看結果。 如需詳細資訊，請參閱 [監視和查看 ML 執行記錄](how-to-monitor-view-training-logs.md)。
 
 
 > [!NOTE]
@@ -189,6 +191,17 @@ Azure Machine Learning 與架構無關。 在建立模型時，您可以使用�
 
 如需將模型部署為 Web 服務的範例，請參閱[在 Azure 容器執行個體中部署映像分類模型](tutorial-deploy-models-with-aml.md)。
 
+#### <a name="real-time-endpoints"></a>即時端點
+
+當您在設計工具中部署定型的模型 (preview) ，您可以將 [模型部署為即時端點](tutorial-designer-automobile-price-deploy.md)。 即時端點通常會透過 REST 端點接收單一要求，並即時傳回預測。 這與批次處理不同，它會一次處理多個值，並在完成後將結果儲存至資料存放區。
+
+#### <a name="pipeline-endpoints"></a>管線端點
+
+管線端點可讓您透過 REST 端點以程式設計方式呼叫您的 [ML 管線](#ml-pipelines) 。 管線端點可讓您將管線工作流程自動化。
+
+管線端點是已發佈管線的集合。 此邏輯組織可讓您使用相同的端點來管理和呼叫多個管線。 管線端點中每個已發佈的管線都已建立版本。 您可以選取端點的預設管線，或在 REST 呼叫中指定版本。
+ 
+
 #### <a name="iot-module-endpoints"></a>IoT 模組端點
 
 已部署的 IoT 模組端點是一個 Docker 容器，其中包含您的模型與相關聯的指令碼或應用程式，以及任何額外的相依性。 您可以在邊緣裝置上使用 Azure IoT Edge 部署這些模型。
@@ -212,12 +225,13 @@ Azure IoT Edge 會確保模組正在執行，並監視裝載模組的裝置。
 
 ### <a name="studio"></a>Studio
 
-[Azure Machine Learning studio](https://ml.azure.com) 會提供您工作區中所有成品的 web 視圖。  您可以查看資料集、實驗、管線、模型和端點的結果和詳細資料。  您也可以在 studio 中管理計算資源和資料存放區。
+[Azure Machine Learning studio](overview-what-is-machine-learning-studio.md) 會提供您工作區中所有成品的 web 視圖。  您可以查看資料集、實驗、管線、模型和端點的結果和詳細資料。  您也可以在 studio 中管理計算資源和資料存放區。
 
 Studio 也可讓您存取屬於 Azure Machine Learning 一部分的互動式工具：
 
 + [Azure Machine Learning 設計工具 (預覽) ](concept-designer.md) 在不撰寫程式碼的情況下執行工作流程步驟
 + [自動化機器學習](concept-automated-ml.md)的 Web 體驗
++ [Azure Machine Learning 筆記本](how-to-run-jupyter-notebooks.md) 在整合式 Jupyter 筆記本伺服器中撰寫和執行您自己的程式碼。
 + [資料標記專案](how-to-create-labeling-projects.md) ，以建立、管理及監視專案以標示您的資料
 
 ### <a name="programming-tools"></a>程式設計工具
@@ -226,7 +240,7 @@ Studio 也可讓您存取屬於 Azure Machine Learning 一部分的互動式工�
 > 以下是標示 (preview) 的工具目前處於公開預覽狀態。
 > 此預覽版本會在沒有服務等級協定的情況下提供，不建議用於實際執行工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-+  使用[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)，與任何 Python 環境中的服務互動。
++  使用[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)，與任何 Python 環境中的服務互動。
 + 使用 [適用于 r](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (preview) 的 Azure Machine Learning SDK，在任何 R 環境中與服務互動。
 + 使用 [AZURE MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) 進行自動化。
 + [Many Models Solution Accelerator](https://aka.ms/many-models) (預覽) 建置在 Azure Machine Learning 中，可讓您定型、操作及管理上百個或甚至數千個機器學習模型。

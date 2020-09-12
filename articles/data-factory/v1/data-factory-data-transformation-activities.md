@@ -1,5 +1,5 @@
 ---
-title: '資料轉換：處理 & 轉換資料 '
+title: '資料轉換：進程 & 轉換資料 '
 description: 了解如何使用 Hadoop、Machine Learning 或 Azure Data Lake Analytics 在 Azure Data Factory 中轉換資料或處理資料。
 services: data-factory
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 74cf34438ca142302a6853e8e488b0c7188b162b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eb320cb71de43c40522bf93213fd98247a0d5b59
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522358"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436292"
 ---
-# <a name="transform-data-in-azure-data-factory-version-1"></a>轉換 Azure Data Factory 版本1中的資料
+# <a name="transform-data-in-azure-data-factory-version-1"></a>Azure Data Factory 第1版轉換資料
 > [!div class="op_single_selector"]
 > * [Hive](data-factory-hive-activity.md)  
 > * [Pig](data-factory-pig-activity.md)  
-> * [MapReduce](data-factory-map-reduce.md)  
+> * [Mapreduce](data-factory-map-reduce.md)  
 > * [Hadoop 串流](data-factory-hadoop-streaming-activity.md)
 > * [Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
 > * [預存程序](data-factory-stored-proc-activity.md)
@@ -43,13 +43,13 @@ Data Factory 支援下列可個別或與其他活動鏈結而加入至 [管線](
 > 
 
 ## <a name="hdinsight-hive-activity"></a>HDInsight Hive 活動
-Data Factory 管線中的 HDInsight Hive 活動會在您自己或隨選的 Windows/Linux 架構 HDInsight 叢集上執行 Hive 查詢。 如需此活動的詳細資訊，請參閱[Hive 活動](data-factory-hive-activity.md)一文。 
+Data Factory 管線中的 HDInsight Hive 活動會在您自己或隨選的 Windows/Linux 架構 HDInsight 叢集上執行 Hive 查詢。 如需此活動的詳細資訊，請參閱 [Hive 活動](data-factory-hive-activity.md) 文章。 
 
 ## <a name="hdinsight-pig-activity"></a>HDInsight Pig 活動
-Data Factory 管線中的 HDInsight Pig 活動會在您自己或隨選的 Windows/Linux 架構 HDInsight 叢集上執行 Pig 查詢。 如需此活動的詳細資訊，請參閱[Pig 活動](data-factory-pig-activity.md)文章。 
+Data Factory 管線中的 HDInsight Pig 活動會在您自己或隨選的 Windows/Linux 架構 HDInsight 叢集上執行 Pig 查詢。 如需此活動的詳細資訊，請參閱 [Pig 活動](data-factory-pig-activity.md) 文章。 
 
 ## <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce 活動
-Data Factory 管線中的 HDInsight MapReduce 活動會在您自己或隨選的 Windows/Linux 架構 HDInsight 叢集上執行 MapReduce 程式。 如需此活動的詳細資訊，請參閱[MapReduce 活動](data-factory-map-reduce.md)一文。
+Data Factory 管線中的 HDInsight MapReduce 活動會在您自己或隨選的 Windows/Linux 架構 HDInsight 叢集上執行 MapReduce 程式。 如需此活動的詳細資訊，請參閱 [MapReduce 活動](data-factory-map-reduce.md) 文章。
 
 ## <a name="hdinsight-streaming-activity"></a>HDInsight 串流活動
 Data Factory 管線中的 HDInsight 串流活動會在您自己或隨選的 Windows/Linux 架構 HDInsight 叢集上執行 Hadoop 串流程式。 如需此活動的詳細資訊，請參閱 [HDInsight 串流活動](data-factory-hadoop-streaming-activity.md) 。
@@ -58,17 +58,17 @@ Data Factory 管線中的 HDInsight 串流活動會在您自己或隨選的 Wind
 Data Factory 管線中的 HDInsight Spark 活動會在您自己的 HDInsight 叢集上執行 Spark 程式。 如需詳細資訊，請參閱[從 Azure Data Factory 叫用 Spark 程式](data-factory-spark.md)。 
 
 ## <a name="machine-learning-activities"></a>Machine Learning 活動
-Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的 Azure Machine Learning Web 服務進行預測性分析。 在 Azure Data Factory 管線中使用[批次執行活動](data-factory-azure-ml-batch-execution-activity.md#invoking-a-web-service-using-batch-execution-activity)，您可以叫用 Machine Learning web 服務，以對批次中的資料進行預測。
+Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的 Azure Machine Learning Web 服務進行預測性分析。 使用 Azure Data Factory 管線中的 [批次執行活動](data-factory-azure-ml-batch-execution-activity.md#invoking-a-web-service-using-batch-execution-activity) ，您可以叫用 Machine Learning 的 web 服務，以針對批次中的資料進行預測。
 
-經過一段時間，必須使用新的輸入資料集重新訓練 Machine Learning 評分實驗中的預測模型。 完成重新訓練之後，您想要使用已重新訓練的 Machine Learning 模型來更新評分 Web 服務。 您可以使用[更新資源活動](data-factory-azure-ml-batch-execution-activity.md#updating-models-using-update-resource-activity)，以新定型的模型來更新 web 服務。  
+經過一段時間，必須使用新的輸入資料集重新訓練 Machine Learning 評分實驗中的預測模型。 完成重新訓練之後，您想要使用已重新訓練的 Machine Learning 模型來更新評分 Web 服務。 您可以使用 [ [更新資源] 活動](data-factory-azure-ml-batch-execution-activity.md#updating-models-using-update-resource-activity) ，以新定型的模型來更新 web 服務。  
 
 如需這些機器學習活動的詳細資料，請參閱 [使用 Machine Learning 活動](data-factory-azure-ml-batch-execution-activity.md) 。 
 
 ## <a name="stored-procedure-activity"></a>預存程序活動
-您可以在 Data Factory 管線中使用 SQL Server 的預存程序活動，以叫用下列其中一個資料存放區中的預存程序：您的企業或 Azure VM 中的 Azure SQL Database、Azure SQL 資料倉儲、SQL Server 資料庫。 如需詳細資訊，請參閱[預存程式活動](data-factory-stored-proc-activity.md)一文。  
+您可以在 Data Factory 管線中使用 SQL Server 預存程式活動，以叫用下列其中一個資料存放區中的預存程式： Azure SQL Database、Azure Synapse Analytics (先前的 SQL 資料倉儲) ，SQL Server 您的企業或 Azure VM 中的資料庫。 如需詳細資訊，請參閱 [預存程式活動](data-factory-stored-proc-activity.md) 文章。  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活動
-Data Lake Analytics U-SQL 活動會在 Azure Data Lake Analytics 叢集上執行 U-SQL 指令碼。 如需詳細資訊，請參閱[資料分析的 U-SQL 活動](data-factory-usql-activity.md)一文。 
+Data Lake Analytics U-SQL 活動會在 Azure Data Lake Analytics 叢集上執行 U-SQL 指令碼。 如需詳細資料，請參閱 [資料分析 U-SQL 活動](data-factory-usql-activity.md) 文章。 
 
 ## <a name="net-custom-activity"></a>.NET 自訂活動
 如果您需要以 Data Factory 不支援的方法轉換資料，可以利用自己的資料處理邏輯建立自訂活動，然後在管線中使用活動。 您可以將自訂 .NET 活動設定為使用 Azure Batch 服務或 Azure HDInsight 叢集來執行。 如需詳細資訊請參閱 [使用自訂活動](data-factory-use-custom-activities.md) 。 
@@ -90,10 +90,10 @@ Azure Data Factory 支援下列資料轉換活動和活動計算環境。 可將
 |:--- |:--- |
 | [Hive](data-factory-hive-activity.md) |HDInsight [Hadoop] |
 | [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
-| [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
+| [Mapreduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop 串流](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
 | [Machine Learning 活動︰批次執行和更新資源](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
-| [預存程序](data-factory-stored-proc-activity.md) |Azure SQL、Azure SQL 資料倉儲或 SQL Server |
+| [預存程序](data-factory-stored-proc-activity.md) |Azure SQL、Azure Synapse Analytics 或 SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] 或 Azure Batch |
 

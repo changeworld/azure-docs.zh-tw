@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11138857e33eec0f854ddb61956ea24c858c49a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17e20048c4cb4de2be6fe36be100b472f0b8ee73
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60531004"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459958"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列裝置的 Update 1.2 版本資訊
 
@@ -57,8 +57,8 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
     如需如何將 StorSimple 5000-7000 [系列移轉至](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b) 8000 系列裝置的詳細資訊，請參閱《移轉指南》 。 
 * **Azure Government 入口網站的可用性** – Azure Government 入口網站現已提供 StorSimple。 請參閱如何 [在 Azure Government 入口網站中部署 StorSimple 裝置](storsimple-deployment-walkthrough-gov.md)。
 * **其他雲端服務提供者的支援** – 支援的其他雲端服務提供者包括 Amazon S3、含 RRS 的 Amazon S3、HP 以及 OpenStack (beta)。
-* **最新儲存 API 的更新** – StorSimple 已經透過這個版本，更新為最新的 Azure 儲存體服務 API。 執行 Update 1 前軟體版本 (發行、0.1、0.2 和 0.3 版本) 的 StorSimple 8000 系列裝置，是使用 2009 年 7 月 17 日之前的 Azure 儲存體服務 API 版本。 如更新的 [移除儲存體服務版本相關公告](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)中所述，這些 API 將於 2016 年 8 月 1 日被取代。 請務必在 2016 年 8 月 1 日之前，套用 StorSimple 8000 Series Update 1。 如果您無法執行這項操作，StorSimple 裝置將會停止正常運作。
-* **區域備援儲存體 (ZRS) 的支援** – 升級至最新版的儲存體 API 之後，StorSimple 8000 系列除了本地備援儲存體 (LRS) 和異地備援儲存體 (GRS) 之外，也將支援區域備援儲存體 (ZRS)。 請參閱這[篇文章中](../storage/common/storage-redundancy.md)有關 ZRS 詳細資料的 Azure 儲存體冗余選項。
+* **最新儲存 API 的更新** – StorSimple 已經透過這個版本，更新為最新的 Azure 儲存體服務 API。 執行 Update 1 前軟體版本 (發行、0.1、0.2 和 0.3 版本) 的 StorSimple 8000 系列裝置，是使用 2009 年 7 月 17 日之前的 Azure 儲存體服務 API 版本。 如更新的 [移除儲存體服務版本相關公告](https://docs.microsoft.com/archive/blogs/windowsazurestorage/microsoft-azure-storage-service-version-removal-update-extension-to-2016)中所述，這些 API 將於 2016 年 8 月 1 日被取代。 請務必在 2016 年 8 月 1 日之前，套用 StorSimple 8000 Series Update 1。 如果您無法執行這項操作，StorSimple 裝置將會停止正常運作。
+* **區域備援儲存體 (ZRS) 的支援** – 升級至最新版的儲存體 API 之後，StorSimple 8000 系列除了本地備援儲存體 (LRS) 和異地備援儲存體 (GRS) 之外，也將支援區域備援儲存體 (ZRS)。 請參閱這篇有關 ZRS 詳細資料的 [Azure 儲存體冗余選項的文章](../storage/common/storage-redundancy.md) 。
 * **增強的初始部署和更新經驗** – 在此版本中，已增強安裝和更新程序。 安裝精靈安裝已獲得改善，如果網路組態和防火牆設定不正確，可提供意見給使用者。 已提供其他診斷 Cmdlet 來協助您為裝置的網路連線進行疑難排解。 如需有關用於疑難排解的新診斷 Cmdlet 的詳細資訊，請參閱 [疑難排解部署文件](storsimple-troubleshoot-deployment.md) 。
 
 ## <a name="issues-fixed-in-update-12"></a>在 Update 1.2 中修正的問題
@@ -111,6 +111,6 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
 ## <a name="virtual-device-updates-in-update-12"></a>Update 1.2 中的虛擬裝置更新
 這項更新無法套用至虛擬裝置。 將需要建立新的虛擬裝置。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [在您的裝置上安裝 Update 1.2](storsimple-install-update-1.md)。
 

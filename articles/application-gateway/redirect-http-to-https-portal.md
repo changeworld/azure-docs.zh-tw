@@ -1,5 +1,5 @@
 ---
-title: 入口網站中的 HTTP 至 HTTPS 重新導向-Azure 應用程式閘道
+title: 入口網站中的 HTTP 到 HTTPS 重新導向-Azure 應用程式閘道
 description: 了解如何使用 Azure 入口網站，以建立可將流量從 HTTP 重新導向到 HTTPS 的應用程式閘道。
 services: application-gateway
 author: vhorne
@@ -7,25 +7,24 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: dbf4770bf5ac1747d596e6907dbc903ce8c16de9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07689f7d16cd1df451fdab28f188e5c4a324486e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804341"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594810"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 入口網站來建立具有 HTTP 到 HTTPS 重新導向功能的應用程式閘道
 
-您可以使用 Azure 入口網站來建立具有 TLS 終止憑證的[應用程式閘道](overview.md)。 路由規則可用來將 HTTP 流量重新導向至您應用程式閘道中的 HTTPS 連接埠。 在此範例中，您也會為應用程式閘道的後端集區，建立一個包含兩個虛擬機器執行個體的[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
+您可以使用 Azure 入口網站來建立具有 TLS 終止憑證的 [應用程式閘道](overview.md) 。 路由規則可用來將 HTTP 流量重新導向至您應用程式閘道中的 HTTPS 連接埠。 在此範例中，您也會為應用程式閘道的後端集區，建立一個包含兩個虛擬機器執行個體的[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
-> * 建立自我簽署憑證
-> * 設定網路
-> * 建立包含憑證的應用程式閘道
-> * 新增接聽程式和重新導向規則
-> * 建立包含預設後端集區的虛擬機器擴展集
+* 建立自我簽署憑證
+* 設定網路
+* 建立包含憑證的應用程式閘道
+* 新增接聽程式和重新導向規則
+* 建立包含預設後端集區的虛擬機器擴展集
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -69,7 +68,7 @@ Export-PfxCertificate `
 
 1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 2. 按一下 Azure 入口網站左上角的 [建立資源]****。
-3. 選取 [**網路**]，然後選取 [精選] 清單中的 [**應用程式閘道**]。
+3. 選取 [ **網路** ]，然後選取 [精選] 清單中的 [ **應用程式閘道** ]。
 4. 針對應用程式閘道輸入這些值：
 
    - myAppGateway** - 作為應用程式閘道的名稱。
@@ -118,14 +117,14 @@ Export-PfxCertificate `
 
 ### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>新增具有重新導向設定的路由規則
 
-1. 在**myAppGateway**上，選取 [**規則**]，然後選取 [ **+ 要求路由規則**]。
-2. 在 [**規則名稱**] 中，輸入*Rule2*。
+1. 在 **myAppGateway**上，選取 [ **規則** ]，然後選取 [ **+ 要求路由規則**]。
+2. 在 [ **規則名稱**] 中，輸入 *Rule2*。
 3. 確定已選取 **MyListener** 作為接聽程式。
-4. 按一下 [**後端目標**] 索引標籤，然後選取 [**目標型別** *] 做為*重新導向
+4. 按一下 [ **後端目標** ] 索引標籤，然後選取 [ **目標型別** *] 作為重新*導向。
 5. 針對 [重新導向類型]****，選取 [永久]****。
 6. 針對 [重新導向目標]****，選取 [接聽程式]****。
 7. 確定 [目標接聽程式]**** 設定為 **appGatewayHttpListener**。
-8. 針對 [**包含查詢字串**] 和 [**包含路徑**]，選取 *[是]*。
+8. 在 [ **包含查詢字串** ] 和 [ **包含路徑** ] 中選取 *[是]*。
 9. 選取 [新增]。
 
 ## <a name="create-a-virtual-machine-scale-set"></a>建立虛擬機器擴展集
@@ -133,7 +132,7 @@ Export-PfxCertificate `
 在此範例中，您會建立虛擬機器擴展集，以在應用程式閘道中提供後端集區的伺服器。
 
 1. 在入口網站左上角選取 [+建立資源]****。
-2. 選取 [**計算**]。
+2. 選取 [計算]。
 3. 在搜尋方塊中，輸入*擴展集*，然後按 Enter 鍵。
 4. 選取 [虛擬機器擴展集]****，然後選取 [建立]****。
 5. 針對 [虛擬機器擴展集名稱]****，輸入 *myvmss*。
@@ -170,12 +169,12 @@ Export-PfxCertificate `
 最後，您必須將含有這些變更擴展集升級。
 
 1. 選取 **myvmss** 擴展集。
-2. 在 [設定]**** 底下，選取 [執行個體]****。
+2. 在 [設定] 下，選取 [執行個體]。
 3. 兩個執行個體都選取，然後選取 [升級]****。
-4. 選取 [是] **** 加以確認。
+4. 選取 [是]  確認。
 5. 如此完成之後，返回 **myAppGateway**，然後選取 [後端集區]****。 您現在應會看到 **appGatewayBackendPool** 有兩個目標，而 **myAppGatewaymyvmss** 有零個目標。
 6. 選取 **myAppGatewaymyvmss**，然後選取 [刪除]****。
-7. 選取 [確定] 來確認。
+7. 選取 [確定]  來確認。
 
 ### <a name="install-iis"></a>安裝 IIS
 
@@ -204,9 +203,9 @@ Update-AzVmss `
 使用 IIS 變更執行個體之後，您必須再次將含有這項變更的擴展集升級。
 
 1. 選取 **myvmss** 擴展集。
-2. 在 [設定]**** 底下，選取 [執行個體]****。
+2. 在 [設定] 下，選取 [執行個體]。
 3. 兩個執行個體都選取，然後選取 [升級]****。
-4. 選取 [是] **** 加以確認。
+4. 選取 [是]  確認。
 
 ## <a name="test-the-application-gateway"></a>測試應用程式閘道
 

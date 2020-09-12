@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 中設定 Azure CNI 
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 0506eb6350358f7256a61c8d6f164b6594d20554
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 58c2c597c7a75c801af91cd735561071250bda2c
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566109"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426141"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中設定 Azure CNI 網路
 
@@ -22,7 +22,7 @@ ms.locfileid: "88566109"
 ## <a name="prerequisites"></a>必要條件
 
 * 適用於 AKS 叢集的虛擬網路必須允許輸出網際網路連線.
-* AKS 叢集可能不會 `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` `192.0.2.0/24` 針對 Kubernetes 服務位址範圍使用、、或。
+* AKS 叢集可能不會 `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` `192.0.2.0/24` 針對 Kubernetes 服務位址範圍、pod 位址範圍或叢集虛擬網路位址範圍使用、、或。 
 * AKS 叢集所使用的服務主體在您虛擬網路內的子網路上必須至少具有[網路參與者](../role-based-access-control/built-in-roles.md#network-contributor)權限。 如果您想要定義[自訂角色](../role-based-access-control/custom-roles.md)，而不使用內建的網路參與者角色，則需要下列權限：
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -52,7 +52,7 @@ Pod 和叢集節點的 IP 位址會從虛擬網路內的指定子網路來指派
 | 虛擬網路 | Azure 虛擬網路可以和 /8 一樣大，但可能只有 65,536 個已設定的 IP 位址。 在設定您的位址空間之前，請考慮您所有的網路需求，包括與其他虛擬網路中的服務進行通訊。 例如，如果您設定過大的位址空間，您可能會遇到網路中其他位址空間重迭的問題。|
 | 子網路 | 必須大到足以容納節點、Pod，以及可能會在您叢集中佈建的所有 Kubernetes 和 Azure 資源。 例如，如果您部署內部 Azure Load Balancer，其前端 IP 會從叢集子網路配置，而不是從公用 IP 配置。 子網路大小也應該考量帳戶升級作業或未來的擴展需求。<p />若要計算包括用於升級作業之額外節點的*最小*子網路大小：`(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>50 個節點叢集的範例：`(51) + (51  * 30 (default)) = 1,581` (/21 或更大)<p/>擁有 50 個節點的叢集範例，其中也包含相應增加額外 10 個節點的佈建：`(61) + (61 * 30 (default)) = 1,891` (/21 或更大)<p>如果您未指定每個節點的最大 Pod 數目，當您建立叢集時，每個節點的最大 Pod 數目設定為 30**。 IP 位址所需的最小數目是根據該值。 如果您以不同的最大值來計算最小 IP 位址需求，請參閱[如何設定每個節點的最大 Pod 數目](#configure-maximum---new-clusters)，在您部署叢集時設定此值。 |
 | Kubernetes 服務位址範圍 | 此範圍不應由此虛擬網路上或連線到此虛擬網路的任何網路元素所使用。 服務位址 CIDR 必須小於 /12。 您可以跨不同的 AKS 叢集重複使用這個範圍。 |
-| Kubernetes DNS 服務 IP 位址 | 將由叢集服務探索 (kube-dns) 所使用之 Kubernetes 服務位址範圍內的 IP 位址。 請勿使用您位址範圍中的第一個 IP 位址，例如 .1。 您子網路範圍內的第一個位址會用於 kubernetes.default.svc.cluster.local** 位址。 |
+| Kubernetes DNS 服務 IP 位址 | 叢集服務探索將使用的 Kubernetes 服務位址範圍內的 IP 位址。 請勿使用您位址範圍中的第一個 IP 位址，例如 .1。 您子網路範圍內的第一個位址會用於 kubernetes.default.svc.cluster.local** 位址。 |
 | Docker 橋接器位址 | Docker 橋接器網路位址代表存在於所有 Docker 安裝中的預設 *docker0* 橋接器網路位址。 雖然 AKS 叢集或 pod 本身不會使用 *docker0* 橋接器，但您必須設定此位址，才能繼續支援 AKS 叢集中的 *docker 組建* 等案例。 您必須為 Docker 橋接器網路位址選取 CIDR，因為否則 Docker 會自動挑選可能與其他 Cidr 衝突的子網。 您必須挑選的位址空間不會與網路上的其餘 Cidr 衝突，包括叢集的服務 CIDR 和 pod CIDR。 預設值為 172.17.0.1/16。 您可以跨不同的 AKS 叢集重複使用這個範圍。 |
 
 ## <a name="maximum-pods-per-node"></a>每個節點的最大 Pod 數目
@@ -73,7 +73,7 @@ AKS 叢集中每個節點的最大 pod 數目是250。 每個節點「預設」*
 
 系統會強制執行每個節點的最大 pod 數目的最小值，以保證叢集健全狀況的重要系統 pod 空間。 只有在每個節點集區的設定至少有30個 pod 的空間時，可為每個節點的最大 pod 設定的最小值為10。 例如，將每個節點的最大 pod 數設定為最小值10，需要每個個別節點集區至少有3個節點。 這項需求也適用于每個建立的新節點集區，因此，如果將10定義為每個節點的最大 pod 數目，每個新增的節點集區都必須至少有3個節點。
 
-| 網路功能 | 最小值 | 最大值 |
+| 網路 | 最小值 | 最大值 |
 | -- | :--: | :--: |
 | Azure CNI | 10 | 250 |
 | Kubenet | 10 | 110 |
@@ -151,7 +151,7 @@ az aks create \
 
 * 是否可以在叢集子網路中部署 VM？**
 
-  是。
+  可以。
 
 * *外部系統的哪些來源 IP 適用于源自啟用 Azure CNI 之 pod 的流量？*
 
@@ -175,7 +175,7 @@ az aks create \
 
   不建議，但此組態是可行的。 服務位址範圍是 Kubernetes 指派給您叢集中內部服務的一組虛擬 IP (VIP)。 Azure 網路功能無法查看 Kubernetes 叢集的服務 IP 範圍。 因為無法查看叢集的服務位址範圍，所以稍後有可能在與服務位址範圍重疊的叢集虛擬網路中建立新的子網路。 如果發生這類重疊，Kubernetes 可能會將子網路中另一項資源已經使用的 IP 指派給服務，因而造成無法預期的行為或失敗。 您可藉由確保您使用叢集虛擬網路外部的位址範圍，避免此重疊風險。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在下列文章中深入了解 AKS 的網路功能：
 

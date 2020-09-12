@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9cf6fa26cec0abbc52a990d71c1c2fcc5d6023e4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: f59f8af3f9a845f7e8663877f6d806c33b216a41
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612549"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482839"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>設定 Azure 虛擬機器中 SQL Server Always On 可用性群組的負載平衡器
 
@@ -40,7 +40,7 @@ ms.locfileid: "88612549"
 
 依照本文逐步執行，在 Azure 入口網站中建立和設定負載平衡器。 此程序完成之後，您會設定叢集，以將來自負載平衡器的 IP 位址使用於可用性群組接聽程式。
 
-## <a name="create-and-configure-the-load-balancer-in-the-azure-portal"></a>在 Azure 入口網站中建立及設定負載平衡器
+## <a name="create--configure-load-balancer"></a>建立 & 設定負載平衡器 
 
 在這部分的工作中，請執行下列步驟：
 
@@ -71,7 +71,7 @@ ms.locfileid: "88612549"
    | --- | --- |
    | **名稱** |代表負載平衡器的文字名稱。 例如 **sqlLB**。 |
    | **型別** |**內部**：大部分的實作都會使用內部負載平衡器，這可讓相同虛擬網路內的應用程式連線到可用性群組。  </br> **外部**：可讓應用程式透過公用網際網路連線來連線到可用性群組。 |
-   | **SKU** |**標準**：如果您的 SQL 實例位於與負載平衡器不同的可用性設定組中，則為必要項。 </br> **基本**：預設選項。 |
+   | **SKU** |**基本**：預設選項。 只有在 SQL Server 實例位於相同的可用性設定組時，才有效。 </br> **標準**：慣用。 如果 SQL Server 實例位於相同的可用性設定組中，則為有效。 如果您的 SQL Server 實例位於不同的可用性區域，則為必要項。 |
    | **虛擬網路** |選取 SQL Server 執行個體所在的虛擬網路。 |
    | **子網路** |選取 SQL Server 執行個體所在的子網路。 |
    | **IP 位址指派** |**靜態** |

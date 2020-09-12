@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 8/20/2020
 ms.subservice: alerts
-ms.openlocfilehash: 05586f95de03b09b95eb589812935970126b12f2
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 8a608e43ef41abfb7002811df5629eb789c3ae22
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661311"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595575"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure 監視器中計量警示所支援的資源
 
@@ -112,7 +112,7 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 |Microsoft.Web/sites | 是 | 否 | [App Service](./metrics-supported.md#microsoftwebsites-excluding-functions) 與[函式](./metrics-supported.md#microsoftwebsites-functions)|
 |Microsoft.Web/sites/slots | 是 | 否 | [App Service 位置](./metrics-supported.md#microsoftwebsitesslots)|
 
-<sup>1</sup> 僅支援平臺計量 (非自訂計量) 
+<sup>1</sup> 不支援虛擬機器網路計量 (網路總計、網路輸出、輸入流量、輸出流量、輸入流量最大建立速率、輸出流量最大建立速率) 和自訂計量。
 
 ## <a name="payload-schema"></a>承載結構描述
 
@@ -173,7 +173,7 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 深入了解新的[警示體驗](./alerts-overview.md)。
 * 了解 [Azure 中的記錄警示](./alerts-unified-log.md)。

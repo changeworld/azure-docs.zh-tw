@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 6363100c844d071a3bb47521cec6ff7e988f6af8
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 11043d6686bd762b1c0a9827c7edb2230487cc72
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263198"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595439"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 資訊安全中心的安全性建議 
 本主題說明如何查看並瞭解 Azure 資訊安全中心中的建議，以協助保護您的 Azure 資源。
@@ -57,6 +57,7 @@ ms.locfileid: "88263198"
 
     此頁面包含：
 
+    - 在支援的建議上**強制執行**和**拒絕**按鈕 (請參閱[使用強制/拒絕建議來防止錯誤配置](prevent-misconfigurations.md)) 
     - **嚴重性指標**
     - 相關) 的有效**時間間隔** ( 
     - **描述** -問題的簡短描述
@@ -68,10 +69,19 @@ ms.locfileid: "88263198"
 
             :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="不適用資源，原因如下。":::
 
+## <a name="preview-recommendations"></a>預覽建議
 
+標示為 **預覽** 的建議不包含在您的安全分數的計算中。
+
+您應該盡可能補救它們，如此一來，當預覽期間結束時，他們就會參與您的分數。
+
+預覽建議的範例：
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="使用預覽旗標的建議":::
  
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本文件中，已向您介紹「資訊安全中心」的安全性建議。 若要瞭解如何補救建議：
 
-* [補救建議](security-center-remediate-recommendations.md) -瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。
+- [補救建議](security-center-remediate-recommendations.md) -瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。
+- [使用強制/拒絕建議防止錯誤配置](prevent-misconfigurations.md)。

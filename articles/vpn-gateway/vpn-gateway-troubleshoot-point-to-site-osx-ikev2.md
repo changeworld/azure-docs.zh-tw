@@ -1,18 +1,18 @@
 ---
-title: Azure VPN 閘道：對點對站連線進行疑難排解： Mac OS X 用戶端
-description: 瞭解如何使用原生 VPN 用戶端和 IKEv2，針對來自 Mac OS X 的點對站連線問題進行疑難排解。
+title: Azure VPN 閘道：疑難排解點對站連線： Mac OS X 用戶端
+description: 瞭解如何使用原生 VPN 用戶端和 IKEv2，針對來自 Mac OS X 的點對站連線能力問題進行疑難排解。
 services: vpn-gateway
-author: kumudD
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 58250980081388b78ebb32fb01b84beb8d86c1c2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 33e67df5ad68a78cc35f7168813716d1d794d527
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030654"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442797"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>針對來自 Mac OS X VPN 用戶端的點對站 VPN 連線問題進行疑難排解
 
@@ -60,7 +60,7 @@ ms.locfileid: "88030654"
 
    ![封包](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg) 
   
-3. 如果網路追蹤沒有伺服器回應，請確認您已在 Azure 入口網站網站的 [Azure 閘道設定] 頁面上啟用 IKEv2 通訊協定。
+3. 如果網路追蹤沒有伺服器回應，請確認您已在 Azure 入口網站網站上的 Azure 閘道設定頁面上啟用 IKEv2 通訊協定。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需其他協助，請參閱 [Microsoft 支援服務](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。

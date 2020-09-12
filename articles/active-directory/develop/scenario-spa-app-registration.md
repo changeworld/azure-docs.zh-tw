@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2d596b6d0e291d197146bf5e00827d82b74c125c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311563"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434532"
 ---
 # <a name="single-page-application-app-registration"></a>單頁應用程式：應用程式註冊
 
@@ -32,7 +32,7 @@ ms.locfileid: "87311563"
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 如果您的帳戶可存取多個租用戶，請選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選條件，然後選取應包含您即將建立之應用程式註冊的租用戶。
 1. 搜尋並選取 [Azure Active Directory]。
 1. 在 [管理] 底下選取 [應用程式註冊]。
-1. 選取 [新增註冊]，輸入應用程式的 [名稱]，然後選擇應用程式 [支援的帳戶類型]。 請**不要**輸入**重新導向 URI**。 如需不同帳戶類型的說明，請參閱[使用 Azure 入口網站註冊新的應用程式](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)。
+1. 選取 [新增註冊]，輸入應用程式的 [名稱]，然後選擇應用程式 [支援的帳戶類型]。 請**不要**輸入**重新導向 URI**。 如需不同帳戶類型的說明，請參閱[使用 Azure 入口網站註冊新的應用程式](quickstart-register-app.md)。
 1. 選取 [註冊] 以建立應用程式註冊。
 
 接下來，使用**重新導向 URI** 設定應用程式註冊，以指定 Microsoft 身分識別平台應將用戶端與任何安全性權杖一起重新導向的目標位置。 使用適用於您應用程式中所使用之 MSAL.js 版本的步驟：
@@ -52,7 +52,7 @@ ms.locfileid: "87311563"
 
 您現在已完成單頁應用程式 (SPA) 的註冊，並已設定重新導向 URI；系統會將用戶端重新導向到該 URI，也會將任何安全性權杖傳送到該 URI。 透過使用 [新增平台] 窗格中的 [單頁應用程式] 圖格來設定您的重新導向 URI，您的應用程式註冊已設定為支援使用 PKCE 和 CORS 的授權碼流程。
 
-遵循[教學](tutorial-v2-javascript-auth-code.md)課程以取得進一步的指引。
+遵循 [教學](tutorial-v2-javascript-auth-code.md) 課程，以取得進一步的指引。
 
 ## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>重新導向 URI： [MSAL.js 1.0 與隱含流程](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)
 
@@ -69,7 +69,7 @@ ms.locfileid: "87311563"
 
 您現在已完成單頁應用程式 (SPA) 的註冊，並已設定重新導向 URI；系統會將用戶端重新導向到該 URI，也會將任何安全性權杖傳送到該 URI。 藉由個別或同時選取 [識別碼權杖] 和 [存取權杖]，您已啟用隱含授與流程。
 
-遵循[教學](tutorial-v2-javascript-spa.md)課程以取得進一步的指引。
+遵循 [教學](tutorial-v2-javascript-spa.md) 課程，以取得進一步的指引。
 
 ## <a name="note-about-authorization-flows"></a>授權流程的相關注意事項
 

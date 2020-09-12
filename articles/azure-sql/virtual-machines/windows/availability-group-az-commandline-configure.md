@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a74a791c8c6a95c71faf1f4a0ce6eaacd7c68901
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 212ead54f0f8212ae251175d40873e7cec4e0240
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002989"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482652"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-powershell--az-cli"></a>在 Azure VM 上設定 SQL Server 的可用性群組 (PowerShell & Az CLI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "89002989"
 
 可用性群組的部署仍會透過 SQL Server Management Studio (SSMS) 或 Transact-sql (T-sql) 手動完成。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要設定 Always On 可用性群組，您必須具備下列必要條件： 
 
@@ -44,13 +44,13 @@ ms.locfileid: "89002989"
 - 在網域中擁有**建立電腦物件**權限的現有網域使用者帳戶。 例如，網域系統管理員帳戶通常會有足夠的權限 (例如：account@domain.com)。 _此帳戶也應該屬於建立叢集的每個 VM 上的本機系統管理員群組一部分。_
 - 控制 SQL Server 的網域使用者帳戶。 
  
-## <a name="create-a-storage-account-as-a-cloud-witness"></a>建立儲存體帳戶作為雲端見證
+## <a name="create-a-storage-account"></a>建立儲存體帳戶 
+
 叢集需要有儲存體帳戶來作為雲端見證。 您可以使用任何現有的儲存體帳戶，也可以建立新的儲存體帳戶。 如果您想要使用現有的儲存體帳戶，請跳至下一節。 
 
 下列程式碼片段會建立儲存體帳戶： 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
 
 ```azurecli-interactive
 # Create the storage account
@@ -80,7 +80,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ---
 
-## <a name="define-windows-failover-cluster-metadata"></a>定義 Windows 容錯移轉叢集中繼資料
+## <a name="define-cluster-metadata"></a>定義叢集中繼資料
 
 Azure CLI 的 [az sql vm group](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) 命令群組可管理可用性群組裝載所在 Windows Server 容錯移轉叢集 (WSFC) 服務的中繼資料。 叢集中繼資料包括 Active Directory 網域、叢集帳戶、用來作為雲端見證的儲存體帳戶，以及 SQL Server 版本。 請使用 [az sql vm group create](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) 來定義 WSFC 的中繼資料，如此一來，在新增第一個 SQL Server VM 時就會依照定義來建立叢集。 
 
@@ -183,6 +183,17 @@ Update-AzSqlVM -ResourceId $sqlvm2.ResourceId -SqlVM $sqlvmconfig2
 ```
 
 ---
+
+
+## <a name="validate-cluster"></a>驗證叢集 
+
+若要讓 Microsoft 支援容錯移轉叢集，必須通過叢集驗證。 使用您慣用的方法（例如遠端桌面通訊協定 (RDP) ）連接到 VM，並驗證您的叢集通過驗證後再繼續進行。 若未這麼做，則會讓您的叢集處於不支援的狀態。 
+
+您可以使用容錯移轉叢集管理員 (FCM) 或下列 PowerShell 命令來驗證叢集：
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   ```
 
 ## <a name="create-availability-group"></a>建立可用性群組
 

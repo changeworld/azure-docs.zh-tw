@@ -4,26 +4,26 @@ description: 了解如何在 Azure 連線至 Analysis Services 伺服器並從�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/17/2020
+ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 170cf0081e6671451ece6dc2924ae7e418f520a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 71caad8ce650b86f4350b32974bb8d980538b223
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506769"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489012"
 ---
 # <a name="connecting-to-servers"></a>連線至伺服器
 
-本文說明如何使用資料模型化和管理應用程式（例如 SQL Server Management Studio （SSMS）或與 Analysis Services 專案 Visual Studio，或使用用戶端報表應用程式（例如 Microsoft Excel、Power BI Desktop 或自訂應用程式），來連接到伺服器。 連到 Azure Analysis Services 的連線會使用 HTTPS。
+本文說明如何使用資料模型化和管理應用程式（例如 SQL Server Management Studio (SSMS) 或使用 Analysis Services 專案的 Visual Studio，或用戶端報表應用程式（例如 Microsoft Excel、Power BI Desktop 或自訂應用程式）來連接到伺服器。 連到 Azure Analysis Services 的連線會使用 HTTPS。
 
 ## <a name="client-libraries"></a>用戶端程式庫
 
 [取得最新的用戶端程式庫](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 
-所有連到伺服器的連線 (不論是哪一種類型) 都需要已更新的 AMO、ADOMD.NET 及 OLEDB 用戶端程式庫，才能連接到 Analysis Services 伺服器並與其銜接。 針對 SSMS、Visual Studio、Excel 2016 和更新版本，以及 Power BI，會安裝最新的用戶端程式庫，或以每月版本進行更新。 不過，在某些情況下，應用程式的版本可能不會是最新的。 例如，當原則延遲更新，或 Office 365 更新是在「順延通道」上時。
+所有連到伺服器的連線 (不論是哪一種類型) 都需要已更新的 AMO、ADOMD.NET 及 OLEDB 用戶端程式庫，才能連接到 Analysis Services 伺服器並與其銜接。 針對 SSMS、Visual Studio、Excel 2016 和更新版本，以及 Power BI，最新的用戶端程式庫會隨著每月版本安裝或更新。 不過，在某些情況下，應用程式的版本可能不會是最新的。 例如，當原則延遲更新，或 Office 365 更新是在「順延通道」上時。
 
 > [!NOTE]
 > 用戶端程式庫無法透過需要使用者名稱和密碼的 proxy 伺服器連線到 Azure Analysis Services。 
@@ -44,7 +44,7 @@ ms.locfileid: "86506769"
 ![在 Azure 中取得伺服器名稱](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
 > [!NOTE]
-> 美國東部2區域的通訊協定是**aspaaseastus2**。
+> 美國東部2區域的通訊協定為 **aspaaseastus2**。
 
 ## <a name="connection-string"></a>連接字串
 
@@ -77,10 +77,28 @@ ms.locfileid: "86506769"
 
 在使用舊版 Excel 的情況下，使用者可以使用「Office 資料連線」(.odc) 檔案來連接到 Azure Analysis Services 伺服器。 若要深入了解，請參閱[建立 Office 資料連線 (.odc) 檔案](analysis-services-odc.md)。
 
+## <a name="connect-as-a-linked-server-from-sql-server"></a>從 SQL Server 連接到連結伺服器
 
-## <a name="next-steps"></a>後續步驟
+SQL Server 可以將 MSOLAP 指定為數據源提供者，以 [連結伺服器](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) 的形式連接至 Azure Analysis Services 資源。 設定連結的伺服器連線之前，請務必安裝最新的 [MSOLAP 用戶端程式庫](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (提供者) 。 
+
+針對與 Azure Analysis Services 的連結伺服器連接，MSOLAP 提供者必須在 SQL Server 進程之外具現化。 設定連結的伺服器選項時，請確定**未選取**[**允許進程進程**] 選項。
+
+如果已選取 [ **允許進程進程** ]，並且在 SQL Server 進程中具現化提供者，則會傳回下列錯誤：
+
+```
+OLE DB provider "MSOLAP" for linked server "(null)" returned message "The following system error occurred: ".
+
+OLE DB provider "MSOLAP" for linked server "(null)" returned message "The connection failed because user credentials are needed and Sign-In UI is not allowed.".
+
+Msg 7303, Level 16, State 1, Line 2
+Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked server "(null)".
+```
+
+
+
+## <a name="next-steps"></a>接下來的步驟
 
 [使用 Excel 連接](analysis-services-connect-excel.md)    
-[連接 Power BI](analysis-services-connect-pbi.md)   
+[使用 Power BI 連接](analysis-services-connect-pbi.md)   
 [管理您的伺服器](analysis-services-manage.md)   
 

@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 35a2be5c9f418bc423ae56c456db0062677a33c2
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5e8cb5e062db5c66fc093bf67c97caba15f407a3
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856121"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489114"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授與環境的資料存取權
 
@@ -120,8 +120,8 @@ ms.locfileid: "88856121"
 
     [![來賓使用者從下拉式清單中選取您的 Azure 租使用者](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 讀取 Azure Active Directory 應用程式註冊步驟的 [驗證與授權](time-series-insights-authentication-and-authorization.md) 。
 
-* [在 AZURE 時間序列深入解析 TSI Explorer 中查看您的環境](./time-series-insights-update-explorer.md)。
+* [在 Azure 時間序列深入解析 Explorer 中查看您的環境](./time-series-insights-update-explorer.md)。

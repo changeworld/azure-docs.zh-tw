@@ -4,26 +4,26 @@ description: 監視 Application Insights 中的系統和自訂 .NET/.NET Core Ev
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3082c90f3e9f7a150206e1df8806af0de1c17024
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f8ae36545eecbbad2a6695ca979fb7da8380e8cc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936481"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657018"
 ---
 # <a name="eventcounters-introduction"></a>EventCounter 簡介
 
 `EventCounter` 是 .NET/.NET Core 機制，用來發佈和取用計數器或統計資料。 [本](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md)文件提供 `EventCounters` 的概觀及其發佈和取用方式的範例。 所有作業系統平台 (Windows、Linux 和 macOS) 都支援 EventCounter。 您可以將其視為只有在 Windows 系統中才支援的 [PerformanceCounter](/dotnet/api/system.diagnostics.performancecounter) 的跨平台對等項目。
 
-雖然使用者可以發佈任何自訂 `EventCounters` 以符合其需求，但 .NET Core 3.0 執行階段預設會發佈一組這些計數器。 此文件將逐步解說在 Azure Application Insights 中收集及檢視 `EventCounters` (系統定義或使用者定義) 所需的步驟。
+雖然使用者可以發佈任何自訂 `EventCounters` 以符合其需求，但 .Net Core 3.0 和更新版本的執行時間預設會發佈一組這些計數器。 本檔將逐步解說 `EventCounters` 在 Azure 應用程式 Insights 中收集和查看 (系統定義或使用者定義) 所需的步驟。
 
 ## <a name="using-application-insights-to-collect-eventcounters"></a>使用 Application Insights 收集 EventCounter
 
-Application Insights 支援以其 `EventCounterCollectionModule` 收集 `EventCounters`，這是新發行 NuGet 套件 [Microsoft.ApplicationInsights.EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector) 的一部分。 使用 [AspNetCore](asp-net-core.md) 或 [WorkerService](worker-service.md) 時，會自動啟用 `EventCounterCollectionModule`。 `EventCounterCollectionModule` 會以 60 秒的不可設定的收集頻率收集計數器。 收集 EventCounter 並不需要特殊的權限。
+Application Insights 支援 `EventCounters` 以其 `EventCounterCollectionModule` 進行收集，這是新發行之 NuGet 套件 [ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector)的一部分。 使用 [AspNetCore](asp-net-core.md) 或 [WorkerService](worker-service.md) 時，會自動啟用 `EventCounterCollectionModule`。 `EventCounterCollectionModule` 會以 60 秒的不可設定的收集頻率收集計數器。 收集 EventCounter 並不需要特殊的權限。
 
 ## <a name="default-counters-collected"></a>收集的預設計數器
 
-SDK 會針對在 .NET Core 3.0 中執行的應用程式，自動收集下列計數器。 計數器名稱的格式將為「類別|計數器」。
+針對在 .NET Core 3.0 或更高版本中執行的應用程式，SDK 會自動收集下列計數器。 計數器名稱的格式將為「類別|計數器」。
 
 |類別 | 計數器|
 |---------------|-------|
@@ -48,7 +48,7 @@ SDK 會針對在 .NET Core 3.0 中執行的應用程式，自動收集下列計�
 |`System.Runtime` | `active-timer-count` |
 
 > [!NOTE]
-> ASP.NET Core 應用程式中只能新增 Microsoft.AspNetCore.Hosting 類別的計數器。
+> 從 2.15.0-Beta3 版本的 [ASPNETCORE SDK](asp-net-core.md) 或 [WorkerService SDK](worker-service.md)開始，預設不會收集任何計數器。 模組本身已啟用，因此使用者可以直接新增所需的計數器來收集它們。
 
 ## <a name="customizing-counters-to-be-collected"></a>自訂要收集的計數器
 
@@ -56,12 +56,14 @@ SDK 會針對在 .NET Core 3.0 中執行的應用程式，自動收集下列計�
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;
+    using Microsoft.Extensions.DependencyInjection;
 
     public void ConfigureServices(IServiceCollection services)
     {
         //... other code...
 
-        // The following code shows several customizations done to EventCounterCollectionModule.
+        // The following code shows how to configure the module to collect
+        // additional counters.
         services.ConfigureTelemetryModule<EventCounterCollectionModule>(
             (module, o) =>
             {
@@ -75,15 +77,36 @@ SDK 會針對在 .NET Core 3.0 中執行的應用程式，自動收集下列計�
                 module.Counters.Add(new EventCounterCollectionRequest("System.Runtime", "gen-0-size"));
             }
         );
-
-        // The following code removes EventCounterCollectionModule to disable the module completely.
-        var eventCounterModule = services.FirstOrDefault<ServiceDescriptor>
-                    (t => t.ImplementationType == typeof(EventCounterCollectionModule));
-        if (eventCounterModule != null)
-        {
-            services.Remove(eventCounterModule);
-        }
     }
+```
+
+## <a name="disabling-eventcounter-collection-module"></a>停用 EventCounter 收集模組
+
+`EventCounterCollectionModule` 可以使用停用 `ApplicationInsightsServiceOptions` 。 使用 ASP.NET Core SDK 的範例如下所示。
+
+```csharp
+    using Microsoft.ApplicationInsights.AspNetCore.Extensions;
+    using Microsoft.Extensions.DependencyInjection;
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        //... other code...
+
+        var applicationInsightsServiceOptions = new ApplicationInsightsServiceOptions();
+        applicationInsightsServiceOptions.EnableEventCounterCollectionModule = false;
+        services.AddApplicationInsightsTelemetry(applicationInsightsServiceOptions);
+    }
+```
+
+WorkerService SDK 也可以使用類似的方法，但必須變更命名空間，如下列範例所示。
+
+```csharp
+    using Microsoft.ApplicationInsights.WorkerService;
+    using Microsoft.Extensions.DependencyInjection;
+
+    var applicationInsightsServiceOptions = new ApplicationInsightsServiceOptions();
+    applicationInsightsServiceOptions.EnableEventCounterCollectionModule = false;
+    services.AddApplicationInsightsTelemetryWorkerService(applicationInsightsServiceOptions);
 ```
 
 ## <a name="event-counters-in-metric-explorer"></a>計量瀏覽器中的事件計數器
@@ -91,7 +114,7 @@ SDK 會針對在 .NET Core 3.0 中執行的應用程式，自動收集下列計�
 若要在[計量瀏覽器](../platform/metrics-charts.md)中檢視 EventCounter 計量，請選取 Application Insights 資源，然後選擇 [記錄型計量] 作為計量命名空間。 接著，EventCounter 計量會顯示在 [自訂] 類別之下。
 
 > [!div class="mx-imgBorder"]
-> ![Application Insights 中所報告的事件計數器](./media/event-counters/metrics-explorer-counter-list.png)
+> ![Application Insights 計量瀏覽器中報告的事件計數器](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Analytics 中的事件計數器
 
@@ -104,7 +127,7 @@ customMetrics | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Application Insights 中所報告的事件計數器](./media/event-counters/analytics-event-counters.png)
+> ![Application Insights Analytics 中回報的事件計數器](./media/event-counters/analytics-event-counters.png)
 
 若要取得最近一段時間內特定計數器的圖表 (例如：`ThreadPool Completed Work Item Count`)，請執行下列查詢。
 
@@ -128,16 +151,6 @@ customMetrics
 ### <a name="can-i-see-eventcounters-in-live-metrics"></a>我是否可以在即時計量中看到 EventCounter？
 
 目前為止，即時計量不會顯示 EventCounter。 請使用 [計量瀏覽器] 或 Analytics 查看遙測。
-
-### <a name="which-platforms-can-i-see-the-default-list-of-net-core-30-counters"></a>我可以在哪些平台上看到 .NET Core 3.0 計數器的預設清單？
-
-EventCounter 不需要任何特殊權限，而且在支援 .NET Core 3.0 的所有平台上都支援。 這包括：
-
-* **作業系統**：Windows、Linux 或 macOS。
-* **裝載方法**：內部處理序或跨處理序。
-* **部署方法**：架構相依或獨立式。
-* **網頁伺服器**：IIS (網際網路資訊伺服器) 或 Kestrel。
-* **裝載平台**：Azure App Service、Azure VM、Docker、Azure Kubernetes Service (AKS) 等的 Web Apps 功能。
 
 ### <a name="i-have-enabled-application-insights-from-azure-web-app-portal-but-i-cant-see-eventcounters"></a>我已從 Azure Web 應用程式入口網站啟用 Application Insights。 但是我看不到 EventCounter。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 805141dedddcd915d266c9651fc51732fb51e1b0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 08f1d1e0ca1936b30db968dde5d7f6f2e6104cf8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146722"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651197"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning 中的計算目標是什麼？ 
 
@@ -51,7 +51,7 @@ Azure Machine Learning 在不同的計算資源之間有不同的支援。  您�
 您可以從下列來源建立 Azure Machine Learning 計算實例或計算叢集：
 * [Azure Machine Learning studio](how-to-create-attach-compute-studio.md)
 * Azure 入口網站
-* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) 和 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) 類別
+* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py&preserve-view=true) 和 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py&preserve-view=true) 類別
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (預覽) 
 * Resource Manager 範本。 如需範例範本，請參閱 [建立 Azure Machine Learning 計算範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute)。
 * [Azure CLI 的](reference-azure-machine-learning-cli.md#resource-management)機器學習擴充功能。  
@@ -82,19 +82,19 @@ Azure Machine Learning 在不同的計算資源之間有不同的支援。  您�
 
 | **支援的 VM 系列**  | **限制** |
 |------------|------------|
-| D | 無 |
-| Dv2 | 無 |  
-| DSv2 | 無 |  
-| FSv2 | 無 | 
+| D | None |
+| Dv2 | None |  
+| DSv2 | None |  
+| FSv2 | None | 
 | HBv2 | 需要核准 |  
 | HCS | 需要核准 |  
 | M | 需要核准 |
-| NC | 無 |    
+| NC | None |    
 | NCsv2 | 需要核准 |
 | NCsv3 | 需要核准 |  
 | NDs | 需要核准 |
 | NDv2 | 需要核准 |
-| NV | 無 |
+| NV | None |
 | NVv3 | 需要核准 | 
 
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 62a0b0ec5312b4d00724fe7c13a5e20b5d35e34f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b541af5351a0dd98e782c584d869de0d98445b74
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926859"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462508"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 認知搜尋中的服務限制
 
@@ -96,10 +96,26 @@ ms.locfileid: "88926859"
 
 <sup>4</sup> 每個技能集上限為 30 個技術。
 
-<sup>5</sup> AI 擴充和影像分析會耗用大量運算資源，並且需要大量的可用處理能力。 這些工作負載的執行時間已縮短，可讓佇列中的其他作業有更多機會執行。  
+<sup>5</sup> AI 擴充和影像分析會耗用大量運算資源，並且需要大量的可用處理能力。 這些工作負載的執行時間已縮短，可讓佇列中的其他作業有更多機會執行。
 
 > [!NOTE]
 > 如[索引限制](#index-limits)所述，從支援複雜類型的 GA API 版本 (`2019-05-06`) 開始，索引子也會在每個文件的所有複雜集合中，執行 3000 個元素的上限。 這表示如果您已使用先前的 API 版本建立索引子，則不會受限於此限制。 為了保持最大的相容性，如果索引子是使用先前的 API 版本建立的，然後使用 API 版本 `2019-05-06` 或更高版本更新，仍會**排除**在限制之外。 客戶應該注意擁有非常龐大的複雜集合的負面影響 (如先前所述)，而且我們強烈建議使用最新的 GA API 版本來建立任何新的索引子。
+
+### <a name="shared-private-link-resource-limits"></a>共用的私人連結資源限制
+
+> [!NOTE]
+> 索引子可以在透過[共用 private link 資源 API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources)管理的私人端點上安全地存取資源，如[本操作指南](search-indexer-howto-access-private.md)中所述。
+
+| 資源 | 免費 | 基本 | S1 | S2 | S3 | S3 HD | L1 | L2
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 私人端點索引子支援 | 否 | 是 | 是 | 是 | 是 | 否 | 是 | 是 |
+| 技能集<sup>1</sup>的索引子的私用端點支援 | 否 | 否 | 否 | 是 | 是 | 否 | 是 | 是 |
+| 私人端點上限 | N/A | 10或30 | 100 | 400 | 400 | N/A | 20 | 20 |
+| 最大相異資源類型<sup>2</sup> | N/A | 4 | 7 | 15 | 15 | N/A | 4 | 4 |
+
+<sup>1</sup> AI 擴充和影像分析需要大量運算，而且會耗用不相稱的可用處理能力，因此針對較低的搜尋服務層級，將其設定為在私人環境中執行，可能會對搜尋服務的效能和穩定性造成負面影響。
+
+<sup>2</sup> 相異資源類型的數目會計算為 `groupId` 指定搜尋服務的所有共用私用連結資源上使用的唯一值數目，而不論資源的狀態為何。
 
 ## <a name="synonym-limits"></a>同義字限制
 
@@ -116,7 +132,7 @@ ms.locfileid: "88926859"
 
 計算在專用資源 (基本和標準層) 上執行的服務，更容易預測估計值。 由於可控制較多的參數，所以能更準確地估計 QPS。 如需如何進行估計的指引，請參閱 [Azure 認知搜尋的效能與最佳化](search-performance-optimization.md)。
 
-對於儲存體最佳化的階層 (L1 和 L2)，與標準層相比，您應該預期較低的查詢輸送量和較高的延遲。 
+對於儲存體最佳化的階層 (L1 和 L2)，與標準層相比，您應該預期較低的查詢輸送量和較高的延遲。
 
 ## <a name="data-limits-ai-enrichment"></a>資料限制 (AI 擴充)
 

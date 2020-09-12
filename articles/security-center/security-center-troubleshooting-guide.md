@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f5e71697ca6ce9e2585bbb903ad8c46744e05e13
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836000"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462389"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 資訊安全中心疑難排解指南
 
@@ -29,7 +29,7 @@ ms.locfileid: "83836000"
 
 * 虛擬機器行為分析 (VMBA)
 * 網路分析
-* SQL Database 和 SQL 資料倉儲分析
+* SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲) 分析
 * 內容相關的資訊
 
 根據警示類型，客戶可使用下列資源收集必要的資訊來調查警示：
@@ -151,4 +151,4 @@ ms.locfileid: "83836000"
 * [Azure 資訊安全中心的偵測功能](security-center-detection-capabilities.md)
 * [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md) — 了解如何監視合作夥伴解決方案的健全狀況。
 * [Azure 資訊安全中心常見問題集](faq-general.md) — 尋找有關使用服務的常見問題。
-* [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/) — 尋找有關 Azure 安全性與相容性的部落格文章。
+* [Azure 安全性部落格](https://docs.microsoft.com/archive/blogs/azuresecurity/) — 尋找有關 Azure 安全性與相容性的部落格文章。

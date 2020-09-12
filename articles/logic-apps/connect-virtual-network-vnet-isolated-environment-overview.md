@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2020
-ms.openlocfilehash: f152283b1280cde2a26569b8acf10738e883e39e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 86d647a79b7babc2780cb0db904e689f3916673f
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816011"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500380"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>透過整合服務環境 (ISE) 從 Azure Logic Apps 存取 Azure 虛擬網路資源
 
@@ -60,7 +60,7 @@ ms.locfileid: "88816011"
   * Azure 自動化、Azure Key Vault、Azure 事件方格和 Azure 監視器記錄
   * FTP、SFTP-SSH、檔案系統和 SMTP
   * SAP、IBM MQ、IBM DB2 和 IBM 3270
-  * SQL Server、Azure SQL 資料倉儲、Azure Cosmos DB
+  * SQL Server、Azure Synapse Analytics Azure Cosmos DB
   * AS2、X12 及 EDIFACT
 
   在罕見的情況下，如果 ISE 連接器適用于內部部署系統或資料來源，您就可以直接連接，而不需要使用內部 [部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)。 如需詳細資訊，請參閱本主題稍後的 [存取內部部署系統](#on-premises) 。
@@ -142,9 +142,9 @@ ms.locfileid: "88816011"
 
 ## <a name="integration-accounts-with-ise"></a>使用 ISE 的整合帳戶
 
-您可以使用整合帳戶搭配整合服務環境 (ISE) 內的邏輯應用程式。 不過，這些整合帳戶必須使用「相同的 ISE」** 作為連結的邏輯應用程式。 ISE 中的 Logic Apps 只能參考位於相同 ISE 中的整合帳戶。 當您建立整合帳戶時，您可以選取您的 ISE，作為您整合帳戶的位置。 若要瞭解如何使用 ISE 整合帳戶的定價和帳單，請參閱 [Logic Apps 計價模式](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/)。
+您可以使用整合帳戶搭配整合服務環境 (ISE) 內的邏輯應用程式。 不過，這些整合帳戶必須使用「相同的 ISE」** 作為連結的邏輯應用程式。 ISE 中的 Logic Apps 只能參考位於相同 ISE 中的整合帳戶。 當您建立整合帳戶時，您可以選取您的 ISE，作為您整合帳戶的位置。 若要瞭解如何使用 ISE 整合帳戶的定價和帳單，請參閱 [Logic Apps 計價模式](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/)。 如需限制資訊，請參閱 [整合帳戶限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [從 Azure Logic Apps 連線到 Azure 虛擬網路](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
 * 深入了解 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)

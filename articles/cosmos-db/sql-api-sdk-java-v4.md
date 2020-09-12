@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: af0964dceca8b862d0008d878045203983a96bda
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f88004d219989b06d4bc7e75e76aca1ce1e894fe
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586210"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536395"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API：版本資訊與資源
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 
 ## <a name="helpful-content"></a>有用的內容
 
-| 內容 | 連結 |
+| Content | 連結 |
 |---|---|
 |**SDK 下載**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
 |**API 文件** | [Java API 參考文件](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
@@ -68,7 +68,33 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 
 ## <a name="release-history"></a>版本歷程記錄
 
-### <a name="440-beta1-unreleased"></a>4.4.0-Beta. 1 (未發行) 
+### <a name="440-beta2-unreleased"></a>4.4.0-Beta. 2 (未發行) 
+#### <a name="key-bug-fixes"></a>重要 Bug 修正
+* 已修正啟用 tcnative 時的 RequestTimeoutException。
+
+### <a name="440-beta1-2020-08-27"></a>4.4.0-Beta. 1 (2020-08-27) 
+#### <a name="new-features"></a>新功能
+* 新增了新的 API，可透過 pk/識別碼組清單或) 的 pk 值組的所有檔，有效率地 (載入許多檔。
+* 已新增 `deleteItem` API。
+* 預設已啟用查詢度量。
+#### <a name="key-bug-fixes"></a>重要 Bug 修正
+* 已修正中的 NPE `GatewayAddressCache` 。
+* 修正零專案回應的查詢度量問題。
+* 改善的效能 (降低位址剖析和主要金鑰驗證的 CPU 使用率) 。
+
+### <a name="432-beta2-2020-08-17"></a>4.3.2-Beta. 2 (2020-08-17) 
+#### <a name="key-bug-fixes"></a>重要 Bug 修正
+* 沒有舊版的變更，釋出與彈簧資料模組的相容性問題。
+
+### <a name="432-beta1-2020-08-14"></a>4.3.2-Beta. 1 (2020-08-14) 
+#### <a name="key-bug-fixes"></a>重要 Bug 修正
+* 已修正 RntbdServiceEndpoint 中的問題，以避免未使用的 TCP 連接提早關閉。
+
+### <a name="431-2020-08-13"></a>4.3.1 (2020-08-13) 
+#### <a name="key-bug-fixes"></a>重要 Bug 修正
+* 修正了查詢的問題 `GROUP BY` ，其中只會傳回一個頁面。
+* 固定的使用者代理程式字串格式，以符合中央 SDK 指導方針。
+* 增強的診斷資訊，以包含查詢計劃診斷。
 
 ### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29) 
 #### <a name="new-features"></a>新功能

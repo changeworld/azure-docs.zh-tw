@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 08/14/2020
-ms.openlocfilehash: 7131ddac840d2854969147da2eeb82a890ce3410
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 19f811c636d5cf3ffb3eef9904c7ba4f7d456b5f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586795"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462202"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>vCore 模型總覽-Azure SQL Database 和 Azure SQL 受控執行個體 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -188,7 +188,7 @@ az sql mi update -g mygroup -n myinstance --family Gen5
 
 #### <a name="fsv2-series"></a>Fsv2 系列
 
-Fsv2 系列適用于下欄區域：澳大利亞中部、澳大利亞中部2、澳大利亞東部、澳大利亞東南部、巴西南部、加拿大中部、東亞、美國東部、法國中部、印度中部、印度西部、韓國中部、南韓南部、北歐、南非北部、東南亞、英國南部、英國西部、西歐、美國西部2。
+Fsv2 系列適用于下欄區域：澳大利亞中部、澳大利亞中部2、澳大利亞東部、澳大利亞東南部、巴西南部、加拿大中部、東亞、美國東部、法國中部、印度中部、韓國中部、南韓南部、歐洲北部、南非北部、東南亞、英國南部、英國西部、西歐、美國西部2。
 
 
 #### <a name="m-series"></a>M 系列
@@ -222,7 +222,7 @@ On the **Details** page, provide the following:
 Approved support requests are typically fulfilled within 5 business days.
 -->
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要開始使用，請參閱： 
 - [使用 Azure 入口網站建立 SQL Database](single-database-create-quickstart.md)
