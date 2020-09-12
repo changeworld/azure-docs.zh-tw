@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 53db148eac0d56e53bb96e0597ad53d3183d86e9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192523"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433665"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN 檔案壓縮疑難排解
 這篇文章可協助您針對 [CDN 檔案壓縮](cdn-improve-performance.md)的問題進行疑難排解。
@@ -42,7 +42,7 @@ ms.locfileid: "88192523"
 * 要求的內容不適合進行壓縮。
 * 要求的檔案類型未啟用壓縮。
 * HTTP 要求未包含要求有效壓縮類型的標頭。
-* 來源正在傳送區塊的內容。
+* 來源正在傳送區塊內容。
 
 ## <a name="troubleshooting-steps"></a>疑難排解步驟
 > [!TIP]
@@ -111,8 +111,8 @@ ms.locfileid: "88192523"
 
 若要進行壓縮，檔案必須符合下列的大小需求︰
 
-* 超過 128 個位元組。
-* 小於 1 MB。
+* 大於128位元組 (內容長度： 128) 
+* 小於 3 MB
 
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>在原始伺服器中檢查要求的 **Via** 標頭
 **Via** HTTP 標頭會向 Web 伺服器指出正在由 Proxy 伺服器傳遞要求。  Microsoft IIS Web 伺服器預設不會在要求包含 **Via** 標頭時壓縮回應。  若要覆寫這個行為，請執行下列作業︰

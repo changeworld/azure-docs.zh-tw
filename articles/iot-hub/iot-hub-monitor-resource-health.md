@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: c7b2055494d61ba348ae6226e6fc0ad9ce5775bb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022134"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438393"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>監視 Azure IoT 中樞的健康情況並快速診斷問題
 
@@ -61,7 +61,7 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
             "operationName": "deviceConnect",
             "category": "Connections",
             "level": "Information",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"sdkVersion\":\"<sdkVersion>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
             "location": "Resource location"
         }
     ]
@@ -388,8 +388,8 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 | 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | 字串 | 可為 true 或 false，會指出 IoT 中樞是否已啟用訊息路由 |
-| **parentSpanId** | 字串 | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 D2C 訊息追蹤 |
+| **isRoutingEnabled** | String | 可為 true 或 false，會指出 IoT 中樞是否已啟用訊息路由 |
+| **parentSpanId** | String | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 D2C 訊息追蹤 |
 
 ##### <a name="iot-hub-egress-logs"></a>IoT 中樞輸出記錄
 
@@ -420,9 +420,9 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 | 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **點** | 字串 | 路由端點的名稱 |
-| **endpointType** | 字串 | 路由端點的類型 |
-| **parentSpanId** | 字串 | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 IoT 中樞輸入訊息追蹤 |
+| **點** | String | 路由端點的名稱 |
+| **endpointType** | String | 路由端點的類型 |
+| **parentSpanId** | String | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 IoT 中樞輸入訊息追蹤 |
 
 #### <a name="configurations"></a>組態
 
@@ -470,6 +470,42 @@ IoT 中樞設定記錄會追蹤自動裝置管理功能集的事件和錯誤。
          }
     ]
 }
+```
+
+### <a name="sdk-version"></a>SDK 版本
+
+某些作業會傳回 `sdkVersion` 其物件中的屬性 `properties` 。 針對這些作業，當裝置或後端應用程式使用其中一個 Azure IoT Sdk 時，此屬性會包含所使用之 SDK 的相關資訊、SDK 版本，以及 SDK 執行所在的平臺。 下列範例顯示 `sdkVersion` `deviceConnect` 使用 Node.js 裝置 SDK 時，為作業發出的屬性： `"azure-iot-device/1.17.1 (node v10.16.0; Windows_NT 10.0.18363; x64)"` 。 以下是針對 .NET (c # ) SDK 所發出的值範例： `".NET/1.21.2 (.NET Framework 4.8.4200.0; Microsoft Windows 10.0.17763 WindowsProduct:0x00000004; X86)"` 。
+
+下表顯示用於不同 Azure IoT Sdk 的 SDK 名稱：
+
+| SdkVersion 屬性中的 SDK 名稱 | 語言 |
+|----------|----------|
+| .NET | .NET (C#) |
+| microsoft azure. 裝置 | .NET (c # ) service SDK |
+| microsoft azure. 用戶端 | .NET (c # ) 裝置 SDK |
+| >iothubclient | C 或 Python v1 (已淘汰) 裝置 SDK |
+| iothubserviceclient | C 或 Python v1 (已淘汰) service SDK |
+| azure-iot-裝置-iothub-.py | Python 裝置 SDK |
+| azure-iot-device | Node.js 裝置 SDK |
+| azure-iothub | Node.js 服務 SDK |
+| iothub-java-用戶端 | JAVA 裝置 SDK |
+| iothub.. a. sdk | JAVA 服務 SDK |
+| .com. iot-裝置-用戶端 | JAVA 裝置 SDK |
+| .com. iot-服務-用戶端 | JAVA 服務 SDK |
+| C | 內嵌 C |
+| C + (OSSimplified = Azure RTO)  | Azure RTOS |
+
+當您針對診斷記錄執行查詢時，可以解壓縮 SDK 版本屬性。 下列查詢會從連接事件所傳回的屬性中，解壓縮 SDK 版本屬性 (和裝置識別碼) 。 這兩個屬性會寫入結果中，以及事件的時間和裝置所連線之 IoT 中樞的資源識別碼。
+
+```kusto
+// SDK version of devices
+// List of devices and their SDK versions that connect to IoT Hub
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.DEVICES" and ResourceType == "IOTHUBS"
+| where Category == "Connections"
+| extend parsed_json = parse_json(properties_s) 
+| extend SDKVersion = tostring(parsed_json.sdkVersion) , DeviceId = tostring(parsed_json.deviceId)
+| distinct DeviceId, SDKVersion, TimeGenerated, _ResourceId
 ```
 
 ### <a name="read-logs-from-azure-event-hubs"></a>從 Azure 事件中樞讀取記錄
@@ -557,7 +593,7 @@ class Program
 
 若要深入瞭解如何解讀健康情況資料，請參閱 [Azure 資源健康狀態總覽](../service-health/resource-health-overview.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [了解 IoT 中樞計量](iot-hub-metrics.md)
 * [搭配連接 IoT 中樞和信箱的 Azure Logic Apps 進行 IoT 遠端監視和通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

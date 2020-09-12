@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 09/08/2020
 ms.author: kumud
-ms.openlocfilehash: 45da0556d074fdb81002f73cd89d0c35cb37276e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd95f022e40b9ae6fa60a6536a87146049c53b68
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530044"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565322"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>影片索引器所在的 Azure 區域
 
@@ -23,7 +23,7 @@ ms.locfileid: "86530044"
 
 ## <a name="locations"></a>位置
 
-`location`必須將 Azure 區功能變數代碼名稱指定為參數的值。 如果您在預覽模式中使用影片索引子，您應該將設 `"trial"` 為值。 `trial`這是參數的預設值 `location` 。 否則，若要取得您帳戶所在且應該路由傳送呼叫之 Azure 區域的代碼名稱，您可以在 [Azure CLI](/cli/azure) 中執行下面這一行：
+`location`參數必須獲得 Azure 區功能變數代碼名稱作為其值。 如果您在預覽模式中使用影片索引子，您應該將 `"trial"` 其置於值。 `trial` 這是參數的預設值 `location` 。 否則，若要取得您帳戶所在且應該路由傳送呼叫之 Azure 區域的代碼名稱，您可以在 [Azure CLI](/cli/azure) 中執行下面這一行：
 
 ```azurecli-interactive
 az account list-locations
@@ -36,7 +36,7 @@ az account list-locations
 ```json
    {
       "displayName": "West US 2",
-      "id": "/subscriptions/35c2594a-23da-4fce-b59c-f6fb9513eeeb/locations/westus2",
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/locations/westus2",
       "latitude": "47.233",
       "longitude": "-119.852",
       "name": "westus2",

@@ -3,12 +3,12 @@ title: 使用客戶管理的金鑰來加密備份資料
 description: 瞭解 Azure 備份如何讓您使用客戶管理的金鑰 (CMK) 來加密備份資料。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 989b06b62f2db8df5504107eee8ed26710d13a57
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5c0bddc6cdb8ec150a031541ced1abf1ebfb6f0f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022406"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378282"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客戶管理的金鑰來加密備份資料
 
@@ -23,7 +23,7 @@ Azure 備份可讓您使用客戶管理的金鑰 (CMK) 來加密備份資料，�
 - 執行備份至使用客戶管理金鑰加密的保存庫
 - 從備份還原資料
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - 這項功能可讓您 **僅加密新**的復原服務保存庫。 不支援任何包含已註冊或嘗試註冊之現有專案的保存庫。
 
@@ -66,7 +66,7 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
     ![身分識別設定](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
-1. 將 **狀態** 變更為 [ **開啟** ]，然後按一下 [ **儲存**]。
+1. 將 **狀態** 變更為 [ **開啟** ]，然後選取 [ **儲存**]。
 
 1. 系統會產生物件識別碼，也就是系統指派的保存庫受控識別。
 
@@ -82,13 +82,13 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
     ![指派金鑰許可權](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
-1. 移至 [ **選取主體** ]，並使用其名稱或受控識別在搜尋方塊中搜尋您的保存庫。 一旦顯示之後，請選取保存庫，然後按一下窗格底部的 [ **選取** ]。
+1. 移至 [ **選取主體** ]，並使用其名稱或受控識別在搜尋方塊中搜尋您的保存庫。 一旦顯示之後，請選取保存庫，然後選擇窗格底部的 [ **選取** ]。
 
     ![選取主體](./media/encryption-at-rest-with-cmk/select-principal.png)
 
-1. 完成之後，請 **按一下 [新增]** 以新增新的存取原則。
+1. 完成之後，請 **選取 [新增]** 以新增新的存取原則。
 
-1. 按一下 [ **儲存** ]，以儲存對 Azure Key Vault 存取原則所做的變更。
+1. 選取 [ **儲存** ] 以儲存對 Azure Key Vault 存取原則所做的變更。
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>啟用 Azure Key Vault 的虛刪除和清除保護
 
@@ -148,7 +148,7 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
     ![加密設定](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
-1. 按一下 [**加密設定**] 下的 [**更新**]。
+1. 選取 [**加密設定**] 下的 [**更新**]。
 
 1. 在 [加密設定] 窗格中，選取 [ **使用您自己的金鑰** ]，然後使用下列其中一種方式繼續指定金鑰。 **確定您要使用的金鑰是處於已啟用狀態的 RSA 2048 金鑰。**
 
@@ -160,7 +160,7 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
         ![從 key vault 選取金鑰](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. 按一下 [儲存]。
+1. 選取 [儲存]。
 
 1. **追蹤加密金鑰更新的進度：** 您可以使用復原服務保存庫中的 **活動記錄** 來追蹤金鑰指派的進度。 狀態應該會變更為 [ **成功**]。 您的保存庫現在會將具有指定索引鍵的所有資料加密為 KEK。
 
@@ -258,6 +258,6 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
 使用 CMK encryption 進行備份，不會對您產生任何額外的成本。 不過，您可能會繼續產生使用您的 Azure Key Vault 儲存金鑰的費用。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [Azure 備份中的安全性功能概觀](security-overview.md)

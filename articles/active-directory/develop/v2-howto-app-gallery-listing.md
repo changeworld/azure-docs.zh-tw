@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891856"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439739"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>將您的應用程式發佈至 Azure AD 應用程式資源庫
 
@@ -61,7 +61,7 @@ ms.locfileid: "88891856"
 6. 加入 Microsoft 合作夥伴網路。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 您需要一個永久的帳戶來進行測試，而且至少已註冊兩個使用者。
 
@@ -277,6 +277,6 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 Microsoft 合作夥伴網路可讓您立即存取專屬資源、程式、工具和連接。 若要加入網路並建立您的「移至市場」方案，請參閱 [觸及商業客戶](https://partner.microsoft.com/explore/commercial#gtm)。
 
 
-## <a name="next-steps"></a>後續步驟
-
-如需建置支援 Azure AD 登入之應用程式的詳細資訊，請參閱 [Azure AD 的驗證案例](authentication-flows-app-scenarios.md)。
+## <a name="next-steps"></a>接下來的步驟
+* [建置 SCIM 端點和設定使用者佈建](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+* [Azure AD 的驗證案例](authentication-flows-app-scenarios.md)

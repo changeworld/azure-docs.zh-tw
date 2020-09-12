@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: daffcbf0a2ceb6f28cbb539906d4c6387840aa20
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b26054ae8dfb73dea8d064292beb73220be5e09
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752096"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433444"
 ---
 # <a name="configure-an-aks-cluster"></a>設定 AKS 叢集
 
@@ -218,7 +218,7 @@ az extension update --name aks-preview
 ### <a name="use-gen2-vms-on-new-clusters-preview"></a>在新的叢集上使用 Gen2 的 Vm (Preview) 
 設定叢集，以在建立叢集時，針對選取的 SKU 使用 Gen2 Vm。 使用 `--aks-custom-headers` 旗標，在新叢集上將 Gen2 設定為 VM 產生。
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
 ```
 
@@ -227,7 +227,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D
 ### <a name="use-gen2-vms-on-existing-clusters-preview"></a>在現有的叢集上使用 Gen2 Vm (Preview) 
 將新的節點集區設定為使用 Gen2 Vm。 使用 `--aks-custom-headers` 旗標，將 Gen2 設定為該節點集區的 VM 世代。
 
-```azure-cli
+```azurecli
 az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
 ```
 
@@ -276,7 +276,7 @@ az extension update --name aks-preview
 
 將叢集設定為在建立叢集時使用暫時作業系統磁片。 使用旗標將 `--aks-custom-headers` 暫時 OS 設定為新叢集的 os 磁片類型。
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
 ```
 
@@ -285,7 +285,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D
 ### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>在現有的叢集上使用暫時作業系統 (預覽) 
 將新的節點集區設定為使用暫時 OS 磁片。 使用 `--aks-custom-headers` 旗標，將 os 磁片類型設定為該節點集區的 os 磁片類型。
 
-```azure-cli
+```azurecli
 az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
 ```
 

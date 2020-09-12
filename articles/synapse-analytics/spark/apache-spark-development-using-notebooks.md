@@ -10,16 +10,16 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 6e0062450889a2bbbdfcd47137ffbe36b83cae57
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 2feaf33f7bc31396764bfbaa3ae6291b6752e961
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849093"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612798"
 ---
-# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立、開發及維護 Synapse Studio (preview) 筆記本
+# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立、開發及維護 Synapse Studio (預覽版) 筆記本
 
-Synapse Studio (preview) 筆記本是一個 web 介面，可讓您建立檔案，其中包含即時程式碼、視覺效果和敘述文字。 筆記本是驗證想法和使用快速實驗從您的資料取得見解的絕佳位置。 筆記本也廣泛用於資料準備、資料視覺效果、機器學習和其他巨量資料案例。
+Synapse Studio (preview) 筆記本是一個 web 介面，可讓您建立包含即時程式碼、視覺效果和敘述文字的檔案。 筆記本是驗證想法和使用快速實驗從您的資料取得見解的絕佳位置。 筆記本也廣泛用於資料準備、資料視覺效果、機器學習和其他巨量資料案例。
 
 使用 Azure Synapse Studio 筆記本，您可以：
 
@@ -110,7 +110,7 @@ Azure Synapse Studio 筆記本支援四種 Apache Spark 語言：
 
 ### <a name="ide-style-intellisense"></a>整合式開發環境 (IDE) 樣式的 IntelliSense
 
-Azure Synapse Studio 與 Monaco 編輯器整合，可將整合式開發環境樣式的 IntelliSense 帶入儲存格編輯器。 語法醒目提示、錯誤標記和自動程式碼完成可協助您撰寫程式碼並更快速地找出問題。
+Azure Synapse Studio 與 Monaco 編輯器整合，可將整合式開發環境樣式的 IntelliSense 帶入儲存格編輯器。 語法醒目提示、錯誤標記和自動程式碼完成可協助您更快速地撰寫程式碼及找出問題。
 
 IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來檢視支援的功能。
 
@@ -191,9 +191,9 @@ IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來檢
    ![run-cells-above-or-below](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
 
-### <a name="cancel-all-running-cells"></a>取消所有正在執行的儲存格
-按一下 [**全部取消**] 按鈕，取消正在等候佇列中的執行中儲存格或儲存格。 
-   ![全部取消-資料格](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
+### <a name="cancel-all-running-cells"></a>取消所有執行中的儲存格
+按一下 [ **全部取消** ] 按鈕，取消正在佇列中的執行中資料格或資料格。 
+   ![全部取消-儲存格](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 ### <a name="cell-status-indicator"></a>儲存格狀態指標
 
@@ -204,7 +204,7 @@ IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來檢
 ### <a name="spark-progress-indicator"></a>Spark 進度指示器
 
 Azure Synapse Studio 筆記本純粹是以 Spark 為基礎。 程式碼儲存格會從遠端在 Spark 集區上執行。 系統隨即會提供具有即時進度列的 Spark 作業進度列指示器，以協助您瞭解作業執行狀態。
-每個作業或階段的工作數可協助您識別 spark 作業的平行層級。 您也可以透過按一下作業 (或階段) 名稱的連結，深入瞭解特定作業的 Spark UI， (或階段) 。
+每個作業或階段的工作數目可協助您識別 spark 作業的平行層級。 您也可以透過按一下作業 (或階段) 名稱的連結，深入瞭解特定工作的 Spark UI (或階段) 。
 
 
 ![spark-progress-indicator](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
@@ -215,7 +215,7 @@ Azure Synapse Studio 筆記本純粹是以 Spark 為基礎。 程式碼儲存格
 
 [![會話管理](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
 
-Spark 會話的推薦現在已可在 spark 會話設定面板上取得。 您可以直接從 [會話設定] 面板中選取 spark 集區，並查看有多少節點正在使用，以及有多少剩餘的執行的執行。 這些資訊可協助您適當地設定會話大小，而不是來回修改。
+Spark 會話推薦現在可在 spark 會話設定面板上取得。 您可以直接從 [會話設定] 面板中選取 spark 集區，並查看有多少節點正在使用，以及有多少剩餘的執行程式可供使用。 這些資訊可協助您適當地設定會話大小，而不是來回修改它。
 
 ![會話-建議](./media/apache-spark-development-using-notebooks/synapse-spark-session-recommender.png)
 
@@ -232,7 +232,7 @@ from pyspark.sql.types import *
 account_name = "Your account name"
 container_name = "Your container name"
 relative_path = "Your path"
-adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (blob_container_name, blob_account_name,  blob_relative_path)
+adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (container_name, account_name, relative_path)
 
 spark.conf.set("fs.azure.account.auth.type.%s.dfs.core.windows.net" %account_name, "SharedKey")
 spark.conf.set("fs.azure.account.key.%s.dfs.core.windows.net" %account_name ,"Your ADLSg2 Primary Key")
@@ -273,25 +273,25 @@ df = spark.read.option("header", "true") \
 
 ## <a name="visualize-data-in-a-notebook"></a>在筆記本中將資料視覺化
 
-### <a name="produce-rendered-table-view"></a>產生呈現的資料表視圖
+### <a name="produce-rendered-table-view"></a>產生轉譯的表格視圖
 
 表格式結果檢視會提供選項，以建立橫條圖、折線圖、圓形圖、散佈圖和區域圖。 您可以將資料視覺化，而不需要撰寫程式碼。 您可以在 [圖表選項] 中自訂圖表。 
 
-預設會在轉譯的資料表檢視中顯示 **%%sql** magic 命令的輸出。 您可以 <code>display(df)</code> 在 Spark 資料框架或復原的分散式資料集上呼叫， (RDD) 函數來產生轉譯的資料表視圖。
+預設會在轉譯的資料表檢視中顯示 **%%sql** magic 命令的輸出。 您可以 <code>display(df)</code> 在 Spark 資料框架或復原的分散式資料集上呼叫 (RDD) 函數來產生轉譯的資料表視圖。
 
    [![builtin-charts](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 
-### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>將大型資料集的內建圖表視覺化 
+### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>從大規模資料集將內建圖表視覺化 
 
-根據預設，函式 <code>display(df)</code> 只會接受資料的前1000個數據列來轉譯圖表。 檢查**所有結果的匯總**，**然後按一下 [** 套用] 按鈕，即可從整個資料集套用圖表產生。 當圖表設定變更時，將會觸發 spark 作業，需要一些時間來完成計算並轉譯圖表。 
+根據預設，函式 <code>display(df)</code> 只會採用前1000個數據列的資料來呈現圖表。 檢查 **所有結果的匯總** ， **然後按一下 [** 套用] 按鈕，就會從整個資料集套用圖表產生。 當圖表設定變更時，將會觸發 spark 作業，需要一段時間才能完成計算並呈現圖表。 
     [![內建-圖表-匯總-全部](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
 
 
-### <a name="visualize-data-statistic-information"></a>視覺化資料統計資訊
-您可以使用 <code>display(df, summary = true)</code> 來檢查給定 Spark 資料框架的統計資料摘要，其中包含每個資料行的資料行名稱、資料行類型、唯一值和遺漏值。 您也可以選取特定資料行，以查看其最小值、最大值、平均值和標準差。
+### <a name="visualize-data-statistic-information"></a>視覺化資料統計資料資訊
+您可以使用 <code>display(df, summary = true)</code> 來檢查特定 Spark 資料框架的統計資料摘要，其中包含資料行名稱、資料行類型、唯一值，以及每個資料行的遺漏值。 您也可以選取特定資料行，以查看其最大值、最大值、平均值和標準差。
     [內 ![ 建-圖表-摘要 ](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png#lightbox)
 
-### <a name="render-html-or-interactive-libraries"></a>呈現 HTML 或互動式程式庫
+### <a name="render-html-or-interactive-libraries"></a>轉譯 HTML 或互動式程式庫
 
 您可以使用 **displayHTML()** 來呈現 HTML 或互動式程式庫，例如 **bokeh**。
 
@@ -349,9 +349,9 @@ displayHTML(html)
    ![notebook-properties](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
 ## <a name="magic-commands"></a>Magic 命令
-您可以在 Azure Synapse Studio 筆記本中使用您熟悉的 Jupyter magic 命令。 請檢查下列清單，以取得目前可用的 magic 命令。 請告訴我們您在 GitHub 上的使用案例，讓我們可以繼續建立更多的 magic 命令以符合您的需求。
+您可以在 Azure Synapse Studio 筆記本中使用您熟悉的 Jupyter magic 命令。 請檢查下列清單，以取得目前可用的 magic 命令。 [請在 GitHub 上告訴我們您的使用案例](https://github.com/MicrosoftDocs/azure-docs/issues/new)，讓我們可以繼續建立更多魔術命令以符合您的需求。
 
-可用的行 magic： [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)， [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)， [% time it](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
+可用的行 magic： [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)， [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)， [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
 可用的儲存格 magic：[%%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%%capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)、[%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)、[%%sql](#use-multiple-languages)、[%%pyspark](#use-multiple-languages)、[%%spark](#use-multiple-languages)、[%%csharp](#use-multiple-languages)
 
@@ -360,25 +360,25 @@ displayHTML(html)
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>將筆記本新增至管線
 
-按一下右上角的 [**新增至管線**] 按鈕，將筆記本新增至現有的管線或建立新的管線。
+按一下右上角的 [ **新增至管線** ] 按鈕，將筆記本新增至現有的管線或建立新的管線。
 
 ![新增至管線](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
 
-### <a name="designate-a-parameters-cell"></a>指定參數資料格
+### <a name="designate-a-parameters-cell"></a>指定參數儲存格
 
-若要參數化您的筆記本，請選取省略號 ( ... ) 以存取最右側的其他 [資料格動作] 功能表。 然後選取 [**切換參數資料格**]，將儲存格指定為 [參數] 資料格。
+若要將筆記本參數化，請選取省略號 ( ... ) 以存取最右側的 [其他資料格動作] 功能表。 然後選取 [ **切換參數資料格** ]，將資料格指定為 [參數] 儲存格。
 
 ![切換參數](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 
-Azure Data Factory 會尋找 [參數] 資料格，並將此資料格視為在執行時傳入之參數的預設值。 執行引擎會在 [參數] 資料格下方加入具有輸入參數的新資料格，以便覆寫預設值。 若未指定任何參數資料格，插入的儲存格將會插入筆記本的頂端。
+Azure Data Factory 會尋找參數儲存格，並將此資料格視為在執行時間傳入之參數的預設值。 執行引擎會在參數資料格下方加入新的資料格，其中包含輸入參數，以便覆寫預設值。 如果沒有指定參數儲存格，則會將插入的儲存格插入筆記本頂端。
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>從管線指派參數值
 
-建立具有參數的筆記本之後，您可以使用 Azure Synapse 筆記本活動從管線執行它。 將活動新增至管線畫布之後，您將能夠在 [**設定**] 索引標籤上設定 [**基底參數**] 區段底下的參數值。 
+建立具有參數的筆記本之後，您可以使用 Azure Synapse 筆記本活動從管線執行它。 將活動新增至管線畫布之後，您將能夠在 [**設定**] 索引標籤的 [**基底參數**] 區段下設定參數值。 
 
-![指派-參數](./media/apache-spark-development-using-notebooks/assign-parameter.png)
+![assign 參數](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 
-指派參數值時，您可以使用[管線運算式語言](../../data-factory/control-flow-expression-language-functions.md)或[系統變數](../../data-factory/control-flow-system-variables.md)。
+指派參數值時，您可以使用 [管線運算式語言](../../data-factory/control-flow-expression-language-functions.md) 或 [系統變數](../../data-factory/control-flow-system-variables.md)。
 
 
 
@@ -390,7 +390,7 @@ Azure Data Factory 會尋找 [參數] 資料格，並將此資料格視為在執
 
    ![command-mode](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. 編輯模式會以文字游標指示，提示您在編輯器區域中輸入。 當儲存格處於編輯模式時，您可以在資料格中輸入。 按下 `Enter` 或使用滑鼠按一下儲存格的編輯器區域，以進入編輯模式。
+2. 編輯模式會以文字游標指示，提示您在編輯器區域中輸入。 當儲存格處於編輯模式時，您可以在資料格中輸入資料格。 按下 `Enter` 或使用滑鼠按一下儲存格的編輯器區域，以進入編輯模式。
    
    ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 

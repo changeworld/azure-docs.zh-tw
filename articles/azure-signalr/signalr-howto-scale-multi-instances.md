@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: ecf4a35fc239a70e87550a97e71d7abd3d00ecfa
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd6ac8c4d4fc4c3fec4f549f8ef4f955e2b1c637
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921982"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439209"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>如何使用多個實例調整 SignalR Service？
 最新的 SignalR Service SDK 支援 SignalR Service 實例的多個端點。 您可以使用這項功能來調整並行連接，或將它用於跨區域訊息處理。
@@ -27,7 +27,7 @@ ms.locfileid: "88921982"
 
 您可以使用下列命令來新增多個實例連接字串 `dotnet` ：
 
-```batch
+```cmd
 dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-a <ConnectionString1>
 dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-b:primary <ConnectionString2>
 dotnet user-secrets set Azure:SignalR:ConnectionString:backup:secondary <ConnectionString3>
@@ -236,7 +236,7 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 ![容錯移轉](./media/signalr-howto-scale-multi-instances/failover_negotiate.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本指南中，您已瞭解如何在相同的應用程式中設定多個實例，以進行調整、分區化和跨區域案例。
 

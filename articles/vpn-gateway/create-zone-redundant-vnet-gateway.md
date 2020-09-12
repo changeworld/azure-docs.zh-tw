@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1404f5201ff5f543e34c6a4c8e5713cab3a4c51b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2eaf1470e2d861ecfc1c1bc96f6040a1c3e0a644
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033473"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425223"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>在 Azure 可用性區域中建立區域備援虛擬網路閘道
 
@@ -138,7 +138,7 @@ New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>我可以在哪些區域中使用新的 SKU？
 
-如需可用區域的最新清單，請參閱[可用性區域](../availability-zones/az-region.md)。
+如需可用區域的最新清單，請參閱 [可用性區域](../availability-zones/az-region.md) 。
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>我可以將現有的虛擬網路閘道變更/遷移/升級為區域備援或分區閘道嗎？
 

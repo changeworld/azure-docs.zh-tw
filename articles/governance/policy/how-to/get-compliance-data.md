@@ -3,12 +3,12 @@ title: 取得原則合規性資料
 description: Azure 原則評估和效果會決定合規性。 了解如何取得 Azure 資源的合規性詳細資料。
 ms.date: 08/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 7795bba9fec79ee13600d9c72f68e9c763b169e4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 57e508048b5e628911db90b0b6835f88b5ebd8fb
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054647"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648346"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>取得 Azure 資源的合規性資料
 
@@ -34,7 +34,7 @@ Azure 原則的其中一個最大優點，就是能夠針對訂用帳戶中的�
 
 - 更新已指派給範圍的原則或計畫。 此案例的評估週期和時間與範圍的新指派相同。
 
-- 資源會透過 Azure Resource Manager、REST API 或受支援的 SDK，在具有指派的範圍內部署或更新。 在此案例中，個別資源的效果事件 (附加、稽核、拒絕、部署) 和合規性狀態資訊，約 15 分鐘後會在入口網站和 SDK 中變成可用。 此事件不會導致對其他資源進行評估。
+- 資源會透過 Azure Resource Manager、REST API 或支援的 SDK，在具有指派的範圍內部署或更新。 在此案例中，個別資源的效果事件 (附加、稽核、拒絕、部署) 和合規性狀態資訊，約 15 分鐘後會在入口網站和 SDK 中變成可用。 此事件不會導致對其他資源進行評估。
 
 - 標準合規性評估週期。 每 24 小時會自動對指派進行一次重新評估。 由許多資源組成的大型原則或方案可能需要一些時間，因此對於何時會完成評估週期，並沒有任何預先定義的預期。 完成之後，會在入口網站和 SDK 中提供更新的合規性結果。
 
@@ -44,19 +44,19 @@ Azure 原則的其中一個最大優點，就是能夠針對訂用帳戶中的�
 
 ### <a name="on-demand-evaluation-scan"></a>隨選評估掃描
 
-您可以使用 Azure CLI、Azure PowerShell 或對 REST API 的呼叫來啟動訂用帳戶或資源群組的評估掃描。 這個掃描是一個非同步程序。
+訂用帳戶或資源群組的評估掃描可以使用 Azure CLI、Azure PowerShell 或 REST API 的呼叫來啟動。 這個掃描是一個非同步程序。
 
 #### <a name="on-demand-evaluation-scan---azure-cli"></a>隨選評估掃描-Azure CLI
 
-合規性掃描會使用[az policy state 觸發程式-scan](/cli/azure/policy/state#az-policy-state-trigger-scan)命令來啟動。
+相容性掃描會使用 [az policy state 觸發程式掃描](/cli/azure/policy/state#az-policy-state-trigger-scan) 命令來啟動。
 
-根據預設，`az policy state trigger-scan` 會針對目前訂用帳戶中的所有資源啟動評估。 若要開始評估特定的資源群組，請使用**資源群組**參數。 下列範例會在目前的訂用帳戶中針對 _MyRG_ 資源群組啟動合規性掃描：
+根據預設，`az policy state trigger-scan` 會針對目前訂用帳戶中的所有資源啟動評估。 若要開始評估特定的資源群組，請使用 **資源群組** 參數。 下列範例會在目前的訂用帳戶中針對 _MyRG_ 資源群組啟動合規性掃描：
 
 ```azurecli-interactive
 az policy state trigger-scan --resource-group "MyRG"
 ```
 
-您可以選擇不要等待非同步處理常式完成，再繼續進行**無等候**參數。
+您可以選擇不等待非同步進程完成，然後再繼續進行 **無等待** 參數。
 
 #### <a name="on-demand-evaluation-scan---azure-powershell"></a>隨選評估掃描 - Azure PowerShell
 
@@ -142,11 +142,15 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 例如，假設您有資源群組 – ContosoRG，且部分的儲存體帳戶 (以紅色醒目提示) 會公開至公用網路。
 
-:::image type="content" source="../media/getting-compliance-data/resource-group01.png" alt-text="公開至公用網路的儲存體帳戶" border="false":::
+:::image type="complex" source="../media/getting-compliance-data/resource-group01.png" alt-text="在 Contoso R G 資源群組中公開至公用網路的儲存體帳戶圖表。" border="false":::
+   此圖顯示 Contoso R G 資源群組中五個儲存體帳戶的影像。  儲存體帳戶一和三是藍色，而儲存體帳戶二、四和五是紅色。
+:::image-end:::
 
 在此範例中，您必須注意安全性風險。 既然您已建立原則指派，系統就會針對 ContosoRG 資源群組中的所有儲存體帳戶評估該原則指派。 其會稽核三個不符合規範的儲存體帳戶，並因此將其狀態變更為**不符合規範**。
 
-:::image type="content" source="../media/getting-compliance-data/resource-group03.png" alt-text="已稽核不符合規範的儲存體帳戶" border="false":::
+:::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Contoso R G 資源群組中儲存體帳戶合規性的圖表。" border="false":::
+   此圖顯示 Contoso R G 資源群組中五個儲存體帳戶的影像。 儲存體帳戶的一個和三個現在在其下有綠色核取記號，而儲存體帳戶二、四和五現在都有紅色警告符號。
+:::image-end:::
 
 除了**符合規範**和**不符合規範**以外，原則和資源還有其他三種狀態：
 
@@ -159,20 +163,20 @@ Azure 原則會使用定義中的 **type** 和 **name** 欄位來判斷資源是
 合規性百分比是透過將**符合規範**資源除以_總資源_來決定的。
 _總資源_定義為**符合規範**、**不符合規範**和**衝突**資源的總和。 整體的合規性數字是**符合規範**之不同資源的總和除以所有不同資源的總和。 在下圖中，有 20 種適用的不同資源，只有一種是**不符合規範**。 整體資源合規性為 95% (20 分之 19)。
 
-:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="來自 [合規性] 頁面的原則合規性範例" border="false":::
+:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="[合規性] 頁面中原則合規性詳細資料的螢幕擷取畫面。" border="false":::
 
 > [!NOTE]
-> Azure 原則中的法規遵循是一項預覽功能。 在入口網站中，SDK 和頁面的相容性屬性會因啟用的計畫而有所不同。 如需詳細資訊，請參閱[法規合規性](../concepts/regulatory-compliance.md)
+> Azure 原則中的法規合規性是預覽功能。 在入口網站中，SDK 和頁面中的相容性屬性會因啟用的計畫而有所不同。 如需詳細資訊，請參閱 [法規合規性](../concepts/regulatory-compliance.md)
 
 ## <a name="portal"></a>入口網站
 
 Azure 入口網站示範視覺化並了解您環境中合規性狀態的圖形化體驗。 在 [原則] 頁面上，[概觀] 選項提供有關原則和計畫合規性之可用範圍的詳細資料。 除了每個指派的合規性狀態和計數之外，還包含一個圖表，顯示過去七天的合規性。 [合規性] 頁面包含大部分相同的資訊 (圖表除外)，但提供額外的篩選和排序選項。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="Azure 原則 [合規性] 頁面的範例" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="相容性頁面、篩選選項和詳細資料的螢幕擷取畫面。" border="false":::
 
-由於可以將一個原則或方案指派給不同的範圍，因此表格包含每個指派的範圍，以及所指派的定義類型。 也會提供每個指派的不符合規範的資源和不符合規範的原則數目。 按一下表格中的原則或計畫可讓您更深入地查看該特定指派的合規性。
+由於可以將一個原則或方案指派給不同的範圍，因此表格包含每個指派的範圍，以及所指派的定義類型。 也會提供每個指派的不符合規範的資源和不符合規範的原則數目。 在資料表中選取原則或方案，可讓您更深入瞭解該特定指派的合規性。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="Azure 原則合規性詳細資料頁面的範例" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="[合規性詳細資料] 頁面的螢幕擷取畫面，包括計數和符合資源規範的詳細資料。" border="false":::
 
 [資源合規性] 索引標籤上的資源清單會顯示目前指派的現有資源評估狀態。 此索引標籤預設為 [不符合規範]，但您可以進行篩選。
 由要求所觸發來建立資源的事件 (附加、稽核、拒絕、部署) 會顯示在 [事件] 索引標籤底下。
@@ -180,15 +184,15 @@ Azure 入口網站示範視覺化並了解您環境中合規性狀態的圖形�
 > [!NOTE]
 > 針對 AKS 引擎原則，所顯示的資源是資源群組。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Azure 原則合規性事件的範例" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="合規性詳細資料頁面上 [事件] 索引標籤的螢幕擷取畫面。" border="false":::
 
 針對[資源提供者模式](../concepts/definition-structure.md#resource-provider-modes)資源，在 [資源合規性] 索引標籤上，選取資源或以滑鼠右鍵按一下資料列，然後選取 [檢視合規性詳細資料] 會開啟元件合規性詳細資料。 此頁面也會提供索引標籤以查看指派至此資源的原則、事件、元件事件，以及變更歷程記錄。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Azure 原則元件合規性詳細資料的範例" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="[元件相容性] 索引標籤的螢幕擷取畫面以及資源提供者模式指派的合規性詳細資料。" border="false":::
 
 返回 [資源合規性] 頁面，以滑鼠右鍵按一下您想要收集更多詳細資料的事件資料列，然後選取 [顯示活動記錄]。 活動記錄頁面隨即開啟，並會預先篩選至顯示指派和事件詳細資料的搜尋結果。 活動記錄檔提供有關這些事件的其他內容和資訊。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Azure 原則合規性活動記錄的範例" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="活動記錄的螢幕擷取畫面，適用于 Azure 原則活動與評估。" border="false":::
 
 ### <a name="understand-non-compliance"></a>了解不符合規範
 
@@ -196,7 +200,7 @@ Azure 入口網站示範視覺化並了解您環境中合規性狀態的圖形�
 
 ## <a name="command-line"></a>命令列
 
-您可以使用 REST API (來抓取入口網站中可用的相同資訊，包括[ARMClient](https://github.com/projectkudu/ARMClient)) 、Azure PowerShell 和 Azure CLI。 如需 REST API 的完整詳細資訊，請參閱 [Azure 原則見解](/rest/api/policy-insights/)參考。 REST API 參考頁面上有每個作業的 [試用] 綠色按鈕，可讓您直接在瀏覽器中試用。
+您可以使用 REST API (（包括 [ARMClient](https://github.com/projectkudu/ARMClient)) 、Azure PowerShell 和 Azure CLI）來抓取入口網站中可用的相同資訊。 如需 REST API 的完整詳細資訊，請參閱 [Azure 原則見解](/rest/api/policy-insights/)參考。 REST API 參考頁面上有每個作業的 [試用] 綠色按鈕，可讓您直接在瀏覽器中試用。
 
 使用 ARMClient 或類似工具來處理 REST API 範例的 Azure 驗證。
 
@@ -246,7 +250,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 
 ### <a name="query-for-resources"></a>查詢資源
 
-在上述範例中，**value.policyAssignments.policyDefinitions.results.queryResultsUri** 會為特定原則定義的所有不符合規範資源提供一個範例 URI。 查看 **$filter**值時，ComplianceState 等於 (eq) 為「不相容」、針對原則定義指定 PolicyAssignmentId，然後 PolicyDefinitionId 本身。 之所以要在篩選中包含 PolicyAssignmentId，是因為 PolicyDefinitionId 可能存在於數個具有各種不同範圍的原則或方案指派中。 藉由同時指定 PolicyAssignmentId 和 the PolicyDefinitionId，我們便可以明確指出要尋找的結果。 之前，針對 PolicyStates，我們使用了 **latest**，這會自動將 **from** 和 **to** 時間範圍設定為過去 24 小時。
+在上述範例中，**value.policyAssignments.policyDefinitions.results.queryResultsUri** 會為特定原則定義的所有不符合規範資源提供一個範例 URI。 查看 **$filter** 值時，ComplianceState 等於 (eq) 為 ' 不相容」，則會為原則定義指定 PolicyAssignmentId，然後指定 PolicyDefinitionId 本身。 之所以要在篩選中包含 PolicyAssignmentId，是因為 PolicyDefinitionId 可能存在於數個具有各種不同範圍的原則或方案指派中。 藉由同時指定 PolicyAssignmentId 和 the PolicyDefinitionId，我們便可以明確指出要尋找的結果。 之前，針對 PolicyStates，我們使用了 **latest**，這會自動將 **from** 和 **to** 時間範圍設定為過去 24 小時。
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant' and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
@@ -316,7 +320,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure 原則的[Azure CLI](/cli/azure/what-is-azure-cli)命令群組涵蓋了 REST 或 Azure PowerShell 中可用的大部分作業。 如需可用命令的完整清單，請參閱[Azure CLI Azure 原則總覽](/cli/azure/policy)。
+Azure 原則的 [Azure CLI](/cli/azure/what-is-azure-cli) 命令群組涵蓋了 REST 或 Azure PowerShell 中可用的大部分作業。 如需可用命令的完整清單，請參閱 [Azure CLI-Azure 原則總覽](/cli/azure/policy)。
 
 範例：取得不符合規範資源數最高之最上層指派原則的狀態摘要。
 
@@ -324,7 +328,7 @@ Azure 原則的[Azure CLI](/cli/azure/what-is-azure-cli)命令群組涵蓋了 RE
 az policy state summarize --top 1
 ```
 
-回應的上半部如下列範例所示：
+回應的上半部看起來如以下範例所示：
 
 ```json
 {
@@ -639,7 +643,7 @@ Trent Baker
 
 如果您有一個 [Log Analytics 工作區](../../../azure-monitor/log-query/log-query-overview.md)，其中來自[活動記錄分析解決方案](../../../azure-monitor/platform/activity-log.md)的 `AzureActivity` 解決方案已繫結至您的訂用帳戶，則您也可以使用簡單的 Kusto 查詢和 `AzureActivity` 資料表，以檢視來自評估週期的不符合規範結果。 有了「Azure 監視器」記錄中的詳細資料，您便可以設定警示來監看不符合規範的情況。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="使用 Azure 監視器記錄的 Azure 原則合規性" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Azure 監視器記錄的螢幕擷取畫面，其中顯示 AzureActivity 資料表中 Azure 原則動作。" border="false":::
 
 ## <a name="next-steps"></a>後續步驟
 

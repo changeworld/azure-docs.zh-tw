@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 6ed95f87d2b2a5f811531a5ff258ebe97a9b892a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 3c2dbf8c98901d5a4147939c42e289abf25f7d21
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869196"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378366"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure Image Builder 範本 
 
@@ -142,7 +142,7 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 
 ## <a name="properties-source"></a>屬性：source
 
-映射產生器目前僅支援 HyperV 第1代映射和 Vm， `source` 本節包含映射產生器將使用之來源映射的相關資訊。
+`source` 區段包含 Image Builder 所要使用的來源映像相關資訊。 影像產生器目前只支援建立 Hyper-v 世代 (Gen1) 1 映射至 Azure 共用映射庫 (SIG) 或受控映射。 如果您想要建立 Gen2 映射，則需要使用來源 Gen2 映射，並將其散發至 VHD。 之後，您必須從 VHD 建立受控映射，並將其插入至 SIG 作為 Gen2 映射。
 
 API 需要可定義映像建置來源的 'SourceType'，目前有三種類型：
 - PlatformImage - 指出來源映像是 Marketplace 映像。
@@ -571,7 +571,7 @@ Azure 共用映像庫是新的映像管理服務，可讓您管理映像區域�
 
 ```json
 {
-    "type": "sharedImage",
+    "type": "SharedImage",
     "galleryImageId": "<resource ID>",
     "runOutputName": "<name>",
     "artifactTags": {

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2e637392328c7a09fb23adeca61a352707f05e0e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5a22bd9508feac1348bcd8042fa6ac791864c261
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267492"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425631"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -38,13 +38,25 @@ ms.locfileid: "89267492"
 >
 > 如需詳細資訊，請參閱： [媒體服務 v3 的 Azure 入口網站限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
 
+
+## <a name="august-2020"></a>2020 年 8 月
+
+### <a name="dynamic-encryption"></a>動態加密
+支援舊版 PlayReady 保護的可交互操作檔案格式 (PIFF 1.1) 加密現在可在動態封裝程式中使用。 這項支援可支援 Samsung 和 LG 的舊版智慧型電視組，這些設定會實作為 Microsoft 所發行之一般加密 standard (CENC) 的早期草稿。  PIFF 1.1 格式也稱為 Silverlight 用戶端程式庫先前支援的加密格式。 目前，此加密格式的唯一使用案例是將目標設為舊版智慧型電視市場，在某些區域中仍會有非一般的智慧型電視市場，但僅支援 PIFF 1.1 加密的 Smooth Streaming。 
+
+若要使用新的 PIFF 1.1 加密支援，請將串流定位器 URL 路徑中的加密值變更為 ' PIFF '。 如需詳細資訊，請參閱 [內容保護總覽。](content-protection-overview.md)
+例如： `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> PIFF 1.1 支援會提供為智慧型電視 (Samsung、LG) 的回溯相容解決方案，此解決方案會採用一般加密的早期「Silverlight」版本。 建議您只在需要時使用 PIFF 格式，以支援2009-2015 之間所附的舊版 Samsung 或 LG 智慧型電視，以支援 PIFF 1.1 版本的 PlayReady 加密。 
+
 ## <a name="july-2020"></a>2020 年 7 月
 
 ### <a name="live-transcriptions"></a>即時轉譯
 
 Live 轉譯現在支援19種語言和8個區域。
 
-## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>使用媒體服務和 Azure AD 保護您的內容
+### <a name="protecting-your-content-with-media-services-and-azure-ad"></a>使用媒體服務和 Azure AD 保護您的內容
 
 我們發佈了一個教學課程 [，稱為使用 Azure AD 的端對端內容保護](./azure-ad-content-protection.md)。
 

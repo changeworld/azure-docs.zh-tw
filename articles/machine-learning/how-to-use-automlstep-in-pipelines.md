@@ -11,19 +11,19 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0daa094a6d804cd8a40c4ba76b696e3c9b580f8a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: eb28ee0adb3c23a44936cbc940ee9bcddfd11141
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230335"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647415"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 中的 Azure Machine Learning 管線中使用自動化 ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning 的自動化 ML 功能可協助您找出高效能的模型，而不需要重新實作不免每種可能的方法。 結合 Azure Machine Learning 管線，您可以建立可部署的工作流程，以快速探索最適合您資料的演算法。 本文將說明如何有效率地將資料準備步驟加入自動化 ML 步驟。 自動化 ML 可以快速探索最適合您資料的演算法，同時讓您 MLOps 和模型生命週期運算化與管線。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -41,7 +41,7 @@ Azure Machine Learning 的自動化 ML 功能可協助您找出高效能的模�
 
 
 > [!TIP]
-> 公開預覽類別和中提供在管線步驟之間傳遞暫存資料的改良體驗  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) 。  這些類別是 [實驗](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) 性預覽功能，而且可能隨時變更。
+> 公開預覽類別和中提供在管線步驟之間傳遞暫存資料的改良體驗  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) 。  這些類別是 [實驗](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=truestable-vs-experimental) 性預覽功能，而且可能隨時變更。
 
 `AutoMLStep`是透過物件來設定 `AutoMLConfig` 。 `AutoMLConfig` 是有彈性的類別，如在 [Python 中設定自動化 ML 實驗](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)中所述。 
 
@@ -251,7 +251,7 @@ dataprep_step = PythonScriptStep(
 `prepped_data_path`物件的類型為 `PipelineOutputFileDataset` 。 請注意，它是在 `arguments` 和 `outputs` 引數中指定。 如果您檢查上一個步驟，您將會看到在資料準備程式碼中，引數的值 `'--output_path'` 是寫入 Parquet 檔案的檔案路徑。 
 
 > [!TIP]
-> 公開預覽版類別提供在管線步驟之間傳遞中繼資料的改良體驗 `OutputFileDatasetConfig` 。 深入瞭解 `OutputFileDatasetConfig` [SDK 參考檔中的](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)設計模式和方法。
+> 公開預覽版類別提供在管線步驟之間傳遞中繼資料的改良體驗 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 。 如需使用類別的程式碼範例 `OutputFileDatasetConfig` ，請參閱如何 [建立兩個步驟的 ML 管線](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。
 
 ## <a name="train-with-automlstep"></a>使用 AutoMLStep 定型
 
@@ -270,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 上述程式碼片段會 `PipelineOutputTabularDataset` 從資料準備步驟的輸出中建立高效能 `PipelineOutputFileDataset` 。
 
 > [!TIP]
-> 公開預覽類別也能夠將 `OutputFileDatasetConfig` 轉換 `OutputFileDatasetConfig` 成 [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) ，以便在 AutoML 回合中使用。 深入瞭解 `OutputFileDatasetConfig` [SDK 參考檔中的](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)設計模式和方法。
+> 公開預覽類別 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 包含 [read_delimited_files ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) 方法，可將轉換 `OutputFileDatasetConfig` 成 [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) 以 AutoML 執行中的耗用量。
 
 另一個選項是使用 `Dataset` 在工作區中註冊的物件：
 

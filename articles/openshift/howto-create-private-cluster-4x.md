@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
-ms.openlocfilehash: c196d48d22a2bd714c4b6252ad927d18790f4674
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 11343ba668a4b74c436313f0abd4daed577c36d4
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056766"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505336"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>建立 Azure Red Hat OpenShift 4 私人叢集
 
@@ -23,17 +23,35 @@ ms.locfileid: "88056766"
 > * 設定必要條件，並建立必要的虛擬網路和子網路
 > * 使用私人 API 伺服器端點與私人輸入控制器來部署叢集
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 版2.6.0 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="before-you-begin"></a>開始之前
 
-### <a name="register-the-resource-provider"></a>註冊資源提供者
+### <a name="register-the-resource-providers"></a>註冊資源提供者
 
-接下來，您必須在您的訂用帳戶中註冊 `Microsoft.RedHatOpenShift` 資源提供者。
+1. 如果您有多個 Azure 訂用帳戶，請指定相關的訂用帳戶識別碼：
 
-```azurecli-interactive
-az provider register -n Microsoft.RedHatOpenShift --wait
-```
+    ```azurecli-interactive
+    az account set --subscription <SUBSCRIPTION ID>
+    ```
+
+1. 註冊 `Microsoft.RedHatOpenShift` 資源提供者：
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.RedHatOpenShift --wait
+    ```
+
+1. 註冊 `Microsoft.Compute` 資源提供者：
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Compute --wait
+    ```
+
+1. 註冊 `Microsoft.Storage` 資源提供者：
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Storage --wait
+    ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>取得 Red Hat 提取祕密 (選擇性)
 
@@ -141,7 +159,7 @@ Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **[停用主要子網上的子網路私人端點原則](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy)。** 這是能夠連線和管理叢集的必要條件。
+5. **[停用主要子網上的子網路私人端點原則](../private-link/disable-private-link-service-network-policy.md)。** 這是能夠連線和管理叢集的必要條件。
 
     ```azurecli-interactive
     az network vnet subnet update \
@@ -207,7 +225,7 @@ az aro list-credentials \
 ```
 
 >[!IMPORTANT]
-> 若要連線到私人的 Azure Red Hat OpenShift 叢集，您將必須從主機 (位於您建立的虛擬網路中，或位於與部署叢集的虛擬網路[對等互連](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)的虛擬網路中) 執行下列步驟。
+> 若要連線到私人的 Azure Red Hat OpenShift 叢集，您將必須從主機 (位於您建立的虛擬網路中，或位於與部署叢集的虛擬網路[對等互連](../virtual-network/virtual-network-peering-overview.md)的虛擬網路中) 執行下列步驟。
 
 在瀏覽器中啟動主控台 URL，並使用 `kubeadmin` 認證登入。
 
@@ -215,7 +233,7 @@ az aro list-credentials \
 
 ## <a name="install-the-openshift-cli"></a>安裝 OpenShift CLI
 
-在您登入 OpenShift Web 主控台後，按一下右上方的 **？** ，然後按一下 [命令列工具]。 下載適合您電腦的版本。
+在您登入 OpenShift Web 主控台後，按一下右上方的 **？** ，然後按一下 [命令列工具]  。 下載適合您電腦的版本。
 
 ![Azure Red Hat OpenShift 登入畫面](media/aro4-download-cli.png)
 
@@ -230,9 +248,9 @@ apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.u
 ```
 
 >[!IMPORTANT]
-> 若要連線到私人的 Azure Red Hat OpenShift 叢集，您將必須從主機 (位於您建立的虛擬網路中，或位於與部署叢集的虛擬網路[對等互連](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)的虛擬網路中) 執行下列步驟。
+> 若要連線到私人的 Azure Red Hat OpenShift 叢集，您將必須從主機 (位於您建立的虛擬網路中，或位於與部署叢集的虛擬網路[對等互連](../virtual-network/virtual-network-peering-overview.md)的虛擬網路中) 執行下列步驟。
 
-使用以下命令登入 OpenShift 叢集的 API 伺服器。 **\<kubeadmin password>** 以您剛抓取的密碼取代。
+使用以下命令登入 OpenShift 叢集的 API 伺服器。 以您剛取出的密碼取代 **\<kubeadmin password>** 。
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>

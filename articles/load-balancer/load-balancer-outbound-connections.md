@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: 738b54d9fcd86313c2581c5d0f055a7cca8230b8
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 4368a025ecc158afa1ee78b8abd86bd6db42ba75
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706059"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438660"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的輸出連線
 
@@ -44,7 +44,7 @@ Azure Load Balancer 透過不同的機制提供輸出連線能力。 本文說�
 
 Azure 會根據使用 PAT 時的後端集區大小，使用演算法來判斷可用的預先配置 SNAT 埠數目。 每個與負載平衡器建立關聯的公用 IP 位址，都有 64,000 個連接埠可作為每個 IP 傳輸通訊協定的 SNAT 連接埠。 分別針對 UDP 和 TCP 預先配置相同數目的 SNAT 連接埠，並且對每個 IP 傳輸通訊協定個別使用。  不過，視流程為 UDP 或 TCP 而定，SNAT 連接埠的使用方式會有所不同。 建立輸出流程時，這些埠會動態取用 (高達預先配置的限制) 並在流程關閉或 [閒置超時](../load-balancer/troubleshoot-outbound-connection.md#idletimeout) 時釋出。 只有在必須使用連接埠來讓流程具有唯一性的情況下，才會取用連接埠。
 
-#### <a name="default-snat-ports-allocated"></a><a name="snatporttable"></a> 配置的預設 SNAT 埠
+#### <a name="dynamic-snat-ports-allocated"></a><a name="snatporttable"></a> 已配置動態 SNAT 埠
 
 下表說明各個後端集區大小層級的 SNAT 連接埠預先配置：
 

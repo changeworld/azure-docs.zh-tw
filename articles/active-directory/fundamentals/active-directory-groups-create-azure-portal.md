@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69367da8a732f383222836442406a495bf82a0db
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 3dcbd8618dc0f2bae2eacc9ced67869d8209286a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892587"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565519"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>使用 Azure Active Directory 建立基本群組並新增成員
 您可以使用 Azure Active Directory (Azure AD) 入口網站建立基本群組。 基於此文章的目的，一個基本的群組會由資源擁有者 (系統管理員) 新增到單一資源，並包含需要存取該資源的特定成員 (員工)。 如需更複雜的案例，包括動態成員資格和規則建立，請參閱[Azure Active Directory 使用者管理文件](../users-groups-roles/index.yml)。
@@ -28,7 +28,7 @@ ms.locfileid: "88892587"
 
 ### <a name="group-types"></a>群組類型：
 - **安全性**。 用來管理成員和電腦對使用者群組所共用之資源的存取權。 例如，您可以針對特定安全性原則建立安全性群組。 透過這麼做，您可以將一組權限同時授與所有成員，而不必個別為每個成員新增權限。 安全性群組可以將使用者、裝置、群組和服務主體作為其成員和使用者，將服務主體作為其擁有者。 如需管理資源存取權的詳細資訊，請參閱[使用 Azure Active Directory 群組來管理資源的存取權](active-directory-manage-groups.md)。
-- **Microsoft 365**。 透過將共用信箱、行事曆、檔案、SharePoint 網站等的存取權授與成員，來提供共同作業的機會。 此選項也可讓您將群組的存取權授與組織外的人員。 Microsoft 365 群組只能有使用者作為其成員。 使用者和服務主體都可以是 Microsoft 365 群組的擁有者。 如需 Office 365 群組的詳細資訊，請參閱 [瞭解 Microsoft 365 群組](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)。
+- **Microsoft 365**。 透過將共用信箱、行事曆、檔案、SharePoint 網站等的存取權授與成員，來提供共同作業的機會。 此選項也可讓您將群組的存取權授與組織外的人員。 Microsoft 365 群組只能有使用者作為其成員。 使用者和服務主體都可以是 Microsoft 365 群組的擁有者。 如需 Microsoft 365 群組的詳細資訊，請參閱 [瞭解 Microsoft 365 群組](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)。
 
 ### <a name="membership-types"></a>成員資格類型：
 - **已指派**： 讓您將特定使用者新增為此群組的成員並具有唯一權限。 基於此文章的目的，我們會使用此選項。
@@ -77,10 +77,9 @@ ms.locfileid: "88892587"
 
 ## <a name="turn-on-or-off-group-welcome-email"></a>開啟或關閉歡迎電子郵件
 
-建立任何新的 Microsoft 365 群組時，無論是使用動態或靜態成員資格，歡迎通知都會傳送給新增至群組的所有使用者。 當使用者或裝置的任何屬性變更時，就會處理組織中的所有動態群組規則，以因應潛在的成員資格變更。 新增的使用者隨後也會收到歡迎通知。 您可以在 [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps) 中關閉此行為。 
+建立任何新的 Microsoft 365 群組時，無論是使用動態或靜態成員資格，歡迎通知都會傳送給新增至群組的所有使用者。 當使用者或裝置的任何屬性變更時，就會處理組織中的所有動態群組規則，以因應潛在的成員資格變更。 新增的使用者隨後也會收到歡迎通知。 您可以在 [Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps) 中關閉此行為。 
 
 ## <a name="next-steps"></a>後續步驟
 
 - [使用群組管理對 SaaS 應用程式的存取](../users-groups-roles/groups-saasapps.md)
 - [使用 PowerShell 命令管理群組](../users-groups-roles/groups-settings-v2-cmdlets.md)
-

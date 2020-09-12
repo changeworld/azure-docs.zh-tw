@@ -5,14 +5,14 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 03fa302d2e8aa173419912b99d60734c7a4e0356
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6ca03e56d49d26fcd34a25ce1e3734db65b19b65
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814259"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646842"
 ---
 # <a name="create-a-consulting-service-offer"></a>建立諮詢服務供應項目
 
@@ -101,8 +101,8 @@ ms.locfileid: "88814259"
     - 分析
     - 應用程式現代化
     - 封存
-    - AI + 機器學習
-    - 備份
+    - AI + 機器學習服務
+    - Backup
     - 巨量資料
     - 資料平台
     - 資料中心管理
@@ -110,7 +110,7 @@ ms.locfileid: "88814259"
     - 災害復原
     - 身分識別
     - 物聯網
-    - 移轉
+    - 遷移
     - 網路
     - 安全性
     - 儲存體

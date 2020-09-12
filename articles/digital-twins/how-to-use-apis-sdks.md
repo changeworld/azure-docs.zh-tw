@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 39dd9604cf0e58eda94acf6528ab31eca26355d0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f61773e693ad1276ef48b2f26ef6e3e8f59e2992
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936770"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612368"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -27,8 +27,8 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 若要使用控制平面 Api：
 * 您可以藉由參考最新的 [Swagger 資料夾](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)，直接呼叫 api。 此存放庫也包含顯示使用方式的範例資料夾。
 * 您目前可以在中存取控制項 Api 的 Sdk .。。
-  - [.Net (c # ) ](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1) ([來源](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))  ([參考 [自動產生]](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview)) 
-  - [JAVA](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([來源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins))  ([參考 [自動產生]](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/management?view=azure-java-preview)) 
+  - [.Net (c # ) ](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1) ([來源](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))  ([參考 [自動產生]](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview&preserve-view=true)) 
+  - [JAVA](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([來源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins))  ([參考 [自動產生]](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/management?view=azure-java-preview&preserve-view=true)) 
   - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([來源](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins)) 
   - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([來源](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins)) 
   - [Go-來源](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins)
@@ -49,11 +49,13 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 * 您可以直接呼叫 Api，方法是 .。。
    - 參考最新的 [Swagger 資料夾](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)。 此存放庫也包含顯示使用方式的範例資料夾。 
    - 查看 [API 參考檔](https://docs.microsoft.com/rest/api/azure-digitaltwins/)。
-* 您可以使用 .NET (c # ) SDK。 目前，這是與這些 Api 互動的唯一已發佈 SDK。 若要使用 .NET SDK .。。
-   - 您可以在 NuGet 上查看套件： [DigitalTwins](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。 
+* 您可以使用 **.net (c # ) ** SDK。 若要使用 .NET SDK .。。
+   - 您可以從 NuGet： [DigitalTwins](https://www.nuget.org/packages/Azure.DigitalTwins.Core)來查看和新增套件。 
    - 您可以在 GitHub： [適用于 .net 的 Azure IoT 數位 Twins 用戶端程式庫](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)中找到 SDK 來源，包括範例的資料夾。 
-   - 您可以查看 [SDK 參考檔](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview)。
+   - 您可以查看 [SDK 參考檔](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview&preserve-view=true)。
    - 您可以繼續閱讀本文的 [.net (c # ) SDK (資料平面) ](#net-c-sdk-data-plane) 一節，以查看詳細的資訊和使用範例。
+* 您可以使用 **JavaScript** SDK。 使用 JavaScript SDK .。。
+   - 您可以從 npm 查看和安裝套件： [適用于 JavaScript 的 Azure Azure 數位 Twins 用戶端程式庫](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1)
 * 您可以使用 AutoRest 來產生另一種語言的 SDK。 遵循 how [*to：使用 AutoRest 建立 Azure 數位 Twins 的自訂 sdk*](how-to-create-custom-sdks.md)中的指示。
 
 您也可以透過 [CLI](how-to-use-cli.md)與 Azure 數位 Twins 互動，來練習日期平面 api。
@@ -266,15 +268,15 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 下列清單提供使用 Api 和 Sdk 的其他詳細資料和一般指導方針。
 
-* 若要使用 SDK，請將類別具現化 `DigitalTwinsClient` 。 此函式需要可以使用套件中各種驗證方法取得的認證 `Azure.Identity` 。 如需詳細資訊 `Azure.Identity` ，請參閱其 [命名空間檔](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)。 
-* 您可能會在 `InteractiveBrowserCredential` 開始使用時發現有用的功能，但還有其他幾個選項，包括 [受控識別](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)的認證，您可能會使用這些選項來驗證 [使用 MSI](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) 針對 azure 數位 Twins 所設定的 azure 函式。 如需詳細資訊 `InteractiveBrowserCredential` ，請參閱其 [類別檔](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)。
+* 若要使用 SDK，請將類別具現化 `DigitalTwinsClient` 。 此函式需要可以使用套件中各種驗證方法取得的認證 `Azure.Identity` 。 如需詳細資訊 `Azure.Identity` ，請參閱其 [命名空間檔](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)。 
+* 您可能會在 `InteractiveBrowserCredential` 開始使用時發現有用的功能，但還有其他幾個選項，包括 [受控識別](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)的認證，您可能會使用這些選項來驗證 [使用 MSI](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) 針對 azure 數位 Twins 所設定的 azure 函式。 如需詳細資訊 `InteractiveBrowserCredential` ，請參閱其 [類別檔](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)。
 * 所有服務 API 呼叫都會公開為類別上的成員函式 `DigitalTwinsClient` 。
 * 所有服務函數都存在於同步和非同步版本中。
-* 所有服務函式都會針對400或更新版本的任何傳回狀態擲回例外狀況。 請務必將呼叫包裝到 `try` 區段中，並至少攔截 `RequestFailedExceptions` 。 如需這種例外狀況類型的詳細資訊，請參閱 [這裡](https://docs.microsoft.com/dotnet/api/azure.requestfailedexception?view=azure-dotnet)。
-* 大部分的服務方法 `Response<T>` `Task<Response<T>>` 會針對非同步呼叫傳回或 () ，其中 `T` 是服務呼叫的 return 物件類別。 [`Response`](https://docs.microsoft.com/dotnet/api/azure.response-1?view=azure-dotnet)類別會封裝服務傳回，並在其欄位中提供傳回值 `Value` 。  
-* 具有分頁結果的服務方法會傳回 `Pageable<T>` 或 `AsyncPageable<T>` 作為結果。 如需類別的詳細資訊 `Pageable<T>` ，請參閱 [這裡](https://docs.microsoft.com/dotnet/api/azure.pageable-1?view=azure-dotnet-preview); 如需詳細資訊 `AsyncPageable<T>` ，請參閱 [這裡](https://docs.microsoft.com/dotnet/api/azure.asyncpageable-1?view=azure-dotnet-preview)。
+* 所有服務函式都會針對400或更新版本的任何傳回狀態擲回例外狀況。 請務必將呼叫包裝到 `try` 區段中，並至少攔截 `RequestFailedExceptions` 。 如需這種例外狀況類型的詳細資訊，請參閱 [這裡](https://docs.microsoft.com/dotnet/api/azure.requestfailedexception?view=azure-dotnet&preserve-view=true)。
+* 大部分的服務方法 `Response<T>` `Task<Response<T>>` 會針對非同步呼叫傳回或 () ，其中 `T` 是服務呼叫的 return 物件類別。 [`Response`](https://docs.microsoft.com/dotnet/api/azure.response-1?view=azure-dotnet&preserve-view=true)類別會封裝服務傳回，並在其欄位中提供傳回值 `Value` 。  
+* 具有分頁結果的服務方法會傳回 `Pageable<T>` 或 `AsyncPageable<T>` 作為結果。 如需類別的詳細資訊 `Pageable<T>` ，請參閱 [這裡](https://docs.microsoft.com/dotnet/api/azure.pageable-1?view=azure-dotnet-preview&preserve-view=true); 如需詳細資訊 `AsyncPageable<T>` ，請參閱 [這裡](https://docs.microsoft.com/dotnet/api/azure.asyncpageable-1?view=azure-dotnet-preview&preserve-view=true)。
 * 您可以使用迴圈來反復查看分頁 `await foreach` 的結果。 如需此程式的詳細資訊，請參閱 [這裡](https://docs.microsoft.com/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8)。
-* 基礎 SDK 為 `Azure.Core` 。 請參閱 [Azure 命名空間檔](https://docs.microsoft.com/dotnet/api/azure?view=azure-dotnet-preview) 以取得 SDK 基礎結構和類型的參考。
+* 基礎 SDK 為 `Azure.Core` 。 請參閱 [Azure 命名空間檔](https://docs.microsoft.com/dotnet/api/azure?view=azure-dotnet-preview&preserve-view=true) 以取得 SDK 基礎結構和類型的參考。
 
 服務方法會盡可能傳回強型別的物件。 不過，因為 Azure 數位 Twins 是以使用者在執行時間中自訂的模型為基礎， (透過上傳至服務) 的 DTDL 模型來執行，所以許多服務 Api 會以 JSON 格式採用和傳回對應項資料。
 
@@ -288,7 +290,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 您可以從這裡查看實例的計量，並建立自訂的視圖。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 瞭解如何使用 Api 來設定 Azure 數位 Twins 實例和驗證：
 * [*How to：設定實例和驗證*](how-to-set-up-instance-scripted.md)

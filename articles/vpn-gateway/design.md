@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 06/01/2020
+ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: d0bcd0608796545a4982f72f276399d5f692e765
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: ecfb569f2791b674fe842e1c21cba972a8e9d2a7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852697"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443002"
 ---
 # <a name="vpn-gateway-design"></a>VPN 閘道設計
 
@@ -77,7 +77,7 @@ Azure 目前有兩種部署模型：傳統和 Resource Manager。 如果您已�
 
 ## <a name="expressroute-private-connection"></a><a name="ExpressRoute"></a>ExpressRoute (私人連線)
 
-ExpressRoute 可讓您透過連線提供者提供的私人連線，將內部部署網路延伸至 Microsoft 雲端。 透過 ExpressRoute，您可以建立 Microsoft 雲端服務的連線，例如 Microsoft Azure、Office 365 和 CRM Online。 連線可以來自任何 (IP VPN) 網路、點對點乙太網路，或透過共置設備上的連線提供者的虛擬交叉連線。
+ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部部署網路延伸至 Microsoft 雲端。 透過 ExpressRoute，您可以建立 Microsoft 雲端服務的連線，例如 Microsoft Azure、Office 365 和 CRM Online。 連線可以來自任何 (IP VPN) 網路、點對點乙太網路，或透過共置設備上的連線提供者的虛擬交叉連線。
 
 ExpressRoute 連線不會經過公用網際網路。 相較於一般網際網路連線，這可讓 ExpressRoute 連線提供更可靠、更快速、延遲更短和更安全的連線。
 

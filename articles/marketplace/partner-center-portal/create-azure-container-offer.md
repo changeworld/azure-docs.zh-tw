@@ -3,16 +3,16 @@ title: 建立 Azure 容器供應項目 - Azure Marketplace
 description: 了解如何建立容器供應項目並發佈至 Azure Marketplace。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 055db043f4e695001b2ee90a47a2531284466314
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 12987ae687e9af59fdd71b3aa846612c947b9a90
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815621"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649260"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中建立 Azure 容器供應項目
 

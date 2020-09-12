@@ -10,17 +10,17 @@ author: sdgilley
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e2f13cbdca9d6372677bbba24d60f4a73436cfd7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 1f68753e7b28163f3ec0c18c30cf5939e0bc5243
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179252"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649417"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理 Azure Machine Learning 工作區
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將會在[Azure Machine Learning](overview-what-is-azure-ml.md)的 Azure 入口網站中建立、查看和刪除[**Azure Machine Learning 工作區**](concept-workspace.md)。  入口網站是開始使用工作區的最簡單方式，但隨著您的需求變更或自動化需求的增加，您也可以 [使用 CLI](reference-azure-machine-learning-cli.md)、Python 程式 [代碼](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或透過 [VS Code 擴充](tutorial-setup-vscode-extension.md)功能來建立和刪除工作區。
+在本文中，您將會在[Azure Machine Learning](overview-what-is-azure-ml.md)的 Azure 入口網站中建立、查看和刪除[**Azure Machine Learning 工作區**](concept-workspace.md)。  入口網站是開始使用工作區的最簡單方式，但隨著您的需求變更或自動化需求的增加，您也可以 [使用 CLI](reference-azure-machine-learning-cli.md)、Python 程式 [代碼](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 或透過 [VS Code 擴充](tutorial-setup-vscode-extension.md)功能來建立和刪除工作區。
 
 ## <a name="create-a-workspace"></a>建立工作區
 
@@ -62,7 +62,7 @@ ms.locfileid: "89179252"
  1. 若要檢視新的工作區，選取 [前往資源]****。
 
 
-### <a name="networking"></a>網路功能
+### <a name="networking"></a>網路
 
 > [!IMPORTANT]
 > 如需搭配使用私人端點和虛擬網路與工作區的詳細資訊，請參閱 [網路隔離和隱私權](how-to-enable-virtual-network.md)。

@@ -3,12 +3,12 @@ title: 了解效果的運作方式
 description: 「Azure 原則」定義有各種效果，可決定合規性的管理和回報方式。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d2ea27ceda36d2feebcf12cc47ac741093b0729c
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079654"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425529"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure 原則效果
 
@@ -156,7 +156,8 @@ AuditIfNotExists 效果的 **details** 屬性含有定義所要比對相關資�
   - 如果 **details.type** 是在 **if** 條件資源之下的資源類型，則此原則會在受評估資源範圍內查詢此 **type** 的資源。 否則，原則會在與受評估資源相同的資源群組內進行查詢。
 - **Name** (選擇性)
   - 指定要比對的資源確切名稱，然後使原則擷取一個特定資源，而不是所指定類型的所有資源。
-  - 當 **if.field.type** 和 **then.details.type** 的條件值符合時，**Name** 會變成「必要」，則必須為 `[field('name')]`。 然而，應改為考慮 [audit](#audit) 效果。
+  - 當 **if. field** 的條件值， **然後輸入** match 時， **Name** 會變成 _required_ ，而必須是 `[field('name')]` 或 `[field('fullName')]` 子資源。
+    然而，應改為考慮 [audit](#audit) 效果。
 - **ResourceGroupName** (選擇性)
   - 允許比對來自不同資源群組的相關資源。
   - 如果 **type** 是一個會在 **if** 條件資源下的資源，則不適用。
@@ -277,7 +278,7 @@ DeployIfNotExists 效果的 **details** 屬性，含有用於定義所要比對�
   - 從嘗試在 **if** 條件資源下擷取資源開始著手，然後在與 **if** 條件資源相同的資源群組內進行查詢。
 - **Name** (選擇性)
   - 指定要比對的資源確切名稱，然後使原則擷取一個特定資源，而不是所指定類型的所有資源。
-  - 當 **if.field.type** 和 **then.details.type** 的條件值符合時，**Name** 會變成「必要」，則必須為 `[field('name')]`。
+  - 當 **if. field** 的條件值， **然後輸入** match 時， **Name** 會變成 _required_ ，而必須是 `[field('name')]` 或 `[field('fullName')]` 子資源。
 - **ResourceGroupName** (選擇性)
   - 允許比對來自不同資源群組的相關資源。
   - 如果 **type** 是一個會在 **if** 條件資源下的資源，則不適用。
@@ -571,7 +572,7 @@ Modify 效果的 **details** 屬性，含有用於定義修補所需權限的所
 |作業 |描述 |
 |-|-|
 |addOrReplace |將已定義的屬性或標記和值加入至資源，即使屬性或標記已經存在且具有不同的值。 |
-|新增 |將已定義的屬性或標記和值新增至資源。 |
+|加 |將已定義的屬性或標記和值新增至資源。 |
 |移除 |從資源中移除已定義的屬性或標記。 |
 
 ### <a name="modify-examples"></a>Modify 範例

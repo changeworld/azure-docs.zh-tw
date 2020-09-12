@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 6a37aaa2eee3151087ce33815d37bf5537578329
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: fe562b8202c508c13f4127d14aeb5f994d15f962
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782748"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649611"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本指南中，您將了解如何使用 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 定義自動化機器學習實驗的各種組態設定。 自動化機器學習服務會為您挑選演算法和超參數，並產生馬上可進行部署的模型。 有數個選項可用來設定自動化機器學習實驗。
+在本指南中，您將了解如何使用 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 定義自動化機器學習實驗的各種組態設定。 自動化機器學習服務會為您挑選演算法和超參數，並產生馬上可進行部署的模型。 有數個選項可用來設定自動化機器學習實驗。
 
 若要查看自動化機器學習實驗的範例，請參閱 [教學課程：使用自動化機器學習將分類模型定型](tutorial-auto-train-models.md) ，或 [使用雲端中的自動化機器學習來定型模型](how-to-auto-train-remote.md)。
 
@@ -46,7 +46,7 @@ ms.locfileid: "88782748"
     若要安裝 SDK，您可以： 
     * 建立計算實例，此實例會自動安裝 SDK，並針對 ML 工作流程進行預先設定。 如需詳細資訊，請參閱 [什麼是 Azure Machine Learning 計算實例？](concept-compute-instance.md#managing-a-compute-instance) 。 
 
-    * [自行安裝 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 請務必包含 `automl` 額外的。 
+    * [自行安裝 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。 請務必包含 `automl` 額外的。 
 
 ## <a name="select-your-experiment-type"></a>選取您的實驗類型
 
@@ -69,7 +69,7 @@ automl_config = AutoMLConfig(task = "classification")
 - 資料必須是表格形式。
 - 要預測的值 (目標資料行) 必須位於資料中。
 
-**針對遠端實驗**，必須可從遠端計算存取定型資料。 AutoML 只會在處理遠端計算時接受 [Azure Machine Learning TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 。 
+**針對遠端實驗**，必須可從遠端計算存取定型資料。 AutoML 只會在處理遠端計算時接受 [Azure Machine Learning TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) 。 
 
 Azure Machine Learning 資料集會將功能公開至：
 

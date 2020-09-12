@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 17be54536f785049aef6831e01f1f12219225b90
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d9200b66d51292271f546eb111f3355649318b91
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254367"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462711"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>使用 kubectl 搭配 Azure Stack Edge 裝置上的 PersistentVolume 來執行 Kubernetes 具狀態應用程式
 
@@ -22,7 +22,7 @@ ms.locfileid: "89254367"
 此程式適用于已 [在 Azure Stack Edge 裝置上審核 Kubernetes 儲存體](azure-stack-edge-gpu-kubernetes-storage.md) ，並熟悉 [Kubernetes 儲存體](https://kubernetes.io/docs/concepts/storage/)概念的人。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 部署可設定狀態的應用程式之前，請確定您已在裝置和您將用來存取裝置的用戶端上完成下列必要條件：
 
@@ -55,7 +55,10 @@ ms.locfileid: "89254367"
 
 ## <a name="provision-a-static-pv"></a>布建靜態 PV
 
-若要以靜態方式布建 PV，您需要在您的裝置上建立共用。 依照下列步驟，針對您的 SMB 或 NFS 共用布建 PV。 
+若要以靜態方式布建 PV，您需要在您的裝置上建立共用。 遵循這些步驟，針對您的 SMB 共用布建 PV。 
+
+> [!NOTE]
+> 本操作說明文章中使用的特定範例無法與 NFS 共用搭配使用。 一般來說，您可以使用非資料庫應用程式，將 NFS 共用布建在您的 Azure Stack Edge 裝置上。
 
 1. 選擇您是否要建立 Edge 共用或 Edge 本機共用。 遵循 [新增共用](azure-stack-edge-manage-shares.md#add-a-share) 中的指示來建立共用。 請務必選取 [ **使用 Edge 計算的共用**] 核取方塊。
 
@@ -71,7 +74,7 @@ ms.locfileid: "89254367"
 
         ![裝載適用于 PV 的現有本機共用](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/mount-edge-share-2.png)
 
-1. 記下共用名稱。 建立此共用時，會在對應至您所建立之 SMB 或 NFS 共用的 Kubernetes 叢集中自動建立永久性磁片區物件。 
+1. 記下共用名稱。 建立此共用時，會在對應至您所建立之 SMB 共用的 Kubernetes 叢集中自動建立永久性磁片區物件。 
 
 ## <a name="deploy-mysql"></a>部署 MySQL
 
@@ -147,7 +150,7 @@ ms.locfileid: "89254367"
               claimName: mysql-pv-claim
     ```
     
-2. 將檔案複製並儲存 `mysql-pv.yml` 到儲存的相同資料夾中 `mysql-deployment.yml` 。 若要使用您稍早建立的 SMB 或 NFS 共用 `kubectl` ，請將 `volumeName` PVC 物件中的欄位設定為共用的名稱。 
+2. 將檔案複製並儲存 `mysql-pv.yml` 到儲存的相同資料夾中 `mysql-deployment.yml` 。 若要使用您稍早建立的 SMB 共用 `kubectl` ，請將 `volumeName` PVC 物件中的欄位設定為共用的名稱。 
 
     > [!NOTE] 
     > 請確定 YAML 檔案具有正確的縮排。 您可以使用不 [起毛的 YAML](http://www.yamllint.com/) 來進行驗證，然後再儲存。
@@ -158,8 +161,8 @@ ms.locfileid: "89254367"
     metadata:
       name: mysql-pv-claim
     spec:
-      volumeName: <nfs-or-smb-share-name-here>
-      storageClassName: manual
+      volumeName: <smb-share-name-here>
+      storageClassName: ""
       accessModes:
         - ReadWriteOnce
       resources:
@@ -289,7 +292,6 @@ ms.locfileid: "89254367"
 
 ## <a name="verify-mysql-is-running"></a>確認 MySQL 正在執行
 
-上述 YAML 檔案會建立一個服務，讓叢集中的 Pod 可以存取資料庫。 服務選項 clusterIP：「無」可讓服務 DNS 名稱直接解析至 Pod 的 IP 位址。 當您的服務只有一個 Pod，而您不想要增加 Pod 數目時，這是最佳做法。
 
 若要針對正在執行 MySQL 之 pod 中的容器執行命令，請輸入：
 
@@ -339,7 +341,7 @@ persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
 ```                                                                                         
 
-當 PVC 被刪除時，PV 不再系結至 PVC。 當建立共用時布建了 PV，您將需要刪除該共用。 請遵循下列步驟：
+當 PVC 被刪除時，PV 不再系結至 PVC。 當建立共用時布建了 PV，您將需要刪除該共用。 遵循這些步驟：
 
 1. 卸載共用。 在 Azure 入口網站中，移至您的 **Azure Stack Edge 資源 > 共用** ，然後選取並按一下您要卸載的共用。 選取 [ **卸載** ] 並確認操作。 等候共用卸載。 取消掛接會釋放共用 (，因此會從 Kubernetes 叢集) 相關聯的 PersistentVolume。 
 
@@ -350,6 +352,6 @@ C:\Users\user>
     ![刪除本機共用以取得 PV](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/delete-edge-local-share-1.png)
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要瞭解如何以動態方式布建存放裝置，請參閱 [在 Azure Stack Edge 裝置上透過動態布建部署具狀態應用程式](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)

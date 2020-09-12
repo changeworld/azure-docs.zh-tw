@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 468bd838237e076aacb9dee0ccacfdcc1ea940af
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: c7f4cba10117efef4099b3524b49cae313593a9a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629111"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442706"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>從檔案大量複製到資料庫
 
@@ -55,7 +55,7 @@ ms.locfileid: "82629111"
     ![檢閱管線](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > 如果選擇 **Azure Synapse Analytics (先前稱為 SQL DW)** 作為**步驟 2** 中的資料目的地，則必須依照 SQL 資料倉儲 Polybase 的需求，輸入與 Azure Blob 儲存體的連線以進行暫存。 如下列螢幕擷取畫面所示，此範本會為 Blob 儲存體自動產生「儲存體路徑」。 檢查是否已在管線執行之後建立容器。
+    > 如果您選擇 **Azure Synapse Analytics (先前的 SQL DW) ** 作為上述 **步驟 2** 中的資料目的地，您必須輸入 Azure Blob 儲存體的連線以進行預備，如 AZURE SYNAPSE ANALYTICS (先前的 Sql 資料倉儲) Polybase 所需。 如下列螢幕擷取畫面所示，此範本會為 Blob 儲存體自動產生「儲存體路徑」。 檢查是否已在管線執行之後建立容器。
         
     ![Polybase 設定](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 

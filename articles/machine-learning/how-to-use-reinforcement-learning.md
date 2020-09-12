@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b5ad09925c4a81dd09bd1ddf171ffccb8413b12b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 97119f3ec370894183c4aee44ff8a5bd6e5ea93b
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650820"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647147"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>具有 Azure Machine Learning 的增強式學習 (預覽)
 
@@ -49,8 +49,8 @@ ms.locfileid: "88650820"
  
  - 您自己的 Jupyter Notebook 伺服器
 
-    - 安裝 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
-    - 安裝 [Azure Machine Learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py)：`pip install --upgrade azureml-contrib-reinforcementlearning`
+    - 安裝 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
+    - 安裝 [Azure Machine Learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&preserve-view=true)：`pip install --upgrade azureml-contrib-reinforcementlearning`
     - 建立[工作區組態檔](how-to-configure-environment.md#workspace)。
     - 執行虛擬網路[安裝筆記本](https://aka.ms/azure-rl-env-setup)，以開啟用於分散式增強式學習的網路連接埠。
 
@@ -107,7 +107,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-reinforcement-learning-experiment"></a>建立增強式學習實驗
 
-建立[實驗](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)來追蹤您的增強式學習執行。 在 Azure Machine Learning 中，實驗是相關試用的邏輯集合，用來組織執行記錄、歷程記錄、輸出等等。
+建立[實驗](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true)來追蹤您的增強式學習執行。 在 Azure Machine Learning 中，實驗是相關試用的邏輯集合，用來組織執行記錄、歷程記錄、輸出等等。
 
 ```python
 experiment_name='rllib-pong-multi-node'
@@ -213,7 +213,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>建立增強式學習估算器
 
-在本節中，您將了解如何使用 [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py)，將訓練作業提交至 Azure Machine Learning。
+在本節中，您將了解如何使用 [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&preserve-view=true)，將訓練作業提交至 Azure Machine Learning。
 
 Azure Machine Learning 會使用估算器類別來封裝回合組態資訊。 這可讓您輕鬆地指定如何設定指令碼執行。 如需 Azure Machine Learning 估算器模式的詳細資訊，請參閱[如何使用估算器來定型模型](how-to-train-ml-models.md)。
 
@@ -399,7 +399,7 @@ def on_train_result(info):
 
 ## <a name="submit-a-run"></a>提交執行
 
-[執行](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) 會處理進行中或完成作業的執行歷程記錄。 
+[執行](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true) 會處理進行中或完成作業的執行歷程記錄。 
 
 ```python
 run = exp.submit(config=rl_estimator)

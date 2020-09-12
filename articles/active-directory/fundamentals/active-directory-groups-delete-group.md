@@ -13,17 +13,17 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 869def6b3187e10727a170377f2635fb3652f98b
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 800c1742b49fce7e1adf8c3ca22181cfb7d0a085
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797588"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565502"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>使用 Azure Active Directory 刪除群組
 您有可能基於任何原因而刪除 Azure Active Directory (Azure AD) 群組，但通常是因為您：
 
-- 不正確地將**群組類型**設定為錯誤的選項。
+- 不正確地將 **群組類型** 設定為錯誤的選項。
 
 - 誤建錯誤或重複的群組。 
 
@@ -44,8 +44,8 @@ ms.locfileid: "87797588"
 
     ![MDM 原則 - 東部概觀頁面，已反白顯示刪除選項](media/active-directory-groups-delete-group/group-overview-blade.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 若您不慎將群組刪除，您可以再次建立。 如需詳細資訊，請參閱[如何建立基本的群組及新增成員](active-directory-groups-create-azure-portal.md)。
 
-- 若不慎刪除 Office 365 群組，您或許可以還原它。 如需詳細資訊，請參閱[還原已刪除的 Office 365 群組](../users-groups-roles/groups-restore-deleted.md)。
+- 如果您不小心刪除了 Microsoft 365 群組，就可以將它還原。 如需詳細資訊，請參閱[還原已刪除的 Office 365 群組](../users-groups-roles/groups-restore-deleted.md)。

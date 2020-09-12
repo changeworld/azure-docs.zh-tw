@@ -3,19 +3,19 @@ title: Azure Kubernetes Service 中支援的 Kubernetes 版本
 description: 了解 Azure Kubernetes Service (AKS) 中叢集的 Kubernetes 版本支援原則和生命週期
 services: container-service
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 45c60069c27a2bb9b34cc53eb394bd44a04bd0ba
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: fb5b9c446ea5574970b14c683fac258c17199fef
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144612"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565361"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中支援的 Kubernetes 版本
 
-Kubernetes 社群大約每隔三個月就會發行次要版本。 這些版本均包含新功能和增強功能。 修補程式版本會更頻繁地發行 (有時每週)，而且僅適用於次要版本中的重要 Bug 修正。 這些修補程式版本包括安全性弱點或主要 bug 的修正。
+Kubernetes 社群大約每隔三個月就會發行次要版本。 最近，Kubernetes 社區已將 [每個版本的支援視窗從9個月增加到12個月](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)，從1.19 版開始。 這些版本均包含新功能和增強功能。 修補程式版本更頻繁 (有時候是每週) ，而且適用于次要版本內的重大 bug 修正。 這些修補程式版本包括安全性弱點或主要 bug 的修正。
 
 ## <a name="kubernetes-versions"></a>Kubernetes 版本
 
@@ -41,8 +41,8 @@ Example:
 
 AKS 會定義正式推出的版本，做為所有 SLO 或 SLA 測量中啟用的版本，以及適用于所有區域的版本。 AKS 支援三個 GA 次要版本的 Kubernetes：
 
-* 在 AKS 中發行的最新 GA 次要版 (，我們會將其稱為 N) 。 
-* 兩個先前的次要版本。 
+* 在 AKS 中發行的最新 GA 次要版 (，我們會將其稱為 N) 。
+* 兩個先前的次要版本。
 * 每個支援的次要版本也最多可支援兩個 (2) 穩定的修補程式。
 * AKS 可能也支援預覽版本，這些版本會明確標示並受限於 [預覽條款及條件][preview-terms]。
 
@@ -143,6 +143,10 @@ az aks get-versions --location eastus --output table
 \* 暫止上游發行日期確認。
 
 ## <a name="faq"></a>常見問題集
+
+**預期升級 Kubernetes 版本以保持支援的頻率為何？**
+
+使用 Kubernetes 1.19 來說明， [開放原始碼社區已將支援擴展至1年](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)。 AKS 認可，以最少的時間啟用與上游承諾相符的修補程式和支援。 這表示從1.19 上的 AKS 叢集開始，您至少可以一年升級一次，以保持在支援的版本上。 若為1.18 或更低版本，支援的視窗會維持為9個月，每隔9個月需要升級一次，才能保持在支援的版本上。 強烈建議您定期測試新版本，並準備好升級至較新版本，以在 Kubernetes 內取得最新的穩定增強功能。
 
 **當使用者使用不支援的次要版本升級 Kubernetes 叢集時，會發生什麼事？**
 

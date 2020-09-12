@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: d7ac2777ffd500082bd0b8a9700d53bffd9d6931
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 2012f590aa833bea1b49955958095917a6479665
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177307"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438563"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 資訊安全中心內新功能的封存？
 
@@ -28,6 +28,84 @@ ms.locfileid: "89177307"
 - 新功能
 - 錯誤修正
 - 已被取代的功能
+
+
+## <a name="march-2020"></a>2020 年 3 月
+
+3月更新包括：
+
+- [工作流程自動化現已正式推出](#workflow-automation-is-now-generally-available)
+- [Azure 資訊安全中心與 Windows 管理中心整合](#integration-of-azure-security-center-with-windows-admin-center)
+- [Azure Kubernetes Service 的防護](#protection-for-azure-kubernetes-service)
+- [改良的 Just-In-Time 體驗](#improved-just-in-time-experience)
+- [Web 應用程式的兩個安全性建議已被取代](#two-security-recommendations-for-web-applications-deprecated)
+
+
+### <a name="workflow-automation-is-now-generally-available"></a>工作流程自動化現已正式推出
+
+Azure 資訊安全中心的工作流程自動化功能現已正式推出。 可使用此功能自動對安全性警示和建議觸發 Logic Apps。 此外，您還可以使用手動觸發程式來取得警示，以及具有快速修正選項的所有建議。
+
+每個安全性程式都包含事件回應的多個工作流程。 這些流程可能包括通知相關的專案利害關係人、啟動變更管理程式，以及套用特定的補救步驟。 安全性專家建議您盡可能自動化這些程式的許多步驟。 自動化會藉由確保按照您預先定義的需求快速、一致地執行程式步驟，來減少額外負荷並改善您的安全性。
+
+如需執行工作流程之自動及手動資訊安全中心功能的詳細資訊，請參閱[工作流程自動化](workflow-automation.md)。
+
+深入瞭解[建立邏輯應用程式](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
+
+
+### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Azure 資訊安全中心與 Windows 管理中心整合
+
+現在可以將您的內部部署 Windows 伺服器直接從 Windows 系統管理中心移至 Azure 資訊安全中心。 資訊安全中心接著會變成您的單一窗格，可供查看所有 Windows 系統管理中心資源的安全性資訊，包括內部部署伺服器、虛擬機器和其他 PaaS 工作負載。
+
+將伺服器從 Windows 系統管理中心移至 Azure 資訊安全中心之後，您將能夠：
+
+- 在 Windows 系統管理中心的資訊安全中心延伸模組中，查看安全性警示和建議。
+- 在 Azure 入口網站 (或透過 API) 中的資訊安全中心，查看安全性狀態，並擷取 Windows 管理中心受控伺服器的其他詳細資訊。
+
+深入瞭解[如何整合 Azure 資訊安全中心與 Windows 管理中心](windows-admin-center-integration.md)。
+
+
+### <a name="protection-for-azure-kubernetes-service"></a>Azure Kubernetes Service 的防護
+
+Azure 資訊安全中心正在擴充其容器安全性功能，以保護 Azure Kubernetes Service (AKS)。
+
+熱門的開放原始碼平台 Kubernetes 已獲得廣泛採用，現在已成為容器協調流程的業界標準。 雖然這種實作相當廣泛，仍然不瞭解如何保護 Kubernetes 環境。 保護容器化應用程式的受攻擊面需要專業知識，以確保能夠安全地設定基礎結構，並持續監視潛在威脅。
+
+資訊安全中心防禦包括：
+
+- **探索與可見度** - 在向資訊安全中心註冊的訂閱內，持續探索受控 AKS 執行個體。
+- **安全性建議** - 可採取動作的建議，以協助您符合 AKS 的安全性最佳做法。 這些建議會包含在您的安全分數中，以確保這些建議會被視為組織安全性狀態的一部份。 如需 AKS 相關的建議，您可以參閱「應使用角色型存取控制來限制對 Kubernetes Service 叢集的存取」。
+- **威脅防護** - 透過 AKS 部署的持續分析，資訊安全中心在主機和 AKS 叢集層級偵測到威脅和惡意活動的警示。
+
+深入瞭解 [Azure Kubernetes Service 與資訊安全中心整合](azure-kubernetes-service-integration.md)。
+
+深入瞭解[資訊安全中心內的容器安全性功能](container-security.md)。
+
+
+### <a name="improved-just-in-time-experience"></a>改良的 Just-In-Time 體驗
+
+適用於 Azure 資訊安全中心的 Just-In-Time 工具保護您的管理埠所用的功能、操作和 UI 經過強化，如下所示： 
+
+- **理由欄位** - 透過 Azure 入口網站的 Just-In-Time 頁面要求存取虛擬機器 (VM) 時，可以使用新的選用欄位來輸入要求的理由。 輸入此欄位的資訊可在活動記錄檔中追蹤。 
+- **自動清除多餘的 Just-In-Time 規則** - 每當您更新 JIT 原則時，就會自動執行清除工具來檢查整個規則集的有效性。 此工具會尋找您的原則中的規則與 NSG 中的規則之間的不符之處。 如果清除工具發現不相符的問題，它會判斷原因，而當安全地移除不需要的內建規則。 清理程式永遠不會刪除您已建立的規則。 
+
+深入瞭解 [JIT 存取功能](security-center-just-in-time.md)。
+
+
+### <a name="two-security-recommendations-for-web-applications-deprecated"></a>Web 應用程式的兩個安全性建議已被取代
+
+與 Web 應用程式相關的兩個安全性建議會被取代： 
+
+- 應強化 IaaS NSG 上 Web 應用程式的規則。
+    (相關原則：應在 IaaS 上強化 Web 應用程式的 NSG 規則)
+
+- 應限制對應用程式服務的存取。
+    (相關原則：應限制存取應用程式服務 [預覽])
+
+這些建議不會再出現在資訊安全中心的建議清單中。 相關的原則將不再包含在名為「資訊安全中心預設」的方案中。
+
+深入瞭解[安全性建議](recommendations-reference.md)。
+
+
 
 
 ## <a name="february-2020"></a>2020 年 2 月

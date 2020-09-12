@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: d5210a3788f7bb054492c2d83c595c26fa3c4f42
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: aa35111a2fa26b3e4fd5e80a8227b7c244f30e9f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265706"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461709"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell"></a>透過 Azure PowerShell 將 Vm 部署到您的 Azure Stack Edge GPU 裝置
 
@@ -23,11 +23,11 @@ ms.locfileid: "89265706"
 
 ## <a name="vm-deployment-workflow"></a>VM 部署工作流程
 
-下圖將說明部署工作流程。
+下圖說明部署工作流程。
 
 ![VM 部署工作流程](media/azure-stack-edge-j-series-deploy-virtual-machine-powershell/vm-workflow_r.svg)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-vm-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
@@ -178,7 +178,7 @@ key1 /IjVJN+sSf7FMKiiPLlDm8mc9P4wtcmhhbnCa7...
 key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 ```
 
-## <a name="add-blob-uri-to-hosts-file"></a>將 blob URI 新增至 hosts 檔案
+## <a name="add-blob-uri-to-hosts-file"></a>將 Blob URI 新增至 hosts 檔案
 
 您已在 [ [修改主機檔案以進行端點名稱解析](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)] 區段中，為您要用來連線到 blob 儲存體的用戶端，在主機檔案中新增 blob URI。 這是 blob URI 的專案：
 
@@ -212,7 +212,7 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
 ```
 
 
-## <a name="create-managed-disks-from-the-vhd"></a>從 VHD 建立受控磁片
+## <a name="create-managed-disks-from-the-vhd"></a>從 VHD 建立受控磁碟
 
 從上傳的 VHD 建立受控磁片。
 
@@ -220,8 +220,8 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import -SourceUri "Source URL for your VHD"
 ```
 範例輸出如下所示： 
-
-$DiskConfig = New->new-azurermdiskconfig-Location DBELocal-CreateOption Import – SourceUri http://sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd 
+<code>
+$DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –SourceUri http://</code><code>sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd</code> 
 
 ```powershell
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
@@ -251,7 +251,7 @@ Location           : DBELocal
 Tags               : {}
 ```
 
-## <a name="create-a-vm-image-from-the-image-managed-disk"></a>從映射受控磁片建立 VM 映射
+## <a name="create-a-vm-image-from-the-image-managed-disk"></a>從映像受控磁碟建立 VM 映像
 
 使用下列命令，從受控磁片建立 VM 映射。 將內的值取代 \< \> 為您選擇的名稱。
 
@@ -283,7 +283,7 @@ Location             : dbelocal
 Tags                 : {}
 ```
 
-## <a name="create-vm-with-previously-created-resources"></a>使用先前建立的資源來建立 VM
+## <a name="create-vm-with-previously-created-resources"></a>使用先前建立的資源建立 VM
 
 建立及部署 VM 之前，您必須先建立一個虛擬網路，並建立虛擬網路介面的關聯。
 
@@ -408,24 +408,39 @@ New-AzureRmVM -ResourceGroupName <Resource Group Name> -Location DBELocal -VM $V
 
 ## <a name="connect-to-a-vm"></a>連接到 VM
 
-使用您在建立 VM 時所傳遞的私人 IP 來連線至 VM。
+根據您建立的是 Windows 或 Linux VM，連接的步驟可能會不同。
 
-開啟 SSH 會話以連接到 IP 位址。
+### <a name="connect-to-linux-vm"></a>連接至 Linux VM
+
+遵循下列步驟以連線至 Linux VM。
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
+
+### <a name="connect-to-windows-vm"></a>連接到 Windows VM
+
+遵循下列步驟以連線至 Windows VM。
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
+
+
+<!--Connect to the VM using the private IP that you passed during the VM creation.
+
+Open an SSH session to connect with the IP address.
 
 `ssh -l <username> <ip address>`
 
-出現提示時，請提供您在建立 VM 時所使用的密碼。
+When prompted, provide the password that you used when creating the VM.
 
-如果您需要提供 SSH 金鑰，請使用此命令。
+If you need to provide the SSH key, use this command.
 
-ssh-i c：/users/Administrator/ssh/id_rsa Administrator@5.5.41.236
+ssh -i c:/users/Administrator/.ssh/id_rsa Administrator@5.5.41.236
 
-如果您在建立 VM 時使用公用 IP 位址，您可以使用該 IP 來連線至 VM。 若要取得公用 IP： 
+If you used a public IP address during VM creation, you can use that IP to connect to the VM. To get the public IP: 
 
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-在此情況下，公用 IP 會與您在建立虛擬網路介面期間傳遞的私人 IP 相同。
+The public IP in this case will be the same as the private IP that you passed during virtual network interface creation.-->
 
 
 ## <a name="manage-vm"></a>管理 VM
@@ -550,6 +565,6 @@ VM 大小會決定可供 VM 使用的計算資源 (例如 CPU、GPU 和記憶體
 2. 尋找 `AZCOPY_DEFAULT_SERVICE_API_VERSION` 參數。 這應該會有您在先前步驟中設定的值。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [Azure Resource Manager Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.resources/?view=azurermps-6.13.0)

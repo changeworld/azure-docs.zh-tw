@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解使用 Azure 虛擬機器備份解決方
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 12b5b4cd35d70d8ebbd6b269e82c46984652bd07
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961987"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506690"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>適用于 Azure 虛擬機器的選擇性磁片備份和還原
 
@@ -269,6 +269,10 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 
 ![僅設定 OS 磁片的備份](./media/selective-disk-backup-restore/configure-backup-operating-system-disk.png)
 
+## <a name="using-azure-rest-api"></a>使用 Azure REST API
+
+您可以使用幾個選取的磁片來設定 Azure VM 備份，也可以修改現有 VM 的保護，以包含/排除幾個磁片[（如下所述）。](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)
+
 ## <a name="selective-disk-restore"></a>選擇性磁片還原
 
 選擇性磁片還原是在您啟用選擇性磁片備份功能時所能取得的新增功能。 您可以使用這項功能，從復原點中備份的所有磁片還原選擇性磁片。 它更有效率，而且在您知道需要還原哪一個磁片的情況下，可節省時間。
@@ -291,7 +295,7 @@ Azure 虛擬機器備份會遵循現有的定價模型，其詳細說明請見 [
 
 只有當您選擇使用 [**僅 Os 磁片**] 選項進行備份時，才會針對 os 磁片計算**受保護的實例 (PI) 成本**。  如果您設定備份並至少選取一個資料磁片，則會針對所有連接至 VM 的磁片計算 PI 成本。 **備份儲存體成本** 只會根據包含的磁片計算，因此您可以節省儲存體成本。 一律會為 VM 中的所有磁片計算**快照集成本**， (包含和排除的磁片) 。  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [Azure VM 備份的支援矩陣](backup-support-matrix-iaas.md) \(部分機器翻譯\)
 - [常見問題-備份 Azure Vm](backup-azure-vm-backup-faq.md)

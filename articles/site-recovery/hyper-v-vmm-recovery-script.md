@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Site Recovery 中將指令碼新增至復原方案
 description: 了解如何在 VMM 雲端的 Hyper-V VM 災害復原方案中新增 VMM 指令碼。
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: fb690dfb90c0f7b8216368cb6b26a9af7d895d18
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sharrai
+ms.openlocfilehash: 3217c30737a133c1c1092fc4a8a8caaa0338e980
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130124"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425869"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>將 VMM 指令碼新增至復原方案
 
@@ -62,7 +62,7 @@ ms.locfileid: "86130124"
 
 1. 在程式庫共用中，建立新的資料夾。 例如， \<VMM server name> \MSSCVMMLibrary\RPScripts。 將資料夾放在來源和目標 VMM 伺服器上。
 1. 建立指令碼。 例如，命名 RPScript 指令碼。 請確認指令碼可以正常運作。
-1. 將腳本放在 \<VMM server name> 來源和目標 VMM 伺服器上的 \MSSCVMMLibrary 資料夾中。
+1. 將腳本放在 \<VMM server name> 來源與目標 VMM 伺服器上的 \MSSCVMMLibrary 資料夾中。
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>將指令碼新增至復原方案
 

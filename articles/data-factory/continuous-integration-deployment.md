@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 582a9eb4c98e89602e35e2ee424a00adc54a88e3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3621d0c22aa6f35fc845f449d07bce8dcf0ba1fa
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229526"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461879"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
@@ -638,6 +638,8 @@ ms.locfileid: "89229526"
 -   **整合執行階段和共用**。 整合執行階段不會經常變更，而且在 CI/CD 中的所有階段都很類似。 所以 Data Factory 預期在 CI/CD 的所有階段中，要有相同的名稱和相同類型的整合執行階段。 如果您想要在所有階段中共用整合執行階段，請考慮使用三元處理站，只包含共用的整合執行階段。 您可以在所有環境中，使用此共用處理站作為連結的整合執行階段類型。
 
 -   **Key Vault**。 當您使用連線資訊存放在 Azure Key Vault 中的連結服務時，建議您針對不同的環境保留個別的金鑰保存庫。 您也可以為每個金鑰保存庫設定不同的權限層級。 例如，您可能不希望小組成員具有生產秘密的權限。 如果您遵循此方法，我們建議您在所有階段中保留相同的秘密名稱。 如果您保留相同的秘密名稱，則不需要將所有 CI/CD 環境中的每個連接字串參數化，因為唯一的變更是金鑰保存庫名稱 (這是個別的參數)。
+
+-  **資源命名** 針對 ARM 範本條件約束，如果您的資源在名稱中包含空格，則可能會發生部署問題。 Azure Data Factory 團隊建議使用 ' _ ' 或 '-' 字元，而不是資源的空格。 例如，' Pipeline_1 ' 會是比 ' Pipeline 1 ' 更理想的名稱。
 
 ## <a name="unsupported-features"></a>不支援的功能
 

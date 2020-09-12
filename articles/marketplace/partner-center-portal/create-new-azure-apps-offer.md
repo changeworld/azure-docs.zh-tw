@@ -3,16 +3,16 @@ title: 建立 Azure 應用程式供應項目 - Microsoft 商業 Marketplace
 description: 了解在合作夥伴中心的商業 Marketplace 入口網站中建立新 Azure 應用程式供應項目的步驟和考量。 您可以在 Azure Marketplace 中或透過雲端解決方案提供者 (CSP) 計畫，列出或銷售您的 Azure 應用程式供應項目。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 071d3fc972e99d61a226492350b7eee146584df6
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e7e7845b458d6d1a37b65fb79e0e7e9c13b0d07d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815655"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646943"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -197,7 +197,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
-1. 標題
+1. Title
 2. 描述
 3. 實用的連結
 4. 螢幕擷取畫面

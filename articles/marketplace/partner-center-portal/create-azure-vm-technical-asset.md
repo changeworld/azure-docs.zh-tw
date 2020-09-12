@@ -3,16 +3,16 @@ title: 建立 Azure 虛擬機器技術資產
 description: 了解如何針對 Azure Marketplace 為虛擬機器 (VM) 供應項目建立及設定技術資產。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 496cd4aeb96ca1849e950331658014d91dc6d6ba
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 07c8de2a9d94b51f7183829466bd68d56e19efba
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89143862"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646803"
 ---
 # <a name="create-azure-virtual-machine-technical-assets"></a>建立 Azure 虛擬機器技術資產
 

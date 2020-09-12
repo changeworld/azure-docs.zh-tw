@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa9786f31e1cf9ee15afdc03d289a04198836133
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2dfb5876922fd53c372afe82ecdfa843179fb135
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086835"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439005"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory 複製精靈
 > [!NOTE]
@@ -49,7 +49,7 @@ Azure Data Factory 複製精靈簡化內嵌資料的程序，這通常是端對�
 在某些情況下，輸入資料的結構描述可能不符合輸出資料的結構描述。 在此案例中，您需要將來源結構描述的資料行對應到目的地結構描述的資料行。
 
 > [!TIP]
-> 從 SQL Server 或 Azure SQL Database 中將資料複製到 Azure SQL 資料倉儲時，如果目的地存放區中沒有資料表，Data Factory 支援使用來源的結構描述來自動建立資料表。 深入了解[使用 Azure Data Factory 從 Azure SQL 資料倉儲來回移動資料](./data-factory-azure-sql-data-warehouse-connector.md)。
+> 從 SQL Server 或 Azure SQL Database 複製資料 Azure Synapse Analytics 至 (先前的 SQL 資料倉儲) 中，如果資料表不存在於目的地存放區中，Data Factory 支援使用來源的架構來自動建立資料表。 深入瞭解 [如何使用 Azure Data Factory 將資料移入和移出 Azure Synapse Analytics](./data-factory-azure-sql-data-warehouse-connector.md)。
 >
 
 請使用下拉式清單選取來源結構描述的資料行來對應至目的地結構描述中的資料行。 複製精靈會嘗試了解資料行對應的模式， 並且對其餘的資料行套用相同的模式，所以您不需要個別選取每個資料行就能完成結構描述對應。 如果想要，還是可以使用下拉式清單逐一對應資料行來覆寫這些對應。 您對應越多資料行，模式就會變得越精確。 複製精靈會持續更新模式，直到達到您想要達成的資料行對應的正確模式。     
@@ -91,5 +91,5 @@ Azure Data Factory 複製精靈簡化內嵌資料的程序，這通常是端對�
 
 ![排程屬性](./media/data-factory-copy-wizard/scheduling-properties.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需使用 Data Factory 複製精靈建立含複製活動之管線的快速逐步解說，請參閱 [教學課程：使用 Data Factory 複製精靈建立具有複製活動的管線](data-factory-copy-data-wizard-tutorial.md)。
