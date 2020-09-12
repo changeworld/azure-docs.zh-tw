@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/18/2020
+ms.date: 09/06/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b3a838e52bb0b9f3a3be7195bd528c08e499c0
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: f8598e77940bd2b33a9d8ba2c5a56348be841f7b
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783649"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505066"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 存取權評論中建立群組和應用程式的存取權審核
 
@@ -100,22 +100,31 @@ ms.locfileid: "88783649"
 
 1. 若要指定檢閱完成後所應執行的動作，請展開 [完成時的設定] 區段。
 
-    ![建立存取權檢查-完成設定時](./media/create-access-review/upon-completion-settings.png)
+    ![建立存取權檢查-完成設定時](./media/create-access-review/upon-completion-settings-new.png)
 
-1. 如果您想要自動移除拒絕的使用者存取權，請將 [ **自動將結果套用至資源** ] 以 **啟用**。 如果您想要在檢閱完成時手動套用結果，請將開關設為 [停用]。
+2. 如果您想要自動移除拒絕的使用者存取權，請將 [ **自動將結果套用至資源** ] 以 **啟用**。 如果您想要在檢閱完成時手動套用結果，請將開關設為 [停用]。
 
-1. 使用 [若檢閱者未回應] 清單，指定檢閱者在檢閱期間內未檢閱的使用者將受到何種處置。 此設定並不會影響檢閱者已手動檢閱的使用者。 如果最終的檢閱者決定 [拒絕]，則會移除使用者的存取權。
+3. 使用 [ **如果審核者未回應** ] 清單，以指定審核期間內的審核者未審核的使用者會發生什麼事。 此設定並不會影響檢閱者已手動檢閱的使用者。 如果最終的檢閱者決定 [拒絕]，則會移除使用者的存取權。
 
     - **無變更** - 使用者的存取權保持不變
     - **移除存取權** - 移除使用者的存取權
     - **核准存取權** - 核准使用者的存取權
     - **採納建議** - 採納系統針對應拒絕或核准使用者的持續存取所提出的建議
 
+4.  (Preview) 使用在拒絕的使用者上套用的動作，以指定當來賓使用者遭到拒絕時，會發生什麼事。
+    - **選項 1** 會移除被拒絕的使用者對要審核的群組或應用程式的存取權，他們仍然可以登入租使用者。 
+    - **選項 2** 會封鎖拒絕的使用者登入租使用者，而不論他們是否有其他資源的存取權。 如果發生錯誤，或系統管理員決定重新啟用一個存取權，他們就可以在使用者停用之後的30天內完成這項作業。 如果停用的使用者沒有採取任何動作，則會從租使用者中刪除。
+
+若要深入瞭解移除不再具有您組織中資源存取權之來賓使用者的最佳作法，請閱讀標題為 [使用 Azure AD Identity Governance 來檢查和移除不再具有資源存取權的外部使用者](access-reviews-external-users.md)的相關文章。
+
+>[!NOTE]
+> 只有在您先前已將審核範圍設定為僅限來賓使用者 (請參閱 **建立一或多個存取權評論** 的步驟 8) ，才能在拒絕的使用者上套用的動作
+
 ### <a name="advanced-settings"></a>進階設定
 
 1. 若要指定其他設定，請展開 [進階設定] 區段。
 
-    ![建立存取權審核-Advanced settings](./media/create-access-review/advanced-settings-preview.png)
+    ![建立存取權審核-Advanced settings](./media/create-access-review/advanced-settings-preview-new.png)
 
 1. 將 [顯示建議] 設為 [啟用]，會向檢閱者顯示系統根據使用者的存取資訊所做的建議。
 
@@ -160,7 +169,7 @@ ms.locfileid: "88783649"
 
 您也可以使用 API 來建立存取權檢閱。 您在 Azure 入口網站中為群組和應用程式使用者的存取權檢閱所做的管理工作，也可以使用 Microsoft Graph API 來執行。 如需詳細資訊，請參閱 [Azure AD 存取審核 API 參考](/graph/api/resources/accessreviews-root?view=graph-rest-beta)。 如需程式碼範例，請參閱透過 [Microsoft Graph 抓取 Azure AD 存取評論的範例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [檢閱群組或應用程式的存取權](perform-access-review.md)
 - [查看群組或應用程式的存取權](review-your-access.md)

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3b4ba62072e26f16a0e39416c9ae346d1acefd9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5dd6d682c9db044763cad64eec420c1974d4ac03
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997518"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613706"
 ---
 # <a name="outline-rendering"></a>外框呈現
 
@@ -29,7 +29,7 @@ ms.locfileid: "88997518"
 | `PulseRateHz`    | FLOAT   | 每秒外框擺動的速率|
 | `PulseIntensity` | FLOAT   | 外框脈衝效果的強度。 必須介於 0.0 (無脈衝) 與 1.0 (完整脈衝) 之間。 強度會隱含地將外框的最小不透明度設定為 `MinOpacity = 1.0 - PulseIntensity`。 |
 
-![外框](./media/outlines.png) 將 `color` 參數從黃色 (左) 變更為洋紅色 (中心)，並且將 `pulseIntensity` 從 0 變更為 0.8 (右) 的效果。
+![使用不同大綱參數轉譯三次的物件會造成將 ](./media/outlines.png) `color` 參數從黃色 (左) 變更為洋紅 (中心) ，以及 `pulseIntensity` 從0到 0.8 (右) 的效果。
 
 ## <a name="example"></a>範例
 
@@ -60,6 +60,11 @@ void SetOutlineParameters(ApiHandle<AzureSession> session)
 ## <a name="performance"></a>效能
 
 外框呈現可能會對呈現效能造成重大影響。 這個影響會因指定框架選取和非選取物件之間的螢幕空間空間關聯而異。
+
+## <a name="api-documentation"></a>API 文件
+
+* [C # RemoteManager. OutlineSettings 屬性](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.outlinesettings)
+* [C + + RemoteManager：： OutlineSettings ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#outlinesettings)
 
 ## <a name="next-steps"></a>後續步驟
 

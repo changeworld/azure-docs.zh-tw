@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：監視、計量和警示
 description: 深入瞭解使用 Azure 監視器的 Azure ExpressRoute 監視、計量和警示，這會在 Azure 中停止所有計量、警示、診斷記錄。
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/25/2020
-ms.author: cherylmc
-ms.openlocfilehash: 6f3bd5392457f05caa8704e7e1de5b4155b28794
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.author: duau
+ms.openlocfilehash: fc83e5e8d14250ed163a56830311533144bbe344
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871326"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395429"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 監視、計量和警示
 
@@ -36,8 +36,8 @@ ms.locfileid: "88871326"
 |Bgp 可用性|可用性|<ui><li> 對等 (主要/次要 ExpressRoute 路由器) </ui></li><ui><li> 對等互連類型</ui></li>|ExpressRoute|
 |BitsInPerSecond|交通流量|<ui><li> ExpressRoute)  (對等互連類型 </ui></li><ui><li> (ExpressRoute Direct) 連結 </ui></li>|<li>ExpressRoute</li><li>ExpressRoute Direct|
 |BitsOutPerSecond|交通流量| <ui><li>ExpressRoute)  (對等互連類型 </ui></li><ui><li>  (ExpressRoute Direct) 連結 |<ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
-|CPU 使用率|效能| <ui><li>實例</ui></li>|ExpressRoute 虛擬網路閘道|
-|每秒封包數|效能| <ui><li>實例</ui></li>|ExpressRoute 虛擬網路閘道|
+|CPU 使用率|效能| <ui><li>執行個體</ui></li>|ExpressRoute 虛擬網路閘道|
+|每秒封包數|效能| <ui><li>執行個體</ui></li>|ExpressRoute 虛擬網路閘道|
 |GlobalReachBitsInPerSecond|交通流量|<ui><li>對等互連線路 Skey (服務金鑰) </ui></li>|Global Reach|
 |GlobalReachBitsOutPerSecond|交通流量|<ui><li>對等互連線路 Skey (服務金鑰) </ui></li>|Global Reach|
 |AdminState|實體連線能力|連結|ExpressRoute Direct|
@@ -155,7 +155,7 @@ ms.locfileid: "88871326"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="活動記錄":::
   
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 設定 ExpressRoute 連線。
   

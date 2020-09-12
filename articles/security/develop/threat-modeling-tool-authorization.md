@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 77964eed6960a79920f359a03c65102ad949a210
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 51d8b740ba1275b23bc17a58284141dce0d48fe0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004658"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299995"
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架︰授權 | 緩和措施 
 | 產品/服務 | 發行項 |
@@ -205,7 +205,7 @@ WHERE userID=:id < - session var
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [事件中樞驗證和安全性模型概觀](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
-| **步驟** | 應不會將授與事件中樞直接存取權的權杖提供給裝置。 使用裝置的最低權限權杖 (僅可供存取發佈者)，有助於識別惡意或遭到入侵的裝置，並將它列入封鎖清單。|
+| **步驟** | 應不會將授與事件中樞直接存取權的權杖提供給裝置。 針對僅提供發行者存取權的裝置使用最低許可權的權杖，可在發現為惡意或遭盜用的裝置時，協助識別並禁止該權杖。|
 
 ## <a name="connect-to-event-hub-using-sas-keys-that-have-the-minimum-permissions-required"></a><a id="sas-minimum-permissions"></a>使用具有所需最低權限的 SAS 金鑰來連線到事件中樞
 

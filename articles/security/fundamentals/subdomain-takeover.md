@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: e378ffe00be9215c692a832e232fac7e866ab3c9
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: faa61dc351bebd3d2a85ad229036e5b9fba9256e
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890819"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514606"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>防止無關聯的 DNS 專案，並避免子域接管
 
@@ -27,27 +27,33 @@ ms.locfileid: "88890819"
 
 ## <a name="what-is-subdomain-takeover"></a>什麼是子域接管？
 
-子域接管是常見的高嚴重性威脅，適用于定期建立和刪除許多資源的組織。 當您有指向取消布建 Azure 資源的 DNS 記錄時，就會發生子域接管。 這類 DNS 記錄也稱為「無關聯 DNS」專案。 CNAME 記錄特別容易受到這種威脅。
+子域接管是常見的高嚴重性威脅，適用于定期建立和刪除許多資源的組織。 當您有指向取消布建 Azure 資源的 [DNS 記錄](https://docs.microsoft.com/azure/dns/dns-zones-records#dns-records) 時，就會發生子域接管。 這類 DNS 記錄也稱為「無關聯 DNS」專案。 CNAME 記錄特別容易受到這種威脅。 子域接管可讓惡意執行者將組織網域的流量，重新導向至執行惡意活動的網站。
 
 子域接管的常見案例：
 
-1. 已建立網站。 
+1. **創造：**
 
-    在此範例中是 `app-contogreat-dev-001.azurewebsites.net`。
+    1. 您可以使用 (FQDN) 的完整功能變數名稱來布建 Azure 資源 `app-contogreat-dev-001.azurewebsites.net` 。
 
-1. CNAME 專案會新增至指向網站的 DNS。 
+    1. 您可以使用將 `greatapp.contoso.com` 流量路由傳送至 Azure 資源的子域，在 DNS 區域中指派 CNAME 記錄。
 
-    在此範例中，會建立下列易記名稱： `greatapp.contoso.com` 。
+1. **解除**
 
-1. 幾個月之後，就不再需要網站，因此 **不** 需刪除對應的 DNS 專案，就會將它刪除。 
+    1. 不再需要 Azure 資源之後，就會取消布建或刪除它。 
+    
+        此時， `greatapp.contoso.com` *應* 從您的 DNS 區域中移除 CNAME 記錄。 如果未移除 CNAME 記錄，則會將其公告為作用中網域，但不會將流量路由傳送至使用中的 Azure 資源。 這是「無關聯的」 DNS 記錄的定義。
 
-    CNAME DNS 專案現在是「無關聯的」。
+    1. 無關聯的子域 `greatapp.contoso.com` 現在很容易受到攻擊，而且可以藉由指派給另一個 Azure 訂用帳戶的資源來進行。
 
-1. 在網站刪除後幾乎立即，威脅執行者會探索遺失的網站，並在上建立自己的網站 `app-contogreat-dev-001.azurewebsites.net` 。
+1. **收購：**
 
-    現在， `greatapp.contoso.com` 要傳送至威脅執行者的 Azure 網站的流量，以及威脅執行者控制所顯示內容的流量。 
+    1. 使用常用的方法和工具，威脅執行者會探索無關聯子域。  
 
-    惡意探索的 DNS 遭到惡意探索，而 Contoso 的子域「GreatApp」是子域接管的犧牲者。 
+    1. 威脅執行者會布建具有您先前所控制資源之相同 FQDN 的 Azure 資源。 在此範例中是 `app-contogreat-dev-001.azurewebsites.net`。
+
+    1. 傳送至子域的流量 `myapp.contoso.com` 現在會路由傳送至惡意執行者的資源，以控制其內容。
+
+
 
 ![從取消布建網站進行子域接管](./media/subdomain-takeover/subdomain-takeover.png)
 
@@ -63,17 +69,85 @@ ms.locfileid: "88890819"
 
 - **從不受信任的訪客搜集 Cookie** -web apps 通常會將會話 cookie 公開給子域 ( *. contoso.com) ，因此任何子域都可以存取它們。 威脅執行者可以使用子域接管來建立看似美觀的頁面、誘騙不安全的使用者進行流覽，以及搜集 cookie (甚至是安全的 cookie) 。 常見的誤解是，使用 SSL 憑證可保護您的網站和使用者的 cookie，而不是接管。 不過，威脅執行者可以使用被攔截的子域來申請和接收有效的 SSL 憑證。 有效的 SSL 憑證會授與他們安全 cookie 的存取權，並可進一步提高惡意網站的認知合法性。
 
-- **網路釣魚行銷活動** -可在網路釣魚行銷活動中使用真正美觀的子域。 這適用于惡意網站，也適用于可讓威脅執行者接收已知安全品牌合法子域的電子郵件的 MX 記錄。
+- **網路釣魚行銷活動** -可能會在網路釣魚活動中使用真正看起來的子域。 這適用于惡意網站和 MX 記錄，讓威脅執行者能夠接收發給已知安全品牌合法子域的電子郵件。
 
-- **進一步的風險** ：惡意網站可以用來呈報至其他傳統攻擊，例如 XSS、CSRF、CORS 略過等等。
+- **進一步的風險** ：惡意網站可能會用來呈報至其他傳統攻擊，例如 XSS、CSRF、CORS 略過等等。
 
 
 
-## <a name="preventing-dangling-dns-entries"></a>防止無關聯的 DNS 專案
+## <a name="identify-dangling-dns-entries"></a>識別無關聯的 DNS 專案
+
+若要識別組織內可能是無關聯的 DNS 專案，請使用 Microsoft 的 GitHub 託管 PowerShell 工具 ["DanglingDnsRecords"](https://aka.ms/DanglingDNSDomains)。
+
+此工具可協助 Azure 客戶使用與訂用帳戶或租使用者上建立的現有 Azure 資源相關聯的 CNAME 來列出所有網域。
+
+如果您的 Cname 位於其他 DNS 服務並指向 Azure 資源，請在該工具的輸入檔中提供 Cname。
+
+此工具支援下表所列的 Azure 資源。 此工具會將所有租使用者的 Cname 解壓縮或做為輸入。
+
+
+| 服務                   | 類型                                        | FQDNproperty                               | 範例                         |
+|---------------------------|---------------------------------------------|--------------------------------------------|---------------------------------|
+| Azure Front Door          | microsoft.network/frontdoors                | 屬性 cName                           | `abc.azurefd.net`               |
+| Azure Blob 儲存體        | microsoft.storage/storageaccounts           | >primaryendpoints.blob blob           | `abc. blob.core.windows.net`    |
+| Azure CDN                 | microsoft.cdn/profiles/endpoints            | properties。 hostName                        | `abc.azureedge.net`             |
+| 公用 IP 位址       | microsoft.network/publicipaddresses         | dnsSettings. fqdn                | `abc.EastUs.cloudapp.azure.com` |
+| Azure 流量管理員     | microsoft.network/trafficmanagerprofiles    | 屬性。                  | `abc.trafficmanager.net`        |
+| Azure 容器執行個體  | microsoft.containerinstance/containergroups | 屬性 ipAddress. fqdn                  | `abc.EastUs.azurecontainer.io`  |
+| Azure API 管理      | microsoft.apimanagement/service             | hostnameConfigurations。 hostName | `abc.azure-api.net`             |
+| Azure App Service         | microsoft.web/sites                         | defaultHostName                 | `abc.azurewebsites.net`         |
+| Azure App Service 插槽 | microsoft.web/sites/slots                   | defaultHostName                 | `abc-def.azurewebsites.net`     |
+
+
+
+### <a name="prerequisites"></a>必要條件
+
+以具有下列許可權的使用者身分執行查詢：
+
+- 至少讀者層級的 Azure 訂用帳戶存取權
+- Azure resource graph 的讀取權限
+
+如果您是組織租使用者的全域管理員，請使用提高 [存取權以管理所有 Azure 訂用帳戶和管理群組](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)的指引，來提升您的帳戶以存取您組織的所有訂用帳戶。
+
+
+> [!TIP]
+> 如果您有大型的 Azure 環境，Azure Resource Graph 有節流和分頁限制。 [深入瞭解](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) 如何使用大型的 Azure 資源資料集。 
+> 
+> 此工具會使用訂用帳戶批次處理來避免這些限制。
+
+### <a name="run-the-script"></a>執行指令碼
+
+腳本有兩個版本，兩者都有相同的輸入參數，而且會產生類似的輸出：
+
+|指令碼  |資訊  |
+|---------|---------|
+|**Get-DanglingDnsRecordsPsCore.ps1**    |只有 PowerShell 版本7和更新版本才支援平行模式，否則會執行序列模式。|
+|**Get-DanglingDnsRecordsPsDesktop.ps1** |因為此腳本使用 [Windows Workflow](https://docs.microsoft.com/dotnet/framework/windows-workflow-foundation/overview)，所以僅支援在低於6的 PowerShell desktop/版本。|
+
+深入瞭解並從 GitHub 下載 PowerShell 腳本： https://aka.ms/DanglingDNSDomains 。
+
+## <a name="remediate-dangling-dns-entries"></a>補救無關聯的 DNS 專案 
+
+檢查您的 DNS 區域，並找出無關聯或已移除的 CNAME 記錄。 如果您發現子域是無關聯或已接管，請使用下列步驟來移除易受攻擊的子域並減輕風險：
+
+1. 從您的 DNS 區域中，移除所有指向已不再布建之資源 Fqdn 的 CNAME 記錄。
+
+1. 若要讓流量路由傳送至您控制項中的資源，請使用在無關聯子域的 CNAME 記錄中指定的 Fqdn 布建額外的資源。
+
+1. 請參閱您的應用程式程式碼，以參考特定子域，並更新任何不正確或過時的子域參考。
+
+1. 調查是否發生任何入侵，並根據您組織的事件回應程式採取行動。 以下是調查此問題的秘訣和最佳作法。
+
+    如果您的應用程式邏輯是將 OAuth 認證之類的秘密傳送到無關聯子域，或將隱私權機密資訊傳送到無關聯的子域，則該資料可能已經公開給協力廠商。
+
+1. 瞭解當資源取消布建時，不會從您的 DNS 區域中移除 CNAME 記錄的原因，並採取步驟以確保在未來取消布建 Azure 資源時，會適當地更新 DNS 記錄。
+
+
+## <a name="prevent-dangling-dns-entries"></a>防止無關聯的 DNS 專案
 
 確定您的組織已實行程式來防止無意義的 DNS 專案，而產生的子域接管是安全性程式很重要的一部分。
 
-您目前可用的預防措施如下所示。
+某些 Azure 服務提供的功能可協助建立預防措施，如下所述。 避免此問題的其他方法，必須透過您組織的最佳作法或標準作業程式來建立。
 
 
 ### <a name="use-azure-dns-alias-records"></a>使用 Azure DNS 別名記錄
@@ -122,110 +196,6 @@ Azure DNS 的 [別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#scen
 
     - 維護 Azure 完整功能變數名稱的服務類別目錄， (FQDN) 端點和應用程式擁有者。 若要建立您的服務類別目錄，請執行下列 Azure Resource Graph 查詢腳本。 此腳本會投射您有權存取之資源的 FQDN 端點資訊，並將其輸出于 CSV 檔案中。 如果您可以存取租使用者的所有訂用帳戶，腳本會考慮所有這些訂用帳戶，如下列範例腳本所示。 若要將結果限制為一組特定的訂用帳戶，請編輯腳本，如下所示。
 
-        >[!IMPORTANT]
-        > **許可權** -以可存取所有 Azure 訂用帳戶的使用者身分執行查詢。 
-        >
-        > **限制** -Azure Resource Graph 有大量的 Azure 環境時，您應該考慮的節流和分頁限制。 [深入瞭解](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) 如何使用大型的 Azure 資源資料集。 下列範例腳本會使用訂用帳戶批次處理來避免這些限制。
-
-        ```powershell
-        
-            # Fetch the full array of subscription IDs.
-            $subscriptions = Get-AzSubscription
-
-            $subscriptionIds = $subscriptions.Id
-                    # Output file path and names
-                    $date = get-date
-                    $fdate = $date.ToString("MM-dd-yyy hh_mm_ss tt")
-                    $fdate #log to console
-                    $rpath = [Environment]::GetFolderPath("MyDocuments") + '\' # Feel free to update your path.
-                    $rname = 'Tenant_FQDN_Report_' + $fdate + '.csv' # Feel free to update the document name.
-                    $fpath = $rpath + $rname
-                    $fpath #This is the output file of FQDN report.
-
-            # queries
-            $allTypesFqdnsQuery = "where type in ('microsoft.network/frontdoors',
-                                    'microsoft.storage/storageaccounts',
-                                    'microsoft.cdn/profiles/endpoints',
-                                    'microsoft.network/publicipaddresses',
-                                    'microsoft.network/trafficmanagerprofiles',
-                                    'microsoft.containerinstance/containergroups',
-                                    'microsoft.web/sites',
-                                    'microsoft.web/sites/slots')
-                        | extend FQDN = case(
-                            type =~ 'microsoft.network/frontdoors', properties['cName'],
-                            type =~ 'microsoft.storage/storageaccounts', parse_url(tostring(properties['primaryEndpoints']['blob'])).Host,
-                            type =~ 'microsoft.cdn/profiles/endpoints', properties['hostName'],
-                            type =~ 'microsoft.network/publicipaddresses', properties['dnsSettings']['fqdn'],
-                            type =~ 'microsoft.network/trafficmanagerprofiles', properties['dnsConfig']['fqdn'],
-                            type =~ 'microsoft.containerinstance/containergroups', properties['ipAddress']['fqdn'],
-                            type =~ 'microsoft.web/sites', properties['defaultHostName'],
-                            type =~ 'microsoft.web/sites/slots', properties['defaultHostName'],
-                            '')
-                        | project id, type, name, FQDN
-                        | where isnotempty(FQDN)";
-
-            $apiManagementFqdnsQuery = "where type =~ 'microsoft.apimanagement/service'
-                        | project id, type, name,
-                            gatewayUrl=parse_url(tostring(properties['gatewayUrl'])).Host,
-                            portalUrl =parse_url(tostring(properties['portalUrl'])).Host,
-                            developerPortalUrl = parse_url(tostring(properties['developerPortalUrl'])).Host,
-                            managementApiUrl = parse_url(tostring(properties['managementApiUrl'])).Host,
-                            gatewayRegionalUrl = parse_url(tostring(properties['gatewayRegionalUrl'])).Host,
-                            scmUrl = parse_url(tostring(properties['scmUrl'])).Host,
-                            additionaLocs = properties['additionalLocations']
-                        | mvexpand additionaLocs
-                        | extend additionalPropRegionalUrl = tostring(parse_url(tostring(additionaLocs['gatewayRegionalUrl'])).Host)
-                        | project id, type, name, FQDN = pack_array(gatewayUrl, portalUrl, developerPortalUrl, managementApiUrl, gatewayRegionalUrl, scmUrl,             
-                            additionalPropRegionalUrl)
-                        | mvexpand FQDN
-                        | where isnotempty(FQDN)";
-
-            $queries = @($allTypesFqdnsQuery, $apiManagementFqdnsQuery);
-
-            # Paging helper cursor
-            $Skip = 0;
-            $First = 1000;
-
-            # If you have large number of subscriptions, process them in batches of 2,000.
-            $counter = [PSCustomObject] @{ Value = 0 }
-            $batchSize = 2000
-            $response = @()
-
-            # Group the subscriptions into batches.
-            $subscriptionsBatch = $subscriptionIds | Group -Property { [math]::Floor($counter.Value++ / $batchSize) }
-
-            foreach($query in $queries)
-            {
-                # Run the query for each subscription batch with paging.
-                foreach ($batch in $subscriptionsBatch)
-                { 
-                    $Skip = 0; #Reset after each batch.
-
-                    $response += do { Start-Sleep -Milliseconds 500;   if ($Skip -eq 0) {$y = Search-AzGraph -Query $query -First $First -Subscription $batch.Group ; } `
-                    else {$y = Search-AzGraph -Query $query -Skip $Skip -First $First -Subscription $batch.Group } `
-                    $cont = $y.Count -eq $First; $Skip = $Skip + $First; $y; } while ($cont)
-                }
-            }
-
-            # View the completed results of the query on all subscriptions
-            $response | Export-Csv -Path $fpath -Append  
-
-        ```
-
-        `FQDNProperty`如先前的 Resource Graph 查詢中所指定的類型和其值的清單：
-
-        |資源名稱  | `<ResourceType>`  | `<FQDNproperty>`  |
-        |---------|---------|---------|
-        |Azure Front Door|microsoft.network/frontdoors|屬性 cName|
-        |Azure Blob 儲存體|microsoft.storage/storageaccounts|>primaryendpoints.blob blob|
-        |Azure CDN|microsoft.cdn/profiles/endpoints|properties。 hostName|
-        |公用 IP 位址|microsoft.network/publicipaddresses|dnsSettings. fqdn|
-        |Azure 流量管理員|microsoft.network/trafficmanagerprofiles|屬性。|
-        |Azure 容器執行個體|microsoft.containerinstance/containergroups|屬性 ipAddress. fqdn|
-        |Azure API 管理|microsoft.apimanagement/service|hostnameConfigurations。 hostName|
-        |Azure App Service|microsoft.web/sites|defaultHostName|
-        |Azure App Service 插槽|microsoft.web/sites/slots|defaultHostName|
-
 
 - **建立補救程式：**
     - 當找到無關聯的 DNS 專案時，您的小組必須調查是否發生任何折衷。
@@ -233,7 +203,7 @@ Azure DNS 的 [別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#scen
     - 請刪除不再使用的 DNS 記錄，或將其指向您的組織所擁有的正確 Azure 資源 (FQDN) 。
  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入瞭解您可以用來防禦子域接管的相關服務和 Azure 功能，請參閱下列頁面。
 

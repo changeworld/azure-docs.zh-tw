@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 314f6a45bf688125e79f0b8ce0099a8326b339dc
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 2af6749565a7fefd2892b82bcd5dff203eccdedc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958145"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661209"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>搭配 Azure Machine Learning 使用私人 Python 套件
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,14 +29,14 @@ ms.locfileid: "88958145"
 
 私用套件會透過 [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment) 類別使用。 在環境中，您會宣告要使用的 Python 套件，包括私用套件。 若要深入瞭解 Azure Machine Learning 中的環境，請參閱 [如何使用環境](how-to-use-environments.md)。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
- * [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+ * [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
  * [Azure Machine Learning 工作區](how-to-manage-workspace.md)
 
 ## <a name="use-small-number-of-packages-for-development-and-testing"></a>使用少數套件進行開發和測試
 
-針對單一工作區的少數私用封裝，請使用靜態 [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) 方法。 這種方法可讓您快速將私人套件新增至工作區，而且非常適合用於開發和測試用途。
+針對單一工作區的少數私用封裝，請使用靜態 [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) 方法。 這種方法可讓您快速將私人套件新增至工作區，而且非常適合用於開發和測試用途。
 
 將檔案路徑引數指向本機滾輪檔案，然後執行 ```add_private_pip_wheel``` 命令。 此命令會傳回用來追蹤您工作區中套件位置的 URL。 捕捉儲存體 URL，並將方法傳遞給它 `add_pip_package()` 。
 
@@ -58,7 +58,7 @@ Azure Machine Learning 服務會在內部將 URL 取代為安全的 SAS URL，�
 
  1. 為您的 Azure DevOps 實例[建立 (PAT) 的個人存取權杖](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page#create-a-pat)。 設定要 __封裝 > 讀取__的權杖範圍。 
 
- 2. 使用 [工作區 set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-) 方法，新增 Azure DevOps URL 和 PAT 作為工作區屬性。
+ 2. 使用 [工作區 set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#&preserve-view=trueset-connection-name--category--target--authtype--value-) 方法，新增 Azure DevOps URL 和 PAT 作為工作區屬性。
 
      ```python
     from azureml.core import Workspace
@@ -91,19 +91,13 @@ Azure Machine Learning 服務會在內部將 URL 取代為安全的 SAS URL，�
 
 您可以從組織防火牆內的 Azure 儲存體帳戶使用套件。 儲存體帳戶可以保留一組策劃的封裝或公開可用封裝的內部鏡像。
 
-若要設定這類私用儲存體：
+若要設定這類私用存放裝置，請參閱 [保護 Azure Machine Learning 工作區和相關聯的資源](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)。 您也必須 [將 Azure Container Registry 放在 VNet 後方 (ACR) ](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)。
 
-1. [將工作區放在虛擬網路中 (VNet) ](how-to-enable-virtual-network.md)。
-1. 建立儲存體帳戶，但不 [允許公用存取](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
-1. 將您想要使用的 Python 套件放入儲存體帳戶內的容器 
-1. [允許從工作區 VNet 存取儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network)
-1. [將 Azure Container Registry 的 (ACR) 放置於 VNet 背後的工作區](how-to-enable-virtual-network.md#azure-container-registry)。
-
-    > [!IMPORTANT]
-    > 您必須完成此步驟，才能使用私用套件儲存機制來定型或部署模型。
+> [!IMPORTANT]
+> 您必須完成此步驟，才能使用私用套件儲存機制來定型或部署模型。
 
 完成這些設定之後，您可以透過 Azure blob 儲存體中的完整 URL，參考 Azure Machine Learning 環境定義中的套件。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
  * 深入瞭解 [Azure Machine Learning 中的企業安全性](concept-enterprise-security.md)

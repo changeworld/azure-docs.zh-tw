@@ -1,5 +1,5 @@
 ---
-title: 在 SLES 上的 Azure Vm 上 SAP Hana 的高可用性 |Microsoft Docs
+title: SLES 上的 Azure Vm SAP Hana 高可用性 |Microsoft Docs
 description: SUSE Linux Enterprise Server 上 Azure VM 的 SAP HANA 高可用性
 services: virtual-machines-linux
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/11/2020
+ms.date: 09/08/2020
 ms.author: radeltch
-ms.openlocfilehash: f2b4b207aca92cc37b71f3cb12ec579a6b57e832
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1efa00962e63274c2cc02c8758725e5b11d70a9d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068967"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567821"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 的 SAP HANA 高可用性
 
@@ -60,8 +60,8 @@ ms.locfileid: "87068967"
   * 支援的 SAP 軟體，以及作業系統 (OS) 與資料庫組合。
   * Microsoft Azure 上 Windows 和 Linux 所需的 SAP 核心版本。
 * SAP Note [2015553] 列出 Azure 中 SAP 支援的 SAP 軟體部署先決條件。
-* SAP Note [2205917]針對 SAP 應用程式的 SUSE Linux Enterprise Server 有建議的 OS 設定。
-* SAP Note [1944799]具有適用于 Sap 應用程式 SUSE Linux Enterprise Server 的 SAP Hana 方針。
+* SAP Note [2205917] 具有適用于 SAP 應用程式之 SUSE LINUX ENTERPRISE SERVER 的作業系統設定建議。
+* SAP Note [1944799] 有適用于 Sap 應用程式 SUSE Linux Enterprise Server 的 SAP Hana 指導方針。
 * SAP Note [2178632] 包含在 Azure 中針對 SAP 回報的所有監視計量詳細資訊。
 * SAP Note [2191498] 包含 Azure 中 Linux 所需的 SAP Host Agent 版本。
 * SAP Note [2243692] 包含 Azure 中 Linux 上的 SAP 授權相關資訊。
@@ -71,7 +71,7 @@ ms.locfileid: "87068967"
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含 Linux 所需的所有 SAP Note。
 * [SAP Hana 認證 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 * [適用於 SAP on Linux 的 Azure 虛擬機器規劃和實作][planning-guide]指南。
-* [適用于 SAP On Linux 的 Azure 虛擬機器部署][deployment-guide]（本文）。
+* [適用于 SAP On Linux 的 Azure 虛擬機器部署][deployment-guide] (本文) 。
 * [適用於 SAP on Linux 的 Azure 虛擬機器 DBMS 部署][dbms-guide]指南。
 * [適用於 SAP Applications 12 SP3 的 SUSE Linux Enterprise Server 最佳做法指南][sles-for-sap-bp]
   * 設定 SAP HANA SR 效能最佳化基礎結構 (SLES for SAP Applications 12 SP1)。 此指南包含所有必要資訊，可供您設定 SAP HANA 系統複寫以供內部部署開發之用。 請使用此指南做為基礎。
@@ -105,14 +105,14 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 1. 輸入下列參數：
     - **SAP 系統識別碼**：輸入您想要安裝的 SAP 系統之 SAP 系統識別碼。 該識別碼會作為所部署之資源的前置詞。
-    - **堆疊類型**：（此參數只有在您使用交集範本時才適用）。選取 [SAP NetWeaver] 堆疊類型。
-    - **OS 類型**：選取一個 Linux 發行版本。 在此範例中，請選取**SLES 12**。
+    - **堆疊類型**： (只有當您使用交集範本時，才適用此參數。 ) 選取 [SAP NetWeaver] 堆疊類型。
+    - **OS 類型**：選取一個 Linux 發行版本。 在此範例中，請選取 **SLES 12**。
     - **DB 類型**：選取 **HANA**。
     - **SAP 系統大小**：輸入新系統要提供的 SAP 數量。 如果您不確定系統需要多少 SAP，請詢問您的 SAP 技術合作夥伴或系統整合者。
     - **系統可用性**：選取 **HA**。
-    - **管理員使用者名稱和管理員密碼**：建立的新使用者可以用來登入電腦。
+    - 系統**管理員使用者名稱和系統管理員密碼**：建立新的使用者，可用來登入電腦。
     - **新的或現有的子網路**︰決定應該建立新的虛擬網路和子網路，還是使用現有的子網路。 如果您已經有連線到內部部署網路的虛擬網路，請選取 [現有]****。
-    - **子網路識別碼**：如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 此識別碼通常看起來像是 **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name> **。
+    - **子網路識別碼**：如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常看起來像是 **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name> **。
 
 ### <a name="manual-deployment"></a>手動部署
 
@@ -146,7 +146,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    
       1. 開啟負載平衡器，選取 [後端集區]，然後選取 [新增]。
       1. 輸入新後端集區的名稱 (例如 **hana-backend**)。
-      1. 選取 [**虛擬網路**]。
+      1. 選取 [ **虛擬網路**]。
       1. 選取 [新增虛擬機器]。
       1. 選取 [虛擬機器]。
       1. 選取 SAP Hana 叢集的虛擬機器及其 IP 位址。
@@ -407,14 +407,14 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
    如果您使用 SAP HANA 2.0 或 MDC，請為您的 SAP NetWeaver 系統建立租用戶資料庫。 請將 **NW1** 取代為您 SAP 系統的 SID。
 
-   以 <hanasid>adm 身分 adm 執行下列命令 \> ：
+   以 <>hanasid>adm 身分 adm 的形式執行下列命令 \> ：
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]** 在第一個節點上設定系統複寫：
 
-   將資料庫備份為 <hanasid>adm 身分 \> adm：
+   將資料庫備份為 <>hanasid>adm 身分 \> adm：
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -434,7 +434,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 1. **[2]** 在第二個節點上設定系統複寫：
     
-   註冊第二個節點，以啟動系統複寫。 以 <hanasid>adm 身分 adm 執行下列命令 \> ：
+   註冊第二個節點，以啟動系統複寫。 以 <>hanasid>adm 身分 adm 的形式執行下列命令 \> ：
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -481,7 +481,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 1. **[1]** 在第一個節點上設定系統複寫。
 
-   建立主要網站做為 <hanasid>adm 身分 \> adm：
+   建立主要網站作為 <>hanasid>adm 身分 \> adm：
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -575,7 +575,6 @@ sudo crm configure rsc_defaults migration-threshold=5000
 # Full list of resources:
 #
 # stonith-sbd     (stonith:external/sbd): Started hn1-db-0
-# rsc_st_azure    (stonith:fence_azure_arm):      Started hn1-db-1
 # Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
 #     Started: [ hn1-db-0 hn1-db-1 ]
 # Master/Slave Set: msl_SAPHana_HN1_HDB03 [rsc_SAPHana_HN1_HDB03]
@@ -760,7 +759,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   \>在 node hn1-db-0 上，以 <hanasid>adm 身分 adm 執行下列命令：
+   \>在節點 hn1-db-0 上以 <>hanasid>adm 身分 adm 的形式執行下列命令：
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -801,7 +800,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   執行下列命令，如同 \> 在 node hn1 上 <hanasid>adm 身分 adm-db-1：
+   \>在節點 hn1-db-1 上以 <>hanasid>adm 身分 adm 的形式執行下列命令：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -842,7 +841,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   \>在 node hn1-db-0 上，以 <hanasid>adm 身分 adm 執行下列命令：
+   \>在節點 hn1-db-0 上以 <>hanasid>adm 身分 adm 的形式執行下列命令：
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -883,7 +882,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   執行下列命令，如同 \> 在 node hn1 上 <hanasid>adm 身分 adm-db-1：
+   \>在節點 hn1-db-1 上以 <>hanasid>adm 身分 adm 的形式執行下列命令：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -1026,7 +1025,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   執行下列命令，如同 \> 在 node hn1 上 <hanasid>adm 身分 adm-db-1：
+   \>在節點 hn1-db-1 上以 <>hanasid>adm 身分 adm 的形式執行下列命令：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -1063,7 +1062,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   執行下列命令，如同 \> 在 node hn1 上 <hanasid>adm 身分 adm-db-1：
+   \>在節點 hn1-db-1 上以 <>hanasid>adm 身分 adm 的形式執行下列命令：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>

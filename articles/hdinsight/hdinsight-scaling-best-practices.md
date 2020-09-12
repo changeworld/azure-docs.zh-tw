@@ -1,27 +1,27 @@
 ---
 title: 調整叢集大小 - Azure HDInsight
-description: 調整 Apache Hadoop 叢集彈性以符合您在 Azure HDInsight 中的工作負載
-author: ashishthaps
+description: 調整 Apache Hadoop 叢集彈性以符合 Azure HDInsight 中的工作負載
+author: hrasheed-msft
 ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: a9d419052f000b220c993109e45d371398607275
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44cfc5b651bdd5dc0d7abee575bd964ad0b603d0
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006445"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505007"
 ---
-# <a name="scale-azure-hdinsight-clusters"></a>調整 Azure HDInsight 叢集
+# <a name="scale-azure-hdinsight-clusters"></a>調整 Azure HDInsight 叢集規模
 
-HDInsight 提供彈性選項，以相應增加和相應減少叢集中的背景工作節點數目。 此彈性可讓您在數小時或週末時縮減叢集。 並在業務需求尖峰期間進行擴充。
+HDInsight 提供彈性選項，可讓您擴大和縮小叢集中的背景工作節點數目。 此彈性可讓您在數小時或週末之後壓縮叢集。 並在尖峰商務需求期間進行擴充。
 
-在定期批次處理之前相應增加您的叢集，讓叢集擁有足夠的資源。  處理完成且使用量下降時，請將 HDInsight 叢集相應減少至較少的背景工作節點。
+在定期批次處理之前擴大您的叢集，讓叢集有足夠的資源。  處理完成後，使用狀況會下降，將 HDInsight 叢集縮小至較少的背景工作節點。
 
-您可以使用以下所述的其中一種方法來手動調整叢集。 您也[可以使用 [自動調整](hdinsight-autoscale-clusters.md)] 選項，自動相應增加和減少，以回應特定計量。
+您可以使用以下所述的其中一種方法，以手動方式調整叢集。 您也 [可以使用自動](hdinsight-autoscale-clusters.md) 調整選項來自動擴大和縮小，以回應特定計量。
 
 > [!NOTE]  
 > 只支援使用 HDInsight 3.1.3 版或更高版本的叢集。 如果不確定您的叢集版本，您可以檢查 [屬性] 頁面。
@@ -36,33 +36,33 @@ Microsoft 提供下列公用程式來調整叢集：
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
 |[Azure 傳統 CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
-|[Azure 入口網站](https://portal.azure.com)|開啟您的 HDInsight 叢集窗格，選取左側功能表上的 [叢集**大小**]，然後在 [叢集大小] 窗格上，輸入背景工作節點的數目，然後選取 [儲存]。|  
+|[Azure 入口網站](https://portal.azure.com)|開啟您的 HDInsight 叢集窗格，選取左側功能表上的 [叢集 **大小** ]，然後在 [叢集大小] 窗格中，輸入背景工作節點的數目，然後選取 [儲存]。|  
 
 ![Azure 入口網站 scale cluster 選項](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
 只要使用上述任一方法，您即可在幾分鐘內相應增加或相應減少 HDInsight 叢集。
 
 > [!IMPORTANT]  
-> * Azure 傳統 CLI 已淘汰，應僅與傳統部署模型搭配使用。 針對所有其他部署，請使用[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
-> * PowerShell AzureRM 模組已被取代。  請盡可能使用[Az 模組](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0)。
+> * Azure 傳統 CLI 已被取代，而且只能搭配傳統部署模型使用。 若為所有其他部署，請使用 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
+> * PowerShell AzureRM 模組已淘汰。  請盡可能使用 [Az 模組](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) 。
 
 ## <a name="impact-of-scaling-operations"></a>調整作業的影響
 
-當您**將節點新增**至執行中的 HDInsight 叢集（相應增加）時，作業不會受到影響。 在調整程序執行的同時，您仍可放心地提交新的作業。 如果調整作業失敗，失敗會讓您的叢集處於正常運作狀態。
+當您 **將節點新增** 至執行中的 HDInsight 叢集時 (擴大) ，作業不會受到影響。 在調整程序執行的同時，您仍可放心地提交新的作業。 如果調整作業失敗，失敗會讓您的叢集處於正常運作狀態。
 
-如果您**移除**節點（相應減少），則在調整作業完成時，擱置或執行中的作業將會失敗。 此失敗的原因是在調整程式期間重新開機某些服務。 在手動調整作業期間，您的叢集可能會卡在安全模式中。
+如果您 **移除** 節點 (縮小) 、暫止或正在執行的作業會在調整作業完成時失敗。 這項失敗的原因是在調整程式期間重新開機某些服務。 在手動調整作業期間，您的叢集可能會卡在安全模式中。
 
 變更資料節點數目的影響會因為 HDInsight 支援的各種類型叢集而有所不同：
 
 * Apache Hadoop
 
-    您可以順暢地增加正在執行的 Hadoop 叢集中的背景工作節點數目，而不會影響任何作業。 您也可以在作業進行當中提交新工作。 調整作業中的失敗會以適當的方式處理。 叢集一律會保持在正常運作狀態。
+    您可以順暢地增加正在執行的 Hadoop 叢集中的背景工作節點數目，而不會影響任何作業。 您也可以在作業進行當中提交新工作。 調整作業中的失敗會以正常方式處理。 叢集一律會保持正常運作狀態。
 
-    當 Hadoop 叢集以較少的資料節點相應減少時，部分服務會重新開機。 此行為會導致所有執行中和擱置的工作在調整作業完成時失敗。 但您可以在作業完成後重新提交這些工作。
+    當 Hadoop 叢集以較少的資料節點縮小時，會重新開機某些服務。 此行為會導致所有執行中和擱置的工作在調整作業完成時失敗。 但您可以在作業完成後重新提交這些工作。
 
-* Apache HBase
+* Apache HBase (英文)
 
-    當您的 HBase 叢集正在執行時，您可以順暢地新增或移除節點。 區域伺服器會在完成調整作業的數分鐘之內自動取得平衡。 不過，您可以手動平衡區域伺服器。 登入叢集前端節點，然後執行下列命令：
+    您可以在 HBase 叢集中執行時順暢地新增或移除節點。 區域伺服器會在完成調整作業的數分鐘之內自動取得平衡。 不過，您可以手動平衡區域伺服器。 登入叢集前端節點，然後執行下列命令：
 
     ```bash
     pushd %HBASE_HOME%\bin
@@ -74,7 +74,7 @@ Microsoft 提供下列公用程式來調整叢集：
 
 * Apache Storm
 
-    當執行時，您可以順暢地新增或移除資料節點。 不過，在調整作業成功完成後，您必須重新平衡拓撲。 重新平衡可讓拓撲根據叢集中的新節點數目，重新調整平行處理原則[設定](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。 若要重新平衡執行中的拓撲，請使用下列其中一個選項：
+    您可以順暢地新增或移除資料節點。 不過，在調整作業成功完成後，您必須重新平衡拓撲。 重新平衡可讓拓撲根據叢集中的新節點數目，重新調整平行處理原則 [設定](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) 。 若要重新平衡執行中的拓撲，請使用下列其中一個選項：
 
   * Storm Web UI
 
@@ -82,7 +82,7 @@ Microsoft 提供下列公用程式來調整叢集：
 
     1. `https://CLUSTERNAME.azurehdinsight.net/stormui`在您的網頁瀏覽器中開啟，其中 `CLUSTERNAME` 是您的風暴叢集的名稱。 出現提示時，輸入建立叢集時所指定的 HDInsight 叢集系統管理員 (管理員) 名稱和密碼。
 
-    1. 選取您要重新平衡的拓撲，然後選取 [重新平衡]**** 按鈕。 輸入重新平衡作業執行前的延遲。
+    1. 選取您要重新平衡的拓撲，然後選取 [重新平衡]**** 按鈕。 輸入重新平衡作業完成之前的延遲。
 
         ![HDInsight Storm 調整重新平衡](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
 
@@ -94,7 +94,7 @@ Microsoft 提供下列公用程式來調整叢集：
      storm rebalance TOPOLOGYNAME
     ```
 
-    您也可以指定參數來覆寫拓撲原先提供的平行處理原則提示。 例如，下列程式碼會將 `mytopology` 拓撲重新設為5個背景工作進程，3個執行程式用於藍 spout 元件，以及10個執行程式用於黃色螺栓元件。
+    您也可以指定參數來覆寫拓撲原先提供的平行處理原則提示。 例如，下列程式碼會將拓撲重新配置 `mytopology` 給5個背景工作進程、3個 spout 元件的執行程式，以及黃色螺栓元件的10個執行程式。
 
     ```bash
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
@@ -109,34 +109,34 @@ Microsoft 提供下列公用程式來調整叢集：
 
 * Apache Hive LLAP
 
-    調整為背景 `N` 工作節點之後，HDInsight 會自動設定下列設定並重新啟動 Hive。
+    調整至背景 `N` 工作節點之後，HDInsight 會自動設定下列設定，並重新啟動 Hive。
 
-  * 並行查詢總數上限：`hive.server2.tez.sessions.per.default.queue = min(N, 32)`
-  * Hive 的 LLAP 所使用的節點數目：`num_llap_nodes  = N`
-  * 執行 Hive LLAP daemon 的節點數目：`num_llap_nodes_for_llap_daemons = N`
+  * 並行查詢總數上限： `hive.server2.tez.sessions.per.default.queue = min(N, 32)`
+  * Hive 的 LLAP 所使用的節點數目： `num_llap_nodes  = N`
+  * 執行 Hive LLAP daemon 的節點 () 數目： `num_llap_nodes_for_llap_daemons = N`
 
-## <a name="how-to-safely-scale-down-a-cluster"></a>如何安全地向下調整叢集
+## <a name="how-to-safely-scale-down-a-cluster"></a>如何安全地縮小叢集
 
-### <a name="scale-down-a-cluster-with-running-jobs"></a>使用執行中的作業向下擴充叢集
+### <a name="scale-down-a-cluster-with-running-jobs"></a>使用執行中的作業縮小叢集
 
-為避免執行中的工作在相應減少作業期間失敗，您可以嘗試三個專案：
+若要避免在縮小作業期間執行的作業失敗，您可以嘗試下列三項：
 
-1. 等待工作完成，再相應減少叢集。
-1. 手動結束作業。
-1. 在調整作業結束後重新提交工作。
+1. 等候工作完成後，再相應減少叢集。
+1. 手動結束工作。
+1. 在調整作業結束後重新提交作業。
 
-若要查看擱置和執行中作業的清單，您可以使用 YARN **RESOURCE MANAGER UI**，請遵循下列步驟：
+若要查看暫止和執行中的作業清單，您可以使用 YARN **RESOURCE MANAGER UI**，請遵循下列步驟：
 
 1. 從 [Azure 入口網站](https://portal.azure.com/)中，選取您的叢集。  叢集會在新的入口網站分頁中開啟。
-2. 從主要視圖中，流覽至 [叢集**儀表板**]  >  **Ambari home**。 輸入您的叢集認證。
+2. 從主視圖流覽至 [叢集**儀表板**]  >  **Ambari [首頁**]。 輸入您的叢集認證。
 3. 從 Ambari UI 中，選取左側功能表上的 [服務] 清單中的 [ **YARN** ]。  
-4. 從 [YARN] 頁面選取 [**快速連結**]，並將滑鼠停留在使用中的前端節點上，然後選取 [ **Resource Manager UI**]。
+4. 在 [YARN] 頁面上，選取 [ **快速連結** ] 並將滑鼠停留在作用中前端節點上，然後選取 [ **Resource Manager UI**]。
 
     ![Apache Ambari 快速連結 Resource Manager UI](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
-您可以使用直接存取 Resource Manager UI `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` 。
+您可以使用來直接存取 Resource Manager 的 UI `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` 。
 
-您會看到作業及其目前狀態的清單。 在螢幕擷取畫面中，目前有一項作業正在執行：
+您會看到作業及其目前狀態的清單。 在螢幕擷取畫面中，有一個目前正在執行的作業：
 
 ![Resource Manager UI 應用程式](./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png)
 
@@ -146,7 +146,7 @@ Microsoft 提供下列公用程式來調整叢集：
 yarn application -kill <application_id>
 ```
 
-例如:
+例如：
 
 ```bash
 yarn application -kill "application_1499348398273_0003"
@@ -154,11 +154,11 @@ yarn application -kill "application_1499348398273_0003"
 
 ### <a name="getting-stuck-in-safe-mode"></a>進入安全模式
 
-當您相應減少叢集時，HDInsight 會使用 Apache Ambari 管理介面來先解除委任額外的背景工作節點。 節點會將其 HDFS 區塊複寫至其他線上背景工作角色節點。 之後，HDInsight 會安全地向下調整叢集規模。 HDFS 會在調整作業期間進入安全模式。 在調整完成後，HDFS 應會出現。 不過，在某些情況下，在調整作業期間，HDFS 會停滯在安全模式中，因為複寫中的檔案區塊。
+當您調整叢集時，HDInsight 會使用 Apache Ambari 管理介面，先將額外的背景工作節點解除委任。 節點會將其 HDFS 區塊複寫至其他線上背景工作節點。 之後，HDInsight 會安全地調整叢集規模。 HDFS 會在調整作業期間進入安全模式。 當調整完成之後，HDFS 應該會立即推出。 不過，在某些情況下，因為複寫中的檔案區塊，所以在調整作業期間，HDFS 會停滯于安全模式。
 
-根據預設，HDFS 會 `dfs.replication` 設定為1，以控制每個檔案區塊可用的複本數目。 檔案區塊的每個複本都儲存在叢集的不同節點上。
+根據預設，HDFS 的 `dfs.replication` 設定為1，可控制每個檔案區塊的可用複本數目。 檔案區塊的每個複本都會儲存在叢集的不同節點上。
 
-當預期的區塊複本數目無法使用時，HDFS 會進入安全模式，而 Ambari 會產生警示。 HDFS 可進入安全模式進行調整作業。 如果未偵測到所需的節點數目來進行複寫，叢集可能會卡在安全模式中。
+如果無法使用預期的區塊複本數目，HDFS 會進入安全模式，而 Ambari 會產生警示。 HDFS 可能會進入安全模式以進行調整作業。 如果未偵測到所需的節點數目來進行複寫，叢集可能會卡在安全模式中。
 
 ### <a name="example-errors-when-safe-mode-is-turned-on"></a>安全模式開啟時的錯誤範例
 
@@ -172,7 +172,7 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
 
 您可以從 `/var/log/hadoop/hdfs/` 資料夾檢閱接近叢集調整時的名稱節點記錄，以查看其進入安全模式的時間。 記錄檔名稱為 `Hadoop-hdfs-namenode-<active-headnode-name>.*`。
 
-根本原因是 Hive 相依于 HDFS 中的暫存檔案，同時執行查詢。 當 HDFS 進入安全模式時，Hive 無法執行查詢，因為它無法寫入 HDFS。 HDFS 中的暫存檔案位於掛接至個別背景工作角色節點 Vm 的本機磁片磁碟機中。 檔案會在三個複本的其他背景工作節點之間複寫（最少）。
+根本原因是在執行查詢時，Hive 相依于 HDFS 中的暫存檔案。 當 HDFS 進入安全模式時，Hive 無法執行查詢，因為它無法寫入 HDFS。 HDFS 中的暫存檔案位於掛接到個別背景工作節點 Vm 的本機磁片磁碟機中。 檔案會在三個複本的其他背景工作節點之間複寫（最小值）。
 
 ### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode"></a>如何防止 HDInsight 進入安全模式
 
@@ -189,13 +189,13 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
 
 先停止所有 Hive 作業，再相應減少為一個背景工作節點。 如果您已將工作負載排程，則請在 Hive 工作完成後執行相應減少。
 
-在調整規模之前停止 Hive 作業，有助於將 tmp 資料夾中的暫存檔案數目降至最低（如果有的話）。
+在調整之前停止 Hive 作業，有助於將 tmp 資料夾中的暫存檔案數目降至最低， (是否有任何) 。
 
 #### <a name="manually-clean-up-hives-scratch-files"></a>手動清除 Hive 的暫存檔案
 
 如果 Hive 有遺留暫存檔案，則可以先手動清除那些檔案再相應減少，以避開安全模式。
 
-1. 查看 configuration 屬性，檢查哪個位置正在用於 Hive 暫存檔案 `hive.exec.scratchdir` 。 此參數設定于內 `/etc/hive/conf/hive-site.xml` ：
+1. 查看 configuration 屬性，檢查 Hive 暫存檔使用的位置 `hive.exec.scratchdir` 。 此參數是在中設定 `/etc/hive/conf/hive-site.xml` ：
 
     ```xml
     <property>
@@ -206,7 +206,7 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
 
 1. 停止 Hive 服務，並確定所有查詢和作業皆已完成。
 
-1. 列出上方找到的臨時目錄內容， `hdfs://mycluster/tmp/hive/` 以查看它是否包含任何檔案：
+1. 列出上找到的臨時目錄內容， `hdfs://mycluster/tmp/hive/` 查看它是否包含任何檔案：
 
     ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
@@ -224,7 +224,7 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
     -rw-r--r--   3 hive hdfs         26 2017-07-06 20:30 hdfs://mycluster/tmp/hive/hive/c108f1c2-453e-400f-ac3e-e3a9b0d22699/inuse.info
     ```
 
-1. 如果您知道 Hive 不會再使用這些檔案，則可將其移除。 查看 Yarn Resource Manager UI 頁面，確定 Hive 沒有任何執行中的查詢。
+1. 如果您知道 Hive 不會再使用這些檔案，則可將其移除。 藉由查看 Yarn Resource Manager UI 頁面，確定 Hive 沒有任何執行中的查詢。
 
     從 HDFS 中移除檔案的命令列範例：
 
@@ -232,25 +232,25 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
     hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
     ```
 
-#### <a name="scale-hdinsight-to-three-or-more-worker-nodes"></a>將 HDInsight 調整為三個或多個背景工作節點
+#### <a name="scale-hdinsight-to-three-or-more-worker-nodes"></a>將 HDInsight 調整為三個以上的背景工作節點
 
-如果您的叢集在相應減少到三個背景工作節點時經常停滯在安全模式，請至少保留三個背景工作節點。
+如果您的叢集在相應減少至三個背景工作節點時，經常卡在安全模式中，請至少保留三個背景工作節點。
 
-擁有三個背景工作角色節點比相應減少到只有一個背景工作節點來得昂貴。 不過，此動作會讓您的叢集無法進入安全模式。
+擁有三個背景工作節點的成本會比相應減少至只有一個背景工作節點高。 不過，此動作會防止您的叢集進入安全模式。
 
-### <a name="scale-hdinsight-down-to-one-worker-node"></a>將 HDInsight 向下調整為一個背景工作節點
+### <a name="scale-hdinsight-down-to-one-worker-node"></a>將 HDInsight 調整至一個背景工作節點
 
-即使叢集縮小為一個節點，背景工作節點0仍然會存留下來。 背景工作節點0永遠無法解除委任。
+即使將叢集縮小為一個節點，背景工作節點0仍會存留下來。 背景工作節點0永遠無法解除委任。
 
 #### <a name="run-the-command-to-leave-safe-mode"></a>執行命令來脫離安全模式
 
-最後一個選項是執行「離開安全模式」命令。 如果 HDFS 因為複寫中的 Hive 檔案而進入安全模式，請執行下列命令以離開安全模式：
+最後一個選項是執行 [退出安全模式] 命令。 如果 HDFS 因為複寫中的 Hive 檔案而進入安全模式，請執行下列命令以離開安全模式：
 
 ```bash
 hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 ```
 
-### <a name="scale-down-an-apache-hbase-cluster"></a>相應減少 Apache HBase 叢集
+### <a name="scale-down-an-apache-hbase-cluster"></a>縮小 Apache HBase 叢集
 
 區域伺服器會在完成調整作業之後的幾分鐘內自動達到平衡。 若要手動平衡區域伺服器，請完成下列步驟：
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710145"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443019"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Redshift 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -43,7 +43,7 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 建立管線的最簡單方式就是使用「Azure Data Factory 複製精靈」。 如需使用複製精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md)。
 
-您也可以使用 Visual Studio、Azure PowerShell 或其他工具來建立管線。 Azure Resource Manager 範本、.NET API 或 REST API 也可以用來建立管線。 如需建立具有複製活動之管線的逐步指示，請參閱[複製活動教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)課程。
+您也可以使用 Visual Studio、Azure PowerShell 或其他工具來建立管線。 Azure Resource Manager 範本、.NET API 或 REST API 也可以用來建立管線。 如需使用複製活動建立管線的逐步指示，請參閱「 [複製活動」教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)課程。
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
@@ -59,14 +59,14 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 下表提供 Amazon Redshift 服務連結服務專屬之 JSON 元素的描述。
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| **type** |屬性必須設為 **AmazonRedshift**。 |Yes |
-| **伺服器** |Amazon Redshift 伺服器的 IP 位址或主機名稱。 |Yes |
+| **type** |屬性必須設為 **AmazonRedshift**。 |是 |
+| **伺服器** |Amazon Redshift 伺服器的 IP 位址或主機名稱。 |是 |
 | **port** |Amazon Redshift 伺服器用來接聽用戶端連線的 TCP 連接埠號碼。 |否 (預設值為 5439) |
-| **database** |Amazon Redshift 資料庫的名稱。 |Yes |
-| **username** |可存取資料庫之使用者的名稱。 |Yes |
-| **password** |使用者帳戶的密碼。 |Yes |
+| **database** |Amazon Redshift 資料庫的名稱。 |是 |
+| **username** |可存取資料庫之使用者的名稱。 |是 |
+| **password** |使用者帳戶的密碼。 |是 |
 
 ## <a name="dataset-properties"></a>資料集屬性
 
@@ -74,9 +74,9 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 每個類型之資料集的 **typeProperties** 區段都不同，可提供存放區中資料位置的相關資訊。 **RelationalTable** 資料集類型的 **typeProperties** 區段 (包含 Amazon Redshift 資料集) 具有下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| **tableName** |Amazon Redshift 資料庫中連結服務所參照的資料表名稱。 |否 (如果指定 **RelationalSource** 類型複製活動的**查詢**屬性) |
+| **名** |Amazon Redshift 資料庫中連結服務所參照的資料表名稱。 |否 (如果指定 **RelationalSource** 類型複製活動的**查詢**屬性) |
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
@@ -84,16 +84,16 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 對於複製活動，當來源類型為 **AmazonRedshiftSource** 時，**typeProperties** 區段中可使用下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | **查詢** | 使用自訂查詢來讀取資料。 |否 (如果已指定資料集的 **tableName** 屬性) |
-| **redshiftUnloadSettings** | 在使用 Redshift **UNLOAD** 命令時包含屬性群組。 | No |
+| **redshiftUnloadSettings** | 在使用 Redshift **UNLOAD** 命令時包含屬性群組。 | 否 |
 | **s3LinkedServiceName** | 要作為暫時存放區的 Amazon S3。 連結服務是使用類型為 **AwsAccessKey** 的 Azure Data Factory 名稱來指定。 | 使用 **redshiftUnloadSettings** 屬性時為必要 |
 | **bucketName** | 表示要用來儲存暫時資料的 Amazon S3 貯體。 如果未提供此屬性，複製活動會自動產生貯體。 | 使用 **redshiftUnloadSettings** 屬性時為必要 |
 
 您也可以將 **RelationalSource** 類型 (包括 Amazon Redshift) 與下列 **typeProperties** 區段中的屬性搭配使用。 請注意，此來源類型不支援 Redshift **UNLOAD** 命令。
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | **查詢** |使用自訂查詢來讀取資料。 | 否 (如果已指定資料集的 **tableName** 屬性) |
 
@@ -101,13 +101,13 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) 命令會將查詢的結果上傳到 Amazon S3 上的一個或多個檔案。 Amazon 建議使用此命令從 Redshift 複製大型資料集。
 
-**範例：將資料從 Amazon Redshift 複製到 Azure SQL 資料倉儲**
+**範例：將資料從 Amazon Redshift 複製到先前的 SQL 資料倉儲 (Azure Synapse Analytics) **
 
-此範例會將資料從 Amazon Redshift 複製到 Azure SQL 資料倉儲。 此範例使用 Redshift **UNLOAD** 命令、暫存複製資料和 Microsoft PolyBase。
+此範例會將資料從 Amazon Redshift 複製到 Azure Synapse Analytics。 此範例使用 Redshift **UNLOAD** 命令、暫存複製資料和 Microsoft PolyBase。
 
-在此範例使用案例中，複製活動首先將來自 Amazon Redshift 的資料上傳到 Amazon S3，如同 **redshiftUnloadSettings** 選項中所設定。 然後，將資料從 Amazon S3 複製到 **stagingSettings** 選項中指定的 Azure Blob 儲存體。 最後，PolyBase 將資料載入 SQL 資料倉儲。 複製活動會處理所有暫時格式。
+在此範例使用案例中，複製活動首先將來自 Amazon Redshift 的資料上傳到 Amazon S3，如同 **redshiftUnloadSettings** 選項中所設定。 然後，將資料從 Amazon S3 複製到 **stagingSettings** 選項中指定的 Azure Blob 儲存體。 最後，PolyBase 會將資料載入 Azure Synapse Analytics 中。 複製活動會處理所有暫時格式。
 
-![將工作流程從 Amazon Redshift 複製到 SQL 資料倉儲](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
+![將工作流程從 Amazon Redshift 複製到 Azure Synapse Analytics](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {
@@ -351,5 +351,5 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 ## <a name="performance-and-tuning"></a>效能和微調
 請參閱[複製活動的效能及微調指南](data-factory-copy-activity-performance.md)，了解影響複製活動效能的重要因素，以及達到最佳效能的各種方法。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需使用複製活動來建立管線的逐步指示，請參閱[複製活動教學課程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。

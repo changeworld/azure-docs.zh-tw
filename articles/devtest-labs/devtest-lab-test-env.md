@@ -3,12 +3,12 @@ title: 為 VM 和 PaaS 測試環境使用 Azure DevTest Labs | Microsoft Docs
 description: 了解如何為 VM 和 PaaS 測試環境案例使用 Azure DevTest Labs。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9207c070c13c5e276a6ab95e3bcf1bb8671dc382
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 978071aa160098612a5effebfb30d5d58b777df7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272890"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299825"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>為 VM 和 PaaS 測試環境使用 Azure DevTest Labs
 
@@ -46,7 +46,7 @@ ms.locfileid: "87272890"
    
    | Task | 您學到什麼 |
    | --- | --- |
-   | [設定 Azure Marketplace 映像](devtest-lab-configure-marketplace-images.md) |了解如何將 Azure Marketplace 映像加入允許清單；只開放選取您想讓測試人員使用的映像。|
+   | [設定 Azure Marketplace 映像](devtest-lab-configure-marketplace-images.md) |瞭解如何允許 Azure Marketplace 映射，讓您僅能選取您想要用於測試人員的影像。|
    | [建立自訂映像](devtest-lab-create-template.md) |預先安裝所需軟體以建立自訂映像，讓測試人員可以使用自訂映像快速建立 VM。|
    | [了解映像處理站](./devtest-lab-faq.md#blog-post) |觀看如何設定及使用映像處理站的說明影片。|
 

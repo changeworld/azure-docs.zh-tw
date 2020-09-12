@@ -1,6 +1,6 @@
 ---
 title: 教學課程：載入紐約計程車資料
-description: 教學課程會使用 Azure 入口網站和 SQL Server Management Studio，從適用于 Synapse SQL 的 Azure blob 載入紐約計程車資料。
+description: 教學課程使用 Azure 入口網站和 SQL Server Management Studio 從 Azure blob for Synapse SQL 載入紐約計程車資料。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c4dbc63e8829d8a9ca3a3820fbb6675da4fad357
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 67392f965b3fddec7fc7a03bd328a224dad42208
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261833"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442976"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>教學課程：載入紐約計程車資料集
 
-本教學課程使用[COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，從 Azure blob 儲存體帳戶載入紐約計程車資料集。 本教學課程是使用 [Azure 入口網站](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)：
+本教學課程會使用 [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) ，從 Azure blob 儲存體帳戶載入紐約計程車資料集。 本教學課程是使用 [Azure 入口網站](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)：
 
 > [!div class="checklist"]
 >
@@ -29,7 +29,7 @@ ms.locfileid: "86261833"
 > * 使用 SSMS 連線到資料倉儲
 > * 建立針對載入資料指定的使用者
 > * 建立範例資料集的資料表 
-> * 使用複製 T-sql 語句將資料載入資料倉儲
+> * 使用 COPY T-sql 語句將資料載入資料倉儲
 > * 在載入時，檢閱資料的進度
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
@@ -50,7 +50,7 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
 1. 選取 Azure 入口網站左上角的 [建立資源]  。
 
-2. 從 [**新增**] 頁面中選取 [**資料庫**]，然後在 [**新增**] 頁面的 [**精選**] 底下選取 [ **Azure Synapse 分析**]
+2. 從 [**新增**] 頁面中選取 [**資料庫**]，然後選取 [**新增**] 頁面上的 [**精選**] **Azure Synapse Analytics** 。
 
     ![建立資料倉儲](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
@@ -58,7 +58,7 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
    | 設定            | 建議的值       | 描述                                                  |
    | ------------------ | --------------------- | ------------------------------------------------------------ |
-   | *檔案名**            | mySampleDataWarehouse | 如需有效的資料庫名稱，請參閱[資料庫識別碼](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 |
+   | *名稱**            | mySampleDataWarehouse | 如需有效的資料庫名稱，請參閱[資料庫識別碼](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 |
    | **訂用帳戶**   | 您的訂用帳戶     | 如需訂用帳戶的詳細資訊，請參閱[訂用帳戶](https://account.windowsazure.com/Subscriptions)。 |
    | **資源群組** | myResourceGroup       | 如需有效的資源群組名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 |
    | **選取來源**  | 空白資料庫        | 指定以建立空白資料庫。 請注意，資料倉儲是一種資料庫。 |
@@ -76,18 +76,18 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
     ![建立伺服器](./media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
-5. 選取 [選取] 。
+5. 選取 [選取]  。
 
-6. 選取 [**效能等級**] 以指定資料倉儲為 Gen1 或 Gen2，以及資料倉儲單位的數目。
+6. 選取 [ **效能等級** ] 以指定資料倉儲是 Gen1 或 Gen2，以及資料倉儲單位的數目。
 
-7. 在本教學課程中，請選取 [SQL 集區**Gen2**]。 根據預設，滑杆會設定為**DW1000c** 。  請嘗試向上和向下移動以查看其運作方式。
+7. 在本教學課程中，請選取 [SQL 集區 **Gen2**]。 滑杆預設會設定為 **DW1000c** 。  請嘗試向上和向下移動以查看其運作方式。
 
     ![設定效能](./media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
 8. 選取 [套用]。
-9. 在 [布建] 分頁中，選取空白資料庫的定**序**。 本教學課程使用預設值。 如需定序的詳細資訊，請參閱[定序](/sql/t-sql/statements/collations?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+9. 在 [布建 **] 分頁** 中，為空白資料庫選取定序。 本教學課程使用預設值。 如需定序的詳細資訊，請參閱[定序](/sql/t-sql/statements/collations?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
-10. 現在您已完成表單，請選取 [建立] 以布**建**資料庫。 佈建需要幾分鐘的時間。
+10. 現在您已經完成表單，請選取 [建立] 以布 **建** 資料庫。 佈建需要幾分鐘的時間。
 
 11. 在工具列上選取 [通知]，以監視部署程序。
   
@@ -98,9 +98,9 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 伺服器層級的防火牆，可防止外部應用程式和工具連接到伺服器或伺服器上的任何資料庫。 若要啟用連線，您可以新增防火牆規則以啟用特定 IP 位址之連線。  遵循以下步驟建立用戶端 IP 位址的[伺服器層級防火牆規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 > [!NOTE]
-> SQL 資料倉儲會透過連接埠 1433 通訊。 如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 若是如此，除非 IT 部門開啟連接埠 1433，否則您無法連線到您的伺服器。
+> Azure Synapse Analytics 透過埠1433進行通訊。 如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 若是如此，除非 IT 部門開啟連接埠 1433，否則您無法連線到您的伺服器。
 
-1. 部署完成之後，從左側功能表中選取 **[sql 資料庫**]，然後選取 [ **sql 資料庫**] 頁面上的 [ **mySampleDatabase** ]。 資料庫的概觀頁面隨即開啟，其中會顯示完整伺服器名稱 (例如 **mynewserver-20180430.database.windows.net**)，並提供進一步的設定選項。
+1. 部署完成之後，請從左側功能表中選取 **[sql** database]，然後選取 [ **sql 資料庫**] 頁面上的 [ **mySampleDatabase** ]。 資料庫的概觀頁面隨即開啟，其中會顯示完整伺服器名稱 (例如 **mynewserver-20180430.database.windows.net**)，並提供進一步的設定選項。
 
 2. 在後續的快速入門中，請複製此完整伺服器名稱，才能用來連線到伺服器及其資料庫。 然後選取伺服器名稱以開啟 [伺服器設定]。
 
@@ -118,19 +118,19 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
 6. 選取 [儲存]。 系統便會為目前的 IP 位址建立伺服器層級防火牆規則，在伺服器上開啟連接埠 1433。
 
-7. 選取 **[確定]** ，然後關閉 [**防火牆設定**] 頁面。
+7. 選取 **[確定]** ，然後關閉 [ **防火牆設定** ] 頁面。
 
-您現在可以使用此 IP 位址來連線到伺服器及其資料倉儲。 可從 SQL Server Management Studio 或您選擇的另一個工具來運作連線。 當您連線時，請使用先前建立的 ServerAdmin 帳戶。  
+您現在可以使用此 IP 位址連線到伺服器及其資料倉儲。 可從 SQL Server Management Studio 或您選擇的另一個工具來運作連線。 當您連線時，請使用先前建立的 ServerAdmin 帳戶。  
 
 > [!IMPORTANT]
-> 根據預設，已對所有 Azure 服務啟用透過 SQL Database 防火牆存取。 選取此頁面上的 [**關閉**]，然後選取 [**儲存**] 以停用所有 Azure 服務的防火牆。
+> 根據預設，已對所有 Azure 服務啟用透過 SQL Database 防火牆存取。 選取此頁面上的 [ **關閉** ]，然後選取 [ **儲存** ] 以停用所有 Azure 服務的防火牆。
 
 ## <a name="get-the-fully-qualified-server-name"></a>取得完整的伺服器名稱
 
 請在 Azure 入口網站中取得伺服器的完整伺服器名稱。 稍後您在連線到伺服器時，要使用完整伺服器名稱。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 從左側功能表中選取 [ **Azure Synapse 分析**]，然後在 [ **Azure Synapse 分析**] 頁面上選取您的資料庫。
+2. 從左側功能表中選取 **Azure Synapse Analytics** ，然後在 **Azure Synapse Analytics** 頁面上選取您的資料庫。
 3. 在 Azure 入口網站中您資料庫的 [基本資訊] 窗格中，找到後複製 [伺服器名稱]。 在此範例中，完整名稱是 mynewserver 20180430.database.windows.net。
 
     ![連線資訊](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
@@ -141,7 +141,7 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
 1. 開啟 SQL Server Management Studio。
 
-2. 在 [連線至伺服器] 對話方塊中，輸入下列資訊：
+2. 在 [連線至伺服器]  對話方塊中，輸入下列資訊：
 
     | 設定        | 建議的值                            | 描述                                                  |
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
@@ -153,7 +153,7 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
     ![連線至伺服器](./media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. 選取 [連線]。 [物件總管] 視窗會在 SSMS 中開啟。
+3. 選取 [連接]。 [物件總管] 視窗會在 SSMS 中開啟。
 
 4. 在 [物件總管] 中展開 [資料庫]。 然後展開 [系統資料庫]**** 和 [主要資料庫]**** 來檢視主要資料庫中的物件。  展開 [mySampleDatabase]**** 可檢視新資料庫中的物件。
 
@@ -161,13 +161,13 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
 ## <a name="create-a-user-for-loading-data"></a>建立載入資料的使用者
 
-伺服器系統管理員帳戶旨在執行管理作業，並不適合用於在使用者資料上執行查詢。 載入資料是需要大量記憶體的作業。 記憶體上限是根據所設定的[資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md)和[資源類別](resource-classes-for-workload-management.md)來定義。
+伺服器系統管理員帳戶旨在執行管理作業，並不適合用於在使用者資料上執行查詢。 載入資料是需要大量記憶體的作業。 記憶體最大可根據設定的 [資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md) 和 [資源類別](resource-classes-for-workload-management.md) 來定義。
 
 您最好建立載入資料專用的登入和使用者。 然後將載入使用者新增至可進行適當最大記憶體配置的[資源類別](resource-classes-for-workload-management.md)。
 
 因為您目前以伺服器管理員的身分連線，就可以建立登入和使用者。 使用下列步驟來建立登入和名為 **LoaderRC20** 的使用者。 然後將使用者指派至 **staticrc20** 資源類別。
 
-1. 在 SSMS 中，以滑鼠右鍵選取 [**主要**] 以顯示下拉式功能表，然後選擇 [追加**查詢**]。 隨即開啟 [新增查詢] 視窗。
+1. 在 SSMS 中，以滑鼠右鍵選取 [ **master** ] 以顯示下拉式功能表，然後選擇 [追加 **查詢**]。 隨即開啟 [新增查詢] 視窗。
 
     ![主要資料庫上的新增查詢](./media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
 
@@ -178,7 +178,7 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
     CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
     ```
 
-3. 選取 [執行]。
+3. 選取 [執行] 。
 
 4. 以滑鼠右鍵按一下 [mySampleDataWarehouse]****，然後選擇 [新增查詢]****。 新的查詢視窗隨即開啟。  
 
@@ -192,19 +192,19 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
     EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
     ```
 
-6. 選取 [執行]。
+6. 選取 [執行] 。
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>以載入使用者身分連線到伺服器
 
 載入資料的首要步驟是以 LoaderRC20 身分登入。  
 
-1. 在物件總管中，選取 [連線] 下拉式功能表，然後選取 [**資料庫引擎** **]** 。 [連線到伺服器] 對話方塊隨即出現。
+1. 在物件總管中，選取 [連線] 下拉式功能表，然後選取 [**資料庫引擎** **]** 。 [連線到伺服器]  對話方塊隨即出現。
 
     ![與新登入連線](./media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
 2. 輸入完整伺服器名稱，以及輸入 **LoaderRC20** 作為登入。  輸入您 LoaderRC20 的密碼。
 
-3. 選取 [連線]。
+3. 選取 [連接]。
 
 4. 您的連線就緒時，會在 [物件總管] 中看到兩個伺服器連線。 一個是以 ServerAdmin 連線，另一個是以 MedRCLogin 連線。
 
@@ -212,9 +212,9 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
 ## <a name="create-tables-for-the-sample-data"></a>建立範例資料的資料表
 
-您已準備好開始將資料載入新資料倉儲的程序。 本教學課程的這個部分會示範如何使用 COPY 語句，從 Azure 儲存體 blob 載入紐約市計程車封包資料集。 如需日後參考，若要瞭解如何將資料移至 Azure blob 儲存體，或直接從您的來源載入，請參閱[載入總覽](design-elt-data-loading.md)。
+您已準備好開始將資料載入新資料倉儲的程序。 本教學課程的這個部分會說明如何使用 COPY 語句，從 Azure 儲存體 blob 載入紐約市計程車 cab 資料集。 若要瞭解如何將資料移至 Azure blob 儲存體，或直接從來源載入資料，請參閱 [載入總覽](design-elt-data-loading.md)。
 
-執行下列 SQL 腳本，並指定您想要載入之資料的相關資訊。 這項資訊包括資料所在位置、資料內容的格式，以及資料的資料表定義。
+執行下列 SQL 腳本，並指定您要載入之資料的相關資訊。 這項資訊包括資料所在位置、資料內容的格式，以及資料的資料表定義。
 
 1. 在上一節中，您以 LoaderRC20 身分登入您的資料倉儲。 在 SSMS 中，以滑鼠右鍵按一下 [LoaderRC20] 連線，然後選取 [新增查詢]****。  新的查詢視窗隨即開啟。
 
@@ -373,12 +373,12 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>將資料載入資料倉儲
 
-本節使用[COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)從 Azure 儲存體 Blob 載入範例資料。  
+本節使用 [COPY 語句，](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) 從 Azure 儲存體 Blob 載入範例資料。  
 
 > [!NOTE]
 > 本教學課程會將資料直接載入最終資料表。 您通常會載入生產工作負載的臨時表。 當資料位於暫存資料表時，您可以執行任何必要的轉換。 
 
-1. 執行下列語句來載入資料：
+1. 執行下列語句以載入資料：
 
     ```sql
     COPY INTO [dbo].[Date]
@@ -501,21 +501,21 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
 遵循下列步驟，視需要清除資源。
 
-1. 登入[Azure 入口網站](https://portal.azure.com)，選取您的資料倉儲。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取您的資料倉儲。
 
     ![清除資源](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
 2. 若要暫停計算，請選取 [暫停] 按鈕。 資料倉儲暫停時，您會看到 [啟動]**** 按鈕。  若要繼續計算，請選取 [啟動]  。
 
-3. 若要移除資料倉儲，因此您不需支付計算或儲存體的費用，請選取 [**刪除**]。
+3. 若要移除資料倉儲，而不需要支付計算或儲存體的費用，請選取 [ **刪除**]。
 
-4. 若要移除您所建立的伺服器，請選取上一個映射中的 [ **mynewserver-20180430.database.windows.net** ]，然後選取 [**刪除**]。  請謹慎使用這個，因為刪除伺服器會將所有指派給伺服器的資料庫刪除。
+4. 若要移除您所建立的伺服器，請選取上一個映射中的 [ **mynewserver-20180430.database.windows.net** ]，然後選取 [ **刪除**]。  請謹慎使用這個，因為刪除伺服器會將所有指派給伺服器的資料庫刪除。
 
 5. 若要移除此資源群組，請選取 [myResourceGroup]，然後選取 [刪除資源群組]。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何建立資料倉儲，以及建立載入資料的使用者。 您已使用簡單的[COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#examples)將資料載入資料倉儲。
+在本教學課程中，您已了解如何建立資料倉儲，以及建立載入資料的使用者。 您已使用簡單的 [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#examples) 將資料載入資料倉儲。
 
 您進行了下列事項：
 > [!div class="checklist"]
@@ -525,13 +525,13 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 > * 使用 SSMS 連線到資料倉儲
 > * 建立針對載入資料指定的使用者
 > * 建立範例資料的資料表
-> * 使用複製 T-sql 語句將資料載入資料倉儲
+> * 使用 COPY T-sql 語句將資料載入資料倉儲
 > * 在載入時，已檢閱資料的進度
 
-進入開發總覽，以瞭解如何將現有的資料庫移轉至 Azure Synapse 分析：
+前進到開發總覽，以瞭解如何將現有的資料庫移轉至 Azure Synapse Analytics：
 
 > [!div class="nextstepaction"]
-> [將現有資料庫移轉至 Azure Synapse 分析的設計決策](sql-data-warehouse-overview-develop.md)
+> [將現有的資料庫移轉至 Azure Synapse Analytics 的設計決策](sql-data-warehouse-overview-develop.md)
 
 如需更多載入範例和參考，請參閱下列檔：
 

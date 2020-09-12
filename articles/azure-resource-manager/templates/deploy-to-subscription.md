@@ -2,17 +2,17 @@
 title: 將資源部署至訂用帳戶
 description: 描述如何在 Azure Resource Manager 範本中建立資源群組。 此外也會說明如何將資源部署到 Azure 訂用帳戶範圍。
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/04/2020
+ms.openlocfilehash: ef4f92d2e113e7cd393c50ba4eb8b47eb4ad9d08
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002775"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468635"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在訂用帳戶層級建立資源群組和資源
 
-若要簡化資源的管理，您可以使用 Azure Resource Manager 範本 (ARM 範本) ，在您的 Azure 訂用帳戶層級部署資源。 例如，您可以將[原則](../../governance/policy/overview.md)和[azure 角色型存取控制 (azure RBAC) ](../../role-based-access-control/overview.md)部署至您的訂用帳戶，這會在您的訂用帳戶中套用。 您也可以在訂用帳戶內建立資源群組，並將資源部署至訂用帳戶中的資源群組。
+若要簡化資源的管理，您可以使用 Azure Resource Manager 範本 (ARM 範本) ，在您的 Azure 訂用帳戶層級部署資源。 例如，您可以將原則和[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)部署至您的訂用帳戶，這會在您的訂用帳戶中套用這些[原則](../../governance/policy/overview.md)。 您也可以在訂用帳戶內建立資源群組，並將資源部署至訂用帳戶中的資源群組。
 
 > [!NOTE]
 > 您可以在訂用帳戶層級部署中部署最多 800 個不同的資源群組。
@@ -21,14 +21,14 @@ ms.locfileid: "88002775"
 
 ## <a name="supported-resources"></a>支援的資源
 
-並非所有的資源類型都可以部署至訂用帳戶層級。 本節列出支援的資源類型。
+並非所有的資源類型都可部署至訂用帳戶層級。 本節將列出支援的資源類型。
 
 針對 Azure 藍圖，請使用：
 
 * [artifacts](/azure/templates/microsoft.blueprint/blueprints/artifacts)
 * [blueprints](/azure/templates/microsoft.blueprint/blueprints)
 * [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
-* [ (藍圖) 版本](/azure/templates/microsoft.blueprint/blueprints/versions)
+* [版本 (藍圖) ](/azure/templates/microsoft.blueprint/blueprints/versions)
 
 針對 Azure 原則，請使用：
 
@@ -37,7 +37,7 @@ ms.locfileid: "88002775"
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 * [remediations](/azure/templates/microsoft.policyinsights/remediations)
 
-若為角色型存取控制，請使用：
+針對角色型存取控制，請使用：
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
@@ -115,7 +115,7 @@ New-AzSubscriptionDeployment `
 
 ## <a name="deployment-scopes"></a>部署範圍
 
-部署至訂用帳戶時，您可以將訂用帳戶或訂用帳戶內的任何資源群組設為目標。 部署範本的使用者必須具有指定範圍的存取權。
+部署至訂用帳戶時，您可以將一個訂用帳戶和訂用帳戶內的任何資源群組設為目標。 您無法部署到不同于目標訂用帳戶的訂用帳戶。 部署範本的使用者必須擁有指定範圍的存取權。
 
 在範本的資源區段中定義的資源會套用至訂用帳戶。
 
@@ -130,7 +130,7 @@ New-AzSubscriptionDeployment `
 }
 ```
 
-若要將訂用帳戶中的資源群組設為目標，請新增嵌套部署並包含 `resourceGroup` 屬性。 在下列範例中，嵌套部署的目標是名為的資源群組 `rg2` 。
+若要以訂用帳戶內的資源群組為目標，請新增嵌套的部署並包含 `resourceGroup` 屬性。 在下列範例中，嵌套部署會以名為的資源群組為目標 `rg2` 。
 
 ```json
 {
@@ -145,7 +145,7 @@ New-AzSubscriptionDeployment `
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resource-group-resources
                 }
             }
         }
@@ -154,15 +154,19 @@ New-AzSubscriptionDeployment `
 }
 ```
 
+在本文中，您可以找到範本，以示範如何將資源部署到不同的範圍。 針對建立資源群組並部署儲存體帳戶的範本，請參閱 [建立資源群組和資源](#create-resource-group-and-resources)。 針對建立資源群組的範本，對其套用鎖定，並指派資源群組的角色，請參閱 [存取控制](#access-control)。
+
 ## <a name="use-template-functions"></a>使用範本函式
 
 針對訂用帳戶層級部署，使用範本函式時有一些重要考量：
 
 * **不**支援 [resourceGroup()](template-functions-resource.md#resourcegroup) 函式。
 * 支援 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函式。
-* 使用 [subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid) 函式取得在訂用帳戶層級部署之資源的資源識別碼。
+* 請勿使用 [resourceId ( # B1 ](template-functions-resource.md#resourceid) 來取得在訂用帳戶層級部署之資源的資源識別碼。
 
-  例如，若要取得原則定義的資源識別碼，使用：
+  請改用 [subscriptionResourceId ( # B1 ](template-functions-resource.md#subscriptionresourceid) 函數。
+
+  例如，若要取得部署至訂用帳戶之原則定義的資源識別碼，請使用：
 
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
@@ -178,7 +182,7 @@ New-AzSubscriptionDeployment `
 
 ### <a name="create-resource-groups"></a>建立資源群組
 
-若要在 ARM 範本中建立資源群組，請使用資源群組的名稱和位置定義[Microsoft .resources/resourceGroups](/azure/templates/microsoft.resources/allversions)資源。
+若要在 ARM 範本中建立資源群組，請使用資源群組的名稱和位置來定義 [Microsoft .resources/resourceGroups](/azure/templates/microsoft.resources/allversions) 資源。
 
 下列範本會建立空的資源群組。
 
@@ -420,7 +424,7 @@ New-AzSubscriptionDeployment `
       ],
       "properties": {
         "scope": "[subscription().id]",
-        "policyDefinitionId": "[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
+        "policyDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
       }
     }
   ]
@@ -473,13 +477,13 @@ New-AzSubscriptionDeployment `
 
 ## <a name="access-control"></a>存取控制
 
-若要瞭解如何指派角色，請參閱[使用 Azure Resource Manager 範本新增 Azure 角色指派](../../role-based-access-control/role-assignments-template.md)。
+若要瞭解如何指派角色，請參閱 [使用 Azure Resource Manager 範本新增 Azure 角色指派](../../role-based-access-control/role-assignments-template.md)。
 
-下列範例會建立資源群組、對其套用鎖定，並將角色指派給主體。
+下列範例會建立資源群組、對其套用鎖定，以及將角色指派給主體。
 
 :::code language="json" source="~/quickstart-templates/subscription-deployments/create-rg-lock-role-assignment/azuredeploy.json":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需針對 Azure 資訊安全中心部署工作區設定的範例，請參閱 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
 * 您可於 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments) 找到範本範例。

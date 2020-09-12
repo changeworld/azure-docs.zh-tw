@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: damaerte
-ms.openlocfilehash: 766245dcfe42c16106df6beed938fe2f04af05cc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286649"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468652"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概觀
 
 Azure Cloud Shell 是可經由瀏覽器存取的已驗證互動式殼層，應用在 Azure 資源管理上。 它可讓您彈性地選擇最適合您工作方式的殼層體驗 (Bash 或 PowerShell)。
 
-您可以透過三種方式來存取 Cloud Shell：
+您可以透過下列三種方式存取 Cloud Shell：
 
-- **直接連結**：開啟瀏覽器並前往 [https://shell.azure.com](https://shell.azure.com) 。
+- **直接連結**：開啟瀏覽器 [https://shell.azure.com](https://shell.azure.com) 。
 
-- **Azure 入口網站**：選取[Azure 入口網站](https://portal.azure.com)上的 Cloud Shell 圖示：
+- **Azure 入口網站**：選取 [Azure 入口網站](https://portal.azure.com)上的 Cloud Shell 圖示：
 
     ![從 Azure 入口網站啟動 Cloud Shell 的圖示](media/overview/portal-launch-icon.png)
 
-- **程式碼片段**：在[Docs.microsoft.com](https://docs.microsoft.com)和[Microsoft Learn](https://docs.microsoft.com/learn/)上，選取出現 Azure CLI 和 Azure PowerShell 程式碼片段的 [**試試看**] 按鈕：
+- **程式碼片段**：在 [ [docs.microsoft.com]() ] 和 [ [Microsoft Learn](/learn/)] 上，選取出現 Azure CLI 和 Azure PowerShell 程式碼片段的 [ **試試看** ] 按鈕：
 
     ```azurecli-interactive
     az account show
@@ -43,11 +43,11 @@ Azure Cloud Shell 是可經由瀏覽器存取的已驗證互動式殼層，應�
     Get-AzSubscription
     ```
 
-    [**試用**] 按鈕會使用 Bash （適用于 Azure CLI 程式碼片段）或 PowerShell （適用于 Azure PowerShell 程式碼片段），直接與檔一起開啟 Cloud Shell。
+    [ **試試看** ] 按鈕會在檔中使用 Bash (（適用于 Azure CLI 程式碼片段) 或 PowerShell (Azure PowerShell 程式碼片段) ）直接開啟 Cloud Shell。
 
-    若要執行命令，請使用程式碼片段中的 [**複製**]，使用**Ctrl** + **shift** + **v** （Windows/Linux）或**Cmd** + **Shift** + **v** （macOS）來貼上命令，然後按**enter**鍵。
+    若要執行命令，請使用程式碼片段中的 [**複製**]、使用**Ctrl** + **shift** + **v** (Windows/Linux) 或**Cmd** + **shift** + **v** (macOS) 貼上命令，然後按**enter**鍵。
 
-## <a name="features"></a>特性
+## <a name="features"></a>功能
 
 ### <a name="browser-based-shell-experience"></a>以瀏覽器為基礎的體驗
 
@@ -55,17 +55,17 @@ Cloud Shell 以 Azure 管理工作為考量，提供以瀏覽器存取命令列�
 
 ### <a name="choice-of-preferred-shell-experience"></a>選擇慣用的殼層體驗
 
-使用者可以選擇 Bash 或 PowerShell。
+使用者可以在 Bash 或 PowerShell 之間進行選擇。
 
-1. 選取 [ **Cloud Shell**]。
+1. 選取 **Cloud Shell**。
 
     ![Cloud Shell 圖示](media/overview/overview-cloudshell-icon.png)
 
-2. 選取 [ **Bash** ] 或 [ **PowerShell**]。
+2. 選取 **Bash** 或 **PowerShell**。
 
-    ![選擇 [Bash] 或 [PowerShell]](media/overview/overview-choices.png)
+    ![選擇 Bash 或 PowerShell](media/overview/overview-choices.png)
 
-    第一次啟動之後，您可以使用 [shell 類型] 下拉式控制項，在 Bash 和 PowerShell 之間切換：
+    第一次啟動之後，您可以使用 [shell 型別] 下拉式控制項，在 Bash 與 PowerShell 之間切換：
 
     ![選取 Bash 或 PowerShell 的下拉式控制項](media/overview/select-shell-drop-down.png)
 
@@ -87,16 +87,16 @@ Cloud Shell 提供一種以開放原始碼 Monaco Editor 為基礎的整合式�
 
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Azure CLI 檔](https://docs.microsoft.com/cli/azure)
-* [Azure PowerShell 文件](https://docs.microsoft.com/powershell/azure/)
+* [Azure CLI 檔](/cli/azure)
+* [Azure PowerShell 文件](/powershell/azure/)
 * [Azure 行動應用程式](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio Code Azure 帳戶延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>連線 Microsoft Azure 檔案儲存體
 
-Cloud Shell 機是暫時性的，但您的檔案會以兩種方式保存：透過磁片映射，並透過名為的掛接檔案共用 `clouddrive` 。 第一次啟動時，Cloud Shell 會提示要代替您建立資源群組、儲存體帳戶及 Azure 檔案共用。 這是一次性的步驟，而且會針對所有工作階段自動連接。 單一檔案共用可以進行對應，並同時供 Cloud Shell 中的 Bash 和 PowerShell 使用。
+Cloud Shell 的機器是暫時性的，但您的檔案會以兩種方式保存：透過磁片映射，以及透過名為的已掛接檔案共用 `clouddrive` 。 第一次啟動時，Cloud Shell 會提示要代替您建立資源群組、儲存體帳戶及 Azure 檔案共用。 這是一次性的步驟，而且會針對所有工作階段自動連接。 單一檔案共用可以進行對應，並同時供 Cloud Shell 中的 Bash 和 PowerShell 使用。
 
-閱讀更多以瞭解如何掛接[新的或現有的儲存體帳戶](persisting-shell-storage.md)，或瞭解[Cloud Shell 中使用的持續性機制](persisting-shell-storage.md#how-cloud-shell-storage-works)。
+深入瞭解以瞭解如何掛接新的 [或現有的儲存體帳戶](persisting-shell-storage.md) ，或瞭解 [Cloud Shell 中使用的持續性機制](persisting-shell-storage.md#how-cloud-shell-storage-works)。
 
 > [!NOTE]
 > Cloud shell 儲存體帳戶不支援 Azure 儲存體防火牆。
@@ -111,13 +111,13 @@ Cloud Shell 機是暫時性的，但您的檔案會以兩種方式保存：透�
 * Cloud Shell 會使用檔案共用中所保有的 5 GB 映像來保存 $HOME
 * 權限設定為一般 Linux 使用者 (採用 Bash)
 
-深入了解 [Cloud Shell 中的 Bash](features.md) 和 [Cloud Shell 中的 PowerShell](features-powershell.md) 中的功能。
+深入了解 [Cloud Shell 中的 Bash](features.md) 和 [Cloud Shell 中的 PowerShell](./features.md) 中的功能。
 
 ## <a name="pricing"></a>定價
 
 裝載 Cloud Shell 的機器是免費提供的，但前提是必須掛接「Azure 檔案」共用。 所需成本和一般儲存體相同。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [Cloud Shell 中 Bash 的快速入門](quickstart.md) <br>
 [Cloud Shell 中 PowerShell 的快速入門](quickstart-powershell.md)

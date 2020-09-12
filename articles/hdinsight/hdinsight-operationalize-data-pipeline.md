@@ -1,23 +1,23 @@
 ---
 title: 使用資料分析管線進行作業 - Azure
 description: 設定及執行範例資料管線，其是由新資料所觸發並可產生精確的結果。
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 03bd00ad6d0262aeea31b5d3e2c6dd1733090e32
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1e73c403a03eef9a47bc0550b37769db302a599c
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082789"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504413"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>使用資料分析管線進行作業
 
-*資料管線*是許多資料分析解決方案的基礎。 正如其名，資料管線會採用原始資料、視需要進行清除和外觀重新安排，然後通常會在儲存已處理的資料之前執行計算或匯總。 用戶端、報告或 API 會使用已處理的資料。 不論是依照排程，還是由新資料所觸發，資料管線都必須提供可重複的結果。
+*資料管線*是許多資料分析解決方案的基礎。 如其名所示，資料管線會視需要在原始資料中進行清除和外觀重新安排，然後通常會在儲存處理過的資料之前執行計算或匯總。 用戶端、報告或 API 會使用已處理的資料。 不論是依照排程，還是由新資料所觸發，資料管線都必須提供可重複的結果。
 
 本文說明如何使用在 HDInsight Hadoop 叢集上執行的 Oozie，讓您的資料管線進行作業以實施重複性。 範例案例會帶領您了解資料管線如何準備並處理航班時間序列資料。
 
@@ -29,7 +29,7 @@ ms.locfileid: "86082789"
 | 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
 | 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
-此範例管線會等到新時間週期的航班資料送達，然後才將該詳細航班資訊儲存到您的 Apache Hive 資料倉儲，以供長期分析。 管線也會建立較小的資料集，該資料集只會彙總每日航班資料。 此每日航班摘要資料會傳送至 SQL Database 以提供報表，例如網站。
+此範例管線會等到新時間週期的航班資料送達，然後才將該詳細航班資訊儲存到您的 Apache Hive 資料倉儲，以供長期分析。 管線也會建立較小的資料集，該資料集只會彙總每日航班資料。 此每日航班摘要資料會傳送給 SQL Database，以提供報表（例如網站）。
 
 下圖說明此範例管線。
 
@@ -47,15 +47,15 @@ Oozie 會根據「動作」**、「工作流程** 和「協調器」** 來描述
 
 ## <a name="provision-azure-resources"></a>佈建 Azure 資源
 
-此管線要求 Azure SQL Database 和 HDInsight Hadoop 叢集位於相同位置。 Azure SQL Database 會儲存管線所產生的摘要資料，以及 Oozie 中繼資料存放區。
+此管線要求 Azure SQL Database 和 HDInsight Hadoop 叢集位於相同位置。 Azure SQL Database 會儲存管線和 Oozie 中繼資料存放區所產生的摘要資料。
 
 ### <a name="provision-azure-sql-database"></a>佈建 Azure SQL Database
 
-1. 建立 Azure SQL Database。 請參閱在[Azure 入口網站中建立 Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)。
+1. 建立 Azure SQL Database。 請參閱 [Azure 入口網站中的建立 Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)。
 
-1. 若要確保您的 HDInsight 叢集可以存取連線的 Azure SQL Database，請設定 Azure SQL Database 防火牆規則，以允許 Azure 服務和資源存取伺服器。 您可以在 [Azure 入口網站**中選取 [** **設定伺服器防火牆**]，然後選取 [**允許 Azure 服務和資源存取此伺服器**以供 Azure SQL Database] 下方，以啟用此選項。 如需詳細資訊，請參閱[建立和管理 IP 防火牆規則](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)。
+1. 為確保您的 HDInsight 叢集可以存取連線的 Azure SQL Database，請設定 Azure SQL Database 防火牆規則，以允許 Azure 服務和資源存取伺服器。 您可以選取 [ **設定伺服器防火牆**]，然後 **在下方選取** [ **允許 Azure 服務和資源存取此伺服器** 以進行 Azure SQL Database]，在 Azure 入口網站中啟用此選項。 如需詳細資訊，請參閱[建立和管理 IP 防火牆規則](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)。
 
-1. 使用[查詢編輯器](../azure-sql/database/single-database-create-quickstart.md#query-the-database)來執行下列 SQL 語句，以建立 `dailyflights` 將儲存每個管線執行之摘要資料的資料表。
+1. 使用 [查詢編輯器](../azure-sql/database/single-database-create-quickstart.md#query-the-database) 來執行下列 SQL 語句，以建立 `dailyflights` 會儲存每次管線執行之摘要資料的資料表。
 
     ```sql
     CREATE TABLE dailyflights
@@ -78,16 +78,16 @@ Oozie 會根據「動作」**、「工作流程** 和「協調器」** 來描述
 
 ### <a name="provision-an-apache-hadoop-cluster"></a>布建 Apache Hadoop 叢集
 
-建立具有自訂中繼存放區的 Apache Hadoop 叢集。 從入口網站建立叢集期間，從 [**儲存體**] 索引標籤中，確定您在 [**中繼存放區設定**] 底下選取您的 SQL Database。 如需選取中繼存放區的詳細資訊，請參閱[在叢集建立期間選取自訂中繼存放區](./hdinsight-use-external-metadata-stores.md#select-a-custom-metastore-during-cluster-creation)。 如需叢集建立的詳細資訊，請參閱[開始在 Linux 上使用 HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
+使用自訂中繼存放區建立 Apache Hadoop 叢集。 從入口網站建立叢集時，從 [ **儲存體** ] 索引標籤中，確定您在 [ **中繼存放區設定**] 下選取您的 SQL Database。 如需選取中繼存放區的詳細資訊，請參閱 [在叢集建立期間選取自訂中繼存放區](./hdinsight-use-external-metadata-stores.md#select-a-custom-metastore-during-cluster-creation)。 如需建立叢集的詳細資訊，請參閱 [開始與 Linux 上的 HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
-## <a name="verify-ssh-tunneling-set-up"></a>確認 SSH 通道已設定
+## <a name="verify-ssh-tunneling-set-up"></a>確認已設定 SSH 通道
 
 若要使用 Oozie Web 主控台來檢視協調器和工作流程執行個體的狀態，請將 SSH 通道安裝到您的 HDInsight 叢集。 如需詳細資訊，請參閱 [SSH 通道](hdinsight-linux-ambari-ssh-tunnel.md)。
 
 > [!NOTE]  
 > 您也可以使用 Chrome 搭配 [Foxy Proxy](https://getfoxyproxy.org/) 擴充功能，以瀏覽整個 SSH 通道的叢集 web 資源。 將其設定為透過在通道連接埠 9876 上的主機 `localhost` 來代理所有要求。 這個方法與適用於 Linux 的 Windows 子系統 (也就是在 Windows 10 上的 Bash) 相容。
 
-1. 執行下列命令來開啟叢集的 SSH 通道，其中 `CLUSTERNAME` 是您叢集的名稱：
+1. 執行下列命令以開啟您叢集的 SSH 通道，其中 `CLUSTERNAME` 是您的叢集名稱：
 
     ```cmd
     ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -119,7 +119,7 @@ Oozie 會根據「動作」**、「工作流程** 和「協調器」** 來描述
         ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
         ```
 
-    1. 從您的 ssh 會話，使用 HDFS 命令，將檔案從前端節點本機儲存體複製到 Azure 儲存體。
+    1. 從 ssh 會話中，使用 HDFS 命令將檔案從前端節點本機儲存體複製到 Azure 儲存體。
 
         ```bash
         hadoop fs -mkdir /example/data/flights
@@ -169,7 +169,7 @@ Oozie 會根據「動作」**、「工作流程** 和「協調器」** 來描述
 
     ![hdi ambari services hive 查詢](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
-6. 若要建立 `flights` 資料表，請使用下列陳述式取代查詢文字區域中的文字。 `flights`資料表是 Hive 管理的資料表，可依年、月和月的日期分割載入其中的資料。 此資料表將包含所有過去的航班資料，而最低資料粒度出現在每個航班一列的來源資料中。
+6. 若要建立 `flights` 資料表，請使用下列陳述式取代查詢文字區域中的文字。 此 `flights` 資料表是由 Hive 管理的資料表，可將依年份、月份和月份所載入的資料分割。 此資料表將包含所有過去的航班資料，而最低資料粒度出現在每個航班一列的來源資料中。
 
     ```sql
     SET hive.exec.dynamic.partition.mode=nonstrict;
@@ -209,8 +209,8 @@ Oozie 會根據「動作」**、「工作流程** 和「協調器」** 來描述
 
 Oozie 工作流程會協調這三個步驟。
 
-1. 從您的本機工作站建立名為的檔案 `job.properties` 。 使用下列文字做為檔案的起始內容。
-然後更新您特定環境的值。 文字底下的表格會摘要說明每個屬性，並指出您可以在何處找到您自己環境的值。
+1. 從您的本機工作站建立名為的檔案 `job.properties` 。 使用下列文字做為檔案的開始內容。
+然後更新您特定環境的值。 文字下方的表格會摘要說明每個屬性，並指出您可以在哪裡找到您自己環境的值。
 
     ```text
     nameNode=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net
@@ -300,7 +300,7 @@ Oozie 工作流程會協調這三個步驟。
 
     此查詢會建立僅儲存彙總資料一天的暫存資料表，請注意 SELECT 陳述式會依航空公司和日期計算平均延遲時間和總飛行距離。 插入此資料表的資料會儲存在已知的位置 (hiveDataFolder 變數所指示的路徑)，以便在下一個步驟中作為 Sqoop 的來源。
 
-1. 從您的本機工作站建立名為的檔案 `workflow.xml` 。 使用下列程式碼做為檔案的內容。 上述步驟會在 Oozie 工作流程檔案中以個別的動作表示。
+1. 從您的本機工作站建立名為的檔案 `workflow.xml` 。 使用下列程式碼做為檔案的內容。 上述步驟會以 Oozie 工作流程檔案中的個別動作來表示。
 
     ```xml
     <workflow-app name="loadflightstable" xmlns="uri:oozie:workflow:0.5">
@@ -378,13 +378,13 @@ Oozie 工作流程會協調這三個步驟。
     </workflow-app>
     ```
 
-這兩個 Hive 查詢會依其在 Azure 儲存體中的路徑來存取，而其餘的變數值則是由檔案提供 `job.properties` 。 此檔案會將工作流程設定為在2017年1月3日執行。
+這兩個 Hive 查詢是以 Azure 儲存體中的路徑來存取，而其餘的變數值則由檔案提供 `job.properties` 。 此檔案會設定要在2017年1月3日執行的工作流程。
 
 ## <a name="deploy-and-run-the-oozie-workflow"></a>部署和執行 Oozie 工作流程
 
-從您的 bash 會話使用 SCP 來部署 Oozie 工作流程（ `workflow.xml` ）、Hive 查詢（ `hive-load-flights-partition.hql` 和 `hive-create-daily-summary-table.hql` ），以及作業設定（ `job.properties` ）。  在 Oozie 中，前端節點的本機儲存體上只能存在 `job.properties` 檔案。 所有其他檔案都必須都儲存在 HDFS 中，在此情況下為 Azure 儲存體。 工作流程所使用的 Sqoop 動作依賴 JDBC 驅動程式來與 SQL Database 進行通訊，該驅動程式必須從前端節點複製到 HDFS。
+使用 bash 會話中的 SCP，將 Oozie 工作流程部署 (`workflow.xml`) 、Hive 查詢 (`hive-load-flights-partition.hql` 和 `hive-create-daily-summary-table.hql`) ，以及作業設定 (`job.properties`) 。  在 Oozie 中，前端節點的本機儲存體上只能存在 `job.properties` 檔案。 所有其他檔案都必須都儲存在 HDFS 中，在此情況下為 Azure 儲存體。 工作流程所使用的 Sqoop 動作依賴 JDBC 驅動程式來與 SQL Database 進行通訊，該驅動程式必須從前端節點複製到 HDFS。
 
-1. 在前端節點的本機儲存體中，與使用者的路徑底下建立 `load_flights_by_day` 子資料夾。 從開啟的 ssh 會話，執行下列命令：
+1. 在前端節點的本機儲存體中，與使用者的路徑底下建立 `load_flights_by_day` 子資料夾。 從開啟的 ssh 會話中，執行下列命令：
 
     ```bash
     mkdir load_flights_by_day
@@ -396,7 +396,7 @@ Oozie 工作流程會協調這三個步驟。
     scp ./* sshuser@CLUSTERNAME-ssh.azurehdinsight.net:load_flights_by_day
     ```
 
-1. 將工作流程檔案複製到 HDFS。 從開啟的 ssh 會話，執行下列命令：
+1. 將工作流程檔案複製到 HDFS。 從開啟的 ssh 會話中，執行下列命令：
 
     ```bash
     cd load_flights_by_day
@@ -404,13 +404,13 @@ Oozie 工作流程會協調這三個步驟。
     hdfs dfs -put ./* /oozie/load_flights_by_day
     ```
 
-1. `mssql-jdbc-7.0.0.jre8.jar`從本機前端節點複製到 HDFS 中的工作流程資料夾。 如果您的叢集包含不同的 jar 檔案，請視需要修改命令。 `workflow.xml`視需要修訂以反映不同的 jar 檔案。 從開啟的 ssh 會話，執行下列命令：
+1. `mssql-jdbc-7.0.0.jre8.jar`從本機前端節點複製到 HDFS 中的工作流程資料夾。 如果您的叢集包含不同的 jar 檔案，請視需要修改命令。 `workflow.xml`視需要修訂以反映不同的 jar 檔案。 從開啟的 ssh 會話中，執行下列命令：
 
     ```bash
     hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /oozie/load_flights_by_day
     ```
 
-1. 執行工作流程。 從開啟的 ssh 會話，執行下列命令：
+1. 執行工作流程。 從開啟的 ssh 會話中，執行下列命令：
 
     ```bash
     oozie job -config job.properties -run
@@ -507,7 +507,7 @@ Oozie 工作流程會協調這三個步驟。
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    根據 `frequency` 屬性所指定的間隔，協調器會負責排定 `start` 和 `end` 日期範圍內的動作。 每個排定的動作會如同設定依序執行工作流程。 在上述協調器定義中，協調器已設定為執行從2017年1月1日到2017年1月5日的動作。 頻率會由[Oozie 運算式語言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)頻率運算式設定為一天 `${coord:days(1)}` 。 這會導致協調器每天安排一次動作 (還有工作流程)。 對於過去的日期範圍，就如同此範例中，此動作會立即排定進行執行。 排定要執行動作之日期的開端稱為「名義時間」**。 例如，若要處理2017年1月1日的資料，協調器將會排程動作，其名義時間為 2017-01-01T00：00： 00 GMT。
+    根據 `frequency` 屬性所指定的間隔，協調器會負責排定 `start` 和 `end` 日期範圍內的動作。 每個排定的動作會如同設定依序執行工作流程。 在上述協調器定義中，協調器設定為從2017年1月1日到2017年1月5日執行動作。 [Oozie 運算式語言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)頻率運算式會將頻率設定為一天 `${coord:days(1)}` 。 這會導致協調器每天安排一次動作 (還有工作流程)。 對於過去的日期範圍，就如同此範例中，此動作會立即排定進行執行。 排定要執行動作之日期的開端稱為「名義時間」**。 例如，若要處理2017年1月1日的資料，協調器會以 2017-01-01T00：00： 00 GMT 的名義時間排程動作。
 
 * 第 2 點：在工作流程的日期範圍內，`dataset` 元素會指定在 HDFS 中何處尋找特定日期範圍的資料，以及設定 Oozie 如何判斷資料是否已可供處理。
 
@@ -518,9 +518,9 @@ Oozie 工作流程會協調這三個步驟。
     </dataset>
     ```
 
-    根據 `uri-template` 元素中所提供的運算式，系統會在 HDFS 中動態建置資料的路徑。 在此協調器中，一天的頻率也可搭配資料集使用。 協調器元素的開始和結束日期會控制排定動作的時間 (並定義其名義時間)，而資料集的 `initial-instance` 和 `frequency` 會控制用來建構 `uri-template` 之日期的計算。 在此情況下，將初始執行個體設定為協調器開始前一天，以確保其會取得第一天 (1/1/2017) 的資料量。 資料集的日期計算會從（12/31/2016）的值向前復原， `initial-instance` 以資料集頻率（一天）為增量，直到找到未通過協調器所設定之名義時間的最新日期（2017-01-01T00：00：00，第一個動作的 GMT）。
+    根據 `uri-template` 元素中所提供的運算式，系統會在 HDFS 中動態建置資料的路徑。 在此協調器中，一天的頻率也可搭配資料集使用。 協調器元素的開始和結束日期會控制排定動作的時間 (並定義其名義時間)，而資料集的 `initial-instance` 和 `frequency` 會控制用來建構 `uri-template` 之日期的計算。 在此情況下，將初始執行個體設定為協調器開始前一天，以確保其會取得第一天 (1/1/2017) 的資料量。 資料集的日期計算會從 () 12/31/2016 的值向前復原 `initial-instance` (一天) ，直到它找到未通過協調員所設定之名義時間的最新日期 (2017-01-01T00：00： 00 GMT 的第一個動作) 。
 
-    空白 `done-flag` 元素表示當 Oozie 在約定的時間檢查輸入資料是否存在時，Oozie 會由目錄或檔案的存在與否決定資料是否可用。 在此情況下，它是 csv 檔案的存在。 如果 csv 檔案存在，則 Oozie 會假設資料已就緒，而且會啟動工作流程執行個體來處理檔案。 如果沒有 csv 檔案存在，Oozie 會假設資料尚未就緒，且工作流程的執行進入等候狀態。
+    空白 `done-flag` 元素表示當 Oozie 在約定的時間檢查輸入資料是否存在時，Oozie 會由目錄或檔案的存在與否決定資料是否可用。 在此情況下，它是 csv 檔案的存在。 如果 csv 檔案存在，則 Oozie 會假設資料已就緒，而且會啟動工作流程執行個體來處理檔案。 如果沒有任何 csv 檔案存在，Oozie 會假設資料尚未就緒，而且執行工作流程會進入等候狀態。
 
 * 第 3 點：`data-in` 元素在取代 `uri-template` 中相關聯資料集的值時，會指定特定時間戳記作為名義時間。
 
@@ -604,6 +604,6 @@ sqlDatabaseTableName=dailyflights
 
     這份清單中的每個動作都會對應至一個工作流程執行個體，該執行個體可處理一天的資料量，其中是以名義時間所表示該日的開始。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [Apache Oozie 文件](https://oozie.apache.org/docs/4.2.0/index.html)

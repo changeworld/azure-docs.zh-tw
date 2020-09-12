@@ -1,18 +1,18 @@
 ---
 title: ExpressRoute：將線路從傳統移至 Azure Resource Manager
-description: 深入瞭解將 Azure ExpressRoute 電路從傳統移至 Azure Resource Manager 部署模型的意義。
+description: 瞭解將 Azure ExpressRoute 線路從傳統移至 Azure Resource Manager 部署模型的意義為何。
 services: expressroute
-author: ganesr
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/07/2018
-ms.author: ganesr
-ms.openlocfilehash: 2fc3a72ff9d6ec4dbd2eaa33e4af3054ad2a57b9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: duau
+ms.openlocfilehash: 12ace8dff58d3d747bf17260950d2b91e31b398a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192384"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395157"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>將 ExpressRoute 線路從傳統部署模型移至 Resource Manager 部署模型
 本文提供將 Azure ExpressRoute 線路從傳統部署模型移至 Azure Resource Manager 部署模型的概觀。
@@ -87,10 +87,10 @@ ExpressRoute 線路的作用就像是傳統與 Resource Manager 部署模型之�
 * 從傳統部署模型管理 ExpressRoute 線路的生命週期。
 * 傳統部署模型的角色型存取控制 (RBAC) 支援。 您無法對傳統部署模型中的線路執行 RBAC 控制。 訂用帳戶的所有管理員/共同管理員都可以將虛擬網路連結至線路或取消其連結。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 請遵循 [將 ExpressRoute 線路從傳統部署模型移至 Resource Manager 部署模型](expressroute-howto-move-arm.md)中所描述的指示。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [將已連結至 ExpressRoute 線路的虛擬網路從傳統模型移轉至 Azure Resource Manager 模型](expressroute-migration-classic-resource-manager.md)
 * 如需工作流程資訊，請參閱 [ExpressRoute 線路佈建工作流程和線路狀態](expressroute-workflows.md)。
 * 若要設定 ExpressRoute 連線：
