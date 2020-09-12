@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: c27c5fae45f7cde57f2db12c05107d2b77b90a2c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0af9d6906e038a4b9285a2c302fc0c98345fdbd9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012376"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023749"
 ---
 # <a name="use-the-session-management-rest-api"></a>使用工作階段管理 REST API
 
@@ -79,7 +79,7 @@ $token = $response.AccessToken;
 
 | 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
-| 202 | -sessionId： GUID | 成功 |
+| 202 | -sessionId： GUID | Success |
 
 ### <a name="example-script-create-a-session"></a>範例腳本：建立會話
 
@@ -122,7 +122,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 有幾個命令可查詢或修改現有會話的參數。
 
 > [!CAUTION]
-針對所有 REST 呼叫，太頻繁傳送這些命令會導致伺服器節流並最後傳回失敗。 此案例中的狀態碼是 429 ( 「太多要求」 ) 。 根據經驗法則， **後續呼叫之間**應該會有5-10 秒的延遲。
+> 針對所有 REST 呼叫，太頻繁傳送這些命令會導致伺服器節流並最後傳回失敗。 此案例中的狀態碼是 429 ( 「太多要求」 ) 。 根據經驗法則，**後續的呼叫之間應該會有 5-10 秒**的延遲。
 
 ### <a name="update-session-parameters"></a>更新會話參數
 
@@ -265,7 +265,7 @@ RawContentLength  : 60
 
 | 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
-| 204 | | 成功 |
+| 204 | | Success |
 
 ### <a name="example-script-stop-a-session"></a>範例腳本：停止會話
 

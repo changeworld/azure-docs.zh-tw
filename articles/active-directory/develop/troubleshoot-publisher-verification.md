@@ -1,6 +1,6 @@
 ---
 title: 針對發行者驗證進行疑難排解 - Microsoft 身分識別平台 | Azure
-description: 說明如何藉由呼叫 Microsoft Graph API，針對 Microsoft 身分識別平台的發行者驗證 (預覽) 進行疑難排解。
+description: 說明如何藉由呼叫 Microsoft Graph Api，針對 Microsoft 身分識別平臺進行發行者驗證的疑難排解。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c332b960caf7707953069c5252219ca6c51761a8
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282971"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007548"
 ---
-# <a name="troubleshoot-publisher-verification-preview"></a>針對發行者驗證進行疑難排解 (預覽)
-如果您無法完成此程序，或遇到非預期的[發行者驗證 (預覽)](publisher-verification-overview.md) 行為，則當您收到錯誤或看到非預期的行為時，應該先執行下列動作： 
+# <a name="troubleshoot-publisher-verification"></a>針對發行者驗證進行疑難排解
+如果您無法完成此程式，或在 [發行者驗證](publisher-verification-overview.md)中遇到非預期的行為，您應該先執行下列動作，如果您收到錯誤或看到非預期的行為： 
 
 1. 檢閱[需求](publisher-verification-overview.md#requirements)並確保全都符合。
 
@@ -62,7 +62,7 @@ ms.locfileid: "87282971"
 
 ## <a name="making-microsoft-graph-api-calls"></a>進行 Microsoft Graph API 呼叫 
 
-如果您遇到問題，但無法根據您在 UI 中看到的內容來了解原因，建議使用 Microsoft Graph 呼叫來執行進一步的疑難排解，以執行您可在應用程式註冊入口網站中執行的相同作業。 在預覽階段，這些 API 僅適用於 Microsoft Graph 的 /beta 端點。  
+如果您遇到問題，但無法根據您在 UI 中看到的內容來了解原因，建議使用 Microsoft Graph 呼叫來執行進一步的疑難排解，以執行您可在應用程式註冊入口網站中執行的相同作業。
 
 提出這些要求的最簡單方式就是使用 [Graph 總管](https://developer.microsoft.com/graph/graph-explorer)。 您也可考慮使用 [Postman](https://www.postman.com/) 之類的其他選項，或使用 PowerShell 來[叫用 Web 要求](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7)。  
 

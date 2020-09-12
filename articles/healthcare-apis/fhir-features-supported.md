@@ -8,14 +8,14 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: bdf328222fef1f763776bd26c47f5cd4d65e487e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afb4026a7865f2cc8f831d8d1d7b1d332014d310
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000000"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007565"
 ---
-# <a name="features"></a>特性
+# <a name="features"></a>功能
 
 Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部署。 伺服器是 [FHIR](https://hl7.org/fhir) 標準的實作為。 本檔列出 FHIR 伺服器的主要功能。
 
@@ -98,14 +98,24 @@ Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部�
 | 搜尋作業       | 支援-PaaS | 支援的作業系統 (SQL)  | 支援的-OSS (Cosmos DB)  | 註解 |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | 否        | 否        | 否        |         |
-| `_sort`                 | 否        | Partial   | Partial        |   支援 `_sort=_lastUpdated`       |
+| `_sort`                 | Partial        | Partial   | Partial        |   支援 `_sort=_lastUpdated`       |
 | `_score`                | 否        | 否        | 否        |         |
 | `_count`                | 是       | 是       | 是       |         |
 | `_summary`              | 部分   | Partial   | Partial   | 支援 `_summary=count` |
 | `_include`              | 否        | 是       | 否        |         |
 | `_revinclude`           | 否        | 是       | 否        | 包含的專案限制為100。 |
 | `_contained`            | 否        | 否        | 否        |         |
-| `_elements`             | 否        | 否        | 否        |         |
+| `_elements`             | 是        | 是        | 是        |         |
+
+## <a name="extended-operations"></a>擴充作業
+
+擴充 RESTful API 所支援的所有作業。
+
+| 搜尋參數類型 | 支援-PaaS | 支援的作業系統 (SQL)  | 支援的-OSS (Cosmos DB)  | 註解 |
+|-----------------------|-----------|-----------|-----------|---------|
+| $export (整個系統)                 | 是       | 是       | 是       |         |
+| 患者/$export         | 是       | 是       | 是       |         |
+| 群組/$export               | 是       | 是       | 是       |         |
 
 ## <a name="persistence"></a>持續性
 
@@ -121,7 +131,7 @@ FHIR 伺服器使用 [Azure Active Directory](https://azure.microsoft.com/servic
 
 目前，針對指定角色所允許的動作會在 API 上 *全域* 套用。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本文中，您已瞭解 Azure API for FHIR 中支援的 FHIR 功能。 接下來，部署 Azure API for FHIR。
  

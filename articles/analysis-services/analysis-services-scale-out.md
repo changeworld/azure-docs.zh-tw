@@ -4,15 +4,15 @@ description: 使用相應放大來複寫 Azure Analysis Services 伺服器。然
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ceed2a287fb210a421972e9c9f9e6c77c6cb1879
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 33f42b1d01bd0a39a268d9425a8406f976534634
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716923"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007684"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 擴充
 
@@ -41,6 +41,8 @@ ms.locfileid: "88716923"
 * 在向外延展作業 *之前* 執行同步處理，以避免新增複本的重複序列化。 不允許同時執行的並行同步處理和相應放大作業。
 
 * 當您將處理 *和* 相應放大作業自動化時，請務必先處理主伺服器上的資料，然後執行同步處理，然後執行相應放大作業。 此序列能確保對 QPU 和記憶體資源的影響降至下限。
+
+* 在相應放大作業期間，查詢集區中的所有伺服器（包括主伺服器）都會暫時離線。
 
 * 即使查詢集區中沒有任何複本，也允許同步處理。 如果您要從零向外延展到一或多個複本，並在主伺服器上處理作業的新資料，請先執行與查詢集區中沒有複本的同步處理，然後再向外擴充。在相應放大之前進行同步處理，可避免新加入複本的重複序列化。
 
@@ -114,7 +116,7 @@ ms.locfileid: "88716923"
 
 在 [概觀]**** > [模型] > [同步處理模型]**** 中。
 
-![擴充滑桿](media/analysis-services-scale-out/aas-scale-out-sync.png)
+![同步處理圖示](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST API
 
@@ -137,7 +139,7 @@ ms.locfileid: "88716923"
 |0     | Replicating        |
 |1     |  解除凍結       |
 |2     |   已完成       |
-|3     |   失敗      |
+|3     |   Failed      |
 |4     |    敲定     |
 |||
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/17/2020
+ms.date: 09/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 40672ac958e84d816d4b582472ae04502a910c6a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2d00942331b7e6c881803af366d1c08e173462b3
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521258"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023783"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -74,7 +74,7 @@ ms.locfileid: "88521258"
 
 選擇性的 **RelyingParty** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 項目 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | RP 應用程式的預設使用者旅程圖。 |
 | UserJourneyBehaviors | 0:1 | 使用者旅程圖行為的範圍。 |
@@ -104,13 +104,13 @@ ms.locfileid: "88521258"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| ReferenceId | Yes | 原則中使用者旅程圖的識別碼。 如需詳細資訊，請參閱[使用者旅程圖](userjourneys.md) |
+| ReferenceId | 是 | 原則中使用者旅程圖的識別碼。 如需詳細資訊，請參閱[使用者旅程圖](userjourneys.md) |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
 **UserJourneyBehaviors** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 項目 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | 使用者旅程圖之單一登入 (SSO) 工作階段行為的範圍。 |
 | SessionExpiryType |0:1 | 工作階段的驗證行為。 可能的值：`Rolling` 或 `Absolute`。 `Rolling` 值 (預設) 表示，只要使用者在應用程式中持續為作用中狀態，該使用者就會保持登入。 `Absolute` 值表示在經過應用程式工作階段存留期所指定的期間之後，就會強制使用者進行重新驗證。 |
@@ -125,9 +125,9 @@ ms.locfileid: "88521258"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 影響範圍 | Yes | 單一登入行為的範圍。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 此 `Suppressed` 值表示隱藏行為，且一律會提示使用者輸入識別提供者選取專案。  `Tenant` 值表示會將行為套用到租用戶中的所有原則。 例如，如果使用者瀏覽租用戶的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Application` 值表示會將行為套用到適用於提出要求之應用程式的所有原則。 例如，如果使用者瀏覽應用程式的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Policy` 值表示只會將行為套用到某個原則。 例如，如果使用者瀏覽信任架構的兩個原則旅程圖，系統會在該使用者於原則之間進行切換時提示其選取識別提供者。 |
-| KeepAliveInDays | Yes | 會控制使用者保持登入的時間長度。 將值設為 0 會關閉 KMSI 功能。 如需詳細資訊，請參閱[讓我保持登入](custom-policy-keep-me-signed-in.md)。 |
-|EnforceIdTokenHintOnLogout| No|  強制將先前發行的識別碼權杖傳遞給登出端點，作為與用戶端目前已驗證的會話相關的提示。 可能的值：`false` (預設) 或 `true`。 如需詳細資訊，請參閱 [使用 OpenID Connect 的 Web 登入](openid-connect.md)。  |
+| 影響範圍 | 是 | 單一登入行為的範圍。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 此 `Suppressed` 值表示隱藏行為，且一律會提示使用者輸入識別提供者選取專案。  `Tenant` 值表示會將行為套用到租用戶中的所有原則。 例如，如果使用者瀏覽租用戶的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Application` 值表示會將行為套用到適用於提出要求之應用程式的所有原則。 例如，如果使用者瀏覽應用程式的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Policy` 值表示只會將行為套用到某個原則。 例如，如果使用者瀏覽信任架構的兩個原則旅程圖，系統會在該使用者於原則之間進行切換時提示其選取識別提供者。 |
+| KeepAliveInDays | 是 | 會控制使用者保持登入的時間長度。 將值設為 0 會關閉 KMSI 功能。 如需詳細資訊，請參閱[讓我保持登入](custom-policy-keep-me-signed-in.md)。 |
+|EnforceIdTokenHintOnLogout| 否|  強制將先前發行的識別碼權杖傳遞給登出端點，作為與用戶端目前已驗證的會話相關的提示。 可能的值：`false` (預設) 或 `true`。 如需詳細資訊，請參閱 [使用 OpenID Connect 的 Web 登入](openid-connect.md)。  |
 
 
 ## <a name="journeyinsights"></a>JourneyInsights
@@ -136,12 +136,12 @@ ms.locfileid: "88521258"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| TelemetryEngine | Yes | 值必須是 `ApplicationInsights`。 |
-| InstrumentationKey | Yes | 字串，其中包含 Application Insights 元素的檢測金鑰。 |
-| DeveloperMode | Yes | 可能的值：`true` 或 `false`。 如果是 `true`，Application Insights 就會透過處理管線加速遙測。 此設定適用於開發，但僅限於大量磁碟區。詳細的活動記錄只是設計來協助開發自訂原則。 請勿在生產環境中使用開發模式。 記錄會收集往返識別提供者在開發期間所傳送的所有宣告。 如果在生產環境中使用，開發人員會負責他們自己的 App Insights 記錄中收集的 PII (私人識別資訊)。 將此值設定為 `true` 時，只會收集這些詳細的記錄。|
-| ClientEnabled | Yes | 可能的值：`true` 或 `false`。 如果是 `true`，則傳送 ApplicationInsights 用戶端指令碼來追蹤頁面檢視和用戶端錯誤。 |
-| ServerEnabled | Yes | 可能的值：`true` 或 `false`。 如果是 `true`，則將現有的 UserJourneyRecorder JSON 當作自訂事件傳送至 Application Insights。 |
-| TelemetryVersion | Yes | 值必須是 `1.0.0`。 |
+| TelemetryEngine | 是 | 值必須是 `ApplicationInsights`。 |
+| InstrumentationKey | 是 | 字串，其中包含 Application Insights 元素的檢測金鑰。 |
+| DeveloperMode | 是 | 可能的值：`true` 或 `false`。 如果是 `true`，Application Insights 就會透過處理管線加速遙測。 這項設定適用于開發，但在高磁片區受限。 詳細的活動記錄是設計來協助開發自訂原則。 請勿在生產環境中使用開發模式。 記錄會收集往返識別提供者在開發期間所傳送的所有宣告。 如果在生產環境中使用，開發人員會負責他們自己的 App Insights 記錄中收集的 PII (私人識別資訊)。 將此值設定為 `true` 時，只會收集這些詳細的記錄。|
+| ClientEnabled | 是 | 可能的值：`true` 或 `false`。 如果是 `true`，則傳送 ApplicationInsights 用戶端指令碼來追蹤頁面檢視和用戶端錯誤。 |
+| ServerEnabled | 是 | 可能的值：`true` 或 `false`。 如果是 `true`，則將現有的 UserJourneyRecorder JSON 當作自訂事件傳送至 Application Insights。 |
+| TelemetryVersion | 是 | 值必須是 `1.0.0`。 |
 
 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)檔
 
@@ -155,7 +155,7 @@ ms.locfileid: "88521258"
 
 **ContentDefinitionParameters** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 項目 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0:n | 字串，其中包含附加至內容定義負載 URI 查詢字串的金鑰值組。 |
 
@@ -163,7 +163,7 @@ ms.locfileid: "88521258"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Name | Yes | 金鑰值組的名稱。 |
+| Name | 是 | 金鑰值組的名稱。 |
 
 如需詳細資訊，請參閱[使用自訂原則設定具有動態內容的 UI](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)
 
@@ -173,14 +173,14 @@ ms.locfileid: "88521258"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | Yes | 值必須是 `PolicyProfile`。 |
+| Id | 是 | 值必須是 `PolicyProfile`。 |
 
 **TechnicalProfile** 包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 項目 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | 包含技術設定檔名稱的字串。 |
-| Description | 0:1 | 包含技術設定檔描述的字串。 |
+| 描述 | 0:1 | 包含技術設定檔描述的字串。 |
 | 通訊協定 | 1:1 | 用於同盟的通訊協定。 |
 | 中繼資料 | 0:1 | 金鑰/值組的 *Item* 集合，通訊協定會在交易過程中利用它來與端點進行通訊，以設定信賴憑證者與其他社群參與者之間的互動。 |
 | OutputClaims | 1:1 | 宣告類型清單，可取得來作為技術設定檔中的輸出。 這些元素中的每一個均會參考已經定義於 **ClaimsSchema** 區段中或此原則檔所繼承之原則中的 **ClaimType**。 |
@@ -190,7 +190,7 @@ ms.locfileid: "88521258"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Name | Yes | Azure AD B2C 所支援的有效通訊協定名稱，可用來作為技術設定檔的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值代表以每個 OpenID 基礎規格為依據的 OpenID Connect 1.0 通訊協定標準。 `SAML2` 代表以每個 OASIS 規格為依據的 SAML 2.0 通訊協定標準。 |
+| Name | 是 | Azure AD B2C 所支援的有效通訊協定名稱，可用來作為技術設定檔的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值代表以每個 OpenID 基礎規格為依據的 OpenID Connect 1.0 通訊協定標準。 `SAML2` 代表以每個 OASIS 規格為依據的 SAML 2.0 通訊協定標準。 |
 
 ### <a name="metadata"></a>中繼資料
 
@@ -198,13 +198,18 @@ ms.locfileid: "88521258"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| XmlSignatureAlgorithm | No | Azure AD B2C 用來簽署 SAML 回應的方法。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 請確定您會使用相同的值來設定這兩端的簽章演算法。 僅使用您憑證支援的演算法。 若要設定 SAML 判斷提示，請參閱 [saml 簽發者技術設定檔中繼資料](saml-issuer-technical-profile.md#metadata)。 |
+| IdpInitiatedProfileEnabled | 否 | 指出是否支援 IDP 起始的流程。 可能的值： `true` 或 `false` (預設) 。 | 
+| XmlSignatureAlgorithm | 否 | Azure AD B2C 用來簽署 SAML 回應的方法。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 請確定您會使用相同的值來設定這兩端的簽章演算法。 僅使用您憑證支援的演算法。 若要設定 SAML 判斷提示，請參閱 [saml 簽發者技術設定檔中繼資料](saml-issuer-technical-profile.md#metadata)。 |
+| DataEncryptionMethod | 否 | 指出 Azure AD B2C 使用進階加密標準 (AES) 演算法來加密資料的方法。 中繼資料會控制 `<EncryptedData>` SAML 回應中的元素值。 可能的值：`Aes256` (預設)、`Aes192`、`Sha512` 或 ` Aes128`。 |
+| KeyEncryptionMethod| 否 | 指出 Azure AD B2C 用來加密用來加密資料之金鑰複本的方法。 中繼資料會控制  `<EncryptedKey>` SAML 回應中的元素值。 可能的值： ` Rsa15` (預設) -Rsa 公開金鑰加密標準 (PKCS) 1.5 版演算法、 ` RsaOaep` -RSA 最佳非對稱式加密填補 (OAEP) 加密演算法。 |
+| UseDetachedKeys | 否 |  可能的值為：`true` 或 `false` (預設)。 當值設定為時 `true` ，Azure AD B2C 會變更加密判斷提示的格式。 使用卸離的索引鍵會將加密的判斷提示新增為 EncrytedAssertion 的子系，而不是 a。 |
+| WantsSignedResponses| 否 | 指出 Azure AD B2C 是否簽署 `Response` SAML 回應的區段。 可能的值： `true` (預設) 或 `false` 。  |
 
 ### <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 項目 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | 信賴憑證者所訂閱之原則支援清單中預期的宣告類型名稱。 此宣告會用來做為技術設定檔的輸出。 |
 
@@ -212,9 +217,9 @@ ms.locfileid: "88521258"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Yes | 對已經定義於原則檔 **ClaimsSchema** 區段中之 **ClaimType** 的參考。 |
-| DefaultValue | No | 如果宣告值是空的時可以使用的預設值。 |
-| PartnerClaimType | No | 以與 ClaimType 定義中設定的不同名稱來傳送宣告。 |
+| ClaimTypeReferenceId | 是 | 對已經定義於原則檔 **ClaimsSchema** 區段中之 **ClaimType** 的參考。 |
+| DefaultValue | 否 | 如果宣告值是空的時可以使用的預設值。 |
+| PartnerClaimType | 否 | 以與 ClaimType 定義中設定的不同名稱來傳送宣告。 |
 
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
@@ -226,8 +231,8 @@ ms.locfileid: "88521258"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| ClaimType | Yes | 對輸出宣告之 **PartnerClaimType** 的參考。 輸出宣告必須定義於信賴憑證者原則 **OutputClaims** 集合中。 |
-| 格式 | No | 用於 SAML 信賴憑證者，以設定 SAML 判斷提示中傳回的 **NameId 格式** 。 |
+| ClaimType | 是 | 對輸出宣告之 **PartnerClaimType** 的參考。 輸出宣告必須定義於信賴憑證者原則 **OutputClaims** 集合中。 |
+| 格式 | 否 | 用於 SAML 信賴憑證者，以設定 SAML 判斷提示中傳回的 **NameId 格式** 。 |
 
 下列範例顯示如何定義 OpenID Connect 的信賴憑證者。 主體名稱資訊會設定為 `objectId`：
 

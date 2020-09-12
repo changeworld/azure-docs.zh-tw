@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中樞的 X.509 安全性概念 | Microsoft Docs
-description: 概念 - 了解 X.509 憑證授權單位憑證在 IoT 裝置製造和驗證方面的價值。
+description: 概念-瞭解 x.509 IoT 裝置製造中的憑證授權單位單位憑證，以及驗證的值。
 author: eustacea
 manager: arjmands
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61320112"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019898"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>概念性了解 IoT 產業中的 X.509 CA 憑證
 
@@ -28,6 +28,8 @@ ms.locfileid: "61320112"
 * 如何設定製造供應鏈以進行 X.509 CA 型驗證
 
 * 使用 X.509 CA 所簽署的裝置如何連線到 IoT 中樞
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="overview"></a>概觀
 
@@ -63,13 +65,13 @@ Company-X 可選擇向公開的根憑證授權單位購買 X.509 CA 憑證，也
 
 ### <a name="purchasing-an-x509-ca-certificate"></a>購買 X.509 CA 憑證
 
-購買 CA 憑證的好處在於，有知名的根 CA 可作為信任的第三方來擔保 IoT 裝置在連線時的合法性。 如果 Company-X 想要讓 Smart-X-Widget 在首次連線到 IoT 中樞之後與第三方產品或服務互動，就會選擇此選項。
+購買 CA 憑證的好處在於，有知名的根 CA 可作為信任的第三方來擔保 IoT 裝置在連線時的合法性。 如果客戶想要在初始連線至 IoT 中樞之後與協力廠商產品或服務互動，則 Company 會選擇此選項。
 
 若要購買 X.509 CA 憑證，Company-X 則會選擇根憑證服務提供者。 在網際網路上搜尋片語「根 CA」就能找到有用的線索。 根 CA 會指引 Company-X 該如何建立公開/私密金鑰組，以及該如何為其服務產生憑證簽署要求 (CSR)。 CSR 是向憑證授權單位申請憑證的正式程序。 經過這次的購買，便可獲得用來作為授權單位憑證的憑證。 由於 X.509 憑證非常普遍，此憑證可能已正確格式化為 IETF 的 RFC 5280 標準。
 
 ### <a name="creating-a-self-signed-x509-ca-certificate"></a>建立自我簽署的 X.509 CA 憑證
 
-建立自我簽署 X.509 CA 憑證的程序與購買程序類似，差別只在於涉及第三方簽署者，例如根憑證授權單位。 在我們的範例中，Company-X 會簽署其授權單位憑證，而非根憑證授權單位。 Company-X 可選擇此選項來進行測試，直到他們準備好購買授權單位憑證。 如果 Company-X 不打算讓 Smart-X-Widget 連線到 IoT 中樞以外的任何第三方服務，則他們也可以在生產環境使用自我簽署的 X.509 CA 憑證。
+建立自我簽署的 x.509 CA 憑證的程式類似于購買，但與根憑證授權單位類似的協力廠商封緘者除外。 在我們的範例中，Company-X 會簽署其授權單位憑證，而非根憑證授權單位。 Company-X 可選擇此選項來進行測試，直到他們準備好購買授權單位憑證。 如果智慧型 X 小工具不是用來連線到 IoT 中樞以外的任何協力廠商服務，則 Company X 也可以在生產環境中使用自我簽署的 x.509 CA 憑證。
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>向 IoT 中樞註冊 X.509 憑證
 
@@ -101,7 +103,7 @@ IoT 需要每個裝置都擁有唯一的身分識別。 這些身分識別會採
 
 X.509 CA 憑證驗證會透過使用憑證鏈結，來提供可應對前述挑戰的卓越解決方案。 憑證鏈結的形成，是由 CA 簽署中繼 CA，中繼 CA 再簽署其他中繼 CA，如此不斷循環，直到最終的中繼 CA 簽署裝置為止。 在我們的範例中，Company-X 會簽署 Factory-Y，Factory-Y 再簽署 Technician-Z，Technician-Z 最終則簽署 Smart-X-Widget。
 
-![憑證連結階層](./media/iot-hub-x509ca-concept/cert-chain-hierarchy.png)
+![憑證鏈階層](./media/iot-hub-x509ca-concept/cert-chain-hierarchy.png)
 
 上述鏈結中的一連串憑證呈現出了授權單位的交接邏輯。 許多供應鏈都遵循這個交接邏輯，以此讓每個中繼 CA 簽署到鏈結中，並同時接收所有上游的 CA 憑證，而最後一個中繼 CA 則負責最終簽署每個裝置，並將鏈結中的所有授權單位憑證注入到裝置內。 這種情形常見於簽約製造公司底下有工廠階層，並任命其中一家特定工廠來負責製造時。 雖然此階層可能深達數層 (例如，依地理位置/產品類型/生產線分類)，但最終只有該家工廠會與裝置互動，然而鏈結卻是從階層的最上層來維護。
 
@@ -109,7 +111,7 @@ X.509 CA 憑證驗證會透過使用憑證鏈結，來提供可應對前述挑�
 
 在我們的範例中，Factory-Y 和 Technician-Z 會與 Smart-X-Widget 互動。 雖然 Company-X 擁有 Smart-X-Widget，但在整個供應鏈中，它實際上不會與裝置有實際的互動。 Smart-X-Widget 的憑證信任鏈結因此包含簽署 Factory-Y 的 Company-X，而 Factory-Y 會再簽署 Technician-Z，Technician-Z 然後會提供最終簽章給 Smart-X-Widget。 Smart-X-Widget 的製造和安裝包含 Factory-Y 和 Technician-Z 使用其個別的中繼 CA 憑證來簽署每個 Smart-X-Widget。 這整個程序的最終結果是 Smart-X-Widget 擁有唯一的裝置憑證，而憑證信任鏈結則會上達 Company-X 的 CA 憑證。
 
-![一家公司的憑證與另一家公司的憑證的信任鏈](./media/iot-hub-x509ca-concept/cert-mfr-chain.png)
+![一家公司的憑證與另一家公司的憑證之間的信任鏈](./media/iot-hub-x509ca-concept/cert-mfr-chain.png)
 
 現在是回顧 X.509 CA 方法價值的好時機。 Company-X 並未對每個 Smart-X-Widget 預先產生憑證，並將憑證交接給供應鏈，而只必須簽署 Factory-Y 一次。 雖然不必在整個裝置生命週期追蹤每個裝置，但 Company-X 現在可能透過供應鏈程序所自然浮現的群組 (例如，Technician-Z 在某年 7 月後所安裝的裝置) 來追蹤和管理裝置。
 
@@ -127,6 +129,6 @@ X.509 CA 憑證驗證會透過使用憑證鏈結，來提供可應對前述挑�
 
 在我們的範例中，每個 Smart-X-Widget 都會將其唯一的裝置憑證連同 Factory-Y 和 Technician-Z X.509 CA 憑證上傳，然後再回應 IoT 中樞所提出的擁有權證明查問。
 
-![從一個憑證流向另一個憑證，從中樞的 pop 挑戰](./media/iot-hub-x509ca-concept/device-pop-flow.png)
+![從一個憑證流向另一個憑證，從中樞的彈出挑戰](./media/iot-hub-x509ca-concept/device-pop-flow.png)
 
 請注意，信任基礎仰賴於保護私密金鑰，裝置的私密金鑰也包括在內。 因此，我們必須一再強調用來保護裝置私密金鑰之安全矽晶片 (以硬體安全模組 (HSM) 的形式存在)，以及絕不共用任何私密金鑰 (例如，某家工廠將其私密金鑰交付給其他工廠) 之整體最佳做法的重要性。

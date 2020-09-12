@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9fd18195c0276999f445e0990838e293a5081131
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e9c8c4a1209b8bb5be7af87ef22aeab0ffd90b79
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021879"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023766"
 ---
 # <a name="models"></a>模型
 
@@ -28,7 +28,6 @@ Azure 遠端轉譯中的「模型」指的是完整的物件標記法，其由 [
 建立執行階段模型的方式是從檔案格式 (例如 FBX 和 GLTF) [轉換輸入模型](../how-tos/conversion/model-conversion.md)。 轉換程序會將所有資源 (例如紋理、材質和網格) 解壓縮，並將這些資源轉換成最佳化的執行階段格式。 它也會將結構化資訊解壓縮，並將其轉換成 ARR 的實體/元件圖表結構。
 
 > [!IMPORTANT]
->
 > [模型轉換](../how-tos/conversion/model-conversion.md)是建立[網格](meshes.md)的唯一方式。 雖然網格可以在執行階段於實體之間共用，但是卻沒有其他方法可以在不載入模型的情況下，將網格加入執行階段。
 
 ## <a name="loading-models"></a>載入模型
@@ -118,6 +117,13 @@ ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<E
 
 > [!CAUTION]
 > ARR 中的所有「非同步」函式都會傳回非同步作業物件。 您必須先儲存這些物件的參考，直到作業完成為止。 否則，C# 記憶體回收行程可能會提早刪除作業，而且其永遠無法完成。 在上述範例程式碼中，使用「await」可保證本機變數「loadOp」會保留參考，直到模型載入完成為止。 不過，如果您改為使用「Completed」事件，則必須將非同步作業儲存在成員變數中。
+
+## <a name="api-documentation"></a>API 文件
+
+* [C # RemoteManager. LoadModelAsync ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelasync)
+* [C # RemoteManager. LoadModelFromSASAsync ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelfromsasasync)
+* [C + + RemoteManager：： LoadModelAsync ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelasync)
+* [C + + RemoteManager：： LoadModelFromSASAsync ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelfromsasasync)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,36 +1,36 @@
 ---
-title: Azure 防火牆 log analytics 範例
-description: 您可以使用 Azure 監視器記錄來分析 Azure 防火牆。 範例檔案在 Azure 監視器中是內建的視圖設計工具。
+title: Azure 防火牆的 Azure 監視器記錄
+description: Azure 監視器記錄可以用來分析您的 Azure 防火牆。 範例檔案是 Azure 監視器中的 [View Designer] 內建。
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 01/23/2020
+ms.topic: how-to
+ms.date: 09/11/2020
 ms.author: victorh
-ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5acbc1f3b8c5519c22105f05219ab2cef5c15892
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76705959"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023868"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Azure 防火牆 log analytics 範例
+# <a name="azure-monitor-logs-for-azure-firewall"></a>Azure 防火牆的 Azure 監視器記錄
 
-下列 Azure 監視器記錄範例可用來分析您的 Azure 防火牆記錄。 範例檔案是內建于 Azure 監視器的視圖設計工具中， [Azure 監視器文章中的視圖設計](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer)工具具有視圖設計概念的詳細資訊。
+您可以使用下列 Azure 監視器記錄範例來分析您的 Azure 防火牆記錄。 範例檔案是 Azure 監視器中的 [View Designer]，Azure 監視器文章中的 [View designer](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) 有關于視圖設計概念的詳細資訊。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="azure-monitor-logs-view"></a>Azure 監視器記錄檔視圖
 
-以下是您可以如何設定範例 Azure 監視器記錄視覺效果的方式。 您可以從 [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) \(英文\) 存放庫下載該範例視覺效果。 最簡單的方法是以滑鼠右鍵按一下本頁面上的超連結，然後選擇 [另存新檔]**，並提供如 **AzureFirewall.omsview** 的名稱。 
+以下是您可以設定範例 Azure 監視器記錄視覺效果的方式。 您可以從 [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) \(英文\) 存放庫下載該範例視覺效果。 最簡單的方法是以滑鼠右鍵按一下本頁面上的超連結，然後選擇 [另存新檔]**，並提供如 **AzureFirewall.omsview** 的名稱。 
 
-執行下列步驟，將此視圖新增至您的 Log Analytics 工作區：
+執行下列步驟，將此視圖新增至 Log Analytics 工作區：
 
 1. 在 Azure 入口網站中開啟 Log Analytics 工作區。
 2. 開啟位於 [一般]**** 底下的 [檢視設計工具]****。
-3. 按一下 [匯入] 。
+3. 按一下 [匯入]  。
 4. 瀏覽並選取您之前所下載的 **AzureFirewall.omsview** 檔案。
-5. 按一下 [檔案] 。
+5. 按一下 [儲存]。
 
 以下是針對應用程式規則記錄資料的檢視外觀：
 
@@ -40,7 +40,7 @@ ms.locfileid: "76705959"
 
 ![網路規則記錄資料]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Azure 防火牆會以**AzureFirewallApplicationRule**或**AzureFirewallNetworkRule**的類別，將資料記錄在 AzureDiagnostics 下方。 包含詳細資料的資料會儲存在 msg_s 欄位中。 使用 [parse](https://docs.microsoft.com/azure/kusto/query/parseoperator) \(英文\) 運算子，我們便可以從 msg_s 欄位中擷取各種有趣的屬性。 下列查詢會同時從兩個類別中擷取資訊。
+Azure 防火牆會將下列資料記錄在 AzureDiagnostics，並將類別列為 **>azurefirewallapplicationrule** 或 **AzureFirewallNetworkRule**。 包含詳細資料的資料會儲存在 msg_s 欄位中。 使用 [parse](https://docs.microsoft.com/azure/kusto/query/parseoperator) \(英文\) 運算子，我們便可以從 msg_s 欄位中擷取各種有趣的屬性。 下列查詢會同時從兩個類別中擷取資訊。
 
 ## <a name="application-rules-log-data-query"></a>應用程式規則記錄資料查詢
 
@@ -168,13 +168,13 @@ AzureDiagnostics
 
 ## <a name="sample-logs"></a>範例記錄檔
 
-下列記錄範例會顯示記錄專案中所包含的資料。
+下列記錄範例顯示記錄專案中包含的資料。
 
-![記錄專案](media/log-analytics-samples/log1.png)
+![記錄專案一](media/log-analytics-samples/log1.png)
 
-![記錄專案](media/log-analytics-samples/log2.png)
+![記錄專案二 ](media/log-analytics-samples/log2.png)
 
-![記錄專案](media/log-analytics-samples/log3.png)
-## <a name="next-steps"></a>後續步驟
+![記錄專案三](media/log-analytics-samples/log3.png)
+## <a name="next-steps"></a>接下來的步驟
 
 若要了解 Azure 防火牆監視與診斷，請參閱[教學課程：監視 Azure 防火牆記錄和計量](tutorial-diagnostics.md)。
