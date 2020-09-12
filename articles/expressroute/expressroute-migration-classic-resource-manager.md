@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：將傳統 Vnet 遷移至 Resource Manager
 description: 此頁面描述如何在移動線路之後，將 ExpressRoute 相關虛擬網路移轉至 Resource Manager。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/06/2020
-ms.author: cherylmc
-ms.openlocfilehash: 10a2da903ecd59abb7930f9f20c5c905748891cb
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.author: duau
+ms.openlocfilehash: ac6fe619fc1c65b9ced18227d08cde50997eb7d7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509887"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395244"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>將 ExpressRoute 相關虛擬網路從傳統移轉至 Resource Manager
 
@@ -81,7 +81,7 @@ ms.locfileid: "88509887"
    Move-AzureVirtualNetwork -Abort $vnetName
    ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager)](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 * [平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討](../virtual-machines/migration-classic-resource-manager-deep-dive.md)
 * [常見問題集：平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager)](../virtual-machines/migration-classic-resource-manager-faq.md)

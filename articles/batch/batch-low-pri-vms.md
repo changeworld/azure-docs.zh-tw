@@ -3,14 +3,14 @@ title: 在符合成本效益的低優先順序 VM 上執行工作負載
 description: 了解如何佈建低優先順序的 VM，降低 Azure Batch 工作負載的成本。
 author: mscurrell
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: e33119213d4ae28347334e60923d5ba222cd3a66
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: bd5b73cf55110985a2e7eecbc161c77ca6d645cb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816689"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568450"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>使用低優先順序的 VM 搭配 Batch
 
@@ -18,7 +18,7 @@ Azure Batch 提供低優先順序的虛擬機器 (VM)，可降低 Batch 工作�
 
 低優先順序的 VM 能善用 Azure 中的剩餘容量。 當您指定集區中的低優先順序 VM 時，Azure Batch 就會在有多餘的容量時加以使用。
 
-使用低優先順序 VM 的代價是，這些 VM 可能無法用於配置，或可能隨時會有高優先順序的 VM 先佔，視可用容量而定。 基於這個理由，低優先順序的 VM 最適合特定類型的工作負載。 低優先順序的 VM 是用於批次和非同步處理的工作負載，這種工作負載的作業完成時間很有彈性，且工作會分散於許多 VM。
+使用低優先順序 Vm 的取捨是，這些 Vm 可能不會永遠可供配置，或可能會在任何時間被佔用，視可用容量而定。 基於這個理由，低優先順序的 VM 最適合特定類型的工作負載。 低優先順序的 VM 是用於批次和非同步處理的工作負載，這種工作負載的作業完成時間很有彈性，且工作會分散於許多 VM。
 
 低優先順序的 VM 比起專用的 VM，能以大幅降低的價格提供。 如需定價詳細資料，請參閱 [Batch 定價](https://azure.microsoft.com/pricing/details/batch/)。
 
@@ -123,7 +123,7 @@ int? numLowPri = pool1.CurrentLowPriorityComputeNodes;
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-當集區中的一或多個節點被優先佔用時，集區的列出節點作業仍會傳回那些節點。 低優先順序節點的目前數目會維持不變，但這些節點的狀態都已設定為**先佔**狀態。 Batch 會嘗試尋找取代 VM，如果成功，節點在變成可供工作執行前，會逐步變成**建立中**和**啟動中**狀態，就像新的節點一樣。
+針對虛擬機器設定集區，當一或多個節點被佔用時，集區上的清單節點作業仍會傳回這些節點。 低優先順序節點的目前數目會維持不變，但這些節點的狀態都已設定為**先佔**狀態。 Batch 會嘗試尋找取代 VM，如果成功，節點在變成可供工作執行前，會逐步變成**建立中**和**啟動中**狀態，就像新的節點一樣。
 
 ## <a name="scale-a-pool-containing-low-priority-vms"></a>調整包含低優先順序 VM 的集區
 
@@ -155,10 +155,11 @@ pool.Resize(targetDedicatedComputeNodes: 0, targetLowPriorityComputeNodes: 25);
 
 ## <a name="handling-preemption"></a>處理優先佔用
 
-VM 可能偶爾會被優先佔用；當發生優先佔用時，Batch 會執行下列動作︰
+Vm 可能偶爾會被優先佔用。 發生這種情況時，在優先節點 Vm 上執行的工作會重新排入佇列，並再次執行。
+
+針對虛擬機器設定集區，Batch 也會執行下列動作：
 
 -   優先佔用的 VM 都會將其狀態更新為**優先佔用**。
--   如果工作是在優先佔用的節點 VM 上執行，就會將這些工作重新排入佇列並再次執行。
 -   VM 實際上會被刪除，導致遺失在 VM 上本機儲存的任何資料。
 -   集區會繼續嘗試觸達可用的低優先順序節點之目標數目。 找到取代容量時，節點會保留其識別碼，但在可供工作排程使用之前，會先重新初始化，逐步變成**建立中**和**啟動中**狀態。
 -   優先佔用計數會在 Azure 入口網站中作為計量提供使用。
@@ -168,7 +169,7 @@ VM 可能偶爾會被優先佔用；當發生優先佔用時，Batch 會執行�
 [Azure 入口網站](https://portal.azure.com)中有針對低優先順序節點提供的新計量。 這些計量包括：
 
 - 低優先順序節點計數
-- 低優先順序核心計數 
+- 低優先順序核心計數
 - 先占節點計數
 
 若要檢視 Azure 入口網站中的計量：
@@ -177,10 +178,10 @@ VM 可能偶爾會被優先佔用；當發生優先佔用時，Batch 會執行�
 2. 從 [監視] 區段選取 [計量]。
 3. 從 [可用的計量] 清單中選取您所需的計量。
 
-![低優先順序節點的計量](media/batch-low-pri-vms/low-pri-metrics.png)
+![顯示低優先順序節點之計量選取範圍的螢幕擷取畫面。](media/batch-low-pri-vms/low-pri-metrics.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業、工作。
-* 了解可用來建置 Batch 解決方案的 [Batch API 和工具](batch-apis-tools.md)。
-* 開始規劃從低優先順序 VM 移至現成 VM。 如果您使用低優先順序的 VM 搭配**雲端服務設定**集區，請規劃移至**虛擬機器設定**集區。
+- 深入了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業、工作。
+- 了解可用來建置 Batch 解決方案的 [Batch API 和工具](batch-apis-tools.md)。
+- 開始規劃從低優先順序 VM 移至現成 VM。 如果您使用低優先順序的 VM 搭配**雲端服務設定**集區，請規劃移至**虛擬機器設定**集區。

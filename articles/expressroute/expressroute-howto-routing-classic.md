@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：設定對等互連：傳統
 description: 本文將逐步引導您為 ExpressRoute 線路建立和佈建私用、公用及 Microsoft 對等。 本文也示範如何檢查狀態、更新或刪除線路的對等。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.author: cherylmc
-ms.openlocfilehash: 9cad8a157121c0ccb53674301572b02410e030cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: a4a3bad1e868fa0e75611630ffb5db5ba13126b6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736232"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395548"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>建立和修改 ExpressRoute 線路的對等互連 (傳統)
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "84736232"
 > * [視訊 - 私用對等互連](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [視訊 - 公用對等互連](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [視訊 - Microsoft 對等互連](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
-> * [PowerShell （傳統）](expressroute-howto-routing-classic.md)
+> * [PowerShell (傳統)](expressroute-howto-routing-classic.md)
 > 
 
 本文將逐步引導您使用 PowerShell 和傳統部署模型，來建立及管理 ExpressRoute 線路的對等互連和路由設定。 下列步驟也會示範如何檢查狀態、更新或刪除和取消佈建 ExpressRoute 線路的對等。 您可以為 ExpressRoute 線路設定一個、兩個或全部三個對等 (Azure 私用、Azure 公用和 Microsoft)。 您可以依自己選擇的任何順序設定對等。 不過，您必須確定一次只完成一個對等的設定。 
@@ -38,13 +38,13 @@ ms.locfileid: "84736232"
 ## <a name="configuration-prerequisites"></a>組態必要條件
 
 * 開始設定之前，請確定您已經檢閱過[必要條件](expressroute-prerequisites.md)頁面、[路由需求](expressroute-routing.md)頁面和[工作流程](expressroute-workflows.md)頁面。
-* 您必須擁有作用中的 ExpressRoute 線路。 繼續之前，請遵循指示[建立 ExpressRoute 線路](expressroute-howto-circuit-classic.md)，並由連線提供者啟用線路。 ExpressRoute 線路必須處於已佈建和已啟用狀態，您才能執行如下所述的 Cmdlet。
+* 您必須擁有作用中的 ExpressRoute 線路。 請依照指示 [建立 ExpressRoute 線路](expressroute-howto-circuit-classic.md) ，並讓您的連線提供者啟用線路，然後再繼續進行。 ExpressRoute 線路必須處於已佈建和已啟用狀態，您才能執行如下所述的 Cmdlet。
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>下載最新的 PowerShell Cmdlet
 
 [!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
-## <a name="azure-private-peering"></a>Azure 私用對等
+## <a name="azure-private-peering"></a>Azure 私用對等互連
 
 本節提供如何為 ExpressRoute 線路建立、取得、更新和刪除 Azure 私用對等組態的指示。 
 
@@ -187,7 +187,7 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
    ServiceProviderProvisioningState : Provisioned
    Status                           : Enabled
    ```
-4. **設定線路的 Azure 公用對等互連**
+4. **設定線路的 Azure 公用對等**
    
    繼續之前，請確定您具有下列資訊：
    
@@ -302,7 +302,7 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    * 公告的首碼：您必須提供一份您打算在 BGP 工作階段上公告的所有首碼的清單。 只接受公用 IP 位址首碼。 如果您打算傳送一組首碼，您可以傳送逗號分隔清單。 這些首碼必須在 RIR / IRR 中註冊給您。
    * 客戶 ASN：如果您要公告的首碼未註冊給對等 AS 編號，您可以指定它們所註冊的 AS 編號。 **選擇項**。
    * 路由登錄名稱：您可以指定可供註冊 AS 編號和首碼的 RIR / IRR。
-   * MD5 雜湊 (如果選擇使用)。 **選擇性.**
+   * MD5 雜湊 (如果選擇使用)。 **選。**
      
    執行下列 Cmdlet 來為線路設定 Microsoft 對等：
  
@@ -350,7 +350,7 @@ Set-AzureBGPPeering -AccessType Microsoft -ServiceKey "*************************
 Remove-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 接著， [將 VNet 連結到 ExpressRoute 線路](expressroute-howto-linkvnet-classic.md)。
 

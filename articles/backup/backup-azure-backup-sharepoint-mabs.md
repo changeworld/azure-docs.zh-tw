@@ -3,12 +3,12 @@ title: 使用 MABS 將 SharePoint 伺服器陣列備份至 Azure
 description: 使用 Azure 備份伺服器來備份和還原 SharePoint 資料。 本文提供設定 SharePoint 伺服器陣列，讓所需的資料可以儲存在 Azure 中的相關資訊。 您可以從磁碟或 Azure 還原受保護的 SharePoint 資料。
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 00af51764d5a9454b002de6375b2b16d6e80c300
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017425"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375392"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>使用 MABS 將 SharePoint 伺服器陣列備份至 Azure
 
@@ -74,7 +74,7 @@ ms.locfileid: "89017425"
 
         執行 ConfigureSharePoint.exe 之後，如果 SharePoint 伺服器陣列管理員認證有所有變更，您必須重新執行此程式。
 
-1. 若要建立保護群組，請在 MABS 主控台按一下 [保護] > [動作] > [建立保護群組]，以開啟 [建立新保護群組] 精靈。
+1. 若要建立保護群組，請選取 [**保護**  >  **動作**  >  **建立保護群組**]，以開啟 MABS 主控台中的 [**建立新保護組**嚮導]。
 
 1. 在 [選取保護群組類型] 中，選取 [伺服器]。
 
@@ -102,7 +102,7 @@ ms.locfileid: "89017425"
 
 1. 在 [選擇線上複寫] 中，指定如何首次完整複寫資料。 您可以透過網路進行複寫，也可以執行離線備份 (離線植入)。 離線備份會使用 Azure 匯入功能。 [閱讀更多](./backup-azure-backup-import-export.md)。
 
-1. 在 [摘要] 頁面上檢閱您的設定。 按一下 [建立群組] 後，就會首次複寫資料。 完成時，在 [狀態] 頁面上，保護群組狀態會顯示為 [正常]。 之後，就按照保護群組設定進行備份。
+1. 在 [ **摘要** ] 頁面上，檢查您的設定。 在選取 [建立群組]**** 後，系統就會開始進行首次的資料複寫。 完成時，在 [狀態] 頁面上，保護群組狀態會顯示為 [正常]。 之後，就按照保護群組設定進行備份。
 
 ## <a name="monitoring"></a>監視
 
@@ -114,17 +114,17 @@ ms.locfileid: "89017425"
 
 ### <a name="set-up-monitoring-notifications"></a>設定監視通知
 
-1. 在 [MABS 系統管理員主控台]，按一下 [監視] > [動作] > [選項]。
+1. 在 [MABS 系統管理員主控台中，選取 [**監視**  >  **動作**  >  **選項**]。
 
-2. 按一下 [SMTP 伺服器]，輸入伺服器名稱、連接埠，以及寄出通知的電子郵件地址。 地址必須有效。
+2. 選取 [ **SMTP 伺服器**]，輸入將傳送通知的伺服器名稱、埠和電子郵件地址。 地址必須有效。
 
 3. 在 [已驗證的 SMTP 伺服器] 中，輸入使用者名稱和密碼。 使用者名稱和密碼必須是某人的網域帳戶名稱，而此人的「寄件者」地址如上一個步驟所述。 否則，通知傳遞會失敗。
 
-4. 若要測試 SMTP 伺服器設定，請按一下 [傳送測試電子郵件]，輸入電子郵件地址以接收 MABS 傳送的測試訊息，然後按一下 [確定]。 按一下 [選項] > [通知]，然後選取收件者想要收到通知的警示類型。 在 [收件者] 中，輸入每位收件者的電子郵件地址，讓這些收件者收到 MABS 傳送的一份通知。
+4. 若要測試 SMTP 伺服器設定，請選取 [ **傳送測試電子郵件**]，輸入您想要 MABS 傳送測試訊息的電子郵件地址，然後選取 **[確定]**。 選取 [**選項**  >  **通知**]，並選取收件者想要收到通知的警示類型。 在 [收件者] 中，輸入每位收件者的電子郵件地址，讓這些收件者收到 MABS 傳送的一份通知。
 
 ### <a name="publish-operations-manager-alerts"></a>發佈 Operations Manager 警示
 
-1. 在 [MABS 系統管理員主控台]，按一下 [監視] > [動作] > [選項] > [警示發佈] > [發佈作用中警示]
+1. 在 MABS 系統管理員主控台中，選取**監視**  >  **動作**  >  **選項**  >  **警示發佈**  >  **發佈**作用中警示
 
 2. 啟用 [警示發佈] 之後，所有可能需要使用者動作的現有 MABS 警示，都會發佈至 **MABS 警示**事件記錄檔。 MABS 伺服器上安裝的 Operations Manager 代理程式接著會將這些警示發佈至 Operations Manager，並在產生新警示時繼續更新主控台。
 
@@ -146,10 +146,10 @@ ms.locfileid: "89017425"
 5. 您也可以瀏覽不同的復原點，並選取要復原的資料庫或項目。 選取 [日期] > [復原時間]，然後選取正確的 [資料庫] > [SharePoint 伺服器陣列] > [復原點] > [項目]。
 
     ![MABS SharePoint Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. 在該項目上按一下滑鼠右鍵，然後選取 [復原] 以開啟 [復原精靈]。 按 [下一步] 。
+6. 在該項目上按一下滑鼠右鍵，然後選取 [復原] 以開啟 [復原精靈]。 選取 [下一步] 。
 
     ![檢閱復原選項](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
-7. 選取您想要執行的復原類型，然後按 [下一步] 。
+7. 選取您要執行的復原類型，然後選取 **[下一步]**。
 
     ![復原類型](./media/backup-azure-backup-sharepoint/select-recovery-type.png)
 
@@ -170,7 +170,7 @@ ms.locfileid: "89017425"
     MABS 會將裝載 SharePoint 專案的內容資料庫附加至暫存的 SQL Server 實例。 它會從內容資料庫復原項目，並將它放在 MABS 上的預備檔案位置。 位於預備位置上的復原項目，現在需要匯出至 SharePoint 伺服器陣列上的預備位置。
 
     ![Staging Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. 選取 [指定復原選項] ，並將安全性設定套用至 SharePoint 伺服器陣列，或套用復原點的安全性設定。 按 [下一步] 。
+10. 選取 [指定復原選項] ，並將安全性設定套用至 SharePoint 伺服器陣列，或套用復原點的安全性設定。 選取 [下一步] 。
 
     ![修復選項](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
@@ -178,7 +178,7 @@ ms.locfileid: "89017425"
     > 您可以選擇調節網路頻寬使用量。 這會對生產時段的生產伺服器產生最小的影響。
     >
     >
-11. 檢閱摘要資訊，然後按一下 [復原]  以開始復原檔案。
+11. 查看摘要資訊，然後選取 [復原] 以開始 **復原** 檔案。
 
     ![復原摘要](./media/backup-azure-backup-sharepoint/recovery-summary.png)
 12. 現在，在 [MABS 系統管理員主控台] 中選取 [監視] 索引標籤，以檢視復原的**狀態**。
@@ -201,7 +201,7 @@ ms.locfileid: "89017425"
    > 因為 SharePoint 伺服器陣列長期保留在 Azure 中受到保護，所以 MABS 伺服器上不會有目錄資訊 (中繼資料)。 如此一來，每當需要復原時間點 SharePoint 內容資料庫，您就需要重新編目 SharePoint 伺服器陣列。
    >
    >
-3. 按一下 [重新編目] 。
+3. 選取 [ **重新編目**]。
 
     ![MABS SharePoint Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -209,10 +209,10 @@ ms.locfileid: "89017425"
 
     ![MABS SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    完成編目後，狀態會變更為 [成功] 。 按一下 [關閉] 。
+    完成編目後，狀態會變更為 [成功] 。 選取 [關閉]。
 
     ![MABS SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. 按一下 MABS [復原] 索引標籤中顯示的 SharePoint 物件，以取得內容資料庫結構。 在項目上按一下滑鼠右鍵，然後按一下 [復原] 。
+4. 選取 **[MABS 復原** ] 索引標籤中顯示的 SharePoint 物件，以取得內容資料庫結構。 以滑鼠右鍵按一下專案，然後選取 [ **復原**]。
 
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. 此時，依照本文前述的復原步驟，從磁碟復原 SharePoint 內容資料庫。
@@ -247,7 +247,7 @@ ms.locfileid: "89017425"
 
 1. 在 Server2 上，在命令提示字元中切換到 `_MABS installation location_\bin\` 目錄，然後執行 **ConfigureSharepoint**。 如需 ConfigureSharePoint 的詳細資訊，請參閱[設定備份](#configure-backup)。
 
-1. 選取伺服器陣列所屬的保護群組，然後按一下 [修改保護群組]。
+1. 選取伺服器陣列所屬的保護群組，然後選取 [ **修改保護群組**]。
 
 1. 在 [修改群組精靈] 的 [選取群組成員] 頁面上，展開 [Server2]，選取伺服器陣列，然後完成精靈。
 

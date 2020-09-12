@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 4d48ca3685dca36157307e7cb4b3d25261c243aa
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 10108fdf4f2b7090eaeaa4b378992c2e94d3b04c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705736"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489573"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database 與 Azure Synapse Analytics 連線架構
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -94,6 +94,7 @@ SQL Database 和 Azure Synapse 中的伺服器支援伺服器連線原則設定�
 | 法國中部       | 40.79.137.0, 40.79.129.1 |
 | 德國中部      | 51.4.144.100       |
 | 德國東北部   | 51.5.144.179       |
+| 德國中西部 | 51.116.240.0, 51.116.248.0, 51.116.152.0 |
 | 印度中部        | 104.211.96.159     |
 | 印度南部          | 104.211.224.146    |
 | 印度西部           | 104.211.160.80     |
@@ -121,7 +122,7 @@ SQL Database 和 Azure Synapse 中的伺服器支援伺服器連線原則設定�
 | 美國西部 2            | 13.66.226.202, 40.78.240.8, 40.78.248.10  |
 |                      |                    |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 如需有關如何變更伺服器 Azure SQL Database 連接原則的詳細資訊，請參閱 [連結 [-原則](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)]。
 - 如需使用 ADO.NET 4.5 或更新版本用戶端之 Azure SQL Database 連接行為的詳細資訊，請參閱 [ADO.NET 4.5 超過 1433以外的連接埠](adonet-v12-develop-direct-route-ports.md)。

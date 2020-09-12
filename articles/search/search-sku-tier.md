@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: ac08f2cee19b2d8860323c48d89205d5ca939157
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c09c5b33f7960ffebfdfc8005537e75a249b8d99
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922798"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661087"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>選擇 Azure 認知搜尋的定價層
 
@@ -39,7 +39,7 @@ ms.locfileid: "88922798"
 
 層級的差異如下：
 
-+ 您可以建立的索引和索引子數量
++ 索引和索引子的數量 (上限) 
 + 分割區的大小和速度 (實體儲存體)
 
 您選取的層會決定計費費率。 下列來自 Azure 入口網站的螢幕擷取畫面顯示可在入口網站和 [ [定價] 頁面](https://azure.microsoft.com/pricing/details/search/)上找到的可用層（減去定價 (）。 「**免費**」、「**基本**」和「**標準**」是最常見的層級。
@@ -213,7 +213,7 @@ SU 是服務*所用**複本*和資料分割的乘積： ** (R x P = SU) **。
 
 + 請記住，在布建下的唯一缺點是，如果實際需求大於您的預測，您可能必須卸載服務。 為了避免服務中斷，您會在較高的層級建立新的服務，並並存執行，直到所有應用程式和要求都以新端點為目標為止。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 從免費層開始，然後使用您的資料子集來建立初始索引，以瞭解其特性。 Azure 認知搜尋中的資料結構是反向索引結構。 反向索引的大小和複雜性取決於內容。 請記住，重複性高的內容所產生的索引，往往會比差異性高的內容所產生的索引小。 因此，內容特性（而不是資料集大小）會決定索引儲存體需求。
 

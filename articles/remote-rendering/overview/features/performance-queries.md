@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c7212157bb7ef541ac1eb1753f46ea6ad434c2ca
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cd255896d57d6bda60ec8874430fa994eae69f40
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013362"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613634"
 ---
 # <a name="server-side-performance-queries"></a>伺服器端效能查詢
 
@@ -172,6 +172,11 @@ void Update()
 `GetStatsString` API 會將所有值的字串格式化，但也可以從 `ARRServiceStats` 執行個體以程式設計方式查詢每個單一值。
 
 也有成員的變體，其會隨時間彙總值。 請參閱尾碼為 `*Avg`、`*Max` 或 `*Total` 的成員。 成員 `FramesUsedForAverage` 指出此彙總所使用的畫面數目。
+
+## <a name="api-documentation"></a>API 文件
+
+* [C # RemoteManager. QueryServerPerformanceAssessmentAsync ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.queryserverperformanceassessmentasync)
+* [C + + RemoteManager：： QueryServerPerformanceAssessmentAsync ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#queryserverperformanceassessmentasync)
 
 ## <a name="next-steps"></a>後續步驟
 

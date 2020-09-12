@@ -3,12 +3,12 @@ title: Azure Migrate 設備常見問題
 description: 取得 Azure Migrate 設備的常見問題解答。
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: de34bba40b9200c198f3c07262bd6b7a00b62060
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aa15a3451b990d3c3cec3535fdc14315ff149aef
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050670"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514538"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 設備：常見問題
 
@@ -21,7 +21,7 @@ ms.locfileid: "89050670"
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>什麼是 Azure Migrate 設備？
 
-Azure Migrate 設備是一種輕量設備，Azure Migrate：伺服器評估工具用來探索及評估內部部署伺服器。 Azure Migrate：伺服器遷移工具也會使用設備來進行內部部署 VMware Vm 的無代理程式遷移。
+Azure Migrate 設備是一種輕量設備，Azure Migrate：伺服器評估工具用來從內部部署或任何雲端探索及評估實體或虛擬伺服器。 Azure Migrate：伺服器遷移工具也會使用設備來進行內部部署 VMware Vm 的無代理程式遷移。
 
 以下是有關 Azure Migrate 設備的詳細資訊：
 
@@ -35,13 +35,14 @@ Azure Migrate 設備是一種輕量設備，Azure Migrate：伺服器評估工�
 
 您可以依照下列方式部署設備：
 
-- 使用 VMware Vm 和 Hyper-v Vm 的範本 (適用于 VMware 或 VHD 的 hyper-v) OVA 範本。
-- 如果您不想要使用範本，或您是在 Azure Government 中，您可以使用 PowerShell 腳本來部署適用于 VMware 或 Hyper-v 的設備。
-- 針對實體伺服器，您一律會使用指令碼來部署設備。
+- 使用範本 ( 探索 VMware Vm。OVA 檔案) 和 Hyper-v Vm (。VHD 檔案) 建立裝載設備的新 VM。
+- 如果您不想要使用範本，您可以在現有的實體或虛擬機器上部署設備，以使用 PowerShell 安裝程式腳本（可從入口網站中的 zip 檔案下載）探索 VMware Vm 或 Hyper-v Vm。
+- 針對來自內部部署或任何雲端的實體或虛擬伺服器，您一律使用現有伺服器上的腳本部署設備。
+- 針對 Azure Government，所有三個設備只能使用 PowerShell 安裝程式腳本進行部署。
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>設備如何連接至 Azure？
 
-設備可透過網際網路或使用 Azure ExpressRoute 進行連線。
+設備可透過網際網路或使用 Azure ExpressRoute 進行連線。 請確定這些 [url](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) 已列入允許清單，以供設備連接至 Azure。
 
 - 若要將 Azure ExpressRoute 用於 Azure Migrate 複寫流量，必須有 Microsoft 對等互連或現有的公用對等互連 (公用對等互連已針對新的 ER 建立) 淘汰。
 - 不支援透過 Azure ExpressRoute (（僅限已啟用) 私人對等互連）進行複寫。
@@ -66,6 +67,7 @@ Azure Migrate 設備會持續分析內部部署機器，以測量效能資料。
 
 - **VMWARE VM**： [檢查](migrate-appliance.md#collected-data---vmware) 收集的資料。
 - **HYPER-V VM**： [檢查](migrate-appliance.md#collected-data---hyper-v) 收集的資料。
+- **實體或虛擬伺服器**：[檢查](migrate-appliance.md#collected-data---physical) 收集的資料。
 
 ## <a name="how-is-data-stored"></a>儲存資料的方式
 
@@ -99,7 +101,7 @@ Azure Migrate 設備所收集的資料會儲存在您建立 Azure Migrate 專案
 
 ## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Azure Migrate 設備是否可以連接到多部 vCenter Server？
 
-不知道。 [Azure Migrate 設備](migrate-appliance.md)與 vCenter Server 之間有一對一的對應。 若要在多個 vCenter Server 實例上探索 Vm，您必須部署多個設備。 
+不會。 [Azure Migrate 設備](migrate-appliance.md)與 vCenter Server 之間有一對一的對應。 若要在多個 vCenter Server 實例上探索 Vm，您必須部署多個設備。 
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Migrate 專案可以有多個設備嗎？
 
@@ -107,8 +109,7 @@ Azure Migrate 設備所收集的資料會儲存在您建立 Azure Migrate 專案
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure Migrate 設備/複寫設備是否可以連接到相同的 vCenter？
 
-是。 您可以新增 Azure Migrate 設備 (用於評量和無代理程式 VMware 遷移) ，而複寫設備 (用於將 VMware Vm 以代理程式為基礎的遷移) 至相同的 vCenter server。
-
+可以。 您可以新增 Azure Migrate 設備 (用於評量和無代理程式 VMware 遷移) ，而複寫設備 (用於將 VMware Vm 以代理程式為基礎的遷移) 至相同的 vCenter server。 但請確定您未在相同的 VM 上設定這兩個設備，且目前不受支援。
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>我可以使用設備探索多少部 Vm 或伺服器？
 
@@ -124,15 +125,17 @@ Azure Migrate 設備所收集的資料會儲存在您建立 Azure Migrate 專案
 
 ## <a name="can-i-use-the-appliance-with-a-different-subscription-or-project"></a>我可以使用設備搭配不同的訂用帳戶或專案嗎？
 
-使用設備啟動探索之後，您就無法重新設定要與不同 Azure 訂用帳戶搭配使用的設備，而且無法在不同的 Azure Migrate 專案中使用。 您也無法在不同的 vCenter Server 實例上探索 Vm。 設定這些工作的新設備。
+若要搭配不同的訂用帳戶或專案使用設備，您必須針對設備機器上 (VMware/Hyper-v/實體) 的特定案例執行 PowerShell 安裝程式腳本，以重新設定現有的設備。 腳本將會清除現有的設備元件和設定，以部署全新的設備。 開始使用新部署的設備設定管理員之前，請務必清除瀏覽器快取。
+
+此外，您無法在重新設定的設備上重複使用現有的 Azure Migrate 專案金鑰。 請務必從所需的訂用帳戶/專案產生新的金鑰，以完成設備註冊。
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>我可以在 Azure VM 上設定設備嗎？
 
-不知道。 目前不支援此選項。 
+不會。 目前不支援此選項。 
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>我可以在 ESXi 主機上探索嗎？
 
-不知道。 若要探索 VMware Vm，您必須有 vCenter Server。
+不會。 若要探索 VMware Vm，您必須有 vCenter Server。
 
 ## <a name="how-do-i-update-the-appliance"></a>如何? 更新設備？
 
@@ -142,8 +145,8 @@ Azure Migrate 設備所收集的資料會儲存在您建立 Azure Migrate 專案
 
 ## <a name="can-i-check-agent-health"></a>我可以檢查代理程式健康情況嗎？
 
-是。 在入口網站中，移至 [Azure Migrate：伺服器評定] 或 [Azure Migrate：伺服器遷移工具] 的 [ **代理程式健康** 情況] 頁面。 在那裡，您可以檢查 Azure 與設備上的探索和評量代理程式之間的線上狀態。
+可以。 在入口網站中，移至 [Azure Migrate：伺服器評定] 或 [Azure Migrate：伺服器遷移工具] 的 [ **代理程式健康** 情況] 頁面。 在那裡，您可以檢查 Azure 與設備上的探索和評量代理程式之間的線上狀態。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 閱讀 [Azure Migrate 總覽](migrate-services-overview.md)。
