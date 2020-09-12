@@ -5,19 +5,21 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/08/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: b7655f4cb13e80d6262c3d4871c1ab69f4a6a051
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: bf6828ff96f5bff8a65b5f62793df8bf0e65a309
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905462"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595150"
 ---
 # <a name="hbv2-series"></a>HBv2 系列
 
-HBv2 系列 Vm 已針對記憶體頻寬所驅動的應用程式優化，例如流體 dynamics、有限元素分析和容器模擬。 HBv2 Vm 功能 120 AMD EPYC 7742 處理器核心，每個 CPU 核心 4 GB RAM，且不會同時進行多執行緒處理。 每個 HBv2 VM 最多可提供每秒 340 GB 的記憶體頻寬，以及最多4次 teraflop 的 FP64 計算。
+HBv2 系列 Vm 最適用于以記憶體頻寬驅動的應用程式，例如流體動態、有限元素分析和容器模擬。 HBv2 Vm 功能 120 AMD EPYC 7742 處理器核心，每個 CPU 核心 4 GB RAM，且不會同時進行多執行緒處理。 每個 HBv2 VM 最多可提供每秒 340 GB 的記憶體頻寬，以及最多 4 teraFLOPS 的 FP64 計算。
+
+HBv2 系列 Vm 功能 200 Gb/秒 Mellanox HDR 的空間。 這些 Vm 會連接到非封鎖的 fat 樹狀結構，以獲得優化且一致的 RDMA 效能。 這些 Vm 支援自動調整路由和動態連線傳輸 (DCT，其他標準 RC 和 UD 傳輸) 。 這些功能增強應用程式效能、擴充性和一致性，強烈建議使用這些功能。
 
 進階儲存體：支援
 
@@ -25,7 +27,7 @@ HBv2 系列 Vm 已針對記憶體頻寬所驅動的應用程式優化，例如�
 
 記憶體保留更新：不支援
 
-| 大小 | vCPU | 處理器 | 記憶體 (GB) | 記憶體頻寬 GB/秒 | 基底 CPU 頻率 (GHz)  | 所有核心頻率 (GHz、尖峰)  | 單核心頻率 (GHz，尖峰)  | RDMA 效能 (Gb/s)  | MPI 支援 | 暫存儲存體 (GB)  | 最大資料磁碟 | 最大乙太網路 Nic |
+| 大小 | vCPU | 處理器 | 記憶體 (GB) | 記憶體頻寬 GB/秒 | 基礎 CPU 頻率 (GHz)  | 所有核心頻率 (GHz，尖峰)  | 單一核心頻率 (GHz，尖峰)  | RDMA 效能 (Gb/秒)  | MPI 支援 | 暫存儲存體 (GB)  | 最大資料磁碟 | 最大乙太網路 Nic |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HB120rs_v2 | 120 | AMD EPYC 7V12 | 480 | 350 | 2.45 | 3.1 | 3.3 | 200 | 全部 | 480 + 960 | 8 | 1 |
 
@@ -43,7 +45,7 @@ HBv2 系列 Vm 已針對記憶體頻寬所驅動的應用程式優化，例如�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解如何設定[您的 vm](./workloads/hpc/configure.md)、[啟用](./workloads/hpc/enable-infiniband.md)未充分運用、在[Hpc 工作負載](./workloads/hpc/overview.md)上為 Azure[設定 MPI](./workloads/hpc/setup-mpi.md)和優化 hpc 應用程式。
-- 閱讀[Azure 計算技術小組的 blog](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)，瞭解最新的公告和一些 HPC 範例和結果。
-- 如需執行 HPC 工作負載的更高層級架構視圖，請參閱[Azure 上的高效能運算 (HPC) ](/azure/architecture/topics/high-performance-computing/)。
+- 深入瞭解如何設定 [您的 vm](./workloads/hpc/configure.md)、 [啟用](./workloads/hpc/enable-infiniband.md)可充分運用、 [設定 MPI](./workloads/hpc/setup-mpi.md) ，以及將 Azure 的 Hpc 應用程式優化至 [hpc 工作負載](./workloads/hpc/overview.md)。
+- 請參閱 [Azure 運算技術社群部落格](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 範例和結果。
+- 如需執行中 HPC 工作負載較高階的架構檢視，請參閱 [Azure 上的高效能運算 (HPC)](/azure/architecture/topics/high-performance-computing/)。
 - 深入了解 [Azure 計算單位 (ACU)](acu.md) 如何協助您比較各個 Azure SKU 的計算效能。

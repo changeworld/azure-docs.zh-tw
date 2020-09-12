@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 4515eda6723a9a347a7a0aa56187f40ed4269cdc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 08529d1bb50a1a5d5b3c7d0296aa36f021f45e98
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942093"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646095"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>發佈和追蹤機器學習管線
 
@@ -38,7 +38,7 @@ ms.locfileid: "88942093"
 
 當管線啟動並執行之後，您就可以發佈管線，使其以不同的輸入執行。 針對已發佈之管線的 REST 端點接受參數，您必須設定管線以 `PipelineParameter` 針對將會改變的引數使用物件。
 
-1. 若要建立管線參數，請使用 [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) 物件搭配預設值。
+1. 若要建立管線參數，請使用 [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py&preserve-view=true) 物件搭配預設值。
 
    ```python
    from azureml.pipeline.core.graph import PipelineParameter
@@ -73,7 +73,7 @@ ms.locfileid: "88942093"
 
 所有已發佈的管線都有 REST 端點。 使用管線端點時，您可以從任何外部系統（包括非 Python 用戶端）觸發管線的執行。 此端點可在批次評分和重新訓練案例中，提供「受控的可重複性」。
 
-若要叫用上述管線的執行，您需要 Azure Active Directory authentication 標頭權杖。 取得這類權杖的說明位於 [>azurecliauthentication 類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py) 參考和 Azure Machine Learning 筆記本中的 [驗證](https://aka.ms/pl-restep-auth) 。
+若要叫用上述管線的執行，您需要 Azure Active Directory authentication 標頭權杖。 取得這類權杖的說明位於 [>azurecliauthentication 類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py&preserve-view=true) 參考和 Azure Machine Learning 筆記本中的 [驗證](https://aka.ms/pl-restep-auth) 。
 
 ```python
 from azureml.pipeline.core import PublishedPipeline
@@ -150,10 +150,10 @@ p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
-您可以使用重新啟用它 `p.enable()` 。 如需詳細資訊，請參閱 [PublishedPipeline 類別](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py) 參考。
+您可以使用重新啟用它 `p.enable()` 。 如需詳細資訊，請參閱 [PublishedPipeline 類別](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py&preserve-view=true) 參考。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 使用 [GitHub 上的這些 Jupyter Notebook](https://aka.ms/aml-pipeline-readme) 來進一步探索機器學習管線。
-- 請參閱 [azureml-管線-核心](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) 封裝和 [azureml-管線-步驟](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) 套件的 SDK 參考說明。
+- 請參閱 [azureml-管線-核心](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py&preserve-view=true) 封裝和 [azureml-管線-步驟](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py&preserve-view=true) 套件的 SDK 參考說明。
 - 請參閱 [如何](how-to-debug-pipelines.md) 取得對管線進行偵錯工具和疑難排解的秘訣。

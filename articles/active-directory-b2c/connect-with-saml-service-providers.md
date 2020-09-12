@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 09/09/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2bf767bd87e0df791b0efff1294f15353234ba2c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 09edfc91f98e51a7dce7e98b48f2970ccba33586
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520204"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611607"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -354,7 +354,8 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 
 選取 [登入]，您應該會看到使用者登入畫面。 登入時，SAML 判斷提示會回傳給範例應用程式。
 
-## <a name="enable-encypted-assertions"></a>啟用 Encypted 判斷提示
+## <a name="enable-encrypted-assertions-optional"></a>啟用加密的判斷提示 (選擇性) 
+
 若要加密傳回給服務提供者的 SAML 判斷提示，Azure AD B2C 將會使用服務提供者公開金鑰憑證。 公開金鑰必須存在於上述 ["samlMetadataUrl"](#samlmetadataurl) 中所述的 SAML 中繼資料中，做為使用 ' Encryption ' 的 >keydescriptor。
 
 以下是使用 set to Encryption >keydescriptor 的 SAML 中繼資料的範例：
@@ -369,35 +370,50 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 </KeyDescriptor>
 ```
 
-若要啟用 Azure AD B2C 傳送加密的判斷提示，請將 **WantsEncryptedAssertion** 中繼資料專案設定為信賴憑證者技術設定檔中的 true，如下所示：
+若要讓 Azure AD B2C 能夠傳送加密的判斷提示，請將 **WantsEncryptedAssertion** 中繼資料專案設定為信賴憑證者 `true` [技術設定檔](relyingparty.md#technicalprofile)中的。 您也可以設定用來加密 SAML 判斷提示的演算法。 如需詳細資訊，請參閱信賴憑證者 [技術設定檔中繼資料](relyingparty.md#metadata)。 
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TrustFrameworkPolicy
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
-  PolicySchemaVersion="0.3.0.0"
-  TenantId="contoso.onmicrosoft.com"
-  PolicyId="B2C_1A_signup_signin_saml"
-  PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_signup_signin_saml">
- ..
- ..
-  <RelyingParty>
-    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-    <TechnicalProfile Id="PolicyProfile">
-      <DisplayName>PolicyProfile</DisplayName>
-      <Protocol Name="SAML2"/>
-      <Metadata>
-          <Item Key="WantsEncryptedAssertions">true</Item>
-      </Metadata>
-     ..
-     ..
-     ..
-    </TechnicalProfile>
-  </RelyingParty>
-</TrustFrameworkPolicy>
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="WantsEncryptedAssertions">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
 ```
+
+## <a name="enable-identity-provider-initiated-flow-optional"></a>啟用識別提供者起始的流程 (選擇性) 
+
+在識別提供者起始的流程中，登入程式是由身分識別提供者起始 (Azure AD B2C) ，它會將未經要求的 SAML 回應傳送給服務提供者， (您的信賴憑證者應用程式) 。 若要啟用識別提供者起始的流程，請將 **>iDPInitiatedprofileenabled** 中繼資料專案設定為信賴憑證者 `true` [技術設定檔](relyingparty.md#technicalprofile)中的。
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="IdpInitiatedProfileEnabled">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+若要透過識別提供者起始的流程登入或註冊使用者，請使用下列 URL：
+
+```
+https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic/login
+```
+
+取代下列值：
+
+* **租使用者-名稱** 與您的租使用者名稱
+* **原則-** 使用您的 SAML 信賴憑證者原則名稱
 
 ## <a name="sample-policy"></a>範例原則
 

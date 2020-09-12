@@ -4,21 +4,21 @@ description: 在 Resource Manager 部署模型中使用 PowerShell 刪除虛擬�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.date: 02/07/2019
+ms.date: 09/03/2020
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: 54fe4486d43a40e54a0aeae36963c0271fae6c2b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 48e0998719ea19c0b360b50d8c9171d2b448ad19
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064522"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440757"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>使用 PowerShell 刪除虛擬網路閘道
 > [!div class="op_single_selector"]
 > * [Azure 入口網站](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-> * [PowerShell （傳統）](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+> * [PowerShell (傳統)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
 >
 
@@ -72,7 +72,7 @@ VNet 名稱︰VNet1<br>
 $GW=get-Azvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. 查看虛擬網路閘道是否有任何連線。
+### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. 檢查虛擬網路閘道是否有任何連接。
 
 ```powershell
 get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
@@ -132,7 +132,7 @@ $PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddr
 $PubIP | foreach-object {remove-AzpublicIpAddress -Name $_.Name -ResourceGroupName "RG1"}
 ```
 
-### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. 刪除閘道子網並設定設定。
+### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. 刪除閘道子網，並設定設定。
 
 ```powershell
 $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet"
@@ -155,7 +155,7 @@ VNet 名稱︰VNet1<br>
 $GW=get-Azvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. 查看虛擬網路閘道是否有任何連線。
+### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. 檢查虛擬網路閘道是否有任何連接。
 
 ```powershell
 get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
@@ -167,7 +167,7 @@ get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$
 get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG2" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
 ```
 
-### <a name="3-get-the-list-of-connections-in-both-directions"></a>3. 取得雙向連接的清單。
+### <a name="3-get-the-list-of-connections-in-both-directions"></a>3. 取得雙向的連接清單。
 
 因為這是 VNet 對 VNet 組態，所以您需要雙向連線清單。
 
@@ -220,7 +220,7 @@ $PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddr
 $PubIP | foreach-object {remove-AzpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 ```
 
-### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. 刪除閘道子網並設定設定。
+### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. 刪除閘道子網，並設定設定。
 
 ```powershell
 $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet"
@@ -279,7 +279,7 @@ $PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddr
 $PubIP | foreach-object {remove-AzpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 ```
 
-### <a name="4-delete-the-gateway-subnet-and-set-the-configuration"></a>4. 刪除閘道子網並設定設定。
+### <a name="4-delete-the-gateway-subnet-and-set-the-configuration"></a>4. 刪除閘道子網，並設定設定。
 
 ```powershell
 $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet"
@@ -304,7 +304,7 @@ Get-AzResourceGroup
 Find-AzResource -ResourceGroupNameContains RG1
 ```
 
-### <a name="3-verify-the-resources-in-the-list"></a>3. 確認清單中的資源。
+### <a name="3-verify-the-resources-in-the-list"></a>3. 驗證清單中的資源。
 
 清單傳回後，請加以檢閱，確認您想要刪除資源群組中的所有資源，以及資源群組本身。 如果您想要保留資源群組中的某些資源，請使用本文先前小節中的步驟來刪除您的閘道。
 

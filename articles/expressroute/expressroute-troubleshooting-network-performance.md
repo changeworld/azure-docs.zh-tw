@@ -2,18 +2,18 @@
 title: 針對網路連結效能進行疑難排解： Azure
 description: 本頁提供測試 Azure 網路連結效能的標準化方法。
 services: expressroute
-author: tracsman
+author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
 ms.date: 12/20/2017
-ms.author: jonor
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: e882035af3ac0a086c58b4886fd6999970712df1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521661"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566070"
 ---
 # <a name="troubleshooting-network-performance"></a>網路效能疑難排解
 ## <a name="overview"></a>概觀
@@ -121,7 +121,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 ![2][2]
 
 >[!NOTE]
-> 請注意，MSEE 不在 Azure 雲端。 ExpressRoute 實際上是在 Microsoft 網路的邊緣，而不是在 Azure 中。 一旦您將 ExpressRoute 連線到 MSEE 之後，表示您已經連線到 Microsoft 的網路，然後您可以從那裡再移至任何雲端服務，例如 Office 365 (利用 Microsoft 對等互連) 或 Azure (利用私人和/或 Microsoft 對等互連)。
+> 請注意，MSEE 不在 Azure 雲端。 ExpressRoute 實際上是在 Microsoft 網路的邊緣，而不是在 Azure 中。 當您將 ExpressRoute 連線到 MSEE 之後，您會連線到 Microsoft 的網路，接著您就可以移至任何雲端服務，像是使用 Microsoft 對等互連) 的 Microsoft 365 (，或透過私人和/或 Microsoft 對等互連) 的 Azure (。
 >
 >
 
@@ -146,7 +146,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 
 透過 Azure，一旦您盡可能地詳細隔離問題之後，就可以檢閱 [Azure 網路文件][Network Docs]，之後如果仍然需要，[請開啟支援票證][Ticket Link]。
 
-## <a name="references"></a>參考資料
+## <a name="references"></a>參考
 ### <a name="latencybandwidth-expectations"></a>延遲/頻寬期望
 >[!TIP]
 > 您要測試的端點之間的地理延遲 (英哩或公里) 是目前最大的延遲構成要素。 雖然沒有相關的設備延遲 (實體和虛擬構成要素、躍點數目等)，但處理 WAN 連線時，地理位置已經公認是整體延遲的最大構成要素。 同樣重要的是要注意，距離是光纖行程的距離，而不是直線距離或路段圖地圖距離。 這個距離很難準確無誤。 因此，我通常使用網際網路上的城市距離計算機，而且知道這種方法是非常不準確的測量方法，但足以設定一般預期。
@@ -177,7 +177,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 >
 >
 
-| ExpressRoute<br/>Location|Azure<br/>區域 | 預估<br/>距離 (公里) | 延遲|1 個工作階段<br/>頻寬 | 最大值<br/>頻寬 |
+| ExpressRoute<br/>Location|Azure<br/>Region | 預估<br/>距離 (公里) | Latency|1 個工作階段<br/>頻寬 | 最大值<br/>頻寬 |
 | ------------------------------------------ | --------------------------- |  - | - | - | - |
 | 西雅圖 | 美國西部 2        |    191 公里 |   5 毫秒 | 262.0 Mbits/秒 |  3.74 Gbits/秒 |
 | 西雅圖 | 美國西部          |  1,094 公里 |  18 毫秒 |  82.3 Mbits/秒 |  3.70 Gbits/秒 |
@@ -196,8 +196,8 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 
 \* 巴西延遲是不錯的範例，其中的直線距離明顯不同於光纖運行距離。 我本來預期延遲大約為 160 毫秒，但是實際上是 189 毫秒。 與我預期不符的這項差異可能表示某個地方存在網路問題，但最有可能的是光纖運行並不是以直線進入巴西，而是距離西雅圖還超過 1,000 公里左右，才能到達巴西。
 
-## <a name="next-steps"></a>後續步驟
-1. 從 GitHub 下載 Azure 連線工具組，網址為[https://aka.ms/AzCT][ACT]
+## <a name="next-steps"></a>接下來的步驟
+1. 從 GitHub 下載 Azure 連線能力工具組，網址為： [https://aka.ms/AzCT][ACT]
 2. 依照指示進行[連結效能測試][Performance Doc]
 
 <!--Image References-->

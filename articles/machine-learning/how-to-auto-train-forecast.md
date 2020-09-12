@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: 900e36ec3e508f9d3616cf0c0d19ea4ff067f775
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: fc8e8de817c1b311e3252c7399a09ed1c9eb7031
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144782"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651516"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>將時間序列預測模型自動定型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將瞭解如何在 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py)中使用自動化機器學習服務（AutoML）來設定和定型時間序列預測回歸模型。 
+在本文中，您將瞭解如何在 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)中使用自動化機器學習服務（AutoML）來設定和定型時間序列預測回歸模型。 
 
 如需低程式碼體驗，請參閱[教學課程：使用自動化機器學習來預測需求](tutorial-automated-ml-forecast.md)，以取得在 [Azure Machine Learning 工作室](https://ml.azure.com/)中使用自動化機器學習的時間序列預測範例。
 
@@ -93,7 +93,7 @@ test_labels = test_data.pop(label).values
 ```
 
 > [!IMPORTANT]
-> 將模型定型以預測未來值時，請確定在針對想要的範圍執行預測時，可使用定型中使用的所有特徵。 例如，建立需求預測時，包括目前股價的特徵可能會大幅增加定型準確度。 不過，如果想要預測較長範圍的情況，則可能無法精確地預測與未來時間序列點對應的未來股價值，且模型精確度可能會受到影響。
+> 將模型定型以預測未來值時，請確定在針對想要的範圍執行預測時，可使用定型中使用的所有特徵。 <br> <br>例如，建立需求預測時，包括目前股價的特徵可能會大幅增加定型準確度。 不過，如果想要預測較長範圍的情況，則可能無法精確地預測與未來時間序列點對應的未來股價值，且模型精確度可能會受到影響。
 
 <a name="config"></a>
 
@@ -101,11 +101,11 @@ test_labels = test_data.pop(label).values
 
 您可以直接在物件中指定個別的定型和驗證集 `AutoMLConfig` 。   深入了解 [AutoMLConfig](#configure-experiment)。
 
-如果是時間序列預測，則會在您一起傳遞定型和驗證資料時，自動使用 ** (ROCV) 的輪流來源交叉驗證 ** ，並使用中的參數設定交叉驗證折迭的數目 `n_cross_validations` `AutoMLConfig` 。 ROCV 會使用原始時間點來將序列分割成定型和驗證資料。 滑動時間原點即會產生交叉驗證摺疊。 此策略可保留時間序列資料的完整性，並消除資料洩漏的風險
+針對時間序列預測，根據預設，只有輪流 **來源交叉驗證 (ROCV) ** 用於驗證。 將定型和驗證資料一起傳遞，並使用中的參數設定交叉驗證折迭數目 `n_cross_validations` `AutoMLConfig` 。 ROCV 會使用原始時間點來將序列分割成定型和驗證資料。 滑動時間原點即會產生交叉驗證摺疊。 此策略可保留時間序列資料的完整性，並消除資料洩漏的風險
 
-![替代文字](./media/how-to-auto-train-forecast/ROCV.svg)
+![滾動原始來源交叉驗證](./media/how-to-auto-train-forecast/ROCV.svg)
 
-如需其他交叉驗證和資料分割選項，請參閱 [在 AutoML 中設定資料分割和交叉驗證](how-to-configure-cross-validation-data-splits.md)。
+您也可以攜帶自己的驗證資料，深入瞭解在 [AutoML 中設定資料分割和交叉驗證](how-to-configure-cross-validation-data-splits.md#provide-validation-data)。
 
 
 ```python
@@ -118,7 +118,7 @@ automl_config = AutoMLConfig(task='forecasting',
 深入瞭解 AutoML 如何套用交叉驗證，以 [防止過度調整的模型](concept-manage-ml-pitfalls.md#prevent-over-fitting)。
 
 ## <a name="configure-experiment"></a>設定實驗
-[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) 物件會定義自動化機器學習工作所需的設定和資料。 預測模型的設定類似于設定標準回歸模型，但某些特徵化步驟和設定選項特別適用于時間序列資料。 
+[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) 物件會定義自動化機器學習工作所需的設定和資料。 預測模型的設定類似于設定標準回歸模型，但某些特徵化步驟和設定選項特別適用于時間序列資料。 
 
 ### <a name="featurization-steps"></a>特徵化步驟
 
@@ -163,13 +163,13 @@ featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy"
 featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
 ```
 
-如果您在實驗中使用 Azure Machine Learning studio，請參閱操作 [說明文章](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。
+如果您在實驗中使用 Azure Machine Learning studio，請參閱 [如何在 studio 中自訂特徵化](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。
 
 ### <a name="configuration-settings"></a>組態設定
 
 類似於迴歸問題，您可定義標準定型參數，例如工作類型、反覆項目數目、定型資料，以及交叉驗證的數目。 針對預測工作，還有一些必須設定的參數會影響實驗。 
 
-下表摘要說明這些額外的參數。 如需語法設計模式的 [參考檔](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) ，請參閱。
+下表摘要說明這些額外的參數。 如需語法設計模式的 [參考檔](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) ，請參閱。
 
 | 參數名稱&nbsp; | 描述 | 必要 |
 |-------|-------|-------|
@@ -245,7 +245,11 @@ automl_config = AutoMLConfig(task='forecasting',
                              ...
                              **time_series_settings)
 ```
+> [!Warning]
+> 當您針對以 SDK 建立的實驗啟用 DNN 時，會停用 [最佳模型說明](how-to-machine-learning-interpretability-automl.md) 。
+
 若要啟用在 Azure Machine Learning studio 中建立之 AutoML 實驗的 DNN，請參閱 [studio 操作說明中的工作類型設定](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)。
+
 
 自動化 ML 會為使用者提供原生時間序列和深度學習模型來作為建議系統的一部分。 
 
@@ -254,7 +258,6 @@ automl_config = AutoMLConfig(task='forecasting',
 Prophet (預覽)|Prophet 最適合用於具有強烈季節性影響，且包含數個季節歷程記錄資料的時間序列。 若要利用此模型，請使用將它安裝在本機 `pip install fbprophet` 。 | 精確且快速，能夠應付時間序列中的極端值、遺失資料及重大變更。
 自動 ARIMA (預覽)|自動回歸整合式移動平均 (ARIMA) 在資料為固定的情況下執行效果最佳。 這表示其統計屬性 (如平均值和變異數) 在整個集合上是常數。 例如，若投擲一枚硬幣，則不論您是今天、明天還是明年投擲，出現正面的機率都是 50%。| 由於過去值是用來預測未來值，因此非常適用於單一變量序列。
 ForecastTCN (預覽)| ForecastTCN 是一種神經網路模型，其設計目的是要處理最嚴苛的預測工作，並擷取資料中的非線性本機和全球趨勢，以及時間序列之間的關聯性。|能夠運用資料中的複雜趨勢，並配合最大的資料集立即調整。
-
 
 如需運用 DNN 的詳細程式碼範例，請參閱[飲料生產預測筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)。
 
@@ -266,8 +269,7 @@ ForecastTCN (預覽)| ForecastTCN 是一種神經網路模型，其設計目的�
 
 資料表會顯示套用視窗匯總時所產生的特徵工程。 **最小值、最大值**和**總和**的資料行會根據所定義的設定，在三個滑動視窗上產生。 每個資料列都有新的計算功能，在2017年9月8日的時間戳記案例中，上午10:00 最大值、最小值和總和值的計算方式是使用 2017 1 9 月8日的 **需求值** ：上午 10:00-3：上午10:00。 這三個時段會移位以在剩餘的資料列中填入資料。
 
-![替代文字](./media/how-to-auto-train-forecast/target-roll.svg)
-
+![目標滾動視窗](./media/how-to-auto-train-forecast/target-roll.svg)
 
 請檢視運用[目標移動時段彙總特徵](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)的 Python 程式碼範例。
 
@@ -336,5 +338,8 @@ day_datetime,store,week_of_year
 
 ## <a name="next-steps"></a>後續步驟
 
-* 遵循[教學課程](tutorial-auto-train-models.md)以了解如何使用自動化機器學習來建立實驗。
-* 檢視[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 參考文件。
+* 深入了解[模型部署的方式和位置](how-to-deploy-and-where.md)。
+* 深入瞭解 [可解譯性：自動化機器學習中的模型說明 (預覽) ](how-to-machine-learning-interpretability-automl.md)。 
+* 瞭解如何在 [許多模型解決方案加速器](https://aka.ms/many-models)中使用 AutoML 來訓練多個模型。
+* 遵循 [教學](tutorial-auto-train-models.md) 課程，以取得使用自動化機器學習來建立實驗的端對端範例。
+

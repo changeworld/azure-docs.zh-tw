@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/03/2020
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: 3747be15f7a15d3d47af2d3495eea2315d40a044
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 022ccaab0b210cd2d656b69f505791d1a2aa963f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419898"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440774"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>設定 Azure VPN 閘道的主動-主動 S2S VPN 連線
 
@@ -34,7 +34,7 @@ ms.locfileid: "87419898"
 您可以將這些結合起來，建立更複雜、高可用性網路拓撲以符合您的需求。
 
 > [!IMPORTANT]
-> 「主動-主動」模式適用于「基本」以外的所有 Sku。
+> 主動-主動模式適用于基本以外的所有 Sku。
 
 ## <a name="part-1---create-and-configure-active-active-vpn-gateways"></a><a name ="aagateway"></a>第 1 部分 - 建立並設定主動-主動 VPN 閘道
 以下步驟會將您的 Azure VPN 閘道設定為主動-主動模式。 主動-主動和作用中-待命閘道之間的重要差異：
@@ -46,13 +46,13 @@ ms.locfileid: "87419898"
 其他屬性都與非主動-主動閘道相同。 
 
 ### <a name="before-you-begin"></a>開始之前
-* 請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用[MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* 請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用 [MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) 或註冊 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 * 如果您不想要在瀏覽器中使用 CloudShell，您必須安裝 Azure Resource Manager PowerShell Cmdlet。 如需安裝 PowerShell Cmdlet 的詳細資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/)。
 
 ### <a name="step-1---create-and-configure-vnet1"></a>步驟 1 - 建立及設定 VNet1
 #### <a name="1-declare-your-variables"></a>1. 宣告變數
 
-對於此練習，我們一開始先宣告我們的變數。 如果您使用 [試試看] Cloud Shell，將會自動連接到您的帳戶。 如果您在本機使用 PowerShell，請使用下列範例來協助您連接：
+對於此練習，我們一開始先宣告我們的變數。 如果您使用 [試試看] Cloud Shell，則會自動連接到您的帳戶。 如果您在本機使用 PowerShell，請使用下列範例來協助您連接：
 
 ```powershell
 Connect-AzAccount
@@ -88,7 +88,7 @@ $Connection152 = "VNet1toSite5_2"
 
 #### <a name="2-create-a-new-resource-group"></a>2. 建立新的資源群組
 
-使用下列範例建立新的資源群組：
+使用下列範例來建立新的資源群組：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name $RG1 -Location $Location1
@@ -200,7 +200,7 @@ $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
 $lng5gw1 = Get-AzLocalNetworkGateway  -Name $LNGName51 -ResourceGroupName $RG5
 ```
 
-#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. 建立 TestVNet1 至 Site5 的連線
+#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. 建立 TestVNet1 至 Site5 的連接
 在此步驟中，您會建立從 TestVNet1 到 Site5_1 的連線，並將 "EnableBGP" 設為 $True。
 
 ```azurepowershell-interactive
@@ -243,7 +243,7 @@ $BGPPeerIP52 = "10.52.255.254"
 New-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP52 -AddressPrefix $LNGPrefix52 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP52
 ```
 
-#### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2. 連接 VNet 閘道和第二個局域網路閘道
+#### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2. 將 VNet 閘道和第二個局域網路閘道連線
 建立從 TestVNet1 至 Site5_2 的連線且 "EnableBGP" 設為 $True
 
 ```azurepowershell-interactive
@@ -351,7 +351,7 @@ $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 $vnet2gw = Get-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2
 ```
 
-#### <a name="2-create-both-connections"></a>2. 建立這兩個連接
+#### <a name="2-create-both-connections"></a>2. 建立兩個連接
 在此步驟中，您將建立從 TestVNet1 到 TestVNet2 的連線，以及從 TestVNet2 到 TestVNet1 的連線。
 
 ```azurepowershell-interactive
@@ -371,7 +371,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 
 ## <a name="update-an-existing-vpn-gateway"></a><a name ="aaupdate"></a>更新現有的 VPN 閘道
 
-當您將作用中-待命閘道變更為主動-主動時，會建立另一個公用 IP 位址，然後新增第二個閘道 IP 設定。 本節可協助您將現有的 Azure VPN 閘道從作用中-待命變更為主動-主動模式，或反向使用 PowerShell。 您也可以在虛擬網路閘道的 [設定 **] 頁面上，變更 [Azure 入口網站**中的閘道。
+當您將作用中-待命閘道變更為主動-主動時，會建立另一個公用 IP 位址，然後新增第二個閘道 IP 設定。 本節可協助您將現有的 Azure VPN 閘道從作用中-待命變更為主動-主動模式，或使用 PowerShell 來進行反向變更。 您也可以在虛擬網路閘道的 [設定 **] 頁面上，變更** Azure 入口網站中的閘道。
 
 ### <a name="change-an-active-standby-gateway-to-an-active-active-gateway"></a>將作用中-待命閘道變更為主動-主動閘道
 
@@ -447,5 +447,5 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -DisableActiveActiveFeatu
 
 此更新最多可能需要 30 到 45 分鐘。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 請參閱 [建立網站的虛擬機器](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 以取得相關步驟。

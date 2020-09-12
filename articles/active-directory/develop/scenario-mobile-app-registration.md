@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 93dcfad34e5881cda52a69ceb99d52d9a905befb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e0f1cc446b6b957b17153dd538922d2b9acd891f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047668"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442729"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>註冊呼叫 web Api 的行動應用程式
 
@@ -30,7 +30,7 @@ ms.locfileid: "89047668"
 
 ### <a name="audience-for-interactive-token-acquisition"></a>取得互動式權杖的物件
 
-大部分的行動應用程式都使用互動式驗證。 如果您的應用程式使用這種形式的驗證，您可以從任何 [帳戶類型](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)登入使用者。
+大部分的行動應用程式都使用互動式驗證。 如果您的應用程式使用這種形式的驗證，您可以從任何 [帳戶類型](quickstart-register-app.md)登入使用者。
 
 ### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>整合式 Windows 驗證、使用者名稱-密碼和 B2C 的物件
 
@@ -89,7 +89,7 @@ ms.locfileid: "89047668"
 
 藉由靜態方式註冊許可權，您可讓系統管理員輕鬆地核准您的應用程式。 建議使用靜態註冊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [程式碼設定](scenario-mobile-app-configuration.md)

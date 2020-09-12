@@ -1,5 +1,5 @@
 ---
-title: 應用程式的服務條款和隱私權聲明 |Azure
+title: 適用于應用程式的服務條款和隱私權聲明 |蔚藍
 description: 了解如何為註冊使用 Azure AD 的應用程式，設定服務條款和隱私權聲明。
 services: active-directory
 author: rwike77
@@ -12,14 +12,14 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73c4931533e3926086320531a0800a572d13808c
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478003"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535767"
 ---
-# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：設定應用程式的服務條款和隱私權聲明
+# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>How to：設定應用程式的服務條款和隱私權聲明
 
 開發人員所建置和管理的應用程式若與 Azure Active Directory (Azure AD) 和 Microsoft 帳戶整合，就應該包含應用程式服務條款和隱私權聲明的連結。 使用者會透過使用者同意體驗看到服務條款和隱私權聲明。 服務條款和隱私權聲明可協助使用者了解應用程式是可信的。 對於面向使用者的多租用戶應用程式 (供多個目錄使用或可供任何 Microsoft 帳戶使用的應用程式) 來說，服務條款和隱私權聲明特別重要。
 
@@ -56,11 +56,11 @@ ms.locfileid: "85478003"
 * [使用 Microsoft Graph API](#msgraph-rest-api)
 
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>使用 Azure 入口網站
-請依照 Azure 入口網站中的步驟執行。
+請在 Azure 入口網站中遵循下列步驟。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)，選取正確的 AzureAD 租使用者 (不是 B2C) 。
 2. 瀏覽至 [應用程式註冊]**** 區段，然後選取應用程式。
-3. 開啟 [**商標**] 窗格。
+3. 開啟 [ **商標** ] 窗格。
 4. 填妥 [服務條款 URL]**** 和 [隱私權聲明 URL]**** 欄位。
 5. 儲存您的變更。
 
@@ -69,6 +69,11 @@ ms.locfileid: "85478003"
 ### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>使用應用程式物件 JSON
 
 如果您想要直接修改應用程式物件 JSON，則可以在 Azure 入口網站或應用程式註冊入口網站中使用資訊清單編輯器，以包含應用程式的服務條款和隱私權聲明連結。
+
+1. 流覽至 [ **應用程式註冊** ] 區段，然後選取您的應用程式。
+2. 開啟 [ **資訊清單** ] 窗格。
+3. Ctrl + F，搜尋 "informationalUrls"。 填寫資訊。
+4. 儲存您的變更。
 
 ```json
     "informationalUrls": { 

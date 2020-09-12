@@ -8,16 +8,16 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3cf14ce3e8ef9b1d783191fe6c01c5e311d57786
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c562708dcf554afc8dfe4acf6b525db1db677f40
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855942"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564897"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 建立 Azure 數位 Twins 的自訂 Sdk
 
-現在，用來與 Azure 數位 Twins Api 互動的唯一已發佈資料平面 SDK 適用于 .NET (c # ) 。 您可以閱讀有關 .NET SDK 和 Api 的一般資訊，請參閱作法 [*：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)。 如果您使用另一種語言，本文將說明如何使用 AutoRest，以您所選的語言產生您自己的資料平面 SDK。
+現在，用來與 Azure 數位 Twins Api 互動的唯一已發佈資料平面 Sdk 適用于 .NET (c # ) 和 JavaScript。 您可以閱讀有關這些 Sdk 的資訊，以及有關 [*如何：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)的 api。 如果您使用另一種語言，本文將說明如何使用 AutoRest，以您所選的語言產生您自己的資料平面 SDK。
 
 >[!NOTE]
 > 您也可以使用 AutoRest 來產生控制平面 SDK （如果您想要的話）。 若要這樣做，請使用 [控制平面 Swagger (OpenAPI) ](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) 檔案（而非資料平面）來完成本文中的步驟。
@@ -57,7 +57,7 @@ AutoRest 支援各種不同的語言程式碼產生器。
 
 本節提供的指示說明如何將 SDK 建立為類別庫，也就是它自己的專案，而且可以包含在其他專案中。 這些步驟依賴 **Visual Studio** (您可以從 [這裡](https://visualstudio.microsoft.com/downloads/) 安裝最新版本) 。
 
-以下是步驟：
+步驟如下：
 
 1. 為類別庫建立新的 Visual Studio 方案
 2. 使用 *ADTApi* 做為專案名稱
@@ -189,7 +189,7 @@ try
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 逐步解說建立用戶端應用程式的步驟，讓您可以在其中使用 SDK：
 * [*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)

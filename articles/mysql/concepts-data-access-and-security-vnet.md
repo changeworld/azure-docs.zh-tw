@@ -6,16 +6,16 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: 371099610da129025f6683630b1824b8466b5aff
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 77980541049740c5f706d54d289472a076103137
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833006"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461896"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>針對適用於 MySQL 的 Azure 資料庫使用虛擬網路服務端點和規則
 
-*虛擬網路規則*是一項防火牆安全性功能，可控制您的適用於 MySQL 的 Azure 資料庫伺服器是否接受從虛擬網路中的特定子網傳送的通訊。 本文說明為何虛擬網路規則功能有時是讓適用於 MySQL 的 Azure 資料庫伺服器安全接受通訊的最佳選項。
+*虛擬網路規則* 是一項防火牆安全性功能，可控制您的適用於 MySQL 的 Azure 資料庫伺服器是否接受從虛擬網路中的特定子網傳送的通訊。 本文說明為何虛擬網路規則功能有時是讓適用於 MySQL 的 Azure 資料庫伺服器安全接受通訊的最佳選項。
 
 若要建立虛擬網路規則，必須先有[虛擬網路][vm-virtual-network-overview] (VNet) 和[虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]可供規則參考。 下圖說明虛擬網路服務端點如何與適用於 MySQL 的 Azure 資料庫搭配運作：
 
@@ -25,7 +25,7 @@ ms.locfileid: "87833006"
 > 如果適用於 MySQL 的 Azure 資料庫是針對「一般用途」和「記憶體最佳化」伺服器來部署的，則此功能可在所有 Azure 區域中使用。
 > 在 VNet 對等互連的案例中，如果流量流經含有服務端點的通用 VNet 閘道，且應流往同儕節點，請建立 ACL/VNet 規則以允許閘道 VNet 中的 Azure 虛擬機器存取適用於 MySQL 的 Azure 資料庫伺服器。
 
-您也可以考慮使用[私人連結](concepts-data-access-security-private-link.md)進行連接。 私人連結會在您的 VNet 中為適用於 MySQL 的 Azure 資料庫伺服器提供私人 IP 位址。
+您也可以考慮使用 [Private Link](concepts-data-access-security-private-link.md) 連接。 Private Link 在您的 VNet 中為適用於 MySQL 的 Azure 資料庫伺服器提供私人 IP 位址。
 
 <a name="anch-terminology-and-description-82f"></a>
 
@@ -92,13 +92,13 @@ RBAC 替代方案：**
 
 「網路管理員」和「資料庫管理員」角色的能力已超過管理虛擬網路規則所需。 只需要其中一部分能力。
 
-您可以選擇在 Azure 中使用 azure[角色型存取控制 (AZURE RBAC) ][rbac-what-is-813s]建立僅具有必要功能子集的單一自訂角色。 您可以使用自訂角色，而不是涉及網路系統管理員或資料庫管理員。如果您將使用者新增至自訂角色，而不是將使用者新增至其他兩個主要系統管理員角色，則安全性暴露的介面區會較低。
+您可以選擇在 Azure 中使用 azure [角色型存取控制 (AZURE RBAC) ][rbac-what-is-813s] 來建立單一自訂角色，該角色只具有必要的功能子集。 您可以使用自訂角色，而不是涉及網路系統管理員或資料庫管理員。如果您將使用者新增至自訂角色，而不是將使用者新增至其他兩個主要系統管理員角色，則安全性暴露的介面區會較低。
 
 > [!NOTE]
 > 在某些案例中，適用於 MySQL 的 Azure 資料庫和 VNet 子網路是位於不同的訂用帳戶。 在這些情況下，您必須確保下列設定：
 > - 兩個訂用帳戶在相同的 Azure Active Directory 租用戶中。
 > - 使用者具備啟動作業的必要權限，例如啟用服務端點、將 VNet 子網路新增至指定的伺服器。
-> - 請確定這兩個訂用帳戶都已註冊**microsoft.dbformysql**資源提供**者。** 如需詳細資訊，請參閱 [resource-manager-registration][resource-manager-portal]
+> - 請確定這兩個訂用帳戶都已註冊 **Microsoft .sql** 和 **microsoft.dbformysql** 資源提供者。 如需詳細資訊，請參閱 [resource-manager-registration][resource-manager-portal]
 
 ## <a name="limitations"></a>限制
 
@@ -112,11 +112,11 @@ RBAC 替代方案：**
 
 - 虛擬網路規則只套用至 Azure Resource Manager 虛擬網路，而不是[傳統部署模型][arm-deployment-model-568f]網路。
 
-- 使用 **Microsoft.Sql** 服務標籤對適用於 MySQL 的 Azure 資料庫開啟虛擬網路服務端點，也會對所有 Azure 資料庫服務啟用端點：適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫、Azure SQL Database，以及 Azure SQL 資料倉儲。
+- 使用 **Microsoft. Sql** 服務標記開啟虛擬網路服務端點以適用於 MySQL 的 Azure 資料庫，也會啟用所有 Azure 資料庫服務的端點：適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫、Azure SQL Database 和 Azure Synapse Analytics 先前的 Sql 資料倉儲 (。
 
 - VNet 服務端點的支援僅適用於一般用途伺服器和記憶體最佳化伺服器。
 
-- 如果在子網中啟用了**Microsoft** ，表示您只想要使用 VNet 規則來連接。 該子網中資源的[非 VNet 防火牆規則](concepts-firewall-rules.md)將無法使用。
+- 如果在子網中啟用了 **sql-dmo** ，則表示您只想要使用 VNet 規則來連接。 該子網中資源的[非 VNet 防火牆規則](concepts-firewall-rules.md)將無法運作。
 
 - 在防火牆上，IP 位址範圍會套用到下列網路項目，但虛擬網路規則不這麼做：
     - [站對站 (S2S) 虛擬私人網路 (VPN)][vpn-gateway-indexmd-608y]
@@ -128,9 +128,9 @@ RBAC 替代方案：**
 
 若要允許從您的線路針對適用於 MySQL 的 Azure 資料庫進行通訊，您必須為線路的公用 IP 位址建立 IP 網路規則。 若要尋找您 ExpressRoute 線路的公用 IP 位址，請使用 Azure 入口網站開啟具有 ExpressRoute 的支援票證。
 
-## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在不開啟 VNET 服務端點的情況下將 VNET 防火牆規則新增至您的伺服器
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在不開啟 VNET 服務端點的情況下將 VNET 防火牆規則新增至伺服器
 
-只是設定 VNet 防火牆規則並不會協助保護伺服器對 VNet 的安全。 您也必須**開啟** VNet 服務端點，安全性才會生效。 當您**開啟**服務端點時，您的 VNet 子網路會停機，直到完成**關閉**到**開啟**的轉換。 特別是大型的 VNet，這會更明顯。 您可以使用 **IgnoreMissingServiceEndpoint** 旗標來減少或排除在轉換期間的停機時間。
+僅設定 VNet 防火牆規則無法協助保護伺服器對 VNet 的安全。 您也必須**開啟** VNet 服務端點，安全性才會生效。 當您**開啟**服務端點時，您的 VNet 子網路會停機，直到完成**關閉**到**開啟**的轉換。 特別是大型的 VNet，這會更明顯。 您可以使用 **IgnoreMissingServiceEndpoint** 旗標來減少或排除在轉換期間的停機時間。
 
 您可以使用 Azure CLI 或入口網站設定 **IgnoreMissingServiceEndpoint** 旗標。
 
@@ -138,7 +138,7 @@ RBAC 替代方案：**
 - [Azure 虛擬網路][vm-virtual-network-overview]
 - [Azure 虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需建立 VNet 規則的文章，請參閱：
 - [使用 Azure 入口網站建立及管理適用於 MySQL 的 Azure 資料庫的 VNet 規則](howto-manage-vnet-using-portal.md)
 - [使用 Azure CLI 建立及管理適用於 MySQL 的 Azure 資料庫的 VNet 規則](howto-manage-vnet-using-cli.md)

@@ -1,6 +1,6 @@
 ---
 title: 教學課程：使用 Azure Functions 管理計算
-description: 如何使用 Azure 函式來管理 Azure Synapse 分析中的 SQL 集區計算。
+description: 如何使用 Azure 函數來管理 Azure Synapse Analytics 中的 SQL 集區計算。
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 60e79ecd4148829c38b237c0e28d60796e84ac01
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 11cb0c30a1a6ed70cca82e494fcec73936975f39
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543651"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442216"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure Functions 來管理 Azure Synapse Analytics SQL 集區中的計算資源
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure Functions 管理 Azure Synapse Analytics SQL 集區中的計算資源
 
-本教學課程使用 Azure Functions 來管理 Azure Synapse Analytics 中 SQL 集區的計算資源。
+本教學課程會使用 Azure Functions 來管理 Azure Synapse Analytics 中 SQL 集區的計算資源。
 
-若要搭配使用 Azure 函數應用程式與 SQL 集區，您必須在與 SQL 集區實例相同的訂用帳戶下，建立具有參與者存取權的[服務主體帳戶](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+若要搭配使用 Azure 函數應用程式與 SQL 集區，您必須在與您的 SQL 集區實例相同的訂用帳戶下，建立具有參與者存取權的 [服務主體帳戶](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 。
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本部署以計時器為基礎的 Scaler
 
@@ -38,7 +38,7 @@ ms.locfileid: "87543651"
 
 一旦取得前述資訊，即可部署此範本：
 
-[![顯示標示為「部署至 Azure」之按鈕的影像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json)
+[![顯示標示為「部署至 Azure」的按鈕影像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json)
 
 部署此範本後，您應會發現三項新資源：免費的 Azure App Service 方案、以耗用量為基礎的函式應用程式方案，以及處理記錄和作業佇列的儲存體帳戶。 繼續閱讀其他各節，以了解如何修改已部署的函式來符合您的需求。
 
@@ -54,7 +54,7 @@ ms.locfileid: "87543651"
 
 3. 目前顯示的值應該為 %ScaleDownTime%** 或 %ScaleUpTime%**。 這些值表示排程是以[應用程式設定](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 中定義的值為基礎。 您現在可以忽略此值，並將排程變更為以後續步驟為基礎的慣用時間。
 
-4. 在 [排程] 區域中，新增時間、您想要的 CRON 運算式，以反映 SQL 資料倉儲相應增加的頻率。
+4. 在 [排程] 區域中，新增您想要的 CRON 運算式時間，以反映您希望 Azure Synapse Analytics 向上擴充的頻率。
 
    ![變更函式排程](./media/manage-compute-with-azure-functions/change-schedule.png)
 
@@ -95,11 +95,11 @@ ms.locfileid: "87543651"
 
 目前範本中只包含兩個調整函式。 使用這些函式，在一天當中，您只能相應減少一次和相應增加一次。 您必須新增另一個觸發程序，才能取得更細微的控制，例如每日相應減少多次或在週末有不同的調整行為。
 
-1. 建立新的空白函式。 選取 [ *+* 函數位置] 附近的按鈕，以顯示 [函式範本] 窗格。
+1. 建立新的空白函式。 選取您的函式 *+* 位置附近的按鈕，以顯示 [函式範本] 窗格。
 
    ![建立新的函式](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. 從 [語言] 選取 [ *JavaScript*]，然後選取 [ *TimerTrigger*]。
+2. 從 [語言] 中，選取 [ *JavaScript*]，然後選取 [ *TimerTrigger*]。
 
    ![建立新的函式](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 
@@ -165,8 +165,8 @@ ms.locfileid: "87543651"
 | Function3 | 0 0 23 * * 5   | `var operation = {"operationType": "PauseDw"}` |
 | Function4 | 0 0 7 * * 0    | `var operation = {"operationType": "ResumeDw"}` |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入了解[計時器觸發程序](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Azure Functions。
 
-簽出 SQL 集區[範例存放庫](https://github.com/Microsoft/sql-data-warehouse-samples)。
+簽出 SQL 集區 [範例存放庫](https://github.com/Microsoft/sql-data-warehouse-samples)。

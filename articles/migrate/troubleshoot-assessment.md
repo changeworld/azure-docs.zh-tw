@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afc7e6c1ed41661c835a811a7cbcaa6f7771328e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020349"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645638"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評量/相依性視覺效果疑難排解
 
@@ -147,7 +147,8 @@ Azure Migrate 伺服器評量目前只會考慮 Windows 機器的作業系統授
 
 ## <a name="dependency-visualization-in-azure-government"></a>Azure Government 中的相依性視覺效果
 
-Azure Migrate 依存于相依性視覺效果功能的服務對應。 因為 Azure Government 目前無法使用服務對應，所以 Azure Government 中無法使用此功能。
+Azure Government 不支援以代理程式為基礎的相依性分析。 請使用無代理程式相依性分析。
+
 
 ## <a name="dependencies-dont-show-after-agent-install"></a>代理程式安裝後不會顯示相依性
 
@@ -160,7 +161,7 @@ Azure Migrate 依存于相依性視覺效果功能的服務對應。 因為 Azur
 
     ![MMA 狀態](./media/troubleshoot-assessment/mma-properties.png)
 
-針對 Linux Vm，請確定 MMA 的安裝命令和相依性代理程式都已成功。
+針對 Linux Vm，請確定 MMA 的安裝命令和相依性代理程式都已成功。 請參閱 [這裡](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#post-installation-issues)的疑難排解指引。
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
@@ -181,7 +182,6 @@ Azure Migrate 依存于相依性視覺效果功能的服務對應。 因為 Azur
 ## <a name="machines-show-install-agent"></a>機器會顯示「安裝代理程式」
 
 將啟用相依性視覺效果的機器遷移至 Azure 之後，機器可能會顯示「安裝代理程式」動作，而不是「查看相依性」，因為下列行為：
-
 
 - 遷移至 Azure 後，會關閉內部部署機器，且對等的 Vm 會在 Azure 中啟動。 這些機器會取得不同的 MAC 位址。
 - 根據您是否保留內部部署 IP 位址，電腦可能也會有不同的 IP 位址。
@@ -222,6 +222,6 @@ Azure Migrate 目前支援在「美國東部」、「東南亞」和「西歐」
 - 針對 Hyper-v Vm，系統會從 Hyper-v 主機收集作業系統資料
 - 若為實體伺服器，則會從伺服器提取。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [建立](how-to-create-assessment.md) 或 [自訂](how-to-modify-assessment.md) 評量。

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a6e603ad5698e7a6a57799def8a0f2de28e0cada
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 8ad22abdf17c68c93a6189db839fe357e7acc91e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144884"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650834"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>設定 Azure Machine Learning 的開發環境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -136,7 +136,7 @@ Azure Machine Learning SDK 適用於 Ubuntu 或 Windows版本的 DSVM。 但如�
 
 ## <a name="local-computer"></a><a id="local"></a>本機電腦
 
-當您使用本機電腦 (也可能是遠端虛擬機器) 時，請建立 Anaconda 環境並安裝 SDK。 以下為範例：
+當您使用本機電腦 (也可能是遠端虛擬機器) 時，請建立 Anaconda 環境並安裝 SDK。 以下是範例：
 
 1. 如果您還沒有 Python 3.7 版本，請下載並安裝 [Anaconda](https://www.anaconda.com/distribution/#download-section) () 。
 
@@ -185,7 +185,7 @@ Azure Machine Learning SDK 適用於 Ubuntu 或 Windows版本的 DSVM。 但如�
    >
    >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
-   安裝 SDK 需要幾分鐘的時間。 如需安裝選項的詳細資訊，請參閱 [安裝指南](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+   安裝 SDK 需要幾分鐘的時間。 如需安裝選項的詳細資訊，請參閱 [安裝指南](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
 
 1. 為您的機器學習實驗安裝其他套件。
 
@@ -361,7 +361,7 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 
 您可以透過三種方式建立組態檔：
 
-* **使用  [ws.write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**：寫入檔案的 *config.js* 。 此檔案包含您工作區的組態資訊。 您可以將此 *config.json* 下載或複製到其他開發環境。
+* **使用  [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)**：寫入檔案的 *config.js* 。 此檔案包含您工作區的組態資訊。 您可以將此 *config.json* 下載或複製到其他開發環境。
 
 * **下載檔案**：在[Azure 入口網站](https://ms.portal.azure.com)中，從工作區的 [**總覽**] 區段中選取 [**下載 config.js** 。
 
@@ -389,4 +389,4 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 ## <a name="next-steps"></a>接下來的步驟
 
 - 使用 MNIST 資料集在 Azure Machine Learning 上[定型模型](tutorial-train-models-with-aml.md)
-- 檢視[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) \(英文\) 參考
+- 檢視[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) \(英文\) 參考

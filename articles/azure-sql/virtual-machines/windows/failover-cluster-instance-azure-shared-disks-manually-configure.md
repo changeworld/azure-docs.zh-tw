@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: ffb739affac68898f6ed5ff1d972d3fd4a70df2f
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 8333de5b0139323b352d43a9259bde9d3b514fbe
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055255"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611799"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有 Azure 共用磁片 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -217,10 +217,9 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="limitations"></a>限制
 
-- 僅支援 Windows Server 2019 上的 SQL Server 2019。 
 - 只支援以 [輕量管理模式](sql-vm-resource-provider-register.md#management-modes) 向 SQL VM 資源提供者註冊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您尚未這麼做，請使用 [虛擬網路名稱和 Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md) 或 [分散式網路名稱（ (DNN) ](hadr-distributed-network-name-dnn-configure.md)）設定 FCI 的連線。 
 

@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0bd15da523281a52d36c9ed1336244aa21eb48cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8db19b209ddefebd4a297f18fb9b178fcf40f21
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206694"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89457901"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Synapse SQL 集區的開發最佳做法
 
@@ -122,6 +122,6 @@ SQL 集區可以設定為自動偵測資料行並建立統計資料。  最佳�
 
 [Microsoft 問與答問題](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)頁面，可讓您將問題張貼至其他使用者和 Azure Synapse Analytics 產品群組。  我們會主動監看這個論壇，以確保您的問題有其他使用者或是我們回答。  
 
-如果您比較想在 Stack Overflow上詢問您的問題，我們也有 [Azure SQL 資料倉儲 Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-sqldw)。
+如果您想要在 Stack Overflow 上詢問您的問題，我們也有 [Azure Synapse Analytics Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-sqldw)。
 
 使用 [Azure Synapse Analytics 意見反應](https://feedback.azure.com/forums/307516-sql-data-warehouse)頁面來提出功能要求。  加入您的要求或票選其他要求確實可協助我們決定功能的優先順序。

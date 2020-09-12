@@ -1,17 +1,17 @@
 ---
-title: Azure Kubernetes Service (AKS) 上的 Hyperledger Fabric 聯盟
+title: 在 Azure Kubernetes Service 上部署 Hyperledger Fabric 聯盟
 description: 如何在 Azure Kubernetes Service 上部署和設定 Hyperledger Fabric 聯盟網路
 ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: d23a0120aafb4dc3e6952b40959a20f9a3456614
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226860"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651563"
 ---
-# <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上的 Hyperledger Fabric 聯盟
+# <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>在 Azure Kubernetes Service 上部署 Hyperledger Fabric 聯盟
 
 您可以使用 Azure Kubernetes Service (AKS) 範本上的 Hyperledger 網狀架構，在 Azure 上部署和設定 Hyperledger 網狀架構聯盟網路。
 
@@ -334,7 +334,7 @@ CHANNEL_NAME=<channelName>
 ```
 此命令會在環境變數中設定之對等組織的所有對等節點上安裝鏈碼 `ORGNAME` 。 如果有兩個或多個對等組織在您的通道中，而您想要在所有電腦上安裝鏈碼，請為每個對等組織分別執行此命令。  
 
-請遵循下列步驟：  
+遵循這些步驟：  
 
 1.  `ORGNAME`根據設定和 `USER_IDENTITY` `peerOrg1` 執行 `./azhlf chaincode install` 命令。  
 2.  `ORGNAME`根據設定和 `USER_IDENTITY` `peerOrg2` 執行 `./azhlf chaincode install` 命令。  
@@ -359,7 +359,7 @@ CHANNEL_NAME=<channelName>
 ```
 
 `<collectionConfigJSONFilePath>`元件是 JSON 檔案的路徑，其中包含為私用資料鏈碼具現化所定義的集合。 您可以在下列路徑找到相對於 *azhlfTool* 目錄的範例集合設定 JSON 檔案： `./samples/chaincode/src/private_marbles/collections_config.json` 。
-以 `<transientArgs>` 字串格式傳遞有效的 JSON。 Escape 任何特殊字元。 例如：`'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
+以 `<transientArgs>` 字串格式傳遞有效的 JSON。 Escape 任何特殊字元。 例如： `'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
 
 > [!NOTE]
 > 從通道中的任何一個對等組織執行一次命令。 將交易成功提交至排序者之後，排序者會將此交易散發給通道中的所有對等組織。 然後，鏈碼會在通道中所有對等組織上的所有對等節點上具現化。  
@@ -385,7 +385,7 @@ CHANNEL_NAME=<channelName>
 ```bash
 ./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
 ```
-簽署對等是安裝鏈碼，並呼叫以執行交易的對等。 您必須將設定 `<endorsingPeers>` 為包含來自目前對等組織的對等節點名稱。 列出指定之鏈碼和頻道組合（以空格分隔）的簽署對等。 例如：`-p "peer1" "peer3"`。
+簽署對等是安裝鏈碼，並呼叫以執行交易的對等。 您必須將設定 `<endorsingPeers>` 為包含來自目前對等組織的對等節點名稱。 列出指定之鏈碼和頻道組合（以空格分隔）的簽署對等。 例如： `-p "peer1" "peer3"` 。
 
 如果您使用 *azhlfTool* 來安裝鏈碼，請將任何對等節點名稱做為值傳遞給簽署對等引數。 鏈碼會安裝在該組織的每個對等節點上。 
 

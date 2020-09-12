@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 18c7e5b3a1401540d7a94186fda647d413d562c0
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 44fe71f575a32ccc1a687bc87793cb6a8b6508a9
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723838"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650630"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>在 Azure ML 定型回合中啟用記錄
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,17 +37,17 @@ Azure Machine Learning Python SDK 可讓您使用預設的 Python 記錄套件�
 
 ## <a name="data-types"></a>資料類型
 
-您可以記錄多個資料類型，包括純量值、清單、資料表、影像、目錄等等。 如需詳細資訊，以及適用于不同資料類型的 Python 程式碼範例，請參閱 [執行類別參考頁面](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)。
+您可以記錄多個資料類型，包括純量值、清單、資料表、影像、目錄等等。 如需詳細資訊，以及適用于不同資料類型的 Python 程式碼範例，請參閱 [執行類別參考頁面](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true)。
 
 ## <a name="interactive-logging-session"></a>互動式記錄會話
 
-互動式記錄會話通常用於筆記本環境。 方法 [實驗。 start_logging ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) 會啟動互動式記錄會話。 在會話期間記錄的任何計量都會新增至實驗中的執行記錄。 方法 [執行。完成 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) 結束會話，並將執行標示為已完成。
+互動式記錄會話通常用於筆記本環境。 方法 [實驗。 start_logging ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) 會啟動互動式記錄會話。 在會話期間記錄的任何計量都會新增至實驗中的執行記錄。 方法 [執行。完成 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) 結束會話，並將執行標示為已完成。
 
 ## <a name="scriptrunconfig-logs"></a>ScriptRunConfig 記錄
 
-在本節中，您將瞭解如何在 ScriptConfig 執行內新增記錄程式碼。 您可以使用 [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) 類別來封裝可重複執行的腳本和環境。 您也可以使用此選項來顯示用於監視的 visual Jupyter 筆記本 widget。
+在本節中，您將瞭解如何在 ScriptConfig 執行內新增記錄程式碼。 您可以使用 [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 類別來封裝可重複執行的腳本和環境。 您也可以使用此選項來顯示用於監視的 visual Jupyter 筆記本 widget。
 
-此範例會對 Alpha 值執行參數比對，並使用 [ ( # B1 方法的 run. log ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#log-name--value--description----) 來捕捉結果。
+此範例會對 Alpha 值執行參數比對，並使用 [ ( # B1 方法的 run. log ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truelog-name--value--description----) 來捕捉結果。
 
 1. 建立包含記錄邏輯的定型腳本 `train.py` 。
 

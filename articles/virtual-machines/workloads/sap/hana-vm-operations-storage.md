@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2020
+ms.date: 09/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 60947a8138972834f30274715226648d1b2360a1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650463"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440689"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虛擬機器儲存體設定
 
@@ -88,7 +88,7 @@ Azure 寫入加速器是專用於 Azure M 系列 VM 的功能。 如同名稱所
 **建議：由於 SAP Hana 觀察到的 i/o 模式，因此使用 Azure premium 儲存體的不同磁片區快取應設定如下：**
 
 - **/hana/data** -無快取或讀取快取
-- **/hana/log** - 無快取，但 M 和 Mv2 系列除外，其中寫入加速器可在不需要讀取快取的情況下啟用。 
+- **/hana/log** -無快取-必須啟用 Azure 寫入加速器之 M 和 Mv2 系列 vm 的例外狀況 
 - **/hana/shared**：讀取快取
 - **OS 磁片** -請勿變更 AZURE 在 VM 建立時所設定的預設快取
 
@@ -236,6 +236,10 @@ Ultra 磁碟可讓您定義滿足大小、IOPS 和磁碟輸送量範圍的單一
 
 建議通常會超過本文稍早所述的 SAP 最低需求。 所列建議是 SAP 建議的大小與不同 VM 類型提供的最大儲存體輸送量之間的折衷。
 
+> [!NOTE]
+> Azure Ultra 磁片最少為磁片的每 Gb 容量強制執行 2 IOPS
+
+
 | VM SKU | RAM | 最大 VM I/O<br /> Throughput | /hana/data 磁碟區 | /hana/data I/O 輸送量 | /hana/data IOPS | /hana/log 磁碟區 | /hana/log I/O 輸送量 | /hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | E20ds_v4 | 160 GiB | 480 MB/秒 | 200 GB | 400 MBps | 2,500 | 80 GB | 250 MB | 1,800 |
@@ -249,11 +253,11 @@ Ultra 磁碟可讓您定義滿足大小、IOPS 和磁碟輸送量範圍的單一
 | M64s | 1,000 GiB | 1,000 MB/秒 |  1,200 GB | 600 MBps | 5,000 | 512 GB | 250 MBps  | 2,500 |
 | M64ms | 1,750 GiB | 1,000 MB/秒 | 2,100 GB | 600 MBps | 5,000 | 512 GB | 250 MBps  | 2,500 |
 | M128s | 2,000 GiB | 2,000 MB/秒 |2,400 GB | 750 MBps | 7,000 | 512 GB | 250 MBps  | 2,500 | 
-| M128ms | 3,800 GiB | 2,000 MB/秒 | 4,800 GB | 750 MBps |7,000 | 512 GB | 250 MBps  | 2,500 | 
+| M128ms | 3,800 GiB | 2,000 MB/秒 | 4,800 GB | 750 MBps |9,600 | 512 GB | 250 MBps  | 2,500 | 
 | M208s_v2 | 2,850 GiB | 1,000 MB/秒 | 3,500 GB | 750 MBps | 7,000 | 512 GB | 250 MBps  | 2,500 | 
-| M208ms_v2 | 5,700 GiB | 1,000 MB/秒 | 7,200 GB | 750 MBps | 7,000 | 512 GB | 250 MBps  | 2,500 | 
-| M416s_v2 | 5,700 GiB | 2,000 MB/秒 | 7,200 GB | 1,000 MBps | 9,000 | 512 GB | 400 MBps  | 4,000 | 
-| M416ms_v2 | 11,400 GiB | 2,000 MB/秒 | 14,400 GB | 1,500 MBps | 9,000 | 512 GB | 400 MBps  | 4,000 |   
+| M208ms_v2 | 5,700 GiB | 1,000 MB/秒 | 7,200 GB | 750 MBps | 14400 | 512 GB | 250 MBps  | 2,500 | 
+| M416s_v2 | 5,700 GiB | 2,000 MB/秒 | 7,200 GB | 1,000 MBps | 14400 | 512 GB | 400 MBps  | 4,000 | 
+| M416ms_v2 | 11,400 GiB | 2,000 MB/秒 | 14,400 GB | 1,500 MBps | 28800 | 512 GB | 400 MBps  | 4,000 |   
 
 **列出的值應視為一個起點，而且需要針對真正的需求進行評估。** Azure Ultra 磁碟的優點是可以調整 IOPS 和輸送量的值，而不需要關閉 VM 或停止套用至系統的工作負載。   
 

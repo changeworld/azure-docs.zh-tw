@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d7502414f6476cafcc85bbefd28a4ec463f62099
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: fd58adf9e845e296725131da96c3319a72895cb8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751693"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645703"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "88751693"
 
 - Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 - 模型。 如果您沒有定型的模型，您可以使用 [本教學](https://aka.ms/azml-deploy-cloud)課程中提供的模型和相依性檔案。
-- [適用于 Python 的 Azure Machine Learning 軟體發展工具組 (SDK) ](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
+- [適用于 Python 的 Azure Machine Learning 軟體發展工具組 (SDK) ](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)。
 
 ---
 
@@ -70,7 +70,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config(path=".file-path/ws_config.json")
 ```
 
-如需使用 SDK 連線至工作區的詳細資訊，請參閱 [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) 檔。
+如需使用 SDK 連線至工作區的詳細資訊，請參閱 [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#&preserve-view=trueworkspace) 檔。
 
 
 ---
@@ -123,7 +123,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
 ### <a name="register-a-model-from-an-azure-ml-training-run"></a>從 Azure ML 訓練回合註冊模型
 
-  當您使用 SDK 來定型模型時，您可以根據定型模型的方式，接收 [執行](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) 物件或 [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) 物件。 每個物件都可以用來註冊實驗執行所建立的模型。
+  當您使用 SDK 來定型模型時，您可以根據定型模型的方式，接收 [執行](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true) 物件或 [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) 物件。 每個物件都可以用來註冊實驗執行所建立的模型。
 
   + 從物件註冊模型 `azureml.core.Run` ：
  
@@ -134,7 +134,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    `model_path`參數會參考模型的雲端位置。 在此範例中，會使用單一檔案的路徑。 若要在模型註冊中包含多個檔案，請將設定 `model_path` 為包含檔案的資料夾路徑。 如需詳細資訊，請參閱 [執行. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) 檔。
+    `model_path`參數會參考模型的雲端位置。 在此範例中，會使用單一檔案的路徑。 若要在模型註冊中包含多個檔案，請將設定 `model_path` 為包含檔案的資料夾路徑。 如需詳細資訊，請參閱 [執行. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) 檔。
 
   + 從物件註冊模型 `azureml.train.automl.run.AutoMLRun` ：
 
@@ -177,7 +177,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
   若要在模型註冊中包含多個檔案，請將設定 `model_path` 為包含檔案的資料夾路徑。
 
-如需詳細資訊，請參閱 [模型類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)的檔。
+如需詳細資訊，請參閱 [模型類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true)的檔。
 
 如需使用在 Azure Machine Learning 之外定型之模型的詳細資訊，請參閱 [如何部署現有的模型](how-to-deploy-existing-model.md)。
 
@@ -261,7 +261,7 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
 
 如需環境的詳細資訊，請參閱 [建立和管理用於定型和部署的環境](how-to-use-environments.md)。
 
-如需有關推斷設定的詳細資訊，請參閱 [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) 類別檔。
+如需有關推斷設定的詳細資訊，請參閱 [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) 類別檔。
 
 ---
 
@@ -338,7 +338,7 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-如需詳細資訊，請參閱 [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py)、 [Model. 部署 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)和 [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py)的檔。
+如需詳細資訊，請參閱 [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true)、 [Model. 部署 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)和 [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py&preserve-view=true)的檔。
 
 ---
 
@@ -353,7 +353,7 @@ print(service.state)
 | 過渡 | 服務正在進行部署。 | 否 |
 | Unhealthy | 服務已部署，但目前無法連線。  | 否 |
 | 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | 否 |
-| 失敗 | 因為發生錯誤或損毀，所以服務無法部署。 | 是 |
+| Failed | 因為發生錯誤或損毀，所以服務無法部署。 | 是 |
 | Healthy | 服務狀況良好，且端點可供使用。 | 是 |
 
 
@@ -380,12 +380,12 @@ Azure Machine Learning 計算目標是由 Azure Machine Learning 所建立和管
 若要刪除已部署的 Web 服務，請使用 `service.delete()`。
 若要刪除已註冊的模型，請使用 `model.delete()`。
 
-如需詳細資訊，請參閱 WebService 的檔集 [。刪除 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) 和 [Model. 刪除 ( # B3 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)。
+如需詳細資訊，請參閱 WebService 的檔集 [。刪除 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#&preserve-view=truedelete--) 和 [Model. 刪除 ( # B3 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedelete--)。
 
 ---
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [針對失敗的部署進行疑難排解](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)

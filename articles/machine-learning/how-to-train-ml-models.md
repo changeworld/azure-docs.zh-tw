@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 70e965e26d3b82cdc63a3c0e147919b8b40585af
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 69987210d69855b0fcaa676e406ec6a1c02a4d85
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146584"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650603"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>藉由估算器使用 Azure Machine Learning 將模型定型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "89146584"
 使用 Azure Machine Learning，您可以輕鬆地將您的定型指令碼提交到[各種計算目標](how-to-set-up-training-targets.md)，並使用 [RunConfiguration 物件](how-to-set-up-training-targets.md#whats-a-run-configuration)和 [ScriptRunConfig 物件](how-to-set-up-training-targets.md#submit)。 這種模式可提升彈性並達到最大的控制度。
 
 
-估算器類別可讓您更輕鬆地使用深度學習和增強式學習來將模型定型。 其提供了高階的抽象概念，可讓您輕鬆地建構回合組態。 您可以建立和使用泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)，以在任何所選計算目標 (無論是您的本機電腦、Azure 中的單一 VM 還是 Azure 中的 GPU 叢集) 上使用您選擇的任何學習架構 (例如 scikit-learn) 來提交定型指令碼。 針對 PyTorch、TensorFlow、Chainer 和增強式學習工作，Azure Machine Learning 也提供各自的 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) 和[增強式學習](how-to-use-reinforcement-learning.md)估算器，以簡化這些架構的使用方式。
+估算器類別可讓您更輕鬆地使用深度學習和增強式學習來將模型定型。 其提供了高階的抽象概念，可讓您輕鬆地建構回合組態。 您可以建立和使用泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true)，以在任何所選計算目標 (無論是您的本機電腦、Azure 中的單一 VM 還是 Azure 中的 GPU 叢集) 上使用您選擇的任何學習架構 (例如 scikit-learn) 來提交定型指令碼。 針對 PyTorch、TensorFlow、Chainer 和增強式學習工作，Azure Machine Learning 也提供各自的 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true)、[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true) 和[增強式學習](how-to-use-reinforcement-learning.md)估算器，以簡化這些架構的使用方式。
 
 ## <a name="train-with-an-estimator"></a>使用預估器來定型
 
@@ -116,7 +116,7 @@ estimator = Estimator(source_directory='./my-keras-proj',
 `custom_docker_image`| 您要使用的映像名稱。 只提供公用 Docker 存放庫 (在此案例中是 Docker Hub) 中可用的映像。 若要使用來自私人 Docker 存放庫的映像，請改為使用建構函式的 `environment_definition` 參數。| `None`
 `node_count`| 用於定型作業的節點數目。 | `1`
 `process_count_per_node`| 要在每個節點上執行的處理序 (或「背景工作角色」) 數目。 在此案例中，您會使用每個節點上可用的 `2` 個 GPU。| `1`
-`distributed_training`| [MPIConfiguration ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) 物件，可使用 MPI 後端來啟動分散式定型。  | `None`
+`distributed_training`| [MPIConfiguration ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) 物件，可使用 MPI 後端來啟動分散式定型。  | `None`
 
 
 最後，提交定型作業：
@@ -129,7 +129,7 @@ print(run.get_portal_url())
 
 將模型定型之後，您可以將其儲存並註冊到您的工作區。 註冊模型可讓您在工作區中儲存模型並設定其版本，以簡化[模型管理和部署](concept-model-management-and-deployment.md)。
 
-執行下列程式碼將會向您的工作區註冊模型，並讓其可在遠端計算內容或部署指令碼中依名稱來加以參考。 如需詳細資訊和其他參數，請參閱參考文件中的 [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)。
+執行下列程式碼將會向您的工作區註冊模型，並讓其可在遠端計算內容或部署指令碼中依名稱來加以參考。 如需詳細資訊和其他參數，請參閱參考文件中的 [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)。
 
 ```python
 model = run.register_model(model_name='sklearn-sample', model_path=None)

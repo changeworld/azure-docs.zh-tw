@@ -6,18 +6,18 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 0d0f3a45842638915947f5df04e06e2c81a7f5f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b27ff631ce13d70d15a6fd2b6dd5ad5bccaf5450
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081180"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442066"
 ---
-# <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>如何在 Azure 資料目錄中分析資料源的資料
+# <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>如何在 Azure 資料目錄中分析資料源
 
 ## <a name="introduction"></a>簡介
 
-**Microsoft Azure 資料目錄** 是完全受控的雲端服務，可作為企業資料來源的註冊系統和探索系統。 換句話說， **Azure 資料目錄**的功能就是協助人們探索、瞭解和使用資料來源，並協助組織從現有的資料獲得更多價值。 當資料來源向 **Azure 資料目錄**註冊之後，該服務會複製其中繼資料並建立索引，但不僅止於此。
+**Microsoft Azure 資料目錄** 是完全受控的雲端服務，可作為企業資料來源的註冊系統和探索系統。 換句話說， **Azure 資料目錄** 是為了説明人們探索、瞭解和使用資料來源，以及協助組織從現有的資料中獲得更多價值。 當資料來源向 **Azure 資料目錄**註冊之後，該服務會複製其中繼資料並建立索引，但不僅止於此。
 
 **Azure 資料目錄**的**資料分析**功能會檢查目錄中所支援資料來源的資料，並收集關於該資料的統計資料和資訊。 想要包含資料資產的設定檔很容易。 當您註冊資料資產時，請選擇資料來源註冊工具中的 [包含資料設定檔] **** 。
 
@@ -29,7 +29,7 @@ ms.locfileid: "87081180"
 
 下列資料來源都支援資料分析︰
 
-* SQL Server (包括 Azure SQL DB 和 Azure SQL 資料倉儲) 資料表和檢視
+* SQL Server (包含 Azure SQL DB 和 Azure Synapse Analytics) 資料表和視圖
 * Oracle 資料表和檢視
 * Teradata 資料表和檢視
 * Hive 資料表
@@ -84,7 +84,7 @@ ms.locfileid: "87081180"
 * 具有 NULL 值的資料列數目
 * 資料行的最小值、最大值、平均值和標準差值
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 資料分析可提供關於註冊資料資產的統計資料和資訊，以協助您判斷資料是否適合用來解決商務問題。 加上註解和記載資料來源後，資料設定檔可以讓使用者更深入了解資料。
 

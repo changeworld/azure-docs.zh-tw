@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651721"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650695"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作負載：規劃和部署檢查清單
 
@@ -213,7 +213,7 @@ ms.locfileid: "88651721"
 12. 當工作負載適用時，請記錄 Azure 中系統的資源耗用量。 將此耗用量與您舊平臺的記錄進行比較。 如果您發現有很大的差異，請調整未來部署的 VM 大小。 請記住，當您縮減、儲存和 Vm 的網路頻寬也會降低時。
     - [Azure 中的 Windows 虛擬機器大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     - [Azure 中的 Linux 虛擬機器大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
-13. 使用系統複製功能和流程進行實驗。 目標是要讓您輕鬆地複製開發系統或測試系統，讓專案小組能夠快速取得新系統。 請考慮針對這些工作使用 [SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) 。
+13. 使用系統複製功能和流程進行實驗。 目標是要讓您輕鬆地複製開發系統或測試系統，讓專案小組能夠快速取得新系統。 
 14. 將您小組的 Azure 角色型存取權、許可權和流程優化並加以調整，以確定您有分開的職責。 同時，請確定所有小組都可以在 Azure 基礎結構中執行其工作。
 15. 練習、測試及記錄高可用性和嚴重損壞修復程式，讓您的員工能夠執行這些工作。 找出缺點，並調整您要整合到部署中的新 Azure 功能。
 
@@ -298,7 +298,7 @@ ms.locfileid: "88651721"
 3. 將您可以關閉系統的時間優化。  
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 請參閱以下文章：
 
 - [SAP NetWeaver 的 Azure 虛擬機器規劃和實作指南](./planning-guide.md)

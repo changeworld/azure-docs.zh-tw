@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: c211c0e5ef0b39f778db7c922fafc735e2411068
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 88f74bcc93d640ec8d4d9014c6f25a6d0d0df680
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930038"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614016"
 ---
 # <a name="write-client-app-authentication-code"></a>撰寫用戶端應用程式驗證碼
 
@@ -34,7 +34,7 @@ ms.locfileid: "88930038"
 ## <a name="authentication-and-client-creation-net-c-sdk"></a>驗證和用戶端建立： .NET (c # ) SDK
 
 首先，請在您的專案中包含下列套件，以使用 .NET SDK 和驗證工具進行此操作說明：
-* `Azure.DigitalTwins.Core` (版本 `1.0.0-preview.2`) 
+* `Azure.DigitalTwins.Core`
 * `Azure.Identity`
 
 根據您選擇的工具，您可以使用 Visual Studio 套件管理員或命令列工具來包含套件 `dotnet` 。 
@@ -197,7 +197,7 @@ export async function login() {
 
 MSAL 有更多選項可供您使用，以執行快取和其他驗證流程等專案。 如需詳細資訊，請參閱 [*Microsoft 驗證程式庫 (MSAL) 的總覽 *](../active-directory/develop/msal-overview.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入瞭解 Azure 數位 Twins 中的安全性運作方式：
 * [*概念： Azure 數位 Twins 解決方案的安全性*](concepts-security.md)

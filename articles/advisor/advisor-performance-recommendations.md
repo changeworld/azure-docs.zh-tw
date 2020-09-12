@@ -3,12 +3,12 @@ title: 使用 Advisor 改善 Azure 應用程式的效能
 description: 使用 Azure Advisor 中的效能建議來改善業務關鍵應用程式的速度和回應能力。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653302"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651583"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure Advisor 來改善 Azure 應用程式的效能
 
@@ -63,6 +63,8 @@ Advisor 會識別沒有最新 [資料表統計資料](../synapse-analytics/sql-d
 
 Advisor 分析可指出連接至 MySQL 伺服器的應用程式可能無法有效率地管理連接。 這種情況可能會導致不必要的資源耗用量和整體的應用程式延遲。 若要改善連線管理，建議您減少短期連線的數目，並排除不必要的閒置連線。 您可以藉由設定伺服器端連接共用器（例如 ProxySQL）來進行這些改進。
 
+## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>將您目前的計算管理 SDK 版本更新為最新版本
+Advisor 會識別具有使用過期計算管理 SDK 版本之作業的訂閱。 這可能會影響工作負載的安全性和效能，因此 Advisor 建議您切換至最新版本的計算管理 SDK。 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>擴大以優化 Azure Synapse Analytics 資料表的快取使用率，以提升查詢效能
 
@@ -165,7 +167,7 @@ Azure Advisor 在過去7天內分析系統記錄，並識別您的叢集是否�
 ## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>藉由將 MySQL 暫存資料表大小調整最佳化來改善效能
 Advisor 分析指出由於臨時表參數設定不足，您的 MySQL 伺服器可能會產生不必要的 i/o 額外負荷。 這可能會導致不必要的磁碟型交易和效能降低。 建議您增加 'tmp_table_size' 和 'max_heap_table_size' 參數值，以減少磁碟型交易的數目。 [深入了解](https://aka.ms/azure_mysql_tmp_table)
 
-## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>在伺服器群組中散發資料，以在節點之間分散工作負載
+## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>分配伺服器群組中的資料以在節點間分配工作負載
 Advisor 會識別未散發資料，但仍留在協調器上的伺服器群組。 根據這一點，Advisor 建議您針對完整超大規模 (Citus) 權益將資料散發至您伺服器群組的背景工作節點。 這會利用伺服器群組中每個節點的資源來改善查詢效能。 [深入了解](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何存取 Advisor 中的效能建議
@@ -174,7 +176,7 @@ Advisor 會識別未散發資料，但仍留在協調器上的伺服器群組。
 
 2.  在 Advisor 儀表板上，選取 [ **效能** ] 索引標籤。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解 Advisor 建議，請參閱：
 

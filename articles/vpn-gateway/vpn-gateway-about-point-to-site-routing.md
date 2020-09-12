@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 03/24/2020
-ms.author: kumud
-ms.openlocfilehash: 54b839170d95918889d1295eb20308688fbfb2a7
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 09/03/2020
+ms.author: cherylmc
+ms.openlocfilehash: a3603c7a4b704327f829588f0fc5827d97288be0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032368"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440808"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>關於點對站 VPN 路由
 
@@ -52,7 +52,7 @@ Azure 目前支援兩種遠端存取通訊協定，即 IKEv2 和 SSTP。 許多�
 
 ## <a name="multiple-peered-vnets"></a><a name="multipeered"></a>多個對等互連的 VNet
 
-在此範例中，點對站 VPN 閘道連線是用於 VNet1。 VNet1 已與 VNet2 對等互連。 VNet2 已與 VNet3 對等互連。 VNet1 已與 VNet4 對等互連。 VNet1 與 VNet3 之間沒有任何直接的對等互連。 VNet1 具有「允許閘道傳輸」，而 VNet2 和 VNet4 已啟用「使用遠端閘道」。
+在此範例中，點對站 VPN 閘道連線是用於 VNet1。 VNet1 已與 VNet2 對等互連。 VNet2 已與 VNet3 對等互連。 VNet1 已與 VNet4 對等互連。 VNet1 與 VNet3 之間沒有任何直接的對等互連。 VNet1 具有 [允許閘道傳輸]，而 VNet2 和 VNet4 已啟用 [使用遠端閘道]。
 
 使用 Windows 的用戶端可以直接存取已對等互連的 VNet，但如果對 VNet 對等互連或網路拓撲進行了任何變更，就必須重新下載 VPN 用戶端。 非 Windows 用戶端可以存取已對等互連的 VNet。 存取權不可轉移且僅限於已直接對等互連的 VNet。
 
@@ -168,7 +168,7 @@ Windows 和非 Windows 用戶端只能存取 VNet1。
 
 Windows 用戶端可以存取 VNet 和分公司 (Site1)，但必須手動將 Site1 的路由新增至用戶端。 非 Windows 用戶端可以存取 VNet，也可以存取內部部署的分公司。
 
-![一個 VNet 和一個分公司 (BGP) ](./media/vpn-gateway-about-point-to-site-routing/6.jpg "一個 VNet 和一個分公司")
+![一個 VNet 和分公司 (BGP) ](./media/vpn-gateway-about-point-to-site-routing/6.jpg "一個 VNet 和一個分公司")
 
 ### <a name="address-space"></a>位址空間
 
@@ -249,6 +249,6 @@ Windows 用戶端可以存取 VNet 和分公司 (Site1)，但必須手動將 Sit
 
 * 非 Windows 用戶端可以存取 VNet1、VNet2、VNet3 及 Site1。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請參閱[使用 Azure 入口網站來建立 P2S VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md) 以開始建立 P2S VPN。

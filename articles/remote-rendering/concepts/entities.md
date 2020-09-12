@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20de83e190a419b95c99c1c1238eb931910feb82
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1c49c7bfaa7714dda902d05537fbe3d8a55d5abe
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020281"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613927"
 ---
 # <a name="entities"></a>實體
 
@@ -21,7 +21,7 @@ ms.locfileid: "89020281"
 
 實體具有由位置、旋轉和調整定義的轉換。 實體本身的沒有任何可觀察的功能。 相反地，行為是透過附加至實體的元件來新增。 比方說，附加 [CutPlaneComponent](../overview/features/cut-planes.md) 會在實體的位置建立切割平面。
 
-實體本身最重要的一點是階層和產生的階層式轉換。 例如，當多個實體附加為共用父實體的子系時，可以藉由變更父實體的轉換，來移動、旋轉和調整所有實體。
+實體本身最重要的一點是階層和產生的階層式轉換。 例如，當多個實體附加為共用父實體的子系時，可以藉由變更父實體的轉換，來移動、旋轉和調整所有實體。 此外，實體的 `enabled` 狀態可以用來關閉階層中完整子圖形之光線轉換的可見度和回應。
 
 實體是由其父系唯一擁有的，這表示當父系使用 `Entity.Destroy()` 終結時，其子系和所有連線的[元件](components.md)都會終結。 因此，從場景中移除模型是藉由在模型的根節點上呼叫 `Destroy` 來完成，並由 `AzureSession.Actions.LoadModelAsync()` 或其 SAS 變體 `AzureSession.Actions.LoadModelFromSASAsync()` 傳回。
 
@@ -95,7 +95,6 @@ Double3 translation = entity->GetPosition();
 Quaternion rotation = entity->GetRotation();
 ```
 
-
 ### <a name="querying-spatial-bounds"></a>查詢空間界限
 
 界限查詢是在完整物件階層上運作的非同步呼叫，會使用一個實體做為根。 請參閱有關[物件界限](object-bounds.md)的專屬章節。
@@ -137,6 +136,13 @@ metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
 ```
 
 即使物件未包含任何中繼資料，查詢也會成功。
+
+## <a name="api-documentation"></a>API 文件
+
+* [C # 實體類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity)
+* [C # RemoteManager. CreateEntity ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
+* [C + + 實體類別](https://docs.microsoft.com/cpp/api/remote-rendering/entity)
+* [C + + RemoteManager：： CreateEntity ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createentity)
 
 ## <a name="next-steps"></a>後續步驟
 

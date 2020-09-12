@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e5862daa21f8bf0075bb1dee567cbe887ec32d72
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6d77855f095c59b47156af735f4581076ce5a09c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653268"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611632"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上具有 SQL Server 的容錯移轉叢集實例
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,7 +40,7 @@ Azure Vm 上的 SQL Server 會使用 Windows Server 容錯移轉叢集 (WSFC) �
 若要深入瞭解，請參閱 [Azure 中 SQL Server vm 的仲裁最佳做法](hadr-cluster-best-practices.md#quorum)。 
 
 
-## <a name="storage"></a>存放裝置
+## <a name="storage"></a>儲存體
 
 在傳統的內部部署叢集環境中，Windows 容錯移轉叢集會使用存放區域網路 (SAN) ，而這兩個節點都可以用來作為共用存放裝置。 SQL Server 檔案裝載于共用儲存區，而且只有作用中的節點可以一次存取檔案。 
 
@@ -66,7 +66,7 @@ Azure Vm 上的 SQL Server 提供各種選項，作為部署 SQL Server 容錯�
 **優點**： 
 - 適用于想要遷移至 Azure 的應用程式，同時保持其高可用性和嚴重損壞修復 (HADR) 架構。 
 - 可將叢集應用程式遷移至 Azure 的方式，因為 scsi 持續保留 (SCSI PR) 支援。 
-- 支援所有 SQL Server 版本的共用 Azure 進階 SSD，以及 SQL Server 2019 的共用 Azure Ultra 磁碟儲存體。 
+- 支援共用的 Azure 進階 SSD 和 Azure Ultra 磁片儲存體。
 - 可以使用單一共用磁片或等量多個共用磁片來建立共用儲存集區。 
 - 支援 Filestream。
 
@@ -153,16 +153,17 @@ Azure Vm 上的 SQL Server 提供各種選項，作為部署 SQL Server 容錯�
 
 完整的延伸模組支援自動化備份、修補和進階入口網站管理等功能。 在輕量的管理模式下重新安裝代理程式之後，這些功能將無法用於 SQL Server Vm。
 
-### <a name="msdtc"></a>MSDTC   
-Azure 虛擬機器支援 Windows Server 2019 上的 MSDTC，並在叢集共用磁片區上使用儲存體 (CSV) 和 [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md)。
+### <a name="msdtc"></a>MSDTC 
 
-在 Azure 虛擬機器上，Windows Server 2016 或更早版本不支援 MSDTC，因為：
+Azure 虛擬機器支援 Windows Server 2019 上的 Microsoft Distributed Transaction Coordinator (MSDTC) ，並在叢集共用磁片區 (CSV) 和 [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) ，或在使用 azure 共用磁片的 SQL Server vm 上提供存放裝置。 
 
-- 叢集 MSDTC 資源無法設為使用共用儲存體。 若在 Windows Server 2016 上建立 MSDTC 資源，則即使有儲存體存在，系統也不會顯示任何可用的共用儲存體。 Windows Server 2019 中已修正此問題。
-- 基本負載平衡器不會處理 RPC 連接埠。
+在 Azure 虛擬機器上，Windows Server 2016 或更早版本的叢集共用磁片區不支援 MSDTC，原因如下：
+
+- 叢集 MSDTC 資源無法設為使用共用儲存體。 若在 Windows Server 2016 上建立 MSDTC 資源，即使有儲存體可用，系統也不會顯示任何可用的共用儲存體。 Windows Server 2019 中已修正此問題。
+- 基本負載平衡器不處理 RPC 連接埠。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請參閱叢集設定的 [最佳做法](hadr-cluster-best-practices.md)，然後您可以 [準備 SQL Server VM 以進行 FCI](failover-cluster-instance-prepare-vm.md)。 
 

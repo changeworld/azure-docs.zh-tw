@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Analytics （先前稱為 SQL DW）中的資料倉儲單位（Dwu）
+title: 'Azure Synapse Analytics (先前為 SQL DW 的資料倉儲單位 (Dwu) ) '
 description: 選擇理想的資料倉儲單位 (DWU) 數目以獲得最佳價格與效能，以及如何變更單位數目的建議。
 services: synapse-analytics
 author: mlee3gsd
@@ -11,20 +11,20 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62b969ebde1ab5d52968189a6f0865fdb646f6b2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b0df359a25810f09d530b5f0cca9cabbd485c795
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374128"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461979"
 ---
-# <a name="data-warehouse-units-dwus"></a>資料倉儲單位（Dwu）
+# <a name="data-warehouse-units-dwus"></a>資料倉儲單位 (Dwu) 
 
 選擇理想的資料倉儲單位 (DWU) 數目以獲得最佳價格與效能，以及如何變更單位數目的建議。
 
 ## <a name="what-are-data-warehouse-units"></a>什麼是資料倉儲單位
 
-[SYNAPSE SQL 集](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)區代表所布建的分析資源集合。 分析資源是以 CPU、記憶體和 IO 的組合來定義。
+[SYNAPSE SQL 集](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)區代表正在布建的分析資源集合。 分析資源會定義為 CPU、記憶體和 IO 的組合。
 
 這三個資源會組合成計算規模的單位，我們稱之為「資料倉儲單位 (DWU)」。 DWU 能以抽象而標準化的量值來呈現計算資源與效能。
 
@@ -35,7 +35,7 @@ ms.locfileid: "87374128"
 資料倉儲單位的效能是以這些資料倉儲工作負載計量為根據：
 
 - 標準 SQL 集區查詢可以多快掃描大量資料列，然後執行複雜的匯總。 這個作業是 I/O 和 CPU 密集型作業。
-- SQL 集區可以多快從 Azure 儲存體 Blob 或 Azure Data Lake 內嵌資料。 這個作業是網路和 CPU 密集型作業。
+- SQL 集區可從 Azure 儲存體 Blob 或 Azure Data Lake 內嵌資料的速度。 這個作業是網路和 CPU 密集型作業。
 - [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 命令能以多快的速度複製資料表。 這個作業牽涉到從儲存體讀取資料、跨應用裝置的節點散發資料，以及重新寫入至儲存體。 這個作業是 CPU、IO 和網路密集型作業。
 
 增加 DWU：
@@ -48,10 +48,10 @@ ms.locfileid: "87374128"
 
 服務等級目標 (SLO) 是決定您資料倉儲之成本和效能層級的延展性設定。 Gen2 的服務等級會以計算資料倉儲單位 (cDWU) 來測量，例如 DW2000c。 Gen1 服務等級則會以 DWU 來測量，例如 DW2000。
 
-服務等級目標（SLO）是可決定 SQL 集區成本和效能等級的擴充性設定。 Gen2 SQL 集區的服務等級會以資料倉儲單位 (DWU) 來測量，例如 DW2000c。
+ (SLO) 的服務等級目標是可調整的調整規模設定，可決定您 SQL 集區的成本和效能層級。 Gen2 SQL 集區的服務等級會以資料倉儲單位 (DWU) 來測量，例如 DW2000c。
 
 > [!NOTE]
-> Azure SQL 資料倉儲 Gen2 最近新增了其他調整規模功能，以支援最低 100 計算資料倉儲單位的計算層。 目前在 Gen1 上需要較低計算層的現有資料倉儲，現在可以升級到目前可用的區域中的 Gen2，不需要額外成本。  如果尚不支援您的區域，您仍然可以升級到支援的地區。 如需詳細資訊，請參閱[升級至 Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+> Azure Synapse Analytics Gen2 最近新增了額外的擴充功能，以支援最低 100 cDWU 的計算層級。 目前在 Gen1 上需要較低計算層的現有資料倉儲，現在可以升級到目前可用的區域中的 Gen2，不需要額外成本。  如果尚不支援您的區域，您仍然可以升級到支援的地區。 如需詳細資訊，請參閱[升級至 Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 在 T-SQL 中，SERVICE_OBJECTIVE 設定會決定您 SQL 集區適用的服務等級和效能層級。
 
@@ -100,7 +100,7 @@ SQL 集區是一個擴增系統，可以佈建大量的計算以及查詢相當�
 
 變更資料倉儲單位需要 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中所述的權限。
 
-Azure 內建角色（例如 SQL DB 參與者和 SQL Server 參與者）可以變更 DWU 設定。
+Azure 內建角色 (例如 SQL DB Contributor 和 SQL Server Contributor) 可以變更 DWU 設定。
 
 ## <a name="view-current-dwu-settings"></a>檢視目前的 DWU 設定
 
@@ -129,7 +129,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 2. 在 [調整] 下方，將滑桿向左或右移動來變更 DWU 設定。
 
-3. 按一下 [檔案] 。 確認訊息隨即出現。 按一下 [是] 以確認或 [否] 以取消。
+3. 按一下 [檔案]  。 確認訊息隨即出現。 按一下 [是] 以確認或 [否] 以取消。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -141,7 +141,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-如需詳細資訊，請參閱 [SQL 資料倉儲的 PowerShell Cmdlet](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+如需詳細資訊，請參閱 [Azure Synapse Analytics 的 PowerShell Cmdlet](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -173,7 +173,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-如需更多 REST API 範例，請參閱 [SQL 資料倉儲的 REST API](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+如需詳細 REST API 範例，請參閱 [Azure Synapse Analytics 的 REST api](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 ## <a name="check-status-of-dwu-changes"></a>檢查 DWU 變更的狀態
 

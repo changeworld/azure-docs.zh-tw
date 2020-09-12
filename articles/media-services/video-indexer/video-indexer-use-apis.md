@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 09/03/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 94d5b0cac332cf777f9393104861ee766ef2488c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 85d392323b24df3cede196d2c68f05c9522b2293
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022423"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458292"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>教學課程：使用影片索引器 API
 
@@ -36,7 +36,6 @@ ms.locfileid: "89022423"
    > * 您必須使用註冊影片索引器時所使用的提供者。
    > * 個人 Google 和 Microsoft (Outlook/Live) 帳戶僅能用於試用帳戶。 連線至 Azure 的帳戶需要 Azure AD。
    > * 每個電子郵件只能有一個使用中的帳戶。 如果使用者嘗試在使用 LinkedIn 的 user@gmail.com 登入後，然後使用 Google 的 user@gmail.com 登入，則系統會顯示錯誤頁面，表示使用者已存在。
-
 2. 訂閱。
 
     選取 [[產品](https://api-portal.videoindexer.ai/products)] 索引標籤。然後，選取授權並訂閱。
@@ -46,7 +45,7 @@ ms.locfileid: "89022423"
     > [!NOTE]
     > 系統會自動完成新使用者的授權訂閱。
     
-    當您完成訂閱時，即可看到您的訂用帳戶和主要及次要金鑰。 應妥善保護金鑰。 這些金鑰應只供伺服器程式碼使用。 不應該用於用戶端 (.js、.html 等等)。
+    訂閱之後，您可以在 [**產品**授權] 下找到您的訂用帳戶  ->  ** **。 在 [訂用帳戶] 頁面中，您會找到主要和次要金鑰。 應妥善保護金鑰。 這些金鑰應只供伺服器程式碼使用。 不應該用於用戶端 (.js、.html 等等)。
 
     ![影片索引器開發人員入口網站中的訂用帳戶和金鑰](./media/video-indexer-use-apis/video-indexer-api03.png)
 

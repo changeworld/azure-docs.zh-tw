@@ -12,20 +12,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 791402f5d9648c8d235f8853de1b6c41f8082e1b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1dbd66e34790599020233c5b1249593a4c0472d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018270"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442644"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>設定適用於 SQL Server Management Studio 和 Azure AD 的多重要素驗證
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本文說明如何使用 Azure Active Directory (Azure AD) 使用 () SSMS SQL Server Management Studio MFA (的多重要素驗證。 Azure AD MFA 可在將 SSMS 或 SqlPackage.exe 連接到 [Azure SQL Database](sql-database-paas-overview.md)、 [Azure sql 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md) 和 [Azure Synapse Analytics 先前的 azure sql 資料倉儲 ](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) (時使用。 如需多重要素驗證的總覽，請參閱 [SQL Database 的通用驗證、SQL 受控執行個體和 Azure Synapse (MFA 的 SSMS 支援) ](../database/authentication-mfa-ssms-overview.md)。
+本文說明如何使用 Azure Active Directory (Azure AD) 使用 () SSMS SQL Server Management Studio MFA (的多重要素驗證。 Azure AD MFA 可在連接 SSMS 或 SqlPackage.exe 至 [Azure SQL Database](sql-database-paas-overview.md)、 [Azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md) 和 [Azure Synapse Analytics (先前的 SQL 資料倉儲) ](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)時使用。 如需多重要素驗證的總覽，請參閱 [SQL Database 的通用驗證、SQL 受控執行個體和 Azure Synapse (MFA 的 SSMS 支援) ](../database/authentication-mfa-ssms-overview.md)。
 
 > [!IMPORTANT]
-> Azure SQL Database 中的資料庫、Azure SQL 受控執行個體和 Azure Synapse (之前的 Azure SQL 資料倉儲) 統稱為資料庫的其餘部分，而伺服器則是指裝載 Azure SQL Database 和 Azure Synapse 資料庫的 [伺服器](logical-servers.md) 。
+> Azure SQL Database 中的資料庫、Azure SQL 受控執行個體和 Azure Synapse (之前的 SQL 資料倉儲) 在本文的其餘部分統稱為資料庫，且伺服器是指裝載 Azure SQL Database 和 Azure Synapse 資料庫的 [伺服器](logical-servers.md) 。
 
 ## <a name="configuration-steps"></a>組態步驟
 
@@ -52,7 +52,7 @@ ms.locfileid: "89018270"
 
    ![mfa-tenant-ssms](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
-4. 選取 [ **選項** ]，並在 [ **選項** ] 對話方塊上指定資料庫。  (如果已連線的使用者是 (亦即) 的來賓使用者 joe@outlook.com ，您必須核取此方塊，並新增目前的 AD 功能變數名稱或租使用者識別碼作為選項的一部分。 請參閱 [SQL Database 和 SQL 資料倉儲的通用驗證 (MFA 的 SSMS 支援)](../database/authentication-mfa-ssms-overview.md)。 然後按一下 [ **連接**]。  
+4. 選取 [ **選項** ]，並在 [ **選項** ] 對話方塊上指定資料庫。  (如果已連線的使用者是 (亦即) 的來賓使用者 joe@outlook.com ，您必須核取此方塊，並新增目前的 AD 功能變數名稱或租使用者識別碼作為選項的一部分。 請參閱 [SQL Database 的通用驗證，並 Azure Synapse Analytics (MFA 的 SSMS 支援) ](../database/authentication-mfa-ssms-overview.md)。 然後按一下 [ **連接**]。  
 5. 當 [登入您的帳戶] **** 對話方塊顯示時，請提供您 Azure Active Directory 身分識別的帳戶和密碼。 如果使用者不屬於與 Azure AD 同盟的網域，則不需要密碼。
 
    ![2mfa-sign-in](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  
@@ -74,7 +74,7 @@ ms.locfileid: "89018270"
 
 驗證完成時，SSMS 即會正常連線 (假設認證和防火牆存取有效)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 如需多重要素驗證的總覽，請參閱 [SQL Database 的通用驗證、SQL 受控執行個體和 Azure Synapse (MFA 的 SSMS 支援) ](../database/authentication-mfa-ssms-overview.md)。  
 - 授與對資料庫的其他存取權：[SQL Database 驗證和授權：授與存取權](logins-create-manage.md)  

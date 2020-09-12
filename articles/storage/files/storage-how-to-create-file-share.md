@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 728db85e7b5afab676612d908e2ba420c7582194
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930667"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645577"
 ---
 # <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
 若要建立 Azure 檔案共用，您需要回答三個有關您將如何使用它的問題：
@@ -231,7 +231,7 @@ az storage share create \
 > 您的檔案共用名稱必須是全部小寫。 如需命名檔案共用和檔案的完整詳細資訊，請參閱 [命名和參考共用、目錄、檔案和中繼資料](https://msdn.microsoft.com/library/azure/dn167011.aspx)。
 
 ### <a name="create-a-hot-or-cool-file-share"></a>建立熱或非經常性存取檔案共用
-一般用途 v2 中的檔案共用 ** (GPv2) 儲存體帳戶** 可以包含交易優化、經常性存取或非經常性存取檔案共用 (或) 的混合。 交易優化共用可在所有 Azure 區域中使用，但經常性存取和非經常性存取檔案共用僅適用 [于部分區域](storage-files-planning.md#storage-tiers)。 您可以使用 Azure PowerShell preview 模組或 Azure CLI 來建立熱或非經常性檔案共用。 
+**一般用途 v2 (GPv2) 儲存體帳戶**可以包含交易優化、經常性存取或非經常性存取檔案共用 (或) 的混合。 交易優化共用可在所有 Azure 區域中使用，但經常性存取和非經常性存取檔案共用僅適用 [于部分區域](storage-files-planning.md#storage-tiers)。 您可以使用 Azure PowerShell preview 模組或 Azure CLI 來建立熱或非經常性檔案共用。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 Azure 入口網站尚不支援建立經常性存取和非經常性存取檔案共用，或將現有的交易優化檔案共用移至經常性存取或非經常性存取。 請參閱使用 PowerShell 或 Azure CLI 建立檔案共用的指示。
@@ -291,7 +291,7 @@ az storage share-rm create \
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - [規劃 Azure 檔案儲存體部署](storage-files-planning.md) 或 [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)。 
 - [網路功能總覽](storage-files-networking-overview.md)。
 - 在 [Windows](storage-how-to-use-files-windows.md)、 [macOS](storage-how-to-use-files-mac.md)和 [Linux](storage-how-to-use-files-linux.md)上連接並掛接檔案共用。

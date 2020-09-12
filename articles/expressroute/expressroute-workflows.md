@@ -2,18 +2,18 @@
 title: Azure ExpressRoute：線路設定工作流程
 description: 此頁面會顯示設定 ExpressRoute 線路和對等互連的工作流程
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.author: cherylmc
+ms.author: duau
 ms.custom: contperfq1
-ms.openlocfilehash: 229b7c145fa38443d2bc5f99005078ffa7f77065
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: bb0d3cebd9382ef2c81b217417cfbcb6198b6ebb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814071"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565918"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute 工作流程線路佈建和線路狀態
 
@@ -86,7 +86,7 @@ ms.locfileid: "88814071"
 
 #### <a name="for-microsoft-peering"></a>適用于 Microsoft 對等互連
 
-啟用此以存取 Microsoft 線上服務，例如 Office 365。 此外，透過 Microsoft 對等互連可存取所有 Azure PaaS 服務。 您必須確保使用不同的 proxy/edge 來連線至 Microsoft，而不是您用來連線到網際網路。 ExpressRoute 和網際網路使用相同的邊緣會導致路由不對稱，並造成網路連線中斷。
+啟用此來存取 Microsoft 線上服務，例如 Microsoft 365。 此外，透過 Microsoft 對等互連可存取所有 Azure PaaS 服務。 您必須確保使用不同的 proxy/edge 來連線至 Microsoft，而不是您用來連線到網際網路。 ExpressRoute 和網際網路使用相同的邊緣會導致路由不對稱，並造成網路連線中斷。
 
 * 路徑 1 (/30) 的對等互連子網必須是公用 IP
 * 路徑 2 (/30) 的對等互連子網必須是公用 IP
@@ -171,7 +171,7 @@ BGP 布建狀態會報告是否已在 Microsoft edge 上啟用 BGP 會話。 必
 > 
 > 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 設定 ExpressRoute 連線。
   

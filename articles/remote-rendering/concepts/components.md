@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d957da572bfdd3119dda506ac8f5bb42064d7758
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a488e2499b92b290ad2b55120c3c70a18d45d426
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020298"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613942"
 ---
 # <a name="components"></a>元件
 
@@ -53,7 +53,6 @@ lightComponent->Destroy();
 lightComponent = nullptr;
 ```
 
-
 元件會在建立時連結至實體。 之後就無法將其移動到另一個實體。 當元件的擁有者實體終結時，元件會以 `Component.Destroy()` 明確地刪除或自動刪除。
 
 每個元件類型的執行個體每次只能有一個新增至實體。
@@ -61,6 +60,15 @@ lightComponent = nullptr;
 ## <a name="unity-specific"></a>Unity 特定
 
 Unity 整合有額外的延伸模組功能，可與元件互動。 請參閱 [Unity 遊戲物件和元件](../how-tos/unity/objects-components.md)。
+
+## <a name="api-documentation"></a>API 文件
+
+* [C # ComponentBase](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.componentbase)
+* [C # RemoteManager. CreateComponent ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createcomponent)
+* [C # Entity. FindComponentOfType ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity.findcomponentoftype)
+* [C + + ComponentBase](https://docs.microsoft.com/cpp/api/remote-rendering/componentbase)
+* [C + + RemoteManager：： CreateComponent ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createcomponent)
+* [C + + Entity：： FindComponentOfType ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/entity#findcomponentoftype)
 
 ## <a name="next-steps"></a>後續步驟
 

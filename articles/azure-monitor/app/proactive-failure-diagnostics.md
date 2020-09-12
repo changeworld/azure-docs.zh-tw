@@ -4,12 +4,12 @@ description: 針對 Web 應用程式失敗要求比率的不尋常變化對您�
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: a093d5d6bdb96aa6f0a8a92fea48835971aebe16
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0f93c7b185b292f8d9792a11807b7c99ad846d37
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420204"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565832"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智慧型偵測 - 失敗異常
 當 Web 應用程式的失敗要求比率異常增加時，[Application Insights](./app-insights-overview.md) 會以幾乎即時的方式自動向您發出警示。 它偵測到回報為失敗的 HTTP 要求率異常提高或相依性呼叫。 對於要求，失敗的要求通常會有 400 或更高的回應碼。 為了協助您分級並診斷問題，警示詳細資料中會提供失敗的特性分析與相關應用程式資料。 其中也有 Application Insights 入口網站的連結，以供進一步診斷。 不需要設定該功能，因為它是使用機器學習演算法來預測一般失敗率。
@@ -20,7 +20,7 @@ ms.locfileid: "87420204"
 
 以下是警示範例：
 
-:::image type="content" source="./media/proactive-failure-diagnostics/013.png" alt-text="針對失敗顯示叢集分析的範例智慧型偵測警示。" lightbox="./media/proactive-failure-diagnostics/013.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/013.png" alt-text="顯示失敗的叢集分析範例智慧型偵測警示。" lightbox="./media/proactive-failure-diagnostics/013.png":::
 
 警示詳細資料會告訴您：
 
@@ -58,6 +58,7 @@ ms.locfileid: "87420204"
 * 比較過去 20 分鐘的失敗百分比與過去 40 分鐘和過去七天的比率，以及尋找超過標準差 X 倍的重大偏差。
 * 針對最小失敗百分比使用自動調整限制，此限制會依據要求/相依性的應用程式磁碟區而有所不同。
 * 有邏輯可在 8-24 小時不再偵測到問題時，自動解決所引發警示的監視條件。
+  注意：目前的設計。 當智慧偵測警示解決時，將不會傳送通知或動作。 您可以檢查 Azure 入口網站中是否已解決智慧偵測警示。
 
 ## <a name="configure-alerts"></a>設定警示
 
@@ -72,7 +73,7 @@ ms.locfileid: "87420204"
 
 開啟 [警示] 頁面。 「失敗異常」警示規則已包含在任何您已手動設定的警示中，您可以查看它目前是否處於警示狀態。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="在 [Application Insights 資源] 頁面上，依序按一下 [警示] 圖格和 [管理警示規則]。" lightbox="./media/proactive-failure-diagnostics/021.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="在 [Application Insights 資源] 頁面上，依序按一下 [警示] 磚和 [管理警示規則]。" lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 按一下警示來進行設定。
 
@@ -317,7 +318,7 @@ ms.locfileid: "87420204"
 ## <a name="whats-the-difference-"></a>不同之處在於...
 失敗異常的「智慧型偵測」可以與其他相似但不同的 Application Insights 功能互補。
 
-* 計量[警示](../platform/alerts-log.md)是由您設定，而且可以監視各種不同的度量，例如 CPU 使用量、要求率、頁面載入時間等等。 您可以使用它們來向自己發出警告，例如，如果您需要增加更多資源時。 對比之下，失敗異常的「智慧偵測」只涵蓋小範圍的重要計量 (目前僅包含要求失敗率)，其設計目的是要在 Web 應用程式的要求失敗率與其正常行為相比有所增加時，能以幾乎即時的方式通知您。 不同於計量警示，智慧偵測會自動設定並更新行為中回應變更的臨界值。 智慧偵測也會為您啟動診斷工作，讓您省下解決問題的時間。
+* 計量[警示](../platform/alerts-log.md)是由您所設定，可監視各種計量，例如 CPU 使用量、要求率、頁面載入時間等等。 您可以使用它們來向自己發出警告，例如，如果您需要增加更多資源時。 對比之下，失敗異常的「智慧偵測」只涵蓋小範圍的重要計量 (目前僅包含要求失敗率)，其設計目的是要在 Web 應用程式的要求失敗率與其正常行為相比有所增加時，能以幾乎即時的方式通知您。 不同於計量警示，智慧偵測會自動設定並更新行為中回應變更的臨界值。 智慧偵測也會為您啟動診斷工作，讓您省下解決問題的時間。
 
 * [效能異常的智慧型偵測](proactive-performance-diagnostics.md)也會使用機器智慧在您的度量中探索不尋常的模式，且您不需要進行任何設定。 但與失敗異常的「智慧型偵測」不同，效能異常的「智慧型偵測」目的是要尋找您各種使用方式中未獲得正確處理的片段，例如未獲得特定瀏覽器上特定的頁面正確處理。 此分析會每日執行，且如果發現任何結果，它可能不像警示那麼緊急。 對比之下，失敗異常的分析則是會對傳入的應用程式資料持續執行，且如果伺服器失敗率超出預期，您就會在幾分鐘內收到通知。
 
@@ -332,7 +333,7 @@ ms.locfileid: "87420204"
 
 *那麼，您會查看我的應用程式資料嗎？*
 
-* 不可以。 服務完全是自動的。 只有您會收到通知。 您的資料是 [不公開的](./data-retention-privacy.md)。
+* 否。 服務完全是自動的。 只有您會收到通知。 您的資料是 [不公開的](./data-retention-privacy.md)。
 
 *我是否必須訂閱此警示？*
 

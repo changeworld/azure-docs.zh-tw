@@ -9,12 +9,12 @@ ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5c51bb052948c58d4849c556d0756240d6968ca
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 53f96d8988adfea6e14e3eb349276199afc444d7
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011526"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461913"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 開發 Azure 檔案服務
 
@@ -71,7 +71,7 @@ API | 使用時機 | 注意
 
   此封裝提供一個類別，可讓您在應用程式執行所在的位置剖析設定檔中的連接字串。
 
-您可以使用 NuGet 來取得這兩個封裝。 請遵循下列步驟：
+您可以使用 NuGet 來取得這兩個封裝。 遵循這些步驟：
 
 1. 在 **方案總管**中，以滑鼠右鍵按一下您的專案，然後選擇 [ **管理 NuGet 套件**]。
 1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]。 然後搜尋並選擇 [ **Azure**]，然後選取 [ **安裝**]。
@@ -481,7 +481,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 如果您遇到任何問題，您可以參考 [Windows 中 Azure 檔案儲存體問題的疑難排解](storage-troubleshoot-windows-file-connection-problems.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需 Azure 檔案儲存體的詳細資訊，請參閱下列資源：
 
@@ -504,5 +504,5 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 * [Azure 檔案儲存體，現已正式推出](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Azure 檔案儲存體內部](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-* [Microsoft Azure Files 服務簡介](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [保留與 Microsoft Azure 檔案的連線](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+* [Microsoft Azure Files 服務簡介](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+* [保留與 Microsoft Azure 檔案的連線](https://docs.microsoft.com/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)

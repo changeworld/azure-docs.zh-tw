@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d88873dafd5a3ffac3f0135d877ff407427ffd6f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: afb6adc38fd44366b837119518622dd8931f9096
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179856"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565560"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>關於 Azure Active Directory 的常見問題集
 Azure Active Directory (Azure AD) 是全方位的身分識別即服務 (IDaaS) 解決方案，其涉及範圍橫跨身分識別、存取管理和安全性的所有層面。
@@ -29,21 +29,21 @@ Azure Active Directory (Azure AD) 是全方位的身分識別即服務 (IDaaS) �
 ## <a name="access-azure-and-azure-active-directory"></a>存取 Azure 和 Azure Active Directory
 **問：當我嘗試在 Azure 入口網站中存取 Azure AD 時，為何會收到「找不到訂用帳戶」的訊息？**
 
-**答：** 若要存取 Azure 入口網站，每位使用者都必須擁有 Azure 訂用帳戶的權限。 如果您沒有付費的 Office 365 或 Azure AD 訂用帳戶，您將需要啟用免費 [Azure 帳戶](https://azure.microsoft.com/free/
-)或付費訂用帳戶。
+**答：** 若要存取 Azure 入口網站，每位使用者都必須擁有 Azure 訂用帳戶的權限。 如果您沒有付費的 Microsoft 365 或 Azure AD 訂用帳戶，就必須啟用免費的 [Azure 帳戶](https://azure.microsoft.com/free/
+) 或付費訂用帳戶。
 
 如需詳細資訊，請參閱
 
 * [Azure 訂用帳戶如何與 Azure Active Directory 產生關聯](active-directory-how-subscriptions-associated-directory.md)
 
 ---
-**問：Azure AD、Office 365 和 Azure 之間有何關聯性？**
+**問： Azure AD、Microsoft 365 和 Azure 之間有何關聯性？**
 
-**答：** Azure AD 可提供您所有 Web 服務的常見身分識別和存取功能。 無論您是使用 Office 365、Microsoft Azure、Intune 或其他服務，您都已是使用 Azure AD 協助上述所有服務的登入和存取管理功能。
+**答：** Azure AD 可提供您所有 Web 服務的常見身分識別和存取功能。 無論您是使用 Microsoft 365、Microsoft Azure、Intune 或其他人，您已經在使用 Azure AD 來協助開啟所有這些服務的登入和存取管理。
 
 所有設定要使用 Web 服務的使用者都會定義為一或多個 Azure AD 執行個體中的使用者帳戶。 您可以為這些帳戶設定免費的 Azure AD 功能，如雲端應用程式存取。
 
-Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位的企業級管理和安全性解決方案來彌補其他 Web 服務 (例如 Office 365 和 Microsoft Azure) 的不足。
+Azure AD 付費服務，例如 Enterprise Mobility + Security 補充其他 web 服務（例如 Microsoft 365），並使用全方位的企業級管理和安全性解決方案來 Microsoft Azure。
 
 ---
 
@@ -55,7 +55,7 @@ Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位
 
 註冊 Azure 訂用帳戶的人員預設會獲指派目錄的全域管理員角色。 全域管理員可以存取所有的 Azure AD 目錄功能。 Azure AD 有一組不同的系統管理員角色，可用來管理目錄和識別相關功能。 這些系統管理員可存取 Azure 入口網站中的各種功能。 系統管理員的角色可決定他們可以執行的作業，例如建立或編輯使用者、將系統管理角色指派給其他人、重設使用者密碼、管理使用者授權或管理網域。  如需有關 Azure AD 目錄管理員及其角色的詳細資訊，請參閱[在 Azure Active Directory 中將使用者指派給系統管理員角色](active-directory-users-assign-role-azure-portal.md)和[在 Azure Active Directory 中指派系統管理員角色](../users-groups-roles/directory-assign-admin-roles.md)。
 
-此外﹐Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位的企業級管理和安全性解決方案來彌補其他 Web 服務 (例如 Office 365 和 Microsoft Azure) 的不足。
+此外，Azure AD 付費服務，例如 Enterprise Mobility + Security 補充其他 web 服務，例如 Microsoft 365 和 Microsoft Azure，以及全方位的企業規模管理與安全性解決方案。
 
 ---
 **問：是否有報告可顯示 Azure AD 使用者授權何時即將過期？**
@@ -90,16 +90,16 @@ Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位
 ---
 **問：Azure AD 是否為組織中的使用者提供自助入口網站？**
 
-**答：** 是，Azure AD 會為您提供 [Azure AD 存取面板](https://myapps.microsoft.com)，以供使用者進行自助服務和應用程式存取。 如果您是 Office 365 客戶，您可以在 [Office 365 入口網站](https://portal.office.com)中找到許多相同的功能。
+**答：** 是，Azure AD 會為您提供 [Azure AD 存取面板](https://myapps.microsoft.com)，以供使用者進行自助服務和應用程式存取。 如果您是 Microsoft 365 客戶，您可以在 [Office 365 入口網站](https://portal.office.com)中找到許多相同的功能。
 
-如需詳細資訊，請參閱[存取面板簡介](../user-help/active-directory-saas-access-panel-introduction.md)。
+如需詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ---
 **問：Azure AD 是否會協助我管理內部部署基礎結構？**
 
 **答：** 是。 Azure AD Premium Edition 可為您提供 Azure AD Connect Health。 Azure AD Connect Health 可協助您監視和了解內部部署身分識別基礎結構和同步處理服務。  
 
-如需詳細資訊，請參閱[在雲端中監視內部部署身分識別基礎結構和同步處理服務](../hybrid/whatis-hybrid-identity-health.md)。  
+如需詳細資訊，請參閱[在雲端中監視內部部署身分識別基礎結構和同步處理服務](../hybrid/whatis-azure-ad-connect.md)。  
 
 ---
 ## <a name="password-management"></a>密碼管理
@@ -112,7 +112,7 @@ Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位
 
 **答：** 密碼回寫會即時運作。
 
-如需詳細資訊，請參閱[開始使用密碼管理](../authentication/quickstart-sspr.md)。
+如需詳細資訊，請參閱[開始使用密碼管理](../authentication/tutorial-enable-sspr.md)。
 
 ---
 **問：是否可以搭配使用密碼回寫和由系統管理員管理的密碼？**
@@ -121,11 +121,11 @@ Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位
 
 <a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questions"></a>如需密碼相關問題的詳細解答，請參閱[密碼管理常見問題集](../authentication/active-directory-passwords-faq.md)。
 ---
-**問：如果我在嘗試變更密碼時不記得現有的 Office 365/Azure AD 密碼，該如何處理？**
+**問：如果我在嘗試變更密碼時不記得現有的 Microsoft 365/Azure AD 密碼，該怎麼辦？**
 
 **答：** 在這種情況下有幾種做法。  使用自助式密碼重設 (SSPR) (如果可用的話)。  SSPR 能否運作取決於其設定方式。  如需詳細資訊，請參閱[密碼重設入口網站的運作方式](../authentication/howto-sspr-deployment.md)。
 
-對於 Office 365 使用者，您的系統管理員可以使用[重設使用者密碼](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)所述的步驟重設密碼。
+針對 Microsoft 365 使用者，您的系統管理員可以使用 [ [重設使用者密碼](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)] 中所述的步驟來重設密碼。
 
 對於 Azure AD 帳戶，系統管理員可以使用下列其中一種方法重設密碼︰
 
@@ -171,7 +171,7 @@ Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位
 **答：** Azure AD 提供好幾種方式來讓使用者檢視和存取其應用程式，例如︰
 
 * Azure AD 存取面板
-* Office 365 應用程式啟動程式
+* Microsoft 365 應用程式啟動器
 * 直接登入同盟應用程式
 * 同盟、密碼或現有應用程式的深層連結
 
@@ -184,8 +184,8 @@ Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位
 
 如需詳細資訊，請參閱
 
-* [Azure AD 的驗證案例](../develop/authentication-scenarios.md)
-* [Active Directory 驗證通訊協定](https://msdn.microsoft.com/library/azure/dn151124.aspx)
+* [Azure AD 的驗證案例](../develop/authentication-vs-authorization.md)
+* [Active Directory 驗證通訊協定](/previous-versions/azure/dn151124(v=azure.100))
 * [Azure AD 中應用程式的單一登入](../manage-apps/what-is-single-sign-on.md)
 
 ---
@@ -200,7 +200,7 @@ Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位
 
 **答：** Azure AD 條件式存取可讓您針對每個應用程式指派唯一的存取原則。 您可以在原則中要求一律要進行 Multi-Factor Authentication，或在使用者未連線到區域網路時才進行。  
 
-如需詳細資訊，請參閱[保護對 Office 365 及其他連接至 Azure Active Directory 之應用程式的存取](../conditional-access/overview.md)。
+如需詳細資訊，請參閱 [保護 Microsoft 365 的存取，以及連線至 Azure Active Directory 的其他應用程式](../conditional-access/overview.md)。
 
 ---
 **問：什麼是 SaaS 應用程式的自動化使用者佈建？**

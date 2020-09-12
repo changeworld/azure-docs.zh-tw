@@ -11,19 +11,19 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 56cd2117a352626cf59023d62ea8c931401389c5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3e6b5e2e06e6cd87295b2faf2a426b75b5f6bf10
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018088"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650763"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署為 Web 服務的 Azure Machine Learning 模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 將 Azure Machine Learning 模型部署為 web 服務時，會建立 REST API 端點。 您可以將資料傳送至此端點，並接收模型傳回的預測。 在本文件中，了解如何使用 C#、Go、Java 和 Python 為Web 服務建立用戶端。
 
-當您將模型部署到您的本機環境、Azure 容器實例、Azure Kubernetes Service 或可現場程式化閘道陣列時，會建立 web 服務 (FPGA) 。 您可以使用 [AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)來取得用來存取 web 服務的 URI。 如果啟用驗證，您也可以使用 SDK 來取得驗證金鑰或權杖。
+當您將模型部署到您的本機環境、Azure 容器實例、Azure Kubernetes Service 或可現場程式化閘道陣列時，會建立 web 服務 (FPGA) 。 您可以使用 [AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)來取得用來存取 web 服務的 URI。 如果啟用驗證，您也可以使用 SDK 來取得驗證金鑰或權杖。
 
 建立使用機器學習 Web 服務的用戶端所適用的一般工作流程是：
 
@@ -39,7 +39,7 @@ ms.locfileid: "89018088"
 > [!NOTE]
 > 使用 Azure Machine Learning SDK 來取得 Web 服務資訊。 這是 Python SDK。 您可以使用任何語言來建立服務的用戶端。
 
-[azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) 類別可提供建立用戶端所需的資訊。 建立用戶端應用程式時，下列 `Webservice` 屬性很有用：
+[azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true) 類別可提供建立用戶端所需的資訊。 建立用戶端應用程式時，下列 `Webservice` 屬性很有用：
 
 * `auth_enabled` -如果已啟用金鑰驗證， `True` 則為，否則為 `False` 。
 * `token_auth_enabled` -如果已啟用權杖驗證， `True` 則為，否則為 `False` 。
@@ -57,7 +57,7 @@ ms.locfileid: "89018088"
     print(service.swagger_uri)
     ```
 
-* 您可以使用 `Webservice.list` 擷取工作區中已針對模型部署的 Web 服務的清單。 您可以新增篩選來縮小傳回的資訊清單。 如需可篩選項目的詳細資訊，請參閱 [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) 參考文件。
+* 您可以使用 `Webservice.list` 擷取工作區中已針對模型部署的 Web 服務的清單。 您可以新增篩選來縮小傳回的資訊清單。 如需可篩選項目的詳細資訊，請參閱 [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py&preserve-view=true) 參考文件。
 
     ```python
     services = Webservice.list(ws)
@@ -113,7 +113,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> 如果您需要重新產生金鑰，請使用 [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) 。
+> 如果您需要重新產生金鑰，請使用 [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true) 。
 
 #### <a name="authentication-with-tokens"></a>使用權杖進行驗證
 
@@ -501,7 +501,7 @@ print(resp.text)
 
 ## <a name="web-service-schema-openapi-specification"></a>Web 服務架構 (OpenAPI 規格) 
 
-如果您在部署中使用自動產生架構，您可以使用 [swagger_uri 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)取得服務之 OpenAPI 規格的位址。 例如， (`print(service.swagger_uri)` 。 ) 使用 GET 要求或在瀏覽器中開啟 URI 以取得規格。
+如果您在部署中使用自動產生架構，您可以使用 [swagger_uri 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#&preserve-view=trueswagger-uri)取得服務之 OpenAPI 規格的位址。 例如， (`print(service.swagger_uri)` 。 ) 使用 GET 要求或在瀏覽器中開啟 URI 以取得規格。
 
 下列 JSON 檔是針對部署產生的架構 (OpenAPI 規格) 範例：
 
@@ -643,7 +643,7 @@ print(resp.text)
 
 
 > [!TIP]
-> 您可以在部署服務之後，取得架構 JSON 檔。 從已部署的 web 服務使用 [swagger_uri 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) (例如， `service.swagger_uri`) 取得本機 Web 服務的 SWAGGER 檔案的 uri。
+> 您可以在部署服務之後，取得架構 JSON 檔。 從已部署的 web 服務使用 [swagger_uri 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#&preserve-view=trueswagger-uri) (例如， `service.swagger_uri`) 取得本機 Web 服務的 SWAGGER 檔案的 uri。
 
 ## <a name="consume-the-service-from-power-bi"></a>使用來自 Power BI 的服務
 
@@ -653,6 +653,6 @@ Power BI 支援 Azure Machine Learning web 服務的耗用量，以使用預測�
 
 一旦部署 web 服務之後，就可以從 Power BI 資料流程中取用它。 [瞭解如何使用 Power BI 的 Azure Machine Learning web 服務](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要查看適用于 Python 和深度學習模型的即時評分的參考架構，請移至 [Azure 架構中心](/azure/architecture/reference-architectures/ai/realtime-scoring-python)。

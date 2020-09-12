@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 046cd30c0f93a468287c73573a3d18f4ba66221b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6cf77aa41a9a485ba70519fed33c1b6aec736525
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690216"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470063"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>建立 Azure Red Hat OpenShift 4 叢集應用程式備份
 
@@ -23,7 +23,7 @@ ms.locfileid: "88690216"
 > * 設定必要條件，並安裝必要的工具
 > * 建立 Azure Red Hat OpenShift 4 應用程式備份
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -120,7 +120,7 @@ oc get backups -n velero <name of backup> -o yaml
 
 成功的備份將會輸出 `phase:Completed` ，而物件將會存留在儲存體帳戶的容器中。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本文中，Azure Red Hat OpenShift 4 叢集應用程式已備份。 您已了解如何︰
 

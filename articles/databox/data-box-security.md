@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87483824"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565746"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure 資料箱安全性和資料保護
 
@@ -30,14 +30,18 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 - **連線至裝置的用戶端/主機** – 在基礎結構中，連線至資料箱裝置並包含需受保護資料的用戶端。
 - **雲端儲存體** – Azure 中儲存資料的位置。 這通常是儲存體帳戶，且連結到您所建立的 Azure 資料箱資源。
 
-下圖表示透過 Azure 資料箱解決方案從內部部署至 Azure 的資料流程。 此流程適用于資料箱的匯入順序。
+下圖指出透過 Azure 資料箱解決方案從內部部署至 Azure 的資料流程，以及資料流程經解決方案時的各種安全性功能。 此流程適用于資料箱的匯入順序。
 
-![資料箱安全性](media/data-box-security/data-box-security-2.png)
+![資料箱匯入安全性](media/data-box-security/data-box-security-2.png)
+
+下圖適用于資料箱的匯出順序。
+
+![資料箱匯出安全性](media/data-box-security/data-box-security-3.png)
 
 當資料流經此解決方案時，就會記錄事件並產生記錄檔。 如需詳細資訊，請移至：
 
-- [追蹤 Azure 資料箱匯入訂單的事件記錄](data-box-logs.md)。
-- [追蹤和 Azure 資料箱匯出訂單的事件記錄](data-box-export-logs.md)
+- [Azure 資料箱匯入訂單的追蹤和事件記錄](data-box-logs.md)。
+- [Azure 資料箱匯出訂單的追蹤和事件記錄](data-box-export-logs.md)
 
 ## <a name="security-features"></a>安全性功能
 
@@ -59,7 +63,7 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 流入及流出資料箱的資料會受到下列功能保護：
 
 - 待用資料的 AES 256 位元加密。
-- 可用於資料傳輸的加密通訊協定。 我們建議您在從資料伺服器複製資料時，使用 SMB 3.0 搭配加密來保護資料。
+- 可用於資料傳輸的加密通訊協定。 建議您在從資料伺服器複製資料時，使用具有加密的 SMB 3.0 來保護資料。
 - 將資料上傳至 Azure 完成之後，安全清除裝置中的資料。 資料清除是依據[附錄 A：NIST 800-88r1 標準中的 ATA 硬碟](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)中的指導方針進行。 資料清除事件記錄在[訂購記錄](data-box-logs.md#download-order-history)中。
 
 ### <a name="data-box-service-protection"></a>資料箱服務保護
@@ -102,7 +106,7 @@ Azure 資料箱會在服務中收集並顯示下列金鑰執行個體的個人�
 
 資料箱中會實作下列安全性指導方針： 
 
-|指導方針   |說明   |
+|指導方針   |描述   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | 適用於防水防塵         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 適用於不利的運輸條件耐久性          |
@@ -110,7 +114,7 @@ Azure 資料箱會在服務中收集並顯示下列金鑰執行個體的個人�
 |[FIPS 140-2 Level 2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | 適用於資料保護         |
 |附錄 A：[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) 中的 ATA 硬碟      | 適用於資料清理         |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 檢閱[資料箱需求](data-box-system-requirements.md)。
 - 了解[資料箱限制](data-box-limits.md)。

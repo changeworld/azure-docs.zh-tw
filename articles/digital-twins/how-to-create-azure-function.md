@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: 瞭解如何建立可存取並由數位 twins 觸發的 Azure 函數。
 author: baanders
 ms.author: baanders
-ms.date: 3/17/2020
+ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 66f514f4c5d299ef11efda541f16f4ef2fe61aed
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a0f5a921ad9eba82f27b3a8945643737b6d76030
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930157"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614084"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>連接 Azure Functions apps 以處理資料
 
-在預覽期間，會使用 [**事件路由**](concepts-route-events.md) 透過計算資源（例如 [Azure Functions](../azure-functions/functions-overview.md)）來處理以資料為基礎的數位 twins。 Azure 函式可能會用來更新數位對應項，以回應：
+更新以資料為基礎的數位 twins 會透過計算資源（例如[Azure Functions](../azure-functions/functions-overview.md)）使用[**事件路由**](concepts-route-events.md)進行處理。 您可以使用 Azure 函式來更新數位對應項，以回應：
 * 來自 IoT 中樞的裝置遙測資料
 * 屬性變更或來自對應項圖形中其他數位對應項的其他資料
 
@@ -28,71 +28,53 @@ ms.locfileid: "88930157"
 2. 使用 [事件方格](../event-grid/overview.md) 觸發程式撰寫 Azure 函數
 3. 將驗證程式代碼新增至函式 (，以便能夠存取 Azure 數位 Twins) 
 4. 將函數應用程式發佈至 Azure
-5. 設定 [安全性](concepts-security.md) 存取權。 為了讓 Azure 函式在執行時間接收存取權杖以存取服務，您必須設定函數應用程式的受控服務識別。
-
-本文的其餘部分將逐步解說 Azure function 設定步驟（一次一個）。
+5. 設定 Azure 函數應用程式的 [安全性](concepts-security.md) 存取權
 
 ## <a name="create-an-azure-functions-app-in-visual-studio"></a>在 Visual Studio 中建立 Azure Functions 應用程式
 
-在 Visual Studio 2019 中，選取 [檔案] *> [新增專案*]。 搜尋 *Azure Functions* 範本，選取它，然後按 [下一步]。
+在 Visual Studio 2019 中，選取 [檔案] _> 新的 > 專案_ ]，然後搜尋 _Azure Functions_ 範本，然後選取 _[下一步]_。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-new-project.png" alt-text="Visual Studio：新增專案對話方塊":::
+:::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio：新增專案對話方塊":::
 
-指定函數應用程式的名稱，然後按 [建立]。
+指定函數應用程式的名稱，然後選取 [ _建立_]。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-project-config.png" alt-text="Visual Studio：設定專案對話方塊":::
+:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio：設定新的專案":::
 
-選取 *事件方格觸發* 程式，然後按 [建立]。
+選取函數應用程式 *事件方格觸發* 程式的類型，然後選取 [ _建立_]。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-project-trigger.png" alt-text="Visual Studio： Azure 函數專案觸發程式對話方塊":::
+:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio： Azure 函數專案觸發程式對話方塊":::
+
+建立函數應用程式之後，您的 visual studio 將會在您的專案資料夾中，于 **function.cs** 檔案中填入自動填入的程式碼範例。 這個簡短的 Azure 函數用來記錄事件。
+
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio：含有範例程式碼的專案視窗":::
 
 ## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>使用事件方格觸發程式撰寫 Azure 函數
 
-下列程式碼會建立可供您用來記錄事件的簡單 Azure 函數： 
+您可以藉由將 SDK 新增至函式應用程式來撰寫 Azure 函式。 函數應用程式會使用 [適用于 .net (c # ) 的 Azure IoT 數位對應項用戶端程式庫 ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)，與 Azure 數位 Twins 互動。 
 
-```csharp
-// Default URL for triggering Event Grid function in the local environment
-// http://localhost:7071/runtime/webhooks/EventGrid?functionName={functionname}
-using System;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
-using Microsoft.Azure.EventGrid.Models;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Extensions.Logging;
+若要使用 SDK，您必須將下列套件包含在您的專案中。 您可以使用 visual studio NuGet 套件管理員來安裝套件，或使用 `dotnet` 命令列工具新增套件。 選擇下列其中一種方法： 
 
-namespace FunctionSample
-{
-    public static class FooFunction    {
-        [FunctionName("Foo")]
-        public static void Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
-        {
-            log.LogInformation(eventGridEvent.Data.ToString());
-        }
-    }
-}
+**選項1。使用 Visual Studio 套件管理員新增套件：**
+    
+您可以在專案上按一下滑鼠右鍵，然後從清單中選取 [ _管理 NuGet 套件_ ]，來完成這項作業。 然後，在開啟的視窗中，選取 _[流覽_ ] 索引標籤，並搜尋下列套件。 選取 [ _安裝_ 並 _接受_ 授權合約] 以安裝套件。
+
+* `Azure.DigitalTwins.Core`
+* `Azure.Identity` 
+
+針對 Azure Functions 設定適當的 Azure SDK 管線，您也需要下列套件。 重複上述相同程式來安裝所有套件。
+
+* `System.Net.Http`
+* `Azure.Core.Pipeline`
+
+**選項2。使用 `dotnet` 命令列工具新增套件：**
+
+```cmd/sh
+dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
+dotnet add package Azure.identity --version 1.2.2
+dotnet add package System.Net.Http
+dotnet add package Azure.Core.Pipeline
 ```
-
-這是您的基本 Azure 函數。
-
-### <a name="run-and-debug-the-azure-function-app"></a>執行 Azure 函數應用程式並對其進行偵錯工具
-
-您現在可以編譯並執行函數。 雖然 Azure 函式最終是要在雲端中執行，但您也可以在本機執行 Azure 函式並進行調試。
-
-如需這方面的詳細資訊，請參閱在 [*本機偵錯工具事件方格觸發*](../azure-functions/functions-debug-event-grid-trigger-local.md)程式。
-
-### <a name="add-the-azure-digital-twins-sdk-to-your-azure-function-app"></a>將 Azure 數位 Twins SDK 新增至您的 Azure 函數應用程式
-
-函數應用程式會使用 [適用于 .net (c # ) 的 Azure IoT 數位對應項用戶端程式庫 ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)，與 Azure 數位 Twins 互動。 您必須在專案中包含下列套件，才能使用 SDK：
-* `Azure.DigitalTwins.Core` (版本 `1.0.0-preview.2`) 
-* `Azure.Identity`
-
-若要設定 Azure SDK 管線以針對 Azure Functions 適當地設定，您也將需要：
-* `Azure.Net.Http`
-* `Azure.Core`
-
-您可以使用 Visual Studio 套件管理員或命令列工具，視您選擇的工具而定 `dotnet` 。 
-
-將下列 using 語句新增至您的 Azure 函數。
+接下來，在 Visual Studio 方案總管中，開啟您擁有範例程式碼的 _function.cs_ 檔案，然後將下列 _using_ 語句新增至您的 Azure 函數。 
 
 ```csharp
 using Azure.DigitalTwins.Core;
@@ -100,131 +82,212 @@ using Azure.Identity;
 using System.Net.Http;
 using Azure.Core.Pipeline;
 ```
-
 ## <a name="add-authentication-code-to-the-azure-function"></a>將驗證程式代碼新增至 Azure 函數
 
-接下來，新增可讓函式存取 Azure 數位 Twins 的驗證程式代碼。
+您現在會宣告類別層級變數，並新增可讓函式存取 Azure 數位 Twins 的驗證程式代碼。 您將會在 {您的函式名稱} .cs 檔案中，將下列程式新增至您的 Azure 函數。
 
-將變數新增至您的函式類別以用於這些值： 
-* Azure 數位 Twins 應用程式識別碼
-* Azure 數位 Twins 實例的 URL。 從環境變數讀取服務 URL 是很好的作法，而不是在函式中進行硬式編碼。
+* 將 ADT 服務 URL 讀取為環境變數。 從環境變數讀取服務 URL 是很好的作法，而不是在函式中進行硬式編碼。
+```csharp     
+private static readonly string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
+```
 * 用來保存 HttpClient 實例的靜態變數。 HttpClient 的建立成本相當昂貴，而且我們想要避免在每次函式呼叫時都必須這麼做。
+```csharp
+private static readonly HttpClient httpClient = new HttpClient();
+```
+* 您可以使用 Azure function 中的受控識別認證。
+```csharp
+ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
+```
+* 在您的函式內新增本機變數 _DigitalTwinsClient_ ，以將您的 Azure 數位 Twins 用戶端實例保存到函式專案。 請勿在您的類別內將此 *變數設為* 靜態。
+```csharp
+DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
+```
+* 針對 _adtInstanceUrl_ 新增 null 檢查，並將您的函式邏輯包裝在 try catch 區塊中，以攔截任何例外狀況。
 
-此外，在您的函式內新增一個區域變數，以將您的 Azure 數位 Twins 用戶端實例保存到函式專案。 請勿 *將此變數設為* 您類別內的靜態變數。
-
-最後，將函數簽章變更為非同步。
-
-這些變更之後，您的函式程式碼應該如下所示：
+這些變更之後，您的函式程式碼將會如下所示：
 
 ```csharp
-namespace FunctionSample
-{
-    public static class FooFunction
-    {
-        const string adtAppId = "https://digitaltwins.azure.net";
-        private static string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
-        private static HttpClient httpClient = new HttpClient();
+// Default URL for triggering event grid function in the local environment.
+// http://localhost:7071/runtime/webhooks/EventGrid?functionName={functionname}
+using System;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Extensions.Logging;
+using Azure.DigitalTwins.Core;
+using Azure.Identity;
+using System.Net.Http;
+using Azure.Core.Pipeline;
 
-        [FunctionName("Foo")]
-        public static async Task Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
+namespace adtIngestFunctionSample
+{
+    public class Function1
+    {
+        //Your Digital Twin URL is stored in an application setting in Azure Functions
+        private static readonly string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
+        private static readonly HttpClient httpClient = new HttpClient();
+
+        [FunctionName("TwinsFunction")]
+        public void Run([EventGridTrigger] EventGridEvent eventGridEvent, ILogger log)
         {
-            DigitalTwinsClient client = null;
+            log.LogInformation(eventGridEvent.Data.ToString());
+            if (adtInstanceUrl == null) log.LogError("Application setting \"ADT_SERVICE_URL\" not set");
             try
             {
-                ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-                DigitalTwinsClientOptions opts = 
-                    new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-                client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
-                                                
+                //Authenticate with Digital Twins
+                ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
+                DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
                 log.LogInformation($"ADT service client connection created.");
+                /*
+                * Add your business logic here
+                */
             }
             catch (Exception e)
             {
-                log.LogError($"ADT service client connection failed. " + e.ToString());
-                return;
+                log.LogError(e.Message);
             }
-            log.LogInformation(eventGridEvent.Data.ToString());
+
         }
     }
 }
 ```
 
-為了讓您的函式應用程式能夠存取 Azure 數位 Twins，它必須有系統管理的身分識別，而且有權存取您的 Azure 數位 Twins 實例。
+## <a name="publish-the-function-app-to-azure"></a>將函數應用程式發佈至 Azure
 
-使用下列命令建立系統管理的身分識別。 記下輸出中的 *principalId* 欄位。
-
-```azurecli
-az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
-```
-
-使用下列命令中的 *principalId* 值，將函式應用程式的身分識別指派給 Azure 數位 *Twins 擁有者 (預覽版) * 角色的 azure 數位 Twins 實例。 這會提供實例中的函數應用程式許可權，以執行資料平面活動。
-
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
-```
-
-如需受控識別的詳細資訊，請參閱 [*如何使用受控識別進行 App Service 和 Azure Functions*](../app-service/overview-managed-identity.md)。
-
-最後，您可以藉由設定環境變數，讓您的 Azure 數位 Twins 實例的 URL 可供您的函式存取。 如需有關這個的詳細資訊，請參閱 [*環境變數*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)。
-
-> [!TIP]
-> Azure 數位 Twins 實例的 URL 是藉由將 *HTTPs://* 新增至 Azure 數位 Twins 實例 *主機名稱*的開頭來建立。 若要查看主機名稱，以及實例的所有屬性，您可以執行 `az dt show --dt-name <your-Azure-Digital-Twins-instance>` 。
-
-```azurecli
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-URL>"
-```
-
-## <a name="publish-the-azure-function-app"></a>發佈 Azure 函數應用程式
-
-若要將函式應用程式發佈至 Azure，請在方案總管中，以滑鼠右鍵選取函數專案 (而不是 [方案) ]，然後選擇 [ *發行 ( # B3 *]。
-
-將會顯示下列索引標籤：
-
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-publish-1.png" alt-text="Visual Studio：發佈函式對話方塊，第1頁":::
-
-選取或建立要搭配 Azure Functions 使用的 App Service 計畫。 如果不確定，請先使用預設取用方案。
+若要將函式應用程式發佈至 Azure，請在方案總管中，以滑鼠右鍵選取函數專案 (而不是 [方案) ]，然後選擇 [ **發行**]。
 
 > [!IMPORTANT] 
 > 發佈 Azure 函式將會在您的訂用帳戶上產生額外費用，與 Azure 數位 Twins 無關。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-publish-2.png" alt-text="Visual Studio：發佈函式對話方塊，第2頁":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio：發佈 Azure function ":::
+
+選取 **Azure** 作為發佈目標，然後選取 **[下一步]**。
+
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio：發佈 Azure 函式對話方塊，選取 Azure ":::
+
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio： [發佈函式] 對話方塊中，選取 (Windows) 的 Azure 函數應用程式，或根據您的電腦 (Linux) ":::
+
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio：發佈函式對話方塊，建立新的 Azure 函數":::
+
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio： [發行函數] 對話方塊、填寫欄位，然後選取 [建立]":::
+
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio：發佈函式對話方塊，從清單中選取您的函數應用程式，然後完成":::
 
 在下列頁面上，輸入新函數應用程式的所需名稱、資源群組和其他詳細資料。
+為了讓您的函式應用程式能夠存取 Azure 數位 Twins，它必須有系統管理的身分識別，而且有權存取您的 Azure 數位 Twins 實例。
+
+接下來，您可以使用 CLI 或 Azure 入口網站設定函數的安全性存取權。 選擇下列其中一種方法：
 
 ## <a name="set-up-security-access-for-the-azure-function-app"></a>設定 Azure 函數應用程式的安全性存取權
+您可以使用下列其中一個選項來設定 Azure 函數應用程式的安全性存取：
+
+### <a name="option-1-set-up-security-access-for-the-azure-function-app-using-cli"></a>選項1：使用 CLI 設定 Azure 函數應用程式的安全性存取
 
 先前範例中的 Azure 函式基本架構需要將持有人權杖傳遞給它，才能使用 Azure 數位 Twins 進行驗證。 若要確定已通過此持有人權杖，您必須為函數應用程式設定 [ (MSI) 的受控服務識別 ](../active-directory/managed-identities-azure-resources/overview.md) 。 每個函數應用程式只需要執行一次。
 
-若要進行此設定，請移至 [Azure 入口網站](https://portal.azure.com/) 並流覽至您的函數應用程式。
+您可以建立系統管理的身分識別，並將函式應用程式的身分識別指派給 azure 數位 _Twins 擁有者 (預覽版) _ 角色的 Azure 數位 Twins 實例。 這會提供實例中的函數應用程式許可權，以執行資料平面活動。 然後，藉由設定環境變數，讓您的函式可以存取 Azure 數位 Twins 實例的 URL。
 
-在 [ *平臺功能* ] 索引標籤中，選取 [身分 *識別*：
+ 使用 [Azure Cloud Shell](https://shell.azure.com) 執行命令。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-msi-1.png" alt-text="Azure 入口網站：選取 Azure 函數的身分識別":::
+使用下列命令建立系統管理的身分識別。 記下輸出中的 _principalId_ 欄位。
 
-在 [身分識別] 頁面上，將 [ *狀態* ] 切換為 [ *開啟*]。 
-
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-msi-2.png" alt-text="Azure 入口網站：開啟身分識別狀態":::
-
-也請注意此頁面上顯示的 **物件識別碼** ，因為它將在下一節中使用。
-
-### <a name="assign-access-roles"></a>指派存取角色
-
-因為 Azure 數位 Twins 會使用角色型存取控制來管理存取 (請參閱 [*概念： Azure 數位 Twins 解決方案的安全性*](concepts-security.md) ，如需此) 的詳細資訊，您也需要為每個您想要允許存取 Azure 數位 Twins 的函式應用程式新增角色。
-
-若要指派角色，您需要您所建立的 Azure 數位 Twins 實例的 **資源識別碼** 。 如果您在建立實例之前未記錄此檔案，您可以使用下列命令來取得它：
-
-```bash
-az dt show --name <your-instance-name> -g <your-resource-group-name>
+```azurecli 
+az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
 ```
-資源識別碼將會是輸出的一部分，且名稱為 "ID" 且開頭為字母 "/subscriptions/..." 的長字串。
+使用下列命令中的 _principalId_ 值，將函式應用程式的身分識別指派給 Azure 數位 _Twins 擁有者 (預覽版) _ 角色的 azure 數位 Twins 實例。
 
-在下列命令中使用資源識別碼以及 Azure 函式的物件識別碼：
-
-```azurecli
-az role assignment create --role "Azure Digital Twins Owner (Preview)" --assignee <object-ID> --scope <resource-ID>
+```azurecli 
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
 ```
+最後，您可以藉由設定環境變數，讓您的 Azure 數位 Twins 實例的 URL 可供您的函式存取。 如需有關設定環境變數的詳細資訊，請參閱 [*環境變數*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)。 
 
-## <a name="next-steps"></a>後續步驟
+> [!TIP]
+> Azure 數位 Twins 實例的 URL 是藉由將 *HTTPs://* 新增至 Azure 數位 Twins 實例 *主機名稱*的開頭來建立。 若要查看主機名稱，以及實例的所有屬性，您可以執行 `az dt show --dt-name <your-Azure-Digital-Twins-instance>` 。
+
+```azurecli 
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
+```
+### <a name="option-2-set-up-security-access-for-the-azure-function-app-using-azure-portal"></a>選項2：使用 Azure 入口網站設定 Azure 函數應用程式的安全性存取
+
+系統指派的受控識別可讓 Azure 資源向雲端服務進行驗證 (例如 Azure Key Vault) ，而不需要將認證儲存在程式碼中。 啟用之後，就可以透過 Azure 角色型存取控制來授與所有必要的許可權。 這種受控識別的生命週期會系結到此資源的生命週期。 此外，每個資源 (例如，虛擬機器) 只能有一個系統指派的受控識別。
+
+在 [Azure 入口網站](https://portal.azure.com/)中，使用您稍早建立的函式應用程式名稱，在搜尋列中搜尋 _函數應用程式_ 。 從清單中選取 *函數應用程式* 。 
+
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Azure 入口網站：搜尋函數應用程式":::
+
+在 [函式應用程式] 視窗中，選取左側導覽列中的 [ _識別_ ]，以啟用受控識別。
+在 [ _系統指派_ ] 索引標籤下，將 _狀態_ 切換至開啟並 _儲存_ 。 您將會看到快顯視窗，以 _啟用系統指派的受控識別_。
+選取 _[是]_ 按鈕。 
+
+:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Azure 入口網站：啟用系統管理的身分識別":::
+
+您可以在通知中確認已成功向 Azure Active Directory 註冊您的函式。
+
+:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Azure 入口網站：通知":::
+
+另外也請注意 [身分_識別_] 頁面上顯示的**物件識別碼**，因為它將會在下一節中使用。
+
+:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="複製要在未來使用的物件識別碼":::
+
+### <a name="assign-access-roles-using-azure-portal"></a>使用 Azure 入口網站指派存取角色
+
+選取 [ _azure 角色指派_ ] 按鈕，以開啟 [azure 角色指派] 頁面。 然後，選取 [ _+ 新增角色指派] (預覽) _。
+
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure 入口網站：新增角色指派":::
+
+在開啟的 [ _新增角色指派 (預覽]) _ 視窗中，選取
+
+* _範圍_：資源群組
+* _訂_用帳戶：選取您的 Azure 訂用帳戶
+* _資源群組_：從下拉式清單中選取您的資源群組
+* _角色_：從下拉式清單中選取_Azure 數位 Twins 擁有者 (預覽) _
+
+選取 [ _儲存_ ] 按鈕以儲存您的詳細資料。
+
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Azure 入口網站：新增角色指派 (預覽) ":::
+
+### <a name="configure-application-settings-using-azure-portal"></a>使用 Azure 入口網站來設定應用程式設定
+
+您可以藉由設定環境變數，讓您的函式可以存取您的 Azure 數位 Twins 實例的 URL。 如需有關這個的詳細資訊，請參閱 [*環境變數*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)。 應用程式設定會公開為環境變數，以存取數位 twins 實例。 
+
+您將需要 ADT_INSTANCE_URL 來建立應用程式設定。
+
+您可以藉由將 **_HTTPs://_** 附加至實例主機名稱來取得 ADT_INSTANCE_URL。 在 Azure 入口網站中，您可以在搜尋列中搜尋您的實例，以找到您的數位 twins 實例主機名稱。 然後，選取左側導覽列上的 _[總覽_ ] 以查看 _主機名稱_。 複製此值以建立應用程式設定。
+
+:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure 入口網站：總覽-> 複製要在 _Value_ 欄位中使用的主機名稱。":::
+
+您現在可以依照下列步驟來建立應用程式設定：
+
+* 使用搜尋列中的函式名稱搜尋您的 Azure 函式，並從清單中選取函數
+* 選取 _左側導覽列上的_ [設定]，以建立新的應用程式設定
+* 在 [_應用程式設定_] 索引標籤中，選取 [ _+ 新增應用程式設定_]
+
+:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure 入口網站：搜尋現有的 Azure 函數":::
+
+:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure 入口網站：設定應用程式設定":::
+
+在開啟的視窗中，使用從上面複製的值來建立應用程式設定。 \
+_名稱_  ： ADT_SERVICE_URL \
+_值_ ： HTTPs：//{您的 azure-twins-hostname}
+
+選取 _[確定]_ 以建立應用程式設定。
+
+:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure 入口網站：加入應用程式設定。":::
+
+您可以使用 [ _名稱_ ] 欄位下的應用程式名稱來查看您的應用程式設定。 然後，選取 [ _儲存_ ] 按鈕來儲存您的應用程式設定。
+
+:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure 入口網站：查看已建立的應用程式，並重新啟動應用程式":::
+
+應用程式設定的任何變更都需要重新開機應用程式。 選取 [ _繼續_ ] 以重新開機您的應用程式。
+
+:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure 入口網站：儲存應用程式設定":::
+
+您可以藉由選取 [ _通知_ ] 圖示來查看應用程式設定是否已更新。 如果未建立您的應用程式設定，您可以遵循上述程式來重試新增應用程式設定。
+
+:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Azure 入口網站：更新應用程式設定的通知":::
+
+## <a name="next-steps"></a>接下來的步驟
 
 在本文中，您已遵循設定 Azure 函式以搭配 Azure 數位 Twins 使用的步驟。 接下來，您可以將 Azure 函式訂閱至事件方格，以在端點上接聽。 此端點可能是：
 * 附加至 Azure 數位 Twins 的事件方格端點，可處理來自 Azure 數位 Twins 本身的訊息 (例如屬性變更訊息、對應項圖形中 [數位 Twins](concepts-twins-graph.md) 所產生的遙測訊息，或是生命週期訊息) 

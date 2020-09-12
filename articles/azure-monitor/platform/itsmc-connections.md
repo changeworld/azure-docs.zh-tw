@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: bf1721b45ff63c225c378e50bff9040948820c8b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 57a981f4967bc58ca39067f94abdcf64d764ab87
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035020"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536186"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>將 ITSM 產品/服務與 IT Service Management Connector 連線
 本文提供如何設定 ITSM 產品/服務與 Log Analytics 中 IT Service Management Connector (ITSMC) 之間的連線，以集中管理工作項目的相關資訊。 如需 ITSMC 的詳細資訊，請參閱[概觀](./itsmc-overview.md)。
@@ -186,7 +186,7 @@ ms.locfileid: "88035020"
 **ServiceNow 管理員必須在 ServiceNow 執行個體中執行下列動作**：
 - 產生 ServiceNow 產品的用戶端識別碼和用戶端密碼。 如需如何產生用戶端識別碼和祕密的相關資訊，請視需要參閱下列資訊：
 
-    - [設定適用于奧蘭多的 OAuth](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+    - [針對奧蘭多設定 OAuth](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [針對 New York 設定 OAuth](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [針對 Madrid 設定 OAuth](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [針對 London 設定 OAuth](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
@@ -252,7 +252,7 @@ ms.locfileid: "88035020"
 
 
 > [!NOTE]
-> 在 ServiceNow 中，每小時要求會有速率限制。 若要設定此限制，請在 ServiceNow 實例中定義「輸入 REST API 速率限制」來使用。
+> 在 ServiceNow 中，每小時的要求都有速率限制。 若要設定此限制，請在 ServiceNow 實例中定義「輸入 REST API 速率限制」來設定限制。
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>在 ServiceNow 應用程式中建立整合使用者角色
 
@@ -298,6 +298,10 @@ ms.locfileid: "88035020"
 
 下列各節提供有關如何將 Provance 產品連線到 Azure 中的 ITSMC 之詳細資料。
 
+> [!NOTE]
+> 
+> 從 1-10 月-2020 Provance ITSM 與 Azure 警示的整合將不再針對新客戶啟用。 不支援新的 ITSM 連接。 
+> 將會支援現有的 ITSM 連接。
 
 ### <a name="prerequisites"></a>Prerequisites
 
@@ -352,6 +356,11 @@ ms.locfileid: "88035020"
 
 下列各節提供有關如何將 Cherwell 產品連線到 Azure 中的 ITSMC 之詳細資料。
 
+> [!NOTE]
+> 
+> 從 1-10 月-2020 Cherwell ITSM 與 Azure 警示的整合將不再針對新客戶啟用。 不支援新的 ITSM 連接。 
+> 將會支援現有的 ITSM 連接。
+
 ### <a name="prerequisites"></a>Prerequisites
 
 請確保已符合下列必要條件︰
@@ -362,7 +371,7 @@ ms.locfileid: "88035020"
 
 ### <a name="connection-procedure"></a>連線程序
 
-請使用下列程序來建立 Provance 連線：
+請使用下列程序來建立 Cherwell 連線：
 
 1. 在 Azure 入口網站中，移至 [所有資源]，然後尋找 **ServiceDesk(YourWorkspaceName)**
 

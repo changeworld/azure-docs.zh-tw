@@ -3,12 +3,12 @@ title: 針對 SQL Server 資料庫備份進行疑難排解
 description: 適用於在 Azure VM 上執行並使用 Azure 備份進行備份之 SQL Server 資料庫的疑難排解資訊。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: b462ebd25a7dac4f215d599aa0dfa8665965fb2f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c81230a5b32ddb1487bf59e8e43dbb96328d8620
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180944"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513961"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 備份針對 SQL Server 資料庫備份進行疑難排解
 
@@ -44,14 +44,14 @@ ms.locfileid: "89180944"
 
 1. 從防毒軟體掃描中排除下列資料夾：
 
-    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBackupWindowsWorkload`
 
     `C:\`以您*SystemDrive*的字母取代。
 
 1. 從防毒軟體掃描中排除下列三個在 VM 內執行的進程：
 
     - IaasWLPluginSvc.exe
-    - IaasWorkloadCoordinaorService.exe
+    - IaaSWorkloadCoordinatorService.exe
     - TriggerExtensionJob.exe
 
 1. SQL 也提供一些有關使用防毒程式的指導方針。 如需詳細資訊，請參閱 [這篇文章](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) 。
@@ -60,7 +60,7 @@ ms.locfileid: "89180944"
 
 ### <a name="backup-type-unsupported"></a>不支援的備份類型
 
-| 嚴重性 | 說明 | 可能的原因 | 建議的動作 |
+| 嚴重性 | 描述 | 可能的原因 | 建議的動作 |
 |---|---|---|---|
 | 警告 | 此資料庫目前的設定不支援在相關聯的原則中存在特定的備份類型。 | <li>只有完整的資料庫備份作業可以在 master 資料庫上執行。 無法進行差異備份和交易記錄備份。 </li> <li>簡單復原模式中的任何資料庫都不允許備份交易記錄。</li> | 修改資料庫設定 sp 支援原則中的所有備份類型。 或變更目前的原則，以僅包含支援的備份類型。 否則，在排定備份期間將略過不支援的備份類型，否則備份工作將會失敗以進行隨選備份。
 
@@ -130,7 +130,7 @@ ms.locfileid: "89180944"
 
 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 |---|---|---|
-| 用於復原的記錄備份包含大量記錄的變更。 它無法用來根據 SQL 指導方針，在任意時間點停止。 | 當資料庫處於大量記錄復原模式時，大容量日誌交易與下一個記錄交易之間的資料將無法復原。 | 請選擇不同的恢復時間點。 [進一步瞭解](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)。
+| 用於復原的記錄備份包含大量記錄的變更。 它無法用來根據 SQL 指導方針，在任意時間點停止。 | 當資料庫處於大量記錄復原模式時，大容量日誌交易與下一個記錄交易之間的資料將無法復原。 | 請選擇不同的恢復時間點。 [深入了解](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)。
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -216,7 +216,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
-以下為範例：
+以下是範例：
 
 ```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
@@ -245,7 +245,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 ]
 ```
 
-以下為範例：
+以下是範例：
 
 ```json
 [
@@ -272,6 +272,6 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
 
 在您觸發還原作業之前，應該先放置這個檔案。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需 SQL Server Vm (公開預覽) Azure 備份的詳細資訊，請參閱 [SQL vm 的 Azure 備份](../azure-sql/virtual-machines/windows/backup-restore.md#azbackup)。
