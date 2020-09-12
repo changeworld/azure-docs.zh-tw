@@ -16,15 +16,15 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3853d0e5754f368043414ea4eaade8c4adf179e9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76548861"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661853"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同步處理：了解預設組態
-本文說明現成可用的組態規則。 其中說明這些規則以及這些規則對組態有何影響。 它也會逐步引導您完成 Azure AD Connect 同步處理的預設設定。其目標是讀取器瞭解「宣告式布建」設定模型在真實世界範例中的運作方式。 本文假設您已使用安裝精靈安裝並設定 Azure AD Connect Sync。
+本文說明現成可用的組態規則。 其中說明這些規則以及這些規則對組態有何影響。 它也會逐步引導您進行 Azure AD Connect 同步的預設設定。其目標在於讀者瞭解設定模型（名為宣告式布建）在真實世界範例中的運作方式。 本文假設您已使用安裝精靈安裝並設定 Azure AD Connect Sync。
 
 若要了解組態模型的詳細資訊，請參閱 [了解宣告式佈建](concept-azure-ad-connect-sync-declarative-provisioning.md)。
 
@@ -71,7 +71,7 @@ ms.locfileid: "76548861"
   2. 可以在 Exchange GAL (全域通訊清單) 中找到的屬性，則會從具有 Exchange 信箱的樹系提供。
   3. 如果找不到信箱，則這些屬性可來自於任何樹系。
   4. Exchange 相關屬性 (技術屬性不會顯示在 GAL 中) 會從 `mailNickname ISNOTNULL`的樹系提供。
-  5. 如果有多個樹系會符合其中一個規則，則會使用連接器 (樹系) 的建立順序 (日期/時間) 來決定由哪個樹系提供屬性。 第一個已連線的樹系會是要同步處理的第一個樹系。 
+  5. 如果有多個樹系會符合其中一個規則，則會使用連接器 (樹系) 的建立順序 (日期/時間) 來決定由哪個樹系提供屬性。 第一個連接的樹系將會是第一個要同步的樹系。 
 
 ### <a name="contact-out-of-box-rules"></a>連絡人現成可用的規則
 連絡人物件必須符合下列條件，才會進行同步處理：
@@ -131,7 +131,7 @@ FSP 會聯結至 Metaverse 中的「任何」(\*) 物件。 實際上，此聯�
 
 ![同步處理規則編輯器圖示](./media/concept-azure-ad-connect-sync-default-configuration/sre.png)
 
-SRE 是一種資源套件工具，它會與 Azure AD Connect 同步處理一併安裝。您必須是 ADSyncAdmins 群組的成員，才能夠啟動它。 在它啟動時，您會看到如下的畫面：
+SRE 是一種資源套件工具，它會隨 Azure AD Connect 同步進行安裝。您必須是 ADSyncAdmins 群組的成員，才能夠啟動它。 在它啟動時，您會看到如下的畫面：
 
 ![同步處理規則 (輸入)](./media/concept-azure-ad-connect-sync-default-configuration/syncrulesinbound.png)
 
@@ -142,20 +142,20 @@ SRE 是一種資源套件工具，它會與 Azure AD Connect 同步處理一併�
 
 舉例來說，我們將了解同步處理規則 **In from AD – User AccountEnabled**。 在 SRE 中標示這一行並選取 [編輯] ****。
 
-由於此規則是現成可用的規則，因此您會在開啟規則時收到警告。 您不應 [變更現成可用的規則](how-to-connect-sync-best-practices-changing-default-configuration.md)，而要讓系統詢問您自己的意願為何。 在此案例中，您只想要檢視規則。 選取 [否]****。
+由於此規則是現成可用的規則，因此您會在開啟規則時收到警告。 您不應 [變更現成可用的規則](how-to-connect-sync-best-practices-changing-default-configuration.md)，而要讓系統詢問您自己的意願為何。 在此案例中，您只想要檢視規則。 請選取 [否] 。
 
 ![同步處理規則警告](./media/concept-azure-ad-connect-sync-default-configuration/warningeditrule.png)
 
 同步處理規則具有四個組態區段：說明、範圍篩選器、聯結規則及轉換。
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>描述
 第一個區段提供基本資訊，例如名稱和說明。
 
 ![同步處理規則編輯器中的說明索引標籤](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
 
 您也可尋找一些資訊，例如哪個已連線系統與此規則有關、哪個已連線系統的物件類型適用於此規則，以及 Metaverse 物件的類型。 無法來源物件類型為使用者、iNetOrgPerson 或連絡人，Metaverse 物件類型一律為個人。 Metaverse 物件類型永遠不會改變，所以它必須以一般類型建立。 您可以將連結類型設為 Join、StickyJoin 或 Provision。 此設定會與 [聯結規則] 區段共同運作，稍後會討論其運作方式。
 
-您也可以看到此同步處理規則用於密碼同步處理。如果使用者在此同步處理規則的範圍內，則密碼會從內部部署同步處理至雲端（假設您已啟用密碼同步功能）。
+您也可以看到此同步處理規則是用來進行密碼同步處理。如果使用者在此同步處理規則的範圍內，則會將密碼從內部部署同步處理至雲端 (假設您已啟用) 的密碼同步功能。
 
 #### <a name="scoping-filter"></a>範圍篩選器
 範圍篩選器區段是用來設定同步處理規則套用的時機。 由於您目前看到的同步處理規則名稱表示只應針對已啟用使用者套用，因此您必須設定該範圍，切勿將 AD 屬性 **userAccountControl** 設為位元 2。 當同步處理引擎在 AD 中尋找使用者時，如果 **userAccountControl** 設為十進位值 512 (啟用的一般使用者)，則會套用此同步處理規則。 當使用者的 **userAccountControl** 設為 514 (停用的一般使用者) 時，則不會套用此規則。
@@ -173,7 +173,7 @@ SRE 是一種資源套件工具，它會與 Azure AD Connect 同步處理一併�
 
 ![同步處理規則編輯器中的聯結規則索引標籤](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
-聯結規則的內容取決於安裝精靈中選取的比對選項。 針對輸入規則，評估作業將會從來源連接器空間中的物件開始進行，接著再評估聯結規則中的各個群組。 如果來源物件經評估確實符合 Metaverse 中的一個物件，且 Metaverse 使用其中一個聯結規則，物件就會聯結起來。 如果所有規則經評估後沒有任何相符項目，則會使用說明頁面上的連結類型。 如果此設定設為 [布建 **]，則**會在目標中建立新的物件，也就是在聯結準則中至少有一個屬性（具有值）。 將新物件佈建至 Metaverse，也等同於將物件**投射**至 Metaverse。
+聯結規則的內容取決於安裝精靈中選取的比對選項。 針對輸入規則，評估作業將會從來源連接器空間中的物件開始進行，接著再評估聯結規則中的各個群組。 如果來源物件經評估確實符合 Metaverse 中的一個物件，且 Metaverse 使用其中一個聯結規則，物件就會聯結起來。 如果所有規則經評估後沒有任何相符項目，則會使用說明頁面上的連結類型。 如果此設定設為 [布建 **]，則**會在目標中建立新的物件（元組），如果聯結準則中至少有一個屬性 (具有) 的值。 將新物件佈建至 Metaverse，也等同於將物件**投射**至 Metaverse。
 
 只會對聯結規則評估一次。 當連接器空間物件和 Metaverse 物件聯結起來時，只要仍滿足同步處理規則的範圍，兩者就會維持聯結狀態。
 
@@ -223,7 +223,7 @@ NULL
 | 名稱 | 註解 |
 |:--- |:--- |
 | In from AD - User Join |聯結連接器空間物件與 Metaverse 的規則。 |
-| In from AD – UserAccount Enabled |登入 Azure AD 和 Office 365 所需的屬性。 我們想從已啟用的帳戶取得這些屬性。 |
+| In from AD – UserAccount Enabled |登入 Azure AD 和 Microsoft 365 所需的屬性。 我們想從已啟用的帳戶取得這些屬性。 |
 | In from AD – User Common from Exchange |在全域通訊清單中找到的屬性。 我們假設在使用者信箱所在的樹系中，具有最佳的資料品質。 |
 | In from AD – User Common |在全域通訊清單中找到的屬性。 如果找不到信箱，則可由任何其他聯結物件提供屬性值。 |
 | In from AD – User Exchange |只有在偵測到 Exchange 後才存在。 它會流送所有基礎結構 Exchange 屬性。 |

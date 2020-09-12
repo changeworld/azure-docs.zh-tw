@@ -1,6 +1,6 @@
 ---
 title: Azure DDoS 保護標準總覽
-description: 瞭解如何與應用程式設計最佳作法結合 Azure DDoS 保護標準，以提供對抗 DDoS 攻擊的防禦。
+description: 瞭解 Azure DDoS 保護 Standard 與應用程式設計最佳作法的結合，如何提供對 DDoS 攻擊的防禦。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,45 +11,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: af10ec10a1622f32dbc34a607b1200cb4cff8b59
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 90dbc0b888c6d6eeed97a676024abc9cc0dca6fe
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168043"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017161"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard 概觀
 
 分散式阻斷服務 (DDoS) 攻擊是將應用程式移至雲端的客戶所面臨的最大可用性和安全性顧慮之一。 DDoS 攻擊會嘗試耗盡應用程式的資源，讓合法使用者無法使用該應用程式。 DDoS 攻擊可以鎖定可透過網際網路公開觸達的任何端點。
 
-結合應用程式設計最佳做法的 Azure DDoS 保護可提供 DDoS 攻擊的防禦。 Azure DDoS 保護提供下列服務層級：
+結合應用程式設計最佳做法的 Azure DDoS 保護可提供 DDoS 攻擊的防禦。 Azure 中的每個屬性都會受到 Azure 基礎結構 DDoS (基本) 保護的保護。Azure DDoS 保護標準針對基本服務層級提供額外的緩和功能，專為 Azure 虛擬網路資源進行微調。 
 
-- **基本**：已在 Azure 平台中自動啟用。 一般網路層級攻擊的 alwayson 流量監視和即時緩和功能，提供 Microsoft 線上服務所使用的相同防禦。Azure 全球網路的整個規模可用於分散和緩和跨區域的攻擊流量。針對 IPv4 和 IPv6 Azure [公用 IP 位址](virtual-network-public-ip-address.md)提供保護。
-- **標準**：提供 [基本] 服務層級以外特別針對 Azure 虛擬網路資源調整的額外安全防護功能。 DDoS 保護「標準」層級很容易啟用，而且不需要變更應用程式。 保護原則會透過專用的流量監視和機器學習演算法進行調整。 原則會套用至與虛擬網路中所部署資源相關聯的公用 IP 位址，例如 Azure Load Balancer、Azure 應用程式閘道和 Azure Service Fabric 執行個體，但是此保護功能不適用於 App Service Environments。在攻擊期間，可透過 Azure 監視器檢視取得即時遙測與歷史記錄。 透過診斷設定可以獲得豐富的攻擊風險降低分析。 透過 [Azure 應用程式閘道 Web 應用程式防火牆](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，或者從 Azure Marketplace 安裝第 3 方防火牆，可以加上應用程式層保護。 針對 IPv4 和 IPv6 Azure [公用 IP 位址](virtual-network-public-ip-address.md)提供保護。
+DDoS 保護「標準」層級很容易啟用，而且不需要變更應用程式。 保護原則會透過專用的流量監視和機器學習演算法進行調整。 原則會套用至與虛擬網路中所部署資源相關聯的公用 IP 位址，例如 Azure Load Balancer、Azure 應用程式閘道和 Azure Service Fabric 執行個體，但是此保護功能不適用於 App Service Environments。在攻擊期間，可透過 Azure 監視器檢視取得即時遙測與歷史記錄。 透過診斷設定可以獲得豐富的攻擊風險降低分析。 透過 [Azure 應用程式閘道 Web 應用程式防火牆](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，或者從 Azure Marketplace 安裝第 3 方防火牆，可以加上應用程式層保護。 針對 IPv4 和 IPv6 Azure [公用 IP 位址](virtual-network-public-ip-address.md)提供保護。
 
-|功能                                         |基本 DDoS 保護                 |Azure 標準 DDoS 保護                      |
-|------------------------------------------------|--------------------------------------|----------------------------------------------|
-|主動流量監視 & always on 偵測 |是                                   |是                                           |
-|自動攻擊緩和措施                    |是                                   |是                                           |
-|可用性保證                          |Azure 區域                          |應用程式                                   |
-|風險降低原則                             |針對 Azure 流量區域量進行調整 |調整應用程式流量量          |
-|計量 & 警示                                |否                                    |即時攻擊計量透過 Azure 監視器 & 資源記錄                                 |
-|風險降低報告                              |否                                    |攻擊後的風險降低報告                |
-|風險降低流程記錄                            |否                                    |適用于 SIEM 整合的 NRT 記錄資料流程           |
-|緩和原則自訂                 |否                                    |與 DDoS 專家接洽                           |
-|支援                                         |盡力而為                           |在主動攻擊期間存取 DDoS 專家|
-|SLA                                             |Azure 區域                          |應用程式保證 & 成本保護       |
-|定價                                         |免費                                  |每月 & 使用方式                         |
+![DDoS Protection 基本與標準](./media/ddos-protection-overview/ddoscomparison.png)
+
+Azure DDoS 保護不會儲存客戶資料。
 
 ## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>DDoS Protection Standard 可降低風險的 DDoS 攻擊類性
 
 DDoS 保護標準層可降低下列攻擊類型的風險：
 
-- **體積型攻擊**：這些攻擊會以大量看似合法的流量淹沒網路層。 其中包括 UDP 洪水攻擊、放大洪水攻擊和其他詐騙封包洪水攻擊。 DDoS Protection Standard 會自動使用 Azure 的全域網路規模來吸收並清除這些潛在的多 gb 攻擊，以減輕這些攻擊。
-- **通訊協定攻擊**：這些攻擊透過利用第 3 層和第 4 層通訊協定堆疊中的弱點，讓目標無法供存取。 其中包括 SYN 洪水攻擊、反映攻擊和其他通訊協定攻擊。 DDoS 保護標準層可透過與用戶端互動來區別惡意與合法流量並封鎖惡意流量，以降低這些攻擊的風險。 
-- **資源 (應用程式) 層攻擊**：這些攻擊會鎖定 Web 應用程式封包，以中斷主機之間的資料傳輸。 其中包括 HTTP 通訊協定違規、SQL 插入、跨網站腳本和其他第7層攻擊。 使用 Web 應用程式防火牆（例如 Azure[應用程式閘道 web 應用程式防火牆](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)）以及 DDoS 保護標準，以提供這些攻擊的防禦。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) 還提供了協力廠商 Web 應用程式防火牆供應項目。
+- **體積型攻擊**：這些攻擊會充斥大量看似合法流量的網路層。 其中包括 UDP 洪水、放大氾濫，以及其他詐騙封包氾濫。 DDoS Protection Standard 可透過 Azure 的全球網路規模自動吸收和清除這些潛在的多重 gb 攻擊，來降低這些攻擊。
+- **通訊協定攻擊**：這些攻擊透過利用第 3 層和第 4 層通訊協定堆疊中的弱點，讓目標無法供存取。 它們包含 SYN 洪水攻擊、反映攻擊和其他通訊協定攻擊。 DDoS 保護標準層可透過與用戶端互動來區別惡意與合法流量並封鎖惡意流量，以降低這些攻擊的風險。 
+- **資源 (應用程式) 層攻擊**：這些攻擊會鎖定 Web 應用程式封包，以中斷主機之間的資料傳輸。 其中包括 HTTP 通訊協定違規、SQL 插入、跨網站腳本和其他第7層攻擊。 使用 Web 應用程式防火牆，例如 Azure [應用程式閘道 Web 應用程式防火牆](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，以及 DDoS Protection Standard，以提供這些攻擊的防禦。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) 還提供了協力廠商 Web 應用程式防火牆供應項目。
 
-DDoS Protection Standard 可保護虛擬網路中的資源，包括與虛擬機器相關聯的公用 IP 位址、內部負載平衡器，以及應用程式閘道。 當結合應用程式閘道 web 應用程式防火牆，或在具有公用 IP 的虛擬網路中部署的協力廠商 web 應用程式防火牆時，DDoS 保護標準可以提供完整的第3層至第7層的風險降低功能。
+DDoS Protection Standard 可保護虛擬網路中的資源，包括與虛擬機器相關聯的公用 IP 位址、內部負載平衡器，以及應用程式閘道。 當與應用程式閘道 web 應用程式防火牆搭配使用，或在具有公用 IP 的虛擬網路中部署協力廠商 web 應用程式防火牆時，DDoS 保護標準可提供完整的第3層至第7層風險降低功能。
 
 ## <a name="ddos-protection-standard-features"></a>DDoS Protection Standard 功能
 
@@ -58,15 +47,15 @@ DDoS Protection Standard 可保護虛擬網路中的資源，包括與虛擬機�
 DDoS Protection Standard 功能包括：
 
 - **原生平台整合**：原生整合到 Azure。 包括透過 Azure 入口網站進行設定。 DDoS Protection Standard 了解您的資源和資源組態。
-- **全包式保護：** 簡化的設定會立即保護虛擬網路上的所有資源，並在啟用「DDoS 保護標準」之後才進行。 不需要任何介入或使用者定義。 一旦偵測到攻擊，DDoS Protection Standard 就會立即自動減輕攻擊。
-- **Always on 流量監視：** 您的應用程式流量模式會在一天24小時、一周7天內進行監視，以尋找 DDoS 攻擊的跡象。 超出保護原則時，就會執行安全防護功能。
-- **調適型微調：** 智慧型流量分析會在一段時間內學習您的應用程式流量，並選取及更新最適合您服務的設定檔。 設定檔會隨著時間調整流量變更。
+- 通行**保護：** 簡化的設定會在啟用 DDoS 保護標準時立即保護虛擬網路上的所有資源。 不需要任何介入或使用者定義。 一旦偵測到攻擊，DDoS Protection Standard 就會立即自動減輕攻擊。
+- **Always on 流量監視：** 您的應用程式流量模式會在一天24小時內（一周7天）進行監視，以尋找 DDoS 攻擊的指標。 超出保護原則時，就會執行安全防護功能。
+- **適應性調整：** 智慧型流量分析可在一段時間內學習您的應用程式流量，並選取及更新最適合您服務的設定檔。 設定檔會隨著時間調整流量變更。
 - **多層保護：** 搭配 Web 應用程式防火牆使用時，可提供完整堆疊 DDoS 保護。
 - **廣泛的安全防護範圍：** 可利用全域功能降低超過 60 種不同攻擊類型的風險，以抵禦最大的已知 DDoS 攻擊。
-- **攻擊分析：** 在攻擊期間取得以五分鐘為增量的詳細報告，並在攻擊結束後取得完整摘要。 將風險降低流量記錄串流至離線安全性資訊與事件管理 (SIEM) 系統，以便在攻擊期間進行近乎即時的監視。
+- **攻擊分析：** 在攻擊期間取得以五分鐘為增量的詳細報告，並在攻擊結束後取得完整摘要。 將風險降低流程記錄串流至 [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection) 或離線安全性資訊與事件管理 (SIEM) 系統，以在攻擊期間進行近乎即時的監視。
 - **攻擊計量：** 透過 Azure 監視器可以存取每個攻擊的摘要計量。
-- **攻擊警示：** 警示可以在開始和停止攻擊時設定，並在攻擊的持續時間內使用內建攻擊計量。 警示會整合到您的作業軟體，例如 Microsoft Azure 監視器記錄、Splunk、Azure 儲存體、電子郵件和 Azure 入口網站。
-- **成本保證：** 資料傳輸和應用程式向外延展服務點數，適用于已記載的 DDoS 攻擊。
+- **攻擊警示：** 您可以使用內建攻擊計量，在開始和停止攻擊時設定警示，並在攻擊的持續時間內設定警示。 警示會整合到您的操作軟體，例如 Microsoft Azure 監視器記錄、Splunk、Azure 儲存體、電子郵件和 Azure 入口網站。
+- **成本保證：** 資料傳輸和應用程式向外延展服務點數，適用于記載的 DDoS 攻擊。
 
 ## <a name="ddos-protection-standard-mitigation"></a>DDoS Protection Standard 安全防護功能
 
@@ -89,6 +78,6 @@ Microsoft 已與 [BreakingPoint Cloud](https://www.ixiacom.com/products/breaking
 - 記載 DDoS 合規性
 - 訓練您的網路安全性小組
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [設定 DDoS 保護標準層](manage-ddos-protection.md)

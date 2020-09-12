@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: af5486630eb89de198b6ed2975a919b04b01a902
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: ee55e0a66a0487291233713498f6eb541980dbba
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507492"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004267"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database 流量遷移至較新的閘道
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,14 @@ ms.locfileid: "88507492"
 ## <a name="status-updates"></a>狀態更新
 
 # <a name="in-progress"></a>[正在進行](#tab/in-progress-ip)
+### <a name="october-2020"></a>2020年10月
+
+即將將新的 SQL 閘道新增至下欄區域：
+
+- 德國中西部：51.116.240.0、51.116.248。0
+
+這些 SQL 閘道應該會在2020年10月12日開始接受客戶流量。 
+
 ### <a name="september-2020"></a>2020 年 9 月
 即將將新的 SQL 閘道新增至下欄區域。 這些 SQL 閘道應該會在 **2020 年9月 15**日開始接受客戶流量：
 
@@ -116,6 +124,6 @@ ms.locfileid: "88507492"
 
 如果上述緩和措施無法運作，請使用下列 URL 提出 SQL Database 或 SQL 受控執行個體的支援要求： https://aka.ms/getazuresupport
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入瞭解 [AZURE SQL 連線架構](connectivity-architecture.md)

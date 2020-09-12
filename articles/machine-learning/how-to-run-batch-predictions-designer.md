@@ -5,17 +5,17 @@ description: 了解如何使用設計工具來定型模型和設定批次預測�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: peterlu
-author: peterclu
-ms.date: 02/24/2020
+ms.author: keli19
+author: likebupt
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 61465210c9ad476c6d8d2987330498aa0efa39d4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e4ca191e50f4ca8aa5a11a36ec44e737cc2ef6bc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319604"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661461"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>使用 Azure Machine Learning 設計工具執行批次預測 (預覽)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -71,7 +71,10 @@ ms.locfileid: "87319604"
    
     輸入參數的名稱，或接受預設值。
 
-## <a name="publish-your-batch-inferencing-pipeline"></a>發佈您的批次推斷管線
+    > [!div class="mx-imgBorder"]
+    > ![將資料集設定為管線參數](./media/how-to-run-batch-predictions-designer/set-dataset-as-pipeline-parameter.png)
+
+## <a name="publish-your-batch-inference-pipeline"></a>發佈您的批次推斷管線
 
 現在您已經準備好部署推斷管線。 這會部署管線，並使其可供其他人使用。
 
@@ -126,9 +129,7 @@ ms.locfileid: "87319604"
 
 您可以在 [執行概觀] 面板中找到管線端點的 REST 端點。 您可以呼叫端點來使用其預設的已發佈管線。
 
-您也可以在 [已發佈的管線] 頁面中使用已發佈的管線。 選取已發佈的管線並尋找其 REST 端點。 
-
-![REST 端點詳細資料](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+您也可以在 [已發佈的管線] 頁面中使用已發佈的管線。 選取已發佈的管線，您可以在圖形右邊的 [發佈的 **管線總覽** ] 面板中找到它的 REST 端點。 
 
 若要進行 REST 呼叫，您將需要 OAuth 2.0 Bearer-type 驗證標頭。 若要進一步了解如何設定對工作區進行驗證以及如何進行參數化 REST 呼叫，請參閱下列[教學課程章節](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)。
 
@@ -142,7 +143,7 @@ ms.locfileid: "87319604"
 
 您也可以在端點的 [已發佈的管線] 索引標籤中，設定新的預設管線。
 
-![設定預設管線](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+![在已發佈的管線頁面中設定預設管線](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>後續步驟
 

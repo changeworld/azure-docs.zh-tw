@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 09/08/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: c0031b09dbb3335113cb52c9b3ec5e4fd4fa2758
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8be53838f6262eaafc643bc78fd08b6f02d9bac6
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011574"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660264"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>將自動完成和建議新增至用戶端應用程式
 
@@ -139,9 +139,11 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>建議函數
 
-如果您使用 c # 和 MVC 應用程式，您可以在 [控制器] 目錄下的 **HomeController.cs** 檔案，建立建議的結果類別。 在 .NET 中，建議函式是以 [DocumentsOperationsExtensions. 建議方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)為基礎。
+如果您使用 c # 和 MVC 應用程式，您可以在 [控制器] 目錄下的 **HomeController.cs** 檔案，建立建議的結果類別。 在 .NET 中，建議函式是以 [DocumentsOperationsExtensions. 建議方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)為基礎。 如需 .NET SDK 的詳細資訊，請參閱 [如何從 .Net 應用程式使用 Azure 認知搜尋](./search-howto-dotnet-sdk.md)。
 
-`InitSearch`方法會建立已驗證的 HTTP 索引用戶端至 Azure 認知搜尋服務。 如需 .NET SDK 的詳細資訊，請參閱 [如何從 .Net 應用程式使用 Azure 認知搜尋](./search-howto-dotnet-sdk.md)。
+`InitSearch`方法會建立已驗證的 HTTP 索引用戶端至 Azure 認知搜尋服務。 [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters)類別上的屬性會決定要在結果中搜尋和傳回哪些欄位、相符的數目，以及是否使用模糊比對。 
+
+針對自動完成，模糊比對會限制為一個編輯距離， (一個省略或錯置的字元) 。 請注意，自動完成查詢中的模糊比對有時可能會產生非預期的結果，視索引大小及其分區化方式而定。 如需詳細資訊，請參閱 [分割區和分區化概念](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)。
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -245,10 +247,10 @@ public ActionResult AutoComplete(string term)
 
 自動完成函式會取用搜尋字詞輸入。 此方法會建立 [AutoCompleteParameters 物件](/rest/api/searchservice/autocomplete)。 結果接著會轉換為 JSON，以供在用戶端中顯示。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請遵循下列連結以取得端對端指示，或示範搜尋即用類型體驗的程式碼。 這兩個程式碼範例都包含混合的建議和自動完成。
 
 + [教學課程：以 c # 建立您的第一個應用程式 (第3課) ](tutorial-csharp-type-ahead-and-suggestions.md)
-+ [C # 程式碼範例： azure-搜尋-dotnet-sample/create-first-app/3-add-自動提示/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)
++ [C # 程式碼範例： azure-搜尋-dotnet-sample/create-first-app/3-add-自動提示/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
 + [使用 REST 並行程式碼的 c # 和 JavaScript 範例](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

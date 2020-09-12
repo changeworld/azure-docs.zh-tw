@@ -1,19 +1,19 @@
 ---
-title: 將內部部署網路連線至 Azure 虛擬網路：站對站 VPN：入口網站
-description: 使用入口網站建立從內部部署網路到 Azure 虛擬網路的 IPsec 站對站 VPN 閘道連線，透過公用網際網路。
+title: 將內部部署網路連線到 Azure 虛擬網路：站對站 VPN：入口網站
+description: 使用入口網站，透過公用網際網路，建立從內部部署網路到 Azure 虛擬網路的 IPsec 站對站 VPN 閘道連線。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/03/2020
+ms.date: 09/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: ebfd03935f5189a544f11e5b8bbdd4b46e2aa989
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 660c346669c684921164f6488647f589492c7416
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037060"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006613"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 入口網站中建立站對站連線
 
@@ -41,7 +41,7 @@ ms.locfileid: "88037060"
 
 ### <a name="example-values"></a><a name="values"></a>範例值
 
-本文的範例使用下列值。 您可以使用這些值來建立測試環境，或參考這些值，進一步了解本文中的範例。 如需 VPN 閘道設定的一般詳細資訊，請參閱[關於 VPN 閘道設定](vpn-gateway-about-vpn-gateway-settings.md)。
+本文的範例使用下列值。 您可以使用這些值來建立測試環境，或參考這些值，進一步了解本文中的範例。 如需有關 VPN 閘道設定的一般詳細資訊，請參閱 [關於 Vpn 閘道設定](vpn-gateway-about-vpn-gateway-settings.md)。
 
 * **虛擬網路名稱：** VNet1
 * **位址空間：** 10.1.0.0/16
@@ -54,9 +54,9 @@ ms.locfileid: "88037060"
 * **公用 IP 位址名稱：** VNet1GWpip
 * **VPN 類型：** 以路由為基礎
 * **連線類型：** 站對站 (IPsec) 
-* **閘道類型：** 專用
+* **閘道類型：** Vpn
 * **局域網路閘道名稱：** Site1
-* **連接名稱：** VNet1toSite1
+* **連接名稱：** >vnet1tosite1
 * **共用的金鑰：** 此範例中，我們會使用 abc123。 但是，您可以使用任何與您 VPN 硬體相容的項目。 值務必符合連線的兩端。
 
 ## <a name="1-create-a-virtual-network"></a><a name="CreatVNet"></a>1. 建立虛擬網路
@@ -71,10 +71,10 @@ ms.locfileid: "88037060"
 
 ### <a name="example-settings"></a>範例設定
 
-* **> 區域的實例詳細資料：** 美國東部
+* **實例詳細資料 > 區域：** 美國東部
 * **虛擬網路 > 虛擬網路：** VNet1
 * **實例詳細資料 > 名稱：** VNet1GW
-* **> 閘道類型的實例詳細資料：** 專用
+* **> 閘道類型的實例詳細資料：** Vpn
 * **> VPN 類型的實例詳細資料：** 以路由為基礎
 * **虛擬網路 > 閘道子網位址範圍：** 10.1.255.0/27
 * **公用 ip 位址 > 公用 ip 位址名稱：** VNet1GWpip
@@ -86,7 +86,7 @@ ms.locfileid: "88037060"
 
 ## <a name="3-create-the-local-network-gateway"></a><a name="LocalNetworkGateway"></a>3. 建立局域網路閘道
 
-區域網路閘道通常是指您的內部部署位置。 請賦予網站可供 Azure 參考的名稱，然後指定您想要與其建立連線之內部部署 VPN 裝置的 IP 位址。 也請指定 IP 位址首碼，以供系統透過 VPN 閘道路由至 VPN 裝置。 您指定的位址首碼是位於內部部署網路上的首碼。 如果您的內部部署網路變更，或者您需要變更 VPN 裝置的公用 IP 位址，您稍後可以輕鬆地更新這些值。
+局域網路閘道是特定物件，代表您的內部部署位置 (網站) 以供路由之用。 請賦予網站可供 Azure 參考的名稱，然後指定您想要與其建立連線之內部部署 VPN 裝置的 IP 位址。 也請指定 IP 位址首碼，以供系統透過 VPN 閘道路由至 VPN 裝置。 您指定的位址首碼是位於內部部署網路上的首碼。 如果您的內部部署網路變更，或者您需要變更 VPN 裝置的公用 IP 位址，您稍後可以輕鬆地更新這些值。
 
 **範例值**
 
@@ -97,16 +97,16 @@ ms.locfileid: "88037060"
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 
-## <a name="4-configure-your-vpn-device"></a><a name="VPNDevice"></a>4. 設定 VPN 裝置
+## <a name="4-configure-your-vpn-device"></a><a name="VPNDevice"></a>4. 設定您的 VPN 裝置
 
 內部部署網路的站對站連線需要 VPN 裝置。 在此步驟中，設定 VPN 裝置。 在設定 VPN 裝置時，您需要下列項目：
 
 - 共用金鑰。 這個共同金鑰與您建立站對站 VPN 連線時指定的共用金鑰相同。 在我們的範例中，我們會使用基本的共用金鑰。 我們建議您產生更複雜的金鑰以供使用。
-- 虛擬網路閘道的公用 IP 位址。 您可以使用 Azure 入口網站、PowerShell 或 CLI 來檢視公用 IP 位址。 若要使用 Azure 入口網站來尋找 VPN 閘道的公用 IP 位址，請流覽至 [**虛擬網路閘道**]，然後按一下閘道的名稱。
+- 虛擬網路閘道的公用 IP 位址。 您可以使用 Azure 入口網站、PowerShell 或 CLI 來檢視公用 IP 位址。 若要使用 Azure 入口網站尋找 VPN 閘道的公用 IP 位址，請流覽至 [ **虛擬網路閘道**]，然後按一下您的閘道名稱。
 
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-include.md)]
 
-## <a name="5-create-the-vpn-connection"></a><a name="CreateConnection"></a>5. 建立 VPN 連線
+## <a name="5-create-the-vpn-connection"></a><a name="CreateConnection"></a>5. 建立 VPN 連接
 
 您會在虛擬網路閘道與內部部署 VPN 裝置之間建立站對站 VPN 連線。
 
@@ -137,7 +137,7 @@ ms.locfileid: "88037060"
 3. 如果您要使用站對站進行連線，且您尚未建立所需連線之站台的區域網路閘道，您可以新建立一個。
 4. 指定您需要使用的共用金鑰，然後按一下 [確定]**** 來建立連線。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需 BGP 的相關資訊，請參閱 [BGP 概觀](vpn-gateway-bgp-overview.md)和[如何設定 BGP](vpn-gateway-bgp-resource-manager-ps.md)。
 * 如需強制通道的相關資訊，請參閱[關於強制通道](vpn-gateway-forced-tunneling-rm.md)。

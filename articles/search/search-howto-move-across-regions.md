@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 03/24/2020
-ms.openlocfilehash: 71846b8e26efb3853705fabff78831e746727191
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/10/2020
+ms.openlocfilehash: 7383d9f95435775448f7322d9eb7707f676e9952
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926944"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007038"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>將您的 Azure 認知搜尋服務移至另一個 Azure 區域
 
@@ -23,7 +23,13 @@ ms.locfileid: "88926944"
 > [!NOTE]
 > 在 Azure 入口網站中，所有服務都有 [ **匯出範本** ] 命令。 在 Azure 認知搜尋的情況下，此命令會產生服務的基本定義 (名稱、位置、層級、複本和分割區計數) ，但無法辨識您服務的內容，也不會對金鑰、角色或記錄檔執行。 雖然命令存在，但不建議您使用它來移動搜尋服務。
 
-## <a name="guidance-for-moving-a-service"></a>移動服務的指引
+## <a name="prerequisites"></a>必要條件
+
++ 確定目的地區域中支援您帳戶所使用的服務和功能。
+
++ 對於預覽功能，確定您的訂用帳戶已列入目標區域的允許清單中。
+
+## <a name="prepare-and-move"></a>準備及移動
 
 1. 識別相依性和相關服務，以瞭解重新放置服務的完整影響，以防您需要移動不只是 Azure 認知搜尋。
 
@@ -41,9 +47,11 @@ ms.locfileid: "88926944"
 
 1. 更新用戶端應用程式和測試套件，以使用新的服務名稱和 API 金鑰，並測試所有應用程式。
 
-1. 在新服務經過完整測試和運作之後，刪除舊的服務。
+## <a name="discard-or-clean-up"></a>捨棄或清除
 
-## <a name="next-steps"></a>後續步驟
+在新服務經過完整測試和運作之後，刪除舊的服務。 刪除服務會自動刪除與服務相關聯的所有內容。
+
+## <a name="next-steps"></a>接下來的步驟
 
 下列連結可協助您在完成上述步驟時找出詳細資訊。
 

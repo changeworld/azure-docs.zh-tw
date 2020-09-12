@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07c1405482f107e370327ffbc049c77f483c29bd
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357863"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662579"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：如何變更預設組態
 本文的目的在於逐步解說如何對 Azure Active Directory (Azure AD) Connect 同步處理中的預設組態進行變更。其中提供一些常見案例的步驟。 具備此知識，您應該能夠根據自己的商務規則對自己的組態進行簡單的變更。
@@ -113,7 +113,7 @@ ms.locfileid: "85357863"
 上一節說明如何變更屬性流程。 本節提供了一些其他的範例。 如何建立同步處理規則的步驟已縮減，但您可以在上一節中找到完整的步驟。
 
 ### <a name="use-an-attribute-other-than-the-default"></a>使用預設以外的屬性
-在此 Fabrikam 案例中，有對指定的名字、姓氏和顯示名稱使用當地字母的樹系。 在擴充屬性中可以找到以拉丁字母表示的這些屬性。 在 Azure AD 和 Office 365 中建置全域通訊清單時，組織想要改用這些屬性。
+在此 Fabrikam 案例中，有對指定的名字、姓氏和顯示名稱使用當地字母的樹系。 在擴充屬性中可以找到以拉丁字母表示的這些屬性。 若要在 Azure AD 和 Microsoft 365 中建立全域通訊清單，組織想要改為使用這些屬性。
 
 在使用預設組態時，當地樹系中的物件看起來像這樣：  
 ![屬性流程 1](./media/how-to-connect-sync-change-the-configuration/attributeflowjp1.png)
@@ -200,7 +200,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
 - Azure AD 只接受兩個 UserType 屬性值：**Member** 和 **Guest**。
 - 如果 Azure AD Connect 未啟用 UserType 屬性的同步處理，透過目錄同步處理所建立的 Azure AD 使用者就會將 UserType 屬性設定為 **Member**。
-- 在 1.5.30.0 版之前，Azure AD 不允許以 Azure AD Connect 變更現有 Azure AD 使用者的 UserType 屬性。 在較舊版本中，只能在建立 Azure AD 使用者時設定此屬性，並[透過 Powershell 變更](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)。
+- 在 1.5.30.0 版之前，Azure AD 不允許以 Azure AD Connect 變更現有 Azure AD 使用者的 UserType 屬性。 在較舊的版本中，只能在 Azure AD 使用者建立期間設定，並透過 [PowerShell 變更](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)。
 
 在啟用 UserType 屬性的同步處理之前，您必須先決定要如何從內部部署 Active Directory 衍生此屬性。 以下是最常見的方法：
 

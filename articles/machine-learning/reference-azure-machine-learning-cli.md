@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: f037ea30a1507d4736db7f837e5286701db030e0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 3803b9770d3caf3f45f109b62145677a38c5bcc2
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146671"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657193"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>安裝和使用 Azure Machine Learning 的 CLI 擴充功能
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -246,7 +246,7 @@ az extension remove -n azure-cli-ml
     > [!TIP]
     > `az ml folder attach` 命令會建立一個 `.azureml` 子目錄，其中包含兩個範例 runconfig 檔案。 
     >
-    > 如果您有使用程式設計方式建立執行設定物件的 Python 指令碼，則可以使用 [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) 以將其儲存為 runconfig 檔案。
+    > 如果您有使用程式設計方式建立執行設定物件的 Python 指令碼，則可以使用 [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#&preserve-view=truesave-path-none--name-none--separate-environment-yaml-false-) 以將其儲存為 runconfig 檔案。
     >
     > 您可以在此 [JSON 檔案](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)中找到完整的 runconfig 結構描述。 此結構描述是透過每個物件的 `description` 索引鍵自行記錄。 此外，有一些列舉的可能值，以及結尾的範本程式碼片段。
 
@@ -366,7 +366,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 ### <a name="environment-configuration-schema"></a>環境設定結構描述
 
-如果您使用 `az ml environment scaffold` 命令，它會產生可修改的範本 `azureml_environment.json` 檔案，並使用 CLI 來建立自訂環境設定。 最上層物件會鬆散地對應至 Python SDK 中的 [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) 類別。 
+如果您使用 `az ml environment scaffold` 命令，它會產生可修改的範本 `azureml_environment.json` 檔案，並使用 CLI 來建立自訂環境設定。 最上層物件會鬆散地對應至 Python SDK 中的 [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true) 類別。 
 
 ```json
 {
@@ -410,17 +410,17 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 }
 ```
 
-下表詳細說明 JSON 檔案中的每個最上層欄位、欄位類型，以及描述。 如果物件類型已連結至 Python SDK 的類別，則每個 JSON 欄位與 Python 類別中的公用變數名稱之間會有鬆散的 1:1 比對。 在某些情況下，欄位可能會對應至建構函式引數，而不是類別變數。 例如，`environmentVariables` 欄位會對應至 [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) 類別中的 `environment_variables` 變數。
+下表詳細說明 JSON 檔案中的每個最上層欄位、欄位類型，以及描述。 如果物件類型已連結至 Python SDK 的類別，則每個 JSON 欄位與 Python 類別中的公用變數名稱之間會有鬆散的 1:1 比對。 在某些情況下，欄位可能會對應至建構函式引數，而不是類別變數。 例如，`environmentVariables` 欄位會對應至 [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true) 類別中的 `environment_variables` 變數。
 
 | JSON 欄位 | 類型 | 描述 |
 |---|---|---|
 | `name` | `string` | 環境的名稱。 名稱開頭請勿使用 **Microsoft** 或 **AzureML**。 |
 | `version` | `string` | 環境的版本。 |
 | `environmentVariables` | `{string: string}` | 環境變數名稱和值的雜湊對應。 |
-| `python` | [`PythonSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py) | 用來定義目標計算資源上使用的 Python 環境和解譯器的物件。 |
-| `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) | 定義設定，以自訂根據環境規格建立的 Docker 映像。 |
-| `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py) | 此區段可設定 Spark 設定。 只有當架構設為 PySpark 時，才會使用此設定。 |
-| `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py) | 設定 Databricks 程式庫相依性。 |
+| `python` | [`PythonSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py&preserve-view=true)hat 會定義要在目標計算資源上使用的 Python 環境和解譯器。 |
+| `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py&preserve-view=true) | 定義設定，以自訂根據環境規格建立的 Docker 映像。 |
+| `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py&preserve-view=true) | 此區段可設定 Spark 設定。 只有當架構設為 PySpark 時，才會使用此設定。 |
+| `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py&preserve-view=true) | 設定 Databricks 程式庫相依性。 |
 | `inferencingStackVersion` | `string` | 指定新增至映像的推斷堆疊版本。 若要避免新增推斷堆疊，請將此欄位保留 `null`。 有效值："latest"。 |
 
 ## <a name="ml-pipeline-management"></a>ML 管線管理

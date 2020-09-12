@@ -3,12 +3,12 @@ title: 擷取串流事件 - Azure 事件中樞 | Microsoft Docs
 description: 本文將概述可讓您透過 Azure 事件中樞擷取事件串流的擷取功能。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 201fde24e50fc9403d5e9faf314550520fb7b865
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2302f31130b6179b187c17e2f44c5fa7cc50648b
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522120"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667455"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>透過 Azure 事件中樞在 Azure Blob 儲存體或 Azure Data Lake Storage 中擷取事件
 Azure 事件中樞可讓您自動將事件中樞的串流資料擷取至您選擇的 [Azure Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)或 [Azure Data Lake Storage Gen 1 或 Gen 2](https://azure.microsoft.com/services/data-lake-store/) 帳戶，並另外增加了可指定時間或大小間隔的彈性。 設定擷取的作業很快，因此執行時不需要系統管理成本，而且它可以針對事件中樞的[輸送量單位](event-hubs-scalability.md#throughput-units)自動進行調整。 事件中樞擷取是將串流資料載入至 Azure 的最簡單方式，並可讓您專注於處理資料而非擷取資料。
@@ -132,7 +132,7 @@ Apache Avro 有提供適用於 [Java][Java] 和 [Python][Python] 的完整使用
 
 ## <a name="integration-with-event-grid"></a>事件格線整合 
 
-您可以使用事件中樞命名空間作為其來源，建立 Azure 事件格線訂用帳戶。 下列教學課程說明如何使用事件中樞作為來源、Azure Functions 應用程式作為接收，來建立事件方格訂用帳戶：[使用事件方格和 Azure Functions 將擷取的事件中樞資料處理並移轉至 SQL 資料倉儲](store-captured-data-data-warehouse.md)。
+您可以使用事件中樞命名空間作為其來源，建立 Azure 事件格線訂用帳戶。 下列教學課程說明如何使用事件中樞做為來源來建立事件方格訂用帳戶，並將 Azure Functions 應用程式建立為接收： [使用事件方格和 Azure Functions 來處理已捕捉的事件中樞資料，並將其遷移至 Azure Synapse Analytics](store-captured-data-data-warehouse.md)。
 
 ## <a name="next-steps"></a>後續步驟
 事件中樞擷取是將資料載入 Azure 中最簡單的方式。 使用 Azure Data Lake、Azure Data Factory 和 Azure HDInsight，即可使用您選擇的工具和平台，以您需要的規模執行批次處理和其他分析。
@@ -147,7 +147,7 @@ Apache Avro 有提供適用於 [Java][Java] 和 [Python][Python] 的完整使用
 [Apache Drill]: https://drill.apache.org/
 [Apache Spark]: https://spark.apache.org/
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
-[Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
+[Azure Storage Explorer]: https://github.com/microsoft/AzureStorageExplorer/releases
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
 [Avro Tools]: https://downloads.apache.org/avro/stable/java/
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html

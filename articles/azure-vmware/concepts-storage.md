@@ -3,12 +3,12 @@ title: 概念-儲存體
 description: 深入瞭解 Azure VMware 解決方案預覽版私人雲端中的重要儲存體功能。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 91484c1baae9801684bc49b931fa2080db676a00
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8afd58c61f2f78eec2a92354be6d88178340912e
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752222"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024310"
 ---
 # <a name="azure-vmware-solution-preview-storage-concepts"></a>Azure VMware 解決方案預覽版儲存體概念
 
@@ -28,7 +28,7 @@ Azure VMware 解決方案私用雲端提供原生的全叢集儲存體與 VMware
 
 ## <a name="data-at-rest-encryption"></a>待用資料加密
 
-vSAN 資料存放區預設使用待用資料加密。 加密解決方案是以 KMS 為基礎，而且支援進行金鑰管理的 vCenter 作業。 金鑰會以 HSM 為基礎的 Azure Key Vault 主要金鑰來加密儲存。 當主機因為任何原因而從叢集移除時，Ssd 上的資料會立即失效。
+vSAN 資料存放區預設使用待用資料加密。 加密解決方案是以 KMS 為基礎，而且支援進行金鑰管理的 vCenter 作業。 金鑰加密金鑰會儲存在 Azure Key Vault 中，而且當主機因為任何原因而從叢集移除時，Ssd 上的資料會立即失效。
 
 ## <a name="scaling"></a>調整大小
 
@@ -38,7 +38,7 @@ vSAN 資料存放區預設使用待用資料加密。 加密解決方案是以 K
 
 您可以在私人雲端中執行的工作負載上使用 Azure 儲存體服務。 Azure 儲存體服務包括儲存體帳戶、資料表儲存體和 Blob 儲存體。 工作負載與 Azure 儲存體服務的連接不會跨越網際網路。 此連線可提供額外的安全性，並可讓您在私人雲端工作負載中使用以 SLA 為基礎的 Azure 儲存體服務。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 下一步是瞭解私用 [雲端身分識別概念][concepts-identity]。
 

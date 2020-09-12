@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 9e50cdb16ee6acbdb903681984dcfbd7bfe170fa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386124"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660489"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>安裝 Azure Logic Apps 的內部部署資料閘道
 
@@ -33,15 +33,15 @@ ms.locfileid: "87386124"
   * 您的 Azure 帳戶必須是公司帳戶或學校帳戶，如下所示 `username@contoso.com` 。 您不能使用 Azure B2B (來賓) 帳戶或個人 Microsoft 帳戶，例如 @hotmail.com 或 @outlook.com。
 
     > [!NOTE]
-    > 如果您註冊 Office 365 供應項目，但未提供公司電子郵件地址，您的地址可能會像 `username@domain.onmicrosoft.com`。 您的帳戶會儲存在 Azure AD 租使用者中。 在大部分情況下，您的 Azure 帳戶的使用者主要名稱（UPN）與您的電子郵件地址相同。
+    > 如果您註冊了 Microsoft 365 供應專案但未提供您的工作電子郵件地址，您的位址可能會如下所示 `username@domain.onmicrosoft.com` 。 您的帳戶會儲存在 Azure AD 租使用者中。 在大部分的情況下，您的 Azure 帳戶 (UPN) 的使用者主體名稱，與您的電子郵件地址相同。
 
-    若要使用與 Microsoft 帳戶相關聯的[Visual Studio 標準訂](https://visualstudio.microsoft.com/vs/pricing/)用帳戶，請先[建立 Azure AD 租](../active-directory/develop/quickstart-create-new-tenant.md)使用者，或使用預設目錄。 將使用者連同密碼新增至目錄，然後將您 Azure 訂用帳戶的存取權授與該使用者。 接著，您就可以在安裝閘道時，使用此使用者名稱和密碼來進行登入。
+    若要使用與 Microsoft 帳戶相關聯的 [Visual Studio 標準訂](https://visualstudio.microsoft.com/vs/pricing/) 用帳戶，請先 [建立 Azure AD 租](../active-directory/develop/quickstart-create-new-tenant.md) 使用者，或使用預設目錄。 將使用者連同密碼新增至目錄，然後將您 Azure 訂用帳戶的存取權授與該使用者。 接著，您就可以在安裝閘道時，使用此使用者名稱和密碼來進行登入。
 
-  * 您的 Azure 帳戶必須只屬於單一[Azure Active Directory （Azure AD）租使用者或目錄](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 您必須使用相同的 Azure 帳戶來安裝和管理本機電腦上的閘道。
+  * 您的 Azure 帳戶必須只屬於單一 [Azure Active Directory (Azure AD) 租使用者或目錄](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 您必須使用相同的 Azure 帳戶在本機電腦上安裝和管理閘道。
 
-  * 當您安裝閘道時，您會使用您的 Azure 帳戶登入，這會將您的閘道安裝連結至您的 Azure 帳戶，而僅限該帳戶。 您無法將相同的閘道安裝連結到多個 Azure 帳戶或 Azure AD 的租使用者。
+  * 當您安裝閘道時，請使用您的 Azure 帳戶登入，此帳戶會將您的閘道安裝連結至您的 Azure 帳戶，而只會將該帳戶連結。 您無法將相同的閘道安裝連結到多個 Azure 帳戶或 Azure AD 租使用者。
 
-  * 稍後在 Azure 入口網站中，您必須使用相同的 Azure 帳戶來建立連結至閘道安裝的 Azure 閘道資源。 您只能將一個閘道安裝與一個 Azure 閘道資源互相連結。 不過，您的 Azure 帳戶可以連結到與 Azure 閘道資源相關聯的不同閘道安裝。 然後，您的邏輯應用程式就可以在觸發程式和可存取內部部署資料來源的動作中使用此閘道資源。
+  * 稍後在 Azure 入口網站中，您必須使用相同的 Azure 帳戶來建立連結至閘道安裝的 Azure 閘道資源。 您只能將一個閘道安裝與一個 Azure 閘道資源互相連結。 不過，您的 Azure 帳戶可以連結到每個與 Azure 閘道資源相關聯的不同閘道安裝。 然後，您的邏輯應用程式可以在可存取內部部署資料來源的觸發程式和動作中使用此閘道資源。
 
 * 您的本機電腦需求如下：
 

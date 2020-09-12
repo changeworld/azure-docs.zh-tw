@@ -17,19 +17,19 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 074c203a0a5688855d4f7607a877b25ce6ee6ad7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "65950906"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660563"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>判斷混合式身分識別解決方案的身分識別需求
 設計混合式身分識別解決方案的第一個步驟，是判斷將運用此解決方案的企業組織有何需求。  混合式身分識別一開始是支援的角色 (它可提供驗證而支援所有其他雲端解決方案)，接著會提供新奇有趣的功能，為使用者釋出新的工作負載。  您想要為使用者採用的這些工作負載或服務，會指定混合式身分識別設計的需求。  這些服務和工作負載在內部部署和雲端中都需要運用混合式身分識別。  
 
 我們必須通盤審視企業的各個主要層面，以了解其目前的需求，以及公司對未來的規劃。 如果您不清楚混合式身分識別設計的長期策略，您的解決方案在未來有可能無法隨著企業的成長和變化而進行調整。 下圖顯示混合式身分識別架構的範例，以及為使用者解除鎖定的工作負載。 此範例只是為了說明所有可透過健全的整合式身分識別策略釋出及提供的新可能性。 
 
-屬於混合式身分識別架構混合式身分識別架構的部分元件 ![](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+部分屬於混合式身分識別架構混合式身分 ![ 識別架構的元件](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>判斷商務需求
 每家公司都會有不同的需求，即使這些公司屬於相同產業，實際的商務需求仍可能有所不同。 您仍然可以採用業界的最佳作法，但最終引導您定義混合式身分識別設計需求的，仍將是公司的商務需求。 
@@ -72,10 +72,10 @@ ms.locfileid: "65950906"
   * 您的公司有使用 SAML 或類似同盟功能的內部部署應用程式 (內建或協力廠商)。
   * 透過智慧卡的 MFA。 RSA SecurID 等等。
   * 可解決下列問題的用戶端存取規則：
-    1. 我是否可根據用戶端的 IP 位址封鎖所有對 Office 365 的外部存取？
-    2. 我是否可封鎖所有對 Office 365 的外部存取 (Exchange ActiveSync 除外)？
-    3. 我是否可封鎖所有對 Office 365 的外部存取 (瀏覽器型應用程式 (OWA、SPO) 除外)？
-    4. 我是否可針對指定的 AD 群組成員封鎖所有對 Office 365 的外部存取？
+    1. 我可以根據用戶端的 IP 位址，封鎖對 Microsoft 365 的所有外部存取嗎？
+    2. 我可以封鎖所有外部存取 Microsoft 365 （Exchange ActiveSync 除外）嗎？
+    3. 我可以封鎖對 Microsoft 365 的所有外部存取，除了以瀏覽器為基礎的應用程式 (OWA、SPO) 
+    4. 我可以封鎖對指定 AD 群組成員的所有外部存取 Microsoft 365
 * 安全性/稽核考量
 * 對同盟驗證既有的投資
 * 我們的組織在雲端中的網域將使用何種名稱？
@@ -107,7 +107,7 @@ ms.locfileid: "65950906"
 > 
 > 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [判斷目錄同步處理需求](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
 
 ## <a name="see-also"></a>另請參閱

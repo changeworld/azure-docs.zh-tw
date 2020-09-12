@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 57e5fe236e117932c3cbc2fcf2479f89aaa261d9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 8665b49aebcb99ef3d3ded17e7e7653027aba21e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069064"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651633"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上準備您的開發環境
 
@@ -68,8 +68,8 @@ Service Fabric 工具是 Visual Studio 2017 和2019中的 Azure 開發工作負�
 
 目前的版本如下︰
 
-* Service Fabric SDK 和工具4.1.456
-* Service Fabric 執行時間7.1.456
+* Service Fabric SDK 和工具4.1.458
+* Service Fabric 執行時間7.1.458
 
 如需支援版本的清單，請參閱[Service Fabric 版本](service-fabric-versions.md)
 
@@ -88,7 +88,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 
 [Service Fabric 是容器協調者](service-fabric-containers-overview.md)，可用於將微服務部署至整個機器叢集。 若要在本機開發叢集上執行 Windows 容器應用程式，您必須先安裝 Docker for Windows。 取得 [Docker CE for Windows (穩定)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 安裝並啟動 Docker 之後，以滑鼠右鍵按一下系統匣圖示，然後選取 [切換至 Windows 容器]****。 這是執行以 Windows 為基礎的 Docker 映像時的必要步驟。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在您的開發環境已完成設定，您可以開始建置和執行應用程式。
 

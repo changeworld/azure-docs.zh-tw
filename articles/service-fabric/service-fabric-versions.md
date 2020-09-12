@@ -1,22 +1,22 @@
 ---
-title: Azure 中支援的叢集版本 Service Fabric
-description: 瞭解 Azure Service Fabric 中的叢集版本，包括來自 Service Fabric team blog 的最新發行連結。
+title: Azure Service Fabric 中支援的叢集版本
+description: 瞭解 Azure Service Fabric 中的叢集版本，包括 Service Fabric team blog 中最新版本的連結。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 9a2278769d75de19a3006e3a9f39b424dbc02b1f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d6e9bbe3a1a99a8e4ee726cb88796dccb6f6ccbd
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205899"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89652058"
 ---
 # <a name="supported-service-fabric-versions"></a>支援的 Service Fabric 版本
 
-請確定您的叢集一律執行支援的 Azure Service Fabric 版本。 在我們宣佈發行新版本的 Service Fabric 之後，最少60天，對舊版的支援結束。 您會在 [Service Fabric 小組的 blog](https://azure.microsoft.com/updates/?product=service-fabric)中找到新版本的公告。
+確定您的叢集一律執行支援的 Azure Service Fabric 版本。 在我們宣佈發行新版 Service Fabric 的最少60天后，就會結束對前一版的支援。 您可以在 [Service Fabric team blog](https://azure.microsoft.com/updates/?product=service-fabric)上找到新版本的公告。
 
-針對特定版本的 Service Fabric 執行時間，您可以使用 SDK/NuGet 套件的指定或較舊版本。 不支援較新版本的套件，而且可能會有以較舊叢集為目標的問題，因為這些環境可能會有不支援的功能或通訊協定變更。
+針對特定版本的 Service Fabric 執行時間，您可以使用指定或較舊版本的 SDK/NuGet 套件。 不支援較新版本的套件，而且可能會有以較舊叢集為目標的問題，因為它們可能具有這些環境不支援的功能或通訊協定變更。
 
-如需如何讓叢集執行支援的 Service Fabric 版本的詳細資訊，請參閱下列檔：
+請參閱下列檔，以取得如何讓您的叢集保持執行支援的 Service Fabric 版本的詳細資料：
 
 - [升級 Azure Service Fabric 叢集](service-fabric-cluster-upgrade.md)
 - [升級在獨立 Windows Server 叢集上執行的 Service Fabric 版本](service-fabric-cluster-upgrade-windows-server.md)
@@ -38,19 +38,20 @@ ms.locfileid: "88205899"
 | 6.2.* | 6.0.232.* |小於或等於 3.1 版 |2018年10月26日   |
 | 6.3.* | 6.1.480.* |小於或等於 3.2 版 |2019年3月31日  |
 | 6.4.* | 6.2.301.* |小於或等於 3.3 版 |2019年9月15日 |
-| 6.5. * | 6.4.617.* |小於或等於版本3。4 |2020年8月1日 |
-| 7.0.466.* | 6.4.664.* |小於或等於版本4。0|2020年11月1日  |
-| 7.0.466.* | 6.5. * |小於或等於版本4。0|2020年11月1日 |
-| 7.0.470.* | 7.0.466.* |小於或等於版本4。0 |2020年11月1日  |
-| 7.0.472.* | 7.0.466.* |小於或等於版本4。0 |2020年11月1日  |
-| 7.1.409.* | 7.0.466.* |小於或等於版本4。1 |目前的版本，因此沒有結束日期 |
-| 7.1.417.* | 7.0.466.* |小於或等於版本4。1 |目前的版本，因此沒有結束日期 |
-| 7.1.428.* | 7.0.466.* |小於或等於版本4。1 |目前的版本，因此沒有結束日期 |
-| 7.1.456.* | 7.0.466.* |小於或等於版本4。1 |目前的版本，因此沒有結束日期 |
+| 6.5. * | 6.4.617.* |小於或等於3.4 版 |2020年8月1日 |
+| 7.0.466.* | 6.4.664.* |小於或等於4.0 版|2020年11月1日  |
+| 7.0.466.* | 6.5. * |小於或等於4.0 版|2020年11月1日 |
+| 7.0.470.* | 7.0.466.* |小於或等於4.0 版 |2020年11月1日  |
+| 7.0.472.* | 7.0.466.* |小於或等於4.0 版 |2020年11月1日  |
+| 7.1.409.* | 7.0.466.* |小於或等於4.1 版 |目前的版本，因此沒有結束日期 |
+| 7.1.417.* | 7.0.466.* |小於或等於4.1 版 |目前的版本，因此沒有結束日期 |
+| 7.1.428.* | 7.0.466.* |小於或等於4.1 版 |目前的版本，因此沒有結束日期 |
+| 7.1.456.* | 7.0.466.* |小於或等於4.1 版 |目前的版本，因此沒有結束日期 |
+| 7.1.458.* | 7.0.466.* |小於或等於4.1 版 |目前的版本，因此沒有結束日期 |
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
-下表列出支援的 Service Fabric 版本所支援的作業系統。
+下表列出支援的 Service Fabric 版本支援的作業系統。
 
 | 作業系統 | 最早支援的 Service Fabric 版本 |
 | --- | --- |
@@ -105,7 +106,7 @@ ms.locfileid: "88205899"
 | 6.4 CU6 | 6.4.658.9590 | NA |
 | 6.4 CU7 | 6.4.664.9590 | 6.4.661.1 |
 | 6.4 CU8 | 6.4.670.9590 | NA |
-| 6.5 RTO | 6.5.639.9590 | 6.5.435.1 |
+| 6.5 RTO | 6.5.639.9590 | 6.5.435.1 版 |
 | 6.5 CU1 | 6.5.641.9590 | 6.5.454.1 |
 | 6.5 CU2 | 6.5.658.9590 | 6.5.460.1 |
 | 6.5 CU3 | 6.5.664.9590 | 6.5.466.1 |
@@ -119,4 +120,5 @@ ms.locfileid: "88205899"
 | 7.1 CU1 | 7.1.417.9590 | 7.1.418.1 |
 | 7.1 CU2 | 7.1.428.9590 | 7.1.428.1 |
 | 7.1 CU3 | 7.1.456.9590 | 7.1.452.1 |
+| 7.1 CU5 | 7.1.458.9590 | 7.1.454.1 |
 

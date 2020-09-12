@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 3c097260812e72dfaa3678a4aade556a337e6a6c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: d87635b3bfbfd70a67e8eebd4000fda73229d606
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272894"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018351"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中樞利用 Private Link 和受控識別支援虛擬網路
 
@@ -225,6 +225,8 @@ IoT 中樞可設定為將訊息路由傳送至客戶擁有的服務匯流排命�
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>輸出連線到儲存體帳戶以進行檔案上傳
 
 IoT 中樞的檔案上傳功能可讓裝置將檔案上傳至客戶所擁有儲存體帳戶。 若要讓檔案上傳正常運作，裝置和 IoT 中樞都必須具有與儲存體帳戶的連線。 如果儲存體帳戶上有防火牆限制，裝置就必須使用任何支援的儲存體帳戶機制 (包括[私人端點](../private-link/create-private-endpoint-storage-portal.md)、[服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)或[直接防火牆設定](../storage/common/storage-network-security.md)) 來取得連線。 同樣地，如果儲存體帳戶上有防火牆限制，IoT 中樞就必須設定為透過信任的 Microsoft 服務例外來存取儲存體資源。 基於此目的， IoT 中樞必須具有受控識別。 佈建受控識別之後，請遵循下列步驟，將 RBAC 權限提供給中樞的資源身分識別，以存取儲存體帳戶。
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 1. 在 Azure 入口網站中，巡覽至儲存體帳戶的 [存取控制 (IAM)] 索引標籤，然後按一下 [新增角色指派] 區段下的 [新增]。
 

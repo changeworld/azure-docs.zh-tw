@@ -16,29 +16,29 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1754456873e464e4bd624f47c5ea98e4fb88827
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9411c22183620f883b4d2819eb3078e49837e578
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542224"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016073"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步處理：將屬性同步處理至 Azure Active Directory
 本主題列出 Azure AD Connect 同步處理所同步處理的屬性。  
 屬性會依相關的 Azure AD App 來分組。
 
 ## <a name="attributes-to-synchronize"></a>要同步處理的屬性
-常見的問題是同步處理的最少屬性清單為何 **。 建議的預設方法是保留預設屬性，這樣可以在雲端建構完整的 GAL (全域通訊清單)，並取得 Office 365 工作負載的所有功能。 在某些情況下，貴組織會有某些不想同步處理至雲端的屬性，因為這些屬性包含機密或 PII (個人識別資訊) 資料，如以下範例所示：  
+常見的問題是同步處理的最少屬性清單為何 **。 預設和建議的方法是保留預設屬性，讓完整的 GAL (全域通訊清單) 可在雲端中建立，並取得 Microsoft 365 工作負載中的所有功能。 在某些情況下，您的組織不想將某些屬性同步處理至雲端，因為這些屬性包含機密的個人資料，如下列範例所示：  
 ![不正確的屬性](./media/reference-connect-sync-attributes-synchronized/badextensionattribute.png)
 
-在此情況下，請從本主題中的屬性清單著手，然後識別出包含機密或 PII 資料而不能同步處理的屬性。 接著，在安裝期間使用 [Azure AD 應用程式和屬性篩選](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering)將這些屬性取消選取。
+在此情況下，請從本主題中的屬性清單開始，並識別包含個人資料且無法同步處理的屬性。 接著，在安裝期間使用 [Azure AD 應用程式和屬性篩選](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering)將這些屬性取消選取。
 
 > [!WARNING]
 > 將屬性取消選取時，您應該小心，只將絕對不可能進行同步處理的屬性取消選取。 取消選取其他屬性可能對功能造成負面的影響。
 >
 >
 
-## <a name="office-365-proplus"></a>Office 365 ProPlus
+## <a name="microsoft-365-apps-for-enterprise"></a>Microsoft 365 Apps 企業版
 | 屬性名稱 | User | 註解 |
 | --- |:---:| --- |
 | accountEnabled |X |定義是否啟用帳戶。 |
@@ -52,7 +52,7 @@ ms.locfileid: "87542224"
 | userPrincipalName |X |UPN 是使用者的登入識別碼。 最常與 [mail] 值相同。 |
 
 ## <a name="exchange-online"></a>Exchange Online
-| 屬性名稱 | User | Contact | 群組 | 註解 |
+| 屬性名稱 | User | Contact | Group | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | assistant |X |X | | |
@@ -165,7 +165,7 @@ ms.locfileid: "87542224"
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | |在 Exchange Online 成為此屬性的授權來源，且任何稍後的變更都無法從內部部署同步之後，才從 Azure AD 同步處理到 Exchange Online 一次。 如需詳細資訊，請參閱（[KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)）。|
+| thumbnailphoto |X |X | |從 Azure AD 同步到 Exchange Online 一次，之後 Exchange Online 會成為此屬性的授權來源，而任何稍後的變更都無法從內部部署同步處理。 如需詳細資訊，請參閱 ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) 。|
 | title |X |X | | |
 | unauthOrig |X |X |X | |
 | usageLocation |X | | |機械屬性。 使用者的國家/地區。 用於授權指派。 |
@@ -175,7 +175,7 @@ ms.locfileid: "87542224"
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| 屬性名稱 | User | Contact | 群組 | 註解 |
+| 屬性名稱 | User | Contact | Group | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | authOrig |X |X |X | |
@@ -247,7 +247,7 @@ ms.locfileid: "87542224"
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | |在 Exchange Online 成為此屬性的授權來源，且任何稍後的變更都無法從內部部署同步之後，才從 Azure AD 同步處理到 Exchange Online 一次。 如需詳細資訊，請參閱（[KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)）。|
+| thumbnailphoto |X |X | |從 Azure AD 同步到 Exchange Online 一次，之後 Exchange Online 會成為此屬性的授權來源，而任何稍後的變更都無法從內部部署同步處理。 如需詳細資訊，請參閱 ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) 。|
 | title |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
@@ -256,8 +256,8 @@ ms.locfileid: "87542224"
 | userPrincipalName |X | | |UPN 是使用者的登入識別碼。 最常與 [mail] 值相同。 |
 | wWWHomePage |X |X | | |
 
-## <a name="teams-and-skype-for-business-online"></a>小組與商務用 Skype Online
-| 屬性名稱 | User | Contact | 群組 | 註解 |
+## <a name="teams-and-skype-for-business-online"></a>小組和商務用 Skype Online
+| 屬性名稱 | User | Contact | Group | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | c |X |X | | |
@@ -298,14 +298,14 @@ ms.locfileid: "87542224"
 | st |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | |在 Exchange Online 成為此屬性的授權來源，且任何稍後的變更都無法從內部部署同步之後，才從 Azure AD 同步處理到 Exchange Online 一次。 如需詳細資訊，請參閱（[KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)）。|
+| thumbnailphoto |X |X | |從 Azure AD 同步到 Exchange Online 一次，之後 Exchange Online 會成為此屬性的授權來源，而任何稍後的變更都無法從內部部署同步處理。 如需詳細資訊，請參閱 ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) 。|
 | title |X |X | | |
 | usageLocation |X | | |機械屬性。 使用者的國家/地區。 用於授權指派。 |
 | userPrincipalName |X | | |UPN 是使用者的登入識別碼。 最常與 [mail] 值相同。 |
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| 屬性名稱 | User | Contact | 群組 | 註解 |
+| 屬性名稱 | User | Contact | Group | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | cn |X | |X |一般名稱或別名。 最常見的前置詞是 [mail] 值。 |
@@ -320,7 +320,7 @@ ms.locfileid: "87542224"
 | userPrincipalName |X | | |這個 UPN 是使用者的登入識別碼。 最常與 [mail] 值相同。 |
 
 ## <a name="intune"></a>Intune
-| 屬性名稱 | User | Contact | 群組 | 註解 |
+| 屬性名稱 | User | Contact | Group | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | c |X |X | | |
@@ -338,7 +338,7 @@ ms.locfileid: "87542224"
 | userPrincipalName |X | | |UPN 是使用者的登入識別碼。 最常與 [mail] 值相同。 |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| 屬性名稱 | User | Contact | 群組 | 註解 |
+| 屬性名稱 | User | Contact | Group | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | c |X |X | | |
@@ -375,9 +375,9 @@ ms.locfileid: "87542224"
 * Yammer (使用的只有 User)
 * [SharePoint 等資源所提供的混合式企業對企業 (B2B) 跨組織共同作業案例](https://go.microsoft.com/fwlink/?LinkId=747036)
 
-此群組是一組屬性，是未使用 Azure AD 目錄來支援 Office 365、Dynamics 或 Intune 時所能使用的屬性。 它包含一小組的核心屬性。 請注意，對於某些協力廠商應用程式的單一登入或布建除了此處所述的屬性之外，還需要設定屬性的同步處理。 應用程式需求將在每個應用程式的[SaaS 應用程式教學](../saas-apps/tutorial-list.md)課程中加以說明。
+此群組是一組屬性，如果 Azure AD 目錄未用來支援 Microsoft 365、Dynamics 或 Intune，便可使用這些屬性。 它包含一小組的核心屬性。 請注意，單一登入或布建至某些協力廠商應用程式需要設定屬性的同步處理，以及此處所述的屬性。 應用程式需求會在每個應用程式的 [SaaS 應用程式教學](../saas-apps/tutorial-list.md) 課程中說明。
 
-| 屬性名稱 | User | Contact | 群組 | 註解 |
+| 屬性名稱 | User | Contact | Group | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
 | cn |X | |X | |
@@ -397,7 +397,7 @@ ms.locfileid: "87542224"
 | userPrincipalName |X | | |UPN 是使用者的登入識別碼。 最常與 [mail] 值相同。 |
 
 ## <a name="windows-10"></a>Windows 10
-已加入網域的 Windows 10 電腦 (裝置) 會將某些屬性同步處理至 Azure AD。 如需這些案例的詳細資訊，請參閱 [將已加入網域的裝置連接到 Azure AD 以體驗 Windows 10](../active-directory-azureadjoin-devices-group-policy.md)。 這些屬性一律會進行同步處理，而且 Windows 10 不會顯示為您可以取消選取的應用程式。 Windows 10 已加入網域的電腦是透過填入屬性 userCertificate 來識別。
+已加入網域的 Windows 10 電腦 (裝置) 會將某些屬性同步處理至 Azure AD。 如需這些案例的詳細資訊，請參閱 [將已加入網域的裝置連接到 Azure AD 以體驗 Windows 10](../devices/hybrid-azuread-join-plan.md)。 這些屬性一律會進行同步處理，而且 Windows 10 不會顯示為您可以取消選取的應用程式。 Windows 10 已加入網域的電腦是透過填入屬性 userCertificate 來識別。
 
 | 屬性名稱 | 裝置 | 註解 |
 | --- |:---:| --- |
@@ -422,7 +422,7 @@ ms.locfileid: "87542224"
 ## <a name="exchange-hybrid-writeback"></a>Exchange 混合回寫
 當您選擇啟用「Exchange 混合」 **** 時，系統會將這些屬性從 Azure AD 寫回到內部部署 Active Directory。 根據您的 Exchange 版本有可能會同步處理較少的屬性。
 
-| 屬性名稱 (內部部署 AD) | 屬性名稱 (Connect UI) | User | Contact | 群組 | 註解 |
+| 屬性名稱 (內部部署 AD) | 屬性名稱 (Connect UI) | User | Contact | Group | 註解 |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |衍生自 Azure AD 中的 cloudAnchor。 這個屬性是 Exchange 2016 和 Windows Server 2016 AD 中的新屬性。 |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |線上封存：可讓客戶封存郵件。 |
@@ -466,11 +466,11 @@ ms.locfileid: "87542224"
 | msDS-IsManaged |X | |
 | msDS-RegisteredOwner |X | |
 
-## <a name="notes"></a>注意
+## <a name="notes"></a>備註
 * 使用「替代識別碼」時，內部部署屬性 userPrincipalName 會與 Azure AD 屬性 onPremisesUserPrincipalName 進行同步處理。 「替代識別碼」屬性 (例如 mail) 會與 Azure AD 屬性 userPrincipalName 進行同步處理。
 * 在上面的清單中，物件類型 **User** 也適用於物件類型 **iNetOrgPerson**。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 深入了解 [Azure AD Connect 同步](how-to-connect-sync-whatis.md) 組態。
 
 深入了解 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

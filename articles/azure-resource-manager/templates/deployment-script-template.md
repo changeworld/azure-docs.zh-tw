@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: jgao
-ms.openlocfilehash: 4094e610bb290fc11656dc192f3d0a495f679dc5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fb6d1c9e0e2ca545be850af22df15b342cf8d82c
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291802"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667507"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在範本中使用部署指令碼 (預覽)
 
@@ -74,7 +74,7 @@ ms.locfileid: "87291802"
 
   ---
 
-- **Azure PowerShell** 或 **Azure CLI**。 請參閱支援的[Azure PowerShell 版本](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)清單。 請參閱支援的[Azure CLI 版本](https://mcr.microsoft.com/v2/azure-cli/tags/list)清單。
+- **Azure PowerShell** 或 **Azure CLI**。 請參閱支援的 [Azure PowerShell 版本](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)清單。 請參閱支援的 [Azure CLI 版本](https://mcr.microsoft.com/v2/azure-cli/tags/list)清單。
 
     >[!IMPORTANT]
     > 部署指令碼會使用 Microsoft Container Registry (MCR) 中的可用 CLI 映像。 需要約一個月的時間來認證適用於部署指令碼的 CLI 映像。 請勿使用在 30 天內發行的 CLI 版本。 若要尋找映像的發行日期，請參閱 [Azure CLI 版本資訊](/cli/azure/release-notes-azure-cli?view=azure-cli-latest)。 如果使用不支援的版本，則錯誤訊息會列出支援的版本。
@@ -131,7 +131,7 @@ ms.locfileid: "87291802"
 ```
 
 > [!NOTE]
-> 此範例僅供示範之用。  **scriptContent**和**primaryScriptUri**不能並存于範本中。
+> 此範例僅供示範之用。  **scriptContent** 和 **primaryScriptUri** 不能並存于範本中。
 
 屬性值詳細資料：
 
@@ -143,17 +143,17 @@ ms.locfileid: "87291802"
 - **azPowerShellVersion**/**azCliVersion**：指定要使用的模組版本。 如需支援的 PowerShell 和 CLI 版本清單，請參閱[必要條件](#prerequisites)。
 - **arguments**：指定參數值。 多個值應以空格分隔。
 
-    部署腳本會叫用[CommandLineToArgvW](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw)系統呼叫，以將引數分割成字串陣列。 這是必要的，因為引數會當做[命令屬性](/rest/api/container-instances/containergroups/createorupdate#containerexec)傳遞至 Azure 容器實例，而 command 屬性是字串陣列。
+    部署腳本會叫用 [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) 系統呼叫，以將引數分割為字串陣列。 這是必要的，因為引數會作為 [命令屬性](/rest/api/container-instances/containergroups/createorupdate#containerexec) 傳遞至 Azure 容器實例，而 command 屬性是字串的陣列。
 
-    如果引數包含逸出字元，請使用[JsonEscaper](https://www.jsonescaper.com/)來重複字元的轉義。 將原始的逸出字元串貼入工具中，然後選取 [ **Escape**]。  此工具會輸出雙重的逸出字元串。 例如，在前一個範例範本中，引數為 **-name \\ "John Dole \\ "**。  此轉義的字串為 **-name \\ \\ \\ "John dole \\ \\ \\ "**。
+    如果引數包含已轉義的字元，請使用 [JsonEscaper](https://www.jsonescaper.com/) 來將字元換成雙引號。 將原始的逸出字元串貼入工具中，然後選取 [ **Escape**]。  此工具會輸出雙精度浮點數的字串。 例如，在先前的範例範本中，引數為 **-name \\ "John Dole \\ "**。  此逸出字元串的**名稱為 \\ \\ \\ "John dole \\ \\ \\ "**。
 
-    若要將類型為 object 的 ARM 範本參數當做引數傳遞，請使用[string （）](./template-functions-string.md#string)函式將物件轉換為字串，然後使用[replace （）](./template-functions-string.md#replace)函式來取代任何** \\ "** into ** \\ \\ \\ "**。 例如：
+    若要將類型 object 的 ARM 範本參數傳遞為引數，請使用[字串 ( # B1](./template-functions-string.md#string)函數將物件轉換為字串，然後使用[replace ( # B3](./template-functions-string.md#replace)函式來取代任何** \\ "** into ** \\ \\ \\ "**。 例如：
 
     ```json
     replace(string(parameters('tables')), '\"', '\\\"')
     ```
 
-    若要查看範例範本，請選取[這裡](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json)。
+    若要查看範例範本，請 [在這裡](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json)選取。
 
 - **environmentVariables**：指定要傳遞至指令碼的環境變數。 如需相關資訊，請參閱[開發部署指令碼](#develop-deployment-scripts)。
 - **scriptContent**：指定指令碼內容。 若要執行外部指令碼，請改用 `primaryScriptUri`。 如需範例，請參閱[使用內嵌指令碼](#use-inline-scripts)和[使用外部指令碼](#use-external-scripts)。
@@ -161,7 +161,7 @@ ms.locfileid: "87291802"
 - **supportingScriptUris**：為 `ScriptContent` 或 `PrimaryScriptUri` 中呼叫的支援檔案指定可公開存取 URL 的陣列。
 - **timeout**：指定以 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)指定的指令碼執行時間允許上限。 預設值為 **P1D**。
 - **cleanupPreference**。 指定當指令碼執行進入終端狀態時，清除部署資源的喜好設定。 預設設定為 [一律]，這表示不論終端狀態 (成功、失敗、已取消) 皆刪除資源。 若要深入了解，請參閱[清除部署指令碼資源](#clean-up-deployment-script-resources)。
-- **retentionInterval**：指定在部署指令碼執行到達終端狀態後，服務保留部署指令碼資源的間隔。 此持續時間到期後，即會刪除部署指令碼資源。 持續時間以 [ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)為基礎。 預設值為**P1D**，這表示一天。 當 cleanupPreference 設定為 OnExpiration 時，就會使用此屬性。 目前並未啟用 OnExpiration 屬性。 若要深入了解，請參閱[清除部署指令碼資源](#clean-up-deployment-script-resources)。
+- **retentionInterval**：指定在部署指令碼執行到達終端狀態後，服務保留部署指令碼資源的間隔。 此持續時間到期後，即會刪除部署指令碼資源。 持續時間以 [ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)為基礎。 預設值為 **P1D**，表示一天。 當 cleanupPreference 設定為 OnExpiration 時，就會使用此屬性。 目前並未啟用 OnExpiration 屬性。 若要深入了解，請參閱[清除部署指令碼資源](#clean-up-deployment-script-resources)。
 
 ### <a name="additional-samples"></a>其他範例
 
@@ -179,9 +179,9 @@ ms.locfileid: "87291802"
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
 
 > [!NOTE]
-> 因為內嵌部署腳本是以雙引號括住，所以必須使用 **&#92;** 或以單引號括住部署腳本內的字串。 您也可以考慮使用字串替代，如先前的 JSON 範例中所示。
+> 因為內嵌部署腳本是以雙引號括住，所以部署腳本內的字串必須使用 **&#92;** 或以單引號括住。 您也可以考慮使用字串替代，如先前的 JSON 範例中所示。
 
-指令碼接受一個參數，並輸出參數值。 **DeploymentScriptOutputs** 用於儲存輸出。  在 [輸出] 區段中，[值] 行會顯示如何存取儲存的值。 `Write-Output` 是用來偵錯。 若要瞭解如何存取輸出檔案，請參閱[監視和疑難排解部署腳本](#monitor-and-troubleshoot-deployment-scripts)。  如需屬性描述，請參閱[範例範本](#sample-templates)。
+指令碼接受一個參數，並輸出參數值。 **DeploymentScriptOutputs** 用於儲存輸出。  在 [輸出] 區段中，[值] 行會顯示如何存取儲存的值。 `Write-Output` 是用來偵錯。 若要瞭解如何存取輸出檔，請參閱 [監視和疑難排解部署腳本](#monitor-and-troubleshoot-deployment-scripts)。  如需屬性描述，請參閱[範例範本](#sample-templates)。
 
 若要執行指令碼，請選取 [試試看] 以開啟 Cloud Shell，然後將下列程式碼貼到 Shell 窗格中。
 
@@ -217,7 +217,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-supporting-scripts"></a>使用支援的指令碼
 
-您可以將複雜的邏輯分隔成一個或多個支援的指令檔。 `supportingScriptURI` 屬性可讓您視需要將 URI 陣列提供給支援的指令檔：
+您可以將複雜的邏輯分隔成一個或多個支援的指令檔。 `supportingScriptUris` 屬性可讓您視需要將 URI 陣列提供給支援的指令檔：
 
 ```json
 "scriptContent": "
@@ -261,7 +261,7 @@ reference('<ResourceName>').output.text
 
 執行執行個體及疑難排解時，需要儲存體帳戶和容器執行個體。 您可以選擇指定現有的儲存體帳戶，否則指令碼服務會自動建立儲存體帳戶和容器執行個體。 使用現有儲存體帳戶的需求：
 
-- 支援的儲存體帳戶類型如下：
+- 支援的儲存體帳戶類型為：
 
     | SKU             | 支援的種類     |
     |-----------------|--------------------|
@@ -274,7 +274,7 @@ reference('<ResourceName>').output.text
     | Standard_RAGZRS | StorageV2          |
     | Standard_ZRS    | StorageV2          |
 
-    這些組合支援檔案共用。  如需詳細資訊，請參閱[建立 Azure 檔案共用](../../storage/files/storage-how-to-create-file-share.md)和[儲存體帳戶的類型](../../storage/common/storage-account-overview.md)。
+    這些組合支援檔案共用。  如需詳細資訊，請參閱 [建立 Azure 檔案共用](../../storage/files/storage-how-to-create-file-share.md) 和 [儲存體帳戶類型](../../storage/common/storage-account-overview.md)。
 - 尚未支援儲存體帳戶防火牆規則。 如需詳細資訊，請參閱[設定 Azure 儲存體防火牆和虛擬網路](../../storage/common/storage-network-security.md)。
 - 部署指令碼的使用者指派受控識別必須具有管理儲存體帳戶的權限，其中包括讀取、建立、刪除檔案共用。
 
@@ -305,9 +305,9 @@ reference('<ResourceName>').output.text
 
 ### <a name="handle-non-terminating-errors"></a>處理非終止錯誤
 
-您可以使用部署指令碼中的  **$ErrorActionPreference** 變數，藉此控制 PowerShell 回應非終止錯誤的方式。 如果您的部署腳本中未設定變數，腳本服務會使用預設值 [**繼續**]。
+您可以使用部署指令碼中的  **$ErrorActionPreference** 變數，藉此控制 PowerShell 回應非終止錯誤的方式。 如果您的部署腳本中未設定變數，腳本服務會使用預設值 **Continue**。
 
-腳本服務會將資源布建狀態設定為 $ErrorActionPreference [**失敗**]。
+當腳本在 $ErrorActionPreference 設定時遇到錯誤時，腳本服務會將資源布建狀態設定為 **失敗** 。
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>將安全的字串傳遞至部署指令碼
 
@@ -327,22 +327,22 @@ reference('<ResourceName>').output.text
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-在您部署部署腳本資源之後，資源會列在 [Azure 入口網站中的 [資源] 群組底下。 下列螢幕擷取畫面顯示部署腳本資源的 [總覽] 頁面：
+部署腳本資源部署完成後，資源會列在 Azure 入口網站中的資源群組底下。 下列螢幕擷取畫面顯示部署腳本資源的總覽頁面：
 
 ![Resource Manager 範本部署腳本入口網站總覽](./media/deployment-script-template/resource-manager-deployment-script-portal.png)
 
-[總覽] 頁面會顯示資源的一些重要資訊，例如布建**狀態**、**儲存體帳戶**、**容器實例**和**記錄**。
+[總覽] 頁面會顯示資源的一些重要資訊，例如「布建 **狀態**」、「 **儲存體帳戶**」、「 **容器實例**」和「 **記錄**」。
 
-您可以從左側功能表中，查看部署腳本內容、傳遞至腳本的引數，以及輸出。  您也可以匯出部署腳本的範本，包括部署腳本。
+您可以從左側功能表中，查看部署腳本內容、傳遞給腳本的引數，以及輸出。  您也可以匯出包含部署腳本的部署腳本範本。
 
 ### <a name="use-powershell"></a>使用 PowerShell
 
-使用 Azure PowerShell，您可以在訂用帳戶或資源群組範圍管理部署腳本：
+您可以使用 Azure PowerShell，在訂用帳戶或資源群組範圍管理部署腳本：
 
 - [AzDeploymentScript](/powershell/module/az.resources/get-azdeploymentscript)：取得或列出部署腳本。
 - [AzDeploymentScriptLog](/powershell/module/az.resources/get-azdeploymentscriptlog)：取得部署腳本執行的記錄檔。
 - [AzDeploymentScript](/powershell/module/az.resources/remove-azdeploymentscript)：移除部署腳本及其相關聯的資源。
-- [AzDeploymentScriptLog](/powershell/module/az.resources/save-azdeploymentscriptlog)：將部署腳本執行的記錄檔儲存至磁片。
+- [AzDeploymentScriptLog](/powershell/module/az.resources/save-azdeploymentscriptlog)：將部署腳本執行的記錄儲存至磁片。
 
 AzDeploymentScript 輸出類似于：
 
@@ -373,14 +373,14 @@ Timeout             : PT1H
 
 ### <a name="use-azure-cli"></a>使用 Azure CLI
 
-使用 Azure CLI，您可以在訂用帳戶或資源群組範圍管理部署腳本：
+您可以使用 Azure CLI，在訂用帳戶或資源群組範圍管理部署腳本：
 
 - [az 部署-腳本刪除](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-delete)：刪除部署腳本。
-- [az 部署-腳本清單](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-list)：列出所有部署腳本。
-- [az 部署-腳本顯示](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show)：取出部署腳本。
-- [az 部署-腳本顯示-log](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show-log)：顯示部署腳本記錄。
+- [az deployment-scripts list](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-list)：列出所有的部署腳本。
+- [az deployment-scripts show](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show)：取出部署腳本。
+- [az 部署-腳本顯示-記錄](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show-log)：顯示部署腳本記錄檔。
 
-List 命令輸出類似于：
+清單命令輸出類似于：
 
 ```json
 [
@@ -531,9 +531,9 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 - **cleanupPreference**：當指令碼執行進入終端狀態時，清除喜好設定。 支援的值為：
 
-  - **一律**：一旦指令碼執行進入終端狀態後，即刪除自動建立的資源。 如果使用現有的儲存體帳戶，指令碼服務會刪除在儲存體帳戶中建立的檔案共用。 由於 deploymentScripts 資源可能會在資源清除後仍然存在，因此腳本服務會在刪除資源之前，保留腳本執行結果，例如 stdout、輸出、傳回值等等。
+  - **一律**：一旦指令碼執行進入終端狀態後，即刪除自動建立的資源。 如果使用現有的儲存體帳戶，指令碼服務會刪除在儲存體帳戶中建立的檔案共用。 由於 deploymentScripts 資源在清除資源之後可能仍會出現，因此腳本服務會在刪除資源之前，先保存腳本執行結果，例如 stdout、輸出、傳回值等等。
   - **OnSuccess**：只有在指令碼執行成功時，才刪除自動建立的資源。 如果使用現有的儲存體帳戶，指令碼服務只會在指令碼執行成功時，才會移除檔案共用。 您仍然可以存取資源來尋找偵錯資訊。
-  - **OnExpiration**：只有在**retentionInterval**設定已過期時，才會刪除自動建立的資源。 如果使用現有的儲存體帳戶，指令碼服務會移除檔案共用，但會保留儲存體帳戶。
+  - **>onexpiration**：只有在 **retentionInterval** 設定過期時，才會刪除自動建立的資源。 如果使用現有的儲存體帳戶，指令碼服務會移除檔案共用，但會保留儲存體帳戶。
 
 - **retentionInterval**：指定將保留指令碼資源的時間間隔，在其後將會過期並加以刪除。
 
@@ -556,7 +556,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 ## <a name="configure-development-environment"></a>設定開發環境
 
-您可以使用預先設定的容器映射作為部署腳本開發環境。 如需詳細資訊，請參閱[在範本中設定部署腳本的開發環境](./deployment-script-template-configure-dev.md)。
+您可以使用預先設定的容器映射作為部署腳本開發環境。 如需詳細資訊，請參閱 [在範本中設定部署腳本的開發環境](./deployment-script-template-configure-dev.md)。
 
 成功測試腳本之後，您可以使用它做為範本中的部署腳本。
 
@@ -565,28 +565,28 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 | 錯誤碼 | 描述 |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | 範本中的部署腳本資源定義包含不正確屬性名稱。 |
-| DeploymentScriptResourceConflict | 無法刪除處於非終止狀態的部署腳本資源，且執行未超過1小時。 或無法以相同的資源識別碼（相同的訂用帳戶、資源組名和資源名稱）重新執行相同的部署腳本，但同時有不同的腳本主體內容。 |
-| DeploymentScriptOperationFailed | 部署腳本作業在內部失敗。 請洽詢 Microsoft 支援服務。 |
+| DeploymentScriptResourceConflict | 無法刪除處於非終端機狀態且執行未超過1小時的部署腳本資源。 或者，您也無法使用相同的資源識別碼重新執行相同的部署腳本 (相同的訂用帳戶、資源組名和資源名稱) 但同時有不同的腳本主體內容。 |
+| DeploymentScriptOperationFailed | 部署腳本作業在內部失敗。 請聯絡 Microsoft 支援服務。 |
 | DeploymentScriptStorageAccountAccessKeyNotSpecified | 尚未指定現有儲存體帳戶的存取金鑰。|
-| DeploymentScriptContainerGroupContainsInvalidContainers | 部署腳本服務所建立的容器群組已從外部修改，且已新增不正確容器。 |
-| DeploymentScriptContainerGroupInNonterminalState | 有兩個或多個部署腳本資源在相同的資源群組中使用相同的 Azure 容器實例名稱，其中一項尚未完成執行。 |
+| DeploymentScriptContainerGroupContainsInvalidContainers | 部署腳本服務所建立的容器群組已從外部修改，並新增了不正確容器。 |
+| DeploymentScriptContainerGroupInNonterminalState | 有兩個或多個部署腳本資源在相同的資源群組中使用相同的 Azure 容器實例名稱，但其中一個資源尚未完成其執行。 |
 | DeploymentScriptStorageAccountInvalidKind | BlobBlobStorage 或 BlobStorage 類型的現有儲存體帳戶不支援檔案共用，因此無法使用。 |
-| DeploymentScriptStorageAccountInvalidKindAndSku | 現有的儲存體帳戶不支援檔案共用。 如需支援的儲存體帳戶類型清單，請參閱[使用現有的儲存體帳戶](#use-existing-storage-account)。 |
-| DeploymentScriptStorageAccountNotFound | 儲存體帳戶不存在，或已被外部進程或工具刪除。 |
+| DeploymentScriptStorageAccountInvalidKindAndSku | 現有的儲存體帳戶不支援檔案共用。 如需支援的儲存體帳戶類型清單，請參閱 [使用現有的儲存體帳戶](#use-existing-storage-account)。 |
+| DeploymentScriptStorageAccountNotFound | 儲存體帳戶不存在或已被外部進程或工具刪除。 |
 | DeploymentScriptStorageAccountWithServiceEndpointEnabled | 指定的儲存體帳戶具有服務端點。 不支援具有服務端點的儲存體帳戶。 |
-| DeploymentScriptStorageAccountInvalidAccessKey | 為現有的儲存體帳戶指定了不正確存取金鑰。 |
-| DeploymentScriptStorageAccountInvalidAccessKeyFormat | 儲存體帳戶金鑰格式無效。 請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。 |
-| DeploymentScriptExceededMaxAllowedTime | 部署腳本執行時間超過部署腳本資源定義中指定的超時值。 |
+| DeploymentScriptStorageAccountInvalidAccessKey | 為現有的儲存體帳戶指定的存取金鑰無效。 |
+| DeploymentScriptStorageAccountInvalidAccessKeyFormat | 儲存體帳戶金鑰格式無效。 請參閱 [管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。 |
+| DeploymentScriptExceededMaxAllowedTime | 部署腳本的執行時間超過部署腳本資源定義中指定的超時值。 |
 | DeploymentScriptInvalidOutputs | 部署腳本輸出不是有效的 JSON 物件。 |
-| DeploymentScriptContainerInstancesServiceLoginFailure | 使用者指派的受控識別在10次嘗試之後，無法以1分鐘的間隔登入。 |
-| DeploymentScriptContainerGroupNotFound | 外部工具或進程已刪除部署腳本服務所建立的容器群組。 |
-| DeploymentScriptDownloadFailure | 無法下載支援的腳本。 請參閱[使用支援的腳本](#use-supporting-scripts)。|
+| DeploymentScriptContainerInstancesServiceLoginFailure | 使用者指派的受控識別在10次嘗試10次之後無法登入1分鐘的間隔。 |
+| DeploymentScriptContainerGroupNotFound | 由外部工具或進程刪除部署腳本服務所建立的容器群組。 |
+| DeploymentScriptDownloadFailure | 無法下載支援的腳本。 請參閱 [使用支援腳本](#use-supporting-scripts)。|
 | DeploymentScriptError | 使用者腳本擲回錯誤。 |
-| DeploymentScriptBootstrapScriptExecutionFailed | 啟動程式腳本擲回錯誤。 啟動程式腳本是協調部署腳本執行的系統腳本。 |
+| DeploymentScriptBootstrapScriptExecutionFailed | 啟動程式腳本擲回錯誤。 啟動程式腳本是可協調部署腳本執行的系統腳本。 |
 | DeploymentScriptExecutionFailed | 部署腳本執行期間發生未知的錯誤。 |
-| DeploymentScriptContainerInstancesServiceUnavailable | 建立 Azure 容器實例（ACI）時，ACI 會擲回服務無法使用的錯誤。 |
-| DeploymentScriptContainerGroupInNonterminalState | 建立 Azure 容器實例（ACI）時，另一個部署腳本會在相同的範圍內使用相同的 ACI 名稱（相同的訂用帳戶、資源組名和資源名稱）。 |
-| DeploymentScriptContainerGroupNameInvalid | 指定的 Azure 容器實例名稱（ACI）不符合 ACI 需求。 請參閱針對[Azure 容器實例中常見的問題進行疑難排解](../../container-instances/container-instances-troubleshooting.md#issues-during-container-group-deployment)。|
+| DeploymentScriptContainerInstancesServiceUnavailable |  (ACI) 建立 Azure 容器實例時，ACI 擲回服務無法使用的錯誤。 |
+| DeploymentScriptContainerGroupInNonterminalState | 建立 (ACI) 的 Azure 容器實例時，另一個部署腳本會在相同範圍內使用相同的 ACI 名稱 (相同的訂用帳戶、資源組名和資源名稱) 。 |
+| DeploymentScriptContainerGroupNameInvalid | 指定的 Azure 容器實例名稱 (ACI) 指定的並不符合 ACI 需求。 請參閱針對 [Azure 容器實例中的常見問題進行疑難排解](../../container-instances/container-instances-troubleshooting.md#issues-during-container-group-deployment)。|
 
 ## <a name="next-steps"></a>後續步驟
 

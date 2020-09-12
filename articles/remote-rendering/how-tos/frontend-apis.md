@@ -6,19 +6,19 @@ ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0488f467a036957bf2341aab63919a105f383bdf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 420ff7ed838bc9fa14c1276ae0a70220fc7e11a9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003519"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024055"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>使用 Azure 前端 API 進行驗證
 
 在本節中，我們將說明如何使用 API 進行驗證和會話管理。
 
 > [!CAUTION]
-本章所述的函式會在內部發出伺服器的 REST 呼叫。 針對所有 REST 呼叫，太頻繁傳送這些命令會導致伺服器節流並最後傳回失敗。 `SessionGeneralContext.HttpResponseCode`在此案例中，成員的值是 429 ( 「太多要求」 ) 。 根據經驗法則， **後續呼叫之間**應該會有5-10 秒的延遲。
+> 本章所述的函式會在內部發出伺服器的 REST 呼叫。 針對所有 REST 呼叫，太頻繁傳送這些命令會導致伺服器節流並最後傳回失敗。 `SessionGeneralContext.HttpResponseCode`在此案例中，成員的值是 429 ( 「太多要求」 ) 。 根據經驗法則，**後續的呼叫之間應該會有 5-10 秒**的延遲。
 
 
 ## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo

@@ -1,18 +1,21 @@
 ---
 title: Azure IoT Edge 和 Azure IoT Central |Microsoft Docs
-description: 瞭解如何搭配 IoT Central 應用程式使用 Azure IoT Edge。
+description: 瞭解如何搭配使用 Azure IoT Edge 與 IoT Central 應用程式。
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: f8660cb18f5e7ac5f3695eb15475570b107bf25c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.custom:
+- device-developer
+- iot-edge
+ms.openlocfilehash: 5c51649e742f6e314e0e324ae19c38f1a83b02ee
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337070"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016855"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>將 Azure IoT Edge 裝置連線至 Azure IoT Central 應用程式
 
@@ -24,7 +27,7 @@ IoT Edge 是由三個元件組成：
 * **IoT Edge 運行**時間會在每個 IoT Edge 裝置上執行，並管理部署到每個裝置的模組。
 * **雲端式介面**可讓您在遠端監視及管理 IoT Edge 裝置。 IoT Central 是雲端介面。
 
-**Azure IoT Edge** 裝置可以作為閘道裝置，具有連線到 IoT Edge 裝置的下游裝置。 本文會分享有關下游裝置連線模式的詳細資訊。
+**Azure IoT Edge** 裝置可以作為閘道裝置，具有連線到 IoT Edge 裝置的下游裝置。 本文將分享有關下游裝置連線模式的詳細資訊。
 
 **裝置範本**會定義裝置和 IoT Edge 模組的功能。 功能包括了模組傳送的遙測資料、模組屬性，以及模組回應的命令。
 
@@ -58,7 +61,7 @@ IoT Edge 是由三個元件組成：
 
 ![部署資訊清單生命週期的流程圖](./media/concepts-iot-edge/dmflow.png)
 
-IoT Central 將 IoT Edge 裝置模型，如下所示：
+IoT Central 模型 IoT Edge 裝置，如下所示：
 
 * 每個 IoT Edge 裝置範本都有一個裝置功能模型。
 * 部署資訊清單中列出的每個自訂模組，都會產生模組功能模型。
@@ -72,6 +75,6 @@ IoT Central 將 IoT Edge 裝置模型，如下所示：
 
 如果您選取 IoT Edge 裝置作為閘道裝置，對於要連接到閘道裝置的裝置，則可以將下游關聯性新增到裝置功能模型上。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如果您是裝置開發人員，建議的下一個步驟是瞭解[IoT Central 中的閘道裝置類型](./tutorial-define-gateway-device-type.md)。
+如果您是裝置開發人員，建議的下一個步驟是瞭解 [IoT Central 中的閘道裝置類型](./tutorial-define-gateway-device-type.md)。

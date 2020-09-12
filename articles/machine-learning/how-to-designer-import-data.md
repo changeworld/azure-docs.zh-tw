@@ -1,23 +1,23 @@
 ---
-title: 將資料匯入設計工具（預覽）
+title: '將資料匯入至設計工具 (預覽) '
 titleSuffix: Azure Machine Learning
-description: 瞭解如何將資料從各種資料來源匯入 Azure Machine Learning 設計工具（預覽）。
+description: 瞭解如何從各種資料來源將資料匯入 Azure Machine Learning 設計工具 (預覽) 。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: peterclu
-ms.author: peterlu
-ms.date: 01/16/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a7d0a1604b3bea1f11532639dbbc5102f4a243a6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495366"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006979"
 ---
-# <a name="import-data-into-azure-machine-learning-designer-preview"></a>將資料匯入 Azure Machine Learning 設計工具（預覽）
+# <a name="import-data-into-azure-machine-learning-designer-preview"></a>將資料匯入 Azure Machine Learning 設計工具 (預覽) 
 
 在本文中，您將了解如何在設計工具中匯入自己的資料，以建立自訂解決方案。 有兩種方式可將資料匯入設計工具中： 
 
@@ -38,19 +38,28 @@ ms.locfileid: "87495366"
 
 1. 選取用來輸出所要註冊資料的模組。
 
-1. 在 [屬性] 窗格中，選取 [輸出] > [註冊資料集]。
+1. 在 [屬性] 窗格中，選取 [**輸出 + 記錄**  >  **註冊資料集**]。
 
     ![顯示如何巡覽至 [註冊資料集] 選項的螢幕擷取畫面](media/how-to-designer-import-data/register-dataset-designer.png)
 
+如果模組輸出資料採用表格格式，您必須選擇將輸出註冊為檔案 **資料集** 或 **表格式資料集**。
+
+ - 檔案**資料集會**將模組的輸出檔案夾註冊為檔案資料集。 輸出檔案夾包含設計工具在內部使用的資料檔案和中繼檔案。 如果您想要繼續在設計工具中使用已註冊的資料集，請選取此選項。 
+
+ - **表格式資料集** 只會將模組的輸出資料檔案註冊為表格式資料集。 這種格式可供其他工具使用，例如自動化 Machine Learning 或 Python SDK。 如果您打算在設計工具之外使用已註冊的資料集，請選取此選項。  
+
+
+
 ### <a name="use-a-dataset"></a>使用資料集
 
-已註冊的資料集可在模組選擇區的 [資料集] > [我的資料集] 下找到。 若要使用資料集，請將其拖放到管線畫布上。 然後，將資料集的輸出連接埠連線到選擇區中其他模組。
+您已註冊的資料集可以在模組選擇區的 [ **資料集**] 底下找到。 若要使用資料集，請將其拖放到管線畫布上。 然後，將資料集的輸出埠連接至畫布中的其他模組。 
 
 ![顯示設計工具選擇區中已儲存資料集位置的螢幕擷取畫面](media/how-to-designer-import-data/use-datasets-designer.png)
 
 
 > [!NOTE]
-> 設計工具目前僅支援處理[表格式資料集](how-to-create-register-datasets.md#dataset-types)。 如果想要使用[檔案資料集](how-to-create-register-datasets.md#dataset-types)，請使用適用於 Python 和 R 的 Azure Machine Learning SDK。
+> 設計工具支援 [資料集版本控制](how-to-version-track-datasets.md)。 在資料集模組的屬性面板中，指定資料集版本。
+
 
 ## <a name="import-data-using-the-import-data-module"></a>使用匯入資料模組匯入資料
 
@@ -94,7 +103,7 @@ ms.locfileid: "87495366"
 
 ## <a name="access-data-in-a-virtual-network"></a>存取虛擬網路中的資料
 
-如果您的工作區位於虛擬網路中，您必須執行額外的設定步驟，以在設計工具中將資料視覺化。 如需如何在虛擬網路中使用資料存放區和資料集的詳細資訊，請參閱[使用私人虛擬網路進行定型 & 推斷期間的網路隔離](how-to-enable-virtual-network.md#machine-learning-studio)。
+如果您的工作區位於虛擬網路中，您必須執行其他設定步驟，以在設計工具中將資料視覺化。 如需如何在虛擬網路中使用資料存放區和資料集的詳細資訊，請參閱 [在 Azure 虛擬網路中使用 Azure Machine Learning studio](how-to-enable-studio-virtual-network.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

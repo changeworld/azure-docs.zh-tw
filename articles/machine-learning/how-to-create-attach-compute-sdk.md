@@ -1,5 +1,5 @@
 ---
-title: 使用 Python SDK 建立計算資源
+title: '建立定型 & 部署 (Python 的計算) '
 titleSuffix: Azure Machine Learning
 description: 使用 Azure Machine Learning Python SDK 來建立訓練和部署計算資源 (適用于機器學習服務的計算) 目標
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 96aa6839fe51bb8a8c26f411c1a1f9df6b8c5a7f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: c25ee5d9c626ba95d28f2247e6771d9fa1ada0f7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147423"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662536"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>使用 Python SDK 建立模型定型和部署的計算目標
 
@@ -31,8 +31,12 @@ ms.locfileid: "89147423"
 ## <a name="prerequisites"></a>必要條件
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)
-* [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)
+
+## <a name="limitations"></a>限制
+
+本檔中列出的某些案例會標示為 __預覽__。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="whats-a-compute-target"></a>什麼是計算目標？
 
@@ -55,16 +59,33 @@ Azure Machine Learning 在不同計算目標上提供不同的支援。 一般�
 * [遠端虛擬機器](#vm)
 * [Azure HDInsight](#hdinsight)
 
+## <a name="compute-targets-for-inference"></a>推斷的計算目標
+
+執行推斷時，Azure Machine Learning 會建立 Docker 容器來裝載模型，以及使用它所需的相關聯資源。 然後，此容器會在下列其中一個部署案例中使用：
+
+* 作為用於即時推斷的 __web 服務__ 。 Web 服務部署會使用下列其中一個計算目標：
+
+    * [本機電腦](#local)
+    * [Azure Machine Learning 計算執行個體](#instance)
+    * [Azure 容器執行個體](#aci)
+    * [Azure Kubernetes Service](how-to-create-attach-kubernetes.md)
+    * Azure Functions (preview) 。 部署至 Azure Functions 只依賴 Azure Machine Learning 來建立 Docker 容器。 從該處，它會使用 Azure Functions 來部署。 如需詳細資訊，請參閱 [將機器學習模型部署至 Azure Functions (preview) ](how-to-deploy-functions.md)。
+
+* 作為用來定期處理資料批次的 __批次推斷__ 端點。 批次推斷會使用 [Azure Machine Learning 計算](#amlcompute)叢集。
+
+* __IoT 裝置__ (預覽) 。 部署至 IoT 裝置只依賴 Azure Machine Learning 來建立 Docker 容器。 從該處，它會使用 Azure IoT Edge 來部署。 如需詳細資訊，請參閱 [ (preview) 部署為 IoT Edge 模組 ](/azure/iot-edge/tutorial-deploy-machine-learning)。
 
 ## <a name="local-computer"></a><a id="local"></a>本機電腦
 
-當您使用本機電腦進行訓練時，不需要建立計算目標。  只需從您的本機電腦 [提交定型](how-to-set-up-training-targets.md) 回合。
+當您使用本機電腦進行 **訓練**時，不需要建立計算目標。  只需從您的本機電腦 [提交定型](how-to-set-up-training-targets.md) 回合。
+
+當您使用本機電腦進行 **推斷**時，必須安裝 Docker。 若要執行部署，請使用 [Deploy_configuration LocalWebservice ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) 來定義 web 服務將使用的埠。 然後使用一般部署程式，如使用 [Azure Machine Learning 部署模型](how-to-deploy-and-where.md)中所述。
 
 ## <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure Machine Learning 計算叢集
 
 Azure Machine Learning 計算叢集是受控的計算基礎結構，可讓您輕鬆建立單一或多重節點計算。 計算會在工作區的區域內建立為能夠與工作區中的其他使用者共用的資源。 計算會在提交作業時自動相應增加，而且可以放在 Azure 虛擬網路中。 計算會在容器化環境中執行，並在 [Docker 容器](https://www.docker.com/why-docker)中封裝模型的相依性。
 
-您可以使用 Azure Machine Learning Compute 在雲端中的 CPU 或 GPU 計算節點叢集散發定型程序。 如需包含 GPU 的 VM 大小有關的詳細資訊，請參閱 [GPU 最佳化虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。 
+您可以使用 Azure Machine Learning 計算，將訓練或批次處理推斷程式分散到雲端中的 CPU 或 GPU 計算節點叢集。 如需包含 GPU 的 VM 大小有關的詳細資訊，請參閱 [GPU 最佳化虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。 
 
 Azure Machine Learning Compute 有預設限制，例如可配置的核心數目。 如需詳細資訊，請參閱[管理和要求 Azure 資源的配額](how-to-manage-quotas.md)。
 
@@ -87,7 +108,7 @@ Azure Machine Learning Compute 可以跨回合重複使用。 計算可與工作
 
     或者，您也可以在 [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md#portal-create) 中建立並連結持續性 Azure Machine Learning Compute 資源。
 
-現在您已附加計算，下一步是 [提交定型](how-to-set-up-training-targets.md)回合。
+現在您已附加計算，下一步是 [提交定型](how-to-set-up-training-targets.md) 回合或 [執行批次推斷](how-to-use-parallel-run-step.md)。
 
  ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> 降低您的計算叢集成本
 
@@ -201,8 +222,15 @@ Azure Machine Learning Compute 可以跨回合重複使用。 計算可與工作
         instance.wait_for_completion(show_output=True)
     ```
 
-現在您已附加計算並設定執行，下一步是[提交定型](how-to-set-up-training-targets.md)回合
+現在您已附加計算並設定執行，下一步是 [提交定型](how-to-set-up-training-targets.md) 回合或 [部署模型以進行推斷](how-to-deploy-local-container-notebook-vm.md)。
 
+## <a name="azure-container-instance"></a><a id="aci"></a>Azure 容器執行個體
+
+當您部署模型時，會以動態方式建立 Azure 容器實例 (ACI) 。 您無法以任何其他方式建立或附加 ACI 至您的工作區。 如需詳細資訊，請參閱 [將模型部署至 Azure 容器實例](how-to-deploy-azure-container-instance.md)。
+
+## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+
+Azure Kubernetes Service (AKS) 與 Azure Machine Learning 搭配使用時，可提供各種不同的設定選項。 如需詳細資訊，請參閱 [如何建立和附加 Azure Kubernetes Service](how-to-create-attach-kubernetes.md)。
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>遠端虛擬機器
 
@@ -437,7 +465,7 @@ except ComputeTargetException:
 如需更詳細的範例，請參閱 GitHub 上的 [範例筆記本](https://aka.ms/pl-adla) 。
 
 > [!TIP]
-> Azure Machine Learning 管線只能使用 Data Lake Analytics 帳戶的預設資料存放區中所儲存的資料來運作。 如果您需要使用的資料是在非預設的存放區中，您可以使用在 [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) 定型之前複製資料。
+> Azure Machine Learning 管線只能使用 Data Lake Analytics 帳戶的預設資料存放區中所儲存的資料來運作。 如果您需要使用的資料是在非預設的存放區中，您可以使用在 [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) 定型之前複製資料。
 
 ## <a name="notebook-examples"></a>筆記本範例
 

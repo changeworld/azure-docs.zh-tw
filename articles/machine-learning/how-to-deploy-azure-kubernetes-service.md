@@ -6,41 +6,32 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, contperfq1
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/23/2020
-ms.openlocfilehash: 6c85a7315fe05bb4fedabd176295523c2fa95d81
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 09/01/2020
+ms.openlocfilehash: da6554ae3b7df9962e1f57ac652567c282227d64
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855241"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661662"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>將模型部署到 Azure Kubernetes Service 叢集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 瞭解如何使用 Azure Machine Learning 在 Azure Kubernetes Service (AKS) 上將模型部署為 web 服務。 Azure Kubernetes Service 適用于高規模的生產部署。 如果您需要下列其中一項或多項功能，請使用 Azure Kubernetes service：
 
-- __快速回應時間__。
-- 已部署__服務的自動__調整。
-- __硬體加速__ 選項（例如 GPU 和可現場程式化閘道陣列） (FPGA) 。
+- __快速回應時間__
+- 已部署__服務的自動__調整
+- __Logging__
+- __模型資料收集__
+- __驗證__
+- __TLS 終止__
+- __硬體加速__ 選項，例如 GPU 和可現場程式化閘道陣列 (FPGA) 
 
-> [!IMPORTANT]
-> 叢集調整不是透過 Azure Machine Learning SDK 提供。 如需有關調整 AKS 叢集中節點的詳細資訊，請參閱。 
-- [手動調整 AKS 叢集中的節點計數](../aks/scale-cluster.md)
-- [在 AKS 中設定叢集自動調整程式](../aks/cluster-autoscaler.md)
-
-部署至 Azure Kubernetes Service 時，您會部署至已 __連線到您工作區__的 AKS 叢集。 有兩種方式可將 AKS 叢集連線至您的工作區：
-
-* 使用 Azure Machine Learning SDK、Machine Learning CLI 或 [Azure Machine Learning studio](https://ml.azure.com)建立 AKS 叢集。 此程式會自動將叢集連接至工作區。
-* 將現有的 AKS 叢集附加至您的 Azure Machine Learning 工作區。 您可以使用 Azure Machine Learning SDK、Machine Learning CLI 或 Azure Machine Learning studio 來連接叢集。
-
-AKS 叢集和 AML 工作區可以位於不同的資源群組中。
-
-> [!IMPORTANT]
-> 建立或附件程式是一次性工作。 將 AKS 叢集連線到工作區之後，您就可以將它用於部署。 如果不再需要 AKS 叢集，您可以卸離或刪除該叢集。 卸離或刪除之後，您就無法再部署到叢集。
+部署至 Azure Kubernetes Service 時，您會部署至已 __連線到您工作區__的 AKS 叢集。 如需將 AKS 叢集連線至工作區的相關資訊，請參閱 [建立和附加 Azure Kubernetes Service](how-to-create-attach-kubernetes.md)叢集。
 
 > [!IMPORTANT]
 > 建議您先在本機進行偵錯工具，再部署至 web 服務。 如需詳細資訊，請參閱[本機的調試](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)程式
@@ -53,7 +44,7 @@ AKS 叢集和 AML 工作區可以位於不同的資源群組中。
 
 - 在您的工作區中註冊的機器學習模型。 如果您沒有已註冊的模型，請參閱 [部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- Machine Learning 服務、 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)或[Azure Machine Learning Visual Studio Code 延伸](tutorial-setup-vscode-extension.md)模組的[Azure CLI 延伸](reference-azure-machine-learning-cli.md)模組。
+- Machine Learning 服務、 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)或[Azure Machine Learning Visual Studio Code 延伸](tutorial-setup-vscode-extension.md)模組的[Azure CLI 延伸](reference-azure-machine-learning-cli.md)模組。
 
 - 本文中的 __Python__ 程式碼片段假設已設定下列變數：
 
@@ -65,170 +56,9 @@ AKS 叢集和 AML 工作區可以位於不同的資源群組中。
 
 - 本文中的 __CLI__ 程式碼片段假設您已建立 `inferenceconfig.json` 檔。 如需有關建立這份檔的詳細資訊，請參閱 [部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- 如果您需要在您的叢集中部署 Standard Load Balancer (SLB) ，而不是基本 Load Balancer (BLB) ，請在 AKS 入口網站/CLI/SDK 中建立叢集，然後將它連結至 AML 工作區。
+- 連線到工作區的 Azure Kubernetes Service 叢集。 如需詳細資訊，請參閱 [建立和附加 Azure Kubernetes Service](how-to-create-attach-kubernetes.md)叢集。
 
-- 如果您有限制建立公用 IP 的 Azure 原則，AKS 叢集建立將會失敗。 AKS 需要公用 IP 來提供輸出 [流量](https://docs.microsoft.com/azure/aks/limit-egress-traffic)。 本文也會提供指引，說明如何透過公用 IP 來鎖定來自叢集的輸出流量，但少數 FQDN 除外。 有兩種方式可以啟用公用 IP：
-  - 叢集可以使用預設使用 BLB 或 SLB 建立的公用 IP，或
-  - 您可以在不使用公用 IP 的情況下建立叢集，然後[使用如下所述的](https://docs.microsoft.com/azure/aks/egress-outboundtype)使用者定義路由來設定公用 ip 
-  
-  AML 控制平面不會與此公用 IP 通訊。 它會與部署的 AKS 控制平面交談。 
-
-- 如果您附加已 [啟用授權 IP 範圍的 AKS 叢集來存取 API 伺服器](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)，請啟用 AKS 叢集的 AML 主平面 IP 範圍。 AML 控制平面會部署在配對的區域，並在 AKS 叢集上部署推斷 pod。 如果沒有 API 伺服器的存取權，則無法部署推斷 pod。 在 AKS 叢集中啟用 IP 範圍時，請使用兩個[配對區域]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的[ip 範圍](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)。
-
-
-  Authroized IP 範圍只適用于 Standard Load Balancer。
- 
- - 計算名稱在工作區中必須是唯一的
-   - 名稱是必要的，且長度必須介於3到24個字元之間。
-   - 有效字元是大寫和小寫字母、數位和-字元。
-   - 名稱必須以字母開頭
-   - 名稱在 Azure 區域內的所有現有計算中都必須是唯一的。 如果您選擇的名稱不是唯一的，您會看到警示
-   
- - 如果您想要將模型部署至 GPU 節點或 FPGA 節點 (或任何特定 SKU) ，您必須建立具有特定 SKU 的叢集。 不支援在現有的叢集中建立次要節點集區，並在次要節點集區中部署模型。
-
-## <a name="create-a-new-aks-cluster"></a>建立新的 AKS 叢集
-
-**預估時間**：約10分鐘。
-
-建立或附加 AKS 叢集是工作區的一次性流程。 您可以重複使用此叢集進行多個部署。 如果您刪除叢集或包含該叢集的資源群組，您必須在下次需要部署時建立新的叢集。 您可以將多個 AKS 叢集附加至您的工作區。
- 
-Azure Machine Learning 現在支援使用已啟用 private link 的 Azure Kubernetes Service。
-若要建立私用 AKS 叢集，請遵循[此處](https://docs.microsoft.com/azure/aks/private-clusters)的檔
-
-> [!TIP]
-> 如果您想要使用 Azure 虛擬網路來保護您的 AKS 叢集，您必須先建立虛擬網路。 如需詳細資訊，請參閱 [使用 Azure 虛擬網路來進行安全的實驗和推斷](how-to-enable-virtual-network.md#aksvnet)。
-
-如果您想要建立用於 __開發__、 __驗證__和 __測試__ 的 AKS 叢集，而不是生產環境，您可以將叢集 __用途__ 指定為開發 __測試__。
-
-> [!WARNING]
-> 如果設定 `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` ，則建立的叢集不適合用于生產層級流量，且可能會增加推斷時間。 開發/測試叢集也不保證容錯。 針對開發/測試叢集，我們建議至少要有2個虛擬 Cpu。
-
-下列範例示範如何使用 SDK 和 CLI 來建立新的 AKS 叢集：
-
-**使用 SDK**
-
-```python
-from azureml.core.compute import AksCompute, ComputeTarget
-
-# Use the default configuration (you can also provide parameters to customize this).
-# For example, to create a dev/test cluster, use:
-# prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
-prov_config = AksCompute.provisioning_configuration()
-# Example configuration to use an existing virtual network
-# prov_config.vnet_name = "mynetwork"
-# prov_config.vnet_resourcegroup_name = "mygroup"
-# prov_config.subnet_name = "default"
-# prov_config.service_cidr = "10.0.0.0/16"
-# prov_config.dns_service_ip = "10.0.0.10"
-# prov_config.docker_bridge_cidr = "172.17.0.1/16"
-
-aks_name = 'myaks'
-# Create the cluster
-aks_target = ComputeTarget.create(workspace = ws,
-                                    name = aks_name,
-                                    provisioning_configuration = prov_config)
-
-# Wait for the create process to complete
-aks_target.wait_for_completion(show_output = True)
-```
-
-> [!IMPORTANT]
-> [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)如果您為和挑選自訂值 `agent_count` ， `vm_size` 而 `cluster_purpose` 不是 `DEV_TEST` ，則必須確定 `agent_count` 乘以 `vm_size` 大於或等於12個虛擬 cpu。 例如，如果您使用的是 `vm_size` 具有4個虛擬 cpu 的「Standard_D3_v2」，則您應該挑選 `agent_count` 3 或以上的。
->
-> Azure Machine Learning SDK 不提供調整 AKS 叢集的支援。 若要調整叢集中的節點，請在 Azure Machine Learning studio 中使用您的 AKS 叢集的 UI。 您只能變更節點計數，而不是叢集的 VM 大小。
-
-如需此範例中所使用之類別、方法和參數的詳細資訊，請參閱下列參考檔：
-
-* [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)
-* [AksCompute。 provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [ComputeTarget 建立](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget。 wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#wait-for-completion-show-output-false-)
-
-**使用 CLI**
-
-```azurecli
-az ml computetarget create aks -n myaks
-```
-
-如需詳細資訊，請參閱 [az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference （建立參考）。
-
-## <a name="attach-an-existing-aks-cluster"></a>附加現有的 AKS 叢集
-
-**預估時間：** 大約5分鐘。
-
-如果您的 Azure 訂用帳戶中已經有 AKS 叢集，而且它是1.17 版或更低版本，您可以使用它來部署映射。
-
-> [!TIP]
-> 現有的 AKS 叢集可以位於 Azure Machine Learning 工作區以外的 Azure 區域中。
->
-> 如果您想要使用 Azure 虛擬網路來保護您的 AKS 叢集，您必須先建立虛擬網路。 如需詳細資訊，請參閱 [使用 Azure 虛擬網路來進行安全的實驗和推斷](how-to-enable-virtual-network.md#aksvnet)。
-
-將 AKS 叢集附加至工作區時，您可以藉由設定參數來定義如何使用叢集 `cluster_purpose` 。
-
-如果您未設定 `cluster_purpose` 參數或設定，則叢集 `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD` 必須至少有12個可用的虛擬 cpu。
-
-如果設定，則叢集 `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` 不需要有12個虛擬 cpu。 針對開發/測試，建議至少要有2個虛擬 Cpu。 不過，針對開發/測試所設定的叢集不適合用于生產層級的流量，而且可能會增加推斷時間。 開發/測試叢集也不保證容錯。
-
-> [!WARNING]
-> 請勿從您的工作區建立多個同時附加至相同 AKS 叢集的附件。 例如，使用兩個不同的名稱將一個 AKS 叢集附加至工作區。 每個新的附件都會中斷先前現有的附件 (s) 。
->
-> 如果您想要重新附加 AKS 叢集（例如變更 TLS 或其他叢集設定），必須先使用 AksCompute 移除現有的附件 [。 ( # B1 卸離 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--)。
-
-如需有關使用 Azure CLI 或入口網站建立 AKS 叢集的詳細資訊，請參閱下列文章：
-
-* [建立 AKS 叢集 (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
-* [ (入口網站) 建立 AKS 叢集 ](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
-* [在 Azure 快速入門範本上建立 AKS 叢集 (ARM 範本) ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
-
-下列範例示範如何將現有的 AKS 叢集連結至您的工作區：
-
-**使用 SDK**
-
-```python
-from azureml.core.compute import AksCompute, ComputeTarget
-# Set the resource group that contains the AKS cluster and the cluster name
-resource_group = 'myresourcegroup'
-cluster_name = 'myexistingcluster'
-
-# Attach the cluster to your workgroup. If the cluster has less than 12 virtual CPUs, use the following instead:
-# attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-#                                         cluster_name = cluster_name,
-#                                         cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
-attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-                                         cluster_name = cluster_name)
-aks_target = ComputeTarget.attach(ws, 'myaks', attach_config)
-
-# Wait for the attach process to complete
-aks_target.wait_for_completion(show_output = True)
-```
-
-如需此範例中所使用之類別、方法和參數的詳細資訊，請參閱下列參考檔：
-
-* [AksCompute ( # B1 attach_configuration ](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)
-* [AksCompute 附加](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#attach-workspace--name--attach-configuration-)
-
-**使用 CLI**
-
-若要使用 CLI 附加現有的叢集，您需要取得現有叢集的資源識別碼。 若要取得此值，請使用下列命令。 `myexistingcluster`以您的 AKS 叢集名稱取代。 取代 `myresourcegroup` 為包含叢集的資源群組：
-
-```azurecli
-az aks show -n myexistingcluster -g myresourcegroup --query id
-```
-
-此命令會傳回類似下列文字的值：
-
-```text
-/subscriptions/{GUID}/resourcegroups/{myresourcegroup}/providers/Microsoft.ContainerService/managedClusters/{myexistingcluster}
-```
-
-若要將現有的叢集附加至您的工作區，請使用下列命令。 取代 `aksresourceid` 為前一個命令所傳回的值。 取代 `myresourcegroup` 為包含您工作區的資源群組。 取代 `myworkspace` 為您的工作區名稱。
-
-```azurecli
-az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
-```
-
-如需詳細資訊，請參閱 [az ml computetarget 附加 aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) 參考。
+    - 如果您想要將模型部署至 GPU 節點或 FPGA 節點 (或任何特定 SKU) ，您必須建立具有特定 SKU 的叢集。 不支援在現有的叢集中建立次要節點集區，並在次要節點集區中部署模型。
 
 ## <a name="deploy-to-aks"></a>部署到 AKS
 
@@ -236,7 +66,6 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 > [!NOTE]
 > 要部署的模型數目限制為每個容器) 每個部署 (1000 個模型。
-
 
 ### <a name="using-the-sdk"></a>使用 SDK
 
@@ -257,10 +86,10 @@ print(service.get_logs())
 
 如需此範例中所使用之類別、方法和參數的詳細資訊，請參閱下列參考檔：
 
-* [AksCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute?view=azure-ml-py)
-* [>akswebservice。 deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
-* [模型. 部署](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
-* [Webservice. wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#wait-for-deployment-show-output-false-)
+* [AksCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute?view=azure-ml-py&preserve-view=true)
+* [>akswebservice。 deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py&preserve-view=true)
+* [模型. 部署](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
+* [Webservice. wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truewait-for-deployment-show-output-false-)
 
 ### <a name="using-the-cli"></a>使用 CLI
 
@@ -418,7 +247,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> 如果您需要重新產生金鑰，請使用 [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
+> 如果您需要重新產生金鑰，請使用 [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true)
 
 ### <a name="authentication-with-tokens"></a>使用權杖進行驗證
 
@@ -442,9 +271,9 @@ print(token)
 >
 > 若要取得權杖，您必須使用 Azure Machine Learning SDK 或 [az ml 服務取得存取權杖](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) 命令。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* [保護虛擬網路中的實驗和推斷](how-to-enable-virtual-network.md)
+* [使用 Azure 虛擬網路的安全推斷環境](how-to-secure-inferencing-vnet.md)
 * [如何使用自訂 Docker 映射部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑難排解](how-to-troubleshoot-deployment.md)
 * [更新 Web 服務](how-to-deploy-update-web-service.md)

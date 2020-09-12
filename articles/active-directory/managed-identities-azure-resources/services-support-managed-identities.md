@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: e62fc34ad02303f61214f754f6506c39af76fc94
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 207b4a926e77ff55faad388b6eeaeb221ec252a8
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267440"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006775"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支援適用於 Azure 資源的受控識別服務
 
@@ -284,6 +284,7 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 - [Azure CLI](qs-configure-cli-windows-vm.md)
 - [Azure 資源管理員範本](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
+- [Azure SDK](qs-configure-sdk-windows-vm.md)
 
 
 ### <a name="azure-vm-image-builder"></a>Azure VM 映射產生器
@@ -294,7 +295,7 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 | 使用者指派 | [可在支援的區域中使用](../../virtual-machines/windows/image-builder-overview.md#regions) | 無法使用 | 無法使用 | 無法使用 |
 
 若要瞭解如何為 Azure VM 映射產生器設定受控識別 (在可用) 的區域中，請參閱影像產生器 [總覽](../../virtual-machines/windows/image-builder-overview.md#permissions)。
-### <a name="azure-signalr-service"></a>Azure SignalR Service
+### <a name="azure-signalr-service"></a>Azure SignalR 服務
 
 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |

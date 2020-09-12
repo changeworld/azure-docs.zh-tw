@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 437c2b8e42ed5128cc716eee23b8702ec012b481
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: e765422ebfce1a4328bac9a17edb8b581f87e6f7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890909"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661711"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什麼是 Azure Machine Learning 工作區？
 
@@ -54,7 +54,7 @@ ms.locfileid: "88890909"
 + 在網站上：
     + [Azure Machine Learning studio ](https://ml.azure.com) 
     + [Azure Machine Learning 設計工具 (預覽) ](concept-designer.md) -僅適用于 [Enterprise edition](overview-what-is-azure-ml.md#sku) 工作區。
-+ 在任何具有 [適用于 python 之 AZURE MACHINE LEARNING SDK 的](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)Python 環境中。
++ 在任何具有 [適用于 python 之 AZURE MACHINE LEARNING SDK 的](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)Python 環境中。
 + 在任何具有 [適用于 r 的 AZURE MACHINE LEARNING SDK (preview) ](https://azure.github.io/azureml-sdk-for-r/reference/index.html)的 r 環境中。
 + 在命令列上使用 Azure Machine Learning [CLI 擴充](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)功能
 + [Azure Machine Learning VS Code 延伸模組](how-to-manage-resources-vscode.md#workspaces)
@@ -94,7 +94,7 @@ ms.locfileid: "88890909"
 有多種方式可建立工作區：  
 
 * 使用點按一下介面的 [Azure 入口網站](how-to-manage-workspace.md) ，逐步引導您完成每個步驟。
-* 使用 [適用于 python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) ，從 Python 腳本或木星筆記本即時建立工作區
+* 使用 [適用于 python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#&preserve-view=trueworkspace) ，從 Python 腳本或木星筆記本即時建立工作區
 * 當您需要使用企業安全性標準來自動化或自訂建立時，請使用 [Azure Resource Manager 範本](how-to-create-workspace-template.md) 或 [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) 。
 * 如果您在 Visual Studio Code 中工作，請使用 [VS Code 擴充](how-to-manage-resources-vscode.md#create-a-workspace)功能。
 

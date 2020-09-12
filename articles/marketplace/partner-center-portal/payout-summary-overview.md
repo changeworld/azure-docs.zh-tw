@@ -1,35 +1,35 @@
 ---
-title: 支付摘要概觀 - Azure Marketplace
+title: 付款摘要總覽，Azure Marketplace
 description: '[支付摘要] 會顯示透過供應項目所賺取金額的詳細資料。 此外，其還會告知何時會收到付款，以及將收到多少款項。'
 ms.subservice: partnercenter-marketplace-publisher
 ms.service: marketplace
 ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: 2e7658e965931dd78a6db0e2c9fee36edffff98b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 09/09/2020
+ms.openlocfilehash: 708fc2c0783bdefa4ac4fa4b73f10733bba0bc04
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479807"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006919"
 ---
 # <a name="payout-summary-overview"></a>支付摘要概觀
 
 [支付摘要](./payout-summary.md)會顯示透過 Microsoft 所賺取金額的詳細資料。 此外，其還會告知何時會收到付款，以及將收到多少款項。
 
-如果在 Azure Marketplace 中銷售供應項目，則也會在 [支付摘要] 中看到成功支付的資訊。 如需 Azure Marketplace 付款的詳細資訊，請參閱 [Azure Marketplace 參與原則](https://docs.microsoft.com/legal/marketplace/participation-policy) (英文) 和 [Microsoft Azure Marketplace 發行者合約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx) (英文)。
+如果您在 Azure Marketplace 銷售供應專案，也會在付款摘要中看到成功支出的資訊。 如需有關 Azure Marketplace 付款的詳細資訊，請參閱「 [在商業市場中取得款項](./get-paid.md) 」和「 [Microsoft 發行者合約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)」。
 
 > [!NOTE]
-> 若要符合支付資格，收益必須達到美金 $50 元的[付款門檻](./payment-thresholds-methods-timeframes.md)。 如需付款門檻的詳細資料，請參閱 [Microsoft Azure Marketplace 發行者合約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx) (英文)。
+> 若要符合支付資格，收益必須達到美金 $50 元的付款門檻。 如需詳細資訊，請參閱 [Microsoft 發行者合約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)。
 
-若要查看付款詳細資料，請登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)，並選取畫面右上角的支出圖示：
+若要查看支出詳細資料，請登入 [合作夥伴中心](https://partner.microsoft.com/dashboard/home) ，然後選取畫面右上角的付款圖示：
 
 ![說明合作夥伴中心入口網站右上角的支付圖示。](./media/payout-overview.png)
 
 ## <a name="roles-and-permissions"></a>角色和權限
 
-這些是可存取支付報告的角色和權限：
+這些是存取付款報表的角色和許可權：
 
 | 報告/頁面 | 帳戶擁有者 | Manager | 開發人員 | 商務參與者 | 財務參與者 | 行銷人員 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -45,7 +45,7 @@ ms.locfileid: "87479807"
 
 ## <a name="payment-schedules"></a>付款排程
 
-如需付款排程的討論，包括保留期間、合作夥伴可見度，以及客戶使用信用卡或發票的時機，請參閱**支付詳細資料**主題的＜[付款排程](./payout-policy-details.md#payment-schedules)＞一節。
+如需付款排程的討論，包括保留期間、合作夥伴可見度，以及當客戶使用信用卡或發票時，請參閱付款**詳細資料**文章的[付款](./payout-policy-details.md#payment-schedules)排程一節。
 
 ## <a name="transaction-history-download-export"></a>交易歷程記錄下載匯出
 

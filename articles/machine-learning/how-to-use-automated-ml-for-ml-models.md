@@ -1,5 +1,5 @@
 ---
-title: 使用 AutoML 建立 & 部署的模型
+title: 使用 AutoML 建立模型 & 部署
 titleSuffix: Azure Machine Learning
 description: 使用 Azure Machine Learning 建立、檢閱和部署自動化機器學習模型。
 services: machine-learning
@@ -11,17 +11,17 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 09dd444d0d7409ca86955d2854aec82f07db0c4d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 429471c2a24b90f14241bf54197c4baecb27e5c0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185395"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660431"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 建立、檢閱和部署自動化機器學習模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-在本文中，您將瞭解如何在 Azure Machine Learning studio 中不使用一行程式碼，建立、探索及部署自動化機器學習模型。
+在本文中，您將瞭解如何在 Azure Machine Learning studio 中不需要一行程式碼，即可建立、探索及部署自動化機器學習模型。
 
 >[!IMPORTANT]
 > Azure Machine Learning Studio 中的自動化 ML 體驗目前處於預覽狀態。 可能不支援特定功能，或功能受到限制。
@@ -56,22 +56,22 @@ ms.locfileid: "88185395"
 
 1. 選取 [+ 新增自動化 ML 執行] 並填入表單。
 
-1. 從儲存體容器選取資料集，或建立新的資料集。 資料集可從本機檔案、Web URL、資料存放區或 Azure 開放資料集建立。 深入瞭解[資料集建立](how-to-create-register-datasets.md)。  
+1. 從儲存體容器選取資料集，或建立新的資料集。 資料集可從本機檔案、Web URL、資料存放區或 Azure 開放資料集建立。 深入瞭解 [資料集建立](how-to-create-register-datasets.md)。  
 
     >[!Important]
     > 訓練資料的需求：
     >* 資料必須是表格式形式。
     >* 您想要預測的值 (目標資料行) 必須存在於資料中。
 
-    1. 若要從本機電腦上的檔案建立新的資料集，請選取 [ **+ 建立資料集**]，然後選取 [**從本機**檔案]。 
+    1. 若要從本機電腦上的檔案建立新的資料集，請選取 [ **+ 建立資料集** ]，然後選取 [ **從本機**檔案]。 
 
-    1. 在 [**基本資訊**] 表單中，為您的資料集指定一個唯一的名稱，並提供選擇性的描述。 
+    1. 在 [ **基本資訊** ] 表單中，為您的資料集提供一個唯一的名稱，並提供選擇性的描述。 
 
     1. 選取 [下一步] 來開啟 [資料存放區和檔案選取表單]。 在此表單上，您將會選取上傳資料集的位置：與工作區一同自動建立的預設儲存體容器，或選取想要用於實驗的儲存體容器。 
     
-        1. 如果您的資料位於虛擬網路後方，您必須啟用 [**略過驗證**] 功能，以確保工作區可以存取您的資料。 深入瞭解[網路隔離與隱私權](how-to-enable-virtual-network.md#machine-learning-studio)。 
+        1. 如果您的資料位於虛擬網路後方，您必須啟用 [ **略過驗證** ] 功能，以確保工作區可以存取您的資料。 如需詳細資訊，請參閱 [在 Azure 虛擬網路中使用 Azure Machine Learning studio](how-to-enable-studio-virtual-network.md)。 
     
-    1. 選取 **[流覽]** ，上傳您資料集的資料檔案。 
+    1. 選取 **[流覽]** ，為您的資料集上傳資料檔案。 
 
     1. 檢閱 [設定和預覽] 表單以進行確認。 表單會根據檔案類型以智慧方式填入。 
 
@@ -105,8 +105,8 @@ ms.locfileid: "88185395"
     欄位|描述
     ---|---
     計算名稱| 輸入可識別您計算內容的唯一名稱。
-    虛擬機器優先順序| 低優先順序虛擬機器較便宜，但不保證計算節點。 
-    虛擬機器類型| 選取 [虛擬機器類型的 CPU 或 GPU]。
+    虛擬機器優先順序| 低優先順序的虛擬機器較便宜，但不保證計算節點。 
+    虛擬機器類型| 選取虛擬機器類型的 CPU 或 GPU。
     虛擬機器大小| 為您的計算選取虛擬機器大小。
     最小/最大節點數| 若要分析資料，您必須指定一個或多個節點。 輸入所計算的節點數上限。 AML Compute 的預設為 6 個節點。
     進階設定 | 這些設定可讓您為您的實驗設定使用者帳戶和現有的虛擬網路。 
@@ -118,30 +118,33 @@ ms.locfileid: "88185395"
 
     選取 [下一步] 。
 
-1. 在 [工作類型和設定] 表單上，選取工作類型：分類、迴歸，或預測。 如需詳細資訊，請參閱支援的工作[類型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
+1. 在 [工作類型和設定] 表單上，選取工作類型：分類、迴歸，或預測。 如需詳細資訊，請參閱支援的工作 [類型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast) 。
 
-    1. 針對**分類**，您也可以啟用用於文字 featurizations 的深度學習。
-
-    1. 如需**預測**，您可以： 
+    1. 針對 **分類**，您也可以啟用深度學習。
     
-        1. 啟用深度學習
-    
-        1. 選取*時間資料行*：此資料行包含要使用的時間資料。
+        如果啟用了深度學習，則僅限 _train_validation 分割_的驗證。 [深入瞭解驗證選項](how-to-configure-cross-validation-data-splits.md)。
 
-        1. 選取 [*預測範圍*]：指出模型能夠預測到未來的時間單位數 (分鐘/小時/天/周/月/年) 。 模型需要針對未來預測的時間越長，其正確性越低。 [深入了解預測及預測範圍](how-to-auto-train-forecast.md)。
+
+    1. 針對 **預測** ，您可以 
+    
+        1. 啟用深度學習。
+    
+        1. 選取 *時間資料行*：此資料行包含要使用的時間資料。
+
+        1. 選取 *預測範圍*：指出模型能夠預測到未來的時間單位數 (分鐘/小時/天/周/月/年) 。 模型需要針對未來預測的時間越長，其正確性越低。 [深入了解預測及預測範圍](how-to-auto-train-forecast.md)。
 
 1. (選擇性) 檢視其他組態設定：可用來更進一步控制訓練作業的其他設定。 否則會根據實驗選取範圍和資料來套用預設值。 
 
     其他組態|描述
     ------|------
     主要計量| 用來評分模型的主要計量。 [深入了解模型計量](how-to-configure-auto-train.md#primary-metric)。
-    解釋最佳模型 | 選取以啟用或停用，以便顯示建議最佳模型的可解釋性。
-    封鎖的演算法| 選取要從訓練作業中排除的演算法。
+    解釋最佳模型 | 選取以啟用或停用，以顯示建議最佳模型的說明。 <br> 這項功能目前不適用於 [特定的預測演算法](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model)。 
+    封鎖的演算法| 選取要從訓練作業中排除的演算法。 <br><br> 允許演算法僅適用于 [SDK 實驗](how-to-configure-auto-train.md#supported-models)。 <br> 請參閱 [每種工作類型支援的模型](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?view=azure-ml-py&preserve-view=true)。
     結束準則| 當符合其中任何一項準則時，訓練作業即會停止。 <br> 訓練作業時間 (小時)：允許訓練作業執行的時間長度。 <br> 計量分數閾值：所有管線的最低計量分數。 這可確保若擁有想要達到的已定義目標計量，則不會在訓練作業上花費超過必要程度的時間。
-    驗證| 選取要在訓練作業中使用的交叉驗證選項。 [深入了解交叉驗證](how-to-configure-cross-validation-data-splits.md#prerequisites)。
+    驗證| 選取要在訓練作業中使用的交叉驗證選項。 <br> [深入了解交叉驗證](how-to-configure-cross-validation-data-splits.md#prerequisites)。<br> <br>預測只支援 k 折交叉驗證。
     並行| *並行反覆項目上限*：要在訓練作業中測試的管線 (反覆項目) 數量上限。 作業不會執行超過指定數量的反覆項目。
 
-1.  (選擇性) View 特徵化設定：如果您選擇在 [**其他設定**] 表單中啟用 [**自動特徵化**]，則會套用預設特徵化技術。 在 [ **View 特徵化] 設定**中，您可以變更這些預設值，並據以進行自訂。 瞭解如何[自訂 featurizations](#customize-featurization)。 
+1.  (選擇性的) View 特徵化設定：如果您選擇在 [**其他設定**] 表單中啟用**自動特徵化**，則會套用預設的特徵化技術。 在 **View 特徵化設定** 中，您可以變更這些預設值，並據以進行自訂。 瞭解如何 [自訂 featurizations](#customize-featurization)。 
 
     ![Azure Machine Learning studio 工作類型表單](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
@@ -173,15 +176,15 @@ Variance| 此資料行資料從其平均值分散程度的量值。
 
 ## <a name="customize-featurization"></a>自訂特徵化
 
-在**特徵化**表單中，您可以啟用/停用自動特徵化，並為您的實驗自訂自動特徵化設定。 若要開啟此表單，請參閱[建立和執行實驗](#create-and-run-experiment)一節中的步驟10。 
+在 **特徵化** 表單中，您可以啟用/停用自動特徵化，以及為您的實驗自訂自動特徵化設定。 若要開啟此表單，請參閱 [建立和執行實驗](#create-and-run-experiment) 一節中的步驟10。 
 
-下表摘要說明目前可透過 studio 取得的自訂專案。 
+下表摘要說明目前可透過 studio 取得的自訂。 
 
 資料行| 自訂
 ---|---
-已包括 | 指定要包含哪些資料行以進行定型。
+已包括 | 指定要包含哪些資料行以供定型。
 功能類型| 變更所選資料行的數值型別。
-插補與| 選取要在資料中插補遺漏值的值。
+插補| 選取要在您的資料中插補遺漏值的值。
 
 ![Azure Machine Learning studio 工作類型表單](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
 
@@ -199,7 +202,7 @@ Variance| 此資料行資料從其平均值分散程度的量值。
 
 ### <a name="view-training-run-details"></a>檢視訓練執行的詳細資料
 
-向下切入任何已完成的模型，以查看定型執行詳細資料，例如 [**模型**] 索引標籤上的模型摘要或 [**計量**] 索引標籤上的效能度量圖表。[深入瞭解圖表](how-to-understand-automated-ml.md)。
+向下切入任何已完成的模型，以查看定型執行詳細資料，例如 [ **模型** ] 索引標籤上的模型摘要或 [ **計量** ] 索引標籤上的 [效能度量圖表]。 [深入瞭解圖表](how-to-understand-automated-ml.md)。
 
 [![反覆項目詳細資料](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
@@ -211,14 +214,14 @@ Variance| 此資料行資料從其平均值分散程度的量值。
 
 1. 您有數個部署選項。 
 
-    + 選項1：根據您所定義的度量準則，部署最佳模型。 
-        1. 實驗完成後，選取畫面頂端的 [**執行 1** ]，流覽至父執行頁面。 
-        1.  選取 [**最佳模型摘要**] 區段中所列的模型。 
-        1. 選取視窗左上方的 [**部署**]。 
+    + 選項1：根據您定義的度量準則，部署最佳模型。 
+        1. 實驗完成之後，請選取畫面頂端的 [ **執行 1** ]，以流覽至父執行頁面。 
+        1.  選取 [ **最佳模型摘要** ] 區段中所列的模型。 
+        1. 選取視窗左上角的 [ **部署** ]。 
 
-    + 選項2：從這個實驗部署特定的模型反復專案。
-        1. 從 [**模型**] 索引標籤中選取所需的模型
-        1. 選取視窗左上方的 [**部署**]。
+    + 選項2：從此實驗部署特定模型反復專案。
+        1. 從 [模型] 索引標籤中選取所需的模型
+        1. 選取視窗左上角的 [ **部署** ]。
 
 1. 填入 [部署模型] 窗格。
 
@@ -237,7 +240,7 @@ Variance| 此資料行資料從其平均值分散程度的量值。
     「進階」功能表提供預設部署功能，例如[資料收集](how-to-enable-app-insights.md)和資源使用率設定。 若想要覆寫這些預設，請在此功能表中進行。
 
 1. 選取 [部署]。 部署需要約 20 分鐘才能完成。
-    開始部署之後，[**模型摘要**] 索引標籤隨即出現。 請參閱部署**狀態**一節底下的部署進度。 
+    開始部署後，會出現 [模型摘要] 索引標籤。 請參閱**部署狀態**一節底下的部署進度。 
 
 現在您已擁有可運作的 Web 服務，可用來產生預測！ 您可從 [Power BI 內建的 Azure Machine Learning 支援](how-to-consume-web-service.md#consume-the-service-from-power-bi)以透過查詢服務來測試預測。
 

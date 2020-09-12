@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: fa8bb310d6a088db92b3dfd8eb6d2f584e9ffab7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 255fa9e058fdbb3b7edb73e75fd53f4a2490bfca
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181879"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023851"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>使用 Azure Data Factory 在雪花中複製和轉換資料
 
@@ -49,7 +49,7 @@ ms.locfileid: "89181879"
 
 以下是支援雪花連結服務的屬性。
 
-| 屬性         | 說明                                                  | 必要 |
+| 屬性         | 描述                                                  | 必要 |
 | :--------------- | :----------------------------------------------------------- | :------- |
 | type             | Type 屬性必須設定為 **雪花**式。              | 是      |
 | connectionString | 指定連接到雪花式實例所需的資訊。 您可以選擇在 Azure Key Vault 中放置密碼或整個連接字串。 如需詳細資訊，請參閱下表中的範例，以及 [Azure Key Vault 文章中的商店認證](store-credentials-in-key-vault.md) 。<br><br>一些典型設定：<br>- **帳戶名稱：** 雪花式帳戶的  [完整帳戶名稱](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (包括識別區域和雲端平臺) 的其他區段，例如 xy12345 東部-美國-2. azure。<br/>- **使用者名稱：** 連接的使用者登入名稱。<br>- **密碼：** 使用者的密碼。<br>- **資料庫：** 連接後要使用的預設資料庫。 它應該是指定的角色具有許可權的現有資料庫。<br>- **倉儲：** 連接後要使用的虛擬倉儲。 它應該是指定的角色具有許可權的現有倉儲。<br>- **角色：** 雪花式會話中要使用的預設存取控制角色。 指定的角色應該是已指派給指定使用者的現有角色。 預設角色為 PUBLIC。 | 是      |
@@ -63,7 +63,11 @@ ms.locfileid: "89181879"
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>&role=<myRole>"
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>&role=<myRole>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -105,7 +109,7 @@ ms.locfileid: "89181879"
 
 雪花式資料集支援下列屬性。
 
-| 屬性  | 說明                                                  | 必要                    |
+| 屬性  | 描述                                                  | 必要                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 資料集的 type 屬性必須設為 **SnowflakeTable**。 | 是                         |
 | 結構描述 | 結構描述的名稱。 請注意，在 ADF 中，架構名稱會區分大小寫。 |否，來源，是接收的  |
@@ -143,13 +147,13 @@ ms.locfileid: "89181879"
 
 若要從雪花式複製資料，[複製活動 **來源** ] 區段支援下列屬性。
 
-| 屬性                     | 說明                                                  | 必要 |
+| 屬性                     | 描述                                                  | 必要 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 複製活動來源的 type 屬性必須設為 **SnowflakeSource**。 | 是      |
 | 查詢          | 指定從雪花讀取資料的 SQL 查詢。 如果架構、資料表和資料行的名稱包含小寫，請在查詢中以引號括住物件識別碼，例如 `select * from "schema"."myTable"` 。<br>不支援執行預存程式。 | 否       |
 | exportSettings | 用來從雪花式取出資料的 Advanced 設定。 您可以設定「複製到」命令所支援的專案，當您叫用語句時，Data Factory 將會通過此命令。 | 否       |
 | ***在 `exportSettings` 下列情況下：*** |  |  |
-| 類型 | 匯出命令的類型，設定為 **SnowflakeExportCopyCommand**。 | 是 |
+| type | 匯出命令的類型，設定為 **SnowflakeExportCopyCommand**。 | 是 |
 | additionalCopyOptions | 額外的複製選項，以索引鍵/值組的字典形式提供。 範例： MAX_FILE_SIZE、覆寫。 如需詳細資訊，請參閱 [雪花式複製選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)。 | 否 |
 | additionalFormatOptions | 提供用來複製命令做為機碼值組字典的其他檔案格式選項。 範例： DATE_FORMAT、TIME_FORMAT TIMESTAMP_FORMAT。 如需詳細資訊，請參閱 [雪花式格式類型選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions)。 | 否 |
 
@@ -175,7 +179,7 @@ ms.locfileid: "89181879"
 - 在複製活動來源中， `additionalColumns` 未指定。
 - 未指定資料行對應。
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -226,7 +230,7 @@ ms.locfileid: "89181879"
 > [!NOTE]
 > 暫存 Azure Blob 儲存體連結服務必須依照雪花式複製命令的要求，使用共用存取簽章驗證。 
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -274,13 +278,13 @@ ms.locfileid: "89181879"
 
 若要將資料複製到雪花，複製活動 **接收** 區段支援下列屬性。
 
-| 屬性          | 說明                                                  | 必要                                      |
+| 屬性          | 描述                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | 複製活動接收的 type 屬性，設定為 **SnowflakeSink**。 | 是                                           |
 | preCopyScript     | 針對複製活動指定一個 SQL 查詢，在每次執行時將資料寫入雪花之前執行。 使用此屬性來清除預先載入的資料。 | 否                                            |
 | importSettings | 用來將資料寫入雪花的 Advanced 設定。 您可以設定「複製到」命令所支援的專案，當您叫用語句時，Data Factory 將會通過此命令。 | 否 |
 | ***在 `importSettings` 下列情況下：*** |                                                              |  |
-| 類型 | 匯入命令的類型，設定為 **SnowflakeImportCopyCommand**。 | 是 |
+| type | 匯入命令的類型，設定為 **SnowflakeImportCopyCommand**。 | 是 |
 | additionalCopyOptions | 額外的複製選項，以索引鍵/值組的字典形式提供。 範例： ON_ERROR、FORCE、LOAD_UNCERTAIN_FILES。 如需詳細資訊，請參閱 [雪花式複製選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions)。 | 否 |
 | additionalFormatOptions | 提供給 COPY 命令的其他檔案格式選項，提供做為索引鍵/值組的字典。 範例： DATE_FORMAT、TIME_FORMAT TIMESTAMP_FORMAT。 如需詳細資訊，請參閱 [雪花式格式類型選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions)。 | 否 |
 
@@ -310,7 +314,7 @@ ms.locfileid: "89181879"
    - 如果您的來源是資料夾， `recursive` 則會設定為 true。
    - 未指定 `prefix`、`modifiedDateTimeStart`、`modifiedDateTimeEnd` 和 `enablePartitionDiscovery`。
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -360,7 +364,7 @@ ms.locfileid: "89181879"
 > [!NOTE]
 > 暫存 Azure Blob 儲存體連結服務需要使用雪花式複製命令所需的共用存取簽章驗證。
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -407,9 +411,9 @@ ms.locfileid: "89181879"
 
 下表列出雪花來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。連接器會利用雪花式 [內部資料傳輸](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)。
 
-| Name | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| Name | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 資料表 | 如果您選取 [資料表] 做為輸入，則在使用內嵌資料集時，資料流程將會從雪花式資料集或來源選項中指定的資料表提取所有資料。 | 否 | String | * 僅適用于內嵌資料集的 () *<br>tableName<br>schemaName |
+| Table | 如果您選取 [資料表] 做為輸入，則在使用內嵌資料集時，資料流程將會從雪花式資料集或來源選項中指定的資料表提取所有資料。 | 否 | String | * 僅適用于內嵌資料集的 () *<br>tableName<br>schemaName |
 | 查詢 | 如果您選取 [查詢為輸入]，請輸入查詢以從雪花提取資料。 這項設定會覆寫您在資料集中選擇的任何資料表。<br>如果架構、資料表和資料行的名稱包含小寫，請在查詢中以引號括住物件識別碼，例如 `select * from "schema"."myTable"` 。 | 否 | String | 查詢 |
 
 #### <a name="snowflake-source-script-examples"></a>雪花式來源腳本範例
@@ -437,7 +441,7 @@ source(allowSchemaDrift: true,
 
 下表列出雪花式接收所支援的屬性。 您可以在 [ **設定** ] 索引標籤中編輯這些屬性。使用內嵌資料集時，您將會看到其他設定，這與 [ [資料集屬性](#dataset-properties) ] 區段中所述的屬性相同。 連接器會利用雪花式 [內部資料傳輸](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)。
 
-| Name | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| Name | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Update 方法 | 指定雪花式目的地上允許的作業。<br>若要更新、upsert 或刪除資料列，則需要 [Alter row 轉換](data-flow-alter-row.md) 來標記這些動作的資料列。 | 是 | `true` 或 `false` | 刪除 <br/>插入 <br/>更新 <br/>upsertable |
 | 索引鍵資料行 | 對於更新、更新插入和刪除，必須設定索引鍵資料行，以決定要改變哪一個資料列。 | 否 | Array | 金鑰 |
@@ -481,6 +485,6 @@ IncomingStream sink(allowSchemaDrift: true,
 
 如需屬性的詳細資訊，請參閱 [查閱活動](control-flow-lookup-activity.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需 Data Factory 中複製活動所支援作為來源和接收器的資料存放區清單，請參閱 [支援的資料存放區和格式](copy-activity-overview.md#supported-data-stores-and-formats)。

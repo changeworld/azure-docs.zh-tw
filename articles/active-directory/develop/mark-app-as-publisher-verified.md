@@ -12,21 +12,21 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: d25a3831897ff8ad2e7dfb0c69910fee246aec21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3c3bed20b5fd60b9323dada617fb1302efc41d2
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477680"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006939"
 ---
-# <a name="mark-your-app-as-publisher-verified-preview"></a>將應用程式標示為發行者已驗證 (預覽)
+# <a name="mark-your-app-as-publisher-verified"></a>將應用程式標示為發行者已驗證
 
 當應用程式標示為「發行者已驗證」時，表示發行者已使用其 Microsoft 合作夥伴網路 (MPN) 帳戶通過身分驗證，並將此 MPN 帳戶與其應用程式註冊相關聯。 本文說明如何完成[發行者驗證 (預覽)](publisher-verification-overview.md) 程序。
 
 ## <a name="quickstart"></a>快速入門
 如果已在 Microsoft 合作夥伴網路 (MPN) 中註冊並符合[必要條件](publisher-verification-overview.md#requirements)，就可以立即開始使用： 
 
-1. 瀏覽至[應用程式註冊入口網站](https://aka.ms/PublisherVerificationPreview)預覽版。
+1. 流覽至 [應用程式註冊入口網站](https://aka.ms/PublisherVerificationPreview)。
 
 1. 選擇應用程式，然後按一下 [品牌]。 
 
@@ -46,7 +46,7 @@ ms.locfileid: "85477680"
 
     - 在合作夥伴中心內，此使用者必須擁有下列其中一種角色：MPN 管理員、帳戶管理員或全域管理員 (這是在 Azure AD 中主控的共用角色)。 
 
-1. 瀏覽至應用程式註冊入口網站預覽版：  
+1. 流覽至應用程式註冊入口網站：  
 
 1. 按一下您想要標示為「發行者已驗證」的應用程式，然後開啟 [品牌] 刀鋒視窗。 
 

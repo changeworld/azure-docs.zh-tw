@@ -1,25 +1,25 @@
 ---
-title: 設定物件複寫 (預覽)
+title: 設定物件複寫
 titleSuffix: Azure Storage
 description: 了解如何設定物件複寫，以非同步方式將區塊 Blob 從儲存體帳戶中的容器複製到另一個容器。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 09/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c28e869bff1d0e921a1e5a952dbfcb21ee97d16b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4fb616860cb1e85c6249329f3679de0d29b72e61
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228319"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018827"
 ---
-# <a name="configure-object-replication-for-block-blobs-preview"></a>設定區塊 Blob 的物件複寫 (預覽)
+# <a name="configure-object-replication-for-block-blobs"></a>設定區塊 blob 的物件複寫
 
-物件複寫 (預覽) 會以非同步方式複製來源儲存體帳戶與目的地帳戶之間的區塊 Blob。 如需物件複寫的詳細資訊，請參閱[物件複寫 (預覽)](object-replication-overview.md)。
+物件複寫會以非同步方式複製來源儲存體帳戶和目的地帳戶之間的區塊 blob。 如需有關物件複寫的詳細資訊，請參閱 [物件](object-replication-overview.md)複寫。
 
 當設定物件複寫時，您會建立複寫原則，其指定來源儲存體帳戶和目的地帳戶。 複寫原則包含一或多個規則，其指定來源容器和目的地容器，並指出將複寫來源容器中的哪些區塊 Blob。
 
@@ -31,17 +31,23 @@ ms.locfileid: "89228319"
 
 在您設定物件複寫之前，請先建立來源和目的地儲存體帳戶 (如果尚未建立)。 這兩個帳戶都必須為一般用途 v2 儲存體帳戶。 如需詳細資訊，請參閱[建立 Azure 儲存體帳戶](../common/storage-account-create.md)。
 
-儲存體帳戶最多可作為兩個目的地帳戶的來源帳戶。 目的地帳戶可能不會有兩個以上的來源帳戶。 來源和目的地帳戶可能都在不同的區域中。 您可以設定個別的複寫原則，將資料複寫到每個目的地帳戶。
+物件複寫需要為來源和目的地帳戶啟用 blob 版本設定，而且已為來源帳戶啟用 blob 變更摘要。 若要深入瞭解 blob 版本設定，請參閱 [blob 版本](versioning-overview.md)設定。 若要深入瞭解變更摘要，請參閱 [Azure Blob 儲存體中的變更摘要支援](storage-blob-change-feed.md)。 請記住，啟用這些功能可能會導致額外的成本。
 
-開始之前，請確定您已註冊下列功能預覽：
+儲存體帳戶最多可作為兩個目的地帳戶的來源帳戶。 來源和目的地帳戶可能位於相同區域或不同區域。 它們也可以位於不同的訂用帳戶中，以及不同的 Azure Active Directory (Azure AD) 租使用者中。 每一對帳戶只能建立一個複寫原則。
 
-- [物件複寫 (預覽)](object-replication-overview.md)
-- [Blob 版本設定](versioning-overview.md)
-- [Azure Blob 儲存體中的變更摘要支援 (預覽)](storage-blob-change-feed.md)
+當您設定物件複寫時，會透過 Azure 儲存體資源提供者，在目的地帳戶上建立複寫原則。 建立複寫原則之後，Azure 儲存體指派原則識別碼給它。 然後，您必須使用原則識別碼，將該複寫原則與來源帳戶產生關聯。 來源和目的地帳戶的原則識別碼必須相同才能進行複寫。
+
+若要設定儲存體帳戶的物件複寫原則，您必須將 Azure Resource Manager **參與者** 角色指派給儲存體帳戶層級或更高的層級。 如需詳細資訊，請參閱 Azure 角色型存取控制中的 [azure 內建角色](../../role-based-access-control/built-in-roles.md) (RBAC) 檔。
+
+### <a name="configure-object-replication-when-you-have-access-to-both-storage-accounts"></a>當您可以存取這兩個儲存體帳戶時，請設定物件複寫
+
+如果您可以存取來源和目的地儲存體帳戶，則可以在這兩個帳戶上設定物件複寫原則。
+
+於 Azure 入口網站中設定物件複寫之前，請先在儲存體帳戶中各自建立來源和目的地容器 (如果尚未建立)。 此外，請啟用來源帳戶的 blob 版本設定和變更摘要，並在目的地帳戶上啟用 blob 版本設定。
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-於 Azure 入口網站中設定物件複寫之前，請先在儲存體帳戶中各自建立來源和目的地容器 (如果尚未建立)。 此外，請在來源帳戶上啟用 Blob 版本設定和變更摘要，並在目的地帳戶上啟用 Blob 版本設定。
+當您針對目的地帳戶設定原則之後，Azure 入口網站會自動在來源帳戶上建立原則。
 
 若要在 Azure 入口網站中建立複寫原則，請遵循下列步驟：
 
@@ -63,39 +69,19 @@ ms.locfileid: "89228319"
 
 1. 根據預設，複製範圍會設定為只複製新的物件。 若要複製容器中的所有物件，或從自訂日期和時間開始複製物件，請選取 [變更] 連結，並設定容器配對的複製範圍。
 
-    下圖顯示自訂複製範圍。
+    下圖顯示自訂複製範圍，它會從指定的日期和時間開始複製物件。
 
     :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="顯示物件複寫自訂複製範圍的螢幕擷取畫面":::
 
 1. 選取 [儲存並套用] 以建立複寫原則，並開始複寫資料。
 
+設定物件複寫之後，Azure 入口網站會顯示複寫原則和規則，如下圖所示。
+
+:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="顯示 Azure 入口網站中的物件複寫原則的螢幕擷取畫面":::
+
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 建立複寫原則，請先安裝 [2.0.1](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) 版/preview 版或更新版本的 Az PowerShell 模組。 請遵循下列步驟安裝此預覽模組：
-
-1. 使用 [設定] 下的 [應用程式與功能]，從 Windows 解除任何先前安裝的 Azure PowerShell。
-
-1. 確定您已安裝最新版的 PowerShellGet。 開啟 Windows PowerShell 視窗，然後執行下列命令來安裝最新版本：
-
-    ```powershell
-    Install-Module PowerShellGet –Repository PSGallery –Force
-    ```
-
-    在安裝完 PowerShellGet 之後，關閉並重新開啟 PowerShell 視窗。
-
-1. 安裝最新版的 Azure PowerShell：
-
-    ```powershell
-    Install-Module Az –Repository PSGallery –AllowClobber
-    ```
-
-1. 安裝 Az Storage 預覽模組：
-
-    ```powershell
-    Install-Module Az.Storage -Repository PSGallery -RequiredVersion 2.0.1-preview -AllowPrerelease -AllowClobber -Force
-    ```
-
-如需如何安裝 Azure PowerShell 的詳細資訊，請參閱[使用 PowerShellGet 安裝 Azure PowerShell](/powershell/azure/install-az-ps)。
+若要使用 PowerShell 建立複寫原則，請先安裝 [2.5.0](https://www.powershellgallery.com/packages/Az.Storage/2.5.0) 版或更新版本的 Az PowerShell 模組。 如需如何安裝 Azure PowerShell 的詳細資訊，請參閱[使用 PowerShellGet 安裝 Azure PowerShell](/powershell/azure/install-az-ps)。
 
 下列範例說明如何在來源和目的地帳戶上建立複寫原則。 請記得以自有值來取代角括弧中的值：
 
@@ -162,32 +148,22 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 建立複寫原則，請先安裝適用於 Azure 儲存體的預覽延伸模組：
+若要建立具有 Azure CLI 的複寫原則，請先安裝 Azure CLI 2.11.1 版或更新版本。 如需詳細資訊，請參閱 [開始使用 Azure CLI](/cli/azure/get-started-with-azure-cli)。
+
+接下來，在來源和目的地儲存體帳戶上啟用 blob 版本設定，並啟用來源帳戶的變更摘要。 請記得以自有值來取代角括弧中的值：
 
 ```azurecli
-az extension add -n storage-or-preview
-```
-
-接下來，使用 Azure 認證登入：
-
-```azurecli
-az login
-```
-
-在來源和目的地儲存體帳戶上啟用 Blob 版本設定，並在來源帳戶上啟用變更摘要。 請記得以自有值來取代角括弧中的值：
-
-```azurecli
-az storage blob service-properties update \
+az storage account blob-service-properties update \
     --resource-group <resource-group> \
     --account-name <source-storage-account> \
     --enable-versioning
 
-az storage blob service-properties update \
+az storage account blob-service-properties update \
     --resource-group <resource-group> \
     --account-name <source-storage-account> \
     --enable-change-feed
 
-az storage blob service-properties update \
+az storage account blob-service-properties update \
     --resource-group <resource-group> \
     --account-name <dest-storage-account> \
     --enable-versioning
@@ -242,12 +218,110 @@ az storage account or-policy rule add \
 ```azurecli
 az storage account or-policy show \
     --resource-group <resource-group> \
-    --name <dest-storage-account> \
+    --account-name <dest-storage-account> \
     --policy-id <policy-id> |
-    --az storage account or-policy create --resource-group <resource-group> \
-    --name <source-storage-account> \
+    az storage account or-policy create --resource-group <resource-group> \
+    --account-name <source-storage-account> \
     --policy "@-"
 ```
+
+---
+
+### <a name="configure-object-replication-when-you-have-access-only-to-the-destination-account"></a>當您只能存取目的地帳戶時，請設定物件複寫
+
+如果您沒有來源儲存體帳戶的許可權，您可以在目的地帳戶上設定物件複寫，並將包含原則定義的 JSON 檔案提供給其他使用者，以在來源帳戶上建立相同的原則。 例如，如果來源帳戶與目的地帳戶位於不同的 Azure AD 租使用者，則請使用此方法來設定物件複寫。 
+
+請記住，您必須將 Azure Resource Manager **參與者** 角色指派給目的地儲存體帳戶層級或更高的層級，才能建立原則。 如需詳細資訊，請參閱 Azure 角色型存取控制中的 [azure 內建角色](../../role-based-access-control/built-in-roles.md) (RBAC) 檔。
+
+下表摘要說明每個案例中，JSON 檔案中的原則識別碼所使用的值。
+
+| 當您為此帳戶建立 JSON 檔案時 .。。 | 將原則識別碼設定為此值 .。。 |
+|-|-|
+| 目的地帳戶 | 字串值 *預設*值。 Azure 儲存體將為您建立原則識別碼。 |
+| 來源帳戶 | 當您下載包含目的地帳戶上所定義之規則的 JSON 檔案時，所傳回的原則識別碼。 |
+
+下列範例會使用符合前置詞 *b* 的單一規則來定義目的地帳戶的複寫原則，並設定要複寫之 blob 的最小建立時間。 請記得以自有值來取代角括弧中的值：
+
+```json
+{
+  "properties": {
+    "policyId": "default",
+    "sourceAccount": "<source-account>",
+    "destinationAccount": "<dest-account>",
+    "rules": [
+      {
+        "ruleId": "default",
+        "sourceContainer": "<source-container>",
+        "destinationContainer": "<destination-container>",
+        "filters": {
+          "prefixMatch": [
+            "b"
+          ],
+          "minCreationTime": "2020-08-028T00:00:00Z"
+        }
+      }
+    ]
+  }
+}
+```
+
+# <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+若要使用 Azure 入口網站中的 JSON 檔案來設定目的地帳戶的物件複寫，請遵循下列步驟：
+
+1. 建立本機 JSON 檔案，以定義目的地帳戶的複寫原則。 將 [ **policyId** ] 欄位設定為 [ **預設值** ]，Azure 儲存體將會定義原則識別碼。
+
+    建立 JSON 檔案來定義複寫原則的簡單方式，是先在 Azure 入口網站的兩個儲存體帳戶之間建立測試複寫原則。 然後，您可以下載複寫規則，並視需要修改 JSON 檔案。
+
+1. 在 Azure 入口網站中，流覽至目的地帳戶的 **物件** 複寫設定。
+1. 選取 **[上傳複寫規則**]。
+1. 上傳 JSON 檔案。 Azure 入口網站會顯示將建立的原則和規則，如下圖所示。
+
+    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="顯示如何上傳 JSON 檔案以定義複寫原則的螢幕擷取畫面":::
+
+1. 選取 [ **上傳** ] 以在目的地帳戶上建立複寫原則。
+
+然後，您可以下載 JSON 檔案，其中包含可提供給其他使用者以設定來源帳戶的原則定義。 若要下載此 JSON 檔案，請遵循下列步驟：
+
+1. 在 Azure 入口網站中，流覽至目的地帳戶的 **物件** 複寫設定。
+1. 選取您要下載之原則旁的 [ **更多** ] 按鈕，然後選取 [ **下載規則**]，如下圖所示。
+
+    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="顯示如何將複寫規則下載至 JSON 檔案的螢幕擷取畫面":::
+
+1. 將 JSON 檔案儲存至您的本機電腦，以與其他使用者共用，以設定來源帳戶的原則。
+
+下載的 JSON 檔案包含 Azure 儲存體為目的地帳戶上的原則建立的原則識別碼。 您必須使用相同的原則識別碼來設定來源帳戶的物件複寫。
+
+請記住，上傳 JSON 檔案以透過 Azure 入口網站建立目的地帳戶的複寫原則，並不會自動在來源帳戶中建立相同的原則。 在 Azure 儲存體開始複寫物件之前，另一位使用者必須在來源帳戶上建立原則。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+若要從 PowerShell 下載包含目的地帳戶複寫原則定義的 JSON 檔案，請呼叫 [AzStorageObjectReplicationPolicy](/powershell/module/az.storage/get-azstorageobjectreplicationpolicy) 命令以傳回原則。 然後將原則轉換為 JSON，並將它儲存為本機檔案，如下列範例所示。 請記得以您自己的值取代角括弧中的值和檔案路徑：
+
+```powershell
+$rgName = "<resource-group>"
+$destAccountName = "<destination-storage-account>"
+
+$destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
+    -StorageAccountName $destAccountName
+$destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
+```
+
+若要使用 JSON 檔案以 PowerShell 定義來源帳戶的複寫原則，請取出本機檔案，並從 JSON 轉換成物件。 然後呼叫 AzStorageObjectReplicationPolicy 命令來 [設定](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) 來源帳戶的原則，如下列範例所示。 請記得以您自己的值取代角括弧中的值和檔案路徑：
+
+```powershell
+$object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json
+Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
+    -StorageAccountName $srcAccountName `
+    -PolicyId $object.PolicyId `
+    -SourceAccount $object.SourceAccount `
+    -DestinationAccount $object.DestinationAccount `
+    -Rule $object.Rules
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+N/A
 
 ---
 
@@ -300,4 +374,6 @@ az storage account or-policy delete \
 
 ## <a name="next-steps"></a>後續步驟
 
-- [物件複寫概觀 (預覽)](object-replication-overview.md)
+- [物件複製總覽](object-replication-overview.md)
+- [啟用和管理 Blob 版本設定](versioning-enable.md)
+- [在 Azure Blob 儲存體中處理變更摘要](storage-blob-change-feed-how-to.md)

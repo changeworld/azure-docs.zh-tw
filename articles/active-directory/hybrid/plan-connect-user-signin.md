@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd198a132f64c26f775a8212c22b77201d579260
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80331258"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657157"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 使用者登入選項
 Azure Active Directory (Azure AD) Connect 可讓您的使用者使用相同的密碼來登入雲端和內部部署資源。 本文說明每個身分識別模型的主要概念，以協助您選擇要用於登入 Azure AD 的身分識別。
@@ -47,9 +47,9 @@ Azure AD 支援下列驗證方法：
    * **傳遞驗證 (PTA)** - 此選項與密碼雜湊同步處理類似，但會針對落實強大安全性與合規性政策的組織，提供使用內部部署軟件代理程式的簡易密碼驗證。
 * **同盟驗證** - 當您選擇此驗證方法，Azure AD 會將驗證程序遞交至個別信任的驗證系統 (例如 AD FS 或第三方同盟系統)，以驗證使用者的登入。 
 
-針對只想要讓使用者登入 Office 365、SaaS 應用程式及其他 Azure AD 型資源的大多數組織，建議使用預設的密碼雜湊同步處理選項。
+針對只想要讓使用者登入 Microsoft 365、SaaS 應用程式和其他以 Azure AD 為基礎之資源的組織，我們建議使用預設的密碼雜湊同步處理選項。
  
-如需選擇驗證方法的詳細資訊，請參閱[針對 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](../../security/fundamentals/choose-ad-authn.md)
+如需選擇驗證方法的詳細資訊，請參閱[針對 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](./choose-ad-authn.md)
 
 ### <a name="password-hash-synchronization"></a>密碼雜湊同步處理
 使用密碼雜湊同步處理時，可以將使用者密碼的雜湊從內部部署 Active Directory 同步至 Azure AD。 在內部部署環境中變更或重設密碼之後，新的密碼雜湊會立即同步至 Azure AD，讓使用者能夠一律使用相同的密碼來存取雲端資源和內部部署資源。 這些密碼一律不會傳送至 Azure AD，也不會以純文字的形式儲存在 Azure AD 中。 您可以將密碼雜湊同步處理與密碼回寫功能搭配使用，以在 Azure AD 中啟用自助式密碼重設功能。
@@ -68,7 +68,7 @@ Azure AD 支援下列驗證方法：
 此外，您也可以針對公司網路中已加入網域的電腦上使用者啟用單一登入。 在使用單一登入的情況下，已啟用的使用者只需輸入使用者名稱，即可安全地存取雲端資源。
 ![傳遞驗證](./media/plan-connect-user-signin/pta.png)
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 - [傳遞驗證](how-to-connect-pta.md)
 - [單一登入](how-to-connect-sso.md)
 
@@ -85,7 +85,7 @@ Azure AD 支援下列驗證方法：
 
 * 同盟伺服器的 Windows Server 2012 R2 伺服器。
 * Web 應用程式 Proxy 的 Windows Server 2012 R2 伺服器。
-* 一個 .pfx 檔案，其中包含一個適用于您預定同盟服務名稱的 TLS/SSL 憑證。 例如：fs.contoso.com。
+* 一個 .pfx 檔案，其中包含您想要的同盟服務名稱的一個 TLS/SSL 憑證。 例如：fs.contoso.com。
 
 如果要部署新的伺服器陣列或使用現有的伺服器陣列，您需要：
 
@@ -139,12 +139,12 @@ Azure AD 登入頁面會列出為內部部署 Active Directory 定義的 UPN 尾
 您可以按一下 [重新整理] 按鈕，從 Azure AD 中重新擷取最新的自訂網域狀態。
 
 ### <a name="selecting-the-attribute-for-the-user-principal-name-in-azure-ad"></a>選取 Azure AD 中使用者主體名稱的屬性
-userPrincipalName 屬性是使用者登入 Azure AD 和 Office 365 時會使用的屬性。 您應該在同步處理使用者之前，先驗證在 Azure AD 中使用的網域 (也稱為 UPN 尾碼)。
+屬性 userPrincipalName 是使用者登入 Azure AD 和 Microsoft 365 時使用的屬性。 您應該在同步處理使用者之前，先驗證在 Azure AD 中使用的網域 (也稱為 UPN 尾碼)。
 
 強烈建議您保留 userPrincipalName 預設屬性。 如果此屬性不可路由傳送且無法驗證，則可以選取另一個屬性 (例如電子郵件) 作為保存登入識別碼的屬性。 這稱為「替代識別碼」。 「替代識別碼」屬性值必須遵守 RFC 822 標準。 您可以使用「替代識別碼」搭配密碼 SSO 和同盟 SSO 作為登入解決方案。
 
 > [!NOTE]
-> 使用替代識別碼並無法與所有的 Office 365 工作負載相容。 如需詳細資訊，請參閱[設定替代登入識別碼](https://technet.microsoft.com/library/dn659436.aspx)。
+> 使用替代識別碼與所有 Microsoft 365 工作負載都不相容。 如需詳細資訊，請參閱[設定替代登入識別碼](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。
 >
 >
 
@@ -190,6 +190,6 @@ userPrincipalName 屬性是使用者登入 Azure AD 和 Office 365 時會使用�
 >
 >
 
-## <a name="next-steps"></a>後續步驟
-- 深入瞭解如何[整合您的內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。
-- 深入瞭解[Azure AD Connect 的設計概念](plan-connect-design-concepts.md)。
+## <a name="next-steps"></a>接下來的步驟
+- 深入瞭解如何 [整合您](whatis-hybrid-identity.md)的內部部署身分識別與 Azure Active Directory。
+- 深入瞭解 [Azure AD Connect 的設計概念](plan-connect-design-concepts.md)。

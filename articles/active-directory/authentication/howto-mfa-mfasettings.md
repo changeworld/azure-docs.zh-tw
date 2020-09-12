@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 1bc3f7887c9d257f5971b867ff9b7b1dd970fa87
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6a5ec4644eaed8d525c278c4fc464b4dbc683596
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179398"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023834"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>設定 Azure Multi-Factor Authentication 設定
 
@@ -25,7 +25,7 @@ ms.locfileid: "89179398"
 
 下列 Azure Multi-Factor Authentication 設定可在 Azure 入口網站中取得：
 
-| 功能 | 說明 |
+| 功能 | 描述 |
 | ------- | ----------- |
 | [帳戶鎖定](#account-lockout) | 如果資料列中有太多拒絕的驗證嘗試，則暫時鎖定帳戶以使用 Azure Multi-Factor Authentication。 這項功能僅適用於輸入 PIN 以進行驗證的使用者。 (MFA 伺服器) |
 | [封鎖/解除封鎖使用者](#block-and-unblock-users) | 封鎖特定使用者無法接收 Azure Multi-Factor Authentication 要求。 系統會自動拒絕已封鎖使用者的任何驗證嘗試。 使用者在封鎖或手動解除封鎖時，會持續封鎖90天。 |
@@ -242,7 +242,10 @@ Azure Multi-Factor Authentication 的「 _信任的 ip_ 」功能可略過從已
 
 如果您的組織部署 NPS 延伸模組以提供 MFA 給內部部署應用程式，請注意來源 IP 位址一律會顯示為驗證嘗試流經的 NPS 伺服器。
 
-|Azure AD 租使用者類型 |信任的 IP 功能選項 | |：---|：---| 雙步驟 |受控 |**特定範圍的 ip 位址**：系統管理員會指定 ip 位址範圍，以針對從公司內部網路登入的使用者略過多重要素驗證。 最多可設定50個信任的 IP 範圍。 ||同盟 |**所有同盟使用者**：從組織內部登入的所有同盟使用者都可以略過多重要素驗證。 使用者可使用 Active Directory Federation Services (AD FS) 所發出的宣告來略過驗證。<br/>**特定範圍的 ip 位址**：系統管理員會指定 ip 位址範圍，以針對從公司內部網路登入的使用者略過多重要素驗證。 |
+| Azure AD 租用戶類型 | 信任的 IP 功能選項 |
+|:--- |:--- |
+| 受控 |**特定範圍的 ip 位址**：系統管理員會指定 ip 位址範圍，以針對從公司內部網路登入的使用者略過多重要素驗證。 最多可設定50個信任的 IP 範圍。|
+| 同盟 |**所有同盟使用者**：從組織內部登入的所有同盟使用者都可以略過多重要素驗證。 使用者可使用 Active Directory Federation Services (AD FS) 所發出的宣告來略過驗證。<br/>**特定範圍的 ip 位址**：系統管理員會指定 ip 位址範圍，以針對從公司內部網路登入的使用者略過多重要素驗證。 |
 
 受信任的 IP 略過只能從公司內部網路內部運作。 如果您選取 [ **所有同盟使用者** ] 選項，且使用者從公司內部網路外部登入，則使用者必須使用多重要素驗證進行驗證。 即使使用者提供 AD FS 宣告，程序還是相同的。
 
@@ -371,6 +374,6 @@ _記住 Multi-Factor Authentication_功能可讓使用者在使用 Multi-Factor 
 
 啟用「記住 Multi-Factor Authentication」功能之後，使用者可以選取 [ **不要再詢問**] 選項，將裝置標示為受信任。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入瞭解在 Azure Multi-Factor Authentication 中使用的可用方法，請參閱 [Azure Active Directory 中有哪些驗證和驗證方法？](concept-authentication-methods.md)

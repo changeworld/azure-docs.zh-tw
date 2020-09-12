@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/12/2019
-ms.openlocfilehash: 6ef76f3dafc02e89008ae164e3d868c628291766
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3b2807ccd6d83511dd0c9a32a177ea9fe2c4b642
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075302"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662089"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>使用識別碼代理 (預覽版) 進行認證管理
 
@@ -111,10 +111,10 @@ SSH 驗證需要 Azure AD DS 提供雜湊。 如果您只想要針對系統管�
 獲取 OAuth 權杖之後，您可以在對叢集閘道的 HTTP 要求的授權標頭中使用該權杖， (例如 <clustername> -int.azurehdinsight.net) 。 例如，livy API 的範例捲曲命令可能看起來像這樣：
     
 ```bash
-curl -k -v -H "Authorization: TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By: UPN"
+curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"
 ``` 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用 Azure Active Directory Domain Services 設定具有企業安全性套件的 HDInsight 叢集](apache-domain-joined-configure-using-azure-adds.md)
 * [將 Azure Active Directory 使用者同步至 HDInsight 叢集](../hdinsight-sync-aad-users-to-cluster.md)

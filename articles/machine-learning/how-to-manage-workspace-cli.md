@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0eec9ce6b035b7bf3627c844abb97649ce972693
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cd9b891212010d7e61c4a4eb64d8bf0660bbd69a
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167635"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661645"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 建立 Azure Machine Learning 的工作區
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -62,11 +62,11 @@ Azure Machine Learning 工作區依賴下列 Azure 服務或實體：
 > [!IMPORTANT]
 > 如果未指定現有的 Azure 服務，則會在工作區建立期間自動建立一個。 請務必指定資源群組。 附加您自己的儲存體帳戶時，請確定它符合下列準則：
 >
-> * 儲存體帳戶_不_是 (Premium_LRS 和 Premium_GRS 的 premium 帳戶) 
-> * 已啟用 Azure Blob 和 Azure 檔案功能
+> * 儲存體帳戶 _不_ 是 premium 帳戶 (Premium_LRS 和 Premium_GRS) 
+> * 啟用 Azure Blob 和 Azure 檔案功能
 > * 階層命名空間 (ADLS Gen 2) 已停用
 >
-> 這些需求僅適用于工作區所使用的_預設_儲存體帳戶。
+> 這些需求僅適用于工作區使用的 _預設_ 儲存體帳戶。
 
 | 服務 | 用來指定現有執行個體的參數 |
 | ---- | ---- |
@@ -145,43 +145,43 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 ### <a name="virtual-network-and-private-endpoint"></a>虛擬網路和私人端點
 
 > [!IMPORTANT]
-> 使用具有 Azure Machine Learning 工作區的 Azure 私人連結目前為公開預覽狀態。 這項功能僅適用于**美國東部**和**美國西部 2**區域。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 使用 Azure Private Link 搭配 Azure Machine Learning 工作區目前處於公開預覽狀態。 這項功能僅適用于 **美國東部** 和 **美國西部 2** 區域。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 如果您想要將工作區的存取限制為虛擬網路，您可以使用下列參數：
 
-* `--pe-name`：所建立之私用端點的名稱。
+* `--pe-name`：已建立之私用端點的名稱。
 * `--pe-auto-approval`：是否應自動核准工作區的私人端點連接。
-* `--pe-resource-group`：要在其中建立私用端點的資源群組。 必須是包含虛擬網路的相同群組。
+* `--pe-resource-group`：要在其中建立私人端點的資源群組。 必須是包含虛擬網路的相同群組。
 * `--pe-vnet-name`：要在其中建立私人端點的現有虛擬網路。
-* `--pe-subnet-name`：要在其中建立私用端點的子網名稱。 預設值是 `default`。
+* `--pe-subnet-name`：要在其中建立私人端點的子網名稱。 預設值是 `default`。
 
-如需搭配工作區使用私人端點和虛擬網路的詳細資訊，請參閱[網路隔離和隱私權](how-to-enable-virtual-network.md)。
+如需有關搭配您的工作區使用私人端點和虛擬網路的詳細資訊，請參閱 [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)。
 
-### <a name="customer-managed-key-and-high-business-impact-workspace"></a>客戶管理的金鑰和高商業影響工作區
+### <a name="customer-managed-key-and-high-business-impact-workspace"></a>客戶管理的金鑰和高業務影響工作區
 
-根據預設，工作區的計量和中繼資料會儲存在 Microsoft 維護的 Azure Cosmos DB 實例中。 這項資料會使用 Microsoft 管理的金鑰進行加密。 
+根據預設，工作區的計量和中繼資料會儲存在 Microsoft 所維護的 Azure Cosmos DB 實例中。 這項資料會使用 Microsoft 管理的金鑰進行加密。 
 
-如果您要建立 Azure Machine Learning 的__企業__版，您可以使用 [提供您自己的金鑰]。 這麼做會建立在您的 Azure 訂用帳戶中儲存計量和中繼資料的 Azure Cosmos DB 實例。 使用 `--cmk-keyvault` 參數來指定包含金鑰的 Azure Key Vault，並 `--resource-cmk-uri` 指定保存庫內金鑰的 URL。
+如果您要建立 Azure Machine Learning 的 __企業__ 版，您可以使用 [提供您自己的金鑰]。 這麼做會建立 Azure Cosmos DB 實例，以在您的 Azure 訂用帳戶中儲存計量和中繼資料。 使用 `--cmk-keyvault` 參數來指定包含金鑰的 Azure Key Vault，並 `--resource-cmk-uri` 指定保存庫中金鑰的 URL。
 
 > [!IMPORTANT]
 > 使用 `--cmk-keyvault` 和參數之前 `--resource-cmk-uri` ，您必須先執行下列動作：
 >
-> 1. 使用訂用帳戶的參與者許可權，在身分識別和存取管理) 中授權__Machine Learning 應用程式__ (。
-> 1. 依照[設定客戶管理的金鑰](/azure/cosmos-db/how-to-setup-cmk)中的步驟進行：
+> 1. 使用訂用帳戶的參與者許可權，在身分識別和存取管理) 中授權 __Machine Learning 應用程式__ (。
+> 1. 遵循 [設定客戶管理的金鑰](/azure/cosmos-db/how-to-setup-cmk) 的步驟：
 >     * 註冊 Azure Cosmos DB 提供者
->     * 建立和設定 Azure Key Vault
+>     * 建立並設定 Azure Key Vault
 >     * 產生金鑰
 >
->     您不需要手動建立 Azure Cosmos DB 實例，系統會在建立工作區時為您建立一個實例。 此 Azure Cosmos DB 實例將會使用以此模式為基礎的名稱，在不同的資源群組中建立： `<your-resource-group-name>_<GUID>` 。
+>     您不需要手動建立 Azure Cosmos DB 實例，系統會在工作區建立期間為您建立一個實例。 此 Azure Cosmos DB 實例會根據此模式使用名稱，在個別的資源群組中建立： `<your-resource-group-name>_<GUID>` 。
 >
-> 您無法在建立工作區之後變更此設定。 如果您刪除工作區所使用的 Azure Cosmos DB，也必須刪除正在使用的工作區。
+> 建立工作區之後，就無法變更此設定。 如果您刪除工作區所使用的 Azure Cosmos DB，也必須刪除正在使用該工作區的工作區。
 
-若要限制 Microsoft 在您的工作區中收集的資料，請使用 `--hbi-workspace` 參數。 
+若要限制 Microsoft 在您的工作區上收集的資料，請使用 `--hbi-workspace` 參數。 
 
 > [!IMPORTANT]
-> 只有在建立工作區時，才能選取 [高商業影響]。 您無法在建立工作區之後變更此設定。
+> 只有在建立工作區時，才能選取 [高業務衝擊]。 建立工作區之後，就無法變更此設定。
 
-如需有關客戶管理的金鑰和高商業影響工作區的詳細資訊，請參閱[Azure Machine Learning 的企業安全性](concept-enterprise-security.md#encryption-at-rest)。
+如需客戶管理的金鑰和高業務影響工作區的詳細資訊，請參閱 [Azure Machine Learning 的企業安全性](concept-enterprise-security.md#encryption-at-rest)。
 
 ### <a name="use-existing-resources"></a>使用現有的資源
 
@@ -197,7 +197,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
 
     > [!IMPORTANT]
-    > 如果您想要使用現有的 Azure 儲存體帳戶，它不能是高階帳戶， (Premium_LRS 和 Premium_GRS) 。 它也不能有階層式命名空間 (搭配 Azure Data Lake Storage Gen2) 使用。 工作區的_預設_儲存體帳戶不支援 premium 儲存體或階層式命名空間。 您可以使用 premium 儲存體或具有_非預設_儲存體帳戶的階層命名空間。
+    > 如果您想要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶 (Premium_LRS 和 Premium_GRS) 。 它也不能有階層命名空間 (用於 Azure Data Lake Storage Gen2) 。 使用工作區的 _預設_ 儲存體帳戶並不支援 premium 儲存體或階層命名空間。 您可以搭配使用 premium 儲存體或階層命名空間與 _非預設_ 儲存體帳戶。
 
 + **Azure Application Insights**：
 
@@ -368,7 +368,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 ## <a name="sync-keys-for-dependent-resources"></a>同步相依資源的金鑰
 
-如果您變更工作區所使用的其中一個資源的存取金鑰，工作區需要大約一小時的時間才能同步處理至新的金鑰。 若要強制工作區立即同步處理新的金鑰，請使用下列命令：
+如果您變更了工作區所使用的其中一項資源的存取金鑰，工作區大約需要一小時的時間來同步處理至新的金鑰。 若要強制工作區立即同步處理新的金鑰，請使用下列命令：
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>

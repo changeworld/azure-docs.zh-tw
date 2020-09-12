@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 4dced0e0597e4df2fe215c9f4b85e3e8defd92c3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1524e51fff64b00a798f15425973145feee730fe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230376"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651651"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 的已知問題與疑難排解
 
@@ -173,7 +173,9 @@ ms.locfileid: "89230376"
 > [!WARNING]
 > 不支援將 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新租用戶。 這麼做可能會導致錯誤。
 
-* **Azure 入口網站**：如果您直接從 SDK 或入口網站的共用連結來查看您的工作區，您將無法在延伸模組中使用訂用帳戶資訊來查看一般 **總覽** 頁面。 您也無法切換至另一個工作區。 如果您需要查看另一個工作區，請直接移至 [Azure Machine Learning studio](https://ml.azure.com) 並搜尋工作區名稱。
+* **Azure 入口網站**： 
+  * 如果您直接從 SDK 或 Azure 入口網站的共用連結移至您的工作區，就無法在延伸模組中查看具有訂用帳戶資訊的標準 **總覽** 頁面。 在此案例中，您也無法切換至另一個工作區。 若要查看另一個工作區，請直接移至 [Azure Machine Learning studio](https://ml.azure.com) 並搜尋工作區名稱。
+  * 所有資產 (資料集、實驗、計算等等) 僅適用于 [Azure Machine Learning studio](https://ml.azure.com)。 Azure 入口網站 *不* 提供這些功能。
 
 * **Azure Machine Learning studio 入口網站中支援的瀏覽器**：建議您使用與您的作業系統相容的最新瀏覽器。 支援下列瀏覽器：
   * Microsoft Edge (新的 Microsoft Edge 最新版本。 不 Microsoft Edge 舊版) 
@@ -208,7 +210,7 @@ ms.locfileid: "89230376"
 
     如果您未包含前置正斜線 '/'，則必須在工作目錄前面加上前置詞，例如 `/mnt/batch/.../tmp/dataset` 在計算目標上，以指出您要裝載資料集的位置。
 
-### <a name="data-labeling-projects"></a>資料標籤專案
+### <a name="data-labeling-projects"></a>資料標記專案
 
 |問題  |解決方案  |
 |---------|---------|
@@ -239,7 +241,7 @@ ms.locfileid: "89230376"
     1. 在 [ **資料集監視器** ] 索引標籤上，選取 [實驗] 連結以檢查執行狀態。  此連結位於資料表最右邊。
     1. 如果執行成功完成，請檢查驅動程式記錄檔，以查看已產生多少計量，或是否有任何警告訊息。  按一下實驗之後，在 [ **輸出 + 記錄** ] 索引標籤中尋找驅動程式記錄檔。
 
-* 如果 SDK `backfill()` 函數未產生預期的輸出，可能是因為驗證問題所致。  當您建立要傳入此函式的計算時，請勿使用 `Run.get_context().experiment.workspace.compute_targets` 。  相反地，請使用 [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) （如下所示）來建立您傳遞至該函式的計算 `backfill()` ： 
+* 如果 SDK `backfill()` 函數未產生預期的輸出，可能是因為驗證問題所致。  當您建立要傳入此函式的計算時，請勿使用 `Run.get_context().experiment.workspace.compute_targets` 。  相反地，請使用 [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true) （如下所示）來建立您傳遞至該函式的計算 `backfill()` ： 
 
   ```python
    auth = ServicePrincipalAuthentication(
@@ -294,7 +296,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     Azure ML 也提供適用于 TensorFlow、PyTorch、Chainer 和 SKLearn 的架構專屬估算器。 使用這些估算器可確保您在用於定型的環境中，代表您安裝了 core framework 相依性。 您可以選擇指定額外的相依性，如上所述。 
  
     您可以在 [AzureML 容器](https://github.com/Azure/AzureML-Containers)中看到 Azure ML 維護的 docker 映射及其內容。
-    架構特有的相依性列在個別的架構檔中- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks)、 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)、 [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)。
+    架構特有的相依性列在個別的架構檔中- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#&preserve-view=trueremarks)、 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#&preserve-view=trueremarks)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#&preserve-view=trueremarks)、 [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#&preserve-view=trueremarks)。
 
     > [!Note]
     > 如果您認為特定套件在 Azure ML 維護的映射和環境中有很大的不足，請在 [AzureML 容器](https://github.com/Azure/AzureML-Containers)中提出 GitHub 問題。 
@@ -303,7 +305,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **Horovod 已關閉**：在大部分情況下，如果您遇到「AbortedError： Horovod 已關閉」這個例外狀況，就表示其中一個處理常式的基礎例外狀況導致 Horovod 關機。 MPI 作業中的每個排名都會在 Azure ML 中取得專屬的記錄檔。 這些記錄會命名為 `70_driver_logs` 。 在分散式訓練的情況下，記錄檔名稱會加上尾碼， `_rank` 以方便區分記錄檔。 若要找出造成 Horovod 關機的確切錯誤，請流覽所有記錄檔，然後 `Traceback` 在 driver_log 檔案的結尾尋找。 其中一個檔案將提供實際的根本例外狀況。 
 
-* **執行或實驗刪除**：您可以使用 [實驗.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) 封存方法來封存實驗，或從 Azure Machine Learning Studio 用戶端的實驗索引標籤中，透過 [封存實驗] 按鈕來封存實驗。 此動作會從清單查詢和 views 中隱藏實驗，但不會將其刪除。
+* **執行或實驗刪除**：您可以使用 [實驗.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truearchive--) 封存方法來封存實驗，或從 Azure Machine Learning Studio 用戶端的實驗索引標籤中，透過 [封存實驗] 按鈕來封存實驗。 此動作會從清單查詢和 views 中隱藏實驗，但不會將其刪除。
 
     目前不支援永久刪除個別實驗或執行。 如需有關刪除工作區資產的詳細資訊，請參閱 [匯出或刪除您的 Machine Learning 服務工作區資料](how-to-export-delete-data.md)。
 
@@ -337,6 +339,8 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade pandas==0.23.4
     pip install --upgrade scikit-learn==0.20.3
   ```
+ 
+* **預測 R2 分數一律為零**：如果所提供的定型資料具有的時間序列包含與最後一個 `n_cv_splits`  +  資料點相同的值，就會發生此問題 `forecasting_horizon` 。 如果您的時間序列中應有此模式，您可以將主要計量切換為正規化的 mean 平方根誤差。
  
 * **TensorFlow**：從 SDK 版本1.5.0 版來，自動化機器學習預設不會安裝 TensorFlow 模型。 若要安裝 TensorFlow 並搭配自動化 ML 實驗使用，請透過 CondaDependecies 安裝 TensorFlow = = 1.12.0。 
  
@@ -380,9 +384,9 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   
 * 匯**入 AutoMLConfig 失敗**：自動化機器學習版1.0.76 中有套件變更，需要先卸載舊版本，然後再更新為新版本。 如果在 `ImportError: cannot import name AutoMLConfig` v 1.0.76 至 v 1.0.76 或更新版本之前從 SDK 版本升級之後遇到，請執行下列程式來解決錯誤： `pip uninstall azureml-train automl` `pip install azureml-train-auotml` Automl_setup .cmd 腳本會自動執行此工作。 
 
-* **workspace.from_config 失敗**：如果呼叫 ws = Workspace.from_config ( # A1 ' 失敗-
+* **工作區。 from_config 失敗**：如果呼叫 Ws = workspace. from_config ( # A1 ' 失敗-
   1. 確定已成功執行 .ipynb 筆記本。
-  2. 如果正在從執行所在資料夾下的資料夾中執行筆記本 `configuration.ipynb` ，請將資料夾 aml_config，並將其包含的檔案 config.js複製到新資料夾。 Workspace.from_config 讀取筆記本資料夾或其父資料夾的 config.js。
+  2. 如果正在從執行所在資料夾下的資料夾中執行筆記本 `configuration.ipynb` ，請將資料夾 aml_config，並將其包含的檔案 config.js複製到新資料夾。 工作區。 from_config 讀取筆記本資料夾或其父資料夾的 config.js。
   3. 如果使用新的訂用帳戶、資源群組、工作區或區域，請確定您已再次執行 `configuration.ipynb` 筆記本。 如果工作區已存在於指定的訂用帳戶下的指定資源群組中，則直接變更 config.js將會運作。
   4. 如果您想要變更區域，請變更工作區、資源群組或訂用帳戶。 `Workspace.create` 將不會建立或更新工作區（如果已存在），即使指定的區域不同也是一樣。
   
@@ -403,7 +407,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 針對下列錯誤採取下列動作：
 
-|錯誤  | 解決方法  |
+|錯誤  | 解決方案  |
 |---------|---------|
 |部署 web 服務時映射建立失敗     |  新增 "pynacl = = 1.2.1" 作為映射設定 Conda 檔案的 pip 相依性       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   將部署中所使用 Vm 的 SKU 變更為具有更多記憶體的 Vm。 |
@@ -471,7 +475,7 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 如需詳細資訊，請參閱[管理使用者和角色](how-to-assign-roles.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請參閱更多關於 Azure Machine Learning 的疑難排解文章：
 
