@@ -5,20 +5,20 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 22b00b41c7fce0af57fd9f92b0f42bbd9412afda
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 2ea607b22bfa1eebdf6b63adcd14a5d1bb1ca9d0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87771114"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89303968"
 ---
 ### <a name="functional-limits"></a>功能限制
 
 下表列出 Azure 數位 Twins 在目前預覽中的功能限制。
 
-| 區域 | 功能 | 預設限制 | 可? |
+| 區域 | 功能 | 預設限制 | 調？ |
 | --- | --- | --- | --- |
-| Azure 資源 | 區域中每個訂用帳戶的 Azure 數位 Twins 實例數目 | 10 | 是 |
+| Azure 資源 | 每個訂用帳戶的區域中的 Azure 數位 Twins 實例數目 | 10 | 是 |
 | Digital Twins | Azure 數位 Twins 實例中的 twins 數目 | 200,000 | 是 |
 | Digital Twins | 單一對應項的連入關聯性數目 | 5,000 | 否 |
 | Digital Twins | 來自單一對應項的傳出關聯性數目 | 5,000 | 否 |
@@ -35,18 +35,18 @@ ms.locfileid: "87771114"
 
 ### <a name="rate-limits"></a>速率限制
 
-下表反映不同 Api 的速率限制。
+此資料表反映不同 Api 的速率限制。
 
-| API | 功能 | 預設限制 | 可? |
+| API | 功能 | 預設限制 | 調？ |
 | --- | --- | --- | --- |
-| 模型 API | 每秒要求數目 | 100 | 是 |
-| 數位 Twins API | 每秒要求數目 | 1,000 | 是 |
-| 查詢 API | 每秒要求數目 | 500 | 是 |
-| 查詢 API | 每秒查詢單位數 | 4,000 | 是 |
-| 事件路由 API | 每秒要求數目 | 100 | 是 |
+| 模型 API | 每秒要求數 | 100 | 是 |
+| 數位 Twins API | 每秒要求數 | 1,000 | 是 |
+| 查詢 API | 每秒要求數 | 500 | 是 |
+| 查詢 API | 每秒[查詢單位](../articles/digital-twins/concepts-query-units.md)數 | 4,000 | 是 |
+| 事件路由 API | 每秒要求數 | 100 | 是 |
 
 ### <a name="other-limits"></a>其他限制
 
-適用于 Azure 數位 Twins 模型之 DTDL 檔中的資料類型和欄位限制，可以在其 GitHub 中的規格檔中找到：[*數位 Twins 定義語言 (DTDL) -第2版*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
+您可以在 GitHub： [*數位 Twins 定義語言 (DTDL) -第2版*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)中，找到 Azure 數位 TWINS 模型 DTDL 檔中的資料類型和欄位限制。
  
-如需在預覽期間撰寫查詢的查詢延遲詳細資料和其他指導方針，請參閱[*如何：查詢*](../articles/digital-twins/how-to-query-graph.md)對應項圖形。
+如需在預覽期間撰寫查詢的查詢延遲詳細資料和其他指導方針，請參閱 [*如何：查詢*](../articles/digital-twins/how-to-query-graph.md)對應項圖形。

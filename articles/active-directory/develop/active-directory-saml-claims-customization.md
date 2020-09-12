@@ -1,7 +1,7 @@
 ---
 title: 自訂應用程式 SAML 權杖宣告
 titleSuffix: Microsoft identity platform
-description: 瞭解如何在適用于企業應用程式的 SAML 權杖中，自訂 Microsoft 身分識別平臺所發出的宣告。
+description: 瞭解如何在企業應用程式的 SAML 權杖中自訂 Microsoft 身分識別平臺所發出的宣告。
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -13,20 +13,20 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f35e5971374f54940396f602a23ffa0ae3abd015
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552827"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421453"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：針對企業應用程式自訂 SAML 權杖中發出的宣告
 
-現今，Microsoft 身分識別平臺支援使用大部分企業應用程式的單一登入 (SSO) ，包括 Azure AD 應用程式庫中預先整合的應用程式，以及自訂應用程式。 當使用者使用 SAML 2.0 通訊協定透過 Microsoft 身分識別平臺向應用程式進行驗證時，Microsoft 身分識別平臺會透過 HTTP POST) ，將權杖傳送至應用程式 (。 然後，應用程式會驗證並使用權杖將使用者登入，而不會提示輸入使用者名稱和密碼。 這些 SAML 權杖包含關於使用者的資訊片段，稱為「宣告」。
+現今，Microsoft 身分識別平臺支援單一登入 (SSO) 與大部分的企業應用程式，包括 Azure AD 應用程式資源庫中預先整合的應用程式，以及自訂應用程式。 當使用者透過 Microsoft 身分識別平臺使用 SAML 2.0 通訊協定驗證應用程式時，Microsoft 身分識別平臺會透過 HTTP POST) ，將權杖傳送給應用程式 (。 然後，應用程式會驗證並使用權杖將使用者登入，而不會提示輸入使用者名稱和密碼。 這些 SAML 權杖包含關於使用者的資訊片段，稱為「宣告」。
 
 *宣告*是身分識別提供者核發權杖給使用者時，所提供的權杖內部使用者相關資訊。 在 [SAML 權杖](https://en.wikipedia.org/wiki/SAML_2.0)中，此資料通常包含在 SAML 屬性陳述式中。 使用者的唯一識別碼通常在 SAML Subject 中表示，也稱為「名稱識別碼」。
 
-根據預設，Microsoft 身分識別平臺會發出 SAML 權杖給您的應用程式，其中包含 `NameIdentifier` 具有使用者名稱值的宣告， (也稱為 Azure AD 中的使用者主體名稱) ，這可以唯一識別使用者。 SAML 權杖也包含額外的宣告，其包含使用者的電子郵件地址、名字和姓氏。
+根據預設，Microsoft 身分識別平臺會將 SAML 權杖簽發給您的應用程式，其中包含 `NameIdentifier` 具有使用者使用者名稱值的宣告 (也稱為 Azure AD 中的使用者主體名稱) ，可唯一識別使用者。 SAML 權杖也包含額外的宣告，其包含使用者的電子郵件地址、名字和姓氏。
 
 若要檢視或編輯在 SAML 權杖中對應用程式發出的宣告，請在 Azure 入口網站中開啟應用程式。 然後開啟 [使用者屬性與宣告] 區段。
 
@@ -48,18 +48,18 @@ ms.locfileid: "87552827"
 
 ### <a name="nameid-format"></a>NameID 格式
 
-如果 SAML 要求包含以特定格式 NameIDPolicy 的元素，則 Microsoft 身分識別平臺會接受要求中的格式。
+如果 SAML 要求包含具有特定格式的專案 NameIDPolicy，則 Microsoft 身分識別平臺會接受要求中的格式。
 
-如果 SAML 要求未包含 NameIDPolicy 的元素，則 Microsoft 身分識別平臺會以您指定的格式發出 NameID。 如果未指定格式，Microsoft 身分識別平臺將會使用與所選宣告來源相關聯的預設來源格式。
+如果 SAML 要求未包含 NameIDPolicy 的元素，Microsoft 身分識別平臺將會使用您指定的格式來發出 NameID。 如果未指定任何格式，Microsoft 身分識別平臺將會使用與所選宣告來源相關聯的預設來源格式。
 
 從 [選擇名稱識別碼格式] 下拉式清單中，您可以選取下列其中一個選項。
 
 | NameID 格式 | 描述 |
 |---------------|-------------|
 | **預設值** | Microsoft 身分識別平臺會使用預設來源格式。 |
-| **持續** | Microsoft 身分識別平臺會使用持續性作為 NameID 格式。 |
+| **持續** | Microsoft 身分識別平臺將會使用持續性作為 NameID 格式。 |
 | **EmailAddress** | Microsoft 身分識別平臺會使用 EmailAddress 作為 NameID 格式。 |
-| **未指定** | Microsoft 身分識別平臺會使用 [未指定] 作為 NameID 格式。 |
+| **未指定** | Microsoft 身分識別平臺將使用未指定的做為 NameID 格式。 |
 | **Windows 網域限定名稱** | Microsoft 身分識別平臺會使用 WindowsDomainQualifiedName 作為 NameID 格式。 |
 
 也支援暫時性 NameID，但其並未在下拉式清單中提供，也無法在 Azure 端設定。 若要深入了解 NameIDPolicy 屬性，請參閱[單一登入 SAML 通訊協定](single-sign-on-saml-protocol.md)。
@@ -88,11 +88,11 @@ ms.locfileid: "87552827"
 
 1. 依據您的組織，在 [來源屬性] 中輸入不含引號的常數值，然後按一下 [儲存]。
 
-    ![在 Azure 入口網站中開啟 [使用者屬性與宣告] 區段](./media/active-directory-saml-claims-customization/organization-attribute.png)
+    ![Azure 入口網站中 & 宣告區段的組織屬性](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
 1. 常數值會以下列方式顯示。
 
-    ![在 Azure 入口網站中開啟 [使用者屬性與宣告] 區段](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
+    ![在 Azure 入口網站中編輯 & 宣告區段的屬性](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>特殊宣告 - 轉換
 
@@ -121,7 +121,7 @@ ms.locfileid: "87552827"
 2. 從轉換下拉式清單選取函式。 視您所選取的函式而定，您將必須提供參數與常數值以在轉換中進行評估。 請參閱下表以取得可用函式的詳細資訊。
 3. 若要套用多個轉換，請按一下 [新增轉換]。您最多可以針對宣告套用兩個轉換。 例如，您可以先擷取 `user.mail` 的電子郵件前置詞。 接著將字串設定為大寫。
 
-   ![編輯 NameID (名稱識別碼) 值](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
+   ![多個宣告轉換](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
 您可以使用下列函式來轉換宣告。
 
@@ -129,8 +129,8 @@ ms.locfileid: "87552827"
 |----------|-------------|
 | **ExtractMailPrefix()** | 從電子郵件地址或使用者主體名稱中移除網域尾碼。 這只會擷取使用者名稱的第一個部分 (例如，"joe_smith" 而不是 joe_smith@contoso.com)。 |
 | **Join()** | 透過聯結兩個屬性來建立新值。 您也可以選擇性地在兩個屬性之間使用分隔符號。 針對 NameID 宣告轉換，聯結僅限用於已驗證的網域。 如果選取的使用者識別碼值具有網域，它會擷取使用者名稱以附加所選的已驗證網域。 例如，如果您選取電子郵件 (joe_smith@contoso.com) 作為使用者識別碼值，並選取 contoso.onmicrosoft.com 作為已驗證的網域，這樣會產生 joe_smith@contoso.onmicrosoft.com。 |
-| **ToLower()** | 將所選取屬性中的字元轉換成小寫字元。 |
-| **ToUpper()** | 將所選取屬性中的字元轉換成大寫字元。 |
+| **ToLowercase ( # B1 ** | 將所選取屬性中的字元轉換成小寫字元。 |
+| **ToUppercase ( # B1 ** | 將所選取屬性中的字元轉換成大寫字元。 |
 | **Contains()** | 如果輸入符合指定的值，則輸出屬性或常數。 否則，您可以在沒有相符結果時指定另一個輸出。<br/>例如，假設您想要發出宣告，其中如果值包含網域 “@contoso.com”，便代表其為使用者的電子郵件地址，否則您便想要輸出使用者主體名稱。 若要這麼做，您必須設定下列值：<br/>參數 1 (輸入)：user.email<br/>值："@contoso.com"<br/>參數 2 (輸出)：user.email<br/>參數 3 (在沒有相符項目下的輸出)：user.userprincipalname |
 | **EndWith()** | 如果輸入的結尾是指定的值，則輸出屬性或常數。 否則，您可以在沒有相符結果時指定另一個輸出。<br/>例如，假設您想要發出宣告，其中如果員工識別碼是以 “000” 作為結尾，便代表值為使用者的員工識別碼，否則您便想要輸出分機屬性。 若要這麼做，您必須設定下列值：<br/>參數 1 (輸入)：user.employeeid<br/>*值*："000"<br/>參數 2 (輸出)：user.employeeid<br/>參數 3 (在沒有相符項目下的輸出)：user.extensionattribute1 |
 | **StartWith()** | 如果輸入的開頭是指定的值，則輸出屬性或常數。 否則，您可以在沒有相符結果時指定另一個輸出。<br/>例如，假設您想要發出宣告，其中如果國家/地區是以 "US" 作為開頭，便代表值為使用者的員工識別碼，否則您便想要輸出分機屬性。 若要這麼做，您必須設定下列值：<br/>參數 1 (輸入)：user.country<br/>*值*："US"<br/>參數 2 (輸出)：user.employeeid<br/>參數 3 (在沒有相符項目下的輸出)：user.extensionattribute1 |
@@ -164,14 +164,14 @@ ms.locfileid: "87552827"
 
 1. 在 [管理宣告] 中，展開 [宣告條件]。
 2. 選取使用者類型。
-3. 選取該使用者應隸屬的群組。 您最多可以在指定應用程式的所有宣告中選取50個唯一群組。 
+3. 選取該使用者應隸屬的群組。 您可以針對指定的應用程式，在所有宣告中選取最多50個唯一的群組。 
 4. 選取宣告要擷取其值的 [來源]。 您可以從來源屬性下拉式清單選取使用者屬性，或在將使用者屬性發出為宣告之前對其套用轉換。
 
 您新增條件的順序很重要。 Azure AD 會從上到下評估條件，以決定要在宣告中發出哪一個值。 
 
-例如，Britta Simon 是 Contoso 租用戶中的來賓使用者。 她隸屬同樣也使用 Azure AD 的另一個組織。 針對 Fabrikam 應用程式的下列設定，當 Britta 嘗試登入 Fabrikam 時，Microsoft 身分識別平臺會依照下列方式評估條件。
+例如，Britta Simon 是 Contoso 租用戶中的來賓使用者。 她隸屬同樣也使用 Azure AD 的另一個組織。 基於 Fabrikam 應用程式的下列設定，當 Britta 嘗試登入 Fabrikam 時，Microsoft 身分識別平臺將會依下列方式評估條件。
 
-首先，Microsoft 身分識別平臺會驗證 Britta 的使用者類型是否為 `All guests` 。 自起，這是 true，因此 Microsoft 身分識別平臺會將宣告的來源指派給 `user.extensionattribute1` 。 第二，Microsoft 身分識別平臺會驗證 Britta 的使用者類型是否為 `AAD guests` ，因為這也是如此，因此 microsoft 身分識別平臺會將宣告的來源指派給 `user.mail` 。 最後，系統會針對 Britta 使用 `user.mail` 值發出宣告。
+首先，Microsoft 身分識別平臺會驗證 Britta 的使用者類型是否為 `All guests` 。 因為這是如此，所以 Microsoft 身分識別平臺會將宣告的來源指派給 `user.extensionattribute1` 。 其次，Microsoft 身分識別平臺會驗證 Britta 的使用者類型是否為 `AAD guests` ，因為這也是如此，所以 microsoft 身分識別平臺會將宣告的來源指派給 `user.mail` 。 最後，系統會針對 Britta 使用 `user.mail` 值發出宣告。
 
 ![宣告條件式設定](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

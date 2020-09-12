@@ -1,31 +1,31 @@
 ---
-title: Azure Front 大門-流量路由方法 |Microsoft Docs
+title: Azure Front Door 流量路由方法 |Microsoft Docs
 description: 本文將協助您了解 Front Door 所使用的不同流量路由方法
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: b7dd00d28ecfe844094677e0ae19f4fd359d97d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: d12eb67abbc216afb241fa6c5a9ef9c66e65040c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687814"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399305"
 ---
 # <a name="front-door-routing-methods"></a>Front Door 路由方法
 
-Azure Front 大門支援各種流量路由方法，以決定如何將 HTTP/HTTPS 流量路由傳送至各種服務端點。 當每個用戶端流量要求觸達 Front Door 時，便會套用設定的路由方法，確保將要求轉送至最佳後端執行個體。 
+Azure Front Door 支援各種流量路由方法，以決定如何將 HTTP/HTTPS 流量路由傳送至不同的服務端點。 當每個用戶端流量要求觸達 Front Door 時，便會套用設定的路由方法，確保將要求轉送至最佳後端執行個體。 
 
 Front Door 中有四種可用的流量路由主要概念：
 
 * **[延遲](#latency)：** 延遲式路由會確保將要求傳送至敏感度範圍中可接受的最低延遲後端。 基本上，您的使用者要求會根據網路延遲，傳送至「最近」的一組後端。
-* **[優先順序](#priority)：** 當您想要針對所有流量使用主要服務後端時，可以將優先順序指派給不同的後端，並提供備份，以免主要或備份後端無法使用。
+* **[優先順序](#priority)：** 當您想要針對所有流量使用主要服務後端時，您可以將優先順序指派給不同的後端，並提供備份以防主要或備份後端無法使用。
 * **[加權](#weighted)：** 當您想要平均或是根據權數係數將流量分散到一組後端時，可以將權數指派給不同的後端。
 * **[工作階段同質性](#affinity)：** 當您想要在使用者工作階段仍在使用中且後端執行個體仍根據健康狀態探查回報狀況良好，將來自使用者的後續要求傳送至相同後端時，您可以為前端主機或網域設定工作階段同質性。 
 
@@ -33,7 +33,7 @@ Front Door 中有四種可用的流量路由主要概念：
 
 ## <a name="lowest-latencies-based-traffic-routing"></a><a name = "latency"></a>最低延遲式流量路由
 
-如果將後端部署在全球的兩個或更多個位置，然後將流量路由傳送至「最靠近」您終端使用者的位置，即可改善許多應用程式的回應速度。 您 Front Door 設定的預設路由方法會將終端使用者要求轉送至與接收要求 Front Door 環境最靠近的後端。 結合 Azure Front 的任意傳播架構，此方法可確保您的每位使用者都能根據其位置來取得最大的效能個人化。
+如果將後端部署在全球的兩個或更多個位置，然後將流量路由傳送至「最靠近」您終端使用者的位置，即可改善許多應用程式的回應速度。 您 Front Door 設定的預設路由方法會將終端使用者要求轉送至與接收要求 Front Door 環境最靠近的後端。 這種方法結合了 Azure Front Door 的任意傳播架構，可確保每位使用者都能根據其位置來取得最大的效能。
 
 「最靠近」的後端不一定是地理距離測量上最靠近的後端。 相反的，Front Door 會透過測量網路延遲來決定最靠近的後端。 深入了解 [Front Door 的路由架構](front-door-routing-architecture.md)。 
 
@@ -55,7 +55,7 @@ Front Door 中有四種可用的流量路由主要概念：
 
 ### <a name="configuring-priority-for-backends"></a>設定後端優先順序
 
-Front Door 設定中每個後端集區內的後端都具有稱為「優先順序」的屬性，其數字介於 1 和 5 之間。 使用 Azure Front，您可以針對每個後端明確地使用此屬性來設定後端優先順序。 此屬性的值介於 1 到 5 之間。 值越低代表優先順序越高。 後端可以共用優先順序值。
+Front Door 設定中每個後端集區內的後端都具有稱為「優先順序」的屬性，其數字介於 1 和 5 之間。 使用 Azure Front Door，您可以為每個後端明確地使用這個屬性來設定後端優先順序。 此屬性的值介於 1 到 5 之間。 值越低代表優先順序越高。 後端可以共用優先順序值。
 
 ## <a name="weighted-traffic-routing-method"></a><a name = "weighted"></a>加權流量路由方法
 「加權」流量路由方法可讓您平均分散流量，或使用預先定義的權數。
@@ -71,7 +71,7 @@ Front Door 設定中每個後端集區內的後端都具有稱為「優先順序
 * **額外容量的雲端高載**：透過將其放在 Front Door 之後，使內部部署快速展開至雲端。 當您需要在雲端中增加額外容量時，您可以新增或啟用更多後端並指定進入每個後端的流量比例。
 
 ## <a name="session-affinity"></a><a name = "affinity"></a>會話親和性
-根據預設，如果沒有會話親和性，Front 門板會將來自相同用戶端的要求轉送至不同的後端，這是以負載平衡設定為基礎，特別是在不同的後端變更延遲，或來自相同使用者的不同要求落在不同的 Front 環境中。 但是，有些具狀態應用程式，或在某些其他案例中，會偏好來自相同使用的後續要求抵達處理初始要求的相同後端。 當您想要在同一個後端保留使用者工作階段時，以 Cookie 為基礎的工作階段親和性非常有用。 藉由使用 Front-受控 cookie，Azure Front 門板可以將來自使用者會話的後續流量導向至同一個後端，只要後端狀況良好且使用者會話尚未過期即可處理。 
+根據預設，如果沒有會話親和性，Front Door 會根據負載平衡設定，將源自相同用戶端的要求轉送到不同的後端，特別是當不同後端變更的延遲，或來自相同使用者的不同要求都在不同的 Front Door 環境時。 但是，有些具狀態應用程式，或在某些其他案例中，會偏好來自相同使用的後續要求抵達處理初始要求的相同後端。 當您想要在同一個後端保留使用者工作階段時，以 Cookie 為基礎的工作階段親和性非常有用。 藉由使用 Front Door 受控 cookie，Azure Front Door 可將來自使用者會話的後續流量導向至相同的後端，以進行處理，只要後端狀況良好且使用者會話尚未過期。 
 
 工作階段親和性可在每個您設定網域 (或子網域) 的前端主機層級中啟用。 啟用之後，Front Door 便會將 Cookie 新增到使用者的工作階段。 根據 Cookie 的工作階段親和性可讓 Front Door 識別不同使用者 (即使使用者位於相同 IP 位址之後)，在您的不同後端間進行更平均的流量分散。
 
@@ -80,7 +80,7 @@ Cookie 的存留期與使用者工作階段相同，因為 Front Door 目前僅�
 > [!NOTE]
 > 公用 Proxy 可能會影響工作階段親和性。 這是因為建立工作階段需要 Front Door 將工作階段親和性 Cookie 新增至回應，因此若可針對回應進行快取，便會中斷要求相同資源的其他用戶端 Cookie。 為了避免此問題，工作階段親和性**不會**在後端嘗試傳送可快取的回應時建立。 若工作階段已建立，則無論來自後端的回應是否可進行快取，皆不會造成影響。
 > **除非**回應具備 HTTP 304 狀態代碼，否則工作階段親和性便會在下列情況下建立：
-> - 回應具有為標頭設定的特定值，以防止快取 ```Cache-Control``` ，例如 "private" 或 no store "。
+> - 回應具有針對標頭設定的特定值，以防止快取 ```Cache-Control``` ，例如「私用」或「非存放區」。
 > - 回應包含尚未過期的 ```Authorization``` 標頭。
 > - 回應具備 HTTP 302 狀態代碼。
 

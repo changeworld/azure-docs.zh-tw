@@ -1,26 +1,26 @@
 ---
-title: Azure Front 門-路由規則比對監視 |Microsoft Docs
-description: 這篇文章可協助您瞭解 Azure Front 大門如何符合要用於傳入要求的路由規則
+title: Azure Front Door 路由規則符合監視 |Microsoft Docs
+description: 本文可協助您瞭解 Azure Front Door 如何符合要用於傳入要求的路由規則
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 9593a6c4fa45d9810aabb2bbb3123428930c5891
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80878590"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401566"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door 比對要求與路由規則的方式
 
-在建立連線並進行 TLS 交握之後，當要求落在 Front 的環境時，前端的第一件事就是從所有設定中判斷，這是哪一種特定的路由規則符合要求，然後採取定義的動作。 下列文件說明 Front Door 在處理 HTTP 要求時，如何判斷要使用的路由設定。
+建立連線並進行 TLS 信號交換之後，當要求進入 Front Door 環境時，其中一項 Front Door 所做的第一件事，就是從所有的設定中判斷出，這是要比對要求的特定路由規則，然後採取定義的動作。 下列文件說明 Front Door 在處理 HTTP 要求時，如何判斷要使用的路由設定。
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Front Door 路由設定的結構
 Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右邊」。 我們會比對連入要求與左邊的路由，而右邊則定義處理要求的方式。
@@ -29,7 +29,7 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 下列屬性可判斷連入要求與路由規則 (或左邊) 是否相符：
 
 * **HTTP 通訊協定** (HTTP/HTTPS)
-* **主機**（例如，www \. foo.com、 \* . bar.com）
+* **主機** (例如 www \. foo.com、 \* . bar.com) 
 * **路徑** (例如 /\*、/users/\*、/file.gif)
 
 這些屬性是從內部展開，因此通訊協定/主機/路徑的每個組合都是可能的相符項目集合。
@@ -48,7 +48,7 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 
 為了進一步說明此程序，讓我們看看 Front Door 路由 (僅左邊) 的範例設定：
 
-| 路由規則 | 前端主機 | 路徑 |
+| 路由規則 | 前端主機 | Path |
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
 | B | foo.contoso.com | /users/\* |
@@ -78,7 +78,7 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 
 為了進一步說明，讓我們看看另一組範例：
 
-| 路由規則 | 前端主機    | 路徑     |
+| 路由規則 | 前端主機    | Path     |
 |-------|---------|----------|
 | A     | www\.contoso.com | /        |
 | B     | www\.contoso.com | /\*      |
@@ -112,7 +112,7 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 >
 > 範例設定：
 >
-> | 路由 | 主機             | 路徑    |
+> | 路由 | 主機             | Path    |
 > |-------|------------------|---------|
 > | A     | profile.contoso.com | /api/\* |
 >

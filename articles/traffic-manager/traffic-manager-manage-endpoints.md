@@ -3,20 +3,20 @@ title: 在 Azure 流量管理員中管理端點 | Microsoft Docs
 description: 本文將協助您從 Azure 流量管理員加入、移除、啟用和停用端點。
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
-ms.author: rohink
-ms.openlocfilehash: 9f779910460ec19f0efb02fb1a65f39bb100050c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: fc6e8bcda17f9d788a430ed763bd9f8702eaf250
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711607"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392913"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>新增、停用、啟用或刪除端點
 
@@ -30,7 +30,7 @@ ms.locfileid: "84711607"
 ## <a name="to-add-a-cloud-service-or-an-app-service-endpoint-to-a-traffic-manager-profile"></a>若要將雲端服務或應用程式服務端點新增至流量管理員設定檔：
 
 1. 從瀏覽器登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在入口網站的搜尋列中，搜尋您要修改的**流量管理員設定檔**名稱，然後在顯示的結果中按一下 [流量管理員設定檔]。
+2. 在入口網站的搜尋列中，搜尋您要修改的 **流量管理員設定檔** 名稱，然後在顯示的結果中按一下流量管理員設定檔。
 3. 在 [流量管理員設定檔]**** 刀鋒視窗中，請在 [設定]**** 區段中按一下 [端點]****。
 4. 在顯示的 [端點]**** 刀鋒視窗中，按一下 [新增]****。
 5. 在 [新增端點]**** 刀鋒視窗中，如下所示操作︰
@@ -71,10 +71,10 @@ ms.locfileid: "84711607"
 2. 在入口網站的搜尋列中，搜尋您想要修改的**流量管理員設定檔**名稱，然後按一下結果中顯示的流量管理員設定檔。
 3. 在 [流量管理員設定檔]**** 刀鋒視窗中，請在 [設定]**** 區段中按一下 [端點]****。 
 4. 按一下您要刪除的端點。
-5. 在 [**端點**] 分頁中，按一下 [**刪除**]
+5. 在 [**端點**] 分頁中，按一下 [**刪除**]。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [管理流量管理員設定檔](traffic-manager-manage-profiles.md)
 * [設定路由方法](traffic-manager-configure-routing-method.md)

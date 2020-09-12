@@ -1,25 +1,25 @@
 ---
-title: Azure Front 門板-URL 重寫 |Microsoft Docs
-description: 本文可協助您瞭解 Azure Front 門板如何為您的路由重寫 URL （若已設定）。
+title: Azure Front Door-URL 重寫 |Microsoft Docs
+description: 本文可協助您瞭解 Azure Front Door 如何針對您的路由進行 URL 重寫（如果已設定）。
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 1e5bd565be7a1cabf08ddf33c65eb12b5294249f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 8f4a6283f762d9792f50651b9caee17795df6d55
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471467"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398932"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL 重寫 (自訂轉送路徑)
-Azure Front 門板支援 URL 重寫，可讓您設定選擇性的**自訂轉送路徑**，以便在建立要轉送至後端的要求時使用。 根據預設，若沒有提供自訂轉送路徑，Front Door 會將傳入的 URL 路徑複製到用於轉送要求的 URL。 用於轉送要求中的主機標頭，與針對所選後端設定的標頭相同。 請參閱[後端主機標頭](front-door-backend-pool.md#hostheader)以了解其功用與設定方式。
+Azure Front Door 支援 URL 重寫，可讓您設定選擇性的 **自訂轉送路徑** ，以在建立轉送至後端的要求時使用。 根據預設，若沒有提供自訂轉送路徑，Front Door 會將傳入的 URL 路徑複製到用於轉送要求的 URL。 用於轉送要求中的主機標頭，與針對所選後端設定的標頭相同。 請參閱[後端主機標頭](front-door-backend-pool.md#hostheader)以了解其功用與設定方式。
 
 URL 重寫使用自訂轉送路徑的強大之處，在於它會複製傳入路徑中符合針對轉送路徑之萬用字元路徑 (這些路徑區段為下列範例中的**綠色**區段) 的所有部分：
 </br>
@@ -43,11 +43,11 @@ URL 重寫使用自訂轉送路徑的強大之處，在於它會複製傳入路�
 | 傳入要求       | 最明確的相符路徑 | /          | /fwd/          | /foo/          | /foo/bar/          |
 |------------------------|--------------------------|------------|----------------|----------------|--------------------|
 | www \. contoso.com/            | /\*                      | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www \. contoso.com/**sub**     | /\*                      | /**sub**   | /fwd/**sub**   | /foo/**sub**   | /foo/bar/**sub**   |
+| www \. contoso.com/**子**     | /\*                      | /**子**   | /fwd/**sub**   | /foo/**sub**   | /foo/bar/**sub**   |
 | www \. contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /fwd/**a/b/c** | /foo/**a/b/c** | /foo/bar/**a/b/c** |
 | www \. contoso.com/foo         | /foo                     | /          | /fwd/          | /foo/          | /foo/bar/          |
 | www \. contoso.com/foo/        | /foo/\*                  | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www \. contoso.com/foo/**bar** | /foo/\*                  | /**線**   | /fwd/**bar**   | /foo/**bar**   | /foo/bar/**bar**   |
+| www \. contoso.com/foo/**bar** | /foo/\*                  | /**酒吧**   | /fwd/**bar**   | /foo/**bar**   | /foo/bar/**bar**   |
 
 
 ## <a name="optional-settings"></a>選擇性設定

@@ -1,26 +1,26 @@
 ---
-title: Azure Front 門-路由架構 |Microsoft Docs
+title: Azure Front Door 路由架構 |Microsoft Docs
 description: 此文章可協助您了解 Front Door 架構的全域檢視觀點。
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: a088e52f742f96a13ba61969c2d7a6697c96b145
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: b36852e27f6aa3a909dd645c19a12c55e082b761
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80879287"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399322"
 ---
 # <a name="routing-architecture-overview"></a>路由架構概觀
 
-Azure Front 門在收到您的用戶端要求時，會接聽它們（如果已啟用快取），或將它們轉送到適當的應用程式後端（做為反向 proxy）。
+當 Azure Front Door 收到用戶端要求時，就會將其回答 (是否已啟用快取) 或將它們轉送到適當的應用程式後端 (作為反向 proxy) 。
 
 </br>在路由傳送到 Azure Front Door 與後端的期間，有著許多對流量進行最佳化的機會。
 
@@ -32,10 +32,10 @@ Azure Front 門在收到您的用戶端要求時，會接聽它們（如果已�
 
 ## <a name="connecting-to-front-door-environment-split-tcp"></a><a name = "splittcp"></a>連線到 Front Door 環境 (分割 TCP)
 
-[分割 TCP](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) \(英文\) 是一個可降低延遲與 TCP 問題的技術，能將會產生較高來回時間的連線分割成較小的片段。  透過使 Front Door 環境更接近使用者，並終止 Front Door 環境中的 TCP 連線，針對應用程式後端具有較高來回時間 (RTT) 的單一 TCP 連線，將會被分割成兩個 TCP 連線。 使用者與 Front 門環境之間的短連線，表示連接是透過三個短行程來建立，而不是三次來回往返，以節省延遲。  您可以預先建立 Front Door 環境與後端之間的長連線，並將其重複用於多個使用者呼叫上，進而節省 TCP 連線時間。  在建立 SSL/TLS (傳輸層安全性) 連線的情況下，此效果將會倍增，因為會進行更多來回行程以保護連線。
+[分割 TCP](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) \(英文\) 是一個可降低延遲與 TCP 問題的技術，能將會產生較高來回時間的連線分割成較小的片段。  透過使 Front Door 環境更接近使用者，並終止 Front Door 環境中的 TCP 連線，針對應用程式後端具有較高來回時間 (RTT) 的單一 TCP 連線，將會被分割成兩個 TCP 連線。 使用者與 Front Door 環境之間的簡短連線，表示連接會透過三次短往返建立，而不是三次來回往返，以節省延遲。  您可以預先建立 Front Door 環境與後端之間的長連線，並將其重複用於多個使用者呼叫上，進而節省 TCP 連線時間。  在建立 SSL/TLS (傳輸層安全性) 連線的情況下，此效果將會倍增，因為會進行更多來回行程以保護連線。
 
 ## <a name="processing-request-to-match-a-routing-rule"></a>處理要求以比對路由規則
-建立連線並進行 TLS 交握之後，當要求落在 Front 環境中時，第一個步驟就是比對路由規則。 基本上，此比對是要從 Front Door 的所有設定中，決定要將哪個特定的路由規則與該要求比對。 若要深入了解，請參閱 Front Door 執行[路由比對](front-door-route-matching.md)的方式。
+建立連線並進行 TLS 信號交換之後，當要求進入 Front Door 環境時，第一個步驟就是符合路由規則。 基本上，此比對是要從 Front Door 的所有設定中，決定要將哪個特定的路由規則與該要求比對。 若要深入了解，請參閱 Front Door 執行[路由比對](front-door-route-matching.md)的方式。
 
 ## <a name="identifying-available-backends-in-the-backend-pool-for-the-routing-rule"></a>針對路由規則識別後端集區中的可用後端
 當 Front Door 根據傳入要求比對路由規則之後，且沒有快取的情況下，下一步便是提取和已比對路由相關聯之後端集區的健康情況探查狀態。 若要深入了解，請參閱 Front Door 使用[健康情況探查](front-door-health-probes.md)來監視後端健康情況的方式。

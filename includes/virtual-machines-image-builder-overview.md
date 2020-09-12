@@ -5,12 +5,12 @@ ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: daberry
-ms.openlocfilehash: 6024dd595166afe24a75720d8c7593afd451b610
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: a5a201a9f993db2be00645d8d60a11c5be9cdbe0
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554908"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89303946"
 ---
 標準化虛擬機器 (VM) 映像可讓組織遷移至雲端，並確保部署的一致性。 映像通常包含預先定義的安全性和組態設定，以及必要的軟體。 設定您自己的映像處理管線需要一些時間、基礎結構和設定，但透過 Azure VM Image Builder，只要提供簡單的組態來描述您的映像、將其提交至服務，然後就會建立映像並加以散發。
  
@@ -71,9 +71,9 @@ Azure Image Builder 是完全受控的 Azure 服務，可供 Azure 資源提供�
 ![Azure Image Builder 程序的概念圖](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. 以 .json 檔案形式建立映像範本。 此 .json 檔案包含映像來源、自訂和散發相關資訊。 [Azure Image Builder GitHub 存放庫](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)中有多個範例。
-1. 將其提交給服務，將會在您指定的資源群組中建立映像範本成品。 在背景中，Image Builder 會下載來源映像或 ISO，並視需要下載指令碼。 這些會儲存在您的訂用帳戶中自動建立的個別資源群組中，格式為： IT_ \<DestinationResourceGroup> _ \<TemplateName> 。 
+1. 將其提交給服務，將會在您指定的資源群組中建立映像範本成品。 在背景中，Image Builder 會下載來源映像或 ISO，並視需要下載指令碼。 這些會儲存在您的訂用帳戶中自動建立的個別資源群組中，格式如下： IT_ \<DestinationResourceGroup> _ \<TemplateName> 。 
 1. 建立映像範本後，您就可以建置映像。 在背景影像產生器中，會使用範本和來源檔案來建立 VM (預設大小： Standard_D1_v2) 、網路、公用 IP、NSG，以及 IT_ \<DestinationResourceGroup> _ 資源群組中的儲存體 \<TemplateName> 。
-1. 作為映射建立的一部分，映射產生器會根據範本散發映射，然後刪除 \<DestinationResourceGroup> 針對該進程所建立的 IT_ _ 資源群組中的其他資源 \<TemplateName> 。
+1. 在建立映射時，影像產生器會根據範本散發映射，然後刪除 IT_ \<DestinationResourceGroup> _ \<TemplateName> 資源群組中為此進程所建立的其他資源。
 
 
 ## <a name="permissions"></a>權限
@@ -100,7 +100,7 @@ Image Builder 會建立使用 D1v2 VM 大小的 VM，以及該 VM 所需的儲�
 Azure Image Builder 會將映像散發至您選擇的區域，這可能會產生網路輸出費用。
 
 ## <a name="hyper-v-generation"></a>Hyper-V 世代
-映射產生器目前支援 Hyper-v 第1代映射和 Vm。
+影像產生器目前只支援建立 Hyper-v 世代 (Gen1) 1 映射至 Azure 共用映射庫 (SIG) 或受控映射。 如果您想要建立 Gen2 映射，則需要使用來源 Gen2 映射，並將其散發至 VHD。 之後，您必須從 VHD 建立受控映射，並將其插入至 SIG 作為 Gen2 映射。
  
 ## <a name="next-steps"></a>後續步驟 
  

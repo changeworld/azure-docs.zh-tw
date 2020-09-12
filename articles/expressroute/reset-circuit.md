@@ -2,18 +2,18 @@
 title: 重設失敗的電路-ExpressRoute： PowerShell： Azure |Microsoft Docs
 description: 本文可協助您重設處於失敗狀態的 ExpressRoute 電路。
 services: expressroute
-author: kumudD
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/28/2018
-ms.author: kumud
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: e0f79ce0959e7b7dccc20e46493f34e1963df70e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7df96f34ee408c0a6d26b27adbac7351c9ab937f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537100"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393083"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>重設失敗的 ExpressRoute 電路
 
@@ -50,6 +50,6 @@ ms.locfileid: "86537100"
 
 電路現在應該狀況良好。 如果電路仍處於失敗狀態，請使用 [Microsoft 支援服務](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)開啟支援票證。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果仍會發生問題，請向 [Microsoft 支援服務](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 開啟支援票證。

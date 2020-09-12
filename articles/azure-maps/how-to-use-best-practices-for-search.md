@@ -3,41 +3,39 @@ title: Azure 地圖服務搜尋服務的最佳做法 | Microsoft Azure 地圖服
 description: 了解如何在使用 Microsoft Azure 地圖服務的搜尋服務時套用最佳做法。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/23/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6565d8056ae8106bd93b7dd096bc709010ec5c3f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064262"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400699"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure 地圖服務搜尋服務的最佳做法
 
-Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search)包含提供各種功能的 api，可協助開發人員搜尋位址、位置、依名稱或類別的商務清單，以及其他地理資訊。 例如，[模糊搜尋 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)可讓使用者搜尋某個位址或感的點（POI）。
+Azure 地圖服務 [搜尋服務](https://docs.microsoft.com/rest/api/maps/search) 包含可提供各種功能的 api，可協助開發人員搜尋位址、地點、依名稱或類別分類的商務清單，以及其他地理資訊。 例如，[模糊搜尋 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) 可讓使用者搜尋 (POI) 的位址或興趣點。
 
 此文章說明當您從 Azure 地圖服務的搜尋服務呼叫資料時如何套用完善的做法。 您將學習如何：
-
-* 建立查詢以傳回相關的相符專案
-* 限制搜尋結果
-* 瞭解結果類型之間的差異
-* 讀取位址搜尋-回應結構
+> [!div class="checklist"]
+> * 建立查詢以傳回相關的相符專案
+> * 限制搜尋結果
+> * 瞭解結果類型之間的差異
+> * 讀取位址搜尋-回應結構
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要對 Azure 地圖服務 API 進行呼叫，您需要 Azure 地圖服務帳戶和金鑰。 如需詳細資訊，請參閱[建立帳戶](quick-demo-map-app.md#create-an-azure-maps-account)和[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 
+1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。
 
-如需 Azure 地圖服務中驗證的相關資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
-
-> [!TIP]
-> 若要查詢搜尋服務，您可以使用[Postman 應用程式](https://www.getpostman.com/apps)來建立 REST API 呼叫。 或者，您可以使用任何慣用的 API 開發環境。
+本文使用 [Postman 應用程式](https://www.postman.com/downloads/) 來建立 REST 呼叫，但您可以選擇任何 API 開發環境。
 
 ## <a name="best-practices-to-geocode-addresses"></a>對地址進行地理編碼的最佳做法
 
-當您使用 Azure 地圖服務的搜尋服務來搜尋完整或部分地址時，API 會從您的搜尋查詢中讀取關鍵字。 然後，傳回該地址的經度和緯度座標。 此程序稱為「地理編碼」。 
+當您使用 Azure 地圖服務的搜尋服務來搜尋完整或部分地址時，API 會從您的搜尋查詢中讀取關鍵字。 然後，傳回該地址的經度和緯度座標。 此程序稱為「地理編碼」。
 
 在國家/地區中進行地理編碼的能力取決於道路資料的可用性，以及地理編碼服務的精確度。 如需 Azure 地圖服務依國家或地區提供之地理編碼功能的詳細資訊，請參閱[地理編碼涵蓋範圍](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage) \(部分機器翻譯\)。
 
@@ -61,7 +59,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
 #### <a name="fuzzy-search-parameters"></a>模糊搜尋參數
 
-當您不知道使用者對搜尋查詢的輸入時，建議您使用 Azure 地圖服務的[搜尋模糊 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) \(部分機器翻譯\)。 例如，使用者的輸入可以是位址或感利率的類型（POI），例如*購物購物中心*。 此 API 會將 POI 搜尋和地理編碼合併為標準的「單行搜尋」： 
+當您不知道使用者對搜尋查詢的輸入時，建議您使用 Azure 地圖服務的[搜尋模糊 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) \(部分機器翻譯\)。 例如，來自使用者的輸入可能是位址或感興趣的點類型 (POI) ，例如 *購物購物中心*。 此 API 會將 POI 搜尋和地理編碼合併為標準的「單行搜尋」： 
 
 * 即使查詢參數未完全符合使用者想要的資訊，`minFuzzyLevel` 和 `maxFuzzyLevel` 參數也有助於傳回相關的相符項目。 若要將效能最大化並減少不尋常的結果，請將搜尋查詢設定為 `minFuzzyLevel=1` 和 `maxFuzzyLevel=2` 的預設值。 
 
