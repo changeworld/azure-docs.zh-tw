@@ -1,44 +1,47 @@
 ---
-title: 分析即時影片而不進行任何錄製-Azure
-description: Media graph 可以用來只從即時影片串流中解壓縮分析，而不需要將它記錄在邊緣或雲端中。 本文討論此概念。
+title: 分析即時影片而不錄製任何記錄-Azure
+description: Media graph 可以用來從即時影片串流中取出分析，而不需要將它記錄在邊緣或雲端中。 本文討論此概念。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 29e00b9c04a652771ca150e2a45e980d20f8bc1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d59e2e9e309f0ed6a65e001557dcd9dd8af90da2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260181"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566722"
 ---
-# <a name="analyzing-live-video-without-any-recording"></a>分析即時影片而不進行任何錄製
+# <a name="analyzing-live-video-without-any-recording"></a>分析即時影片而不錄製任何節目
 
 ## <a name="suggested-pre-reading"></a>建議的閱讀準備事項 
 
 * [媒體圖表概念](media-graph-concept.md)
 * [發生事件時錄製影片](event-based-video-recording-concept.md)
 
-## <a name="overview"></a>總覽  
+## <a name="overview"></a>概觀  
 
-您可以使用 media graph 分析直播影片，而不需要將影片的任何部分錄製到檔案或資產。 下面所示的媒體圖形類似于以[事件為基礎的影片錄製](event-based-video-recording-concept.md)文章，但沒有資產接收節點或檔案接收節點。
+您可以使用 media graph 分析即時影片，而不將影片的任何部分記錄到檔案或資產。 以下顯示的媒體圖形類似于以 [事件為基礎的影片記錄](event-based-video-recording-concept.md)，但沒有資產接收器節點或 file sink 節點。
 
 ### <a name="motion-detection"></a>動作偵測
 
-如下所示的媒體圖形包含一個[RTSP 來源](media-graph-concept.md#rtsp-source)節點、一個 [[動作偵測處理器](media-graph-concept.md#motion-detection-processor)] 節點，以及一個 [ [IoT 中樞的訊息接收](media-graph-concept.md#iot-hub-message-sink)] 節點。 這類媒體圖形的圖形拓撲的 JSON 表示可以在[這裡](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-detection/topology.json)找到。 此圖形可讓您偵測傳入即時影片串流中的動作，並透過 IoT 中樞的訊息接收節點，將動作事件轉送至其他應用程式和服務。 外部應用程式或服務可以觸發警示，或傳送通知給適當的人員。
+如下所示的媒體圖形包含 [RTSP 來源](media-graph-concept.md#rtsp-source) 節點、 [動作偵測處理器](media-graph-concept.md#motion-detection-processor) 節點和 [IoT 中樞訊息接收](media-graph-concept.md#iot-hub-message-sink) 節點。 這類媒體圖形的圖形拓撲的 JSON 標記法可在 [這裡](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-detection/topology.json)找到。 此圖表可讓您偵測傳入即時影片串流中的動作，並透過 IoT 中樞的 [訊息接收] 節點將動作事件轉送至其他應用程式和服務。 外部應用程式或服務可以觸發警示，或傳送通知給適當的人員。
 
-![以動作偵測為基礎的 Live Video Analytics](./media/analyze-live-video/motion-detection.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/analyze-live-video/motion-detection.svg" alt-text="以動作偵測為基礎的 Live Video Analytics":::
 
-### <a name="analyzing-video-using-a-custom-vision-model"></a>使用自訂視覺模型分析影片 
+### <a name="analyzing-video-using-a-custom-vision-model"></a>使用自訂視覺模型來分析影片 
 
-下面所示的媒體圖形可讓您使用封裝在不同模組中的自訂視覺模型來分析即時影片串流。 這類媒體圖形的圖形拓撲的 JSON 表示可以在[這裡](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)找到。 您可以在[這裡](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis)看到一些將模型包裝到以推斷服務形式執行的 IoT Edge 模組中的範例。
+下方顯示的媒體圖形可讓您使用封裝在個別模組中的自訂視覺模型來分析即時影片串流。 這類媒體圖形的圖形拓撲的 JSON 標記法可在 [這裡](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)找到。 您可以在 [這裡](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis) 看到一些範例，說明如何將模型包裝到以推斷服務形式執行的 IoT Edge 模組。
 
-![以外部推斷模組為基礎的即時影片分析](./media/analyze-live-video/external-inferencing-module.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/analyze-live-video/motion-detected-frames.svg" alt-text="以外部推斷模組為基礎的即時影片分析":::
 
-在此媒體圖形中，[畫面播放速率篩選器處理器] 節點會在將傳入的即時影片串流傳送到[HTTP 擴充處理器](media-graph-concept.md#http-extension-processor)節點之前，降低其畫面播放速率，以透過 REST 將影像框架（JPEG、BMP 或 PNG 格式）傳送到外部推斷服務。 來自外部推斷服務的結果會由 HTTP 延伸模組節點抓取，並透過 IoT 中樞的訊息接收節點轉送到 IoT Edge 中樞。 這種類型的媒體圖形可以用來建立各種案例的解決方案，例如瞭解車輛在交集的時間序列分佈、瞭解零售商店中的取用者流量模式等等。
+在此媒體圖形中，[畫面播放速率篩選處理器] 節點會在將內送的即時影片串流傳送至 [HTTP 擴充處理器](media-graph-concept.md#http-extension-processor) 節點之前，先降低其畫面播放速率，將 JPEG、BMP 或 PNG 格式的圖像框架 (傳送) 至外部推斷服務的 REST。 來自外部推斷服務的結果是由 HTTP 擴充功能節點抓取，並透過 IoT 中樞的 [訊息接收] 節點轉送至 IoT Edge 的中樞。 這種類型的 media graph 可以用來建立各種案例的解決方案，例如瞭解車輛在交集的時間序列分佈、瞭解零售商店的取用者交通模式等等。
 
-此範例的增強功能是在 [畫面播放速率篩選器處理器] 節點之前使用動作偵測處理器。 這會減少推斷服務的負載，因為它只會在影片中有動作活動時使用。
+此範例的增強功能是在畫面播放速率篩選處理器節點之前使用動作偵測器處理器。 這會減少推斷服務的負載，因為只有在影片中有動作活動時，才會使用它。
 
-![透過外部推斷模組，以動態方式偵測畫面格的即時影片分析](./media/analyze-live-video/motion-detected-frames.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/analyze-live-video/custom-model.png" alt-text="以動作為基礎的即時影片分析，透過外部推斷模組偵測到畫面":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [連續影片錄製](continuous-video-recording-concept.md)

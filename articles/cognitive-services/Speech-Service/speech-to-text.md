@@ -1,25 +1,28 @@
 ---
-title: 語音轉換文字-語音服務
+title: 語音轉換文字總覽-語音服務
 titleSuffix: Azure Cognitive Services
-description: 語音轉換文字功能可將音訊串流的即時轉譯為文字。 您的應用程式、工具或裝置可以針對此文字輸入取用、顯示及採取動作。 這種服務可與文字轉換語音 (語音合成) 和語音翻譯功能緊密搭配運作。
+description: 語音轉換文字軟體可將音訊串流即時轉譯為文字。 您的應用程式、工具或裝置可以針對此文字輸入取用、顯示及採取動作。 本文概述語音轉換文字服務的優點和功能。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.openlocfilehash: 90a5ec8c58865c3aa1b210db51b9ffeb7169d641
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.custom: cog-serv-seo-aug-2020
+keywords: 語音轉換文字、語音轉換文字軟體
+ms.openlocfilehash: 804acd17f3df91cc3df949d6d9ccac0450bb225f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640407"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569215"
 ---
 # <a name="what-is-speech-to-text"></a>什麼是語音轉換文字？
 
-語音服務的語音轉換文字（也稱為語音辨識）可讓您即時將音訊串流轉譯為文字。 您的應用程式、工具或裝置可以對此文字使用、顯示和採取動作作為命令輸入。 這項服務是由 Microsoft 用於 Cortana 和 Office 產品的相同辨識技術所提供。 它可順暢地與<a href="./speech-translation.md" target="_blank">翻譯 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>和<a href="./text-to-speech.md" target="_blank">文字轉換語音 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>服務供應專案搭配使用。 如需可用語音轉換文字語言的完整清單，請參閱 [支援的語言](language-support.md#speech-to-text)。
+在此總覽中，您將瞭解語音轉換文字服務的優點和功能。
+語音轉換文字（也稱為語音辨識）可將音訊串流即時轉譯為文字。 您的應用程式、工具或裝置可以對此文字使用、顯示和採取動作作為命令輸入。 這項服務是由 Microsoft 用於 Cortana 和 Office 產品的相同辨識技術所提供。 它可順暢地與<a href="./speech-translation.md" target="_blank">翻譯 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>和<a href="./text-to-speech.md" target="_blank">文字轉換語音 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>服務供應專案搭配使用。 如需可用語音轉換文字語言的完整清單，請參閱 [支援的語言](language-support.md#speech-to-text)。
 
 語音轉換文字服務預設為使用通用語言模型。 此模型已使用 Microsoft 所擁有的資料進行定型，並已部署在雲端中。 最適合對話和聽寫案例。 在獨特的環境中使用語音轉換文字進行辨識和轉譯時，您可以建立及定型自訂聲場、語言和發音模型。 自訂有助於解決環境雜訊或產業特定詞彙。
 
@@ -31,23 +34,11 @@ ms.locfileid: "88640407"
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="get-started-with-speech-to-text"></a>開始使用語音轉文字
+## <a name="get-started"></a>開始使用
 
-語音轉換文字服務可透過 [語音 SDK](speech-sdk.md)取得。 在各種語言和平臺中，有幾個常見的案例可作為快速入門：
+請參閱 [快速入門](get-started-speech-to-text.md) 以開始使用語音轉換文字。 服務可透過 [語音 SDK](speech-sdk.md)、 [REST API](rest-speech-to-text.md#pronunciation-assessment-parameters)和 [語音 CLI](spx-overview.md)取得。
 
- - [快速入門：使用麥克風輸入辨識語音](quickstarts/speech-to-text-from-microphone.md)
- - [快速入門：從檔案辨識語音](quickstarts/speech-to-text-from-file.md)
- - [快速入門：辨識儲存在 blob 儲存體中的語音](quickstarts/from-blob.md)
-
-如果您想要使用語音轉換文字 REST 服務，請參閱 [REST api](rest-speech-to-text.md)。
-
- - [快速入門：使用參考輸入的發音評定](rest-speech-to-text.md#pronunciation-assessment-parameters)
-
-## <a name="tutorials-and-sample-code"></a>教學課程和範例程式碼
-
-當您有機會使用語音服務後，請嘗試使用我們的教學課程，其中會教導您如何使用語音 SDK 和 LUIS 從語音辨識意圖。
-
-- [教學課程：使用 C 以語音 SDK 和 LUIS 從語音辨識意圖#](how-to-recognize-intents-from-speech-csharp.md)
+## <a name="sample-code"></a>範例程式碼
 
 您可以在 GitHub 上取得適用于語音 SDK 的範例程式碼。 這些範例包含常見案例，例如：從檔案或資料流讀取音訊、連續辨識、一次性辨識及使用自訂模型。
 
@@ -61,7 +52,7 @@ ms.locfileid: "88640407"
 
 ## <a name="batch-transcription"></a>批次轉譯
 
-批次轉譯是一組 REST API 作業，可讓您在儲存體中轉譯大量音訊。 您可以使用共用存取簽章來指向音訊檔案 (SAS) URI，並以非同步方式接收轉譯結果。 如需如何使用批次轉譯 API 的詳細資訊，請參閱 how [to](batch-transcription.md) 。
+批次轉譯是一組 REST API 作業，可讓您在儲存體中轉譯大量音訊。 您可使用共用存取簽章 (SAS) URI 來指向音訊檔案，並以非同步方式接收轉譯結果。 如需如何使用批次轉譯 API 的詳細資訊，請參閱 how [to](batch-transcription.md) 。
 
 [!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 

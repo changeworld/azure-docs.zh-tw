@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 9594e1ed14b017591ea2c4ddda59ba61feb81b0c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 91935e8c052a9130d0a40ed292ca466bc1ab5427
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272275"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567619"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Azure 資訊安全中心中增強的安全分數
 
@@ -45,17 +45,17 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 > 較早版本的資訊安全中心會在建議層級給予點數：當您執行單一資源的補救建議時，您的安全分數就會改善。 現在，只有在您補救控制項內單一資源的「所有」建議後，分數才會改善。 因此，只有當您改善資源的安全性時，您的分數才會改善。
 
 
-## <a name="accessing-your-secure-score"></a>存取您的安全分數
+## <a name="access-your-secure-score"></a>存取您的安全分數
 
 您可以透過 Azure 入口網站或以程式設計方式使用 Azure 資訊安全中心 REST API，來尋找您的整體安全分數，以及每個訂用帳戶的分數。
 
-### <a name="getting-your-secure-score-from-the-portal"></a>從入口網站取得您的安全分數
+### <a name="get-your-secure-score-from-the-portal"></a>從入口網站取得您的安全分數
 
 [安全性中心] 會在入口網站中醒目顯示您的分數：這是 [總覽] 頁面中顯示的第一件事。 如果您按一下進入安全分數專門頁面，會看到依訂用帳戶細分的分數。 按一下單一訂用帳戶，可查看詳細的優先建議清單，以及補救其對訂用帳戶分數的潛在影響。
 
 ![以入口網站顯示的整體安全分數](media/secure-score-security-controls/single-secure-score-via-ui.png)
 
-### <a name="getting-your-secure-score-from-the-rest-api"></a>從 REST API 取得您的安全分數
+### <a name="get-your-secure-score-from-the-rest-api"></a>從 REST API 取得您的安全分數
 
 您可以透過 [安全分數 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) 來存取您的分數， (目前為預覽) 。 API 方法可讓您彈性地查詢資料，並在一段時間內建立您自己的安全分數報告機制。 例如，您可以使用 **安全分數** API 來取得特定訂用帳戶的分數。 此外，您可以使用 **安全分數控制項** API 來列出安全性控制項和您的訂用帳戶的目前分數。
 
@@ -91,13 +91,22 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 |**安全分數**<br>多重訂閱|<br>將所有訂用帳戶中所有資源的目前分數相加，然後計算方式與單一訂用帳戶相同<br><br>在檢視多個訂用帳戶時，安全分數會評估所有已啟用原則中的所有資源，並將其對每個安全性控制項的最高分數所造成的綜合影響加以分組。<br>![多個訂用帳戶已啟用所有控制項時的安全分數](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>綜合的分數「不」是平均值，而是所有訂用帳戶中所有資源狀態的評估狀態。<br>在這裡，如果您移至 [建議] 頁面，將可能獲得的點數相加，會發現這就是目前分數 (24) 和可能獲得的最高分數 (60) 之間的差異。|
 ||||
 
-## <a name="improving-your-secure-score"></a>改善安全分數
+### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>哪些建議包含在安全分數計算中？
+
+只有內建建議會影響安全分數。
+
+此外，標示為 **預覽** 的建議不會包含在您的安全分數的計算中。 您應該盡可能補救它們，如此一來，當預覽期間結束時，他們就會參與您的分數。
+
+預覽建議的範例：
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="使用預覽旗標的建議":::
+
+
+## <a name="improve-your-secure-score"></a>改善您的安全分數
 
 若要改善您的安全分數，請補救建議清單中的安全性建議。 您可以針對每個資源手動補救每個建議，或使用 [快速修正!] 選項 (如果有的話)，快速將建議的補救套用至資源群組。 如需詳細資訊，請參閱[補救建議](security-center-remediate-recommendations.md)。
 
->[!IMPORTANT]
-> 只有內建建議會影響安全分數。
-
+另一種改善分數，並確保您的使用者不會產生對分數造成負面影響的資源，就是設定相關建議的 [強制] 和 [拒絕] 選項。 深入瞭解如何 [使用強制/拒絕建議進行錯誤處理](prevent-misconfigurations.md)。
 
 ## <a name="security-controls-and-their-recommendations"></a>安全性控制項及其建議
 
@@ -144,7 +153,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">補救安全性設定 (最高分數 4)</p></strong>設定錯誤的 IT 資產被攻擊的風險較高。 在期限壓力下部署資產時，常會忘記基本的強化動作。 安全性設定錯誤可能發生在基礎結構的任何層級：從作業系統、網路設備到雲端資源。<br>Azure 資訊安全中心會持續比較您的資源設定與業界標準、法規和效能評定的需求。 當您設定好組織重視的相關「合規性套件」(標準和基準) 後，任何差距都會引發安全性建議，包含 CCEID 和潛在安全性影響的說明。<br>常用的套件是 <a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure 安全性基準測試</a>和 <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure 基礎基準測試版本1.1.0</a>。</td>
-    <td class="tg-lboi"; width=55%>-Kubernetes Service 上應定義 Pod 安全性原則<br>- 應補救容器安全性設定中的弱點<br>- 應補救機器上安全性設定的弱點<br>- 應補救虛擬機器擴展集上安全性設定的弱點<br>- 應在虛擬機器上安裝監視代理程式<br>- 應於機器上安裝監視代理程式<br>- Log Analytics 代理程式應該安裝在以 Windows 為基礎的 Azure Arc 電腦上 (Preview) <br>- Log Analytics 代理程式應該安裝在以 Linux 為基礎的 Azure Arc 電腦上 (Preview) <br>- 應於虛擬機器擴展集上安裝監視代理程式<br>- 應解決機器上的監視代理程式健康情況問題</td>
+    <td class="tg-lboi"; width=55%>- 應補救容器安全性設定中的弱點<br>- 應補救機器上安全性設定的弱點<br>- 應補救虛擬機器擴展集上安全性設定的弱點<br>- 應在虛擬機器上安裝監視代理程式<br>- 應於機器上安裝監視代理程式<br>- Log Analytics 代理程式應該安裝在以 Windows 為基礎的 Azure Arc 電腦上 (Preview) <br>- Log Analytics 代理程式應該安裝在以 Linux 為基礎的 Azure Arc 電腦上 (Preview) <br>- 應於虛擬機器擴展集上安裝監視代理程式<br>- 應解決機器上的監視代理程式健康情況問題</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">限制未經授權的網路存取 (最高分數 4)</p></strong>組織內的端點可讓您從虛擬網路直接連線到支援的 Azure 服務。 子網路中的所有虛擬機器可以與所有資源通訊。 若要限制與子網內資源之間的通訊，請建立網路安全性群組，並將其與子網建立關聯。 組織可以藉由建立輸入和輸出規則來限制及防範未經授權的流量。</td>
@@ -196,7 +205,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 否。 在您補救單一資源的所有建議之前，分數不會變更。 若要取得控制項的最高分數，您必須補救所有資源的所有建議。
 
 ### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>是否仍可看到先前的安全分數使用體驗？ 
-否。 在一段時間執行，以簡化轉換。 先前的模型現在已被取代。 
+不會。 在一段時間執行，以簡化轉換。 先前的模型現在已被取代。 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>如果建議不適用於我，而我在原則中停用建議，我的安全性控制項是否會完成，而且我的安全分數也會更新？
 是。 建議您在建議不適合您的環境時予以停用。 如需有關如何停用特定建議的指示，請參閱[停用安全性原則](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)。

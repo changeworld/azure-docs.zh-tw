@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56948b700f816c13d35915400658136ffcf48846
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 1b6e2ac9d80c1c3bf76b4a3d4c44f0654100670f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783581"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567413"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中變更存取套件的資源角色
 
@@ -72,13 +72,13 @@ ms.locfileid: "88783581"
 - 當群組或小組是存取套件的一部分，且使用者已指派給該存取套件時，就會將使用者新增至該群組或小組（如果還沒有的話）。
 - 當使用者的存取套件指派到期時，系統會將他們從群組或小組中移除，除非他們目前有指派給另一個包含相同群組或小組的存取套件。
 
-您可以選取任何 [Azure AD 安全性群組或 Office 365 群組](../fundamentals/active-directory-groups-create-azure-portal.md)。 系統管理員可以將任何群組新增至目錄;目錄擁有者可以將任何群組新增至目錄（如果它們是群組的擁有者）。 選取群組時，請記住下列 Azure AD 條件約束：
+您可以選取任何 [Azure AD 安全性群組或 Microsoft 365 群組](../fundamentals/active-directory-groups-create-azure-portal.md)。 系統管理員可以將任何群組新增至目錄;目錄擁有者可以將任何群組新增至目錄（如果它們是群組的擁有者）。 選取群組時，請記住下列 Azure AD 條件約束：
 
 - 當使用者（包括來賓）新增為群組或小組的成員時，他們就可以看到該群組或小組的所有其他成員。
 - Azure AD 無法使用 Azure AD Connect，或在 Exchange Online 中建立的 Active Directory 群組成員資格變更為通訊群組的成員資格。  
 - 您無法藉由新增或移除成員來更新動態群組的成員資格，因此動態群組成員資格不適合搭配權利管理使用。
 
-如需詳細資訊，請參閱 [比較群組](/office365/admin/create-groups/compare-groups) 和 [Office 365 群組和 Microsoft 小組](/microsoftteams/office-365-groups)。
+如需詳細資訊，請參閱 [比較群組](/office365/admin/create-groups/compare-groups) 和 [Microsoft 365 群組和 Microsoft 小組](/microsoftteams/office-365-groups)。
 
 1. 在 [ **將資源角色新增至存取套件** ] 頁面上，按一下 [ **群組和小組** ] 以開啟 [選取群組] 窗格。
 
@@ -94,8 +94,8 @@ ms.locfileid: "88783581"
     | --- | --- |
     | 安全性 | 用來授與資源的存取權。 |
     | 散發 | 用來將通知傳送給一群人。 |
-    | O365 | 未啟用小組的 Office 365 群組。 用於在公司內部和外部的使用者之間共同作業。 |
-    | 小組 | 啟用團隊的 Office 365 群組。 用於在公司內部和外部的使用者之間共同作業。 |
+    | Microsoft 365 | 未啟用小組的 Microsoft 365 群組。 用於在公司內部和外部的使用者之間共同作業。 |
+    | 小組 | 已啟用團隊的 Microsoft 365 群組。 用於在公司內部和外部的使用者之間共同作業。 |
 
 1. 在 [ **角色** ] 清單中，選取 [ **擁有** 者] 或 [ **成員**]。
 
@@ -103,7 +103,7 @@ ms.locfileid: "88783581"
 
     ![存取套件-為群組或小組新增資源角色](./media/entitlement-management-access-package-resources/group-role.png)
 
-1. 按一下 [新增] 。
+1. 按一下 [新增]  。
 
     具有存取套件之現有指派的任何使用者，在新增時都會自動成為此群組或小組的成員。
 
@@ -134,7 +134,7 @@ ms.locfileid: "88783581"
 
     ![存取套件-為應用程式新增資源角色](./media/entitlement-management-access-package-resources/application-role.png)
 
-1. 按一下 [新增] 。
+1. 按一下 [新增]  。
 
     在新增應用程式時，任何具有存取套件之現有指派的使用者都會自動獲得存取權。
 
@@ -154,7 +154,7 @@ ms.locfileid: "88783581"
 
     ![存取套件-SharePoint Online 網站的新增資源角色](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
 
-1. 按一下 [新增] 。
+1. 按一下 [新增]  。
 
     具有存取套件之現有指派的任何使用者，將會在新增時，自動獲得此 SharePoint Online 網站的存取權。
 
@@ -178,9 +178,9 @@ ms.locfileid: "88783581"
 
 在 [權利管理] 中，Azure AD 會一天處理存取套件中的指派和資源大量變更。 因此，如果您進行指派，或變更存取套件的資源角色，最多可能需要24小時才會在 Azure AD 中進行這項變更，以及將這些變更傳播到其他 Microsoft 線上服務或已連線的 SaaS 應用程式所需的時間量。 如果您的變更只會影響一些物件，則變更可能只需要幾分鐘的時間就會在 Azure AD 中套用，之後其他 Azure AD 元件就會偵測到變更並更新 SaaS 應用程式。 如果您的變更會影響數以千計的物件，變更將會花費較長的時間。 例如，如果您有一個具有2個應用程式和100個使用者指派的存取套件，且您決定將 SharePoint 網站角色加入至存取套件，則必須等到所有使用者都屬於該 SharePoint 網站角色的一部分時，才會有延遲。 您可以透過 Azure AD 審核記錄、Azure AD 布建記錄和 SharePoint 網站審核記錄來監視進度。
 
-移除小組成員時，也會從 Office 365 群組中將其移除。 移除小組的交談功能方面可能會延遲。 如需詳細資訊，請參閱 [群組成員資格](/microsoftteams/office-365-groups#group-membership)。
+當您移除小組成員時，也會從 Microsoft 365 群組移除這些成員。 移除小組的交談功能方面可能會延遲。 如需詳細資訊，請參閱 [群組成員資格](/microsoftteams/office-365-groups#group-membership)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [使用 Azure Active Directory 建立基本群組並新增成員](../fundamentals/active-directory-groups-create-azure-portal.md)
 - [操作說明：針對企業應用程式，設定 SAML 權杖中發出的角色宣告](../develop/active-directory-enterprise-app-role-management.md)

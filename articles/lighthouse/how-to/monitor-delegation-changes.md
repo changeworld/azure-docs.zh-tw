@@ -1,14 +1,14 @@
 ---
 title: 監視您管理租使用者中的委派變更
 description: 瞭解如何監視從客戶租使用者到您管理租使用者的委派活動。
-ms.date: 08/18/2020
+ms.date: 09/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 4d9d8b18634f94c355ea7fc0b5c125d631ec419c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 19c8cd4fa2b43961c46640a736a91e3fed3ac79d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589736"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567600"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>監視您管理租使用者中的委派變更
 
@@ -48,6 +48,9 @@ ms.locfileid: "88589736"
 - 請確定此服務主體沒有任何委派客戶資源的存取權。
 - [使用憑證來進行驗證](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in) ，並 [將其安全地儲存在 Azure Key Vault 中](../../key-vault/general/best-practices.md)。
 - 限制有權代表服務主體具有存取權的使用者。
+
+> [!NOTE]
+> 您也可以將根範圍的「監視讀者」 Azure 內建角色指派給個別使用者或使用者群組。 如果您希望使用者能夠 [直接在 Azure 入口網站中查看委派資訊](#view-delegation-changes-in-the-azure-portal)，這會很有用。 如果您這樣做，請注意這是廣泛的存取層級，應限制為最少的使用者數目。
 
 您可以使用下列其中一種方法來進行根範圍指派。
 
@@ -165,7 +168,16 @@ else {
 > [!TIP]
 > 雖然我們會在本主題中參考服務提供者和客戶，但 [管理多個](../concepts/enterprise.md) 租使用者的企業可以使用相同的程式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="view-delegation-changes-in-the-azure-portal"></a>在 Azure 入口網站中查看委派變更
+
+已獲指派「監視讀者」在根範圍內內建角色的使用者，可以直接在 Azure 入口網站中查看委派變更。
+
+1. 流覽至 [ **我的客戶** ] 頁面，然後從左側導覽功能表中選取 [ **活動記錄** ]。
+1. 確定已在畫面頂端附近的篩選中選取 [ **目錄] 活動** 。
+
+將會顯示委派變更的清單。 您可以選取 [ **編輯資料行** ]，以顯示或隱藏 **狀態**、 **事件類別**、 **時間**、 **時間戳記**、 **訂**用帳戶、 **事件起始者**、 **資源群組**、 **資源類型**和 **資源** 值。
+
+## <a name="next-steps"></a>接下來的步驟
 
 - 瞭解如何讓客戶在 [Azure Lighthouse](../concepts/azure-delegated-resource-management.md)上架。
 - 瞭解 [Azure 監視器](../../azure-monitor/index.yml) 和 [Azure 活動記錄](../../azure-monitor/platform/platform-logs-overview.md)。

@@ -1,30 +1,29 @@
 ---
 title: 收集 & 分析資源記錄
-description: 瞭解如何從 Azure 容器實例中的容器群組，將資源記錄和事件資料傳送至 Azure 監視器記錄
+description: 瞭解如何從 Azure 容器實例中的容器群組將資源記錄和事件資料傳送至 Azure 監視器記錄
 ms.topic: article
 ms.date: 07/13/2020
-ms.author: danlep
-ms.openlocfilehash: efd71d181059ab395aeec4da364110a42d2cccd3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b39cf31dc28ece7d4e4f938dae21a4fbf6a1a832
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524007"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566665"
 ---
-# <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>具有 Azure 監視器記錄的容器群組和實例記錄
+# <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>使用 Azure 監視器記錄的容器群組和實例記錄
 
-Log Analytics 工作區提供集中的位置，不僅可以儲存和查詢來自 Azure 資源的記錄資料，也會提供內部部署資源和其他雲端中的資源。 Azure 容器執行個體包含將記錄和事件資料傳送至 Azure 監視器記錄的內建支援。
+Log Analytics 工作區提供集中式位置，不僅能儲存和查詢來自 Azure 資源的記錄資料，還可提供內部部署資源和其他雲端中的資源。 Azure 容器執行個體包含將記錄和事件資料傳送至 Azure 監視器記錄的內建支援。
 
-若要將容器群組記錄檔和事件資料傳送至 Azure 監視器記錄，請在設定容器群組時，指定現有的 Log Analytics 工作區識別碼和工作區金鑰。 
+若要將容器群組記錄和事件資料傳送至 Azure 監視器記錄，請在設定容器群組時，指定現有的 Log Analytics 工作區識別碼和工作區金鑰。 
 
-下列各節說明如何建立已啟用記錄的容器群組，以及如何查詢記錄。 您也可以使用工作區識別碼和工作區金鑰來[更新容器群組](container-instances-update.md)，以啟用記錄。
+下列各節說明如何建立啟用記錄的容器群組，以及如何查詢記錄。 您也可以使用工作區識別碼和工作區金鑰來 [更新容器群組](container-instances-update.md) ，以啟用記錄功能。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 > [!NOTE]
 > 目前，您只能將來自 Linux 容器執行個體的事件資料傳送至 Log Analytics。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要在您的容器執行個體中啟用記錄，您必須具備下列項目：
 
@@ -38,7 +37,7 @@ Azure 容器執行個體必須具備將資料傳送至 Log Analytics 工作區�
 若要取得記錄分析工作區識別碼和主要金鑰：
 
 1. 在 Azure 入口網站中瀏覽至您的 Log Analytics 工作區
-1. 在 [**設定**] 下，選取 [**代理程式管理**]
+1. 在 [**設定**] 底下，選取 [**代理程式管理**]
 1. 記下：
    * **Workspace ID** \(工作區識別碼\)
    * **主要金鑰**
@@ -47,7 +46,7 @@ Azure 容器執行個體必須具備將資料傳送至 Log Analytics 工作區�
 
 現在您已有記錄分析工作區識別碼和主要金鑰，接下來即可建立已啟用記錄的容器群組。
 
-下列範例示範兩種建立容器群組的方式，其中包含單一[fluentd][fluentd]容器： Azure CLI，以及具有 YAML 範本的 Azure CLI。 Fluentd 容器會在其預設設定中產生數行的輸出。 此輸出會傳送到您的 Log Analytics 工作區，因此很適合用來示範記錄的檢視和查詢。
+下列範例示範兩種建立容器群組的方式，其中包含單一 [fluentd][fluentd] 容器： Azure CLI，以及 YAML 範本的 Azure CLI。 Fluentd 容器會在其預設設定中產生數行的輸出。 此輸出會傳送到您的 Log Analytics 工作區，因此很適合用來示範記錄的檢視和查詢。
 
 ### <a name="deploy-with-azure-cli"></a>使用 Azure CLI 進行部署
 
@@ -108,9 +107,9 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 1. 在 Azure 入口網站中瀏覽至您的 Log Analytics 工作區
 1. 在 **[一般**] 底下，選取 [**記錄**]  
 1. 執行下列查詢：`ContainerInstanceLog_CL | limit 50`
-1. 選取**執行**
+1. 選取 **執行**
 
-您應該會看到查詢所顯示的數個結果。 如果您在第一次沒有看到任何結果，請等候幾分鐘，然後選取 [**執行**] 按鈕以再次執行查詢。 根據預設，記錄項目會以 [資料表]**** 格式顯示。 接著，您可以展開資料列來查看個別記錄項目的內容。
+您應該會看到查詢所顯示的數個結果。 如果您在第一次沒有看到任何結果，請等候幾分鐘，然後選取 [ **執行** ] 按鈕以再次執行查詢。 根據預設，記錄項目會以 [資料表]**** 格式顯示。 接著，您可以展開資料列來查看個別記錄項目的內容。
 
 ![Azure 入口網站中的記錄搜尋結果][log-search-01]
 
@@ -121,9 +120,9 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 1. 在 Azure 入口網站中瀏覽至您的 Log Analytics 工作區
 1. 在 **[一般**] 底下，選取 [**記錄**]  
 1. 執行下列查詢：`ContainerEvent_CL | limit 50`
-1. 選取**執行**
+1. 選取 **執行**
 
-您應該會看到查詢所顯示的數個結果。 如果您在第一次沒有看到任何結果，請等候幾分鐘，然後選取 [**執行**] 按鈕以再次執行查詢。 根據預設，項目會以 [資料表]**** 格式顯示。 接著，您可以展開資料列來查看個別項目的內容。
+您應該會看到查詢所顯示的數個結果。 如果您在第一次沒有看到任何結果，請等候幾分鐘，然後選取 [ **執行** ] 按鈕以再次執行查詢。 根據預設，項目會以 [資料表]**** 格式顯示。 接著，您可以展開資料列來查看個別項目的內容。
 
 ![Azure 入口網站中的事件搜尋結果][log-search-02]
 
@@ -133,7 +132,7 @@ Azure 監視器記錄包含涵蓋範圍廣大的[查詢語言][query_lang]，可
 
 查詢的基本結構是一個來源資料表 (在本文為 `ContainerInstanceLog_CL` 或 `ContainerEvent_CL`)，後面接著一系列由管道字元 (`|`) 隔開的運算子。 您可以鏈結數個運算子，以找出更精確的結果及執行進階函式。
 
-若要查看範例查詢結果，請將下列查詢貼入 [查詢] 文字方塊中，然後**選取 [執行**] 按鈕以執行查詢。 此查詢會顯示 [訊息] 欄位中包含「警告」一詞的所有記錄項目：
+若要查看範例查詢結果，請將下列查詢貼入 [查詢] 文字方塊中，然後選取 **[執行] 按鈕以** 執行查詢。 此查詢會顯示 [訊息] 欄位中包含「警告」一詞的所有記錄項目：
 
 ```query
 ContainerInstanceLog_CL
@@ -148,13 +147,13 @@ ContainerInstanceLog_CL
 | where (TimeGenerated > ago(1h))
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 ### <a name="azure-monitor-logs"></a>Azure 監視器記錄
 
 如需關於在 Azure 監視器記錄中查詢記錄和設定警示的詳細資訊，請參閱：
 
-* [瞭解 Azure 監視器記錄中的記錄搜尋](../azure-monitor/log-query/log-query-overview.md)
+* [瞭解 Azure 監視器記錄檔中的記錄搜尋](../azure-monitor/log-query/log-query-overview.md)
 * [Azure 監視器中的整合警示](../azure-monitor/platform/alerts-overview.md)
 
 

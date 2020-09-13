@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/08/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 84a5b1cd7b2229defd4e38a227f75cfbf9ebdd95
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8d1e2454dc4b9a9fbc85d2e5edc5ba3ede33f9c0
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933659"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595646"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
@@ -160,13 +160,16 @@ Azure 在 [Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-ma
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
 ```
 
-請注意，資料類型 (資料表) 會區分大小寫。  若要取得特定資料類型 (在此範例中為 SecurityEvent) 目前的每一資料類型保留期設定，請使用：
+請注意，資料類型 (資料表) 會區分大小寫。  若要取得特定資料類型的目前每個資料類型保留設定 (在此範例中為 SecurityEvent) ，請使用：
 
 ```JSON
     GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview
 ```
 
-若要取得工作區中所有資料類型目前的每一資料類型保留期設定，則只需省略特定資料類型，例如：
+> [!NOTE]
+> 如果已為資料類型明確設定保留，則只會傳回該資料類型的保留。  尚未明確設定保留 (的資料類型，因此會繼承工作區保留) 不會從此呼叫傳回任何資料。 
+
+若要取得工作區中所有資料類型保留集的目前每個資料類型保留設定，請省略特定的資料類型，例如：
 
 ```JSON
     GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables?api-version=2017-04-26-preview
@@ -575,9 +578,9 @@ union *
 - **定義警示條件**：將您的 Log Analytics 工作區指定為資源目標。
 - **警示準則**：指定下列項目：
    - **訊號名稱**：選取 [自訂記錄搜尋]
-   - **搜尋查詢** 至 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 
+   - **搜尋查詢** 至 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 如果您想要不同 
    - [警示邏輯] 為 [根據結果數目]，而 [條件] 為 [大於臨界值 0]
-   - 每隔*1440*分鐘一天執行一次的時間（ *1440*分鐘）和**警示頻率**的**時間週期**。
+   - 每次*1440* minutesto 一天執行一次的時間， *1440*分鐘和**警示頻率**的**時間週期**。
 - **定義警示詳細資料**：指定下列項目：
    - *在24小時內大於 50 GB 的可計費資料磁片*區**名稱**
    - 將 [嚴重性] 設定為「警告」
@@ -604,7 +607,7 @@ Operation | where OperationCategory == 'Data Collection Status'
 |收集停止的原因| 解決方法| 
 |-----------------------|---------|
 |已達您工作區的每日上限|等到自動重新開始收集或提高每日資料量限制，如「管理每日資料量上限」中所述。 每日上限重設時間會顯示在 **每日的上限** 頁面上。 |
-| 您的工作區已達到 [資料內嵌數量的速率](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) | 適用於工作區的預設擷取磁碟區速率閾值為 500 MB (已壓縮) ，解壓縮大約 **6 GB/分鐘** -- 根據記錄長度和其壓縮率的不同，實際大小在資料類型之間可能會有所不同。 不論是使用[診斷設定](diagnostic-settings.md)、[資料收集器 API](data-collector-api.md) 或代理程式，從 Azure 資源傳送的所有內嵌資料皆適用此閾值。 如果您以高於工作區中所設定閾值的 80% 速率將資料傳送至工作區時，則每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 當內嵌的磁碟區速率高於閾值時，則系統會卸除某些資料，且每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 如果您的擷取磁碟區速率持續超過閾值，或您希望很快能達到某個閾值，則可以透過開啟支援要求，要求將其加入工作區。 若要在您的工作區中收到這類事件的通知，請使用下列查詢建立 [記錄警示規則](alerts-log.md) ，並根據大於零的結果數目、5分鐘的評估期和5分鐘的頻率來建立警示邏輯。 內嵌磁片區速率達到80% 的閾值： `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` 。 內嵌磁片區速率達到閾值： `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` 。 |
+| 您的工作區已達到 [資料內嵌數量的速率](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) | 使用診斷設定從 Azure 資源傳送資料的預設內嵌磁碟區速率限制，約為每個工作區 6 GB/分鐘。 這是估計值，因為根據記錄長度和其壓縮比率，實際大小可能會因資料類型有所不同。 此限制不適用於從代理程式或資料收集器 API 傳送的資料。 如果您以較高的速率將資料傳送至單一工作區，則系統會卸除某些資料，且每隔 6 小時會將事件傳送至工作區中的作業資料表，同時會繼續超過閾值。 如果您的內嵌磁碟區持續超過速率限制，或您希望很快能達到速率限制，可以傳送電子郵件至 LAIngestionRate@microsoft.com 或開啟支援要求，要求增加工作區。 要尋找的事件指出，查詢 `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The rate of data crossed the threshold"`可找到資料的內嵌速率限制。 |
 |已達舊版免費定價層的每日限制 |請等到隔天自動重新開始收集，或變更為付費定價層。|
 |Azure 訂用帳戶處於暫停狀態，原因如下：<br> 免費試用已結束<br> Azure Pass 已過期<br> 已達每月消費限制 (例如 MSDN 或 Visual Studio 訂閱)|轉換成付費訂閱<br> 移除限制，或等到限制重設|
 

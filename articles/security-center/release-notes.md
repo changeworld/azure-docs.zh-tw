@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: 0c0e286ac9f94768541bb40b9ccca01e0469e0c8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: f3aeccd30a9c89c2a43dfb85d4a57274037ec05f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177239"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569249"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -28,6 +28,104 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 - 已被取代的功能
 
 此頁面會定期更新，因此請時常瀏覽。 如果想要尋找超過 6 個月的項目，請前往[Azure 資訊安全中心內新功能的封存](release-notes-archive.md)。
+
+
+## <a name="september-2020"></a>2020 年 9 月
+
+9月更新包括：
+
+- [弱點評定結果現在可用於連續匯出](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
+- [藉由在建立新資源時強制建議來避免安全性錯誤](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
+- [已改善網路安全性群組建議](#network-security-group-recommendations-improved)
+- [已淘汰的預覽 AKS 建議 "Kubernetes Services 上應定義 Pod 安全性原則"](#deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services)
+- [Azure 資訊安全中心改良的電子郵件通知](#email-notifications-from-azure-security-center-improved)
+- [安全分數不包含預覽建議](#secure-score-doesnt-include-preview-recommendations)
+- [建議現在包含嚴重性指標和有效期間間隔](#recommendations-now-include-a-severity-indicator-and-the-freshness-interval)
+
+### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>弱點評定結果現在可用於連續匯出
+
+使用連續匯出，即時串流您的警示和建議，以 Azure 事件中樞、Log Analytics 工作區或 Azure 監視器。 從該處，您可以整合此資料與 Siem (例如 Azure Sentinel、Power BI、Azure 資料總管等。
+
+資訊安全中心的整合式弱點評定工具會將您的資源結果傳回為「父系」建議內的可操作建議，例如「應補救您虛擬機器中的弱點」。 
+
+當您選取建議並啟用 [ **包含安全性結果** ] 選項時，現在可以透過連續匯出來匯出安全性結果。
+
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="在連續匯出設定中包含安全性結果切換" :::
+
+相關頁面：
+
+- [適用于 Azure 虛擬機器的安全性中心整合式弱點評估解決方案](deploy-vulnerability-assessment-vm.md)
+- [Azure Container Registry 映射的安全中心整合式弱點評估解決方案](monitor-container-security.md)
+- [連續匯出](continuous-export.md)
+
+### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>藉由在建立新資源時強制建議來避免安全性錯誤
+
+安全性錯誤配置是安全性事件的主要原因。 資訊安全中心現在可以協助 *防止* 新資源在特定建議中的錯誤配置。 
+
+這項功能可協助保護您的工作負載，並穩定您的安全分數。
+
+根據特定的建議來強制執行安全設定，會以兩種模式提供：
+
+- 使用 Azure 原則的 **拒絕** 效果，您可以停止建立狀況不良的資源
+
+- 使用 [ **強制** ] 選項，您可以利用 Azure 原則的 **DeployIfNotExist** 效果，並在建立時自動補救不符合規範的資源
+ 
+這適用于選取的安全性建議，並可在資源詳細資料頁面頂端找到。
+
+深入瞭解如何 [使用強制/拒絕建議進行錯誤處理](prevent-misconfigurations.md)。
+
+###  <a name="network-security-group-recommendations-improved"></a>已改善網路安全性群組建議
+
+下列與網路安全性群組相關的安全性建議已經過改善，可減少某些誤報的實例。
+
+- 在與您 VM 建立關聯的 NSG 上應限制所有網路連接埠
+- 應關閉虛擬機器上的管理連接埠
+- 應使用網路安全性群組保護網際網路對應的虛擬機器
+- 子網路應該與網路安全性群組建立關聯
+
+
+### <a name="deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services"></a>已淘汰的預覽 AKS 建議 "Kubernetes Services 上應定義 Pod 安全性原則"
+
+預覽版建議「應該在 Kubernetes Services 上定義 Pod 安全性原則」已被取代，如 [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/use-pod-security-policies) 檔中所述。
+
+Pod 安全性原則 (preview) 功能已設定為 Azure 原則取代，並將于2020年10月15日之後無法再使用，以利 AKS。
+
+Pod 安全性原則 (預覽版) 淘汰之後，您必須使用已被取代的功能在任何現有的叢集上停用此功能，以執行未來的叢集升級並保持在 Azure 支援內。
+
+
+### <a name="email-notifications-from-azure-security-center-improved"></a>Azure 資訊安全中心改良的電子郵件通知
+
+關於安全性警示的電子郵件的下列各方面已獲得改良： 
+
+- 已新增傳送所有嚴重性層級警示相關電子郵件通知的功能
+- 已新增在訂用帳戶上使用不同 RBAC 角色通知使用者的功能
+- 根據預設，我們會主動通知訂用帳戶擁有者的高嚴重性警示 (有很高的機率是正版缺口) 
+- 我們已從電子郵件通知設定頁面移除電話號碼欄位
+
+深入瞭解如何 [設定安全性警示的電子郵件通知](security-center-provide-security-contact-details.md)。
+
+
+### <a name="secure-score-doesnt-include-preview-recommendations"></a>安全分數不包含預覽建議 
+
+資訊安全中心會持續評估資源、訂用帳戶、組織的安全性問題。 然後將所有的發現彙總成一個分數，讓您可以立即得知目前的安全性情況：分數越高，風險層級越低。
+
+探索到新的威脅時，安全中心會透過新的建議提供新的安全性建議。 為了避免意外變更您的安全分數，並提供寬限期，讓您可以在新的建議影響到您的分數之前先進行探索，標示為 **預覽** 的建議不再包含于您的安全分數的計算中。 您應該盡可能補救它們，如此一來，當預覽期間結束時，他們就會參與您的分數。
+
+此外， **預覽** 建議也不會轉譯資源「狀況不良」。
+
+預覽建議的範例：
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="使用預覽旗標的建議":::
+
+[深入瞭解安全分數](secure-score-security-controls.md)。
+
+
+### <a name="recommendations-now-include-a-severity-indicator-and-the-freshness-interval"></a>建議現在包含嚴重性指標和有效期間間隔
+
+建議的 [詳細資料] 頁面現在包含一個有效的間隔指標 (當相關的) 和建議的嚴重性清楚顯示時。
+
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="顯示時效性和嚴重性的建議頁面":::
+
 
 
 ## <a name="august-2020"></a>2020 年 8 月
@@ -489,7 +587,7 @@ Advanced data security 為您的 SQL 電腦提供了弱點評定和先進的威�
 
 我們現在也新增了編輯自訂建議中繼資料的選項。 中繼資料選項包括嚴重性、補救步驟、威脅資訊等等。  
 
-深入瞭解[使用詳細資料來增強您的自訂建議](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information)。
+深入瞭解[使用詳細資料來增強您的自訂建議](custom-security-policies.md#enhance-your-custom-recommendations-with-detailed-information)。
 
 
 
@@ -550,79 +648,3 @@ Azure 資訊安全中心免費層的身分識別和存取安全性建議現已�
 深入瞭解[身分識別與存取建議](recommendations-reference.md#recs-identity)。
 
 深入瞭解[監視身分識別及存取](security-center-identity-access.md)。
-
-
-## <a name="march-2020"></a>2020 年 3 月
-
-3月更新包括：
-- [工作流程自動化現已正式推出](#workflow-automation-is-now-generally-available)
-- [Azure 資訊安全中心與 Windows 管理中心整合](#integration-of-azure-security-center-with-windows-admin-center)
-- [Azure Kubernetes Service 的防護](#protection-for-azure-kubernetes-service)
-- [改良的 Just-In-Time 體驗](#improved-just-in-time-experience)
-- [Web 應用程式的兩個安全性建議已被取代](#two-security-recommendations-for-web-applications-deprecated)
-
-
-### <a name="workflow-automation-is-now-generally-available"></a>工作流程自動化現已正式推出
-
-Azure 資訊安全中心的工作流程自動化功能現已正式推出。 可使用此功能自動對安全性警示和建議觸發 Logic Apps。 此外，您還可以使用手動觸發程式來取得警示，以及具有快速修正選項的所有建議。
-
-每個安全性程式都包含事件回應的多個工作流程。 這些流程可能包括通知相關的專案利害關係人、啟動變更管理程式，以及套用特定的補救步驟。 安全性專家建議您盡可能自動化這些程式的許多步驟。 自動化會藉由確保按照您預先定義的需求快速、一致地執行程式步驟，來減少額外負荷並改善您的安全性。
-
-如需執行工作流程之自動和手動資訊安全中心功能的詳細資訊，請參閱[工作流程自動化](workflow-automation.md)。
-
-深入瞭解[建立邏輯應用程式](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
-
-
-### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Azure 資訊安全中心與 Windows 管理中心整合
-
-現在可以將您的內部部署 Windows 伺服器直接從 Windows 系統管理中心移至 Azure 資訊安全中心。 資訊安全中心接著會變成您的單一窗格，可供查看所有 Windows 系統管理中心資源的安全性資訊，包括內部部署伺服器、虛擬機器和其他 PaaS 工作負載。
-
-將伺服器從 Windows 系統管理中心移至 Azure 資訊安全中心之後，您將能夠：
-
-- 在 Windows 系統管理中心的資訊安全中心延伸模組中，查看安全性警示和建議。
-- 在 Azure 入口網站 (或透過 API) 中的資訊安全中心，查看安全性狀態，並擷取 Windows 管理中心受控伺服器的其他詳細資訊。
-
-深入瞭解[如何整合 Azure 資訊安全中心與 Windows 管理中心](windows-admin-center-integration.md)。
-
-
-### <a name="protection-for-azure-kubernetes-service"></a>Azure Kubernetes Service 的防護
-
-Azure 資訊安全中心正在擴充其容器安全性功能，以保護 Azure Kubernetes Service (AKS)。
-
-熱門的開放原始碼平台 Kubernetes 已獲得廣泛採用，現在已成為容器協調流程的業界標準。 雖然這種實作相當廣泛，仍然不瞭解如何保護 Kubernetes 環境。 保護容器化應用程式的受攻擊面需要專業知識，以確保能夠安全地設定基礎結構，並持續監視潛在威脅。
-
-資訊安全中心防禦包括：
-
-- **探索與可見度** - 在向資訊安全中心註冊的訂閱內，持續探索受控 AKS 執行個體。
-- **安全性建議** - 可採取動作的建議，以協助您符合 AKS 的安全性最佳做法。 這些建議會包含在您的安全分數中，以確保這些建議會被視為組織安全性狀態的一部份。 如需 AKS 相關的建議，您可以參閱「應使用角色型存取控制來限制對 Kubernetes Service 叢集的存取」。
-- **威脅防護** - 透過 AKS 部署的持續分析，資訊安全中心在主機和 AKS 叢集層級偵測到威脅和惡意活動的警示。
-
-深入瞭解 [Azure Kubernetes Service 與資訊安全中心整合](azure-kubernetes-service-integration.md)。
-
-深入瞭解[資訊安全中心內的容器安全性功能](container-security.md)。
-
-
-### <a name="improved-just-in-time-experience"></a>改良的 Just-In-Time 體驗
-
-適用於 Azure 資訊安全中心的 Just-In-Time 工具保護您的管理埠所用的功能、操作和 UI 經過強化，如下所示： 
-
-- **理由欄位** - 透過 Azure 入口網站的 Just-In-Time 頁面要求存取虛擬機器 (VM) 時，可以使用新的選用欄位來輸入要求的理由。 輸入此欄位的資訊可在活動記錄檔中追蹤。 
-- **自動清除多餘的 Just-In-Time 規則** - 每當您更新 JIT 原則時，就會自動執行清除工具來檢查整個規則集的有效性。 此工具會尋找您的原則中的規則與 NSG 中的規則之間的不符之處。 如果清除工具發現不相符的問題，它會判斷原因，而當安全地移除不需要的內建規則。 清理程式永遠不會刪除您已建立的規則。 
-
-深入瞭解 [JIT 存取功能](security-center-just-in-time.md)。
-
-
-### <a name="two-security-recommendations-for-web-applications-deprecated"></a>Web 應用程式的兩個安全性建議已被取代
-
-與 Web 應用程式相關的兩個安全性建議會被取代： 
-
-- 應強化 IaaS NSG 上 Web 應用程式的規則。
-    (相關原則：應在 IaaS 上強化 Web 應用程式的 NSG 規則)
-
-- 應限制對應用程式服務的存取。
-    (相關原則：應限制存取應用程式服務 [預覽])
-
-這些建議不會再出現在資訊安全中心的建議清單中。 相關的原則將不再包含在名為「資訊安全中心預設」的方案中。
-
-深入瞭解[安全性建議](recommendations-reference.md)。
-

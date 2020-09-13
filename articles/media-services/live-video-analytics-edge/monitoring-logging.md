@@ -3,12 +3,12 @@ title: 監視和記錄-Azure
 description: 本文提供 IoT Edge 監視和記錄的即時影片分析總覽。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: e1f31c6bb3ea344286ad9af89417ca9f8fd59527
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934288"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567549"
 ---
 # <a name="monitoring-and-logging"></a>監視和記錄
 
@@ -20,7 +20,8 @@ ms.locfileid: "88934288"
 
 IoT Edge 上的即時影片分析會根據下列分類法發出事件或遙測資料。
 
-![IoT Edge 遙測架構上的即時影片分析](./media/telemetry-schema/taxonomy.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="事件的分類法":::
 
 * 操作：當使用者採取的動作，或在 [media graph](media-graph-concept.md)執行期間所產生的事件。
    
@@ -71,6 +72,7 @@ IoT Edge 上的即時影片分析會根據下列分類法發出事件或遙測�
    * 範例：
       
       偵測到 () ，推斷結果中偵測到動作。
+
    ```      
    {
      "body": {
@@ -98,15 +100,19 @@ IoT Edge 上的即時影片分析會根據下列分類法發出事件或遙測�
      }
    }
    ```
+
 模組發出的事件會傳送至 [IoT Edge 中樞](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)，並從該處傳送到其他目的地。 
 
 ### <a name="timestamps-in-analytic-events"></a>分析事件中的時間戳記
+
 如上所示，在影片分析過程中產生的事件會有相關聯的時間戳記。 如果您將 [即時影片錄製](video-recording-concept.md) 為圖形拓撲的一部分，此時間戳記可協助您找出已錄製影片中發生特定事件的位置。 下列指導方針說明如何將分析事件中的時間戳記對應到錄製到 [Azure 媒體服務資產](terminology.md#asset)的影片時間軸。
 
 首先，將 `eventTime` 值解壓縮。 在 [時間範圍篩選器](playback-recordings-how-to.md#time-range-filters) 中使用此值，以抓取錄製的適當部分。 例如，您可能會想要提取的影片將于30秒後開始 `eventTime` ，並在30秒後結束。 在上述範例中，如果 `eventTime` 是 2020-05-12T23：33： 09.381 z，則適用于 +/30 秒視窗之 HLS 資訊清單的要求如下所示：
+
 ```
 https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
 ```
+
 上述 URL 會傳回所謂的 [主要播放清單](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)，其中包含媒體播放清單的 url。 Media 播放清單中會包含如下的專案：
 
 ```
@@ -262,6 +268,6 @@ Subject 屬性可讓泛型事件對應至其產生的模組。 比方說，如�
 
 [常見問題集](faq.md#monitoring-and-metrics)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [連續影片錄製](continuous-video-recording-tutorial.md)

@@ -7,16 +7,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 8ace82147f17e6ee7e888553c58f32ec6e5ba271
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782935"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569198"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
-這個 Microsoft 常見問題集是關於 Azure 監視器的常見問題清單。
+這個 Microsoft 常見問題集是關於 Azure 監視器的常見問題清單。 如果您有任何其他問題，請前往 [討論論壇](https://docs.microsoft.com/answers/questions/topics/single/24223.html) 並張貼您的問題。 當問到常見問題時，我們會將其新增至此文章，以便其他人可以快速輕鬆地找到此問題。
+
 
 ## <a name="general"></a>一般
 
@@ -98,7 +99,7 @@ Azure 監視器收集的所有記錄資料都會儲存於 Log Analytics 工作�
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>我為何收到錯誤：從 VM 開啟 Log Analytics 之後收到：「為此訂用帳戶註冊資源提供者 'Microsoft.Insights' 以啟用此查詢」？ 
 許多資源提供者都會自動註冊，但您可能需要手動註冊某些資源提供者。 註冊範圍一律是訂用帳戶。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
 
-### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>從 VM 頁面開啟 Log Analytics 時，為什麼我收到無權存取的錯誤訊息？ 
+### <a name="why-am-i-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>從 VM 開啟 Log Analytics 時，為什麼不會收到任何存取錯誤訊息？ 
 若要檢視 VM 記錄，您必須獲得存放 VM 記錄的工作區讀取權限。 在這些情況下，系統管理員必須授與您 Azure 權限。
 
 ## <a name="metrics"></a>計量
@@ -523,9 +524,54 @@ Application Insights 不一定會捕捉「502不正確的閘道」和「503服�
 
 在此案例中，由於反向 proxy 層有問題，因此可能會將502或503回應傳回給用戶端，而這種情況不會被 Application Insights 的現成捕捉。 若要協助偵測此層的問題，您可能需要將來自反向 proxy 的記錄轉送至 Log Analytics，並建立自訂規則來檢查502/503 回應。 若要深入瞭解502和503錯誤的常見原因，請參閱「 [502 不正確的閘道」和「503服務無法使用](../app-service/troubleshoot-http-502-http-503.md)」的 Azure App Service 疑難排解文章。     
 
-## <a name="azure-monitor-for-containers"></a>適用於容器的 Azure 監視器
 
-此 Microsoft 常見問題集是適用於容器的 Azure 監視器常見問題清單。 若您有任何關於解決方案的其他問題，請前往[討論論壇](https://feedback.azure.com/forums/34192--general-feedback)並張貼您的問題。 當問到常見問題時，我們會將其新增至此文章，以便其他人可以快速輕鬆地找到此問題。
+## <a name="opentelemetry"></a>OpenTelemetry
+
+### <a name="what-is-opentelemetry"></a>什麼是 OpenTelemetry
+
+適用于可檢視性的新開放原始碼標準。 若要深入瞭解，請參閱 [https://opentelemetry.io/](https://opentelemetry.io/) 。
+
+### <a name="why-is-microsoft--azure-monitor-investing-in-opentelemetry"></a>為什麼 Microsoft/Azure 監視器投資 OpenTelemetry？
+
+基於下列三個原因，我們認為它能提供客戶更好的服務：
+   1. 啟用更多客戶案例的支援。
+   2. 無須擔心廠商的鎖定。
+   3. 提高客戶的透明度和參與度。
+
+此外，它也會配合 Microsoft 的策略來採用 [開放原始](https://opensource.microsoft.com/)碼。
+
+### <a name="what-additional-value-does-opentelemetry-give-me"></a>OpenTelemetry 提供給我什麼額外價值？
+
+除了上述的原因之外，OpenTelemetry 的規模更有效率，並提供跨語言的一致設計/設定。
+
+### <a name="how-can-i-test-out-opentelemetry"></a>如何測試 OpenTelemetry？
+
+註冊以加入我們的 Azure 監視器 Application Insights 早期採用者的社區 [https://aka.ms/AzMonOtel](https://aka.ms/AzMonOtel) 。
+
+### <a name="what-does-ga-mean-in-the-context-of-opentelemetry"></a>GA 在 OpenTelemetry 的環境中代表什麼？
+
+OpenTelemetry 社區定義了正式[推出的 (GA) 。](https://medium.com/opentelemetry/ga-planning-f0f6d7b5302) 不過，OpenTelemetry 「GA」並不代表與現有 Application Insights Sdk 的功能同位。 Azure 監視器會繼續為需要功能的客戶（例如[預先匯總的計量](app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)、[即時計量](app/live-stream.md)、調適型[取樣](app/sampling.md#adaptive-sampling)、分析工具和[快照偵錯工具](app/snapshot-debugger.md)）提供最新的 Application Insights [sdk，直到](app/profiler-overview.md)OpenTelemetry sdk 達到功能成熟度為止。
+
+### <a name="can-i-use-preview-builds-in-production-environments"></a>是否可以在生產環境中使用預覽組建？
+
+不建議您這樣做。 如需詳細資訊，請參閱 [Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 。
+
+### <a name="whats-the-difference-between-opentelemetry-sdk-and-auto-instrumentation"></a>OpenTelemetry SDK 和自動檢測有何不同？
+
+OpenTelemetry 規格會定義 [SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#telemetry-sdk)。 簡單來說，「SDK」是一種特定語言的封裝，可收集應用程式各個元件的遙測資料，並透過匯出程式將資料傳送至 Azure 監視器。
+
+自動檢測 (的概念有時稱為位元組程式碼插入、無程式碼或代理程式型) 是指在不變更程式碼的情況下，檢測您應用程式的功能。 例如，如需詳細資訊，請參閱 [OpenTelemetry JAVA 自動檢測讀我檔案](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/master/README.md) 。
+
+### <a name="whats-the-opentelemetry-collector"></a>什麼是 OpenTelemetry 收集器？
+
+OpenTelemetry 收集器會在其 [GitHub 讀我檔案](https://github.com/open-telemetry/opentelemetry-collector#opentelemetry-collector)中說明。 Microsoft 目前不會利用 OpenTelemetry 收集器，而是取決於傳送至 Azure 監視器 Application Insights 的直接匯出工具。
+
+### <a name="whats-the-difference-between-opencensus-and-opentelemetry"></a>OpenCensus 和 OpenTelemetry 之間有何差異？
+
+[OpenCensus](https://opencensus.io/) 是 [OpenTelemetry](https://opentelemetry.io/)的先驅。 Microsoft 協助整合 [OpenTracing](https://opentracing.io/) 和 OpenCensus，以建立 OpenTelemetry，這是世界上的單一可檢視性標準。 Azure 監視器目前的 [生產環境建議 PYTHON SDK](app/opencensus-python.md) 是以 OpenCensus 為基礎，但最終所有 Azure 監視器的 sdk 都會以 OpenTelemetry 為基礎。
+
+
+## <a name="azure-monitor-for-containers"></a>適用於容器的 Azure 監視器
 
 ### <a name="health-feature-is-in-private-preview"></a>健康情況功能目前為個人預覽版
 
@@ -533,7 +579,7 @@ Application Insights 不一定會捕捉「502不正確的閘道」和「503服�
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>「其他處理序」在 [節點] 檢視底下代表什麼？
 
-**其他處理序**旨在協助您清楚了解節點上高資源使用量的根本原因。 這可讓您區分容器化處理序與非容器化處理序之間的使用量。
+**其他** 程式的目的是要協助您清楚瞭解節點上資源使用量很高的根本原因。 這可讓您區分容器化處理序與非容器化處理序之間的使用量。
 
 這些**其他處理序**是什麼？ 
 
@@ -563,7 +609,7 @@ Application Insights 不一定會捕捉「502不正確的閘道」和「503服�
 
 聯結其他資料表，以便在結果中包含這些屬性值。
 
-藉由聯結 ContainerID 屬性，來修改您的查詢，以包含來自 ```ContainerInventory``` 資料表的 Image 和 ImageTag 屬性。 藉由聯結 ContainerID 屬性，您可以包含來自 KubepodInventory 資料表 ContaineName 欄位的 Name 屬性 (因為其先前已出現在 ```ContainerLog``` 資料表中)。這是建議的選項。
+藉由聯結 ContainerID 屬性，來修改您的查詢，以包含來自 ```ContainerInventory``` 資料表的 Image 和 ImageTag 屬性。 您可以從 KubepodInventory 資料表的 ContaineName 欄位中加入 [名稱] 屬性 (，其方式是在 [) 資料表] 的 [ ```ContainerLog``` ] 欄位中加入 ContainerID 屬性。 這是建議選項。
 
 下列範例是範例詳細查詢，說明如何使用聯結來取得這些欄位值。
 
@@ -660,12 +706,12 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 
 如果您在針對 AKS 叢集啟用適用於容器的 Azure 監視器之後，刪除叢集傳送其資料的目標 Log Analytics 工作區，則其在嘗試升級叢集時將會失敗。 若要解決此問題，您將必須停用監視，然後參考您訂用帳戶中不同的有效工作區，以便重新啟用。 當您再次嘗試執行叢集升級時，其應該會處理並順利完成。  
 
-### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>我需要針對代理程式開啟/列入白名單的連接埠和網域為何？
+### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>我需要為代理程式開啟/允許哪些埠和網域？
 
 如需適用於 Azure、Azure 美國政府和 Azure China 21Vianet 雲端的容器化代理程式所需的 Proxy 和防火牆設定資訊，請參閱[網路防火牆需求](insights/container-insights-onboard.md#network-firewall-requirements)。
 
+
 ## <a name="azure-monitor-for-vms"></a>適用於 VM 的 Azure 監視器
-此 Microsoft 常見問題集是適用於 VM 的 Azure 監視器常見問題清單。 若您有任何關於解決方案的其他問題，請前往[討論論壇](https://feedback.azure.com/forums/34192--general-feedback)並張貼您的問題。 當問到常見問題時，我們會將其新增至此文章，以便其他人可以快速輕鬆地找到此問題。
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>我可以將現有的工作區上線嗎？
 如果您的虛擬機器已經連線到 Log Analytics 工作區，您可以在上架至適用於 VM 的 Azure 監視器時，繼續使用該工作區，前提是它是在其中一個 [支援的區域](insights/vminsights-configure-workspace.md#supported-regions)中。

@@ -14,18 +14,18 @@ ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bad5b0256ee445767689ea2752e918a1fbf5fae
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ea8bf2407fb533870495dc501a2d740bff9ee968
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815992"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567345"
 ---
 # <a name="start-using-privileged-identity-management"></a>開始使用 Privileged Identity Management
 
 本文說明如何啟用 Privileged Identity Management (PIM) 並開始使用。
 
-使用 Privileged Identity Management (PIM) 來管理、控制和監視 Azure Active Directory (Azure AD) 組織內的存取權。 有了 PIM，您可以提供 Azure 資源的隨需和即時存取，Azure AD 資源和其他 Microsoft 線上服務，例如 Office 365 或 Microsoft Intune。
+使用 Privileged Identity Management (PIM) 來管理、控制和監視 Azure Active Directory (Azure AD) 組織內的存取權。 使用 PIM，您可以提供 Azure 資源的隨需和即時存取，Azure AD 資源和其他 Microsoft 線上服務，例如 Microsoft 365 或 Microsoft Intune。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -88,7 +88,7 @@ Privileged Identity Management 設定好之後，您就可以瞭解您的做法�
 
     ![儀表板上的 Privileged Identity Management 快速入門磚](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [在 Privileged Identity Management 中指派 Azure AD 角色](pim-how-to-add-role-to-user.md)
 - [在 Privileged Identity Management 中管理 Azure 資源存取](pim-resource-roles-discover-resources.md)
