@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 9873bd8f94c80caccd75033e2a8a4bc2cffcde03
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227027"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400539"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽) 
 
@@ -87,7 +87,7 @@ ms.locfileid: "89227027"
 > [!WARNING]
 > 如果您針對資源（例如儲存體帳戶或 SQL database）使用待用資料加密，但其相依于金鑰保存庫，但該金鑰保存庫 **不** 在要傳輸的相同訂用帳戶中，則可能會導致無法復原的情況。 如果您有這種情況，您應該採取步驟來使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免此無法復原的情況。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成這些步驟，您將需要：
 
@@ -224,7 +224,7 @@ ms.locfileid: "89227027"
 > [!WARNING]
 > 如果您針對資源（例如儲存體帳戶或 SQL database）使用待用資料加密，但其相依于金鑰保存庫，但該金鑰保存庫 **不** 在要傳輸的相同訂用帳戶中，則可能會導致無法復原的情況。 如果您有這種情況，您應該採取步驟來使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免此無法復原的情況。
 
-- 如果您有金鑰保存庫，請使用 [az keyvault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) 來列出存取原則。 如需詳細資訊，請參閱 [使用存取控制原則提供 Key Vault 驗證](../key-vault/key-vault-group-permissions-for-apps.md)。
+- 如果您有金鑰保存庫，請使用 [az keyvault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) 來列出存取原則。 如需詳細資訊，請參閱 [指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-cli.md)。
 
     ```azurecli
     az keyvault show --name MyKeyVault
@@ -318,7 +318,7 @@ ms.locfileid: "89227027"
 
 1. 停用並重新啟用系統指派的受控識別。
 
-    | Azure 服務 | 更多資訊 | 
+    | Azure 服務 | 詳細資訊 | 
     | --- | --- |
     | 虛擬機器 | [使用 Azure CLI 在 Azure VM 上設定 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#system-assigned-managed-identity) |
     | 虛擬機器擴展集 | [使用 Azure CLI 在虛擬機器擴展集上設定 Azure 資源受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
@@ -334,7 +334,7 @@ ms.locfileid: "89227027"
 
 1. 刪除、重新建立及附加使用者指派的受控識別。
 
-    | Azure 服務 | 更多資訊 | 
+    | Azure 服務 | 詳細資訊 | 
     | --- | --- |
     | 虛擬機器 | [使用 Azure CLI 在 Azure VM 上設定 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) |
     | 虛擬機器擴展集 | [使用 Azure CLI 在虛擬機器擴展集上設定 Azure 資源受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
@@ -382,7 +382,7 @@ ms.locfileid: "89227027"
 
 1. 若為使用憑證的資源，請更新憑證。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [在訂閱者與 CSP 之間轉移 Azure 訂用帳戶](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)

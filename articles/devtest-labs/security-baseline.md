@@ -3,12 +3,12 @@ title: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 description: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: dc53eacf456d1e7c1926c6d7f20e343b3a84340d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078039"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398317"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>適用于 Azure DevTest Labs 的 Azure 安全性基準
 
@@ -693,7 +693,8 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 - [設定受控識別，以在 DevTest Labs 中部署 Azure Resource Manager 環境](use-managed-identities-environments.md)
 - [設定受控識別在 DevTest Labs 中部署虛擬機器](enable-managed-identities-lab-vms.md)
 - [如何建立金鑰保存庫](../key-vault/quick-create-portal.md)
-- [如何使用受控識別來提供 Key Vault authentication](../key-vault/managed-identity.md)
+- [如何驗證 Key Vault](../key-vault/general/authentication.md)
+- [如何指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 資訊安全中心監視：** 是的
 
@@ -885,7 +886,7 @@ Azure 資訊安全中心監視： * * * * 不適用
 
 **責任：** 共用
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 請參閱下列文章：
 
 - [Azure DevTest Labs 環境的安全性警示](environment-security-alerts.md)

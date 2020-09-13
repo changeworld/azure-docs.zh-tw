@@ -4,20 +4,20 @@ description: 此文章說明如何設定流量管理員，以最低的延遲將�
 services: traffic-manager
 manager: twooley
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: rohink
-ms.openlocfilehash: 5299c72d96fd7453d7df352ca842b4ede35f41fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 46d71a38b79f449084f7353527f2dfb05d5b92a4
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707662"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401022"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>設定效能流量路由方法
 
@@ -25,7 +25,7 @@ ms.locfileid: "84707662"
 
 ##  <a name="to-configure-performance-routing-method"></a>設定效能路由方法
 
-1. 從瀏覽器登入 [Azure 入口網站](https://portal.azure.com)。 如果您還沒有帳戶，您可以註冊一個[月免費試用](https://azure.microsoft.com/free/)。 
+1. 從瀏覽器登入 [Azure 入口網站](https://portal.azure.com)。 如果您還沒有帳戶，您可以註冊 [免費試用一個月](https://azure.microsoft.com/free/)。 
 2. 在入口網站的搜尋列中，搜尋「流量管理員設定檔」****，然後按一下您想要設定路由方法的設定檔名稱。
 3. 在 [流量管理員設定檔]**** 刀鋒視窗中，確認您想要納入組態的雲端服務和網站皆存在。
 4. 在 [設定]**** 區段中，按一下 [組態]****，並在 [組態]**** 刀鋒視窗中，完成下列設定：
@@ -42,7 +42,7 @@ ms.locfileid: "84707662"
 
 ![使用流量管理員設定效能流量路由方法][1]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入了解[加權流量路由方法](traffic-manager-configure-weighted-routing-method.md)。
 - 深入了解[優先順序路由方法](traffic-manager-configure-priority-routing-method.md)。

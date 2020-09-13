@@ -1,22 +1,22 @@
 ---
 title: 使用 PowerShell 來管理 Azure 中的流量管理員
-description: 透過此學習路徑，開始使用流量管理員的 Azure PowerShell。
+description: 透過此學習路徑，開始使用適用于流量管理員的 Azure PowerShell。
 services: traffic-manager
 documentationcenter: na
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: rohink
-ms.openlocfilehash: e9d995a69a4fc54d6f001ced7503a9138d737dbc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 21076fe23301c189d9987f78706cc81691ce7a4f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089034"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400529"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理員
 
@@ -125,7 +125,7 @@ Azure 端點會參考 Azure 中託管的服務。 支援兩種 Azure 端點：
 * 您可以選擇是否指定 'Weight'。 只有在設定檔已設定為使用「加權」流量路由方法時，才會使用加權， 否則會予以忽略。 如果指定，則值必須是 1 到 1000 之間的數字。 預設值為 '1'。
 * 您可以選擇是否指定 'Priority'。 只有在設定檔已設定為使用「優先順序」流量路由方法時，才會使用優先順序， 否則會予以忽略。 有效值從 1 到 1000，值越小代表優先順序越高。 如果對某個端點指定值，則所有端點也都必須進行指定。 如果省略，則會依端點列出順序，從 '1' 開始套用預設值。
 
-### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>範例1：使用新增 App Service 端點`Add-AzTrafficManagerEndpointConfig`
+### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>範例1：使用新增 App Service 端點 `Add-AzTrafficManagerEndpointConfig`
 
 在此範例中，我們使用 `Add-AzTrafficManagerEndpointConfig` Cmdlet 建立流量管理員設定檔，並新增兩個 App Service 端點。
 
@@ -210,7 +210,7 @@ New-AzTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceG
 
 ## <a name="adding-endpoints-from-another-subscription"></a>從另一個訂用帳戶新增端點
 
-流量管理員可以處理不同訂用帳戶的端點。 利用您想要新增的端點來切換至訂用帳戶，以擷取流量管理員所需的輸入。 接著，您必須切換至具有流量管理員設定檔的訂用帳戶，並將端點新增至其中。 下列範例會示範如何透過一個公用 IP 位址來完成此操作。
+流量管理員可以處理不同訂用帳戶的端點。 利用您想要新增的端點來切換至訂用帳戶，以擷取流量管理員所需的輸入。 然後，您需要使用流量管理員設定檔切換至訂用帳戶，並將端點新增至其中。 下列範例會示範如何透過一個公用 IP 位址來完成此操作。
 
 ```powershell
 Set-AzContext -SubscriptionId $EndpointSubscription
@@ -321,7 +321,7 @@ Remove-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile [-Force]
 Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzTrafficManagerProfile [-Force]
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [流量管理員監視](traffic-manager-monitoring.md)
 

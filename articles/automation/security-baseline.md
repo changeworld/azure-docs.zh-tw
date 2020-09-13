@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: abc8ee3b79b43676ce114094af5614b1a2d945bf
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a57473a26d5fe809274f14c8767356914e0d4962
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230988"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400512"
 ---
 # <a name="azure-security-baseline-for-automation"></a>自動化的 Azure 安全性基準
 
@@ -1042,7 +1042,9 @@ ms.locfileid: "89230988"
 
 * [如何建立 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-* [如何使用受控識別來提供 Key Vault authentication](../key-vault/general/managed-identity.md)
+* [如何驗證 Key Vault](../key-vault/general/authentication.md)
+
+* [如何指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 

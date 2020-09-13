@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure AD App Proxy 發佈遠端桌面 | Microsoft Docs
-description: 涵蓋 Azure AD 應用程式 Proxy 連接器的基本概念。
+description: 涵蓋如何使用 RDS 設定應用程式 Proxy
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cba74c773e1f141db14e06cf0cda8b31d06ba4f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019517"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396755"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 發佈遠端桌面
 
@@ -29,7 +29,7 @@ ms.locfileid: "87019517"
 
 本文的目標對象是︰
 - 目前的應用程式 Proxy 客戶，想要透過遠端桌面服務發佈內部部署應用程式，以提供更多使用者應用程式。
-- 目前的遠端桌面服務客戶，想要使用 Azure AD 應用程式 Proxy 來減少其部署的 Attack Surface。 此案例提供一組對 RDS 的雙步驟驗證和條件式存取控制。
+- 目前的遠端桌面服務客戶，想要使用 Azure AD 應用程式 Proxy 來減少其部署的 Attack Surface。 此案例會為 RDS 提供一組雙步驟驗證和條件式存取控制。
 
 ## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>應用程式 Proxy 如何放入標準 RDS 部署中
 
@@ -50,15 +50,15 @@ ms.locfileid: "87019517"
 
 - 您應該已經[部署 RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) 並[啟用應用程式 Proxy](application-proxy-add-on-premises-application.md)。
 
-- 您的終端使用者必須使用相容的瀏覽器來連線到 RD Web 或 RD Web 用戶端。 如需詳細資訊，請參閱[支援用戶端](#support-for-other-client-configurations)設定。
+- 您的終端使用者必須使用相容的瀏覽器來連線到 RD Web 或 RD Web 用戶端。 如需詳細資料，請參閱 [支援用戶端](#support-for-other-client-configurations)設定。
 
 - 發行 RD Web 時，建議您使用相同的內部和外部 FQDN。 如果內部和外部 FQDN 不同，則應停用要求標頭轉譯，以避免用戶端接收無效的連結。
 
-- 如果您在 Internet Explorer 上使用 RD Web，就必須啟用 RDS ActiveX 附加元件。
+- 如果您在 Internet Explorer 上使用 RD Web，則必須啟用 RDS ActiveX 附加元件。
 
-- 如果您使用 RD Web 用戶端，您將需要使用應用程式 Proxy[連接器版本1.5.1975 或更新版本](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-release-version-history)。
+- 如果您使用 RD Web 用戶端，您將需要使用「應用程式 Proxy [連接器」版本1.5.1975 或更新版本](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-release-version-history)。
 
-- 針對 Azure AD 預先驗證流程，使用者只能連線到 [ **RemoteApp 和桌面**] 窗格中發佈的資源。 使用者無法使用 [**連接到遠端電腦**] 窗格連線到桌上型電腦。
+- 針對 Azure AD 預先驗證流程，使用者只能連線到 [ **RemoteApp 和桌面** ] 窗格中發佈的資源。 使用者無法使用 [ **連接到遠端電腦** ] 窗格連線到桌面。
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>部署聯合 RDS 和應用程式 Proxy 案例
 
@@ -75,18 +75,18 @@ ms.locfileid: "87019517"
 3. 保留應用程式的單一登入方法，因為 **Azure AD 單一登入已停用**。
 
    >[!Note]
-   >系統會要求您的使用者進行一次驗證，Azure AD 一次到 RD Web，但他們有 RD 閘道的單一登入。
+   >系統會要求您的使用者一次驗證一次，Azure AD 到 RD 網路，但他們對 RD 閘道的單一登入。
 
-4. 依序選取 [ **Azure Active Directory**] 和 [**應用程式註冊**]。 從清單中選擇您的應用程式。
-5. 在 [**管理**] 底下，選取 [**商標**]。
-6. 更新 [**首頁 URL** ] 欄位，以指向您的 RD Web 端點（例如 `https://\<rdhost\>.com/RDWeb` ）。
+4. 選取 [ **Azure Active Directory**]，然後選取 [ **應用程式註冊**]。 從清單中選擇您的應用程式。
+5. 在 [ **管理**] 底下，選取 [ **品牌**]。
+6. 更新 [ **首頁 URL** ] 欄位，以指向 RD Web 端點 (例如 `https://\<rdhost\>.com/RDWeb`) 。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>將 RDS 資料流導向應用程式 Proxy
 
 以系統管理員身分連線至 RDS 部署，並變更部署的 RD 閘道伺服器名稱。 此組態可確保連線經過 Azure AD 應用程式 Proxy 服務。
 
 1. 連線到執行 RD 連線代理人角色的 RDS 伺服器。
-2. 啟動**伺服器管理員**。
+2. 啟動 **伺服器管理員**。
 3. 選取左窗格中的 [遠端桌面服務]****。
 4. 選取 [概觀]。
 5. 在 [部署概觀] 區段中，選取下拉式選單，然後選擇 [編輯部署內容]****。
@@ -95,7 +95,7 @@ ms.locfileid: "87019517"
 
    ![在 RDS 上部署內容畫面](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
-8. 對於每個集合執行此命令。 *\<yourcollectionname\>* 將和取代 *\<proxyfrontendurl\>* 為您自己的資訊。 此命令會啟用 RD Web 和 RD 閘道之間的單一登入，並將效能最佳化︰
+8. 對於每個集合執行此命令。 *\<yourcollectionname\>* *\<proxyfrontendurl\>* 以您自己的資訊取代和。 此命令會啟用 RD Web 和 RD 閘道之間的單一登入，並將效能最佳化︰
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
@@ -116,9 +116,9 @@ ms.locfileid: "87019517"
 現在您已設定遠端桌面，Azure AD 應用程式 Proxy 已接管作為 RDS 的網際網路對應元件。 您可以將 RD Web 和 RD 閘道機器上的其他公用網際網路對應端點移除。
 
 ### <a name="enable-the-rd-web-client"></a>啟用 RD Web 用戶端
-如果您也想要讓使用者能夠使用 RD Web 用戶端，請依照[設定遠端桌面 web 用戶端中的](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin)步驟來啟用此程式。
+如果您也想要讓使用者能夠使用 RD Web 用戶端，請遵循 [設定遠端桌面 web 用戶端的](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin) 步驟，讓您的使用者啟用此操作。
 
-遠端桌面 web 用戶端可讓使用者透過與 HTML5 相容的網頁瀏覽器（例如 Microsoft Edge、Internet Explorer 11、Google Chrome、Safari 或 Mozilla Firefox）存取貴組織的遠端桌面基礎結構（v 55.0 和更新版本）。
+遠端桌面 web 用戶端可讓使用者透過與 HTML5 相容的網頁瀏覽器（例如 Microsoft Edge、Internet Explorer 11、Google Chrome、Safari 或 Mozilla Firefox (v 55.0 和更新版本的) ）來存取您組織的遠端桌面基礎結構。
 
 ## <a name="test-the-scenario"></a>測試案例
 
@@ -131,12 +131,12 @@ ms.locfileid: "87019517"
 
 ## <a name="support-for-other-client-configurations"></a>其他用戶端設定的支援
 
-本文中所述的設定適用于透過 RD Web 或 RD Web 用戶端存取 RDS。 不過，如果需要，您可以支援其他作業系統或瀏覽器。 差異在於您所使用的驗證方法。
+本文所述的設定適用于透過 RD Web 或 RD Web 用戶端存取 RDS。 不過，如果需要，您可以支援其他作業系統或瀏覽器。 差異在於您所使用的驗證方法。
 
 | 驗證方法 | 支援的用戶端設定 |
 | --------------------- | ------------------------------ |
-| 預先驗證    | RD Web-Windows 7/10 （使用 Internet Explorer + RDS ActiveX 附加元件） |
-| 預先驗證    | RD Web 用戶端-HTML5 相容的網頁瀏覽器，例如 Microsoft Edge、Internet Explorer 11、Google Chrome、Safari 或 Mozilla Firefox （v 55.0 和更新版本） |
+| 預先驗證    | RD Web-使用 Internet Explorer 或 [Edge CHROMIUM IE 模式](https://docs.microsoft.com/deployedge/edge-ie-mode) + RDS ActiveX 附加元件的 Windows 7/10 |
+| 預先驗證    | RD Web 用戶端-與 HTML5 相容的網頁瀏覽器，例如 Microsoft Edge、Internet Explorer 11、Google Chrome、Safari 或 Mozilla Firefox (v 55.0 和更新版本)  |
 | 通道 | 支援 Microsoft 遠端桌面應用程式的任何其他作業系統 |
 
 預先驗證流程的安全性優點多於通道流程。 使用預先驗證，您可以使用 Azure AD 的驗證功能，例如單一登入、條件式存取，以及內部部署資源的雙步驟驗證。 您也可以確定只有驗證過的流量到達您的網路。
@@ -148,4 +148,4 @@ ms.locfileid: "87019517"
 ## <a name="next-steps"></a>接下來的步驟
 
 [使用 Azure AD 應用程式 Proxy 啟用 SharePoint 的遠端存取](application-proxy-integrate-with-sharepoint-server.md) 
-[使用 Azure AD 應用程式 Proxy 從遠端存取應用程式的安全性考慮](application-proxy-security.md)
+[使用 Azure AD 應用程式 Proxy 遠端存取應用程式的安全性考慮](application-proxy-security.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b027e44a2ee31b0168ec3b6af717df23dd560abd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: d55e53ba455a4b91b4f57ea08b250320a5467c2b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89225582"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398439"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>虛擬機器擴展集的 Azure 安全性基準
 
@@ -976,7 +976,9 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [如何建立 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [如何使用受控識別來提供 Key Vault authentication](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [如何驗證 Key Vault](../key-vault/general/authentication.md)
+
+* [如何指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 

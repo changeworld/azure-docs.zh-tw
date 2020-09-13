@@ -1,24 +1,24 @@
 ---
 title: 關於在 Azure 可用性區域中的區域備援虛擬網路閘道
-description: 在 Azure 可用性區域中部署 VPN 和 ExpressRoute 閘道，以將復原、擴充性和更高的可用性帶入虛擬網路閘道。
+description: 在 Azure 可用性區域中部署 VPN 和 ExpressRoute 閘道，以提供虛擬網路閘道的復原、擴充性及更高的可用性。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3aed75c26880ae2c3e31b412496655e5225b2edc
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2030469262baf406635fd170af384e154fec6ae6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035445"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401107"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>關於在 Azure 可用性區域中的區域備援虛擬網路閘道
 
-您可以在[Azure 可用性區域](../availability-zones/az-overview.md)中部署 VPN 和 ExpressRoute 閘道。 此方式可為虛擬網路閘道帶來復原力、延展性和更高的可用性。 在 Azure 可用性區域中部署閘道可從根本上和邏輯上分隔區域內的閘道，同時還能在發生區域層級的失敗時，保護您內部部署項目與 Azure 的網路連線。
+您可以在 [Azure 可用性區域](../availability-zones/az-overview.md)中部署 VPN 和 ExpressRoute 閘道。 此方式可為虛擬網路閘道帶來復原力、延展性和更高的可用性。 在 Azure 可用性區域中部署閘道可從根本上和邏輯上分隔區域內的閘道，同時還能在發生區域層級的失敗時，保護您內部部署項目與 Azure 的網路連線。
 
 ### <a name="zone-redundant-gateways"></a><a name="zrgw"></a>區域備援閘道
 
@@ -42,7 +42,7 @@ ms.locfileid: "88035445"
 
 區域備援和分區閘道是作為新的閘道 SKU 供使用。 在 Azure AZ 區域中，我們已新增新的虛擬網路閘道 SKU。 這些 SKU 與 ExpressRoute 和 VPN 閘道的對應現有 SKU 類似，不同之處在於這些 SKU 專用於區域備援和分區閘道。 您可以使用 SKU 名稱中的 "AZ" 來識別這些 Sku。
 
-如需閘道 Sku 的詳細資訊，請參閱[VPN 閘道 sku](vpn-gateway-about-vpngateways.md#gwsku)和[ExpressRoute 閘道 sku](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku)。
+如需閘道 Sku 的相關資訊，請參閱 [VPN 閘道 sku](vpn-gateway-about-vpngateways.md#gwsku) 和 [ExpressRoute 閘道 sku](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku)。
 
 ## <a name="public-ip-skus"></a><a name="pipskus"></a>公用 IP SKU
 
@@ -75,7 +75,7 @@ ms.locfileid: "88035445"
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>我可以在哪些區域中使用新的 SKU？
 
-新的 Sku 可在 Azure 可用性區域具有「美國中部」、「法國中部」、「北歐」、「西歐」和美國西部2區域、美國東部、美國東部2、東南亞、日本東部、英國南部的 Azure 區域中使用。 接下來，我們會在其他 Azure 公用區域中推出區域備援閘道。
+新的 Sku 可在具有 Azure 可用性區域中央、法國中部、北歐、西歐和美國西部2區域、美國東部、美國東部2、東南亞、日本東部、英國南部的 Azure 區域中使用。 接下來，我們會在其他 Azure 公用區域中推出區域備援閘道。
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>我可以將現有的虛擬網路閘道變更/遷移/升級為區域備援或分區閘道嗎？
 
@@ -85,6 +85,6 @@ ms.locfileid: "88035445"
 
 支援 VPN 和 Express Route 閘道共存於相同的虛擬網路中。 不過，您應該保留閘道子網路的 /27 IP 位址範圍。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [建立區域備援虛擬網路閘道](create-zone-redundant-vnet-gateway.md)

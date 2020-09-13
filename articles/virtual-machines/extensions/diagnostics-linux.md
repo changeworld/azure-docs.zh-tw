@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 6bf82e85bfe36466010ce1cc8914bbd1221fe51a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7a0b2afa8b566ec82fc638291c43f3e0419f654c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267848"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400682"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 診斷擴充功能監視計量與記錄
 
@@ -70,7 +70,7 @@ Linux 診斷擴充功能支援下列散發套件和版本。 散發套件和版�
 * **Azure Linux Agent 2.2.0 版或更新版本**。 大部分的 Azure VM Linux 資源庫映像包含版本 2.2.7 或更新版本。 執行 `/usr/sbin/waagent -version` 以確認安裝在 VM 上的版本。 如果 VM 執行的是舊版客體代理程式，請依照[這些指示](./update-linux-agent.md)更新。
 * **Azure CLI**。 在您的電腦上[設定 Azure CLI](/cli/azure/install-azure-cli) 環境。
 * Wget 命令，如果您沒有：執行 `sudo apt-get install wget`。
-* 現有的 Azure 訂用帳戶與其中現有的儲存體帳戶以儲存資料。
+* 現有的 Azure 訂用帳戶和現有的一般用途儲存體帳戶，用來儲存資料。  一般目的儲存體帳戶支援需要的資料表儲存體。  Blob 儲存體帳戶將無法運作。
 
 ### <a name="sample-installation"></a>範例安裝
 

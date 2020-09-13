@@ -1,28 +1,29 @@
 ---
-title: 使用語音服務的語音翻譯
+title: 語音翻譯總覽-語音服務
 titleSuffix: Azure Cognitive Services
-description: 語音服務可讓您將端對端、即時、多語言的語音翻譯新增至您的應用程式、工具和裝置。 相同的 API 可以用於語音轉換語音和語音轉換文字翻譯。
+description: 語音翻譯可讓您將端對端、即時、多語言的語音翻譯新增至您的應用程式、工具和裝置。 相同的 API 可以用於語音轉換語音和語音轉換文字翻譯。 本文概述語音翻譯服務的優點和功能。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/01/2020
 ms.author: erhopf
-ms.custom: devx-track-csharp
-ms.openlocfilehash: cef6ff109607455881970aeb95eaf0859f6f4f05
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
+keywords: 語音翻譯
+ms.openlocfilehash: 67bb418926932ebb7e443e77c65dd12c7352049d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055527"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401209"
 ---
 # <a name="what-is-speech-translation"></a>什麼是語音翻譯？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-語音服務的語音翻譯可讓您即時、多語言的語音轉換語音及語音轉換文字轉譯音訊串流。 使用語音 SDK 時，您的應用程式、工具和裝置可存取所提供音訊的來源轉譯和轉譯輸出。 當偵測到語音時，會傳回過渡轉譯和轉譯結果，而且總決賽結果可以轉換為合成語音。
+在此總覽中，您將瞭解語音翻譯服務的優點與功能，這項功能可讓您即時、多語言的語音轉換語音及語音轉換文字轉譯音訊串流。 使用語音 SDK 時，您的應用程式、工具和裝置可存取所提供音訊的來源轉譯和轉譯輸出。 當偵測到語音時，會傳回過渡轉譯和轉譯結果，而最終結果可以轉換為合成語音。
 
 Microsoft 的翻譯引擎支援兩種不同的方法：統計機器翻譯 (SMT) 和類神經機器翻譯 (NMT) 。 SMT 使用先進的統計分析，根據幾個字的內容來估計最可能的翻譯。 使用 NMT 時，會使用類神經網路來提供更精確且自然發音的翻譯，方法是使用句子的完整內容來轉譯單字。
 

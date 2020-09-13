@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure VPN 閘道 VNet 對 VNet 連線將 VNet 連線到另一個 VNet： PowerShell
+title: 使用 Azure VPN 閘道的 VNet 對 VNet 連線將 VNet 連線到另一個 VNet： PowerShell
 description: 使用 VNet 對 VNet 連線和 PowerShell，將虛擬網路連在一起。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/15/2019
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 318656a779aa5ba2279f075fcc44589fe2039682
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1b1cd0adb8581c7aa94f0de85a9f8beab38da112
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009487"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398557"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 設定 VNet 對 VNet 的 VPN 閘道連線
 
@@ -166,7 +166,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG1 -Location $Location1
    ```
-4. 建立 TestVNet1 的子網路設定。 此範例會建立一個名為 TestVNet1 的虛擬網路和三個子網路：一個名為 GatewaySubnet、一個名為 FrontEnd，另一個名為 Backend。 替代值時，務必一律將您的閘道子網路特定命名為 GatewaySubnet。 如果您將其命名為其他名稱，閘道建立會失敗。 基於這個理由，它不會透過下列變數來指派。
+4. 建立 TestVNet1 的子網路設定。 此範例會建立一個名為 TestVNet1 的虛擬網路和三個子網路：一個名為 GatewaySubnet、一個名為 FrontEnd，另一個名為 Backend。 替代值時，務必一律將您的閘道子網路特定命名為 GatewaySubnet。 如果您將其命名為其他名稱，閘道建立會失敗。 因此，它不會透過下列變數來指派。
 
    下列範例會使用您先前設定的變數。 在此範例中，閘道子網路使用 /27。 雖然您可以建立小至 /29 的閘道子網路，我們建議您選取至少 /28 或 /27，建立包含更多位址的較大子網路。 這將允許足夠的位址，以容納您未來可能需要的其他組態。
 

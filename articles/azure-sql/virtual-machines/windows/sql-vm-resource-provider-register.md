@@ -14,12 +14,12 @@ ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 3f1a9a2756d81765d82938651672e5a83edc48ed
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 11e8a2fd709b40c68b90e5ed139f18997e4cb29e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078677"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396959"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>在 Azure 中使用 SQL VM 資源提供者 (RP 註冊 SQL Server VM) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -353,7 +353,7 @@ az sql vm delete
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-若要使用 Azure CLI 從資源提供者取消註冊 SQL Server VM，請使用 [AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm)命令。 這會移除 SQL Server VM *資源* ，但不會刪除虛擬機器。 
+若要使用 PowerShell 從資源提供者取消註冊 SQL Server VM，請使用 [AzSqlVM](/powershell/module/az.sqlvirtualmachine/remove-azsqlvm)命令。 這會移除 SQL Server VM *資源* ，但不會刪除虛擬機器。 
 
 ```powershell-interactive
 Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>

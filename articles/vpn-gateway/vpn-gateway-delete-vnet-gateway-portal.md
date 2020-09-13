@@ -4,22 +4,22 @@ description: 在 Resource Manager 部署模型中使用 Azure 入口網站刪除
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.date: 10/23/2018
+ms.date: 09/02/2020
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: 68856a4c5218232943ac657bbd67759d5ab4b804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a7eb87f57676b469203e45e48b6f863cdf894c0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983150"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400648"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>使用入口網站刪除虛擬網路閘道
 
 > [!div class="op_single_selector"]
 > * [Azure 入口網站](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-> * [PowerShell （傳統）](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+> * [PowerShell (傳統)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 
 本文會提供您方法來刪除使用 Resource Manager 部署模型部署的 Azure VPN 閘道。 如果您想要刪除 VPN 閘道組態的虛擬網路閘道，您可以採取幾種不同的方法。
 
