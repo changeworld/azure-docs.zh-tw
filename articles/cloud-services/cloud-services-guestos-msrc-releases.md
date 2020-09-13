@@ -12,19 +12,74 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 8/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: 5e5bcef36bb283b8b3f2b67578e0f3118302d936
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: bb2b9da291bf75542c942d785d995018b597f742
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510159"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024293"
 ---
 # <a name="azure-guest-os"></a>Azure 客體作業系統
 下表為適用於 Azure 客體作業系統的 Microsoft Security Response Center (MSRC) 更新。 請搜尋本文章以判斷特定更新是否適用於您使用的客體作業系統。 已引進更新的特定[系列][family-explain]會持續推出更新。
 
-## <a name="august-2020-guest-os"></a>2020年8月的來賓 OS
+## <a name="september-2020-guest-os"></a>2020年9月的來賓 OS
 >[!NOTE]
->8月的虛擬作業系統目前正推出至設定自動更新的雲端服務 Vm。 推展完成時，我們會透過 Azure 入口網站和組態檔來提供此版本，以便您可以手動更新。 下列修補套裝程式含在8月的虛擬作業系統中。 此清單會隨時變動。
+>在9月的虛擬作業系統中，目前正在推出針對自動更新設定的雲端服務 Vm。 推展完成時，我們會透過 Azure 入口網站和組態檔來提供此版本，以便您可以手動更新。 下列修補套裝程式含于9月的虛擬作業系統中。 此清單會隨時變動。
+
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-09 |  [4577010]  |  Internet Explorer | 2.102、3.89、4.82 | 2020年9月8日 |
+|  Rel 20-09 |  [4561600]  |  Flash 更新 | 3.89、4.82、5.47、6.23 | 2020年9月8日 |
+|  Rel 20-09 |  [4577015]  |  最新累計更新 (LCU) | 5.47 | 2020年9月8日 |
+|  Rel 20-09 |  [4570333]  |  最新累計更新 (LCU) | 6.23 | 2020年9月8日 |
+|  Rel 20-09 |  [4570673]  |  服務堆疊更新 | 2.102 | 2020年9月8日 |
+|  Rel 20-09 |  [4577051]  |  每月彙總 | 2.102 | 2020年9月8日 |
+|  Rel 20-09 |  [4569767]  |  .NET Framework 3.5 安全性和品質匯總套件 | 2.102 | 2020年9月8日 |
+|  Rel 20-09 |  [4569780]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | 2.102 | 2020年9月8日 |
+|  Rel 20-09 |  [4566426]  |  服務堆疊更新 | 3.89 | 2020年9月8日 |
+|  Rel 20-09 |  [4577038]  |  每月彙總 | 3.89 | 2020年9月8日 |
+|  Rel 20-09 |  [4569765]  |  .NET Framework 3.5 安全性和品質匯總套件 | 3.89 | 2020年9月8日 |
+|  Rel 20-09 |  [4569779]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | 3.89 | 2020年9月8日 |
+|  Rel 20-09 |  [4566425]  |  服務堆疊更新 | 2.102 | 2020年9月8日 |
+|  Rel 20-09 |  [4577066]  |  每月彙總 | 2.102 | 2020年9月8日 |
+|  Rel 20-09 |  [4569768]  |  .NET Framework 3.5 安全性和品質匯總套件 | 2.102 | 2020年9月8日 |
+|  Rel 20-09 |  [4569778]  |  NET Framework 4.5.2 安全性和品質匯總套件 | 2.102 | 2020年9月8日 |
+|  Rel 20-09 |  [4578013]  |  安全性更新 | 2.102 | 2020年9月8日 |
+|  Rel 20-09 |  [4576750]  |  服務堆疊更新 | 5.47 | 2020年9月8日 |
+|  Rel 20-09 |  [4576479]  |  NET Framework 4.8 安全性和品質匯總套件 | 5.47 | 2020年9月8日 |
+|  Rel 20-09 |  [4494175]  |  微碼 | 5.47 | 2020年9月8日 |
+|  Rel 20-09 |  [4570332]  |  服務堆疊更新 | 6.23 | 2020年9月8日 |
+|  Rel 20-09 |  [4570720]  |  .NET Framework 3.5 和4.7.2 累計更新 | 6.23 | 2020年9月8日 |
+|  Rel 20-09 |  [4576483]  |  .NET Framework 4.8 安全性和品質匯總套件 | 6.23 | 2020年9月8日 |
+|  Rel 20-09 |  [4494174]  |  微碼 | 6.23 | 2020年9月8日 |
+
+[4577010]: https://support.microsoft.com/kb/4577010
+[4561600]: https://support.microsoft.com/kb/4561600
+[4577015]: https://support.microsoft.com/kb/4577015
+[4570333]: https://support.microsoft.com/kb/4570333
+[4570673]: https://support.microsoft.com/kb/4570673
+[4577051]: https://support.microsoft.com/kb/4577051
+[4569767]: https://support.microsoft.com/kb/4569767
+[4569780]: https://support.microsoft.com/kb/4569780
+[4566426]: https://support.microsoft.com/kb/4566426
+[4577038]: https://support.microsoft.com/kb/4577038
+[4569765]: https://support.microsoft.com/kb/4569765
+[4569779]: https://support.microsoft.com/kb/4569779
+[4566425]: https://support.microsoft.com/kb/4566425
+[4577066]: https://support.microsoft.com/kb/4577066
+[4569768]: https://support.microsoft.com/kb/4569768
+[4569778]: https://support.microsoft.com/kb/4569778
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4576479]: https://support.microsoft.com/kb/4576479
+[4494175]: https://support.microsoft.com/kb/4494175
+[4570332]: https://support.microsoft.com/kb/4570332
+[4570720]: https://support.microsoft.com/kb/4570720
+[4576483]: https://support.microsoft.com/kb/4576483
+[4494174]: https://support.microsoft.com/kb/4494174
+
+## <a name="august-2020-guest-os"></a>2020年8月的來賓 OS
 
 
 | 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
@@ -145,7 +200,7 @@ ms.locfileid: "88510159"
 |  Rel 20-06  |  [4561643]  |  每月彙總  |  [2.99]  |  2020年6月9日  |
 |  Rel 20-06  |  [4562252]  |  服務堆疊更新  |  [3.86]  |  2020年6月9日  |
 |  Rel 20-06  |  [4561612]  |  每月彙總  |  [3.86]  |  2020年6月9日  |
-|  Rel 20-06  |  [4561600]  |  閃爍  |  [3.86]、 [4.79]、 [5.44]、 [6.20]  |  2020年6月9日  |
+|  Rel 20-06  |  [4561600]  |  閃光燈  |  [3.86]、 [4.79]、 [5.44]、 [6.20]  |  2020年6月9日  |
 |  Rel 20-06  |  [4562253]  |  服務堆疊更新  |  [4.79]  |  2020年6月9日  |
 |  Rel 20-06  |  [4561666]  |  每月彙總  |  [4.79]  |  2020年6月9日  |
 |  Rel 20-06  |  [4562561]  |  服務堆疊更新  |  [5.44]  |  2020年6月9日  |

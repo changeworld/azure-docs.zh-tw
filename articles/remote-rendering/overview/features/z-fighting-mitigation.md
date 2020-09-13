@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbe3af30963791891f0ceee4e18c34e078c0ac7a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0e217676f5e1f4dcba24917cb140d9d4d8fcc422
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013175"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024361"
 ---
 # <a name="z-fighting-mitigation"></a>Z-fighting 緩和措施
 
@@ -21,9 +21,9 @@ ms.locfileid: "89013175"
 
 |情況                        | 結果                               |
 |---------------------------------|:-------------------------------------|
-|一般 Z-fighting               |![Z-fighting](./media/zfighting-0.png)|
-|啟用 Z-fighting 緩和措施    |![Z-fighting](./media/zfighting-1.png)|
-|啟用棋盤式反白顯示|![Z-fighting](./media/zfighting-2.png)|
+|一般 Z-fighting               |![Red 和綠四邊形之間沒有決定性的優先順序](./media/zfighting-0.png)|
+|啟用 Z-fighting 緩和措施    |![紅色四個優先](./media/zfighting-1.png)|
+|啟用棋盤式反白顯示|![棋盤模式的紅色和綠色四切換喜好設定](./media/zfighting-2.png)|
 
 下列程式碼可啟用 Z-fighting 緩和措施：
 
@@ -53,7 +53,6 @@ void EnableZFightingMitigation(ApiHandle<AzureSession> session, bool highlight)
 }
 ```
 
-
 > [!NOTE]
 > Z-fighting 緩和措施是一種全域設定，會影響所有轉譯的網格。
 
@@ -76,6 +75,11 @@ Z-fighting 主要有兩種發生原因：
 
 * 啟用 Z-fighting 幾乎不會產生任何額外的效能負擔。
 * 額外啟用 Z-fighting 重疊確實會對效能產生不小的額外負擔，不過會因場景而異。
+
+## <a name="api-documentation"></a>API 文件
+
+* [C # RemoteManager. ZFightingMitigationSettings 屬性](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.zfightingmitigationsettings)
+* [C + + RemoteManager：： ZFightingMitigationSettings ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#zfightingmitigationsettings)
 
 ## <a name="next-steps"></a>後續步驟
 

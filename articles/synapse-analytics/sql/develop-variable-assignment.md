@@ -1,35 +1,35 @@
 ---
 title: 使用 Synapse SQL 指派變數
-description: 在本文中，您會找到使用 Synapse SQL 指派 T-sql 變數的秘訣。
+description: 在本文中，您將找到使用 Synapse SQL 指派 T-sql 變數的秘訣。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c3bd04d037f7852bd7d9ea51719abf27f09093b0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: abc0a9f6fa6baefc7cc4b29c84ff179f0851dc30
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495670"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90028911"
 ---
 # <a name="assign-variables-with-synapse-sql"></a>使用 Synapse SQL 指派變數
 
-在本文中，您會找到使用 Synapse SQL 指派 T-sql 變數的秘訣。
+在本文中，您將找到使用 Synapse SQL 指派 T-sql 變數的秘訣。
 
 ## <a name="set-variables-with-declare"></a>使用 DECLARE 設定變數
 
-Synapse SQL 中的變數是使用 `DECLARE` 語句或語句來設定 `SET` 。 使用 DECLARE 初始化變數是在 Synapse SQL 中設定變數值的其中一個最具彈性的方式。
+Synapse SQL 中的變數是使用 `DECLARE` 語句或語句來設定 `SET` 。 使用 DECLARE 初始化變數是在 Synapse SQL 中設定變數值最具彈性的方式之一。
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-您也可以使用 DECLARE，一次設定一個以上的變數。 您無法使用 [選取] 或 [更新] 來執行下列動作：
+您也可以使用 DECLARE，一次設定一個以上的變數。 您無法使用 [選取或更新] 執行下列動作：
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -37,7 +37,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-您無法在相同的 DECLARE 語句中初始化和使用變數。 為了說明，不允許使用下列範例，因為* \@ p1*同時在相同的 DECLARE 語句中初始化和使用。 下列範例會顯示錯誤。
+您無法在相同的 DECLARE 語句中初始化和使用變數。 為了說明，由於* \@ p1*已初始化並在相同的 DECLARE 語句中使用，因此不允許下列範例。 下列範例會顯示錯誤。
 
 ```sql
 DECLARE @p1 int = 0
@@ -62,8 +62,8 @@ SET     @v +=1;
 
 ## <a name="limitations"></a>限制
 
-您不能使用 UPDATE 進行變數指派。
+您無法使用 UPDATE 進行變數指派。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如需更多開發秘訣，請參閱[SYNAPSE SQL 開發簡介](develop-overview.md)一文。
+如需更多開發秘訣，請參閱 [SYNAPSE SQL 開發總覽](develop-overview.md) 文章。

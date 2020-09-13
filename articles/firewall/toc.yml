@@ -28,8 +28,6 @@
   items:
     - name: Azure PowerShell
       href: sample-powershell.md
-    - name: Azure 監視器記錄
-      href: log-analytics-samples.md
 - name: 概念
   items:
     - name: Azure 防火牆功能
@@ -88,6 +86,8 @@
       href: dns-settings.md
     - name: 監視器診斷記錄
       href: firewall-diagnostics.md
+    - name: Azure 監視器記錄
+      href: log-analytics-samples.md
 - name: 參考
   items:
     - name: Azure CLI

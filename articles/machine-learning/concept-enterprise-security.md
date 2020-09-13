@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 05/19/2020
-ms.openlocfilehash: ed95cf0b98edd8a6775c980876a6092c00e3a68d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/09/2020
+ms.openlocfilehash: a89115d69943ff63d403edff942677b134e7f2a8
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918582"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024378"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
 
@@ -75,7 +75,7 @@ Azure Machine Learning 支援兩種形式的 Web 服務驗證：金鑰和權杖�
 | 檢視模型/影像 | ✓ | ✓ | ✓ |
 | 呼叫 Web 服務 | ✓ | ✓ | ✓ |
 
-如果內建角色不符合您的需求，您可以建立自訂角色。 支援自訂角色來控制工作區內的所有作業，例如建立計算、提交執行、註冊資料存放區，或部署模型。 自訂角色可以擁有工作區的各種資源（例如叢集、資料存放區、模型和端點）的讀取、寫入或刪除許可權。 您可以在特定工作區層級、特定的資源群組層級或特定的訂用帳戶層級上，讓角色可供使用。 如需詳細資訊，請參閱[管理 Azure Machine Learning 工作區中的使用者和角色](how-to-assign-roles.md)。
+如果內建角色不符合您的需求，您可以建立自訂角色。 支援自訂角色來控制工作區內的所有作業，例如建立計算、提交執行、註冊資料存放區，或部署模型。 自訂角色可以擁有工作區之各種資源的讀取、寫入或刪除許可權，例如叢集、資料存放區、模型和端點。 您可以在特定工作區層級、特定的資源群組層級或特定的訂用帳戶層級上，讓角色可供使用。 如需詳細資訊，請參閱[管理 Azure Machine Learning 工作區中的使用者和角色](how-to-assign-roles.md)。
 
 > [!WARNING]
 > Azure Active Directory 的企業對企業共同作業支援 Azure Machine Learning，但 Azure Active Directory 的企業對消費者共同作業目前不支援。
@@ -105,7 +105,7 @@ Azure Machine Learning 會針對每個工作區區域，在您的訂用帳戶中
 
 Azure Machine Learning 仰賴其他 Azure 服務來處理計算資源。 計算資源 (計算目標) 用於定型和部署模型。 您可以在虛擬網路中建立這些計算目標。 例如，您可以使用 Azure 資料科學虛擬機器來定型模型，然後將模型部署到 AKS。  
 
-如需詳細資訊，請參閱[如何在隔離的虛擬網路中安全地執行實驗和推斷](how-to-enable-virtual-network.md)。
+如需詳細資訊，請參閱 [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)。
 
 您也可以為您的工作區啟用 Azure Private Link。 Private Link 可讓您限制從 Azure 虛擬網路到工作區的通訊。 如需詳細資訊，請參閱[如何設定 Private Link](how-to-configure-private-link.md)。
 
@@ -119,7 +119,7 @@ Azure Machine Learning 仰賴其他 Azure 服務來處理計算資源。 計算�
 ### <a name="encryption-at-rest"></a>待用加密
 
 > [!IMPORTANT]
-> 如果您的工作區包含敏感性資料，建議您在建立工作區時，設定 [hbi_workspace 旗標](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 只有在建立 `hbi_workspace` 工作區時，才可以設定旗標。 無法針對現有的工作區進行變更。
+> 如果您的工作區包含敏感性資料，建議您在建立工作區時，設定 [hbi_workspace 旗標](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 只有在建立 `hbi_workspace` 工作區時，才可以設定旗標。 無法針對現有的工作區進行變更。
 
 旗標會 `hbi_workspace` 控制 [microsoft 針對診斷目的所收集的資料](#microsoft-collected-data) 量，並 [在 microsoft 管理的環境中啟用額外的加密](../security/fundamentals/encryption-atrest.md)。 此外，它也會啟用下列動作：
 
@@ -157,13 +157,14 @@ Azure Machine Learning 會在 Azure Cosmos DB 執行個體中儲存計量和中�
     * `cmk_keyvault`:此參數是您訂用帳戶中金鑰保存庫的資源識別碼。 此金鑰保存庫必須位於您將用於 Azure Machine Learning 工作區的相同地區和訂用帳戶中。 
     
         > [!NOTE]
-        > 此金鑰保存庫執行個體可以與您佈建工作區時 Azure Machine Learning 所建立的金鑰保存庫不同。 如果您想要將相同的金鑰保存庫執行個體用於工作區，請在佈建工作區時傳遞相同的金鑰保存庫，方法是使用 [key_vault 參數](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 
+        > 此金鑰保存庫執行個體可以與您佈建工作區時 Azure Machine Learning 所建立的金鑰保存庫不同。 如果您想要將相同的金鑰保存庫執行個體用於工作區，請在佈建工作區時傳遞相同的金鑰保存庫，方法是使用 [key_vault 參數](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 
 
-此 Cosmos DB 執行個體是在您訂用帳戶中的 Microsoft 受控資源群組中建立的。 受控資源群組的命名格式為 `<AML Workspace Resource Group Name><GUID>`。
+此 Cosmos DB 實例會建立在您訂用帳戶的 Microsoft 管理資源群組中，以及所需的任何資源。 受控資源群組的命名格式為 `<AML Workspace Resource Group Name><GUID>`。 如果您的 Azure Machine Learning 工作區使用私人端點，也會為 Cosmos DB 實例建立虛擬網路。 此 VNet 可用來保護 Cosmos DB 與 Azure Machine Learning 之間的通訊。
 
 > [!IMPORTANT]
-> * 如果您需要刪除此 Cosmos DB 執行個體，您必須刪除使用其的 Azure Machine Learning 工作區。 
-> * 此 Cosmos DB 帳戶的預設[要求單位](../cosmos-db/request-units.md)設定為 __8000__。 不支援變更此值。 
+> * 請勿刪除包含此 Cosmos DB 實例的資源群組，或在此群組中自動建立的任何資源。 如果您需要刪除資源群組、Cosmos DB 實例等，您必須刪除使用該資源群組的 Azure Machine Learning 工作區。 刪除相關聯的工作區時，會刪除資源群組、Cosmos DB 實例和其他自動建立的資源。
+> * 此 Cosmos DB 帳戶的預設[要求單位](../cosmos-db/request-units.md)設定為 __8000__。 不支援變更此值。
+> * 您無法提供自己的 VNet 以搭配所建立的 Cosmos DB 實例使用。 您也無法修改虛擬網路。 例如，您無法變更它所使用的 IP 位址範圍。
 
 如果您需要「輪替或撤銷」金鑰，您可以隨時執行此動作。 輪替金鑰時，Cosmos DB 將會開始使用新的金鑰 (最新版本) 來加密待用資料。 撤銷 (停用) 金鑰時，Cosmos DB 會負責處理失敗的要求。 輪替或撤銷通常需要一小時的時間才會生效。
 
@@ -197,7 +198,7 @@ Azure Machine Learning 會在 Azure Cosmos DB 執行個體中儲存計量和中�
 
 如需建立和使用部署設定的相關詳細資訊，請參閱下列文章：
 
-* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) 參考
+* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) 參考
 * [部署的位置和方式](how-to-deploy-and-where.md)
 * [將模型部署到 Azure 容器執行個體](how-to-deploy-azure-container-instance.md)
 
@@ -246,7 +247,7 @@ SSH 密碼和計算目標 (例如 Azure HDInsight 和 VM) 的金鑰會儲存在�
 
 Microsoft 可能會收集非使用者識別資訊，像是資源名稱 (例如資料集名稱或機器學習實驗名稱)，或作業環境變數以供診斷之用。 所有這類資料都是使用 Microsoft 受控金鑰儲存在 Microsoft 擁有之訂用帳戶內裝載的儲存體中，並遵循 [Microsoft 的標準隱私權原則和資料處理標準](https://privacy.microsoft.com/privacystatement)。
 
-Microsoft 也建議您不要將敏感性資訊 (例如帳戶金鑰祕密) 儲存在環境變數中。 我們會記錄、加密及儲存環境變數。 同樣地，當命名 [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) 時，請避免包含敏感性資訊，例如使用者名稱或祕密專案名稱。 此資訊可能會出現在 Microsoft 支援服務工程師可存取的遙測記錄中。
+Microsoft 也建議您不要將敏感性資訊 (例如帳戶金鑰祕密) 儲存在環境變數中。 我們會記錄、加密及儲存環境變數。 同樣地，當命名 [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) 時，請避免包含敏感性資訊，例如使用者名稱或祕密專案名稱。 此資訊可能會出現在 Microsoft 支援服務工程師可存取的遙測記錄中。
 
 在佈建工作區時，您可以將 `hbi_workspace` 參數設定為 `TRUE`，以選擇不要收集診斷資料。 使用 AzureML Python SDK、CLI、REST API 或 Azure Resource Manager 範本時，支援此功能。
 
@@ -367,6 +368,6 @@ Microsoft 也建議您不要將敏感性資訊 (例如帳戶金鑰祕密) 儲存
 * [使用 TLS 保護 Azure Machine Learning Web 服務](how-to-secure-web-service.md)
 * [取用部署為 Web 服務的 Machine Learning 模型](how-to-consume-web-service.md)
 * [搭配使用 Azure Machine Learning 與 Azure 防火牆](how-to-access-azureml-behind-firewall.md)
-* [搭配使用 Azure Machine Learning 與 Azure 虛擬網路](how-to-enable-virtual-network.md)
+* [搭配使用 Azure Machine Learning 與 Azure 虛擬網路](how-to-network-security-overview.md)
 * [建置建議系統的最佳作法](https://github.com/Microsoft/Recommenders)
 * [在 Azure 上建置即時建議 API](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)
