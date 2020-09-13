@@ -3,12 +3,12 @@ title: 預覽 - 了解適用於 Kubernetes 的 Azure 原則
 description: 了解 Azure 原則如何使用 Rego 和 Open Policy Agent 來管理在 Azure 或內部部署中執行 Kubernetes 的叢集。 這是預覽功能。
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: a824548cb45f886bcf82bedad6e5d5c216bb7fea
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509870"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645591"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>了解適用於 Kubernetes 叢集的 Azure 原則 (預覽)
 
@@ -57,13 +57,13 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 
      1. 註冊 **Microsoft.ContainerService** 和 **Microsoft.PolicyInsights** 資源提供者。 如需相關步驟，請參閱[資源提供者和類型](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
 
-     1. 藉由按一下 [所有服務] 然後搜尋並選取 [原則]，在 Azure 入口網站中啟動 Azure 原則服務。
+     1. 選取 [ **所有服務**]，然後搜尋並選取 [ **原則**]，以啟動 Azure 入口網站中的 Azure 原則服務。
 
-        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="搜尋所有服務中的原則" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="在所有服務中搜尋原則的螢幕擷取畫面。" border="false":::
 
      1. 選取「Azure 原則」頁面左側的 [加入預覽]。
 
-        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="加入 AKS 預覽的原則" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="[原則] 頁面上 [加入預覽] 節點的螢幕擷取畫面。" border="false":::
 
      1. 選取您要新增至預覽的訂用帳戶資料列。
 
@@ -120,17 +120,17 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 
 - Azure 入口網站
 
-  1. 按一下 [所有服務]，然後搜尋並選取 [Kubernetes 服務]，以在 Azure 入口網站中啟動 AKS 服務。
+  1. 選取 [ **所有服務**]，然後搜尋並選取 [ **Kubernetes 服務**]，以啟動 Azure 入口網站中的 AKS 服務。
 
   1. 選取您的其中一個 AKS 叢集。
 
   1. 選取 [Kubernetes 服務] 頁面左側的 [原則 (預覽)]。
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="來自 AKS 叢集的原則定義" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Kubernetes 服務頁面上 [原則 (預覽) ] 節點的螢幕擷取畫面。" border="false":::
 
   1. 在主頁面中，選取 [啟用附加元件] 按鈕。
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="啟用 AKS 適用的 Azure 原則附加元件":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="[在 Azure Kubernetes Services 上架至 Azure 原則] (K S) 頁面上的 [啟用附加元件] 按鈕的螢幕擷取畫面。":::
 
      <a name="migrate-from-v1"></a>
      > [!NOTE]
@@ -460,17 +460,17 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 
 - Azure 入口網站
 
-  1. 按一下 [所有服務]，然後搜尋並選取 [Kubernetes 服務]，以在 Azure 入口網站中啟動 AKS 服務。
+  1. 選取 [ **所有服務**]，然後搜尋並選取 [ **Kubernetes 服務**]，以啟動 Azure 入口網站中的 AKS 服務。
 
   1. 選取您想要停用 Azure 原則附加元件的 AKS 叢集。
 
   1. 選取 [Kubernetes 服務] 頁面左側的 [原則 (預覽)]。
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="來自 AKS 叢集的原則定義" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Kubernetes 服務頁面上 [原則 (預覽) ] 節點的螢幕擷取畫面。" border="false":::
 
   1. 在主頁面中，選取 [停用附加元件] 按鈕。
 
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="停用 AKS 適用的 Azure 原則附加元件" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="螢幕擷取畫面： [Azure Kubernetes Services 的上架至 Azure 原則] (K S) 頁面上的 [停用附加元件] 按鈕。" border="false":::
 
 - Azure CLI
 

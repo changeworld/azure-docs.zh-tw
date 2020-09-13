@@ -3,12 +3,12 @@ title: 計畫定義中的法規合規性
 description: 說明如何使用計畫定義，依規範網域（例如存取控制、設定管理和其他）將原則分組。
 ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 296febc1aad62d06c8e9dfcf4f285b16cacf0a40
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544616"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645530"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Azure 原則中的法規合規性
 
@@ -33,18 +33,18 @@ Microsoft 負責的控制項是 `type` [靜態](./definition-structure.md#type)�
 
 新的索引標籤會將 **控制項** 加入至頁面。 篩選適用于 **合規性網域** ，原則定義會依 `title` **policyMetadata** 物件中的欄位分組。 每個資料列都代表顯示其合規性狀態、其所屬的**合規性網域**、責任資訊，以及有多少不符合規範的原則定義組成該**控制項**的**控制項**。
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="NIST SP 800-53 R4 內建定義的法規合規性總覽範例。":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="適用于 NIST SP 800-53 R4 內建定義（顯示符合規範和不符合規範的控制項）之法規合規性總覽的螢幕擷取畫面。":::
 
 選取 **控制項** 時，會開啟該控制項詳細資料的頁面。 **總覽**包含與的資訊 `description` `requirements` 。 [ **原則** ] 索引標籤下的所有個別原則定義都是參與此 **控制項**的計畫。 [ **資源相容性** ] 索引標籤可讓您更精細地查看由目前所查看 **控制項**的成員原則所評估的每個資源。
 
 > [!NOTE]
 > **Microsoft managed**評估類型適用于[靜態](./definition-structure.md#type)原則定義 `type` 。
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="NIST SP 800-53 R4 內建定義之系統和通訊保護網域的界限保護網域中的法規合規性原則定義範例。":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="適用于 NIST SP 800-53 R4 內建定義之界限保護控制的法規合規性詳細資料的螢幕擷取畫面。":::
 
 在相同的 **控制** 頁面上，變更為 [ **資源合規性** ] 索引標籤會顯示此 **控制項**的原則定義所包含的所有資源。 篩選準則可用於名稱或識別碼、合規性狀態、資源類型和位置。
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="符合 NIST SP 800-53 R4 內建定義之 System and communication Protection 網域的界限保護控制原則定義所影響的法規合規性資源範例。":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="針對 NIST SP 800-53 R4 內建定義之界限保護控制的資源合規性的螢幕擷取畫面。":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>SDK 中的法規合規性
 

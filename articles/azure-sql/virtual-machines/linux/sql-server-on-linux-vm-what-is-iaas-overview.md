@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 41b74ed713485679576fdf7f4f0df54803b56caa
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 6e6038e2c0aa4f6b41c4a4da9bde6e98555ceb31
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192116"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613560"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 虛擬機器上的 SQL Server 概觀 (Linux)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,12 +29,15 @@ Azure 虛擬機器上的 SQL Server 可讓您在雲端中使用完整版的 SQL 
 
 Azure 虛擬機器會在全球許多不同的[地理區域](https://azure.microsoft.com/regions/)中執行。 此外，也提供各種[機器大小](../../../virtual-machines/windows/sizes.md)。 虛擬機器映像庫可讓您使用正確的版本、版次及作業系統建立 SQL Server VM。 這可讓虛擬機器成為許多不同 SQL Server 工作負載的適合選項。 
 
-## <a name="get-started-with-sql-server-vms"></a><a id="create"></a> 開始使用 SQL Server Vm
+如果您不熟悉 Azure SQL，請參閱 *AZURE VM 上的 SQL Server 總覽* 影片，深入瞭解 azure [sql 影片系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)：
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
+
+## <a name="get-started-with-sql-server-vms"></a><a id="create"></a> SQL Server Vm 入門
 
 若要開始使用，請選擇具有您所需版本、版次及作業系統的 SQL Server 虛擬機器映像。 下列各節提供 Azure 入口網站中 SQL Server 虛擬機器資源庫映像的直接連結。
 
 > [!TIP]
-> 如需如何瞭解 SQL Server 映射定價的詳細資訊，請參閱 [執行 SQL Server Linux vm 的定價頁面](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。
+> 如需有關如何瞭解 SQL Server 映射定價的詳細資訊，請參閱 [執行 SQL Server 之 Linux vm 的定價頁面](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。
 
 | 版本 | 作業系統 | 版本 |
 | --- | --- | --- |
@@ -46,17 +49,17 @@ Azure 虛擬機器會在全球許多不同的[地理區域](https://azure.micros
 | **SQL Server 2017** | Ubuntu 16.04 LTS |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS)、[Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonUbuntuServer1604LTS)、[Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonUbuntuServer1604LTS) |
 
 > [!NOTE]
-> 若要查看適用于 Windows 的 SQL Server 虛擬機器映射，請參閱 [Azure 虛擬機器 (Windows) 上 SQL Server 的總覽 ](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)。
+> 若要查看適用于 Windows 的可用 SQL Server 虛擬機器映射，請參閱 [ (Windows) 的 Azure 虛擬機器 SQL Server 總覽 ](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)。
 
 ## <a name="installed-packages"></a><a id="packages"></a>已安裝的套件
 
-當您設定 Linux 上的 SQL Server 時，會根據您的需求安裝資料庫引擎套件和數個選用的套件。 SQL Server 的 Linux 虛擬機器映像會自動為您安裝大多數的套件。 下表顯示每個發佈會安裝哪些套件。
+當您設定 Linux 上的 SQL Server 時，會根據您的需求安裝資料庫引擎套件和數個選用套件。 SQL Server 的 Linux 虛擬機器映像會自動為您安裝大多數的套件。 下表顯示每個發佈會安裝哪些套件。
 
 | 散發 | [資料庫引擎](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [工具](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server 代理程式](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [全文檢索搜尋](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA 附加元件](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
-| RHEL | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
-| SLES | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![否](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
-| Ubuntu | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![是](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
+| RHEL | ![RHEL 和 database engine](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL 和工具](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL 和 SQL Server 代理程式](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL 和全文檢索搜尋](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL 和 SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL 和 HA 附加元件](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
+| SLES | ![SLES 和 database engine](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES 和工具](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES 和 SQL Server 代理程式](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES 和全文檢索搜尋](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES 和 SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![SLES 和 HA 附加元件](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
+| Ubuntu | ![Ubuntu 和 database engine](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu 和工具](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu 和 SQL Server 代理程式](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu 與全文檢索搜尋](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu 和 SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu 和 HA 附加元件](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
 
 ## <a name="related-products-and-services"></a>相關產品與服務
 
@@ -81,10 +84,10 @@ Azure 虛擬機器會在全球許多不同的[地理區域](https://azure.micros
 
 ## <a name="next-steps"></a>後續步驟
 
-Linux 上的 SQL Server 虛擬機器入門：
+Linux 上的 SQL Server 的虛擬機器入門：
 
 * [在 Azure 入口網站中建立 SQL Server VM](sql-vm-create-portal-quickstart.md)
 
-取得有關 Linux 上 SQL Server Vm 的常見問題解答：
+取得有關 Linux 上 SQL Server Vm 常見問題的解答：
 
 * [Azure 虛擬機器上的 SQL Server 常見問題集](frequently-asked-questions-faq.md)

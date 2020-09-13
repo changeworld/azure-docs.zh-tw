@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/11/2020
 ms.author: allensu
-ms.openlocfilehash: f6e0009a1e1df57298884097cac076ef3a344714
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: ef1f8966497492f5a4969aca594c43abdf80945c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135822"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612901"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>使用 NAT 閘道資源設計虛擬網路
 
@@ -217,7 +217,7 @@ NAT 閘道的優先順序高於子網路的輸出案例。 基本負載平衡器
 
 當虛擬機器執行個體部署在相同子網路內的多個區域時，您無法達到 NAT 閘道資源的區域性承諾。   而且即使有多個區域性 NAT 閘道連結至子網路，虛擬機器執行個體也不會知道要選取哪個 NAT 閘道資源。
 
-當 a) 虛擬機器執行個體的區域和區域性 NAT 閘道的區域未對齊，或 b) 區域 NAT 閘道資源與區域性虛擬機器執行個體搭配使用時，區域性承諾就不會存在。
+當) 虛擬機器實例的區域和區域 NAT 閘道的區域未對齊，或 b) 區域 NAT 閘道資源與區域的虛擬機器實例搭配使用時，就會存在區域性承諾不。
 
 雖然此案例看似正常運作，但其健康情況模型和失敗模式並未以可用性區域的觀點加以定義。 請考慮改用區域性堆疊或所有地區。
 

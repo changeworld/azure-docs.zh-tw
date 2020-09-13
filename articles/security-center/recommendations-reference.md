@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8a0ead681c8b6cfbfbf820b546f1bcb320871c70
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c3351931013fb9b4d4de25d12e358fbe27f05472
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587356"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613515"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全性建議 - 參考指南
 
@@ -57,7 +57,6 @@ ms.locfileid: "88587356"
 |----|----|----|----|----|
 |**應在 Azure Kubernetes Service 叢集上啟用進階威脅防護**|資訊安全中心可為您的容器化環境提供即時威脅防護，並產生可疑活動的警示。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。<br>重要：修復這項建議將會產生保護 AKS 叢集的費用。 如果您在此訂用帳戶中沒有任何 AKS 叢集，則不會產生任何費用。 如果您日後在此訂用帳戶上建立任何 AKS 叢集，這些叢集將會自動受到保護，並會在該時間開始收費。<br> (相關原則： [應在 Azure Kubernetes Service 叢集上啟用「Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a) 」) |高|**Y**|訂用帳戶|
 |**Kubernetes Services 上應定義授權 IP 範圍**|僅將 API 存取權授與特定範圍內的 IP 位址，以限制對 Kubernetes Service 管理 API 的存取。 建議設定授權 IP 範圍，僅限來自允許網路的應用程式存取叢集。<br>(相關原則：[預覽]：Kubernetes Services 上應定義授權 IP 範圍)|高|N|計算資源 (容器)|
-|**應定義 Pod 安全性原則，藉由移除不必要的應用程式權限，減少攻擊媒介 (預覽)**|移除不必要的應用程式權限來定義 Pod 安全性原則，以減少攻擊媒介。 建議設定 Pod 安全性原則，如此 Pod 只能存取有權存取的資源。<br>(相關原則：[預覽]：Kubernetes Services 上應定義 Pod 安全性原則)|中|N|計算資源 (容器)|
 |**應使用角色型存取控制來限制對 Kubernetes Service 叢集的存取**|若要提供使用者可執行動作的細微篩選，請使用角色型存取控制 (RBAC) 來管理 Kubernetes Service 叢集中的權限，並設定相關的授權原則。 如需詳細資訊，請參閱 [Azure 角色型存取控制](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac)。<br>(相關原則：[預覽]：應在 Kubernetes Service 上使用角色型存取控制 (RBAC))|中|N|計算資源 (容器)|
 |**應將 Kubernetes Service 升級為最新的 Kubernetes 版本**|將 Azure Kubernetes Service 叢集升級為最新的 Kubernetes 版本，以使用最新的弱點修補程式。 如需特定 Kubernetes 弱點的相關詳細資料，請參閱 [Kubernetes CVE](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes)。<br>(相關原則：[預覽]：應將 Kubernetes Services 升級為不易受攻擊的 Kubernetes 版本)|高|N|計算資源 (容器)|
 |**應在 Azure Container Registry 登錄上啟用進階威脅防護**|若要建立安全的容器化工作負載，請確保其所依據的映射不會有已知的弱點。 資訊安全中心會掃描您的登錄是否有每個推送容器映射的安全性弱點，並公開每個映射的詳細結果。<br>重要：補救這項建議將會產生保護您 ACR 登錄的費用。 如果您在此訂用帳戶中沒有任何 ACR 登錄，將不會產生任何費用。 如果您未來在此訂用帳戶上建立任何 ACR 登錄，系統會自動將其受保護，並會在該時間開始收費。<br> (相關原則： [Azure Container Registry 登錄上應啟用「Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4) 」) |高|**Y**|訂用帳戶|
@@ -191,7 +190,9 @@ ms.locfileid: "88587356"
 |----|----|----|----|----|
 |**應限制對應用程式服務的存取**|藉由變更網路設定，限制對應用程式服務的存取，以拒絕範圍太廣的輸入流量。<br>(相關原則：[預覽]：應限制對應用程式服務的存取)|高|N|App Service|
 |**應強化 IaaS NSG 上 Web 應用程式的規則**|若在您的虛擬機器上，執行的 Web 應用程式 NSG 規則就 Web 應用程式連接埠來說過於寬鬆，請強化虛擬機器的網路安全性群組 (NSG)。<br>(相關原則：應在 IaaS 上強化 Web 應用程式的 NSG 規則)|高|N|虛擬機器|
-
+|**應定義 Pod 安全性原則，藉由移除不必要的應用程式權限，減少攻擊媒介 (預覽)**|移除不必要的應用程式權限來定義 Pod 安全性原則，以減少攻擊媒介。 建議設定 Pod 安全性原則，如此 Pod 只能存取有權存取的資源。<br>(相關原則：[預覽]：Kubernetes Services 上應定義 Pod 安全性原則)|中|N|計算資源 (容器)|
+|**安裝適用於 IoT 的 Azure 資訊安全中心安全性模組，以深入瞭解您的 IoT 裝置**|安裝適用於 IoT 的 Azure 資訊安全中心安全性模組，以深入瞭解您的 IoT 裝置。|低|N|IoT 裝置|
+||||
 
 
 ## <a name="next-steps"></a>後續步驟

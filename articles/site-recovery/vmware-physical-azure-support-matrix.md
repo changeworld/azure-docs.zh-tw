@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/實體嚴重損壞修復的支援矩陣
 description: 摘要說明使用 Azure Site Recovery 將 VMware Vm 和實體伺服器的災難復原至 Azure 的支援。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 288cebc4d4097ff40b618e2f1976039359458ecf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 98f9bf02b910749a98ae8cd6e409ee733c2e2dcc
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719014"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595745"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -31,9 +31,8 @@ VMware Vm 的嚴重損壞修復 | 將內部部署 VMware 虛擬機器複寫至 A
 
 **Server** | **需求** | **詳細資料**
 --- | --- | ---
-vCenter Server | 版本7.0、6.7、6.5、6.0 或5。5 | 我們建議您在嚴重損壞修復部署中使用 vCenter 伺服器。
-vSphere 主機 | 版本7.0、6.7、6.5、6.0 或5。5 | 我們建議 vSphere 主機與 vCenter 伺服器應位於和處理序伺服器相同的網路中。 根據預設，處理序伺服器會在設定伺服器上執行。 [深入了解](vmware-physical-azure-config-process-server-overview.md)。
-
+vCenter Server | 版本 7.0 & 此版本的後續更新、6.7、6.5、6.0 或5。5 | 我們建議您在嚴重損壞修復部署中使用 vCenter 伺服器。
+vSphere 主機 | 版本 7.0 & 此版本的後續更新、6.7、6.5、6.0 或5。5 | 我們建議 vSphere 主機與 vCenter 伺服器應位於和處理序伺服器相同的網路中。 根據預設，處理序伺服器會在設定伺服器上執行。 [深入了解](vmware-physical-azure-config-process-server-overview.md)。
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery 組態伺服器
 
@@ -56,7 +55,7 @@ Windows Server 角色 | 請勿啟用 Active Directory Domain Services;Internet I
 群組原則| - 防止存取命令提示字元。 <br/> - 防止存取登錄編輯工具。 <br/> - 檔案附件的信任邏輯。 <br/> - 開啟指令碼執行。 <br/> - [深入了解](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
 IIS | 請確定您已執行下列動作：<br/><br/> -沒有預先存在的預設網站 <br/> - 啟用[匿名驗證](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br/> - 啟用 [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) 設定  <br/> - 沒有預先存在的網站/應用程式接聽連接埠 443<br/>
 NIC 類型 | VMXNET3 (部署為 VMware VM 時)
-IP 位址類型 | 靜態
+IP 位址類型 | Static
 連接埠 | 443用於控制通道協調流程<br/>9443用於資料傳輸
 
 ## <a name="replicated-machines"></a>複寫的電腦
@@ -172,21 +171,21 @@ XFSv5 | XFS 檔案系統上的 XFSv5 功能（例如中繼資料總和檢查碼�
 > [!NOTE]
 > 不支援對磁片身分識別進行任何變更。 例如，如果磁碟分割已從 GPT 變更為 MBR 或反之亦然，則這會變更磁片身分識別。 在這種情況下，複寫將會中斷，而且需要全新的設定。 
 
-## <a name="network"></a>Network (網路)
+## <a name="network"></a>網路
 
 **元件** | **支援**
 --- | ---
 主機網路 NIC 小組 | 支援 VMware VM。 <br/><br/>不支援實體機器複寫。
-主機網路 VLAN | 是。
-主機網路 IPv4 | 是。
-主機網路 IPv6 | 否。
-客體/伺服器網路 NIC 小組 | 否。
-客體/伺服器網路 IPv4 | 是。
-客體/伺服器網路 IPv6 | 否。
-客體/伺服器網路靜態 IP (Windows) | 是。
-客體/伺服器網路靜態 IP (Linux) | 是。 <br/><br/>VM 設定為在容錯回復時使用 DHCP。
-客體/伺服器網路多重 NIC | 是。
-Site Recovery 服務的 Private link 存取權 | 是。 [深入了解](hybrid-how-to-enable-replication-private-endpoints.md)。
+主機網路 VLAN | 可以。
+主機網路 IPv4 | 可以。
+主機網路 IPv6 | 不會。
+客體/伺服器網路 NIC 小組 | 不會。
+客體/伺服器網路 IPv4 | 可以。
+客體/伺服器網路 IPv6 | 不會。
+客體/伺服器網路靜態 IP (Windows) | 可以。
+客體/伺服器網路靜態 IP (Linux) | 可以。 <br/><br/>VM 設定為在容錯回復時使用 DHCP。
+客體/伺服器網路多重 NIC | 可以。
+Site Recovery 服務的 Private link 存取權 | 可以。 [深入了解](hybrid-how-to-enable-replication-private-endpoints.md)。
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure VM 網路 (容錯移轉後)
@@ -258,7 +257,7 @@ ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
 進階儲存體 | 是
 安全傳輸選項 | 是
 匯入/匯出服務 | 否
-適用于 Vnet 的 Azure 儲存體防火牆 | 是。<br/> 設定在目標儲存體/快取儲存體帳戶上 (用來儲存複寫資料) 。
+適用于 Vnet 的 Azure 儲存體防火牆 | 可以。<br/> 設定在目標儲存體/快取儲存體帳戶上 (用來儲存複寫資料) 。
 一般用途 v2 儲存體帳戶 (經常性存取層和非經常性存取層)  | 是，V2 相較于 V1) ， (的交易成本明顯較高
 
 ## <a name="azure-compute"></a>Azure 計算
@@ -279,7 +278,7 @@ ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
 客體作業系統 | 驗證複寫的機器[所支援的作業系統](#replicated-machines)。 | 若不支援，則檢查會失敗。
 客體作業系統架構 | 64 位元。 | 若不支援，則檢查會失敗。
 作業系統磁碟大小 | 最多 2,048 GB。 | 若不支援，則檢查會失敗。
-作業系統磁碟計數 | 1 | 若不支援，則檢查會失敗。
+作業系統磁碟計數 | 1 </br> 不支援在不同磁片上的開機和系統磁碟分割 | 若不支援，則檢查會失敗。
 資料磁碟計數 | 64 或以下。 | 若不支援，則檢查會失敗。
 資料磁碟大小 | 複寫至受控磁片時，最高可達 8192 GB)  (9.26 版<br></br>複寫至儲存體帳戶時最高達 4095 GB| 若不支援，則檢查會失敗。
 網路介面卡 | 支援多個介面卡。 |
@@ -330,7 +329,7 @@ VM 上所有磁碟的尖峰資料變換 | 54 MB/秒
 
 ## <a name="obtain-latest-components"></a>取得最新的元件
 
-**名稱** | **描述** | **詳細資料**
+**名稱** | **說明** | **詳細資料**
 --- | --- | ---
 組態伺服器 | 已安裝在內部部署環境。<br/> 協調內部部署 VMware 伺服器或實體機器與 Azure 之間的通訊。 | - [瞭解](vmware-physical-azure-config-process-server-overview.md) 設定伺服器。<br/> - [瞭解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) 如何升級至最新版本。<br/> - [瞭解](vmware-azure-deploy-configuration-server.md) 設定伺服器的設定。
 處理序伺服器 | 預設會安裝在組態伺服器上。<br/> 接收復寫資料、以快取、壓縮和加密進行優化，然後將其傳送至 Azure。<br/> 當您的部署成長時，您可以新增額外的進程伺服器來處理更大量的複寫流量。 | - [瞭解](vmware-physical-azure-config-process-server-overview.md) 進程伺服器。<br/> - [瞭解](vmware-azure-manage-process-server.md#upgrade-a-process-server) 如何升級至最新版本。<br/> - [瞭解如何](vmware-physical-large-deployment.md#set-up-a-process-server) 設定相應放大進程伺服器。
@@ -338,7 +337,7 @@ VM 上所有磁碟的尖峰資料變換 | 54 MB/秒
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [了解如何](tutorial-prepare-azure.md)準備 Azure 的 VMware VM 災害復原。
 
 [9.32 UR]: https://support.microsoft.com/en-in/help/4538187/update-rollup-44-for-azure-site-recovery

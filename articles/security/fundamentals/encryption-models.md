@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/13/2020
+ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 51d7cb32ef2d1d7750a0bb53cfa3ccc111bd1302
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 836e01d3cd8fb25dda1616803d8b6f3e9ff4e06f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89143728"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645750"
 ---
 # <a name="data-encryption-models"></a>資料加密模型
 
@@ -60,7 +60,7 @@ Azure 中支援的加密模型會分割成兩個主要群組：如先前所述�
 
 用戶端加密模型是指由服務或呼叫應用程式在資源提供者或 Azure 外部執行的加密。 加密可由 Azure 中的服務應用程式或客戶資料中心內執行的應用程式執行。 在任一案例中，利用此加密模型時，Azure 資源提供者無需以任何方式解密的能力或具有加密金鑰的存取權，即可接收加密的 blob 資料。 在此模型中，金鑰管理是由呼叫服務/應用程式所完成，且對 Azure 服務不透明。
 
-![用戶端](./media/encryption-models/azure-security-encryption-atrest-fig2.png)
+![Client](./media/encryption-models/azure-security-encryption-atrest-fig2.png)
 
 ## <a name="server-side-encryption-using-service-managed-keys"></a>使用服務管理金鑰的伺服器端加密
 
@@ -150,14 +150,14 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 | Azure 認知服務         | 是                | 是                | -                  |
 | Azure Machine Learning           | 是                | 是                | -                  |
 | Azure Machine Learning Studio    | 是                | 預覽，RSA 2048 位元 | -               |
-| 內容仲裁                | 是                | 是                | -                  |
+| 內容仲裁者                | 是                | 是                | -                  |
 | 臉部                             | 是                | 是                | -                  |
 | Language Understanding           | 是                | 是                | -                  |
 | 個人化工具                     | 是                | 是                | -                  |
 | QnA Maker                        | 是                | 是                | -                  |
 | 語音服務                  | 是                | 是                | -                  |
 | 翻譯工具文字                  | 是                | 是                | -                  |
-| Power BI                         | 是                | 預覽，RSA 2048 位元 | -                  |
+| Power BI                         | 是                | 是，RSA 4096 位  | -                  |
 | **分析**                    |                    |                    |                    |
 | Azure 串流分析           | 是                | N/A\*              | -                  |
 | 事件中樞                       | 是                | 是                | -                  |

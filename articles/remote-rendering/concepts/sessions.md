@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74fae6a8aa0c59043db0ab816e09b16affb63580
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2e7f441a727bea8d1a5d401fb5e9757dee1044fc
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021828"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613796"
 ---
 # <a name="remote-rendering-sessions"></a>遠端轉譯工作階段
 
@@ -31,7 +31,7 @@ Azure 遠端轉譯的運作方式，是將複雜的轉譯工作交由雲端處�
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>同時管理多個工作階段
 
-您無法從一台裝置完全「連線」到多個工作階段。 不過，您可以隨意從單一應用程式建立、觀察和關閉多個工作階段。 只要應用程式並不打算與工作階段連線，就不需要在 HoloLens 2 這類裝置上執行。 在想要透過中央機制控制工作階段的情況下，可能就會產生這類實作的使用案例。 例如，您可以組建一個 Web 應用程式，讓多台平板電腦和 HoloLenses 能夠登入。 然後，此應用程式可以在平板電腦上顯示選項，例如要顯示的 CAD 型號。 如果使用者進行選取，系統會將這項資訊傳達給所有 HoloLenses，以建立起共享體驗。
+您無法從一台裝置完全「連線」到多個工作階段。 不過，您可以隨意從單一應用程式建立、觀察和關閉多個工作階段。 只要應用程式並不打算與工作階段連線，就不需要在 HoloLens 2 這類裝置上執行。 在想要透過中央機制控制工作階段的情況下，可能就會產生這類實作的使用案例。 例如，您可以建立一個 web 應用程式，讓多個平板電腦和 HoloLens 裝置登入。 然後，此應用程式可以在平板電腦上顯示選項，例如要顯示的 CAD 型號。 如果使用者進行選取，則會將這項資訊傳達給所有 HoloLens 裝置，以建立共用體驗。
 
 ## <a name="session-phases"></a>工作階段的各個階段
 
@@ -146,6 +146,15 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 您可以透過 `AzureSession.SessionUUID()` 來查詢存留的工作階段識別碼，並在本機快取處理。 透過此識別碼，應用程式可以呼叫 `AzureFrontend.OpenSession` 以繫結至該工作階段。
 
 當 `AzureSession.IsConnected` 為 True 時，`AzureSession.Actions` 會傳回 `RemoteManager`的執行個體，其中包含可[載入模型](models.md)、操作[實體](entities.md)和[查詢資訊](../overview/features/spatial-queries.md) (轉譯場景相關資訊) 的函式。
+
+## <a name="api-documentation"></a>API 文件
+
+* [C # AzureSession 類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azuresession)
+* [C # AzureFrontend. CreateNewRenderingSessionAsync ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azurefrontend.createnewrenderingsessionasync)
+* [C # AzureFrontend. OpenRenderingSession ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azurefrontend.openrenderingsession)
+* [C + + AzureSession 類別](https://docs.microsoft.com/cpp/api/remote-rendering/azuresession)
+* [C + + AzureFrontend：： CreateNewRenderingSessionAsync](https://docs.microsoft.com/cpp/api/remote-rendering/azurefrontend#createnewrenderingsessionasync)
+* [C + + AzureFrontend：： OpenRenderingSession](https://docs.microsoft.com/cpp/api/remote-rendering/azurefrontend#openrenderingsession)
 
 ## <a name="next-steps"></a>後續步驟
 

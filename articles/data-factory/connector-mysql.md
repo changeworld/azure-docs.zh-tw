@@ -9,16 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 09/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 9fbf4062304dda7112e89ecd4abd5288533f28ff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 16f7a1481b15f280995bb71fa9e30ed3a129ab6d
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635787"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612635"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>使用 Azure Data Factory 從 MySQL 複製資料
+
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](v1/data-factory-onprem-mysql-connector.md)
 > * [目前的版本](connector-mysql.md)
@@ -66,7 +67,9 @@ Integration Runtime 從 3.7 版開始提供內建的 MySQL 驅動程式，因此
 
 | 屬性 | 描述 | 選項。 | 必要 |
 |:--- |:--- |:--- |:--- |
-| SSLMode | 此選項指定驅動程式在連線到 MySQL 時，是否使用 TLS 加密和驗證。 例如，`SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(預設)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
+| SSLMode | 此選項指定驅動程式在連線到 MySQL 時，是否使用 TLS 加密和驗證。 例如，  `SSLMode=<0/1/2/3/4>` 。| DISABLED (0) / PREFERRED (1) **(預設)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
+| SSLCert | Pem 檔案的完整路徑和名稱，其中包含用來證明用戶端身分識別的 SSL 憑證。 <br/> 若要指定私密金鑰來加密此憑證，然後將它傳送至伺服器，請使用 `SSLKey` 屬性。| | 是，如果使用雙向 SSL 驗證。 |
+| SSLKey | 檔案的完整路徑和名稱，這個檔案包含在雙向 SSL 驗證期間用來加密用戶端憑證的私密金鑰。|  | 是，如果使用雙向 SSL 驗證。 |
 | UseSystemTrustStore | 此選項指定是否使用來自系統信任存放區或來自指定 PEM 檔案的 CA 憑證。 例如 `UseSystemTrustStore=<0/1>;`| 啟用 (1) / 停用 (0) **(預設)** | 否 |
 
 **範例︰**
@@ -267,7 +270,7 @@ Integration Runtime 從 3.7 版開始提供內建的 MySQL 驅動程式，因此
 
 ## <a name="lookup-activity-properties"></a>查閱活動屬性
 
-若要了解屬性的詳細資料，請參閱[查閱活動](control-flow-lookup-activity.md)。
+若要了解關於屬性的詳細資料，請參閱[查閱活動](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

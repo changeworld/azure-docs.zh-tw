@@ -1,17 +1,17 @@
 ---
 title: 商務持續性-適用於 MySQL 的 Azure 資料庫
-description: 瞭解使用適用於 MySQL 的 Azure 資料庫服務時， (時間點還原、資料中心中斷、異地還原) 的商務持續性。
+description: 瞭解使用適用於 MySQL 的 Azure 資料庫 service 時， (時間點還原、資料中心中斷、異地還原) 的商務持續性。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 74fdfb9f3a3f59f55b0f0ed4865601c0ddb7b7f2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b21062256896ebfc9c11b031413538b39620d1e7
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86241959"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613967"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>瞭解適用於 MySQL 的 Azure 資料庫中的商務持續性
 
@@ -19,7 +19,7 @@ ms.locfileid: "86241959"
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>可用來提供商務持續性的功能
 
-適用於 MySQL 的 Azure 資料庫提供包含自動備份以及可讓使用者起始異地還原的商務持續性功能。 每項功能分別具有適用於預估復原時間 (ERT) 和潛在資料遺失的不同特性。 一旦您了解這些選項，就可以在其中選擇，並針對不同情況加以搭配使用。 當您開發商務持續性計劃時，您必須了解應用程式在干擾性事件之後完全復原所需的最大可接受時間 - 這是您的復原時間目標 (RTO)。 您也必須了解在干擾性事件之後，應用程式在復原時可容許遺失的最近資料更新 (時間間隔) 最大數量 - 這是您的復原點目標 (RPO)。
+適用於 MySQL 的 Azure 資料庫提供包含自動備份以及可讓使用者起始異地還原的商務持續性功能。 每項功能分別具有適用於預估復原時間 (ERT) 和潛在資料遺失的不同特性。 估計的復原時間 (ERT) 是資料庫在還原/容錯移轉要求後完全正常運作的預估持續時間。 一旦您了解這些選項，就可以在其中選擇，並針對不同情況加以搭配使用。 當您開發商務持續性計劃時，您必須了解應用程式在干擾性事件之後完全復原所需的最大可接受時間 - 這是您的復原時間目標 (RTO)。 您也必須了解在干擾性事件之後，應用程式在復原時可容許遺失的最近資料更新 (時間間隔) 最大數量 - 這是您的復原點目標 (RPO)。
 
 下表將比較各項可用功能的 ERT 與 RPO：
 
@@ -50,13 +50,13 @@ ms.locfileid: "86241959"
 
 ## <a name="cross-region-read-replicas"></a>跨區域讀取複本
 
-您可以使用跨區域讀取複本來增強您的商務持續性和嚴重損壞修復規劃。 讀取複本會使用 MySQL 的二進位記錄複寫技術以非同步方式更新。 深入瞭解讀取複本、可用區域，以及如何從[讀取複本概念一文](concepts-read-replicas.md)進行故障切換。 
+您可以使用跨區域讀取複本來增強您的商務持續性和嚴重損壞修復規劃。 讀取複本會使用 MySQL 的二進位記錄複寫技術以非同步方式更新。 深入瞭解讀取複本、可用區域，以及如何從 [讀取複本概念文章](concepts-read-replicas.md)進行容錯移轉。 
 
 ## <a name="faq"></a>常見問題集
-### <a name="where-does-azure-database-for-mysql-store-customer-data"></a>適用於 MySQL 的 Azure 資料庫儲存客戶資料的位置？
-根據預設，適用於 MySQL 的 Azure 資料庫不會在其部署所在的區域中移動或儲存客戶資料。 不過，客戶可以選擇性地選擇啟用[異地多餘備份](concepts-backup.md#backup-redundancy-options)或建立[跨區域讀取複本](concepts-read-replicas.md#cross-region-replication)，以便將資料儲存在另一個區域中。
+### <a name="where-does-azure-database-for-mysql-store-customer-data"></a>適用於 MySQL 的 Azure 資料庫儲存客戶資料的位置為何？
+根據預設，適用於 MySQL 的 Azure 資料庫不會在其部署所在的區域中移動或儲存客戶資料。 不過，客戶可以選擇性地選擇啟用 [異地複寫備份](concepts-backup.md#backup-redundancy-options) ，或建立 [跨區域讀取複本](concepts-read-replicas.md#cross-region-replication) ，以便將資料儲存在另一個區域中。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入了解[適用於 MySQL 的 Azure 資料庫中的自動備份](concepts-backup.md)。
 - 了解如何使用 [Azure 入口網站](howto-restore-server-portal.md)或 [Azure CLI](howto-restore-server-cli.md) 來進行還原。

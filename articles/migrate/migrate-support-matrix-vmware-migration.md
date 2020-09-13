@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 遷移支援
 description: 瞭解 Azure Migrate 中 VMware VM 遷移的支援。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4c9ae6a5c3ed0d38b6abc952458422c7789fef8f
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 430b491780e10840274f16315b159a8095c11889
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051112"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612533"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 遷移的支援矩陣
 
@@ -41,7 +41,7 @@ ms.locfileid: "89051112"
 --- | ---
 **VMware vCenter Server** | 版本5.5、6.0、6.5 或6.7。
 **VMware vSphere ESXI 主機** | 版本5.5、6.0、6.5 或6.7。
-**vCenter Server 許可權** | 無代理程式遷移使用 [遷移設備](migrate-appliance.md)。 設備需要 vCenter Server 中的這些許可權：<br/><br/> - **資料存放區。流覽**：允許流覽 VM 記錄檔，以針對快照建立和刪除進行疑難排解。<br/><br/> - **資料存放區. LowLevelFileOperations**：允許資料存放區瀏覽器中的讀取/寫入/刪除/重新命名作業，以疑難排解快照集的建立和刪除。<br/><br/> - **VirtualMachine.Configuration。DiskChangeTracking**：允許啟用或停用 VM 磁片的變更追蹤，以提取快照之間變更的資料區塊。<br/><br/> - **VirtualMachine.Configuration。DiskLease**：允許 VM 的磁片租用作業，使用 VMware vSphere 的虛擬磁片開發工具組 (VDDK) 來讀取磁片。<br/><br/> - **VirtualMachine DiskAccess**：特別針對 vSphere 6.0 和更新版本 () 允許在 VM 上開啟磁片，以在使用 VDDK 的磁片上進行隨機讀取存取。<br/><br/> - **VirtualMachine： ReadOnlyDiskAccess**：允許在 VM 上開啟磁片，以使用 VDDK 來讀取磁片。<br/><br/> - **VirtualMachine： DiskRandomAccess**：允許在 VM 上開啟磁片，以使用 VDDK 來讀取磁片。<br/><br/> - **VirtualMachine. VirtualMachineDownload**：允許在與 VM 相關聯的檔案上進行讀取作業，以下載記錄，並在發生失敗時進行疑難排解。<br/><br/> - **VirtualMachine. SnapshotManagement. \* **：允許建立和管理 VM 快照集以進行複寫。<br/><br/> - **虛擬機器。互動。關閉電源**：允許 VM 在遷移至 Azure 期間關閉電源。
+**vCenter Server 許可權** | 無代理程式遷移使用 [遷移設備](migrate-appliance.md)。 設備需要 vCenter Server 中的這些許可權：<br/><br/> - **資料存放區。流覽**：允許流覽 VM 記錄檔，以針對快照建立和刪除進行疑難排解。<br/><br/> - **資料存放區. FileManagement**：允許資料存放區瀏覽器中的讀取/寫入/刪除/重新命名作業，以疑難排解快照集的建立和刪除。<br/><br/> - **VirtualMachine.Config。變更追蹤**：允許啟用或停用 VM 磁片的變更追蹤，以提取快照之間變更的資料區塊。<br/><br/> - **VirtualMachine.Config。DiskLease**：允許 VM 的磁片租用作業，使用 VMware vSphere 的虛擬磁片開發工具組 (VDDK) 來讀取磁片。<br/><br/> - **VirtualMachine DiskAccess**：特別針對 vSphere 6.0 和更新版本 () 允許在 VM 上開啟磁片，以在使用 VDDK 的磁片上進行隨機讀取存取。<br/><br/> - **VirtualMachine： DiskRandomRead**：允許在 VM 上開啟磁片，以使用 VDDK 來讀取磁片。<br/><br/> - **VirtualMachine： DiskRandomAccess**：允許在 VM 上開啟磁片，以使用 VDDK 來讀取磁片。<br/><br/> - **VirtualMachine. GetVmFiles**：允許在與 VM 相關聯的檔案上進行讀取作業，以下載記錄，並在發生失敗時進行疑難排解。<br/><br/> - VirtualMachine：允許建立和管理 VM 快照集以進行複寫。 ** \* **<br/><br/> - **虛擬機器。進行互動**：允許在遷移至 Azure 期間關閉 VM 的電源。
 
 
 
@@ -68,7 +68,7 @@ ms.locfileid: "89051112"
 **儲存體 vMotion** | 不支援。 如果 VM 使用儲存體 vMotion，複寫將無法運作。
 **組合的 Nic** | 不支援。
 **IPv6** | 不支援。
-**目標磁片** | Vm 只能遷移至受控磁片， (標準 HDD、Azure 中的 premium SSD) 。
+**目標磁片** | Vm 只能遷移至受控磁片， (標準 HDD、標準 SSD、Azure 中的 premium SSD) 。
 **同時複寫** | 每 vCenter Server 300 部 Vm。 如果您有更多，請以300批次的方式遷移它們。
 
 
@@ -118,7 +118,7 @@ vSphere/ESXI 主機 | TCP 埠902上的輸入，可讓設備從快照集複寫資
 **行動服務** | 行動服務代理程式必須安裝在您想要遷移的每個 VM 上。
 **UEFI 開機** | 支援。
 **UEFI-安全開機**         | 不支援遷移。
-**目標磁片** | Vm 只能遷移至受控磁片， (標準 HDD、Azure 中的 premium SSD) 。
+**目標磁片** | Vm 只能遷移至受控磁片， (標準 HDD、標準 SSD、Azure 中的 premium SSD) 。
 **磁碟大小** | 2 TB 的 OS 磁片;適用于資料磁片的 8 TB。
 **磁片限制** |  每個 VM 最多63個磁片。
 **加密的磁片/磁片區** | 具有加密磁片/磁片區的 Vm 不支援遷移。
@@ -173,6 +173,6 @@ VM 名稱 | 從 1 到 63 個字元。<br/><br/> 只能使用字母、數字和�
 在遷移後連接-Linux | 使用 SSH 進行遷移之後，使用 SSH 連線到 Azure Vm：<br/><br/> 在遷移之前，請在內部部署機器上，確認安全殼層服務是否設定為 [啟動]，且防火牆規則允許 SSH 連線。<br/><br/> 在容錯移轉之後，在 Azure VM 上，允許 SSH 埠的連入連線連線到已容錯移轉的 VM 上的網路安全性群組規則，以及其所連接的 Azure 子網。<br/><br/> 此外，新增 VM 的公用 IP 位址。  
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [選取](server-migrate-overview.md) VMware 遷移選項。

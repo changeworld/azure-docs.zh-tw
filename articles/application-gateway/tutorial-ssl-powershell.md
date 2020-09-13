@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 21e242d0a6a5aa2efa011289200654e71bd58662
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 67d22535f44d4d1b39b6c305fa0670d2d08be0c3
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071443"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595796"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>使用 Azure PowerShell 建立具有 TLS 終止的應用程式閘道
 
@@ -22,13 +22,12 @@ ms.locfileid: "89071443"
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
-> * 建立自我簽署憑證
-> * 設定網路
-> * 建立包含憑證的應用程式閘道
-> * 建立包含預設後端集區的虛擬機器擴展集
+* 建立自我簽署憑證
+* 設定網路
+* 建立包含憑證的應用程式閘道
+* 建立包含預設後端集區的虛擬機器擴展集
 
-如您尚未擁有 Azure 訂用帳戶，請在開始之前先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: dadfd3abfad0c588f53d47cb7ab1eb138d4f90ac
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869213"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612510"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>適用於 Azure 中隨選 Red Hat Enterprise Linux VM 的 Red Hat Update Infrastructure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允許雲端提供者 (例如 Azure) 鏡像 Red Hat 代管的存放庫內容、建立具有 Azure 特定內容的自訂存放庫，以及讓它可供使用者 VM 使用。
@@ -89,11 +89,11 @@ RedHat:RHEL:7.6:7.6.2019062116
 * RHEL 7.6 EUS 支援將于2021年5月31日結束
 * RHEL 7.7 EUS 支援於 2021 年 8 月 30 日結束
 
-### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>將 RHEL VM 切換至 EUS (版本鎖定為特定次要版本)
-使用下列指示，將 RHEL VM 鎖定為特定的次要版本 (以 root 身分執行)：
+### <a name="switch-a-rhel-vm-7x-to-eus-version-lock-to-a-specific-minor-version"></a>切換 RHEL VM 7.x 以 EUS 特定次要版本的 (版本-鎖定) 
+使用下列指示，將 RHEL 7.x VM 鎖定至特定次要版本， (以根) 執行：
 
 >[!NOTE]
-> 這僅適用於有 EUS 可供使用的 RHEL 版本。 撰寫本文時，這包括 RHEL 7.2-7.7。 如需更多詳細資料，請參閱 [Red Hat Enterprise Linux 生命週期](https://access.redhat.com/support/policy/updates/errata) \(英文\) 頁面。
+> 這僅適用于適用 EUS 的 RHEL 7.x 版本。 撰寫本文時，這包括 RHEL 7.2-7.7。 如需更多詳細資料，請參閱 [Red Hat Enterprise Linux 生命週期](https://access.redhat.com/support/policy/updates/errata) \(英文\) 頁面。
 
 1. 停用非 EUS 存放庫：
     ```bash
@@ -111,14 +111,52 @@ RedHat:RHEL:7.6:7.6.2019062116
     ```
 
     >[!NOTE]
-    > 上述指示會將 RHEL 次要版本鎖定為目前次要版本。 如果您要升級並鎖定到不是最新的次要版本，請輸入特定次要版本。 例如，`echo 7.5 > /etc/yum/vars/releasever` 會將您的 RHEL 版本鎖定為 RHEL 7.5
+    > 上述指示會將 RHEL 次要版本鎖定為目前次要版本。 如果您要升級並鎖定到不是最新的次要版本，請輸入特定次要版本。 例如， `echo 7.5 > /etc/yum/vars/releasever` 會將您的 rhel 版本鎖定至 rhel 7.5。
 
 1. 更新您的 RHEL 虛擬機器
     ```bash
     sudo yum update
     ```
 
-### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>將 RHEL VM 切換回非 EUS (移除版本鎖定)
+### <a name="switch-a-rhel-vm-8x-to-eus-version-lock-to-a-specific-minor-version"></a>切換 RHEL VM 8.x 以 EUS 特定次要版本的 (版本-鎖定) 
+使用下列指示，將 RHEL 8.x VM 鎖定至特定次要版本， (以根) 執行：
+
+>[!NOTE]
+> 這僅適用于 EUS 可用的 RHEL 8.x 版。 在撰寫本文時，這包括 RHEL 8.1-8.2。 如需更多詳細資料，請參閱 [Red Hat Enterprise Linux 生命週期](https://access.redhat.com/support/policy/updates/errata) \(英文\) 頁面。
+
+1. 停用非 EUS 存放庫：
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel8'
+    ```
+
+1. 取得 EUS 存放庫設定檔：
+    ```bash
+    wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8-eus.config
+    ```
+
+1. 新增 EUS 存放庫：
+    ```bash
+    yum --config=rhui-microsoft-azure-rhel8-eus.config install rhui-azure-rhel8-eus
+    ```
+
+1. 鎖定 `releasever` 變數 (以 root 身分執行)：
+    ```bash
+    echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
+    ```
+
+    >[!NOTE]
+    > 上述指示會將 RHEL 次要版本鎖定為目前次要版本。 如果您要升級並鎖定到不是最新的次要版本，請輸入特定次要版本。 例如， `echo 8.1 > /etc/yum/vars/releasever` 會將您的 rhel 版本鎖定至 rhel 8.1。
+
+    >[!NOTE]
+    > 如果有許可權問題可以存取 releasever，您可以使用 ' nano/etc/yum/vars/releaseve ' 編輯檔案並新增映射版本詳細資料，並 ( ' Ctrl + o ' 儲存，然後按 enter 鍵，然後按下 Ctrl + x ' ) 。  
+
+1. 更新您的 RHEL 虛擬機器
+    ```bash
+    sudo yum update
+    ```
+
+
+### <a name="switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock"></a>將 RHEL 7.x VM 切換回非 EUS (移除版本鎖定) 
 以 root 身分執行下列內容：
 1. 移除 `releasever` 檔案：
     ```bash
@@ -135,6 +173,33 @@ RedHat:RHEL:7.6:7.6.2019062116
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
     ```
 
+1. 更新您的 RHEL 虛擬機器
+    ```bash
+    sudo yum update
+    ```
+
+### <a name="switch-a-rhel-8x-vm-back-to-non-eus-remove-a-version-lock"></a>將 RHEL 8.x VM 切換回非 EUS (移除版本鎖定) 
+以 root 身分執行下列內容：
+1. 移除 `releasever` 檔案：
+    ```bash
+    rm /etc/yum/vars/releasever
+     ```
+
+1. 停用 EUS 存放庫：
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel8-eus'
+   ```
+
+1. 取得一般存放庫設定檔：
+    ```bash
+    wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8.config
+    ```
+
+1. 新增 EUS 存放庫：
+    ```bash
+    yum --config=rhui-microsoft-azure-rhel8.config install rhui-azure-rhel8
+    ```
+    
 1. 更新您的 RHEL 虛擬機器
     ```bash
     sudo yum update

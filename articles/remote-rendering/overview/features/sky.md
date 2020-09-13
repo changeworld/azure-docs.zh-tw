@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2a871e409761116182f67eb877f3727038fe0dc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 39e3b41d49ad06e5dbe5164809a6743da8dedae5
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013634"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613745"
 ---
 # <a name="sky-reflections"></a>天空反射
 
@@ -28,8 +28,8 @@ Azure 遠端轉譯會採用「以物理為基礎的轉譯」(PBR) 來進行實�
 
 | 粗糙度  | 0                                        | 0.25                                          | 0.5                                          | 0.75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
-| 非金屬  | ![Dielectric0](media/dielectric-0.png)   | ![GreenPointPark](media/dielectric-0.25.png)  | ![GreenPointPark](media/dielectric-0.5.png)  | ![GreenPointPark](media/dielectric-0.75.png)  | ![GreenPointPark](media/dielectric-1.png)  |
-| 金屬      | ![GreenPointPark](media/metallic-0.png)  | ![GreenPointPark](media/metallic-0.25.png)    | ![GreenPointPark](media/metallic-0.5.png)    | ![GreenPointPark](media/metallic-0.75.png)    | ![GreenPointPark](media/metallic-1.png)    |
+| 非金屬  | ![Dielectric，粗糙度 = 0](media/dielectric-0.png)   | ![Dielectric，粗糙度 = 0.25](media/dielectric-0.25.png)  | ![Dielectric，粗糙度 = 0。5](media/dielectric-0.5.png)  | ![Dielectric，粗糙度 = 0.75](media/dielectric-0.75.png)  | ![Dielectric，粗糙度 = 1](media/dielectric-1.png)  |
+| 金屬      | ![金屬，粗糙度 = 0](media/metallic-0.png)  | ![金屬，粗糙度 = 0.25](media/metallic-0.25.png)    | ![金屬，粗糙度 = 0。5](media/metallic-0.5.png)    | ![金屬，粗糙度 = 0.75](media/metallic-0.75.png)    | ![金屬，粗糙度 = 1](media/metallic-1.png)    |
 
 如需光源模型的詳細資訊，請參閱[材質](../../concepts/materials.md)章節。
 
@@ -84,7 +84,7 @@ void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
             }
             else
             {
-                printf("Texture loading failed!");
+                printf("Texture loading failed!\n");
             }
         });
 }
@@ -121,20 +121,25 @@ Azure 遠端轉譯提供一些永遠可供使用的內建環境對應。 所有�
 
 |識別碼                         | 描述                                              | 圖例                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
-|builtin://Autoshop                 | 各種帶狀光源，明亮的室內基本光源    | ![Autoshop](media/autoshop.png)
-|builtin://BoilerRoom               | 明亮的室內光源設定，多個窗戶光線      | ![BoilerRoom](media/boiler-room.png)
-|builtin://ColorfulStudio           | 中等光源室內設定的不同色彩光線  | ![ColorfulStudio](media/colorful-studio.png)
-|builtin://Hangar                   | 適度明亮的環境大廳光線                     | ![SmallHangar](media/hangar.png)
-|builtin://IndustrialPipeAndValve   | 具有深淺對比度的黯淡室內設定              | ![IndustrialPipeAndValve](media/industrial-pipe-and-valve.png)
-|builtin://Lebombo                  | 日間環境房間光線，明亮窗戶區域光線     | ![Lebombo](media/lebombo.png)
-|builtin://SataraNight              | 具有許多周圍光線的黑夜天空和地面   | ![SataraNight](media/satara-night.png)
-|builtin://SunnyVondelpark          | 明亮陽光與陰影對比                      | ![SunnyVondelpark](media/sunny-vondelpark.png)
-|builtin://Syferfontein             | 中度地面光源的清澈天空光線            | ![Syferfontein](media/syferfontein.png)
-|builtin://TearsOfSteelBridge       | 適度的變化陽光和陰影                         | ![TearsOfSteelBridge](media/tears-of-steel-bridge.png)
-|builtin://VeniceSunset             | 接近黃昏的夜間日落光線                    | ![VeniceSunset](media/venice-sunset.png)
-|builtin://WhippleCreekRegionalPark | 明亮、鬱鬱蔥蔥綠色和白色色調，黯淡的地面 | ![WhippleCreekRegionalPark](media/whipple-creek-regional-park.png)
-|builtin://WinterRiver              | 具有明亮環境地面光線的日間                 | ![WinterRiver](media/winter-river.png)
-|builtin://DefaultSky               | 與 TearsOfSteelBridge 相同                               | ![DefaultSky](media/tears-of-steel-bridge.png)
+|builtin://Autoshop                 | 各種帶狀光源，明亮的室內基本光源    | ![用來照亮物件的 Autoshop skybox](media/autoshop.png)
+|builtin://BoilerRoom               | 明亮的室內光源設定，多個窗戶光線      | ![用來照亮物件的 BoilerRoom skybox](media/boiler-room.png)
+|builtin://ColorfulStudio           | 中等光源室內設定的不同色彩光線  | ![用來照亮物件的 ColorfulStudio skybox](media/colorful-studio.png)
+|builtin://Hangar                   | 適度明亮的環境大廳光線                     | ![用來照亮物件的 SmallHangar skybox](media/hangar.png)
+|builtin://IndustrialPipeAndValve   | 具有深淺對比度的黯淡室內設定              | ![用來照亮物件的 IndustrialPipeAndValve skybox](media/industrial-pipe-and-valve.png)
+|builtin://Lebombo                  | 日間環境房間光線，明亮窗戶區域光線     | ![用來照亮物件的 Lebombo skybox](media/lebombo.png)
+|builtin://SataraNight              | 具有許多周圍光線的黑夜天空和地面   | ![用來照亮物件的 SataraNight skybox](media/satara-night.png)
+|builtin://SunnyVondelpark          | 明亮陽光與陰影對比                      | ![用來照亮物件的 SunnyVondelpark skybox](media/sunny-vondelpark.png)
+|builtin://Syferfontein             | 中度地面光源的清澈天空光線            | ![用來照亮物件的 Syferfontein skybox](media/syferfontein.png)
+|builtin://TearsOfSteelBridge       | 適度的變化陽光和陰影                         | ![用來照亮物件的 TearsOfSteelBridge skybox](media/tears-of-steel-bridge.png)
+|builtin://VeniceSunset             | 接近黃昏的夜間日落光線                    | ![用來照亮物件的 VeniceSunset skybox](media/venice-sunset.png)
+|builtin://WhippleCreekRegionalPark | 明亮、鬱鬱蔥蔥綠色和白色色調，黯淡的地面 | ![用來照亮物件的 WhippleCreekRegionalPark skybox](media/whipple-creek-regional-park.png)
+|builtin://WinterRiver              | 具有明亮環境地面光線的日間                 | ![用來照亮物件的 WinterRiver skybox](media/winter-river.png)
+|builtin://DefaultSky               | 與 TearsOfSteelBridge 相同                               | ![用來照亮物件的 DefaultSky skybox](media/tears-of-steel-bridge.png)
+
+## <a name="api-documentation"></a>API 文件
+
+* [C # RemoteManager. SkyReflectionSettings 屬性](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
+* [C + + RemoteManager：： SkyReflectionSettings ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
 
 ## <a name="next-steps"></a>後續步驟
 

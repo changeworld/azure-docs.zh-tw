@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 62c4813caa1d35f20824223c77fb3a652b0cc6b8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.date: 09/09/2020
+ms.openlocfilehash: 06c09144fc112d6f095271c510fa33b816e8f906
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182572"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612651"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Data Lake Storage Gen2 中複製和轉換資料
 
@@ -68,7 +68,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 - [Azure 資源的受控識別驗證](#managed-identity)
 
 >[!NOTE]
->使用 PolyBase 將資料載入 SQL 資料倉儲時，如果已設定來源 Data Lake Storage Gen2 搭配虛擬網路端點使用，您必須依照 PolyBase 的要求使用受控識別驗證。 如需更多設定必要條件，請參閱[受控識別驗證](#managed-identity)一節。
+>使用 PolyBase 將資料載入 Azure Synapse Analytics (先前的 SQL 資料倉儲) 中，如果您的來源 Data Lake Storage Gen2 已設定為使用虛擬網路端點，您必須使用 PolyBase 所要求的受控識別驗證。 如需更多設定必要條件，請參閱[受控識別驗證](#managed-identity)一節。
 
 ### <a name="account-key-authentication"></a>帳戶金鑰驗證
 
@@ -131,12 +131,16 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 | type | 類型屬性必須設為 **AzureBlobFS**。 |是 |
 | url | 具有 `https://<accountname>.dfs.core.windows.net` 模式的 Data Lake Storage Gen2 所適用的端點。 | 是 |
 | servicePrincipalId | 指定應用程式的用戶端識別碼。 | 是 |
-| servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標記為 `SecureString`，將其安全地儲存在 Data Factory 中。 或者，可以[參考 Azure Key Vault 中儲存的認證](store-credentials-in-key-vault.md)。 | 是 |
+| servicePrincipalCredentialType | 要用於服務主體驗證的認證類型。 允許的值為 **ServicePrincipalKey** 和 **ServicePrincipalCert**。 | 是 |
+| servicePrincipalCredential | 服務主體認證。 <br/> 當您使用 **ServicePrincipalKey** 做為認證類型時，請指定應用程式的金鑰。 將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中，或 [參考儲存在 Azure Key Vault 中的密碼](store-credentials-in-key-vault.md)。 <br/> 當您使用 **ServicePrincipalCert** 作為認證時，請參考 Azure Key Vault 中的憑證。 | 是 |
+| servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中，或 [參考儲存在 Azure Key Vault 中的密碼](store-credentials-in-key-vault.md)。 <br/> 這個屬性仍支援對的 `servicePrincipalId`  +  `servicePrincipalKey` 。 當 ADF 新增服務主體憑證驗證時，服務主體驗證的新模型為 `servicePrincipalId`  +  `servicePrincipalCredentialType`  +  `servicePrincipalCredential` 。 | 否 |
 | tenant | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可加以擷取。 | 是 |
 | azureCloudType | 針對服務主體驗證，請指定您的 Azure Active Directory 應用程式註冊所在的 Azure 雲端環境類型。 <br/> 允許的值為 **AzurePublic**、 **AzureChina**、 **AzureUsGovernment**和 **AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路中，則可使用 Azure Integration Runtime 或自我裝載整合執行階段。 若未指定，則會使用預設 Azure Integration Runtime。 |否 |
 
-**範例︰**
+**範例：使用服務主體金鑰驗證**
+
+您也可以將服務主體金鑰儲存在 Azure Key Vault 中。
 
 ```json
 {
@@ -146,9 +150,38 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
         "typeProperties": {
             "url": "https://<accountname>.dfs.core.windows.net", 
             "servicePrincipalId": "<service principal id>",
-            "servicePrincipalKey": {
+            "servicePrincipalCredentialType": "ServicePrincipalKey",
+            "servicePrincipalCredential": {
                 "type": "SecureString",
                 "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**範例：使用服務主體憑證驗證**
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalCredentialType": "ServicePrincipalCert",
+            "servicePrincipalCredential": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<AKV reference>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<certificate name in AKV>" 
             },
             "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
         },
@@ -177,11 +210,11 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 >如果您使用 Data Factory UI 進行撰寫，而且未在 IAM 中使用「儲存體 Blob 資料讀取者/參與者」角色設定受控識別，則在進行測試連線或瀏覽/導覽資料夾時，請選擇 [測試與檔案路徑的連線] 或 [從指定的路徑瀏覽]，然後指定具有 [讀取 + 執行] 權限的路徑以繼續。
 
 >[!IMPORTANT]
->如果您使用 PolyBase 將資料從 Data Lake Storage Gen2 載入至 SQL 資料倉儲，使用受控識別驗證進行 Data Lake Storage Gen2 時，請務必同時遵循 [本指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) 中的步驟1和步驟2，以 1) 向 Azure Active Directory (Azure AD) 和 2) 將儲存體 Blob 資料參與者角色指派給您的伺服器;其餘部分則由 Data Factory 處理。 如果已設定您的 Data Lake Storage Gen2 搭配 Azure 虛擬網路端點使用，若要使用 PolyBase 來載入資料，您必須使用 PolyBase 所要求的受控識別驗證。
+>如果您使用 PolyBase 將資料從 Data Lake Storage Gen2 載入至 Azure Synapse Analytics (先前為 SQL 資料倉儲) ，則在使用適用于 Data Lake Storage Gen2 的受控識別驗證時，請確定您也遵循 [本指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) 中的步驟1和步驟2，以將您的) Azure Active Directory (Azure AD 和 2) 將儲存體 Blob 資料參與者角色指派給您的伺服器;其餘部分則由 Data Factory 處理。 如果已設定您的 Data Lake Storage Gen2 搭配 Azure 虛擬網路端點使用，若要使用 PolyBase 來載入資料，您必須使用 PolyBase 所要求的受控識別驗證。
 
 以下是連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設為 **AzureBlobFS**。 |是 |
 | url | 具有 `https://<accountname>.dfs.core.windows.net` 模式的 Data Lake Storage Gen2 所適用的端點。 | 是 |
@@ -213,7 +246,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 在格式型資料集內的 `location` 設定下，Data Lake Storage Gen2 支援下列屬性：
 
-| 屬性   | 說明                                                  | 必要 |
+| 屬性   | 描述                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 資料集中 `location` 下的 type 屬性必須設定為 **AzureBlobFSLocation**。 | 是      |
 | fileSystem | Data Lake Storage Gen2 檔案系統名稱。                              | 否       |
@@ -263,7 +296,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 在格式型複製來源內的 `storeSettings` 設定下，Data Lake Storage Gen2 支援下列屬性：
 
-| 屬性                 | 說明                                                  | 必要                                      |
+| 屬性                 | 描述                                                  | 必要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureBlobFSReadSettings**。 | 是                                           |
 | 尋找要複製的檔案： |  |  |
@@ -327,7 +360,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 在格式型複製接收器內的 `storeSettings` 設定下，Data Lake Storage Gen2 支援下列屬性：
 
-| 屬性                 | 說明                                                  | 必要 |
+| 屬性                 | 描述                                                  | 必要 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureBlobFSWriteSettings**。 | 是      |
 | copyBehavior             | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 若已指定檔案名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否       |
@@ -523,7 +556,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設為 **AzureBlobFSFile**。 |是 |
 | folderPath | Data Lake Storage Gen2 中資料夾的路徑。 若未指定，它會指向根。 <br/><br/>支援萬用字元篩選。 允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 如果實際資料夾名稱內有萬用字元或逸出字元 `^`，請使用此逸出字元來逸出。 <br/><br/>範例：filesystem/folder/。 如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 |否 |
@@ -568,7 +601,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 ### <a name="legacy-copy-activity-source-model"></a>舊版複製活動來源模型
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設為 **AzureBlobFSSource**。 |是 |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。<br/>允許的值為 **true** (預設值) 和 **false**。 | 否 |
@@ -608,7 +641,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 ### <a name="legacy-copy-activity-sink-model"></a>舊版複製活動接收模型
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收的類型屬性必須設為 **AzureBlobFSSink**。 |是 |
 | copyBehavior | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 若已指定檔案名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否 |
