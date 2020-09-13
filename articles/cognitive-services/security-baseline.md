@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3633afa3ed7d3dc9ba3d85bd7542ef9838881c5b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 796ef0b82c15940ce9200e0b50916ca657f10b99
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89225643"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393888"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>認知服務的 Azure 安全性基準
 
@@ -872,7 +872,9 @@ Microsoft 會管理 Azure 認知服務的基礎結構，並已實行嚴格的控
 
 * [如何建立 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [如何使用受控識別來提供 Key Vault authentication](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [如何驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [如何指派 Key Vault 存取原則](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure 資訊安全中心監視**：是
 

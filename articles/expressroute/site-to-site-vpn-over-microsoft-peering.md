@@ -2,25 +2,25 @@
 title: Azure ExpressRoute：透過 Microsoft 對等互連設定 S2S VPN
 description: 使用站對站 VPN 閘道，透過 ExpressRoute Microsoft 對等互連線路，設定 IPsec/IKE 與 Azure 的連線。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 571ed0201fea11f6770ec3aa7e72db10d49e7b01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 366f27a0e2a22e9aa10dda20e105bf644255bdd4
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738153"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393134"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>透過 ExpressRoute Microsoft 對等互連，設定站對站 VPN
 
 本文可協助您在內部部署網路與 Azure 虛擬網路 (VNet) 之間，透過 ExpressRoute 私人連線，設定安全加密的連線。 您可以利用 Microsoft 對等互連，在選取的內部部署網路與 Azure VNet 之間，建立站對站 IPsec/IKE VPN 通道。 透過 ExpressRoute 設定安全通道可以在資料交換時，實現機密性、禁止重新播放、真實性和完整性。
 
 >[!NOTE]
->當您透過 Microsoft 對等互連設定站對站 VPN 時，您必須支付 VPN 閘道與 VPN 輸出的費用。 如需詳細資訊，請參閱[VPN 閘道定價](https://azure.microsoft.com/pricing/details/vpn-gateway)。
+>當您透過 Microsoft 對等互連設定站對站 VPN 時，您必須支付 VPN 閘道與 VPN 輸出的費用。 如需詳細資訊，請參閱 [VPN 閘道定價](https://azure.microsoft.com/pricing/details/vpn-gateway)。
 >
 >
 
@@ -67,7 +67,7 @@ ms.locfileid: "84738153"
 
 ## <a name="2-configure-route-filters"></a><a name="routefilter"></a>2. 設定路由篩選
 
-路由篩選可讓您識別想要透過 ExpressRoute 線路的 Microsoft 對等互連使用的服務。 基本上，它是所有 BGP 社區值的允許清單。 
+路由篩選可讓您識別想要透過 ExpressRoute 線路的 Microsoft 對等互連使用的服務。 這基本上是所有 BGP 社區值的允許清單。 
 
 ![路由篩選](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "84738153"
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-下列部分輸出顯示已從 \* 243.229.34 與 ASN 12076 （MSEE）收到68首碼：
+下列部分輸出顯示已從 12076 243.229.34 收到68首碼 \* (MSEE) ：
 
 ```
 ...
@@ -475,7 +475,7 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 !
 ```
 
-## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. 設定 VPN 裝置篩選和防火牆（選擇性）
+## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. 設定 VPN 裝置篩選和防火牆 (選用) 
 
 根據您的需求，設定防火牆和篩選。
 
@@ -707,7 +707,7 @@ RPKI validation codes: V valid, I invalid, N Not found
 Total number of prefixes 2
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [設定 ExpressRoute 的網路效能監控](how-to-npm.md)
 

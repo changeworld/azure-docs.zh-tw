@@ -1,19 +1,19 @@
 ---
 title: 建立以路由為基礎的 VPN 閘道：入口網站
 titleSuffix: Azure VPN Gateway
-description: 使用 Azure 入口網站來快速建立路由型 Azure VPN 閘道，以用於內部部署網路的 VPN 連線，或連接虛擬網路。
+description: 使用 Azure 入口網站來快速建立以路由為基礎的 Azure VPN 閘道、內部部署網路的 VPN 連線，或連接虛擬網路。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/03/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: e6d44c9a92ad239c37620ee2e19efcc1777ec3de
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 104d911164d0194efba41f1405c17fc240e8906d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032624"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393763"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>使用 Azure 入口網站建立路由型 VPN 閘道
 
@@ -25,7 +25,7 @@ ms.locfileid: "88032624"
 
 [!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="configure-and-create-the-gateway"></a><a name="gwvalues"></a>設定並建立閘道
+## <a name="configure-and-create-the-gateway"></a><a name="gwvalues"></a>設定及建立閘道
 
 此步驟將帶您建立 VNet 的虛擬網路閘道。 建立閘道通常可能需要 45 分鐘或更久，視選取的閘道 SKU 而定。
 
@@ -34,7 +34,7 @@ ms.locfileid: "88032624"
 [!INCLUDE [Create a gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 >[!NOTE]
->基本閘道 SKU 不支援 IKEv2 或 RADIUS 驗證。 如果您打算讓 Mac 用戶端連線到您的虛擬網路，請勿使用基本 SKU。
+>基本閘道 SKU 不支援 IKEv2 或 RADIUS 驗證。 如果您計畫讓 Mac 用戶端連線到您的虛擬網路，請不要使用基本 SKU。
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
@@ -46,9 +46,9 @@ ms.locfileid: "88032624"
 
 2. 在裝置清單中，按一下 [VNet1GW]**** 以檢視詳細資訊。
 
-   ![觀看 VPN 閘道](./media/create-routebased-vpn-gateway-portal/view-gateway.png "觀看 VPN 閘道")
+   ![查看 VPN 閘道](./media/create-routebased-vpn-gateway-portal/view-gateway.png "查看 VPN 閘道")
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 閘道建立完成之後，您便可在您的虛擬網路與另一個 VNet 之間建立連線。 或是在您的虛擬網路與內部部署位置之間建立連線。
 

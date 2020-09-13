@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 閘道：建立以路由為基礎的閘道： PowerShell
-description: 使用 PowerShell 來快速建立路由型 Azure VPN 閘道，以用於內部部署網路的 VPN 連線，或連接虛擬網路。
+description: 使用 PowerShell 快速建立以路由為基礎的 Azure VPN 閘道、適用于內部部署網路的 VPN 連線，或連接虛擬網路。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 686732716b26e8e82aa98d445cd04b0d311cf23a
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 8b6ab5dcbd38925afbd98381e427426d27110a53
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035530"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393508"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>使用 PowerShell 來建立路由型 VPN 閘道
 
@@ -28,7 +28,7 @@ ms.locfileid: "88035530"
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 建立資源群組。 如果您在本機執行 PowerShell，請以較高的許可權開啟 PowerShell 主控台，並使用命令連接到 Azure `Connect-AzAccount` 。
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 建立資源群組。 如果您在本機執行 PowerShell，請使用較高的許可權開啟 PowerShell 主控台，並使用命令連接到 Azure `Connect-AzAccount` 。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name TestRG1 -Location EastUS
@@ -209,7 +209,7 @@ IpTags                   : {}
 Remove-AzResourceGroup -Name TestRG1
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 閘道建立完成之後，您便可在您的虛擬網路與另一個 VNet 之間建立連線。 或是在您的虛擬網路與內部部署位置之間建立連線。
 

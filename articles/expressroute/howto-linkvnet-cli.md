@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：將 VNet 連結至線路： CLI
 description: 本文說明如何使用 Resource Manager 部署模型和 CLI 將虛擬網路 (VNet) 連結至 Azure ExpressRoute 線路。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.author: cherylmc
-ms.openlocfilehash: 3d51409baf9d5ca6ce90f1367ac128d7d47a9757
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.author: duau
+ms.openlocfilehash: ac36e303cbeaf5167b5bbec3cea503c37b276058
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325248"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393202"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>使用 CLI 將虛擬網路連線到 ExpressRoute 線路
 
@@ -22,8 +22,8 @@ ms.locfileid: "87325248"
 > * [Azure 入口網站](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [影片-Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> * [PowerShell （傳統）](expressroute-howto-linkvnet-classic.md)
+> * [影片 - Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [PowerShell (傳統)](expressroute-howto-linkvnet-classic.md)
 > 
 
 ## <a name="configuration-prerequisites"></a>組態必要條件
@@ -153,7 +153,7 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 *RoutingWeight* 的範圍是從 0 到 32000。 預設值為 0。
 
 ## <a name="configure-expressroute-fastpath"></a>設定 ExpressRoute FastPath 
-如果您的虛擬網路閘道是 Ultra 效能或 ErGw3AZ，您可以啟用[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 可改善資料路徑效能，例如每秒封包數和內部部署網路與虛擬網路之間的每秒連線數。 
+如果您的虛擬網路閘道為 Ultra 效能或 ErGw3AZ，您可以啟用 [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 可改善資料路徑效能，例如每秒的封包數，以及內部部署網路與虛擬網路之間的每秒連線數。 
 
 **在新連接上設定 FastPath**
 

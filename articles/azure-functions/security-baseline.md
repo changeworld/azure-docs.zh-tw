@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5609df554e78996e50dcc57e200bb1dc1282cfb0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230495"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394086"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>適用于 Azure Functions 的 Azure 安全性基準
 
@@ -960,7 +960,9 @@ Microsoft 管理 Azure Functions 的基礎結構，並已實行嚴格的控制�
 
 - [如何使用 App Service 和 Azure Functions 的受控身分識別](../app-service/overview-managed-identity.md)
 
-- [如何使用受控識別來提供 Key Vault authentication](../key-vault/general/managed-identity.md)
+* [如何驗證 Key Vault](../key-vault/general/authentication.md)
+
+* [如何指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-portal.md)
 
 - [使用 App Service 和 Azure Functions 的 Key Vault 參考](../app-service/app-service-key-vault-references.md)
 

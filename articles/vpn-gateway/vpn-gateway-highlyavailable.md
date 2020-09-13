@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/24/2016
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 91fb0896238881130bd02916f8fd579eee9bd16b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f5fd8433f8de4dab39a73e889a71c4b262dc924
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75779615"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394494"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性跨單位和 VNet 對 VNet 連線
 本文針對使用 Azure VPN 閘道的跨單位和 VNet 對 VNet 連線提供高可用性組態選項的概觀。
@@ -75,6 +75,6 @@ ms.locfileid: "75779615"
 
 這可確保任何計劃性維護事件的兩個虛擬網路之間一律有一組通道，以提供更好的可用性。 即使適用於跨單位連線的相同拓撲需要兩個連線，如上所示的 VNet 對 VNet 拓樸對每個閘道只需要一個連線。 此外，除非透過 VNet 對 VNet 連線的傳輸路由是必要的，否則 BGP 是選擇性的。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需設定主動-主動跨單位和 VNet 對 VNet 連線的步驟，請參閱[設定跨單位和 VNet 對 VNet 連線的主動-主動 VPN 閘道](vpn-gateway-activeactive-rm-powershell.md)。
 

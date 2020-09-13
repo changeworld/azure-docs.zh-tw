@@ -2,17 +2,17 @@
 title: Azure ExpressRoute：設定線路的 NPM
 description: 設定 Azure ExpressRoute 線路的雲端式網路監視 (NPM)。 這包括透過 ExpressRoute 私人對等互連和 Microsoft 對等互連進行監視。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
-ms.author: cherylmc
-ms.openlocfilehash: 05c21f4f3f0af0de524db75ce9e6feb38d98c24e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 0783675450bb6ddf2de7d012a6870f5e4c90408d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738374"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393657"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>設定 ExpressRoute 的網路效能監控
 
@@ -59,7 +59,7 @@ ms.locfileid: "84738374"
 
    ![入口網站](./media/how-to-npm/3.png)<br><br>
 2. 在 [網路效能監視器]**** 主頁面底部，按一下 [建立]**** 以開啟 [網路效能監視器 - 建立新的解決方案]**** 頁面。 按一下 [Log Analytics 工作區 - 選取工作區]**** 以開啟 [工作區] 頁面。 按一下 [+ 建立新工作區]**** 以開啟 [工作區] 頁面。
-3. 在 [ **Log Analytics 工作區**] 頁面上，選取 [**新建**]，然後設定下列設定：
+3. 在 [ **Log Analytics 工作區** ] 頁面上，選取 [ **建立新**的]，然後設定下列設定：
 
    * Log Analytics 工作區：輸入您工作區的名稱。
    * 訂用帳戶 - 如果您有多個訂用帳戶，請選擇要與新工作區建立關聯的帳戶。
@@ -96,10 +96,10 @@ ms.locfileid: "84738374"
   >
 
 1. 執行**安裝程式**，以在您想要用於監視 ExpressRoute 的每部伺服器上安裝代理程式。 您用來進行監視的伺服器可以是 VM 或內部部署伺服器，而且必須能夠存取網際網路。 您必須至少在內部部署環境安裝一個代理程式，以及在 Azure 中您需要監視的每個網路區段安裝一個代理程式。
-2. 在 [歡迎] 頁面中按 [下一步]。
-3. 閱讀 [**授權條款**] 頁面上的授權，然後按一下 [**我同意**]。
-4. 在 [**目的地資料夾**] 頁面上，變更或保留預設的安裝資料夾，然後按 **[下一步]**。
-5. 在 [**代理程式安裝選項**] 頁面上，您可以選擇將代理程式連線至 Azure 監視器記錄或 Operations Manager。 或者，如果您想要稍後設定代理程式，則可以將選項留白。 進行選擇後，按 [下一步]****。
+2. 在 [歡迎使用]  頁面，按 [下一步]  。
+3. 在 [ **授權條款** ] 頁面上，閱讀授權，然後按一下 [ **我同意**]。
+4. 在 [ **目的地資料夾** ] 頁面上，變更或保留預設的安裝資料夾，然後按 **[下一步]**。
+5. 在 [ **代理程式安裝選項** ] 頁面上，您可以選擇將代理程式連線到 Azure 監視器記錄檔或 Operations Manager。 或者，如果您想要稍後設定代理程式，則可以將選項留白。 進行選擇後，按 [下一步]****。
 
    * 如果您選擇連線到 [Azure Log Analytics]****，請貼上您在上一節複製到「記事本」中的 [工作區識別碼]**** 和 [工作區金鑰 (主要金鑰)]****。 然後按 [下一步] ****。
 
@@ -110,9 +110,9 @@ ms.locfileid: "84738374"
    * 在 [代理程式動作帳戶]**** 頁面上，選擇 [本機系統]**** 帳戶或 [網域或本機電腦]**** 帳戶。 然後按 [下一步] ****。
 
      ![帳戶](./media/how-to-npm/10.png)
-6. 在 [**安裝準備就緒**] 頁面上，檢查您的選擇，然後按一下 [**安裝**]。
+6. 在 [ **安裝準備就緒** ] 頁面上，檢查您的選擇，然後按一下 [ **安裝**]。
 7. 在 [設定成功完成] 頁面上，按一下 [完成]。
-8. 完成時，[Microsoft Monitoring Agent] 會出現在 [控制台] 中。 您可以在該處檢查設定，並確認代理程式已連線到 Azure 監視器記錄。 連線後，代理程式會顯示訊息︰**Microsoft Monitoring Agent 已成功連線到 Microsoft Operations Management Suite 服務**。
+8. 完成時，[Microsoft Monitoring Agent] 會出現在 [控制台] 中。 您可以在該處檢查您的設定，並確認代理程式已連線至 Azure 監視器記錄。 連線後，代理程式會顯示訊息︰**Microsoft Monitoring Agent 已成功連線到 Microsoft Operations Management Suite 服務**。
 
 9. 請針對您需要監視的每個 VNET 重複此程序。
 
@@ -136,7 +136,7 @@ ms.locfileid: "84738374"
 1. 在具有監視代理程式的伺服器上，開啟 [控制台]****。
 2. 開啟 [Microsoft Monitoring Agent]****。
 3. 按一下 [Azure Log Analytics]**** 索引標籤。
-4. 在 [**狀態**] 資料行中，您應該會看到代理程式已成功連線到 Azure 監視器記錄。
+4. 在 [ **狀態** ] 資料行中，您應該會看到代理程式已成功連線到 Azure 監視器記錄檔。
 
    ![status](./media/how-to-npm/12.png)
 
@@ -238,7 +238,7 @@ NPM 頁面包含 ExpressRoute 頁面，當中顯示 ExpressRoute 線路和對等
 
 #### <a name="trend-of-loss-latency-and-throughput"></a><a name="trend"></a>遺失、延遲及輸送量的趨勢
 
-頻寬、延遲及遺失圖表是互動式圖表。 您可以使用滑鼠控制項將這些圖表的任何部分放大。 您也可以按一下位於左上方 [動作] 按鈕底下的 [**日期/時間**]，以查看其他間隔的頻寬、延遲及遺失資料。
+頻寬、延遲及遺失圖表是互動式圖表。 您可以使用滑鼠控制項將這些圖表的任何部分放大。 您也可以按一下位於左上方 [動作] 按鈕底下的 [ **日期/時間**]，以查看其他間隔的頻寬、延遲及遺失資料。
 
 ![趨勢](./media/how-to-npm/16.png)
 

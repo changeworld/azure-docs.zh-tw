@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 5c3586e9ba405cb5a7338b8f7f22858a238b9271
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 15d7b11ed49880a81e52c48a93a72e1491a5b645
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717246"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394324"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>可供 Azure HDInsight 使用的 Apache Hadoop 元件和版本
 
@@ -78,7 +78,7 @@ Azure HDInsight 支援多個可隨時部署的 Hadoop 叢集版本。 在 2017 �
 | HDInsight 版本 | VM OS | 發行日期 | 支援到期日 | 停用日期 | 高可用性 |  Azure 入口網站中的可用性 |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |是 |是 |
-| HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日      | * 2021 年6月31日 |2021年6月31日 |是 |是 |
+| HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日      | * 2021 年6月30日 |2021年6月30日 |是 |是 |
 
 * 我們即將擴充特定 HDInsight 3.6 叢集類型的支援時間範圍
 
