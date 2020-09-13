@@ -1,7 +1,7 @@
 ---
 title: 自動化 ML 遠端計算目標
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在具有 Azure Machine Learning 的 Azure Machine Learning 遠端計算目標上，使用自動化機器學習來建立模型
+description: 瞭解如何在 Azure Machine Learning 遠端計算目標上使用自動化機器學習來建立模型 Azure Machine Learning
 services: machine-learning
 author: cartacioS
 ms.author: sacartac
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 0dcb8f1f484f9c24a6376aef8836b6dc50d5278a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 58fedfe794f86a4a453614b09fcce6e803eb887f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321550"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651523"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>使用雲端中的自動化機器學習來將模型定型
 
@@ -25,15 +25,15 @@ ms.locfileid: "87321550"
 
 在 Azure Machine Learning 中，您可以在所管理的不同類型計算資源上將模型定型。 計算目標可以是本機電腦或雲端中的資源。
 
-您可以藉由新增額外的計算目標（例如 Azure Machine Learning 計算（AmlCompute），輕鬆地相應增加或相應放大您的機器學習實驗。 AmlCompute 是一種受控的計算基礎結構，可讓您輕鬆建立單一或多重節點計算。
+您可以藉由新增額外的計算目標（例如 Azure Machine Learning 計算 (AmlCompute) ，輕鬆地擴大或相應放大您的機器學習實驗。 AmlCompute 是一種受控的計算基礎結構，可讓您輕鬆建立單一或多重節點計算。
 
 在本文中，您將瞭解如何使用自動化 ML 搭配 AmlCompute 來建立模型。
 
 ## <a name="how-does-remote-differ-from-local"></a>遠端與本機有何不同？
 
-當您使用遠端計算目標時，可使用更多的功能。  如需詳細資訊，請參閱[本機和遠端計算目標](concept-automated-ml.md#local-remote)。
+當您使用遠端計算目標時，可使用更多的功能。  如需詳細資訊，請參閱 [本機和遠端計算目標](concept-automated-ml.md#local-remote)。
 
-「[使用自動化機器學習來訓練分類模型](tutorial-auto-train-models.md)」教學課程會教您如何使用本機電腦，透過自動化 ML 來訓練模型。 在本機訓練時的工作流程也適用於遠端目標。 若要從遠端進行定型，請先建立遠端計算目標，例如 AmlCompute。 接著，設定遠端資源，並在該處提交您的程式碼。
+「[使用自動化機器學習訓練分類模型](tutorial-auto-train-models.md)」教學課程會教您如何使用本機電腦，以自動化 ML 將模型定型。 在本機訓練時的工作流程也適用於遠端目標。 若要從遠端進行定型，您必須先建立遠端計算目標，例如 AmlCompute。 接著，設定遠端資源，並在該處提交您的程式碼。
 
 本文說明在遠端 AmlCompute 目標上執行自動化 ML 實驗所需的額外步驟。 以下程式碼會使用來自教學課程的工作區物件 `ws`。
 
@@ -43,9 +43,9 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>建立資源
 
-[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py)在您的工作區中建立目標（ `ws` ）（如果尚未存在）。
+[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py&preserve-view=true)在您的工作區中建立目標 (`ws`) （如果尚未存在）。
 
-**估計時間**：建立 AmlCompute 目標大約需要5分鐘。
+**預估時間**：建立 AmlCompute 目標大約需要5分鐘的時間。
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -84,15 +84,15 @@ else:
 
 您現在可以使用 `compute_target` 物件作為遠端計算目標。
 
-叢集名稱限制包括：
+群集名稱限制包括：
 + 必須少於 64 個字元。
-+ 不得包含下列任一字元：`\` ~ ! @ # $% ^ & * （） = + _ [] {} \\ \\ |;： \' \\ "， < > /？。`
++ 不得包含下列任一字元：`\` ~ ! @ # $% ^ & * ( ) = + _ [] {} \\ \\ |;： \' \\ "， < > /？。`
 
 ## <a name="access-data-using-tabulardataset-function"></a>使用 TabularDataset 函數存取資料
 
-定義 training_data 做為 [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 和標籤，並將其傳遞至中的自動化 ML [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) 。 `TabularDataset` `from_delimited_files` 根據預設，方法會將設定 `infer_column_types` 為 true，這將會自動推斷資料行類型。 
+定義 training_data 為 [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) 和標籤，並在中傳遞給自動化 ML [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) 。 `TabularDataset` `from_delimited_files` 根據預設，方法會將設定 `infer_column_types` 為 true，這將會自動推斷資料行類型。 
 
-如果您想要手動設定資料行類型，您可以設定 `set_column_types` 引數以手動設定每個資料行的類型。 在下列程式碼範例中，資料來自 sklearn 套件。
+如果您想要手動設定資料行類型，您可以將 `set_column_types` 引數設定為手動設定每個資料行的類型。 在下列程式碼範例中，資料來自 sklearn 套件。
 
 ```python
 from sklearn import datasets
@@ -200,7 +200,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-results"></a>瀏覽結果
 
-您可以使用[訓練教學課程](tutorial-auto-train-models.md#explore-the-results)中所示的相同[Jupyter widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)來查看結果的圖表和資料表。
+您可以使用與[定型教學課程](tutorial-auto-train-models.md#explore-the-results)中所示相同的[Jupyter 小工具](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)，來查看圖表和結果資料表。
 
 ```python
 from azureml.widgets import RunDetails
@@ -214,21 +214,21 @@ RunDetails(remote_run).show()
 
 小工具會顯示 URL，您可以使用它來查看並瀏覽個別執行的詳細資料。  
 
-如果您不在 Jupyter 筆記本中，可以從執行本身顯示 URL：
+如果您不在 Jupyter 筆記本中，您可以顯示來自執行本身的 URL：
 
 ```
 remote_run.get_portal_url()
 ```
 
-您的工作區中會提供相同的資訊。  若要深入瞭解這些結果，請參閱[瞭解自動化機器學習結果](how-to-understand-automated-ml.md)。
+您的工作區中提供相同的資訊。  若要深入瞭解這些結果，請參閱 [瞭解自動化機器學習結果](how-to-understand-automated-ml.md)。
 
 ## <a name="example"></a>範例
 
-下列[筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb)會示範本文中的概念。
+下列 [筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb) 示範本文中的概念。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 了解[如何設定自動訓練的設定](how-to-configure-auto-train.md)。
-* 請參閱自動化 ML 實驗中啟用模型 interpretability 功能的操作[說明](how-to-machine-learning-interpretability-automl.md)。
+* 請參閱自動化 ML 實驗中啟用模型可解譯性功能的操作 [說明](how-to-machine-learning-interpretability-automl.md) 。

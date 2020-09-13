@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/31/2020
-ms.openlocfilehash: 34ddea1445ef8a8eb8554add3ee8920078a6e573
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.date: 09/10/2020
+ms.openlocfilehash: 883c88386e4796f8d0cd2631b7754c06ce13d141
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182559"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657266"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Blob 儲存體中複製和轉換資料
 
@@ -67,7 +67,7 @@ ms.locfileid: "89182559"
 - [適用于 Azure 資源驗證的受控識別](#managed-identity)
 
 >[!NOTE]
->當您使用 PolyBase 將資料載入 Azure SQL 資料倉儲時，如果您的來源或暫存 Blob 儲存體已設定 Azure 虛擬網路端點，您必須使用 PolyBase 所要求的受控識別驗證。 您也必須使用具有3.18 版或更新版本的自我裝載整合執行時間。 如需更多設定的必要條件，請參閱「 [受控識別驗證](#managed-identity) 」一節。
+>當您使用 PolyBase 將資料載入 Azure Synapse Analytics (先前的 SQL 資料倉儲) 中，如果您的來源或暫存 Blob 儲存體已設定 Azure 虛擬網路端點，您必須使用 PolyBase 所要求的受控識別驗證。 您也必須使用具有3.18 版或更新版本的自我裝載整合執行時間。 如需更多設定的必要條件，請參閱「 [受控識別驗證](#managed-identity) 」一節。
 
 >[!NOTE]
 >Azure HDInsight 和 Azure Machine Learning 活動僅支援使用 Azure Blob 儲存體帳戶金鑰的驗證。
@@ -76,7 +76,7 @@ ms.locfileid: "89182559"
 
 Data Factory 支援下列儲存體帳戶金鑰驗證的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type**屬性必須設定為**AzureBlobStorage** (建議的) 或**AzureStorage** (請參閱下列附注) 。 |是 |
 | connectionString | 針對 **connectionString** 屬性指定連接到儲存體所需的資訊。 <br/> 您也可以將帳戶金鑰放在 Azure Key Vault 中，並 `accountKey` 從連接字串中提取設定。 如需詳細資訊，請參閱 Azure Key Vault 文章中的下列範例和 [存放區認證](store-credentials-in-key-vault.md) 。 |是 |
@@ -88,7 +88,7 @@ Data Factory 支援下列儲存體帳戶金鑰驗證的屬性：
 >[!NOTE]
 >如果您使用 "AzureStorage" 類型連結服務，它仍然會受到支援。 但是，我們建議您繼續使用新的 "AzureBlobStorage" 連結服務類型。
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -146,7 +146,7 @@ Data Factory 支援下列儲存體帳戶金鑰驗證的屬性：
 
 Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type**屬性必須設定為**AzureBlobStorage** (建議的) 或**AzureStorage** (請參閱下列附注) 。 |是 |
 | sasUri | 指定儲存體資源（例如 blob 或容器）的共用存取簽章 URI。 <br/>將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中。 您也可以將 SAS 權杖放在 Azure Key Vault 中，以使用自動旋轉並移除權杖部分。 如需詳細資訊，請參閱下列範例，並 [將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 |是 |
@@ -155,7 +155,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 >[!NOTE]
 >如果您使用 "AzureStorage" 類型連結服務，它仍然會受到支援。 但是，我們建議您繼續使用新的 "AzureBlobStorage" 連結服務類型。
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -230,10 +230,11 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 以下是支援 Azure Blob 儲存體連結服務的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type**屬性必須設為**AzureBlobStorage**。 |是 |
 | serviceEndpoint | 指定模式為 `https://<accountName>.blob.core.windows.net/` 的 Azure Blob 儲存體服務端點。 |是 |
+| accountKind | 指定您的儲存體帳戶種類。 允許的值為： **儲存體** (一般用途 v1) 、 **StorageV2** (一般用途 v2) 、 **BlobStorage**或 **BlockBlobStorage**。 <br/> 在資料流程中使用 Azure Blob 連結服務時，當帳戶種類為空白或「儲存體」時，不支援受控識別或服務主體驗證。 指定適當的帳戶種類、選擇不同的驗證，或將您的儲存體帳戶升級至一般用途 v2。 |否 |
 | servicePrincipalId | 指定應用程式的用戶端識別碼。 | 是 |
 | servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中，或 [參考儲存在 Azure Key Vault 中的密碼](store-credentials-in-key-vault.md)。 | 是 |
 | tenant | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 藉由將滑鼠游標停留在 Azure 入口網站的右上角來取出。 | 是 |
@@ -243,7 +244,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 >[!NOTE]
 >只有 "AzureBlobStorage" 類型連結服務支援服務主體驗證，而不是先前的 "AzureStorage" 類型連結服務。
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -252,6 +253,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
         "type": "AzureBlobStorage",
         "typeProperties": {            
             "serviceEndpoint": "https://<accountName>.blob.core.windows.net/",
+            "accountKind": "StorageV2",
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
                 "type": "SecureString",
@@ -281,14 +283,15 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
     - **作為接收**，在 **存取控制 (IAM) **中，請至少授與 **儲存體 Blob 資料參與者** 角色。
 
 >[!IMPORTANT]
->如果您使用 PolyBase 將資料從 Blob 儲存體 (載入至 SQL 資料倉儲中的來源或暫存) ，則當您針對 Blob 儲存體使用受控識別驗證時，請確定您也遵循 [本指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)中的步驟1和步驟2。 這些步驟會向 Azure AD 註冊您的伺服器，並將「儲存體 Blob 資料參與者」角色指派給您的伺服器。 Data Factory 會處理其餘部分。 如果您已使用 Azure 虛擬網路端點設定 Blob 儲存體，若要使用 PolyBase 載入資料，您必須使用 PolyBase 所要求的受控識別驗證。
+>如果您使用 PolyBase 將資料從 Blob 儲存體 (載入作為來源的資料，或) 到先前的 SQL 資料) 倉儲 Azure Synapse Analytics (，則當您針對 Blob 儲存體使用受控識別驗證時，請確定您也遵循 [本指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)中的步驟1和步驟2。 這些步驟會向 Azure AD 註冊您的伺服器，並將「儲存體 Blob 資料參與者」角色指派給您的伺服器。 Data Factory 會處理其餘部分。 如果您已使用 Azure 虛擬網路端點設定 Blob 儲存體，若要使用 PolyBase 載入資料，您必須使用 PolyBase 所要求的受控識別驗證。
 
 以下是支援 Azure Blob 儲存體連結服務的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type**屬性必須設為**AzureBlobStorage**。 |是 |
 | serviceEndpoint | 指定模式為 `https://<accountName>.blob.core.windows.net/` 的 Azure Blob 儲存體服務端點。 |是 |
+| accountKind | 指定您的儲存體帳戶種類。 允許的值為： **儲存體** (一般用途 v1) 、 **StorageV2** (一般用途 v2) 、 **BlobStorage**或 **BlockBlobStorage**。 <br/> 在資料流程中使用 Azure Blob 連結服務時，當帳戶種類為空白或「儲存體」時，不支援受控識別或服務主體驗證。 指定適當的帳戶種類、選擇不同的驗證，或將您的儲存體帳戶升級至一般用途 v2。 |否 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路) ，您可以使用 Azure integration runtime 或自我裝載整合執行時間 (。 如果未指定此屬性，服務會使用預設的 Azure integration runtime。 |否 |
 
 > [!NOTE]
@@ -302,7 +305,8 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
     "properties": {
         "type": "AzureBlobStorage",
         "typeProperties": {            
-            "serviceEndpoint": "https://<accountName>.blob.core.windows.net/"
+            "serviceEndpoint": "https://<accountName>.blob.core.windows.net/",
+            "accountKind": "StorageV2" 
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -320,7 +324,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 以下是以 `location` 格式為基礎的資料集設定中的 Azure Blob 儲存體支援的屬性：
 
-| 屬性   | 說明                                                  | 必要 |
+| 屬性   | 描述                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 資料集中位置的 **type** 屬性必須設定為 **AzureBlobStorageLocation**。 | 是      |
 | 容器  | Blob 容器。                                          | 是      |
@@ -364,7 +368,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 以下是以 `storeSettings` 格式為基礎的複製來源中設定下的 Azure Blob 儲存體支援的屬性：
 
-| 屬性                 | 說明                                                  | 必要                                      |
+| 屬性                 | 描述                                                  | 必要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | 下的 **類型** 屬性 `storeSettings` 必須設為 **AzureBlobStorageReadSettings**。 | 是                                           |
 | 尋找要複製的檔案： |  |  |
@@ -432,7 +436,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 以下是以 `storeSettings` 格式為基礎的複製接收器設定下的 Azure Blob 儲存體支援的屬性：
 
-| 屬性                 | 說明                                                  | 必要 |
+| 屬性                 | 描述                                                  | 必要 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | 下的 **類型** 屬性 `storeSettings` 必須設為 **AzureBlobStorageWriteSettings**。 | 是      |
 | copyBehavior             | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 如果有指定檔案或 Blob 名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否       |
@@ -619,7 +623,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 **type** 屬性必須設為 **AzureBlob**。 |是 |
 | folderPath | Blob 儲存體中容器和資料夾的路徑。 <br/><br/>路徑支援萬用字元篩選，但不包括容器名稱。 允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱裡面有萬用字元或這個 escape 字元，請使用來進行 escape。 <br/><br/>例如： myblobcontainer/myblobfolder/。 如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 |適用于複製或查閱活動，GetMetadata 活動不是 |
@@ -632,7 +636,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 >[!TIP]
 >若要複製資料夾下的所有 Blob，只要指定 **folderPath**。<br>若要複製指定名稱的單一 blob，請指定資料夾元件的 **folderPath** ，以及檔案名的 **檔案名** 。<br>若要複製資料夾下的 blob 子集，請為資料夾部分指定 **folderPath** ，並使用萬用字元篩選指定 **檔案名** 。 
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -664,7 +668,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 ### <a name="legacy-source-model-for-the-copy-activity"></a>複製活動的舊版來源模型
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 **type** 屬性必須設為 **>blobsource**。 |是 |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 **遞迴** 設定為 **true** 且接收是檔案型存放區時，不會在接收時複製或建立空的資料夾或子資料夾。<br/>允許的值為 **true** (預設值) 和 **false**。 | 否 |
@@ -704,7 +708,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 ### <a name="legacy-sink-model-for-the-copy-activity"></a>複製活動的舊版接收模型
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收的 **type** 屬性必須設為 **BlobSink**。 |是 |
 | copyBehavior | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 如果有指定檔案或 Blob 名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否 |

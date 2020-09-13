@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 526a4f9f5542074107700b54dcf3d2a591b08b70
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: df254e0766a755754aabcfb8c98a8c140b43cb20
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144028"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650843"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>在哪裡儲存和寫入 Azure Machine Learning 實驗的檔案
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,13 +30,13 @@ ms.locfileid: "89144028"
 
 在您可以在計算目標或本機電腦上起始實驗之前，您必須確定該計算目標可使用必要的檔案，例如您的程式碼需要執行的相依性檔案和資料檔案。
 
-Azure Machine Learning 藉由複製整個來原始目錄來執行定型腳本。 如果您有不想要上傳的機密資料，請使用 [. ignore](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) 檔案，或不要將它包含在來原始目錄中。 相反地， [使用資料存放](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)區存取您的資料。
+Azure Machine Learning 藉由複製整個來原始目錄來執行定型腳本。 如果您有不想要上傳的機密資料，請使用 [. ignore](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) 檔案，或不要將它包含在來原始目錄中。 相反地， [使用資料存放](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)區存取您的資料。
 
 而實驗快照集的儲存空間限制為 300 MB 及 (或) 2000 個檔案。
 
 基於這個理由，我們建議您：
 
-* **將您的檔案儲存在 Azure Machine Learning [資料](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)存放區中。** 這可防止實驗延遲問題，並具有從遠端計算目標存取資料的優點，這表示驗證和裝載是由 Azure Machine Learning 管理。 深入瞭解如何將資料存放區指定為來原始目錄，並將檔案上傳至您的資料存放區，以 [從您的資料存放區文章存取資料](how-to-access-data.md) 。
+* **將您的檔案儲存在 Azure Machine Learning [資料](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)存放區中。** 這可防止實驗延遲問題，並具有從遠端計算目標存取資料的優點，這表示驗證和裝載是由 Azure Machine Learning 管理。 深入瞭解如何將資料存放區指定為來原始目錄，並將檔案上傳至您的資料存放區，以 [從您的資料存放區文章存取資料](how-to-access-data.md) 。
 
 * **如果您只需要幾個資料檔案和相依性腳本，而且無法使用** 資料存放區，請將檔案放在與定型腳本相同的資料夾目錄中。 您可以 `source_directory` 直接在定型腳本中或在呼叫定型腳本的程式碼中指定這個資料夾。
 

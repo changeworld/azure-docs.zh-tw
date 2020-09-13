@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: c899d14b6e0eea8135b996aadfe2a7388a8fcb89
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 886e45e92fb3a882de167b5c59a9b5ee09a9c430
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860950"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657569"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning 主權雲端同位
 
@@ -85,7 +85,7 @@ ms.locfileid: "88860950"
 | Visual Studio Code 整合                                             | 公開預覽       | 否                 | 否          |
 | 事件方格整合                                                     | 公開預覽       | 否                 | 否          |
 | 整合 Azure 串流分析與 Azure Machine Learning               | 公開預覽       | 否                 | 否          |
-| **標籤** |   | | |
+| **標記** |   | | |
 | 標記專案管理入口網站                                        | GA                   | YES                | YES         |
 | 標籤人員入口網站                                                            | GA                   | YES                | YES         |
 | 使用私用員工標記                                          | GA                   | YES                | YES         |
@@ -96,7 +96,7 @@ ms.locfileid: "88860950"
 | Azure Machine Learning 中用來執行資料表的自訂標記              | GA                   | 否                 | 否          |
 | 公平 AzureML 整合                                               | 公開預覽       | 否                 | 否          |
 | 可解譯性 SDK                                                      | GA                   | YES                | YES         |
-| **培訓** |   | | |
+| **訓練** |   | | |
 | 實驗記錄資料流程                                              | GA                   | YES                | YES         |
 | 增強式學習                                                     | 公開預覽       | 否                 | 否          |
 | 實驗 UI                                                         | GA                   | YES                | YES         |
@@ -112,7 +112,7 @@ ms.locfileid: "88860950"
 
 ### <a name="azure-government-scenarios"></a>Azure Government 案例
 
-| 狀況                                                    | 美國-弗吉尼亞州 | 美國-亞利桑那州| 限制  |
+| 案例                                                    | 美國-弗吉尼亞州 | 美國-亞利桑那州| 限制  |
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|-------------|
 | **一般安全性設定** |   | | |
 | 服務之間的私人網路通訊                                     | 否 | 否 | 目前沒有 Private Link | 
@@ -136,7 +136,7 @@ ms.locfileid: "88860950"
 * 針對 Azure Machine Learning 計算實例，Azure Government 不提供重新整理權杖的能力。
 * 在美國亞利桑那州區域中，模型分析不支援4個 Cpu。   
 * 如果範例筆記本需要存取公用資料，Azure Government 可能無法在中運作。
-* IP 位址： [VNet 和強制通道](how-to-enable-virtual-network.md#forced-tunneling) 指示中使用的 CLI 命令不會傳回 IP 範圍。 請改用 [AZURE IP 範圍和服務標籤來進行 Azure Government](https://www.microsoft.com/download/details.aspx?id=57063) 。
+* IP 位址： [VNet 和強制通道](how-to-secure-training-vnet.md#forced-tunneling) 指示中使用的 CLI 命令不會傳回 IP 範圍。 請改用 [AZURE IP 範圍和服務標籤來進行 Azure Government](https://www.microsoft.com/download/details.aspx?id=57063) 。
 * 針對已排程的管線，我們也會提供以 blob 為基礎的觸發程式機制。 CMK 工作區不支援此機制。 若要為 CMK 工作區啟用以 blob 為基礎的觸發程式，您必須進行額外的設定。 如需詳細資訊，請參閱 [觸發從邏輯應用程式執行機器學習管線](how-to-trigger-published-pipeline.md)。
 * 防火牆：使用 Azure Government 區域時，請將下列其他主機新增至您的防火牆設定：
 
@@ -198,7 +198,7 @@ ms.locfileid: "88860950"
 | Visual Studio Code 整合                                             | 公開預覽   | 否        | N/A        |
 | 事件方格整合                                                     | 公開預覽   | YES       | N/A        |
 | 整合 Azure 串流分析與 Azure Machine Learning               | 公開預覽   | 否        | N/A        |
-| **標籤** |    | | |
+| **標記** |    | | |
 | 標記專案管理入口網站                                        | GA               | YES       | N/A        |
 | 標籤人員入口網站                                                            | GA               | YES       | N/A        |
 | 使用私用員工標記                                          | GA               | YES       | N/A        |
@@ -209,7 +209,7 @@ ms.locfileid: "88860950"
 | Azure Machine Learning 中用來執行資料表的自訂標記              | GA               | 否        | N/A        |
 | 公平 AzureML 整合                                               | 公開預覽   | 否        | N/A        |
 | 可解譯性 SDK                                                      | GA               | YES       | N/A        |
-| **培訓** |    | | |
+| **訓練** |    | | |
 | 實驗記錄資料流程                                              | GA               | YES       | N/A        |
 | 增強式學習                                                     | 公開預覽   | 否        | N/A        |
 | 實驗 UI                                                         | GA               | YES       | N/A        |
@@ -236,9 +236,9 @@ ms.locfileid: "88860950"
     | Azure Active Directory              | `https://login.microsoftonline.com`          | `https://login.chinacloudapi.cn`             |
 
 * 如果需要存取公用資料，範例筆記本可能無法運作。
-* IP 位址範圍： [VNet 強制通道](how-to-enable-virtual-network.md#forced-tunneling) 指示中使用的 CLI 命令不會傳回 IP 範圍。 請改用 [AZURE IP 範圍和服務標籤來進行 Azure 中國](https://www.microsoft.com//download/details.aspx?id=57062) 。
+* IP 位址範圍： [VNet 強制通道](how-to-secure-training-vnet.md#forced-tunneling) 指示中使用的 CLI 命令不會傳回 IP 範圍。 請改用 [AZURE IP 範圍和服務標籤來進行 Azure 中國](https://www.microsoft.com//download/details.aspx?id=57062) 。
 * 目前已啟用 Private Link 的工作區不支援 Azure Machine Learning 計算實例預覽，但在下一次部署中，將會支援 CI，以便將服務擴充至所有 AML 區域。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入瞭解 Azure Machine learning 的可用區域，請參閱 [依區域](https://azure.microsoft.com/global-infrastructure/services/)提供的產品。

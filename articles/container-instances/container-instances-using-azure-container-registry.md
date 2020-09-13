@@ -4,33 +4,35 @@ description: 瞭解如何從 Azure container registry 提取容器映射，以�
 services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0a997733e015a9f65b59ffc99cc137dae3d2d62a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: eeafc58a1f61ed0439fb29fb08e4ce8c5dd4350c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927431"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657004"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>從 Azure Container Registry 部署至 Azure 容器執行個體
 
-[Azure Container Registry](../container-registry/container-registry-intro.md) 是 Azure 型的受控容器登錄服務，可用來儲存私人 Docker 容器映像。 本文說明如何在部署至 Azure 容器實例時，提取儲存在 Azure container registry 中的容器映射。 設定登錄存取的建議方式是建立 Azure Active Directory 服務主體和密碼，並將登入認證儲存在 Azure 金鑰保存庫中。
+[Azure Container Registry](../container-registry/container-registry-intro.md) 是 Azure 型的受控容器登錄服務，可用來儲存私人 Docker 容器映像。 本文說明如何在部署至 Azure 容器實例時，提取儲存在 Azure container registry 中的容器映射。 設定登錄存取權的建議方式是建立 Azure Active Directory 服務主體和密碼，並將登入認證儲存在 Azure key vault 中。
 
 ## <a name="prerequisites"></a>必要條件
 
-**Azure container registry**：您需要 azure container registry，以及至少一個登錄中的容器映射--以完成本文中的步驟。 如果您需要登錄，請參閱[使用 Azure CLI 建立容器登錄](../container-registry/container-registry-get-started-azure-cli.md)。
+**Azure container registry**：您需要 azure container registry （在登錄中至少有一個容器映射），才能完成本文中的步驟。 如果您需要登錄，請參閱[使用 Azure CLI 建立容器登錄](../container-registry/container-registry-get-started-azure-cli.md)。
 
 **Azure CLI**：本文中的命令列範例使用 [Azure CLI](/cli/azure/)，並使用 Bash 殼層適用的格式。 您可以在本機[安裝 Azure CLI](/cli/azure/install-azure-cli)，或使用 [Azure Cloud Shell][cloud-shell-bash]。
 
 ## <a name="configure-registry-authentication"></a>設定登錄驗證
 
-在您提供「無周邊」服務和應用程式存取權的生產案例中，建議使用[服務主體](../container-registry/container-registry-auth-service-principal.md)來設定登錄存取。 服務主體可讓您將 azure [RBAC)  (azure 角色型存取控制](../container-registry/container-registry-roles.md)提供給您的容器映射。 例如，您可以設定服務主體具有僅限提取登錄的存取權。
+在您提供「無周邊」服務和應用程式存取權的生產案例中，建議使用 [服務主體](../container-registry/container-registry-auth-service-principal.md)來設定登錄存取。 服務主體可讓您將 [azure 角色型存取控制 (AZURE RBAC) ](../container-registry/container-registry-roles.md) 提供給您的容器映射。 例如，您可以設定服務主體具有僅限提取登錄的存取權。
 
-Azure Container Registry 提供額外的[驗證選項](../container-registry/container-registry-authentication.md)。
+Azure Container Registry 提供其他 [驗證選項](../container-registry/container-registry-authentication.md)。
 
 > [!NOTE]
-> 您無法使用在相同容器群組中設定的[受控識別](container-instances-managed-identity.md)，在容器群組部署期間向 Azure Container Registry 進行驗證以提取映射。
+> 您無法使用在相同容器群組中設定的 [受控識別](container-instances-managed-identity.md) ，向 Azure Container Registry 進行驗證，以在容器群組部署期間提取映射。
+
+> [!NOTE]
+> 您目前無法從部署至 Azure 虛擬網路的 [Azure Container Registry](../container-registry/container-registry-vnet.md) 提取映射。
 
 在下一節中，您會建立 Azure 金鑰保存庫和服務主體，並將服務主體的認證儲存在保存庫中。 
 
@@ -38,7 +40,7 @@ Azure Container Registry 提供額外的[驗證選項](../container-registry/con
 
 如果您在 [Azure Key Vault](../key-vault/general/overview.md) 中還沒有保存庫，使用 Azure CLI 以下列命令建立一個。
 
-將 `RES_GROUP` 變數更新為您將在其中建立金鑰保存庫之現有資源群組的名稱，將 `ACR_NAME` 更新為容器登錄的名稱。 為求簡潔，本文中的命令會假設您的登錄、金鑰保存庫和容器實例都是在相同的資源群組中建立。
+將 `RES_GROUP` 變數更新為您將在其中建立金鑰保存庫之現有資源群組的名稱，將 `ACR_NAME` 更新為容器登錄的名稱。 為了簡潔起見，本文中的命令假設您的登錄、金鑰保存庫和容器實例都是在相同的資源群組中建立。
 
  在 `AKV_NAME` 指定新金鑰保存庫的名稱。 保存庫名稱在 Azure 內必須是唯一的，長度介於 3 到 24 個英數字元之間，以字母開頭、以字母或數字作為結尾，且不可包含連續的連字號。
 
@@ -71,7 +73,7 @@ az keyvault secret set \
 
 在前面的命令中，`--role` 引數設定服務主體具有 acrpull 角色，授與主體僅限提取登錄的存取權。 若要同時授與發送和提取存取權，請將 `--role` 引數變更為 acrpush。
 
-接下來，將服務主體的*appId*儲存在保存庫中，這是您傳遞給 Azure Container Registry 進行驗證的使用者**名稱**。
+接下來，在保存庫中儲存服務主體的 *appId* ，也就是您傳遞給 Azure Container Registry 以便進行驗證的使用者 **名稱** 。
 
 ```azurecli
 # Store service principal ID in vault (the registry *username*)
@@ -136,7 +138,7 @@ az container create \
 [...]
 ```
 
-如需完整的容器群組設定，請參閱[Resource Manager 範本參考](/azure/templates/Microsoft.ContainerInstance/2019-12-01/containerGroups)。    
+如需完整的容器群組設定，請參閱 [Resource Manager 範本參考](/azure/templates/Microsoft.ContainerInstance/2019-12-01/containerGroups)。    
 
 如需參考 Resource Manager 範本中 Azure Key Vault 祕密的詳細資訊，請參閱[在部署期間使用 Azure Key Vault 傳遞安全的參數值](../azure-resource-manager/templates/key-vault-parameter.md)。
 
@@ -160,7 +162,7 @@ az container create \
 
     ![Azure Container Instances 容器群組的詳細資料檢視][aci-detailsview]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需有關 Azure Container Registry 驗證的詳細資訊，請參閱[向 Azure Container Registry 進行驗證](../container-registry/container-registry-authentication.md)。
 

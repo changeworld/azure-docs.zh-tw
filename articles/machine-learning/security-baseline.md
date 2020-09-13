@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 168aec49dc9b14af57df98ebc4c997f8dfb27c9e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ffd374f650140b5b65988578756b25f5d0fb21cc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228353"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657349"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>適用于 Azure Machine Learning 的 Azure 安全性基準
 
@@ -28,7 +28,7 @@ ms.locfileid: "89228353"
 
 您可以使用 Azure 防火牆來控制 Azure Machine Learning 工作區和公用網際網路的存取權。
 
-- [如何安全地在隔離的虛擬網路中執行實驗和推斷](how-to-enable-virtual-network.md)
+- [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)
 
 - [使用 Azure 防火牆後方的工作區進行 Azure Machine Learning](how-to-access-azureml-behind-firewall.md)
 
@@ -58,7 +58,7 @@ ms.locfileid: "89228353"
 
 - [使用 TLS 來透過 Azure Machine Learning 保護 Web 服務](how-to-secure-web-service.md)
 
-- [&amp;使用私人虛擬網路進行定型推斷期間的網路隔離](how-to-enable-virtual-network.md)
+- [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -94,7 +94,7 @@ ms.locfileid: "89228353"
 
 **指導**方針：在您組織的每個網路界限上部署您所選擇的防火牆解決方案，以偵測及/或封鎖惡意流量。
 
-從支援具有承載檢查功能的 IDS/IPS 功能的 Azure Marketplace 中選取供應專案。  如果不需要承載檢查，則可以使用 Azure 防火牆威脅情報。 Azure 防火牆威脅情報型篩選是用來警示和/或封鎖來自已知惡意 IP 位址和網域的流量。 IP 位址和網域來自 Microsoft 威脅情報摘要。
+從 Azure Marketplace 選取供應專案，以支援具有承載檢查功能的 IDS/IPS 功能。  如果不需要承載檢查，則可以使用 Azure 防火牆威脅情報。 Azure 防火牆威脅情報型篩選是用來警示和/或封鎖來自已知惡意 IP 位址和網域的流量。 IP 位址和網域來自 Microsoft 威脅情報摘要。
 
 - [如何部署 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -122,7 +122,7 @@ Azure Machine Learning 服務在虛擬網路內記錄其計算目標的服務標
 
 - [如需使用服務標記的詳細資訊](../virtual-network/service-tags-overview.md)
 
-- [針對 Azure Machine Learning 的虛擬網路](how-to-enable-virtual-network.md)
+- [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -326,7 +326,7 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用專用的系統管理帳戶
 
-**指導**方針：當建立新的工作區時，Azure Machine Learning 會隨附三個預設角色，請建立使用擁有者帳戶的標準作業程式。
+**指導**方針：當建立新的工作區時，Azure Machine Learning 會隨附三個預設角色，以建立使用擁有者帳戶的標準作業程式。
 
 您也可以使用 Azure AD Privileged Identity Management 和 Azure Resource Manager 來啟用系統管理帳戶的即時存取。 
 
@@ -402,7 +402,7 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
  
 角色存取範圍可以設定為 Azure 中的多個層級。 針對 Machine Learning，可在工作區層級管理角色，例如，您擁有工作區的擁有者存取權時，可能無法擁有包含工作區之資源群組的擁有者存取權。 這可提供更細微的存取控制，以分隔相同資源群組內的角色。 
 
-- [管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md) 
+- [管理對 Azure Machine Learning 工作區的存取](how-to-assign-roles.md) 
  
 - [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
@@ -527,7 +527,7 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
 
 **指導**方針： Azure Machine Learning 支援使用 Azure Active Directory (Azure AD) 來授權 Machine Learning 資源的要求。 使用 Azure AD 時，您可以使用 Azure 角色型存取控制 (RBAC) 將許可權授與安全性主體（可能是使用者或應用程式服務主體）。
 
-- [管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)
+- [管理對 Azure Machine Learning 工作區的存取](how-to-assign-roles.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -979,7 +979,9 @@ Azure Machine Learning 支援以客戶管理的金鑰進行資料存放區加密
 
 - [如何建立 Key Vault](/azure/key-vault/quick-create-portal)
 
-- [如何使用受控識別來提供 Key Vault authentication](/azure/key-vault/managed-identity)
+- [如何驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+- [如何指派 Key Vault 存取原則](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure 資訊安全中心監視**：是
 
@@ -990,7 +992,7 @@ Azure Machine Learning 支援以客戶管理的金鑰進行資料存放區加密
 **指導**方針： Azure Machine Learning 支援內建角色和建立自訂角色的能力。 使用受控識別，在 Azure AD 中為 Azure 服務提供自動管理的身分識別。 受控識別可讓您向支援 Azure AD authentication 的任何服務進行驗證，包括 Key Vault，而不需要在您的程式碼中提供任何認證。
 
  
-- [管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)
+- [管理對 Azure Machine Learning 工作區的存取](how-to-assign-roles.md)
 
 - [如何設定 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 

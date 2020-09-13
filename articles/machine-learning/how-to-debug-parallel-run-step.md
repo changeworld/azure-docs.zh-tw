@@ -11,17 +11,17 @@ ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 07/16/2020
-ms.openlocfilehash: 0b914059567e9a513b605ce733407465b625a909
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 8d357cea7ce809c2df6b35e08ac7da7e9d3795e9
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950012"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650418"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>ParallelRunStep 的偵錯和疑難排解
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將了解如何在 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 中對 [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) 類別進行偵錯和疑難排解。
+在本文中，您將了解如何在 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 中對 [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py&preserve-view=true) 類別進行偵錯和疑難排解。
 
 ## <a name="testing-scripts-locally"></a>在本機測試指令碼
 
@@ -90,7 +90,7 @@ def run(mini_batch):
 
 使用者可以使用 ParalleRunStep 的 side_inputs 參數，將參考資料傳遞給腳本。 提供做為 side_inputs 的所有資料集都會掛接在每個背景工作節點上。 使用者可以藉由傳遞引數來取得掛接的位置。
 
-建立包含參考資料的 [資料集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) ，並向您的工作區註冊該資料集。 將其傳至您 `ParallelRunStep` 的 `side_inputs` 參數。 此外，您可以在區段中新增其路徑， `arguments` 以輕鬆存取其掛接的路徑：
+建立包含參考資料的 [資料集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) ，並向您的工作區註冊該資料集。 將其傳至您 `ParallelRunStep` 的 `side_inputs` 參數。 此外，您可以在區段中新增其路徑， `arguments` 以輕鬆存取其掛接的路徑：
 
 ```python
 label_config = label_ds.as_named_input("labels_input")
@@ -116,6 +116,6 @@ labels_path = args.labels_dir
 
 ## <a name="next-steps"></a>後續步驟
 
-* 請參閱 SDK 參考以取得 [azureml 管線-步驟](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py) 套件的說明。 ParallelRunStep 類別的視圖參考 [檔](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?view=azure-ml-py) 。
+* 請參閱 SDK 參考以取得 [azureml 管線-步驟](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true) 套件的說明。 ParallelRunStep 類別的視圖參考 [檔](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?view=azure-ml-py&preserve-view=true) 。
 
 * 遵循搭配 ParallelRunStep 使用管線的 [advanced 教學](tutorial-pipeline-batch-scoring-classification.md) 課程。 本教學課程會示範如何將另一個檔案作為端輸入傳遞。 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5bd637f4e4a786cd4cba0f70c4b2349e354469fd
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495602"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657477"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立會重複工作流程動作或處理陣列的迴圈
 
@@ -34,9 +34,9 @@ ms.locfileid: "87495602"
 
 "Foreach" 迴圈會對每個陣列項目重複執行一或多個動作，且只能在陣列上運作。 以下是使用 "Foreach" 迴圈時的一些考量：
 
-* 根據預設，"Foreach" 迴圈中的反復專案會在相同時間或平行執行。 這種行為與電源自動化的不同之處在于， [**每個**迴圈](/power-automate/apply-to-each)一次執行一個反復專案。 不過，您可以[設定連續的 "Foreach" 迴圈反覆運算](#sequential-foreach-loop)。 例如，如果您想要使用[Delay 動作](../connectors/connectors-native-delay.md)暫停 "Foreach" 迴圈中的下一個反復專案，您必須將迴圈設定為循序執行。
+* 依預設，"Foreach" 迴圈中的反復專案會在相同時間執行，或平行執行。 此行為不同于 [Power Automate 會套用 **至每個** 迴圈](/power-automate/apply-to-each) ，其中反覆運算一次執行一次或依序執行。 不過，您可以 [設定連續的 "Foreach" 迴圈反覆運算](#sequential-foreach-loop)。 例如，如果您想要使用 [Delay 動作](../connectors/connectors-native-delay.md)暫停 "Foreach" 迴圈中的下一個反復專案，您需要將迴圈設定為循序執行。
 
-  預設行為的例外狀況是嵌套迴圈，其中的反復專案一律會依序執行，而不是以平行方式執行。 若要針對巢狀迴圈中的項目平行執行作業，請建立和[呼叫子系邏輯應用程式](../logic-apps/logic-apps-http-endpoint.md)。
+  預設行為的例外狀況是嵌套迴圈，其中反覆運算一律會循序執行，而不是平行執行。 若要針對巢狀迴圈中的項目平行執行作業，請建立和[呼叫子系邏輯應用程式](../logic-apps/logic-apps-http-endpoint.md)。
 
 * 若要在每個迴圈反覆項目的執行期間，從針對變數所執行的作業獲得可預測的結果，請循序執行這些迴圈。 例如，當並行執行的迴圈結束時，遞增、遞減和附加至變數的作業會傳回可預測的結果。 不過，在並行執行迴圈中的每個反覆項目執行期間，這些作業可能會傳回無法預測的結果。 
 
@@ -45,7 +45,7 @@ ms.locfileid: "87495602"
 
 此範例邏輯應用程式會傳送網站 RSS 摘要的每日摘要。 此應用程式會使用 "Foreach" 迴圈，針對每個新項目傳送電子郵件。
 
-1. 使用 Outlook.com 或 Office 365 Outlook 帳戶來[建立此範例邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+1. 使用 Outlook.com 帳戶或工作或學校帳戶[建立此範例邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 2. 在 RSS 觸發程序和傳送電子郵件動作之間，新增 "Foreach" 迴圈。 
 
@@ -189,7 +189,7 @@ ms.locfileid: "87495602"
 
    ![設定變數屬性](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | 屬性 | 值 | 說明 |
+   | 屬性 | 值 | 描述 |
    | -------- | ----- | ----------- |
    | **名稱** | 限制 | 變數的名稱 | 
    | **型別** | 整數 | 變數的資料類型 | 
@@ -230,7 +230,7 @@ ms.locfileid: "87495602"
 
       ![設定電子郵件內容](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-      | 屬性 | 值 | 說明 |
+      | 屬性 | 值 | 描述 |
       | -------- | ----- | ----------- | 
       | **若要** | *\<email-address\@domain>* | 收件者的電子郵件地址。 若要進行測試，請使用自己的電子郵件地址。 | 
       | **主旨** | [限制] 目前的值是**限制** | 指定電子郵件主旨。 在此範例中，請確定您已包含**限制**變數。 | 
