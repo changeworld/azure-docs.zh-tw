@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e068984e02a468169f286ab5b783e531a54bd6ed
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: b8d985587dc436d55e17c69e25295b5a58cb15b0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949774"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647491"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>管理 Azure Kubernetes Service (AKS) 中的系統節點集區
 
@@ -46,6 +46,7 @@ ms.locfileid: "88949774"
 * 系統節點集區需要至少2個個 vcpu 和4GB 記憶體的 VM SKU。
 * 系統節點集區必須支援至少30個 pod，如 pod 的 [最小值和最大值公式][maximum-pods]所述。
 * 點節點集區需要使用者節點集區。
+* 新增額外的系統節點集區，或變更哪個節點集區是系統節點集區，將 *不* 會自動移動系統 pod。 系統 pod 可以繼續在相同的節點集區上執行，即使您將它變更為使用者節點集區也一樣。 如果您刪除或縮小執行先前為系統節點集區之系統 pod 的節點集區，則會重新部署這些系統 pod，並將慣用排程新增至新的系統節點集區。
 
 您可以使用節點集區執行下列作業：
 

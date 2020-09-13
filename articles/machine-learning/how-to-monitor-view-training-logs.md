@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d06186b2ce4d8bb9143663d41f03b9508e4bd00e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 642186ef4af43127ba0d6eb6950f09e069eb79ca
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005950"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649287"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>監視和查看 ML 執行記錄和計量
 
@@ -58,7 +58,7 @@ ms.locfileid: "89005950"
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>使用 Jupyter 筆記本 widget 執行監視
 
-當您使用 **ScriptRunConfig** 方法來提交執行時，可以使用 [Jupyter 小工具](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)來監看執行的進度。 就像執行提交一樣，小工具為非同步工作，並每隔 10 至 15 秒提供即時更新，直到工作完成為止。
+當您使用 **ScriptRunConfig** 方法來提交執行時，可以使用 [Jupyter 小工具](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)來監看執行的進度。 就像執行提交一樣，小工具為非同步工作，並每隔 10 至 15 秒提供即時更新，直到工作完成為止。
 
 等待執行完成時，檢視 Jupyter 小工具。
     
@@ -125,7 +125,7 @@ RunDetails(run).show()
 |使用 2 個數字資料行記錄資料表|`run.log_table(name='Sine Wave', value=sines)`|兩個變數的折線圖|
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請嘗試下列後續步驟，以瞭解如何使用 Azure Machine Learning：
 

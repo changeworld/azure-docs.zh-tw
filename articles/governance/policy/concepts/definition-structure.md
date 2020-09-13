@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 描述如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 076493fa8fd54e9585d09a3dd352eabdee652f18
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 81e08e07236d445a4ca351a7d93e7851cad69ace
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079025"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648719"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -17,7 +17,7 @@ Azure 原則可建立資源的慣例。 原則定義會描述資源合規性[條
 
 藉由定義慣例，您可以控制成本以及更輕鬆地管理您的資源。 例如，您可以指定僅允許特定類型的虛擬機器。 或者，您可以要求資源必須有特定的標記。 原則指派會由子資源繼承。 如果原則指派套用至資源群組，則適用于該資源群組中的所有資源。
 
-您可在這裡找到原則定義結構描述：[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
+您可以在這裡找到原則定義 _>policyrule.if_ 架構： [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 使用 JSON 來建立原則定義。 原則定義中包含以下的項目︰
 
@@ -619,7 +619,7 @@ Azure 原則支援下列類型的效果：
 
   使用[適用於 Visual Studio Code 的 Azure 原則延伸模組](../how-to/extension-for-vscode.md)來檢視和探索資源屬性的別名。
 
-  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="適用於 Visual Studio Code 的 Azure 原則延伸模組" border="false":::
+  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code 的 Azure 原則擴充功能的螢幕擷取畫面，可讓您將屬性暫留在顯示別名名稱的上方。" border="false":::
 
 - Azure Resource Graph
 
@@ -711,7 +711,7 @@ Azure 原則支援下列類型的效果：
 
 如需詳細資訊，請參閱[評估 [\*] 別名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 請參閱 [計畫定義結構](./initiative-definition-structure.md)
 - 在 [Azure 原則範例](../samples/index.md)檢閱範例。

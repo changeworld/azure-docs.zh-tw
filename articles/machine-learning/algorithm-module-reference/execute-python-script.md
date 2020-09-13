@@ -10,41 +10,41 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: e3e14001758cadc8df5af3c82cb4386659a59d6a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 330c7e01b33cfdf48687c492d09fb7aab8a5e779
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843720"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648751"
 ---
 # <a name="execute-python-script-module"></a>執行 Python 腳本模組
 
-本文說明 Azure Machine Learning 設計工具 (preview) 中的 [執行 Python 腳本] 模組。
+本文說明 Azure Machine Learning 設計工具中的「執行 Python 腳本」模組 (preview) 。
 
-使用此模組來執行 Python 程式碼。 如需有關 Python 架構和設計原則的詳細資訊，請參閱[如何在 Azure Machine Learning 設計工具中執行 Python 程式碼](../how-to-designer-python.md)。
+使用此模組來執行 Python 程式碼。 如需 Python 架構和設計原則的詳細資訊，請參閱 [如何在 Azure Machine Learning 設計工具中執行 python 程式碼](../how-to-designer-python.md)。
 
 使用 Python，您可以執行現有模組不支援的工作，例如：
 
 + 使用將資料視覺化 `matplotlib` 。
-+ 使用 Python 程式庫來列舉工作區中的資料集和模型。
-+ 從匯[入資料](./import-data.md)模組不支援的來源讀取、載入和運算元據。
-+ 執行您自己的深入學習程式碼。 
++ 使用 Python 程式庫來列舉您工作區中的資料集和模型。
++ 從匯 [入資料](./import-data.md) 模組不支援的來源讀取、載入及運算元據。
++ 執行您自己的深度學習程式碼。 
 
 ## <a name="supported-python-packages"></a>支援的 Python 套件
 
-Azure Machine Learning 使用 Python 的 Anaconda 散發，其中包含許多常用的資料處理公用程式。 我們會自動更新 Anaconda 版本。 目前的版本為：
- -  適用于 Python 3.6 的 Anaconda 4.5 + 散發 
+Azure Machine Learning 使用 Python 的 Anaconda 散發，其中包含許多常用來處理資料的公用程式。 我們會自動更新 Anaconda 版本。 目前的版本為：
+ -  適用于 Python 3.6 的 Anaconda 4.5 + 散發套件 
 
-如需完整清單，請參閱[預先安裝的 Python 套件](#preinstalled-python-packages)一節。
+如需完整清單，請參閱 [預先安裝的 Python 套件](#preinstalled-python-packages)一節。
 
-若要安裝不在預先安裝清單中的封裝 (例如*scikit-learn-其他*) ，請將下列程式碼新增至您的腳本： 
+若要安裝不在預先安裝清單中的套件 (例如 *scikit-learn-其他*) ，請將下列程式碼新增至您的腳本： 
 
 ```python
 import os
 os.system(f"pip install scikit-misc")
 ```
 
-使用下列程式碼來安裝封裝以獲得更好的效能，特別是針對推斷：
+您可以使用下列程式碼來安裝封裝，以取得更好的效能，特別是針對推斷：
 ```python
 import importlib.util
 package_name = 'scikit-misc'
@@ -55,10 +55,10 @@ if spec is None:
 ```
 
 > [!NOTE]
-> 如果您的管線包含多個執行 Python 腳本模組，而這些模組需要不在預先安裝清單中的封裝，請在每個模組中安裝套件。
+> 如果您的管線包含多個執行 Python 腳本模組，而這些模組需要的套件不在預先安裝的清單中，請在每個模組中安裝套件。
 
 ## <a name="upload-files"></a>上傳檔案
-執行 Python 腳本模組支援使用[Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-)上傳檔案。
+[執行 Python 腳本] 模組支援使用 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#&preserve-view=trueupload-file-name--path-or-stream-)上傳檔案。
 
 下列範例顯示如何在執行 Python 腳本模組中上傳影像檔案：
 
@@ -96,57 +96,57 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 }
 ```
 
-管線執行完成之後，您可以在模組的右面板中預覽影像。
+管線執行完成之後，您可以在模組的右面板中預覽映射。
 
 > [!div class="mx-imgBorder"]
 > ![已上傳影像的預覽](media/module/upload-image-in-python-script.png)
 
 ## <a name="how-to-configure-execute-python-script"></a>如何設定執行 Python 腳本
 
-執行 Python 腳本模組包含範例 Python 程式碼，可供您做為起點。 若要設定執行 Python 腳本模組，請在 [ **Python 腳本**] 文字方塊中提供要執行的一組輸入和 Python 程式碼。
+[執行 Python 腳本] 模組包含可作為起點的範例 Python 程式碼。 若要設定 [執行 Python 腳本] 模組，請提供一組要在 [ **Python 腳本** ] 文字方塊中執行的輸入和 Python 程式碼。
 
-1. 將**執行 Python 腳本**模組新增至您的管線。
+1. 將 [ **執行 Python 腳本** ] 模組新增至您的管線。
 
-2. 從您想要用於輸入的設計工具，在**Dataset1**的任何資料集上加入及連接。 在您的 Python 腳本中，以**DataFrame1**的形式參考此資料集。
+2. 從您想要用於輸入的設計工具中，新增並連接 **Dataset1** 任何資料集。 在您的 Python 腳本中，以 **DataFrame1**的形式參考此資料集。
 
     資料集的使用是選擇性的。 如果您想要使用 Python 產生資料，或使用 Python 程式碼將資料直接匯入模組，請使用此方法。
 
-    此模組支援在**Dataset2**上新增第二個資料集。 以**DataFrame2**的形式參考 Python 腳本中的第二個資料集。
+    此模組支援在 **Dataset2**上新增第二個資料集。 以 **DataFrame2**的形式參考 Python 腳本中的第二個資料集。
 
-    使用此模組載入時，會自動將儲存在 Azure Machine Learning 中的資料集轉換成 pandas 的資料框架。
+    使用此模組載入時，儲存在 Azure Machine Learning 中的資料集會自動轉換成 pandas 資料框架。
 
     ![執行 Python 輸入對應](media/module/python-module.png)
 
-4. 若要包含新的 Python 套件或程式碼，請在**腳本**組合上新增包含這些自訂資源的 zip 壓縮檔案。 **腳本**組合的輸入必須是以檔案類型資料集的形式上傳到您工作區的 zip 壓縮檔案。 您可以在 [**資料集**資產] 頁面上上傳資料集。 您可以從左側模組樹狀結構的 [**我的資料集**] 清單中，將資料集模組拖曳至 [設計工具撰寫] 頁面。 
+4. 若要包含新的 Python 套件或程式碼，請在 **腳本**套件組合上新增包含這些自訂資源的壓縮檔案。 **腳本**套件組合的輸入必須是以檔案類型資料集的形式上傳至工作區的 zip 壓縮檔案。 您可以在 [ **資料集** 資產] 頁面上傳資料集。 您可以從 [設計師撰寫] 頁面上左側模組樹狀結構中的 [ **我的資料集** ] 清單，拖曳資料集模組。 
 
-    在管線執行期間，您可以使用上傳的壓縮封存中包含的任何檔案。 如果封存包含目錄結構，則會保留結構，但是您必須在路徑前面加上名為**src**的目錄。
+    在管線執行期間，可以使用上傳的 zip 封存中包含的任何檔案。 如果封存包含目錄結構，則會保留結構，但您必須在路徑前面加上名為 **src** 的目錄。
 
-5. 在 [ **Python 腳本**] 文字方塊中，輸入或貼上有效的 Python 腳本。
+5. 在 [ **Python 腳本** ] 文字方塊中，輸入或貼上有效的 Python 腳本。
 
     > [!NOTE]
-    >  撰寫腳本時請小心。 請確定沒有任何語法錯誤，例如使用未宣告的變數或未匯入模組或函數。 請特別注意預先安裝的模組清單。 若要匯入未列出的模組，請在您的腳本中安裝對應的套件，例如：
+    >  撰寫腳本時請務必小心。 請確定沒有語法錯誤，例如使用未宣告的變數或未匯入模組或函數。 請特別注意預先安裝的模組清單。 若要匯入未列出的模組，請在您的腳本中安裝對應的封裝，例如：
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")
     > ```
     
-    [ **Python 腳本**] 文字方塊已預先填入批註中的一些指示，以及用於資料存取和輸出的範例程式碼。 您必須編輯或取代此程式碼。 遵循適用于縮排和大小寫的 Python 慣例：
+    **Python 腳本**文字方塊已預先填入批註中的一些指示，以及資料存取和輸出的範例程式碼。 您必須編輯或取代此程式碼。 遵循適用于縮排和大小寫的 Python 慣例：
 
-    + 腳本必須包含名為的函式， `azureml_main` 做為此模組的進入點。
-    + 進入點函式必須有兩個輸入引數， `Param<dataframe1>` 和 `Param<dataframe2>` ，即使您的腳本中未使用這些引數也一樣。
-    + 連線到第三個輸入埠的壓縮檔案會解壓縮並儲存在目錄中 `.\Script Bundle` ，也會新增至 Python `sys.path` 。 
+    + 腳本必須包含名 `azureml_main` 為此模組的進入點的函式。
+    + 輸入點函式必須有兩個輸入引數， `Param<dataframe1>` 而且 `Param<dataframe2>` 即使您的腳本中未使用這些引數，也是如此。
+    + 連接到第三個輸入埠的壓縮檔會解壓縮並儲存在目錄中 `.\Script Bundle` ，也會新增至 Python `sys.path` 。 
 
     如果您的 .zip 檔案包含 `mymodule.py` ，請使用將它匯入 `import mymodule` 。
 
-    您可以將兩個資料集傳回至設計工具，這必須是類型的序列 `pandas.DataFrame` 。 您可以在 Python 程式碼中建立其他輸出，並直接將其寫入 Azure 儲存體。
+    您可以將兩個資料集傳回給設計工具，這必須是型別的序列 `pandas.DataFrame` 。 您可以在 Python 程式碼中建立其他輸出，並將它們直接寫入 Azure 儲存體。
 
-6. 提交管線，或選取模組並選取 [**執行選取**]，只執行 Python 腳本。
+6. 提交管線，或選取模組並選取 [ **執行選取** ]，只執行 Python 腳本。
 
     所有的資料和程式碼都會載入至虛擬機器，並使用指定的 Python 環境執行。
 
 ## <a name="results"></a>結果
 
-內嵌 Python 程式碼所進行的任何計算結果，都必須以的形式提供 `pandas.DataFrame` ，這會自動轉換成 Azure Machine Learning 的資料集格式。 然後，您可以將結果與管線中的其他模組搭配使用。
+內嵌 Python 程式碼所做的任何計算結果都必須提供為 `pandas.DataFrame` ，以自動轉換成 Azure Machine Learning 資料集格式。 然後，您可以將結果與管線中的其他模組搭配使用。
 
 此模組會傳回兩個資料集：  
   
@@ -155,7 +155,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 + **結果資料集 2**，在 Python 腳本中由第二個傳回的 pandas 資料框架所定義。
 
 ## <a name="preinstalled-python-packages"></a>預先安裝的 Python 套件
-預先安裝的套件包括：
+預先安裝的套件為：
 -    adal==1.2.2
 -    applicationinsights==0.11.9
 -    attrs = = 19.3。0
@@ -171,13 +171,13 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 -    azure-儲存體-blob = = 1.5。0
 -    azure-儲存體-通用 = = 1.4。2
 -    azureml-核心 = = 1.1.5。5
--    azureml-dataprep-native = = 14.1。0
+-    azureml-dataprep-原生 = = 14.1。0
 -    azureml-dataprep = = 1.3。5
 -    azureml-預設值 = = 1.1.5。1
 -    azureml-設計工具-傳統模組 = = 0.0.118
 -    azureml-設計工具-核心 = = 0.0.31
--    azureml-設計工具-內部 = = 0.0.18
--    azureml-模型管理-sdk = = 1.0.1 b6. post1
+-    azureml-設計工具-internal = = 0.0.18
+-    azureml-模型-管理-sdk = = 1.0.1 b6. post1
 -    azureml-管線-核心 = = 1.1。5
 -    azureml-遙測 = = 1.1.5。3
 -    backports.tempfile==1.0
@@ -204,10 +204,10 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 -    gensim==3.8.1
 -    google-api-核心 = = 1.16。0
 -    google-auth = = 1.12。0
--    google-雲端核心 = = 1.3。0
+-    google-雲端-核心 = = 1.3。0
 -    google-雲端-儲存體 = = 1.26。0
--    google 可繼續-media = = 0.5。0
--    googleapis-common-protos = = 1.51。0
+-    google 可繼續-媒體 = = 0.5。0
+-    >www.googleapis.com-common-protos = = 1.51。0
 -    gunicorn = = 19.9。0
 -    idna = = 2。9
 -    不平衡-學習 = = 0.4。3
@@ -219,7 +219,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 -    joblib = = 0.14。0
 -    json-記錄-.py = = 0。2
 -    jsonpickle = = 1。3
--    jsonschema = = 3.0。1
+-    >jsonschema.net = = 3.0。1
 -    kiwisolver==1.1.0
 -    liac-arff = = 2.4。0
 -    lightgbm==2.2.3
@@ -245,7 +245,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 -    pycparser = = 2.20
 -    pycryptodomex = = 3.7。3
 -    pyjwt = = 1.7。1
--    pyopenssl = = 19.1。0
+-    pyopenssl = = 19.1.0 版
 -    pyparsing = = 2.4。6
 -    pyrsistent = = 0.16。0
 -    python-dateutil = = 2.8。1
@@ -259,12 +259,12 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 -    scipy = = 1.4。1
 -    secretstorage = = 3.1。2
 -    setuptools = = 46.1.1. post20200323
--    六 = = 1.14。0
--    智慧型-開啟 = = 1.10。0
+-    6 = = 1.14。0
+-    smart-open = = 1.10。0
 -    urllib3 = = 1.25。8
--    websocket-client = = 0.57。0
+-    websocket-用戶端 = = 0.57。0
 -    werkzeug = = 0.16。1
--    滾輪 = = 0.34。2
+-    輪子 = = 0.34。2
 
 ## <a name="next-steps"></a>後續步驟
 

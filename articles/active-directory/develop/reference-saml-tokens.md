@@ -1,7 +1,7 @@
 ---
-title: Azure AD token & 宣告類型
-description: 可供了解及評估 Azure Active Directory (AAD) 所簽發之 SAML 2.0 和 JSON Web Token (JWT) 權杖中的宣告的指南。
-documentationcenter: na
+title: SAML 2.0 權杖宣告參考 |蔚藍
+titleSuffix: Microsoft identity platform
+description: 宣告參考，其中包含 Microsoft 身分識別平臺所發出的 SAML 2.0 權杖中包含的宣告詳細資料，包括其 JWT 對等專案。
 author: kenwith
 services: active-directory
 manager: CelesteDG
@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 06/22/2018
+ms.date: 09/09/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: bab21bfc6dba6e9cd35c8053e943cb76339e2254
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 254fa03310bac9c5c478d9297145f88773c1a7b0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114960"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648612"
 ---
-# <a name="azure-ad-saml-token-reference"></a>Azure AD SAML 權杖參考
+# <a name="saml-token-claims-reference"></a>SAML 權杖宣告參考
 
-Azure Active Directory (Azure AD) 會在處理每個驗證流程時發出數種安全性權杖。 本文件說明每種權杖的格式、安全性特性和內容。
+Microsoft 身分識別平臺會在處理每個驗證流程時發出數種類型的安全性權杖。 本檔說明 SAML 2.0 權杖的格式、安全性特性和內容。
 
 ## <a name="claims-in-saml-tokens"></a>SAML 權杖中的宣告
 
@@ -30,11 +30,11 @@ Azure Active Directory (Azure AD) 會在處理每個驗證流程時發出數種�
 > | 名稱 | 對等的 JWT 宣告 | 描述 | 範例 |
 > | --- | --- | --- | ------------|
 > |對象 | `aud` |權杖的預定接收者。 接收權杖的應用程式必須確認對象值正確無誤，並拒絕任何適用於不同對象的權杖。 | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
-> | 驗證時刻 | |記錄驗證發生的日期和時間。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
+> | 驗證時刻 | |記錄驗證發生的日期和時間。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` |
 > |驗證方法 | `amr` |識別如何驗證權杖的主體。 | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
 > |名字 | `given_name` |提供使用者的名字 (如 Azure AD 使用者物件上所設定)。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
 > |群組 | `groups` |提供代表主體群組成員資格的物件識別碼。 這些值都是唯一的 (請參閱「物件識別碼」)，而且可安全地用來管理存取權，例如強制授權以存取資源。 群組宣告中包含的群組會透過應用程式資訊清單的 "groupMembershipClaims"屬性，針對每個應用程式進行設定。 Null 值將會排除所有群組，"SecurityGroup" 值只會包含 Active Directory 安全性群組成員資格，而 "All" 值將會包含安全性群組和 Office 365 通訊群組清單。 <br><br> **注意**： <br> 如果使用者所屬的群組數目超過限制 (SAML 為 150，JWT 為 200)，則會將超額宣告新增至指向宣告來源 (包含使用者群組清單的 Graph 端點)。 (in . | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
-> | 群組超額指標 | `groups:src1` | 若為沒有長度限制 (請參閱上面的 `hasgroups`) 但是對權杖而言仍然太大的權杖要求，則會包含使用者的完整 groups 清單連結。 對於 SAML，這會新增為新的宣告，取代 `groups` 宣告。 | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
+> | 群組超額指標 | `groups:src1` | 如果權杖要求的長度不限，但對權杖而言仍然太大，則會包含使用者的完整群組清單連結。 對於 SAML，這會新增為新的宣告，取代 `groups` 宣告。 | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
 > |身分識別提供者 | `idp` |記錄驗證權杖主體的身分識別提供者。 除非使用者帳戶位於與簽發者不同的租用戶中，否則這個值與 Issuer 宣告值相同。 | `<Attribute Name=" http://schemas.microsoft.com/identity/claims/identityprovider">`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` |
 > |IssuedAt | `iat` |儲存權杖簽發的時間。 這通常用來測量權杖有效時間。 | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |簽發者 | `iss` |識別負責建構並傳回權杖的 Security Token Service (STS)。 在 Azure AD 傳回的權杖中，簽發者為 sts.windows.net。 簽發者宣告值中的 GUID 是 Azure AD 目錄的租用戶識別碼。 租用戶識別碼是目錄的不可變且可靠的識別碼。 | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
@@ -152,10 +152,9 @@ Azure Active Directory (Azure AD) 會在處理每個驗證流程時發出數種�
 </t:RequestSecurityTokenResponse>
 ```
 
-## <a name="related-content"></a>相關內容
+## <a name="next-steps"></a>接下來的步驟
 
-* 請參閱[原則資源](/graph/api/resources/policy?view=graph-rest-beta)，以深入瞭解如何使用 Microsoft Graph API 管理權杖存留期原則。
-* 如需透過 PowerShell Cmdlet 管理原則的詳細資訊和範例，包括範例，請參閱[在 Azure AD 中設定權杖存留期](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 
-* 將[自訂和選擇性宣告](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)新增至應用程式的權杖。
-* 搭配使用 [SAML 與單一登入 (SSO)](single-sign-on-saml-protocol.md)。
+* 若要深入瞭解如何使用 Microsoft Graph API 來管理權杖存留期原則，請參閱 [Azure AD 原則資源總覽](/graph/api/resources/policy)。
+* 將[自訂和選擇性宣告](active-directory-optional-claims.md)新增至應用程式的權杖。
+* 使用 [單一登入 (SSO) 搭配 SAML](single-sign-on-saml-protocol.md)。
 * 使用 [Azure 單一登出 SAML 通訊協定](single-sign-out-saml-protocol.md)

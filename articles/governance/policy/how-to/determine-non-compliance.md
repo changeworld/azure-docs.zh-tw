@@ -3,12 +3,12 @@ title: 判斷不符合規範的原因
 description: 如果資源不符合規範，有許多可能的原因。 了解如何找出導致不符合規範的原因。
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: ee027ff0f2936dc3eb7153869c52d4e70c83918b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a666da4ecb97c24e7176e6c7cfbe2ee24f46f1b7
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512022"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648563"
 ---
 # <a name="determine-causes-of-non-compliance"></a>判斷不符合規範的原因
 
@@ -30,17 +30,17 @@ ms.locfileid: "86512022"
 
 若要檢視合規性詳細資料，請遵循下列步驟：
 
-1. 藉由按一下 [所有服務] 然後搜尋並選取 [原則]，在 Azure 入口網站中啟動 Azure 原則服務。
+1. 選取 [ **所有服務**]，然後搜尋並選取 [ **原則**]，以啟動 Azure 入口網站中的 Azure 原則服務。
 
 1. 在 [概觀] 或 [合規性] 頁面上，選取**合規性狀態**「不符合規範」的原則。
 
 1. 在 [原則合規性] 頁面的 [資源合規性] 索引標籤下，以滑鼠右鍵按一下或選取**合規性狀態**「不符合規範」之資源的省略符號。 然後選取 [檢視合規性詳細資料]。
 
-   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="檢視合規性詳細資料選項" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="[資源合規性] 索引標籤上 [查看相容性詳細資料] 連結的螢幕擷取畫面。" border="false":::
 
 1. [合規性詳細資料] 窗格會顯示從資源的最新評估到目前原則指派的資訊。 在此範例中，當原則定義預計是 _14.0_ 時，卻發現 [Microsoft.Sql/servers/version] 欄位為 _12.0_。 如果資源因多種原因而不符合規範，則每個原因都會列在此窗格上。
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="合規性詳細資料窗格和不符合規範的原因" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="[合規性詳細資料] 窗格的螢幕擷取畫面，以及不符合規範的目前值為十二的原因，目標值為十四。" border="false":::
 
    對於 **auditIfNotExists** 或 **deployIfNotExists** 原則定義，詳細資料包含 **details.type** 屬性和任何選擇性屬性。 如需清單，請參閱 [auditIfNotExists 屬性](../concepts/effects.md#auditifnotexists-properties)和 [deployIfNotExists 屬性](../concepts/effects.md#deployifnotexists-properties)。 [上次評估的資源] 是定義的 **details** 區段中的相關資源。
 
@@ -69,7 +69,7 @@ ms.locfileid: "86512022"
    }
    ```
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="合規性詳細資料窗格 -*ifNotExists" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="IfNotExists 的 [合規性詳細資料] 窗格螢幕擷取畫面，包括評估的資源計數。" border="false":::
 
 > [!NOTE]
 > 若要保護資料，當屬性值是「秘密」時，則目前值會顯示星號。
@@ -114,13 +114,13 @@ ms.locfileid: "86512022"
 
 首先遵循上一節中的相同步驟，以檢視原則合規性詳細資料。
 
-在 [合規性詳細資料] 窗格檢視中，按一下 [上次評估的資源] 連結。
+在 [合規性詳細資料] 窗格中，選取 [ **上次評估資源**] 連結。
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="檢視 auditIfNotExists 定義詳細資料" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="查看 auditIfNotExists 定義合規性詳細資料的螢幕擷取畫面。" border="false":::
 
 [來賓指派] 頁面會顯示所有可用的合規性詳細資料。 檢視中的每一列都代表在機器內執行的評估。 [原因] 欄會顯示一個詞組，說明來賓指派為何「不符合規範」。 例如，若您要稽核密碼原則，[原因] 欄會顯示包含每項設定目前值的文字。
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="檢視合規性詳細資料" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="來賓指派合規性詳細資料的螢幕擷取畫面。" border="false":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -189,9 +189,9 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 ## <a name="change-history-preview"></a><a name="change-history"></a>變更歷程記錄 (預覽)
 
-在新的**公開預覽**版中，過去 14 天的變更歷程記錄適用於所有支援[完整模式刪除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的 Azure 資源。 變更歷程記錄會提供關於何時偵測到變更的詳細資料，以及每項變更的_視覺化差異_。 新增、移除或更改 Azure Resource Manager 的屬性時，就會觸發變更偵測。
+在新的**公開預覽**版中，過去 14 天的變更歷程記錄適用於所有支援[完整模式刪除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的 Azure 資源。 變更歷程記錄會提供關於何時偵測到變更的詳細資料，以及每項變更的_視覺化差異_。 新增、移除或改變 Azure Resource Manager 屬性時，會觸發變更偵測。
 
-1. 藉由按一下 [所有服務] 然後搜尋並選取 [原則]，在 Azure 入口網站中啟動 Azure 原則服務。
+1. 選取 [ **所有服務**]，然後搜尋並選取 [ **原則**]，以啟動 Azure 入口網站中的 Azure 原則服務。
 
 1. 在 [概觀] 或 [合規性] 頁面上，選取處於任何**合規性狀態**的原則。
 
@@ -199,11 +199,11 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 1. 選取 [資源合規性] 頁面上的 [變更歷程記錄 (預覽)] 索引標籤。 偵測到的變更清單 (如果有的話) 會隨即顯示。
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="資源合規性頁面上的 Azure 原則變更歷程記錄索引標籤" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="[變更歷程記錄] 索引標籤的螢幕擷取畫面，並偵測到資源合規性頁面的變更時間。" border="false":::
 
 1. 選取其中一個偵測到的變更。 資源會在 [變更歷程記錄] 頁面上顯示其「視覺化差異」。
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="變更歷程記錄頁面上的 Azure 原則變更歷程記錄視覺化差異" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="變更歷程記錄的螢幕擷取畫面，其中顯示 [變更歷程記錄] 頁面上屬性狀態的 [變更歷程記錄] 視覺效果差異。" border="false":::
 
 _視覺化差異_有助於識別資源的變更。 偵測到的變更可能與資源目前的合規性狀態不相關。
 
