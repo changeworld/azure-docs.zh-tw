@@ -2,18 +2,18 @@
 title: 建立和修改 ExpressRoute 線路： Azure CLI
 description: 本文說明如何使用 CLI 建立、佈建、驗證、更新、刪除和取消佈建 ExpressRoute 線路。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2d8ad6b90f533161835ab12a43865b177c24c14e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5f3270bbed5042ef89d5818523005dfc31589945
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503577"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566138"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>使用 CLI 建立和修改 ExpressRoute 線路
 
@@ -25,8 +25,8 @@ ms.locfileid: "87503577"
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager 範本](expressroute-howto-circuit-resource-manager-template.md)
-> * [影片-Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [PowerShell （傳統）](expressroute-howto-circuit-classic.md)
+> * [影片 - Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [PowerShell (傳統)](expressroute-howto-circuit-classic.md)
 >
 
 ## <a name="before-you-begin"></a>開始之前
@@ -36,7 +36,7 @@ ms.locfileid: "87503577"
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>建立和佈建 ExpressRoute 線路
 
-### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. 登入您的 Azure 帳戶並選取您的訂用帳戶
+### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. 登入 Azure 帳戶並選取您的訂用帳戶
 
 若要開始您的組態，請登入您的 Azure 帳戶。 如果您使用 CloudShell 的「試用」功能，將可自動登入。 使用下列範例來協助您連接：
 
@@ -56,9 +56,9 @@ az account list
 az account set --subscription "<subscription ID>"
 ```
 
-### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. 取得支援的提供者、位置和頻寬的清單
+### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. 取得支援的提供者、位置和頻寬清單
 
-建立 ExpressRoute 線路之前，您需要有支援的連線提供者、位置和頻寬選項的清單。 CLI 命令 `az network express-route list-service-providers` 會傳回這項資訊，您將在稍後的步驟中使用：
+建立 ExpressRoute 線路之前，您需要有支援的連線提供者、位置和頻寬選項的清單。 CLI 命令 `az network express-route list-service-providers` 會傳回此資訊，您將在稍後的步驟中使用這些資訊：
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -119,7 +119,7 @@ az network express-route list-service-providers
 
 請檢查回應以查看是否列出您的連線提供者。 記下下列資訊，當您建立線路時將會用到：
 
-* Name
+* 名稱
 * PeeringLocations
 * BandwidthsOffered
 
@@ -142,8 +142,8 @@ az group create -n ExpressRouteResourceGroup -l "West US"
 
 請確定您指定正確的 SKU 層和 SKU 系列：
 
-* SKU 層會決定 ExpressRoute 線路為 [[本機](expressroute-faqs.md#expressroute-local)]、[標準] 或 [ [Premium](expressroute-faqs.md#expressroute-premium)]。 您可以指定*Local*、 *Standard*或*Premium*。
-* SKU 系列決定計費類型。 您可以針對計量付費資料方案指定*Metereddata* ，並針對無限制的資料方案*Unlimiteddata* 。 您可以將計費類型從 *Metereddata* 變更為 *Unlimiteddata*，但無法將類型從 *Unlimiteddata* 變更為 *Metereddata*。 *本機*線路僅供*Unlimiteddata* 。
+* SKU 層會決定 ExpressRoute 線路是在 [本機](expressroute-faqs.md#expressroute-local)、 [標準或高階](expressroute-faqs.md#expressroute-premium)。 您可以指定 *Local*、 *Standard* 或 *Premium*。 您無法將 SKU 從 *Standard/Premium* 變更為 *Local*。
+* SKU 系列決定計費類型。 您可以針對計量付費資料方案指定 *[metereddata* ，並針對無限制的資料方案指定 *Unlimiteddata* 。 您可以將計費類型從 *Metereddata* 變更為 *Unlimiteddata*，但無法將類型從 *Unlimiteddata* 變更為 *Metereddata*。 *本機*電路僅供*Unlimiteddata* 。
 
 
 ExpressRoute 線路會從發出服務金鑰時開始收費。 下列是新服務金鑰的要求範例：
@@ -156,7 +156,7 @@ az network express-route create --bandwidth 200 -n MyCircuit --peering-location 
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. 列出所有 ExpressRoute 線路
 
-若要取得您所建立之所有 ExpressRoute 線路的清單，請執行 `az network express-route list` 命令。 您隨時可以使用此命令來擷取此資訊。 若要列出所有線路，在不使用任何參數的情況下進行呼叫。
+若要取得您已建立之所有 ExpressRoute 線路的清單，請執行 `az network express-route list` 命令。 您隨時可以使用此命令來擷取此資訊。 若要列出所有線路，在不使用任何參數的情況下進行呼叫。
 
 ```azurecli-interactive
 az network express-route list
@@ -263,7 +263,7 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 "type": "Microsoft.Network/expressRouteCircuits]
 ```
 
-### <a name="7-create-your-routing-configuration"></a>7. 建立路由設定
+### <a name="7-create-your-routing-configuration"></a>7. 建立您的路由設定
 
 如需逐步指示，請參閱 [ExpressRoute 線路路由組態](howto-routing-cli.md) 一文以建立和修改線路對等。
 
@@ -280,7 +280,7 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 
 您可以修改 ExpressRoute 線路的某些屬性，而不會影響連線。 您可以進行下列變更，而不會有停機時間：
 
-* 您可以啟用或停用 ExpressRoute 線路的 ExpressRoute 進階附加元件。
+* 您可以啟用或停用 ExpressRoute 線路的 ExpressRoute 進階附加元件。 不支援將 SKU 從 *Standard/Premium* 變更為 *Local* 。
 * 只要連接埠有可用的容量，您就可以增加 ExpressRoute 線路的頻寬。 但是，不支援將線路的頻寬降級。
 * 您可以將計量方案從 [已計量資料] 變更為 [無限制資料]。 但是，不支援將計量方案從 [無限制資料] 變更為 [已計量資料]。
 * 您可以啟用和停用 [允許傳統作業] **。
@@ -351,7 +351,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 若要取消佈建並刪除 ExpressRoute 線路，請確定您了解下列準則：
 
 * 您必須取消連結 ExpressRoute 線路的所有虛擬網路。 如果此作業失敗，請確認是否有任何虛擬網路連結至循環。
-* 如果 ExpressRoute 線路服務提供者布建狀態**為 [** 布建] 或 [已布建]，則您必須與服務提供者合作，以在其端取消布**建**線路。 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
+* 如果 ExpressRoute 線路服務提供者布建狀態為 [布建 **] 或 [** 已布建]，您必須與服務提供者合作，在其端取消布 **建**電路。 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
 * 您只能在服務提供者已取消佈建線路時刪除線路。 當線路取消佈建時，服務提供者佈建狀態會設定為「未佈建」****。 這樣會停止針對線路計費。
 
 您可以執行下列命令來刪除 ExpressRoute 線路：
@@ -360,7 +360,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 az network express-route delete  -n MyCircuit -g ExpressRouteResourceGroup
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 建立好線路後，請務必執行下列工作：
 

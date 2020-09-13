@@ -2,13 +2,13 @@
 title: 依資源類型區分的移動作業支援
 description: 列出可移至新資源群組或訂用帳戶的 Azure 資源類型。
 ms.topic: conceptual
-ms.date: 07/13/2020
-ms.openlocfilehash: 16197210326d73284a4a83edc7876e4faddded86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: 69fcb271ac94df3faf8e9e37c1ef30a6c0681441
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079503"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566121"
 ---
 # <a name="move-operation-support-for-resources"></a>資源的移動作業支援
 
@@ -150,7 +150,7 @@ ms.locfileid: "87079503"
 > - [Microsoft.Portal](#microsoftportal)
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
-> - [PowerPlatform](#microsoftpowerplatform)
+> - [>admin.powerplatform.microsoft.com](#microsoftpowerplatform)
 > - [Microsoft.ProjectBabylon](#microsoftprojectbabylon)
 > - [Microsoft.ProviderHub](#microsoftproviderhub)
 > - [Microsoft.Quantum](#microsoftquantum)
@@ -378,7 +378,7 @@ ms.locfileid: "87079503"
 > [!IMPORTANT]
 > Runbook 必須存在於和自動化帳戶相同的資源群組中。
 >
-> 如需相關資訊，請參閱[將您的 Azure 自動化帳戶移至另一個訂用帳戶](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json)。
+> 如需詳細資訊，請參閱 [將您的 Azure 自動化帳戶移至另一個訂用帳戶](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json)。
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
@@ -744,7 +744,7 @@ ms.locfileid: "87079503"
 > | quotas | 否 | 否 |
 > | resourcetypes | 否 | 否 |
 > | validatesubscriptionmoveavailability | 否 | 否 |
-> | virtualmachines | 是 | 否 |
+> | virtualmachines | 是 | 是 |
 > | virtualmachines / diagnosticsettings | 否 | 否 |
 > | virtualmachines / metricdefinitions | 否 | 否 |
 > | virtualmachines / metrics | 否 | 否 |
@@ -2368,7 +2368,7 @@ ms.locfileid: "87079503"
 > | locations / operationstatuses | 否 | 否 |
 > | 作業 | 否 | 否 |
 
-## <a name="microsoftpowerplatform"></a>PowerPlatform
+## <a name="microsoftpowerplatform"></a>>admin.powerplatform.microsoft.com
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
@@ -2749,7 +2749,7 @@ ms.locfileid: "87079503"
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!IMPORTANT]
-> 資料庫和伺服器必須位於相同的資源群組。 當您移動 SQL 伺服器時，其所有資料庫也會跟著移動。 此行為適用于 Azure SQL Database 和 Azure Synapse 分析資料庫。
+> 資料庫和伺服器必須位於相同的資源群組。 當您移動 SQL 伺服器時，其所有資料庫也會跟著移動。 此行為適用于 Azure SQL Database 和 Azure Synapse Analytics 資料庫。
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
@@ -2789,7 +2789,7 @@ ms.locfileid: "87079503"
 > | locations / jobagentoperationresults | 否 | 否 |
 > | locations / longtermretentionbackupazureasyncoperation | 否 | 否 |
 > | locations / longtermretentionbackupoperationresults | 否 | 否 |
-> | locations / longtermretentionbackups | 否 | 否 |
+> | locations / longtermretentionbackups | 是 | 是 |
 > | locations / longtermretentionmanagedinstancebackupazureasyncoperation | 否 | 否 |
 > | locations / longtermretentionmanagedinstancebackupoperationresults | 否 | 否 |
 > | locations / longtermretentionmanagedinstancebackups | 否 | 否 |
@@ -2872,7 +2872,7 @@ ms.locfileid: "87079503"
 > | servers / databases / auditingsettings | 否 | 否 |
 > | servers / databases / auditrecords | 否 | 否 |
 > | servers / databases / automatictuning | 否 | 否 |
-> | servers / databases / backuplongtermretentionpolicies | 否 | 否 |
+> | servers / databases / backuplongtermretentionpolicies | 是 | 是 |
 > | servers / databases / backupshorttermretentionpolicies | 否 | 否 |
 > | servers / databases / connectionpolicies | 否 | 否 |
 > | servers / databases / datamaskingpolicies | 否 | 否 |

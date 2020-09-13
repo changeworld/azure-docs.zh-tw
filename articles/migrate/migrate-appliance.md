@@ -3,12 +3,12 @@ title: Azure Migrate 設備
 description: 提供伺服器評估和移轉中所使用 Azure Migrate 設備的概觀。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: a313d7b964e6ea849acb5b034ed55975b8c5b524
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f0bba2f2d200ffc84855ff8fc7f634bd8b71ceb6
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927492"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514351"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
@@ -121,7 +121,7 @@ download.microsoft.com/download | 允許來自 Microsoft 下載的下載項目�
 graph.windows.net | 登入您的 Azure 訂用帳戶。
 login.microsoftonline.us  | 建立 Azure Active Directory (AD) 應用程式，以便設備與 Azure Migrate 通訊。
 management.usgovcloudapi.net | 建立 Azure AD 應用程式，以便設備與 Azure Migrate 服務通訊。
-dc.services.visualstudio.com | 上傳用於內部監視的應用程式記錄。
+*.services.visualstudio.com | 上傳用於內部監視的應用程式記錄。
 *.vault.usgovcloudapi.net | 管理 Azure Key Vault 中的祕密。
 aka.ms/* | 允許存取 aka 連結。 用於 Azure Migrate 設備更新。
 download.microsoft.com/download | 允許來自 Microsoft 下載的下載項目。
@@ -219,7 +219,7 @@ NIC 寫入輸送量 (MB 每秒) | net.transmitted.average  |VM 大小的計算
 --- | --- | ---
 應用程式名稱  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
 版本  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
-提供者  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
+提供者  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | 發行者
 
 #### <a name="windows-vm-features-data"></a>Windows VM 功能資料
 

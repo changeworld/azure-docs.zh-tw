@@ -2,13 +2,13 @@
 title: 資源的標記支援
 description: 顯示哪些 Azure 資源類型支援標記。 提供所有 Azure 服務的詳細資料。
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 1f74ecff7c5db7a851ad2795fdfdb8e552a309c0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/08/2020
+ms.openlocfilehash: ea46e263d934c327cf6dfa343a5e0b5a170f545e
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231515"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513909"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 資源的標記支援
 本文將說明資源類型是否支援[標記](tag-resources.md)。 標示為 [ **支援** 標籤] 的資料行會指出資源類型是否有標記的屬性。 在 [ **成本] 報表中** 標示為 [標籤] 的資料行會指出該資源類型是否要將標記傳遞給成本報告。 您可以依 [成本管理成本分析](../../cost-management-billing/costs/group-filter.md) 和 [Azure 計費發票及每日使用量資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中的標記來查看成本。
@@ -964,6 +964,9 @@ ms.locfileid: "89231515"
 > | dataFactorySchema | 否 | 否 |
 > | factories | 是 | 是 |
 > | factories / integrationRuntimes | 否 | 否 |
+
+> [!NOTE]
+> 如果您的資料處理站中有 Azure SSIS 整合執行時間，其執行成本將會以 data factory 標記標記。  您必須停止並重新啟動執行中的 Azure SSIS 整合執行時間，才能將新的 data factory 標記套用至其執行成本。
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 

@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來管理 Azure �
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: f9cd0cca938dac79071d7ded6f6139f4e3c3840d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011183"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506672"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 還原 Azure 虛擬機器
 
@@ -244,6 +244,30 @@ X-Powered-By: ASP.NET
 }
 ```
 
+### <a name="restore-disks-selectively"></a>選擇性地復原磁碟
+
+如果您 [選擇備份磁片](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)，則會在 [復原點摘要](#select-recovery-point) 和 [詳細回應](https://docs.microsoft.com/rest/api/backup/recoverypoints/get)中提供目前的備份磁片清單。 您也可以選擇性地復原磁碟，也可以在 [這裡](selective-disk-backup-restore.md#selective-disk-restore)提供更多詳細資料。 若要在備份的磁片清單中選擇性地復原磁碟，請從復原點回應中找出磁片的 LUN，然後將 **restoreDiskLunList** 屬性新增至 [上面的要求主體](#example-request) ，如下所示。
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "RestoreDisks",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "encryptionDetails": {
+          "encryptionEnabled": false
+        },
+        "restoreDiskLunList" : [0]
+    }
+}
+
+```
+
 當您追蹤 [上述](#responses)的回應，而且長時間執行的作業完成時，備份虛擬機器的磁片和設定 ( 「VMConfig.js開啟」 ) 將會出現在指定的儲存體帳戶中。
 
 ### <a name="replace-disks-in-a-backed-up-virtual-machine"></a>更換已備份之虛擬機器中的磁片
@@ -327,7 +351,7 @@ X-Powered-By: ASP.NET
 
 處理回應的方式應該如同[上述的還原磁碟](#responses)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需 Azure 備份 REST API 的詳細資訊，請參閱下列文件：
 
