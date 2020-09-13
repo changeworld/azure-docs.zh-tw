@@ -1,21 +1,21 @@
 ---
-title: Azure CDN 端點多來源
+title: 'Azure CDN 端點多來源 (預覽) '
 description: 開始使用多個來源的 Azure CDN 端點。
 services: cdn
 author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: how-to
-ms.date: 8/20/2020
+ms.date: 9/06/2020
 ms.author: allensu
-ms.openlocfilehash: c7e6733079dbd867255e604f6f8d4459f647cc93
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f9293206526778f8c3de8a368a1916a2cb3f88c2
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870441"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504668"
 ---
-# <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN 端點多來源
+# <a name="azure-cdn-endpoint-multi-origin-preview"></a>Azure CDN 端點多來源 (預覽) 
 
 多來源支援可減少停機時間，並建立全域冗余。 
 
@@ -25,6 +25,10 @@ ms.locfileid: "88870441"
 
 > [!NOTE]
 > 這項功能目前僅適用于來自 Microsoft 的 Azure CDN。 
+
+> [!IMPORTANT]
+> Azure CDN 端點多來源目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="create-the-origin-group"></a>建立來源群組
 

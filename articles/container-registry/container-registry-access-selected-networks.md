@@ -3,12 +3,12 @@ title: 設定公用登錄存取
 description: 設定 IP 規則，以允許從選取的公用 IP 位址或位址範圍存取 Azure 容器登錄。
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 0fbca1ec2734bf8275e12249f63ab134837fea12
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 4e4ee817e2534bcca09cba89daafd379ff3f03f0
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660920"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488757"
 ---
 # <a name="configure-public-ip-network-rules"></a>設定公用 IP 網路規則
 
@@ -17,6 +17,8 @@ ms.locfileid: "88660920"
 IP 網路規則是在公用登錄端點上設定。 IP 網路規則不適用於以[私人連結](container-registry-private-link.md)設定的私人端點。
 
 您可以在 **Premium** 容器登錄服務層級中設定 IP 存取規則。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure 容器登錄層級](container-registry-skus.md)。
+
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="access-from-selected-public-network---cli"></a>從選取的公用網路存取 - CLI
 

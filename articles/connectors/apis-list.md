@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 1bd3cb1c18d1bac078ac1344f574914dba73d07b
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4876c5cb0490a96d5a77da9ced83e1650e98379a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871559"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488825"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>適用於 Azure Logic Apps 的連接器
 
@@ -308,7 +308,7 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
         [![Azure 服務匯流排 ISE 連接器 ][azure-service-bus-icon]<br> **Azure 服務 <br> 匯流排**][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![Azure SQL 資料倉儲 ISE 連接器 ][azure-sql-data-warehouse-icon]<br> **Azure sql 資料 <br> 倉儲**][azure-sql-data-warehouse-doc]
+        [![Azure Synapse Analytics ISE 連接器 ][azure-sql-data-warehouse-icon]<br> **Azure SQL 資料 <br> 倉儲**][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
         [![Azure 資料表儲存體 ISE 連接器 ][azure-table-storage-icon]<br> **azure 資料表 <br> 儲存體**][azure-table-storage-doc]
@@ -412,7 +412,7 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 
 雖然您會從邏輯應用程式內建立連線，但連線是個別的 Azure 資源與其本身的資源定義。 若要檢查這些連線資源定義，請將 [您的邏輯應用程式從 Azure 下載至 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)，這是最簡單的方法，可讓您輕鬆地建立可供部署的有效參數化邏輯應用程式範本。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 查看 [完整的連接器清單](/connectors)
 * [建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)
@@ -572,7 +572,7 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 [azure-monitor-logs-doc]: /connectors/azuremonitorlogs/ "對 Log Analytics 工作區和 Application Insights 元件的 Azure 監視器記錄執行查詢"
 [azure-queues-doc]: /connectors/azurequeues/ "連接到您的 Azure 儲存體帳戶，讓您可以建立和管理佇列和訊息"
 [azure-service-bus-doc]: ./connectors-create-api-servicebus.md "從「服務匯流排佇列和主題」傳送訊息，並接收來自「服務匯流排佇列和訂用帳戶」的訊息"
-[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "連接到 Azure SQL 資料倉儲，讓您可以查看您的資料"
+[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "連接到 Azure Synapse Analytics，以便您可以查看您的資料"
 [azure-table-storage-doc]: /connectors/azuretables/ "連接到您的 Azure 儲存體帳戶，讓您可以建立、更新和查詢資料表等等"
 [biztalk-server-doc]: /connectors/biztalk/ "連接到您的 BizTalk Server，讓您可以並存執行 BizTalk 應用程式與 Azure Logic Apps"
 [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "連線至內部部署檔案系統"

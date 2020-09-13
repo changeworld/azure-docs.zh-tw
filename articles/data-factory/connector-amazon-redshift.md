@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: ce63da745fb84ebccd57b246fc934f595dd7cda1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a756a3cec5702570751e0bea09a4f59152accafc
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418247"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484539"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Redshift 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -30,7 +30,7 @@ ms.locfileid: "81418247"
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-下列活動支援此 Amazon Redshift 連接器：
+下列活動支援此 Amazon Redshift connector：
 
 - 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
@@ -164,11 +164,11 @@ ms.locfileid: "81418247"
 
 [UNLOAD](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) (英文) 是 Amazon Redshift 提供的機制，可以為 Amazon Simple Storage Service (Amazon S3) 中的一或多個檔案卸載查詢結果。 Amazon 建議使用此方式從 Redshift 複製大型資料集。
 
-**範例：使用 UNLOAD、分段複製及 PolyBase 將資料從 Amazon Redshift 複製到 Azure SQL 資料倉儲**
+**範例：使用 UNLOAD、分段複製和 PolyBase，將資料從 Amazon Redshift 複製到 Azure Synapse Analytics (先前的 SQL 資料倉儲) **
 
-就這個範例使用案例而言，複製活動會依照 "redshiftUnloadSettings" 中的設定，將資料從 Amazon Redshift 卸載到 Amazon S3，然後依照 "stagingSettings" 中指定的方式，將資料從 Amazon S3 複製到 Azure Blob，最後再使用 PolyBase 將資料載入到「SQL 資料倉儲」。 複製活動會正確地處理所有暫時格式。
+在此範例使用案例中，複製活動會將資料從 Amazon Redshift 卸載至 Amazon S3 （如 "redshiftUnloadSettings" 中所設定），然後將資料從 Amazon S3 複製到 Azure Blob （如 "stagingSettings" 中所指定），最後使用 PolyBase 將資料載入至先前的 SQL 資料倉儲) 的 Azure Synapse Analytics (。 複製活動會正確地處理所有暫時格式。
 
-![從 Redshift 到 SQL DW 的複製工作流程](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
+![Redshift 至 Azure Synapse Analytics 複製工作流程](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 "activities":[

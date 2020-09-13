@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 08/28/2020
-ms.openlocfilehash: 2cb06b6802fdc4cebd04f687266f5ac08dde82c0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e813921727ee08bf9a76c0a2dbfe15f45fe4db79
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270052"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490066"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>從 Azure SQL Database 和 Azure Synapse Analytics 共用及接收資料
 
@@ -34,8 +34,8 @@ Azure Data Share 支援從 Azure SQL Database 和 Azure Synapse Analytics (先�
 
 ### <a name="prerequisites-for-sql-source"></a>SQL 來源的必要條件
 
-* Azure SQL Database 或 Azure Synapse Analytics (先前稱為 Azure SQL 資料倉儲)，具有您要共用的資料表和檢視。
-* 對 SQL Server 上的資料庫進行寫入的權限，存在於 Microsoft.Sql/servers/databases/write** 中。 此權限存在於參與者角色中。
+* Azure SQL Database 或 Azure Synapse Analytics (先前的 SQL 資料倉儲，) 具有您想要共用的資料表和 views。
+* 對 SQL Server 上的資料庫進行寫入的權限，存在於 Microsoft.Sql/servers/databases/write  中。 此權限存在於參與者角色中。
 * 存取資料倉儲的資料共用權限。 這可以透過下列步驟完成： 
     1. 將您自己設定為 SQL Server 的 Azure Active Directory 系統管理員。
     1. 使用 Azure Active Directory 連線到 Azure SQL Database/資料倉儲。
@@ -62,11 +62,11 @@ Azure Data Share 支援從 Azure SQL Database 和 Azure Synapse Analytics (先�
 
 在 Azure 資源群組中建立 Azure Data Share 資源。
 
-1. 選取入口網站左上角的 [功能表] 按鈕，然後選取 [ **建立資源** ] (+) 。
+1. 選取入口網站左上角的功能表按鈕，再選取 [建立資源] (+)。
 
-1. 搜尋「Data Share」**。
+1. 搜尋「Data Share」  。
 
-1. 選取 Data Share 然後選取 [ **建立**]。
+1. 選取 [Data Share]，然後選取 [建立]  。
 
 1. 使用下列資訊填寫 Azure Data Share 資源的基本詳細資料。 
 
@@ -88,19 +88,19 @@ Azure Data Share 支援從 Azure SQL Database 和 Azure Synapse Analytics (先�
 
     ![共用您的資料](./media/share-receive-data.png "共用您的資料") 
 
-1. 選取 [開始共用資料]。
+1. 選取 [開始共用資料]  。
 
 1. 選取 [建立]  。   
 
-1. 填寫您共用的詳細資料。 指定名稱、共用類型、共用內容的說明和使用規定 (選擇性)。 
+1. 填寫共用的詳細資料。 指定名稱、共用類型、共用內容的說明和使用規定 (選擇性)。 
 
     ![EnterShareDetails](./media/enter-share-details.png "輸入共用詳細資料") 
 
 1. 選取 [繼續]。
 
-1. 若要將資料集新增至您的共用，請選取 [ **新增資料集**]。 
+1. 若要將資料集新增至共用，請選取 [新增資料集]。 
 
-    ![將資料集新增至您的共用](./media/datasets.png "資料集")
+    ![將資料集新增至共用](./media/datasets.png "資料集")
 
 1. 選取您想要新增的資料集類型。 根據您在先前的步驟中選取的共用類型 (快照集或就地)，您將看到不同的資料集類型清單。 
 
@@ -150,7 +150,7 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 如果您選擇將資料接收到 Azure SQL Database 中，Azure Synapse Analytics 下列是必要條件清單。
 
 * 對 SQL Server 上的資料庫進行寫入的權限，存在於 Microsoft.Sql/servers/databases/write  中。 此權限存在於參與者角色中。 
-* 資料共用資源的受控識別用來存取 Azure SQL Database 或 Azure SQL 資料倉儲的權限。 這可以透過下列步驟完成： 
+* 資料共用資源之受控識別的許可權，以存取 Azure SQL Database 或 Azure Synapse Analytics。 這可以透過下列步驟完成： 
     1. 將您自己設定為 SQL Server 的 Azure Active Directory 系統管理員。
     1. 使用 Azure Active Directory 連線到 Azure SQL Database/資料倉儲。
     1. 使用查詢編輯器 (預覽) 執行下列指令碼，將 Data Share 受控識別新增為 'db_datareader, db_datawriter, db_ddladmin'。 您必須使用 Active Directory 連線，而不是使用 SQL Server 驗證。 

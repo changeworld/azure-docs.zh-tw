@@ -1,6 +1,6 @@
 ---
 title: Striim 快速入門
-description: 快速開始使用 Striim 和 Azure SQL 資料倉儲。
+description: 快速開始使用 Striim 和 Azure Synapse Analytics。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 945bcd03bc3bf13517836e7a5624bd5142782183
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b5fa1a42201479c5d426a5bbb9188d0cb8e03d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208547"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485969"
 ---
-# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Striim Azure SQL DW Marketplace 供應項目安裝指南
+# <a name="striim-azure-synapse-analytics-marketplace-offering-install-guide"></a>Striim Azure Synapse Analytics Marketplace 供應專案安裝指南
 
-本快速入門假設您已經有 SQL 資料倉儲的既存執行個體。
+本快速入門假設您已經有 Azure Synapse Analytics 的預先存在實例。
 
-您可以在 Azure Marketplace 中搜尋 Striim，並選取 [要將資料整合至 SQL 資料倉儲的 Striim (暫存)] 選項 
+搜尋 Azure Marketplace 中的 [Striim]，然後選取 [Striim]，將 [資料整合] Azure Synapse Analytics (暫存) 選項 
 
 ![安裝 Striim][install]
 
@@ -32,7 +32,7 @@ ms.locfileid: "85208547"
 
 在部署之後，請在 Azure 入口網站中按一下 \<VM Name>-masternode，按一下 [連線]，並使用 VM 本機帳戶複製登入資料 
 
-![將 Striim 連線至 SQL 資料倉儲][connect]
+![將 Striim 連接到 Azure Synapse Analytics][connect]
 
 將 sqljdbc42.jar 從 <https://www.microsoft.com/en-us/download/details.aspx?id=54671> 下載到您的本機電腦。 
 

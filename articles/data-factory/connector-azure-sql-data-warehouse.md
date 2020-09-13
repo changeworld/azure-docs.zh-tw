@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: cd14a183ae1434af83c96b7f8d6575186412b534
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 01e2a2db3757e8d13749faf53b47300c8188915e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051214"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484471"
 ---
-# <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Synapse Analytics (先前稱為 Azure SQL 資料倉儲) 中複製和轉換資料
+# <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory，在 Azure Synapse Analytics (先前的 SQL 資料倉儲) 中複製和轉換資料
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 >
@@ -42,7 +42,7 @@ ms.locfileid: "89051214"
 
 - 使用 SQL 驗證和 Azure Active Directory (Azure AD) 應用程式權杖驗證搭配服務主體或 Azure 資源的受控識別來複製資料。
 - 作為來源時，使用 SQL 查詢或預存程序來擷取資料。 您也可以選擇從 Azure Synapse Analytics 來源進行平行複製，如需詳細資料，請參閱 [Synapse Analytics 的並行複製](#parallel-copy-from-synapse-analytics) 一節。
-- 做為接收時，使用 [PolyBase](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 或 [COPY 陳述式](#use-copy-statement) (預覽) 或大量插入來載入資料。 我們建議 PolyBase 或 COPY 陳述式 (預覽)，以獲得較佳的複製效能。 連接器也支援根據來源架構，自動建立目的地資料表（如果不存在的話）。
+- 做為接收時，使用 [PolyBase](#use-polybase-to-load-data-into-azure-synapse-analytics) 或 [COPY 陳述式](#use-copy-statement) (預覽) 或大量插入來載入資料。 我們建議 PolyBase 或 COPY 陳述式 (預覽)，以獲得較佳的複製效能。 連接器也支援根據來源架構，自動建立目的地資料表（如果不存在的話）。
 
 > [!IMPORTANT]
 > 如果您使用 Azure Data Factory Integration Runtime 來複製資料，請設定 [伺服器層級的防火牆規則](../azure-sql/database/firewall-configure.md) ，讓 Azure 服務可以存取 [邏輯 SQL server](../azure-sql/database/logical-servers.md)。
@@ -51,7 +51,7 @@ ms.locfileid: "89051214"
 ## <a name="get-started"></a>開始使用
 
 > [!TIP]
-> 若要達到最佳效能，請使用 PolyBase 將資料載入 Azure Synapse Analytics。 如需詳細資訊，請參閱 [使用 PolyBase 將資料載入 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-sql-data-warehouse)小節。 如需使用案例的逐步解說，請參閱[使用 Azure Data Factory 在 15 分鐘內將 1 TB 載入至 Azure Synapse Analytics](load-azure-sql-data-warehouse.md)。
+> 若要達到最佳效能，請使用 PolyBase 將資料載入 Azure Synapse Analytics。 如需詳細資訊，請參閱 [使用 PolyBase 將資料載入 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics)小節。 如需使用案例的逐步解說，請參閱[使用 Azure Data Factory 在 15 分鐘內將 1 TB 載入至 Azure Synapse Analytics](load-azure-sql-data-warehouse.md)。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -284,7 +284,7 @@ ms.locfileid: "89051214"
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Azure SQL DW input dataset name>",
+                "referenceName": "<Azure Synapse Analytics input dataset name>",
                 "type": "DatasetReference"
             }
         ],
@@ -316,7 +316,7 @@ ms.locfileid: "89051214"
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Azure SQL DW input dataset name>",
+                "referenceName": "<Azure Synapse Analytics input dataset name>",
                 "type": "DatasetReference"
             }
         ],
@@ -364,32 +364,32 @@ GO
 
 ### <a name="azure-synapse-analytics-as-sink"></a><a name="azure-sql-data-warehouse-as-sink"></a>Azure Synapse Analytics 做為接收
 
-Azure Data Factory 支援將資料載入 SQL 資料倉儲的三種方式。
+Azure Data Factory 支援將資料載入 Azure Synapse Analytics 的三種方式。
 
-![SQL DW 接收複製選項](./media/connector-azure-sql-data-warehouse/sql-dw-sink-copy-options.png)
+![Azure Synapse Analytics 接收復制選項](./media/connector-azure-sql-data-warehouse/sql-dw-sink-copy-options.png)
 
-- [使用 PolyBase](#use-polybase-to-load-data-into-azure-sql-data-warehouse)
+- [使用 PolyBase](#use-polybase-to-load-data-into-azure-synapse-analytics)
 - [使用 COPY 陳述式 (預覽)](#use-copy-statement)
 - 使用大量插入
 
 載入資料的最快速且可調整的方式是透過 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)或[COPY 陳述式](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)(預覽)。
 
-若要將資料複製到「Azure SQL 資料倉儲」，請將複製活動中的接收類型設定為 **SqlDWSink**。 複製活動的 [接收] 區段支援下列屬性：
+若要將資料複製到 Azure Synapse Analytics，請將複製活動中的接收類型設定為 **>sqldwsink**。 複製活動的 [接收] 區段支援下列屬性：
 
 | 屬性          | 描述                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | 複製活動接收端的**類型**屬性必須設定為 **SqlDWSink**。 | 是                                           |
-| allowPolyBase     | 指出是否使用 PolyBase 將資料載入 SQL 資料倉儲。 `allowCopyCommand` 和 `allowPolyBase` 不可同時為 true。 <br/><br/>請參閱 [使用 PolyBase 將資料載入 Azure SQL 資料倉儲](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 一節中的條件約束和詳細資料。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 否。<br/>使用 PolyBase 時套用。     |
+| allowPolyBase     | 指出是否要使用 PolyBase 將資料載入 Azure Synapse Analytics 中。 `allowCopyCommand` 和 `allowPolyBase` 不可同時為 true。 <br/><br/>如需條件約束和詳細資料，請參閱 [使用 PolyBase 將資料載入 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 一節。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 否。<br/>使用 PolyBase 時套用。     |
 | polyBaseSettings  | 可以在 `allowPolybase` 屬性設定為 **true** 時指定的一組屬性。 | 否。<br/>使用 PolyBase 時套用。 |
-| allowCopyCommand | 指出是否使用 [COPY 陳述式](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)(預覽) 將資料載入 SQL 資料倉儲。 `allowCopyCommand` 和 `allowPolyBase` 不可同時為 true。 <br/><br/>請參閱 [使用 COPY 陳述式將資料載入 Azure SQL 資料倉儲](#use-copy-statement)一節中的條件約束和詳細資料。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 否。<br>使用 COPY 時套用。 |
+| allowCopyCommand | 指出是否要使用 (preview) 的 [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) 將資料載入 Azure Synapse Analytics。 `allowCopyCommand` 和 `allowPolyBase` 不可同時為 true。 <br/><br/>如需條件約束和詳細資料，請參閱 [使用 COPY 語句將資料載入 Azure Synapse Analytics](#use-copy-statement) 一節。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 否。<br>使用 COPY 時套用。 |
 | copyCommandSettings | 可以在 `allowCopyCommand` 屬性設定為 TRUE 時指定的一組屬性。 | 否。<br/>使用 COPY 時套用。 |
 | writeBatchSize    | 對於**每個批次**要插入 SQL 資料表中的資料列數。<br/><br/>允許的值為**整數** (資料列數目)。 根據預設，Data Factory 會依據資料列大小動態決定適當的批次大小。 | 否。<br/>使用 bulk insert 時套用。     |
 | writeBatchTimeout | 在逾時前等待批次插入作業完成的時間。<br/><br/>允許的值為**時間範圍**。 範例：「00:30:00」(30 分鐘)。 | 否。<br/>使用 bulk insert 時套用。        |
-| preCopyScript     | 指定一個供「複製活動」在每次執行時將資料寫入到「Azure SQL 資料倉儲」前執行的 SQL 查詢。 使用此屬性來清除預先載入的資料。 | 否                                            |
+| preCopyScript     | 指定在每次執行中將資料寫入 Azure Synapse Analytics 之前，要執行的複製活動的 SQL 查詢。 使用此屬性來清除預先載入的資料。 | 否                                            |
 | tableOption | 指定是否要根據來源架構， [自動建立接收資料表](copy-activity-overview.md#auto-create-sink-tables) （如果不存在的話）。 允許的值包為：`none` (預設) 或 `autoCreate`。 |否 |
-| disableMetricsCollection | Data Factory 會收集計量，例如複製效能優化和建議的 SQL 資料倉儲 DWU。 如果您擔心此行為，請指定 `true` 將其關閉。 | 否 (預設值為 `false`) |
+| disableMetricsCollection | Data Factory 會收集諸如複製效能優化和建議的 Azure Synapse Analytics Dwu 等度量。 如果您擔心此行為，請指定 `true` 將其關閉。 | 否 (預設值為 `false`) |
 
-#### <a name="sql-data-warehouse-sink-example"></a>SQL 資料倉儲接收範例
+#### <a name="azure-synapse-analytics-sink-example"></a>Azure Synapse Analytics 接收器範例
 
 ```json
 "sink": {
@@ -453,12 +453,12 @@ Azure Data Factory 支援將資料載入 SQL 資料倉儲的三種方式。
 }
 ```
 
-## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>使用 PolyBase 將資料載入 Azure SQL 資料倉儲
+## <a name="use-polybase-to-load-data-into-azure-synapse-analytics"></a>使用 PolyBase 將資料載入 Azure Synapse Analytics
 
 使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 是以高輸送量將大量資料載入 Azure Synapse Analytics 的有效方法。 使用 PolyBase 而不是預設的 BULKINSERT 機制，將可看到輸送量大幅提升。 如需使用案例的逐步解說，請參閱[將 1 TB 載入至 Azure Synapse Analytics](v1/data-factory-load-sql-data-warehouse.md)。
 
-- 如果您的來源資料位於 **Azure Blob、Azure Data Lake Storage Gen1 或 Azure Data Lake Storage Gen2** 中，而且**格式與 PolyBase 相容**，您可以使用複製活動直接叫用 PolyBase，讓 Azure SQL 資料倉儲從來源提取資料。 如需詳細資料，請參閱 **[使用 PolyBase 直接複製](#direct-copy-by-using-polybase)** 。
-- 如果您的來源資料存放區與格式不受 PolyBase 支援，您可以改用 **[使用 PolyBase 分段複製](#staged-copy-by-using-polybase)** 功能。 分段複製功能也能提供更好的輸送量。 它會自動將資料轉換成與 PolyBase 相容的格式，將資料儲存在 Azure Blob 儲存體中，然後呼叫 PolyBase 將資料載入 SQL 資料倉儲。
+- 如果您的來源資料是在 **Azure Blob 中，Azure Data Lake Storage Gen1 或 Azure Data Lake Storage Gen2**，而且 **格式與 PolyBase 相容**，您可以使用複製活動來直接叫用 polybase，讓 Azure Synapse Analytics 從來源提取資料。 如需詳細資料，請參閱 **[使用 PolyBase 直接複製](#direct-copy-by-using-polybase)** 。
+- 如果您的來源資料存放區與格式不受 PolyBase 支援，您可以改用 **[使用 PolyBase 分段複製](#staged-copy-by-using-polybase)** 功能。 分段複製功能也能提供更好的輸送量。 它會自動將資料轉換成 PolyBase 相容的格式，將資料儲存在 Azure Blob 儲存體中，然後呼叫 PolyBase 將資料載入 Azure Synapse Analytics 中。
 
 > [!TIP]
 > 深入瞭解[使用 PolyBase 的最佳做法](#best-practices-for-using-polybase)。
@@ -474,10 +474,10 @@ Azure Data Factory 支援將資料載入 SQL 資料倉儲的三種方式。
 
 ### <a name="direct-copy-by-using-polybase"></a>使用 PolyBase 直接複製
 
-SQL 資料倉儲 PolyBase 直接支援 Azure Blob、Azure Data Lake Storage Gen1 和 Azure Data Lake Storage Gen2。 如果您的來源資料符合本節所述準則，即可使用 PolyBase 從來源資料存放區直接複製到 Azure Synapse Analytics。 否則，請利用[使用 PolyBase 分段複製](#staged-copy-by-using-polybase)。
+Azure Synapse Analytics PolyBase 直接支援 Azure Blob、Azure Data Lake Storage Gen1 和 Azure Data Lake Storage Gen2。 如果您的來源資料符合本節所述準則，即可使用 PolyBase 從來源資料存放區直接複製到 Azure Synapse Analytics。 否則，請利用[使用 PolyBase 分段複製](#staged-copy-by-using-polybase)。
 
 > [!TIP]
-> 若要有效率地將資料複製到 SQL 資料倉儲，深入瞭解[使用 Data Lake Store 與 SQL 資料倉儲時，Azure Data Factory 能讓您更輕鬆容易發現資料中的重要資訊](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/)。
+> 若要有效率地將資料複製到 Azure Synapse Analytics，深入瞭解 [Azure Data Factory 可讓您更輕鬆且方便地在使用 Data Lake Store 搭配 Azure Synapse Analytics 時發現資料的見解](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/)。
 
 如果不符合需求，Azure Data Factory 會檢查設定，並自動切換回適用於資料移動的 BULKINSERT 機制。
 
@@ -545,7 +545,7 @@ SQL 資料倉儲 PolyBase 直接支援 Azure Blob、Azure Data Lake Storage Gen1
 
 ### <a name="staged-copy-by-using-polybase"></a>使用 PolyBase 分段複製
 
-當您的來源資料與 PolyBase 原本不相容時，可透過過渡暫存 Azure Blob 儲存體執行個體 (不可以是 Azure 進階儲存體) 來啟用資料複製。 在此情況下，Azure Data Factory 會自動轉換資料，以符合 PolyBase 的資料格式需求。 然後，它會叫用 PolyBase 將資料載入 SQL 資料倉儲。 最後，它會清除 Blob 儲存體中的暫存資料。 如需透過暫存 Azure Blob 儲存體執行個體複製資料的詳細資訊，請參閱[分段複製](copy-activity-performance-features.md#staged-copy)。
+當您的來源資料與 PolyBase 原本不相容時，可透過過渡暫存 Azure Blob 儲存體執行個體 (不可以是 Azure 進階儲存體) 來啟用資料複製。 在此情況下，Azure Data Factory 會自動轉換資料，以符合 PolyBase 的資料格式需求。 然後，它會叫用 PolyBase 將資料載入 Azure Synapse Analytics 中。 最後，它會清除 Blob 儲存體中的暫存資料。 如需透過暫存 Azure Blob 儲存體執行個體複製資料的詳細資訊，請參閱[分段複製](copy-activity-performance-features.md#staged-copy)。
 
 若要使用此功能，請建立 [Azure Blob 儲存體連結服務](connector-azure-blob-storage.md#linked-service-properties)，讓其參考具有過渡 Blob 儲存體的 Azure 儲存體帳戶。 然後指定複製活動的 `enableStaging` 和 `stagingSettings` 屬性，如下列程式碼所示。
 
@@ -595,25 +595,25 @@ SQL 資料倉儲 PolyBase 直接支援 Azure Blob、Azure Data Lake Storage Gen1
 
 #### <a name="required-database-permission"></a>必要的資料庫權限
 
-若要使用 PolyBase，將資料載入 SQL 資料倉儲的使用者必須具備目標資料庫的 ["CONTROL" 權限](https://msdn.microsoft.com/library/ms191291.aspx)。 達到此目標的其中一個方法是將該使用者新增為 **db_owner** 角色的成員。 在 [SQL 資料倉儲概觀](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)中了解如何執行此作業。
+若要使用 PolyBase，將資料載入 Azure Synapse Analytics 的使用者必須擁有目標資料庫的「 [控制」許可權](https://msdn.microsoft.com/library/ms191291.aspx) 。 達到此目標的其中一個方法是將該使用者新增為 **db_owner** 角色的成員。 在 [Azure Synapse Analytics 總覽](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)中瞭解如何進行。
 
 #### <a name="row-size-and-data-type-limits"></a>資料列大小和資料類型限制
 
-PolyBase 負載的限制為小於 1 MB 的資料列。 這無法用來載入 VARCHR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX)。 如需詳細資訊，請參閱 [SQL 資料倉儲服務容量限制](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)。
+PolyBase 負載的限制為小於 1 MB 的資料列。 這無法用來載入 VARCHR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX)。 如需詳細資訊，請參閱 [Azure Synapse Analytics 服務容量限制](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)。
 
 當您來源資料中的資料列大於 1 MB 時，您可能要將來源資料表垂直分割成幾個小的資料表。 務必確認每一列的大小不會超過限制。 然後可以使用 PolyBase 載入較小的資料表，並且在 Azure Synapse Analytics 中將其合併在一起。
 
 或者，對於具有這類寬資料行的資料，您可以藉由關閉「允許 PolyBase」設定，使用非 PolyBase 來載入資料 (使用 ADF)。
 
-#### <a name="sql-data-warehouse-resource-class"></a>SQL 資料倉儲資源類別
+#### <a name="azure-synapse-analytics-resource-class"></a>Azure Synapse Analytics 資源類別
 
-若要達到最佳的可能輸送量，請透過 PolyBase 將較大型資源類別指派給要將資料載入 SQL 資料倉儲的使用者。
+若要達到最佳的可能輸送量，請將較大的資源類別指派給可透過 PolyBase 將資料載入 Azure Synapse Analytics 的使用者。
 
 #### <a name="polybase-troubleshooting"></a>PolyBase, 疑難排解
 
 **載入至 Decimal 資料行**
 
-如果您的來源資料為文字格式或其他非 PolyBase 相容存放區 (使用暫存複製和 PolyBase)，而且其中包含要載入 SQL 資料倉儲 Decimal 資料行中的空值，您可能會遇到下列錯誤：
+如果您的來源資料是文字格式或其他非 PolyBase 相容的存放區 (使用分段複製和 PolyBase) ，而且它包含要載入至 Azure Synapse Analytics Decimal 資料行的空白值，您可能會遇到下列錯誤：
 
 ```
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
@@ -649,9 +649,9 @@ All columns of the table must be specified in the INSERT BULK statement.
 
 NULL 值是一種特殊形式的預設值。 如果資料欄可以是 Null，Blob 中該欄的輸入資料可能會是空白。 但輸入資料集中不能缺少輸入資料。 PolyBase 會在 Azure Synapse Analytics 中為遺漏值插入 NULL。
 
-## <a name="use-copy-statement-to-load-data-into-azure-sql-data-warehouse-preview"></a><a name="use-copy-statement"></a> 使用 COPY 陳述式將資料載入 Azure SQL 資料倉儲 (預覽)
+## <a name="use-copy-statement-to-load-data-into-azure-synapse-analytics-preview"></a><a name="use-copy-statement"></a> 使用 COPY 語句將資料載入 Azure Synapse Analytics (preview) 
 
-SQL 資料倉儲 [COPY 陳述式](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)(預覽) 直接支援從 **Azure Blob 和 Azure Data Lake Storage Gen2** 載入資料。 如果您的來源資料符合本節所述準則，您就可以選擇在 ADF 中使用 COPY 陳述式，將資料載入到 Azure SQL 資料倉儲。 Azure Data Factory 會檢查設定，並在不符合準則時失敗複製活動執行。
+Azure Synapse Analytics [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (preview) 直接支援從 **Azure Blob 載入資料和 Azure Data Lake Storage Gen2**。 如果您的來源資料符合本節所述的準則，您可以選擇在 ADF 中使用 COPY 語句將資料載入 Azure Synapse Analytics 中。 Azure Data Factory 會檢查設定，並在不符合準則時失敗複製活動執行。
 
 >[!NOTE]
 >目前 Data Factory 僅支援從複製陳述式相容來源複製，如下所述。
@@ -690,8 +690,8 @@ SQL 資料倉儲 [COPY 陳述式](https://docs.microsoft.com/sql/t-sql/statement
 
 | 屬性          | 描述                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| defaultValues | 指定 SQL DW 中每個目標資料行的預設值。  屬性中的預設值會覆寫資料倉儲中設定的預設條件約束，而且識別欄位不可有預設值。 | 否 |
-| additionalOptions | 在 [COPY 陳述式](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)的「With」子句中將直接傳遞至 SQL DW 複製陳述式的其他選項。 視需要將值加上引號，以配合 COPY 陳述式需求。 | 否 |
+| defaultValues | 針對 Azure Synapse Analytics 中的每個目標資料行指定預設值。  屬性中的預設值會覆寫資料倉儲中設定的預設條件約束，而且識別欄位不可有預設值。 | 否 |
+| additionalOptions | 將直接在 [copy 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)的 "With" 子句中傳遞給 Azure Synapse Analytics COPY 語句的其他選項。 視需要將值加上引號，以配合 COPY 陳述式需求。 | 否 |
 
 ```json
 "activities":[
@@ -800,7 +800,7 @@ SQL 範例：```Select * from MyTable where customerId > 1000 and customerId < 2
 從 Azure Synapse Analytics 複製資料或將資料複製到該處時，會使用下列從 Azure Synapse Analytics 資料類型對應到 Azure Data Factory 過渡期資料類型的對應。 請參閱[結構描述和資料類型對應](copy-activity-schema-and-type-mapping.md)，以了解複製活動如何將來源結構描述和資料類型對應至接收。
 
 >[!TIP]
->如需 SQL DW 支援的資料類型以及對於不支援的資料類型提供的因應措施，請參閱 [Azure Synapse 分析中的資料表資料類型](../synapse-analytics/sql/develop-tables-data-types.md)一文。
+>如需有關 Azure Synapse Analytics 支援的資料類型與不支援的資料類型的因應措施，請參閱 [Azure Synapse Analytics 文章中的資料表資料類型](../synapse-analytics/sql/develop-tables-data-types.md) 。
 
 | Azure Synapse Analytics 資料類型    | Data Factory 過渡期資料類型 |
 | :------------------------------------ | :----------------------------- |

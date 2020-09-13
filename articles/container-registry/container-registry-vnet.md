@@ -1,14 +1,14 @@
 ---
 title: 使用服務端點來限制存取
-description: 使用 Azure 虛擬網路中的服務端點來限制對 Azure container registry 的存取。 服務端點存取是 Premium 服務層的一項功能。
+description: 使用 Azure 虛擬網路中的服務端點來限制對 Azure container registry 的存取。 服務端點存取是 Premium 服務層級的功能。
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: a6a0702019cd11f26ea9fcdba8a74bf3e71df94b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1fc8d54d677112a9c934f9079e953a7389939bde
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371425"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488657"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>使用 Azure 虛擬網路中的服務端點來限制對容器登錄的存取
 
@@ -28,6 +28,8 @@ ms.locfileid: "87371425"
 * 只有 [Azure Kubernetes Service](../aks/intro-kubernetes.md) 叢集或 Azure [虛擬機器](../virtual-machines/linux/overview.md) 可作為主機以使用服務端點來存取容器登錄。 *不支援包括 Azure 容器執行個體在內的其他 Azure 服務。*
 * 每個登錄最多支援 100 個網路存取規則。
 * Azure 美國政府雲端或 Azure 中國雲端不支援 Azure Container Registry 的服務端點。
+
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="prerequisites"></a>Prerequisites
 

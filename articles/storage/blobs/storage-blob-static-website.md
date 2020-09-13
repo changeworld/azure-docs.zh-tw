@@ -6,25 +6,28 @@ ms.service: storage
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/14/2020
+ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b8864201fc5bf86a5451c790a51141cee46bffeb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 72ffad3724ba9c981984ef8410fc9dd9556d8b8e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432519"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89486853"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 儲存體中的靜態網站代管
 
-您可以直接從名為 *$web* 的儲存體容器提供靜態內容 (HTML、CSS、JavaScript 和影像檔)。 在 Azure 儲存體中託管內容可讓您使用無伺服器架構，其中包括 [Azure Functions](/azure/azure-functions/functions-overview)，以及其他平台即服務 (PaaS) 服務。
+您可以直接從名為 *$web* 的儲存體容器提供靜態內容 (HTML、CSS、JavaScript 和影像檔)。 在 Azure 儲存體中託管內容可讓您使用無伺服器架構，其中包括 [Azure Functions](/azure/azure-functions/functions-overview)，以及其他平台即服務 (PaaS) 服務。 如果您不需要 web 伺服器轉譯內容，Azure 儲存體靜態網站裝載是很好的選項。
+
+[App Service 靜態 Web Apps](https://azure.microsoft.com/services/app-service/static/) 是 Azure 儲存體靜態網站裝載的絕佳替代方案，也適用于不需要 Web 服務器轉譯內容的情況。 App Service 靜態 Web Apps 可提供完全受控的持續整合和持續傳遞 (從 GitHub 來源到全域部署的 CI/CD) 工作流程。
+
+如果您需要 web 伺服器以轉譯內容，您可以使用 [Azure App Service](https://azure.microsoft.com/services/app-service/)。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
-> 如果您的網站相依於伺服器端程式碼，請改用 [Azure App Service](/azure/app-service/overview)。
-請務必建立一般用途 v2 標準儲存體帳戶。 靜態網站無法在任何其他類型的儲存體帳戶中使用。
+> 務必建立一般用途的 v2 標準儲存體帳戶。 靜態網站無法在任何其他類型的儲存體帳戶中使用。
 
 ## <a name="setting-up-a-static-website"></a>設定靜態網站
 
@@ -85,7 +88,7 @@ ms.locfileid: "87432519"
 
 不過，主要 Blob 服務端點的公用存取`https://contosoblobaccount.blob.core.windows.net/$web/index.html`會從私人變更至公用。 現在，使用者可以使用這兩個端點的其中一個來開啟該檔案。
 
-在儲存體帳戶上停用公用存取並不會影響裝載在該儲存體帳戶中的靜態網站。 如需詳細資訊，請參閱[設定容器和 blob 的匿名公用讀取權限](anonymous-read-access-configure.md)。
+停用儲存體帳戶上的公用存取，並不會影響裝載于該儲存體帳戶中的靜態網站。 如需詳細資訊，請參閱 [設定容器和 blob 的匿名公用讀取權限](anonymous-read-access-configure.md)。
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>將自訂網域對應至靜態網站 URL
 
@@ -103,6 +106,11 @@ ms.locfileid: "87432519"
 沒有任何方法可以將標頭設為靜態網站功能的一部分。 不過，您可以使用 Azure CDN 以新增標頭和附加 (或覆寫) 標頭值。 請參閱 [Azure CDN 的標準規則引擎參考](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)。
 
 如需使用標頭以控制快取的詳細資訊，請參閱[使用快取規則控制 Azure CDN 快取行為](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)。
+
+## <a name="multi-region-website-hosting"></a>多區域網站裝載
+
+如果您打算在多個地理位置中裝載網站，建議您使用 [內容傳遞網路](https://docs.microsoft.com/azure/cdn/) 進列區域快取。 如果您想要在每個區域中提供不同的內容，請使用 [Azure Front Door](https://docs.microsoft.com/azure/frontdoor/) 。 它也會提供容錯移轉功能。 如果您打算使用自訂網域，則不建議使用[Azure 流量管理員](https://docs.microsoft.com/azure/traffic-manager/)。 由於 Azure 儲存體如何驗證自訂功能變數名稱，因此可能會發生問題。
+
 
 ## <a name="pricing"></a>定價
 

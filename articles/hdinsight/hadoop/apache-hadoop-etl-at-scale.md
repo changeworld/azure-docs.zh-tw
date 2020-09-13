@@ -1,19 +1,19 @@
 ---
 title: 大規模擷取、轉換和載入 (ETL) - Azure HDInsight
 description: 了解如何在 HDInsight 中搭配 Apache Hadoop 使用擷取、轉換和載入。
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e048365ca589d452385607b902ee6b285de8165f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: eb3c45c01b2e3ca1761e86f3ac991d67f7813856
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084115"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504310"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模擷取、轉換和載入 (ETL)
 
@@ -48,7 +48,7 @@ Azure Data Factory 以平台即服務 (PaaS) 的形式提供協調流程功能�
 
 1. 建立和排程資料驅動的工作流程。 這些管線可從不同的資料存放區擷取資料。
 1. 使用計算服務 (例如 HDInsight 或 Hadoop) 處理和轉換資料。 您也可以在此步驟中使用 Spark、Azure Data Lake Analytics、Azure Batch 或 Azure Machine Learning。
-1. 將輸出資料發佈至資料存放區，例如 Azure SQL 資料倉儲，讓 BI 應用程式取用。
+1. 將輸出資料發佈至資料存放區（例如 Azure Synapse Analytics），以供 BI 應用程式使用。
 
 如需有關 Azure Data Factory 的詳細資訊，請參閱[文件](../../data-factory/introduction.md)。
 
@@ -84,11 +84,11 @@ Data Lake Storage 已針對事件擷取，透過 Azure 事件中樞或 Apache St
 
 - **從硬碟上傳資料：** 您可以使用 [Azure 匯入/匯出服務](../../storage/common/storage-import-export-service.md)，將含有您資料的硬碟送到 Azure 資料中心。 您的資料會先上傳到 Azure Blob 儲存體。 接下來，您可以使用 Azure Data Factory 或 AdlCopy 工具，將資料從 Azure Blob 儲存體複製到 Data Lake Storage。
 
-### <a name="azure-sql-data-warehouse"></a>Azure SQL 資料倉儲
+### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure SQL 資料倉儲是儲存備妥結果的適當選擇。 您可以使用 Azure HDInsight 執行適用於 SQL 資料倉儲的那些服務。
+Azure Synapse Analytics 是儲存備妥結果的適當選擇。 您可以使用 Azure HDInsight 來執行這些服務，以進行 Azure z) 的 Synapse 分析。
 
-Azure SQL 資料倉儲是一個已針對分析工作負載最佳化的關聯式資料庫。 其會根據分割資料表進行調整。 資料表可以跨多個節點進行分割。 在建立時便會選取節點。 您可以在事後調整節點規模，但這是一個可能需要移動資料的作用中程序。 如需詳細資訊，請參閱[管理 SQL 資料倉儲中的計算能力](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
+Azure Synapse Analytics 是針對分析工作負載優化的關係資料庫存放區。 其會根據分割資料表進行調整。 資料表可以跨多個節點進行分割。 在建立時便會選取節點。 您可以在事後調整節點規模，但這是一個可能需要移動資料的作用中程序。 如需詳細資訊，請參閱 [管理 Azure Synapse Analytics 中的計算](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 
 ### <a name="apache-hbase"></a>Apache HBase (英文)
 

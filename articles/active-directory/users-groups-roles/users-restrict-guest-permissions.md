@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 08/20/2020
+ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28125ff55fe6ab3e68d56dc26a074d0498c2b413
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6fb7a6654f5917c0651ffba6e672b41d14fdbe20
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798426"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489641"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>在 Azure Active Directory 中限制來賓存取許可權 (預覽) 
 
@@ -40,17 +40,14 @@ Azure Active Directory (Azure AD) 可讓您限制外部來賓使用者在其組�
 
 我們已對來賓使用者權限的現有 Azure 入口網站控制項進行了變更。
 
-> [!IMPORTANT]
-> 短暫的時候，只有在使用 URL 時，才會顯示適用于來賓使用者權限的新入口網站控制項 [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) 。 PowerShell 和 Microsoft Graph 仍然可以用來設定控制項，而變更將會由入口網站所接受。
-
-1. 使用全域管理員許可權登入 [Azure AD admin center](https://aka.ms/AADRestrictedGuestAccess) 。
+1. 使用全域管理員許可權登入 [Azure AD admin center](https://aad.portal.azure.com) 。
 1. 在您組織的 **Azure Active Directory** 總覽] 頁面上，選取 [ **使用者設定**]。
 1. 在 [ **外部使用者**] 下，選取 [ **管理外部**共同作業設定]。
 1. 在 [ **外部** 共同作業設定] 頁面上，選取 [ **來賓使用者存取限制為其自己的目錄物件的屬性和成員資格]** 選項。
 
     ![Azure AD 外部共同作業設定頁面](./media/users-restrict-guest-permissions/external-collaboration-settings.png)
 
-1. 選取 [儲存]  。 這些變更最多可能需要15分鐘的時間才會對來賓使用者生效。
+1. 選取 [儲存]。 這些變更最多可能需要15分鐘的時間才會對來賓使用者生效。
 
 ## <a name="update-with-the-microsoft-graph-api"></a>使用 Microsoft Graph API 更新
 
@@ -159,13 +156,13 @@ PS C:\WINDOWS\system32> Set-AzureADMSAuthorizationPolicy -GuestUserRoleId '2af84
 -------- | ------
 這些許可權的適用位置為何？ | 這些目錄層級許可權會跨 Azure AD 服務和入口網站強制執行，包括 Microsoft Graph、PowerShell v2、Azure 入口網站和我的應用程式入口網站。 利用 Office 365 群組進行共同作業案例的 Microsoft 365 服務也會受到影響，尤其是 Outlook、Microsoft 小組和 SharePoint。
 這項功能在我的應用程式入口網站中的哪些部分會受到影響？ | 我的應用程式入口網站中的群組功能將採用這些新的許可權。 這包括在我的應用程式中查看群組清單和群組成員資格的所有路徑。 群組磚可用性未進行任何變更。 群組磚可用性仍然受 Azure 系統管理員入口網站中的現有群組設定所控制。
-這些許可權會覆寫 SharePoint 或 Microsoft 團隊的來賓設定嗎？ | 否。 這些現有的設定仍能控制這些應用程式的體驗和存取。 例如，如果您在 SharePoint 中看到問題，請再次檢查您的外部共用設定。
+這些許可權會覆寫 SharePoint 或 Microsoft 團隊的來賓設定嗎？ | 不會。 這些現有的設定仍能控制這些應用程式的體驗和存取。 例如，如果您在 SharePoint 中看到問題，請再次檢查您的外部共用設定。
 Planner 和 Yammer 的已知相容性問題有哪些？ | <li>當權限設定為 [受限制] 時，登入 Planner 應用程式或存取 Microsoft 小組中之 Planner 的來賓將無法存取其方案或任何工作。<li>當權限設定為 [受限制] 時，登入 Yammer 的來賓將無法離開群組。
 我的租使用者中的現有來賓許可權是否會變更？ | 目前的設定未進行任何變更。 我們維持與您現有設定的回溯相容性。 您決定何時要進行變更。
-這些許可權預設會設定嗎？ | 否。 現有的預設許可權會維持不變。 您可以選擇性地將許可權設定為更嚴格的限制。
+這些許可權預設會設定嗎？ | 不會。 現有的預設許可權會維持不變。 您可以選擇性地將許可權設定為更嚴格的限制。
 這項功能是否有任何授權需求？ | 否，這項功能沒有新的授權需求。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 若要深入瞭解 Azure AD 中現有的 guest 許可權，請參閱 [Azure Active Directory 中的預設使用者許可權為何？](../fundamentals/users-default-permissions.md)。
 - 若要查看限制來賓存取的 Microsoft Graph API 方法，請參閱 [authorizationPolicy 資源類型](/graph/api/resources/authorizationpolicy)。

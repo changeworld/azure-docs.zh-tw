@@ -1,19 +1,19 @@
 ---
 title: 深入探討 - 進階分析 - Azure HDInsight
-description: 瞭解 advanced analytics 如何使用演算法來處理 Azure HDInsight 中的海量資料。
-author: ashishthaps
-ms.author: ashishth
+description: 瞭解 advanced analytics 如何使用演算法來處理 Azure HDInsight 中的大型資料。
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: fa2909055259d7832942f9f47434963f7bbb2aa1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ffc8fcf734877f55210507310849a5746a280c3d
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079355"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504344"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探討 - 進階分析
 
@@ -23,7 +23,7 @@ HDInsight 提供可從大量結構化、非結構化及快速移動之資料取�
 
 ## <a name="advanced-analytics-process"></a>進階分析程序
 
-![Advanced analytics 程式流程](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
+![先進的分析程式流程](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
 
 在您已識別出業務問題並已開始收集和處理資料之後，就必須建立代表所要預測之問題的模型。 您的模型將會使用一或多個機器學習服務演算法，來進行最符合您業務需求的預測類型。  您的大部分資料應該用來將模型定型，其餘部分則用來測試或評估該模型。
 
@@ -38,17 +38,17 @@ HDInsight 提供可從大量結構化、非結構化及快速移動之資料取�
 除了選取最適合的演算法之外，您還必須考量是否需要提供定型用的資料。 機器學習服務演算法歸類如下：
 
 * 監督式 - 演算法必須先在一組已加上標籤的資料上進行定型，才能提供結果
-* 半監督-演算法可以透過由訓練人員進行的互動式查詢，以額外的目標來增強，這在定型的初始階段中無法使用。
-* 不受監督-演算法不需要定型資料
+* 半監督式演算法可透過互動式查詢透過互動式查詢，在訓練的初始階段未提供，以透過互動式查詢來擴充
+* 非監督式-演算法不需要定型資料
 * 增強式 - 演算法使用軟體代理程式來判斷特定內容內的理想行為 (通常用於 Robotics)
 
-| 演算法類別| 用途 | 學習類型 | 演算法 |
+| 演算法類別| 使用 | 學習類型 | 演算法 |
 | --- | --- | --- | -- |
 | 分類 | 將人員或事項分類成群組 | 受監督 | 決策樹、羅吉斯迴歸、類神經網路 |
 | 叢集 | 將一組範例分割成同質群組 | 未監督式 | K-Means 叢集模型 |
 | 模式偵測 | 識別資料中常見的關聯 | 未監督式 | 關聯規則 |
 | 迴歸 | 預測數值結果 | 受監督 | 線性迴歸、類神經網路 |
-| 增強式 | 判斷機器人的最佳行為 | 增強式 | 蒙特卡羅 (Monte Carlo) 模擬、DeepMind |
+| 增強 | 判斷機器人的最佳行為 | 增強 | 蒙特卡羅 (Monte Carlo) 模擬、DeepMind |
 
 ## <a name="machine-learning-on-hdinsight"></a>HDInsight 上的機器學習服務
 
@@ -75,7 +75,7 @@ ML 服務為 HDInsight 的一部分，您可以使用現成可與大量資料集
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning 和 Apache Hive
 
-[Azure Machine Learning Studio （傳統）](https://studio.azureml.net/)提供可建立預測性分析模型的工具，以及完全受控的服務，您可以用來將預測模型部署為可供使用的 web 服務。 Azure Machine Learning 提供可在雲端建立完整預測性分析解決方案的工具，可讓您快速建立、測試預測性模型、將預測性模型變成可操作的模型並對其進行管理。 您可以從大型演算法程式庫中選取、使用 Web 型工作室來建置模型，然後將模型輕鬆部署成 Web 服務。
+[Azure Machine Learning Studio (傳統) ](https://studio.azureml.net/) 提供可建立預測性分析模型的工具，也提供完全受控的服務，可讓您將預測模型部署為可供取用的 web 服務。 Azure Machine Learning 提供可在雲端建立完整預測性分析解決方案的工具，可讓您快速建立、測試預測性模型、將預測性模型變成可操作的模型並對其進行管理。 您可以從大型演算法程式庫中選取、使用 Web 型工作室來建置模型，然後將模型輕鬆部署成 Web 服務。
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark 和深度學習
 
@@ -85,7 +85,7 @@ ML 服務為 HDInsight 的一部分，您可以使用現成可與大量資料集
 
 我們將檢閱一個使用 HDInsight 的進階分析機器學習服務管線範例。
 
-在此案例中，您將瞭解 Dnn 如何在深度學習架構中產生，Microsoft 的 Cognitive Toolkit （CNTK）可運作為使用 HDInsight Spark 叢集上的 PySpark，針對儲存在 Azure Blob 儲存體帳戶中的大型影像集合進行評分。 此方法適用於一般 DNN 使用案例、空拍影像分類，並可用來識別最近的都市發展模式。  您將使用預先定型的影像分類模型。 此模型已在 [CIFAR-10 資料集](https://www.cs.toronto.edu/~kriz/cifar.html)上預先定型，並已套用至 10,000 個保留的影像。
+在此案例中，您將瞭解 Dnn 如何在深度學習架構中產生，Microsoft 的 Cognitive Toolkit (CNTK) ，可以實際運作在 HDInsight Spark 叢集上使用 PySpark 來評分儲存在 Azure Blob 儲存體帳戶中的大型影像集合。 此方法適用於一般 DNN 使用案例、空拍影像分類，並可用來識別最近的都市發展模式。  您將使用預先定型的影像分類模型。 此模型已在 [CIFAR-10 資料集](https://www.cs.toronto.edu/~kriz/cifar.html)上預先定型，並已套用至 10,000 個保留的影像。
 
 這個進階分析案例中有三個主要工作：
 
@@ -97,7 +97,7 @@ ML 服務為 HDInsight 的一部分，您可以使用現成可與大量資料集
 
 ![Machine Learning 範例影像](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
-如需有關資料集的詳細資訊，請參閱 Alex Krizhevsky 的[從小型影像學習多層功能](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf)。
+如需有關資料集的詳細資訊，請參閱 Alex Krizhevsky [從小型影像學習多層的功能](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf)。
 
 此影像集已分割成由 50,000 影像組成的定型集和由 10,000 個影像組成的測試集。 第一個集合已用來依循 Cognitive Toolkit GitHub 儲存機制中的[這個教學課程](https://github.com/Microsoft/CNTK/tree/master/Examples/Image/Classification/ResNet)，使用 Microsoft Cognitive Toolkit 將深度達 20 層的卷積剩餘網路 (ResNet) 模型定型。 剩餘的 10,000 個影像則已用來測試模型的正確性。 這正是分散式運算開始發揮作用之處：影像的前處理和評分工作是可高度平行化的工作。 有了已儲存的定型模型在手，我們使用了：
 
@@ -112,9 +112,9 @@ ML 服務為 HDInsight 的一部分，您可以使用現成可與大量資料集
 
 ### <a name="try-it-out"></a>試試看！
 
-遵循[此教學](../spark/apache-spark-microsoft-cognitive-toolkit.md)課程，以端對端執行此解決方案：設定 HDInsight Spark 叢集、安裝 Cognitive Toolkit，以及執行分數 10000 cifar-10 映射的 Jupyter Notebook。
+遵循 [本教學](../spark/apache-spark-microsoft-cognitive-toolkit.md) 課程以端對端執行此解決方案：設定 HDInsight Spark 叢集、安裝 Cognitive Toolkit，以及執行分數為 10000 cifar-10 映射的 Jupyter Notebook。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 Apache Hive 和 Azure Machine Learning
 
@@ -124,8 +124,8 @@ Apache Hive 和 Azure Machine Learning
 Apache Spark 和 MLLib
 
 * [使用 HDInsight 上的 Apache Spark 進行機器學習](../../machine-learning/team-data-science-process/spark-overview.md)
-* [Machine Learning 的 Apache Spark：使用 HDInsight 中的 Apache Spark 來分析使用 HVAC 資料的建築物溫度](../spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Machine Learning 的 Apache Spark：使用 HDInsight 中的 Apache Spark 來預測食物檢查結果](../spark/apache-spark-machine-learning-mllib-ipython.md)
+* [使用 Machine Learning Apache Spark：在 HDInsight 中使用 Apache Spark，以使用 HVAC 資料來分析建築物溫度](../spark/apache-spark-ipython-notebook-machine-learning.md)
+* [使用 Machine Learning Apache Spark：在 HDInsight 中使用 Apache Spark 來預測食物檢查結果](../spark/apache-spark-machine-learning-mllib-ipython.md)
 
 深度學習、Cognitive Toolkit 及其他方法
 

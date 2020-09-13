@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 18212bf92304e75c702c51ff12628cd670755bb0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 53db53f60166c3b5afa117a60a99e3429a14576d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855198"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488553"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure 時間序列深入解析 Gen2 中的時間序列模型
 
@@ -24,7 +24,7 @@ ms.locfileid: "88855198"
 > [!TIP]
 >
 > * 請移至 [Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples) 環境，以取得即時時間序列模型範例。
-> * 瞭解如何使用 Azure 時間序列深入解析 TSI Explorer [來使用時間序列模型](/azure/time-series-insights/how-to-edit-your-model) 。
+> * 瞭解如何使用 Azure 時間序列深入解析 Explorer [來使用時間序列模型](/azure/time-series-insights/how-to-edit-your-model) 。
 
 ## <a name="summary"></a>摘要
 
@@ -63,7 +63,7 @@ ms.locfileid: "88855198"
 * 定義父子式關聯性，以啟用導覽、搜尋和參考。
 * 定義與實例相關聯的屬性（定義為 *實例欄位*），並使用它們來建立階層。
 
-### <a name="components"></a>單元
+### <a name="components"></a>元件
 
 時間序列模型有三個核心元件：
 
@@ -75,7 +75,7 @@ ms.locfileid: "88855198"
 
 [![時間序列模型總覽圖表](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-您可以透過 [AZURE 時間序列深入解析 TSI Explorer](/azure/time-series-insights/concepts-model-overview)來建立及管理時間序列模型。 時間序列模型設定可以透過 [模型設定 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)來管理。
+您可以透過 [Azure 時間序列深入解析 Explorer](/azure/time-series-insights/concepts-model-overview)來建立及管理時間序列模型。 時間序列模型設定可以透過 [模型設定 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)來管理。
 
 ## <a name="time-series-model-instances"></a>時間序列模型執行個體
 
@@ -87,7 +87,7 @@ ms.locfileid: "88855198"
 
 *實例欄位* 是描述性資訊的集合，可包含階層層級的值，以及製造商、運算子等等。
 
-針對 Azure 時間序列深入解析 Gen2 環境設定事件來源之後，系統會自動在時間序列模型中探索和建立實例。 您可以使用時間序列模型查詢，透過 Azure 時間序列深入解析 TSI Explorer 來建立或更新實例。
+針對 Azure 時間序列深入解析 Gen2 環境設定事件來源之後，系統會自動在時間序列模型中探索和建立實例。 您可以使用時間序列模型查詢，透過 Azure 時間序列深入解析 Explorer 來建立或更新實例。
 
 [Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples)提供數個即時實例範例。
 
@@ -216,7 +216,7 @@ ms.locfileid: "88855198"
 | ID4 | "大樓" = "1000"，"floor" = "10"  |
 | ID5 | 未設定任何「建築物」、「樓層」或「房間」。 |
 
-時間序列**ID1**和**ID4**在[Azure 時間序列深入解析 TSI Explorer](time-series-insights-update-explorer.md)中會顯示為階層**H1**的一部分，因為它們已定義完整且正確排序的*建築物*、*樓層*和*房間*參數。
+時間序列**ID1**和**ID4**在[Azure 時間序列深入解析 Explorer](time-series-insights-update-explorer.md)中會顯示為階層**H1**的一部分，因為它們具有完整定義和正確排序的*建築物*、*樓層*和*房間*參數。
 
 其他則分類于 *無上層實例* 底下，因為它們不符合指定的資料階層。
 
@@ -286,7 +286,7 @@ ms.locfileid: "88855198"
 
 時間序列模型類型可以有許多變數，以指定事件的公式和計算規則。 深入瞭解 [如何定義時間序列模型變數](./concepts-variables.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需有關如何透過 Api 編輯模型的詳細資訊，請參閱 [時間序列模型](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) 參考檔。
 

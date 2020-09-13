@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: e4f9fa554a7c0e45abe1e9686605c95bb79d1739
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/04/2020
+ms.openlocfilehash: c8bc9e844687c85255be972011eba03e9c38de48
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932945"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488298"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>在運算式中使用函式的參考指南，適用於 Azure Logic Apps 和 Power Automate
 
@@ -85,6 +85,7 @@ ms.locfileid: "88932945"
 | [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | 以字串形式產生全域唯一識別碼 (GUID)。 |
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | 傳回子字串的起始位置。 |
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | 傳回子字串最後一次出現的起始位置。 |
+| [length](../logic-apps/workflow-definition-language-functions-reference.md#length) | 傳回字串或陣列中的項目數目。 |
 | [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | 使用指定字串取代子字串，並傳回已更新的字串。 |
 | [分割](../logic-apps/workflow-definition-language-functions-reference.md#split) | 根據原始字串中指定的分隔符號字元，從較大型字串傳回包含以逗號分隔之子字串的陣列。 |
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | 檢查字串是否以特定的子字串開始。 |
@@ -1135,7 +1136,7 @@ bool(<value>)
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| `true` 或 `false` | Boolean | 指定之值的布林值版本。 |
+| `true` 或 `false` | 布林值 | 指定之值的布林值版本。 |
 ||||
 
 *輸出*
@@ -3914,8 +3915,7 @@ sub(10.3, .3)
 
 ### <a name="substring"></a>substring
 
-從字串中傳回從指定位置或索引起始的字元。
-索引值會以數字 0 開頭。
+從字串中傳回從指定位置或索引起始的字元。 索引值會以數字 0 開頭。
 
 ```
 substring('<text>', <startIndex>, <length>)
@@ -3927,6 +3927,10 @@ substring('<text>', <startIndex>, <length>)
 | <*startIndex*> | 是 | 整數 | 等於或大於 0 的正數，作為起始位置或索引值 |
 | <*length*> | 是 | 整數 | 子字串中您需要的字元數正數 |
 |||||
+
+> [!NOTE]
+> 請確定加入 *startIndex* 和 *長度* 參數值的總和小於您為 *text* 參數提供的字串長度。
+> 否則，您會收到錯誤，與其他語言中類似的函式不同，其中結果是從 *startIndex* 到字串結尾的子字串。
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |

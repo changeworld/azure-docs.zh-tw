@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: 8543276a338b523a290fb131a8f1b7a55affbd98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdab4f33852be6bfc2621e2cbecff76778567b1a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248967"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484726"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 SQL Server 預存程序活動轉換資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -33,13 +33,13 @@ ms.locfileid: "85248967"
 您可以使用「預存程序活動」來叫用您企業或 Azure 虛擬機器 (VM) 中的下列其中一個資料存放區： 
 
 - Azure SQL Database
-- Azure Synapse Analytics (先前稱為 Azure SQL 資料倉儲)
-- SQL Server Database。  如果您使用 SQL Server，請在裝載資料庫的同一部電腦上或可存取資料庫的個別電腦上安裝自我裝載整合執行階段。 自我裝載整合執行階段是一套透過安全且可管理的方式，將內部部署/Azure VM 上的資料來源連結至雲端服務的元件。 如需詳細資訊，請參閱[自我裝載整合運行](create-self-hosted-integration-runtime.md)時間一文。
+- Azure Synapse Analytics (先前稱為 SQL 資料倉儲)
+- SQL Server Database。  如果您使用 SQL Server，請在裝載資料庫的同一部電腦上或可存取資料庫的個別電腦上安裝自我裝載整合執行階段。 自我裝載整合執行階段是一套透過安全且可管理的方式，將內部部署/Azure VM 上的資料來源連結至雲端服務的元件。 如需詳細資訊，請參閱 [自我裝載整合運行](create-self-hosted-integration-runtime.md) 時間文章。
 
 > [!IMPORTANT]
-> 將資料複製到 Azure SQL Database 或 SQL Server 時，您可以使用 **sqlWriterStoredProcedureName** 屬性在複製活動中設定 **SqlSink** 以叫用預存程序。 如需有關此屬性的詳細資料，請參閱下列連接器文章：[Azure SQL Database](connector-azure-sql-database.md)、[SQL Server](connector-sql-server.md)。 不支援使用複製活動將資料複製到 Azure Synapse 分析（先前為 Azure SQL 資料倉儲）來叫用預存程式。 但是，您可以使用預存程序活動來叫用「SQL 資料倉儲」中的預存程序。 
+> 將資料複製到 Azure SQL Database 或 SQL Server 時，您可以使用 **sqlWriterStoredProcedureName** 屬性在複製活動中設定 **SqlSink** 以叫用預存程序。 如需有關此屬性的詳細資料，請參閱下列連接器文章：[Azure SQL Database](connector-azure-sql-database.md)、[SQL Server](connector-sql-server.md)。 不支援使用複製活動將資料複製到 Azure Synapse Analytics 時叫用預存程式。 但是，您可以在 Azure Synapse Analytics 中使用預存程式活動來叫用預存程式。 
 >
-> 從 Azure SQL Database 或 SQL Server 或 Azure Synapse Analytics （先前為 Azure SQL 資料倉儲）複製資料時，您可以在複製活動中設定**SqlSource** ，以叫用預存程式，藉由使用**sqlReaderStoredProcedureName**屬性從源資料庫讀取資料。 如需詳細資訊，請參閱下列連接器文章： [Azure SQL Database](connector-azure-sql-database.md)、 [SQL Server](connector-sql-server.md)、 [Azure Synapse Analytics （先前為 Azure SQL 資料倉儲）](connector-azure-sql-data-warehouse.md)          
+> 從 Azure SQL Database 或 SQL Server 或 Azure Synapse Analytics 複製資料時，您可以在複製活動中設定 **>sqlsource** ，以叫用預存程式，使用 **>sqlreaderstoredprocedurename** 屬性從源資料庫讀取資料。 如需詳細資訊，請參閱下列連接器文章： [Azure SQL Database](connector-azure-sql-database.md)、 [SQL Server](connector-sql-server.md) [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)          
 
  
 
@@ -68,21 +68,21 @@ ms.locfileid: "85248967"
 
 下表說明這些 JSON 屬性：
 
-| 屬性                  | 說明                              | 必要 |
+| 屬性                  | 描述                              | 必要 |
 | ------------------------- | ---------------------------------------- | -------- |
-| NAME                      | 活動的名稱                     | Yes      |
+| NAME                      | 活動的名稱                     | 是      |
 | description               | 說明活動用途的文字 | 否       |
 | type                      | 對於預存程序活動，活動類型為 **SqlServerStoredProcedure** | 是      |
-| linkedServiceName         | 參考**Azure SQL Database**或**Azure Synapse 分析（先前稱為 Azure SQL 資料倉儲）** 或**SQL Server**在 Data Factory 中註冊為連結服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。 | 是      |
-| storedProcedureName       | 指定要叫用的預存程序名稱。 | Yes      |
-| storedProcedureParameters | 指定預存程序參數的值。 使用 `"param1": { "value": "param1Value","type":"param1Type" }` 來傳遞資料來源所支援的參數值及其類型。 如果您需要為參數傳遞 Null，請使用 `"param1": { "value": null }` (全部小寫)。 | No       |
+| linkedServiceName         | 在 Data Factory 中註冊為連結服務的 **Azure SQL Database** 或 **Azure Synapse Analytics** 或 **SQL Server** 的參考。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。 | 是      |
+| storedProcedureName       | 指定要叫用的預存程序名稱。 | 是      |
+| storedProcedureParameters | 指定預存程序參數的值。 使用 `"param1": { "value": "param1Value","type":"param1Type" }` 來傳遞資料來源所支援的參數值及其類型。 如果您需要為參數傳遞 Null，請使用 `"param1": { "value": null }` (全部小寫)。 | 否       |
 
 ## <a name="parameter-data-type-mapping"></a>參數資料類型對應
-您為參數指定的資料類型是對應至您所使用之資料來源中資料類型的 Azure Data Factory 類型。 您可以在 [連接器] 區域中找到資料來源的資料類型對應。 範例包括
+您為參數指定的資料類型是對應至您所使用資料來源中資料類型的 Azure Data Factory 類型。 您可以在 [連接器] 區域中找到資料來源的資料類型對應。 範例有
 
 | 資料來源          | 資料型別對應 |
 | ---------------------|-------------------|
-| Azure Synapse Analytics (先前稱為 Azure SQL 資料倉儲) | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
+| Azure Synapse Analytics | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
 | Azure SQL Database   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
 | Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
 | SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |

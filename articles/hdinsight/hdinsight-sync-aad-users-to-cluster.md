@@ -1,23 +1,23 @@
 ---
 title: 將 Azure Active Directory 使用者同步至 HDInsight 叢集
 description: 將已驗證的使用者從 Azure Active Directory 同步處理至 HDInsight 叢集。
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 83e168c5f1d1bad58a193937a4b97fe686dde2a3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 689417dd0743b01afd18b57b5336640f11edd044
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004421"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504650"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>將 Azure Active Directory 使用者同步至 HDInsight 叢集
 
-[具有企業安全性套件 (ESP) 的 HDInsight](hdinsight-domain-joined-introduction.md)叢集可以使用增強式驗證搭配 Azure Active Directory (Azure AD) 使用者，以及使用*azure 角色型存取控制 (azure RBAC) *原則。 當您將使用者和群組新增至 Azure AD 時，您可以同步處理需要存取叢集的使用者。
+[具有企業安全性套件 (ESP) 的 HDInsight ](hdinsight-domain-joined-introduction.md) 叢集可以搭配 Azure Active Directory (Azure AD 使用者使用增強式驗證，以及使用 *azure 角色型存取控制) azure RBAC (* 原則。 當您將使用者和群組新增至 Azure AD 時，您可以同步處理需要存取叢集的使用者。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -27,11 +27,11 @@ ms.locfileid: "88004421"
 
 若要檢視您的主機，請開啟 Ambari Web UI。 每個節點會以新的自動升級設定進行更新。
 
-1. 從 [ [Azure 入口網站](https://portal.azure.com)中，流覽至與您的 ESP 叢集相關聯的 Azure AD 目錄。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至與您的 ESP 叢集相關聯的 Azure AD 目錄。
 
 2. 從左側功能表中選取 [所有使用者]****，然後選取 [新增使用者]****。
 
-    ![Azure 入口網站使用者和群組全部](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
+    ![Azure 入口網站的使用者和群組](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
 3. 完成新增使用者表單。 選取您建立用於指派叢集型權限的群組。 在此範例中，建立名為 "HiveUsers" 的群組，您可以對其指派新使用者。 用於建立 ESP 叢集的[範例指示](hdinsight-domain-joined-configure.md)包含新增兩個群組，分別是 `HiveUsers` 和 `AAD DC Administrators`。
 
@@ -59,7 +59,7 @@ ms.locfileid: "88004421"
     "https://CLUSTERNAME.azurehdinsight.net/api/v1/ldap_sync_events"
     ```
 
-    回應應該如下所示：
+    回應看起來應該如下：
 
     ```json
     {
@@ -80,7 +80,7 @@ ms.locfileid: "88004421"
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/ldap_sync_events/1
     ```
 
-    回應應該如下所示：
+    回應看起來應該如下：
 
     ```json
     {
@@ -120,10 +120,10 @@ ms.locfileid: "88004421"
     }
     ```
 
-1. 此結果顯示狀態為 [已**完成**]、已建立一個新的使用者，而且已將成員資格指派給該使用者。 在此範例中，會將使用者指派給 "HiveUsers" 已同步的 LDAP 群組，因為使用者已新增至 Azure AD 中的該相同群組。
+1. 此結果顯示狀態為 [已 **完成**]、一個新的使用者已建立，且使用者已獲指派成員資格。 在此範例中，會將使用者指派給 "HiveUsers" 已同步的 LDAP 群組，因為使用者已新增至 Azure AD 中的該相同群組。
 
     > [!NOTE]  
-    > 先前的方法只會同步處理在叢集建立期間，網域設定的 [**存取使用者群組**] 屬性中所指定的 Azure AD 群組。 如需詳細資訊，請參閱[建立 HDInsight 叢集](domain-joined/apache-domain-joined-configure.md)。
+    > 先前的方法只會同步處理叢集建立期間，網域設定的 [ **存取使用者群組** ] 屬性中指定的 Azure AD 群組。 如需詳細資訊，請參閱[建立 HDInsight 叢集](domain-joined/apache-domain-joined-configure.md)。
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>確認新增的 Azure AD 使用者
 
@@ -135,7 +135,7 @@ ms.locfileid: "88004421"
 
 2. 在分頁左側，選取 [使用者 + 群組管理]**** 功能表群組底下的 [使用者]****。
 
-    ![[HDInsight 使用者和群組] 功能表](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
+    ![HDInsight 使用者和群組功能表](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
 3. 新的使用者應該會列在 [使用者] 資料表中。 類型設定為 `LDAP` 而不是 `Local`。
 

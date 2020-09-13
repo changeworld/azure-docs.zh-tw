@@ -2,19 +2,18 @@
 title: 在 Azure DevTest Labs 中使用客戶管理的金鑰來加密作業系統磁片
 description: 瞭解如何在 Azure DevTest Labs 中使用客戶管理的金鑰來加密作業系統 (OS) 磁片。
 ms.topic: article
-ms.date: 07/28/2020
-ms.openlocfilehash: 241f53f0c8f289b43b8de465eb7509489345b955
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/01/2020
+ms.openlocfilehash: 257894c6318c9ca083c72daf3c888f7d509ae683
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815916"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489803"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中使用客戶管理的金鑰，將作業系統 (OS) 磁片加密
 伺服器端加密 (SSE) 可保護您的資料安全，並協助您符合組織安全性和合規性承諾。 SSE 會自動將您儲存在 Azure 中的受控磁片上的資料加密 (OS 和資料磁片，並在將其保存到雲端時預設為) 。 深入瞭解 Azure 上的 [磁片加密](../virtual-machines/windows/disk-encryption.md) 。 
 
 在 DevTest Labs 內，所有建立為實驗室一部分的 OS 磁片和資料磁片都會使用平臺管理的金鑰進行加密。 不過，您可以選擇使用您自己的金鑰來加密實驗室虛擬機器 OS 磁片，作為實驗室擁有者。 如果您選擇使用您自己的金鑰管理加密，可以指定 **客戶管理的金鑰** ，以用於加密實驗室作業系統磁片中的資料。 若要深入瞭解伺服器端加密 (SSE) 使用客戶管理的金鑰和其他受控磁片加密類型，請參閱 [客戶管理的金鑰](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)。 此外，請參閱 [使用客戶管理金鑰的限制](../virtual-machines/disks-enable-customer-managed-keys-portal.md#restrictions)。
-
 
 > [!NOTE]
 > - 只有 DevTest Labs 中的 OS 磁片才支援使用客戶管理金鑰的磁片加密。 
@@ -29,8 +28,11 @@ ms.locfileid: "88815916"
 
     - 磁片加密集必須與您的 **實驗室位於相同的區域和訂用帳戶中**。 
     - 確定您 (實驗室擁有者，) 至少具有將用來加密實驗室作業系統磁片之磁片加密集的 **讀取者層級存取權** 。 
-2. 針對在8/1/2020 之前建立的實驗室，實驗室擁有者將需要確定已啟用實驗室系統指派的身分識別。 若要這樣做，實驗室擁有者可以移至其實驗室、按一下 [設定] **和 [原則**]、按一下 [身分 **識別 (預覽]) ** 分頁、將系統指派的身分識別 **狀態** 變更為 [ **開啟** ]，然後按一下 [ **儲存**]。 針對在8/1/2020 實驗室的系統指派身分識別之後建立的新實驗室，預設會啟用。 
-3. 實驗室擁有者必須在磁片加密集上明確授與實驗室 **系統指派** 的身分識別讀者角色，以及基礎 Azure 訂用帳戶上的虛擬機器參與者角色，才能讓實驗室處理所有實驗室作業系統磁片的加密。 實驗室擁有者可以完成下列步驟來執行此作業：
+1. 針對在8/1/2020 之前建立的實驗室，實驗室擁有者將需要確定已啟用實驗室系統指派的身分識別。 若要這樣做，實驗室擁有者可以移至其實驗室、按一下 [設定] **和 [原則**]、按一下 [身分 **識別 (預覽]) ** 分頁、將系統指派的身分識別 **狀態** 變更為 [ **開啟** ]，然後按一下 [ **儲存**]。 針對在8/1/2020 實驗室的系統指派身分識別之後建立的新實驗室，預設會啟用。 
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/managed-keys.png" alt-text="受控金鑰":::
+1. 實驗室擁有者必須在磁片加密集上明確授與實驗室 **系統指派** 的身分識別讀者角色，以及基礎 Azure 訂用帳戶上的虛擬機器參與者角色，才能讓實驗室處理所有實驗室作業系統磁片的加密。 實驗室擁有者可以完成下列步驟來執行此作業：
 
    
     1. 確定您是 Azure 訂用帳戶層級的「 [使用者存取系統管理員」角色](../role-based-access-control/built-in-roles.md#user-access-administrator) 的成員，如此您才能管理使用者對 azure 資源的存取權。 
@@ -49,7 +51,7 @@ ms.locfileid: "88815916"
 
     
     1. 流覽至 Azure 入口網站中的 [ **訂** 用帳戶] 頁面。 
-    1. 選取 [存取控制 (IAM)]。 
+    1. 選取 [存取控制 (IAM)]  。 
     1. 選取工具列上的 [ **+ 新增** ]，然後選取 [ **新增角色指派**]。 
     
         :::image type="content" source="./media/encrypt-disks-customer-managed-keys/subscription-access-control-page.png" alt-text="訂用帳戶 > 存取控制 (IAM) 頁面":::
@@ -71,8 +73,24 @@ ms.locfileid: "88815916"
 1. 在具有下列文字的訊息方塊上： *此設定將套用至實驗室中新建立的電腦。舊的 OS 磁片會以舊的磁片加密集保持加密*狀態，請選取 **[確定]**。 
 
     一旦設定之後，實驗室作業系統磁片將會以使用磁片加密集提供的客戶管理金鑰進行加密。 
+   
+## <a name="how-to-validate-if-disks-are-being-encrypted"></a>如何驗證磁片是否已加密
 
+1. 移至在實驗室中使用客戶管理的金鑰啟用磁片加密後所建立的實驗室虛擬機器。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="已啟用磁片加密的 VM":::
+1. 按一下 VM 的資源群組，然後按一下 OS 磁片。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="VM 資源群組":::
+1. 移至 [加密]，然後使用您選取的磁片加密集，驗證加密是否設定為客戶管理的金鑰。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="驗證加密":::
+  
 ## <a name="next-steps"></a>後續步驟
+
 查看下列文章： 
 
 - [Azure 磁碟加密](../virtual-machines/windows/disk-encryption.md)。 
