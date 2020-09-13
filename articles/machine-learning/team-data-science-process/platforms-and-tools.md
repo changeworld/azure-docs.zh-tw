@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a9528b31bfd1be40b478f3c47fd0a16047a7f6ff
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028129"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439992"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>資料科學專案的平台和工具
 
@@ -63,11 +63,11 @@ Apache Spark 是一個開放原始碼平行處理架構，可支援記憶體內�
 Microsoft 的 TDSP 小組已發佈兩個端對端逐步解說，示範如何使用 Azure HDInsight Spark 叢集來建立資料科學解決方案，其中一個使用 Python，而另一個使用 Scala。 如需 Azure HDInsight **Spark 叢集**的詳細資訊，請參閱[概觀：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 叢集上使用 **Python** 來建立資料科學解決方案，請參閱[在 Azure HDInsight 上使用 Spark 的資料科學概觀](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 叢集上使用 **Scala** 來建立資料科學解決方案，請參閱[在 Azure 上使用 Scala 與 Spark 的資料科學](scala-walkthrough.md)。 
 
 
-##  <a name="azure-sql-data-warehouse"></a>Azure SQL 資料倉儲
+##  <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure SQL 資料倉儲可讓您輕鬆地在數秒鐘的時間內調整計算資源，而不會過度佈建或過度支付。 它也會提供可暫停使用計算資源的唯一選項，讓您有彈性能更妥當地管理雲端成本。 部署可調整計算資源的能力可讓您將所有資料帶入 Azure SQL 資料倉儲。 儲存體成本很低，您可以只對您想要分析的資料集部分執行計算。 
+Azure Synapse Analytics 可讓您在不需過度布建或過度付費的情況下，輕鬆且以秒為單位調整計算資源。 它也會提供可暫停使用計算資源的唯一選項，讓您有彈性能更妥當地管理雲端成本。 能夠部署可調整的計算資源，可讓您將所有資料帶入 Azure Synapse Analytics。 儲存體成本很低，您可以只對您想要分析的資料集部分執行計算。 
 
-如需 Azure SQL 資料倉儲的詳細資訊，請參閱 [SQL 資料倉儲](https://azure.microsoft.com/services/sql-data-warehouse)網站。 若要深入了解如何使用 SQL 資料倉儲建置端對端進階分析解決方案，請參閱[Team 資料科學程序實務：使用 SQL 資料倉儲](sqldw-walkthrough.md)。
+如需 Azure Synapse Analytics 的詳細資訊，請參閱 [Azure Synapse Analytics](https://azure.microsoft.com/services/sql-data-warehouse) 網站。 若要瞭解如何使用 Azure Synapse Analytics 建立端對端的先進分析解決方案，請參閱 [Team Data 科學](sqldw-walkthrough.md)程式的運作方式：使用 Azure Synapse Analytics。
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake

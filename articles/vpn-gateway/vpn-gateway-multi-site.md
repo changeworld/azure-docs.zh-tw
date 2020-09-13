@@ -1,19 +1,19 @@
 ---
-title: 使用 VPN 閘道將 VNet 連接到多個網站：傳統
+title: 使用 VPN 閘道將 VNet 連線到多個網站：傳統
 description: 使用 VPN 閘道，將多個本機內部部署網站連線至傳統虛擬網路。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/11/2020
+ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: 5283e20b6121dbdc3ce57587d188ad5ad0e1b6b9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 93916bb1eb92447da45ebae7ccb2e61c5af1dd9b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041025"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441573"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>將站對站連線新增至具有現有 VPN 閘道連線的 VNet (傳統)
 
@@ -21,7 +21,7 @@ ms.locfileid: "86041025"
 
 > [!div class="op_single_selector"]
 > * [Azure 入口網站](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
-> * [PowerShell （傳統）](vpn-gateway-multi-site.md)
+> * [PowerShell (傳統)](vpn-gateway-multi-site.md)
 >
 >
 
@@ -76,7 +76,7 @@ ms.locfileid: "86041025"
 
 ## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. 匯出網路設定檔
 
-以更高的許可權開啟 PowerShell 主控台。 若要切換至服務管理，請使用下列命令：
+以較高的許可權開啟 PowerShell 主控台。 若要切換到服務管理，請使用此命令：
 
 ```powershell
 azure config mode asm
@@ -183,7 +183,7 @@ Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site2"
 
 如果您想要，也可以使用 *取得虛擬網路閘道共用金鑰* REST API 來取得預先共用金鑰。
 
-## <a name="7-verify-your-connections"></a>7. 確認您的連線
+## <a name="7-verify-your-connections"></a>7. 驗證您的連接
 檢查多網站通道狀態。 下載每個通道的金鑰之後，您會想要確認連線。 使用 'Get-AzureVnetConnection' 來取得虛擬網路通道清單，如以下範例所示。 VNet1 是 VNet 的名稱。
 
 ```powershell
@@ -218,6 +218,6 @@ Get-AzureVnetConnection -VNetName VNET1
     OperationStatus           : Succeeded
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解 VPN 閘道，請參閱 [關於 VPN 閘道](vpn-gateway-about-vpngateways.md)。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: e0085ef5213853a1577ec039d5e360114aa7c64e
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: de5346387336acb5a4b13457d3a163f529c51b89
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566262"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438682"
 ---
 # <a name="advanced-data-security-for-sql-machines-preview"></a>SQL 電腦的 Advanced data security (Preview) 
 
@@ -109,7 +109,7 @@ Azure 資訊安全中心的 SQL 機器 advanced data Security 可保護裝載于
     在每個觀點中，安全性檢查會依 **嚴重性**排序。 按一下特定的安全性檢查，以查看具有 **描述**的詳細資料窗格、如何進行 **修復** ，以及其他相關資訊，例如 **影響** 或 **基準測試**。
 
 ## <a name="advanced-threat-protection-for-sql-servers-on-machines-alerts"></a>電腦上 SQL server 的 Advanced 威脅防護警示
-警示是由不尋常且可能有害的嘗試存取或惡意探索 SQL 電腦所產生。 這些事件可在 [[警示參考] 頁面的 [SQL Database 和 SQL 資料倉儲的警示] 區段](alerts-reference.md#alerts-sql-db-and-warehouse)中，觸發顯示的警示。
+警示是由不尋常且可能有害的嘗試存取或惡意探索 SQL 電腦所產生。 這些事件可以在 [ [警示參考] 頁面的 [SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲) 區段](alerts-reference.md#alerts-sql-db-and-warehouse)中，觸發顯示的警示。
 
 
 
@@ -127,11 +127,11 @@ Azure 資訊安全中心的 SQL 機器 advanced data Security 可保護裝載于
     [深入瞭解如何管理及回應警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需相關材質，請參閱下列文章：
 
-- [SQL Database 和 SQL 資料倉儲的安全性警示](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [先前的 SQL 資料倉儲 SQL Database 和 Azure Synapse Analytics (的安全性警示) ](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [設定安全性警示的電子郵件通知](security-center-provide-security-contact-details.md)
 - [深入瞭解 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
 - [Azure 資訊安全中心的 advanced data Security 套件](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)

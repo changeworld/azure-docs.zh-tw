@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL 集區的資料載入最佳做法
+title: Synapse SQL 集區的資料載入最佳作法
 description: 使用 Synapse SQL 集區載入資料的建議和效能優化。
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 10a6c2e4f6f9dcbb29eb16cbfabd8fba31668f06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34a536ea535fa222340bd004253ee54b9c13bea9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201628"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441216"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>使用 Synapse SQL 集區載入資料的最佳作法
 
@@ -34,20 +34,20 @@ ms.locfileid: "85201628"
 
 ## <a name="running-loads-with-enough-compute"></a>使用足夠的計算資源執行載入
 
-如需最快的載入速度，一次只執行一項載入作業。 如果這不可行，請同時執行最少的載入次數。 如果您預期會有大量載入作業，請考慮在負載前相應增加您的 SQL 集區。
+如需最快的載入速度，一次只執行一項載入作業。 如果這不可行，請同時執行極少的載入數。 如果您預期會有大量載入作業，請考慮在負載前相應增加您的 SQL 集區。
 
-若要以適當的計算資源執行載入，請建立為了執行載入而指定的載入使用者。 將每個載入使用者分類到特定的工作負載群組。 若要執行負載，請以其中一個載入使用者身分登入，然後執行負載。 負載會與使用者的工作負載群組一起執行。  
+若要以適當的計算資源執行載入，請建立為了執行載入而指定的載入使用者。 將每個載入使用者分類為特定的工作負載群組。 若要執行負載，請以其中一個載入使用者的形式登入，然後執行負載。 負載會以使用者的工作負載群組執行。  
 
 ### <a name="example-of-creating-a-loading-user"></a>建立載入使用者的範例
 
-這個範例會建立分類為特定工作負載群組的載入使用者。 第一個步驟是**連線到 主要資料庫**並建立登入。
+這個範例會建立分類至特定工作負載群組的載入使用者。 第一個步驟是**連線到 主要資料庫**並建立登入。
 
 ```sql
    -- Connect to master
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-連接到 SQL 集區並建立使用者。 下列程式碼假設您已連接到名為 mySampleDataWarehouse 的資料庫。 它會示範如何建立名為「載入器」的使用者，並提供使用者使用[COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)來建立資料表和載入的許可權。 然後，它會將使用者分類為具有最大資源的 DataLoads 工作負載群組。 
+連接到 SQL 集區，並建立使用者。 下列程式碼假設您已連接到名為 mySampleDataWarehouse 的資料庫。 它會示範如何建立名為 loader 的使用者，並為使用者提供使用 [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)建立資料表和載入的許可權。 然後，它會將使用者分類為具有最大資源的 DataLoads 工作負載群組。 
 
 ```sql
    -- Connect to the SQL pool
@@ -74,9 +74,9 @@ ms.locfileid: "85201628"
 
 若要使用載入工作負載群組的資源來執行負載，請以載入器登入並執行負載。
 
-## <a name="allowing-multiple-users-to-load-polybase"></a>允許多位使用者載入（PolyBase）
+## <a name="allowing-multiple-users-to-load-polybase"></a>允許多個使用者載入 (PolyBase) 
 
-通常需要讓多個使用者將資料載入 SQL 集區。 使用[CREATE TABLE AS SELECT （transact-sql）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) （PolyBase）載入需要資料庫的 CONTROL 許可權。  CONTROL 權限可控制所有結構描述的存取。
+通常需要讓多個使用者將資料載入 SQL 集區。 以 [SELECT (transact-sql) ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (PolyBase) 中的 CREATE TABLE 載入，需要資料庫的 CONTROL 許可權。  CONTROL 權限可控制所有結構描述的存取。
 
 您可能不希望所有的載入使用者都能控制所有結構描述的存取。 若要限制權限，請使用 DENY CONTROL 陳述式。
 
@@ -93,7 +93,7 @@ User_A 和 user_B 現在已從其他部門的架構鎖定。
 
 若要達到將資料移至 SQL 集區資料表的最快載入速度，請將資料載入至臨時表。  將暫存資料表定義為堆積，並使用循環配置資源作為散發選項。
 
-請考慮載入通常是兩個步驟的程式，在此過程中，您會先載入至臨時表，然後將資料插入生產 SQL 集區資料表。 如果生產資料表使用雜湊散發，您若定義採用雜湊散發的暫存資料表，則載入和插入的總時間可能比較快。
+請考慮載入通常是兩個步驟的程式，您可以在其中先載入至臨時表，然後將資料插入生產 SQL 集區資料表。 如果生產資料表使用雜湊散發，您若定義採用雜湊散發的暫存資料表，則載入和插入的總時間可能比較快。
 
 載入至暫存表格所需的時間比較長，但是將資料列插入生產資料表的第二個步驟不會導致資料四處移動。
 
@@ -101,33 +101,33 @@ User_A 和 user_B 現在已從其他部門的架構鎖定。
 
 資料行存放區索引需要大量的記憶體，才能將資料壓縮成高品質的資料列群組。 為了最佳的壓縮和索引效率，資料行存放區索引需要將多達 1,048,576 個資料列壓縮到每個資料列群組中。
 
-當記憶體不足時，資料行存放區索引可能無法達到最大的壓縮率。 此案例接著會影響查詢效能。 如需深入探討，請參閱[資料行存放區記憶體最佳化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
+當記憶體不足時，資料行存放區索引可能無法達到最大的壓縮率。 接著，此案例會影響查詢效能。 如需深入探討，請參閱[資料行存放區記憶體最佳化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 
 - 若要確保載入使用者有足夠的記憶體可達到最大的壓縮率，請使用是中型或大型資源類別成員的載入使用者。
 - 載入足夠的資料列，完全填滿新的資料列群組。 在大量載入期間，每 1,048,576 個資料列會以完整資料列群組形式直接壓縮到資料行存放區中。 若載入的資料列少於 102,400 個，則會將資料列傳送至差異存放區，其中的資料列會保存在 b 型樹狀結構索引中。
 
 > [!NOTE]
-> 如果您載入的資料列過少，它們可能會全都路由傳送至差異存放區，而不會立即壓縮成資料行存放區格式。
+> 如果您載入的資料列數目太少，它們可能會路由傳送至差異存放區，而不會立即壓縮成資料行存放區格式。
 
-## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SqLBulkCopy API 或 bcp 時增加批次大小
+## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SqLBulkCopy API 或 bcp 時，增加批次大小
 
-使用 COPY 語句載入會提供 SQL 集區的最高輸送量。 如果您無法使用複製來載入，且必須使用[SQLBULKCOPY API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)或[bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，您應該考慮增加批次大小以獲得更好的輸送量。
+使用 COPY 語句載入將提供最高的輸送量與 SQL 集區。 如果您無法使用此複製來載入，而且必須使用 [SQLBULKCOPY API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，您應該考慮增加批次大小，以獲得更好的輸送量。
 
 > [!TIP]
-> 在 100 K 到1百萬個數據列之間的批次大小，是判斷最佳批次大小容量的建議基準。
+> 介於 100 K 到1百萬個數據列之間的批次大小是判斷最佳批次大小容量的建議基準。
 
 ## <a name="handling-loading-failures"></a>處理載入失敗
 
 使用外部資料表的載入可能會失敗，並顯示「查詢已中止 -- 從外部來源讀取時已達最大拒絕閾值」** 錯誤訊息。 此訊息表示您的外部資料包含「錯誤」記錄。
 
-如果資料記錄符合下列其中一個條件，就會被視為「已變更」：
+如果資料記錄符合下列其中一個條件，則會被視為中途變更：
 
-- 資料類型和資料行數目與外部資料表的資料行定義不相符。
+- 資料類型和資料行數目不符合外部資料表的資料行定義。
 - 資料不符合指定的外部檔案格式。
 
 若要修正「錯誤」記錄，請確定您的外部資料表及外部檔案格式定義皆正確，且這些定義與您的外部資料相符。
 
-如果外部資料記錄的子集已變更，您可以使用[CREATE EXTERNAL TABLE （transact-sql）](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)中的拒絕選項，選擇拒絕查詢的這些記錄。
+如果外部資料記錄的子集有變更，您可以使用 [CREATE EXTERNAL TABLE (transact-sql) ](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)中的拒絕選項，選擇拒絕查詢的這些記錄。
 
 ## <a name="inserting-data-into-a-production-table"></a>將資料插入生產資料表中
 
@@ -137,7 +137,7 @@ User_A 和 user_B 現在已從其他部門的架構鎖定。
 
 ## <a name="creating-statistics-after-the-load"></a>建立載入後的統計資料
 
-為了改善查詢效能，在首次載入資料或資料發生重大變更之後，建立所有資料表的所有資料行統計資料非常重要。 建立統計資料可以手動完成，也可以啟用[AUTO_CREATE_STATISTICS](sql-data-warehouse-tables-statistics.md#automatic-creation-of-statistic)。
+為了改善查詢效能，在首次載入資料或資料發生重大變更之後，建立所有資料表的所有資料行統計資料非常重要。 建立統計資料可以手動完成，也可以啟用 [AUTO_CREATE_STATISTICS](sql-data-warehouse-tables-statistics.md#automatic-creation-of-statistic)。
 
 如需統計資料的詳細說明，請參閱[統計資料](sql-data-warehouse-tables-statistics.md)。 下列範例顯示如何在 Customer_Speed 資料表的五個數據行上手動建立統計資料。
 
@@ -149,7 +149,7 @@ create statistics [Speed] on [Customer_Speed] ([Speed]);
 create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 ```
 
-## <a name="rotate-storage-keys-polybase"></a>輪替儲存體金鑰（PolyBase）
+## <a name="rotate-storage-keys-polybase"></a>將儲存體金鑰輪替 (PolyBase) 
 
 基於安全性考量，請定期變更您 blob 儲存體的存取金鑰。 您的 blob 儲存體帳戶有兩個儲存體金鑰，這可讓您轉換金鑰。
 
@@ -173,8 +173,8 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 不需要對基礎外部資料來源進行其他變更。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- 若要在設計「解壓縮」、「載入」及「轉換」（ELT）程式時深入瞭解 COPY 語句或 PolyBase，請參閱[為 SQL 資料倉儲設計 ELT](design-elt-data-loading.md)。
-- 如需載入教學課程，請[使用 COPY 語句，將資料從 Azure blob 儲存體載入至 SYNAPSE SQL](load-data-from-azure-blob-storage-using-polybase.md)。
+- 若要在設計 (ELT) 進程的解壓縮、載入和轉換時，深入瞭解 COPY 語句或 PolyBase，請參閱 [為 Azure Synapse Analytics 設計 ELT](design-elt-data-loading.md)。
+- 如需載入教學課程，請 [使用 COPY 語句將資料從 Azure blob 儲存體載入至 SYNAPSE SQL](load-data-from-azure-blob-storage-using-polybase.md)。
 - 若要監視資料載入，請參閱[使用 DMV 監視工作負載](sql-data-warehouse-manage-monitor.md)。

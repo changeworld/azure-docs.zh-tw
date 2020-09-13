@@ -1,36 +1,36 @@
 ---
 title: Azure VPN 閘道：設定封包捕獲
-description: 瞭解您可以在 VPN 閘道上使用的封包捕捉功能。
+description: 瞭解您可以在 VPN 閘道上使用的封包捕獲功能，以協助縮小問題的原因。
 services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/15/2019
+ms.date: 09/03/2020
 ms.author: radwiv
-ms.openlocfilehash: 3ba3046367ceece6bf0ddf157451025c79977324
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 486ac23f26a7eee6b31322de79bfb68076a598ec
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077203"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441590"
 ---
-# <a name="configure-packet-captures-for-vpn-gateways"></a>設定 VPN 閘道的封包捕獲
+# <a name="configure-packet-capture-for-vpn-gateways"></a>設定 VPN 閘道的封包捕獲
 
-連線性和效能相關的問題通常很複雜，而且需要花很長的時間和投入量來縮小問題的原因。 封包捕獲的功能可大幅降低將問題範圍縮小到網路特定部分的時間，例如問題是在網路的用戶端、網路的 Azure 端，或介於其間的某個位置。 一旦問題縮小後，就能更有效率地進行偵錯工具並採取補救動作。
+連線能力和效能相關問題通常很複雜。 這可能需要花費很多時間和精力來縮減問題的原因。 封包捕獲可協助您將問題範圍縮小至網路的特定部分。 它可協助您判斷問題是在網路的用戶端、網路的 Azure 端，還是介於其間的某個位置。 在您縮小問題的範圍之後，就可以更有效率地進行 debug 和採取補救動作。
 
-有一些常用的封包捕獲工具可供使用。 使用這些工具來取得相關的封包捕捉可能會很麻煩，特別是在處理大量流量案例時。 VPN 閘道封包捕獲所提供的篩選功能會成為主要的區別。 除了常用的封包捕獲工具之外，您也可以使用 VPN 閘道封包捕獲。
+有一些常用的封包捕獲工具可供使用。 使用這些工具取得相關的封包捕獲可能會很麻煩，尤其是在高容量的流量案例中。 Azure VPN 閘道封包捕獲提供的篩選功能是一項主要的區別。 您可以使用 VPN 閘道封包捕獲搭配常用的封包捕獲工具。
 
 ## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>VPN 閘道封包捕獲篩選功能
 
-VPN 閘道封包捕獲可以根據客戶需求，在閘道或特定連線上執行。 您也可以同時在多個通道上執行封包捕獲。 您可以使用 VPN 閘道上的篩選，來捕捉單一或雙向流量、IKE 和 ESP 流量，以及內部封包。
+您可以根據您的需求，在閘道或特定連接上執行 VPN 閘道封包捕獲。 您也可以同時在多個通道上執行封包捕獲。 您可以透過 VPN 閘道上的篩選，來捕捉單向或雙向流量、IKE 和 ESP 流量，以及內部封包。
 
-使用五個元組篩選器（來源子網、目的地子網、來源埠、目的地埠、通訊協定）和 TCP 旗標（SYN、ACK、FIN、URG、PSH、RST）在隔離大量流量的問題時很有説明。
+當您隔離大量流量中的問題時，使用五個元組篩選器 (來源子網、目的地子網、來源埠、目的地埠、通訊協定) 和 TCP 旗標 (SYN、ACK、FIN、URG、PSH、RST) 會很有説明。
 
-如需每個屬性的說明，請參閱以下 JSON 和 JSON 架構的範例。 此外，請注意執行封包捕獲時的一些限制：
-- 在架構中，篩選會顯示為數組，但一次只能使用一個篩選器。
-- 不允許同時有多個全閘道的封包捕捉。
-- 不允許相同連線上的多個封包捕捉。 您可以同時在不同的連接上執行封包捕獲。
-- 每個閘道最多可以平行執行五個封包捕獲。 這些封包捕獲可以結合全閘道的封包捕獲或每個連線封包捕獲。
+下列 JSON 範例和 JSON 架構會提供每個屬性的說明。 以下是當您執行封包捕獲時，要記住的一些限制：
+- 在此處所示的架構中，篩選是一個陣列，但目前每次只能使用一個篩選準則。
+- 您無法同時執行多個全閘道的封包捕捉。
+- 您無法同時在單一連接上執行多個封包捕獲。 您可以同時在不同的連接上執行多個封包捕獲。
+- 每個閘道最多可以平行執行五個封包捕獲。 這些封包捕捉可以是全閘道的封包捕獲和每個連線封包捕獲的組合。
 
 ### <a name="example-json"></a>範例 JSON
 ```JSON-interactive
@@ -316,9 +316,9 @@ VPN 閘道封包捕獲可以根據客戶需求，在閘道或特定連線上執�
 }
 ```
 
-## <a name="setup-packet-capture-using-powershell"></a>使用 PowerShell 設定封包捕獲
+## <a name="set-up-packet-capture-by-using-powershell"></a>使用 PowerShell 設定封包捕獲
 
-如需啟動和停止封包捕獲的 PowerShell 命令，請參閱下列範例。 如需參數選項的詳細資訊，請參閱此 PowerShell[檔](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)。
+下列範例顯示啟動和停止封包捕獲的 PowerShell 命令。 如需參數選項的詳細資訊，請參閱 [此 PowerShell 檔](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)。
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>啟動 VPN 閘道的封包捕獲
 
@@ -326,7 +326,7 @@ VPN 閘道封包捕獲可以根據客戶需求，在閘道或特定連線上執�
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-選擇性參數 **-FilterData**可以用來套用篩選。
+您可以使用選擇性參數套用 `-FilterData` 篩選。
 
 ### <a name="stop-packet-capture-for-a-vpn-gateway"></a>停止 VPN 閘道的封包捕獲
 
@@ -340,7 +340,7 @@ Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupN
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-選擇性參數 **-FilterData**可以用來套用篩選。
+您可以使用選擇性參數套用 `-FilterData` 篩選。
 
 ### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>在 VPN 閘道連線上停止封包捕獲
 
@@ -350,10 +350,11 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 ## <a name="key-considerations"></a>主要考量
 
-- 執行封包捕獲可能會影響效能。 請記得在不需要封包捕獲時，將它停止。
-- 建議的最小封包捕獲持續時間為600秒。 較短的封包捕捉持續時間可能無法提供完整的資料，因為該路徑上的多個元件之間的同步問題。
+- 執行封包捕獲可能會影響效能。 如果您不需要封包捕獲，請記得將它停止。
+- 建議的最小封包捕獲持續時間為600秒。 由於路徑上多個元件之間的同步問題，較短的封包捕獲可能無法提供完整的資料。
 - 封包捕獲資料檔案會以 PCAP 格式產生。 使用 Wireshark 或其他常用的應用程式來開啟 PCAP 檔案。
+- 以原則為基礎的閘道不支援封包捕獲。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如需 VPN 閘道的詳細資訊，請參閱[關於 VPN 閘道](vpn-gateway-about-vpngateways.md)
+如需 VPN 閘道的詳細資訊，請參閱 [什麼是 Vpn 閘道？](vpn-gateway-about-vpngateways.md)。

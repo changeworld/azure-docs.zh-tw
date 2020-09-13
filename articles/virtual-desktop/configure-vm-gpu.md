@@ -5,17 +5,17 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 8a253723367681d947a9bd94c1505ab4cc156c08
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 33b8d3f62ef45c6078f10535c6376f611472f5a2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612634"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441743"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>設定 Windows 虛擬桌面的圖形處理器 (GPU) 加速
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md)。
 
 Windows 虛擬桌面支援採用 GPU 加速的轉譯和編碼功能，可藉此改善應用程式效能和擴充性。 GPU 加速對於需要大量圖形的應用程式特別重要。
 
@@ -67,7 +67,7 @@ Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 此外，針對�
 
 2. 編輯群組原則之後，您就可以強制執行群組原則更新。 開啟命令提示字元，然後輸入：
 
-    ```batch
+    ```cmd
     gpupdate.exe /force
     ```
 
@@ -80,7 +80,7 @@ Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 此外，針對�
 1. 選取 [針對遠端桌面連線設定 H.264/AVC 444 圖形模式的優先權] 原則，並將此原則設定為 [啟用]，以在遠端工作階段中強制執行 H.264/AVC 444 轉碼器。
 2. 編輯群組原則之後，您就可以強制執行群組原則更新。 開啟命令提示字元，然後輸入：
 
-    ```batch
+    ```cmd
     gpupdate.exe /force
     ```
 

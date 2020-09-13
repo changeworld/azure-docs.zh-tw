@@ -11,12 +11,12 @@ author: djpmsft
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 515de0fed987f412adb060a3ba58978f0400ae0d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628941"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441947"
 ---
 # <a name="templates"></a>範本
 
@@ -32,7 +32,7 @@ ms.locfileid: "82628941"
 
     ![從 [概觀] 頁面開啟 [範本資源庫]](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  在資源總管的 [作者] 索引標籤上，依序選取 [] **+** 和 [**來自範本的管線**] 以開啟範本庫。
+1.  在資源總管中的 [作者] 索引標籤上，選取 [] **+** ，然後 **從 [範本** ] 開啟 [範本資源庫]。
 
     ![從 [撰寫] 索引標籤開啟 [範本資源庫]](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "82628941"
 
 ### <a name="out-of-the-box-data-factory-templates"></a>立即可用的 Data Factory 範本
 
-Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線範本。 在[官方的 Azure Data Factory GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/templates)存放庫中，您可以看到所有 Resource Manager 範本，以及用於現成可用 Data Factory 範本的資訊清單檔案。 由 Microsoft 所提供的預先定義範本包含 (但不限於) 下列項目：
+Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線範本。 您可以在 [官方的 Azure Data Factory GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/templates)存放庫中，查看所有 Resource Manager 範本，以及用於現成可用 Data Factory 範本的資訊清單檔案。 由 Microsoft 所提供的預先定義範本包含 (但不限於) 下列項目：
 
 -   複製範本：
 
@@ -54,9 +54,9 @@ Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線�
 
     -   [移動檔案](solution-template-move-files.md)
 
-    -   [資料庫中的差異複本](solution-template-delta-copy-with-control-table.md)
+    -   [從資料庫進行差異複製](solution-template-delta-copy-with-control-table.md)
 
-    -   從複製 \<source\> 到\<destination\>
+    -   複製來源 \<source\>\<destination\>
 
         -   [從 Amazon S3 複製到 Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
 
@@ -68,9 +68,9 @@ Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線�
 
         -   從 SQL Server 內部部署複製到 Azure SQL Database
 
-        -   從 SQL Server 內部部署複製到 Azure SQL 資料倉儲
+        -   從內部部署 SQL Server Azure Synapse Analytics 先前的 SQL 資料倉儲 () 
 
-        -   從 Oracle 內部部署複製到 Azure SQL 資料倉儲
+        -   從內部部署環境到 Azure Synapse Analytics (先前的 SQL 資料倉儲) 
 
 -   SSIS 範本
 

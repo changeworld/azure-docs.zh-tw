@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: b506d56f8aff2204c705ae8685f475654c1b1705
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 827afbf811042acb2bf01f3e863408d5a6e9732f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640475"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441913"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>設定 SAML 型單一登入
 
@@ -51,7 +51,6 @@ ms.locfileid: "88640475"
 | **登入 URL** | 必要 | 請勿指定 | 當使用者開啟此 URL 時，服務提供者會重新導向至 Azure AD 以進行驗證，並將使用者登入。 Azure AD 會使用 URL，從 Office 365 或 Azure AD 我的應用程式啟動應用程式。 若為空白，Azure AD 會在使用者從 Office 365、Azure AD 我的應用程式或 Azure AD SSO URL 啟動應用程式時，進行 IdP 起始的登入。|
 | **轉送狀態** | 選用 | 選用 | 對應用程式指定在驗證完成後應將使用者重新導向到的位置。 此值通常是對應用程式而言有效的 URL。 不過，有些應用程式會以不同的方式使用此欄位。 如需詳細資訊，請詢問應用程式廠商。
 | **登出 URL** | 選用 | 選用 | 用於將 SAML 登出回應傳回應用程式。
-
 
 ## <a name="user-attributes-and-claims"></a>使用者屬性和宣告 
 
