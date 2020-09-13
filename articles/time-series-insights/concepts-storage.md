@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a0f1e7789c0cebdd1cb5b22f21151020a0be09c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c05de0462dde2b09e0e01919dfc691a85df153fa
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855121"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483264"
 ---
 # <a name="data-storage"></a>資料儲存體
 
@@ -24,7 +24,7 @@ ms.locfileid: "88855121"
 * 可以針對暖資料儲存進行設定的 Azure 時間序列深入解析 Gen2 環境。
 * 用於冷資料儲存的 Azure 儲存體帳戶。
 
-您暖存放區中的資料只能透過 [時間序列查詢 api](./time-series-insights-update-tsq.md) 和 [Azure 時間序列深入解析 TSI Explorer](./time-series-insights-update-explorer.md)來使用。 您的暖存放區將會在建立 Azure 時間序列深入解析 Gen2 環境時，于選取的 [保留期間](./time-series-insights-update-plan.md#the-preview-environment) 內包含最近的資料。
+您暖存放區中的資料只能透過 [時間序列查詢 api](./time-series-insights-update-tsq.md) 和 [Azure 時間序列深入解析 Explorer](./time-series-insights-update-explorer.md)來使用。 您的暖存放區將會在建立 Azure 時間序列深入解析 Gen2 環境時，于選取的 [保留期間](./time-series-insights-update-plan.md#the-preview-environment) 內包含最近的資料。
 
 Azure 時間序列深入解析 Gen2 會以 [Parquet 檔案格式](#parquet-file-format-and-folder-structure)，將您的冷儲存資料儲存至 Azure Blob 儲存體。 Azure 時間序列深入解析 Gen2 會以獨佔方式管理此冷存放區資料，但可供您直接讀取為標準 Parquet 檔案。
 
@@ -58,7 +58,7 @@ Azure 時間序列深入解析 Gen2 會在您的 Azure 儲存體帳戶中最多�
 
 #### <a name="accessing-cold-store-data"></a>存取冷存放區資料
 
-除了從 [AZURE 時間序列深入解析 TSI Explorer](./time-series-insights-update-explorer.md) 和 [時間序列查詢 api](./time-series-insights-update-tsq.md)存取您的資料之外，您也可能想要直接從儲存在冷存放區中的 Parquet 檔案存取您的資料。 例如，您可以讀取、轉換和清除 Jupyter 筆記本中的資料，然後將其用來定型相同 Spark 工作流程中的 Azure Machine Learning 模型。
+除了從 [Azure 時間序列深入解析 Explorer](./time-series-insights-update-explorer.md) 和 [時間序列查詢 api](./time-series-insights-update-tsq.md)存取您的資料之外，您也可能想要直接從儲存在冷存放區中的 Parquet 檔案存取您的資料。 例如，您可以讀取、轉換和清除 Jupyter 筆記本中的資料，然後將其用來定型相同 Spark 工作流程中的 Azure Machine Learning 模型。
 
 若要直接從您的 Azure 儲存體帳戶存取資料，您需要用來儲存 Azure 時間序列深入解析 Gen2 資料之帳戶的讀取存取權。 接著，您可以根據 Parquet 檔案的建立時間來讀取選取的資料，而此檔案位於底下 [Parquet 檔案格式](#parquet-file-format-and-folder-structure)一節所述的 `PT=Time` 資料夾中。  如需對儲存體帳戶啟用讀取存取權的詳細資訊，請參閱[管理對儲存體帳戶資源的存取](../storage/blobs/storage-manage-access-to-resources.md)。
 

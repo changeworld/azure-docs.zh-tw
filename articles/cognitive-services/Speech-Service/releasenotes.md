@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8df54adf8f3aeaa58e30d6d9218cec8bec8c1121
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 94947499452c7f1b8515fee56996b13120232f34
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525916"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462372"
 ---
 # <a name="speech-service-release-notes"></a>語音服務版本資訊
 
@@ -50,7 +50,7 @@ ms.locfileid: "88525916"
 
 * 已更新下列語音的 vocoders，並提供精確度改善和整體效能加速，40%。
 
-    | Locale | 語音 |
+    | 地區設定 | 語音 |
     |---|---|    
     | `en-GB` | 米婭 |
     | `es-MX` | Dalia |
@@ -250,7 +250,7 @@ ms.locfileid: "88525916"
 
 **範例**
 - **Go**：已新增 [語音辨識](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go) 和 [自訂語音助理](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go)的快速入門。 [在這裡](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)尋找範例程式碼。 
-- **JavaScript**：新增 [文字轉換語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript)、 [轉譯](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/translate-speech-to-text?pivots=programming-language-javascript)和 [意圖辨識](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript)的快速入門。
+- **JavaScript**：新增 [文字轉換語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript)、 [轉譯](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-translation?tabs=script&pivots=programming-language-csharp)和 [意圖辨識](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript)的快速入門。
 - [C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)和[JAVA](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android) 的關鍵字辨識範例。  
 
 **Covid-19-19 縮減測試：** 由於在過去幾周的遠端工作，我們無法像往常一樣執行手動驗證測試。 我們尚未進行任何變更，而且我們的自動化測試全都通過了。 在不太可能發生的情況下，請在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)上讓我們知道。<br>
@@ -597,7 +597,7 @@ ms.locfileid: "88525916"
 - Android
   - 已在 APK 產生期間啟用 ProGuard 支援。
 
-**改善**
+**改善項目**
 
 - 改進內部執行緒使用方式，並減少執行緒、鎖定、Mutex 的數目。
 - 已改善錯誤回報 / 資訊。 在幾個案例中，錯誤訊息尚未傳播出去。
@@ -629,7 +629,7 @@ ms.locfileid: "88525916"
 - Proxy 支援：在 `SpeechConfig` 物件中，您現在可以呼叫函式來設定 proxy 資訊 (主機名稱、埠、使用者名稱和密碼) 。 此功能尚無法在 iOS 上取得。
 - 改善的錯誤碼和訊息。 如果辨識傳回錯誤，系統現在會將 `Reason` (在取消的事件中) 或 `CancellationDetails` (在辨識結果中) 設為 `Error`。 取消的事件現在包含兩個額外的成員，`ErrorCode` 和 `ErrorDetails`。 如果伺服器隨報告的錯誤傳回其他錯誤資訊，現在將可以透過新成員取得這些資訊。
 
-**改善**
+**改善項目**
 
 - 已在辨識器設定中新增其他驗證，及新增其他錯誤訊息。
 - 已改善對音訊檔案中長時間無聲之部分的處理。

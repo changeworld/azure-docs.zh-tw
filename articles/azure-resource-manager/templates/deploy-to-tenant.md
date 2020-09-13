@@ -2,21 +2,21 @@
 title: 將資源部署到租用戶
 description: 描述如何在 Azure Resource Manager 範本中的租用戶範圍部署資源。
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: 2f5249eb54a62e4df082a18b22625bb93a0f09f8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/04/2020
+ms.openlocfilehash: 9b653f3fd4ed66f23521ea3ec8f9972e3b6cc09c
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002767"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468550"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租用戶層級建立資源
 
-當您的組織成熟時，您可能需要在 Azure AD 租使用者中 (Azure RBAC) ，定義和指派[原則](../../governance/policy/overview.md)或[azure 角色型存取控制](../../role-based-access-control/overview.md)。 您可以使用租用戶層級範本，以宣告方式套用原則，並在全域層級指派角色。
+隨著您的組織逐漸成熟，您可能需要在 Azure AD 租使用者中，定義並指派 [原則](../../governance/policy/overview.md) 或 [azure 角色型存取控制 (azure RBAC) ](../../role-based-access-control/overview.md) 。 您可以使用租用戶層級範本，以宣告方式套用原則，並在全域層級指派角色。
 
 ## <a name="supported-resources"></a>支援的資源
 
-並非所有的資源類型都可以部署至租使用者層級。 本節列出支援的資源類型。
+並非所有的資源類型都可部署至租使用者層級。 本節將列出支援的資源類型。
 
 針對 Azure 原則，請使用：
 
@@ -24,7 +24,7 @@ ms.locfileid: "88002767"
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 
-若為角色型存取控制，請使用：
+針對角色型存取控制，請使用：
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 
@@ -36,10 +36,10 @@ ms.locfileid: "88002767"
 
 * [managementGroups](/azure/templates/microsoft.management/managementgroups)
 
-如需管理成本，請使用：
+若要管理成本，請使用：
 
 * [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
-* [螢幕](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
+* [指示](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
 * [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
 
 ### <a name="schema"></a>結構描述
@@ -112,7 +112,7 @@ New-AzTenantDeployment `
 
 ## <a name="deployment-scopes"></a>部署範圍
 
-部署至租使用者時，您可以將租使用者或管理群組、訂用帳戶和資源群組設為目標。 部署範本的使用者必須具有指定範圍的存取權。
+部署至租使用者時，您可以將租使用者中的租使用者或管理群組、訂用帳戶和資源群組設為目標。 部署範本的使用者必須擁有指定範圍的存取權。
 
 在範本的資源區段中定義的資源會套用至租使用者。
 
@@ -127,7 +127,7 @@ New-AzTenantDeployment `
 }
 ```
 
-若要將租使用者中的管理群組設為目標，請新增嵌套部署，並指定 `scope` 屬性。
+若要鎖定租使用者內的管理群組，請新增嵌套部署並指定 `scope` 屬性。
 
 ```json
 {
@@ -151,7 +151,7 @@ New-AzTenantDeployment `
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resources-in-mg
                 }
             }
         }
@@ -167,9 +167,11 @@ New-AzTenantDeployment `
 * **不**支援 [resourceGroup()](template-functions-resource.md#resourcegroup) 函式。
 * **不**支援 [subscription()](template-functions-resource.md#subscription) 函式。
 * 支援 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函式。
-* 使用 [tenantResourceId()](template-functions-resource.md#tenantresourceid) 函式取得在租用戶層級部署之資源的資源識別碼。
+* 請勿使用 [resourceId ( # B1 ](template-functions-resource.md#resourceid) 來取得部署在租使用者層級之資源的資源識別碼。
 
-  例如，若要取得原則定義的資源識別碼，使用：
+  請改用 [tenantResourceId ( # B1 ](template-functions-resource.md#tenantresourceid) 函數。
+
+  例如，若要取得內建原則定義的資源識別碼，請使用：
 
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
@@ -251,5 +253,5 @@ New-AzTenantDeployment `
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要瞭解如何指派角色，請參閱[使用 Azure Resource Manager 範本新增 Azure 角色指派](../../role-based-access-control/role-assignments-template.md)。
+* 若要瞭解如何指派角色，請參閱 [使用 Azure Resource Manager 範本新增 Azure 角色指派](../../role-based-access-control/role-assignments-template.md)。
 * 您也可以在[訂用帳戶層級](deploy-to-subscription.md)或[管理群組層級](deploy-to-management-group.md)部署範本。

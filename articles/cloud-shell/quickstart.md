@@ -1,6 +1,6 @@
 ---
 title: Azure Cloud Shell 快速入門-Bash
-description: 瞭解如何在瀏覽器中使用 Azure Cloud Shell 的 Bash 命令列。
+description: 瞭解如何在瀏覽器中搭配 Azure Cloud Shell 使用 Bash 命令列。
 author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 3001e814a5f31725bfc78385d2435bbb0e971d40
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 91b7c58890518559c046023bd78c9248e9840f9f
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513014"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468744"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中 Bash 的快速入門
 
@@ -25,8 +25,8 @@ ms.locfileid: "86513014"
 > 也提供 [Azure Cloud Shell 中的 PowerShell](quickstart-powershell.md) 快速入門。
 
 ## <a name="start-cloud-shell"></a>啟動 Cloud Shell
-1. 從 Azure 入口網站的頂端導覽啟動**Cloud Shell** 。 <br>
-![顯示如何在 Azure 入口網站中啟動 Azure Cloud Shell 的螢幕擷取畫面。](media/quickstart/shell-icon.png)
+1. 從 Azure 入口網站的頂端導覽啟動 **Cloud Shell** 。 <br>
+![顯示如何在 Azure 入口網站中開始 Azure Cloud Shell 的螢幕擷取畫面。](media/quickstart/shell-icon.png)
 
 2. 選取用來建立儲存體帳戶和 Microsoft Azure 檔案共用的訂用帳戶。
 3. 選取 [建立儲存體]
@@ -36,7 +36,7 @@ ms.locfileid: "86513014"
 
 ### <a name="select-the-bash-environment"></a>選取 Bash 環境
 確認殼層視窗左側的環境下拉式清單顯示為 `Bash`。 <br>
-![螢幕擷取畫面，顯示如何選取 Azure Cloud Shell 的 Bash 環境。](media/quickstart/env-selector.png)
+![顯示如何為 Azure Cloud Shell 選取 Bash 環境的螢幕擷取畫面。](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>設定您的訂用帳戶
 1. 列出您可存取的訂用帳戶。
@@ -74,7 +74,7 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ### <a name="ssh-into-your-linux-vm"></a>透過 SSH 連線到您的 Linux VM
 1. 在 Azure 入口網站搜尋列中搜尋您的 VM 名稱。
 2. 按一下 [連接] 以取得您的 VM 名稱和公用 IP 位址。 <br>
-   ![螢幕擷取畫面，顯示如何使用 S H 連接到 Linux V M。](media/quickstart/sshcmd-copy.png)
+   ![顯示如何使用 S H 連接到 Linux V M 的螢幕擷取畫面。](media/quickstart/sshcmd-copy.png)
 
 3. 使用 `ssh` CMD，透過 SSH 連線到您的 VM。
    ```
@@ -82,7 +82,7 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
    ```
 
 建立 SSH 連線時，應該會看到 Ubuntu 歡迎提示。 <br>
-![在您建立 S H 連線之後，顯示 Ubuntu 初始化和歡迎提示的螢幕擷取畫面。](media/quickstart/ubuntu-welcome.png)
+![螢幕擷取畫面，顯示建立 S H 連接之後的 Ubuntu 初始化和歡迎提示。](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>清除 
 1. 結束 SSH 工作階段。
@@ -95,7 +95,7 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
    az group delete -n MyRG
    ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [了解保存 Cloud Shell 中 Bash 的檔案](persisting-shell-storage.md) <br>
-[了解 Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
+[了解 Azure CLI](/cli/azure/) <br>
 [了解 Azure 檔案儲存體](../storage/files/storage-files-introduction.md) <br>

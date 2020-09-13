@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e6236d9ed5ed75b6b5e10914e668de545c48fc2c
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055629"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468703"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖表
 
@@ -175,6 +175,42 @@ AND Room.$dtId IN ['room1', 'room2']
 | 取得具有名為*Contains*之關聯性的 twins，以及識別碼為*id1*的另一個對應項 | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
 | 取得*floor11*所包含之房間模型的所有房間 | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
 
+## <a name="reference-expressions-and-conditions"></a>參考：運算式和條件
+
+本節包含撰寫 Azure 數位 Twins 查詢時可用之運算子和函式的參考。
+
+### <a name="operators"></a>操作員
+
+支援下列運算子：
+
+| 系列 | 操作員 |
+| --- | --- |
+| 邏輯 |AND、OR、NOT |
+| 比較 |=、！ =、<、>、<=、>= |
+| 包含 | 在中，>NIN |
+
+### <a name="functions"></a>函數
+
+支援下列類型檢查和轉換函數：
+
+| 函式 | 描述 |
+| -------- | ----------- |
+| IS_DEFINED | 傳回布林值，表示屬性是否已經指派值。 只有當值為基本型別時，才支援此功能。 基本類型包括字串、布林值、數值或 `null` 。 不支援 DateTime、物件類型和陣列。 |
+| IS_OF_MODEL | 傳回布林值，指出指定的對應項是否符合指定的模型類型 |
+| IS_BOOL | 傳回布林值，表示指定之運算式的類型為布林值。 |
+| IS_NUMBER | 傳回布林值，表示指定之運算式的類型為數字。 |
+| IS_STRING | 傳回布林值，表示指定之運算式的類型為字串。 |
+| IS_NULL | 傳回布林值，表示指定之運算式的類型為 null。 |
+| IS_PRIMITIVE | 傳回布林值，可指出所指定之運算式的類型是否為基本類型 (字串、布林值、數值或 `null`)。 |
+| IS_OBJECT | 傳回布林值，表示指定之運算式的類型為 JSON 物件。 |
+
+以下是支援的字串函數：
+
+| 函式 | 描述 |
+| -------- | ----------- |
+| STARTS_WITH(x, y) | 傳回布林值，表示第一個字串運算式是否以第二個字串運算式開頭。 |
+| ENDS_WITH(x, y) | 傳回布林值，表示第一個字串運算式是否以第二個字串運算式結尾。 |
+
 ## <a name="run-queries-with-an-api-call"></a>使用 API 呼叫來執行查詢
 
 一旦您決定查詢字串之後，就可以呼叫 **查詢 API**來執行它。
@@ -251,6 +287,6 @@ catch (RequestFailedException e)
         ```
 * 屬性名稱和值會區分大小寫，因此請小心使用模型中所定義的確切名稱。 如果屬性名稱的拼寫錯誤或大小寫不正確，則結果集是空的，而且不會傳回任何錯誤。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入瞭解 [Azure 數位 Twins api 和 sdk](how-to-use-apis-sdks.md)，包括用來執行本文中查詢的查詢 API。

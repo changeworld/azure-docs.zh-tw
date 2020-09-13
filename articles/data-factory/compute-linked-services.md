@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory 支援的計算環境
-description: 了解您可以在 Azure Data Factory 管線中 (如 Azure HDInsight) 用來轉換/處理資料的計算環境。
+description: 可以搭配 Azure Data Factory 管線使用的計算環境 (例如，Azure HDInsight) 來轉換或處理資料。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -10,12 +10,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: 98f3c96fe1d1e8dd0f73d0441db8319fc2241cd7
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 3d8e667cd96cc6d7091682a4530633588591d3a4
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563733"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483179"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory 支援的計算環境
 
@@ -33,7 +33,7 @@ ms.locfileid: "87563733"
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning 執行管線](transform-data-machine-learning-service.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning 執行管線](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
-| [Azure SQL](#azure-sql-database-linked-service)、[Azure SQL 資料倉儲](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) | [預存程序](transform-data-using-stored-procedure.md) |
+| [AZURE sql](#azure-sql-database-linked-service)， [Azure Synapse Analytics (先前的 SQL 資料倉儲) ](#azure-synapse-analytics-linked-service)， [SQL Server](#sql-server-linked-service) | [預存程序](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md)、[Jar](transform-data-databricks-jar.md)、[Python](transform-data-databricks-python.md) |
 | [Azure Function](#azure-function-linked-service)         | [Azure 函式活動](control-flow-azure-function-activity.md)
 >  
@@ -109,7 +109,7 @@ Azure Data Factory 服務可自動建立隨選 HDInsight 叢集來處理資料�
 > [!IMPORTANT]
 > HDInsight 叢集會在您於 JSON 中指定的 Blob 儲存體 (**linkedServiceName**) 建立**預設容器**。 HDInsight 不會在刪除叢集時刪除此容器。 這是設計的行為。 在使用 HDInsight 隨選連結服務時，除非有現有的即時叢集 (**timeToLive**)，否則每當需要處理配量時，就會建立 HDInsight 叢集，並在處理完成時予以刪除。 
 >
-> 隨著執行的活動越來越多，您會在 Azure Blob 儲存體中看到許多容器。 如果在疑難排解作業時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱會遵循模式︰`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`。 使用[Microsoft Azure 儲存體總管](https://storageexplorer.com/)之類的工具來刪除 Azure blob 儲存體中的容器。
+> 隨著執行的活動越來越多，您會在 Azure Blob 儲存體中看到許多容器。 如果在疑難排解作業時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱會遵循模式︰`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`。 請使用 [Microsoft Azure 儲存體總管](https://storageexplorer.com/) 之類的工具刪除 Azure Blob 儲存體中的容器。
 
 #### <a name="properties"></a>屬性
 
@@ -265,7 +265,7 @@ Azure Data Factory 服務可自動建立隨選 HDInsight 叢集來處理資料�
 * Azure Batch
 * Azure Machine Learning
 * Azure Data Lake Analytics
-* Azure SQL DB、Azure SQL DW、SQL Server
+* Azure SQL DB、Azure Synapse Analytics、SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight 連結服務
 您可以建立 Azure HDInsight 連結服務，以向 Data Factory 註冊自己的 HDInsight 叢集。
@@ -562,9 +562,9 @@ Azure Data Factory 服務可自動建立隨選 HDInsight 叢集來處理資料�
 
 您可建立 Azure SQL 連結服務，並將其與 [預存程序活動](transform-data-using-stored-procedure.md) 搭配使用，以叫用 Data Factory 管線中的預存程序。 如需此連結服務的詳細資料，請參閱 [Azure SQL 連接器](connector-azure-sql-database.md#linked-service-properties) 一文。
 
-## <a name="azure-sql-data-warehouse-linked-service"></a>Azure SQL 資料倉儲連結服務
+## <a name="azure-synapse-analytics-linked-service"></a>Azure Synapse Analytics 連結服務
 
-您可以建立 Azure SQL 資料倉儲連結服務，並將其與 [預存程序活動](transform-data-using-stored-procedure.md) 搭配使用，以叫用 Data Factory 管線中的預存程序。 如需此連結服務的詳細資料，請參閱 [Azure SQL 資料倉儲連接器](connector-azure-sql-data-warehouse.md#linked-service-properties) 一文。
+您可以建立 Azure Synapse Analytics (先前的 SQL 資料倉儲) 連結服務，並將其與 [預存程式活動](transform-data-using-stored-procedure.md) 搭配使用，以從 Data Factory 管線叫用預存程式。 如需此連結服務的詳細資訊，請參閱 [Azure Synapse Analytics (先前的 SQL 資料倉儲) 連接器](connector-azure-sql-data-warehouse.md#linked-service-properties) 文章。
 
 ## <a name="sql-server-linked-service"></a>SQL Server 連結服務
 

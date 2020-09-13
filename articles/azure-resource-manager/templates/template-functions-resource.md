@@ -2,13 +2,13 @@
 title: 範本函式 - 資源
 description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 7f485d258074959c4a0a17449c65c38fa9648502
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 09/03/2020
+ms.openlocfilehash: 3f916be4431aa6b2b100967465450447ecc1d626
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661396"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468669"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 範本的資源函式
 
@@ -16,6 +16,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 
 * [extensionResourceId](#extensionresourceid)
 * [list*](#list)
+* [pickZones](#pickzones)
 * [提供者](#providers)
 * [reference](#reference)
 * [resourceGroup](#resourcegroup)
@@ -101,6 +102,12 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 }
 ```
 
+部署至管理群組的自訂原則定義會實作為擴充資源。 若要建立並指派原則，請將下列範本部署至管理群組。
+
+:::code language="json" source="~/quickstart-templates/managementgroup-deployments/mg-policy/azuredeploy.json":::
+
+內建原則定義是租使用者層級的資源。 如需部署內建原則定義的範例，請參閱 [tenantResourceId](#tenantresourceid)。
+
 <a id="listkeys"></a>
 <a id="list"></a>
 
@@ -130,9 +137,16 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 
 | 資源類型 | 函式名稱 |
 | ------------- | ------------- |
+| 附加元件/supportProviders | listsupportplaninfo |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
+| ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2019-12-01/authorizationserver/listsecrets) |
+| ApiManagement/服務/閘道 | [listKeys](/rest/api/apimanagement/2019-12-01/gateway/listkeys) |
+| ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/identityprovider/listsecrets) |
+| ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2019-12-01/namedvalue/listvalue) |
+| ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/openidconnectprovider/listsecrets) |
 | Microsoft.AppConfiguration | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
-| Microsoft.AppConfiguration/configurationStores | ListKeys |
+| Microsoft.AppConfiguration/configurationStores | [ListKeys](/rest/api/appconfiguration/configurationstores/listkeys) |
+| Microsoft.AppPlatform/Spring | [listTestKeys](/rest/api/azurespringclould/services/listtestkeys) |
 | Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.Batch/batchAccounts | [listkeys](/rest/api/batchmanagement/batchaccount/getkeys) |
 | Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
@@ -144,10 +158,15 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
 | Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
+| >microsoft.containerregistry/registry/agentpools | listQueueStatus |
+| >microsoft.containerregistry/registry/buildTasks | listSourceRepositoryProperties |
+| >microsoft.containerregistry/registry/buildTasks/步驟 | listBuildArguments |
+| >microsoft.containerregistry/registry/taskruns | listDetails |
 | Microsoft.ContainerRegistry/registries/webhooks | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
 | Microsoft.ContainerRegistry/registries/runs | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
 | Microsoft.ContainerRegistry/registries/tasks | [listDetails](/rest/api/containerregistry/tasks/getdetails) |
 | Microsoft.ContainerService/managedClusters | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
+| Microsoft.ContainerService/managedClusters | [listClusterMonitoringUserCredential](/rest/api/aks/managedclusters/listclustermonitoringusercredentials) |
 | Microsoft.ContainerService/managedClusters | [listClusterUserCredential](/rest/api/aks/managedclusters/listclusterusercredentials) |
 | Microsoft.ContainerService/managedClusters/accessProfiles | [listCredential](/rest/api/aks/managedclusters/getaccessprofile) |
 | Microsoft.DataBox/jobs | listCredentials |
@@ -168,6 +187,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 | Microsoft.DevTestLab/labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
 | Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listconnectionstrings) |
 | Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listkeys) |
+| Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces | [listConnectionInfo](/rest/api/cosmos-db-resource-provider/2020-04-01/notebookworkspaces/listconnectioninfo) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
@@ -206,7 +226,9 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 | Microsoft.NotificationHubs/Namespaces/authorizationRules | [listkeys](/rest/api/notificationhubs/namespaces/listkeys) |
 | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | [listkeys](/rest/api/notificationhubs/notificationhubs/listkeys) |
 | Microsoft.OperationalInsights/workspaces | [list](/rest/api/loganalytics/workspaces/list) |
+| Microsoft.OperationalInsights/workspaces | listKeys |
 | Microsoft.PolicyInsights/remediations | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
+| RedHatOpenShift/openShiftClusters | [listCredentials](/rest/api/openshift/openshiftclusters/listcredentials) |
 | Microsoft.Relay/namespaces/authorizationRules | [listkeys](/rest/api/relay/namespaces/listkeys) |
 | Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys |
 | Microsoft.Relay/namespaces/HybridConnections/authorizationRules | [listkeys](/rest/api/relay/hybridconnections/listkeys) |
@@ -225,6 +247,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 | Microsoft.StorSimple/managers/devices | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
 | Microsoft.StorSimple/managers | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
 | Microsoft.StorSimple/managers | [listPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
+| Synapse/workspace/integrationRuntimes | [listAuthKeys](/rest/api/synapse/integrationruntimeauthkeys/list) |
 | Microsoft.Web/connectionGateways | ListStatus |
 | microsoft.web/connections | listconsentlinks |
 | Microsoft.Web/customApis | listWsdlInterfaces |
@@ -315,6 +338,94 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 ```
 
 如需 listKeyValue 範例，請參閱[快速入門：使用應用程式組態和 Resource Manager 範本進行自動化 VM 部署](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values)。
+
+## <a name="pickzones"></a>pickZones
+
+`pickZones(providerNamespace, resourceType, location, [numberOfZones], [offset])`
+
+判斷資源類型是否支援區域的區域。
+
+### <a name="parameters"></a>參數
+
+| 參數 | 必要 | 類型 | 描述 |
+|:--- |:--- |:--- |:--- |
+| providerNamespace | 是 | 字串 | 要檢查區域支援之資源類型的資源提供者命名空間。 |
+| resourceType | 是 | 字串 | 要檢查是否有區域支援的資源類型。 |
+| location | 是 | 字串 | 要檢查區域支援的區域。 |
+| numberOfZones | 否 | integer | 要傳回的邏輯區域數目。 預設值是 1。 此數位必須是介於1到3之間的正整數。  單一分區資源使用1。 若為多分區資源，此值必須小於或等於支援的區域數目。 |
+| Offset | 否 | integer | 從起始邏輯區域算起的位移。 如果 offset 加 numberOfZones 超過支援的區域數目，函數會傳回錯誤。 |
+
+### <a name="return-value"></a>傳回值
+
+具有支援區域的陣列。 使用 offset 和 numberOfZones 的預設值時，支援區域的資源類型和區域會傳回下列陣列：
+
+```json
+[
+    "1"
+]
+```
+
+當 `numberOfZones` 參數設定為3時，它會傳回：
+
+```json
+[
+    "1",
+    "2",
+    "3"
+]
+```
+
+當資源類型或區域不支援區域時，會傳回空陣列。
+
+```json
+[
+]
+```
+
+### <a name="pickzones-example"></a>pickZones 範例
+
+下列範本會顯示三個使用 pickZones 函式的結果。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {},
+    "resources": [],
+    "outputs": {
+        "supported": {
+            "type": "array",
+            "value": "[pickZones('Microsoft.Compute', 'virtualMachines', 'westus2')]"
+        },
+        "notSupportedRegion": {
+            "type": "array",
+            "value": "[pickZones('Microsoft.Compute', 'virtualMachines', 'northcentralus')]"
+        },
+        "notSupportedType": {
+            "type": "array",
+            "value": "[pickZones('Microsoft.Cdn', 'profiles', 'westus2')]"
+        }
+    }
+}
+```
+
+上述範例的輸出會傳回三個數組。
+
+| 名稱 | 類型 | 值 |
+| ---- | ---- | ----- |
+| 支援 | array | ["1"] |
+| notSupportedRegion | array | [] |
+| notSupportedType | array | [] |
+
+您可以使用來自 pickZones 的回應，判斷是否為區域提供 null，或將虛擬機器指派給不同的區域。 下列範例會根據區域的可用性來設定區域的值。
+
+```json
+"zones": {
+    "value": "[if(not(empty(pickZones('Microsoft.Compute', 'virtualMachines', 'westus2'))), string(add(mod(copyIndex(),3),1)), json('null'))]"
+},
+```
 
 ## <a name="providers"></a>提供者
 
@@ -740,23 +851,27 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-在[訂用帳戶層級部署](deploy-to-subscription.md)中使用時，資源識別碼會以下列格式傳回：
+您可以針對其他部署範圍使用 resourceId 函數，但是識別碼的格式會變更。
+
+如果您在部署至訂用帳戶時使用 resourceId，則會以下列格式傳回資源識別碼：
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-使用於[管理群組層級部署](deploy-to-management-group.md)或租用戶層級部署時，資源識別碼會以下列格式傳回：
+如果您在部署至管理群組或租使用者時使用 resourceId，則會以下列格式傳回資源識別碼：
 
 ```json
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-若要取得其他格式的識別碼，請參閱：
+為了避免混淆，我們建議您在使用部署至訂用帳戶、管理群組或租使用者的資源時，不要使用 resourceId。 相反地，請使用針對此範圍設計的 ID 函式。
 
-* [extensionResourceId](#extensionresourceid)
-* [subscriptionResourceId](#subscriptionresourceid)
-* [tenantResourceId](#tenantresourceid)
+針對 [訂用帳戶層級資源](deploy-to-subscription.md)，請使用 [subscriptionResourceId](#subscriptionresourceid) 函數。
+
+對於 [管理群組層級的資源](deploy-to-management-group.md)，請使用 [extensionResourceId](#extensionresourceid) 函式來參考實作為管理群組擴充功能的資源。 例如，部署到管理群組的自訂原則定義是管理群組的延伸。 使用 [tenantResourceId](#tenantresourceid) 函式來參考部署到租使用者的資源，但您的管理群組中可使用此功能。 例如，內建原則定義會實作為租使用者層級資源。
+
+若為 [租使用者層級的資源](deploy-to-tenant.md)，請使用 [tenantResourceId](#tenantresourceid) 函數。 針對內建原則定義使用 tenantResourceId，因為它們是在租使用者層級上執行。
 
 ### <a name="remarks"></a>備註
 
@@ -1019,6 +1134,44 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 ### <a name="remarks"></a>備註
 
 您可以使用此函式，對部署至租用戶的資源取得資源識別碼。 傳回的識別碼與其他資源識別碼函式所傳回的值不同；其中不含資源群組或訂用帳戶值。
+
+### <a name="tenantresourceid-example"></a>tenantResourceId 範例
+
+內建原則定義是租使用者層級的資源。 若要部署參考內建原則定義的原則指派，請使用 tenantResourceId 函數。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "policyAssignmentName": {
+      "type": "string",
+      "defaultValue": "[guid(parameters('policyDefinitionID'), resourceGroup().name)]",
+      "metadata": {
+        "description": "Specifies the name of the policy assignment, can be used defined or an idempotent name as the defaultValue provides."
+      }
+    },
+    "policyDefinitionID": {
+      "type": "string",
+      "defaultValue": "0a914e76-4921-4c19-b460-a2d36003525a",
+      "metadata": {
+        "description": "Specifies the ID of the policy definition or policy set definition being assigned."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "name": "[parameters('policyAssignmentName')]",
+      "apiVersion": "2019-09-01",
+      "properties": {
+        "scope": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)]",
+        "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
+      }
+    }
+  ]
+}
+```
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,16 +5,16 @@ keywords: Azure Key Vault 驗證的本機認證
 author: msmbaldwin
 services: key-vault
 ms.author: mbaldwin
-ms.date: 08/08/2020
+ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 860f9b0e49423b5d144d56ecd965153f7a362d87
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 00799f7c5239bfd744268f7353e1bac6cb038294
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180910"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483332"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 進行 Azure Key Vault 的服務對服務驗證
 
@@ -27,7 +27,7 @@ ms.locfileid: "89180910"
 
 此連結 `Microsoft.Azure.Services.AppAuthentication` 庫會自動管理驗證，進而讓您專注于解決方案，而不是您的認證。 它支援使用 Microsoft Visual Studio、Azure CLI 或 Azure AD 整合式驗證進行本機開發。 如果部署到支援受控執行個體的 Azure 資源，程式庫會自動使用 [Azure 資源的受控識別](../../active-directory/msi-overview.md)。 不需要任何程式碼或設定變更。 當受控識別無法使用，或在本機開發期間無法判斷開發人員的安全性內容時，程式庫也支援直接使用 Azure AD [用戶端認證](../../azure-resource-manager/resource-group-authenticate-service-principal.md) 。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) 或 [Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "89180910"
     string accessToken = await azureServiceTokenProvider2.GetAccessTokenAsync("https://management.azure.com/").ConfigureAwait(false);
     ```
 
-呼叫方法之前，您不需要檢查權杖的到期時間 `GetAccessTokenAsync` ，因為會 `AzureServiceTokenProvider` 在記憶體中快取權杖，並在到期前從 Azure AD 抓取權杖。 
+安全線程 `AzureServiceTokenProvider` 類別會將權杖快取在記憶體中，並在到期前從 Azure AD 抓取。 這表示在呼叫方法之前，您永遠不需要檢查權杖的到期日 `GetAccessTokenAsync` 。 
 
 `GetAccessTokenAsync` 方法需要資源識別碼。 若要深入瞭解 Microsoft Azure 服務，請參閱 [什麼是適用于 Azure 資源的受控](../../active-directory/msi-overview.md)識別。
 

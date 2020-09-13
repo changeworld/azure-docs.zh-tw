@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9971eb554825a968f8cfa72d6a0cf78d7c0bcb76
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b55d8bcc2f2042dc36c6875750893a345deb552
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025875"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468601"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什麼是主要重新整理權杖？
 
@@ -65,7 +65,7 @@ PRT 是從 Azure AD 傳送的不透明 Blob，任何用戶端元件都不會知�
 如果是已註冊 Azure AD 的裝置，Azure AD WAM 外掛程式會是 PRT 的主要授權單位，因為此 Azure AD 帳戶不會發生 Windows 登入。
 
 > [!NOTE]
-> 第三方識別提供者必須支援 WS-Trust 通訊協定，才能在 Windows 10 裝置上發出 PRT。 若沒有 WS-TRUST，PRT 就無法在加入混合式 Azure AD 或加入 Azure AD 的裝置上，發給使用者。 在 ADFS 上，只需要 usernamemixed 端點。 Adfs/services/trust/2005/windowstransport 和 adfs/services/trust/13/windowstransport 都應該啟用為僅限內部網路面向的端點，而且不得透過 Web 應用程式 Proxy**公開**為外部網站面向端點
+> 第三方識別提供者必須支援 WS-Trust 通訊協定，才能在 Windows 10 裝置上發出 PRT。 如果沒有 WS-TRUST，則無法將 PRT 發給已加入混合式 Azure AD 或已加入 Azure AD 的裝置上的使用者。 在 ADFS 上，只需要 usernamemixed 端點。 Adfs/services/trust/2005/windowstransport 和 adfs/services/trust/13/windowstransport 都應該只啟用為內部網路對應端點，且不得透過 Web 應用程式 Proxy **公開** 為內部網路面向端點
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>PRT 的存留期為何？
 
@@ -86,6 +86,10 @@ PRT 會以兩種不同的方法進行更新：
 * **Azure AD WAM 外掛程式 (在應用程式權杖要求期間)** ：WAM 外掛程式會藉由啟用應用程式的無訊息權杖要求，在 Windows 10 裝置上啟用 SSO。 WAM 外掛程式可以透過兩種不同的方式，在這些權杖要求期間更新 PRT：
    * 應用程式以無訊息方式向 WAM 要求存取權杖，但該應用程式沒有可用的重新整理權杖。 在此情況下，WAM 會使用 PRT 來要求應用程式的權杖，並在回應中取得新的 PRT。
    * 應用程式向 WAM要求存取權杖，但 PRT 無效或 Azure AD 需要額外的授權 (例如，Azure Multi-Factor Authentication)。 在此情況下，WAM 會起始需要使用者進行重新驗證或提供額外驗證的互動式登入，而新的 PRT 會在成功驗證時發出。
+
+在 ADFS 環境中，不需要對網域控制站進行直接連線，就能更新 PRT。 PRT 更新只需要使用 WS-TRUST 通訊協定在 proxy 上啟用/adfs/services/trust/2005/usernamemixed 和/adfs/services/trust/13/usernamemixed 端點。
+
+只有在密碼有所變更，而不是 PRT 更新時，才需要 Windows 傳輸端點進行密碼驗證。
 
 ### <a name="key-considerations"></a>主要考量
 
@@ -169,7 +173,7 @@ Windows 10 會針對每個認證維護一個 PRT 的資料分割清單。 因此
 | G | CloudAP 外掛程式會將加密的 PRT 和工作階段金鑰傳遞至 CloudAP。 CloudAP 會要求 TPM 使用傳輸金鑰 (tkpriv) 來解密工作階段金鑰，並使用 TPM 自己的金鑰來重新對其加密。 CloudAP 會將加密的工作階段金鑰連同 PRT 一起儲存在其快取中。 |
 
 > [!NOTE]
-> 當 usernamemixed 端點在外部啟用時，可以在外部更新 PRT，而不需要 VPN 連線。
+> 在外部啟用 usernamemixed 端點時，您可以在外部更新 PRT，而不需要 VPN 連線。
 
 ### <a name="prt-usage-during-app-token-requests"></a>應用程式權杖要求期間的 PRT 使用方式
 
