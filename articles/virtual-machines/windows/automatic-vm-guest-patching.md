@@ -5,14 +5,14 @@ author: mayanknayar
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 720f9dfc09d27a18460037bfbbd15ae4bfc88707
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 47ac9fa91f391442691661a3ba03dd1f0d918601
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89236641"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669055"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>預覽： Azure 中的 Windows Vm 自動 VM 來賓修補
 
@@ -192,7 +192,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 建立或更新 VM 時，請使用 [>set-azvmoperatingsystem](/powershell/module/az.compute/set-azvmoperatingsystem) 指令 Cmdlet 來啟用自動 vm 來賓修補。
 
 ```azurepowershell-interactive
-Set-AzVMOperatingSystem -VM $$VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate -PatchMode "AutomaticByPlatform"
+Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate -PatchMode "AutomaticByPlatform"
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
@@ -273,6 +273,6 @@ Invoke-AzVmPatchAssessment -ResourceGroupName "myResourceGroup" -VMName "myVM"
 az vm assess-patches --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 > [!div class="nextstepaction"]
 > [深入瞭解如何建立和管理 Windows 虛擬機器](tutorial-manage-vm.md)

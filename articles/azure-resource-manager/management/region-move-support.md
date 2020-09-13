@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 8c18a4d2fa6e5bdb211b77d4d7bb28af7e5b1c1a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 608d9511b14ef8dd3815d6f9b45cda31e6b38b94
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948108"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004301"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨區域移動 Azure 資源的支援
 
@@ -363,9 +363,9 @@ ms.locfileid: "88948108"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | availabilitysets | 否 | 
+> | availabilitysets | 是 <br/><br/> 使用 [Azure 資源移動器](../../resource-mover/tutorial-move-region-virtual-machines.md) 來移動可用性設定組。 | 
 > | diskencryptionsets | 否 | 
-> | disks | 否 | 
+> | disks | 是 <br/><br/> 使用 [Azure 資源移動器](../../resource-mover/tutorial-move-region-virtual-machines.md) 移動 azure vm 和相關磁片。 | 
 > | galleries | 否 | 
 > | galleries / images | 否 | 
 > | galleries / images / versions | 否 | 
@@ -377,7 +377,7 @@ ms.locfileid: "88948108"
 > | sharedvmimages | 否 | 
 > | sharedvmimages / versions | 否 | 
 > | snapshots | 否 | 
-> | virtualmachines | 是 | 
+> | virtualmachines | 是 <br/><br/> 使用 [Azure 資源移動器](../../resource-mover/tutorial-move-region-virtual-machines.md) 移動 azure vm。 | 
 > | virtualmachines / extensions | 否 | 
 > | virtualmachinescalesets | 否 | 
 
@@ -411,7 +411,7 @@ ms.locfileid: "88948108"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | containerservices | 不知道。<br/><br/> 服務已 [淘汰](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)。
+> | containerservices | 不會。<br/><br/> 服務已 [淘汰](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)。
 > | managedclusters | 否 | 
 > | openshiftmanagedclusters | 否 | 
 
@@ -579,9 +579,9 @@ ms.locfileid: "88948108"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | elasticpools | 不知道。 未公開資源。
-> | elasticpools / iothubtenants | 不知道。 未公開資源。
-> | iothubs | 是。 [深入了解](../../iot-hub/iot-hub-how-to-clone.md)
+> | elasticpools | 不會。 未公開資源。
+> | elasticpools / iothubtenants | 不會。 未公開資源。
+> | iothubs | 可以。 [深入了解](../../iot-hub/iot-hub-how-to-clone.md)
 > | provisioningservices | 否 | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
@@ -716,7 +716,7 @@ ms.locfileid: "88948108"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | checknameavailability |  不知道。<br/><br/> IoT Central 適用于地理位置，而非區域。
+> | checknameavailability |  不會。<br/><br/> IoT Central 適用于地理位置，而非區域。
 > | graph | 否
 
 ## <a name="microsoftiothub"></a>Microsoft.IoTHub
@@ -908,13 +908,13 @@ ms.locfileid: "88948108"
 > | expressrouteports | 否 | 
 > | frontdoors | 否 | 
 > | frontdoorwebapplicationfirewallpolicies | 否 | 
-> | loadbalancers | 是 <br/><br/> 您可以將現有的設定匯出為範本，並在新的區域中部署範本。 瞭解如何移動 [外部](../..//load-balancer/move-across-regions-external-load-balancer-portal.md) 或 [內部](../../load-balancer/move-across-regions-internal-load-balancer-portal.md) 負載平衡器。 |
+> | loadbalancers | 是 <br/><br/> 使用 [Azure 資源移動器](../../resource-mover/tutorial-move-region-virtual-machines.md) 來移動內部和外部負載平衡器。 |
 > | localnetworkgateways |  否 | 
 > | natgateways |  否 | 
 > | networkintentpolicies |  否 | 
-> | networkinterfaces | 是 | 
+> | networkinterfaces | 是 <br/><br/> 使用 [Azure 資源移動器](../../resource-mover/tutorial-move-region-virtual-machines.md) 移動 nic。 | 
 > | networkprofiles | 否 | 
-> | networksecuritygroups | 是 | 
+> | networksecuritygroups | 是 <br/><br/> 使用 [Azure 資源移動器](../../resource-mover/tutorial-move-region-virtual-machines.md) 將網路安全性群組移動 (ngs) 。 | 
 > | networkwatchers |  否 |  
 > | networkwatchers / connectionmonitors |  否 | 
 > | networkwatchers/鏡頭 |  否 | 
@@ -924,7 +924,7 @@ ms.locfileid: "88948108"
 > | privatednszones / virtualnetworklinks |  否 |  
 > | privateendpoints | 否 | 
 > | privatelinkservices | 否 | 
-> | publicipaddresses | 是<br/><br/> 您可以將現有的公用 IP 位址設定匯出為範本，並在新的區域中部署範本。 [深入瞭解](../../virtual-network/move-across-regions-publicip-portal.md) 如何移動公用 IP 位址。 |
+> | publicipaddresses | 是<br/><br/> 使用 [Azure 資源移動器](../../resource-mover/tutorial-move-region-virtual-machines.md) 來移動公用 IP 位址。 |
 > | publicipprefixes | 否 | 
 > | routefilters | 否 | 
 > | routetables |  否 | 
@@ -1012,7 +1012,7 @@ ms.locfileid: "88948108"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | vaults | 不知道。<br/><br/> 不支援在 Azure 區域間移動 Azure 備份的復原服務保存庫。<br/><br/> 在 Azure Site Recovery 的復原服務保存庫中，您可以在目的地區域中 [停用並重新](../../site-recovery/move-vaults-across-regions.md) 建立保存庫。 | 
+> | vaults | 不會。<br/><br/> 不支援在 Azure 區域間移動 Azure 備份的復原服務保存庫。<br/><br/> 在 Azure Site Recovery 的復原服務保存庫中，您可以在目的地區域中 [停用並重新](../../site-recovery/move-vaults-across-regions.md) 建立保存庫。 | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
@@ -1134,11 +1134,11 @@ ms.locfileid: "88948108"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | instancepools | 否 | 
-> | managedinstances | 是 | 
+> | managedinstances | 是 <br/><br/> [深入瞭解](/azure/azure-sql/database/move-resources-across-regions) 跨區域移動受控實例。 | 
 > | managedinstances / databases | 是 | 
 > | servers | 是 | 
-> | servers / databases | 是 | 
-> | servers / elasticpools | 是 | 
+> | servers / databases | 是 <br/><br/> [深入瞭解](/azure/azure-sql/database/move-resources-across-regions) 跨區域移動資料庫。<br/><br/> [深入瞭解](../../resource-mover/tutorial-move-region-sql.md) 如何使用 Azure 資源移動器移動 azure SQL 資料庫。  | 
+> | servers / elasticpools | 是 <br/><br/> [深入瞭解](/azure/azure-sql/database/move-resources-across-regions) 跨區域移動彈性集區。<br/><br/> [深入瞭解](../../resource-mover/tutorial-move-region-sql.md) 如何使用 Azure 資源移動器移動 azure SQL 彈性集區。  | 
 > | virtualclusters | 是 | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

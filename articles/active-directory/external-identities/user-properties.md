@@ -1,6 +1,6 @@
 ---
 title: B2B 來賓使用者的屬性-Azure Active Directory |Microsoft Docs
-description: Azure Active Directory B2B 來賓使用者屬性和邀請兌換前後的狀態
+description: 在邀請兌換前後 Azure Active Directory B2B 來賓使用者屬性和狀態
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,16 +12,16 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7271c4de6d5c186c9e561aa37a140eaa04cbc0a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a61a298b3b1d9e129b0ef3bbfff12f34d0ba09a8
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908137"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89668968"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 共同作業使用者的屬性
 
-本文說明 Azure Active Directory (Azure AD) 邀請兌換前後的 B2B 來賓使用者物件的屬性和狀態。 Azure AD 的企業對企業 (B2B) 協同作業使用者是 UserType = Guest 的使用者。 此來賓使用者通常是來自合作夥伴組織的使用者，且依預設在邀請目錄中的權限有限。
+本文說明 Azure Active Directory (Azure AD 在邀請兌換之前和之後) 的 B2B 來賓使用者物件的屬性和狀態。 Azure AD 的企業對企業 (B2B) 共同作業使用者是具有 UserType = Guest 的使用者。 此來賓使用者通常是來自合作夥伴組織的使用者，且依預設在邀請目錄中的權限有限。
 
 根據邀請組織的需求，Azure AD B2B 共同作業使用者可以是下列帳戶狀態之一︰
 
@@ -30,11 +30,11 @@ ms.locfileid: "87908137"
    > [!IMPORTANT]
    > **自 2021 年 3 月 31 日起**，Microsoft 將不再支援兌換邀請，而是建立適用於 B2B 共同作業案例的非受控 Azure AD 帳戶和租用戶。 在準備過程中，我們鼓勵客戶選擇使用[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且期待能建立更多共同作業的方式。
 
-- 狀態2：位於 Microsoft 或其他帳戶中，並表示為主機組織中的來賓使用者。 在此情況下，來賓使用者會使用 Microsoft 帳戶或社交帳戶 (google.com 或類似帳戶) 來登入。 受邀使用者的身分識別會在供應項目兌換期間，建立為邀請方組織目錄中的 Microsoft 帳戶。
+- 狀態2：位於 Microsoft 或其他帳戶中，並以主機組織中的來賓使用者表示。 在此情況下，來賓使用者會使用 Microsoft 帳戶或社交帳戶 (google.com 或類似帳戶) 來登入。 受邀使用者的身分識別會在供應項目兌換期間，建立為邀請方組織目錄中的 Microsoft 帳戶。
 
 - 狀態 3：位於主機組織的內部部署 Active Directory 並與主機組織的 Azure AD 同步處理。 您可以使用 Azure AD Connect 將夥伴帳戶同步至雲端，以作為 UserType = Guest 的 Azure AD B2B 使用者。 請參閱[對本機管理的夥伴帳戶授與雲端資源的存取權](hybrid-on-premises-to-cloud.md)。
 
-- 狀態4：使用 UserType = 來賓和主機組織所管理的認證，在主組織的 Azure AD 中。
+- 狀態4：位於主機組織的 Azure AD 中，UserType = Guest 和主機組織所管理的認證。
 
   ![描述四個使用者狀態的圖表](media/user-properties/redemption-diagram.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "87908137"
 
 狀態 1 和狀態 2 帳戶是邀請來賓使用者使用自有認證來進行共同作業的結果。 當邀請初次傳送給來賓使用者時，您的目錄中就會建立帳戶。 此帳戶沒有任何與其相關聯的認證，因為驗證會由來賓使用者的識別提供者來執行。 您目錄中來賓使用者帳戶的**來源**屬性會設定為**受邀使用者**。 
 
-![在供應專案兌換之前顯示使用者屬性的螢幕擷取畫面](media/user-properties/before-redemption.png)
+![顯示供應專案兌換之前使用者屬性的螢幕擷取畫面](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>邀請兌換之後
 
@@ -66,7 +66,7 @@ ms.locfileid: "87908137"
 此屬性會指出使用者與主機租用的關聯性。 此屬性可以包含兩個值：
 - 成員︰此值表示主機組織的員工，以及由組織支薪的使用者。 例如，這位使用者要能夠存取僅供內部使用的網站。 這位使用者不會被認為是外部共同作業人員。
 
-- Guest：此值表示不被視為公司內部的使用者，例如外部共同作業者、合作夥伴或客戶。 這類使用者不會收到執行長的內部備忘，或收到公司權益等。
+- Guest：這個值表示不會被視為公司內部的使用者，例如外部共同作業者、合作夥伴或客戶。 這類使用者不會收到執行長的內部備忘，或收到公司權益等。
 
   > [!NOTE]
   > UserType 與使用者登入的方式、使用者的目錄角色等等無關。 此屬性只是表示使用者與主機組織的關聯性，並可讓組織強制執行此屬性的相依原則。
@@ -104,11 +104,11 @@ ms.locfileid: "87908137"
 ![顯示 [使用者設定] 中 [外部使用者] 選項的螢幕擷取畫面](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全域通訊清單中顯示來賓使用者？
-是。 根據預設，來賓物件不會在貴組織的全域通訊清單中顯示，但您可以使用 Azure Active Directory PowerShell 讓其顯示。 如需詳細資訊，請參閱[管理 Office 365 群組中的來賓存取](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups) \(機器翻譯\) 中的＜能否在全域通訊清單中顯示來賓物件？＞****。
+可以。 根據預設，來賓物件不會在貴組織的全域通訊清單中顯示，但您可以使用 Azure Active Directory PowerShell 讓其顯示。 如需詳細資訊，請參閱[管理 Office 365 群組中的來賓存取](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups) \(機器翻譯\) 中的＜能否在全域通訊清單中顯示來賓物件？＞****。
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>我可以更新來賓使用者的電子郵件地址嗎？
 
-如果來賓使用者接受您的邀請，且後續變更其電子郵件地址，新的電子郵件不會自動同步至您目錄中的來賓使用者物件。 Mail 屬性是透過[MICROSOFT GRAPH API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)建立的。 您可以透過 Exchange 系統管理中心或[Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)更新 mail 屬性，而變更會反映在 Azure AD 來賓使用者物件中。
+如果來賓使用者接受您的邀請，且後續變更其電子郵件地址，則新的電子郵件不會自動同步至您目錄中的來賓使用者物件。 Mail 屬性是透過 [MICROSOFT GRAPH API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)所建立。 您可以透過 Microsoft Graph API、Exchange 系統管理中心或 [Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)來更新 mail 屬性。 變更將會反映在 Azure AD guest 使用者物件中。
 
 ## <a name="next-steps"></a>後續步驟
 

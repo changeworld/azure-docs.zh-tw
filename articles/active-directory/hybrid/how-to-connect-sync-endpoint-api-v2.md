@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a2e8bb6da4cf126a9dbd955b082d77965772f6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f4eba1b48b651c8efe9e9d737e226727cb244fb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357574"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662478"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect sync V2 端點 API (公開預覽) 
 Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure Active Directory 同步處理服務作業的效能。 藉由使用新的 V2 端點，您將會在匯出和匯入至 Azure AD 時，遇到顯著的效能提升。 這個新的端點支援下列項目：
@@ -26,14 +26,14 @@ Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure 
  - 匯出和匯入至 Azure AD 的效能提升
  
 > [!NOTE]
-> 目前，新端點沒有回寫之 O365 群組的已設定群組大小限制。 這可能會對您的 Active Directory 和同步處理週期延遲有所影響。  建議您以累加方式增加群組大小。  
+> 目前，新的端點對於回寫的 Microsoft 365 群組沒有設定的群組大小限制。 這可能會對您的 Active Directory 和同步處理週期延遲有所影響。 建議您以累加方式增加群組大小。  
 
 
 ## <a name="pre-requisites"></a>必要條件  
 若要使用新的 V2 端點，您必須使用 [Azure AD Connect 1.5.30.0 版](https://www.microsoft.com/download/details.aspx?id=47594)或更新版本，並遵循下面提供的部署步驟，為您的 Azure AD Connect 伺服器啟用 V2 端點。   
 
 >[!NOTE]
->此公開預覽目前僅適用於 Azure 全球雲端，不適用於[國家雲端](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。
+>此公開預覽目前僅適用於 Azure 全球雲端，不適用於[國家雲端](../develop/authentication-national-cloud.md)。
 
 ### <a name="public-preview-limitations"></a>公開預覽限制  
 雖然此版本經過大量測試，但您可能仍會遇到問題。 此公開預覽版本的其中一個目標，是尋找並修正任何這類的問題。  
@@ -44,14 +44,14 @@ Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure 
 ## <a name="deployment-guidance"></a>部署指導 
 您將需要部署 [Azure AD Connect 1.5.30.0 版](https://www.microsoft.com/download/details.aspx?id=47594)或更新版本，才能使用 V2 端點。 使用所提供的連結進行下載。 
 
-建議您遵循[變換移轉](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration)方法，在您的環境中推出新的端點。 這會在事件中提供清楚的應變計劃，而這是必要的復原。 下列範例說明如何在此情節中使用變換移轉。 如需變換移轉部署方法的詳細資訊，請參閱提供的連結。 
+建議您遵循[變換移轉](./how-to-upgrade-previous-version.md#swing-migration)方法，在您的環境中推出新的端點。 這會在事件中提供清楚的應變計劃，而這是必要的復原。 下列範例說明如何在此情節中使用變換移轉。 如需變換移轉部署方法的詳細資訊，請參閱提供的連結。 
 
 ### <a name="swing-migration-for-deploying-v2-endpoint"></a>部署 V2 端點的變換移轉
 下列步驟將引導您使用變換方法來部署 V2 端點。
 
 1. 在目前的暫存伺服器上部署 V2 端點。 在下列步驟中，此伺服器將會稱為 **V2 伺服器**。 目前作用中的伺服器將會繼續使用 V1 端點來處理生產工作負載，其將會稱為以下的 **V1 伺服器**。
 1. 驗證 **V2 伺服器**仍如預期般處理匯入。 在這個階段中，大型群組將不會佈建到 Azure AD 或內部部署 AD，但是您可以確認升級未導致對現有同步處理程序造成任何其他非預期的影響。 
-2. 驗證完成後，請將 **V2 伺服器**切換為作用中伺服器，而 **V1 伺服器**為暫存伺服器。 此時，要同步處理範圍中的大型群組將會佈建到 Azure AD，且如果已啟用群組回寫，則會將大型 O365 整合群組佈建到 AD。
+2. 驗證完成後，請將 **V2 伺服器**切換為作用中伺服器，而 **V1 伺服器**為暫存伺服器。 此時，要同步處理範圍內的大型群組將會布建到 Azure AD，而且如果啟用群組回寫，則會將大型 Microsoft 365 整合群組布建到 AD。
 3. 驗證 **V2 伺服器**是否成功執行及處理大型群組。 您可以選擇繼續進行此步驟，並監視同步處理程序一段期間。
   >[!NOTE]
   > 如果您需要轉換回先前的設定，可以從 **V2 伺服器**執行變換移轉回到 **V1 伺服器**。 由於 V1 端點不支援具有超過 50k 個成員的群組，因此任何由 Azure AD Connect 所佈建的大型群組 (在 Azure AD 或內部部署 AD 中) 隨後都會予以刪除。 
@@ -153,7 +153,7 @@ Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure 
  `Set-ADSyncSchedulerConnectorOverride -FullSyncRequired $false -ConnectorName "<AAD Connector Name>" `
  
 >[!NOTE]
-> 如果您的 O365 整合群組具有超過 50k 個成員，則會將這些群組讀入 Azure AD Connect，而如果已啟用群組回寫，則會將其寫入您的內部部署 AD。 
+> 如果您 Microsoft 365 的統一群組擁有超過50k 的成員，則會將群組讀入 Azure AD Connect，而且如果啟用群組回寫，則會將它們寫入您的內部部署 AD。 
 
 ## <a name="rollback"></a>復原 
 如果您已啟用 v2 端點且需要復原，請遵循下列步驟： 
@@ -181,7 +181,7 @@ Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure 
  `Set-ADSyncScheduler -SyncCycleEnabled $true`
  
 >[!NOTE]
-> 從 V2 切換回 V1 端點時，將會在執行完整同步處理之後，針對佈建至 Azure AD 的 AD 群組和佈建到 AD 的 O365 整合群組，刪除與超過 50k 個成員同步的群組。 
+> 從 V2 切換回 V1 端點時，在執行完整同步處理之後，將會刪除以超過50k 的成員進行同步處理的群組，並針對布建至 Azure AD 的 AD 群組，以及布建至 AD 的 Microsoft 365 統一群組。 
 
 ## <a name="frequently-asked-questions"></a>常見問題集  
 **問：客戶可以在生產環境中使用這項功能嗎？**   

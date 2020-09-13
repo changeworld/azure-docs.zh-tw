@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 07/20/2020
+ms.date: 09/10/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: c8edb36345de4516077b3c857cff33389062cc7f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62a5f3b18d4b8329c4a15086bc23d09805b786ab
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044557"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89668890"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>針對 Azure Data Factory 連接器進行疑難排解
 
@@ -22,7 +22,6 @@ ms.locfileid: "87044557"
 
 本文將探討 Azure Data Factory 中連接器的常見疑難排解方法。
   
-
 ## <a name="azure-blob-storage"></a>Azure Blob 儲存體
 
 ### <a name="error-code--azurebloboperationfailed"></a>錯誤碼：AzureBlobOperationFailed
@@ -166,18 +165,17 @@ ms.locfileid: "87044557"
 
 ### <a name="error-message-the-underlying-connection-was-closed-could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>錯誤訊息：基礎連接已關閉：無法為 SSL/TLS 安全通道建立信任關係。
 
-- **徵兆**：複製活動因下列錯誤而失敗： 
+- **徵兆**：複製活動失敗，並出現下列錯誤： 
 
     ```
     Message: Failure happened on 'Sink' side. ErrorCode=UserErrorFailedFileOperation,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Upload file failed at path STAGING/PLANT/INDIARENEWABLE/LiveData/2020/01/14\\20200114-0701-oem_gibtvl_mannur_data_10min.csv.,Source=Microsoft.DataTransfer.ClientLibrary,''Type=System.Net.WebException,Message=The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.,Source=System,''Type=System.Security.Authentication.AuthenticationException,Message=The remote certificate is invalid according to the validation procedure.,Source=System,'.
     ```
 
-- **原因**：在 TLS 信號交換期間憑證驗證失敗。
+- **原因**： TLS 信號交換期間憑證驗證失敗。
 
-- **解決**方法：因應措施：使用分段複製略過 ADLS GEN1 的 TLS 驗證。 您必須重現此問題並收集 netmon 追蹤，然後讓您的網路小組檢查[本文後面的](self-hosted-integration-runtime-troubleshoot-guide.md#how-to-collect-netmon-trace)區域網路設定。
+- **解決**方法：因應措施：使用分段複製來略過 ADLS GEN1 的 TLS 驗證。 您需要重現此問題並收集 netmon 追蹤，然後讓您的網路小組檢查區域網路設定。
 
-
-    ![疑難排解 ADLS Gen1](./media/connector-troubleshoot-guide/adls-troubleshoot.png)
+    ![針對 ADLS Gen1 進行疑難排解](./media/connector-troubleshoot-guide/adls-troubleshoot.png)
 
 
 ### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>錯誤訊息：遠端伺服器傳回錯誤：(403) 禁止
@@ -207,7 +205,7 @@ ms.locfileid: "87044557"
 - **解決方法**：在數分鐘後重新執行複製活動。
                   
 
-## <a name="azure-sql-data-warehouseazure-sql-databasesql-server"></a>Azure SQL 資料倉儲/Azure SQL Database/SQL Server
+## <a name="azure-synapse-analytics-formerly-sql-data-warehouseazure-sql-databasesql-server"></a>Azure Synapse Analytics (先前的 SQL 資料倉儲) /Azure SQL Database/SQL Server
 
 ### <a name="error-code--sqlfailedtoconnect"></a>錯誤碼：SqlFailedToConnect
 
@@ -215,11 +213,11 @@ ms.locfileid: "87044557"
 
 - **原因**︰如果錯誤訊息包含 "SqlException"，SQL Database 會擲回錯誤，指出某些特定的作業失敗。
 
-- **建議**：請此參考文件中以 SQL 錯誤碼在進行搜尋，以取得更多詳細資料： https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 如果您需要進一步的協助，請連絡 Azure SQL 支援服務。
+- **建議**：如需詳細資料，請依下列參考檔中的 SQL 錯誤碼搜尋： https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 如果您需要進一步的協助，請連絡 Azure SQL 支援服務。
 
 - **原因**︰如果錯誤訊息包含「具有 IP 位址 '...' 的用戶端不能存取伺服器」，而且您正嘗試連接線到 Azure SQL Database，這通常是由 Azure SQL Database 防火牆問題所造成。
 
-- **建議**：在 [邏輯 SQL server 防火牆設定] 中，啟用 [允許 Azure 服務和資源存取此伺服器] 選項。 參考文件： https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure 。
+- **建議**：在邏輯 SQL server 防火牆設定中，啟用 [允許 Azure 服務和資源存取此伺服器] 選項。 參考文件： https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure 。
 
 
 ### <a name="error-code--sqloperationfailed"></a>錯誤碼：SqlOperationFailed
@@ -228,8 +226,9 @@ ms.locfileid: "87044557"
 
 - **原因**︰如果錯誤訊息包含 "SqlException"，SQL Database 會擲回錯誤，指出某些特定的作業失敗。
 
-- **建議**：如果 SQL 錯誤不清楚，請嘗試將資料庫變更為最新的相容性層級 '150'。 如此可能會擲回最新版本的 SQL 錯誤。 請參閱詳細文件： https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat 。
-        如需針對 SQL 問題進行疑難排解，請在此參考文件中以 SQL 錯誤碼進行搜尋，以取得詳細資訊： https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 如果您需要進一步的協助，請連絡 Azure SQL 支援服務。
+- **建議**：如果 SQL 錯誤不清楚，請嘗試將資料庫變更為最新的相容性層級 '150'。 如此可能會擲回最新版本的 SQL 錯誤。 請參閱 [詳細資料](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat)檔。
+
+    如需針對 SQL 問題進行疑難排解，請在此參考文件中以 SQL 錯誤碼進行搜尋，以取得詳細資訊： https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 如果您需要進一步的協助，請連絡 Azure SQL 支援服務。
 
 - **原因**︰如果錯誤訊息包含 "PdwManagedToNativeInteropException"，通常是因為來源與接收資料行的大小不相符所造成。
 
@@ -256,7 +255,7 @@ ms.locfileid: "87044557"
 
 - **原因**︰可能是 SQL Database 的暫時性失敗。
 
-- **建議**：請以較大的連線逾時值重試，以更新已連結的服務連接字串。
+- **建議**：以較大的連接逾時值重試更新連結服務連接字串。
 
 
 ### <a name="error-code--sqlautocreatetabletypemapfailed"></a>錯誤碼：SqlAutoCreateTableTypeMapFailed
@@ -319,7 +318,7 @@ ms.locfileid: "87044557"
 
 - **原因**︰可能是 SQL Database 的暫時性失敗。
 
-- **建議**：請再試一次。 如果問題重現，請連絡 Azure SQL 支援服務。
+- **建議**：重試。 如果問題重現，請連絡 Azure SQL 支援服務。
 
 
 ### <a name="error-code--sqlbatchwritetransactionfailed"></a>錯誤碼：SqlBatchWriteTransactionFailed
@@ -332,7 +331,7 @@ ms.locfileid: "87044557"
 
 - **原因**︰如果例外狀況詳細資料不時顯示 sqlconnection 已中斷，則可能是暫時性的網路失敗，或是 SQL Database 端的問題
 
-- **建議**：請重試活動，並檢閱 SQL Database 端的計量。
+- **建議**：重試活動並查看 SQL Database 端計量。
 
 
 ### <a name="error-code--sqlbulkcopyinvalidcolumnlength"></a>錯誤碼：SqlBulkCopyInvalidColumnLength
@@ -350,7 +349,7 @@ ms.locfileid: "87044557"
 
 - **原因**︰並行執行數過高且伺服器終止連線時，SQL Database 會關閉 SQL 連線。
 
-- **建議**：遠端伺服器關閉 SQL 連線。 請再試一次。 如果問題重現，請連絡 Azure SQL 支援服務。
+- **建議**：遠端伺服器關閉 SQL 連線。 重試。 如果問題重現，請連絡 Azure SQL 支援服務。
 
 
 ### <a name="error-code--sqlcreatetablefailedunsupportedtype"></a>錯誤碼：SqlCreateTableFailedUnsupportedType
@@ -360,38 +359,38 @@ ms.locfileid: "87044557"
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>錯誤訊息：從字元字串轉換到 uniqueidentifier 時失敗
 
-- **徵兆**：當您使用分段複製和 PolyBase 將資料從表格式資料來源 (例如 SQL Server) 複製到 Azure SQL 資料倉儲時，您會遇到下列錯誤：
+- **徵兆**：當您使用分段複製和 PolyBase 將資料從表格式資料來源 (例如 SQL Server) 複製到 Azure Synapse Analytics 時，您會遇到下列錯誤：
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
-    Message=Error happened when loading data into SQL Data Warehouse.,
+    Message=Error happened when loading data into Azure Synapse Analytics.,
     Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
     Message=Conversion failed when converting from a character string to uniqueidentifier...
     ```
 
-- **原因**︰Azure SQL 資料倉儲 PolyBase 無法將空字串轉換成 GUID。
+- **原因**： Azure Synapse Analytics PolyBase 無法將空字串轉換成 GUID。
 
 - **解決方法**：在複製活動接收的 [Polybase 設定] 底下，將 [**使用類型預設值**] 選項設定為 false。
 
 ### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>錯誤訊息：預期的資料類型：DECIMAL(x,x)，違規值
 
-- **徵兆**：當您使用分段複製和 PolyBase 將資料從表格式資料來源 (例如 SQL Server) 複製到 SQL DW 時，您會遇到下列錯誤：
+- **徵兆**：當您使用分段複製和 PolyBase 將資料從表格式資料來源 (例如 SQL Server) 複製到 Azure Synapse Analytics 時，您會遇到下列錯誤：
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
-    Message=Error happened when loading data into SQL Data Warehouse.,
+    Message=Error happened when loading data into Azure Synapse Analytics.,
     Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
     Message=Query aborted-- the maximum reject threshold (0 rows) was reached while reading from an external source: 1 rows rejected out of total 415 rows processed. (/file_name.txt) 
     Column ordinal: 18, Expected data type: DECIMAL(x,x), Offending value:..
     ```
 
-- **原因**︰Azure SQL 資料倉儲 Polybase 無法將空字串 (Null 值) 插入十進位資料行。
+- **原因**： Azure Synapse Analytics Polybase 無法將空字串插入至小數資料行 (null) 值。
 
 - **解決方法**：在複製活動接收的 [Polybase 設定] 底下，將 [**使用類型預設值**] 選項設定為 false。
 
 ### <a name="error-message-java-exception-message-hdfsbridgecreaterecordreader"></a>錯誤訊息： JAVA 例外狀況訊息： HdfsBridge：： CreateRecordReader
 
-- **徵兆**：您使用 PolyBase 將資料複製到 Azure SQL 資料倉儲，並遇到下列錯誤：
+- **徵兆**：您使用 PolyBase 將資料複製到 Azure Synapse Analytics，並遇到下列錯誤：
 
     ```
     Message=110802;An internal DMS error occurred that caused this operation to fail. 
@@ -400,7 +399,7 @@ ms.locfileid: "87044557"
     Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
     ```
 
-- **原因**︰可能原因是結構描述 (總資料行寬度) 太大 (大於 1 MB)。 藉由新增所有資料行的大小，檢查目標 SQL DW 資料表的結構描述：
+- **原因**︰可能原因是結構描述 (總資料行寬度) 太大 (大於 1 MB)。 藉由新增所有資料行的大小，檢查目標 Azure Synapse Analytics 資料表的架構：
 
     - Int -> 4 個位元組
     - Bigint -> 8 個位元組
@@ -424,15 +423,15 @@ ms.locfileid: "87044557"
 
 ### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>錯誤訊息：使用 HTTP 條件式標頭的指定條件不符
 
-- **徵兆**：您使用 SQL 查詢從 Azure SQL 資料倉儲提取資料，並遇到下列錯誤：
+- **徵兆**：您可以使用 SQL 查詢從 Azure Synapse Analytics 中提取資料，並遇到下列錯誤：
 
     ```
     ...StorageException: The condition specified using HTTP conditional header(s) is not met...
     ```
 
-- **原因**︰Azure SQL 資料倉儲在 Azure 儲存體中查詢外部資料表時遇到問題。
+- **原因**：查詢 Azure 儲存體中的外部資料表時，Azure Synapse Analytics 遇到問題。
 
-- **解決方法**：在 SSMS 中執行相同的查詢，並檢查您是否看到相同的結果。 若是如此，請開啟 Azure SQL 資料倉儲的支援票證，並提供您的 SQL DW 伺服器和資料庫名稱，進一步進行疑難排解。
+- **解決方法**：在 SSMS 中執行相同的查詢，並檢查您是否看到相同的結果。 如果是，請開啟支援票證來 Azure Synapse Analytics，並提供您的 Azure Synapse Analytics 伺服器和資料庫名稱，以進行進一步的疑難排解。
             
 
 ## <a name="delimited-text-format"></a>分隔符號文字格式
@@ -452,7 +451,7 @@ ms.locfileid: "87044557"
 
 - **原因**︰問題資料列的資料行計數大於第一個資料列的資料行計數。 這可能是因為資料問題或資料行分隔符號/引號字元設定不正確所造成。
 
-- **建議**：請取得錯誤訊息中的資料列計數，檢查資料列的資料行，並修正資料。
+- **建議**：取得錯誤訊息中的資料列計數，檢查資料列的資料行並修正資料。
 
 - **原因**︰如果預期的資料行計數在錯誤訊息中是 "1"，表示您可能指定了錯誤的壓縮或格式設定，這會導致 ADF 不當剖析您的檔案。
 
@@ -537,7 +536,7 @@ ms.locfileid: "87044557"
 
 - **原因**︰當錯誤訊息包含 'java.lang.OutOfMemory'、'Java heap space' 和 'doubleCapacity' 時，通常是因為舊版整合執行階段中的記憶體管理問題。
 
-- **建議**：如果您使用自我裝載整合執行階段且版本早於 3.20.7159.1，建議您升級至最新版本。
+- **建議**：如果您使用自我裝載的 Integration Runtime，且版本早于3.20.7159.1，建議您升級至最新版本。
 
 - **原因**︰當錯誤訊息包含 'java.lang.OutOfMemory' 時，表示整合執行階段沒有足夠的資源可處理檔案。
 
@@ -545,7 +544,7 @@ ms.locfileid: "87044557"
 
 - **原因**︰當錯誤訊息包含 'NullPointerReference' 時，可能是暫時性錯誤。
 
-- **建議**：請再試一次。 若問題持續發生，請連絡支援。
+- **建議**：重試。 若問題持續發生，請連絡支援。
 
 
 ### <a name="error-code--parquetinvalidfile"></a>錯誤碼：ParquetInvalidFile
@@ -617,7 +616,7 @@ ms.locfileid: "87044557"
 
 - **原因**︰來源中的資料無法轉換成接收中定義的類型
 
-- **建議**：請在 mapping.sink 中指定正確的類型。
+- **建議**：在對應中指定正確的類型。
 
 
 ### <a name="error-code--parquetbridgeinvaliddata"></a>錯誤碼：ParquetBridgeInvalidData
@@ -626,7 +625,7 @@ ms.locfileid: "87044557"
 
 - **原因**︰資料值超過限制
 
-- **建議**：請再試一次。 若問題持續發生，請連絡我們。
+- **建議**：重試。 若問題持續發生，請連絡我們。
 
 
 ### <a name="error-code--parquetunsupportedinterpretation"></a>錯誤碼：ParquetUnsupportedInterpretation

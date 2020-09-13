@@ -1,5 +1,5 @@
 ---
-title: 如何提高復原能力
+title: 復原 & 高可用性
 titleSuffix: Azure Machine Learning
 description: 瞭解如何使用高可用性設定，讓您的 Azure Machine Learning 資源更能獲得中斷的復原能力。
 services: machine-learning
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 07/16/2020
-ms.openlocfilehash: 9b298e10d3eb95bcb0ef525eb973259a3ab1dbbb
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 09/16/2020
+ms.openlocfilehash: abb24ef1cc6a693acbaf6561a185fd5ae536a66d
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852552"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89668797"
 ---
 # <a name="increase-azure-machine-learning-resiliency"></a>提高 Azure Machine Learning 的復原能力
 
@@ -100,6 +100,6 @@ Azure 服務包括：
 
 如果您提供自己的客戶管理金鑰來部署 Azure Machine Learning 工作區，則也會在您的訂用帳戶中布建 Azure Cosmos DB。 在此情況下，您要負責設定其高可用性設定。 請參閱 [Azure Cosmos DB 的高可用性](https://docs.microsoft.com/azure/cosmos-db/high-availability)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要使用與高可用性設定相關聯的資源來部署 Azure Machine Learning，請使用 [Azure Resource Manager 的範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced)。

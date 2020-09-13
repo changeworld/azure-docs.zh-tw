@@ -1,6 +1,6 @@
 ---
-title: HB 系列和 HC 系列 Vm 的已知問題-Azure 虛擬機器 |Microsoft Docs
-description: 瞭解 Azure 中的 HB 系列 VM 大小已知問題。
+title: 針對 HPC 和 GPU Vm 的已知問題進行疑難排解-Azure 虛擬機器 |Microsoft Docs
+description: 瞭解在 Azure 中針對 HPC 和 GPU VM 大小的已知問題進行疑難排解。
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -10,19 +10,47 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 08/19/2020
+ms.date: 09/08/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 6316bcc91bb381facb4f77b2d8dbd8b22f9ed387
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 42a27092a87488e39d1195dba5fb64173cf52af7
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660090"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004199"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H 系列和 N 系列 VM 的已知問題
 
-本文提供使用 [H 系列](../../sizes-hpc.md) 和 [N 系列](../../sizes-gpu.md) vm 時最常見的問題和解決方案。
+本文提供使用 [H 系列](../../sizes-hpc.md) 和 [N 系列](../../sizes-gpu.md) HPC 和 GPU vm 時最常見的問題和解決方案。
+
+## <a name="infiniband-driver-installation-on-n-series-vms"></a>N 系列 Vm 上的無駕駛驅動程式安裝
+
+NC24r_v3 和 ND40r_v2 會在 NC24r 且 NC24r_v2 未啟用 SR-IOV 的情況下啟用 SR-IOV。 [以下](../../sizes-hpc.md#rdma-capable-instances)是有關分叉的詳細資料。
+使用 OFED 驅動程式時，您可以在啟用 SR-IOV 的 VM 大小上設定自動調整 (IB) ，而非 SR-IOV VM 的大小則需要 ND 驅動程式。 此 IB 支援已在 [CentOS-HPC VMIs](configure.md)上適當地提供。 針對 Ubuntu，請參閱[此處的指示](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，以安裝 OFED 和 ND 驅動程式，如檔中所[述。](enable-infiniband.md#vm-images-with-infiniband-drivers)
+
+## <a name="duplicate-mac-with-cloud-init-with-ubuntu-on-h-series-and-n-series-vms"></a>在 H 系列和 N 系列 Vm 上搭配使用 cloud init 與 Ubuntu 的重複 MAC
+
+Ubuntu VM 映射上的雲端初始化有一個已知的問題，因為它會嘗試顯示 IB 介面。 這可能會在 VM 重新開機時，或在一般化之後嘗試建立 VM 映射時發生。 VM 開機記錄檔可能會顯示如下的錯誤：「正在啟動 Network Service .。。RuntimeError：找到重複的 mac！ ' eth1 ' 和 ' ib0 ' 都有 mac」。
+
+此「在 Ubuntu 上使用雲端初始化的重複 MAC」是已知的問題。 解決方法如下：
+1) 部署 (Ubuntu 18.04) marketplace VM 映射
+2) 安裝必要的軟體套件，以 [在此處](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351) 啟用 IB (指示) 
+3) 編輯 waagent 以變更 EnableRDMA = y
+4) 在雲端初始化中停用網路功能
+    ```console
+    echo network: {config: disabled} | sudo tee /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
+    ```
+5) 編輯由雲端初始化所產生的 netplan 網路設定檔以移除 MAC
+    ```console
+    sudo bash -c "cat > /etc/netplan/50-cloud-init.yaml" <<'EOF'
+    network:
+        ethernets:
+        eth0:
+            dhcp4: true
+        version: 2
+    EOF
+    ```
 
 ## <a name="dram-on-hb-series"></a>HB 系列上的 DRAM
 
@@ -30,7 +58,7 @@ HB 系列 Vm 目前只能將 228 GB 的 RAM 公開給來賓 Vm。 這是因為 A
 
 ## <a name="accelerated-networking"></a>加速網路
 
-Azure 加速網路目前未啟用，但我們會在預覽期間進行。 當支援這項功能時，我們會通知客戶。
+目前未啟用支援 IB 的 HPC 和 GPU Vm 上的 Azure 加速網路。 當支援這項功能時，我們會通知客戶。
 
 ## <a name="qp0-access-restriction"></a>qp0 存取限制
 
@@ -48,7 +76,7 @@ sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
 
 在 HPC 系統上，在作業完成後清除記憶體，直到下一個使用者被指派相同的節點時，通常會很有用。 在 Linux 中執行應用程式之後，您可能會發現您的可用記憶體會在緩衝區記憶體增加時減少，儘管不會執行任何應用程式。
 
-![命令提示字元的螢幕擷取畫面](./media/known-issues/cache-cleaning-1.png)
+![清除前命令提示字元的螢幕擷取畫面](./media/known-issues/cache-cleaning-1.png)
 
 使用 `numactl -H` 將會顯示哪些 NUMAnode (s) 記憶體會 (可能的所有) 進行緩衝處理。 在 Linux 中，使用者可以用三種方式清除快取，以將緩衝或快取的記憶體傳回「free」。 您必須是 root 或具有 sudo 許可權。
 
@@ -58,11 +86,11 @@ echo 2 > /proc/sys/vm/drop_caches [frees slab objects e.g. dentries, inodes]
 echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 ```
 
-![命令提示字元的螢幕擷取畫面](./media/known-issues/cache-cleaning-2.png)
+![清除之後，命令提示字元的螢幕擷取畫面](./media/known-issues/cache-cleaning-2.png)
 
 ## <a name="kernel-warnings"></a>核心警告
 
-當您在 Linux 下啟動 HB 系列 VM 時，可能會看到下列核心警告訊息。
+當您在 Linux 下啟動 HB 系列 VM 時，可能會忽略下列核心警告訊息。 這是因為 Azure 虛擬程式在一段時間內將會解決的已知限制。
 
 ```console
 [  0.004000] WARNING: CPU: 4 PID: 0 at arch/x86/kernel/smpboot.c:376 topology_sane.isra.3+0x80/0x90
@@ -82,17 +110,9 @@ echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 [  0.004000] ---[ end trace 73fc0e0825d4ca1f ]---
 ```
 
-您可以忽略此警告。 這是因為 Azure 虛擬程式在一段時間內將會解決的已知限制。
 
-
-## <a name="infiniband-driver-installation-on-infiniband-enabled-n-series-vm-sizes"></a>在已啟用的已啟用 N 系列 VM 大小上安裝的無駕駛驅動程式
-
-NC24r_v3 和 ND40r_v2 會在 NC24r 且 NC24r_v2 未啟用 SR-IOV 的情況下啟用 SR-IOV。 [以下](../../sizes-hpc.md#rdma-capable-instances)是有關分叉的詳細資料。
-使用 OFED 驅動程式時，您可以在啟用 SR-IOV 的 VM 大小上設定自動調整 (IB) ，而非 SR-IOV VM 的大小則需要 ND 驅動程式。 此 IB 支援已在 [CentOS-HPC VMIs](configure.md)上適當地提供。 針對 Ubuntu，請參閱[此處的指示](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，以安裝 OFED 和 ND 驅動程式，如檔中所[述。](enable-infiniband.md#vm-images-with-infiniband-drivers)
-
-
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 請檢閱 [HB 系列概觀](hb-series-overview.md)和 [HC 系列概觀](hc-series-overview.md)，了解如何以最佳方式設定工作負載以獲得效能和可擴縮性。
 - 請參閱 [Azure 運算技術社群部落格](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 範例和結果。
-- 如需執行中 HPC 工作負載較高階的架構檢視，請參閱 [Azure 上的高效能運算 (HPC)](/azure/architecture/topics/high-performance-computing/)。
+- 如需執行 HPC 工作負載的更高層級架構視圖，請參閱 [Azure 上的高效能運算 (HPC) ](/azure/architecture/topics/high-performance-computing/)。

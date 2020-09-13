@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4b895054f8fa81526bf72cadd2fea1a3691d758
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: eef04be1891eac35577a5f4cb18d5b83b8d0f301
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908277"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669388"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>將 Google 新增為 B2B 來賓使用者的識別提供者
 
@@ -51,39 +51,43 @@ Teams 完全支援所有裝置上的 Google 來賓使用者。 Google 使用者�
 ## <a name="step-1-configure-a-google-developer-project"></a>步驟 1:設定 Google 開發人員專案
 首先，在 Google 開發人員主控台中，建立新專案來取得用戶端識別碼和用戶端密碼，以供稍後新增至 Azure AD。 
 1. 移至 Google API (網址為： https://console.developers.google.com )，並使用 Google 帳戶來登入。 建議您使用共用小組的 Google 帳戶。
-2. 建立新專案：在儀表板上，選取 [建立專案]，然後選取 [建立]。 在 [新增專案] 頁面上，輸入 [專案名稱]，然後選取 [建立]。
+2. 如果出現提示，請接受服務條款
+3. 建立新專案：在儀表板上，選取 [ **建立專案**]，為專案命名 (例如 "Azure AD B2B" ) 然後選取 [ **建立**]。 
    
    ![顯示 Google 新專案頁面的螢幕擷取畫面](media/google-federation/google-new-project.png)
 
-3. 確實地在 [專案] 功能表中選取新專案。 然後在 [API 與服務] 之下，選取 [OAuth 同意畫面]。
+4. 在現在顯示給您的 [ **api & 服務** ] 頁面上，按一下新專案下的 [ **View** ]。
 
-4. 選取 [外部]，然後選取 [建立]。 
-5. 在 [OAuth 同意畫面] 上，輸入 [應用程式名稱]。 (其他設定保留不變)。
+5. 按一下 [Api] 卡片上的 [ **移至 api] 總覽** 。 選取 **OAuth 同意畫面**。
+
+6. 選取 [外部]，然後選取 [建立]。 
+
+7. 在 [OAuth 同意畫面] 上，輸入 [應用程式名稱]。 
 
    ![顯示 [Google OAuth 同意畫面] 選項的螢幕擷取畫面](media/google-federation/google-oauth-consent-screen.png)
 
-6. 捲動至 [授權的網域] 區段並輸入 microsoftonline.com。
+8. 捲動至 [授權的網域] 區段並輸入 microsoftonline.com。
 
-   ![顯示 [已授權網域] 區段的螢幕擷取畫面](media/google-federation/google-oauth-authorized-domains.png)
+   ![顯示 [已授權網域] 區段的螢幕擷取畫面](media/google-federation/google-oauth-authorized-domains.PNG)
 
-7. 選取 [儲存]。
+9. 選取 [儲存]。
 
-8. 選擇 [認證]。 在 [建立認證] 功能表中，選擇 [OAuth 用戶端識別碼]。
+10. 選擇 [認證]。 在 [建立認證] 功能表中，選擇 [OAuth 用戶端識別碼]。
 
-   ![顯示 [Google API 建立認證] 選項的螢幕擷取畫面](media/google-federation/google-api-credentials.png)
+    ![顯示 [Google API 建立認證] 選項的螢幕擷取畫面](media/google-federation/google-api-credentials.png)
 
-9. 在 [應用程式類型] 底下，選擇 [Web 應用程式]，然後在 [授權的重新導向 URI] 底下，輸入下列 URI：
-   - `https://login.microsoftonline.com` 
-   - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(其中，`<directory id>` 是目錄識別碼)
+11. 在 [ **應用程式類型**] 下，選擇 [ **Web 應用程式** ]，並為應用程式提供適當的名稱，例如 "Azure AD B2B"，然後在 [ **授權重新導向 uri**] 下，輸入下列 uri：
+    - `https://login.microsoftonline.com` 
+    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(其中，`<directory id>` 是目錄識別碼)
    
-     > [!NOTE]
-     > 若要尋找目錄識別碼，請移至 https://portal.azure.com ，然後在 [Azure Active Directory] 底下，選擇 [屬性] 並複製 [目錄識別碼]。
+    > [!NOTE]
+    > 若要尋找目錄識別碼，請移至 https://portal.azure.com ，然後在 [Azure Active Directory] 底下，選擇 [屬性] 並複製 [目錄識別碼]。
 
-   ![顯示 [已授權重新導向 URI] 區段的螢幕擷取畫面](media/google-federation/google-create-oauth-client-id.png)
+    ![顯示 [已授權重新導向 URI] 區段的螢幕擷取畫面](media/google-federation/google-create-oauth-client-id.png)
 
-10. 選取 [建立]。 複製用戶端識別碼和用戶端密碼，以便用來在 Azure AD 入口網站中新增識別提供者。
+12. 選取 [建立]。 複製用戶端識別碼和用戶端密碼，以便用來在 Azure AD 入口網站中新增識別提供者。
 
-   ![顯示 OAuth 用戶端識別碼和用戶端秘密的螢幕擷取畫面](media/google-federation/google-auth-client-id-secret.png)
+    ![顯示 OAuth 用戶端識別碼和用戶端秘密的螢幕擷取畫面](media/google-federation/google-auth-client-id-secret.png)
 
 ## <a name="step-2-configure-google-federation-in-azure-ad"></a>步驟 2:在 Azure AD 中設定 Google 同盟 
 現在，您會設定 Google 用戶端識別碼和用戶端密碼，可行方法是在 Azure AD 入口網站中加以輸入，也可以使用 PowerShell 來輸入。 請務必藉由使用 Gmail 地址邀請您自己，並嘗試使用受邀的 Google 帳戶兌換邀請，來測試 Google 同盟設定。 
@@ -92,7 +96,7 @@ Teams 完全支援所有裝置上的 Google 來賓使用者。 Google 使用者�
 1. 移至 [Azure 入口網站](https://portal.azure.com)。 在左窗格中，選取 [Azure Active Directory]。 
 2. 選取 [外部身分識別]。
 3. 選取 [所有識別提供者]，然後按一下 [Google] 按鈕。
-4. 輸入名稱。 然後輸入您稍早取得的用戶端識別碼和用戶端密碼。 選取 [儲存]。 
+4. 然後輸入您稍早取得的用戶端識別碼和用戶端密碼。 選取 [儲存]。 
 
    ![顯示 [新增 Google 識別提供者] 頁面上的螢幕擷取畫面](media/google-federation/google-identity-provider.png)
 

@@ -16,27 +16,27 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1879df40122549ddc4c57557017fa2c84c883368
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c539fd37116f8c55f336aecf1e8979355a40d61c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88061501"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662560"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步處理：設定篩選
-使用篩選功能可讓您控制內部部署目錄中的哪些物件應該出現在 Azure Active Directory 中。 預設組態會擷取所設定樹系中所有網域內的所有物件。 一般會建議使用者使用這個組態。 完整的全域通訊清單對於使用 Exchange Online 和商務用 Skype 等 Office 365 工作負載的使用者來說十分方便，因為如此一來，他們就可以傳送電子郵件和呼叫每個人。 使用預設設定時，所獲得的體驗與使用 Exchange 或 Lync 的內部部署實作相同。
+使用篩選功能可讓您控制內部部署目錄中的哪些物件應該出現在 Azure Active Directory 中。 預設組態會擷取所設定樹系中所有網域內的所有物件。 一般會建議使用者使用這個組態。 使用 Microsoft 365 工作負載的使用者（例如 Exchange Online 和商務用 Skype）會從完整的全域通訊清單中獲益，讓他們可以傳送電子郵件並撥打所有人。 使用預設設定時，所獲得的體驗與使用 Exchange 或 Lync 的內部部署實作相同。
 
-但是，您有時必須對預設組態進行一些變更。 這裡有一些範例：
+但是，您有時必須對預設組態進行一些變更。 以下是一些範例：
 
 * 您打算使用[多重 Azure AD 目錄拓撲](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)。 然後，您需要套用篩選器，以控制要將哪些物件同步至特定 Azure AD 目錄。
-* 您要執行 Azure 或 Office 365 試驗，因此只想要使用 Azure AD 中的部分使用者。 在進行小規模試驗時，並不需要用到完整的全域通訊清單來展示功能。
+* 您可以執行 Azure 或 Microsoft 365 的試驗，而您只想要 Azure AD 中的使用者子集。 在進行小規模試驗時，並不需要用到完整的全域通訊清單來展示功能。
 * Azure AD 中有很多您不需要的服務帳戶和其他非個人帳戶。
 * 為了符合法規，您不能刪除任何內部部署的使用者帳戶。 你只能停用它們。 但您只想要顯示 Azure AD 內的使用中帳戶。
 
 本文介紹如何設定不同的篩選方法。
 
 > [!IMPORTANT]
-> Microsoft 不支援在正式記載的動作以外修改和操作 Azure AD Connect 同步處理。 這些動作中的任何一項可能會導致 Azure AD Connect 同步的狀態不一致或不受支援。因此，Microsoft 無法提供這類部署的技術支援。
+> Microsoft 不支援在正式記載的動作以外修改和操作 Azure AD Connect 同步處理。 任何這些動作可能會導致 Azure AD Connect 同步的狀態不一致或不受支援。因此，Microsoft 無法針對這類部署提供技術支援。
 
 ## <a name="basics-and-important-notes"></a>基本概念和重要事項
 在 Azure AD Connect 同步處理中，您隨時都能啟用篩選功能。 如果您一開始是使用目錄同步作業的預設組態，接著設定了篩選，則篩選出的物件就不會再同步處理至 Azure AD。 因為這項變更，系統會在 Azure AD 中，刪除 Azure AD 中先前已同步處理但接著篩選出的所有物件。
@@ -47,7 +47,7 @@ ms.locfileid: "88061501"
 
 為了防止您意外刪除許多物件，預設會開啟「[防止意外刪除](how-to-connect-sync-feature-prevent-accidental-deletes.md)」功能。 如果因為進行篩選而刪除了許多物件 (預設是 500 個)，您需要遵循本文中的步驟，允許將刪除結果傳播至 Azure AD。
 
-如果您使用 2015 年 11 月 ([1.0.9125](reference-connect-version-history.md)) 之前的組建、變更篩選組態並使用密碼雜湊同步處理，則在完成組態設定之後，必須觸發所有密碼的完整同步處理。 如需有關如何觸發密碼完整同步處理的步驟，請參閱[觸發所有密碼的完整同步](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords)處理。 如果您使用組建 1.0.9125 或更新版本，則一般的 **完整同步處理** 動作也會計算是否應同步處理密碼，以及是否不再需要進行這個額外步驟。
+如果您使用 2015 年 11 月 ([1.0.9125](reference-connect-version-history.md)) 之前的組建、變更篩選組態並使用密碼雜湊同步處理，則在完成組態設定之後，必須觸發所有密碼的完整同步處理。 如需有關如何觸發密碼完整同步處理的步驟，請參閱 [觸發所有密碼的完整同步](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords)處理。 如果您使用組建 1.0.9125 或更新版本，則一般的 **完整同步處理** 動作也會計算是否應同步處理密碼，以及是否不再需要進行這個額外步驟。
 
 如果在 Azure AD 中， **使用者** 物件因為篩選錯誤而遭到意外刪除，您可以在 Azure AD 中重新建立使用者物件，方法是移除您的篩選組態。 然後您可以再次同步處理您的目錄。 這個動作會還原 Azure AD 資源回收筒中的使用者。 不過，您無法取消刪除其他物件類型。 例如，如果您意外刪除安全性群組，而該群組是用來對資源進行 ACL，則無法復原群組和其 ACL。
 
@@ -71,7 +71,7 @@ Azure AD Connect 只會刪除其曾經認為是在範圍內的物件。 如果 A
 1. 從 [開始]**** 功能表啟動 [工作排程器]****。
 2. 在 [工作排程器程式庫]**** 正下方尋找名稱為 [Azure AD 同步排程器]**** 的工作，在該工作上按一下滑鼠右鍵，然後選取 [停用]****。  
    ![工作排程器](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
-3. 您現在可以進行設定變更，並從**Synchronization Service Manager**主控台手動執行同步處理引擎。
+3. 您現在可以進行設定變更，並從 **Synchronization Service Manager** 主控台手動執行同步處理引擎。
 
 完成所有篩選變更之後，別忘了返回重新 [啟用]**** 工作。
 
@@ -104,12 +104,12 @@ Azure AD Connect 只會刪除其曾經認為是在範圍內的物件。 如果 A
     - 使用 Azure AD Connect wizard。
 
 
-#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>選取要使用同步處理服務同步處理的網域
+#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>使用同步處理服務選取要同步處理的網域
 若要設定網域篩選，請執行下列步驟：
 
 1. 使用隸屬於 **ADSyncAdmins** 安全性群組的帳戶，登入執行 Azure AD Connect 同步處理的伺服器。
 2. 從 [**開始**] 功能表啟動 **[同步處理服務**]。
-3. 選取 [**連接器**]，然後在 [**連接器**] 清單中，選取類型為**Active Directory Domain Services**的連接器。 在 [動作]**** 中選取 [屬性]****。  
+3. 選取 [ **連接器**]，然後在 [ **連接器** ] 清單中選取類型為 **Active Directory Domain Services**的連接器。 在 [動作]**** 中選取 [屬性]****。  
    ![連接器屬性](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
 4. 按一下 [設定目錄分割]****。
 5. 在 [選取目錄分割]**** 清單中，視需要選取和取消選取網域。 確認只選取了您想要同步處理的分割。  
@@ -119,15 +119,15 @@ Azure AD Connect 只會刪除其曾經認為是在範圍內的物件。 如果 A
 6. 當您完成時，請按一下 [確定]**** 來關閉 [屬性]**** 對話方塊。 如果您已移除樹系中的網域，畫面上將會出現快顯訊息，指出已移除網域且將會清除組態。
 7. 繼續調整執行設定檔。
 
-#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>選取要使用 Azure AD Connect wizard 進行同步處理的網域
+#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>使用 Azure AD Connect wizard 選取要同步處理的網域
 若要設定網域篩選，請執行下列步驟：
 
 1.  啟動 Azure AD Connect wizard
 2.  按一下 [設定]****。
-3.  選取 **[自訂同步處理選項**] 並按 **[下一步]**
+3.  選取 [**自訂同步處理選項**] 並按 **[下一步]**
 4.  輸入您的 Azure AD 認證
-5.  在 [**連接的目錄**] 畫面上按 **[下一步]**。
-6.  在 [**網域與 OU 篩選] 頁面**上 **，按一下 [** 重新整理]。  新的網域現在會出現錯誤，而且刪除的網域將會消失。
+5.  在 [ **連線的目錄** ] 畫面上按 **[下一步]**。
+6.  在 [ **網域與 OU 篩選] 頁面** 上 **，按一下 [** 重新整理]。  新網域現在會出現，而且刪除的網域將會消失。
    ![分割數](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>更新執行設定檔
@@ -144,7 +144,7 @@ Azure AD Connect 只會刪除其曾經認為是在範圍內的物件。 如果 A
 3. 對於每個設定檔，調整**已新增**與**已移除**的網域。
     1. 針對上述五個設定檔，請為每個**新增的**網域執行下列步驟：
         1. 選取執行設定檔，然後按一下 [新增步驟] ****。
-        2. 在 [設定步驟]**** 頁面上的 [類型]**** 下拉式選單中，選取與所要設定之設定檔同名的步驟類型。 然後按一下 [下一步]。  
+        2. 在 [設定步驟]**** 頁面上的 [類型]**** 下拉式選單中，選取與所要設定之設定檔同名的步驟類型。 然後按一下 [下一步]  。  
         ![連接器執行設定檔 2](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep1.png)  
         3. 在 [連接器組態]**** 頁面上的 [分割]**** 下拉式選單中，選取您已新增至網域篩選的網域名稱。  
         ![連接器執行設定檔 3](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep2.png)  
@@ -155,7 +155,7 @@ Azure AD Connect 只會刪除其曾經認為是在範圍內的物件。 如果 A
         ![連接器執行設定檔 4](./media/how-to-connect-sync-configure-filtering/runprofilesdeletestep.png)  
     3. 驗證您的變更。 想要同步處理的每個網域應該皆已列為每個執行設定檔中的步驟。
 4. 若要關閉 [設定執行設定檔]**** 對話方塊，請按一下 [確定]****。
-5.  若要完成設定，您必須執行「**完整匯入**」和「**差異同步**處理」。繼續閱讀套用的區段[並驗證變更](#apply-and-verify-changes)。
+5.  若要完成設定，您必須執行「 **完整匯入** 」和「 **差異同步**處理」。繼續閱讀區段套用 [並確認變更](#apply-and-verify-changes)。
 
 ## <a name="organizational-unitbased-filtering"></a>組織單位型篩選
 變更 OU 型篩選的慣用方法是執行安裝精靈，然後變更[網域與 OU 篩選](how-to-connect-install-custom.md#domain-and-ou-filtering)。 安裝精靈將會自動執行本主題中記載的所有工作。
@@ -166,7 +166,7 @@ Azure AD Connect 只會刪除其曾經認為是在範圍內的物件。 如果 A
 
 1. 使用隸屬於 **ADSyncAdmins** 安全性群組的帳戶，登入執行 Azure AD Connect 同步處理的伺服器。
 2. 從 [**開始**] 功能表啟動 **[同步處理服務**]。
-3. 選取 [**連接器**]，然後在 [**連接器**] 清單中，選取類型為**Active Directory Domain Services**的連接器。 在 [動作]**** 中選取 [屬性]****。  
+3. 選取 [ **連接器**]，然後在 [ **連接器** ] 清單中選取類型為 **Active Directory Domain Services**的連接器。 在 [動作]**** 中選取 [屬性]****。  
    ![連接器屬性](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
 4. 按一下 [設定目錄分割]****、選取要設定的網域，然後按一下 [容器]****。
 5. 出現提示時，請提供具有內部部署 Active Directory 讀取權限的任何認證。 您不一定要使用對話方塊中預先填入的使用者。
@@ -179,7 +179,7 @@ Azure AD Connect 只會刪除其曾經認為是在範圍內的物件。 如果 A
    * 如果您使用群組型篩選，則必須包含群組所屬的 OU。
    * 請注意，在篩選設定完成後，您可以設定要不要同步處理新增的新 OU。 請參閱下一節以取得詳細資訊。
 7. 當您完成時，請按一下 [確定]**** 來關閉 [屬性]**** 對話方塊。
-8. 若要完成設定，您必須執行「**完整匯入**」和「**差異同步**處理」。繼續閱讀套用的區段[並驗證變更](#apply-and-verify-changes)。
+8. 若要完成設定，您必須執行「 **完整匯入** 」和「 **差異同步**處理」。繼續閱讀區段套用 [並確認變更](#apply-and-verify-changes)。
 
 ### <a name="synchronize-new-ous"></a>同步處理新 OU
 依預設，設定篩選之後，會同步處理建立的新 OU。 此狀態是以所選取的核取方塊表示。 您也可以取消選取某些子 OU。 做法是按一下方塊，直到它變成白色方塊且其中有藍色打勾記號 (其預設狀態)。 然後取消選取任何您不想同步處理的子 OU。
@@ -217,7 +217,7 @@ Azure AD Connect 安裝精靈一律會建立此設定。
 在輸入篩選中，我們將利用「範圍」**** 的強大功能來決定哪些物件應該或不應該同步處理。 您要在這裡進行調整以符合貴組織的需求。 範圍模組包含「群組」**** 和「子句」****，可用來決定何時要將某個同步規則納入範圍中。 「群組」會包含一個或多個「子句」。 多個子句之間會有邏輯 "AND"，而多個群組之間會有邏輯 "OR"。
 
 讓我們看看以下範例：  
-![範圍](./media/how-to-connect-sync-configure-filtering/scope.png)  
+![顯示新增範圍篩選器範例的螢幕擷取畫面](./media/how-to-connect-sync-configure-filtering/scope.png)  
 這應該解讀為 **(department = IT) OR (department = Sales AND c = US)**。
 
 在下列範例和步驟中，您將以使用者物件做為例子，但您可以將此例子套用到所有物件類型。
@@ -229,15 +229,15 @@ Azure AD Connect 安裝精靈一律會建立此設定。
 
 1. 使用隸屬於 **ADSyncAdmins** 安全性群組的帳戶，登入執行 Azure AD Connect 同步處理的伺服器。
 2. 從 [開始]**** 功能表啟動 [同步處理規則編輯器]****。
-3. 請確定已選取 [**輸入**]，然後按一下 [**新增規則**]。
+3. 確認已選取 [ **輸入** ]，然後按一下 [ **新增規則**]。
 4. 為規則提供一個描述性名稱，例如 "*In from AD – User DoNotSyncFilter*"。 選取正確的樹系，亦即選取 [使用者]**** 作為 [CS 物件類型]****，以及選取 [人員]**** 作為 [MV 物件類型]****。 在 [連結類型] 中，選取 [聯結]。 在 [優先順序]**** 中，輸入目前沒有被其他「同步化規則」使用的值 (例如 50)，然後按 [下一步]****。  
    ![輸入 1 描述](./media/how-to-connect-sync-configure-filtering/inbound1.png)  
-5. 在 [範圍設定篩選]**** 中，按一下 [新增群組]****，然後按一下 [新增子句]****。 在 [屬性]**** 中，選取 [ExtensionAttribute15]****。 確定已將 [運算子]**** 設為 [EQUAL]****，然後在 [值]**** 方塊中輸入值 **NoSync**。 按 [下一步]  。  
+5. 在 [範圍設定篩選]**** 中，按一下 [新增群組]****，然後按一下 [新增子句]****。 在 [屬性]**** 中，選取 [ExtensionAttribute15]****。 確定已將 [運算子]**** 設為 [EQUAL]****，然後在 [值]**** 方塊中輸入值 **NoSync**。 按 [下一步] 。  
    ![輸入 2 範圍](./media/how-to-connect-sync-configure-filtering/inbound2.png)  
 6. 將 [聯結]**** 規則保留空白，然後按 [下一步]****。
 7. 按一下 [新增轉換]****、選取 [FlowType]**** 做為 [常數]****，選取 [cloudFiltered]**** 做為 [目標屬性]****。 在 [來源]**** 文字方塊中，輸入 **True**。 按一下 [新增]  以儲存規則。  
    ![輸入 3 轉換](./media/how-to-connect-sync-configure-filtering/inbound3.png)
-8. 若要完成設定，您需要執行**完整同步**處理。繼續閱讀套用的區段[並驗證變更](#apply-and-verify-changes)。
+8. 若要完成設定，您需要執行 **完整同步**處理。繼續閱讀區段套用 [並確認變更](#apply-and-verify-changes)。
 
 #### <a name="positive-filtering-only-sync-these"></a>正面篩選：「只同步處理這些項目」
 表述正面篩選的程序比較困難，因為您必須同時考慮不是明顯需要同步處理的物件，例如會議室。 您也將覆寫全新規則 [In from AD - User Join]**** 中的預設篩選器。 當您建立自訂篩選時，請確定不包含 Azure AD connect 的關鍵性系統物件、複寫衝突物件、特殊信箱和服務帳戶。
@@ -248,22 +248,22 @@ Azure AD Connect 安裝精靈一律會建立此設定。
 
 1. 使用隸屬於 **ADSyncAdmins** 安全性群組的帳戶，登入執行 Azure AD Connect 同步處理的伺服器。
 2. 從 [開始]**** 功能表啟動 [同步處理規則編輯器]****。
-3. 請確定已選取 [**輸入**]，然後按一下 [**新增規則**]。
+3. 確認已選取 [ **輸入** ]，然後按一下 [ **新增規則**]。
 4. 為規則提供一個描述性名稱，例如 "*In from AD – User Sales sync*"。 選取正確的樹系，亦即選取 [使用者]**** 作為 [CS 物件類型]****，以及選取 [人員]**** 作為 [MV 物件類型]****。 在 [連結類型] 中，選取 [聯結]。 在 [優先順序]**** 中，輸入目前沒有被其他「同步化規則」使用的值 (例如 51)，然後按 [下一步]****。  
    ![輸入 4 描述](./media/how-to-connect-sync-configure-filtering/inbound4.png)  
-5. 在 [範圍設定篩選]**** 中，按一下 [新增群組]****，然後按一下 [新增子句]****。 在 [屬性]**** 中，選取 [部門]****。 確定已將 [運算子] 設為 [EQUAL]****，然後在 [值]**** 方塊中輸入值 **Sales**。 按 [下一步]  。  
+5. 在 [範圍設定篩選]**** 中，按一下 [新增群組]****，然後按一下 [新增子句]****。 在 [屬性]**** 中，選取 [部門]****。 確定已將 [運算子] 設為 [EQUAL]****，然後在 [值]**** 方塊中輸入值 **Sales**。 按 [下一步] 。  
    ![輸入 5 範圍](./media/how-to-connect-sync-configure-filtering/inbound5.png)  
 6. 將 [聯結]**** 規則保留空白，然後按 [下一步]****。
 7. 按一下 [新增轉換]****、選取 [常數]**** 做為 [FlowType]****，選取 [cloudFiltered]**** 做為 [目標屬性]****。 在 [來源]**** 方塊中，輸入 **False**。 按一下 [新增]  以儲存規則。  
    ![輸入 6 轉換](./media/how-to-connect-sync-configure-filtering/inbound6.png)  
    這是一個特殊案例，在此您會將 cloudFiltered 明確設定為 **False**。
-8. 我們現在必須建立全面涵蓋同步處理規則。 為規則提供一個描述性名稱，例如 "*In from AD – User Catch-all filter*"。 選取正確的樹系，亦即選取 [使用者]**** 作為 [CS 物件類型]****，以及選取 [人員]**** 作為 [MV 物件類型]****。 在 [連結類型] 中，選取 [聯結]。 在 [優先順序]**** 中，輸入目前沒有被其他「同步化規則」使用的值 (例如 99)。 您已選取高於 (較低優先順序) 先前同步處理規則的優先順序值。 但是，您也留一些空間，這樣當您稍後要開始同步處理其他部門時，可以新增更多篩選同步處理規則。 按 [下一步]  。  
+8. 我們現在必須建立全面涵蓋同步處理規則。 為規則提供一個描述性名稱，例如 "*In from AD – User Catch-all filter*"。 選取正確的樹系，亦即選取 [使用者]**** 作為 [CS 物件類型]****，以及選取 [人員]**** 作為 [MV 物件類型]****。 在 [連結類型] 中，選取 [聯結]。 在 [優先順序]**** 中，輸入目前沒有被其他「同步化規則」使用的值 (例如 99)。 您已選取高於 (較低優先順序) 先前同步處理規則的優先順序值。 但是，您也留一些空間，這樣當您稍後要開始同步處理其他部門時，可以新增更多篩選同步處理規則。 按 [下一步] 。  
    ![輸入 7 描述](./media/how-to-connect-sync-configure-filtering/inbound7.png)  
 9. 將 [範圍設定篩選]**** 保留空白，然後按 [下一步]****。 空白篩選器表示規則會套用至所有物件。
 10. 將 [聯結]**** 規則保留空白，然後按 [下一步]****。
 11. 按一下 [新增轉換]****、選取 [常數]**** 做為 [FlowType]****，選取 [cloudFiltered]**** 做為 [目標屬性]****。 在 [來源]**** 方塊中，輸入 **True**。 按一下 [新增]  以儲存規則。  
     ![輸入 3 轉換](./media/how-to-connect-sync-configure-filtering/inbound3.png)  
-12. 若要完成設定，您需要執行**完整同步**處理。繼續閱讀套用的區段[並驗證變更](#apply-and-verify-changes)。
+12. 若要完成設定，您需要執行 **完整同步**處理。繼續閱讀區段套用 [並確認變更](#apply-and-verify-changes)。
 
 如有需要，您可以建立更多第一種類型的規則，以在同步處理作業中納入更多物件。
 
@@ -279,8 +279,8 @@ Azure AD Connect 安裝精靈一律會建立此設定。
 5. 在快顯視窗中，回答 [是] **** 來建立規則的複本。
 6. 在 [描述]**** 頁面上，將 [優先順序]**** 變更為一個未使用的值，例如 50。
 7. 按一下左邊導覽列上的 [範圍設定篩選]****，然後按一下 [新增子句]****。 在 [屬性]**** 中，選取 [郵件]****。 在 [運算子]**** 中，選取 [ENDSWITH]****。 在 [**值**] 中，輸入** \@ contoso.com**，然後按一下 [**新增子句**]。 在 [屬性]**** 中，選取 [userPrincipalName]****。 在 [運算子]**** 中，選取 [ENDSWITH]****。 在 [**值**] 中，輸入** \@ contoso.com**。
-8. 按一下 [檔案] 。
-9. 若要完成設定，您需要執行**完整同步**處理。繼續閱讀套用的區段[並驗證變更](#apply-and-verify-changes)。
+8. 按一下 [儲存]。
+9. 若要完成設定，您需要執行 **完整同步**處理。繼續閱讀區段套用 [並確認變更](#apply-and-verify-changes)。
 
 ## <a name="apply-and-verify-changes"></a>套用並驗證變更
 在變更組態後，必須將這些變更套用至系統中已有的物件。 情況也可能是目前不在同步處理引擎中的物件應受到處理，因此同步處理引擎需要再次讀取來源系統，以確認其內容。
@@ -317,7 +317,7 @@ Azure AD Connect 安裝精靈一律會建立此設定。
 2. 在 [工作排程器程式庫]**** 正下方尋找名稱為 [Azure AD 同步排程器]**** 的工作，在該工作上按一下滑鼠右鍵，然後選取 [啟用]****。
 
 ## <a name="group-based-filtering"></a>群組型篩選
-您可以在第一次使用[自訂安裝](how-to-connect-install-custom.md#sync-filtering-based-on-groups)Azure AD Connect 安裝時，設定以群組為基礎的篩選。 它適用於試驗部署，其中您只要同步小型物件集合。 當您停用群組型篩選時，無法將它重新啟用。 不支援** 在自訂設定中使用群組型篩選。 只支援使用安裝精靈來設定此功能。 完成試驗時，使用此主題中的其他篩選選項之一。 當將 OU 型篩選搭配群組型篩選使用時，必須包含群組及其成員所在的 OU。
+您可以在第一次使用 [自訂安裝](how-to-connect-install-custom.md#sync-filtering-based-on-groups)來安裝 Azure AD Connect 時，設定以群組為基礎的篩選。 它適用於試驗部署，其中您只要同步小型物件集合。 當您停用群組型篩選時，無法將它重新啟用。 不支援** 在自訂設定中使用群組型篩選。 只支援使用安裝精靈來設定此功能。 完成試驗時，使用此主題中的其他篩選選項之一。 當將 OU 型篩選搭配群組型篩選使用時，必須包含群組及其成員所在的 OU。
 
 同步處理多個 AD 樹系時，您可藉由為每個 AD 連接器指定不同的群組，設定以群組為基礎的篩選。 如果您想要同步處理某個 AD 樹系中的使用者，而相同的使用者在其他 AD 樹系中有一或多個對應的物件，您必須確定該使用者物件及其對應的所有物件，都位於以群組為基礎的篩選範圍內。 例如：
 
@@ -328,6 +328,6 @@ Azure AD Connect 安裝精靈一律會建立此設定。
 * 您有位於某個樹系，並在另一個樹系中具有相對應郵件連絡人的使用者。 此外，您已將 Azure AD Connect 設定為與具有該郵件連絡人的使用者連結。 這兩個物件都必須位於以群組為基礎的篩選範圍內。 否則，系統將不會將該使用者同步處理至 Azure AD。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - 深入了解 [Azure AD Connect 同步](how-to-connect-sync-whatis.md) 組態。
 - 深入了解[整合內部部署身分識別與 Azure AD](whatis-hybrid-identity.md)。
