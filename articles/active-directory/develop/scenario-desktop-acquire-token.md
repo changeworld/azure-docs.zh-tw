@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 0d1946862ec8af6a107ca4f5f963efbcb8912a5e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: ab6842fe6787b9e1a61b3c25fabb6c64c2597b9a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440927"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032804"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>呼叫 Web API 的傳統型應用程式：取得權杖
 
@@ -183,7 +183,7 @@ catch(MsalUiRequiredException)
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-UI 很重要，因為其為互動式的。 `AcquireTokenInteractive` 具有一個特定的選擇性參數，可以針對支援的平台指定父 UI。 在傳統型應用程式中使用時，`.WithParentActivityOrWindow` 具有不同的類型，這取決於平台。
+UI 很重要，因為其為互動式的。 `AcquireTokenInteractive` 具有一個特定的選擇性參數，可以針對支援的平台指定父 UI。 在傳統型應用程式中使用時，`.WithParentActivityOrWindow` 具有不同的類型，這取決於平台。 或者，如果您不想要控制登入對話方塊出現在螢幕上的位置，也可以省略選擇性的父視窗參數來建立視窗。 這適用于以命令列為基礎的應用程式，用來將呼叫傳遞給任何其他後端服務，而不需要任何 windows 進行使用者互動。 
 
 ```csharp
 // net45

@@ -1,24 +1,24 @@
 ---
-title: 用於開發 Synapse SQL 功能的資源
-description: 適用于 Synapse SQL 的開發概念、設計決策、建議和程式碼撰寫技術。
+title: 開發 Synapse SQL 功能的資源
+description: Synapse SQL 的開發概念、設計決策、建議和程式碼撰寫技巧。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 85b0137f8d89def2f38ffe82199950c9158888d0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f4c61b43855e4a845956a937d9d9cfe738d6f47a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070053"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032940"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中 Synapse SQL 功能的設計決策和程式碼撰寫技術
-在本文中，您會找到適用于 SQL 集區的資源清單，以及 Synapse SQL 的 SQL 隨選（預覽）功能。 建議的文章分成兩個部分：主要設計決策和開發和程式碼撰寫技巧。
+在本文中，您可以找到 Synapse SQL 的 SQL 集區和 SQL 隨選 (預覽) 功能的資源清單。 建議的文章分為兩個部分：主要設計決策和開發和程式碼撰寫技巧。
 
 這些文章的目標是協助您針對 Synapse 分析內的 Synapse SQL 元件開發最佳的技術方法。
 
@@ -42,7 +42,7 @@ ms.locfileid: "87070053"
 
 ## <a name="recommendations"></a>建議
 
-您可以在下面找到一些重要的文章，以強調特定的程式碼撰寫技術、秘訣和建議以進行開發：
+您可以在下面找到重要的文章，以強調開發的特定程式碼撰寫技術、秘訣和建議：
 
 | 發行項 | SQL 集區 | SQL 隨選 |
 | ------- | -------- | ------------- |
@@ -56,5 +56,5 @@ ms.locfileid: "87070053"
 | [變數指派](develop-variable-assignment.md) | 是                | 是                     |
 
 ## <a name="next-steps"></a>後續步驟
-如需更多的參考資訊，請參閱[sql 集區 t-sql 語句](../sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+如需詳細的參考資訊，請參閱 [sql 集區 t-sql 語句](../sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 

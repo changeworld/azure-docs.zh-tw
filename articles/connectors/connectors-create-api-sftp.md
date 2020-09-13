@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
 ROBOTS: NOINDEX
-ms.openlocfilehash: 817c17b0e05180f5c7a616320a25c2bc3c21c5f8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cd2f8ce45ef9270866941cdedb7c768529c3175f
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651403"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033297"
 ---
 # <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>在 Azure Logic Apps 中監視、建立及管理 SFTP 檔案
 
@@ -114,6 +114,10 @@ SFTP 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自上次
 ### <a name="sftp-action-get-content"></a>SFTP 動作：取得內容
 
 此動作會從 SFTP 伺服器上的檔案取得內容。 舉例來說，您可以新增來自上一個範例中的觸發程序，以及新增檔案內容必須符合的條件。 如果條件為 true，則可以執行會取得內容的動作。
+
+## <a name="connector-reference"></a>連接器參考
+
+如需觸發程序、動作和限制的技術詳細資訊，它們是由連接器的 OpenAPI (以前稱為 Swagger) 來描述，請檢閱連接器的[參考頁面](/azure/data-factory/connector-sftp)。
 
 ## <a name="next-steps"></a>後續步驟
 

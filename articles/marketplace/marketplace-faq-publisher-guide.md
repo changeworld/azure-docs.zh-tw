@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 07/22/2020
-ms.openlocfilehash: 28f8dd4be9e03af9f0b155d6e79949fe522cd7c2
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.date: 09/11/2020
+ms.openlocfilehash: fa8ee205952d1bd39e932ca6c91e3cffe608bf95
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007752"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032107"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>關於 Microsoft 商業 marketplace 的常見問題
 
@@ -22,7 +22,7 @@ ms.locfileid: "90007752"
 
 ### <a name="what-is-the-microsoft-commercial-marketplace"></a>什麼是 Microsoft 商業 marketplace？
 
-商業市集會使用我們合作夥伴所建置的解決方案，連接商業和政府機構。 我們的合作夥伴會在合作夥伴中心建立和管理供應項目，而且客戶可以透過產品內體驗探索並購買解決方案，例如 Microsoft AppSource、Azure Marketplace、雲端解決方案提供者計畫中的轉銷商，以及透過共同銷售計畫的銷售團隊。
+商業市集會使用我們合作夥伴所建置的解決方案，連接商業和政府機構。 我們的合作夥伴會在合作夥伴中心中建立及管理供應專案，而客戶可以透過內建的體驗（例如 Microsoft AppSource、Azure Marketplace、雲端解決方案提供者計畫中的轉銷商，以及我們的銷售團隊透過共同銷售計畫來探索及購買解決方案。
 
 若要深入了解，請前往 [Microsoft 商業市集中樞](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)。
 
@@ -42,7 +42,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 我們管理許多國家/地區的稅務付款，並提供轉銷商全球通路網路的存取權。 您可以使用客戶的 Microsoft 客戶合約或 Enterprise 合約，將產品銷售給組織，不需要建立新的購買關係。
 
-若要深入瞭解，請觀看[為什麼透過市集銷售](https://partner.microsoft.com/asset/detail/why-sell-through-marketplace)的影片。
+若要深入瞭解，請參閱 [Microsoft 商業 marketplace 中樞](https://aka.ms/commercialmarketplacehub)。
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業市集是否有清單費用嗎？
 
@@ -67,7 +67,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 在您註冊並接受發行者合約之後，就可以存取合作夥伴中心的商業市集頁面。 這是您建立及管理供應項目的位置，以及檢視分析報告的位置。 若為 Microsoft 365 應用程式，您也必須在合作夥伴中心內啟用 Office Store 程式。
 
-如需詳細資訊，請參閱[歡迎使用商業市集](index.yml)和[透過 Microsoft 商業市集從您的 Office 365 增益集獲利](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
+如需詳細資訊，請參閱 [歡迎使用商用 marketplace](index.yml) ，並 [透過 Microsoft 商業 marketplace 銷售 Microsoft 365 增益集](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>如何取得商業市集的支援協助？
 
@@ -329,7 +329,7 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>可以在哪裡深入了解 Microsoft 管理中心？
 
-如需 Microsoft 管理中心的相關資訊，請參閱[管理您組織的協力廠商應用程式訂閱](https://docs.microsoft.com/microsoft-365/commerce/manage-saas-apps?view=o365-worldwide)。
+如需 Microsoft 管理中心的相關資訊，請參閱[管理您組織的協力廠商應用程式訂閱](/microsoft-365/commerce/manage-saas-apps)。
 
 ### <a name="where-can-i-learn-more-about-azure-billing"></a>可以在哪裡深入了解 Azure 計費？
 

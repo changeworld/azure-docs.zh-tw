@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 7acfd5e1a1b1c44a9a109bb2b8bc38c7fcc57593
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484862"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032379"
 ---
 # <a name="determine-your-publishing-option"></a>決定您的發佈選項
 
@@ -45,7 +45,7 @@ ms.locfileid: "89484862"
 
 &#42;Microsoft AppSource 中的 SaaS 應用程式交易供應項目目前只能使用信用卡。
 
-&#42;&#42;Microsoft 365 供應項目可免費安裝，並可透過 SaaS 供應項目作為授權服務來販售。 如需詳細資訊，請參閱[透過 Microsoft 商業市集販售 Office 365 增益集](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
+&#42;&#42;Microsoft 365 供應項目可免費安裝，並可透過 SaaS 供應項目作為授權服務來販售。 如需詳細資訊，請參閱 [透過 Microsoft 商業市場銷售 Microsoft 365 增益集](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
 
 ## <a name="choose-a-listing-option"></a>挑選清單選項
 

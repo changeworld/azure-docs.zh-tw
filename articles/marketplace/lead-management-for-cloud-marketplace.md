@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 14c4877e9692a35cb5b20e8d357c74fbb1dc909a
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: e3924e609091f4d0975901024f20db74efb6aac5
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419787"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032702"
 ---
 # <a name="lead-management-for-the-commercial-marketplace"></a>商業 marketplace 的潛在客戶管理
 
@@ -48,7 +48,7 @@ ms.locfileid: "89419787"
 
 **無法將潛在客戶儲存至 Dynamics CRM。請檢查 Dynamics CRM 帳戶設定。LastCRMError：無法登入 Dynamics CRM、LastCRMException：** 
 
-> 如果已選取 O365 驗證，請檢查使用者帳戶和密碼是否有效。 如果選取了 Azure Active Directory，請檢查租使用者識別碼、應用程式識別碼和應用程式秘密金鑰是否符合 Azure Active Directory 上設定的專案。 遵循[這裡](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)的指示。 如果帳戶使用者名稱/密碼有效，請確定其可以存取 Dynamics 365，並已指派授權 (如果是使用 Azure Active Directory，請參考步驟 11-15，如果使用 Office 使用者，請參考安全性設定)。 
+> 如果選取了 Microsoft 365 authentication，請檢查使用者帳戶和密碼是否有效。 如果選取了 Azure Active Directory，請檢查租使用者識別碼、應用程式識別碼和應用程式秘密金鑰是否符合 Azure Active Directory 上設定的專案。 遵循[這裡](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)的指示。 如果帳戶使用者名稱/密碼有效，請確定其可以存取 Dynamics 365，並已指派授權 (如果是使用 Azure Active Directory，請參考步驟 11-15，如果使用 Office 使用者，請參考安全性設定)。 
 
 **無法將潛在客戶儲存至 Dynamics CRM。使用者沒有在潛在客戶實體中建立 leadsourcecode 屬性的權限** 
 

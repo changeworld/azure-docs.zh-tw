@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a4b0cb9b53adbf6362d79766fcd7bce57f5441ac
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: fd68f720f372ee61f7c441ea83bd365bc2a6f36a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322896"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032736"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>適用于 Azure 監視器的 Azure 安全性基準
 
@@ -80,7 +80,7 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 - [在 Azure 監視器中使用 Log Analytics 閘道連接電腦，而不需要網際網路存取](platform/gateway.md) 
 
-- [請參閱開始使用 Application Insights](//azure/azure-monitor/app/app-insights-overview#get-started)
+- [請參閱開始使用 Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#get-started)
 
 - [如何設定可用性 web 測試](app/monitor-web-app-availability.md)
 

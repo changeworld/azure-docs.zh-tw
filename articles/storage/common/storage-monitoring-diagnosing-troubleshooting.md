@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: b1b438dd9370e0f0d76e5c596176d9bd08cc76d5
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461998"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031478"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>監視、診斷與疑難排解 Microsoft Azure 儲存體
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -220,7 +220,7 @@ Storage Client Library for .NET 能讓您針對應用程式所執行的儲存體
 您可以擷取用戶端與伺服器之間的流量，針對用戶端與伺服器在交換的資料，以及在底層運作的網路狀況提供詳細資訊。 有用的網路記錄工具如下：
 
 * [Fiddler](https://www.telerik.com/fiddler) 是免費的 Web 偵錯 Proxy，可讓您檢視 HTTP 與 HTTPS 要求及回應訊息的標頭與承載資料。 如需詳細資訊，請參閱 [附錄 1：使用 Fiddler 擷取 HTTP 與 HTTPS 流量](#appendix-1)。
-* [Microsoft Network Monitor (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) 與 [Wireshark](https://www.wireshark.org/) 都是免費的網路通訊協定分析器，可讓您針對廣泛的網路通訊協定檢視詳細封包資訊。 如需 Wireshark 的詳細資訊，請參閱[附錄 2：使用 Wireshark 擷取網路流量](#appendix-2)。
+* [Microsoft Network Monitor (Netmon)](https://cnet-downloads.com/network-monitor) 與 [Wireshark](https://www.wireshark.org/) 都是免費的網路通訊協定分析器，可讓您針對廣泛的網路通訊協定檢視詳細封包資訊。 如需 Wireshark 的詳細資訊，請參閱[附錄 2：使用 Wireshark 擷取網路流量](#appendix-2)。
 * 來自 Microsoft 的 Microsoft Message Analyzer 工具功能比 Netmon 更強，除了可擷取網路封包資料之外，還能協助您檢視並分析其他工具所擷取的記錄資料。 如需詳細資訊，請參閱[附錄 3：使用 Microsoft Message Analyzer 擷取網路流量](#appendix-3)。
 * 如果您想要執行基本的連線測試以確認用戶端機器能夠透過網路與 Azure 儲存體服務連線的話，您無法使用用戶端上的標準 **ping** 工具來執行。 不過，您可以使用 [**tcping** 工具](https://www.elifulkerson.com/projects/tcping.php)來檢查連線能力。
 
@@ -346,7 +346,7 @@ catch (StorageException storageException)
 
 ![Azure 入口網站中的圖例，顯示 AverageE2ELatency 明顯高於 AverageServerLatency 的範例。][4]
 
-儲存體服務只會計算成功要求的度量 **AverageE2ELatency**，不像 **AverageServerLatency** 會將用戶端用來傳送資料與接收儲存體服務認可所需的時間納入計算。 因此，**AverageE2ELatency** 與 **AverageServerLatency** 之間的差異可能是因為用戶端應用程式回應速度太慢，或是其他網路狀況所引起。
+儲存體服務只會計算成功要求的計量 **AverageE2ELatency** ，而不像 **AverageServerLatency**，包括用戶端傳送資料和接收儲存體服務認可所需的時間。 因此，**AverageE2ELatency** 與 **AverageServerLatency** 之間的差異可能是因為用戶端應用程式回應速度太慢，或是其他網路狀況所引起。
 
 > [!NOTE]
 > 您也可以在儲存體記錄資料中，檢視個別儲存體作業的 **E2ELatency** 與 **ServerLatency**。
@@ -409,7 +409,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 * 確認應用程式成功新增下列訊息至佇列。 檢查該應用程式在成功之前沒有多次重試 **AddMessage** 方法。 儲存體用戶端程式庫記錄會顯示儲存體作業的重複嘗試情況。
 * 請確認負責將訊息新增至佇列的背景工作角色，以及負責從佇列讀取訊息的背景工作角色之間，沒有出現會讓人覺得處理出現延遲的時鐘誤差。
-* 檢查負責從佇列讀取訊息的背景工作角色是否失敗。 如果佇列用戶端呼叫 **GetMessage** 方法，但卻無法藉由認可來回應，該訊息會隱藏在佇列中，直到 **invisibilityTimeout** 期間到期為止。 此時，訊息才會再次可供處理。
+* 檢查負責從佇列讀取訊息的背景工作角色是否失敗。 如果佇列用戶端呼叫 **GetMessage** 方法，但無法以通知回應，則在 **invisibilityTimeout** 期限到期之前，訊息將在佇列中保持不可見。 此時，訊息才會再次可供處理。
 * 檢查佇列長度在一段時間之後是否又增加了。 當您沒有足夠的背景工作來處理其他背景工作放在佇列上的所有訊息時，就會出現這個情況。 同時檢查度量，查看刪除要求是否失敗，以及訊息上是否有解除佇列計數，後者可能代表刪除訊息的嘗試一再失敗。
 * 檢查儲存體記錄中，是否有任何佇列作業在超出慣常的期間內，產生超出預期的 **E2ELatency** 與 **ServerLatency** 值。
 
@@ -617,9 +617,9 @@ client.SetServiceProperties(sp);
 
 伺服器端記錄還包含帶有相同 **client-request-id** 值的另一個項目 (813ea74f…)，這個值是來自同一個實體與同一個用戶端順利完成的刪除作業所產生。 此順利完成的刪除作業會在刪除要求失敗之前很快地發生。
 
-此情況最有可能的原因出在，用戶端將要刪除實體的要求傳送給資料表服務而且刪除成功，但卻為收到來自伺服器的認可 (可能是因為暫時的網路問題)。 這時用戶端又自動重試作業 (使用相同的 **client-request-id**)，但因為該實體已經刪除，因此這次重試失敗。
+此案例最有可能的原因是用戶端將實體的刪除要求傳送到資料表服務，該服務已成功，但未收到來自伺服器的通知 (可能是因為) 發生暫時性的網路問題。 這時用戶端又自動重試作業 (使用相同的 **client-request-id**)，但因為該實體已經刪除，因此這次重試失敗。
 
-如果這個問題經常發生，您應該調查為何用戶端無法收到來自資料表服務的認可。 如果此問題是間歇性發生，您應該捕捉「HTTP (404) 找不到」錯誤並記錄在用戶端裡，但同時允許用戶端繼續作業。
+如果經常發生此問題，您應該調查用戶端無法從表格服務接收通知的原因。 如果此問題是間歇性發生，您應該捕捉「HTTP (404) 找不到」錯誤並記錄在用戶端裡，但同時允許用戶端繼續作業。
 
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>用戶端收到 HTTP 409 (衝突) 訊息
 下表顯示來自伺服器端記錄檔的兩項用戶端作業摘要：**DeleteIfExists** 隨後緊接使用相同 Blob 容器名稱的 **CreateIfNotExists**。 每個用戶端作業都會導致兩個要求傳送至伺服器，首先傳送的 **GetContainerProperties** 要求會檢查該容器是否存在，緊接著會傳送 **DeleteContainer** 或 **CreateContainer** 要求。
@@ -777,7 +777,7 @@ Microsoft Message Analyzer 內建的 **Web Proxy** 追蹤功能是依據 Fiddler
 #### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>使用 Microsoft Message Analyzer 診斷網路問題
 除了使用 Microsoft Message Analyzer **Web Proxy** 追蹤功能來擷取用戶端應用程式與儲存體服務之間的 HTTP/HTTPs 流量詳細資料之外，您還可以使用內建的**本機連結層**追蹤功能來擷取網路封包資訊。 這麼做可讓您擷取到類似於使用 Wireshark 所擷取的資料，並診斷捨棄的封包之類的網路問題。
 
-下列螢幕擷取畫面顯示以**本機連結層**追蹤功能所擷取到的一些**知識性**訊息 (在 [DiagnosisTypes] 資料欄中)。 按下 [DiagnosisTypes]  資料欄中的圖示，即可顯示該訊息的詳細資料。 在以下範例中，由於伺服器並未收到來自用戶端的認可，因此重新傳送訊息 #305：
+下列螢幕擷取畫面顯示以**本機連結層**追蹤功能所擷取到的一些**知識性**訊息 (在 [DiagnosisTypes] 資料欄中)。 按下 [DiagnosisTypes]  資料欄中的圖示，即可顯示該訊息的詳細資料。 在此範例中，伺服器已重新傳輸訊息 #305，因為它並未收到來自用戶端的確認：
 
 ![顯示在 DiagnosisTypes 資料行中有一些參考用訊息的範例本機連結層追蹤的螢幕擷取畫面][9]
 

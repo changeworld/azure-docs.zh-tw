@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: d87635b3bfbfd70a67e8eebd4000fda73229d606
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: fadcefb0b802ec3064ac917ab98320f61f24ae5c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018351"
+ms.locfileid: "90033518"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中樞利用 Private Link 和受控識別支援虛擬網路
 
@@ -252,7 +252,7 @@ IoT 中樞支援在客戶提供的儲存體 blob 中大量[匯入/匯出](./iot-
 
 3. 巡覽至儲存體帳戶中的 [防火牆和虛擬網路] 索引標籤，然後啟用 [允許從選取的網路存取] 選項。 在 [例外] 清單下，核取 [允許信任的 Microsoft 服務存取此儲存體帳戶] 核取方塊。 按一下 [儲存]  按鈕。
 
-如需如何使用大量匯入/匯出功能的資訊，則現在可使用 Azure IoT REST API 來[建立匯入/匯出作業](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs)。 您必須在要求本文中提供 `storageAuthenticationType="identityBased"`，並分別使用 `inputBlobContainerUri="https://..."` 和 `outputBlobContainerUri="https://..."` 作為儲存體帳戶的輸入和輸出 URL。
+如需如何使用大量匯入/匯出功能的資訊，則現在可使用 Azure IoT REST API 來[建立匯入/匯出作業](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs)。 您必須在要求本文中提供 `storageAuthenticationType="identityBased"`，並分別使用 `inputBlobContainerUri="https://..."` 和 `outputBlobContainerUri="https://..."` 作為儲存體帳戶的輸入和輸出 URL。
 
 Azure IoT 中樞 SDK 也會在服務用戶端的登錄管理員中支援這項功能。 下列程式碼片段示範如何使用 C# SDK 來啟動匯入作業或匯出作業。
 

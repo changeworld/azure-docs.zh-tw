@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1a426a579fa56fca880eb9689adc2aeb7a21407d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9cb1a2074e7ec64ed16f1f7c9a1f70bf2307b5c3
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89302187"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033484"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Azure IoT Edge 裝置的持續整合和持續部署 (傳統編輯器) 
 
@@ -86,7 +86,7 @@ ms.locfileid: "89302187"
 
    * 如果您想要在 amd64 平台中建置適用於 Windows 1809 容器的模組，您必須[在 Windows 上設定自我裝載的代理程式](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts) \(英文\)。
 
-   * 如果您想要在適用于 Linux 容器的 platform arm32v7 或 arm64 中建立模組，您必須在 [linux 上設定自我裝載代理程式](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-continuous-integration-continuous-deployment-pipeline-with-arm-agent/)。
+   * 如果您想要在適用于 Linux 容器的 platform arm32v7 或 arm64 中建立模組，您必須在 [linux 上設定自我裝載代理程式](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent)。
 
     ![設定組建代理程式規格](./media/how-to-continuous-integration-continuous-deployment-classic/configure-env.png)
 

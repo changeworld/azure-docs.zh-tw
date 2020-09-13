@@ -106,8 +106,6 @@
   items:
     - name: 登入和使用「我的應用程式」入口網站
       href: my-apps-portal-end-user-access.md
-    - name: 更新您的設定檔和帳戶資訊
-      href: my-apps-portal-end-user-update-profile.md
     - name: 更新您的群組資訊
       href: my-apps-portal-end-user-groups.md
     - name: 使用集合來組織應用程式

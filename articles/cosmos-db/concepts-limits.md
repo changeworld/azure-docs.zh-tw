@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: deda5b9dab416258f9db1c76e9b41f781101e2fd
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400308"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033008"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -163,7 +163,17 @@ Cosmos DB 使用 HMAC 進行授權。 您可使用主要金鑰或[資源權杖](
 | 資源權杖到期時間上限 | 預設為 24 小時。 您可藉由[提出 Azure 支援票證](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)來增加此值|
 | 權杖授權的最大時鐘誤差| 15 分鐘 |
 
-Cosmos DB 支援在寫入期間執行觸發程序。 服務對於每個寫入作業最多支援一個前置觸發程序，以及一個後置觸發程序。 
+Cosmos DB 支援在寫入期間執行觸發程序。 服務對於每個寫入作業最多支援一個前置觸發程序，以及一個後置觸發程序。
+
+## <a name="metadata-request-limits"></a>中繼資料要求限制
+
+Azure Cosmos DB 會維護每個帳戶的系統中繼資料。 此中繼資料可讓您免費列舉集合、資料庫、其他 Azure Cosmos DB 資源及其設定。
+
+| 資源 | 預設限制 |
+| --- | --- |
+|最大收集建立速率 rer 分鐘| 5|
+|每分鐘資料庫建立速率上限|   5|
+|每分鐘布建的輸送量更新速率上限| 5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>自動調整佈建輸送量的限制
 

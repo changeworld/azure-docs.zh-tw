@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
-ms.openlocfilehash: 2a0c95e45dc529d779d6b06e1e5bdb32ba80b241
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 48d233dee063d8f9049e6e54baa2d744e1b8b058
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007531"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033450"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure 監視器代理程式的總覽
 
@@ -79,7 +79,7 @@ Azure 監視器代理程式的限制包括：
 如果您需要下列事項，請使用 Log Analytics 代理程式：
 
 * 從 Azure 內部或外部的虛擬或實體機器收集記錄和效能資料。 
-* 將資料傳送至 Log Analytics 工作區，以利用 [Azure 監視器記錄](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) 檔（例如 [記錄查詢](../log-query/log-query-overview.md)）所支援的功能。
+* 將資料傳送至 Log Analytics 工作區，以利用 [Azure 監視器記錄](data-platform-logs.md) 檔（例如 [記錄查詢](../log-query/log-query-overview.md)）所支援的功能。
 * 使用 [適用於 VM 的 Azure 監視器](../insights/vminsights-overview.md) 可讓您大規模監視虛擬機器，並監視其進程和其他資源和外部進程的相依性。  
 * 使用 [Azure 資訊安全中心](../../security-center/security-center-intro.md)  或 [Azure Sentinel](../../sentinel/overview.md)管理虛擬機器的安全性。
 * 使用 [Azure 自動化的更新管理](../../automation/update-management/update-mgmt-overview.md)、 [Azure 自動化狀態設定](../../automation/automation-dsc-overview.md)或 [Azure 自動化變更追蹤和清查](../../automation/change-tracking.md) ，以提供 Azure vm 的全方位管理

@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 9/12/2019
-ms.openlocfilehash: c84616e8a9b9ff9722f5a104175c80c37dbcbcc3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 9/11/2020
+ms.openlocfilehash: 35d5b101f4ad5fe4498c0566227c5f0a9d102b60
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116908"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032538"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>管理適用於 PostgreSQL Azure 資料庫的防火牆規則 - 超大規模 (Citus)
 伺服器層級防火牆規則可從所有指定 IP 位址或 IP 位址範圍來管理對超大規模 (Citus) 協調器節點的存取。
@@ -24,14 +24,14 @@ ms.locfileid: "86116908"
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 入口網站中建立伺服器層級的防火牆規則
 
 > [!NOTE]
-> 在建立適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus) 伺服器群組期間，也可以存取這些設定。 在 [網路] 索引標籤下，按一下 [公用端點]。
+> 在建立適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus) 伺服器群組期間，也可以存取這些設定。 在 [ **網路** 功能] 索引標籤下，按一下 [ **公用存取**]。
 > ![Azure 入口網站 - [網路] 索引標籤](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
 
 1. 在 [PostgreSQ 伺服器群組] 頁面的 [安全性] 標題底下，按一下 [網路] 以開啟防火牆規則。
 
    ![Azure 入口網站 - 按一下 [網路]](./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png)
 
-2. 在工具列上 (下方的選項 A)，或在連結中 (選項 B) 按一下 [新增用戶端 IP]。 兩者皆會使用 Azure 系統找到的電腦公用 IP 位址來自動建立防火牆規則。
+2. 按一下 [ **新增目前的用戶端 IP 位址** ]，以您的電腦公用 IP 位址建立防火牆規則，如同 Azure 系統所見。
 
    ![Azure 入口網站 - 按一下 [新增用戶端 IP]](./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "86116908"
 
 ## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>透過 Azure 入口網站管理現有的伺服器層級防火牆規則
 重複步驟來管理防火牆規則。
-* 若要新增目前的電腦，請按一下 [+新增用戶端 IP] 按鈕。 按一下 [儲存]  儲存變更。
+* 若要新增目前的電腦，請按一下 [+ **新增目前的用戶端 IP 位址**] 按鈕。 按一下 [儲存]  儲存變更。
 * 若要新增其他 IP 位址，請輸入「規則名稱」、「起始 IP 位址」和「結束 IP 位址」。 按一下 [儲存]  儲存變更。
 * 若要修改現有的規則，請按一下和修改規則中的任何欄位。 按一下 [儲存]  儲存變更。
 * 若要刪除現有的規則，請按一下省略符號 [...]，然後按一下 [刪除] 移除規則。 按一下 [儲存]  儲存變更。

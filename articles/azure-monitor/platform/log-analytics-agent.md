@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: fb58728e005ad70ac5392aa9e3e6a254ed317276
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8a086830398555d962bb13d1d9b0fea3554f7924
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016322"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032515"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理程式概觀
 Azure Log Analytics 代理程式會從任何雲端中的 Windows 和 Linux 虛擬機器、內部部署電腦，以及受 [System Center Operations Manager](/system-center/scom/) 監視的遙測收集遙測資料，並將收集到的資料傳送到您的 Log Analytics 工作區 Azure 監視器。 Log Analytics 代理程式也支援 Azure 監視器中的深入解析和其他服務，例如[適用於 VM 的 Azure 監視器](../insights/vminsights-enable-overview.md)、[Azure 資訊安全中心](../../security-center/index.yml)和 [Azure 自動化](../../automation/automation-intro.md)。 本文提供代理程式、系統和網路需求，以及部署方法的詳細總覽。
@@ -63,7 +63,7 @@ Linux 和 Windows 的代理程式不只用於連接到 Azure 監視器。 其他
 
 ## <a name="security-limitations"></a>安全性限制
 
-* Windows 代理程式支援 [FIPS 140 標準](/windows/security/threat-protection/fips-140-validation)，Linux 代理程式則不支援此標準。  
+* Windows 和 Linux 代理程式支援 [FIPS 140 標準](/windows/security/threat-protection/fips-140-validation)，但 [可能不支援其他類型的強化](agent-linux.md#supported-linux-hardening)。
 
 
 ## <a name="installation-options"></a>安裝選項

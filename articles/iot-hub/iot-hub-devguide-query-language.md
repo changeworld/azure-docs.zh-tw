@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b4e7d8c5c518e4ba4a2a9116898be2bba7df0b06
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 77becbf4777d0668991adcd74b722cd28ac36f03
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022440"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031172"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>裝置與模組對應項、作業和訊息路由的 IoT 中樞查詢語言
 
@@ -234,7 +234,7 @@ query 物件會根據查詢所需的還原序列化選項，公開多個 **Next*
 ### <a name="limitations"></a>限制
 
 > [!IMPORTANT]
-> 根據裝置對應項中的最新值，查詢結果可能會有數分鐘的延遲。 如果依識別碼查詢個別裝置 twins，請使用 [取得](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin)對應項 REST API。 此 API 一律會傳回最新的值，而且會有較高的節流限制。 您可以直接發出 REST API，或在其中一個 [Azure IoT 中樞服務 sdk](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)中使用對等的功能。
+> 根據裝置對應項中的最新值，查詢結果可能會有數分鐘的延遲。 如果依識別碼查詢個別裝置 twins，請使用 [取得](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable)對應項 REST API。 此 API 一律會傳回最新的值，而且會有較高的節流限制。 您可以直接發出 REST API，或在其中一個 [Azure IoT 中樞服務 sdk](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)中使用對等的功能。
 
 目前僅支援在基本類型 (沒有物件) 之間進行比較，例如 `... WHERE properties.desired.config = properties.reported.config` 只會在這些屬性具有基本值時才受到支援。
 
@@ -454,7 +454,7 @@ GROUP BY <group_by_element>
 | 邏輯 |AND、OR、NOT |
 | 比較 |=、!=、<、>、<=、>=、<> |
 
-### <a name="functions"></a>函式
+### <a name="functions"></a>函數
 
 查詢對應項和作業時唯一支援的函式為：
 
@@ -503,6 +503,6 @@ GROUP BY <group_by_element>
 | ENDS_WITH(x, y) | 傳回布林值，表示第一個字串運算式是否以第二個字串運算式結尾。 |
 | CONTAINS(x,y) | 傳回布林值，表示第一個字串運算式是否包含第二個字串運算式。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 了解如何使用 [Azure IoT SDK](iot-hub-devguide-sdks.md) 在應用程式中執行查詢。

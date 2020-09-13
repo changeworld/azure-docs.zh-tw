@@ -1,35 +1,35 @@
 ---
 title: 在 Synapse SQL 中使用 GROUP BY 選項
-description: Synapse SQL 允許藉由執行不同的 GROUP BY 選項來開發解決方案。
+description: Synapse SQL 可讓您藉由執行不同的群組依據選項來開發解決方案。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 261f75344d250ae8a8d9687f4bcd80535d11716b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad2b13fbfbd9871a55efb1826fa1e978d4eeb453
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429040"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032294"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>Synapse SQL 中的 GROUP BY 選項
-Synapse SQL 允許藉由執行不同的 GROUP BY 選項來開發解決方案。 
+Synapse SQL 可讓您藉由執行不同的群組依據選項來開發解決方案。 
 
 ## <a name="what-does-group-by-do"></a>GROUP BY 執行的動作
 
 [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 子句可將資料彙總至摘要的一組資料列。
 
-SQL 隨選安裝支援完整的 GROUP BY 選項範圍。 SQL 集區支援有限數目的 GROUP BY 選項。
+SQL 隨選支援群組依據選項的整個範圍。 SQL 集區支援的分組依據選項數量有限。
 
-## <a name="group-by-options-supported-in-sql-pool"></a>SQL 集區中支援的 GROUP BY 選項
+## <a name="group-by-options-supported-in-sql-pool"></a>SQL 集區中支援的分組依據選項
 
-GROUP BY 具有 SQL 集區不支援的某些選項。 這些選項有因應措施，如下所示：
+GROUP BY 有一些 SQL 集區不支援的選項。 這些選項有因應措施，如下所示：
 
 * GROUP BY 搭配 ROLLUP
 * GROUPING SETS
@@ -37,7 +37,7 @@ GROUP BY 具有 SQL 集區不支援的某些選項。 這些選項有因應措�
 
 ### <a name="rollup-and-grouping-sets-options"></a>Rollup 和 grouping sets 選項
 
-此處最簡單的選項是使用 UNION ALL 來執行匯總，而不是依賴明確的語法。 應該會出現幾乎相同的結果
+最簡單的選項是使用 UNION ALL 來執行匯總，而不是依賴明確的語法。 應該會出現幾乎相同的結果
 
 下列範例會使用 GROUP BY 語句搭配 ROLLUP 選項：
 
@@ -57,7 +57,7 @@ GROUP BY ROLLUP (
 藉由使用 ROLLUP，上述範例會要求下列彙總：
 
 * 國家及區域
-* 國家/地區
+* Country
 * 總計
 
 若要取代 ROLLUP，並傳回相同的結果，您可以使用 UNION ALL，並明確指定所需的彙總：
@@ -91,9 +91,9 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 
 ### <a name="cube-options"></a>Cube 選項
 
-您可以使用「聯集全部」方法，以 CUBE 建立 GROUP BY。 問題是程式碼可能很快就會很麻煩且不易處理。 若要減少此問題，您可以使用這個更先進的方法。
+您可以使用「聯集全部」方法，以 CUBE 建立群組。 問題是程式碼可能很快就會很麻煩且不易處理。 若要減輕這個問題，您可以使用這個更先進的方法。
 
-第一個步驟是定義 'cube'，其定義我們想要建立的所有彙總層級。 請記下這兩個衍生資料表的交叉聯結，因為它會產生所有層級。 其餘的程式碼則是用於格式化。
+第一個步驟是定義 'cube'，其定義我們想要建立的所有彙總層級。 當產生所有層級時，請記下兩個衍生資料表的交叉聯結。 其餘的程式碼則是用於格式化。
 
 ```sql
 CREATE TABLE #Cube
@@ -124,7 +124,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-下圖顯示 CREATE TABLE 的結果[做為 SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)：
+下圖顯示 CREATE TABLE 的結果 [為 SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)：
 
 ![依 Cube 分組](./media/develop-group-by-options/develop-group-by-cube.png)
 
@@ -151,7 +151,7 @@ WITH
 ;
 ```
 
-第三個步驟是在執行匯總的資料行 cube 上進行迴圈。 查詢將會針對 #Cube 臨時表中的每個資料列執行一次。 結果會儲存在 #Results 臨時表中：
+第三個步驟是對執行匯總的資料行 cube 執行迴圈。 查詢將針對 #Cube 臨時表中的每個資料列執行一次。 結果會儲存在 #Results 臨時表中：
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -175,7 +175,7 @@ BEGIN
 END
 ```
 
-最後，您可以從 #Results 的臨時表中讀取來傳回結果：
+最後，您可以從 #Results 臨時表中讀取來傳回結果：
 
 ```sql
 SELECT *
@@ -184,7 +184,7 @@ ORDER BY 1,2,3
 ;
 ```
 
-藉由將程式碼分成幾個區段並產生迴圈結構，程式碼就會變得更容易管理和維護。
+藉由將程式碼分解成各區段，並產生迴圈結構，程式碼就變得更容易管理及維護。
 
 ## <a name="next-steps"></a>後續步驟
 

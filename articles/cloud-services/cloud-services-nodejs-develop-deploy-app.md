@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 489025d9cfdd6f1bdbc950e2bd1e7e4d835a4fff
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c2d76ccd0c2e81147c39f81568fd1394cc1868b6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079204"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032872"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>建立 Node.js 應用程式並部署到 Azure 雲端服務
 
@@ -32,11 +32,11 @@ ms.locfileid: "88079204"
 
 ![顯示 Hello World 網頁的網頁瀏覽器][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 > [!NOTE]
 > 本教學課程使用 Azure PowerShell (需要 Windows)。
 
-* 安裝和設定[Azure Powershell]。
+* 安裝和設定 [Azure PowerShell]。
 * 下載並安裝 [Azure SDK for .NET 2.7]。 在安裝過程中，選取：
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
@@ -90,7 +90,7 @@ http.createServer(function (req, res) {
 ## <a name="deploy-the-application-to-azure"></a>將應用程式部署至 Azure
 
 > [!NOTE]
-> 若要完成此教學課程，您需要 Azure 帳戶。 您可以[啟用 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或[註冊免費帳戶](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)。
+> 若要完成此教學課程，您需要 Azure 帳戶。 您可以 [啟用 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) 或 [註冊免費帳戶](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)。
 
 ### <a name="download-the-azure-publishing-settings"></a>下載 Azure 發佈設定
 若要將應用程式部署到 Azure，您必須先下載您 Azure 訂閱的發佈設定。
@@ -172,7 +172,7 @@ Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Laun
    > [!NOTE]
    > 刪除服務不會刪除初次發佈服務時建立的儲存體帳戶，而且將持續對使用的儲存體計費。 如果沒有其他項目正在使用儲存體，您可以將它刪除。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需詳細資訊，請參閱 [Node.js 開發人員中心]。
 
 <!-- URL List -->
@@ -180,7 +180,7 @@ Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Laun
 [Azure 網站、雲端服務與虛擬機器的比較]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [使用輕量型 Web 應用程式]: ../app-service/quickstart-nodejs.md
 [Azure PowerShell]: /powershell/azure/
-[Azure SDK for .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
+[Azure SDK for .NET 3.0]: https://www.microsoft.com/download/details.aspx?id=54917
 [連線 PowerShell]: /powershell/azure/
 [nodejs.org]: https://nodejs.org/
 [雲端服務]: https://azure.microsoft.com/documentation/services/cloud-services/

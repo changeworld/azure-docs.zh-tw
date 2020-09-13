@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b14dd4aa44620f2b13891a18fc473acbcb0f3245
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083741"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033025"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>如何解決 Azure Advisor 建議
 
@@ -34,7 +34,7 @@ ms.locfileid: "89083741"
 
 2. 接下來，選取您要從生產環境變更為驗證環境的主機集區。
 
-3. 在您的主機集區中，選取畫面右側資料行中的 [ **屬性** ] 索引標籤。 接下來，向下切入直到您看到「驗證環境」。 選取 **[是]**， **Apply**然後選取 [套用]。
+3. 在您的主機集區中，選取左側資料行上的 [ **屬性** ]。 接下來，向下切入直到您看到「驗證環境」。 選取 **[是]**， **Apply**然後選取 [套用]。
 
 >[!div class="mx-imgBorder"]
 >![[屬性] 功能表的螢幕擷取畫面。 [驗證環境] 會以紅色反白顯示，並選取 [是] 反升。](media/validation-yes.png)
@@ -77,6 +77,6 @@ ms.locfileid: "89083741"
 
 您可以藉由提交建議的建議來協助我們改善 Azure Advisor。 您的建議可協助其他使用者退出困難的地方。 若要提交建議，請前往 [我們的 UserVoice 論壇](https://windowsvirtualdesktop.uservoice.com/forums/930847-azure-advisor-recommendations) ，並填寫提交表單。 當您填寫表單時，請務必盡可能提供詳細的資料。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您想要深入瞭解如何解決常見問題的詳細資訊，請參閱 [Windows 虛擬桌面的疑難排解總覽、意見反應和支援](troubleshoot-set-up-overview.md)。
