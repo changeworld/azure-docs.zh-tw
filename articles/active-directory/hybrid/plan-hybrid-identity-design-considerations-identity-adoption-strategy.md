@@ -1,6 +1,6 @@
 ---
 title: 混合式身分識別設計 - Azure 採用策略 | Microsoft Docs
-description: 使用條件式存取控制，Azure Active Directory 會在驗證使用者時以及允許存取應用程式之前，檢查您挑選的特定條件。 一旦符合這些條件，就會驗證使用者並允許存取應用程式。
+description: 使用條件式存取控制時，Azure AD 會在驗證使用者時以及允許存取應用程式之前，檢查您挑選的特定條件。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555378"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659531"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定義混合式身分識別採用策略
 在這項工作中，您將為混合式身分識別解決方案，定義混合式身分識別採用策略，以滿足下列幾節已討論的商務需求：
@@ -32,7 +32,7 @@ ms.locfileid: "85555378"
 * [判斷多重要素驗證需求](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="define-business-needs-strategy"></a>定義商務需求策略
-第一項工作在於判斷組織商務需求。  這可能非常廣泛，一不小心就會發生範圍蔓延。  剛開始要保持簡單，但要時常記住所規劃的設計應該兼顧和推動未來的變更。  無論是簡單或極為複雜的設計，Azure Active Directory 都是支援 Office 365、Microsoft Online Services 和雲端感知應用程式的 Microsoft 身分識別平台。
+第一項工作在於判斷組織商務需求。  這可能非常廣泛，一不小心就會發生範圍蔓延。  剛開始要保持簡單，但要時常記住所規劃的設計應該兼顧和推動未來的變更。  無論是簡單的設計還是非常複雜的設計，Azure Active Directory 都是 Microsoft 身分識別平臺，可支援 Microsoft 365、Microsoft Online Services 和雲端感知應用程式。
 
 ## <a name="define-an-integration-strategy"></a>定義整合策略
 Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步處理身分識別和同盟身分識別。  您應該規劃採用這些整合策略的其中一個。  您選擇的策略可能不同，決策的因素可能包括您想要提供何種使用者體驗、是否有現有的基礎結構，以及什麼最符合成本效益。  
@@ -55,25 +55,25 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 | 策略 | 優點 | 缺點 |
 | --- | --- | --- |
 | **雲端身分識別** |在小型組織中易於管理。 <br> 沒有項目可以在內部安裝或更新。 沒有其他硬體需求<br>使用者離職時輕易停用 |使用者存取雲端中的工作負載時必須登入 <br>  雲端和內部部署身分識別的密碼可能相同，也可能不相同 |
-| **與其** |內部部署密碼會驗證內部部署和雲端目錄 <br>對小型、中型或大型組織來說易於管理 <br>使用者可以對一些資源進行單一登入 (SSO) <br> Microsoft 對於同步處理的慣用方法 <br>  易於管理 |基於公司的特定原則，有些客戶可能不願意將目錄與雲端同步 |
-| **建立** |使用者可以有單一登入 (SSO)  <br>如果使用者終止或離開時，可以將帳戶立即停用並撤銷存取權。<br> 支援同步處理所無法解決的進階案例 |安裝和設定的詳細步驟 <br> 較高的維護 <br> STS 基礎結構可能需要額外的硬體 <br> 安裝同盟伺服器可能需要額外的硬體。 如果使用 AD FS，則需要額外的軟體 <br> 需要大量的設定才能使用 SSO <br> 重大失敗點是，同盟伺服器關閉時使用者會無法驗證 |
+| **已同步處理** |內部部署密碼會驗證內部部署和雲端目錄 <br>對小型、中型或大型組織來說易於管理 <br>使用者可以對一些資源進行單一登入 (SSO) <br> Microsoft 對於同步處理的慣用方法 <br>  易於管理 |基於公司的特定原則，有些客戶可能不願意將目錄與雲端同步 |
+| **聯邦** |使用者可以有單一登入 (SSO)  <br>如果使用者終止或離開時，可以將帳戶立即停用並撤銷存取權。<br> 支援同步處理所無法解決的進階案例 |安裝和設定的詳細步驟 <br> 較高的維護 <br> STS 基礎結構可能需要額外的硬體 <br> 安裝同盟伺服器可能需要額外的硬體。 如果使用 AD FS，則需要額外的軟體 <br> 需要大量的設定才能使用 SSO <br> 重大失敗點是，同盟伺服器關閉時使用者會無法驗證 |
 
 ### <a name="client-experience"></a>用戶端體驗
 您使用的策略決定使用者的登入體驗。  下表提供使用者所預期之登入體驗的相關資訊。  所有同盟識別提供者並非在所有案例中都支援 SSO。
 
 **加入網域和私人網路應用程式**：
 
-| Application | 同步處理身分識別 | 同盟身分識別 |
+| 應用程式 | 同步處理身分識別 | 同盟身分識別 |
 | --- | --- | --- |
 | 網頁瀏覽器 |表單架構驗證 |單一登入，有時需要提供組織識別碼 |
 | Outlook |提示輸入認證 |提示輸入認證 |
 | 商務用 Skype (Lync) |提示輸入認證 |在 Lync 中需要單一登入，在 Exchange 中會提示輸入認證 |
-| OneDrive for Business |提示輸入認證 |單一登入 |
+| 商務用 OneDrive |提示輸入認證 |單一登入 |
 | Office Pro Plus 訂用帳戶 |提示輸入認證 |單一登入 |
 
-**外部或未受信任的來源**：
+**外部或不受信任的來源**：
 
-| Application | 同步處理身分識別 | 同盟身分識別 |
+| 應用程式 | 同步處理身分識別 | 同盟身分識別 |
 | --- | --- | --- |
 | 網頁瀏覽器 |表單架構驗證 |表單架構驗證 |
 | Outlook、商務用 Skype (Lync)、商務用 OneDrive、Office 訂用帳戶 |提示輸入認證 |提示輸入認證 |
@@ -111,7 +111,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 ### <a name="supported-topologies"></a>支援的拓撲
 定義同步處理策略時，必須判斷使用的拓撲。 您可以根據步驟 2 中已判斷的資訊，判斷適合使用的拓撲。 單一樹系、單一 Azure AD 拓撲最常見，由單一 Active Directory 樹系和單一 Azure AD 執行個體所組成。  這將用於大部分的案例中，也是在使用 Azure AD Connect Express 安裝時預期的拓撲，如下圖所示。
 
-![支援的拓撲 ](./media/plan-hybrid-identity-design-considerations/single-forest.png) 單一樹系案例：大型甚至小型組織通常會有多個樹系，如 [圖 5] 所示。
+![支援的拓撲 ](./media/plan-hybrid-identity-design-considerations/single-forest.png) 單一樹系案例，大型甚至小型組織通常會有多個樹系，如 [圖 5] 所示。
 
 > [!NOTE]
 > 如需不同的內部部署和 Azure AD 拓撲與 Azure AD Connect 同步處理的詳細資訊，請參閱 [Azure AD Connect 的拓撲](plan-connect-topologies.md)一文。
@@ -158,7 +158,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 * DNS 網域只能在單一 Azure AD 目錄中註冊，因此內部部署 AD 中的使用者 UPN 必須使用個別的命名空間。
 * 一個 Azure AD 執行個體中的使用者只能看到他們的執行個體中的使用者。  他們看不到其他執行個體中的使用者
 * 只有其中一個 Azure AD 目錄可以啟用 Exchange 與內部部署 AD 混合
-* 回寫也有互斥性。  這造成此拓撲不支援部分回寫功能，因為這些功能都假設使用單一內部部署組態。  其中包括：
+* 回寫也有互斥性。  這造成此拓撲不支援部分回寫功能，因為這些功能都假設使用單一內部部署組態。  這包括：
   * 使用預設組態的群組回寫
   * 裝置寫回
 
@@ -171,7 +171,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 * Azure AD 目錄在設計上是隔離的。 它不支援將 Azure AD Connect 同步處理變更為從另一個 Azure AD 目錄讀取資料，以嘗試在目錄之間建置一般和統一的 GAL。 也不支援使用 Azure AD Connect 同步處理將使用者匯出為另一個內部部署 AD的連絡人。
 
 > [!NOTE]
-> 如果您的組織禁止您網路上的電腦連線到網際網路，這篇文章列出您在用戶端電腦的輸出允許清單和 Internet Explorer 信任的網站區域中應該加入的端點 (FQDN、IPv4 和 IPv6 位址範圍)，以確保您的電腦可以成功使用 Office 365。 如需詳細資訊，請參閱 [Office 365 URL 和 IP 位址範圍](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)。
+> 如果您的組織限制網路上的電腦無法連線到網際網路，本文會列出 (Fqdn、IPv4 和 IPv6 位址範圍的端點，) 您應該包含在用戶端電腦的輸出允許清單和 Internet Explorer [信任的網站] 區域中，以確保您的電腦可以成功使用 Microsoft 365。 如需詳細資訊，請參閱 [Office 365 URL 和 IP 位址範圍](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)。
 > 
 > 
 
@@ -185,8 +185,8 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 | Microsoft 應用程式 |是 |是 |
 | 應用程式資源庫中的 SaaS 應用程式 |是 |是 |
 | 透過 Azure AD App Proxy 發佈的 IIS 應用程式 |是 |是 |
-| 非透過 Azure AD App Proxy 發行的 IIS 應用程式 |不可以 |是 |
-| VPN、RDG 等遠端存取 |不可以 |是 |
+| 非透過 Azure AD App Proxy 發行的 IIS 應用程式 |否 |是 |
+| VPN、RDG 等遠端存取 |否 |是 |
 
 即使已選定策略的解決方案，您仍然需要使用上述評估來判斷使用者位於何處。  這可能會造成解決方案變更。  使用下表來協助判斷：
 
@@ -210,7 +210,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 > 
 > 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [判斷資料保護需求](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
 ## <a name="see-also"></a>另請參閱

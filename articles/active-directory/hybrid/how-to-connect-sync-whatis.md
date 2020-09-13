@@ -16,12 +16,12 @@ ms.date: 11/08/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc1754eb8818df894e67c1748517b2e2f4356d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cea26cb119f64679807bc6c5eaadb41b341e5d5a
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356860"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662381"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect 同步處理：了解及自訂同步處理
 Azure Active Directory Connect 同步處理服務 (Azure AD Connect 同步處理) 是 Azure AD Connect 的主要元件。 它會負責執行同步處理內部部署環境與 Azure AD 之間識別資料的所有相關作業。 Azure AD Connect 同步處理是 DirSync、Azure AD 同步，以及已設定 Azure Active Directory 連接器之 Forefront Identity Manager 的後續版本。
@@ -37,7 +37,7 @@ Azure Active Directory Connect 同步處理服務 (Azure AD Connect 同步處理
 | [了解架構](concept-azure-ad-connect-sync-architecture.md) |適合於不熟悉同步處理引擎並想要深入了解所用架構和詞彙的人員。 |
 | [技術概念](how-to-connect-sync-technical-concepts.md) |精簡版的架構主題，簡要說明所用的詞彙。 |
 | [Azure AD Connect 的拓撲](plan-connect-topologies.md) |說明同步處理引擎支援的各種拓撲和案例。 |
-| **自訂組態** | |
+| **自訂設定** | |
 | [再次執行安裝精靈](how-to-connect-installation-wizard.md) |說明當您再次執行 Azure AD Connect 安裝精靈時可以使用哪些選項。 |
 | [了解宣告式佈建](concept-azure-ad-connect-sync-declarative-provisioning.md) |說明稱為宣告式佈建的組態模型。 |
 | [了解宣告式佈建運算式](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) |說明宣告式佈建中所用運算式語言的語法。 |
@@ -52,19 +52,19 @@ Azure Active Directory Connect 同步處理服務 (Azure AD Connect 同步處理
 | [實作密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md) |說明密碼同步處理的運作方式、實作方式，以及其操作方式及疑難排解方式。 |
 | [裝置回寫](how-to-connect-device-writeback.md) |說明在 Azure AD Connect 中，裝置回寫的運作方式。 |
 | [目錄擴充](how-to-connect-sync-feature-directory-extensions.md) |說明如何使用您自己的自訂屬性擴充 Azure AD 結構描述。 |
-| [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |描述如何將使用者的 Office 365 資源放在與使用者相同的區域中。 |
+| [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |說明如何將使用者的 Microsoft 365 資源放在與使用者相同的區域中。 |
 | **同步處理服務** | |
 | [Azure AD Connect 同步處理服務功能](how-to-connect-syncservice-features.md) |描述同步處理服務端，以及如何在 Azure AD 中變更同步設定。 |
 | [重複屬性恢復功能](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |描述如何啟用及使用 **userPrincipalName** 和 **proxyAddresses** 重複屬性值恢復功能。 |
 | **作業和 UI** | |
 | [同步處理服務管理員](how-to-connect-sync-service-manager-ui.md) |說明 Synchronization Service Manager UI，包括 [[作業](how-to-connect-sync-service-manager-ui-operations.md)]、[[連接器](how-to-connect-sync-service-manager-ui-connectors.md)]、[[Metaverse 設計工具](how-to-connect-sync-service-manager-ui-mvdesigner.md)] 及 [[Metaverse 搜尋](how-to-connect-sync-service-manager-ui-mvsearch.md)] 索引標籤。 |
-| [作業工作和考量](how-to-connect-sync-operations.md) |說明作業考量，例如災害復原。 |
+| [作業工作和考量](./how-to-connect-sync-staging-server.md) |說明作業考量，例如災害復原。 |
 | **如何。。。** | |
 | [重設 Azure AD 帳戶](how-to-connect-azureadaccount.md) |如何將 Azure AD Connect 同步處理連線至 Azure AD 時所使用的服務帳戶重設認證。 |
 | **詳細資訊和參考** | |
 | [連接埠](reference-connect-ports.md) |列出您需要在同步處理引擎以及內部部署目錄與 Azure AD 之間開啟的連接埠。 |
 | [將屬性同步處理至 Azure Active Directory](reference-connect-sync-attributes-synchronized.md) |列出在內部部署 AD 與 Azure AD 之間進行同步處理的所有屬性。 |
-| [函數參考](reference-connect-sync-functions-reference.md) |列出宣告式佈建中可用的所有函式。 |
+| [函式參考](reference-connect-sync-functions-reference.md) |列出宣告式佈建中可用的所有函式。 |
 
 ## <a name="additional-resources"></a>其他資源
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)

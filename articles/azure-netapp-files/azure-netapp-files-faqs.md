@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/18/2020
+ms.date: 09/09/2020
 ms.author: b-juche
-ms.openlocfilehash: eeb22672829dca9ba342079183dcc5ed7c35393c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9822d7bd769ea161ddcf195d695f27024351ca4b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590365"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662446"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
@@ -29,7 +29,7 @@ ms.locfileid: "88590365"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 資料路徑是否經過網際網路？  
 
-否。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是部署至 Azure 虛擬網路的 azure 原生服務， (VNet) 可用的服務。 Azure NetApp Files 使用委派的子網，並直接在 VNet 上布建網路介面。 
+不會。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是部署至 Azure 虛擬網路的 azure 原生服務， (VNet) 可用的服務。 Azure NetApp Files 使用委派的子網，並直接在 VNet 上布建網路介面。 
 
 如需詳細資料，請參閱 [Azure NetApp Files 網路規劃的指導方針](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) 。  
 
@@ -48,7 +48,11 @@ ms.locfileid: "88590365"
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>我可以為 Azure NetApp Files 磁片區設定或選取自己的 IP 位址嗎？  
 
-否。 對 Azure NetApp Files 磁片區的 IP 指派是動態的。 不支援靜態 IP 指派。 
+不會。 對 Azure NetApp Files 磁片區的 IP 指派是動態的。 不支援靜態 IP 指派。 
+
+### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp Files 是否支援 (IPv4 和 IPv6) VNet 的雙重 stack？
+
+否，Azure NetApp Files 目前不支援 (IPv4 和 IPv6) VNet 的雙重 stack。  
  
 ## <a name="security-faqs"></a>安全性常見問題集
 
@@ -66,10 +70,9 @@ NFSv3 或 SMBv3 用戶端與 Azure NetApp Files 磁片區之間的資料流量�
 
 Azure NetApp Files 的金鑰管理是由服務處理。 每個磁片區都會產生唯一的 XTS-AES-256 資料加密金鑰。 加密金鑰階層可用來加密和保護所有磁片區金鑰。 這些加密金鑰永遠不會以未加密的格式顯示或報告。 刪除磁片區時，會立即刪除加密金鑰。
 
-支援使用者管理的金鑰 (將您自己的金鑰) 使用 Azure 專用 HSM 可在美國東部、US 西部2和美國中南部區域中以受控制的基礎進行。  您可以在上要求存取權 **anffeedback@microsoft.com** 。 當容量可用時，將會核准要求。
+客戶管理的金鑰 (攜帶您自己的金鑰) 使用 Azure 專用 HSM 可在美國東部、美國中南部、美國西部2和 US Gov 維吉尼亞州區域中以受控制的基礎提供支援。 您可以在上要求存取權 [anffeedback@microsoft.com](mailto:anffeedback@microsoft.com) 。 當容量可供使用時，將會核准要求。
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>我可以設定 NFS 匯出原則規則來控制 Azure NetApp Files 服務裝載目標的存取嗎？
-
 
 是的，您可以在單一 NFS 匯出原則中設定最多五個規則。
 
@@ -193,7 +196,7 @@ Azure NetApp Files 提供容量集區和磁片區使用計量。 您也可以使
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>我可以透過 Azure 儲存體總管管理 Azure NetApp Files 嗎？
 
-否。 Azure 儲存體總管不支援 Azure NetApp Files。
+不會。 Azure 儲存體總管不支援 Azure NetApp Files。
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何? 判斷目錄是否接近限制大小？
 
@@ -250,13 +253,13 @@ NetApp 提供以 SaaS 為基礎的解決方案，也就是 [Netapp Cloud Sync](h
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>是否支援遷移 Azure 資料箱？
 
-否。 Azure 資料箱目前不支援 Azure NetApp Files。 
+不會。 Azure 資料箱目前不支援 Azure NetApp Files。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支援使用 Azure 匯入/匯出服務進行遷移？
 
-否。 Azure 匯入/匯出服務目前不支援 Azure NetApp Files。
+不會。 Azure 匯入/匯出服務目前不支援 Azure NetApp Files。
 
-## <a name="next-steps"></a>後續步驟  
+## <a name="next-steps"></a>接下來的步驟  
 
 - [Microsoft Azure ExpressRoute 常見問題](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
 - [Microsoft Azure 虛擬網路常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)

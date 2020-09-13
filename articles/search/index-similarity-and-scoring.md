@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 300da87ecff13fc160ec08684cf1d032f9a19f71
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/08/2020
+ms.openlocfilehash: d980764b7151183b61657434afa6c472e5058d18
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924481"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662273"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure 認知搜尋中的相似性與評分
 
@@ -40,7 +40,7 @@ ms.locfileid: "88924481"
 
 ## <a name="scoring-statistics-and-sticky-sessions"></a>評分統計資料和粘滯話
 
-針對可擴縮性，Azure 認知搜尋會透過分區化程序水平散發每個索引，這表示會實際分開索引的各部分。
+針對擴充性，Azure 認知搜尋會透過分區化程式水準分配每個索引，這表示 [索引的部分會](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)以實體方式分隔。
 
 預設會根據「分區內資料」的統計屬性來計算文件的分數。 這種方法對大型資料主體通常不是問題，而且與根據所有分區的資訊來計算分數相比，可提供更佳的效能。 儘管如此，使用此效能最佳化會導致最終分屬不同分區中的兩份非常類似的文件 (或甚至是完全相同的文件) 最後得到不同的相關性分數。
 

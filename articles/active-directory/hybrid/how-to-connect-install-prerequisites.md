@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1f77d6189e5b32ca771d17ae9902341bcaa1871
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1fa96d6bd0032f675ffaeabc58c62c13312039dc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688125"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662169"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的必要條件
 本文說明 Azure Active Directory (Azure AD) Connect 的必要條件和硬體需求。
@@ -33,11 +33,11 @@ ms.locfileid: "88688125"
 * 您需要 Azure AD 的租使用者。 您可以透過 [Azure 免費試用版](https://azure.microsoft.com/pricing/free-trial/)取得一個租用戶。 您可以使用下列其中一個入口網站來管理 Azure AD Connect：
   * [Azure 入口網站](https://portal.azure.com)。
   * [Office 入口網站](https://portal.office.com)。
-* [新增並驗證](../active-directory-domains-add-azure-portal.md) 您計畫使用於 Azure AD 中的網域。 例如，如果您打算為使用者使用 contoso.com，請確定此網域已經過驗證，而且您不只使用 contoso.onmicrosoft.com 預設網域。
-* Azure AD 的租使用者預設允許50000物件。 當您驗證您的網域時，限制會增加至300000物件。 如果您在 Azure AD 中需要更多物件，請開啟支援案例，讓限制增加更多。 如果您需要500000個以上的物件，您需要授權，例如 Office 365、Azure AD Premium 或 Enterprise Mobility + Security。
+* [新增並驗證](../fundamentals/add-custom-domain.md) 您計畫使用於 Azure AD 中的網域。 例如，如果您打算為使用者使用 contoso.com，請確定此網域已經過驗證，而且您不只使用 contoso.onmicrosoft.com 預設網域。
+* Azure AD 的租使用者預設允許50000物件。 當您驗證您的網域時，限制會增加至300000物件。 如果您在 Azure AD 中需要更多物件，請開啟支援案例，讓限制增加更多。 如果您需要500000個以上的物件，您需要授權，例如 Microsoft 365、Azure AD Premium 或 Enterprise Mobility + Security。
 
 ### <a name="prepare-your-on-premises-data"></a>準備您的內部部署資料
-* 在同步至 Azure AD 和 Office 365 之前，使用 [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) 來識別目錄中如重複項目和格式問題等的錯誤。
+* 在您同步處理至 Azure AD 和 Microsoft 365 之前，請使用 [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) 來識別目錄中的錯誤，例如重複和格式化問題。
 * 查看 [您可以在 Azure AD 中啟用的選擇性同步處理功能](how-to-connect-syncservice-features.md)，並評估應該啟用的功能。
 
 ### <a name="on-premises-active-directory"></a>內部部署 Active Directory
@@ -48,11 +48,11 @@ ms.locfileid: "88688125"
 * 建議您 [啟用 Active Directory 回收站](how-to-connect-sync-recycle-bin.md)。
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect 伺服器
-Azure AD Connect 伺服器包含重要的身分識別資料。 此伺服器的系統管理存取權必須受到適當保護。 遵循保護特殊許可權 [存取](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)的指導方針。 
+Azure AD Connect 伺服器包含重要的身分識別資料。 此伺服器的系統管理存取權必須受到適當保護。 遵循保護特殊許可權 [存取](/windows-server/identity/securing-privileged-access/securing-privileged-access)的指導方針。 
 
-Azure AD Connect 伺服器必須視為[Active Directory 系統管理層級模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)中記載的第0層元件 
+Azure AD Connect 伺服器必須視為[Active Directory 系統管理層級模型](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)中記載的第0層元件 
 
-若要深入瞭解如何保護您的 Active Directory 環境，請參閱 [保護 Active Directory 的最佳作法](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory)。
+若要深入瞭解如何保護您的 Active Directory 環境，請參閱 [保護 Active Directory 的最佳作法](/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory)。
 
 #### <a name="installation-prerequisites"></a>安裝必要條件
 
@@ -62,25 +62,25 @@ Azure AD Connect 伺服器必須視為[Active Directory 系統管理層級模型
 - 如果您使用 Azure AD Connect wizard 來管理 Active Directory 同盟服務 (AD FS 設定，Azure AD Connect 伺服器就不能群組原則啟用 PowerShell 轉譯。 如果您使用 Azure AD Connect wizard 來管理同步處理設定，則可以啟用 PowerShell 轉譯。 
 - 如果正在部署 AD FS： 
     - 安裝 AD FS 或 Web 應用程式 Proxy 的伺服器必須是 Windows Server 2012 R2 或更新版本。 Windows 遠端管理 ，才能執行遠端安裝。 
-    - 您必須設定 TLS/SSL 憑證。 如需詳細資訊，請參閱[在 AD FS 中管理 AD FS 和管理 ssl 憑證](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)[的 ssl/TLS 通訊協定和加密套件](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)。
+    - 您必須設定 TLS/SSL 憑證。 如需詳細資訊，請參閱[在 AD FS 中管理 AD FS 和管理 ssl 憑證](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)[的 ssl/TLS 通訊協定和加密套件](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)。
     - 您必須設定名稱解析。 
 - 如果您的全域管理員已啟用 MFA，則 URL https://secure.aadcdn.microsoftonline-p.com *必須* 在 [信任的網站] 清單中。 當系統提示您提供 MFA 挑戰，但尚未新增之前，系統會提示您將此網站新增至 [信任的網站] 清單。 您可以使用 Internet Explorer 將它新增到信任的網站。
 
 #### <a name="harden-your-azure-ad-connect-server"></a>強化您的 Azure AD Connect 伺服器 
 建議您強化 Azure AD Connect 伺服器，以減少 IT 環境中這個重要元件的安全性攻擊面。 遵循這些建議將有助於減輕組織的一些安全性風險。
 
-- 將 Azure AD Connect 視為與網域控制站和其他第0層資源相同。 如需詳細資訊，請參閱 [Active Directory 系統管理層模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)。
+- 將 Azure AD Connect 視為與網域控制站和其他第0層資源相同。 如需詳細資訊，請參閱 [Active Directory 系統管理層模型](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)。
 - 僅限網域系統管理員或其他嚴格控制的安全性群組，限制對 Azure AD Connect 伺服器的系統管理存取權。
-- [為具有特殊許可權存取權的所有人員建立專用帳戶](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)。 系統管理員不應流覽網頁、檢查其電子郵件，以及使用具有高許可權的帳戶來執行日常生產力工作。
-- 遵循保護特殊許可權 [存取](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)時所提供的指導方針。 
-- 拒絕對 AADConnect 伺服器使用 NTLM 驗證。 以下是一些執行此動作的方法： [限制 AADConnect 伺服器上的 ntlm](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) ，以及 [限制網域上的 ntlm](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
-- 確定每部電腦都有唯一的本機系統管理員密碼。 如需詳細資訊，請參閱 [區域系統管理員密碼解決方案 (LAPS) ](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) 可以在每部工作站上設定唯一的隨機密碼，並將它們儲存在 ACL 保護的 Active Directory 中。 只有合格的授權使用者才可讀取或要求重設這些本機系統管理員帳戶密碼。 您可以從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)取得要在工作站和伺服器上使用的 LAPS。 使用 LAPS 和特殊許可權存取工作站來操作環境的其他指導方針 (Paw) 可在以「 [完全來源」原則為基礎的操作標準](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)中找到。 
-- 針對具有貴組織資訊系統的特殊許可權存取權的所有人員，執行專用的特殊許可權 [存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) 。 
-- 遵循這些 [額外的指導方針](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) ，以降低 Active Directory 環境的受攻擊面。
+- [為具有特殊許可權存取權的所有人員建立專用帳戶](/windows-server/identity/securing-privileged-access/securing-privileged-access)。 系統管理員不應流覽網頁、檢查其電子郵件，以及使用具有高許可權的帳戶來執行日常生產力工作。
+- 遵循保護特殊許可權 [存取](/windows-server/identity/securing-privileged-access/securing-privileged-access)時所提供的指導方針。 
+- 拒絕對 AADConnect 伺服器使用 NTLM 驗證。 以下是一些執行此動作的方法： [限制 AADConnect 伺服器上的 ntlm](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) ，以及 [限制網域上的 ntlm](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
+- 確定每部電腦都有唯一的本機系統管理員密碼。 如需詳細資訊，請參閱 [區域系統管理員密碼解決方案 (LAPS) ](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) 可以在每部工作站上設定唯一的隨機密碼，並將它們儲存在 ACL 保護的 Active Directory 中。 只有合格的授權使用者才可讀取或要求重設這些本機系統管理員帳戶密碼。 您可以從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)取得要在工作站和伺服器上使用的 LAPS。 使用 LAPS 和特殊許可權存取工作站來操作環境的其他指導方針 (Paw) 可在以「 [完全來源」原則為基礎的操作標準](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)中找到。 
+- 針對具有貴組織資訊系統的特殊許可權存取權的所有人員，執行專用的特殊許可權 [存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations) 。 
+- 遵循這些 [額外的指導方針](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) ，以降低 Active Directory 環境的受攻擊面。
 
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect 使用的 SQL Server
-* Azure AD Connect 需要 SQL Server 資料庫來儲存身分識別資料。 根據預設，SQL Server 2012 Express LocalDB (安裝) 的輕 SQL Server Express 量版本。 SQL Server Express 有 10 GB 的大小限制，可讓您管理大約100000的物件。 如果您需要管理更大量的目錄物件，請將安裝精靈指向不同的 SQL Server 安裝。 SQL Server 安裝的類型可能會影響 [Azure AD Connect 的效能](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors)。
+* Azure AD Connect 需要 SQL Server 資料庫來儲存身分識別資料。 根據預設，SQL Server 2012 Express LocalDB (安裝) 的輕 SQL Server Express 量版本。 SQL Server Express 有 10 GB 的大小限制，可讓您管理大約100000的物件。 如果您需要管理更大量的目錄物件，請將安裝精靈指向不同的 SQL Server 安裝。 SQL Server 安裝的類型可能會影響 [Azure AD Connect 的效能](./plan-connect-performance-factors.md#sql-database-factors)。
 * 如果您使用不同的 SQL Server 安裝，則適用下列需求：
   * Azure AD Connect 支援 SQL Server 2012 (的所有版本，並以最新的 service pack) 到 SQL Server 2019。 Azure SQL Database *不支援* 做為資料庫。
   * 您必須使用不區分大小寫的 SQL 定序。 這些定序是在其名稱中使用 \_CI_ 來識別。 \_*不支援*在名稱中使用 CS_ 所識別的區分大小寫定序。
@@ -126,10 +126,10 @@ Azure AD Connect 伺服器必須視為[Active Directory 系統管理層級模型
         </system.net>
     ```
 
-* 如果在現有的設定中進行 proxy 設定，則必須重新開機 **Microsoft Azure AD 同步處理服務** 一次，讓 Azure AD Connect 讀取 proxy 設定並更新 behviour。 
+* 如果在現有的安裝程式中完成 proxy 設定，就必須重新開機 **Microsoft Azure AD 同步處理服務** ，Azure AD Connect 才能讀取 proxy 設定並更新行為。 
 * 當 Azure AD Connect 在同步處理目錄的過程中對 Azure AD 傳送了 Web 要求，Azure AD 最多可能需要 5 分鐘的時間才會回應。 Proxy 伺服器通常會有連接閒置超時設定。 請確定設定至少設定為6分鐘以上。
 
-如需詳細資訊，請參閱 MSDN 關於 [預設 proxy 元素](https://msdn.microsoft.com/library/kd3cf2ex.aspx)。
+如需詳細資訊，請參閱 MSDN 關於 [預設 proxy 元素](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)。
 如需連線問題的詳細資訊，請參閱[針對連線問題進行疑難排解](tshoot-connect-connectivity.md)。
 
 ### <a name="other"></a>其他
@@ -148,9 +148,9 @@ Azure AD Connect 需要 Microsoft PowerShell 和 .NET Framework 4.5.1。 您需�
 
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>啟用 Azure AD Connect 的 TLS 1.2
-在 1.1.614.0 版之前的版本中，Azure AD Connect 預設會使用 TLS 1.0 來加密同步引擎伺服器與 Azure AD 之間的通訊。 您可以設定 .NET 應用程式在伺服器上預設使用 TLS 1.2。 如需 TLS 1.2 的詳細資訊，請參閱 [Microsoft 資訊安全諮詢 2960358](https://technet.microsoft.com/security/advisory/2960358)。
+在 1.1.614.0 版之前的版本中，Azure AD Connect 預設會使用 TLS 1.0 來加密同步引擎伺服器與 Azure AD 之間的通訊。 您可以設定 .NET 應用程式在伺服器上預設使用 TLS 1.2。 如需 TLS 1.2 的詳細資訊，請參閱 [Microsoft 資訊安全諮詢 2960358](/security-updates/SecurityAdvisories/2015/2960358)。
 
-1. 請確定您已為您的作業系統安裝 .NET 4.5.1 的修正程式。 如需詳細資訊，請參閱 [Microsoft 資訊安全諮詢 2960358](https://technet.microsoft.com/security/advisory/2960358)。 您的伺服器上可能已經安裝此 Hotfix 或更新版本。
+1. 請確定您已為您的作業系統安裝 .NET 4.5.1 的修正程式。 如需詳細資訊，請參閱 [Microsoft 資訊安全諮詢 2960358](/security-updates/SecurityAdvisories/2015/2960358)。 您的伺服器上可能已經安裝此 Hotfix 或更新版本。
 
 1. 請針對所有作業系統設定此登錄機碼並重新啟動伺服器。
     ```

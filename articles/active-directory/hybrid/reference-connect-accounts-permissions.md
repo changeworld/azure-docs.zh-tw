@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f84724285dee6dfff4913b067daa651837787d4e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 28fc05be7a5b54713aec8c4f830eeb2f7e6a251c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255773"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662343"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帳戶和權限
 
@@ -55,7 +55,7 @@ Azure AD Connect 會使用 3 個帳戶，以便將資訊從內部部署或 Windo
 > [!NOTE]
 > 支援從 ESAE 系統管理樹系 (也稱為「紅色樹系」) 管理 Azure AD Connect 中使用的系統管理帳戶。
 > 專用的系統管理樹系可讓組織在比實際執行環境具有更強安全性控制的環境中裝載系統管理帳戶、工作站和群組。
-> 若要深入了解專用的系統管理樹系，請參閱 [ESAE 系統管理樹系設計方法](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)。
+> 若要深入了解專用的系統管理樹系，請參閱 [ESAE 系統管理樹系設計方法](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)。
 
 > [!NOTE]
 > 初始設定之後就不需要全域管理員角色，唯一需要的帳戶是**目錄同步作業帳戶**角色帳戶。 這不一定表示您只想要移除具有全域管理員角色的帳戶。 最好是將角色變更為較不強大的角色，因為如果您需要重新執行精靈，完全移除帳戶可能會導致問題。 藉由降低角色的權限，如果您必須再次使用 Azure AD Connect 精靈，則一律可以重新提升權限。 
@@ -147,9 +147,9 @@ AD DS 連接器帳戶是為了在 Windows Server AD 中讀取和寫入而建立�
 | 密碼雜湊同步處理 |<li>複寫目錄變更</li>  <li>複寫目錄變更 (全部) |
 | Exchange 混合式部署 |[Exchange 混合回寫](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)中記載了使用者、群組和連絡人適用的屬性的寫入權限。 |
 | Exchange 郵件公用資料夾 |公用資料夾屬性 (詳情記載於 [Exchange 郵件公用資料夾](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)) 的讀取權限。 | 
-| 密碼回寫 |[開始使用密碼管理](../authentication/howto-sspr-writeback.md)中記載了使用者適用的屬性的寫入權限。 |
+| 密碼回寫 |[開始使用密碼管理](../authentication/tutorial-enable-sspr-writeback.md)中記載了使用者適用的屬性的寫入權限。 |
 | 裝置回寫 |[裝置回寫](how-to-connect-device-writeback.md)中所述的使用 PowerShell 指令碼授與權限。 |
-| 群組回寫 |可讓您將 **Office 365 群組**回寫至已安裝 Exchange 的樹系。|
+| 群組回寫 |可讓您將 **Microsoft 365 群組** 回寫至已安裝 Exchange 的樹系。|
 
 ## <a name="upgrade"></a>升級
 當您從一個 Azure AD Connect 版本升級到新版本時，需要下列權限：
@@ -197,8 +197,8 @@ AD DS 連接器帳戶是為了在 Windows Server AD 中讀取和寫入而建立�
 - 非粗體 - 支援選項
 - 本機帳戶 - 伺服器上的本機使用者帳戶
 - 網域帳戶 - 網域使用者帳戶
-- sMSA - [獨立受控服務帳戶](https://technet.microsoft.com/library/dd548356.aspx)
-- gMSA - [群組受控服務帳戶](https://technet.microsoft.com/library/hh831782.aspx)
+- sMSA - [獨立受控服務帳戶](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
+- gMSA - [群組受控服務帳戶](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>Custom | 遠端 SQL</br>Custom |
 | --- | --- | --- | --- |
@@ -215,11 +215,11 @@ VSA 適用於同步處理引擎和 SQL 位於相同伺服器的情況。 如果�
 這項功能需要 Windows Server 2008 R2 或更新版本。 如果您在 Windows Server 2008 上安裝 Azure AD Connect，則安裝會改回使用[使用者帳戶](#user-account)。
 
 #### <a name="group-managed-service-account"></a>群組受控服務帳戶
-如果您使用遠端 SQL Server，我們建議使用**群組受控服務帳戶**。 如需如何讓 Active Directory 準備好使用群組受控服務帳戶的詳細資訊，請參閱[群組受控服務帳戶概觀](https://technet.microsoft.com/library/hh831782.aspx)。
+如果您使用遠端 SQL Server，我們建議使用**群組受控服務帳戶**。 如需如何讓 Active Directory 準備好使用群組受控服務帳戶的詳細資訊，請參閱[群組受控服務帳戶概觀](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))。
 
 若要使用此選項，請在 [安裝必要元件](how-to-connect-install-custom.md#install-required-components) 頁面上，依序選取 [使用現有的服務帳戶] 和 [受控服務帳戶]。  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
-系統也支援使用[獨立受控服務帳戶](https://technet.microsoft.com/library/dd548356.aspx)。 不過，這些帳戶只能在本機電腦上使用，所以對預設虛擬服務帳戶使用這些帳戶並沒有任何好處。
+系統也支援使用[獨立受控服務帳戶](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))。 不過，這些帳戶只能在本機電腦上使用，所以對預設虛擬服務帳戶使用這些帳戶並沒有任何好處。
 
 這項功能需要 Windows Server 2012 或更新版本。 如果您需要使用較舊的作業系統並使用遠端 SQL，則您必須使用[使用者帳戶](#user-account)。
 
@@ -252,7 +252,7 @@ Azure AD 中有 20 個同步服務帳戶的限制。 若要取得 Azure AD 中�
 若要移除未使用的 Azure AD 服務帳戶，請執行下列 Azure AD PowerShell Cmdlet：`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
->在您可以使用上述 PowerShell 命令之前，您必須安裝 [Azure Active Directory PowerShell for Graph 模組](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module)，並且使用 [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0) 連線至您的 Azure AD 執行個體
+>在您可以使用上述 PowerShell 命令之前，您必須安裝 [Azure Active Directory PowerShell for Graph 模組](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module)，並且使用 [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) 連線至您的 Azure AD 執行個體
 
 如需如何管理或重設 Azure AD 連接器帳戶密碼的詳細資訊，請參閱[管理 Azure AD Connect 帳戶](how-to-connect-azureadaccount.md)
 

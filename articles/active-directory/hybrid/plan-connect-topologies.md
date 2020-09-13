@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47973a8444de64dc5c2bb75b5f0d65d1e6d35f6e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509073"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658517"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓撲
 本文說明使用 Azure AD Connect 同步處理做為重要整合解決方案的各種內部部署和 Azure Active Directory (Azure AD) 拓撲。 本文包含受支援和不受支援的組態。
@@ -117,15 +117,15 @@ Azure AD Connect 同步處理中的預設組態假設：
 
 在此案例中，一個 (或多個) 資源樹系信任所有帳戶樹系。 此資源樹系通常具有擴充的 Active Directory 結構描述與 Exchange 和 Lync。 所有的 Exchange 和 Lync 服務以及其他共用的服務都位於此樹系。 使用者在此樹系中擁有停用的使用者帳戶，而信箱會連結至帳戶樹系。
 
-## <a name="office-365-and-topology-considerations"></a>Office 365 和拓撲考量
-有些 Office 365 工作負載對受支援的拓撲有某些限制：
+## <a name="microsoft-365-and-topology-considerations"></a>Microsoft 365 與拓撲考慮
+某些 Microsoft 365 工作負載對支援的拓撲有某些限制：
 
 | 工作負載 | 限制 |
 | --------- | --------- |
-| Exchange Online | 如需有關 Exchange Online 所支援之混合式技術的詳細資訊，請參閱[具有多個 Active Directory 樹系的混合部署](https://technet.microsoft.com/library/jj873754.aspx)。 |
-| 商務用 Skype | 使用多個內部部署樹系時，只會支援帳戶資源樹系拓撲。 如需詳細資訊，請參閱[商務用 Skype Server 2015 的環境需求](https://technet.microsoft.com/library/dn933910.aspx)。 |
+| Exchange Online | 如需有關 Exchange Online 所支援之混合式技術的詳細資訊，請參閱[具有多個 Active Directory 樹系的混合部署](/Exchange/hybrid-deployment/hybrid-with-multiple-forests)。 |
+| 商務用 Skype | 使用多個內部部署樹系時，只會支援帳戶資源樹系拓撲。 如需詳細資訊，請參閱[商務用 Skype Server 2015 的環境需求](/skypeforbusiness/plan-your-deployment/requirements-for-your-environment/environmental-requirements)。 |
 
-如果您是較大型的組織，那麼就應該考量使用 [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) 功能。 它可讓您定義使用者的資源要放置於哪個資料中心區域。
+如果您是較大型的組織，則應該考慮使用 [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) 功能。 它可讓您定義使用者的資源要放置於哪個資料中心區域。
 
 ## <a name="staging-server"></a>預備伺服器
 ![在拓撲中的預備伺服器](./media/plan-connect-topologies/MultiForestStaging.png)
@@ -197,7 +197,7 @@ Azure AD 租用戶在設計上是隔離的。 下列工作不受支援：
 
 Azure Active Directory Connect 伺服器會透過 Azure Active Directory Connect 後端與 Azure Active Directory 進行通訊。 唯一可以用來與此後端通訊的軟體是 Azure Active Directory Connect。 不支援使用任何其他軟體或方法與 Azure Active Directory Connect 後端通訊。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 若要了解如何安裝這些案例的 Azure AD Connect，請參閱[自訂 Azure AD Connect 安裝](how-to-connect-install-custom.md)。
 
 深入了解 [Azure AD Connect 同步](how-to-connect-sync-whatis.md) 組態。

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bef7de68084ac3084c0b0179a7bbf6b1c9ca951
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e991fb0c60e8f08eb43cb7799027d4200263c9b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182440"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659547"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>定義混合式身分識別解決方案的資料保護策略
 在這項工作中，您將為混合式身分識別解決方案定義資料保護策略，以符合您已定義的商務需求：
@@ -37,7 +37,7 @@ ms.locfileid: "89182440"
 
 驗證之後，可從驗證權杖讀取使用者主體名稱 (UPN)。 然後，授權系統會判斷對應到使用者網域的複寫分割區和容器。 使用者的存在情形、啟用狀態和角色的相關資訊，可協助授權系統判斷這名使用者在此工作階段中對目標租用戶的存取是否已獲授權。 特定的授權動作 (具體而言，如建立使用者和密碼重設) 會建立可供租用戶管理員用來管理法規遵循工作或調查的稽核記錄。
 
-由於資料數量、頻寬可用性或其他考量，透過網際網路連線將資料從您的內部部署資料中心移至 Azure 儲存體中，並不一定永遠可行。 [Azure 儲存體匯入/匯出服務](../../storage/common/storage-import-export-service.md) 提供以硬體為基礎的選項，可讓您在 Blob 儲存體中放置/擷取大量資料。 它可讓您將 [BitLocker 加密](https://technet.microsoft.com/library/dn306081#BKMK_BL2012R2)硬碟直接傳送至 Azure 資料中心，而雲端操作員會在此處將內容上傳至您的儲存體帳戶，或是將您的 Azure 資料下載到您的磁碟機歸還給您。 在此程序中只能使用加密磁碟 (使用服務本身在工作設定期間產生的 BitLocker 金鑰)。 BitLocker 金鑰會個別提供給 Azure，藉此提供頻外金鑰共用。
+由於資料數量、頻寬可用性或其他考量，透過網際網路連線將資料從您的內部部署資料中心移至 Azure 儲存體中，並不一定永遠可行。 [Azure 儲存體匯入/匯出服務](../../storage/common/storage-import-export-service.md) 提供以硬體為基礎的選項，可讓您在 Blob 儲存體中放置/擷取大量資料。 它可讓您將 [BitLocker 加密](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2)硬碟直接傳送至 Azure 資料中心，而雲端操作員會在此處將內容上傳至您的儲存體帳戶，或是將您的 Azure 資料下載到您的磁碟機歸還給您。 在此程序中只能使用加密磁碟 (使用服務本身在工作設定期間產生的 BitLocker 金鑰)。 BitLocker 金鑰會個別提供給 Azure，藉此提供頻外金鑰共用。
 
 由於傳輸中的資料可能在不同情況下進行，因此也需要了解 Microsoft Azure 會使用 [虛擬網路](https://azure.microsoft.com/documentation/services/virtual-network/) 隔離租用戶彼此之間的流量，它所採用的機制有可能是主機和客體層級防火牆、IP 封包篩選、連接埠封鎖和 HTTPS 端點等。 不過，Azure 的內部通訊大多也會加密，包括基礎結構對基礎結構和基礎結構對客戶 (內部部署) 的通訊。 另一個重要的案例是 Azure 資料中心內的通訊；Microsoft 會管理網路，以確保沒有 VM 可以模擬或竊聽其他 VM 的 IP 位址。 在存取 Azure 儲存體或 SQL Database，或是在連接到雲端服務時，會使用 TLS/SSL。 在此情況下，客戶的系統管理員會負責取得 TLS/SSL 憑證，並將其部署至其租用戶基礎結構。 透過 Microsoft Azure 虛擬網路在相同部署中的虛擬機器之間或單一部署中的租用戶之間移動的資料流量，可透過加密的通訊協定 (例如 HTTPS、SSL/TLS 或其他通訊協定) 受到保護。
 
@@ -61,9 +61,9 @@ ms.locfileid: "89182440"
 
 使用 Azure AD 來管理混合式身分識別基礎結構的優點之一，是整個程序對使用者而言是完全透明的。 使用者會嘗試存取共用資源，而資源需要驗證，因此使用者必須將驗證要求傳送至 Azure AD，才能夠取得權杖並存取資源。 整個程序都會在背景執行，使用者無須動作。 
 
-有資料隱私權顧慮的組織通常需要對其解決方案進行資料分類。 如果其目前的內部部署基礎結構已使用資料分類，就能夠利用 Azure AD 作為使用者身分識別的主要儲存機制。 在 Windows Server 2012 R2 中，內部部署中用於資料分類的常用工具稱為 [資料分類工具組](https://msdn.microsoft.com/library/Hh204743.aspx) 。 這項工具有助於您對私人雲端中的檔案伺服器進行資料的識別、分類及保護。 您也可利用 Windows Server 2012 中的[自動檔案分類](https://technet.microsoft.com/library/hh831672.aspx)來完成這項工作。
+有資料隱私權顧慮的組織通常需要對其解決方案進行資料分類。 如果其目前的內部部署基礎結構已使用資料分類，就能夠利用 Azure AD 作為使用者身分識別的主要儲存機制。 在 Windows Server 2012 R2 中，內部部署中用於資料分類的常用工具稱為 [資料分類工具組](/previous-versions/tn-archive/hh204743(v=technet.10)) 。 這項工具有助於您對私人雲端中的檔案伺服器進行資料的識別、分類及保護。 您也可利用 Windows Server 2012 中的[自動檔案分類](/windows-server/identity/solution-guides/deploy-automatic-file-classification--demonstration-steps-)來完成這項工作。
 
-如果您的組織目前沒有資料分類機制，但需要在內部部署不新增伺服器的情況下保護敏感檔案，他們可以使用 Microsoft [Azure Rights Management Service](https://technet.microsoft.com/library/JJ585026.aspx)。  Azure RMS 會使用加密、身分識別和授權原則協助您保護檔案和電子郵件，並且可跨多個裝置運作 — 手機、平板電腦和 PC。 Azure RMS 屬於雲端服務，因此您無須明確設定對其他組織的信任，即可與他們共用受保護的內容。 如果他們已有 Office 365 或 Azure AD 目錄，則會自動支援跨組織的共同作業。 您也可以使用 Azure Active Directory 同步處理服務 (AAD 同步) 或 Azure AD Connect，僅同步處理 Azure RMS 支援您內部部署 Active Directory 帳戶的一般身分識別所需的目錄屬性。
+如果您的組織目前沒有資料分類機制，但需要在內部部署不新增伺服器的情況下保護敏感檔案，他們可以使用 Microsoft [Azure Rights Management Service](/azure/information-protection/what-is-azure-rms)。  Azure RMS 會使用加密、身分識別和授權原則協助您保護檔案和電子郵件，並且可跨多個裝置運作 — 手機、平板電腦和 PC。 Azure RMS 屬於雲端服務，因此您無須明確設定對其他組織的信任，即可與他們共用受保護的內容。 如果他們已經有 Microsoft 365 或 Azure AD 目錄，則會自動支援跨組織的共同作業。 您也可以使用 Azure Active Directory 同步處理服務 (Azure AD 同步) 或 Azure AD Connect，只同步處理 Azure RMS 需要針對內部部署 Active Directory 帳戶支援通用身分識別的目錄屬性。
 
 了解誰正在存取哪個資源，是內容管理很重要的一部分，因此強大的記錄功能對於身分識別管理解決方案而言，是很重要的。 Azure AD 提供超過 30 天的記錄，其中包括：
 
@@ -82,7 +82,7 @@ ms.locfileid: "89182440"
 
 | 內容管理選項 | 優點 | 缺點 |
 | --- | --- | --- |
-| 集中式的內部部署 (Active Directory Rights Management Server) |完全掌控負責分類資料的伺服器基礎結構  <br> Windows Server 中內建功能，不需要取得額外授權或訂用帳戶 <br> 可以與混合式案例中的 Azure AD 整合 <br> 支援 Microsoft Online Services，例如 Exchange Online 和 SharePoint Online 以及 Office 365 中的資訊版權管理 (IRM) 功能 <br>  支援內部部署 Microsoft 伺服器產品，例如 Exchange Server、SharePoint Server，以及執行 Windows Server 和檔案分類基礎結構 (FCI) 的檔案伺服器。 |需要較多維護 (隨時進行更新、設定與潛在升級)，因為 IT 人員擁有伺服器 <br> 需要內部部署的伺服器基礎結構<br> 在原生狀態下不會使用 Azure 功能 |
+| 集中式的內部部署 (Active Directory Rights Management Server) |完全掌控負責分類資料的伺服器基礎結構  <br> Windows Server 中內建功能，不需要取得額外授權或訂用帳戶 <br> 可以與混合式案例中的 Azure AD 整合 <br> 支援資訊版權管理 (Microsoft 線上服務（例如 Exchange Online 和 SharePoint Online）中的 IRM) 功能，以及 Microsoft 365 <br>  支援內部部署 Microsoft 伺服器產品，例如 Exchange Server、SharePoint Server，以及執行 Windows Server 和檔案分類基礎結構 (FCI) 的檔案伺服器。 |需要較多維護 (隨時進行更新、設定與潛在升級)，因為 IT 人員擁有伺服器 <br> 需要內部部署的伺服器基礎結構<br> 在原生狀態下不會使用 Azure 功能 |
 | 集中於雲端 (Azure RMS) |比內部部署解決方案容易管理  <br> 可以與混合式案例中的 AD DS 整合 <br>  完全與 Azure AD 整合 <br> 不需要內部部署伺服器，即可部署服務 <br> 支援內部部署 Microsoft 伺服器產品，例如 Exchange Server、SharePoint Server，以及執行 Windows Server 和檔案分類基礎結構 (FCI) 的檔案伺服器 <br> IT 人員可透過 BYOK 功能完全控制其租用戶的金鑰。 |組織必須具有支援 RMS 的雲端訂用帳戶  <br>  組織必須具有 Azure AD 目錄以支援 RMS 的使用者驗證 |
 | 混合式 (Azure RMS 與內部部署 Active Directory Rights Management Server 整合) |這種情況下結合了集中式內部部署和雲端兩者的優點。 |組織必須具有支援 RMS 的雲端訂用帳戶  <br> 組織必須具有 Azure AD 目錄以支援 RMS 的使用者驗證， <br>  Azure 雲端服務與內部部署基礎結構之間必須要有連線 |
 
@@ -102,14 +102,14 @@ Azure Active Directory 可為數千個 SaaS 應用程式和內部部署 Web 應�
 * 憑證
 
 > [!NOTE]
-> 請閱讀 [Azure Active Directory 驗證通訊協定](https://msdn.microsoft.com/library/azure/dn151124.aspx) ，以深入了解 Azure 中的每個通訊協定及其功能。
+> 請閱讀 [Azure Active Directory 驗證通訊協定](/previous-versions/azure/dn151124(v=azure.100)) ，以深入了解 Azure 中的每個通訊協定及其功能。
 >
 >
 
 藉由 Azure AD 支援，行動商業應用程式可使用相同的簡單行動服務驗證功能，讓員工利用公司的 Active Directory 認證登入其行動應用程式。 透過這項功能，Azure AD 可受到支援作為行動服務中的識別提供者，與已支援的其他識別提供者 (包括 Microsoft 帳戶、Facebook ID、Google ID 和 Twitter ID) 搭配運作。 如果內部部署應用程式使用位於公司 AD DS 的使用者認證，則來自雲端的協力廠商和使用者所做的存取應該是透明的。 您可以管理使用者的條件式存取控制，以 (雲端式) web 應用程式、web API、Microsoft 雲端服務、協力廠商 SaaS 應用程式，以及原生 (行動) 用戶端應用程式，並讓安全性、審核和報告的優點全都集中在同一處。 不過，建議您在非生產環境中或使用者數量有限的環境中驗證此實作。
 
 > [!TIP]
-> 務必要提到的是，Azure AD 不像 AD DS 一樣具有群組原則。 若要為裝置強制執行原則，您需要有行動裝置管理解決方案，例如 [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx)。
+> 務必要提到的是，Azure AD 不像 AD DS 一樣具有群組原則。 若要為裝置強制執行原則，您需要有行動裝置管理解決方案，例如 [Microsoft Intune](/mem/intune/)。
 >
 >
 
@@ -131,7 +131,7 @@ Azure Active Directory 可為數千個 SaaS 應用程式和內部部署 Web 應�
    > 如果您要建置應用程式並想要自訂其存取控制，可以使用 Azure AD 應用程式角色來進行授權。 請參閱 [WebApp-RoleClaims-DotNet 範例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) ，了解如何建置您的應用程式以使用這項功能。
 
 
-3. 具有 Microsoft Intune 的 Office 365 應用程式條件式存取： IT 系統管理員可以布建條件式存取裝置原則來保護公司資源，同時允許相容裝置上的資訊工作者存取服務。 
+3. 使用 Microsoft Intune Microsoft 365 應用程式的條件式存取： IT 系統管理員可以布建條件式存取裝置原則來保護公司資源，同時允許相容裝置上的資訊工作者存取服務。 
   
 4. Saas 應用程式的條件式存取：[此功能](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/)可讓您設定每個應用程式的多重要素驗證存取規則，且能夠封鎖不在受信任網路上的使用者存取。 您可以將多因素驗證規則套用至所有已指派給應用程式的使用者，或只套用至指定的安全性群組內的使用者。 如果使用者是從組織網路內的 IP 位址存取應用程式，則可從多因素驗證需求中排除這些使用者。
 
@@ -168,7 +168,7 @@ Azure AD 中還有其他可在事件回應調查期間使用的重要內建報�
 
 由於事件回應的選項採用多層式方法，因此在執行這項工作時無法比較這些選項。 請確實針對每個要求您在公司的事件回應程序中使用 Azure AD 報告功能的案例，使用所有適用的選項。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [判斷混合式身分識別管理工作](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
 
 ## <a name="see-also"></a>另請參閱

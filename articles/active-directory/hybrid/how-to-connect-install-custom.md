@@ -14,12 +14,12 @@ ms.date: 06/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84b5635d934b15c7ddd289e3a9deb014361d3c94
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 39eb45f4488c0ddc63ab8e7357a122b47777feee
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850178"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662346"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>自訂 Azure AD Connect 安裝
 當您想要更多安裝選項時，可使用 Azure AD Connect **自訂設定** 。 如果您有多個樹系，或如果您想要設定未涵蓋在快速安裝中的選用功能，可使用它。 只要是[**快速安裝**](how-to-connect-install-express.md)選項不能滿足部署或拓撲的情況，就可使用它。
@@ -50,10 +50,10 @@ ms.locfileid: "85850178"
 
 | 單一登入選項 | 描述 |
 | --- | --- |
-| 密碼雜湊同步處理 |使用者可使用他們在內部部署網路中使用的相同密碼登入 Microsoft Cloud 服務，例如 Office 365。 使用者密碼會以密碼雜湊的形式同步至 Azure AD，並在雲端中進行驗證。 如需詳細資訊，請參閱[密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)。 |
-|傳遞驗證|使用者可使用他們在內部部署網路中使用的相同密碼登入 Microsoft Cloud 服務，例如 Office 365。  使用者密碼會傳遞至內部部署 Active Directory 網域控制站進行驗證。
-| 與 AD FS 同盟 |使用者可使用他們在內部部署網路中使用的相同密碼登入 Microsoft Cloud 服務，例如 Office 365。  系統會將使用者重新導向至他們的內部部署 AD FS 執行個體以進行登入，並在內部部署中進行驗證。 |
-| 與 PingFederate 同盟|使用者可使用他們在內部部署網路中使用的相同密碼登入 Microsoft Cloud 服務，例如 Office 365。  系統會將使用者重新導向至他們的內部部署 PingFederate 執行個體以進行登入，並在內部部署中進行驗證。 |
+| 密碼雜湊同步處理 |使用者可以使用他們在內部部署網路中使用的相同密碼來登入 Microsoft 雲端服務（例如 Microsoft 365）。 使用者密碼會以密碼雜湊的形式同步至 Azure AD，並在雲端中進行驗證。 如需詳細資訊，請參閱[密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)。 |
+|傳遞驗證|使用者可以使用他們在內部部署網路中使用的相同密碼來登入 Microsoft 雲端服務（例如 Microsoft 365）。  使用者密碼會傳遞至內部部署 Active Directory 網域控制站進行驗證。
+| 與 AD FS 同盟 |使用者可以使用他們在內部部署網路中使用的相同密碼來登入 Microsoft 雲端服務（例如 Microsoft 365）。  系統會將使用者重新導向至他們的內部部署 AD FS 執行個體以進行登入，並在內部部署中進行驗證。 |
+| 與 PingFederate 同盟|使用者可以使用他們在內部部署網路中使用的相同密碼來登入 Microsoft 雲端服務（例如 Microsoft 365）。  系統會將使用者重新導向至他們的內部部署 PingFederate 執行個體以進行登入，並在內部部署中進行驗證。 |
 | 請勿設定 |不會安裝和設定任何使用者登入功能。 如果您已經有第三方的同盟伺服器或另一個現有的適當方案，請選擇此選項。 |
 |啟用單一登入|此選項同時適用於密碼雜湊同步處理和傳遞驗證，並可為公司網路上的桌上型電腦使用者提供單一登入體驗。 如需詳細資訊，請參閱[單一登入](how-to-connect-sso.md)。 </br>請注意，AD FS 客戶無法使用此選項，因為 AD FS 已提供相同層級的單一登入。</br>
 
@@ -95,15 +95,15 @@ ms.locfileid: "85850178"
 此頁面可讓您檢閱內部部署 AD DS 中存在的 UPN 網域，以及已在 Azure AD 中驗證的 UPN 網域。 此頁面也可讓您設定要用於 userPrincipalName 的屬性。
 
 ![未驗證的網域](./media/how-to-connect-install-custom/aadsigninconfig2.png)  
-檢閱每一個標示為**未新增**和**未驗證**的網域。 確定您所使用的網域皆已在 Azure AD 中完成驗證。 驗證好網域時，按一下 [重新整理] 符號。 如需詳細資訊，請參閱[新增並驗證網域](../active-directory-domains-add-azure-portal.md)
+檢閱每一個標示為**未新增**和**未驗證**的網域。 確定您所使用的網域皆已在 Azure AD 中完成驗證。 驗證好網域時，按一下 [重新整理] 符號。 如需詳細資訊，請參閱[新增並驗證網域](../fundamentals/add-custom-domain.md)
 
-**UserPrincipalName** ：屬性 userPrincipalName 是使用者登入 Azure AD 和 Office 365 時會使用的屬性。 使用的網域 (也稱為 UPN 尾碼)，應該會在同步處理使用者前於 Azure AD 中進行驗證。 Microsoft 建議保留預設屬性 userPrincipalName。 如果此屬性不可路由傳送且無法驗證，則可以選取另一個屬性。 例如，您可以選取電子郵件做為保存登入識別碼的屬性。 使用 userPrincipalName 之外的其他屬性稱為 **替代 ID**。 替代 ID 屬性值必須遵循 RFC822 標準。 替代 ID 可與密碼雜湊同步處理、傳遞驗證和同盟搭配使用。 此屬性不得在 Active Directory 中定義為多重值 (即使它只有單一值)。 如需替代識別碼的詳細資訊，請參閱[常見問題集](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)主題。
+**UserPrincipalName** -屬性 UserPrincipalName 是使用者登入 Azure AD 和 Microsoft 365 時使用的屬性。 使用的網域 (也稱為 UPN 尾碼)，應該會在同步處理使用者前於 Azure AD 中進行驗證。 Microsoft 建議保留預設屬性 userPrincipalName。 如果此屬性不可路由傳送且無法驗證，則可以選取另一個屬性。 例如，您可以選取電子郵件做為保存登入識別碼的屬性。 使用 userPrincipalName 之外的其他屬性稱為 **替代 ID**。 替代 ID 屬性值必須遵循 RFC822 標準。 替代 ID 可與密碼雜湊同步處理、傳遞驗證和同盟搭配使用。 此屬性不得在 Active Directory 中定義為多重值 (即使它只有單一值)。 如需替代識別碼的詳細資訊，請參閱[常見問題集](./how-to-connect-pta-faq.md#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)主題。
 
 >[!NOTE]
 > 當您啟用傳遞驗證時，您必須至少有一個已驗證網域才能繼續執行精靈。
 
 > [!WARNING]
-> 使用替代 ID 會與所有 Office 365 工作負載不相容。 如需詳細資訊，請參閱 [設定替代的登入 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。
+> 使用替代識別碼與所有 Microsoft 365 工作負載不相容。 如需詳細資訊，請參閱 [設定替代的登入 ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。
 >
 >
 
@@ -133,12 +133,12 @@ ms.locfileid: "85850178"
 | [郵件屬性](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |如果郵件屬性在不同樹系中具有相同的值，則此選項就會聯結使用者和連絡人。 如果已透過 GALSync 建立了您的連絡人，請使用此選項。 如果選擇此選項，則不會將未填入其 Mail 屬性的 User 物件同步處理至 Azure AD。 |
 | [ObjectSID 與 msExchangeMasterAccountSID/ msRTCSIP-OriginatorSid](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |此選項會聯結帳戶樹系中已啟用的使用者與資源樹系中已停用的使用者。 在 Exchange 中，此組態稱為連結信箱。 如果您只使用 Lync 而 Exchange 不存在資源樹系中，也可以使用此選項。 |
 | sAMAccountName 與 MailNickName |此選項會在預期可以找到使用者登入 ID 的屬性中聯結。 |
-| 特定的屬性 |此選項可讓您選取您的屬性。 如果選擇此選項，則不會將未填入其 (已選取) 屬性的 User 物件同步處理至 Azure AD。 **限制：** 只有可在元 # 中找到的屬性可用於此選項。」 |
+| 特定的屬性 |此選項可讓您選取您的屬性。 如果選擇此選項，則不會將未填入其 (已選取) 屬性的 User 物件同步處理至 Azure AD。 **限制：** 只有可在元（attribute）中找到的屬性可供此選項使用。」。 |
 
 #### <a name="select-how-users-should-be-identified-with-azure-ad---source-anchor"></a>選取要如何使用 Azure AD 識別使用者 - 來源錨點
 屬性 sourceAnchor 是使用者物件存留期間都不會變更的屬性。 它是連結內部部署使用者與 Azure AD 中使用者的主要金鑰。
 
-| 設定 | 說明 |
+| 設定 | 描述 |
 | --- | --- |
 | 讓 Azure 為我管理來源錨點 | 如果您想要 Azure AD 為您挑選屬性，請選取此選項。 如果您選取此選項，Azure AD Connect 精靈會套本文的以下一節所說明的 sourceAnchor 屬性選取邏輯：[Azure AD Connect︰設計概念 - 使用 ms-DS-ConsistencyGuid 作為 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)。 自訂安裝完成之後，此精靈會通知您哪些屬性已被選為來源錨點屬性。 |
 | 特定的屬性 | 如果您希望指定現有的 AD 屬性作為 sourceAnchor 屬性，請選取此選項。 |
@@ -176,12 +176,12 @@ ms.locfileid: "85850178"
 
 | 選用功能 | 描述 |
 | --- | --- |
-| Exchange 混合部署 |Exchange 混合部署功能允許在內部部署和 Office 365 中並存 Exchange 信箱。 Azure AD Connect 會將一組特定的[屬性](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)從 Azure AD 同步處理回內部部署目錄。 |
+| Exchange 混合部署 |Exchange 混合式部署功能可讓您同時存在內部部署和 Microsoft 365 中的 Exchange 信箱。 Azure AD Connect 會將一組特定的[屬性](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)從 Azure AD 同步處理回內部部署目錄。 |
 | Exchange 郵件公用資料夾 | 「Exchange 郵件公用資料夾」功能可讓您將擁有郵件功能的公用資料夾物件從內部部署 Active Directory 同步處理到 Azure AD。 |
 | Azure AD 應用程式和屬性篩選 |透過啟用 Azure AD 應用程式和屬性篩選，即可調整這組同步處理的屬性。 這個選項會在精靈中另外新增兩個組態頁面。 如需詳細資訊，請參閱 [Azure AD 應用程式和屬性篩選](#azure-ad-app-and-attribute-filtering)。 |
 | 密碼雜湊同步處理 |如果您選取同盟做為登入解決方案，您可以啟用此選項。 密碼雜湊同步處理可作為備份選項。 如需其他資訊，請參閱[密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)。 </br></br>如果您已選取傳遞驗證，則預設也會啟用此選項，確保能夠支援舊版用戶端並作為備用選項。 如需其他資訊，請參閱[密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)。|
-| 密碼回寫 |透過啟用密碼回寫，在 Azure AD 中產生的密碼變更會回寫至內部部署目錄。 如需詳細資訊，請參閱[開始使用密碼管理](../authentication/quickstart-sspr.md)。 |
-| 群組回寫 |如果您使用 [Office 365 群組]  功能，就可以在內部部署的 Active Directory 中顯示這些群組。 只有當您內部部署的 Active Directory 中已經有 Exchange 時，才能使用此選項。 如需詳細資訊，請參閱[Azure AD Connect 群組回寫](how-to-connect-group-writeback.md)|
+| 密碼回寫 |透過啟用密碼回寫，在 Azure AD 中產生的密碼變更會回寫至內部部署目錄。 如需詳細資訊，請參閱[開始使用密碼管理](../authentication/tutorial-enable-sspr.md)。 |
+| 群組回寫 |如果您使用 **Microsoft 365 群組** 功能，則您可以在內部部署 Active Directory 中表示這些群組。 只有當您內部部署的 Active Directory 中已經有 Exchange 時，才能使用此選項。 如需詳細資訊，請參閱 [Azure AD Connect 群組回寫](how-to-connect-group-writeback.md)|
 | 裝置回寫 |在條件式存取情況下，可讓您將 Azure AD 中的裝置物件回寫到內部部署的 Active Directory。 如需詳細資訊，請參閱[在 Azure AD Connect 中啟用裝置回寫](how-to-connect-device-writeback.md)。 |
 | 目錄擴充屬性同步處理 |透過啟用目錄擴充屬性同步處理，指定的屬性將會同步處理至 Azure AD。 如需詳細資訊，請參閱[目錄擴充](how-to-connect-sync-feature-directory-extensions.md)。 |
 
@@ -303,7 +303,7 @@ AD FS 服務需要網域服務帳戶來驗證使用者，以及在 Active Direct
 ![Azure AD 網域](./media/how-to-connect-install-custom/adfs6.png)
 
 ### <a name="verify-the-azure-ad-domain-selected-for-federation"></a>驗證所選取用於同盟的 Azure AD 網域
-當您選取要同盟的網域時，Azure AD Connect 會提供您所需資訊以供您驗證尚未驗證的網域。 請參閱[新增並驗證網域](../active-directory-domains-add-azure-portal.md)以了解如何使用這項資訊。
+當您選取要同盟的網域時，Azure AD Connect 會提供您所需資訊以供您驗證尚未驗證的網域。 請參閱[新增並驗證網域](../fundamentals/add-custom-domain.md)以了解如何使用這項資訊。
 
 ![Azure AD 網域](./media/how-to-connect-install-custom/verifyfeddomain.png)
 
@@ -314,7 +314,7 @@ AD FS 服務需要網域服務帳戶來驗證使用者，以及在 Active Direct
 
 ## <a name="configuring-federation-with-pingfederate"></a>設定與 PingFederate 的同盟
 使用 Azure AD Connect 設定 PingFederate 的作業很簡單，只需要按幾下就能完成。 但您必須符合下列必要條件。
-- PingFederate 8.4 或更新版本。  如需詳細資訊，請參閱 [PingFederate 與 Azure Active Directory 和 Office 365 的整合](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html)
+- PingFederate 8.4 或更新版本。  如需詳細資訊，請參閱 [PingFederate 與 Azure Active Directory 和 Microsoft 365 整合](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html)
 - 您想要使用的 Federation Service 名稱 (例如 sts.contoso.com) 的 TLS/SSL 憑證
 
 ### <a name="verify-the-domain"></a>驗證網域
