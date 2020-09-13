@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a10dec01757fd344c9fa2bc92082082d2af085e9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3bb944badfbdffd703672f9e78619c70a148aae2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000561"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293348"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>安全框架︰輸入驗證 | 風險降低 
 | 產品/服務 | 發行項 |
@@ -397,7 +397,7 @@ myCommand.Fill(userDataset);
 | **適用的技術** | 泛型、MVC5、MVC6 |
 | **屬性**              | N/A  |
 | **參考**              | [新增驗證](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation)、[驗證 MVC 應用程式中的模型資料](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC 應用程式的指導原則](https://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **步驟** | <p>所有輸入參數都必須先驗證再用於應用程式，以確保應用程式不受惡意使用者輸入所危害。 請採取白名單驗證策略，在伺服器端上使用規則運算式驗證來驗證輸入值。 傳遞至方法的未清理使用者輸入/參數會造成程式碼插入弱點。</p><p>對於 Web 應用程式，進入點還可能包括表單欄位、QueryStrings、Cookie、HTTP 標頭和 Web 服務參數。</p><p>在繫結模型時，必須執行下列輸入驗證檢查︰</p><ul><li>模型屬性應該使用 RegularExpression 註解來加以註解，以便接受允許的字元和最大允許長度</li><li>控制器方法應該執行 ModelState 有效性</li></ul>|
+| **步驟** | <p>所有輸入參數都必須先驗證再用於應用程式，以確保應用程式不受惡意使用者輸入所危害。 使用伺服器端上的正則運算式驗證和允許的清單驗證策略，驗證輸入值。 傳遞至方法的未清理使用者輸入/參數會造成程式碼插入弱點。</p><p>對於 Web 應用程式，進入點還可能包括表單欄位、QueryStrings、Cookie、HTTP 標頭和 Web 服務參數。</p><p>在繫結模型時，必須執行下列輸入驗證檢查︰</p><ul><li>模型屬性應該使用 RegularExpression 註解來加以註解，以便接受允許的字元和最大允許長度</li><li>控制器方法應該執行 ModelState 有效性</li></ul>|
 
 ## <a name="sanitization-should-be-applied-on-form-fields-that-accept-all-characters-eg-rich-text-editor"></a><a id="richtext"></a>應該對接受所有字元的表單欄位 (例如 RTF 編輯器) 套用清理
 
@@ -441,7 +441,7 @@ $('body').append(resHTML);
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [OAuth 2.0 授權架構 - 開啟重新導向程式](https://tools.ietf.org/html/rfc6749#section-10.15) |
-| **步驟** | <p>要求重新導向至使用者所提供位置的應用程式設計，必須將可能的重新導向目標限制在預先定義的「安全」網站或網域清單。 應用程式中的所有重新導向都必須是封閉/安全的。</p><p>作法：</p><ul><li>找出所有重新導向</li><li>為每個重新導向實作適當的風險降低措施。 適當的風險降低措施包括重新導向允許清單或使用者確認。 如果具有開啟重新導向弱點的網站或服務使用 Facebook/OAuth/OpenID 身分識別提供者，攻擊者便可竊取使用者的登入權杖，然後假扮該使用者。 這是使用 OAuth 時的固有風險，在 RFC 6749「OAuth 2.0 授權架構」的 10.15 節「開啟重新導向」有其記載。同樣地，魚叉式網路釣魚攻擊也會使用開啟重新導向來入侵取得使用者的認證</li></ul>|
+| **步驟** | <p>要求重新導向至使用者所提供位置的應用程式設計，必須將可能的重新導向目標限制在預先定義的「安全」網站或網域清單。 應用程式中的所有重新導向都必須是封閉/安全的。</p><p>作法：</p><ul><li>找出所有重新導向</li><li>為每個重新導向實作適當的風險降低措施。 適當的緩和措施包括重新導向允許清單或使用者確認。 如果具有開啟重新導向弱點的網站或服務使用 Facebook/OAuth/OpenID 身分識別提供者，攻擊者便可竊取使用者的登入權杖，然後假扮該使用者。 這是使用 OAuth 時的固有風險，在 RFC 6749「OAuth 2.0 授權架構」的 10.15 節「開啟重新導向」有其記載。同樣地，魚叉式網路釣魚攻擊也會使用開啟重新導向來入侵取得使用者的認證</li></ul>|
 
 ## <a name="implement-input-validation-on-all-string-type-parameters-accepted-by-controller-methods"></a><a id="string-method"></a>對控制器方法所接受的所有字串類型參數實作輸入驗證
 

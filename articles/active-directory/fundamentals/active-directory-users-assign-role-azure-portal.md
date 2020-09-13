@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e28da81400a97216836cfd9eccf0d4859ce0762f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: fb7ab83bc9939d2f0b4b0ff0860ea97a0b07f12f
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228217"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321237"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>使用 Azure Active Directory 將系統管理員和非系統管理員角色指派給使用者
 
@@ -28,7 +28,7 @@ ms.locfileid: "89228217"
 
 ## <a name="assign-roles"></a>指派角色
 
-將 Azure AD 角色指派給使用者的常見方式是在使用者的 [ **指派的角色** ] 頁面上。 您也可以使用 Privileged Identity Management (PIM) ，將使用者資格設定為及時提升為角色。 如需有關如何使用 PIM 的詳細資訊，請參閱 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)。
+將 Azure AD 角色指派給使用者的常見方式是在使用者的 [ **指派的角色** ] 頁面上。 您也可以使用 Privileged Identity Management (PIM) ，將使用者資格設定為及時提升為角色。 如需有關如何使用 PIM 的詳細資訊，請參閱 [Privileged Identity Management](../privileged-identity-management/index.yml)。
 
 > [!Note]
 > 如果您有 Azure AD Premium P2 授權方案，並已使用 PIM，則會在 [Privileged Identity Management 體驗](../users-groups-roles/directory-manage-roles-portal.md)中執行所有角色管理工作。 這項功能目前僅限一次只能指派一個角色。 您目前無法選取多個角色，並一次將它們指派給使用者。
@@ -73,12 +73,12 @@ ms.locfileid: "89228217"
 
     應用程式系統管理員的角色會從 Alain Charon 中移除，且不會再出現在 [ **Alain Charon-系統管理角色** ] 頁面上。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [新增或刪除使用者](add-users-azure-active-directory.md)
 
 - [新增或變更設定檔資訊](active-directory-users-profile-azure-portal.md)
 
-- [從另一個目錄中新增來賓使用者](../b2b/what-is-b2b.md)
+- [從另一個目錄中新增來賓使用者](../external-identities/what-is-b2b.md)
 
 您可以查看的其他使用者管理工作可在 [Azure Active Directory 使用者管理檔](../users-groups-roles/index.yml)中取得。

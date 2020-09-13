@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/10/2019
 ms.author: inhenkel
-ms.openlocfilehash: d60baf6b8ca3fd2371ab13128524ad407d07942e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 2a78e8c8c204e5cedeb8bdd2a25cff40a3e5cc44
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89257342"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296544"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>使用媒體服務編碼時子剪輯影片-REST
 
@@ -26,7 +26,7 @@ ms.locfileid: "89257342"
 
 本主題中的 REST 範例會建立一項工作，以在提交編碼工作時修剪影片。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成此主題中所述的步驟，您必須：
 
@@ -84,6 +84,6 @@ ms.locfileid: "89257342"
 
     您會看到 **回應** ，其中包含已建立和提交作業的相關資訊，以及作業的狀態。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [如何使用自訂轉換進行編碼](custom-preset-rest-howto.md) 

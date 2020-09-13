@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 1ddcdfd9efddd050f996e5c2b953baba242967fa
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 9d4f30c5946e07b9f71c007d6f3f61efcae28637
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640577"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296510"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>針對 Azure Migrate 設備和探索進行疑難排解
 
@@ -38,7 +38,7 @@ ms.locfileid: "88640577"
 
 如果設備電腦位於 proxy 後方，就會發生這種情況。
 
-- 如果 proxy 需要授權認證，請務必提供授權認證。
+- 如果 Proxy 需要授權認證，請務必提供該認證。
 - 如果您要使用以 URL 為基礎的防火牆 proxy 來控制輸出連線能力，請將 [這些 url](migrate-appliance.md#url-access) 新增至允許清單。
 - 如果您使用攔截 proxy 來連線至網際網路，請使用 [這些步驟](./migrate-appliance.md)將 proxy 憑證匯入設備 VM 上。
 
@@ -151,7 +151,7 @@ ms.locfileid: "88640577"
 如果無法運作，而且您正在探索 VMware 伺服器：
 
 - 確認您指定的 vCenter 帳戶具有正確設定的許可權，而且至少有一部 VM 可以存取。
-- 如果 vCenter 帳戶具有在 vCenter VM 資料夾層級授與的存取權，則 Azure Migrate 無法探索 VMware Vm。 [深入瞭解](set-discovery-scope.md) 範圍探索。
+- 如果 vCenter 帳戶具有在 vCenter VM 資料夾層級授與的存取權，Azure Migrate 無法探索 VMware Vm。 [深入瞭解](set-discovery-scope.md) 範圍探索。
 
 ## <a name="vm-data-not-in-portal"></a>VM 資料不在入口網站中
 
@@ -248,5 +248,5 @@ Azure Migrate 支援使用 Azure Migrate：伺服器評估來探索應用程式�
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 設定適用于 [VMware](how-to-set-up-appliance-vmware.md)、 [hyper-v](how-to-set-up-appliance-hyper-v.md)或 [實體伺服器](how-to-set-up-appliance-physical.md)的設備。

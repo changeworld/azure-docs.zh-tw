@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/09/2020
-ms.openlocfilehash: 29caccd666294add98882d080a2a0fd3bd9dd660
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 827871bdac689d1f5e8acb64d3565ca3c6da39be
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036618"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292515"
 ---
 # <a name="archived-release-notes"></a>封存的版本資訊
 
@@ -23,62 +23,62 @@ Azure HDInsight 是最受企業客戶歡迎的其中一項服務，可供 Azure 
 
 ## <a name="release-date-07132020"></a>發行日期：07/13/2020
 
-此發行適用於 HDInsight 3.6 和 4.0。 在數天內，所有區域都可以使用 HDInsight 發行版本。 此處的發行日期為第一個區域發行日期。 如果您沒有看到下列變更，請在數天內等待發行在您的區域中上線。
+此發行適用於 HDInsight 3.6 和 4.0。 在數天內，所有區域都可以使用 HDInsight 發行版本。 此處的發行日期為第一個區域發行日期。 如果您沒有看到以下變更，請在數天內等待發行在您的區域中。
 
 ### <a name="new-features"></a>新功能
 #### <a name="support-for-customer-lockbox-for-microsoft-azure"></a>支援 Microsoft Azure 的客戶加密箱
-Azure HDInsight 現在支援 Azure 客戶加密箱。 它提供一個介面，讓客戶可以審查及核准或拒絕客戶資料存取要求。 當 Microsoft 工程師需要在支援要求期間存取客戶資料時，會使用此檔案。 如需詳細資訊，請參閱[Microsoft Azure 的客戶加密箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview)。
+Azure HDInsight 現在支援 Azure 客戶加密箱。 它提供了一個介面，讓客戶可以審核、核准或拒絕客戶資料存取要求。 當 Microsoft 工程師需要在支援要求期間存取客戶資料時，就會使用此功能。 如需詳細資訊，請參閱 [Microsoft Azure 的客戶加密箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview)。
 
 #### <a name="service-endpoint-policies-for-storage"></a>儲存體的服務端點原則
-客戶現在可以使用 HDInsight 叢集子網上 (SEP) 的服務端點原則。 深入瞭解[Azure 服務端點原則](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)。
+客戶現在可以使用 HDInsight 叢集子網上 (SEP) 的服務端點原則。 深入瞭解 [Azure 服務端點原則](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)。
 
 ### <a name="deprecation"></a>淘汰
 #### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>淘汰 HDInsight 3.6 Spark 叢集中的 Spark 2.1 和 2.2
-從 1 2020 年7月開始，客戶無法在 HDInsight 3.6 上使用 Spark 2.1 和2.2 建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 3.6 上移至 Spark 2.3，以避免潛在的系統/支援中斷。
+從 1 2020 年7月開始，客戶無法使用 Spark 2.1 和 2.2 on HDInsight 3.6 建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 3.6 上移至 Spark 2.3，以避免潛在的系統/支援中斷。
  
 #### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>淘汰 HDInsight 4.0 Spark 叢集中的 Spark 2.3
-從 1 2020 年7月開始，客戶將無法使用 Spark 2.3 on HDInsight 4.0 來建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Spark 2.4，以避免潛在的系統/支援中斷。
+從 1 2020 年7月開始，客戶無法使用 Spark 2.3 on HDInsight 4.0 來建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Spark 2.4，以避免潛在的系統/支援中斷。
  
 #### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>淘汰 HDInsight 4.0 Kafka 叢集中的 Kafka 1.1
 自 2020 年 7 月 1 日開始，客戶將無法在 HDInsight 4.0 上使用 Kafka 1.1 建立新的 Kafka 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Kafka 2.1，以避免潛在的系統/支援中斷。
 
 ### <a name="behavior-changes"></a>行為變更
-您不需要注意任何行為變更。
+您不需要留意任何行為變更。
 
 ### <a name="upcoming-changes"></a>即將推出的變更
 即將發行的版本中將會發生下列變更。 
 
 #### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>能夠為 Spark、Hadoop 和 ML 服務選取不同的 Zookeeper SKU
-目前 HDInsight 不支援變更 Spark、Hadoop 和 ML 服務叢集類型的 Zookeeper SKU。 它會使用適用于 Zookeeper 節點的 A2_v2/A2 SKU，而不會向客戶收取費用。 在即將推出的版本中，客戶將能夠視需要變更 Spark、Hadoop 和 ML 服務的 Zookeeper SKU。 具有 A2_v2/A2 以外 SKU 的 Zookeeper 節點將會收費。 預設 SKU 仍會 A2_V2/A2，而且免費。
+HDInsight 今日不支援變更 Spark、Hadoop 和 ML 服務叢集類型的 Zookeeper SKU。 它使用適用于 Zookeeper 節點 A2_v2/A2 SKU，而不會向客戶收取費用。 在即將推出的版本中，客戶將能夠視需要變更 Spark、Hadoop 和 ML 服務的 Zookeeper SKU。 具有 A2_v2/A2 以外 SKU 的 Zookeeper 節點將會收取費用。 預設 SKU 仍會 A2_V2/A2，而且不會收費。
 
 ### <a name="bug-fixes"></a>錯誤修正
 HDInsight 會持續改善叢集的可靠性和效能。 
-#### <a name="fixed-hive-warehouse-connector-issue"></a>已修正 Hive 倉儲連接器問題
+#### <a name="fixed-hive-warehouse-connector-issue"></a>修正 Hive Warehouse Connector 問題
 先前版本中的 Hive 倉儲連接器可用性發生問題。 已修正此問題。 
 
 #### <a name="fixed-zeppelin-notebook-truncates-leading-zeros-issue"></a>已修正 Zeppelin 筆記本截斷前置零問題
-Zeppelin 不正確地截斷資料表輸出中的前置零，以取得字串格式。 我們已在此版本中修正此問題。
+Zeppelin 在資料表輸出中，錯誤地截斷了字串格式的前置零。 我們已在此版本中修正此問題。
 
 ### <a name="component-version-change"></a>元件版本變更
-此發行版本沒有任何元件版本變更。 您可以在[本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)檔中找到 hdinsight 4.0 和 hdinsight 3.6 的目前元件版本。
+此發行版本沒有任何元件版本變更。 您可以在 [本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)檔中找到 hdinsight 4.0 和 hdinsight 3.6 目前的元件版本。
 
 ## <a name="release-date-06112020"></a>發行日期：06/11/2020
 
-此發行適用於 HDInsight 3.6 和 4.0。 在數天內，所有區域都可以使用 HDInsight 發行版本。 此處的發行日期為第一個區域發行日期。 如果您沒有看到下列變更，請在數天內等待發行在您的區域中上線。
+此發行適用於 HDInsight 3.6 和 4.0。 在數天內，所有區域都可以使用 HDInsight 發行版本。 此處的發行日期為第一個區域發行日期。 如果您沒有看到以下變更，請在數天內等待發行在您的區域中。
 
 ### <a name="new-features"></a>新功能
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>移至 Azure 虛擬機器擴展集
-HDInsight 會使用 Azure 虛擬機器立即布建叢集。 在此版本中，新建立的 HDInsight 叢集會開始使用 Azure 虛擬機器擴展集。 變更會逐步推出。 您預期不會有重大變更。 深入瞭解[Azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。
+HDInsight 現在會使用 Azure 虛擬機器來布建叢集。 從這個版本開始，新建立的 HDInsight 叢集會開始使用 Azure 虛擬機器擴展集。 變更會逐漸推出。 您預期不會有任何中斷性變更。 查看 [Azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)的詳細資訊。
  
 #### <a name="reboot-vms-in-hdinsight-cluster"></a>重新開機 HDInsight 叢集中的 Vm
-在此版本中，我們支援重新開機 HDInsight 叢集中的 Vm，以重新開機沒有回應的節點。 目前您只能透過 API 來執行此動作，PowerShell 和 CLI 支援也是如此。 如需有關 API 的詳細資訊，請參閱[此](https://github.com/Azure/azure-rest-api-specs/codeowners/master/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2018-06-01-preview/virtualMachines.json)檔。
+在此版本中，我們支援將 HDInsight 叢集中的 Vm 重新開機，以重新開機沒有回應的節點。 目前您只能透過 API 來執行，PowerShell 和 CLI 支援也是如此。 如需 API 的詳細資訊，請參閱 [此](https://github.com/Azure/azure-rest-api-specs/codeowners/master/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2018-06-01-preview/virtualMachines.json)檔。
  
 ### <a name="deprecation"></a>淘汰
 #### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>淘汰 HDInsight 3.6 Spark 叢集中的 Spark 2.1 和 2.2
-從 1 2020 年7月開始，客戶無法在 HDInsight 3.6 上使用 Spark 2.1 和2.2 建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 3.6 上移至 Spark 2.3，以避免潛在的系統/支援中斷。
+從 1 2020 年7月開始，客戶無法使用 Spark 2.1 和 2.2 on HDInsight 3.6 建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 3.6 上移至 Spark 2.3，以避免潛在的系統/支援中斷。
  
 #### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>淘汰 HDInsight 4.0 Spark 叢集中的 Spark 2.3
-從 1 2020 年7月開始，客戶將無法使用 Spark 2.3 on HDInsight 4.0 來建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Spark 2.4，以避免潛在的系統/支援中斷。
+從 1 2020 年7月開始，客戶無法使用 Spark 2.3 on HDInsight 4.0 來建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Spark 2.4，以避免潛在的系統/支援中斷。
  
 #### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>淘汰 HDInsight 4.0 Kafka 叢集中的 Kafka 1.1
 自 2020 年 7 月 1 日開始，客戶將無法在 HDInsight 4.0 上使用 Kafka 1.1 建立新的 Kafka 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Kafka 2.1，以避免潛在的系統/支援中斷。
@@ -91,18 +91,18 @@ ESP Spark 叢集所允許的最小前端節點大小會變更為 Standard_D13_V2
 前端節點必須至少有 4 核心 VM，才能確保 HDInsight 叢集的高可用性和可靠性。 自 2020 年 4 月 6 日起，客戶只能選擇 4 核心或以上的 VM 作為新 HDInsight 叢集的前端節點。 現有的叢集將會繼續如預期般執行。 
  
 #### <a name="cluster-worker-node-provisioning-change"></a>叢集背景工作節點布建變更
-當80% 的背景工作節點準備就緒時，叢集會進入**操作**階段。 在這個階段，客戶可以執行所有的資料平面作業，例如執行腳本和工作。 但客戶無法執行任何控制平面作業，例如相應增加/減少。 只支援刪除。
+當80% 的背景工作節點就緒時，叢集就會進入 **操作** 階段。 在這個階段，客戶可以執行所有的資料平面作業，例如執行腳本和工作。 但是，客戶無法進行任何控制平面作業，例如擴大/縮小。 只支援刪除。
  
-在**操作**階段之後，叢集會等待剩餘20% 背景工作角色節點有另一個60分鐘的時間。 在此60分鐘結束時，叢集會移至**執行中的階段，** 即使所有背景工作節點仍無法使用。 一旦叢集進入**執行階段之後**，您就可以像平常一樣使用它。 這兩個控制計畫作業（例如相應增加/減少）和通話方案作業（例如執行腳本和工作）都已被接受。 如果部分要求的背景工作節點無法使用，叢集將會標示為「部分成功」。 系統會針對已成功部署的節點向您收費。 
+在 **操作** 階段之後，叢集會針對剩餘的20% 背景工作節點等待另一個60分鐘。 在60分鐘結束時，叢集會移至 **執行中的階段，** 即使所有背景工作節點仍無法使用也是一樣。 一旦叢集進入 **執行階段，** 您就可以正常使用它。 這兩個控制計畫作業（例如相應增加/減少）和通話方案作業（例如執行腳本和作業）都會被接受。 如果無法使用某些要求的背景工作節點，叢集將會標示為「部分成功」。 系統會向您收取已成功部署之節點的費用。 
  
 #### <a name="create-new-service-principal-through-hdinsight"></a>透過 HDInsight 建立新的服務主體
-先前在建立叢集時，客戶可以建立新的服務主體，以在 Azure 入口網站中存取已連線的 ADLS Gen 1 帳戶。 自 15 2020 年6月起，客戶無法在 HDInsight 建立工作流程中建立新的服務主體，只支援現有的服務主體。 請參閱[使用 Azure Active Directory 建立服務主體和憑證](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+先前在建立叢集時，客戶可以建立新的服務主體，以存取 Azure 入口網站中的 connected ADLS Gen 1 帳戶。 自 15 2020 年6月起，客戶無法在 HDInsight 建立工作流程中建立新的服務主體，只支援現有的服務主體。 請參閱 [使用 Azure Active Directory 建立服務主體和憑證](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
-#### <a name="time-out-for-script-actions-with-cluster-creation"></a>建立叢集的腳本動作的時間輸出
-HDInsight 支援在建立叢集時執行腳本動作。 在此版本中，所有具有叢集建立的腳本動作都必須在**60 分鐘**內完成，否則就會超時。提交至執行中叢集的腳本動作不會受到影響。 如需詳細資訊，請參閱[此處](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#script-action-in-the-cluster-creation-process)。
+#### <a name="time-out-for-script-actions-with-cluster-creation"></a>建立叢集時腳本動作的時間
+HDInsight 支援在建立叢集時執行腳本動作。 從這個版本開始，所有具有叢集建立的腳本動作都必須在 **60 分鐘**內完成，或超時。提交給執行中叢集的腳本動作不會受到影響。 如需詳細資訊，請參閱[此處](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#script-action-in-the-cluster-creation-process)。
  
 ### <a name="upcoming-changes"></a>即將推出的變更
-您不需要留意即將推出的重大變更。
+不需要注意任何即將推出的重大變更。
  
 ### <a name="bug-fixes"></a>錯誤修正
 HDInsight 會持續改善叢集的可靠性和效能。 
@@ -115,18 +115,18 @@ HBase 版本會從2.0 版升級至2.1.6。
 Spark 版本會從版本2.4.0 升級至2.4.4。
  
 #### <a name="kafka-210-to-211"></a>Kafka 2.1.0 升級至 2.1.1
-Kafka 版本已從版本2.1.0 升級至2.1.1。
+Kafka 版本會從版本2.1.0 升級到2.1.1。
  
-您可以在[本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)檔中找到 hdinsight 4.0 ad hdinsight 3.6 的目前元件版本
+您可以在[本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)檔中找到 HDInsight 4.0 ad hdinsight 3.6 目前的元件版本
 
 ### <a name="known-issues"></a>已知問題
 
-#### <a name="hive-warehouse-connector-issue"></a>Hive 倉儲連接器問題
-此版本中的 Hive 倉儲連接器發生問題。 下一版將會包含修正程式。 在此版本之前建立的現有叢集不會受到影響。 盡可能避免卸載並重新建立叢集。 如果您需要進一步協助，請開啟支援票證。
+#### <a name="hive-warehouse-connector-issue"></a>Hive Warehouse Connector 問題
+這一版的 Hive Warehouse Connector 有問題。 下一版將會包含此修正。 在此版本之前建立的現有叢集不會受到影響。 盡可能避免卸載和重新建立叢集。 如果您需要進一步協助，請開啟支援票證。
 
 ## <a name="release-date-01092020"></a>發行日期：2020/1/09
 
-此發行適用於 HDInsight 3.6 和 4.0。 在數天內，所有區域都可以使用 HDInsight 發行版本。 此處的發行日期為第一個區域發行日期。 如果您沒有看到下列變更，請在數天內等待發行在您的區域中上線。
+此發行適用於 HDInsight 3.6 和 4.0。 在數天內，所有區域都可以使用 HDInsight 發行版本。 此處的發行日期為第一個區域發行日期。 如果您沒有看到以下變更，請在數天內等待發行在您的區域中。
 
 ### <a name="new-features"></a>新功能
 #### <a name="tls-12-enforcement"></a>TLS 1.2 強制執行
@@ -147,13 +147,13 @@ HDInsight 中的所有受控磁碟都會使用 Azure 儲存體服務加密 (SSE)
 即將發行的版本中將會發生下列變更。 
 
 #### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>淘汰 HDInsight 3.6 Spark 叢集中的 Spark 2.1 和 2.2
-自 2020 年 7 月 1 日開始，客戶將無法在 HDInsight 3.6 上使用 Spark 2.1 與 2.2 建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 3.6 上移至 Spark 2.3，以避免潛在的系統/支援中斷。 如需詳細資訊，請參閱[將 Apache Spark 2.1 和2.2 工作負載遷移至2.3 和 2.4](./spark/migrate-versions.md)。
+自 2020 年 7 月 1 日開始，客戶將無法在 HDInsight 3.6 上使用 Spark 2.1 與 2.2 建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 3.6 上移至 Spark 2.3，以避免潛在的系統/支援中斷。 如需詳細資訊，請參閱 [將 Apache Spark 2.1 和2.2 工作負載遷移至2.3 和 2.4](./spark/migrate-versions.md)。
 
 #### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>淘汰 HDInsight 4.0 Spark 叢集中的 Spark 2.3
-自 2020 年 7 月 1 日開始，客戶將無法在 HDInsight 4.0 上使用 Spark 2.3 建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Spark 2.4，以避免潛在的系統/支援中斷。 如需詳細資訊，請參閱[將 Apache Spark 2.1 和2.2 工作負載遷移至2.3 和 2.4](./spark/migrate-versions.md)。
+自 2020 年 7 月 1 日開始，客戶將無法在 HDInsight 4.0 上使用 Spark 2.3 建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Spark 2.4，以避免潛在的系統/支援中斷。 如需詳細資訊，請參閱 [將 Apache Spark 2.1 和2.2 工作負載遷移至2.3 和 2.4](./spark/migrate-versions.md)。
 
 #### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>淘汰 HDInsight 4.0 Kafka 叢集中的 Kafka 1.1
-從 1 2020 年7月開始，客戶將無法使用 Kafka 1.1 on HDInsight 4.0 來建立新的 Kafka 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Kafka 2.1，以避免潛在的系統/支援中斷。 如需詳細資訊，請參閱[將 Apache Kafka 工作負載遷移至 Azure HDInsight 4.0](./kafka/migrate-versions.md)。
+從 1 2020 年7月開始，客戶將無法使用 Kafka 1.1 on HDInsight 4.0 建立新的 Kafka 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Kafka 2.1，以避免潛在的系統/支援中斷。 如需詳細資訊，請參閱 [將 Apache Kafka 工作負載遷移至 Azure HDInsight 4.0](./kafka/migrate-versions.md)。
 
 #### <a name="hbase-20-to-216"></a>HBase 2.0 升級至 2.1.6
 在即將推出的 HDInsight 4.0 發行版本中，HBase 版本將從 2.0 版升級至2.1.6。
@@ -186,10 +186,10 @@ HDInsight 會持續改善叢集的可靠性和效能。
 ### <a name="new-features"></a>新功能
 
 #### <a name="service-tags"></a>服務標籤
-服務標籤可讓您輕鬆地限制對 Azure 服務的網路存取，藉此簡化 Azure 虛擬機器和 Azure 虛擬網路的安全性。 您可以使用網路安全性群組中的服務標籤 (NSG) 規則，以允許或拒絕全域或每個 Azure 區域的特定 Azure 服務流量。 Azure 會提供每個標籤基礎之 IP 位址的維護。 適用于網路安全性群組 (Nsg) 的 HDInsight 服務標籤是健康狀態和管理服務的 IP 位址群組。 這些群組有助於降低建立安全性規則的複雜性。 HDInsight 客戶可以透過 Azure 入口網站、PowerShell 和 REST API 來啟用服務標記。 如需詳細資訊，請參閱 [Azure HDInsight 的網路安全性群組 (NSG) 服務標記](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)。
+服務標籤可讓您輕鬆地限制對 Azure 服務的網路存取，以簡化 Azure 虛擬機器和 Azure 虛擬網路的安全性。 您可以使用網路安全性群組中的服務標記 (NSG) 規則，以允許或拒絕全域或每個 Azure 區域的特定 Azure 服務流量。 Azure 提供每個標記基礎的 IP 位址維護。 適用于網路安全性群組 (Nsg) 的 HDInsight 服務標記是健康情況和管理服務的 IP 位址群組。 這些群組有助於將建立安全性規則的複雜性降至最低。 HDInsight 客戶可以透過 Azure 入口網站、PowerShell 和 REST API 來啟用服務標記。 如需詳細資訊，請參閱 [Azure HDInsight 的網路安全性群組 (NSG) 服務標記](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)。
 
 #### <a name="custom-ambari-db"></a>自訂 Ambari DB
-HDInsight 現在可讓您使用自己的 SQL DB 進行 Apache Ambari。 您可以從 Azure 入口網站或透過 Resource Manager 範本來設定此自訂 Ambari DB。  這項功能可讓您選擇適合您處理和容量需求的 SQL DB。 您也可以輕鬆地升級，以符合業務成長需求。 如需詳細資訊，請參閱[使用自訂 AMBARI DB 設定 HDInsight](hdinsight-custom-ambari-db.md)叢集。
+HDInsight 現在可讓您使用自己的 SQL DB for Apache Ambari。 您可以從 Azure 入口網站或透過 Resource Manager 範本設定此自訂 Ambari DB。  這項功能可讓您選擇適合您處理和容量需求的 SQL DB。 您也可以輕鬆地升級，以符合業務成長需求。 如需詳細資訊，請參閱 [使用自訂 AMBARI DB 設定 HDInsight](hdinsight-custom-ambari-db.md)叢集。
 
 ![自訂 Ambari DB](./media/hdinsight-release-notes/custom-ambari-db.png)
 
@@ -197,45 +197,45 @@ HDInsight 現在可讓您使用自己的 SQL DB 進行 Apache Ambari。 您可�
 此發行版本沒有淘汰任何功能。 若要為近期將發生的淘汰做準備，請參閱[即將推出的變更](#upcoming-changes)。
 
 ### <a name="behavior-changes"></a>行為變更
-此發行版本沒有任何行為變更。 若要準備好進行近期的行為變更，請參閱即將進行的[變更](#upcoming-changes)。
+此發行版本沒有任何行為變更。 若要準備好即將進行的行為變更，請參閱即將進行的 [變更](#upcoming-changes)。
 
 ### <a name="upcoming-changes"></a>即將推出的變更
 即將發行的版本中將會發生下列變更。 
 
-#### <a name="transport-layer-security-tls-12-enforcement"></a> (TLS) 1.2 強制傳輸層安全性
-傳輸層安全性 (TLS) 和安全通訊端層 (SSL) 是密碼編譯通訊協定，可透過電腦網路提供通訊安全性。 如需詳細資訊，請參閱[傳輸層安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)。 雖然 Azure HDInsight 叢集接受公用 HTTPS 端點上的 TLS 1.2 連線，但 TLS 1.1 仍然支援舊版用戶端的回溯相容性。
+#### <a name="transport-layer-security-tls-12-enforcement"></a>傳輸層安全性 (TLS) 1.2 強制執行
+傳輸層安全性 (TLS) 和安全通訊端層 (SSL) 是密碼編譯通訊協定，可透過電腦網路提供通訊安全性。 如需詳細資訊，請參閱[傳輸層安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)。 雖然 Azure HDInsight 叢集接受公用 HTTPS 端點上的 TLS 1.2 連線，但仍支援 TLS 1.1 以提供與舊版用戶端的回溯相容性。
 
-從下一版開始，您將能夠加入宣告並設定新的 HDInsight 叢集，只接受 TLS 1.2 連線。 
+從下一個版本開始，您將能夠加入宣告並設定新的 HDInsight 叢集，以僅接受 TLS 1.2 連線。 
 
-從6/30/2020 開始，Azure HDInsight 將會強制執行所有 HTTPS 連線的 TLS 1.2 或更新版本。 我們建議您確定您的所有用戶端都已準備好處理 TLS 1.2 或更新版本。
+從6/30/2020 年之後，Azure HDInsight 將會針對所有 HTTPS 連線強制執行 TLS 1.2 或更新版本。 建議您確保所有用戶端都已準備好處理 TLS 1.2 或更新版本。
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>移至 Azure 虛擬機器擴展集
-HDInsight 現在會使用 Azure 虛擬機器來佈建叢集。 從2020年2月開始 (將會在稍後) 的確切日期進行通訊，HDInsight 將改用 Azure 虛擬機器擴展集。 深入瞭解[Azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。
+HDInsight 現在會使用 Azure 虛擬機器來佈建叢集。 從2020年2月開始 (將會在稍後) ，而 HDInsight 將會使用 Azure 虛擬機器擴展集。 查看 [Azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)的詳細資訊。
 
 #### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark 叢集節點大小變更 
 在即將推出的版本中：
-- ESP Spark 叢集所允許的最小節點大小會變更為 Standard_D13_V2。 
-- A 系列 Vm 將會淘汰以建立新的 ESP 叢集，因為 A 系列 Vm 可能會因為 CPU 和記憶體容量相對較低而造成 ESP 叢集問題。
+- ESP Spark 叢集所允許的最小節點大小將會變更為 Standard_D13_V2。 
+- A 系列 Vm 將會被取代，以建立新的 ESP 叢集，因為 A 系列 Vm 可能因為 CPU 和記憶體容量相對較低而造成 ESP 叢集問題。
 
 #### <a name="hbase-20-to-21"></a>HBase 2.0 至2。1
-在即將推出的 HDInsight 4.0 版本中，HBase 版本將會從2.0 版升級到2.1。
+在即將推出的 HDInsight 4.0 版本中，HBase 版本將會從2.0 版升級至2.1。
 
 ### <a name="bug-fixes"></a>錯誤修正
 HDInsight 會持續改善叢集的可靠性和效能。 
 
 ### <a name="component-version-change"></a>元件版本變更
-我們已將 HDInsight 3.6 支援擴充至2020年12月31日。 您可以在[支援的 HDInsight 版本](hdinsight-component-versioning.md#supported-hdinsight-versions)中找到更多詳細資料。
+我們已將 HDInsight 3.6 支援延長至2020年12月31日。 您可以在 [支援的 HDInsight 版本](hdinsight-component-versioning.md#supported-hdinsight-versions)中找到更多詳細資料。
 
-HDInsight 4.0 沒有元件版本變更。
+沒有 HDInsight 4.0 的元件版本變更。
 
-Apache Zeppelin on HDInsight 3.6： 0.7.0-->iisnode-inspector-0.7.3.dll。 
+Apache Zeppelin on HDInsight 3.6： 0.7.0-->0.7.3。 
 
-您可以在[此](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)檔中找到最新的元件版本。
+您可以從 [這個](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)檔中找到最新的元件版本。
 
 ### <a name="new-regions"></a>新區域
 
 #### <a name="uae-north"></a>阿拉伯聯合大公國北部
-阿拉伯聯合大公國北部的管理 Ip 是： `65.52.252.96` 和 `65.52.252.97` 。
+阿拉伯聯合大公國北部的管理 Ip 如下： `65.52.252.96` 和 `65.52.252.97` 。
 
 
 ## <a name="release-date-11072019"></a>發行日期：11/07/2019
@@ -244,21 +244,21 @@ Apache Zeppelin on HDInsight 3.6： 0.7.0-->iisnode-inspector-0.7.3.dll。
 
 ### <a name="new-features"></a>新功能
 
-#### <a name="hdinsight-identity-broker-hib-preview"></a>HDInsight Identity Broker (HIB 表示)  (Preview) 
+#### <a name="hdinsight-identity-broker-hib-preview"></a>HDInsight Identity Broker (HIB)  (Preview) 
 
-HDInsight Identity Broker (HIB 表示) 可讓使用者使用多重要素驗證 (MFA) 來登入 Apache Ambari，並取得必要的 Kerberos 票證，而不需要 Azure Active Directory Domain Services (AAD-DS) 中的密碼雜湊。 目前 HIB 表示僅適用于透過 Azure Resource Management (ARM) 範本部署的叢集。
+HDInsight Identity Broker (HIB) 可讓使用者使用多重要素驗證 (MFA) 來登入 Apache Ambari，並取得所需的 Kerberos 票證，而不需要在 Azure Active Directory Domain Services (的 AAD) 中使用密碼雜湊。 目前 HIB 僅適用于透過 Azure Resource Management (ARM) 範本部署的叢集。
 
-#### <a name="kafka-rest-api-proxy-preview"></a>Kafka Rest API Proxy (預覽) 
+#### <a name="kafka-rest-api-proxy-preview"></a>Kafka Rest API Proxy (預覽版) 
 
-Kafka Rest API Proxy 可透過安全的 AAD 授權和 OAuth 通訊協定，以單鍵方式部署具有 Kafka 叢集的高可用性 REST Proxy。 
+Kafka Rest API Proxy 可讓您透過安全的 AAD 授權和 OAuth 通訊協定，以單鍵方式部署具有 Kafka 叢集的高可用性 REST Proxy。 
 
 #### <a name="auto-scale"></a>自動調整
 
-Azure HDInsight 的自動調整現已在 Apache Spark 和 Hadoop 叢集類型的所有區域中正式推出。 這項功能可讓您以更符合成本效益且更具生產力的方式來管理海量資料分析工作負載。 現在您可以將 HDInsight 叢集的使用優化，並只針對您需要的部分付費。
+Azure HDInsight 的自動調整現已在 Apache Spark 和 Hadoop 叢集類型的所有區域正式推出。 這項功能可讓您以更符合成本效益且更具生產力的方式管理大型資料分析工作負載。 現在您可以優化 HDInsight 叢集的使用，並只針對所需的部分付費。
 
-視您的需求而定，您可以選擇以負載為基礎和以排程為基礎的自動調整。 以負載為基礎的自動調整可以根據目前的資源需求相應增加和減少叢集大小，而以排程為依據的自動調整可以根據預先定義的排程來變更叢集大小。 
+視您的需求而定，您可以選擇以負載為基礎和以排程為基礎的自動調整。 以負載為基礎的自動調整可以根據目前的資源需求相應增加或減少叢集大小，而排程型自動調整可以根據預先定義的排程來變更叢集大小。 
 
-HBase 和 LLAP 工作負載的自動調整支援也是公開預覽。 如需詳細資訊，請參閱[自動調整 Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters)叢集。
+HBase 和 LLAP 工作負載的自動調整支援也是公開預覽。 如需詳細資訊，請參閱 [Azure HDInsight 叢集自動調整規模](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters)。
 
 #### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>適用于 Apache HBase 的 HDInsight 加速寫入 
 
@@ -266,42 +266,42 @@ HBase 和 LLAP 工作負載的自動調整支援也是公開預覽。 如需詳�
 
 #### <a name="custom-ambari-db"></a>自訂 Ambari DB
 
-HDInsight 現在提供新的容量，讓客戶能夠使用自己的 SQL DB 進行 Ambari。 客戶現在可以選擇適當的 SQL DB 進行 Ambari，並根據自己的業務成長需求輕鬆地升級。 部署是使用 Azure Resource Manager 範本來完成。 如需詳細資訊，請參閱[使用自訂 AMBARI DB 設定 HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db)叢集。
+HDInsight 現在提供新的容量，讓客戶能夠使用自己的 SQL DB 進行 Ambari。 現在，客戶可以選擇適合 Ambari 的 SQL DB，並根據自己的業務成長需求輕鬆地升級。 部署是使用 Azure Resource Manager 範本來完成。 如需詳細資訊，請參閱 [使用自訂 AMBARI DB 設定 HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db)叢集。
 
-#### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>F 系列虛擬機器現已可供 HDInsight 使用
+#### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>HDInsight 現在提供 F 系列虛擬機器
 
-F 系列虛擬機器 (Vm) 是開始使用具有輕微處理需求的 HDInsight 的絕佳選擇。 F 系列的每小時訂價較低，在 Azure 產品組合中，就每一 vCPU 的「Azure 計算單位」(ACU) 而言，具有最佳的價格/性能比表現。 如需詳細資訊，請參閱[為您的 Azure HDInsight 叢集選取正確的 VM 大小](https://docs.microsoft.com/azure/hdinsight/hdinsight-selecting-vm-size)。
+F 系列虛擬機器 (Vm) 是開始使用具有輕量處理需求之 HDInsight 的絕佳選擇。 F 系列的每小時訂價較低，在 Azure 產品組合中，就每一 vCPU 的「Azure 計算單位」(ACU) 而言，具有最佳的價格/性能比表現。 如需詳細資訊，請參閱 [為您的 Azure HDInsight 叢集選取正確的 VM 大小](https://docs.microsoft.com/azure/hdinsight/hdinsight-selecting-vm-size)。
 
 ### <a name="deprecation"></a>淘汰
 
 #### <a name="g-series-virtual-machine-deprecation"></a>G 系列虛擬機器淘汰
-在此版本中，不會再于 HDInsight 中提供 G 系列 Vm。
+從這個版本開始，HDInsight 中已不再提供 G 系列 Vm。
 
 #### <a name="dv1-virtual-machine-deprecation"></a>Dv1 虛擬機器淘汰
-在此版本中，將 Dv1 Vm 與 HDInsight 搭配使用已被取代。 Dv1 的任何客戶要求都會自動提供 Dv2。 Dv1 與 Dv2 Vm 之間沒有任何價格差異。
+從這個版本開始，使用 Dv1 Vm 搭配 HDInsight 已淘汰。 Dv1 的任何客戶要求都會自動提供 Dv2。 Dv1 和 Dv2 Vm 之間沒有任何價格差異。
 
 ### <a name="behavior-changes"></a>行為變更
 
 #### <a name="cluster-managed-disk-size-change"></a>叢集受控磁片大小變更
-HDInsight 會提供叢集的受控磁碟空間。 在此版本中，新建立之叢集中每個節點的受控磁片大小都會變更為 128 GB。
+HDInsight 提供叢集的受控磁碟空間。 從這個版本開始，在新建立的叢集中，每個節點的受控磁片大小都會變更為 128 GB。
 
 ### <a name="upcoming-changes"></a>即將推出的變更
-即將發行的版本中將會發生下列變更。 
+即將推出的版本中將會發生下列變更。 
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>移至 Azure 虛擬機器擴展集
-HDInsight 現在會使用 Azure 虛擬機器來佈建叢集。 從12月開始，HDInsight 會改為使用 Azure 虛擬機器擴展集。 深入瞭解[Azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。
+HDInsight 現在會使用 Azure 虛擬機器來佈建叢集。 從12月開始，HDInsight 會改為使用 Azure 虛擬機器擴展集。 查看 [Azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)的詳細資訊。
 
 #### <a name="hbase-20-to-21"></a>HBase 2.0 至2。1
-在即將推出的 HDInsight 4.0 版本中，HBase 版本將會從2.0 版升級到2.1。
+在即將推出的 HDInsight 4.0 版本中，HBase 版本將會從2.0 版升級至2.1。
 
 #### <a name="a-series-virtual-machine-deprecation-for-esp-cluster"></a>ESP 叢集的 A 系列虛擬機器淘汰
-A 系列 Vm 可能會因為 CPU 和記憶體容量相對較低而造成 ESP 叢集問題。 在即將發行的版本中，A 系列 Vm 將會被取代，以建立新的 ESP 叢集。
+A 系列 Vm 可能會因為 CPU 和記憶體容量相對較低而造成 ESP 叢集問題。 在即將推出的版本中，將會淘汰 A 系列 Vm 以建立新的 ESP 叢集。
 
 ### <a name="bug-fixes"></a>錯誤修正
 HDInsight 會持續改善叢集的可靠性和效能。 
 
 ### <a name="component-version-change"></a>元件版本變更
-此版本沒有元件版本變更。 您可以在[這裡](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)找到 hdinsight 4.0 和 hdinsight 3.6 的目前元件版本。
+此版本沒有元件版本變更。 您可以在 [這裡](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)找到 hdinsight 4.0 和 hdinsight 3.6 目前的元件版本。
 
 
 ## <a name="release-date-08072019"></a>發行日期：08/07/2019
@@ -327,40 +327,40 @@ HDInsight 會持續改善叢集的可靠性和效能。
 - Apache Zeppelin 0.8.0 版
 - Apache ZooKeeper 3.4.6
 
-較新版本的 Apache 元件有時會在 HDP 散發套件中，除了上列的版本外。 在此情況下，這些較新的版本會列在 Technical preview 資料表中，且不應在生產環境中替代上述清單的 Apache 元件版本。
+較新版本的 Apache 元件有時會隨附于 HDP 散發套件中，除了以上所列的版本之外。 在此情況下，這些較新的版本會列在 Technical preview 資料表中，不應在生產環境中取代上述清單的 Apache 元件版本。
 
 ### <a name="apache-patch-information"></a>Apache 修補程式資訊
 
-如需 HDInsight 4.0 中可用修補程式的詳細資訊，請參閱下表中每個產品的修補程式清單。
+如需 HDInsight 4.0 中可用之修補程式的詳細資訊，請參閱下表中每個產品的修補程式清單。
 
-| 產品名稱 | 修補程式資訊 |
+| 產品名稱 | 修補資訊 |
 |---|---|
 | Ambari | [Ambari 修補程式資訊](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
 | Hadoop | [Hadoop 修補程式資訊](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
 | hbase | [HBase 修補程式資訊](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
-| Hive  | 此版本提供 Hive 3.1.0，沒有其他 Apache 修補程式。  |
+| Hive  | 此版本提供沒有其他 Apache 修補程式的 Hive 3.1.0。  |
 | Kafka | 此版本提供 Kafka 1.1.1，沒有其他 Apache 修補程式。 |
 | Oozie | [Oozie 修補程式資訊](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
 | Phoenix | [Phoenix 修補程式資訊](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_phoenix.html) |
 | Pig | [Pig 修補程式資訊](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_pig.html) |
 | Ranger | [Ranger 修補程式資訊](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_ranger.html) |
 | Spark | [Spark 修補程式資訊](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_spark.html) |
-| Sqoop | 此版本提供 Sqoop 1.4.7，沒有其他 Apache 修補程式。 |
-| Tez | 此版本提供 Tez 0.9.1，沒有其他 Apache 修補程式。 |
-| Zeppelin | 此版本提供 Zeppelin 0.8.0 版，沒有其他 Apache 修補程式。 |
+| Sqoop | 此版本提供沒有其他 Apache 修補程式的 Sqoop 1.4.7。 |
+| Tez | 此版本提供沒有其他 Apache 修補程式的 Tez 0.9.1。 |
+| Zeppelin | 此版本提供沒有其他 Apache 修補程式的 Zeppelin 0.8.0 版。 |
 | Zookeeper | [Zookeeper 修補程式資訊](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_zookeeper.html) |
 
 ### <a name="fixed-common-vulnerabilities-and-exposures"></a>修正常見弱點與漏洞
 
-如需此版本中已解決之安全性問題的詳細資訊，請參閱 Hortonworks ' 已[修正 HDP 3.0.1 的常見弱點和曝光](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/cve.html)。
+如需此版本中已解決之安全性問題的詳細資訊，請參閱 Hortonworks 的 [修正 HDP 3.0.1 的常見弱點和](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/cve.html)漏洞。
 
 ### <a name="known-issues"></a>已知問題
 
-#### <a name="replication-is-broken-for-secure-hbase-with-default-installation"></a>使用預設安裝的安全 HBase 的複寫中斷
+#### <a name="replication-is-broken-for-secure-hbase-with-default-installation"></a>具有預設安裝的安全 HBase 複寫中斷
 
 針對 HDInsight 4.0，請執行下列步驟：
 
-1. 啟用叢集間通訊。
+1. 啟用叢集間的通訊。
 1. 登入作用中的前端節點。
 1. 下載腳本，以使用下列命令來啟用複寫：
 
@@ -381,13 +381,13 @@ HDInsight 會持續改善叢集的可靠性和效能。
     sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
     ```
 1. 輸入命令 `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>`。
-1. 輸入下列命令：
+1. 輸入以下命令：
 
     ```bash
     sudo bash hdi_enable_replication.sh -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
     ```
 
-#### <a name="phoenix-sqlline-stops-working-after-migrating-hbase-cluster-to-hdinsight-40"></a>將 HBase 叢集遷移至 HDInsight 4.0 之後，Phoenix Sqlline 會停止運作
+#### <a name="phoenix-sqlline-stops-working-after-migrating-hbase-cluster-to-hdinsight-40"></a>將 HBase 叢集遷移至 HDInsight 4.0 之後，Phoenix Sqlline 停止運作
 
 請執行下列步驟：
 
@@ -398,14 +398,14 @@ HDInsight 會持續改善叢集的可靠性和效能。
     1. `SYSTEM.MUTEX`
     1. `SYSTEM.CATALOG`
 1. 如果您無法刪除任何資料表，請重新開機 HBase 以清除資料表的任何連接。
-1. 再次執行 `sqlline.py`。 Phoenix 將會重新建立在步驟1中刪除的所有資料表。
+1. 再次執行 `sqlline.py`。 Phoenix 會重新建立步驟1中已刪除的所有資料表。
 1. 重新產生 HBase 資料的 Phoenix 資料表和 views。
 
-#### <a name="phoenix-sqlline-stops-working-after-replicating-hbase-phoenix-metadata-from-hdinsight-36-to-40"></a>從 HDInsight 3.6 將 HBase Phoenix 中繼資料複寫到4.0 之後，Phoenix Sqlline 會停止運作
+#### <a name="phoenix-sqlline-stops-working-after-replicating-hbase-phoenix-metadata-from-hdinsight-36-to-40"></a>從 HDInsight 3.6 將 HBase Phoenix 中繼資料複寫至4.0 之後，Phoenix Sqlline 停止運作
 
 請執行下列步驟：
 
-1. 執行複寫之前，請移至目的地4.0 叢集並執行 `sqlline.py` 。 此命令將會產生 Phoenix 資料表 `SYSTEM.MUTEX` ，例如，且 `SYSTEM.LOG` 只存在於4.0。
+1. 進行複寫之前，請先移至目的地4.0 叢集並執行 `sqlline.py` 。 此命令會產生 `SYSTEM.MUTEX` `SYSTEM.LOG` 只存在於4.0 中的 Phoenix 資料表（例如和）。
 1. 捨棄下列資料表：
     1. `SYSTEM.FUNCTION`
     1. `SYSTEM.SEQUENCE`
@@ -415,7 +415,7 @@ HDInsight 會持續改善叢集的可靠性和效能。
 
 ### <a name="deprecation"></a>淘汰
 
-HDInsight 4.0 不提供 Apache Storm 和 ML 服務。
+HDInsight 4.0 中無法使用 Apache Storm 和 ML 服務。
 
 ## <a name="release-date-04142019"></a>發行日期：04/14/2019
 
@@ -423,17 +423,17 @@ HDInsight 4.0 不提供 Apache Storm 和 ML 服務。
 
 新的更新和功能分為以下幾類：
 
-*  ***更新 Hadoop 和其他開放原始碼專案***–除了20多個開放原始碼專案中的1000多個 bug 修正之外，此更新還包含新版**Spark (2.3) **和**Kafka (1.0) **。
+*  ***更新 Hadoop 和其他開放原始碼專案*** –除了20多個開放原始碼專案的 1000 + bug 修正之外，此更新還包含新版 **Spark (2.3) ** 和 **Kafka (1.0) **。
 
     a.  [**Apache Spark 2.3 的新功能**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
     b.  [**Apache Kafka 1.0 的新功能**](https://kafka.apache.org/downloads#1.0.0)
 
-*  ***將 R Server 9.1 更新為 Machine Learning Services 9.3*** -在此版本中，我們會為數據科學家和工程師提供最佳的開放原始碼，並以演算法創新和輕鬆運算化來增強，並以 Apache Spark 的速度提供其偏好的語言。 此版本擴展 R Server 中提供的功能，並進一步支援 Python，因而將叢集名稱從 R Server 改為 ML 服務。 
+*  ***將 R Server 9.1 更新為 Machine Learning Services 9.3*** –在此版本中，我們會為數據科學家和工程師提供最佳的開放原始碼，並使用演算法創新和簡化運算化，並以其偏好的語言提供 Apache Spark 的速度。 此版本擴展 R Server 中提供的功能，並進一步支援 Python，因而將叢集名稱從 R Server 改為 ML 服務。 
 
 *  ***支援 Azure Data Lake Storage Gen2*** – HDInsight 將支援 Azure Data Lake Storage Gen2 的預覽版本。 在可用區域中，客戶能夠選擇 ADLS Gen2 帳戶作為其 HDInsight 叢集的主要或次要存放區。
 
-*  ***HDInsight 企業安全性套件更新 (預覽) *** – (預覽) 虛擬網路、Azure Blob 儲存體、ADLS Gen1 和 Azure DB 的[服務端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)支援。
+*  ***HDInsight 企業安全性套件更新 (預覽版) *** – (preview) Azure Blob 儲存體、ADLS Gen1、Cosmos DB 和 Azure DB 的 [虛擬網路服務端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) 支援。
 
 ### <a name="component-versions"></a>元件版本
 
@@ -473,7 +473,7 @@ HDInsight 3.6 所有元件的官方 Apache 版本列示如下。 此處所列的
 
 -   Apache ZooKeeper 3.4.6
 
-除了上面所列版本外，HDP 發佈中有時會有一些配套的 Apache 元件更新版本。 在此情況下，這些較新的版本會列在 Technical preview 資料表中，且不應在生產環境中替代上述清單的 Apache 元件版本。
+除了上面所列版本外，HDP 發佈中有時會有一些配套的 Apache 元件更新版本。 在此情況下，這些較新的版本會列在 Technical preview 資料表中，不應在生產環境中取代上述清單的 Apache 元件版本。
 
 ### <a name="apache-patch-information"></a>Apache 修補程式資訊
 
@@ -499,7 +499,7 @@ HDInsight 3.6 所有元件的官方 Apache 版本列示如下。 此處所列的
 
 -   [HADOOP-15265](https://issues.apache.org/jira/browse/HADOOP-15265)：從 hadoop-auth pom.xml 中明確排除 json-smart。
 
--   [HDFS-7922](https://issues.apache.org/jira/browse/HDFS-7922)： ShortCircuitCache \# close 不會釋放出 scheduledthreadpoolexecutors。
+-   [HDFS-7922](https://issues.apache.org/jira/browse/HDFS-7922)： ShortCircuitCache \# close 未釋出出 scheduledthreadpoolexecutors。
 
 -   [HDFS-8496](https://issues.apache.org/jira/browse/HDFS-8496)：在保有 FSDatasetImpl 鎖定的情況下呼叫 stopWriter() 可能會封鎖其他執行緒 (cmccabe)。
 
@@ -619,7 +619,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 -   [HBASE-19393](https://issues.apache.org/jira/browse/HBASE-19393)：使用 SSL 存取 HBase UI 時，出現 HTTP 413 FULL 標頭。
 
--   [HBASE-19395](https://issues.apache.org/jira/browse/HBASE-19395)： \[ branch-1 \] branch-1. TESTENDTOENDSPLITTRANSACTION.TESTMASTEROPSWHILESPLITTING 失敗並出現 NPE。
+-   [HBASE-19395](https://issues.apache.org/jira/browse/HBASE-19395)： \[ branch-1 \] testendtoendsplittransaction.testmasteropswhilesplitting. 會失敗，因為 NPE。
 
 -   [HBASE-19421](https://issues.apache.org/jira/browse/HBASE-19421)：branch-1 不會針對 Hadoop 3.0.0 進行編譯。
 
@@ -665,7 +665,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 -   [HIVE-17013**](https://issues.apache.org/jira/browse/HIVE-17013)：根據對檢視的選取來刪除具有子查詢的要求。
 
--   [*HIVE-17063*](https://issues.apache.org/jira/browse/HIVE-17063)：第一次卸載資料分割時，將覆寫分割區插入外部資料表時失敗。
+-   [*HIVE-17063*](https://issues.apache.org/jira/browse/HIVE-17063)：先卸載資料分割之後，將覆寫分割區插入外部資料表會失敗。
 
 -   [HIVE-17259**](https://issues.apache.org/jira/browse/HIVE-17259)：Hive JDBC 無法辨識 UNIONTYPE 資料行。
 
@@ -763,7 +763,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 -   [HIVE-16828**](https://issues.apache.org/jira/browse/HIVE-16828)：在啟用 CBO 的情況下，對已分割的檢視所進行的查詢會擲回 IndexOutOfBoundException。
 
--   [*HIVE-17063*](https://issues.apache.org/jira/browse/HIVE-17063)：第一次卸載資料分割時，將覆寫分割區插入外部資料表時失敗。
+-   [*HIVE-17063*](https://issues.apache.org/jira/browse/HIVE-17063)：先卸載資料分割之後，將覆寫分割區插入外部資料表會失敗。
 
 -   [HIVE-17259**](https://issues.apache.org/jira/browse/HIVE-17259)：Hive JDBC 無法辨識 UNIONTYPE 資料行。
 
@@ -779,7 +779,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 -   [HIVE-17621**](https://issues.apache.org/jira/browse/HIVE-17621)：HCatInputFormat 分割計算期間會忽略 Hive 網站設定。
 
--   [HIVE-17629**](https://issues.apache.org/jira/browse/HIVE-17629)：CachedStore：備有允許清單/封鎖清單設定，以允許資料表/資料分割的選擇性快取，以及允許在預先準備時讀取。
+-   [*HIVE-17629*](https://issues.apache.org/jira/browse/HIVE-17629)： CachedStore：有經過核准/未核准的設定，可讓您選擇性地快取資料表/資料分割，並允許在預先準備時讀取。
 
 -   [HIVE-17636**](https://issues.apache.org/jira/browse/HIVE-17636)：新增 BlobStore 的 multiple\_agg.q 測試。
 
@@ -885,7 +885,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 -   [HIVE-18879**](https://issues.apache.org/jira/browse/HIVE-18879)：如果 xercesImpl.jar 位於 classpath 中，則必須能夠在 UDFXPathUtil 中不允許內嵌的元素。
 
--   [*HIVE-18944*](https://issues.apache.org/jira/browse/HIVE-18944)：在 DPP 期間設定了群組集位置不正確。
+-   [*HIVE-18944*](https://issues.apache.org/jira/browse/HIVE-18944)： DPP 期間設定了不正確的群組集位置。
 
 #### <a name="kafka"></a>Kafka
 
@@ -1023,7 +1023,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 -   [RANGER-1982](https://issues.apache.org/jira/browse/RANGER-1982)：Ranger 系統管理員和 Ranger KMS 的分析計量錯誤改進。
 
--   [RANGER-1984](https://issues.apache.org/jira/browse/RANGER-1984)： HBase audit 記錄檔記錄可能不會顯示與存取的資料行相關聯的所有標記。
+-   [RANGER-1984](https://issues.apache.org/jira/browse/RANGER-1984)： HBase audit log 記錄可能不會顯示與存取的資料行相關聯的所有標記。
 
 -   [RANGER-1988](https://issues.apache.org/jira/browse/RANGER-1988)：修正不安全的隨機性。
 
@@ -1065,7 +1065,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 -   [SPARK-23434](https://issues.apache.org/jira/browse/SPARK-23434)：Spark 不應該對 HDFS 檔案路徑發出 \`metadata directory\` 警告。
 
--   [SPARK-23436](https://issues.apache.org/jira/browse/SPARK-23436)：只有當資料分割可以轉換成 date 時，才將其推斷為日期。
+-   [SPARK-23436](https://issues.apache.org/jira/browse/SPARK-23436)：只有當資料分割可以轉換為日期時，才將其推斷為日期。
 
 -   [SPARK-23457](https://issues.apache.org/jira/browse/SPARK-23457)：先在 ParquetFileFormat 中註冊工作完成接聽程式。
 
@@ -1167,7 +1167,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 此版本並未對 Sqoop 1.4.6 提供其他 Apache 修補程式。
 
-#### <a name="storm"></a>暴風雨
+#### <a name="storm"></a>Storm
 
 此版本提供 Storm 1.1.1 和下列 Apache 修補程式：
 
@@ -1201,9 +1201,9 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 此版本提供 ZooKeeper 3.4.6 和下列 Apache 修補程式：
 
--   [ZOOKEEPER-1256](https://issues.apache.org/jira/browse/ZOOKEEPER-1256)： macOS X 上的 ClientPortBindTest 失敗。
+-   [ZOOKEEPER-1256](https://issues.apache.org/jira/browse/ZOOKEEPER-1256)： ClientPortBindTest 在 macOS X 上失敗。
 
--   [ZOOKEEPER-1901](https://issues.apache.org/jira/browse/ZOOKEEPER-1901)： \[ JDK8 \] 排序子系以在以 asyncops 測試中進行比較。
+-   [ZOOKEEPER-1901](https://issues.apache.org/jira/browse/ZOOKEEPER-1901)： \[ JDK8 \] 排序子系以在 AsyncOps 測試中進行比較。
 
 -   [ZOOKEEPER-2423](https://issues.apache.org/jira/browse/ZOOKEEPER-2423)：因為有安全性弱點 (CVE-2014-3488)，所以升級 Netty 版本。
 
@@ -1219,7 +1219,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 | **摘要：** Apache Ranger 原則評估會忽略 '\*' 萬用字元之後的字元 |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **嚴重性：** 成                                                                           |
+| **嚴重性：** 關鍵                                                                           |
 | **廠商：** Hortonworks                                                                          |
 | **受影響的版本：** HDInsight 3.6 版本，包含 Apache Ranger 0.5.x/0.6.x/0.7.0 版     |
 | **受影響的使用者：** 所使用的 Ranger 原則在 '\*' 萬用字元之後有字元的環境 – 例如 my\*test、test\*.txt |
@@ -1231,7 +1231,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 | **摘要：** 在指定了外部位置時，Apache Ranger Hive 授權者應檢查有無 RWX 權限 |
 |--------------------------------------------------------------------------------------------------|
-| **嚴重性：** 成                                                                           |
+| **嚴重性：** 關鍵                                                                           |
 | **廠商：** Hortonworks                                                                          |
 | **受影響的版本：** HDInsight 3.6 版本，包含 Apache Ranger 0.5.x/0.6.x/0.7.0 版 |
 | **受影響的使用者：** 對 hive 資料表使用外部位置的環境 |
@@ -1281,7 +1281,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 | **廠商：** Hortonworks |
 | **受影響的版本：** 所有 HDP 2.3/2.4/2.5 版本，包含 Apache Ranger 0.5.x/0.6.0/0.6.1/0.6.2 版  |
 | **受影響的使用者：** Ranger 原則管理工具的所有使用者。 |
-| **影響：** 在輸入自訂原則條件時，Apache Ranger 很容易受到預存跨網站指令碼的攻擊。 系統管理使用者可以在一般使用者登入和存取原則時，儲存一些任意的 JavaScript 程式碼執行。 |
+| **影響：** 在輸入自訂原則條件時，Apache Ranger 很容易受到預存跨網站指令碼的攻擊。 當一般使用者登入和存取原則時，系統管理使用者可以儲存一些任意的 JavaScript 程式碼執行。 |
 | **修正詳細資料：** 已新增邏輯來處理使用者輸入。  |
 | **建議動作：** 使用者應升級至 HDP 2.5.4+ (含 Apache Ranger 0.6.3+) 或 HDP 2.6+ (含 Apache Ranger 0.7.0+)  |
 
@@ -1320,7 +1320,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 | BUG-97708              | [HIVE-18817](https://issues.apache.org/jira/browse/HIVE-18817)                                                                                                                                                                                                                 | 讀取 ACID 資料表期間，發生 ArrayIndexOutOfBounds 例外狀況。                                                             |
 | BUG-97864              | [HIVE-18833](https://issues.apache.org/jira/browse/HIVE-18833)                                                                                                                                                                                                                 | 「插入目錄中作為 orcfile」時，自動合併會失敗                                                               |
 | BUG-97889              | [RANGER-2008](https://issues.apache.org/jira/browse/RANGER-2008)                                                                                                                                                                                                               | 多行原則條件的原則評估會失敗。                                                          |
-| BUG-98655              | [RANGER-2066](https://issues.apache.org/jira/browse/RANGER-2066)                                                                                                                                                                                                               | HBase 資料行系列存取是由資料行系列中的標記資料行所授權                                       |
+| BUG-98655              | [RANGER-2066](https://issues.apache.org/jira/browse/RANGER-2066)                                                                                                                                                                                                               | HBase 資料行系列存取權是由資料行系列中的標記資料行所授權                                       |
 | BUG-99883              | [HIVE-19073](https://issues.apache.org/jira/browse/HIVE-19073), [HIVE-19145](https://issues.apache.org/jira/browse/HIVE-19145)                                                                                                                                                 | StatsOptimizer 可能會弄亂常數資料行                                                                             |
 
 **其他**
@@ -1385,7 +1385,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 | BUG-93136              | [HIVE-18189](https://issues.apache.org/jira/browse/HIVE-18189)                                                                         | cbo 停用時，無法依位置排序                                                   |
 | BUG-93595              | [HIVE-12378](https://issues.apache.org/jira/browse/HIVE-12378), [HIVE-15883](https://issues.apache.org/jira/browse/HIVE-15883)         | Hive 插入中的 HBase 對應資料表在使用小數點和二進位資料行時會失敗                                  |
 | BUG-94007              | [PHOENIX-1751](https://issues.apache.org/jira/browse/PHOENIX-1751), [PHOENIX-3112](https://issues.apache.org/jira/browse/PHOENIX-3112) | Phoenix 查詢會傳回 Null 值，因為 HBase 部分資料列                                          |
-| BUG-94144              | [HIVE-17063](https://issues.apache.org/jira/browse/HIVE-17063)                                                                         | 第一次卸載資料分割時，將覆寫資料分割插入外部資料表會失敗                        |
+| BUG-94144              | [HIVE-17063](https://issues.apache.org/jira/browse/HIVE-17063)                                                                         | 先卸載分割區，將覆寫分割區插入外部資料表會失敗                        |
 | BUG-94280              | [HIVE-12785](https://issues.apache.org/jira/browse/HIVE-12785)                                                                         | 檢視具有等位型別，且用於 \`cast\` 結構的 UDF 會中斷                                          |
 | BUG-94505              | [PHOENIX-4525](https://issues.apache.org/jira/browse/PHOENIX-4525)                                                                     | GroupBy 執行中發生整數溢位                                                                  |
 | BUG-95618              | [HIVE-18506](https://issues.apache.org/jira/browse/HIVE-18506)                                                                         | LlapBaseInputFormat - 負數的陣列索引                                                             |
@@ -1490,7 +1490,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 | BUG-93512              | [PHOENIX-4466](https://issues.apache.org/jira/browse/PHOENIX-4466)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | java.lang.RuntimeException：回應碼 500 - 執行 spark 作業以連線到 phoenix 查詢伺服器和載入資料                         |
 | BUG-93550              | N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Zeppelin %spark.r 不適用於 spark1，因為 scala 版本不相符                                                                      |
 | BUG-93910              | [HIVE-18293](https://issues.apache.org/jira/browse/HIVE-18293)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 若資料夾不是由執行 HiveMetaStore 的身分識別所擁有的，Hive 就無法壓縮該資料夾內所包含的資料表                                |
-| BUG-93926              | [ZEPPELIN-3114](https://issues.apache.org/jira/browse/ZEPPELIN-3114)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 在1d 壓力測試之後，筆記本和解譯器不會儲存在 zeppelin 中 &gt;                                                       |
+| BUG-93926              | [ZEPPELIN-3114](https://issues.apache.org/jira/browse/ZEPPELIN-3114)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 在一 &gt; 維的壓力測試之後，筆記本和解譯器不會儲存在 zeppelin 中                                                       |
 | BUG-93932              | [ATLAS-2320](https://issues.apache.org/jira/browse/ATLAS-2320)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 查詢的分類 "\*" 會擲回 500 內部伺服器例外狀況。                                                                           |
 | BUG-93948              | [YARN-7697](https://issues.apache.org/jira/browse/YARN-7697)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | NM 在使用 OOM 時會當機，因為 log-aggregation (part\#1) 中發生流失                                                                                 |
 | BUG-93965              | [ATLAS-2229](https://issues.apache.org/jira/browse/ATLAS-2229)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | DSL 搜尋：orderby 非字串屬性會擲回例外狀況                                                                                     |
@@ -1547,7 +1547,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 | BUG-98983              | [KNOX-1108](https://issues.apache.org/jira/browse/KNOX-1108)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | NiFiHaDispatch 未容錯移轉                                                                                                                |
 | BUG-99107              | [HIVE-19054](https://issues.apache.org/jira/browse/HIVE-19054)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 函式複寫應該使用 "hive.repl.replica.functions.root.dir" 作為根                                                                  |
 | BUG-99145              | [RANGER-2035](https://issues.apache.org/jira/browse/RANGER-2035)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 存取具有空白 implClass 和 Oracle 後端的 servicedefs 時發生錯誤                                                                          |
-| BUG-99160              | [SLIDER-1259](https://issues.apache.org/jira/browse/SLIDER-1259)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 滑杆無法在多重主目錄環境中運作                                                                                               |
+| BUG-99160              | [SLIDER-1259](https://issues.apache.org/jira/browse/SLIDER-1259)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 滑杆無法在多主控環境中運作                                                                                               |
 | BUG-99239              | [ATLAS-2462](https://issues.apache.org/jira/browse/ATLAS-2462)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 若命令中未提供任何資料表，則所有資料表的 Sqoop 匯入會擲回 NPE                                                                        |
 | BUG-99301              | [ATLAS-2530](https://issues.apache.org/jira/browse/ATLAS-2530)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | hive\_process 和 hive\_column\_lineage 的名稱屬性開頭有新行字元                                                    |
 | BUG-99453              | [HIVE-19065](https://issues.apache.org/jira/browse/HIVE-19065)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 中繼存放區用戶端相容性檢查應該包含 syncMetaStoreClient                                                                        |
@@ -1587,7 +1587,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | BUG-100045             | [HIVE-19056](https://issues.apache.org/jira/browse/HIVE-19056)                                                                                                                                                                                                                 | 當 ORC 檔案有 0 個資料列時，FixAcidKeyIndex 中會發生 IllegalArgumentException                                                                                         |
 | BUG-100139             | [KNOX-1243](https://issues.apache.org/jira/browse/KNOX-1243)                                                                                                                                                                                                                   | 將 KnoxToken 服務中所設定的必要 DN 標準化                                                                                          |
-| BUG-100570             | [ATLAS-2557](https://issues.apache.org/jira/browse/ATLAS-2557)                                                                                                                                                                                                                 | 當 UGI 的群組錯誤設定或不是空的時，修正以允許查閱 hadoop ldap 群組                                                          |
+| BUG-100570             | [ATLAS-2557](https://issues.apache.org/jira/browse/ATLAS-2557)                                                                                                                                                                                                                 | 當從 UGI 的群組錯誤地設定或不是空的時，修正以允許查閱 hadoop ldap 群組                                                          |
 | BUG-100646             | [ATLAS-2102](https://issues.apache.org/jira/browse/ATLAS-2102)                                                                                                                                                                                                                 | Atlas UI 增強功能：搜尋結果頁面                                                                                                                   |
 | BUG-100737             | [HIVE-19049](https://issues.apache.org/jira/browse/HIVE-19049)                                                                                                                                                                                                                 | 對 Druid 新增改變資料表新增資料行的支援                                                                                                            |
 | BUG-100750             | [KNOX-1246](https://issues.apache.org/jira/browse/KNOX-1246)                                                                                                                                                                                                                   | 更新 Knox 中的服務組態以對 Ranger 支援最新的組態。                                                                                   |
@@ -1603,7 +1603,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 | BUG-92678              | [ATLAS-2276](https://issues.apache.org/jira/browse/ATLAS-2276)                                                                                                                                                                                                                 | hdfs\_path 類型實體的路徑值會從 hive-bridge 設成小寫。                                                                                 |
 | BUG-93097              | [RANGER-1944](https://issues.apache.org/jira/browse/RANGER-1944)                                                                                                                                                                                                               | 系統管理員稽核的動作篩選條件沒有作用                                                                                                                 |
 | BUG-93135              | [HIVE-15874](https://issues.apache.org/jira/browse/HIVE-15874), [HIVE-18189](https://issues.apache.org/jira/browse/HIVE-18189)                                                                                                                                                 | 將 hive.groupby.orderby.position.alias 設為 true 時，Hive 查詢會傳回錯誤結果                                                                      |
-| BUG-93136              | [HIVE-18189](https://issues.apache.org/jira/browse/HIVE-18189)                                                                                                                                                                                                                 | 停用 cbo 時，Order by 位置無法使用                                                                                                         |
+| BUG-93136              | [HIVE-18189](https://issues.apache.org/jira/browse/HIVE-18189)                                                                                                                                                                                                                 | 停用 cbo 時，Order by 位置無法運作                                                                                                         |
 | BUG-93387              | [HIVE-17600](https://issues.apache.org/jira/browse/HIVE-17600)                                                                                                                                                                                                                 | 讓 OrcFile 的 "enforceBufferSize" 變成可由使用者設定。                                                                                                            |
 | BUG-93495              | [RANGER-1937](https://issues.apache.org/jira/browse/RANGER-1937)                                                                                                                                                                                                               | Ranger tagsync 應該處理 ENTITY\_CREATE 通知，以支援 Atlas 匯入功能                                                                   |
 | BUG-93512              | [PHOENIX-4466](https://issues.apache.org/jira/browse/PHOENIX-4466)                                                                                                                                                                                                             | java.lang.RuntimeException：回應碼 500 - 執行 spark 作業以連線到 phoenix 查詢伺服器和載入資料                                       |
@@ -1692,10 +1692,10 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 |**Apache 元件**|**Apache JIRA**|**總結**|**詳細資料**|
 |--|--|--|--|
-|**Spark 2.3** |**N/A** |**Apache Spark 版本資訊中所述的變更** |-有「淘汰」檔和「行為變更」指南，https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-若是 SQL 部分，還有另一份詳細的「遷移」指南 (從2.2 到 2.3) ，https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2.3** |**N/A** |**Apache Spark 版本資訊中所述的變更** |-有「取代」的檔和「行為變更」指南， https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-對於 SQL 元件，還有另一個詳細的「遷移」指南 (從2.2 到 2.3) https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark 作業已順利完成，但是有 HDFS 磁碟配額已滿錯誤 |**案例：** 在已對執行命令的使用者所擁有的 [資源回收筒] 資料夾設定配額時，執行 **insert overwrite**。<br /><br />**先前的行為：** 即使無法將資料移至資源回收筒，作業仍會成功。 結果可能會錯誤地包含一些先前出現在資料表中的資料。<br /><br />**新的行為：** 移至 [資源回收筒] 資料夾若失敗，就會永久刪除檔案。|
 |**Kafka 1.0**|**N/A**|**Apache Spark 版本資訊中所述的變更** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
-|**Hive/ Ranger** | |INSERT OVERWRITE 需要其他 ranger hive 原則 |**案例：****INSERT OVERWRITE** 需要其他 ranger hive 原則<br /><br />**先前的行為：** Hive **INSERT OVERWRITE** 查詢會如往常般成功。<br /><br />**新的行為：** Hive **INSERT OVERWRITE** 查詢會在升級至 HDP-2.6.x 之後意外失敗，並出現錯誤：<br /><br />編譯陳述式時發生錯誤：FAILED：HiveAccessControlException 權限遭拒：使用者 jdoe 沒有 /tmp/\*(state=42000,code=40000) 的 WRITE 權限<br /><br />截至 HDP-2.6.0，Hive **INSERT OVERWRITE** 查詢需要 Ranger URI 原則才能允許寫入作業，即使使用者已透過 HDFS 原則獲得寫入權限也是一樣。<br /><br />**因應措施/期望的客戶動作：**<br /><br />1. 在 Hive 存放庫底下建立新的原則。<br />2. 在您看到 [資料庫] 的下拉式清單中，選取 [URI]。<br />3. 更新路徑 (範例：/tmp/* ) <br />4. 新增使用者和群組並儲存。<br />5. 重試插入查詢。|
+|**Hive/ Ranger** | |INSERT OVERWRITE 需要其他 ranger hive 原則 |**案例：****INSERT OVERWRITE** 需要其他 ranger hive 原則<br /><br />**先前的行為：** Hive **INSERT OVERWRITE** 查詢會如往常般成功。<br /><br />**新的行為：** Hive **INSERT OVERWRITE** 查詢會在升級至 HDP-2.6.x 之後意外失敗，並出現錯誤：<br /><br />編譯陳述式時發生錯誤：FAILED：HiveAccessControlException 權限遭拒：使用者 jdoe 沒有 /tmp/\*(state=42000,code=40000) 的 WRITE 權限<br /><br />截至 HDP-2.6.0，Hive **INSERT OVERWRITE** 查詢需要 Ranger URI 原則才能允許寫入作業，即使使用者已透過 HDFS 原則獲得寫入權限也是一樣。<br /><br />**因應措施/期望的客戶動作：**<br /><br />1. 在 Hive 存放庫下建立新的原則。<br />2. 在您看到資料庫的下拉式清單中，選取 [URI]。<br />3. 更新路徑 (範例：/tmp/* ) <br />4. 新增使用者和群組，然後儲存。<br />5. 重試插入查詢。|
 |**HDFS**|**N/A** |HDFS 應支援多個 KMS Uris |**先前的行為：** 使用 dfs.encryption.key.provider.uri 屬性來設定 KMS 提供者路徑。<br /><br />**新的行為：** dfs.encryption.key.provider.uri 現已淘汰，改為使用 hadoop.security.key.provider.path 來設定 KMS 提供者路徑。|
 |**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|可供停用排程器的選項 |**受影響的元件：** Zeppelin-Server<br /><br />**先前的行為：** 在舊版 Zeppelin 中，沒有選項可停用排程器。<br /><br />**新的行為：** 根據預設，使用者不會再看到排程器，因為其已依預設停用。<br /><br />**因應措施/期望的客戶動作：** 如果您想要啟用排程器，您必須從 Ambari 在 Zeppelin 設定中於自訂 zeppelin 網站之下新增值為 true 的 azeppelin.notebook.cron.enable。|
 
@@ -1713,11 +1713,11 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 - **Spark 2.3**
 
-  -   \[[*SPARK-23523*](https://issues.apache.org/jira/browse/SPARK-23523) \] \[\]由規則 optimizemetadataonlyquery 造成了造成的 SQL 不正確結果
+  -   \[[*SPARK-23523*](https://issues.apache.org/jira/browse/SPARK-23523) \] \[\]由規則 optimizemetadataonlyquery 造成了所造成的 SQL 不正確結果
 
-  -   \[[*SPARK-23406*](https://issues.apache.org/jira/browse/SPARK-23406) \]資料流程中的錯誤-資料流程自我聯結
+  -   \[[*SPARK-23406*](https://issues.apache.org/jira/browse/SPARK-23406) \]資料流程自我聯結中的 bug
 
-  -   當 Azure Data Lake Storage (Gen2) 是叢集的預設儲存體時，無法使用 Spark 範例筆記本。
+  -   當 Azure Data Lake Storage (Gen2) 是叢集的預設儲存體時，不會提供 Spark 範例筆記本。
 
 - **企業安全性套件**
 
@@ -1764,7 +1764,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
     
   **問題描述**
     
-  如果使用者想要建立具有自訂原則條件的原則，而且運算式或文字包含特殊字元，則原則強制執行將無法使用。 特殊字元會先轉換為 ASCII，然後才將原則儲存到資料庫。
+  如果使用者想要使用自訂原則條件來建立原則，且運算式或文字包含特殊字元，則原則強制執行將無法運作。 特殊字元會先轉換為 ASCII，然後才將原則儲存到資料庫。
     
   **特殊字元：**  &  &lt;&gt; " \`'
     
@@ -1822,7 +1822,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 ### <a name="deprecation"></a>淘汰
 
--   **OMS 入口網站：** 我們已從 HDInsight 資源頁面中移除指向 OMS 入口網站的連結。 Azure 監視器記錄一開始會使用自己的入口網站（稱為 OMS 入口網站）來管理其設定和分析收集的資料。 這個入口網站中的所有功能都已移至 Azure 入口網站，並將繼續進行開發。 HDInsight 已淘汰對於 OMS 入口網站的支援。 客戶將會使用 Azure 入口網站中的 HDInsight Azure 監視器記錄整合。
+-   **OMS 入口網站：** 我們已從 HDInsight 資源頁面中移除指向 OMS 入口網站的連結。 Azure 監視器記錄一開始是使用自己的入口網站，稱為 OMS 入口網站來管理其設定及分析收集的資料。 這個入口網站中的所有功能都已移至 Azure 入口網站，並將繼續進行開發。 HDInsight 已淘汰對於 OMS 入口網站的支援。 客戶將會在 Azure 入口網站中使用 HDInsight Azure 監視器記錄整合。
 
 -   **Spark 2.3**
 

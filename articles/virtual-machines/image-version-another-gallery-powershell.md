@@ -9,21 +9,21 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 48f0a247ed023583c8489994439a790944b90fdc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2f26716a4d04b574bf393f502758a725948419da
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082591"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299944"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>使用 PowerShell 從另一個資源庫複製映射
 
-如果您的組織中有多個資源庫，您可以從儲存在其他資源庫中的影像建立映射。 例如，您可能有開發和測試資源庫，可用於建立和測試新的映射。 當他們準備好在生產環境中使用時，您可以使用此範例將它們複製到生產資源庫。 您也可以使用[Azure CLI](image-version-another-gallery-cli.md)，從另一個資源庫中的映射建立映射。
+如果您的組織中有多個資源庫，您可以從儲存在其他資源庫中的影像建立映射。 例如，您可能會有開發和測試資源庫，可用於建立及測試新的映射。 當他們準備好用於生產環境時，您可以使用此範例將它們複製到生產資源庫。 您也可以使用 [Azure CLI](image-version-another-gallery-cli.md)，從另一個資源庫中的映射建立映射。
 
 
 ## <a name="before-you-begin"></a>開始之前
 
-若要完成本文，您必須擁有現有的來源資源庫、映射定義和映射版本。 您也應該有目的地資源庫。 
+若要完成這篇文章，您必須擁有現有的來源資源庫、映射定義和映射版本。 您也應該有目的地資源庫。 
 
 來源映射版本必須複寫到目的地資源庫所在的區域。 
 
@@ -33,11 +33,11 @@ ms.locfileid: "87082591"
 當您完成本文時，請視需要取代資源名稱。
 
 
-## <a name="get-the-source-image"></a>取得來源映射 
+## <a name="get-the-source-image"></a>取得來源影像 
 
-您將需要來源映射定義的資訊，以便在目的地資源庫中建立複本。
+您將需要來源映射定義中的資訊，才能在您的目的地資源庫中建立它的複本。
 
-使用[get-azresource](/powershell/module/az.resources/get-azresource) Cmdlet，列出現有資源庫、映射定義和映射版本的相關資訊。
+使用 [get-azresource](/powershell/module/az.resources/get-azresource) Cmdlet 列出現有資源庫、映射定義和映射版本的相關資訊。
 
 結果的格式為 `gallery\image definition\image version` 。
 
@@ -47,7 +47,7 @@ Get-AzResource `
    Format-Table -Property Name,ResourceGroupName
 ```
 
-一旦擁有所需的所有資訊，您就可以使用[new-azgalleryimageversion](/powershell/module/az.compute/get-azgalleryimageversion)取得來源映射版本的識別碼。 在此範例中，我們會取得 `1.0.0` `myImageDefinition` `myGallery` 資源群組中來源庫內的定義映射版本 `myResourceGroup` 。
+一旦擁有您需要的所有資訊之後，您就可以使用 [new-azgalleryimageversion](/powershell/module/az.compute/get-azgalleryimageversion)取得來源映射版本的識別碼。 在此範例中，我們會取得 `1.0.0` `myImageDefinition` `myGallery` 資源群組中來源資源庫中定義的映射版本 `myResourceGroup` 。
 
 ```azurepowershell-interactive
 $sourceImgVer = Get-AzGalleryImageVersion `
@@ -60,7 +60,7 @@ $sourceImgVer = Get-AzGalleryImageVersion `
 
 ## <a name="create-the-image-definition"></a>建立映射定義 
 
-您需要建立符合來源映射定義的新映射定義。 您可以使用[AzGalleryImageDefinition](/powershell/module/az.compute/get-azgalleryimagedefinition)來查看重新建立映射定義所需的所有資訊。
+您必須建立符合來源映射定義的新映射定義。 您可以使用 [AzGalleryImageDefinition](/powershell/module/az.compute/get-azgalleryimagedefinition)來查看重新建立映射定義所需的所有資訊。
 
 ```azurepowershell-interactive
 Get-AzGalleryImageDefinition `
@@ -70,7 +70,7 @@ Get-AzGalleryImageDefinition `
 ```
 
 
-輸出會如下所示：
+輸出會看起來類似這樣：
 
 ```output
 {
@@ -100,10 +100,10 @@ Get-AzGalleryImageDefinition `
 }
 ```
 
-使用[AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) Cmdlet 和上述輸出中的資訊，在您的目的地資源庫中建立新的映射定義。
+使用 [AzGalleryImageDefinition 指令程式](/powershell/module/az.compute/new-azgalleryimageversion) 和上述輸出中的資訊，在您的目的地資源庫中建立新的映射定義。
 
 
-在此範例中，映射定義在名為*myDestinationGallery*的資源庫中名為*myDestinationImgDef* 。
+在此範例中，映射定義在名為*myDestinationGallery*的資源庫中命名為*myDestinationImgDef* 。
 
 
 ```azurepowershell-interactive
@@ -114,7 +114,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
    -Name 'myDestinationImgDef' `
    -OsState specialized `
    -OsType Windows `
-   -HyperVGeneration v1
+   -HyperVGeneration v1 `
    -Publisher 'myPublisher' `
    -Offer 'myOffer' `
    -Sku 'mySKU'
@@ -123,11 +123,11 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 ## <a name="create-the-image-version"></a>建立映像版本
 
-使用[new-azgalleryimageversion](/powershell/module/az.compute/new-azgalleryimageversion)建立映射版本。 您必須在參數中傳入來源映射的識別碼，以在 `--managed-image` 目的地資源庫中建立映射版本。 
+使用 [New-new-azgalleryimageversion](/powershell/module/az.compute/new-azgalleryimageversion)建立映射版本。 您必須傳入參數中來源映射的識別碼，以在您的 `--managed-image` 目的地資源庫中建立映射版本。 
 
 映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
-在此範例中，[*美國西部*] 位置的 [ *myDestinationRG* ] 資源群組中的目的地資源庫名為*myDestinationGallery*。 我們的映射版本為*1.0.0* ，我們將在*美國中南部*區域建立1個複本，並在*美國西部*區域中建立2個複本。 
+在此範例中，目的地資源庫名為*myDestinationGallery*，位於*美國西部*位置的*myDestinationRG*資源群組中。 映射的版本為 *1.0.0* ，我們將在 *美國中南部* 區域中建立1個複本，並在 *美國西部* 區域建立2個複本。 
 
 
 ```azurepowershell-interactive
@@ -160,10 +160,10 @@ $job.State
 >
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-從[一般化](vm-generalized-image-version-powershell.md)或[特製](vm-specialized-image-version-powershell.md)化映射版本建立 VM。
+從 [一般化](vm-generalized-image-version-powershell.md) 或 [特製](vm-specialized-image-version-powershell.md) 化映射版本建立 VM。
 
-[Azure 映射產生器（預覽）](./linux/image-builder-overview.md)可協助自動建立映射版本，您甚至可以使用它來更新和[建立現有映射版本的新映射版本](./linux/image-builder-gallery-update-image-version.md)。 
+[Azure 映射產生器 (預覽版) ](./linux/image-builder-overview.md) 可協助自動建立映射版本，您甚至可以使用它來更新和 [建立現有映射版本的新映射版本](./linux/image-builder-gallery-update-image-version.md)。 
 
-如需有關如何提供採購方案資訊的詳細資訊，請參閱[在建立映射時提供 Azure Marketplace 購買方案資訊](marketplace-images.md)。
+如需有關如何提供採購方案資訊的詳細資訊，請參閱 [在建立映射時提供 Azure Marketplace 採購方案資訊](marketplace-images.md)。
