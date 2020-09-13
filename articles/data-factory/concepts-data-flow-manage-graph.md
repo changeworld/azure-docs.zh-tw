@@ -1,51 +1,64 @@
 ---
-title: 資料流程圖形
-description: 如何使用 data factory 的資料流程圖形
+title: 管理對應的資料流程圖
+description: 如何有效地管理和編輯對應的資料流程圖
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 0d357c4c671070a5c5e9d4587e2f90b6628996f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/02/2020
+ms.openlocfilehash: 0cdad47123d69ca7cee468c5bb0cea3268d73bfe
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605364"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420071"
 ---
-# <a name="mapping-data-flow-graphs"></a>對應資料流程圖形
+# <a name="managing-the-mapping-data-flow-graph"></a>管理對應的資料流程圖
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-對應資料流程設計介面是一種「建築」介面，由上而下由左至右建立資料流程。 每個轉換皆附有工具箱 (加號 (+) 符號)。 專注在商務邏輯，而非透過自由格式 DAG 環境中的邊緣連接節點。
+對應資料流程是使用設計介面（也就是資料流程圖）來撰寫。 在圖形中，轉換邏輯是由左至右建立的，而且會由上而下新增其他資料串流。 若要加入新的轉換，請選取現有轉換右下角的加號。
 
-以下是用來管理資料流程圖形的內建機制。
+![畫布](media/data-flow/canvas2.png "畫布")
 
-## <a name="move-nodes"></a>移動節點
+當您的資料流程變得更複雜時，請使用下列機制有效地流覽和管理資料流程圖形。 
 
-![匯總轉換選項](media/data-flow/agghead.png "匯總工具標頭")
+## <a name="moving-transformations"></a>移動轉換
 
-如果沒有拖放架構，「移動」轉換節點的方式是變更傳入的資料流程。 您將改為變更「傳入資料流」來四處移動轉換。
+在對應資料流程中，一組連接的轉換邏輯稱為 **資料流程**。 [內送 **資料流程** ] 欄位會指出目前轉換的資料串流。 每個轉換都有一或兩個傳入的資料流程，視其函式而定，並代表輸出資料流程。 傳入資料流程的輸出架構會決定目前轉換可以參考的資料行中繼資料。
 
-## <a name="streams-of-data-inside-of-data-flow"></a>資料流程內的資料流程
+![移動節點](media/data-flow/move-nodes.png "移動節點")
 
-在 Azure Data Factory 資料流程中，資料流代表資料的流程。 在 [轉換設定] 窗格中，您會看到 [傳入資料流程] 欄位。 這會告訴您提供轉換的是哪一個資料流。 您可以按一下傳入資料流名稱，然後選擇另一個資料流，變更圖表上轉換節點的實體位置。 目前的轉換以及該資料流上的所有後續轉換，將會接著移至新位置。
+與管線畫布不同的是，不會使用拖放模型來編輯資料流程轉換。 若要變更內送資料流程或「移動」轉換，請從 [連 **入資料流程** ] 下拉式清單中選擇不同的值。 當您這樣做時，所有下游轉換都會隨著編輯過的轉換一起移動。 圖形會自動更新以顯示新的邏輯流程。 如果您將內送資料流程變更為已經有下游轉換的轉換，則會建立新的分支或平行資料流程。 深入瞭解 [對應資料流程中的新分支](data-flow-new-branch.md)。
 
-如果您在之後要移動具有一或多個轉換的轉換，則資料流程中的新位置會透過新的分支聯結。
+## <a name="hide-graph-and-show-graph"></a>隱藏圖形並顯示圖形
 
-如果您在選擇節點之後沒有後續的轉換，則只有該轉換會移至新的位置。
+當您編輯轉換時，可以展開 [設定] 面板以佔用整個畫布，隱藏圖形。 按一下位於畫布右側的向上箭號 v。
 
-## <a name="hide-graph-and-show-graph"></a>隱藏圖表並顯示圖形
+![隱藏圖形](media/data-flow/hide-graph.png "隱藏圖形")
 
-底部設定窗格的最右側有一個按鈕，可讓您在處理轉換設定時，將底部窗格展開為全螢幕。 這可讓您使用 [上一個] 和 [下一步] 按鈕來流覽圖形的設定。 若要移回圖表視圖，請按一下向下按鈕並返回 [分割] 畫面。
+隱藏圖形時，您可以按一下 **[下一步]** 或 [ **上**一步]，在資料流程內的轉換之間移動。 按一下向下箭號箭號以顯示圖形。
 
-## <a name="search-graph"></a>搜尋圖表
+![顯示圖形](media/data-flow/show-graph.png "顯示圖形")
 
-您可以使用設計介面上的 [搜尋] 按鈕來搜尋圖表。
+## <a name="searching-for-transformations"></a>搜尋轉換
 
-![搜尋](media/data-flow/search001.png "搜尋圖表")
+若要在圖形中快速尋找轉換，請按一下 [縮放] 設定上方的 [ **搜尋** ] 圖示。
 
-## <a name="next-steps"></a>後續步驟
+![搜尋](media/data-flow/search-1.png "搜尋圖表")
 
-完成資料流程設計之後，請開啟 [偵錯工具] 按鈕，然後直接在 [[資料流程設計師](concepts-data-flow-debug-mode.md)] 或 [[管線] debug](control-flow-execute-data-flow-activity.md)中以 [debug] 模式測試它。
+您可以依轉換名稱或描述來搜尋，以找出轉換。
+
+![搜尋](media/data-flow/search-2.png "搜尋圖表")
+
+## <a name="hide-reference-nodes"></a>隱藏參考節點
+
+如果您的資料流程具有任何聯結、查閱、存在或等位轉換，資料流程會顯示所有傳入資料流程的參考節點。 如果您想要將所花費的垂直空間量降至最低，您可以最小化您的參考節點。 若要這樣做，請以滑鼠右鍵按一下畫布，然後選取 [ **隱藏參考節點**]。
+
+![隱藏參考節點](media/data-flow/hide-reference-nodes.png "隱藏參考節點")
+
+## <a name="next-steps"></a>接下來的步驟
+
+完成資料流程邏輯之後，請開啟 [偵測 [模式]](concepts-data-flow-debug-mode.md) ，並在資料預覽中進行測試。

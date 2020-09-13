@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 234156186d045e21cc01cc4b407408f98268c790
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d9377ba22f1461762e53b1004dfe5f06c2d7b972
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065466"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420212"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Azure 中的虛擬機器大小
 
-本文說明可用於執行應用程式和工作負載的 Azure 虛擬機器的可用大小和選項。 同時也提供當您規劃使用這些資源時所需注意的部署考量。 
+本文說明可用於執行應用程式和工作負載之 Azure 虛擬機器的可用大小和選項。 同時也提供當您規劃使用這些資源時所需注意的部署考量。 
 
 | 類型 | 大小 | 描述 |
 |------|-------|-------------|
@@ -28,10 +28,10 @@ ms.locfileid: "88065466"
 | [GPU](sizes-gpu.md) | NC、NCv2、NCv3、NCasT4_v3 (Preview) 、ND、NDv2 (Preview) 、NV、NVv3、NVv4 | 特製化的虛擬機器，其目標是大量的圖形轉譯和視訊編輯，以及搭配深入學習運作的模型訓練和推斷 (ND)。 有單一或多個 GPU 可供使用。 |
 | [高效能計算](sizes-hpc.md) | HB、HBv2、HC、H | 速度最快、功能最強的 CPU 虛擬機器，搭載選配的高輸送量網路介面 (RDMA)。 |
 
-- 如需各種大小的價格資訊，請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)或[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)的定價頁面。
+- 如需各種大小之定價的相關資訊，請參閱適用于 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) 或 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/Windows/#Windows)的定價頁面。
 - 如需了解 Azure 區域中的 VM 大小可用性，請參閱 [依區域提供的產品](https://azure.microsoft.com/regions/services/)。
 - 若要查看 Azure VM 的一般限制，請參閱 [Azure 訂用帳戶和服務限制、配額及條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
-- 如需 Azure 如何為其 Vm 命名的詳細資訊，請參閱[azure 虛擬機器大小命名慣例](./vm-naming-conventions.md)。
+- 如需 Azure 如何命名其 Vm 的詳細資訊，請參閱 [azure 虛擬機器大小的命名慣例](./vm-naming-conventions.md)。
 
 ## <a name="rest-api"></a>REST API
 
@@ -49,7 +49,7 @@ ms.locfileid: "88065466"
 
 深入了解如何使用 [CoreMark 基準分數](./linux/compute-benchmark-scores.md)來計算 Linux VM 的效能。
 
-深入瞭解使用[SPECInt 基準測試分數](./windows/compute-benchmark-scores.md)的 Windows vm 計算效能。
+深入瞭解使用 [SPECInt 基準測試分數](./windows/compute-benchmark-scores.md)的 Windows vm 計算效能。
 
 ## <a name="manage-costs"></a>管理成本
 
