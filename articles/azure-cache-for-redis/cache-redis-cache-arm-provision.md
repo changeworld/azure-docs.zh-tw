@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: 3c2d13794f2fc3af4541032d1f94967681c0deee
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a2ab400158f77af7934ca3f9f7c811d5fe2bd340
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078413"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461233"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-resource-manager-template"></a>使用 Resource Manager 範本建立 Azure Cache for Redis
 
@@ -27,7 +27,7 @@ ms.locfileid: "89078413"
 ## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
-* **儲存體帳戶**：若要建立一個帳戶，請參閱 [建立 Azure 儲存體帳戶](/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=template)。 儲存體帳戶會用於診斷資料。
+* **儲存體帳戶**：若要建立一個帳戶，請參閱 [建立 Azure 儲存體帳戶](/azure/storage/common/storage-account-create?tabs=azure-portal)。 儲存體帳戶會用於診斷資料。
 
 ## <a name="review-the-template"></a>檢閱範本
 
@@ -38,7 +38,7 @@ ms.locfileid: "89078413"
 範本中會定義下列資源：
 
 * [Microsoft. Cache/Redis](/azure/templates/microsoft.cache/redis)
-* [Microsoft Insights/diagnosticsettings](/azure/templates/diagnosticsettings)
+* [Microsoft Insights/diagnosticsettings](/azure/templates/microsoft.insights/diagnosticsettings)
 
 您也可以 [使用新進階層的 Resource Manager](cache-overview.md#service-tiers) 範本。
 

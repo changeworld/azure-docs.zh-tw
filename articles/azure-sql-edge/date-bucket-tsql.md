@@ -8,28 +8,26 @@ ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2019
-ms.openlocfilehash: c2f63abeb9f935236b4c35decb278eb86e0e2a82
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.date: 09/03/2020
+ms.openlocfilehash: 63b7ad84b0866c91e84007a188b82de65983790f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233303"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458845"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
-此函式會傳回與每個日期時間值區起點對應的日期時間值，從預設的原始值 `1900-01-01 00:00:00.000` 起算。
+`origin` `1900-01-01 00:00:00.000` 如果未指定原始參數，此函式會傳回對應到每個 datetime 值區開頭的 datetime 值，從參數定義的時間戳記，或預設的原始值。 
 
 如需所有 Transact-SQL 日期和時間資料類型與函式的概觀，請參閱[日期和時間資料類型與函式 (Transact-SQL)](/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql/)。
 
 [Transact-SQL 語法慣例](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql/)
 
-`DATE_BUCKET` 會使用預設的原始日期值 `1900-01-01 00:00:00.000`，亦即 1900 年 1 月 1 日星期一上午 12:00。
-
 ## <a name="syntax"></a>語法
 
 ```sql
-DATE_BUCKET (datePart, number, date)
+DATE_BUCKET (datePart, number, date, origin)
 ```
 
 ## <a name="arguments"></a>引數
@@ -52,7 +50,7 @@ DATE_BUCKET (datePart, number, date)
 
 *number*
 
-決定值區寬度並與 *datePart* 引數結合的整數。 這代表從原始時間起算的 dataPart 值區寬度。 **`This argument cannot be a negative integer value`** ＞。 
+決定值區寬度並與 *datePart* 引數結合的整數。 這代表從原始時間起算的 dataPart 值區寬度。 **`This argument cannot be a negative integer value`**. 
 
 *date*
 
@@ -66,6 +64,21 @@ DATE_BUCKET (datePart, number, date)
 + **time**
 
 針對 *date*，`DATE_BUCKET` 會接受資料行運算式、運算式或使用者定義的變數，前提是其必須解析為上述任何資料類型。
+
+**來源** 
+
+可解析成下列其中一個值的選擇性運算式：
+
++ **date**
++ **datetime**
++ **datetimeoffset**
++ **datetime2**
++ **smalldatetime**
++ **time**
+
+的資料類型 `Origin` 應該符合參數的資料類型 `Date` 。 
+
+`DATE_BUCKET` 如果未指定函式的原始值，則使用預設的原始日期值 `1900-01-01 00:00:00.000` ，亦即 12:00 AM，于1月 1 1900 日星期一。
 
 ## <a name="return-type"></a>傳回類型
 
@@ -92,11 +105,19 @@ Select DATE_BUCKET(wk, 4, @date)
 Select DATE_BUCKET(wk, 6, @date)
 ```
 
-下列運算式的輸出，這是原始時間後的 6275 週。
+下列運算式的輸出是 `2020-04-06 00:00:00.0000000` 預設源時間的6275周 `1900-01-01 00:00:00.000` 。
 
 ```sql
 declare @date datetime2 = '2020-04-15 21:22:11'
 Select DATE_BUCKET(wk, 5, @date)
+```
+
+下列運算式的輸出是 `2020-06-09 00:00:00.0000000` 從指定的來源時間起的75周 `2019-01-01 00:00:00` 。
+
+```sql
+declare @date datetime2 = '2020-06-15 21:22:11'
+declare @origin datetime2 = '2019-01-01 00:00:00'
+Select DATE_BUCKET(wk, 5, @date, @origin)
 ```
 
 ## <a name="datepart-argument"></a>datepart 引數
@@ -126,6 +147,10 @@ Invalid bucket width value passed to date_bucket function. Only positive values 
 ```sql
 Select DATE_BUCKET(dd, 10, SYSUTCDATETIME())
 ```
+
+## <a name="origin-argument"></a>來源引數  
+
+和引數的資料型別 `origin` `date` 必須相同。 如果使用不同的資料類型，將會產生錯誤。
 
 ## <a name="remarks"></a>備註
 
@@ -268,6 +293,15 @@ Where ShipDate between '2011-01-03 00:00:00.000' and '2011-02-28 00:00:00.000'
 order by DateBucket
 GO  
 ``` 
+### <a name="c-using-a-non-default-origin-value"></a>C. 使用非預設的原始值
+
+這個範例會使用非預設的 orgin 值來產生日期值區。 
+
+```sql
+declare @date datetime2 = '2020-06-15 21:22:11'
+declare @origin datetime2 = '2019-01-01 00:00:00'
+Select DATE_BUCKET(hh, 2, @date, @origin)
+```
 
 ## <a name="see-also"></a>另請參閱
 

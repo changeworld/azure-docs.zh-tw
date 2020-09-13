@@ -1,6 +1,6 @@
 ---
 title: Azure 加密概觀 | Microsoft Docs
-description: 瞭解 Azure 中的加密選項。 請參閱待用加密、傳輸中加密和金鑰管理的資訊 Azure Key Vault。
+description: 瞭解 Azure 中的加密選項。 查看待用加密、傳輸中加密和金鑰管理的相關資訊 Azure Key Vault。
 services: security
 author: msmbaldwin
 ms.assetid: ''
@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542954"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458615"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概觀
 
@@ -83,7 +83,7 @@ Azure Blob 儲存體和 Azure 檔案共用中的待用資料可以在伺服器�
 
 #### <a name="transparent-data-encryption"></a>透明資料加密
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) 可用來使用資料庫加密金鑰 (DEK) 即時加密 [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) 和 [Azure SQL 資料倉儲](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)資料檔案，該金鑰儲存在資料庫開機記錄中，以在復原期間使用。
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) 可用來使用資料庫加密金鑰 (DEK) （儲存在資料庫開機記錄中，以在復原期間提供可用性），即時加密 [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、 [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 資料檔案。
 
 TDE 會使用 AES 和三重資料加密標準 (3DES) 加密演算法來保護資料和記錄檔。 資料庫檔案的加密會在頁面層級執行。 已加密資料庫中的頁面會在寫入磁碟之前進行加密，並會在讀入記憶體時進行解密。 現在預設會在新建立的 Azure SQL 資料庫上啟用 TDE。
 
@@ -113,11 +113,11 @@ Azure 提供許多機制，可在將資料從一個位置移至另一個位置�
 
 ### <a name="data-link-layer-encryption-in-azure"></a>Azure 中的資料連結層加密
 
-每當 Azure 客戶流量在資料中心之間移動時--不是由 Microsoft （或代表 Microsoft）控制的外部實體界限--使用[IEEE 802.1 AE MAC 安全性標準](https://1.ieee802.org/security/802-1ae/)（也稱為 MACsec）的資料連結層加密方法，會在基礎網路硬體的點對點應用程式上套用。 封包在傳送之前會先在裝置上加密和解密，以防止實體「中間人」或窺探/wiretapping 攻擊。 由於這項技術是與網路硬體本身整合，因此在網路硬體上提供線路速率加密，而不會增加任何可測量的連結延遲。 針對某個區域內或區域間的所有 Azure 流量，此 MACsec 加密預設為開啟，而且客戶不需要採取任何動作即可啟用。 
+每當 Azure 客戶流量在資料中心之間移動時（不是由 Microsoft (或代表 Microsoft) 的外部實體界限）（使用 [IEEE 802.1 AE MAC 安全性標準](https://1.ieee802.org/security/802-1ae/) 的資料連結層加密方法 (也稱為 MACsec) 會在基礎網路硬體之間從點對點套用。 封包會在傳送之前加密和解密，以防止實體「攔截式」或窺探/wiretapping 攻擊。 由於這項技術是在網路硬體本身整合，因此可在網路硬體上提供線路速率加密，而不會增加可測量的連結延遲。 依預設，在區域內或區域之間的所有 Azure 流量都會開啟此 MACsec 加密，而且客戶的部分不需要採取任何動作即可啟用。 
 
 ### <a name="tls-encryption-in-azure"></a>Azure 中的 TLS 加密
 
-Microsoft 讓客戶能夠在雲端服務與客戶之間移動時，使用[傳輸層安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security)（TLS）通訊協定來保護資料。 Microsoft 資料中心會與連線到 Azure 服務的用戶端系統進行交涉以達成 TLS 連線。 TLS 提供增強式驗證、訊息隱私權、完整性 (可偵測訊息竄改、攔截和偽造)、互通性、演算法彈性，以及方便部署和使用。
+Microsoft 可讓客戶在雲端服務與客戶之間進行傳輸時，能夠使用 [傳輸層安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) 通訊協定來保護資料。 Microsoft 資料中心會與連線到 Azure 服務的用戶端系統進行交涉以達成 TLS 連線。 TLS 提供增強式驗證、訊息隱私權、完整性 (可偵測訊息竄改、攔截和偽造)、互通性、演算法彈性，以及方便部署和使用。
 
 [完整轉寄密碼](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) \(英文\) 會透過唯一金鑰來保護客戶的用戶端系統與 Microsoft 雲端服務之間的連線。 這些連線也會使用 RSA 型 2048 位元加密金鑰長度。 這種組合讓其他人很難攔截和存取傳輸中的資料。
 
@@ -139,7 +139,7 @@ Microsoft 讓客戶能夠在雲端服務與客戶之間移動時，使用[傳輸
 
 ## <a name="in-transit-encryption-in-vms"></a>VM 中的傳輸中加密
 
-視連線的本質而定，在執行 Windows 的 Vm 之間傳輸的資料可以透過數種方式來加密。
+根據連接的本質而定，在執行 Windows 的 Vm 之間傳輸至、進出或傳輸資料的資料，可以透過數種方式進行加密。
 
 ### <a name="rdp-sessions"></a>RDP 工作階段
 

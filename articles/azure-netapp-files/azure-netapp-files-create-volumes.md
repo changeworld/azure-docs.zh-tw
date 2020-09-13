@@ -1,6 +1,6 @@
 ---
 title: 建立適用于 Azure NetApp Files 的 NFS 磁片區 |Microsoft Docs
-description: 本文說明如何在 Azure NetApp Files 中建立 NFS 磁片區。 瞭解考慮，例如要使用的版本，以及最佳作法。
+description: 本文說明如何在 Azure NetApp Files 中建立 NFS 磁片區。 瞭解考慮，例如要使用的版本和最佳作法。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: f176e8fceb4d3e2e07398e6cb878180c8fe2321b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 141b19ca73c3465e59d8c94a3bdc3657d0900b8d
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533150"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458907"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 NFS 磁碟區
 
-Azure NetApp Files 支援使用 NFS （NFSv3 和 NFSv 4.1）、SMBv3 或雙重通訊協定（NFSv3 和 SMB）來建立磁片區。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。 本文說明如何建立 NFS 磁片區。 
+Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙重通訊協定 (NFSv3 和 SMB) 。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。 本文說明如何建立 NFS 磁片區。 
 
 ## <a name="before-you-begin"></a>開始之前 
 * 您必須已經設定容量集區。  
-    請參閱[設定容量](azure-netapp-files-set-up-capacity-pool.md)集區。   
+    請參閱 [設定容量集](azure-netapp-files-set-up-capacity-pool.md)區。   
 * 子網路必須委派至 Azure NetApp Files。  
-    請參閱[將子網委派給 Azure NetApp Files](azure-netapp-files-delegate-subnet.md)。
+    請參閱 [將子網委派給 Azure NetApp Files](azure-netapp-files-delegate-subnet.md)。
 
 ## <a name="considerations"></a>考量 
 
 * 決定要使用的 NFS 版本  
-  NFSv3 可以處理各種不同的使用案例，而且通常會部署在大部分的企業應用程式中。 您應該驗證應用程式所需的版本（NFSv3 或 NFSv 4.1），並使用適當的版本來建立磁片區。 例如，如果您使用[Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)，建議使用 nfsv 4.1 的檔案鎖定，而不是 NFSv3。 
+  NFSv3 可以處理各種使用案例，而且通常會部署在大部分的企業應用程式中。 您應驗證應用程式所需)  (NFSv3 或 Nfsv4.1 4.1 版本，並使用適當的版本建立您的磁片區。 例如，如果您使用 [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)，建議使用 nfsv4.1 4.1 的檔案鎖定，而不是 NFSv3。 
 
 * 安全性  
-  支援 UNIX 模式位（讀取、寫入和執行）適用于 NFSv3 和 NFSv 4.1。 NFS 用戶端上必須有根層級的存取權，才能掛接 NFS 磁片區。
+  NFSv3 和 Nfsv4.1 4.1 支援 UNIX 模式位 (讀取、寫入和執行) 。 NFS 用戶端上需要有根層級的存取權，才能掛接 NFS 磁片區。
 
-* NFSv 4.1 的本機使用者/群組和 LDAP 支援  
-  目前，NFSv 4.1 僅支援存取磁片區的根目錄。 請參閱[設定適用于 Azure NetApp Files 的 nfsv 4.1 預設網域](azure-netapp-files-configure-nfsv41-domain.md)。 
+* Nfsv4.1 4.1 的本機使用者/群組和 LDAP 支援  
+  目前，Nfsv4.1 4.1 僅支援存取磁片區的根目錄。 請參閱 [為 Azure NetApp Files 設定 nfsv4.1 4.1 預設網域](azure-netapp-files-configure-nfsv41-domain.md)。 
 
 ## <a name="best-practice"></a>最佳做法
 
-* 請確定您使用的是適當的磁片區掛接指示。  請參閱[掛接或卸載 Windows 或 Linux 虛擬機器的磁片](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)區。
+* 確定您使用的是適當的磁片區掛接指示。  請參閱 [為 Windows 或 Linux 虛擬機器掛接或卸載磁片](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)區。
 
-* NFS 用戶端應該位於與 Azure NetApp Files 磁片區相同的 VNet 或對等互連 VNet 中。 支援從 VNet 外部連接;不過，它會引進額外的延遲並降低整體效能。
+* NFS 用戶端應該與 Azure NetApp Files 磁片區位於相同的 VNet 或對等互連 VNet 中。 支援從 VNet 外部連接;不過，它會導致額外的延遲並降低整體效能。
 
-* 請確定 NFS 用戶端為最新狀態，並執行作業系統的最新更新。
+* 確定 NFS 用戶端為最新狀態，並執行作業系統的最新更新。
 
-## <a name="create-an-nfs-volume"></a>建立 NFS 磁片區
+## <a name="create-an-nfs-volume"></a>建立 NFS 磁碟區
 
 1.  從 [容量集區] 刀鋒視窗按一下 [磁碟區] 刀鋒視窗。 按一下 [+ 新增磁碟區] 以建立磁碟區。 
 
     ![導覽至磁碟區](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  在 [建立磁片區] 視窗中，按一下 [**建立**]，然後在 [基本] 索引標籤下提供下欄欄位的資訊：   
+2.  在 [建立磁片區] 視窗中，按一下 [ **建立**]，然後在 [基本] 索引標籤底下提供下欄欄位的資訊：   
     * **磁碟區名稱**      
         為您要建立的磁碟區指定名稱。   
 
         在每個容量集區中，磁碟區名稱必須是唯一的。 長度至少必須有三個字元。 您可以使用任何英數字元。   
 
-        您不能使用 `default` 做為磁片區名稱。
+        您無法使用 `default` 做為磁片區名稱。
 
     * **容量集區**  
         指定您想要在其中建立磁碟區的容量集區。
@@ -87,41 +87,41 @@ Azure NetApp Files 支援使用 NFS （NFSv3 和 NFSv 4.1）、SMBv3 或雙重�
     
         ![建立子網路](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * 如果您想要將現有的快照集原則套用到磁片區，請按一下 [**顯示 advanced] 區段**將它展開，然後選取下拉式功能表中的快照集原則。 
+    * 如果您想要將現有的快照集原則套用到磁片區，請按一下 [顯示最上層] **區段** 來展開它，指定是否要隱藏快照集路徑，然後在下拉式功能表中選取快照集原則。 
 
-        如需建立快照集原則的相關資訊，請參閱[管理快照集原則](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
+        如需建立快照集原則的詳細資訊，請參閱 [管理快照](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)集原則。
 
-        ![顯示先進的選擇](../media/azure-netapp-files/volume-create-advanced-selection.png)
+        ![顯示 advanced selection](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-3. 按一下 [通訊協定]****，然後完成下列動作：  
-    * 選取 [NFS]**** 作為磁碟區的通訊協定類型。   
-    * 指定將用來建立新磁片區匯出路徑的檔案**路徑**。 匯出路徑會用來掛接和存取磁碟區。
+3. 按一下 [通訊協定]  ，然後完成下列動作：  
+    * 選取 [NFS]  作為磁碟區的通訊協定類型。   
+    * 指定將用來建立新磁片區匯出路徑的檔案 **路徑** 。 匯出路徑會用來掛接和存取磁碟區。
 
         檔案路徑名稱只能包含字母、數字和連字號 ("-")。 長度必須介於 16 到 40 個字元之間。 
 
-        檔案路徑在每個訂用帳戶和每個區域中必須是唯一的。 
+        檔案路徑在每個訂用帳戶和每個區域內必須是唯一的。 
 
     * 選取磁碟區的 NFS 版本 (**NFSv3** 或 **NFSv4.1**)。  
 
-    * 如果您使用 NFSv 4.1，請指出您是否要啟用磁片區的**Kerberos**加密。  
+    * 如果您使用的是 Nfsv4.1 4.1，請指出您是否要為磁片區啟用 **Kerberos** 加密。  
 
-        如果您使用 Kerberos 搭配 NFSv 4.1，則需要其他設定。 依照[設定 nfsv 4.1 Kerberos 加密](configure-kerberos-encryption.md)中的指示進行。
+        如果您搭配使用 Kerberos 與 Nfsv4.1 4.1，則需要額外的設定。 遵循 [設定 nfsv4.1 4.1 Kerberos 加密](configure-kerberos-encryption.md)中的指示。
 
-    * （選擇性）[設定 NFS 磁片區的匯出原則](azure-netapp-files-configure-export-policy.md)。
+    * （選擇性） [設定 NFS 磁片區的匯出原則](azure-netapp-files-configure-export-policy.md)。
 
     ![指定 NFS 通訊協定](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
 
-4. 按一下 [檢閱 + 建立]，以檢閱磁碟區詳細資料。  然後按一下 [**建立**] 以建立磁片區。
+4. 按一下 [檢閱 + 建立]，以檢閱磁碟區詳細資料。  然後按一下 [ **建立** ] 以建立磁片區。
 
     建立的磁碟區會出現在 [磁碟區] 頁面中。 
  
     磁碟區會從其容量集區繼承訂用帳戶、資源群組、位置屬性。 若要監視磁碟區部署狀態，您可以使用 [通知] 索引標籤。
 
 
-## <a name="next-steps"></a>後續步驟  
+## <a name="next-steps"></a>接下來的步驟  
 
 * [針對 Azure NetApp Files 設定 NFSv4.1 預設網域](azure-netapp-files-configure-nfsv41-domain.md)
-* [設定 NFSv 4.1 Kerberos 加密](configure-kerberos-encryption.md)
+* [設定 NFSv4.1 Kerberos 加密](configure-kerberos-encryption.md)
 * [對 Windows 或 Linux 虛擬機器掛接或取消掛接磁碟區](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [設定 NFS 磁碟區的匯出原則](azure-netapp-files-configure-export-policy.md)
 * [Azure NetApp Files 的資源限制](azure-netapp-files-resource-limits.md)
