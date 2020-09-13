@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 69c3246c910a83d889151d6ad749e1be86340e8c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d47c21da1279271b12933a2e4642abcce622600
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540961"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015478"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>教學課程：將 Workday 設定為 Azure AD 使用者布建
 本教學課程的目的是要說明將背景工作資料從 Workday 布建至 Azure Active Directory 所需執行的步驟。 
@@ -27,13 +27,13 @@ ms.locfileid: "88540961"
 
 [Azure Active Directory 使用者佈建服務](../app-provisioning/user-provisioning.md)與 [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 整合以佈建使用者帳戶。 Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，可讓下列人力資源和身分識別生命週期管理案例的自動化：
 
-* **雇用新員工** ：當新的員工加入 workday 時，會自動在 Azure Active Directory 和 Azure AD 支援的 Office 365 和 [其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中建立使用者帳戶，並將電子郵件地址寫回至 Workday。
+* **雇用新員工** ：當新的員工加入 workday 時，會自動在 Azure Active Directory 中建立使用者帳戶，並選擇性地 Microsoft 365 和 [Azure AD 支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)，並將電子郵件地址回寫至 Workday。
 
-* **員工屬性和設定檔更新** ：當員工記錄在 Workday 中更新時 (例如姓名、職稱或管理員) ，其使用者帳戶將會自動更新 Azure Active Directory 以及選擇性地更新 [Azure AD 所支援的 Office 365 和其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
+* **員工屬性和設定檔更新** ：當員工記錄在 Workday (（例如其名稱、標題或管理員) ）更新時，其使用者帳戶將會自動更新 Azure Active Directory 並選擇性地 Microsoft 365 和 [Azure AD 所支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
 
-* **員工終止** -當員工在 Workday 結束時，其使用者帳戶會在 Azure Active Directory 中自動停用，並選擇性地停用 Azure AD 所支援的 Office 365 和 [其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
+* **員工終止** -當員工在 Workday 結束時，其使用者帳戶會在 Azure Active Directory 中自動停用，並選擇性地 Microsoft 365 和 [Azure AD 所支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
 
-* **員工重新雇用** -當員工在 Workday 中 workday 重新雇用時，可以根據您的喜好設定) ，自動重新開機或重新布建 (，視您的喜好設定到 Azure Active Directory 365 以及 [Azure AD 所支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)而定。
+* **員工重新雇用** -當員工在 Workday 中 workday 重新雇用時，可以根據您的喜好設定) ，自動重新啟用或重新布建舊帳戶 (，Azure Active Directory 並選擇性地 Microsoft 365 和 [Azure AD 所支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>誰最適合使用此使用者佈建解決方案？
 
@@ -45,7 +45,7 @@ ms.locfileid: "88540961"
 
 * 需要使用從 Workday 取得的資料來布建使用者的組織
 
-* 使用 Office 365 處理電子郵件的組織
+* 使用電子郵件 Microsoft 365 的組織
 
 ## <a name="solution-architecture"></a>方案架構
 
@@ -115,9 +115,9 @@ ms.locfileid: "88540961"
    
      | URL 格式 | 使用的 WWS API 版本 | 需要 XPATH 變更 |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21。1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21。1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #。# | Yes |
+     | https://####.workday.com/ccx/service/tenantName | v 21。1 | 否 |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21。1 | 否 |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #。# | 是 |
 
       > [!NOTE]
      > 如果未在 URL 中指定任何版本資訊，應用程式會使用 Workday Web 服務 (WWS) v 21.1，而且應用程式隨附的預設 XPATH API 運算式不需要進行任何變更。 若要使用特定的 WWS API 版本，請在 URL 中指定版本號碼 <br>

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526825"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017467"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>教學課程：設定從 Azure AD 到 Workday 的屬性回寫
 本教學課程的目的是要說明從 Azure AD 到 Workday 的回寫屬性所需執行的步驟。 Workday 回寫布建應用程式支援將值指派給下列 Workday 屬性：
@@ -26,7 +26,7 @@ ms.locfileid: "88526825"
 * 工作行動電話號碼 (包括國家/地區代碼、區碼、數位) 
 * 工作移動主要旗標
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 將使用 Workday 的輸入布建整合設定為內部 [部署 AD 布建](workday-inbound-tutorial.md) 應用程式或 [workday 來 Azure AD](workday-inbound-cloud-only-tutorial.md) 布建應用程式之後，您可以選擇性地設定 workday 回寫應用程式，以將公司電子郵件和電話號碼等連絡人資訊寫入 Workday。 
 
@@ -34,7 +34,7 @@ ms.locfileid: "88526825"
 
 這項 Workday 回寫使用者布建解決方案最適合用於：
 
-* 使用 Office 365 的組織想要回寫受 IT 管理的授權屬性 (例如電子郵件地址、使用者名稱和電話號碼) 回 Workday
+* 使用 Microsoft 365 的組織想要回寫受 IT 管理的授權屬性 (例如電子郵件地址、使用者名稱和電話號碼) 回 Workday
 
 ## <a name="configure-integration-system-user-in-workday"></a>在 Workday 中設定整合系統使用者
 

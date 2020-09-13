@@ -9,16 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 572b5328a433839dafbfe23eb7207dfaeb9ea309
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 288fb5b552eab2029ea72f73a835fc73d97244b9
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017850"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018177"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用串流分析、Azure Functions 和 SendGrid 的自訂規則擴充 Azure IoT Central
-
-
 
 本操作指南會示範如何以解決方案開發人員的身分，使用自訂規則和通知擴充您的 IoT Central 應用程式。 此範例顯示當裝置停止傳送遙測時，傳送通知給操作員。 解決方案會使用 [Azure 串流分析](https://docs.microsoft.com/azure/stream-analytics/) 查詢來偵測裝置何時停止傳送遙測。 串流分析作業會使用 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) ，透過 [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/)傳送通知電子郵件。
 
@@ -30,7 +28,7 @@ ms.locfileid: "89017850"
 * 建立串流分析查詢，以偵測裝置停止傳送資料的時間。
 * 使用 Azure Functions 和 SendGrid 服務傳送電子郵件通知。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成此操作指南中的步驟，您必須具備有效的 Azure 訂用帳戶。
 
@@ -48,7 +46,7 @@ ms.locfileid: "89017850"
 | URL | 接受預設值，或選擇您自己唯一的 URL 前置詞 |
 | 目錄 | 您的 Azure Active Directory 租使用者 |
 | Azure 訂用帳戶 | 您的 Azure 訂用帳戶 |
-| 區域 | 您最近的區域 |
+| Region | 您最近的區域 |
 
 本文中的範例和螢幕擷取畫面會使用 **美國** 地區。 選擇接近您的位置，並確定您在相同區域中建立所有資源。
 
@@ -302,7 +300,7 @@ test-device-3    2019-05-02T14:24:28.919Z
         RightSide.deviceid2 is NULL
     ```
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 1. 若要啟動串流分析作業，請選擇 [總覽]，然後依序選擇 **[****開始**]、[開始 **]，然後****開始**：
 
     ![串流分析](media/howto-create-custom-rules/stream-analytics.png)
@@ -317,7 +315,7 @@ test-device-3    2019-05-02T14:24:28.919Z
     | 設定 | 值 |
     | ------- | ----- |
     | 顯示名稱 | 匯出至事件中樞 |
-    | 已啟用 | 開啟 |
+    | 啟用 | 開啟 |
     | 事件中樞命名空間 | 您的事件中樞命名空間名稱 |
     | 事件中樞 | centralexport |
     | 量測 | 開啟 |
@@ -349,7 +347,7 @@ test-device-3    2019-05-02T14:24:28.919Z
 
 您可以從應用程式內的 **管理** 頁面刪除 IoT Central 應用程式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在此操作指南中，您已了解如何：
 

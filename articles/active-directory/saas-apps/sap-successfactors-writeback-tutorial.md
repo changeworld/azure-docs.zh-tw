@@ -10,17 +10,17 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 4b048053a553176f73b5bd199bcb6e28bc74cc6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b185f29cea61b9c366714a1af72648aeee35b61c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533991"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017926"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>教學課程：設定從 Azure AD 將屬性回寫回 SAP SuccessFactors
 本教學課程的目的是要示範將屬性從 Azure AD 回寫至 SAP SuccessFactors 員工中心的步驟。 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 您可以設定 SAP SuccessFactors 回寫應用程式，將特定的屬性從 Azure Active Directory 寫入至 SAP SuccessFactors 員工中心。 SuccessFactors 回寫布建應用程式支援將值指派給下列員工中部屬性：
 
@@ -40,7 +40,7 @@ ms.locfileid: "88533991"
 
 此 SuccessFactors 回寫使用者布建解決方案最適合用於：
 
-* 使用 Office 365 的組織想要寫回受 IT 管理的授權屬性 (例如電子郵件地址、電話、使用者名稱) 回 SuccessFactors 員工中心。
+* 使用 Microsoft 365 想要寫回受 IT 管理之權威屬性的組織 (例如電子郵件地址、電話、使用者名稱) 回 SuccessFactors 員工中心。
 
 ## <a name="configuring-successfactors-for-the-integration"></a>設定整合的 SuccessFactors
 

@@ -1,18 +1,18 @@
 ---
 title: 對 Azure 檔案同步進行疑難排解 | Microsoft Docs
-description: 針對 Azure 檔案同步上部署中的常見問題進行疑難排解，您可以使用此功能將 Windows Server 轉換成 Azure 檔案共用的快速快取。
+description: 針對 Azure 檔案同步中部署的常見問題進行疑難排解，您可以用來將 Windows Server 轉換成 Azure 檔案共用的快速快取。
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d266583a2bd73c92a58fad1882a1c572ed4f3769
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a93c127d0b04667b0f28949f4b384f22769bace4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056256"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018589"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -47,7 +47,7 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 driveletter:\ 無法存取。  
 參數錯誤。
 
-若要解決此問題，請安裝[KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014)並重新啟動伺服器。 如果此更新將不會安裝，因為已安裝更新版本，請移至 Windows Update，安裝 Windows Server 2012 R2 的最新更新，然後重新開機伺服器。
+若要解決此問題，請安裝 [KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014) 並重新啟動伺服器。 如果此更新將不會安裝，因為已安裝較新的更新，請移至 Windows Update，安裝適用于 Windows Server 2012 R2 的最新更新，然後重新開機伺服器。
 
 <a id="server-registration-missing-subscriptions"></a>**伺服器註冊未列出所有 Azure 訂用帳戶**  
 使用 ServerRegistration.exe 註冊伺服器時，按一下 [Azure 訂用帳戶] 下拉式清單後未顯示訂用帳戶。
@@ -338,7 +338,7 @@ PerItemErrorCount: 1006.
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | 無法同步檔案，因為已達到衝突檔案的最大數目。 Azure 檔案同步支援每個檔案可具有 100 個衝突檔案。 若要深入了解檔案衝突，請參閱 Azure 檔案同步[常見問題集](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution) (機器翻譯)。 | 若要解決此問題，請減少衝突檔案的數目。 一旦衝突檔案的數目小於 100，檔案就會同步處理。 |
 
 #### <a name="handling-unsupported-characters"></a>處理不支援的字元
-如果**FileSyncErrorsReport.ps1** PowerShell 腳本因為不支援的字元而顯示每個專案的同步錯誤 (錯誤碼0x8007007b 或 0x80c80255) ，您應該從個別的檔案名中移除或重新命名錯誤的字元。 由於這些字元大多沒有標準的視覺編碼，PowerShell 可能會將這些字元列印為問號或空的矩形。 [評估工具](storage-sync-files-planning.md#evaluation-cmdlet)可用來識別不受支援的字元。 如果您的資料集有數個檔案包含不正確字元，請使用[ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars)腳本來重新命名包含不支援字元的檔案。
+如果 **FileSyncErrorsReport.ps1** PowerShell 腳本顯示每個專案的同步錯誤，因為不支援的字元 (錯誤碼0x8007007b 或 0x80c80255) ，您應該從個別的檔案名中移除或重新命名錯誤的字元。 由於這些字元大多沒有標準的視覺編碼，PowerShell 可能會將這些字元列印為問號或空的矩形。 [評估工具](storage-sync-files-planning.md#evaluation-cmdlet)可用來識別不受支援的字元。 如果您的資料集有多個檔案有不正確字元，請使用 [ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars) 腳本來重新命名包含不受支援字元的檔案。
 
 下表列出 Azure 檔案同步尚不支援的所有 Unicode 字元。
 
@@ -1094,7 +1094,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 | HRESULT | HRESULT (十進位) | 錯誤字串 | 問題 | 補救 |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80c86045 | -2134351803 | ECS_E_INITIAL_UPLOAD_PENDING | 因為正在進行初始上傳，所以檔案無法進行層級處理。 | 不需要任何動作。 初始上傳完成之後，檔案會進行分層。 |
+| 0x80c86045 | -2134351803 | ECS_E_INITIAL_UPLOAD_PENDING | 檔案無法分層，因為初始上傳正在進行中。 | 不需要任何動作。 初始上傳完成後，就會將檔案分層。 |
 | 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | 因為檔案正在使用中，所以無法對檔案進行分層處理。 | 不需要任何動作。 檔案不再處於使用中狀態時即會進行分層處理。 |
 | 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | 因為同步作業已排除檔案，所以無法對檔案進行分層處理。 | 不需要任何動作。 同步排除清單中的檔案無法分層。 |
 | 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | 因為在伺服器上找不到檔案，所以無法對檔案進行分層處理。 | 不需要任何動作。 如果錯誤持續發生，請檢查伺服器中是否有該檔案。 |
@@ -1116,8 +1116,8 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 | 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | 因為發生網路問題，所以無法對檔案進行分層處理。 | 不需要任何動作。 如果錯誤持續發生，請檢查 Azure 檔案共用的網路連線。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 因為檔案已修改，所以無法對檔案進行分層處理。 | 不需要任何動作。 當已修改的檔案同步至 Azure 檔案共用後，就會進行分層處理。 |
 | 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 因為系統資源不足，所以無法對檔案進行分層處理。 | 如果錯誤持續發生，請調查哪一個應用程式或核心模式驅動程式耗用系統資源。 |
-| 0x8e5e03fe | -1906441218 | JET_errDiskIO | 因為寫入雲端分層資料庫時發生 i/o 錯誤，所以檔案無法進行層級處理。 | 如果錯誤持續發生，請在磁片區上執行 chkdsk，並檢查存放裝置硬體。 |
-| 0x8e5e0442 | -1906441150 | JET_errInstanceUnavailable | 因為雲端分層資料庫未執行，所以檔案無法進行層級。 | 若要解決此問題，請重新開機 FileSyncSvc 服務或伺服器。 如果錯誤持續發生，請在磁片區上執行 chkdsk，並檢查存放裝置硬體。 |
+| 0x8e5e03fe | -1906441218 | JET_errDiskIO | 因為寫入雲端階層處理資料庫時發生 i/o 錯誤，所以檔案無法分層。 | 如果錯誤持續發生，請在磁片區上執行 chkdsk，並檢查存放裝置硬體。 |
+| 0x8e5e0442 | -1906441150 | JET_errInstanceUnavailable | 因為雲端階層處理資料庫未執行，所以檔案無法分層。 | 若要解決此問題，請重新開機 FileSyncSvc 服務或伺服器。 如果錯誤持續發生，請在磁片區上執行 chkdsk，並檢查存放裝置硬體。 |
 
 
 
@@ -1257,23 +1257,7 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 
 如果問題未解決，請執行 AFSDiag 工具，並將其 .zip 檔案輸出傳送給支援工程師，以供進一步診斷。
 
-針對代理程式版本 v11 和更新版本：
-
-1. 開啟提升權限的 PowerShell 視窗，然後執行下列命令 (每個命令後要按 Enter 鍵)：
-
-    > [!NOTE]
-    >AFSDiag 會先建立輸出目錄和其中的暫存資料夾，再收集記錄檔，並在執行後刪除暫存資料夾。 指定不包含資料的輸出位置。
-    
-    ```powershell
-    cd "c:\Program Files\Azure\StorageSyncAgent"
-    Import-Module .\afsdiag.ps1
-    Debug-AFS -OutputDirectory C:\output -KernelModeTraceLevel Verbose -UserModeTraceLevel Verbose
-    ```
-
-2. 重現問題。 完成時，輸入 **D**。
-3. 含有記錄和追蹤檔案的 .zip 檔案將會儲存在指定的輸出目錄中。 
-
-針對代理程式版本 v10 和更早版本：
+若要執行 AFSDiag，請執行下列步驟：
 1. 建立將用來儲存 AFSDiag 輸出的目錄 (例如 C:\Output)。
     > [!NOTE]
     >AFSDiag 會先刪除輸出目錄中的所有內容，然後再收集記錄檔。 指定不包含資料的輸出位置。

@@ -13,18 +13,20 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-csharp
-ms.openlocfilehash: 1c1e29d43fefa6be1586aefc28249fe2f0f9e9fb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8c9555bc208766d5275e392ee22889f5b618e216
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001020"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018300"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在您的 Azure IoT 中樞中設定 X.509 安全性
 
 本教學課程說明使用 *X.509 憑證驗證*來保護 Azure IoT 中樞所需的步驟。 為了方便說明，我們使用開放原始碼工具 OpenSSL 在 Windows 電腦本機建立憑證。 建議您僅將本教學課程用於測試目的。 針對生產環境，您應該向根憑證授權單位 (CA) 購買憑證**。
 
-## <a name="prerequisites"></a>先決條件
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
+
+## <a name="prerequisites"></a>必要條件
 
 本教學課程需要您準備下列資源：
 
@@ -194,7 +196,7 @@ ms.locfileid: "89001020"
 
    ![執行裝置應用程式](./media/iot-hub-security-x509-get-started/device-app-success.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解如何保護您的 IoT 解決方案，請參閱︰
 

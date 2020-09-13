@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 51ab05a995ba5b620b759f419fb5b4594873d2f5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0a025ad7857594b3117b1703a0e19ae47407d0fd
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527803"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018096"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教學課程：設定 Workday 來自動佈建使用者
 
@@ -31,15 +31,15 @@ ms.locfileid: "88527803"
 
 [Azure Active Directory 使用者佈建服務](../app-provisioning/user-provisioning.md)與 [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 整合以佈建使用者帳戶。 Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，可讓下列人力資源和身分識別生命週期管理案例的自動化：
 
-* **雇用新員工** ：當新的員工加入 Workday 時，會自動在 Active Directory、Azure Active Directory 和 Azure AD 所支援的 Office 365 和 [其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中建立使用者帳戶，並將 IT 管理的連絡人資訊回寫至 Workday。
+* **雇用新員工** ：當新的員工加入 Workday 時，系統會自動在 Active Directory、Azure Active Directory 中建立使用者帳戶，並選擇性地 Microsoft 365 及 [Azure AD 所支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)，並將 IT 管理的連絡人資訊回寫至 Workday。
 
-* **員工屬性和設定檔更新** - 在 Workday 中更新員工記錄時 (例如姓名、職稱或經理)，系統會在 Active Directory、Azure Active Directory、Office 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中自動更新其使用者帳戶。
+* **員工屬性和設定檔更新** -在 Workday 中更新員工記錄時 (例如其名稱、標題或管理員) ，其使用者帳戶將會自動更新 Active Directory、Azure Active Directory，以及選擇性地 Microsoft 365 和 [Azure AD 所支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
 
-* **員工離職** - 在 Workday 中將員工設定為離職時，系統會在 Active Directory、Azure Active Directory、Office 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中自動停用其使用者帳戶。
+* **員工終止** -當員工在 Workday 結束時，其使用者帳戶會在 Active Directory、Azure Active Directory 中自動停用，並選擇性地 Microsoft 365 及 [Azure AD 所支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中停用。
 
-* **重新雇用員工** - 在 Workday 中重新雇用員工時，系統會自動重新啟用其舊帳戶或將其重新佈建 (取決於您的喜好設定) 至 Active Directory、Azure Active Directory、Office 365 (選擇性) 和 [Azure AD 支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
+* **員工重新雇用** -在 Workday 中 workday 重新雇用員工時，根據您的喜好設定) Active Directory、Azure Active Directory，以及 [其他 Microsoft 365 支援的 SaaS 應用程式](../app-provisioning/user-provisioning.md)，可以自動重新開機或重新布建舊帳戶 (。
 
-### <a name="whats-new"></a>最新消息
+### <a name="whats-new"></a>新功能
 本節將捕獲最近的 Workday 整合增強功能。 如需完整更新、已規劃的變更和封存清單，請流覽 [Azure Active Directory 的新功能頁面。](../fundamentals/whats-new.md) 
 
 * **5 月 2020-將電話號碼回寫至 Workday 的能力：** 除了電子郵件和使用者名稱之外，您現在也可以將公司電話號碼和行動電話號碼從 Azure AD 回寫至 Workday。 如需詳細資訊，請參閱 [回寫應用程式教學](workday-writeback-tutorial.md)課程。
@@ -60,7 +60,7 @@ ms.locfileid: "88527803"
 
 * 需要僅根據在 Workday HCM 模組中偵測到的變更資訊聯結、移動及保留使用者，使其同步至一或多個 Active Directory 樹系、網域和 OU 的組織 (請參閱 [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html))
 
-* 使用 Office 365 處理電子郵件的組織
+* 使用電子郵件 Microsoft 365 的組織
 
 ## <a name="solution-architecture"></a>方案架構
 
@@ -258,7 +258,7 @@ ms.locfileid: "88527803"
 > 如果您想要將布建代理程式限制為只基於測試目的而從特定 OU 建立和讀取使用者，建議您在測試執行期間，于適當的 OU 層級委派控制項。
 
 4. 按一下 [歡迎使用] 畫面上的 **[下一步]** 。 
-5. 在 [ **選取使用者或群組** ] 畫面上，新增您在步驟2中建立的網域使用者。 按一下 [下一步]  。
+5. 在 [ **選取使用者或群組** ] 畫面上，新增您在步驟2中建立的網域使用者。 按 [下一步] 。
    >[!div class="mx-imgBorder"]
    >![新增畫面](./media/workday-inbound-tutorial/delegation-wizard-01.png "新增畫面")
 
@@ -373,7 +373,7 @@ ms.locfileid: "88527803"
 1. 開啟 [服務] 嵌入式管理單元，並尋找名為 "Microsoft Azure AD Connect Provisioning Agent" 的服務，以確認代理程式已安裝且在執行中
 
    >[!div class="mx-imgBorder"]
-   >![服務](./media/workday-inbound-tutorial/services.png)
+   >![在服務中執行的 Microsoft Azure AD Connect 布建代理程式的螢幕擷取畫面](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>第 3 部分：在佈建應用程式中，設定 Workday 和 Active Directory 的連線能力
 在此步驟中，我們將在 Azure 入口網站中建立 Workday 和 Active Directory 的連線能力。 
@@ -390,9 +390,9 @@ ms.locfileid: "88527803"
    
      | URL 格式 | 使用的 WWS API 版本 | 需要 XPATH 變更 |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21。1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21。1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #。# | Yes |
+     | https://####.workday.com/ccx/service/tenantName | v 21。1 | 否 |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21。1 | 否 |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #。# | 是 |
 
       > [!NOTE]
      > 如果未在 URL 中指定任何版本資訊，應用程式會使用 Workday Web 服務 (WWS) v 21.1，而且應用程式隨附的預設 XPATH API 運算式不需要進行任何變更。 若要使用特定的 WWS API 版本，請在 URL 中指定版本號碼 <br>

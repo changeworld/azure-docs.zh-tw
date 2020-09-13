@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/07/2020
+ms.date: 09/10/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8fa409a8ee66cd69016b7978f0d5f0194b338c4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: d0f67f9052467e5d1a89fc4c520bd39821403bbe
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959148"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015444"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -147,7 +147,7 @@ SCIM RFC 中定義了數個端點。 您可以從 /User 端點開始著手，然
 在 [SCIM 2.0 通訊協定規格](http://www.simplecloud.info/#Specification)中，您的應用程式必須符合下列需求：
 
 * 支援根據 [SCIM 通訊協定 3.3 小節](https://tools.ietf.org/html/rfc7644#section-3.3)建立使用者及選擇性建立群組的作業。  
-* 支援根據 [SCIM 通訊協定 3.5.2 小節](https://tools.ietf.org/html/rfc7644#section-3.5.2)修改具有 PATCH 要求的使用者或群組的作業。  
+* 支援根據 [SCIM 通訊協定 3.5.2 小節](https://tools.ietf.org/html/rfc7644#section-3.5.2)修改具有 PATCH 要求的使用者或群組的作業。 支援可確保群組和使用者以具效能的方式布建。 
 * 支援根據 [SCIM 通訊協定 3.4.1 小節](https://tools.ietf.org/html/rfc7644#section-3.4.1)為先前建立的使用者或群組擷取已知資源的作業。  
 * 支援根據 [SCIM 通訊協定 3.4.2 小節](https://tools.ietf.org/html/rfc7644#section-3.4.2)查詢使用者或群組的作業。  依預設會按 `id` 擷取使用者，並按 `username` 和 `externalId` 加以查詢，以及按 `displayName` 查詢群組。  
 * 支援根據 SCIM 通訊協定 3.4.2 小節，依識別碼和管理員查詢使用者的作業。  
@@ -746,7 +746,7 @@ TLS 1.2 加密套件的最低標準：
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP 範圍
-Azure AD 布建服務目前會在 AzureActiveDirectory 和 AzureActiveDirectoryDomainServices 的 IP 範圍下運作，[如下所示。](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) 工作正在進行中，只合併至 AzureActiveDirectory 下的 IP 範圍。 
+Azure AD 布建服務目前在 AzureActiveDirectory 的 IP 範圍下[運作，如下所示。](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) 您可以新增列在 AzureActiveDirectory 標籤底下的 IP 範圍，以允許來自 Azure AD 布建服務的流量進入您的應用程式。 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>步驟 3：建置 SCIM 端點
 
@@ -1175,7 +1175,7 @@ Azure AD 可設定為將已指派的使用者和群組自動佈建至實作 [SCI
 請依照下列檢查清單操作，以確保您的應用程式可快速上線，且客戶會有順暢的部署體驗。 當您上線至資源庫時，系統將會向您收集資訊。 
 > [!div class="checklist"]
 > * 支援 [SCIM 2.0 ](#step-2-understand-the-azure-ad-scim-implementation) 使用者和群組端點 (只需要一個，但建議兩者都使用)
-> * 支援每個租用戶每秒至少有 25 個要求 (必要)
+> * 每個租使用者支援至少每秒25個要求，以確保使用者和群組會在不需要延遲 (的情況下布建和取消布建) 
 > * 建立工程和支援連絡人，以便在資源庫上線後引導客戶 (必要)
 > * 應用程式有 3 個未過期的測試認證可使用 (必要)
 > * 支援 OAuth 授權碼授與或長時間存留的權杖，如下所述 (必要)

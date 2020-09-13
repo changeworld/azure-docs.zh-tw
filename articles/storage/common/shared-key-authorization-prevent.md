@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 3d46df8847a5865c42438ea36245ead0f1e6e528
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: f65bf2bbe174ff90d5a0b962768833b8668f6400
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951115"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019711"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>防止 Azure 儲存體帳戶的共用金鑰授權 (預覽) 
 
@@ -213,7 +213,7 @@ resources
 
 | Azure 工具 | Azure AD Azure 儲存體的授權 |
 |-|-|
-| Azure 入口網站 | 支援。 如需從 Azure 入口網站授權 Azure AD 帳戶的相關資訊，請參閱在 [Azure 入口網站中選擇如何授權存取 blob 或佇列資料](storage-access-blobs-queues-portal.md)。 |
+| Azure 入口網站 | 支援。 如需從 Azure 入口網站授權 Azure AD 帳戶的相關資訊，請參閱 [選擇如何授權存取 Azure 入口網站中的 blob 資料](../blobs/authorize-blob-access-portal.md)。 |
 | AzCopy | 支援 Blob 儲存體。 如需授權 AzCopy 作業的相關資訊，請參閱 AzCopy 檔中的 [選擇如何提供授權認證](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) 。 |
 | Azure 儲存體總管 | 僅支援 Blob 儲存體及 Azure Data Lake Storage Gen2。 不支援對佇列儲存體 Azure AD 存取。 請務必選取正確的 Azure AD 租使用者。 如需詳細資訊，請參閱 [開始使用儲存體總管](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#sign-in-to-azure) |
 | Azure PowerShell | 支援。 如需如何授權 PowerShell 命令搭配 Azure AD 存取 blob 和佇列資料的資訊，請參閱 [使用 Azure AD 認證執行 powershell 命令以存取 blob 或佇列資料](authorize-active-directory-powershell.md)。 |

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: c03459a86f521cafd792b9bf86b2b6b46bf3da9c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62716d5061d7c5e6ed8c64a0ce00a780f35c10be
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534095"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017994"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>教學課程：設定 SAP SuccessFactors 來 Active Directory 使用者布建 
 本教學課程的目的是要說明您需要執行的步驟，以將使用者從 SuccessFactors 員工中心布建至 Active Directory (AD) 和 Azure AD，並選擇性地將電子郵件地址回寫至 SuccessFactors。 
@@ -24,19 +24,19 @@ ms.locfileid: "88534095"
 >如果您想要從 SuccessFactors 布建的使用者需要內部部署 AD 帳戶，以及選擇性的 Azure AD 帳戶，請使用此教學課程。 如果 SuccessFactors 的使用者只需要 Azure AD 帳戶 (僅限雲端的使用者) ，請參閱 [設定 SAP SuccessFactors](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) 的教學課程，以 Azure AD 使用者布建。 
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [Azure Active Directory 的使用者](../app-provisioning/user-provisioning.md)布建服務會與[SuccessFactors 員工中心](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)整合，以便管理使用者的身分識別生命週期。 
 
 Azure AD 使用者布建服務所支援的 SuccessFactors 使用者布建工作流程，可讓您自動化下列人力資源和身分識別生命週期管理案例：
 
-* **雇用新員工** -將新的員工新增至 SuccessFactors 時，會自動在 Active Directory、Azure Active Directory 和 Azure AD 所支援的 Office 365 和 [其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中建立使用者帳戶，並將電子郵件地址回寫至 SuccessFactors。
+* **雇用新員工** -將新的員工新增至 SuccessFactors 時，會在 Active Directory、Azure Active Directory 中自動建立使用者帳戶，並選擇性地 Microsoft 365 及 [Azure AD 所支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)，並將電子郵件地址回寫至 SuccessFactors。
 
-* **員工屬性和設定檔更新** -在 SuccessFactors 中更新員工記錄時 (例如其名稱、標題或管理員) ，其使用者帳戶將會自動更新 Active Directory、Azure Active Directory，以及選擇性地在 [Azure AD 支援的 Office 365 和其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中更新。
+* **員工屬性和設定檔更新** -當員工記錄在 SuccessFactors 中更新時 (例如其名稱、標題或管理員) ，其使用者帳戶會自動更新 Active Directory、Azure Active Directory，以及選擇性地 Microsoft 365 和 [Azure AD 所支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
 
-* **員工終止** -當員工在 SuccessFactors 中終止時，會在 Active Directory、Azure Active Directory 和 [Azure AD 支援的 Office 365 和其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中自動停用其使用者帳戶。
+* **員工終止** -當員工在 SuccessFactors 中終止時，會在 Active Directory、Azure Active Directory 中自動停用其使用者帳戶，並選擇性地 Microsoft 365 和 [Azure AD 所支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
 
-* **員工重新雇用** -在 SuccessFactors 中 workday 重新雇用員工時，根據您的喜好設定) Active Directory、Azure Active Directory，365以及 [其他 Azure AD 支援的 SaaS 應用程式](../app-provisioning/user-provisioning.md)，可以自動重新開機或重新布建舊帳戶 (。
+* **員工重新雇用** -在 SuccessFactors 中 workday 重新雇用員工時，根據您的喜好設定) Active Directory、Azure Active Directory，以及 [其他 Microsoft 365 支援的 SaaS 應用程式](../app-provisioning/user-provisioning.md)，將會自動重新啟用或重新布建舊帳戶 (。
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>誰最適合使用此使用者佈建解決方案？
 
@@ -50,7 +50,7 @@ Azure AD 使用者布建服務所支援的 SuccessFactors 使用者布建工作�
 
 * 需要加入、移動及離開使用者的組織，只會根據[SuccessFactors Employee Central (EC](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)中偵測到的變更資訊，將使用者同步至一或多個 Active Directory 樹系、網域和 ou) 
 
-* 使用 Office 365 處理電子郵件的組織
+* 使用電子郵件 Microsoft 365 的組織
 
 ## <a name="solution-architecture"></a>方案架構
 
@@ -234,7 +234,7 @@ Azure AD 使用者布建服務所支援的 SuccessFactors 使用者布建工作�
    
 1. 開啟 [服務] 嵌入式管理單元，並尋找名為 "Microsoft Azure AD Connect Provisioning Agent" 的服務，以確認代理程式已安裝且在執行中
   
-   ![服務](./media/workday-inbound-tutorial/services.png)
+   ![在服務中執行的 Microsoft Azure AD Connect 布建代理程式的螢幕擷取畫面](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>第3部分：在布建應用程式中，設定 SuccessFactors 和 Active Directory 的連線能力
 在此步驟中，我們會建立與 SuccessFactors 的連線，並在 Azure 入口網站中 Active Directory。 

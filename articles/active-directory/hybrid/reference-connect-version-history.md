@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect：版本發行歷程記錄 | Microsoft Docs
-description: 本文章列出 Azure AD Connect 和 Azure AD Sync 的所有版本
+description: 本文列出 Azure AD Connect 和 Azure AD 同步的所有版本。
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b0b0a98e80fb7f343411b49ff2ccd11046bcdc5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1570f4a8c4fb23b885c1de68c2c8d2440c4f6aae
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88052924"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018436"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本發行歷程記錄
 Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 Azure AD Connect。 並非所有新增項目都適用於所有的對象。
@@ -48,9 +48,9 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 >
 >如果啟用了 Azure AD Connect 進行同步，您將會立即自動開始收到 Health 通知，以在執行其中一個舊版時，警告該版本即將淘汰。
 >
->請參閱[本文](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)，以深入了解如何將 Azure AD Connect 升級至最新版本。
+>請參閱[本文](./how-to-upgrade-previous-version.md)，以深入了解如何將 Azure AD Connect 升級至最新版本。
 >
->如需已淘汰版本的版本歷程記錄資訊，請參閱[Azure AD Connect 版本發行歷程記錄](reference-connect-version-history-archive.md)封存
+>如需已淘汰版本的版本歷程記錄資訊，請參閱 [Azure AD Connect 版本發行歷程記錄](reference-connect-version-history-archive.md)
 
 ## <a name="15450"></a>1.5.45.0
 
@@ -58,13 +58,13 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 07/29/2020：已發行以供下載
 
 ### <a name="functional-changes"></a>功能性變更
-這是 bug 修正版本。 此版本中沒有任何功能變更。
+這是錯誤修正版本。 此版本中沒有任何功能變更。
 
 ### <a name="fixed-issues"></a>已修正的問題
 
-- 已修正「Active Directory」中已有 AZUREADSSOACC 電腦帳戶時，系統管理員無法啟用「無縫單一登入」的問題。
-- 已修正在 V2 API 差異匯入期間，針對透過健康情況入口網站修復的衝突物件造成暫存錯誤的問題。
-- 已修正 [匯入/匯出設定] 中停用的自訂規則已匯入為已啟用的問題。
+- 修正系統管理員無法啟用「無縫單一登入」的問題，如果 AZUREADSSOACC 電腦帳戶已經存在於「Active Directory」中。
+- 修正了在 V2 API delta 匯入期間，針對透過 health 入口網站修復的衝突物件，造成暫存錯誤的問題。
+- 修正匯入/匯出設定中停用的自訂規則已匯入為已啟用的問題。
 
 ## <a name="15420"></a>1.5.42.0
 
@@ -72,14 +72,14 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 07/10/2020：已發行以供下載
 
 ### <a name="functional-changes"></a>功能性變更
-此版本包含將現有 Azure AD Connect 伺服器的設定匯出至的功能公開預覽。JSON 檔案，可在安裝新的 Azure AD Connect 伺服器時用來建立源伺服器的複本。
+此版本包含將現有 Azure AD Connect 伺服器的設定匯出至的功能的公開預覽。在安裝新的 Azure AD Connect 伺服器以建立源伺服器的複本時，可使用的 JSON 檔案。
 
-這項新功能的詳細描述可在[這篇文章](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-import-export-config)中找到。
+這項新功能的詳細描述可在[本文](./how-to-connect-import-export-config.md)中找到
 
 ### <a name="fixed-issues"></a>已修正的問題
-- 已修正在升級期間，當地語系化組建上有關本機 DB 大小的錯誤警告。
-- 已修正帳戶名稱/功能變數名稱交換的應用程式事件中，發生錯誤的 bug。
-- 已修正 Azure AD Connect 在 DC 上無法安裝的錯誤，並產生「找不到成員」錯誤。
+- 修正在升級期間，當地語系化組建上的本機資料庫大小有誤警告的錯誤（bug）。
+- 修正了帳戶名稱/功能變數名稱交換的應用程式事件中會有錯誤的錯誤（bug）。
+- 修正了 Azure AD Connect 會無法安裝在 DC 上的錯誤，並提供錯誤「找不到成員」。
 
 
 ## <a name="15300"></a>1.5.30.0
@@ -159,7 +159,7 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 ### <a name="release-status"></a>發行狀態
 2019/12/9：已發行，可供下載。 無法透過自動升級取得。
 ### <a name="new-features-and-improvements"></a>新功能和改進
-- 我們已更新 Azure AD Domain Services 的密碼雜湊同步，以在 Kerberos 雜湊中適當考慮填補。  這會在從 Azue AD 到 Azure AD Domain Services 的密碼同步處理期間，提供效能改進。
+- 我們已更新 Azure AD Domain Services 的密碼雜湊同步，以在 Kerberos 雜湊中適當考慮填補。  這可在從 Azure AD 到 Azure AD Domain Services 的密碼同步處理期間，提供效能改進。
 - 我們已新增對驗證代理程式與服務匯流排之間可靠工作階段的支援。
 - 此版本會實施 TLS 1.2，以在驗證代理程式與雲端服務之間進行通訊。
 - 我們已新增驗證代理程式與雲端服務之間 WebSocket 連線的 DNS 快取。
@@ -167,7 +167,7 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 
 ### <a name="fixed-issues"></a>已修正的問題
 - 1\.4.18.0 版有一個 Bug，其中 DSSO 的 PowerShell Cmdlet 使用登入視窗認證，而不是執行 ps 時所提供的管理員認證。 因此，無法透過 Azure AD Connect 使用者介面在多個樹系中啟用 DSSO。 
-- 已修正在所有樹系中透過 Azure AD Connect 使用者介面同時啟用 DSSO
+- 已透過 Azure AD Connect 使用者介面在所有樹系中同時啟用 DSSO 的修正
 
 ## <a name="14320"></a>1.4.32.0
 ### <a name="release-status"></a>發行狀態
@@ -208,11 +208,11 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 
 ### <a name="new-features-and-improvements"></a>新功能和改進
 - 新的疑難排解工具可協助針對「使用者未同步」、「群組未同步」或「群組成員未同步」案例進行疑難排解。
-- 在 Azure AD Connect 疑難排解腳本中新增國家雲端支援 
+- 在 Azure AD Connect 疑難排解腳本中新增國家雲端的支援 
 - 客戶應該會收到通知，指出現已移除 MIIS_Service 的已淘汰 WMI 端點。 所有 WMI 作業現在都應透過 PS Cmdlet 來完成。
 - 藉由重設 AZUREADSSOACC 物件上的限制委派來改善安全性
 - 新增/編輯同步處理規則時，如果規則中使用了連接器架構中未新增至連接器的任何屬性，則會自動將這些屬性新增至連接器。 這也適用於規則所影響的物件類型。 如有任何項目新增至連接器，則連接器將會標示為在下一個同步週期完整匯入。
-- 新的 Azure AD Connect 部署不再支援使用企業或網域管理員作為連接器帳戶。 使用企業或網域系統管理員做為連接器帳戶的目前 Azure AD Connect 部署，將不會受到此版本的影響。
+- 新的 Azure AD Connect 部署不再支援使用企業或網域管理員作為連接器帳戶。 使用企業或網域系統管理員作為連接器帳戶的目前 Azure AD Connect 部署，將不會受到此版本影響。
 - 在同步處理管理員中，會在建立/編輯/刪除規則時執行完整同步。 任何規則變更都會出現一個快顯視窗來通知使用者是否要執行完整匯入或完整同步。
 - 已在 [連接器] > [屬性] > [連線] 頁面中新增密碼錯誤的風險降低步驟
 - 已在連接器屬性頁面中新增同步服務管理員的淘汰警告。 此警告會通知使用者應透過 Azure AD Connect 精靈進行變更。
@@ -234,7 +234,7 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 - 針對自動升級，如有任何衝突的應用程式執行 6 小時，請將其終止並繼續升級。
 - 選取目錄延伸模組時，將客戶可選取的屬性數目限制為每個物件 100 個。 這會防止在匯出期間發生錯誤，因為 Azure 的每個物件最多可有 100 個延伸模組屬性。
 - 已修正 Bug，讓 AD 連線指令碼更健全
-- 已修正使用現有的具名管道 WCF 服務，讓 Azure AD Connect 在電腦上安裝的錯誤（bug）更健全。
+- 修正了使用現有的具名管道 WCF 服務，讓 Azure AD Connect 安裝在電腦上的 bug 更健全。
 - 針對不允許 ADSync 服務在一開始安裝時啟動的群組原則，已改善其診斷和疑難排解。
 - 已修正未正確寫入 Windows 電腦顯示名稱的 Bug。
 - 修正未正確寫入 Windows 電腦 OS 類型的 Bug。
@@ -244,7 +244,7 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 
 ## <a name="13210"></a>1.3.21.0
 >[!IMPORTANT]
->將 Azure AD Connect 從舊版升級至 1.3.21.0 已知有問題，其中即使 Azure AD Connect 升級成功，O365 入口網站也不會反映更新的版本。
+>將 Azure AD Connect 從舊版升級至1.3.21.0 有一個已知的問題，也就是 Microsoft 365 入口網站不會反映更新版本，即使 Azure AD Connect 成功升級也是一樣。
 >
 > 若要解決此問題，則必須匯入 **AdSync** 模組，然後在 Azure AD Connect 伺服器上執行 `Set-ADSyncDirSyncConfiguration` PowerShell Cmdlet。  您可使用下列步驟：
 >

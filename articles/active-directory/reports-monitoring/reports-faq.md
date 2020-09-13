@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352b4d46e1693580c386f11f7f4d949740f90cc6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1984e2f0bb55115c7d700b91f564d9f01c145151
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231039"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015325"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>關於 Azure Active Directory 報告的常見問題集
 
@@ -37,7 +37,7 @@ ms.locfileid: "89231039"
 
 **問：我目前使用 `https://graph.windows.net/<tenant-name>/reports/` 端點 api 來提取 Azure AD 的安全性報告 (特定類型的偵測，例如，以程式設計方式在我們的報告系統中從匿名 IP) 位址登入的認證或登入。我應該切換到什麼？**
 
-**答：** 您可以使用 [Identity Protection 風險偵測 API](../identity-protection/howto-identity-protection-graph-api.md)   透過 Microsoft Graph 存取安全性偵測。 這種新格式可讓您更有彈性地查詢資料、使用先進的篩選、欄位選取等等，以及將風險偵測標準化為一種類型，以便更輕鬆地整合到 Siem 和其他資料收集工具中。 由於資料的格式不同，您無法以新查詢替換舊查詢。 不過，[新 API 會使用 Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta)，這是 O365 或 Azure AD 這類 API 的 Microsoft 標準格式。 因此，所需的工作可以擴充您目前的 Microsoft Graph 投資，或協助您開始轉換至這個新的標準平臺。
+**答：** 您可以使用 [Identity Protection 風險偵測 API](../identity-protection/howto-identity-protection-graph-api.md)   透過 Microsoft Graph 存取安全性偵測。 這種新格式可讓您更有彈性地查詢資料、使用先進的篩選、欄位選取等等，以及將風險偵測標準化為一種類型，以便更輕鬆地整合到 Siem 和其他資料收集工具中。 由於資料的格式不同，您無法以新查詢替換舊查詢。 不過， [新的 API 會使用 Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta)，這是 Microsoft 365 或 Azure AD 這類 Api 的 Microsoft 標準。 因此，所需的工作可以擴充您目前的 Microsoft Graph 投資，或協助您開始轉換至這個新的標準平臺。
 
 ---
 
@@ -81,15 +81,15 @@ ms.locfileid: "89231039"
 
 ---
 
-**問：我是否可以透過 Azure 入口網站取得 Office 365 活動記錄資訊？**
+**問：我是否可以透過 Azure 入口網站取得 Microsoft 365 的活動記錄資訊？**
 
-**答：** 雖然 Office 365 活動和 Azure AD 活動記錄共用許多目錄資源，但如果您想要完整查看 Office 365 活動記錄，您應該移至 [Microsoft 365 系統管理中心](https://admin.microsoft.com) 以取得 Office 365 活動記錄資訊。
+**答：** 雖然 Microsoft 365 活動和 Azure AD 活動記錄共用許多目錄資源，但如果您想要完整查看 Microsoft 365 活動記錄，您應該移至 [Microsoft 365 系統管理中心](https://admin.microsoft.com) 以取得 Office 365 活動記錄資訊。
 
 ---
 
-**問：我應該使用哪些 API 來取得 Office 365 活動記錄的相關資訊？**
+**問：我可以使用哪些 Api 來取得 Microsoft 365 活動記錄的相關資訊？**
 
-**答：** 使用 [office 365 管理 api](/office/office-365-management-api/office-365-management-apis-overview) 透過 API 存取 Office 365 活動記錄。
+**答：** 使用 [Microsoft 365 管理 api](/office/office-365-management-api/office-365-management-apis-overview) 透過 API 存取 Microsoft 365 活動記錄。
 
 ---
 
