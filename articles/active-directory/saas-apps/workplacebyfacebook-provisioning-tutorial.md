@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ea5a7a0cd89b9aad78ce789517aa8f75767955d8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4b4953cbca4d08e911fd043413387a1602bd8e08
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526375"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006069"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教學課程：設定 Workplace by Facebook 來自動佈建使用者
 
@@ -30,7 +30,7 @@ ms.locfileid: "88526375"
 
 >[!VIDEO https://www.youtube.com/embed/oF7I0jjCfrY]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -125,8 +125,16 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |phoneNumbers[type eq "fax"].value|String|
    |externalId|String|
    |preferredLanguage|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
+   |urn： scim：架構： extension： enterprise： 1.0. 管理員|String|
+   |urn： scim：架構：延伸： enterprise： 1.0. 部門|String|
+   |urn： scim：架構： extension： enterprise： 1.0. 除法|String|
+   |urn： scim：架構：延伸： enterprise： 1.0. 組織|String|
+   |urn： scim：架構： extension： enterprise： 1.0. costCenter|String|
+   |urn： scim：架構： extension： enterprise： 1.0. employeeNumber|String|
+   |urn： scim：架構： extension： facebook： auth_method：1.0： auth_method|String|
+   |urn： scim：架構： extension： facebook： frontline： 1.0. is_frontline|布林值|
+   |urn： scim：架構： extension： facebook： starttermdates： 1.0. 開始日期|整數|
+
 
 10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
@@ -151,8 +159,12 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
 3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。
 
-## <a name="troubleshooting-tips"></a>疑難排解秘訣
+## <a name="troubleshooting-tips"></a>疑難排解提示
 *  如果您看到使用者未成功建立，且有代碼為 "1789003" 的 audit log 事件，表示該使用者來自未驗證的網域。
+
+## <a name="change-log"></a>變更記錄
+
+* 09/10/2020-已新增對企業屬性「部門」、「組織」、「costCenter」和「employeeNumber」的支援。 新增自訂屬性 "開始日期"、"auth_method" 和 "frontline" 的支援
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 5c717a02c2008436617d16f08625a1cecc204340
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: fcf7620f53c9bfdb51eb62598f2c8b441574eca6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849513"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006075"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub"></a>淘汰 IoT 中樞中的 TLS 1.0 和1.1
 
@@ -38,9 +38,9 @@ IoT 中樞將繼續支援 TLS 1.0/1.1，直到進一步通知為止。 不過建
 * `TLS_RSA_WITH_AES_128_CBC_SHA`
 * `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
 
-## <a name="tls-12-ciphers"></a>TLS 1.2 加密
+## <a name="tls-12-cipher-suites"></a>TLS 1.2 加密套件
 
-請參閱 [IoT 中樞 TLS 1.2 加密建議](iot-hub-tls-support.md#recommended-ciphers)。
+請參閱 [IoT 中樞 TLS 1.2 加密套件](iot-hub-tls-support.md#cipher-suites)。
  
 ## <a name="customer-feedback"></a>客戶回函
 
