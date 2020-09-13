@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 57786aa343fd2ea863b17f65253e5d4a4a6b88ce
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 515cfd5267917f88131571adcb1bea0db274157c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226823"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437933"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>適用于 Azure Data Factory 的 Azure 安全性基準
 
@@ -578,7 +578,7 @@ ms.locfileid: "89226823"
 
 **指導**方針：如果雲端資料存放區支援 HTTPS 或 tls，則 Data Factory 中的資料移動服務與雲端資料存放區之間的所有資料傳輸，都會透過安全通道 HTTPS 或 tls。 使用的 TLS 版本為 1.2。
 
-所有連到 Azure SQL Database 和「Azure SQL 資料倉儲」的連線在資料透過傳輸進出資料庫時，需要加密 (SSL/TLS)。 當您使用 JSON 編輯器來編寫管線時，在連接字串中新增 encryption 屬性，並將它設定為 true。 針對「Azure 儲存體」，您可以在連接字串中使用 HTTPS。
+Azure SQL Database 與 Azure Synapse Analytics (先前的 SQL 資料倉儲的所有連線，) 在資料與資料庫之間傳輸時，需要加密 (SSL/TLS) 。 當您使用 JSON 編輯器來編寫管線時，在連接字串中新增 encryption 屬性，並將它設定為 true。 針對「Azure 儲存體」，您可以在連接字串中使用 HTTPS。
 
 * [瞭解 Azure Data Factory 中的傳輸加密](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 
@@ -1050,7 +1050,9 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 * [如何建立 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [如何使用受控識別來提供 Key Vault authentication](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [如何驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [如何指派 Key Vault 存取原則](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 * [在管線活動中使用 Azure Key Vault 祕密](https://docs.microsoft.com/azure/data-factory/how-to-use-azure-key-vault-secrets-pipeline-activities)
 

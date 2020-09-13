@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 891ea69dc6d53370f5f73f8bb3072a9795f07635
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 261d85c60473749719830c380d8a4866d7561874
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190583"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438035"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虛擬網路服務端點
 
@@ -64,28 +64,28 @@ Azure Key Vault 的虛擬網路服務端點可讓您將存取權限制為指定�
 |信任的服務|支援的使用案例|
 | --- | --- |
 |Azure 虛擬機器部署服務|[Deploy Certificates to VMs from customer-managed Key Vault (將憑證從客戶管理的 Key Vault 部署到 VM)](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)。|
-|Azure Resource Manager 範本部署服務|[在部署期間傳遞安全值](../../azure-resource-manager/templates/key-vault-parameter.md)。|
-|Azure 應用程式 Gateway v2 SKU|[Key Vault 憑證的 TLS 終止](/azure/application-gateway/key-vault-certs)|
+|Azure Resource Manager 範本部署服務|[在部署期間傳遞安全的值](../../azure-resource-manager/templates/key-vault-parameter.md)。|
+|Azure 應用程式閘道 v2 SKU|[使用 Key Vault 憑證的 TLS 終止](/azure/application-gateway/key-vault-certs)|
 |Azure Disk Encryption 磁碟區加密服務|允許在虛擬機器部署期間，存取 BitLocker 金鑰 (Windows VM) 或 DM 複雜密碼 (Linux VM) 和金鑰加密金鑰。 這可啟用 [Azure 磁碟加密](../../security/fundamentals/encryption-overview.md)。|
 |Azure 備份|使用 [Azure 備份](../../backup/backup-introduction-to-azure-backup.md)，在 Azure 虛擬機器備份期間，允許相關金鑰和祕密的備份和還原。|
 |Exchange Online 和 SharePoint Online|允許使用[客戶金鑰](/microsoft-365/compliance/customer-key-overview)存取 Azure 儲存體服務加密的客戶金鑰。|
 |Azure 資訊保護|允許存取 [Azure 資訊保護](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)的租用戶金鑰|
 |Azure App Service|[透過 Key Vault 部署 Azure Web 應用程式憑證](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
-|Azure SQL Database|[Azure SQL Database 和資料倉儲具有「攜帶您自己的金鑰」支援的的透明資料加密](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
+|Azure SQL Database|[透明資料加密的攜帶您自己的金鑰支援 Azure SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲) ](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
 |Azure 儲存體|[儲存體服務加密在 Azure Key Vault 中使用客戶管理的金鑰](../../storage/common/storage-service-encryption-customer-managed-keys.md)。|
 |Azure Data Lake Store|使用客戶管理的金鑰[在 Azure Data Lake Store 中加密資料](../../data-lake-store/data-lake-store-encryption.md)。|
 |Azure Databricks|[快速、簡單且可共同作業的 Apache Spark 型分析服務](../../azure-databricks/what-is-azure-databricks.md)|
 |Azure API 管理|[使用 MSI 從 Key Vault 部署自訂網域的憑證](../../api-management/api-management-howto-use-managed-service-identity.md#use-ssl-tls-certificate-from-azure-key-vault)|
-|Azure Data Factory|[從 Data Factory 的 Key Vault 中提取資料存放區認證](https://go.microsoft.com/fwlink/?linkid=2109491)|
-|Azure 事件中心|[針對客戶管理的金鑰案例，允許存取金鑰保存庫](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
-|Azure 服務匯流排|[針對客戶管理的金鑰案例，允許存取金鑰保存庫](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
-|Azure 匯入/匯出| [在匯入/匯出服務的 Azure Key Vault 中使用客戶管理的金鑰](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
-|Azure Container Registry|[使用客戶管理的金鑰進行登錄加密](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[將成品傳輸至另一個登錄](../../container-registry/container-registry-transfer-images.md)
+|Azure Data Factory|[從 Data Factory 提取 Key Vault 中的資料存放區認證](https://go.microsoft.com/fwlink/?linkid=2109491)|
+|Azure 事件中心|[允許存取客戶管理金鑰的金鑰保存庫案例](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
+|Azure 服務匯流排|[允許存取客戶管理金鑰的金鑰保存庫案例](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
+|Azure 匯入/匯出| [在 Azure Key Vault 中使用客戶管理的金鑰進行匯入/匯出服務](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
+|Azure Container Registry|[使用客戶管理的金鑰進行登錄加密](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[將構件傳送至另一個登錄](../../container-registry/container-registry-transfer-images.md)
 
 > [!NOTE]
 > 您必須將相關 Key Vault 存取原則設定為允許對應的服務取得 Key Vault 的存取權。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [保護您的金鑰保存庫](secure-your-key-vault.md))
 * [設定 Azure Key Vault 防火牆和虛擬網路](network-security.md)

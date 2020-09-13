@@ -12,30 +12,30 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: cea772f03d5e2838b44d50f3cf5e926d740be5f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b8e66ad2c907815b8395ab47059db92e57ad4cf
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67707688"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438052"
 ---
 # <a name="hc-series-virtual-machine-sizes"></a>HC 系列虛擬機器大小
 
-已針對 HC 系列大小執行數個效能測試。 以下是此效能測試的部分結果。
+HC 系列的大小已執行數項效能測試。 以下是此效能測試的一些結果。
 
 | 工作負載                                        | HB                    |
 |-------------------------------------------------|-----------------------|
-| 資料流程三角理論                                    | ~ 190 GB/秒（Intel LIP.MLC AVX-512）  |
-| 高效能 Linpack （HPL）                  | ~ 3520 GigaFLOPS （Rpeak）、~ 2970 GigaFLOPS （Rmax） |
-| RDMA 延遲 & 頻寬                        | 1.80 微秒，96.3 Gb/秒   |
-| 本機 NVMe SSD 上的 FIO                           | ~ 1.3 GB/s 讀取，~ 900 MB/s 寫入 |  
-| IOR on 4 Azure 進階 SSD （P30 受控磁碟，RAID0） * *  | ~ 780 MB/s 讀取，~ 780 MB/寫入 |
+| 資料流程三角理論                                    | ~ 190 GB/秒 (Intel LIP.MLC AVX-512)   |
+| 高效能 Linpack (HPL)                   | ~ 3520 GigaFLOPS (Rpeak) ，~ 2970 GigaFLOPS (Rmax)  |
+| RDMA 延遲 & 頻寬                        | 1.80 微秒、96.3 Gb/秒   |
+| 在本機 NVMe SSD 上的 FIO                           | ~ 1.3 GB/s 讀取，~ 900 MB/s 寫入 |  
+| IOR on 4 Azure 進階 SSD (P30 受控磁碟，RAID0) * *  | ~ 780 MB/s 讀取，~ 780 MB/寫入 |
 
-## <a name="infiniband-send-latency"></a>不會傳送延遲
+## <a name="infiniband-send-latency"></a>未進行的傳送延遲
 
 Mellanox Perftest。
 
-```azure-cli
+```bash
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
@@ -58,11 +58,11 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 
 OSU MPI 延遲測試 v 5.4.3。
 
-```azure-cli
+```bash
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
 ```
 
-| #bytes  | 延遲 [微秒] （MPICH 3.3 + CH4） | 延遲 [微秒] （OpenMPI 4.0.0） | 延遲 [微秒] （MVAPICH2 2.3） |
+| #bytes  | 延遲 [微秒] (MPICH 3.3 + CH4)  | 延遲 [微秒] (OpenMPI 4.0.0)  | 延遲 [微秒] (MVAPICH2 2.3)  |
 |------|----------|----------|----------|
 | 2    | 1.84     | 1.78     | 2.08     |
 | 4    | 1.84     | 1.79     | 2.08     |
@@ -81,11 +81,11 @@ OSU MPI 延遲測試 v 5.4.3。
 
 OSU MPI 頻寬測試 v 5.4.3。
 
-```azure-cli
+```bash
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-| #Size   | 頻寬（MB/秒） | 頻寬（Gb/s） |
+| #Size   | 頻寬 (MB/秒)  | 頻寬 (Gb/秒)  |
 |---------|------------------|------------------|
 | 2       | 6.18             | 0.04944          |
 | 4       | 13.27            | 0.10616          |
