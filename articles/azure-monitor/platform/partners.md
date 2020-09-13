@@ -4,12 +4,12 @@ description: 了解 Azure Monitor 的監視合作夥伴以及如何存取與合�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: d5f239540a74c431e381c581f00514a1f7acd5e3
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142397"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030375"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 監視器合作夥伴整合
 
@@ -49,7 +49,7 @@ AppDynamics 應用程式效能管理 (APM) 可讓應用程式擁有者快速針�
 
 ![Circonus 標誌](./media/partners/circonus.png)
 
-Circonus 是機器資料智慧專家，提供唯一能夠處理數十億個計量串流的電腦資料智慧平臺，以推動前所未有的商業洞察力和價值。 使用 Circonus 來收集、追蹤和視覺化與您的 Microsoft Azure 設定相關的重要計量。 取得 Azure 資源使用率、應用程式效能和營運健全狀況的全系統可見度。
+Circonus 是機器資料智慧專家，提供唯一能夠處理數十億個計量串流的電腦資料智慧平臺，以推動前所未有的商業見解和價值。 使用 Circonus 來收集、追蹤和視覺化 Microsoft Azure 設定相關的關鍵計量。 在整個系統中查看 Azure 的資源使用率、應用程式效能和操作健全狀況。
 
 [請移至文件。][circonus-doc]
 
@@ -58,7 +58,7 @@ Circonus 是機器資料智慧專家，提供唯一能夠處理數十億個計�
 ![CloudHealth 標誌](./media/partners/cloudhealth.png)
 
 
-使用建置來節省時間和金錢的平台聯集並自動化您的雲端。 CloudHealth 提供雲端管理的可見性、直覺式最佳化和穩固控管的做法。 CloudHealth 平臺可讓企業和 Msp 將雲端投資的報酬率最大化。 對成本、使用方式、效能和安全性進行有信心的決策。
+使用建置來節省時間和金錢的平台聯集並自動化您的雲端。 CloudHealth 提供雲端管理的可見性、直覺式最佳化和穩固控管的做法。 CloudHealth 平臺可讓企業和 Msp 最大化雲端投資報酬率。 對成本、使用方式、效能和安全性進行有信心的決策。
 
 [深入了解][cloudhealth-doc]
 
@@ -77,6 +77,8 @@ CloudMonix 提供 Microsoft Azure 平台的監視、自動化和自我修復服�
 Datadog 是全球領先的雲端規模應用程式監視服務。 它結合來自伺服器、資料庫、工具和服務的資料，呈現整個堆疊的整合檢視。 SaaS 型資料分析平台上提供這些功能。 此服務可讓開發和作業團隊協同運作，以避免停機時間、解決效能問題，並確保開發及部署週期能準時完成。 藉由整合 Datadog 和 Azure，您可以收集並檢視整個基礎結構的計量。 讓 VM 計量與應用程式層級計量相互關聯。 使用屬性和自訂標記的任意組合，細分您的計量。
 
 [請移至文件。][datadog-doc]
+
+Datadog 的新 Azure marketplace 整合已排程于2020年10月發行。 當發行時，將會在此新增連結。 
 
 ## <a name="dynatrace"></a>Dynatrace
 
@@ -106,7 +108,7 @@ Grafana 是開放原始碼應用程式，可讓您以視覺化方式檢視時間
 
 ![InfluxData 標誌](./media/partners/Influxdata.png)
 
-InfluxData 是 InfluxDB （開放原始碼時間序列資料庫）的建立者。 我們的技術是專為處理 IoT 裝置、應用程式、網路、容器和電腦所產生的大量時間戳記資料而設計的。 我們負責協助開發人員和組織（例如 IBM、簽證、Siemens、Tesla 和 NASA）儲存和分析即時資料，讓他們能夠更快速地建立轉型監視、分析和 IoT 應用程式，並進行調整。 您可以使用 InfluxData 的 Telegraf 代理程式來擴充 Microsoft Azure 監視器的計量和事件集合功能，讓 Microsoft 使用者可以從領先的時間序列資料庫解決方案中獲益，並利用持續成長的開放原始碼貢獻給 Telegraf。
+InfluxData 是 InfluxDB （開放原始碼時間序列資料庫）的建立者。 我們的技術專門設計來處理 IoT 裝置、應用程式、網路、容器和電腦所產生的大量時間戳記資料。 我們的任務是協助開發人員和組織（例如 IBM、簽證、Siemens、Tesla 和 NASA）儲存及分析即時資料，讓他們能夠更快速地建立轉型監視、分析和 IoT 應用程式，以及進行調整。 您可以使用 InfluxData 的 Telegraf 代理程式來擴充 Microsoft Azure 監視器的計量和事件集合功能，讓 Microsoft 使用者受益于領先的時間序列資料庫解決方案，並運用不斷成長的開放原始碼貢獻來 Telegraf。
 
 
 [請移至文件。][influxdata-doc]
@@ -116,7 +118,7 @@ InfluxData 是 InfluxDB （開放原始碼時間序列資料庫）的建立者�
 
 ![邏輯監視器標誌](./media/partners/logicmonitor.png)
 
-LogicMonitor &reg; 是領先的 SaaS 型效能監控平臺，適用于複雜的 IT 基礎結構。 LogicMonitor 涵蓋了上千種技術，可在基礎結構和應用程式效能上提供更細微的可見度。 LM Cloud 的全面 Azure 監視功能可讓使用者將 Azure 雲端、內部部署和混合式雲端資源的效能相互關聯--全都是從單一平臺。 自動化資源探索、內建監視範本、預先設定的警示閾值，以及可自訂的儀表板，結合起來可以為 IT 提供成功所需的速度、彈性和可見度。
+LogicMonitor &reg; 是領先業界、以 SaaS 為基礎的效能監視平臺，適用于複雜的 IT 基礎結構。 LogicMonitor 涵蓋了上千種技術，可在基礎結構和應用程式效能上提供更細微的可見度。 LM Cloud 的全方位 Azure 監視功能可讓使用者將 Azure 雲端、內部部署和混合式雲端資源的效能相互關聯，這些資源全都從單一平臺。 自動化資源探索、內建監視範本、預先設定的警示閾值，以及可自訂的儀表板，結合起來可以為 IT 提供成功所需的速度、彈性和可見度。
 
 [請移至文件。][logicmonitor-doc]
 
@@ -124,7 +126,7 @@ LogicMonitor &reg; 是領先的 SaaS 型效能監控平臺，適用于複雜的 
 
 ![LogRhythm 標誌](./media/partners/logrhythm.png)
 
-LogRhythm 是 NextGen SIEM 的領導者，讓組織能夠透過快速偵測、回應和抵銷網路威脅，來顯著提升降低風險。 LogRhythm 的威脅生命週期管理 (TLM) 工作流程是安全性作業中心的基礎，可協助客戶保護其雲端、實體和虛擬基礎結構的 IT 和環境。 如果您是 LogRhythm 客戶，而且已準備好開始 Azure 旅程，您將需要安裝並設定 LogRhythm 開啟收集器和 EventHub 整合。 您可以在[這裡](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)找到更多詳細資料，包括設定 Azure 監視器和開啟收集器的檔。 
+LogRhythm 是 NextGen SIEM 的領導者，讓六大洲的組織能夠快速偵測、回應及抵銷網路威脅，以顯著降低風險。 LogRhythm 的威脅生命週期管理 (TLM) 工作流程是安全性作業中心的基礎，可協助客戶保護其雲端、實體和虛擬基礎結構，以用於其環境。 如果您是 LogRhythm 客戶，並已準備好開始使用您的 Azure 旅程圖，您必須安裝並設定 LogRhythm Open 收集器和 EventHub 整合。 您可以在 [這裡](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)找到更多詳細資料，包括設定 Azure 監視器與開啟收集器的檔。 
 
 
 
@@ -132,16 +134,16 @@ LogRhythm 是 NextGen SIEM 的領導者，讓組織能夠透過快速偵測、�
 
 ![Microfocus 標誌](./media/partners/microfocus.png)     
 
-Microfocus **ArcSight**具有 Azure 監視器事件中樞的智慧型連接器。
+Microfocus **ArcSight** 有 Azure 監視器事件中樞的智慧型連接器。
 
 [深入了解](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "ArcSight 文件。")
 
-Microfocus**作業橋接器**會自動監視所有的混合式 IT 資源–任何裝置、作業系統、資料庫、應用程式或服務（不論其執行位置為何），並將 aiops 會套用至所有資料類型–事件、計量、記錄和相依性。 它提供了一組獨特的服務監視功能，結合了深度應用程式健康情況分析，並包含 Microsoft Azure 服務的完整效能和可用性監視。 「作業橋接器」可讓客戶在任何裝置上使用瀏覽器提供單一的半透明窗格，以供企業和 IT 專案關係人瞭解。
+Microfocus **Operations Bridge** 會自動監視所有的混合式 IT 資源，不論是什麼裝置、作業系統、資料庫、應用程式或服務，不論其執行位置為何，並將 AIOps 套用至所有資料類型–事件、計量、記錄和相依性。 它提供服務監視品質的獨特組合，結合了深層的應用程式健康情況分析，並包含 Microsoft Azure 服務的全面效能和可用性監視。 營運橋樑可讓客戶透過瀏覽器，以企業和 IT 專案關係人都能瞭解的方式，提供單一的單一窗格（可在任何裝置上提供）。
 
 深入了解
-- [OB 套件總覽](https://www.microfocus.com/products/operations-bridge-suite/overview)
+- [OB Suite 總覽](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [下載](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
-- [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope 是作業橋接器套件中的元件。
+- [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope 是 Operations Bridge 套件中的元件。
 
 
 
@@ -180,7 +182,7 @@ OpsGenie 作為由 Azure 所產生警示發送器。 OpsGenie 會根據待命排
 
 ![PagerDuty 標誌](./media/partners/pagerduty.png)
 
-PagerDuty 是業界領先的事件管理解決方案，針對 Azure 度量警示提供第一級支援。 PagerDuty 支援 Azure 監視器警示、自動調整規模通知、活動記錄事件與 Azure 服務的平台層級計量的通知。 這些增強功能會提供您增加的核心 Azure 平台可見度。 您可以充分利用 PagerDuty 的事件管理功能來進行即時回應。 可以透過 Webhook 擴展 Azure 整合。 Webhook 可讓您快速且輕鬆地設定及自訂解決方案。
+PagerDuty 是業界領先的事件管理解決方案，針對 Azure 度量警示提供第一級支援。 PagerDuty 支援 Azure 監視器警示、自動調整規模通知、活動記錄事件與 Azure 服務的平台層級計量的通知。 這些增強功能會提供您增加的核心 Azure 平台可見度。 您可以充分利用 PagerDuty 的事件管理功能，以取得即時回應。 可以透過 Webhook 擴展 Azure 整合。 Webhook 可讓您快速且輕鬆地設定及自訂解決方案。
 
 [請移至文件。][pagerduty-doc]
 
@@ -188,9 +190,9 @@ PagerDuty 是業界領先的事件管理解決方案，針對 Azure 度量警示
 
 ![Promitor 標誌](./media/partners/promitor.png)
 
-Promitor 是可在 Atlassian Statuspage、Prometheus 和 StatsD 等系統中提供計量的 Azure 監視器 scraper。
+Promitor 是一種 Azure 監視器 scraper，可讓您在 Atlassian Statuspage、Prometheus 和 StatsD 等系統中使用計量。
 
-將所有計量推送至 Azure 監視器，並在需要時取用它們。
+將所有計量推送至 Azure 監視器，並在您需要的位置使用它們。
 
 [深入了解。][promitor-doc]
 
@@ -204,7 +206,7 @@ Microsoft Azure DSM 與 Microsoft Azure 事件中樞通訊協定均可從 [IBM �
 
 ![ScienceLogic 標誌](./media/partners/sciencelogic.png)
 
-ScienceLogic 提供新一代 IT 服務保證平台，可在任何位置管理任何技術。 ScienceLogic 可以為簡化管理 IT 資源、服務和應用程式的工作提供級別、安全性、自動化和恢復功能。 ScienceLogic 平台會使用 Azure API 做為 Microsoft Azure 的介面。 ScienceLogic 可讓您即時掌握您的 Azure 服務和資源。 因此，您知道某個專案無法運作，而您可以更快速地修正問題。 您也可以與其他雲端和資料中心系統和服務管理 Azure。
+ScienceLogic 提供新一代 IT 服務保證平台，可在任何位置管理任何技術。 ScienceLogic 可以為簡化管理 IT 資源、服務和應用程式的工作提供級別、安全性、自動化和恢復功能。 ScienceLogic 平台會使用 Azure API 做為 Microsoft Azure 的介面。 ScienceLogic 可讓您即時掌握您的 Azure 服務和資源。 所以您知道何時無法運作，而且可以更快修正問題。 您也可以與其他雲端和資料中心系統和服務管理 Azure。
 
 [深入了解。][sciencelogic-doc]
 
@@ -212,7 +214,7 @@ ScienceLogic 提供新一代 IT 服務保證平台，可在任何位置管理任
 
 ![Serverless360 標誌](./media/partners/serverless360.png)
 
-Serverless360 是操作、管理及監視 Azure 無伺服器元件的一個平臺工具。 管理性是無伺服器執行的重要挑戰之一。 數百個小型的離散無伺服器服務散佈在不同的地方-管理和操作這類解決方案很複雜。 Serverless360 透過一組豐富的複雜工具解決了這些挑戰。 它可以監視無伺服器服務，例如 Azure Functions、Logic Apps、事件格線、服務匯流排佇列、主題、轉送、事件中樞、儲存體佇列、檔案、blob 和資料表。 Azure Marketplace 提供 Serverless360。 這些功能適用于在您自己的環境中裝載的 SaaS 和私用主控 () 。  
+Serverless360 是一個平臺工具，可操作、管理及監視 Azure 無伺服器元件。 管理性是無伺服器的主要挑戰之一。 數百個小型、離散的無伺服器服務散佈在不同的地方-管理和操作這類解決方案相當複雜。 Serverless360 透過一組豐富的複雜工具來解決這些挑戰。 它可以監視無伺服器服務，例如 Azure Functions、Logic Apps、事件格線、服務匯流排佇列、主題、轉送、事件中樞、儲存體佇列、檔案、blob 和資料表。 Serverless360 可在 Azure Marketplace 中取得。 在您自己的環境中裝載的 SaaS 和私人裝載 (上都有提供這些功能) 。  
 
 [深入了解。][serverless360-doc]
 
@@ -220,7 +222,7 @@ Serverless360 是操作、管理及監視 Azure 無伺服器元件的一個平�
 
 ![ServiceNow 標誌](./media/partners/servicenow.png)
 
-透過 NOW Aiops 會平臺減少事件和 MTTR，以消除雜訊、設定優先順序、使用 ML 識別根本原因偵測，以及使用 ITX 的工作流程進行補救。  瞭解 Azure 中 Iaas/PaaS/FaaS 服務的目前狀態，並從標記建立服務對應以建立商務影響分析的應用程式服務內容。    
+利用 NOW AIOps platform 減少事件和 MTTR，以消除雜訊、設定優先順序、使用 ML 找出根本原因偵測，以及使用 ITX 工作流程進行補救。  瞭解 Iaas/PaaS/FaaS 服務在 Azure 中的目前狀態，並從標記建立服務對應，以建立商務影響分析的應用程式服務內容。    
 
 [深入了解。](https://www.servicenow.com/solutions/aiops.html)
 
@@ -228,7 +230,7 @@ Serverless360 是操作、管理及監視 Azure 無伺服器元件的一個平�
 
 ![SignalFX 標誌](./media/partners/signalfx.png)
 
-SignalFx 是即時營運智慧中的翹楚，適用於資料導向的 DevOps。 此服務會探索並收集雲端中每個元件的計量。 它取代了傳統的點工具，並提供現今動態環境的即時可見度。 利用可大幅調整的 SignalFx 平台，SaaS 平台已針對容器和微服務型架構進行最佳化，並在所有大小的組織之間提供功能強大視覺效果、主動警示以及共同作業分級功能。 SignalFx 會直接與 Azure 監視器以及*Telegraf*、 *statsD*和*collectd*等開放原始碼連接器整合，以提供最適合 Azure 的類別儀表板、分析和警示。
+SignalFx 是即時營運智慧中的翹楚，適用於資料導向的 DevOps。 此服務會探索並收集雲端中每個元件的計量。 它取代了傳統的點工具，並可即時查看現今的動態環境。 利用可大幅調整的 SignalFx 平台，SaaS 平台已針對容器和微服務型架構進行最佳化，並在所有大小的組織之間提供功能強大視覺效果、主動警示以及共同作業分級功能。 SignalFx 可直接與 Azure 監視器整合，也可以透過開放原始碼連接器（例如 *Telegraf*、 *statsD*和 *collectd* ），為 Azure 提供最佳的類別儀表板、分析和警示。
 
 [請移至文件。][signalfx-doc]
 
@@ -256,7 +258,7 @@ Splunk 適用的 Azure 監視器附加元件的下載位置：[Splunkbase](https
 
 ![SquaredUp 標誌](./media/partners/squaredup.png)
 
-SquaredUp for Azure 可讓您輕鬆視覺化 Azure 應用程式精美。 它提供您即時的互動式儀表板。 您可以向下切入到訂用帳戶、資源群組、標籤和個別資源，以查看 CPU、大部分的輸入連線、Application Insights 回應時間、總成本和摘要健康情況狀態，並深入探討以查看相關資料，例如警示、Log Analytics 事件、更詳細的計量，或從您使用的其他工具（例如 ServiceNow）查看相關資料。例如，Dynatrace、PagerDuty 或 Pingdom。  您可以自訂自己的儀表板、發佈，並與個人或內部網路頁面共用。 
+SquaredUp for Azure 讓您的 Azure 應用程式美觀變得簡單。 它提供您即時的互動式儀表板。 您可以向下切入訂用帳戶、資源群組、標籤和個別資源，以查看 CPU、大部分輸入連線、Application Insights 回應時間、總成本和摘要健康情況狀態等計量，並深入瞭解以查看相關資料，例如警示、Log Analytics 事件、更詳細的計量，或查看您使用的其他工具（例如 ServiceNow）中的相關資料。例如，Dynatrace、PagerDuty 或 Pingdom。  您可以自訂自己的儀表板、加以發佈，並與個人或內部網路頁面共用它們。 
 
 [深入了解。](https://squaredup.com/)
 
@@ -276,7 +278,7 @@ Turbonomic 透過同時讓效能、成本及合規性即時達到最佳狀態，
 
 [深入了解。][turbonomic-doc]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [深入瞭解 Azure 監視器](../overview.md)
 - [使用 REST API 存取計量](rest-api-walkthrough.md)

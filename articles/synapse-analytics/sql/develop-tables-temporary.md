@@ -6,22 +6,22 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c6c0e86bc372790cda2de4ff4c1274f414a01ab0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4559c72481dfa0cefb2ce84cab56a50d0bf182ef
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503203"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030322"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL 中的臨時表
 
-本文包含使用臨時表的基本指引，並強調 Synapse SQL 中工作階段層級臨時表的原則。 
+本文包含使用臨時表的基本指引，並強調 Synapse SQL 內工作階段層級臨時表的原則。 
 
-SQL 集區和 SQL 隨選（預覽）資源都可以利用臨時表。 SQL 隨選的限制會在本文結尾處討論。 
+SQL 集區和 SQL 隨選 (預覽版) 資源都可以使用臨時表。 SQL 隨選的限制會在本文結尾討論。 
 
 ## <a name="temporary-tables"></a>暫存資料表
 
@@ -99,7 +99,7 @@ GROUP BY
 > 
 
 ### <a name="drop-temporary-tables"></a>捨棄臨時表
-建立新的工作階段時，不應該存在任何暫存資料表。  不過，如果您呼叫的相同預存程式會建立具有相同名稱的臨時表，若要確保 `CREATE TABLE` 語句成功，請搭配使用簡單的預先存在檢查 `DROP` ： 
+建立新的工作階段時，不應該存在任何暫存資料表。  但是，如果您呼叫的相同預存程式會使用相同的名稱來建立暫時的，若要確保您的 `CREATE TABLE` 語句成功，請使用簡單的預先存在性檢查並搭配  `DROP` ： 
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -108,7 +108,7 @@ BEGIN
 END
 ```
 
-為了維持編寫程式碼的一致性，資料表和暫存資料表最好都採用此模式。  `DROP TABLE`當您完成使用臨時表時，也最好使用來移除它們。  
+為了維持編寫程式碼的一致性，資料表和暫存資料表最好都採用此模式。  `DROP TABLE`當您完成臨時表時，也最好使用移除它們。  
 
 在預存程序開發期間，在程序結尾一併搭配 drop 命令以確保會清除這些物件，也是常見的做法。
 
@@ -117,7 +117,7 @@ DROP TABLE #stats_ddl
 ```
 
 ### <a name="modularize-code"></a>模組化程式碼
-在使用者會話中的任何位置都可以使用臨時表。 如此一來，就可以利用這項功能來協助您模組化應用程式的程式碼。  為了示範，下列預存程式會產生 DDL，以依據統計資料名稱來更新資料庫中的所有統計資料：
+臨時表可在使用者會話中的任何位置使用。 如此一來，就可以利用這項功能來協助您模組化應用程式程式碼。  為了示範，下列預存程式會產生 DDL，以依統計資料名稱更新資料庫中的所有統計資料：
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -191,11 +191,11 @@ FROM    t1
 GO
 ```
 
-在這個階段，唯一發生的動作是建立會產生 #stats_ddl 臨時表的預存程式。  預存程式會卸載 #stats_ddl （如果已經存在）。 如果在會話中執行一次以上，此卸載可確保它不會失敗。  
+在這個階段，唯一發生的動作就是建立會產生 #stats_ddl 臨時表的預存程式。  預存程式會卸載 #stats_ddl （如果已經存在）。 如果在會話中執行一次以上，此卸載可確保不會失敗。  
 
-因為 `DROP TABLE` 預存程式結尾沒有，當預存程式完成時，建立的資料表會保留，而且可以在預存程式之外讀取。  
+因為 `DROP TABLE` 預存程式結尾沒有，所以當預存程式完成時，所建立的資料表仍會保留，而且可以在預存程式之外讀取。  
 
-相較于其他 SQL Server 資料庫，Synapse SQL 可讓您在建立它的程式以外使用臨時表。  透過 SQL 集區建立的臨時表可以在會話內的**任何位置**使用。 因此，您將會有更多模組化和可管理的程式碼，如下列範例所示：
+相較于其他 SQL Server 資料庫，Synapse SQL 可讓您在建立此資料表的程式之外使用該臨時表。  您可以在會話內的 **任何地方** 使用透過 SQL 集區建立的臨時表。 因此，您將會有更多模組化且可管理的程式碼，如下列範例所示：
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -218,17 +218,17 @@ DROP TABLE #stats_ddl;
 
 ### <a name="temporary-table-limitations"></a>暫存資料表限制
 
-SQL 集區對臨時表有幾個執行限制：
+SQL 集區有一些臨時表的執行限制：
 
 - 僅支援會話範圍的臨時表。  不支援全域暫存資料表。
 - 無法在臨時表上建立 Views。
 - 只能使用雜湊或循環配置資源散發來建立暫存資料表。  不支援複寫的暫存資料表散發。 
 
-## <a name="temporary-tables-in-sql-on-demand-preview"></a>隨選 SQL 中的臨時表（預覽）
+## <a name="temporary-tables-in-sql-on-demand-preview"></a>SQL 隨選 (預覽) 的臨時表
 
-支援 SQL 隨選中的臨時表，但其使用方式有限。 它們不能用在目標檔案的查詢中。 
+支援 SQL 隨選的臨時表，但其使用方式有限。 它們不能用在以檔案為目標的查詢中。 
 
-例如，您無法聯結具有儲存體中檔案資料的臨時表。 臨時表的數目限制為100，而其大小總計限制為 100 MB。
+例如，您無法從儲存體中的檔案聯結臨時表與資料。 臨時表的數目限制為100，而其總大小限制為100MB。
 
 ## <a name="next-steps"></a>後續步驟
 

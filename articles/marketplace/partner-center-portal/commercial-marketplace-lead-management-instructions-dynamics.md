@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
-ms.openlocfilehash: 92f4bde31af2a7bb4c658141964f238a8c077eef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 31dba5489db3778d738fc2856cf6aacfd6987711
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120365"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030747"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>為 Dynamics 365 Customer Engagement 設定潛在客戶管理
 
@@ -27,7 +27,7 @@ ms.locfileid: "86120365"
 
 * Dynamics 365 Customer Engagement 執行個體上的系統管理員權限能夠安裝解決方案。
 * 租用戶系統管理員權限可為潛在客戶服務建立新的服務帳戶，以用來從商業市集供應項目傳送潛在客戶。
-* Office 365 系統管理入口網站的存取權。
+* 存取系統管理員入口網站。
 * Azure 入口網站的存取權。
 
 ## <a name="install-the-solution"></a>安裝解決方案

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 85c4807d5bf71078e3cfb26bbc27e9eecc10c041
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326183"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029456"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>使用 Azure 監視器監視 Azure 虛擬機器
 本文說明如何使用 Azure 監視器來收集和分析來自 Azure 虛擬機器的監視資料，以維持資料健康。 您可以使用 Azure 監視器來監視虛擬機器的可用性和效能，如同監視任何[其他 Azure 資源](monitor-azure-resource.md)一樣，但虛擬機器與其他資源不同，因為您也需要監視客體作業和系統，及其在其中執行的工作負載。 
@@ -29,7 +29,7 @@ ms.locfileid: "87326183"
 - 您可以建立[診斷設定](../platform/diagnostic-settings.md)，讓虛擬機器將平台計量傳送至其他目的地 (例如儲存體和事件中樞)，但無法在 Azure 入口網站中設定這些診斷設定。 
 
 ## <a name="monitoring-data"></a>監視資料
-Azure 中的虛擬機器會產生[記錄](../platform/data-platform-logs.md)和[計量](../platform/data-platform-metrics.md)，如下圖所示。
+Azure 中的虛擬機器會產生 [記錄](../platform/data-platform-logs.md) 和 [計量](../platform/data-platform-metrics.md) ，如下圖所示。
 
 ![概觀](media/monitor-vm-azure/logs-metrics.png)
 
@@ -59,7 +59,7 @@ Azure 中的虛擬機器會針對虛擬機器主機產生下列資料，與其�
 | [啟用適用於 VM 的 Azure 監視器](#enable-azure-monitor-for-vms) | - 已安裝 Log Analytics 代理程式。<br>- 已安裝相依性代理程式。<br>- 已將客體效能資料收集到記錄。<br>- 已將流程和相依性詳細資料收集到記錄。 | - 適用於客體效能資料的效能圖表和活頁簿。<br>- 客體效能資料的記錄查詢。<br>- 客體效能資料的記錄警示。<br>- 相依性對應。 |
 | [安裝診斷擴充功能和 Telegraf 代理程式](#enable-diagnostics-extension-and-telegraf-agent) | - 已將客體效能資料收集到計量。 | - 客體的計量瀏覽器。<br>- 客體的計量警示。  |
 | [設定 Log Analytics 工作區](#configure-log-analytics-workspace) | - 已從客體收集事件。 | - 適用於客體事件的記錄查詢。<br>- 適用於客體事件的記錄警示。 |
-| [建立虛擬機器的診斷設定](#collect-platform-metrics-and-activity-log) | - 已將平台計量收集到記錄。<br>- 已將活動記錄收集到記錄。 | - 主機計量的記錄查詢。<br>- 主機計量的記錄警示。<br>- 活動記錄的記錄查詢。
+| [建立虛擬機器的診斷設定](#collect-platform-metrics-and-activity-log) | - 已將平台計量收集到記錄。<br>- 已將活動記錄收集到記錄。 | -主控制項計量的記錄查詢。<br>- 主機計量的記錄警示。<br>- 活動記錄的記錄查詢。
 
 下列各節將說明這其中的每個組態步驟。
 
@@ -70,9 +70,9 @@ Azure 中的虛擬機器會針對虛擬機器主機產生下列資料，與其�
 - 預先定義的趨勢效能圖表和活頁簿，可讓您從虛擬機器的客體作業系統分析核心效能計量。
 - 相依性對應會顯示在每部虛擬機器上執行的處理常式，以及與其他電腦和外部來源相互關聯的元件。
 
-![適用於 VM 的 Azure 監視器](media/monitor-vm-azure/vminsights-01.png)
+![適用於 VM 的 Azure 監視器效能視圖](media/monitor-vm-azure/vminsights-01.png)
 
-![適用於 VM 的 Azure 監視器](media/monitor-vm-azure/vminsights-02.png)
+![適用於 VM 的 Azure 監視器 maps view](media/monitor-vm-azure/vminsights-02.png)
 
 
 在 Azure 入口網站的虛擬機器功能表中，從 [深入解析] 選項啟用適用於 VM 的 Azure 監視器。 如需詳細資訊和其他組態方法，請參閱[啟用適用於 VM 的 Azure 監視器概觀](vminsights-enable-overview.md)。
@@ -80,7 +80,7 @@ Azure 中的虛擬機器會針對虛擬機器主機產生下列資料，與其�
 ![啟用適用於 VM 的 Azure 監視器](media/monitor-vm-azure/enable-vminsights.png)
 
 ### <a name="configure-log-analytics-workspace"></a>設定 Log Analytics 工作區
-適用於 VM 的 Azure 監視器使用的 Log Analytics 代理程式會將資料傳送至 [Log Analytics 工作區](../platform/data-platform-logs.md#how-is-data-in-azure-monitor-logs-structured)。 您可以藉由設定 Log Analytics 工作區從代理程式收集其他效能資料、事件和其他監視資料。 您只需要設定一次，因為任何連線到工作區的代理程式都會自動下載組態，並立即開始收集定義的資料。 
+適用於 VM 的 Azure 監視器使用的 Log Analytics 代理程式會將資料傳送至 [Log Analytics 工作區](../platform/data-platform-logs.md)。 您可以藉由設定 Log Analytics 工作區從代理程式收集其他效能資料、事件和其他監視資料。 您只需要設定一次，因為任何連線到工作區的代理程式都會自動下載組態，並立即開始收集定義的資料。 
 
 您可以從 [開始使用]選取 [工作區組態]，直接從適用於 VM 的 Azure 監視器存取工作區的組態。 按一下工作區名稱，以開啟其功能表。
 
@@ -96,7 +96,7 @@ Azure 中的虛擬機器會針對虛擬機器主機產生下列資料，與其�
 
 
 ### <a name="enable-diagnostics-extension-and-telegraf-agent"></a>啟用診斷擴充功能和 Telegraf 代理程式
-適用於 VM 的 Azure 監視器是以將資料收集到 Log Analytics 工作區的 Log Analytics 代理程式為基礎。 這支援 [Azure 監視器的多項功能](../platform/data-platform-logs.md#what-can-you-do-with-azure-monitor-logs)，例如[記錄查詢](../log-query/log-query-overview.md)、[記錄警示](../platform/alerts-log.md)和[活頁簿](../platform/workbooks-overview.md)。 [診斷擴充功能](../platform/diagnostics-extension-overview.md)會將 Windows 虛擬機器之客體作業系統的效能資料收集至 Azure 儲存體，並選擇性地將效能資料傳送至 [Azure 監視器計量](../platform/data-platform-metrics.md)。 針對 Linux 虛擬機器，必須要有 [Telegraf 代理程式](../platform/collect-custom-metrics-linux-telegraf.md)，才能將資料傳送至 Azure 計量。  這會啟用 Azure 監視器的其他功能，例如[計量瀏覽器](../platform/metrics-getting-started.md)，以及[計量警示](../platform/alerts-metric.md)。 您也可以使用 Azure 事件中樞，將診斷擴充功能設定為在 Azure 監視器外部傳送事件和效能資料。
+適用於 VM 的 Azure 監視器是以將資料傳送至 Log Analytics 工作區的 Log Analytics 代理程式為基礎。 這支援 Azure 監視器的多項功能，例如[記錄查詢](../log-query/log-query-overview.md)、[記錄警示](../platform/alerts-log.md)和[活頁簿](../platform/workbooks-overview.md)。 [診斷擴充功能](../platform/diagnostics-extension-overview.md)會將 Windows 虛擬機器之客體作業系統的效能資料收集至 Azure 儲存體，並選擇性地將效能資料傳送至 [Azure 監視器計量](../platform/data-platform-metrics.md)。 針對 Linux 虛擬機器，必須要有 [Telegraf 代理程式](../platform/collect-custom-metrics-linux-telegraf.md)，才能將資料傳送至 Azure 計量。  這會啟用 Azure 監視器的其他功能，例如[計量瀏覽器](../platform/metrics-getting-started.md)，以及[計量警示](../platform/alerts-metric.md)。 您也可以使用 Azure 事件中樞，將診斷擴充功能設定為在 Azure 監視器外部傳送事件和效能資料。
 
 在 Azure 入口網站中，從 VM 功能表的 [診斷設定] 選項，安裝單一 Windows 虛擬機器的診斷擴充功能。 在 [接收器] 索引標籤中，選取要啟用 **Azure 監視器**的選項。若要從範本或命令列為多部虛擬機器啟用擴充功能，請參閱[安裝和設定](../platform/diagnostics-extension-overview.md#installation-and-configuration)。 不同於 Log Analytics 代理程式，要收集的資料會在每個虛擬機器上的擴充功能設定中定義。
 
@@ -154,7 +154,7 @@ az monitor diagnostic-settings create \
 | 客體 (傳統) | 一組有限的客體作業系統和應用程式效能資料。 在計量瀏覽器中提供，但其他 Azure 監視器功能中並未提供，例如計量警示。  | 已安裝[診斷擴充功能](../platform/diagnostics-extension-overview.md)。 從 Azure 儲存體讀取資料。  |
 | 虛擬機器客體 | 客體作業系統和應用程式效能資料適用於所有使用計量的 Azure 監視器功能。 | 針對 Windows，需使用已啟用 Azure 監視器接收器安裝的 [診斷擴充功能](../platform/diagnostics-extension-overview.md)。 針對 Linux，需已安裝 [Telegraf 代理程式](../platform/collect-custom-metrics-linux-telegraf.md)。 |
 
-![計量](media/monitor-vm-azure/metrics.png)
+![Azure 入口網站中的計量瀏覽器](media/monitor-vm-azure/metrics.png)
 
 ## <a name="analyzing-log-data"></a>分析記錄資料
 Azure 虛擬機器會將下列資料收集至 Azure 監視器記錄。 
@@ -212,7 +212,7 @@ Heartbeat
 | summarize max(TimeGenerated) by Computer
 ```
 
-![記錄警示](media/monitor-vm-azure/log-alert-01.png)
+![遺漏的信號的記錄警示](media/monitor-vm-azure/log-alert-01.png)
 
 若要在訂用帳戶中的任何 Windows 虛擬機器上發生過多的失敗登入次數時建立警示，請使用下列查詢，這會傳回過去一小時內每個失敗登入事件的記錄。 使用您允許的失敗登入數目作為閾值。 
 
@@ -222,20 +222,20 @@ Event
 | where EventID == 4625
 ```
 
-![記錄警示](media/monitor-vm-azure/log-alert-02.png)
+![失敗登入的記錄警示](media/monitor-vm-azure/log-alert-02.png)
 
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-System Center Operations Manager (SCOM) 提供虛擬機器上工作負載的細微監視。 如需監視平台和不同實作策略的比較，請參閱[雲端監視指南](/azure/cloud-adoption-framework/manage/monitor/)。
+System Center Operations Manager 可提供虛擬機器上工作負載的細微監視。 如需監視平台和不同實作策略的比較，請參閱[雲端監視指南](/azure/cloud-adoption-framework/manage/monitor/)。
 
-如果您要繼續使用的現有 SCOM 環境，可以將其與 Azure 監視器整合，以提供額外的功能。 Azure 監視器所使用的 Log Analytics 代理程式與 SCOM 所使用的相同，因此受監視的虛擬機器會將資料傳送至兩者。 您仍然需要將代理程式新增至適用於 VM 的 Azure 監視器，並設定工作區收集其他資料 (如上所述)，但是虛擬機器可以繼續在 SCOM 環境中執行其現有的管理組件，而不需進行修改。
+如果您想要繼續使用現有的 Operations Manager 環境，可以將它與 Azure 監視器整合，以提供額外的功能。 Azure 監視器所使用的 Log Analytics 代理程式與用於 Operations Manager 的相同，因此您可以讓受監視的虛擬機器將資料傳送到兩者。 您仍然需要新增代理程式來適用於 VM 的 Azure 監視器，並設定工作區來收集其他資料，如上面所指定，但是虛擬機器可以繼續在 Operations Manager 環境中執行現有的管理元件，而不需要修改。
 
-增強現有 SCOM 功能的 Azure 監視器功能包括下列各項：
+增強現有 Operations Manager 功能 Azure 監視器的功能包括下列各項：
 
 - 使用 Log Analytics 以互動方式分析記錄檔和效能資料。
-- 使用記錄警示定義跨多部虛擬機器的警示狀況，並使用 SCOM 警示無法提供的長期趨勢功能。   
+- 使用記錄警示來定義跨多個虛擬機器的警示條件，以及使用 Operations Manager 中的警示無法使用的長期趨勢。   
 
-如需將現有 SCOM 管理群組連線至 Log Analytics 工作區的詳細資訊，請參閱[將 Operations Manager 連線至 Azure 監視器](../platform/om-agents.md)。
+如需將現有的 Operations Manager 管理群組連線到 Log Analytics 工作區的詳細資訊，請參閱連線 [Operations Manager Azure 監視器](../platform/om-agents.md) 。
 
 
 ## <a name="next-steps"></a>後續步驟

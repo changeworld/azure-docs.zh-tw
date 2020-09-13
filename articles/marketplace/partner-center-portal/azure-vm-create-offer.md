@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b9bacb352b3559c33a4a2ef92dc0c3af6ebbc7d6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816519"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029697"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
 
@@ -27,7 +27,7 @@ ms.locfileid: "88816519"
 當您在 Azure Marketplace 上發佈供應項目時，可以：
 
 - 利用 Microsoft 品牌來推廣您的公司。
-- 接觸超過 1 億個 Office 365 和 Dynamics 365 使用者以及超過 20 萬個組織。
+- 觸及超過 100000000 Microsoft 365 與 Dynamics 365 使用者，以及超過200000個組織。
 - 從這些市集取得高品質潛在客戶。
 - 讓 Microsoft 現場銷售和電話銷售團隊推廣您的服務。
 
@@ -162,7 +162,7 @@ ms.locfileid: "88816519"
 
        a. 在 [自訂增修條款] 方塊中，輸入您自己的增修條款。 您可以輸入不限數目的字元。 只有來自您為這些自訂條款指定之租用戶識別碼的客戶，才會在 Azure 入口網站的供應項目購買流程中看到這些條款。
 
-       b. (必要) 提供**租用戶識別碼**。 每個自訂增修的目標最多可達 20 個租用戶識別碼。 如果您新增自訂增修，必須至少提供一個租用戶識別碼，以便在 Azure 中識別您的客戶。 您的客戶可以在 Azure 中選取 [Azure Active Directory] > [屬性]，以便為您找到此功能。 目錄識別碼值是租用戶識別碼 (例如，50c464d3-4930-494c-963c-1e951d15360e)。 您也可以在[我的 Microsoft Azure 和 Office 365 租用戶識別碼是什麼？](https://www.whatismytenantid.com/) \(英文\) 中，使用其網域名稱網址，尋找客戶的組織租用戶識別碼。
+       b. (必要) 提供**租用戶識別碼**。 每個自訂增修的目標最多可達 20 個租用戶識別碼。 如果您新增自訂增修，必須至少提供一個租用戶識別碼，以便在 Azure 中識別您的客戶。 您的客戶可以在 Azure 中選取 [Azure Active Directory] > [屬性]，以便為您找到此功能。 目錄識別碼值是租用戶識別碼 (例如，50c464d3-4930-494c-963c-1e951d15360e)。 您也可以使用 [ [我的 Microsoft Azure] 和 [Microsoft 365 租使用者識別碼]，](https://www.whatismytenantid.com/)來尋找客戶的組織租使用者識別碼。
 
        c. (選用) 為租用戶識別碼提供易記的**描述**，其可協助您識別您設定為增修目標的客戶。
 

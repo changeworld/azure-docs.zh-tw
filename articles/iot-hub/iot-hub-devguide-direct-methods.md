@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 55472f16cefeca3b00bea79e71aee5d6588528d6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 516b3bac5da2e078217d5c12f1efdf527b7c83a1
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323055"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029064"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解 IoT 中樞的直接方法並從中樞叫用直接方法
 
@@ -41,9 +41,9 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
 > 當您在裝置上叫用直接方法時，屬性名稱和值只能包含 US-ASCII 可列印英數字元，下列集合中的任何字元除外︰``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``。
 > 
 
-直接方法是同步的，而且在超時時間之後成功或失敗（預設值：30秒，可設定為5到300秒）。 在您想要讓裝置只有在線上且接收命令的情況下才採取行動的互動式案例中，直接方法相當有用。 例如，透過手機開燈。 在這些案例中，您想要查看立即成功或失敗，讓雲端服務可以儘速處理結果。 裝置可能會傳回部分訊息本文作為方法的結果，但是不需要方法這麼做。 不保證方法呼叫的順序或任何並行語意。
+直接方法是同步的，而且在超時期間 (預設值為30秒（可設定為5到300秒）) 。 在您想要讓裝置只有在線上且接收命令的情況下才採取行動的互動式案例中，直接方法相當有用。 例如，透過手機開燈。 在這些案例中，您想要查看立即成功或失敗，讓雲端服務可以儘速處理結果。 裝置可能會傳回部分訊息本文作為方法的結果，但是不需要方法這麼做。 不保證方法呼叫的順序或任何並行語意。
 
-直接方法僅適用于雲端端的 HTTPS 和 MQTT、AMQP、MQTT over Websocket，或來自裝置端的 Websocket AMQP。
+直接方法從雲端端、透過 Websocket 的 MQTT、AMQP、MQTT，或從裝置端透過 Websocket 的 AMQP 都是 HTTPS。
 
 方法要求和回應的承載是一個 JSON 文件 (大小上限為 128 KB)。
 
@@ -55,7 +55,7 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
 
 裝置上的直接方法引動過程是 HTTPS 呼叫，由下列項目組成︰
 
-* 特定裝置的*要求 URI* 與 [API 版本](/rest/api/iothub/service/devicemethod/invokedevicemethod)：
+* 特定裝置的*要求 URI* 與 [API 版本](https://docs.aws.amazon.com/cli/latest/reference/iot1click-devices/invoke-device-method.html)：
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
@@ -78,21 +78,21 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
     }
     ```
 
-`responseTimeoutInSeconds`在要求中提供的值，就是 IoT 中樞服務必須等候在裝置上完成直接方法執行的時間量。 將此超時時間設定為至少是裝置預期的直接方法執行時間。 如果未提供 timeout，則會使用預設值30秒。 的最小和最大值 `responseTimeoutInSeconds` 分別為5和300秒。
+`responseTimeoutInSeconds`在要求中提供的值是 IoT 中樞服務在裝置上完成直接方法執行的時間量。 將此超時設定為至少為裝置直接方法的預期執行時間。 如果未提供 timeout，則會使用預設值30秒。 的最小值和最大值 `responseTimeoutInSeconds` 分別為5和300秒。
 
-`connectTimeoutInSeconds`在要求中提供的值，是呼叫直接方法的時間量，IoT 中樞服務必須等待中斷連線的裝置上線。 預設值為0，表示在直接方法叫用時，裝置必須已上線。 的最大值 `connectTimeoutInSeconds` 為300秒。
+`connectTimeoutInSeconds`在要求中提供的值是呼叫直接方法的時間量，IoT 中樞服務必須等候該方法，才能讓已中斷連線的裝置上線。 預設值為0，表示當直接方法叫用時，裝置必須已在線上。 的最大值為 `connectTimeoutInSeconds` 300 秒。
 
 #### <a name="example"></a>範例
 
-這個範例可讓您安全地起始要求，以在向 Azure IoT 中樞註冊的 IoT 裝置上叫用直接方法。
+此範例可讓您安全地起始要求，以在註冊至 Azure IoT 中樞的 IoT 裝置上叫用直接方法。
 
-若要開始，請使用[適用于 Azure CLI 的 Microsoft Azure IoT 擴充](https://github.com/Azure/azure-iot-cli-extension)功能來建立 SharedAccessSignature。
+若要開始，請使用 [適用于 Azure CLI 的 Microsoft Azure IoT 擴充](https://github.com/Azure/azure-iot-cli-extension) 功能來建立 SharedAccessSignature。
 
 ```bash
 az iot hub generate-sas-token -n <iothubName> -du <duration>
 ```
 
-接下來，將 Authorization 標頭取代為您新產生的 SharedAccessSignature，然後修改 `iothubName` 、 `deviceId` `methodName` 和 `payload` 參數，以符合下列範例命令中的實作為 `curl` 。  
+接下來，以新產生的 SharedAccessSignature 取代授權標頭，然後修改 `iothubName` 、 `deviceId` `methodName` 和 `payload` 參數，以符合下列範例命令中的執行 `curl` 。  
 
 ```bash
 curl -X POST \
@@ -109,7 +109,7 @@ curl -X POST \
 }'
 ```
 
-執行修改過的命令，以叫用指定的直接方法。 成功的要求會傳回 HTTP 200 狀態碼。
+執行修改過的命令以叫用指定的直接方法。 成功的要求會傳回 HTTP 200 狀態碼。
 
 > [!NOTE]
 > 上述範例示範如何在裝置上叫用直接方法。  如果您想要在 IoT Edge 模組中叫用直接方法，您必須修改 url 要求，如下所示：
@@ -123,8 +123,8 @@ https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/met
 
 * *HTTP 狀態碼*：
   * 200表示成功執行直接方法;
-  * 404表示任一裝置識別碼無效，或在叫用直接方法時裝置不在線上，並于 `connectTimeoutInSeconds` 之後（使用伴隨的錯誤訊息來瞭解根本原因）;
-  * 504表示因裝置未回應中的直接方法呼叫而導致的閘道超時 `responseTimeoutInSeconds` 。
+  * 404表示任一裝置識別碼無效，或裝置在叫用直接方法時不在線上，而且 `connectTimeoutInSeconds` 之後 (使用伴隨的錯誤訊息來瞭解根本原因) ;
+  * 504表示因為裝置無法回應中的直接方法呼叫所造成的閘道超時 `responseTimeoutInSeconds` 。
 
 * 標頭**，包含 ETag、要求識別碼、內容類型及內容編碼。
 
@@ -220,7 +220,7 @@ IoT 中樞開發人員指南中的其他參考主題包括︰
 
 * [IoT 中樞 MQTT 支援](iot-hub-mqtt-support.md)針對 MQTT 通訊協定提供 IoT 中樞支援的詳細資訊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在您已了解如何使用直接方法，接下來您可能對下列「IoT 中樞」開發人員指南文章感興趣︰
 

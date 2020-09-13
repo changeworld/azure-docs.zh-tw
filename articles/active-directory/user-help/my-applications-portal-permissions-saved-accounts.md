@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 8507a53959e7d28cbcec2dec6783b2470696d59b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 993e75f6a5a39e076a9e7161b62abba85d9b0eab
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798103"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031087"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>在我的應用程式入口網站中編輯或撤銷應用程式權限
 
@@ -28,9 +28,9 @@ ms.locfileid: "88798103"
 >[!Important]
 >本內容適用於使用者。 如果您是系統管理員，可以在[應用程式管理文件](../manage-apps/access-panel-collections.md)中找到更多關於如何設定和管理雲端式應用程式的資訊。
 
-## <a name="manage-app-permissions"></a>管理應用程式權限
+## <a name="manage-app-accounts"></a>管理應用程式帳戶
 
-若要檢視您或您的系統管理員已同意的權限，當您將滑鼠停留在 [我的應用程式] 入口網站中的應用程式上方時選取 [...]，然後選取 [管理您的應用程式]：
+若要查看您或您的系統管理員同意的應用程式，請選取 [ **...** ] 當您將滑鼠停留在 **我的應用程式** 入口網站中的應用程式上時，請選取 [ **管理您的應用程式**：
 
 ![在 [我的應用程式] 入口網站中管理應用程式](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
 

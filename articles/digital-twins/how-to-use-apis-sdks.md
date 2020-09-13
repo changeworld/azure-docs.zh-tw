@@ -7,20 +7,24 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f61773e693ad1276ef48b2f26ef6e3e8f59e2992
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e97db598556d10538746242fa67449631394cd55
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612368"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030645"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
-Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可用於管理您的實例和其元素。 本文概述可用的 Api，以及與其互動的方法。 您可以直接使用 REST Api 與其相關聯的 Swagger，或透過 SDK 來使用。
+Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可用於管理您的實例和其元素。 
+* 控制平面 Api 是 [Azure Resource Manager (ARM) ](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) api，並涵蓋資源管理作業，例如建立和刪除您的實例。 
+* 資料平面 Api 是 Azure 數位 Twins Api，用於管理模型、Twins 和圖形等資料管理作業。
+
+本文概述可用的 Api，以及與其互動的方法。 您可以直接使用 REST Api 與其相關聯的 Swagger，或透過 SDK 來使用。
 
 ## <a name="overview-control-plane-apis"></a>總覽：控制平面 Api
 
-控制平面 Api 是用來管理整個 Azure 數位 Twins 實例，因此涵蓋建立或刪除整個實例等作業。 您也會使用這些來建立和刪除端點。
+控制平面 Api 是用來管理整個 Azure 數位 Twins 實例的 [ARM](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) api，因此涵蓋建立或刪除整個實例等作業。 您也會使用這些來建立和刪除端點。
 
 公開預覽的最新控制平面 API 版本是 _**2020-03-01-preview**_。
 
@@ -37,7 +41,7 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 
 ## <a name="overview-data-plane-apis"></a>總覽：資料平面 Api
 
-資料平面 Api 可用來管理 Azure 數位 Twins 實例內的元素。 這些作業包括建立路由、上傳模型、建立關聯性，以及管理 twins 等作業。 它們可以廣泛分成下列類別：
+資料平面 Api 是用來管理 Azure 數位 Twins 實例內元素的 Azure 數位 Twins Api。 這些作業包括建立路由、上傳模型、建立關聯性，以及管理 twins 等作業。 它們可以廣泛分成下列類別：
 * **DigitalTwinsModels** -DigitalTwinsModels 類別包含 api 來管理 Azure 數位 Twins 實例中的 [模型](concepts-models.md) 。 管理活動包括上傳、驗證、抓取及刪除以 DTDL 撰寫的模型。
 * **DigitalTwins** -DigitalTwins 類別包含的 api 可讓開發人員在 Azure 數位 twins 實例中建立、修改和刪除 [數位 twins](concepts-twins-graph.md) 及其關聯性。
 * **查詢** -查詢類別可讓開發人員在關聯性 [的對應項圖形中尋找數位 twins 的集合](how-to-query-graph.md) 。

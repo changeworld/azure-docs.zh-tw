@@ -6,37 +6,37 @@ ms.author: tesych
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
-keywords: kinect、固件、更新、修復
-ms.openlocfilehash: eb60003a4233110cb33208bcb8e9784737bb2a8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+keywords: kinect、固件、更新、復原
+ms.openlocfilehash: ecfa4a18592d3bc70e3b7cdd66ff6464a54e560d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85276517"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030679"
 ---
 # <a name="update-azure-kinect-dk-firmware"></a>更新 Azure Kinect DK 固件
 
-本檔提供如何在 Azure Kinect DK 上更新裝置固件的指導方針。
+本檔提供如何更新 Azure Kinect DK 上的裝置固件的指引。
 
-Azure Kinect DK 不會自動更新固件。 您可以使用[Azure Kinect 固件工具](azure-kinect-firmware-tool.md)，以手動方式將固件更新為最新的可用版本。
+Azure Kinect DK 不會自動更新固件。 您可以使用 [Azure Kinect 固件工具](azure-kinect-firmware-tool.md) ，以手動方式將固件更新至最新的可用版本。
 
-## <a name="prepare-for-firmware-update"></a>準備固件更新
+## <a name="prepare-for-firmware-update"></a>準備進行固件更新
 
 1. [下載 SDK](sensor-sdk-download.md)。
 2. 安裝 SDK。
-3. 在 SDK 安裝位置的 [（SDK 安裝位置）] \tools\ 底下，您應該會發現：
+3. 在 SDK 安裝位置的 (SDK 安裝位置) \tools\ 下，您應該會發現：
 
     - AzureKinectFirmwareTool.exe
-    - [固件] 資料夾中的 [固件] 檔案，例如*AzureKinectDK_Fw_1. 5.926614. bin*。
+    - 在 [固件] 資料夾中的5.926614，例如*AzureKinectDK_Fw_1.。*
 
-4. 將您的裝置連接到主機電腦，並同時開啟它的電源。
+4. 將您的裝置連接到主機電腦，並同時將其開機。
 
 > [!IMPORTANT]
-> 在固件更新期間，讓 USB 和電源供應器保持連接。 在更新期間移除任一連線，可能會讓固件進入損毀狀態。
+> 在固件更新期間保持 USB 和電源供應器的連線。 在更新期間移除任一個連線可能會讓固件處於損毀狀態。
 
 ## <a name="update-device-firmware"></a>更新裝置的軔體
 
-1. 在 [（SDK 安裝位置）] \tools\ 資料夾中開啟命令提示字元。
+1. 在 (SDK 安裝位置) \tools\ 資料夾中開啟命令提示字元。
 2. 使用 Azure Kinect 固件工具更新固件
 
     `AzureKinectFirmwareTool.exe -u <device_firmware_file.bin>`
@@ -45,9 +45,9 @@ Azure Kinect DK 不會自動更新固件。 您可以使用[Azure Kinect 固件�
 
     `AzureKinectFirmwareTool.exe -u firmware\AzureKinectDK_Fw_1.5.926614.bin`
 
-3. 等到固件更新完成。 視影像大小而定，可能需要幾分鐘的時間。
+3. 等候固件更新完成。 這可能需要幾分鐘的時間，視映射大小而定。
 
-### <a name="verify-device-firmware-version"></a>驗證裝置固件版本
+### <a name="verify-device-firmware-version"></a>確認裝置固件版本
 
 1. 確認已更新固件。
 
@@ -57,34 +57,34 @@ Azure Kinect DK 不會自動更新固件。 您可以使用[Azure Kinect 固件�
 
     ```console
        >AzureKinectFirmwareTool.exe -q
- == Azure Kinect DK Firmware Tool ==
-Device Serial Number: 000805192412
-Current Firmware Versions:
-  RGB camera firmware:      1.6.102
-  Depth camera firmware:    1.6.75
-  Depth config file:        6109.7
-  Audio firmware:           1.6.14
-  Build Config:             Production
-  Certificate Type:         Microsoft
+       == Azure Kinect DK Firmware Tool ==
+        Device Serial Number: 000805192412
+        Current Firmware Versions:
+        RGB camera firmware:      1.6.102
+        Depth camera firmware:    1.6.75
+        Depth config file:        6109.7
+        Audio firmware:           1.6.14
+        Build Config:             Production
+        Certificate Type:         Microsoft
     ```
 
 3. 如果您看到上述輸出，則會更新您的固件。
 
-4. 在固件更新之後，您可以執行[Azure Kinect viewer](azure-kinect-viewer.md)來確認所有感應器是否如預期般運作。
+4. 在固件更新之後，您可以執行 [Azure Kinect 檢視器](azure-kinect-viewer.md) 來確認所有感應器都如預期般運作。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-可能有幾個原因導致固件更新失敗。 當固件更新失敗時，請嘗試下列緩和措施步驟：
+有幾個原因可能會導致固件更新失敗。 當固件更新失敗時，請嘗試下列風險降低步驟：
 
-1. 第二次嘗試執行 [固件更新] 命令。
+1. 再試一次執行 [固件更新] 命令。
 
-2. 藉由查詢固件版本來確認裝置是否仍在連線中。        AzureKinectFirmareTool.exe
+2. 藉由查詢固件版本來確認裝置仍保持連線。        AzureKinectFirmareTool.exe
 
-3. 如果其他所有動作都失敗，請遵循[復原步驟來](https://support.microsoft.com/help/4494277/reset-azure-kinect-dk)還原為原廠固件，然後再試一次。
+3. 如果所有其他失敗，請遵循 [復原步驟來](https://support.microsoft.com/help/4494277/reset-azure-kinect-dk) 還原為出廠預設值，然後再試一次。
 
-如有任何其他問題，請參閱[Microsoft 支援頁面](https://aka.ms/kinectsupport)
+如有任何其他問題，請參閱 [Microsoft 支援頁面](https://aka.ms/kinectsupport)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 >[Azure Kinect 固件工具](azure-kinect-firmware-tool.md)

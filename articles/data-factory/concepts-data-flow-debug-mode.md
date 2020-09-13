@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/06/2019
-ms.openlocfilehash: ba0b242fa28b8dac774a48bdd9297e44a17fa3ec
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 09/11/2020
+ms.openlocfilehash: 1d996e62fe60606c3eb93a638d229028ee0471e6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483026"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030583"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>對應資料流程的偵測模式
 
@@ -49,6 +49,8 @@ Azure Data Factory 對應資料流程的 debug 模式，可讓您在建立及偵
 
 ![Debug settings 參數](media/data-flow/debug-settings2.png "Debug settings 參數")
 
+ADF 資料流程中用於偵測模式的預設 IR 是具有4核心單一驅動程式節點的小型4核心單一背景工作節點。 當測試您的資料流程邏輯時，這會很適合用來處理較小的資料樣本。 如果您在資料預覽期間展開偵錯工具設定中的資料列限制，或在管線偵測期間于來源中設定較大量的取樣資料列，則您可能會想要考慮在新的 Azure Integration Runtime 中設定較大的計算環境。 然後，您可以使用較大的計算環境來重新開機您的偵錯工具會話。
+
 ## <a name="data-preview"></a>資料預覽
 
 若開啟偵錯，[資料預覽] 索引標籤在底部面板上亮起。 若未開啟 debug 模式，資料流程將只會顯示您在 [檢查] 索引標籤中的每個轉換的目前中繼資料。資料預覽只會查詢您已在偵錯工具設定中設定為限制的資料列數目。 按一下 **[** 重新整理] 以提取資料預覽。
@@ -59,6 +61,8 @@ Azure Data Factory 對應資料流程的 debug 模式，可讓您在建立及偵
 > 檔案來源只會限制您看到的資料列，而不是所讀取的資料列。 針對非常大型的資料集，建議您只使用該檔案的一小部分，並將它用於您的測試。 您可以針對每個屬於檔案資料集類型的來源，在「偵錯工具設定」中選取暫存檔案。
 
 在資料流程的偵錯模式中執行時，您的資料不會寫入至接收轉換。 Debug 會話旨在做為您轉換的測試控管。 偵錯期間不需要接收，而且會在資料流程中忽略。 如果您想要測試在接收中寫入資料，請從 Azure Data Factory 管線執行資料流程，然後從管線使用 Debug 執行。
+
+資料預覽是您已轉換資料的快照，其使用資料列限制和資料從 Spark 記憶體中的資料框架進行資料取樣。 因此，在此情況下，不會使用或測試接收器驅動程式。
 
 ### <a name="testing-join-conditions"></a>測試聯結條件
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 0fc9139e9456a62bf3586fb358046e7c868b834a
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005219"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030822"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure 監視器代理程式總覽 (預覽) 
 Azure 監視器代理程式 (AMA) 會從虛擬機器的客體作業系統收集監視資料，並將其傳遞至 Azure 監視器。 本文概述 Azure 監視器代理程式，包括如何安裝，以及如何設定資料收集。
@@ -99,6 +99,8 @@ Azure 監視器代理程式目前支援下列作業系統。
 ## <a name="security"></a>安全性
 Azure 監視器代理程式不需要任何金鑰，而是需要 [系統指派的受控識別](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。 部署代理程式之前，您必須在每部虛擬機器上啟用系統指派的受控識別。
 
+## <a name="networking"></a>網路
+Azure 監視器代理程式支援 Azure 服務標籤 (需要 AzureMonitor 和 AzureResourceManager 標記，) 但尚未使用 Azure 監視器 Private Link 範圍或直接 proxy。
 
 ## <a name="install-the-azure-monitor-agent"></a>安裝 Azure 監視器代理程式
 Azure 監視器代理程式會實作為 [AZURE VM 擴充](../../virtual-machines/extensions/overview.md) 功能，並包含下表中的詳細資料。 

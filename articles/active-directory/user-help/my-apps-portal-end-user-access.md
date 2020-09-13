@@ -8,164 +8,120 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/03/2020
+ms.date: 09/08/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 78204be967bafdd7d01af4f9f286bd15347e4a9f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 245b7c63b3c459d545dfd39fe162df1ee4f816f5
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798035"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031036"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>從我的應用程式入口網站中登入和啟動應用程式
 
 您可以使用公司或學校帳戶搭配 Web 型**我的應用程式** 入口網站來執行下列動作：
 
 - 檢視和啟動您組織的多個雲端型應用程式
-- 更新您的設定檔和帳戶資訊
-- 檢視您的**群組**資訊
-- 針對您的應用程式和群組執行**存取權檢閱**
+- 前往 [ [**我的群組** ] 入口網站](https://account.activedirectory.windowsazure.com/r#/groups)
+- 前往我的 [**帳戶** 入口網站](https://myaccount.microsoft.com/)
 
-如果您沒有 [我的應用程式] 入口網站的存取權，請連絡技術服務人員以取得權限。
+如果您沒有 **我的應用程式** 入口網站的存取權，請洽詢貴組織的技術支援人員以取得許可權。
 
-[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
-
-> [!Important]
-> 本內容適用於我的應用程式使用者。 如果您是系統管理員，可以在[應用程式管理文件](../manage-apps/index.yml)中找到更多關於如何設定和管理雲端式應用程式的資訊。
+> [!IMPORTANT]
+> 本內容適用於**我的應用程式**使用者。 如果您是系統管理員，可以在[應用程式管理文件](../manage-apps/index.yml)中找到更多關於如何設定和管理雲端式應用程式的資訊。
 
 ## <a name="supported-browsers"></a>支援的瀏覽器
 
 您可以從下列任何網頁瀏覽器進入**我的應用程式**入口網站：
 
+- Microsoft Edge (行動版的 Edge 目前僅支援行動瀏覽器) 
 - Google Chrome
-
 - Mozilla Firefox 版本 26.0 版或更新版本
 
-- Microsoft Edge
-
-- Internet Explorer 版本 11 (有限支援)
-
-## <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>下載並安裝我的應用程式安全登入延伸模組
-
-如果出現提示，請下載並安裝我的應用程式安全登入延伸模組。 此延伸模組可協助您啟動貴組織的任何雲端應用程式，而這些雲端應用程式要求您使用單一登入程序。 如果貴組織已將您設定為進行單一登入，則會自動安裝此延伸模組，因此您可以跳過本節。
-
-此延伸模組可協助您：
-
-- 從登入頁面直接登入應用程式。
-
-- 使用**快速搜尋**功能來啟動任何應用程式。
-
-- 請在 [最近使用] 區段中查看您最後使用的應用程式。
-
-- 在遠端時，搭配[應用程式 Proxy](../manage-apps/application-proxy.md) 使用內部公司 URL。
-
-### <a name="to-download-and-install-the-extension"></a>下載並安裝延伸模組
-
-根據您正在使用的瀏覽器，下載並安裝延伸模組：
-
-- **Google Chrome。** 從 Chrome Web Store 中，移至[我的應用程式安全登入延伸模組](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl)功能，然後選取 [新增至 Chrome]。
-
-- **Mozilla Firefox** 從 [Firefox 附加元件] 頁面中，移至[我的應用程式安全登入延伸模組](https://addons.mozilla.org/firefox/addon/access-panel-extension/)功能，然後選取 [新增至 Firefox]。
-
-- **Microsoft Edge** 從 Microsoft Store 中，移至[我的應用程式安全登入延伸模組](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab)功能，然後選取 [取得] 以取得 Microsoft Edge 舊版瀏覽器的延伸模組。  
-如果您是使用新的 Microsoft Edge 瀏覽器 (Edge on Chromium)，則可以從 [Microsoft Edge 附加元件市集](https://microsoftedge.microsoft.com/addons/category/EdgeExtensionsEditorsPick)取得延伸模組。
-
-圖示會新增至 [網址列] 的右側，讓您可以登入並自訂延伸模組。
-
-## <a name="to-change-your-my-apps-portal-using-the-extension"></a>使用延伸模組來變更我的應用程式入口網站
-
-您可以在 [最近使用] 區段中選擇要檢視多少個應用程式，並決定是否要允許您組織的內部 URL 重新導向。
-
-1. 選取新的 [我的應用程式安全登入延伸模組] 圖示 ![延伸模組圖示](media/my-apps-portal/my-apps-portal-extension-icon.png) (位於 [網址列] 右邊)，然後選取 [登入以開始使用]。
-
-2. 以滑鼠右鍵按一下 [設定] 圖示 ![設定圖示](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)，然後選取 [設定]。
-
-3. 在 [設定] 方塊中，選取您想要在入口網站上看到的最近應用程式數目，以及是否允許重新導向您組織的內部 URL，讓您可以在遠端使用它們。
-
-    ![延伸模組的 [設定] 頁面，其中顯示可用的自訂](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
-
-## <a name="access-and-use-the-my-apps-portal-by-device"></a>依裝置存取和使用我的應用程式入口網站
-
-您可以在電腦上、從 Intune Managed Browser，或從 iOS 或 Android 行動裝置存取和使用我的應用程式入口網站。
+您可以在您的電腦上，或從 iOS 或 Android 行動裝置上的 Edge 瀏覽器行動版，存取和使用我的應用程式入口網站。
 
 ![我的應用程式入口網站中的 [應用程式] 頁面](media/my-apps-portal/my-apps-portal-apps-page.png)
 
-### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>在您的電腦上存取和使用我的應用程式入口網站
+## <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>在您的電腦上存取和使用我的應用程式入口網站
 
 如果您有權存取和使用組織的雲端型應用程式，則可以透過**我的應用程式** 入口網站進入其中。
 
 1. 在您的電腦上登入您的公司或學校帳戶。
 
-2. 在支援的網頁瀏覽器中，開啟並移至 https://myapps.microsoft.com ，或使用您組織提供的連結 (如果它們將您導向至自訂頁面，例如 `https://myapps.microsoft.com/contoso.com` )。
+1. 在支援的網頁瀏覽器中，移至 https://myapps.microsoft.com 或使用您組織提供的連結（如果他們將您導向至自訂頁面，例如） `https://myapps.microsoft.com/contoso.com` 。
 
-    [應用程式] 頁面隨即出現，其中顯示您組織所擁有且可供您使用的所有雲端型應用程式。
+   [應用程式] 頁面隨即出現，其中顯示您組織所擁有且可供您使用的所有雲端型應用程式。
 
-3. 從 [應用程式] 頁面中，選取您想要開始使用的應用程式。
+1. 從 [應用程式] 頁面中，選取您想要開始使用的應用程式。
 
-    隨即會針對應用程式開啟新頁面，您可以在其中登入 (如有需要)，或開始使用應用程式。
+   隨即會針對應用程式開啟新頁面，您可以在其中登入 (如有需要)，或開始使用應用程式。
 
-### <a name="access-and-use-the-my-apps-portal-on-an-intune-managed-browser"></a>在 Intune Managed Browser 上存取和使用我的應用程式入口網站
+### <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>下載並安裝我的應用程式安全登入延伸模組
 
-在 iOS 和 Android 裝置上，從 Intune Managed Browser 檢視和使用您組織的應用程式。
+如果系統提示您，請下載並安裝 **我的應用程式安全登入延伸**模組。 此延伸模組可協助您使用桌面瀏覽器，以搭配您組織的雲端應用程式使用單一登入。 在 **我的應用程式** 入口網站中，直接將滑鼠停留在應用程式上，選取 [ **...**]，然後選取 [ **管理您的應用程式**]。
 
-1. 在您的行動裝置上，從 Apple App Store 和 Google Play 商店下載並安裝 Intune Managed Browser 應用程式。
+如果貴組織已將您設定為進行單一登入，則會自動安裝此延伸模組，因此您可以跳過本節。
 
-2. 開啟 Intune Managed Browser 應用程式、移至 https://myapps.microsoft.com ，或使用您組織提供的連結 (如果它們將您導向至自訂頁面，例如 https://myapps.microsoft.com/contoso.com )。
+**我的應用程式安全登入延伸**模組可協助您：
 
-    [應用程式] 頁面隨即出現，其中顯示您組織所擁有且可供您使用的所有雲端型應用程式。
+- 從登入頁面直接登入應用程式。
+- 使用**快速搜尋**功能來啟動任何應用程式。
+- 請在 [最近使用] 區段中查看您最後使用的應用程式。
+- 使用「 [應用程式 Proxy](../manage-apps/application-proxy.md)」進行遠端時，請使用內部公司 url。
 
-3. 從 [應用程式] 頁面中，選取您想要開始使用的應用程式。
+### <a name="to-download-and-install-the-extension"></a>下載並安裝延伸模組
 
-    隨即會針對應用程式開啟新頁面，您可以在其中登入 (如有需要)，或開始使用應用程式。
+根據您所使用的瀏覽器，下載並安裝擴充功能。
 
-### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>在 iOS 裝置上存取和使用我的應用程式入口網站
+- **Microsoft Edge** -從 Microsoft Store 中，移至 [ [我的應用程式安全登入擴充](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl) 功能]，然後選取 [ **取得** ] 以取得 Microsoft Edge 舊版瀏覽器的延伸模組。
 
-從執行 iOS 版本 7 或更新版本的 iPhone 或 iPad 裝置中，檢視和使用**我的應用程式**入口網站。 您也可以安裝[我的應用程式行動應用程式](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)，以在 iOS 裝置上存取組織的應用程式。
+- **Google Chrome** -從 Chrome 線上應用程式商店中，移至 [我的應用程式安全登入延伸](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) 模組功能，然後選取 [ **新增至 Chrome**]。
 
-1. 在您的行動裝置上，啟動網頁瀏覽器應用程式，例如 Safari。
+- **Mozilla Firefox** -從 **firefox 附加** 元件頁面，移至 [我的應用程式安全登入延伸](https://addons.mozilla.org/firefox/addon/access-panel-extension/) 模組功能，然後選取 [ **新增至 Firefox**]。
 
-2. 移至 https://myapps.microsoft.com ，或使用您組織提供的連結 (如果它們將您導向至自訂頁面，例如 https://myapps.microsoft.com/contoso.com )。
+**網址**列右邊會加入一個圖示，讓您登入並自訂延伸模組。
 
-    [應用程式] 頁面隨即出現，其中顯示您組織所擁有且可供您使用的所有雲端型應用程式。
+### <a name="to-change-your-my-apps-portal-using-the-extension"></a>使用延伸模組來變更我的應用程式入口網站
 
-3. 從 [應用程式] 頁面中，選取您想要開始使用的應用程式。
+您可以在 [最近使用] 區段中選擇要檢視多少個應用程式，並決定是否要允許您組織的內部 URL 重新導向。
 
-    隨即會針對應用程式開啟新頁面，您可以在其中登入 (如有需要)，或開始使用應用程式。
+1. 選取新的 [我的應用程式安全登入延伸模組] 圖示 ![延伸模組圖示](media/my-apps-portal/my-apps-portal-extension-icon.png) (位於 [網址列] 右邊)，然後選取 [登入以開始使用]。
 
-### <a name="access-and-use-the-my-apps-portal-on-an-android-device"></a>在 Android 裝置上存取和使用我的應用程式入口網站
+1. 以滑鼠右鍵按一下 [設定] 圖示 ![設定圖示](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)，然後選取 [設定]。
 
-在 Android 裝置上檢視和使用**我的應用程式**入口網站。
+1. 在 [設定] 方塊中，選取您想要在入口網站上看到的最近應用程式數目，以及是否允許重新導向您組織的內部 URL，讓您可以在遠端使用它們。
 
-1. 在您的行動裝置上，啟動網頁瀏覽器應用程式，例如 Google Chrome。
+   ![延伸模組的 [設定] 頁面，其中顯示可用的自訂](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
 
-2. 移至 https://myapps.microsoft.com ，或使用您組織提供的連結 (如果它們將您導向至自訂頁面，例如 https://myapps.microsoft.com/contoso.com )。
+## <a name="access-and-use-the-my-apps-portal-on-mobile-edge"></a>存取並使用行動 Edge 上的我的應用程式入口網站
 
-    [應用程式] 頁面隨即出現，其中顯示您組織所擁有且可供您使用的所有雲端型應用程式。
+在您的裝置上，從行動版的 Edge 瀏覽器中，查看並使用您組織的應用程式。
 
-3. 從 [應用程式] 頁面中，選取您想要開始使用的應用程式。
+1. 在您的行動裝置上，從 Apple App Store 和 Google Play 商店下載並安裝 mobile Edge 瀏覽器應用程式。
 
-    隨即會針對應用程式開啟新頁面，您可以在其中登入 (如有需要)，或開始使用應用程式。
+1. 開啟行動 Edge 瀏覽器並移至 https://myapps.microsoft.com ，或使用組織提供的連結（如果他們將您導向至自訂頁面，例如） https://myapps.microsoft.com/contoso.com 。
+
+   [應用程式] 頁面隨即出現，其中顯示您組織所擁有且可供您使用的所有雲端型應用程式。
+
+1. 從 [應用程式] 頁面中，選取您想要開始使用的應用程式。
+
+   隨即會針對應用程式開啟新頁面，您可以在其中登入 (如有需要)，或開始使用應用程式。
 
 ## <a name="add-a-new-app-to-the-my-apps-portal"></a>新增應用程式至我的應用程式入口網站
 
 如果您的管理員已授與您權限，則您可以新增應用程式至 [應用程式] 頁面。
 
-1. 從 [應用程式] 頁面中，執行下列其中一項動作：
-    - 如果您處於原始我的應用程式體驗中，請選取 [新增應用程式]，如下所示。
+1. 在 [ **應用程式** ] 頁面上，選取 [ **新增自助應用程式**]。
 
-      ![[新增應用程式] 頁面，位於我的應用程式入口網站中](media/my-apps-portal/my-apps-portal-add-apps-page.png)
+   ![[新增應用程式] 頁面，位於我的應用程式入口網站 (網址為 myapplications.microsoft.com) 中](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
-    - 如果您處於更新的我的應用程式體驗，請選取 [新增自助式應用程式]。
+1. 從提供的清單中選取您想要新增的應用程式，然後選取 [新增]。
 
-       ![[新增應用程式] 頁面，位於我的應用程式入口網站 (網址為 myapplications.microsoft.com) 中](media/my-apps-portal/my-apps-portal-add-app-link.png)
+1. 應用程式即會新增至 [應用程式] 頁面上的清單。
 
-2. 從提供的清單中選取您想要新增的應用程式，然後選取 [新增]。
-
-3. 應用程式即會新增至 [應用程式] 頁面上的清單。
-
-    某些應用程式可能需要管理員核准，才能新增。 發生這種情況時，應用程式不會新增至 [應用程式] 頁面，直到管理員核准為止。
+   某些應用程式可能需要管理員核准，才能新增。 發生這種情況時，應用程式不會新增至 [應用程式] 頁面，直到管理員核准為止。
 
 ## <a name="start-a-cloud-based-app"></a>啟動雲端型應用程式
 
@@ -173,18 +129,23 @@ ms.locfileid: "88798035"
 
 - 從 [應用程式] 頁面中，選取您想要開始使用的應用程式。
 
-    隨即會針對應用程式開啟新頁面，您可以在其中登入 (如有需要)，或開始使用應用程式。
+   隨即會針對應用程式開啟新頁面，您可以在其中登入 (如有需要)，或開始使用應用程式。
 
 ## <a name="activities-in-the-my-apps-portal"></a>我的應用程式入口網站中的活動
 
 在進入**我的應用程式** 入口網站之後，您可以：
 
 - 將應用程式組織為貴組織所建立和提供的各種類別。 如需詳細資訊，請參閱[在我的應用程式入口網站上存取和使用集合](my-applications-portal-workspaces.md)。
-
 - 檢閱、更新或撤銷已授與應用程式的權限。 如需詳細資訊，請參閱[在我的應用程式入口網站中編輯或撤銷應用程式權限](my-applications-portal-permissions-saved-accounts.md)。
+- 建立、更新及移除應用程式帳戶。 如需詳細資訊，請參閱 [編輯或撤銷應用程式許可權](my-applications-portal-permissions-saved-accounts.md)。
+- 從**我的應用程式**入口網站存取[**我的帳戶**](my-account-portal-overview.md)以進行帳戶管理：
+  
+  - 檢查異常的登入活動
+  - 管理您的密碼
+  - 管理連線的裝置、訂用帳戶、組織和 Office 應用程式
 
->[!Note]
->如果您未看到任何可用的集合或類別，這表示您的系統管理員尚未設定任何集合或類別或將其與您共用。 請洽詢組織的技術服務人員，以取得其他協助或權限來查看共用的集合。
+>[!NOTE]
+>如果您未看到任何可用的集合或類別，這表示您的系統管理員尚未設定任何集合或類別或將其與您共用。 請洽詢貴組織的技術支援人員，以取得詳細的協助或查看共用集合的許可權。
 
 ## <a name="next-steps"></a>後續步驟
 

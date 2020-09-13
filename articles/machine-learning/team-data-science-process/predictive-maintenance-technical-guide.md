@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 9520369861623e60a0118baa20a7871437433a4b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6677f9275d3b6f0569216eb16046d096c574beab
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290713"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030896"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>航太工業中預測性維護的解決方案範本的技術指南
 
@@ -182,7 +182,7 @@ Power BI 會連接到 Azure SQL Database 作為其資料來源，即預測結果
    * 在下一個快顯視窗中，您會在左側窗格上看到兩個選項 ([Windows] 和 [資料庫])。 按一下 [資料庫]，填入您的 [使用者名稱] 和 [密碼] (您首次部署解決方案並建立 Azure SQL Database 時輸入的使用者名稱和密碼)。 在 [選取要套用這些設定的層級] 中，請勾選資料庫層級選項。 然後按一下 [連接]。
    * 按一下第二個資料表 **PMResult**，然後在右側 [查詢設定] 面板的 [套用的步驟] 下，按一下 [來源] 旁的 ![Navigation icon](./media/predictive-maintenance-technical-guide/icon-navigation.png)，依上述步驟所示更新伺服器和資料庫名稱，然後按一下 [確定]。
    * 一旦引導您回到上一頁，請關閉視窗。 此時會顯示一個訊息，請按一下 [套用]。 最後，按一下 [儲存]  按鈕以儲存變更。 您的 Power BI 檔案現在已建立與伺服器的連線。 如果視覺效果是空的，請確定將視覺效果上的選取範圍都清除，以將所有資料視覺化，成法是按一下圖例右上角的橡皮擦圖示。 使用重新整理按鈕在視覺效果上反映新的資料。 最初，您只會在視覺效果上看到種子資料，因為 Data Factory 排定為每 3 個小時重新整理。 3 小時後，當您重新整理資料時，您會看到新的預測反映在視覺效果中。
-3. (選擇性) 將冷路徑儀表板發佈至 [Power BI 線上版](https://www.powerbi.com/)。 此步驟需要 Power BI 帳戶 (或 Office 365 帳戶)。
+3. (選擇性) 將冷路徑儀表板發佈至 [Power BI 線上版](https://www.powerbi.com/)。 此步驟需要 Power BI 帳戶 (或工作或學校帳戶) 。
    
    * 按一下 [發佈]，幾秒鐘後會出現一個視窗顯示「發佈至 Power BI 成功!」， 並帶有綠色核取記號。 按一下 [在 Power BI 中開啟 PredictiveMaintenanceAerospace.pbix] 下方的連結。 若要尋找詳細的指示，請參閱[從 Power BI Desktop 發佈](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)。
    * 若要建立新儀表板：在左側窗格中按一下 [儀表板] 區段旁的 **+** 號。 為這個新儀表板輸入名稱「預測性維護示範」。

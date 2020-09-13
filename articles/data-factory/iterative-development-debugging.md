@@ -1,7 +1,7 @@
 ---
 title: Azure Data Factory 中的反復式開發和調試
 description: 瞭解如何在 ADF UX 中反復開發和調試 Data Factory 管線
-ms.date: 08/28/2020
+ms.date: 09/11/2020
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -9,12 +9,12 @@ documentationcenter: ''
 ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
-ms.openlocfilehash: 7e27a9c11f6470a48f20d54ebbd32c06824940de
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e4c66055184b2ef0113aa0e25c02ad8635feddb3
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079296"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031002"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>透過 Azure Data Factory 的反覆式開發與偵錯
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -87,6 +87,6 @@ Azure Data Factory 可讓您在管線畫布上到達特定活動之前，對管�
 
 ![使用資料流程執行管線](media/iterative-development-debugging/iterative-development-dataflow.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 測試您的變更之後，請使用 [Azure Data Factory 中的持續整合和部署](continuous-integration-deployment.md)，將這些變更升階到更高的環境。

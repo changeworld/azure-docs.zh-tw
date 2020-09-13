@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 05/28/2020
+ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: b83cdf0b069eac2e46cfdd54edc11a1aa5a41075
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c2bf4d5facc96a0876d4321a61ed6f414dfd78da
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799038"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029540"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>使用安全性資訊重設公司或學校密碼
 
@@ -107,7 +107,7 @@ ms.locfileid: "88799038"
 
 ## <a name="how-to-change-your-password"></a>如何變更密碼
 
-如果您只想變更密碼，您可以透過 Office 365 入口網站、Azure 存取面板或 Windows 10 登入頁面來進行此動作。
+如果您只想要變更您的密碼，您可以透過 Office 365 入口網站、我的應用程式入口網站或 Windows 10 登入頁面來進行。
 
 ### <a name="to-change-your-password-using-the-office-365-portal"></a>使用 Office 365 入口網站變更您的密碼
 
@@ -121,11 +121,11 @@ ms.locfileid: "88799038"
 
 4. 輸入舊密碼、建立並確認新密碼，然後選取 [提交]。
 
-### <a name="to-change-your-password-from-the-azure-access-panel"></a>從 Azure 存取面板變更您的密碼
+### <a name="to-change-your-password-from-the-my-apps-portal"></a>若要從我的應用程式入口網站變更您的密碼
 
-如果您通常會從 Azure 存取面板 (MyApps) 存取應用程式，請使用此方法：
+如果您通常會從我的應用程式入口網站存取您的應用程式，請使用此方法：
 
-1. 使用您的現有密碼，登入 [Azure 存取面板](https://myapps.microsoft.com/)。
+1. 使用您現有的密碼登入 [我的應用程式入口網站](https://myapps.microsoft.com/)。
 
 2. 選取您位於右上方的設定檔，然後選取 [設定檔]。
 

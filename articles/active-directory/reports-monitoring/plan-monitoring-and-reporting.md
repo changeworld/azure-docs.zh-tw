@@ -1,6 +1,6 @@
 ---
 title: 規劃 & 監視部署的報表-Azure AD
-description: 說明如何規劃和執行報告和監視的 implmentation。
+description: 說明如何規劃和執行報告和監視的執行。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b83291dc37c6248761214654f99d3ce214b551
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a75cc77b45d41d7fd63eadce34265ca54b663e14
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229747"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030985"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>規劃 Azure Active Directory 報告和監視部署
 
@@ -99,7 +99,7 @@ Azure AD 報告提供您環境中 Azure AD 活動的完整觀點和記錄，包�
 * 滿足商務需求的理想
 * 不適用
 
-|區域 |說明 |
+|區域 |描述 |
 |-|-|
 |保留| 超過**30 天的記錄保留期**。 由於法律或業務需求，需要儲存 Azure AD 超過30天的審核記錄和登入記錄。 |
 |分析| **記錄檔必須是可搜尋的**。 儲存的記錄必須可流量分析工具來搜尋。 |
@@ -133,7 +133,7 @@ Azure AD 報告提供您環境中 Azure AD 活動的完整觀點和記錄，包�
 
 將記錄路由傳送至 Azure 事件中樞，可與協力廠商 SIEM 工具整合。 此整合可讓您結合 Azure AD 活動記錄資料與 SIEM 所管理的其他資料，進而更深入了解您的環境。 
 
-了解如何[將記錄串流至事件中樞](//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)。
+了解如何[將記錄串流至事件中樞](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)。
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>規劃 Azure AD 報告和監視的作業和安全性
 
@@ -189,7 +189,7 @@ Azure AD 角色可讓您根據您的角色委派設定和查看 Azure AD 報表�
 
  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 考慮實施 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 
 
