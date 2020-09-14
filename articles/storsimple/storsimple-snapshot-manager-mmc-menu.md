@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager MMC 功能表動作 | Microsoft Docs
 description: 說明如何在 StorSimple Snapshot Manager 中，使用標準的 Microsoft Management Console (MMC) 功能表動作。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
@@ -13,24 +13,24 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: c177adaa6fe0808d6719a8e87669d7f2fa4fb9cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 01064c3668b673baea7aedd9a65c92b03c48dc10
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508821"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055998"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>在 StorSimple Snapshot Manager 使用 MMC 功能表動作
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 在 StorSimple Snapshot Manager 中，您會看到下列所有動作列在 [ **動作** ] 窗格的所有動作功能表和變化上。
 
 * 檢視
 * 從這裡開啟新視窗 
 * 重新整理 
 * 匯出清單 
-* [說明] 
+* 説明 
 
 這些動作是 Microsoft Management Console (MMC) 的一部分，並非是 StorSimple Snapshot Manager 特有的動作。 本教學課程會描述這些動作，並說明如何在 StorSimple Snapshot Manager 使用其中每一個動作。
 
@@ -87,18 +87,18 @@ ms.locfileid: "85508821"
    1. 在 [檔案名稱]**** 方塊中，輸入 CSV 檔案的名稱，或按一下箭頭，以從下拉式清單中選取。
    2. 在 [存檔類型]**** 方塊中，按一下箭頭，然後從下拉式清單中選取檔案類型。
    3. 若僅要儲存選取的項目，請選取數列，然後按一下 [只儲存選取的列]**** 核取方塊。 若要儲存所有匯出的清單，請清除 [ **只儲存選取的列** ] 核取方塊。
-   4. 按一下 [檔案] 。
+   4. 按一下 [儲存]。
       
       ![將清單匯出成逗號分隔值檔案](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 
-## <a name="help"></a>[說明]
+## <a name="help"></a>説明
 您可以使用 [ **說明** ] 功能表，來檢視 StorSimple Snapshot Manager 和 MMC 的可用線上說明。
 
 #### <a name="to-view-available-online-help"></a>若要檢視可用的線上說明
 1. 按一下桌面圖示，以啟動 StorSimple Snapshot Manager。
 2. 在 [領域]**** 窗格中，於任何節點上按一下滑鼠右鍵，或展開節點，並在 [結果]**** 窗格中的項目上按一下滑鼠右鍵，然後按一下 [說明]****。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 深入了解 [StorSimple Snapshot Manager 使用者介面](storsimple-use-snapshot-manager.md)。
 * 深入了解如何 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
 

@@ -1,19 +1,19 @@
 ---
 title: 修復 Azure 匯入/匯出匯出作業 - v1 | Microsoft Docs
 description: 了解如何修復使用 Azure 匯入/匯出服務建立和執行的匯出作業。
-author: twooley
+author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
 ms.date: 01/23/2017
-ms.author: twooley
+ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 0731848e1ff187afb6e9f607516dd74b6c16de9b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 67d1979ccbfbffc17ba450600e605a96911c8331
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520476"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056334"
 ---
 # <a name="repairing-an-export-job"></a>修復匯出作業
 完成匯出作業之後，您可以在內部部署上執行 Microsoft Azure 匯入/匯出工具，以便：  

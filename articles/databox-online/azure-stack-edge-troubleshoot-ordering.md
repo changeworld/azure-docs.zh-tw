@@ -2,18 +2,18 @@
 title: 使用 Azure 入口網站來針對 Azure Stack Edge 排序問題進行疑難排解 |Microsoft Docs
 description: 說明如何針對 Azure Stack Edge 訂購問題進行疑難排解。
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
-ms.author: twooley
-ms.openlocfilehash: 226274c52610e24c305400d77dc7737d32c2b722
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 8c42ee867bdd20de64fa1c603de47b5f1e7bdb39
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783989"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055940"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>針對您的 Azure Stack Edge 訂購問題進行疑難排解
 
@@ -73,6 +73,6 @@ ms.locfileid: "88783989"
 
 **建議的解決方案：** 發生此錯誤的原因是現有的 Azure 原則封鎖了資源建立。 Azure 原則是由組織的系統管理員所設定，以確保在使用或建立 Azure 資源時的合規性。 如果有任何這類原則封鎖 Azure Stack Edge 建立資源，請洽詢您的系統管理員以編輯您的 Azure 原則。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 深入瞭解如何針對 [您的 Azure Stack Edge 問題進行疑難排解](azure-stack-edge-troubleshoot.md)。

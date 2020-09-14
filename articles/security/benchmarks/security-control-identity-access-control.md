@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 473fe838f53df0a874a2c793792533e01b7c069a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2df534842c6f6a922579e1128757ee4b7f46e006
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81408521"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058592"
 ---
-# <a name="security-control-identity-and-access-control"></a>安全性控制：身分識別和存取控制
+# <a name="security-control-identity-and-access-control"></a>安全性控制：身分識別與存取控制
 
-身分識別和存取管理的建議著重于解決與身分識別型存取控制相關的問題、鎖定系統管理存取、對身分識別相關事件發出警示、異常帳戶行為，以及角色型存取控制。
+身分識別和存取管理建議著重在解決與身分識別型存取控制相關的問題、鎖定系統管理存取、對身分識別相關事件發出警示、異常帳戶行為和角色型存取控制。
 
 ## <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
@@ -24,9 +24,9 @@ ms.locfileid: "81408521"
 |--|--|--|
 | 3.1 | 4.1 | 客戶 |
 
-Azure AD 具有必須明確指派且可供查詢的內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
+Azure AD 具有必須明確指派且可查詢的內建角色。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-- [如何使用 PowerShell 取得 Azure AD 中的目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
@@ -36,7 +36,7 @@ Azure AD 具有必須明確指派且可供查詢的內建角色。 使用 Azure 
 |--|--|--|
 | 3.2 | 4.2 | 客戶 |
 
-Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強制以複雜性需求和最小密碼長度來建立密碼，這會因服務而有所不同。 您必須負責可使用預設密碼的協力廠商應用程式和 marketplace 服務。
+Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強制建立具有複雜性需求和密碼長度下限的密碼，這會因服務而有所不同。 您必須負責可能使用預設密碼的協力廠商應用程式和 marketplace 服務。
 
 ## <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用專用的系統管理帳戶
 
@@ -44,9 +44,9 @@ Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強
 |--|--|--|
 | 3.3 | 4.3 | 客戶 |
 
-建立使用專用系統管理帳戶的標準操作程式。 使用 Azure 資訊安全中心的身分識別與存取管理來監視系統管理帳戶的數目。
+使用專用的系統管理帳戶建立標準作業程式。 使用 Azure 資訊安全中心的身分識別與存取管理來監視系統管理帳戶的數目。
 
-您也可以使用 Microsoft 服務 Azure AD Privileged Identity Management 特殊許可權角色，並 Azure Resource Manager，啟用僅限時間/僅供存取。 
+您也可以使用適用于 Microsoft 服務 Azure AD Privileged Identity Management 特殊許可權角色，並 Azure Resource Manager，來啟用及時且足夠的存取權。 
 
 - [深入瞭解 Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
 
@@ -56,9 +56,9 @@ Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強
 |--|--|--|
 | 3.4 | 4.4 | 客戶 |
 
-可能的話，請使用 Azure Active Directory SSO，而不是針對每個服務設定個別的獨立認證。 使用 Azure 資訊安全中心身分識別和存取管理建議。
+可能的話，請使用 Azure Active Directory SSO，而不要針對個別服務設定個別的獨立認證。 使用 Azure 資訊安全中心身分識別和存取管理建議。
 
-- [瞭解使用 Azure AD 的 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [瞭解 Azure AD 的 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 ## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
@@ -78,19 +78,19 @@ Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強
 |--|--|--|
 | 3.6 | 4.6、11.6、12.12 | 客戶 |
 
-使用已設定 MFA 的 Paw （特殊許可權存取工作站）來登入和設定 Azure 資源。
+使用 Paw (特殊許可權存取工作站) 設定 MFA 以登入和設定 Azure 資源。
 
 - [瞭解特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
 - [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
-## <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：從系統管理客戶紀錄及警示可疑活動
+## <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：來自系統管理帳戶的可疑活動記錄和警示
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
 | 3.7 | 4.8、4。9 | 客戶 |
 
-當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory 的安全性報告來產生記錄檔和警示。 使用 Azure 資訊安全中心來監視身分識別和存取活動。
+當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory 的安全性報告來產生記錄和警示。 使用 Azure 資訊安全中心來監視身分識別和存取活動。
 
 - [如何識別已標示為有風險活動的 Azure AD 使用者](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
@@ -102,7 +102,7 @@ Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強
 |--|--|--|
 | 3.8 | 11.7 | 客戶 |
 
-使用名為「位置」的條件式存取，只允許來自 IP 位址範圍或國家/地區之特定邏輯群組的存取權。
+使用名為「位置」的條件式存取，只允許從 IP 位址範圍或國家/地區的特定邏輯群組進行存取。
 
 - [如何在 Azure 中設定具名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
@@ -112,9 +112,9 @@ Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強
 |--|--|--|
 | 3.9 | 16.1、16.2、16.4、16.5、16。6 | 客戶 |
 
-使用 Azure Active Directory （AAD）做為中央驗證和授權系統。 AAD 會對待用和傳輸中資料使用強式加密以保護資料。 AAD 也會 salts、雜湊並安全地儲存使用者認證。
+使用 Azure Active Directory 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-- [如何建立和設定 AAD 執行個體](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [如何建立和設定 Azure AD 實例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
 ## <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
@@ -122,7 +122,7 @@ Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強
 |--|--|--|
 | 3.10 | 16.9、16.10 | 客戶 |
 
-Azure AD 提供記錄檔，以協助探索過時的帳戶。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。 
+Azure AD 提供記錄以協助探索過時的帳戶。 此外，使用 Azure 身分識別存取審核來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。 
 
 - [瞭解 Azure AD 報告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
 
@@ -146,7 +146,7 @@ Azure AD 提供記錄檔，以協助探索過時的帳戶。 此外，您可以�
 |--|--|--|
 | 3.12 | 16.13 | 客戶 |
 
-使用 Azure AD 風險和身分識別保護功能，為偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
+使用 Azure AD 風險和身分識別保護功能，來設定偵測到與使用者身分識別相關的可疑動作的自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
 - [如何檢視有風險的 Azure AD 登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
@@ -160,11 +160,11 @@ Azure AD 提供記錄檔，以協助探索過時的帳戶。 此外，您可以�
 |--|--|--|
 | 3.13 | 16 | 客戶 |
 
-在 Microsoft 需要存取客戶資料的支援案例中，客戶加密箱會提供介面供您審查，並核准或拒絕客戶資料存取要求。
+在 Microsoft 需要存取客戶資料的支援案例中，客戶加密箱提供可供您審查及核准或拒絕客戶資料存取要求的介面。
 
 - [瞭解客戶加密箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- 請參閱下一個安全性控制：[資料保護](security-control-data-protection.md)
+- 請參閱下一個安全性控制： [資料保護](security-control-data-protection.md)

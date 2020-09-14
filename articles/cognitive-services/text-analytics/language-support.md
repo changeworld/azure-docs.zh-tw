@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 09/12/2020
 ms.author: aahi
-ms.openlocfilehash: e2c6fc739fa81e6eb7c98073e3575e4143d317b2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 185a6a26350f7803d109e26d8985510380b8cc16
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932962"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056586"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>文字分析 API v3 語言支援 
 
@@ -88,6 +88,9 @@ ms.locfileid: "88932962"
 
 #### <a name="key-phrase-extraction"></a>[關鍵片語擷取](#tab/key-phrase-extraction)
 
+> [!NOTE]
+> 2020-07-01 之前關鍵片語擷取的模型版本具有64個字元的限制。 這項限制不會出現在較新的模型版本中。
+
 | Language              | 語言代碼 | v2 支援 | v3 支援 | 從 v3 模型版本開始提供： |       備註        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
 | 荷蘭文                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
@@ -123,6 +126,6 @@ ms.locfileid: "88932962"
 
 ---
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [什麼是文字分析 API？](overview.md)   

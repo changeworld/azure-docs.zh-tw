@@ -1,5 +1,5 @@
 ---
-title: IPv6-Azure Load Balancer 總覽
+title: IPv6 Azure Load Balancer 總覽
 description: 透過此學習路徑，開始使用 Azure Load Balancer 和負載平衡 Vm 的 IPv6 支援。
 services: load-balancer
 documentationcenter: na
@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443e8c09ea46c0c20b557d77d6ed7bd63db00085
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80981846"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058745"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer 的 IPv6 概觀
 
 
 >[!NOTE] 
->[Azure VNet 的 IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)已取代此內容。 Azure 建議新的 IPv6 部署使用適用于 Azure 虛擬網路的新 IPv6 功能。
+>此內容已由 IPv6 取代 [為 Azure VNet 總覽](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)。 Azure 建議新的 IPv6 部署使用適用于 Azure 虛擬網路功能的新 IPv6。
 
 >[!NOTE]
 >Azure Load Balancer 支援兩種不同類型：基本和標準。 本文討論基本 Load Balancer。 如需標準 Load Balancer 的詳細資訊，請參閱[標準 Load Balancer 概觀](load-balancer-standard-overview.md)。
 
-基本 SKU 網際網路面向的負載平衡器可以使用 IPv6 位址進行部署。 除了 IPv4 連線功能，這還具有下列功能︰
+您可以使用 IPv6 位址來部署基本 SKU 的網際網路面向負載平衡器。 除了 IPv4 連線功能，這還具有下列功能︰
 
 * 原生端對端 IPv6 連線能力 - 在公用網際網路用戶端和 Azure 虛擬機器 (VM) 之間透過負載平衡器連接。
 * 原生端對端 IPv6 輸出連線能力 - 在 VM 和公用網際網路上已啟用 IPv6 的用戶端之間。
@@ -40,7 +40,7 @@ ms.locfileid: "80981846"
 
 部署之後，已啟用 IPv4 或 IPv6 的網際網路用戶端可以與網際網路面向的 Azure Load Balancer 公用 IPv4 或 IPv6 位址 (或主機名稱) 進行通訊。 負載平衡器會使用網路位址轉譯 (NAT) 將 IPv6 封包傳送至 VM 的私人 IPv6 位址。 IPv6 網際網路用戶端無法與 VM 的 IPv6 位址直接通訊。
 
-## <a name="features"></a>特性
+## <a name="features"></a>功能
 
 透過 Azure Resource Manager部署的原生 IPv6 支援提供︰
 
@@ -79,11 +79,11 @@ ms.locfileid: "80981846"
 * VM 上的 IPv6 端點不會直接向網際網路公開， 而是擺在負載平衡器後。 透過 IPv6 存取只能存取負載平衡器規則中指定的連接埠。
 * **目前不支援**變更 IPv6 的 IdleTimeout 參數。 預設為四分鐘。
 * **目前不支援**變更 IPv6 的 loadDistributionMethod 參數。
-* **目前不支援**保留的 IPv6 IP (其中 IPAllocationMethod = 靜態)。
+* 基本 Load Balancer 的 IPv6 已鎖定為 **動態** SKU。  Standard Load Balancer 的 IPv6 已鎖定為 **靜態** SKU。
 * 不支援 NAT64 (IPv6 至 IPv4 的轉譯)。
-* **目前不支援**將參考 IPv6 子網的次要 NIC 連接至後端集區。
+* **目前不支援**將參考 IPv6 子網的次要 NIC 連接到後端集區。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 了解如何部署配置有 IPv6 的負載平衡器。
 

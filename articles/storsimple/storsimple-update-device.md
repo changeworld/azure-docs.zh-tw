@@ -3,7 +3,7 @@ title: 更新 StorSimple 裝置 | Microsoft Docs
 description: 說明如何使用 StorSimple 更新功能，來安裝一般和維護模式的更新和 Hotfix。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 786059f5-2a38-4105-941d-0860ce4ac515
@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
-ms.author: twooley
-ms.openlocfilehash: e591a6c1fbf91bb034ec57673f79c549bbec4672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: dec354767875d91c6062cdfbb0009e857dbe2636
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170081"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056546"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>更新您的 StorSimple 8000 系列裝置
 > [!NOTE]
 > StorSimple 的傳統入口網站已過時。 按照淘汰排程，StorSimple 裝置管理員會自動移至新的 Azure 入口網站。 您將收到關於此移動的電子郵件和入口網站通知。 本文件也即將遭到淘汰。 若有關於移動的任何問題，請參閱[常見問題集：移至 Azure 入口網站](storsimple-8000-move-azure-portal-faq.md)。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 StorSimple 更新功能可讓您輕鬆地將 StorSimple 裝置保持為最新狀態。 根據更新類型而定，您可以透過 Azure 傳統入口網站或透過 Windows PowerShell 介面，將更新套用到裝置。 本教學課程說明更新類型，以及如何安裝每一種更新類型。
 
 您可以套用兩種類型的裝置更新： 
@@ -119,7 +119,7 @@ StorSimple 更新功能可讓您輕鬆地將 StorSimple 裝置保持為最新狀
 ## <a name="what-happens-to-updates-if-you-perform-a-factory-reset-of-the-device"></a>如果您執行裝置的原廠重設，更新該怎麼辦？
 如果將裝置重設為原廠設定，則所有更新都會遺失。 在註冊並設定原廠重設裝置之後，您必須透過 Azure 傳統入口網站和 (或) Windows PowerShell for StorSimple 手動安裝更新。 如需恢復出廠預設值的詳細資訊，請參閱 [將裝置重設為原廠預設設定](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 深入了解如何 [使用 Windows PowerShell for StorSimple 管理 StorSimple 裝置](storsimple-windows-powershell-administration.md)。
 * 深入了解 [使用 StorSimple Manager 服務來管理您的 StorSimple 裝置](storsimple-manager-service-administration.md)。
 

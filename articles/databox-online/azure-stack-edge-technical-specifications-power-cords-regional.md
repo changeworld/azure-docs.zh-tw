@@ -2,18 +2,18 @@
 title: 依據位置的 Microsoft Azure Stack Edge 電源線技術規格 | Microsoft Docs
 description: 了解您 Azure Stack Edge 電源線的技術規格。
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
-ms.author: twooley
-ms.openlocfilehash: 8248f0a8e003351449186638fd4914c6b6fe4bed
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 34f5b578581c5a11b3dbfba76f68819c2ed706d0
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783972"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055923"
 ---
 # <a name="azure-stack-edge-power-cord-specifications"></a>Azure Stack Edge 電源線規格
 

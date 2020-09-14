@@ -1,6 +1,6 @@
 ---
 title: 將敏感度標籤指派給群組-Azure AD |Microsoft Docs
-description: 如何建立成員資格規則，以自動填入群組和規則參考。
+description: 瞭解如何將敏感度標籤指派給群組。 請參閱疑難排解資訊並查看其他可用的資源。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f056b34df0a70374e8bae909f210bfabf107ed4a
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 3179bb294678ee030218e67dafa1c69dcf5d77a0
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005933"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056263"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>將敏感度標籤指派給 Azure Active Directory 中的 Microsoft 365 群組
 
-Azure Active Directory (Azure AD) 支援將 [Microsoft 365 合規性中心](https://sip.protection.office.com/homepage) 所發佈的敏感度標籤套用至 Microsoft 365 群組。 敏感度標籤適用于所有服務的群組，例如 Outlook、Microsoft 小組和 SharePoint。 這項功能目前為公開 GA。 如需 Office 365 應用程式支援的詳細資訊，請參閱 [office 365 對敏感度標籤的支援](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels)。
+Azure Active Directory (Azure AD) 支援將 [Microsoft 365 合規性中心](https://sip.protection.office.com/homepage) 所發佈的敏感度標籤套用至 Microsoft 365 群組。 敏感度標籤適用于所有服務的群組，例如 Outlook、Microsoft 小組和 SharePoint。 這項功能目前為公開 GA。 如需 Microsoft 365 apps 支援的詳細資訊，請參閱 [Microsoft 365 支援敏感度標籤](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels)。
 
 > [!IMPORTANT]
 > 若要設定此功能，您的 Azure AD 組織中至少必須有一個 active Azure Active Directory Premium P1 授權。

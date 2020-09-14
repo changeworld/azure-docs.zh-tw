@@ -3,17 +3,16 @@ title: 適用于雲端服務 (傳統) 的資源健康狀態
 description: '本文討論資源健康狀態檢查 (RHC) Microsoft Azure 雲端服務 (傳統的支援) '
 services: cloud-services
 author: tanmaygore
-manager: vashan
 ms.service: cloud-services
 ms.topic: article
 ms.date: 9/1/2020
 ms.author: tagore
-ms.openlocfilehash: 969390b0988c59940cb210c14821cbee42edfa7a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: ea25695ddc36571bef3ff61df7de3e71f6f939ca
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664068"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056044"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>資源健康狀態檢查 (RHC Azure 雲端服務 (傳統) 的) 支援
 本文討論資源健康狀態檢查 (RHC) [Microsoft Azure 雲端服務 (傳統](https://azure.microsoft.com/services/cloud-services)的支援) 
@@ -22,6 +21,7 @@ ms.locfileid: "89664068"
 
 Azure 狀態會回報影響一組廣泛 Azure 客戶的問題。 資源健康狀態可提供您資源健康狀態的個人化儀表板。 資源健康狀態會顯示您的資源因 Azure 服務問題而無法使用的所有時間。 這種資料可讓您輕鬆查看是否違反 SLA。
 
+:::image type="content" source="media/cloud-services-allocation-failure/rhc-blade-cloud-services.png" alt-text="影像顯示 Azure 入口網站中的資源健康狀態檢查分頁。":::
 
 ## <a name="how-health-is-checked-and-reported"></a>檢查和回報健康情況的方式為何？
 資源健康狀態會在部署或角色層級回報。 健康情況檢查會發生在角色實例層級，我們會匯總狀態，並在角色層級上報告它。 例如 如果有可用的角色實例，則角色狀態為 [可用]。 同樣地，我們會匯總所有角色的健全狀況狀態，並在部署層級報告它。 例如 如果有可用的角色，則部署狀態會變成可用。 

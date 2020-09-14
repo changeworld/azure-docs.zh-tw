@@ -13,12 +13,12 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 8c6a9304927f5d4bcad895b725955c522b60207a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c9d8bb85aac87503ca641f6633668a6dc582882f
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266231"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056076"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>管理適用於雙步驟驗證的應用程式密碼
 
@@ -44,7 +44,7 @@ ms.locfileid: "84266231"
 
 - **您的組織使用雙重要素驗證和 [其他安全性驗證] 頁面。** 如果您在組織中使用公司或學校帳戶 (例如，alain@contoso.com) 搭配雙因素驗證，則可以從 [[其他安全性驗證] 頁面](https://account.activedirectory.windowsazure.com/Proofup.aspx)管理您的應用程式密碼。 如需詳細指示，請參閱本文中的[使用 [其他安全性驗證] 頁面來建立和刪除應用程式密碼](#create-and-delete-app-passwords-from-the-additional-security-verification-page)。
 
-- **您的組織使用雙因素驗證和 Office 365 入口網站。** 如果您在組織中使用公司或學校帳戶 (例如，alain@contoso.com)、雙因素驗證和 Office 365 應用程式，您可以從 [Office 365 入口網站頁面](https://www.office.com)管理您的應用程式密碼。 如需詳細指示，請參閱本文中的[使用 Office 365 入口網站來建立和刪除應用程式密碼](#create-and-delete-app-passwords-using-the-office-365-portal)。
+- **您的組織使用雙因素驗證和 Office 365 入口網站。** 如果您使用公司或學校帳戶 (例如 alain@contoso.com) 、雙因素驗證，以及組織中的 Microsoft 365 應用程式，則可以從 [Office 365 入口網站頁面](https://www.office.com)管理您的應用程式密碼。 如需詳細指示，請參閱本文中的[使用 Office 365 入口網站來建立和刪除應用程式密碼](#create-and-delete-app-passwords-using-the-office-365-portal)。
 
 - **您使用雙因素驗證搭配個人 Microsoft 帳戶。** 如果您使用個人 Microsoft 帳戶 (例如，alain@outlook.com) 搭配雙因素驗證，則可以從 [[安全性基本概念] 頁面](https://account.microsoft.com/security/)管理您的應用程式密碼。 如需詳細指示，請參閱[使用應用程式密碼搭配不支援雙步驟驗證的應用程式](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification)。
 
@@ -82,11 +82,11 @@ ms.locfileid: "84266231"
 
 ## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>使用 Office 365 入口網站建立和刪除應用程式密碼
 
-如果您搭配公司或學校帳戶和 Office 365 應用程式使用雙步驟驗證，您就可以使用 Office 365 入口網站來建立和刪除應用程式密碼。
+如果您搭配公司或學校帳戶和您的 Microsoft 365 apps 使用雙步驟驗證，則可以使用 Office 365 入口網站來建立和刪除應用程式密碼。
 
 ### <a name="to-create-app-passwords-using-the-office-365-portal"></a>使用 Office 365 入口網站建立應用程式密碼
 
-1. 登入 Office 365，然後移至 [[我的帳戶] 頁面](https://portal.office.com)選取 [安全性與隱私權]，然後展開 [其他安全性驗證]。
+1. 登入您的公司或學校帳戶，移至 [ [我的帳戶] 頁面](https://portal.office.com)，選取 [ **安全性 & 隱私權**]，然後展開 [ **其他安全性驗證**]。
 
     ![顯示已展開 [其他安全性驗證] 區域的 Office 入口網站](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-o365-my-account-page.png)
 

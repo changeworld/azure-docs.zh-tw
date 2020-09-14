@@ -2,18 +2,18 @@
 title: Azure Stack Edge & Azure 資料箱閘道2007版本資訊 |Microsoft Docs
 description: 描述執行2007版本的 Azure Stack Edge 和資料箱閘道的重大開啟問題和解決方式。
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
 ms.date: 07/14/2020
-ms.author: twooley
-ms.openlocfilehash: f9a08cda1466dbe284a0ac3c0e34b109be236883
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 85614ab6455e149d64b7d1b9774c37c764bb600f
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783921"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055872"
 ---
 # <a name="azure-stack-edge-and-azure-data-box-gateway-2007-release-notes"></a>Azure Stack Edge 和 Azure 資料箱閘道2007版本資訊
 
@@ -45,7 +45,7 @@ ms.locfileid: "88783921"
 
 未在此版本中注明任何新問題。 所有發行的問題都已從先前的版本執行。 若要查看已知問題的清單，請移至 [GA 版本中的已知問題](data-box-gateway-release-notes.md#known-issues-in-ga-release)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [準備部署 Azure Stack Edge](data-box-edge-deploy-prep.md)
 - [準備部署 Azure Data Box Gateway](data-box-gateway-deploy-prep.md)

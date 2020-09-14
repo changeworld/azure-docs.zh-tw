@@ -2,19 +2,19 @@
 title: 在 Azure Lab Services 中連結共用映像庫或中斷其連結 | Microsoft Docs
 description: 本文說明如何將共用映像庫連結至 Azure Lab Services 中的教室實驗室。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: e0b29bcabe1cfb234b422982c0f8faab49c30796
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/11/2020
+ms.openlocfilehash: 08d2a97138633a43e9acd69575c4b44e245d4faa
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445350"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056467"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure Lab Services 中連結共用映像庫或中斷其連結
 本文說明如何將共用映像庫連結至實驗室帳戶或中斷其連結。 
 
 > [!NOTE]
-> 當您將 Azure 實驗室服務中[實驗室的範本映射儲存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery)到共用映射資源庫時，會將映射上傳到資源庫作為特製化映射。 [特製化映射](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images)會保留電腦特定資訊和使用者設定檔。 您仍然可以直接將一般化映射上傳至 Azure 實驗室服務以外的資源庫。 
+> 當您將 Azure 實驗室服務中的 [實驗室範本映射儲存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) 至共用映射庫時，影像會以特製化映射的形式上傳至資源庫。 [特製化映射](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images) 會保留電腦特定的資訊和使用者設定檔。 您仍然可以直接將一般化映射上傳至 Azure 實驗室服務以外的資源庫。 
 >
 > 實驗室建立者可以根據 Azure 實驗室服務中的一般化和特製化映射來建立範本 VM。 
 
@@ -25,6 +25,9 @@ ms.locfileid: "85445350"
 - 實驗室帳戶管理員會將共用映像庫連結至實驗室帳戶。 實驗室建立者 (講師) 會將其實驗室的自訂映像儲存到共用映像庫。 然後，其他實驗室建立者可以從共用映像庫中選取此映像，為其實驗室建立範本。 
 
     當映像儲存到共用映像庫時，Azure Lab Services 會將儲存的映像複寫到相同[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中的其他可用區域。 其可確保映像適用於相同地理位置的其他區域中建立的實驗室。 將映像儲存到共用映像庫會產生額外成本，包括所有複寫映像的成本。 此成本與 Azure Lab Services 成本分開。 如需共用映像庫定價的詳細資訊，請參閱[共用映像庫 – 計費](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing)。
+
+> [!IMPORTANT]
+> 使用共用映射庫時，Azure 實驗室服務僅支援小於 128 GB 作業系統磁碟空間的映射。 在實驗室建立期間，虛擬機器映射清單中不會顯示具有超過 128 GB 磁碟空間或多個磁片的映射。
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>在建立實驗室帳戶時設定
 當您建立實驗室帳戶時，您可以將共用映像庫連結至實驗室帳戶。 您可以從下拉式清單中選取現有共用映像庫，或建立新的共用映像庫。 若要建立共用映像庫並將其連結至實驗室帳戶，請選取 [新建]，輸入映像庫的名稱，然後按一下 [確定]。 

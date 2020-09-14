@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12193b469b6e1f014e6c948da7b2adb370e78d4b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 48f924cef12db974faae8fb8ed73f01ff8c9a3f8
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795339"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056246"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自訂網域名稱
 
@@ -55,7 +55,7 @@ ms.locfileid: "88795339"
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>如果您變更您的自訂網域名稱的 DNS 註冊機構，該怎麼辦
 
-如果您變更 DNS 註冊機構，則 Azure AD 中就沒有額外的組態工作。 您可以繼續使用 Azure AD 的網域名稱，不需中斷。 如果您的自訂網域名稱搭配使用 Office 365、Intune 或仰賴 Azure AD 自訂網域名稱的其他服務，則請參閱這些服務的文件。
+如果您變更 DNS 註冊機構，則 Azure AD 中就沒有額外的組態工作。 您可以繼續使用 Azure AD 的網域名稱，不需中斷。 如果您使用自訂功能變數名稱搭配 Microsoft 365、Intune，或依賴 Azure AD 中自訂功能變數名稱的其他服務，請參閱這些服務的檔。
 
 ## <a name="delete-a-custom-domain-name"></a>刪除自訂網域名稱
 
@@ -75,7 +75,7 @@ ms.locfileid: "88795339"
 
 若要在 Azure 入口網站呼叫 **ForceDelete**，您必須確保網域名稱擁有低於 1000 個參考，且必須更新或移除 [Exchange 管理中心](https://outlook.office365.com/ecp/)的所有以 Exchange 作為佈建服務的參考。 這包括 Exchange 已啟用郵件的安全性群組和分散式清單；如需詳細資訊，請參閱[移除已啟用郵件的安全性群組](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)。 此外，如果下列任一項為真，**ForceDelete** 作業就會失敗：
 
-* 您透過 Office 365 網域訂用帳戶服務購買網域
+* 您已透過 Microsoft 365 網域訂用帳戶服務購買網域
 * 您是合作夥伴，代表其他客戶組織進行管理
 
 下列動作為執行 **ForceDelete** 作業的一部分：

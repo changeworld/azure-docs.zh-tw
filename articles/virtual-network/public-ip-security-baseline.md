@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd02f2dbb7666ba9f2134ffba4cf683e1e9ac67b
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d90384644c58938bfc8a37ec1231b0d12fd60057
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90039009"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058695"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure 公用 IP 的 azure 安全性基準
 
-此安全性基準會將來自 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md) 的指引套用至 AZURE 公用 IP。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。 內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 AZURE 公用 IP 的相關指引來分組。 已排除不適用 Azure 公用 IP 的**控制項**。
+此安全性基準會將來自 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md) 的指引套用至 AZURE 公用 IP。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。 內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 AZURE 公用 IP 的相關指引來分組。 已排除不適用 Azure 公用 IP 的**控制項**。  請注意，Azure 公用 Ip 不會儲存客戶資料。
 
 若要查看 Azure 公用 IP 如何完全對應至 Azure 安全性基準測試，請參閱 [完整的 Azure 公用 ip 安全性基準對應](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)檔案。
 
@@ -46,7 +46,7 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
-**指導**方針：使用 Azure 活動記錄來監視設定，以及偵測對您公用 IP 實例的變更。 除了控制平面以外 (例如 Azure 入口網站) ，公用 IP 本身不會產生與網路流量相關的記錄。 
+**指導**方針：使用 Azure 活動記錄來監視設定，以及偵測對您公用 IP 實例的變更。 除了控制平面以外 (例如 Azure 入口網站) ，公用 IP 本身不會產生與網路流量相關的記錄。
 
 公用 IP 提供的工具可監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。
 

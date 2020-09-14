@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2da67b9996156f136aa2eddb8aa3d2b1777a554
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c00c89e5f81bcb142c50e5f3438c1af2d72a9de5
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794553"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056212"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>適用於群組管理的 Azure Active Directory 第 2 版 Cmdlet
 
@@ -53,7 +53,7 @@ ms.locfileid: "88794553"
 現在您可以開始在模組中使用 Cmdlet。 如需有關 Azure AD 模組中各式 Cmdlet 的完整描述，請參閱 [Azure Active Directory PowerShell 第 2 版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)的線上參考文件。
 
 > [!NOTE]
-> Azure AD PowerShell Cmdlet 無法與新的 Powershell 7 搭配使用，因為它是以 .net Core 為基礎。 我們已經知道，這正在進行更新。 目前，我們建議使用 Windows Powershell 5.x 模組來 Azure AD Powershell 作業。 
+> Azure AD PowerShell Cmdlet 無法與新的 Powershell 7 搭配使用，因為它是以 .net Core 為基礎。 我們已經知道，這正在進行更新。 目前，我們建議使用 Windows PowerShell 5.x 模組來 Azure AD PowerShell 作業。 
 
 
 ## <a name="connect-to-the-directory"></a>連線至目錄
@@ -328,15 +328,15 @@ Cmdlet 將會傳回所連線目錄中的所有群組。
 
 ## <a name="group-writeback-to-on-premises-preview"></a>將回寫群組至內部部署 (預覽版) 
 
-目前，有許多群組仍在內部部署 Active Directory 中進行管理。 若要回答將雲端群組同步回內部部署的要求，Azure AD 的 Office 365 群組回寫功能現在可供預覽。
+目前，有許多群組仍在內部部署 Active Directory 中進行管理。 若要回答將雲端群組同步回內部部署的要求，Azure AD 的 Microsoft 365 群組回寫功能現在可供預覽。
 
-Office 365 群組是在雲端中建立和管理。 回寫功能可讓您將 Office 365 群組作為發佈群組，寫回已安裝 Exchange 的 Active Directory 樹系。 具有內部部署 Exchange 信箱的使用者可以從這些群組傳送和接收電子郵件。 群組回寫功能不支援 Azure AD 安全性群組或通訊群組。
+在雲端中建立和管理 Microsoft 365 群組。 回寫功能可讓您將 Microsoft 365 群組寫回為已安裝 Exchange 的 Active Directory 樹系的通訊群組。 具有內部部署 Exchange 信箱的使用者可以從這些群組傳送和接收電子郵件。 群組回寫功能不支援 Azure AD 安全性群組或通訊群組。
 
 如需詳細資訊，請參閱 [Azure AD Connect 同步服務](../hybrid/how-to-connect-syncservice-features.md)的檔。
 
-Office 365 群組回寫是 Azure Active Directory (Azure AD) 的公開預覽功能，而且適用于任何付費的 Azure AD 授權方案。 如需有關預覽的一些法律資訊，請參閱 [Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+Microsoft 365 群組回寫是 Azure Active Directory (Azure AD) 的公開預覽功能，而且適用于任何付費的 Azure AD 授權方案。 如需有關預覽的一些法律資訊，請參閱 [Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您可以在 [Azure Active Directory Cmdlet](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)中找到更多 Azure Active Directory PowerShell 文件。
 

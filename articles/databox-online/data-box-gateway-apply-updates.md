@@ -2,17 +2,17 @@
 title: 在 Azure 資料箱閘道系列裝置上安裝更新 |Microsoft Docs
 description: 說明如何使用適用于 Azure 資料箱閘道系列裝置的 Azure 入口網站和本機 web UI 來套用更新
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.topic: article
 ms.date: 06/30/2020
-ms.author: twooley
-ms.openlocfilehash: 3972aecf70a664980e8279152eb001915ae1bb53
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 1b3f0faa2b5f67a23317935f0ad868e3872cf86e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783870"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055958"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>更新您的 Azure 資料箱閘道
 
@@ -22,7 +22,7 @@ ms.locfileid: "88783870"
 >
 > - 更新 **1911** 對應于裝置上的 **1.6.1049.786** 軟體版本。 如需此更新的詳細資訊，請參閱 [版本](data-box-gateway-1911-release-notes.md)資訊。
 >
-> - 請記住，安裝更新或 Hotfix 會重新啟動您的裝置。 假設資料箱閘道是單一節點裝置，任何進行中的 i/o 都會中斷，而您的裝置會在裝置軟體更新時遇到最多30分鐘的停機時間。
+> - 請記住，安裝更新或 Hotfix 會重新啟動您的裝置。 假設資料箱閘道是單一節點裝置，任何進行中的 I/O 都會中斷，而您的裝置會遇到最多 30 分鐘的裝置軟體更新停機。
 
 下列各節將說明這其中每個步驟。
 
@@ -39,7 +39,7 @@ ms.locfileid: "88783870"
 
 2. 在 [ **裝置更新** ] 分頁中，確認您已在版本資訊中檢查與新功能相關聯的授權條款。
 
-    您可以選擇 **下載並安裝更新，** 或只 **下載** 更新。 然後，您可以選擇稍後再安裝這些更新。
+    您可以選擇 **下載並安裝更新，** 或只 **下載** 更新。 然後可以選擇稍後再安裝這些更新。
 
     ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-02.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "88783870"
 
     ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
 
-    如果您選擇只下載更新，請選取通知以開啟 [ **裝置更新** ] 分頁。 選取 [安裝]  。
+    如果您選擇只下載更新，請選取通知以開啟 [ **裝置更新** ] 分頁。 選取 [安裝]。
   
     ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "88783870"
 
    ![更新裝置](./media/data-box-gateway-apply-updates/local-ui-update-3.png)
 
-3. 選取 [ **套用**]。
+3. 選取 [套用]。
 
    ![更新裝置](./media/data-box-gateway-apply-updates/local-ui-update-4.png)
 
@@ -152,6 +152,6 @@ ms.locfileid: "88783870"
 
    ![更新裝置](./media/data-box-gateway-apply-updates/local-ui-update-6.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入瞭解如何 [管理您的 Azure 資料箱閘道](data-box-gateway-manage-users.md)。

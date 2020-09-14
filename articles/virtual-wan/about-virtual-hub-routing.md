@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f29a7e48fc1872f83b5a6ce127f38c1a559b2691
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: f5116b3dfd53c5272ef7bb11d1719b7ee62416c4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762312"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055787"
 ---
 # <a name="about-virtual-hub-routing"></a>關於虛擬中樞路由
 
@@ -30,7 +30,7 @@ ms.locfileid: "88762312"
 
 虛擬中樞路由表可包含一或多個路由。 路由包含其名稱、標籤、目的地類型、目的地首碼清單，以及要路由傳送之封包的下一個躍點資訊。 **連接**通常會有關聯或傳播至路由表的路由設定
 
-### <a name="connection"></a><a name="connection"></a>連線
+### <a name="connection"></a><a name="connection"></a>連接
 
 連接是具有路由設定 Resource Manager 資源。 四種類型的連接：
 
@@ -87,8 +87,9 @@ ms.locfileid: "88762312"
 * 在多個區域中使用 Azure 防火牆時，所有輪輻虛擬網路都必須與相同的路由表建立關聯。 例如，讓 Vnet 的子集進入 Azure 防火牆，而其他 Vnet 略過相同虛擬中樞內的 Azure 防火牆則是不可行的。
 * 您可以針對每個 VNet 連線設定單一下一個躍點 IP。
 * 虛擬中樞不支援 0.0.0.0/0 和下一個躍點虛擬網路連線 (的靜態路由，或 VNet 連線中的設備 IP) 
+* 與 0.0.0.0/0 路由相關的所有資訊都局限于本機中樞的路由表。 此路由不會跨中樞傳播。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 若要設定路由，請參閱 [如何設定虛擬中樞路由](how-to-virtual-hub-routing.md)。
 

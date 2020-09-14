@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 033752eed30e898f5306154f73a9ca6741c1f81c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d845c1fbefd5c9a6119d089824eba6cc35228a3e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179567"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055804"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取
 
@@ -114,7 +114,7 @@ Azure AD Privileged Identity Management 隨附於 Azure AD Premium P2 或 EMS E5
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>開啟多重要素驗證，並註冊其他所有高度特殊權限的單一使用者非同盟管理帳戶
 
-當所有永久指派給一或多個 Azure AD 系統管理員角色的個別使用者登入時，需要 Azure Multi-Factor Authentication (MFA) ：全域系統管理員、特殊許可權角色管理員、Exchange 系統管理員和 SharePoint 系統管理員。 請使用指南啟用[管理員帳戶的 Multi-factor Authentication (MFA)](../authentication/howto-mfa-userstates.md)，並確定這些使用者全都已在 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) 註冊。 您可以在[保護 Office 365 中的資料和服務存取](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步驟 2 和步驟 3 下找到詳細資訊。 
+當所有永久指派給一或多個 Azure AD 系統管理員角色的個別使用者登入時，需要 Azure Multi-Factor Authentication (MFA) ：全域系統管理員、特殊許可權角色管理員、Exchange 系統管理員和 SharePoint 系統管理員。 請使用指南啟用[管理員帳戶的 Multi-factor Authentication (MFA)](../authentication/howto-mfa-userstates.md)，並確定這些使用者全都已在 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) 註冊。 如需詳細資訊，請參閱指南中的步驟2和步驟3，以 [保護 Microsoft 365 中的資料和服務的存取](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)。 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>第 2 階段：緩解常用的攻擊
 
@@ -130,7 +130,7 @@ Azure AD Privileged Identity Management 隨附於 Azure AD Premium P2 或 EMS E5
 
 * 識別具有系統管理角色的使用者，以及可供其進行管理的服務。
 * 使用 Azure AD PIM 查明組織中哪些使用者具有 Azure AD 的管理員存取權。
-* 除了在 Azure AD 中定義的角色以外，Office 365 也隨附一組您可以指派給組織使用者的管理員角色。 每個管理員角色都對應至常用的商務功能，並授權組織中的人在 [Microsoft 365 系統管理中心](https://admin.microsoft.com)執行特定的工作。 使用 Microsoft 365 系統管理中心查明組織中哪些使用者具有 Office 365 的管理員存取權，包括透過不在 Azure AD 中管理的角色。 如需詳細資訊，請參閱[關於 Office 365 系統管理員角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)和 [Office 365 的安全性做法](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)。
+* 除了 Azure AD 所定義的角色之外，Microsoft 365 還隨附一組系統管理員角色，可供您指派給組織中的使用者。 每個管理員角色都對應至常用的商務功能，並授權組織中的人在 [Microsoft 365 系統管理中心](https://admin.microsoft.com)執行特定的工作。 使用 Microsoft 365 系統管理中心找出您組織中的哪些使用者具有 Microsoft 365 的系統管理員存取權，包括透過未在 Azure AD 中管理的角色。 如需詳細資訊，請參閱關於 Office 365 [Microsoft 365 管理員角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) 和 [安全性作法](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)。
 * 請在組織依賴的服務中清查，例如 Azure、Intune 或 Dynamics 365。
 * 請確定您的帳戶是作為管理用途：
 
@@ -175,17 +175,17 @@ Azure AD 建議對所有使用者要求多重要素驗證 (MFA)。 務必考量�
 
 Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，可偵測影響您組織身分識別的潛在弱點。 您可以設定自動化機制來回應這些偵測到的可疑活動，並採取適當動作加以解決。 如需詳細資訊，請參閱 [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)。
 
-#### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>取得您的 Office 365 安全分數 (如果使用 Office 365)
+#### <a name="obtain-your-microsoft-365-secure-score-if-using-microsoft-365"></a>如果使用 Microsoft 365，請 (取得 Microsoft 365 的安全分數) 
 
-安全分數會查看您所使用 Office 365 服務的設定和活動，並將其與 Microsoft 所建立的基準進行比較。 您將會根據您與安全性實務的一致程度來取得分數。 任何人只要具有 Office 365 商務進階版或企業版訂用帳戶的管理員權限，都可在 [https://securescore.office.com](https://securescore.office.com/) 存取安全分數。
+安全分數會查看您所使用之 Microsoft 365 服務的設定和活動，並將其與 Microsoft 所建立的基準進行比較。 您將會根據您與安全性實務的一致程度來取得分數。 具有 Microsoft 365 商務版 Standard 或 Enterprise 訂用帳戶之系統管理員許可權的任何人都可以存取的安全分數 [https://securescore.office.com](https://securescore.office.com/) 。
 
-#### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>檢閱 Office 365 安全性與合規性指引 (如果使用 Office 365)
+#### <a name="review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365"></a>請參閱 Microsoft 365 的安全性與合規性指引 (如果使用 Microsoft 365) 
 
-[安全性與合規性方案](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57)概述 Office 365 客戶設定 Office 365 及啟用其他 EMS 功能的方法。 接著，請檢閱如何[保護 Office 365 中的資料和服務存取](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)的步驟 3-6，以及如何[監視 Office 365 中的安全性和合規性](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6)的指南。
+[安全性與合規性方案](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57)概述 Office 365 客戶設定 Office 365 及啟用其他 EMS 功能的方法。 然後，請參閱如何 [保護 Microsoft 365 中的資料和服務存取](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) 的步驟3-6，以及如何 [在 Microsoft 365 中監視安全性與合規性](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6)的指南。
 
-#### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>設定 Office 365 活動監視 (如果使用 Office 365)
+#### <a name="configure-microsoft-365-activity-monitoring-if-using-microsoft-365"></a>如果使用 Microsoft 365) ，請設定 Microsoft 365 活動監視 (
 
-監視組織中使用 Office 365 的使用者，以識別哪些員工雖然具有管理帳戶，但可能因為並不登入這些入口網站，而不需要存取 Office 365。 如需詳細資訊，請參閱 [Microsoft 365 系統管理中心的活動報告](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)。
+為使用 Microsoft 365 識別擁有系統管理員帳戶但不需要 Microsoft 365 存取權的使用者，監視您的組織，因為他們不會登入這些入口網站。 如需詳細資訊，請參閱 [Microsoft 365 系統管理中心的活動報告](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)。
 
 #### <a name="establish-incidentemergency-response-plan-owners"></a>建立事件/緊急回應計劃擁有者
 
@@ -229,7 +229,7 @@ Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，
 
 #### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>在系統管理員角色中完成使用者的存取權檢閱
 
-有愈來愈多的公司使用者透過雲端服務取得特殊權限存取，這可能導致存取失控。 現今，使用者可能成為 Office 365 的全域管理員、Azure 訂用帳戶管理員，或者，對於 VM 或透過 SaaS 應用程式而具有管理員存取權。
+更多公司使用者透過雲端服務取得特殊許可權的存取權，這可能會導致未受管理的存取權。 現今的使用者可以成為 Microsoft 365、Azure 訂用帳戶管理員的全域管理員，或具有 Vm 或透過 SaaS 應用程式的系統管理員存取權。
 
 組織應該讓所有員工以無特殊權限使用者身分來處理日常商務交易，然後只在需要時才授與管理員權限。 完成存取權檢閱，以識別並確認有資格啟動管理員權限的使用者。
 
@@ -281,13 +281,13 @@ Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，
 
 建議找出認證遭盜用時將對組織帶來災難的所有潛在使用者。 針對這些使用者，請施行強式驗證需求，並使用 Azure AD 條件式存取，禁止他們以使用者名稱和密碼登入電子郵件。 您可以使用條件式存取來[封鎖舊式驗證](../conditional-access/block-legacy-authentication.md)，也可以透過 Exchange Online 來[封鎖基本驗證](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)。
 
-#### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>完成 Office 365 角色的角色檢閱評估 (如果使用 Office 365)
+#### <a name="complete-a-roles-review-assessment-for-microsoft-365-roles-if-using-microsoft-365"></a>針對 Microsoft 365 角色完成角色審核評定 (如果使用 Microsoft 365) 
 
 評估所有的管理員使用者是否都屬於正確的角色 (根據這項評估刪除並重新指派)。
 
-#### <a name="review-the-security-incident-management-approach-used-in-office-365-and-compare-with-your-own-organization"></a>檢閱 Office 365 中使用的安全性事件管理方法，並與您自己的組織進行比較
+#### <a name="review-the-security-incident-management-approach-used-in-microsoft-365-and-compare-with-your-own-organization"></a>複習 Microsoft 365 中使用的安全性事件管理方法，並與您自己的組織進行比較
 
-您可以從 [Microsoft Office 365 中的安全性事件管理](https://www.microsoft.com/download/details.aspx?id=54302)下載此報告。
+您可以從 [Microsoft 365 中的安全性事件管理](https://www.microsoft.com/download/details.aspx?id=54302)下載這份報告。
 
 #### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>繼續保護內部部署的特殊權限系統管理帳戶
 
@@ -348,7 +348,7 @@ Microsoft Cloud App Security 可讓您調查檔案，並根據 Azure 資訊保�
 * 防止資料外洩
 * 盡可能降低風險，並將威脅防護和原則強制執行自動化
 
-Cloud App Security SIEM 代理程式可整合 Cloud App Security 與您的 SIEM 伺服器，讓您集中監視 Office 365 警示和活動。 它會在您的伺服器上執行，並從 Cloud App Security 提取警示和活動，再將其串流至 SIEM 伺服器。 如需詳細資訊，請參閱 [SIEM 整合](/cloud-app-security/siem)。
+Cloud App Security SIEM 代理程式會將 Cloud App Security 與您的 SIEM 伺服器整合，以便集中監視 Microsoft 365 的警示和活動。 它會在您的伺服器上執行，並從 Cloud App Security 提取警示和活動，再將其串流至 SIEM 伺服器。 如需詳細資訊，請參閱 [SIEM 整合](/cloud-app-security/siem)。
 
 ## <a name="stage-4-continue-building-defenses"></a>階段 4：繼續建立防禦
 
@@ -387,8 +387,8 @@ Cloud App Security SIEM 代理程式可整合 Cloud App Security 與您的 SIEM 
 
 如需詳細資訊，請參閱[如何設定已加入 Azure Active Directory 的混合式裝置](../devices/hybrid-azuread-join-plan.md)。
 
-#### <a name="review-members-of-built-in-office-365-admin-roles"></a>檢閱[內建 Office 365 管理員角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)的成員
-如果您不使用 Office 365，請略過此步驟。
+#### <a name="review-members-of-built-in-microsoft-365-admin-roles"></a>審核[內建 Microsoft 365 系統管理員角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)的成員
+如果您不是使用 Microsoft 365，請略過此步驟。
 ‎
 #### <a name="validate-incident-response-plan"></a>驗證事件回應計劃
 

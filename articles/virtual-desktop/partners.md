@@ -3,15 +3,15 @@ title: Windows 虛擬桌面合作夥伴整合-Azure
 description: 深入瞭解 Windows 虛擬桌面的合作夥伴，並存取如何與其整合的相關檔。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94da428862e1af66ee58e739b3ad3b5b95be3310
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612362"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056378"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虛擬桌面合作夥伴整合
 
@@ -46,7 +46,8 @@ VMware 是 Windows 虛擬桌面核准的提供者，可協助客戶想要使用 
 
 10ZiG's 世界-瘦和零用戶端端點裝置的市場領導力，以及虛擬桌面的管理軟體，都是透過其客戶的運作方式查詢示。 它的瘦用戶端硬體提供了 thoughtfully 的功能，其設計目的是為了確保客戶根據其需求獲得正確的用戶端裝置。 10ZiG 可自訂其裝置，使其符合客戶環境中的 Windows 型和 Linux 型用戶端，以在雲端內部和外部的虛擬桌面提供最佳效能。
 
-- [前往合作夥伴網站](https://www.10zig.com/about/microsoft-wvd)。
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeR)。
+- [前往合作夥伴網站](https://www.10zig.com/about/microsoft-windows-virtual-desktop)。
 
 ## <a name="automai"></a>Automai
 
@@ -101,7 +102,7 @@ ControlUp 是 Windows 虛擬桌面的增值服務提供者，可讓 IT 團隊從
 
 Dell 技術的瘦用戶端已優化，可存取 Microsoft Azure 與 Windows 虛擬桌面服務。 Wyse 瘦用戶端可以滿足從共同作業知識工作者到圖形密集型 power 使用者的需求，並提供高品質的運算體驗，以充分利用不斷成長的應用程式與內容。 Wyse 瘦用戶端適用于空間限制的環境，可配合人們使用各種外型規格和廣泛的裝載選項選項的方式。
 
-Wyse 瘦用戶端的設計，是在受限制的受攻擊面、支援安全性合規性標準，以及先進的多重要素驗證解決方案方面都有安全性考慮。 使用 Dell 專屬的 Wyse ThinOS 來部署高度安全的瘦用戶端，或使用與 Dell 新增的安全性功能，以商業證明的設計和 Windows 10 IoT 企業版，從強化的 Wyse ThinLinux 體驗到雲端應用程式和虛擬工作區的安全存取。 使用安全、以 HTTPS 為基礎的通訊，以及以角色為基礎之系統管理的 active directory 驗證時，Wyse Management Suite 會讓 Wyse 端點保持在最新狀態，而適用于 WMS Pro 的行動應用程式可讓它隨時查看重要的警示，並將即時命令以一次的方式傳送。
+Wyse 瘦用戶端的設計，是在有限的攻擊面、支援安全性合規性標準，以及先進的多重要素驗證解決方案方面，都有安全性考慮。 使用 Windows 10 IoT 企業版及 Dell 新增的安全性功能，部署高度安全的瘦用戶端。 針對以角色為基礎的系統管理提供安全、以 HTTPS 為基礎的通訊和 active directory 驗證，Wyse Management Suite 會讓 Wyse 端點保持在最新狀態，而適用于 WMS Pro 的行動應用程式可讓它隨時查看重要的警示，並將即時命令以一次的方式傳送。
 
 - [前往合作夥伴網站](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf)。
 
@@ -190,6 +191,15 @@ Lakeside Software 的數位體驗監視解決方案（SysTrack）有助於提供
 - [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q)。
 - [前往合作夥伴網站](https://www.lakesidesoftware.com/assessments/wvd)。
 
+## <a name="lenovo"></a>Lenovo
+
+![聯想標誌](./media/partners/lenovo.png)
+
+聯想瘦用戶端為您的網路提供從伺服器執行之用戶端電腦的彈性，但具備原生電腦功能和強大功能。 聯想瘦用戶端提供 Windows 虛擬桌面部署極具效能和直覺的管理能力，讓公司的網路提升到下一個層級的可靠性。 每一部瘦用戶端都有現成的終端機管理員授權，無需額外費用，可讓組織順暢且符合成本效益的硬體管理和部署選項。 它們也很小，而且很有彈性，可讓您輕鬆地將其新增至現有的聯想部署。
+
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FnaB)。
+- [前往合作夥伴網站](https://www.lenovo.com/us/en/desktops-and-all-in-ones/thinkcentre/m-series-thin-clients/c/M-Series-Thin-Clients)。
+
 ## <a name="liquidware"></a>Liquidware
 
 ![Liquidware 標誌](./media/partners/liquidware.png)
@@ -220,6 +230,17 @@ Liquit 應用程式匯總和傳遞軟體可讓企業和服務提供者連線到�
 
 - [前往合作夥伴網站](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop)。
 
+## <a name="nasuni"></a>Nasuni
+
+![Nasuni 標誌](./media/partners/nasuni.png)
+
+Nasuni Corp 是雲端檔案服務的領導提供者，以及最上層的 Azure 全球 ISV 合作夥伴，提供 Nasuni 的軟體即服務平臺，作為新式虛擬桌面的新式檔案儲存體解決方案。 Nasuni 結合 Azure Blob 儲存體時，會將主要檔案儲存 (NAS) 、檔案備份、嚴重損壞修復和跨區域檔案同步處理合併到一個整合的解決方案中。 透過 Nasuni，企業可以在更多的使用案例和更多 Azure 區域中部署 Windows 虛擬桌面，以簡化系統管理，並確保商務持續性。 
+
+Windows 虛擬桌面是新式雲端 VDI 解決方案，需要新式雲端檔案儲存體。 傳統上，VDI 檔案儲存體是以連接網路的存放裝置為基礎， (NAS) 和位於內部部署的檔案伺服器硬體，以及隨附的必要技術來提供檔案備份、還原和嚴重損壞修復。 這些傳統方法很昂貴、更複雜，無法維護和管理，而且不容易調整。 如果與 Windows 虛擬桌面等新式雲端 VDI 解決方案搭配使用，它們也會造成延遲，因為桌上型電腦與以 Azure 為基礎的桌上型電腦與以內部部署為基礎的檔案儲存體之間的實體距離和速度較慢的 WAN 連線。 Nasuni 是專為 Azure 建立的檔案服務平臺，提供無限制的檔案儲存容量和高效能檔案存取。 Nasuni 可與 Windows 虛擬桌面共置於相同的 Azure 區域，以提供經濟實惠的高效能檔案存取單一全域命名空間。 Nasuni 以傳統的 NAS 和 Windows 檔案伺服器的成本來提供 Windows 虛擬桌面檔案儲存體，並包含內建的備份和嚴重損壞修復，以進一步降低成本並釋出 IT 資源。
+
+- [前往合作夥伴網站](https://www.nasuni.com/partner/microsoft/#wvd)。
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeS)。
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Nerdio 標誌](./media/partners/nerdio.png)
@@ -230,6 +251,17 @@ Nerdio 可讓您輕鬆布建 Azure 資源並簡化部署，藉此擴充 Windows 
 
 - [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh)。
 - [前往合作夥伴網站](https://getnerdio.com/windows-virtual-desktop/)。
+
+## <a name="nexthink"></a>Nexthink
+
+![Nexthink 標誌](./media/partners/nexthink.png)
+
+Nexthink 是 Windows 虛擬桌面增值的提供者，可協助組織安心地測量、管理及改善員工的數位體驗與生產力。 透過數位員工體驗的脈衝持續閱讀，無論使用者在何處工作，都可以持續改善技術的互動、強化和取悅的能力。 
+
+Nexthink 藉由提供具有可見工作場所資源的解決方案，為您提供使用者群的內容與深入解析。 Nexthink 的強大體驗管理平臺可協助 IT 小組確保能夠及時且成功地規劃 Windows 虛擬桌面的遷移，並進行行動。
+
+- [前往合作夥伴網站](https://www.nexthink.com/initiative/desktop-virtualization/)。
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeT)。
 
 ## <a name="numecent"></a>Numecent
 
@@ -287,12 +319,16 @@ RDPSoft 的遠端桌面指揮解決方案增強了 Windows 虛擬桌面系統管
 
 ![Rimo3 標誌](./media/partners/rimo3.png)
 
-Rimo3 藉由加速部署及改善進行中的變更管理，來增強 Windows 虛擬桌面體驗。 Rimo3 為 IT 團隊提供了支援應用程式工作負載的 Azure 遷移的應用程式組合所需的知識。 使用者可以快速且輕鬆地將應用程式上架，並在其目標 Windows 虛擬桌面工作區中進行測試。 使用者也可以主動瞭解任何變更的影響，因為組織會推出新的應用程式和更新。 最後，IT 系統管理員可以運用 Rimo3's 的智慧型冒煙測試功能，並自動執行功能測試，而不會中斷使用者會話。
+Rimo3 利用容易使用、可調整且以雲端為基礎的應用程式現代化平臺，增強了 Windows 虛擬桌面的體驗。
 
-Rimo3 提供便於使用、可擴充、自動化的應用程式測試平臺。 此平臺包含所有三個應用程式測試基礎的功能：相容性、功能和效能。 它可讓組織、領導人和團隊改善商務持續性、更快速地採用變更，以及將使用者體驗優化。
+針對 IT 團隊，Rimo3 可協助探索、現代化及管理應用程式工作負載，以移至 Windows 虛擬桌面。 使用者可以自動掃描其應用程式組合，以探索適合用來登入 Windows 虛擬桌面或現代化至 MSIX 的候選項目。  
+
+使用者可以在應用程式未正確轉換的情況下，自動進行應用程式的預先測試、將應用程式轉換成 MSIX 和轉換後測試，同時套用自動化補救。 結果是現代化、部署就緒的 MSIX 套件。 在每個 Windows 虛擬桌面功能發行和更新的情況下，使用者可以在部署之前自動完整測試應用程式，以提供完整的信賴與持續管理。
+
+針對受管理的服務提供者，Rimo3 可協助擴充其受控服務功能，以改善邊界，並協助他們將以專案為基礎的收益橋接到以訂用帳戶為基礎的週期性收益，並為需要現代化並移至 Windows 虛擬桌面的客戶增加價值，並在其桌面工作區中管理定期更新。
 
 - [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7B)。
-- [前往合作夥伴網站](https://rimo3.com/outcomes/)。
+- [前往合作夥伴網站](https://rimo3.com/windows-virtual-desktop/)。
 
 ## <a name="sepago"></a>sepago
 
@@ -304,6 +340,17 @@ sepago 的創新和開發實驗室會使用 big data 和 AI 技術來建立智�
 
 - [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm)。
 - [前往合作夥伴網站](https://www.sepago.de/en/)。
+
+## <a name="ssh2"></a>SSH2
+
+![SSH2 標誌](./media/partners/ssh2.png)
+
+SSH2 是 Windows 虛擬桌面的增值服務提供者，可讓您的 IT 小組使用軟體，以加速將應用程式從目前的平臺傳遞到 Azure 上的 Windows 虛擬桌面。 SSH2 可讓它加速應用程式捕捉，以簡化遷移過程。 SSH2's appCURE 會在端點上捕捉執行中的應用程式、啟用更新和修復，以建立使用者環境執行速度的全方位步驟變更。 
+
+appCURE 會從執行中的應用程式捕捉應用程式詳細資料，以確保能夠瞭解可能影響您終端使用者應用程式的所有點。 appCURE 接著會更新並將其傳遞至新的 Windows 虛擬桌面。 藉由在您目前的環境中捕捉所有應用程式整合點，appCURE 可提供最佳的速度來將 IT 資源優化，並更快且更快速地規劃遷移，讓組織能夠更快進入生產環境。
+
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38)。
+- [移至 [合作夥伴] 頁面](https://www.ssh2.xyz/windows-virtual-desktop/)。
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -334,6 +381,7 @@ uberAgent 公司的大量限制提供 Windows 虛擬桌面部署的可視性。 
 
 uberAgent 是一項監視和分析產品，專為不只收集資料的使用者運算而設計，它提供客戶重要的資訊。 uberAgent 有自己的計量，其中涵蓋使用者經驗、應用程式效能和端點安全性的重要層面，告訴您您需要知道的 Windows 虛擬桌面 Vm，而不會影響系統的使用者密度。 uberAgent 可簡化疑難排解、協助進行調整大小，並提供資訊安全重要的豐富資訊。
 
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs39)。
 - [前往合作夥伴網站](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)。
 
 ## <a name="workspace-365"></a>工作區365
@@ -358,7 +406,7 @@ Workspot control 藉由簡化雲端桌面基礎結構的布建程式，擴充了
 - [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P)。
 - [前往合作夥伴網站](https://www.workspot.com/wvd)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [深入瞭解 Windows 虛擬桌面](overview.md)。
 - [在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。

@@ -3,7 +3,7 @@ title: 疑難排解已部署的 StorSimple 裝置 | Microsoft Docs
 description: 描述如何診斷和修正在已部署且可運作的 StorSimple 裝置上所發生的錯誤。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: ea5d89ae-e379-423f-b68b-53785941d9d0
@@ -13,19 +13,19 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
-ms.author: twooley
-ms.openlocfilehash: e2e68c7016a37824f1bf307a676c39281d4d41d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: eaf6b1825a258b11a2e345c771909822de73dfcf
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507815"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056484"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>可運作的 StorSimple 裝置疑難排解
 > [!NOTE]
 > StorSimple 的傳統入口網站已過時。 按照淘汰排程，StorSimple 裝置管理員會自動移至新的 Azure 入口網站。 您將收到關於此移動的電子郵件和入口網站通知。 本文件也即將遭到淘汰。 若有關於移動的任何問題，請參閱[常見問題集：移至 Azure 入口網站](storsimple-8000-move-azure-portal-faq.md)。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本文提供實用的疑難排解指導方針，可用來解決在部署 StorSimple 裝置且可運作之後您可能遇到的問題。 文中將描述常見問題、可能原因和建議的步驟，可協助您解決在執行 Microsoft Azure StorSimple 時可能遇到的問題。 此資訊適用於 StorSimple 內部部署實體裝置和 StorSimple 虛擬裝置。
 
 在本文節尾，您可以找到您可能會在 Microsoft Azure StorSimple 作業期間遭遇到的錯誤代碼清單，以及您要解決錯誤所採取的步驟。 
@@ -45,7 +45,7 @@ ms.locfileid: "85507815"
 ## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>在安裝精靈後續執行期間發生的錯誤
 下表說明當您在可運作的裝置上執行安裝精靈時可能遇到的錯誤、產生錯誤的可能原因，以及建議用來解決這些錯誤的動作。 
 
-| 否。 | 錯誤訊息或情況 | 可能的原因 | 建議的動作 |
+| 不會。 | 錯誤訊息或情況 | 可能的原因 | 建議的動作 |
 |:--- |:--- |:--- |:--- |
 | 1 |錯誤 350032：此裝置已經停用。 |如果您在已停用的裝置上執行安裝精靈，就會看到這個錯誤。 |[連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md) 以進行後續步驟。 已停用的裝置無法處於執行狀態。 您可能需要進行原廠重設，裝置才能再次啟用。 |
 | 2 |Invoke-HcsSetupWizard：ERROR_INVALID_FUNCTION (發生例外狀況於 HRESULT：0x80070001) |DNS 伺服器更新失敗。 DNS 設定是全域設定，並會在所有已啟用的網路介面上加以套用。 |啟用介面並重新套用 DNS 設定。 因為這些設定是全域的，所以這樣做可能會中斷其他已啟用介面的網路。 |
@@ -63,7 +63,7 @@ ms.locfileid: "85507815"
 | 390061 |系統忙碌或無法使用。 |請等候幾分鐘，然後再次嘗試。 如果問題持續發生，請連絡 Microsoft 支援服務以進行後續步驟。 |
 | 390143 |發生錯誤碼為 390143 的錯誤。 (未知的錯誤。) |如果問題持續發生，請連絡 Microsoft 支援服務以進行後續步驟。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如果您無法解決問題，請 [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md) ，尋求協助。 
 
 [1]: https://technet.microsoft.com/%5Clibrary/Dn688135(v=WPS.630).aspx

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: 4462ea0277193f0f8a4112cad5991d1e12c5f600
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ddb1c68ab417390987ac4873a16b89757ec24789
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652807"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058728"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>支援在 Azure 區域之間移動 Azure Vm
 
@@ -80,7 +80,7 @@ Debian 8 |  3.16.0-4-amd64 至 3.16.0-10-amd64、4.9.0-0.bpo.4-amd64 至 4.9.0-0
 
 **版本** | **核心版本** 
 --- |  --- 
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4)  |  支援所有 [股票 SUSE 12 SP1、SP2、SP3、SP4](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) 核心。</br></br> 4.4.138-4.7-azure 至 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 至 4.12.14-6.34-azure  
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4)  |  支援所有 [股票 SUSE 12 SP1、SP2、SP3、SP4](https://www.suse.com/support/kb/doc/?id=000019587) 核心。</br></br> 4.4.138-4.7-azure 至 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 至 4.12.14-6.34-azure  
 
 
 ### <a name="supported-suse-linux-enterprise-server-15-kernel-versions"></a>支援 SUSE Linux Enterprise Server 15 核心版本
@@ -100,7 +100,7 @@ SUSE Linux Enterprise Server 15 和 15 SP1 |  支援所有股票 SUSE 15 和15�
 
 **設定** | **支援** | **詳細資料**
 --- | --- | ---
-大小 | 至少具有兩個 CPU 核心和 1 GB RAM 的任何 Azure VM 大小 | 確認 [Azure 虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/sizes-general)。
+大小 | 至少具有兩個 CPU 核心和 1 GB RAM 的任何 Azure VM 大小 | 確認 [Azure 虛擬機器大小](../virtual-machines/sizes-general.md)。
 可用性設定組 | 目前不支援 | 如果您使用預設選項將具有可用性設定組的 Azure VM 新增至移動集合，則準備程式會失敗。 您可以選擇將 VM 移至可用性區域，或將它移動為單一實例 VM。 您可以在 [編輯目標屬性] 頁面中修改這些設定。
 可用性區域 | 支援 | 支援，視目的地區域支援而定。
 Microsoft)  (發佈的 Azure 資源庫影像 | 支援 | 只要 VM 在支援的作業系統上執行即支援。
@@ -113,15 +113,15 @@ RBAC 原則 | 不支援 | 在 Vm 上 (RBAC) 原則的角色型存取控制不會
 
 ## <a name="supported-vm-storage-settings"></a>支援的 VM 儲存體設定
 
-下表摘要說明 Azure VM OS 磁碟、資料磁碟和暫存磁碟的支援。 請務必注意 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/disk-scalability-targets) 和 [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets) VM 的 VM 磁碟限制和目標，以避免發生任何效能問題。
+下表摘要說明 Azure VM OS 磁碟、資料磁碟和暫存磁碟的支援。 請務必注意 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 和 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁碟限制和目標，以避免發生任何效能問題。
 
 **元件** | **支援** | **詳細資料**
 --- | --- | ---
-OS 磁碟的大小上限 | 2048 GB | [深入了解](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) VM 磁碟。
-暫存磁碟 | 不支援 | 暫存磁片一律會從準備程式中排除。<br/><br/> 請不要將任何永續性資料儲存於暫存磁碟上。 [深入了解](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#temporary-disk)。
+OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/windows/managed-disks-overview.md) VM 磁碟。
+暫存磁碟 | 不支援 | 暫存磁片一律會從準備程式中排除。<br/><br/> 請不要將任何永續性資料儲存於暫存磁碟上。 [深入了解](../virtual-machines/windows/managed-disks-overview.md#temporary-disk)。
 資料磁碟的大小上限 | 8192 GB (若為受控磁碟)
 資料磁碟的大小下限 |  2 GB (若為受控磁碟) |
-資料磁碟的數目上限 | 最多 64 個 (根據特定的 Azure VM 大小支援) | [深入了解](https://docs.microsoft.com/azure/virtual-machines/windows/sizesd) VM 大小。
+資料磁碟的數目上限 | 最多 64 個 (根據特定的 Azure VM 大小支援) | [深入了解](../virtual-machines/windows/sizes.md) VM 大小。
 資料磁碟的變更率 | 進階儲存體的每個磁碟最多 10 MBps。 標準儲存體的每個磁碟最多 2 MBps。 | 如果磁片上的平均資料變更率持續高於最大值，則準備將無法趕上。<br/><br/>  但是，如果最大值是偶發性的，則準備可以趕上，但您可能會看到稍微延遲的復原點。
 資料磁片 (標準儲存體帳戶)  | 不支援。 | 將儲存體類型變更為受控磁片，然後嘗試移動 VM。
 資料磁片 (Premium 儲存體帳戶)  | 不支援 | 將儲存體類型變更為受控磁片，然後嘗試移動 VM。
