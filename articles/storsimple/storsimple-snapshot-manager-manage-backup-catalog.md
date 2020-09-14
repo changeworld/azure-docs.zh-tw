@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager 備份目錄 | Microsoft Docs
 description: 說明如何使用 StorSimple Snapshot Manager MMC 嵌入式管理單元來檢視和管理備份磁碟區。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 6abdbfd2-22ce-45a5-aa15-38fae4c8f4ec
@@ -13,17 +13,17 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 94dccdabfa4cf83077bca3629dee8a796d27182a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 2efc35e65ca1db2b5241e1d3b2798e068880c87e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515481"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054988"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>使用 StorSimple Snapshot Manager 來管理備份目錄
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 StorSimple Snapshot Manager 的主要功能是可讓您以快照集的形式建立應用程式一致的 StorSimple 磁碟區備份複本。 然後，系統會以 XML 檔列出快照，名為 *「備份目錄」*。 備份目錄會根據磁碟區群組、然後根據本機快照集或雲端快照集組織快照集。
 
 本教學課程描述如何使用 **備份目錄** 節點來完成下列工作：
@@ -92,8 +92,8 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
    
    1. 在 [名稱]**** 文字方塊中，輸入已複製之磁碟區的名稱。 這個名稱將出現在 [磁碟區]**** 節點中。 
    2. (選擇性) 選取 [ **磁碟機**]，然後從下拉式清單中選取磁碟機代號。
-   3. （選擇性）選取 [**資料夾（NTFS）**]，然後輸入資料夾路徑，或按一下 [流覽] 並選取資料夾的位置。 
-   4. 按一下 [建立]。
+   3.  (選擇性) 選取 **資料夾 (NTFS) **，然後輸入資料夾路徑，或按一下 [流覽] 並選取資料夾的位置。 
+   4. 按一下 [建立]  。
 5. 複製程序完成時，您必須初始化已複製的磁碟區。 啟動伺服器管理員，然後啟動磁碟管理。 如需詳細指示，請參閱 [掛接磁碟區](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 在初始化之後，磁碟區將列示在 [領域]**** 窗格的 [磁碟區]**** 節點下方。 如果您看不到列出的磁碟區，請重新整理磁碟區清單 (以滑鼠右鍵按一下**磁碟區**節點，然後再按一下 [重新整理]****)。
 
 ## <a name="delete-a-backup"></a>刪除備份
@@ -124,9 +124,9 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
 4. 以下列方式完成 [複製雲端快照]**** 對話方塊： 
    
    1. 在 [名稱]**** 文字方塊中，輸入已複製之磁碟區的名稱。 這個名稱將出現在 [磁碟區]**** 節點中。 
-   2. 選擇性選取 [**磁片磁碟機**]，然後從下拉式清單中選取磁碟機號。 
+   2.  (選擇性) 選取 **磁片磁碟機**，然後從下拉式清單中選取磁碟機號。 
    3. (選擇性) 選取 [資料夾 (NTFS)]****，然後輸入資料夾路徑或按一下 [瀏覽]**** 並選取資料夾的位置。 
-   4. 按一下 [建立]。 
+   4. 按一下 [建立]  。 
 5. 複製程序完成時，您必須初始化已複製的磁碟區。 啟動伺服器管理員，然後啟動磁碟管理。 如需詳細指示，請參閱 [掛接磁碟區](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 在初始化之後，磁碟區將列示在 [領域]**** 窗格的 [磁碟區]**** 節點下方。 
    
     如果您看不到列出的磁碟區，請重新整理磁碟區清單 (以滑鼠右鍵按一下**磁碟區**節點，然後再按一下 [重新整理]****)。
@@ -140,7 +140,7 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
 1. 停止 Microsoft StorSimple 管理服務：
    
    1. 啟動伺服器管理員。
-   2. 在 [伺服器管理員] 儀表板的 [**工具**] 功能表上，選取 [**服務**]。
+   2. 在伺服器管理員的儀表板上，選取 [ **工具** ] 功能表上的 [ **服務**]。
    3. 在 [服務]**** 視窗中，選取 [Microsoft StorSimple 管理服務]****。
    4. 在右窗格的 [Microsoft StorSimple 管理服務]**** 下方，按一下 [停止服務]****。
 2. 在主機電腦上，瀏覽至 C:\ProgramData\Microsoft\StorSimple\BACatalog。 
@@ -154,14 +154,14 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
     ![Azure StorSimple 備份目錄檔案](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_bacatalog.png)
 4. 重新啟動 Microsoft StorSimple 管理服務： 
    
-   1. 在 [伺服器管理員] 儀表板的 [**工具**] 功能表上，選取 [**服務**]。
+   1. 在伺服器管理員的儀表板上，選取 [ **工具** ] 功能表上的 [ **服務**]。
    2. 在 [服務]**** 視窗中，選取 [Microsoft StorSimple 管理服務]****。
    3. 在右窗格的 [Microsoft StorSimple 管理服務]**** 下方，按一下 [重新啟動服務]****。
 5. 在主機電腦上，瀏覽至 C:\ProgramData\Microsoft\StorSimple\BACatalog。 
 6. 刪除目錄 XML 檔案，並以您所建立的備份版本取代它。 
 7. 按一下桌面的 StorSimple Snapshot Manager 圖示以啟動 StorSimple Snapshot Manager。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 深入了解如何 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
 * 深入了解 [StorSimple Snapshot Manager 工作和工作流程](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows)。
 

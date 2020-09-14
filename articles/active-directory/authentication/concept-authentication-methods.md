@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 08f3a3c17a5f6ea519eea04c4b8c5e7025adcbac
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116762"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052353"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的驗證方法？
 
@@ -46,7 +46,7 @@ Azure AD 中有許多帳戶已啟用自助式密碼重設 (SSPR) 和 Azure Multi
 | [電子郵件地址](#email-address) | 否 | 僅限 SSPR |
 | [應用程式密碼](#app-passwords) | 否 | 只有在某些情況下的 MFA |
 
-這些驗證方法可以在 Azure 入口網站中設定，並使用[Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)搶鮮版（Beta）來增加。
+您可以在 Azure 入口網站中設定這些驗證方法，並逐漸使用 [Microsoft Graph REST API Beta 版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)。
 
 本文概述 Azure AD 中各種可用的驗證方法，以及任何特定的限制。
 
@@ -76,7 +76,7 @@ Authenticator 應用程式可協助防止未經授權即存取帳戶，並藉由
 ![範例網頁瀏覽器提示的螢幕擷取畫面，其中顯示用以完成登入程序的 Authenticator 應用程式通知](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> 如果您的組織有員工參與或前往中國，則在 Android 裝置上透過行動裝置*應用程式*方法的通知，無法在該國家/地區做為 Google play 服務 (包含推播通知) 會在區域中遭到封鎖。 不過，iOS 通知會正常執行。 針對 Android 裝置，應讓這些使用者使用替代的驗證方法。
+> 如果您的組織有員工任職或前往中國，則在 Android 裝置上透過行動裝置 *應用程式* 方法的通知，在該國家/地區中無法使用 Google play services (包括在區域中封鎖) 的推播通知。 不過，iOS 通知會正常運作。 針對 Android 裝置，應讓這些使用者使用替代驗證方法。
 
 ### <a name="verification-code-from-mobile-app"></a>行動應用程式傳回的驗證碼
 
@@ -212,7 +212,7 @@ Microsoft 不保證相同號碼會提供一致的 SMS 或語音型 Azure Multi-F
 
 ### <a name="predefined-questions"></a>預先定義的問題
 
-下列預先定義的安全性問題可作為搭配 SSPR 使用的驗證方法。 所有安全性問題會依據使用者的瀏覽器地區設定，翻譯並當地語系化成完整的 O365 語言集：
+下列預先定義的安全性問題可作為搭配 SSPR 使用的驗證方法。 所有這些安全性問題都會根據使用者的瀏覽器地區設定，轉譯和當地語系化成一組完整的 Microsoft 365 語言：
 
 * 您在哪個城市遇見第一個配偶/伴侶？
 * 您的父母在哪個城市相遇？
@@ -300,7 +300,7 @@ Microsoft 不保證相同號碼會提供一致的 SMS 或語音型 Azure Multi-F
 
 若要深入了解 MFA 概念，請參閱 [Azure Multi-Factor Authentication 的運作方式][concept-mfa]。
 
-深入瞭解如何使用[Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)來設定驗證方法。
+深入瞭解如何使用 [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)來設定驗證方法。
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

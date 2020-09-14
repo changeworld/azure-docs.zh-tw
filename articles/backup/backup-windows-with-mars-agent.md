@@ -3,12 +3,12 @@ title: 使用 MARS 代理程式備份 Windows 機器
 description: 使用 Microsoft Azure 復原服務 (MARS) 代理程式來備份 Windows 機器。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 55eb8bdf069fd1b5793468ae52f764eb4288f261
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182083"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052217"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>將 Windows Server 檔案和資料夾備份至 Azure
 
@@ -22,7 +22,7 @@ ms.locfileid: "89182083"
 > * 建立備份原則和排程。
 > * 執行隨選備份。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 * 瞭解 [Azure 備份如何使用 MARS 代理程式來備份 Windows 機器](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders)。
 * 瞭解在次要 MABS 或 Data Protection Manager 伺服器上執行 MARS 代理程式的 [備份架構](backup-architecture.md#architecture-back-up-to-dpmmabs) 。
@@ -125,7 +125,7 @@ Azure 備份中的網路節流會使用本機作業系統上的 [服務品質 (Q
 1. 在 [節流]**** 索引標籤上，選取 [啟用備份作業的網際網路頻寬使用節流功能]****。
 
     ![設定備份作業的網路節流](./media/backup-configure-vault/throttling-dialog.png)
-1. 指定工作時間與非時允許的頻寬。 頻寬值的開始時間為 512 Kbps，最高可達 1023 MBps。 然後選取 [確定]。
+1. 指定工作時間與非時允許的頻寬。 頻寬值的開始時間為 512 Kbps，最高可達 1023 Mbps。 然後選取 [確定]。
 
 ## <a name="run-an-on-demand-backup"></a>執行隨選備份
 
@@ -155,7 +155,7 @@ Azure 備份中的網路節流會使用本機作業系統上的 [服務品質 (Q
 
 如需詳細資訊，請參閱 [建立備份原則](#create-a-backup-policy)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 瞭解如何 [在 Azure 中還原](backup-azure-restore-windows-server.md)檔案。
 * 尋找 [有關備份檔案和資料夾的常見問題](backup-azure-file-folder-backup-faq.md)

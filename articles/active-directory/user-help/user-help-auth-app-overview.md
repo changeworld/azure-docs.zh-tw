@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 7d630fac1f848e691ddb96dc47596a2e9927309f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7f4c09a32794e13b0e0041ee916401b714d8509e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799429"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055226"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>什麼是 Microsoft Authenticator 應用程式？
 
@@ -41,8 +41,8 @@ ms.locfileid: "88799429"
 | ----|-----------|
 | 雙因素驗證 | 必須明確使用兩項驗證資訊 (例如密碼和 PIN) 的驗證程序。 Microsoft Authenticator 應用程式支援標準雙因素驗證和無密碼登入。 |
 | 多重要素驗證 (MFA) | 所有雙因素驗證都是多重要素驗證，必須根據組織的需求使用*至少*兩項驗證資訊。 |
-| Microsoft 帳戶 (也稱為 MSA) | 您必須建立自己的個人帳戶，用以存取消費者導向的 Microsoft 產品和雲端服務，例如 Outlook、OneDrive、Xbox LIVE 或 Office 365。 Microsoft 帳戶會建立並儲存在 Microsoft 所執行的 Microsoft 取用者身分識別帳戶系統中。 |
-| 公司帳戶或學校帳戶 | 您的組織會為您建立公司或學校帳戶 (例如 alain@contoso.com)，讓您存取內部和可能受限制的資源，例如 Microsoft Azure、Windows Intune 和 Office 365。 |
+| Microsoft 帳戶 (也稱為 MSA) | 您可以建立自己的個人帳戶，以取得消費者導向的 Microsoft 產品和雲端服務（例如 Outlook、OneDrive、Xbox LIVE 或 Microsoft 365）的存取權。 Microsoft 帳戶會建立並儲存在 Microsoft 所執行的 Microsoft 取用者身分識別帳戶系統中。 |
+| 公司帳戶或學校帳戶 | 您的組織會建立您的工作或學校帳戶 (例如 alain@contoso.com) ，讓您存取內部和可能受限制的資源，例如 Microsoft Azure、Windows Intune 和 Microsoft 365。 |
 | 驗證碼 | 每個新增的帳戶下，會出現在驗證器應用程式中的六位數代碼。 驗證碼每隔 30 秒就會變更，避免多次使用同一個驗證碼。 這也是所謂的單次密碼 (OTP)。 |
 
 ## <a name="how-two-factor-verification-works-with-the-app"></a>雙因素驗證與應用程式搭配運作的方式

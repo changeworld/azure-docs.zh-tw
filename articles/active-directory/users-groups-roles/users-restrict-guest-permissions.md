@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fb7a6654f5917c0651ffba6e672b41d14fdbe20
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 418be35cb7996acaa7f11f37627d065451c9c7c6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489641"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055209"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>在 Azure Active Directory 中限制來賓存取許可權 (預覽) 
 
@@ -154,7 +154,7 @@ PS C:\WINDOWS\system32> Set-AzureADMSAuthorizationPolicy -GuestUserRoleId '2af84
 
 問題 | Answer
 -------- | ------
-這些許可權的適用位置為何？ | 這些目錄層級許可權會跨 Azure AD 服務和入口網站強制執行，包括 Microsoft Graph、PowerShell v2、Azure 入口網站和我的應用程式入口網站。 利用 Office 365 群組進行共同作業案例的 Microsoft 365 服務也會受到影響，尤其是 Outlook、Microsoft 小組和 SharePoint。
+這些許可權的適用位置為何？ | 這些目錄層級許可權會跨 Azure AD 服務和入口網站強制執行，包括 Microsoft Graph、PowerShell v2、Azure 入口網站和我的應用程式入口網站。 利用 Microsoft 365 群組進行共同作業案例的 Microsoft 365 服務，也會受到影響，尤其是 Outlook、Microsoft 小組和 SharePoint。
 這項功能在我的應用程式入口網站中的哪些部分會受到影響？ | 我的應用程式入口網站中的群組功能將採用這些新的許可權。 這包括在我的應用程式中查看群組清單和群組成員資格的所有路徑。 群組磚可用性未進行任何變更。 群組磚可用性仍然受 Azure 系統管理員入口網站中的現有群組設定所控制。
 這些許可權會覆寫 SharePoint 或 Microsoft 團隊的來賓設定嗎？ | 不會。 這些現有的設定仍能控制這些應用程式的體驗和存取。 例如，如果您在 SharePoint 中看到問題，請再次檢查您的外部共用設定。
 Planner 和 Yammer 的已知相容性問題有哪些？ | <li>當權限設定為 [受限制] 時，登入 Planner 應用程式或存取 Microsoft 小組中之 Planner 的來賓將無法存取其方案或任何工作。<li>當權限設定為 [受限制] 時，登入 Yammer 的來賓將無法離開群組。

@@ -1,6 +1,6 @@
 ---
 title: 使用雲端群組來管理 Azure Active Directory 中的角色指派 |Microsoft Docs
-description: 預覽用來委派身分識別管理的自訂 Azure AD 角色。 在 Azure 入口網站、PowerShell 或圖形 API 中管理 Azure 角色。
+description: 預覽用來委派身分識別管理的自訂 Azure AD 角色。 管理 Azure 入口網站、PowerShell 或圖形 API 中的 Azure 角色指派。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe509879c38f979525a673890c05fcfe5c8e3880
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2932bfc2f9606326ae38711237e5e10912d41aca
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798307"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053764"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>使用雲端群組來管理 Azure Active Directory (預覽中的角色指派) 
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) 推出公開預覽，您可以在其中指派�
 
 ## <a name="how-this-feature-works"></a>這項功能的運作方式
 
-建立新的 Office 365 或安全性群組，並將 ' isAssignableToRole ' 屬性設定為 ' true '。 您也可以藉由開啟 **Azure AD 角色指派給群組**，在 Azure 入口網站中建立群組時啟用此屬性。 無論何種方式，您都可以將群組指派給一或多個 Azure AD 角色，就像您將角色指派給使用者的方式一樣。 您可以在單一 Azure AD 組織 (租使用者) 中建立最多200個可指派角色的群組。
+建立新的 Microsoft 365 或安全性群組，並將 ' isAssignableToRole ' 屬性設定為 ' true '。 您也可以藉由開啟 **Azure AD 角色指派給群組**，在 Azure 入口網站中建立群組時啟用此屬性。 無論何種方式，您都可以將群組指派給一或多個 Azure AD 角色，就像您將角色指派給使用者的方式一樣。 您可以在單一 Azure AD 組織 (租使用者) 中建立最多200個可指派角色的群組。
 
 如果您不想讓群組成員擁有角色的持續存取權，您可以使用 Azure AD Privileged Identity Management。 將群組指派為 Azure AD 角色的合格成員。 然後，群組的每個成員都有資格針對指派給群組的角色啟用其指派。 然後，他們可以在固定的時間內啟動其角色指派。
 
@@ -73,7 +73,7 @@ Azure AD 可讓您使用名為 isAssignableToRole 的新屬性（稱為群組）
 
 使用此功能時，您的 Azure AD 組織中必須有可用的 Azure AD Premium P1 授權。 若要同時使用 Privileged Identity Management 進行即時角色啟用，您必須擁有可用的 Azure AD Premium P2 授權。 若要尋找您需求的正確授權，請參閱 [比較免費和 Premium 方案的正式運作功能](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [建立可指派角色的群組](roles-groups-create-eligible.md)
 - [將角色指派給角色可指派的群組](roles-groups-assign-role.md)

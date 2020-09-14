@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eb637ae3da9c6a0a3ea066ad741845bad36d5d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 019327436eaf2186e23068a5b0a1ac4b21b9fbe7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489624"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055158"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共用帳戶
 
@@ -29,7 +29,7 @@ ms.locfileid: "89489624"
 有時候組織需要讓多人使用同一個使用者名稱和密碼，這通常發生在兩種情況下：
 
 * 每個使用者都必須使用唯一的登入名稱和密碼來存取應用程式時 (無論是內部部署的應用程式或取用者雲端服務，例如公司的社交媒體帳戶)。
-* 建立多個使用者環境時。 您可能會有一個具備較高權限的本機帳戶，而且該帳戶用於執行核心設定、管理和復原活動。 例如，Office 365 的本機「全域管理員」帳戶或 Salesforce 中的根帳戶。
+* 建立多個使用者環境時。 您可能會有一個具備較高權限的本機帳戶，而且該帳戶用於執行核心設定、管理和復原活動。 例如，Microsoft 365 的本機「全域管理員」帳戶或 Salesforce 中的根帳號。
 
 傳統上，這些帳戶的共用方式是透過將認證 (使用者名稱和密碼) 散發給適當的人員，或是將認證儲存在多個受信任的代理人可以存取的共用位置。
 

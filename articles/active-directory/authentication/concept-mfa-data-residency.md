@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee4b15311dfefecd9a533add9c5a028a9b7b22fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8bed0f6cc32c25563d322da77193c5a3b6072902
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051153"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052274"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 的資料落地與客戶資料
 
-Azure AD 的客戶資料會儲存在您組織訂閱 Microsoft 線上服務 (例如 Office 365 與 Azure) 時所提供地址的地理位置。 如需客戶資料儲存位置的相關資訊，請參閱 Microsoft 信任中心的[資料所在位置](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)一節。
+當您訂閱 Microsoft 線上服務（例如 Microsoft 365 和 Azure）時，會根據您組織所提供的位址，在地理位置 Azure AD 儲存客戶資料。 如需客戶資料儲存位置的相關資訊，請參閱 Microsoft 信任中心的[資料所在位置](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)一節。
 
 雲端式 Azure Multi-Factor Authentication 與 Azure Multi-Factor Authentication Server 會處理及儲存一些個人資料與組織資料。 本文概述儲存的資料內容與位置。
 

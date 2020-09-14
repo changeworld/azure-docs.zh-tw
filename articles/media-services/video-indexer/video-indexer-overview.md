@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: bff99cdd44763c0df6bb5b2dd863b27728c23fcd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: b327facc2ac9ad64cf5237ecddc3e4024f75daa6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318673"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052132"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>什麼是 Azure 媒體服務影片索引器？
 
@@ -81,7 +81,7 @@ ms.locfileid: "89318673"
 * **雙通道處理**：自動偵測分離的文字記錄並合併到單一時間軸。
 * **減少雜訊**：清除電話音頻或錄音雜訊 (視 Skype 的篩選條件而定)。
 * **自訂文字記錄** (CRI)：將自訂的語音轉換文字模型定型，以建立產業特有的文字記錄。 如需詳細資訊，請參閱[從影片索引器網站自訂語言模型](customize-language-model-with-website.md)和[使用影片索引器 API 來自訂語言模型](customize-language-model-with-api.md)。
-* **說話者列舉**：對應和了解哪一位說話者在何時說了哪些字。
+* **說話者列舉**：對應和了解哪一位說話者在何時說了哪些字。 您可以在單一音訊檔案中偵測到16個喇叭。
 * **說話者統計資料**：提供說話者語音比率的統計資料。
 * **文字內容仲裁**：偵測音訊文字記錄中的明確文字。
 * **音訊效果**：識別音訊效果，例如拍手聲、語音和無聲。

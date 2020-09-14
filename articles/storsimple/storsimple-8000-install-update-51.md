@@ -3,7 +3,7 @@ title: 在 StorSimple 8000 系列裝置上安裝更新 5.1 |Microsoft Docs
 description: 說明如何在 StorSimple 8000 系列裝置上安裝 StorSimple 8000 系列更新5.1。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
-ms.author: twooley
-ms.openlocfilehash: f9cc5181d6cc29ee4b3c2373dbbc91d6290fbe6e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 1c9d4747b227c7ff83e4c43292badd65836edfef
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782765"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052166"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>在 StorSimple 裝置上安裝更新5。1
 
@@ -166,6 +166,6 @@ Perform the following steps to download and install the hotfixes.
 [!INCLUDE [storsimple-8000-install-troubleshooting](../../includes/storsimple-8000-install-troubleshooting.md)]
 -->
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入瞭解 [更新5.1 版本](storsimple-update51-release-notes.md)。

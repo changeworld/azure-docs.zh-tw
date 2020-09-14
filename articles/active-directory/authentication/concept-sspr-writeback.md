@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 690dead3cb0059dd1b20ff042a93c36d674e62d2
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717433"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052676"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>自助式密碼重設回寫如何在 Azure Active Directory 中運作？
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 
 * **強制執行內部部署 Active Directory Domain Services (AD DS) 密碼原則**：當使用者重設其密碼時，系統會進行檢查以確保此動作符合內部部署 AD DS 原則，然後才將其認可至該目錄。 這項檢閱包括檢查歷程記錄、複雜度、有效期、密碼篩選，以及在 AD DS 中定義的任何其他密碼限制。
 * **零延遲的意見反應**： 密碼回寫是一項同步作業。 如果使用者的密碼不符合原則，或因為任何原因而無法重設或變更，則其會立即收到通知。
-* **支援從存取面板和 Office 365 變更密碼**：當已同盟或已同步處理密碼雜湊的使用者變更其已過期或尚未過期密碼時，系統會將這些密碼回寫到 AD DS。
+* **支援從存取面板和 Microsoft 365 進行密碼變更**：當同盟或密碼雜湊同步處理的使用者變更其過期或未過期的密碼時，系統會將這些密碼寫回 AD DS。
 * **支援在管理員從 Azure 入口網站重設密碼時將密碼回寫**：當管理員在 [Azure 入口網站](https://portal.azure.com)中重設使用者密碼時，如果該使用者為已同盟或已同步處理密碼雜湊的使用者，系統就會將密碼回寫至內部部署環境。 Office 管理入口網站目前不支援此功能。
 * **不需要任何輸入防火牆規則**：密碼回寫會使用「Azure 服務匯流排」轉送作為基礎通訊通道。 所有通訊都會透過連接埠 443 來輸出。
 

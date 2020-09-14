@@ -13,12 +13,12 @@ ms.date: 08/24/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 3054180f65a7d65300067edadee5e9507bb92414
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 9aa5eb54d79d98627697c51ee7dcb16a44fccb60
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796165"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053203"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 身分識別平台存取權杖
 
@@ -101,7 +101,7 @@ JWT (JSON Web 權杖) 分成三個部分：
 | `scp` | 字串，範圍的空格分隔清單 | 由您應用程式公開的範圍集合，用戶端應用程式已針對此集合要求 (和接收) 同意。 您的應用程式應確認這些範圍是由應用程式公開的有效範圍，並根據這些範圍的值做出授權決策。 僅包含於[使用者權杖](#user-and-application-tokens)中。 |
 | `roles` | 字串陣列、權限清單 | 由您應用程式公開的權限集合，而要求應用程式或使用者已獲得用於呼叫的權限。 若為[應用程式權杖](#user-and-application-tokens)，這會在用戶端認證流程 ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)) 期間用來取代使用者範圍。  若為[使用者權杖](#user-and-application-tokens)，這會填入目標應用程式上指派給使用者的角色。 |
 | `wids` | [RoleTemplateID](../users-groups-roles/directory-assign-admin-roles.md#role-template-ids) GUID 的陣列 | 代表從[系統管理員角色頁面](../users-groups-roles/directory-assign-admin-roles.md#role-template-ids)中的角色區段，指派給此使用者的全租用戶角色。  此宣告會透過[應用程式資訊清單](reference-app-manifest.md)的 `groupMembershipClaims` 屬性，針對每個應用程式進行設定。  必須將其設定為 "All" 或 "DirectoryRole"。  可能不會出現在因權杖長度考量而透過隱含流程取得的權杖中。 |
-| `groups` | GUID 的 JSON 陣列 | 提供代表主體群組成員資格的物件識別碼。 這些值都是唯一的 (請參閱「物件識別碼」)，而且可安全地用來管理存取權，例如強制授權以存取資源。 群組宣告中包含的群組會透過[應用程式資訊清單](reference-app-manifest.md)的 `groupMembershipClaims` 屬性，針對每個應用程式進行設定。 Null 值將會排除所有群組，"SecurityGroup" 值只會包含 Active Directory 安全性群組成員資格，而 "All" 值將會包含安全性群組和 Office 365 通訊群組清單。 <br><br>請參閱下面的 `hasgroups` 宣告，以取得使用 `groups` 宣告搭配隱含授與的詳細資訊。 <br>針對其他流程，如果使用者所屬的群組數目超過限制 (SAML 為 150，JWT 為 200)，則會將超額宣告新增至指向 Microsoft Graph 端點 (包含使用者群組清單) 的宣告來源。 |
+| `groups` | GUID 的 JSON 陣列 | 提供代表主體群組成員資格的物件識別碼。 這些值都是唯一的 (請參閱「物件識別碼」)，而且可安全地用來管理存取權，例如強制授權以存取資源。 群組宣告中包含的群組會透過[應用程式資訊清單](reference-app-manifest.md)的 `groupMembershipClaims` 屬性，針對每個應用程式進行設定。 Null 值會排除所有群組，"SecurityGroup" 的值只會包含 Active Directory 的安全性群組成員資格，而 "All" 值會包含安全性群組和 Microsoft 365 通訊群組清單。 <br><br>請參閱下面的 `hasgroups` 宣告，以取得使用 `groups` 宣告搭配隱含授與的詳細資訊。 <br>針對其他流程，如果使用者所屬的群組數目超過限制 (SAML 為 150，JWT 為 200)，則會將超額宣告新增至指向 Microsoft Graph 端點 (包含使用者群組清單) 的宣告來源。 |
 | `hasgroups` | Boolean | 如果有的話，一律為 `true`，表示使用者在至少一個群組中。 如果完整 groups 宣告會將 URI 片段延伸超出 URL 長度限制 (目前為 6 個或更多群組)，則使用於取代隱含授與流程中 JWT 的 `groups` 宣告。 表示用戶端應該使用 Microsoft Graph API 來判斷使用者的群組 (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`)。 |
 | `groups:src1` | JSON 物件 | 若為沒有長度限制 (請參閱上面的 `hasgroups`) 但是對權杖而言仍然太大的權杖要求，則會包含使用者的完整 groups 清單連結。 在 JWT 中以分散式宣告形式取代 `groups` 宣告，在 SAML 中則以新宣告形式取代。 <br><br>**範例 JWT 值**： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
 | `sub` | String | 權杖判斷提示其相關資訊的主體，例如應用程式的使用者。 這個值不可變，而且無法重新指派或重複使用。 它可用來安全地執行授權檢查 (例如當權杖用於存取資源時)，並可做為資料庫資料表中的索引鍵。 由於主體一律是存在於 Azure AD 所簽發的權杖中，因此建議您在一般用途的授權系統中使用此值。 不過，主體是成對識別碼，對於特定應用程式識別碼來說，主體是唯一的。 因此，如果單一使用者使用兩個不同的用戶端識別碼登入兩個不同的應用程式，這些應用程式會收到兩個不同的主體宣告值。 視您的架構和隱私權需求而定，這不一定是您想要的。 另請參閱 `oid` 宣告 (這確實會在租用戶內的應用程式中保持不變)。 |

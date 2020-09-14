@@ -3,7 +3,7 @@ title: 部署 StorSimple Snapshot Manager | Microsoft Docs
 description: 了解如何下載及安裝 StorSimple Snapshot Manager MMC 嵌入式管理單元，來管理 StorSimple 資料保護和備份功能。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: f0128f57-519e-49ec-9187-23575809cdbe
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 6d3e3d6cdf7a831bf09d9c4709c1a60d27683438
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 5f94564c5e769d3cf0e0abbe92a309a1ee2117a1
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75933373"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055073"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>部署 StorSimple Snapshot Manager MMC 嵌入式管理單元
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 StorSimple Snapshot Manager 是 Microsoft Management Console (MMC) 嵌入式管理單元，可在 Microsoft Azure StorSimple 環境中簡化資料保護和備份管理。 利用 StorSimple Snapshot Manager，您可以管理 Microsoft Azure StorSimple 內部部署和雲端儲存體，就好像是完全整合的儲存系統，並藉此簡化備份和還原程序並降低成本。 
 
 本教學課程描述組態需求，以及安裝、移除及升級 StorSimple Snapshot Manager 的程序。
@@ -211,7 +211,7 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server 2008 R2 SP1、W
    2. 在 [服務]**** 頁面上，選取 [Microsoft StorSimple 管理服務]****。
    3. 在右窗格的 [Microsoft StorSimple 管理服務]**** 下方，按一下 [重新啟動服務]****。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 若要深入了解 StorSimple Snapshot Manager，請移至 [什麼是 StorSimple Snapshot Manager？](storsimple-what-is-snapshot-manager.md)
 * 若要深入了解 StorSimple Snapshot Manager 使用者介面，請移至 [StorSimple Snapshot Manager 使用者介面](storsimple-use-snapshot-manager.md)
 * 若要深入了解如何使用 StorSimple Snapshot Manager，請移至 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。

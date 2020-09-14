@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4cfeda0d06c1e6956c7bbc953f1082a3510e8712
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4b729e975ddc9c184c1b0f39a6d3be548211cdfc
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005015"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052710"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密碼原則和帳戶限制
 
@@ -108,7 +108,7 @@ Microsoft 會針對任何 Azure 管理員角色強制執行強 *式預設雙閘�
 
 您也可以使用 PowerShell Cmdlet 來移除永不過期的設定，或查看哪些使用者密碼設定為永不過期。
 
-本指引適用於其他提供者 (例如 Intune 和 Office 365)，它們也仰賴 Azure AD 提供身分識別和目錄服務。 密碼到期是原則中唯一可變更的部分。
+本指引適用于其他提供者（例如 Intune 和 Microsoft 365），這也依賴身分識別和目錄服務的 Azure AD。 密碼到期是原則中唯一可變更的部分。
 
 > [!NOTE]
 > 只有未透過 Azure AD Connect 同步處理的使用者帳戶密碼，才可設定為不會過期。 如需目錄同步作業的詳細資訊，請參閱 [Connect AD 與 Azure AD](../hybrid/whatis-hybrid-identity.md)。

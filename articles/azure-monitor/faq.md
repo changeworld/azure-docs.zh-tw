@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 8ace82147f17e6ee7e888553c58f32ec6e5ba271
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 4a5203a91ba528328dce7036d4690c6dea137c33
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569198"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054257"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
@@ -785,7 +785,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 
 此近似值非常適用於以要求/回應為基礎的通訊協定：連線上會傳出單一要求，並有單一回應抵達。 這適用於 HTTP(S) (不含管線)，但不適用其他通訊協定。
 
-### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>如果我採用 Log Analytics 免費定價方案，有何限制？
+### <a name="are-there-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>如果我在 Log Analytics 免費定價方案中，是否有限制？
 如果您使用「免費」定價層設定了具有 Log Analytics 工作區的 Azure 監視器，則適用於 VM 的 Azure 監視器的對應功能僅支援五部已連線到工作區的電腦。 如果您有五部連線至免費工作區的 VM，您可中斷其中一部 VM 的連線，然後連線新的 VM，則新的 VM 不受監視，而且不會反映於 [對應] 頁面。  
 
 在此情況下，當您開啟 VM 並從左側窗格選取 [見解] 時 (即使其已安裝於 VM 上)，系統即會以 [立即試用] 選項來提示您。  不過，如果此 VM 並未在適用於 VM 的 Azure 監視器上線，就不會以通常會出現的選項提示您。 

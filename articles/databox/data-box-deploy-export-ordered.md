@@ -2,18 +2,18 @@
 title: 從 Azure 資料箱匯出資料的教學課程 |Microsoft Docs
 description: 瞭解部署必要條件以及如何從 Azure 資料箱匯出資料
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.author: twooley
-ms.openlocfilehash: 0ddadd8d2bddda0fdff6a126fe6c09d863139b44
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.author: alkohli
+ms.openlocfilehash: 5494c2dd57220888ad846aaf69fde2f7a59353e4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783615"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053002"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>教學課程：建立 Azure 資料箱 (Preview 的匯出順序) 
 
@@ -60,7 +60,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    ![建立資源](media/data-box-deploy-export-ordered/azure-data-box-export-00b.png)
 
-3. 選取 [建立]  。
+3. 選取 [建立]。
 
    ![建立 Azure 資料箱](media/data-box-deploy-export-ordered/azure-data-box-export-00c.png)
 
@@ -115,9 +115,20 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    若要查看 xml 輸入的範例，請參閱 [範例 xml 輸入](data-box-deploy-export-ordered.md#sample-xml-file)
 
-9. 在 **選取的資料**中，檢查您的設定，然後選取 **[下一步：連絡人詳細資料>**。
+9. 在 [ **資料選擇**] 中，檢查您的設定，然後選取 **[下一步：安全性>**。
 
    ![聯絡詳細資料](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
+
+1. 在 [ **安全性**] 中，如果您想要啟用以軟體為基礎的雙重加密，請選取 **[啟用順序的雙重加密**]。 
+
+   除了資料箱上之資料的 AES-256 位加密之外，還會執行以軟體為基礎的加密。
+
+   > [!NOTE]
+   > 啟用此選項可能會進行訂單處理，而資料複製需要較長的時間。 建立訂單之後，您就無法變更此選項。
+
+   ![資料箱匯入的安全性畫面，雙重加密](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
+
+   完成時，選取 [下一步:連絡人詳細資料] 以繼續進行。
 
 10. 在 [ **連絡人詳細資料**] 中，選取 [ **+ 新增寄送位址** ]，輸入您的寄送資訊。
 
@@ -148,16 +159,16 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 如果您選取 [ **使用 XML**檔案]，可以指定特定的容器和 blob (頁面和您想要匯出的區塊) 。 您必須遵循 [範例 xml 檔表格](#sample-xml-file) 規格來格式化 XML。 下列步驟示範如何使用 XML 檔案來匯出資料：
 
 1. 針對 [ **匯出類型**]，選取 [ **使用 XML**檔案]。 這是您的 XML 檔案，可指定您想要匯出的特定 blob 和 Azure 檔案。 若要加入 XML 檔案，請選取 [ **按一下這裡選取 xml**檔案]。
-     ![XML 檔](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
+     ![XML 檔案](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
 
 2. 選取 [ **+ 容器** ] 以建立容器。
-    ![XML 檔](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
+    ![XML 檔案](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
 3. 在從 Azure 入口網站右側彈出的 [ **新增容器** ] 索引標籤中，新增容器的名稱。 名稱必須是小寫，而且您可以包含數位和虛線 '-'。 然後從下拉式清單方塊中選取 [ **公用存取層級** ]。 我們建議您選擇 **私用 (非匿名存取) ** ，以防止其他人存取您的資料。 如需有關容器存取層級的詳細資訊，請參閱 [容器存取權限](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)。
 
    ![XML 檔](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 
-4. 選取 [建立]  。
+4. 選取 [建立]。
 
    ![XML 檔](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
 
@@ -169,7 +180,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    ![XML 檔](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
 
-6. 按兩下容器將會顯示 [容器屬性] 視圖。 您現在想要附加 (或流覽至) 您的 XML 檔案，其中包含您要匯出的 blob 和/或 Azure 檔案的清單。 選取 [上傳] 。
+6. 按兩下容器將會顯示 [容器屬性] 視圖。 您現在想要附加 (或流覽至) 您的 XML 檔案，其中包含您要匯出的 blob 和/或 Azure 檔案的清單。 選取 [上傳]  。
 
    ![XML 檔](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
 
@@ -247,11 +258,11 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    | 選取器 | Blob 路徑 | 描述 |
    | --- | --- | --- |
-   | 開頭為 |/ |匯出儲存體帳戶中的所有 Blob |
-   | 開頭為 |/$root/ |匯出根容器中的所有 Blob |
-   | 開頭為 |/containers |匯出任何以前置詞**容器**開頭之容器中的所有 blob |
-   | 開頭為 |/container-name/ |匯出容器容器中的所有 blob **-名稱** |
-   | 開頭為 |/container-name/prefix |匯出容器容器中的所有 blob-開頭開頭**為前置詞**的**名稱** |
+   | 開始於 |/ |匯出儲存體帳戶中的所有 Blob |
+   | 開始於 |/$root/ |匯出根容器中的所有 Blob |
+   | 開始於 |/containers |匯出任何以前置詞**容器**開頭之容器中的所有 blob |
+   | 開始於 |/container-name/ |匯出容器容器中的所有 blob **-名稱** |
+   | 開始於 |/container-name/prefix |匯出容器容器中的所有 blob-開頭開頭**為前置詞**的**名稱** |
    | 等於 |$root/logo.bmp |匯出根容器中的 Blob **logo.bmp** |
    | 等於 |8tbpageblob/mydata.txt |在容器**8tbpageblob**中匯出 blob **mydata.txt** |
 

@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager 磁碟區群組 | Microsoft Docs
 description: 描述如何使用 StorSimple Snapshot Manager MMC 嵌入式管理單元，來建立和理磁碟區群組。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 97bb232f726dada5241242e4a1d90e120c07e38c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506254"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054767"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>使用 StorSimple Snapshot Manager 來建立和管理磁碟區群組
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 您可以在 [領域]**** 窗格上使用 [磁碟區群組] **** 節點來將磁碟區指派給磁碟區群組、檢視磁碟區群組相關資訊、排程備份與編輯磁碟區群組。
 
 磁碟區群組是用來確保應用程式具有一致備份之相關磁碟區的集區。 如需詳細資訊，請參閱[磁碟區和磁碟區群組](storsimple-what-is-snapshot-manager.md#volumes-and-volume-groups)，以及[與 Windows 磁碟區陰影複製服務整合](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)。
@@ -48,10 +48,10 @@ ms.locfileid: "85506254"
 ## <a name="view-volume-groups"></a>檢視磁碟區群組
 如果您按一下 [磁碟區群組]**** 節點，[結果]**** 窗格會顯示每個磁碟區群組的下列相關資訊，視您選擇的資料行而定。 您可以設定 [結果]**** 窗格中的資料行。 (以滑鼠右鍵按一下 [磁碟區]**** 節點，選取 [檢視]****，然後選取 [新增/移除資料行]****。)
 
-| 結果資料行 | 說明 |
+| 結果資料行 | 描述 |
 |:--- |:--- |
-| Name |[名稱] **** 欄包含磁碟區群組的名稱。 |
-| Application |[應用程式] **** 欄會顯示 Windows 主機上目前安裝與執行中的 VSS 寫入器數目。 |
+| 名稱 |[名稱] **** 欄包含磁碟區群組的名稱。 |
+| 應用程式 |[應用程式] **** 欄會顯示 Windows 主機上目前安裝與執行中的 VSS 寫入器數目。 |
 | 已選取 |[已選取]**** 欄會顯示磁碟區群組中包含的磁碟區數目。 零 (0) 表示沒有任何應用程式與磁碟區群組中的磁碟區相關聯。 |
 | 已匯入 |[已匯入]**** 欄會顯示已匯入的磁碟區數目。 當設定為 **True** 時，此資料行會指出已從 Azure 入口網站匯入磁碟區群組，而不是在 StorSimple Snapshot Manager 中建立它。 |
 
@@ -72,17 +72,17 @@ ms.locfileid: "85506254"
     [建立磁碟區群組]**** 對話方塊隨即出現。
    
     ![建立磁碟區群組對話方塊](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_CreateVolumeGroup_dialog.png)
-3. 輸入以下資訊：
+3. 輸入下列資訊：
    
    1. 在 [名稱]**** 方塊中，輸入新磁碟區群組的唯一名稱。
    2. 在 [應用程式] **** 方塊中，選取與您將新增至磁碟區群組之磁碟區相關聯的應用程式。
       
-       [應用程式] **** 方塊僅會列出那些使用 StorSimple 磁碟區，並對它們啟用 VSS 寫入器的應用程式。 只在寫入器注意的所有磁碟區都是 StorSimple 磁碟區時，才會啟用 VSS 寫入器。 如果 [應用程式] 方塊是空的，則不會安裝任何使用 Azure StorSimple 磁碟區，並具有支援之 VSS 寫入器的應用程式。 （目前，Azure StorSimple 支援 Microsoft Exchange 和 SQL Server）。如需 VSS 寫入器的詳細資訊，請參閱[與 Windows 磁碟區陰影複製服務整合](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)。
+       [應用程式] **** 方塊僅會列出那些使用 StorSimple 磁碟區，並對它們啟用 VSS 寫入器的應用程式。 只在寫入器注意的所有磁碟區都是 StorSimple 磁碟區時，才會啟用 VSS 寫入器。 如果 [應用程式] 方塊是空的，則不會安裝任何使用 Azure StorSimple 磁碟區，並具有支援之 VSS 寫入器的應用程式。  (目前，Azure StorSimple 支援 Microsoft Exchange 和 SQL Server ) 。如需 VSS 寫入器的詳細資訊，請參閱 [與 Windows 磁碟區陰影複製服務整合](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)。
       
        如果選取應用程式，則會自動選取所有與其相關聯的磁碟區。 相反地，如果選取與特定應用程式相關聯的磁碟區，則會在 [應用程式] **** 方塊中自動選取該應用程式。 
    3. 在 [磁碟區] **** 方塊中，選取要新增到磁碟區群組的 StorSimple 磁碟區。 
       
-      * 您可以包含具有單一或多個磁碟分割的磁碟區。 （多個分割區可以是動態磁碟或具有多個磁碟分割的基本磁碟）。包含多個磁碟分割的磁片區會被視為單一單位。 因此，如果您只將其中一個磁碟分割新增到磁碟區群組，則所有其他磁碟分割會同時自動新增到該磁碟區群組。 在將多個磁碟分割磁碟區新增到磁碟區群組之後，多個磁碟分割磁碟區會繼續被視為單一單位。
+      * 您可以包含具有單一或多個磁碟分割的磁碟區。  (多個磁碟分割磁片區可為動態磁碟或具有多個磁碟分割的基本磁碟。 ) 包含多個磁碟分割的磁片區會被視為單一單位。 因此，如果您只將其中一個磁碟分割新增到磁碟區群組，則所有其他磁碟分割會同時自動新增到該磁碟區群組。 在將多個磁碟分割磁碟區新增到磁碟區群組之後，多個磁碟分割磁碟區會繼續被視為單一單位。
       * 您可以建立空的磁碟區群組，方法是不將任何磁碟區指派給它們。 
       * 請勿在相同的磁碟區群組中混用叢集共用磁碟區 (CSV) 和非 CSV。 StorSimple Snapshot Manager 不支援在相同快照中混用 CSV 磁碟區和非 CSV 磁碟區。
 4. 按一下 [確定]**** 以儲存磁碟區群組。
@@ -125,7 +125,7 @@ ms.locfileid: "85506254"
    
     刪除的磁碟區群組會從 [結果] **** 窗格中的清單消失，而且所有與該磁碟區群組相關聯的備份都會從備份目錄中刪除。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 了解如何 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
 * 了解如何 [使用 StorSimple Snapshot Manager 建立和管理備份原則](storsimple-snapshot-manager-manage-backup-policies.md)。
 

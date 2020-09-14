@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 393ed336018c7a0272c15adaa72633abd6b95d2f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: cf03dffe82d611f10639af2a147bc2d9e9316621
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377194"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052769"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>運作方式：Azure AD 自助式密碼重設
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 
 當使用者從應用程式或頁面選取 [ **無法存取您的帳戶** ] 連結，或直接移至時 [https://aka.ms/sspr](https://passwordreset.microsoftonline.com) ，在 SSPR 入口網站中使用的語言會根據下列選項：
 
-* 根據預設，瀏覽器地區設定會用來以適當的語言顯示 SSPR。 密碼重設體驗會當地語系化為 [Office 365 所支援](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec)的相同語言。
+* 根據預設，瀏覽器地區設定會用來以適當的語言顯示 SSPR。 密碼重設體驗會當地語系化成 [Microsoft 365 支援](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec)的相同語言。
 * 如果您想要以特定的當地語系化語言連結到 SSPR，請附加 `?mkt=` 至密碼重設 URL 的結尾，以及所需的地區設定。
     * 例如，若要指定西班牙文的*es*地區設定，請使用 `?mkt=es-us`  -  [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us) 。
 
@@ -77,7 +77,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 
 如果使用者使用 Azure AD 登入任何應用程式，您可以啟用此選項以要求使用者完成 SSPR 註冊。 此工作流程包括下列應用程式︰
 
-* Office 365
+* Microsoft 365
 * Azure 入口網站
 * 存取面板
 * 同盟應用程式
@@ -226,7 +226,7 @@ SSPR 會在 Active Directory 中執行系統管理員起始的密碼重設等專
 
 所有企業對企業 (B2B) 組態完全支援密碼重設和變更。 下列三種案例支援 B2B 使用者密碼重設：
 
-* **來自具有現有 Azure AD 租使用者之合作夥伴組織的使用者**：如果您夥伴的組織有現有的 Azure AD 租使用者，我們會遵循該租使用者上啟用的任何密碼重設原則。 若要讓密碼重設得以運作，合作夥伴組織只需要確定已啟用 Azure AD SSPR。 Office 365 客戶不需額外付費。
+* **來自具有現有 Azure AD 租使用者之合作夥伴組織的使用者**：如果您夥伴的組織有現有的 Azure AD 租使用者，我們會遵循該租使用者上啟用的任何密碼重設原則。 若要讓密碼重設得以運作，合作夥伴組織只需要確定已啟用 Azure AD SSPR。 Microsoft 365 的客戶無須額外付費。
 * **透過** 自助式註冊註冊的使用者：如果您合作的組織使用 [自助式註冊](../users-groups-roles/directory-self-service-signup.md) 功能進入租使用者，我們會讓他們以註冊的電子郵件重設密碼。
 * **B2b 使用者**：使用新的 [Azure AD b2b 功能](../external-identities/what-is-b2b.md) 建立的任何新 B2B 使用者，也可以使用在邀請程式期間註冊的電子郵件重設其密碼。
 

@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager 備份工作 | Microsoft Docs
 description: 描述如何使用 StorSimple Snapshot Manager MMC 嵌入式管理單元來檢視和管理已排程、目前執行中和已完成的備份作業。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: bf4dcff6-c819-4766-b9d9-9922831cb200
@@ -13,20 +13,20 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: fb0d330b833c8841e65d650599d74211003843bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 3c26a84e32a17cba83b5ca895f146e561072fa62
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511500"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054954"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>使用 StorSimple Snapshot Manager 來檢視和管理備份作業
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 [範圍]**** 窗格中的 [作業]**** 節點會顯示您以互動方式或透過已設定之原則起始的 [已排程]****、[過去 24 小時]**** 和 [執行中]**** 備份工作。 
 
-本教學課程說明如何使用 [ **作業** ] 節點，以顯示已排程、最近和目前執行中之備份作業的相關資訊。 （作業清單和對應資訊會出現在 [**結果**] 窗格中）。此外，您可以在列出的作業上按一下滑鼠右鍵，並查看列出可用動作的快顯功能表。
+本教學課程說明如何使用 [ **作業** ] 節點，以顯示已排程、最近和目前執行中之備份作業的相關資訊。  (工作清單和對應的資訊會出現在 [ **結果** ] 窗格中 ) 。此外，您也可以在列出的作業上按一下滑鼠右鍵，並查看列出可用動作的內容功能表。
 
 ## <a name="view-scheduled-jobs"></a>檢視已排程的作業
 請使用下列程序來檢視已排程的備份作業。
@@ -84,7 +84,7 @@ ms.locfileid: "85511500"
      ![目前執行中的工作](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_running.png)
 3. 若要在特定工作上執行其他動作，請以滑鼠右鍵按一下 [ **結果** ] 窗格中的作業名稱，然後選取功能表選項。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 了解如何 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
 * 了解如何 [使用 StorSimple Snapshot Manager 管理備份目錄](storsimple-snapshot-manager-manage-backup-catalog.md)。
 

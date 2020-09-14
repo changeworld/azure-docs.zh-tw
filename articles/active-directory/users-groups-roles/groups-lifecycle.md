@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799293"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054546"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>設定 Microsoft 365 群組的到期原則
 
@@ -42,7 +42,7 @@ ms.locfileid: "88799293"
 
 ## <a name="activity-based-automatic-renewal"></a>以活動為基礎的自動更新
 
-使用 Azure AD 智慧，現在會根據最近使用的方式，自動更新群組。 這項功能不需要由群組擁有者手動採取動作，因為它是以 Office 365 服務（例如 Outlook、SharePoint 或團隊）群組中的使用者活動為基礎。 例如，如果擁有者或群組成員有像是上傳 SharePoint 中的檔、造訪團隊頻道，或是傳送電子郵件給 Outlook 中的群組，則會自動更新群組，且擁有者不會收到任何更新通知。
+使用 Azure AD 智慧，現在會根據最近使用的方式，自動更新群組。 這項功能不需要由群組擁有者手動採取動作，因為它是以跨 Microsoft 365 服務（例如 Outlook、SharePoint 或團隊）群組中的使用者活動為基礎。 例如，如果擁有者或群組成員有像是上傳 SharePoint 中的檔、造訪團隊頻道，或是傳送電子郵件給 Outlook 中的群組，則會自動更新群組，且擁有者不會收到任何更新通知。
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>自動更新群組到期的活動
 
@@ -183,7 +183,7 @@ User | 可以更新他們擁有的 Microsoft 365 群組<br>可以還原他們所
 - Reset-AzureADMSLifeCycleGroup
 - Get-AzureADMSLifecyclePolicyGroup
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 這些文章提供有關 Azure AD 群組的其他資訊。
 

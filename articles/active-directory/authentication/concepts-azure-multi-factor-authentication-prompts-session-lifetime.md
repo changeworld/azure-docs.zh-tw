@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9d5ffaf996f51348334f4adeeae150db9eb0defa
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179346"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052659"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>優化重新驗證提示，並瞭解 Azure Multi-Factor Authentication 的會話存留期
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重�
     * 使用 [受管理的裝置](../devices/overview.md) 或 [無縫 sso](../hybrid/how-to-connect-sso.md)，在應用程式之間啟用單一登入 (SSO) 。
     * 如果需要重新驗證，請使用條件式存取登 [入頻率原則](../conditional-access/howto-conditional-access-session-lifetime.md)。
     * 針對從非受控裝置或行動裝置案例登入的使用者，請使用條件式存取來啟用持續性瀏覽器會話和登入頻率原則。
-* 如果您有 Office 365 應用程式授權或免費的 Azure AD 層：
+* 如果您有 Microsoft 365 apps 授權或免費的 Azure AD 層：
     * 使用 [受管理的裝置](../devices/overview.md) 或 [無縫 sso](../hybrid/how-to-connect-sso.md)，在應用程式之間啟用單一登入 (SSO) 。
     * 保持啟用 [ *保持登入* ] 選項，並引導您的使用者接受它。
 * 針對行動裝置案例，請確定您的使用者使用 Microsoft Authenticator 應用程式。 此應用程式會用來做為其他 Azure AD 同盟應用程式的訊息代理程式，並減少裝置上的驗證提示。
@@ -123,17 +123,17 @@ Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重�
 
 若要檢查權杖存留期，請 [使用 Azure AD PowerShell 來查詢任何 Azure AD 原則](../develop/active-directory-configurable-token-lifetimes.md#prerequisites)。 停用任何您已備妥的原則。
 
-如果您的租使用者中已啟用一個以上的設定，建議您根據可用的授權更新您的設定。 例如，如果您有 Azure AD premium 授權，您應該只使用登 *入頻率* 和 *持續性瀏覽器會話*的條件式存取原則。 如果您有 Office 365 應用程式或 Azure AD 免費授權，您應該使用 [ *保持登入？* ] 設定。
+如果您的租使用者中已啟用一個以上的設定，建議您根據可用的授權更新您的設定。 例如，如果您有 Azure AD premium 授權，您應該只使用登 *入頻率* 和 *持續性瀏覽器會話*的條件式存取原則。 如果您有 Microsoft 365 apps 或 Azure AD 免費授權，您應該使用 [ *保持登入？* ] 設定。
 
 如果您已啟用可設定的權杖存留期，很快就會移除這項功能。 規劃遷移至條件式存取原則。
 
 下表摘要說明以授權為基礎的建議：
 
-|              | Azure AD Free 和 Office 365 應用程式 | Azure AD Premium |
+|              | Azure AD Free 和 Microsoft 365 應用程式 | Azure AD Premium |
 |------------------------------|-----------------------------------|------------------|
 | **SSO**                      | 針對未受管理的裝置[Azure AD 聯結](../devices/concept-azure-ad-join.md)或[混合式 Azure AD 聯結](../devices/concept-azure-ad-join-hybrid.md)或[無縫 SSO](../hybrid/how-to-connect-sso.md) 。 | Azure AD Join<br />混合式 Azure AD Join |
 | **重新驗證設定** | 仍已登入                  | 使用條件式存取原則進行登入頻率和持續性瀏覽器會話 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要開始使用，請完成教學課程以 [使用 Azure Multi-Factor Authentication 保護使用者登入事件](tutorial-enable-azure-mfa.md) ，或 [使用風險偵測讓使用者登入觸發 Azure Multi-Factor Authentication](tutorial-risk-based-sspr-mfa.md)。

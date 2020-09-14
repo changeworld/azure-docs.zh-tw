@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e210a11dbcde17c8a5dfd16c46c0d3b3d5c6523
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: c1927cc103ba14b4b9b545eca82aee28cd32eeb2
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716328"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052372"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>自助式密碼重設的常見問題
 
@@ -104,7 +104,7 @@ ms.locfileid: "88716328"
   > * 確認目錄中的驗證資料已正確格式化，例如 +1 4255551234 或 *user\@contoso.com*。 
 * **問：密碼重設支援哪些語言？**
 
-  > **答：** 密碼重設 UI、SMS 訊息及語音通話都已採用 Office 365 支援的相同語言當地語系化。
+  > **答：** 密碼重設 UI、SMS 訊息及語音通話會以 Microsoft 365 所支援的相同語言當地語系化。
   >
   >
 * **問：當我在目錄的 [設定] 索引標籤中設定組織商標項目時，密碼重設體驗的哪些部分會出現商標？**

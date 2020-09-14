@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08d6b12f897b8b7efb150b11ae4b3f5e2440f7c8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d27cd30d6543d967cca2648597854a06f8ea4eb7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797984"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053968"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>在 Azure Active Directory 中整合 LinkedIn 帳戶連接
 
@@ -29,7 +29,7 @@ ms.locfileid: "88797984"
 >
 > 例外狀況：
 >
-> * 此設定不適用於使用 Microsoft Cloud for US Government、Microsoft Cloud Germany 或中國 21Vianet 管理之 Azure 和 Office 365 的客戶。
+> * 如果客戶使用 Microsoft Cloud for US Government、Microsoft 雲端德國或 Azure，以及中國的世紀營運 Microsoft 365，則無法使用此設定。
 > * 針對在德國布建的 Azure AD 組織，預設會關閉此設定。 請注意，此設定不適用於使用 Microsoft Cloud Germany 的客戶。
 > * 針對法國布建的組織，此設定預設為關閉。
 >
@@ -96,12 +96,12 @@ ms.locfileid: "88797984"
   
    State | 效果
    ------ | ------
-   **Enabled** | Office 2016 選項中的 [在 Office 應用程式中顯示 LinkedIn 功能]**** 設定已啟用。 您組織中的使用者可以在其 Office 2016 應用程式中使用 LinkedIn 功能。
+   **已啟用** | Office 2016 選項中的 [在 Office 應用程式中顯示 LinkedIn 功能]**** 設定已啟用。 您組織中的使用者可以在其 Office 2016 應用程式中使用 LinkedIn 功能。
    **Disabled** | Office 2016 選項中的 [在 Office 應用程式中顯示 LinkedIn 功能]**** 設定已停用，而且終端使用者無法變更此設定。 組織中的使用者無法在其 Office 2016 應用程式中使用 LinkedIn 功能。
 
-這個群組原則只會影響本機電腦的 Office 2016 應用程式。 如果使用者在其 Office 2016 應用程式中停用 LinkedIn，他們仍然可以在 Office 365 中看到 LinkedIn 功能。
+這個群組原則只會影響本機電腦的 Office 2016 應用程式。 如果使用者在其 Office 2016 應用程式中停用 LinkedIn，他們仍然可以在 Microsoft 365 中看到 LinkedIn 功能。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [LinkedIn 的使用者同意和資料共用](linkedin-user-consent.md)
 

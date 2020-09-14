@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 08/12/2020
+ms.date: 09/11/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271000"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052373"
 ---
 # <a name="known-issues-application-provisioning"></a>已知問題：應用程式布建
 使用應用程式布建時要注意的已知問題。 您可以在 UserVoice 上提供關於應用程式布建服務的意見反應，請參閱 [Azure AD 應用程式](https://aka.ms/appprovisioningfeaturerequest)布建 UserVoice。 我們會密切觀賞 UserVoice，讓我們可以改善服務。 
@@ -66,7 +66,13 @@ Azure AD 目前無法布建 null 屬性。 如果使用者物件上的屬性為 
 - 不支援布建嵌套群組。 
 - 因為租使用者的大小，所以不支援布建至 B2C 租使用者。 
 
-布建**間隔是固定的**布建週期之間的[時間](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users)目前無法設定。 
+**我的 OIDC 應用程式無法使用自動布建**
+
+如果您建立應用程式註冊，將不會啟用企業應用程式中對應的服務主體來自動布建使用者。 您必須將應用程式新增至資源庫（如果預定供多個組織使用），或建立第二個非資源庫應用程式來進行布建。 
+
+**布建間隔是固定的**
+
+布建週期之間的 [時間](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) 目前無法設定。 
 
 **變更不會從目標應用程式移至 Azure AD**
 
@@ -81,5 +87,5 @@ Azure AD 目前無法布建 null 屬性。 如果使用者物件上的屬性為 
 當群組在範圍內，而成員超出範圍時，就會布建群組。 不會布建超出範圍的使用者。 如果成員回到範圍中，服務將不會立即偵測變更。 重新開機布建將會解決此問題。 建議您定期重新開機服務，以確保所有使用者都已正確布建。  
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - [佈建運作方式](how-provisioning-works.md)
