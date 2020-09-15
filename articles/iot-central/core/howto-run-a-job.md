@@ -7,12 +7,12 @@ author: sarahhubbard
 ms.author: sahubbar
 ms.date: 09/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 82a370bcda2d762abb36e6e43ab755c45348e4c5
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: ae8b830469a9b52ae68310dde2e65dcffdf4e3be
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019934"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060810"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>在 Azure IoT Central 應用程式中建立和執行作業
 
@@ -38,7 +38,7 @@ ms.locfileid: "90019934"
 
     選取 [ **儲存並** 結束]，將作業加入至 [ **作業** ] 頁面上已儲存的作業清單。 您稍後可以從已儲存的作業清單中返回工作。
 
-    選取 **[下一步]** 以移至 [ **審核** ] 頁面。 [評論] 頁面會顯示作業設定詳細資料。 選取 [ **執行** ] 以提交作業。
+    選取 **[下一步]** 以移至 [ **審核** ] 頁面。 [ **審核** ] 頁面會顯示作業設定詳細資料。 選取 [ **執行** ] 以提交作業。
 
     :::image type="content" source="media/howto-run-a-job/job-wizard-review.png" alt-text="工作 wizard 審核頁面的螢幕擷取畫面":::
 
@@ -129,7 +129,7 @@ ms.locfileid: "90019934"
 >
 > 當作業完成，而且您刪除了工作裝置清單中的裝置時，裝置專案會在裝置名稱中顯示為已刪除。 [詳細資料] 連結不適用於已刪除的裝置。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解如何在 Azure IoT Central 應用程式中建立工作，以下是一些後續步驟：
 

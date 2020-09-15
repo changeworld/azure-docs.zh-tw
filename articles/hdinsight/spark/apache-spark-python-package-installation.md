@@ -8,18 +8,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 59de3eb2370029ab9edcb609298c7b1fdf5f8ff8
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 09d1063f704c37eb31546be08765f2b5b6fb8632
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873750"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060742"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用指令碼動作在 Azure HDInsight 上安全地管理 Python 環境
-
-> [!div class="op_single_selector"]
-> * [使用資料格魔術](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [使用指令碼動作](apache-spark-python-package-installation.md)
 
 HDInsight 在 Spark 叢集中有兩個內建 Python 安裝，Anaconda Python 2.7 和 Python 3.5。 客戶可能需要自訂 Python 環境。 如同安裝外部 Python 套件或其他 Python 版本。 在這裡，我們將示範在 HDInsight 上安全地管理適用於 Apache Spark 叢集的 Python 環境最佳做法。
 
@@ -132,7 +128,7 @@ HDInsight 叢集取決於內建的 Python 環境，也就是 Python 2.7 和 Pyth
 
     4. 儲存變更，然後重新啟動受影響的服務。 這些變更需要重新啟動 Spark2 服務。 Ambari UI 會提示您輸入必要的重新啟動提醒，請按一下 [重新啟動] 以重新啟動所有受影響的服務。
 
-        ![透過 Ambari 變更 Spark 設定](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![重新啟動服務](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
 4. 如果您想要在 Jupyter 上使用新建立的虛擬環境。 變更 Jupyter 設定，然後重新啟動 Jupyter。 在具有下列陳述式的所有標頭節點上執行指令碼動作，以將 Jupyter 指向新建立的虛擬環境。 請務必將路徑修改您為虛擬環境指定的前置詞。 執行此指令碼動作之後，請透過 Ambari UI 重新啟動 Jupyter 服務，讓這個變更可供使用。
 
@@ -146,7 +142,7 @@ HDInsight 叢集取決於內建的 Python 環境，也就是 Python 2.7 和 Pyth
 
 ## <a name="known-issue"></a>已知問題
 
-針對 Anaconda 版本 `4.7.11`、`4.7.12` 和 `4.8.0`，有一個已知的錯誤。 如果您看到您的腳本動作會停止回應 `"Collecting package metadata (repodata.json): ...working..."` ，而且發生失敗 `"Python script has been killed due to timeout after waiting 3600 secs"` 。 您可以下載[此指令碼](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)，並在所有節點上以指令碼動作的形式執行，以修正問題。
+針對 Anaconda 版本 `4.7.11`、`4.7.12` 和 `4.8.0`，有一個已知的錯誤。 如果您看到您的腳本動作停止回應 `"Collecting package metadata (repodata.json): ...working..."` ，以及失敗 `"Python script has been killed due to timeout after waiting 3600 secs"` 。 您可以下載[此指令碼](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)，並在所有節點上以指令碼動作的形式執行，以修正問題。
 
 若要檢查您的 Anaconda 版本，您可以透過 SSH 連線到叢集標題節點，然後執行 `/usr/bin/anaconda/bin/conda --v`。
 

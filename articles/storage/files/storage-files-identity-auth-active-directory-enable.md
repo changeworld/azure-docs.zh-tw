@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 07/12/2020
+ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 3faa86fe67e3f0a208bf42dc3e49de8335b25c95
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 7b629adc24f0c9d8826d610c59379605e1ca0b95
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272326"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061813"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>總覽-Azure 檔案共用的內部部署 Active Directory Domain Services 透過 SMB 進行驗證
 
@@ -24,7 +24,7 @@ ms.locfileid: "88272326"
 
 - 用於 Azure 檔案儲存體內部部署 AD DS 驗證的 AD DS 識別必須同步至 Azure AD。 密碼雜湊同步處理是選擇性的。 
 - 支援受 Azure 檔案同步管理的 Azure 檔案共用。
-- 支援使用具有 RC4-HMAC 加密的 AD 進行 Kerberos 驗證。 尚不支援 AES Kerberos 加密。
+- 支援使用具有 RC4-HMAC 和 AES 256 加密的 AD 進行 Kerberos 驗證。 目前尚不支援 AES 128 Kerberos 加密。
 - 支援單一登入體驗。
 - 僅支援在作業系統版本比 Windows 7 或 Windows Server 2008 R2 更新的用戶端上。
 - 僅針對儲存體帳戶註冊所在的 AD 樹系支援。 根據預設，您只能使用來自單一樹系的 AD DS 認證來存取 Azure 檔案共用。 如果您需要從不同的樹系存取 Azure 檔案共用，請確定您已設定適當的樹系信任，請參閱 [常見問題](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) 以取得詳細資料。
@@ -37,7 +37,7 @@ ms.locfileid: "88272326"
 > - [使用 Azure 檔案儲存體 (來取代內部部署檔案伺服器，包括檔案和 AD 驗證的私用連結上的安裝程式) ](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
 > - [使用 Azure 檔案儲存體作為 Windows 虛擬桌面的設定檔容器 (包括 AD 驗證和 FsLogix 設定上的設定) ](https://www.youtube.com/embed/9S5A1IJqfOQ)
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 
 針對 Azure 檔案共用啟用 AD DS authentication 之前，請確定您已完成下列必要條件： 
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: fdd564618232ce7fde5a76fb9c37937113f179b2
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 315ea9b683ccd583f5c29c7527013f0d924336f4
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670445"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061866"
 ---
 # <a name="move-azure-vms-to-an-availability-zone-in-another-region"></a>將 Azure Vm 移至另一個區域中的可用性區域
 
@@ -71,8 +71,7 @@ ms.locfileid: "89670445"
     ![按鈕以開始使用](./media/move-region-availability-zone/get-started.png)
 
 3. 在 [**移動資源**  >  **來源 + 目的地**] 中，選取來源訂用帳戶和區域。
-4. 在 [ **目的地**] 中，選取您要移動 vm 的區域。 
-5. 在 [ **中繼資料區域**] 中，選取您要用來儲存所移動資源之中繼資料的位置。 特別針對此用途建立資源群組。 然後按一下 [下一步]  。
+4. 在 [ **目的地**] 中，選取您要移動 vm 的區域。 然後按一下 [下一步]  。
 
      ![要填入來源和目的地訂用帳戶/區域的頁面](./media/move-region-availability-zone/source-target.png)
 
@@ -277,6 +276,6 @@ ms.locfileid: "89670445"
     - 快取儲存體帳戶名稱為 ```resmovecache<guid>```
     - 保存庫名稱為 ```ResourceMove-<sourceregion>-<target-region>-GUID``` 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [瞭解](about-move-process.md) 移動流程。

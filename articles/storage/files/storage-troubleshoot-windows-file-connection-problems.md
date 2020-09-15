@@ -4,15 +4,15 @@ description: 針對 Windows 中的 Azure 檔案儲存體問題進行疑難排解
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 08/31/2019
+ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: eed9109416f434e2492d621f60b7ad6bf6e188e8
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: f167ffb652054b64098994d334eea6e1db6d2d14
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437372"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061201"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>針對 Windows 中的 Azure 檔案服務問題進行疑難排解
 
@@ -366,6 +366,18 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 ### <a name="error-cannot-bind-positional-parameters-because-no-names-were-given"></a>錯誤： 「無法繫結位置參數，因為未指定任何名稱」
 
 此錯誤最有可能是 Join-AzStorageAccountforAuth 命令中的語法錯誤所觸發。  檢查命令是否有拼寫錯誤或語法錯誤，並確認已安裝最新版的 AzFilesHybrid 模組 (https://github.com/Azure-Samples/azure-files-samples/releases) 。  
+
+## <a name="azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption"></a>AES 256 Kerberos 加密 Azure 檔案儲存體內部部署 AD DS 驗證支援
+
+我們為使用 [AzFilesHybrid module v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases)的 Azure 檔案儲存體內部內部部署 AD DS 驗證引進了 AES 256 Kerberos 加密支援。 如果您已使用低於 v 0.2.2 的模組版本啟用 AD DS authentication，您將需要下載最新的 AzFilesHybrid 模組 (v 0.2.2 +) 並執行下列 PowerShell。 如果您尚未在您的儲存體帳戶上啟用 AD DS 驗證，則可以遵循本 [指南](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) 來啟用。 如果您已使用 AzFilesHybrid 模組 v 0.2.2 或更高版本啟用功能，則不需要重新執行下列 PowerShell。 
+
+```PowerShell
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+Update-AzStorageAccountAuthForAES256 -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
+```
+
 
 ## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員。
 如果仍需要協助，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解決您的問題。

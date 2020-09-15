@@ -535,6 +535,9 @@
       href: reference-pipeline-yaml.md
     - name: 主權雲端同位
       href: reference-machine-learning-cloud-parity.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: 版本資訊

@@ -1,18 +1,18 @@
 ---
 title: 網路安全性群組搭配 Azure Site Recovery | Microsoft Docs
 description: 說明如何使用網路安全性群組來搭配 Azure Site Recovery 以進行災害復原和移轉
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: mayg
-ms.openlocfilehash: eb5ba99133f5726c44164b0ba45b7ab5d94e292f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: harshacs
+ms.openlocfilehash: 904bc63ed2a135cdcadad75e96acd6fe3ca39039
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80292368"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069674"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>網路安全性群組搭配 Azure Site Recovery
 
@@ -24,7 +24,7 @@ ms.locfileid: "80292368"
 
 ## <a name="using-network-security-groups"></a>使用網路安全性群組
 
-個別子網路可以有零個或一個相關聯的 NSG。 個別網路介面也可以有零個或一個相關聯的 NSG。 因此，您可以藉由將 NSG 與子網建立關聯，然後再將另一個 NSG 至 VM 的網路介面，對虛擬機器有效地進行雙重流量限制。 在此情況下，NSG 規則的應用取決於流量方向和所套用安全性規則的優先順序。
+個別子網路可以有零個或一個相關聯的 NSG。 個別網路介面也可以有零個或一個相關聯的 NSG。 因此，您可以藉由將 NSG 與子網建立關聯，然後再將另一個 NSG 至 VM 的網路介面，來有效地對虛擬機器進行雙重流量限制。 在此情況下，NSG 規則的應用取決於流量方向和所套用安全性規則的優先順序。
 
 請設想具有一個虛擬機器的簡單範例，如下所示：
 -    此虛擬機器放置於 **Contoso 子網路**內。
@@ -39,13 +39,13 @@ ms.locfileid: "80292368"
 
 在設定這類 NSG 組態時，請確定您對[安全性規則](../virtual-network/security-overview.md#security-rules)所套用的優先順序正確無誤。 系統會依照優先權順序處理規則，較低的數字會在較高的數字之前處理，因為較低的數字具有較高的優先順序。 一旦流量符合規則，處理就會停止。 因此，如果存在較低優先順序 (較高數字) 的規則具有與較高優先順序之規則相同的屬性，則不會進行處理。
 
-您可能永遠不會注意網路安全性群組何時同時套用至網路介面和子網路。 藉由檢視網路介面的[有效安全性規則](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules)，可以確認套用至網路介面的彙總規則。 您也可以使用[Azure 網路監看員](../network-watcher/network-watcher-monitoring-overview.md)中的[IP 流量驗證](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)功能來判斷網路介面是否允許通訊。 此工具會告訴您是否允許通訊，以及哪個網路安全性規則允許或拒絕流量。
+您可能永遠不會注意網路安全性群組何時同時套用至網路介面和子網路。 藉由檢視網路介面的[有效安全性規則](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules)，可以確認套用至網路介面的彙總規則。 您也可以使用[Azure 網路](../network-watcher/network-watcher-monitoring-overview.md)監看員中的[IP 流量驗證](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)功能來判斷是否允許網路介面進行通訊。 此工具會告訴您是否允許通訊，以及哪個網路安全性規則允許或拒絕流量。
 
 ## <a name="on-premises-to-azure-replication-with-nsg"></a>使用 NSG 進行內部部署至 Azure 的複寫
 
 Azure Site Recovery 能夠針對內部部署的 [Hyper-V 虛擬機器](hyper-v-azure-architecture.md)、[VMware 虛擬機器](vmware-azure-architecture.md)和[實體伺服器](physical-azure-architecture.md)進行災害復原並移轉到 Azure。 針對所有內部部署到 Azure 的案例，會將複寫資料傳送到並儲存於 Azure 儲存體帳戶。 在複寫期間，您不需支付任何虛擬機器費用。 當您容錯移轉到 Azure 時，Site Recovery 會自動建立 Azure IaaS 虛擬機器。
 
-若已在容錯移轉至 Azure 後建立 VM，則可使用 NSG 來限制虛擬網路和 VM 的網路流量。 Site Recovery 不會在容錯移轉作業進行期間建立 NSG。 建議您在起始容錯移轉之前先建立所需的 Azure NSG。 接著，您可以使用自動化腳本搭配 Site Recovery 強大的復原[計畫](site-recovery-create-recovery-plans.md)，在容錯移轉期間自動將 nsg 關聯至已容錯移轉的 vm。
+若已在容錯移轉至 Azure 後建立 VM，則可使用 NSG 來限制虛擬網路和 VM 的網路流量。 Site Recovery 不會在容錯移轉作業進行期間建立 NSG。 建議您在起始容錯移轉之前先建立所需的 Azure NSG。 然後，您可以使用自動化腳本搭配 Site Recovery 的強大復原 [方案](site-recovery-create-recovery-plans.md)，在容錯移轉期間自動將 nsg 關聯至容錯移轉的 vm。
 
 例如，如果容錯移轉後的 VM 組態類似於上面詳述的[案例範例](concepts-network-security-group-with-site-recovery.md#using-network-security-groups)：
 -    您可以在目標 Azure 區域上，建立 **Contoso VNet** 和 **Contoso 子網路**作為 DR 計劃的一部分。
@@ -61,7 +61,7 @@ Azure Site Recovery 會啟用 [Azure 虛擬機器](azure-to-azure-architecture.m
 
 對於 Azure VM 複寫，請確定來源 Azure 區域上的 NSG 規則允許使用[輸出連線能力](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)來產生複寫流量。 您也可以透過此 [NSG 組態範例](azure-to-azure-about-networking.md#example-nsg-configuration)來測試並驗證這些必要規則。
 
-Site Recovery 不會在容錯移轉作業進行期間建立或複寫 NSG。 建議您在起始容錯移轉之前先在目標 Azure 區域上建立所需的 NSG。 接著，您可以使用自動化腳本搭配 Site Recovery 強大的復原[計畫](site-recovery-create-recovery-plans.md)，在容錯移轉期間自動將 nsg 關聯至已容錯移轉的 vm。
+Site Recovery 不會在容錯移轉作業進行期間建立或複寫 NSG。 建議您在起始容錯移轉之前先在目標 Azure 區域上建立所需的 NSG。 然後，您可以使用自動化腳本搭配 Site Recovery 的強大復原 [方案](site-recovery-create-recovery-plans.md)，在容錯移轉期間自動將 nsg 關聯至容錯移轉的 vm。
 
 請設想稍早所述的[案例範例](concepts-network-security-group-with-site-recovery.md#using-network-security-groups)：
 -    若已為 VM 啟用複寫，Site Recovery 就可以在目標 Azure 區域上建立 **Contoso VNet** 和 **Contoso 子網路**的複本。

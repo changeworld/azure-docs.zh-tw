@@ -1,6 +1,6 @@
 ---
-title: 針對將應用程式新增至 Azure Active Directory 的常見問題進行疑難排解
-description: 針對使用者將應用程式新增至 Azure Active Directory 時所面臨的常見問題進行疑難排解。
+title: 針對新增或移除應用程式以 Azure Active Directory 的常見問題進行疑難排解
+description: 針對使用者新增或移除應用程式以 Azure Active Directory 時所面臨的常見問題進行疑難排解。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: 1502c97e625d3af128772451be8db4dd6187e3a7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e9e97aec66d99d149320938540c48b9ad68eaf0e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89410400"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068025"
 ---
-# <a name="troubleshoot-common-problem-adding-an-application-to-azure-active-directory"></a>針對將應用程式新增至 Azure Active Directory 的常見問題進行疑難排解
-本文可協助您瞭解使用者在將應用程式新增至 Azure Active Directory 時所面臨的常見問題。
+# <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>針對新增或移除應用程式以 Azure Active Directory 的常見問題進行疑難排解
+本文可協助您瞭解使用者在新增或移除應用程式以 Azure Active Directory 時所面臨的常見問題。
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>按一下 [新增] 按鈕，但應用程式經過佷久才出現
 在某些情況下，將應用程式新增至目錄後，可能需要 1-2 分鐘 (有時更久)，應用程式才會出現。 雖然這不是正常預期的表現，但只要透過按一下 [Azure 入口網站](https://portal.azure.com/)右上方的 [通知]**** 圖示 (鈴)，然後尋找標示為 [正在加入應用程式]**** 的 [進行中]**** 或 [已完成]**** 通知，即可看到應用程式新增作業正在進行中。
@@ -34,6 +34,16 @@ ms.locfileid: "89410400"
 如果您需要瞭解應用程式的相關協助，請參閱 [如何整合 SaaS 應用程式與 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) 文章的教學課程清單，是很好的開端。
 
 此外，[Azure AD 應用程式文件庫](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index)也可幫助您進一步了解搭配 Azure AD 的單一登入及其運作方式。
+
+## <a name="i-want-to-delete-an-application-but-the-delete-button-is-disabled"></a>我想要刪除應用程式，但 [刪除] 按鈕已停用
+
+在下列案例中，將會停用 [刪除] 按鈕：
+
+- 針對企業應用程式下的應用程式，如果您沒有下列其中一個角色：全域管理員、雲端應用程式系統管理員、應用程式系統管理員或服務主體的擁有者。
+
+- 針對 Microsoft 應用程式，無論您的角色為何，都無法從 UI 中刪除它們。
+
+- 適用于對應至受控識別的 servicePrincipals。 無法在企業應用程式分頁中刪除受控識別服務主體。 您必須移至 Azure 資源以進行管理。 深入瞭解[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)清除
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>如何查看入口網站通知的詳細資料
 您可以依照下列步驟來查看任何入口網站通知的詳細資料：

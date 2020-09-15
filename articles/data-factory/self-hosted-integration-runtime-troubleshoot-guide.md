@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 09/14/2020
 ms.author: abnarain
-ms.openlocfilehash: a6a0a62bd857dff575e17f47f1e2394375b08c45
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033654"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069470"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>針對自我裝載整合執行階段進行疑難排解
 
@@ -46,40 +46,40 @@ ms.locfileid: "90033654"
 > 記錄檔的查看和上傳要求將在所有線上自我裝載 IR 實例上執行。 請確定所有自我裝載 IR 實例都在線上，以防遺失任何記錄。 
 
 
-## <a name="self-hosted-ir-general-failure-or-error"></a>自我裝載 IR 一般失敗或錯誤
+## <a name="self-hosted-ir-general-failure-or-error"></a>自我裝載 IR 常見失敗或錯誤
 
 ### <a name="tlsssl-certificate-issue"></a>TLS/SSL 憑證問題
 
 #### <a name="symptoms"></a>徵兆
 
-當您嘗試啟用 tls/ssl 憑證 (advanced) 從**自我裝載的 IR Configuration Manager**從  ->  **內部網路進行遠端存取**時，在選取 TLS/SSL 憑證之後，會出現下列錯誤：
+嘗試從「自我裝載 IR 設定管理員」 -> 「從內部網路進行遠端存取」啟用 TLS/SSL 憑證 (進階) 時，在選取 TLS/SSL 憑證後顯示下列錯誤：
 
 `Remote access settings are invalid. Identity check failed for outgoing message. The expected DNS identity of the remote endpoint was ‘abc.microsoft.com’ but the remote endpoint provided DNS claim ‘microsoft.com’. If this is a legitimate remote endpoint, you can fix the problem by explicitly specifying DNS identity ‘microsoft.com’ as the Identity property of EndpointAddress when creating channel proxy.`
 
-在上述案例中，使用者使用具有 "microsoft.com" 的憑證做為最後一個專案。
+在上述情況下，使用者會使用具有 "microsoft.com" 的憑證作為最後一個項目。
 
 #### <a name="cause"></a>原因
 
-這是 WCF 的已知問題： WCF TLS/SSL 驗證只會檢查 SAN 的最後一個 DNSName。 
+這是 WCF 的已知問題：WCF TLS/SSL 驗證只會檢查 SAN 中的最後一個 DNSName。 
 
 #### <a name="resolution"></a>解決方案
 
-Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 因為 SSL 憑證不正確，所以通常會發生這個問題。 SAN 中的最後一個 DNSName 應該有效。 請遵循下列步驟來進行驗證。 
+Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通常是因為 SSL 憑證不正確而發生。 SAN 中的最後一個 DNSName 應該是有效的。 請遵循下列步驟來驗證。 
 1.  開啟管理主控台，再從憑證詳細資料中，再次檢查 *主體* 和 *主體替代名稱* 。 例如，在上述案例中， *主體別名*中的最後一個專案是「DNS 名稱 = microsoft.com.com」，並不合法。
 2.  請洽詢憑證問題公司以移除錯誤的 DNS 名稱。
 
-### <a name="concurrent-jobs-limit-issue"></a>並行作業限制問題
+### <a name="concurrent-jobs-limit-issue"></a>並行作業數限制問題
 
 #### <a name="symptoms"></a>徵兆
 
-當您嘗試增加 Azure Data Factory UI 的並行作業限制時，它會在永遠 *更新* 時暫停。
-並行作業的最大值已設定為24，而您想要增加計數，讓工作可以更快執行。 您可以輸入的最小值為3，而您可以輸入的最大值為32。 您將值從24增加到32，並點擊 [ *更新* ] 按鈕，在 UI 中，它會停滯于 *更新* ，如下所示。 重新整理之後，客戶仍會看到值為24，而且永遠不會更新為32。
+當嘗試增加 Azure Data Factory UI 的並行作業限制數時，系統會像執行「更新」一樣永遠沒有回應。
+並行作業數的最大值設定為 24，而您需要增加計數，以便更快速地執行作業。 您可以輸入的最小值是 3，最大值為 32。 您將值從24增加到32，並點擊 [ *更新* ] 按鈕，在 UI 中，它會停滯于 *更新* ，如下所示。 重新整理之後，客戶仍然看到值為 24，而且永遠不會更新為 32。
 
 ![正在更新狀態](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
 
 #### <a name="cause"></a>原因
 
-這項設定有一項限制，因為值相依于電腦 logicCore 和記憶體，所以您可以只將它調整為較小的值（例如24），並查看結果。
+此設定有一項限制，因為此值取決於電腦 logicCore 和記憶體，您只能將其調整為較小的值 (例如24) 並查看結果。
 
 > [!TIP] 
 > - 如需邏輯核心計數的詳細資訊，以及如何尋找機器的邏輯核心計數，請參閱 [這篇文章](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)。
@@ -96,18 +96,18 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 因為 SSL 憑
 
 #### <a name="cause"></a>原因
 
-當我們處理與 SSL/TLS 交握相關的案例時，可能會遇到一些與憑證鏈驗證相關的問題。 
+處理與 SSL/TLS 交握相關的案例時，可能會遇到一些與憑證鏈結驗證相關的問題。 
 
 #### <a name="resolution"></a>解決方案
 
 - 以下是針對 x.509 憑證鏈組建失敗進行疑難排解的快速且直覺的方式。
  
-    1. 匯出需要驗證的憑證。 移至 [管理電腦憑證] 並尋找您想要檢查的憑證，然後以滑鼠右鍵按一下 [**所有**工作  ->  **匯出**]。
+    1. 匯出需要驗證的憑證。 移至管理電腦憑證並尋找您要檢查的憑證，以滑鼠右鍵按一下 [所有工作] -> [匯出]。
     
         ![匯出工作](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
 
     2. 將匯出的憑證複製到用戶端電腦。 
-    3. 在用戶端上，于 CMD 中執行以下命令。 請確定您已 *\<certificate path>* 使用相關的路徑取代以下和 *\<output txt file path>* 預留位置。
+    3. 在用戶端上的 CMD 執行下列命令。 請確定您已 *\<certificate path>* 使用相關的路徑取代以下和 *\<output txt file path>* 預留位置。
     
         ```
         Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
@@ -118,7 +118,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 因為 SSL 憑
         ```
         Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
         ```
-    4. 檢查輸出 txt 檔案中是否有任何錯誤。 您可以在 txt 檔案的結尾找到錯誤摘要。
+    4. 檢查輸出 txt 檔案中是否有任何錯誤。 您可以在 txt 檔案結尾處找到錯誤摘要。
 
         例如： 
 
@@ -138,15 +138,15 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 因為 SSL 憑
         ```
           Certutil   -URL    <certificate path> 
         ```
-    1. 然後會開啟 **URL 抓取工具** 。 您可以 **按一下 [抓取** ] 按鈕來驗證 AIA、CDP 和 OCSP 中的憑證。
+    1. 然後隨即開啟「URL 擷取工具」。 您可以按一下 [擷取] 按鈕，確認來自 AIA、CDP 和 OCSP 的憑證。
 
         ![抓取按鈕](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
  
-        如果 AIA 的憑證是「已驗證」，而且來自 CDP 或 OCSP 的憑證是「已驗證」，則憑證鏈可以成功建立。
+        如果來自 AIA 的憑證狀態為「已驗證」，而且來自 CDP 或 OCSP 的憑證狀態為「已驗證」，則表示已成功建置憑證鏈結。
 
-        如果您在抓取 AIA 時看到失敗，CDP，請與網路小組合作，讓用戶端電腦可以連線到目標 URL。 如果可以驗證 HTTP 路徑或 ldap 路徑，這將會足夠。
+        如果您在擷取 AIA、CDP 時看到失敗，請與網路小組合作，協助用戶端電腦準備好連線到目標 URL。 如果可以驗證 http 路徑或 ldap 路徑，就應該會成功。
 
-### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>自我裝載 IR 無法載入檔案或元件
+### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>自我裝載 IR 無法載入檔案或組件
 
 #### <a name="symptoms"></a>徵兆
 
@@ -165,7 +165,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 因為 SSL 憑
 > [!TIP] 
 > 您可以設定篩選器，如下列螢幕擷取畫面所示。
 > 它會告訴我們 dll **ValueTuple** 不在 GAC 相關資料夾或 *C:\Program Files\Microsoft integration Runtime\4.0\Gateway*或 *C:\Program Files\Microsoft integration Runtime\4.0\Shared* 資料夾中。
-> 基本上，它會先從 *GAC* 資料夾載入 dll，然後從 [ *共用* ] 和最後從 [ *閘道* ] 資料夾載入 dll。 因此，您可以將 dll 放在任何可能會有説明的路徑中。
+> 基本上，檔案會先從 GAC 資料夾載入 dll，然後從「共用」載入 dll，最後再從「閘道」資料夾載入 dll。 因此，您可以將 dll 放到任何可能有幫助的路徑。
 
 ![設定篩選](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
@@ -173,7 +173,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 因為 SSL 憑
 
 您可以找到 **System.ValueTuple.dll** 位於 *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway\DataScan* 資料夾。 將 **System.ValueTuple.dll** 複製到 *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* 資料夾，以解決此問題。
 
-您可以使用相同的方法來解決其他檔案或元件遺失問題。
+您可以使用相同的方法來解決其他檔案或元件遺漏的問題。
 
 #### <a name="more-information"></a>相關資訊
 
@@ -186,22 +186,22 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 因為 SSL 憑
 如需 GAC 的詳細資訊，請參閱 [這篇文章](https://docs.microsoft.com/dotnet/framework/app-domains/gac)。
 
 
-### <a name="how-to-audit-self-hosted-ir-key-missing"></a>如何 audit 遺失自我裝載 IR 金鑰
+### <a name="how-to-audit-self-hosted-ir-key-missing"></a>如何稽核自我裝載 IR 金鑰遺漏的問題
 
 #### <a name="symptoms"></a>徵兆
 
-自我裝載整合執行時間會在沒有金鑰的情況下突然進入離線狀態，在事件記錄檔中顯示下列錯誤訊息： `Authentication Key is not assigned yet`
+自我裝載整合執行階段因為沒有金鑰突然離線，事件記錄檔中顯示下列錯誤訊息：`Authentication Key is not assigned yet`
 
 ![缺少驗證金鑰](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
 
 #### <a name="cause"></a>原因
 
-- 已刪除自我裝載 IR 節點或入口網站中的邏輯自我裝載 IR。
-- 全新的卸載已完成。
+- 已刪除自我裝載的 IR 節點或入口網站中的邏輯自我裝載 IR。
+- 已完成完整的解除安裝作業。
 
 #### <a name="resolution"></a>解決方案
 
-如果上述任一原因都不適用，您可以移至資料夾： *%Programdata%\Microsoft\Data Transfer\DataManagementGateway*，並檢查名稱為 [設定] 的檔案 **是否已刪除** 。 如果已刪除，請依照 [此處](https://www.netwrix.com/how_to_detect_who_deleted_file.html) 的指示來審核刪除檔案的人員。
+如果上述任一原因都不適用，您可以移至資料夾： *%Programdata%\Microsoft\Data Transfer\DataManagementGateway*，並檢查名稱為 [設定] 的檔案 **是否已刪除** 。 如果已刪除，請依照[這裡](https://www.netwrix.com/how_to_detect_who_deleted_file.html)的指示，稽核刪除該檔案的人員。
 
 ![檢查設定檔案](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
@@ -210,37 +210,37 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 因為 SSL 憑
 
 #### <a name="symptoms"></a>徵兆
 
-在建立來源和目的地資料存放區的自我裝載 ir 之後，您想要將兩個 IRs 連接在一起，以完成複製。 如果資料存放區是在不同的 Vnet 中設定，或無法瞭解閘道機制，您將會遇到類似以下的錯誤： *無法在目的地 IR 中找到來源的驅動程式*; *目的地 IR 無法存取來源*。
+建立來源和目的地資料存放區的自我裝載 IR 後，您想將兩個 IR 連接在一起，以完成複本。 如果資料存放區是在不同的 Vnet 中設定，或無法瞭解閘道機制，您將會遇到類似以下的錯誤： *無法在目的地 IR 中找到來源的驅動程式*; *目的地 IR 無法存取來源*。
  
 #### <a name="cause"></a>原因
 
-自我裝載 IR 是設計為複製活動的中央節點，而不是需要針對每個資料存放區安裝的用戶端代理程式。
+自我裝載 IR 設計為複製活動的中央節點，而不是每個資料存放區都需要安裝的用戶端代理程式。
  
-在上述案例中，每個資料存放區的連結服務都應該使用相同的 IR 來建立，而 IR 應該能夠透過網路存取這兩個數據存放區。 無論 IR 是與來源資料存放區、目的地資料存放區或第三部電腦一起安裝，如果有兩個連結的服務是使用不同的 IRs 建立的，但在相同的複製活動中使用，則會使用目的地 IR，而且這兩個數據存放區的驅動程式都必須安裝在目的地 IR 電腦上。
+在上述情況下，每個資料存放區的連結服務都應該使用相同的 IR 建立，而該 IR 應該能夠透過網路存取這兩個資料存放區。 無論 IR 是安裝在來源資料存放區、目的地資料存放區或第三部電腦上，如果有兩個連結服務是使用不同的 IR 建立的，但在相同的複製活動中使用，則會使用目的地 IR，而且這兩個資料存放區的驅動程式必須安裝在目的地 IR 電腦上。
 
 #### <a name="resolution"></a>解決方案
 
-在目的地 IR 上安裝來源和目的地的驅動程式，並確定它可以存取來源資料存放區。
+將來源和目的地驅動程式安裝在目的地 IR 上，並確定其可以存取來源資料存放區。
  
-如果流量無法在兩個數據存放區之間通過網路 (例如，它們是以兩個 Vnet) 進行設定，即使已安裝 IR，您也可能無法在一個活動中完成複製。 在這種情況下，您可能會建立兩個具有兩個 IRs 的複製活動，每個都在通風： 1 IR 中，從資料存放區1複製到 Azure Blob 儲存體，另一個則從 Azure Blob 儲存體複製到資料存放區2。 這可能會模擬使用 IR 來建立連接兩個中斷連線資料存放區之橋接器的需求。
+如果流量無法在兩個資料存放區之間的網路傳遞 (例如資料存放區是在兩個 VNET 中設定)，您可能無法在一個活動中完成複製，即使已安裝 IR 也一樣。 在這種情況下，您可以在個別的 VNET 中建立兩個具有兩個 IR 的複製活動：一個是從資料存放區 1 複製到 Azure Blob 儲存體的整合執行階段，另一個從 Azure Blob 儲存體複製到資料存放區 2。 這可能會模擬使用整合執行階段來建立連線兩個已中斷連線資料存放區之橋接器的需求。
 
 
-### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>認證同步問題導致認證從 HA 遺失
+### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>認證同步處理問題導致 HA 遺失認證
 
 #### <a name="symptoms"></a>徵兆
 
-當您在 Azure 入口網站上刪除連結服務，或工作的承載錯誤時，會從目前的 Integration Runtime 節點中刪除資料來源認證 "XXXXXXXXXX"，否則請使用您的認證重新建立新的連結服務」。
+已從目前的 Integration Runtime 節點刪除資料來源認證 "XXXXXXXXXX"，承載為「當您刪除 Azure 入口網站上的連結服務，或工作的承載錯誤時，請使用您的認證，重新建立新的連結服務」。
 
 #### <a name="cause"></a>原因
 
-您的自我裝載 IR 建置於具有兩個節點的 HA 模式中，但它們不是處於「認證同步」狀態，這表示儲存在發送器節點中的認證不會同步處理到其他背景工作節點。 如果從發送器節點到背景工作節點發生任何容錯移轉，但認證只存在於先前的發送器節點中，則工作將會在嘗試存取認證時失敗，而您會遇到上述錯誤。
+您的自我裝載整合執行階段是以具有兩個節點的 HA 模式建立，但這兩者的狀態並非認證同步，這表示儲存在發送器節點中的認證不會同步處理至其他背景工作角色節點。 如果從發送器節點到背景工作節點發生任何容錯移轉，但認證只存在於先前的發送器節點中，則當嘗試存取認證時，工作將會失敗，而且您會遇到上述錯誤。
 
 #### <a name="resolution"></a>解決方案
 
-避免此問題的唯一方法，是確定兩個節點處於認證同步狀態。 否則，您必須 reinput 新發送器的認證。
+避免此問題的唯一方法是確保兩個節點都處於認證同步狀態。 否則，您必須重新針對新發送器輸入認證。
 
 
-### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>因為遺失私密金鑰而無法選擇憑證
+### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>因為缺少私密金鑰，因此無法選擇憑證
 
 #### <a name="symptoms"></a>徵兆
 
@@ -251,12 +251,12 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 因為 SSL 憑
 
 #### <a name="cause"></a>原因
 
-- 使用者帳戶具有低許可權，無法存取私密金鑰。
-- 憑證已產生為簽章，但不是金鑰交換。
+- 使用者帳戶權限太低，無法存取私密金鑰。
+- 憑證是以簽章的形式產生，並非作為金鑰交換。
 
 #### <a name="resolution"></a>解決方案
 
-1.  使用可存取私密金鑰來操作 UI 的特殊許可權帳戶。
+1.  使用可存取私密金鑰的特殊權限帳戶來操作 UI。
 2.  執行下列命令以匯入憑證：
     
     ```
@@ -575,50 +575,6 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 
     因此，您必須與網路小組合作，檢查第四個躍點來自自我裝載 IR。 如果它是 Linux 系統的防火牆，則請檢查任何記錄檔，以瞭解裝置在 TCP 3 信號交換之後重設套件的原因。 但是，如果您不確定要在哪裡進行調查，請嘗試在有問題的時間內，從自我裝載的 IR 和防火牆取得 netmon 追蹤，以找出可能會重設此封裝並導致中斷連線的裝置。 在此情況下，您也需要與網路小組合作來繼續進行。
 
-### <a name="how-to-collect-netmon-trace"></a>如何收集 netmon 追蹤
-
-1.  從 [這個網站](https://cnet-downloads.com/network-monitor)下載 Netmon 工具，並將它安裝在您的伺服器電腦上 (任何有問題) 的伺服器和用戶端 (，例如自我裝載的 IR) 。
-
-2.  建立資料夾，例如在下列路徑中： *D:\netmon*。 請確定它有足夠的空間來儲存記錄檔。
-
-3.  捕捉 IP 和埠資訊。 
-    1. 啟動命令提示字元。
-    2. 選取 [以系統管理員身分執行]，然後執行下列命令：
-       
-        ```
-        Ipconfig /all >D:\netmon\IP.txt
-        netstat -abno > D:\netmon\ServerNetstat.txt
-        ```
-
-4.  )  (網路套件來捕捉 Netmon 追蹤。
-    1. 啟動命令提示字元。
-    2. 選取 [以系統管理員身分執行]，然後執行下列命令：
-        
-        ```
-        cd C:\Program Files\Microsoft Network Monitor 3
-        ```
-    3. 您可以使用三個不同的命令來捕捉網路頁面：
-        - 選項 A： RoundRobin File 命令 (這將只會捕獲一個檔案，並將) 覆寫舊的記錄檔。
-
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.cap:200M
-            ```         
-        - 選項 B：連結的檔案命令 (如果達到 200 MB) ，則會建立新檔案。
-        
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.chn:200M
-            ```          
-        - 選項 C：排程檔案命令。
-
-            ```
-            nmcap /network * /capture /StartWhen /Time 10:30:00 AM 10/28/2011 /StopWhen /Time 11:30:00 AM 10/28/2011 /file D:\netmon\ServerConnection.chn:200M
-            ```  
-
-5.  按 **Ctrl + C** 以停止捕捉 Netmon 追蹤。
- 
-> [!NOTE]
-> 如果您只能在用戶端電腦上收集 netmon 追蹤，請取得伺服器 ip 位址以協助您分析追蹤。
-
 ### <a name="how-to-analyze-netmon-trace"></a>如何分析 netmon 追蹤
 
 > [!NOTE] 
@@ -673,7 +629,7 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 自我裝載 IR 無法共用跨租使用者。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需疑難排解的詳細資訊，請嘗試下列資源：
 

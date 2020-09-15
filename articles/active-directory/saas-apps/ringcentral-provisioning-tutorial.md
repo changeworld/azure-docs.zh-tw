@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: fb990b5aa615e37d9893a891143cb04933b603bb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: aaaa073f798998ed97be1bd3cd66795d7b3dfb23
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542610"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069657"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>教學課程：設定 RingCentral 來自動布建使用者
 
@@ -30,7 +30,7 @@ ms.locfileid: "88542610"
 > * Azure AD 與 RingCentral 之間保持使用者屬性同步
 > * RingCentral (建議的[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial)) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -113,7 +113,6 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |userName|String|
    |externalId|String|
    |作用中|Boolean|
-   |displayName|String|
    |title|String|
    |emails[type eq "work"].value|String|
    |addresses[type eq "work"].country|String|
@@ -125,7 +124,6 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |name.familyName|String|
    |phoneNumbers[type eq "mobile"].value|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|參考|
 
 10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
@@ -149,6 +147,10 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
 3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。
+
+## <a name="change-log"></a>變更記錄
+
+* 09/10/2020-已移除對 "displayName" 和 "manager" 屬性的支援。
 
 ## <a name="additional-resources"></a>其他資源
 

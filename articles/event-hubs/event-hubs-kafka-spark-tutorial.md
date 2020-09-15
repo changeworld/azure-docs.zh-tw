@@ -3,15 +3,15 @@ title: 與 Apache Spark 應用程式連線 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何將 Apache Spark 與「適用於 Kafka 的 Azure 事件中樞」搭配使用的資訊。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 00925242d5685749aba27ad2fc537ffb07f4c68d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8535b7dc81da8c46685e12c3861793b919296cb4
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320099"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061575"
 ---
 # <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>使用 Azure 事件中樞連接您的 Apache Spark 應用程式
-本教學課程會逐步引導您將 Spark 應用程式連線至事件中樞以進行即時串流。 這項整合可讓您無須變更通訊協定用戶端或執行您自己的 Kafka 或 Zookeeper 叢集，即可進行串流。 本教學課程需要 Apache Spark v2.4+ 和 Apache Kafka v2.0+。
+本教學課程會逐步引導您將 Spark 應用程式連接到事件中樞，以進行即時串流。 這種整合可讓您不需要變更通訊協定用戶端或執行您自己的 Kafka 或 Zookeeper 叢集，即可進行串流處理。 本教學課程需要 Apache Spark 2.4 版 + 和 Apache Kafka v2.0 +。
 
 > [!NOTE]
 > 您可在 [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark/) 上取得此範例
@@ -37,7 +37,7 @@ ms.locfileid: "85320099"
 
 
 ## <a name="create-an-event-hubs-namespace"></a>建立事件中樞命名空間
-您需要事件中樞命名空間，才能從任何事件中樞服務傳送和接收。 如需建立命名空間和事件中樞的指示，請參閱[建立事件中樞](event-hubs-create.md)。 請取得事件中樞連接字串和完整網域名稱 (FQDN) 以供稍後使用。 如需相關指示，請參閱[取得事件中樞連接字串](event-hubs-get-connection-string.md)。 
+您需要事件中樞命名空間，才能從任何事件中樞服務傳送和接收。 請參閱 [建立事件中樞](event-hubs-create.md) ，以取得建立命名空間和事件中樞的指示。 請取得事件中樞連接字串和完整網域名稱 (FQDN) 以供稍後使用。 如需相關指示，請參閱[取得事件中樞連接字串](event-hubs-get-connection-string.md)。 
 
 ## <a name="clone-the-example-project"></a>複製範例專案
 請複製 Azure 事件中樞存放庫，並瀏覽至 `tutorials/spark` 子資料夾：
@@ -99,6 +99,6 @@ df.writeStream
 - [將 Apache Flink 連線到事件中樞](event-hubs-kafka-flink-tutorial.md)
 - [整合 Kafka Connect 與事件中樞](event-hubs-kafka-connect-tutorial.md)
 - [在 GitHub 上探索範例](https://github.com/Azure/azure-event-hubs-for-kafka) \(英文\)
-- [將 Akka streams 串流連線至事件中樞](event-hubs-kafka-akka-streams-tutorial.md)
-- [適用于 Azure 事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)
+- [將 Akka 串流連線到事件中樞](event-hubs-kafka-akka-streams-tutorial.md)
+- [Azure 事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)
 

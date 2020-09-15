@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
-ms.openlocfilehash: d77922d5957a0f6602e00621ebbabeaa3f3ac8f9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 50881071380bbe5d245ed458d162e62bfabd108a
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322461"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061490"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>設定及使用適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽)
 
@@ -48,16 +48,15 @@ ms.locfileid: "89322461"
 
 1. 您的帳戶現在已啟用，可使用 Synapse Link。 接下來，請參閱如何建立已啟用分析存放區的容器，以自動開始將操作資料從交易存放區複寫到分析存放區。
 
-### <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
-
-[Azure Resource Manager 範本](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) 會針對 SQL API 建立已啟用 Synapse Link 的 Azure Cosmos 帳戶。 此範本會在一個區域中建立 Core (SQL) API 帳戶，以及已啟用並設定分析 TTL、並且有選項可使用手動或自動調整輸送量的容器。 若要部署此範本，請在讀我檔案頁面中，按一下 [部署至 Azure]。
+> [!NOTE]
+> 開啟 Synapse 連結並不會自動開啟分析存放區。 當您在 Cosmos DB 帳戶上啟用 Synapse 連結之後，請在建立容器時啟用分析存放區，以開始將作業資料複寫至分析存放區。 
 
 ## <a name="create-an-azure-cosmos-container-with-analytical-store"></a><a id="create-analytical-ttl">使用分析存放區來建立 Azure Cosmos 容器</a>
 
 建立容器時，您可以在 Azure Cosmos 容器上開啟分析存放區。 您可以在建立容器期間使用 Azure Cosmos DB SDK，以使用 Azure 入口網站或設定 `analyticalTTL` 屬性。
 
 > [!NOTE]
-> 目前，只能為 (新的和現有的帳戶中) **新的**容器啟用分析存放區。
+> 目前，只能為 (新的和現有的帳戶中) **新的**容器啟用分析存放區。 您可以使用[Azure Cosmos DB 的遷移工具](cosmosdb-migrationchoices.md)，將資料從您的現有容器遷移至新的容器。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
@@ -211,6 +210,10 @@ container.replace(containerProperties).block();
 ## <a name="query-using-synapse-spark"></a><a id="query-analytical-store"></a> 使用 Synapse Spark 進行查詢
 
 使用[查詢 Azure Cosmos DB 分析存放區](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md)一文中的指示，了解如何使用 Synapse Spark 進行查詢。 該文章會提供一些範例，說明如何從 Synapse 手勢與分析存放區互動。 當您以滑鼠右鍵按一下容器時，就可以看到這些手勢。 您可以透過手勢快速產生程式碼，並依據您的需求進行調整。 這些手勢也非常適合透過按一下來探索資料。
+
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
+
+[Azure Resource Manager 範本](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) 會針對 SQL API 建立已啟用 Synapse Link 的 Azure Cosmos 帳戶。 此範本會在一個區域中建立 Core (SQL) API 帳戶，以及已啟用並設定分析 TTL、並且有選項可使用手動或自動調整輸送量的容器。 若要部署此範本，請在讀我檔案頁面中，按一下 [部署至 Azure]。
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> 開始使用 Azure Synpase 連結 - 範例
 

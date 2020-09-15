@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 6a5ec4644eaed8d525c278c4fc464b4dbc683596
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 838e0a13cb919a5bc17807c2349bb173e4e489f4
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023834"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068807"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>設定 Azure Multi-Factor Authentication 設定
 
@@ -156,7 +156,7 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 * *+ 1 (877) 668 6536*
 
 > [!NOTE]
-> 透過公用電話網絡放置 Azure Multi-Factor Authentication 通話時，有時會透過不支援呼叫者識別碼的貨運公司進行路由傳送。 基於這個原因，即使 Azure Multi-Factor Authentication 一律傳送呼叫端識別碼，也不保證。
+> 透過公用電話網絡放置 Azure Multi-Factor Authentication 通話時，有時會透過不支援呼叫者識別碼的貨運公司來傳送通話。 基於這個原因，即使 Azure Multi-Factor Authentication 一律會傳送，也不保證呼叫端識別碼。 這適用于電話和 Azure Multi-Factor Authentication 所提供的文字訊息。 如果您需要驗證文字訊息是否來自 Azure Multi-Factor Authentication，請參閱 [哪些 SMS 簡短程式碼用於傳送訊息？](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
 
 若要設定您自己的呼叫者識別碼，請完成下列步驟：
 
@@ -374,6 +374,6 @@ _記住 Multi-Factor Authentication_功能可讓使用者在使用 Multi-Factor 
 
 啟用「記住 Multi-Factor Authentication」功能之後，使用者可以選取 [ **不要再詢問**] 選項，將裝置標示為受信任。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解在 Azure Multi-Factor Authentication 中使用的可用方法，請參閱 [Azure Active Directory 中有哪些驗證和驗證方法？](concept-authentication-methods.md)

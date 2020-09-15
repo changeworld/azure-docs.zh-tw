@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 09/07/2020
+ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: 520c2d4fd258bfab5a5a1e0abf890d58bb98fbdc
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a83191fd29e0cda4bc398f6a46a0d2ebf9631665
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652852"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068042"
 ---
 # <a name="common-questions"></a>常見問題
 
@@ -24,7 +24,13 @@ ms.locfileid: "89652852"
 
 資源移動器目前處於公開預覽狀態。 支援生產工作負載。
 
-## <a name="region-move"></a>區域移動
+
+
+## <a name="moving-across-regions"></a>跨區域移動
+
+### <a name="can-i-move-resources-across-any-regions"></a>是否可以跨任何區域移動資源？
+
+目前，您可以將資源從任何來源公用區域移到任何目標公用區域，視 [該區域中可用的資源類型](https://azure.microsoft.com/global-infrastructure/services/)而定。 目前不支援在 Azure Government 區域中移動資源。
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>使用資源移動器可以跨區域移動哪些資源？
 
@@ -34,13 +40,19 @@ ms.locfileid: "89652852"
 - NIC
 - 可用性設定組 
 - Azure 虛擬網路 
-- 公用 IP 位址 (Nsg) 的網路安全性群組
+- 公用 IP 位址
+- 網路安全性群組 (NSG)
 - 內部和公用負載平衡器 
 - Azure SQL 資料庫和彈性集區
 
+
+### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>當我跨區域移動資源時，是否可以跨訂用帳戶移動資源？
+
+您可以在將資源移至目的地區域之後變更訂用帳戶。 [深入瞭解](../azure-resource-manager/management/move-resource-group-and-subscription.md) 如何將資源移至不同的訂用帳戶。 
+
 ### <a name="where-is-the-metadata-about-a-region-move-stored"></a>區域的相關中繼資料會儲存在哪裡？
 
-它會儲存在 [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) 資料庫中，以及 [azure Blob 儲存體](../storage/common/storage-service-encryption.md)的 Microsoft 訂用帳戶中。
+它會儲存在 [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) 資料庫中，以及 [azure Blob 儲存體](../storage/common/storage-service-encryption.md)的 Microsoft 訂用帳戶中。 中繼資料目前儲存在美國東部2和北歐。 我們會將此涵蓋範圍擴充到其他區域。 這不會限制您在任何公用區域間移動資源。
 
 ### <a name="is-the-collected-metadata-encrypted"></a>收集的中繼資料是否已加密？
 
@@ -79,6 +91,6 @@ Azure 資源移動器受控識別至少需要下列許可權：
 訂用帳戶已移至不同的租使用者。 | 停用並啟用移動集合的受控識別。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [深入瞭解](about-move-process.md) 資源移動器元件和移動流程。

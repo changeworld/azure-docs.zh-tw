@@ -4,12 +4,12 @@ description: 了解在使用 Azure Kubernetes Service (AKS) 時，如何針對�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 4a28ebd047e4d5e610ea0c895063eb87ce051d45
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 855e5e5e23371f600a7e73139f2e6da1eebc91d0
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460315"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068824"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑難排解
 
@@ -450,3 +450,15 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md
 [cluster-autoscaler]: cluster-autoscaler.md
+
+### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>使用具有 kubernetes.io 前置詞的節點標籤時，Kubernetes 1.16 升級失敗的原因
+
+從 Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/)開始，kubelet 至節點 [只能套用 kubernetes.io 前置詞所定義的標籤子集](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal) 。 AKS 無法在未同意的情況下代表您移除使用中標籤，因為這可能會造成受影響工作負載的停機時間。
+
+因此，若要減輕這個問題，您可以：
+
+1. 將您的叢集控制平面升級為1.16 或更高版本
+2. 在1.16 或更高版本上新增 nodepoool，而不支援 kubernetes.io 標籤
+3. 刪除較舊的 nodepool
+
+AKS 正在調查在 nodepool 上改變使用中標籤的功能，以改善這項緩和措施。

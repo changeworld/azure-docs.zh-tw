@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/14/2020
-ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 09/14/2020
+ms.openlocfilehash: 3c9389e6063279e214e3650f6364dc25ff773db5
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587305"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069589"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 受控執行個體資源限制總覽
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -99,12 +99,12 @@ SQL 受控執行個體有兩個服務層級： [一般用途](../database/servic
 
 ### <a name="file-io-characteristics-in-general-purpose-tier"></a>一般用途層中的檔案 IO 特性
 
-在一般用途服務層級中，每個資料庫檔案都會取得相依于檔案大小的專用 IOPS 和輸送量。 較大的資料檔案會取得更多的 IOPS 和輸送量。 下表顯示資料庫檔案的 IO 特性：
+在一般用途服務層級中，每個資料庫檔案都會取得相依于檔案大小的專用 IOPS 和輸送量。 較大的檔案會獲得更多的 IOPS 和輸送量。 下表顯示資料庫檔案的 IO 特性：
 
-| 檔案大小 | >= 0 且 <= 128 GiB | >128 和 <= 256 GiB | >256 和 <= 512 GiB | >0.5 和 <= 1 TiB    | >1 和 <= 2 TiB    | >2 和 <= 4 TiB | >4 和 <= 8 TiB |
+| 檔案大小 | >= 0 且 <= 128 GiB | >128 和 <= 512 GiB | >0.5 和 <= 1 TiB    | >1 和 <= 2 TiB    | >2 和 <= 4 TiB | >4 和 <= 8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| 每個檔案的 IOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500   |
-| 每個檔案的輸送量 | 100 MiB/秒 | 125 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/秒 | 
+| 每個檔案的 IOPS       | 500   | 2300              | 5000              | 7500              | 7500              | 12,500   |
+| 每個檔案的輸送量 | 100 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/秒 | 
 
 如果您注意到某個資料庫檔案的 IO 延遲很高，或您看到 IOPS/輸送量達到限制，您可能會增加檔案 [大小](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)來改善效能。
 

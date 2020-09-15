@@ -3,12 +3,12 @@ title: Azure Migrate 設備
 description: 提供伺服器評估和移轉中所使用 Azure Migrate 設備的概觀。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f0bba2f2d200ffc84855ff8fc7f634bd8b71ceb6
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 2092b03ee95349286b9e845689b5d9d55b61c772
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514351"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060725"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
@@ -101,7 +101,7 @@ Azure Migrate 設備需要對網際網路的連線能力。
 **URL** | **詳細資料**  
 --- | --- |
 *.portal.azure.com  | 瀏覽至 Azure 入口網站。
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | 登入您的 Azure 訂用帳戶。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *. office.com | 登入您的 Azure 訂用帳戶。
 *.microsoftonline.com <br/> *.microsoftonline-p.com | 建立 Azure Active Directory (AD) 應用程式，以便設備與 Azure Migrate 通訊。
 management.azure.com | 建立 Azure AD 應用程式，以便設備與 Azure Migrate 服務通訊。
 *.services.visualstudio.com | 上傳用於內部監視的應用程式記錄。
@@ -219,7 +219,7 @@ NIC 寫入輸送量 (MB 每秒) | net.transmitted.average  |VM 大小的計算
 --- | --- | ---
 應用程式名稱  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
 版本  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
-提供者  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | 發行者
+提供者  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
 
 #### <a name="windows-vm-features-data"></a>Windows VM 功能資料
 

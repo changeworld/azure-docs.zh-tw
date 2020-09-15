@@ -29,6 +29,10 @@
       href: fusion.md
     - name: 跨工作區和租用戶擴充 Azure Sentinel
       href: extend-sentinel-across-workspaces-tenants.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 連線資料來源
@@ -50,17 +54,17 @@
               href: connect-azure-ad-identity-protection.md
             - name: Azure 資訊保護
               href: connect-azure-information-protection.md
-            - name: 適用於端點的 Microsoft Defender
+            - name: Microsoft Defender ATP
               href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: 適用於身分識別的 Microsoft Defender (先前為 Azure ATP)
+            - name: Azure ATP
               href: connect-azure-atp.md
             - name: Azure DDoS 保護
               href: connect-azure-ddos-protection.md
             - name: Azure 防火牆
               href: connect-azure-firewall.md
-            - name: 來自 ASC 的 Azure Defender 警示
+            - name: Azure 資訊安全中心
               href: connect-azure-security-center.md
-            - name: 適用於 IoT 的 Azure Defender (先前為 ASC)
+            - name: IoT 的 Azure 資訊安全中心
               href: connect-asc-iot.md
             - name: Azure Web 應用程式防火牆 (WAF)
               href: connect-azure-waf.md
@@ -114,8 +118,6 @@
               href: connect-vmware-carbon-black.md
             - name: Zimperium Mobile Threat Defense
               href: connect-zimperium-mtd.md
-            - name: 使用 Logstash 進行連線
-              href: connect-logstash.md
             - name: CEF 型解決方案
               href: connect-common-event-format.md
               items:

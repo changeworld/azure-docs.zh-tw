@@ -1,27 +1,27 @@
 ---
-title: 關於使用 Azure Site Recovery 的 Azure VM 嚴重損壞修復中的網路功能
+title: 關於 Azure VM 嚴重損壞修復與 Azure Site Recovery 的網路功能
 description: 提供使用 Azure Site Recovery 複寫 Azure VM 的網路功能概觀。
 services: site-recovery
-author: sujayt
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
-ms.author: sutalasi
-ms.openlocfilehash: f9e2d82130ae188d269847d0e0236ea0e33d00dc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: 2c6d1873aadbbf19f1b7650f9b432b3b6bed2841
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131386"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068365"
 ---
-# <a name="about-networking-in-azure-vm-disaster-recovery"></a>關於 Azure VM 嚴重損壞修復中的網路功能
+# <a name="about-networking-in-azure-vm-disaster-recovery"></a>關於 Azure VM 災難修復中的網路功能
 
 
 
 本文提供您使用 [Azure Site Recovery](site-recovery-overview.md)，將 Azure VM 從一個區域複寫和復原到另一個區域時的網路功能指引。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 了解 Site Recovery 如何針對[這種情況](azure-to-azure-architecture.md)提供災害復原。
 
@@ -48,12 +48,12 @@ ms.locfileid: "86131386"
 
 **URL** | **詳細資料**
 --- | ---
-*.blob.core.windows.net | 需要此項目方可從 VM 將資料寫入來源地區的快取儲存體帳戶中。 如果您知道 Vm 的所有快取儲存體帳戶，您可以允許存取特定的儲存體帳戶 Url （例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net），而不是 *. blob.core.windows.net
+*.blob.core.windows.net | 需要此項目方可從 VM 將資料寫入來源地區的快取儲存體帳戶中。 如果您知道 Vm 的所有快取儲存體帳戶，您可以允許存取特定的儲存體帳戶 Url (例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net) ，而不是 *. blob.core.windows.net
 login.microsoftonline.com | 需要此項目方可進行 Site Recovery 服務 URL 的授權和驗證。
 *.hypervrecoverymanager.windowsazure.com | 需要此項目方可從 VM 進行 Site Recovery 服務通訊。
 *.servicebus.windows.net | 需要此項目方可從 VM 寫入 Site Recovery 監視和診斷資料。
-*.vault.azure.net | 允許存取透過入口網站啟用已啟用 ADE 之虛擬機器的複寫
-*. automation.ext.azure.com | 允許透過入口網站為複寫的專案啟用自動升級行動代理程式
+*.vault.azure.net | 允許存取透過入口網站啟用啟用 ADE 之虛擬機器的複寫
+*. automation.ext.azure.com | 允許透過入口網站啟用複寫專案的行動代理程式自動升級
 
 ## <a name="outbound-connectivity-using-service-tags"></a>使用服務標記的輸出連線能力
 
@@ -64,9 +64,9 @@ login.microsoftonline.com | 需要此項目方可進行 Site Recovery 服務 URL
     - 允許這些位址，方可從 VM 將該資料寫入到快取儲存體帳戶。
 - 建立 [Azure Active Directory (AAD) 服務標籤](../virtual-network/security-overview.md#service-tags)型 NSG 規則，以允許存取對應至 AAD 的所有 IP 位址
 - 針對目的地區域建立以 EventsHub 服務標記為基礎的 NSG 規則，以允許存取 Site Recovery 監視。
-- 建立以 AzureSiteRecovery 服務標記為基礎的 NSG 規則，以允許存取任何區域中的 Site Recovery 服務。
-- 建立以 AzureKeyVault 服務標記為基礎的 NSG 規則。 只有在透過入口網站啟用啟用 ADE 的虛擬機器複寫時，才需要這項功能。
-- 建立以 GuestAndHybridManagement 服務標記為基礎的 NSG 規則。 只有在透過入口網站啟用複寫專案的行動代理程式自動升級時，才需要進行這項工作。
+- 建立以 AzureSiteRecovery 服務標記為基礎的 NSG 規則，以允許在任何區域中存取 Site Recovery 服務。
+- 建立以 AzureKeyVault 服務標記為基礎的 NSG 規則。 只有在透過入口網站啟用啟用 ADE 的虛擬機器複寫時，才需要此項。
+- 建立以 GuestAndHybridManagement 服務標記為基礎的 NSG 規則。 只有透過入口網站啟用複寫專案的行動代理程式自動升級時才需要此項。
 - 建議您在測試 NSG 上建立必要的 NSG 規則，並確認沒有問題後，再於生產 NSG 上建立規則。
 
 ## <a name="example-nsg-configuration"></a>範例 NSG 設定
@@ -86,9 +86,9 @@ login.microsoftonline.com | 需要此項目方可進行 Site Recovery 服務 URL
 
       ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
 
-3. 類似于上述安全性規則，請在對應至目標位置的 NSG 上，建立 "CentralUS" 的輸出 HTTPS （443）安全性規則。 這可讓您存取 Site Recovery 監視。
+3. 與上述安全性規則類似，請在對應至目標位置的 NSG 上，為 "CentralUS" 建立輸出 HTTPS (443) 安全性規則。 這可讓您存取 Site Recovery 監視。
 
-4. 為 NSG 上的 "AzureSiteRecovery" 建立輸出 HTTPS （443）安全性規則。 這可讓您存取任何區域中的 Site Recovery 服務。
+4. 針對 NSG 上的 "AzureSiteRecovery" 建立輸出 HTTPS (443) 安全性規則。 這可讓您存取任何區域中的 Site Recovery 服務。
 
 ### <a name="nsg-rules---central-us"></a>NSG 規則：美國中部
 
@@ -98,9 +98,9 @@ login.microsoftonline.com | 需要此項目方可進行 Site Recovery 服務 URL
 
 2. 在 NSG 上針對 "AzureActiveDirectory" 建立輸出 HTTPS (443) 安全性規則。
 
-3. 類似于上述安全性規則，請在對應至來源位置的 NSG 上，建立 "EastUS" 的輸出 HTTPS （443）安全性規則。 這可讓您存取 Site Recovery 監視。
+3. 與上述安全性規則類似，請在對應至來源位置的 NSG 上，為 "EastUS" 建立輸出 HTTPS (443) 安全性規則。 這可讓您存取 Site Recovery 監視。
 
-4. 為 NSG 上的 "AzureSiteRecovery" 建立輸出 HTTPS （443）安全性規則。 這可讓您存取任何區域中的 Site Recovery 服務。
+4. 針對 NSG 上的 "AzureSiteRecovery" 建立輸出 HTTPS (443) 安全性規則。 這可讓您存取任何區域中的 Site Recovery 服務。
 
 ## <a name="network-virtual-appliance-configuration"></a>網路虛擬設備設定
 
@@ -126,4 +126,4 @@ login.microsoftonline.com | 需要此項目方可進行 Site Recovery 服務 URL
 ## <a name="next-steps"></a>後續步驟
 - [複寫 Azure 虛擬機器](./azure-to-azure-quickstart.md)來開始保護您的工作負載。
 - 深入了解如何針對 Azure 虛擬機器容錯移轉[保留 IP 位址](site-recovery-retain-ip-azure-vm-failover.md)。
-- 深入瞭解[使用 ExpressRoute 進行 Azure 虛擬機器](azure-vm-disaster-recovery-with-expressroute.md)的嚴重損壞修復。
+- 深入瞭解 [使用 ExpressRoute 進行 Azure 虛擬機器](azure-vm-disaster-recovery-with-expressroute.md)的嚴重損壞修復。

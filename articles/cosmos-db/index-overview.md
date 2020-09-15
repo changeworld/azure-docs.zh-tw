@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 7417515d6f3c293368868e380ac53f0c524b872d
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 3d07657fc3345ddd8dfadd163dc3c9f957d77af3
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760867"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068382"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>在 Azure Cosmos DB 中編製索引 - 概觀
 
@@ -54,7 +54,7 @@ Azure Cosmos DB 將項目轉換成樹狀結構的原因，在於允許這類樹�
 - /locations/0/country： "德國"
 - /locations/0/city： "柏林"
 - /locations/1/country： "法國"
-- /locations/1/city：「巴黎」
+- /locations/1/city： "巴黎"
 - /headquarters/country： "比利時"
 - /headquarters/employees：250
 - /exports/0/city： "莫斯科"
@@ -135,7 +135,7 @@ Azure Cosmos DB 目前支援三種索引。
 - 查詢中的地理空間：
 
    ```sql
-   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
+   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] })
    ```
 
 - 地理空間交集查詢：

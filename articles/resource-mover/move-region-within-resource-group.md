@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 7d230ce068678bbc074b54ab361f3d70d9b102f8
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 716928761d23c2cf04ebcc72e253ad7884408065
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670327"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061832"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>跨區域 (資源群組) 移動資源
 
@@ -65,7 +65,6 @@ ms.locfileid: "89670327"
     ![將資源移至不同區域的選取範圍](./media/move-region-within-resource-group/select-move-region.png)
     
 4. 在 [ **來源 + 目的地**] 中，選取您要移動資源的目的地區域。 然後，選取 [下一步]。
-5. 在 [ **中繼資料區域**] 中，選取您要用來儲存所移動資源之中繼資料的位置。  特別針對此用途建立資源群組。 然後，選取 [下一步]。
 
 
     ![選取目的地區域的 [來源] 和 [目的地] 頁面](./media/move-region-within-resource-group/source-target.png)
@@ -265,7 +264,7 @@ ms.locfileid: "89670327"
     - 快取儲存體帳戶名稱為 ```resmovecache<guid>```
     - 保存庫名稱為 ```ResourceMove-<sourceregion>-<target-region>-GUID``` 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 
 [瞭解](about-move-process.md) 移動流程。

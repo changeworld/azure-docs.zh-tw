@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: ecd402c30fee63ad594fff5e4fdc3b1610fe7e4e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f2dc93767457bfb96a9457a73adb83c0ed965308
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003876"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069742"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>針對 Azure 數位 Twins 進行疑難排解：計量
 
@@ -41,7 +41,7 @@ ms.locfileid: "89003876"
 4. 您可以選擇從功能表選取 [ **警示** ]，然後選取 [ **+ 新增警示規則**]，以設定計量資料的警示。
     :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="顯示 [警示] 頁面和要新增之按鈕的螢幕擷取畫面":::
 
-    如需此程式的詳細資訊，請參閱 [*疑難排解：設定診斷*](troubleshoot-diagnostics.md)。
+    如需此程式的詳細資訊，請參閱 [*疑難排解：設定警示*](troubleshoot-alerts.md)。
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Azure 數位 Twins 計量和使用方式
 
@@ -70,7 +70,7 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations |  (預覽) 的計費 API 作業 | Count | 總計 | 針對 Azure 數位 Twins 服務提出之所有 API 要求計數的計費計量。 | 計量識別碼 |
 | BillingMessagesProcessed |  (預覽) 處理的帳單訊息 | Count | 總計 | 從 Azure 數位 Twins 送出至外部端點之訊息數目的計費度量。 | 計量識別碼 |
-| BillingQueryUnits | 帳單查詢單位 (預覽)  | Count | 總計 | 查詢單位的數目，這是服務資源使用量的內部計算量值，用來執行查詢。 另外還有可用於測量查詢單位的協助程式 API： [QueryChargeHelper 類別](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview) | 計量識別碼 |
+| BillingQueryUnits | 帳單查詢單位 (預覽)  | Count | 總計 | 查詢單位的數目，這是服務資源使用量的內部計算量值，用來執行查詢。 另外還有可用於測量查詢單位的協助程式 API： [QueryChargeHelper 類別](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview&preserve-view=true) | 計量識別碼 |
 
 #### <a name="ingress-metrics"></a>輸入計量
 
@@ -96,7 +96,7 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 
 維度有助於找出更多關於計量的詳細資料。 某些路由計量會提供每個端點的資訊。 下表列出這些維度的可能值。
 
-| 維度 | 值 |
+| 尺寸 | 值 |
 | --- | --- |
 | 驗證 | OAuth |
 |  (API 要求的作業)  | DigitalTwins/DigitalTwins/delete、 <br>DigitalTwins/DigitalTwins/write， <br>DigitalTwins/DigitalTwins/read、 <br>DigitalTwins/eventroutes/read、 <br>DigitalTwins/eventroutes/write， <br>DigitalTwins/eventroutes/delete、 <br>DigitalTwins/模型/讀取、 <br>DigitalTwins/模型/撰寫、 <br>DigitalTwins/模型/刪除、 <br>DigitalTwins/query/action |

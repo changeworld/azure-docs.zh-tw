@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: f88004d219989b06d4bc7e75e76aca1ce1e894fe
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: aabd52d47bfc59de7a1d79bbe5ffbdda90d099bf
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536395"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060691"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API：版本資訊與資源
 > [!div class="op_single_selector"]
@@ -68,27 +68,14 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 
 ## <a name="release-history"></a>版本歷程記錄
 
-### <a name="440-beta2-unreleased"></a>4.4.0-Beta. 2 (未發行) 
-#### <a name="key-bug-fixes"></a>重要 Bug 修正
-* 已修正啟用 tcnative 時的 RequestTimeoutException。
+### <a name="450-beta1-unreleased"></a>4.5.0-Beta. 1 (未發行) 
 
-### <a name="440-beta1-2020-08-27"></a>4.4.0-Beta. 1 (2020-08-27) 
-#### <a name="new-features"></a>新功能
-* 新增了新的 API，可透過 pk/識別碼組清單或) 的 pk 值組的所有檔，有效率地 (載入許多檔。
-* 已新增 `deleteItem` API。
-* 預設已啟用查詢度量。
+### <a name="440-2020-09-12"></a>4.4.0 (2020-09-12) 
 #### <a name="key-bug-fixes"></a>重要 Bug 修正
-* 已修正中的 NPE `GatewayAddressCache` 。
-* 修正零專案回應的查詢度量問題。
-* 改善的效能 (降低位址剖析和主要金鑰驗證的 CPU 使用率) 。
-
-### <a name="432-beta2-2020-08-17"></a>4.3.2-Beta. 2 (2020-08-17) 
-#### <a name="key-bug-fixes"></a>重要 Bug 修正
-* 沒有舊版的變更，釋出與彈簧資料模組的相容性問題。
-
-### <a name="432-beta1-2020-08-14"></a>4.3.2-Beta. 1 (2020-08-14) 
-#### <a name="key-bug-fixes"></a>重要 Bug 修正
-* 已修正 RntbdServiceEndpoint 中的問題，以避免未使用的 TCP 連接提早關閉。
+* 已修正啟用相依性時 `netty-tcnative-boringssl` 的 RequestTimeoutException。
+* 已修正模式中作業的記憶體遺漏問題 `Delete` `GATEWAY` 。
+* 修正 `CosmosClient` 當端點 uri 無效時，具現化的遺漏。
+* 改善 `CPU History` 診斷。
 
 ### <a name="431-2020-08-13"></a>4.3.1 (2020-08-13) 
 #### <a name="key-bug-fixes"></a>重要 Bug 修正

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: dd5e116f0c6844abeffc27820da03462c6e1cbbc
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 368b8d614ca77692e08a3cbe38132f5aff4eab91
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718198"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061150"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory 中的 Excel 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "88718198"
 | firstRowAsHeader | 指定是否將指定工作表/範圍中的第一個資料列視為具有資料行名稱的標頭行。<br>允許的值為 **true** 和 **false** (預設) 。 | 否       |
 | nullValue        | 指定 null 值的字串表示。 <br>預設值為 **空字串**。 | 否       |
 | compression | 用來設定檔案壓縮的屬性群組。 當您想要在活動執行期間執行壓縮/解壓縮時，請設定此區段。 | 否 |
-| type<br/>) *下 `compression` *的 ( | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **snappy**或 **lz4**。 儲存檔案時要使用的。 預設值不會壓縮。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"。<br>**請注意** ，使用複製活動將 **ZipDeflate** 檔解壓縮 (s) 並寫入檔案型接收資料存放區時，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source zip file>/` 。 | 否。  |
+| type<br/>) *下 `compression` *的 ( | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **snappy**或 **lz4**。 預設值不會壓縮。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"。<br>**請注意** ，使用複製活動將 **ZipDeflate** 檔解壓縮 (s) 並寫入檔案型接收資料存放區時，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source zip file>/` 。 | 不會。  |
 | 等級<br/>) *下 `compression` *的 ( | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速**。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
 
 以下是 Azure Blob 儲存體上的 Excel 資料集範例：
@@ -104,14 +104,14 @@ ms.locfileid: "88718198"
 
 ### <a name="source-properties"></a>來源屬性
 
-下表列出 Excel 來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。使用內嵌資料集時，您會看到與 [ [資料集屬性](#dataset-properties) ] 區段中所述屬性相同的其他檔案設定。
+下表列出 Excel 來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。使用內嵌資料集時，您將會看到其他檔案設定，這與 [ [資料集屬性](#dataset-properties) ] 區段中所述的屬性相同。
 
 | 名稱                      | 描述                                                  | 必要 | 允許的值                                            | 資料流程腳本屬性         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
 | 萬用字元路徑           | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否       | String[]                                                  | wildcardPaths                     |
-| 分割區根路徑       | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否       | 字串                                                    | partitionRootPath                 |
+| 分割區根路徑       | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否       | String                                                    | partitionRootPath                 |
 | 檔案清單             | 您的來源是否指向列出要處理之檔案的文字檔 | 否       | `true` 或 `false`                                         | fileList                          |
-| 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行       | 否       | 字串                                                    | rowUrlColumn                      |
+| 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行       | 否       | String                                                    | rowUrlColumn                      |
 | 完成後          | 在處理之後刪除或移動檔案。 從容器根目錄開始的檔案路徑 | 否       | Delete： `true` 或 `false` <br> 移動： `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
 | 依上次修改篩選   | 選擇根據上次修改檔案的時間進行篩選 | 否       | 時間戳記                                                 | modifiedAfter <br> modifiedBefore |
 

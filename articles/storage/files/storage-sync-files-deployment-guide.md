@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 834b3b60a887dadd75e00a7a33abaff15e1a9407
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: deffa5c75cbde4f9d95be549844478d4de87a685
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441471"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069623"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 檔案同步
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -157,7 +157,7 @@ if ($installType -ne "Server Core") {
 
 在開啟的窗格中，輸入下列資訊：
 
-- **名稱**：儲存體同步服務的唯一名稱 (每一訂用帳戶)。
+- **名稱**：儲存體同步服務的每個區域)  (唯一名稱。
 - **訂用帳戶**：您要在其中建立儲存體同步服務的訂用帳戶。 視您組織的設定策略而定，您可能具有一或多個訂用帳戶的存取權限。 Azure 訂用帳戶是針對每個雲端服務 (例如 Azure 檔案服務) 計費的最基本容器。
 - **資源群組**：資源群組是 Azure 資源的邏輯群組，例如儲存體帳戶或儲存體同步服務。 您可以建立新的資源群組，或使用現有的資源群組進行 Azure 檔案同步。 (我們建議使用資源群組作為容器，以邏輯方式為您的組織隔離資源，例如將 HR 資源或特定專案的資源分組。 ) 
 - **位置**：您想要在其中部署 Azure 檔案同步的區域。這份清單只提供支援的區域。
@@ -627,7 +627,7 @@ Set-AzStorageSyncServerEndpoint -InputObject <PSServerEndpoint> -LocalCacheMode 
 
 如需詳細資訊，請參閱[Azure 檔案同步與分散式檔案系統 (DFS) 互通](storage-sync-files-planning.md#distributed-file-system-dfs)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - [新增或移除 Azure 檔案同步伺服器端點](storage-sync-files-server-endpoint.md)
 - [向 Azure 檔案同步註冊或取消註冊伺服器](storage-sync-files-server-registration.md)
 - [監視 Azure 檔案同步](storage-sync-files-monitoring.md)

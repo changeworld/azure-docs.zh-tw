@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 036b3af03dec2bdaa7feacc94abca930ebd9b317
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 4d6e5fb765125a4cf68c4939e7350feb84509bf2
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235378"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068093"
 ---
 # <a name="workday-attribute-reference"></a>Workday 索引屬性参考
 
@@ -147,7 +147,7 @@ ms.locfileid: "88235378"
 | 18 | CountryRegionReference                | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary_Job=1]/wd:Position\_Data/wd:Business\_Site\_Summary\_Data/wd:Address\_Data/wd:Country\_Region\_Descriptor/text\(\)                                                                                                                                                                                   |
 | 19 | EmailAddress                          | wd:Worker/wd:Worker\_Data/wd:Personal\_Data/wd:Contact\_Data/wd:Email\_Address\_Data\[wd:Usage\_Data/@wd:Public='1' and string\(wd:Usage\_Data/wd:Type\_Data/wd:Type\_Reference/wd:ID\[@wd:type='Communication\_Usage\_Type\_ID'\]\)='WORK'\]/wd:Email\_Address/text\(\)                                                                                                               |
 | 20 | EmployeeID                            | wd:Worker/wd:Worker\_Reference/wd:ID\[@wd:type='Employee\_ID'\]/text\(\)                                                                                                                                                                                                                                                                                                               |
-| 21 | FacilityLocation                      | wd:Worker/wd:Worker\_Data/wd:Organization\_Data/wd:Worker\_Organization\_Data\[translate\(string\(wd:Organization\_Data/wd:Organization\_Type\_Reference/wd:ID\[@wd:type='Organization\_Type\_ID'\]\),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ'\)='FACILITY'\]/wd:Organization\_Reference/@wd:Descriptor                                 0                                                                                                                                                                                                                                                                                                                                      |
+| 21 | FacilityLocation                      | wd:Worker/wd:Worker\_Data/wd:Organization\_Data/wd:Worker\_Organization\_Data\[translate\(string\(wd:Organization\_Data/wd:Organization\_Type\_Reference/wd:ID\[@wd:type='Organization\_Type\_ID'\]\),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ'\)='FACILITY'\]/wd:Organization\_Reference/@wd:Descriptor                                                                                                                                                                                                                                                                                                                                                                       |
 | 22 | 傳真                                   | wd:Worker/wd:Worker\_Data/wd:Personal\_Data/wd:Contact\_Data/wd:Phone\_Data\[wd:Usage\_Data/@wd:Public='1' and string\(wd:Usage\_Data/wd:Type\_Data/wd:Type\_Reference/wd:ID\[@wd:type='Communication\_Usage\_Type\_ID'\]\)='WORK' and string\(wd:Phone\_Device\_Type\_Reference/wd:ID\[@wd:type='Phone\_Device\_Type\_ID'\]\)='Fax'\]/@wd:Workday_Traditional_Formatted_Phone      |
 | 23 | 名字                             | wd:Worker/wd:Worker\_Data/wd:Personal\_Data/wd:Name\_Data/wd:Legal\_Name\_Data/wd:Name\_Detail\_Data/wd:First\_Name/text\(\)                                                                                                                                                                                                                                                           |
 | 24 | JobClassificationID                   | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary_Job=1]/wd:Position\_Data/wd:Job\_Classification\_Summary\_Data/wd:Job\_Classification\_Reference/wd:ID\[@wd:type='Job\_Classification\_Reference\_ID'\]/text\(\)                                                                                                                                     |
@@ -209,9 +209,9 @@ ms.locfileid: "88235378"
 | 80 | WorkSpaceReference                    | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary_Job=1]/wd:Position\_Data/wd:Work\_Space\_\_Reference/@wd:Descriptor                                                                                                                                                                                                                                  |
 
 ## <a name="custom-xpath-values"></a>自訂 XPATH 值
-下表提供在將背景工作角色從 Workday 布建至 Active Directory 或 Azure AD 時，其他常用的自訂 XPATH API 運算式清單。 請使用您的 Workday 版本來測試此處提供的 XPATH API 運算式，其參考 [教學課程：管理您](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)的設定一節中所捕獲的指示。
+下表提供從 Workday 將背景工作角色布建至 Active Directory 或 Azure AD 時，其他常用自訂 XPATH API 運算式的清單。 請使用您的 Workday 版本測試此處提供的 XPATH API 運算式，這些運算式會參考 [教學課程：管理您](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)的設定一節中所述的指示。
 
-若要在 XPATH 資料表中加入更多屬性，以獲得執行此整合之客戶的權益，請在下方留言，或直接 [參與](/contribute) 文章。 
+若要將多個屬性新增至 XPATH 資料表，以獲得執行這項整合之客戶的優點，請在下方留言，或直接對本文發表 [貢獻](/contribute) 。 
 
 > [!div class="mx-tdBreakAll"]
 > | \# | Workday 屬性名稱  | Workday API 版本 | Workday XPATH API 運算式   |
@@ -219,12 +219,12 @@ ms.locfileid: "88235378"
 > | 1  | 通用識別碼  | v 30.0 +   | wd： Worker/wd： Worker_Data/wd： Universal_ID/text ( # A1      |
 > | 2  | 使用者名稱     | v 30.0 +   | wd： Worker/wd： Worker_Data/wd： User_Account_Data/wd： User_Name/text ( # A1 |
 > | 3  | 管理層級識別碼  | v 30.0 +  | wd： Worker/wd： Worker_Data/wd： Employment_Data/wd： Worker_Job_Data [ @wd:Primary_Job = 1]/wd： Position_Data/wd： Job_Profile_Summary_Data/wd： Management_Level_Reference/wd： ID [ @wd:type = "Management_Level_ID"]/text ( # A1  |
-> | 4 | 雇用已撤銷 | v 30.0 + | wd： Worker/wd： Worker_Data/wd： Employment_Data/wd： Worker_Status_Data/wd： Hire_Rescinded/text ( # A1 |
+> | 4 | 雇用 Rescinded | v 30.0 + | wd： Worker/wd： Worker_Data/wd： Employment_Data/wd： Worker_Status_Data/wd： Hire_Rescinded/text ( # A1 |
 > | 5 | 指派的布建群組 | v 21.1 + | wd： Worker/wd： Worker_Data/wd： Account_Provisioning_Data/wd： Provisioning_Group_Assignment_Data [wd： Status = ' 已指派 ']/wd： Provisioning_Group/text ( # A1 | 
 
 
 ## <a name="supported-xpath-functions"></a>支援的 XPATH 函數
-以下提供 [Microsoft .NET xpath 程式庫](/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100)) 所支援的 xpath 函式清單，您可以在建立 xpath API 運算式時使用。 
+以下是 [Microsoft .NET XPATH 程式庫](/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100)) 所支援的 xpath 函式清單，您可以在建立 xpath API 運算式時使用這些函數。 
 
 * NAME
 * last

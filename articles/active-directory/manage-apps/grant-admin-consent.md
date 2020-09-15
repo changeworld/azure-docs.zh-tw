@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aafaeb1143049b14f0a2fe2d867a951355d1ba61
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.openlocfilehash: 68e40696c935adf6bef78636770b1add81255fa8
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89667589"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060912"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>對應用程式授與全租用戶的管理員同意
 
@@ -88,9 +88,9 @@ https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
 如同往常，請仔細檢查應用程式要求的許可權，然後再授與同意。
 
 > [!WARNING]
-> 將整個租使用者的系統管理員同意授與此 URL，將會撤銷先前授與整個租使用者的任何許可權。 先前由使用者自行 ggranted 的許可權不會受到影響。 
+> 將整個租使用者的系統管理員同意授與此 URL，將會撤銷先前授與整個租使用者的任何許可權。 先前由使用者授與的許可權，將不會受到影響。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [設定使用者同意應用程式的方式](configure-user-consent.md)
 
