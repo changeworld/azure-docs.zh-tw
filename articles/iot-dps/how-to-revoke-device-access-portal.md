@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: abc625c27617c27a79fe284393cdf7b281973bc4
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f5bedde9e5e095b1b8637a09263bf18b06bcddea
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299249"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532336"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>如何從 Azure IoT 中樞裝置佈建服務中取消註冊裝置
 
 對於受到廣泛使用的系統 (例如 IoT 解決方案) 來說，適當地管理裝置認證是非常重要的。 適用於這類系統的最佳做法是清楚地規劃當裝置認證 (不論是共用存取簽章 (SAS) 權杖還是 X.509 憑證) 可能外洩時，如何撤銷裝置的存取權。 
 
-裝置佈建服務中的註冊功能可讓裝置[自動佈建](concepts-auto-provisioning.md)。 佈建的裝置是已向 IoT 中樞註冊的裝置，這讓裝置可以接收其最初的[裝置對應項](~/articles/iot-hub/iot-hub-devguide-device-twins.md)狀態，並開始回報遙測資料。 本文會說明如何從佈建服務執行個體中取消註冊裝置，使其之後無法再進行佈建。
+裝置布建服務中的註冊可讓您布 [建](about-iot-dps.md#provisioning-process)裝置。 佈建的裝置是已向 IoT 中樞註冊的裝置，這讓裝置可以接收其最初的[裝置對應項](~/articles/iot-hub/iot-hub-devguide-device-twins.md)狀態，並開始回報遙測資料。 本文會說明如何從佈建服務執行個體中取消註冊裝置，使其之後無法再進行佈建。
 
 > [!NOTE] 
 > 針對您要撤銷其存取權的裝置，請注意這些裝置的重試原則。 例如，具有無限重試原則的裝置可能會持續嘗試向佈建服務進行註冊。 該情況會耗用服務資源，而且可能會影響效能。
@@ -108,6 +108,6 @@ X.509 憑證通常會配置在信任的信任鏈結中。 如果憑證在鏈結�
 
 成功建立註冊之後，您應該會看到已停用的裝置註冊列在 [個別註冊]**** 索引標籤上。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 取消註冊也屬於較大型的取消佈建程序。 取消佈建裝置包括從佈建服務取消註冊，以及從 IoT 中樞取消登錄。 若要深入了解完整程序，請參閱[如何取消佈建先前自動佈建的裝置](how-to-unprovision-devices.md) 

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b18ca88f9a97b09b7c5e15e78a2301bee712df5e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e6ee8ce065361ac27bba0e80349eb5e1d1877526
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394749"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532285"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 金鑰保存庫開發人員指南
 
@@ -24,7 +24,7 @@ Key Vault 可讓您從應用程式內安全地存取機密資訊︰
 - 您的應用程式能使用金鑰進行簽署和加密，同時也能在應用程式外部管理金鑰，讓您的解決方案適用於位於不同地點的應用程式。
 - 管理 Key Vault 憑證。 如需詳細資訊，請參閱 [憑證](../certificates/about-certificates.md)
 
-如需有關 Azure Key Vault 的一般資訊，請參閱 [Key Vault](overview.md)) 。
+如需 Azure 金鑰保存庫的一般詳細資訊，請參閱 [什麼是金鑰保存庫？](overview.md)。
 
 ## <a name="public-previews"></a>公開預覽
 
@@ -140,7 +140,7 @@ Azure Key Vault 可安全地儲存認證和其他金鑰及密碼，但是您的�
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 的概觀和概念
 
-- [Key Vault 虛刪除行為](soft-delete-overview.md)) 描述可復原已刪除之物件的功能，不論是不慎或刻意刪除。
+- [Key Vault 虛刪除行為](soft-delete-overview.md)描述一項功能，該功能可復原已刪除的物件，無論是無意或有意刪除的。
 - [Key Vault 用戶端節流](overview-throttling.md)可讓您了解節流的基本概念，並提供適用於您應用程式的方法。
 - [Key Vault 安全世界](overview-security-worlds.md)描述地區和安全區域之間的關聯性。
 

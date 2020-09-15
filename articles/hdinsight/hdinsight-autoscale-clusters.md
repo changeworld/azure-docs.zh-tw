@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
-ms.date: 08/21/2020
-ms.openlocfilehash: 7ce4580b366b57e2a1d4904b6ab63bf1834bdb65
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/14/2020
+ms.openlocfilehash: 08b7fe2b3e959536589cfd425541ad36e3bd1e78
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090103"
+ms.locfileid: "90532183"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集
 
@@ -68,7 +68,7 @@ Azure HDInsight 的免費自動調整功能可根據先前設定的準則，自�
 > [!Important]
 > Azure HDInsight 自動調整功能已於 2019 年 11 月 7 日正式發行，適用於 Spark 和 Hadoop 叢集，並包含功能預覽版本中未提供的改善項目。 如果您在 2019 年 11 月 7 日之前已建立 Spark 叢集，並想要在叢集上使用自動調整功能，建議的路徑是建立新叢集，並在新叢集上啟用自動調整。
 >
-> 適用於 Interactive Query (LLAP) 和 HBase 叢集的自動調整仍處於預覽狀態。 自動調整僅適用於 Spark、Hadoop、Interactive Query 以及 HBase 叢集。
+> Interactive Query (LLAP) 的自動調整已于2020年8月27日正式推出。 HBase 叢集仍處於預覽狀態。 自動調整僅適用於 Spark、Hadoop、Interactive Query 以及 HBase 叢集。
 
 下表說明與自動調整功能相容的叢集類型和版本。
 

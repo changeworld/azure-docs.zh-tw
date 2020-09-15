@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 4a5e8b6f430f6af49ab79ca0f8cb2253bd0f2049
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1dc97f92e6139475d0d5ac5ea1201d6ff6b8d470
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520651"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532319"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>如何使用 Azure 裝置佈建服務 SDK 管理裝置註冊
 「裝置註冊」** 會建立單一裝置或裝置群組的記錄，這些裝置可能會在某個時間點向裝置佈建服務進行註冊。 註冊記錄包含屬於該註冊一部分之裝置一開始所需的設定，包括所需的 IoT 中樞。 本文會示範如何針對您的佈建服務使用 Azure IoT 佈建服務 SDK，以程式設計方式管理裝置註冊。  這些 SDK 可從 GitHub 上取得，其位在與 Azure IoT SDK 相同的存放庫中。
 
 ## <a name="prerequisites"></a>必要條件
 * 從裝置佈建服務執行個體取得連接字串。
-* 取得所使用之[證明機制](concepts-security.md#attestation-mechanism)的裝置安全性構件：
+* 取得所使用之[證明機制](concepts-service.md#attestation-mechanism)的裝置安全性構件：
     * [**信賴平臺模組 (TPM) **](/azure/iot-dps/concepts-security#trusted-platform-module)：
         * 個別註冊：來自實體裝置或 TPM 模擬器的註冊識別碼和 TPM 簽署金鑰。
         * 註冊群組不適用 TPM 證明。

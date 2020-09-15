@@ -1,33 +1,33 @@
 ---
-title: 先進的威脅防護-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
-description: 「威脅保護」會偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。
+title: Advanced 威脅防護-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
+description: 適用於 MariaDB 的 Azure 資料庫的威脅防護會偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5f419836b9e73e49ec510fc359487633523e0ef0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0283688ca2de4e7978da69753d08dd4763d30a75
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104600"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532302"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫的先進威脅防護
+# <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫的 Advanced 威脅防護
 
-適用於 MariaDB 的 Azure 資料庫的先進威脅防護會偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫。
+適用於 MariaDB 的 Azure 資料庫的 Advanced 威脅防護會偵測異常活動，指出有不尋常且可能有害的嘗試存取或惡意探索資料庫。
 
-「進階威脅防護」是進階資料安全性供應項目的一部分，該供應項目是進階安全性功能的整合套件。 您可以透過[Azure 入口網站](https://portal.azure.com)來存取和管理先進的威脅防護。
+「進階威脅防護」是進階資料安全性供應項目的一部分，該供應項目是進階安全性功能的整合套件。 您可以透過 [Azure 入口網站](https://portal.azure.com)來存取和管理 Advanced 威脅防護。
 
 > [!IMPORTANT]
-> 先進的威脅防護處於公開預覽狀態。 如果適用於 MariaDB 的 Azure 資料庫是針對「一般用途」和「記憶體最佳化」伺服器來部署的，則此功能可在所有 Azure 區域中使用。
+> Advanced 威脅防護目前處於公開預覽狀態。 如果適用於 MariaDB 的 Azure 資料庫是針對「一般用途」和「記憶體最佳化」伺服器來部署的，則此功能可在所有 Azure 區域中使用。
 
 > [!NOTE]
 > 下列 Azure Government 和主權雲端區域**無法**使用進階威脅防護功能：US Gov 德克薩斯州、US Gov 亞利桑那州、US Gov 愛荷華州、US Gov 維吉尼亞州、US DoD 東部、US DoD 中部、德國中部、德國北部、中國東部、中國東部 2。 如需一般產品可用性，請瀏覽[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。
 
 ## <a name="set-up-threat-detection"></a>設定威脅偵測
-1. 啟動 Azure 入口網站，網址為 [https://portal.azure.com](https://portal.azure.com) 。
-2. 流覽至您想要保護之適用於 MariaDB 的 Azure 資料庫伺服器的 [設定] 頁面。 在 [安全性] 設定中，選取 [進階威脅防護 (預覽)]****。
+1. 啟動 Azure 入口網站 [https://portal.azure.com](https://portal.azure.com) 。
+2. 流覽至您要保護之適用於 MariaDB 的 Azure 資料庫伺服器的設定頁面。 在 [安全性] 設定中，選取 [進階威脅防護 (預覽)]****。
 3. 在 [進階威脅防護 (預覽)]**** 設定頁面上：
 
    - 在伺服器上啟用進階威脅防護。
@@ -63,4 +63,4 @@ SQL Database 威脅偵測將自有的警示與 [Azure 資訊安全中心](https:
 ## <a name="next-steps"></a>後續步驟
 
 * 深入了解 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* 如需價格的詳細資訊，請參閱[適用於 MariaDB 的 Azure 資料庫定價頁面](https://azure.microsoft.com/pricing/details/mariadb/)  
+* 如需定價的詳細資訊，請參閱 [適用於 MariaDB 的 Azure 資料庫定價頁面](https://azure.microsoft.com/pricing/details/mariadb/)  
