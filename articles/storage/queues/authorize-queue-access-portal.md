@@ -8,15 +8,15 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: tamram
-ms.reviewer: ozgun
-ms.subservice: common
+ms.reviewer: ozguns
+ms.subservice: queues
 ms.custom: contperfq1
-ms.openlocfilehash: 82e92b672248e2a63f8b2bbf1fc651f617a7027f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 32e78b3b8ccad791bc7b9bb11123dbe901df597f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90020307"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088666"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>選擇如何授權存取 Azure 入口網站中的佇列資料
 
@@ -92,7 +92,7 @@ ms.locfileid: "90020307"
 
 如果您沒有帳戶金鑰的存取權，則佇列不會列在入口網站中。 按一下 [ **切換至 Azure AD 使用者帳戶** ] 連結，以再次使用您的 Azure AD 帳戶進行驗證。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure Active Directory 來驗證 Azure blob 和佇列的存取權](../common/storage-auth-aad.md)
 - [在 Azure 入口網站中使用 RBAC 授與 Azure 容器和佇列的存取權](../common/storage-auth-aad-rbac-portal.md)

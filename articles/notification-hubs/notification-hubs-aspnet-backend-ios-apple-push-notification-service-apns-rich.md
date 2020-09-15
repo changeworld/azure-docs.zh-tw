@@ -5,58 +5,57 @@ documentationcenter: ios
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 590304df-c0a4-46c5-8ef5-6a6486bb3340
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/17/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d47974554534a0614eb98b473c1e5539ff4d9aa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 33626b7aee615d07ef88dd9fbca46e6512e2cafc
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018003"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090358"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure 通知中心豐富內容推播
 
 ## <a name="overview"></a>概觀
 
-為了與使用者進行即時豐富內容交流，應用程式可能會想要推播純文字以外的內容。 這些通知可提高使用者互動，並呈現如 URL、音效、影像/優待券等內容。 本教學課程會以 [通知使用者](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) 主題為基礎，說明如何傳送包含裝載 (例如影像) 的推播通知。
+為了與使用者進行即時豐富內容交流，應用程式可能會想要推播純文字以外的內容。 這些通知會提升使用者互動，並呈現 Url、音效、影像/贈券等內容。 本教學課程是以 [通知使用者](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) 教學課程為基礎，並示範如何傳送包含承載的推播通知 (例如，) 的映射。
 
-本教學課程適用於 iOS 7 和 8。
+本教學課程與 iOS 7 和8相容。
 
   ![三個螢幕擷取畫面：具有 [傳送推播] 按鈕的應用程式畫面、裝置上的 [開始] 畫面，以及具有 [上一頁] 按鈕的 Windows 標誌。][IOS1]
 
 概括而言：
 
 1. 應用程式後端：
-   * 在後端資料庫/本機儲存體儲存豐富的裝載 (在此案例中為影像)
-   * 將此豐富通知的識別碼傳送至裝置
+   * 會在此情況下儲存豐富的承載 (在此案例中，映射) 在後端資料庫/本機儲存體中。
+   * 將此豐富通知的識別碼傳送至裝置。
 2. 裝置上的應用程式：
-   * 連絡後端，並要求收到識別碼的豐富裝載
-   * 完成資料擷取時，在裝置上傳送使用者通知，並在使用者點選深入了解時立即顯示裝載
+   * 向後端要求具有所收到識別碼的豐富承載。
+   * 當資料抓取完成時，會在裝置上傳送使用者通知，並在使用者點擊以深入瞭解時立即顯示承載。
 
 ## <a name="webapi-project"></a>WebAPI 專案
 
 1. 在 Visual Studio 中，開啟您在 [通知使用者] **** 教學課程中所建立的 [AppBackend](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) 專案。
 2. 取得您想要用來通知使用者的影像，並將它放在專案目錄的 **img** 資料夾中。
 3. 按一下 [方案總管] 中的 [顯示所有檔案]****，然後以滑鼠右鍵按一下資料夾以 [加入至專案]****。
-4. 選取影像後，在 [屬性] 視窗中將其 [建置動作] 變更為 [內嵌資源] ****。
+4. 選取映射之後，請將其 [**屬性**] 視窗中的 [**組建] 動作**變更為 [**內嵌資源**]。
 
     ![方案總管的螢幕擷取畫面。 選取影像檔案，並在其 [屬性] 窗格中，將內嵌資源列為 [建立] 動作。][IOS2]
-5. 在 `Notifications.cs` 中新增下列 using 陳述式：
+5. 在中 `Notifications.cs` ，加入下列 `using` 語句：
 
     ```csharp
     using System.Reflection;
     ```
-6. 使用下列程式碼更新整個 `Notifications` 類別。 請務必使用您的通知中樞認證和影像檔名稱來取代預留位置。
+
+6. 使用下列程式碼取代 `Notifications` 類別。 請務必將預留位置取代為您的通知中樞認證和影像檔案名稱：
 
     ```csharp
     public class Notification {
@@ -103,10 +102,7 @@ ms.locfileid: "89018003"
     }
     ```
 
-   > [!NOTE]
-   > (選用) 如需如何新增和取得專案資源的詳細資訊，請參閱[如何使用 Visual C# 來內嵌和存取資源](https://support.microsoft.com/kb/319292)。
-
-7. 在 `NotificationsController.cs` 中，使用下列程式碼片段重新定義 `NotificationsController。 這會將初始無訊息豐富內容通知識別碼傳送到裝置，並可讓用戶端擷取影像：
+7. 在中 `NotificationsController.cs` ， `NotificationsController` 使用下列程式碼重新定義。 這會將初始的無訊息豐富通知識別碼傳送至裝置，並允許用戶端抓取映射：
 
     ```csharp
     // Return http response with image binary
@@ -137,42 +133,46 @@ ms.locfileid: "89018003"
         return Request.CreateResponse(HttpStatusCode.OK);
     }
     ```
-8. 為了可以從所有裝置存取此應用程式，我們現在可以將它重新部署到 Azure 網站。 以滑鼠右鍵按一下 **AppBackend** 專案，然後選取 [發佈]****。
-9. 選取 Azure 網站作為您的發行目標。 使用您的 Azure 帳戶登入，並選取現有或新的網站，並在 [**連接**] 索引標籤中記下 [**目的地 URL** ] 屬性。我們稍後會在本教學課程中將此 URL 參考為您的*後端端點*。 按一下 [發佈] 。
+
+8. 現在，將此應用程式重新部署至 Azure 網站，使其可從所有裝置存取。 以滑鼠右鍵按一下 **AppBackend** 專案，然後選取 [發佈]****。
+9. 選取 **Azure 網站** 作為發佈目標。 使用您的 Azure 帳戶登入，並選取現有或新的網站，並在 [**連接**] 索引標籤中記下 [**目的地 URL** ] 屬性。我們稍後會在本教學課程中將此 URL 稱為您的*後端端點*。 選取 [發佈]。
 
 ## <a name="modify-the-ios-project"></a>修改 iOS 專案
 
-既然您已將應用程式後端修改為只傳送通知的識別碼 ** ，您將需要變更 iOS 應用程式以處理該識別碼，並從後端擷取豐富訊息。
+現在您已將應用程式後端修改為只傳送通知的 *識別碼* ，請變更您的 iOS 應用程式以處理該識別碼，並從後端取出豐富的訊息：
 
 1. 開啟 iOS 專案，然後移至 [目標] **** 區段中的主要應用程式目標，以啟用遠端通知。
-2. 按一下 [功能]****，並開啟 [背景模式]****，然後核取 [遠端通知]**** 核取方塊。
+2. 選取 [ **功能**]、[啟用 **背景模式**]，然後核取 [ **遠端通知** ] 核取方塊。
 
     ![顯示 [功能] 畫面的 iOS 專案螢幕擷取畫面。 背景模式會開啟，並已選取 [遠端通知] 核取方塊。][IOS3]
-3. 開啟 `Main.storyboard`，並確定您有[通知使用者](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)教學課程中的 [檢視控制器] (在本教學課程中稱為 [首頁檢視控制器])。
-4. 將 [導覽控制器]**** 新增至您的腳本，並按住 Control 再拖曳到 [首頁檢視控制器]，使其成為導覽的**根目錄檢視**。 請確定只針對 [導覽控制器] 選取 [屬性檢查程式] 中的 [是初始檢視控制器] **** 。
-5. 將 [檢視控制器]**** 新增至腳本，並新增 [影像檢視]****。 這是使用者選擇要深入了解，在按一下通知之後會看到的頁面。 您的腳本應如下所示：
+3. 開啟 `Main.storyboard` ，並確定您在本教學課程中有一個 View controller (稱為「首頁視圖控制器」) 從 [通知使用者](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) 教學課程中進行。
+4. 將 **流覽控制器** 新增至您的分鏡腳本，並將主視圖控制器拖曳至流覽的 **根視圖** 。 請確定已為流覽控制器選取 [屬性] 偵測器中的 [ **為初始視圖控制器** ]。
+5. 將 **View Controller** 新增至腳本，並加入 **影像視圖**。 這是使用者選擇要深入了解，在按一下通知之後會看到的頁面。 您的腳本應如下所示：
 
     ![分鏡腳本的螢幕擷取畫面。 顯示三個應用程式畫面：導覽視圖、首頁視圖，以及影像視圖。][IOS4]
-6. 按一下腳本中的 [首頁檢視控制器]****，並確定其 [自訂類別]**** 為 **homeViewController**，且 [腳本識別碼]**** 位於 [身分識別檢查程式] 下方。
-7. 針對類別為 **imageViewController**的 [影像檢視控制器] 執行相同動作。
-8. 接著，建立新的檢視控制器類別 (名稱為 **imageViewController** ) 以處理您剛建立的 UI。
-9. 在 **imageViewController.h**中，將下列內容新增到控制器的介面宣告。 請務必按住 Ctrl 再從腳本影像檢視拖曳到這些屬性，以連結兩者：
+6. 按一下分鏡腳本中的 **Home View 控制器** ，並確定它已 **HomeViewController** 為其 **自訂類別** 和分鏡腳本 **識別碼** （位於身分識別偵測器底下）。
+7. 針對「影像視圖控制器」進行相同的動作，例如 **>imageviewcontroller**。
+8. 然後，建立名為 **>imageviewcontroller** 的新視圖控制器類別，以處理您剛才建立的 UI。
+9. 在 **>imageviewcontroller**中，將下列程式碼加入至控制器的介面宣告。 請務必按住 Ctrl 再從腳本影像檢視拖曳到這些屬性，以連結兩者：
 
     ```objc
     @property (weak, nonatomic) IBOutlet UIImageView *myImage;
     @property (strong) UIImage* imagePayload;
     ```
+
 10. 在 `imageViewController.m` 中，於 `viewDidload` 結尾處新增下列項目：
 
     ```objc
     // Display the UI Image in UI Image View
     [self.myImage setImage:self.imagePayload];
     ```
+
 11. 在 `AppDelegate.m` 中，匯入您建立的影像控制器：
 
     ```objc
     #import "imageViewController.h"
     ```
+
 12. 使用下列宣告新增介面區段：
 
     ```objc
@@ -190,6 +190,7 @@ ms.locfileid: "89018003"
 
     @end
     ```
+
 13. 在 `AppDelegate` 中，請確定您的應用程式已註冊 `application: didFinishLaunchingWithOptions` 中的無訊息通知：
 
     ```objc
@@ -234,7 +235,7 @@ ms.locfileid: "89018003"
     return YES;
     ```
 
-14. 在下列實作中替代 `application:didRegisterForRemoteNotificationsWithDeviceToken`，以將腳本 UI 的變更列入考慮：
+14. 取代下列的執行， `application:didRegisterForRemoteNotificationsWithDeviceToken` 以將分鏡腳本 UI 變更納入考慮：
 
     ```objc
     // Access navigation controller which is at the root of window
@@ -243,6 +244,7 @@ ms.locfileid: "89018003"
     homeViewController *hvc = (homeViewController *)[nc.viewControllers objectAtIndex:0];
     hvc.deviceToken = deviceToken;
     ```
+
 15. 接著，將下列方法加入至 `AppDelegate.m`，以擷取您的端點影像，並在擷取完成時傳送本機通知。 請務必以後端端點取代預留位置 `{backend endpoint}` ：
 
     ```objc
@@ -324,7 +326,8 @@ ms.locfileid: "89018003"
         // Add "else if" here to handle more types of rich content such as url, sound files, etc.
     }
     ```
-16. 使用下列方法開啟 `AppDelegate.m` 中的影像檢視控制器，即可處理上述本機通知：
+
+16. 使用下列方法，在中開啟影像視圖控制器來處理先前的本機通知 `AppDelegate.m` ：
 
     ```objc
     // Helper: redirect users to image view controller

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fec85a03b74155b5b18145bfaddc5d326c910bc9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561014"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087298"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何呼叫文字分析 REST API
 
@@ -59,10 +59,10 @@ ms.locfileid: "84561014"
 
    資源端點如下 (您的區域可能有所不同)：
 
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/keyPhrases`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/languages`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/entities/recognition/general`
 
 2. 設定三個要求標頭：
 
@@ -86,7 +86,7 @@ ms.locfileid: "84561014"
   + [實體辨識](text-analytics-how-to-entity-linking.md)  
 
 
-6. 按一下 [Send]**** \(傳送\) 以提交要求。 請參閱總覽中的[資料限制](../overview.md#data-limits)一節，以取得您每分鐘和第二次可以傳送的要求數目的相關資訊。
+6. 按一下 [Send]**** \(傳送\) 以提交要求。 請參閱總覽中的 [資料限制](../overview.md#data-limits) 一節，以取得每分鐘可以傳送的要求數目和秒數的相關資訊。
 
    在 Postman 中，回應會以單一 JSON 文件的形式顯示在下一個視窗中，且在要求中所提供的每個文件識別碼都會有一個項目。
 
@@ -98,4 +98,4 @@ ms.locfileid: "84561014"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [偵測語言種類](text-analytics-how-to-language-detection.md)
+> [偵測語言](text-analytics-how-to-language-detection.md)

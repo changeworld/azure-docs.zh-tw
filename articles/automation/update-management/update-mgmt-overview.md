@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: c95bd7523a57c2de02686d3cd06190e60550de0a
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: ab2c584b1e62ac8296c4e9489a72489cd815fc3c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024123"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089848"
 ---
 # <a name="update-management-overview"></a>更新管理概觀
 
@@ -108,7 +108,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 
 您可以搭配 Microsoft Endpoint Configuration Manager 使用更新管理。 若要深入了解整合案例，請參閱[整合更新管理與 Windows Endpoint Configuration Manager](update-mgmt-mecmintegration.md)。 針對 Configuration Manager 環境中網站所管理的 Windows 伺服器，需要[適用於 Windows 的 Log Analytics 代理程式](../../azure-monitor/platform/agent-windows.md)。 
 
-根據預設，從 Azure Marketplace 部署的 Windows VM 會設定為從 Windows Update 服務接收自動更新。 當您將 Windows VM 新增至工作區時，此行為並不會變更。 如果您未使用更新管理主動管理更新，即會套用預設行為 (以自動套用更新)。
+根據預設，從 Azure Marketplace 部署的 Windows Vm 會設定為從 Windows Update 服務接收自動更新。 當您將 Windows VM 新增至工作區時，此行為並不會變更。 如果您未使用更新管理主動管理更新，即會套用預設行為 (以自動套用更新)。
 
 > [!NOTE]
 > 您可以修改群組原則，以便只有使用者 (而非系統) 能夠對該機器執行重新開機。 如果更新管理無權在未與使用者手動互動的情況下將機器重新開機，則受控機器可能會停滯。 如需詳細資訊，請參閱[設定自動更新的群組原則設定](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)。
@@ -122,7 +122,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 
 如需如何安裝適用於 Linux 的 Log Analytics 代理程式及下載最新版本的相關資訊，請參閱[適用於 Linux 的 Log Analytics 代理程式](../../azure-monitor/platform/agent-linux.md)。
 
-需註冊從隨選 Red Hat Enterprise Linux (RHEL) (可在 Azure Marketplace 中找到) 映像建立的 VM，才能存取部署於 Azure 中的 [Red Hat Update Infrastructure (RHUI)](../../virtual-machines/workloads/redhat/redhat-rhui.md)。 針對任何其他 Linux 發行版本，則必須使用該發行版本所支援的方法，從發行版本的線上檔案存放庫進行更新。
+從隨選 Red Hat Enterprise Linux 建立的 Vm (RHEL) 可在 Azure Marketplace 中取得的映射，以存取部署在 Azure 中的 [Red Hat 更新基礎結構 (RHUI) ](../../virtual-machines/workloads/redhat/redhat-rhui.md) 。 針對任何其他 Linux 發行版本，則必須使用該發行版本所支援的方法，從發行版本的線上檔案存放庫進行更新。
 
 ## <a name="permissions"></a>權限
 
@@ -136,7 +136,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 
 當您啟用更新管理之後，任何直接連線到您 Log Analytics 工作區的 Windows 機器都會自動設定為混合式 Runbook 背景工作角色，以支援要支援更新管理的 Runbook。
 
-更新管理所管理的每部 Windows 機器都會列於混合式背景工作角色群組窗格中，以作為自動化帳戶的系統混合式背景工作角色群組。 這些群組會使用 `Hostname FQDN_GUID` 命名慣例。 您不能讓這些群組以您帳戶中的 Runbook 為目標。 如果您嘗試，則嘗試會失敗。 這些群組僅用於支援更新管理。
+更新管理所管理的每部 Windows 機器都會列於混合式背景工作角色群組窗格中，以作為自動化帳戶的系統混合式背景工作角色群組。 這些群組會使用 `Hostname FQDN_GUID` 命名慣例。 您不能讓這些群組以您帳戶中的 Runbook 為目標。 如果您嘗試，則嘗試會失敗。 這些群組僅用於支援更新管理。 若要深入瞭解如何查看已設定為混合式 Runbook 背景工作角色的 Windows 機器清單，請參閱「 [查看混合式 runbook 背景工作角色](../automation-hybrid-runbook-worker.md#view-hybrid-runbook-workers)」。
 
 如果您針對更新管理和混合式 Runbook 背景工作角色群組成員資格使用相同的帳戶，則可將 Windows 機器新增到自動化帳戶中的混合式 Runbook 背景工作角色群組，以支援自動化 Runbook。 此功能已新增至混合式 Runbook 背景工作角色 7.2.12024.0 版。
 
@@ -257,7 +257,7 @@ Azure [Resource Manager 範本](update-mgmt-enable-template.md)可用來協助�
 * [從 Azure 自動化帳戶](update-mgmt-enable-automation-account.md)
 * 針對已啟用 Arc 的伺服器 (預覽版) 或非 Azure 機器，請安裝 [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md) ，然後 [讓工作區中的電腦](update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace) 更新管理。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需使用更新管理的詳細資訊，請參閱 [管理 vm 的更新](update-mgmt-manage-updates-for-vm.md)。
 

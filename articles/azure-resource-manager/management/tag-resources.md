@@ -4,12 +4,12 @@ description: 示範如何套用標籤以針對計費及管理來組織 Azure 資
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1eaf9b735e65811b242fa7198b3545c9c68a4d46
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 3ffcb4a0f2f5dc64b165fcdec03f7c3ced258cc1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425988"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086754"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用標記來組織您的 Azure 資源和管理階層
 
@@ -307,7 +307,27 @@ az group list --tag Dept=IT
 
 ### <a name="handling-spaces"></a>處理空間
 
-如果您的標記名稱或值包含空格，您必須採取一些額外的步驟。 下列範例會在標籤可能包含空格時，將所有標記從資源群組套用至其資源。
+如果您的標記名稱或值包含空格，您必須採取一些額外的步驟。 
+
+`--tags`Azure CLI 中的參數可以接受包含字串陣列的字串。 下列範例會覆寫資源群組中標籤具有空格和連字號的標記： 
+
+```azurecli-interactive
+TAGS=("Cost Center=Finance-1222" "Location=West US")
+az group update --name examplegroup --tags "${TAGS[@]}"
+```
+
+當您使用參數建立或更新資源群組或資源時，您可以使用相同的語法 `--tags` 。
+
+若要使用參數來更新標記 `--set` ，您必須以字串形式傳遞索引鍵和值。 下列範例會將單一標記附加至資源群組：
+
+```azurecli-interactive
+TAG="Cost Center='Account-56'"
+az group update --name examplegroup --set tags."$TAG"
+```
+
+在此情況下，標記值會以單引號標示，因為此值有連字號。
+
+您可能也需要將標記套用至許多資源。 下列範例會在標籤可能包含空格時，將來自資源群組的所有標記套用至其資源：
 
 ```azurecli-interactive
 jsontags=$(az group show --name examplegroup --query tags -o json)
@@ -600,7 +620,7 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
    >
    > Azure 自動化和 Azure CDN 只支援15個資源的標籤。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 並非所有資源類型都支援標記。 若要判斷您是否可以將標記套用至資源類型，請參閱 [Azure 資源的標記支援](tag-support.md)。
 * 如需如何實行標記策略的建議，請參閱 [資源命名和標記決策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)。

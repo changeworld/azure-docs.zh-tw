@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: f65bf2bbe174ff90d5a0b962768833b8668f6400
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9bf656989dc331fdd4ce044126ea9d0be9414930
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019711"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088794"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>防止 Azure 儲存體帳戶的共用金鑰授權 (預覽) 
 
@@ -216,7 +216,7 @@ resources
 | Azure 入口網站 | 支援。 如需從 Azure 入口網站授權 Azure AD 帳戶的相關資訊，請參閱 [選擇如何授權存取 Azure 入口網站中的 blob 資料](../blobs/authorize-blob-access-portal.md)。 |
 | AzCopy | 支援 Blob 儲存體。 如需授權 AzCopy 作業的相關資訊，請參閱 AzCopy 檔中的 [選擇如何提供授權認證](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) 。 |
 | Azure 儲存體總管 | 僅支援 Blob 儲存體及 Azure Data Lake Storage Gen2。 不支援對佇列儲存體 Azure AD 存取。 請務必選取正確的 Azure AD 租使用者。 如需詳細資訊，請參閱 [開始使用儲存體總管](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#sign-in-to-azure) |
-| Azure PowerShell | 支援。 如需如何授權 PowerShell 命令搭配 Azure AD 存取 blob 和佇列資料的資訊，請參閱 [使用 Azure AD 認證執行 powershell 命令以存取 blob 或佇列資料](authorize-active-directory-powershell.md)。 |
+| Azure PowerShell | 支援。 如需有關如何使用 Azure AD 為 blob 或佇列作業授權 PowerShell 命令的詳細資訊，請參閱以 [Azure AD 認證執行 powershell 命令以存取 blob 資料](../blobs/authorize-active-directory-powershell.md) ，或 [使用 Azure AD 認證來執行 powershell 命令以存取佇列資料](../queues/authorize-active-directory-powershell.md)。 |
 | Azure CLI | 支援。 如需如何使用 Azure AD 存取 blob 和佇列資料的授權 Azure CLI 命令的詳細資訊，請參閱 [使用 Azure AD 認證執行 Azure CLI 命令以存取 blob 或佇列資料](authorize-data-operations-cli.md)。 |
 | Azure IoT 中樞 | 支援。 如需詳細資訊，請參閱 [虛擬網路的 IoT 中樞支援](../../iot-hub/virtual-network-support.md)。 |
 | Azure Cloud Shell | Azure Cloud Shell 是 Azure 入口網站中的整合式 Shell。 Azure Cloud Shell 會在儲存體帳戶中裝載 Azure 檔案共用的持續性檔案。 如果該儲存體帳戶不允許共用金鑰授權，這些檔案將變成無法存取。 如需詳細資訊，請參閱 [連接您的 Microsoft Azure 檔案儲存體](/azure/cloud-shell/overview#connect-your-microsoft-azure-files-storage)。 <br /><br /> 若要在 Azure Cloud Shell 中執行命令以管理不允許共用金鑰存取的儲存體帳戶，請先確定您已透過角色型存取控制，將這些帳戶的必要許可權授與 (RBAC) 。 如需詳細資訊，請參閱 [什麼是 AZURE RBAC)  (的 azure 角色型存取控制？](../../role-based-access-control/overview.md)。 |
@@ -245,7 +245,7 @@ Azure 監視器中的 Azure 計量和記錄不會在預覽中區分不同類型�
 
 當儲存體帳戶在預覽期間不允許共用金鑰存取時，會繼續允許以佇列、資料表或 Azure 檔案儲存體資源為目標的共用存取簽章。 這項限制適用于服務 SAS 權杖和帳戶 SAS 權杖。 這兩種類型的 SAS 都具有共用金鑰的授權。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [授權存取 Azure 儲存體中的資料](storage-auth.md)
 - [使用 Azure Active Directory 授權存取 blob 和佇列](storage-auth-aad.md)

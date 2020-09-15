@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 53089fa42c536cbdc59865f80f63a77c76720e2c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: bfc1a818aeb85eca04faca713d4c7acbbce3626a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752020"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088488"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>在 Azure 中可使用哪些磁碟類型？
 
@@ -71,12 +71,12 @@ Ultra 磁片的一些主要功能如下：
 
 針對輸入/輸出 (IO) 工作負載大的虛擬機器 (VM)，Azure 進階 SSD 可提供高效能和低延遲的磁碟支援。 您可以將現有 VM 磁碟遷移到進階 SSD，以利用進階儲存體磁碟的速度和效能。 進階 SSD 適用於任務關鍵性的生產應用程式。 Premium Ssd 只能搭配 premium 儲存體相容的 VM 系列使用。
 
-若要深入瞭解適用于 Windows 或 Linux 的 Azure 中的個別 VM 類型與大小，包括符合 premium 儲存體的大小，請參閱 [azure 中虛擬機器的大小](sizes.md)。 若要深入瞭解適用于 Linux 的 Azure 中的個別 VM 類型與大小，包括符合 premium 儲存體的大小，請參閱 [azure 中虛擬機器的大小](sizes.md)。 在這些文章中，您需要檢查每個個別 VM 大小的文章，以判斷它是否符合 premium 儲存體相容性。
+若要深入瞭解適用于 Windows 或 Linux 的 Azure 中的個別 VM 類型與大小，包括符合 premium 儲存體的大小，請參閱 [azure 中虛擬機器的大小](sizes.md)。 在本文中，您需要檢查每個個別 VM 大小的文章，以判斷它是否符合 premium 儲存體相容性。
 
 ### <a name="disk-size"></a>磁碟大小
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
-當您佈建進階儲存體磁碟時，不同於標準儲存體的是，您可獲得該磁碟的容量、IOPS 和輸送量保證。 例如，如果您建立 P50 磁碟，Azure 會為該磁碟佈建 4,095 GB 儲存體容量、7,500 IOPS 和 250 MB/秒的輸送量。 您的應用程式可以使用全部或部分的容量和效能。 進階 SSD 磁片的設計目的是要提供較低的單一位數毫秒延遲，以及上表99.9% 的時間所述的目標 IOPS 和輸送量。
+當您佈建進階儲存體磁碟時，不同於標準儲存體的是，您可獲得該磁碟的容量、IOPS 和輸送量保證。 例如，如果您建立 P50 磁碟，Azure 會為該磁碟佈建 4,095 GB 儲存體容量、7,500 IOPS 和 250 MB/秒的輸送量。 您的應用程式可以使用全部或部分的容量和效能。 進階固態硬碟的設計是為了在 99.9% 的時間內，提供低個位數毫秒延遲以及上表所述的目標 IOPS 和輸送量。
 
 ## <a name="bursting"></a>爆破
 

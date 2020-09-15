@@ -1,6 +1,6 @@
 ---
-title: 在地圖上將快捷方式新增至點 |Microsoft Azure 對應
-description: 瞭解 Azure 地圖服務中的快顯功能表、快顯範本和快顯事件。 瞭解如何將快顯新增至地圖上的某個點，以及如何重複使用和自訂快顯視窗。
+title: 將快顯視窗新增至地圖上的某個點 |Microsoft Azure 對應
+description: 瞭解 Azure 地圖服務中的快顯視窗、快顯範本和快顯事件。 瞭解如何將快顯視窗新增至地圖上的某個點，以及如何重複使用和自訂快顯視窗。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/27/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 5235b273ab45a2ece011f38bf363b33230101396
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c27f80e90447ad4b9053649350201c5180ccbfe6
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036499"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090766"
 ---
 # <a name="add-a-popup-to-the-map"></a>在地圖上新增快顯
 
@@ -22,7 +22,7 @@ ms.locfileid: "88036499"
 
 ## <a name="understand-the-code"></a>了解程式碼
 
-下列程式碼會使用符號圖層，將具有和屬性的點特徵新增 `name` `description` 至地圖。 隨即會建立[快顯視窗類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)的實例，但不會顯示。 滑鼠事件會新增至符號圖層，以觸發開啟和關閉快顯視窗。 當標記符號暫留時，快顯的 `position` 屬性會更新為標記的位置，而 `content` 選項會使用一些 HTML 來更新，以包裝要暫留 `name` `description` 的點功能的和屬性。 然後會使用其函式，在地圖上顯示快顯 `open` 。
+下列程式碼會使用符號圖層，將具有和屬性的點特徵新增 `name` `description` 至地圖。 隨即建立 [快顯視窗類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup) 的實例，但不會顯示。 滑鼠事件會加入至符號圖層，以觸發開啟和關閉快顯視窗。 當標記符號停留時，快顯視窗的 `position` 屬性會以標記的位置進行更新，而 `content` 選項會以一些 HTML 來更新，以包裝要停留的  `name` `description` 點功能和屬性。 然後，會使用其函式在地圖上顯示快顯視窗 `open` 。
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -80,48 +80,48 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 <br/>
 
-<iframe height='500' scrolling='no' title='使用 Azure 地圖服務新增快顯' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>使用 Azure 地圖服務新增快顯</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
+<iframe height='500' scrolling='no' title='使用 Azure 地圖服務新增快顯' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>使用 Azure 地圖服務新增快顯</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>重複使用具有多個點的快顯
 
-在某些情況下，最好的方法是建立一個快顯並重複使用它。 例如，您可能有大量的點，而且想要一次只顯示一個快顯視窗。 藉由重複使用快顯，應用程式所建立的 DOM 元素數目會大幅減少，這可提供更好的效能。 下列範例會建立3點特徵。 如果您對任何一個特徵按一下，便會顯示快顯，內有該點特徵的內容。
+在某些情況下，最好的方法是建立一個快顯視窗，然後重複使用它。 例如，您可能有大量的點，而且只想要一次顯示一個快顯視窗。 藉由重複使用快顯視窗，會大幅減少應用程式所建立的 DOM 元素數目，進而提供更好的效能。 下列範例會建立3個點的功能。 如果您對任何一個特徵按一下，便會顯示快顯，內有該點特徵的內容。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='重複使用具有多個釘選的快顯' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看 Pen <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>重複使用具有多個釘選的快顯</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
+<iframe height='500' scrolling='no' title='重複使用具有多個釘選的快顯' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看 Pen <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>重複使用具有多個釘選的快顯</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 ## <a name="customizing-a-popup"></a>自訂快顯視窗
 
-根據預設，快顯視窗會有白色背景、底部的指標箭號，以及右上角的 [關閉] 按鈕。 下列範例會使用快顯視窗的選項，將背景色彩變更為黑色 `fillColor` 。 將此選項設定為 false，即可移除 [關閉] 按鈕 `CloseButton` 。 快顯視窗的 HTML 內容會使用從快顯的邊緣填補10圖元。 文字會設為白色，因此顯示在黑色背景上。  
+根據預設，快顯視窗會有白色背景、底部的指標箭號，以及右上角的 [關閉] 按鈕。 下列範例會使用快顯視窗的選項，將背景色彩變更為黑色 `fillColor` 。 將選項設定為 false，即可移除 [關閉] 按鈕 `CloseButton` 。 快顯視窗的 HTML 內容會從快顯的邊緣使用填補10圖元。 文字是以白色顯示，因此會在黑色背景上美觀顯示。  
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="自訂快顯視窗" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-在 CodePen 上 Azure 地圖服務 () ，請參閱畫筆<a href='https://codepen.io/azuremaps/pen/ymKgdg/'>自訂快顯視窗</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+<iframe height="500" style="width: 100%;" scrolling="no" title="自訂快顯視窗" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+在 >codepen 上 Azure 地圖服務 () ，查看畫筆<a href='https://codepen.io/azuremaps/pen/ymKgdg/'>自訂快顯視窗</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
-## <a name="add-popup-templates-to-the-map"></a>將快顯範本新增至對應
+## <a name="add-popup-templates-to-the-map"></a>將快顯視窗範本新增至地圖
 
-快顯範本可讓您輕鬆地建立快顯功能表的資料驅動配置。 下列各節示範如何使用各種快捷方式範本，以使用功能屬性來產生格式化的內容。
+快顯範本可讓您輕鬆地建立快顯視窗的資料驅動版面配置。 下列各節示範如何使用各種彈出範本，以使用功能屬性來產生格式化的內容。
 
 > [!NOTE]
-> 根據預設，所有轉譯的內容都會使用快顯視窗範本，以在 iframe 內以「安全性」功能的形式進行沙箱處理。 不過，有一些限制：
+> 根據預設，轉譯的所有內容都會使用快顯視窗範本，在 iframe 內以安全性功能的形式進行沙箱化。 不過，有一些限制：
 >
-> - 所有腳本、表單、指標鎖定和上方導覽功能都已停用。 當您按一下時，可以在新的索引標籤中開啟連結。 
-> - 較舊的瀏覽器不支援 `srcdoc` iframe 上的參數，將僅限於轉譯少量的內容。
+> - 已停用所有腳本、表單、指標鎖定和頂端導覽功能。 當您按一下時，可以在新的索引標籤中開啟連結。 
+> - 不支援 iframe 上參數的舊版瀏覽器 `srcdoc` 將受限於轉譯少量的內容。
 > 
-> 如果您信任載入至快顯視窗中的資料，而且可能想要將這些腳本載入到快顯視窗才能存取您的應用程式，您可以將 [快顯範本] 選項設定為 [false] 來停用 `sandboxContent` 。 
+> 如果您信任正在載入至快顯視窗中的資料，而且可能想要載入到快顯視窗的這些腳本能夠存取您的應用程式，您可以將快顯範本選項設定為 false，以停用此 `sandboxContent` 選項。 
 
 ### <a name="string-template"></a>字串範本
 
-字串範本會以功能屬性的值取代預留位置。 不需要為此功能的屬性指派 String 類型的值。 例如，會 `value1` 保留一個整數。 這些值接著會傳遞至的 content 屬性 `popupTemplate` 。 
+字串範本會以功能屬性的值取代預留位置。 不需要將字串類型的值指派給功能的屬性。 例如， `value1` 保留一個整數。 這些值接著會傳遞至的 content 屬性 `popupTemplate` 。 
 
-`numberFormat`選項會指定要顯示的數位格式。 如果 `numberFormat` 未指定，則程式碼會使用快顯範本日期格式。 `numberFormat`選項會使用[toLocaleString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)函數來格式化數位。 若要格式化大量數位，請考慮使用 `numberFormat` 選項搭配[cultureinfo.numberformat](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/format)的函式。 例如，下列程式碼片段會使用 `maximumFractionDigits` 將小數位數限制為兩個。
+`numberFormat`選項會指定要顯示之數位的格式。 如果 `numberFormat` 未指定，則程式碼會使用快顯範本的日期格式。 `numberFormat`選項會使用[toLocaleString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)函數來格式化數位。 若要格式化大量數位，請考慮使用 `numberFormat` [>cultureinfo.numberformat 格式](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/format)的選項。 例如，下列程式碼片段會使用 `maximumFractionDigits` 將小數位數限制為二。
 
 > [!Note]
-> 字串範本只有一種方式可以呈現影像。 首先，字串範本中必須有一個影像標記。 傳遞至影像標記的值應該是影像的 URL。 然後，字串範本必須 `isImage` 在中將設定為 true `HyperLinkFormatOptions` 。 `isImage`選項會指定超連結用於影像，而超連結則會載入影像標記中。 按一下超連結時，將會開啟影像。
+> 字串範本只能用一種方式來呈現影像。 首先，字串範本必須有影像標記。 傳遞至影像標記的值應該是影像的 URL。 然後，字串範本 `isImage` 在中必須設定為 true `HyperLinkFormatOptions` 。 `isImage`選項會指定影像的超連結，而且會將超連結載入至影像標記。 按一下超連結時，影像就會開啟。
 
 ```javascript
 var templateOptions = {
@@ -148,9 +148,9 @@ var popup = new atlas.Popup({
 
 ### <a name="propertyinfo-template"></a>PropertyInfo 範本
 
-PropertyInfo 範本會顯示功能的可用屬性。 `label`選項會指定要對使用者顯示的文字。 如果 `label` 未指定，則會顯示超連結。 而且，如果超連結是影像，則會顯示指派給 "alt" 標記的值。 `dateFormat`會指定日期的格式，如果未指定日期格式，則會將日期轉譯為字串。 `hyperlinkFormat`選項會轉譯可按的連結，同樣地， `email` 可以使用選項來轉譯可按的電子郵件地址。
+PropertyInfo 範本會顯示功能的可用屬性。 `label`選項會指定要對使用者顯示的文字。 如果 `label` 未指定，則會顯示超連結。 而且，如果超連結是影像，則會顯示指派給 "alt" 標記的值。 `dateFormat`指定日期的格式，如果未指定日期格式，則會將日期轉譯為字串。 `hyperlinkFormat`選項會轉譯可點按的連結，同樣地，此 `email` 選項可以用來呈現可按的電子郵件地址。
 
-在 PropertyInfo 範本向使用者顯示內容之前，它會以遞迴方式檢查屬性是否確實已針對該功能定義。 它也會忽略顯示樣式和標題屬性。 例如，它不會顯示 `color` 、 `size` 、 `anchor` 、 `strokeOpacity` 和 `visibility` 。 因此，在後端中完成屬性路徑檢查之後，PropertyInfo 範本會以表格格式顯示內容。
+在 PropertyInfo 範本將屬性顯示給終端使用者之前，它會以遞迴方式檢查屬性是否確實已針對該功能定義。 它也會忽略顯示樣式和標題屬性。 例如，它不會顯示 `color` 、、、 `size` `anchor` `strokeOpacity` 和 `visibility` 。 因此，在後端中完成屬性路徑檢查後，PropertyInfo 範本會以表格格式顯示內容。
 
 ```javascript
 var templateOptions = {
@@ -208,7 +208,7 @@ var popup = new atlas.Popup({
 
 ### <a name="multiple-content-templates"></a>多個內容範本
 
-功能也可能會使用字串範本和 PropertyInfo 範本的組合來顯示內容。 在此情況下，字串範本會在白色背景上呈現預留位置值。  而且，PropertyInfo 範本會在資料表內呈現全形影像。 此範例中的屬性與我們在先前範例中所述的屬性類似。
+某項功能也可能會使用字串範本和 PropertyInfo 範本的組合來顯示內容。 在此情況下，字串範本會將預留位置值轉譯成白色背景。  而且，PropertyInfo 範本會在表格內轉譯完整寬度的影像。 此範例中的屬性類似于先前範例中所述的屬性。
 
 ```javascript
 var templateOptions = {
@@ -246,32 +246,32 @@ var popup = new atlas.Popup({
 
 ### <a name="points-without-a-defined-template"></a>沒有已定義範本的點
 
-當 Popup 範本未定義為字串範本、PropertyInfo 範本或兩者的組合時，會使用預設設定。 當 `title` 和 `description` 是唯一指派的屬性時，快顯視窗範本會顯示白色背景，也就是右上角的 [關閉] 按鈕。 而且，在小型和中型畫面上，它會在底部顯示箭號。 預設設定會針對和以外的所有屬性顯示在資料表中 `title` `description` 。 即使回到預設設定，快顯範本仍然可以透過程式設計方式操作。 例如，使用者可以關閉超連結偵測，而預設設定仍然適用于其他屬性。
+當 Popup 範本未定義為字串範本、PropertyInfo 範本或兩者的組合時，就會使用預設設定。 當 `title` 和 `description` 是唯一指派的屬性時，快顯視窗範本會顯示白色背景，也就是右上角的 [關閉] 按鈕。 而且，在小型和中型螢幕上，它會在底部顯示箭號。 預設設定會顯示在資料表中，除了和以外的所有屬性 `title` `description` 。 即使回到預設設定，也可以透過程式設計的方式操作快顯範本。 例如，使用者可以關閉超連結偵測，預設設定仍會套用至其他屬性。
 
-在 CodePen 中，按一下地圖上的點。 下列每個快顯範本的地圖上都有一個點：字串範本、PropertyInfo 範本和多個內容範本。 另外還有三個重點，說明範本如何使用預設設定來呈現。
+在 >codepen 中，按一下地圖上的點。 下列每個快顯範本的對應上都有一個點：字串範本、PropertyInfo 範本和多個內容範本。 另外還有三個重點可顯示範本如何使用預設設定來呈現。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 CodePen 上的 Azure 地圖服務 () 的 Pen <a href='https://codepen.io/azuremaps/pen/dyovrzL/'>PopupTemplates</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 >codepen 上的 Azure 地圖服務 () 的畫筆<a href='https://codepen.io/azuremaps/pen/dyovrzL/'>PopupTemplates</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="reuse-popup-template"></a>重複使用快顯視窗範本
 
-類似于重複使用快顯視窗，您可以重複使用快顯範本。 當您只想要一次顯示一個快顯範本（適用于多個點）時，這個方法會很有用。 藉由重複使用快顯範本，應用程式所建立的 DOM 元素數目會減少，進而改善您的應用程式效能。 下列範例會針對三個點使用相同的快顯視窗範本。 如果您對任何一個特徵按一下，便會顯示快顯，內有該點特徵的內容。
+類似于重複使用快顯視窗，您可以重複使用快顯範本。 當您只想要針對多個點一次顯示一個快顯範本時，此方法很有用。 藉由重複使用快顯範本，應用程式所建立的 DOM 元素數目會減少，進而改善您的應用程式效能。 下列範例會針對三個點使用相同的快顯視窗範本。 如果您對任何一個特徵按一下，便會顯示快顯，內有該點特徵的內容。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='ReusePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 CodePen 上的 Azure 地圖服務 () 的 Pen <a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='ReusePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 >codepen 上的 Azure 地圖服務 () 的畫筆<a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="popup-events"></a>快顯視窗事件
 
-您可以開啟、關閉和拖曳快顯視窗。 Popup 類別提供的事件可協助開發人員回應這些事件。 下列範例會反白顯示當使用者開啟、關閉或拖曳快顯視窗時，所引發的事件。 
+您可以開啟、關閉和拖曳快顯視窗。 Popup 類別會提供事件，以協助開發人員回應這些事件。 下列範例會反白顯示當使用者開啟、關閉或拖曳快顯視窗時引發的事件。 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="快顯視窗事件" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-在 CodePen 上 Azure 地圖服務 () ，查看 [畫筆快顯]<a href='https://codepen.io/azuremaps/pen/BXrpvB/'>事件</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+<iframe height="500" style="width: 100%;" scrolling="no" title="快顯視窗事件" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+在 >codepen 上 Azure 地圖服務 () ，查看畫筆<a href='https://codepen.io/azuremaps/pen/BXrpvB/'>彈出事件</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="next-steps"></a>後續步驟

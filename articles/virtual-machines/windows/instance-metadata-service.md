@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: adeba1964ab802a903e82b3ea71bc3248b86cea9
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705056"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086703"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 執行個體中繼資料服務
 
@@ -517,10 +517,11 @@ OS 磁碟物件包含有關 VM 所使用 OS 磁碟的下列資訊：
 createOption | 如何建立 VM 的相關資訊
 diffDiskSettings | 暫時性磁碟設定
 diskSizeGB | 磁碟的大小 (以 GB 為單位)
+encryptionSettings | 磁碟的加密設定
 image   | 來源使用者映像虛擬硬碟
-lun     | 磁碟的邏輯單元編號
 ManagedDisk | 受控磁碟參數
 NAME    | 磁碟名稱
+osType  | 磁碟中包含的 OS 類型
 vhd     | 虛擬硬碟
 writeAcceleratorEnabled | 是否在磁碟上啟用 writeAccelerator
 
@@ -532,11 +533,10 @@ writeAcceleratorEnabled | 是否在磁碟上啟用 writeAccelerator
 createOption | 如何建立 VM 的相關資訊
 diffDiskSettings | 暫時性磁碟設定
 diskSizeGB | 磁碟的大小 (以 GB 為單位)
-encryptionSettings | 磁碟的加密設定
 image   | 來源使用者映像虛擬硬碟
+lun     | 磁碟的邏輯單元編號
 ManagedDisk | 受控磁碟參數
 NAME    | 磁碟名稱
-osType  | 磁碟中包含的 OS 類型
 vhd     | 虛擬硬碟
 writeAcceleratorEnabled | 是否在磁碟上啟用 writeAccelerator
 

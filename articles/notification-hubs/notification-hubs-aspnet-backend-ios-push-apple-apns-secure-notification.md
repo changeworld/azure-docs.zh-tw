@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/17/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: d7dc3212007e9b9ec67d0d235135d4d46f20b950
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a6c85ba017656bd312ddfe3d5f6d98014a3dc89a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022118"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090341"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure 通知中心安全推播
 
@@ -43,12 +43,12 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
    * 裝置會連絡後端並要求安全裝載。
    * 應用程式會以通知的形式在裝置上顯示裝載。
 
-請務必注意在上述流程 (與本教學課程) 中，我們假設使用者登入後，裝置會將驗證權杖儲存在本機儲存體中。 由於裝置可使用此權杖擷取通知的安全裝載，因此可保證順暢的體驗。 如果您的應用程式沒有將驗證權杖儲存在裝置上，或如果這些權杖可能會過期，裝置應用程式應在收到通知時顯示一般通知，以提示使用者啟動應用程式。 應用程式會接著驗證使用者，並顯示通知裝載。
+請務必注意在上述流程 (與本教學課程) 中，我們假設使用者登入後，裝置會將驗證權杖儲存在本機儲存體中。 由於裝置可使用此權杖擷取通知的安全裝載，因此可保證順暢的體驗。 如果您的應用程式未將驗證權杖儲存在裝置上，或如果這些權杖可以過期，裝置應用程式會在收到通知時顯示一般通知，以提示使用者啟動應用程式。 應用程式會接著驗證使用者，並顯示通知裝載。
 
 本安全推播教學課程說明如何以安全的方式傳送推播通知。 本教學課程會以 [通知使用者](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) 教學課程為基礎，因此您應先完成該教學課程中的步驟。
 
 > [!NOTE]
-> 本教學課程假設您已建立並設定通知中樞，如[使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md)中所述。
+> 本教學課程假設您已建立並設定通知中樞，如 [使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md)中所述。
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
@@ -119,10 +119,10 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 
     本方法會呼叫應用程式後端，使用儲存在共用喜好設定中的認證來擷取通知內容。
 
-4. 現在，我們必須處理內送通知，並使用上述方法擷取要顯示的內容。 首先，我們必須啟用您的 iOS 應用程式，可在接收推播通知時於背景中執行。 在 **XCode** 中，在左側面板中選取您的應用程式專案，然後在中央窗格的 [目標]**** 區段中，按一下您的主要應用程式目標。
-5. 接著按一下中央窗格頂端的 [功能]**** 索引標籤，並核取 [遠端通知]**** 核取方塊。
+4. 現在處理內送通知，並使用上述方法來取得要顯示的內容。 首先，在收到推播通知時，讓您的 iOS 應用程式在背景中執行。 在 **XCode** 中，在左側面板中選取您的應用程式專案，然後在中央窗格的 [目標]**** 區段中，按一下您的主要應用程式目標。
+5. 然後按一下中央窗格頂端的 [ **功能** ] 索引標籤，然後選取 [ **遠端通知** ] 方塊。
 
-    ![XCode 的螢幕擷取畫面，其中已選取應用程式專案並開啟 [功能] 索引標籤。 [遠端通知] 核取方塊已選取。][IOS1]
+    ![XCode 的螢幕擷取畫面，其中已選取應用程式專案，並開啟 [功能] 索引標籤。 已選取 [遠端通知] 核取方塊。][IOS1]
 
 6. 在 `AppDelegate.m` 中，新增下列可處理推播通知的方法：
 

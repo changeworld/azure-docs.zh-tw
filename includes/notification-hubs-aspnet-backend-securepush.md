@@ -1,21 +1,21 @@
 ---
 author: sethmanheim
-ms.service: service-bus
+ms.service: notification-hubs
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 09/14/2020
 ms.author: sethm
-ms.openlocfilehash: 7fd161c90234d45a6751f173ba3685ee8c392c87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb3c95b74128f1da7b29a290e17fefe21987dd76
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74260678"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089935"
 ---
 ## <a name="webapi-project"></a>WebAPI 專案
 
 1. 在 Visual Studio 中，開啟您在 [通知使用者] **** 教學課程中所建立的 **AppBackend** 專案。
-2. 在 Notifications.cs 中，使用下列程式碼來取代整個 **Notifications** 類別。 請確定使用通知中樞的連接字串 (包含完整存取權) 和中樞名稱來取代預留位置。 您可以從 [Azure 入口網站](https://portal.azure.com)取得這些值。 此模組現會顯示即將傳送的不同安全通知。 在完整的實作中，通知會儲存在資料庫中。為了本案例的方便起見，我們會將通知儲存在記憶體中。
-   
+2. 在 Notifications.cs 中，將整個 **通知** 類別取代為下列程式碼。 請確定使用通知中樞的連接字串 (包含完整存取權) 和中樞名稱來取代預留位置。 您可以從 [Azure 入口網站](https://portal.azure.com)取得這些值。 此模組現會顯示即將傳送的不同安全通知。 在完整的實作中，通知會儲存在資料庫中。為了本案例的方便起見，我們會將通知儲存在記憶體中。
+
    ```csharp
     public class Notification
     {
@@ -56,8 +56,8 @@ ms.locfileid: "74260678"
     }
     ```
 
-1. 在 NotificationsController.cs 中，使用下列程式碼來取代 **NotificationsController** 類別定義內的程式碼。 此元件會實作一個可供裝置以安全的方式擷取通知的方法，它還提供一個可觸發安全推送至裝置的方法 (依照本教學課程的目的)。 請注意，將通知傳送至通知中樞時，我們只會傳送包含通知 ID 的原始通知 (而非實際訊息)。
-   
+3. 在 NotificationsController.cs 中，使用下列程式碼來取代 **NotificationsController** 類別定義內的程式碼。 此元件會實作一個可供裝置以安全的方式擷取通知的方法，它還提供一個可觸發安全推送至裝置的方法 (依照本教學課程的目的)。 請注意，將通知傳送至通知中樞時，我們只會傳送包含通知 ID 的原始通知 (而非實際訊息)。
+
    ```csharp
     public NotificationsController()
     {
@@ -95,4 +95,4 @@ ms.locfileid: "74260678"
 請注意 `Post` 方法目前不會傳送快顯通知。 它會傳送只包含通知 ID 且非任何敏感內容的原始通知。 另外，針對您未在通知中樞上設定其認證的平台，請務必為傳送作業加上註解，因為他們將會導致錯誤。
 
 1. 為了可以從所有裝置存取此應用程式，我們現在可以將它重新部署到 Azure 網站。 以滑鼠右鍵按一下 **AppBackend** 專案，然後選取 [發佈]****。
-2. 選取 Azure 網站作為您的發行目標。 使用**您的 Azure**帳戶登入，並選取現有或新的網站，然後記下 [連線] 索引標籤中的 [**目的地 URL** ] 屬性。我們稍後會在本教學課程中將此 URL 稱為您的*後端端點*。 按一下 **[發行]**。
+2. 選取 Azure 網站作為您的發行目標。 使用您的 Azure 帳戶登入，並選取現有或新的網站，並在 [**連接**] 索引標籤中記下 [**目的地 URL** ] 屬性。我們稍後會在本教學課程中將此 URL 參考為您的*後端端點*。 按一下 [發佈] 。

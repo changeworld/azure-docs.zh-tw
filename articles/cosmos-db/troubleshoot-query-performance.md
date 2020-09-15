@@ -4,16 +4,16 @@ description: 了解如何針對 Azure Cosmos DB SQL 查詢問題進行識別、�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 04/22/2020
+ms.date: 09/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117908"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089984"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>針對使用 Azure Cosmos DB 時發生的查詢問題進行疑難排解
 
@@ -26,22 +26,21 @@ ms.locfileid: "85117908"
 
 如果您降低查詢的 RU 費用，幾乎也等同於降低了延遲。
 
-本文提供可使用[營養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)資料集來重新建立的範例。
+本文提供的範例可讓您使用 [營養資料集](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)來重新建立。
 
 ## <a name="common-sdk-issues"></a>常見的 SDK 問題
 
 閱讀本指南之前，請先考量與查詢引擎無關的常見 SDK 問題。
 
-- 為了達到最佳效能，請遵循這些[效能秘訣](performance-tips.md)。
-    > [!NOTE]
-    > 為了改善效能，我們建議您使用 Windows 64 位元的主機處理序。 SQL SDK 包含原生 ServiceInterop.dll，可在本機剖析和最佳化查詢。 ServiceInterop.dll 只能在 Windows x64 平台上受到支援。 針對 Linux 和其他不支援 ServiceInterop.dll 的平台，則會對閘道進行額外的網路呼叫，以取得最佳化的查詢。
+- 遵循這些 [SDK 效能秘訣](performance-tips.md)。
+    - [.NET SDK 疑難排解指南](troubleshoot-dot-net-sdk.md)
+    - [JAVA SDK 疑難排解指南](troubleshoot-java-sdk-v4-sql.md)
 - SDK 允許您為查詢設定 `MaxItemCount`，但您不能指定最小項目計數。
     - 程式碼應處理任何頁面大小，從零到 `MaxItemCount`。
-    - 頁面中的項目數一律會小於或等於指定的 `MaxItemCount`。 不過，`MaxItemCount` 是嚴格的最大值，而結果可能會比此數量少。
 - 有時候查詢可能會有空白頁面，即使未來的頁面上有結果也一樣。 這種情況的原因可能是：
     - SDK 可能會進行多個網路呼叫。
     - 查詢可能花費很長的時間來取得文件。
-- 所有查詢都有接續權杖，可讓查詢繼續進行。 請務必完全清空查詢。 查看 SDK 範例，並在 `FeedIterator.HasMoreResults` 上使用 `while` 迴圈來清空整個查詢。
+- 所有查詢都有接續權杖，可讓查詢繼續進行。 請務必完全清空查詢。 深入瞭解如何 [處理多個頁面的結果](sql-query-pagination.md#handling-multiple-pages-of-results)
 
 ## <a name="get-query-metrics"></a>取得查詢計量
 

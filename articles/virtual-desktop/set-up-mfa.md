@@ -3,15 +3,15 @@ title: 設定適用于 Windows 虛擬桌面的 Azure Multi-Factor Authentication
 description: 如何在 Windows 虛擬桌面中設定 Azure Multi-Factor Authentication 以提高安全性。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e8e723aa26ab08c8a09e75f506802101dc07f7e8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e31693eafcf32de1460cfa5b74ae35ffd05b5a67
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017767"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089916"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>為 Windows 虛擬桌面啟用 Azure Multi-Factor Authentication
 
@@ -24,7 +24,7 @@ ms.locfileid: "89017767"
 
 雖然記住認證很方便，但它也可以讓企業案例或個人裝置上的部署更不安全。 若要保護您的使用者，您必須確保用戶端持續要求 Azure Multi-Factor Authentication (MFA) 認證。 本文將說明如何設定 Windows 虛擬桌面的條件式存取原則，以啟用此設定。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 以下是您需要的入門入門：
 
@@ -43,15 +43,24 @@ ms.locfileid: "89017767"
 2. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
 3. 選取 [新增原則]。
 4. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。
-5. 在 [指派] 底下選取 [使用者和群組]。
+5. 在 [指派]  底下，選取 [使用者和群組]  。
 6. 在 [**包含**] 下，選取 [**選取使用者和群組**  >  **使用者和群組**] > 選擇您在 [[必要條件](#prerequisites)] 階段中建立的群組。
 7. 選取 [完成]。
 8. 在 [**雲端應用程式] 或 [動作**] 下  >  ** **，選取 [**選取應用程式**]。
 9. 根據您所使用的 Windows 虛擬桌面版本，選取下列其中一個應用程式。
-   - 如果您是使用 Windows 虛擬桌面 (傳統) ，請選擇此應用程式：
+   
+   - 如果您是使用 Windows 虛擬桌面 (傳統) ，請選擇下列應用程式：
+       
        - **Windows 虛擬桌面** (應用程式識別碼 5a0aa725-4958-4b0c-80a9-34562e23f3b7) 
+       - **Windows 虛擬桌面用戶端** (應用程式識別碼 fa4345a4-a730-4230-84a8-7d9651b86739) 可讓您在 web 用戶端上設定原則
+       
+        之後，直接跳到步驟11。
+
    - 如果您使用的是 Windows 虛擬桌面，請改為選擇此應用程式：
+       
        -  **Windows 虛擬桌面** (應用程式識別碼 9cdead84-a844-4324-93f2-b2e6bb768d07) 
+       
+        之後，請移至步驟10。
 
    >[!IMPORTANT]
    > 請勿選取名為 Windows Virtual Desktop Azure Resource Manager Provider (50e95039-b200-4007-bc97-8d5790743a63) 的應用程式。 此應用程式僅用於抓取使用者摘要，不應具有 MFA。

@@ -1,30 +1,28 @@
 ---
 title: 適用于 Windows 的 Azure 通知中樞安全推播
 description: 了解如何在 Azure 中傳送安全的推播通知。 程式碼範例是以 C# 撰寫並使用 .NET API。
-documentationcenter: windows
 author: sethmanheim
 manager: femila
-editor: jwargo
+editor: thsomasu
 services: notification-hubs
-ms.assetid: 5aef50f4-80b3-460e-a9a7-7435001273bd
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 09/14/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c75af054a342e74606696f09c227822f385e096
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 98e587103e63cd5cc26eab5b00864d00e0b9007f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017986"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089936"
 ---
-# <a name="securely-push-notifications-from-azure-notification-hubs"></a>從 Azure 通知中樞安全地推播通知
+# <a name="send-secure-push-notifications-from-azure-notification-hubs"></a>從 Azure 通知中樞傳送安全的推播通知
 
 > [!div class="op_single_selector"]
 > * [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -48,10 +46,10 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 
 請務必注意在上述流程 (與本教學課程) 中，我們假設使用者登入後，裝置會將驗證權杖儲存在本機儲存體中。 由於裝置可使用此權杖擷取通知的安全裝載，因此可保證完全順暢的體驗。 如果您的應用程式沒有將驗證權杖儲存在裝置上，或如果這些權杖可能會過期，裝置應用程式應在收到通知時顯示一般通知，以提示使用者啟動應用程式。 應用程式會接著驗證使用者，並顯示通知裝載。
 
-本安全推播教學課程說明如何以安全的方式傳送推播通知。 本教學課程會以 [通知使用者](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) 教學課程為基礎，因此您應先完成該教學課程中的步驟。
+本教學課程說明如何安全地傳送推播通知。 本教學課程是以 [通知使用者](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) 教學課程為基礎，因此您應該先完成該教學課程中的步驟。
 
 > [!NOTE]
-> 本教學課程假設您已建立並設定通知中樞，如 [開始使用通知中樞 (Windows 市集)](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)中所述。
+> 本教學課程假設您已建立並設定通知中樞，如 [將通知傳送至通用 Windows 平臺應用程式](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)中所述。
 > 另請注意，Windows Phone 8.1 需要 Windows (不是 Windows Phone) 認證，且無法在 Windows Phone 8.0 或 Silverlight 8.1 上使用背景工作。 若是 Windows 市集應用程式，只有當應用程式已啟用鎖定畫面 (按一下 Appmanifest 中的核取方塊) 時，您才可以透過背景工作接收通知。
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
@@ -63,6 +61,7 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
     ```csharp
     RegisterBackgroundTask();
     ```
+
 2. 仍在 App.xaml.cs 中，在 `OnLaunched()` 方法後面立即新增下列程式碼：
 
     ```csharp
@@ -80,12 +79,14 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
         }
     }
     ```
+
 3. 在 App.xaml.cs 檔案開頭處新增下列 `using` 陳述式：
 
     ```csharp
     using Windows.Networking.PushNotifications;
     using Windows.ApplicationModel.Background;
     ```
+
 4. 從 Visual Studio 的 [檔案]**** 功能表中，按一下 [全部儲存]****。
 
 ## <a name="create-the-push-background-component"></a>建立推播背景元件
@@ -143,6 +144,7 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
             }
         }
     ```
+
 5. 在 [方案總管] 中，以滑鼠右鍵按一下 **PushBackgroundComponent (Windows Phone 8.1)** 專案，然後按一下 [管理 NuGet 套件]****。
 6. 在左側，按一下 [線上] ****。
 7. 在 [搜尋] 方塊中，輸入 **Http Client**。
@@ -160,6 +162,7 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
     using Windows.UI.Notifications;
     using Windows.Data.Xml.Dom;
     ```
+
 11. 在方案總管的 [ **>notifyuserwindowsphone (Windows Phone 8.1]) ** 專案中，以滑鼠右鍵按一下 [ **參考**]，然後按一下 [ **新增參考 ...**]。在 [參考管理員] 對話方塊中，選取 [ **>pushbackgroundcomponent**] 旁的方塊，然後按一下 **[確定]**。
 12. 在 [方案總管] 中，連按兩下 **NotifyUserWindowsPhone (Windows Phone 8.1)** 專案中的 **Package.appxmanifest**。 在 [通知]**** 下，將 [支援快顯通知]**** 設定為 [是]****。
 

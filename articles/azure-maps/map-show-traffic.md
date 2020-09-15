@@ -1,6 +1,6 @@
 ---
 title: 在地圖上顯示路況 | Microsoft Azure 地圖服務
-description: 瞭解如何將流量資料新增至地圖。 瞭解流量資料，並瞭解如何使用 Azure 地圖服務 Web SDK 將事件資料和流量資料新增至地圖。
+description: 瞭解如何將流量資料新增至地圖。 瞭解流量資料，並瞭解如何使用 Azure 地圖服務 Web SDK 將事件資料和流程資料新增至對應。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 063fbd2ad4f2f5d427fd2cb39b8ce9b231eba374
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: cd59bb411a598603ccef215cd9a56b7619115e72
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036420"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090562"
 ---
 # <a name="show-traffic-on-the-map"></a>在地圖上顯示路況
 
@@ -40,7 +40,7 @@ map.setTraffic({
 
 <br/>
 
-<iframe height='500' scrolling='no' title='在地圖上顯示路況' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>在 <a href='https://codepen.io'>CodePen</a> 上查看 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 製作的<a href='https://codepen.io/azuremaps/pen/WMLRPw/'>在地圖上顯示路況</a>Pen。
+<iframe height='500' scrolling='no' title='在地圖上顯示路況' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>在 <a href='https://codepen.io'>CodePen</a> 上查看 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 製作的<a href='https://codepen.io/azuremaps/pen/WMLRPw/'>在地圖上顯示路況</a>Pen。
 </iframe>
 
 ## <a name="traffic-overlay-options"></a>交通覆蓋選項
@@ -49,9 +49,31 @@ map.setTraffic({
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="交通覆蓋選項" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="700" style="width: 100%;" scrolling="no" title="交通覆蓋選項" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
 請參閱 <a href='https://codepen.io'>CodePen</a> 上由 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 建立的 Pen：<a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>交通覆蓋選項</a>。
 </iframe>
+
+
+## <a name="add-traffic-controls"></a>新增流量控制
+
+有兩個不同的流量控制可新增至地圖。 第一個控制項會 `TrafficControl` 加入切換按鈕，可用來開啟和關閉流量。 此控制項的選項可讓您指定顯示流量時要使用的流量設定。 依預設，此控制項會顯示相對的流量和事件資料，不過，您可以變更此值，以顯示絕對流量和沒有事件（如有需要）。 第二個控制項 `TrafficLegendControl` 會將交通流程圖例新增至地圖，以協助使用者瞭解色彩代碼道路所強調的意義。 此控制項只會在地圖上顯示流量資料，而且會在其他所有時間隱藏時，才會出現在地圖上。
+
+下列程式碼示範如何將流量控制項新增至地圖。
+
+```JavaScript
+//Att the traffic control toogle button to the top right corner of the map.
+map.controls.add(new atlas.control.TrafficControl(), { position: 'top-right' });
+
+//Att the traffic legend control to the bottom left corner of the map.
+map.controls.add(new atlas.control.TrafficLegendControl(), { position: 'bottom-left' });
+```
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="流量控制" src="https://codepen.io/azuremaps/embed/ZEWaeLJ?height500&theme-id=0&default-tab=js,result&embed-version=2&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
+查看 >codepen 上 Azure 地圖服務 () 的畫筆<a href='https://codepen.io/azuremaps/pen/ZEWaeLJ'>流量控制</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+</iframe>
+
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -16,12 +16,12 @@ ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18c982b09aa8a28d520c709c9b8db2c9be4c7bb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356945"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090120"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：預備伺服器和嚴重損壞修復
 利用預備模式中的伺服器，您可以在啟用伺服器之前變更組態並預覽變更。 它也可以讓您執行完整的匯入和完整的同步處理，以在生產環境中進行這些變更之前，確認所有變更皆如預期。
@@ -42,7 +42,7 @@ ms.locfileid: "85356945"
 
 您仍然可以使用 Synchronization Service Manager 來強制執行匯出。
 
-預備模式中的伺服器會繼續接收來自 Active Directory 和 Azure AD 的變更，並可在發生失敗時，快速接管另一部伺服器的責任。 如果您對您的主要伺服器進行組態變更，則您有責任對預備模式的伺服器進行相同的變更。
+預備模式中的伺服器會繼續接收來自 Active Directory 和 Azure AD 的變更，並可在發生失敗時快速接管另一部伺服器的責任。 如果您對您的主要伺服器進行組態變更，則您有責任對預備模式的伺服器進行相同的變更。
 
 對於具備較舊同步處理技術知識的人員，預備模式是不同的，因為伺服器有它自己的 SQL 資料庫。 此架構可讓預備模式伺服器位於不同的資料中心。
 
@@ -57,7 +57,7 @@ ms.locfileid: "85356945"
 
 #### <a name="prepare"></a>準備
 1. 安裝 Azure AD Connect、選取**預備模式**，然後取消選取安裝精靈中最後一個頁面上的 [啟動同步處理]****。 此模式可讓您手動執行同步處理引擎。
-   ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
+   ![螢幕擷取畫面顯示 [Azure AD Connect] 對話方塊中的 [準備設定] 頁面。](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. 登出/登入，並從 [開始] 功能表中選取 [同步處理服務] ****。
 
 #### <a name="configuration"></a>組態
@@ -71,9 +71,9 @@ ms.locfileid: "85356945"
 
 您現在已預備匯出變更至 Azure AD 和內部部署 AD (如果您正在使用 Exchange 混合部署)。 接下來的步驟可讓您在實際開始匯出至目錄之前，檢查將要變更的項目。
 
-#### <a name="verify"></a>確認
+#### <a name="verify"></a>驗證
 1. 啟動 CMD 命令提示字元並移至 `%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. 執行：`csexport "Name of Connector" %temp%\export.xml /f:x` 連接器名稱可以在同步處理服務中找到。 它的名稱類似 Azure AD 的 "contoso.com – AAD"。
+2. 執行：`csexport "Name of Connector" %temp%\export.xml /f:x` 連接器名稱可以在同步處理服務中找到。 它的名稱類似于 Azure AD 的 "contoso.com – Azure AD"。
 3. 執行：`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` 您在 %temp% 中有名稱為 export.csv 的檔案，可在 Microsoft Excel 中加以檢查。 此檔案包含即將匯出的所有變更。
 4. 對資料或組態進行必要的變更並再次執行這些步驟 (匯入和同步處理和驗證)，直到要匯出的變更皆如預期進行。
 
@@ -115,7 +115,7 @@ ms.locfileid: "85356945"
 ### <a name="have-a-spare-standby-server---staging-mode"></a>具有備用的待命伺服器 - 預備模式
 如果您有更複雜的環境，則建議使用一或多個待命伺服器。 您可以在安裝期間啟用狀態為「預備模式」 **** 的伺服器。
 
-如需詳細資訊，請參閱[預備模式](#staging-mode)。
+如需詳細資訊，請參閱 [預備模式](#staging-mode)。
 
 ### <a name="use-virtual-machines"></a>使用虛擬機器
 一般和受支援的方法是在虛擬機器中執行同步處理引擎。 如果主機有問題，可將內含同步處理引擎伺服器的映像移轉到另一部伺服器。

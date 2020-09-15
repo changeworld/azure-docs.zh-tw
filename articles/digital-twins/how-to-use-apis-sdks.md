@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e97db598556d10538746242fa67449631394cd55
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: aac5c937ab2f80dcbe1567a3817b056a6285cf17
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030645"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086669"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -59,7 +59,8 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
    - 您可以查看 [SDK 參考檔](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview&preserve-view=true)。
    - 您可以繼續閱讀本文的 [.net (c # ) SDK (資料平面) ](#net-c-sdk-data-plane) 一節，以查看詳細的資訊和使用範例。
 * 您可以使用 **JavaScript** SDK。 使用 JavaScript SDK .。。
-   - 您可以從 npm 查看和安裝套件： [適用于 JavaScript 的 Azure Azure 數位 Twins 用戶端程式庫](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1)
+   - 您可以從 npm： [適用于 JavaScript 的 Azure Azure 數位 Twins 用戶端程式庫](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1)，查看並安裝套件。
+   - 您可以查看 [SDK 參考檔](https://docs.microsoft.com/javascript/api/@azure/digital-twins/?view=azure-node-latest&preserve-view=true)。
 * 您可以使用 AutoRest 來產生另一種語言的 SDK。 遵循 how [*to：使用 AutoRest 建立 Azure 數位 Twins 的自訂 sdk*](how-to-create-custom-sdks.md)中的指示。
 
 您也可以透過 [CLI](how-to-use-cli.md)與 Azure 數位 Twins 互動，來練習日期平面 api。
@@ -294,7 +295,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 您可以從這裡查看實例的計量，並建立自訂的視圖。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何使用 Api 來設定 Azure 數位 Twins 實例和驗證：
 * [*How to：設定實例和驗證*](how-to-set-up-instance-scripted.md)

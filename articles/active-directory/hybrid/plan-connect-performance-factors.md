@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e2c09bcd43b08778324a32cc052fad5b85714c4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 15bcb0f7ca30c343072da396abeac8d08dee03a9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279579"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087004"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影響 Azure AD Connect 效能的因素
 
@@ -29,7 +29,7 @@ Azure AD Connect 會將 Active Directory 同步處理至 Azure AD。 此伺服�
 | 拓撲| Azure AD Connect 必須在網路上管理的端點和元件發佈。 |
 | 調整| 要由 Azure AD Connect 管理的使用者、群組和 OU 等物件的數目。 |
 | 硬體| Azure AD Connect 的硬體 (實體或虛擬) 以及每個硬體元件 (包括 CPU、記憶體、網路和硬碟組態) 的相依效能容量。 |
-| 設定| Azure AD Connect 處理目錄和資訊的方式。 |
+| 組態| Azure AD Connect 處理目錄和資訊的方式。 |
 | 載入| 物件的變更頻率。 一小時、一天或一週期間的負載可能各不相同。 視元件而定，您可能必須針對尖峰負載或平均負載進行設計。 |
 
 本文件的目的是要說明影響 Azure AD Connect 佈建引擎效能的因素。 大型或複雜的組織 (佈建超過 100,000 個物件的組織) 如果遇到本文件所述的任何效能問題，可使用文件中的建議來獲得最佳的 Azure AD Connect 實作。 Azure AD Connect 的其他元件 (例如 [Azure AD Connect Health](how-to-connect-health-agent-install.md)) 和代理程式不在本文件的討論範圍。
@@ -41,7 +41,7 @@ Azure AD Connect 會將 Active Directory 同步處理至 Azure AD。 此伺服�
 
 下圖顯示的雖是連線到單一樹系的佈建引擎高階架構，但該引擎也支援多個樹系。 此架構會顯示各種元件彼此間的互動方式。
 
-![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
+![圖表顯示連接的目錄和 Azure AD Connect 布建引擎如何互動，包括 SQL Database 中的連接器空間和元程式元件。 ](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
 佈建引擎會連線至每個 Active Directory 樹系和 Azure AD。 從每個目錄中讀取資訊的程序稱為匯入。 匯出則是指更新來自佈建引擎的目錄。 同步處理程序會評估物件在佈建引擎內流動方式的規則。 若要深入了解，您可以參閱 [Azure AD Connect 同步處理：了解架構](./concept-azure-ad-connect-sync-architecture.md)。
 

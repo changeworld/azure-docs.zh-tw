@@ -9,16 +9,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cdbd78808d1758b43d2b2fe6e8f7ac03652ff92b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ee38196f0b1a6e00d385dc0d2c88d45a4291d3b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296333"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087431"
 ---
-# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>使用 Azure 事件方格監視 Key Vault (預覽)
+# <a name="monitoring-key-vault-with-azure-event-grid"></a>使用 Azure 事件方格監視 Key Vault
 
-Key Vault 與事件方格的整合目前為預覽狀態。 它可讓使用者在金鑰保存庫中儲存的祕密狀態變更時收到通知。 狀態變更會定義為即將到期的秘密（到期前30天）、已過期的密碼，或有新版本可用的密碼。 支援全部三種祕密類型 (金鑰、憑證和祕密) 的通知。
+Key Vault 與事件方格的整合，可讓使用者在金鑰保存庫中儲存的秘密狀態變更時收到通知。 狀態變更定義為即將到期 (30 天) 、已過期的密碼，或有新版本可用之秘密的秘密。 支援全部三種祕密類型 (金鑰、憑證和祕密) 的通知。
 
 應用程式可以使用新式無伺服器架構對這些事件做出回應，不需要複雜的程式碼或昂貴且效率不彰的輪詢服務。 透過 [Azure 事件方格](https://azure.microsoft.com/services/event-grid/)，將事件推送給事件處理常式，例如 [Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)，甚至推送到您自己的Webhook，而且只有使用時，才須支付相關費用。 如需價格的資訊，請參閱[事件格線價格](https://azure.microsoft.com/pricing/details/event-grid/)。
 
@@ -29,7 +29,7 @@ Event Grid 使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions
 如需詳細資訊，請參閱 [Key Vault 事件結構描述](../../event-grid/event-schema-key-vault.md)。
 
 > [!WARNING]
-> 通知事件只會在新版本的祕密、金鑰和憑證上觸發，而且您必須先訂閱金鑰保存庫上的事件，才能接收這些通知。
+> 通知事件只會在新版本的秘密、金鑰和憑證上觸發，您必須先在金鑰保存庫上訂閱事件，才能接收這些通知。
 
 ## <a name="practices-for-consuming-events"></a>消費事件做法
 
@@ -44,7 +44,7 @@ Event Grid 使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions
 
 - [Azure Key Vault 總覽](overview.md)
 - [Azure 事件方格概觀](../../event-grid/overview.md)
-- 如何：[將 Key Vault 事件路由至自動化 Runbook （預覽）](event-grid-tutorial.md)。
+- 如何： [將 Key Vault 事件路由傳送至自動化 Runbook](event-grid-tutorial.md)。
 - 如何：[在金鑰保存庫祕密變更時收到電子郵件](event-grid-logicapps.md)
-- [Azure Key Vault 的 Azure 事件方格事件結構描述 (預覽)](../../event-grid/event-schema-key-vault.md)
+- [適用于 Azure Key Vault 的 Azure 事件方格事件架構](../../event-grid/event-schema-key-vault.md)
 - [Azure 自動化概觀](../../automation/index.yml)

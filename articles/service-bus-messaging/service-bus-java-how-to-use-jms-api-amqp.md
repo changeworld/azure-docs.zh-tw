@@ -1,52 +1,56 @@
 ---
-title: 使用 AMQP 搭配 JAVA Message Service API & Azure 服務匯流排
-description: 如何搭配 Azure 服務匯流排和 Advanced Message Queuing Protodol (AMQP) 1.0 使用 Java Message Service (JMS)。
+title: 使用 AMQP 搭配 JAVA 訊息服務 API 和 Azure 服務匯流排
+description: 使用 JAVA 訊息服務 (JMS) 搭配 Azure 服務匯流排和 Advanced Message 佇列通訊協定 (AMQP) 1.0。
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: be6b5de7946fc54ab58087fccabed9f5ed09251d
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 97031abaedaa3e5595e290fa0292646feb744d47
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065772"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086686"
 ---
-# <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>搭配 Azure 服務匯流排和 AMQP 1.0 使用 JAVA 訊息服務 (JMS) 
+# <a name="use-the-java-message-service-with-azure-service-bus-and-amqp-10"></a>使用 JAVA 訊息服務搭配 Azure 服務匯流排和 AMQP 1。0
 
 > [!WARNING]
-> 下列指南會已經考慮對 JAVA Message Service (JMS) 1.1 API 的**有限支援**，而且僅適用于 Azure 服務匯流排標準層。
+> 本文已經考慮對 JAVA Message Service (JMS) 1.1 API 提供 *有限的支援* ，且僅適用于 Azure 服務匯流排標準層。
 >
-> JAVA 訊息服務 (JMS) 2.0 API 的完整支援僅適用于預覽中的[Azure 服務匯流排 Premium 層](how-to-use-java-message-service-20.md)，這是強烈建議的做法。
+> JAVA 訊息服務 2.0 API 的完整支援僅適用于 [預覽中的 Azure 服務匯流排 premium 層](how-to-use-java-message-service-20.md)。 我們建議您使用這一層。
 >
 
-本文說明如何使用受歡迎的 JAVA 訊息服務 (JMS) API 標準，從 JAVA 應用程式 (佇列和發佈/訂閱主題) Azure 服務匯流排訊息功能。 其中有一個[隨附文章](service-bus-amqp-dotnet.md)，說明如何使用 AZURE 服務匯流排 .net API 來執行相同的動作。 您可以同時使用這兩個指南了解使用 AMQP 1.0 的跨平台訊息。
+本文說明如何使用常用的 JMS API 標準，從 JAVA 應用程式使用服務匯流排訊息功能。 這些訊息功能包括佇列和發佈或訂閱主題。 [隨附的文章](service-bus-amqp-dotnet.md)說明如何使用 AZURE 服務匯流排 .net API 來進行相同的作業。 您可以同時使用這兩篇文章來瞭解如何使用 Advanced Message 佇列通訊協定的跨平臺訊息 (AMQP) 1.0。
 
-進階訊息佇列通訊協定 (AMQP) 1.0 是一個有效率且可靠的有線等級訊息通訊協定，可以用來建置強大的跨平台訊息應用程式。
+AMQP 1.0 是有效率、可靠的有線等級訊息通訊協定，可讓您用來建立強大的跨平臺訊息應用程式。
 
-Azure 服務匯流排中支援 AMQP 1.0，表示您可以使用有效率的二進位通訊協定，從某個範圍的平臺使用佇列和發佈/訂閱代理訊息功能。 此外，您還可以建置使用混合語言、架構及作業系統所建置之元件所組成的應用程式。
+服務匯流排中的 AMQP 1.0 支援表示您可以使用有效率的二進位通訊協定，從某個範圍的平臺使用佇列和發佈或訂閱代理訊息功能。 您也可以建立應用程式，這些應用程式是使用混合語言、架構和作業系統所建立的元件所組成。
 
 ## <a name="get-started-with-service-bus"></a>開始使用服務匯流排
-本指南假設您已經有一個服務匯流排命名空間，其中包含名為的佇列 `basicqueue` 。 如果沒有，您可以使用[Azure 入口網站](https://portal.azure.com)[建立命名空間和佇列](service-bus-create-namespace-portal.md)。 如需有關如何建立服務匯流排命名空間和佇列的相關詳細資訊，請參閱[開始使用服務匯流排佇列](service-bus-dotnet-get-started-with-queues.md)。
+
+本文假設您已經有服務匯流排命名空間，其中包含名為的佇列 `basicqueue` 。 如果沒有，您可以使用[Azure 入口網站](https://portal.azure.com)[建立命名空間和佇列](service-bus-create-namespace-portal.md)。 如需有關如何建立服務匯流排命名空間和佇列的相關詳細資訊，請參閱[開始使用服務匯流排佇列](service-bus-dotnet-get-started-with-queues.md)。
 
 > [!NOTE]
 > 分割的佇列和主題也支援 AMQP。 如需詳細資訊，請參閱[分割傳訊實體](service-bus-partitioning.md)及[服務匯流排分割佇列和主題的 AMQP 1.0 支援](./service-bus-amqp-protocol-guide.md)。
 > 
 > 
 
-## <a name="downloading-the-amqp-10-jms-client-library"></a>下載 AMQP 1.0 JMS 用戶端程式庫
-如需有關下載最新版 Apache Qpid JMS AMQP 1.0 用戶端程式庫之位置的詳細資訊，請造訪 [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html) 。
+## <a name="download-the-amqp-10-jms-client-library"></a>下載 AMQP 1.0 JMS 用戶端程式庫
 
-使用服務匯流排建立及執行 JMS 應用程式時，您必須將下列 JAR 檔案從 Apache Qpid JMS AMQP 1.0 發佈封存新增至 JAVA 類路徑：
+如需有關下載最新版 Apache Qpid JMS AMQP 1.0 用戶端程式庫的詳細資訊，請參閱 [Apache Qpid 下載網站](https://qpid.apache.org/download.html)。
+
+當您使用服務匯流排來建立和執行 JMS 應用程式時，您必須將下列 JAR 檔案從 Apache Qpid JMS AMQP 1.0 散發封存新增至 JAVA 類別路徑環境變數：
 
 * geronimo-jms\_1.1\_spec-1.0.jar
 * qpid-jms-client-[版本].jar
 
 > [!NOTE]
-> JMS JAR 名稱和版本可能已經變更。 如需詳細資料，請參閱 [Qpid JMS - AMQP 1.0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10) \(英文\)。
+> JMS JAR 名稱和版本可能已經變更。 如需詳細資訊，請參閱 [QPID JMS AMQP 1.0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10)。
 
-## <a name="coding-java-applications"></a>編寫 Java 應用程式
-### <a name="java-naming-and-directory-interface-jndi"></a>Java 命名及目錄介面 (JNDI)
-JMS 使用 Java 命名及目錄介面 (JNDI) 建立邏輯名稱與實際名稱之間的區別。 使用 JNDI 可以解析兩種 JMS 物件：ConnectionFactory 和 Destination。 JNDI 使用提供者模型，您可以在其中插入不同的目錄服務處理名稱解析作業。 Apache Qpid JMS AMQP 1.0 程式庫隨附一個簡單的屬性檔案型 JNDI 提供者，它是使用下列格式的屬性檔所設定：
+## <a name="code-java-applications"></a>撰寫 JAVA 應用程式的程式碼
+
+### <a name="java-naming-and-directory-interface"></a>JAVA 命名和目錄介面
+
+JMS 使用 Java 命名及目錄介面 (JNDI) 建立邏輯名稱與實際名稱之間的區別。 使用 JNDI： **ConnectionFactory** 和 **Destination**來解析兩種類型的 JMS 物件。 JNDI 使用提供者模型，您可以在其中插入不同的目錄服務處理名稱解析作業。 Apache Qpid JMS AMQP 1.0 程式庫隨附簡單的屬性檔案型 JNDI 提供者，使用下列格式的屬性檔進行設定：
 
 ```TEXT
 # servicebus.properties - sample JNDI configuration
@@ -61,16 +65,17 @@ connectionfactory.SBCF = amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].serv
 queue.QUEUE = queue1
 ```
 
-#### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>設定 JNDI 內容及設定 ConnectionFactory
+#### <a name="set-up-jndi-context-and-configure-the-connectionfactory-object"></a>設定 JNDI 內容和設定 ConnectionFactory 物件
 
-在 [ [Azure 入口網站](https://portal.azure.com)的 [共用存取原則] 中，于 [**主要連接字串**] 下所提供的**ConnectionString**
+參考的連接字串是在**主要連接字串**底下[Azure 入口網站](https://portal.azure.com)的共用存取原則中可用的連接字串。
+
 ```java
 // The connection string builder is the only part of the azure-servicebus SDK library
 // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
 // connection string. 
 ConnectionStringBuilder csb = new ConnectionStringBuilder(connectionString);
         
-// set up JNDI context
+// Set up JNDI context
 Hashtable<String, String> hashtable = new Hashtable<>();
 hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + "?amqp.idleTimeout=120000&amqp.traceFrames=true");
 hashtable.put("queue.QUEUE", "BasicQueue");
@@ -84,9 +89,10 @@ Destination queue = (Destination) context.lookup("QUEUE");
 ```
 
 #### <a name="configure-producer-and-consumer-destination-queues"></a>設定生產者和取用者目的地佇列
-在 Qpid 屬性檔案 JNDI 提供者中用來定義目的地的項目使用下列格式：
 
-建立產生者的目的地佇列 - 
+在 Qpid 屬性檔 JNDI 提供者中用來定義目的地的專案使用下列格式。
+
+若要建立生產者的目的地佇列：
 ```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
@@ -96,11 +102,11 @@ Connection connection - cf.createConnection(csb.getSasKeyName(), csb.getSasKey()
 
 Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 
-// Create Producer
+// Create producer
 MessageProducer producer = session.createProducer(queue);
 ```
 
-建立取用者的目的地佇列 - 
+若要建立取用者的目的地佇列：
 ```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
@@ -110,18 +116,20 @@ Connection connection - cf.createConnection(csb.getSasKeyName(), csb.getSasKey()
 
 Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 
-// Create Consumer
+// Create consumer
 MessageConsumer consumer = session.createConsumer(queue);
 ```
 
 ### <a name="write-the-jms-application"></a>撰寫 JMS 應用程式
-對於服務匯流排使用 JMS 時，不需要特別 API 或選項。 不過，後續將說明一些限制。 和任何 JMS 應用程式一樣，首先需要設定 JNDI 環境，才能夠解析 **ConnectionFactory** 和目的地。
 
-#### <a name="configure-the-jndi-initialcontext"></a>設定 JNDI InitialContext
-將組態資訊的雜湊表傳遞到 javax.naming.InitialContext 類別的建構函式，將設定 JNDI 環境。 雜湊表中的兩個所需項目是 Initial Context Factory 和 Provider URL 的類別名稱。 下列程式碼顯示如何使用名稱為 **servicebus.properties** 的內容檔案，設定 JNDI 環境使用 Qpid 內容檔案型 JNDI 提供者。
+當您搭配使用 JMS 與服務匯流排時，不需要任何特殊的 Api 或選項。 稍後將會討論一些限制。 和任何 JMS 應用程式一樣，第一件事是設定 JNDI 環境，以便能夠解析 **ConnectionFactory** 物件和目的地。
+
+#### <a name="configure-the-jndi-initialcontext-object"></a>設定 JNDI InitialCoNtext 物件
+
+JNDI 環境的設定方式，是將設定資訊的雜湊表傳遞到 javax.naming.InitialCoNtext 類別的函式。 雜湊表中的兩個必要元素是初始內容 Factory 和提供者 URL 的類別名稱。 下列程式碼會示範如何設定 JNDI 環境，以使用 Qpid 屬性檔案型 JNDI 提供者與名為「服務 **匯流排. 屬性**」的屬性檔。
 
 ```java
-// set up JNDI context
+// Set up JNDI context
 Hashtable<String, String> hashtable = new Hashtable<>();
 hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + \
 "?amqp.idleTimeout=120000&amqp.traceFrames=true");
@@ -130,10 +138,11 @@ hashtable.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInit
 Context context = new InitialContext(hashtable);
 ``` 
 
-### <a name="a-simple-jms-application-using-a-service-bus-queue"></a>使用服務匯流排佇列的簡單 JMS 應用程式
-下列範例程式將 JMS TextMessages 傳送到 JNDI 邏輯名稱為 QUEUE 的服務匯流排佇列，並收到傳回的訊息。
+### <a name="a-simple-jms-application-that-uses-a-service-bus-queue"></a>使用服務匯流排佇列的簡單 JMS 應用程式
 
-您可以從[Azure 服務匯流排範例 JMS 佇列快速入門](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart)中，全部存取所有的原始程式碼和設定資訊
+下列範例程式會使用佇列的 JNDI 邏輯名稱將 JMS 文字訊息傳送至服務匯流排佇列，並傳回訊息。
+
+您可以從 [Azure 服務匯流排範例 JMS 佇列快速入門](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart)中，存取所有的原始程式碼和設定資訊。
 
 ```java
 // Copyright (c) Microsoft. All rights reserved.
@@ -153,9 +162,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 
 /**
- * This sample demonstrates how to send messages from a JMS Queue producer into
- * an Azure Service Bus Queue, and receive them with a JMS message consumer.
- * JMS Queue. 
+ * This sample demonstrates how to send messages from a JMS queue producer into
+ * an Azure Service Bus queue and receive them with a JMS message consumer.
+ * JMS queue. 
  */
 public class JmsQueueQuickstart {
 
@@ -173,7 +182,7 @@ public class JmsQueueQuickstart {
         // connection string. 
         ConnectionStringBuilder csb = new ConnectionStringBuilder(connectionString);
         
-        // set up JNDI context
+        // Set up JNDI context
         Hashtable<String, String> hashtable = new Hashtable<>();
         hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + "?amqp.idleTimeout=120000&amqp.traceFrames=true");
         hashtable.put("queue.QUEUE", "BasicQueue");
@@ -184,12 +193,12 @@ public class JmsQueueQuickstart {
         // Look up queue
         Destination queue = (Destination) context.lookup("QUEUE");
 
-        // we create a scope here so we can use the same set of local variables cleanly 
-        // again to show the receive side separately with minimal clutter
+        // We create a scope here so we can use the same set of local variables cleanly 
+        // again to show the receive side separately with minimal clutter.
         {
-            // Create Connection
+            // Create connection
             Connection connection = cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
-            // Create Session, no transaction, client ack
+            // Create session, no transaction, client ack
             Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 
             // Create producer
@@ -210,17 +219,17 @@ public class JmsQueueQuickstart {
         }
 
         {
-            // Create Connection
+            // Create connection
             Connection connection = cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
             connection.start();
-            // Create Session, no transaction, client ack
+            // Create session, no transaction, client ack
             Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
             // Create consumer
             MessageConsumer consumer = session.createConsumer(queue);
-            // create a listener callback to receive the messages
+            // Create a listener callback to receive the messages
             consumer.setMessageListener(message -> {
                 try {
-                    // receives message is passed to callback
+                    // Received message is passed to callback
                     System.out.printf("Received message %d with sq#: %s\n",
                             totalReceived.incrementAndGet(), // increments the tracking counter
                             message.getJMSMessageID());
@@ -230,7 +239,7 @@ public class JmsQueueQuickstart {
                 }
             });
 
-            // wait on the main thread until all sent messages have been received
+            // Wait on the main thread until all sent messages have been received
             while (totalReceived.get() < totalSend) {
                 Thread.sleep(1000);
             }
@@ -265,7 +274,7 @@ public class JmsQueueQuickstart {
 
             String connectionString = null;
 
-            // parse connection string from command line
+            // Parse connection string from command line
             Options options = new Options();
             options.addOption(new Option("c", true, "Connection string"));
             CommandLineParser clp = new DefaultParser();
@@ -274,7 +283,7 @@ public class JmsQueueQuickstart {
                 connectionString = cl.getOptionValue("c");
             }
 
-            // get overrides from the environment
+            // Get overrides from the environment
             String env = System.getenv(SB_SAMPLES_CONNECTIONSTRING);
             if (env != null) {
                 connectionString = env;
@@ -295,8 +304,9 @@ public class JmsQueueQuickstart {
 ```
 
 ### <a name="run-the-application"></a>執行應用程式
+
 傳遞來自 [共用存取原則] 的 [連接字串]****，以執行應用程式。
-以下是執行應用程式的表單輸出：
+下列輸出是執行應用程式的表單：
 
 ```Output
 > mvn clean package
@@ -328,6 +338,7 @@ Closing queue client.
 ```
 
 ## <a name="amqp-disposition-and-service-bus-operation-mapping"></a>AMQP 配置和服務匯流排作業對應
+
 以下是 AMQP 配置轉譯為服務匯流排作業的方式：
 
 ```Output
@@ -338,49 +349,53 @@ MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
 MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
-## <a name="jms-topics-vs-service-bus-topics"></a>JMS 主題與服務匯流排主題的比較
-透過 JAVA 訊息服務使用 Azure 服務匯流排主題和訂用帳戶 (JMS) API 提供基本的傳送和接收功能。 當使用 JMS 相容的 Api 從其他訊息代理程式移植應用程式時，這是一個方便的選擇，即使服務匯流排主題與 JMS 主題不同，而且需要進行一些調整。 
+## <a name="jms-topics-vs-service-bus-topics"></a>JMS 主題與服務匯流排主題
 
-Azure 服務匯流排主題會將訊息路由至透過 Azure 資源管理介面、Azure 命令列工具或 Azure 入口網站所管理的已命名、共用、持久訂閱。 每個訂用帳戶最多可有2000個選取規則，其中每一個都可能有篩選準則，而針對 SQL 篩選也是中繼資料轉換動作。 每個篩選準則符合都會選取要複製到訂用帳戶中的輸入訊息。  
+透過 JMS API 使用服務匯流排主題和訂用帳戶提供基本的傳送和接收功能。 當您從其他訊息代理程式使用符合 JMS 規範的 Api 來移植應用程式時，這是很方便的選擇，即使服務匯流排主題與 JMS 主題不同，也需要一些調整。
 
-從訂用帳戶接收訊息是從佇列接收訊息的相同。 每個訂用帳戶都有相關聯的寄不出的信件佇列，以及將訊息自動轉寄至另一個佇列或主題的能力。 
+服務匯流排主題會將訊息路由至透過 Azure 資源管理介面、Azure 命令列工具或 Azure 入口網站管理的已命名、共用和持久的訂閱。 每個訂用帳戶最多允許2000個選取規則，每個都有篩選準則，而針對 SQL 篩選，也有一個中繼資料轉換動作。 每個篩選準則相符都會選取要複製到訂用帳戶中的輸入訊息。  
 
-JMS 主題可讓用戶端以動態方式建立非持久和持久的訂閱者，並選擇性地允許以訊息選取器篩選訊息。 服務匯流排不支援這些非共用的實體。 不過，服務匯流排的 SQL 篩選規則語法與 JMS 所支援的訊息選取器語法類似。 
+從訂閱接收訊息與從佇列接收訊息相同。 每個訂用帳戶都有相關聯的寄不出的信件佇列，以及自動將訊息轉送到另一個佇列或主題的能力。
 
-JMS 主題發行者端與服務匯流排相容，如這個範例所示，但動態訂閱者不是。 服務匯流排不支援下列與拓撲相關的 JMS Api。 
+JMS 主題可讓用戶端動態建立非持久性和持久的訂閱者，並選擇性地允許使用訊息選取器來篩選訊息。 服務匯流排不支援這些非共用的實體。 服務匯流排的 SQL 篩選規則語法類似于 JMS 所支援的訊息選取器語法。
+
+JMS 主題發行者端與服務匯流排相容，如這個範例所示，但動態訂閱者則不是。 服務匯流排不支援下列與拓撲相關的 JMS Api。
 
 ## <a name="unsupported-features-and-restrictions"></a>不支援的功能和限制
-對於服務匯流排使用 JMS 而不使用 AMQP 1.0 會有下列限制：
 
-* 對於各個**工作階段**僅允許一個 **MessageProducer** 或 **MessageConsumer**。 如果您需要在應用程式中建立多個 **MessageProducers** 或 **MessageConsumers**，請分別建立專用的**工作階段**。
-* 目前不支援 Volatile 主題訂用帳戶。
-* 目前不支援**MessageSelectors** 。
-*  (不支援分散式交易，但) 支援交易會話。
+當您搭配使用 JMS 與服務匯流排的 AMQP 1.0 時，會有下列限制，亦即：
 
-此外，Azure 服務匯流排會分割控制層與資料層，並因此不支援數個 JMS 的動態拓撲函式：
+* 每個會話僅允許一個 **MessageProducer** 或 **>messageconsumer** 物件。 如果您需要在應用程式中建立多個 **MessageProducer** 或 **>messageconsumer** 物件，請為每個物件建立專用的會話。
+* 目前不支援暫時性主題訂用帳戶。
+* 目前不支援**MessageSelector**物件。
+* 不支援分散式交易，但支援交易會話。
+
+服務匯流排會將控制平面從資料平面分割，因此不支援數個 JMS 動態拓撲函數。
 
 | 不支援的方法          | 更換為                                                                             |
 |-----------------------------|------------------------------------------------------------------------------------------|
-| createDurableSubscriber     | 建立移轉訊息選取器的主題訂用帳戶                                 |
-| createDurableConsumer       | 建立移轉訊息選取器的主題訂用帳戶                                 |
-| createSharedConsumer        | 服務匯流排主題一律可共用，請參考上面                                       |
-| createSharedDurableConsumer | 服務匯流排主題一律可共用，請參考上面                                       |
-| createTemporaryTopic        | 透過管理 API/工具/入口網站建立主題，且 *AutoDeleteOnIdle* 設為到期時間 |
-| createTopic                 | 透過管理 API/工具/入口網站建立主題                                           |
-| 取消訂閱                 | 刪除主題管理 API/工具/入口網站                                             |
-| createBrowser               | 不支援。 使用服務匯流排 API 的 Peek() 功能                         |
-| createQueue                 | 透過管理 API/工具/入口網站建立佇列                                           | 
-| createTemporaryQueue        | 透過管理 API/工具/入口網站建立佇列，且 *AutoDeleteOnIdle* 設為到期時間 |
-| receiveNoWait               | 使用服務匯流排 SDK 提供的接收 ( # A1 方法，並指定非常低或零的超時 |
+| createDurableSubscriber     | 建立用來建立訊息選取器埠的主題訂用帳戶。                                |
+| createDurableConsumer       | 建立用來建立訊息選取器埠的主題訂用帳戶。                                |
+| createSharedConsumer        | 服務匯流排主題一律可共用。 請參閱「JMS 主題與服務匯流排主題」一節。                                    |
+| createSharedDurableConsumer | 服務匯流排主題一律可共用。 請參閱「JMS 主題與服務匯流排主題」一節。                                      |
+| createTemporaryTopic        | 透過管理 API、工具或入口網站建立主題，並將 *>autodeleteonidle* 設定為到期期限。 |
+| createTopic                 | 透過管理 API、工具或入口網站建立主題。                                         |
+| 取消訂閱                 | 刪除主題管理 API、工具或入口網站。                                            |
+| createBrowser               | 不支援。 使用服務匯流排 API 的 Peek ( # A1 功能。                         |
+| createQueue                 | 透過管理 API、工具或入口網站建立佇列。                                           | 
+| createTemporaryQueue        | 透過管理 API、工具或入口網站建立佇列，並將 *>autodeleteonidle* 設定為到期期限。 |
+| receiveNoWait               | 使用服務匯流排 SDK 提供的接收 ( # A1 方法，並指定非常低或零的超時。 |
 
 ## <a name="summary"></a>摘要
-本作法指南說明如何以常用的 JMS API 和 AMQP 1.0 從 Java 使用服務匯流排代理訊息功能 (佇列和發佈/訂閱主題)。
 
-您也可以使用包括 .NET、C、Python 和 PHP 在內的其他語言所撰寫的 Service Bus AMQP 1.0。 使用這些不同的語言撰寫的元件可使用服務匯流排中的 AMQP 1.0 支援確實完整交換訊息。
+本文說明如何使用常用的 JMS API 和 AMQP 1.0，從 JAVA 使用服務匯流排代理訊息功能，例如佇列和發佈或訂閱主題。
+
+您也可以使用來自其他語言的服務匯流排 AMQP 1.0，例如 .NET、C、Python 和 PHP。 使用這些不同語言所建立的元件可以使用服務匯流排中的 AMQP 1.0 支援，以可靠且完全精確地交換訊息。
 
 ## <a name="next-steps"></a>後續步驟
+
 * [Azure 服務匯流排中的 AMQP 1.0 支援](service-bus-amqp-overview.md)
-* [如何透過服務匯流排 .NET API 使用 AMQP 1.0](./service-bus-amqp-dotnet.md)
-* [服務匯流排 AMQP 1.0 開發人員指南](service-bus-amqp-dotnet.md)
+* [使用 AMQP 1.0 搭配服務匯流排 .NET API](./service-bus-amqp-dotnet.md)
+* [Service Bus AMQP 1.0 開發人員指南](service-bus-amqp-dotnet.md)
 * [開始使用服務匯流排佇列](service-bus-dotnet-get-started-with-queues.md)
 * [JAVA 開發人員中心](https://azure.microsoft.com/develop/java/)

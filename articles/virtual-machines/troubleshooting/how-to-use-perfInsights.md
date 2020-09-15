@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7abff8c33ea276b8b8aaeffd010d5f5e09440d9b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 52cdf25b4d77fee0a7a2182e3f1ce60865caf066
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526634"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088556"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>如何在 Azure 中使用 PerfInsights
 
@@ -71,18 +71,18 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 
 此案例會同時執行特殊的效能計數器擷取與網路追蹤。 擷取包含所有伺服器訊息區塊 (SMB) 用戶端共用計數器。 以下是屬於擷取的一些重要 SMB 用戶端共用效能計數器：
 
-| **類型**     | **SMB 用戶端共用計數器** |
+| **型別**     | **SMB 用戶端共用計數器** |
 |--------------|-------------------------------|
 | IOPS         | 資料要求/秒             |
 |              | 讀取要求/秒             |
 |              | 寫入要求/秒            |
-| 延遲      | 平均秒/資料要求         |
+| Latency      | 平均秒/資料要求         |
 |              | 平均秒/讀取                 |
 |              | 平均秒/寫入                |
-| IO 大小      | 平均位元組/資料要求       |
-|              | 平均位元組/讀取               |
-|              | 平均位元組/寫入              |
-| 輸送量   | 資料位元組/秒                |
+| IO 大小      | Avg. Bytes/Data 要求       |
+|              | 平均Bytes/Read               |
+|              | 平均Bytes/Write              |
+| Throughput   | 資料位元組/秒                |
 |              | 讀取位元組/秒                |
 |              | 寫入位元組/秒               |
 | 佇列長度 | 平均讀取佇列長度        |
@@ -165,7 +165,15 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 -  此工具必須在發生效能問題的 VM 上執行。 
 
--  支援下列作業系統：Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016；Windows 8.1 和 Windows 10。
+-  以下為支援的作業系統：
+   * Windows Server 2019
+   * Windows Server 2016
+   * Windows Server 2012 R2
+   * Windows Server 2012
+   * Windows Server 2008 R2
+   * Windows 10
+   * Windows 8.1
+   * Windows 8
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>當您在生產 VM 上執行工具時可能發生的問題
 
@@ -265,7 +273,7 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 [DiskMap]**** 和 [VolumeMap]**** 區段說明邏輯磁碟區和實體磁碟如何彼此相關。
 
-在實體磁碟檢視方塊 (磁碟對應) 中，資料表會顯示在磁碟上執行的所有邏輯磁碟區。 在下列範例中， **PhysicalDrive2**會執行在多個磁碟分割（J 和 H）上建立的兩個邏輯磁片區：
+在實體磁碟檢視方塊 (磁碟對應) 中，資料表會顯示在磁碟上執行的所有邏輯磁碟區。 在下列範例中， **PhysicalDrive2** 會在多個磁碟分割上執行兩個建立的邏輯磁片區 (J 和 H) ：
 
 ![磁碟索引標籤的螢幕擷取畫面](media/how-to-use-perfInsights/pi-disk-tab.png)
 
@@ -281,7 +289,7 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 本區段包含 [結果]**** 索引標籤，以及裝載在虛擬機器上的每個 SQL Server 執行個體的其他索引標籤。
 
-[**結果**] 索引標籤包含所有發現的 SQL 相關效能問題清單，以及建議。
+[ **結果** ] 索引標籤包含所有發現的 SQL 相關效能問題清單以及建議。
 
 下列範例中會顯示 **PhysicalDrive0** (執行 C 磁碟機)。 這是因為 **modeldev** 和 **modellog** 檔案都位於 C 磁碟機上，且為不同的類型 (例如它們分別為資料檔和交易記錄)。
 

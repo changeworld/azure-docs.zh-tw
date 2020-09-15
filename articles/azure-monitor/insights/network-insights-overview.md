@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 080952752dc5abfd7cf61ae1c5b00b539af58b99
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 5a85efc5de0d99904da568c97672adf40ce8a414
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646572"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088913"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>適用于網路 (預覽) 的 Azure 監視器
 針對所有已部署的網路資源，Azure 監視器 for Network 提供完整的健全狀況和計量觀點，而不需要任何設定。 「先進搜尋」功能可協助識別資源相依性，以藉由搜尋託管網站名稱來識別裝載您網站的資源等案例。
@@ -30,7 +30,7 @@ ms.locfileid: "89646572"
 
 搜尋方塊可以用來搜尋資源和相關聯的資源。 例如，公用 IP 會與應用程式閘道相關聯。 搜尋公用 IP DNS 名稱將會識別公用 IP 和相關聯的應用程式閘道。
 
-![搜尋](media/network-insights-overview/search.png)
+![螢幕擷取畫面：顯示搜尋 DNS 名稱的結果。](media/network-insights-overview/search.png)
 
 
 ## <a name="resource-health-and-metric"></a>資源健康狀態和度量
@@ -68,6 +68,6 @@ ms.locfileid: "89646572"
 
 按一下詳細的計量 **視圖** ，以啟動預先設定的活頁簿，其中包含應用程式閘道、所有後端集區資源和前端 ip 的詳細計量。 
 
-## <a name="next-steps"></a>接下來的步驟 
+## <a name="next-steps"></a>後續步驟 
 
 - 深入瞭解什麼是 [Azure 網路](../../network-watcher/network-watcher-monitoring-overview.md)監看員的網路監視？。

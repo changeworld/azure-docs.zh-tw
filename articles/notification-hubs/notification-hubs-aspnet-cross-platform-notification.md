@@ -5,24 +5,23 @@ services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
+editor: thsomasu
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 09/14/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3acfc9e3a856ec777bfada68d535b6a1e9878a08
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bf9670ae8fd22342a05f8d506f743c7a5c395e5f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017918"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088131"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>使用 Azure 通知中樞傳送跨平臺通知
 
@@ -31,16 +30,16 @@ ms.locfileid: "89017918"
 本文示範如何利用範本來傳送以所有平臺為目標的通知。 本文使用單一要求來傳送平臺中立的通知。 如需範本的詳細資訊，請參閱 [通知中樞總覽][Templates]。
 
 > [!IMPORTANT]
-> Visual Studio 2019 不支援 Windows Phone 專案8.1 及更早版本。 如需詳細資訊，請參閱 [Visual Studio 2019 平台目標及相容性](/visualstudio/releases/2019/compatibility)。
+> Visual Studio 2019 不支援 Windows Phone 專案8.1 及更早版本。 如需詳細資訊，請參閱 [Visual Studio 2019 平臺目標與相容性](/visualstudio/releases/2019/compatibility)。
 
 > [!NOTE]
 > 透過通知中樞，裝置可使用相同標籤註冊多個範本。 在此情況下，當傳入的訊息符合該標籤時，就會有多個通知傳遞至裝置 (每個通知各用於一個範本)。 透過此流程，您就能讓相同訊息顯示在多個視覺通知中，例如以徽章形式和 Windows 市集應用程式中的快顯通知形式。
 
 ## <a name="send-cross-platform-notifications-using-templates"></a>使用範本傳送跨平台通知
 
-本節會使用您在 [使用 Azure 通知中樞將通知傳送至特定使用者] 的範例程式碼教學課程中所建立的範例程式碼。 您可以從 [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers) 下載範例。
+本節會使用您在 [使用 Azure 通知中樞將通知傳送至特定使用者] 的範例程式碼教學課程中所建立的範例程式碼。 您可以 [從 GitHub 下載完整的範例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)。
 
-若要使用範本傳送跨平臺通知，請執行下列步驟：
+若要使用範本傳送跨平臺通知，請執行下列動作：
 
 1. 在 **方案總管**的 Visual Studio 中，展開 [ **控制器** ] 資料夾，然後開啟 *RegisterController.cs* 檔案。
 
@@ -77,7 +76,7 @@ ms.locfileid: "89017918"
 
     這段程式碼會呼叫平台特有方法來建立範本註冊，而非原生註冊。 因為範本註冊源自原生註冊，因此不需要修改現有註冊。
 
-1. 在 **方案總管**的 [ **控制器** ] 資料夾中，開啟 *NotificationsController.cs* 檔案。 以下列程式碼取代 `Post` 方法：
+1. 在 **方案總管**的 [ **控制器** ] 資料夾中，開啟 **NotificationsController.cs** 檔案。 以下列程式碼取代 `Post` 方法：
 
     ```csharp
     public async Task<HttpResponseMessage> Post()

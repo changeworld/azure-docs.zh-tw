@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure CLI 建立 IoT 中樞 | Microsoft Docs
-description: 瞭解如何使用 Azure CLI 命令來建立資源群組，然後在資源群組中建立 IoT 中樞。 另請瞭解如何移除中樞。
+description: 瞭解如何使用 Azure CLI 命令來建立資源群組，然後在資源群組中建立 IoT 中樞。 同時瞭解如何移除中樞。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: e7253747d95917e34725cc7c6c034b1306f65e50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69372e4c212e2ce81bcd4c91d460aa191a1d3476
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708071"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087842"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>使用 Azure CLI 建立 IoT 中樞
 
@@ -22,7 +22,7 @@ ms.locfileid: "84708071"
 
 ## <a name="prerequisites"></a>必要條件
 
-若要完成此操作說明，您需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+若要完成此操作說明，您需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -44,21 +44,21 @@ ms.locfileid: "84708071"
 
 1. 在建立 IoT 中樞時，必須將其建立在資源群組內。 使用現有的資源群組，或執行下列[命令來建立資源群組](https://docs.microsoft.com/cli/azure/resource) (英文)：
     
-   ```azurecli
+   ```azurecli-interactive
    az group create --name {your resource group name} --location westus
    ```
 
    > [!TIP]
    > 上一個範例會建立位於美國西部位置的資源群組。 您可以執行下列命令，以檢視可用位置清單： 
    >
-   >``` bash
-   >az account list-locations -o table
-   >```
+   > ```azurecli-interactive
+   > az account list-locations -o table
+   > ```
    >
 
 2. 使用 IoT 中樞的全域唯一名稱，在資源群組中執行下列[命令建立 IoT 中樞](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) (英文)：
     
-   ```azurecli
+   ```azurecli-interactive
    az iot hub create --name {your iot hub name} \
       --resource-group {your resource group name} --sku S1
    ```
@@ -74,14 +74,14 @@ ms.locfileid: "84708071"
 
 若要[刪除 IoT 中樞](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete) (英文)，請執行下列命令︰
 
-```azurecli
+```azurecli-interactive
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
 若要[刪除資源群組](https://docs.microsoft.com/cli/azure/group#az-group-delete) (英文) 及其所有資源，請執行下列命令︰
 
-```azurecli
+```azurecli-interactive
 az group delete --name {your resource group name}
 ```
 

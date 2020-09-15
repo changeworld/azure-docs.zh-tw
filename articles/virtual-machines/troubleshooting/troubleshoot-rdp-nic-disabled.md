@@ -12,21 +12,26 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0e79efc9de43fc0a3044e9ae1e3959f63bb6e69f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078624"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090243"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>因網路介面已停用而無法將遠端桌面連線到 VM
 
 此文章說明如何解決因網路介面已停用而無法使用遠端桌面連線方式連線到 Azure Windows 虛擬機器 (VM) 的問題。
 
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
 您無法經由任何其他連接埠對 Azure 中的 VM 進行 RDP 連線或任何其他類型的連線，因為 VM 中的網路介面已停用。
+
+![顯示網路介面已中斷連線的 VM 螢幕擷取畫面。](./media/troubleshoot-rdp-nic-disabled/disconnected.png)
+
+![螢幕擷取畫面，顯示已停用網路介面的 VM。](./media/troubleshoot-rdp-nic-disabled/disabled.png)
+
 
 ## <a name="solution"></a>解決方案
 
@@ -36,8 +41,7 @@ ms.locfileid: "86078624"
 
 ### <a name="use-serial-control"></a>使用序列主控台
 
-1. 連線至[序列主控台並開啟 CMD 執行個體](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-)。 如果 VM 上未啟用序列主控台，請參閱[重設網路介面](#reset-network-interface)。
+1. 連線至[序列主控台並開啟 CMD 執行個體](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console)。 如果您的 VM 上未啟用序列主控台，請參閱 [重設網路介面](#reset-network-interface)。
 2. 檢查網路介面的狀態：
 
     ```console

@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/27/2019
-ms.openlocfilehash: d679dbb7a14767b83d6508e4b1e637584f33210a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/14/2020
+ms.openlocfilehash: 5110f5fd09e360d1435e26312dd2ee2db6891cbb
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949946"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087179"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>透過範例了解 Data Factory 定價
 
@@ -130,9 +130,13 @@ ms.locfileid: "88949946"
 
 ## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>針對一般 workday 使用對應資料流程的資料流程
 
-如果您是資料工程師，您必須負責設計、建立及測試每天的對應資料流程程。 您會在早上登入 ADF UI，並啟用資料流程的偵測模式。 Debug 會話的預設 TTL 為60分鐘。 您的工作會在一天內完成8小時，因此您的 Debug 會話永遠不會過期。 因此，您當天的費用將會是：
+以資料工程師而言，Sam 負責設計、建立及測試每天的對應資料流程程。 Sam 在早上登入 ADF UI，並啟用資料流程的 Debug 模式。 Debug 會話的預設 TTL 為60分鐘。 Sam 會在一天內運作8小時，因此 Debug 會話永遠不會過期。 因此，Sam 的日費將會是：
 
 **8 (小時) x 8 (計算優化核心) x $0.193 = $12.35**
+
+同時，Chris 和另一個資料工程師也會登入 ADF 瀏覽器 UI，以便進行資料分析和 ETL 設計工作。 Chris 在所有日子（像是 Sam）中都無法運作。 Chris 只需要在同一個期間內使用資料流程偵錯工具1小時，而在同一天與上述的 Sam 相同。 這些是 Chris 針對 debug 使用所產生的費用：
+
+**1 (小時) x 8 (一般目的核心) x $0.274 = $2.19**
 
 ## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>使用對應資料流程轉換 blob 存放區中的資料
 
@@ -207,7 +211,7 @@ ms.locfileid: "88949946"
 
 答：將允許最大的50並行管線活動。  51th 管線活動將會排入佇列，直到開啟「可用位置」為止。 適用于外部活動。 將允許最大800並行外部活動。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 既然您了解 Azure Data Factory 的定價，您可以立即開始！
 

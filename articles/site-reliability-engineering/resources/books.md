@@ -1,22 +1,22 @@
 ---
 title: SRE 書籍清單 |Microsoft Docs
-description: 透過這些書籍提升您對網站可靠性工程的知識
+description: 使用這些書籍提升您的網站可靠性工程知識
 author: dnblankedelman
-manager: efreeman
+manager: ScottCa
 ms.service: site-reliability-engineering
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 09/14/2020
 ms.author: dnb
-ms.openlocfilehash: 4a350953a5755f24c938011ae4b98e1e35e094e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1e4738d933b7bd20252f597ae9c0ea27c5e3f5c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77599037"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086584"
 ---
 # <a name="books-about-site-reliability-engineering"></a>網站可靠性工程的相關書籍
 
-如需網站可靠性工程（SRE）的詳細資訊，最佳來源是已在主旨上發佈的書籍三個
+如需網站可靠性工程 (SRE) 的詳細資訊，最佳來源是已在主旨發表的書籍三個
 
 - [_Site Reliability Engineering: How Google Runs Production Systems_](https://shop.oreilly.com/product/0636920041528.do) (又稱為 "The SRE Book")
 - [_The Site Reliability Workbook: Practical Ways to Implement SRE_](https://shop.oreilly.com/product/0636920132448.do) (又稱為 "The SRE Workbook")
@@ -30,4 +30,4 @@ ms.locfileid: "77599037"
 
 - Seeking SRE：從 SRE 的源頭出發，提供更廣泛的 SRE 視野，包括先前如何在其他環境中實作的資訊。
 
-因為這些書籍描述的是組織的經驗、環境和文化特性，而且可能與您所在的不同，所以請務必閱讀這些書籍。 當您閱讀時，請嘗試判斷哪些做法在您的組織中不會成功。 請用一些時間找出您確定可以提供正向價值的資訊。 思考一下您的組織文化和價值有哪些部份可以像描述的一樣推動 SRE 工作，又有哪些可能會增加其難度。 謹慎地反復使用 SRE，幾乎一律會產生比您在這些書籍中所閱讀的大量重複的結果。
+因為這些書籍描述了可能或可能不像您所在的組織的體驗、環境和文化，所以請務必閱讀這些書籍。 當您閱讀時，請嘗試判斷組織中的哪些實務或不會成功。 請用一些時間找出您確定可以提供正向價值的資訊。 思考一下您的組織文化和價值有哪些部份可以像描述的一樣推動 SRE 工作，又有哪些可能會增加其難度。 謹慎地反復採用 SRE 的結果，通常會比您在這些書籍中所閱讀的大量內容重複產生更好的結果。

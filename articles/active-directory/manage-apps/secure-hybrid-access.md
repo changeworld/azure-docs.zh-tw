@@ -11,36 +11,36 @@ ms.workload: identity
 ms.date: 9/10/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94a118b6d526d538015b7aa076b2715ed68af338
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 4d64f7423d537958b6d3c388cb12f23bd2e30e36
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032043"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087069"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>安全的混合式存取：使用 Azure Active Directory 保護繼承應用程式
 
 您現在可以藉由將內部部署和雲端舊版驗證應用程式連接至 Azure Active Directory (AD) 來保護這些應用程式：
 
-- [Azure AD 應用程式 Proxy](#secure-hybrid-access-through-azure-ad-application-proxy)
+- [Azure AD 應用程式 Proxy](#secure-hybrid-access-sha-through-azure-ad-application-proxy)
 
-- [您現有的應用程式傳遞控制器和網路](#secure-hybrid-access-through-networking-and-delivery-controllers)
+- [您現有的應用程式傳遞控制器和網路](#sha-through-networking-and-delivery-controllers)
 
-- [虛擬私人網路 (VPN) 應用程式](#secure-hybrid-access-through-vpn-applications)
+- [虛擬私人網路 (VPN) 和軟體定義的周邊 (SDP) 應用程式](#sha-through-vpn-and-sdp-applications)
 
 您可以使用 Azure AD [條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) 和 Azure AD [Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)等 Azure AD 功能，在所有應用程式中橋接間距並加強安全性狀態。
 
-## <a name="secure-hybrid-access-through-azure-ad-application-proxy"></a>透過 Azure AD 應用程式 Proxy 保護混合式存取
+## <a name="secure-hybrid-access-sha-through-azure-ad-application-proxy"></a>透過 Azure AD 應用程式 Proxy (SHA) 的安全混合式存取
   
 您可以使用 [應用程式 Proxy](https://aka.ms/whyappproxy) ，為您的內部部署 web 應用程式提供 [安全的遠端存取](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) 。 您的使用者不需要使用 VPN。 使用者可以在 [單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-sso)之後，從任何裝置輕鬆連接至其應用程式，以獲得好處。 應用程式 Proxy 可提供遠端存取作為服務，並可讓您 [輕鬆地將內部部署應用程式發佈](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application) 給公司網路以外的使用者。 它可協助您調整雲端存取管理，而不需要修改您的內部部署應用程式。 [規劃 Azure AD 的應用程式 Proxy 部署](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) ，做為下一個步驟。
 
 ## <a name="azure-ad-partner-integrations"></a>Azure AD 合作夥伴整合
 
-### <a name="secure-hybrid-access-through-networking-and-delivery-controllers"></a>透過網路和傳遞控制器保護混合式存取
+### <a name="sha-through-networking-and-delivery-controllers"></a>SHA 到網路和傳遞控制器
 
 除了 Azure AD 的 [應用程式 Proxy](https://aka.ms/whyappproxy)，讓您能夠使用 [零信任 framework](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)，Microsoft 與協力廠商提供者合作。 您可以使用現有的網路和傳遞控制器，並輕鬆地保護對您商務程式很重要的繼承應用程式，但在 Azure AD 之前無法保護。 您可能已經擁有開始保護這些應用程式所需的一切。
 
-![影像顯示網路夥伴和應用程式 proxy 的安全混合式存取](media/secure-hybrid-access/secure-hybrid-access.png)
+![影像顯示網路夥伴和應用程式 proxy 的安全混合式存取](./media/secure-hybrid-access/secure-hybrid-access.png)
 
 下列網路廠商提供預先建立的解決方案，以及與 Azure AD 整合的詳細指導方針。
 
@@ -52,13 +52,13 @@ ms.locfileid: "90032043"
 
 - [坎普](https://docs.microsoft.com/azure/active-directory/saas-apps/kemp-tutorial)
 
-### <a name="secure-hybrid-access-through-vpn-applications"></a>透過 VPN 應用程式保護混合式存取
+### <a name="sha-through-vpn-and-sdp-applications"></a>SHA 透過 VPN 和 SDP 應用程式
 
-您可以使用 VPN 解決方案，隨時隨地在保護貴組織的資料時，從任何裝置安全地存取您的商業網路。 藉由將 Azure AD 作為身分識別提供者 (IDP) ，您可以使用新式驗證和授權方法（例如 Azure AD [單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) 和 [多重要素驗證](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) ）來保護您的內部部署繼承應用程式。  
+您可以使用 VPN 和 SDP 解決方案，在任何位置都能安全地從任何裝置存取您的商業網路，同時保護組織的資料。 藉由將 Azure AD 作為身分識別提供者 (IDP) ，您可以使用新式驗證和授權方法（例如 Azure AD [單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) 和 [多重要素驗證](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) ）來保護您的內部部署繼承應用程式。  
 
-![影像顯示與 VPN 夥伴和應用程式 proxy 的安全混合式存取 ](media/secure-hybrid-access/app-proxy-vpn.png)
+![影像顯示與 VPN 夥伴和應用程式 proxy 的安全混合式存取 ](./media/secure-hybrid-access/app-proxy-vpn.png)
 
-下列 VPN 廠商提供預先建立的解決方案，以及與 Azure AD 整合的詳細指導方針。
+下列 VPN 和 SDP 廠商提供預先建立的解決方案，以及與 Azure AD 整合的詳細指導方針。
 
 • [Cisco AnyConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-anyconnect)
 

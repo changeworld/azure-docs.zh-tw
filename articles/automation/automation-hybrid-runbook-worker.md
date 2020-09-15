@@ -3,24 +3,24 @@ title: Azure 自動化混合式 Runbook 背景工作角色概觀
 description: 此文章概述混合式 Runbook 背景工作角色，可供您用來在本機資料中心或雲端提供者的機器上執行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/16/2020
+ms.date: 09/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4d29979e28140b728478d405db934cb41783f4b0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: f5dc9305df8ce0e26e13738d605849fa75cc53a7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448085"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087878"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合式 Runbook 背景工作概觀
 
-Azure 自動化中的 Runbook 可能無法存取其他雲端或內部部署環境中的資源，因為這些資源是在 Azure 雲端平台上執行。 您可以使用 Azure 自動化的「混合式 Runbook 背景工作角色」功能，直接在裝載角色的電腦上執行 runbook，並針對環境中的資源來管理這些本機資源。 Runbook 會在 Azure 自動化中儲存及管理，然後傳遞至一或多個指派的機器。
+Azure 自動化中的 Runbook 可能無法存取其他雲端或內部部署環境中的資源，因為這些資源是在 Azure 雲端平台上執行。 您可以使用 Azure 自動化的混合式 Runbook 背景工作角色功能，直接在裝載角色的電腦上以及針對環境中的資源執行 runbook，以管理這些本機資源。 Runbook 會在 Azure 自動化中儲存和管理，然後傳遞至一或多個指派的電腦。
 
 下圖說明這項功能：
 
 ![混合式 Runbook 背景工作概觀](media/automation-hybrid-runbook-worker/automation.png)
 
-混合式 Runbook 背景工作角色可以在 Windows 或 Linux 作業系統上執行。 這取決於向 Azure 監視器[Log analytics 工作區](../azure-monitor/platform/design-logs-deployment.md)報告的[log analytics 代理程式](../azure-monitor/platform/log-analytics-agent.md)。 工作區不僅是用來監視受支援作業系統的電腦，也可以下載混合式 Runbook 背景工作角色所需的元件。
+混合式 Runbook 背景工作角色可以在 Windows 或 Linux 作業系統上執行。 這取決於向 Azure 監視器[Log analytics 工作區](../azure-monitor/platform/design-logs-deployment.md)報告的[log analytics 代理程式](../azure-monitor/platform/log-analytics-agent.md)。 工作區不僅能監視支援的作業系統的電腦，也會下載混合式 Runbook 背景工作角色所需的元件。
 
 每一個混合式 Runbook 背景工作是您安裝代理程式時指定的混合式 Runbook 背景工作群組的成員。 群組可包含單一代理程式，但您可以在群組中安裝多個代理程式以獲得高可用性。 每部電腦都可以裝載一個向一個自動化帳戶報告的混合式背景工作角色。
 
@@ -40,7 +40,7 @@ Azure 自動化中的 Runbook 可能無法存取其他雲端或內部部署環�
 |Windows     | [自動化](automation-windows-hrw-install.md#automated-deployment)<br>[手動](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#install-a-linux-hybrid-runbook-worker)        |
 
-建議的安裝方法是使用 Azure 自動化 runbook，將設定 Windows 電腦的程式完全自動化。 如果這不可行，您可以依照逐步程式來手動安裝和設定角色。 若為 Linux 機器，您可以執行 Python 指令碼，在機器上安裝代理程式。
+建議的安裝方法是使用 Azure 自動化的 runbook，將設定 Windows 電腦的程式完全自動化。 如果這不可行，您可以依照逐步程式，手動安裝和設定角色。 若為 Linux 機器，您可以執行 Python 指令碼，在機器上安裝代理程式。
 
 ## <a name="network-planning"></a><a name="network-planning"></a>網路規劃
 
@@ -51,52 +51,52 @@ Azure 自動化中的 Runbook 可能無法存取其他雲端或內部部署環�
 混合式 Runbook 背景工作角色需要下列連接埠和 URL：
 
 * 連接埠︰只需要 TCP 443，即可存取輸出網際網路
-* 全域 URL：`*.azure-automation.net`
-* US Gov 維吉尼亞州的全域 URL：`*.azure-automation.us`
-* 代理程式服務：`https://<workspaceId>.agentsvc.azure-automation.net`
+* 全域 URL： `*.azure-automation.net`
+* US Gov 維吉尼亞州的全域 URL： `*.azure-automation.us`
+* 代理程式服務： `https://<workspaceId>.agentsvc.azure-automation.net`
 
-如果您有針對特定區域定義的自動化帳戶，您可以限制混合式 Runbook 背景工作角色對該區域資料中心的通訊。 針對必要的 DNS 記錄，檢查[Azure 自動化所使用的 dns 記錄](how-to/automation-region-dns-records.md)。
+如果您有針對特定區域定義的自動化帳戶，您可以限制混合式 Runbook 背景工作角色對該區域資料中心的通訊。 檢查 Azure 自動化針對必要的 DNS 記錄所 [使用的 dns 記錄](how-to/automation-region-dns-records.md) 。
 
 ### <a name="proxy-server-use"></a>使用 Proxy 伺服器
 
-如果您使用 proxy 伺服器在 Azure 自動化和執行 Log Analytics 代理程式的電腦之間進行通訊，請確定可以存取適當的資源。 混合式 Runbook 背景工作角色和自動化服務要求的逾時時間為 30 秒。 嘗試三次之後，要求就會失敗。
+如果您使用 proxy 伺服器在 Azure 自動化和執行 Log Analytics 代理程式的電腦之間進行通訊，請確定可存取適當的資源。 混合式 Runbook 背景工作角色和自動化服務要求的逾時時間為 30 秒。 嘗試三次之後，要求就會失敗。
 
 ### <a name="firewall-use"></a>使用防火牆
 
-如果您使用防火牆來限制網際網路存取，您必須設定防火牆以允許存取。 如果您使用 Log Analytics 閘道作為 Proxy，請確保已針對混合式 Runbook 背景工作角色進行設定。 請參閱[為自動化混合式背景工作角色設定 Log Analytics 閘道](../azure-monitor/platform/gateway.md) \(部分機器翻譯\)。
+如果您使用防火牆來限制網際網路存取，您必須設定防火牆以允許存取。 如果您使用 Log Analytics 閘道作為 Proxy，請確保已針對混合式 Runbook 背景工作角色進行設定。 請參閱 [設定適用于自動化混合式 Runbook 背景工作角色的 Log Analytics 閘道](../azure-monitor/platform/gateway.md)。
 
 ### <a name="service-tags"></a>服務標籤
 
-Azure 自動化支援 Azure 虛擬網路服務標籤，從服務標記[GuestAndHybridManagement](../virtual-network/service-tags-overview.md)開始。 您可以使用服務標記來定義[網路安全性群組](../virtual-network/security-overview.md#security-rules)或[Azure 防火牆](../firewall/service-tags.md)上的網路存取控制。 當您建立安全性規則時，可以使用服務標記來取代特定的 IP 位址。 藉由在規則的適當 [來源] 或 [目的地] 欄位中指定服務標記名稱**GuestAndHybridManagement** ，您可以允許或拒絕自動化服務的流量。 此服務標記不支援將 IP 範圍限制在特定區域，以允許更細微的控制。
+Azure 自動化支援 Azure 虛擬網路服務標籤，從服務標記 [GuestAndHybridManagement](../virtual-network/service-tags-overview.md)開始。 您可以使用服務標記來定義 [網路安全性群組](../virtual-network/security-overview.md#security-rules) 或 [Azure 防火牆](../firewall/service-tags.md)上的網路存取控制。 當您建立安全性規則時，可以使用服務標記來取代特定的 IP 位址。 藉由在規則的適當來源或目的地欄位中指定服務標記名稱 **GuestAndHybridManagement**  ，您可以允許或拒絕自動化服務的流量。 此服務標籤不支援將 IP 範圍限制為特定區域，以允許更細微的控制。
 
-Azure 自動化服務的服務標記只會提供用於下列案例的 Ip：
+Azure 自動化服務的服務標籤只會提供用於下列案例的 Ip：
 
 * 從您的虛擬網路內觸發 webhook
-* 允許您 VNet 上的混合式 Runbook 背景工作角色或狀態設定代理程式與自動化服務進行通訊
+* 允許您 VNet 上的混合式 Runbook 背景工作角色或狀態設定代理程式與自動化服務通訊
 
 >[!NOTE]
->服務標籤**GuestAndHybridManagement**目前不支援在 Azure 沙箱中執行 runbook 作業，只能直接在混合式 Runbook 背景工作角色上執行。
+>服務標記 **GuestAndHybridManagement** 目前不支援直接在混合式 Runbook 背景工作角色上執行 Azure 沙箱中的 runbook 作業。
 
-## <a name="support-for-impact-level-5-il5"></a>影響等級5的支援（IL5）
+## <a name="support-for-impact-level-5-il5"></a>支援 (IL5) 的影響等級5
 
-Azure 自動化混合式 Runbook 背景工作角色可用於 Azure Government 中，以支援下列兩個設定之一的影響層級5工作負載：
+Azure 自動化混合式 Runbook 背景工作角色可在 Azure Government 中使用，以支援下列兩個設定之一的影響層級5工作負載：
 
-* [隔離的虛擬機器](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines)。 部署時，會使用該 VM 的整個實體主機，以提供支援 IL5 工作負載所需的必要隔離層級。
+* [隔離的虛擬機器](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines)。 部署時，它們會取用該 VM 的整個實體主機，提供支援 IL5 工作負載所需的必要隔離層級。
 
-* [Azure 專用主機](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-hosts)，可提供能夠裝載一或多個虛擬機器（專門用於一個 Azure 訂用帳戶）的實體伺服器。
+* [Azure 專用主機](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-hosts)，可提供可裝載一或多個虛擬機器的實體伺服器，專用於一個 azure 訂用帳戶。
 
 >[!NOTE]
 >透過混合式 Runbook 背景工作角色的計算隔離適用于 Azure 商業和美國政府雲端。 
 
 ## <a name="update-management-on-hybrid-runbook-worker"></a>混合式 Runbook 背景工作角色上的更新管理
 
-啟用 Azure 自動化[更新管理](update-management/update-mgmt-overview.md)時，任何連線到 Log Analytics 工作區的電腦都會自動設定為混合式 Runbook 背景工作角色。 每個背景工作角色都可以支援以更新管理為目標的 Runbook。
+當 Azure 自動化 [更新管理](update-management/update-mgmt-overview.md) 啟用時，任何連線到 Log Analytics 工作區的電腦都會自動設定為混合式 Runbook 背景工作角色。 每個背景工作角色都可以支援以更新管理為目標的 Runbook。
 
-以這種方式設定的機器不會向已在您的自動化帳戶中定義的任何混合式 Runbook 背景工作角色群組註冊。 您可以將電腦新增至混合式 Runbook 背景工作角色群組，但更新管理和混合式 Runbook 背景工作角色群組成員資格都必須使用相同的帳戶。 此功能已新增至混合式 Runbook 背景工作角色 7.2.12024.0 版。
+以這種方式設定的電腦未向您的自動化帳戶中已定義的任何混合式 Runbook 背景工作角色群組註冊。 您可以將電腦新增至混合式 Runbook 背景工作角色群組，但是您必須針對更新管理和混合式 Runbook 背景工作角色群組成員資格使用相同的帳戶。 此功能已新增至混合式 Runbook 背景工作角色 7.2.12024.0 版。
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>混合式 Runbook 背景工作角色的更新管理位址
 
-在混合式 Runbook 背景工作角色所需的標準位址和埠上方，更新管理具有[網路規劃](update-management/update-mgmt-overview.md#ports)一節中所述的其他網路設定需求。
+在混合式 Runbook 背景工作角色所需的標準位址和埠之上，更新管理具有 [ [網路規劃](update-management/update-mgmt-overview.md#ports) ] 區段下所述的其他網路設定需求。
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>混合式 Runbook 背景工作角色上的 Azure 自動化狀態設定
 
@@ -104,7 +104,7 @@ Azure 自動化混合式 Runbook 背景工作角色可用於 Azure Government �
 
 ## <a name="runbooks-on-a-hybrid-runbook-worker"></a>在混合式 Runbook 背景工作角色上啟動 Runbook
 
-您的 runbook 可能會管理本機電腦上的資源，或針對已部署混合式 Runbook 背景工作角色的本機環境中的資源執行。 在此情況下，您可以選擇在混合式背景工作角色上執行 Runbook，而不是在自動化帳戶中執行。 在混合式 Runbook 背景工作角色上執行的 Runbook，在結構上與您在自動化帳戶中執行的那些相同。 請參閱[在混合式 Runbook 背景工作角色上啟動 Runbook](automation-hrw-run-runbooks.md)。
+您可能會有 runbook 可管理本機電腦上的資源，或針對混合式 Runbook 背景工作角色部署所在的本機環境中的資源執行。 在此情況下，您可以選擇在混合式背景工作角色上執行 Runbook，而不是在自動化帳戶中執行。 在混合式 Runbook 背景工作角色上執行的 Runbook，在結構上與您在自動化帳戶中執行的那些相同。 請參閱[在混合式 Runbook 背景工作角色上啟動 Runbook](automation-hrw-run-runbooks.md)。
 
 ### <a name="hybrid-runbook-worker-jobs"></a>混合式 Runbook 背景工作角色作業
 
@@ -115,6 +115,20 @@ Azure 自動化混合式 Runbook 背景工作角色可用於 Azure Government �
 ### <a name="runbook-permissions-for-a-hybrid-runbook-worker"></a>混合式 Runbook 背景工作角色的 Runbook 權限
 
 由於其會存取非 Azure 資源，因此在混合式 Runbook 背景工作角色上執行的 Runbook 不能使用 Runbook 通常用來向 Azure 資源進行驗證的驗證機制。 Runbook 會提供自己的驗證給本機資源，或使用 [Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)來設定驗證。 您也可以指定執行身分帳戶以對所有 Runbook 提供使用者內容。
+
+## <a name="view-hybrid-runbook-workers"></a>查看混合式 Runbook 背景工作角色
+
+在 Windows 伺服器或 Vm 上啟用更新管理功能之後，您可以在 Azure 入口網站中清查系統混合式 Runbook 背景工作角色群組的清單。 您可以在入口網站中，從所選自動化帳戶的左側窗格中選取 [**混合**式背景工作**角色] 群組**，以查看最多2000的背景工作角色。
+
+:::image type="content" source="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png" alt-text="自動化帳戶的系統混合式背景工作角色群組頁面" border="false" lightbox="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png":::
+
+如果您有超過2000的混合式背景工作角色，若要取得所有的混合式背景工作角色清單，您可以執行下列 PowerShell 腳本：
+
+```powershell
+"Get-AzSubscription -SubscriptionName "<subscriptionName>" | Set-AzContext
+$workersList = (Get-AzAutomationHybridWorkerGroup -ResourceGroupName "<resourceGroupName>" -AutomationAccountName "<automationAccountName>").Runbookworker
+$workersList | export-csv -Path "<Path>\output.csv" -NoClobber -NoTypeInformation"
+```
 
 ## <a name="next-steps"></a>後續步驟
 

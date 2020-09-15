@@ -1,22 +1,22 @@
 ---
 title: 針對服務連線 Windows 虛擬桌面進行疑難排解 - Azure
-description: 如何解決在 Windows 虛擬桌面租用戶環境中設定用戶端連線時的問題。
+description: 如何在 Windows 虛擬桌面租使用者環境中設定服務連接時解決問題。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/19/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c6d0360a4fe957f43e38fd892cef6b4ab0a2325a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009370"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089899"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows 虛擬桌面服務連線
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)。
 
 使用此文章來解決 Windows 虛擬桌面用戶端連線的問題。
 
@@ -39,6 +39,12 @@ ms.locfileid: "88009370"
 3. 如果正在使用 Web 用戶端，請確認沒有任何快取的認證問題。
 
 4. 如果使用者是 Azure Active Directory (AD) 使用者群組的一部分，請確定使用者群組是安全性群組，而不是通訊群組。 Windows 虛擬桌面不支援 Azure AD 通訊群組。
+
+## <a name="user-loses-existing-feed-and-no-remote-resource-is-displayed-no-feed"></a>使用者遺失現有的摘要，而且沒有顯示任何遠端資源 (沒有摘要) 
+
+當使用者將訂用帳戶從一個 Azure AD 租使用者移至另一個租使用者時，通常會出現此錯誤。 如此一來，服務就會失去其使用者指派的追蹤，因為它們仍系結至舊的 Azure AD 租使用者。
+
+若要解決此問題，您只需將使用者重新指派給其應用程式群組。
 
 ## <a name="next-steps"></a>後續步驟
 

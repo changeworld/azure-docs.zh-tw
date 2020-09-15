@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 08/11/2020
-ms.openlocfilehash: 18e1ff05d76937f8809408da0ed25f55120e456a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/15/2020
+ms.openlocfilehash: ff56ef55066fd0f56b5b8dc7507bfb63b8b8baa0
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440570"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090579"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自訂 Azure-SSIS Integration Runtime 的安裝
 
@@ -40,7 +40,7 @@ ms.locfileid: "89440570"
 
 下列限制僅適用於標準自訂安裝：
 
-- 如果您想要使用指令碼中的 *gacutil.exe*，在全域組件快取 (GAC) 中安裝組件，您必須在自訂安裝的過程中提供 *gacutil.exe*。 或者，您可以使用我們*公開預覽*容器中提供的複本，稍後這會在「指示」一節中討論。
+- 如果您想要使用指令碼中的 *gacutil.exe*，在全域組件快取 (GAC) 中安裝組件，您必須在自訂安裝的過程中提供 *gacutil.exe*。 或者，您可以使用*公開預覽*容器的*範例*資料夾中所提供的複本，請參閱下面的**標準自訂設定範例**一節。
 
 - 如果您想要參考指令碼中的子資料夾，*msiexec.exe* 不支援以 `.\` 標記法參考根資料夾。 請使用諸如 `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` 而非 `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` 的命令。
 
@@ -343,7 +343,7 @@ ms.locfileid: "89440570"
 
 1. 當您的標準自訂安裝程式完成且 Azure-SSIS IR 開始時，您可以在容器的 *主要 .cmd .log* 資料夾中找到所有自訂安裝程式記錄檔。 它們包含 *主要 .cmd* 和其他執行記錄的標準輸出。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [設定 Enterprise Edition 的 Azure-SSIS IR](how-to-configure-azure-ssis-ir-enterprise-edition.md)
 - [開發 Azure-SSIS IR 的付費或授權元件](how-to-develop-azure-ssis-ir-licensed-components.md)

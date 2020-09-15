@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：對 Azure AD 連線問題進行疑難排解 |Microsoft Docs
+title: Azure AD Connect：針對 Azure AD 連線問題進行疑難排解 |Microsoft Docs
 description: 說明如何使用 Azure AD Connect 疑難排解連線問題。
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7bc39e409d0ac10e41fae58c5e5216f386427e30
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 897c0f3c51d6d9bea1f90a66ccf50aa51e22f118
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541731"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088301"
 ---
-# <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 連線能力疑難排解
+# <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 連線能力進行疑難排解
 這篇文章說明 Azure AD Connect 與 Azure AD 之間的連線的運作方式，以及如何疑難排解連線問題。 這些問題最有可能出現在具有 Proxy 伺服器的環境中。
 
 ## <a name="troubleshoot-connectivity-issues-in-the-installation-wizard"></a>在安裝精靈中疑難排解連線問題
@@ -32,8 +32,8 @@ Azure AD Connect 使用「新式驗證」(使用 ADAL 程式庫) 來進行驗證
 
 在本文中，我們將說明 Fabrikam 如何透過其 Proxy 連接至 Azure AD。 Proxy 伺服器名為 fabrikamproxy，並且正在使用連接埠 8080。
 
-首先，我們必須確定已正確設定[**machine.config**](how-to-connect-install-prerequisites.md#connectivity) ，且**Microsoft Azure AD 同步處理服務**在 machine.config 檔案更新後重新開機一次。
-![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
+首先，我們必須確定已正確設定 [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) ，且 **Microsoft Azure AD 同步處理服務** 已在 machine.config 檔案更新之後重新開機。
+![螢幕擷取畫面會顯示部分的電腦點設定檔。](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
 > 在某些非 Microsoft 部落格中，指出了應該改為變更 miiserver.exe.config。 不過，每次升級時都會覆寫這個檔案，因此，即使在初始安裝期間能運作，在第一次升級時系統也會停止運作。 基於該理由，建議您改為更新 machine.config。
@@ -60,7 +60,7 @@ Proxy 伺服器也必須開啟必要的 URL。 如需官方清單，請參閱 [O
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>安裝精靈未正確設定
 當精靈本身無法連線到 Proxy 時，就會出現此錯誤。
-![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
+![螢幕擷取畫面顯示錯誤：無法驗證認證。](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * 如果您看到此錯誤，請確認是否已經正確設定 [machine.config](how-to-connect-install-prerequisites.md#connectivity) 。
 * 如果看起來正確，請依照 [確認 Proxy 連線](#verify-proxy-connectivity) 中的步驟，查看問題是否也出現在精靈以外的地方。
@@ -70,13 +70,13 @@ Proxy 伺服器也必須開啟必要的 URL。 如需官方清單，請參閱 [O
 ![使用了 Microsoft 帳戶](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>無法連線 MFA 端點
-如果無法連線到端點 **https://secure.aadcdn.microsoftonline-p.com** ，而且您的全域系統管理員已啟用 MFA，就會出現此錯誤。
+如果無法連線到端點 **https://secure.aadcdn.microsoftonline-p.com** ，而且您的全域管理員已啟用 MFA，就會出現此錯誤。
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomicrosoftonlinep.png)
 
 * 如果您看到此錯誤，請確認是否已將 **secure.aadcdn.microsoftonline-p.com** 端點新增到 Proxy。
 
 ### <a name="the-password-cannot-be-verified"></a>無法驗證密碼
-如果安裝精靈成功連接到 Azure AD，但無法驗證密碼本身，您會看到此錯誤： ![ 密碼不正確。](./media/tshoot-connect-connectivity/badpassword.png)
+如果安裝精靈成功連接到 Azure AD，但密碼本身無法驗證，您會看到此錯誤：錯誤的 ![ 密碼。](./media/tshoot-connect-connectivity/badpassword.png)
 
 * 密碼是暫時密碼，而且必須變更嗎？ 實際上是正確的密碼嗎？ 嘗試登入 `https://login.microsoftonline.com` (在 Azure AD Connect 伺服器以外的另一部電腦上)，並確認該帳戶是否可使用。
 
@@ -87,7 +87,7 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 
 如果 Proxy 設定正確，您應該會收到成功的狀態：![proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
-如果您收到 [無法連接至遠端伺服器]****，則表示 PowerShell 正嘗試進行直接呼叫而未使用 Proxy，或是 DNS 設定不正確。 請確定 **machine.config** 檔案設定正確。
+如果您收到 **無法連線到遠端伺服器**，則 PowerShell 會嘗試在未使用 proxy 的情況下進行直接呼叫，或未正確設定 DNS。 請確定已正確設定 **machine.config** 檔案。
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)
 
 如果 Proxy 設定不正確，您將會收到錯誤：![proxy200](./media/tshoot-connect-connectivity/invokewebrequest403.png)
@@ -96,7 +96,7 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 | 錯誤 | 錯誤文字 | 註解 |
 | --- | --- | --- |
 | 403 |禁止 |Proxy 尚未對要求的 URL 開放。 重新瀏覽 Proxy 組態，並確定 [URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) 已經開啟。 |
-| 407 |需要 Proxy 驗證 |Proxy 伺服器要求提供登入資訊，但並未提供任何登入資訊。 如果您的 proxy 伺服器需要驗證，請務必在 machine.config 中設定這項設定。此外，請確定您為執行嚮導的使用者和服務帳戶使用網域帳戶。 |
+| 407 |需要 Proxy 驗證 |Proxy 伺服器要求提供登入資訊，但並未提供任何登入資訊。 如果您的 proxy 伺服器需要驗證，請務必在 machine.config 中設定此設定。此外，也請確定您使用的是網域帳戶，讓使用者執行嚮導和服務帳戶。 |
 
 ### <a name="proxy-idle-timeout-setting"></a>Proxy 閒置逾時設定
 當 Azure AD Connect 將匯出要求傳送至 Azure AD 時，Azure AD 在產生回應之前，可能需要 5 分鐘的時間來處理要求。 特別是當相同的匯出要求中包含多個具有大型群組成員資格的群組時，可能就會發生這個情況。 請確認 Proxy 閒置逾時設定為 5 分鐘以上。 否則，可能會在 Azure AD Connect 伺服器上觀察到 Azure AD 的間歇性連線問題。
@@ -122,7 +122,7 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://*bwsc02-relay*.microsoftonline.com:443 |
 
-**設定 [報告]**
+**設定**
 
 | Time | URL |
 | --- | --- |
@@ -166,7 +166,7 @@ Azure AD 目錄找不到或無法解析。 可能是您嘗試以未驗證網域�
 無法授權使用者在 Azure AD 中執行動作。
 
 ### <a name="authentication-canceled"></a>已取消驗證
-已取消多重要素驗證（MFA）挑戰。
+已取消 (MFA) 挑戰的多重要素驗證。
 
 <div id="connect-msolservice-failed">
 <!--
@@ -225,14 +225,14 @@ Azure AD 目錄找不到或無法解析。 可能是您嘗試以未驗證網域�
 從組建編號 1.1.105.0 (於 2016 年 2 月發行) 版本開始即已淘汰登入小幫手。 應該已不再需要本節及組態設定，但仍保留供參考之用。
 
 若要讓登入小幫手能夠運作，必須設定 winhttp。 透過 [**netsh**](how-to-connect-install-prerequisites.md#connectivity)，即可完成這項設定。
-![netsh](./media/tshoot-connect-connectivity/netsh.png)
+![螢幕擷取畫面顯示執行 netsh 工具來設定 proxy 的命令提示字元視窗。](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>登入小幫手未正確設定
 當登入小幫手無法連線到 Proxy 或 Proxy 不允許該要求時，就會出現此錯誤。
-![nonetsh](./media/tshoot-connect-connectivity/nonetsh.png)
+![螢幕擷取畫面顯示錯誤：無法驗證認證、確認網路連線能力，以及防火牆或 proxy 設定。](./media/tshoot-connect-connectivity/nonetsh.png)
 
 * 如果您看到此錯誤，請查看 [netsh](how-to-connect-install-prerequisites.md#connectivity) 中的 Proxy 組態，並確認它是否正確。
-  ![netshshow](./media/tshoot-connect-connectivity/netshshow.png)
+  ![螢幕擷取畫面顯示執行 netsh 工具的命令提示字元視窗，以顯示 proxy 設定。](./media/tshoot-connect-connectivity/netshshow.png)
 * 如果看起來正確，請依照 [確認 Proxy 連線](#verify-proxy-connectivity) 中的步驟，查看問題是否也出現在精靈以外的地方。
 
 ## <a name="next-steps"></a>後續步驟

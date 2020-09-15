@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: c332b960caf7707953069c5252219ca6c51761a8
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007548"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088318"
 ---
 # <a name="troubleshoot-publisher-verification"></a>針對發行者驗證進行疑難排解
 如果您無法完成此程式，或在 [發行者驗證](publisher-verification-overview.md)中遇到非預期的行為，您應該先執行下列動作，如果您收到錯誤或看到非預期的行為： 
@@ -39,10 +39,10 @@ ms.locfileid: "90007548"
     1. 如果 MPN 帳戶已經存在，將會加以辨識，而且您會新增至該帳戶 
     1. 瀏覽至[合作夥伴設定檔頁面](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)，其中會列出 MPN 識別碼和主要帳戶連絡人
 
-- **我不知道誰是我的 Azure AD 全域管理員 (也稱為公司系統管理員或租用戶系統管理員)，如何找出他們？應用程式管理員或不同的管理員角色怎麼樣？**
+- **我不知道我的 Azure AD 全域管理員 (也稱為公司系統管理員或租使用者系統管理員) 是，如何找到它們？應用程式系統管理員或雲端應用程式系統管理員如何？**
     1. 使用貴組織的主要租用戶中的使用者帳戶登入 [Azure AD 入口網站](https://aad.portal.azure.com)
     1. 瀏覽至[角色管理](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators)
-    1. 按一下 [全域管理員] 或所需的管理員角色
+    1. 按一下所需的系統管理員角色
     1. 將會出現獲派該角色的使用者清單。
 
 - **我不知道誰是我的 MPN 帳戶的管理員** 前往 [MPN 使用者管理頁面](https://partner.microsoft.com/pcv/users)並篩選使用者清單，以查看使用者屬於何種不同的管理員角色。
@@ -51,22 +51,25 @@ ms.locfileid: "90007548"
     1. 移至您的[合作夥伴設定檔](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)並確認： 
         - MPN 識別碼正確無誤。 
         - 未顯示任何錯誤或「擱置動作」，而且合法商務設定檔與合作夥伴資訊底下的驗證狀態都顯示「已授權」或「成功」。
-    1. 移至 [MPN 租用戶管理頁面](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)，並確認應用程式註冊所在的租用戶和您以使用者帳戶登入的租用戶位於相關聯的租用戶清單上。
-    1. 移至 [MPN 使用者管理頁面](https://partner.microsoft.com/pcv/users)，並確認您登入的使用者是全域管理員、MPN 管理員或帳戶管理員。
+    1. 移至 [MPN 租用戶管理頁面](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)，並確認應用程式註冊所在的租用戶和您以使用者帳戶登入的租用戶位於相關聯的租用戶清單上。 如果您需要新增額外的租使用者，請遵循 [此處](https://docs.microsoft.com/partner-center/multi-tenant-account)的指示。 請注意，您新增的任何租使用者的全域管理員都會獲得合作夥伴中心帳戶的全域管理員許可權。
+    1. 移至 [ [MPN 使用者管理] 頁面](https://partner.microsoft.com/pcv/users) ，並確認您用來登入的使用者為 [全域管理員]、[MPN 管理員] 或 [帳戶管理員]。如果您需要將使用者新增至合作夥伴中心中的角色，請遵循 [此處](https://docs.microsoft.com/partner-center/create-user-accounts-and-set-permissions)的指示。
 
 - **當我登入 Azure AD 入口網站時，我沒看到任何已註冊的應用程式。原因為何？** 
-    您的應用程式註冊可能是使用不同的使用者帳戶建立或在不同的租用戶中建立的。 確保您在建立應用程式註冊的租用戶中使用正確的帳戶進行登入。
+    您的應用程式註冊可能是使用此租使用者中不同的使用者帳戶、個人/取用者帳戶或不同的租使用者所建立。 確保您在建立應用程式註冊的租用戶中使用正確的帳戶進行登入。
 
-- **如何知道 Azure AD 中應用程式註冊的擁有者是誰？** 
-    登入已註冊應用程式的租用戶時，瀏覽至 [應用程式註冊] 刀鋒視窗，按一下應用程式，然後按一下 [擁有者]。
+- **我收到與多重要素驗證相關的錯誤。我該怎麼做？** 
+    請確定已啟用 [多重要素驗證](../fundamentals/concept-fundamentals-mfa-get-started.md) ，且您在此案例中登入的使用者需要此驗證。 例如，MFA 可能是：
+    - 您要用來登入的使用者一律需要
+    - [Azure 管理的必要元件](../conditional-access/howto-conditional-access-policy-azure-management.md)。
+    - 您用來登入的[系統管理員類型的必要](../conditional-access/howto-conditional-access-policy-admin-mfa.md)項。
 
 ## <a name="making-microsoft-graph-api-calls"></a>進行 Microsoft Graph API 呼叫 
 
 如果您遇到問題，但無法根據您在 UI 中看到的內容來了解原因，建議使用 Microsoft Graph 呼叫來執行進一步的疑難排解，以執行您可在應用程式註冊入口網站中執行的相同作業。
 
-提出這些要求的最簡單方式就是使用 [Graph 總管](https://developer.microsoft.com/graph/graph-explorer)。 您也可考慮使用 [Postman](https://www.postman.com/) 之類的其他選項，或使用 PowerShell 來[叫用 Web 要求](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7)。  
+提出這些要求的最簡單方式就是使用 [Graph 總管](https://developer.microsoft.com/graph/graph-explorer)。 您也可考慮使用 [Postman](https://www.postman.com/) 之類的其他選項，或使用 PowerShell 來[叫用 Web 要求](/powershell/module/microsoft.powershell.utility/invoke-webrequest)。  
 
-您可以使用 Microsoft Graph 來設定和取消設定應用程式的已驗證發行者，並在執行其中一項作業後檢查結果。 在您的應用程式註冊所對應的[應用程式](/graph/api/resources/application?view=graph-rest-beta)物件，以及已從該應用程式具現化的任何[服務主體](/graph/api/resources/serviceprincipal?view=graph-rest-beta)上，都可以看到結果。 如需這些物件之間關聯性的詳細資訊，請參閱：[Azure Active Directory 中的應用程式和服務主體物件](app-objects-and-service-principals.md)。  
+您可以使用 Microsoft Graph 來設定和取消設定應用程式的已驗證發行者，並在執行其中一項作業後檢查結果。 在您的應用程式註冊所對應的[應用程式](/graph/api/resources/application)物件，以及已從該應用程式具現化的任何[服務主體](/graph/api/resources/serviceprincipal)上，都可以看到結果。 如需這些物件之間關聯性的詳細資訊，請參閱：[Azure Active Directory 中的應用程式和服務主體物件](app-objects-and-service-principals.md)。  
 
 以下是一些實用的要求範例：  
 
@@ -105,7 +108,7 @@ POST /applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec/unsetVerifiedPublisher
 ### <a name="get-verified-publisher-info-from-application"></a>從應用程式取得已驗證的發行者資訊 
  
 ```
-GET https://graph.microsoft.com/beta/applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec 
+GET https://graph.microsoft.com/v1.0/applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec 
 
 HTTP/1.1 200 OK 
 
@@ -124,7 +127,7 @@ HTTP/1.1 200 OK
 
 ### <a name="get-verified-publisher-info-from-service-principal"></a>從服務主體取得已驗證的發行者資訊 
 ```
-GET https://graph.microsoft.com/beta/servicePrincipals/010422a7-4d77-4f40-9335-b81ef5c23dd4 
+GET https://graph.microsoft.com/v1.0/servicePrincipals/010422a7-4d77-4f40-9335-b81ef5c23dd4 
 
 HTTP/1.1 200 OK 
 
@@ -183,11 +186,7 @@ Azure AD B2C 租用戶不支援此功能。
 
 ### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication   
 
-目標應用程式 (<AppId>) 確實必須設定發行者網域。 設定發行者網域，然後再試一次。 
-
-### <a name="publisherdomainisnotdnsverified"></a>PublisherDomainIsNotDNSVerified  
-
-目標應用程式的發行者網域 (<publisherDomain>) 不是此租用戶中已驗證的網域。 使用 DNS 驗證來驗證租用戶網域，然後再試一次。 
+目標應用程式 (\<AppId\>) 必須設定發行者網域。 設定發行者網域，然後再試一次。
 
 ### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
 

@@ -5,53 +5,55 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 018275b6db4c2d2d1059f35077f74a6f45ec3ba9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 330c1b74a46b0f18af1068797d080e903f516ea6
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422028"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089865"
 ---
-# <a name="use-the-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>在 Azure Kubernetes Service (AKS)  (preview 中使用 Azure 檔案儲存體容器儲存體介面 (CSI) 驅動程式) 
-Azure 檔案儲存體 CSI 驅動程式是一種 [Csi 規格](https://github.com/container-storage-interface/spec/blob/master/spec.md) 相容的驅動程式，由 AKS 用來管理 Azure 檔案儲存體共用的生命週期。 
+# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>在 Azure Kubernetes Service (AKS)  (preview 中使用 Azure 檔案儲存體容器儲存體介面 (CSI) 驅動程式) 
 
-容器存放裝置介面 (CSI) 是在 Kubernetes 上將任意區塊和檔案儲存體系統公開至容器化工作負載的標準。 藉由採用和使用 CSI，Azure Kubernetes Service (AKS) 現在可以在 Kubernetes 中撰寫、部署及反覆運算外掛程式，以公開新的或改善現有的儲存系統，而不需要觸控核心 Kubernetes 程式碼並等候其發行週期。
+Azure 檔案儲存體容器存放裝置介面 (CSI) 驅動程式是一種符合 [CSI 規格規範](https://github.com/container-storage-interface/spec/blob/master/spec.md)的驅動程式，AZURE KUBERNETES SERVICE (AKS) 用來管理 Azure 檔案儲存體共用的生命週期。
+
+CSI 是將任意區塊和檔案儲存系統公開給 Kubernetes 上容器化工作負載的標準。 藉由採用和使用 CSI，AKS 現在可以撰寫、部署及反覆運算外掛程式，以在 Kubernetes 中公開新的或改善現有的儲存系統，而不需要觸控核心 Kubernetes 程式碼並等候其發行週期。
 
 若要建立具有 CSI 驅動程式支援的 AKS 叢集，請參閱 [啟用 Azure 磁片的 csi 驅動程式和 AKS 上的 Azure 檔案儲存體](csi-storage-drivers.md)。
 
 >[!NOTE]
-> 「*樹狀結構內驅動程式*」指的是核心 kubernetes 程式碼中的目前儲存驅動程式，與新的 CSI 驅動程式（即外掛程式）。
+> *樹狀結構中的驅動程式* 是指核心 Kubernetes 程式碼中的目前儲存驅動程式，與新的 CSI 驅動程式（即外掛程式）的一部分。
 
-## <a name="use-a-persistent-volume-pv-with-azure-files"></a>使用持續性磁片區 (PV) 搭配 Azure 檔案儲存體
+## <a name="use-a-persistent-volume-with-azure-files"></a>使用具有 Azure 檔案儲存體的持續性磁片區
 
-[持續性磁片](concepts-storage.md#persistent-volumes)區代表布建來與 Kubernetes pod 搭配使用的一段儲存體。 永續性磁碟區可供一個或多個 Pod 使用，且可以動態或靜態方式佈建。 如果多個 Pod 需要同時存取相同的存放磁碟區，您可以使用 Azure 檔案儲存體來透過[伺服器訊息區 (SMB) 通訊協定][smb-overview]進行連線。 本文會示範如何在 Azure Kubernetes Service (AKS) 叢集中以動態方式建立 Azure 檔案共用，以供多個 Pod 使用。 如需靜態布建，請參閱 [手動建立和使用 Azure 檔案儲存體共用的磁片區](azure-files-volume.md)。
+[持續性磁片區 (PV) ](concepts-storage.md#persistent-volumes)代表布建來與 Kubernetes pod 搭配使用的一段儲存體。 PV 可供一或多個 pod 使用，且可以動態或靜態方式布建。 如果有多個 pod 需要平行存取相同的存放磁片區，您可以使用 Azure 檔案儲存體 [ (SMB) 通訊協定][smb-overview]來連接。 本文說明如何以動態方式建立 Azure 檔案儲存體共用，以供 AKS 叢集中的多個 pod 使用。 如需靜態布建，請參閱 [手動建立和使用具有 Azure 檔案儲存體共用的磁片區](azure-files-volume.md)。
 
 如需 Kubernetes 磁碟區的詳細資訊，請參閱 [AKS 中的應用程式適用的儲存體選項][concepts-storage]。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="dynamically-create-azure-files-pvs-using-the-built-in-storage-classes"></a>使用內建的儲存類別，以動態方式建立 Azure 檔案儲存體 PVs
-儲存體類別可用來定義 Azure 檔案共用的建立方式。 [節點資源群組][node-resource-group]中會自動建立儲存體帳戶，供儲存體類別用來保存 Azure 檔案共用。 針對 *skuName*，請 選擇下列 [Azure 儲存體備援][storage-skus]：
+## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>使用內建的儲存類別，以動態方式建立 Azure 檔案儲存體 PVs
 
-* *Standard_LRS* -標準本機冗余儲存體
-* *Standard_GRS* -標準異地冗余儲存體
-* *Standard_ZRS* -標準區域冗余儲存體
-* *Standard_RAGRS* -標準讀取權限異地冗余儲存體
-* *Premium_LRS* -Premium 本機冗余儲存體
+儲存體類別可用來定義建立 Azure 檔案儲存體共用的方式。 系統會自動在 [節點資源群組][node-resource-group] 中建立儲存體帳戶，以搭配儲存類別來保存 Azure 檔案儲存體共用。 選擇下列其中一個適用于*skuName*的[Azure 儲存體冗余 sku][storage-skus] ：
+
+* **Standard_LRS**：標準本機冗余儲存體
+* **Standard_GRS**：標準異地冗余儲存體
+* **Standard_ZRS**：標準區域-多餘的儲存體
+* **Standard_RAGRS**：標準讀取權限異地冗余儲存體
+* **Premium_LRS**： Premium 本機冗余儲存體
 
 > [!NOTE]
-> Azure 檔案儲存體支援 premium 儲存體，最小 premium 檔案共用為 100 GB。
+> Azure 檔案儲存體支援 Azure 進階儲存體。 最小 premium 檔案共用為 100 GB。
 
-在 AKS 上使用存放裝置 CSI 驅動程式時，有2個額外 `StorageClasses` 的內建可利用 **Azure 檔案儲存體 CSI 儲存驅動程式**。 額外的 CSI 儲存類別是以叢集和樹狀目錄預設儲存類別一起建立。
+當您在 AKS 上使用 storage CSI 驅動程式時，有兩個額外 `StorageClasses` 的內建使用 AZURE 檔案儲存體 CSI 儲存驅動程式。 額外的 CSI 儲存類別是以叢集和樹狀目錄預設儲存類別一起建立。
 
-- `azurefile-csi` -使用 Azure 標準儲存體來建立 Azure 檔案共用。 
-- `azurefile-csi-premium` -使用 Azure Premium 儲存體來建立 Azure 檔案共用。 
+- `azurefile-csi`：使用 Azure 標準儲存體建立 Azure 檔案儲存體共用。
+- `azurefile-csi-premium`：使用 Azure 進階儲存體建立 Azure 檔案儲存體共用。
 
-這兩種儲存類別的回收原則可確保在刪除個別的永久磁片區時，會刪除基礎的 Azure 檔案共用。 儲存類別也會將檔案共用設定為可擴充，您只需要以新的大小來編輯永久性磁片區宣告。
+這兩種儲存類別的回收原則可確保在刪除個別的 PV 時，會刪除基礎 Azure 檔案儲存體共用。 儲存類別也會將檔案共用設定為可擴充，您只需要以新的大小編輯持續性磁片區宣告 (PVC) 。
 
-若要利用這些儲存類別，請建立 [永久性磁片區宣告 (PVC) ](concepts-storage.md#persistent-volume-claims) ，以及會參考並利用它們的個別 pod。 永續性磁碟區宣告 (PVC) 可用來根據儲存體類別，動態佈建儲存體。 PVC 可以使用其中一個預先建立的儲存體類別或使用者定義的儲存體類別，來建立所需 SKU 和大小的 Azure 檔案儲存體共用。 當您建立 Pod 定義時，您會指定永續性磁碟區宣告應要求所需的儲存體。
+若要使用這些儲存類別，請建立可參考並使用的 [PVC](concepts-storage.md#persistent-volume-claims) 和個別 pod。 PVC 可用來根據儲存類別自動布建儲存體。 PVC 可以使用其中一個預先建立的儲存體類別或使用者定義的儲存體類別，來建立所需 SKU 和大小的 Azure 檔案儲存體共用。 當您建立 pod 定義時，會指定 PVC 來要求所需的儲存體。
 
-建立範例永久性磁片區宣告和 pod，以使用[kubectl apply][kubectl-apply]命令將[目前的日期列印到中 `outfile` ](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) ：
+建立[範例 PVC 和 pod，此範例會將目前的日期 `outfile` 列印至](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml)with [kubectl apply][kubectl-apply]命令：
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/pvc-azurefile-csi.yaml
@@ -61,7 +63,7 @@ persistentvolumeclaim/pvc-azurefile created
 pod/nginx-azurefile created
 ```
 
-當 pod 處於執行中狀態之後，您可以藉由執行下列命令來驗證檔案共用是否已正確掛接，並確認輸出包含 `outfile` ： 
+當 pod 處於執行中狀態之後，您可以執行下列命令來驗證檔案共用是否已正確掛接，並確認輸出包含 `outfile` ：
 
 ```console
 $ kubectl exec nginx-azurefile -- ls -l /mnt/azurefile
@@ -76,7 +78,7 @@ total 29
 
 Kubernetes 掛接的檔案共用的預設*值為0777，而* *dirMode*為*0777* 。 您可以在儲存類別物件上指定不同的掛接選項。
 
-建立名為的檔案 `azure-file-sc.yaml` ，並貼上下列範例資訊清單： 
+建立名為的檔案 `azure-file-sc.yaml` ，並貼上下列範例資訊清單：
 
 ```yaml
 kind: StorageClass
@@ -107,7 +109,7 @@ kubectl apply -f azure-file-sc.yaml
 storageclass.storage.k8s.io/my-azurefile created
 ```
 
-Azure 檔案儲存體 CSI 驅動程式支援建立持續性磁片區和基礎檔案共用 [的快照](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) 集。 
+Azure 檔案儲存體 CSI 驅動程式支援建立持續性磁片區和基礎檔案共用 [的快照](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) 集。
 
 使用[kubectl apply][kubectl-apply]命令建立[磁片區快照集類別](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshotclass-azurefile.yaml)：
 
@@ -117,7 +119,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-c
 volumesnapshotclass.snapshot.storage.k8s.io/csi-azurefile-vsc created
 ```
 
-從[本教學課程開頭動態建立](#dynamically-create-azure-files-pvs-using-the-built-in-storage-classes)的 PVC 建立[磁片區快照](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml)集 `pvc-azurefile` 。
+從[本教學課程開頭動態建立](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes)的 PVC 建立[磁片區快照](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml)集 `pvc-azurefile` 。
 
 
 ```bash
@@ -156,14 +158,14 @@ Status:
 Events:                                <none>
 ```
 
-## <a name="resize-a-persistent-volume-pv"></a>調整永久性磁片區的大小 (PV) 
+## <a name="resize-a-persistent-volume"></a>調整永久性磁片區的大小
 
-您可以為 PVC 要求較大的磁片區。 編輯 PVC 物件，並指定較大的大小。 這項變更會觸發可支援 PersistentVolume 的基礎磁片區擴充。 
+您可以為 PVC 要求較大的磁片區。 編輯 PVC 物件，並指定較大的大小。 這項變更會觸發支援 PV 的基礎磁片區擴充。
 
-> [!NOTE] 
-> 永遠不會建立新的 PersistentVolume 來滿足宣告。 相反地，會調整現有磁片區的大小。
+> [!NOTE]
+> 永遠不會建立新的 PV 來滿足宣告。 相反地，會調整現有磁片區的大小。
 
-在 AKS 中，內建的 `azurefile-csi` 儲存類別已支援擴充，因此請利用 [先前使用此儲存類別建立的 PVC](#dynamically-create-azure-files-pvs-using-the-built-in-storage-classes)。 PVC 要求了100Gi 檔案共用，我們可以藉由執行下列動作來確認：
+在 AKS 中，內建的 `azurefile-csi` 儲存類別已支援擴充，因此請使用稍 [早建立的 PVC 搭配此儲存類別](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes)。 PVC 要求了100Gi 檔案共用。 我們可以藉由執行下列動作來確認：
 
 ```console 
 $ kubectl exec -it nginx-azurefile -- df -h /mnt/azurefile
@@ -180,7 +182,7 @@ $ kubectl patch pvc pvc-azurefile --type merge --patch '{"spec": {"resources": {
 persistentvolumeclaim/pvc-azurefile patched
 ```
 
-確認 pod 內的 PVC 和 filesystem 都顯示新的大小：
+確認 pod 內的 PVC 和檔案系統都顯示新的大小：
 
 ```console
 $ kubectl get pvc pvc-azurefile
@@ -194,9 +196,9 @@ Filesystem                                                                      
 
 ## <a name="windows-containers"></a>Windows 容器
 
-Azure 檔案儲存體 CSI 驅動程式也支援 Windows 節點和容器，如果您想要使用 windows 容器，請遵循 [Windows 容器教學](windows-container-cli.md) 課程來新增 windows 節點集區。
+Azure 檔案儲存體 CSI 驅動程式也支援 Windows 節點和容器。 如果您想要使用 Windows 容器，請遵循 [windows 容器教學](windows-container-cli.md) 課程來新增 windows 節點集區。
 
-當您擁有 windows 節點集區之後，請利用內建的儲存類別，例如， `azurefile-csi` 或建立自訂的儲存體類別。 您可以[windows-based stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) `data.txt` 使用[kubectl apply][kubectl-apply]命令部署下列命令，以部署將時間戳記儲存至檔案的範例 windows 型具狀態設定：
+當您有 Windows 節點集區之後，請使用內建的儲存類別，例如 `azurefile-csi` 或建立自訂的儲存體類別。 您可以[Windows-based stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) `data.txt` 使用[kubectl apply][kubectl-apply]命令部署下列命令，以部署將時間戳記儲存至檔案的範例 Windows 型具狀態設定：
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
@@ -216,10 +218,10 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 (...)
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-- 若要瞭解如何使用適用于 Azure 磁片的 CSI driver，請參閱 [使用具有 CSI 驅動程式的 azure 磁片](azure-disk-csi.md)。
-- 如需儲存體最佳作法的詳細資訊，請參閱 [Azure Kubernetes Service (AKS 中儲存體和備份的最佳作法) ][operator-best-practices-storage]
+- 若要瞭解如何使用適用于 Azure 磁片的 CSI 驅動程式，請參閱 [使用具有 CSI 驅動程式的 azure 磁片](azure-disk-csi.md)。
+- 如需儲存體最佳作法的詳細資訊，請參閱 [Azure Kubernetes Service 中儲存和備份的最佳作法][operator-best-practices-storage]。
 
 
 <!-- LINKS - external -->

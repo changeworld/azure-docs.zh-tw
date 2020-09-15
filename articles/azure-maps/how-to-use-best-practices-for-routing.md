@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b957453758b9b8e34989877516a9083f06a85ed8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400770"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086397"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure 地圖服務路線規劃服務的最佳作法
 
@@ -275,9 +275,9 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>在 web 應用程式中使用路由服務
 
-Azure 地圖服務 Web SDK 提供 [服務模組](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest)。 此模組是協助程式程式庫，可讓您輕鬆地在 web 或 Node.js 應用程式中使用 JavaScript 或 TypeScript 來使用 Azure 地圖服務 REST Api。 服務模組可以用來在地圖上呈現傳回的路由。 模組會自動判斷要搭配 GET 和 POST 要求使用的 API。
+Azure 地圖服務 Web SDK 提供 [服務模組](https://docs.microsoft.com/javascript/api/azure-maps-rest/)。 此模組是協助程式程式庫，可讓您輕鬆地在 web 或 Node.js 應用程式中使用 JavaScript 或 TypeScript 來使用 Azure 地圖服務 REST Api。 服務模組可以用來在地圖上呈現傳回的路由。 模組會自動判斷要搭配 GET 和 POST 要求使用的 API。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解，請參閱：
 

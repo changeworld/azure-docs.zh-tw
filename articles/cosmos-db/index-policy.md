@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: f723d7ac218869313f02212d27d9f96b74bb7f0f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f9e1ff633f70e544a3cde579f1550d3fd708f269
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607526"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089508"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引編製原則
 
-在 Azure Cosmos DB 中，每個容器都有編制索引原則，以指示容器的專案應該如何編制索引。 新建立之容器的預設索引編制原則會為每個專案的每個屬性編制索引，並強制執行任何字串或數位的範圍索引。 這可讓您取得高查詢效能，而不需要事先考慮索引編制和索引管理。
+在 Azure Cosmos DB 中，每個容器都有索引編製原則，以指示容器項目應該如何編制索引。 新建立的容器所套用之每個項目的每個屬性之預設索引編製原則，會對任何字串或數字強制執行範圍索引。 這可讓您獲得高查詢效能，而不需要事先考慮索引編製和索引管理。
 
 在某些情況下，您可以覆寫此自動行為，使其更符合您的需求。 您可以藉由設定 *索引編制模式*來自訂容器的編制索引原則，以及包含或排除 *屬性路徑*。
 
@@ -30,7 +30,7 @@ Azure Cosmos DB 支援兩種索引編制模式：
 - **無**：容器上的索引已停用。 當容器作為純索引鍵-值存放區，而不需要次要索引時，通常會使用這種方式。 它也可以用來改善大量作業的效能。 完成大量作業之後，索引模式可以設定為一致，然後使用 [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) 進行監視，直到完成為止。
 
 > [!NOTE]
-> Azure Cosmos DB 也支援延遲編制索引模式。 當引擎未執行任何其他工作時，延遲索引會以較低的優先權層級執行索引的更新。 這可能會導致 **不一致或不完整** 的查詢結果。 如果您打算查詢 Cosmos 容器，則不應選取延遲索引。 在2020年6月，我們引進了變更，不再允許將新的容器設定為延遲編制索引模式。 如果您的 Azure Cosmos DB 帳戶已經至少包含一個具有延遲索引編制的容器，此帳戶會自動豁免變更。 您也可以藉由聯絡 [Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (來要求豁免，除非您在 [無伺服器](serverless.md) 模式下使用 Azure Cosmos 帳戶，但不支援延遲索引) 。
+> Azure Cosmos DB 也支援延遲編制索引模式。 當引擎並未執行任何其他工作時，延遲索引會以較低的優先順序層級對更新執行索引。 這可能會導致**不一致或不完整的**查詢結果。 如果您打算查詢 Cosmos 容器，則不應該選取延遲索引。 在2020年6月，我們引進了變更，不再允許將新的容器設定為延遲編制索引模式。 如果您的 Azure Cosmos DB 帳戶已經至少包含一個具有延遲索引編制的容器，此帳戶會自動豁免變更。 您也可以藉由聯絡 [Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (來要求豁免，除非您在 [無伺服器](serverless.md) 模式下使用 Azure Cosmos 帳戶，但不支援延遲索引) 。
 
 依預設，編制索引原則是設定為 `automatic` 。 將 `automatic` 索引編制原則中的屬性設定為，即可達成此目的 `true` 。 將此屬性設定為可 `true` 讓 Azure CosmosDB 在檔寫入時自動編制索引。
 
@@ -81,7 +81,7 @@ Azure Cosmos DB 支援兩種索引編制模式：
 
 包含和排除路徑時，您可能會遇到下列屬性：
 
-- `kind` 可以是 `range` 或 `hash` 。 範圍索引功能提供雜湊索引的所有功能，因此建議使用範圍索引。
+- `kind` 可以是 `range` 或 `hash` 。 雜湊索引支援僅限於相等篩選。 範圍索引功能提供雜湊索引的所有功能，以及有效率的排序、範圍篩選和系統函數。 我們一律建議使用範圍索引。
 
 - `precision` 是在包含路徑的索引層級定義的數位。 的值 `-1` 表示最大有效位數。 建議您一律將此值設定為 `-1` 。
 
@@ -101,7 +101,7 @@ Azure Cosmos DB 支援兩種索引編制模式：
 
 如果包含的路徑和排除的路徑發生衝突，則會優先採用更精確的路徑。
 
-以下為範例：
+以下是範例：
 
 **包含的路徑**： `/food/ingredients/nutrition/*`
 

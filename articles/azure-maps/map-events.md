@@ -1,6 +1,6 @@
 ---
 title: 處理地圖事件 | Microsoft Azure 地圖服務
-description: 瞭解當使用者與地圖互動時所引發的事件。 查看所有支援的對應事件清單。 請參閱如何使用 Azure 地圖服務 Web SDK 來處理事件。
+description: 瞭解使用者與地圖互動時所引發的事件。 查看所有支援的地圖事件清單。 瞭解如何使用 Azure 地圖服務 Web SDK 來處理事件。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: f3a48e4434588b2eb64637e6f0a454148cad39f2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e1cce536a9ec498304cbbc591fc56a0ee1b21b13
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036436"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087264"
 ---
 # <a name="interact-with-the-map"></a>與地圖互動
 
@@ -26,7 +26,7 @@ ms.locfileid: "88036436"
 
 <br/>
 
-<iframe height='600' scrolling='no' title='與地圖互動 – 滑鼠事件' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>與地圖互動 – 滑鼠事件</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
+<iframe height='600' scrolling='no' title='與地圖互動 – 滑鼠事件' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>與地圖互動 – 滑鼠事件</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 ## <a name="interact-with-map-layers"></a>與地圖圖層互動
@@ -35,16 +35,16 @@ ms.locfileid: "88036436"
 
 <br/>
 
-<iframe height='600' scrolling='no' title='與地圖互動 – 地圖事件' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>與地圖互動 – 圖層事件</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
+<iframe height='600' scrolling='no' title='與地圖互動 – 地圖事件' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>與地圖互動 – 圖層事件</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 ## <a name="interact-with-html-marker"></a>與 HTML 標記互動
 
-下列程式碼會將 Javascript 地圖事件新增至 HTML 標記。 它也會醒目提示當您與 HTML 標記互動時所引發的事件名稱。
+下列程式碼會將 JavaScript 地圖事件新增至 HTML 標籤。 它也會醒目提示當您與 HTML 標記互動時所引發的事件名稱。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='與地圖互動 – HTML 標記事件' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>與地圖互動 – HTML 標記事件</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
+<iframe height='500' scrolling='no' title='與地圖互動 – HTML 標記事件' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>與地圖互動 – HTML 標記事件</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 下表列出所有支援的地圖類別事件。
@@ -98,11 +98,11 @@ ms.locfileid: "88036436"
 | `sourceremoved`     | 從地圖移除 `DataSource` 或 `VectorTileSource` 時引發。|
 | `styledata`         | 載入或變更地圖的樣式時引發。|
 | `styleimagemissing` | 圖層嘗試從不存在的影像原件載入影像時引發 |
-| `tokenacquired`     | 取得 AAD 存取權杖時引發。|
-| `touchcancel`       | 在地圖內發生觸控取消事件時引發。|
-| `touchend`          | 在地圖內發生觸控結束事件時引發。|
-| `touchmove`         | 在地圖內發生觸控移動事件時引發。|
-| `touchstart`        | 在地圖內發生觸控開始事件時引發。|
+| `tokenacquired`     | 取得 Azure Active Directory 存取權杖時引發。|
+| `touchcancel`       | 在 `touchcancel` 對應中發生事件時引發。|
+| `touchend`          | 在 `touchend` 對應中發生事件時引發。|
+| `touchmove`         | 在 `touchmove` 對應中發生事件時引發。|
+| `touchstart`        | 在 `touchstart` 對應中發生事件時引發。|
 | `wheel`             | 在地圖內發生滑鼠滾輪事件時引發。|
 | `zoom`              | 在因使用者互動或方法的結果，而從某個縮放層級動態轉換到另一個縮放層級期間重複引發。|
 | `zoomend`           | 在地圖因使用者互動或方法的結果，而完成從某個縮放層級轉換至另一個縮放層級之後引發。|

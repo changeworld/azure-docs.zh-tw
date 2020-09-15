@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f24a04db9317083fb47c0956174e649b5bd7ae10
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 94ba4b159e0a7e52603e7c200c11828f996cf6d8
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815686"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090511"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure 地圖服務共同體-開放原始碼專案
 
@@ -29,13 +29,19 @@ ms.locfileid: "88815686"
 | [Bot Framework 感興趣的技能](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | 相關的重點技巧會使用 Azure 地圖服務搭配 Azure Bot Service 和 Bot Framework，為虛擬助理提供 POI 相關功能。 |
 | [BotBuilder 位置](https://github.com/Microsoft/BotBuilder-Location) | 開放原始碼位置選擇器控制項，適用于 Bing 地圖服務 REST 服務所支援的 Microsoft Bot Framework。 |
 
+<a name="open-web-sdk-modules"></a>
+
 **開啟 Web SDK 模組**
 
 以下是可延伸 Azure 地圖服務 Web SDK 功能的開放原始碼專案清單。
 
 | 專案名稱 | 描述 |
 |-|-|
-| [Azure 地圖服務動畫模組](https://github.com/Azure-Samples/azure-maps-animations)| 用於 Azure 地圖服務 Web SDK 的豐富動畫程式庫。 |
+| [Azure 地圖服務動畫模組](https://github.com/Azure-Samples/azure-maps-animations) | 用於 Azure 地圖服務 Web SDK 的豐富動畫程式庫。 |
+| [Azure 地圖服務地理位置控制模組](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Azure 地圖服務 Web SDK 模組，提供使用瀏覽器地理位置 API 在地圖上尋找使用者的控制項。 |
+| [Azure 地圖服務全螢幕控制項模組](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | Azure 地圖服務 Web SDK 模組，可提供控制項以全螢幕模式顯示地圖。 |
+| [Azure 地圖服務選取控制項模組](https://github.com/Azure-Samples/azure-maps-selection-control) | Azure 地圖服務 Web SDK 模組，提供使用繪圖工具或透過要求路線範圍多邊形選取資料來源中資料的控制項。 |
+| [Azure 地圖服務同步處理對應模組](https://github.com/Azure-Samples/azure-maps-sync-maps) | Azure 地圖服務的 Web SDK 模組，可同步處理兩個或多個地圖的攝影機。 |
 | [Azure 地圖服務 Services UI 模組](https://github.com/Azure-Samples/azure-maps-services-ui) | 一組包裝 Azure 地圖服務 REST 服務的 web UI 控制項。 |
 
 **範例**
@@ -46,7 +52,7 @@ ms.locfileid: "88815686"
 | [Azure 地圖服務 Gov Cloud 程式碼範例](https://github.com/Azure-Samples/AzureMapsCodeSamples) | 透過 Azure Government 雲端使用 Azure 地圖服務的程式碼範例集合。 |
 | [Azure 地圖服務 & Azure Active Directory 範例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | 示範如何搭配使用 Azure Active Directory 與 Azure 地圖服務的範例集合。 | 
 | [Azure 地圖服務 Jupyter Notebook 範例](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | 使用 Azure 地圖服務 REST 服務的 python 範例集合。 |
-| [Azure 地圖服務 .NET UWP IoT 遠端控制](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | 這是範例應用程式，示範如何使用 Azure 地圖服務和 IoT 中樞服務來建立遠端控制的地圖。 |
+| [Azure 地圖服務 .NET UWP IoT 遠端控制](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | 這是範例應用程式，示範如何使用 Azure 地圖服務和 IoT 中樞服務建立遠端控制的地圖。 |
 | [使用 Azure 地圖服務執行 IoT 空間分析](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | 追蹤和擷取在空間和時間中發生的相關事件，是常見的 IoT 案例。 |
 
 **工具和資源**

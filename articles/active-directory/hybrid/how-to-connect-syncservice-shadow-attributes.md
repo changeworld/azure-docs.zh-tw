@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c57ab03f72f0f59dd18a873ddc7cd98d3c36ef9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 128303cb51b39db8442fdda71f949db17923bfa2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356656"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088965"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect 同步處理服務陰影屬性
 大部分屬性是以它們在內部部署 Active Directory 中的相同方式，在 Azure AD 中表示。 但是某些屬性有一些特殊處理，而且在 Azure AD 中的屬性值可能不同於 Azure AD Connect 同步處理。
@@ -32,7 +32,7 @@ ms.locfileid: "85356656"
 您無法使用 Azure 入口網站或 PowerShell 看到陰影屬性。 但是，了解概念可協助您針對特定案例進行疑難排解，其中屬性在內部部署和雲端中有不同的值。
 
 若要進一步了解行為，請參閱來自 Fabrikam 的這個範例：  
-![網域](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
+![螢幕擷取畫面會顯示數個範例的 Active Directory UPN 尾碼，其中對應的 Azure AD 定義域值為 [未新增]、[未驗證] 和 [已驗證]。](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
 它們在其內部部署 Active Directory 中有多個 UPN 尾碼，但是它們只驗證其中一個。
 
 ### <a name="userprincipalname"></a>userPrincipalName
@@ -58,7 +58,7 @@ userPrincipalName 屬性是您使用 PowerShell 時看到的值。
 | 內部部署 proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-在此情況下，已移除**smtp： abbie. spencer \@ fabrikam.com** ，因為該網域尚未經過驗證。 但是 Exchange 也新增了**SIP： abbie. spencer \@ fabrikamonline.com**。 Fabrikam 不曾使用 Lync/Skype 內部部署，但是 Azure AD 和 Exchange Online 為它進行準備。
+在此情況下， **smtp： abbie. & spencer \@ fabrikam.com** 已移除，因為該網域尚未經過驗證。 但 Exchange 也新增了 **SIP： abbie. & spencer \@ fabrikamonline.com**。 Fabrikam 不曾使用 Lync/Skype 內部部署，但是 Azure AD 和 Exchange Online 為它進行準備。
 
 proxyAddresses 的此邏輯稱為 **ProxyCalc**。 ProxyCalc 在使用者每次變更時叫用，其時機為︰
 
