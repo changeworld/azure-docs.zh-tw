@@ -1,7 +1,7 @@
 ---
 title: 如何安裝及執行使用異常偵測器 API 的容器
 titleSuffix: Azure Cognitive Services
-description: 使用 Anomaly Detector API 的進階的演算法來識別時間序列資料中的異常狀況。
+description: 瞭解如何安裝和使用容器，以使用異常偵測器 API 的 advanced 演算法。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: ee742f09f3fcc1bd283efbc346fea6a040e53f48
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0ae3b66d8093c0498011d9f93cd8d869b85f9003
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548526"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530704"
 ---
 # <a name="install-and-run-anomaly-detector-containers-preview"></a> (預覽) 安裝並執行異常偵測器容器
 
 異常偵測器具有下列容器特徵功能：
 
-| 函式 | 功能 |
+| 函式 | 特性 |
 |--|--|
 | 異常偵測器 | <li> 偵測即時發生的異常狀況。 <li> 以批次方式偵測整個資料集的異常狀況。 <li> 推斷資料的預期標準範圍。 <li> 支援異常偵測敏感度調整，使其更符合您的資料。 |
 
@@ -185,7 +185,7 @@ ApiKey={API_KEY}
 > [!IMPORTANT]
 > 認知服務容器在未連線至 Azure 以進行計量的情況下，將無法被授權以執行。 客戶必須啟用容器以持續與計量服務進行帳單資訊的通訊。 認知服務容器不會將客戶資料 (例如，正在分析) 的時間序列資料傳送給 Microsoft。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 檢閱[設定容器](anomaly-detector-container-configuration.md)以了解組態設定
 * [將異常偵測器容器部署至 Azure 容器實例](how-to/deploy-anomaly-detection-on-container-instances.md)

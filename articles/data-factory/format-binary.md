@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 781d88f1862ac20a1212676f29dc022157b3601c
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 297fb51dd1dd8f1dabdcf2fe9e0d2ead5c906c6f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061558"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531826"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Azure Data Factory 中的二進位格式
 
@@ -36,7 +36,7 @@ ms.locfileid: "90061558"
 | type             | 資料集的 type 屬性必須設定為 **Binary**。 | 是      |
 | location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。 **請參閱連接器文章中的詳細資料-> 資料集屬性一節**。 | 是      |
 | compression | 用來設定檔案壓縮的屬性群組。 當您想要在活動執行期間執行壓縮/解壓縮時，請設定此區段。 | 否 |
-| type | 用來讀取/寫入二進位檔案的壓縮編解碼器。 <br>允許的值為 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**或 **TarGzip**。 <br>**請注意**，使用複製活動將**ZipDeflate** / (**TarGzip**檔解壓縮) 並寫入檔案型接收資料存放區時，預設會將檔案解壓縮到資料夾： `<path specified in dataset>/<folder named as source compressed file>/` ， `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` 在[複製活動來源](#binary-as-source)上使用，以控制是否要將 ZIP 檔案名保留為資料夾結構。| 否       |
+| type | 用來讀取/寫入二進位檔案的壓縮編解碼器。 <br>允許的值為 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**或 **TarGzip**。 <br>**請注意**，使用複製活動來將**ZipDeflate** / **TarGzip**檔解壓縮 (s) 並寫入至檔案型接收資料存放區時，預設會將檔案解壓縮到資料夾： `<path specified in dataset>/<folder named as source compressed file>/` ， `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` 在[複製活動來源](#binary-as-source)上使用，以控制是否要將壓縮檔案的名稱保留為資料夾結構 () 。| 否       |
 | 等級 | 壓縮比例。 適用于複製活動接收中使用資料集時。<br>允許的值為 **最佳** 或 **最快速**。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
 
 以下是 Azure Blob 儲存體上的二進位資料集範例：

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 3621d0c22aa6f35fc845f449d07bce8dcf0ba1fa
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8749b64b664571abab6f354018dcbd2bd797531e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461879"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531214"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
@@ -639,7 +639,7 @@ ms.locfileid: "89461879"
 
 -   **Key Vault**。 當您使用連線資訊存放在 Azure Key Vault 中的連結服務時，建議您針對不同的環境保留個別的金鑰保存庫。 您也可以為每個金鑰保存庫設定不同的權限層級。 例如，您可能不希望小組成員具有生產秘密的權限。 如果您遵循此方法，我們建議您在所有階段中保留相同的秘密名稱。 如果您保留相同的秘密名稱，則不需要將所有 CI/CD 環境中的每個連接字串參數化，因為唯一的變更是金鑰保存庫名稱 (這是個別的參數)。
 
--  **資源命名** 針對 ARM 範本條件約束，如果您的資源在名稱中包含空格，則可能會發生部署問題。 Azure Data Factory 團隊建議使用 ' _ ' 或 '-' 字元，而不是資源的空格。 例如，' Pipeline_1 ' 會是比 ' Pipeline 1 ' 更理想的名稱。
+-  **資源命名** 由於 ARM 範本條件約束的緣故，如果您的資源在名稱中包含空格，則可能會發生部署問題。 Azure Data Factory 團隊建議使用 ' _ ' 或 '-' 字元，而不是資源的空格。 例如，' Pipeline_1 ' 會是比 ' Pipeline 1 ' 更理想的名稱。
 
 ## <a name="unsupported-features"></a>不支援的功能
 

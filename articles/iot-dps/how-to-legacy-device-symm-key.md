@@ -1,25 +1,27 @@
 ---
-title: 使用對稱金鑰布建舊版裝置-Azure IoT 中樞裝置布建服務
-description: 如何使用對稱金鑰來布建舊版裝置與裝置布建服務（DPS）實例
+title: 使用對稱金鑰布建裝置-Azure IoT 中樞裝置布建服務
+description: 如何使用對稱金鑰以裝置布建服務布建裝置 (DPS) 實例
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 07/13/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: 4d1a92f3ebf32d2270eb77ec9c79fe860ba090e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: eliotga
+ms.openlocfilehash: f67ed44fffe6bd690d6bd76fcefa19d9ee23e52b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75434705"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529387"
 ---
-# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>如何使用對稱金鑰佈建繼承裝置
+# <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>如何使用對稱金鑰註冊群組布建裝置
 
-許多繼承裝置的常見問題是它們通常具有由單一資訊組成的身分識別。 此身分識別資訊通常是 MAC 位址或序號。 繼承裝置可能沒有憑證、TPM 或任何其他可用來安全地識別裝置的安全性功能。 IoT 中樞的裝置佈建服務包括對稱金鑰證明。 對稱金鑰證明可用於根據 MAC 位址或序號等資訊來識別裝置。
+本文示範如何使用註冊群組，安全地將多個對稱金鑰裝置布建到單一 IoT 中樞。
 
-如果您可以輕鬆地安裝[硬體安全性模組 (HSM)](concepts-security.md#hardware-security-module) 和憑證，那麼這可能是識別和佈建裝置較好的方法。 由於該方法可讓您略過更新部署至所有裝置的程式碼，而且您的裝置映像不會內嵌祕密金鑰。
+有些裝置可能沒有憑證、TPM 或可用於安全地識別裝置的任何其他安全性功能。 裝置布建服務包含 [對稱金鑰證明](concepts-symmetric-key-attestation.md)。 對稱金鑰證明可以用來根據唯一資訊（例如 MAC 位址或序號）來識別裝置。
+
+如果您可以輕鬆地安裝[硬體安全性模組 (HSM)](concepts-service.md#hardware-security-module) 和憑證，那麼這可能是識別和佈建裝置較好的方法。 由於該方法可讓您略過更新部署至所有裝置的程式碼，而且您的裝置映像不會內嵌祕密金鑰。
 
 本文假設 HSM 或憑證不是可行的選項。 但是，假設您確實有一些更新裝置程式碼的方法，以使用裝置佈建服務來佈建這些裝置。 
 
@@ -28,9 +30,9 @@ ms.locfileid: "75434705"
 此文章以 Windows 工作站為基礎來說明。 不過，您可以在 Linux 上執行上述程序。 如需 Linux 範例，請參閱[如何針對多組織用戶管理佈建](how-to-provision-multitenant.md)。
 
 > [!NOTE]
-> 本文中使用的範例是以 C 撰寫。另外還有[c # 裝置布建對稱金鑰範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample)可供使用。 若要使用此範例，請下載或複製[azure-iot-範例-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp)存放庫，並遵循範例程式碼中的內嵌指示。 您可以遵循本文中的指示，使用入口網站建立對稱金鑰註冊群組，並尋找執行範例所需的識別碼範圍和註冊群組主要和次要金鑰。 您也可以使用範例來建立個別註冊。
+> 本文中使用的範例是以 C 撰寫。另外還有可用的 [c # 裝置布建對稱金鑰範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) 。 若要使用此範例，請下載或複製 [azure-iot 範例-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) 存放庫，並遵循範例程式碼中的內嵌指示。 您可以遵循本文中的指示，使用入口網站建立對稱金鑰註冊群組，並尋找執行範例所需的識別碼範圍和註冊群組主要和次要金鑰。 您也可以使用範例來建立個別註冊。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 將根據識別該裝置的資訊，為每個裝置定義唯一的註冊識別碼。 例如，MAC 位址或序號。
 
@@ -47,7 +49,7 @@ ms.locfileid: "75434705"
 
 下列必要條件適用於 Windows 開發環境。 針對 Linux 或 macOS，請參閱 SDK 文件中[準備您的開發環境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的適當章節。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 並啟用[使用 C++ 的桌面開發](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作負載。 也會支援 Visual Studio 2015 和 Visual Studio 2017。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 並啟用[使用 C++ 的桌面開發](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作負載。 也會支援 Visual Studio 2015 和 Visual Studio 2017。
 
 * 已安裝最新版的 [Git](https://git-scm.com/download/)。
 
@@ -73,7 +75,7 @@ SDK 包含模擬裝置的範例程式碼。 這個模擬裝置將會嘗試在裝
 
     預期此作業需要幾分鐘的時間才能完成。
 
-4. 在 git 存放庫的根目錄中建立 `cmake` 子目錄，並瀏覽至該資料夾。 從 `azure-iot-sdk-c` 目錄執行下列命令：
+4. `cmake`在 Git 存放庫的根目錄中建立子目錄，並流覽至該資料夾。 從 `azure-iot-sdk-c` 目錄執行下列命令：
 
     ```cmd/sh
     mkdir cmake
@@ -127,7 +129,7 @@ SDK 包含模擬裝置的範例程式碼。 這個模擬裝置將會嘗試在裝
 
 4. 一旦儲存您的註冊，將會產生 [主要金鑰]**** 與 [次要金鑰]**** 並新增到註冊項目。 您的對稱金鑰註冊群組會在 [註冊群組]** 索引標籤的 [群組名稱]** 資料行之下，顯示為 **mylegacydevices**。 
 
-    開啟註冊並複製您產生之 [主要金鑰]**** 的值。 此金鑰是您的主要群組金鑰。
+    開啟註冊並複製您產生之 [主要金鑰]  的值。 此金鑰是您的主要群組金鑰。
 
 
 ## <a name="choose-a-unique-registration-id-for-the-device"></a>為裝置選擇唯一的註冊識別碼
@@ -147,7 +149,8 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 若要產生裝置金鑰，請使用群組主要金鑰為裝置計算唯一註冊識別碼的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，並將結果轉換為 Base64 格式。
 
-請勿在裝置程式碼中包含群組主要金鑰。
+> [!WARNING]
+> 您的裝置程式碼應該只包含個別裝置的衍生裝置金鑰。 請勿在裝置程式碼中包含群組主要金鑰。 遭入侵的主要金鑰可能會危及所有使用它進行驗證之裝置的安全性。
 
 
 #### <a name="linux-workstations"></a>Linux 工作站
@@ -269,7 +272,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
     Press enter key to exit:
     ```
 
-9. 在入口網站中，流覽至您的模擬裝置所指派的 IoT 中樞，然後按一下 [ **Iot 裝置**] 索引標籤。成功布建模擬至中樞後，其裝置識別碼會出現在 [ **IoT 裝置**] 分頁上，*狀態*為 [**已啟用**]。 您可能需要按一下頂端的 [重新整理]**** 按鈕。 
+9. 在入口網站中，流覽至您已指派模擬裝置的 IoT 中樞，然後按一下 [ **Iot 裝置** ] 索引標籤。在成功將模擬布建至中樞時，其裝置識別碼會出現在 [ **IoT 裝置** ] 分頁上，其 *狀態* 為 [ **已啟用**]。 您可能需要按一下頂端的 [重新整理]**** 按鈕。 
 
     ![已向 IoT 中樞註冊裝置](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 
@@ -285,9 +288,9 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要深入瞭解重新布建，請參閱[IoT 中樞裝置重新布建概念](concepts-device-reprovision.md) 
+* 若要深入瞭解重新布建，請參閱 [IoT 中樞裝置重新布建概念](concepts-device-reprovision.md) 
 * [快速入門：使用對稱金鑰來佈建模擬的裝置](quick-create-simulated-device-symm-key.md)
-* 若要深入瞭解解除布建，請參閱如何取消布建[先前自動布建的裝置](how-to-unprovision-devices.md) 
+* 若要深入瞭解解除布建，請參閱如何取消布 [建先前自動布建的裝置](how-to-unprovision-devices.md) 
 
 
 

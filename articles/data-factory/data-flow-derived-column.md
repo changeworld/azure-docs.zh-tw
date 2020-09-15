@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/15/2019
-ms.openlocfilehash: 38ec2d4619f47bf9fc4d1815cb6e9990cef72dcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 09/14/2020
+ms.openlocfilehash: 2e90a8779322cf8967ca9a194c6cc760f7c8b8f5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606493"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531957"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>對應資料流程中的衍生資料行轉換
 
@@ -20,25 +20,49 @@ ms.locfileid: "81606493"
 
 使用衍生的資料行轉換可在資料流程中產生新資料行或修改現有欄位。
 
-## <a name="derived-column-settings"></a>衍生的資料行設定
+## <a name="create-and-update-columns"></a>建立和更新資料行
 
-若要覆寫現有資料行，請透過 [資料行] 下拉式清單加以選取。 否則，請使用資料行選取欄位作為文字方塊，並鍵入新資料行的名稱。 若要建立衍生資料行的運算式，請按一下 [輸入運算式] 方塊以開啟[資料流程運算式產生器](concepts-data-flow-expression-builder.md)。
+建立衍生的資料行時，您可以產生新的資料行，或更新現有的資料行。 在 [資料 **行** ] 文字方塊中，輸入您要建立的資料行。 若要覆寫架構中的現有資料行，您可以使用資料行下拉式清單。 若要建立衍生資料行的運算式，請按一下 [ **輸入運算式** ] 文字方塊。 您可以開始鍵入運算式，或開啟運算式產生器來建立邏輯。
 
-![衍生的資料行設定](media/data-flow/dc1.png "衍生的資料行設定")
+![衍生的資料行設定](media/data-flow/create-derive-column.png "衍生的資料行設定")
 
-若要新增其他衍生的資料行，請將滑鼠移至現有衍生的資料行上方，然後按一下加號圖示。 選擇 [新增資料行] 或 [新增資料行模式]。 如果資料行名稱是來源的變數，則資料行模式可能會很有用。 如需詳細資訊，請參閱[資料行模式](concepts-data-flow-column-pattern.md)。
+若要加入更多衍生的資料行，請按一下資料行清單上方的 [ **加入** ]，或現有衍生資料行旁邊的加號圖示。 選擇 [新增資料行] 或 [新增資料行模式]。
 
-![新的衍生資料行選項](media/data-flow/columnpattern.png "新的衍生資料行選項")
+![新的衍生資料行選項](media/data-flow/add-derived-column.png "新的衍生資料行選項")
 
-## <a name="build-schemas-in-output-schema-pane"></a>在輸出結構描述窗格中建立結構描述
+### <a name="column-patterns"></a>資料行模式
 
-您要修改並新增至結構描述的資料行會列在 [輸出結構描述] 窗格中。 您可在這裡以互動方式建立簡單和複雜的資料結構。 若要新增其他欄位，請選取 [新增資料行]。 若要建立階層，請選取 [新增子資料行]。
+如果您的架構未明確定義，或您想要大量更新一組資料行，則您會想要建立資料行模式。 資料行模式可讓您使用根據資料行中繼資料的規則來比對資料行，並為每個相符的資料行建立衍生的資料行。 如需詳細資訊，請瞭解如何在「衍生的資料行」轉換中 [建立資料行模式](concepts-data-flow-column-pattern.md#column-patterns-in-derived-column-and-aggregate) 。
 
-![新增子資料行](media/data-flow/addsubcolumn.png "新增子資料行")
+![資料行模式](media/data-flow/column-pattern-derive.png "資料行模式")
+
+## <a name="building-schemas-using-the-expression-builder"></a>使用 expression builder 建立架構
+
+使用「對應資料流程 [運算式](concepts-data-flow-expression-builder.md)產生器」時，您可以在 [衍生的資料 **行** ] 區段中建立、編輯和管理衍生的資料行。 系統會列出轉換中建立或變更的所有資料行。 按一下資料行名稱，以互動方式選擇您要編輯的資料行或模式。 若要加入其他資料行，請選取 [ **建立新** 的]，然後選擇您要新增單一資料行或模式。
+
+![建立新的資料行](media/data-flow/derive-add-column.png "建立新的資料行")
+
+使用複雜資料行時，您可以建立個子。 若要這樣做，請按一下任何資料行旁邊的加號圖示，然後選取 [ **新增 subcolumn**]。 如需處理資料流程中複雜類型的詳細資訊，請參閱[對應資料流程中的 JSON 處理](format-json.md#mapping-data-flow-properties)。
+
+![新增子資料行](media/data-flow/derive-add-subcolumn.png "新增子資料行")
 
 如需處理資料流程中複雜類型的詳細資訊，請參閱[對應資料流程中的 JSON 處理](format-json.md#mapping-data-flow-properties)。
 
-![新增複雜資料行](media/data-flow/complexcolumn.png "新增資料行")
+![新增複雜資料行](media/data-flow/derive-complex-column.png "新增資料行")
+
+### <a name="locals"></a>本機
+
+如果您要跨多個資料行共用邏輯，或想要可區隔您的邏輯，您可以在「衍生的資料行」轉換中建立本機。 本機是一組邏輯，不會傳播至下列轉換。 您可以在運算式產生器中建立區域變數，方法是前往 **運算式** 專案並選取 [ **區域變數**]。 選取 [ **建立新**的]，以建立一個新的。
+
+![建立本機](media/data-flow/create-local.png "建立本機")
+
+區域變數可以參考任何運算式元素，其中包含函式、輸入架構、參數和其他區域變數的衍生資料行。 參考其他區域變數時，訂單的意義很重要，因為參考的本機必須是目前的「以上」。
+
+![建立本機2](media/data-flow/create-local-2.png "建立本機2")
+
+若要在衍生的資料行中參考本機，請在 [ **運算式** 專案] 視圖中按一下 [本機]，或使用其名稱前面的冒號來參考它。 例如，會參考名為 local1 的本機 `:local1` 。 若要編輯本機定義，請將滑鼠停留在 [運算式元素] 視圖中，然後按一下鉛筆圖示。
+
+![使用區域變數](media/data-flow/using-locals.png "使用區域變數")
 
 ## <a name="data-flow-script"></a>資料流程指令碼
 
@@ -63,7 +87,7 @@ ms.locfileid: "81606493"
 
 在 Data Factory UX 中，這項轉換看起來如下圖所示：
 
-![衍生範例](media/data-flow/derive-script1.png "衍生範例")
+![衍生範例](media/data-flow/derive-script.png "衍生範例")
 
 此轉換的資料流指令碼位於下列程式碼片段中：
 

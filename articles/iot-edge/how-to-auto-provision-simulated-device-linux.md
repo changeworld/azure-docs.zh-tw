@@ -8,16 +8,16 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3bc9344459802f4bb4268093d905a051525d78dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9bd597bbff54687af1ba8536dddd6f0d8dfc621e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684451"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531486"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上建立和布建具有 TPM 的 IoT Edge 裝置
 
-本文說明如何使用 (TPM) 的可信賴平臺模組，在 Linux IoT Edge 裝置上測試自動布建。 您可以使用裝置布建 [服務](../iot-dps/index.yml)來自動布建 Azure IoT Edge 裝置。 如果您不熟悉自動布建程式，請先參閱自動布 [建的概念](../iot-dps/concepts-auto-provisioning.md) ，再繼續進行。
+本文說明如何使用 (TPM) 的可信賴平臺模組，在 Linux IoT Edge 裝置上測試自動布建。 您可以使用裝置布建 [服務](../iot-dps/index.yml)來自動布建 Azure IoT Edge 裝置。 如果您不熟悉自動布建程式，請先參閱布建 [總覽，](../iot-dps/about-iot-dps.md#provisioning-process) 再繼續進行。
 
 工作如下所示：
 
@@ -31,7 +31,7 @@ ms.locfileid: "88684451"
 >
 > 如果您使用的是實體裝置，可以直接跳到本文中的 [從實體裝置取出](#retrieve-provisioning-information-from-a-physical-device) 布建資訊一節。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [已啟用 Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 的 Windows 開發機器。 本文使用執行 Ubuntu Server VM 的 Windows 10。
 * 使用中的 IoT 中樞。
@@ -176,7 +176,7 @@ ms.locfileid: "88684451"
 
 ## <a name="install-the-iot-edge-runtime"></a>安裝 IoT Edge 執行階段
 
-IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。 在虛擬機器上安裝 IoT Edge 執行階段。
+IoT Edge 執行階段會部署在所有 IoT Edge 裝置上。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。 在虛擬機器上安裝 IoT Edge 執行階段。
 
 開始閱讀您的裝置類型適用的文章之前，請先了解您的 DPS [識別碼範圍]**** 和裝置的 [註冊識別碼]****。 如果您安裝了範例 Ubuntu Server，請使用 **x64** 指示。 請務必將 IoT Edge 執行階段設定為自動佈建，而不是手動佈建。
 

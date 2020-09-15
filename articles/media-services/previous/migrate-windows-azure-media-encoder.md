@@ -1,6 +1,6 @@
 ---
 title: 從 Windows Azure 媒體編碼器遷移至媒體編碼器標準 |Microsoft Docs
-description: 本主題討論如何從 Azure 媒體編碼器遷移至媒體編碼器標準媒體處理器。
+description: 本主題討論如何從 Windows Azure 媒體編碼器遷移至媒體編碼器標準媒體處理器。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a4a5f2f448cc5e954cf21f9785f788925d5a461e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9125639ab5b563a8db7cfa5730bd9673f383071c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89263938"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529242"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>從 Windows Azure 媒體編碼器遷移至媒體編碼器標準
 

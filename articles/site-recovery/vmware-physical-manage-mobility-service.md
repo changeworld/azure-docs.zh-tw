@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: e65fecb70b7e3adf009396c0daa00fc50b81b519
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: d921bddf90c415cb244e2cc9ad98354392a537ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604521"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530143"
 ---
 # <a name="manage-the-mobility-agent"></a>管理行動代理程式 
 
@@ -26,13 +26,13 @@ ms.locfileid: "88604521"
 ## <a name="update-mobility-service-from-azure-portal"></a>從 Azure 入口網站更新行動服務
 
 1. 在開始之前，請先確定已更新設定伺服器、向外延展處理伺服器，以及要一起部署的所有主要目標伺服器，然後才更新受保護機器上的行動服務。
-    1. 從 [9.36 版](https://support.microsoft.com/help/4578241/) 開始，SUSE LINUX ENTERPRISE SERVER 11 SP4，請確認設定伺服器和相應放大 [進程伺服器上有](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server)最新的安裝程式。
+    1. 從9.36 版開始，針對 SUSE Linux Enterprise Server 11 SP3，RHEL 5，CentOS 5，Debian 7 確定 [可在設定伺服器和相應放大進程伺服器上使用](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)最新的安裝程式。
 1. 在入口網站中，開啟保存庫 > [複寫的項目]****。
 1. 如果設定伺服器已是最新版本，您會看到一則通知，指出「有新的 Site Recovery 複寫代理程式更新可用。 按一下以安裝」的通知。
 
      ![[複寫的項目] 視窗](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
-4. 按一下通知，然後在 [代理程式更新]**** 中，選取您想要升級行動服務的機器。 然後按一下 [確定]  。
+4. 按一下通知，然後在 [代理程式更新]**** 中，選取您想要升級行動服務的機器。 然後按一下 [確定] 。
 
      ![複寫的項目 VM 清單](./media/vmware-azure-install-mobility-service/update-okpng.png)
 

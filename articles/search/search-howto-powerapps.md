@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 887017f60deb832bd5c53f28bde4b57a3d82bde5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd74bfca73323209012dfd1fda61bbaada84092f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918038"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530687"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>教學課程：從 Power Apps 查詢認知搜尋索引
 
@@ -31,7 +31,7 @@ ms.locfileid: "88918038"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* [Power Apps 帳戶](http://make.powerapps.com)
+* [Power Apps 帳戶](https://make.powerapps.com)
 
 * [飯店 - 範例索引](search-get-started-portal.md)
 
@@ -41,7 +41,7 @@ ms.locfileid: "88918038"
 
 Power Apps 中的連接器是資料來源連線。 在此步驟中，您將建立自訂連接器，以連線至雲端中的搜尋索引。
 
-1. [登入](http://make.powerapps.com) Power Apps。
+1. [登入](https://make.powerapps.com) Power Apps。
 
 1. 在左側展開 [資料] > [自訂連接器]。
  

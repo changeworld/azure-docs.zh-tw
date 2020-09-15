@@ -1,22 +1,22 @@
 ---
-title: 啟動 Azure HDInsight 中的服務時，埠衝突
-description: 針對與 Azure HDInsight 叢集互動時的問題進行疑難排解的步驟和可能的解決方式。
+title: 啟動 Azure HDInsight 中的服務時發生埠衝突
+description: 與 Azure HDInsight 叢集互動時，埠衝突問題的疑難排解步驟和可能的解決方法。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
-ms.openlocfilehash: 4cb0d464a82d8da0a09f5391eb1d06dfacd84290
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d39f31e9d52359d0c91317280a7f8db06c1c1b0
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76776218"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530959"
 ---
-# <a name="scenario-port-conflict-when-starting-services-in-azure-hdinsight"></a>案例：在 Azure HDInsight 中啟動服務時，埠衝突
+# <a name="scenario-port-conflict-when-starting-services-in-azure-hdinsight"></a>案例：啟動 Azure HDInsight 中的服務時發生埠衝突
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
@@ -30,7 +30,7 @@ ms.locfileid: "76776218"
 
 ### <a name="method-1"></a>方法 1
 
-使用下列命令來取得/終止所有執行中的進程，這些處理常式會受到埠問題的影響。
+使用下列命令來取得/終止所有執行中的進程，而這些進程會受到埠問題的影響。
 
 ```bash
 netstat -lntp | grep <port>
@@ -38,7 +38,7 @@ ps -ef | grep <service>
 kill -9 <service>
 ```
 
-然後啟動 [服務]。
+然後啟動服務。
 
 ### <a name="method-2"></a>方法 2
 

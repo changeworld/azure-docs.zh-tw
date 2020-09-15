@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: ba5a1a0eb61ca086c3cd1ea66acddc18e950871d
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3c91da6a9bfc7bfa23255dbc1c0c76d2f59818f1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057175"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530551"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>瞭解適用於 MariaDB 的 Azure 資料庫的根 CA 變更變更
 
@@ -87,15 +87,15 @@ ms.locfileid: "90057175"
 否，您不需要重新開機資料庫伺服器，就能開始使用新的憑證。 這是用戶端的變更，而連入的用戶端連線必須使用新的憑證，以確保它們可以連接到資料庫伺服器。
 
 ### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. 如果我未在2020年10月26日之前更新根憑證， (10/26/2020) 會發生什麼事？
-如果您未在2020年11月30日之前更新根憑證，則透過 SSL/TLS 連線並驗證根憑證的應用程式將無法與適用于 mariadb 資料庫伺服器通訊，而且應用程式將會遇到適用于 mariadb 資料庫伺服器的連線問題。
+如果您未在2020年10月26日之前更新根憑證，則透過 SSL/TLS 連線並驗證根憑證的應用程式將無法與適用于 mariadb 資料庫伺服器通訊，而且應用程式將會遇到適用于 mariadb 資料庫伺服器的連線問題。
 
 ### <a name="4-do-i-need-to-plan-a-maintenance-downtime-for-this-changebr"></a>4. 我是否需要規劃此變更的維護停機時間？<BR>
-不會。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以這項變更不需要任何維護停機時間。
+否。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以這項變更不需要任何維護停機時間。
 
 ### <a name="5--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>5. 如果我無法在2020年10月26日之前取得此變更的排程停機時間， (10/26/2020) ？
 由於用來連接到伺服器的用戶端必須更新憑證資訊，如 [此處](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)的修正一節所述，在此情況下，伺服器不需要停機。
 
-###  <a name="6-if-i-create-a-new-server-after-nov-30th-will-i-be-impacted"></a>6. 如果我在11月30日之後建立新的伺服器，將會受到影響嗎？
+###  <a name="6-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>6. 如果我在2020年10月26日之後建立新的伺服器，將會受到影響嗎？
 針對在2020年10月26日之後建立的伺服器 (10/26/2020) ，您可以使用新發行的憑證，讓您的應用程式使用 SSL 進行連接。
 
 ### <a name="7-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>7. Microsoft 更新其憑證或到期原則的頻率為何？

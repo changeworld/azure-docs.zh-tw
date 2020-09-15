@@ -1,16 +1,16 @@
 ---
 title: 了解定期備份組態
-description: 使用 Service Fabric 的定期備份與還原功能，啟用應用程式資料的定期資料備份。
+description: 使用 Service Fabric 的定期備份與還原功能，設定可靠具狀態服務或 Reliable Actors 的定期備份。
 author: hrushib
 ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: c77f069d93e368652c30cd100b0f99ca55341882
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 53f63f341fe614f2287a09f37fafd2eedc614be7
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261229"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530908"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>在 Azure Service Fabric 中了解定期備份設定
 
@@ -89,7 +89,7 @@ ms.locfileid: "86261229"
         }
         ```
 
-    2. 檔案**共用**：當需要在內部部署環境中儲存資料備份時，應該為_獨立_叢集選取此儲存類型。 此儲存體類型的描述需要必須上傳備份的檔案共用路徑。 您可以使用下列其中一個選項，設定檔案共用的存取權：
+    2. 檔案**共用**：當需求是在內部部署環境中儲存資料備份時，應該為_獨立_叢集選取此儲存體類型。 此儲存體類型的描述需要必須上傳備份的檔案共用路徑。 您可以使用下列其中一個選項，設定檔案共用的存取權：
         1. 整合式 Windows 驗證__，可對屬於 Service Fabric 叢集的所有電腦提供檔案共用的存取權。 在此情況下，設定下列欄位，以設定以「檔案共用」__ 為基礎的備份儲存體。
 
             ```json
@@ -119,7 +119,7 @@ ms.locfileid: "86261229"
 >
 
 * **保留原則**：指定要在設定的儲存體中保留備份的原則。 僅支援基本保留原則。
-    1. **基本保留原則**：此保留原則可讓您藉由移除不再需要的備份檔案，以確保最佳的儲存使用量。 指定 `RetentionDuration`，即可設定備份必須保留在儲存體中的時間範圍。 `MinimumNumberOfBackups` 是選用參數，加以指定即可確保一律保留指定的備份數目 (不論 `RetentionDuration` 為何)。 下列範例說明保留備份 _10_ 天，而且不允許備份數目低於 _20_ 的組態。
+    1. **基本保留原則**：此保留原則可讓您藉由移除不再需要的備份檔案，以確保最佳的儲存體使用率。 指定 `RetentionDuration`，即可設定備份必須保留在儲存體中的時間範圍。 `MinimumNumberOfBackups` 是選用參數，加以指定即可確保一律保留指定的備份數目 (不論 `RetentionDuration` 為何)。 下列範例說明保留備份 _10_ 天，而且不允許備份數目低於 _20_ 的組態。
 
         ```json
         {

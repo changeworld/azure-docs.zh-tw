@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2fdc1cd36c037f163b6b04907248e08ef20e961d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 46ffb5bfe52fe4f398594a1dfed76a6ea6c0fd81
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400019"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530789"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>案例：透過 NVA 路由傳送流量
 
@@ -112,6 +112,8 @@ ms.locfileid: "89400019"
    * 從 VNet 7 和 VNet 8 到 VNet 4 NVA IP 
    
    您不需要直接將 Vnet 5、6、7、8連接至虛擬中樞。 確定 Vnet 5、6、7、8中的 Nsg 允許分支 (VPN/ER/P2S) 或 Vnet 連線到遠端 Vnet 的流量。 例如，Vnet 5、6必須確保 Nsg 允許內部部署位址首碼的流量，以及連線到遠端中樞2的 Vnet 7、8。
+
+虛擬 WAN 不支援 Vnet 5、6連線至虛擬中樞並透過 VNet 2 NVA IP 進行通訊的案例;因此，需要將 Vnet 5、6 VNet2 和同樣的 VNet 7、8連接至 VNet 4。
 
 2. 將 Vnet 2、5、6的匯總靜態路由專案新增至中樞1的預設路由表。
 

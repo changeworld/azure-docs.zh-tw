@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 9f7f2974646e047d4523643ad2acd94b27add83b
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 1793517a76fce3c252c95fb73299d4c4e8c5a216
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061133"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531809"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory 中的分隔文字格式
 
@@ -39,7 +39,7 @@ ms.locfileid: "90061133"
 | firstRowAsHeader | 指定是否將第一個資料列視為具有資料行名稱的標頭行。<br>允許的值為 **true** 和 **false** (預設) 。<br>當第一個資料列做為標頭時，請注意 UI 資料預覽和查閱活動輸出會自動產生資料行名稱做為 Prop_ {n} (從 0) 開始，複製活動需要從來源到接收的 [明確對應](copy-activity-schema-and-type-mapping.md#explicit-mapping) ，並依 (序數從 1) 開始找出資料行，並從 1 Column_ 開始找出名稱為 ({n}) 的資料行。  | 否       |
 | nullValue        | 指定 null 值的字串表示。 <br>預設值為 **空字串**。 | 否       |
 | encodingName     | 用來讀取/寫入測試檔的編碼類型。 <br>允許的值如下：「UTF-8」、「UTF-16」、「UTF-16BE」、「32 UTF-8」、「UTF-32BE」、「美國-ASCII」、「UTF-7」、「BIG5」、「EUC-JP」、「EUC-KR」、」 GB2312 "、" GB18030 "、" JOHAB "、" SHIFT-JIS "、" CP875 "、" CP866 "、" IBM00858 "、" IBM037 "、" IBM273 "、" IBM437 "、" IBM500 "、" IBM737 "、" IBM775 "、" IBM850 "、" IBM852 "、" IBM855 "、" IBM857 "、" IBM860 "和" IBM861 "、" IBM863 "、" IBM864 "、" IBM865 "、" IBM869 "、" IBM870 "、" IBM01140 "、" IBM01141 "、" IBM01142 "、" IBM01143 "、" IBM01144 "、" IBM01145 "、" IBM01146 "、" IBM01147 "、" IBM01148 "、" IBM01149 "、" ISO-2022-JP "，" ISO-2022-KR "，" ISO-8859-1 "，" ISO-8859-2 "，" ISO-8859-3 "，" ISO-8859-4 "，" ISO-8859-5 "，" ISO-8859-6 "，" ISO-8859-7 "，" iso-8859-8 "，" ISO-8859-9 "，" iso-8859-13 "，"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。<br>注意：對應資料流程不支援 UTF-7 編碼。 | 否       |
-| compressionCodec | 用來讀取/寫入文字檔的壓縮編解碼器。 <br>允許的值為 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **snappy**或 **lz4**。 預設值不會壓縮。 <br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"。 <br>**請注意**，使用複製活動將**ZipDeflate** / (**TarGzip**檔解壓縮) 並寫入檔案型接收資料存放區時，預設會將檔案解壓縮到資料夾： `<path specified in dataset>/<folder named as source compressed file>/` ， `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` 在[複製活動來源](#delimited-text-as-source)上使用，以控制是否要將 ZIP 檔案名保留為資料夾結構。 | 否       |
+| compressionCodec | 用來讀取/寫入文字檔的壓縮編解碼器。 <br>允許的值為 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **snappy**或 **lz4**。 預設值不會壓縮。 <br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"。 <br>**請注意**，使用複製活動來將**ZipDeflate** / **TarGzip**檔解壓縮 (s) 並寫入至檔案型接收資料存放區時，預設會將檔案解壓縮到資料夾： `<path specified in dataset>/<folder named as source compressed file>/` ， `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` 在[複製活動來源](#delimited-text-as-source)上使用，以控制是否要將壓縮檔案的名稱保留為資料夾結構 () 。 | 否       |
 | compressionLevel | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速**。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
 
 以下是 Azure Blob 儲存體上的分隔文字資料集範例：
@@ -139,7 +139,7 @@ ms.locfileid: "90061133"
 | type          | FormatSettings 的類型必須設定為 **DelimitedTextWriteSettings**。 | 是                                                   |
 | fileExtension | 用來命名輸出檔的副檔名，例如， `.csv` `.txt` 。 當在 `fileName` Output DelimitedText 資料集中未指定時，必須指定此資料集。 在輸出資料集中設定檔案名時，將會使用此名稱做為接收檔案名，而且會忽略副檔名設定。  | 如果未在輸出資料集中指定檔案名，則為 Yes |
 | maxRowsPerFile | 將資料寫入資料夾時，您可以選擇寫入多個檔案，並指定每個檔案的最大資料列數。  | 否 |
-| fileNamePrefix | 將資料寫入多個檔案時，請指定檔案名前置詞，而導致此模式： `<fileNamePrefix>_00000.<fileExtension>` 。 如果未指定，則會自動產生檔案名前置詞。 當來源是以檔案為基礎的存放區或分割區 [選項的資料存放區](copy-activity-performance-features.md)時，此屬性不適用。  | 否 |
+| fileNamePrefix | 適用于 `maxRowsPerFile` 設定時。<br> 將資料寫入多個檔案時，請指定檔案名前置詞，而導致此模式： `<fileNamePrefix>_00000.<fileExtension>` 。 如果未指定，則會自動產生檔案名前置詞。 當來源是以檔案為基礎的存放區或分割區 [選項的資料存放區](copy-activity-performance-features.md)時，此屬性不適用。  | 否 |
 
 ## <a name="mapping-data-flow-properties"></a>對應資料流程屬性
 

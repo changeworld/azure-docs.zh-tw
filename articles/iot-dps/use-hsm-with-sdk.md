@@ -1,8 +1,8 @@
 ---
 title: 使用不同的證明機制搭配 Azure IoT 中樞裝置布建服務用戶端 SDK
-description: Azure 作法-如何在 Azure 中使用不同證明機制搭配裝置布建服務（DPS）用戶端 SDK
-author: robinsh
-ms.author: robinsh
+description: Azure 作法-如何在 Azure 中使用不同的證明機制搭配裝置布建服務 (DPS) 用戶端 SDK
+author: wesmc7777
+ms.author: wesmc
 ms.date: 03/30/2018
 ms.topic: conceptual
 ms.service: iot-dps
@@ -10,16 +10,16 @@ services: iot-dps
 ms.custom:
 - mvc
 - amqp
-ms.openlocfilehash: c110e90f26f595bcbf181b72e13f12a6de2fa8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a32e2f055b2914fa0008e043e80092ac2da0814
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687215"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531503"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>如何使用不同證明機制搭配適用於 C 的裝置佈建服務用戶端 SDK
 
-本文說明如何使用不同的[證明機制](concepts-security.md#attestation-mechanism)搭配適用於 C 的裝置佈建服務用戶端 SDK。您可以使用實體裝置或模擬器。 佈建服務支援兩種證明機制的驗證：X.509 和信賴平台模組 (TPM)。
+本文說明如何使用不同的[證明機制](concepts-service.md#attestation-mechanism)搭配適用於 C 的裝置佈建服務用戶端 SDK。您可以使用實體裝置或模擬器。 佈建服務支援兩種證明機制的驗證：X.509 和信賴平台模組 (TPM)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -29,11 +29,11 @@ ms.locfileid: "81687215"
 
 身為裝置製造商，您必須先選擇以其中一個支援類型為基礎的證明機制。 [適用於 C 的裝置佈建服務用戶端 SDK](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) 目前提供下列證明機制的支援： 
 
-- [信賴平台模組 (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module)：TPM 是適用於大部分 Windows 裝置平台以及一些 Linux/Ubuntu 架構裝置的公認標準。 身為裝置製造商，如果您的裝置是執行上述任一作業系統，而且您想要使用公認的標準，則可以選擇這個證明機制。 若使用 TPM 晶片，裝置就只能個別地向裝置佈建服務進行註冊。 若要進行開發，您可以在 Windows 或 Linux 開發機器上使用 TPM 模擬器。
+- [信賴平台模組 (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module)：TPM 是適用於大部分 Windows 裝置平台以及一些 Linux/Ubuntu 架構裝置的公認標準。 作為裝置製造商，如果您的裝置上有任一個正在執行的作業系統，而且您正在尋找已建立的標準，則可以選擇此證明機制。 若使用 TPM 晶片，裝置就只能個別地向裝置佈建服務進行註冊。 若要進行開發，您可以在 Windows 或 Linux 開發機器上使用 TPM 模擬器。
 
-- [X.509](https://cryptography.io/en/latest/x509/)：X.509 憑證可以儲存在相對較新的晶片上，其名為[硬體安全模組 (HSM)](concepts-security.md#hardware-security-module)。 Microsoft 也正著手設計 RIoT 或 DICE 晶片，以便實作 X.509 憑證。 若使用 X.509 晶片，您將可以在入口網站中進行大量裝置註冊。 這種晶片也支援某些非 Windows 的作業系統，例如 embedOS。 針對開發用途，裝置佈建服務用戶端 SDK 可支援 X.509 裝置模擬器。 
+- [X.509](https://cryptography.io/en/latest/x509/)：X.509 憑證可以儲存在相對較新的晶片上，其名為[硬體安全模組 (HSM)](concepts-service.md#hardware-security-module)。 Microsoft 也正著手設計 RIoT 或 DICE 晶片，以便實作 X.509 憑證。 若使用 X.509 晶片，您將可以在入口網站中進行大量裝置註冊。 這種晶片也支援某些非 Windows 的作業系統，例如 embedOS。 針對開發用途，裝置佈建服務用戶端 SDK 可支援 X.509 裝置模擬器。 
 
-如需詳細資訊，請參閱 IoT 中樞裝置佈建服務的[安全性概念](concepts-security.md)和[自動佈建概念](/azure/iot-dps/concepts-auto-provisioning)。
+如需詳細資訊，請參閱 IoT 中樞裝置布建服務 [證明機制](concepts-service.md#attestation-mechanism)。
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>針對支援的證明機制啟用驗證
 
@@ -41,7 +41,7 @@ SDK 驗證模式 (X.509 或 TPM) 必須針對實體裝置或模擬器啟用後�
 
 ### <a name="use-x509-with-simulator"></a>使用 X.509 搭配模擬器
 
-布建服務隨附裝置身分識別組合引擎（骰子）模擬器，它會產生**x.509**憑證來驗證裝置。 若要啟用**x.509** authentication，請執行下列命令： 
+布建服務隨附于裝置身分識別組合引擎 (骰子) 模擬器產生用來驗證裝置的 **x.509** 憑證。 若要啟用 **x.509** authentication，請執行下列命令： 
 
 ```
 cmake -Ddps_auth_type=x509 ..
@@ -51,7 +51,7 @@ cmake -Ddps_auth_type=x509 ..
 
 ### <a name="use-x509-with-hardware"></a>使用 X.509 搭配硬體
 
-布建服務可與其他硬體上的**x.509**搭配使用。 需要硬體與 SDK 之間的介面才能建立連線。 如需關於介面的資訊，請連絡您的 HSM 製造商。
+布建服務可以與其他硬體上的 **x.509** 搭配使用。 需要硬體與 SDK 之間的介面才能建立連線。 如需關於介面的資訊，請連絡您的 HSM 製造商。
 
 ### <a name="use-tpm"></a>使用 TPM
 
@@ -86,7 +86,7 @@ cmake -Ddps_auth_type=tpm_simulator ..
     cmake -DCMAKE_BUILD_TYPE=Debug ..
     ```
 
-- 有許多[CMake 設定選項](https://cmake.org/cmake/help/v3.6/manual/cmake.1.html)可用來建立 SDK。 例如，您可以停用其中一個可用的通訊協定堆疊，方法是將引數新增至 CMake 專案產生命令：
+- 有許多 [CMake 設定選項](https://cmake.org/cmake/help/v3.6/manual/cmake.1.html) 可用來建立 SDK。 例如，您可以停用其中一個可用的通訊協定堆疊，方法是將引數新增至 CMake 專案產生命令：
     ```
     cmake -Duse_amqp=OFF ..
     ```
@@ -150,8 +150,8 @@ cmake -Ddps_auth_type=tpm_simulator ..
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. 登入 Azure 入口網站，按一下左側功能表上的 [所有資源]**** 按鈕，然後開啟您的裝置佈建服務。
-   - **X.509 個別註冊**：在 [布建服務摘要] 分頁上，選取 [**管理註冊**]。 選取 [**個別註冊**] 索引標籤，然後按一下頂端的 [**新增**] 按鈕。 選取 [ **x.509** ] 作為身分識別證明*機制*，並視需要上傳分頁的 [分葉憑證]。 完成後，按一下 [儲存]**** 按鈕。 
-   - **X.509 群組註冊**：在 [布建服務摘要] 分頁上，選取 [**管理註冊**]。 選取 [群組註冊]**** 索引標籤，然後按一下頂端的 [新增]**** 按鈕。 選取 [ **x.509** ] 作為身分識別證明*機制*，輸入組名和憑證名稱，並依分頁的需求上傳 CA/中繼憑證。 完成後，按一下 [儲存]**** 按鈕。 
+   - **X.509 個別註冊**：在 [布建服務摘要] 分頁上，選取 [ **管理註冊**]。 選取 [ **個別註冊** ] 索引標籤，然後按一下頂端的 [ **新增** ] 按鈕。 選取 [ **x.509** ] 作為身分識別證明 *機制*，視分頁需要上傳分葉憑證。 完成後，按一下 [儲存]**** 按鈕。 
+   - **X.509 群組註冊**：在布建服務摘要分頁上，選取 [ **管理註冊**]。 選取 [群組註冊]**** 索引標籤，然後按一下頂端的 [新增]**** 按鈕。 選取 [ **x.509** ] 作為身分識別證明 *機制*，輸入組名和憑證名稱，並視分頁需要上傳 CA/中繼憑證。 完成後，按一下 [儲存]**** 按鈕。 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>針對使用自訂證明機制的裝置啟用驗證 (選擇性)
 
@@ -183,7 +183,7 @@ cmake -Ddps_auth_type=tpm_simulator ..
 
 ## <a name="connecting-to-iot-hub-after-provisioning"></a>佈建之後連線到 IoT 中樞
 
-一旦裝置已布建服務，此 API 就會使用指定的驗證模式（**x.509**或 TPM）來連線 IoT 中樞： 
+使用布建服務布建裝置後，此 API 會使用指定的驗證模式 (**x.509** 或 TPM) 來與 IoT 中樞連線： 
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```

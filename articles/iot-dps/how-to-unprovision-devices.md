@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: efd19d9dc1fdc857a51d7af34c54bbe2d6077767
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 5683d40e9565068c6cd79eedb08b036eab2c54cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294385"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531384"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>如何取消佈建先前自動佈建的裝置 
 
@@ -43,7 +43,7 @@ ms.locfileid: "89294385"
 
 
 ## <a name="enrollment-groups"></a>註冊群組
-藉由 X.509 證明，也可透過註冊群組佈建裝置。 註冊群組是使用簽署憑證 (中繼或根 CA 憑證) 來加以設定，若裝置的憑證鏈結中具有該憑證，註冊群組會控制裝置對佈建服務的存取權限。 若要深入了解註冊群組以及 X.509 憑證和佈建服務，請參閱 [X.509 憑證](concepts-security.md#x509-certificates)。 
+藉由 X.509 證明，也可透過註冊群組佈建裝置。 註冊群組是使用簽署憑證 (中繼或根 CA 憑證) 來加以設定，若裝置的憑證鏈結中具有該憑證，註冊群組會控制裝置對佈建服務的存取權限。 若要深入瞭解註冊群組和 x.509 憑證與布建服務的相關資訊，請參閱 [x.509 憑證證明](concepts-x509-attestation.md)。 
 
 若要檢視已透過註冊群組佈建的裝置清單，您可以檢視註冊群組的詳細資料。 如此便能輕鬆了解每個裝置佈建到哪個 IoT 中樞。 若要檢視裝置清單： 
 

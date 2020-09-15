@@ -3,19 +3,19 @@ title: 影片索引器可使用的區域 - Azure
 titleSuffix: Azure Media Services
 description: 本文討論可使用 Azure 媒體服務影片索引子的 Azure 區域。
 services: media-services
-author: anikaz
-manager: johndeu
+author: Juliako
+manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/08/2020
-ms.author: kumud
-ms.openlocfilehash: dd95f022e40b9ae6fa60a6536a87146049c53b68
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.date: 09/14/2020
+ms.author: juliako
+ms.openlocfilehash: 6ebdb22f50efbefc695f9752c6e6fc333571828c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565322"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530927"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>影片索引器所在的 Azure 區域
 
@@ -23,7 +23,18 @@ ms.locfileid: "89565322"
 
 ## <a name="locations"></a>位置
 
-`location`參數必須獲得 Azure 區功能變數代碼名稱作為其值。 如果您在預覽模式中使用影片索引子，您應該將 `"trial"` 其置於值。 `trial` 這是參數的預設值 `location` 。 否則，若要取得您帳戶所在且應該路由傳送呼叫之 Azure 區域的代碼名稱，您可以在 [Azure CLI](/cli/azure) 中執行下面這一行：
+`location`參數必須獲得 Azure 區功能變數代碼名稱作為其值。 如果您在預覽模式中使用影片索引子，您應該將 `"trial"` 其置於值。 `trial` 這是參數的預設值 `location` 。 否則，若要取得您帳戶所在且應該路由傳送呼叫之 Azure 區域的代碼名稱，您可以使用 Azure 入口網站或執行 [Azure CLI](/cli/azure) 命令。
+
+### <a name="azure-portal"></a>Azure 入口網站
+
+1. 登入 [Video Indexer](https://www.videoindexer.ai/) 網站。
+1. 選取頁面右上角的 [ **使用者帳戶** ]。
+1. 在右上角尋找您帳戶的位置。  
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/location/location1.png" alt-text="位置":::
+    
+###  <a name="cli-command"></a>CLI 命令
 
 ```azurecli-interactive
 az account list-locations

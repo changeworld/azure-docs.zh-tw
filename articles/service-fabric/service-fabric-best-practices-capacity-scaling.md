@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e6b6cebfd146ffe23bdc21751f86c71d14ea875e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002244"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531299"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量規劃和調整
 
@@ -36,6 +36,9 @@ ms.locfileid: "89002244"
 
 > [!NOTE]
 > Service Fabric 具狀態 Service Fabric：/System/InfastructureService/<NODE_TYPE_NAME> 會在具有銀級或更高持久性的每個節點類型上執行。 這是唯一支援在任何叢集節點類型上于 Azure 中執行的系統服務。
+
+> [!IMPORTANT]
+> Service Fabric 自動 `Default` 調整支援和 `NewestVM` 虛擬機器擴展集相應 [放大](../virtual-machine-scale-sets/virtual-machine-scale-sets-scale-in-policy.md)設定。
 
 ## <a name="vertical-scaling-considerations"></a>垂直調整考量
 
@@ -168,7 +171,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 > [!NOTE]
 > 當您調整叢集時，您會看到已移除的節點/VM 實例在 Service Fabric Explorer 中顯示為狀況不良的狀態。 如需此行為的說明，請參閱 [您可能在 Service Fabric Explorer 中觀察](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer)到的行為。 您可以：
-> * 使用適當的節點名稱呼叫 [>remove-servicefabricnodestate 命令](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) 。
+> * 使用適當的節點名稱呼叫 [>remove-servicefabricnodestate 命令](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps&preserve-view=true) 。
 > * 在您的叢集上部署 [Service Fabric 自動調整 helper 應用程式](https://github.com/Azure/service-fabric-autoscale-helper/) 。 此應用程式可確保從 Service Fabric Explorer 清除相應減少的節點。
 
 ## <a name="reliability-levels"></a>可靠性層級

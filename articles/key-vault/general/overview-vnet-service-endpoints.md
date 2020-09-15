@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 261d85c60473749719830c380d8a4866d7561874
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 3b1e71a5aadbe9e6a4fa89d4b3ec0fb6b1d9e6ce
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438035"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530449"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虛擬網路服務端點
 
@@ -85,7 +85,7 @@ Azure Key Vault 的虛擬網路服務端點可讓您將存取權限制為指定�
 > [!NOTE]
 > 您必須將相關 Key Vault 存取原則設定為允許對應的服務取得 Key Vault 的存取權。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-* [保護您的金鑰保存庫](secure-your-key-vault.md))
+* [保護您的金鑰保存庫](secure-your-key-vault.md)
 * [設定 Azure Key Vault 防火牆和虛擬網路](network-security.md)

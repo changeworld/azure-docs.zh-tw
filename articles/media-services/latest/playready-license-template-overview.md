@@ -1,6 +1,6 @@
 ---
 title: 使用 Microsoft PlayReady 授權範本 Azure 媒體服務 v3
-description: 本主題提供了用來設定 PlayReady 授權之 PlayReady 授權範本的概觀。
+description: 瞭解如何使用 PlayReady 授權範本 Azure 媒體服務 v3，以及如何設定 PlayReady 授權。
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1aec5861f06b7309a90c84f28dafb30c3580f51
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 0a4b694ca449390e5b2f282f1361f0a455ba5750
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289325"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531435"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>媒體服務 v3 與 PlayReady 授權範本
 
@@ -316,6 +316,6 @@ objContentKeyPolicyPlayReadyLicense = new ContentKeyPolicyPlayReadyLicense
 </xs:schema>
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 查看如何[使用 DRM 保護](protect-with-drm.md)

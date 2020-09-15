@@ -3,12 +3,13 @@ title: Azure Functions 網路選項
 description: Azure Functions 中所有可用的網路選項概觀。
 ms.topic: conceptual
 ms.date: 4/11/2019
-ms.openlocfilehash: 60258ef4aa3bbbbab69acd4f5106c774caa6f46f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385937"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530078"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 網路選項
 
@@ -86,7 +87,7 @@ Azure Functions 中的虛擬網路整合會使用共用基礎結構搭配 App Se
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>具有虛擬網路觸發程序的進階方案
 
-當您執行進階方案時，可以將非 HTTP 觸發程序函式連線到在虛擬網路中執行的服務。 若要這麼做，您必須啟用函式應用程式的虛擬網路觸發程序支援。 [虛擬網路觸發程序支援] 設定位於 [Azure 入口網站](https://portal.azure.com)中的 [設定] > [函式執行階段設定] 之下。
+當您執行進階方案時，可以將非 HTTP 觸發程序函式連線到在虛擬網路中執行的服務。 若要這麼做，您必須啟用函式應用程式的虛擬網路觸發程序支援。 **執行時間調整監視**設定**可在 [** [Azure portal](https://portal.azure.com)  >  **設定函數執行時間設定**] 下的 [Azure 入口網站] 中找到。
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -136,7 +137,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 下列 Api 可讓您以程式設計方式管理區域虛擬網路整合：
 
 + **Azure CLI**：使用 [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) 命令來新增、列出或移除區域虛擬網路整合。  
-+ **ARM 範本**：您可以使用 Azure Resource Manager 範本來啟用區域虛擬網路整合。 如需完整範例，請參閱[此函數快速入門範本](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)。
++ **ARM 範本**：您可以使用 Azure Resource Manager 範本來啟用區域虛擬網路整合。 如需完整範例，請參閱 [此函數快速入門範本](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)。
 
 ## <a name="troubleshooting"></a>疑難排解
 

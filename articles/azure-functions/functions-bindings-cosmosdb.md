@@ -1,17 +1,17 @@
 ---
 title: 適用於 Functions 1.x 的 Azure Cosmos DB 繫結
-description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 觸發程序和繫結。
+description: 瞭解如何在 Azure Functions 1.x 中使用 Azure Cosmos DB 觸發程式和系結。
 author: craigshoemaker
 ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 8ae7613eea4b952c079be90b05e615087ea80a32
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 9ae3ef133fa1b246c09fe0a9aa4ec27b0f75fd19
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214157"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531571"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>適用於 Azure Functions 1.x 的 Azure Cosmos DB 繫結
 
@@ -22,7 +22,7 @@ ms.locfileid: "88214157"
 本文說明如何在 Azure Functions 中使用 [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) 繫結。 Azure Functions 支援適用於 Azure Cosmos DB 的觸發程序、輸入和輸出繫結。
 
 > [!NOTE]
-> 本文適用於 Azure Functions 1.x。 如需如何在函數2.x 和更新版本中使用這些系結的詳細資訊，請參閱 [Azure Functions 2.x 的 Azure Cosmos DB](functions-bindings-cosmosdb-v2.md)系結。
+> 本文適用於 Azure Functions 1.x。 如需如何在函數2.x 和更高版本中使用這些系結的詳細資訊，請參閱 [Azure Functions 2.x Azure Cosmos DB](functions-bindings-cosmosdb-v2.md)系結。
 >
 >這個繫結最初命名為 DocumentDB。 在 Functions 1.x 版中，只有觸發程序已重新命名為 Cosmos DB；輸入繫結、輸出繫結和 NuGet 套件則保留 DocumentDB 名稱。
 
@@ -184,7 +184,7 @@ JavaScript 不支援屬性。
 |**direction** | n/a | 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此參數。 |
 |**name** | n/a | 函式程式碼中使用的變數名稱，代表有變更的文件清單。 |
 |**connectionStringSetting**|**ConnectionStringSetting** | 應用程式設定的名稱，包含用來連接到要監視之 Azure Cosmos DB 帳戶的連接字串。 |
-|**名稱**|**DatabaseName**  | 含有要監視之集合的 Azure Cosmos DB 資料庫名稱。 |
+|**Database**|**DatabaseName**  | 含有要監視之集合的 Azure Cosmos DB 資料庫名稱。 |
 |**collectionName** |**CollectionName** | 要監視的集合名稱。 |
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (選擇性) 應用程式設定的名稱，包含連至保存租用集合之服務的連接字串。 如果未設定，會使用 `connectionStringSetting` 值。 在入口網站中建立繫結時，會自動設定此參數。 租用集合的連接字串必須具有寫入權限。|
 |**leaseDatabaseName** |**LeaseDatabaseName** | (選擇性) 保存用來儲存租用之集合的資料庫名稱。 如果未設定，會使用 `databaseName` 設定的值。 在入口網站中建立繫結時，會自動設定此參數。 |
@@ -1118,7 +1118,7 @@ JavaScript 不支援屬性。
 |**type**     | n/a | 必須設為 `documentdb`。        |
 |**direction**     | n/a | 必須設為 `in`。         |
 |**name**     | n/a | 代表函式中之文件的繫結參數名稱。  |
-|**名稱** |**DatabaseName** |包含文件的資料庫。        |
+|**Database** |**DatabaseName** |包含文件的資料庫。        |
 |**collectionName** |**CollectionName** | 包含文件的集合名稱。 |
 |**id**    | **識別碼** | 要擷取之文件的識別碼。 此屬性支援[繫結運算式](./functions-bindings-expressions-patterns.md)。 請勿同時設定 **id** 和 **sqlQuery** 屬性。 如果您未設定其中一個，就會擷取整個集合。 |
 |**sqlQuery**  |**SqlQuery**  | 用來擷取多份文件的 Azure Cosmos DB SQL 查詢。 屬性會支援執行階段繫結，如此範例所示：`SELECT * FROM c where c.departmentId = {departmentId}`。 請勿同時設定 **id** 和 **sqlQuery** 屬性。 如果您未設定其中一個，就會擷取整個集合。|
@@ -1131,15 +1131,15 @@ JavaScript 不支援屬性。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-當函式成功結束時，透過命名的輸入參數對輸入檔所做的任何變更都會自動儲存。
+當函式成功結束時，會自動儲存透過命名輸入參數對輸入檔所做的任何變更。
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-當函式成功結束時，透過命名的輸入參數對輸入檔所做的任何變更都會自動儲存。
+當函式成功結束時，會自動儲存透過命名輸入參數對輸入檔所做的任何變更。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-當函式結束時，不會自動進行更新。 請改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 來進行更新。 請參閱 [輸入範例](#input)。
+函數結束時，不會自動進行更新。 請改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 來進行更新。 請參閱 [輸入範例](#input)。
 
 ---
 
@@ -1457,9 +1457,9 @@ JavaScript 不支援屬性。
 |**type**     | n/a | 必須設為 `documentdb`。        |
 |**direction**     | n/a | 必須設為 `out`。         |
 |**name**     | n/a | 代表函式中之文件的繫結參數名稱。  |
-|**名稱** | **DatabaseName**|包含其中將建立文件之集合的資料庫。     |
+|**Database** | **DatabaseName**|包含其中將建立文件之集合的資料庫。     |
 |**collectionName** |**CollectionName**  | 包含其中將建立文件之集合的名稱。 |
-|**createIfNotExists**  |**CreateIfNotExists**    | 一個布林值，用來指出當集合不存在時，是否要建立集合。 預設是 false**，因為會使用保留的輸送量來建立新集合，可能會涉及成本。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/documentdb/)。  |
+|**>createifnotexists**  |**CreateIfNotExists**    | 一個布林值，用來指出當集合不存在時，是否要建立集合。 預設是 false**，因為會使用保留的輸送量來建立新集合，可能會涉及成本。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/documentdb/)。  |
 |**partitionKey**|**PartitionKey** |當 `CreateIfNotExists` 為 true 時，定義所建立集合的分割區索引鍵路徑。|
 |**collectionThroughput**|**CollectionThroughput**| 當 `CreateIfNotExists` 為 true 時，定義所建立集合的[輸送量](../cosmos-db/set-throughput.md)。|
 |**connection**    |**ConnectionStringSetting** |包含 Azure Cosmos DB 連接字串的應用程式設定名稱。        |

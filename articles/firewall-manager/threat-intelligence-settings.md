@@ -1,22 +1,22 @@
 ---
 title: Azure 防火牆威脅情報設定
-description: 您可為防火牆啟用威脅情報型篩選，以警示並拒絕來自/傳向已知惡意 IP 位址和網域的流量。
+description: 瞭解如何為您的 Azure 防火牆原則設定威脅情報型篩選，以警示及拒絕來自已知惡意 IP 位址和網域的流量。
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 136ceeb271bec29bdbfc4572626936ee67f05556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a663c5f3bcf3492c4a9bc74fe93c6ed6a86137ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567335"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530636"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Azure 防火牆威脅情報設定
 
-以威脅情報為基礎的篩選可以針對您的 Azure 防火牆原則進行設定，以警示和拒絕來自和的已知惡意 IP 位址和網域的流量。 IP 位址和網域來自 Microsoft 威脅情報摘要。 包括 Azure 資訊安全中心在內的多項服務皆使用 [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence)，其同時也支援 Microsoft 威脅情報的運作。<br>
+您可以針對 Azure 防火牆原則設定以威脅情報為基礎的篩選，以警示及拒絕來自已知惡意 IP 位址和網域的流量。 IP 位址和網域來自 Microsoft 威脅情報摘要。 包括 Azure 資訊安全中心在內的多項服務皆使用 [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence)，其同時也支援 Microsoft 威脅情報的運作。<br>
 
 如果您已設定以威脅情報為基礎的篩選，則會在任何 NAT 規則、網路規則或應用程式規則之前處理相關聯的規則。
 
@@ -30,7 +30,7 @@ ms.locfileid: "85567335"
 
 ## <a name="allowed-list-addresses"></a>允許的清單位址
 
-您可以設定允許的 IP 位址清單，讓威脅情報不會篩選您指定的任何位址、範圍或子網。
+您可以設定允許的 IP 位址清單，讓威脅情報不會篩選任何您指定的位址、範圍或子網。
 
 
 

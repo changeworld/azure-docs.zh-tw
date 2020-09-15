@@ -8,12 +8,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 95d3570d93aa4966fcf6864838ec01735b8662db
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: c135d649feb42c8fa735e67ad6f3c3e51551d3e9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650290"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530279"
 ---
 # <a name="advanced-entry-script-authoring"></a>進階的輸入腳本製作
 
@@ -34,12 +34,16 @@ ms.locfileid: "89650290"
 * `pyspark`
 * 標準 Python 物件
 
-若要使用架構產生，請在相依性檔案中包含開放原始碼 `inference-schema` 套件。 如需此封裝的詳細資訊，請參閱 [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema) 。 在和變數中定義輸入和輸出範例 `input_sample` 格式 `output_sample` ，這些格式代表 web 服務的要求和回應格式。 在函數的輸入和輸出函式裝飾專案中使用這些範例 `run()` 。 下列 scikit-learn 學習範例會使用架構產生。
+若要使用架構產生，請在您的相依性檔案中包含開放原始碼 `inference-schema` 套件版本1.1.0 或更新版本。 如需此封裝的詳細資訊，請參閱 [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema) 。 為了產生符合 swagger 自動化的 web 服務耗用量，評分腳本回合 ( # A1 函式必須有下列 API 圖形：
+* 型別為 "StandardPythonParameterType" 的第一個參數，名為輸入，包含 PandasDataframeParameterTypes。
+* 型別為 "StandardPythonParameterType" 的選擇性第二個參數，名為 GlobalParameter，未進行嵌套。
+* 傳回 "StandardPythonParameterType" 類型的字典，其中可能包含 PandasDataFrameParameterTypes。
+在和變數中定義輸入和輸出範例 `input_sample` 格式 `output_sample` ，這些格式代表 web 服務的要求和回應格式。 在函數的輸入和輸出函式裝飾專案中使用這些範例 `run()` 。 下列 scikit-learn 學習範例會使用架構產生。
 
 
 ## <a name="power-bi-compatible-endpoint"></a>Power BI 相容端點 
 
-下列範例示範如何使用資料框架將輸入資料定義為 `<key: value>` 字典。 從 Power BI 使用已部署的 web 服務時，支援此方法。  ([深入瞭解如何使用 Power BI 的 web 服務](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。 ) 
+下列範例示範如何根據上述指令定義 API 圖形。 從 Power BI 使用已部署的 web 服務時，支援此方法。  ([深入瞭解如何使用 Power BI 的 web 服務](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。 ) 
 
 ```python
 import json
@@ -48,9 +52,10 @@ import numpy as np
 import pandas as pd
 import azureml.train.automl
 from sklearn.externals import joblib
-from azureml.core.model import Model
+from sklearn.linear_model import Ridge
 
 from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.standard_py_parameter_type import StandardPythonParameterType
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
 
@@ -58,31 +63,32 @@ from inference_schema.parameter_types.pandas_parameter_type import PandasParamet
 def init():
     global model
     # Replace filename if needed.
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'model_file.pkl')
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
     # Deserialize the model file back into a sklearn model.
     model = joblib.load(model_path)
 
+# providing 3 sample inputs for schema generation
+numpy_sample_input = NumpyParameterType(np.array([[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]],dtype='float64'))
+pandas_sample_input = PandasParameterType(pd.DataFrame({'name': ['Sarah', 'John'], 'age': [25, 26]}))
+standard_sample_input = StandardPythonParameterType(0.0)
 
-input_sample = pd.DataFrame(data=[{
-    # This is a decimal type sample. Use the data type that reflects this column in your data.
-    "input_name_1": 5.1,
-    # This is a string type sample. Use the data type that reflects this column in your data.
-    "input_name_2": "value2",
-    # This is an integer type sample. Use the data type that reflects this column in your data.
-    "input_name_3": 3
-}])
+# This is a nested input sample, any item wrapped by `ParameterType` will be described by schema
+sample_input = StandardPythonParameterType({'input1': numpy_sample_input, 
+                                            'input2': pandas_sample_input, 
+                                            'input3': standard_sample_input})
 
-# This is an integer type sample. Use the data type that reflects the expected result.
-output_sample = np.array([0])
+sample_global_parameters = StandardPythonParameterType(1.0) #this is optional
+sample_output = StandardPythonParameterType([1.0, 1.0])
 
-# To indicate that we support a variable length of data input,
-# set enforce_shape=False
-@input_schema('data', PandasParameterType(input_sample, enforce_shape=False))
-@output_schema(NumpyParameterType(output_sample))
-def run(data):
+@input_schema('inputs', sample_input)
+@input_schema('global_parameters', sample_global_parameters) #this is optional
+@output_schema(sample_output)
+def run(inputs, global_parameters):
     try:
+        data = inputs['input1']
+        # data will be convert to target format
+        assert isinstance(data, np.ndarray)
         result = model.predict(data)
-        # You can return any data type, as long as it is JSON serializable.
         return result.tolist()
     except Exception as e:
         error = str(e)
@@ -264,7 +270,7 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 當您註冊模型時，您會為它命名。 名稱會對應至放置模型的位置，不論是在本機或在服務部署期間。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [針對失敗的部署進行疑難排解](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)

@@ -1,14 +1,14 @@
 ---
-title: IoT Edge 配額的即時影片分析-Azure
+title: IoT Edge 配額和限制的即時影片分析-Azure
 description: 本文說明 IoT Edge 配額和限制的即時影片分析。
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 32a24079b36655bfdacd25b07d419009f5012507
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: df1978de4ee1bbbe15d0df3b02a70fb51491e9d2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750235"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529225"
 ---
 # <a name="quotas-and-limitations"></a>配額和限制
 
@@ -65,6 +65,10 @@ Edge 模組可能會導致網路連線暫時中斷。 如果模組保持中斷�
 * 將媒體服務帳戶從一個訂用帳戶遷移至另一個訂用帳戶，而不會中斷。
 * 使用多個儲存體帳戶搭配媒體服務帳戶的能力。
 * 能夠以動態方式變更模組所需屬性中的服務主體資訊，而不需要重新開機。
+
+您只能使用支援 RTSP 通訊協定的 IP 攝影機。 您可以在[符合 ONVIF 標準的](https://www.onvif.org/conformant-products)產品頁面上，尋找支援 RTSP 的 IP 攝影機。 尋找符合設定檔 G、S 或 T 的裝置。
+
+此外，您應該將這些攝影機設定為使用 h.264 影片和 AAC 音訊。 目前不支援其他編解碼器。 
 
 ## <a name="next-steps"></a>後續步驟
 

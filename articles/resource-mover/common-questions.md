@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: a83191fd29e0cda4bc398f6a46a0d2ebf9631665
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 18de210d817ee309ac4970ecea6b62f6ef03ef02
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068042"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530398"
 ---
 # <a name="common-questions"></a>常見問題
 
@@ -50,7 +50,7 @@ ms.locfileid: "90068042"
 
 您可以在將資源移至目的地區域之後變更訂用帳戶。 [深入瞭解](../azure-resource-manager/management/move-resource-group-and-subscription.md) 如何將資源移至不同的訂用帳戶。 
 
-### <a name="where-is-the-metadata-about-a-region-move-stored"></a>區域的相關中繼資料會儲存在哪裡？
+### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>跨區域儲存的中繼資料會在哪裡？
 
 它會儲存在 [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) 資料庫中，以及 [azure Blob 儲存體](../storage/common/storage-service-encryption.md)的 Microsoft 訂用帳戶中。 中繼資料目前儲存在美國東部2和北歐。 我們會將此涵蓋範圍擴充到其他區域。 這不會限制您在任何公用區域間移動資源。
 

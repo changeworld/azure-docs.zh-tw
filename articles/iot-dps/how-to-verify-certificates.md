@@ -1,18 +1,18 @@
 ---
-title: 驗證 Azure IoT 中樞裝置布建服務的 x.509 CA 憑證
-description: 如何使用 Azure IoT 中樞裝置布建服務（DPS）對 x.509 CA 憑證執行擁有權證明
+title: 確認 x.509 CA 憑證與 Azure IoT 中樞裝置布建服務
+description: 如何使用 Azure IoT 中樞的裝置布建服務 (DPS) 來對 x.509 CA 憑證進行擁有權證明。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b008c4ebc83200043d51fc8ef367f1983c549949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50e8dfd2998b50bfff7341e49ac4d0770c115166
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74973436"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530857"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>如何使用您的裝置佈建服務執行 X.509 CA 憑證擁有權證明
 
@@ -23,7 +23,7 @@ ms.locfileid: "74973436"
 2. 以此驗證碼作為 X.509 驗證憑證的主體，建立驗證憑證，然後使用與 X.509 CA 憑證相關聯的私密金鑰簽署該憑證。
 3. 將已簽署的驗證憑證上傳至服務。 服務會使用要驗證之 CA 憑證的公開部分來驗證此驗證憑證，藉此證明您擁有 CA 憑證的私密金鑰。
 
-使用註冊群組時，已驗證的憑證扮演著重要角色。 驗證憑證擁有權可提供額外的安全層，因為可確保憑證的上傳者擁有憑證的私密金鑰。 驗證可防止探查您流量的惡意動作擷取中繼憑證，並使用該憑證在他們自己的佈建服務中建立註冊群組，進而有效劫持您的裝置。 透過證明信任鏈結中的根憑證或中繼憑證擁有權，您可以證明您有權產生裝置的分葉憑證，以將其註冊為該註冊群組的一部分。 基於這個理由，註冊群組中設定的根憑證或中繼憑證，必須是信任鏈 中已驗證的憑證或必須積存為已驗證的憑證，信任鏈結需在裝置向服務進行驗證時出示。 若要深入了解註冊群組，請參閱 [X.509 憑證](concepts-security.md#x509-certificates)和[使用 X.509 憑證控制裝置對佈建服務的存取](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
+使用註冊群組時，已驗證的憑證扮演著重要角色。 驗證憑證擁有權可提供額外的安全層，因為可確保憑證的上傳者擁有憑證的私密金鑰。 驗證可防止探查您流量的惡意動作擷取中繼憑證，並使用該憑證在他們自己的佈建服務中建立註冊群組，進而有效劫持您的裝置。 透過證明信任鏈結中的根憑證或中繼憑證擁有權，您可以證明您有權產生裝置的分葉憑證，以將其註冊為該註冊群組的一部分。 基於這個理由，註冊群組中設定的根憑證或中繼憑證，必須是信任鏈 中已驗證的憑證或必須積存為已驗證的憑證，信任鏈結需在裝置向服務進行驗證時出示。 若要深入瞭解 x.509 憑證證明，請參閱 [x.509 憑證](concepts-x509-attestation.md) ，以及 [使用 x.509 憑證控制裝置對布建服務的存取](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
 
 ## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>註冊 X.509 憑證的公開部分，並取得驗證碼
 

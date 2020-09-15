@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: c2bbfcb4832adba767750256a25c378356cf4c23
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: fbcb3656bc824e2fd352f92314652bd04167b4d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299250"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531401"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>如何輪替 X.509 裝置憑證
 
@@ -20,14 +20,14 @@ ms.locfileid: "89299250"
 
 輪替憑證是一種最佳安全性做法，可在外洩事件中協助保護您的系統。 在[假想缺口方法](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)中，Microsoft 主張備妥回應式安全程序和預防性措施的需求。 輪替裝置憑證應納入這些安全程序中。 您輪替憑證的頻率將取決於您解決方案的安全性需求。 有解決方案涉及高度敏感性資料的客戶可以每天輪替，然而其他客戶則是每隔幾年輪替其憑證。
 
-輪替裝置憑證涉及更新儲存在裝置和 IoT 中樞上的憑證。 之後，裝置可以使用正常[自動佈建](concepts-auto-provisioning.md)搭配裝置佈建服務，本身向 IoT 中樞重新佈建。
+輪替裝置憑證涉及更新儲存在裝置和 IoT 中樞上的憑證。 之後，裝置可以使用 (DPS) 的裝置布建服務 [的一般布建，在](about-iot-dps.md#provisioning-process) IoT 中樞內重新布建自己。
 
 
 ## <a name="obtain-new-certificates"></a>取得新的憑證
 
 有許多方式可為您的 IoT 裝置取得新憑證。 這些包括從裝置原廠取得憑證，產生自己的憑證，以及讓第三方為您管理憑證建立。 
 
-憑證會彼此簽署，以構成從根 CA 憑證到[分葉憑證](concepts-security.md#end-entity-leaf-certificate)的信任鏈結。 簽署憑證是用來簽署信任鏈結尾端分葉憑證的憑證。 簽署憑證可以是信任鏈結的根 CA 憑證或中繼憑證。 如需詳細資訊，請參閱 [X.509 憑證](concepts-security.md#x509-certificates)。
+憑證會彼此簽署，以構成從根 CA 憑證到[分葉憑證](concepts-x509-attestation.md#end-entity-leaf-certificate)的信任鏈結。 簽署憑證是用來簽署信任鏈結尾端分葉憑證的憑證。 簽署憑證可以是信任鏈結的根 CA 憑證或中繼憑證。 如需詳細資訊，請參閱 [X.509 憑證](concepts-x509-attestation.md#x509-certificates)。
  
 有兩種不同的方式可取得簽署憑證。 第一種方式就是向根憑證授權單位 (CA) 購買簽署憑證，建議用於生產系統。 這種方式可將安全性向下鏈結到信任的來源。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "89299250"
 
 ## <a name="roll-the-certificate-on-the-device"></a>在裝置上輪替憑證
 
-裝置上的憑證應該一律存放在安全的地方，像是[硬體安全性模組 (HSM)](concepts-device.md#hardware-security-module)。 輪替裝置憑證的方式將取決於它們一開始在裝置中建立和安裝的方式。 
+裝置上的憑證應該一律存放在安全的地方，像是[硬體安全性模組 (HSM)](concepts-service.md#hardware-security-module)。 輪替裝置憑證的方式將取決於它們一開始在裝置中建立和安裝的方式。 
 
 如果您從第三方取得您的憑證，您必須研究它們如何輪替其憑證。 此程序可能包含在您與他們的約定中，或者可能是他們所提供的個別服務。 
 
@@ -75,7 +75,7 @@ ms.locfileid: "89299250"
 
     如果主要和次要憑證都遭到入侵，則應對這兩者完成下列步驟。
 
-    ![管理個別註冊](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
+    ![以安全性缺口管理個別註冊](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
 3. 將遭到入侵的憑證從佈建服務移除之後，只要服務中有憑證的裝置註冊存在，就仍可以使用該憑證建立裝置與 IoT 中樞的連線。 您可以透過兩種方式解決此問題： 
 
@@ -94,9 +94,9 @@ ms.locfileid: "89299250"
 
 1. 按一下 [個別註冊]****，然後按一下清單中的註冊識別碼項目。 
 
-2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 [儲存]。
+2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 [檔案] 。
 
-    ![使用次要憑證管理個別註冊](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
+    ![使用次要憑證到期管理個別註冊](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
 3. 稍後當主要憑證到期時，返回並按一下 [刪除目前的憑證]**** 按鈕，即可刪除該主要憑證。
 
@@ -118,7 +118,7 @@ ms.locfileid: "89299250"
 
 5. 按一下 [CA 憑證]****，然後選取新的根 CA 憑證。 然後按一下 [儲存]  。 
 
-    ![選取新的根 CA 憑證](./media/how-to-roll-certificates/select-new-root-cert.png)
+    ![為遭盜用的憑證選取新的根 CA 憑證](./media/how-to-roll-certificates/select-new-root-cert.png)
 
 6. 將遭到入侵的憑證從佈建服務移除之後，只要服務中有憑證的裝置註冊存在，就仍可以使用該憑證建立裝置與 IoT 中樞的連線。 您可以透過兩種方式解決此問題： 
 
@@ -136,9 +136,9 @@ ms.locfileid: "89299250"
 
 2. 按一下 [中繼憑證]****，然後按一下 [刪除目前的憑證]****。 按一下資料夾圖示，以瀏覽至要針對註冊群組上傳的新中繼憑證。 完成時，請按一下 [儲存]****。 如果主要和次要憑證都遭到入侵，則應對這兩者完成下列步驟。
 
-    這個新中繼憑證應該由已經過驗證並新增至佈建服務的根 CA 憑證簽署。 如需詳細資訊，請參閱 [X.509 憑證](concepts-security.md#x509-certificates)。
+    這個新中繼憑證應該由已經過驗證並新增至佈建服務的根 CA 憑證簽署。 如需詳細資訊，請參閱 [X.509 憑證](concepts-x509-attestation.md#x509-certificates)。
 
-    ![管理個別註冊](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
+    ![針對遭盜用的中繼管理個別註冊](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
 3. 將遭到入侵的憑證從佈建服務移除之後，只要服務中有憑證的裝置註冊存在，就仍可以使用該憑證建立裝置與 IoT 中樞的連線。 您可以透過兩種方式解決此問題： 
@@ -164,7 +164,7 @@ ms.locfileid: "89299250"
 
 3. 按一下 [CA 憑證]****，然後在 [次要憑證]**** 組態之下選取新的根 CA 憑證。 然後按一下 [儲存]  。 
 
-    ![選取新的根 CA 憑證](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
+    ![選取新的根 CA 憑證的到期日](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
 4. 稍後當主要憑證到期時，按一下您裝置佈建服務執行個體的 [憑證]**** 索引標籤。 按一下清單中已到期的憑證，然後按一下 [刪除]**** 按鈕。 輸入憑證名稱來確認刪除，然後按一下 [確定]****。
 
@@ -177,11 +177,11 @@ ms.locfileid: "89299250"
 
 1. 按一下 [註冊群組]****，然後按一下清單中的群組名稱。 
 
-2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 [儲存]。
+2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 [檔案] 。
 
-    這個新中繼憑證應該由已經過驗證並新增至佈建服務的根 CA 憑證簽署。 如需詳細資訊，請參閱 [X.509 憑證](concepts-security.md#x509-certificates)。
+    這個新中繼憑證應該由已經過驗證並新增至佈建服務的根 CA 憑證簽署。 如需詳細資訊，請參閱 [X.509 憑證](concepts-x509-attestation.md#x509-certificates)。
 
-   ![使用次要憑證管理個別註冊](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
+   ![使用次要憑證即將到期來管理註冊群組](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
 
 3. 稍後當主要憑證到期時，返回並按一下 [刪除目前的憑證]**** 按鈕，即可刪除該主要憑證。
 
@@ -206,8 +206,8 @@ ms.locfileid: "89299250"
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-- 若要深入了解裝置佈建服務中的 X.509 憑證，請參閱[安全性](concepts-security.md) 
+- 若要深入瞭解裝置布建服務中的 x.509 憑證，請參閱 [x.509 憑證證明](concepts-x509-attestation.md) 
 - 若要了解如何使用 Azure IoT 中樞的裝置佈建服務執行 X.509 CA 憑證擁有權證明，請參閱[如何驗證憑證](how-to-verify-certificates.md)
 - 若要深入了解如何使用入口網站來建立註冊群組，請參閱[使用 Azure 入口網站管理裝置註冊](how-to-manage-enrollments.md)。

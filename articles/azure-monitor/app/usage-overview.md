@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 進行使用量分析 | Microsoft Docs
 description: 了解您的使用者，以及他們如何運用您的應用程式。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4ace90b0893eed24227cadcb9a5b9fae7d502ff8
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800206"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532098"
 ---
 # <a name="usage-analysis-with-application-insights"></a>使用 Application Insights 進行使用量分析
 
@@ -54,7 +54,7 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
 
 使用者與工作階段報告會依頁面或自訂事件來篩選資料，並透過諸如位置、環境及頁面等屬性，將這些頁面或自訂事件進行區隔。 您也可以新增自己的篩選條件。
 
-![使用者](./media/usage-overview/users.png)  
+![螢幕擷取畫面會顯示虛構公司的 [使用者總覽] 頁面。](./media/usage-overview/users.png)  
 
 右方情資指出資料集內的有趣模式。  
 
@@ -71,7 +71,7 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
 - 根據實際使用者資料的表單假設 
 - 判斷保留期是否為您產品的問題 
 
-![保留](./media/usage-overview/retention.png) 
+![螢幕擷取畫面會顯示 [保留總覽] 頁面，其中顯示使用者返回使用其應用程式的頻率資訊。](./media/usage-overview/retention.png) 
 
 在最上層的保留期控制項可讓您定義用來計算保留期的特定事件和時間範圍。 中間的圖表會依指定的時間範圍提供整體保留期百分比的視覺表示法。 底部圖表代表指定時間內的個別保留期。 此詳細資料等級會使用更詳細的資料粒度，讓您了解使用者在做什麼，以及可能會影響舊有使用者的因素。  
 
@@ -110,7 +110,7 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
 ### <a name="slice-and-dice-events"></a>將事件進行交叉分析
 
 在「使用者」、「工作階段」和「事件」工具中，您可以依使用者、事件名稱和屬性將自訂事件進行交叉分析。
-![使用者](./media/usage-overview/users.png)  
+![螢幕擷取畫面會顯示虛構公司的 [使用者總覽] 頁面。](./media/usage-overview/users.png)  
   
 ## <a name="design-the-telemetry-with-the-app"></a>使用應用程式來設計遙測
 

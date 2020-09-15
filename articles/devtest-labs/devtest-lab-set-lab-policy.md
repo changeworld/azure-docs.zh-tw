@@ -3,12 +3,12 @@ title: 在 Azure DevTest Labs 中管理實驗室原則 | Microsoft Docs
 description: 了解如何定義實驗室原則，例如 VM 大小、每位使用者的 VM 數目上限，以及自動關機。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ab2e2b1905a515d3a85339099f02d93d8e5c0424
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a7ada980b2a251b8164f2e1a20f65da54c89ba72
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290423"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530347"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中管理實驗室的所有原則
 
@@ -105,7 +105,7 @@ Azure DevTest Labs 讓您管理每個實驗室的原則 (設定)，以控制實�
 
 1. 在實驗室的 [設定與原則]**** 窗格上，選取 [自動啟動]****。
    
-    ![自動啟動](./media/devtest-lab-set-lab-policy/auto-start.png)
+    ![螢幕擷取畫面會顯示虛擬機器的自動啟動選項。](./media/devtest-lab-set-lab-policy/auto-start.png)
 
 2. 選取 [開啟]**** 來啟用此原則，以及選取 [關閉]**** 來停用它。
 

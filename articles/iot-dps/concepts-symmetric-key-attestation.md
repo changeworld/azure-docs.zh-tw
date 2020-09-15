@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba4f67f924455b911d76426231cc71b661faf4a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 994c2c3124d6822f047af942268ad7a401d5a976
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020332"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531554"
 ---
 # <a name="symmetric-key-attestation"></a>對稱金鑰證明
 
 本文說明搭配裝置佈建服務使用對稱金鑰進行的身分識別證明程序。 
 
-對稱金鑰證明是驗證裝置與裝置佈建服務執行個體的簡單方法。 對於不熟悉裝置佈建或沒有嚴格安全性需求的開發人員，這個證明方法代表 "Hello world" 經驗。 使用 [TPM](concepts-tpm-attestation.md) 或 [X.509 憑證](concepts-security.md#x509-certificates) 的裝置證明會更加安全，並且應該用於更嚴格的安全性需求。
+對稱金鑰證明是驗證裝置與裝置佈建服務執行個體的簡單方法。 對於不熟悉裝置佈建或沒有嚴格安全性需求的開發人員，這個證明方法代表 "Hello world" 經驗。 使用 [TPM](concepts-tpm-attestation.md) 或 [X.509 憑證](concepts-x509-attestation.md) 的裝置證明會更加安全，並且應該用於更嚴格的安全性需求。
 
 對稱金鑰的註冊項目也相當適合安全性功能有限的舊版裝置，可透過 Azure IoT 啟動到雲端。 如需舊版裝置的對稱金鑰證明有關的詳細資訊，請參閱[如何在舊版的裝置上使用對稱金鑰](how-to-legacy-device-symm-key.md)。
 
@@ -109,12 +109,12 @@ String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(mas
 
 每個裝置的身分識別都是以註冊識別碼和在工廠安裝的衍生裝置金鑰表示。 裝置金鑰永遠不會複製到其他位置，群組金鑰永遠不會儲存在裝置上。
 
-如果未在工廠安裝裝置金鑰，[硬體安全性模組 HSM](concepts-security.md#hardware-security-module) 應該用來安全地儲存裝置身分識別。
+如果未在工廠安裝裝置金鑰，[硬體安全性模組 HSM](concepts-service.md#hardware-security-module) 應該用來安全地儲存裝置身分識別。
 
 ## <a name="next-steps"></a>後續步驟
 
 您了解對稱金鑰證明後，請參閱下列文章以瞭解詳細資訊：
 
 * [快速入門：使用對稱金鑰來佈建模擬的裝置](quick-create-simulated-device-symm-key.md)
-* [了解自動佈建中的概念](./concepts-auto-provisioning.md)
+* [瞭解布建的概念](about-iot-dps.md#provisioning-process)
 * [開始使用自動佈建](./quick-setup-auto-provision.md) 

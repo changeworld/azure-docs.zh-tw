@@ -1,14 +1,14 @@
 ---
 title: 配額錯誤
-description: 說明使用 Azure Resource Manager 部署資源時，如何解決資源配額錯誤。
+description: 描述如何在使用 Azure Resource Manager 部署資源時解決資源配額錯誤。
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75e8abf31d035a1e3a106bc0c6561624762db5d5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007787"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530415"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解決資源配額的錯誤
 
@@ -84,7 +84,7 @@ Total Regional Cores                         0   100 Count
 Virtual Machines                             0 10000 Count
 ```
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 若要要求增加配額，請移至入口網站並提出支援問題。 請在支援問題中，要求提高您要部署的區域的配額。
 
@@ -95,17 +95,17 @@ Virtual Machines                             0 10000 Count
 
 1. 選取 **訂用帳戶** 。
 
-   ![訂用帳戶](./media/error-resource-quota/subscriptions.png)
+   ![螢幕擷取畫面顯示已選取訂用帳戶的 Azure 入口網站功能表。](./media/error-resource-quota/subscriptions.png)
 
 2. 選取需要增加配額的訂用帳戶。
 
-   ![選取訂用帳戶](./media/error-resource-quota/select-subscription.png)
+   ![選取訂閱](./media/error-resource-quota/select-subscription.png)
 
-3. 選取**使用量 + 配額**
+3. 選取 **使用量 + 配額**
 
    ![選取使用量和配額](./media/error-resource-quota/select-usage-quotas.png)
 
-4. 在右上角，選取 [**要求增加**]。
+4. 選取右上角的 [ **要求增加**]。
 
    ![要求增加配額](./media/error-resource-quota/request-increase.png)
 

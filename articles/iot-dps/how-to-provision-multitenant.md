@@ -1,22 +1,22 @@
 ---
-title: 如何在 Azure IoT 中樞裝置布建服務中為多組織使用者布建裝置
-description: 如何使用裝置布建服務（DPS）實例為多組織使用者布建裝置
+title: 如何在 Azure IoT 中樞裝置布建服務中布建多租使用者的裝置
+description: 如何使用裝置布建服務布建多租使用者的裝置 (DPS) 實例
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcdda8d1bd08a26dcdbec294be88fd4540670596
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75434744"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531418"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何針對多組織用戶佈建 
 
-佈建服務定義的配置原則支援多種配置案例。 兩個最常見的案例為：
+本文示範如何使用 [配置原則](concepts-service.md#allocation-policy)，安全地將多個對稱金鑰裝置布建到一組 IoT 中樞。 布建服務所定義的配置原則支援各種配置案例。 兩個最常見的案例為：
 
 * **地理位置/地理延遲**：當裝置在位置之間移動時，可透過將裝置佈建至最接近每個位置的 IoT 中樞以改善網路延遲。 在此案例中，會選取一群跨越多個區域的 IoT 中樞進行註冊。 系統會針對這些註冊選取**最低延遲**配置原則。 此原則會促使裝置佈建服務評估裝置延遲，然後從一群 IoT 中樞中判斷出最接近的 IoT 中樞。 
 
@@ -83,7 +83,7 @@ ms.locfileid: "75434744"
 
 在此節中，您將會為租用戶裝置建立新的註冊群組。  
 
-為了簡單起見，此文章將在註冊中使用[對稱金鑰證明](concepts-symmetric-key-attestation.md)。 如需更安全的解決方案，請考慮使用 [X.509 憑證證明](concepts-security.md#x509-certificates)與信任鏈結。
+為了簡單起見，此文章將在註冊中使用[對稱金鑰證明](concepts-symmetric-key-attestation.md)。 如需更安全的解決方案，請考慮使用 [X.509 憑證證明](concepts-x509-attestation.md)與信任鏈結。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，並開啟您的裝置佈建服務執行個體。
 
@@ -191,7 +191,7 @@ ms.locfileid: "75434744"
 
 在此節中，您將會將 Azure IoT C SDK 複製到每部 VM 上。 SDK 包含一個範例，此範例將會模擬從每個區域佈建租用戶裝置。
 
-1. 針對每個 VM，請使用下列命令來安裝**CMake**、 **g + +**、 **gcc**和[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) ：
+1. 針對每部 VM，請使用下列命令來安裝 **CMake**、 **g + +**、 **gcc**和 [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) ：
 
     ```bash
     sudo apt-get update
@@ -420,8 +420,8 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要深入瞭解重新布建，請參閱[IoT 中樞裝置重新布建概念](concepts-device-reprovision.md) 
-- 若要深入瞭解解除布建，請參閱如何取消布建[先前自動布建的裝置](how-to-unprovision-devices.md) 
+- 若要深入瞭解重新布建，請參閱 [IoT 中樞裝置重新布建概念](concepts-device-reprovision.md) 
+- 若要深入瞭解解除布建，請參閱如何取消布 [建先前自動布建的裝置](how-to-unprovision-devices.md) 
 
 
 

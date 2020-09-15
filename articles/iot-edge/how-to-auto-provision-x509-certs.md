@@ -9,16 +9,16 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e01255a34e97f6c11e4909287b98fcd3d15fca92
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: dbd4a80c0f480e51ce7ec248c3b5d3dc523e9d74
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669049"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530738"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 x.509 憑證來建立和布建 IoT Edge 裝置
 
-使用 [Azure IoT 中樞裝置布建服務 (DPS) ](../iot-dps/index.yml)，您可以使用 x.509 憑證自動布建 IoT Edge 裝置。 如果您不熟悉自動布建程式，請先參閱自動布 [建的概念](../iot-dps/concepts-auto-provisioning.md) ，再繼續進行。
+使用 [Azure IoT 中樞裝置布建服務 (DPS) ](../iot-dps/index.yml)，您可以使用 x.509 憑證自動布建 IoT Edge 裝置。 如果您不熟悉自動布建程式，請先參閱布建 [總覽，](../iot-dps/about-iot-dps.md#provisioning-process) 再繼續進行。
 
 本文說明如何使用下列步驟，在 IoT Edge 裝置上使用 x.509 憑證來建立裝置布建服務註冊：
 
@@ -329,6 +329,6 @@ Get-Service iotedge
 iotedge list
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 佈建新裝置時，裝置佈建服務註冊程序可讓您同時設定裝置識別碼和裝置對應項標記。 您可以使用這些值來鎖定要使用自動裝置管理的個別裝置或裝置群組。 瞭解如何使用 Azure 入口網站或[使用 Azure CLI](how-to-deploy-cli-at-scale.md)，[大規模部署和監視 IoT Edge 模組](how-to-deploy-at-scale.md)。

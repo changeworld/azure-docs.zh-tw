@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: 19d6933497b469148687dc9c5012513ab7d0314b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 14f0eaee1ede4da3b80ddd94d5c915438e97f8f4
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047202"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530058"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>關於適用於 VMware VM 和實體伺服器的行動服務
 
@@ -37,7 +37,7 @@ ms.locfileid: "89047202"
 
 - 確定已符合所有的推送安裝 [必要條件](vmware-azure-install-mobility-service.md) 。
 - 請確定所有伺服器設定都符合支援矩陣中的準則， [以便將 VMware vm 和實體伺服器故障復原至 Azure](vmware-physical-azure-support-matrix.md)。
-- 從[9.36 版](https://support.microsoft.com/help/4578241/)開始，SUSE LINUX ENTERPRISE SERVER 11 SP4，請確定設定伺服器和相應放大[進程伺服器上有](#download-latest-mobility-agent-installer-for-suse-11-sp3-server)最新的安裝程式可供使用
+- 從9.36 版開始，針對 SUSE Linux Enterprise Server 11 SP3，RHEL 5，CentOS 5，Debian 7 確定[可在設定伺服器和相應放大進程伺服器上使用](#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)最新的安裝程式
 
 下列各節將說明推入安裝工作流程：
 
@@ -130,7 +130,7 @@ ms.locfileid: "89047202"
 
 設定 | 詳細資料
 --- | ---
-Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
+語法 | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 安裝程式記錄 | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | 必要安裝參數。 指定應該要安裝行動服務 (MS) 還是主要目標 (MT)。
 `/InstallLocation`| 選擇性參數。 指定行動服務安裝位置 (任何資料夾)。
@@ -141,7 +141,7 @@ Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /
 
 設定 | 詳細資料
 --- | ---
-Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
+語法 | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
 代理程式設定記錄 | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
 `/CSEndPoint` | 必要參數。 `<CSIP>` 指定設定伺服器的 IP 位址。 請使用任何有效的 IP 位址。
 `/PassphraseFilePath` |  Mandatory。 複雜密碼的位置。 請使用任何有效的 UNC 或本機檔案路徑。
@@ -171,7 +171,7 @@ Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath 
 
 設定 | 詳細資料
 --- | ---
-Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
+語法 | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 `-r` | 必要安裝參數。 指定應該要安裝行動服務 (MS) 還是主要目標 (MT)。
 `-d` | 選擇性參數。 指定行動服務安裝位置： `/usr/local/ASR` 。
 `-v` | Mandatory。 指定安裝行動服務的平臺。 <br/> **Vmware 適用于 Vmware** vm/實體伺服器。 <br/> 適用于 Azure Vm 的**azure** 。
@@ -181,7 +181,7 @@ Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 
 設定 | 詳細資料
 --- | ---
-Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
+語法 | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
 `-i` | 必要參數。 `<CSIP>` 指定設定伺服器的 IP 位址。 請使用任何有效的 IP 位址。
 `-P` |  Mandatory。 儲存複雜密碼之檔案的完整檔案路徑。 請使用任何有效的資料夾。
 
@@ -202,30 +202,62 @@ Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CS
 安裝程式檔案 | 作業系統 (僅限 64 位元)
 --- | ---
 `Microsoft-ASR_UA_version_Windows_GA_date_release.exe` | Windows Server 2016 </br> Windows Server 2012 R2 </br> Windows Server 2012 </br> Windows Server 2008 R2 SP1
+[要手動下載並放置在此資料夾中](#rhel-5-or-centos-5-server) | Red Hat Enterprise Linux (RHEL) 5 </br> CentOS 5
 `Microsoft-ASR_UA_version_RHEL6-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 6 </br> CentOS 6
 `Microsoft-ASR_UA_version_RHEL7-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 7 </br> CentOS 7
+`Microsoft-ASR_UA_version_RHEL8-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 8 </br> CentOS 8
 `Microsoft-ASR_UA_version_SLES12-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 12 SP1 </br> 包括 SP2 和 SP3。
-[以手動方式下載並放置在此資料夾中](#download-latest-mobility-agent-installer-for-suse-11-sp3-server)。 | SUSE Linux Enterprise Server 11 SP3
+[要手動下載並放置在此資料夾中](#suse-11-sp3-server) | SUSE Linux Enterprise Server 11 SP3
 `Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP4
+`Microsoft-ASR_UA_version_SLES15-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 15 
 `Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6。4 </br> Oracle Enterprise Linux 6。5
+`Microsoft-ASR_UA_version_OL7-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 7 
+`Microsoft-ASR_UA_version_OL8-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 8
 `Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14.04
 `Microsoft-ASR_UA_version_UBUNTU-16.04-64_GA_date_release.tar.gz` | Ubuntu Linux 16.04 LTS 伺服器
-`Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Debian 7
+`Microsoft-ASR_UA_version_UBUNTU-18.04-64_GA_date_release.tar.gz` | Ubuntu Linux 18.04 LTS 伺服器
+`Microsoft-ASR_UA_version_UBUNTU-20.04-64_GA_date_release.tar.gz` | Ubuntu Linux 20.04 LTS 伺服器
+[要手動下載並放置在此資料夾中](#debian-7-server) | Debian 7
 `Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
+`Microsoft-ASR_UA_version_DEBIAN9-64_GA_date_release.tar.gz` | Debian 9
 
-### <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-server"></a>下載 SUSE 11 SP3 伺服器的最新行動代理程式安裝程式
+## <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server"></a>下載 SUSE 11 SP3、RHEL 5、Debian 7 伺服器的最新行動代理程式安裝程式
 
-從[9.36 版](https://support.microsoft.com/help/4578241/)開始，**更新或保護 SUSE Linux Enterprise Server 11 SP3 電腦**的必要條件如下：
+### <a name="suse-11-sp3-server"></a>SUSE 11 SP3 server
+
+從9.36 版開始， **更新或保護 SUSE Linux Enterprise Server 11 SP3 電腦** 的必要條件如下：
 
 1. 確定已從 Microsoft 下載中心下載最新的行動代理程式安裝程式，並放在設定伺服器和所有 scale out 進程伺服器上的推送安裝程式存放庫中
-2. [下載](https://download.microsoft.com/download/0/3/4/0341b388-1ff5-4ead-b197-7cf6d2bb3e40/Microsoft-ASR_UA_9.36.0.0_SLES11-SP3-64_GA_06Aug2020_release.tar.gz) SUSE LINUX ENTERPRISE SERVER 11 SP3 代理程式安裝程式。
-3. 流覽至設定伺服器，複製下列路徑上的 SUSE Linux Enterprise Server 11 SP3 代理程式安裝程式
-    1. INSTALL_DIR \home\svsystems\pushinstallsvc\repository
-    1.  INSTALL_DIR \home\svsystems\admin\web\sw 資料夾
-4. 現在，流覽至相關聯的相應放大進程伺服器 & 在第三個步驟所述的兩個路徑中複製安裝程式。
-5. **例如**，如果安裝路徑為 C:\Program Files (x86) \microsoft Azure Site Recovery，則上述目錄會是
+2. [下載](site-recovery-whats-new.md) 最新的 SUSE LINUX ENTERPRISE SERVER 11 SP3 代理程式安裝程式。 最新的行動代理程式版本為 [9.37](https://support.microsoft.com/help/4582666/)
+3. 流覽至設定伺服器，複製路徑上的 SUSE Linux Enterprise Server 11 SP3 代理程式安裝程式-INSTALL_DIR \home\svsystems\pushinstallsvc\repository
+1. 複製最新的安裝程式之後，請重新開機 InMage PushInstall 服務。 
+1. 現在，流覽至相關聯的相應放大進程伺服器，重複步驟3和步驟4。
+1. **例如**，如果安裝路徑為 C:\Program Files (x86) \microsoft Azure Site Recovery，則上述目錄會是
     1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
-    1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\admin\web\sw path
+
+### <a name="rhel-5-or-centos-5-server"></a>RHEL 5 或 CentOS 5 server
+
+從9.36 版開始， **更新或保護 RHEL 5 電腦** 的必要條件如下：
+
+1. 確定已從 Microsoft 下載中心下載最新的行動代理程式安裝程式，並放在設定伺服器和所有 scale out 進程伺服器上的推送安裝程式存放庫中
+2. [下載](site-recovery-whats-new.md) 最新的 RHEL 5 或 CentOS 5 代理程式安裝程式。 最新的行動代理程式版本為 [9.37](https://support.microsoft.com/help/4582666/)
+3. 流覽至設定伺服器，將 RHEL 5 或 CentOS 5 代理程式安裝程式複製到路徑-INSTALL_DIR \home\svsystems\pushinstallsvc\repository
+1. 複製最新的安裝程式之後，請重新開機 InMage PushInstall 服務。 
+1. 現在，流覽至相關聯的相應放大進程伺服器，重複步驟3和步驟4。
+1. **例如**，如果安裝路徑為 C:\Program Files (x86) \microsoft Azure Site Recovery，則上述目錄會是
+    1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
+
+## <a name="debian-7-server"></a>Debian 7 伺服器
+
+從9.36 版開始， **更新或保護 Debian 7 機器** 的必要條件如下：
+
+1. 確定已從 Microsoft 下載中心下載最新的行動代理程式安裝程式，並放在設定伺服器和所有 scale out 進程伺服器上的推送安裝程式存放庫中
+2. [下載](site-recovery-whats-new.md) 最新的 Debian 7 代理程式安裝程式。 最新的行動代理程式版本為 [9.37](https://support.microsoft.com/help/4582666/)
+3. 流覽至設定伺服器，將 Debian 7 代理程式安裝程式複製到路徑-INSTALL_DIR \home\svsystems\pushinstallsvc\repository
+1. 複製最新的安裝程式之後，請重新開機 InMage PushInstall 服務。 
+1. 現在，流覽至相關聯的相應放大進程伺服器，重複步驟3和步驟4。
+1. **例如**，如果安裝路徑為 C:\Program Files (x86) \microsoft Azure Site Recovery，則上述目錄會是
+    1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
 
 ## <a name="next-steps"></a>後續步驟
 
