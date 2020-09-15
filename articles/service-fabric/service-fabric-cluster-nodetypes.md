@@ -1,24 +1,24 @@
 ---
 title: 節點類型和虛擬機器擴展集
-description: 瞭解 Azure Service Fabric 節點類型與虛擬機器擴展集之間的關聯，以及如何從遠端連線至擴展集實例或叢集節點。
+description: 瞭解 Azure Service Fabric 節點類型與虛擬機器擴展集的關聯性，以及如何從遠端連線到擴展集實例或叢集節點。
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 4efa8626e80cbd64cd6216faa1869d7210f32cf2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 870467760a2baaa887b06fb8e01335f225f04d6e
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261098"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561885"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric 節點類型與虛擬機器擴展集
 
-[虛擬機器擴展集](../virtual-machine-scale-sets/index.yml)是 Azure 計算資源。 您可以使用擴展集來將虛擬機器集合以一組的方式加以部署和管理。 您在 Azure Service Fabric 叢集中定義的每個節點類型都只會設定一個擴展集：多個節點類型無法由相同的擴展集支援，而且在大部分情況下，不應該 (一個節點類型，) 由多個擴展集支援。 在[垂直調整](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)節點類型的罕見情況下，當您將 `nodeTypeRef` 複本從原始遷移至升級的擴展集時，如果您暫時有兩個擴展集，則會發生例外狀況。
+[虛擬機器擴展集](../virtual-machine-scale-sets/index.yml)是 Azure 計算資源。 您可以使用擴展集來將虛擬機器集合以一組的方式加以部署和管理。 您在 Azure Service Fabric 叢集中定義的每個節點類型都只會設定一個擴展集：多個節點類型不能受到相同擴展集的支援，而且在大多數情況下，不應該 (一個節點類型，) 由多個擴展集支援。 例外狀況是當您暫時有兩個具有相同值的擴展集，而將複本從原始的擴展集遷移到升級的擴展集時，在 [垂直調整](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) 節點類型時，這是很罕見的情況 `nodeTypeRef` 。
 
-Service Fabric 執行時間會安裝在*ServiceFabric*虛擬機器擴充功能的擴展集內的每部虛擬機器上。 您可以分開相應增加或減少每個節點類型、變更每個叢集節點上執行的 OS SKU、開啟不同組的連接埠，並使用不同的容量計量。
+*ServiceFabric*虛擬機器擴充功能會在擴展集中的每部虛擬機器上安裝 Service Fabric 執行時間。 您可以分開相應增加或減少每個節點類型、變更每個叢集節點上執行的 OS SKU、開啟不同組的連接埠，並使用不同的容量計量。
 
-下圖顯示具有兩個節點類型的叢集，名為*前端*和*後端*。 每個節點類型各有五個節點。
+下圖顯示具有兩個節點類型的叢集，名為 *前端* 和 *後端*。 每個節點類型各有五個節點。
 
 ![有兩個節點類型的叢集][NodeTypes]
 
@@ -32,11 +32,11 @@ Service Fabric 執行時間會安裝在*ServiceFabric*虛擬機器擴充功能�
 
 如果您已 Azure 入口網站中部署叢集，或已使用範例 Azure Resource Manager 範本部署叢集，系統會列出資源群組下的所有資源都。 可以看到每個擴展集或節點類型的負載平衡器。 負載平衡器的名稱使用下列格式：**LB-&lt;節點類型名稱&gt;**。 例如下圖中顯示的 LB-sfcluster4doc-0：
 
-![資源][Resources]
+![螢幕擷取畫面顯示已反白顯示兩個負載平衡器的資源群組。][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric 虛擬機器擴充功能
 
-Service Fabric 虛擬機器擴充功能可用來啟動 Service Fabric 至 Azure 虛擬機器，並設定節點安全性。
+Service Fabric 的虛擬機器擴充功能可用來啟動 Azure 虛擬機器 Service Fabric，以及設定節點安全性。
 
 以下是 Service Fabric 虛擬機器擴充功能的程式碼片段：
 
@@ -72,26 +72,26 @@ Service Fabric 虛擬機器擴充功能可用來啟動 Service Fabric 至 Azure 
 
 以下是屬性描述：
 
-| **名稱** | **允許的值** | **指引或簡短描述** |
+| **Name** | **允許的值** | **指引或簡短描述** |
 | --- | --- | --- | --- |
 | NAME | 字串 | 延伸模組的唯一名稱 |
-| 類型 | "ServiceFabricLinuxNode" 或 "ServiceFabricWindowsNode" | 識別要啟動的 OS Service Fabric |
-| autoUpgradeMinorVersion | true 或 false | 啟用自動升級 SF 執行時間次要版本 |
-| publisher | ServiceFabric | Service Fabric 擴充功能發行者的名稱 |
+| 類型 | "ServiceFabricLinuxNode" 或 "ServiceFabricWindowsNode" | 識別啟動的作業系統 Service Fabric |
+| autoUpgradeMinorVersion | true 或 false | 啟用 SF Runtime 次要版本的自動升級 |
+| publisher | ServiceFabric | Service Fabric 副檔名發行者的名稱 |
 | clusterEndpont | 字串 | URI：管理端點的埠 |
 | nodeTypeRef | 字串 | NodeType 的名稱 |
-| durabilityLevel | 銅，銀級，金級，白金 | 允許暫停不可變 Azure 基礎結構的時間 |
-| enableParallelJobs | true 或 false | 啟用計算 ParallelJobs，例如以平行方式移除相同擴展集中的 VM 和重新開機 VM |
+| durabilityLevel | 銅級、銀級、金級、白金級 | 允許暫停不可變 Azure 基礎結構的時間 |
+| enableParallelJobs | true 或 false | 啟用計算 ParallelJobs，例如移除 VM，並以平行方式在相同擴展集中重新開機 VM |
 | nicPrefixOverride | 字串 | 子網首碼，例如 "10.0.0.0/24" |
 | commonNames | string[] | 已安裝叢集憑證的一般名稱 |
-| x509StoreName | 字串 | 安裝的叢集憑證所在的存放區名稱 |
-| typeHandlerVersion | 1.1 | 延伸模組的版本。 1.0 建議將傳統版本的擴充功能更新至1。1 |
-| 資料路徑 | 字串 | 用來儲存 Service Fabric 系統服務和應用程式資料狀態的磁片磁碟機路徑。
+| 上 x509storename | 字串 | 已安裝的叢集憑證所在的存放區名稱 |
+| typeHandlerVersion | 1.1 | 延伸模組的版本。 建議將1.0 版的延伸模組升級為1。1 |
+| 資料路徑 | 字串 | 磁片磁碟機的路徑，用於儲存 Service Fabric 系統服務和應用程式資料的狀態。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 請參閱[「到處部署」功能和與 Azure 受控叢集比較的概觀](service-fabric-deploy-anywhere.md)。
-* 深入瞭解叢集[安全性](service-fabric-cluster-security.md)。
+* 瞭解叢集 [安全性](service-fabric-cluster-security.md)。
 * [遠端連線](service-fabric-cluster-remote-connect-to-azure-cluster-node.md)到特定擴展集執行個體
 * 部署後在叢集 VM 上[更新 RDP 連接埠範圍值](./scripts/service-fabric-powershell-change-rdp-port-range.md)
 * 變更叢集 VM 的[管理員使用者名稱和密碼](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md)

@@ -6,18 +6,18 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5efb87ad674474b2e21b86b5cdc48785753a51dc
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76275119"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564146"
 ---
 # <a name="available-regions-for-your-storsimple"></a>您的 StorSimple 的可用區域
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure 資料中心在全球多個地區運行，以滿足客戶對資料位置相關之效能、需求和喜好設定的要求。 Azure 地理位置是包含至少一個 Azure 區域的已定義世界區域。 Azure 區域是包含一或多個資料中心之地理位置內的區域。
 
@@ -26,7 +26,7 @@ Azure 資料中心在全球多個地區運行，以滿足客戶對資料位置�
 針對 StorSimple 解決方案，區域選擇特別取決於下列因素：
 
 - 可使用 StorSimple 裝置管理員服務的區域。
-- 可使用 StorSimple 實體、雲端或虛擬裝置的國家/地區。
+- 可用的 StorSimple 實體、雲端或虛擬裝置所在的國家/地區。
 - 儲存 StorSimple 資料之儲存體帳戶為了取得最佳效能所在之區域。
 
 本教學課程說明 StorSimple 裝置管理員服務、內部部署實體和雲端裝置的區域可用性。 本文所含資訊僅適用於 StorSimple 8000 和 1200 系列裝置。
@@ -39,7 +39,7 @@ Azure 資料中心在全球多個地區運行，以滿足客戶對資料位置�
 
 以下是 StorSimple 裝置管理員服務適用於 Azure 公用雲端，而且可以部署之區域的清單。
 
-![storsimple-device-manager-service-regions](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![螢幕擷取畫面顯示已反白顯示 [位置] 清單的 StorSimple 裝置管理員。](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
 針對 Azure Government 雲端，StorSimple 裝置管理員服務在 US Gov 愛荷華州和 US Gov 維吉尼亞州資料中心內提供。
 
@@ -55,11 +55,11 @@ StorSimple 資料實際儲存在 Azure 儲存體帳戶中，且這些帳戶在�
 
 ## <a name="availability-of-storsimple-device"></a>StorSimple 裝置的可用性
 
-視模型而定，StorSimple 裝置可以在不同的地理位置或國家/地區使用。
+視模型而定，StorSimple 裝置可在不同的地理位置或國家/地區中使用。
 
 ### <a name="storsimple-physical-device-models-81008600"></a>StorSimple 實體裝置 (型號 8100/8600)
 
-如果使用 StorSimple 8100 或8600實體裝置，裝置會在下列國家/地區提供。
+如果使用 StorSimple 8100 或8600實體裝置，則裝置會在下列國家/地區中提供。
 
 | #  | 國家/地區        | #  | 國家/地區     | #  | 國家/地區      | #  | 國家/地區             |
 |----|-----------------------|----|--------------------|----|---------------------|----|----------------------------|
@@ -79,7 +79,7 @@ StorSimple 資料實際儲存在 Azure 儲存體帳戶中，且這些帳戶在�
 | 14 | 德國               | 29 | 墨西哥             | 44 | 斯洛伐克            | 59 | 越南                    |
 | 15 | 希臘                | 30 | 荷蘭        | 45 | 斯洛維尼亞            | 60 | 克羅埃西亞                    |
 
-此清單會隨著更多國家/地區新增而變更。 如需最新的地理位置清單，請移至[產品條款](https://www.microsoft.com/en-us/licensing/product-licensing/products)中的＜儲存體陣列條款附錄＞。
+這份清單會隨著新增更多國家/地區而變更。 如需最新的地理位置清單，請移至[產品條款](https://www.microsoft.com/en-us/licensing/product-licensing/products)中的＜儲存體陣列條款附錄＞。
 
 Microsoft 可以在前述清單中的地理位置寄送實體硬體，並提供 StorSimple 的硬體備用零件更換。
 

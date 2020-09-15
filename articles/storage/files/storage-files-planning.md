@@ -4,25 +4,32 @@ description: 瞭解規劃 Azure 檔案儲存體部署。 您可以直接裝載 A
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: db7ae0bd33bc52f80788db4994dcf2a3ca4d909a
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: bf982b313c99034065aad5f246a69caf665a2657
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705906"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563424"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>規劃 Azure 檔案服務部署
 [Azure 檔案儲存體](storage-files-introduction.md) 可以用兩種主要方式進行部署：直接裝載無伺服器的 azure 檔案共用，或使用 Azure 檔案同步快取內部部署的 azure 檔案共用。您所選擇的部署選項會變更您規劃部署時需要考慮的事項。 
 
-- **直接裝戴 Azure 檔案共用**：由於 Azure 檔案儲存體會提供 SMB 存取，因此您可以使用 Windows、macOS 和 Linux 中提供的標準 SMB 用戶端，在內部部署或雲端中裝載 Azure 檔案共用。 由於 Azure 檔案共用是無伺服器的，因此針對生產案例進行部署並不需要管理檔案伺服器或 NAS 裝置。 這表示您不需要套用軟體修補程式或交換實體磁碟。 
+- **Azure 檔案共用的直接掛接**：由於 Azure 檔案儲存體提供伺服器訊息區 (SMB) 或網路檔案系統 (NFS) 存取，因此您可以使用 OS 中可用的標準 SMB 或 NFS 用戶端，在內部部署或雲端中掛接 azure 檔案共用。 由於 Azure 檔案共用是無伺服器的，因此針對生產案例進行部署並不需要管理檔案伺服器或 NAS 裝置。 這表示您不需要套用軟體修補程式或交換實體磁碟。 
 
-- **使用 Azure 檔案同步快取內部部署的 Azure 檔案共用**：Azure 檔案同步可讓您將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的靈活度、效能及相容性。 Azure 檔案同步會將內部部署 (或雲端) Windows Server 轉換成 Azure 檔案共用的快速快取。 
+- **使用 Azure 檔案同步快取內部部署的 Azure 檔案共用**：Azure 檔案同步可讓您將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的靈活度、效能及相容性。 Azure 檔案同步將內部部署 (或雲端) Windows Server 轉換成 Azure SMB 檔案共用的快速快取。 
 
 本文主要討論部署 Azure 檔案共用以直接由內部部署或雲端用戶端裝載的部署考慮。 若要規劃 Azure 檔案同步部署，請參閱 [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)。
+
+## <a name="available-protocols"></a>可用的通訊協定
+
+Azure 檔案儲存體提供兩種通訊協定，可在裝載檔案共用、SMB 和網路檔案系統 (NFS) 時使用。 如需這些通訊協定的詳細資訊，請參閱 [Azure 檔案共用通訊協定](storage-files-compare-protocols.md)。
+
+> [!IMPORTANT]
+> 本文的大部分內容僅適用于 SMB 共用。 適用于 NFS 共用的任何作業，都會特別指出它適用。
 
 ## <a name="management-concepts"></a>管理概念
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
@@ -54,7 +61,7 @@ ms.locfileid: "88705906"
 
 - 透過 ExpressRoute 或 VPN 連接存取 Azure 檔案共用。 當您透過網路通道存取 Azure 檔案共用時，您可以掛接 Azure 檔案共用，例如內部部署檔案共用，因為 SMB 流量不會跨越組織界限。   
 
-從技術觀點來看，透過公用端點掛接 Azure 檔案共用會很容易，我們預期大部分的客戶會選擇透過 ExpressRoute 或 VPN 連線來掛接 Azure 檔案共用。 若要這樣做，您必須為您的環境設定下列各項：  
+從技術觀點來看，透過公用端點掛接 Azure 檔案共用會很容易，我們預期大部分的客戶會選擇透過 ExpressRoute 或 VPN 連線來掛接 Azure 檔案共用。 您可以使用 SMB 與 NFS 共用來裝載這些選項。 若要這樣做，您必須為您的環境設定下列各項：  
 
 - **使用 ExpressRoute、站對站或點對站 VPN 的網路通道**：通道進入虛擬網路可讓您從內部部署存取 Azure 檔案共用，即使已封鎖埠445。
 - **私人端點**：私人端點會在虛擬網路的位址空間內，為您的儲存體帳戶提供專用的 IP 位址。 這可啟用網路通道，而不需要開啟內部部署網路，直到 Azure 儲存體叢集擁有的所有 IP 位址範圍為止。 
@@ -66,6 +73,10 @@ ms.locfileid: "88705906"
 Azure 檔案儲存體支援兩種不同的加密類型：傳輸中的加密，與掛接/存取 Azure 檔案共用時所使用的加密相關，以及待用加密（與資料儲存在磁片時的加密方式相關）。 
 
 ### <a name="encryption-in-transit"></a>傳輸中加密
+
+> [!IMPORTANT]
+> 本節涵蓋 SMB 共用的傳輸詳細資料中的加密。 如需有關 NFS 共用傳輸中加密的詳細資訊，請參閱 [安全性](storage-files-compare-protocols.md#security)。
+
 根據預設，所有 Azure 儲存體帳戶都會啟用傳輸中加密。 這表示當您透過 SMB 掛接檔案共用或透過 FileREST 通訊協定 (例如，透過 Azure 入口網站、PowerShell/CLI 或 Azure SDK) 來存取檔案共用時，Azure 檔案儲存體只會在使用了 SMB 3.0 以上 (有加密功能) 或 HTTPS 來進行連線時，才會允許您建立連線。 不支援 SMB 3.0 的用戶端，或雖支援 SMB 3.0 但不支援 SMB 加密的用戶端，將無法在啟用了傳輸中加密的情況下掛接 Azure 檔案共用。 如需哪些作業系統支援 SMB 3.0 (有加密功能) 的詳細資訊，請參閱適用於 [Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md) 和 [Linux](storage-how-to-use-files-linux.md) 的詳細文件。 所有目前版本的 PowerShell、CLI 和 SDK 都支援 HTTPS。  
 
 您可以為 Azure 儲存體帳戶停用傳輸中加密。 停用加密時，Azure 檔案儲存體也會允許 SMB 2.1、不含加密的 SMB 3.0，以及透過 HTTP 的未加密 FileREST API 呼叫。 會停用傳輸中加密的主要原因，是為了支援必須在舊版作業系統上執行的繼承應用程式，例如 Windows Server 2008 R2 或舊版 Linux 散發套件。 Azure 檔案儲存體只會在與 Azure 檔案共用相同的 Azure 區域內允許 SMB 2.1 連線；Azure 檔案共用所在的 Azure 區域外 (例如，內部部署或不同 Azure 區域) 的 SMB 2.1 用戶端，則無法存取檔案共用。

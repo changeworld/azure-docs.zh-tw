@@ -3,12 +3,12 @@ title: 升級叢集的 Azure Service Fabric 版本
 description: 升級執行 Service Fabric 叢集的 Service Fabric 程式碼和/或組態，包括設定叢集更新模式、升級憑證、新增應用程式連接埠、修補作業系統等等。 執行升級時，您可以期待些什麼？
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: b0fef612725d606f1415e7e8d004aacee025cedf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01fe916f0ee78c8481ac6b17b8f7409b47c852ee
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261046"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564282"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>升級叢集的 Service Fabric 版本
 
@@ -28,7 +28,7 @@ ms.locfileid: "86261046"
 ## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>在 Azure 入口網站中設定升級模式
 當您建立叢集時，您可以將叢集設為自動或手動。
 
-![Create_Manualmode][Create_Manualmode]
+![螢幕擷取畫面顯示 [建立 Service Fabric 叢集] 窗格，其中已選取選項2叢集設定和 [叢集設定] 窗格開啟。][Create_Manualmode]
 
 在即時叢集上，您可以利用管理體驗將叢集設為自動或手動。 
 
@@ -39,12 +39,12 @@ ms.locfileid: "86261046"
 
 在解決導致復原的問題後，您需要依照之前的相同步驟再次起始升級。
 
-![Manage_Automaticmode][Manage_Automaticmode]
+![螢幕擷取畫面顯示 [網狀架構升級] 窗格已開啟的 [Service Fabric 叢集] 窗格，並醒目提示升級選項，包括 [自動] 和 [手動]。][Manage_Automaticmode]
 
 ## <a name="set-the-upgrade-mode-using-a-resource-manager-template"></a>使用 Resource Manager 範本設定升級模式
 將 “upgradeMode" 組態新增至 Microsoft.ServiceFabric/clusters 資源定義，並將 “clusterCodeVersion" 設為其中一個支援的網狀架構版本，如下所示，然後部署範本。 “upgradeMode" 的有效值為 “Manual” 或 “Automatic”。
 
-![ARMUpgradeMode][ARMUpgradeMode]
+![螢幕擷取畫面顯示範本，此範本會以純文字縮排以反映結構，而且會反白顯示 >clustercodeversion 和 upgradeMode。][ARMUpgradeMode]
 
 ### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>在設定為手動模式的叢集上，透過 Resource Manager 範本升級至新的版本。
 當叢集處於手動模式時，若要升級至新的版本，請將 “clusterCodeVersion" 變更為支援的版本並部署。 部署範本時會自動展開 Fabric 升級。 升級期間會遵守叢集健康狀態原則 (綜合節點健康狀態和所有在叢集中執行之應用程式的健康狀態)。
@@ -54,7 +54,7 @@ ms.locfileid: "86261046"
 在解決導致復原的問題後，您需要依照之前的相同步驟再次起始升級。
 
 ## <a name="set-custom-health-polices-for-upgrades"></a>設定升級的自訂健康情況原則
-您可以為網狀架構升級指定自訂的健全狀況原則。 如果您已將叢集設定為自動網狀架構升級，則這些原則會套用至[自動網狀架構升級的階段 1](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades)。
+您可以為網狀架構升級指定自訂的健全狀況原則。 如果您已將叢集設定為自動網狀架構升級，則這些原則會套用至 [自動網狀架構升級的第1階段](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades)。
 如果已將您的叢集設定為手動網狀架構升級，則每當您選取新版本而觸發系統開始在叢集中展開網狀架構升級時，就會套用這些原則。 如果您不覆寫原則，則會使用預設值。
 
 在 [網狀架構升級] 刀鋒視窗下，您可以選取進階升級設定來指定自訂的健康狀態原則，或檢閱目前的設定。 檢閱下列作法圖片。 
@@ -109,9 +109,9 @@ Output:
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* 瞭解如何自訂一些[service fabric 叢集網狀架構設定](service-fabric-cluster-fabric-settings.md)
+* 瞭解如何自訂某些 [service fabric 叢集網狀架構設定](service-fabric-cluster-fabric-settings.md)
 * 了解如何 [相應放大和相應縮小叢集](service-fabric-cluster-scale-in-out.md)
-* 瞭解[應用程式升級](service-fabric-application-upgrade.md)
+* 深入瞭解 [應用程式升級](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

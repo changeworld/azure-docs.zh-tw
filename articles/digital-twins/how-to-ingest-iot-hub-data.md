@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 8/11/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8d720d77773e506a13f176723ab4583613f1e625
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 7e6c200f0bec90fb73122e50885f2e6ad7420aeb
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291750"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564384"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>將 IoT 中樞遙測內嵌到 Azure 數位 Twins
 
@@ -22,7 +22,7 @@ Azure 數位 Twins 是由來自 IoT 裝置和其他來源的資料所驅動。 A
 
 此操作說明文件將逐步解說撰寫可從 IoT 中樞內嵌遙測資料的 Azure 函式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 繼續進行此範例之前，您必須將下列資源設定為必要條件：
 * **IoT 中樞**。 如需相關指示，請參閱[此 Iot 中樞快速入門](../iot-hub/quickstart-send-telemetry-cli.md)的*建立 iot 中樞*一節。
@@ -64,7 +64,7 @@ Azure 數位 Twins 是由來自 IoT 裝置和其他來源的資料所驅動。 A
 
 若要將 **此模型上傳至您的 twins 實例**，請開啟 Azure CLI，然後執行下列命令：
 
-```azurecli-interactive
+```azurecli
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
 
@@ -72,7 +72,7 @@ az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;
 
 然後，您必須 **使用此模型建立一個對應項**。 使用下列命令建立對應項，並將0.0 設定為初始溫度值。
 
-```azurecli-interactive
+```azurecli
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
 ```
 
@@ -221,7 +221,7 @@ namespace IotHubtoTwins
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
-```azurecli-interactive
+```azurecli
 az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}
 ```
 
@@ -251,7 +251,7 @@ az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name
 
 若要查看值變更，請重複執行上述查詢命令。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 閱讀 Azure 數位 Twins 的資料輸入和輸出：
 * [*概念：與其他服務整合*](concepts-integration.md)

@@ -1,22 +1,25 @@
 ---
-title: 針對 Windows 中的 Azure 檔案服務問題進行疑難排解 | Microsoft Docs
-description: 針對 Windows 中的 Azure 檔案儲存體問題進行疑難排解。 當您從 Windows 用戶端連線時，請參閱與 Azure 檔案儲存體相關的常見問題，並查看可能的解決方法。
+title: 針對 Windows 中的 Azure 檔案服務問題進行疑難排解
+description: 針對 Windows 中的 Azure 檔案儲存體問題進行疑難排解。 當您從 Windows 用戶端連線時，請參閱與 Azure 檔案儲存體相關的常見問題，並查看可能的解決方法。 僅適用于 SMB 共用
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 549f9b03272accbe107c432f4929c5de250a6f6b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 16491e36e0196bc3dabee17daf905d9a5204f8cd
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532387"
+ms.locfileid: "90564248"
 ---
-# <a name="troubleshoot-azure-files-problems-in-windows"></a>針對 Windows 中的 Azure 檔案服務問題進行疑難排解
+# <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>針對 Windows (SMB) 中的 Azure 檔案儲存體問題進行疑難排解
 
 本文列出當您從 Windows 用戶端連線時，與 Microsoft Azure 檔案服務相關的常見問題。 文中也會提供這些問題的可能原因和解決方案。 除了本文中的疑難排解步驟之外，您也可以使用[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   來確保 Windows 用戶端環境具備正確的必要條件。 AzFileDiagnostics 會自動偵測本文中提及的大部分徵兆，並協助設定您的環境以取得最佳效能。 您也可以在 [Azure 檔案共用疑難排解員](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到此資訊，當中有提供步驟來協助您解決連線/對應/掛接 Azure 檔案共用的問題。
+
+> [!IMPORTANT]
+> 本文內容僅適用于 SMB 共用。
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>掛接 Azure 檔案共用時發生錯誤 5
@@ -54,7 +57,7 @@ Windows 8、Windows Server 2012 和更新版本的每個系統交涉都要求包
 
 - **Active Directory (AD) ** 請參閱 [將共用層級許可權指派給身分識別](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions)。
 
-    使用 (從 Active Directory (AD) 同步至 Azure Active Directory) AAD Azure AD Connect 的群組和使用者，支援共用層級的許可權指派。  確認指派共用層級許可權的群組和使用者，不支援「僅限雲端」群組。
+    針對已從 Active Directory (AD) 同步至 Azure Active Directory (使用 Azure AD) Azure AD Connect 的群組和使用者，支援共用層級的許可權指派。  確認指派共用層級許可權的群組和使用者，不支援「僅限雲端」群組。
 - **Azure Active Directory Domain Services (AZURE AD DS) ** 請參閱 [將存取權限指派給身分識別](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity)。
 
 <a id="error53-67-87"></a>

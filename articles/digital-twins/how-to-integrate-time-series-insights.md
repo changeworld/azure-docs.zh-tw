@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 870aded1a7b00cbfbe96aff4997561b15be4141c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: c6c5c9b00ec3309638a7c5618e5995c8c5f07b11
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290086"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564351"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>整合 Azure 數位 Twins 與 Azure 時間序列深入解析
 
@@ -20,7 +20,7 @@ ms.locfileid: "89290086"
 
 本文所述的解決方案可讓您收集及分析 IoT 解決方案的歷程記錄資料。 Azure 數位 Twins 非常適合用來將資料摘要到時間序列深入解析，因為它可讓您將多個資料流程相互關聯，並在將資訊傳送到時間序列深入解析之前將資訊標準化。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須要有 **Azure 數位 Twins 實例**，才能設定與時間序列深入解析之間的關聯性。 此實例應設定為根據資料更新數位對應項資訊，因為您需要更新對應項資訊幾次，才能看到時間序列深入解析中所追蹤的資料。 
 
@@ -46,21 +46,21 @@ Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end
 
 1. 首先，建立事件中樞命名空間，此命名空間將會從您的 Azure 數位 Twins 實例接收事件。 您可以使用下列 Azure CLI 指示，或使用 Azure 入口網站： [*快速入門：使用 Azure 入口網站建立事件中樞*](../event-hubs/event-hubs-create.md)。
 
-    ```azurecli-interactive
+    ```azurecli
     # Create an Event Hubs namespace. Specify a name for the Event Hubs namespace.
     az eventhubs namespace create --name <name for your Event Hubs namespace> --resource-group <resource group name> -l <region, for example: East US>
     ```
 
 2. 在命名空間內建立事件中樞。
 
-    ```azurecli-interactive
+    ```azurecli
     # Create an event hub to receive twin change events. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
 3. 使用傳送和接收許可權建立 [授權規則](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) 。
 
-    ```azurecli-interactive
+    ```azurecli
     # Create an authorization rule. Specify a name for the rule.
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
@@ -153,12 +153,12 @@ namespace SampleFunctionsApp
 1. 從本文稍早準備您的 *事件中樞命名空間* 和 *資源組* 名
 
 2. 建立新的事件中樞
-    ```azurecli-interactive
+    ```azurecli
     # Create an event hub. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
 3. 使用傳送和接收許可權建立[授權規則](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create)
-    ```azurecli-interactive
+    ```azurecli
     # Create an authorization rule. Specify a name for the rule.
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
     ```
@@ -171,13 +171,13 @@ namespace SampleFunctionsApp
 
 1. 使用您針對 Twins 中樞所建立的授權規則，取得 Twins [事件中樞連接字串](../event-hubs/event-hubs-get-connection-string.md)。
 
-    ```azurecli-interactive
+    ```azurecli
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <Twins event hub name from earlier> --name <Twins auth rule from earlier>
     ```
 
 2. 使用您取得的連接字串，在包含您的連接字串的函式應用程式中建立應用程式設定：
 
-    ```azurecli-interactive
+    ```azurecli
     az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string> -g <resource group> -n <your App Service (function app) name>"
     ```
 
@@ -185,13 +185,13 @@ namespace SampleFunctionsApp
 
 1. 使用您先前為時間序列深入解析中樞建立的授權規則，取得 TSI [事件中樞連接字串](../event-hubs/event-hubs-get-connection-string.md)：
 
-    ```azurecli-interactive
+    ```azurecli
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <TSI event hub name> --name <TSI auth rule>
     ```
 
 2. 在您的函數應用程式中，建立包含您連接字串的應用程式設定：
 
-    ```azurecli-interactive
+    ```azurecli
     az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string> -g <resource group> -n <your App Service (function app) name>"
     ```
 
@@ -237,7 +237,7 @@ namespace SampleFunctionsApp
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="每個對應項的溫度資料會以不同色彩的三個平行線繪製。":::
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 預設會在時間序列深入解析中將數位 twins 儲存為一般階層，但是可以使用模型資訊和組織的多層級階層進行擴充。 若要深入瞭解此程式，請參閱： 
 

@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 20a376d303f90727063f288e239e89ede2a1113c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298210"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564354"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 數位 Twins 來更新 Azure 地圖服務室內地圖
 
@@ -25,7 +25,7 @@ ms.locfileid: "89298210"
 2. 建立 Azure 函數來更新 Azure 地圖服務室內地圖功能 stateset。
 3. 如何在 Azure 數位 Twins 圖形中儲存地圖識別碼和功能 stateset 識別碼。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 * 遵循 Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)。
     * 您將會使用額外的端點和路由來擴充此對應項。 您也會從該教學課程將另一個函式新增至函數應用程式。 
@@ -135,7 +135,7 @@ namespace SampleFunctionsApp
 
 您必須在函數應用程式中設定兩個環境變數。 其中一個是您的 [Azure 地圖服務主要訂](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account)用帳戶金鑰，另一個則是您的 [Azure 地圖服務 stateset 識別碼](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset)。
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "subscription-key=<your-Azure-Maps-primary-subscription-key> -g <your-resource-group> -n <your-App-Service-(function-app)-name>"
 az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-stateset-ID> -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
@@ -162,7 +162,7 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 視拓撲的設定而定，您可以將這三個屬性儲存在與對應的資料細微性相關聯的不同層級上。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解如何管理、升級及從 twins 圖形中取得資訊，請參閱下列參考：
 

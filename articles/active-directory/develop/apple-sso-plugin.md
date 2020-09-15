@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/31/2020
+ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 6afbdb6bcb067bdcb570c366f4604ea77ec4f490
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e43ce318ca9e9b14ad059dd296799667653e0f95
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526811"
+ms.locfileid: "90561341"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式 (Preview) 
 
@@ -148,11 +148,11 @@ Microsoft 企業 SSO 外掛程式依賴 [Apple 的企業單一登入架構](http
 - 應用程式會使用標準通訊協定與 Azure AD (例如，OAuth2、SAML、WS-同盟) 
 - 應用程式不會在原生 UI 中收集純文字使用者名稱和密碼
 
-在此情況下，應用程式會在應用程式建立網路要求時提供 SSO，並開啟網頁瀏覽器來登入使用者。 當使用者重新導向至 Azure AD 登入 URL 時，SSO 外掛程式會驗證 URL，並檢查該 URL 是否有可用的 SSO 認證。 如果有的話，SSO 外掛程式會將 SSO 認證傳遞給 Azure AD，這會授權應用程式完成網路要求，而不要求使用者輸入認證。 此外，如果已知裝置 Azure AD，SSO 外掛程式也會傳遞裝置憑證來滿足以裝置為基礎的條件式存取檢查。 
+在此情況下，當應用程式建立網路要求並開啟網頁瀏覽器來登入使用者時，就會提供 SSO。 當使用者重新導向至 Azure AD 登入 URL 時，SSO 外掛程式會驗證 URL，並檢查該 URL 是否有可用的 SSO 認證。 如果有的話，SSO 外掛程式會將 SSO 認證傳遞給 Azure AD，這會授權應用程式完成網路要求，而不要求使用者輸入其認證。 此外，如果已知裝置 Azure AD，SSO 外掛程式也會傳遞裝置憑證來滿足以裝置為基礎的條件式存取檢查。 
 
-為了支援非 MSAL 應用程式的 SSO，SSO 外掛程式會針對「 [什麼是主要](../devices/concept-primary-refresh-token.md#browser-sso-using-prt)重新整理權杖」中所述的 Windows 瀏覽器外掛程式，執行類似的通訊協定。 
+為了支援非 MSAL 應用程式的 SSO，SSO 外掛程式會執行類似于「主要重新整理 [權杖](../devices/concept-primary-refresh-token.md#browser-sso-using-prt)」中所述的 Windows 瀏覽器外掛程式的通訊協定。 
 
-相較于 MSAL 型應用程式，SSO 外掛程式可透過與應用程式提供的現有瀏覽器登入體驗整合，更明確地針對非 MSAL 的應用程式運作。 終端使用者會看到其熟悉的體驗，而不需要在每個應用程式中進行額外的登入。 例如，SSO 外掛程式不會顯示原生帳戶選擇器，而是會將 SSO 會話新增至網頁型帳戶選擇器體驗。 
+相較于 MSAL 型應用程式，SSO 外掛程式可透過與應用程式提供的現有瀏覽器登入體驗整合，更明確地針對非 MSAL 的應用程式運作。 終端使用者會看到他們熟悉的體驗，而不需要在每個應用程式中執行其他登入。 例如，SSO 外掛程式不會顯示原生帳戶選擇器，而是會將 SSO 會話新增至網頁型帳戶選擇器體驗。 
 
 ## <a name="next-steps"></a>後續步驟
 

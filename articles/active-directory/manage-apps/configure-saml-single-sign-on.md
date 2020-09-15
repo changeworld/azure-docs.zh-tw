@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 827afbf811042acb2bf01f3e863408d5a6e9732f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 500bfff4afaebc345d344566b02fe945edb05795
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441913"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562599"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>設定 SAML 型單一登入
 
@@ -27,7 +27,7 @@ ms.locfileid: "89441913"
 
 使用 Azure AD 作為身分識別提供者 (IdP) 並設定單一登入 (SSO) 可以簡單或複雜，視所使用的應用程式而定。 有些應用程式只能透過幾個動作來設定。 其他則需要深入設定。 若要快速加速，請逐步完成應用程式管理的 [快速入門系列](view-applications-portal.md) 。 如果您要新增的應用程式很簡單，您可能不需要閱讀這篇文章。 如果您要新增的應用程式需要 SAML 型 SSO 的自訂設定，則這篇文章適用于您。
 
-在 [快速入門系列](view-applications-portal.md)中，有一篇文章說明如何設定單一登入。 在其中，您將瞭解如何存取應用程式的 SAML 設定頁面。 [SAML 設定] 頁面包含五個區段。 本文將詳細討論這些章節。
+在 [快速入門系列](add-application-portal-setup-sso.md)中，有一篇文章說明如何設定單一登入。 在其中，您將瞭解如何存取應用程式的 SAML 設定頁面。 [SAML 設定] 頁面包含五個區段。 本文將詳細討論這些章節。
 
 > [!IMPORTANT] 
 > 在某些案例中，在**企業應用**程式中，應用程式的導覽中不會有**單一登入**選項。 
@@ -42,7 +42,7 @@ ms.locfileid: "89441913"
 您應該從應用程式廠商處取得這些值。 您可手動輸入值或上傳中繼資料檔案，以擷取欄位的值。
 
 > [!TIP]
-> 許多應用程式都已預先設定為搭配 Azure AD 使用。 這些應用程式會列在應用程式資源庫中，當您將應用程式新增至 Azure AD 租使用者時，您可以流覽這些應用程式。 [快速入門系列](view-applications-portal.md)將引導您完成此程式。 針對資源庫中的應用程式，您將會找到詳細的逐步設定指示。 若要存取這些步驟，您可以按一下應用程式的 [SAML 設定] 頁面上的連結（如快速入門系列中所述），或者您可以在 [SaaS 應用](../saas-apps/tutorial-list.md)程式設定教學課程中流覽所有應用程式設定教學課程的清單。
+> 許多應用程式都已預先設定為搭配 Azure AD 使用。 這些應用程式會列在應用程式資源庫中，當您將應用程式新增至 Azure AD 租使用者時，您可以流覽這些應用程式。 [快速入門系列](add-application-portal-setup-sso.md)將引導您完成此程式。 針對資源庫中的應用程式，您將會找到詳細的逐步設定指示。 若要存取這些步驟，您可以按一下應用程式的 [SAML 設定] 頁面上的連結（如快速入門系列中所述），或者您可以在 [SaaS 應用](../saas-apps/tutorial-list.md)程式設定教學課程中流覽所有應用程式設定教學課程的清單。
 
 | 基本 SAML 組態設定 | SP 起始 | idP 起始 | 描述 |
 |:--|:--|:--|:--|
@@ -57,7 +57,7 @@ ms.locfileid: "89441913"
 當使用者對應用程式進行驗證時，Azure AD 會將 SAML 權杖簽發給應用程式，此權杖具有可唯一識別該應用程式的使用者相關資訊 (或宣告)。 根據預設，此資訊包含使用者的使用者名稱、電子郵件地址、名字和姓氏。 例如，如果應用程式需要特定的宣告值或**名稱**格式，而不是使用者名稱，則您可能需要自訂這些宣告。 
 
 > [!IMPORTANT]
-> 許多應用程式已預先設定，且在應用程式資源庫中，您不需要擔心如何設定使用者和群組宣告。 [快速入門系列](view-applications-portal.md)將逐步引導您新增和設定應用程式。
+> 許多應用程式已預先設定，且在應用程式資源庫中，您不需要擔心如何設定使用者和群組宣告。 [快速入門系列](add-application-portal.md)將逐步引導您新增和設定應用程式。
 
 
 **唯一的使用者識別碼 (名稱識別碼) **識別碼值是必要的宣告，而且很重要。 預設值為*user。* 使用者識別碼可唯一識別應用程式內的每個使用者。 例如，如果電子郵件地址同時是使用者名稱和唯一識別碼，請將此值設定為 *user.mail*。
@@ -79,7 +79,7 @@ ms.locfileid: "89441913"
 Azure AD 會使用憑證來簽署它傳送至應用程式的 SAML 權杖。 您需要此憑證才能設定 Azure AD 和應用程式之間的信任。 如需憑證格式的詳細資料，請參閱應用程式的 SAML 文件。 如需詳細資訊，請參閱[管理同盟單一登入的憑證](manage-certificates-for-federated-single-sign-on.md)和 [SAML 權杖中的進階憑證簽署選項](certificate-signing-options.md)。
 
 > [!IMPORTANT]
-> 許多應用程式已預先設定，且在應用程式資源庫中，您不需要深入探索憑證。 [快速入門系列](view-applications-portal.md)將逐步引導您新增和設定應用程式。
+> 許多應用程式已預先設定，且在應用程式資源庫中，您不需要深入探索憑證。 [快速入門系列](add-application-portal.md)將逐步引導您新增和設定應用程式。
 
 從 Azure AD 中，您可以直接從主要 [設定使用 SAML 的單一登入] 頁面，以 Base64 或原始格式下載作用中的憑證。 此外，您也可以下載應用程式中繼資料 XML 檔案，或使用應用程式同盟中繼資料 URL 來取得使用中的憑證。 若要查看、建立或下載您的憑證 (作用中或非作用中)，請遵循下列步驟。
 

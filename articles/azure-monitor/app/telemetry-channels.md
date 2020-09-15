@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 41d2feefc5af1e795520d9b3d90809e625502fa6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fec7bfc16e2cc36d19c84b93b5b93c3c1365b166
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918395"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564010"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights 中的遙測通道
 
@@ -153,13 +153,25 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 雖然其封裝和命名空間的名稱包含 "WindowsServer"，但 Windows 以外的系統支援此通道，但有下列例外狀況。 在 Windows 以外的系統上，通道預設不會建立本機儲存體資料夾。 您必須建立本機儲存體資料夾，並設定通道以使用它。 設定本機儲存體之後，通道在所有系統上的運作方式都相同。
 
+> [!NOTE]
+> 使用 release 2.15.0-Beta3 和更高的本機儲存體，現在會自動為 Linux、Mac 和 Windows 建立。 針對非 Windows 系統，SDK 會根據下列邏輯自動建立本機儲存體資料夾：
+> - `${TMPDIR}` -如果 `${TMPDIR}` 已設定環境變數，則會使用此位置。
+> - `/var/tmp` -如果先前的位置不存在，我們會嘗試 `/var/tmp` 。
+> - `/tmp` -如果上述兩個位置都不存在，我們會嘗試 `tmp` 。 
+> - 如果這些位置都不存在，則不會建立本機儲存體，而且仍需要手動設定。 [以取得完整的執行詳細資料](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)。
+
 ### <a name="does-the-sdk-create-temporary-local-storage-is-the-data-encrypted-at-storage"></a>SDK 是否會建立暫存本機儲存體？ 資料是否會在儲存體加密？
 
 SDK 會在網路問題或節流期間，將遙測專案儲存在本機儲存體中。 此資料不會在本機加密。
 
 若為 Windows 系統，SDK 會在% TEMP% 或% LOCALAPPDATA% 目錄中自動建立暫存本機資料夾，並限制只能存取系統管理員和目前的使用者。
 
-針對 Windows 以外的系統，SDK 不會自動建立任何本機儲存體，因此預設不會在本機儲存任何資料。 您可以自行建立儲存體目錄，並設定通道以使用它。 在此情況下，您必須負責確保目錄受到保護。
+針對 Windows 以外的系統，SDK 不會自動建立任何本機儲存體，因此預設不會在本機儲存任何資料。
+
+> [!NOTE]
+> 使用 release 2.15.0-Beta3 和更高的本機儲存體，現在會自動為 Linux、Mac 和 Windows 建立。 
+
+ 您可以自行建立儲存體目錄，並設定通道以使用它。 在此情況下，您必須負責確保目錄受到保護。
 閱讀有關 [資料保護和隱私權](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage)的詳細資訊。
 
 ## <a name="open-source-sdk"></a>開放原始碼 SDK

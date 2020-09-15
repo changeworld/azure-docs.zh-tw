@@ -3,12 +3,12 @@ title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
 ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 38e7d349d8b77b53a19fdf360bd6db454907d4f9
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 67111ecb215f4976dd8d3bbe0b901e68c3ef10ec
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007803"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564061"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -82,6 +82,7 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 - 檢視委派之訂用帳戶的活動記錄詳細資料
 - Log analytics：從多個租使用者中的遠端工作區查詢資料
 - 在客戶租使用者中建立警示，以透過 webhook 在管理租使用者中觸發自動化（例如 Azure 自動化 runbook 或 Azure Functions）
+- 在客戶租使用者中建立診斷設定，以將資源記錄傳送至管理租使用者中的工作區
 - 針對 SAP 工作負載， [使用跨客戶租使用者的匯總視圖來監視 Sap 解決方案計量](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
 [Azure 網路](../../networking/networking-overview.md)：
@@ -156,7 +157,7 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 - 雖然您可以讓使用 Azure Databricks 的訂用帳戶上線，但管理租用戶中的使用者目前無法在委派的訂閱上啟動 Azure Databricks 的工作區。
 - 雖然您可以讓具有資源鎖定的訂用帳戶和資源群組上線，但這些鎖定不會防止使用者在管理租使用者中執行動作。 [拒絕指派](../../role-based-access-control/deny-assignments.md)可保護系統管理的資源，例如由 Azure 管理的應用程式或 Azure 藍圖所建立的資源 (系統指派的拒絕指派)，因此可防止管理租用戶中的使用者在這些資源上執行動作；不過，目前客戶租用戶中的使用者無法建立自己的拒絕指派 (使用者指派的拒絕指派)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure Resource Manager 範本](../how-to/onboard-customer.md)或將[私人或公用受控服務供應專案發佈至 Azure Marketplace](../how-to/publish-managed-services-offers.md)，讓您的客戶上線 Azure Lighthouse。
 - 前往 Azure 入口網站中的 [我的客戶]，以[檢視及管理客戶](../how-to/view-manage-customers.md)。

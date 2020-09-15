@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 7b629adc24f0c9d8826d610c59379605e1ca0b95
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 1a517b5eeac12f7d1ff342206300831d7c38ed28
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061813"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563398"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>總覽-Azure 檔案共用的內部部署 Active Directory Domain Services 透過 SMB 進行驗證
 
-[Azure 檔案儲存體](storage-files-introduction.md)  透過兩種類型的網域服務，支援透過伺服器訊息區進行以身分識別為基礎的驗證 (SMB) ：內部部署 Active Directory Domain Services (AD DS) 和 Azure Active Directory Domain Services (DS Azure AD。 我們強烈建議您複習它的 [運作方式一節](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) ，以選取正確的驗證網域服務。 根據您選擇的網域服務而定，安裝程式會有所不同。 這一系列的文章著重在啟用和設定內部部署 AD DS，以透過 Azure 檔案共用進行驗證。
+[Azure 檔案儲存體](storage-files-introduction.md)  透過兩種類型的網域服務，支援透過伺服器訊息區進行以身分識別為基礎的驗證 (SMB) ：內部部署 Active Directory Domain Services (AD DS) 和 Azure Active Directory Domain Services (DS Azure AD。 強烈建議您複習 [它的運作方式一節](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) ，以選取正確的網域服務進行驗證。 根據您選擇的網域服務而定，安裝程式會有所不同。 這一系列的文章著重在啟用和設定內部部署 AD DS，以透過 Azure 檔案共用進行驗證。
 
 如果您不熟悉 Azure 檔案共用，建議您閱讀我們的 [規劃指南](storage-files-planning.md) ，再閱讀下列系列文章。
 
@@ -28,7 +28,8 @@ ms.locfileid: "90061813"
 - 支援單一登入體驗。
 - 僅支援在作業系統版本比 Windows 7 或 Windows Server 2008 R2 更新的用戶端上。
 - 僅針對儲存體帳戶註冊所在的 AD 樹系支援。 根據預設，您只能使用來自單一樹系的 AD DS 認證來存取 Azure 檔案共用。 如果您需要從不同的樹系存取 Azure 檔案共用，請確定您已設定適當的樹系信任，請參閱 [常見問題](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) 以取得詳細資料。
-- 不支援針對 AD DS 中建立的電腦帳戶進行驗證。 
+- 不支援針對 AD DS 中建立的電腦帳戶進行驗證。
+- 不支援針對網路檔案系統 (NFS) 檔案共用進行驗證。
 
 當您透過 SMB 啟用 Azure 檔案共用的 AD DS 時，您 AD DS 加入的機器可以使用現有的 AD DS 認證來掛接 Azure 檔案共用。 這項功能可透過裝載于內部內部部署電腦或裝載于 Azure 的 AD DS 環境來啟用。
 
@@ -37,7 +38,7 @@ ms.locfileid: "90061813"
 > - [使用 Azure 檔案儲存體 (來取代內部部署檔案伺服器，包括檔案和 AD 驗證的私用連結上的安裝程式) ](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
 > - [使用 Azure 檔案儲存體作為 Windows 虛擬桌面的設定檔容器 (包括 AD 驗證和 FsLogix 設定上的設定) ](https://www.youtube.com/embed/9S5A1IJqfOQ)
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 針對 Azure 檔案共用啟用 AD DS authentication 之前，請確定您已完成下列必要條件： 
 

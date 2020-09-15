@@ -4,12 +4,12 @@ description: 在 Azure Service Fabric 上建立第一個 Windows 容器應用程
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 6303e37eaa8fa7ad45677d551b89337d20b1b604
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e8c3a0d60e10b1cf1f8a827cec8fcc25f3d33b05
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844434"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564299"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 建立第一個 Service Fabric 容器應用程式
 
@@ -17,7 +17,7 @@ ms.locfileid: "87844434"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-在 Service Fabric 叢集上的 Windows 容器中執行現有的應用程式，不需要變更您的應用程式。 本文會逐步引導您建立包含 Python [Flask](http://flask.pocoo.org/) web 應用程式的 Docker 映射，並將其部署至 Azure Service Fabric 叢集。 您也將透過 [Azure Container Registry](../container-registry/index.yml) 共用容器化應用程式。 本文假設您對 Docker 有基本認識。 您可藉由閱讀 [Docker 概觀](https://docs.docker.com/engine/understanding-docker/)來了解 Docker。
+在 Service Fabric 叢集上的 Windows 容器中執行現有的應用程式，不需要變更您的應用程式。 本文將逐步引導您建立包含 Python [Flask](http://flask.pocoo.org/) web 應用程式的 Docker 映射，並將其部署到 Azure Service Fabric 叢集。 您也將透過 [Azure Container Registry](../container-registry/index.yml) 共用容器化應用程式。 本文假設您對 Docker 有基本認識。 您可藉由閱讀 [Docker 概觀](https://docs.docker.com/engine/understanding-docker/)來了解 Docker。
 
 > [!NOTE]
 > 本文適用於 Windows 開發環境。  Service Fabric 叢集執行階段與 Docker 執行階段必須在相同的作業系統上執行。  您無法在 Linux 叢集上執行 Windows 容器。
@@ -25,7 +25,7 @@ ms.locfileid: "87844434"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 執行下列項目的開發電腦︰
   * Visual Studio 2015 或 Visual Studio 2019。
@@ -110,7 +110,7 @@ if __name__ == "__main__":
 
 <a id="Build-Containers"></a>
 ## <a name="build-the-image"></a>建立映像
-執行 `docker build` 命令來建立可執行 Web 應用程式的映像。 開啟 PowerShell 視窗，然後瀏覽至包含 Dockerfile 的目錄。 執行下列命令：
+執行 `docker build` 命令來建立可執行 Web 應用程式的映像。 開啟 PowerShell 視窗，然後瀏覽至包含 Dockerfile 的目錄。 執行以下命令：
 
 ```
 docker build -t helloworldapp .
@@ -143,12 +143,12 @@ name** - 提供執行中容器的名稱 (而不是容器識別碼)。
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-如果該命令未傳回任何專案，請執行下列命令，並檢查 IP 位址的**NetworkSettings** -> **Networks**元素：
+如果該命令未傳回任何專案，請執行下列命令，並檢查**NetworkSettings** -> **Networks**元素中的 IP 位址：
 ```
 docker inspect my-web-site
 ```
 
-連線到執行中的容器。 開啟 web 瀏覽器並指向傳回的 IP 位址，例如 "HTTP： \/ /172.31.194.61"。 您應該會看到 "Hello World!" 標題 顯示在瀏覽器中。
+連線到執行中的容器。 開啟網頁瀏覽器並指向傳回的 IP 位址，例如 "HTTP： \/ /172.31.194.61"。 您應該會看到 "Hello World!" 標題 顯示在瀏覽器中。
 
 若要停止您的容器，請執行︰
 
@@ -167,9 +167,9 @@ docker rm my-web-site
 
 確認容器在開發電腦上執行後，將映像發送到 Azure Container Registry 中您的登錄。
 
-執行 ``docker login`` ，以使用您的登錄[認證](../container-registry/container-registry-authentication.md)登入您的 container registry。
+執行 ``docker login`` 以使用您的登錄 [認證](../container-registry/container-registry-authentication.md)登入您的 container registry。
 
-下列範例會傳遞 Azure Active Directory [service principal](../active-directory/develop/app-objects-and-service-principals.md) 的識別碼和密碼。 例如，您可能基於自動化案例已指派服務主體到您的登錄庫。 或者，您可以使用登錄使用者名稱和密碼來登入。
+下列範例會傳遞 Azure Active Directory [service principal](../active-directory/develop/app-objects-and-service-principals.md) 的識別碼和密碼。 例如，您可能基於自動化案例已指派服務主體到您的登錄庫。 或者，您可以使用登錄使用者名稱和密碼登入。
 
 ```
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -257,7 +257,7 @@ Service Fabric SDK 和工具會提供一個服務範本，協助您建立容器�
 
 ## <a name="configure-container-repository-authentication"></a>設定容器存放庫驗證
 
-請參閱[容器存放庫驗證](configure-container-repository-credentials.md)，以瞭解如何為容器映射下載設定不同類型的驗證。
+請參閱 [容器存放庫驗證](configure-container-repository-credentials.md)，以瞭解如何為容器映射下載設定不同類型的驗證。
 
 ## <a name="configure-isolation-mode"></a>設定隔離模式
 Windows 支援兩種容器隔離模式：分別為處理序和 Hyper-V。 在處理序隔離模式中，在相同主機電腦上執行的所有容器都與主機共用核心。 在 Hyper-V 隔離模式中，會在每個 Hyper-V 容器與容器主機之間隔離核心。 隔離模式是在應用程式資訊清單檔中指定的 `ContainerHostPolicies` 元素。 可以指定的隔離模式有 `process`、`hyperv` 和 `default`。 預設值為 Windows Server 主機上的程序隔離模式。 在 Windows 10 主機上，僅支援 Hyper-V 隔離模式，因此不論其隔離模式設定為何，容器都會以 Hyper-V 隔離模式執行。 下列程式碼片段顯示如何在應用程式資訊清單檔中指定隔離模式。
@@ -286,11 +286,11 @@ Windows 支援兩種容器隔離模式：分別為處理序和 Hyper-V。 在處
 
 從 6.1 版開始，Service Fabric 會自動將 [Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) 事件整合至其系統健康情況報告。 這表示，如果您的容器已啟用 **HEALTHCHECK**，每當 Docker 報告容器的健康情況狀態發生變更時，Service Fabric 就會報告健康情況。 如果 health_status** 為「狀況良好」**，則 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 中的健康情況報告會顯示 **OK (正常)**，如果 health_status** 為「狀況不良」**，則顯示 **WARNING (警告)**。 
 
-從6.4 版的最新重新整理版本開始，您可以選擇指定 docker HEALTHCHECK 評估應回報為錯誤。 若已啟用此選項，當*health_status*狀況*良好*時，將會出現 **[確定]** 健康情況報告，而當*health_status* *狀況不良*時，將會出現**錯誤**。
+從6.4 的最新重新整理版本開始，您可以選擇是否要將 docker HEALTHCHECK 評估報告為錯誤。 如果啟用此選項，當*health_status*狀況*良好*時，即會出現 **[確定**健康情況] 報告，當*health_status*狀況*不良*時，將會出現**錯誤**。
 
 **HEALTHCHECK**指令指向針對監視容器健康情況所執行的實際檢查，必須存在於產生容器映射時所使用的 Dockerfile 中。
 
-![HealthCheckHealthy][3]
+![螢幕擷取畫面顯示已部署的服務封裝 NodeServicePackage 詳細資料。][3]
 
 ![HealthCheckUnhealthyApp][4]
 
@@ -310,11 +310,11 @@ Windows 支援兩種容器隔離模式：分別為處理序和 Hyper-V。 在處
     </Policies>
 </ServiceManifestImport>
 ```
-根據預設， *IncludeDockerHealthStatusInSystemHealthReport*會設定為**true**， *RestartContainerOnUnhealthyDockerHealthStatus*會設定為**false**，而*TreatContainerUnhealthyStatusAsError*會設定為**false**。 
+依預設， *IncludeDockerHealthStatusInSystemHealthReport* 設為 **true**， *>restartcontaineronunhealthydockerhealthstatus* 設定為 **false**，而 *TreatContainerUnhealthyStatusAsError* 設定為 **false**。 
 
 如果 *RestartContainerOnUnhealthyDockerHealthStatus* 設為 **true**，則報告中重複出現狀況不良的容器就會重新啟動 (可能在其他節點上重新啟動)。
 
-如果*TreatContainerUnhealthyStatusAsError*設定為**true**，當容器的*health_status* *狀況不良*時，將會出現**錯誤**健康情況報告。
+如果*TreatContainerUnhealthyStatusAsError*設定為**true**，當容器的*health_status*狀況*不良*時，將會出現**錯誤**健康情況報告。
 
 如果您需要停用整個 Service Fabric 叢集的 **HEALTHCHECK** 整合，就必須將 [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) 設為 **false**。
 
@@ -323,7 +323,7 @@ Windows 支援兩種容器隔離模式：分別為處理序和 Hyper-V。 在處
 
 在 [連線端點]**** 中，輸入叢集的管理端點。 例如： `containercluster.westus2.cloudapp.azure.com:19000` 。 在 [Azure 入口網站](https://portal.azure.com)中，您可以在叢集的 [概觀] 索引標籤中找到用戶端連線端點。
 
-按一下 [發佈]。
+按一下 [發佈] 。
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 是一個 Web 型工具，可檢查和管理 Service Fabric 叢集中的應用程式與節點。 開啟瀏覽器並瀏覽至 `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` 然後遵循應用程式部署。 此應用程式會進行部署，但在叢集節點中下載映像之前 (視映像大小而定，這可能需要一些時間) 會處於錯誤狀態︰![錯誤][1]
 
@@ -347,7 +347,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 Windows Server 容器在主機 OS 的所有版本之間不相容。 例如：
  
 - 使用 Windows Server 1709 版本所建置的 Windows Server 容器無法在執行 Windows Server 2016 版本的主機上運作。 
-- 使用 Windows Server 2016 所建立的 windows Server 容器，只能在執行 Windows Server 1709 版的主機上使用 Hyper-v 隔離模式。 
+- 使用 Windows Server 2016 所建立的 windows Server 容器只能在執行 Windows Server 1709 版的主機上以 Hyper-v 隔離模式運作。 
 - 透過使用 Windows Server 2016 所建置的 Windows Server 容器，可能必須確保在執行 Windows Server 2016 的主機上以程序隔離模式執行時，容器 OS 和主機 OS 的修訂版本相同。
  
 若要深入了解，請參閱 [Windows 容器版本相容性](/virtualization/windowscontainers/deploy-containers/version-compatibility)。
@@ -497,7 +497,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>在容器被迫終止前設定時間間隔
 
-您可以在啟動服務刪除 (或移至另一個節點) 之後，設定執行階段在容器移除前所要等候的間隔時間。 設定時間間隔可將 `docker stop <time in seconds>` 命令傳送至容器。  如需更多詳細資訊，請參閱 [docker stop](https://docs.docker.com/engine/reference/commandline/stop/)。 所要等候的時間間隔指定於 `Hosting` 區段之下。 您 `Hosting` 可以在建立叢集時或稍後於設定升級中新增區段。 下列叢集資訊清單程式碼片段示範如何設定等候間隔：
+您可以在啟動服務刪除 (或移至另一個節點) 之後，設定執行階段在容器移除前所要等候的間隔時間。 設定時間間隔可將 `docker stop <time in seconds>` 命令傳送至容器。  如需更多詳細資訊，請參閱 [docker stop](https://docs.docker.com/engine/reference/commandline/stop/)。 所要等候的時間間隔指定於 `Hosting` 區段之下。 您 `Hosting` 可以在建立叢集時或稍後在設定升級中新增區段。 下列叢集資訊清單程式碼片段示範如何設定等候間隔：
 
 ```json
 "fabricSettings": [

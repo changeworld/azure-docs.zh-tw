@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: ab11060924c29dbddc965aa94064d0091a7b348e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 5115190d944e78d476f369442dccdbda394e46ba
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639846"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564044"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性連接埠概觀
 
@@ -32,7 +32,7 @@ HA 連接埠負載平衡規則可協助您處理重要的使用案例，例如�
 
 ## <a name="why-use-ha-ports"></a>為何要使用 HA 連接埠？
 
-### <a name="network-virtual-appliances"></a><a name="nva"></a>網路虛擬裝置
+### <a name="network-virtual-appliances"></a><a name="nva"></a>網路虛擬設備
 
 您可以使用 NVA 保護 Azure 工作負載，使其不會遭受多個類型的安全性威脅。 當您在這些案例中使用 NVA 時，它們必須具有可靠性、高可用性，並可依需要相應放大。
 
@@ -99,5 +99,5 @@ HA 連接埠功能適用於所有全域 Azure 區域。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何透過入口網站、 [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer)、 [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)或[範本](load-balancer-get-started-ilb-arm-template.md)為[您的 ILB 設定 HA 埠](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule)。
+- 瞭解如何透過入口網站、 [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer)、 [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)或[範本](quickstart-load-balancer-standard-internal-template.md)為[您的 ILB 設定 HA 埠](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule)。
 - [瞭解 Standard Load Balancer](load-balancer-standard-overview.md)

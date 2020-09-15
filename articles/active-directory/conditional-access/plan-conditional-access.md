@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14612247d241aed420a76ff40e19d04164cbe150
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a26a7320cab20c769ddf8dd1f24cd6fda0cc7d64
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049922"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561528"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>規劃條件式存取部署
 
@@ -448,7 +448,7 @@ Azure Active Directory 可讓您建立[具名位置](location-condition.md) \(�
 
 使用下列管理選項來控制及管理您的 CA 原則：
 
-![manage-access](media/plan-conditional-access/manage-access.png)
+![螢幕擷取畫面顯示 C A 原則的管理選項，包括命名位置、自訂控制項、使用規定、V P N 連線能力，以及選取的傳統原則。](media/plan-conditional-access/manage-access.png)
 
 
 ### <a name="named-locations"></a>具名位置

@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8d8dc4a3efb034c9428de32f0f975869e1044327
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613895"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561868"
 ---
 # <a name="graphics-binding"></a>圖形繫結
 
@@ -137,11 +137,23 @@ wmrBinding->BlitRemoteFrame();
 ### <a name="simulation"></a>模擬
 
 `GraphicsApiType.SimD3D11` 是模擬繫結，如果將之選取，則會建立 `GraphicsBindingSimD3d11` 圖形繫結。 此介面可用來模擬頭部移動，例如在傳統型應用程式中轉譯平面視覺影像的情況。
+
+若要執行模擬系結，請務必瞭解本機相機和遠端框架之間的差異，如 [相機](../overview/features/camera.md) 頁面所述。
+
+需要兩個相機：
+
+* **本機相機**：此攝影機代表由應用程式邏輯驅動的目前相機位置。
+* **Proxy 相機**：此攝影機符合伺服器傳送的目前 *遠端框架* 。 由於用戶端要求框架與其抵達之間有時間延遲，因此 *遠端框架* 一律是在本機相機的移動背後。
+
+這裡的基本方法是，使用 proxy 攝影機將遠端影像和本機內容轉譯成非畫面的目標。 然後 proxy 映射會 reprojected 到本機相機空間中，並在 [reprojection 的晚期](../overview/features/late-stage-reprojection.md)解說中進一步說明。
+
 這種設定方式較為複雜，運作方式如下：
 
 #### <a name="create-proxy-render-target"></a>建立 Proxy 轉譯目標
 
-必須使用 `GraphicsBindingSimD3d11.Update` 函式提供的 Proxy 相機資料，將遠端和本機內容轉譯成螢幕上不可見的色彩/深度轉譯目標，稱為「Proxy」。 Proxy 必須符合背景緩衝區的解析度。 工作階段準備就緒後，需先呼叫 `GraphicsBindingSimD3d11.InitSimulation`，才能與其連線：
+必須使用 `GraphicsBindingSimD3d11.Update` 函式提供的 Proxy 相機資料，將遠端和本機內容轉譯成螢幕上不可見的色彩/深度轉譯目標，稱為「Proxy」。
+
+Proxy 必須符合後端緩衝區的解析，而且必須是 *DXGI_FORMAT_R8G8B8A8_UNORM* 或 *DXGI_FORMAT_B8G8R8A8_UNORM* 格式的 int。 工作階段準備就緒後，需先呼叫 `GraphicsBindingSimD3d11.InitSimulation`，才能與其連線：
 
 ```cs
 AzureSession currentSession = ...;
@@ -242,6 +254,8 @@ else
 * [C + + GraphicsBindingWmrD3d11 類別](https://docs.microsoft.com/cpp/api/remote-rendering/graphicsbindingwmrd3d11)
 * [C + + GraphicsBindingSimD3d11 類別](https://docs.microsoft.com/cpp/api/remote-rendering/graphicsbindingsimd3d11)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
+* [相機](../overview/features/camera.md)
+* [延遲階段重新投影](../overview/features/late-stage-reprojection.md)
 * [教學課程：檢視遠端轉譯模型](../tutorials/unity/view-remote-models/view-remote-models.md)

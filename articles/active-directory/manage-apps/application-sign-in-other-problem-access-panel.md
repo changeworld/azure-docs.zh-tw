@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 472ab82e6941be5c1485773b1115d91eda701666
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a5201d0e31eb6d3b06316b74463dc2b68b33008c
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231175"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563908"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>針對從 Azure AD 我的應用程式登入應用程式的問題進行疑難排解
 
@@ -33,7 +33,7 @@ ms.locfileid: "89231175"
 -   含現有 SSO 解決方案的應用程式
 
 以下是檢查應用程式是否出現或未出現的一些事項。
-- 請確定應用程式已新增至 Azure AD，並確定已指派使用者。 若要深入瞭解，請參閱 [應用程式管理的快速入門系列](view-applications-portal.md)。
+- 請確定應用程式已新增至 Azure AD，並確定已指派使用者。 若要深入瞭解，請參閱 [應用程式管理的快速入門系列](add-application-portal.md)。
 - 如果最近已新增應用程式，請讓使用者再次登出，然後重新登入。 
 - 如果應用程式需要授權（例如 Office），請確定使用者已獲指派適當的授權。
 - 授權變更所需的時間會根據群組的大小和複雜度而有所不同。

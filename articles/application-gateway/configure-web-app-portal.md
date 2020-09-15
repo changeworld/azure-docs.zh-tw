@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: daf4c4ab56e23a212256c2629b7d0ae52a09e7c4
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: dbaad0f6639d65d88da6847886d3aa3d39b93e82
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595705"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563748"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>透過應用程式閘道設定 App Service
 
@@ -26,7 +26,7 @@ ms.locfileid: "89595705"
 - 建立後端集區，並在其中新增 App Service
 - 使用已啟用「挑選主機名稱」的參數建立 HTTP 設定和自訂探查
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 應用程式閘道：如果您沒有現有的應用程式閘道，請參閱如何 [建立應用程式閘道](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 - App service：如果您沒有現有的 App service，請參閱 [app service 檔](https://docs.microsoft.com/azure/app-service/)。
@@ -67,9 +67,9 @@ ms.locfileid: "89595705"
 
 5. 按一下 **[確定]** 以建立 HTTP 設定。
 
-   ![HTTP-setting1](./media/configure-web-app-portal/http-setting1.png)
+   ![螢幕擷取畫面顯示 [新增 H T P P 設定] 窗格，其中已選取 [App service] 和 [確定]。](./media/configure-web-app-portal/http-setting1.png)
 
-   ![HTTP-setting2](./media/configure-web-app-portal/http-setting2.png)
+   ![螢幕擷取畫面顯示已選取「挑選主機名稱」表單後端 HTTP 設定的健康情況探查。](./media/configure-web-app-portal/http-setting2.png)
 
 
 
@@ -85,7 +85,7 @@ ms.locfileid: "89595705"
 
 5. 按一下 **[確定]** 儲存此規則。
 
-   ![規則](./media/configure-web-app-portal/rule.png)
+   ![螢幕擷取畫面顯示 [新增基本規則] 窗格，其中已醒目提示接聽程式、後端集區和 H T T P 設定。](./media/configure-web-app-portal/rule.png)
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>重新導向至 app service 的相對路徑時的其他設定
 
@@ -99,6 +99,6 @@ ms.locfileid: "89595705"
 
 您可以限制存取 Web 應用程式的其中一個方法是使用 [Azure App Service 靜態 IP 限制](../app-service/app-service-ip-restrictions.md)。 例如，您可以限制 Web 應用程式，使它只會從應用程式閘道接收流量。 您可以使用應用程式服務 IP 限制功能，將應用程式閘道 VIP 列為具有存取權的唯一位址。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解應用程式閘道的 App service 和其他多租使用者支援，請參閱 [使用應用程式閘道的多租使用者服務支援](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview)。

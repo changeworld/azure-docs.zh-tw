@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 63bc46f679b71f6965cda8f9db800a125683c093
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 605df0f26600f962bda7a0a0def800a91d74b022
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298261"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562948"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>設定 Azure 數位 Twins 實例和驗證 (腳本) 
 
@@ -38,7 +38,7 @@ ms.locfileid: "89298261"
 
 以下是在 Cloud Shell 中執行部署腳本的步驟。
 1. 移至瀏覽器中的 [Azure Cloud Shell](https://shell.azure.com/) 視窗。 使用下列命令登入：
-    ```azurecli-interactive
+    ```azurecli
     az login
     ```
     如果 CLI 可以開啟預設瀏覽器，它會執行這項操作，並載入 Azure 登入頁面。 否則，請在 *https://aka.ms/devicelogin* 開啟瀏覽器頁面，並輸入顯示在終端機中的授權碼。
@@ -132,7 +132,7 @@ ms.locfileid: "89298261"
 
 [!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 使用 Azure 數位 Twins CLI 命令，在您的實例上測試個別 REST API 呼叫： 
 * [az dt 參考](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)

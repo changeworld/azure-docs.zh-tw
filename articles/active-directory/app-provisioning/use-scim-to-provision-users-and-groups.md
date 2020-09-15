@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d0f67f9052467e5d1a89fc4c520bd39821403bbe
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: fc77d8cbb88385d9be65ccb8df80e922704640a4
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015444"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563800"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -167,6 +167,7 @@ SCIM RFC 中定義了數個端點。 您可以從 /User 端點開始著手，然
 * 對於 SCIM 中的結構元素請勿要求大小寫須相符 (特別是 `op` 作業值)，如 https://tools.ietf.org/html/rfc7644#section-3.5.2 中所定義。 Azure AD 會以 `Add`、`Replace` 和 `Remove` 的形式發出 'op' 的值。
 * Microsoft Azure AD 會要求提取隨機的使用者和群組，以確保端點和認證都是有效的。 此作業也可在 [Azure 入口網站](https://portal.azure.com)的**測試連線**流程中完成。 
 * 資源可供查詢的屬性，應在 [Azure 入口網站](https://portal.azure.com)中設定為應用程式的比對屬性。 如需詳細資訊，請參閱[自訂使用者佈建屬性對應](customize-application-attributes.md)
+* 在您的 SCIM 端點上支援 HTTPS
 
 ### <a name="user-provisioning-and-deprovisioning"></a>使用者佈建和取消佈建
 

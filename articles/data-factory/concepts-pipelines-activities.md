@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 78007c9f153267b72a94dc4b4024155dee6beb88
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b6a3e67ffd909262da2f890874f049dfac59a4ce
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442968"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562004"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory 中的管道及活動
 
@@ -30,7 +30,7 @@ ms.locfileid: "89442968"
 
 管線中活動會定義要對資料執行的動作。 例如，您可以使用複製活動，將資料從 SQL Server 複製到 Azure Blob 儲存體。 然後，使用資料流程活動或 Databricks 筆記本活動來處理 blob 儲存體中的資料，並將資料從 blob 儲存體轉換成 Azure Synapse Analytics 集區，以建立商業智慧報表解決方案。
 
-Data Factory 有三個活動群組： [資料移動活動](copy-activity-overview.md)、 [資料轉換活動](transform-data.md)，以及 [控制活動](control-flow-web-activity.md)。 活動可以取得零或多個輸入 [資料集](concepts-datasets-linked-services.md) ，並產生一或多個輸出 [資料集](concepts-datasets-linked-services.md)。 下圖顯示 Data Factory 中管線、活動及資料集之間的關聯性：
+Data Factory 有三個活動群組： [資料移動活動](copy-activity-overview.md)、 [資料轉換活動](transform-data.md)，以及 [控制活動](#control-flow-activities)。 活動可以取得零或多個輸入 [資料集](concepts-datasets-linked-services.md) ，並產生一或多個輸出 [資料集](concepts-datasets-linked-services.md)。 下圖顯示 Data Factory 中管線、活動及資料集之間的關聯性：
 
 ![資料集、活動及管道之間的關聯性](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
@@ -184,9 +184,9 @@ dependsOn | 這個屬性用來定義活動相依性，以及後續活動如何�
 
 JSON 名稱 | 描述 | 允許的值 | 必要
 --------- | ----------- | -------------- | --------
-timeout | 指定活動執行的逾時。 | Timespan | 不會。 預設逾時為 7 天。
-retry | 重試次數上限 | 整數 | 不會。 預設值為 0
-retryIntervalInSeconds | 重試嘗試之間的延遲 (秒) | 整數 | 不會。 預設值為30秒
+timeout | 指定活動執行的逾時。 | Timespan | 否。 預設逾時為 7 天。
+retry | 重試次數上限 | 整數 | 否。 預設值為 0
+retryIntervalInSeconds | 重試嘗試之間的延遲 (秒) | 整數 | 否。 預設值為30秒
 secureOutput | 當設為 true 時，活動的輸出會被視為安全的，且不會記錄以進行監視。 | Boolean | 否。 預設為 false。
 
 ### <a name="control-activity"></a>控制活動
@@ -355,7 +355,7 @@ dependsOn | 這個屬性用來定義活動相依性，以及後續活動如何�
     }
 }
 ```
-請注意下列事項：
+請注意下列幾點：
 
 - 在活動區段中，只會有一個 **type** 設為 **HDInsightHive** 的活動。
 - Hive 腳本檔（ **>partitionweblogs.hql**）會儲存在由 scriptLinkedService 指定的 Azure 儲存體帳戶 (中，稱為 >azurestoragelinkedservice) ，以及容器中的 script 資料夾 `adfgetstarted` 。
@@ -401,7 +401,7 @@ dependsOn | 這個屬性用來定義活動相依性，以及後續活動如何�
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 請參閱下列教學課程中的逐步指示，以建立具有活動的管道：
 
 - [建置具有複製活動的管道](quickstart-create-data-factory-powershell.md)

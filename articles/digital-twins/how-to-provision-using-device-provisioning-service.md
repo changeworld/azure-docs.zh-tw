@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1a7ab90cccd78c3b005487938432a0f955d50738
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: efc507cb69b3368a2102b6de0b905657d5806ef2
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380646"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561426"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>使用裝置布建服務 (DPS) 自動管理 Azure 數位 Twins 中的裝置
 
@@ -22,7 +22,7 @@ ms.locfileid: "89380646"
 
 如需有關布建和_淘汰__階段的詳細_資訊，並進一步瞭解所有企業 IoT 專案通用的一般裝置管理階段，請參閱 IoT 中樞裝置管理檔的[*裝置生命週期*一節](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您可以設定布建之前，您必須擁有包含模型和 Twins 的 **Azure 數位 Twins 實例** 。 此實例也應該設定為根據資料更新數位對應項資訊。 
 
@@ -71,7 +71,7 @@ ms.locfileid: "89380646"
 
 下列 Azure CLI 命令會建立裝置布建服務。 您將需要指定名稱、資源群組和區域。 如果您的[電腦上已安裝](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI，命令可以在[Cloud Shell](https://shell.azure.com)中執行，或在本機執行。
 
-```azurecli-interactive
+```azurecli
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
 ```
 
@@ -237,7 +237,7 @@ namespace Samples.AdtIothub
 
 使用這個 Azure CLI 命令新增設定：
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -246,7 +246,7 @@ az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure
 <!-- 
 * Azure AD app registration **_Application (client) ID_** ([find in portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "AdtAppId=<Application (client)" ID> -g <resource group> -n <your App Service (function app) name> 
 ``` -->
 
@@ -293,7 +293,7 @@ node .\adt_custom_register.js
 
 由於您在本文中設定的流程，將會在 Azure 數位 Twins 中自動註冊裝置。 使用下列 [Azure 數位 TWINS CLI](how-to-use-cli.md) 命令，在您建立的 Azure 數位 Twins 實例中尋找裝置的對應項。
 
-```azurecli-interactive
+```azurecli
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -449,13 +449,13 @@ namespace Samples.AdtIothub
 
 使用這個 Azure CLI 命令新增設定。 如果您的[電腦上已安裝](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI，命令可以在[Cloud Shell](https://shell.azure.com)中執行，或在本機執行。
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
 接下來，您必須設定函數環境變數，以連接到新建立的事件中樞。
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -486,7 +486,7 @@ az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Eve
 
 使用下列 [Azure 數位 TWINS CLI](how-to-use-cli.md) 命令，確認已刪除 Azure 數位 Twins 實例中的裝置對應項。
 
-```azurecli-interactive
+```azurecli
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -502,7 +502,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 > [!IMPORTANT]
 > 刪除資源群組是無法回復的動作。 資源群組和其中包含的所有資源都將永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 
 
-```azurecli-interactive
+```azurecli
 az group delete --name <your-resource-group>
 ```
 <!-- 
@@ -514,7 +514,7 @@ az ad app delete --id <your-application-ID>
 
 然後，刪除您從本機電腦下載的專案範例資料夾。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 針對裝置所建立的數位 twins 會在 Azure 數位 Twins 中儲存為一般階層，但是可以使用模型資訊和組織的多層級階層進行擴充。 若要深入瞭解此概念，請閱讀：
 

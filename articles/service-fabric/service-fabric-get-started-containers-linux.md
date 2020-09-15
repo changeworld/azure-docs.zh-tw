@@ -4,12 +4,12 @@ description: 在 Azure Service Fabric 上建立第一個 Linux 容器應用程�
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 35e96f1039dc71427a1a3d2745245eff5d012aaf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b9e22ada3da572d5025f56fca824089bb6e20465
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847528"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563704"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 建立第一個 Service Fabric 容器應用程式
 > [!div class="op_single_selector"]
@@ -21,13 +21,13 @@ ms.locfileid: "87847528"
 > [!NOTE]
 > 本文適用於 Linux 開發環境。  Service Fabric 叢集執行階段與 Docker 執行階段必須在相同的作業系統上執行。  您無法在 Windows 叢集上執行 Linux 容器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * 執行下列項目的開發電腦︰
   * [SERVICE FABRIC SDK 和工具](service-fabric-get-started-linux.md)。
   * [Docker CE for Linux](https://docs.docker.com/engine/installation/#prior-releases). 
   * [Service Fabric CLI](service-fabric-cli.md)
 
-* 具有三個或更多節點的 Linux 叢集。
+* 具有三個或多個節點的 Linux 叢集。
 
 * Azure Container Registry 中的登錄 - 在 Azure 訂用帳戶中[建立容器登錄](../container-registry/container-registry-get-started-portal.md)。 
 
@@ -88,7 +88,7 @@ if __name__ == "__main__":
 ```
 
 ## <a name="build-the-image"></a>建立映像
-執行 `docker build` 命令來建立可執行 Web 應用程式的映像。 開啟 PowerShell 視窗並瀏覽至 *c:\temp\helloworldapp*。 執行下列命令：
+執行 `docker build` 命令來建立可執行 Web 應用程式的映像。 開啟 PowerShell 視窗並瀏覽至 *c:\temp\helloworldapp*。 執行以下命令：
 
 ```bash
 docker build -t helloworldapp .
@@ -135,9 +135,9 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>將映像推送至容器登錄
 確認應用程式在 Docker 中執行後，將映像推送至 Azure Container Registry 中您的登錄。
 
-執行 `docker login` ，以使用您的登錄[認證](../container-registry/container-registry-authentication.md)登入您的 container registry。
+執行 `docker login` 以使用您的登錄 [認證](../container-registry/container-registry-authentication.md)登入您的 container registry。
 
-下列範例會傳遞 Azure Active Directory [service principal](../active-directory/develop/app-objects-and-service-principals.md) 的識別碼和密碼。 例如，您可能基於自動化案例已指派服務主體到您的登錄庫。 或者，您可以使用登錄使用者名稱和密碼來登入。
+下列範例會傳遞 Azure Active Directory [service principal](../active-directory/develop/app-objects-and-service-principals.md) 的識別碼和密碼。 例如，您可能基於自動化案例已指派服務主體到您的登錄庫。 或者，您可以使用登錄使用者名稱和密碼登入。
 
 ```bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -174,10 +174,10 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="configure-container-repository-authentication"></a>設定容器存放庫驗證
 
-請參閱[容器存放庫驗證](configure-container-repository-credentials.md)，以瞭解如何為容器映射下載設定不同類型的驗證。
+請參閱 [容器存放庫驗證](configure-container-repository-credentials.md)，以瞭解如何為容器映射下載設定不同類型的驗證。
 
 ## <a name="configure-isolation-mode"></a>設定隔離模式
-在6.3 執行時間版本中，Linux 容器支援 VM 隔離，因而支援兩種容器隔離模式：進程和 Hyper-v。 使用 Hyper-v 隔離模式時，會在每個容器和容器主機之間隔離核心。 Hyper-v 隔離是使用[清除容器](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)來執行。 隔離模式是在應用程式資訊清單檔的 `ServicePackageContainerPolicy` 元素中針對 Linux 叢集所指定的。 可以指定的隔離模式有 `process`、`hyperv` 和 `default`。 預設值為處理序隔離模式。 下列程式碼片段顯示如何在應用程式資訊清單檔中指定隔離模式。
+使用6.3 執行階段版本，可支援 Linux 容器的 VM 隔離，藉此支援兩種容器隔離模式：進程和 Hyper-v。 使用 Hyper-v 隔離模式時，會在每個容器與容器主機之間隔離核心。 Hyper-v 隔離會使用 [Clear 容器](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)來執行。 隔離模式是在應用程式資訊清單檔的 `ServicePackageContainerPolicy` 元素中針對 Linux 叢集所指定的。 可以指定的隔離模式有 `process`、`hyperv` 和 `default`。 預設值為處理序隔離模式。 下列程式碼片段顯示如何在應用程式資訊清單檔中指定隔離模式。
 
 ```xml
 <ServiceManifestImport>
@@ -211,11 +211,11 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 
 從 6.1 版開始，Service Fabric 會自動將 [Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) 事件整合至其系統健康情況報告。 這表示，如果您的容器已啟用 **HEALTHCHECK**，每當 Docker 報告容器的健康情況狀態發生變更時，Service Fabric 就會報告健康情況。 如果 health_status** 為「狀況良好」**，則 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 中的健康情況報告會顯示 **OK (正常)**，如果 health_status** 為「狀況不良」**，則顯示 **WARNING (警告)**。 
 
-從6.4 版的最新重新整理版本開始，您可以選擇指定 docker HEALTHCHECK 評估應回報為錯誤。 若已啟用此選項，當*health_status*狀況*良好*時，將會出現 **[確定]** 健康情況報告，而當*health_status* *狀況不良*時，將會出現**錯誤**。
+從6.4 的最新重新整理版本開始，您可以選擇是否要將 docker HEALTHCHECK 評估報告為錯誤。 如果啟用此選項，當*health_status*狀況*良好*時，即會出現 **[確定**健康情況] 報告，當*health_status*狀況*不良*時，將會出現**錯誤**。
 
 **HEALTHCHECK**指令指向針對監視容器健康情況所執行的實際檢查，必須存在於產生容器映射時所使用的 Dockerfile 中。
 
-![HealthCheckHealthy][1]
+![螢幕擷取畫面顯示已部署的服務封裝 NodeServicePackage 詳細資料。][1]
 
 ![HealthCheckUnhealthyApp][2]
 
@@ -235,11 +235,11 @@ docker push myregistry.azurecr.io/samples/helloworldapp
     </Policies>
 </ServiceManifestImport>
 ```
-根據預設， *IncludeDockerHealthStatusInSystemHealthReport*會設定為**true**， *RestartContainerOnUnhealthyDockerHealthStatus*會設定為**false**，而*TreatContainerUnhealthyStatusAsError*會設定為**false**。 
+依預設， *IncludeDockerHealthStatusInSystemHealthReport* 設為 **true**， *>restartcontaineronunhealthydockerhealthstatus* 設定為 **false**，而 *TreatContainerUnhealthyStatusAsError* 設定為 **false**。 
 
 如果 *RestartContainerOnUnhealthyDockerHealthStatus* 設為 **true**，則報告中重複出現狀況不良的容器就會重新啟動 (可能在其他節點上重新啟動)。
 
-如果*TreatContainerUnhealthyStatusAsError*設定為**true**，當容器的*health_status* *狀況不良*時，將會出現**錯誤**健康情況報告。
+如果*TreatContainerUnhealthyStatusAsError*設定為**true**，當容器的*health_status*狀況*不良*時，將會出現**錯誤**健康情況報告。
 
 如果您需要停用整個 Service Fabric 叢集的 **HEALTHCHECK** 整合，就必須將 [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) 設為 **false**。
 
@@ -259,7 +259,7 @@ sfctl cluster select --endpoint http://localhost:19080
 ./install.sh
 ```
 
-開啟瀏覽器並流覽至 Service Fabric Explorer，網址為 HTTP： \/ /localhost： 19080/Explorer (以 VM 的私人 IP 取代 localhost （如果在 Mac OS X) 上使用 Vagrant）。 展開 [應用程式] 節點，請注意，您的應用程式類型現在有一個項目，而另一個則是該類型的第一個執行個體。
+開啟瀏覽器，並流覽至 HTTP： \/ /localhost： 19080/Explorer Service Fabric Explorer：如果在 Mac OS X) 上使用 Vagrant，請 (將 localhost 取代為 VM 的私人 IP。 展開 [應用程式] 節點，請注意，您的應用程式類型現在有一個項目，而另一個則是該類型的第一個執行個體。
 
 連線到執行中的容器。 開啟網頁瀏覽器，指向埠4000上傳回的 IP 位址，例如 "HTTP： \/ /localhost： 4000"。 您應該會看到 "Hello World!" 標題 顯示在瀏覽器中。
 

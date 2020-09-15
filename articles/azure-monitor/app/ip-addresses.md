@@ -4,13 +4,13 @@ description: Application Insights 所需的伺服器防火牆例外狀況
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 06/18/2020
-ms.openlocfilehash: 7e935cd826992956d0f264d4cfb9806724a27ac4
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.date: 09/15/2020
+ms.openlocfilehash: 5a7110ed9ae656102ad097dc583ca85aa6df47bc
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023817"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562630"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 位址
 [Azure Application Insights](./app-insights-overview.md) 服務會使用一些 IP 位址。 如果您所監視的應用程式裝載於防火牆後面，您可能需要知道這些位址。

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: edd4cc28c6d59f1d6e0c9cabfd5855c72bd3fe73
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cac14d5995042847bc98e47e50ea2d188382fd2a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661841"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564333"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>建立並附加 Azure Kubernetes Service 叢集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -68,6 +68,83 @@ Azure Machine Learning 可以將定型的機器學習模型部署到 Azure Kuber
 
     - [手動調整 AKS 叢集中的節點計數](../aks/scale-cluster.md)
     - [在 AKS 中設定叢集自動調整程式](../aks/cluster-autoscaler.md)
+
+## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes Service 版本
+
+Azure Kubernetes Service 可讓您使用各種 Kubernetes 版本來建立叢集。 如需可用版本的詳細資訊，請參閱 [Azure Kubernetes Service 中支援的 Kubernetes 版本](/azure/aks/supported-kubernetes-versions)。
+
+使用下列其中一種方法 **建立** Azure Kubernetes Service 叢集時，您無法在建立的叢集 *版本中選擇* ：
+
+* Azure Machine Learning studio 或 Azure 入口網站的 Azure Machine Learning 區段。
+* Azure CLI 的 Machine Learning 延伸模組。
+* Azure Machine Learning SDK。
+
+建立 AKS 叢集的這些方法會使用叢集的 __預設__ 版本。 當新的 Kubernetes 版本可供使用*時，預設版本會隨時間變更*。
+
+**附加**現有的 AKS 叢集時，我們支援所有目前支援的 AKS 版本。
+
+> [!NOTE]
+> 在某些情況下，您可能會有已不再支援的較舊叢集的邊緣案例。 在此情況下，附加作業會傳回錯誤並列出目前支援的版本。
+>
+> 您可以附加 **預覽** 版本。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 使用預覽版本的支援可能有所限制。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+### <a name="available-and-default-versions"></a>可用和預設版本
+
+若要尋找可用和預設的 AKS 版本，請使用[az AKS get 版本](/cli/azure/aks?view=azure-cli-latest#az_aks_get_versions) [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)命令。 例如，下列命令會傳回美國西部區域中可用的版本：
+
+```azurecli-interactive
+az aks get-versions -l westus -o table
+```
+
+此命令的輸出類似下列文字：
+
+```text
+KubernetesVersion    Upgrades
+-------------------  ----------------------------------------
+1.18.6(preview)      None available
+1.18.4(preview)      1.18.6(preview)
+1.17.9               1.18.4(preview), 1.18.6(preview)
+1.17.7               1.17.9, 1.18.4(preview), 1.18.6(preview)
+1.16.13              1.17.7, 1.17.9
+1.16.10              1.16.13, 1.17.7, 1.17.9
+1.15.12              1.16.10, 1.16.13
+1.15.11              1.15.12, 1.16.10, 1.16.13
+```
+
+若要尋找透過 Azure Machine Learning **建立** 叢集時所使用的預設版本，您可以使用 `--query` 參數來選取預設版本：
+
+```azurecli-interactive
+az aks get-versions -l westus --query "orchestrators[?default == `true`].orchestratorVersion" -o table
+```
+
+此命令的輸出類似下列文字：
+
+```text
+Result
+--------
+1.16.13
+```
+
+如果您想要以程式設計 **方式檢查可用的版本**，請使用 [容器服務用戶端清單協調器](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) REST API。 若要尋找可用的版本，請查看其中的 `orchestratorType` 專案 `Kubernetes` 。 相關聯的 `orchestrationVersion` 專案包含可 **附加** 至工作區的可用版本。
+
+若要尋找透過 Azure Machine Learning **建立** 叢集時所使用的預設版本，請尋找的專案， `orchestratorType` 其中 `Kubernetes` 是 `default` 和 `true` 。 相關聯的 `orchestratorVersion` 值是預設版本。 下列 JSON 程式碼片段顯示一個範例專案：
+
+```json
+...
+ {
+        "orchestratorType": "Kubernetes",
+        "orchestratorVersion": "1.16.13",
+        "default": true,
+        "upgrades": [
+          {
+            "orchestratorType": "",
+            "orchestratorVersion": "1.17.7",
+            "isPreview": false
+          }
+        ]
+      },
+...
+```
 
 ## <a name="create-a-new-aks-cluster"></a>建立新的 AKS 叢集
 
@@ -203,7 +280,7 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 ---
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [部署模型的方式和位置](how-to-deploy-and-where.md)
 * [將模型部署到 Azure Kubernetes Service 叢集](how-to-deploy-azure-kubernetes-service.md)

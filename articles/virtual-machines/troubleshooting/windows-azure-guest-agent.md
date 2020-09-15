@@ -9,14 +9,14 @@ editor: ''
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/07/2020
+ms.date: 09/15/2020
 ms.author: genli
-ms.openlocfilehash: 38bf652ccefe98c2bd0fb28e8018d41df21651dc
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 597ea6e7ff7dbcfcb8a99d4e4de3c1b82915ee07
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659461"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561256"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>針對 Windows Azure 來賓代理程式進行疑難排解
 
@@ -53,7 +53,7 @@ Windows Azure 來賓代理程式是虛擬機器) 代理程式 (VM。 它可讓 V
     
     您可以執行下列 PowerShell 命令來檢查 VM 代理程式是否已部署至 VM：
     
-    `Get-Az VM -ResourceGroup “RGNAME” – Name “VMNAME” -displayhint expand`
+    `Get-AzVM -ResourceGroupName "RGNAME" -Name "VMNAME" -DisplayHint expand`
     
     在輸出中，找出 [ **ProvisionVMAgent** ] 屬性，然後檢查此值是否設定為 **True**。 如果是，這表示代理程式已安裝在 VM 上。
     

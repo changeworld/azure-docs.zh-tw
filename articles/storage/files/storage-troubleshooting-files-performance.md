@@ -7,14 +7,17 @@ ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: fe1460d4353addff1b8e3095cfe06c1fcb3b7bd0
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: cffac114cacd05e04e149af96d1678b536db7fec
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782365"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564231"
 ---
-# <a name="troubleshoot-azure-files-performance-issues"></a>針對 Azure 檔案儲存體效能問題進行疑難排解
+# <a name="troubleshoot-azure-files-performance-issues-smb"></a>針對 (SMB) 的 Azure 檔案儲存體效能問題進行疑難排解
+
+> [!IMPORTANT]
+> 本文內容僅適用于 SMB 共用。
 
 本文列出一些與 Azure 檔案共用相關的常見問題。 當遇到這些問題時，它會提供潛在的原因和因應措施。
 
@@ -45,7 +48,7 @@ ms.locfileid: "88782365"
 > [!NOTE]
 > 若要在檔案共用受到節流時收到警示，請參閱如何在檔案 [共用受到節流時建立警示](#how-to-create-an-alert-if-a-file-share-is-throttled)。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 - 如果您使用標準檔案共用，請在儲存體帳戶上啟用 [大型檔案共用](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) 。 大型檔案共用支援每個共用最高 10000 IOPS。
 - 如果您使用 premium 檔案共用，請增加布建的檔案共用大小，以增加 IOPS 限制。 若要深入瞭解，請參閱《 Azure 檔案儲存體規劃指南》中的 [瞭解 premium 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares) 的布建一節。
@@ -67,7 +70,7 @@ ms.locfileid: "88782365"
 
 如果客戶使用的應用程式是單一執行緒，這可能會導致 IOPS/輸送量明顯低於根據您布建的共用大小的最大可能值。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 - 藉由增加執行緒數目來提高應用程式平行處理原則。
 - 切換至可以平行處理的應用程式。 例如，針對複製作業，客戶可以從 Windows 用戶端使用 AzCopy 或 RoboCopy，或在 Linux 用戶端上使用 **parallel** 命令。
@@ -78,7 +81,7 @@ ms.locfileid: "88782365"
 
 用戶端 VM 可能位於與檔案共用不同的區域。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 - 從與檔案共用位於相同區域的 VM 執行應用程式。
 
@@ -200,6 +203,36 @@ CentOS/RHEL 不支援大於1的 IO 深度。
 11. 按一下 [ **選取動作群組** ]，透過選取現有的動作群組或建立新的動作群組，將 **動作群組** 新增 (電子郵件、SMS 等 ) 至警示。
 12. 填入警示 **詳細資料** ，例如 **警示規則名稱**、 **描述** 和 **嚴重性**。
 13. 按一下 [ **建立警示規則** ] 以建立警示。
+
+若要深入瞭解如何在 Azure 監視器中設定警示，請參閱 [Microsoft Azure 中的警示總覽]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
+
+## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-towards-being-throttled"></a>如何在 premium 檔案共用的趨勢達到節流時建立警示
+
+1. 移至您在**Azure 入口網站**中的**儲存體帳戶**。
+2. 在 [監視] 區段中，按一下 [ **警示** ]，然後按一下 [ **+ 新增警示規則**]。
+3. 按一下 [ **編輯資源**]，選取儲存體帳戶的檔案 **資源類型** ，然後按一下 [ **完成**]。 例如，如果儲存體帳戶名稱是 contoso，請選取 contoso/file 資源。
+4. 按一下 [ **選取條件** ] 以新增條件。
+5. 您會看到儲存體帳戶所支援的信號清單，請選取**輸出度量。**
+
+  > [!NOTE]
+  > 您必須建立3個不同的警示，當輸入、輸出或交易超過您設定的閾值時，就會收到警示。 這是因為只有在符合所有條件時才會引發警示。 因此，如果您將所有條件放在一個警示中，只有當輸入、輸出和交易超過其閾值數量時，才會收到警示。
+
+6. 向下捲動。 按一下 [ **維度名稱** ] 下拉式清單，然後選取 [檔案 **共用**]。
+7. 按一下 [ **維度值** ] 下拉式清單，然後選取您想要警示的檔案共用 (s) 。
+8. 定義 **警示參數** (臨界值、運算子、匯總細微性和評估的頻率) 然後按一下 [ **完成**]。
+
+  > [!NOTE]
+  > 輸出、輸入和交易計量為每分鐘，雖然您是每秒布建的輸出、輸入和 IOPS。  (討論匯總細微性-每分鐘 > = 更多雜訊，因此請選擇 [差異]) 因此，例如，如果您布建的輸出是 90 MiB/秒，而您想要讓閾值成為布建輸出的80%，您應該選取下列警示參數： 75497472 **臨界值**、大於或等於 **運算子**，以及 **匯總類型**的平均值。 根據您想要警示的雜訊程度而定，您可以選擇要選取哪些值做為匯總細微性和評估頻率。 比方說，如果我希望我的警示查看一小時內的平均輸入時間，而我想要每個小時執行一次警示規則，則會選取1小時的 **匯總細微性** 和1小時的 **評估頻率**。
+
+9. 按一下 [ **選取動作群組** ]，透過選取現有的動作群組或建立新的動作群組，將 **動作群組** 新增 (電子郵件、SMS 等 ) 至警示。
+10. 填入警示 **詳細資料** ，例如 **警示規則名稱**、 **描述** 和 **嚴重性**。
+11. 按一下 [ **建立警示規則** ] 以建立警示。
+
+  > [!NOTE]
+  > 若要在您的 premium 檔案共用因為布建的輸入而接近節流時收到通知，請遵循相同的步驟，但在步驟5中，請**改為選取輸入度量。**
+
+  > [!NOTE]
+  > 如果您的 premium 檔案共用因為布建的 IOPS 而接近節流，則會收到通知，您必須進行一些變更。 在步驟5中，請改為選取 **交易** 度量。 此外，在步驟10中，匯總 **類型** 的唯一選項為 total。 因此，臨界值會取決於您選取的匯總細微性。 例如，如果您想要將臨界值設為80% 的已布建基準 IOPS，且選取了1小時的 **匯總細微性**，則您的 **閾值** 會是基準 IOPS (位元組) x 0.8 x 3600。 除了這些變更，請遵循上面所列的相同步驟。 
 
 若要深入瞭解如何在 Azure 監視器中設定警示，請參閱 [Microsoft Azure 中的警示總覽]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
 

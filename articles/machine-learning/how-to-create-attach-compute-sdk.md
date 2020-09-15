@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: c25ee5d9c626ba95d28f2247e6771d9fa1ada0f7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: af912838e99e7b36cb29695758108f0a9efeb8ea
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662536"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561630"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>使用 Python SDK 建立模型定型和部署的計算目標
 
@@ -28,7 +28,7 @@ ms.locfileid: "89662536"
 * Azure Machine Learning 的 [VS Code 延伸](how-to-manage-resources-vscode.md#compute-clusters) 模組。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)
 * [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
@@ -36,7 +36,11 @@ ms.locfileid: "89662536"
 
 ## <a name="limitations"></a>限制
 
-本檔中列出的某些案例會標示為 __預覽__。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+* 請勿從您的工作區**建立多個同時附加至相同計算的附件**。 例如，使用兩個不同的名稱，將一個 Azure Kubernetes Service 叢集附加至工作區。 每個新的附件都會中斷先前現有的附件 (s) 。
+
+    如果您想要重新連接計算目標，例如變更 TLS 或其他叢集設定，您必須先移除現有的附件。
+
+* 本檔中列出的某些案例會標示為 __預覽__。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="whats-a-compute-target"></a>什麼是計算目標？
 
@@ -269,6 +273,9 @@ Azure Machine Learning 也支援提供您自己的計算資源，並將其附加
 
    或者，您也可以[使用 Azure Machine Learning Studio](how-to-create-attach-compute-studio.md#attached-compute) 將 DSVM 連結至您的工作區。
 
+    > [!WARNING]
+    > 請勿從您的工作區建立多個同時附加至相同 DSVM 的附件。 每個新的附件都會中斷先前現有的附件 (s) 。
+
 1. **設定**：為 DSVM 計算目標建立回合組態。 Docker 和 Conda 用來建立和設定 DSVM 上的定型環境。
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
@@ -313,6 +320,9 @@ Azure HDInsight 是巨量資料分析的常用平台。 此平台會提供 Apach
    ```
 
    或者，您也可以[使用 Azure Machine Learning Studio](how-to-create-attach-compute-studio.md#attached-compute) 將 HDInsight 叢集連結至您的工作區。
+
+    > [!WARNING]
+    > 請勿從您的工作區建立多個同時附加至相同 HDInsight 的附件。 每個新的附件都會中斷先前現有的附件 (s) 。
 
 1. **設定**：為 HDI 計算目標建立回合組態。 
 
@@ -360,6 +370,9 @@ except ComputeTargetException:
 
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
+
+> [!WARNING]
+> 請勿從您的工作區建立多個同時附加至相同 Azure Batch 的附件。 每個新的附件都會中斷先前現有的附件 (s) 。
 
 ### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
@@ -414,6 +427,9 @@ except ComputeTargetException:
 
 如需更詳細的範例，請參閱 GitHub 上的 [範例筆記本](https://aka.ms/pl-databricks) 。
 
+> [!WARNING]
+> 請勿從您的工作區建立多個同時附加至相同 Azure Databricks 的附件。 每個新的附件都會中斷先前現有的附件 (s) 。
+
 ### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
 
 Azure Data Lake Analytics 是 Azure 雲端中的巨量資料分析平台。 它可與 Azure Machine Learning 管線搭配使用作為計算目標。
@@ -463,6 +479,9 @@ except ComputeTargetException:
 ```
 
 如需更詳細的範例，請參閱 GitHub 上的 [範例筆記本](https://aka.ms/pl-adla) 。
+
+> [!WARNING]
+> 請勿從您的工作區建立多個同時附加至相同 ADLA 的附件。 每個新的附件都會中斷先前現有的附件 (s) 。
 
 > [!TIP]
 > Azure Machine Learning 管線只能使用 Data Lake Analytics 帳戶的預設資料存放區中所儲存的資料來運作。 如果您需要使用的資料是在非預設的存放區中，您可以使用在 [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) 定型之前複製資料。

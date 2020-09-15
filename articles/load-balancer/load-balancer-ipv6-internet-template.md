@@ -1,7 +1,7 @@
 ---
 title: 部署採用 IPv6 的網際網路對應負載平衡器 - Azure 範本
 titleSuffix: Azure Load Balancer
-description: 瞭解如何使用 Azure 範本來部署 Azure Load Balancer 和負載平衡 Vm 的 IPv6 支援。
+description: 瞭解如何使用 Azure 範本部署 Azure Load Balancer 和負載平衡 Vm 的 IPv6 支援。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 65f378f52c464869217084c6f155b9d34c6fc092
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803726"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562514"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用範本部署配置有 IPv6 的網際網路面向負載平衡器解決方案
 
@@ -30,7 +30,7 @@ ms.locfileid: "84803726"
 
 
 >[!NOTE] 
->本文說明可讓基本負載平衡器同時提供 IPv4 和 IPv6 連線能力的入門 IPv6 功能。 [Ipv6 For Azure vnet](../virtual-network/ipv6-overview.md)現已提供完整的 ipv6 連線能力，其整合了 ipv6 連線與您的虛擬網路，並包含 Ipv6 網路安全性群組規則、ipv6 使用者定義的路由、ipv6 基本和標準負載平衡等主要功能。  適用于 azure Vnet 的 IPv6 是 Azure 中的 IPv6 應用程式建議標準。 請參閱[適用于 AZURE VNET Powershell 部署的 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)  
+>本文說明可讓基本負載平衡器提供 IPv4 和 IPv6 連線的簡介 IPv6 功能。 [Ipv6 For Azure vnet](../virtual-network/ipv6-overview.md)現已提供完整的 ipv6 連線，可整合 ipv6 連線與您的虛擬網路，並包含 Ipv6 網路安全性群組規則、ipv6 使用者定義路由、ipv6 基本和標準負載平衡等主要功能。  適用于 Azure Vnet 的 IPv6 是 Azure 中 IPv6 應用程式的建議標準。 請參閱 [IPv6 以進行 AZURE VNET Powershell 部署](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)  
 
 Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 此負載平衡器可藉由在負載平衡器集合中，將連入流量分散於雲端服務或虛擬機器中狀況良好的服務執行個體之間，來提供高可用性。 Azure Load Balancer 也會在多個連接埠、多個 IP 位址或兩者上顯示這些服務。
 
@@ -38,7 +38,7 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 此負載平衡
 
 下圖說明使用本文所述範例範本部署的負載平衡解決方案。
 
-![負載平衡器案例](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
+![下圖顯示本文中使用的範例案例，包括透過網際網路連線到 Azure Load Balancer 的工作站用戶端，並連接到兩部虛擬機器。](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
 
 在此案例中，您將建立下列 Azure 資源：
 
@@ -55,43 +55,43 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 此負載平衡
 1. 開啟 Azure 入口網站，並使用有權限在 Azure 訂用帳戶內建立 VM 和網路資源的帳戶登入。 此外，若您不是使用現有資源，該帳戶就必須具有建立資源群組和儲存體帳戶的權限。
 2. 按一下功能表中的 [+ 新增]，然後在搜尋方塊中輸入「範本」。 選取搜尋結果中的 [範本部署]。
 
-    ![lb-ipv6-portal-step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
+    ![螢幕擷取畫面顯示已選取 [新增] 和 [範本部署] 的 Azure 入口網站。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
 3. 在 [所有項目] 刀鋒視窗中，按一下 [範本部署]。
 
-    ![lb-ipv6-portal-step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
+    ![顯示 Marketplace 範本部署的螢幕擷取畫面。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
 4. 按一下 [建立]。
 
-    ![lb-ipv6-portal-step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
+    ![螢幕擷取畫面顯示 Marketplace 中範本部署的描述。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
 5. 按一下 [編輯範本]。 刪除現有的內容，複製/貼上範本檔案的整個內容 (包括開始和結束的 {})，然後按一下 [儲存]。
 
     > [!NOTE]
     > 如果您使用 Microsoft Internet Explorer，當您貼上內容時，會看到對話方塊，詢問是否要允許存取 Windows 剪貼簿。 按一下 [允許存取]。
 
-    ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
+    ![螢幕擷取畫面顯示自訂部署的 firest 步驟，也就是編輯範本。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
 6. 按一下 [編輯參數]。 在 [參數] 刀鋒視窗中，依照指引指定 [範本] 參數區段中的值，然後按一下 [儲存] 關閉 [參數] 刀鋒視窗。 在 [自訂部署] 刀鋒視窗中，選取您的訂用帳戶，選取現有資源群組或建立一個。 如果建立資源群組，請選取資源群組的位置。 接著，按一下 [法律條款]****，然後按一下法律條款的 [購買]****。 Azure 會開始部署資源。 部署所有資源需要幾分鐘。
 
-    ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
+    ![螢幕擷取畫面顯示自訂部署的相關步驟，從輸入範本參數值開始。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
     如需有關這些參數的詳細資訊，請參閱本文稍後的 [範本參數和變數](#template-parameters-and-variables) 章節。
 
 7. 若要查看範本建立的資源，按一下 [瀏覽]，將清單向下捲動直到您看到 [資源群組]，然後按一下它。
 
-    ![lb-ipv6-portal-step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
+    ![螢幕擷取畫面顯示已選取流覽和資源群組的 Azure 入口網站。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
 8. 在 [資源群組] 刀鋒視窗上，按一下您在步驟 6 中指定的資源群組名稱。 您會看到所有已部署資源的清單。 如果一切順利，[上次部署] 下應該會顯示 [成功]。 如果沒有，請確定您使用的帳戶具有建立所需資源的權限。
 
-    ![lb-ipv6-portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
+    ![螢幕擷取畫面：顯示資源群組最後一個部署的狀態，在此範例中為 [成功]。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
     > 如果在完成步驟 6 之後立即瀏覽資源群組，[上次部署] 會在資源部署期間顯示部署的狀態。
 
 9. 按一下資源清單中的 [myIPv6PublicIP]。 您會看到它在 IP 位址下有個 IPv6 位址，其 DNS 名稱是您在步驟 6 中為 dnsNameforIPv6LbIP 參數指定的值。 此資源是公用 IPv6 位址和主機名稱，且可以存取網際網路用戶端。
 
-    ![lb-ipv6-portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
+    ![螢幕擷取畫面顯示 IPv6 公用位址。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
 ## <a name="validate-connectivity"></a>驗證連線能力
 
@@ -111,7 +111,7 @@ Azure Resource Manager 範本可包含多個變數和參數，讓您自訂自己
 
 本文中所用的範例範本包含下列變數和參數︰
 
-| 參數 / 變數 | 備註 |
+| 參數 / 變數 | 注意 |
 | --- | --- |
 | adminUsername |指定用來登入虛擬機器的系統管理員帳戶名稱。 |
 | adminPassword |指定用來登入虛擬機器的系統管理員帳戶密碼。 |

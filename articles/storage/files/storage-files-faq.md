@@ -7,15 +7,15 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: eca9596666b318b71bb1deec64e3a7d037e8fa0d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654322"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563687"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>關於 Azure 檔案服務的常見問題集 (FAQ)
-[Azure 檔案](storage-files-introduction.md)提供雲端中完全受控的檔案共用，可透過業界標準[伺服器訊息區 (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)來存取。 您可以同時在 Windows、Linux 和 macOS 的雲端或內部部署上掛接 Azure 檔案共用。 您也可以使用 Azure 檔案同步，在接近使用資料之處進行快速存取，藉以在 Windows Server 電腦上快取 Azure 檔案共用。
+[Azure 檔案儲存體](storage-files-introduction.md) 提供雲端中完全受控的檔案共用，可透過業界標準 [伺服器訊息區（ (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) 和 [網路檔案系統 (NFS) protocol](https://en.wikipedia.org/wiki/Network_File_System) (preview) ）來存取。 您可以同時在 Windows、Linux 和 macOS 的雲端或內部部署上掛接 Azure 檔案共用。 您也可以使用 Azure 檔案同步，在接近使用資料之處進行快速存取，藉以在 Windows Server 電腦上快取 Azure 檔案共用。
 
 本文將回答有關 Azure 檔案服務特性與功能 (包括將 Azure 檔案同步與 Azure 檔案搭配使用) 的常見問題。 如果您找不到問題的答案，可透過下列管道 (依先後順序) 和我們連絡：
 
@@ -31,7 +31,7 @@ ms.locfileid: "88654322"
 
 * <a id="file-access-options"></a>
   **有哪些不同方式可以存取 Azure 檔案服務中的檔案？**  
-    您可以使用 SMB 3.0 通訊協定，在本機電腦上掛接檔案共用，或者可以使用[儲存體總管](https://storageexplorer.com/)之類的工具來存取檔案共用中的檔案。 您可以從應用程式中，使用儲存體用戶端程式庫、REST API、PowerShell 或 Azure CLI 來存取 Azure 檔案共用中的檔案。
+    您可以使用 SMB 3.0 通訊協定將 SMB 檔案共用掛接在您的本機電腦上，也可以使用 [儲存體總管](https://storageexplorer.com/) 之類的工具來存取檔案共用中的檔案。 您可以複製/貼上 Azure 入口網站提供的腳本，以將 NFS 檔案共用掛接在本機電腦上。 您可以從應用程式中，使用儲存體用戶端程式庫、REST API、PowerShell 或 Azure CLI 來存取 Azure 檔案共用中的檔案。
 
 * <a id="what-is-afs"></a>
   **什麼是 Azure 檔案同步？**  
@@ -43,12 +43,12 @@ ms.locfileid: "88654322"
     
     Azure Blob 儲存體適用於需要儲存非結構化資料的大規模雲端原生應用程式。 為了充分發揮效能並進行擴充，Azure Blob 儲存體是比真實檔案系統更為簡單的儲存體抽象概念。 您只能透過 REST 型用戶端程式庫 (或直接透過 REST 型通訊協定) 存取 Azure Blob 儲存體。
 
-    具體而言，Azure 檔案服務是一個檔案系統。 Azure 檔案服務具備您多年來熟知且喜愛用來與內部部署作業系統搭配使用的所有檔案摘要。 就像 Azure Blob 儲存體，Azure 檔案服務可提供 REST 介面和 REST 型用戶端程式庫。 不同於 Azure Blob 儲存體，Azure 檔案服務提供對 Azure 檔案共用的 SMB 存取。 藉由使用 SMB，您可以在內部部署或雲端 VM 中，直接將 Azure 檔案共用掛接在 Windows、Linux 或 macOS 上，而不需撰寫任何程式碼，或對檔案系統附加任何特殊的驅動程式。 您也可以使用 Azure 檔案同步，在接近使用資料之處進行快速存取，藉以在內部部署檔案伺服器上快取 Azure 檔案共用。 
+    具體而言，Azure 檔案服務是一個檔案系統。 Azure 檔案服務具備您多年來熟知且喜愛用來與內部部署作業系統搭配使用的所有檔案摘要。 就像 Azure Blob 儲存體，Azure 檔案服務可提供 REST 介面和 REST 型用戶端程式庫。 不同于 Azure Blob 儲存體，Azure 檔案儲存體會提供 SMB 或 NFS 存取權給 Azure 檔案共用。 您可以在內部部署或雲端 Vm 中，直接將檔案共用掛接在 Windows、Linux 或 macOS 上，而不需要撰寫任何程式碼或附加任何特殊的驅動程式至檔案系統。 您也可以在內部部署檔案伺服器上快取 Azure SMB 檔案共用，方法是使用 Azure 檔案同步快速存取，接近資料的使用位置。 
    
     如需 Azure 檔案儲存體與 Azure Blob 儲存體之間差異的更深入說明，請參閱[核心 Azure 儲存體服務簡介](../common/storage-introduction.md)。 若要深入了解 Azure Blob 儲存體，請參閱 [Blob 儲存體簡介](../blobs/storage-blobs-introduction.md)。
 
 * <a id="files-versus-disks"></a>**為什麼我要使用 Azure 檔案共用，而不是 Azure 磁碟呢？**  
-    Azure 磁碟中的磁碟就只是個磁碟。 若要從 Azure 磁碟取得值，您必須將磁碟連接至 Azure 中執行的虛擬機器。 Azure 磁碟適用於您要在內部部署伺服器上為其使用磁碟的所有項目。 您可以使用它作為 OS 系統磁碟、作為 OS 的交換空間，或者作為應用程式的專用儲存體。 Azure 磁碟的一個有趣用途是在雲端建立檔案伺服器，以便在您可能使用 Azure 檔案共用的相同位置中使用。 當您需要的部署選項 (例如，NFS 通訊協定支援或進階儲存體) 目前不受 Azure 檔案服務支援時，在 Azure 虛擬機器中部署檔案伺服器是在 Azure 中獲得檔案儲存體且具有極高效能的方式。 
+    Azure 磁碟中的磁碟就只是個磁碟。 若要從 Azure 磁碟取得值，您必須將磁碟連接至 Azure 中執行的虛擬機器。 Azure 磁碟適用於您要在內部部署伺服器上為其使用磁碟的所有項目。 您可以使用它作為 OS 系統磁碟、作為 OS 的交換空間，或者作為應用程式的專用儲存體。 Azure 磁碟的一個有趣用途是在雲端建立檔案伺服器，以便在您可能使用 Azure 檔案共用的相同位置中使用。 當您需要目前 Azure 檔案儲存體不支援的部署選項時，在 Azure 虛擬機器中部署檔案伺服器是取得檔案儲存體的高效能方式。 
 
     不過，基於數種理由，執行以 Azure 磁碟作為後端儲存體的檔案伺服器一般會比使用 Azure 檔案共用來得更昂貴。 首先，除了要支付磁碟儲存體的費用外，您還必須支付執行一或多個 Azure VM 的費用。 其次，您也必須管理用來執行檔案伺服器的 VM。 例如，您必須負責 OS 升級。 最後，如果您最終需要在內部部署中快取資料，就必須自行設定和管理複寫技術 (例如，分散式檔案系統複寫 (DFSR)) 以實現此目的。
 
@@ -58,17 +58,18 @@ ms.locfileid: "88654322"
 
 * <a id="get-started"></a>
   **如何開始使用 Azure 檔案服務？**  
-   Azure 檔案很容易就能開始使用。 首先，[建立檔案共用](storage-how-to-create-file-share.md)，然後在您慣用的作業系統中掛接它： 
+   Azure 檔案很容易就能開始使用。 首先， [建立 SMB 檔案共用](storage-how-to-create-file-share.md) 或 [如何建立 NFS 共用](storage-files-how-to-create-nfs-shares.md)，然後將它掛接在您慣用的作業系統中： 
 
-  * [在 Windows 中掛接](storage-how-to-use-files-windows.md)
-  * [在 Linux 中掛接](storage-how-to-use-files-linux.md)
-  * [在 macOS 中掛接](storage-how-to-use-files-mac.md)
+  * [在 Windows 中掛接 SMB 共用](storage-how-to-use-files-windows.md)
+  * [在 Linux 中掛接 SMB 共用](storage-how-to-use-files-linux.md)
+  * [在 macOS 中掛接 SMB 共用](storage-how-to-use-files-mac.md)
+  * [掛接 NFS 檔案共用](storage-files-how-to-mount-nfs-shares.md)
 
     如需更深入了解部署 Azure 檔案共用來取代組織中生產環境檔案共用的指引，請參閱[規劃 Azure 檔案服務部署](storage-files-planning.md)。
 
 * <a id="redundancy-options"></a>
   **Azure 檔案服務支援哪些儲存體備援選項？**  
-    Azure 檔案儲存體目前支援本地備援儲存體 (LRS)、區域備援儲存體 (ZRS)、異地備援儲存體 (GRS)，以及異地區域備援儲存體 (GZRS)。 我們計劃在未來支援讀取權限異地備援 (RA-GRS) 儲存體，但目前尚無確切時間表。
+    Azure 檔案儲存體目前支援本地備援儲存體 (LRS)、區域備援儲存體 (ZRS)、異地備援儲存體 (GRS)，以及異地區域備援儲存體 (GZRS)。 Azure 檔案儲存體 premium 層目前僅支援 LRS 和 ZRS。
 
 * <a id="tier-options"></a>
   **Azure 檔案服務中支援哪些儲存層？**  
@@ -282,6 +283,23 @@ ms.locfileid: "88654322"
 **是否有 REST Api 可支援取得/設定/複製目錄/檔案 Windows Acl？**
 
     是，我們支援在使用 [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (或更新版本) REST API 時，針對目錄或檔案取得、設定或複製 NTFS ACL 的 REST API。 我們也支援以 REST 為基礎的工具保存 Windows Acl： [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases)。
+
+## <a name="network-file-system"></a>網路檔案系統
+
+* <a id="when-to-use-nfs"></a>
+**我何時應該使用 Azure 檔案儲存體 NFS？**
+
+    請參閱 [NFS 共用 (預覽) ](storage-files-compare-protocols.md#nfs-shares-preview)。
+
+* <a id="backup-nfs-data"></a>
+**如何? 儲存在 NFS 共用中的備份資料？**
+
+    您可以使用熟悉的工具（例如 rsync）或其中一個協力廠商備份夥伴的產品，來將您的資料備份到 NFS 共用上。 包含 [Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm)、 [Veeam](https://www.veeam.com/blog/?p=123438)和 [Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001) 在內的多個備份夥伴是我們初始預覽的一部分，並已擴充其解決方案，以針對 Azure 檔案儲存體使用 SMB 3.0 和 NFS 4.1。
+
+* <a id="migrate-nfs-data"></a>
+**我可以將現有的資料移轉到 NFS 共用嗎？**
+
+    在區域內，您可以使用 scp、rsync 或 SSHFS 等標準工具來移動資料。 因為可以同時從多個計算實例存取 Azure 檔案儲存體 NFS，所以您可以使用平行上傳來改善複製速度。 如果您想要從區域外部導入資料，請使用 VPN 或 Expressroute 從內部部署資料中心掛接至您的檔案系統。
 
 ## <a name="on-premises-access"></a>內部部署存取
 

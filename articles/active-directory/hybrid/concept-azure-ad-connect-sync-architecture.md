@@ -16,15 +16,15 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689209"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563857"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect 同步處理：了解架構
-本主題涵蓋 Azure AD Connect 同步處理的基本架構。在許多方面，它類似于其前身的 MIIS 2003、ILM 2007 和 FIM 2010。 Azure AD Connect 同步處理是這些技術的進化。 如果您很熟悉上述任何較早期的技術，也會對本主題的內容感到熟悉。 如果您是同步處理的新手，這個主題很適合您。 但是，不一定需要了解本主題的詳細資料，才能成功地自訂 Azure AD Connect 同步處理 (在本主題中稱為「同步處理引擎」)。
+本主題涵蓋 Azure AD Connect 同步處理的基本架構。在許多方面，它類似于前身的 MIIS 2003、ILM 2007 和 FIM 2010。 Azure AD Connect 同步處理是這些技術的進化。 如果您很熟悉上述任何較早期的技術，也會對本主題的內容感到熟悉。 如果您是同步處理的新手，這個主題很適合您。 但是，不一定需要了解本主題的詳細資料，才能成功地自訂 Azure AD Connect 同步處理 (在本主題中稱為「同步處理引擎」)。
 
 ## <a name="architecture"></a>架構
 同步處理引擎會為多個已連接的資料來源中儲存的物件建立整合式檢視，並管理這些資料來源中的身分識別資訊。 此整合式檢視取決於從連接的資料來源擷取的身分識別資訊，以及一組用來決定如何處理此資訊的規則。
@@ -36,7 +36,7 @@ ms.locfileid: "84689209"
 
 連接器會進行 API 呼叫，以便與連接的資料來源交換身分識別資訊 (讀取和寫入)。 此外，也可以使用可延伸的連線架構來新增自訂連接器。 下圖顯示連接器如何將連接的資料來源連接至同步處理引擎。
 
-![Arch1](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
+![圖表顯示連接的資料來源，以及由稱為「連接器」的行相關聯的同步處理引擎。](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
 
 資料可以任一方向流動，但無法同時以兩個方向流動。 換句話說，連接器可以設定成允許資料從連接的資料來源流動至同步處理引擎，或從同步處理引擎流動至連接的資料來源，但是一個物件和屬性一次只能進行其中一項作業。 不同物件和不同屬性的方向可以不同。
 
@@ -62,7 +62,7 @@ ms.locfileid: "84689209"
 
 下圖顯示同步處理引擎內的連接器空間命名空間和 Metaverse 命名空間。
 
-![Arch2](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
+![圖表顯示連接的資料來源和同步處理引擎，其可分隔為連接器空間和中繼資料命名空間，並由稱為「連接器」的行所關聯。](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
 
 ## <a name="sync-engine-identity-objects"></a>同步處理引擎身分識別物件
 同步處理引擎中的物件是連接的資料來源中任一個物件的代表項目，或同步處理引擎對於這些物件的整合式檢視。 每一個同步處理引擎物件都必須有全域唯一識別碼 (GUID)。 Guid 可提供資料完整性以及物件之間的快速關聯性。
@@ -97,13 +97,13 @@ ms.locfileid: "84689209"
 
 下圖顯示的匯入物件表示連接的資料來源中的物件。
 
-![Arch3](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
+![圖表顯示從連接的資料來源進入同步處理引擎中的連接器空間命名空間的匯入物件。](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
 
 同步處理引擎會使用 Metaverse 中的物件資訊建立匯出物件。 在下一個通訊工作階段期間，匯出物件會匯出至連接的資料來源。 從同步處理引擎的觀點來看，匯出物件尚未存在於連接的資料來源中。 因此，無法使用匯出物件的錨點屬性。 從同步處理引擎接收物件之後，連接的資料來源會為物件的錨點屬性建立唯一值。
 
 下圖顯示如何匯出使用 Metaverse 中的身分識別資訊所建立的物件。
 
-![Arch4](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
+![下圖顯示從中繼資料到連接器空間命名空間的匯出物件，再到連接的資料來源。](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
 
 同步處理引擎會從連接的資料來源重新匯入物件，以確認匯出物件。 當同步處理引擎在下一次從該連接的資料來源匯入期間收到物件時，匯出物件就會變成匯入物件。
 
@@ -132,7 +132,7 @@ Metaverse 物件包含同步處理引擎具有的連接器空間中預備物件�
 
 單一連接器空間物件只可以連結至一個 Metaverse 物件。 不過，每個 Metaverse 物件可以連結至相同或不同連接器空間中的多個連接器空間物件，如下圖所示。
 
-![Arch5](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
+![下圖顯示兩個連接的資料物件，這些物件是由連接器與同步處理引擎相關聯，而同步處理引擎有聯結的物件和分離物件](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
 
 預備物件與 Metaverse 物件之間的連結關聯性持續存在，只能依據您指定的規則加以移除。
 
@@ -157,7 +157,7 @@ Metaverse 物件包含同步處理引擎具有的連接器空間中預備物件�
 
 下圖顯示當身分識別資訊在兩個連接的資料來源之間流動時，發生每個程序的位置。
 
-![Arch6](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
+![圖表顯示從連接的資料到連接器空間的身分識別資訊流程 (將) 匯入至中繼資料的連接器空間 (同步處理) 連接的資料 (匯出) 。](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
 
 ### <a name="import-process"></a>匯入程序
 在匯入過程中，同步處理引擎會評估身分識別資訊的更新。 同步處理引擎會比較從連接的資料來源收到的身分識別資訊與預備物件的身分識別資訊，以判斷預備物件是否需要更新。 如果必須使用新資料更新預備物件，則預備物件會標示為「擱置匯入」。
@@ -180,7 +180,7 @@ Metaverse 物件包含同步處理引擎具有的連接器空間中預備物件�
 具有更新後資料的預備物件會標示為「擱置匯入」。 有不同的暫止匯入類型可以使用。 視匯入程序的結果而定，連接器空間中的預備物件具有下列其中一種擱置匯入類型：
 
 * **None**： 預備物件的任何屬性均沒有可用的變更。 同步處理引擎不會將此類型標示為「擱置匯入」。
-* **新增**。 預備物件是連接器空間中新的匯入物件。 同步處理引擎會將此類型標示為「擱置匯入」，以便在 Metaverse 中進行其他處理。
+* **加入**。 預備物件是連接器空間中新的匯入物件。 同步處理引擎會將此類型標示為「擱置匯入」，以便在 Metaverse 中進行其他處理。
 * **更新**。 同步處理引擎會在連接器空間中尋找對應的預備物件並此類型標示為「擱置匯入」，以便在 Metaverse 中處理屬性更新。 更新包含物件重新命名。
 * **刪除**。 同步處理引擎會在連接器空間中尋找對應的預備物件並將此類型標示為「擱置匯入」，以便刪除聯結的物件。
 * **刪除/新增**。 同步處理引擎會在連接器空間中尋找對應的預備物件，但物件類型不相符。 在此情況下，會預備刪除-新增的修改。 刪除-新增的修改會向同步處理引擎表示必須進行此物件的完整重新同步處理，因為物件類型變更時此物件會套用不同的規則組合。
@@ -224,7 +224,7 @@ Metaverse 物件包含同步處理引擎具有的連接器空間中預備物件�
 輸出同步處理有三個程序：
 
 * **佈建**
-* **撤銷**
+* **解除**
 * **匯出屬性流程**
 
 佈建和解除佈建都是物件層級的作業。 解除佈建相依於佈建，因為只有佈建可以啟始它。 當佈建移除 Metaverse 物件與匯出物件之間的連結時，就會觸發解除佈建。
@@ -252,7 +252,7 @@ Metaverse 物件包含同步處理引擎具有的連接器空間中預備物件�
 
 同步處理引擎會儲存有關每個預備物件的匯出和匯入狀態資訊。 自從上次匯出以後，如果在屬性包含清單中指定的屬性值已變更，則儲存匯入和匯出狀態可讓同步處理引擎做出適當的回應。 同步處理引擎會使用匯入程序來確認已匯出到連接的資料來源的屬性值。 如下圖所示，比較匯入和匯出的資訊，可讓同步處理引擎判斷匯出是否成功或是否需要重複執行。
 
-![Arch7](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
+![圖表顯示連接器空間與連接的資料之間的物件與連接器之間的同步處理。](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
 
 例如，如果同步處理引擎將值為 5 的屬性 C 匯出至連接的資料來源，它會在匯出狀態記憶體中儲存 C=5。 此物件的每次額外匯出都會導致嘗試再度將 C=5 匯出到連接的資料來源，因為同步處理引擎假設此值尚未持續地套用至物件 (也就是說，除非最近從連接的資料來源匯入了不同的值)。 在物件匯入作業期間收到 C=5 時，就會清除匯出記憶體。
 
