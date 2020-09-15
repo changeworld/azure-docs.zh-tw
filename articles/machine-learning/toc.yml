@@ -166,9 +166,21 @@
               href: how-to-use-azure-ad-identity.md
         - name: 網路安全性
           items:
-            - name: 使用虛擬網路
+            - name: 虛擬網路概觀
               displayName: 'vnet, blob'
-              href: how-to-enable-virtual-network.md
+              href: how-to-network-security-overview.md
+            - name: 保護工作區資源
+              displayName: 'vnet, workspace, container instance, container registry'
+              href: how-to-secure-workspace-vnet.md
+            - name: 保護訓練環境
+              displayName: vnet
+              href: how-to-secure-training-vnet.md
+            - name: 保護推斷環境
+              displayName: vnet
+              href: how-to-secure-inferencing-vnet.md
+            - name: 在虛擬網路中使用 Studio
+              displayName: vnet
+              href: how-to-enable-studio-virtual-network.md
             - name: 使用 Private Link
               displayName: private endpoint
               href: how-to-configure-private-link.md
@@ -307,6 +319,9 @@
             - name: 微調超參數
               displayName: parameter
               href: how-to-tune-hyperparameters.md
+        - name: 搭配使用 MLflow
+          displayName: 'log, monitor, deploy, metrics, Databricks, model registry, register'
+          href: how-to-use-mlflow.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -328,9 +343,6 @@
             - name: 檢視記錄
               displayName: 'troubleshoot, log, files, tracing'
               href: how-to-monitor-view-training-logs.md
-            - name: 使用 MLflow 追蹤實驗
-              displayName: 'log, monitor, metrics, Databricks'
-              href: how-to-use-mlflow.md
             - name: 使用 TensorBoard 執行視覺化
               displayName: 'log, monitor, metrics'
               href: how-to-monitor-tensorboard.md

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 697c686b61a86cb01327364ad73f30f88e2e151d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 285a41230175392dafb69a99ca08be1f72339439
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268069"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318959"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>在 Azure Stack Edge GPU 裝置上 Kubernetes 角色型存取控制
 
@@ -32,10 +32,7 @@ Kubernetes RBAC 可讓您指派使用者或使用者群組，以執行建立或�
 
 Kubernetes 資源（例如 pod 和部署）會以邏輯方式分組到命名空間中。 這些群組可讓您以邏輯方式分割 Kubernetes 叢集，並限制存取以建立、查看或管理資源。 使用者只能與其指派的命名空間內包含的資源互動。
 
-命名空間適用于有許多使用者散佈在多個小組或專案的環境中。 對於少數到數十個使用者的叢集，您應該完全不需要建立或考慮命名空間。 當您需要所提供的功能時，請開始使用命名空間。
-
-如需詳細資訊，請參閱 [Kubernetes 命名空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)。
-
+命名空間適用于有許多使用者散佈在多個小組或專案的環境中。 如需詳細資訊，請參閱 [Kubernetes 命名空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)。
 
 您的 Azure Stack Edge 裝置具有下列命名空間：
 
@@ -47,20 +44,18 @@ Kubernetes 資源（例如 pod 和部署）會以邏輯方式分組到命名空�
     - dbe-命名空間
     - default
     - kubernetes-儀表板
-    - default
     - kube-節點-租用
     - kube-public
-    - iotedge
-    - azure-arc
+
 
     請務必不要針對您所建立的使用者命名空間使用任何保留名稱。 
 <!--- **default namespace** - This namespace is where pods and deployments are created by default when none is provided and you have admin access to this namespace. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.-->
 
-- **使用者命名空間** -這些是您可以透過 **kubectl** 建立以在本機部署應用程式的命名空間。
+- **使用者命名空間** -這些是您可以透過 **kubectl** 建立的命名空間，或透過裝置的 PowerShell 介面，在本機部署應用程式的命名空間。
  
-- **IoT Edge 命名空間** -您會連接到此 `iotedge` 命名空間，以透過 IoT Edge 部署應用程式。
+- **IoT Edge 命名空間** -您會連接到此 `iotedge` 命名空間，以管理透過 IoT Edge 部署的應用程式。
 
-- **Azure Arc 命名空間** -您會連接到此 `azure-arc` 命名空間，以透過 Azure Arc 部署應用程式。 
+- **Azure Arc 命名空間** -您會連接到此 `azure-arc` 命名空間，以管理透過 Azure Arc 部署的應用程式。使用 Azure Arc，您也可以在其他使用者命名空間中部署應用程式。 
 
 ## <a name="namespaces-and-users"></a>命名空間和使用者
 
@@ -96,7 +91,7 @@ Azure Stack Edge 裝置具有多個系統命名空間，而且您可以使用檔
 
 在此圖中，Alice、Bob 和 Chuck 只能存取指派的使用者命名空間，在此案例中為 `ns1` 、 `ns2` 和 `ns3` 分別為。 在這些命名空間中，它們具有系統管理員存取權。 另一方面，叢集系統管理員可以存取系統命名空間和整個叢集的資源。
 
-您可以使用 `kubectl` 命令來建立命名空間、指派使用者、指派使用者或下載 `kubeconfig` 檔。 以下是高層級的工作流程：
+您可以使用 `kubectl` 命令來建立命名空間和使用者、將使用者指派給命名空間，或下載 `kubeconfig` 檔。 以下是高層級的工作流程：
 
 1. 建立命名空間和使用者。  
 
@@ -123,7 +118,7 @@ Azure Stack Edge 裝置具有多個系統命名空間，而且您可以使用檔
 - 您可以建立使用者命名空間，並在這些命名空間內建立額外的使用者，並授與或撤銷這些使用者的命名空間存取權。
 - 您不能建立任何名稱與任何系統命名空間相同的命名空間。 系統命名空間的名稱會保留。  
 - 您無法使用其他使用者命名空間已使用的名稱來建立任何使用者命名空間。 例如，如果您已 `test-ns` 建立，就無法建立另一個 `test-ns` 命名空間。
-- 您不能建立已保留名稱的使用者。 例如， `aseuser` 是保留的叢集系統管理員，因此無法使用。
+- 您不能建立已保留名稱的使用者。 例如， `aseuser` 是保留的使用者，無法使用。
 
 
 ## <a name="next-steps"></a>後續步驟

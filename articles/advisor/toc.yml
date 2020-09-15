@@ -41,6 +41,8 @@
       href: advisor-quick-fix.md
     - name: Azure Resource Graph 中的 Advisor 資料
       href: advisor-azure-resource-graph.md
+    - name: 取用 Advisor 分數
+      href: azure-advisor-score.md
 - name: 參考
   items:
     - name: 資訊安全中心

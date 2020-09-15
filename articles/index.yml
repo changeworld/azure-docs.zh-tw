@@ -10,15 +10,15 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 07/27/2020
+  ms.date: 09/10/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 5f6ba56347f76cc707bea2b30fab16e46f8be963
-  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+  ms.openlocfilehash: 45bad2d581e33ff89dbd28827f81ef26bc835f0a
+  ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/20/2020
-  ms.locfileid: "88651500"
+  ms.lasthandoff: 09/11/2020
+  ms.locfileid: "90019779"
 highlightedContent:
   items:
   - title: Azure 開發人員開始使用指南
@@ -174,13 +174,13 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/face/index.yml
-  - title: 表單辨識器 (預覽)
+  - title: 表單辨識器
     summary: 具 AI 功能的文件擷取服務，能夠理解您的表單
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/form-recognizer/index.yml
-  - title: 沈浸式閱讀程式 (預覽)
+  - title: 沈浸式閱讀程式
     summary: 讓年齡層和活動能力不同的使用者們都能閱讀和理解文字
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
@@ -260,7 +260,7 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: https://docs.microsoft.com/azure/cognitive-services/speech-service/index#pivot=start&panel=texttospeech
-  - title: 翻譯文字
+  - title: Translator
     summary: 使用簡單的 REST API 呼叫，輕鬆進行機器翻譯
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
@@ -300,7 +300,7 @@ productDirectory:
     - storage
     url: data-share/index.yml
   - title: Azure 串流分析
-    summary: 從數百萬台 IoT 裝置即時資料串流處理
+    summary: 即時分析來自應用程式和裝置的快速移動資料流
     imageSrc: https://static.docs.com/ui/media/product/azure/stream-analytics.svg
     azureCategories:
     - analytics
@@ -374,7 +374,7 @@ productDirectory:
     - blockchain
     url: blockchain/workbench/index.yml
   - title: Azure Cosmos DB
-    summary: 全域散發的多模型資料庫，適用於任何規模
+    summary: 快速的 NoSQL 資料庫支援開放式 API 及任何規模
     imageSrc: https://static.docs.com/ui/media/product/azure/cosmos-db.svg
     azureCategories:
     - featured
@@ -443,7 +443,7 @@ productDirectory:
     - compute
     - web
     url: spring-cloud/index.yml
-  - title: Azure VMware 解決方案
+  - title: Azure VMware 解決方案 (預覽)
     summary: 在 Azure 上以原生方式執行 VMware 工作負載
     imageSrc: ./media/index/azure-vmware.svg
     azureCategories:
@@ -475,12 +475,6 @@ productDirectory:
     - featured
     - compute
     url: virtual-machines/linux/index.yml
-  - title: Azure 上的 SAP HANA 大型執行個體
-    summary: 執行任何超大規模雲端提供者的最大 SAP HANA 工作負載
-    imageSrc: https://static.docs.com/ui/media/product/azure/sap.svg
-    azureCategories:
-    - compute
-    url: virtual-machines/workloads/sap/hana-overview-architecture.md
   - title: Service Fabric
     summary: 在 Windows 或 Linux 上開發微服務及協調容器
     imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
@@ -488,15 +482,15 @@ productDirectory:
     - compute
     - containers
     url: service-fabric/index.yml
-  - title: Azure 虛擬機器上的 SQL Server
+  - title: 虛擬機器上的 SQL Server
     summary: 將企業 SQL Server 應用程式裝載於雲端
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-server-vm.svg
     azureCategories:
     - compute
     - databases
     url: https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json
-  - title: 靜態 Web 應用程式
-    summary: 從 GitHub 存放庫建立完整的堆疊 Web 應用程式並部署至 Azure
+  - title: Static Web Apps (預覽)
+    summary: 現代化的 Web 應用程式服務，可簡化從原始程式碼到全球高可用性的完整堆疊開發
     imageSrc: ./media/index/static-apps.svg
     azureCategories:
     - compute
@@ -766,12 +760,24 @@ productDirectory:
     azureCategories:
     - hybrid
     url: https://docs.microsoft.com/azure-stack/
-  - title: Azure Stack HCI 解決方案
-    summary: 透過超大範圍的基礎結構 (HCI) 解決方案在內部部署執行虛擬機器，並輕鬆連線到 Azure。
-    imageSrc: ./media/index/azure-stack-hci.svg
+  - title: Azure Stack HCI (預覽)
+    summary: 將超融合式基礎結構與 Azure 和混合式服務加以整合，以在內部部署執行虛擬工作負載
+    imageSrc: https://static.docs.com/ui/media/product/azure/stack-hci.svg
     azureCategories:
     - hybrid
     url: https://docs.microsoft.com/azure-stack/hci/
+  - title: Azure Stack Hub
+    summary: Azure Stack Hub 是以整合硬體系統的形式銷售，且軟體已預先安裝在已驗證的硬體上
+    imageSrc: https://static.docs.com/ui/media/product/azure/stack-hub.svg
+    azureCategories:
+    - hybrid
+    url: https://docs.microsoft.com/azure-stack/operator/
+  - title: Azure Stack Edge
+    summary: 將 Azure 的計算、儲存體和智慧帶到邊緣的 Azure 受控設備
+    imageSrc: https://static.docs.com/ui/media/product/azure/stack-edge.svg
+    azureCategories:
+    - hybrid
+    url: https://docs.microsoft.com/azure/databox-online/
   - title: 資訊安全中心
     summary: 統一混合式雲端工作負載中的安全性管理，並提供先進的威脅保護
     imageSrc: https://static.docs.com/ui/media/product/azure/security-center.svg
@@ -786,12 +792,12 @@ productDirectory:
     - hybrid
     - iot
     url: iot-edge/index.yml
-  - title: Azure Active Directory B2C
+  - title: Azure Active Directory 外部身分識別
     summary: 在雲端中管理消費者身分識別及存取
     imageSrc: https://static.docs.com/ui/media/product/azure/active-directory-b2c.svg
     azureCategories:
     - identity
-    url: active-directory-b2c/index.yml
+    url: active-directory/external-identities/index.yml
   - title: Azure Active Directory Domain Services
     summary: 將 Azure 虛擬機器加入沒有網域控制站的網域中
     imageSrc: https://static.docs.com/ui/media/product/azure/ad-domain-services.svg
@@ -950,6 +956,12 @@ productDirectory:
     azureCategories:
     - management-and-governance
     url: azure-resource-manager/index.yml
+  - title: Azure Resource Mover
+    summary: 在 Azure 區域之間移動資源。
+    imageSrc: https://static.docs.com/ui/media/product/azure/resource-mover.svg
+    azureCategories:
+    - management-and-governance
+    url: resource-mover/index.yml
   - title: ARM 範本
     summary: 使用 Resource Manager 將基礎結構作為程式碼提供給所有的 Azure 資源
     imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
@@ -995,12 +1007,6 @@ productDirectory:
     - management-and-governance
     - networking
     url: network-watcher/index.yml
-  - title: 排程器
-    summary: 依簡單或複雜的週期性排程執行工作
-    imageSrc: https://static.docs.com/ui/media/product/azure/scheduler.svg
-    azureCategories:
-    - management-and-governance
-    url: scheduler/index.yml
   - title: 流量管理員
     summary: 路由傳送連入流量以提供高效能及可用性
     imageSrc: https://static.docs.com/ui/media/product/azure/traffic-manager.svg
@@ -1040,6 +1046,12 @@ productDirectory:
     azureCategories:
     - media
     url: media-services/latest/stream-live-tutorial-with-api.md
+  - title: 即時影片分析 (預覽)
+    summary: 使用您選擇的 AI 建置智慧型影片應用程式
+    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
+    azureCategories:
+    - media
+    url: media-services/live-video-analytics-edge/overview.md
   - title: 媒體服務
     summary: 編碼、儲存和串流大量視訊及音訊
     imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
@@ -1121,6 +1133,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/front-door.svg
     azureCategories:
     - networking
+    - security
     url: frontdoor/index.yml
   - title: Azure Internet Analyzer (預覽)
     summary: 測試網路基礎結構變更會對客戶效能造成的影響
@@ -1164,6 +1177,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/frontdoor-waf-policies.svg
     azureCategories:
     - networking
+    - security
     url: web-application-firewall/index.yml
   - title: Azure 專用 HSM
     summary: 管理您在雲端中使用的硬體安全模組
@@ -1214,7 +1228,7 @@ productDirectory:
     - storage
     url: storage/blobs/index.yml
   - title: 磁碟儲存體
-    summary: 支援虛擬機器的持續性、安全磁碟選項
+    summary: 適用於 Azure 虛擬機器的高效能高度耐用區塊儲存體
     imageSrc: https://static.docs.com/ui/media/product/azure/disk-storage.svg
     azureCategories:
     - storage
@@ -1225,12 +1239,6 @@ productDirectory:
     azureCategories:
     - storage
     url: storage/files/index.yml
-  - title: 受控磁碟
-    summary: 安全的永續性磁碟儲存體，適用於 Azure 虛擬機器
-    imageSrc: https://static.docs.com/ui/media/product/azure/disk.svg
-    azureCategories:
-    - storage
-    url: virtual-machines/managed-disks-overview.md
   - title: 佇列儲存體
     summary: 根據流量有效地擴充應用程式
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
@@ -1238,7 +1246,7 @@ productDirectory:
     - storage
     url: storage/queues/index.yml
   - title: 儲存體
-    summary: 為您的資料、應用程式和工作負載，取得安全、可靈活調整的安全雲端儲存體
+    summary: 耐用、具高可用性並可大幅調整的雲端儲存體
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
     - storage

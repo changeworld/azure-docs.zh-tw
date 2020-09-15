@@ -20,7 +20,7 @@
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
 - name: 操作指南
   items:
-    - name: 連線裝置
+    - name: 連線及開發裝置
       items:
         - name: 準備及連線 Rigado Cascade 500
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json

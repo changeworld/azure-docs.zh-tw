@@ -1,45 +1,45 @@
 ---
-title: 設定客戶管理的金鑰，以加密 Ise 中的待用資料
-description: 建立及管理您自己的加密金鑰，以保護 Azure Logic Apps 中整合服務環境（Ise）的待用資料
+title: 設定客戶管理的金鑰，以加密 Ise 中的靜止資料
+description: 建立及管理您自己的加密金鑰，以保護 (Ise) Azure Logic Apps 中的整合服務環境的待用資料
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: ad5b4245cc445ecf8fae22c39db3365d71730a56
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386158"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400138"
 ---
-# <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>設定客戶管理的金鑰，以加密 Azure Logic Apps 中整合服務環境（Ise）的待用資料
+# <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>設定客戶管理的金鑰，以在 Azure Logic Apps 中 (Ise) 為整合服務環境加密待用資料
 
-Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](../storage/common/storage-service-encryption.md)。 此加密可保護您的資料，並協助您符合組織的安全性和合規性承諾。 根據預設，Azure 儲存體會使用 Microsoft 管理的金鑰來加密您的資料。 如需 Azure 儲存體加密運作方式的詳細資訊，請參閱待用[資料的 Azure 儲存體加密](../storage/common/storage-service-encryption.md)和待用[Azure 資料加密](../security/fundamentals/encryption-atrest.md)。
+Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](../storage/common/storage-service-encryption.md)。 此加密可保護您的資料，並協助您符合組織的安全性和合規性承諾。 根據預設，Azure 儲存體會使用 Microsoft 管理的金鑰來加密您的資料。 如需 Azure 儲存體加密如何運作的詳細資訊，請參閱 [Azure 儲存體待用資料加密](../storage/common/storage-service-encryption.md) 和 [Azure 資料靜態](../security/fundamentals/encryption-atrest.md)加密。
 
-當您建立[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)來裝載您的邏輯應用程式時，如果您想要更充分掌控 Azure 儲存體所使用的加密金鑰，您可以使用[Azure Key Vault](../key-vault/general/overview.md)來設定、使用及管理您自己的金鑰。 這項功能也稱為「攜帶您自己的金鑰」（BYOK），而您的金鑰稱為「客戶管理的金鑰」。
+當您建立 [整合服務環境 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 來裝載您的邏輯應用程式，而且您想要更充分掌控 Azure 儲存體所使用的加密金鑰時，可以使用 [Azure Key Vault](../key-vault/general/overview.md)來設定、使用和管理您自己的金鑰。 這項功能也稱為「攜帶您自己的金鑰」 (BYOK) ，而您的金鑰稱為「客戶管理的金鑰」。
 
-本主題說明如何設定並指定您自己的加密金鑰，以在使用 Logic Apps REST API 建立 ISE 時使用。 如需透過 Logic Apps REST API 建立 ISE 的一般步驟，請參閱[使用 Logic Apps REST API 建立整合服務環境（ISE）](../logic-apps/create-integration-service-environment-rest-api.md)。
+本主題說明如何設定和指定您自己的加密金鑰，以在使用 Logic Apps REST API 建立 ISE 時使用。 如需透過 Logic Apps REST API 建立 ISE 的一般步驟，請參閱 [使用 Logic Apps REST API 建立整合服務環境 (ISE) ](../logic-apps/create-integration-service-environment-rest-api.md)。
 
 ## <a name="considerations"></a>考量
 
-* 目前，只有在下列 Azure 區域中才可使用適用于 ISE 的客戶管理金鑰支援：美國西部2、美國東部和美國中南部
+* 目前，客戶管理的 ISE 金鑰支援僅適用于下列 Azure 區域：美國西部2、美國東部和美國中南部
 
-* 只有在建立您的*ISE 時，才*可以指定客戶管理的金鑰，而不是之後。 建立 ISE 之後，即無法停用此金鑰。 目前不支援為 ISE 輪替客戶管理的金鑰。
+* 您 *只能在建立 ISE 時*指定客戶管理的金鑰，而不能在之後指定。 您無法在 ISE 建立之後停用此金鑰。 目前不支援為 ISE 輪替客戶管理的金鑰。
 
-* 為了支援客戶管理的金鑰，您的 ISE 要求必須啟用其[系統指派的受控識別](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。 此身分識別可讓 ISE 驗證其他 Azure Active Directory （Azure AD）租使用者中資源的存取權，讓您不需要使用您的認證登入。
+* 若要支援客戶管理的金鑰，您的 ISE 要求必須啟用其 [系統指派的受控識別](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) 。 此身分識別可讓 ISE 驗證其他 Azure Active Directory (Azure AD) 租使用者中資源的存取權，如此您就不需要使用您的認證登入。
 
-* 目前，若要建立支援客戶管理金鑰的 ISE，並啟用其系統指派的身分識別，您必須使用 HTTPS PUT 要求呼叫 Logic Apps REST API。
+* 目前，若要建立支援客戶管理金鑰的 ISE，並啟用其系統指派的身分識別，您必須使用 HTTPS PUT 要求來呼叫 Logic Apps REST API。
 
-* 在您傳送建立 ISE 的 HTTPS PUT 要求之後的*30 分鐘*內，您必須將[金鑰保存庫的存取權授與您 ise 系統指派](#identity-access-to-key-vault)的身分識別。 否則，ISE 建立會失敗，並擲回許可權錯誤。
+* 在您傳送建立 ISE 的 HTTPS PUT 要求之後的 *30 分鐘* 內，您必須將 [金鑰保存庫的存取權授與 ise 系統指派](#identity-access-to-key-vault)的身分識別。 否則，ISE 建立會失敗，並擲回許可權錯誤。
 
 ## <a name="prerequisites"></a>必要條件
 
-* 相同的[必要條件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和需求，可讓您在 Azure 入口網站中建立 ise 時，[啟用 ise 的存取權。](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)
+* [啟用 ise 存取權](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)的相同[必要條件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和需求，如同當您在 Azure 入口網站中建立 ise 時
 
-* 已啟用「虛**刪除**」和「**不要清除**」屬性的 Azure 金鑰保存庫
+* 已啟用虛 **刪除** 和 **未清除** 屬性的 Azure key vault
 
-  如需有關啟用這些屬性的詳細資訊，請參閱[Azure Key Vault 虛刪除總覽](../key-vault/general/soft-delete-overview.md)和[使用 Azure Key Vault 設定客戶管理的金鑰](../storage/common/storage-encryption-keys-portal.md)。 如果您不熟悉 Azure Key Vault，請瞭解[如何使用 Azure 入口網站建立金鑰保存庫](../key-vault/secrets/quick-create-portal.md#create-a-vault)，或使用 Azure PowerShell 命令[AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)。
+  如需有關啟用這些屬性的詳細資訊，請參閱 [Azure Key Vault 虛刪除總覽](../key-vault/general/soft-delete-overview.md) 和 [使用 Azure Key Vault 設定客戶管理的金鑰](../storage/common/storage-encryption-keys-portal.md)。 如果您不熟悉 Azure Key Vault，請瞭解如何使用 Azure 入口網站或使用 Azure PowerShell 命令[>new-azkeyvault](/powershell/module/az.keyvault/new-azkeyvault)[來建立金鑰保存庫](../key-vault/secrets/quick-create-portal.md#create-a-vault)。
 
 * 在您的金鑰保存庫中，使用這些屬性值建立的金鑰：
 
@@ -47,27 +47,27 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](..
   |----------|-------|
   | **索引鍵類型** | RSA |
   | **RSA 金鑰大小** | 2048 |
-  | **已啟用** | 是 |
+  | **Enabled** | 是 |
   |||
 
   ![建立客戶管理的加密金鑰](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  如需詳細資訊，請參閱使用 Azure Key Vault 或 Azure PowerShell 命令來[設定客戶管理的金鑰](../storage/common/storage-encryption-keys-portal.md) [AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)。
+  如需詳細資訊，請參閱 [使用 Azure Key Vault 設定客戶管理的金鑰](../storage/common/storage-encryption-keys-portal.md) 或 Azure PowerShell 命令 [AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)。
 
-* 一種工具，可讓您使用 HTTPS PUT 要求呼叫 Logic Apps REST API 來建立 ISE。 例如，您可以使用[Postman](https://www.getpostman.com/downloads/)，也可以建立執行這項工作的邏輯應用程式。
+* 一種工具，可讓您藉由使用 HTTPS PUT 要求呼叫 Logic Apps REST API 來建立 ISE。 例如，您可以使用 [Postman](https://www.getpostman.com/downloads/)，也可以建立可執行這項工作的邏輯應用程式。
 
 <a name="enable-support-key-system-identity"></a>
 
-## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>建立具有 key vault 和受控識別支援的 ISE
+## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>使用 key vault 和受控識別支援建立 ISE
 
-若要藉由呼叫 Logic Apps REST API 來建立您的 ISE，請提出此 HTTPS PUT 要求：
+若要藉由呼叫 Logic Apps REST API 來建立 ISE，請提出此 HTTPS PUT 要求：
 
 `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
 
 > [!IMPORTANT]
-> Logic Apps REST API 2019-05-01 版要求您自行建立 ISE 連接器的 HTTP PUT 要求。
+> Logic Apps REST API 2019-05-01 版本需要您針對 ISE 連接器建立自己的 HTTP PUT 要求。
 
-部署通常會在兩個小時內完成。 有時候，部署需要的時間可能高達四小時。 若要檢查部署狀態，請在 [ [Azure 入口網站](https://portal.azure.com)的 Azure 工具列上，選取 [通知] 圖示，這會開啟 [通知] 窗格。
+部署通常會在兩個小時內完成。 有時候，部署需要的時間可能高達四小時。 若要檢查部署狀態，請在 [ [Azure 入口網站](https://portal.azure.com)的 Azure 工具列上選取 [通知] 圖示，以開啟 [通知] 窗格。
 
 > [!NOTE]
 > 如果部署失敗或您刪除 ISE，Azure「可能」需要最多一小時的時間來釋出您的子網路。 這個延遲表示，您可能必須稍等，才能在另一個的 ISE 中重複使用這些子網路。
@@ -86,14 +86,14 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](..
 
 ### <a name="request-body"></a>Request body
 
-在要求本文中，藉由在您的 ISE 定義中提供資訊，以啟用這些額外專案的支援：
+在要求主體中，藉由在 ISE 定義中提供這些額外專案的資訊來啟用支援：
 
-* 您的 ISE 用來存取金鑰保存庫的系統指派受控識別
-* 您的金鑰保存庫和您想要使用的客戶管理金鑰
+* 您 ISE 用來存取金鑰保存庫的系統指派受控識別
+* 您要使用的金鑰保存庫和客戶管理的金鑰
 
 #### <a name="request-body-syntax"></a>要求本文語法
 
-以下是要求本文語法，其中描述建立 ISE 時要使用的屬性：
+以下是要求本文語法，其中描述當您建立 ISE 時要使用的屬性：
 
 ```json
 {
@@ -142,9 +142,9 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](..
 }
 ```
 
-#### <a name="request-body-example"></a>要求本文範例
+#### <a name="request-body-example"></a>要求主體範例
 
-這個範例要求主體會顯示範例值：
+此範例要求主體會顯示範例值：
 
 ```json
 {
@@ -197,35 +197,35 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](..
 
 ## <a name="grant-access-to-your-key-vault"></a>授與對金鑰保存庫的存取權
 
-在您傳送 HTTP PUT 要求以建立 ISE 後的*30 分鐘*內，您必須針對 ISE 系統指派的身分識別，將存取原則新增至您的金鑰保存庫。 否則，為您的 ISE 建立作業會失敗，而且會出現許可權錯誤。 
+在您傳送 HTTP PUT 要求以建立 ISE 之後的 *30 分鐘* 內，您必須針對 ISE 系統指派的身分識別，將存取原則新增至您的金鑰保存庫。 否則，您 ISE 的建立會失敗，而且您會收到許可權錯誤。 
 
-針對這項工作，您可以使用 Azure PowerShell [set-azkeyvaultaccesspolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)命令，也可以依照 Azure 入口網站中的下列步驟執行：
+針對這項工作，您可以使用 Azure PowerShell [>set-azkeyvaultaccesspolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) 命令，也可以在 Azure 入口網站中遵循下列步驟：
 
-1. 在[Azure 入口網站](https://portal.azure.com)中，開啟您的 Azure 金鑰保存庫。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，開啟您的 Azure 金鑰保存庫。
 
-1. 在您的金鑰保存庫功能表上，選取 [**存取原則**] [  >  **新增存取原則**]，例如：
+1. 在 [金鑰保存庫] 功能表上，選取 [**存取**原則  >  **新增存取原則**]，例如：
 
-   ![為系統指派的受控識別新增存取原則](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
+   ![新增系統指派的受控識別的存取原則](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
 
-1. [**新增存取原則**] 窗格開啟之後，請依照下列步驟執行：
+1. [ **新增存取原則** ] 窗格開啟之後，請遵循下列步驟：
 
    1. 選取下列選項：
 
       | 設定 | 值 |
       |---------|--------|
-      | **從範本設定（選擇性）清單** | 金鑰管理 |
-      | **金鑰許可權** | - **金鑰管理作業**：取得、列出 <p><p>- **密碼編譯作業**：解除包裝金鑰，換行金鑰 |
+      | **從範本設定 (選用) 清單** | 金鑰管理 |
+      | **金鑰許可權** | - **金鑰管理作業**： Get、List <p><p>- **密碼編譯作業**：解除包裝金鑰、包裝金鑰 |
       |||
 
       ![選取 [金鑰管理] > [金鑰許可權]](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. 針對 [**選取主體**]，選取 [**未選取**]。 **主體**窗格開啟之後，在搜尋方塊中，尋找並選取您的 ISE。 當您完成時，選擇 [**選取**] [  >  **新增**]。
+   1. 針對 [ **選取主體**]，選取 [ **未**選取]。 在 [ **主體** ] 窗格開啟之後，在 [搜尋] 方塊中尋找並選取您的 ISE。 當您完成時，請選擇 [**選取**  >  **新增**]。
 
       ![選取您的 ISE 以作為主體](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 
-   1. 當您完成 [**存取原則**] 窗格之後，請選取 [**儲存**]。
+   1. 當您完成 [ **存取原則** ] 窗格時，請選取 [ **儲存**]。
 
-如需詳細資訊，請參閱[使用受控識別提供 Key Vault 驗證](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault)。
+如需詳細資訊，請參閱 [如何驗證 Key Vault](/azure/key-vault/general/authentication) 並 [指派 Key Vault 存取原則](/azure/key-vault/general/assign-access-policy-portal)。
 
 ## <a name="next-steps"></a>後續步驟
 

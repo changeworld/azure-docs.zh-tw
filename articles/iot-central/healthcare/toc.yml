@@ -20,7 +20,7 @@
   items:
     - name: 建立健康情況資料分級儀表板
       href: howto-health-data-triage.md
-    - name: 連線裝置
+    - name: 連線及開發裝置
       items:
         - name: 準備及連線 Rigado Cascade 500
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json

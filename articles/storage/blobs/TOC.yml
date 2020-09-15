@@ -310,7 +310,7 @@
               href: storage-blobs-list.md
             - name: 管理 Blob 屬性和中繼資料 (.NET)
               href: storage-blob-properties-metadata.md
-            - name: 複製 Blob (.NET)
+            - name: 複製 Blob (SDK)
               href: storage-blob-copy.md
         - name: 授與 Blob 資料的存取權
           items:

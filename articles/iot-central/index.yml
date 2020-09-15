@@ -9,13 +9,13 @@ metadata:
   ms.topic: hub-page
   author: philmea
   ms.author: philmea
-  ms.date: 10/25/2019
-  ms.openlocfilehash: 64e20f9a06acf85def278c1017bbbd588c7a6b39
-  ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+  ms.date: 06/30/2020
+  ms.openlocfilehash: 48af60c579a3b9f75c81fdab15553b535e72760c
+  ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 09/03/2020
-  ms.locfileid: "89425971"
+  ms.lasthandoff: 09/11/2020
+  ms.locfileid: "90016736"
 highlightedContent:
   items:
   - title: 什麼是 IoT Central？
@@ -24,9 +24,9 @@ highlightedContent:
   - title: 什麼是應用程式範本？
     itemType: concept
     url: ./core/concepts-app-templates.md
-  - title: Azure IoT Central 架構
-    itemType: architecture
-    url: ./core/concepts-architecture.md
+  - title: IoT Central 裝置開發總覽
+    itemType: overview
+    url: ./core/overview-iot-central-developer.md
   - title: 建立新的應用程式
     itemType: quickstart
     url: ./core/quick-deploy-iot-central.md
@@ -38,11 +38,20 @@ highlightedContent:
     url: ./core/tutorial-create-telemetry-rules.md
 conceptualContent:
   items:
-  - title: 進行連線
+  - title: 連線及開發裝置
     links:
-    - url: ./core/howto-set-up-template.md
+    - url: ./core/tutorial-connect-device-nodejs.md
+      itemType: tutorial
+      text: 連接裝置
+    - url: ./core/concepts-get-connected.md
+      itemType: concept
+      text: 裝置連線能力
+    - url: ./core/concepts-device-templates.md
+      itemType: concept
+      text: 裝置範本
+    - url: ./core/troubleshoot-connection.md
       itemType: how-to-guide
-      text: 設定裝置範本
+      text: 對裝置連線問題進行疑難排解
     footerLink:
       url: ./core/index.yml
       text: 查看更多

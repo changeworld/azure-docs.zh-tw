@@ -7,8 +7,10 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立前端服務
+    - name: 建立 Front Door - Portal
       href: quickstart-create-front-door.md
+    - name: 建立 Front Door - ARM 範本
+      href: quickstart-create-front-door-template.md
 - name: 教學課程
   items:
     - name: 將自訂網域新增到您的前端

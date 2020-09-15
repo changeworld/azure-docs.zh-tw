@@ -24,8 +24,22 @@
       href: support-matrix-move-region-sql.md
 - name: 使用說明指南
   items:
-    - name: 從移動集合中移除資源
-      href: remove-move-resources.md
+    - name: 跨區域移動
+      items:
+        - name: 使用 PowerShell 跨區域移動
+          href: move-region-powershell.md
+        - name: 將 Azure VM 移至可用性區域
+          href: move-region-availability-zone.md
+        - name: 跨區域移動 (從資源群組)
+          href: move-region-within-resource-group.md
+    - name: 管理區域移動
+      items:
+        - name: 修改區域移動的目標設定
+          href: modify-target-settings.md
+        - name: 從區域移動集合中移除資源
+          href: remove-move-resources.md
+        - name: 管理區域移動程式所建立的資源
+          href: manage-resources-created-move-process.md
 - name: 資源
   items:
     - name: 雲端採用架構中的移轉

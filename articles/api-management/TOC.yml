@@ -11,6 +11,8 @@
 - name: 快速入門
   expanded: true
   items:
+    - name: 建立執行個體 - CLI
+      href: get-started-create-service-instance-cli.md
     - name: 建立執行個體 - 入口網站
       href: get-started-create-service-instance.md
     - name: 建立執行個體 - PowerShell

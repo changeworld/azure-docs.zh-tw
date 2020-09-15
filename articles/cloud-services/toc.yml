@@ -151,6 +151,8 @@
           href: cloud-services-disaster-recovery-guidance.md
         - name: 傳統虛擬機器架構工作流程
           href: cloud-services-workflow-process.md
+        - name: 雲端服務的資源健康情況支援
+          href: resource-health-for-cloud-services.md
         - name: 雲端服務常見問題集
           items:
             - name: 應用程式和服務可用性常見問題集

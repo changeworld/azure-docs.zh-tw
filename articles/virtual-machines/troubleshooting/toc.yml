@@ -101,6 +101,8 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: VM 在套用稽核設定原則時沒有回應
           href: vm-unresponsive-applying-audit-configuration-policy.md
+        - name: 應用預設網域控制站原則時，VM 沒有回應
+          href: vm-unresponsive-domain-controllers-policy.md
         - name: 套用群組原則時 VM 沒有回應
           href: unresponsive-vm-apply-group-policy.md
         - name: 套用安全性原則時 VM 沒有回應

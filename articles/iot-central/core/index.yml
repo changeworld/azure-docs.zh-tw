@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
-  ms.date: 02/18/2020
-  ms.openlocfilehash: 6f8cabab3b2feaa219c52c4ed8c53d1cccb4b658
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.date: 06/21/2020
+  ms.openlocfilehash: 870895980c90262a20cfd5ea95a4fdb01b39b4a3
+  ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87337189"
+  ms.lasthandoff: 09/11/2020
+  ms.locfileid: "90015869"
 landingContent:
 - title: 關於 Azure IoT Central
   linkLists:
@@ -25,8 +25,6 @@ landingContent:
       url: overview-iot-central.md
     - text: UI 導覽
       url: overview-iot-central-tour.md
-    - text: 裝置開發
-      url: overview-iot-central-developer.md
     - text: 最近更新
       url: https://azure.microsoft.com/updates/?status=nowavailable&updateType=features&category=iot&query=azure%20iot%20central
   - linkListType: architecture
@@ -39,18 +37,34 @@ landingContent:
     links:
     - text: 建立新的應用程式
       url: quick-deploy-iot-central.md
-- title: 進行連線
+- title: 連線及開發裝置
   linkLists:
+  - linkListType: overview
+    links:
+    - text: 裝置開發人員概觀
+      url: overview-iot-central-developer.md
   - linkListType: tutorial
     links:
-    - text: 連接裝置
-      url: tutorial-connect-device.md
+    - text: 連線裝置 (Node.js)
+      url: tutorial-connect-device-nodejs.md
+    - text: 連線裝置 (Python)
+      url: tutorial-connect-device-python.md
+  - linkListType: concept
+    links:
+    - text: 裝置連線能力
+      url: concepts-get-connected.md
+    - text: 裝置範本
+      url: concepts-device-templates.md
+    - text: 訊息承載
+      url: concepts-telemetry-properties-commands.md
   - linkListType: how-to-guide
     links:
-    - text: 設定裝置範本
+    - text: 設定範本
       url: howto-set-up-template.md
-    - text: 連線其他 IoT 雲端
-      url: howto-build-iotc-device-bridge.md
+    - text: 連線至 Azure Sphere 裝置
+      url: howto-connect-sphere.md
+    - text: 對裝置連線問題進行疑難排解
+      url: troubleshoot-connection.md
 - title: 保持連線
   linkLists:
   - linkListType: tutorial

@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何針對內部部署 Windows 伺服�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 7eb596853bfe17ec5bf14c8830c1b95bde5b7c98
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022355"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376276"
 ---
 # <a name="troubleshoot-system-state-backup"></a>對系統狀態備份進行疑難排解
 
@@ -40,7 +40,7 @@ ms.locfileid: "89022355"
 - Microsoft 不建議使用系統狀態復原來復原到不同的硬體
 - 系統狀態備份目前支援「內部部署」的 Windows 伺服器。 這是 Azure Vm 無法使用的功能。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在使用 Azure 備份進行系統狀態備份的疑難排解之前，請先執行下列必要條件檢查。  
 
@@ -66,20 +66,20 @@ Get-WindowsFeature Windows-Server-Backup
 
 若要使用伺服器管理員安裝 Windows Server Backup，請執行下列步驟：
 
-1. 在 [ **伺服器**管理員] 中，按一下 [ **新增角色及功能**]。 [ **新增角色及功能] wizard** 隨即出現。
+1. 在 [ **伺服器**管理員] 中，選取 [ **新增角色及功能**]。 [ **新增角色及功能] wizard** 隨即出現。
 
     ![儀表板](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
-2. 選取 [ **安裝類型** ]，然後按 **[下一步]**。
+2. 選取 [ **安裝類型** ]，然後選取 **[下一步]**。
 
     ![安裝類型](./media/backup-azure-system-state-troubleshoot/install_type.jpg)
 
-3. 從伺服器集區選取伺服器，然後按 **[下一步]**。 在 [伺服器角色] 中，保留預設選取專案，然後按 **[下一步]**。
-4. 選取 [**功能**] 索引標籤**Windows Server Backup** ，然後按 **[下一步**]。
+3. 從伺服器集區選取伺服器，然後選取 **[下一步]**。 在 [伺服器角色] 中，保留預設選取專案，然後選取 **[下一步]**。
+4. 選取 [**功能**] 索引標籤**Windows Server Backup** ，然後選取 **[下一步**]。
 
     ![選取功能視窗](./media/backup-azure-system-state-troubleshoot/features.png)
 
-5. 在 [ **確認** ] 索引標籤中，按一下 [ **安裝** ] 開始安裝程式。
+5. 在 [ **確認** ] 索引標籤中，選取 [ **安裝** ] 以開始安裝程式。
 6. 在 [ **結果** ] 索引標籤中，它會顯示已成功安裝在 Windows Server 上的 Windows Server Backup 功能。
 
     ![安裝結果](./media/backup-azure-system-state-troubleshoot/results.jpg)
@@ -135,13 +135,13 @@ Microsoft 軟體陰影複製提供者 (SWPRV)  | 手動
 
 ### <a name="insufficient-disk-space-to-grow-shadow-copies"></a>磁碟空間不足，無法成長陰影複製
 
-| 徵狀 | 解決方法
+| 徵狀 | 解決方案
 | -- | --
 | -MARS 代理程式失敗，並出現錯誤訊息：備份失敗，因為陰影複製磁片區無法成長，因為磁片區上的磁碟空間不足，因為磁片區包含系統檔案 <br/><br/> -在 volsnap 系統事件記錄檔中出現下列錯誤/警告記錄：「磁片區 C 上的磁碟空間不足：若要為 C 的陰影複製成長陰影複製存放裝置：由於此失敗，磁片區 C：的陰影複製有可能被刪除」 | -釋放事件記錄檔中反白顯示的磁片區空間，讓陰影複製有足夠的空間可在備份進行時成長 <br/><br/> -設定陰影複製空間時，可以限制陰影複製所使用的空間量。 如需詳細資訊，請參閱這篇[文章](/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)
 
 ### <a name="efi-partition-locked"></a>EFI 磁碟分割已鎖定
 
-| 徵狀 | 解決方法
+| 徵狀 | 解決方案
 | -- | --
 | MARS 代理程式失敗，並出現錯誤訊息：「系統狀態備份失敗，因為 EFI 系統磁碟分割已鎖定。 這可能是由協力廠商安全性或備份軟體的系統磁碟分割存取所致」 | -如果問題是由協力廠商安全性軟體所造成，則您需要洽詢防毒軟體廠商，讓他們可以允許 MARS 代理程式 <br/><br/> -如果協力廠商備份軟體正在執行，請等候它完成，然後重試一次
 

@@ -3,18 +3,18 @@ title: 管理資源群組-Azure PowerShell
 description: 使用 Azure PowerShell 透過 Azure Resource Manager 管理您的資源群組。 說明如何建立、列出和刪除資源群組。
 author: mumian
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 09/01/2020
 ms.author: jgao
-ms.openlocfilehash: 8457925479e3c28e062f87dbb830969d66523ec7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9519b9a5dec898a0905310de02ef9fad3d282a65
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827071"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290526"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Resource Manager 資源群組
 
-瞭解如何搭配[Azure Resource Manager](overview.md)使用 Azure PowerShell 來管理您的 Azure 資源群組。 若要管理 Azure 資源，請參閱[使用 Azure PowerShell 來管理 azure 資源](manage-resources-powershell.md)。
+瞭解如何搭配使用 Azure PowerShell 與 [Azure Resource Manager](overview.md) 來管理您的 Azure 資源群組。 若要管理 Azure 資源，請參閱 [使用 Azure PowerShell 管理 azure 資源](manage-resources-powershell.md)。
 
 關於管理資源群組的其他文章：
 
@@ -31,15 +31,10 @@ ms.locfileid: "87827071"
 
 ## <a name="create-resource-groups"></a>建立資源群組
 
-下列 PowerShell 腳本會建立資源群組，然後顯示資源群組。
+下列 PowerShell 腳本會建立資源群組。
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-
-Get-AzResourceGroup -Name $resourceGroupName
+New-AzResourceGroup -Name demoResourceGroup -Location westus
 ```
 
 ## <a name="list-resource-groups"></a>列出資源群組
@@ -68,21 +63,21 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-如需 Azure Resource Manager 如何排序資源刪除的詳細資訊，請參閱[Azure Resource Manager 資源群組刪除](delete-resource-group.md)。
+如需 Azure Resource Manager 如何排序資源刪除的詳細資訊，請參閱 [Azure Resource Manager 資源群組刪除](delete-resource-group.md)。
 
-## <a name="deploy-resources-to-an-existing-resource-group"></a>將資源部署至現有的資源群組
+## <a name="deploy-resources-to-an-existing-resource-group"></a>將資源部署到現有的資源群組
 
-請參閱[將資源部署至現有的資源群組](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group)。
+請參閱 [將資源部署到現有的資源群組](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group)。
 
-若要驗證資源群組部署，請參閱[測試-new-azresourcegroupdeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0)。
+若要驗證資源群組部署，請參閱 [>new-azresourcegroupdeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0)。
 
 ## <a name="deploy-a-resource-group-and-resources"></a>部署資源群組和資源
 
-您可以使用 Resource Manager 範本來建立資源群組，並將資源部署到群組。 如需詳細資訊，請參閱[建立資源群組並部署資源](../templates/deploy-to-subscription.md#resource-groups)。
+您可以使用 Resource Manager 範本來建立資源群組，並將資源部署至群組。 如需詳細資訊，請參閱[建立資源群組並部署資源](../templates/deploy-to-subscription.md#resource-groups)。
 
 ## <a name="redeploy-when-deployment-fails"></a>部署失敗時重新部署
 
-這項功能也稱為「*發生錯誤時復原*」。 如需詳細資訊，請參閱[部署失敗時重新部署](../templates/rollback-on-error.md)。
+這項功能也稱為「 *發生錯誤時復原*」。 如需詳細資訊，請參閱 [部署失敗時重新部署](../templates/rollback-on-error.md)。
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>移至另一個資源群組或訂用帳戶
 
@@ -108,20 +103,20 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Get-AzResourceLock -ResourceGroupName $resourceGroupName 
 ```
 
-如需詳細資訊，請參閱[使用 Azure Resource Manager 鎖定資源](lock-resources.md)。
+如需詳細資訊，請參閱 [使用 Azure Resource Manager 鎖定資源](lock-resources.md)。
 
 ## <a name="tag-resource-groups"></a>標記資源群組
 
-您可以將標籤套用至資源群組和資源，以便以邏輯方式組織您的資產。 如需相關資訊，請參閱[使用標記來組織您的 Azure 資源](tag-resources.md#powershell)。
+您可以將標籤套用至資源群組和資源，以便以邏輯方式組織您的資產。 如需詳細資訊，請參閱 [使用標記來組織您的 Azure 資源](tag-resources.md#powershell)。
 
 ## <a name="export-resource-groups-to-templates"></a>將資源群組匯出至範本
 
 設定資源群組之後，您可以查看資源群組的 Resource Manager 範本。 匯出此範本有兩個優點︰
 
 - 將解決方案的未來部署自動化，因為範本包含完整的基礎結構。
-- 查看代表您的解決方案的 JavaScript 物件標記法 (JSON) 來瞭解範本語法。
+- 藉由查看代表您解決方案的 JavaScript 物件標記法 (JSON) 來學習範本語法。
 
-若要匯出資源群組中的所有資源，請使用[remove-azresourcegroup](/powershell/module/az.resources/Export-AzResourceGroup) Cmdlet，並提供資源組名。
+若要匯出資源群組中的所有資源，請使用 [>new-azresourcegroup](/powershell/module/az.resources/Export-AzResourceGroup) Cmdlet，並提供資源組名。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -133,7 +128,7 @@ Export-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 您可以選取要匯出的資源，而不是匯出資源群組中的所有資源。
 
-若要匯出一項資源，請傳遞該資源識別碼。
+若要匯出一個資源，請傳遞該資源識別碼。
 
 ```azurepowershell-interactive
 $resource = Get-AzResource `
@@ -153,7 +148,7 @@ Export-AzResourceGroup `
   -Resource @($resource1.ResourceId, $resource2.ResourceId)
 ```
 
-匯出範本時，您可以指定是否要在範本中使用參數。 預設會包含資源名稱的參數，但不會有預設值。 您必須在部署期間傳遞該參數值。
+匯出範本時，您可以指定是否要在範本中使用參數。 預設會包含資源名稱的參數，但它們沒有預設值。 您必須在部署期間傳遞該參數值。
 
 ```json
 "parameters": {
@@ -168,7 +163,7 @@ Export-AzResourceGroup `
 }
 ```
 
-在資源中，參數會用於名稱。
+在資源中，參數是用來做為名稱。
 
 ```json
 "resources": [
@@ -181,7 +176,7 @@ Export-AzResourceGroup `
 ]
 ```
 
-如果您在 `-IncludeParameterDefaultValue` 匯出範本時使用參數，樣板參數會包含設定為目前值的預設值。 您可以使用該預設值，或藉由傳入不同的值來覆寫預設值。
+如果您在 `-IncludeParameterDefaultValue` 匯出範本時使用參數，則範本參數會包含預設值，此值會設定為目前的值。 您可以使用該預設值，或藉由傳入不同的值來覆寫預設值。
 
 ```json
 "parameters": {
@@ -196,7 +191,7 @@ Export-AzResourceGroup `
 }
 ```
 
-如果您在 `-SkipResourceNameParameterization` 匯出範本時使用參數，則不會在範本中包含資源名稱的參數。 取而代之的是，資源名稱會直接在資源上設定為其目前的值。 您無法在部署期間自訂名稱。
+如果您在 `-SkipResourceNameParameterization` 匯出範本時使用參數，則範本中不會包含資源名稱的參數。 相反地，資源名稱會直接在資源上設定為其目前的值。 您無法在部署期間自訂名稱。
 
 ```json
 "resources": [
@@ -209,19 +204,19 @@ Export-AzResourceGroup `
 ]
 ```
 
-「匯出範本」功能不支援匯出 Azure Data Factory 資源。 若要瞭解如何匯出 Data Factory 資源，請參閱[在 Azure Data Factory 中複製或複製資料](https://aka.ms/exportTemplateViaAdf)處理站。
+匯出範本功能不支援匯出 Azure Data Factory 資源。 若要瞭解如何匯出 Data Factory 資源，請參閱 [Azure Data Factory 中的複製或複製 Data Factory](https://aka.ms/exportTemplateViaAdf)。
 
-若要匯出透過傳統部署模型建立的資源，您必須將[它們遷移至 Resource Manager 部署模型](https://aka.ms/migrateclassicresourcetoarm)。
+若要匯出透過傳統部署模型建立的資源，您必須將 [它們遷移至 Resource Manager 部署模型](https://aka.ms/migrateclassicresourcetoarm)。
 
-如需詳細資訊，請參閱[Azure 入口網站中的單一和多資源匯出至範本](../templates/export-template-portal.md)。
+如需詳細資訊，請參閱 [Azure 入口網站中的單一和多重資源匯出至範本](../templates/export-template-portal.md)。
 
 ## <a name="manage-access-to-resource-groups"></a>管理資源群組的存取權
 
-Azure[角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)是您在 azure 中管理資源存取權的方式。 如需詳細資訊，請參閱[使用 RBAC 和 Azure PowerShell 來管理存取權](../../role-based-access-control/role-assignments-powershell.md)。
+Azure[角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)是您管理 azure 中資源存取權的方式。 如需詳細資訊，請參閱 [使用 RBAC 和 Azure PowerShell 管理存取權](../../role-based-access-control/role-assignments-powershell.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要瞭解 Azure Resource Manager，請參閱[Azure Resource Manager 總覽](overview.md)。
-- 若要瞭解 Resource Manager 範本語法，請參閱[瞭解 Azure Resource Manager 範本的結構和語法](../templates/template-syntax.md)。
-- 若要瞭解如何開發範本，請參閱[逐步教學](../index.yml)課程。
-- 若要查看 Azure Resource Manager 範本架構，請參閱[範本參考](/azure/templates/)。
+- 若要瞭解 Azure Resource Manager，請參閱 [Azure Resource Manager 總覽](overview.md)。
+- 若要瞭解 Resource Manager 範本語法，請參閱 [瞭解 Azure Resource Manager 範本的結構和語法](../templates/template-syntax.md)。
+- 若要瞭解如何開發範本，請參閱 [逐步教學](../index.yml)課程。
+- 若要查看 Azure Resource Manager 範本架構，請參閱 [範本參考](/azure/templates/)。

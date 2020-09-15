@@ -20,6 +20,8 @@
       href: set-up-service-alerts.md
 - name: 操作方式
   items:
+    - name: 手動遷移
+      href: manual-migration.md
     - name: 連線至 Windows 虛擬桌面資源
       items:
         - name: 與 Windows 桌面用戶端連線

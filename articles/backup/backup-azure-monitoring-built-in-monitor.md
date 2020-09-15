@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解使用 Azure 入口網站 Azure 備份�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 0e1e50f27c6d0563ab51a74bbfa22d2a7f54ecd3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d04f57c19e31b946f7c360edb796bc4f0f5fcf71
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000731"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377398"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>監視 Azure 備份工作負載
 
@@ -63,7 +63,7 @@ Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視�
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>未引發警示時的例外狀況
 
-在失敗時不會引發警示的例外狀況。 分別是：
+在失敗時不會引發警示的例外狀況。 這些包括：
 
 - 使用者已明確取消正在執行的作業
 - 作業失敗，因為另一個備份作業正在進行中 (沒有作用，因為我們只需要等候先前的作業完成) 
@@ -100,7 +100,7 @@ Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視�
 
 ## <a name="inactivating-alerts"></a>將警示
 
-若要停用/解決作用中的警示，您可以選取對應至您想要停用之警示的清單專案。 這會開啟畫面，顯示警示的詳細資訊，並在頂端顯示 [ **停** 用] 按鈕。 按一下這個按鈕會將警示的狀態變更為「 **非**作用中」。 您也可以用滑鼠右鍵按一下對應至該警示的清單專案，然後選取 [ **停**用]，以停用警示。
+若要停用/解決作用中的警示，您可以選取對應至您想要停用之警示的清單專案。 這會開啟畫面，顯示警示的詳細資訊，並在頂端顯示 [ **停** 用] 按鈕。 選取此按鈕將會將警示的狀態變更為「 **非**作用中」。 您也可以用滑鼠右鍵按一下對應至該警示的清單專案，然後選取 [ **停**用]，以停用警示。
 
 ![RS 保存庫警示 {0}](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 

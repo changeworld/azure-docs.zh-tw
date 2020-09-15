@@ -172,6 +172,8 @@
           href: vpn-gateway-howto-always-on-user-tunnel.md
         - name: 將自訂路由公告至 P2S 用戶端
           href: vpn-gateway-p2s-advertise-custom-routes.md
+        - name: 建立 P2S 的自訂 IPsec 原則
+          href: create-custom-policies-p2s-ps.md
     - name: 路由、BGP 及 VNet 對等互連
       items:
         - name: 設定適用於 VPN 閘道的 BGP

@@ -39,6 +39,8 @@
       href: use-prediction-api.md
     - name: 使用智慧型 Labeler
       href: suggested-tags.md
+    - name: 角色型存取控制
+      href: role-based-access-control.md
     - name: 匯出模型
       items:
         - name: 將您的模型匯出至行動裝置

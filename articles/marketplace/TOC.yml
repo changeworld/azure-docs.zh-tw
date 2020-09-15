@@ -30,6 +30,8 @@
         - name: 依供應項目類型的發行指南
           href: ./publisher-guide-by-offer-type.md
           items:
+            - name: 計畫 SaaS 供應項目
+              href: ./plan-saas-offer.md
             - name: 虛擬機器
               href: ./marketplace-virtual-machines.md
             - name: Azure 應用程式解決方案範本

@@ -324,7 +324,7 @@
           href: platform/metric-chart-samples.md
         - name: 針對計量圖表進行疑難排解
           href: platform/metrics-troubleshoot.md
-    - name: 資料集合
+    - name: 資料收集
       items:
         - name: 資料收集規則
           href: platform/data-collection-rule-overview.md
@@ -1136,7 +1136,21 @@
           displayname: Workbooks
           href: platform/workbooks-overview.md
         - name: 視覺效果
-          href: platform/workbooks-visualizations.md
+          items:
+            - name: Text
+              href: platform/workbooks-text-visualizations.md
+            - name: 圖表
+              href: platform/workbooks-chart-visualizations.md
+            - name: 方格
+              href: platform/workbooks-grid-visualizations.md
+            - name: 磚
+              href: platform/workbooks-tile-visualizations.md
+            - name: 樹狀結構
+              href: platform/workbooks-tree-visualizations.md
+            - name: 圖形
+              href: platform/workbooks-graph-visualizations.md
+            - name: 複合列
+              href: platform/workbooks-composite-bar.md
         - name: 資料來源
           href: platform/workbooks-data-sources.md
         - name: 參數

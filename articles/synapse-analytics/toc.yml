@@ -4,7 +4,7 @@
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: 概觀
   items:
-    - name: 什麼是 Azure Synapse Analytics？
+    - name: 什麼是 Azure Synapse？
       href: overview-what-is.md
     - name: 開始使用
       items:
@@ -36,10 +36,10 @@
   items:
     - name: 使用 Azure 入口網站建立 Synapse 工作區
       href: quickstart-create-workspace.md
-    - name: 透過範本進行部署
-      href: quickstart-deployment-template-workspaces.md
     - name: 使用 Azure CLI 建立 Synapse 工作區
       href: quickstart-create-workspace-cli.md
+    - name: 透過範本進行部署
+      href: quickstart-deployment-template-workspaces.md
     - name: 使用 Synapse Studio
       href: quickstart-synapse-studio.md
     - name: 連結 Power BI 工作區
@@ -70,7 +70,7 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: 教學課程
   items:
-    - name: 執行適用於 Spark 集區的 Apache Spark 應用程式
+    - name: 執行 Apache Spark 應用程式
       href: ./spark/intellij-tool-synapse.md
     - name: Spark 作業定義
       href: ./spark/apache-spark-job-definitions.md
@@ -84,7 +84,7 @@
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
     - name: 資料分析師
       items:
-        - name: 使用 SQL 隨選進行分析，並使用 Synapse Studio 以視覺效果呈現
+        - name: 使用隨選 SQL 來分析資料
           href: ./sql/tutorial-data-analyst.md
 - name: 範例
   href: 'https://github.com/Azure-Samples/Synapse'
@@ -372,9 +372,9 @@
           href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 工具整合 (AI、ETL、BI)
       items:
-        - name: 針對 Synapse Analytics Studio 進行疑難排解
+        - name: 針對 Synapse Studio 進行疑難排解
           href: troubleshoot/troubleshoot-synapse-studio.md
-        - name: 使用 PowerShell 對 Synapse Analytics Studio 進行疑難排解
+        - name: 針對 Synapse Studio 連線問題進行疑難排解
           href: troubleshoot/troubleshoot-synapse-studio-powershell.md
 - name: 如何
   items:
@@ -422,7 +422,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 升級至 Gen2
               href: ./sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: 資料內嵌和準備
+    - name: 內嵌和準備資料
       items:
         - name: 匯入資料倉儲
           items:
@@ -869,7 +869,7 @@
               href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 自我裝載整合執行階段疑難排解
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: 將工具連線到 Synapse Analytics
+    - name: 將工具連線到 Synapse 工作區
       items:
         - name: Synapse SQL
           items:

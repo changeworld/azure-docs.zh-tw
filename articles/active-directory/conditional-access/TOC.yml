@@ -52,8 +52,8 @@
   items:
     - name: 規劃條件式存取部署
       href: plan-conditional-access.md
-    - name: 最佳作法
-      href: best-practices.md
+    - name: 條件式存取 API
+      href: howto-conditional-access-apis.md
     - name: 一般條件式存取原則
       items:
         - name: 封鎖舊式驗證
@@ -92,6 +92,8 @@
       href: terms-of-use.md
     - name: 登入頻率和瀏覽器持續性控制項
       href: howto-conditional-access-session-lifetime.md
+    - name: 最佳作法
+      href: best-practices.md
     - name: 疑難排解
       items:
         - name: 對登入問題進行疑難排解

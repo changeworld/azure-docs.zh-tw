@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: f37f876db15e2722907669cd1c1d8390f771034b
-  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+  ms.openlocfilehash: 8469f67967f311d4aca98417e8a5a639665b4641
+  ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/11/2020
-  ms.locfileid: "88080638"
+  ms.lasthandoff: 09/11/2020
+  ms.locfileid: "90014917"
 landingContent:
 - title: 建置零售解決方案
   linkLists:
@@ -43,18 +43,32 @@ landingContent:
     links:
     - text: 連線 Rigado Cascade 500
       url: ../core/howto-connect-rigado-cascade-500.md
-- title: 進行連線
+- title: 連線及開發裝置
   linkLists:
+  - linkListType: overview
+    links:
+    - text: 裝置開發人員概觀
+      url: ../core/overview-iot-central-developer.md
   - linkListType: tutorial
     links:
-    - text: 設定裝置範本
-      url: ../core/howto-set-up-template.md
-    - text: 連接裝置
-      url: ../core/tutorial-connect-device.md
+    - text: 連線裝置 (Node.js)
+      url: ../core/tutorial-connect-device-nodejs.md
+    - text: 連線裝置 (Python)
+      url: ../core/tutorial-connect-device-python.md
+  - linkListType: concept
+    links:
+    - text: 裝置連線能力
+      url: ../core/concepts-get-connected.md
+    - text: 裝置範本
+      url: ../core/concepts-device-templates.md
   - linkListType: how-to-guide
     links:
-    - text: 連線其他 IoT 雲端
-      url: ../core/howto-build-iotc-device-bridge.md
+    - text: 設定範本
+      url: ../core/howto-set-up-template.md
+    - text: 連線至 Azure Sphere 裝置
+      url: ../core/howto-connect-sphere.md
+    - text: 對裝置連線問題進行疑難排解
+      url: ../core/troubleshoot-connection.md
 - title: 保持連線
   linkLists:
   - linkListType: tutorial

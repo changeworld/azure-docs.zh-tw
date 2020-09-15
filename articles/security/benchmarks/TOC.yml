@@ -61,6 +61,8 @@
       href: ../../azure-databricks/security-baseline.md
     - name: Azure DNS 安全性基準
       href: ../../dns/security-baseline.md
+    - name: Azure DevTest Labs 安全性基準
+      href: ../../devtest-labs/security-baseline.md
     - name: Azure 防火牆安全性基準
       href: ../../firewall/security-baseline.md
     - name: Azure Functions 安全性基準
@@ -73,8 +75,14 @@
       href: ../../machine-learning/security-baseline.md
     - name: Azure 原則安全性基準
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
+    - name: Azure Private Link 安全性基準
+      href: ../../private-link/security-baseline.md
+    - name: Azure 公用 IP 安全性基準
+      href: ../../virtual-network/public-ip-security-baseline.md
     - name: Azure Resource Graph 安全性基準
       href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Azure Sentinel 安全性基準
+      href: ../../sentinel/security-baseline.md
     - name: Azure SQL Database 安全性基準
       href: ../../sql-database/security-baseline.md
     - name: Azure 儲存體安全性基準
