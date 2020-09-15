@@ -1,7 +1,7 @@
 ---
 title: 可設定的權杖存留期
 titleSuffix: Microsoft identity platform
-description: 瞭解如何設定 Microsoft 身分識別平臺所發行之權杖的存留期。
+description: 瞭解如何設定 Microsoft 身分識別平臺所發出的權杖存留期。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,32 +13,32 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: e50b4aa300c74ed5fff9a345f83d41fdda5a1054
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bbe4328d797f740e124d4944aee889d471393200
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115861"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085598"
 ---
-# <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 身分識別平臺中可設定的權杖存留期 (預覽) 
+# <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 身分識別平臺中可設定的權杖存留期 (預覽版) 
 
-您可以指定 Microsoft 身分識別平臺所發行之權杖的存留期。 不論是針對組織中所有的應用程式、針對多租用戶 (多組織) 應用程式，還是針對組織中特定的服務主體，都可以設定權杖存留期。 
-> 請注意，我們目前不支援為受控識別服務主體設定權杖存留期。
+您可以指定 Microsoft 身分識別平臺所簽發的權杖存留期。 不論是針對組織中所有的應用程式、針對多租用戶 (多組織) 應用程式，還是針對組織中特定的服務主體，都可以設定權杖存留期。 
+> 請注意，我們目前不支援設定受控識別服務主體的權杖存留期。
 
 > [!IMPORTANT]
-> 在預覽期間收到客戶的意見之後，我們已在 Azure AD 條件式存取中實作為[驗證會話管理功能](https://go.microsoft.com/fwlink/?linkid=2083106)。 您可以使用這項新功能，設定 [登入頻率] 來設定重新整理權杖存留期。 2020 5 月30日之後，沒有新的租使用者可以使用可設定的權杖存留期原則來設定會話和重新整理權杖。 淘汰會在這之後的幾個月內發生，這表示我們會停止接受現有的會話和重新整理權杖原則。 您仍然可以在淘汰後設定存取權杖存留期。
+> 在預覽期間收到客戶的意見之後，我們已在 Azure AD 條件式存取中實行 [驗證會話管理功能](https://go.microsoft.com/fwlink/?linkid=2083106) 。 您可以使用這項新功能，藉由設定 [登入頻率] 來設定重新整理權杖存留期。 2020 5 月30日之後，沒有新的租使用者可以使用可設定的權杖存留期原則來設定會話和重新整理權杖。 淘汰將在這之後的幾個月內發生，這表示我們將停止接受現有的會話和重新整理權杖原則。 您仍然可以在淘汰之後設定存取權杖存留期。
 
 在 Azure AD 中，原則物件代表在組織中個別應用程式或所有應用程式上強制執行的一組規則。 每個原則類型都具有包含一組屬性的獨特結構，這些屬性會套用至它們已被指派的物件。
 
 您可以為您的組織指定原則做為預設原則。 只要此原則不被優先順序更高的原則覆寫，就會套用至組織中的任何應用程式。 您也可以將原則指派給特定應用程式。 優先順序會因原則類型而異。
 
 > [!NOTE]
-> 可設定的權杖存留期原則僅適用于存取 SharePoint Online 和商務用 OneDrive 資源的行動和桌面用戶端，不適用於網頁瀏覽器會話。
-> 若要管理 SharePoint Online 和商務用 OneDrive 之網頁瀏覽器會話的存留期，請使用[條件式存取會話存留期](../conditional-access/howto-conditional-access-session-lifetime.md)功能。 請參閱 [SharePoint Online 部落格](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) \(英文\)，以深入了解如何設定閒置工作階段逾時。
+> 可設定的權杖存留期原則僅適用于存取 SharePoint Online 和商務用 OneDrive 資源的行動和桌面用戶端，且不適用於網頁瀏覽器會話。
+> 若要管理 SharePoint Online 和商務用 OneDrive 的網頁瀏覽器會話存留期，請使用 [條件式存取會話存留期](../conditional-access/howto-conditional-access-session-lifetime.md) 功能。 請參閱 [SharePoint Online 部落格](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) \(英文\)，以深入了解如何設定閒置工作階段逾時。
 
 ## <a name="token-types"></a>權杖類型
 
-您可以針對重新整理權杖、存取權杖、SAML 權杖、會話權杖和識別碼權杖設定權杖存留期原則。
+您可以針對重新整理權杖、存取權杖、SAML 權杖、會話權杖及識別碼權杖設定權杖存留期原則。
 
 ### <a name="access-tokens"></a>存取權杖
 
@@ -46,9 +46,9 @@ ms.locfileid: "88115861"
 
 ### <a name="saml-tokens"></a>SAML 權杖
 
-SAML 權杖是由許多以 web 為基礎的 SAAS 應用程式所使用，而且是使用 Azure Active Directory 的 SAML2 通訊協定端點來取得。 應用程式也會使用 WS-同盟來取用它們。 權杖的預設存留期為1小時。 從應用程式的觀點來看，權杖的有效期間是由權杖中元素的 NotOnOrAfter 值所指定 `<conditions …>` 。 在權杖的有效期間結束後，用戶端必須起始新的驗證要求，而不需要互動式登入，因為單一登入 (SSO) 會話權杖的結果。
+許多以 web 為基礎的 SAAS 應用程式都會使用 SAML 權杖，並使用 Azure Active Directory 的 SAML2 通訊協定端點來取得這些權杖。 使用 WS-同盟的應用程式也會使用它們。 權杖的預設存留期為1小時。 從應用程式的觀點來看，權杖的有效期間是由權杖中元素的 NotOnOrAfter 值所指定 `<conditions …>` 。 在權杖的有效期間結束之後，用戶端必須起始新的驗證要求，這通常會在沒有互動式登入的情況下滿足，因為單一登入 (SSO) 會話權杖的結果。
 
-您可以使用中的參數來變更 NotOnOrAfter 的值 `AccessTokenLifetime` `TokenLifetimePolicy` 。 它會設定為原則中設定的存留期（如果有的話），再加上5分鐘的時鐘誤差因數。
+您可以使用中的參數來變更 NotOnOrAfter 的值 `AccessTokenLifetime` `TokenLifetimePolicy` 。 它會設定為原則中所設定的存留期（如果有的話），加上五分鐘的時鐘誤差因數。
 
 請注意，在元素中指定的主旨確認 NotOnOrAfter `<SubjectConfirmationData>` 不會受到權杖存留期設定的影響。 
 
@@ -63,22 +63,22 @@ SAML 權杖是由許多以 web 為基礎的 SAAS 應用程式所使用，而且�
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>具有公開用戶端重新整理權杖的權杖存留期
 
-公開用戶端無法安全地儲存用戶端密碼。 例如，iOS/Android 應用程式無法模糊來自資源擁有者的密碼，因此被視為公開用戶端。 您可以在資源上設定原則，讓來自公開用戶端的重新整理權杖只要超過指定的期間，便無法取得一組新的存取/重新整理權杖。  (若要這麼做，請使用 [重新整理權杖最大閒置時間] 屬性 (`MaxInactiveTime`) 。 ) 您也可以使用原則來設定一個期間，超過這段時間之後就不再接受重新整理權杖。  (若要這麼做，請使用 [重新整理權杖最大壽命] 屬性。 ) 您可以調整重新整理權杖的存留期，以控制當使用者使用公用用戶端應用程式時，何時以及何時需要重設認證，而不是以無訊息方式重新驗證。
+公開用戶端無法安全地儲存用戶端密碼。 例如，iOS/Android 應用程式無法模糊來自資源擁有者的密碼，因此被視為公開用戶端。 您可以在資源上設定原則，讓來自公開用戶端的重新整理權杖只要超過指定的期間，便無法取得一組新的存取/重新整理權杖。  (若要這樣做，請使用 [重新整理權杖最大閒置時間] 屬性 (`MaxInactiveTime`) 。 ) 您也可以使用原則來設定超過一段時間，不再接受重新整理權杖。  (，請使用「重新整理權杖最大壽命」屬性。 ) 您可以調整重新整理權杖的存留期，以控制當使用者使用公開用戶端應用程式時，需要重新輸入認證，而不是以無訊息方式重新驗證的時間和頻率。
 
 > [!NOTE]
-> 最大存留期屬性是可以使用單一權杖的時間長度。 
+> 最大壽命屬性是可以使用單一權杖的時間長度。 
 
 ### <a name="id-tokens"></a>ID 權杖
-識別碼權杖會傳遞至網站與原生用戶端。 識別碼權杖包含使用者的設定檔資訊。 識別碼權杖會繫結至特定的使用者與用戶端組合。 識別碼權杖在到期前都會被視為有效。 通常，Web 應用程式會將應用程式中的使用者工作階段存留期，與針對該使用者簽發之識別碼權杖的存留期做比對。 您可以調整識別碼權杖的存留期，以控制 web 應用程式過期應用程式會話的頻率，以及要求使用者以無訊息方式或互動) 的方式，向 Microsoft 身分識別平臺進行重新驗證的頻率 (。
+識別碼權杖會傳遞至網站與原生用戶端。 識別碼權杖包含使用者的設定檔資訊。 識別碼權杖會繫結至特定的使用者與用戶端組合。 識別碼權杖在到期前都會被視為有效。 通常，Web 應用程式會將應用程式中的使用者工作階段存留期，與針對該使用者簽發之識別碼權杖的存留期做比對。 您可以調整識別碼權杖的存留期，以控制 web 應用程式的應用程式會話過期的頻率，以及要求使用者以無訊息模式或互動方式) 來重新驗證 Microsoft 身分識別平臺 (的頻率。
 
 ### <a name="single-sign-on-session-tokens"></a>單一登入工作階段權杖
-當使用者使用 Microsoft 身分識別平臺進行驗證時，會使用使用者的瀏覽器和 Microsoft 身分識別平臺來建立 (SSO) 的單一登入會話。 SSO 權杖 (採用 Cookie 的形式) 即代表此工作階段。 SSO 會話權杖不會系結至特定的資源/用戶端應用程式。 SSO 工作階段權杖是可撤銷的，而每次使用這些權杖時，系統都會檢查其有效性。
+當使用者使用 Microsoft 身分識別平臺進行驗證時，會使用使用者的瀏覽器和 Microsoft 身分識別平臺來建立單一登入會話 (SSO) 。 SSO 權杖 (採用 Cookie 的形式) 即代表此工作階段。 SSO 會話權杖未系結至特定的資源/用戶端應用程式。 SSO 工作階段權杖是可撤銷的，而每次使用這些權杖時，系統都會檢查其有效性。
 
-Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非持續性。 持續性工作階段權杖是由瀏覽器儲存為持續性 Cookie。 非持續性工作階段權杖是儲存為工作階段 Cookie。 當瀏覽器關閉時，會終結 (會話 cookie。 ) 通常會儲存非持續性會話權杖。 但是，當使用者在驗證期間選取 [讓我保持登入]**** 核取方塊時，則會儲存一個持續性工作階段權杖。
+Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非持續性。 持續性工作階段權杖是由瀏覽器儲存為持續性 Cookie。 非持續性工作階段權杖是儲存為工作階段 Cookie。 當瀏覽器關閉時， (會話 cookie 會終結。 ) 通常會儲存非持續性會話權杖。 但是，當使用者在驗證期間選取 [讓我保持登入]**** 核取方塊時，則會儲存一個持續性工作階段權杖。
 
-非持續性工作階段權杖有 24 小時的存留期。 持續性權杖的存留期為90天。 每當 SSO 會話權杖在其有效期間內使用時，有效期間會延長24小時或90天，視權杖類型而定。 如果未在 SSO 工作階段權杖的有效期內使用此權杖，系統就會將其視為過期而不再接受它。
+非持續性工作階段權杖有 24 小時的存留期。 持續性權杖的存留期為90天。 每當 SSO 會話權杖在其有效期間內使用時，會根據權杖類型，將有效期間延長為24小時或90天。 如果未在 SSO 工作階段權杖的有效期內使用此權杖，系統就會將其視為過期而不再接受它。
 
-您可以使用原則來設定第一個工作階段權杖簽發之後的時間，超出該時間就不會再接受工作階段權杖。  (若要這麼做，請使用 [會話權杖最大壽命] 屬性。 ) 您可以調整會話權杖的存留期，以控制使用者在使用 web 應用程式時，需要重新輸入認證的時間和頻率，而不是以無訊息方式驗證。
+您可以使用原則來設定第一個工作階段權杖簽發之後的時間，超出該時間就不會再接受工作階段權杖。  (要執行這項操作，請使用「會話權杖最大壽命」屬性。 ) 您可以調整會話權杖的存留期，以控制當使用者使用 web 應用程式時，需要重新輸入認證，而不是以無訊息方式進行驗證的時間和頻率。
 
 ### <a name="token-lifetime-policy-properties"></a>權杖存留期原則屬性
 權杖存留期原則是一種包含權杖存留期規則的原則物件。 使用原則的屬性來控制指定的權杖存留期。 如果未設定任何原則，系統就會強制執行預設存留期值。
@@ -90,11 +90,11 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 | 重新整理權杖最大閒置時間 |MaxInactiveTime |重新整理權杖 |90 天 |10 分鐘 |90 天 |
 | 單一要素重新整理權杖最大壽命 |MaxAgeSingleFactor |重新整理權杖 (適用於任何使用者) |直到撤銷為止 |10 分鐘 |直到撤銷為止<sup>1</sup> |
 | 多重要素重新整理權杖最大壽命 |MaxAgeMultiFactor |重新整理權杖 (適用於任何使用者) |直到撤銷為止 |10 分鐘 |直到撤銷為止<sup>1</sup> |
-| 單一要素工作階段權杖最大壽命 |MaxAgeSessionSingleFactor |工作階段權杖 (持續性和非持續性) |直到撤銷為止 |10 分鐘 |直到撤銷為止<sup>1</sup> |
-| 多重要素工作階段權杖最大壽命 |MaxAgeSessionMultiFactor |工作階段權杖 (持續性和非持續性) |直到撤銷為止 |10 分鐘 |直到撤銷為止<sup>1</sup> |
+| 單一要素工作階段權杖最大壽命 |MaxAgeSessionSingleFactor |工作階段權杖 (持續性和非持續性) |直到撤銷為止 |10 分鐘 |180 天<sup>1</sup> |
+| 多重要素工作階段權杖最大壽命 |MaxAgeSessionMultiFactor |工作階段權杖 (持續性和非持續性) |直到撤銷為止 |10 分鐘 |180 天<sup>1</sup> |
 
 * <sup>1</sup>針對這些屬性，可設定的明確時間長度上限為 365 天。
-* <sup>2</sup>為確保 Microsoft 小組 Web 用戶端能夠運作，建議您讓 Microsoft 團隊的 AccessTokenLifetime 保持在15分鐘以上。
+* <sup>2</sup>若要確保 Microsoft 小組 Web 用戶端可以運作，建議您讓 Microsoft 小組保持 AccessTokenLifetime 超過15分鐘。
 
 ### <a name="exceptions"></a>例外狀況
 | 屬性 | 影響 | 預設 |
@@ -103,7 +103,7 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 | 重新整理權杖最大閒置時間 (針對機密用戶端簽發) |重新整理權杖 (針對機密用戶端簽發) |90 天 |
 | 重新整理權杖最大壽命 (針對機密用戶端簽發) |重新整理權杖 (針對機密用戶端簽發) |直到撤銷為止 |
 
-* <sup>1</sup>沒有足夠撤銷資訊的同盟使用者，包括未同步 "LastPasswordChangeTimestamp" 屬性的任何使用者。 這些使用者只有這個很短的「最大壽命」，因為 AAD 無法確認何時該撤銷繫結至舊認證的權杖 (例如已變更的密碼)，所以必須更頻繁地回頭檢查，以確定使用者和相關聯的權杖仍然有效。 若要改善這種體驗，租使用者系統管理員必須確保它們同步處理 "LastPasswordChangeTimestamp" 屬性 (這可以使用 PowerShell 或透過 AADSync) ，在 user 物件上設定。
+* <sup>1</sup> 個沒有足夠撤銷資訊的同盟使用者，包括沒有同步 "LastPasswordChangeTimestamp" 屬性的使用者。 這些使用者只有這個很短的「最大壽命」，因為 AAD 無法確認何時該撤銷繫結至舊認證的權杖 (例如已變更的密碼)，所以必須更頻繁地回頭檢查，以確定使用者和相關聯的權杖仍然有效。 若要改善此體驗，租使用者管理員必須確定它們正在同步 "LastPasswordChangeTimestamp" 屬性 (您可以使用 PowerShell 或透過 AADSync) ，在使用者物件上設定此屬性。
 
 ### <a name="policy-evaluation-and-prioritization"></a>原則評估及優先順序
 您可以建立權杖存留期原則然後將其指派給特定的應用程式、您的組織和服務主體。 多個原則可以套用至特定應用程式。 生效的權杖存留期原則會遵循下列規則：
@@ -130,13 +130,13 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 > * Web 應用程式 A 是一個一般用途 Web 應用程式且未與任何原則連結。
 > * Web 應用程式 B 適用於高度機密的程序。 其服務主體會連結至權杖存留期原則 2，其「工作階段權杖最大壽命」為 30 分鐘。
 >
-> 在下午12:00，使用者會啟動新的瀏覽器會話，並嘗試存取 Web 應用程式 A。系統會將使用者重新導向至 Microsoft 身分識別平臺，並要求登入。 這會在瀏覽器中建立一個帶有工作階段權杖的 Cookie。 系統會將使用者重新導向回 Web 應用程式 A，其中會提供一個可讓使用者存取該應用程式的識別碼權杖。
+> 在下午12:00 時，使用者會啟動新的瀏覽器會話並嘗試存取 Web 應用程式 A。系統會將使用者重新導向至 Microsoft 身分識別平臺，並要求您登入。 這會在瀏覽器中建立一個帶有工作階段權杖的 Cookie。 系統會將使用者重新導向回 Web 應用程式 A，其中會提供一個可讓使用者存取該應用程式的識別碼權杖。
 >
-> 在下午12:15，使用者嘗試存取 Web 應用程式 B。瀏覽器會重新導向至 Microsoft 身分識別平臺，這會偵測會話 cookie。 Web 應用程式 B 的服務主體會與權杖存留期原則 2 連結，但同時也是帶有預設權杖存留期原則 1 之父組織的一部分。 權杖存留期原則 2 會生效，因為與服務主體連結之原則的優先順序高於組織預設原則。 工作階段權杖原先是在過去 30 分鐘內簽發的，因此被視為有效。 系統會將使用者重新導向回 Web 應用程式 B，其中會提供一個授與使用者存取權的識別碼權杖。
+> 在下午12:15 時，使用者嘗試存取 Web 應用程式 B。瀏覽器會重新導向至 Microsoft 身分識別平臺，以偵測會話 cookie。 Web 應用程式 B 的服務主體會與權杖存留期原則 2 連結，但同時也是帶有預設權杖存留期原則 1 之父組織的一部分。 權杖存留期原則 2 會生效，因為與服務主體連結之原則的優先順序高於組織預設原則。 工作階段權杖原先是在過去 30 分鐘內簽發的，因此被視為有效。 系統會將使用者重新導向回 Web 應用程式 B，其中會提供一個授與使用者存取權的識別碼權杖。
 >
-> 在下午1:00，使用者嘗試存取 Web 應用程式 A。使用者會重新導向至 Microsoft 身分識別平臺。 Web 應用程式 A 並未與任何原則連結，但由於它位於帶有預設權杖存留期原則 1 的組織中，因此該原則會生效。 偵測到原先在過去八小時內簽發的工作階段 Cookie。 系統會以無訊息模式將使用者重新導向回具有新識別碼權杖的 Web 應用程式 A。 使用者不需要驗證。
+> 在下午1:00 時，使用者嘗試存取 Web 應用程式 A。使用者會被重新導向至 Microsoft 身分識別平臺。 Web 應用程式 A 並未與任何原則連結，但由於它位於帶有預設權杖存留期原則 1 的組織中，因此該原則會生效。 偵測到原先在過去八小時內簽發的工作階段 Cookie。 系統會以無訊息模式將使用者重新導向回具有新識別碼權杖的 Web 應用程式 A。 使用者不需要驗證。
 >
-> 之後，使用者會立即嘗試存取 Web 應用程式 B。使用者會重新導向至 Microsoft 身分識別平臺。 與先前一樣，權杖存留期原則 2 會生效。 因為權杖已簽發 30 分鐘以上，系統會提示使用者重新輸入其登入認證。 會簽發全新的工作階段權杖和識別碼權杖。 接著，使用者便可存取 Web 應用程式 B。
+> 之後，使用者會立即嘗試存取 Web 應用程式 B。使用者會被重新導向至 Microsoft 身分識別平臺。 與先前一樣，權杖存留期原則 2 會生效。 因為權杖已簽發 30 分鐘以上，系統會提示使用者重新輸入其登入認證。 會簽發全新的工作階段權杖和識別碼權杖。 接著，使用者便可存取 Web 應用程式 B。
 >
 >
 
@@ -144,9 +144,9 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 ### <a name="access-token-lifetime"></a>存取權杖存留期
 **字串：** AccessTokenLifetime
 
-**會影響：** 存取權杖、識別碼權杖、SAML 權杖
+**影響：** 存取權杖、識別碼權杖、SAML 權杖
 
-**摘要：** 此原則可控制將此資源的存取權杖和識別碼權杖視為有效的期限。 減少存取權杖存留期屬性可減輕存取權杖或識別碼權杖被惡意執行者長時間使用的風險。  (無法撤銷這些權杖。 ) 取捨是效能受到負面影響，因為必須更頻繁地取代權杖。
+**摘要：** 此原則可控制將此資源的存取權杖和識別碼權杖視為有效的期限。 減少存取權杖存留期屬性可減輕存取權杖或識別碼權杖被惡意執行者長時間使用的風險。  (無法撤銷這些權杖。 ) 取捨是效能受到負面影響，因為權杖必須較常被取代。
 
 ### <a name="refresh-token-max-inactive-time"></a>重新整理權杖最大閒置時間
 **字串︰** MaxInactiveTime
@@ -164,7 +164,7 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 
 **影響：** 重新整理權杖
 
-**摘要︰** 此原則可控制使用者在上次僅以單一要素成功驗證之後，可以持續多久使用重新整理權杖來取得一組新的存取/重新整理權杖。 使用者驗證並接收新的重新整理權杖之後，使用者可以使用重新整理權杖流程一段指定的時間。  (這是 true，只要目前的重新整理權杖未撤銷，且未使用的時間超過非作用中的時間。 ) 此時，系統會強制使用者重新驗證，以接收新的重新整理權杖。
+**摘要︰** 此原則可控制使用者在上次僅以單一要素成功驗證之後，可以持續多久使用重新整理權杖來取得一組新的存取/重新整理權杖。 使用者驗證並接收新的重新整理權杖之後，使用者可以使用重新整理權杖流程一段指定的時間。  (如果目前的重新整理權杖未撤銷，且未使用的時間超過非使用中的時間，則為 true。 ) 屆時，則會強制使用者重新驗證，以接收新的重新整理權杖。
 
 縮短最大壽命將會強制使用者更頻繁地進行驗證。 因為單一要素驗證的安全性被視為比多重要素驗證低，因此建議將此屬性設定為等於或小於「多重要素重新整理權杖最大壽命」屬性的值。
 
@@ -173,7 +173,7 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 
 **影響：** 重新整理權杖
 
-**摘要︰** 此原則可控制使用者在上次使用多重要素成功驗證之後，可以持續多久使用重新整理權杖來取得一組新的存取/重新整理權杖。 使用者驗證並接收新的重新整理權杖之後，使用者可以使用重新整理權杖流程一段指定的時間。  (這是 true，只要目前的重新整理權杖未撤銷，且未使用的時間超過非作用中的時間。 ) 此時，系統會強制使用者重新驗證以接收新的重新整理權杖。
+**摘要︰** 此原則可控制使用者在上次使用多重要素成功驗證之後，可以持續多久使用重新整理權杖來取得一組新的存取/重新整理權杖。 使用者驗證並接收新的重新整理權杖之後，使用者可以使用重新整理權杖流程一段指定的時間。  (如果目前的重新整理權杖未撤銷，且未使用的時間超過非使用中的時間，則為 true。 ) 屆時，系統會強制使用者重新驗證，以接收新的重新整理權杖。
 
 縮短最大壽命將會強制使用者更頻繁地進行驗證。 因為單一要素驗證的安全性被視為比多重要素驗證低，因此建議將此屬性設定為等於或大於「單一要素重新整理權杖最大壽命」屬性的值。
 
@@ -182,7 +182,7 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 
 **影響：** 工作階段權杖 (持續性和非持續性)
 
-**摘要︰** 此原則可控制使用者在上次僅以單一要素成功驗證之後，可以持續多久使用工作階段權杖來取得新的識別碼和工作階段權杖。 使用者驗證並接收新的工作階段權杖之後，使用者可以使用工作階段權杖流程一段指定的時間。  (這是 true，只要目前的會話權杖未撤銷，而且尚未過期。 ) 在指定的時間之後，就會強制使用者重新驗證，以接收新的會話權杖。
+**摘要︰** 此原則可控制使用者在上次僅以單一要素成功驗證之後，可以持續多久使用工作階段權杖來取得新的識別碼和工作階段權杖。 使用者驗證並接收新的工作階段權杖之後，使用者可以使用工作階段權杖流程一段指定的時間。  (如果目前的會話權杖未撤銷，也未過期，則為 true。在指定的時間內 ) ，會強制使用者重新驗證以接收新的會話權杖。
 
 縮短最大壽命將會強制使用者更頻繁地進行驗證。 因為單一要素驗證的安全性被視為比多重要素驗證低，因此建議將此屬性設定為等於或小於「多重要素工作階段權杖最大壽命」屬性的值。
 
@@ -191,7 +191,7 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 
 **影響：** 工作階段權杖 (持續性和非持續性)
 
-**摘要︰** 此原則可控制使用者在上次以多重要素成功驗證之後，可以持續多久使用工作階段權杖來取得新的識別碼和工作階段權杖。 使用者驗證並接收新的工作階段權杖之後，使用者可以使用工作階段權杖流程一段指定的時間。  (這是 true，只要目前的會話權杖未撤銷，而且尚未過期。 ) 在指定的時間之後，就會強制使用者重新驗證，以接收新的會話權杖。
+**摘要︰** 此原則可控制使用者在上次以多重要素成功驗證之後，可以持續多久使用工作階段權杖來取得新的識別碼和工作階段權杖。 使用者驗證並接收新的工作階段權杖之後，使用者可以使用工作階段權杖流程一段指定的時間。  (如果目前的會話權杖未撤銷，也未過期，則為 true。在指定的時間內 ) ，會強制使用者重新驗證以接收新的會話權杖。
 
 縮短最大壽命將會強制使用者更頻繁地進行驗證。 因為單一要素驗證的安全性被視為比多重要素驗證低，因此建議將此屬性設定為等於或大於「單一要素工作階段權杖最大壽命」屬性的值。
 
@@ -209,12 +209,12 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 * 針對呼叫 Web API 的原生應用程式建立原則
 * 管理進階原則
 
-### <a name="prerequisites"></a>Prerequisites
-在下列範例中，您建立、更新連結，並刪除應用程式、服務主體和您整體組織的原則。 如果您不熟悉 Azure AD，建議您先瞭解[如何取得 Azure AD 租](quickstart-create-new-tenant.md)使用者，再繼續進行這些範例。  
+### <a name="prerequisites"></a>必要條件
+在下列範例中，您建立、更新連結，並刪除應用程式、服務主體和您整體組織的原則。 如果您不熟悉 Azure AD，建議您先瞭解 [如何取得 Azure AD 租](quickstart-create-new-tenant.md) 使用者，然後再繼續進行這些範例。  
 
 若要開始使用，請執行下列步驟：
 
-1. 下載最新的[Azure AD PowerShell 模組公開預覽版本](https://www.powershellgallery.com/packages/AzureADPreview)。
+1. 下載最新的 [Azure AD PowerShell 模組公開預覽版本](https://www.powershellgallery.com/packages/AzureADPreview)。
 2. 執行 `Connect` 命令以登入您的 Azure AD 管理帳戶。 您每次啟動新的工作階段時執行此命令。
 
     ```powershell
@@ -250,7 +250,7 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    1. 若要移除任何空格，請執行下列命令：
+    1. 若要移除任何空白，請執行下列命令：
 
         ```powershell
         Get-AzureADPolicy -id | set-azureadpolicy -Definition @($((Get-AzureADPolicy -id ).Replace(" ","")))
@@ -284,15 +284,15 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    1. 若要查看您的新原則，並取得原則**ObjectId**，請執行下列命令：
+    1. 若要查看您的新原則，並取得原則 **ObjectId**，請執行下列命令：
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-1. 將原則指派給服務主體。 您也需要取得服務主體的**ObjectId** 。
+1. 將原則指派給服務主體。 您也需要取得服務主體的 **ObjectId** 。
 
-    1. 使用[get-azureadserviceprincipal](/powershell/module/azuread/get-azureadserviceprincipal) Cmdlet 來查看您組織的所有服務主體或單一服務主體。
+    1. 使用 [get-azureadserviceprincipal 指令程式](/powershell/module/azuread/get-azureadserviceprincipal) 可查看您組織的所有服務主體或單一服務主體。
         ```powershell
         # Get ID of the service principal
         $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
@@ -321,9 +321,9 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-1. 將原則指派給 Web API。 您也需要取得應用程式的 **ObjectId**。 使用[get-azureadapplication](/powershell/module/azuread/get-azureadapplication) Cmdlet 來尋找您的應用程式的**ObjectId**，或使用[Azure 入口網站](https://portal.azure.com/)。
+1. 將原則指派給 Web API。 您也需要取得應用程式的 **ObjectId**。 使用 [get-azureadapplication](/powershell/module/azuread/get-azureadapplication) 指令程式來尋找您的應用程式 **ObjectId**，或使用 [Azure 入口網站](https://portal.azure.com/)。
 
-    取得應用程式的**ObjectId**並指派原則：
+    取得應用程式的 **ObjectId** 並指派原則：
 
     ```powershell
     # Get the application
@@ -334,7 +334,7 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
     ```
 
 ### <a name="example-manage-an-advanced-policy"></a>範例：管理進階原則
-在此範例中，您會建立一些原則，以瞭解優先順序系統的運作方式。 您也會學到如何管理多個套用至數個物件的原則。
+在此範例中，您會建立幾個原則，以瞭解優先順序系統的運作方式。 您也會瞭解如何管理套用至數個物件的多個原則。
 
 1. 建立權杖存留期原則。
 
@@ -354,7 +354,7 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 
     現在，您具有原則，該原則套用到整個組織。 您可能想要針對特定的服務主體保留這個 30 天原則，但是將組織預設原則變更為上限「直到撤銷為止」。
 
-    1. 若要查看您組織的所有服務主體，請使用[get-azureadserviceprincipal](/powershell/module/azuread/get-azureadserviceprincipal) Cmdlet。
+    1. 若要查看您組織的所有服務主體，請使用 [get-azureadserviceprincipal](/powershell/module/azuread/get-azureadserviceprincipal) Cmdlet。
 
     1. 當您有服務主體時，請執行下列命令：
 
@@ -413,7 +413,7 @@ Get-AzureADPolicy
 
 | 參數 | 描述 | 範例 |
 | --- | --- | --- |
-| <code>&#8209;Id</code> [選用] |**ObjectId (** 您想要之原則的識別碼) 。 |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> [選用] |您想要之原則的**ObjectId (識別碼) ** 。 |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -426,7 +426,7 @@ Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 
 | 參數 | 描述 | 範例 |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (** 您想要之原則的識別碼) 。 |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |您想要之原則的**ObjectId (識別碼) ** 。 |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -439,7 +439,7 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 
 | 參數 | 描述 | 範例 |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (** 您想要之原則的識別碼) 。 |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |您想要之原則的**ObjectId (識別碼) ** 。 |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |原則名稱的字串。 |`-DisplayName "MyTokenPolicy"` |
 | <code>&#8209;Definition</code> [選用] |字串化 JSON 的陣列，包含所有原則的規則。 |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;IsOrganizationDefault</code> [選用] |如果為 true，就會將原則設定為組織的預設原則。 如果為 false，則不會執行任何動作。 |`-IsOrganizationDefault $true` |
@@ -457,7 +457,7 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 
 | 參數 | 描述 | 範例 |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (** 您想要之原則的識別碼) 。 | `-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |您想要之原則的**ObjectId (識別碼) ** 。 | `-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -549,6 +549,6 @@ Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -Policy
 
 ## <a name="license-requirements"></a>授權需求
 
-使用此方法需要 Azure AD Premium P1 授權。 若要尋找您需求的正確授權，請參閱[比較免費和 Premium 版本的正式推出功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+使用此方法需要 Azure AD Premium P1 授權。 若要尋找您需求的正確授權，請參閱 [比較免費和 Premium 版本的正式推出功能](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 擁有 [Microsoft 365 商務版授權](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客戶也有條件式存取功能的存取權。

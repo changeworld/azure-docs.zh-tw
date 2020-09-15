@@ -1,6 +1,6 @@
 ---
 title: Web SDK 支援的瀏覽器 |Microsoft Azure 對應
-description: 瞭解如何檢查 Azure 地圖服務 Web SDK 是否支援瀏覽器。 查看支援的瀏覽器清單。 瞭解如何搭配使用對應服務與舊版瀏覽器。
+description: 瞭解如何檢查 Azure 地圖服務 Web SDK 是否支援瀏覽器。 查看支援的瀏覽器清單。 瞭解如何搭配使用地圖服務與舊版瀏覽器。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: e6d4ea19e5547adb7bee25f4bdce295eb9a76d44
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 73d875e32f4fcf22551cf6b0946e49c2f826e523
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002933"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085020"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支援的瀏覽器
 
-Azure 地圖服務 Web SDK 提供名為[isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-)的 helper 函式。 此函式會偵測 web 瀏覽器是否有支援載入和呈現地圖控制項所需的最小 WebGL 功能集。 以下是如何使用函數的範例：
+Azure 地圖服務 Web SDK 提供名為 [isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#issupported-boolean-)的 helper 函數。 此函式會偵測網頁瀏覽器是否有支援載入和轉譯地圖控制項所需的最小一組 WebGL 功能。 以下是如何使用函數的範例：
 
 ```JavaScript
 if (!atlas.isSupported()) {
@@ -36,39 +36,39 @@ Azure 地圖服務 Web SDK 支援下列桌面瀏覽器：
 - Microsoft Edge (目前版本和舊版) 
 - Google Chrome (目前版本和舊版) 
 - Mozilla Firefox (目前版本和舊版) 
-- Apple Safari (Mac OS X)  (目前版本和舊版) 
+- Apple Safari (Mac OS X)  (最新版本和舊版) 
 
-另請參閱本文稍後的[目標舊版瀏覽器](#Target-Legacy-Browsers)。
+請參閱本文稍後的將目標設為 [舊版瀏覽器](#Target-Legacy-Browsers) 。
 
 ## <a name="mobile"></a>行動
 
 Azure 地圖服務 Web SDK 支援下列行動瀏覽器：
 
 - Android
-  - Android 6.0 和更新版本上的最新 Chrome 版本
-  - Android 6.0 和更新版本上的 Chrome Web 操作
+  - Android 6.0 和更新版本上的最新版 Chrome
+  - Android 6.0 和更新版本上的 Chrome Web 視圖
 - iOS
-  - IOS 上目前和舊版主要版本的 Mobile Safari
-  - 目前和先前的 iOS 主要版本上的 UIWebView 和 WKWebView
-  - 適用于 iOS 的最新 Chrome 版本
+  - IOS 上目前和先前主要版本的 Mobile Safari
+  - 目前和先前主要版本 iOS 的 UIWebView 和 WKWebView
+  - 適用于 iOS 的 Chrome 目前版本
 
 > [!TIP]
-> 如果您要使用 Web 視圖控制項在行動應用程式中內嵌對應，您可能會想要使用[Azure 地圖服務 WEB SDK 的 npm 套件](https://www.npmjs.com/package/azure-maps-control)，而不是參考 Azure 內容傳遞網路上所裝載的 SDK 版本。 這種方法可縮短載入時間，因為 SDK 已在使用者的裝置上，而不需要在執行時間下載。
+> 如果您要使用 web 程式控制項在行動應用程式中內嵌地圖，您可能會想要使用 [Azure 地圖服務 WEB SDK 的 npm 套件](https://www.npmjs.com/package/azure-maps-control) ，而不是參考 Azure 內容傳遞網路上裝載的 SDK 版本。 這種方法可縮短載入時間，因為 SDK 已在使用者的裝置上，而不需要在執行時間下載。
 
 ## <a name="nodejs"></a>Node.js
 
-Node.js 也支援下列 Web SDK 模組：
+Node.js 中也支援下列 Web SDK 模組：
 
 - 服務模組 ([檔](how-to-use-services-module.md)  |  [npm 模組](https://www.npmjs.com/package/azure-maps-rest)) 
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>以舊版瀏覽器為目標
 
-您可能想要以不支援 WebGL 或只有有限支援的舊版瀏覽器為目標。 在這種情況下，建議您將 Azure 地圖服務服務與開放原始碼地圖控制項（例如[Leaflet](https://leafletjs.com/)）搭配使用。 以下為範例：
+您可能想要以不支援 WebGL 或只有有限支援的舊版瀏覽器為目標。 在這種情況下，我們建議您搭配使用 Azure 地圖服務服務與開放原始碼的地圖控制項（例如 [Leaflet](https://leafletjs.com/)）。 以下是範例：
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Azure 地圖服務 + Leaflet" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Azure 地圖服務 () 上的 CodePen，請參閱 Pen <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure 地圖服務 + Leaflet</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
+請參閱 >codepen 上的 <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure 地圖服務 + Leaflet</a> ，Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>) 。
 </iframe>
 
 

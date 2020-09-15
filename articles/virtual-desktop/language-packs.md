@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: de495d18220500e5aa5653e89776c2634d5b1c85
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: fbc2aba21212a83bd73d5664f4fe288017954c0d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719135"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084204"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>將語言套件新增至 Windows 10 多會話映射
 
@@ -24,13 +24,13 @@ Windows 虛擬桌面是您的使用者可以隨時隨地部署的服務。 這�
 
 第二種方法更有效率且符合成本效益。 不過，您決定哪一種方法最適合您的需求。 本文將示範如何為您的影像自訂語言。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您需要下列專案來自訂您的 Windows 10 企業版多會話映射以新增多種語言：
 
 - Azure 虛擬機器 (VM) Windows 10 企業版多會話1903版或更新版本
 
-- 以 ISO 和 Feature 隨選 (FOD 映射所使用的作業系統版本) Disk 1。 您可以在此下載：
+- Language ISO、Feature 隨選 (FOD) Disk 1，以及映射使用的 OS 版本的收件匣應用程式 ISO。 您可以在此下載：
      
      - 語言 ISO：
         - [Windows 10，版本1903或1909語言套件 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
@@ -39,6 +39,10 @@ Windows 虛擬桌面是您的使用者可以隨時隨地部署的服務。 這�
      - FOD Disk 1 ISO：
         - [Windows 10，版本1903或 1909 FOD Disk 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
         - [Windows 10，2004版 FOD Disk 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        
+     - 收件匣應用程式 ISO：
+        - [Windows 10，版本1903或1909收件匣應用程式 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
+        - [Windows 10，2004版收件匣應用程式 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
 
 - Windows 檔案伺服器虛擬機器上的 Azure 檔案儲存體共用或檔案共用
 
@@ -47,15 +51,16 @@ Windows 虛擬桌面是您的使用者可以隨時隨地部署的服務。 這�
 
 ## <a name="create-a-content-repository-for-language-packages-and-features-on-demand"></a>視需要建立語言套件和功能的內容儲存機制
 
-若要建立語言套件和 Fod 的內容存放庫：
+若要建立語言套件和 Fod 的內容存放庫，以及收件匣應用程式套件的存放庫：
 
-1. 在 Azure VM 上，從 [必要條件](#prerequisites)中的連結下載 Windows 10 多語言 ISO 和 fod，以進行 Windows 10 企業版多會話、版本1903、1909和2004映射。
+1. 在 Azure VM 上，從 [必要條件](#prerequisites)中的連結下載 Windows 10 多語言 ISO、Fod 和收件匣應用程式，以 Windows 10 企業版多會話、1903/1909 版和2004映射。
 
 2. 在 VM 上開啟並掛接 ISO 檔案。
 
 3. 移至語言套件 ISO 並從 **LocalExperiencePacks** 和 **x64 \\ langpacks** 資料夾複製內容，然後將內容貼到檔案共用中。
 
 4. 移至 **FOD ISO**檔案，複製其所有內容，然後貼到檔案共用中。
+5. 移至收件匣應用程式 ISO 上的 **amd64fre** 資料夾，並複製您已備妥的收件匣應用程式之存放庫中的內容。
 
      >[!NOTE]
      > 如果您使用的是有限的儲存空間，請只複製您知道使用者需要的語言檔案。 您可以藉由查看檔案名中的語言代碼來區分檔案。 例如，法文檔案的名稱中會有 "fr" 程式碼。 如需所有可用語言的完整語言代碼清單，請參閱適用 [于 Windows 的可用語言套件](/windows-hardware/manufacture/desktop/available-language-packs-for-windows)。
@@ -66,7 +71,7 @@ Windows 虛擬桌面是您的使用者可以隨時隨地部署的服務。 這�
      > [!div class="mx-imgBorder"]
      > ![在其檔案名中使用 "Jpan" 語言標記的日文語言套件範例。](media/language-pack-example.png)
 
-5. 設定語言內容存放庫共用的許可權，讓您可以從您將用來建立自訂映射的 VM 讀取存取權。
+6. 設定語言內容存放庫共用的許可權，讓您可以從您將用來建立自訂映射的 VM 讀取存取權。
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-manually"></a>手動建立自訂 Windows 10 企業版多會話映射
 
@@ -75,7 +80,7 @@ Windows 虛擬桌面是您的使用者可以隨時隨地部署的服務。 這�
 1. 部署 Azure VM，然後移至 Azure 資源庫，然後選取您目前使用 Windows 10 企業版多個會話的目前版本。
 2. 在您部署 VM 之後，請使用 RDP 作為本機系統管理員來連接到 VM。
 3. 請確定您的 VM 擁有所有最新的 Windows 更新。 視需要下載更新並重新啟動 VM。
-4. 連接到語言套件並 FOD 檔案共用存放庫，並將它掛接到字母磁片磁碟機 (例如，磁片磁碟機 E) 。
+4. 連接到語言套件、FOD 和收件匣應用程式檔案共用存放庫，並將它掛接到字母磁片磁碟機 (例如，磁片磁碟機 E) 。
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-automatically"></a>自動建立自訂 Windows 10 企業版多會話映射
 
@@ -161,6 +166,56 @@ Set-WinUserLanguageList $LanguageList -force
 
 腳本完成執行之後，請檢查以確定語言套件已正確安裝，方法是前往 [**開始**  >  **設定**  >  **時間] & 語言**  >  **語言**。 如果有語言檔案，您就可以全部設定。
 
+在 Windows 映像中新增其他語言之後，也需要更新收件匣應用程式以支援新增的語言。 這可以藉由使用收件匣應用程式 ISO 的內容重新整理預先安裝的應用程式來完成。 若要在中斷連線的環境中執行此重新整理 (無法從 VM 進行網際網路存取) ，您可以使用下列 PowerShell 腳本範例將程式自動化。
+
+```powershell
+#########################################
+## Update Inbox Apps for Multi Language##
+#########################################
+##Set Inbox App Package Content Stores##
+[string]$InboxApps = "F:\"
+##Update Inbox Store Apps##
+$AllAppx = Get-Item $inboxapps\*.appx | Select-Object name
+$AllAppxBundles = Get-Item $inboxapps\*.appxbundle | Select-Object name
+$allAppxXML = Get-Item $inboxapps\*.xml | Select-Object name
+foreach ($Appx in $AllAppx) {
+    $appname = $appx.name.substring(0,$Appx.name.length-5)
+    $appnamexml = $appname + ".xml"
+    $pathappx = $InboxApps + "\" + $appx.Name
+    $pathxml = $InboxApps + "\" + $appnamexml
+    
+    if($allAppxXML.name.Contains($appnamexml)){
+    
+    Write-Host "Handeling with xml $appname"  
+  
+    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+    } else {
+      
+      Write-Host "Handeling without xml $appname"
+      
+      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+    }
+}
+foreach ($Appx in $AllAppxBundles) {
+    $appname = $appx.name.substring(0,$Appx.name.length-11)
+    $appnamexml = $appname + ".xml"
+    $pathappx = $InboxApps + "\" + $appx.Name
+    $pathxml = $InboxApps + "\" + $appnamexml
+    
+    if($allAppxXML.name.Contains($appnamexml)){
+    Write-Host "Handeling with xml $appname"
+    
+    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+    } else {
+       Write-Host "Handeling without xml $appname"
+      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+    }
+}
+```
+
+>[!IMPORTANT]
+>ISO 中包含的收件匣應用程式不是最新版本的預先安裝 Windows 應用程式。 若要取得所有應用程式的最新版本，您必須使用 Windows Store 應用程式更新應用程式，並在安裝其他語言之後，執行手動搜尋更新。
+
 當您完成時，請務必中斷共用的連線。
 
 ## <a name="finish-customizing-your-image"></a>完成自訂您的映射
@@ -177,15 +232,15 @@ Set-WinUserLanguageList $LanguageList -force
      C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown
      ```
 
-2. 遵循在 [Azure 中建立一般化 vm 的受控映射](../virtual-machines/windows/capture-image-resource.md)中的指示，關閉 VM，然後在受控映射中加以捕捉。
+2. 停止 VM，然後遵循在 [Azure 中建立一般化 VM 的受控映射](../virtual-machines/windows/capture-image-resource.md)中的指示，在受控映射中加以捕捉。
 
 3. 您現在可以使用自訂映射來部署 Windows 虛擬桌面主機集區。 若要瞭解如何部署主機集區，請參閱 [教學課程：使用 Azure 入口網站建立主機集](create-host-pools-azure-marketplace.md)區。
 
 ## <a name="enable-languages-in-windows-settings-app"></a>在 Windows 設定應用程式中啟用語言
 
-最後，您必須將語言新增到每個使用者的語言清單，讓他們可以在 [設定] 功能表中選取其慣用的語言。
+最後，在您部署主機集區之後，您必須將語言新增到每個使用者的語言清單，讓他們可以在 [設定] 功能表中選取其慣用的語言。
 
-為確保您的使用者可以選取您所安裝的語言，請以使用者的身份登入，然後執行下列 PowerShell Cmdlet，將已安裝的語言套件新增至 [語言] 功能表。 您也可以將此腳本設定為可在使用者登入會話時啟動的自動化工作。
+為確保您的使用者可以選取您所安裝的語言，請以使用者的身份登入，然後執行下列 PowerShell Cmdlet，將已安裝的語言套件新增至 [語言] 功能表。 您也可以將此腳本設定為自動工作或登入腳本，以便在使用者登入其會話時啟動。
 
 ```powershell
 $LanguageList = Get-WinUserLanguageList

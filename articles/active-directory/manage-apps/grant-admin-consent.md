@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68e40696c935adf6bef78636770b1add81255fa8
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 96b4cb6f751a5d2bc4259117007b3abec2e0598d
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060912"
+ms.locfileid: "90069572"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>對應用程式授與全租用戶的管理員同意
 
@@ -69,6 +69,9 @@ ms.locfileid: "90060912"
 4. 選取 [ **API 許可權** ]，然後按一下 **[授與管理員同意**]。
 5. 仔細檢查應用程式所需的許可權。
 6. 如果您同意應用程式所需的許可權，請授與同意。 如果沒有，請按一下 [ **取消** ] 或關閉視窗。
+
+> [!WARNING]
+> 透過 **應用程式註冊** 授與整個租使用者的系統管理員同意，將會撤銷先前授與整個租使用者的任何許可權。 先前由使用者授與的許可權，將不會受到影響。 
 
 ## <a name="construct-the-url-for-granting-tenant-wide-admin-consent"></a>建立用來授與租使用者系統管理員同意的 URL
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 84262427c6d5183fb803f3fc16d2e7b8021e9d5e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 52e419e970173ddaf3d4d6176f2dd26a1e8194e2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651792"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084655"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>使用 Azure Machine Learning 為您的模型微調超參數
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -151,11 +151,9 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> 貝氏取樣不支援任何提早終止原則 (請參閱[指定提早終止原則](#specify-early-termination-policy))。 使用貝氏參數取樣時，請設定 `early_termination_policy = None`，或停用 `early_termination_policy` 參數。
+> 貝氏取樣不支援任何提早終止原則 (請參閱[指定提早終止原則](#early-termination))。 使用貝氏參數取樣時，請設定 `early_termination_policy = None`，或停用 `early_termination_policy` 參數。
 
-<a name='specify-primary-metric-to-optimize'/>
-
-## <a name="specify-primary-metric"></a>指定主要計量
+## <a name="specify-primary-metric"></a><a name="specify-primary-metric-to-optimize"></a> 指定主要度量
 
 指定您想要讓超參數微調實驗優化的 [主要度量](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py&preserve-view=true) 。 每個定型執行會針對此主要計量進行評估。 效能不佳的執行 (其主要計量不符合提早終止原則所設定的準則) 將會終止。 除了主要計量名稱，您也會指定最佳化的目標 (要最大化或最小化主要計量)。
 
@@ -169,9 +167,7 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 最佳化執行以將「正確性」提高到最大。  請務必記錄定型指令碼中的此值。
 
-<a name='log-metrics-for-hyperparameter-tuning'/>
-
-### <a name="log-metrics-for-hyperparameter-tuning"></a>記錄用於超參數微調的計量
+### <a name="specify-primary-metric"></a><a name="log-metrics-for-hyperparameter-tuning"></a> 指定主要度量
 
 您模型的定型指令碼必須在模型定型期間記錄相關計量。 設定超參數微調時，您會指定用於評估執行效能的主要計量。  (，請參閱 [指定要優化的主要](#specify-primary-metric-to-optimize)計量。 ) 在您的定型腳本中，您必須記錄此計量，才能讓超參數微調程式使用該度量。
 
@@ -184,8 +180,6 @@ run_logger.log("accuracy", float(val_accuracy))
 ```
 
 定型指令碼會計算 `val_accuracy` 並將其記錄為「正確性」，以用作主要計量。 每次記錄計量時，超參數微調服務都會收到該計量。 模型開發人員必須決定回報此計量的頻率。
-
-<a name='specify-early-termination-policy'/>
 
 ## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> 指定提早終止原則
 
@@ -403,6 +397,6 @@ print('\n batch size:',parameter_values[7])
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [追蹤實驗](how-to-track-experiments.md)
 * [部署定型的模型](how-to-deploy-and-where.md)

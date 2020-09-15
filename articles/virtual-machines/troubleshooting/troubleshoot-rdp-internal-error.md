@@ -12,21 +12,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 299bbfa31584b260f85dfa7bafddea268084f876
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7cbb67a215d44759b2b503929c37cb50ea94709c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235157"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069759"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>嘗試透過遠端桌面連線至 Azure VM 時發生內部錯誤
 
 本文說明當您嘗試連線至 Microsoft Azure 中的虛擬機器 (VM) 時所可能遇到的錯誤。
 
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
-您無法使用遠端桌面通訊協定 (RDP) 來連線至 Azure VM。 連線會停滯在「正在設定遠端」區段，或者您會收到下列錯誤訊息：
+您無法使用遠端桌面通訊協定 (RDP) 來連接至 Azure VM。 連接會停滯在「設定 **遠端** 」區段，否則您會收到下列錯誤訊息：
 
 - RDP 內部錯誤
 - 發生內部錯誤
@@ -35,27 +35,31 @@ ms.locfileid: "88235157"
 
 ## <a name="cause"></a>原因
 
-此錯誤可能是由於下列原因而發生：
+發生此問題的原因可能如下：
 
-- 無法存取本機的 RSA 加密金鑰。
+- 虛擬機器可能已遭受攻擊。
+- 無法存取本機 RSA 加密金鑰。
 - TLS 通訊協定已停用。
 - 憑證損毀或過期。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
-在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
+若要針對此問題進行疑難排解，請完成下列各節中的步驟。 開始之前，請將受影響 VM 的 OS 磁片快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 
-若要針對此問題進行疑難排解，請使用「序列主控台」，或藉由將 VM 的 OS 磁碟連結至復原 VM 來[修復離線的 VM](#repair-the-vm-offline)。
+### <a name="check-rdp-security"></a>檢查 RDP 安全性
 
+首先，查看 RDP 埠3389的網路安全性群組是否未受保護 (開啟) 。 如果它不安全，而且會顯示 \* 為輸入的來源 IP 位址，請將 rdp 埠限制為專屬使用者的 IP 位址，然後測試 rdp 存取。 如果失敗，請完成下一節中的步驟。
 
 ### <a name="use-serial-control"></a>使用序列主控台
 
-連線至[序列主控台並開啟 PowerShell 執行個體](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+使用序列主控台，或將 VM 的 OS 磁片連接至復原 VM，以 [離線方式修復 vm](#repair-the-vm-offline) 。
+
+若要開始，請連接到 [序列主控台並開啟 PowerShell 實例](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 )。 如果 VM 上未啟用序列主控台，請移至[修復離線的 VM](#repair-the-vm-offline) 一節。
 
 #### <a name="step-1-check-the-rdp-port"></a>步驟 1：檢查 RDP 連接埠
 
-1. 在 PowerShell 實例中，使用 [NETSTAT](/windows-server/administration/windows-commands/netstat) 來檢查其他應用程式是否使用埠3389：
+1. 在 PowerShell 實例中，請使用 [NETSTAT](/windows-server/administration/windows-commands/netstat) 來檢查其他應用程式是否使用埠3389：
 
     ```powershell
     Netstat -anob |more

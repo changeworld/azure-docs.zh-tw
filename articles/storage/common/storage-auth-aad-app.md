@@ -6,20 +6,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/14/2020
 ms.author: tamram
 ms.subservice: common
-ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: d842974b0b53e0b0ce199334a07f11e5c998b18d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b5a39b08f34bec5ee1db42cde1fb171452d0efd3
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018802"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069810"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>從 Azure AD 取得權杖，以授權用戶端應用程式的要求
 
-使用 Azure Active Directory (Azure AD) 搭配 Azure Blob 儲存體或佇列儲存體的主要優點是，您的認證不再需要儲存在程式碼中。 相反地，您可以向 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖， (先前 Azure AD) 。 Azure AD 會 (使用者、群組或服務主體) 執行應用程式來驗證安全性主體。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權對 Azure Blob 儲存體或佇列儲存體的要求。
+使用 Azure Active Directory (Azure AD) 搭配 Azure Blob 儲存體或佇列儲存體的主要優點是，您的認證不再需要儲存在程式碼中。 相反地，您可以從 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 Azure AD 會 (使用者、群組或服務主體) 執行應用程式來驗證安全性主體。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權對 Azure Blob 儲存體或佇列儲存體的要求。
 
 本文說明如何設定原生應用程式或 web 應用程式，以使用 Microsoft 身分識別平臺2.0 進行驗證。 程式碼範例以 .NET 為主，但其他語言也是使用類似的方法。 如需 Microsoft 身分識別平臺2.0 的詳細資訊，請參閱 [microsoft 身分識別平臺 (v2.0) 總覽](../../active-directory/develop/v2-overview.md)。
 
@@ -27,7 +27,7 @@ ms.locfileid: "89018802"
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>將角色指派給 Azure AD 安全性主體
 
-若要從 Azure 儲存體應用程式中驗證安全性主體，必須先為該安全性主體設定角色型存取控制 (RBAC) 設定。 Azure 儲存體定義包含容器和佇列許可權的 Azure 內建角色。 當 Azure 角色指派給安全性主體時，該安全性主體就會被授與該資源的存取權。 如需詳細資訊，請參閱 [使用 RBAC 管理 Azure Blob 和佇列資料的存取權限](storage-auth-aad-rbac.md)。
+若要從 Azure 儲存體應用程式中驗證安全性主體，必須先為該安全性主體設定角色型存取控制 (RBAC) 設定。 Azure 儲存體會定義包含容器和佇列許可權的內建角色。 當 RBAC 角色指派給安全性主體時，此安全性主體會獲得存取該資源的權限。 如需詳細資訊，請參閱 [使用 RBAC 管理 Azure Blob 和佇列資料的存取權限](storage-auth-aad-rbac.md)。
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>向 Azure AD 租用戶註冊應用程式
 
@@ -127,39 +127,78 @@ ms.locfileid: "89018802"
 
 從 Visual Studio 安裝 Azure 儲存體用戶端程式庫。 從 [ **工具** ] 功能表選取 [ **NuGet 封裝管理員**]，然後 **封裝管理員主控台**]。 在主控台視窗中輸入下列命令，以安裝適用于 .NET 的 Azure 儲存體用戶端程式庫所需的套件：
 
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+```console
+Install-Package Azure.Storage.Blobs
+Install-Package Microsoft.Identity.Web -Version 0.4.0-preview
+```
+
+接下來，將下列 using 語句新增至 HomeController.cs 檔案：
+
+```csharp
+using Microsoft.Identity.Web; //MSAL library for getting the access token
+using Azure.Storage.Blobs;
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
 ```console
 Install-Package Microsoft.Azure.Storage.Blob
-Install-Package Microsoft.Azure.Storage.Common
+Install-Package Microsoft.Identity.Web -Version 0.4.0-preview
 ```
 
 接下來，將下列 using 語句新增至 HomeController.cs 檔案：
 
 ```csharp
 using Microsoft.Identity.Client; //MSAL library for getting the access token
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure.Storage.Auth;
+using Microsoft.Azure.Storage.Blob;
 ```
+
+---
 
 #### <a name="create-a-block-blob"></a>建立區塊 Blob
 
 新增下列程式碼片段來建立區塊 blob：
 
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+```csharp
+private static async Task<string> CreateBlob(TokenAcquisitionTokenCredential tokenCredential)
+{
+    Uri blobUri = new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt");
+    BlobClient blobClient = new BlobClient(blobUri, tokenCredential);
+
+    string blobContents = "Blob created by Azure AD authenticated user.";
+    byte[] byteArray = Encoding.ASCII.GetBytes(blobContents);
+
+    using (MemoryStream stream = new MemoryStream(byteArray))
+    {
+        await blobClient.UploadAsync(stream);
+    }
+    return "Blob successfully created";
+}
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
 ```csharp
 private static async Task<string> CreateBlob(string accessToken)
 {
-    // Create a blob on behalf of the user
+    // Create a blob on behalf of the user.
     TokenCredential tokenCredential = new TokenCredential(accessToken);
     StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
 
-    // Replace the URL below with your storage account URL
-    CloudBlockBlob blob =
-        new CloudBlockBlob(
-            new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt"),
-            storageCredentials);
+    // Replace the URL below with the URL to your blob.
+    Uri blobUri = new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt");
+    CloudBlockBlob blob = new CloudBlockBlob(blobUri, storageCredentials);
     await blob.UploadTextAsync("Blob created by Azure AD authenticated user.");
     return "Blob successfully created";
 }
 ```
+
+---
 
 > [!NOTE]
 > 若要使用 OAuth 2.0 權杖授權 blob 和佇列作業，您必須使用 HTTPS。
@@ -175,69 +214,25 @@ x-ms-version: 2017-11-09
 Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 ```
 
-#### <a name="get-an-oauth-token-from-azure-ad"></a>從 Azure AD 取得 OAuth 權杖
+#### <a name="get-an-access-token-from-azure-ad"></a>從 Azure AD 取得存取權杖
 
 接下來，新增方法，以代表使用者要求 Azure AD 的權杖。 這個方法會定義要授與許可權的範圍。 如需許可權和範圍的詳細資訊，請參閱 [Microsoft 身分識別平臺端點中的許可權和同意](../../active-directory/develop/v2-permissions-and-consent.md)。
 
 使用資源識別碼來建立要取得權杖的範圍。 此範例會使用資源識別碼搭配內建範圍來建立範圍 `user_impersonation` ，這表示會代表使用者要求權杖。
 
-請記住，您可能需要向使用者呈現介面，讓使用者同意代表其要求權杖。 當您需要同意時，此範例會攔截 **MsalUiRequiredException** 並呼叫另一個方法，以促進同意要求：
+請記住，您可能需要向使用者呈現介面，讓使用者同意代表其要求權杖：
 
 ```csharp
+[AuthorizeForScopes(Scopes = new string[] { "https://storage.azure.com/user_impersonation" })]
 public async Task<IActionResult> Blob()
 {
-    var scopes = new string[] { "https://storage.azure.com/user_impersonation" };
-    try
-    {
-        var accessToken =
-            await _tokenAcquisition.GetAccessTokenOnBehalfOfUser(HttpContext, scopes);
-        ViewData["Message"] = await CreateBlob(accessToken);
-        return View();
-    }
-    catch (MsalUiRequiredException ex)
-    {
-        AuthenticationProperties properties =
-            BuildAuthenticationPropertiesForIncrementalConsent(scopes, ex);
-        return Challenge(properties);
-    }
+    string message = await CreateBlob(new TokenAcquisitionTokenCredential(_tokenAcquisition));
+    ViewData["Message"] = message;
+    return View();
 }
 ```
 
-同意是使用者授權應用程式代表使用者存取受保護的資源所用的程序。 Microsoft 身分識別平臺2.0 支援累加式同意，這表示安全性主體最初可以要求一組最低許可權，並視需要新增一段時間的許可權。 當您的程式碼要求存取權杖時，請在參數中指定應用程式在任何給定時間所需的許可權範圍 `scope` 。 如需有關累加式同意的詳細資訊，請參閱標題為 **增量和動態同意** 的部分，說明 [為何要更新至 Microsoft 身分識別平臺 (v2.0) ？](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)。
-
-下列方法會建立要求累加式同意的驗證屬性：
-
-```csharp
-private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalConsent(string[] scopes,
-                                                                                    MsalUiRequiredException ex)
-{
-    AuthenticationProperties properties = new AuthenticationProperties();
-
-    // Set the scopes, including the scopes that MSAL.NET needs for the token cache.
-    string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
-    properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
-                                                 scopes.Union(additionalBuildInScopes).ToList());
-
-    // Attempt to set the login_hint so that the logged-in user is not presented
-    // with an account selection dialog.
-    string loginHint = HttpContext.User.GetLoginHint();
-    if (!string.IsNullOrWhiteSpace(loginHint))
-    {
-        properties.SetParameter<string>(OpenIdConnectParameterNames.LoginHint, loginHint);
-
-        string domainHint = HttpContext.User.GetDomainHint();
-        properties.SetParameter<string>(OpenIdConnectParameterNames.DomainHint, domainHint);
-    }
-
-    // Specify any additional claims that are required (for instance, MFA).
-    if (!string.IsNullOrEmpty(ex.Claims))
-    {
-        properties.Items.Add("claims", ex.Claims);
-    }
-
-    return properties;
-}
-```
+同意是使用者授權應用程式代表使用者存取受保護的資源所用的程序。 Microsoft 身分識別平臺2.0 支援累加式同意，這表示安全性主體最初可以要求一組最低許可權，並視需要新增一段時間的許可權。 當您的程式碼要求存取權杖時，請在參數中指定應用程式在任何給定時間所需的許可權範圍 `scope` 。 如需累加式同意的詳細資訊，請參閱 [增量和動態同意](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)。
 
 ## <a name="view-and-run-the-completed-sample"></a>查看並執行完成的範例
 
@@ -271,17 +266,15 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 
 ### <a name="update-the-storage-account-and-container-name"></a>更新儲存體帳戶和容器名稱
 
-在 *HomeController.cs* 檔案中，更新參考區塊 BLOB 的 URI，以使用您的儲存體帳戶和容器的名稱：
+在 *HomeController.cs* 檔案中，將參考區塊 BLOB 的 URI 更新為使用您的儲存體帳戶和容器的名稱，將角括弧中的值取代為您自己的值：
 
-```csharp
-CloudBlockBlob blob = new CloudBlockBlob(
-                      new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt"),
-                      storageCredentials);
+```html
+https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ```
 
 ### <a name="enable-implicit-grant-flow"></a>啟用隱含授與流程
 
-若要執行範例，您可能需要設定應用程式註冊的隱含授與流程。 請遵循下列步驟：
+若要執行範例，您可能需要設定應用程式註冊的隱含授與流程。 遵循這些步驟：
 
 1. 在 Azure 入口網站中，流覽至您的應用程式註冊。
 1. 在 [ **管理** ] 區段中，選取 **驗證** 設定。

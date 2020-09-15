@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 05/29/2019
+ms.date: 09/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cead917c6c98d10d3f9e5ebe2f75bd5513574c5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948907"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085904"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用規定
 
@@ -52,7 +52,7 @@ Azure AD 使用規定具有下列功能：
 - 顯示使用規定活動的記錄，以進行合規性和審核。
 - 使用 [Microsoft Graph api](/graph/api/resources/agreement?view=graph-rest-beta) 來建立和管理使用規定 (目前為預覽) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要使用及設定 Azure AD 使用規定，您必須具備：
 
@@ -117,7 +117,7 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 
    ![用來選取原則範本的 [條件式存取] 下拉式清單](./media/terms-of-use/conditional-access-templates.png)
 
-   | [範本] | 描述 |
+   | 範本 | 描述 |
    | --- | --- |
    | **所有來賓的雲端應用程式存取權** | 系統會為所有來賓和所有雲端應用程式建立條件式存取原則。 此原則會影響 Azure 入口網站。 建立此原則之後，您可能需要登出然後再登入。 |
    | **所有使用者的雲端應用程式存取權** | 將會針對所有使用者和所有雲端應用程式建立條件式存取原則。 此原則會影響 Azure 入口網站。 建立此原則之後，您必須登出然後再登入。 |
@@ -129,7 +129,7 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 
     自訂條件式存取原則可對特定雲端應用程式或使用者群組啟用細微的使用規定。 如需詳細資訊，請參閱 [快速入門：在存取雲端應用程式之前，必須先接受使用](require-tou.md)規定。
 
-1. 按一下 [建立]。
+1. 按一下 [建立]  。
 
    如果您已選取自訂的條件式存取範本，則會出現新的畫面，讓您建立自訂的條件式存取原則。
 
@@ -264,7 +264,7 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 
 - 一部裝置只能加入至單一租用戶。
 - 使用者必須具有加入其裝置的權限。
-- 不支援「Intune 註冊」應用程式。
+- 不支援「Intune 註冊」應用程式。 確定它已從任何需要使用規定的條件式存取原則中排除。
 - 不支援 Azure AD B2B 使用者。
 
 如果使用者的裝置未加入，他們將會收到要求加入其裝置的訊息。 使用者的體驗將取決於平台和軟體。
@@ -389,7 +389,7 @@ A：是。 目前有108種不同的語言，系統管理員可以設定單一使
 **問：使用規定服務會使用哪些端點進行驗證？**<br />
 答：使用規定會利用下列端點進行驗證： https://tokenprovider.termsofuse.identitygovernance.azure.com 和 https://account.activedirectory.windowsazure.com 。 如果您的組織具有可供註冊之 Url 的允許清單，您將需要將這些端點新增至您的允許清單，以及用於登入的 Azure AD 端點。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [快速入門：必須接受使用規定才可存取雲端應用程式](require-tou.md)
 - [Azure Active Directory 中條件式存取的最佳作法](best-practices.md)

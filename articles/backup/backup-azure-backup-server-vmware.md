@@ -3,16 +3,16 @@ title: 使用 Azure 備份伺服器來備份 VMware VM
 description: 在本文中，您將瞭解如何使用 Azure 備份伺服器來備份在 VMware vCenter/ESXi 伺服器上執行的 VMware Vm。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: e18b5c51446446103a91ef7d6a00277c2b41db77
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017561"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069827"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 備份伺服器來備份 VMware VM
 
-本文說明如何使用 Azure 備份伺服器，將在 VMware ESXi 主機/vCenter 伺服器上執行的 VMware VM 備份到 Azure。
+本文說明如何使用 Azure 備份伺服器 (MABS) ，將在 VMware ESXi 主機/vCenter Server 上執行的 VMware Vm 備份至 Azure。
 
 本文說明如何：
 
@@ -22,7 +22,32 @@ ms.locfileid: "89017561"
 - 將 vCenter 或 ESXi 伺服器新增至 Azure 備份伺服器。
 - 設定包含您要備份之 VMware VM 的保護群組、指定備份設定和排程備份。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="supported-vmware-features"></a>支援的 VMware 功能
+
+MABS 會在備份 VMware 虛擬機器時提供下列功能：
+
+- 無代理程式備份： MABS 不需要在 vCenter 或 ESXi 伺服器上安裝代理程式來備份虛擬機器。 相反地，只需提供 IP 位址或完整功能變數名稱 (FQDN) ，以及用來向 MABS 驗證 VMware 伺服器的登入認證。
+- 雲端整合式備份： MABS 可保護磁片和雲端的工作負載。 MABS 的備份和復原工作流程可協助您管理長期保留和異地備份。
+- 偵測並保護 vCenter 所管理的 Vm： MABS 會偵測並保護部署在 VMware 伺服器上的 Vm (vCenter 或 ESXi server) 。 當您的部署大小增加時，請使用 vCenter 來管理 VMware 環境。 MABS 也會偵測 vCenter 所管理的 Vm，讓您可以保護大型部署。
+- 資料夾等級的自動保護：vCenter 讓您能夠組織 VM 資料夾中的 VM。 MABS 會偵測這些資料夾，並可讓您保護資料夾層級的 Vm，並包括所有子資料夾。 保護資料夾時，MABS 不僅會保護該資料夾中的 Vm，還可保護稍後新增的 Vm。 MABS 會每天偵測到新的 Vm，並自動加以保護。 當您在遞迴資料夾中組織 Vm 時，MABS 會自動偵測並保護部署在遞迴資料夾中的新 Vm。
+- MABS 可保護儲存在本機磁片、網路檔案系統 (NFS) 或叢集存放裝置上的 Vm。
+- MABS 可保護遷移的 Vm 以進行負載平衡：當 Vm 遷移以進行負載平衡時，MABS 會自動偵測並繼續進行 VM 保護。
+- MABS 可以從 Windows VM 復原檔案/資料夾，而不需要復原整個 VM，這有助於更快速地復原所需的檔案。
+
+## <a name="prerequisites-and-limitations"></a>先決條件和限制
+
+開始備份 VMware 虛擬機器之前，請先檢閱下列的限制和必要條件清單。
+
+- 如果您已經使用 MABS 來保護在 Windows) 上執行的 vCenter server (使用伺服器的 FQDN 的 Windows 伺服器，則無法使用伺服器的 FQDN，將該 vCenter server 保護為 VMware 伺服器。
+  - 您可以使用 vCenter Server 的靜態 IP 位址作為因應措施。
+  - 如果您想要使用 FQDN，您應該停止保護為 Windows Server、移除保護代理程式，然後使用 FQDN 新增為 VMware 伺服器。
+- 如果您使用 vCenter 來管理環境中的 ESXi 伺服器，請將 vCenter (而不是 ESXi) 新增至 MABS 保護群組。
+- 您無法在第一次 MABS 備份之前備份使用者快照集。 MABS 完成第一次備份之後，您就可以備份使用者快照集。
+- MABS 無法使用傳遞磁片和實體未經處理的裝置對應 (pRDM) 來保護 VMware Vm。
+- MABS 無法偵測或保護 VMware vApps。
+- MABS 無法使用現有的快照集來保護 VMware Vm。
+
+## <a name="before-you-start"></a>開始之前
 
 - 確認您正在執行支援備份的 vCenter/ESXi 版本。 請參閱 [這裡](./backup-mabs-protection-matrix.md)的支援矩陣。
 - 確定您已設定 Azure 備份伺服器。 如果還沒，請在開始之前[進行設定](backup-azure-microsoft-azure-backup.md)。 您應該執行具有最新更新的 Azure 備份伺服器。
@@ -281,7 +306,7 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![指定認證](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. 選取 [ **新增** ]，將 VMware 伺服器新增至 [伺服器] 清單。 接著，選取 [下一步]  。
+6. 選取 [ **新增** ]，將 VMware 伺服器新增至 [伺服器] 清單。 然後，選取 [下一步]。
 
     ![新增 VMWare 伺服器和認證](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -309,14 +334,14 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
 1. 在 [ **選擇保護群組類型** ] 頁面上，選取 [ **伺服器** ]，然後選取 **[下一步]**。 [選取群組成員]**** 頁面隨即出現。
 
-1. 在 [ **選擇群組成員**] 中，選取您要備份的 vm (或 vm 資料夾) 。 接著，選取 [下一步]  。
+1. 在 [ **選擇群組成員**] 中，選取您要備份的 vm (或 vm 資料夾) 。 然後，選取 [下一步]。
 
     - 當您選取資料夾時，也會選取該資料夾內的 VM 或資料夾以進行備份。 您可以將不想備份的資料夾或 VM 取消選取。
 1. 如果 VM 或資料夾已經過備份，您就無法加以選取。 這可確保不會為 VM 建立重複的復原點。
 
     ![選擇群組成員](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. 在 [選取資料保護方法]**** 頁面上，輸入保護群組的名稱和保護設定。 若要備份至 Azure，請將短期保護設定為 [磁碟]****，並啟用線上保護。 接著，選取 [下一步]  。
+1. 在 [選取資料保護方法]**** 頁面上，輸入保護群組的名稱和保護設定。 若要備份至 Azure，請將短期保護設定為 [磁碟]****，並啟用線上保護。 然後，選取 [下一步]。
 
     ![選擇資料保護方式](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -347,17 +372,17 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![選擇複本的建立方式](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. 在 [一致性檢查選項]**** 中，選取如何及何時自動執行一致性檢查。 接著，選取 [下一步]  。
+1. 在 [一致性檢查選項]**** 中，選取如何及何時自動執行一致性檢查。 然後，選取 [下一步]。
       - 當複本資料變得不一致時，或依據設定的排程，您可以執行一致性檢查。
       - 如果您不想設定自動一致性檢查，可以執行手動檢查。 若要這樣做，以滑鼠右鍵按一下保護群組 > [執行一致性檢查]****。
 
-1. 在 [指定線上保護資料]**** 頁面中，選取要備份的 VM 或 VM 資料夾。 您可以個別選取成員，或選取 [全 **選** ] 來選擇所有成員。 接著，選取 [下一步]  。
+1. 在 [指定線上保護資料]**** 頁面中，選取要備份的 VM 或 VM 資料夾。 您可以個別選取成員，或選取 [全 **選** ] 來選擇所有成員。 然後，選取 [下一步]。
 
     ![指定線上保護資料](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. 在 [指定線上備份排程]**** 頁面上，指定要從本機儲存體將資料備份至 Azure 的頻率。
 
-    - 資料的雲端復原點將會根據排程來產生。 接著，選取 [下一步]  。
+    - 資料的雲端復原點將會根據排程來產生。 然後，選取 [下一步]。
     - 產生復原點之後，它會傳輸到 Azure 中的復原服務保存庫。
 
     ![指定線上備份排程](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
@@ -392,7 +417,7 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
 若要備份 vSphere 6.7，請執行下列動作：
 
-- 在 DPM Server 上啟用 TLS 1.2
+- 在 MABS 伺服器上啟用 TLS 1。2
 
 >[!NOTE]
 >VMWare 6.7 已將 TLS 啟用為通訊協定。

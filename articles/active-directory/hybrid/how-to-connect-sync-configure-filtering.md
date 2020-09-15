@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c539fd37116f8c55f336aecf1e8979355a40d61c
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 0852171544f179315535d234f5a2680d918e7d85
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662560"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084833"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步處理：設定篩選
 使用篩選功能可讓您控制內部部署目錄中的哪些物件應該出現在 Azure Active Directory 中。 預設組態會擷取所設定樹系中所有網域內的所有物件。 一般會建議使用者使用這個組態。 使用 Microsoft 365 工作負載的使用者（例如 Exchange Online 和商務用 Skype）會從完整的全域通訊清單中獲益，讓他們可以傳送電子郵件並撥打所有人。 使用預設設定時，所獲得的體驗與使用 Exchange 或 Lync 的內部部署實作相同。
@@ -217,7 +217,7 @@ Azure AD Connect 安裝精靈一律會建立此設定。
 在輸入篩選中，我們將利用「範圍」**** 的強大功能來決定哪些物件應該或不應該同步處理。 您要在這裡進行調整以符合貴組織的需求。 範圍模組包含「群組」**** 和「子句」****，可用來決定何時要將某個同步規則納入範圍中。 「群組」會包含一個或多個「子句」。 多個子句之間會有邏輯 "AND"，而多個群組之間會有邏輯 "OR"。
 
 讓我們看看以下範例：  
-![顯示新增範圍篩選器範例的螢幕擷取畫面](./media/how-to-connect-sync-configure-filtering/scope.png)  
+![顯示新增範圍篩選器範例的螢幕擷取畫面。](./media/how-to-connect-sync-configure-filtering/scope.png)  
 這應該解讀為 **(department = IT) OR (department = Sales AND c = US)**。
 
 在下列範例和步驟中，您將以使用者物件做為例子，但您可以將此例子套用到所有物件類型。
@@ -275,7 +275,7 @@ Azure AD Connect 安裝精靈一律會建立此設定。
 1. 使用隸屬於 **ADSyncAdmins** 安全性群組的帳戶，登入執行 Azure AD Connect 同步處理的伺服器。
 2. 從 [開始]**** 功能表啟動 [同步處理規則編輯器]****。
 3. 在 [規則類型]**** 下方按一下 [輸出]****。
-4. 根據您使用的 Connect 版本，請尋找名為 **Out to AAD – User Join** 或 **Out to AAD-User Join SOAInAD** 的規則，然後按一下 [編輯]****。
+4. 視您使用的 Connect 版本而定，您可以尋找名 **為 Out 的規則來 Azure AD – User join** 或 **Out To Azure AD-user join SOAInAD**，然後按一下 [ **編輯**]。
 5. 在快顯視窗中，回答 [是] **** 來建立規則的複本。
 6. 在 [描述]**** 頁面上，將 [優先順序]**** 變更為一個未使用的值，例如 50。
 7. 按一下左邊導覽列上的 [範圍設定篩選]****，然後按一下 [新增子句]****。 在 [屬性]**** 中，選取 [郵件]****。 在 [運算子]**** 中，選取 [ENDSWITH]****。 在 [**值**] 中，輸入** \@ contoso.com**，然後按一下 [**新增子句**]。 在 [屬性]**** 中，選取 [userPrincipalName]****。 在 [運算子]**** 中，選取 [ENDSWITH]****。 在 [**值**] 中，輸入** \@ contoso.com**。
@@ -300,7 +300,7 @@ Azure AD Connect 安裝精靈一律會建立此設定。
 
 1. 啟動命令提示字元，並移至 `%ProgramFiles%\Microsoft Azure AD Sync\bin`。
 2. 執行 `csexport "Name of Connector" %temp%\export.xml /f:x`。  
-   連接器名稱在同步處理服務中。 它的名稱類似 Azure AD 的 "contoso.com – AAD"。
+   連接器名稱在同步處理服務中。 它的名稱類似于 Azure AD 的 "contoso.com – Azure AD"。
 3. 執行 `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`。
 4. 現在您在 %temp% 中已經有名稱為 export.csv 的檔案，可在 Microsoft Excel 中加以檢查。 此檔案包含即將匯出的所有變更。
 5. 對資料或組態進行必要的變更並再次執行這些步驟 (匯入、同步處理、驗證)，直到要匯出的變更皆如您所預期進行。
@@ -328,6 +328,6 @@ Azure AD Connect 安裝精靈一律會建立此設定。
 * 您有位於某個樹系，並在另一個樹系中具有相對應郵件連絡人的使用者。 此外，您已將 Azure AD Connect 設定為與具有該郵件連絡人的使用者連結。 這兩個物件都必須位於以群組為基礎的篩選範圍內。 否則，系統將不會將該使用者同步處理至 Azure AD。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 深入了解 [Azure AD Connect 同步](how-to-connect-sync-whatis.md) 組態。
 - 深入了解[整合內部部署身分識別與 Azure AD](whatis-hybrid-identity.md)。

@@ -1,6 +1,6 @@
 ---
 title: 將線條圖層新增至地圖 | Microsoft Azure 地圖服務
-description: 瞭解如何將線條新增至地圖。 請參閱使用 Azure 地圖服務 Web SDK 將線條圖層新增至地圖，以及使用符號和色彩漸層自訂線條的範例。
+description: 瞭解如何將線條新增至地圖。 請參閱使用 Azure 地圖服務 Web SDK 將線條圖層新增至地圖，以及自訂具有符號和色彩漸層之線條的範例。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: c834ae6061fce6f2fc2f4cd7c4d80e036775b156
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 11783ceae1b2a2f9782df74976d8ea6d66573a1c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010203"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086023"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>將線條圖層新增至地圖
 
@@ -23,7 +23,7 @@ ms.locfileid: "88010203"
 > [!TIP]
 > 根據預設，線條圖層會轉譯資料來源中的多邊形座標及線條。 若要限制圖層，使其只呈現 LineString 功能，請將圖層的 `filter` 屬性設定為 `['==', ['geometry-type'], 'LineString']`，如果也想包含 MultiLineString 功能，則請設為 `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]`。
 
-下列程式碼示範如何建立線條。 將這行程式碼新增至資料來源，然後使用 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 類別，以線條圖層呈現。
+下列程式碼示範如何建立線條。 將這行程式碼新增至資料來源，然後使用 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer) 類別，以線條圖層呈現。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -44,10 +44,10 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='在地圖中新增線條' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/qomaKv/'>在地圖中新增線條</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
+<iframe height='500' scrolling='no' title='在地圖中新增線條' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/qomaKv/'>在地圖中新增線條</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-您可使用 [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) 以及[使用資料驅動樣式運算式](data-driven-style-expressions-web-sdk.md)來將線條圖層樣式化。
+您可使用 [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions) 以及[使用資料驅動樣式運算式](data-driven-style-expressions-web-sdk.md)來將線條圖層樣式化。
 
 ## <a name="add-symbols-along-a-line"></a>沿著線條新增符號
 
@@ -55,7 +55,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="沿著線條顯示箭號" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="沿著線條顯示箭號" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
 查看畫筆的 <a href='https://codepen.io/azuremaps/pen/drBJwX/'>Show arrow along line</a> (沿路線顯示箭號)，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
@@ -70,7 +70,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="使用筆觸漸層的線條" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="使用筆觸漸層的線條" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
 查看畫筆的 <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>Line with Stroke Gradient</a> (筆觸漸層線條)，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
@@ -80,7 +80,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 <br/>
 
-<iframe height='700' scrolling='no' title='線條圖層選項' src='//codepen.io/azuremaps/embed/GwLrgb/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看 Pen <a href='https://codepen.io/azuremaps/pen/GwLrgb/'>線條圖層選項</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
+<iframe height='700' scrolling='no' title='線條圖層選項' src='//codepen.io/azuremaps/embed/GwLrgb/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看 Pen <a href='https://codepen.io/azuremaps/pen/GwLrgb/'>線條圖層選項</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 ## <a name="next-steps"></a>後續步驟
@@ -88,10 +88,10 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 
+> [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer) 
 
 > [!div class="nextstepaction"]
-> [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
+> [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions)
 
 請參閱下列文章，以取得更多可新增至地圖的程式碼範例：
 

@@ -2,15 +2,15 @@
 ms.service: container-service
 ms.topic: include
 ms.date: 08/07/2020
-ms.openlocfilehash: cbedbf37534bbb9c0688374220efda6dc27c5c10
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 8590c225aa4f637b10847d5fd53da40b1ec2f9c3
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985832"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085651"
 ---
 > [!IMPORTANT]
-> AKS preview 功能可在自助服務上自行選擇。 預覽會以「原樣」和「可用」的方式提供，並從服務等級協定中排除，並享有有限擔保。 AKS 預覽的部分是由客戶支援，以最大的方式來涵蓋。 因此，這些功能並不適用于生產環境使用。 Azure Government 或 Azure 中國世紀雲端無法使用 AKS 預覽功能。 如需詳細資訊，請參閱下列支援文章：
+> AKS 預覽功能可在自助選擇的基礎上取得。 預覽會以「原樣」和「可用」的形式提供，並從服務等級協定和有限瑕疵擔保中排除。 客戶支援人員會以最佳方式部分涵蓋 AKS 預覽版。 因此，這些功能不適用於生產用途。 AKS 預覽功能不適用於 Azure Government 或 Azure 中國的世紀雲。 如需詳細資訊，請參閱下列支援文章：
 >
 > - [AKS 支援原則](../../support-policies.md)
-> - [Azure 支援常見問題集](../../faq.md)
+> - [Azure 支援常見問題](../../faq.md)

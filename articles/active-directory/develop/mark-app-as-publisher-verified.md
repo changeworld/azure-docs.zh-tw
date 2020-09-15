@@ -12,21 +12,21 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: b3c3bed20b5fd60b9323dada617fb1302efc41d2
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: acb4b601118b341d14bc5e7c549d22eef23b2cc2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006939"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085700"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>將應用程式標示為發行者已驗證
 
-當應用程式標示為「發行者已驗證」時，表示發行者已使用其 Microsoft 合作夥伴網路 (MPN) 帳戶通過身分驗證，並將此 MPN 帳戶與其應用程式註冊相關聯。 本文說明如何完成[發行者驗證 (預覽)](publisher-verification-overview.md) 程序。
+當應用程式標示為「發行者已驗證」時，表示發行者已使用其 Microsoft 合作夥伴網路 (MPN) 帳戶通過身分驗證，並將此 MPN 帳戶與其應用程式註冊相關聯。 本文說明如何完成 [發行者驗證](publisher-verification-overview.md) 程式。
 
 ## <a name="quickstart"></a>快速入門
 如果已在 Microsoft 合作夥伴網路 (MPN) 中註冊並符合[必要條件](publisher-verification-overview.md#requirements)，就可以立即開始使用： 
 
-1. 流覽至 [應用程式註冊入口網站](https://aka.ms/PublisherVerificationPreview)。
+1. 使用[多重要素驗證](../fundamentals/concept-fundamentals-mfa-get-started.md)登入[應用程式註冊入口網站](https://aka.ms/PublisherVerificationPreview)
 
 1. 選擇應用程式，然後按一下 [品牌]。 
 
@@ -40,9 +40,9 @@ ms.locfileid: "90006939"
 ## <a name="mark-your-app-as-publisher-verified"></a>將應用程式標示為發行者已驗證
 請確定您已符合 [必要條件](publisher-verification-overview.md#requirements)，然後遵循下列步驟，將應用程式標示為「發行者已驗證」。  
 
-1. 確保您已使用組織 (Azure AD) 帳戶登入，該帳戶已獲授權可對您要標示為「發行者已驗證」的應用程式以及合作夥伴中心的 MPN 帳戶進行變更。 
+1. 確定您已使用 [多重要素驗證](../fundamentals/concept-fundamentals-mfa-get-started.md) 登入組織 (Azure AD) 帳戶，該帳戶已獲授權可對應用 (程式進行變更) 您要標示為「發行者驗證」，並在合作夥伴中心的 MPN 帳戶上。
 
-    - 在 Azure AD 中，此使用者必須是應用程式的擁有者，或是具有下列其中一種角色：應用程式管理員、雲端應用程式管理員、全域管理員。 
+    - 在 Azure AD 此使用者必須是下列其中一個角色的成員：應用程式系統管理員、雲端應用程式系統管理員、全域管理員。 
 
     - 在合作夥伴中心內，此使用者必須擁有下列其中一種角色：MPN 管理員、帳戶管理員或全域管理員 (這是在 Azure AD 中主控的共用角色)。 
 
@@ -50,11 +50,9 @@ ms.locfileid: "90006939"
 
 1. 按一下您想要標示為「發行者已驗證」的應用程式，然後開啟 [品牌] 刀鋒視窗。 
 
-1. 確保已正確設定應用程式的發行者網域。 此網域必須： 
+1. 確定已設定應用程式的 [發行者網域](howto-configure-publisher-domain.md) 。 
 
-    - 新增至 Azure AD 租用戶成為經過 DNS 驗證的自訂網域，  
-
-    - 符合在您的 MPN 帳戶驗證期間所使用的電子郵件地址網域。 
+1. 確定租使用者中的發行者網域或 DNS 驗證的 [自訂網域](../fundamentals/add-custom-domain.md) ，與 MPN 帳戶驗證程式期間使用的電子郵件地址網域相符。
 
 1. 按一下接近頁面底部的 [新增 MPN 識別碼以驗證發行者]。 
 
@@ -72,7 +70,7 @@ ms.locfileid: "90006939"
 
 1. 經系統提示同意您應用程式的使用者，會在您順利完成整個程序後開始看到徽章，雖然這可能需要一些時間才能在整個系統中複寫。 
 
-1. 請登入您的應用程式並確定已驗證徽章顯示在同意畫面上，以測試此功能。 如果以已經對應用程式表示同意的使用者身分登入，即可使用 *prompt=consent* 查詢參數來強制執行同意提示。 
+1. 請登入您的應用程式並確定已驗證徽章顯示在同意畫面上，以測試此功能。 如果以已經對應用程式表示同意的使用者身分登入，即可使用 *prompt=consent* 查詢參數來強制執行同意提示。 此參數只適用于測試，且永遠不會對應用程式的要求進行硬式編碼。
 
 1. 視需要針對您想要顯示徽章的任何其他應用程式，重複執行此程序。 您可以使用 Microsoft Graph 更快速地大量執行此動作，而且很快就會提供 PowerShell Cmdlet。 如需詳細資訊，請參閱[進行 Microsoft API Graph 呼叫](troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls)。 
 

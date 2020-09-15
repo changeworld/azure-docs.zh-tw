@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b799c462cc683d8d05edc3f10885c458185a843
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531254"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069793"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>使用 Key Vault 的 Azure 監視器 (預覽) 來監視您的金鑰保存庫服務
 Key Vault 的 Azure 監視器 (預覽) 可針對您的 Key Vault 要求、效能、失敗和延遲提供統合檢視，讓您能夠全面監視金鑰保存庫。
@@ -76,16 +76,6 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 活頁簿會顯示 [成功] (2xx 狀態碼)、[驗證錯誤] (401/403 狀態碼)、[節流] (429 狀態碼) 和 [其他失敗] (4xx 狀態碼)。
 
 若要進一步了解每個狀態碼代表的涵義，建議您閱讀 [Azure Key Vault 的狀態碼和回應碼](../../key-vault/general/authentication-requests-and-responses.md)的相關文件。
-
-## <a name="operations--latency-workbook"></a>作業 & 延遲活頁簿
-
-選取頁面頂端的 [作業 & 延遲]，[作業 & 延遲] 索引標籤即會開啟。 此索引標籤可讓您將金鑰保存庫上線以進行監視。 如需詳細步驟，請參閱[為金鑰保存庫進行監視設定](#configuring-your-key-vaults-for-monitoring)一節。
-
-您可以查看有多少個金鑰保存庫已啟用記錄功能。 如果至少已有一個正確設定的保存庫，您將會看到相關資料表，其中顯示您每個金鑰保存庫的作業和狀態碼。 您可以按一下資料列的 [詳細資料] 區段，以取得個別作業的相關資訊。
-
-![作業和延遲圖表的螢幕擷取畫面](./media/key-vaults-insights-overview/logs.png)
-
-如果您在此區段中看不到任何資料，請參考上方區段以了解如何為 Azure Key Vault 啟用記錄，或查看下方的疑難排解區段。
 
 ## <a name="view-from-a-key-vault-resource"></a>從 Key Vault 資源檢視
 
@@ -191,16 +181,6 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 ### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>當活頁簿的任何部分釘選時的時間範圍
 
 時間範圍將取決於儀表板設定。
-
-### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>為什麼我在 [作業 & 延遲] 區段下找不到 Key Vault 的任何資料
-
-若要檢視以記錄為基礎的資料，您必須為要監視的每個金鑰保存庫啟用記錄。 此作業可在每個金鑰保存庫的診斷設定下完成。 您必須將資料傳送至指定的 Log Analytics 工作區。
-
-### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>我已啟用 Key Vault 的記錄，為什麼仍無法在作業中看到我的資料 & 延遲
-
-目前，診斷記錄無法回溯，因此只有對金鑰保存庫執行動作後，才會顯示資料。 這可能需要一些時間，從小時到一天不等，視金鑰保存庫的使用程度而定。
-
-此外，如果您選取了大量的金鑰保存庫和訂用帳戶，則可能因查詢限制而無法檢視您的資料。 若要檢視您的資料，您可能必須減少所選訂用帳戶或金鑰保存庫的數目。 
 
 ### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>如果我想要查看其他資料或建立自己的視覺效果，該怎麼做？ 如何對 Key Vault 的見解進行變更
 

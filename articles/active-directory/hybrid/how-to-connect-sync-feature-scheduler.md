@@ -16,15 +16,15 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b65f8cd22e72e0ba90918121a02d66fe6bf3e7
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053043"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084731"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步處理：排程器
-本主題描述 Azure AD Connect 同步處理 (同步處理引擎) 中的內建排程器。
+本主題說明 Azure AD Connect 同步 (同步處理引擎) 中的內建排程器。
 
 此功能是隨組建 1.1.105.0 (於 2016 年 2 月發行) 一起導入。
 
@@ -41,12 +41,12 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 排程器本身永遠處於執行狀態，但是您可以將它設定為只執行這些工作其中之一或完全不執行這些工作。 例如，如果您需要使用自己的同步處理循環程序，您可以將此工作在排程器中停用，但仍執行維護工作。
 
 >[!IMPORTANT]
->根據預設，每隔30分鐘會執行一次同步處理迴圈。 如果您已修改同步處理 cycley，您必須確定每7天至少會執行一次同步處理迴圈。 
+>預設會每隔30分鐘執行一次同步處理迴圈。 如果您已修改同步處理 cycley，您將需要確定每7天至少執行一次同步處理迴圈。 
 >
->* 差異同步處理必須在最後一個差異同步處理的7天內發生。
->* 在完成完整同步處理後的差異同步處理 () 必須在上一次完整同步處理的7天內發生。
+>* 差異同步處理必須在上一次差異同步處理的7天內發生。
+>* 差異同步處理 (在完成完整同步處理之後) 必須從上次完成完整同步處理的7天內發生。
 >
->若未這麼做，可能會導致同步處理問題，而需要您執行完整的同步處理來解決。 這也適用于處於預備模式的伺服器。
+>若未這麼做，可能會導致同步處理問題，而您必須執行完整的同步處理才能解決問題。 這也適用于處於預備模式的伺服器。
 
 ## <a name="scheduler-configuration"></a>排程器組態
 若要查看目前的組態設定，請移至 PowerShell 並執行 `Get-ADSyncScheduler`。 它會向您顯示類似以下圖片︰
@@ -58,7 +58,7 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 * **AllowedSyncCycleInterval**。 Azure AD 所允許的同步處理週期最短時間間隔。 同步處理頻率一旦超過此設定，即不受支援。
 * **CurrentlyEffectiveSyncCycleInterval**。 目前作用中的排程。 如果頻率未高於 AllowedSyncInterval，其值就會與 CustomizedSyncInterval (如果已設定) 相同。 如果您使用 1.1.281 之前的組件且變更 CustomizedSyncCycleInterval，將會在下一個同步處理循環後才生效。 從組建 1.1.281 起，變更立即生效。
 * **CustomizedSyncCycleInterval**。 如果您想要讓排程器以預設值 30 分鐘以外的任何其他頻率執行，那麼您要設定此設定。 在上圖中，已將排程器改為設定成每小時執行一次。 如果您將此設定設定成低於 AllowedSyncInterval 的值，則會使用後者。
-* **NextSyncCyclePolicyType**。 Delta (差異) 或 Initial (初始)。 定義下一次執行應該只處理差異變更，或如果下一次執行應該執行完整匯入和同步。後者也會重新處理任何新的或已變更的規則。
+* **NextSyncCyclePolicyType**。 Delta (差異) 或 Initial (初始)。 定義下一次執行應該只處理差異變更，或者如果下一次執行應該執行完整匯入和同步處理。後者也會重新處理任何新的或已變更的規則。
 * **NextSyncCycleStartTimeInUTC**。 排程器下一次啟動下一個同步處理循環的時間。
 * **PurgeRunHistoryInterval**。 應該保留作業記錄的時間。 您可以在同步處理服務管理員中檢閱這些記錄。 這些記錄預設會保留 7 天。
 * **SyncCycleEnabled**。 指出排程器是否要在其作業中一併執行匯入、同步處理及匯出程序。
@@ -121,20 +121,20 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 
 若要起始完整同步處理循環，請從 PowerShell 提示字元執行 `Start-ADSyncSyncCycle -PolicyType Initial` 。   
 
-執行完整同步處理週期可能非常耗時，請閱讀下一節以瞭解如何將此程式優化。
+執行完整同步處理迴圈可能相當耗時，請閱讀下一節以瞭解如何將此程式優化。
 
-### <a name="sync-steps-required-for-different-configuration-changes"></a>不同設定變更所需的同步步驟
-不同的設定變更需要不同的同步處理步驟，以確保變更已正確套用至所有物件。
+### <a name="sync-steps-required-for-different-configuration-changes"></a>不同設定變更所需的同步處理步驟
+不同的設定變更需要不同的同步處理步驟，以確保會正確地將變更套用至所有物件。
 
-- 新增/修改同步處理規則，將更多物件或屬性從來原始目錄匯入 () 
-    - 在該來原始目錄的連接器上需要完整匯入
+- 新增/修改同步處理規則，以新增更多物件或屬性以從來原始目錄匯入 () 
+    - 該來原始目錄的連接器上需要完整匯入
 - 對同步處理規則進行變更
-    - 連接器上的已變更同步處理規則需要完整同步處理
+    - 變更同步處理規則的連接器上需要完整同步處理
 - 變更 [篩選](how-to-connect-sync-configure-filtering.md) 以納入不同數目的物件
-    - 在每個 AD 連接器的連接器上都需要完整匯入，除非您使用以屬性為基礎的篩選，這是以已匯入同步處理引擎的屬性為基礎
+    - 每個 AD 連接器的連接器都需要完整匯入，除非您是根據已匯入同步處理引擎的屬性使用以屬性為基礎的篩選。
 
-### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>自訂同步處理週期執行正確的差異和完整同步處理步驟組合
-若要避免執行完整的同步處理迴圈，您可以使用下列 Cmdlet 來標示特定連接器，以執行完整步驟。
+### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>自訂同步處理週期執行正確混合的差異和完整同步處理步驟
+若要避免執行完整同步處理迴圈，您可以使用下列 Cmdlet，將特定的連接器標示為執行完整步驟。
 
 `Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullImportRequired $true`
 
@@ -142,13 +142,13 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 
 `Get-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid>` 
 
-範例：如果您變更了連接器「AD 樹系 A」的同步處理規則，而不需要匯入任何新的屬性，您可以執行下列 Cmdlet 來執行差異同步處理迴圈，這也會對該連接器進行完整的同步處理步驟。
+範例：如果您對連接器「AD 樹系 A」的同步處理規則進行變更，而不需要匯入任何新的屬性，您可以執行下列 Cmdlet 來執行差異同步處理週期，此週期也會執行該連接器的完整同步處理步驟。
 
 `Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
 
 `Start-ADSyncSyncCycle -PolicyType Delta`
 
-範例：如果您對連接器「AD 樹系 A」的同步處理規則進行變更，使其現在需要匯入新的屬性，您會執行下列 Cmdlet 來執行差異同步處理週期，這也會針對該連接器進行完整匯入和完整同步處理步驟。
+範例：如果您對連接器「AD 樹系 A」的同步處理規則進行變更，讓他們現在需要匯入新的屬性，您可以執行下列 Cmdlet 來執行差異同步處理週期，此週期也會執行該連接器的完整匯入、完整同步處理步驟。
 
 `Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullImportRequired $true`
 
@@ -160,13 +160,16 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 ## <a name="stop-the-scheduler"></a>停止排程器
 如果排程器目前正在執行同步處理循環，您可能必須將它停止。 例如，如果您啟動安裝精靈並收到以下錯誤：
 
-![SyncCycleRunningError](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
+![螢幕擷取畫面顯示無法變更設定錯誤訊息。](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
 
 當同步處理循環正在執行時，您會無法進行組態變更。 您可以等到排程器完成程序，也可以停止它，以便立即進行變更。 停止目前的循環並無任何損害，而且擱置的變更會在下一次執行時處理。
 
 1. 首先，使用 PowerShell Cmdlet `Stop-ADSyncSyncCycle`來通知排程器停止其目前的循環。
-2. 如果您使用 1.1.281 之前的組件，停止排程器並不會阻止目前的連接器進行其目前的工作。 若要強制停止連接器，請採取下列動作：![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
-   * 從 [開始] 功能表啟動 **[同步處理服務**]。 移至 [**連接器**]，反白顯示狀態為 [**正在**執行] 的連接器，然後從 [動作] 選取 [**停止**]。
+2. 如果您使用 1.1.281 之前的組件，停止排程器並不會阻止目前的連接器進行其目前的工作。 若要強制停止連接器，請採取下列動作：
+
+   ![螢幕擷取畫面顯示已選取連接器的 Synchronization Service Manager，以及反白顯示已選取 [停止] 動作的執行中連接器。](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+
+   * 從 [開始] 功能表啟動 **[同步處理服務** ]。 移至 [ **連接器**]，反白顯示狀態為 [ **正在**執行] 的連接器，然後從 [動作] 選取 [ **停止** ]。
 
 排程器仍在作用中，並且會在下次有機會時重新啟動。
 

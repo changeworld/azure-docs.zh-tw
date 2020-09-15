@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 0edb50fd72622d3d7d628e0e02ef2c3737f8713a
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 0c4178513c5a6027b3261d6d7975d4ec7cc55c6a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500414"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085785"
 ---
 # <a name="monitoring-azure-storage"></a>監視 Azure 儲存體
 
@@ -76,7 +76,11 @@ Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體�
 
 ## <a name="configuration"></a>組態
 
-系統會自動收集平台計量和活動記錄，但您必須建立診斷設定來收集資源記錄，或將其轉送到 Azure 監視器外部。 如需使用 Azure 入口網站、Azure CLI 或 PowerShell 建立診斷設定的程序，請參閱[建立診斷設定以在 Azure中收集平台記錄和計量](../../azure-monitor/platform/diagnostic-settings.md)。
+系統會自動收集平台計量和活動記錄，但您必須建立診斷設定來收集資源記錄，或將其轉送到 Azure 監視器外部。 
+
+若要使用 Azure 入口網站、Azure CLI 或 PowerShell 來建立診斷設定，請參閱 [建立診斷設定以收集 Azure 中的平臺記錄和計量](../../azure-monitor/platform/diagnostic-settings.md)。 
+
+若要查看建立診斷設定的 Azure Resource Manager 範本，請參閱 [Azure 儲存體的診斷設定](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage)。
 
 當您建立診斷設定時，請選擇您要啟用記錄的儲存體類型，例如 Blob、佇列、資料表或檔案。 Data Lake Storage Gen2 不會顯示為儲存體類型。 這是因為 Data Lake Storage Gen2 是適用于 Blob 儲存體的一組功能。 
 
@@ -124,7 +128,7 @@ Azure 儲存體的所有計量都位於下列命名空間：
 
 #### <a name="list-the-metric-definition"></a>列出計量定義
 
-您可以列出儲存體帳戶或個別儲存體服務 (例如 Blob、檔案、資料表或佇列服務) 的計量定義。 使用 [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition?view=azps-3.3.0) Cmdlet。
+您可以列出儲存體帳戶或個別儲存體服務 (例如 Blob、檔案、資料表或佇列服務) 的計量定義。 使用 [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition) Cmdlet。
 
 在此範例中，將 `<resource-ID>` 預留位置取代為整個儲存體帳戶的資源識別碼或個別儲存體服務 (例如 Blob、檔案、資料表或佇列服務) 的資源識別碼。 您可在 Azure 入口網站中儲存體帳戶的 [屬性] 頁面上找到這些資源識別碼。
 
@@ -135,7 +139,7 @@ Azure 儲存體的所有計量都位於下列命名空間：
 
 #### <a name="reading-metric-values"></a>讀取度量值
 
-您可讀取儲存體帳戶或個別儲存體服務 (例如 Blob、檔案、資料表或佇列服務) 的帳戶層級計量值。 使用 [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric?view=azps-3.3.0) Cmdlet。
+您可讀取儲存體帳戶或個別儲存體服務 (例如 Blob、檔案、資料表或佇列服務) 的帳戶層級計量值。 使用 [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric) Cmdlet。
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -146,7 +150,7 @@ Azure 儲存體的所有計量都位於下列命名空間：
 
 #### <a name="list-the-account-level-metric-definition"></a>列出帳戶層級的計量定義
 
-您可以列出儲存體帳戶或個別儲存體服務 (例如 Blob、檔案、資料表或佇列服務) 的計量定義。 使用 [az monitor metrics list-definitions](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list-definitions) 命令。
+您可以列出儲存體帳戶或個別儲存體服務 (例如 Blob、檔案、資料表或佇列服務) 的計量定義。 使用 [az monitor metrics list-definitions](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) 命令。
  
 在此範例中，將 `<resource-ID>` 預留位置取代為整個儲存體帳戶的資源識別碼或個別儲存體服務 (例如 Blob、檔案、資料表或佇列服務) 的資源識別碼。 您可在 Azure 入口網站中儲存體帳戶的 [屬性] 頁面上找到這些資源識別碼。
 
@@ -156,7 +160,7 @@ Azure 儲存體的所有計量都位於下列命名空間：
 
 #### <a name="read-account-level-metric-values"></a>讀取帳戶層級的計量值
 
-您可讀取儲存體帳戶或個別儲存體服務 (例如 Blob、檔案、資料表或佇列服務) 的計量值。 使用 [az monitor metrics list](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) 命令。
+您可讀取儲存體帳戶或個別儲存體服務 (例如 Blob、檔案、資料表或佇列服務) 的計量值。 使用 [az monitor metrics list](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list) 命令。
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H

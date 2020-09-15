@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/07/2020
-ms.openlocfilehash: 013d8b77a16a4c7cd0efdadce25fd141793070be
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: d509862fe4dafff174ee03c3b5cc887fa9d9ff22
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459516"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085989"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的監視解決方案
 
@@ -26,7 +26,7 @@ Azure 監視器中的 [解決方案 **總覽** ] 頁面會顯示 Log Analytics �
 
 使用畫面頂端的下拉式清單方塊，來變更針對圖格所使用的工作區或時間範圍。 按一下解決方案的圖格以開啟其檢視，其中包含所收集資料的更詳細分析。
 
-[![概觀](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
+[![螢幕擷取畫面顯示已選取解決方案的 [Azure 入口網站] 功能表和 [解決方案] 窗格中顯示的解決方案。](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
 監視解決方案可以包含多種的 Azure 資源，而您可以檢視解決方案隨附的任何資源，就像任何其他資源一樣。 例如，解決方案中包含的任何記錄查詢都會列在 [查詢總管](../log-query/get-started-portal.md#load-queries) 中的 [解決方案查詢] 下方。您在使用[記錄查詢](../log-query/log-query-overview.md) 執行臨機操作分析時，使用那些查詢。
 

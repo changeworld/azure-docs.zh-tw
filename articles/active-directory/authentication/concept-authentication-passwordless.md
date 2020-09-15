@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1148555706ff04c58733b66f4784da71849ce8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 144198a708b8e3cfcb5b3c6936d7fc51cadf4a13
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226670"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084323"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的無密碼 authentication 選項
 
@@ -45,7 +45,7 @@ Windows Hello 企業版適用于擁有專屬 Windows 電腦的資訊工作者。
 ![概述使用者使用 Windows Hello 企業版登入所需之步驟的圖表](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
 1. 使用者使用生物特徵辨識或 PIN 手勢登入 Windows。 手勢會解除鎖定 Windows Hello 企業版的私密金鑰，並傳送給雲端驗證安全性支援提供者，稱為「 *雲端 AP 提供者*」。
-1. 雲端 AP 提供者會向 Azure AD 要求 nonce。
+1. 雲端 AP 提供者要求 nonce (隨機任一數字，只要從 Azure AD) ，就可以使用該任一數字。
 1. Azure AD 會傳回有效期限為5分鐘的 nonce。
 1. 雲端 AP 提供者會使用使用者的私密金鑰來簽署 nonce，並將簽署的 nonce 傳回 Azure AD。
 1. Azure AD 會對 nonce 簽章使用使用者安全註冊的公開金鑰來驗證已簽署的 nonce。 驗證簽章之後，Azure AD 接著會驗證傳回的已簽署 nonce。 驗證 nonce 之後，Azure AD 會 (PRT) 建立主要重新整理權杖，並將工作階段金鑰加密為裝置的傳輸金鑰，並將其傳回給雲端 AP 提供者。
@@ -162,7 +162,7 @@ Azure AD 無密碼登入功能目前為預覽狀態。 您必須考量下列事�
 ||**Windows Hello 企業版**|**使用 Microsoft Authenticator 應用程式無密碼登入**|**FIDO2 安全性金鑰**|
 |:-|:-|:-|:-|
 |**先決條件**| Windows 10，版本 1809 或更新版本<br>Azure Active Directory| Microsoft Authenticator 應用程式<br>手機 (執行 Android 6.0 或更新版本的 iOS 和 Android 裝置。 ) |Windows 10，版本 1809 或更新版本<br>Azure Active Directory|
-|**模式**|平台|軟體|硬體|
+|**Mode**|平台|軟體|硬體|
 |**系統和裝置**|具有內建信賴平臺模組 (TPM) 的電腦<br>PIN 和生物識別辨識 |手機上的 PIN 和生物識別辨識|FIDO2 Microsoft 相容的安全性裝置|
 |**使用者體驗**|使用 PIN 或生物識別辨識進行登入， (臉部、鳶尾花或指紋) 與 Windows 裝置。<br>Windows Hello authentication 會系結至裝置;使用者需要裝置和登入元件（例如 PIN 或生物特徵辨識因素）來存取公司資源。|使用具有指紋掃描、臉部或鳶尾花辨識或 PIN 的行動電話進行登入。<br>使用者可以從他們的電腦或行動電話登入工作或個人帳戶。|使用 FIDO2 安全性裝置登入 (生物識別、PIN 和 NFC) <br>使用者可以使用裝置來存取裝置，並根據 PIN、使用 USB 安全性金鑰和啟用 NFC 的智慧卡、金鑰或穿戴式裝置等裝置來進行生物特徵辨識。|
 |**啟用的案例**| Windows 裝置的無密碼體驗。<br>適用于具有單一登入裝置和應用程式能力的專用工作電腦。|使用行動電話的無密碼隨處解決方案。<br>適用于從任何裝置存取網站上的工作或個人應用程式。|使用生物識別、PIN 和 NFC 之工作者的無密碼體驗。<br>適用于共用電腦，而且行動電話不是可行的選項 (例如支援服務中心人員、公共 kiosk 或醫院團隊) |

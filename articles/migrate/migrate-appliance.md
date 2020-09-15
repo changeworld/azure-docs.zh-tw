@@ -1,14 +1,14 @@
 ---
 title: Azure Migrate 設備
-description: 提供伺服器評估和移轉中所使用 Azure Migrate 設備的概觀。
+description: 提供 Azure Migrate 設備支援的摘要。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 2092b03ee95349286b9e845689b5d9d55b61c772
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: e2bd3f2fa40bbf31713393f18a04624d70cbd244
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060725"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084765"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
@@ -71,7 +71,7 @@ ms.locfileid: "90060725"
 **PowerShell 指令碼** | 請參閱這 [篇文章](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。<br/><br/> 
 **軟體/硬體***   |  設備應該在具有 Windows Server 2016、16 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的電腦上執行。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您以 Hyper-V VM 的身分執行設備，則在 Hyper-V 主機上需要足夠的資源來配置 16 GB RAM、8 個 vCPU，大約 80 GB 的儲存空間，以及適用於設備 VM 的外部交換器。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。 
 **Hyper-V 需求** | 部署如果您使用 VHD 範本來部署設備，Azure Migrate 提供的設備 VM 就是 Hyper-V VM 5.0 版。<br/><br/> Hyper-V 主機必須執行 Windows Server 2012 R2 或更新版本。 
-**雜湊值 VHD** | [驗證](tutorial-assess-hyper-v.md#verify-security) VHD 範本雜湊值。
+**雜湊值 VHD** | VHD 範本雜湊值。
 **雜湊值 PowerShell 指令碼** | [驗證](deploy-appliance-script.md#verify-file-security) PowerShell 指令碼雜湊值。
 
 
@@ -84,7 +84,7 @@ ms.locfileid: "90060725"
 **支援的部署** | 使用 PowerShell 安裝指令碼，部署為專用的實體機器或 VM。 您可以從入口網站下載此指令碼。
 **專案支援** |  設備可以與單一專案相關聯。 <br/> 任意數目的設備可以與單一專案相關聯。<br/> 
 **探索限制** | 設備最多可探索1000部實體伺服器。
-**PowerShell 指令碼** | 從入口網站或從 [這裡](https://go.microsoft.com/fwlink/?linkid=2140334)下載腳本 ( # A0) 壓縮資料夾中。 [深入了解](tutorial-assess-physical.md#set-up-the-azure-migrate-appliance)。<br/><br/> 下載大小為 85 MB。
+**PowerShell 指令碼** | 從入口網站或從 [這裡](https://go.microsoft.com/fwlink/?linkid=2140334)下載腳本 ( # A0) 壓縮資料夾中。 [深入了解](tutorial-discover-physical.md)。<br/><br/> 下載大小為 85 MB。
 **軟體/硬體** |  設備應該在具有 Windows Server 2016、16 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的電腦上執行。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。<br/> 不支援在使用 Windows Server 2019 的電腦上執行設備。
 **雜湊值** | [驗證](deploy-appliance-script.md#verify-file-security) PowerShell 指令碼雜湊值。
 
