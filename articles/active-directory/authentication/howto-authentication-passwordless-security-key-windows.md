@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d70fe8a1fbaee285843bfd76ad2a8076df96b49b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 66283e4965aea9e24da6041133e2d88e95df6755
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717960"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526981"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>使用 Azure Active Directory (preview 啟用無密碼安全性金鑰登入 Windows 10 裝置) 
 
@@ -32,8 +32,8 @@ ms.locfileid: "88717960"
 | [Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
 | [合併的安全性資訊註冊預覽](concept-registration-mfa-sspr-combined.md) | X | X |
 | 相容的 [FIDO2 安全性金鑰](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
-| WebAuthN 需要 Windows 10 1809 版或更高版本 | X | X |
-| [Azure AD 已加入的裝置](../devices/concept-azure-ad-join.md) 需要 Windows 10 1903 版或更高版本 | X |   |
+| WebAuthN 需要 Windows 10 1903 版或更高版本 | X | X |
+| [Azure AD 已加入的裝置](../devices/concept-azure-ad-join.md) 需要 Windows 10 1909 版或更高版本 | X |   |
 | [混合式 Azure AD 已加入的裝置](../devices/concept-azure-ad-join-hybrid.md) 需要 Windows 10 2004 版或更高版本 |   | X |
 | 已完全修補的 Windows Server 2016/2019 網域控制站。 |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) 1.4.32.0 版版或更新版本 |   | X |
@@ -41,7 +41,7 @@ ms.locfileid: "88717960"
 | 布建封裝 (選擇性)  | X | X |
 | 群組原則 (選擇性)  |   | X |
 
-### <a name="unsupported-scenarios"></a>不支援的情節
+### <a name="unsupported-scenarios"></a>不支援的案例
 
 下列案例不受支援：
 
@@ -56,7 +56,7 @@ ms.locfileid: "88717960"
 
 ## <a name="prepare-devices-for-preview"></a>準備要預覽的裝置
 
-您要在功能預覽期間試驗的 Azure AD 加入的裝置，必須執行 Windows 10 1809 版或更高版本。 最佳體驗是在 Windows 10 1903 版或更高版本上。
+您要在功能預覽期間試驗的 Azure AD 加入的裝置，必須執行 Windows 10 1909 版或更高版本。
 
 混合式 Azure AD 加入的裝置必須執行 Windows 10 2004 版或更新版本。
 
@@ -125,7 +125,7 @@ ms.locfileid: "88717960"
 1. 若要套用您建立的布建套件，請參閱套用布建 [套件](/windows/configuration/provisioning-packages/provisioning-apply-package)。
 
 > [!NOTE]
-> 執行 Windows 10 1809 版的裝置也必須啟用 (*EnableSharedPCMode*) 的共用電腦模式。 如需啟用此功能的詳細資訊，請參閱 [使用 Windows 10 設定共用或來賓電腦](/windows/configuration/set-up-shared-or-guest-pc)。
+> 執行 Windows 10 1903 版的裝置也必須啟用 (*EnableSharedPCMode*) 的共用電腦模式。 如需啟用此功能的詳細資訊，請參閱 [使用 Windows 10 設定共用或來賓電腦](/windows/configuration/set-up-shared-or-guest-pc)。
 
 ### <a name="enable-with-group-policy"></a>使用群組原則啟用
 

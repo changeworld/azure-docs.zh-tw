@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 09/01/2020
 ms.author: tomfitz
-ms.openlocfilehash: f0ab7c2efc499c43245680e56a7e5ca1b5261397
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 949118214851c3eceffd8c1d638a4093bdf7f366
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88748766"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89304070"
 ---
 | 資源 | 限制 |
 | --- | --- |
@@ -22,7 +22,7 @@ ms.locfileid: "88748766"
 | 標記金鑰長度 |512 |
 | 標記值長度 |256 |
 
-<sup>1</sup>從 2020 年 6 月開始，當記錄接近上限時，部署會自動從歷程記錄中刪除。 從部署歷程記錄中刪除項目時，不會影響部署的資源。 如需詳細資訊，請參閱 [從部署歷程記錄自動刪除](../articles/azure-resource-manager/templates/deployment-history-deletions.md)。
+<sup>1</sup>當記錄接近上限時，部署會自動從歷程記錄中刪除。 從部署歷程記錄中刪除項目時，不會影響部署的資源。 如需詳細資訊，請參閱 [從部署歷程記錄自動刪除](../articles/azure-resource-manager/templates/deployment-history-deletions.md)。
 
 #### <a name="template-limits"></a>範本限制
 

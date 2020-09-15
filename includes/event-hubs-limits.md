@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 333f2317fcc834a10b7336bbda9a43ba16a7ad38
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.openlocfilehash: 8700bbfe697a6b5fb81380831950d704fcb1f5ff
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84317398"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90012787"
 ---
 下表提供 [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)的特定配額與限制。 如需事件中樞價格的相關資訊，請參閱[事件中樞價格](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
@@ -39,8 +39,8 @@ ms.locfileid: "84317398"
 | 每一個事件中樞取用者群組數目 |單位 | &nbsp; |1 |20 |
 | 每個命名空間的 AMQP 連線數目 |命名空間 |後續對更多連線的要求將會遭到拒絕，而且呼叫端程式碼將會收到例外狀況。 |100 |5,000|
 | 事件資料的最大保留期間 |單位 | &nbsp; |1 日 |1-7 天 |
-|已啟用 Apache Kafka 的命名空間|命名空間 |使用 Kafka 通訊協定的事件中樞命名空間串流應用程式 |否 | 是 |
-|擷取 |單位 | 啟用時，相同串流上的微批次 |否 |是 |
+|已啟用 Apache Kafka 的命名空間|命名空間 |使用 Kafka 通訊協定的事件中樞命名空間串流應用程式。 如需詳細資訊，請參閱[從 Apache Kafka 應用程式使用 Azure 事件中樞](../articles/event-hubs/event-hubs-for-kafka-ecosystem-overview.md)。 |否 | 是 |
+|擷取 |單位 | 啟用時，相同串流上的微批次。 如需詳細資訊，請參閱[透過 Azure 事件中樞在 Azure Blob 儲存體或 Azure Data Lake Storage 中擷取事件](../articles/event-hubs/event-hubs-capture-overview.md)。 |否 |是 |
 
 
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>事件中樞專用 - 配額和限制

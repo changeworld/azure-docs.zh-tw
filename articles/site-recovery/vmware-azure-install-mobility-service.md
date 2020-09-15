@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0613af3d286a9c670d09b2e72c2807c018753455
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669227"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524992"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>準備來源電腦以進行行動代理程式的推送安裝
 
@@ -63,13 +63,13 @@ ms.locfileid: "89669227"
 11. 在 [管理帳戶]**** 索引標籤上，選取 [新增帳戶]****。
 12. 加入您所建立的帳戶。
 13. 輸入您為電腦啟用複寫時使用的認證。
-1. 更新或保護 SUSE Linux Enterprise Server 11 SP3 電腦的其他步驟。 [確定最新版本可在設定伺服器中使用](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server)。
+1. 更新或保護 SUSE Linux Enterprise Server 11 SP3 或 RHEL 5 或 CentOS 5 或 Debian 7 電腦的其他步驟。 [確定最新版本可在設定伺服器中使用](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)。
 
 ## <a name="anti-virus-on-replicated-machines"></a>在複寫的機器上防毒
 
 如果您要複寫的機器正在執行作用中的防毒軟體，請務必從防毒作業中排除行動性服務安裝資料夾 (C:\ProgramData\ASR\agent**)。 這可確保複寫運作正常。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 安裝「行動服務」之後，在 Azure 入口網站中，選取 [+ 複寫]**** 以開始保護這些 VM。 深入瞭解如何啟用 [VMware vm](vmware-azure-enable-replication.md) 和 [實體伺服器](physical-azure-disaster-recovery.md#enable-replication)的複寫。
 

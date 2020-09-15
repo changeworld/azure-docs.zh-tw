@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect 雲端布建支援的拓撲和案例
-description: 本主題說明雲端布建的先決條件和硬體需求。
+description: 深入瞭解各種內部部署和 Azure Active Directory (Azure AD) 使用 Azure AD Connect 雲端布建的拓撲。
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,48 +11,48 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d442c980ad5bbe3b56eae127b6e9eaeddf380a4e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77620879"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526845"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect 雲端布建支援的拓撲和案例
-本文說明使用 Azure AD Connect 雲端布建的各種內部部署和 Azure Active Directory （Azure AD）拓撲。 本文僅包含支援的設定和案例。
+本文說明各種內部部署和 Azure Active Directory (Azure AD 使用 Azure AD Connect 雲端布建的) 拓撲。 本文僅包含支援的設定和案例。
 
 > [!IMPORTANT]
-> Microsoft 不支援在正式記載的設定或動作以外，修改或操作 Azure AD Connect 的雲端布建。 這些設定或動作中的任何一項可能會導致不一致或不支援的 Azure AD Connect 雲端布建狀態。 如此一來，Microsoft 無法提供這類部署的技術支援人員。
+> Microsoft 不支援在正式記載的設定或動作之外修改或操作 Azure AD Connect 雲端布建。 任何這些設定或動作可能會導致 Azure AD Connect 雲端布建的狀態不一致或不受支援。 如此一來，Microsoft 無法提供這類部署的技術支援人員。
 
 ## <a name="things-to-remember-about-all-scenarios-and-topologies"></a>所有案例和拓撲的注意事項
-選取解決方案時，以下是要牢記在心的資訊清單。
+以下是選取解決方案時要牢記在心的資訊清單。
 
-- 使用者和群組必須在所有樹系中唯一識別
-- 雲端布建不會發生跨樹系的比對
-- 使用者或群組必須在所有樹系中只呈現一次
+- 必須在所有樹系中唯一識別使用者和群組
+- 雲端布建不會跨樹系進行比對
+- 使用者或群組必須只在所有樹系中表示一次
 - 系統會自動選擇物件的來源錨點。  它會使用 ConsistencyGuid （如果有的話），否則會使用 ObjectGUID。
 - 您無法變更用於來源錨點的屬性。
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>單一樹系、單一 Azure AD 租用戶
 ![單一樹系和單一租用戶的拓撲](media/plan-cloud-provisioning-topologies/single-forest.png)
 
-最簡單的拓撲是單一內部部署樹系，其中包含一或多個網域，以及一個 Azure AD 租使用者。  如需此案例的範例，請參閱[教學課程：具有單一 Azure AD 租使用者的單一樹](tutorial-single-forest.md)系
+最簡單的拓撲是單一內部部署樹系、一或多個網域，以及單一 Azure AD 租使用者。  如需此案例的範例，請參閱[教學課程：具有單一 Azure AD 租使用者的單一樹](tutorial-single-forest.md)系
 
 
 ## <a name="multi-forest-single-azure-ad-tenant"></a>多樹系、單一 Azure AD 租使用者
 ![多樹系和單一租使用者的拓撲](media/plan-cloud-provisioning-topologies/multi-forest.png)
 
-常見的拓撲是多個 AD 樹系，其中包含一或多個網域，以及一個 Azure AD 租使用者。  
+常見拓撲是多個 AD 樹系、一或多個網域，以及單一 Azure AD 租使用者。  
 
-## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>具有 Azure AD Connect 的現有樹系具有雲端布建的新樹系
+## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>具有 Azure AD Connect 的現有樹系、具有雲端布建的新樹系
 ![單一樹系和單一租用戶的拓撲](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
 
-此案例的拓撲類似于多樹系案例，不過，這項功能牽涉到現有的 Azure AD Connect 環境，然後使用 Azure AD Connect 的雲端布建來帶入新的樹系。  如需此案例的範例，請參閱[教學課程：具有單一 Azure AD 租使用者的現有樹](tutorial-existing-forest.md)系
+此案例是拓撲類似于多樹系案例，不過這項作業牽涉到現有的 Azure AD Connect 環境，然後使用 Azure AD Connect 雲端布建來建立新的樹系。  如需此案例的範例，請參閱[教學課程：具有單一 Azure AD 租使用者的現有樹](tutorial-existing-forest.md)系
 
 ## <a name="piloting-azure-ad-connect-cloud-provisioning-in-an-existing-hybrid-ad-forest"></a>在現有的混合式 AD 樹系中試驗 Azure AD Connect 雲端布建
-![單一樹系和單一租使用者的拓撲： ](media/plan-cloud-provisioning-topologies/migrate.png) 試驗案例牽涉到在相同樹系中存在 Azure AD Connect 和 Azure AD Connect 雲端布建，並據此設定使用者和群組的範圍。 注意：物件只能在其中一個工具的範圍內。 
+![單一樹系和單一租使用者的拓撲， ](media/plan-cloud-provisioning-topologies/migrate.png) 試驗案例牽涉到相同樹系中的 Azure AD Connect 和 Azure AD Connect 雲端布建，並據以設定使用者和群組的範圍。 注意：物件應該只在其中一個工具的範圍內。 
 
-如需此案例的範例，請參閱[教學課程：在現有已同步 AD 樹系中進行雲端布建的試驗 Azure AD Connect](tutorial-pilot-aadc-aadccp.md)
+如需此案例的範例，請參閱 [教學課程：在現有的同步 AD 樹系中試驗 Azure AD Connect 雲端布建](tutorial-pilot-aadc-aadccp.md)
 
 
 

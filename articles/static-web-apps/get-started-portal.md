@@ -5,18 +5,18 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: e0b78c5e053c5668fbebd8ebaac91a90aa2b364f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 7818754ca335f503c5afdc47d410cfe1d1029ab4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752792"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434761"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立您的第一個靜態 Web 應用程式
 
-Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站發佈至實際執行環境。 在本快速入門中，您會使用入口網站將 Web 應用程式部署到 Azure 靜態 Web 應用程式。
+Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站發佈至實際執行環境。 在本快速入門中，您會使用 Azure 入口網站將 Web 應用程式部署到 Azure 靜態 Web 應用程式。
 
 如果您沒有 Azure 訂用帳戶，請[建立免費試用帳戶](https://azure.microsoft.com/free)。
 
@@ -56,38 +56,39 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 1. 選取您慣用的 [組織]
 1. 從 [存放庫] 下拉式清單中選取 **my-first-web-static-app**
 1. 從 [分支] 下拉式選單中，選取 [主要]
-1. 選取頁面底部的 [下一步:組建 >] 按鈕，以編輯組建組態
-
-:::image type="content" source="media/getting-started-portal/next-build-button.png" alt-text="下一個組建按鈕":::
 
 > [!NOTE]
 > 如果您沒有看到任何存放庫，可能需要在 GitHub 中授權 Azure Static Web Apps。 瀏覽至您的 GitHub 存放庫，並移至 [設定] > [應用程式] > [授權的 OAuth 應用程式]、選取 [Azure Static Web Apps]，然後選取 [授與]。 針對組織存放庫，您必須是組織的擁有者，才能授與權限。
 
-1. 在 [建置] 索引標籤中，新增您慣用前端架構的特定設定詳細資料。
+1. 在組建詳細資料區段中，新增您慣用前端架構的特定設定詳細資料。
 
     # <a name="no-framework"></a>[無架構](#tab/vanilla-javascript)
 
-    - 清除 [應用程式位置] 方塊中的預設值
-    - 清除 [API 位置] 方塊中的預設值
-    - 清除 [應用程式成品位置] 方塊中的預設值
+    1. 從組建預設下拉式清單中選取 [自訂]
+    1. 清除 [應用程式位置] 方塊中的預設值
+    1. 清除 [API 位置] 方塊中的預設值
+    1. 將 [應用程式成品位置] 方塊保留為空白
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    - 清除 [應用程式位置] 方塊中的預設值
-    - 清除 [API 位置] 方塊中的預設值
-    - 在 [應用程式成品位置] 方塊中輸入 **dist/angular-basic**
+    1. 從組建預設下拉式清單中選取 [Angular]
+    1. 保留應用程式位置方塊中的預設值
+    1. 清除 [API 位置] 方塊中的預設值
+    1. 在 [應用程式成品位置] 方塊中輸入 **dist/angular-basic**
 
     # <a name="react"></a>[React](#tab/react)
 
-    - 清除 [應用程式位置] 方塊的預設值
-    - 清除 [API 位置] 方塊中的預設值
-    - 在 [應用程式成品位置] 方塊中輸入 **build**
+    1. 從組建預設下拉式清單中選取 [React]
+    1. 保留應用程式位置方塊中的預設值
+    1. 清除 [API 位置] 方塊中的預設值
+    1. 在 [應用程式成品位置] 方塊中輸入 **build**
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    - 清除 [應用程式位置] 方塊的預設值
-    - 清除 [API 位置] 方塊中的預設值
-    - 在 [應用程式成品位置] 方塊中輸入 **dist**
+    1. 從組建預設下拉式清單中選取 [Vue.js]
+    1. 保留應用程式位置方塊中的預設值
+    1. 清除 [API 位置] 方塊中的預設值
+    1. 保留應用程式成品位置方塊中的預設值
 
     ---
 

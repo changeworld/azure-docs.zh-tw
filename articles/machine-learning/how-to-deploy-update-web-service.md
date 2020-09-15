@@ -1,20 +1,23 @@
 ---
-title: 更新已部署的 webservice
-author: gvashishtha
+title: 更新 web 服務
+titleSuffix: Azure Machine Learning
+description: 瞭解如何重新整理已在 Azure Machine Learning 中部署的 web 服務
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 354d9b84c614447b6a957a6dba65984f4c97cac3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+author: gvashishtha
+ms.date: 07/31/2020
+ms.openlocfilehash: 52d7c42701e20c16272843a50c6c45847545d747
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645975"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90525162"
 ---
 # <a name="update-a-deployed-web-service"></a>更新已部署的 web 服務
 
-本文說明如何部署使用 Azure Machine Learning 部署的 web 服務。
+在本文中，您將瞭解如何更新隨 Azure Machine Learning 部署的 web 服務。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -83,7 +86,7 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 
 如需詳細資訊，請參閱 [az ml 服務更新](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) 檔。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [針對失敗的部署進行疑難排解](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)

@@ -4,12 +4,12 @@ description: '針對 Azure 轉送混合式連線 Websocket 撰寫 c # 主控台�
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: eb204a7bf18ed1c88a6d359cc521130fa19a1c82
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bf22b8b11dc386644803b43ee4e3a51d04b70419
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934254"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527423"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>在 .NET 中開始使用轉送混合式連線 WebSocket
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -52,7 +52,7 @@ ms.locfileid: "88934254"
 2. 執行用戶端應用程式並輸入一些文字。
 3. 確定伺服器應用程式主控台有顯示用戶端應用程式中所輸入的文字。
 
-    ![執行應用程式](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
+    ![主控台 windows 測試伺服器和用戶端應用程式。](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
 恭喜，您已建立完整的混合式連線應用程式！
 

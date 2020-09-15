@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 2c6d1873aadbbf19f1b7650f9b432b3b6bed2841
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 0a2763beec9fed9025198ca283f7746286875512
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068365"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527372"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>關於 Azure VM 災難修復中的網路功能
 
@@ -35,7 +35,7 @@ ms.locfileid: "90068365"
 
 ![客戶環境](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
-通常會使用防火牆和網路安全性群組 (NSG) 來保護網路。 防火牆會使用以 URL 或 IP 為基礎的允許清單來控制網路連線能力。 NSG 提供規則，使用 IP 位址範圍來控制網路連線能力。
+通常會使用防火牆和網路安全性群組 (NSG) 來保護網路。 服務標記應該用來控制網路連線能力。 Nsg 應該允許數個服務標記來控制輸出連線能力。
 
 >[!IMPORTANT]
 > Site Recovery 不支援使用經過驗證的 Proxy 來控制網路連線能力，而且無法啟用複寫。
@@ -45,6 +45,8 @@ ms.locfileid: "90068365"
 
 如果您使用以 URL 為基礎的防火牆 Proxy 來控制輸出連線能力，請允許這些 Site Recovery URL：
 
+>[!NOTE]
+> 不應執行以 IP 位址為基礎的允許清單來控制輸出連線能力。
 
 **URL** | **詳細資料**
 --- | ---

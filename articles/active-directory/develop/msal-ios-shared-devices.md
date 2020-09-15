@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 0354010297942c3b9e18dc6f556cb0afa075ff5f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: d5699c1d08df8364f33371f911ea3be892b4b285
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649097"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528123"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>適用於 iOS 裝置的共用裝置模式
 
@@ -60,9 +60,18 @@ ms.locfileid: "89649097"
 
     - **類型**：重新導向
     - **延伸模組識別碼**： azureauthenticator. ssoextension
-    - **小組識別碼**： SGGM6D27TK
-    - **Url**： https://login.microsoftonline.com
-    - 要設定的其他資料：
+    - **小組識別碼**： (iOS) 不需要此欄位
+    - **Url**：   
+        - `https://login.microsoftonline.com`
+        - `https://login.microsoft.com`
+        - `https://sts.windows.net`
+        - `https://login.partner.microsoftonline.cn`
+        - `https://login.chinacloudapi.cn`
+        - `https://login.microsoftonline.de`
+        - `https://login.microsoftonline.us`
+        - `https://login.usgovcloudapi.net`
+        - `https://login-us.microsoftonline.com`
+    - **要設定的其他資料**：
       - 機碼： sharedDeviceMode
       - 類型：布林值
       - 值： true
@@ -221,7 +230,7 @@ signoutParameters.signoutFromBrowser = YES; // Only needed for Public Preview.
 }];
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要查看作用中的共用裝置模式，下列 GitHub 上的程式碼範例包含在 iOS 裝置上以共用裝置模式執行第一線背景工作應用程式的範例：
 

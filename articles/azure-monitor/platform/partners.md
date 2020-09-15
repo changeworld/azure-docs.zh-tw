@@ -4,12 +4,12 @@ description: 了解 Azure Monitor 的監視合作夥伴以及如何存取與合�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: d5f239540a74c431e381c581f00514a1f7acd5e3
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: dbac5f28723b712788df61eda34a0db61b9c5652
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030375"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526471"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 監視器合作夥伴整合
 
@@ -149,7 +149,7 @@ Microfocus **Operations Bridge** 會自動監視所有的混合式 IT 資源，�
 
 ## <a name="moogsoft"></a>Moogsoft
 
-![Moogsoft](./media/partners/moogsoft.png)
+![Moogsoft 標誌](./media/partners/moogsoft.png)
 
 Moogsoft AIOps 會加速敏捷的商務轉換。
 
@@ -278,7 +278,7 @@ Turbonomic 透過同時讓效能、成本及合規性即時達到最佳狀態，
 
 [深入了解。][turbonomic-doc]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [深入瞭解 Azure 監視器](../overview.md)
 - [使用 REST API 存取計量](rest-api-walkthrough.md)

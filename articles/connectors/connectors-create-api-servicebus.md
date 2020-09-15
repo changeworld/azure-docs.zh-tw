@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 68b81fa8cf110b47581e482e7e546821d40aef62
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 2993fc718462d1ac2a9cfd02be5642fb21f86702
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435145"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526522"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure Logic Apps 和 Azure 服務匯流排在雲端中交換訊息
 
@@ -79,7 +79,7 @@ ms.locfileid: "89435145"
    某些觸發程式，例如， **當一或多個訊息抵達佇列 (自動完成) 觸發程式時 ** ，可能會傳回一或多個訊息。 當這些觸發程式引發時，它們會在觸發程式的 [ **最大訊息計數** ] 屬性指定的訊息數目之間傳回。
 
     > [!NOTE]
-    > 自動完成的觸發程式會自動完成訊息，但只有在下一個觸發程式執行時才會完成。 此行為可能會影響您的邏輯應用程式設計。 例如，如果您將自動完成觸發程式設定為每分鐘檢查一次訊息，但是在服務匯流排端，鎖定持續時間設定為30秒，則結果為完成訊息時所發生的「鎖定已過期」失敗。 您必須將鎖定持續時間設定為超過輪詢間隔的值。
+    > 自動完成的觸發程式會自動完成訊息，但只有在下一個觸發程式執行時才會完成。 此行為可能會影響您的邏輯應用程式設計。 例如，請避免變更自動完成觸發程式上的平行存取，因為如果您的邏輯應用程式進入節流狀態，這項變更可能會導致重複的訊息。 變更並行存取控制會建立下列條件：使用程式碼略過節流觸發程式 `WorkflowRunInProgress` 、完成作業不會發生，而且下一個觸發程式執行會在輪詢間隔之後進行。 您必須將服務匯流排鎖定持續時間設定為超過輪詢間隔的值。 不過，儘管這項設定，如果您的邏輯應用程式在下一個輪詢間隔處於節流狀態，仍可能無法完成訊息。
 
 1. 如果您的觸發程式第一次連接到您的服務匯流排命名空間，當邏輯應用程式設計工具提示您輸入連接資訊時，請遵循下列步驟。
 

@@ -10,12 +10,12 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: e87ecc14907c6e0618de47ffdbd334d8ba03ec99
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 3d65a7771ff2bd8807a5f02278b0455ee103dbd6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500617"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526335"
 ---
 # <a name="hyperspace---an-indexing-subsystem-for-apache-spark"></a>超空間-Apache Spark 的索引子系統
 
@@ -392,7 +392,8 @@ hyperspace: com.microsoft.hyperspace.Hyperspace = com.microsoft.hyperspace.Hyper
 索引設定物件： IndexConfig，指定索引的索引名稱、索引和內含資料行。
 首先，在我們的範例資料上建立三個超空間索引：在部門資料集上建立兩個名為 "deptIndex1" 和 "deptIndex2" 的索引，以及一個名為 ' empIndex ' 的員工資料集的索引。 針對每個索引，您需要一個對應的 IndexConfig 來捕捉名稱，以及索引和內含資料行的資料行清單。 執行下列資料格會建立這些 indexConfigs 及其輸出清單。
 
-注意：索引資料行是出現在篩選或聯結條件中的資料行。 包含的資料行是出現在您的 select/專案中的資料行。
+> [!Note]
+> 索引資料行是出現在篩選或聯結條件中的資料行。 包含的資料行是出現在您的 select/專案中的資料行。
 
 例如，在下列查詢中：
 
@@ -508,8 +509,9 @@ import com.microsoft.hyperspace.index.Index
 
 下方儲存格使用資料框架的 [show] 動作來完整列印資料列，並以表格形式顯示索引的詳細資料。 針對每個索引，您可以在中繼資料中看到超空間已儲存的所有資訊。 您會立即注意到下列各項：
 
-"indexName"、"indexedColumns"、"includedColumns" 和 "status" 是使用者通常所參考的欄位。
-「dfSignature」會由超空間自動產生，並對每個索引都是唯一的。 超空間會在內部使用此簽章來維護索引，並在查詢時加以利用。
+* "indexName"、"indexedColumns"、"includedColumns" 和 "status" 是使用者通常所參考的欄位。
+* 「dfSignature」會由超空間自動產生，並對每個索引都是唯一的。 超空間會在內部使用此簽章來維護索引，並在查詢時加以利用。
+
 在下列輸出中，這三個索引都應該有「作用中」狀態，而且其名稱、索引資料行和內含資料行應該與上述索引設定中定義的資料行相符。
 
 :::zone pivot = "programming-language-scala"
@@ -839,7 +841,7 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 | 7876|  ADAMS|    20|
 ```
 
-&nbsp;&nbsp;只顯示前五個數據列 &nbsp;&nbsp;
+&nbsp;&nbsp;這只會顯示前5個數據列 &nbsp;&nbsp;
 
 ```console
 |deptId|  deptName|location|
@@ -1369,8 +1371,8 @@ empIndex:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/<container>/i
 
 下列兩個數據格會顯示此案例的範例：
 
-第一個資料格會將其他兩個部門新增至原始部門資料。 它會讀取和列印部門清單，以確認是否已正確新增部門。 輸出中總共顯示六個部門：四個舊的部門，以及兩個新的。 叫用 "refreshIndex" 更新 "deptIndex1"，讓索引能捕捉新的部門。
-第二個數據格會執行範圍選取查詢範例。 結果現在應該包含四個部門：兩個部門，在我們執行上述查詢之前會看到兩個部門，而兩個是剛新增的部門。
+* 第一個資料格會將其他兩個部門新增至原始部門資料。 它會讀取和列印部門清單，以確認是否已正確新增部門。 輸出中總共顯示六個部門：四個舊的部門，以及兩個新的。 叫用 "refreshIndex" 更新 "deptIndex1"，讓索引能捕捉新的部門。
+* 第二個數據格會執行範圍選取查詢範例。 結果現在應該包含四個部門：兩個部門，在我們執行上述查詢之前會看到兩個部門，而兩個是剛新增的部門。
 
 ### <a name="specific-index-refresh"></a>特定索引重新整理
 
@@ -1532,7 +1534,7 @@ Project [deptName#675]
    +- *(1) FileScan parquet [deptId#674,deptName#675] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), GreaterThan(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [專案超空間](https://microsoft.github.io/hyperspace/)
 * [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

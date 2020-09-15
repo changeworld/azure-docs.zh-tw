@@ -3,12 +3,12 @@ title: 監視容器實例
 description: 如何在 Azure 容器執行個體中依照您的容器，監視計算資源 (例如 CPU 和記憶體) 耗用量。
 ms.topic: article
 ms.date: 04/24/2019
-ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82116362"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526692"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>在 Azure 容器執行個體中監視容器資源
 
@@ -27,11 +27,11 @@ ms.locfileid: "82116362"
 
 Azure 監視器為 [Azure 容器執行個體提供下列計量][supported-metrics]。 這些計量均適用於容器群組和個別容器。 根據預設，計量會匯總為平均值。
 
-* **CPU 使用量** - 以 **Millicore** 測量。 一個 millicore 是 CPU 核心的 1/1000th，因此 500 millicore 代表 0.5 CPU 核心的使用量。
+* **CPU 使用量** - 以 **Millicore** 測量。 其中一個 millicore 是 CPU 核心的 1/1000，因此 500 millicore 代表 0.5 CPU 核心的使用量。
 
-* **記憶體使用量**（以位元組為單位）。
+* **記憶體使用量** -以位元組為單位。
 
-* **每秒接收的網路位元組數**和**每秒傳輸的網路位元組**數。 
+* **每秒接收的網路位元組** 和 **每秒傳輸的網路位元組數**。 
 
 ## <a name="get-metrics---azure-portal"></a>取得計量 - Azure 入口網站
 
@@ -44,7 +44,7 @@ Azure 監視器為 [Azure 容器執行個體提供下列計量][supported-metric
 1. 在 [概觀]**** 頁面中，選取其中一個計量圖表，例如 **CPU**。 
 1. 選取 [套用設定]**** 按鈕，然後選取 [容器名稱]****。
 
-![維度][dimension]
+![螢幕擷取畫面會顯示已選取 [套用分割] 和 [容器名稱] 的容器實例的計量。][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>取得計量 - Azure CLI
 

@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 9ed490dba1547db6ec3c0ddcff38aa3e0c393fcf
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 5f6328144760b3c55c55fbef13917359fa9e1a62
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226421"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526736"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>從 Azure Logic Apps 透過 HTTP 或 HTTPS 呼叫服務端點
 
@@ -104,7 +104,7 @@ ms.locfileid: "89226421"
 
 以下是 HTTP 觸發程式或動作之輸出的詳細資訊，會傳回下列資訊：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 |----------|------|-------------|
 | `headers` | JSON 物件 | 要求的標頭 |
 | `body` | JSON 物件 | 具有來自要求之本文內容的物件 |
@@ -167,6 +167,14 @@ ms.locfileid: "89226421"
    "type": "Http"
 }
 ```
+
+## <a name="content-with-applicationx-www-form-urlencoded-type"></a>Content with application/x-www-表單 urlencoded 類型
+
+若要在主體中提供 urlencoded 的資料給 HTTP 要求，您必須指定資料的 `application/x-www-form-urlencoded` 內容類型。 在 HTTP 觸發程式或動作中，新增 `content-type` 標頭。 將標頭值設定為 `application/x-www-form-urlencoded` 。
+
+例如，假設您有一個邏輯應用程式，它會將 HTTP POST 要求傳送至支援此類型的網站 `application/x-www-form-urlencoded` 。 以下是此動作可能的外觀：
+
+![顯示「content-type」標頭設定為 ' application/x-www-urlencoded ' 之 HTTP 要求的螢幕擷取畫面](./media/connectors-native-http/http-action-urlencoded.png)
 
 <a name="asynchronous-pattern"></a>
 
@@ -263,4 +271,3 @@ HTTP 要求有 [超時限制](../logic-apps/logic-apps-limits-and-config.md#http
 
 * [針對其他服務和系統的輸出呼叫保護存取和資料存取](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)
 * [適用於 Logic Apps 的連接器](../connectors/apis-list.md)
-

@@ -3,12 +3,12 @@ title: 在 IoT Edge 裝置上部署即時影片分析-Azure
 description: 本文列出可協助您在 IoT Edge 裝置上部署即時影片分析的步驟。 例如，如果您有本機 Linux 電腦的存取權，以及（或）先前已建立 Azure 媒體服務帳戶，您就可以這麼做。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: eecc17e36f35e7552c0be83f7ecc38f2d644f18d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 30a3bda4069bb8c07d7c9be3fd8a3a2b1171eba2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89439617"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526318"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 裝置上部署即時影片分析
 
@@ -107,7 +107,7 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
     * **IoT Edge 模組名稱**： lvaEdge
     * **映射 URI**： mcr.microsoft.com/media/live-video-analytics:1。0    
     
-    ![加](./media/deploy-iot-edge-device/add.png)
+    ![螢幕擷取畫面顯示 [模組設定] 索引標籤。](./media/deploy-iot-edge-device/add.png)
     
     > [!TIP]
     > 除非您已在 [**模組設定**]、[**容器建立選項**] 和 [模組對應項**設定**] 索引標籤上指定值，如下列程式所述，請勿選取 [**新增**]。
@@ -217,7 +217,7 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
 模組在裝置上啟動然後向 IoT 中樞回報可能需要一點時間。 重新整理頁面來查看更新狀態。
 狀態碼：200– OK 表示 [IoT Edge 運行](../../iot-edge/iot-edge-runtime.md) 時間狀況良好且正常運作。
 
-![狀態](./media/deploy-iot-edge-device/status.png)
+![螢幕擷取畫面顯示 IoT Edge 執行時間的狀態值。](./media/deploy-iot-edge-device/status.png)
 
 #### <a name="invoke-a-direct-method"></a>叫用直接方法
 
@@ -225,7 +225,7 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
 
 1. 按一下您建立的 edge 模組，將會帶您前往其設定頁面。  
 
-    ![單元](./media/deploy-iot-edge-device/modules.png)
+    ![螢幕擷取畫面：顯示 edge 模組的設定頁面。](./media/deploy-iot-edge-device/modules.png)
 1. 按一下 [直接方法] 功能表選項。
 
     > [!NOTE] 
@@ -247,7 +247,7 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
 
     ![狀態200訊息](./media/deploy-iot-edge-device/connection-timeout.png) 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 試用 [快速入門：開始使用 IoT Edge 的即時影片分析](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 

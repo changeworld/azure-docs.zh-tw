@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: a86402fec698a299c7f233dcd8c7fde8270dd74d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 247f37a69cd8524339a3f5414230cca0f42fa22d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585656"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662051"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何以 CLI 使用金鑰保存庫虛刪除
 
@@ -58,7 +58,7 @@ az keyvault update -n ContosoVault --enable-soft-delete true
 
 ### <a name="new-key-vault"></a>新的金鑰保存庫
 
-預設會在所有金鑰保存庫上自動啟用虛刪除。 2020 年 12 月 31 日之後，就不能再建立未啟用虛刪除的新金鑰保存庫。
+預設會在所有金鑰保存庫上自動啟用虛刪除。 從 2020 年 12 月 31 日起，就不能再建立未啟用虛刪除的新金鑰保存庫。
 
 ### <a name="verify-soft-delete-enablement"></a>驗證啟用虛刪除
 

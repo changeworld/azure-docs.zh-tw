@@ -1,15 +1,15 @@
 ---
-title: Azure 轉送混合式連接-節點中的 Websocket
+title: Azure 轉送混合式連接-Node 中的 Websocket
 description: 為 Azure 轉送混合式連線 Websocket 撰寫 Node.js 主控台應用程式
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8dc52c93d4b5cd6d50b66338350a41cf0e24daa0
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: cf660d7a776c0dfa48b6c023fa0fa3516a3a0ea5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386294"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527406"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>在 Node.js 中開始使用轉送混合式連線 WebSocket
 
@@ -52,7 +52,7 @@ ms.locfileid: "87386294"
 2. 執行用戶端應用程式：從 Node.js 命令提示字元中，鍵入 `node sender.js`，然後輸入一些文字。
 3. 確定伺服器應用程式主控台有將用戶端應用程式中所輸入的文字輸出。
 
-    ![執行應用程式](./media/relay-hybrid-connections-node-get-started/running-applications.png)
+    ![主控台 windows 測試伺服器和用戶端應用程式。](./media/relay-hybrid-connections-node-get-started/running-applications.png)
 
 恭喜您，您已經使用 Node.js 建立端對端混合式連線應用程式！
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f20da2d2ecb4426c0deb1c01591ead5933090f6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 45e1e516986c32e203837f79c83290cc99049e7a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716991"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526964"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>使用 Azure Active Directory (preview 啟用無密碼安全性金鑰登入內部部署資源) 
 
@@ -46,7 +46,7 @@ Azure AD 的 Kerberos 伺服器物件會建立在您的內部部署 Active Direc
 
 組織也必須符合下列軟體需求。
 
-- 裝置必須執行 Windows 10 Insider 組建18945或更新版本。
+- 裝置必須執行 Windows 10 2004 版或更新版本。
 - 您必須有 [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)的版本1.4.32.0 版或更新版本。
   - 如需可用 Azure AD 混合式驗證選項的詳細資訊，請參閱 [為您的 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](../hybrid/choose-ad-authn.md) ，並 [選取要用於 Azure AD Connect 的安裝類型](../hybrid/how-to-connect-install-select-installation.md)。
 - 您的 Windows Server 網域控制站必須安裝下列修補程式：
@@ -60,7 +60,7 @@ Azure AD 的 Kerberos 伺服器物件會建立在您的內部部署 Active Direc
 - 適用于 Office 365 和其他已啟用 SAML 的應用程式等雲端資源。
 - 適用于內部部署資源，以及 Windows 整合式驗證至網站。 這些資源可以包含需要 IIS 驗證的網站和 SharePoint 網站，以及（或）使用 NTLM 驗證的資源。
 
-### <a name="unsupported-scenarios"></a>不支援的情節
+### <a name="unsupported-scenarios"></a>不支援的案例
 
 下列案例不受支援：
 

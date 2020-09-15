@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: ae9891edc80aab5d3223686547dfef4273f8a921
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: c768f6564884ade5d27199a64843437f5ce725f4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514623"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019150"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>從 Azure Key Vault 匯出憑證
 
@@ -63,7 +63,7 @@ az keyvault certificate download --file
 
 如需詳細資訊，請檢視[範例和參數定義](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download)。
 
-如果您想要下載整個憑證 (即其構成要素的公開和私人部分)，請下載憑證作為祕密。
+下載為憑證表示取得公開部分。 如果您想要私密金鑰和公用中繼資料兩者，則可以將其下載為祕密。
 
 ```azurecli
 az keyvault secret download -–file {nameofcert.pfx}

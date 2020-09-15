@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 144198a708b8e3cfcb5b3c6936d7fc51cadf4a13
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: fdac9562ed9a83f49e074e7abd790e8e2819d6aa
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084323"
+ms.locfileid: "90527015"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的無密碼 authentication 選項
 
@@ -82,11 +82,15 @@ Windows Hello 企業版 [規劃指南](/windows/security/identity-protection/hel
 
 ## <a name="fido2-security-keys"></a>FIDO2 安全性金鑰
 
+FIDO (Fast IDentity Online) Alliance 有助於提升開放式驗證標準，並以一種驗證形式減少密碼的使用者。 FIDO2 是併入 Web 驗證 (WebAuthn) 標準的最新標準。
+
 FIDO2 安全性金鑰是以 unphishable 標準為基礎的無密碼驗證方法，可採用任何外型規格。 快速身分識別線上 (FIDO) 是無密碼 authentication 的開放標準。 FIDO 可讓使用者和組織利用標準，在沒有使用者名稱或密碼的情況下登入其資源，而不需使用外部安全性金鑰或裝置內建的平臺金鑰。
 
-員工可以使用安全性金鑰來登入其 Azure AD 或加入混合式 Azure AD 加入 Windows 10 裝置，並取得其雲端和內部部署資源的單一登入。 使用者也可以登入支援的瀏覽器。 針對安全性敏感的企業，或有不願意或無法以其電話作為第二個因素的案例或員工，FIDO2 安全性金鑰是絕佳的選擇。
+使用者可以註冊，然後在登入介面選取 FIDO2 安全性金鑰，昨為其主要的驗證方法。 這些 FIDO2 的安全性金鑰通常是 USB 裝置，但也可使用藍牙或 NFC。 使用可處理驗證的硬體裝置時，由於沒有可公開或猜到的密碼，因而提高帳戶的安全性。
 
-使用 FIDO2 安全性金鑰登入 Azure AD 目前為預覽狀態。
+您可以使用 FIDO2 安全性金鑰來登入其 Azure AD 或加入混合式 Azure AD 加入 Windows 10 裝置，並取得其雲端和內部部署資源的單一登入。 使用者也可以登入支援的瀏覽器。 針對安全性敏感的企業，或有不願意或無法以其電話作為第二個因素的案例或員工，FIDO2 安全性金鑰是絕佳的選擇。
+
+使用 FIDO2 安全性金鑰登入 Azure AD 目前為預覽狀態。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ![使用安全性金鑰登入 Microsoft Edge](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -141,7 +145,6 @@ FIDO2 安全性金鑰是以 unphishable 標準為基礎的無密碼驗證方法�
 > [!div class="nextstepaction"]
 > [啟用使用 FIDO2 安全性金鑰的無密碼 sign](howto-authentication-passwordless-security-key.md)
 
-
 ## <a name="what-scenarios-work-with-the-preview"></a>哪些案例適用于預覽？
 
 Azure AD 無密碼登入功能目前為預覽狀態。 您必須考量下列事項：
@@ -161,7 +164,7 @@ Azure AD 無密碼登入功能目前為預覽狀態。 您必須考量下列事�
 
 ||**Windows Hello 企業版**|**使用 Microsoft Authenticator 應用程式無密碼登入**|**FIDO2 安全性金鑰**|
 |:-|:-|:-|:-|
-|**先決條件**| Windows 10，版本 1809 或更新版本<br>Azure Active Directory| Microsoft Authenticator 應用程式<br>手機 (執行 Android 6.0 或更新版本的 iOS 和 Android 裝置。 ) |Windows 10，版本 1809 或更新版本<br>Azure Active Directory|
+|**先決條件**| Windows 10，版本 1809 或更新版本<br>Azure Active Directory| Microsoft Authenticator 應用程式<br>手機 (執行 Android 6.0 或更新版本的 iOS 和 Android 裝置。 ) |Windows 10，1903版或更新版本<br>Azure Active Directory|
 |**Mode**|平台|軟體|硬體|
 |**系統和裝置**|具有內建信賴平臺模組 (TPM) 的電腦<br>PIN 和生物識別辨識 |手機上的 PIN 和生物識別辨識|FIDO2 Microsoft 相容的安全性裝置|
 |**使用者體驗**|使用 PIN 或生物識別辨識進行登入， (臉部、鳶尾花或指紋) 與 Windows 裝置。<br>Windows Hello authentication 會系結至裝置;使用者需要裝置和登入元件（例如 PIN 或生物特徵辨識因素）來存取公司資源。|使用具有指紋掃描、臉部或鳶尾花辨識或 PIN 的行動電話進行登入。<br>使用者可以從他們的電腦或行動電話登入工作或個人帳戶。|使用 FIDO2 安全性裝置登入 (生物識別、PIN 和 NFC) <br>使用者可以使用裝置來存取裝置，並根據 PIN、使用 USB 安全性金鑰和啟用 NFC 的智慧卡、金鑰或穿戴式裝置等裝置來進行生物特徵辨識。|
@@ -169,7 +172,7 @@ Azure AD 無密碼登入功能目前為預覽狀態。 您必須考量下列事�
 
 使用下表來選擇可支援您的需求和使用者的方法。
 
-|角色|案例|環境|無密碼技術|
+|角色|狀況|環境|無密碼技術|
 |:-|:-|:-|:-|
 |**管理員**|安全存取裝置以進行管理工作|指派 Windows 10 裝置|Windows Hello 企業版及/或 FIDO2 安全性金鑰|
 |**管理員**|非 Windows 裝置上的管理工作| 行動裝置或非 windows 裝置|使用 Microsoft Authenticator 應用程式無密碼登入|

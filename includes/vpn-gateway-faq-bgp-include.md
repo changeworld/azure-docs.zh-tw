@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 608b148dc3929065df44530da65e695df19be03e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 8fa4e94d6ec4c3e612d5a8a29db76e023957d583
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79485977"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89644163"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>所有的 Azure VPN 閘道 SKU 上是否都支援 BGP？
-除了基本 SKU 以外，所有 Azure VPN Gateawy Sku 都支援 BGP。
+除了基本 SKU 以外，所有 Azure VPN 閘道 SKU 都支援 BGP。
 
 ### <a name="can-i-use-bgp-with-azure-policy-based-vpn-gateways"></a>可以使用 BGP 與 Azure Policy-Based VPN 閘道嗎？
 否，僅路由 VPN 閘道支援 BGP。
@@ -24,8 +24,8 @@ ms.locfileid: "79485977"
 ### <a name="can-i-use-private-asns-autonomous-system-numbers"></a>可以使用私人 ASN (自發系統編號) 嗎？
 是，針對您的內部部署網路和 Azure 虛擬網路，您可以使用您自己的公用 ASN 或私人 ASN。
 
-### <a name="can-i-use-32-bit-4-byte-asns-autonomous-system-numbers"></a>我可以使用32位（4位元組） Asn （自發系統編號）嗎？
-是，Azure VPN 閘道現在支援32位（4個位元組）的 Asn。 請使用 PowerShell/CLI/SDK，以十進位格式使用 ASN 進行設定。
+### <a name="can-i-use-32-bit-4-byte-asns-autonomous-system-numbers"></a>可以使用 32 位元 (4 位元組) 的 ASN (自發系統編號) 嗎？
+是，Azure VPN 閘道現在支援 32 位元 (4 位元組) 的 ASN。 請使用 PowerShell/CLI/SDK，以十進位格式使用 ASN 進行設定。
 
 ### <a name="are-there-asns-reserved-by-azure"></a>是否有 Azure 所保留的 ASN 嗎？
 是，下列是 Azure 針對內部和外部對等互連所保留的 ASN︰
@@ -40,12 +40,12 @@ ms.locfileid: "79485977"
 
 23456、64496-64511、65535-65551 和 429496729
 
-### <a name="what-private-asns-can-i-use"></a>我可以使用哪些私人 Asn？
-可用的私用 Asn 範圍包括：
+### <a name="what-private-asns-can-i-use"></a>我可以使用哪些私人 ASN？
+可用的私人 ASN 範圍包括：
 
 * 64512-65514、65521-65534
 
-IANA 或 Azure 不會保留這些 Asn 供您使用，因此可以用來指派給您的 Azure VPN 閘道。
+IANA 或 Azure 不會保留這些 ASN 供您使用，因此可以用來指派給您的 Azure VPN 閘道。
 
 ### <a name="can-i-use-the-same-asn-for-both-on-premises-vpn-networks-and-azure-vnets"></a>內部部署 VPN 網路和 Azure VNet 可以使用相同的 ASN 嗎？
 否，如果您要將內部部署網路和 Azure VNet 與 BGP 連接，必須在內部部署網路與 Azure VNet 之間指派不同 ASN。 Azure VPN 閘道已將預設 ASN 指派為 65515 (無論跨單位連線是否啟用 BGP)。 您可以在建立 VPN 閘道時指派不同的 ASN 來覆寫這個預設值，或在建立閘道之後變更 ASN。 您必須將內部部署 ASN 指派給對應 Azure 區域網路閘道。
@@ -55,13 +55,13 @@ Azure VPN 閘道會通告下列路由至您的內部部署 BGP 裝置︰
 
 * 您的 VNet 位址首碼
 * 每個本機網路閘道的位址首碼已連線到 Azure VPN 閘道
-* 從其他 BGP 對等互連工作階段識別的路由已連線到 Azure VPN 閘道， **除了預設路由或與任何 VNet 首碼重疊的路由**。
+* 從其他 BGP 對等互連工作階段識別的路由已連線到 Azure VPN 閘道，**除了預設路由或與任何 VNet 首碼重疊的路由**。
 
 ### <a name="how-many-prefixes-can-i-advertise-to-azure-vpn-gateway"></a>我可以向 Azure VPN 閘道公告多少個前置詞？
 我們最多支援 4000 個前置詞。 如果前置詞數目超過此限制，則會捨棄 BGP 工作階段。
 
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>可以公告 Azure VPN 閘道的預設路由 (0.0.0.0/0) 嗎？
-是。
+可以。
 
 請注意，這會強制所有 VNet 輸出流量流向您的內部部署站台，而且會阻礙 VNet VM 直接接受來自網際網路的公用通訊，例如從網際網路到 VM 的 RDP 或 SSH。
 
@@ -89,13 +89,13 @@ Azure VPN 閘道會通告下列路由至您的內部部署 BGP 裝置︰
 是，但是主動-主動組態中必須有至少一個虛擬網路閘道。
 
 ### <a name="can-i-use-bgp-for-s2s-vpn-in-an-expressroutes2s-vpn-co-existence-configuration"></a>我可以在 ExpressRoute/S2S VPN 共存組態中使用適用於 S2S VPN 的 BGP 嗎？
-是。 
+可以。 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Azure VPN 閘道會對 BGP 對等互連 IP 使用什麼位址？
-Azure VPN 閘道會從作用中待命 VPN 閘道的 GatewaySubnet 範圍，或主動-主動 VPN 閘道的兩個 IP 位址，配置單一 IP 位址。 您可以使用 PowerShell （Set-azvirtualnetworkgateway、尋找 "bgpPeeringAddress" 屬性），或在 Azure 入口網站（在 [閘道設定] 頁面的 [設定 BGP ASN] 屬性底下），取得所配置的實際 BGP IP 位址。
+Azure VPN 閘道會從作用中-待命 VPN 閘道的 GatewaySubnet 範圍，或主動-主動 VPN 閘道的兩個 IP 位址，配置單一 IP 位址。 您可以使用 PowerShell (Get-AzVirtualNetworkGateway，尋找 “bgpPeeringAddress” 屬性)，或在 Azure 入口網站中 (在 [閘道設定] 頁面上的 “Configure BGP ASN” 屬性下)，配置 BGP IP 位址。
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>我的 VPN 裝置上的 BGP 對等互連 IP 位址有哪些需求？
-您的內部部署 BGP 對等互連位址**不得**與您的 VPN 裝置的公用 IP 位址或 VPN 閘道的 Vnet 位址空間相同。 在 VPN 裝置上針對 BGP 對等互連 IP 使用不同的 IP 位址。 它可以是指派給裝置上的回送介面的位址，但請注意，它不能是 APIPA (169.254.x.x) 位址。 在代表位置的對應本機網路閘道中指定這個位址。
+內部部署 BGP 對等戶連位址**不得**與 VPN 裝置的公用 IP 位址或 VPN 閘道的 VNet 位址空間相同。 在 VPN 裝置上針對 BGP 對等互連 IP 使用不同的 IP 位址。 它可以是指派給裝置上的回送介面的位址，但請注意，它不能是 APIPA (169.254.x.x) 位址。 在代表位置的對應本機網路閘道中指定這個位址。
 
 ### <a name="what-should-i-specify-as-my-address-prefixes-for-the-local-network-gateway-when-i-use-bgp"></a>使用 BGP 時，應將區域網路閘道的位址首碼指定為什麼？
 Azure 區域網路閘道會指定內部部署網路的起始位址首碼。 若具有 BGP，您必須配置 BGP 對等互連 IP 位址的主機首碼 (/32 首碼) 作為該內部部署網路的位址空間。 如果 BGP 對等互連 IP 為 10.52.255.254，您應該指定「10.52.255.254/32」作為代表此內部部署網路的區域網路閘道的 localNetworkAddressSpace。 這是為了確保 Azure VPN 閘道透過 S2S VPN 通道建立 BGP 工作階段。

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 251159c4fcf27ceb4d8b0dddeecbe501c7346e9e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 05ff5d2f7ff87d2ce58f135330487f746cc5c1c7
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073228"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528358"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何使用 Key Vault 虛刪除與 PowerShell
 
@@ -47,7 +47,7 @@ Key Vault 作業透過角色型存取控制 (RBAC) 權限來分別管理，如�
 |復原|還原已刪除的金鑰保存庫。|Microsoft.KeyVault/vaults/write|
 |清除|永久移除已刪除的金鑰保存庫和其所有內容。|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
-如需權限和存取控制的詳細資訊，請參閱[保護您的金鑰保存庫](secure-your-key-vault.md))。
+如需權限和存取控制的詳細資訊，請參閱[保護您的金鑰保存庫](secure-your-key-vault.md)。
 
 ## <a name="enabling-soft-delete"></a>啟用虛刪除
 
@@ -282,5 +282,5 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ## <a name="other-resources"></a>其他資源
 
-- 如需 Key Vault 的虛刪除功能概觀，請參閱 [Azure Key Vault 虛刪除概觀](soft-delete-overview.md))。
-- 如需 Azure Key Vault 使用方式的一般概觀，請參閱[什麼是 Azure Key Vault？](overview.md))。
+- 如需 Key Vault 的虛刪除功能概觀，請參閱 [Azure Key Vault 虛刪除概觀](soft-delete-overview.md)。
+- 如需 Azure Key Vault 使用方式的一般概觀，請參閱[什麼是 Azure Key Vault？](overview.md)。

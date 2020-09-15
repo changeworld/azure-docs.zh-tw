@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 953d22e2dc41ca64af3793c8e0f67a203eb5ca7c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 1e2af29779c93175ccc4c7f6964862b79febd8e6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646859"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527083"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>建立 Dynamics 365 Business Central 供應項目
 
@@ -71,9 +71,7 @@ ms.locfileid: "89646859"
 
 ### <a name="test-drive"></a>試用產品
 
-試用產品是向潛在客戶展示供應項目的絕佳方式，藉由提供他們「先試用再購買」的選項，進而增加轉換，並且獲得最適合的潛在客戶。 若要深入瞭解，請從 [什麼是試用](../what-is-test-drive.md)產品著手。
-
-若要在固定時間啟用試用產品，請選取 [啟用試用產品] 核取方塊。 若要從您的供應項目中移除試用產品，請清除此核取方塊。
+到目前為止，Dynamics 365 Business Central 供應專案不支援試用產品。 若要從您的供應專案移除試用產品，請清除 [ **啟用試用** 產品] 核取方塊。
 
 ### <a name="customer-leads"></a>潛在客戶
 
@@ -124,7 +122,7 @@ ms.locfileid: "89646859"
 #### <a name="call-out-descriptions"></a>撥出描述
 
 1. 標誌
-2. 產品
+2. Products
 3. 類別
 4. 支援位址 (連結) 
 5. 使用規定
@@ -168,7 +166,7 @@ ms.locfileid: "89646859"
 
 #### <a name="privacy-policy-link"></a>隱私權原則連結
 
-輸入貴組織隱私權原則的網址。 您必須負責確保您的應用程式符合隱私權法律和法規，並提供有效的隱私權原則。
+輸入貴組織隱私權原則的 URL。 您必須負責確保您的應用程式符合隱私權法律和法規，並提供有效的隱私權原則。
 
 ### <a name="contact-information"></a>連絡資訊
 

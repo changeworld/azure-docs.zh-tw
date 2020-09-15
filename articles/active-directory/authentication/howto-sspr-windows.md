@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a51d8c45f652173e5b2b0731d64a8e6f14ee46c7
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: a6013ed47196e2300f56f0066c634da2a64fdee8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717347"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526862"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>在 Windows 登入畫面上啟用 Azure Active Directory 自助式密碼重設
 
@@ -40,7 +40,7 @@ ms.locfileid: "88717347"
 - 已加入混合式 Azure AD 的電腦必須網路連線且可看見網域控制站，才能使用新的密碼並更新快取的認證。 這表示裝置必須位於組織的內部網路，或是位於能透過網路存取內部部署網域控制站的 VPN。
 - 如果使用映像，請在執行 sysprep 之前，先確定已針對內建的 Administrator 清除 Web 快取，然後才執行 CopyProfile 步驟。 如需有關此步驟的詳細資訊，請參閱[使用自訂預設使用者設定檔時效能不佳](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile) \(機器翻譯\) 支援文章。
 - 已知下列設定會干擾在 Windows 10 裝置上使用和重設密碼的能力：
-    - 如果 v1809 之前的 Windows 10 版本中的原則需要 Ctrl + Alt + Del，則 **重設密碼** 將無法運作。
+    - 如果 v1909 之前的 Windows 10 版本中的原則需要 Ctrl + Alt + Del，則 **重設密碼** 將無法運作。
     - 如果關閉鎖定畫面通知， **重設密碼** 將無法運作。
     - *HideFastUserSwitching* 設定為 enabled 或1
     - *DontDisplayLastUserName* 設定為 enabled 或1

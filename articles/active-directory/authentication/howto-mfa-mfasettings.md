@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 838e0a13cb919a5bc17807c2349bb173e4e489f4
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068807"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526879"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>設定 Azure Multi-Factor Authentication 設定
 
@@ -31,7 +31,7 @@ ms.locfileid: "90068807"
 | [封鎖/解除封鎖使用者](#block-and-unblock-users) | 封鎖特定使用者無法接收 Azure Multi-Factor Authentication 要求。 系統會自動拒絕已封鎖使用者的任何驗證嘗試。 使用者在封鎖或手動解除封鎖時，會持續封鎖90天。 |
 | [詐騙警示](#fraud-alert) | 設定可讓使用者報告詐騙驗證要求的設定。 |
 | [通知](#notifications) | 啟用 MFA 伺服器中事件的通知。 |
-| [OATH 權杖](concept-authentication-methods.md#oath-tokens) | 用於雲端式 Azure MFA 環境，以管理使用者的 OATH 權杖。 |
+| [OATH 權杖](concept-authentication-oath-tokens.md) | 用於雲端式 Azure MFA 環境，以管理使用者的 OATH 權杖。 |
 | [通話設定](#phone-call-settings) | 設定雲端和內部部署環境之通話和問候語相關的設定。 |
 | 提供者 | 這會顯示任何可能已與您帳戶建立關聯的現有驗證提供者。 自 2018 年 9 月 1 日起，可能無法建立新的驗證提供者 |
 

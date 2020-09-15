@@ -1,14 +1,14 @@
 ---
 title: 透過入口網站的 Azure 事件方格訂閱
-description: 本文說明如何使用 Azure 入口網站，為支援的來源建立 Event Grid 訂用帳戶，例如 Azure Blob 儲存體。
+description: 本文說明如何使用 Azure 入口網站，為支援的來源（例如 Azure Blob 儲存體）建立事件方格訂用帳戶。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 2890f57e50e508f85579a2b1198de536fa9a9013
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: acbf83d6df0c7d74da5e561d98d0c3df23d5fbd5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119985"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526454"
 ---
 # <a name="subscribe-to-events-through-portal"></a>透過入口網站訂閱事件
 
@@ -18,13 +18,13 @@ ms.locfileid: "86119985"
 
 若要針對任何一個支援的[事件來源](overview.md#event-sources)建立事件方格訂閱，請使用下列步驟。 本文示範如何建立適用於 Azure 訂用帳戶的事件方格訂閱。
 
-1. 選取 [所有服務]  。
+1. 選取 [所有服務]。
 
    ![選取 [所有服務]](./media/subscribe-through-portal/select-all-services.png)
 
 1. 搜尋**事件方格訂閱**，然後從可用的選項中選取它。
 
-   ![搜尋](./media/subscribe-through-portal/search.png)
+   ![螢幕擷取畫面會在已選取事件方格訂閱的 Azure 入口網站中顯示搜尋。](./media/subscribe-through-portal/search.png)
 
 1. 選取 [+ 事件訂用帳戶]。
 
