@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/05/2018
+ms.date: 09/09/2020
 ms.author: duau
-ms.openlocfilehash: 3956a843e67dba82486f350fc4380d4c8f6065f1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: bbd45a4190cfa1199568c23cc346b9ccacc20ac5
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399781"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648874"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教學課程：在 Front Door 自訂網域上設定 HTTPS
 
@@ -219,7 +219,27 @@ postmaster@&lt;your-domain-name.com&gt;
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
+## <a name="frequently-asked-questions"></a>常見問題集
 
+1. *憑證提供者是誰？使用的是哪一種憑證？*
+
+    由 Digicert 提供的專用/單一憑證會用於您的自訂網域。 
+
+2. *您使用 IP 型或 SNI TLS/SSL？*
+
+    Azure Front Door 使用 SNI TLS/SSL。
+
+3. *如果沒有收到 DigiCert 的驗證電子郵件該怎麼辦？*
+
+    如果您自訂網域的 CNAME 項目直接指向端點主機名稱 (且您未使用 afdverify 子網域名稱)，您就不會收到網域驗證電子郵件。 驗證會自動進行。 否則，如果您沒有 CNAME 項目且未在 24 小時內收到電子郵件，請連絡 Microsoft 支援服務。
+
+4. *SAN 憑證的安全性是否比專用憑證來得低？*
+    
+    SAN 憑證遵循和專用憑證相同的加密與安全性標準。 所有發行的 TLS/SSL 憑證都使用 SHA-256 來加強伺服器安全性。
+
+5. *是否需要我的 DNS 提供者的憑證授權單位授權記錄？*
+
+    否，目前不需要憑證授權單位授權記錄。 不過，如果您的確有一個授權記錄，它必須包含 DigiCert 作為有效的 CA。
 
 ## <a name="clean-up-resources---disable-https"></a>清除資源 - 停用 HTTPS
 
@@ -247,30 +267,15 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 | 2 憑證取消佈建 | 刪除憑證 |
 | 3 完成 | 已憑證刪除 |
 
-## <a name="frequently-asked-questions"></a>常見問題集
-
-1. *憑證提供者是誰？使用的是哪一種憑證？*
-
-    由 Digicert 提供的專用/單一憑證會用於您的自訂網域。 
-
-2. *您使用 IP 型或 SNI TLS/SSL？*
-
-    Azure Front Door 使用 SNI TLS/SSL。
-
-3. *如果沒有收到 DigiCert 的驗證電子郵件該怎麼辦？*
-
-    如果您自訂網域的 CNAME 項目直接指向端點主機名稱 (且您未使用 afdverify 子網域名稱)，您就不會收到網域驗證電子郵件。 驗證會自動進行。 否則，如果您沒有 CNAME 項目且未在 24 小時內收到電子郵件，請連絡 Microsoft 支援服務。
-
-4. *SAN 憑證的安全性是否比專用憑證來得低？*
-    
-    SAN 憑證遵循和專用憑證相同的加密與安全性標準。 所有發行的 TLS/SSL 憑證都使用 SHA-256 來加強伺服器安全性。
-
-5. *是否需要我的 DNS 提供者的憑證授權單位授權記錄？*
-
-    否，目前不需要憑證授權單位授權記錄。 不過，如果您的確有一個授權記錄，它必須包含 DigiCert 作為有效的 CA。
-
-
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何[建立 Front Door](quickstart-create-front-door.md)。
-- 了解 [Front Door 的運作方式](front-door-routing-architecture.md)。
+在本教學課程中，您已了解如何：
+
+* 在 Key Vault 中上傳憑證。
+* 驗證網域。
+* 啟用自訂網域的 HTTPS。
+
+若要了解如何為您的 Front Door 設定地區篩選原則，請繼續進行下一個教學課程。
+
+> [!div class="nextstepaction"]
+> [設定地區篩選原則](front-door-geo-filtering.md)

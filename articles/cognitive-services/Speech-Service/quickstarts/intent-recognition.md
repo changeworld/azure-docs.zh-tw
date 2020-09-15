@@ -1,25 +1,26 @@
 ---
-title: 快速入門：辨識語音、意圖和實體 - 語音服務
+title: 意圖辨識快速入門 - 語音服務
 titleSuffix: Azure Cognitive Services
-description: 在本快速入門中，您會使用語音 SDK，以互動方式從麥克風擷取的音訊資料中辨識語音。
+description: 在本快速入門中，您會使用意圖辨識，以互動方式從麥克風擷取的音訊資料中辨識意圖。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 06/25/2020
+ms.date: 09/02/2020
 ms.author: erhopf
-ms.custom: devx-track-javascript, devx-track-csharp
+ms.custom: devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 4cc0754ea38ad7006431dd40206b2f10b1249e92
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+keywords: 意圖辨識
+ms.openlocfilehash: 1bc8e7da760d1037185aed5ef0538055d5e697f2
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925960"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400988"
 ---
-# <a name="quickstart-recognize-speech-intents-and-entities-with-language-understanding-luis"></a>快速入門：使用 Language Understanding (LUIS) 來辨識語音、意圖和實體
+# <a name="get-started-with-intent-recognition"></a>開始使用意圖辨識
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/intent-recognition/header.md)]

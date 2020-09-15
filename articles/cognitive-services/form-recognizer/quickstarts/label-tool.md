@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/25/2020
 ms.author: pafarley
-ms.openlocfilehash: 6118f8109f44081c797cb09a6157abaf4044965e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377807"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418954"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用範例標籤工具，以標籤定型表單辨識器模型
 
@@ -225,7 +225,9 @@ ms.locfileid: "89377807"
 > [!NOTE]
 > 請參閱適用於日期格式的規則：
 > 
-> 下列字元可用來作為 DMY 日期分隔符號：`, - / . \`。 空白字元不能用來作為分隔符號。 例如：
+> 您必須指定格式 (`dmy`、`mdy`、`ymd`)，才可使用日期格式。
+>
+> 下列字元可用來作為日期分隔符號：`, - / . \`。 空白字元不能用來作為分隔符號。 例如：
 > * 01,01,2020
 > * 01-01-2020
 > * 01/01/2020
@@ -234,11 +236,11 @@ ms.locfileid: "89377807"
 > * 1-1-2020
 > * 1-01-20
 >
-> 如果 DMY 日期字串有八位數，則分隔符號為選用：
+> 如果日期字串有八位數，則分隔符號為選用：
 > * 01012020
 > * 01 01 2020
 >
-> 月份也可以撰寫為其完整或簡短名稱。 如果使用名稱，分隔符號為選用字元：
+> 月份也可以撰寫為其完整或簡短名稱。 如果使用名稱，分隔符號為選用字元。 不過，這種格式可能比其他格式更不容易辨識。
 > * 01/Jan/2020
 > * 01Jan2020
 > * 01 Jan 2020
@@ -263,7 +265,7 @@ ms.locfileid: "89377807"
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)  
 
-此功能目前已在 v2.1 預覽中提供。 preview. 
+此功能目前已在 v2.1 預覽中提供。 預覽。 
 
 # <a name="v21-preview"></a>[v2.1 預覽](#tab/v2-1) 
 

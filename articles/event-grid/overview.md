@@ -3,12 +3,12 @@ title: 什麼是 Azure 事件方格？
 description: 使用 Azure 事件方格，將事件資料從來源傳送至處理常式。 建置事件型應用程式，並與 Azure 服務整合。
 ms.topic: overview
 ms.date: 07/07/2020
-ms.openlocfilehash: 95deeddbd7ae3f5ee07bef0c4ac73559d208c352
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 87ac29c2324c63977c57d60b11b3b930c23a4dd9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116126"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436862"
 ---
 # <a name="what-is-azure-event-grid"></a>什麼是 Azure 事件方格？
 
@@ -118,6 +118,6 @@ Azure Event Grid 使用依事件支付計價模式，因此您只需就使用量
 * [使用 Logic Apps 來作為事件處理常式](monitor-virtual-machine-changes-event-grid-logic-app.md)  
   有關使用 Logic Apps 建置應用程式以回應 Event Grid 所推送之事件的教學課程。
 * [將巨量資料串流處理至資料倉儲](event-grid-event-hubs-integration.md)  
-  使用 Azure Functions 將資料從事件中樞串流到 SQL 資料倉儲的教學課程。
+  使用 Azure Functions 將資料從事件中樞串流到 Azure Synapse Analytics 的教學課程。
 * [Event Grid REST API 參考](/rest/api/eventgrid)  
   提供參考內容來管理事件訂閱、路由和篩選。

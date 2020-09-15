@@ -3,12 +3,12 @@ title: 什麼是媒體圖表擴充功能 - Azure
 description: IoT Edge 上的即時影片分析可讓您透過圖表擴充節點來擴充媒體圖表處理功能。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 2e1ca730a6736776425cd70b323147b58e8eacbf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 74929cc51a868d20952f1e25432f5343e4821d08
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716073"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569319"
 ---
 # <a name="media-graph-extension"></a>媒體圖表擴充功能
 
@@ -49,13 +49,14 @@ gRPC 擴充處理器可用於傳送媒體屬性及交換推斷訊息。
 媒體圖表擴充功能可讓您在任何可用的推斷執行階段 (例如 ONNX、TensorFlow、PyTorch 或您自有 Docker 容器中的其他執行階段) 上，執行您選擇的推斷模型。 推斷自訂擴充應與即時影片分析邊緣模組一起部署，以獲得最佳效能，然後透過您圖表拓撲中包含的 HTTP 擴充處理器或 gRPC 擴充處理器來叫用。 此外，您可以選擇性地將[動作偵測器處理器](media-graph-concept.md#motion-detection-processor)和[畫面播放速率篩選處理器](media-graph-concept.md#frame-rate-filter-processor)新增至媒體擴充處理器的上游，藉此對您的自訂擴充進行節流。
 
 下圖描述資料流程概觀：
- 
-![設計師中](./media/media-graph-extension/data-flow.png)
+
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph-extension/analyze-live-video-with-AI-inference-service.svg" alt-text="AI 推斷服務":::
 
 ## <a name="samples"></a>範例
 
-查看我們用於即時影片分析的部分 [Jupyter 筆記本](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md)範例。 這些筆記本將提供逐步指示，說明：
+查看我們用於即時影片分析的部分 [Jupyter 筆記本](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md)範例。 這些筆記本將提供**媒體圖表擴充功能**逐步指示，說明：
 
 * 如何建立擴充服務的 Docker 容器映像
 * 如何部署容器形式的擴充服務和即時影片分析容器
-* 如何搭配擴充用戶端使用即時影片分析媒體圖表，並將其指向擴充 gRPC 端點
+* 如何搭配擴充用戶端使用即時影片分析媒體圖表，並將其指向擴充端點 (HTTP/gRPC)

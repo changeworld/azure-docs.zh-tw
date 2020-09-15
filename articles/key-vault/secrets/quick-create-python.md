@@ -3,151 +3,65 @@ title: 快速入門 – Azure Key Vault Python 用戶端程式庫 – 管理祕�
 description: 了解如何使用 Python 用戶端程式庫，從 Azure Key Vault 建立、擷取和刪除秘密
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 10/20/2019
+ms.date: 09/03/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: f1f044eb3af35019eaf010e118bc4a5814269e9e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: cd8a5751c018b9b3b3b2ef96765545f2edab685b
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378540"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489199"
 ---
 # <a name="quickstart-azure-key-vault-secrets-client-library-for-python"></a>快速入門：適用於 Python 的 Azure Key Vault 祕密用戶端程式庫
 
-開始使用適用於 Python 的 Azure Key Vault 用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
-
-Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密碼編譯金鑰和密碼。 使用適用於 Python 的 Key Vault 用戶端程式庫來：
-
-- 提高金鑰和密碼的安全性和控制權。
-- 在幾分鐘內建立和匯入加密金鑰。
-- 透過雲端規模和全域備援減少延遲。
-- 簡化 TLS/SSL 憑證的工作並將其自動化。
-- 使用經 FIPS 140-2 Level 2 驗證的 HSM。
+開始使用適用於 Python 的 Azure Key Vault 用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 藉由使用 Key Vault 來儲存祕密，您可以避免將祕密儲存在您的程式碼中，如此會增加應用程式的安全性。
 
 [API 參考文件](/python/api/overview/azure/keyvault-secrets-readme?view=azure-python) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets) | [套件 (Python Package Index)](https://pypi.org/project/azure-keyvault-secrets/)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="set-up-your-local-environment"></a>設定您的本機環境
 
-- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- Python 2.7、3.5.3 或更新版本
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/)
+[!INCLUDE [Set up your local environment](../../../includes/key-vault-python-qs-setup.md)]
 
-本快速入門假設您是在 Linux 終端機視窗中執行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+7. 安裝 Key Vault 祕密程式庫：
 
-## <a name="setting-up"></a>設定
+    ```terminal
+    pip install azure-keyvault-secrets
+    ```
 
-### <a name="install-the-package"></a>安裝套件
+## <a name="create-a-resource-group-and-key-vault"></a>建立資源群組和金鑰保存庫
 
-從主控台視窗安裝適用於 Python 的 Azure Key Vault 秘密程式庫。
+[!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-python-qs-rg-kv-creation.md)]
 
-```console
-pip install azure-keyvault-secrets
-```
+## <a name="give-the-service-principal-access-to-your-key-vault"></a>對服務主體授與金鑰保存庫的存取權
 
-在本快速入門中，您也需要安裝 azure.identity 套件：
+執行下列 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令，以授權您的服務主體在祕密上進行取得、列出及設定作業。 此命令依賴在先前步驟中建立的 `KEY_VAULT_NAME` 和 `AZURE_CLIENT_ID` 環境變數。
 
-```console
-pip install azure.identity
-```
-
-### <a name="create-a-resource-group-and-key-vault"></a>建立資源群組和金鑰保存庫
-
-[!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
-
-### <a name="create-a-service-principal"></a>建立服務主體
-
-[!INCLUDE [Create a service principal](../../../includes/key-vault-sp-creation.md)]
-
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>對服務主體授與金鑰保存庫的存取權
-
-[!INCLUDE [Give the service principal access to your key vault](../../../includes/key-vault-sp-kv-access.md)]
-
-#### <a name="set-environmental-variables"></a>設定環境變數
-
-[!INCLUDE [Set environmental variables](../../../includes/key-vault-set-environmental-variables.md)]
-
-## <a name="object-model"></a>物件模型
-
-適用於 Python 的 Azure Key Vault 用戶端程式庫可讓您管理金鑰和相關資產，例如憑證和祕密。 以下的程式碼範例會示範如何建立用戶端、設定祕密、擷取祕密，以及刪除秘密。
-
-[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets/samples) 上提供範例應用程式，示範本文所示的類似作業，以及其他 Key Vault 功能。
-
-## <a name="code-examples"></a>程式碼範例
-
-### <a name="add-directives"></a>新增指示詞
-
-將下列指示詞新增至程式碼頂端：
-
-```python
-import os
-from azure.keyvault.secrets import SecretClient
-from azure.identity import DefaultAzureCredential
-```
-
-### <a name="authenticate-and-create-a-client"></a>驗證並建立用戶端
-
-根據上述[設定環境變數](#set-environmental-variables)步驟中的環境變數，驗證您的金鑰保存庫並建立金鑰保存庫用戶端。 金鑰保存庫的名稱會以 "https://<your-key-vault-name>.vault.azure.net" 格式，擴充至金鑰保存庫 URI。
-
-```python
-credential = DefaultAzureCredential()
-
-client = SecretClient(vault_url=KVUri, credential=credential)
-```
-
-### <a name="save-a-secret"></a>儲存秘密
-
-既然應用程式已經過驗證，您可以使用 [client.set_secret 方法](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#set-secret-name--value----kwargs-)，將祕密放入金鑰保存庫中。這需要秘密的名稱，在此範例中，我們將使用 "mySecret"。  
-
-```python
-client.set_secret(secretName, secretValue)
-```
-
-您可以確認祕密是否已使用 [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) 命令來加以設定：
+# <a name="cmd"></a>[cmd](#tab/cmd)
 
 ```azurecli
-az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
+az keyvault set-policy --name %KEY_VAULT_NAME% --spn %AZURE_CLIENT_ID% --resource-group KeyVault-PythonQS-rg --secret-permissions delete get list set 
 ```
 
-### <a name="retrieve-a-secret"></a>擷取祕密
-
-您現在可以使用 [get_secret 方法](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#get-secret-name--version-none----kwargs-)擷取先前設定的值。
-
-```python
-retrieved_secret = client.get_secret(secretName)
- ```
-
-您的祕密現在已另存為 `retrieved_secret.value`。
-
-### <a name="delete-a-secret"></a>刪除祕密
-
-最後，讓我們使用 [begin_delete_secret 方法](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#begin-delete-secret-name----kwargs-)，從您的金鑰保存庫中刪除秘密。
-
-```python
-client.begin_delete_secret(secretName)
-```
-
-您可以使用 [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) 命令，確認祕密是否已經消失：
+# <a name="bash"></a>[bash](#tab/bash)
 
 ```azurecli
-az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
+az keyvault set-policy --name $KEY_VAULT_NAME --spn $AZURE_CLIENT_ID --resource-group KeyVault-PythonQS-rg --secret-permissions delete get list set 
 ```
 
-## <a name="clean-up-resources"></a>清除資源
+---
 
-若不再需要，您可以使用 Azure CLI 或 Azure PowerShell 來移除金鑰保存庫和對應的資源群組。
+此命令依賴在先前步驟中建立的 `KEY_VAULT_NAME` 和 `AZURE_CLIENT_ID` 環境變數。
 
-```azurecli
-az group delete -g "myResourceGroup"
-```
+如需詳細資訊，請參閱[指派存取原則 - CLI](../general/assign-access-policy-cli.md)
 
-```azurepowershell
-Remove-AzResourceGroup -Name "myResourceGroup"
-```
+## <a name="create-the-sample-code"></a>建立範例程式碼
 
-## <a name="sample-code"></a>範例程式碼
+適用於 Python 的 Azure Key Vault 用戶端程式庫可讓您管理祕密和相關資產，例如憑證和密碼編譯金鑰。 下列程式碼範例會示範如何建立用戶端、設定祕密、擷取祕密，以及刪除秘密。
+
+建立名為 kv_secrets.py 的檔案，其中包含此程式碼。
 
 ```python
 import os
@@ -161,20 +75,14 @@ KVUri = f"https://{keyVaultName}.vault.azure.net"
 credential = DefaultAzureCredential()
 client = SecretClient(vault_url=KVUri, credential=credential)
 
-secretName = "mySecret"
+secretName = input("Input a name for your secret > ")
+secretValue = input("Input a value for your secret > ")
 
-print("Input the value of your secret > ")
-secretValue = raw_input()
-
-print(f"Creating a secret in {keyVaultName} called '{secretName}' with the value '{secretValue}` ...")
+print(f"Creating a secret in {keyVaultName} called '{secretName}' with the value '{secretValue}' ...")
 
 client.set_secret(secretName, secretValue)
 
 print(" done.")
-
-print("Forgetting your secret.")
-secretValue = ""
-print(f"Your secret is {secretValue}.")
 
 print(f"Retrieving your secret from {keyVaultName}.")
 
@@ -183,15 +91,88 @@ retrieved_secret = client.get_secret(secretName)
 print(f"Your secret is '{retrieved_secret.value}'.")
 print(f"Deleting your secret from {keyVaultName} ...")
 
-client.begin_delete_secret(secretName)
+poller = client.begin_delete_secret(secretName)
+deleted_secret = poller.result()
 
 print(" done.")
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="run-the-code"></a>執行程式碼
 
-在本快速入門中，您已建立金鑰保存庫、儲存秘密，並擷取該秘密。 若要深入了解 Key Vault 以及要如何將其與應用程式整合，請繼續閱讀下列文章。
+請確定上一節中的程式碼位於名為 kv_secrets.py 的檔案中。 使用下列命令來執行程式碼：
+
+```terminal
+python kv_secrets.py
+```
+
+- 如果您遇到權限錯誤，請確定您已執行 [`az keyvault set-policy` 命令](#give-the-service-principal-access-to-your-key-vault)。
+- 以相同的祕密名稱重新執行程式碼可能會產生錯誤「(衝突) 祕密 <name> 目前處於已刪除但可復原的狀態。」 請使用其他祕密名稱。
+
+## <a name="code-details"></a>程式碼詳細資料
+
+### <a name="authenticate-and-create-a-client"></a>驗證並建立用戶端
+
+在上述程式碼中，[`DefaultAzureCredential`](/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python) 物件會使用您為服務主體建立的環境變數。 每當您從 Azure 程式庫建立用戶端物件 (例如 [`SecretClient`](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python))，以及要透過該用戶端使用資源的 URI 時，就會提供此認證：
+
+```python
+credential = DefaultAzureCredential()
+client = SecretClient(vault_url=KVUri, credential=credential)
+```
+
+### <a name="save-a-secret"></a>儲存秘密
+
+取得金鑰保存庫的用戶端物件之後，您可以使用 [set_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#set-secret-name--value----kwargs-) 方法來儲存祕密： 
+
+```python
+client.set_secret(secretName, secretValue)
+```
+
+呼叫 `set_secret` 會針對金鑰保存庫產生 Azure REST API 的呼叫。
+
+處理要求時，Azure 會使用您提供給用戶端的認證物件，來驗證呼叫者的身分識別 (服務主體)，
+
+同時也會檢查呼叫者是否有權執行要求的動作。 您先前已使用 [`az keyvault set-policy` 命令](#give-the-service-principal-access-to-your-key-vault)，將此授權授與服務主體。
+
+### <a name="retrieve-a-secret"></a>擷取祕密
+
+若要從 Key Vault 讀取秘密，請使用 [get_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#get-secret-name--version-none----kwargs-) 方法：
+
+```python
+retrieved_secret = client.get_secret(secretName)
+ ```
+
+祕密值包含在 `retrieved_secret.value` 中。
+
+您也可以使用 Azure CLI 命令 [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) 取出祕密。
+
+### <a name="delete-a-secret"></a>刪除祕密
+
+若要刪除祕密，請使用 [begin_delete_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#begin-delete-secret-name----kwargs-) 方法：
+
+```python
+poller = client.begin_delete_secret(secretName)
+deleted_secret = poller.result()
+```
+
+`begin_delete_secret` 方法是非同步，並會傳回輪詢者物件。 呼叫輪詢器的 `result` 方法會等待其完成。
+
+您可以確認祕密是否已使用 Azure CLI 命令 [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) 移除。
+
+一旦刪除，祕密會保留為已刪除但可復原的狀態一段時間。 如果再次執行程式碼，請使用不同的祕密名稱。
+
+## <a name="clean-up-resources"></a>清除資源
+
+如果您也想要實驗[憑證](../certificates/quick-create-python.md)和[金鑰](../keys/quick-create-python.md)，可以重複使用在本文中建立的 Key Vault。
+
+否則，當您完成本文中建立的資源時，請使用下列命令來刪除資源群組及其包含的所有資源：
+
+```azurecli
+az group delete --resource-group KeyVault-PythonQS-rg
+```
+
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 金鑰保存庫概觀](../general/overview.md)
 - [Azure Key Vault 開發人員指南](../general/developers-guide.md)
 - [Azure Key Vault 最佳做法](../general/best-practices.md)
+- [使用 Key Vault 進行驗證](../general/authentication.md)

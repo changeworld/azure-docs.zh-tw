@@ -3,12 +3,12 @@ title: 將以事件為基礎的影片錄製到雲端並從雲端播放的教學�
 description: 在本教學課程中，您將了解如何在 Azure IoT Edge 上使用 Azure Live Video Analytics，將以事件為基礎的影片錄製到雲端並從雲端播放。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: cbd00bf5737e9833a860e154c629bb344416b6ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05ee34770cacdcda270afced13373a61ba83e13a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011765"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568554"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教學課程：將以事件為基礎的影片錄製到雲端並從雲端播放
 
@@ -62,7 +62,8 @@ ms.locfileid: "87011765"
 
 或者，只有在推斷服務偵測到特定事件發生時才會觸發錄製。 在本教學課程中，您將使用在高速公路上移動車輛的影片，並在每次偵測到卡車時錄製影片剪輯。
 
-![媒體圖表](./media/event-based-video-recording-tutorial/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/overview.svg" alt-text="媒體圖表":::
 
 此圖是以圖片呈現的[媒體圖](media-graph-concept.md)，以及完成所需案例的其他模組。 其中涉及到四個 IoT Edge 模組：
 
@@ -80,7 +81,8 @@ ms.locfileid: "87011765"
 
 在開始之前，請先確認您已完成 [必要條件](#prerequisites)中的第三個項目。 在資源設定指令碼完成後，選取大括弧以展開資料夾結構。 您會看到建立在 ~/clouddrive/lva-sample 目錄下的一些檔案。
 
-![應用程式設定](./media/quickstarts/clouddrive.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="應用程式設定":::
 
 本教學課程中的相關檔案如下：
 
@@ -152,7 +154,8 @@ ms.locfileid: "87011765"
 
 使用 Visual Studio Code，依照[這些指示](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) 來登入 Docker。 然後選取 [組建和推送 IoT Edge 解決方案]。 在此步驟中使用 src/edge/deployment.objectCounter.template.json。
 
-![組建和推送 IoT Edge 解決方案](./media/event-based-video-recording-tutorial/build-push.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="組建和推送 IoT Edge 解決方案":::
 
 此動作會組建用於物件計數的 objectCounter 模組，並將映像推送至您的 Azure Container Registry。
 
@@ -160,7 +163,8 @@ ms.locfileid: "87011765"
 
 此步驟會在 src/edge/config/deployment.objectCounter.amd64.json 中建立 IoT Edge 部署資訊清單。 在該檔案上按一下滑鼠右鍵，然後選取 [建立單一裝置的部署]。
 
-![建立單一裝置的部署](./media/quickstarts/create-deployment-single-device.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="建立單一裝置的部署":::
 
 如果這是您在 IoT Edge 上使用 Live Video Analytics 的第一個教學課程，Visual Studio Code 會提示您輸入 IoTHub 連接字串。 您可以從 appsettings.json 檔案複製字串。
 
@@ -169,7 +173,8 @@ ms.locfileid: "87011765"
 在這個階段，已啟動將邊緣模組部署到您的 IoT Edge 裝置。
 在大約 30 秒後，重新整理 Visual Studio Code 左下方區段中的 Azure IoT 中樞。 您應該會看到已部署的四個模組，分別名為 lvaEdge、rtspsim、yolov3 和 objectCounter。
 
-![已部署的四個模組](./media/event-based-video-recording-tutorial/iot-hub.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="已部署的四個模組":::
 
 ## <a name="prepare-for-monitoring-events"></a>準備監視事件
 
@@ -179,9 +184,10 @@ ms.locfileid: "87011765"
 1. 展開 [裝置] 節點。
 1. 以滑鼠右鍵按一下 lva-sample-device 檔案，然後選取 [開始監視內建事件端點]。
 
-   ![開始監視內建事件端點](./media/quickstarts/start-monitoring-iothub-events.png)
-
-## <a name="run-the-program"></a>執行程式
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="開始監視內建事件端點":::
+    
+    ## <a name="run-the-program"></a>執行程式
 
 1. 在 Visual Studio Code 中，移至 src/cloud-to-device-console-app/operations.json。
 
@@ -390,13 +396,14 @@ applicationProperties 中的 subject 區段會參考圖表中產生此訊息的�
 1. 在訂用帳戶的資源中找出您的媒體服務帳戶。 開啟帳戶窗格。
 1. 選取 [媒體服務] 清單中的**資產**。
 
-    ![Assets](./media/continuous-video-recording-tutorial/assets.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="連續影片錄製":::
 1. 您會發現以 sampleAssetFromEVR-LVAEdge-{DateTime} 名稱列出的資產。 此名稱會在 RecordingStarted 事件的 outputLocation 屬性中提供。 拓撲中的 assetNamePattern 會決定此名稱的產生方式。
 1. 選取資產。
 1. 在資產詳細資料頁面上，選取 [串流 URL] 文字方塊底下的 [新建]。
 
-    ![新增資產](./media/continuous-video-recording-tutorial/new-asset.png)
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="新增資產":::
 1. 在開啟的精靈中，接受預設選項，然後選取 [新增]。 如需詳細資訊，請參閱[影片播放](video-playback-concept.md)。
 
     > [!TIP]

@@ -13,17 +13,17 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 05/29/2020
-ms.openlocfilehash: 4dbbf8267b4a7a1ea280d16ee787c8ae6cd652c9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: ec43ad0c83ea56af935b326a2b13aa3b3dc4fa13
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267353"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441765"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-to-query-an-azure-sql-database"></a>快速入門：使用 Azure 入口網站的查詢編輯器來查詢 Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-查詢編輯器是 Azure 入口網站中的一項工具，可針對 Azure SQL Database 中的資料庫或 Azure SQL 資料倉儲中的資料倉儲執行 SQL 查詢。 
+查詢編輯器是 Azure 入口網站中的一項工具，可針對 Azure SQL Database 中的資料庫或 Azure Synapse Analytics 中的資料倉儲執行 SQL 查詢。 
 
 在本快速入門中，您將使用查詢編輯器對資料庫執行 Transact-SQL (T-SQL) 查詢。
 

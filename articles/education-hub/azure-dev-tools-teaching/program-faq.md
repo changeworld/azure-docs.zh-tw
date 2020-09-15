@@ -7,14 +7,14 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: e28638e8daec5dcc283d61474d63ec41ec56ae63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100743"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567804"
 ---
-# <a name="frequently-asked-questions-about-azure-dev-tools-for-teaching"></a>有關 Azure Dev Tools for Teaching 的常見問題集
+# <a name="frequently-asked-questions-about-the-education-hub"></a>Education Hub 常見問題集
 
 本文會解決有關 Azure 學生版、Azure 學生入門版和 Azure Dev Tools for Teaching 的常見問題。
 
@@ -152,6 +152,11 @@ Azure 課程點數僅涵蓋從您開始啟用 Azure 贊助供應項目時的使�
 如果您在 Azure 入口網站的 [訂用帳戶] 刀鋒視窗中查看特定的訂用帳戶，您會看到**供應項目名稱**是其中一個屬性。 如果供應項目已連接到您的課程點數，則 [供應項目名稱] 會顯示 **Azure 贊助**。 如果未顯示 **Azure 贊助**，請聯絡支援人員以進行轉換。
 
 ## <a name="azure-dev-tools-for-teaching"></a>Azure Dev Tools for Teaching
+
+### <a name="who-is-eligible-to-purchase-microsoft-azure-dev-tools-for-teaching"></a>誰有資格購買 Azure Dev Tools for Teaching？
+
+只有已向 Microsoft 購買大量授權 (VL) 合約的學術機構，才能夠註冊 Azure Dev Tools for Teaching。  如果您目前是 Dev Tools for Teaching 客戶但沒有 VL 合約，可以繼續續訂您的訂用帳戶。 如需學術機構之 VL 合約的詳細資訊，請造訪 https://aka.ms/ees 
+
 
 ### <a name="what-products-are-included-in-the-azure-dev-tools-for-teaching-subscription"></a>Azure Dev Tools for Teaching 訂用帳戶包含哪些產品?
 

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 12d91e43576647b2ffbc1e78d2e059871dbe8a3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2a6aa0aa22fce5ba0f763f98fec37f607d0ce8a1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033168"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441761"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL Database 與 Azure SQL 受控執行個體連線及查詢的文章
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,7 +60,7 @@ Microsoft 針對連線至 Azure SQL Database 資料庫或 Azure SQL 受控執行
 
 您可以使用各種程式庫和架構，連線到 Azure SQL Database 或 Azure SQL 受控執行個體。 請查看我們的[快速入門教學課程](https://aka.ms/sqldev)來快速地開始使用程式設計語言，例如 C#、Java、Node.js、PHP 和 Python。 然後，在 Linux 或 Windows 上使用 SQL Server，或者在 macOS 上使用 Docker 建置應用程式。
 
-下表列出連線程式庫或驅動程式，用戶端應用程式可以用來從各種不同的語言連線到內部部署或雲端上執行之 SQL Server 並使用。 您可以在 Linux、Windows 或 Docker 上使用它們，並將其用於連線到 Azure SQL Database、Azure SQL 受控執行個體及 Azure SQL 資料倉儲。
+下表列出連線程式庫或驅動程式，用戶端應用程式可以用來從各種不同的語言連線到內部部署或雲端上執行之 SQL Server 並使用。 您可以在 Linux、Windows 或 Docker 上使用它們，並將其用於連線到 Azure SQL Database、Azure SQL 受控執行個體及 Azure Synapse Analytics (前稱 SQL 資料倉儲)。
 
 | Language | 平台 | 其他資源 | 下載 | 開始使用 |
 | :-- | :-- | :-- | :-- | :-- |

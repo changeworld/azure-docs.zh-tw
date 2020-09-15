@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cf35b2c15c0d85c93e69ef4e3b6c76932cbd75d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0443dcb2bf3bd58f2474c507c9f9594fb6d8a7f0
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229373"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469179"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>教學課程：將 Azure Active Directory 記錄串流到 Azure 事件中樞
 
@@ -60,8 +60,8 @@ ms.locfileid: "89229373"
 7. 選取 [確定]  以結束事件中樞設定。
 
 8. 執行下列其中一個動作或兩個動作都執行：
-    * 若要將稽核記錄傳送到儲存體帳戶，請選取 [AuditLogs]  核取方塊。 
-    * 若要將登入記錄傳送到儲存體帳戶，請選取 [SignInLogs]  核取方塊。
+    * 若要將稽核記錄傳送到事件中樞，請選取 [AuditLogs] 核取方塊。 
+    * 若要將登入記錄傳送到事件中樞，請選取 [SignInLogs] 核取方塊。
 
 9. 選取 [儲存]  以儲存設定。
 

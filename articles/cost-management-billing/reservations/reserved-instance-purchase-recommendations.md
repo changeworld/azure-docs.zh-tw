@@ -7,13 +7,13 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 08/04/2020
-ms.openlocfilehash: 813cf91195a43a2fc68236febe114c67eb5a3378
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/02/2020
+ms.openlocfilehash: 869009d7dd26685842da3c948fbdc058a38feb21
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684604"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398421"
 ---
 # <a name="reservation-recommendations"></a>保留建議
 
@@ -25,6 +25,7 @@ Azure 保留執行個體 (RI) 購買建議是透過 Azure 耗用量[保留建議
 2. 根據使用量資料，引擎會在使用和不使用保留的情況下來模擬您的成本。
 3. 系統會針對不同的數量來模擬成本，並建議節省最多成本的數量。
 4. 如果您的資源會定期關閉，則模擬找不到任何節省成本，因此不會提供任何購買建議。
+5. 建議會將您的隨選使用費率計算出的任何特殊折扣納入考量。
 
 ## <a name="recommendations-in-the-azure-portal"></a>Azure 入口網站中的建議
 
@@ -52,11 +53,11 @@ Azure 保留執行個體 (RI) 購買建議是透過 Azure 耗用量[保留建議
 
 Azure Advisor 會提供保留購買建議。 請記住下列幾點：
 
-- Advisor 只具有單一訂用帳戶範圍建議。
-- 建議是根據過去 30 天的使用趨勢而計算得出的。
+- Advisor 只具有單一訂用帳戶範圍建議。 如果要查看整個計費範圍的建議 (計費帳戶或帳單設定檔)，請移至 Azure 入口網站 > 保留 > 新增並選取要查看建議的類型。
+- Advisor 會提供過去 30 天的使用趨勢中提供的建議。
 - 建議數量和節省金額以 3 年期的保留為準。 如果服務未銷售 3 年期的保留，則會使用 1 年期的保留價格來計算建議。
-- 建議會將您的隨選使用費率可能有的任何特殊折扣納入考量。
-- 如果您購買共用範圍的保留，Advisor 保留購買建議最多可能需要 30 天才會消失。
+- 建議會將您的隨選使用費率計算出的任何特殊折扣納入考量。
+- 如果您購買共用範圍的保留，Advisor 保留購買建議最多可能需要 5 天才會消失。
 
 ## <a name="other-expected-api-behavior"></a>其他預期的 API 行為
 

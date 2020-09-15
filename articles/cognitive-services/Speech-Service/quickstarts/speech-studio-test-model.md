@@ -1,25 +1,25 @@
 ---
-title: 快速入門：使用音訊檔案來測試模型 - Speech Studio
+title: 使用音訊檔案來測試模型 - Speech Studio
 titleSuffix: Azure Cognitive Services
-description: 在此快速入門中，您將使用 Speech Studio 來測試音訊檔案中的語音辨識。
+description: 在此操作說明中，您會使用 Speech Studio 來測試音訊檔案中的語音辨識。
 services: cognitive-services
 author: v-demjoh
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 06/25/2020
+ms.date: 09/04/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 76fb933893b624e9b289ddf51d2a0373b51e58d1
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9101944a567df5000d3584ed48eff24e4c5e0057
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391531"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565798"
 ---
-# <a name="quickstart-test-a-model-using-an-audio-file-in-speech-studio"></a>快速入門：在 Speech Studio 中使用音訊檔案來測試模型
+# <a name="test-a-model-using-an-audio-file-in-speech-studio"></a>在 Speech Studio 中使用音訊檔案來測試模型
 
-在此快速入門中，您會使用 Speech Studio 將語音從音訊檔案轉換成文字。 Speech Studio 可讓您使用相關的文字、具有人為標記之文字記錄的音訊，以及您提供的發音指引，來測試、比較、改進及部署語音辨識模型。
+在此操作說明中，您會使用 Speech Studio 將語音從音訊檔案轉換成文字。 Speech Studio 可讓您使用相關的文字、具有人為標記之文字記錄的音訊，以及您提供的發音指引，來測試、比較、改進及部署語音辨識模型。
 
 ## <a name="prerequisites"></a>必要條件
 

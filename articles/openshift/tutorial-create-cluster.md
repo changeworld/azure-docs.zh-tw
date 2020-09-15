@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: a581678fdd05dade336f7ca9fcbcf5ad4c92d49a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f4b43129db5288275434253545861f3eae218e82
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300165"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89503783"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教學課程：建立 Azure Red Hat OpenShift 4 叢集
 
@@ -22,9 +22,9 @@ ms.locfileid: "89300165"
 
 ## <a name="before-you-begin"></a>開始之前
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-Azure Red Hat OpenShift 至少需要 40 個核心，才能建立和執行 OpenShift 叢集。 新 Azure 訂用帳戶的預設 Azure 資源配額不符合這項需求。 若要要求增加資源限制，請參閱[標準配額：VM 系列的增加限制](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)。
+Azure Red Hat OpenShift 至少需要 40 個核心，才能建立和執行 OpenShift 叢集。 新 Azure 訂用帳戶的預設 Azure 資源配額不符合這項需求。 若要要求增加資源限制，請參閱[標準配額：VM 系列的增加限制](../azure-portal/supportability/per-vm-quota-requests.md)。
 
 ### <a name="verify-your-permissions"></a>驗證權限
 
@@ -35,13 +35,31 @@ Azure Red Hat OpenShift 至少需要 40 個核心，才能建立和執行 OpenSh
 |**使用者存取系統管理員**|X|X| |
 |**參與者**|X|X|X|
 
-### <a name="register-the-resource-provider"></a>註冊資源提供者
+### <a name="register-the-resource-providers"></a>註冊資源提供者
 
-接下來，您必須在您的訂用帳戶中註冊 `Microsoft.RedHatOpenShift` 資源提供者。
+1. 如果您有多個 Azure 訂用帳戶，請指定相關的訂用帳戶識別碼：
 
-```azurecli-interactive
-az provider register -n Microsoft.RedHatOpenShift --wait
-```
+    ```azurecli-interactive
+    az account set --subscription <SUBSCRIPTION ID>
+    ```
+
+1. 註冊 `Microsoft.RedHatOpenShift` 資源提供者：
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.RedHatOpenShift --wait
+    ```
+    
+1. 註冊 `Microsoft.Compute` 資源提供者：
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Compute --wait
+    ```
+    
+1. 註冊 `Microsoft.Storage` 資源提供者：
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Storage --wait
+    ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>取得 Red Hat 提取祕密 (選擇性)
 
@@ -88,7 +106,7 @@ Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容
 
 1. **建立資源群組。**
 
-    Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 建立資源群組時，系統會要求您指定位置。 此位置是儲存資源群組中繼資料的位置，如果您未在資源建立期間指定另一個區域，此位置也會是您在 Azure 中執行資源的位置。 使用 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) 命令來建立資源群組。
+    Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 建立資源群組時，系統會要求您指定位置。 此位置是儲存資源群組中繼資料的位置，如果您未在資源建立期間指定另一個區域，此位置也會是您在 Azure 中執行資源的位置。 使用 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令來建立資源群組。
     
 > [!NOTE]
 > Azure Red Hat OpenShift 無法在可建立 Azure 資源群組的所有區域中使用。 如需支援 Azure Red Hat OpenShift 區域的相關資訊，請參閱[可用區域](https://docs.openshift.com/aro/4/welcome/index.html#available-regions)。
@@ -167,7 +185,7 @@ Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **[停用主要子網上的子網路私人端點原則](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy)。** 這是能夠連線和管理叢集的必要條件。
+5. **[停用主要子網上的子網路私人端點原則](../private-link/disable-private-link-service-network-policy.md)。** 這是能夠連線和管理叢集的必要條件。
 
     ```azurecli-interactive
     az network vnet subnet update \

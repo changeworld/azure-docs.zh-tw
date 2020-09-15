@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 070796cd260e56bb51115a7ef33ced8455bfb6a9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723551"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394392"
 ---
 # <a name="what-is-form-recognizer"></a>什麼是表單辨識器？
 
@@ -48,6 +48,7 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 ## <a name="prebuilt-models"></a>預先建置的模型
 
 表單辨識器也包含適用於唯一表單類型的預建模型。
+
 ### <a name="prebuilt-receipt-model"></a>預建的收據模型
 預建的收據模型可用來讀取來自澳大利亞、加拿大、英國、印度和美國的英文銷售收據&mdash;這是餐廳、加油站、零售商店等商家所使用的類型。 此模型會擷取索引鍵資訊，例如交易的時間和日期、商家資訊、稅金、明細項目和總計等等。 此外，預先建置的收據模型已定型為用來辨識及傳回收據上所有文字。 
 
@@ -74,9 +75,11 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
     * [不使用標籤進行定型 - cURL](quickstarts/curl-train-extract.md)
     * [不使用標籤進行定型 - Python](quickstarts/python-train-extract.md)
     * [使用標籤進行定型 - Python](quickstarts/python-labeled-data.md)
-  * 從美國銷售收據中擷取資料
+  * 從銷售收據中擷取資料
     * [擷取收據資料 - cURL](quickstarts/curl-receipts.md)
     * [擷取收據資料 - Python](quickstarts/python-receipts.md)
+  * 從名片擷取資料
+    * [擷取名片資料 - Python](quickstarts/python-business-cards.md)
   * 從表單中擷取文字和資料表結構
     * [擷取版面配置資料 - Python](quickstarts/python-layout.md)
 
@@ -90,6 +93,7 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 | **定型自訂模型**| 使用相同類型的 5 個表單來定型新模型，以分析您的表單。 將 _useLabelFile_ 參數設定為 `true`，以手動標記的資料進行定型。 |
 | **分析表單** |分析以資料流形式傳入的一份文件，以使用自訂模型從表單擷取文字、索引鍵/值組和資料表。  |
 | **分析收據** |分析單一收據文件，以擷取索引鍵資訊和其他收據文字。|
+| **分析名片** |分析名片以擷取重要資訊和文字。|
 | **分析版面配置** |分析表單的版面配置以擷取文字和資料表結構。|
 
 若要了解更多，請瀏覽 [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)。 如果您熟悉舊版的 API，請參閱[新功能](./whats-new.md)一文，以了解最近的變更。

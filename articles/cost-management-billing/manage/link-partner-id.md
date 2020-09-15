@@ -8,18 +8,18 @@ ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 8f3e4762b0c0286a47b407595cf73b66bef8d750
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: dc4d319e0e6b55af8af460fa8a56b9ef24a53341
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682836"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487346"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>將合作夥伴識別碼連結到您的 Azure 帳戶
 
 Microsoft 合作夥伴提供的服務可協助客戶使用 Microsoft 產品達成商業和任務目標。 代表客戶管理、設定和支援 Azure 服務時，合作夥伴使用者會需要存取客戶的環境。 合作夥伴可以使用合作夥伴管理連結 (PAL)，將其合作夥伴網路識別碼與用於服務傳遞的認證產生關聯。
 
-PAL 可讓 Microsoft 找出及辨識可促使 Azure 客戶成功的合作夥伴。Microsoft 可以根據帳戶的權限 (Azure 角色) 和範圍 (訂用帳戶、資源群組、資源)，將影響和使用 Azure 的收益歸屬於您的組織。
+PAL 可讓 Microsoft 找出及辨識可促使 Azure 客戶成功的合作夥伴。 Microsoft 可以根據帳戶的權限 (Azure 角色) 和範圍 (訂用帳戶、資源群組、資源)，將影響和使用 Azure 的收益歸屬於您的組織。
 
 ## <a name="get-access-from-your-customer"></a>取得客戶提供的存取權
 
@@ -133,10 +133,11 @@ C:\ az managementpartner delete --partner-id 12345
 
 合作夥伴識別碼與帳戶之間的連結必須對個別的客戶租用戶建立。 在每個客戶租用戶中連結合作夥伴識別碼。
 
+不過，如果您要透過 Azure Lighthouse 管理客戶資源，應該使用可存取客戶資源的帳戶，在服務提供者租用戶中建立連結。 如需詳細資訊，請參閱[連結您的合作夥伴識別碼，讓合作夥伴取得委派資源的點數](../../lighthouse/how-to/partner-earned-credit.md)。
+
 **其他合作夥伴或客戶是否可編輯或移除合作夥伴識別碼的連結？**
 
 連結會在使用者帳戶層級產生關聯。 只有您才可編輯或移除合作夥伴識別碼的連結。 客戶和其他合作夥伴無法變更合作夥伴識別碼的連結。
-
 
 **如果我的公司有多個 MPN 識別碼，我該使用哪一個？**
 
@@ -158,10 +159,11 @@ C:\ az managementpartner delete --partner-id 12345
 
 是，您可以連結 Azure Stack 的合作夥伴識別碼。
 
-**如果我的公司使用 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) 來存取客戶資源，我該如何連結我的合作夥伴識別碼？**
+**如果我的公司使用 [Azure Lighthouse](../../lighthouse/overview.md) 來存取客戶資源，我該如何連結我的合作夥伴識別碼？**
 
-如果您[將受管理的服務供應項目發佈至 Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)，將客戶上線至 Azure 委派的資源管理，您的 MPN 識別碼會自動產生關聯。 如果您[部署 Azure Resource Manager 範本來將客戶上線](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer)，則必須將 Microsoft 合作夥伴網路 (MPN) 識別碼與至少一個可存取每個已上架訂用帳戶的使用者帳戶建立關聯。 請注意，您必須在服務提供者租用戶中執行此作業。 為了簡化作業，建議您在租用戶中建立與您的 MPN 識別碼相關聯的服務主體帳戶，並授與其對您上架的每個客戶擁有讀取存取權。 在此範例中會使用 RBAC 讀取者角色，而且這個角色不符合 Partner Earned Credit 資格。 如需角色的詳細資訊，請參閱[適用於合作夥伴獲得之點數的角色和權限](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2)。
+如果您[將受管理的服務供應項目發佈至 Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md)，將客戶上線至 Azure 委派的資源管理，您的 MPN 識別碼會自動產生關聯。
 
+如果您[部署 Azure Resource Manager 範本將客戶上線](../../lighthouse/how-to/onboard-customer.md)，則必須將 MPN 識別碼與至少一個可存取每個已上線訂用帳戶的使用者帳戶建立關聯。 請注意，您必須在服務提供者租用戶中執行此作業，而不是在每個客戶租用戶中執行。 為了簡化作業，建議您在租用戶中建立服務主體帳戶並將其與 MPN ID 相關聯，再授與上線的每位客戶[可取得合作夥伴獲得之點數的 Azure 內建角色](/partner-center/azure-roles-perms-pec)。 如需詳細資訊，請參閱[連結您的合作夥伴識別碼，讓合作夥伴取得委派資源的點數](../../lighthouse/how-to/partner-earned-credit.md)。
 
 **如何向客戶說明合作夥伴管理連結 (PAL)？**
 
@@ -173,4 +175,4 @@ C:\ az managementpartner delete --partner-id 12345
 
 **這會對客戶 Azure 環境的安全性造成影響嗎？**
 
-PAL 關聯只會將合作夥伴的 MPN 識別碼新增至已佈建的認證，而且不會改變任何權限 (Azure 角色) 或提供其他 Azure 服務資料給合作夥伴或 Microsoft。 
+PAL 關聯只會將合作夥伴的 MPN 識別碼新增至已佈建的認證，而且不會改變任何權限 (Azure 角色) 或提供其他 Azure 服務資料給合作夥伴或 Microsoft。

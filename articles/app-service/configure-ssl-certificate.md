@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d45852326a7f771b2cf79e20c784e2c441fef0d6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: c8ede3c4a186b4b24d56651deb8172fdcde8e5ed
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401481"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420875"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure App Service 中新增 TLS/SSL 憑證
 
@@ -188,6 +188,13 @@ ms.locfileid: "89401481"
 
 如果您使用 Azure Key Vault 管理憑證，只要 PKCS12 憑證[符合需求](#private-certificate-requirements)，便可將該憑證從 Key Vault 匯入到 App Service。
 
+### <a name="authorize-app-service-to-read-from-the-vault"></a>授權 App Service 從保存庫讀取
+根據預設，App Service 資源提供者無法存取 Key Vault。 若要使用 Key Vault 進行憑證部署，您必須[授權資源提供者對 KeyVault 的讀取權限](../key-vault/general/group-permissions-for-apps.md#grant-access-to-your-key-vault)。 
+
+`abfa0a7c-a6b6-4736-8310-5855508787cd` 是 App Service 的資源提供者服務主體名稱，而對所有 Azure 訂用帳戶都是相同的。 針對 Azure Government 雲端環境，使用 `6a02c803-dafd-4136-b4c3-5a6f318b4714`，而不是資源提供者服務主體名稱。
+
+### <a name="import-a-certificate-from-your-vault-to-your-app"></a>將憑證從您的保存庫匯入到您的應用程式
+
 在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務] > \<app-name>。
 
 從您應用程式的左側導覽中，選取 [TLS/SSL 設定] > [私密金鑰憑證 (.pfx)] > [匯入 Key Vault 憑證]。
@@ -205,6 +212,9 @@ ms.locfileid: "89401481"
 當作業完成時，您會在 [私密金鑰憑證] 清單中看到憑證。 如果匯入失敗並發生錯誤，則表示憑證不符合 [App Service 的需求](#private-certificate-requirements)。
 
 ![Key Vault 憑證匯入完成](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
+
+> [!NOTE]
+> 如果您以新憑證更新 Key Vault 中的憑證，App Service 會在 48 小時內自動同步處理您的憑證。
 
 > [!IMPORTANT] 
 > 若要使用此憑證保護自訂網域，您仍然需要建立憑證繫結。 請依照[建立繫結](configure-ssl-bindings.md#create-binding)中的步驟。

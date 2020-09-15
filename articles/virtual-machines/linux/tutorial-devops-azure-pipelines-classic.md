@@ -12,16 +12,16 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: b8eec0d95144c012d3034e3f2c7c6e8adc921651
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6cc4fdb82e98c30ca33eec58675f2175dfcc2607
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510169"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612784"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>教學課程 - 設定 Azure Linux 虛擬機器的輪流部署策略
 
-Azure DevOps 是內建的 Azure 服務，可為所有 Azure 資源自動執行 DevOps 程序的每個部分。 無論應用程式使用的是虛擬機器、Web 應用程式、Kubernetes 或任何其他資源，您都可以使用 Azure 和 Azure DevOps 來實作基礎結構即程式碼 (IaaC)、持續整合、持續測試、持續傳遞和持續監視。
+Azure DevOps 是內建的 Azure 服務，可為所有 Azure 資源自動執行 DevOps 程序的每個部分。 無論應用程式使用的是虛擬機器、Web 應用程式、Kubernetes 或任何其他資源，您都可以使用 Azure 和 Azure DevOps 來實作基礎結構即程式碼 (IaC)、持續整合、持續測試、持續傳遞和持續監視。
 
 ![在 [服務] 底下選取 Azure DevOps 的 Azure 入口網站](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png)
 

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: e5adf007294ea4be0f5716a4614e0639f840fa75
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c7622c4916b186a39aad9dafb54a1e2404458794
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684927"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569351"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>新增、更新或移除用於 Azure 的信用卡
 
@@ -190,7 +190,7 @@ Microsoft Azure 支援的付款方法為信用卡和支票/電匯。 若要獲�
 
 ### <a name="how-do-i-change-the-tax-id"></a>如何變更統一編號？
 
-若要新增或更新統一編號，請在 [Azure 帳戶中心](https://account.azure.com/Profile)更新您的設定檔，然後選取 [稅務記錄]。 此統一編號會用於計算免稅金額，並出現在您的發票上。
+若要新增或更新統一編號，請在 [Azure 入口網站](https://portal.azure.com)更新您的設定檔，然後選取 [稅務記錄]。 此統一編號會用於計算免稅金額，並出現在您的發票上。
 
 ## <a name="check-the-type-of-your-account"></a>檢查帳戶的類型
 

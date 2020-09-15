@@ -1,6 +1,6 @@
 ---
-title: 使用此 Azure Resource Manager 範本，您將能夠部署 Web 應用程式的私人端點。
-description: 了解如何使用 ARM 範本為您的 Web 應用程式部署私人端點
+title: 使用 Azure 資源管理員範本來部署 Web 應用程式的私人端點
+description: 了解如何使用 ARM 範本為您的 Web 應用程式部署私人端點。
 author: ericgre
 ms.assetid: 49e460d0-7759-4ceb-b5a4-f1357e4fde56
 ms.topic: sample
@@ -8,16 +8,16 @@ ms.date: 07/08/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: ff2d59ed569037f34e24a69ffafa0df237a3de34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: acf7198477ce0c55f9321fd3f8e57294a60c0961
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524797"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89652020"
 ---
-# <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立 App Service 應用程式和部署私人端點
+# <a name="create-an-app-service-app-and-deploy-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立 App Service 應用程式和部署私人端點
 
-在本快速入門中，您將使用 Azure Resource Manager 範本建立 Web 應用程式並與私人端點公開。
+在本快速入門中，您將使用 Azure Resource Manager (ARM) 範本建立 Web 應用程式並與私人端點公開。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -37,13 +37,10 @@ ms.locfileid: "86524797"
 
 以下是將 Azure Resource Manager 範本部署至 Azure 的方法：
 
-1. 若要登入 Azure 並開啟範本，請選取 [部署至 Azure]。 此範本會建立 VNet、Web 應用程式、私人端點和私人 DNS 區域。
-
-   [部署至 Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json)
-
+1. 若要登入 Azure 並開啟範本，請選取此連結：[部署至 Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json)。 此範本會建立虛擬網路、Web 應用程式、私人端點和私人 DNS 區域。
 2. 選取或建立資源群組。
-3. 輸入 Web 應用程式的名稱、App Service 方案和私人端點。
-5. 閱讀條款及條件聲明。 若同意，請選取 [我同意上方所述的條款及條件] > [購買]。 部署需要幾分鐘的時間才能完成。
+3. 輸入 Web 應用程式的名稱、Azure App Service 方案和私人端點。
+5. 閱讀條款及條件聲明。 若同意，請選取 [我同意上方所述的條款及條件] > [購買]。 部署需要幾分鐘才能完成。
 
 ## <a name="clean-up-resources"></a>清除資源
 

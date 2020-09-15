@@ -11,24 +11,22 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 5da9e5b38b88a5a148bd3d85664daa523153086b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 206e1bc86404fa41b84647c50482dbe63301c0af
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589446"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425954"
 ---
-# <a name="what-is-the-translator"></a>什麼是翻譯工具？
+# <a name="what-is-translator"></a>什麼是翻譯工具？
 
-您可以輕鬆地在應用程式、網站、工具和解決方案中整合翻譯工具。 它可讓您以 [70 種以上的語言](languages.md)新增多語言使用者體驗，並且可在使用任何作業系統的任何硬體平台上用於文字轉換文字的語言翻譯。
-
-翻譯工具是由雲端中的機器學習與 AI 演算法所組成的 [Azure 認知服務](https://docs.microsoft.com/azure/?pivot=products&panel=ai)集合的一部分，可隨時供您在開發專案中取用。
+Azure 認知服務翻譯工具是雲端式機器翻譯服務，屬於 [Azure 認知服務](https://docs.microsoft.com/azure/?pivot=products&panel=ai) 系列的認知 API，可用來建置智慧型應用程式。 您可以輕鬆地在應用程式、網站、工具和解決方案中整合翻譯工具。 它可讓您以 [70 種以上的語言](languages.md)新增多語言使用者體驗，並且可在使用任何作業系統的任何硬體平台上用於文字轉換文字的語言翻譯。
 
 ## <a name="about-microsoft-translator"></a>關於 Microsoft Translator
 
-翻譯工具是一項雲端式機器翻譯服務。 核心服務是翻譯工具，可為多種 Microsoft 產品和服務提供技術支援，並由全球數千個企業運用在其應用程式和工作流程中，使其內容得以觸及全球各地的用戶。
+Azure 認知服務翻譯工具是一項雲端式機器翻譯服務。 翻譯工具可為多種 Microsoft 產品和服務提供技術支援，並由全球數千個企業運用在其應用程式和工作流程中，使其內容得以觸及全球各地的用戶。
 
-語音翻譯由翻譯工具提供技術支援，也可透過 [Microsoft 語音服務](https://docs.microsoft.com/azure/cognitive-services/speech-service/)來使用。 此服務將翻譯工具語音 API 和自訂語音服務的功能結合為統合且可完整自訂的服務。 翻譯工具語音 API 將取代為語音服務，且將於 2019 年 10 月 15 日除役。
+語音翻譯由翻譯工具提供技術支援，也可透過 [Microsoft 語音服務](https://docs.microsoft.com/azure/cognitive-services/speech-service/)來使用。 此服務將翻譯工具語音 API 和自訂語音服務的功能結合為統合且可完整自訂的服務。 
 
 ## <a name="language-support"></a>語言支援
 
@@ -46,7 +44,7 @@ NMT 模型位於 API 核心，使用者並不會看到這些模型。 唯一可�
 
 ## <a name="language-customization"></a>自訂語言
 
-自訂翻譯工具是核心 Microsoft Translator 服務的擴充功能，與翻譯工具搭配使用時，可協助您自訂類神經翻譯系統以及改善特定術語和風格的翻譯。
+自訂翻譯工具是翻譯工具服務的擴充功能，與翻譯工具搭配使用時，可協助您自訂類神經翻譯系統以及改善特定術語和風格的翻譯。
 
 透過自訂翻譯工具，您將可建置翻譯系統，以處理您自己的企業或產業中使用的術語。 其後，您自訂的翻譯系統將可透過一般翻譯工具，使用類別參數跨多種類型的裝置輕易整合到您現有的應用程式、工作流程和網站中。
 

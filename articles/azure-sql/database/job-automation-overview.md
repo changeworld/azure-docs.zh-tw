@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 537c989271800c15444d5323cfce8e133c8eeeba
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 8c9bdb059008a3d9e33631c3101cb7b459660119
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984637"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436777"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用資料庫作業將管理工作自動化
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ ms.locfileid: "85984637"
 - **SQL Agent 作業**是經過實戰測試的傳統 SQL Server 作業排程元件，適用於 Azure SQL 受控執行個體。 SQL Agent 作業不適用於 Azure SQL Database。
 - **彈性資料庫作業 (預覽)** 是可在 Azure SQL Database 中一或多個資料庫上執行自訂作業的作業排程服務。
 
-值得注意的是 SQL Agent (適用於內部部署並作為 SQL Database 受控執行個體的一部分) 與資料庫彈性作業代理程式 (適用於 Azure SQL Database 中的單一資料庫和 SQL 資料倉儲中的資料庫) 之間，有兩個不同之處。
+值得注意的是 SQL Agent (適用於內部部署並作為 SQL Database 受控執行個體的一部分) 與資料庫彈性作業代理程式 (適用於 Azure SQL Database 中的單一資料庫和 Azure Synapse Analytics 中的資料庫) 之間，有兩個不同之處。
 
 | |彈性作業 |SQL Agent |
 |---------|---------|---------|

@@ -7,14 +7,14 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: c2dffe576bfb52981b331c02b3f24ec2507ec349
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: MT
+ms.openlocfilehash: 662afb902c97e164cc24bc664b854db118904210
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501948"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89494269"
 ---
-共用映射資源庫是一種服務，可協助您建立影像周圍的結構和組織。 共用映像資源庫提供：
+共用映像庫服務可協助您圍繞映像來建置結構和組織。 共用映像資源庫提供：
 
 - 映像的全域複寫。
 - 對映像進行版本控制和分組，以便管理。
@@ -33,7 +33,7 @@ ms.locfileid: "86501948"
 
 | 資源 | 描述|
 |----------|------------|
-| **映像來源** | 這是資源，可用來在映像庫中建立**映像版本**。 映射來源可以是已[一般化或特製](#generalized-and-specialized-images)化的現有 Azure VM、受控映射、快照集、VHD 或另一個映射庫中的映射版本。 |
+| **映像來源** | 這是資源，可用來在映像庫中建立**映像版本**。 映像來源可以是現有的 Azure VM，其為[一般化或特殊化](#generalized-and-specialized-images)、受控映像、快照集、VHD 或另一個映像庫中的映像版本。 |
 | **映像庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
 | **映像定義** | 映像定義會在資源庫內建立，並帶有映像資訊以及在內部使用時所需滿足的需求。 這包括映像是 Windows 還是 Linux、版本資訊以及最小和最大的記憶體需求。 這是映像類型的定義。 |
 | **映像版本** | **映像版本**是在使用資源庫時用來建立 VM 的項目。 您可以視需要為環境準備多個映像版本。 和受控映像一樣，當您使用**映像版本**來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。 |
@@ -68,7 +68,7 @@ ms.locfileid: "86501948"
 * vCPU 和記憶體最小值和最大值建議 - 如果您的映像有 vCPU 和記憶體建議，您可以將該資訊附加至映像定義。
 * 不允許的磁碟類型 - 您可以提供 VM 儲存體需求的相關資訊。 例如，如果映像不適合標準 HDD 磁碟，您可以將其新增至不允許清單。
 * Hyper-V 產生 - 您可以指定映像是從 Gen 1 或 Gen 2 Hyper-V VHD 建立。
-* Marketplace 映射的購買方案資訊- `-PurchasePlanPublisher ` 、 `-PurchasePlanName` 和 `-PurchasePlanProduct` 。 如需購買方案資訊的詳細資訊，請參閱在[Azure Marketplace 中尋找影像](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)和[在建立映射時提供 Azure Marketplace 購買方案資訊](../articles/virtual-machines/marketplace-images.md)。
+* Marketplace 映像的購買方案資訊 - `-PurchasePlanPublisher `、`-PurchasePlanName`和 `-PurchasePlanProduct`。 如需購買方案資訊的詳細資訊，請參閱[在 Azure Marketplace 中尋找映像](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)和[在建立映像時提供 Azure Marketplace 購買方案資訊](../articles/virtual-machines/marketplace-images.md)。
 
 ## <a name="generalized-and-specialized-images"></a>一般化和特殊化映像
 
@@ -83,7 +83,7 @@ ms.locfileid: "86501948"
 
 ## <a name="regional-support"></a>區域支援
 
-所有公用區域都可以是目的地區域，但若要複寫至澳大利亞中部並澳大利亞中部2您必須將訂用帳戶新增至允許清單。 若要要求將訂用帳戶新增至允許清單，請移至：https://azure.microsoft.com/global-infrastructure/australia/contact/
+所有公用區域都可以是目標區域，但是若要複寫至澳大利亞中部和澳大利亞中部 2，您需要將訂用帳戶新增至允許清單。 若要要求將訂用帳戶新增至允許清單，請移至： https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>限制 
 
@@ -196,7 +196,7 @@ ms.locfileid: "86501948"
 * [使用共用映像庫需要哪些費用？](#what-are-the-charges-for-using-the-shared-image-gallery)
 * [我應該使用哪些 API 版本來建立共用映像庫、映像定義和映像版本？](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
 * [我應該使用哪些 API 版本來建立映像版本的共用 VM 或虛擬機器擴展集？](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
-* [是否可以使用受控映像將建立的虛擬機器擴展集更新為使用共用映像庫映像？]
+* [是否可以使用受控映像將建立的虛擬機器擴展集更新為使用共用映像庫映像？](#can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images)
 
 ### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>如何列出訂用帳戶之間的所有共用映像庫資源？
 
@@ -230,7 +230,7 @@ ms.locfileid: "86501948"
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以從特製化磁碟建立映像版本？
 
-是，可以使用[CLI](../articles/virtual-machines/vm-specialized-image-version-cli.md)、 [PowerShell](../articles/virtual-machines/vm-specialized-image-version-powershell.md)或 API，從特製化映射建立 VM。 
+是的，您可以使用 [CLI](../articles/virtual-machines/vm-specialized-image-version-cli.md)、[PowerShell](../articles/virtual-machines/vm-specialized-image-version-powershell.md) 或 API，從特殊化映像建立 VM。 
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>共用映像庫資源是否可以在建立後移至不同訂用帳戶？
 

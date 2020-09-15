@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 1ba293890f6a6fd165e03486d7da375f2ac53ab1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a86a7ee600d7443e5ba8cb4f30db0c48c8170327
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326427"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612172"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>建立資料標記專案和匯出標籤 
 
@@ -78,7 +78,7 @@ ms.locfileid: "87326427"
 
 1. 選取 [建立資料集] > [從資料存放區]。
 1. 為您的資料集指派 [名稱]。
-1. 選擇 [檔案] 作為 [資料集類型]。  
+1. 選擇 [檔案] 作為 [資料集類型]。  僅支援檔案資料集類型。
 1. 選取資料存放區。
 1. 如果您的資料位於 Blob 儲存體內的子資料夾中，請選擇 [瀏覽] 以選取路徑。
     * 為路徑附加 "/**"，可包含所選路徑的子資料夾內的所有檔案。

@@ -3,12 +3,12 @@ title: 什麼是 Azure Lighthouse ？
 description: Azure Lighthouse 能讓服務提供者以高度自動化且有效率的方式為其客戶傳遞受控服務。
 ms.date: 08/19/2020
 ms.topic: overview
-ms.openlocfilehash: d21d11d1316b177f38b6bce197dec4f2c3d3fac8
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 22bec7ec8944a11ce0cfdf51776f1f193a1aedaa
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660728"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488808"
 ---
 # <a name="what-is-azure-lighthouse"></a>什麼是 Azure Lighthouse ？
 
@@ -22,7 +22,7 @@ Azure Lighthouse 可協助您以符合成本效益且有效的方式，建置並
 
 - **大規模管理**：客戶業務開發和用來管理客戶資源的生命週期作業，已變得更加簡易且可調整。 現有的 API、管理工具和工作流程可以與委派的資源搭配使用，不論其所在區域。
 - **客戶能取得更高的可見度和精確度**：客戶將能對您的動作取得更高的可見度，以及針對其所委派的管理範圍取得更精確的控制 (包括完全移除存取權)，同時將能保留您的 IP。
-- **完整且整合的平台工具**：我們的工具體驗能解決重要的服務提供者案例，其中包括多個授權模型 (例如 EA、CSP 和隨用隨付)。 新的功能將能搭配現有的工具和 API、授權模型，以及如[雲端解決方案提供者計畫 (CSP)](/partner-center/csp-overview) 之類的合作夥伴計畫使用。 Azure Lighthouse 可整合到您的現有工作流程與應用程式中，而且您可以透過[連結您的合作夥伴識別碼](../cost-management-billing/manage/link-partner-id.md)來追蹤您對客戶業務開發的影響。
+- **完整且整合的平台工具**：我們的工具體驗能解決重要的服務提供者案例，其中包括多個授權模型 (例如 EA、CSP 和隨用隨付)。 新的功能將能搭配現有的工具和 API、授權模型，以及如[雲端解決方案提供者計畫 (CSP)](/partner-center/csp-overview) 之類的合作夥伴計畫使用。 Azure Lighthouse 可整合到您的現有工作流程與應用程式中，而且您可以[連結合作夥伴識別碼](./how-to/partner-earned-credit.md)來追蹤對客戶業務開發的影響，並接收合作夥伴獲得的點數。
 
 使用 Azure Lighthouse 來管理 Azure 資源並不會產生額外的費用。 任何 Azure 客戶或合作夥伴都可以使用 Azure Lighthouse。
 

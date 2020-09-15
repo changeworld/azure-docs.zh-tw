@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e9507525dc2c52f584bd7883a12da401b5999f50
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0ed50b8d128386008a73eb4d1a8b412a42fdb945
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585911"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485450"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 記錄
 
@@ -36,7 +36,7 @@ ms.locfileid: "88585911"
 > 本文提供適用於更新診斷記錄的 Azure PowerShell 指示。 您也可以使用 Azure 監視器，在Azure 入口網站的 [診斷記錄] 區段中更新診斷記錄。 
 >
 
-如 Key Vault 的概觀資訊，請參閱[什麼是 Azure Key Vault？](overview.md))。 如需 Key Vault 適用地區的詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/key-vault/)。
+如 Key Vault 的概觀資訊，請參閱[什麼是 Azure Key Vault？](overview.md))。 如需 Key Vault 適用地區的詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/key-vault/)。 如需使用[適用於 Key Vault 的 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview)相關資訊。
 
 ## <a name="prerequisites"></a>必要條件
 

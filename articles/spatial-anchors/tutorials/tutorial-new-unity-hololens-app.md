@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 06/22/2020
+ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ee8b8c2931d006dbb3d472b545030d3aff79c56a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 365fe8c330cadcc01fcd24de28b663cd80b55117
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297982"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535868"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>教學課程：使用 Azure Spatial Anchors 新建 HoloLens Unity 應用程式的逐步指示
 
@@ -34,7 +34,7 @@ ms.locfileid: "85297982"
 2. 選取 [ **新增**]。
 4. 確定已選取 **3D**。
 5. 為您的專案命名，然後輸入儲存**位置**。
-6. 按一下 [建立專案]。
+6. 選取 [建立專案]  。
 7. 使用下列途徑，將空的預設場景儲存至新檔案：[檔案] > [另存新檔]。
 8. 將新場景命名為**主要**，然後按 [儲存] 按鈕。
 
@@ -46,16 +46,15 @@ ms.locfileid: "85297982"
 1. 選取 [編輯] > [專案設定] > [品質]
 2. 在 **Windows 市集**標誌下方的資料行中，按一下 [預設] 資料列上的箭號，然後選取 [非常低]。 當 [Windows 市集] 資料行和 [非常低] 資料列中的方塊呈現為綠色時，即表示已正確套用設定。
 
-我們必須讓 Unity 知道我們嘗試匯出的應用程式應建立沉浸式檢視，而不是 2D 檢視。 我們可在以 Windows 10 SDK 為目標的 Unity 上啟用虛擬實境支援，以建立沉浸式檢視。
-
+我們需要以沉浸式檢視 (而非2D 檢視) 來設定 Unity 應用程式。 我們可在以 Windows 10 SDK 為目標的 Unity 上啟用虛擬實境支援，以建立沉浸式檢視。
 1. 移至 [編輯] > [專案設定] > [播放器]。
-2. 在 [播放程式設定] 的 [偵測器面板] 中，選取 **Windows 市集**圖示。
+2. 在 [播放程式設定] 的 [偵測器面板] 中，選取 **Windows** 圖示。
 3. 展開 [XR 設定] 群組。
 4. 在 [轉譯] 區段中核取 [支援虛擬實境] 核取方塊，以新增 [虛擬實境 SDK] 清單。
 5. 確認 **Windows Mixed Reality** 出現在清單中。 如果沒有，請選取清單底部的 **+** 按鈕，然後選擇 [Windows Mixed Reality]。
 
 > [!NOTE]
-> 若未看到 Windows 市集圖示，請仔細檢查以確定您在安裝之前已選取 Windows 市集 .NET 指令碼後端。 如果沒有，您可能需要以正確的 Windows 安裝重新安裝 Unity。
+> 若未看到 Windows 圖示，請仔細檢查以確定您在安裝之前已選取 Windows .NET 指令碼後端。 如果沒有，您可能需要以正確的 Windows 安裝重新安裝 Unity。
 
 **確認指令碼後端組態**
 1. 移至 [編輯] > [專案設定] > [播放器] (先前步驟中的**播放器**可能仍開啟)。
@@ -109,7 +108,7 @@ ms.locfileid: "85297982"
 
 您現在應已將**圓球**設為指令碼上的預製項目。 從 **Unity** 進行建置，然後重新開啟產生的 **Visual Studio** 解決方案，如您[立即試用](#trying-it-out)中所做的。
 
-在 **Visual Studio** 中，重新開啟 `AzureSpatialAnchorsScript.cs`。 在 `Start()` 方法中新增下列程式碼。 此程式碼將會連結 `GestureRecognizer`，而在出現空中點選及呼叫 `HandleTap` 時加以偵測。
+在 **Visual Studio** 中，重新開啟 `AzureSpatialAnchorsScript.cs`。 在 `Start()` 方法中新增下列程式碼。 這段程式碼會連結 `GestureRecognizer`，並會在偵測到點擊時呼叫 `HandleTap`。
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=86-95,98&highlight=4-10)]
 
@@ -127,7 +126,7 @@ ms.locfileid: "85297982"
 
 在使用 Unity 時，所有的 Unity API (例如您用來執行 UI 更新的 API) 都必須在主執行緒上執行。 但在我們所將撰寫的程式碼中，我們會在其他執行緒上取得回呼。 我們想要在這些回呼中更新 UI，因此需要透過某種方式從端執行緒切換到主執行緒。 若要從端執行緒執行主執行緒上的程式碼，我們會使用發送器模式。
 
-我們將新增成員變數 dispatchQueue，這是一個動作佇列。 我們會將動作推送到佇列上，然後清除佇列，並在主執行緒上執行動作。
+我們將新增成員變數 `dispatchQueue`，這是一個動作佇列。 我們會將動作推送到佇列上，然後清除佇列，並在主執行緒上執行動作。
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=43-56&highlight=6-9)]
 
@@ -135,27 +134,39 @@ ms.locfileid: "85297982"
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=112-122)]
 
-現在，我們將使用 update() 迴圈來檢查動作是否已排入佇列。 如果是，我們將清除佇列中的動作，然後加以執行。
+我們將使用 update() 迴圈來檢查動作是否已排入佇列。 如果是，我們將清除佇列中的動作，然後加以執行。
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=100-110&highlight=4-10)]
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>取得 Azure Spatial Anchors SDK
 
-## <a name="via-unity-package"></a>[透過 Unity 套件](#tab/UnityPackage)
+## <a name="via-unity-package-manager-upm-package"></a>[透過 Unity Package Manager (UPM) 套件](#tab/UPMPackage)
 
-現在，我們將下載 Azure Spatial Anchors SDK。 移至 [Azure Spatial Anchors GitHub 發行頁面](https://github.com/Azure/azure-spatial-anchors-samples/releases)。 在資產下方，下載 **AzureSpatialAnchors.unitypackage**。 在 Unity 中移至 [資產]，然後按一下 [匯入套件] > [自訂套件...]。瀏覽至套件並選取 [開啟]。
+這個方法與 Unity 2019.1+ 版本相容。
 
-在彈出的新 [匯入 Unity 套件] 視窗中，取消選取 [外掛程式]，然後按一下右下角的 [匯入]。
+### <a name="add-the-registry-to-your-unity-project"></a>將登錄新增至您的 Unity 專案
 
-現在，我們必須還原 Nuget 套件以取得 Azure Spatial Anchors SDK。 從 **Unity** 進行建置，然後開啟並重新建置產生的 **Visual Studio** 解決方案，如[立即試用](#trying-it-out)中所詳述。
+1. 在檔案總管中，瀏覽至您 Unity 專案的 `Packages` 資料夾。 在文字編輯器中開啟專案資訊清單檔案 `manifest.json`。
+2. 在檔案的頂端，與 `dependencies` 區段相同的層級上新增下列項目，以將 Azure 空間錨點登錄納入您的專案。 `scopedRegistries` 項目會告知 Unity 在何處尋找 Azure 空間錨點 SDK 套件。
 
-## <a name="via-nugetforunity"></a>[透過 NuGetForUnity](#tab/NuGetForUnity)
+    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-19&highlight=2-10)]
 
-首先，我們需要安裝 NuGetForUnity。 移至 [NuGetForUnity GitHub 發行頁面](https://github.com/GlitchEnzo/NuGetForUnity/releases)。 在 [資產] 下，下載最新的 **NuGetForUnity.unitypackage**。 在 Unity 中移至 [資產]，然後按一下 [匯入套件] > [自訂套件...]。瀏覽至套件並選取 [開啟]。 Unity 現在會安裝 NugetForUnity。 如果您在 Unity 中未看到新的 [NuGet] 下拉式清單，則可能需要在 [專案] > [資產] 底下按一下滑鼠右鍵。 然後選取 [全部重新匯入]。
+### <a name="add-the-sdk-package-to-your-unity-project"></a>將 SDK 套件新增至您的 Unity 專案
 
-安裝好 NuGetForUnity 之後，請選取 [NuGet] > [管理 NuGet 套件]。 然後搜尋 Microsoft.Azure.SpatialAnchors.Unity，並選取 [安裝]。
+1. 將具有 Azure 空間錨點 Windows SDK 套件名稱 (`com.microsoft.azure.spatial-anchors-sdk.windows`) 和套件版本的項目新增至專案資訊清單中的 `dependencies` 區段。 請參閱下面的範例。
 
-我們現在需要建置以取得實際的 Azure Spatial Anchors SDK，原因是我們剛剛下載的 NuGet 套件只包含協助程式指令碼。 從 **Unity** 進行建置，然後開啟並重新建置產生的 **Visual Studio** 解決方案，如[立即試用](#trying-it-out)中所詳述。
+    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-20&highlight=12)]
+
+2. 儲存並關閉 `manifest.json` 檔案。 當您回到 Unity 時，Unity 應該會自動偵測專案資訊清單變更，並擷取指定的套件。 您可以展開專案檢視中的 `Packages` 資料夾，確認已匯入正確的套件。
+
+## <a name="via-unity-asset-package"></a>[透過 Unity 資產套件](#tab/UnityAssetPackage)
+
+> [!WARNING]
+> SDK 版本 2.5.0 之後，Azure 空間錨點 SDK 的 Unity 資產套件散發將會被取代。
+
+現在可以下載 Azure Spatial Anchors SDK。 移至 [Azure Spatial Anchors GitHub 發行頁面](https://github.com/Azure/azure-spatial-anchors-samples/releases)。 在**資產**下方，下載 **AzureSpatialAnchors.unitypackage**。 在 Unity 中移至**資產**，然後選取 [匯入套件] > [自訂套件...]。瀏覽至套件並選取 [開啟]。
+
+在彈出的新 [匯入 Unity 套件] 視窗中，取消選取 [外掛程式]，然後選取右下角的 [匯入]。
 
 ---
 
@@ -185,7 +196,7 @@ ms.locfileid: "85297982"
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-344,396&highlight=14-25)]
 
-在進一步操作之前，您必須先建立 Azure Spatial Anchors 帳戶以取得帳戶識別碼、金鑰和網域 (如果您還沒有這些項目的話)。 請依照下一節的指示加以取得。
+在進一步操作之前，您必須先建立 Azure Spatial Anchors 帳戶以取得帳戶識別碼、金鑰和網域。 如果您還沒有這些值，請遵循下一節的內容來取得。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -197,7 +208,7 @@ ms.locfileid: "85297982"
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-再次從 **Visual Studio** 執行您的應用程式。 動一動您的頭部，然後藉由空中點選放置圓球。 一旦有足夠的畫面格時，圓球就會變成黃色，並開始進行雲端上傳。 上傳完成後，圓球就會變成藍色。 (選擇性) 您也可以使用 **Visual Studio** 內的 [輸出] 視窗來監視應用程式傳送的記錄訊息。 您將可查看建立進度的建議資訊，和雲端在上傳完成時可能傳回的錨點識別碼。
+再次從 **Visual Studio** 執行您的應用程式。 動一動您的頭部，然後藉由空中點選放置圓球。 一旦有足夠的畫面格時，圓球就會變成黃色，並開始進行雲端上傳。 上傳完成後，圓球就會變成藍色。 (選擇性) 您也可以使用 **Visual Studio** 內的 [輸出] 視窗來監視應用程式傳送的記錄訊息。 您可以觀賞 `RecommendedForCreateProgress`，一旦上傳完成，您就能夠看到從雲端傳回的錨點識別碼。
 
 > [!NOTE]
 > 如果您收到「DllNotFoundException：無法載入 DLL 'AzureSpatialAnchors'：找不到指定的模組。」，您應**清除**解決方案並重新加以**建置**。
@@ -216,7 +227,7 @@ ms.locfileid: "85297982"
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=124-177)]
 
-現在，我們必須連結在找到所要查詢的錨點時所將叫用的程式碼。 在 `InitializeSession()` 內，新增下列回呼：
+現在，我們必須連結在找到所要查詢的錨點時所將叫用的程式碼。 在 `InitializeSession()` 內，新增下列回撥：
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=206-212&highlight=4-5)]
 
@@ -225,6 +236,6 @@ ms.locfileid: "85297982"
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=234-271)]
 
-就這麼簡單！ 最後一次從 **Visual Studio** 執行您的應用程式，並且端對端地嘗試進行整個案例。 移動您的裝置，並放置白色圓球。 然後，繼續移動您的頭部以擷取環境資料，直到圓球變成黃色。 您的本機錨點將會上傳，且圓球會變成藍色。 最後，再次點選螢幕，以移除本機錨點，接著我們將查詢其雲端對應項目。 繼續移動您的裝置，直到找到雲端空間錨點為止。 綠色圓球應會出現在正確的位置，而您可以清除並再次重複整個案例。
+就這麼簡單！ 最後一次從 **Visual Studio** 執行您的應用程式，並且端對端地嘗試進行整個案例。 移動您的裝置，並放置白色圓球。 然後，繼續移動您的頭部以擷取環境資料，直到圓球變成黃色。 您的本機錨點將會上傳，且圓球會變成藍色。 最後，再次點選螢幕以移除本機錨點，接著開始查詢其雲端對應項目。 繼續移動您的裝置，直到找到雲端空間錨點為止。 綠色圓球應會出現在正確的位置，而您可以再次重複整個案例。
 
 [!INCLUDE [AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md)]

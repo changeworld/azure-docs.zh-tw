@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
+ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 04505527428a6bb312c6fb7a12c116947fbd7cf6
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e6ab713715cacc799d2b980c2bce2a2a15b76887
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310846"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505449"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>快速入門：設定 IoT 解決方案
 
@@ -45,8 +45,8 @@ ms.locfileid: "81310846"
 若要將新的資源新增至 IoT 解決方案，請執行下列步驟：
 
 1. 在 Azure 入口網站中開啟您的 **IoT 中樞**。
-1. 從左側功能表中選取並開啟 [安全性]  之下的 [資源]  。
-1. 選取 [編輯]  ，然後選擇屬於您 IoT 解決方案的資源群組。
+1. 從左側功能表的**安全性**區段中，選取並開啟**設定**，然後選取 [受監視的資源]。
+1. 選取**編輯**，然後選取屬於您 IoT 解決方案的受監視資源。
 1. 按一下 [新增]  。
 
 恭喜！ 您已將新的資源群組新增至 IoT 解決方案。

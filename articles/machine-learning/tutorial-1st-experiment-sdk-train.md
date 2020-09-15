@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: fb380e4b71ba68daf694ab725c41be64f066805e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 7052617eb83dbd07c2d6938dcbb7a38ba19f3aad
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854937"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536222"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教學課程：定型第一個 ML 模型
 
@@ -56,11 +56,14 @@ ms.locfileid: "88854937"
 使用 `from_config().` 函式匯入 `Workspace` 類別，並從 `config.json` 檔案載入您的訂用帳戶資訊。根據預設，此功能會在目前的目錄中尋找 JSON 檔案，但您也可以使用 `from_config(path="your/file/path")` 指定路徑參數來指向檔案。 如果您是在工作區的雲端 Notebook 伺服器上執行此 Notebook，則檔案會自動位於根目錄中。
 
 如果下列程式碼要求額外的驗證，只需在瀏覽器中貼上連結並輸入驗證權杖即可。 此外，如果您有多個租用戶連結到使用者，您將需要新增下列幾行：
-```
+
+```python
 from azureml.core.authentication import InteractiveLoginAuthentication
 interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
-Additional details on authentication can be found here: https://aka.ms/aml-notebook-auth 
 ```
+
+如需驗證的詳細資訊，請參閱[在 Azure Machine Learning 中的驗證](https://aka.ms/aml-notebook-auth)
+
 
 ```python
 from azureml.core import Workspace

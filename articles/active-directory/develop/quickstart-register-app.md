@@ -1,77 +1,133 @@
 ---
-title: 快速入門：向 Microsoft 身分識別平台註冊應用程式 | Azure
-description: 在本快速入門中，您將了解如何新增應用程式，並向 Microsoft 身分識別平台註冊該應用程式。
+title: 快速入門：在 Microsoft 身分識別平台註冊應用程式 | Azure
+description: 在本快速入門中，您將了解如何向 Microsoft 身分識別平台註冊應用程式。
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/12/2020
-ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40
+ms.date: 09/03/2020
+ms.author: marsma
+ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 65fff06b4a2d28bbc276920ccbaba90d814d03f3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5f34215d57bd5dae8c9a5e6e8f4630b7ed0c827e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115351"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436688"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入門：使用 Microsoft 身分識別平台來註冊應用程式
 
-在本快速入門中，您會使用 Azure 入口網站中的**應用程式註冊**體驗來註冊應用程式。 
+在本快速入門中，您會在 Azure 入口網站中註冊應用程式，因此 Microsoft 身分識別平台可為您的應用程式和其使用者提供驗證和授權服務。
 
-當您以 Azure Active Directory 租用戶註冊應用程式時，您的應用程式就會與 Microsoft 身分識別平台整合。 企業開發人員和軟體即服務 (SaaS) 提供者可以開發可與 Microsoft 身分識別平台整合的商業雲端服務或企業營運應用程式。 整合可為這類服務提供安全的登入和授權。
+您想要讓 Microsoft 身分識別平台執行身分識別與存取權管理 (IAM) 的每個應用程式都必須註冊。 無論是用戶端應用程式 (例如 web 或行動應用程式)，或支援用戶端應用程式的 Web API，註冊會在您的應用程式與身分識別提供者 (Microsoft 身分識別平台) 之間建立信任關係。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* [Azure AD 租用戶](quickstart-create-new-tenant.md)。
+* 包含作用中訂用帳戶的 Azure 帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* 完成[快速入門：設定租用戶](quickstart-create-new-tenant.md)
 
-## <a name="register-a-new-application-using-the-azure-portal"></a>使用 Azure 入口網站註冊新的應用程式
+## <a name="register-an-application"></a>註冊應用程式
 
-1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取您的帳戶。 將您的入口網站工作階段設定為您想要的 Azure AD 租用戶。
-1. 搜尋並選取 [Azure Active Directory]  。 在 [管理]  底下選取 [應用程式註冊]  。
-1. 選取 [新增註冊]  。
-1. 在 [註冊應用程式]  中，輸入要向使用者顯示且有意義的應用程式名稱。
-1. 指定可以使用應用程式的人員，如下所示：
+註冊應用程式會在您的應用程式與 Microsoft 身分識別平台之間建立信任關係。 信任是單向的：您的應用程式會信任 Microsoft 身分識別平台，反之則不同。
+
+請依照這些步驟建立應用程式註冊：
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 如果您有多個租用的存取權，請使用頂端功能表中的**目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/quickstart-register-app/portal-01-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+1. 搜尋並選取 [Azure Active Directory]  。
+1. 在 [管理]下選取 [應用程式註冊]，再選取 [新增註冊]。
+1. 輸入應用程式的**名稱**。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
+1. 指定可以使用應用程式的人員，有時也稱為「登入受眾」。
 
     | 支援的帳戶類型 | 描述 |
     |-------------------------|-------------|
-    | **僅此組織目錄中的帳戶** | 如果您要建置企業營運 (LOB) 應用程式，請選取此選項。 如果您未在目錄中註冊應用程式，則無法使用此選項。<br><br>此選項對應至僅限 Azure AD 的單一租用戶。<br><br>除非您在目錄外註冊應用程式，否則會預設使用此選項。 如果在目錄外註冊應用程式，則會預設使用 Azure AD 多租用戶和個人 Microsoft 帳戶。 |
-    | **任何組織目錄中的帳戶** | 如果您想要鎖定所有商業和教育客戶，請選取此選項。<br><br>此選項對應至僅限 Azure AD 的多租用戶。<br><br>如果您將應用程式註冊為僅限 Azure AD 的單一租用戶，則可透過 [驗證]  頁面，將其更新為 Azure AD 多租用戶以及重新更新為單一租用戶。 |
-    | **任何組織目錄中的帳戶及個人的 Microsoft 帳戶** | 選取此選項以鎖定最廣泛的一組客戶。<br><br>此選項對應至 Azure AD 多租用戶和個人 Microsoft 帳戶。<br><br>如果您將應用程式註冊為 Azure AD 多租用戶和個人 Microsoft 帳戶，則無法在 UI 中變更此設定。 相反地，您必須使用應用程式資訊清單編輯器來變更支援的帳戶類型。 |
+    | **僅此組織目錄中的帳戶** | 如果您要建置的應用程式僅供「您」租用戶中的使用者 (或來賓) 使用，請選取此選項。<br><br>通常稱為「企業營運應用程式」 (LOB) ，這是 Microsoft 身分識別平台中的**單一租用戶**應用程式。 |
+    | **任何組織目錄中的帳戶** | 如果您想要讓「任何」Azure AD 租用戶中的使用者都能使用您的應用程式，請選取此選項。 例如，如果要建立要提供給多個組織的軟體即服務 (SaaS) 應用程式，則適合使用此選項。<br><br>這在 Microsoft 身分識別平台中稱為**多租用戶**應用程式。 |
+    | **任何組織目錄中的帳戶及個人的 Microsoft 帳戶** | 選取此選項以鎖定最廣泛的一組客戶。<br><br>選取此選項，即表示您註冊的**多租用戶**應用程式也可以支援個人 **Microsoft 帳戶** (MSA)。 |
+    | **個人 Microsoft 帳戶** | 如果您要建置的應用程式僅供個人 Microsoft 帳戶中的使用者使用，請選取此選項。 個人 Microsoft 帳戶包括 Skype、Xbox、Live 和 Hotmail 帳戶。 |
 
-1. 在 [重新導向 URI (選擇性)]  底下，選取您要建立的應用程式類型：**Web** 或**公用用戶端 (行動和傳統型)** 。 然後輸入應用程式的重新導向 URI 或回覆 URL。
+1. 請勿在**重新導向 URI (選用)** 中輸入任何項目，您將在下一節中設定。
+1. 選取 [註冊] 以完成伺服器初始註冊。
 
-    * 若為 Web 應用程式，請提供應用程式的基底 URL。 例如，`https://localhost:31544` 可能是在您的本機電腦上執行之 Web 應用程式的 URL。 使用者會使用此 URL 來登入 Web 用戶端應用程式。
-    * 若為公用用戶端應用程式，請提供 Azure AD 用來傳回權杖回應的 URI。 輸入應用程式特定的值，例如 `myapp://auth`。
+    :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="Web 瀏覽器中的 Azure 入口網站螢幕擷取畫面，其中顯示註冊應用程式窗格。":::
 
-    如需 Web 應用程式或原生應用程式的範例，請參閱 [Microsoft 身分識別平台](./index.yml)中的快速入門。
+註冊完成時，Azure 入口網站會顯示應用程式註冊的**概觀**窗格，其中包含其**應用程式 (用戶端) 識別碼**。 也稱為僅*用戶端識別碼*，此唯一值可用來在 Microsoft 身分識別平台中識別您的應用程式。
 
-1. 完成時，選取 [註冊]  。
+應用程式的程式碼 (或通常是應用程式中使用的驗證程式庫) 也會使用用戶端識別碼作為驗證其從身分識別平台接收之安全性權杖的一個方式。
 
-    ![顯示在 Azure 入口網站註冊新應用程式的畫面](./media/quickstart-add-azure-ad-app-preview/new-app-registration.png)
+:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Web 瀏覽器中的 Azure 入口網站螢幕擷取畫面，其中顯示應用程式註冊的概觀窗格。":::
 
-Azure AD 會將唯一的應用程式識別碼或用戶端識別碼指派給您的應用程式。 入口網站會開啟應用程式的 [概觀]  頁面。 若要在應用程式中新增功能，您可以選取其他組態選項，包括商標、憑證和祕密、API 權限等等。
+## <a name="add-a-redirect-uri"></a>新增重新導向 URI
 
-![新註冊應用程式的 [概觀] 頁面範例](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)
+重新導向 URI 是 Microsoft 身分識別平台將使用者重新導向的用戶端，且會在驗證之後傳送安全性權杖的位置。
+
+例如，在生產 Web 應用程式中，重新導向 URI 通常是執行您應用程式的公用端點，例如 `https://contoso.com/auth-response`。 在開發期間，通常也會新增您在本機執行應用程式的端點，例如 `https://127.0.0.1/auth-response`。
+
+您可以藉由設定其[平台設定](#configure-platform-settings)，為已註冊的應用程式新增和修改重新導向 URI。
+
+### <a name="configure-platform-settings"></a>設定平台設定
+
+每種應用程式類型的設定 (包括重新導向 URI) 都是在 Azure 入口網站的**平台組態**中設定。 某些平台 (例如 **Web** 和**單一頁面應用程式**) 需要您手動指定重新導向 URI。 針對其他平台 (例如行動裝置和桌面)，您可以選取在設定其他設定時為您產生的重新導向 URI。
+
+若要根據平台或裝置來設定應用程式設定，您的目標是：
+
+1. 在 Azure 入口網站的**應用程式註冊**中，選取您的應用程式。
+1. 在 [管理] 底下，選取 [驗證]。
+1. 在 [平台設定] 下，選取 [新增平台]。
+1. 在 **設定平台**中，選取應用程式類型 (平台) 的圖格以加以設定。
+
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Azure 入口網站中平台組態 窗格的螢幕擷取畫面" border="false":::
+
+    | 平台 | 組態設定 |
+    | -------- | ---------------------- |
+    | **Web** | 為應用程式輸入**重新導向 URI**，這是 Microsoft 身分識別平台將使用者重新導向的用戶端，且會在驗證之後傳送安全性權杖的位置。<br/><br/>針對在伺服器上執行的標準 Web 應用程式，選取此平台。 |
+    | **單一頁面應用程式** | 為應用程式輸入**重新導向 URI**，這是 Microsoft 身分識別平台將使用者重新導向的用戶端，且會在驗證之後傳送安全性權杖的位置。<br/><br/>如果您要以 JavaScript 建立用戶端 Web 應用程式，或使用像是Angular、Vue.js、React.js 或 Blazor WebAssembly 的架構，請選取此平台。 |
+    | **iOS / macOS** | 輸入應用程式的**套件組合識別碼**，您可以在 XCode 中的 Info.plist 或組建設定中找到此識別碼。<br/><br/>指定套件組合識別碼時，系統會為您產生重新導向 URI。 |
+    | **Android** | 輸入應用程式的**套件名稱**，您可以在 AndroidManifest.xml 檔案中找到，並產生再輸入**簽章雜湊**。<br/><br/>指定這些設定時，系統會為您產生重新導向 URI。 |
+    | **行動應用程式與傳統型應用程式** | 選取其中一個**建議的重新導向 URI**，或指定**自訂重新導向 URI**。<br/>針對桌面應用程式，建議您：<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>針對未使用最新 Microsoft 驗證程式庫 (MSAL) 或未使用訊息代理程式的行動應用程式，請選取此平台。 此外，也請為桌面應用程式選取此平台。 |
+1. 選取 [設定] 以完成平台組態。
+
+### <a name="redirect-uri-restrictions"></a>重新導向 URI 的限制
+
+您新增至應用程式註冊的重新導向 URI 格式有特定限制。 如需這些限制詳細資訊，請參閱[重新導向 URI (回覆 URL) 的限制](reply-url.md)。
+
+## <a name="add-credentials"></a>新增認證
+
+存取 Web API 的機密用戶端應用程式會使用認證。 機密用戶端的範例包括 Web 應用程式、其他 Web API，或服務和精靈類型的應用程式。 認證可讓您的應用程式以自己的身分進行驗證，不需要在執行階段與使用者進行互動。
+
+您可以將憑證和用戶端密碼 (字串) 當作認證新增至您的機密用戶端應用程式註冊。
+
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Azure 入口網站螢幕擷取畫面，顯示應用程式註冊中的憑證和祕密窗格":::
+
+### <a name="add-a-certificate"></a>新增憑證
+
+有時也稱為「公開金鑰」，憑證是建議的認證類型，因為憑證提供比用戶端密碼更高的保證層級。
+
+1. 在 Azure 入口網站的**應用程式註冊**中，選取您的應用程式。
+1. 選取 [憑證及祕密] > [上傳憑證]。
+1. 選取您想要上傳的檔案。 檔案必須是下列其中一種檔案類型：.cer、.pem、.crt。
+1. 選取 [新增]  。
+
+### <a name="add-a-client-secret"></a>新增用戶端密碼
+
+用戶端密碼 (也稱為「應用程式密碼」)是一個字串值，您的應用程式可以用來來取代憑證，以識別自己的身分。 這兩種認證類型較容易使用，而且通常會在開發期間使用，但普遍認為其安全性比不上憑證。 您應該在生產環境中執行的應用程式中使用憑證。
+
+1. 在 Azure 入口網站的**應用程式註冊**中，選取您的應用程式。
+1. 選取 [憑證及祕密] >  [新增用戶端密碼]。
+1. 新增用戶端密碼的描述。
+1. 選取持續時間。
+1. 選取 [新增]  。
+1. **記錄祕密值**以用於您的用戶端應用程式程式碼 - 此值在您離開此頁面後就「不會再次顯示」。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要存取 Web API，請參閱[快速入門：設定用戶端應用程式以存取 Web API](quickstart-configure-app-access-web-apis.md)
+用戶端應用程式通常需要存取 Web API 中的資源。 除了使用 Microsoft 身分識別平台來保護您的用戶端應用程式，您還可以使用平台來授權範圍，以及授權以權限為基礎的 Web API 存取。
 
-* 如需有關權限的資訊，請參閱 [Microsoft 身分識別平台端點中的權限和同意](v2-permissions-and-consent.md)。
+請移至本系列中的下一個快速入門，為您的 Web API 建立另一個應用程式註冊，並公開其範圍。
 
-* 若要公開 Web API，請參閱[快速入門：設定應用程式以公開 Web API](quickstart-configure-app-expose-web-apis.md)。
-
-* 若要管理支援的帳戶，請參閱[快速入門：修改應用程式所支援的帳戶](quickstart-modify-supported-accounts.md)。
-
-* 若要建立應用程式並新增功能，請參閱 [Microsoft 身分識別平台](./index.yml)中的快速入門。
-
-* 若要了解代表已註冊的應用程式和它們之間關係的兩個 Azure AD 物件，請參閱[應用程式物件和服務主體物件](app-objects-and-service-principals.md)。
-
-* 若要深入了解開發應用程式時應使用的商標指導方針，請參閱[應用程式的商標指導方針](howto-add-branding-in-azure-ad-apps.md)。
+> [!div class="nextstepaction"]
+> [設定應用程式以公開 Web API](quickstart-configure-app-expose-web-apis.md)

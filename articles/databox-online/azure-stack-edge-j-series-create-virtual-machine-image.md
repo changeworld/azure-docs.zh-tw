@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 83332c3bfa0b2b99d7333fa679fb8d398aecf8bd
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: fd87cbef4c667d9da1f93b448a2a67e6e90307b7
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268905"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500278"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-device"></a>為 Azure Stack Edge 裝置建立自訂 VM 映像
 
@@ -52,7 +52,22 @@ ms.locfileid: "89268905"
 
 1. 建立 Linux 虛擬機器。 如需詳細資訊，請移至[教學課程：使用 Azure CLI 建立和管理 Linux VM](../virtual-machines/linux/tutorial-manage-vm.md)。
 
-2. [下載現有的 OS 磁碟](../virtual-machines/linux/download-vhd.md)。
+1. 取消佈建 VM。 使用 Azure VM 代理程式將電腦特定的檔案和資料刪除。 在來源 Linux VM 上使用 `waagent` 命令搭配 `-deprovision+user` 參數。 如需詳細資訊，請參閱[了解和使用 Azure Linux 代理程式](../virtual-machines/extensions/agent-linux.md)。
+
+    1. 使用 SSH 用戶端連線到 Linux VM。
+    2. 在 SSH 視窗中，輸入下列命令：
+       
+        ```bash
+        sudo waagent -deprovision+user
+        ```
+       > [!NOTE]
+       > 只在您要擷取作為映像的 VM 上執行這個命令。 此命令不能保證映像檔中的所有機密資訊都會清除完畢或適合轉散發。 `+user` 參數也會移除最後一個佈建的使用者帳戶。 若要在 VM 中保留使用者帳戶認證，僅使用 `-deprovision`。
+     
+    3. 輸入 **y** 繼續。 您可以新增 `-force` 參數，便不用進行此確認步驟。
+    4. 在命令完成之後，請輸入**exit** 關閉 SSH 用戶端。  此時 VM 仍會在執行中。
+
+
+1. [下載現有的 OS 磁碟](../virtual-machines/linux/download-vhd.md)。
 
 使用此 VHD，現在即可在您的 Azure Stack Edge 裝置上建立及部署 VM。 您可使用下列兩個 Azure Marketplace 映像來建立 Linux 自訂映像：
 

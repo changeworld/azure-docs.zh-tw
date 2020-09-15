@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 08/25/2020
+ms.date: 09/08/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: dbcd8ab2f2825e18943436dcc1a9ca4ff38e2d8d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 2ce5f0c9b340e1b81fcf002ee70e7ec1cc74d38c
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871202"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594317"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>什麼是 Azure AD 權利管理？
 
@@ -153,7 +153,7 @@ Azure AD 權利管理有助於解決這些挑戰。  若要深入了解客戶一
 - 使用者若已獲得委派的系統管理工作 (例如目錄建立者、目錄擁有者和存取套件管理員)，就不需要任何授權。
 - 來賓若**可以**要求存取套件，但**未**要求存取套件，就不需要任何授權。
 
-針對您為成員使用者 (員工) 購買的每個付費 Azure AD Premium P2 授權，您可以使用 Azure AD B2B 來邀請最多 5 位來賓使用者。 這些來賓使用者也可以使用 Azure AD Premium P2 功能。 如需詳細資訊，請參閱 [Azure AD B2B 共同作業授權指引](../external-identities/licensing-guidance.md)。
+Azure AD 外部身分識別 (來賓使用者) 定價是以每月的活躍使用者 (MAU) 為基礎，這是在日曆月份內進行驗證活動的唯一使用者計數。 此模型會以 1:5 的比例取代計費模型，在您的租用戶中，每個 Azure AD Premium 授權最多允許五位來賓使用者。 當租用戶結至訂用帳戶，而且您使用外部身分識別功能與來賓使用者共同作業時，將會使用以 MAU 為基礎的計費模型自動計費。 如需詳細資訊，請參閱 [Azure AD 外部身分識別](../external-identities/external-identities-pricing.md)的計費模型。
 
 如需授權的詳細資訊，請參閱[使用 Azure Active Directory 入口網站指派或移除授權](../fundamentals/license-users-groups.md)。
 

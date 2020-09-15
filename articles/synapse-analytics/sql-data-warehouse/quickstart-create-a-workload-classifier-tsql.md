@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 05173790d8efe05851d39121ecfa15186ccb6d3c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 65a77dfaab0bf99207fd27a35d67a12532056476
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212950"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442934"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>快速入門：使用 T-SQL 建立工作負載分類器
 
@@ -31,7 +31,7 @@ ms.locfileid: "85212950"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-本快速入門假設您已擁有 SQL 資料倉儲，也具有 CONTROL DATABASE 權限。 若您需要建立 SQL 資料倉儲，請使用[建立與連線 - 入口網站](create-data-warehouse-portal.md)來建立稱為 **mySampleDataWarehouse** 的資料倉儲。
+本快速入門假設您已在 Azure Synapse Analytics 中佈建 Synapse SQL 集區，且已有 CONTROL DATABASE 權限。 若您需要建立 SQL 資料倉儲，請使用[建立與連線 - 入口網站](create-data-warehouse-portal.md)來建立稱為 **mySampleDataWarehouse** 的資料倉儲。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 

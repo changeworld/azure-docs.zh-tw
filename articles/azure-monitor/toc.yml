@@ -224,12 +224,10 @@
               href: log-query/get-started-queries.md
         - name: 記錄資料
           items:
-            - name: 記錄資料結構
-              href: log-query/logs-structure.md
             - name: 查詢範圍
               href: log-query/scope.md
-            - name: 標準屬性
-              href: platform/log-standard-properties.md
+            - name: 標準資料行
+              href: platform/log-standard-columns.md
             - name: 電腦群組
               href: platform/computer-groups.md
         - name: 查詢語言

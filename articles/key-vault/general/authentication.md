@@ -7,18 +7,18 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 1ef5b2229aadc4be46361a7319351a1f27b28b63
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: d247e657e93afd0c43ecee1154c542398304d8dd
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378964"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481370"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>向 Azure Key Vault 進行驗證
 
 Azure Key Vault 可讓您在集中式、安全的雲端存放庫中儲存祕密並控管其散發，而不需要將認證儲存在應用程式中。 應用程式只需要在執行階段使用 Key Vault 進行驗證，即可存取這些祕密。
 
-## <a name="app-identity-and-service-principals"></a>應用程式身分識別與服務主體
+## <a name="app-identity-and-security-principals"></a>應用程式身分識別與安全性主體
 
 使用 Key Vault 進行驗證時，會與 [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) 搭配使用，其會負責驗證任何指定**安全性主體**的身分識別。
 
@@ -40,7 +40,7 @@ Azure Key Vault 可讓您在集中式、安全的雲端存放庫中儲存祕密�
 
 * 如果無法使用受控識別，請改為向 Azure AD 租用戶**註冊**應用程式，如[快速入門：向 Microsoft 身分識別平台註冊應用程式](/azure/active-directory/develop/quickstart-register-app)中所述。 註冊也會建立可在所有租用戶中識別應用程式的第二個應用程式物件。
 
-## <a name="authorize-a-service-principal-to-access-key-vault"></a>授權服務主體存取 Key Vault
+## <a name="authorize-a-security-principal-to-access-key-vault"></a>授權安全性主體存取 Key Vault
 
 Key Vault 適用於兩種不同的授權層級：
 

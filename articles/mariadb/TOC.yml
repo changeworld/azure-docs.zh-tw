@@ -6,6 +6,10 @@
       href: overview.md
     - name: 我應該選擇哪個 MariaDB 選項？
       href: select-right-deployment-type.md
+    - name: 服務更新
+      items:
+        - name: SSL 根憑證即將到期
+          href: concepts-certificate-rotation.md
 - name: 快速入門
   expanded: true
   items:

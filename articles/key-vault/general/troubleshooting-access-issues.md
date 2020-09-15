@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6884062bc5107ecb1e31fc6826a9d847e4d31e89
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400427"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595983"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>針對 Azure Key Vault 存取原則問題進行疑難排解
 
@@ -25,6 +25,14 @@ ms.locfileid: "89400427"
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>如何監視金鑰保存庫的保存庫可用性、服務延遲期間或其他效能計量？
 
 開始調整服務時，傳送至金鑰保存庫的要求數將會增加。 這項要求會增加要求的延遲，而且在極端情況下，會導致您的要求受到節流處理，進而影響服務效能。 您可以監視金鑰保存庫效能計量，並取得特定閾值的警示，請[在此深入了解](https://docs.microsoft.com/azure/key-vault/general/alert)設定監視功能的逐步指南。
+
+### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>我無法修改存取原則，請問如何啟用？
+使用者必須有足夠的 AAD 權限才能修改存取原則。 在此情況下，使用者必須擁有較高的參與者角色。
+
+### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>我看到「未知的原則」錯誤。 這代表什麼？
+您有兩種不同的可能性會看到未知的存取原則：
+* 可能是先前有存取權的使用者，現在因為某些原因而不存在了。
+* 是否透過 powershell 新增存取原則，而且是為了應用程式 objectid (而不是服務主體) 新增存取原則
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>如何為每個金鑰保存庫物件指派存取控制？ 
 

@@ -2,14 +2,14 @@
 title: 使用 Intel 提供的 AI 擴充功能 OpenVINO™ Model Server 來分析即時影片 - Intel 提供的 AI 擴充功能
 description: 在本教學課程中，您將使用 Intel 提供的 AI 模型伺服器，從 (模擬) IP 相機分析即時影片摘要。
 ms.topic: tutorial
-ms.date: 07/24/2020
+ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 95dbf555cc6b8f8edb1bc9dca2e10d3ef72eb9db
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950250"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567569"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>教學課程：使用 Intel 提供的 AI 擴充功能 OpenVINO™ Model Server 來分析即時影片 - Intel 提供的 AI 擴充功能 
 
@@ -30,6 +30,7 @@ ms.locfileid: "88950250"
 > 安裝 Azure IoT Tools 時，系統可能會提示您安裝 Docker。 您可以忽略提示。
 
 ## <a name="review-the-sample-video"></a>檢閱範例影片
+
 當您設定 Azure 資源時，系統會將停車場的短片複製到 Azure 中您要作為 IoT Edge 裝置的 Linux VM。 本快速入門會使用影片檔案來模擬即時串流。
 
 開啟應用程式，例如 [VLC media player](https://www.videolan.org/vlc/)。 選取 Ctrl+N，然後貼上[影片](https://lvamedia.blob.core.windows.net/public/lots_015.mkv)的連結以開始播放。 您會看到停車場中的車輛的影像，其中大部分車輛都是停住的，而其中一輛正在移動。
@@ -38,7 +39,8 @@ ms.locfileid: "88950250"
 
 ## <a name="overview"></a>概觀
 
-![概觀](./media/use-intel-openvino-tutorial/topology.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/use-intel-openvino-tutorial/topology.png" alt-text="概觀":::
 
 上圖顯示本快速入門中的信號流動方式。 [邊緣模組](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)會模擬裝載了即時串流通訊協定 (RTSP) 伺服器的 IP 攝影機。 [RTSP 來源](media-graph-concept.md#rtsp-source)節點會從這部伺服器提取影片摘要，並將影片畫面傳送到[畫面播放速率篩選處理器](media-graph-concept.md#frame-rate-filter-processor)節點。 此處理器會限制影片串流到達 [HTTP 延伸模組處理器](media-graph-concept.md#http-extension-processor)節點的畫面播放速率。 
 
@@ -46,7 +48,7 @@ HTTP 延伸模組節點扮演 Proxy 的角色。 其會將影片畫面轉換成�
 
 在本教學課程中，您將：
 
-1. 建立和部署媒體圖表，並加以修改 
+1. 建立和部署媒體圖表，並加以修改。
 1. 解譯解譯。
 1. 清除資源。
 

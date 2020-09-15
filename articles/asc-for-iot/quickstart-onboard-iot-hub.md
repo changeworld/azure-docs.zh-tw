@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
+ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 0d3e4ad63baf6883aa8fadaca5b1f2d28fa14881
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1538143c33991c5dc91a096c7df4297bc18e5af5
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310743"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504038"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>快速入門：在 IoT 中樞內讓適用於 IoT 的 Azure 資訊安全中心上線
 
@@ -52,8 +52,8 @@ ms.locfileid: "81310743"
 
 若要啟用或停用 IP 位址資料的收集：
 
-1. 開啟您的 IoT 中樞，然後從 [安全性]  功能表中選取 [概觀]  。
-1. 選擇 [設定]  畫面，並視需要修改地理位置和/或 IP 處理設定。
+1. 開啟您的 IoT 中樞，然後從 [安全性] 功能表中選取 [設定]。
+1. 選擇 [資料收集] 畫面，並視需要修改地理位置和/或 IP 處理設定。
 
 ### <a name="log-analytics-creation"></a>建立 Log Analytics
 
@@ -61,8 +61,8 @@ ms.locfileid: "81310743"
 
 若要變更 Log Analytics 的工作區設定：
 
-1. 開啟您的 IoT 中樞，然後從 [安全性]  功能表中選取 [概觀]  。
-1. 選擇 [設定]  畫面，並視需要修改 Log Analytics 設定的工作區設定。
+1. 開啟您的 IoT 中樞，然後從 [安全性] 功能表中選取 [設定]。
+1. 選擇 [資料收集] 畫面，並視需要修改 Log Analytics 設定的工作區設定。
 
 ### <a name="customize-your-iot-security-solution"></a>自訂您的 IoT 安全性解決方案
 
@@ -70,8 +70,8 @@ ms.locfileid: "81310743"
 
 若要在特定 IoT 中樞上開啟或關閉適用於 IoT 的 Azure 資訊安全中心服務：
 
-1. 開啟您的 IoT 中樞，然後從 [安全性]  功能表中選取 [概觀]  。
-1. 選擇 [設定]  畫面，並視需要修改您 Azure 訂用帳戶中任何 IoT 中樞的安全性設定。
+1. 開啟您的 IoT 中樞，然後從 [安全性] 功能表中選取 [設定]。
+1. 選擇 [資料收集] 畫面，並視需要修改您 Azure 訂用帳戶中任何 IoT 中樞的安全性設定。
 
 ## <a name="next-steps"></a>後續步驟
 

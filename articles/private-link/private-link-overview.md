@@ -5,15 +5,15 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 06/18/2020
+ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 908d9386f08c5de863d1d435c54d65cb85feef7a
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 94d4a035c95b8eb2a567c71ec2172f55881e8099
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181658"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488417"
 ---
 # <a name="what-is-azure-private-link"></a>什麼是 Azure Private Link？ 
 Azure Private Link 可讓您存取各項 Azure PaaS 服務 (例如 Azure 儲存體和 SQL Database)，並透過虛擬網路中的[私人端點](private-endpoint-overview.md)裝載 Azure 的客戶擁有/合作夥伴服務。
@@ -43,10 +43,13 @@ Azure Private Link 提供下列優點：
 |支援的服務  |可用區域 | 其他考量 | 狀態  |
 |:-------------------|:-----------------|:----------------|:--------|
 |標準 Azure Load Balancer 後方的 Private Link 服務 | 所有公用區域<br/> 所有政府區域  | 支援 Standard Load Balancer | GA <br/> [深入了解](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
-| Azure 儲存體       |  所有公用區域       |  支援一般用途 V2 帳戶種類 | GA <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
-| Azure Data Lake Storage Gen2        |  所有公用區域      |  支援一般用途 V2 帳戶種類 | GA <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
+| Azure Blob 儲存體 (包括 Data Lake Storage Gen2)       |  所有公用區域       |  支援一般用途 V2 帳戶種類 | GA <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
+| Azure 檔案 | 所有公用區域      | |   GA <br/> [深入了解](/azure/storage/files/storage-files-networking-endpoints)   |
+| Azure 檔案同步 | 所有公用區域      | |   GA <br/> [深入了解](/azure/storage/files/storage-sync-files-networking-endpoints)   |
+| Azure 佇列儲存體       |  所有公用區域       |  支援一般用途 V2 帳戶種類 | GA <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
+| Azure 資料表儲存體       |  所有公用區域       |  支援一般用途 V2 帳戶種類 | GA <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
 |  Azure SQL Database         | 所有公用區域 <br/> 所有政府區域      |  支援 Proxy [連線原則](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) | GA <br/> [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
-|Azure Synapse Analytics (SQL 資料倉儲)| 所有公用區域 <br/> 所有政府區域 |  支援 Proxy [連線原則](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) |GA <br/> [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
+|Azure Synapse Analytics (先前稱為 SQL 資料倉儲)| 所有公用區域 <br/> 所有政府區域 |  支援 Proxy [連線原則](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) |GA <br/> [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
 |Azure Cosmos DB|  所有公用區域<br/> 所有政府區域 | |GA <br/> [深入了解](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
 |  適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器         | 所有公用區域 <br/> 所有政府區域     | 支援一般用途和記憶體最佳化定價層 | GA <br/> [深入了解](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
 |  適用於 MySQL 的 Azure 資料庫         | 所有公用區域<br/> 所有政府區域      |  | GA <br/> [深入了解](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
@@ -67,7 +70,6 @@ Azure Private Link 提供下列優點：
 | Azure IoT 中樞 | 所有公用區域    |  | GA   <br/> [深入了解](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | 美國東部、美國西部 2、美國中南部      |  | 預覽   <br/> [深入了解](https://aka.ms/asrs/privatelink)   |
 | Azure 監視器 <br/>(Log Analytics 與 Application Insights) | 所有公用區域      |  | GA   <br/> [深入了解](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
-| Azure 檔案同步 | 所有公用區域      | |   GA   <br/> [深入了解](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints?tabs=azure-portal)   |
 | Azure Batch | 美國東部、美國西部 2、美國中南部、美國中西部、法國中部、東亞、英國南部、US Gov 維吉尼亞州、US Gov 亞利桑那州  | | GA <br/> [深入了解](https://docs.microsoft.com/azure/batch/private-connectivity) |
 
 如需最新通知，請查看 [Azure Private Link 更新頁面](https://azure.microsoft.com/updates/?product=private-link)。

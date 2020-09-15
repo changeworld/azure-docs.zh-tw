@@ -3,12 +3,12 @@ title: 將連續影片錄製到雲端並從雲端播放的教學課程 - Azure
 description: 在本教學課程中，您將了解如何在Azure IoT Edge 上使用 Azure Live Video Analytics，以持續將影片錄製到雲端，並使用 Azure 媒體服務串流該影片的任何部分。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 60b93aac3a0da4bbc49f83c5cbd43191693cae50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c94f87068d003fc260d861cb99c60326d4a53258
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043476"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566786"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教學課程：將連續影片錄製移到雲端並從雲端播放
 
@@ -61,7 +61,8 @@ ms.locfileid: "87043476"
  
  若要完成 CVR，您必須從具備 RTSP 功能的攝影機中捕捉影片，並持續將其錄製到 [Azure 媒體服務資產](terminology.md#asset)。 下圖以圖表表示該媒體圖表。
 
-![媒體圖表](./media/continuous-video-recording-tutorial/continuous-video-recording-overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg" alt-text="媒體圖表":::
 
 在本教學課程中，您將使用以 [Live555 媒體伺服器](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)建置的一個邊緣模組來模擬 RTSP 攝影機。 在媒體圖表內，您將使用 [RTSP 來源](media-graph-concept.md#rtsp-source)節點來取得即時摘要，並將該影片傳送至[資產接收節點](media-graph-concept.md#asset-sink)，其會將影片錄製到資產中。
 
@@ -352,7 +353,7 @@ body 區段包含有關輸出位置的資訊，在此案例中，是用來錄製
 1. 在訂用帳戶的資源中找出您的媒體服務帳戶，然後開啟 [帳戶] 窗格。
 1. 選取 [媒體服務] 清單中的**資產**。
 
-    ![Assets](./media/continuous-video-recording-tutorial/assets.png)
+    ![媒體服務資產](./media/continuous-video-recording-tutorial/assets.png)
 1. 您會發現以 sampleAsset-CVRToAMSAsset-Sample-Graph-1 作為名稱列出的資產。 這是在您的圖表拓撲檔案中選擇的命名模式。
 1. 選取資產。
 1. 在資產詳細資料頁面上，選取 [串流 URL] 文字方塊底下的 [新建]。

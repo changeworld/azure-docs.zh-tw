@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: c92d6569e3c92d3bad3575599283c7796bd78225
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2a0cb34c23ebee5ae16a8c0a272055880ceed388
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068605"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89494267"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -22,9 +22,8 @@ ms.locfileid: "88068605"
 
 請遵循下列步驟，在 Windows 上安裝語音 CLI：
 
-1. 安裝 [.NET Framework 4.7](https://dotnet.microsoft.com/download/dotnet-framework/net471) 或 [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-2. 下載語音 CLI [zip 封存](https://aka.ms/speech/spx-zips.zip)，然後將其解壓縮。
-3. 移至您從下載解壓縮的根目錄 `spx-zips`，並解壓縮您需要的子目錄 (.NET Framework 4.7 為 `spx-net471`，或在 x64 CPU 上的 .NET Core 3.0 為 `spx-netcore-win-x64`)。
+1. 下載語音 CLI [zip 封存](https://aka.ms/speech/spx-zips.zip)，然後將其解壓縮。
+2. 移至您從下載解壓縮的根目錄 `spx-zips`，並解壓縮您需要的子目錄 (.NET Framework 4.7 為 `spx-net471`，或在 x64 CPU 上的 .NET Core 3.0 為 `spx-netcore-win-x64`)。
 
 在命令提示字元中，將目錄變更至此位置，然後輸入 `spx` 以查看語音 CLI 的說明。
 
@@ -53,11 +52,13 @@ ms.locfileid: "88068605"
 
 #### <a name="docker-install"></a>[Docker 安裝](#tab/dockerinstall)
 
+> [!NOTE]
+> 必須<a href="https://www.docker.com/get-started" target="_blank">為您的平台安裝 Docker Desktop<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+
 請遵循下列步驟，在 Docker 容器中安裝語音 CLI：
 
-1. 安裝並執行[您的平台適用的 Docker Desktop](https://www.docker.com/get-started)。
 1. 在新的命令提示字元或終端機中，輸入下列命令：`docker pull msftspeech/spx`
-1. 輸入此命令。 您應該會看到語音 CLI 的說明資訊：`docker run -it --rm msftspeech/spx help`
+2. 輸入此命令。 您應該會看到語音 CLI 的說明資訊：`docker run -it --rm msftspeech/spx help`
 
 ### <a name="mount-a-directory-in-the-container"></a>在容器中掛接目錄
 

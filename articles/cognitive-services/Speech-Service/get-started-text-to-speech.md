@@ -1,5 +1,5 @@
 ---
-title: 語音合成快速入門 - 語音服務
+title: 文字轉換語音快速入門 - 語音服務
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用語音 SDK 將文字轉換為語音。 在本快速入門中，您將了解物件建構和設計模式、支援的音訊輸入格式、語音 CLI，以及語音合成的自訂設定選項。
 services: cognitive-services
@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 08/11/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: speech-full-stack
-ms.openlocfilehash: 12ee7fbbd7699d09deae85971ffe411e115609ec
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+keywords: 文字轉換語音
+ms.openlocfilehash: 79409f95d698e015d15d9131dcf1f27b34b03343
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934682"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400891"
 ---
-# <a name="get-started-with-speech-synthesis"></a>開始使用語音合成
+# <a name="get-started-with-text-to-speech"></a>開始使用文字轉換語音
 
 在本快速入門中，您將了解如何使用語音 SDK 進行文字轉換語音合成的常見設計模式。 首先，您會進行基本設定與合成，並繼續處理更多用於自訂應用程式開發的高階範例，包括：
 

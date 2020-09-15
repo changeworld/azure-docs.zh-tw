@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 08/18/2020
+ms.date: 09/08/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: c69a5e153377eee86eaf0c43d6c982dee2938ddf
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: b454ced085ec3d73f3ca0f761abb6c5de44244ab
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783666"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594334"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>什麼是 Azure AD 存取權檢閱？
 
@@ -45,7 +45,7 @@ Azure AD 可讓您與組織內部與外部使用者共同作業。 使用者可�
 ## <a name="when-should-you-use-access-reviews"></a>何時應使用存取權檢閱？
 
 - **太多使用者具有特殊權限角色：** 您最好檢查有多少使用者擁有管理存取權、其中有多少人是全域管理員，以及是否有任何受邀來賓或合作夥伴未在受指派執行管理工作之後移除。 您可以針對 [Azure AD 角色](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) (例如，全域管理員) 或 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) 體驗中的 [Azure 資源角色](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) (例如，使用者存取管理員)，重新認證其中的角色指派使用者。
-- **無法自動化時：** 您可以在安全性群組或 Office 365 群組上建立動態成員資格的規則，但如果 HR 資料未放在 Azure AD 中，或如果使用者在離開群組之後依然需要存取權以便訓練其接替者呢？ 這時，您就可以在該群組上建立檢閱，以確保仍需要存取權的人員應該會具有持續存取權。
+- **無法自動化時：** 您可以在安全性群組或 Microsoft 365 群組上建立動態成員資格的規則，但如果 HR 資料未放在 Azure AD 中，或如果使用者在離開群組之後依然需要存取權以便訓練其接替者呢？ 這時，您就可以在該群組上建立檢閱，以確保仍需要存取權的人員應該會具有持續存取權。
 - **當群組用於新的用途時：** 如果您有要同步處理至 Azure AD 的群組，或如果您計劃讓銷售小組群組中的每個人都能使用 Salesforce 應用程式，則要求群組擁有者先檢閱群組成員資格，再將群組用於不同風險內容中的做法會很有用。
 - **資料存取權：** 對於某些資源來說，您可能必須要求 IT 以外的人定期登出，並請他們提出需要存取權的理由，以便進行稽核。
 - **為了維護原則的例外狀況清單：** 在理想的世界中，所有使用者都會遵循存取原則來安全地存取您組織的資源。 不過，有時候會有需要您視為例外狀況的商務案例。 身為 IT 系統管理員，您可以管理這項工作、免於監督原則例外狀況，並向稽核人員證明您有定期檢閱這些例外狀況。
@@ -94,8 +94,10 @@ Azure AD 可讓您與組織內部與外部使用者共同作業。 使用者可�
 | 管理員會建立群組 A (其中包含 75 個使用者和 1 個群組擁有者) 的存取權檢閱，並將群組擁有者指派為檢閱者。 | 做為檢閱者的群組擁有者 1 個授權 | 1 |
 | 管理員會建立群組 B (其中包含 500 個使用者和 3 個群組擁有者) 的存取權檢閱，並將 3 個群組擁有者指派為檢閱者。 | 每個做為檢閱者的群組擁有者 3 個授權 | 3 |
 | 管理員會建立群組 B (其中包含 500 個使用者) 的存取權檢閱。 讓其成為自我檢閱。 | 每個做為自我檢閱者的使用者 500 個授權 | 500 |
-| 管理員會建立群組 C (其中包含 50 個成員使用者和 25 個來賓使用者) 的存取權檢閱。 讓其成為自我檢閱。 | 每個做為自我檢閱者的使用者 50 個授權。<br/>(以所需的1:5 比例涵蓋來賓使用者) | 50 |
-| 管理員會建立群組 D (其中包含 6 個成員使用者和 108 個來賓使用者) 的存取權檢閱。 讓其成為自我檢閱。 | 每個做為自我檢閱者的使用者 6 個授權 + 16 個額外授權，以所需的 1:5 比例涵蓋所有 108 個來賓使用者。 6 個授權，其中涵蓋 6\*5=30 個來賓使用者。 對於剩餘的 (108-6\*5)=78 個來賓使用者，需要 78/5=16 個額外授權。 因此，總共需要 6+16=22 個授權。 | 22 |
+| 管理員會建立群組 C (其中包含 50 個成員使用者和 25 個來賓使用者) 的存取權檢閱。 讓其成為自我檢閱。 | 每個作為自我檢閱者的使用者 50 個授權。* | 50 |
+| 管理員會建立群組 D (其中包含 6 個成員使用者和 108 個來賓使用者) 的存取權檢閱。 讓其成為自我檢閱。 | 每個作為自我檢閱者的使用者 6 個授權。 來賓使用者會以每月活躍使用者 (MAU) 為基礎來計費。 不需要其他授權。 *  | - |
+
+\*Azure AD 外部身分識別 (來賓使用者) 定價是以每月的活躍使用者 (MAU) 為基礎，這是在日曆月份內進行驗證活動的唯一使用者計數。 此模型會以 1:5 的比例取代計費模型，在您的租用戶中，每個 Azure AD Premium 授權最多允許五位來賓使用者。 當租用戶結至訂用帳戶，而且您使用外部身分識別功能與來賓使用者共同作業時，將會使用以 MAU 為基礎的計費模型自動計費。 如需詳細資訊，請參閱 Azure AD 外部身分識別的計費模型。
 
 ## <a name="next-steps"></a>後續步驟
 

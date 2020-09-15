@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 937b836582cfcbf11564aa28b11cd8647afa835c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 1840bf93cbca73e593465c999b416e7cbd7af201
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191116"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536307"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure 資料處理站是什麼？
 
@@ -28,11 +28,11 @@ ms.locfileid: "84191116"
 
 為了分析這些記錄，此公司必須使用參考資料，例如內部部署資料存放區中的客戶資訊、遊戲資訊及行銷活動資訊。 此公司想要利用這份來自內部部署資料存放區的資料，將其與雲端資料存放區中的額外記錄資料結合。 
 
-為了擷取深入解析，它希望使用雲端中的 Spark 叢集 (Azure HDInsight) 來處理聯結的資料，然後將轉換後的資料發佈到雲端資料倉儲 (例如 Azure SQL 資料倉儲)，來輕鬆地以該資料建立報告。 他們想要自動執行此工作流程，並且每日按照排程監視和管理此工作流程。 他們也想要在檔案進入 Blob 存放區容器時執行該工作流程。
+為了擷取深入解析，它希望使用雲端中的 Spark 叢集 (Azure HDInsight) 來處理聯結的資料，然後將轉換後的資料發佈到雲端資料倉儲 (例如 Azure Synapse Analytics (前稱為 SQL 資料倉儲))，來輕鬆地以該資料建立報告。 他們想要自動執行此工作流程，並且每日按照排程監視和管理此工作流程。 他們也想要在檔案進入 Blob 存放區容器時執行該工作流程。
 
 Azure Data Factory 就是解決這類資料案例的平台。 這是一項*雲端式 ETL 和資料整合服務，可讓您在建立資料驅動工作流程，以便協調資料移動和大規模轉換資料*。 使用 Azure Data Factory，可以建立並排程資料驅動的工作流程 (稱為管線)，它可以從不同的資料存放區擷取資料。 您可以建立複雜的 ETL 程序，透過資料流程或使用計算服務 (例如 Azure HDInsight Hadoop、Azure Databricks 和 Azure SQL Database) 以視覺化方式轉換資料。 
 
-此外，您可以將已轉換的資料發佈至資料存放區，例如 Azure SQL 資料倉儲，讓商業智慧 (BI) 應用程式取用。 最後，透過 Azure Data Factory，即可將未經處理資料組織到有意義的資料存放區和資料湖中，以供做出更好的業務決策。
+此外，您可以將已轉換的資料發佈至資料存放區，例如 Azure Synapse Analytics，讓商業智慧 (BI) 應用程式取用。 最後，透過 Azure Data Factory，即可將未經處理資料組織到有意義的資料存放區和資料湖中，以供做出更好的業務決策。
 
 ![Data Factory 的最上層檢視](media/data-flow/overview.png)
 
@@ -62,7 +62,15 @@ Data Factory 使用 Azure DevOps 和 GitHub，為資料管線的 CI/CD 提供完
 在您順利建置並部署資料整合管線之後 (從精簡資料提供業務價值)，請監視所排定活動和管線的成功和失敗率。 Azure Data Factory 提供內建支援，可讓您透過 Azure 監視器、API、PowerShell、Azure 監視器記錄及 Azure 入口網站上的健康情況面板監視管線。
 
 ## <a name="top-level-concepts"></a>最上層概念
-Azure 訂用帳戶可能會有一或多個 Azure Data Factory 執行個體 (或資料處理站)。 Azure Data Factory 是由四個主要元件所組成。 這些元件會一起運作，以提供平台讓您撰寫具有資料移動和轉換步驟的資料驅動工作流程。
+Azure 訂用帳戶可能會有一或多個 Azure Data Factory 執行個體 (或資料處理站)。 Azure Data Factory 是由下列主要元件所組成。
+- 管線
+- 活動
+- 資料集
+- 連結的服務
+- 資料流程
+- Integration Runtime
+
+這些元件會一起運作，以提供平台讓您撰寫具有資料移動和轉換步驟的資料驅動工作流程。
 
 ### <a name="pipeline"></a>管線
 資料處理站可以有一或多個管線。 管線是一個執行某個單位工作的活動邏輯群組。 管線中的活動會合作執行一項工作。 例如，管線可以包含一組活動，以從 Azure Blob 內嵌資料，然後對 HDInsight 叢集執行 Hive 查詢來分割資料。 

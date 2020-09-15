@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 09/03/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6e7dbc2b96a53d220554e07228a5e30857d12d9c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cc111f0df889efd1d3720e2ec0e4aaa452efd801
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262969"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461862"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-with-gpu"></a>教學課程：設定搭配 GPU 的 Azure Stack Edge 的網路
 
@@ -104,7 +104,11 @@ ms.locfileid: "89262969"
     
 3. 指派 **Kubernetes 節點 IP**。 這些靜態 IP 位址可供計算 VM 使用。 
 
-    針對 n 個節點裝置，系統會使用開始和結束 IP 位址，為計算 VM 提供最少「n + 1」個 IPv4 位址 (或更多) 的連續範圍。 假設 Azure Stack Edge 是 1 個節點的裝置，則至少會提供 2 個連續的 IPv4 位址。 
+    針對 n 個節點裝置，系統會使用開始和結束 IP 位址，為計算 VM 提供最少「n + 1」個 IPv4 位址 (或更多) 的連續範圍。 假設 Azure Stack Edge 是 1 個節點的裝置，則至少會提供 2 個連續的 IPv4 位址。
+
+    > [!IMPORTANT]
+    > Azure Stack Edge 上的 Kubernetes 會針對 Pod 使用 172.27.0.0/16 子網路，並針對服務使用 172.28.0.0/16 子網路。 請確定您的網路中未使用這些子網路。 如果您的網路中已使用這些子網路，您可以從裝置的 PowerShell 介面執行 `Set-HcsKubeClusterNetworkInfo` Cmdlet，以變更這些子網路。 如需詳細資訊，請參閱[變更 Kubernetes 的 Pod 和服務子網路](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets)。
+
 
 4. 指派 **Kubernetes 外部服務 IP**。 這些也是負載平衡的 IP 位址。 這些連續的 IP 位址可供您想要在 Kubernetes 叢集外部公開的服務使用，而且您可以根據公開的服務數目來指定靜態 IP 範圍。 
     

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 104654a721912324cdc8ea636e8b4e75765e73f7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ce47bc5e880f15eaa1bbf07477673d2475e5a10a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268888"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489913"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教學課程：使用 Azure Data Share 接受和接收資料  
 
@@ -41,7 +41,7 @@ ms.locfileid: "89268888"
 ### <a name="receive-data-into-a-sql-based-target"></a>將資料接收到 SQL 型目標：
 
 * 對 SQL Server 上的資料庫進行寫入的權限，存在於 Microsoft.Sql/servers/databases/write  中。 此權限存在於參與者角色中。 
-* 資料共用資源的受控識別用來存取 Azure SQL Database 或 Azure SQL 資料倉儲的權限。 這可以透過下列步驟完成： 
+* 資料共用資源的受控識別用來存取 Azure SQL Database 或 Azure Synapse Analytics 的權限。 這可以透過下列步驟完成： 
     1. 將您自己設定為 SQL Server 的 Azure Active Directory 系統管理員。
     1. 使用 Azure Active Directory 連線到 Azure SQL Database/資料倉儲。
     1. 使用查詢編輯器 (預覽) 執行下列指令碼，將 Data Share 受控識別新增為 'db_datareader, db_datawriter, db_ddladmin'。 您必須使用 Active Directory 連線，而不是使用 SQL Server 驗證。 

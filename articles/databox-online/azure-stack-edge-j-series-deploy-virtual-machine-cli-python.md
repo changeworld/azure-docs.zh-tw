@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 464c0fee31f86ba6ffa1dbecc7b2dd659cd86685
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c633cc973cb9e4d4f0375dec638e278c48c6709c
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255523"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500227"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>使用 Azure CLI 和 Python 在 Azure Stack Edge GPU 裝置上部署 VM
 
@@ -60,13 +60,13 @@ ms.locfileid: "89255523"
 
     2. 在網路介面上啟用計算。 Azure Stack Edge 會建立和管理對應至該網路介面的虛擬交換器。
 
-    如果您決定使用另一個網路介面進行計算，請務必：
+    <!--If you decide to use another network interface for compute, make sure that you:
 
-    - 刪除您使用 Azure Resource Manager 部署的所有 VM。
+    - Delete all the VMs that you have deployed using Azure Resource Manager.
 
-    - 刪除所有虛擬網路介面以及與此網路介面相關聯的虛擬網路。
+    - Delete all virtual network interfaces and the virtual network associated with this network interface.
 
-    - 您現在可以啟用另一個網路介面進行計算。
+    - You can now enable another network interface for compute.-->
 
 3. 您已在 Azure Stack Edge 裝置上和用戶端的信任存放區中建立和安裝所有憑證。 請遵循[步驟 2：建立和安裝用戶端憑證](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)中所述的程序。
 
@@ -342,7 +342,8 @@ ms.locfileid: "89255523"
    ]
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
    ```
-
+   記下 `id` 和 `tenantId` 值，這會分別對應至您的 Azure Resource Manager 訂用帳戶識別碼和 Azure Resource Manager 租用戶識別碼，並將在稍後的步驟中使用。
+       
    下列環境變數必須設定為以「服務主體」的形式運作：
 
    ```
@@ -352,7 +353,7 @@ ms.locfileid: "89255523"
    $ENV:ARM_SUBSCRIPTION_ID = "A4257FDE-B946-4E01-ADE7-674760B8D1A3"
    ```
 
-   您的 Azure Resource Manager 租用戶識別碼、Azure Resource Manager 用戶端識別碼，以及 Azure Resource Manager 訂用帳戶識別碼全都已硬式編碼，且在所有 Azure Stack Edge 裝置上都有相同的值。 Azure Resource Manager 用戶端密碼是您所設定的 Azure Resource Manager 密碼。
+   您的 Azure Resource Manager 用戶端識別碼是硬式編碼。 您的 Azure Resource Manager 租用戶識別碼和 Azure Resource Manager 訂用帳戶識別碼都會出現在您稍早執行之 `az login` 命令的輸出中。 Azure Resource Manager 用戶端密碼是您所設定的 Azure Resource Manager 密碼。
 
    如需詳細資訊，請參閱 [Azure Resource Manager 密碼](azure-stack-edge-j-series-set-azure-resource-manager-password.md)。
 

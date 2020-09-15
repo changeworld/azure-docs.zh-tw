@@ -4,12 +4,12 @@ description: 在本快速入門中，您將套用電腦視覺來分析來自 (�
 ms.topic: quickstart
 ms.date: 08/14/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: ac11ced68ab8463da26b9978a5b0b02c4cd1a402
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 907d402a4b0ef5d5e437322d02431a0ccd2d8da3
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687187"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421510"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-grpc-model"></a>快速入門：使用您自己的 gRPC 模型分析即時影片
 
@@ -56,11 +56,11 @@ ms.locfileid: "88687187"
 ## <a name="create-and-deploy-the-media-graph"></a>建立和部署媒體圖表
 
 ::: zone pivot="programming-language-csharp"
-[!INCLUDE [create and deply the media graph](includes/analyze-live-video-your-grpc-model-quickstart/csharp/create-deploy-media-graph.md)]
+[!INCLUDE [create and deploy the media graph](includes/analyze-live-video-your-grpc-model-quickstart/csharp/create-deploy-media-graph.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-[!INCLUDE [create and deply the media graph](includes/analyze-live-video-your-grpc-model-quickstart/python/create-deploy-media-graph.md)]
+[!INCLUDE [create and deploy the media graph](includes/analyze-live-video-your-grpc-model-quickstart/python/create-deploy-media-graph.md)]
 ::: zone-end
 
 ## <a name="interpret-results"></a>解譯結果
@@ -79,4 +79,9 @@ ms.locfileid: "88687187"
 
 ## <a name="next-steps"></a>後續步驟
 
-嘗試使用 gRPC 通訊協定來執行不同的媒體圖表拓撲。
+* 嘗試使用 gRPC 通訊協定來執行不同的媒體圖表拓撲。
+* **建置並執行範例即時影片分析 (LVA) 擴充功能**
+<br/>試用我們的 Jupyter 範例筆記本，讓您能夠以即時影片分析 (LVA) 擴充功能的形式，建立並執行以 [ONNX](http://onnx.ai/) 為基礎的 YOLO 模型 。
+    * [範例 YOLOv3 模型](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/notebooks/Yolo/yolov3/yolov3-grpc-icpu-onnx/readme.md)
+    * [範例 YOLOv4 模型](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/Yolo/yolov4/yolov4-grpc-icpu-onnx/readme.md)
+

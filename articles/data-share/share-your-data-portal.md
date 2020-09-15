@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
 ms.date: 08/19/2020
-ms.openlocfilehash: 5ceaf949df88468b2239bd901f639ba6096b0d5f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 41598c04af78d4366435259357d8f897ac178942
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269636"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489930"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中使用 Azure Data Share 來共用資料
 
@@ -67,7 +67,7 @@ Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[
 
    ![將資料集新增至共用](./media/datasets.png "資料集")
 
-1. 選取您想要新增的資料集類型。 根據您在先前的步驟中選取的共用類型 (快照集或就地)，您將看到不同的資料集類型清單。 如果從 Azure SQL Database 或 Azure SQL 資料倉儲共用，系統將會提示您提供某些 SQL 認證。 使用您建立為必要條件的使用者進行驗證。
+1. 選取您想要新增的資料集類型。 根據您在先前的步驟中選取的共用類型 (快照集或就地)，您將看到不同的資料集類型清單。 如果從 Azure SQL Database 或 Azure Synapse Analytics 共用，系統會提示您提供一些 SQL 認證。 使用您建立為必要條件的使用者進行驗證。
 
    ![AddDatasets](./media/add-datasets.png "新增資料集")    
 

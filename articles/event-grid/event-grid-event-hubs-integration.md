@@ -1,18 +1,18 @@
 ---
 title: 教學課程：將事件中樞資料傳送至資料倉儲 - 事件方格
-description: 教學課程：說明如何使用 Azure 事件方格和事件中樞將資料移轉至 SQL 資料倉儲。 它會使用 Azure 函式來擷取「擷取」檔案。
+description: 教學課程：說明如何使用 Azure 事件方格和事件中樞將資料遷移至 Azure Synapse Analytics。 它會使用 Azure 函式來擷取「擷取」檔案。
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1c4a1943981fc3e9f1df0fafff540e24ee3631e9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d45fcedb570e384b851a7ac815ca175c67cc00a0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007429"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435026"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>教學課程：將巨量資料串流處理至資料倉儲
-Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您對應用程式和服務發出的通知 (事件) 做出回應。 例如，它可以觸發 Azure 函式以處理已擷取至 Azure Blob 儲存體或 Azure Data Lake Storage 的事件中樞資料，並將資料移轉至其他資料存放庫。 此[事件中樞和事件方格整合範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)說明如何使用事件中樞與事件方格，將已擷取的事件中樞資料從 Blob 儲存體順暢地移轉至 SQL 資料倉儲。
+Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您對應用程式和服務發出的通知 (事件) 做出回應。 例如，它可以觸發 Azure 函式以處理已擷取至 Azure Blob 儲存體或 Azure Data Lake Storage 的事件中樞資料，並將資料移轉至其他資料存放庫。 此[事件中樞和事件方格整合範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)說明如何使用事件中樞與事件方格，將已擷取的事件中樞資料從 Blob 儲存體順暢地遷移至 Azure Synapse Analytics (先前為 SQL 資料倉儲)。
 
 ![應用程式概觀](media/event-grid-event-hubs-integration/overview.png)
 
@@ -22,12 +22,12 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
 2. 資料擷取完成時就會產生事件，並傳送至 Azure 事件方格。 
 3. 事件方格會將此事件資料轉送至 Azure 函式應用程式。
 4. 此函式應用程式會使用事件資料中的 Blob URL 來擷取儲存體中的 Blob。 
-5. 函式應用程式會將 Blob 資料移轉至 Azure SQL 資料倉儲。 
+5. 函式應用程式會將 Blob 資料遷移至 Azure Synapse Analytics。 
 
 在本文中，您會執行下列步驟：
 
 > [!div class="checklist"]
-> * 使用 Azure Resource Manager 範本部署基礎結構：事件中樞、儲存體帳戶、函式應用程式、SQL 資料倉儲。
+> * 使用 Azure Resource Manager 範本部署基礎結構：事件中樞、儲存體帳戶、函式應用程式、Synapse Analytics。
 > * 在資料倉儲中建立資料表。
 > * 將程式碼新增至函式應用程式。
 > * 訂閱事件。 
@@ -52,7 +52,7 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
 * 用來裝載函式應用程式的 App Service 方案
 * 函式應用程式，用來處理事件
 * SQL Server，用來裝載資料倉儲
-* SQL 資料倉儲，用來儲存移轉的資料
+* 用於儲存已遷移資料的 Azure Synapse Analytics
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>在 Azure 入口網站中啟動 Azure Cloud Shell
 
@@ -97,7 +97,7 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
           "tags": null
         }
         ```
-2. 執行下列 CLI 命令，以部署上一節中提到的所有資源 (事件中樞、儲存體帳戶、函式應用程式、SQL 資料倉儲)： 
+2. 執行下列 CLI 命令，以部署上一節中提到的所有資源 (事件中樞、儲存體帳戶、函式應用程式、Azure Synapse Analytics)： 
     1. 複製下列命令並貼到 Cloud Shell 視窗中。 或者，您可以複製/貼到自己選擇的編輯器中，並在設定值之後將命令複製到 Cloud Shell 中。 
 
         ```azurecli
@@ -112,7 +112,7 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
         3. 事件中樞的名稱。 您可以保留原有的值 (hubdatamigration)。
         4. SQL 伺服器的名稱。
         5. SQL 使用者的名稱和密碼。 
-        6. SQL 資料倉儲的名稱
+        6. Azure Synapse Analytics 的名稱
         7. 儲存體帳戶的名稱。 
         8. 函式應用程式的名稱。 
     3.  在 Cloud Shell 視窗中按 **ENTER** 鍵，以執行命令。 此程序可能需要一些時間，因為您會建立大量資源。 在命令的結果中，確定沒有任何失敗的狀況。 
@@ -131,7 +131,7 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
         ```
     2. 指定**資源群組**的名稱。
     3. 按 ENTER 鍵。 
-3. 執行下列命令，以部署上一節中提到的所有資源 (事件中樞、儲存體帳戶、函式應用程式、SQL 資料倉儲)：
+3. 執行下列命令，以部署上一節中提到的所有資源 (事件中樞、儲存體帳戶、函式應用程式、Azure Synapse Analytics)：
     1. 複製下列命令並貼到 Cloud Shell 視窗中。 或者，您可以複製/貼到自己選擇的編輯器中，並在設定值之後將命令複製到 Cloud Shell 中。 
 
         ```powershell
@@ -143,7 +143,7 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
         3. 事件中樞的名稱。 您可以保留原有的值 (hubdatamigration)。
         4. SQL 伺服器的名稱。
         5. SQL 使用者的名稱和密碼。 
-        6. SQL 資料倉儲的名稱
+        6. Azure Synapse Analytics 的名稱
         7. 儲存體帳戶的名稱。 
         8. 函式應用程式的名稱。 
     3.  在 Cloud Shell 視窗中按 **ENTER** 鍵，以執行命令。 此程序可能需要一些時間，因為您會建立大量資源。 在命令的結果中，確定沒有任何失敗的狀況。 
@@ -162,13 +162,13 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
 
     ![資源群組中的資源](media/event-grid-event-hubs-integration/resources-in-resource-group.png)
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>在 SQL 資料倉儲中建立資料表
+### <a name="create-a-table-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立資料表
 執行 [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) 指令碼，在您的資料倉儲中建立資料表。 若要執行指令碼，您可以在入口網站中使用 Visual Studio 或查詢編輯器。 下列步驟說明如何使用查詢編輯器： 
 
 1. 在資源群組中的資源清單內，選取您的 **Synapse SQL 集區 (資料倉儲)** 。 
-2. 在 [SQL 資料倉儲] 頁面中，選取左側功能表中的 [查詢編輯器 (預覽)]。 
+2. 在 Azure Synapse Analytics 頁面中，選取左側功能表中的 [查詢編輯器 (預覽)]。 
 
-    ![SQL 資料倉儲頁面](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
+    ![Azure Synapse Analytics 頁面](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
 2. 輸入 SQL 伺服器的**使用者名稱**和**密碼**，然後選取 [確定]。 您可能需要將您的用戶端 IP 位址新增到防火牆，才能成功登入 SQL 伺服器。 
 
     ![SQL 伺服器驗證](media/event-grid-event-hubs-integration/sql-server-authentication.png)
@@ -258,7 +258,7 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
         ![建立事件方格訂用帳戶](media/event-grid-event-hubs-integration/create-event-subscription.png)
 
 ## <a name="run-the-app-to-generate-data"></a>執行應用程式以產生資料
-您已完成事件中樞、SQL 資料倉儲、Azure 函數應用程式及事件訂閱的設定。 在執行產生事件中樞資料的應用程式之前，您需要設定幾個值。
+您已完成事件中樞、Azure Synapse Analytics、Azure 函式應用程式及事件訂閱的設定。 在執行產生事件中樞資料的應用程式之前，您需要設定幾個值。
 
 1. 在 Azure 入口網站中，再次瀏覽至您的資源群組。 
 2. 選取事件中樞命名空間。

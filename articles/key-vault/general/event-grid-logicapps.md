@@ -10,18 +10,18 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c0121c42c5d498aa79109c874981b9de0f8f4b7c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2781ef69ce85e82dab45a9f890ef5e6862949d98
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588869"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087978"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>使用 Logic Apps 接收有關金鑰保存庫祕密狀態變更的電子郵件
 
 在本指南中，您將了解如何使用 [Azure Logic Apps](../../logic-apps/index.yml) 來回應透過 [Azure 事件方格](../../event-grid/index.yml)所收到的 Azure Key Vault 事件。 您會在結束前，將 Azure 邏輯應用程式設定為在每次於 Azure Key Vault 中建立祕密時傳送通知電子郵件。
 
-如需 Azure Key Vault/Azure 事件方格整合的概觀，請參閱[使用 Azure 事件方格監視 Key Vault (預覽)](event-grid-overview.md)。
+如需 Azure Key Vault/Azure 事件方格整合的概觀，請參閱[使用 Azure 事件方格監視 Key Vault](event-grid-overview.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -56,7 +56,7 @@ ms.locfileid: "88588869"
 1. 搜尋**電子郵件**。 根據您的電子郵件提供者，尋找並選取相符的連接器。 本教學課程使用 **Office 365 Outlook**。 其他電子郵件提供者的步驟很類似。
 1. 選取 [傳送電子郵件 \(V2\)]**** 動作。
 
-   ![邏輯應用程式設計工具 - 新增電子郵件](../media/eventgrid-logicappdesigner3.png)
+   ![邏輯應用程式設計工具 - 傳送電子郵件](../media/eventgrid-logicappdesigner3.png)
 
 1. 建置您的電子郵件範本：
     - **收件人：** 輸入要收到通知電子郵件的電子郵件地址。 在此教學課程中，請使用您可以存取的電子郵件帳戶來進行測試。
@@ -64,18 +64,18 @@ ms.locfileid: "88588869"
 
     您的電子郵件範本可能類似此範例。
 
-    ![邏輯應用程式設計工具 - 新增電子郵件](../media/eventgrid-logicappdesigner4.png)
+    ![邏輯應用程式設計工具 - 電子郵件內文](../media/eventgrid-logicappdesigner4.png)
 
 8. 按一下 [另存新檔]****。
 9. 為新的邏輯應用程式輸入**名稱**，然後按一下 [建立]****。
     
-    ![邏輯應用程式設計工具 - 新增電子郵件](../media/eventgrid-logicappdesigner5.png)
+    ![邏輯應用程式設計工具 - 建立](../media/eventgrid-logicappdesigner5.png)
 
 ## <a name="test-and-verify"></a>測試和驗證
 
 1.  移至 Azure 入口網站上的金鑰保存庫，然後選取 [事件] > [事件訂閱]****。  確認已建立新的訂用帳戶
     
-    ![邏輯應用程式設計工具 - 新增電子郵件](../media/eventgrid-logicapps-kvnewsubs.png)
+    ![邏輯應用程式設計工具 - 測試和驗證](../media/eventgrid-logicapps-kvnewsubs.png)
 
 1.  移至您的金鑰保存庫，選取 [祕密]****，然後選取 [+ 產生/匯入]****。 建立新的祕密以供測試之用，為金鑰命名，並將其餘的參數保留為預設設定。
 
@@ -87,8 +87,8 @@ ms.locfileid: "88588869"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 概觀：[使用 Azure 事件方格監視 Key Vault (預覽)](event-grid-overview.md)
+- 概觀：[使用 Azure 事件方格監視 Key Vault](event-grid-overview.md)
 - 如何：[將金鑰保存庫通知路由傳送至 Azure 自動化](event-grid-tutorial.md)。
-- [Azure Key Vault 的 Azure 事件方格事件結構描述 (預覽)](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault 的 Azure 事件方格事件結構描述](../../event-grid/event-schema-key-vault.md)
 - 深入了解 [Azure Event Grid](../../event-grid/index.yml)。
 - 深入了解 [Azure App Service 的 Logic Apps 功能](../../logic-apps/index.yml)。

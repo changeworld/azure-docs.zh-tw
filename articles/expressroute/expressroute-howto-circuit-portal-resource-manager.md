@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: duau
-ms.openlocfilehash: 58c35b094d21dc562e61b4819c0d8e063908392d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: e0ba14cd5db47c12435b2de35d0753b402c947ea
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322105"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566257"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>教學課程：建立和修改 ExpressRoute 線路
 
@@ -75,7 +75,10 @@ ms.locfileid: "89322105"
     > [!IMPORTANT]
     > [對等位置] 表示您與 Microsoft 對等互連的[實體位置](expressroute-locations.md)。 這**不會**連結到「位置」屬性，這是指 Azure 網路資源提供者所在的地理位置。 儘管它們並無關聯，但最好還是選擇地理位置靠近線路對等位置的網路資源提供者。
 
-    * **SKU** 會判斷系統是否已啟用 ExpressRoute 本機、ExpressRoute 標準或 ExpressRoute 進階附加元件。 您可以指定**本機**來取得本機 SKU，指定**標準**來取得標準 SKU，或指定**進階**來取得進階附加元件。
+    * **SKU** 會判斷系統是否已啟用 ExpressRoute 本機、ExpressRoute 標準或 ExpressRoute 進階附加元件。 您可以指定**本機**來取得本機 SKU，指定**標準**來取得標準 SKU，或指定**進階**來取得進階附加元件。 請注意，您可以變更 SKU 以啟用進階附加元件。
+    > [!IMPORTANT]
+    > 您無法將 SKU 從**標準/進階**變更為**本機**。
+    
     * **計費模式**會決定計費類型。 您可以指定 [計量付費]**** 以採用計量付費數據傳輸方案，選取 [無限制]**** 以採用無限制的資料方案。 請注意，您可以將計費類型從 [計量付費]**** 變更為 [無限制]****。
 
     > [!IMPORTANT]
@@ -150,6 +153,10 @@ ms.locfileid: "89322105"
 您可以執行下列工作，而無須中途停機：
 
 * 啟用或停用 ExpressRoute 線路的 ExpressRoute 進階附加元件。
+
+> [!IMPORTANT]
+  > 不支援將 SKU 從**標準/進階**變更為**本機**。
+
 * 只要連接埠有可用的容量，即增加 ExpressRoute 線路的頻寬。
 
   > [!IMPORTANT]

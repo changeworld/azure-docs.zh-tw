@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 226cf29b1a94b4508a9d68f02b7400a18eba4bc2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 24990087507dee09bc38418f40c72911386e5efb
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587849"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469111"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>教學課程：連線至 Azure Red Hat OpenShift 4 叢集
 
@@ -25,7 +25,7 @@ ms.locfileid: "88587849"
 
 在先前的教學課程中，已建立 Azure Red Hat OpenShift 叢集。 如果您尚未完成這些步驟，而且想要跟著做，請從[教學課程 1 - 建立 Azure Red Hat OpenShift 4 叢集](tutorial-create-cluster.md)開始。
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="connect-to-the-cluster"></a>連線至叢集
 
@@ -37,7 +37,7 @@ az aro list-credentials \
   --resource-group $RESOURCEGROUP
 ```
 
-以下範例輸出顯示密碼將位於 `kubeadminPassword` 中。
+以下範例輸出顯示將位於 `kubeadminPassword` 中的密碼。
 
 ```json
 {
@@ -46,7 +46,7 @@ az aro list-credentials \
 }
 ```
 
-您可以執行以下命令來尋找叢集主控台 URL，如下所示：`https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
+您可以執行以下命令來尋找叢集主控台 URL，如下所示：`https://console-openshift-console.apps.<random>.<region>.aroapp.io/`。
 
 ```azurecli-interactive
  az aro show \

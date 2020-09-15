@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 入口網站大量複製資料
-description: 了解如何使用 Azure Data Factory 和複製活動，將資料從來源資料存放區大量複製到目的地資料存放區。
+description: 使用 Azure Data Factory 和複製活動，將資料從來源資料存放區大量複製到目的地資料存放區。
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/22/2020
-ms.openlocfilehash: 29bdedd5ae40db57809c11500af404d308366ca7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a047872f519de1873c03998fd1d3a9c273ce9fa1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86081633"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442849"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 入口網站中使用 Azure Data Factory 大量複製多份資料表
 
@@ -45,7 +45,7 @@ ms.locfileid: "86081633"
 ![工作流程](media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png)
 
 * 第一個管線會查閱需要複製到接收資料存放區的資料表清單。  或者，您可以維護中繼資料資料表，其中列出要複製到接收資料存放區的所有資料表。 然後，管線會觸發另一個管線，它會逐一查看資料庫中的每個資料表，並執行資料複製作業。
-* 第二個管線會執行實際的複製。 它會使用資料表的清單作為參數。 對於清單中的每個資料表，使用[透過 Blob 儲存體和 PolyBase 暫存複製](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)，將 Azure SQL Database 中的特定資料表複製到 Azure Synapse Analytics (先前為 SQL DW) 中的對應資料表，可獲得最佳效能。 在此範例中，第一個管線會將資料表清單傳遞作為參數的值。 
+* 第二個管線會執行實際的複製。 它會使用資料表的清單作為參數。 對於清單中的每個資料表，使用[透過 Blob 儲存體和 PolyBase 暫存複製](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)，將 Azure SQL Database 中的特定資料表複製到 Azure Synapse Analytics (先前為 SQL DW) 中的對應資料表，可獲得最佳效能。 在此範例中，第一個管線會將資料表清單傳遞作為參數的值。 
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -62,7 +62,7 @@ ms.locfileid: "86081633"
 
 **準備接收 Azure Synapse Analytics (先前為 SQL DW)** ：
 
-1. 如果您沒有 Azure Synapse Analytics (先前為 SQL DW)，請參閱[建立 SQL 資料倉儲](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)一文，以取得其建立步驟。
+1. 如果您沒有 Azure Synapse Analytics (先前為 SQL DW) 工作區，請參閱[開始使用 Azure Synapse Analytics](..\synapse-analytics\get-started.md) 一文，以取得其建立步驟。
 
 1. 在 Azure Synapse Analytics (先前為 SQL DW) 中建立對應的資料表結構描述。 在稍後步驟中，您可以使用 Azure Data Factory 來移轉/複製資料。
 

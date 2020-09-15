@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 70a9d9f8b137f02e647d1ea0edddd409ec3cdaf3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 1f2e4ddc2d2cfbbfb7f95e5ae6b1af7a76eece85
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079187"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426345"
 ---
 # <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>教學課程：使用 Terraform 佈建 Azure Spring Cloud 執行個體
 
@@ -94,7 +94,7 @@ ms.locfileid: "88079187"
     terraform apply plan.out
     ```
 
-1. 若要確認 Azure 入口網站內的結果，請瀏覽至新的資源群組。 新的 **Azure Cosmos DB 執行個體**會在新的資源群組中顯示。
+1. 若要確認 Azure 入口網站內的結果，請瀏覽至新的資源群組。 新的 **Azure Spring Cloud** 執行個體會顯示在新的資源群組中。
 
 ## <a name="update-configuration-to-config-logs-and-metrics"></a>更新設定以設定記錄和計量
 

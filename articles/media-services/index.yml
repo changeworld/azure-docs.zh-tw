@@ -1,10 +1,10 @@
 ### YamlMime:Hub
 title: Azure 媒體服務文件
-summary: Azure 媒體服務是雲端式媒體工作流程平台，可讓您建置需要編碼、封裝、進行內容保護和即時事件廣播的各項解決方案。
+summary: Azure 媒體服務是雲端和邊緣媒體工作流程服務的集合，讓您可以建置需要大規模即時和批次影片分析、轉碼、多裝置傳遞服務、內容保護和即時事件廣播的解決方案。
 brand: azure
 metadata:
   title: Azure 媒體服務文件
-  description: Azure 媒體服務是雲端式媒體工作流程平台，可讓您建置需要編碼、封裝、進行內容保護和即時事件廣播的各項解決方案。
+  description: Azure 媒體服務是雲端和邊緣媒體工作流程服務的集合，讓您可以建置需要大規模即時和批次影片分析、轉碼、多裝置傳遞服務、內容保護和即時事件廣播的解決方案。
   services: media-services
   ms.service: media-services
   ms.subservice: 
@@ -13,12 +13,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: d6f78b4494a16a0522f93658b063d157819c519e
-  ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+  ms.openlocfilehash: fb258b634ff5511a9e795e8c0990a62bf2d0d22d
+  ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/06/2020
-  ms.locfileid: "87826138"
+  ms.lasthandoff: 09/13/2020
+  ms.locfileid: "90056528"
 highlightedContent:
   items:
   - title: 關於 Azure 媒體服務 v3

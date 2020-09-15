@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/28/2020
-ms.openlocfilehash: 4f3c9d739f959670700182baf80c4a08e53d8587
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5aa760c661fd596c55693edd537ca7820c7d7f58
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259059"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489896"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>教學課程：使用 Azure Data Share 共用資料  
 
@@ -40,7 +40,7 @@ ms.locfileid: "89259059"
 
 ### <a name="share-from-a-sql-based-source"></a>從 SQL 型來源共用：
 
-* Azure SQL Database 或 Azure Synapse Analytics (先前稱為 Azure SQL 資料倉儲)，具有您要共用的資料表和檢視。
+* Azure SQL Database 或 Azure Synapse Analytics (先前為 SQL 資料倉儲)，具有您要共用的資料表和檢視。
 * 對 SQL Server 上的資料庫進行寫入的權限，存在於 Microsoft.Sql/servers/databases/write  中。 此權限存在於參與者角色中。
 * 存取資料倉儲的資料共用權限。 這可以透過下列步驟完成： 
     1. 將您自己設定為 SQL Server 的 Azure Active Directory 系統管理員。
@@ -113,7 +113,7 @@ ms.locfileid: "89259059"
 
     ![將資料集新增至共用](./media/datasets.png "資料集")
 
-1. 選取您想要新增的資料集類型。 根據您在先前的步驟中選取的共用類型 (快照集或就地)，您將看到不同的資料集類型清單。 如果從 Azure SQL Database 或 Azure SQL 資料倉儲共用，系統將會提示您提供某些 SQL 認證。 使用您建立為必要條件的使用者進行驗證。
+1. 選取您想要新增的資料集類型。 根據您在先前的步驟中選取的共用類型 (快照集或就地)，您將看到不同的資料集類型清單。 如果從 Azure SQL Database 或 Azure Synapse Analytics 共用，系統會提示您提供一些 SQL 認證。 使用您建立為必要條件的使用者進行驗證。
 
     ![AddDatasets](./media/add-datasets.png "新增資料集")    
 

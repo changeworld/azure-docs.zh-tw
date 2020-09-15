@@ -2,18 +2,18 @@
 title: 使用 Azure Site Recovery 將 Azure IaaS VM 移至另一個區域
 description: 使用 Azure Site Recovery，將 Azure IaaS VM 從一個 Azure 區域移至另一個區域。
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.author: rajanaki
+ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 3cbf3eda97bd1ba6b71c4bc7910e942e39224e30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e8f14b86678f7d395f445438d7e869168b13e54b
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076095"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425920"
 ---
 # <a name="move-azure-vms-to-another-region"></a>將 Azure VM 移動到另一個區域
 
@@ -88,7 +88,7 @@ ms.locfileid: "87076095"
 1. 在 [名稱]  中，指定易記名稱 [ContosoVMVault]  。 如果您有多個訂用帳戶，請選取適當的一個。
 1. 建立資源群組 **ContosoRG**。
 1. 指定 Azure 區域。 若要查看支援的區域，請參閱 [Azure Site Recovery 定價詳細資料](https://azure.microsoft.com/pricing/details/site-recovery/)。
-1. 在 [Recovery Services 保存庫]  中，選取 [概觀]   > [ConsotoVMVault]   > [+複寫]  。
+1. 在 [復原服務保存庫] 中，選取 [概觀] > [ContosoVMVault] > [複寫的項目] > [+複寫]。
 1. 在 [來源]  中，選取 [Azure]  。
 1. 在 [來源位置]  中，選取 VM 目前執行所在的來源 Azure 區域。
 1. 選取 Resource Manager 部署模型。 然後，選取 [來源訂用帳戶]  和 [來源資源群組]  。

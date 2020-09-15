@@ -6,15 +6,15 @@ author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: overview
+ms.topic: reference
 ms.date: 07/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b469ea0d0a91cc4ca7f0602dffbcc63b31c60855
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 78d0f483bb18213fa7d6718f15dd77733a10049c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588359"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069351"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Azure Key Vault 的新功能
 
@@ -36,6 +36,7 @@ Microsoft 正在更新 Azure 服務，以使用來自一組不同根憑證授權
 - Azure Active Directory (Azure AD) 服務會在 2020 年 7 月 7 日開始轉換。
 - 所有新建立的 Azure TLS/SSL 端點都會包含已更新的憑證，並鏈結至新的根 CA。 
 - 現有的 Azure 端點會從 2020 年 8 月 13 日起分階段轉換，並於 2020 年 10 月 26 日完成。
+- [Azure IoT 中樞](https://azure.microsoft.com/services/iot-hub)和 [DPS](/azure/iot-dps/) 將會保留在 Baltimore CyberTrust Root CA 上，但其中繼 CA 將會變更。 [按一下這裡以取得詳細資訊](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)。
 
 > [!IMPORTANT]
 > 客戶可能需要在這次變更之後更新其應用程式，以避免在嘗試連線到 Azure 服務時發生連線失敗。 

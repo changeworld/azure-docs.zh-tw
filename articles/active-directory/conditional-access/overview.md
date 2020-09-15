@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 6475fc61502a82844605ba267db5f8da984c8de6
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 7285325d92949a331833968b8f71fbeffd6543f4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948873"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437899"
 ---
 # <a name="what-is-conditional-access"></a>何謂條件式存取？
 
@@ -95,6 +95,8 @@ ms.locfileid: "88948873"
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
 擁有 [Microsoft 365 商務進階版授權](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客戶也有條件式存取功能的存取權。 
+
+[登入風險](concept-conditional-access-conditions.md#sign-in-risk)需要存取[身分識別](../identity-protection/overview-identity-protection.md)
 
 ## <a name="next-steps"></a>後續步驟
 

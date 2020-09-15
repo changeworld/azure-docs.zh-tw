@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 08/18/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89304080"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89570111"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>使用者是否需要具有 SD-WAN/VPN 裝置的中樞與輪輻才能使用 Azure 虛擬 WAN？
 
@@ -83,7 +83,7 @@ ms.locfileid: "89304080"
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>使用者 VPN (點對站) 可支援多少用戶端？
 
-每個使用者 VPN P2S 閘道都有兩個執行個體，而每個執行個體都可隨著縮放單位變更來支援特定使用者數目。 縮放單位 1-3 支援 500 個連線、縮放單位 4-6 支援 1000 個連線、縮放單位 7-12 支援 5000 個連線、縮放單位 13-20 支援最多 10,000 個連線。 
+每個使用者 VPN P2S 閘道都有兩個執行個體，而每個執行個體都可隨著縮放單位變更來支援特定使用者數目。 縮放單位 1-3 支援 500 個連線、縮放單位 4-6 支援 1000 個連線、縮放單位 7-12 支援 5000 個連線、縮放單位 13-18 支援最多 10,000 個連線。 
 
 例如，我們假設使用者選擇 1 作為縮放單位。 每個縮放單位表示已部署的主動-主動閘道，而每個執行個體 (在此案例中為 2 個) 會支援最多 500 個連線。 每個閘道可以取得 500 個連線 * 2，但是不表示您為此縮放單位規劃的是 1000 而不是 500。 如果您超過建議的連線計數，在額外 500 個連線期間系統要提供服務的執行個體可能會中斷。 此外，如果您決定在縮放單位上擴大或縮小，或變更 VPN 閘道上的點對站設定，請務必規劃停機時間。
 

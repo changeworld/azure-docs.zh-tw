@@ -9,12 +9,12 @@ ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: b86b569b1b14b943cdc6dcc805a7b7a208d03447
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 5503a4734ca687ba89d7d40270ae9157deb0ca91
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475114"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489981"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>什麼是 Azure Data Lake Analytics？
 
@@ -49,7 +49,7 @@ Data Lake Analytics 可用於執行巨量資料工作負載，是十分符合成
 
 ## <a name="works-with-all-your-azure-data"></a>使用所有的 Azure 資料
   
-Data Lake Analytics 可與 Azure Data Lake Storage 搭配運作，以達到最高效能、輸送量和平行處理，並可與 Azure 儲存體 Blob、Azure SQL Database、Azure Synapse Analytics (先前的 Azure SQL 資料倉儲) 搭配運作。
+Data Lake Analytics 可與 Azure Data Lake Storage 搭配運作，以達到最高效能、輸送量和平行處理，並可與 Azure 儲存體 Blob、Azure SQL Database、Azure Synapse Analytics (先前的 SQL 資料倉儲) 搭配運作。
 
 
 ## <a name="next-steps"></a>後續步驟

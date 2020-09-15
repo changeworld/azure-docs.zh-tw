@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 44d77c36b9aacb8a2f06fd7a0f167cffa06ae4eb
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: ad3dd64bb55ccd657b74bacff3e4441ce63f0cf7
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716107"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569368"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>在 Key Vault 中建立和合併 CSR
 
@@ -102,6 +102,9 @@ Azure Key Vault 支援將您所選任何憑證授權單位發行的數位憑證�
 
 - **錯誤類型「在指定的 x.509 憑證內容中，終端實體憑證的公開金鑰不符合所指定私密金鑰的公開部分。請檢查憑證是否有效」** 如果您並未合併 CSR 與起始的相同 CSR 要求，就會發生此錯誤。 每次建立 CSR 時，都會建立一個必須在合併已簽署要求時進行比對的私密金鑰。
     
+- 合併 CSR 後，整個鏈結都會合併嗎？
+    是的，系統會合併整個鏈結，前提是使用者已送回 p7b 檔案以合併。
+
 - 如果在 Azure 入口網站中發出的憑證處於「已停用」狀態，請繼續檢視**憑證作業**，來檢閱該憑證的錯誤訊息。
 
 如需詳細資訊，請參閱 [Key Vault REST API 參考中的憑證作業](/rest/api/keyvault)。 如需建立權限的相關資訊，請參閱[保存庫 - 建立或更新](/rest/api/keyvault/vaults/createorupdate)和[保存庫 - 更新存取原則](/rest/api/keyvault/vaults/updateaccesspolicy)。

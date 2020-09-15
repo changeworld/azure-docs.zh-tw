@@ -14,6 +14,8 @@
       href: deployment-models.md
     - name: 依服務的資源提供者
       href: azure-services-resource-providers.md
+    - name: 控制平面和資料平面
+      href: control-plane-and-data-plane.md
     - name: 延伸模組資源類型
       href: extension-resource-types.md
     - name: 資源SQL Server 執行個體限制

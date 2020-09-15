@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: f67cbb70d7064b894b9042bba42f48e4fb6a6b5e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d032937fe79b9f51818ce8917c36fa1cc30397c0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684757"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400121"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 資源的保留
 
@@ -73,7 +73,7 @@ ms.locfileid: "88684757"
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>將單一保留分割成兩個保留
 
- 購買保留內的多個資源執行個體之後，建議您將該保留中的執行個體指派至不同的訂用帳戶。 依預設，所有執行個體都具有一個範圍 - 單一訂用帳戶或共用。 例如，您購買了 10 個保留執行個體，並指定範圍為訂用帳戶 A。您現在要將 7 個保留的範圍變更為訂用帳戶 A，而剩下 3 個變更為訂用帳戶 B。分割保留可讓您分散執行個體，以進行更細微的管理。 您可以選擇共用範圍來簡化訂用帳戶的配置。 但是，基於成本管理或預算考量，您可以配置一些數量給特定的訂用帳戶。
+ 購買保留內的多個資源執行個體之後，建議您將該保留中的執行個體指派至不同的訂用帳戶。 依預設，所有執行個體都具有一個範圍，例如單一訂用帳戶、資源群組或共用。 例如，您購買了一個保留供 10 個 VM 執行個體使用，並指定範圍為訂用帳戶 A。您現在要將 7 個 VM 的範圍變更為訂用帳戶 A，而剩下 3 個變更為訂用帳戶 B。分割保留可讓您做到這點。 分割保留之後，系統會取消原始 ReservationID，並建立兩個新的保留。 分割不會影響保留順序 - 沒有任何新的商業交易具有分割，而且新的保留結束日期與已分割的保留相同。
 
  您可以透過 PowerShell、CLI 或 API 來將保留分成兩個保留。
 

@@ -3,12 +3,12 @@ title: 教學課程：建立自訂原則定義
 description: 在本教學課程中，針對 Azure 原則製作自訂原則定義，以在您的 Azure 資源上強制執行自訂商務規則。
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044612"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649826"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教學課程：建立自訂原則定義
 
@@ -73,7 +73,7 @@ ms.locfileid: "86044612"
 若要尋找屬性，最簡單的方式是查看相同類型的現有資源。 已使用所要強制執行的設定進行設定的資源，也會提供可用來比較的值。
 在 Azure 入口網站中，查看該項資源的 [匯出範本] 頁面 (在 [設定] 下方)。
 
-:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="現有資源上的 [匯出範本] 頁面" border="false":::
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Azure 入口網站中現有資源的匯出範本頁面的螢幕擷取畫面。" border="false":::
 
 對儲存體帳戶執行此操作，就會顯示類似此範例的範本：
 

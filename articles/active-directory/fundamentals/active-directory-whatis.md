@@ -11,28 +11,28 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db14e4e47cce1822404561d33bd8e0d3f224e037
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 1d66e8b15b7af73517a7f838186821248bffeccc
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321101"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566104"
 ---
 # <a name="what-is-azure-active-directory"></a>什麼是 Azure Active Directory？
 
 Azure Active Directory (Azure AD) 是 Microsoft 的雲端式身分識別和存取管理服務，可協助員工登入及存取以下資源：
 
-- 外部資源，例如 Microsoft Office 365、Azure 入口網站和其他數千個 SaaS 應用程式。
+- 外部資源，例如 Microsoft 365、Azure 入口網站和其他數千個 SaaS 應用程式。
 
 - 內部資源，例如公司網路和內部網路上的應用程式，以及您自己的組織所開發的任何雲端應用程式。 如需有關為您的組織建立租用戶的詳細資訊，請參閱[快速入門：在 Azure Active Directory 中建立新的租用戶](active-directory-access-create-new-tenant.md)。
 
-若要了解 Azure AD 與 Active Directory Domain Services 之間的差異，請參閱[比較 Active Directory 與 Azure Active Directory](active-directory-compare-azure-ad-to-ad.md)。 您可以使用各種 [Microsoft Cloud for Enterprise Architects 系列](/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide)的海報，來深入了解 Azure、Azure AD 與 Office 365 中的核心識別服務。
+若要了解 Azure AD 與 Active Directory Domain Services 之間的差異，請參閱[比較 Active Directory 與 Azure Active Directory](active-directory-compare-azure-ad-to-ad.md)。 您可以使用各種 [Microsoft Cloud for Enterprise Architects 系列](/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide)的海報，來深入了解 Azure、Azure AD 與 Microsoft 365 中的核心識別服務。
 
 ## <a name="who-uses-azure-ad"></a>誰會使用 Azure AD？
 
 Azure AD 的適用對象是：
 
-- **IT 系統管理員。** 身為 IT 系統管理員，您可以使用 Azure AD，根據業務需求來控制應用程式和應用程式資源的存取權。 例如，您可以使用 Azure AD，來要求在存取組織的重要資源時必須進行多重要素驗證。 此外，您也可以使用 Azure AD，自動地在現有 Windows Server AD 和雲端應用程式 (包括 Office 365) 之間佈建使用者。 最後，Azure AD 可提供功能強大的工具，以便自動地協助保護使用者的身分識別和認證，以及符合存取治理需求。 若要開始作業，請註冊[免費的 30 天 Azure Active Directory Premium 試用版](https://azure.microsoft.com/trial/get-started-active-directory/)。
+- **IT 系統管理員。** 身為 IT 系統管理員，您可以使用 Azure AD，根據業務需求來控制應用程式和應用程式資源的存取權。 例如，您可以使用 Azure AD，來要求在存取組織的重要資源時必須進行多重要素驗證。 此外，您也可以使用 Azure AD，自動地在現有 Windows Server AD 和雲端應用程式 (包括 Microsoft 365) 之間佈建使用者。 最後，Azure AD 可提供功能強大的工具，以便自動地協助保護使用者的身分識別和認證，以及符合存取治理需求。 若要開始作業，請註冊[免費的 30 天 Azure Active Directory Premium 試用版](https://azure.microsoft.com/trial/get-started-active-directory/)。
 
 - **應用程式開發人員。** 身為應用程式開發人員，您可以使用 Azure AD 作為標準方法，將單一登入 (SSO) 新增至應用程式，讓它與使用者預先存在的認證搭配運作。 Azure AD 也會提供 API，來協助您建置會使用現有組織資料的個人化應用程式體驗。 若要開始作業，請註冊[免費的 30 天 Azure Active Directory Premium 試用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 如需詳細資訊，您也可以參閱[適用於開發人員的 Azure Active Directory](../develop/index.yml)。
 
@@ -40,7 +40,7 @@ Azure AD 的適用對象是：
 
 ## <a name="what-are-the-azure-ad-licenses"></a>什麼是 Azure AD 授權？
 
-Office 365 或 Microsoft Azure 等 Microsoft Online 業務服務需要 Azure AD 才能登入，並可用來協助進行身分識別保護。 如果您訂閱任何 Microsoft Online 業務服務，您就會自動取得 Azure AD 並可存取所有免費的功能。
+Microsoft 365 或 Microsoft Azure 等 Microsoft Online 業務服務需要 Azure AD 才能登入，並可用來協助進行身分識別保護。 如果您訂閱任何 Microsoft Online 業務服務，您就會自動取得 Azure AD 並可存取所有免費的功能。
 
 若要增強您的 Azure AD 實作，您也可以升級至 Azure Active Directory Premium P1 或 Premium P2 授權來新增付費功能。 Azure AD 付費授權會建立在您現有的免費目錄上，提供適用於行動使用者的自助服務、增強監視、安全性報告及安全存取。
 
@@ -49,7 +49,7 @@ Office 365 或 Microsoft Azure 等 Microsoft Online 業務服務需要 Azure AD 
 >
 >目前在中國不支援 Azure Active Directory Premium P1 和 Premium P2。 如需有關 Azure AD 定價的詳細資訊，請透過 [Azure Active Directory 論壇](https://azure.microsoft.com/support/community/?product=active-directory)與我們連絡。
 
-- **Azure Active Directory Free。** 提供跨 Azure、Office 365 和許多熱門 SaaS 應用程式的使用者和群組管理、內部部署目錄同步作業、基本報告、雲端使用者的自助式密碼變更和單一登入。
+- **Azure Active Directory Free。** 提供跨 Azure、Microsoft 365 和許多熱門 SaaS 應用程式的使用者和群組管理、內部部署目錄同步作業、基本報告、雲端使用者的自助式密碼變更和單一登入。
 
 - **Azure Active Directory Premium P1。** 除了 Free 版的功能外，P1 版還會讓混合式使用者可以同時存取內部部署和雲端的資源。 不僅如此，它還支援進階的管理 (例如，動態群組、自助群組管理、Microsoft Identity Manager (此為內部部署身分識別和存取管理套件))，以及雲端回寫功能 (可讓內部部署使用者使用自助密碼重設)。
 
@@ -78,7 +78,7 @@ Office 365 或 Microsoft Azure 等 Microsoft Online 業務服務需要 Azure AD 
 |身分識別治理|管理組織的身分識別，從員工、業務合作夥伴、廠商、服務到應用程式的存取控制。 您也可以執行存取權檢閱。 如需詳細資訊，請參閱 [Azure AD Identity Governance 文件](../governance/identity-governance-overview.md)和 [Azure AD 存取權檢閱](../governance/access-reviews-overview.md)。|
 |身分識別保護|偵測會影響組織身分識別的潛在弱點、設定用來回應可疑動作的原則，然後採取適當動作來加以解決。 如需詳細資訊，請參閱 [Azure AD Identity Protection](../identity-protection/index.yml)。|
 |適用於 Azure 資源的受控識別|在 Azure AD 中，為 Azure 服務提供受到自動管理的身分識別，以供其用來驗證 Azure AD 所支援的驗證服務，包括 Key Vault。 如需詳細資訊，請參閱[什麼是適用於 Azure 資源的受控識別？](../managed-identities-azure-resources/overview.md)。|
-|Privileged Identity Management (PIM)|管理、控制及監視組織內的存取。 這個功能包括存取 Azure AD 和Azure 中的資源，以及其他 Microsoft Online Services (如 Office 365 或 Intune)。 如需詳細資訊，請參閱 [Azure AD Privileged Identity Management](../privileged-identity-management/index.yml)。|
+|Privileged Identity Management (PIM)|管理、控制及監視組織內的存取。 這個功能包括存取 Azure AD 和Azure 中的資源，以及其他 Microsoft Online Services (如 Microsoft 365 或 Intune)。 如需詳細資訊，請參閱 [Azure AD Privileged Identity Management](../privileged-identity-management/index.yml)。|
 |報告和監視|深入了解環境中的安全性和使用模式。 如需詳細資訊，請參閱 [Azure Active Directory 報告和監視](../reports-monitoring/index.yml)。|
 
 ## <a name="terminology"></a>詞彙
@@ -89,18 +89,18 @@ Office 365 或 Microsoft Azure 等 Microsoft Online 業務服務需要 Azure AD 
 |---------------|-----------|
 |身分識別| 可以獲得驗證的項目。 身分識別可以是具有使用者名稱和密碼的使用者。 身分識別也包含需要透過祕密金鑰或憑證進行驗證的應用程式或其他伺服器。|
 |帳戶| 具有相關聯資料的身分識別。 您無法擁有沒有身分識別的帳戶。|
-|Azure AD 帳戶| 透過 Azure AD 或其他 Microsoft 雲端服務 (例如 Office 365) 所建立的身分識別。 身分識別會儲存在 Azure AD 中，並可供組織的雲端服務訂用帳戶來存取。 此帳戶有時也稱為公司或學校帳戶。|
+|Azure AD 帳戶| 透過 Azure AD 或其他 Microsoft 雲端服務 (例如 Microsoft 365) 所建立的身分識別。 身分識別會儲存在 Azure AD 中，並可供組織的雲端服務訂用帳戶來存取。 此帳戶有時也稱為公司或學校帳戶。|
 |帳戶管理員|在概念上，這個傳統的訂用帳戶系統管理員角色是訂用帳戶的計費擁有者。 這個角色可存取 [Azure 帳戶中心](https://account.azure.com/Subscriptions)，並可讓您管理帳戶中的所有訂用帳戶。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
 |服務管理員|這個傳統的訂用帳戶系統管理員角色可讓您管理所有 Azure 資源，包括存取權。 這個角色所具有的存取權，與在訂用帳戶範圍獲派擁有者角色的使用者相同。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
 |擁有者|這個角色可協助您管理所有 Azure 資源，包括存取權。 這個角色建置在較新的授權系統 (稱為 Azure 角色型存取控制 (RBAC)) 上，可讓您以更細微的方式管理 Azure 資源的存取權。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
 |Azure AD 全域系統管理員|這個系統管理員角色會自動指派給 Azure AD 租用戶的建立者。 全域系統管理員可以針對 Azure AD 和任何與 Azure AD 同盟的服務 (例如，Exchange Online、SharePoint Online 和商務用 Skype Online)，執行所有系統管理功能。 您可以有多個全域系統管理員，但只有全域系統管理員可以對使用者指派系統管理員角色 (包括指派其他全域系統管理員)。 請注意，此管理員角色在 Azure 入口網站中稱為全域管理員，但在 Microsoft Graph API 與 Azure AD PowerShell 中稱為**公司系統管理員**。如需各種管理員角色的詳細資訊，請參閱 [Azure Active Directory 中的管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)。|
 |Azure 訂用帳戶| 用來支付 Azure 雲端服務費用。 您可以擁有許多訂用帳戶，而它們都會與信用卡連結。|
-|Azure 租用戶| 組織在註冊 Microsoft 雲端服務訂用帳戶 (例如 Microsoft Azure、Microsoft Intune 或 Office 365) 時，所自動建立的專用且受信任 Azure AD 執行個體。 一個 Azure 租用戶代表一個組織。|
+|Azure 租用戶| 組織在註冊 Microsoft 雲端服務訂用帳戶 (例如 Microsoft Azure、Microsoft Intune 或 Microsoft 365) 時，所自動建立的專用且受信任 Azure AD 執行個體。 一個 Azure 租用戶代表一個組織。|
 |單一租用戶| 如果 Azure 租用戶會存取專用環境中的其他服務，便可將其視為單一租用戶。|
 |多租用戶| 如果 Azure 租用戶會存取多個組織所共用環境中的其他服務，便可將其視為多租用戶。|
 |Azure AD 目錄|每個 Azure 租用戶都有專用且受信任的 Azure AD 目錄。 Azure AD 目錄包含租用戶的使用者、群組和應用程式，並可用來對租用戶資源執行身分識別和存取管理功能。|
 |自訂網域|每個新的 Azure AD 目錄皆隨附初始網域名稱 (domainname.onmicrosoft.com)。 除了初始名稱外，您也可以在清單中新增組織的網域名稱，其中的名稱除了可供營運使用，亦可供使用者用來存取組織的資源。 新增自訂網域名稱可協助您建立使用者熟悉的使用者名稱，例如 alain@contoso.com。|
-|Microsoft 帳戶 (也稱為 MSA)|此為個人帳戶，可讓您存取消費者導向的 Microsoft 產品和雲端服務，例如 Outlook、OneDrive、Xbox LIVE 或 Office 365。 Microsoft 帳戶會建立並儲存在 Microsoft 所執行的 Microsoft 取用者身分識別帳戶系統中。|
+|Microsoft 帳戶 (也稱為 MSA)|此為個人帳戶，可讓您存取消費者導向的 Microsoft 產品和雲端服務，例如 Outlook、OneDrive、Xbox LIVE 或 Microsoft 365。 Microsoft 帳戶會建立並儲存在 Microsoft 所執行的 Microsoft 取用者身分識別帳戶系統中。|
 
 ## <a name="next-steps"></a>後續步驟
 

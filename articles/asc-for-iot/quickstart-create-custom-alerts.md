@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/27/2020
+ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 8ba81b669c25d91efa8ad1f07b1a7835b42c5cf4
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7638ad070e8ac8bd99cbfb49b99bbb347a243a21
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310840"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505432"
 ---
 # <a name="quickstart-create-custom-alerts"></a>快速入門：建立自訂警示
 
@@ -67,8 +67,8 @@ ms.locfileid: "81310840"
 
 ## <a name="customize-an-alert"></a>自訂警示
 
-1. 開啟 IoT 中樞。
-1. 按一下 [安全性]  區段中的 [自訂警示]  。
+1. 開啟您的 IoT 中樞，然後從 [安全性] 功能表中選取 [設定]。 
+1. 按一下 [自訂警示]。
 1. 選擇要作為自訂內容套用對象的安全性群組。
 1. 按一下 [新增自訂警示]  。
 1. 從下拉式清單中選取自訂警示。

@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/10/2020
+ms.date: 09/04/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a1df804681f0066fda025a60e0baddedc51f7a78
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 212e9b1826d0245675b066ded00b03e8cff1fb96
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298074"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487036"
 ---
 |名稱 |描述 |原則 |版本 |
 |---|---|---|---|
@@ -30,10 +30,9 @@ ms.locfileid: "89298074"
 |[稽核憑證即將在指定天數內到期的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_CertificateExpiration.json) |此方案會部署原則需求，並稽核憑證會在指定天數內過期的 Windows 虛擬機器。 如需有關客體設定原則的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[稽核信任根憑證中不包含指定憑證的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsCertificateInTrustedRoot.json) |此方案會部署原則需求，並稽核信任的根憑證授權單位憑證存放區 (Cert:\LocalMachine\Root) 中，不包含指定憑證的 Windows VM。 如需有關客體設定原則的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[稽核未安裝指定應用程式的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApp.json) |此方案會部署原則需求，並針對未安裝指定應用程式的 Windows 虛擬機器進行稽核。 如需有關客體設定原則的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[稽核沒有指定 Windows PowerShell 執行原則的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPowerShellExecutionPolicy.json) |此計劃會部署原則需求，並稽核 Windows PowerShell 未設定為使用指定 PowerShell 執行原則的 Windows 虛擬機器。 如需有關客體設定原則的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[稽核未安裝指定 Windows PowerShell 模組的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPowerShellModules.json) |此方案會部署原則需求，並針對未安裝指定 Windows PowerShell 模組的 Windows 虛擬機器進行稽核。 如需有關客體設定原則的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[稽核不符合 Azure 安全性基準設定的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_AzureBaseline.json) |此方案會部署原則需求，並稽核 Azure 安全性基準設定不符合規範的 Windows 虛擬機器。 如需有關客體設定原則的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol) |58 |1.0.0 |
 |[稽核未在指定天數內重新啟動的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_MachineLastBootUpTime.json) |此方案會部署原則需求，並稽核未在指定天數內重新啟動的 Windows 虛擬機器。 如需有關客體設定原則的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[稽核已安裝指定應用程式的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApp.json) |此方案會部署原則需求，並針對已安裝指定應用程式的 Windows 虛擬機器進行稽核。 如需有關客體設定原則的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[稽核正在等候重新開機的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPendingReboot.json) |此方案會部署原則需求，並針對重新開機作業擱置的 Windows 虛擬機器進行稽核。 如需有關客體設定原則的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[稽核未使用安全通訊協定的 Windows 網頁伺服器](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_TLS.json) |此方案會部署原則需求，並稽核未使用安全通訊協定 (TLS 1.1 或 TLS 1.2) 的 Windows 網頁伺服器。 如需有關客體設定原則的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
+|[部署必要條件，以在虛擬機器上啟用來賓設定原則](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json) |此計畫會新增系統指派的受控識別，並將適合平台的客體設定延伸模組部署到可由客體設定原則監視的虛擬機器。 這是所有客體設定原則的必要條件，必須先指派給原則指派範圍，才能使用任何客體設定原則。 如需有關客體設定的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 |4 |1.0.0-preview |
+|[Windows 電腦應符合 Azure 安全性基準的需求](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_AzureBaseline.json) |此方案使用不符合 Azure 安全性基準的設定來稽核 Windows 電腦。 如需詳細資訊，請參閱 [https://aka.ms/gcpol](https://aka.ms/gcpol) |29 |2.0.0-preview |

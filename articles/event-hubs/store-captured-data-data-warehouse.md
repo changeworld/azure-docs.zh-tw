@@ -1,26 +1,26 @@
 ---
-title: 教學課程：將事件資料遷移至 SQL 資料倉儲 - Azure 事件中樞
-description: 教學課程：本教學課程說明如何使用由事件格線觸發的 Azure 函式，將資料從事件中樞擷取到 SQL 資料倉儲中。
+title: 教學課程：將事件資料遷移至 Azure Synapse Analytics - Azure 事件中樞
+description: 教學課程：本教學課程說明如何使用由事件方格觸發的 Azure 函式，將資料從事件中樞擷取到 Azure Synapse Analytics 中。
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b6b6466675c8fa258af8370798cadd88e3b25a83
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b2a35647422c91d6859e1889f906ae512ce41a56
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997824"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436607"
 ---
-# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>教學課程：使用事件方格和 Azure Functions 將擷取的事件中樞資料遷移至 SQL 資料倉儲
+# <a name="tutorial-migrate-captured-event-hubs-data-to-azure-synapse-analytics-using-event-grid-and-azure-functions"></a>教學課程：使用事件方格和 Azure Functions 將擷取的事件中樞資料遷移至 Azure Synapse Analytics
 
-要將事件中樞內的串流資料自動傳遞至 Azure Blob 儲存體或 Azure Data Lake Store，事件中樞[擷取](./event-hubs-capture-overview.md)是最簡單的方式。 接著，您將可處理這些資料，並將其傳遞至您所選擇的任何其他儲存體目的地，例如 SQL 資料倉儲或 Cosmos DB。 在本教學課程中，您將了解如何使用由[事件格線](../event-grid/overview.md)觸發的 Azure 函式，將資料從事件中樞擷取到 SQL 資料倉儲中。
+要將事件中樞內的串流資料自動傳遞至 Azure Blob 儲存體或 Azure Data Lake Store，事件中樞[擷取](./event-hubs-capture-overview.md)是最簡單的方式。 接著，您將可處理這些資料，並將其傳遞至您所選擇的任何其他儲存體目的地，例如 Azure Synapse Analytics 或 Cosmos DB。 在本教學課程中，您將了解如何使用由[事件方格](../event-grid/overview.md)觸發的 Azure 函式，將資料從事件中樞擷取到 Azure Synapse Analytics 中。
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
 - 首先，您應建立已啟用**擷取**功能的事件中樞，並 Azure Blob 儲存體設定為目的地。 WindTurbineGenerator 所產生的資料會串流至事件中樞，並以 Avro 檔案的形式自動擷取到 Azure 儲存體中。
 - 接下來，您應建立以事件中樞命名空間作為來源，並以 Azure 函式端點作為目的地的 Azure 事件格線訂用帳戶。
-- 每當事件中樞擷取功能將新的 Avro 檔案傳遞至 Azure 儲存體 Blob 時，事件格線即會以 Blob URI 告知 Azure 函式，。 接著，此函式會將資料從 Blob 移轉至 SQL 資料倉儲。
+- 每當事件中樞擷取功能將新的 Avro 檔案傳遞至 Azure 儲存體 Blob 時，事件格線即會以 Blob URI 告知 Azure 函式。 接著，此函式會將資料從 Blob 遷移至 Azure Synapse Analytics。
 
 在本教學課程中，您會執行下列動作：
 
@@ -30,7 +30,7 @@ ms.locfileid: "88997824"
 > - 將程式碼發佈至 Functions 應用程式
 > - 從 Functions 應用程式建立事件格線訂用帳戶
 > - 將範例資料串流至事件中樞。
-> - 確認 SQL 資料倉儲中已擷取的資料
+> - 驗證 Azure Synapse Analytics 中擷取的資料
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88997824"
 - 下載 [Git 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo)。範例解決方案包含下列元件：
 
   - *WindTurbineDataGenerator* – 一個簡單的發行者，會將範例風力發電機資料傳送至已啟用擷取功能的事件中樞
-  - *FunctionDWDumper* – 一個 Azure 函式，會在 Avro 檔案擷取至 Azure 儲存體 Blob 時收到事件格線通知。 它會接收 Blob 的 URI 路徑、讀取其內容，並將這項資料推送至 SQL 資料倉儲。
+  - *FunctionDWDumper* – 一個 Azure 函式，會在 Avro 檔案擷取至 Azure 儲存體 Blob 時收到事件格線通知。 其會接收 Blob 的 URI 路徑、讀取其內容，並將此資料推送至 Azure Synapse Analytics。
 
   此範例使用最新的 Azure.Messaging.EventHubs 套件。 您可以在[這裡](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)找到使用 Microsoft.Azure.EventHubs 套件的舊範例。
 
@@ -53,7 +53,7 @@ ms.locfileid: "88997824"
 - 用來裝載 Functions 應用程式的 Azure App Service 方案
 - 對已擷取的事件檔案進行處理的函式應用程式
 - 用來裝載資料倉儲的邏輯 SQL 伺服器
-- SQL 資料倉儲，用來儲存移轉的資料
+- 用於儲存已遷移資料的 Azure Synapse Analytics
 
 以下幾節將提供相關 Azure CLI 和 Azure PowerShell 命令，用以部署本教學課程所需的基礎結構。 執行這些命令之前，請先更新下列物件的名稱： 
 
@@ -91,9 +91,9 @@ New-AzResourceGroup -Name rgDataMigration -Location westcentralus
 New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>在 SQL 資料倉儲中建立資料表
+### <a name="create-a-table-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立資料表
 
-使用 [Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md)、[SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md) 或入口網站中的查詢編輯器執行 [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) 指令碼，在您的 SQL 資料倉儲中建立資料表。 
+使用 [Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md)、[SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md) 或入口網站中的查詢編輯器執行 [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) 指令碼，以在 Azure Synapse Analytics 中建立資料表。 
 
 ```sql
 CREATE TABLE [dbo].[Fact_WindTurbineMetrics] (
@@ -148,7 +148,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
    ![建立訂用帳戶](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 
 ## <a name="generate-sample-data"></a>產生範例資料  
-現在，您已設定事件中樞、SQL 資料倉儲、Azure 函式應用程式和事件格線訂用帳戶。 您可以執行 WindTurbineDataGenerator.exe，以產生在原始程式碼中的事件中樞更新了連接字串和名稱之後會傳至事件中樞的資料流。 
+現在，您已設定事件中樞、Azure Synapse Analytics、Azure 函式應用程式和事件方格訂用帳戶。 您可以執行 WindTurbineDataGenerator.exe，以產生在原始程式碼中的事件中樞更新了連接字串和名稱之後會傳至事件中樞的資料流。 
 
 1. 在入口網站中，選取您的事件中樞命名空間。 選取 [連接字串]。
 
@@ -174,9 +174,9 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 6. 建置解決方案，然後執行 WindTurbineGenerator.exe 應用程式。 
 
 ## <a name="verify-captured-data-in-data-warehouse"></a>確認資料倉儲中已擷取的資料
-在幾分鐘之後，查詢 SQL 資料倉儲中的資料表。 您會看到 WindTurbineDataGenerator 所產生的資料已串流至事件中樞、擷取到 Azure 儲存體容器中，然後由 Azure 函式移轉至 SQL 資料倉儲資料表中。  
+在幾分鐘之後，查詢 Azure Synapse Analytics 中的資料表。 您會看到 WindTurbineDataGenerator 所產生的資料已串流至事件中樞、擷取到 Azure 儲存體容器中，然後由 Azure 函式遷移至 Azure Synapse Analytics 資料表中。  
 
 ## <a name="next-steps"></a>後續步驟 
 您可以對資料倉儲使用功能強大的資料視覺效果工具，以產生付諸行動的深入解析。
 
-本文說明如何[搭配使用 Power BI 與 SQL 資料倉儲](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)
+本文說明如何使用 [Power BI 搭配 Azure Synapse Analytics](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)

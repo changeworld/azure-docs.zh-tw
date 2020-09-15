@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ecca67cab486c8f3524c8c8d4c221d52689cf62a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dedf0795e72c4bdace430ba2dd07ade9d792f13c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070102"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459534"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Synapse 受控私人端點 (預覽)
 
@@ -23,7 +23,7 @@ ms.locfileid: "87070102"
 
 受控私人端點是在受控工作區 Microsoft Azure 虛擬網路中建立的私人端點，其會建立 Azure 資源的私人連結。 Azure Synapse 會代表您管理這些私人端點。
 
-Azure Synapse 支援私人連結。 私人連結可讓您安全地從 Azure 虛擬網路存取 Azure 服務 (例如 Azure 儲存體、Azure Cosmos DB 和 Azure SQL 資料倉儲) 和 Azure 託管的客戶/合作夥伴服務。
+Azure Synapse 支援私人連結。 私人連結可讓您安全地從 Azure 虛擬網路存取 Azure 服務 (例如 Azure 儲存體和 Azure Cosmos DB) 和 Azure 託管的客戶/合作夥伴服務。
 
 使用私人連結時，您的虛擬網路和工作區之間的流量會完全流經 Microsoft 骨幹網路。 Private Link 可保護您免受資料外洩風險。 您可以建立私人端點來建立資源的私人連結。
 

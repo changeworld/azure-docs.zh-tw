@@ -4,12 +4,12 @@ description: 本文說明如何使用 Azure Migrate 將 AWS VM 遷移至 Azure�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 72579c103102196e641244600ce9add64d6e20a4
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 6c4b53e3c3673b913e4afbfb65801d83f0640bd3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419005"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651839"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>探索、評估 Amazon Web Services (AWS) VM，並將其遷移至 Azure
 
@@ -43,12 +43,17 @@ ms.locfileid: "89419005"
 1. 請遵循[教學課程](./tutorial-prepare-physical.md)來設定 Azure，並準備 AWS VM 來進行評量。 請注意：
 
     - Azure Migrate 在探索 AWS 執行個體時，會使用密碼驗證。 依預設，AWS 執行個體不支援密碼驗證。 您必須先啟用密碼驗證，才可以探索執行個體。
-        - 針對 Windows 電腦，允許 WinRM 連接埠 5986 (HTTPS) 和 5985 (HTTP)。 這會允許遠端 WMI 呼叫。 如果您設定 
+        - 針對 Windows 電腦，允許 WinRM 連接埠 5985 (HTTP)。 這會允許遠端 WMI 呼叫。
         - 針對 Linux 電腦：
             1. 登入每一部 Linux 電腦。
             2. 開啟 sshd_config 檔案：vi /etc/ssh/sshd_config
             3. 在檔案中，找出 **PasswordAuthentication** 行，並將值變更為 **yes**。
             4. 儲存並關閉檔案。 重新啟動 ssh 服務
+    - 如果您使用根使用者來探索 Linux VM，請確定已允許在 VM 上進行根登入。
+        1. 登入每一部 Linux 電腦
+        2. 開啟 sshd_config 檔案：vi /etc/ssh/sshd_config
+        3. 在檔案中，找出 **PermitRootLogin** 行，並將值變更為 **yes**。
+        4. 儲存並關閉檔案。 重新啟動 ssh 服務
 
 2. 然後，遵循此[教學課程](./tutorial-assess-physical.md)來設定 Azure Migrate 專案和設備，以探索及評估您的 AWS VM。
 

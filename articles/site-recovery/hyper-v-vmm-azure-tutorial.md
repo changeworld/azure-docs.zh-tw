@@ -4,12 +4,12 @@ description: 了解如何使用 Site Recovery 將 System Center VMM 雲端中內
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: f32103adce184a67cec9e5a778ac1d1e6f330f4d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86130229"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442815"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>將 VMM 雲端中 Hyper-V VM 的災害復原設定至 Azure
 
@@ -83,8 +83,12 @@ ms.locfileid: "86130229"
 在「Microsoft Azure 復原服務代理程式安裝精靈」中進行下列設定：
 
 1. **必要條件檢查**。 選取 [下一步]  。 系統會自動安裝任何缺少的必要條件。
-1. **安裝設定**。 接受安裝位置和快取位置。 快取磁碟機至少需要 5 GB 的儲存體。 我們建議磁碟機要有 600 GB 或更多的可用空間。 然後，選取 [安裝]  。
-1. **安裝**。 在安裝完成後，選取 [關閉]  以完成精靈。
+1. **安裝設定**。 接受安裝位置。 然後，選取 [安裝]。
+
+    >[!NOTE]
+    >對 Azure Site Recovery 而言，不需要 [快取位置]。
+
+1. **安裝**。 在安裝完成後，選取 [關閉] 以完成精靈。
 
    ![安裝代理程式](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
 
@@ -92,14 +96,14 @@ ms.locfileid: "86130229"
 
 1. 選取 [準備基礎結構]   > [目標]  。
 1. 選取容錯移轉之後，將在其中建立 Azure VM 的訂用帳戶和資源群組 (**ContosoRG**)。
-1. 選取 [Resource Manager]  部署模型。
+1. 選取 [Resource Manager] 部署模型。
 
 Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶和網路。
 
 ## <a name="configure-network-mapping"></a>設定網路對應
 
-1. [Site Recovery 基礎結構]   > [網路對應]   > [網路對應]  。 選取 [+網路對應]  圖示。
-1. **新增網路對應**。 選取 [來源 System Center VMM]  伺服器。 在 [目標]  中選取 [Azure]。
+1. [Site Recovery 基礎結構] > [網路對應] > [網路對應]。 選取 [+網路對應] 圖示。
+1. **新增網路對應**。 選取 [來源 System Center VMM] 伺服器。 在 [目標] 中選取 [Azure]。
 1. 在容錯移轉後確認訂用帳戶和部署模型。
 1. **來源網路**。 選取來源內部部署 VM 網路。
 1. **目標網路**。 選取 Azure 網路來放置容錯移轉之後建立的複本 Azure VM。 然後選取 [確定]  。
@@ -110,21 +114,21 @@ Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶�
 
 1. 選取 [準備基礎結構]   > [複寫設定]   > [+建立並產生關聯]  。
 1. 在 [建立及關聯原則]  中指定原則名稱。 我們使用的是 **ContosoReplicationPolicy**。
-1. 接受預設設定，然後選取 [確定]  ：
-   - [複製頻率]  指出差異資料會在初始複寫之後每隔五分鐘複寫一次。
-   - [復原點保留]  指出每個復原點會保留兩小時。
+1. 接受預設設定，然後選取 [確定]：
+   - [複製頻率] 指出差異資料會在初始複寫之後每隔五分鐘複寫一次。
+   - [復原點保留] 指出每個復原點會保留兩小時。
    - [應用程式一致快照頻率]  指出將會每小時建立一次包含應用程式一致快照集的復原點。
    - [初始複寫開始時間]  指出初始複寫將會立即開始。
-   - [將儲存在 Azure 上的資料加密]  會設定為預設值 (**關閉**)，並指出不會加密 Azure 中的待用資料。
+   - [將儲存在 Azure 上的資料加密] 會設定為預設值 (**關閉**)，並指出不會加密 Azure 中的待用資料。
 1. 原則建立後，請選取 [確定]  。 當您建立新的原則時，該原則會自動與 VMM 雲端產生關聯。
 
 ## <a name="enable-replication"></a>啟用複寫
 
-1. **複寫應用程式**。 選取 [來源]  。
+1. **複寫應用程式**。 選取 [來源]。
 1. **來源**。 選取 [VMM 雲端]。 然後選取 [確定]  。
-1. **目標**。 確認目標 (Azure)、保存庫訂用帳戶，然後選取 [Resource Manager]  模型。
+1. **目標**。 確認目標 (Azure)、保存庫訂用帳戶，然後選取 [Resource Manager] 模型。
 1. 選取 **contosovmsacct1910171607** 儲存體帳戶和 **ContosoASRnet** Azure 網路。
-1. [虛擬機器]   > [選取]  。 選取您要複寫的 VM。 然後選取 [確定]  。
+1. [虛擬機器] > [選取]。 選取您要複寫的 VM。 然後選取 [確定]  。
 
    您可以在 [作業]   > [Site Recovery 作業]  中，追蹤 [啟用保護]  動作的進度。 在**完成保護**作業完成後，即完成初始複寫，且 VM 已可進行容錯移轉。
 

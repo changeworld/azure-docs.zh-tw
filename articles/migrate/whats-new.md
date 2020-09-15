@@ -4,16 +4,18 @@ description: 了解 Azure Migrate 服務中的新功能和最新更新。
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: e32c7433649cc6716a57a6aa2384c1e2d266e102
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 019c04c5820a82b7910b6755ff69e5dfbe7eb66c
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927165"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421606"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新功能
 
 [Azure Migrate](migrate-services-overview.md) 可協助您探索及評定內部部署伺服器、應用程式與資料，並將其移轉至 Microsoft Azure 雲端。 此文章摘要說明 Azure Migrate 中的新版本及新功能。
+## <a name="update-september-2020"></a>更新 (2020 年 9 月)
+- Azure Migrate 現在可讓您將伺服器遷移至可用性區域
 
 ## <a name="update-august-2020"></a>更新 (2020 年 8 月)
 

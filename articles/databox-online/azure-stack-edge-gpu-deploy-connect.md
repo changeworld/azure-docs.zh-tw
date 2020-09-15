@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 713f9eeef87cbfe3d8cb3d9717ad703328b54fe3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3b500a7d93d19bcc0cd9c23d64ad079f0abfd353
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262714"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421351"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-with-gpu"></a>教學課程：連線至搭配 GPU 的 Azure Stack Edge
 
@@ -41,11 +41,11 @@ ms.locfileid: "89262714"
 
 1. 使用靜態 IP 位址 192.168.100.5 和子網路 255.255.255.0，在電腦上設定要連線到 Azure Stack Edge 裝置的乙太網路介面卡。
 
-2. 將電腦連線到裝置上的連接埠 1。 請使用下圖來識別您裝置上的連接埠 1。
+2. 將電腦連線到裝置上的連接埠 1。 如果要將電腦直接連線到裝置 (不透過交換器)，請使用跳接纜線或 USB 乙太網路介面卡。 請使用下圖來識別您裝置上的連接埠 1。
 
     ![已連接纜線的裝置後擋板](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
-    裝置的後擋板看起來可能會略有不同，視您收到的確切型號而定。
+    裝置的後擋板看起來可能會略有不同，視您收到的確切型號而定。 如需相關資訊，請參閱[將裝置接上纜線](azure-stack-edge-gpu-deploy-install.md#cable-the-device)。
 
 
 3. 開啟瀏覽器視窗，然後在 `https://192.168.100.10` 存取裝置的本機 Web UI。  

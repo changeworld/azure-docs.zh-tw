@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/29/2020
+ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: e5682d511b20f7b6f4dbfbd7487e39f345b660fa
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 25bdf2fba67b3a2b42a24416a9de692cf3e992dd
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262850"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421368"
 ---
 # <a name="tutorial-install-azure-stack-edge-with-gpu"></a>教學課程：安裝搭配 GPU 的 Azure Stack Edge
 
@@ -221,6 +221,10 @@ ms.locfileid: "89262850"
 4. 將電源線連接至機架配電裝置 (PDU)。 請確定兩個 PSU 使用不同的電源。
 5. 按下電源按鈕來開啟裝置。
 6. 將 1-GbE 網路介面連接埠 1 連接到用來設定實體裝置的電腦。 連接埠 1 會作為管理介面。
+    
+    > [!NOTE]
+    > 如果要將電腦直接連線到您的裝置 (不透過交換器)，請使用跳接纜線或 USB 乙太網路介面卡。
+
 7. 將連接埠 2、連接埠 3、連接埠 4、連接埠 5 或連接埠 6 的其中一或多個連接埠連接到資料中心網路/網際網路。
 
     - 如果連接到連接埠 2，請使用 1-GbE RJ-45 網路線。
@@ -235,7 +239,7 @@ ms.locfileid: "89262850"
 > * 安裝裝置機架
 > * 接上裝置纜線
 
-請繼續進行下一個教學課程，以了解如何連線、設定及啟用您的裝置。
+前進至下一個教學課程，以了解如何連線至您的裝置。
 
 > [!div class="nextstepaction"]
 > [連接 Azure Stack Edge](./azure-stack-edge-gpu-deploy-connect.md)

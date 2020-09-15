@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c1b640fa5104ceb0f330c9aee9813ed8b3914d33
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 4972e843394cac3b4a4f7c08a27f9d1a9e19cee5
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166037"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459380"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來建立及查詢 Synapse SQL 集區
 
@@ -155,7 +155,7 @@ Azure Synapse 服務會在伺服器層級建立防火牆。 此防火牆會防�
 
 不建議在以伺服器管理員身分登入時執行大型查詢，因為這麼做會使用[有限的資源類別](resource-classes-for-workload-management.md)。 請改為設定[工作負載隔離](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql)，如[教學課程所述](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw#create-a-user-for-loading-data)。
 
-SQL 資料倉儲會使用 T-SQL 作為查詢語言。 若要開啟查詢視窗並執行一些 T-SQL 查詢，請使用下列步驟：
+Azure Synapse Analytics 使用 T-SQL 作為查詢語言。 若要開啟查詢視窗並執行一些 T-SQL 查詢，請使用下列步驟：
 
 1. 以滑鼠右鍵選取 [mySampleDataWarehouse]，然後選取 [新增查詢]。 隨即開啟 [新增查詢] 視窗。
 

@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 69265b17d5030d30bbb4d4be3e68c3d98fc90af0
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 06f308b4e0b2df0487a351ae38f16f3872961cfb
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321085"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436251"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory 簡介 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -35,7 +35,7 @@ ms.locfileid: "85321085"
 
 為了分析這些記錄，此公司必須使用參考資料，例如內部部署資料存放區中的客戶資訊、遊戲資訊及行銷活動資訊。 因此，公司想要從雲端資料存放區內嵌記錄資料，以及從內部部署資料存放區內嵌參考資料。 
 
-然後，他們想要使用雲端的 Hadoop (Azure HDInsight) 來處理資料。 想要將結果資料發佈至雲端資料倉儲 (例如 Azure SQL 資料倉儲) 或內部部署資料存放區 (例如 SQL Server)。 該公司希望一週執行此工作流程一次。 
+然後，他們想要使用雲端的 Hadoop (Azure HDInsight) 來處理資料。 想要將結果資料發佈至雲端資料倉儲，例如 Azure Synapse Analytics (前稱 SQL 資料倉儲) 或內部部署資料存放區 (例如 SQL Server)。 該公司希望一週執行此工作流程一次。 
 
 該公司需要他們可以在其中建立工作流程的平台，該工作流程可以從內部部署和雲端資料存放區擷取資料。 該公司也必須能夠藉由使用現有的計算服務 (例如 Hadoop) 來轉換或處理資料，並且將結果發佈至內部部署或雲端資料存放區，讓 BI 應用程式使用。 
 
@@ -47,7 +47,7 @@ Azure Data Factory 是這種案例的平台。 這是一項雲端式資料整合
 
 - 使用計算服務 (例如，Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure Machine Learning) 來處理或轉換資料。
 
--  將輸出資料發佈至資料存放區，例如 Azure SQL 資料倉儲，讓商業智慧 (BI) 應用程式取用。  
+-  將輸出資料發佈至資料存放區，例如 Azure Synapse Analytics，讓商業智慧 (BI) 應用程式取用。  
 
 它與其說是傳統的擷取-轉換-和-載入 (ETL) 平台，還不如說是擷取並載入 (EL) 而後轉換並載入 (TL) 平台。 轉換會使用計算服務來處理資料，而不是新增衍生的資料行、計算資料列數、排序資料等等。 
 

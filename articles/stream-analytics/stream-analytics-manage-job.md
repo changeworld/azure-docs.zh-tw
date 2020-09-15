@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 577a80f04ad186ab1575fa78db3fa59402d6058f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a265bc2ed131dc0bb69d89f767ab60225d30ee8e
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83697393"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612045"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>教學課程：使用串流分析分析通話資料並在 Power BI 儀表板中以視覺方式呈現結果
 
@@ -185,7 +185,7 @@ ms.locfileid: "83697393"
 
    ![設定串流分析輸出](media/stream-analytics-manage-job/configure-stream-analytics-output.png)
 
-4. 當您選取 [授權] 時，快顯視窗隨即開啟，而系統會要求您提供認證來驗證您的 Power BI 帳戶。 一旦授權成功，請 [儲存] 設定。
+4. 當您選取 [授權] 時，快顯視窗隨即開啟，而系統會要求您提供認證來驗證您的 Power BI 帳戶。 一旦授權成功，請 [儲存] 設定。 若要使用受控識別，請參閱[使用受控識別來驗證您的 Power BI Azure 串流分析作業](powerbi-output-managed-identity.md)。
 
 ## <a name="define-a-query-to-analyze-input-data"></a>定義查詢來分析輸入資料
 

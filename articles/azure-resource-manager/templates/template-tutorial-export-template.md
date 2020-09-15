@@ -2,16 +2,16 @@
 title: 教學課程 - 從 Azure 入口網站匯出範本
 description: 了解如何使用匯出的範本來完成範本開發。
 author: mumian
-ms.date: 03/27/2020
+ms.date: 09/09/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4042ed29b143ab160883ca46ecb1cc17d2e0c761
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7aaeb7af3876c2603208faaf46bead01199906cd
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497149"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650072"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>教學課程：從 Azure 入口網站使用匯出的範本
 
@@ -62,7 +62,7 @@ ms.locfileid: "87497149"
 
    匯出範本功能會取得資源的目前狀態，並產生範本來進行部署。 匯出範本是快速取得部署資源所需之 JSON 的實用方式。
 
-1. 將 **Microsoft.Web/serverfarms** 定義和參數定義複製到您的範本。
+1. 在匯出的範本中尋找 **Microsoft.Web/serverfarms** 定義和參數定義。 您不需要複製這些區段。 您可以只使用此匯出的範本作為要如何將此資源新增至範本的範例。
 
     ![Resource Manager 範本匯出範本匯出的範本](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "87497149"
 
 匯出的範本會提供您所需的大部分 JSON，但您需要針對範本進行自訂。 請特別注意您的範本與匯出範本間參數和變數的差異。 很明顯地，匯出程式並不知道您已定義於範本中的參數和變數。
 
-下列範例會反白顯示範本的新增項目。 其中包含匯出的程式碼加上一些變更。 首先，它會變更參數的名稱，以符合您的命名慣例。 其次，它會使用您的 location 參數來取得 App Service 方案的位置。 第三，它會移除 **properties** 物件內的 **name**，因為此值對於資源層級上的 **name** 屬性是多餘的。
+下列範例會反白顯示範本的新增項目。 其中包含匯出的程式碼加上一些變更。 首先，它會變更參數的名稱，以符合您的命名慣例。 其次，它會使用您的 location 參數來取得 App Service 方案的位置。 第三，其會移除預設值正常的部分屬性。
 
 複製整個檔案，並以其內容取代您的範本。
 
@@ -129,7 +129,7 @@ az deployment group create \
 如果您現在要停止，則可能想要刪除資源群組來清除您部署的資源。
 
 1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
-2. 在 [依名稱篩選]  欄位中輸入資源群組名稱。
+2. 在 [依名稱篩選] 欄位中輸入資源群組名稱。
 3. 選取資源群組名稱。
 4. 從頂端功能表中選取 [刪除資源群組]  。
 

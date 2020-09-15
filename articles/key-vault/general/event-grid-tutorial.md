@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 283c66eb3b49b60b87283c5d94cc4f110adceffe
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 034bdce96d88deb31a071682a3c02200a64699dd
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588742"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087545"
 ---
-# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>使用 Azure 事件方格來接收和回應金鑰保存庫通知 (預覽)
+# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>使用 Azure 事件方格來接收和回應金鑰保存庫通知
 
-Azure Key Vault 與 Azure 事件方格的整合 (目前處於預覽狀態) 可讓使用者在金鑰保存庫中儲存的祕密變更狀態時收到通知。 如需此功能的概觀，請參閱[使用事件方格監視 Key Vault](event-grid-overview.md)。
+Azure Key Vault 與 Azure 事件方格的整合可讓使用者在金鑰保存庫中儲存的祕密變更狀態時收到通知。 如需此功能的概觀，請參閱[使用事件方格監視 Key Vault](event-grid-overview.md)。
 
 本指南說明如何透過事件方格接收 Key Vault 通知，以及如何透過 Azure 自動化回應狀態變更。
 
@@ -32,7 +32,7 @@ Azure Key Vault 與 Azure 事件方格的整合 (目前處於預覽狀態) 可�
 
 事件方格是一項雲端事件服務。 藉由遵循本指南中的步驟，您將訂閱 Key Vault 的事件，並將事件路由傳送至 Azure 自動化。 當金鑰保存庫中的其中一個秘密即將過期時，事件方格會收到狀態變更通知並對端點進行 HTTP POST。 然後，Webhook 會觸發 PowerShell 指令碼的自動化執行。
 
-![HTTP POST 流程圖](../media/image1.png)
+![HTTP POST 流程圖](../media/event-grid-tutorial-1.png)
 
 ## <a name="create-an-automation-account"></a>建立自動化帳戶
 
@@ -46,7 +46,7 @@ Azure Key Vault 與 Azure 事件方格的整合 (目前處於預覽狀態) 可�
 
 1.  選取 [新增]  。
 
-    ![自動化帳戶窗格](../media/image2.png)
+    ![自動化帳戶窗格](../media/event-grid-tutorial-2.png)
 
 1.  在 [新增自動化帳戶]  窗格中輸入必要資訊，然後選取 [建立]  。
 
@@ -54,7 +54,7 @@ Azure Key Vault 與 Azure 事件方格的整合 (目前處於預覽狀態) 可�
 
 自動化帳戶準備就緒之後，建立 Runbook。
 
-![建立 Runbook UI](../media/image3.png)
+![建立 Runbook UI](../media/event-grid-tutorial-3.png)
 
 1.  選取您剛建立的自動化帳戶。
 
@@ -92,7 +92,7 @@ write-Error "No input data found."
 }
 ```
 
-![發佈 Runbook UI](../media/image4.png)
+![發佈 Runbook UI](../media/event-grid-tutorial-4.png)
 
 ## <a name="create-a-webhook"></a>建立 Webhook
 
@@ -102,7 +102,7 @@ write-Error "No input data found."
 
 1.  選取 [新增 Webhook]  。
 
-    ![新增 Webhook 按鈕](../media/image5.png)
+    ![新增 Webhook 按鈕](../media/event-grid-tutorial-5.png)
 
 1.  選取 [建立新的 Webhook]  。
 
@@ -115,15 +115,15 @@ write-Error "No input data found."
 
 1. 選取 [確定]  ，然後選取 [建立]  。
 
-    ![建立新的 Webhook UI](../media/image6.png)
+    ![建立新的 Webhook UI](../media/event-grid-tutorial-6.png)
 
 ## <a name="create-an-event-grid-subscription"></a>建立事件格線訂用帳戶
 
 透過 [Azure 入口網站](https://portal.azure.com)建立事件方格訂用帳戶。
 
-1.  移至您的金鑰保存庫，然後選取 [事件]  索引標籤。如果您看不到它，請確定您使用的是[入口網站的預覽版本](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)。
+1.  移至您的金鑰保存庫，然後選取 [事件]**** 索引標籤。
 
-    ![Azure 入口網站中的事件索引標籤](../media/image7.png)
+    ![Azure 入口網站中的事件索引標籤](../media/event-grid-tutorial-7.png)
 
 1.  選取 [事件訂閱]  按鈕。
 
@@ -143,15 +143,15 @@ write-Error "No input data found."
 
 1.  選取 [建立]  。
 
-    ![建立事件訂閱](../media/image8.png)
+    ![建立事件訂閱](../media/event-grid-tutorial-8.png)
 
 ## <a name="test-and-verify"></a>測試和驗證
 
 確認您的事件方格訂用帳戶已設定屬性。 這項測試假設您已在[建立事件方格訂用帳戶](#create-an-event-grid-subscription)中訂閱「已建立新版的秘密」通知，而且您有必要權限可在金鑰保存庫中建立新版的秘密。
 
-![測試事件方格訂用帳戶的組態](../media/image9.png)
+![測試事件方格訂用帳戶的組態](../media/event-grid-tutorial-9.png)
 
-![建立祕密窗格](../media/image10.png)
+![建立祕密窗格](../media/event-grid-tutorial-10.png)
 
 1.  移至 Azure 入口網站上您的金鑰保存庫。
 
@@ -161,7 +161,7 @@ write-Error "No input data found."
 
 1.  在 [計量]  底下，檢查是否已擷取事件。 預期會有兩個事件：SecretNewVersion 和 SecretNearExpiry。 這些事件會驗證事件方格是否成功擷取到金鑰保存庫中祕密的狀態變更。
 
-    ![計量窗格：檢查是否有已擷取的事件](../media/image11.png)
+    ![計量窗格：檢查是否有已擷取的事件](../media/event-grid-tutorial-11.png)
 
 1.  移至自動化帳戶。
 
@@ -169,13 +169,13 @@ write-Error "No input data found."
 
 1.  選取 [Webhook]  索引標籤，然後確認「上次觸發」時間戳記是在您建立新祕密時的 60 秒內。 這個結果可確認事件方格已使用金鑰保存庫中狀態變更的事件詳細資料對 Webhook 進行 POST，然後觸發 Webhook。
 
-    ![Webhook 索引標籤，上次觸發時間戳記](../media/image12.png)
+    ![Webhook 索引標籤，上次觸發時間戳記](../media/event-grid-tutorial-12.png)
 
 1. 返回您的 Runbook，然後選取 [概觀]  索引標籤。
 
 1. 查看 [最近的作業]  清單。 您應會看到已建立一項作業，且狀態為 [完成]。 這會確認 Webhook 觸發了 Runbook 來開始執行其指令碼。
 
-    ![Webhook 最近的作業清單](../media/image13.png)
+    ![Webhook 最近的作業清單](../media/event-grid-tutorial-13.png)
 
 1. 選取最近的作業，然後查看從事件方格傳送到 Webhook 的 POST 要求。 檢查 JSON，並確定您金鑰保存庫和事件類型的參數均正確無誤。 如果 JSON 物件中的「事件類型」參數符合金鑰保存庫中發生的事件 (在此範例中是 Microsoft.KeyVault.SecretNearExpiry)，則測試成功。
 
@@ -194,9 +194,9 @@ write-Error "No input data found."
 深入了解：
 
 
-- 概觀：[使用 Azure 事件方格監視 Key Vault (預覽)](event-grid-overview.md)
+- 概觀：[使用 Azure 事件方格監視 Key Vault](event-grid-overview.md)
 - 如何：[在金鑰保存庫祕密變更時收到電子郵件](event-grid-logicapps.md)
-- [Azure Key Vault 的 Azure 事件方格事件結構描述 (預覽)](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault 的 Azure 事件方格事件結構描述](../../event-grid/event-schema-key-vault.md)
 - [Azure Key Vault 概觀](overview.md))
 - [Azure 事件方格概觀](../../event-grid/overview.md)
 - [Azure 自動化概觀](../../automation/index.yml)

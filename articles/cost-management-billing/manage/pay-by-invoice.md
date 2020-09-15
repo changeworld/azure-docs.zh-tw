@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d55916539f64fc70560565bd5caf6254aac5a908
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 30fa6e0489c1f2c33e02286280e7508239c1c1d2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684859"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567906"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>按發票支付 Azure 訂閱費
 
@@ -67,7 +67,7 @@ ms.locfileid: "88684859"
      訂用帳戶的特定區域及系列：<br>
 
     - [公司名稱] 和 [公司位址] 應符合您為 Azure 帳戶提供的資訊。 若要檢視或更新資訊，請參閱[變更您的 Azure 帳戶設定檔資訊](change-azure-account-profile.md)。
-    - 請先在 Azure 入口網站中新增您的帳單連絡人資訊，才能核准信用限額。 連絡人詳細資料應該與公司的應付帳款或財務部門相關。 若要更新帳單連絡人資訊，請移至 [Azure 帳戶中心](https://account.azure.com/Profile)。
+    - 請先在 Azure 入口網站中新增您的帳單連絡人資訊，才能核准信用限額。 連絡人詳細資料應該與公司的應付帳款或財務部門相關。 若要更新帳單連絡人資訊，請移至 [Azure 入口網站](https://portal.azure.com)。
 
 6. 確認您的連絡資訊和慣用的連絡方法，然後選取 [建立]。
 

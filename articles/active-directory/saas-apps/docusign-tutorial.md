@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/21/2020
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 6736edd615f99ed987e7d1618c449ff7a819c497
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c91f9d38922cc1bddf252fde59291c2f233e1aa2
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536048"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650199"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 DocuSign 整合
 
@@ -47,7 +47,7 @@ ms.locfileid: "88536048"
 * DocuSign 支援 **just-in-time** 使用者佈建。
 
 * DocuSign 支援[自動使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)。
-* 設定 DocuSign 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 設定 DocuSign 之後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-docusign-from-the-gallery"></a>從資源庫新增 DocuSign
 
@@ -61,7 +61,7 @@ ms.locfileid: "88536048"
 1. 從結果面板選取 [DocuSign]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-docusign"></a>設定及測試 DocuSign 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-docusign"></a>設定和測試 DocuSign 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 DocuSign 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 DocuSign 中對應使用者之間的連結關聯性。
 
@@ -94,9 +94,12 @@ ms.locfileid: "88536048"
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
-    c. 在 [回覆 URL] 文字方塊中，以下列模式輸入 URL：
+    c. 在**回覆 URL** 文字方塊中，輸入下列其中一種 URL 模式：
     
-    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
+    | 回覆 URL |
+    |-------------|
+    |`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/<IDPID>`|
+    |`https://<subdomain>.docusign.net/SAML/`|
 
     > [!NOTE]
     > 這些加上括弧的值都是預留位置。 使用實際登入 URL、識別碼及回覆 URL 的值來取代這些值。 本教學課程稍後的「檢視 SAML 2.0 端點」一節會說明這些詳細資料。
