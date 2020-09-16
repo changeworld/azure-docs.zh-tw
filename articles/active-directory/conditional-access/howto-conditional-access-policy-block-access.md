@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d05aaa7a6bd48c92e863d38dcee9f0bf925bafa
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049259"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601583"
 ---
 # <a name="conditional-access-block-access"></a>條件式存取：封鎖存取
 
@@ -40,13 +40,13 @@ ms.locfileid: "89049259"
 
 下列步驟將協助建立條件式存取原則，以封鎖除了 [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) 以外的所有應用程式的存取權（如果使用者不在信任的網路上）。 這些原則會放入 [僅限報表模式](howto-conditional-access-insights-reporting.md) ，讓系統管理員可以判斷他們對現有使用者的影響。 當系統管理員想要套用原則時，可以將它們切換為 **開啟**。
 
-第一個原則會封鎖除了 Office 365 應用程式以外的所有應用程式存取權（如果不在信任的位置）。
+第一個原則會封鎖除了 Microsoft 365 應用程式以外的所有應用程式存取權（如果不在信任的位置）。
 
 1. 以全域管理員、安全性系統管理員或條件式存取管理員的身分，登入 **Azure 入口網站**。
 1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
 1. 選取 [新增原則]。
 1. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。
-1. 在 [指派] 底下選取 [使用者和群組]。
+1. 在 [指派]  底下，選取 [使用者和群組]  。
    1. 在 [包含] 下，選取 [所有使用者]。
    1. 在 [排除] 底下選取 [使用者和群組]，然後選擇組織的緊急存取或急用帳戶。 
    1. 選取 [完成] 。
@@ -64,11 +64,11 @@ ms.locfileid: "89049259"
 1. 確認您的設定，並將 [啟用原則] 設為 [報告專用]。
 1. 選取 [建立]，以建立並啟用您的原則。
 
-以下會建立第二個原則，以針對 Office 365 的使用者要求多重要素驗證或符合規範的裝置。
+以下會建立第二個原則，以針對 Microsoft 365 的使用者要求多重要素驗證或符合規範的裝置。
 
 1. 選取 [新增原則]。
 1. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。
-1. 在 [指派] 底下選取 [使用者和群組]。
+1. 在 [指派]  底下，選取 [使用者和群組]  。
    1. 在 [包含] 下，選取 [所有使用者]。
    1. 在 [排除] 底下選取 [使用者和群組]，然後選擇組織的緊急存取或急用帳戶。 
    1. 選取 [完成] 。

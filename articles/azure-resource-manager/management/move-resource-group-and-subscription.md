@@ -2,14 +2,14 @@
 title: 將資源移至新的訂用帳戶或資源群組
 description: 使用 Azure Resource Manager 將資源移到新的資源群組或訂用帳戶。
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2b278dae956ec0bd17773badbeaa880b7bf901a5
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 43b5cd8c9fa5947ff8f345bd0cd3ad26d9e61923
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056630"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603147"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>將資源移到新的資源群組或訂用帳戶 \(部分機器翻譯\)
 
@@ -172,7 +172,7 @@ Authorization: Bearer <access-token>
 
 :::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="移動選項已停用":::
 
-若要啟用移動選項，請選取您想要移動的資源。 若要選取所有資源，請選取清單最上方的核取方塊。 或者，個別選取 [資源]。
+若要啟用移動選項，請選取您想要移動的資源。 若要選取所有資源，請選取清單最上方的核取方塊。 或者，個別選取 [資源]。 選取資源之後，就會啟用移動選項。
 
 :::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="選取資源":::
 
@@ -293,6 +293,6 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 目前，Azure 支援不會移動中的所有資源。 如需支援移動的資源清單，請參閱 [移動資源](move-support-resources.md)的作業支援。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需支援移動的資源清單，請參閱 [移動資源的作業支援](move-support-resources.md)。

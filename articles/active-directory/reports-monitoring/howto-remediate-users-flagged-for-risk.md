@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 725b3b712313c199382cebe32bed98f2115fc262
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231158"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600495"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>補救 Azure Active Directory 入口網站中標幟為有風險的使用者
 
@@ -42,9 +42,9 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
 如需詳細資訊，請參閱[標幟為有風險的使用者安全性報告](../identity-protection/overview-identity-protection.md)。
 
-### <a name="azure-ad-subscription-for-office-365-customers"></a>Office 365 客戶的 Azure AD 訂用帳戶
+### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Azure AD Microsoft 365 客戶的訂用帳戶
 
-您也可以使用 Office 365 認證來存取 **Azure 系統管理中心**。 在您啟動 Azure AD 存取後，您就會重新導向至 Azure AD 入口網站。 在基本訂閱等級，報告中提供的詳細資料數量有限。 其他資料和分析資料則適用於 Azure 進階訂閱者。
+您也可以使用 Microsoft 365 認證來存取 Azure 系統 **管理中心**。 在您啟動 Azure AD 存取後，您就會重新導向至 Azure AD 入口網站。 在基本訂閱等級，報告中提供的詳細資料數量有限。 其他資料和分析資料則適用於 Azure 進階訂閱者。
 
 若要存取 Microsoft 365 系統管理中心中 **標示為有風險** 報告的使用者：
 
@@ -79,7 +79,7 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
     h. 產生稽核記錄，以供系統管理員檢閱。
 
-4. 調查您的 Office 365 租用戶和其他 IT 基礎結構是否可能修改，包括檢閱所有租用戶設定、使用者帳戶，以及每個使用者的組態設定。 檢查持續性方法的指標，以及入侵者可能已利用初始據點來取得 VPN 認證，或存取其他組織資源的指標。 
+4. 調查您的 Microsoft 365 租使用者和其他 IT 基礎結構，包括審核所有租使用者設定、使用者帳戶，以及每個使用者的設定，以進行可能的修改。 檢查持續性方法的指標，以及入侵者可能已利用初始據點來取得 VPN 認證，或存取其他組織資源的指標。 
 
 5.  在調查過程中，請考慮是否應該通知政府機關，包括執法機關。
 

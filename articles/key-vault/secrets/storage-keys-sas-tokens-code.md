@@ -9,14 +9,14 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: afe7d5ce3dd1756ddb9e33fe402fb2eb699ce8f7
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 0f81ffb5279e10c71f7d7cccfb6b738bc12e5cf4
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007412"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086771"
 ---
-# <a name="fetch-shared-access-signature-tokens-in-code"></a>擷取程式碼中的共用存取簽章權杖
+# <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>建立 SAS 定義並擷取程式碼中的共用存取簽章權杖
 
 您可以使用儲存在金鑰保存庫中的共用存取簽章 (SAS) 權杖來管理儲存體帳戶。 如需詳細資訊，請參閱[使用 SAS 授與 Azure 儲存體資源的存取權](../../storage/common/storage-sas-overview.md)。
 
@@ -41,9 +41,9 @@ ms.locfileid: "90007412"
 
 如果您共用的存取簽章權杖即將到期，您可以再次擷取相同的祕密來產生新的權杖。
 
+如需如何使用從 Key Vault SAS 權杖擷取來存取 Azure 儲存體服務的指南，請參閱[使用帳戶 SAS 存取 Blob 服務](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)
+
 ## <a name="next-steps"></a>後續步驟
 - 了解如何[使用 SAS 授與 Azure 儲存體資源的存取權](../../storage/common/storage-sas-overview.md)。
 - 瞭解如何[使用 Key Vault 和 Azure CLI 或 [Azure PowerShell](overview-storage-keys-powershell.md) 來管理儲存體帳戶金鑰](overview-storage-keys.md)。
-- 請參閱完整的 [ShareLink](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/share-link/) 範例。
-- 更多 [Key Vault 範例](https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault)
 - 請參閱[受控儲存體帳戶金鑰範例](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)

@@ -8,12 +8,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: b1d559d82cb22d8a787785c6d8c6a5101d89793a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586557"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601073"
 ---
 # <a name="point-in-time-snapshot"></a>時間點快照集
 
@@ -23,31 +23,29 @@ Azure 應用程式組態會維護對索引鍵/值所做之變更的記錄。 此
 
 您可以使用 Azure 入口網站或 CLI 來取出過去的索引鍵/值。 在 Azure CLI 中， `az appconfig revision list` 請使用，並新增適當的參數來取得必要的值。  藉由提供存放區名稱 (`--name <app-config-store-name>`) 或使用 () 的連接字串，來指定 Azure 應用程式組態實例 `--connection-string <your-connection-string>` 。 藉由指定特定的時間點 (`--datetime`) ，以及指定要傳回 () 的最大專案數，來限制輸出 `--top` 。
 
-如果您沒有 Azure CLI 安裝在本機，您可以選擇性地使用 Azure Cloud Shell。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+如果您沒有 Azure CLI 安裝在本機，您可以選擇性地使用 [Azure Cloud Shell](/azure/cloud-shell/overview)。
 
 取得索引鍵/值的所有已記錄變更。
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name>.
 ```
 
 取得索引鍵 `environment` 和標籤和標籤的所有已記錄變更 `test` `prod` 。
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment --label test,prod
 ```
 
 取出階層式索引鍵空間中所有記錄的變更 `environment:prod` 。
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment:prod:* 
 ```
 
 在特定時間點捕獲金鑰的所有已記錄變更 `color` 。
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --connection-string <your-app-config-connection-string> --key color --datetime "2019-05-01T11:24:12Z" 
 ```
 

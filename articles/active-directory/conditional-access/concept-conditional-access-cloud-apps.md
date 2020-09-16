@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8b1440f34feb1cda2661178e520590cb9ec54f1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 838d2a1dd1c7b89c1f5c9fec6578312107264958
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948397"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602059"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>條件式存取：雲端應用程式或動作
 
@@ -55,9 +55,9 @@ ms.locfileid: "88948397"
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
-- Office 365 Exchange Online
-- Office 365 SharePoint Online
-- Office 365 Yammer
+- Exchange Online
+- SharePoint
+- Yammer
 - Office Delve
 - Office Sway
 - Outlook Groups
@@ -69,7 +69,7 @@ ms.locfileid: "88948397"
 
 ### <a name="office-365-preview"></a>Office 365 (預覽)
 
-Office 365 提供雲端型的生產力和共同作業服務，例如 Exchange、SharePoint 和 Microsoft Teams。 Office 365 雲端服務經過深度整合，可保證提供順暢的共同作業體驗。 這項整合會在建立原則時造成混淆，因為某些應用程式 (如 Microsoft Teams) 與其他應用程式 (如 SharePoint 或 Exchange) 有相依性。
+Microsoft 365 提供雲端式生產力和共同作業服務，例如 Exchange、SharePoint 和 Microsoft 小組。 Microsoft 365 雲端服務已緊密整合，以確保順暢且共同作業的體驗。 這項整合會在建立原則時造成混淆，因為某些應用程式 (如 Microsoft Teams) 與其他應用程式 (如 SharePoint 或 Exchange) 有相依性。
 
 Office 365 (預覽) 應用程式可讓您一次將這些服務全部設為目標。 建議使用新的 Office 365 (預覽) 應用程式，而非以個別的雲端應用程式為目標，以避免出現[服務相依性](service-dependencies.md)的問題。 以此應用程式群組做為目標，有助於避免發生因為原則和相依性不一致而導致的問題。
 
@@ -82,10 +82,10 @@ Office 365 (預覽) 用戶端應用程式包含的主要應用程式：
    - Microsoft Stream
    - Microsoft To-Do
    - Microsoft Teams
-   - Office 365 Exchange Online
-   - Office 365 SharePoint Online
-   - Office 365 Search Service
-   - Office 365 Yammer
+   - Exchange Online
+   - SharePoint Online
+   - Microsoft 365 搜尋服務
+   - Yammer
    - Office Delve
    - Office Online
    - Office.com

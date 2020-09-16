@@ -392,14 +392,20 @@
                   href: ./spark/apache-spark-analyze-application-insight-logs.md
         - name: 管理
           items:
+            - name: 管理相依性
+              items:
+                - name: 管理 Spark 應用程式相依性
+                  href: ./spark/apache-spark-manage-dependencies.md
+                - name: 安全地管理 Jar 相依性
+                  href: ./spark/safely-manage-jar-dependency.md
+                - name: 安全地管理 Python 環境
+                  href: ./spark/apache-spark-python-package-installation.md
             - name: 管理叢集資源
               href: ./spark/apache-spark-resource-manager.md
             - name: 使用擴充的記錄伺服器管理 Apache Spark 應用程式
               href: ./spark/apache-azure-spark-history-server.md
             - name: 使用 IO 快取啟用快取
               href: ./spark/apache-spark-improve-performance-iocache.md
-            - name: 管理 Jar 相依性
-              href: ./spark/manage-jar-dependency.md
             - name: 透過 Apache Spark 使用 Notebook
               items:
                 - name: 使用本機 Jupyter Notebook
@@ -408,8 +414,6 @@
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: 使用 cell magic 搭配 Jupyter 使用外部套件
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: 使用指令碼動作在 Azure HDInsight 上安全地管理 Python 環境
-                  href: ./spark/apache-spark-python-package-installation.md
                 - name: 使用 Apache Zeppelin Notebook
                   href: ./spark/apache-spark-zeppelin-notebook.md
             - name: 搭配其他 Azure 服務使用

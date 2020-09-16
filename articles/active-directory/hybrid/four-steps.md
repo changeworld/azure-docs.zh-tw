@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b7e394c4227be9ead491fe77457b466b1f62468
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279324"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600791"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>使用 Azure Active Directory 的強式身分識別基礎進行四個步驟
 
@@ -46,7 +46,7 @@ Azure AD 可讓系統管理員 [將應用程式新增](../manage-apps/add-applic
 一旦將應用程式新增至 Azure AD 資源庫，使用者就可以看到指派給他們的應用程式，並視需要搜尋和要求其他應用程式。 Azure AD 提供 [數種方法](../manage-apps/end-user-experiences.md) 讓使用者存取其應用程式：
 
 * 存取面板/我的應用程式
-* Office 365 應用程式啟動器
+* Microsoft 365 應用程式啟動器
 * 直接登入同盟應用程式
 * 直接登入連結
 
@@ -115,7 +115,7 @@ Azure AD Connect 在布建過程中扮演著重要的角色。 如果同步伺�
 
 在 Azure AD 中啟用內部部署目錄物件的 cloud authentication 最簡單且建議的方法，是啟用 (PHS) 的 [密碼雜湊同步](./how-to-connect-password-hash-synchronization.md) 處理。 或者，某些組織可能會考慮啟用 [傳遞驗證](./how-to-connect-pta-quick-start.md) (PTA) 。
 
-無論您選擇 PHS 或 PTA，別忘了啟用 [無縫單一登入](./how-to-connect-sso.md) ，可讓使用者存取雲端應用程式，而不需要在公司網路上使用 Windows 7 和8裝置時，在應用程式中持續輸入其使用者名稱和密碼。 若沒有單一登入，使用者必須記住應用程式特定的密碼，並登入每個應用程式。 同樣地，IT 人員必須為每個應用程式（例如 Office 365、Box 和 Salesforce）建立及更新使用者帳戶。 使用者必須記住他們的密碼，並花時間登入每個應用程式。 為整個企業提供標準化的單一登入機制，對最佳使用者體驗、降低風險、報告和治理的能力非常重要。
+無論您選擇 PHS 或 PTA，別忘了啟用 [無縫單一登入](./how-to-connect-sso.md) ，可讓使用者存取雲端應用程式，而不需要在公司網路上使用 Windows 7 和8裝置時，在應用程式中持續輸入其使用者名稱和密碼。 若沒有單一登入，使用者必須記住應用程式特定的密碼，並登入每個應用程式。 同樣地，IT 人員必須為每個應用程式（例如 Microsoft 365、Box 和 Salesforce）建立及更新使用者帳戶。 使用者必須記住他們的密碼，並花時間登入每個應用程式。 為整個企業提供標準化的單一登入機制，對最佳使用者體驗、降低風險、報告和治理的能力非常重要。
 
 針對已在使用 AD FS 或其他內部部署驗證提供者的組織，移至 Azure AD 作為身分識別提供者可降低複雜度並提高可用性。 除非您有使用同盟的特定使用案例，否則建議您從同盟驗證遷移至 PHS 和無縫 sso 或 PTA 和無縫 SSO，以享有降低內部部署使用量的優點，以及雲端提供的彈性，並提升使用者體驗。 如需詳細資訊，請參閱 [Azure Active Directory 的從同盟遷移至密碼雜湊同步](./plan-migrate-adfs-password-hash-sync.md)處理。
 
@@ -156,7 +156,7 @@ MFA 登 [入報告](../authentication/howto-mfa-reporting.md) 包含 mfa 使用�
 * 以屬性為基礎的動態群組成員資格
 * 委派給應用程式擁有者
 
-Azure AD 可讓您使用安全性群組和 Office 365 群組來管理資源的存取權。 這些群組可以由群組擁有者管理，該擁有者可以核准或拒絕成員資格要求，以及委派群組成員資格的控制權。 這項功能稱為「 [自助群組管理](../users-groups-roles/groups-self-service-management.md)」，可讓未獲派系統管理角色的群組擁有者建立及管理群組，而不需要依賴系統管理員來處理其要求，藉此節省時間。
+Azure AD 能讓您使用安全性群組和 Microsoft 365 群組來管理資源的存取權。 這些群組可以由群組擁有者管理，該擁有者可以核准或拒絕成員資格要求，以及委派群組成員資格的控制權。 這項功能稱為「 [自助群組管理](../users-groups-roles/groups-self-service-management.md)」，可讓未獲派系統管理角色的群組擁有者建立及管理群組，而不需要依賴系統管理員來處理其要求，藉此節省時間。
 
 ## <a name="step-4---operationalize-your-insights"></a>步驟 4-讓您的見解
 
@@ -212,7 +212,7 @@ Azure AD Connect 和 AD FS 是很重要的元件，可能會破壞生命週期�
 
 *「有了 Cloud App Security，我們可以迅速找出異常狀況並採取動作。」* --- [Eric LePenske，資訊安全，Accenture 資深經理](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>[摘要]
 
 有許多層面可以執行混合式身分識別解決方案，但這四個步驟的檢查清單可協助您快速完成身分識別基礎結構，讓使用者更具生產力且更安全。
 
@@ -265,7 +265,7 @@ Azure AD Connect 和 AD FS 是很重要的元件，可能會破壞生命週期�
 ||監視應用程式的使用方式來推動見解|
 ||瞭解支援電話驅動程式|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何使用 Azure Active Directory 的功能和這五個步驟的檢查清單，來增加安全的狀態- [保護您的身分識別基礎結構的五個步驟](https://aka.ms/securitysteps)。
 

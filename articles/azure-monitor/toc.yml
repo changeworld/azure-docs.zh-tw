@@ -564,7 +564,7 @@
               href: platform/itsmc-overview.md
             - name: IT 服務管理連線
               href: platform/itsmc-connections.md
-            - name: 安全匯出整合
+            - name: 與安全匯出整合
               href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: 建立服務管理員 Web 應用程式
               href: platform/itsmc-service-manager-script.md

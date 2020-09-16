@@ -1,6 +1,6 @@
 ---
 title: 如何產生並傳輸受 HSM 保護的金鑰 - Azure Key Vault
-description: 使用這份文件協助您規劃、產生，並傳輸受 HSM 保護的金鑰，以搭配 Azure 金鑰保存庫使用。 也稱為 BYOK 或「攜帶您自己的金鑰」。
+description: 了解如何規劃、產生，並傳輸受 HSM 保護的金鑰，以搭配 Azure Key Vault 使用。 也稱為 BYOK 或「攜帶您自己的金鑰」。
 services: key-vault
 author: amitbapat
 manager: devtiw
@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 76b10dbd9b6d801d93cd5d9704531eb1a6de36a5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 33249da6772d146de3e5e7351bc82c203674ddff
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585487"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532132"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>將受 HSM 保護的金鑰匯入 Key Vault
 

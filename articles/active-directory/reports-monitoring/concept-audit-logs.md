@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c9449a996929eb20acf35897a100dfbb722e82
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 86eec0cf7108e2d3b47f7b98dbdaffe76be8afd8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229917"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603504"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的稽核活動報告 
 
@@ -208,11 +208,11 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取 
 
 ![稽核記錄](./media/concept-audit-logs/enterpriseapplications.png "稽核記錄")
 
-## <a name="office-365-activity-logs"></a>Office 365 活動記錄
+## <a name="microsoft-365-activity-logs"></a>Microsoft 365 活動記錄
 
-您可以從 [Microsoft 365 系統管理中心](/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活動記錄。 雖然 Office 365 活動和 Azure AD 活動記錄共用許多目錄資源，但只有 Microsoft 365 系統管理中心會提供 Office 365 活動記錄的完整觀點。 
+您可以從 [Microsoft 365 系統管理中心](/office365/admin/admin-overview/about-the-admin-center)中查看 Microsoft 365 的活動記錄。 雖然 Microsoft 365 活動和 Azure AD 活動記錄共用許多目錄資源，但只有 Microsoft 365 系統管理中心提供 Microsoft 365 活動記錄的完整觀點。 
 
-您也可以使用 [office 365 管理 api](/office/office-365-management-api/office-365-management-apis-overview)，以程式設計方式存取 office 365 活動記錄。
+您也可以使用 [Office 365 管理 api](/office/office-365-management-api/office-365-management-apis-overview)，以程式設計方式存取 Microsoft 365 活動記錄。
 
 ## <a name="next-steps"></a>後續步驟
 

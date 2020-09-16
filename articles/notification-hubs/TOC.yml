@@ -113,7 +113,7 @@
       href: notification-hubs-send-push-notifications-scheduled.md
     - name: 使用 Azure PowerShell 來部署和管理通知中樞
       href: notification-hubs-deploy-and-manage-powershell.md
-    - name: 將推播通知安全地傳送給使用者
+    - name: 將安全通知傳送給使用者
       href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
     - name: 大量匯出與匯入註冊
       href: export-modify-registrations-bulk.md

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5536c3c427e5b6225d81d649722d8af48c23091
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 161b02ec962df5c5e1c8dee7e124ef78b3ca4db3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948448"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601974"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中條件式存取的最佳作法
 
@@ -97,13 +97,13 @@ Azure Active Directory 會強制執行這兩個原則，而且只有在符合所
 
 是，您可以在條件式存取原則中使用 Exchange ActiveSync。
 
-某些雲端應用程式（例如 SharePoint Online 和 Exchange Online）也支援舊版驗證通訊協定。 當用戶端應用程式可以使用舊版驗證通訊協定來存取雲端應用程式時，Azure AD 無法在此存取嘗試上強制執行條件式存取原則。 若要預防用戶端應用程式略過強制執行的原則，您應該確認是否可以只針對受影響的雲端應用程式啟用新式驗證。
+某些雲端應用程式（例如 SharePoint 和 Exchange Online）也支援舊版驗證通訊協定。 當用戶端應用程式可以使用舊版驗證通訊協定來存取雲端應用程式時，Azure AD 無法在此存取嘗試上強制執行條件式存取原則。 若要預防用戶端應用程式略過強制執行的原則，您應該確認是否可以只針對受影響的雲端應用程式啟用新式驗證。
 
-### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>如何使用 Office 365 應用程式設定條件式存取？
+### <a name="how-should-you-configure-conditional-access-with-microsoft-365-apps"></a>如何使用 Microsoft 365 apps 來設定條件式存取？
 
-因為 Office 365 應用程式是互連的，建議您在建立原則時，將常用的應用程式一起指派。
+由於 Microsoft 365 apps 互相互連，因此我們建議您在建立原則時，同時指派常用的應用程式。
 
-常見的互連應用程式包括 Microsoft Flow、Microsoft Planner、Microsoft 小組、Office 365 Exchange Online、Office 365 SharePoint Online 和 Office 365 Yammer。
+常見的互連應用程式包括 Microsoft Flow、Microsoft Planner、Microsoft 小組、Exchange Online、SharePoint 和 Yammer。
 
 當您在會話或工作的開頭控制存取權時，需要使用者互動的原則（例如多重要素驗證）很重要。 如果您沒有這麼做，使用者將無法在應用程式中完成一些工作。 例如，如果您在未受管理的裝置上需要多重要素驗證以存取 SharePoint，但不需要傳送電子郵件，則在其電子郵件中工作的使用者將無法將 SharePoint 檔案附加到訊息。 如需詳細資訊，請參閱文章中的 [Azure Active Directory 條件式存取中的服務相依性為何？](service-dependencies.md)。
 
@@ -150,7 +150,7 @@ Azure Active Directory 會強制執行這兩個原則，而且只有在符合所
 
 如需詳細資訊，請參閱[在 Azure 入口網站中移轉傳統原則](policy-migration.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您想要知道：
 

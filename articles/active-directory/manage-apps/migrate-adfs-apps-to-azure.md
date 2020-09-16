@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9d2f295394d89432f3c6dd99585cc4363d4ff74
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 3b8a40449d7a2b17adddd55120ab232a5cd3f459
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641359"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600940"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>將應用程式驗證從 Active Directory 同盟服務移至 Azure Active Directory
 
@@ -35,7 +35,7 @@ ms.locfileid: "88641359"
 
 使用者也可以直接使用您的內部部署 Active Directory 進行驗證。 Active Directory 同盟服務 (AD FS) 是以標準為基礎的內部部署身分識別服務。 AD FS 擴充了在信任的商業夥伴之間使用單一登入 (SSO) 功能，而不需要使用者個別登入每個應用程式的功能。 這就是所謂的同盟。
 
-許多組織都有軟體即服務 (SaaS) 或自訂的企業營運 (LOB) 應用程式，與 Office 365 和 AD FS 架構的應用程式直接同盟 Azure AD。 
+許多組織都有軟體即服務 (SaaS) 或自訂的企業營運 (LOB) 應用程式，與 AD FS 和 Microsoft 365 架構的應用程式直接同盟 Azure AD。 
 
 ![直接連線至內部部署的應用程式](media/migrate-adfs-apps-to-azure/app-integration-before-migration1.png)
 
@@ -223,7 +223,7 @@ LOB 應用程式是由您的組織在內部開發，或作為安裝在您資料�
 
  
 
-| 元素| 設定值 |
+| 項目| 設定值 |
 | - | - |
 | 身分識別提供者簽發者| HTTPs： \/ /sts.windows.net/{tenant-id}/ |
 | 身分識別提供者登入 URL| [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) |
@@ -406,7 +406,7 @@ AD FS 2016 有數個內建存取控制原則，您可以從中選擇：
 | 使用要求中的特定宣告| 無法遷移此設定| 無法遷移此設定 |
 
 
-如何在 Azure 入口網站中設定受信任位置的 [排除] 選項的範例：
+如何在 Azure 入口網站中設定受信任位置的排除選項的範例：
 
 ![對應存取控制原則的螢幕擷取畫面](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-3.png)
 

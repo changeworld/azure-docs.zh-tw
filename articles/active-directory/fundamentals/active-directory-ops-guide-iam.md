@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: ab4e9f7410954292290b6acf0895197ff013b1d8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321662"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601296"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory 身分識別與存取管理作業參考指南
 
@@ -35,8 +35,8 @@ ms.locfileid: "89321662"
 | :- | :- |
 | 定義如何建立 Azure 訂用帳戶的流程 | 因組織而異 |
 | 決定誰獲得 Enterprise Mobility + Security 授權 | IAM 作業小組 |
-| 決定誰取得 Office 365 授權 | 生產力小組 |
-| 決定誰取得其他授權，例如 Dynamics、VSO | 應用程式擁有者 |
+| 決定誰獲得 Microsoft 365 授權 | 生產力小組 |
+| 決定誰取得其他授權，例如 Dynamics、Visual Studio Codespaces | 應用程式擁有者 |
 | 指派授權 | IAM 作業小組 |
 | 疑難排解和補救授權指派錯誤 | IAM 作業小組 |
 | 在 Azure AD 中將身分識別布建至應用程式 | IAM 作業小組 |
@@ -140,7 +140,7 @@ Azure AD Connect 自訂規則可讓您控制內部部署物件與雲端物件之
 
 Azure Active Directory 透過 Microsoft 雲端服務以 [群組為基礎的授權](./active-directory-licensing-whatis-azure-portal.md) ，簡化授權的管理。 如此一來，IAM 可將這些群組的群組基礎結構和委派管理提供給組織中適當的小組。 在 Azure AD 中設定群組成員資格的方式有很多種，包括：
 
-- **從內部部署環境同步** 處理的群組可以來自內部部署目錄，這可能適用于已建立群組管理程式的組織，可延伸以指派 office 365 中的授權。
+- **從內部部署環境同步** 處理的群組可以來自內部部署目錄，這可能適用于已建立群組管理程式的組織，可以擴充以在 Microsoft 365 中指派授權。
 
 - 以使用者屬性為基礎的運算式（例如部門等於 "sales"），可以在雲端中建立以**屬性為基礎的/動態**群組。 Azure AD 維護群組的成員，使其與定義的運算式保持一致。 使用這種類型的群組進行授權指派，可啟用以屬性為基礎的授權指派，適合在其目錄中具有高資料品質的組織使用。
 
@@ -188,10 +188,10 @@ Azure Active Directory 透過 Microsoft 雲端服務以 [群組為基礎的授�
 
 #### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>建議閱讀的 Azure AD Connect 疑難排解
 
-- [使用 IdFix 工具準備目錄屬性以進行與 Office 365 的同步處理-Office 365](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [使用 IdFix 工具準備目錄屬性以便與 Microsoft 365 同步處理](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect：針對同步處理期間的錯誤進行疑難排解](../hybrid/tshoot-connect-sync-errors.md)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>[摘要]
 
 安全的身分識別基礎結構有五個層面。 這份清單可協助您快速找出並採取必要的動作，以保護及管理您組織中的身分識別和其權利的生命週期。
 
@@ -201,6 +201,6 @@ Azure Active Directory 透過 Microsoft 雲端服務以 [群組為基礎的授�
 - 簡化授權和應用程式指派的管理。
 - 自動將使用者布建到應用程式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 開始使用 [驗證管理檢查和動作](active-directory-ops-guide-auth.md)。

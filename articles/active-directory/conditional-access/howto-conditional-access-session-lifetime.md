@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28516482cf154c81912de0f8e3f35b9e54ef2f69
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 034d2410b97562946216815e5bdafd35fe1bc40b
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948261"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601668"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用條件式存取來設定驗證工作階段管理
 
@@ -44,7 +44,7 @@ Azure Active Directory 的 (Azure AD) 使用者登入頻率的預設設定是90�
 - Word、Excel、PowerPoint Online
 - OneNote Online
 - Office.com
-- O365 系統管理員入口網站
+- Microsoft 365 系統管理員入口網站
 - Exchange Online
 - SharePoint 與 OneDrive
 - 小組網頁用戶端
@@ -134,7 +134,7 @@ Azure Active Directory 的 (Azure AD) 使用者登入頻率的預設設定是90�
 
 若要確定您的原則會如預期般運作，建議的最佳做法是先測試，再推出到生產環境。 在理想情況下，可以使用測試租用戶來驗證您的新原則是否如預期般運作。 如需詳細資訊，請參閱 [Azure Active Directory 中條件式存取的最佳做法](best-practices.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如果您想要知道如何設定條件式存取原則，請參閱本文 [需要具有 Azure Active Directory 條件式存取的特定應用程式的 MFA](../authentication/tutorial-enable-azure-mfa.md)。
 * 如果您已準備好設定環境的條件式存取原則，請參閱 [Azure Active Directory 中條件式存取的最佳做法](best-practices.md)。

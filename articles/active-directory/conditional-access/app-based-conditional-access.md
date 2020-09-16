@@ -1,6 +1,6 @@
 ---
 title: 具有條件式存取的已核准用戶端應用程式-Azure Active Directory
-description: 瞭解如何透過 Azure Active Directory 中的條件式存取，要求已核准的用戶端應用程式存取雲端應用程式。
+description: 瞭解如何在 Azure Active Directory 中使用條件式存取，要求已核准的用戶端應用程式存取雲端應用程式。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,34 +11,34 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c9cd790edcb186ed2f80d467076512cd558ca40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a3cdb851ca00300d995bcf2075252a360242197
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253387"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601957"
 ---
-# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>如何：透過條件式存取要求使用已核准的用戶端應用程式存取雲端應用程式
+# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>操作說明：需要經過核准的用戶端應用程式使用條件式存取來存取雲端應用程式
 
-一般人平常使用其行動裝置來處理個人和工作事務。 組織在確保員工生產力的同時，也希望能防止可能不安全的應用程式所造成的資料遺失。 透過條件式存取，組織可以限制對已核准（支援新式驗證）用戶端應用程式的存取。
+一般人平常使用其行動裝置來處理個人和工作事務。 組織在確保員工生產力的同時，也希望能防止可能不安全的應用程式所造成的資料遺失。 使用條件式存取時，組織可以) 用戶端應用程式來限制對已核准 (新式驗證的存取權。
 
-本文提供兩種案例來設定適用于 Office 365、Exchange Online 和 SharePoint Online 等資源的條件式存取原則。
+本文提供兩種案例來為資源（例如 Microsoft 365、Exchange Online 和 SharePoint Online）設定條件式存取原則。
 
-- [案例1： Office 365 應用程式需要已核准的用戶端應用程式](#scenario-1-office-365-apps-require-an-approved-client-app)
-- [案例2： Exchange Online 和 SharePoint Online 需要已核准的用戶端應用程式](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app)
+- [案例1： Microsoft 365 apps 需要核准的用戶端應用程式](#scenario-1-microsoft-365-apps-require-an-approved-client-app)
+- [案例2： Exchange Online 和 SharePoint Online 需要核准的用戶端應用程式](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app)
 
 在條件式存取中，這項功能稱為需要核准的用戶端應用程式。 如需核准的用戶端應用程式清單，請參閱[核准的用戶端應用程式需求](concept-conditional-access-grant.md#require-approved-client-app)。
 
 > [!NOTE]
-> 為了需要適用于 iOS 和 Android 裝置的已核准用戶端應用程式，這些裝置必須先在 Azure AD 中註冊。
+> 為了需要適用于 iOS 和 Android 裝置的已核准用戶端應用程式，這些裝置必須先在 Azure AD 註冊。
 
-## <a name="scenario-1-office-365-apps-require-an-approved-client-app"></a>案例1： Office 365 應用程式需要已核准的用戶端應用程式
+## <a name="scenario-1-microsoft-365-apps-require-an-approved-client-app"></a>案例1： Microsoft 365 apps 需要核准的用戶端應用程式
 
-在此案例中，Contoso 已決定使用行動裝置的使用者可以存取所有 Office 365 服務，只要他們使用已核准的用戶端應用程式（例如 Outlook mobile、OneDrive 和 Microsoft 團隊）即可。 他們的所有使用者都已使用 Azure AD 認證登入，並指派授權給他們，其中包括 Azure AD Premium P1 或 P2 及 Microsoft Intune。
+在此案例中，Contoso 已決定使用行動裝置的使用者只要使用已核准的用戶端應用程式（例如 Outlook mobile、OneDrive 和 Microsoft 小組），就可以存取所有 Microsoft 365 服務。 他們的所有使用者都已使用 Azure AD 認證登入，並指派授權給他們，其中包括 Azure AD Premium P1 或 P2 及 Microsoft Intune。
 
 組織必須完成下列三個步驟，才能要求在行動裝置上使用已核准的用戶端應用程式。
 
-**步驟1：以 Android 和 iOS 為基礎的新式驗證用戶端原則，需要在存取 Exchange Online 時使用已核准的用戶端應用程式。**
+**步驟1：在存取 Exchange Online 時，需要使用已核准用戶端應用程式的 Android 和 iOS 型新式驗證用戶端原則。**
 
 1. 以全域管理員、安全性系統管理員或條件式存取管理員的身分，登入 **Azure 入口網站**。
 1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
@@ -54,7 +54,7 @@ ms.locfileid: "85253387"
 1. 在 [條件] 下，選取 [用戶端應用程式 (預覽)]。
    1. 將 [設定] 設定為 [是]。
    1. 選取 [行動應用程式與桌面用戶端] 和 [新式驗證用戶端]。
-1. 在 [**存取控制**  >  **授**與] 底下，選取 **[授與存取權**， ** ****需要核准的用戶端應用程式**]，然後選取
+1. 在 [**存取控制**  >  **授**與] 底下，選取 **[授與存取權**， ** ****要求已核准用戶端應用程式**]，然後選取
 1. 確認您的設定，並將 [啟用原則] 設定為 [開啟]。
 1. 選取 [建立] 以建立以啟用您的原則。
 
@@ -71,7 +71,7 @@ ms.locfileid: "85253387"
    1. **用戶端應用程式 (預覽)** ：
       1. 將 [設定] 設定為 [是]。
       1. 選取 [行動裝置應用程式和桌面用戶端] 和 [Exchange ActiveSync 用戶端]。
-1. 在 [**存取控制**  >  **授**與] 底下，選取 **[授與存取權**， ** ****需要核准的用戶端應用程式**]，然後選取
+1. 在 [**存取控制**  >  **授**與] 底下，選取 **[授與存取權**， ** ****要求已核准用戶端應用程式**]，然後選取
 1. 確認您的設定，並將 [啟用原則] 設定為 [開啟]。
 1. 選取 [建立] 以建立以啟用您的原則。
 
@@ -79,13 +79,13 @@ ms.locfileid: "85253387"
 
 如需建立適用於 Android 和 iOS 的應用程式保護原則的步驟，請參閱[如何建立和指派應用程式保護原則](/intune/apps/app-protection-policies)文章。 
 
-## <a name="scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app"></a>案例2： Exchange Online 和 SharePoint Online 需要已核准的用戶端應用程式
+## <a name="scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app"></a>案例2： Exchange Online 和 SharePoint Online 需要核准的用戶端應用程式
 
-在此案例中，Contoso 已決定使用者只能存取行動裝置上的電子郵件和 SharePoint 資料，只要他們使用 Outlook mobile 等核准的用戶端應用程式即可。 他們的所有使用者都已使用 Azure AD 認證登入，並指派授權給他們，其中包括 Azure AD Premium P1 或 P2 及 Microsoft Intune。
+在此案例中，Contoso 已決定使用者只能存取行動裝置上的電子郵件和 SharePoint 資料，只要他們使用已核准的用戶端應用程式（例如 Outlook mobile）即可。 他們的所有使用者都已使用 Azure AD 認證登入，並指派授權給他們，其中包括 Azure AD Premium P1 或 P2 及 Microsoft Intune。
 
 組織必須完成下列步驟，才能要求在行動裝置上使用已核准的用戶端應用程式和 Exchange ActiveSync 用戶端。
 
-**步驟1：以 Android 和 iOS 為基礎的新式驗證用戶端原則，需要在存取 Exchange Online 和 SharePoint Online 時使用已核准的用戶端應用程式。**
+**步驟1：在存取 Exchange Online 和 SharePoint Online 時，需要使用已核准用戶端應用程式的 Android 和 iOS 型新式驗證用戶端原則。**
 
 1. 以全域管理員、安全性系統管理員或條件式存取管理員的身分，登入 **Azure 入口網站**。
 1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
@@ -101,7 +101,7 @@ ms.locfileid: "85253387"
 1. 在 [條件] 下，選取 [用戶端應用程式 (預覽)]。
    1. 將 [設定] 設定為 [是]。
    1. 選取 [行動應用程式與桌面用戶端] 和 [新式驗證用戶端]。
-1. 在 [**存取控制**  >  **授**與] 底下，選取 **[授與存取權**， ** ****需要核准的用戶端應用程式**]，然後選取
+1. 在 [**存取控制**  >  **授**與] 底下，選取 **[授與存取權**， ** ****要求已核准用戶端應用程式**]，然後選取
 1. 確認您的設定，並將 [啟用原則] 設定為 [開啟]。
 1. 選取 [建立] 以建立以啟用您的原則。
 
@@ -118,7 +118,7 @@ ms.locfileid: "85253387"
    1. **用戶端應用程式 (預覽)** ：
       1. 將 [設定] 設定為 [是]。
       1. 選取 [行動裝置應用程式和桌面用戶端] 和 [Exchange ActiveSync 用戶端]。
-1. 在 [**存取控制**  >  **授**與] 底下，選取 **[授與存取權**， ** ****需要核准的用戶端應用程式**]，然後選取
+1. 在 [**存取控制**  >  **授**與] 底下，選取 **[授與存取權**， ** ****要求已核准用戶端應用程式**]，然後選取
 1. 確認您的設定，並將 [啟用原則] 設定為 [開啟]。
 1. 選取 [建立] 以建立以啟用您的原則。
 

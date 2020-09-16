@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 2a322c26df0f4fc388ded394f5a65de51f01ca45
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5a71476db6f57841a0057de5b8c95f07ef5d90ad
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664076"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603079"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 定型環境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "89664076"
 > - 虛擬機器
 > - HDInsight 叢集
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 + 閱讀 [網路安全性總覽](how-to-network-security-overview.md) 文章，以瞭解常見的虛擬網路案例和整體虛擬網路架構。
 
@@ -180,6 +180,9 @@ Batch 服務會在連結至 VM 的網路介面 (NIC) 層級新增網路安全性
     當您新增 UDR 時，請為每個相關的「批次 IP」位址首碼定義路由，然後將 [下一個躍點類型] 設定為 [網際網路]。 下圖顯示此 UDR 在 Azure 入口網站中的範例：
 
     ![位址首碼的 UDR 範例](./media/how-to-enable-virtual-network/user-defined-route.png)
+
+    > [!IMPORTANT]
+    > IP 位址可能會隨著時間而變更。
 
     除了您定義的任何 Udr 之外，您也必須透過內部部署網路設備來允許 Azure 儲存體的輸出流量。 具體而言，此流量的 Url 的格式如下： `<account>.table.core.windows.net` 、 `<account>.queue.core.windows.net` 和 `<account>.blob.core.windows.net` 。 
 

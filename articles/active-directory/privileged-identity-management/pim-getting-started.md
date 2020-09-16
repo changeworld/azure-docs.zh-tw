@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/24/2020
+ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea8bf2407fb533870495dc501a2d740bff9ee968
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5bcfb21ab15355653780355f1b5e459bc806ec8c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567345"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600716"
 ---
 # <a name="start-using-privileged-identity-management"></a>開始使用 Privileged Identity Management
 
@@ -27,7 +27,7 @@ ms.locfileid: "89567345"
 
 使用 Privileged Identity Management (PIM) 來管理、控制和監視 Azure Active Directory (Azure AD) 組織內的存取權。 使用 PIM，您可以提供 Azure 資源的隨需和即時存取，Azure AD 資源和其他 Microsoft 線上服務，例如 Microsoft 365 或 Microsoft Intune。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用 Privileged Identity Management，您必須擁有下列其中一個授權：
 
@@ -35,6 +35,14 @@ ms.locfileid: "89567345"
 - Enterprise Mobility + Security (EMS) E5
 
 如需詳細資訊，請參閱 [使用 Privileged Identity Management 的授權需求](subscription-requirements.md)。
+
+> [!Note]
+> 當在具有高階 P2 授權的 Azure AD 組織中具有特殊許可權角色的使用者進入 Azure AD 的 **角色和系統管理員** ，並選取角色 (或甚至只是造訪 Privileged Identity Management) 時：
+>
+> - 我們會自動為組織啟用 PIM
+> - 他們的經驗現在可以指派「一般」角色指派或符合資格的角色指派
+>
+> 當 PIM 啟用時，不會對您的組織有任何其他需要擔心的影響。 它會提供您其他指派選項，例如主動式 vs 符合開始和結束時間。 PIM 也可讓您使用管理單位和自訂角色來定義角色指派的範圍。 如果您是全域管理員或特殊許可權角色管理員，您可能會開始取得一些額外的電子郵件，例如 PIM 的每週摘要。 您也可能會在與角色指派相關的 audit 記錄檔中看到 MS PIM 服務主體。 這是預期的變更，不會影響您的工作流程。
 
 ## <a name="prepare-pim-for-azure-ad-roles"></a>準備 Azure AD 角色的 PIM
 
@@ -88,7 +96,7 @@ Privileged Identity Management 設定好之後，您就可以瞭解您的做法�
 
     ![儀表板上的 Privileged Identity Management 快速入門磚](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 Privileged Identity Management 中指派 Azure AD 角色](pim-how-to-add-role-to-user.md)
 - [在 Privileged Identity Management 中管理 Azure 資源存取](pim-resource-roles-discover-resources.md)

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 04a3499da15bc226fe2cada2283d7a115036a48c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318281"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602664"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>搭配使用 Azure SQL 透明資料加密與客戶管理的金鑰
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -93,6 +93,10 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 - 金鑰必須處於「已啟用」狀態。
 
 - 如果您要將現有金鑰匯入至金鑰保存庫，請務必以支援的檔案格式提供 ( .pfx、byok 或. 備份) 。
+
+> [!NOTE]
+> Azure SQL 現在支援使用以 TDE 保護裝置形式儲存在受控 HSM 中的 RSA 金鑰。 這項功能處於 **公開預覽**狀態。 Azure Key Vault 受控 HSM 是完全受控、高可用性、單一租使用者、符合標準的雲端服務，可讓您使用 FIPS 140-2 層級3驗證的 Hsm 來保護雲端應用程式的密碼編譯金鑰。 深入瞭解 [受管理的 hsm](https://aka.ms/mhsm)。
+
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>設定客戶管理的 TDE 時的建議
 
@@ -205,7 +209,7 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 
 若要測試容錯移轉，請遵循 [主動式異地複寫總覽](active-geo-replication-overview.md)中的步驟。 應定期進行測試容錯移轉，以驗證 SQL Database 已維持對兩個金鑰保存庫的存取權限。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您也可能想要使用客戶管理的 TDE 來檢查下列 PowerShell 範例腳本，以進行一般作業：
 

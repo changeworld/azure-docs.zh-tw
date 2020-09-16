@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: b45a0608d78330eafd6afc3656f8a4addbdffd3b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321713"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601359"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory Authentication 管理作業參考指南
 
@@ -95,7 +95,7 @@ ms.locfileid: "89321713"
 
 ### <a name="on-premises-outage-authentication-resiliency"></a>內部部署中斷驗證恢復功能
 
-除了簡單性的優點，以及啟用洩漏的認證偵測之外，Azure AD 的密碼雜湊同步處理 (PHS) 和 Azure MFA 允許使用者存取 SaaS 應用程式和 Office 365，但因為網路攻擊例如 [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/)這類的內部部署中斷。 您也可以同時啟用 PHS，同時搭配同盟。 啟用 PHS 可在同盟服務無法使用時，允許進行驗證。
+除了簡單的優點，以及啟用洩漏的認證偵測之外，Azure AD 的密碼雜湊同步處理 (PHS) 和 Azure MFA 允許使用者存取 SaaS 應用程式和 Microsoft 365，但因為網路攻擊例如 [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/)所造成的內部部署中斷。 您也可以同時啟用 PHS，同時搭配同盟。 啟用 PHS 可在同盟服務無法使用時，允許進行驗證。
 
 如果您的內部部署組織缺少中斷復原策略，或有一個未與 Azure AD 整合，您應該部署 Azure AD PHS，並定義包含 PHS 的嚴重損壞修復計畫。 啟用 Azure AD PHS 可讓使用者在您的內部部署 Active Directory 無法使用時，對 Azure AD 進行驗證。
 
@@ -249,7 +249,7 @@ Microsoft Intune 應用程式管理 (MAM) 提供將資料保護控制（例如�
 - 具有可套用至多個應用程式的一組小型核心原則
 - 定義空的例外狀況群組，並將其新增至原則以具有例外狀況策略
 - 規劃 [中斷玻璃](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) 帳戶而不搭配 MFA 控制項
-- 針對 Exchange Online 和 Sharepoint Online 等服務執行相同的一組控制項，以確保 Office 365 用戶端應用程式（例如，小組、商務用 OneDrive、Outlook 等）之間的一致體驗 ) 
+- 針對 Exchange Online 和 Sharepoint Online 等服務執行相同的一組控制項，確保跨 Microsoft 365 用戶端應用程式（例如，小組、OneDrive、Outlook 等） ) 一致的體驗。
 - 原則的指派應透過群組（而非個人）來執行
 - 定期審核原則中所使用的例外狀況群組，以限制使用者超出安全性狀態的時間。 如果您擁有 Azure AD P2，則可以使用存取權審核來自動化流程
 
@@ -302,7 +302,7 @@ MFA 等強式認證無法使用舊版驗證通訊協定來保護應用程式，�
 
 | 資源 | 權限 |
 | :- | :- |
-| Office 365 Exchange Online | 大通。AccessAsUser |
+| Exchange Online | 大通。AccessAsUser |
 | | EWS.AccessAsUser |
 | | Mail.Read |
 | Microsoft Graph API | Mail.Read |
@@ -339,7 +339,7 @@ MFA 等強式認證無法使用舊版驗證通訊協定來保護應用程式，�
 
 #### <a name="group-settings"></a>群組設定
 
-**自助群組管理/使用者可以建立安全性群組/O365 群組。** 如果雲端中沒有適用于群組的目前自助方案，客戶可能會決定將其關閉，直到準備好使用這項功能為止。
+**自助群組管理/使用者可以建立安全性群組/Microsoft 365 群組。** 如果雲端中沒有適用于群組的目前自助方案，客戶可能會決定將其關閉，直到準備好使用這項功能為止。
 
 #### <a name="groups-recommended-reading"></a>建議閱讀的群組
 
@@ -372,7 +372,7 @@ Azure AD 的登入活動、審核和風險事件的存取權，對於疑難排�
 - [Office 365 管理活動 API 參考](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [如何使用 Azure Active Directory Power BI 內容套件](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>[摘要]
 
 安全的身分識別基礎結構有12個層面。 這份清單將協助您進一步保護和管理認證、定義驗證經驗、委派指派、測量使用量，以及根據企業安全性狀態定義存取原則。
 
@@ -389,6 +389,6 @@ Azure AD 的登入活動、審核和風險事件的存取權，對於疑難排�
 - 鎖定使用者和群組設定。
 - 啟用 Azure AD 記錄的長期儲存，以進行疑難排解、使用方式分析和辯論調查。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 開始使用身分 [識別治理操作檢查和動作](active-directory-ops-guide-govern.md)。

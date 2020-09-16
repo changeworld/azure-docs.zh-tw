@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/26/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04eb0eb3741a388b375cf7d8c6455bfd4a17b39
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 45c8694c90fedccbecee1fee09e7146bf2d0aaa6
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266335"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601158"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>使用 REST API 呼叫來建立、列出或刪除使用者指派的受控識別
 
@@ -38,8 +38,6 @@ ms.locfileid: "89266335"
 - 如果您使用的是[適用於 Linux 的 Windows 子系統](/windows/wsl/about)或[Linux 散發作業系統](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)，請[安裝 Azure CLI 本機主控台](/cli/azure/install-azure-cli)。
 - 如果您使用的是 Azure CLI 本機主控台，請登入 Azure ，登入時請使用與您想要用於部署或擷取使用者指派的受控識別的 Azure 訂用帳戶相關聯之帳戶，搭配使用 `az login` 登入。
 - 使用 `az account get-access-token` 擷取持有人存取權杖來執行下列使用者指派的受控識別的作業。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-user-assigned-managed-identity"></a>建立使用者指派的受控識別 
 
@@ -67,7 +65,7 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 
 **要求本文**
 
-|Name  |說明  |
+|名稱  |描述  |
 |---------|---------|
 |location     | 必要。 資源位置。        |
 

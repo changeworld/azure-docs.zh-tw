@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 4ff1905eb164d004af69ce5b0df3278bf3a46884
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 6d6f56fb47bfdaadc6704e2a13ebcf0e893b8b1c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670321"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602348"
 ---
 # <a name="manage-resources-created-for-the-vm-move"></a>管理為 VM 移動建立的資源
 
@@ -24,14 +24,14 @@ ms.locfileid: "89670321"
 
 手動刪除移動集合，並 Site Recovery 為 VM 移動建立的資源。
 
-1. 在您移動 Vm 的來源區域中，查看資源群組中的資源 ```RegionMoveRG-<sourceregion>-<target-region>``` 。
-2. 檢查 VM 和移動集合中的所有其他來源資源是否已移動/刪除。 這可確保沒有任何擱置中的資源正在使用它們。
+1. 查看資源群組中的資源 ```ResourceMoverRG-<sourceregion>-<target-region>``` 。
+2. 檢查 VM 和移動集合中的所有其他來源資源是否已移動/刪除。 這可確保沒有任何擱置中的資源正在使用這些項目。
 2. 刪除這些資源。
 
-    - 移動集合名稱為 ```movecollection-<sourceregion>-<target-region>``` 。
+    - 移動集合名稱為 ```movecollection-<sourceregion>-<target-region>```。
     - 快取儲存體帳戶名稱為 ```resmovecache<guid>```
-    - 保存庫名稱為 ```ResourceMove-<sourceregion>-<target-region>-GUID``` 。
+    - 保存庫名稱為 ```ResourceMove-<sourceregion>-<target-region>-GUID```。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請嘗試使用資源移動器將 [VM 移](tutorial-move-region-virtual-machines.md) 至另一個區域。

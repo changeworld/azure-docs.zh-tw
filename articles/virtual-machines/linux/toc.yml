@@ -479,7 +479,7 @@
                   items:
                     - name: 從 VM
                       href: ../image-version-vm-cli.md
-                    - name: 從 VHD 或快照集
+                    - name: 從受控磁碟或快照集
                       href: ../image-version-snapshot-cli.md
                     - name: 從受控映像遷移
                       href: ../image-version-managed-image-cli.md
@@ -501,7 +501,7 @@
                   items:
                     - name: 從 VM
                       href: ../image-version-vm-powershell.md
-                    - name: 從 VHD 或快照集
+                    - name: 從受控磁碟或快照集
                       href: ../image-version-snapshot-powershell.md
                     - name: 從受控映像遷移
                       href: ../image-version-managed-image-powershell.md
@@ -542,14 +542,16 @@
               href: image-builder-overview.md
             - name: 使用 Azure CLI
               href: image-builder.md
-            - name: 使用 VNET 建立 VM - CLI
+            - name: 使用 VNET - CLI
               href: image-builder-vnet.md
-            - name: 設定權限 - CLI
-              href: image-builder-permissions-cli.md
-            - name: 設定權限 - PowerShell
-              href: image-builder-permissions-powershell.md
             - name: 網路功能選項
               href: image-builder-networking.md
+            - name: 設定權限
+              items:
+                - name: CLI
+                  href: image-builder-permissions-cli.md
+                - name: PowerShell
+                  href: image-builder-permissions-powershell.md
             - name: DevOps 工作
               href: image-builder-devops-task.md
             - name: ARM 範本參考

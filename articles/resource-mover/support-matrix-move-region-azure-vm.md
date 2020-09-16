@@ -7,19 +7,19 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: ddb1c68ab417390987ac4873a16b89757ec24789
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058728"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602280"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>支援在 Azure 區域之間移動 Azure Vm
 
 本文摘要說明當您使用資源移動器將虛擬機器和相關網路資源移至不同的 Azure 區域時的支援和必要條件。
 
 > [!IMPORTANT]
-> Azure 資源移動器目前為預覽狀態。
+> Azure Resource Mover 目前處於預覽狀態。
 
 
 ## <a name="windows-vm-support"></a>Windows VM 支援
@@ -115,6 +115,10 @@ RBAC 原則 | 不支援 | 在 Vm 上 (RBAC) 原則的角色型存取控制不會
 
 下表摘要說明 Azure VM OS 磁碟、資料磁碟和暫存磁碟的支援。 請務必注意 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 和 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁碟限制和目標，以避免發生任何效能問題。
 
+> [!NOTE]
+> 目標 VM 大小應等於或大於來源 VM。 用於驗證的參數包括：資料磁片計數、Nic 計數、可用的 Cpu、記憶體（以 GB 為單位）。 如果不是，則會發出錯誤。
+
+
 **元件** | **支援** | **詳細資料**
 --- | --- | ---
 OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/windows/managed-disks-overview.md) VM 磁碟。
@@ -184,6 +188,6 @@ Azure Active Directory | `login.microsoftonline.com`  | 提供 Site Recovery 服
 - 建議您在非生產環境中測試規則。 請[參閱一些範例](../site-recovery/azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)。 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請嘗試使用資源移動器將 [AZURE VM 移](tutorial-move-region-virtual-machines.md) 至另一個區域。

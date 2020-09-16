@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: edb35986fcfc0e8855fa712b519ee7a8ca2f0ed8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321951"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601297"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 一般操作指南參考
 
@@ -125,9 +125,9 @@ ms.locfileid: "89321951"
 
 ### <a name="notifications"></a>通知
 
-Microsoft 會將電子郵件通訊傳送給系統管理員，以通知服務的各種變更、需要的設定更新，以及需要系統管理員介入的錯誤。 客戶必須設定通知電子郵件地址，以便將通知傳送給適當的小組成員，這些成員可以在所有通知中進行確認並採取行動。 建議您將多個收件者新增至 [Office 365 訊息中心](/office365/admin/manage/message-center) 並要求通知 (包括 Azure AD Connect Health 通知，) 傳送至通訊群組清單或共用信箱。 如果您只有一個具有電子郵件地址的全域管理員帳戶，請務必至少設定兩個具備電子郵件功能的帳戶。
+Microsoft 會將電子郵件通訊傳送給系統管理員，以通知服務的各種變更、需要的設定更新，以及需要系統管理員介入的錯誤。 客戶必須設定通知電子郵件地址，以便將通知傳送給適當的小組成員，這些成員可以在所有通知中進行確認並採取行動。 建議您將多個收件者新增至 [訊息中心](/office365/admin/manage/message-center) 並要求通知 (包括 Azure AD Connect Health 通知，) 傳送至通訊群組清單或共用信箱。 如果您只有一個具有電子郵件地址的全域管理員帳戶，請務必至少設定兩個具備電子郵件功能的帳戶。
 
-Azure AD 會使用兩個「寄件者」位址： <o365mc@email2.microsoft.com> ，它會傳送 Office 365 訊息中心通知; 以及傳送與 <azure-noreply@microsoft.com> 下列相關的通知：
+Azure AD：會使用兩個「寄件者」位址 <o365mc@email2.microsoft.com> ，它會傳送訊息中心通知; 以及傳送與 <azure-noreply@microsoft.com> 下列相關的通知：
 
 - [Azure AD 存取權評論](../governance/access-reviews-overview.md)
 - [Azure AD Connect Health](../hybrid/how-to-connect-health-operations.md#enable-email-notifications)
@@ -141,14 +141,14 @@ Azure AD 會使用兩個「寄件者」位址： <o365mc@email2.microsoft.com> �
 | 通知來源 | 傳送內容 | 檢查的位置 |
 |:-|:-|:-|
 | 技術連絡人 | 同步錯誤 | Azure 入口網站屬性分頁 |
-| Office 365 訊息中心 | 身分識別服務和 O365 後端服務的事件和降級通知 | Office 入口網站 |
+| 訊息中心 | 身分識別服務和 Microsoft 365 後端服務的事件和降低通知 | Office 入口網站 |
 | Identity Protection 每週摘要 | 身分識別保護摘要 | Azure AD Identity Protection 分頁 |
 | Azure AD Connect Health | 警示通知 | Azure 入口網站-Azure AD Connect Health blade |
 | 企業代理程式更新 | 憑證即將到期和布建錯誤時的通知 | Azure 入口網站-企業應用程式 blade (每個應用程式都有自己的電子郵件地址設定)  |
 
 #### <a name="notifications-recommended-reading"></a>建議閱讀的通知
 
-- [變更您組織的位址、技術連絡人及更多 Office 365](/office365/admin/manage/change-address-contact-and-more)
+- [變更您組織的位址、技術連絡人及其他資訊](/office365/admin/manage/change-address-contact-and-more)
 
 ## <a name="operational-surface-area"></a>操作介面區
 
@@ -172,7 +172,7 @@ Active Directory 管理層模型的設計目的，是要使用一組緩衝區區
 
 鎖定對內部部署身分識別元件的存取，例如 Azure AD Connect、AD FS 和 SQL 服務，其方式與網域控制站相同。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>[摘要]
 
 安全的身分識別基礎結構有七個層面。 這份清單將協助您找出 Azure Active Directory (Azure AD) 的作業優化所應採取的動作。
 
@@ -184,6 +184,6 @@ Active Directory 管理層模型的設計目的，是要使用一組緩衝區區
 - 鎖定 AD FS。
 - 鎖定具有內部部署身分識別元件的電腦存取權。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱 [Azure AD 部署計畫](active-directory-deployment-plans.md) ，以取得您尚未部署的任何功能的執行詳細資料。

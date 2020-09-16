@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: dcbfd05df84e32423df425f3bdd231a26e4f3bca
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d4b44deda1bd17e65c3e2c2a9c46dddccd411996
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527034"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602027"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的驗證方法？
 
@@ -36,21 +36,18 @@ Azure Multi-Factor Authentication 只會在使用者登入時，使用密碼新�
 
 下表概述可用驗證方法的安全性考慮。 可用性是指使用者可以使用驗證方法，而不是 Azure AD 中服務可用性的指示：
 
-| 驗證方法       | 安全性 | 可用性 | Phisable? | 頻道 jackable 嗎？ | 可用性 |
-|-----------------------------|:--------:|:---------:|:---------:|:-----------------:|:------------:|
-| FIDO2 安全性金鑰          | 高     | 高      | 否        | 否                | 高         |
-| Microsoft Authenticator 應用程式 | 高     | 高      | 是       | 否 <sup>1</sup>   | 高         |
-| Windows Hello 企業版  | 高     | 高      | 否        | 否                | 高         |
-| 硬體 OATH 權杖        | 適中   | 適中    | 是       | 否                | 高         |
-| 軟體 OATH 權杖        | 適中   | 適中    | 是       | 否 <sup>2</sup>   | 高         |
-| SMS                         | 中   | 高      | 是       | 是               | 中       |
-| 語音                       | 適中   | 適中    | 是       | 是               | 中       |
-| 密碼                    | 低度      | 高      | 是       | 是               | 高         |
+| 驗證方法          | 安全性 | 可用性 | 可用性 |
+|--------------------------------|:--------:|:---------:|:------------:|
+| Windows Hello 企業版     | 高     | 高      | 高         |
+| Microsoft Authenticator 應用程式    | 高     | 高      | 高         |
+|  (預覽版的 FIDO2 安全性金鑰)    | 高     | 高      | 高         |
+| OATH 硬體權杖 (預覽) | 適中   | 適中    | 高         |
+| OATH 軟體權杖           | 適中   | 適中    | 高         |
+| SMS                            | 中   | 高      | 中       |
+| 語音                          | 適中   | 適中    | 適中       |
+| 密碼                       | 低度      | 高      | 高         |
 
-<sup>1</sup> 在無密碼模式中，當應用程式註冊到特定裝置時<br />
-<sup>2</sup> 假設應用程式需要裝置 PIN 才能解除鎖定
-
-如需弱點和攻擊媒介的詳細資訊，請參閱 [通道劫持和即時網路釣魚](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)。
+如需安全性的詳細資訊，請參閱 [驗證弱點和攻擊媒介](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)。
 
 > [!TIP]
 > 為了彈性和使用性，我們建議您使用 Microsoft Authenticator 應用程式。 此驗證方法可提供最佳的使用者體驗和多種模式，例如無密碼、MFA 推播通知和 OATH 代碼。
@@ -63,9 +60,9 @@ Azure Multi-Factor Authentication 只會在使用者登入時，使用密碼新�
 
 | 方法                         | 主要驗證 | 次要驗證  |
 |--------------------------------|:----------------------:|:-------------------------:|
-| FIDO2 安全性金鑰 (預覽)  | 是                    | MFA                       |
-| Microsoft Authenticator 應用程式    | 是 (預覽)          | MFA 和 SSPR              |
 | Windows Hello 企業版     | 是                    | MFA                       |
+| Microsoft Authenticator 應用程式    | 是 (預覽)          | MFA 和 SSPR              |
+|  (預覽版的 FIDO2 安全性金鑰)    | 是                    | MFA                       |
 | OATH 硬體權杖 (預覽) | 否                     | MFA                       |
 | OATH 軟體權杖           | 否                     | MFA                       |
 | SMS                            | 是 (預覽)          | MFA 和 SSPR              |
@@ -76,11 +73,11 @@ Azure Multi-Factor Authentication 只會在使用者登入時，使用密碼新�
 
 若要深入瞭解每個驗證方法的運作方式，請參閱下列個別的概念性文章：
 
-* [FIDO2 安全性金鑰 (預覽)](concept-authentication-passwordless.md#fido2-security-keys)
-* [Microsoft Authenticator 應用程式](concept-authentication-authenticator-app.md)
 * [Windows Hello 企業版](/windows/security/identity-protection/hello-for-business/hello-overview)
-* [OATH 軟體權杖](concept-authentication-oath-tokens.md#oath-software-tokens)
+* [Microsoft Authenticator 應用程式](concept-authentication-authenticator-app.md)
+* [ (預覽版的 FIDO2 安全性金鑰) ](concept-authentication-passwordless.md#fido2-security-keys)
 * [OATH 硬體權杖 (預覽)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
+* [OATH 軟體權杖](concept-authentication-oath-tokens.md#oath-software-tokens)
 * SMS 登 [入 (預覽版) ](howto-authentication-sms-signin.md) 和 [驗證](concept-authentication-phone-options.md#mobile-phone-verification)
 * [語音通話驗證](concept-authentication-phone-options.md)
 * 密碼

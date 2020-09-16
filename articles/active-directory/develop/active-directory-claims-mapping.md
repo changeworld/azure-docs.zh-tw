@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4fca84c8e5aa562572792968d0438a61be5ab91b
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068638"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601464"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
 
@@ -301,7 +301,7 @@ ms.locfileid: "89068638"
 | User | companyname| 組織名稱 |
 | User | streetaddress | 街道地址 |
 | User | postalcode | 郵遞區號 |
-| User | preferredlanguange | 慣用語言 |
+| User | preferredlanguage | 慣用語言 |
 | User | onpremisesuserprincipalname | 內部部署 UPN |*
 | User | mailNickname | 郵件暱稱 |
 | User | extensionattribute1 | 擴充屬性 1 |

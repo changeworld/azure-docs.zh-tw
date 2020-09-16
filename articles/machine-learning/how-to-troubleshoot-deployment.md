@@ -11,20 +11,20 @@ ms.reviewer: jmartens
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, devx-track-python
-ms.openlocfilehash: 4a0601e2821920e7de3b389d9acfd78598ef67ee
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 22f9c709ced1069caa39ba2145981efa353caadf
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019286"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602628"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>使用 Azure Kubernetes Service 和 Azure 容器實例針對模型的 Docker 部署進行疑難排解 
 
 瞭解如何針對 Azure 容器實例 (ACI) 和 Azure Kubernetes Service (AKS) 使用 Azure Machine Learning，來進行疑難排解並解決問題，或解決這些常見的 Docker 部署錯誤。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* **Azure 訂用帳戶**。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+* **Azure 訂用帳戶**。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [適用於 Azure Machine Learning 的 CLI 擴充功能](reference-azure-machine-learning-cli.md)。
@@ -34,14 +34,12 @@ ms.locfileid: "90019286"
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>Docker 部署機器學習模型的步驟
 
-在 Azure Machine Learning 中部署模型時，系統就會執行數項工作。
-
-模型部署的建議方法是透過模型。使用[環境](how-to-use-environments.md)物件將[ ( # B1 API 部署](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)為輸入參數。 在此情況下，服務會在部署階段期間建立基底 docker 映射，並在單一呼叫中裝載所需的模型。 基礎部署工作包含：
+在 Azure Machine Learning 中部署模型時，您會使用 [模型。部署 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 和 [環境](how-to-use-environments.md) 物件。 服務會在部署階段建立基底 docker 映射，並在單一呼叫中裝載所需的模型。 基礎部署工作包含：
 
 1. 在工作區模型登錄中註冊模型。
 
 2. 定義推斷組態：
-    1. 根據您在環境 YAML 檔中指定的相依性，建立[環境](how-to-use-environments.md)物件，或使用我們的其中一個環境。
+    1. 建立 [環境](how-to-use-environments.md) 物件。 此物件可以使用環境 yaml 檔中的相依性，這是我們其中一個策劃環境。
     2. 根據環境和評分指令碼建立推斷組態 (InferenceConfig 物件)。
 
 3. 將模型部署至 Azure 容器執行個體 (ACI) 服務或 Azure Kubernetes Service (AKS)。
@@ -52,7 +50,7 @@ ms.locfileid: "90019286"
 
 如果您遇到任何問題時，首先要做的事就是將部署工作 (先前所述) 分成個別步驟，以將問題隔離。
 
-假設您透過 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 與[環境](how-to-use-environments.md)物件作為輸入參數，並使用新的/建議方法，您的程式碼可以分成三個主要步驟：
+使用 Model 時，請使用[環境](how-to-use-environments.md)物件將[ ( # B1 部署](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)為輸入參數，您的程式碼可以分為三個主要步驟：
 
 1. 註冊模型。 以下是一些範例程式碼：
 
@@ -95,11 +93,11 @@ ms.locfileid: "90019286"
     aci_service.wait_for_deployment(show_output=True)
     ```
 
-將部署程序分成個別的工作後，我們可以查看一些最常見的錯誤。
+將模型下列部署程式細分為個別的工作，可讓您更輕鬆地識別一些較常見的錯誤。
 
 ## <a name="debug-locally"></a>在本機執行偵錯
 
-如果您在將模型部署至 ACI 或 AKS 時遇到問題，請嘗試將其部署為本機 Web 服務。 使用本機 Web 服務可讓您更輕鬆地針對問題進行疑難排解。 系統會下載包含模型的 Docker 映像並在您的本機系統上啟動。
+如果您在將模型部署到 ACI 或 AKS 時遇到問題，請將它部署為本機 web 服務。 使用本機 Web 服務可讓您更輕鬆地針對問題進行疑難排解。
 
 您可以在[MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks)存放庫中找到範例[本機部署筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb)，以探索可執行檔範例。
 
@@ -128,9 +126,9 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-如果您要定義自己的 conda 規格 YAML，您必須以 pip 相依性的版本 >= 1.0.45 版 azureml-defaults 列出 azureml 預設值。 此套件包含將模型裝載為 Web 服務所需的功能。
+如果您要定義自己的 conda 規格 YAML，請列出 azureml-預設版本 >= 1.0.45 版 azureml-defaults 作為 pip 相依性。 需要此套件才能將模型裝載為 web 服務。
 
-此時，您可以照常使用服務。 例如，下列程式碼示範如何將資料傳送至服務：
+此時，您可以照常使用服務。 下列程式碼示範如何將資料傳送至服務：
 
 ```python
 import json
@@ -189,7 +187,7 @@ print(ws.webservices['mysvc'].get_logs())
  
 ## <a name="container-cannot-be-scheduled"></a>無法排程容器
 
-將服務部署至 Azure Kubernetes Service 計算目標時，Azure Machine Learning 會嘗試使用要求的資源量來排程服務。 如果在5分鐘之後，叢集中沒有可使用適當資源數量的節點，部署將會失敗並顯示訊息 `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` 。 您可以藉由新增更多節點、變更節點的 SKU 或變更服務的資源需求，來解決這個錯誤。 
+將服務部署至 Azure Kubernetes Service 計算目標時，Azure Machine Learning 會嘗試使用要求的資源量來排程服務。 如果叢集中沒有任何節點在5分鐘後具有適當的資源數量，部署將會失敗。 失敗訊息為 `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` 。 您可以藉由新增更多節點、變更節點的 SKU，或變更服務的資源需求，來解決此錯誤。 
 
 錯誤訊息通常會指出您需要更多的資源，例如，如果您看到錯誤訊息，表示 `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` 服務需要 gpu，且叢集中有三個節點沒有可用的 gpu。 如果您使用 GPU SKU，請新增更多節點來解決此問題，如果您不是，請切換至已啟用 GPU 的 SKU，或將環境變更為不需要 GPU。  
 
@@ -239,13 +237,16 @@ def run(input_data):
 
 ## <a name="http-status-code-503"></a>HTTP 狀態碼 503
 
-Azure Kubernetes Service 部署支援自動調整，可讓您新增複本以支援額外的負載。 不過，自動調整程式的設計訴求是處理負載中**細微**的變更。 如果您每秒收到非常大量的要求數，用戶端可能會收到 HTTP 狀態碼 503。
+Azure Kubernetes Service 部署支援自動調整，可讓您新增複本以支援額外的負載。 自動調整程式是設計來處理負載中的 **漸進** 式變更。 如果您每秒收到非常大量的要求數，用戶端可能會收到 HTTP 狀態碼 503。 即使自動調整程式迅速做出反應，還是需要 AKS 很長的時間來建立額外的容器。
+
+相應增加/減少的決策是以目前容器複本的使用量為基礎。 處理要求時忙碌 (的複本數目) 除以目前複本的總數目是目前的使用率。 如果此數位超過 `autoscale_target_utilization` ，則會建立更多複本。 如果較低，則會降低複本。 新增複本的決策是立即且快速 (大約1秒的) 。 移除複本的決策是保守 (大約1分鐘的) 。 根據預設，自動調整目標使用率會設定為 **70%**，這表示服務可以處理每秒要求的尖峰 (RPS) （ **最多 30%**）。
 
 有兩個方法可協助防止出現 503 狀態碼：
 
-* 變更自動調整建立新複本的使用率層級。
-    
-    根據預設，自動調整目標使用率會設定為 70%，這表示服務可以處理突然增加的每秒要求數 (RPS)，最高可達 30%。 您可以將 `autoscale_target_utilization` 設定為較低的值，來調整使用率目標。
+> [!TIP]
+> 這兩種方法可以個別使用或合併使用。
+
+* 變更自動調整建立新複本的使用率層級。 您可以將 `autoscale_target_utilization` 設定為較低的值，來調整使用率目標。
 
     > [!IMPORTANT]
     > 此變更不會「加快」建立複本的速度。 相反地，其會以較低的使用率閾值建立複本。 若不等到服務使用率達 70% 就將值變更為 30%，會在使用率達 30% 時建立複本。
@@ -286,7 +287,9 @@ Azure Kubernetes Service 部署支援自動調整，可讓您新增複本以支�
 
 ## <a name="advanced-debugging"></a>進階偵錯
 
-在某些情況下，您可能需要以互動方式來對模型部署中包含的 Python 程式碼進行偵錯。 例如，如果輸入腳本失敗，而且無法由其他記錄來判斷原因。 藉由使用 Visual Studio Code 和 debugpy，您可以附加至在 Docker 容器內執行的程式碼。 如需詳細資訊，請造訪 [VS Code 指南中的互動式調試](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments)程式。
+您可能需要以互動方式對模型部署中包含的 Python 程式碼進行偵測。 例如，如果輸入腳本失敗，而且無法由其他記錄來判斷原因。 藉由使用 Visual Studio Code 和 debugpy，您可以附加至在 Docker 容器內執行的程式碼。
+
+如需詳細資訊，請造訪 [VS Code 指南中的互動式調試](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments)程式。
 
 ## <a name="model-deployment-user-forum"></a>[模型部署使用者論壇](https://docs.microsoft.com/answers/topics/azure-machine-learning-inference.html)
 

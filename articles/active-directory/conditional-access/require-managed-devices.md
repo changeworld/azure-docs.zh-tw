@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3fbb06355772794fbe3fab5cdf3c8622c2baf4
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 7cb62d3b7ebe3ba6f4551602c7867575e74dca70
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948822"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601515"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>作法：透過條件式存取要求受管理的裝置進行雲端應用程式存取
 
@@ -98,7 +98,7 @@ ms.locfileid: "88948822"
 
 ### <a name="scenario-require-device-enrollment-for-ios-and-android-devices"></a>案例：需要 iOS 和 Android 裝置的裝置註冊
 
-在此案例中，Contoso 已決定對 Office 365 資源的所有行動存取都必須使用已註冊的裝置。 他們的所有使用者都已使用 Azure AD 認證登入，並指派授權給他們，其中包括 Azure AD Premium P1 或 P2 及 Microsoft Intune。
+在此案例中，Contoso 決定了 Microsoft 365 資源的所有行動存取都必須使用已註冊的裝置。 他們的所有使用者都已使用 Azure AD 認證登入，並指派授權給他們，其中包括 Azure AD Premium P1 或 P2 及 Microsoft Intune。
 
 組織必須完成下列步驟，才能要求使用已註冊的行動裝置。
 
@@ -124,6 +124,6 @@ ms.locfileid: "88948822"
 
 在 Windows 7、iOS、Android、macOS 和一些協力廠商的網頁瀏覽器上 Azure AD 使用裝置向 Azure AD 註冊時所布建的用戶端憑證來識別裝置。 當使用者第一次透過瀏覽器登入時，系統會提示使用者選取該憑證。 終端使用者必須選取此憑證，才能繼續使用瀏覽器。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在您的環境中設定裝置型條件式存取原則之前，您應該先看看 [Azure Active Directory 中條件式存取的最佳做法](best-practices.md)。

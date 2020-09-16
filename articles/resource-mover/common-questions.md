@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: 18de210d817ee309ac4970ecea6b62f6ef03ef02
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530398"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600648"
 ---
 # <a name="common-questions"></a>常見問題
 
@@ -90,6 +90,9 @@ Azure 資源移動器受控識別至少需要下列許可權：
 資源移動器受控識別已重設為 *無*。 | 在 > 身分 **識別**的移動集合中重新啟用系統指派的身分識別。 或者，在 [ **新增資源**] 中再次新增資源，這會執行相同的工作。  
 訂用帳戶已移至不同的租使用者。 | 停用並啟用移動集合的受控識別。
 
+### <a name="how-can-i-do-multiple-moves-together"></a>如何一起進行多個移動？
+
+使用入口網站中的 [變更] 選項，視需要變更來源/目標群組合。
 
 ## <a name="next-steps"></a>後續步驟
 

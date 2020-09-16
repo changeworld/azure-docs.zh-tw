@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: bbe813b46b41bf0e2b8bf9c6b3fe3e3e843204ed
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 54a1135931c2be9c6b7941c9ff740fd29f855eee
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319741"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601243"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>整合所有應用程式與 Azure AD 的五個步驟
 
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) 有一個資源庫，其中包含數千個預�
 
 我們已發佈用來管理將應用程式與 Azure AD 整合之商務程式的指引，包括您可以用來讓商務和應用程式擁有者感知和感興趣的 [海報](https://aka.ms/AppOnePager) 和 [簡報](https://aka.ms/AppGuideline) 。 您可以使用自己的商標來修改這些範例，並在完成此程式時，透過公司入口網站、電子報或其他媒體將這些範例發佈到您的組織。
 
-最好的起點是評估您使用 Active Directory 同盟服務 (ADFS) 。 許多組織會使用 ADFS 進行 SaaS 應用程式、自訂企業營運應用程式，以及 Office 365 和 Azure AD 型應用程式的驗證：
+最好的起點是評估您使用 Active Directory 同盟服務 (ADFS) 。 許多組織會使用 ADFS 進行 SaaS 應用程式、自訂企業營運應用程式，以及 Microsoft 365 和 Azure AD 型應用程式的驗證：
 
 ![圖表會顯示內部部署應用程式、企業營運應用程式、SaaS 應用程式，以及透過 Azure AD，Office 365 全都以虛線連接到 Active Directory 和 AD FS。](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 
@@ -107,6 +107,6 @@ Azure Active Directory (Azure AD) 有一個資源庫，其中包含數千個預�
 
 我們有一個 [影片系列](https://www.youtube.com/watch?v=zjezqZPPOfc&amp;list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX) ，可提供平臺的完整簡介，以及支援的語言和平臺的 [許多程式碼範例](../develop/sample-v2-code.md) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [將應用程式移轉至 Azure Active Directory 的資源](../manage-apps/migration-resources.md)

@@ -5,20 +5,20 @@ description: 瞭解如何建立 Intune 自訂設定檔以部署 Azure VPN 用戶
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/11/2020
+ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5a754a14cada1547a83e29d474e9b77aed7a2728
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: fba8433a7964b10901527894eee98722ece970ec
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024344"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602188"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>建立 Intune 設定檔以部署 VPN 用戶端設定檔
 
 您可以使用 Microsoft Intune (Windows 10) 來部署 Azure VPN 用戶端的設定檔。 本文可協助您使用自訂設定來建立 Intune 設定檔。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 裝置已向 Intune MDM 註冊。
 * 已在用戶端電腦上部署 Windows 10 的 Azure VPN Client。
@@ -54,17 +54,7 @@ ms.locfileid: "90024344"
     </VPNProfile>
    ```
 1. ```<ServerUrlList>``` ```</ServerUrlList>``` 使用您所下載設定檔中的專案來修改和之間的專案 ( # A0) 。 變更 "TrustedNetworkDetection" FQDN 以符合您的環境。
-1. 開啟 Azure 下載的設定檔 ( # A0) ，藉由反白顯示文字並按 + C 將內容複寫到剪貼簿 <ctrl> 。請複製下列 AzVpnProfile 行之間的所有內容，但不要複製 AzVpnProfile 行本身：
-
-   ```
-   <AzVpnProfile xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/">
-     <any xmlns:d2p1="http://schemas.datacontract.org/2004/07/System.Xml"
-       i:nil="true" />
-
-   For example - copy the text in your xml that is located here.
-
-   </AzVpnProfile>
-   ```
+1. 開啟 Azure 下載的設定檔 ( # A0) ，藉由反白顯示文字，然後按 (ctrl) + C，將整個內容複寫到剪貼簿。 
 1. 將上一個步驟所複製的文字貼到您在步驟2中于標記之間建立的檔案 ```<CustomConfiguration>  </CustomConfiguration>``` 。 使用 xml 副檔名來儲存檔案。
 1. 記下標記中的值 ```<name>  </name>``` 。 這是設定檔的名稱。 當您在 Intune 中建立設定檔時，您將需要此名稱。 關閉檔案，並記住儲存檔案的位置。
 
@@ -84,9 +74,9 @@ ms.locfileid: "90024344"
     * **OMA-URI：** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (可以在<name> </name>標記) 的 azurevpnconfig.xml 檔案中找到這項資訊。
     * **資料類型：** (XML 檔案) 的字串。
 
-   選取資料夾圖示，然後選取您在步驟6中儲存的檔案（ [XML](#xml) 步驟）。 選取 [新增]。
+   選取資料夾圖示，然後選取您在步驟6中儲存的檔案（ [XML](#xml) 步驟）。 選取 [新增]  。
 
-   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="組態設定" lightbox="./media/create-profile-intune/configuration-settings.png":::
+   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="設定" lightbox="./media/create-profile-intune/configuration-settings.png":::
 1. 選取 [下一步] 。
 1. 在 [指派] 底下，選取您要推送 **設定**的群組。 然後，選取 [下一步]。
 1. 適用性規則是選擇性的。 視需要定義任何規則，然後選取 **[下一步]**。

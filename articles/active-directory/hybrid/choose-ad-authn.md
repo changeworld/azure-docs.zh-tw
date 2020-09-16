@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: beabe9440c37d16ca4a81efdbc9588739f4c7473
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: d5de8da548c2e141eb921aa4f95e82f7199ae1f4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279341"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602365"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>針對 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法
 
@@ -86,7 +86,7 @@ Azure AD 針對混合式身分識別解決方案支援下列驗證方法。
 
 ### <a name="cloud-authentication-password-hash-synchronization"></a>雲端驗證：密碼雜湊同步處理
 
-* **投入量**。 密碼雜湊同步處理需要最少的部署、維護和基礎結構投入量。  這個層級的投入量，通常適用於只需要使用者登入 Office 365、SaaS 應用程式和其他 Azure AD 型資源的組織。 開啟時，密碼雜湊同步處理屬於 Azure AD Connect 同步處理程序的一部分，每兩分鐘執行一次。
+* **投入量**。 密碼雜湊同步處理需要最少的部署、維護和基礎結構投入量。  這種程度的努力通常適用于只需要使用者登入 Microsoft 365、SaaS 應用程式和其他以 Azure AD 為基礎之資源的組織。 開啟時，密碼雜湊同步處理屬於 Azure AD Connect 同步處理程序的一部分，每兩分鐘執行一次。
 
 * **使用者體驗**。 若要改善使用者的登入體驗，請部署具有密碼雜湊同步處理的無縫 SSO。 當使用者登入時，無縫 SSO 會排除不必要的提示。
 
@@ -203,7 +203,7 @@ Azure AD 針對混合式身分識別解決方案支援下列驗證方法。
 
 2. **內部部署中斷存續**。  因為發生網路攻擊或災害而導致的內部部署中斷後果可能很嚴重，包括品牌聲譽受損到因無法處理攻擊而使組織癱瘓。 最近有許多組織成為惡意程式碼攻擊的受害者，包括可使其內部部署伺服器當機的目標勒索軟體。 當 Microsoft 協助客戶處理這些類型的攻擊時，注意到兩類組織：
 
-   * 除了同盟或傳遞驗證，先前開啟了密碼雜湊同步處理的組織，會將其主要驗證方法變更為使用密碼雜湊同步處理。 這些組織只花了幾個小時就回到線上。 他們透過使用 Office 365 來存取電子郵件，不但解決了問題，還能存取其他雲端型工作負載。
+   * 除了同盟或傳遞驗證，先前開啟了密碼雜湊同步處理的組織，會將其主要驗證方法變更為使用密碼雜湊同步處理。 這些組織只花了幾個小時就回到線上。 藉由透過 Microsoft 365 使用電子郵件的存取權，他們就能解決問題並存取其他雲端式工作負載。
 
    * 另一類是先前未啟用密碼雜湊同步處理的組織，此時他們必須求助於未受信任的外部消費者電子郵件系統，以進行溝通以解決問題。 在這些情況下，需要幾週的時間才能還原其內部部署身分識別基礎結構，使用者才能夠再次登入雲端應用程式。
 

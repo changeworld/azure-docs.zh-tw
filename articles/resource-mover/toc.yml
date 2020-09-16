@@ -18,9 +18,9 @@
   items:
     - name: 移動概觀
       href: about-move-process.md
-    - name: Azure VM 區域移動的支援矩陣
+    - name: 支援-跨區域移動 Azure VM
       href: support-matrix-move-region-azure-vm.md
-    - name: Azure SQL 區域移動的支援矩陣
+    - name: 支援-跨區域移動 Azure SQL
       href: support-matrix-move-region-sql.md
 - name: 使用說明指南
   items:
@@ -34,11 +34,11 @@
           href: move-region-within-resource-group.md
     - name: 管理區域移動
       items:
-        - name: 修改區域移動的目標設定
+        - name: 修改目的地設定
           href: modify-target-settings.md
-        - name: 從區域移動集合中移除資源
+        - name: 從移動集合中移除資源
           href: remove-move-resources.md
-        - name: 管理區域移動程式所建立的資源
+        - name: 管理移動期間建立的資源
           href: manage-resources-created-move-process.md
 - name: 資源
   items:

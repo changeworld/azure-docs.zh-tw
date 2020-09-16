@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1973d45197044c325caf2d9938838f438d7755c
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ca9f4e290c5dad45e5bf87439ebcd1c88a7c540f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049531"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601998"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用條件式存取封鎖對 Azure AD 的舊式驗證   
 
@@ -125,4 +125,4 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 - [使用條件式存取的僅限報告模式來判斷影響](howto-conditional-access-insights-reporting.md)
 - 如果您還不太了解如何設定條件式存取原則，請參閱[利用 Azure Active Directory 條件式存取來取得特定應用程式的 MFA](../authentication/tutorial-enable-azure-mfa.md)，以取得範例。
 - 如需新式驗證支援的詳細資訊，請參閱 [Office 2013 和 Office 2016 用戶端應用程式的新式驗證運作方式](/office365/enterprise/modern-auth-for-office-2013-and-2016) 
-- [如何將多功能裝置或應用程式設定為使用 Office 365 和 Microsoft 365 傳送電子郵件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+- [如何使用 Microsoft 365 設定多功能裝置或應用程式以傳送電子郵件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)

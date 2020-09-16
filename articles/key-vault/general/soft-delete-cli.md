@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 247f37a69cd8524339a3f5414230cca0f42fa22d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: da821da08594180b9dd94728252e1a43c04fbde2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662051"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531656"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何以 CLI 使用金鑰保存庫虛刪除
 
@@ -25,7 +25,7 @@ Azure Key Vault 的虛刪除功能可復原已刪除的保存庫和保存庫物�
 
 ## <a name="prerequisites"></a>必要條件
 
-- Azure CLI - 如果您沒有為環境進行此設定，請參閱[使用 Azure CLI 管理 Key Vault](manage-with-cli2.md))。
+- Azure CLI - 如果您沒有為環境進行此設定，請參閱[使用 Azure CLI 管理 Key Vault](manage-with-cli2.md)。
 
 如需 CLI 的 Key Vault 特定參考資訊，請參閱 [Azure CLI Key Vault 參考](https://docs.microsoft.com/cli/azure/keyvault) \(英文\)。
 
@@ -39,7 +39,7 @@ Key Vault 作業透過角色型存取控制 (RBAC) 權限來分別管理，如�
 |復原|還原已刪除的金鑰保存庫。|Microsoft.KeyVault/vaults/write|
 |清除|永久移除已刪除的金鑰保存庫和其所有內容。|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
-如需權限和存取控制的詳細資訊，請參閱[保護您的金鑰保存庫](secure-your-key-vault.md))。
+如需權限和存取控制的詳細資訊，請參閱[保護您的金鑰保存庫](secure-your-key-vault.md)。
 
 ## <a name="enabling-soft-delete"></a>啟用虛刪除
 
@@ -241,6 +241,6 @@ az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge
 
 ## <a name="other-resources"></a>其他資源
 
-- 如需 Key Vault 的虛刪除功能概觀，請參閱 [Azure Key Vault 虛刪除概觀](soft-delete-overview.md))。
-- 如需 Azure Key Vault 使用方式的一般概觀，請參閱[什麼是 Azure Key Vault？](overview.md))。
+- 如需 Key Vault 的虛刪除功能概觀，請參閱 [Azure Key Vault 虛刪除概觀](soft-delete-overview.md)。
+- 如需 Azure Key Vault 使用方式的一般概觀，請參閱[什麼是 Azure Key Vault？](overview.md)
 

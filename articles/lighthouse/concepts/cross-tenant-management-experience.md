@@ -3,12 +3,12 @@ title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
 ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 67111ecb215f4976dd8d3bbe0b901e68c3ef10ec
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564061"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602382"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -48,13 +48,13 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 
 [Azure Arc](../../azure-arc/index.yml)：
 
-- 大規模管理混合式伺服器 [適用於伺服器的 Azure Arc (preview) ](../../azure-arc/servers/overview.md)：
-  - [將 Azure 外部的 Windows Server 或 Linux 電腦連線](../../azure-arc/servers/onboard-portal.md)到 Azure 中委派的訂用帳戶和/或資源群組
+- 在已啟用規模 Azure Arc 的伺服器上管理混合式伺服器 [ (preview) ](../../azure-arc/servers/overview.md)：
+  - 管理連線到 Azure 中委派的訂用帳戶和/或資源群組[之 azure 外部的 Windows Server 或 Linux 機器](../../azure-arc/servers/onboard-portal.md)
   - 使用 Azure 結構管理已連線的電腦，例如 Azure 原則和標記
   - 確定在客戶的混合式環境中套用相同的原則組
   - 使用 Azure 資訊安全中心來監視客戶的混合式環境之間的合規性
 - 以大規模 [Azure Arc 啟用的 Kubernetes (preview) ](../../azure-arc/kubernetes/overview.md)管理混合式 Kubernetes 叢集：
-  - [將 Kubernetes](../../azure-arc/kubernetes/connect-cluster.md) 叢集連線到 Azure 中的委派訂用帳戶和/或資源群組 Azure Arc
+  - [管理連線](../../azure-arc/kubernetes/connect-cluster.md) 到 Azure 中委派的訂用帳戶和/或資源群組的 Kubernetes 叢集
   - 針對已連線的叢集[使用 gitops) 將](../../azure-arc/kubernetes/use-gitops-connected-cluster.md)
   - 在連線的叢集之間強制執行原則
 

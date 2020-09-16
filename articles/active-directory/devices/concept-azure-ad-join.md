@@ -1,6 +1,6 @@
 ---
 title: 什麼是加入 Azure AD 的裝置？
-description: 了解裝置身分識別管理如何協助您管理存取您環境中資源的裝置。
+description: 瞭解 Azure AD 加入的裝置，以及裝置身分識別管理如何協助您管理存取您環境中資源的裝置。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 2b7cc0535549f2dbcdef4ab043ee506527fdbc5f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923725"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601447"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD 加入裝置
 
@@ -28,7 +28,7 @@ Azure AD Join 適用於想要成為雲端優先或僅限雲端的組織。 任�
 | **主要對象** | 適用於僅限雲端和混合式組織。 |
 |   | 適用於組織中的所有使用者 |
 | **裝置擁有權** | 組織 |
-| **作業系統** | Windows 10 家用版以外的所有 Windows 10 裝置 |
+| **作業系統** | 除了 Windows 10 家用版以外的所有 Windows 10 裝置 |
 |   | [在 Azure 中執行的 Windows Server 2019 虛擬機器](howto-vm-sign-in-azure-ad-windows.md) (不支援伺服器核心) |
 | **佈建** | 自助：Windows OOBE 或設定 |
 |   | 大量註冊 |
@@ -58,11 +58,11 @@ Azure AD Join 適用於想要成為雲端優先或僅限雲端的組織。 任�
 
 - 您想要使用 Azure AD 和 MDM (例如 Intune) 來轉換成雲端式基礎結構。
 - 例如，如果您需要取得行動裝置 (例如控制下的平板電腦和電話)，您無法使用內部部署網域加入。
-- 您的使用者主要需要存取 Office 365 或與 Azure AD 整合的其他 SaaS 應用程序。
+- 您的使用者主要需要存取 Microsoft 365 或與 Azure AD 整合的其他 SaaS 應用程式。
 - 您想要管理 Azure AD 中的使用者群組，而不是 Active Directory 中的使用者群組。 例如，此案例可以套用於季節工、約聘員工或學生。
 - 您要為內部部署基礎結構受到限制的遠端分公司工作者提供加入功能。
 
-除了 Windows 10 家用版以外，您可以為所有 Windows 10 裝置設定 Azure AD 加入的裝置。
+您可以為所有 Windows 10 裝置設定 Azure AD 加入的裝置，但 Windows 10 家用版除外。
 
 Azure AD 加入裝置的目標是簡化：
 

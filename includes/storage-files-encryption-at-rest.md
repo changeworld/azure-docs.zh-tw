@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ed061234da27716bfcdaf1cc065568908108f90a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 814bf085ca910ef07a13df779eef25e0e6510e57
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77597775"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563422"
 ---
-Azure 檔案儲存體中儲存的所有資料都會使用 Azure 儲存體服務加密（SSE）在待用時加密。 儲存體服務加密的運作方式類似于 Windows 上的 BitLocker：資料會在檔案系統層級下加密。 因為資料會在 Azure 檔案共用的檔案系統底下加密，所以當其編碼為磁片時，您不需要存取用戶端上的基礎金鑰，即可讀取或寫入 Azure 檔案共用。
+使用 Azure 儲存體服務加密 (SSE) 將儲存在 Azure 檔案儲存體中的所有資料進行待用加密。 儲存體服務加密的運作方式與 Windows 上的 BitLocker 相似：資料會在檔案系統層級下加密。 由於資料是在 Azure 檔案共用的檔案系統下加密，因此當其編碼為磁碟時，不需要存取用戶端上的基礎金鑰，即可讀取或寫入 Azure 檔案共用。 待用加密同時適用於 SMB 和 NFS 通訊協定。
 
-根據預設，儲存在 Azure 檔案儲存體中的資料會使用 Microsoft 管理的金鑰進行加密。 使用 Microsoft 管理的金鑰時，Microsoft 會保存金鑰來加密/解密資料，並負責定期輪替。 您也可以選擇管理您自己的金鑰，這可讓您控制輪替程式。 如果您選擇使用客戶管理的金鑰來加密您的檔案共用，Azure 檔案儲存體會獲授權存取您的金鑰，以滿足用戶端的讀取和寫入要求。 使用客戶管理的金鑰時，您可以隨時撤銷此授權，但這表示您的 Azure 檔案共用將無法再透過 SMB 或 FileREST API 來存取。
+根據預設，儲存於 Azure 檔案儲存體中的資料是以使用 Microsoft 管理的金鑰加密。 使用 Microsoft 管理的金鑰時，Microsoft 會保存金鑰來加密/解密資料，並負責定期輪替。 您也可以選擇管理自己的金鑰，這可讓您控制輪替的程序。 如果您選擇使用客戶管理的金鑰來對檔案共用進行加密，則 Azure 檔案儲存體會獲授權存取您的金鑰，以滿足用戶端的讀取和寫入要求。 使用客戶管理的金鑰時，可以隨時撤銷此授權，但這表示您的 Azure 檔案共用將無法再透過 SMB 或 FileREST API 來進行存取。
 
-Azure 檔案儲存體使用與其他 Azure 儲存體服務（例如 Azure Blob 儲存體）相同的加密配置。 若要深入瞭解 Azure 儲存體服務加密（SSE），請參閱待用[資料的 Azure 儲存體加密](../articles/storage/common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+Azure 檔案儲存體使用與其他 Azure 儲存體服務 (例如 Azure Blob 儲存體) 相同的加密配置。 如需深入了解 Azure 儲存體服務加密 (SSE) 的詳細資訊，請參閱[待用資料的 Azure 儲存體加密](../articles/storage/common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。

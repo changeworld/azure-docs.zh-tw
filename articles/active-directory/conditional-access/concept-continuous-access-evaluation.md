@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27aabac75516eed2c68b4f14c6593411d0141ef1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 15f4f5d9eea8f53a894289160df00a1c1d8d8048
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437236"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601753"
 ---
 # <a name="continuous-access-evaluation"></a>持續存取評估
 
@@ -48,26 +48,26 @@ ms.locfileid: "89437236"
 - 系統管理員明確撤銷使用者的所有重新整理權杖
 - Azure AD Identity Protection 偵測到提升的使用者風險
 
-此程式可讓使用者在其中一個重大事件之後，從 O365 用戶端應用程式中失去組織 SharePoint Online 檔案、電子郵件、行事曆或工作的存取權，以及來自 O365 用戶端應用程式的小組。 
+此程式可讓使用者在其中一個重大事件之後，從 Microsoft 365 用戶端應用程式中失去組織 SharePoint Online 檔案、電子郵件、行事曆或工作的存取權，以及小組的存取權。 
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>條件式存取原則評估 (預覽) 
 
 Exchange 和 SharePoint 可以同步處理重要的條件式存取原則，以便在服務本身內進行評估。
 
-此程式可讓使用者在網路位置變更後立即失去從 O365 用戶端應用程式或 SharePoint Online 存取組織檔案、電子郵件、行事曆或工作的情況。
+此程式可讓使用者在網路位置變更後立即失去 Microsoft 365 用戶端應用程式或 SharePoint Online 的組織檔案、電子郵件、行事曆或工作的存取權。
 
 > [!NOTE]
 > 並非所有的應用程式和資源提供者組合都受到支援。 請參閱下表。 Office 指的是 Word、Excel 和 PowerPoint
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | 支援 | 支援 | 不支援 | 不支援 | 支援 |
-| Exchange Online | 支援 | 支援 | 支援 | 支援 | 支援 |
+| **SharePoint Online** | 支援 | 支援 | 不支援 | 不支援 | 支援 |
+| **Exchange Online** | 支援 | 支援 | 支援 | 支援 | 支援 |
 
 | | Office web 應用程式 | Office Win32 應用程式 | IOS 版 Office | Android 版 Office | Mac 版 Office |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | 支援 | 支援 | 不支援 | 支援 | 支援 |
-| Exchange Online | 支援 | 支援 | 不支援 | 支援 | 支援 |
+| **SharePoint Online** | 支援 | 支援 | 不支援 | 支援 | 支援 |
+| **Exchange Online** | 支援 | 支援 | 不支援 | 支援 | 支援 |
 
 ### <a name="client-side-claim-challenge"></a>用戶端宣告挑戰
 
@@ -183,6 +183,6 @@ Exchange 和 SharePoint 可以同步處理重要的條件式存取原則，以�
 
 登入頻率將會接受或不使用 CAE。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [宣佈持續存取評估](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)
