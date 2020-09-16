@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 9/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 60d3c9df270561c94b8eb162595e4fe01713c0b5
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 870863cc0b1a98aa0efe671da4a8f6a5bb7f53aa
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536474"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708099"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files 的資源限制
 
@@ -44,7 +44,8 @@ ms.locfileid: "89536474"
 |  單一磁片區的大小上限     |    100 TiB    |    否    |
 |  單一檔案的大小上限     |    16 TiB    |    否    |    
 |  單一目錄中目錄中繼資料的大小上限      |    320 MB    |    否    |    
-|  每個磁片區 ([maxfiles](#maxfiles)) 的檔案數目上限     |    1 億    |    是    |    
+|  每個磁片區 ([maxfiles](#maxfiles)) 的檔案數目上限     |    1 億    |    是    |   
+|   (目的地磁片區的跨區域複寫資料保護磁片區數目)      |    5    |    是    |     
 
 如需詳細資訊，請參閱 [容量管理常見問題](azure-netapp-files-faqs.md#capacity-management-faqs)。
 
@@ -83,9 +84,10 @@ Azure NetApp Files 磁片區有一個稱為 *maxfiles*的限制。 Maxfiles 限�
         |  資源  |    父資源      |    要求的新限制     |    增加配額的原因       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  帳戶 |  *訂用帳戶識別碼*   |  *要求的新 **帳戶** 數目上限*    |  *提示要求的案例或使用案例為何？*  |
-        |  集區    |  *訂用帳戶識別碼，帳戶 URI*  |  *要求的新 **集** 區數目上限*   |  *提示要求的案例或使用案例為何？*  |
-        |  磁碟區  |  *訂用帳戶識別碼、帳戶 URI、集區 URI*   |  *要求的新 **磁片** 區數目上限*     |  *提示要求的案例或使用案例為何？*  |
-        |  Maxfiles  |  *訂用帳戶識別碼、帳戶 URI、集區 URI、磁片區 URI*   |  *要求新的最大 **maxfiles** 數目*     |  *提示要求的案例或使用案例為何？*  |    
+        |  集區    |  *訂用帳戶識別碼，NetApp 帳戶 URI*  |  *要求的新 **集** 區數目上限*   |  *提示要求的案例或使用案例為何？*  |
+        |  磁碟區  |  *訂用帳戶識別碼、NetApp 帳戶 URI、容量集區 URI*   |  *要求的新 **磁片** 區數目上限*     |  *提示要求的案例或使用案例為何？*  |
+        |  Maxfiles  |  *訂用帳戶識別碼、NetApp 帳戶 URI、容量集區 URI、磁片區 URI*   |  *要求新的最大 **maxfiles** 數目*     |  *提示要求的案例或使用案例為何？*  |    
+        |  跨區域複寫資料保護磁片區  |  *訂用帳戶識別碼、目的地 NetApp 帳戶 URI、目的地容量集區 URI、來源 NetApp 帳戶 URI、來源容量集區 URI、來源磁片區 URI*   |  *** (目的地磁片區要求新的跨區域複寫資料保護磁片區**數目上限) *     |  *提示要求的案例或使用案例為何？*  |    
 
     2. 指定適當的支援方法，並提供您的合約資訊。
 

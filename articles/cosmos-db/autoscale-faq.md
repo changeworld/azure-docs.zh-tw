@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449510"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707997"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 中自動調整佈建輸送量的常見問題集
 
@@ -27,7 +27,7 @@ ms.locfileid: "84449510"
 
 例如，如果您先前選取的階層可在 400 到 4000 RU/秒之間調整，則資料庫或容器現在會顯示最大 RU/秒為 4000 RU/秒，可在 400 到 4000 RU/秒之間調整。 從這裡，您可以將最大 RU/秒變更為自訂值，以符合您的工作負載。 
 
-### <a name="how-quickly-will-autoscale-scale-up-and-down-based-on-spikes-in-traffic"></a>自動調整根據流量尖峰進行擴大和縮小的速度為何？
+### <a name="how-quickly-will-autoscale-scale-up-based-on-spikes-in-traffic"></a>自動調整會根據流量尖峰擴大規模的速度？
 使用自動調整時，系統會根據傳入流量，在 `0.1 * Tmax` 到 `Tmax` 的範圍內，上下調整輸送量 (RU/秒) `T`。 因為縮放比例是自動且即時的，所以您可以隨時取用到佈建的最大值 `Tmax`，而不會發生延遲。 
 
 ### <a name="how-do-i-determine-what-rus-the-system-is-currently-scaled-to"></a>如何判斷系統目前調整的 RU/秒？
@@ -87,9 +87,9 @@ ms.locfileid: "84449510"
 ### <a name="what-is-the-number-of-allowed-containers-per-shared-throughput-database-when-autoscale-is-enabled"></a>啟用自動調整時，每個共用輸送量資料庫允許的容器數目為何？
 Azure Cosmos DB 在共用輸送量資料庫中可強制執行最多 25 個容器，其適用於具有自動調整或標準 (手動) 輸送量的資料庫。 
 
-### <a name="what-is-the-impact-of-autoscale-on-database-consistency-level"></a>自動調整對資料庫一致性層級的影響為何？
-資料庫的一致性層級不會受到自動調整的影響。
-如需有關可用一致性層級的詳細資訊，請參閱[一致性層級](consistency-levels.md)一文。
+### <a name="what-is-the-impact-of-autoscale-on-database-consistency-level"></a>自動調整資料庫一致性層級的影響為何？
+不會影響資料庫的一致性層級自動調整。
+如需可用一致性層級的詳細資訊，請參閱「 [一致性層級](consistency-levels.md) 」一文。
 
 ### <a name="what-is-the-storage-limit-associated-with-each-max-rus-option"></a>與每個最大 RU/秒選項相關聯的儲存體限制為何？  
 每個最大 RU/秒的儲存體限制 (GB) 為：資料庫或容器的最大 RU/秒 / 100。 例如，如果最大 RU/秒為 20,000 RU/秒，則資源可以支援 200 GB 的儲存體。 如需可用的最大 RU/秒和儲存體選項，請參閱[自動調整限制](provision-throughput-autoscale.md#autoscale-limits)一文。 

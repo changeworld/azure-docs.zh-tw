@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 89de144ab3d0ac4d8b68749e8c836ea1cf328dae
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: f35a43e9cbffb2613f7a98e02b03840c774e5999
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601053"
+ms.locfileid: "90708150"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>瞭解適用於 MariaDB 的 Azure 資料庫的根 CA 變更變更
 
@@ -29,10 +29,9 @@ ms.locfileid: "90601053"
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>如何? 知道我的資料庫是否會受到影響？
 
 使用 SSL/TLS 並確認根憑證的所有應用程式都需要更新根憑證。 您可以藉由檢查您的連接字串來識別您的連接是否驗證根憑證。
--   如果您的連接字串包含 `sslmode=verify-ca` 或 ' '
--   如果您的連接字串包含 `sslmode=disable` ，則不需要更新憑證。
--   如果您的連接字串包含 `sslmode=allow` 、 `sslmode=prefer` 或 `sslmode=require` ，則不需要更新憑證。 
--   如果您的連接字串不是特定的 sslmode，則不需要更新憑證。
+-   如果您的連接字串包含 `sslmode=verify-ca` 或 `sslmode=verify-full` ，則需要更新憑證。
+-   如果您的連接字串包含 `sslmode=disable` 、 `sslmode=allow` 、 `sslmode=prefer` 或 `sslmode=require` ，就不需要更新憑證。 
+-   如果您的連接字串未指定 sslmode，您就不需要更新憑證。
 
 如果您使用的用戶端會將連接字串抽象化，請參閱用戶端的檔，以瞭解它是否會驗證憑證。
 若要瞭解適用於 MariaDB 的 Azure 資料庫 sslmode 請參閱 [SSL 模式描述](concepts-ssl-connection-security.md#default-settings)。

@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 90d51d7eb5425530ebad0fc9ac66ba2c95776076
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 8082e694c4282759c9c38560c14eb3659fcd55ec
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564835"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708133"
 ---
 # <a name="azure-file-share-protocols"></a>Azure 檔案共用通訊協定
 
@@ -55,7 +55,7 @@ Azure 檔案儲存體提供兩種通訊協定來連線及掛接您的 Azure 檔�
 具有 Azure 檔案儲存體的 NFS 適用于：
 
 - 需要符合 POSIX 規範的檔案共用、區分大小寫或 Unix 樣式許可權 (UID/GID) 的工作負載。
-- 以 Linux 為中心的工作負載，不需要 SMB 存取。
+- 不需要 Windows 存取的 Linux 中心工作負載。
 
 ### <a name="security"></a>安全性
 
