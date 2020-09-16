@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 64ee8f2daddd53d37aeaf0f02208e02500b48f57
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2c056bd4d5fa9037ce00588269c0da2937ff57ff
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320863"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705328"
 ---
 # <a name="what-are-security-defaults"></a>什麼是安全性預設值？
 
@@ -92,7 +92,7 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 > [!WARNING]
 > 啟用安全性預設值之前，請確定系統管理員未使用舊版驗證通訊協定。 如需詳細資訊，請參閱[如何離開舊版驗證](concept-fundamentals-block-legacy-authentication.md)。
 
-- [如何將多功能裝置或應用程式設定為使用 Office 365 和 Microsoft 365 傳送電子郵件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
+- [如何使用 Microsoft 365 設定多功能裝置或應用程式以傳送電子郵件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
 
 ### <a name="protecting-privileged-actions"></a>保護特殊權限動作
 

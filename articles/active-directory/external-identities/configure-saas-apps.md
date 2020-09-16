@@ -1,6 +1,6 @@
 ---
 title: 設定適用于 B2B 共同作業的 SaaS 應用程式-Azure AD
-description: Azure Active Directory B2B 共同作業的程式碼與 PowerShell 範例
+description: 瞭解如何為 Azure Active Directory B2B 共同作業設定 SaaS 應用程式，並查看其他可用的資源。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e0db5e609a5e6b7d74809810a50f86d72ae85675
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908715"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705505"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>為 B2B 共同作業設定 SaaS 應用程式
 
@@ -105,5 +105,5 @@ Azure Active Directory (Azure AD) B2B 共同作業可搭配與 Azure AD 整合�
 - [何謂 Azure AD B2B 共同作業？](what-is-b2b.md)
 - [動態群組與 B2B 共同作業](use-dynamic-groups.md)
 - [B2B 共同作業使用者宣告對應](claims-mapping.md)
-- [Office 365 外部共用](o365-external-user.md)
+- [Microsoft 365 外部共用](o365-external-user.md)
 

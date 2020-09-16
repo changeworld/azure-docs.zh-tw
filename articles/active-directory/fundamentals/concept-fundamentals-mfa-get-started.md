@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f3a6d9cea1aa1ebcb76f61882dcf2615dc4832
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13bb7782f6396466200fbb3e2df77158bb75d8a4
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554653"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705396"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>適用於貴組織的 Azure Multi-Factor Authentication
 
@@ -34,10 +34,10 @@ ms.locfileid: "85554653"
 
 ## <a name="microsoft-365-business-e3-or-e5"></a>Microsoft 365 商務版、E3 或 E5 版
 
-對於具有 Office 365 的客戶，有兩種選項可供選擇：
+對於具有 Microsoft 365 的客戶，有兩個選項：
 
 * 所有使用者都可以在所有登入事件中，啟用或停用 Azure Multi-Factor Authentication。 無法只啟用某個使用者子集的多重要素驗證，或只在特定情境下啟用。 管理作業是透過 Office 365 入口網站處理。 
-* 若想要改善使用者體驗，請升級至 Azure AD Premium P1 或 P2，並使用條件式存取。 如需詳細資訊，請參閱使用多重因素驗證保護 Office 365 資源。
+* 若想要改善使用者體驗，請升級至 Azure AD Premium P1 或 P2，並使用條件式存取。 如需詳細資訊，請參閱使用多重要素驗證保護 Microsoft 365 資源。
 
 ## <a name="azure-ad-premium-p1"></a>Azure AD Premium P1
 

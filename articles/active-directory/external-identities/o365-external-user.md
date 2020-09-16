@@ -1,6 +1,6 @@
 ---
-title: Office 365 外部共用和 B2B 共同作業-Azure AD
-description: 討論如何使用 O365 和 Azure Active Directory B2B 共同作業來與外部夥伴共用資源。
+title: Microsoft 365 外部共用和 B2B 共同作業-Azure AD
+description: 討論使用 Microsoft 365 和 Azure Active Directory B2B 共同作業，與外部合作夥伴共用資源。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb407735cff5a0c43d3a584ff37a0eabc178381
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 563d925aa3e0d6922756ab037226f5a86534b19f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908201"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705430"
 ---
-# <a name="office-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Office 365 外部共用和 Azure Active Directory (Azure AD) B2B 共同作業
+# <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Microsoft 365 的外部共用和 Azure Active Directory (Azure AD) B2B 共同作業
 
-在 Azure AD B2B 共同作業和 Office 365 外部共用 (OneDrive、SharePoint Online、整合群組等 ) 中，會使用 Azure AD B2B 來驗證外部使用者。
+Azure AD B2B 共同作業和 Microsoft 365 外部共用 (OneDrive、SharePoint Online、整合群組等 ) ，則會使用 Azure AD B2B 來驗證外部使用者。
 
 ## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Azure AD B2B 與 SharePoint Online 中的外部共用有何不同？
 
@@ -37,7 +37,7 @@ OneDrive/SharePoint Online 有個別的邀請管理員。 OneDrive/SharePoint On
 若要使用 Azure AD B2B 共同作業來管理 OneDrive/SharePoint Online 中的外部共用，請將 OneDrive/SharePoint Online 外部共用設定設為 [只允許與您組織目錄中現有的外部使用者共用]****。 使用者可以移至外部共用網站，並從系統管理員新增的外部共同作業者之間選擇。 系統管理員可以透過 B2B 共同作業邀請 API 來新增外部共同作業者。
 
 
-![OneDrive/SharePoint Online 外部共用設定](media/o365-external-user/odsp-sharing-setting.png)
+![OneDrive/SharePoint 外部共用設定](media/o365-external-user/odsp-sharing-setting.png)
 
 在啟用外部共用之後，在 SharePoint Online (SPO) 人員選擇器中搜尋現有來賓使用者的功能預設為關閉，以符合舊版的行為。
 
@@ -49,4 +49,4 @@ OneDrive/SharePoint Online 有個別的邀請管理員。 OneDrive/SharePoint On
 * [將 B2B 共同作業使用者新增至角色](add-guest-to-role.md)
 * [委派 B2B 共同作業邀請](delegate-invitations.md)
 * [動態群組與 B2B 共同作業](use-dynamic-groups.md)
-* [針對 B2B 共同作業 Azure Active Directory 進行疑難排解](troubleshoot.md)
+* [針對 Azure Active Directory B2B 共同作業進行疑難排解](troubleshoot.md)

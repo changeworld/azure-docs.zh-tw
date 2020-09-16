@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77c673ec52873d854647cf49c0efcbd650fb6aa8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320642"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705481"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>什麼是 Azure Active Directory 中的身分識別安全分數？
 
@@ -50,7 +50,7 @@ ms.locfileid: "89320642"
 
 身分識別安全分數適用于所有版本的 Azure AD。 組織可以從**Azure 入口網站**  >  **Azure Active Directory**  >  **安全性**身分  >  **識別安全分數**來存取其身分識別安全分數。
 
-## <a name="how-does-it-work"></a>如何運作？
+## <a name="how-does-it-work"></a>運作方式
 
 每隔 48 小時，Azure 就會查看安全性組態，並將您的設定與建議的最佳做法進行比較。 根據這項評估的結果，系統會為您的目錄計算新的分數。 您的安全性設定可能未完全符合最佳做法指導方針，而且只會部分符合改進動作。 在這些情況下，您只會獲得可供控制項使用的最大分數部分。
 
@@ -102,7 +102,7 @@ ms.locfileid: "89320642"
 
 若要查看您的分數歷程記錄，請前往 [Microsoft 365 安全性中心](https://security.microsoft.com/) ，並查看您的整體 Microsoft 安全分數。 您可以查看整體安全分數的變更，請按一下 [視圖歷程記錄]。 選擇特定日期，即可查看當天啟用了哪些控制，以及這些控制各自獲得的分數。
 
-### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>身分識別安全分數與 Office 365 安全分數有何關聯？
+### <a name="how-does-the-identity-secure-score-relate-to-the-microsoft-365-secure-score"></a>身分識別安全分數與 Microsoft 365 安全分數有何關聯？
 
 [Microsoft 安全分數](/office365/securitycompliance/microsoft-secure-score)包含五個不同的控制和分數類別：
 
@@ -114,6 +114,6 @@ ms.locfileid: "89320642"
 
 身分識別安全分數表示 Microsoft 安全分數的身分識別部分。 此重迭表示您對於身分識別安全分數和 Microsoft 中的身分識別分數的建議相同。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [深入瞭解 Microsoft 安全分數](/office365/securitycompliance/microsoft-secure-score)
