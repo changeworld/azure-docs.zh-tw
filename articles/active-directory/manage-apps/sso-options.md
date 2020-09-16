@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: ab4d150d79b2c53ad23d892efacef6a848d97854
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 5c02733167db5071b1f2a9c5e04dc05a069fda3c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469808"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604201"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD 中的單一登入選項
 
@@ -24,7 +24,7 @@ ms.locfileid: "89469808"
 
 - **使用單一登入**，使用者使用一個帳戶登入一次，就能存取已加入網域的裝置、公司資源、軟體即服務 (SaaS) 應用程式和 Web 應用程式。 登入之後，使用者可以從 Office 365 入口網站或我的應用程式啟動應用程式。 系統管理員可將使用者帳戶集中管理，並根據群組成員資格自動新增或移除使用者的應用程式存取權。
 
-- **沒有單一登入**，使用者必須記住應用程式特定的密碼並登入每個應用程式。 IT 人員需要針對每個應用程式 (如 Office 365、Box 和 Salesforce) 建立及更新使用者帳戶。 使用者需要記住其密碼，還要花費時間登入每個應用程式。
+- **沒有單一登入**，使用者必須記住應用程式特定的密碼並登入每個應用程式。 IT 人員需要針對每個應用程式 (如 Microsoft 365、Box 和 Salesforce) 建立及更新使用者帳戶。 使用者需要記住其密碼，還要花費時間登入每個應用程式。
 
 若要深入了解單一登入，請參閱[什麼是單一登入？](what-is-single-sign-on.md)。
 
@@ -137,7 +137,7 @@ ms.locfileid: "89469808"
 
 ### <a name="linked-sign-on-for-application-migration"></a>用於應用程式移轉的連結型登入
 
-當您於一段時間內移轉應用程式時，連結型登入可以提供一致的使用者體驗。 如果您要將應用程式移轉至 Azure Active Directory，您可以使用連結型登入快速將連結發行至您想要遷移的所有應用程式。  使用者可以在 [MyApps 入口網站](../user-help/active-directory-saas-access-panel-introduction.md)或 [Office 365 應用程式啟動器](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)中找到所有連結。 使用者不會知道他們存取的是已連結的應用程式或已移轉的應用程式。  
+當您於一段時間內移轉應用程式時，連結型登入可以提供一致的使用者體驗。 如果您要將應用程式移轉至 Azure Active Directory，您可以使用連結型登入快速將連結發行至您想要遷移的所有應用程式。  使用者可以在 [MyApps 入口網站](../user-help/active-directory-saas-access-panel-introduction.md)或 [Microsoft 365 應用程式啟動器](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)中找到所有連結。 使用者不會知道他們存取的是已連結的應用程式或已移轉的應用程式。  
 
 使用者與連結的應用程式驗證之後，需要先建立帳戶記錄，系統才會提供使用者單一登入存取權。 佈建此帳戶記錄可以是自動執行，或是由系統管理員手動執行。
 

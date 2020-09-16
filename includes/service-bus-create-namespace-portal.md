@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: MT
+ms.openlocfilehash: d2c309340155bc626d4da94d74aee9be51bde510
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75928230"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606335"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>在 Azure 入口網站中建立命名空間
 若要開始在 Azure 中使用服務匯流排傳訊實體，您必須先使用 Azure 中的唯一名稱建立命名空間。 命名空間提供範圍容器，可在應用程式內定址服務匯流排資源。
@@ -53,10 +53,10 @@ ms.locfileid: "75928230"
 2. 在命名空間視窗中，按一下 [共用存取原則]  。
 3. 在 [共用存取原則]  畫面中，按一下 **RootManageSharedAccessKey**。
    
-    ![connection-info](./media/service-bus-create-namespace-portal/connection-info.png)
+    ![螢幕擷取畫面顯示 [共用存取原則] 視窗，其中已反白顯示原則。](./media/service-bus-create-namespace-portal/connection-info.png)
 4. 在 [原則：RootManageSharedAccessKey]  視窗中，按一下 [主要連接字串]  旁邊的 [複製] 按鈕，將連接字串複製到剪貼簿以供後續使用。 將此值貼到記事本或一些其他暫存位置。
    
-    ![connection-string](./media/service-bus-create-namespace-portal/connection-string.png)
+    ![螢幕擷取畫面顯示名為 RootManageSharedAccessKey 的 S A S 原則，其中包括索引鍵和連接字串。](./media/service-bus-create-namespace-portal/connection-string.png)
 5. 重複前一個步驟，複製 [主要金鑰]  的值並貼到暫存位置以供稍後使用。
 
 <!--Image references-->

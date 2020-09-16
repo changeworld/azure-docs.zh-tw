@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: 8034a7a520cc50b2e57e0ad26205da2e408296a1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 3d4cc17570057f5f37cf38685847afbe38ea6831
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88760612"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606152"
 ---
 | 資源 | 標準檔案共用 | 進階檔案共用 |
 |----------|---------------|------------------------------------------|
@@ -26,5 +26,6 @@ ms.locfileid: "88760612"
 | 共用快照集的數目上限 | 200 個共用快照集 | 200 個共用快照集 |
 | 物件 (目錄和檔案) 名稱長度上限 | 2,048 個字元 | 2,048 個字元 |
 | 最大路徑名稱元件 (在路徑 \A\B\C\D 中，每個字母都是元件) | 255 個字元 | 255 個字元 |
+| 固定連結限制 (僅限 NFS) | N/A | 178 |
 
 \* 標準檔案共用的預設值為 5 TiB，請參閱[啟用和建立大型檔案共用](../articles/storage/files/storage-files-how-to-create-large-file-share.md)，以取得如何增加標準檔案共用規模 (最高可達 100 TiB) 的詳細資料。
