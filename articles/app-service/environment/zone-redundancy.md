@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 15b129db56a9c6854bc3c1f2814a8776ec39adc6
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1e88aac4209f7960b2589cf43f59ead4bd129134
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961562"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605068"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>App Service 環境的可用性區域支援
 
@@ -29,11 +29,15 @@ App Service (ASE) 的環境可部署到可用性區域 (AZ) 。  客戶可以將
 
 您可以在下列任何區域中建立區域性 ILB Ase：
 
+- 澳大利亞東部
+- 巴西南部
+- 加拿大中部
 - 美國中部
 - 美國東部
 - 美國東部 2
 - 美國東部 2 (EUAP) 
 - 法國中部 
+- 德國中西部
 - 日本東部
 - 北歐
 - 西歐

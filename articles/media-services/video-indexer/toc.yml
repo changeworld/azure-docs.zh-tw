@@ -13,6 +13,8 @@
       href: invite-users.md
 - name: 教學課程
   items:
+    - name: 連線到 Azure
+      href: connect-to-azure.md
     - name: 使用影片索引器 API
       href: video-indexer-use-apis.md
     - name: Logic Apps 連接器

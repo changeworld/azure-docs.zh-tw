@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: dbfe18c84217c741f8dd64481901747d068fcdd3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640509"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604133"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 應用程式 Proxy 來為遠端使用者發佈內部部署應用程式
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 
 許多組織認為，當資源位於其公司網路界限內時，便可以由其掌控並獲得保護。 但在現今的數位職場中，該界限已擴大，納入了受控行動裝置和雲端資源與服務。 現在，對於為了保護使用者儲存在其裝置和應用程式中的身分識別和資料所衍生的複雜性，您需要加以管理。
 
-或許您已使用 Azure AD 來管理雲端中的使用者，這些使用者需要存取 Office 365 和其他 SaaS 應用程式，以及裝載在內部部署環境的 Web 應用程式。 如果您已有 Azure AD，便可以其作為控制平面，來允許使用者對內部部署應用程式進行順暢且安全的存取。 或者，您可能還在思考是否要移至雲端。 如果是這樣，您可以藉由實作應用程式 Proxy 並邁出第一步來建置強大的身分識別基礎，以開始您的雲端旅程。
+或許您已經使用 Azure AD 管理雲端中需要存取 Microsoft 365 和其他 SaaS 應用程式的使用者，以及裝載于內部部署的 web 應用程式。 如果您已有 Azure AD，便可以其作為控制平面，來允許使用者對內部部署應用程式進行順暢且安全的存取。 或者，您可能還在思考是否要移至雲端。 如果是這樣，您可以藉由實作應用程式 Proxy 並邁出第一步來建置強大的身分識別基礎，以開始您的雲端旅程。
 
 下列清單雖不完整，但會說明一些您可以藉由在混合式共存案例中實作應用程式 Proxy 來實現的事項：
 
@@ -53,7 +53,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 * 向周邊網路內的 Web 伺服器驗證使用者
 * 藉由散發和設定 VPN 用戶端軟體來讓遠端使用者保有 VPN 存取權。 此外，還會在 DMZ 中保有已加入網域的伺服器，因而容易遭受外部攻擊。
 
-在現今的雲端優先世界中，Azure AD 最適合用來控制可以進入網路的人員和內容。 Azure AD 應用程式 Proxy 整合了新式的驗證和雲端式技術，例如 SaaS 應用程式和識別提供者。 此一整合可讓使用者從任何地方存取應用程式。 應用程式 Proxy 不只更適合現今的數位職場，還比 VPN 和反向 Proxy 解決方案更安全且更容易實作。 遠端使用者可以使用和 O365 以及其他與 Azure AD 整合之 SaaS 應用程式相同的存取方式，來存取內部部署應用程式。 您不需要變更或更新應用程式，即可使用應用程式 Proxy。 此外，應用程式 Proxy 不需要您穿過防火牆開啟輸入連線。 使用應用程式 Proxy 時，只要完成設定就不用再加以理會。
+在現今的雲端優先世界中，Azure AD 最適合用來控制可以進入網路的人員和內容。 Azure AD 應用程式 Proxy 整合了新式的驗證和雲端式技術，例如 SaaS 應用程式和識別提供者。 此一整合可讓使用者從任何地方存取應用程式。 應用程式 Proxy 不只更適合現今的數位職場，還比 VPN 和反向 Proxy 解決方案更安全且更容易實作。 遠端使用者可以存取您的內部部署應用程式，其方式與存取 Microsoft 和其他與 Azure AD 整合的 SaaS 應用程式相同。 您不需要變更或更新應用程式，即可使用應用程式 Proxy。 此外，應用程式 Proxy 不需要您穿過防火牆開啟輸入連線。 使用應用程式 Proxy 時，只要完成設定就不用再加以理會。
 
 ## <a name="the-future-of-remote-access"></a>遠端存取的未來
 
@@ -72,7 +72,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 
 ### <a name="an-overview-of-how-app-proxy-works"></a>應用程式 Proxy 運作方式的概觀
 
-應用程式 Proxy 是在 Azure 入口網站中設定的 Azure AD 服務。 其可讓您在 Azure Cloud 中發佈外部的公用 HTTP/HTTPS URL 端點，這些端點會連線到組織中的內部應用程式伺服器 URL。 這些內部部署 Web 應用程式可與 Azure AD 整合以支援單一登入。 然後，終端使用者就可以使用和用來存取 Office 365 及其他 SaaS 應用程式的相同方式，來存取內部部署 Web 應用程式。
+應用程式 Proxy 是在 Azure 入口網站中設定的 Azure AD 服務。 其可讓您在 Azure Cloud 中發佈外部的公用 HTTP/HTTPS URL 端點，這些端點會連線到組織中的內部應用程式伺服器 URL。 這些內部部署 Web 應用程式可與 Azure AD 整合以支援單一登入。 終端使用者接著可以存取內部部署 web 應用程式，其方式與存取 Microsoft 365 和其他 SaaS 應用程式的方式相同。
 
 這項功能的元件包括應用程式 Proxy 服務 (在雲端中執行)、應用程式 Proxy 連接器 (在內部部署伺服器上執行的輕量型代理程式) 和 Azure AD (作為識別提供者)。 這三個元件一起運作，便可為使用者提供用來存取內部部署 Web 應用程式的單一登入體驗。
 
@@ -195,8 +195,8 @@ Azure AD 應用程式 Proxy 是由雲端式應用程式 Proxy 服務和內部部
 組織應該立即開始利用應用程式 Proxy 來利用下列優勢：
 
 * 可對外發佈內部部署應用程式，而不必為了維護傳統 VPN 或其他內部部署 Web 發佈解決方案和 DMZ 方法而衍生相關額外負荷
-* 對所有應用程式進行單一登入，不論是 Office 365 或其他 SaaS 應用程式，內部部署應用程式也包括在內
-* 可獲得雲端級別的安全性，Azure AD 會運用 Office 365 遙測來防止未經授權進行存取
+* 對所有應用程式進行單一登入，其 Microsoft 365 或其他 SaaS 應用程式，並包括內部部署應用程式
+* 雲端規模安全性，Azure AD 利用 Microsoft 365 遙測來防止未經授權的存取
 * Intune 整合，可確保公司流量會經過驗證
 * 集中管理使用者帳戶
 * 自動更新，以確保您有最新的安全性修補程式

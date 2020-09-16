@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ea9a0e52ce424459b6c402eb136d06dd370bab7d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fe85dfb39a9787376221cb9beeea11bec35293f4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548033"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604456"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>教學課程：設定 myPolicies 來自動布建使用者
 
@@ -101,7 +101,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![布建索引標籤 Automatica](common/provisioning-automatic.png)
 
 5. 在 [系統**管理員認證**] 區段的 [租使用者 URL] 中輸入， `https://<myPoliciesCustomDomain>.mypolicies.com/scim` 其中**Tenant URL** `<myPoliciesCustomDomain>` 是您的 myPolicies 自訂網域。 您可以從您的 URL 取出 myPolicies 客戶網域。
 範例： `<demo0-qa>` . mypolicies.com。
@@ -122,7 +122,18 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 10. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 myPolicies 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 myPolicies 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![myPolicies 使用者對應](media/mypolicies-provisioning-tutorial/userattribute.png)
+   |屬性|類型|
+   |---|---|
+   |userName|String|
+   |作用中|Boolean|
+   |emails[type eq "work"].value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |name.formatted|String|
+   |externalId|String|
+   |addresses[type eq "work"].country|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|參考|
+
 
 11. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
@@ -146,6 +157,10 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 * myPolicies 一律需要使用者 **名稱**、 **電子郵件** 和 **externalId**。
 * myPolicies 不支援對使用者屬性進行實刪除。
+
+## <a name="change-log"></a>變更記錄
+
+* 09/15/2020-已新增使用者的「國家/地區」屬性支援。
 
 ## <a name="additional-resources"></a>其他資源
 

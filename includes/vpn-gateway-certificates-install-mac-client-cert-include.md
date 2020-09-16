@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b214932f43ce20480ee37a7b4edf942f080b38e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce39e23208398f6060103345a6c6cb3541834abc
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67173872"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606576"
 ---
 安裝用戶端憑證時，您需要匯出用戶端憑證時所建立的密碼。
 
@@ -23,4 +23,4 @@ ms.locfileid: "67173872"
    ![新增憑證](./media/vpn-gateway-certificates-install-mac-client-cert-include/addcert.png)
 3. 輸入您在匯出用戶端憑證時所建立的密碼。 此密碼會保護憑證的私密金鑰。 按一下 [確定]**** 完成安裝。
 
-   ![密碼](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)
+   ![螢幕擷取畫面會顯示一個對話方塊，提示您輸入密碼。](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)

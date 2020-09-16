@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 9c5c4247ab01a571613cad4f33832de152909b11
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: dd009542adffed2f459534c943e3a873678ecd35
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527100"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604915"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>瞭解適用於 MySQL 的 Azure 資料庫的根 CA 變更變更
 
@@ -27,13 +27,20 @@ ms.locfileid: "90527100"
 
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>如何? 知道我的資料庫是否會受到影響？
 
-使用 SSL/TLS 並確認根憑證的所有應用程式，都必須更新根憑證，才能連接到適用於 MySQL 的 Azure 資料庫。 如果您目前未使用 SSL/TLS，將不會影響您的應用程式可用性。 您可以驗證您的用戶端應用程式是否嘗試使用 SSL 模式搭配預先定義的信任憑證授權單位單位， (CA) [此處](concepts-ssl-connection-security.md#ssl-default-settings)。
+使用 SSL/TLS 並確認根憑證的所有應用程式都需要更新根憑證。 您可以藉由檢查您的連接字串來識別您的連接是否驗證根憑證。
+-   如果您的連接字串包含 `sslmode=verify-ca` 或 ' '
+-   如果您的連接字串包含 `sslmode=disable` ，則不需要更新憑證。
+-   如果您的連接字串包含 `sslmode=allow` 、 `sslmode=prefer` 或 `sslmode=require` ，則不需要更新憑證。 
+-   如果您的連接字串不是特定的 sslmode，則不需要更新憑證。
+
+如果您使用的用戶端會將連接字串抽象化，請參閱用戶端的檔，以瞭解它是否會驗證憑證。
+若要瞭解適用於 MySQL 的 Azure 資料庫 sslmode 請參閱 [SSL 模式描述](concepts-ssl-connection-security.md#ssl-default-settings)。
 
 若要避免應用程式的可用性因為未預期地撤銷憑證而中斷，或要更新已撤銷的憑證，請參閱「 [**我需要怎麼做才能維持連線能力**](concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity) 」一節。
 
 ## <a name="what-do-i-need-to-do-to-maintain-connectivity"></a>需要怎麼做才能維持連線能力
 
-若要避免應用程式的可用性因為未預期地撤銷憑證而中斷，或要更新已撤銷的憑證，請遵循下列步驟：
+若要避免應用程式的可用性因為未預期地撤銷憑證而中斷，或要更新已撤銷的憑證，請遵循下列步驟。 其概念是建立新的 *pem* 檔案，其中結合了目前的憑證和新憑證，而在 SSL 憑證驗證期間，將會使用允許的值。 請參閱下列步驟：
 
 *   從下列連結下載 Baltimorecybertrustroot.crt & DigiCertGlobalRootG2 根 CA：
     *   https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem
@@ -72,11 +79,10 @@ ms.locfileid: "90527100"
 *   將原始的根 CA pem 檔案取代為合併的根 CA 檔案，然後重新開機您的應用程式/用戶端。
 *   未來，在伺服器端部署新的憑證之後，您可以將 CA pem 檔案變更為 DigiCertGlobalRootG2。
 
-## <a name="what-can-be-the-impact"></a>這會造成什麼影響？
+## <a name="what-can-be-the-impact-of-not-updating-the-certificate"></a>不更新憑證的影響為何？
 如果您使用此處所述的適用於 MySQL 的 Azure 資料庫發行的憑證，則您的應用程式可用性可能會中斷，因為資料庫將無法連線。 視您的應用程式而定，您可能會收到各種不同的錯誤訊息，包括但不限於：
 *   不正確憑證/撤銷憑證
 *   連線逾時
-*   錯誤（如果適用）
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
@@ -89,23 +95,36 @@ ms.locfileid: "90527100"
 ### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. 如果我未在2020年10月26日之前更新根憑證， (10/26/2020) 會發生什麼事？
 如果您未在2020年10月26日之前更新根憑證，則透過 SSL/TLS 連線並驗證根憑證的應用程式將無法與 MySQL 資料庫伺服器通訊，而且應用程式將會遇到 MySQL 資料庫伺服器的連線問題。
 
-### <a name="4-do-i-need-to-plan-a-maintenance-downtime-for-this-changebr"></a>4. 我是否需要規劃此變更的維護停機時間？<BR>
-否。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以這項變更不需要任何維護停機時間。
+### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mysql"></a>4. 使用 App Service 搭配適用於 MySQL 的 Azure 資料庫會有什麼影響？
+針對 Azure 應用程式服務，連接到適用於 MySQL 的 Azure 資料庫，我們可以有兩個可能的案例，而這取決於您在應用程式中使用 SSL 的方式。
+*   此新憑證已新增至平台層級的 App Service。 如果您在應用程式中使用包含在 App Service 平臺上的 SSL 憑證，則不需要採取任何動作。
+*   如果您在程式碼中明確包含 SSL 憑證檔案的路徑，則需要下載新的憑證，並更新程式碼以使用新的憑證。
 
-### <a name="5--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>5. 如果我無法在2020年10月26日之前取得此變更的排程停機時間， (10/26/2020) ？
+### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mysql"></a>5. 使用 Azure Kubernetes Services (AKS) 搭配適用於 MySQL 的 Azure 資料庫時的影響為何？
+如果您嘗試使用 Azure Kubernetes Services (AKS) 來連線至適用於 MySQL 的 Azure 資料庫，其類似于從專用客戶主機環境進行存取。 請參閱 [此處](../aks/ingress-own-tls.md)的步驟。
+
+### <a name="6-what-is-the-impact-if-using-azure-data-factory-to-connect-to-azure-database-for-mysql"></a>6. 使用 Azure Data Factory 連接到適用於 MySQL 的 Azure 資料庫會有何影響？
+針對使用 Azure Integration Runtime 的連接器，連接器會在 Azure 裝載的環境中，利用 Windows 憑證存放區中的憑證。 這些憑證已經與新套用的憑證相容，因此不需要採取任何動作。
+
+針對使用自我裝載 Integration Runtime 的連接器，您可以在連接字串中明確包含 SSL 憑證檔案的路徑，您必須下載 [新的憑證](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) ，並更新連接字串以使用它。
+
+### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. 我是否需要為此變更規劃資料庫伺服器維護停機時間？
+否。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以資料庫伺服器不需要維護停機時間來進行這項變更。
+
+### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8. 如果我無法在2020年10月26日之前取得此變更的排程停機時間， (10/26/2020) ？
 由於用來連接到伺服器的用戶端必須更新憑證資訊，如 [此處](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)的修正一節所述，在此情況下，伺服器不需要停機。
 
-###  <a name="6-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>6. 如果我在2020年10月26日之後建立新的伺服器，將會受到影響嗎？
+### <a name="9-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>9. 如果我在2020年10月26日之後建立新的伺服器，將會受到影響嗎？
 針對在2020年10月26日之後建立的伺服器 (10/26/2020) ，您可以使用新發行的憑證，讓您的應用程式使用 SSL 進行連接。
 
-### <a name="7-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>7. Microsoft 更新其憑證或到期原則的頻率為何？
+### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. Microsoft 更新其憑證的頻率，或到期原則是什麼？
 適用於 MySQL 的 Azure 資料庫所使用的憑證是由受信任的憑證授權單位單位 (CA) 提供。 因此，這些憑證在適用於 MySQL 的 Azure 資料庫上的支援系結至 CA 支援這些憑證。 不過，在這種情況下，這些預先定義的憑證可能會有未預期的錯誤，這些都必須儘早修正。
 
-### <a name="8-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-all-the-read-replicas"></a>8. 如果我使用讀取複本，我只需要在主伺服器或所有讀取複本上執行此更新嗎？
-由於這項更新是用戶端的變更，如果用戶端用來從複本伺服器讀取資料，則也必須套用這些用戶端的變更。 
+### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-the-read-replicas"></a>11. 如果我使用讀取複本，我只需要在主伺服器或讀取複本上執行此更新嗎？
+由於這項更新是用戶端的變更，如果用戶端用來從複本伺服器讀取資料，您也必須套用這些用戶端的變更。
 
-### <a name="9-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>9. 我們是否有伺服器端查詢來確認是否正在使用 SSL？
+### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. 我們是否有伺服器端查詢，以確認是否正在使用 SSL？
 若要確認您是否使用 SSL 連線來連線到伺服器，請參閱 [ssl 驗證](howto-configure-ssl.md#step-4-verify-the-ssl-connection)。
 
-### <a name="10-what-if-i-have-further-questions"></a>10. 如果我有其他問題，該怎麼辦？
+### <a name="13-what-if-i-have-further-questions"></a>13. 如果我有其他問題，該怎麼辦？
 如果您有任何疑問，請從 [Microsoft Q&中的](mailto:AzureDatabaseforMySQL@service.microsoft.com)「社區專家」獲得解答。 如果您有支援方案，且需要技術協助，請  [與我們聯絡](mailto:AzureDatabaseforMySQL@service.microsoft.com)

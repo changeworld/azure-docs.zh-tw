@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 243e5ece0d0a14cb7e3ade409ee68510cef64a9c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 411e9a6e059075dfc2928ed09c0c604d600fd9be
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397095"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604150"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>瞭解如何在 Azure Active Directory 中將使用者指派給應用程式
 本文協助您了解如何將使用者指派至租用戶中的應用程式。
@@ -28,14 +28,14 @@ ms.locfileid: "89397095"
     * 已從內部部署同步的群組
     * 在雲端中建立的靜態安全性群組
     * 在雲端中建立的[動態安全性群組](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)
-    * 在雲端中建立的 Office 365 群組
+    * 在雲端中建立的 Microsoft 365 群組
     * [所有使用者](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups)群組
 *  系統管理員可啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者使用[我的應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)**新增**應用程式功能來新增應用程式，**而不需要商務核准**
-*  系統管理員可啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者使用[我的應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)**新增應用**程式功能來新增應用程式，但只需要**一組所選商務核准者的先前核准**（w）
+*  系統管理員可啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者使用[我的應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)**新增應用**程式功能來新增應用程式，但僅限於**一組選定商務核准者的事先核准**
 *  系統管理員啟用[自助群組管理](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)，以允許使用者加入已指派應用程式的群組，而**不需要商務核准**
 *  系統管理員啟用[自助群組管理](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)，以允許使用者加入已指派應用程式的群組，但需要經過**一群選定商務核准者的事先核准**
-*  系統管理員將第一方應用程式 (例如 [Microsoft Office 365](https://products.office.com/)) 的授權直接指派給使用者
-*  系統管理員將第一方應用程式 (例如 [Microsoft Office 365](https://products.office.com/)) 的授權指派給使用者所屬的群組
+*  系統管理員將第一方應用程式的授權直接指派給使用者，例如 [Microsoft 365](https://products.office.com/)
+*  系統管理員會將授權指派給使用者所屬的群組，例如 [Microsoft 365](https://products.office.com/)
 *  [系統管理員同意應用程式](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)供所有使用者使用，然後使用者登入應用程式
 * 使用者本身登入應用程式以[同意應用程式](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 500bfff4afaebc345d344566b02fe945edb05795
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: afa927f8faa1ac2bd9cd910b3e78b690c16259e5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90562599"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605136"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>設定 SAML 型單一登入
 
@@ -48,7 +48,7 @@ ms.locfileid: "90562599"
 |:--|:--|:--|:--|
 | **識別碼 (實體識別碼)** | 某些應用程式需要 | 某些應用程式需要 | 可唯一識別應用程式。 Azure AD 會將識別碼傳送給應用程式作為 SAML 權杖的 Audience 參數。 應用程式應該會對其進行驗證。 在應用程式中提供的任何 SAML 中繼資料中，此值也會顯示為實體識別碼。 輸入使用下列模式的 URL：'https://<subdomain>.contoso.com' *您可在應用程式傳送的  (SAML 要求) 中找到作為 **Issuer** 元素的這個值*。 |
 | **回覆 URL** | 必要 | 必要 | 指定應用程式預期要接收 SAML 權杖的位置。 此回覆 URL 也稱為判斷提示取用者服務 (ACS) URL。 您可以使用其他回覆 URL 欄位來指定多個回覆 URL。 例如，您可能需要多個子網域的其他回覆 URL。 或者，基於測試目的，您可以一次指定多個回覆 URL (本機主機和公用 URL)。 |
-| **登入 URL** | 必要 | 請勿指定 | 當使用者開啟此 URL 時，服務提供者會重新導向至 Azure AD 以進行驗證，並將使用者登入。 Azure AD 會使用 URL，從 Office 365 或 Azure AD 我的應用程式啟動應用程式。 若為空白，Azure AD 會在使用者從 Office 365、Azure AD 我的應用程式或 Azure AD SSO URL 啟動應用程式時，進行 IdP 起始的登入。|
+| **登入 URL** | 必要 | 請勿指定 | 當使用者開啟此 URL 時，服務提供者會重新導向至 Azure AD 以進行驗證，並將使用者登入。 Azure AD 會使用 URL，從 Microsoft 365 或 Azure AD 我的應用程式啟動應用程式。 若為空白，Azure AD 會在使用者從 Microsoft 365、Azure AD 我的應用程式或 Azure AD SSO URL 啟動應用程式時，進行 IdP 起始的登入。|
 | **轉送狀態** | 選用 | 選用 | 對應用程式指定在驗證完成後應將使用者重新導向到的位置。 此值通常是對應用程式而言有效的 URL。 不過，有些應用程式會以不同的方式使用此欄位。 如需詳細資訊，請詢問應用程式廠商。
 | **登出 URL** | 選用 | 選用 | 用於將 SAML 登出回應傳回應用程式。
 

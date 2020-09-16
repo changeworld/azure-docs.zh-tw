@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 8333de5b0139323b352d43a9259bde9d3b514fbe
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ddd6e08d9be36035b2db02ec5feb3ae4e957ec49
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611799"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604439"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有 Azure 共用磁片 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,18 +28,18 @@ ms.locfileid: "89611799"
 若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 在您完成本文中的指示之前，您應該已經有：
 
 - Azure 訂用帳戶。 [免費](https://azure.microsoft.com/free/)開始使用。 
-- 在相同的[可用性設定](../../../virtual-machines/linux/tutorial-availability-sets.md)組和[鄰近放置群組](../../../virtual-machines/windows/co-location.md#proximity-placement-groups)中，有[兩個或多個美國中西部備妥的 Windows Azure 虛擬機器](failover-cluster-instance-prepare-vm.md)，並將容錯網域和更新網域所建立的可用性設定組設定為**1**。 
+- [兩部或多部 Windows Azure 虛擬機器](failover-cluster-instance-prepare-vm.md)。 同時支援 (Ppg) 的[可用性設定](../../../virtual-machines/windows/tutorial-availability-sets.md)組和[鄰近位置群組](../../../virtual-machines/windows/co-location.md#proximity-placement-groups)。 如果您使用 PPG，所有節點都必須存在於相同的群組中。
 - 具有在 Azure 虛擬機器和 Active Directory 中建立物件權限的帳戶。
 - [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)的最新版本。 
 
 
 ## <a name="add-azure-shared-disk"></a>新增 Azure 共用磁片
-部署已啟用共用磁片功能的受控進階 SSD 磁片。 設定 `maxShares` 為 **2** ，可讓磁片可在兩個 FCI 節點之間共用。 
+部署已啟用共用磁片功能的受控進階 SSD 磁片。 設定 `maxShares` 為 **與叢集節點的數目一致** ，讓磁片可在所有 FCI 節點之間共用。 
 
 藉由執行下列動作來新增 Azure 共用磁片： 
 
@@ -213,13 +213,13 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>設定連線能力 
 
-若要將流量適當地路由傳送到目前的主要節點，請設定適用于您環境的連線選項。 您可以建立 [Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md) ，或如果您使用 SQL Server 2019 和 Windows Server 2016 (或更新版本) 您可以改為預覽 [分散式網路名稱](hadr-distributed-network-name-dnn-configure.md) 功能。 
+若要將流量適當地路由傳送到目前的主要節點，請設定適用于您環境的連線選項。 您可以建立 [Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md) ，或者，如果您使用 SQL SERVER 2019 CU2 + 和 Windows Server 2016 (或更新版本) 您可以改為預覽 [分散式網路名稱](hadr-distributed-network-name-dnn-configure.md) 功能。 
 
 ## <a name="limitations"></a>限制
 
 - 只支援以 [輕量管理模式](sql-vm-resource-provider-register.md#management-modes) 向 SQL VM 資源提供者註冊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您尚未這麼做，請使用 [虛擬網路名稱和 Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md) 或 [分散式網路名稱（ (DNN) ](hadr-distributed-network-name-dnn-configure.md)）設定 FCI 的連線。 
 

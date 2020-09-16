@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: 7738bd2f2dc169ab52677928c6fecbc193ff2f35
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: d9dd03ec349daf2312b7d803e16e3c5fb41ecf0c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639914"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604099"
 ---
 # <a name="managing-access-to-apps"></a>管理應用程式的存取
 
@@ -54,11 +54,11 @@ Azure AD 的應用程式指派著重於兩種主要的指派模式：
 Azure AD 為組織中的終端使用者提供[幾種可自訂的應用程式部署方式](end-user-experiences.md)：
 
 * Azure AD 我的應用程式
-* Office 365 應用程式啟動程式
+* Microsoft 365 應用程式啟動器
 * 直接登入同盟應用程式 (service-pr)
 * 同盟、密碼或現有應用程式的深層連結
 
-您可以判斷指派給企業應用程式的使用者是否可以在我的應用程式和 Office 365 應用程式啟動器中看到它。
+您可以判斷指派給企業應用程式的使用者是否可以在我的應用程式中看到它，並 Microsoft 365 應用程式啟動程式。
 
 ## <a name="example-complex-application-assignment-with-azure-ad"></a>範例：Azure AD 的複雜應用程式指派
 考慮 Salesforce 之類的應用程式。 在許多組織中，Salesforce 主要是供行銷和銷售團隊使用。 通常，行銷小組的成員對 Salesforce 具有高特殊權限存取權，而銷售小組的成員具有限制存取權。 在許多情況下，為數眾多的資訊工作者對應用程式的存取都會受到限制。 這些規則的例外狀況會使情況更加複雜。 它通常是行銷或銷售領導小組的特權，用來授與使用者存取或在這些一般規則以外個別變更其角色。
@@ -78,17 +78,17 @@ Azure AD 為組織中的終端使用者提供[幾種可自訂的應用程式部�
 
 ## <a name="access-to-microsoft-applications"></a>存取 Microsoft 應用程式
 
-Microsoft 應用程式 (如 Office 365 Exchange、SharePoint、Yammer 等) 在指派與管理方面，比第三方 SaaS 應用程式或與 Azure AD 整合以單一登入的其他應用程式略為困難。
+Microsoft 應用程式 (例如 Exchange、SharePoint、Yammer 等 ) 的指派和管理方式，與協力廠商 SaaS 應用程式或您整合 Azure AD 以進行單一登入的其他應用程式有點不同。
 
 使用者有三種方式可取得 Microsoft 所發佈應用程式的存取權。
 
-- 對於 Office 365 或其他付費套件中的應用程式，會透過**指派授權**直接指派至使用者帳戶，或使用我們的群組授權指派功能來透過群組，將存取權授與使用者。
+- 針對 Microsoft 365 或其他付費套件中的應用程式，使用者可以透過 **授權指派** 直接存取其使用者帳戶，或透過以群組為基礎的授權指派功能，透過群組取得存取權。
 - 對於 Microsoft 或第三方發佈給任何人免費使用的應用程式，使用者可能透過[使用者同意](configure-user-consent.md)而取得存取權。 這表示使用者可透過 Azure AD 公司或學校帳戶登入應用程式，並允許應用程式存取其帳戶中一組有限的資料。
 - 對於 Microsoft 或第三方發佈給任何人免費使用的應用程式，使用者也可能透過[管理員同意](manage-consent-requests.md)而取得存取權。 這表示系統管理員已決定組織中的每個人都能使用該應用程式，因此系統管理員使用全域管理員帳戶身分登入應用程式，並將存取權授與組織中的每個人。
 
-有些應用程式會結合這些方法。 例如，某些 Microsoft 應用程式雖然是 Office 365 訂用帳戶的一部分，但仍需要同意。
+有些應用程式會結合這些方法。 例如，某些 Microsoft 應用程式屬於 Microsoft 365 訂用帳戶，但仍需要同意。
 
-使用者可以透過 Office 365 入口網站存取 Office 365 應用程式。 您也可以使用您目錄的**使用者設定**中的[office 365 可見度切換](hide-application-from-user-portal.md)，在我的應用程式中顯示或隱藏 office 365 應用程式。 
+使用者可以透過其 Office 365 入口網站存取 Microsoft 365 的應用程式。 您也可以在目錄的**使用者設定**中，使用[Office 365 可見度切換](hide-application-from-user-portal.md)，來顯示或隱藏我的應用程式中的 Microsoft 365 應用程式。 
 
 對於企業應用程式，您可以透過 Azure 入口網站，[指派使用者](assign-user-or-group-access-portal.md)給特定的 Microsoft 應用程式，或者，如果無法使用入口網站選項，您也可以透過 PowerShell 來指派。
 

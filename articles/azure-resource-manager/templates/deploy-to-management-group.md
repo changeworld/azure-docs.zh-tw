@@ -2,13 +2,13 @@
 title: 將資源部署至管理群組
 description: 說明如何在 Azure Resource Manager 範本的管理群組範圍中部署資源。
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: 2265f1d31176052c7e7c358ee8ed4cb06fb50ee7
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.date: 09/15/2020
+ms.openlocfilehash: 2325e9f5a03f7451492c9b9b8e929df95ddc3852
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469790"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605221"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理群組層級建立資源
 
@@ -65,7 +65,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 管理群組部署的命令與資源群組部署的命令不同。
 
-針對 Azure CLI，請使用 [az deployment mg create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create)：
+針對 Azure CLI，請使用 [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)：
 
 ```azurecli-interactive
 az deployment mg create \
@@ -361,7 +361,7 @@ New-AzManagementGroupDeployment `
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要瞭解如何指派角色，請參閱 [使用 Azure Resource Manager 範本新增 Azure 角色指派](../../role-based-access-control/role-assignments-template.md)。
 * 如需針對 Azure 資訊安全中心部署工作區設定的範例，請參閱 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。

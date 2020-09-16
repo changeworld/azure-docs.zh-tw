@@ -8,27 +8,27 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: feaf72de1d2c578d2b2d0df9e86ec0fbe0b49445
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 594ad352d5fd8431ffaf6d681c891c967cf9d32a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371712"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606878"
 ---
 必須符合下列需求，才能成功建立裝置通道：
 
-* 裝置必須是執行 Windows 10 企業版或教育版1809或更新版本的已加入網域的電腦。
-* 通道只能針對 Windows 內建 VPN 解決方案進行設定，而且是使用 IKEv2 與電腦憑證驗證來建立。
-* 每一裝置只能設定一個裝置通道。
+* 裝置必須是執行 Windows 10 企業版或教育版1809或更新版本的已加入網域電腦。
+* 通道只能針對 Windows 內建 VPN 解決方案進行設定，並使用與電腦憑證驗證的 IKEv2 建立。
+* 每個裝置只能設定一個裝置通道。
 
-1. 使用[點對站 VPN 客戶](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)端一文，在 Windows 10 用戶端上安裝用戶端憑證。 憑證必須位於本機電腦存放區中。
-1. 使用[這些指示](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration)，在本機系統帳戶的內容中建立 VPN 設定檔並設定裝置通道。
+1. 使用 [點對站 VPN 用戶端](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) 文章，在 Windows 10 用戶端上安裝用戶端憑證。 憑證必須在本機電腦存放區中。
+1. 使用 [這些指示](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration)，建立 VPN 設定檔，並在本機系統帳戶的內容中設定裝置通道。
 
 ### <a name="configuration-example-for-device-tunnel"></a>裝置通道的設定範例
 
-設定虛擬網路閘道並在 Windows 10 用戶端的本機電腦存放區中安裝用戶端憑證之後，請使用下列範例來設定用戶端裝置通道：
+設定虛擬網路閘道並將用戶端憑證安裝在 Windows 10 用戶端的本機電腦存放區之後，請使用下列範例來設定用戶端裝置通道：
 
-1. 複製下列文字，並將它儲存為***devicecert.ps1***。
+1. 複製下列文字，並將它儲存為 ***devicecert.ps1***。
 
    ```
    Param(
@@ -80,7 +80,7 @@ ms.locfileid: "79371712"
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. 複製下列文字，並將其儲存為與**devicecert.ps1**相同資料夾中的***VPNProfile.xml*** 。 編輯下列文字以符合您的環境。
+1. 複製下列文字，並將它儲存為與**devicecert.ps1**相同資料夾中的***VPNProfile.xml*** 。 編輯下列文字以符合您的環境。
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -116,25 +116,25 @@ ms.locfileid: "79371712"
    </VPNProfile>
    ```
 1. 從[Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec)下載**PsExec** ，並將檔案解壓縮至**C:\PSTools**。
-1. 從系統管理員命令提示字元中，執行以啟動 PowerShell：
+1. 從系統管理員命令提示字元，執行下列命令來啟動 PowerShell：
 
    ```
    PsExec.exe Powershell for 32-bit Windows
    PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![powershell](./media/vpn-gateway-vwan-always-on-device/powershell.png)
-1. 在 PowerShell 中，切換至**devicecert.ps1**和**VPNProfile.xml**所在的資料夾，然後執行下列命令：
+   ![螢幕擷取畫面顯示 [命令提示字元] 視窗，其中包含可啟動64位版 PowerShell 的命令。](./media/vpn-gateway-vwan-always-on-device/powershell.png)
+1. 在 PowerShell 中，切換至 **devicecert.ps1** 和 **VPNProfile.xml** 所在的資料夾，然後執行下列命令：
 
    ```powershell
    .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
-   ![MachineCertTest](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
-1. 執行**rasphone**。
+   ![螢幕擷取畫面顯示已使用 devicesert 腳本執行 MachineCertTest 的 PowerShell 視窗。](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
+1. 執行 **rasphone**。
 
-   ![rasphone](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
-1. 尋找**MachineCertTest**專案，然後按一下 **[連接]**。
+   ![螢幕擷取畫面顯示已選取 rasphone 的 [執行] 對話方塊。](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
+1. 尋找 [ **MachineCertTest** ] 專案，然後按一下 **[連接]**。
 
-   ![連線](./media/vpn-gateway-vwan-always-on-device/connect.png)
-1. 如果連接成功，請將電腦重新開機。 通道會自動連接。
+   ![螢幕擷取畫面顯示 [網路連線] 對話方塊，其中已選取 [MachineCertTest] 和 [連線] 按鈕。](./media/vpn-gateway-vwan-always-on-device/connect.png)
+1. 如果連接成功，請重新開機電腦。 通道會自動連接。

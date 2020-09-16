@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1570f4a8c4fb23b885c1de68c2c8d2440c4f6aae
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: fccbb84647ae9e47afc7bb36eeca97bb41a0d1d8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018436"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604065"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本發行歷程記錄
 Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 Azure AD Connect。 並非所有新增項目都適用於所有的對象。
@@ -208,13 +208,13 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 
 ### <a name="new-features-and-improvements"></a>新功能和改進
 - 新的疑難排解工具可協助針對「使用者未同步」、「群組未同步」或「群組成員未同步」案例進行疑難排解。
-- 在 Azure AD Connect 疑難排解腳本中新增國家雲端的支援 
+- 在 Azure AD Connect 疑難排解腳本中新增國家雲端的支援。
 - 客戶應該會收到通知，指出現已移除 MIIS_Service 的已淘汰 WMI 端點。 所有 WMI 作業現在都應透過 PS Cmdlet 來完成。
-- 藉由重設 AZUREADSSOACC 物件上的限制委派來改善安全性
+- 藉由重設 AZUREADSSOACC 物件的限制委派來改善安全性。
 - 新增/編輯同步處理規則時，如果規則中使用了連接器架構中未新增至連接器的任何屬性，則會自動將這些屬性新增至連接器。 這也適用於規則所影響的物件類型。 如有任何項目新增至連接器，則連接器將會標示為在下一個同步週期完整匯入。
 - 新的 Azure AD Connect 部署不再支援使用企業或網域管理員作為連接器帳戶。 使用企業或網域系統管理員作為連接器帳戶的目前 Azure AD Connect 部署，將不會受到此版本影響。
 - 在同步處理管理員中，會在建立/編輯/刪除規則時執行完整同步。 任何規則變更都會出現一個快顯視窗來通知使用者是否要執行完整匯入或完整同步。
-- 已在 [連接器] > [屬性] > [連線] 頁面中新增密碼錯誤的風險降低步驟
+- 已將密碼錯誤的風險降低步驟新增至「連接器 > 屬性 > 連線能力」頁面。
 - 已在連接器屬性頁面中新增同步服務管理員的淘汰警告。 此警告會通知使用者應透過 Azure AD Connect 精靈進行變更。
 - 已在使用者的密碼原則問題中新增錯誤。
 - 防止錯誤設定依網域和 OU 篩選進行群組篩選。 若已篩選出所輸入群組的網域/OU，則群組篩選會顯示錯誤，讓使用者無法繼續進行，直到問題解決為止。
@@ -233,7 +233,7 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 - 說明快顯視窗現在會在鍵盤焦點上顯示。
 - 針對自動升級，如有任何衝突的應用程式執行 6 小時，請將其終止並繼續升級。
 - 選取目錄延伸模組時，將客戶可選取的屬性數目限制為每個物件 100 個。 這會防止在匯出期間發生錯誤，因為 Azure 的每個物件最多可有 100 個延伸模組屬性。
-- 已修正 Bug，讓 AD 連線指令碼更健全
+- 修正了錯誤，讓 AD 連接腳本更健全。
 - 修正了使用現有的具名管道 WCF 服務，讓 Azure AD Connect 安裝在電腦上的 bug 更健全。
 - 針對不允許 ADSync 服務在一開始安裝時啟動的群組原則，已改善其診斷和疑難排解。
 - 已修正未正確寫入 Windows 電腦顯示名稱的 Bug。
@@ -246,9 +246,9 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 >[!IMPORTANT]
 >將 Azure AD Connect 從舊版升級至1.3.21.0 有一個已知的問題，也就是 Microsoft 365 入口網站不會反映更新版本，即使 Azure AD Connect 成功升級也是一樣。
 >
-> 若要解決此問題，則必須匯入 **AdSync** 模組，然後在 Azure AD Connect 伺服器上執行 `Set-ADSyncDirSyncConfiguration` PowerShell Cmdlet。  您可使用下列步驟：
+> 若要解決此問題，您必須匯入 **AdSync** 模組，然後在 `Set-ADSyncDirSyncConfiguration` Azure AD Connect 伺服器上執行 PowerShell Cmdlet。  您可使用下列步驟：
 >
->1. 在系統管理員模式下開啟 PowerShell。
+>1. 以系統管理員模式開啟 PowerShell。
 >2. 執行 `Import-Module "ADSync"`。
 >3. 執行 `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`。
  

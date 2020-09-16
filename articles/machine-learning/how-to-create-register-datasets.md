@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 6229686cda87a6dd65dfb9232f0e8ac550ba3750
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 9137c98a2ba0b7356d25a79d3b75c3727fc35fc3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660491"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604694"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>建立 Azure Machine Learning 資料集
 
@@ -35,7 +35,7 @@ ms.locfileid: "89660491"
 
 * 共用資料並與其他使用者共同作業。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要建立及使用資料集，您需要：
 
@@ -52,7 +52,7 @@ ms.locfileid: "89660491"
     * 使用您自己的 Jupyter 筆記本，並使用 [這些指示](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)自行安裝 SDK。
 
 > [!NOTE]
-> 某些資料集類別具有 [azureml dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py&preserve-view=true) 套件的相依性，其僅與64位 Python 相容。 針對 Linux 使用者，只有下列發行版本才支援這些類別： Red Hat Enterprise Linux (7、8) 、Ubuntu (14.04、16.04、18.04) 、Fedora (27、28) 、Debian (8、9) 和 CentOS (7) 。
+> 某些資料集類別具有 [azureml dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py&preserve-view=true) 套件的相依性，其僅與64位 Python 相容。 針對 Linux 使用者，只有下列發行版本才支援這些類別： Red Hat Enterprise Linux (7、8) 、Ubuntu (14.04、16.04、18.04) 、Fedora (27、28) 、Debian (8、9) 和 CentOS (7) 。 目前不支援 Windows 子系統 Linux 版。
 
 ## <a name="compute-size-guidance"></a>計算大小指引
 
@@ -167,7 +167,7 @@ titanic_ds.take(3).to_pandas_dataframe()
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund，Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings，Mrs John Bradley (Florence Briggs Th .。。|female|38.0|1|0|電腦17599|71.2833|C85|C
-2|3|True|3|Heikkinen，遺漏。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
+2|3|是|3|Heikkinen，遺漏。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
 
 ### <a name="create-a-dataset-from-pandas-dataframe"></a>從 pandas 資料框架建立資料集
 
@@ -254,7 +254,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  create_new_version = True)
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解 [如何使用資料集進行定型](how-to-train-with-datasets.md)。
 * 使用自動化機器學習來 [使用 TabularDatasets 進行定型](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)。

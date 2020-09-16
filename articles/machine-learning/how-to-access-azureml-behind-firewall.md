@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 443649826e821014e0e9918526a363a944b5eceb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660011"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604405"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>使用防火牆後方的工作區進行 Azure Machine Learning
 
@@ -33,6 +33,10 @@ ms.locfileid: "89660011"
 >
 > 如需有關設定 Azure 防火牆的詳細資訊，請參閱 [部署和設定 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)。
 
+## <a name="routes"></a>路由
+
+設定包含 Azure Machine Learning 資源之子網的輸出路由時，請使用 [ [強制通道](how-to-secure-training-vnet.md#forced-tunneling) ] 區段中的指引來保護定型環境。
+
 ## <a name="microsoft-hosts"></a>Microsoft 主機
 
 如果未正確設定，防火牆可能會在使用您的工作區時發生問題。 Azure Machine Learning 工作區會使用各種不同的主機名稱。
@@ -41,6 +45,8 @@ ms.locfileid: "89660011"
 
 | **主機名稱** | **目的** |
 | ---- | ---- |
+| **login.microsoftonline.com** | 驗證 |
+| **management.azure.com** | 用來取得工作區資訊 |
 | **\*. batchai.core.windows.net** | 定型叢集 |
 | **ml.azure.com** | Azure Machine Learning Studio |
 | **default.exp-tas.com** | 由 Azure Machine Learning studio 使用 |
@@ -59,13 +65,16 @@ ms.locfileid: "89660011"
 | **\*. notebooks.azure.net** | Azure Machine Learning studio 中的筆記本需要。 |
 | **graph.windows.net** | 筆記本所需 |
 
+> [!TIP]
+> 如果您打算使用同盟身分識別，請遵循 [保護 Active Directory 同盟服務文章的最佳作法](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) 。
+
 ## <a name="python-hosts"></a>Python 主機
 
 本節中的主機用來安裝 Python 套件。 開發、定型和部署期間都需要它們。 
 
 | **主機名稱** | **目的** |
 | ---- | ---- |
-| **anaconda.com** | 用來安裝預設封裝。 |
+| **anaconda.com**</br>**\*. anaconda.com** | 用來安裝預設封裝。 |
 | **\*. anaconda.org** | 用來取得存放庫資料。 |
 | **pypi.org** | 用來列出預設索引的相依性（如果有的話），而且使用者設定不會覆寫索引。 如果覆寫索引，您也必須允許** \* pythonhosted.org**。 |
 

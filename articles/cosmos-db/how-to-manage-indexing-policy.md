@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-javascript, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 36107f69fb51e16ef8f8a6213afc9b153165ab4c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6a1848adfd61d9d8f6db0bb16fe75c04b4a22005
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090582"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604269"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引編製原則
 
 Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](index-policy.md)來為資料編製索引。 新建立的容器所套用的預設索引編製原則，會對任何字串或數字強制執行範圍索引。 您可使用自己的自訂索引編製原則來覆寫此原則。
 
 > [!NOTE]
-> 本文章中所述的更新編制索引原則的方法只適用于 Azure Cosmos DB 的 SQL (Core) API。 瞭解如何在 [Azure Cosmos DB 的 MONGODB API](mongodb-indexing.md)中編制索引。
+> 本文章中所述的更新編制索引原則的方法只適用于 Azure Cosmos DB 的 SQL (Core) API。 瞭解如何在 Azure Cosmos DB Cassandra API 中[Azure Cosmos DB 的 MONGODB API](mongodb-indexing.md)和[次要索引](cassandra-secondary-index.md)編制索引。
 
 ## <a name="indexing-policy-examples"></a>索引編製原則範例
 

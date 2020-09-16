@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: da6554ae3b7df9962e1f57ac652567c282227d64
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: bfc285f68e8a44b6b09fc63d9b2775a047955a37
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661662"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604660"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>將模型部署到 Azure Kubernetes Service 叢集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,6 +60,39 @@ ms.locfileid: "89661662"
 
     - 如果您想要將模型部署至 GPU 節點或 FPGA 節點 (或任何特定 SKU) ，您必須建立具有特定 SKU 的叢集。 不支援在現有的叢集中建立次要節點集區，並在次要節點集區中部署模型。
 
+## <a name="understand-the-deployment-processes"></a>瞭解部署流程
+
+Kubernetes 和 Azure Machine Learning 中都會使用 "deployment" 這個字。 在這兩種環境中，「部署」具有不同的意義。 在 Kubernetes 中， `Deployment` 是以宣告式 YAML 檔案指定的具象實體。 Kubernetes `Deployment` 具有已定義的生命週期和其他 Kubernetes 實體的具體關聯性，例如 `Pods` 和 `ReplicaSets` 。 您可以從檔和影片的 Kubernetes Kubernetes 瞭解如何 [進行](https://aka.ms/k8slearning)。
+
+在 Azure Machine Learning 中，會使用「部署」來提供更通用的功能，並清除您的專案資源。 Azure Machine Learning 考慮部分部署的步驟如下：
+
+1. 壓縮專案資料夾中的檔案，並忽略 amlignore 或. .gitignore 中所指定的檔案。
+1. 擴充您的計算叢集 (與 Kubernetes) 
+1. 建立或下載 dockerfile 至計算節點 (與 Kubernetes) 
+    1. 系統會計算下列雜湊： 
+        - 基底映射 
+        - 自訂 docker 步驟 (參閱 [使用自訂 docker 基底映射部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)) 
+        - Conda 定義 YAML (參閱 [在 Azure Machine Learning 中建立 & 使用軟體環境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)) 
+    1. 系統會使用此雜湊作為 (ACR Azure Container Registry 工作區查閱中的索引鍵) 
+    1. 如果找不到，則會在全域 ACR 中尋找相符的
+    1. 如果找不到，系統會建立新的映射， (將會快取並推送至工作空間 ACR) 
+1. 將壓縮的專案檔案下載至計算節點上的暫存儲存體
+1. 解壓縮專案檔
+1. 執行中的計算節點 `python <entry script> <arguments>`
+1. 將記錄、模型檔案和其他寫入的檔案儲存到 `./outputs` 與工作區相關聯的儲存體帳戶
+1. 縮小計算範圍，包括移除暫存儲存體 (與 Kubernetes 相關) 
+
+### <a name="azure-ml-router"></a>Azure ML 路由器
+
+前端元件 (azureml-fe) 將傳入推斷要求路由至部署的服務會視需要自動調整。 Azureml-fe 的調整是根據 AKS 叢集目的和大小 (節點數目) 。 當您 [建立或附加 AKS](how-to-create-attach-kubernetes.md)叢集時，會設定叢集目的和節點。 每個叢集都有一個 azureml-fe 服務，可能在多個 pod 上執行。
+
+> [!IMPORTANT]
+> 使用設定為 __開發/測試__的叢集時，會 **停用**自我 scaler。
+
+Azureml-fe 會向上延展 (垂直) 以使用更多核心，並 (水準) 以使用更多的 pod。 進行擴大決策時，會使用路由傳入推斷要求所花的時間。 如果這段時間超過臨界值，就會進行相應放大。 如果路由連入要求的時間持續超過閾值，則會發生相應放大。
+
+相應減少和縮小時，會使用 CPU 使用量。 如果符合 CPU 使用量閾值，前端將會先向下調整。 如果 CPU 使用量下降到相應縮小臨界值，就會發生相應縮小作業。 只有當有足夠的可用叢集資源時，才會進行相應增加和相應放大。
+
 ## <a name="deploy-to-aks"></a>部署到 AKS
 
 若要將模型部署至 Azure Kubernetes Service，請建立 __部署__ 設定，以描述所需的計算資源。 例如，核心和記憶體數目。 您也需要 __推斷__設定，其中描述裝載模型和 web 服務所需的環境。 如需有關建立推斷設定的詳細資訊，請參閱 [部署模型的方式和位置](how-to-deploy-and-where.md)。
@@ -67,7 +100,9 @@ ms.locfileid: "89661662"
 > [!NOTE]
 > 要部署的模型數目限制為每個容器) 每個部署 (1000 個模型。
 
-### <a name="using-the-sdk"></a>使用 SDK
+<a id="using-the-cli"></a>
+
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 from azureml.core.webservice import AksWebservice, Webservice
@@ -91,7 +126,7 @@ print(service.get_logs())
 * [模型. 部署](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
 * [Webservice. wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truewait-for-deployment-show-output-false-)
 
-### <a name="using-the-cli"></a>使用 CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 CLI 進行部署，請使用下列命令。 取代 `myaks` 為 AKS 計算目標的名稱。 取代 `mymodel:1` 為已註冊模型的名稱和版本。 `myservice`以用來提供此服務的名稱取代：
 
@@ -103,36 +138,57 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 如需詳細資訊，請參閱 [az ml 模型部署](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) 參考。
 
-### <a name="using-vs-code"></a>使用 VS Code
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 如需使用 VS Code 的詳細資訊，請參閱透過 [VS Code 擴充功能部署至 AKS](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)。
 
 > [!IMPORTANT]
 > 透過 VS Code 部署需要預先建立 AKS 叢集或將其附加至您的工作區。
 
-### <a name="understand-the-deployment-processes"></a>瞭解部署流程
+---
 
-Kubernetes 和 Azure Machine Learning 中都會使用 "deployment" 這個字。 在這兩種環境中，「部署」具有不同的意義。 在 Kubernetes 中， `Deployment` 是以宣告式 YAML 檔案指定的具象實體。 Kubernetes `Deployment` 具有已定義的生命週期和其他 Kubernetes 實體的具體關聯性，例如 `Pods` 和 `ReplicaSets` 。 您可以從檔和影片的 Kubernetes Kubernetes 瞭解如何 [進行](https://aka.ms/k8slearning)。
+### <a name="autoscaling"></a>自動調整
 
-在 Azure Machine Learning 中，會使用「部署」來提供更通用的功能，並清除您的專案資源。 Azure Machine Learning 考慮部分部署的步驟如下：
+處理 Azure ML 模型部署自動調整的元件是 azureml-fe，也就是智慧型要求路由器。 因為所有推斷要求都會通過它，所以它具有必要的資料來自動調整已部署的模型 () 。
 
-1. 壓縮專案資料夾中的檔案，並忽略 amlignore 或. .gitignore 中所指定的檔案。
-1. 擴充您的計算叢集 (與 Kubernetes) 
-1. 建立或下載 dockerfile 至計算節點 (與 Kubernetes) 
-    1. 系統會計算下列雜湊： 
-        - 基底映射 
-        - 自訂 docker 步驟 (參閱 [使用自訂 docker 基底映射部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)) 
-        - Conda 定義 YAML (參閱 [在 Azure Machine Learning 中建立 & 使用軟體環境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)) 
-    1. 系統會使用此雜湊作為 (ACR Azure Container Registry 工作區查閱中的索引鍵) 
-    1. 如果找不到，則會在全域 ACR 中尋找相符的
-    1. 如果找不到，系統會建立新的映射， (將會快取並向工作區 ACR 註冊) 
-1. 將壓縮的專案檔案下載至計算節點上的暫存儲存體
-1. 解壓縮專案檔
-1. 執行中的計算節點 `python <entry script> <arguments>`
-1. 將記錄、模型檔案和其他寫入的檔案儲存到 `./outputs` 與工作區相關聯的儲存體帳戶
-1. 縮小計算範圍，包括移除暫存儲存體 (與 Kubernetes 相關) 
+> [!IMPORTANT]
+> * **請勿啟用模型部署的 Kubernetes 水準 Pod 自動調整程式 (HPA) **。 這麼做會導致兩個自動調整元件互相競爭。 Azureml-fe 是設計用來自動調整 Azure ML 所部署的模型，其中 HPA 必須從一般計量（例如 CPU 使用量或自訂計量設定）猜測或估計模型使用率。
+> 
+> * **Azureml-fe 無法調整 AKS**叢集中的節點數目，因為這可能會導致非預期的成本增加。 相反地，它會在實體叢集界限內 **調整模型的複本數目** 。 如果您需要調整叢集中的節點數目，您可以手動調整叢集或 [設定 AKS 叢集自動調整程式](/azure/aks/cluster-autoscaler)。
 
-當您使用 AKS 時，您可以使用如上面所述的建立或找到的 dockerfile，以 Kubernetes 控制計算的擴大和縮小。 
+您可以藉由設定 `autoscale_target_utilization` 、 `autoscale_min_replicas` 和來控制 `autoscale_max_replicas` AKS web 服務的自動調整。 下列範例示範如何啟用自動調整：
+
+```python
+aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True, 
+                                                autoscale_target_utilization=30,
+                                                autoscale_min_replicas=1,
+                                                autoscale_max_replicas=4)
+```
+
+相應增加/減少的決策是以目前容器複本的使用量為基礎。 處理要求時忙碌 (的複本數目) 除以目前複本的總數目是目前的使用率。 如果此數位超過 `autoscale_target_utilization` ，則會建立更多複本。 如果較低，則會降低複本。 根據預設，目標使用率為70%。
+
+新增複本的決策是立即且快速 (大約1秒的) 。 移除複本的決策是保守 (大約1分鐘的) 。
+
+您可以使用下列程式碼來計算所需的複本：
+
+```python
+from math import ceil
+# target requests per second
+targetRps = 20
+# time to process the request (in seconds)
+reqTime = 10
+# Maximum requests per container
+maxReqPerContainer = 1
+# target_utilization. 70% in this example
+targetUtilization = .7
+
+concurrentRequests = targetRps * reqTime / targetUtilization
+
+# Number of container replicas
+replicas = ceil(concurrentRequests / maxReqPerContainer)
+```
+
+如需有關設定、和的詳細資訊 `autoscale_target_utilization` `autoscale_max_replicas` ，請 `autoscale_min_replicas` 參閱 [>akswebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) 模組參考。
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>使用受控制的推出 (預覽版，將模型部署到 AKS) 
 
@@ -224,7 +280,6 @@ endpoint.delete_version(version_name="versionb")
 
 ```
 
-
 ## <a name="web-service-authentication"></a>Web 服務驗證
 
 部署至 Azure Kubernetes Service 時，依預設會啟用以 __金鑰為基礎的__ 驗證。 您也可以啟用以 __權杖為基礎的__ 驗證。 權杖型驗證要求用戶端使用 Azure Active Directory 帳戶要求驗證權杖，此權杖可用來對已部署的服務提出要求。
@@ -271,7 +326,7 @@ print(token)
 >
 > 若要取得權杖，您必須使用 Azure Machine Learning SDK 或 [az ml 服務取得存取權杖](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) 命令。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure 虛擬網路的安全推斷環境](how-to-secure-inferencing-vnet.md)
 * [如何使用自訂 Docker 映射部署模型](how-to-deploy-custom-docker-image.md)

@@ -5,16 +5,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/31/2020
 ms.author: baanders
-ms.openlocfilehash: 984739a728f6ac5e28eeb561e0d7b6ec0485ca13
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7e43ab6d419d6a08973864838c66aef0941d74f5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496860"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90606568"
 ---
 首先，執行此命令來查看已安裝的所有擴充功能清單。
 
-```azurecli-interactive
+```azurecli
 az extension list
 ```
 
@@ -23,18 +23,18 @@ az extension list
 使用此輸出來判斷要執行下列哪些命令 (可能會執行多個) 來設定擴充功能。
 * 如果清單中包含 `azure-iot`：您已有該擴充功能。 執行此命令以確定您有最新的更新，而且已沒有其他可用的更新：
 
-   ```azurecli-interactive
+   ```azurecli
    az extension update --name azure-iot
    ```
 
 * 如果清單中**未**包含 `azure-iot`：您必須安裝此擴充功能。 使用此命令：
 
-    ```azurecli-interactive
+    ```azurecli
     az extension add --name azure-iot
     ```
 
 * 如果清單中包含 `azure-iot-cli-ext`：這是舊版的擴充功能。 一次只應安裝一個擴充功能版本，因此請解除安裝舊版擴充功能。 使用此命令：
 
-   ```azurecli-interactive
+   ```azurecli
    az extension remove --name azure-cli-iot-ext
    ```

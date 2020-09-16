@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0c9844d5e3f65dba5e51170367cfd16715a08883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 433ff5498baeb4c31473e43fc4a5d24f4ba9fd1c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763460"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605153"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>設定使用者同意應用程式的方式
 
@@ -32,7 +32,7 @@ ms.locfileid: "84763460"
 
 * **停用使用者同意** - 使用者無法對應用程式授與權限。 使用者可以繼續登入先前已同意或由系統管理員代表他們同意的應用程式，但是不允許他們自行同意新的權限或新的應用程式。 只有已授與目錄角色 (包括授與同意的權限) 的使用者，才能夠同意新的權限或新的應用程式。
 
-* **使用者可以同意來自已驗證發行者的應用程式，但是僅適用於您選取的權限 (預覽)** - 所有使用者只能同意由[已驗證的發行者](../develop/publisher-verification-overview.md)所發行的應用程式，以及在您的租用戶中註冊的應用程式。 使用者只能同意您已分類為「低影響」的權限。
+* **使用者可以同意來自已驗證發行者的應用程式，但是僅適用於您選取的權限 (預覽)** - 所有使用者只能同意由[已驗證的發行者](../develop/publisher-verification-overview.md)所發行的應用程式，以及在您的租用戶中註冊的應用程式。 使用者只能同意您已分類為「低影響」的許可權，也稱為「低風險」。 針對某個組織被視為低風險的情況（例如，查看使用者電子郵件地址的應用程式）可能會被視為其他組織的高風險。 基於這個理由，租使用者的系統管理員會設定「低風險」許可權。
 
   請務必[分類權限](#configure-permission-classifications-preview)，以選取允許使用者同意的權限。
 
@@ -56,7 +56,7 @@ ms.locfileid: "84763460"
 
 ### <a name="configure-user-consent-settings-using-powershell"></a>使用 PowerShell 設定使用者同意設定
 
-您可以使用最新的 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)，選擇哪一種同意原則可管理應用程式的使用者同意。
+您可以使用最新的 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)，選擇哪一種同意原則可管理應用程式的使用者同意。
 
 * **停用使用者同意** - 若要停用使用者同意，請將管理使用者同意的同意原則設定為空白：
 
@@ -109,7 +109,7 @@ ms.locfileid: "84763460"
 
 ### <a name="classify-permissions-using-powershell"></a>使用 PowerShell 來分類權限
 
-您可以使用最新的 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)，來分類權限。 權限分類是在 API (發佈權限) 的 **ServicePrincipal** 物件上設定。
+您可以使用最新的 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)，來分類權限。 權限分類是在 API (發佈權限) 的 **ServicePrincipal** 物件上設定。
 
 #### <a name="to-read-the-current-permission-classifications-for-an-api"></a>若要讀取 API 目前的權限分類：
 
@@ -196,9 +196,9 @@ ms.locfileid: "84763460"
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>使用 PowerShell 設定群組擁有者同意
 
-您可以使用 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)，啟用或停用群組擁有者同意應用程式存取其所擁有貴組織群組資料的能力。
+您可以使用 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)，啟用或停用群組擁有者同意應用程式存取其所擁有貴組織群組資料的能力。
 
-1. 請確定您使用的是 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) 模組。 如果您已安裝 [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) 模組和 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) 模組兩者，則這個步驟很重要。
+1. 請確定您使用的是 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 模組。 如果您已安裝 [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) 模組和 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 模組兩者，則這個步驟很重要。
 
     ```powershell
     Remove-Module AzureAD
@@ -280,7 +280,7 @@ ms.locfileid: "84763460"
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>使用 PowerShell 來停用或重新啟用以風險為基礎的升級同意
 
-您可以使用 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)，停用在 Microsoft 偵測到風險的情況下必要的升級至管理員同意，或是在先前停用時重新啟用。
+您可以使用 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)，停用在 Microsoft 偵測到風險的情況下必要的升級至管理員同意，或是在先前停用時重新啟用。
 
 您可以使用如上所述適用於[使用 PowerShell 設定群組擁有者同意](#configure-group-owner-consent-using-powershell)的相同步驟，但是以不同的設定值替代，來完成此操作。 步驟有三個差異： 
 

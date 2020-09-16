@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/21/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2eb2dbc43c59f4f6301c7f5073a73462639d35b2
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 8172e0e208d9a780c7676d7cb0e77dbc1c16f493
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797137"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606651"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1.建立 Azure AD 租用戶
 
@@ -77,7 +77,7 @@ ms.locfileid: "83797137"
 
 6. 出現提示時選取 [接受]。
 
-    ![Accept](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
+    ![螢幕擷取畫面顯示一個視窗，內含要求接受您組織的訊息許可權，以及要求的相關資訊。](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
 
 7. 在您的 Azure AD 底下的 [企業應用程式] 中，您會看到列出 **Azure VPN**。
 

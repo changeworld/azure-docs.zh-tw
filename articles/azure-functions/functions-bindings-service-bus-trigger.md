@@ -7,18 +7,18 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 72f12ece3c939ee8fbaecbec377d18c5bb3b0a49
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: cd0b73dd22e5e2cab720bb1a33e58e25e517b1f6
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294606"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604979"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions 的 Azure 服務匯流排觸發程式
 
 使用服務匯流排觸發程序來回應來自服務匯流排佇列或主題的訊息。 從擴充功能版本3.1.0 開始，您可以在啟用會話的佇列或主題上觸發。
 
-如需安裝和設定詳細資料的相關資訊，請參閱[概觀](functions-bindings-service-bus-output.md)。
+如需安裝和設定詳細資料的相關資訊，請參閱[概觀](functions-bindings-service-bus.md)。
 
 ## <a name="example"></a>範例
 
@@ -378,6 +378,6 @@ Functions 執行階段會在 [PeekLock 模式](../service-bus-messaging/service-
 
 請參閱稍早在本文中使用這些屬性的[程式碼範例](#example)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [從 Azure Functions (輸出系結傳送 Azure 服務匯流排訊息) ](./functions-bindings-service-bus-output.md)

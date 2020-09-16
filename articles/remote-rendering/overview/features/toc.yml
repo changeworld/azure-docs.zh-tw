@@ -4,6 +4,8 @@
   href: debug-rendering.md
 - name: 階層式狀態覆寫
   href: override-hierarchical-state.md
+- name: 相機
+  href: camera.md
 - name: 階段空間
   href: stage-space.md
 - name: 延遲階段重新投影

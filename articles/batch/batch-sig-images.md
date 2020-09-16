@@ -1,19 +1,19 @@
 ---
-title: 使用共用映射資源庫來建立自訂映射集區
-description: 自訂映射集區是設定計算節點來執行 Batch 工作負載的有效方式。
+title: 使用共用映射庫來建立自訂映射集區
+description: 自訂映射集區是設定計算節點以執行 Batch 工作負載的有效方式。
 ms.topic: conceptual
-ms.date: 07/01/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aad8b279ce821496d4c947bc7f9c707243468f07
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852407"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605187"
 ---
-# <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共用映射資源庫來建立自訂映射集區
+# <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共用映射庫來建立自訂映射集區
 
-當您使用虛擬機器設定建立 Azure Batch 集區時，需指定 VM 映像，以提供集區中每個計算節點的作業系統。 您可以使用支援的 Azure Marketplace 映射來建立虛擬機器的集區，或使用[共用映射庫映射](../virtual-machines/windows/shared-image-galleries.md)建立自訂映射。
+當您使用虛擬機器設定建立 Azure Batch 集區時，需指定 VM 映像，以提供集區中每個計算節點的作業系統。 您可以使用支援的 Azure Marketplace 映射來建立虛擬機器集區，或使用 [共用映射庫映射](../virtual-machines/windows/shared-image-galleries.md)建立自訂映射。
 
 ## <a name="benefits-of-the-shared-image-gallery"></a>共用映像庫的優點
 
@@ -30,7 +30,7 @@ ms.locfileid: "87852407"
 - **預先安裝應用程式。** 在 OS 磁碟上預先安裝應用程式，與在佈建計算節點之後使用開始工作來安裝應用程式相比，這樣更有效率且更不容易出錯。
 - **一次複製大量資料。** 藉由將靜態資料複製到受控映像的資料磁碟，使靜態資料成為受控共用映像的一部分。 這只需要執行一次，就能將資料提供給集區的每個節點。
 - **讓集區變大。** 使用共用映像庫時，您可以使用自訂映像及更多的共用映像複本來建立較大的集區。
-- **比僅使用受控映射作為自訂映射更好的效能。** 針對共用映射自訂映射集區，達到穩定狀態的時間最多可快25%，且 VM 閒置延遲最高可達30%。
+- **比僅使用受控映射作為自訂映射的效能更佳。** 針對共用映射自訂映射集區，達到穩定狀態的時間最多可快25%，而 VM 閒置延遲最多可達30%。
 - **對映像進行版本控制和分組，以便管理。** 映像群組定義包含建立映像的原因、目標作業系統，以及使用映像的相關資訊。 群組映像可讓您更輕鬆地管理映像。 如需詳細資訊，請參閱[映像定義](../virtual-machines/windows/shared-image-galleries.md#image-definitions)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -43,9 +43,11 @@ ms.locfileid: "87852407"
 - **共用映像庫的映像**。 若要建立共用映像，您必須擁有或建立受控映像資源。 您應該從 VM 之 OS 磁碟 (以及視需要從其連結之資料磁碟) 的快照集建立該映像。
 
 > [!NOTE]
-> 您的共用映像必須與 Batch 帳戶位於相同的訂用帳戶中。 映像可以位於不同的區域，前提是其複本位於您 Batch 帳戶所在的區域中。
+> 如果共用映射與 Batch 帳戶不在相同的訂用帳戶中，您必須為該訂用帳戶 [註冊 Microsoft.Batch 資源提供者](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) 。 這兩個訂用帳戶必須位於相同的 Azure AD 租使用者中。
+>
+> 映射可以位於不同的區域中，只要它的複本位於與您的 Batch 帳戶相同的區域中。
 
-如果您使用 Azure AD 應用程式來建立具有共用映射庫映射的自訂映射集區，該應用程式必須已被授與[Azure 內建角色](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)，讓它能夠存取共用映射。 若要在 Azure 入口網站中授與此存取權，您可以流覽至共用映射、選取 [**存取控制] (IAM) **並新增應用程式的角色指派。
+如果您使用 Azure AD 應用程式來建立具有共用映射庫映射的自訂映射集區，則該應用程式必須已被授與 [Azure 內建角色](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) ，讓它能夠存取共用映射。 您可以藉由流覽至共用映射、選取 [ **存取控制] (IAM) ** 並新增應用程式的角色指派，在 Azure 入口網站中授與此存取權。
 
 ## <a name="prepare-a-shared-image"></a>準備共用映射
 

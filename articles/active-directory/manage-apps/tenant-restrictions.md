@@ -12,22 +12,22 @@ ms.date: 03/28/2019
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f45cc2444a14fc138d201e3d7f81e687f53d3ac
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1cce42cdb63fcfcb9a5841f2f2199daf2bb92304
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285895"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604167"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租用戶限制來管理對 SaaS 雲端應用程式的存取
 
-注重安全性的大型組織想要移到 Office 365 之類的雲端服務，但需要確知其使用者只能存取獲得核准的資源。 傳統上，當公司想要管理存取時，會限制網域名稱或 IP 位址。 在軟體即服務 (或 SaaS) 應用程式裝載於公用雲端而在共用網域名稱 (例如 [outlook.office.com](https://outlook.office.com/) 和 [login.microsoftonline.com](https://login.microsoftonline.com/)) 上執行的環境中，這個方法行不通。 封鎖這些位址會讓使用者無法存取整個網路上的 Outlook，而不僅是限制他們只能存取已核准的身分識別和資源。
+強調安全性的大型組織想要移至 Microsoft 365 之類的雲端服務，但必須知道其使用者只能存取核准的資源。 傳統上，當公司想要管理存取時，會限制網域名稱或 IP 位址。 在軟體即服務 (或 SaaS) 應用程式裝載於公用雲端而在共用網域名稱 (例如 [outlook.office.com](https://outlook.office.com/) 和 [login.microsoftonline.com](https://login.microsoftonline.com/)) 上執行的環境中，這個方法行不通。 封鎖這些位址會讓使用者無法存取整個網路上的 Outlook，而不僅是限制他們只能存取已核准的身分識別和資源。
 
-Azure Active Directory (Azure AD) 對此查問所提出的解決方案是稱為租用戶限制的功能。 若使用租用戶限制，組織可以應用程式用於單一登入的 Azure AD 租用戶為基礎，來控制對 SaaS 雲端應用程式的存取。 例如，您可能想要允許使用者存取您組織的 Office 365 應用程式，但又防止他們存取其他組織的這些相同應用程式執行個體。  
+Azure Active Directory (Azure AD) 對此查問所提出的解決方案是稱為租用戶限制的功能。 若使用租用戶限制，組織可以應用程式用於單一登入的 Azure AD 租用戶為基礎，來控制對 SaaS 雲端應用程式的存取。 例如，您可能會想要允許存取組織的 Microsoft 365 應用程式，同時防止存取這些相同應用程式的其他組織實例。  
 
 若使用租用戶限制，組織可以指定允許其使用者存取的租用戶清單。 Azure AD 接著便可只授與對這些已允許之租用戶的存取權。
 
-此文章將焦點放在 Office 365 的租用戶限制，但此功能應該適用於使用新式驗證通訊協定搭配 Azure AD 來進行單一登入的所有 SaaS 雲端應用程式。 如果您使用 SaaS 應用程式搭配與 Office 365 所用租用戶不同的 Azure AD 租用戶，請務必核准所有必要的租用戶。 如需有關 SaaS 雲端應用程式的詳細資訊，請參閱 [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)。
+本文著重于 Microsoft 365 的租使用者限制，但此功能應該適用于使用新式驗證通訊協定搭配 Azure AD 進行單一登入的任何 SaaS 雲端應用程式。 如果您使用的 SaaS 應用程式與 Microsoft 365 所使用的租使用者不同 Azure AD 租使用者，請確定允許所有必要的租使用者。 如需有關 SaaS 雲端應用程式的詳細資訊，請參閱 [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)。
 
 ## <a name="how-it-works"></a>運作方式
 
@@ -37,11 +37,11 @@ Azure Active Directory (Azure AD) 對此查問所提出的解決方案是稱為�
 
 2. **內部部署 Proxy 伺服器基礎結構**：此基礎結構是能夠進行傳輸層安全性 (TLS) 檢查的 Proxy 裝置。 您必須將 Proxy 設定為會將包含已允許租用戶清單的標頭插入至目的地為 Azure AD 的流量。
 
-3. **用戶端軟體**：為了支援租用戶限制，用戶端軟體必須直接從 Azure AD 要求權杖，以便 Proxy 基礎結構能夠攔截流量。 瀏覽器型 Office 365 應用程式目前支援租用戶限制，如同使用新式驗證 (例如 OAuth 2.0) 的 Office 用戶端。
+3. **用戶端軟體**：為了支援租用戶限制，用戶端軟體必須直接從 Azure AD 要求權杖，以便 Proxy 基礎結構能夠攔截流量。 以瀏覽器為基礎的 Microsoft 365 應用程式目前支援租使用者限制，如同使用新式驗證的 Office 用戶端 (例如 OAuth 2.0) 。
 
-4. **新式驗證**：雲端服務必須使用新式驗證，才能使用租用戶限制並封鎖對所有非允許租用戶的存取。 根據預設，您必須將 Office 365 雲端服務設定為使用新式驗證通訊協定。 如需有關 Office 365 對新式驗證之支援的最新資訊，請參閱[更新的 Office 365 新式驗證 (英文)](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
+4. **新式驗證**：雲端服務必須使用新式驗證，才能使用租用戶限制並封鎖對所有非允許租用戶的存取。 您必須將 Microsoft 365 的雲端服務設定為預設使用新式驗證通訊協定。 如需有關新式驗證 Microsoft 365 支援的最新資訊，請參閱 [更新的 Office 365 新式驗證](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
 
-下圖說明概略的流量流程。 租用戶限制只需要對 Azure AD 的流量進行 TLS 檢查，而不是 Office 365 雲端服務的。 此區別很重要，因為傳送到 Azure AD 以進行驗證的流量通常比傳送到 SaaS 應用程式 (例如 Exchange Online 和 SharePoint Online) 的流量少很多。
+下圖說明概略的流量流程。 租使用者限制只需要對 Azure AD 的流量進行 TLS 檢查，而不需要對 Microsoft 365 的雲端服務進行 TLS 檢查。 此區別很重要，因為傳送到 Azure AD 以進行驗證的流量通常比傳送到 SaaS 應用程式 (例如 Exchange Online 和 SharePoint Online) 的流量少很多。
 
 ![租用戶限制流量流程 - 圖表](./media/tenant-restrictions/traffic-flow.png)
 
@@ -63,20 +63,20 @@ Azure Active Directory (Azure AD) 對此查問所提出的解決方案是稱為�
 
 - 用戶端必須信任 Proxy 針對 TLS 通訊所出示的憑證鏈結。 例如，如果使用來自內部[公開金鑰基礎結構 (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) 的憑證，就必須信任內部發行的根憑證授權單位憑證。
 
-- Office 365 訂用帳戶中已包含此功能，但如果您想要使用租用戶限制來控制對其他 SaaS 應用程式的存取，則需要 Azure AD Premium 1 授權。
+- 這項功能包含在 Microsoft 365 訂用帳戶中，但如果您想要使用「租使用者限制」來控制其他 SaaS 應用程式的存取權，則需要 Azure AD Premium 1 個授權。
 
 #### <a name="configuration"></a>組態
 
 針對每個傳送到 login.microsoftonline.com、login.microsoft.com 及 login.windows.net 的連入要求，請插入兩個 HTTP 標頭：*Restrict-Access-To-Tenants* 和 *Restrict-Access-Context*。
 
 > [!NOTE]
-> 設定 SSL 攔截和標頭插入時，請確定 https://device.login.microsoftonline.com 已排除的流量。 此 URL 用於裝置驗證，而執行 TLS 中斷和檢查可能會干擾用戶端憑證驗證，這可能會造成裝置註冊和裝置型條件式存取的問題。
+> 設定 SSL 攔截和標頭插入時，請確定 https://device.login.microsoftonline.com 已排除流量。 此 URL 用於裝置驗證，且執行 TLS 中斷和檢查可能會干擾用戶端憑證驗證，這可能會導致裝置註冊和裝置型條件式存取的問題。
 
 
 
 這些標頭應該包含下列元素︰
 
-- 對於 [*限制存取至*租使用者]，請使用值 \<permitted tenant list\> ，這是您想要允許使用者存取的租使用者清單（以逗號分隔）。 與租用戶一起註冊的任何網域都可用來在此清單中識別該租用戶。 例如，若要允許存取 Contoso 和 Fabrikam 租用戶，名稱/值組會顯示如下： `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- 針對 *限制存取*租使用者，請使用的值 \<permitted tenant list\> ，這是您想要允許使用者存取的租使用者清單（以逗號分隔）。 與租用戶一起註冊的任何網域都可用來在此清單中識別該租用戶。 例如，若要允許存取 Contoso 和 Fabrikam 租用戶，名稱/值組會顯示如下： `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
 - 就 *Restrict-Access-Context* 而言，請使用單一目錄識別碼的值，用來宣告設定租用戶限制的是哪一個租用戶。 例如，若要宣告 Contoso 是設定租用戶限制原則的租用戶，名稱/值組會顯示如下： `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
@@ -88,7 +88,7 @@ Azure Active Directory (Azure AD) 對此查問所提出的解決方案是稱為�
 必須強制用戶端針對所有傳送到 login.microsoftonline.com、login.microsoft.com 及 login.windows.net 的要求使用 Proxy。 例如，如果使用 PAC 檔案來指示用戶端使用 Proxy，使用者應該要不能夠編輯或停用 PAC 檔案。
 
 > [!NOTE]
-> 請不要在 proxy 設定中的 *. login.microsoftonline.com 底下包含子域。 這麼做會包含 device.login.microsoftonline.com，而且可能會干擾用戶端憑證驗證，這會在裝置註冊和裝置型條件式存取案例中使用。 將您的 proxy 伺服器設定為從 TLS 中斷和檢查和標頭插入排除 device.login.microsoftonline.com。
+> 請勿在 proxy 設定中的 *. login.microsoftonline.com 下包含子域。 這麼做會包含 device.login.microsoftonline.com，而且可能會干擾在裝置註冊和裝置型條件式存取案例中使用的用戶端憑證驗證。 設定您的 proxy 伺服器，以從 TLS 中斷和檢查和標頭插入排除 device.login.microsoftonline.com。
 
 ## <a name="the-user-experience"></a>使用者體驗
 
@@ -106,7 +106,7 @@ Azure Active Directory (Azure AD) 對此查問所提出的解決方案是稱為�
 
 2. 在左窗格中，選取 [Azure Active Directory]。 [Azure Active Directory 概觀] 頁面隨即顯示。
 
-3. 在 [總覽] 頁面上，選取 [**租使用者限制**]。
+3. 在 [總覽] 頁面上，選取 [ **租使用者限制**]。
 
 如果將租用戶指定為 Restricted-Access-Context 租用戶，其管理員便可以使用此報表來查看因租用戶限制原則而遭封鎖的登入，包括所使用的身分識別及目標目錄識別碼。 如果設定限制的租用戶為登入的使用者租用戶或資源租用戶，則會包含登入。
 
@@ -129,16 +129,16 @@ Azure Active Directory (Azure AD) 對此查問所提出的解決方案是稱為�
 - **位置**
 - **目標租用戶識別碼**
 
-## <a name="office-365-support"></a>Office 365 支援
+## <a name="microsoft-365-support"></a>Microsoft 365 支援
 
-Office 365 應用程式必須符合兩個準則，才能完全支援租用戶限制：
+Microsoft 365 應用程式必須符合兩個準則，才能完全支援租使用者限制：
 
 1. 所使用的用戶端支援新式驗證。
 2. 啟用新式驗證作為雲端服務的預設驗證通訊協定。
 
 如需有關哪些 Office 用戶端目前支援新式驗證的最新資訊，請參閱[更新的 Office 365 新式驗證 (英文)](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。 該頁面也包含在特定 Exchange Online 和「商務用 Skype Online」租用戶上啟用新式驗證的指示連結。 根據預設，SharePoint Online 已啟用新式驗證。
 
-Office 365 瀏覽器型應用程式 (Office 入口網站、Yammer、SharePoint 網站、Outlook 網頁版等等) 目前支援租用戶限制。 豐富型用戶端 (Outlook、商務用 Skype、Word、Excel、PowerPoint 等等) 只有在使用新式驗證時才可以強制執行租用戶限制。  
+Microsoft 365 以瀏覽器為基礎的應用程式 (Office 入口網站、Yammer、SharePoint 網站、Outlook 在 Web 上，以及其他) 目前支援租使用者限制。 豐富型用戶端 (Outlook、商務用 Skype、Word、Excel、PowerPoint 等等) 只有在使用新式驗證時才可以強制執行租用戶限制。  
 
 支援新式驗證的 Outlook 和商務用 Skype 用戶端仍然能夠針對未啟用新式驗證的租用戶使用傳統通訊協定，有效地略過租用戶限制。 使用傳統通訊協定的應用程式如果在驗證期間連絡 login.microsoftonline.com、login.microsoft.com 或 login.windows.net，可能會遭到租用戶限制封鎖。
 
@@ -160,7 +160,7 @@ Fiddler 是一個免費的 Web 偵錯 Proxy，可用來擷取和修改 HTTP/HTTP
 
    1. 在「Fiddler Web 偵錯工具」中，選取 [Rules] \(規則) 功能表，然後選取 [Customize Rules] \(自訂規則) 以開啟 CustomRules 檔案。
 
-   2. 將下列行新增至 `OnBeforeRequest` 函式的開頭。 將取代為向 \<tenant domain\> 租使用者註冊的網域（例如 `contoso.onmicrosoft.com` ）。 \<directory ID\>將取代為您租使用者的 AZURE AD GUID 識別碼。
+   2. 將下列行新增至 `OnBeforeRequest` 函式的開頭。 以 \<tenant domain\> 您的租使用者所註冊的網域取代 (例如 `contoso.onmicrosoft.com`) 。 \<directory ID\>將取代為您租使用者的 AZURE AD GUID 識別碼。
 
       ```JScript.NET
       if (

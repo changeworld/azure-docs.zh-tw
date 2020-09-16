@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 763b5a9f4c471e338dd493c85ce93a67810b5134
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: f49377743521e27c2312e95491762ca48d8448c4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426294"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604320"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>在 Azure Active Directory 中管理應用程式的使用者指派
 
@@ -28,7 +28,7 @@ ms.locfileid: "89426294"
 > 當您將群組指派給應用程式時，只有群組中的使用者才有存取權。 指派不會串聯成巢狀群組。
 
 > [!NOTE]
-> 以群組為基礎的指派需要 Azure Active Directory Premium P1 或 P2 版本。 以群組為基礎的指派僅支援安全性群組。 目前不支援巢狀群組成員資格和 Office 365 群組。 如需本文所討論功能的詳細授權需求，請參閱 [Azure Active Directory 定價頁面](https://azure.microsoft.com/pricing/details/active-directory)。 
+> 以群組為基礎的指派需要 Azure Active Directory Premium P1 或 P2 版本。 以群組為基礎的指派僅支援安全性群組。 目前不支援嵌套群組成員資格和 Microsoft 365 群組。 如需本文所討論功能的詳細授權需求，請參閱 [Azure Active Directory 定價頁面](https://azure.microsoft.com/pricing/details/active-directory)。 
 
 ## <a name="configure-an-application-to-require-user-assignment"></a>設定應用程式來要求使用者指派
 

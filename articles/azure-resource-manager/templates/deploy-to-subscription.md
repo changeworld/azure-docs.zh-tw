@@ -2,13 +2,13 @@
 title: 將資源部署至訂用帳戶
 description: 描述如何在 Azure Resource Manager 範本中建立資源群組。 此外也會說明如何將資源部署到 Azure 訂用帳戶範圍。
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: ef4f92d2e113e7cd393c50ba4eb8b47eb4ad9d08
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.date: 09/15/2020
+ms.openlocfilehash: 3889f5a06f138114dfe4511d0957558d6d803c8e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468635"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605170"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在訂用帳戶層級建立資源群組和資源
 
@@ -82,7 +82,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 用於訂用帳戶層級部署的命令與用於資源群組部署的命令不同。
 
-針對 Azure CLI，請使用 [az deployment sub create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create)。 下列範例會部署範本來建立資源群組：
+針對 Azure CLI，請使用 [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)。 下列範例會部署範本來建立資源群組：
 
 ```azurecli-interactive
 az deployment sub create \
@@ -162,9 +162,7 @@ New-AzSubscriptionDeployment `
 
 * **不**支援 [resourceGroup()](template-functions-resource.md#resourcegroup) 函式。
 * 支援 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函式。
-* 請勿使用 [resourceId ( # B1 ](template-functions-resource.md#resourceid) 來取得在訂用帳戶層級部署之資源的資源識別碼。
-
-  請改用 [subscriptionResourceId ( # B1 ](template-functions-resource.md#subscriptionresourceid) 函數。
+* 請勿使用 [resourceId ( # B1 ](template-functions-resource.md#resourceid) 來取得在訂用帳戶層級部署之資源的資源識別碼。 請改用 [subscriptionResourceId ( # B1 ](template-functions-resource.md#subscriptionresourceid) 函數。
 
   例如，若要取得部署至訂用帳戶之原則定義的資源識別碼，請使用：
 
@@ -483,7 +481,7 @@ New-AzSubscriptionDeployment `
 
 :::code language="json" source="~/quickstart-templates/subscription-deployments/create-rg-lock-role-assignment/azuredeploy.json":::
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需針對 Azure 資訊安全中心部署工作區設定的範例，請參閱 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
 * 您可於 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments) 找到範本範例。

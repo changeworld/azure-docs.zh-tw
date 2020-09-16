@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 19f4e7b340f0b1ceb64d04a2704a4f6667e1e14a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: de6cd4ee2c9800757399b7e32b59d903b817c657
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053570"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604388"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -42,17 +42,21 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-BH` | 阿拉伯文 (巴林)，現代標準 | 語言模型                                    |
 | `ar-EG` | 阿拉伯文 (埃及)                    | 語言模型                                    |
 | `ar-IL` | 阿拉伯文 (以色列)                   | 否                                                |
+| `ar-IQ` | 阿拉伯文 (伊拉克)                     | 否                                                |
 | `ar-JO` | 阿拉伯文 (約旦)                   | 否                                                |
 | `ar-KW` | 阿拉伯文 (科威特)                   | 否                                                |
 | `ar-LB` | 阿拉伯文 (黎巴嫩)                  | 否                                                |
+| `ar-OM` | 阿拉伯文 (阿曼)                     | 否                                                |
 | `ar-PS` | 阿拉伯文 (巴勒斯坦)                | 否                                                |
 | `ar-QA` | 阿拉伯文 (卡達)                    | 否                                                |
 | `ar-SA` | 阿拉伯文 (沙烏地阿拉伯)             | 否                                                |
 | `ar-SY` | 阿拉伯文 (敘利亞)                    | 語言模型                                    |
-| `ca-ES` | 卡達隆尼亞文                           | 語言模型                                    |
+| `bg-BG` | 保加利亞文 (保加利亞)              | 語言模型                                    |
+| `ca-ES` | 加泰蘭文 (西班牙)                   | 語言模型                                    |
 | `cs-CZ` | 捷克文 (捷克共和國)            | 語言模型                                    | 
 | `da-DK` | 丹麥文 (丹麥)                  | 語言模型                                    |
 | `de-DE` | 德文 (德國)                  | 原音模型<br>語言模型<br>發音 |
+| `el-GR` | 希臘文 (希臘)                    | 語言模型                                    |
 | `en-AU` | 英文 (澳大利亞)               | 原音模型<br>語言模型                  |
 | `en-CA` | 英文 (加拿大)                  | 原音模型<br>語言模型                  |
 | `en-GB` | 英文 (英國)          | 原音模型<br>語言模型<br>發音 |
@@ -82,31 +86,40 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `es-PR` | 西班牙文 (波多黎各)             | 語言模型                                    | 
 | `es-PY` | 西班牙文 (巴拉圭)                | 語言模型                                    | 
 | `es-SV` | 西班牙文 (薩爾瓦多)             | 語言模型                                    | 
-| `es-US` | 美國西班牙文 ()                      | 語言模型                                    | 
+| `es-US` | 美國西班牙文 (USA)                      | 語言模型                                    | 
 | `es-UY` | 西班牙文 (烏拉圭)                 | 語言模型                                    | 
-| `es-VE` | 西班牙文 (委內瑞拉)               | 語言模型                                    | 
+| `es-VE` | 西班牙文 (委內瑞拉)               | 語言模型                                    |
+| `et-EE` | 愛沙尼亞 (愛沙尼亞)                  | 語言模型                                    | 
 | `fi-FI` | 芬蘭文 (芬蘭)                 | 語言模型                                    |
 | `fr-CA` | 法文 (加拿大)                   | 原音模型<br>語言模型                  |
 | `fr-FR` | 法文 (法國)                   | 原音模型<br>語言模型<br>發音 |
+| `ga-IE` | 愛爾蘭 (愛爾蘭)                     | 語言模型                                    |
 | `gu-IN` | 古吉拉特文 (印度)                 | 語言模型                                    |
 | `hi-IN` | 印度文 (印度)                     | 原音模型<br>語言模型                  |
+| `hr-HR` | 克羅埃西亞文 (克羅埃西亞)                | 語言模型                                    |
 | `hu-HU` | 匈牙利文 (匈牙利)               | 語言模型                                    | 
 | `it-IT` | 義大利文 (義大利)                   | 原音模型<br>語言模型<br>發音 |
 | `ja-JP` | 日文 (日本)                  | 語言模型                                    |
 | `ko-KR` | 韓文 (韓國)                    | 語言模型                                    |
+| `lt-LT` | 立陶宛文 (立陶宛)            | 語言模型                                    |
+| `lv-LV` | 拉脫維亞文 (拉脫維亞)                  | 語言模型                                    |
 | `mr-IN` | 馬拉提文 (印度)                   | 語言模型                                    |
+| `mt-MT` | 馬爾他 (馬爾他)                     | 語言模型                                    |
 | `nb-NO` | 挪威文 (巴克摩) (挪威)       | 語言模型                                    |
 | `nl-NL` | 荷蘭文 (荷蘭)               | 語言模型                                    |
 | `pl-PL` | 波蘭文 (波蘭)                   | 語言模型                                    |
 | `pt-BR` | 葡萄牙文 (巴西)               | 原音模型<br>語言模型<br>發音 |
 | `pt-PT` | 葡萄牙文 (葡萄牙)             | 語言模型                                    |
+| `ro-RO` | 羅馬尼亞文 (羅馬尼亞)                | 語言模型                                    |
 | `ru-RU` | 俄文 (俄羅斯)                  | 原音模型<br>語言模型                  |
+| `sk-SK` | 斯洛伐克文 (斯洛伐克)                 | 語言模型                                    |
+| `sl-SI` | 斯洛維尼亞文 (斯洛維尼亞)              | 語言模型                                    |
 | `sv-SE` | 瑞典文 (瑞典)                  | 語言模型                                    |
 | `ta-IN` | 坦米爾文 (印度)                     | 語言模型                                    |
 | `te-IN` | 特拉古文 (印度)                    | 語言模型                                    |
 | `th-TH` | 泰文 (泰國)                   | 否                                                |
 | `tr-TR` | 土耳其文 (土耳其)                  | 語言模型                                    |
-| `zh-CN` | 中文 (普通話，簡化的)     | 原音模型<br>語言模型                  |
+| `zh-CN` | 中文 (中文，簡化)     | 原音模型<br>語言模型                  |
 | `zh-HK` | 中文 (廣東話，繁體)  | 語言模型                                    |
 | `zh-TW` | 中文 (繁體，國語)      | 語言模型                                    |
 
@@ -157,7 +170,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 | `ru-RU` | 俄文 (俄羅斯)                | Female | `ru-RU-DariyaNeural`     | 一般 |
 | `sv-SE` | 瑞典文 (瑞典)                | Female | `sv-SE-HilleviNeural`    | 一般 |
 | `th-TH` | 泰文 (泰國)                 | Female | `th-TH-AcharaNeural`     | 一般 |
-| `zh-CN` | 中文 (普通話，簡化的)   | Female | `zh-CN-XiaoxiaoNeural`   | 一般，提供多種語音樣式 |
+| `zh-CN` | 中文 (中文，簡化)   | Female | `zh-CN-XiaoxiaoNeural`   | 一般，提供多種語音樣式 |
 |         |                                 | Female | `zh-CN-XiaoyouNeural`    | 兒童語音，針對故事敘述進行最佳化 |
 |         |                                 | Male   | `zh-CN-YunyangNeural`    | 針對新聞閱讀進行最佳化，提供多種語音樣式 |
 |         |                                 | Male   | `zh-CN-YunyeNeural`      | 針對故事敘述進行最佳化 |
@@ -249,7 +262,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 | `th-TH` | 泰文 | Male |  "th-TH-Pattara" |
 | `tr-TR` | 土耳其文 (土耳其) | Female | "tr-TR-SedaRUS" |
 | `vi-VN` | 越南文 | Male |  "vi-VN-An" |
-| `zh-CN` | 中文 (普通話，簡化的)  | Female |  "zh-CN-HuihuiRUS" |
+| `zh-CN` | 中文 (中文，簡化)  | Female |  "zh-CN-HuihuiRUS" |
 |  |  | Female | "zh-CN-Yaoyao-Apollo" |
 |  |  | Male | "zh-CN-Kangkang-Apollo" |
 | `zh-HK` | 中文 (廣東話，繁體) | Female |  "zh-HK-Tracy-Apollo" |

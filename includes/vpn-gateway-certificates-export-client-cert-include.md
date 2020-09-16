@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d16412e4e35714c840516670f520f77daed1676d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3031ec6ba17c61c780351169c4e8c2e5e94ab257
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80059928"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606842"
 ---
 當您產生用戶端憑證時，它會自動安裝於您用來產生它的電腦上。 如果您想要在另一部用戶端電腦上安裝用戶端憑證，您必須匯出您所產生的用戶端憑證。
 
-1. 若要匯出用戶端憑證，請開啟 [管理使用者憑證]****。 根據預設，您產生的用戶端憑證位於 'Certificates - Current User\Personal\Certificates'。 以滑鼠右鍵按一下您要匯出的用戶端憑證，按一下 [**所有**工作]，然後按一下 [**匯出**] 以開啟 [**憑證匯出嚮導]**。
+1. 若要匯出用戶端憑證，請開啟 [管理使用者憑證]****。 根據預設，您產生的用戶端憑證位於 'Certificates - Current User\Personal\Certificates'。 以滑鼠右鍵按一下您要匯出的用戶端憑證，按一下 [ **所有**工作]，然後按一下 [ **匯出** ] 以開啟 [ **憑證匯出嚮導]**。
 
-   ![匯出](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
+   ![螢幕擷取畫面顯示已選取憑證之目前使用者的 [憑證] 視窗，以及包含所有工作的內容功能表，然後選取 [匯出]。](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
 2. 在 [憑證匯出精靈] 中，按 [下一步]**** 繼續作業。
 
-   ![下一個](./media/vpn-gateway-certificates-export-client-cert-include/next.png)
+   ![螢幕擷取畫面顯示「憑證匯出嚮導」歡迎使用訊息。](./media/vpn-gateway-certificates-export-client-cert-include/next.png)
 3. 選取 [是，匯出私密金鑰]****，然後按 [下一步]****。
 
    ![匯出私密金鑰](./media/vpn-gateway-certificates-export-client-cert-include/privatekeyexport.png)
@@ -31,10 +31,10 @@ ms.locfileid: "80059928"
    ![匯出檔案格式](./media/vpn-gateway-certificates-export-client-cert-include/includeallcerts.png)
 5. 在 [安全性] **** 頁面上，您必須保護私密金鑰。 如果您選取要使用密碼，請務必記錄或牢記您為此憑證設定的密碼。 然後按 [下一步] ****。
 
-   ![security](./media/vpn-gateway-certificates-export-client-cert-include/security.png)
+   ![螢幕擷取畫面顯示 [憑證匯出嚮導] 安全性頁面，其中包含輸入並確認的密碼，並在下一個反白顯示。](./media/vpn-gateway-certificates-export-client-cert-include/security.png)
 6. 在 [要匯出的檔案]**** 中，[瀏覽]**** 到您要匯出憑證的位置。 針對 [檔案名稱] ****，請為憑證檔案命名。 然後按 [下一步] ****。
 
    ![要匯出的檔案](./media/vpn-gateway-certificates-export-client-cert-include/filetoexport.png)
 7. 按一下 [完成]**** 匯出憑證。
 
-   ![完成](./media/vpn-gateway-certificates-export-client-cert-include/finish.png)
+   ![螢幕擷取畫面顯示 [憑證匯出嚮導] 的 [最終] 頁面，其中包含選取的設定。](./media/vpn-gateway-certificates-export-client-cert-include/finish.png)

@@ -6,14 +6,14 @@ services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 09/15/2020
 ms.author: mayg
-ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1790ac666d77f14ccadfde56f7b86e05b2c563dd
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130147"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604677"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安裝 Linux 主要目標伺服器以便進行容錯回復
 您可以在將虛擬機器容錯移轉至 Azure 之後，將虛擬機器容錯回復至內部部署網站。 若要進行容錯回復，您需要在從 Azure 到內部部署網站的過程中重新保護虛擬機器。 針對此程序，您需要內部部署的主要目標伺服器以接收流量。 
@@ -48,16 +48,7 @@ ms.locfileid: "86130147"
 - **OS 磁碟大小**：100 GB 或更多 (以安裝 OS)
 - **用於保留磁碟機的額外磁碟大小**：1 TB
 - **CPU 核心**：4 個核心或更多
-
-支援下列 Ubuntu 核心。
-
-
-|核心系列  |最多支援  |
-|---------|---------|
-|4.4      |4.4.0-81-generic         |
-|4.8      |4.8.0-56-generic         |
-|4.10     |4.10.0-24-generic        |
-
+- **核心**： 4.16. *
 
 ## <a name="deploy-the-master-target-server"></a>部署主要目標伺服器
 
@@ -247,7 +238,7 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
     ![多重路徑識別碼](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. 將磁片磁碟機格式化，然後在新磁片磁碟機上建立檔案系統： **mkfs. ext4/dev/mapper/ \<Retention disk's multipath id> **。
+3. 格式化磁片磁碟機，然後在新的磁片磁碟機上建立檔案系統： **>mkfs. ext4/dev/mapper/ \<Retention disk's multipath id> **。
     
     ![檔案系統](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -292,7 +283,7 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
     `echo itUx70I47uxDuUVY >passphrase.txt`
     
 
-3. 記下設定伺服器的 IP 位址。 執行下列命令，向設定伺服器註冊伺服器。
+3. 記下設定伺服器的 IP 位址。 執行下列命令來向設定伺服器註冊伺服器。
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
@@ -323,7 +314,7 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
 1. 記下組態伺服器的 IP 位址。 您在下一步需要用到它。
 
-2. 執行下列命令，向設定伺服器註冊伺服器。
+2. 執行下列命令來向設定伺服器註冊伺服器。
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh
@@ -351,7 +342,7 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
 * 主要目標在虛擬機器上不應該有任何快照集。 如果有快照集，容錯回復會失敗。
 
-* 由於一些自訂 NIC 組態，因而會在啟動期間停用網路介面，並導致主要目標代理程式無法初始化。 請確定已正確設定下列屬性。 在乙太網路卡檔案的/etc/network/interfaces. 中檢查這些屬性
+* 由於一些自訂 NIC 組態，因而會在啟動期間停用網路介面，並導致主要目標代理程式無法初始化。 請確定已正確設定下列屬性。 在 Ethernet 卡檔案的/etc/network/interfaces. 中檢查這些屬性
     * auto eth0
     * iface eth0 inet dhcp <br>
 

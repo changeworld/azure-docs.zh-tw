@@ -103,9 +103,9 @@
           displayName: studio
           href: concept-designer.md
         - name: 演算法功能提要
-          href: /azure/machine-learning/algorithm-cheat-sheet
+          href: algorithm-cheat-sheet.md
         - name: 如何選取演算法
-          href: /azure/machine-learning/how-to-select-algorithms
+          href: how-to-select-algorithms.md
     - name: 自動化 ML
       items:
         - name: 自動化 ML 概觀

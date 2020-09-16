@@ -21,7 +21,19 @@
   expanded: true
   items:
     - name: 驗證方法
-      href: concept-authentication-methods.md
+      items:
+        - name: 概觀
+          href: concept-authentication-methods.md
+        - name: Microsoft Authenticator 應用程式
+          href: concept-authentication-authenticator-app.md
+        - name: OATH 權杖
+          href: concept-authentication-oath-tokens.md
+        - name: 無密碼
+          href: concept-authentication-passwordless.md
+        - name: 電話選項
+          href: concept-authentication-phone-options.md
+        - name: 安全性問題
+          href: concept-authentication-security-questions.md
     - name: 自助式密碼重設
       items:
         - name: 密碼重設如何運作
@@ -46,8 +58,6 @@
           href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide
         - name: 常見問題集
           href: multi-factor-authentication-faq.md
-    - name: 無密碼驗證
-      href: concept-authentication-passwordless.md
     - name: 密碼保護
       items:
         - name: 避免在雲端使用弱式密碼
