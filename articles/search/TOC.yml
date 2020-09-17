@@ -3,9 +3,11 @@
 - name: 概觀
   expanded: true
   items:
-    - name: 什麼是 Azue 認知搜尋？
+    - name: 什麼是認知搜尋？
       href: search-what-is-azure-search.md
-    - name: 新功能
+    - name: 認知搜尋的功能
+      href: search-features-list.md
+    - name: 認知搜尋的新功能
       href: whats-new.md
 - name: 快速入門
   items:
@@ -413,25 +415,27 @@
     - name: .NET
       items:
         - name: 搜尋 API
-          href: /dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search.documents-readme
         - name: 管理 API
-          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search/management
     - name: Java
       items:
+        - name: 搜尋 API
+          href: /java/api/overview/azure/search-documents-readme
         - name: 管理 API
-          href: /java/api/overview/azure/search/management?view=azure-java-stable
+          href: /java/api/overview/azure/search/management
     - name: JavaScript
       items:
         - name: 搜尋 API
-          href: /javascript/api/overview/azure/search-documents-readme?view=azure-node-latest
+          href: /javascript/api/overview/azure/search-documents-readme
         - name: 管理 API
-          href: /javascript/api/overview/azure/search/management?view=azure-node-latest
+          href: /javascript/api/overview/azure/search/management
     - name: Python
       items:
         - name: 搜尋 API
-          href: /python/api/overview/azure/search-documents-readme?view=azure-python
+          href: /python/api/overview/azure/search-documents-readme
         - name: 管理 API
-          href: /python/api/overview/azure/search/management?view=azure-python
+          href: /python/api/overview/azure/search/management
     - name: OData 語言參考
       items:
         - name: 概觀

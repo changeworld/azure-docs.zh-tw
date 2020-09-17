@@ -53,6 +53,9 @@
     - name: 移除委派的存取權
       displayName: 'delete, undelegate'
       href: ./how-to/remove-delegation.md
+    - name: Azure Arc 整合
+      displayName: 'server, kubernetes, hybrid, infrastructure'
+      href: ./how-to/manage-hybrid-infrastructure-arc.md
     - name: Azure 監視器整合
       items:
         - name: 大規模使用 Azure 監視器記錄

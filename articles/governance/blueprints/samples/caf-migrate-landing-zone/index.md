@@ -1,14 +1,14 @@
 ---
 title: CAF 移轉登陸區域藍圖範例概觀
 description: 適用於 Azure 移轉登陸區域藍圖範例之雲端採用架構 (CAF) 的概觀和結構
-ms.date: 04/15/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: 6deb671070a742448560309b1b1a3572f5aa082d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6b8e3484690d263a43d3824c054b28344ea07fb1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852305"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531673"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>適用於 Azure 的 Microsoft 雲端採用架構，移轉登陸區域藍圖範例的概觀
 
@@ -20,7 +20,9 @@ ms.locfileid: "87852305"
 
 CAF 移轉登陸區域藍圖範例會在 Azure 中部署基礎結構資源，供組織用來準備其訂用帳戶，以便將虛擬機器遷移至該處。 其也有助於放置管理其雲端資產所需的治理控制項。 此範例會部署和強制執行資源、原則和範本，讓組織能夠安心地開始使用 Azure。
 
-:::image type="content" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="CAF 移轉登陸區域，該影像描述第一個登陸區域的 CAF 指引中所安裝的內容" border="false":::
+:::image type="complex" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="C A F 移轉登陸區域，該影像描述第一個登陸區域的 C A F 指引中所安裝的內容。" border="false":::
+   說明藉由部署 C A F 移轉藍圖來達成的 Azure 架構。  其適用於具有資源群組的訂用帳戶，其中包含 Azure 虛擬網路、儲存記錄的儲存體帳戶、設定為儲存在儲存體帳戶中的 Log Analytics。  其也會描述設定的 Azure Key Vault 和建立的 Azure Migrate 初始安裝。  所有這些核心基礎結構都是使用 Azure Active directory 來存取。     
+:::image-end:::
 
 此環境包含數個 Azure 服務，用來提供完全受到監視的企業級安全治理。 此環境包含：
 

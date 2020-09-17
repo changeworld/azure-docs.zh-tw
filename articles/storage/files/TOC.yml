@@ -27,6 +27,8 @@
       items:
         - name: 規劃 Azure 檔案服務部署
           href: storage-files-planning.md
+        - name: 可用的檔案共用通訊協定
+          href: storage-files-compare-protocols.md
         - name: 身分識別型驗證和授權
           href: storage-files-active-directory-overview.md
         - name: 直接存取的網路功能考量
@@ -79,12 +81,14 @@
   items:
     - name: 建立
       items:
-        - name: 建立檔案共用
+        - name: 建立 SMB 檔案共用
           href: storage-how-to-create-file-share.md
         - name: 啟用大型檔案共用
           href: storage-files-how-to-create-large-file-share.md
         - name: 建立進階檔案共用
           href: storage-how-to-create-premium-fileshare.md
+        - name: 建立 NFS 磁碟區
+          href: storage-files-how-to-create-nfs-shares.md
     - name: 部署
       items:
         - name: 部署 Azure 檔案
@@ -95,11 +99,13 @@
           href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 掛接
       items:
-        - name: 搭配使用 Azure 檔案服務與 Windows
+        - name: 將 SMB 檔案共用掛接到 Windows
           href: storage-how-to-use-files-windows.md
-        - name: 搭配 Linux 使用 Azure 檔案
+        - name: 將 SMB 檔案共用掛接到 Linux
           href: storage-how-to-use-files-linux.md
-        - name: 搭配使用 Azure 檔案服務與 macOS
+        - name: 將 NFS 檔案共用裝載至 Linux
+          href: storage-files-how-to-mount-nfs-shares.md
+        - name: 將 SMB 檔案共用掛接至 macOS
           href: storage-how-to-use-files-mac.md
     - name: 網路
       items:
@@ -269,11 +275,11 @@
           href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 疑難排解
       items:
-        - name: 針對 Windows 中的 Azure 檔案服務進行疑難排解
+        - name: 針對 Windows 中的 Azure 檔案服務進行疑難排解 (SMB)
           href: storage-troubleshoot-windows-file-connection-problems.md
-        - name: 針對 Linux 中的 Azure 檔案服務進行疑難排解
+        - name: 針對 Linux 中的 Azure 檔案服務進行疑難排解 (SMB)
           href: storage-troubleshoot-linux-file-connection-problems.md
-        - name: 針對 Azure 檔案儲存體效能進行疑難排解
+        - name: 針對 Azure 檔案儲存體效能進行疑難排解 (SMB)
           href: storage-troubleshooting-files-performance.md
         - name: 針對 Azure 檔案同步進行移難排解
           href: storage-sync-files-troubleshoot.md

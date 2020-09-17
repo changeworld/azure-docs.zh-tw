@@ -1,14 +1,14 @@
 ---
 title: 藍圖範例索引
 description: 使用 Azure 藍圖部署環境、原則和雲端採用架構基礎的合規性和標準範例索引。
-ms.date: 09/11/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: 7ac95dee88cb244ecb4b60738daae26bb0d8831a
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: def5e51a3db7e0733e0d7e1ef5c6895aedb7128d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031869"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530976"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 藍圖範例
 
@@ -42,7 +42,8 @@ ms.locfileid: "90031869"
 
 ## <a name="samples-strategy"></a>範例策略
 
-:::image type="content" source="../media/blueprint-samples-strategy.png" alt-text="藍圖範例策略" border="false":::
+:::image type="complex" source="../media/blueprint-samples-strategy.png" alt-text="藍圖範例在架構複雜度與合規性需求方面適用的圖表。" border="false":::
+   描述結構複雜度在 X 軸上，且合規性需求在 Y 軸上的座標系統。  隨著架構複雜度和合規性需求的增加，請從入口網站中指定的地區 E 來採用標準藍圖範例。對於開始使用 Azure 的客戶，您可以利用區域 A 和 B 所指定的雲端採用架構 (C A F) 基礎和登陸區域藍圖。其餘的空間則是由客戶所建立的自訂藍圖所歸屬，而這些是區域 C、D 和 F 的夥伴。:::image-end:::
 
 CAF 基礎和 CAF 移轉登陸區域藍圖會假設客戶正在準備現有的全新單一訂用帳戶，以便將內部部署資產及工作負載遷移至 Azure。
 (圖中的區域 A 和 B)。  

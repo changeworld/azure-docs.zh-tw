@@ -592,7 +592,7 @@
               href: disk-encryption-troubleshooting.md
             - name: 磁碟加密常見問題
               href: disk-encryption-faq.md
-            - name: 磁碟加密 - 先前版本 (AAD)
+            - name: 磁碟加密 - 先前版本 (Azure AD)
               items:
                 - name: 概觀
                   href: disk-encryption-overview-aad.md
@@ -670,7 +670,7 @@
           href: nested-virtualization.md
         - name: 自動 VM 來賓修補 (預覽)
           href: automatic-vm-guest-patching.md
-    - name: 平台維修
+    - name: 維修控制
       items:
         - name: 維修通知
           items:
@@ -682,7 +682,7 @@
               href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: 維修控制
+        - name: 平台維修
           items:
             - name: 概觀
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -696,6 +696,16 @@
           href: scheduled-events.md
         - name: Windows 已排定事件服務
           href: scheduled-event-service.md
+        - name: 虛擬機器擴展集 OS 映像升級
+          items:
+            - name: 作業系統自動升級
+              href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 維修控制
+              items:
+                - name: 概觀 (預覽)
+                  href: ../virtual-machine-scale-sets-maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell (預覽)
+                  href: ../virtual-machine-scale-sets-maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 監視 VM
       items:
         - name: 代理程式

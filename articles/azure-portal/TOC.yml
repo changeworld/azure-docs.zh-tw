@@ -31,6 +31,8 @@
       href: set-preferences.md
     - name: 新增、移除及排序我的最愛
       href: azure-portal-add-remove-sort-favorites.md
+    - name: 檢視和篩選資源資訊
+      href: manage-filter-resource-views.md
     - name: 建立 Azure 儀表板
       items:
         - name: 建立和共用 Azure 儀表板

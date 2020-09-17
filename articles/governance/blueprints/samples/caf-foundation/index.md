@@ -1,14 +1,14 @@
 ---
 title: CAF 基礎藍圖範例概觀
 description: 適用於 Azure Foundation藍圖範本之雲端採用架構 (CAF) 的概觀和結構
-ms.date: 04/15/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: b8bd0015d5f95fc61806197ca21fdaeeb3452700
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cce5ea001b32ae92542f38f8f11427e85075cee9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852339"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531690"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>適用於 Azure 的 Microsoft 雲端採用架構基礎藍圖範例的概觀
 
@@ -18,7 +18,9 @@ ms.locfileid: "87852339"
 
 CAF 基礎藍圖範例會在 Azure 中部署建議的基礎結構資源，供組織用來放置管理其雲端資產所需的基礎控制項。 此範例會部署和強制執行資源、原則和範本，讓組織能夠安心地開始使用 Azure。
 
-:::image type="content" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="CAF 基礎，該影像描述 CAF 指引的部分安裝內容，這些內容用於建立 Azure 入門的基礎" border="false":::
+:::image type="complex" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="C A F 基礎，該影像描述 C A F 指引的部分安裝內容，這些內容用於建立 Azure 入門的基礎。" border="false":::
+   說明藉由部署 C A F Foundation 藍圖來達成的 Azure 架構。  其適用於資源群組的訂用帳戶，其中包含用於儲存記錄的儲存體帳戶和設定為儲存在儲存體帳戶中的 Log Analytics。 其也會描述 Azure 資訊安全中心標準安裝程式設定的 Azure Key Vault。 所有這些核心基礎結構都是使用 Azure Active Directory 來存取，並使用 Azure 原則加以強制執行。     
+:::image-end:::
 
 此實作會結合數個 Azure 服務，用來提供完全受到監視的企業級安全基礎。 此環境包含：
 
