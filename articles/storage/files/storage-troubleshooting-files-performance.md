@@ -4,20 +4,17 @@ description: 針對 Azure 檔案共用的已知效能問題進行疑難排解。
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 08/24/2020
+ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: cffac114cacd05e04e149af96d1678b536db7fec
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 7afaa057ecc94cf67d4fd5b041d95210fcf26717
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564231"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707589"
 ---
-# <a name="troubleshoot-azure-files-performance-issues-smb"></a>針對 (SMB) 的 Azure 檔案儲存體效能問題進行疑難排解
-
-> [!IMPORTANT]
-> 本文內容僅適用于 SMB 共用。
+# <a name="troubleshoot-azure-files-performance-issues"></a>針對 Azure 檔案儲存體效能問題進行疑難排解
 
 本文列出一些與 Azure 檔案共用相關的常見問題。 當遇到這些問題時，它會提供潛在的原因和因應措施。
 

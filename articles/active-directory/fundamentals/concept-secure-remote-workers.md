@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0e0ad9086a7945201b1752126253f12eb751bf
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320030"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705362"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>使用 Azure AD 快速回應安全身分識別
 
@@ -34,7 +34,7 @@ ms.locfileid: "89320030"
 - 利用雲端智慧。
 - 啟用終端使用者自助服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本指南假設您已在 Azure AD 中建立您的僅限雲端或混合式身分識別。 如需選擇身分識別類型的說明，請參閱文章， [為您的 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](../hybrid/choose-ad-authn.md) 
 
@@ -42,13 +42,12 @@ ms.locfileid: "89320030"
 
 安全的身分識別基礎結構有許多層面，但這份檢查清單著重于安全且安全的身分識別基礎結構，讓使用者可以從遠端工作。 保護您的身分識別只是安全性案例的一部分，因此也應該考慮保護資料、應用程式和裝置。
 
-### <a name="guidance-for-azure-ad-free-or-office-365-customers"></a>Azure AD Free 或 Office 365 客戶的指引。
+### <a name="guidance-for-azure-ad-free-office-365-or-microsoft-365-customers"></a>適用于 Azure AD Free、Office 365 或 Microsoft 365 客戶的指引。
 
-為了保護使用者身分識別，Azure AD Free 或 Office 365 應用程式應該採取的建議有很多，下表旨在強調下列授權訂閱的主要動作：
+為了保護使用者身分識別，有一些建議 Azure AD Free、Office 365 或 Microsoft 365 應用程式，而下表旨在強調下列授權訂閱的主要動作：
 
-- Office 365 (O365 E1、E3、E5、F1、A1、A3、A5) 
-- Office 365 Business (Essentials、Business、Business Premium) 
-- Microsoft 365 (M365 Business，A1) 
+- Office 365 (Office 365 E1、E3、E5、F1、A1、A3、A5) 
+- Microsoft 365 (商務基本、商務應用程式、商務標準、商務 Premium、A1) 
 - Azure AD Free (隨附于 Azure、Dynamics 365、Intune 和 Power Platform) 
 
 | 建議的動作 | 詳細資料 |
@@ -129,7 +128,7 @@ ms.locfileid: "89320030"
 | [建立來賓使用者存取權的計劃](../external-identities/what-is-b2b.md) | 讓使用者使用自己的公司、學校或社交身分識別登入您的應用程式和服務，以與來賓使用者共同作業。 |
 | [啟用 Privileged Identity Management](../privileged-identity-management/pim-configure.md) | 可讓您管理、控制及監視您組織中重要資源的存取權，以確保系統管理員只有在需要時才可存取，並具有核准 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如需 Azure AD 個別功能的詳細部署指引，請參閱 [Azure AD 專案部署計畫](active-directory-deployment-plans.md)。
 

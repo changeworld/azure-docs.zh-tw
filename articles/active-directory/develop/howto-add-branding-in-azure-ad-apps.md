@@ -13,12 +13,12 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 5e62472fdccd2ee71a0ef725f34a75492d1b8ffa
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226636"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706195"
 ---
 # <a name="branding-guidelines-for-applications"></a>應用程式的商標指導方針
 
@@ -36,7 +36,7 @@ ms.locfileid: "89226636"
 Microsoft 管理兩種類型的使用者帳戶：
 
 - **個人帳戶** (之前稱為 Windows Live ID)。 這些帳戶代表 *個別* 使用者和 Microsoft 之間的關聯性，用於存取來自 Microsoft 的消費型裝置和服務。 這些帳戶主要供個人使用。
-- **公司或學校帳戶。** 這些是使用 Azure Active Directory 的組織交由 Microsoft 代為管理的帳戶。 這些帳戶用來從 Microsoft 登入 Office 365 和其他商務服務。
+- **公司或學校帳戶。** 這些是使用 Azure Active Directory 的組織交由 Microsoft 代為管理的帳戶。 這些帳戶用來登入 Microsoft 365 和 Microsoft 的其他商務服務。
 
 Microsoft 工作或學校帳戶通常由其組織 (公司、 學校、政府機構) 指派給使用者 (員工、學生、聯邦員工)。 這些帳戶會直接在雲端 (的 Azure AD 平臺中進行) 或從內部部署目錄（例如 Windows Server Active Directory）同步處理至 Azure AD。 Microsoft 是工作或學校帳戶的 *保管者* ，但這些帳戶由組織擁有和控制。
 
@@ -49,7 +49,7 @@ Microsoft 不會在 Azure 或 Active Directory 品牌名稱上公開使用者，
 
 ## <a name="user-account-pictogram"></a>使用者帳戶象形圖
 
-在這些指導方針的較早版本中，我們建議使用「藍色徽章」象形圖。 根據使用者和開發人員的意見反應，我們現在建議改用 Microsoft 標誌。 Microsoft 標誌將有助於使用者了解，他們用於 Office 365 或其他 Microsoft 商務服務的帳戶，也可以重複用來登入您的應用程式。
+在這些指導方針的較早版本中，我們建議使用「藍色徽章」象形圖。 根據使用者和開發人員的意見反應，我們現在建議改用 Microsoft 標誌。 Microsoft 標誌可協助使用者瞭解他們可以重複使用 Microsoft 365 或其他 Microsoft 商務服務所用的帳戶來登入您的應用程式。
 
 ## <a name="signing-up-and-signing-in-with-azure-ad"></a>使用 Azure AD 來註冊和登入
 
@@ -63,13 +63,13 @@ Microsoft 不會在 Azure 或 Active Directory 品牌名稱上公開使用者，
 
 [取得應用程式] 連結必須將使用者重新導向到 Azure AD 授與存取權 (授權) 頁面，讓組織的系統管理員可授權您的應用程式來存取由 Microsoft 代管的組織資料。 [整合應用程式與 Azure Active Directory](./quickstart-register-app.md) 一文中詳細討論存取權的要求方式。
 
-系統管理員同意您的應用程式之後，他們可以選擇將其新增至使用者的 Office 365 應用程式啟動器體驗， (可從松餅和 [https://portal.office.com/myapps](https://portal.office.com/myapps)) 存取。 如果您想要宣傳此功能，可以使用「將此應用程式加入至您的組織」之類的詞彙，並顯示類似下列範例的按鈕：
+系統管理員同意您的應用程式之後，他們可以選擇將其新增至使用者的 Microsoft 365 應用程式啟動器體驗， (可從松餅和 [https://portal.office.com/myapps](https://portal.office.com/myapps)) 存取。 如果您想要宣傳此功能，可以使用「將此應用程式加入至您的組織」之類的詞彙，並顯示類似下列範例的按鈕：
 
 ![顯示 Microsoft 標誌和「新增至我的組織」文字的按鈕](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
 不過，我們建議您撰寫說明文字，而不要依賴按鈕。 例如：
 
-> *如果您已經使用 Microsoft 的 Office 365 或其他商務服務，您可以授與 <your_app_name> 對組織資料的存取權。這可讓您的使用者使用其現有的工作帳戶存取 <your_app_name>。*
+> *如果您已使用 Microsoft 365 或 Microsoft 的其他商務服務，您可以授與 <your_app_name> 存取貴組織的資料。這可讓您的使用者使用其現有的工作帳戶存取 <your_app_name>。*
 
 若要下載官方 Microsoft 標誌並在您的應用程式中使用，請以滑鼠右鍵按一下您要使用的標誌，然後將其儲存到您的電腦。
 
@@ -102,7 +102,7 @@ Microsoft 不會在 Azure 或 Active Directory 品牌名稱上公開使用者，
 
 **建議**將「工作或學校帳戶」與「使用 Microsoft 登入」按鈕結合使用，以提供更多說明協助使用者了解是否可使用它。 **禁止** 使用「企業帳戶」、「商務帳戶」或「公司帳戶」之類的其他詞彙。
 
-**請勿** 使用 "OFFICE 365 id" 或 "Azure id"。 Office 365 也是 Microsoft 提供的消費型供應項目名稱，不會使用 Azure AD 進行驗證。
+**請勿** 使用 "Microsoft 365 id" 或 "Azure id"。 Microsoft 365 也是 Microsoft 的取用者供應專案名稱，不會使用 Azure AD 進行驗證。
 
 **禁止** 改變 Microsoft 標誌。
 

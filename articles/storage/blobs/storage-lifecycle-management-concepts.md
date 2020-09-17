@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: be5d86fe690d60f687622243a2f1d7771b8af7d0
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: d47b9b5882b25ee030ca813abbaf77805b2df0f5
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603987"
+ms.locfileid: "90707759"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 儲存體生命週期
 
@@ -87,7 +87,7 @@ ms.locfileid: "90603987"
    > [!IMPORTANT]
    > 上次存取時間追蹤預覽僅供非生產環境使用。 生產環境的服務等級協定 (SLA) 目前無法使用。
    
-   如需 **上次存取** 選項的詳細資訊，請參閱 [依據上次存取日期移動資料 (預覽) ](#move-data-based-on-last-accessed-date-preview)。
+   若要使用 [**上次存取**] 選項，請在 Azure 入口網站的 [**生命週期管理**] 頁面上選取 [**啟用存取追蹤**]。 如需 **上次存取** 選項的詳細資訊，請參閱 [依據上次存取日期移動資料 (預覽) ](#move-data-based-on-last-accessed-date-preview)。
 
 1. 如果您在 [**詳細資料**] 頁面上選取 [**使用篩選準則限制 blob** ]，請選取 [**篩選設定**] 以新增選擇性篩選。 下列範例會篩選以 "log" 開頭的 *mylifecyclecontainer* 容器中的 blob。
 
@@ -243,10 +243,10 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 | 參數名稱 | 參數類型 | 注意 | 必要 |
 |----------------|----------------|-------|----------|
-| `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。 它在原則內必須是唯一的。 | 是 |
+| `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。 它在原則內必須是唯一的。 | True |
 | `enabled`      | 布林值 | 選擇性的布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | 否 | 
-| `type`         | 列舉值 | 目前有效的型別為 `Lifecycle` 。 | 是 |
-| `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | 是 |
+| `type`         | 列舉值 | 目前有效的型別為 `Lifecycle` 。 | True |
+| `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | True |
 
 ## <a name="rules"></a>規則
 
@@ -376,6 +376,8 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 > [!IMPORTANT]
 > 上次存取時間追蹤預覽僅供非生產環境使用。 生產環境的服務等級協定 (SLA) 目前無法使用。
+
+若要使用 [**上次存取**] 選項，請在 Azure 入口網站的 [**生命週期管理**] 頁面上選取 [**啟用存取追蹤**]。
 
 #### <a name="how-last-access-time-tracking-works"></a>上次存取時間追蹤的運作方式
 

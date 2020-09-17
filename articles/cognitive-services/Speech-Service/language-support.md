@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: de6cd4ee2c9800757399b7e32b59d903b817c657
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 9a1745aa0e78dafca70ea90d4a5ac92f340312b3
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604388"
+ms.locfileid: "90706927"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -38,18 +38,18 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Locale  | Language                          | 自訂                                    |
 |---------|-----------------------------------|---------------------------------------------------|
-| `ar-AE` | 阿拉伯文 (UAE)                      | 否                                                |
+| `ar-AE` | 阿拉伯文 (阿拉伯酋長國)      | 語言模型                                    |
 | `ar-BH` | 阿拉伯文 (巴林)，現代標準 | 語言模型                                    |
 | `ar-EG` | 阿拉伯文 (埃及)                    | 語言模型                                    |
 | `ar-IL` | 阿拉伯文 (以色列)                   | 否                                                |
-| `ar-IQ` | 阿拉伯文 (伊拉克)                     | 否                                                |
-| `ar-JO` | 阿拉伯文 (約旦)                   | 否                                                |
-| `ar-KW` | 阿拉伯文 (科威特)                   | 否                                                |
-| `ar-LB` | 阿拉伯文 (黎巴嫩)                  | 否                                                |
-| `ar-OM` | 阿拉伯文 (阿曼)                     | 否                                                |
-| `ar-PS` | 阿拉伯文 (巴勒斯坦)                | 否                                                |
-| `ar-QA` | 阿拉伯文 (卡達)                    | 否                                                |
-| `ar-SA` | 阿拉伯文 (沙烏地阿拉伯)             | 否                                                |
+| `ar-IQ` | 阿拉伯文 (伊拉克)                     | 語言模型                                    |
+| `ar-JO` | 阿拉伯文 (約旦)                   | 語言模型                                    |
+| `ar-KW` | 阿拉伯文 (科威特)                   | 語言模型                                    |
+| `ar-LB` | 阿拉伯文 (黎巴嫩)                  | 語言模型                                    |
+| `ar-OM` | 阿拉伯文 (阿曼)                     | 語言模型                                    |
+| `ar-PS` | 巴勒斯坦) 的阿拉伯文 (狀態       | 否                                                |
+| `ar-QA` | 阿拉伯文 (卡達)                    | 語言模型                                    |
+| `ar-SA` | 阿拉伯文 (沙烏地阿拉伯)             | 語言模型                                    |
 | `ar-SY` | 阿拉伯文 (敘利亞)                    | 語言模型                                    |
 | `bg-BG` | 保加利亞文 (保加利亞)              | 語言模型                                    |
 | `ca-ES` | 加泰蘭文 (西班牙)                   | 語言模型                                    |
@@ -117,7 +117,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `sv-SE` | 瑞典文 (瑞典)                  | 語言模型                                    |
 | `ta-IN` | 坦米爾文 (印度)                     | 語言模型                                    |
 | `te-IN` | 特拉古文 (印度)                    | 語言模型                                    |
-| `th-TH` | 泰文 (泰國)                   | 否                                                |
+| `th-TH` | 泰文 (泰國)                   | 語言模型                                    |
 | `tr-TR` | 土耳其文 (土耳其)                  | 語言模型                                    |
 | `zh-CN` | 中文 (中文，簡化)     | 原音模型<br>語言模型                  |
 | `zh-HK` | 中文 (廣東話，繁體)  | 語言模型                                    |

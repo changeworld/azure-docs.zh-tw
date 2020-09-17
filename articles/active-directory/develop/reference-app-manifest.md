@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b94bcd1cfbbf215ed912d506d27311aae502656b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 554e5a022dcb49cd861ad7198a2c375634db6d10
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115062"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705740"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 應用程式資訊清單
 
@@ -82,7 +82,7 @@ ms.locfileid: "88115062"
 | :--- | :--- |
 | addIns | 集合 |
 
-定義取用服務可用來在特定內容中呼叫應用程式的自訂行為。 例如，可轉譯檔案資料流的應用程式可能會為其 "FileHandler" 功能設定 `addIns` 屬性。 此參數可讓 Office 365 之類的服務在使用者正在處理的文件內容中呼叫應用程式。
+定義取用服務可用來在特定內容中呼叫應用程式的自訂行為。 例如，可轉譯檔案資料流的應用程式可能會為其 "FileHandler" 功能設定 `addIns` 屬性。 此參數可讓類似 Microsoft 365 的服務，在使用者正在處理的檔內容中呼叫應用程式。
 
 範例：
 

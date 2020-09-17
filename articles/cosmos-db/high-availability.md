@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 8bae89e68e5a016dbdc10c763f1ea2daedece3c8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c357720c937a5b63944b7fc598eaff428f85bfb6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605318"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706813"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB 的高可用性
 
@@ -62,7 +62,7 @@ Azure Cosmos DB 會以透明方式將您的資料複寫到與 Azure Cosmos 帳�
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>具有單一寫入區域 (讀取區域中斷) 的多重區域帳戶
 
 - 在讀取區域中斷期間，使用任何一致性等級或強式一致性與三個或更多讀取區域的 Azure Cosmos 帳戶，將維持高可用性以進行讀取和寫入。
-- 使用具有兩個或更少讀取區域之強式一致性的 Azure Cosmos 帳戶 (包括讀取 & 寫入區域) 會在讀取區域中斷期間失去寫入可用性，但仍會維持剩餘區域的讀取可用性。
+- 使用具有兩個或更少讀取區域之強式一致性的 Azure Cosmos 帳戶 (包括讀取 & 寫入區域) 在讀取區域中斷期間會遺失讀取寫入可用性。
 - 受影響的區域會自動中斷連線，並標示為離線。 [Azure Cosmos DB sdk](sql-api-sdk-dotnet.md)會將讀取呼叫重新導向至慣用區域清單中下一個可用的區域。
 - 如果慣用區域清單中沒有任何區域可供使用，呼叫就會自動切換回目前的寫入區域。
 - 不需要對應用程式的程式碼做任何變更來處理讀取區域中斷。 當受影響的讀取區域重新上線時，它會自動與目前寫入區域同步，並可再次使用以提供讀取要求。

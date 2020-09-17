@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a5201d0e31eb6d3b06316b74463dc2b68b33008c
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bfb4d265a42fe1e4473af0f9bde4ebb76f0734a0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563908"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707963"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>針對從 Azure AD 我的應用程式登入應用程式的問題進行疑難排解
 
@@ -27,7 +27,7 @@ ms.locfileid: "90563908"
 在 Azure AD 入口網站中可代表使用者設定這些應用程式。 必須正確設定應用程式，並將其指派給使用者或使用者所屬的群組，才能在我的應用程式中看到應用程式。 
 
 使用者能看見的應用程式類型可分為以下類別：
--   Microsoft 365 和 Office 365 應用程式
+-   Microsoft 365 應用程式
 -   已設定同盟 SSO 的 Microsoft 及第三方應用程式
 -   密碼型 SSO 應用程式
 -   含現有 SSO 解決方案的應用程式
@@ -163,7 +163,7 @@ ms.locfileid: "90563908"
 11. 選取 [ **指派** ] 按鈕，將這些授權指派給此使用者。
 
 ## <a name="troubleshooting-deep-links"></a>疑難排解深層連結
-深層連結或使用者存取 URL 是一種連結，您的使用者可使用此種連結直接從其瀏覽器網址列存取其密碼 SSO 應用程式。 藉由流覽至此連結，使用者會自動登入應用程式，而不需要先移至我的應用程式。 此連結與使用者用來從 Office 365 應用程式啟動器存取這些應用程式的相同。
+深層連結或使用者存取 URL 是一種連結，您的使用者可使用此種連結直接從其瀏覽器網址列存取其密碼 SSO 應用程式。 藉由流覽至此連結，使用者會自動登入應用程式，而不需要先移至我的應用程式。 此連結與使用者用來從 Microsoft 365 應用程式啟動器存取這些應用程式的相同。
 
 ### <a name="checking-the-deep-link"></a>檢查深層連結
 

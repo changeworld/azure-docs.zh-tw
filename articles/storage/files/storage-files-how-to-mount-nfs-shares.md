@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 23465c76fa62ed65583b97b0c9406dc791a4327f
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 530ae82720e6b4eb6a3e4d1021c0b37b9f4dbf5c
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564818"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707436"
 ---
 # <a name="how-to-mount-an-nfs-file-share"></a>如何掛接 NFS 檔案共用
 
@@ -61,4 +61,5 @@ ms.locfileid: "90564818"
 
 ## <a name="next-steps"></a>後續步驟
 
-透過我們的文章、 [規劃 Azure 檔案儲存體部署](storage-files-planning.md)，深入瞭解 Azure 檔案儲存體。
+- 透過我們的文章、 [規劃 Azure 檔案儲存體部署](storage-files-planning.md)，深入瞭解 Azure 檔案儲存體。
+- 如果您遇到任何問題，請參閱 [疑難排解 AZURE NFS 檔案共用](storage-troubleshooting-files-nfs.md)。

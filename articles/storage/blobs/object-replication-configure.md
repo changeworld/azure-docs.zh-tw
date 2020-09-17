@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 09/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4fb616860cb1e85c6249329f3679de0d29b72e61
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: e6e6c802da212294594f45d0545c6cf07694760b
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018827"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707912"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>設定區塊 blob 的物件複寫
 
@@ -150,9 +150,11 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 若要建立具有 Azure CLI 的複寫原則，請先安裝 Azure CLI 2.11.1 版或更新版本。 如需詳細資訊，請參閱 [開始使用 Azure CLI](/cli/azure/get-started-with-azure-cli)。
 
-接下來，在來源和目的地儲存體帳戶上啟用 blob 版本設定，並啟用來源帳戶的變更摘要。 請記得以自有值來取代角括弧中的值：
+接下來，在來源和目的地儲存體帳戶上啟用 blob 版本設定，並藉由呼叫 [az storage account blob-service-properties update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) 命令來啟用來源帳戶的變更摘要。 請記得以自有值來取代角括弧中的值：
 
 ```azurecli
+az login
+
 az storage account blob-service-properties update \
     --resource-group <resource-group> \
     --account-name <source-storage-account> \
@@ -174,24 +176,24 @@ az storage account blob-service-properties update \
 ```azurecli
 az storage container create \
     --account-name <source-storage-account> \
-    --name source-container3 \
+    --name source-container-1 \
     --auth-mode login
 az storage container create \
     --account-name <source-storage-account> \
-    --name source-container4 \
+    --name source-container-2 \
     --auth-mode login
 
 az storage container create \
     --account-name <dest-storage-account> \
-    --name source-container3 \
+    --name dest-container-1 \
     --auth-mode login
 az storage container create \
     --account-name <dest-storage-account> \
-    --name source-container4 \
+    --name dest-container-1 \
     --auth-mode login
 ```
 
-在目的地帳戶上建立新複寫原則及相關聯的規則。
+藉由呼叫 [az storage account 或-policy create](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_create)，在目的地帳戶上建立新的複寫原則和相關聯的規則。
 
 ```azurecli
 az storage account or-policy create \
@@ -199,21 +201,26 @@ az storage account or-policy create \
     --resource-group <resource-group> \
     --source-account <source-storage-account> \
     --destination-account <dest-storage-account> \
-    --source-container source-container3 \
-    --destination-container dest-container3 \
-    --min-creation-time '2020-05-10T00:00:00Z' \
+    --source-container source-container-1 \
+    --destination-container dest-container-1 \
+    --min-creation-time '2020-09-10T00:00:00Z' \
     --prefix-match a
 
+```
+
+Azure 儲存體在建立新原則時，設定原則識別碼。 若要將其他規則新增至原則，請呼叫 [az storage account 或-policy rule add](/cli/azure/storage/account/or-policy/rule#az_storage_account_or_policy_rule_add) 並提供原則識別碼。
+
+```azurecli
 az storage account or-policy rule add \
     --account-name <dest-storage-account> \
-    --destination-container dest-container4 \
-    --policy-id <policy-id> \
     --resource-group <resource-group> \
-    --source-container source-container4 \
+    --source-container source-container-2 \
+    --destination-container dest-container-2 \
+    --policy-id <policy-id> \
     --prefix-match b
 ```
 
-使用原則識別碼，在來源帳戶上建立原則。
+接下來，使用原則識別碼在來源帳戶上建立原則。
 
 ```azurecli
 az storage account or-policy show \
@@ -229,16 +236,16 @@ az storage account or-policy show \
 
 ### <a name="configure-object-replication-when-you-have-access-only-to-the-destination-account"></a>當您只能存取目的地帳戶時，請設定物件複寫
 
-如果您沒有來源儲存體帳戶的許可權，您可以在目的地帳戶上設定物件複寫，並將包含原則定義的 JSON 檔案提供給其他使用者，以在來源帳戶上建立相同的原則。 例如，如果來源帳戶與目的地帳戶位於不同的 Azure AD 租使用者，則請使用此方法來設定物件複寫。 
+如果您沒有來源儲存體帳戶的許可權，您可以在目的地帳戶上設定物件複寫，並將包含原則定義的 JSON 檔案提供給其他使用者，以在來源帳戶上建立相同的原則。 例如，如果來源帳戶與目的地帳戶位於不同的 Azure AD 租使用者，則您可以使用此方法來設定物件複寫。
 
 請記住，您必須將 Azure Resource Manager **參與者** 角色指派給目的地儲存體帳戶層級或更高的層級，才能建立原則。 如需詳細資訊，請參閱 Azure 角色型存取控制中的 [azure 內建角色](../../role-based-access-control/built-in-roles.md) (RBAC) 檔。
 
-下表摘要說明每個案例中，JSON 檔案中的原則識別碼所使用的值。
+下表摘要說明每個案例中，JSON 檔案中的原則識別碼和規則識別碼所使用的值。
 
-| 當您為此帳戶建立 JSON 檔案時 .。。 | 將原則識別碼設定為此值 .。。 |
+| 當您為此帳戶建立 JSON 檔案時 .。。 | 將原則識別碼和規則識別碼設定為此值 .。。 |
 |-|-|
-| 目的地帳戶 | 字串值 *預設*值。 Azure 儲存體將為您建立原則識別碼。 |
-| 來源帳戶 | 當您下載包含目的地帳戶上所定義之規則的 JSON 檔案時，所傳回的原則識別碼。 |
+| 目的地帳戶 | 字串值 *預設*值。 Azure 儲存體會為您建立原則識別碼和規則識別碼。 |
+| 來源帳戶 | 當您將目的地帳戶上定義的原則下載為 JSON 檔案時，所傳回的原則識別碼和規則識別碼值。 |
 
 下列範例會使用符合前置詞 *b* 的單一規則來定義目的地帳戶的複寫原則，並設定要複寫之 blob 的最小建立時間。 請記得以自有值來取代角括弧中的值：
 
@@ -307,7 +314,7 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-若要使用 JSON 檔案以 PowerShell 定義來源帳戶的複寫原則，請取出本機檔案，並從 JSON 轉換成物件。 然後呼叫 AzStorageObjectReplicationPolicy 命令來 [設定](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) 來源帳戶的原則，如下列範例所示。 請記得以您自己的值取代角括弧中的值和檔案路徑：
+若要使用 JSON 檔案以 PowerShell 設定來源帳戶的複寫原則，請取出本機檔案，並從 JSON 轉換成物件。 然後呼叫 AzStorageObjectReplicationPolicy 命令來 [設定](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) 來源帳戶的原則，如下列範例所示。 請記得以您自己的值取代角括弧中的值和檔案路徑：
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json
@@ -321,7 +328,24 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-N/A
+若要從 Azure CLI 將目的地帳戶的複寫原則定義寫入 JSON 檔案，請呼叫 [az storage account 或-policy show](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_show) 命令並輸出至檔案。
+
+下列範例會將原則定義寫入至名為 *policy.js*的 JSON 檔案。 請記得以您自己的值取代角括弧中的值和檔案路徑：
+
+```azurecli
+az storage account or-policy show \
+    --account-name <dest-account-name> \
+    --policy-id  <policy-id> > policy.json
+```
+
+若要使用 JSON 檔案，以 Azure CLI 的來源帳戶設定複寫原則，請呼叫 [az storage account 或-policy create](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_create) 命令，並參考檔案 * 上的policy.js* 。 請記得以您自己的值取代角括弧中的值和檔案路徑：
+
+```azurecli
+az storage account or-policy create \
+    -resource-group <resource-group> \
+    --source-account <source-account-name> \
+    --policy @policy.json
+```
 
 ---
 
@@ -360,12 +384,12 @@ Remove-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 ```azurecli
 az storage account or-policy delete \
-    --policy-id $policyid \
+    --policy-id <policy-id> \
     --account-name <source-storage-account> \
     --resource-group <resource-group>
 
 az storage account or-policy delete \
-    --policy-id $policyid \
+    --policy-id <policy-id> \
     --account-name <dest-storage-account> \
     --resource-group <resource-group>
 ```

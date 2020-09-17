@@ -6,19 +6,25 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: 2fbdf4e267e0f9a479a89d6f31e72f09d9e11bb0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b4042e65fb9f7dbff6566bd497f782c3e6d591cb
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322562"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707844"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何搭配 Azure Application Insights Java SDK 使用 Micrometer
+
+> [!NOTE]
+> Application Insights JAVA SDK 不支援春季 Webflux。 
+>
+> Application Insights 不需要檢測的 [JAVA 3.0 代理程式](https://docs.microsoft.com/azure/azure-monitor/app/java-on-premises) 都支援 Webflux 和 Micrometer。 
+
 Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼的計量，並可讓您將資料匯出到您慣用的監視系統。 這篇文章會教導您如何搭配 Application Insights Spring Boot 和非 Spring Boot 應用程式使用 Micrometer。
 
 ## <a name="using-spring-boot-15x"></a>使用 Spring Boot 1.5x
 將以下相依性新增至您的 pom.xml 或 build.gradle 檔案： 
-* [Application Insights 春季開機-入門](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)2.5.0 或更新版本
+* [Application Insights 春季開機-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 或更新版本
 * Micrometer Azure Registry 1.1.0 或更新版本
 * [Micrometer Spring Legacy](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 或更新版本 (這會反向移植 Spring Framework 中的自動設定程式碼)。
 * [ApplicationInsights 資源](./create-new-resource.md)
@@ -58,7 +64,7 @@ Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼�
 將以下相依性新增至您的 pom.xml 或 build.gradle 檔案：
 
 * Application Insights Spring-boot-starter 2.1.2 或更新版本
-* Azure-短期開機-計量-初學者2.0.7 或更新版本
+* Azure-彈簧開機-計量-初學者2.0.7 或更新版本
 * [Application Insights 資源](./create-new-resource.md)
 
 步驟：
@@ -83,7 +89,7 @@ Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼�
 *    針對 Tomcat、JVM、Logback 度量、Log4J 度量、執行時間度量、處理器度量，以及 FileDescriptorMetrics 自動設定的度量。
 *    例如，如果類別路徑上有 Netflix Hystrix，我們也會取得這些計量。 
 *    下列計量可以藉由新增個別的 bean 來提供使用。 
-        - CacheMetrics （CaffeineCache，EhCache2，GuavaCache，HazelcastCache，JCache）     
+        - CacheMetrics (CaffeineCache、EhCache2、GuavaCache、HazelcastCache、JCache)      
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
@@ -116,7 +122,7 @@ Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼�
 
 將以下相依性新增至您的 pom.xml 或 build.gradle 檔案：
 
-* Application Insights Web 自動2.5.0 或更新版本
+* Application Insights Web Auto 2.5.0 或更新版本
 * Micrometer Azure Registry 1.1.0 或更新版本
 * [Application Insights 資源](./create-new-resource.md)
 
@@ -138,7 +144,7 @@ Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼�
         </dependency>
      ```
 
-2. 將檔案放 `ApplicationInsights.xml` 在 resources 資料夾中：
+2. 將檔案放 `ApplicationInsights.xml` 在 [資源] 資料夾中：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -271,6 +277,6 @@ Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要深入瞭解 Micrometer，請參閱官方[Micrometer 檔](https://micrometer.io/docs)。
-* 若要深入瞭解 Azure 上的春天，請參閱[azure 上的官方春季檔](/java/azure/spring-framework/?view=azure-java-stable)。
+* 若要深入瞭解 Micrometer，請參閱官方 [Micrometer 檔](https://micrometer.io/docs)。
+* 若要深入瞭解 Azure 上的春季，請參閱 [azure 上的官方春季檔](/java/azure/spring-framework/?view=azure-java-stable)。
 

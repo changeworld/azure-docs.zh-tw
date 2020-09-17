@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 363068b74bf7639460da4fa80f0e661f3b8a88b9
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5d585ac57a369c994df9871bf731157de7b23212
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568807"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707623"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的預設使用者權限是什麼？
 在 Azure Active Directory (Azure AD) 中，所有使用者都會獲得一組預設權限。 使用者的存取權包含使用者類型、其[角色指派](active-directory-users-assign-role-azure-portal.md)，以及個別物件的擁有權。 本文說明這些預設權限，並包含成員與來賓使用者預設值的比較。 只能在 Azure AD 中的使用者設定中變更預設使用者權限。
@@ -36,7 +36,7 @@ ms.locfileid: "89568807"
 群組 | <ul><li>建立安全性群組<li>建立 Microsoft 365 群組<li>讀取群組的所有屬性<li>讀取非隱藏的群組成員資格<li>讀取已加入群組的隱藏 Microsoft 365 群組成員資格<li>管理使用者擁有之群組的屬性、擁有權及成員資格<li>將來賓新增至擁有的群組<li>管理動態成員資格設定<li>刪除擁有的群組<li>還原擁有的 Microsoft 365 群組</li></ul> | <ul><li>讀取所有非隱藏群組的屬性，包括成員資格和擁有權 (甚至未加入的群組) <li>讀取已加入群組的隱藏 Microsoft 365 群組成員資格<li>依顯示名稱或 ObjectId (搜尋群組（如果允許）) </li></ul> | 沒有權限
 應用程式 | <ul><li>註冊 (建立) 新的應用程式<li>讀取已註冊和企業應用程式的屬性<li>管理擁有之應用程式的應用程式屬性、指派及認證<li>建立或刪除使用者的應用程式密碼<li>刪除擁有的應用程式<li>還原擁有的應用程式</li></ul> | <ul><li>讀取已註冊和企業應用程式的屬性</li></ul> | <ul><li>讀取已註冊和企業應用程式的屬性
 裝置</li></ul> | <ul><li>讀取裝置的所有屬性<li>管理擁有之裝置的所有屬性</li></ul> | 沒有權限 | 沒有權限
-目錄 | <ul><li>讀取所有公司資訊<li>讀取所有網域<li>讀取所有夥伴合約</li></ul> | <ul><li>讀取顯示名稱和已驗證的網域</li></ul> | <ul><li>讀取顯示名稱和已驗證的網域</li></ul>
+目錄 | <ul><li>讀取所有公司資訊<li>讀取所有網域<li>讀取所有夥伴合約</li></ul> | <ul><li>讀取公司顯示名稱<li>讀取所有網域</li></ul> | <ul><li>讀取公司顯示名稱<li>讀取所有網域</li></ul>
 角色和範圍 | <ul><li>讀取所有系統管理角色和成員資格<li>讀取系統管理單元的所有屬性和成員資格</li></ul> | 沒有權限 | 沒有權限
 訂用帳戶 | <ul><li>讀取所有訂用帳戶<li>啟用服務方案成員</li></ul> | 沒有權限 | 沒有權限
 原則 | <ul><li>讀取原則的所有屬性<li>管理擁有之原則的所有屬性</li></ul> | 沒有權限 | 沒有權限
@@ -141,7 +141,7 @@ ms.locfileid: "89568807"
 | microsoft.directory/groups/restore | 還原 Azure Active Directory 中的 groups。 |
 | microsoft.directory/groups/settings/update | 更新 Azure Active Directory 中的 groups.settings 屬性。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要深入瞭解來賓使用者存取限制設定，請參閱 [Azure Active Directory 中的限制來賓存取許可權 (預覽) ](../users-groups-roles/users-restrict-guest-permissions.md)。
 * 如需深入了解如何指派 Azure AD 管理員角色，請參閱[在 Azure Active Directory 中將使用者指派給系統管理員角色](active-directory-users-assign-role-azure-portal.md)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ec1aa165b8fa5d3a249cb525887acf2990136bd3
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 21498f9117ac25356c9381d632644bbaa4d5a74b
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049856"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706670"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV 合作夥伴
 
@@ -37,6 +37,7 @@ ms.locfileid: "89049856"
 | ![標誌](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) 是一種識別碼驗證服務，可啟用即時自動化識別碼驗證，保護客戶資料。 |
 | ![標誌](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) 是一種分析和身分識別驗證提供者，可驗證使用者的身分識別，並根據使用者的裝置提供完整的風險評估。 |
 | ![標誌](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) 是一種檔識別碼和臉部生物特徵辨識驗證解決方案，可讓公司即時符合 *您的客戶* 和身分識別需求。  |
+| ![標誌](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-saviynt.md) 雲端原生平臺使用智慧型分析，並提供跨應用程式整合，以簡化 IT 現代化，並提高安全性、治理和合規性。 企業現代化改變公司審查存取要求、進行存取評論、報告分析，以及簡化認證活動的方式。  |
 | ![標誌](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) 整合可協助您安全地登入，並啟用無密碼 authentication、多重要素驗證和數位授權掃描。|
 | ![標誌](./media/partner-gallery/twilio-logo.png) | [Twilio Authentication 應用程式](./partner-twilio.md) 提供多個解決方案來啟用多重要素驗證 (MFA) 透過 SMS 單次密碼 (OTP) 、以時間為基礎的單次密碼 (TOTP) 和推播通知，以及遵守付款服務指示項 2 (PSD2) 的 SCA 需求。|
 | ![標誌](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) 是以使用者輸入模式為基礎的身分識別驗證和證明提供者，可提供識別碼驗證解決方案來強制執行多重要素驗證，並協助符合 (PSD2) 的付款服務指示詞2的 SCA 需求。 |

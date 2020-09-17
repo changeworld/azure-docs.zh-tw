@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb376ebacdd76fdde30178e19fa3c3062e57da1c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e427a68751cc348a7b0024fb01402bd15ca87d2a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267236"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705719"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>針對 Azure Active Directory 中的企業狀態漫遊設定進行疑難排解
 
@@ -78,9 +78,9 @@ ms.locfileid: "89267236"
 
 在某些情況下，如果設定了 Azure Multi-Factor Authentication，「企業狀態漫遊」可能會無法同步處理資料。 如需這些徵兆的詳細資訊，請參閱支援檔 [>kb3193683](https://support.microsoft.com/kb/3193683)。 
 
-**可能的原因**：如果您的裝置已設定為在 Azure Active Directory 入口網站上需要 Multi-Factor Authentication，則使用密碼登入 Windows 10 裝置時，可能無法同步處理設定。 這類型的 Multi-Factor Authentication 組態是用來保護 Azure 系統管理員帳戶。 系統管理員使用者仍然能夠藉由使用 Microsoft Passport for Work PIN 登入他們的 Windows 10 裝置，或藉由在存取其他 Azure 服務 (例如 Office 365) 時完成 Multi-Factor Authentication，來進行同步處理。
+**可能的原因**：如果您的裝置已設定為在 Azure Active Directory 入口網站上需要 Multi-Factor Authentication，則使用密碼登入 Windows 10 裝置時，可能無法同步處理設定。 這類型的 Multi-Factor Authentication 組態是用來保護 Azure 系統管理員帳戶。 系統管理員使用者仍可使用其 Microsoft Passport for Work PIN 來登入 Windows 10 裝置，或在存取其他 Azure 服務（例如 Microsoft 365）時完成 Multi-Factor Authentication，以進行同步處理。
 
-**可能的問題**：如果系統管理員設定 Active Directory 同盟服務 Multi-Factor Authentication 條件式存取原則，且裝置上的存取權杖到期，則同步處理可能會失敗。 務必使用 Microsoft Passport for Work PIN 來登入和登出，或在存取其他 Azure 服務 (例如 Office 365) 時完成 Multi-Factor Authentication。
+**可能的問題**：如果系統管理員設定 Active Directory 同盟服務 Multi-Factor Authentication 條件式存取原則，且裝置上的存取權杖到期，則同步處理可能會失敗。 請確定您使用 Microsoft Passport for Work PIN 來登入並登出，或在存取其他 Azure 服務（例如 Microsoft 365）時完成 Multi-Factor Authentication。
 
 ### <a name="event-viewer"></a>事件檢視器
 

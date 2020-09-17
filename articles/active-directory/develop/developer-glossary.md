@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 781aa48442d80e55128314dd1e271532162df32c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178819"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705991"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 身分識別平臺開發人員詞彙
 
@@ -154,7 +154,7 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別�
 
 如 [OAuth2 授權架構][OAuth2-Role-Def]所定義，這是裝載受保護資源的伺服器，且能夠接受並回應出示[存取權杖](#access-token)的[用戶端應用程式](#client-application)所提出的受保護資源要求。 它也稱為「受保護的資源伺服器」或「資源應用程式」。
 
-資源伺服器會使用 OAuth 2.0 授權架構公開 API，並透過[範圍](#scopes)和[角色](#roles)強制執行其受保護資源的存取權。 範例包括可用來存取 Azure AD 租使用者資料的 [MICROSOFT GRAPH API][Microsoft-Graph] ，以及提供存取郵件和行事曆等資料的 Office 365 api。
+資源伺服器會使用 OAuth 2.0 授權架構公開 API，並透過[範圍](#scopes)和[角色](#roles)強制執行其受保護資源的存取權。 範例包括 [MICROSOFT GRAPH API][Microsoft-Graph] ，可提供 Azure AD 租使用者資料的存取權，以及提供存取電子郵件和行事曆等資料的 Microsoft 365 api。
 
 和用戶端應用程式一樣，資源應用程式的身分識別組態是透過 Azure AD 租用戶中的 [註冊](#application-registration) 程序來建立，可提供應用程式和服務主體物件。 某些 Microsoft 提供的 Api （例如 Microsoft Graph API）會在布建期間，于所有租使用者中提供預先註冊的服務主體。
 
@@ -172,7 +172,7 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別�
 
 範圍是資源所定義的字串 (例如 "Mail.Read"、"Directory.ReadWrite.All")，可在 [Azure 入口網站][AZURE-portal]中透過資源的[應用程式資訊清單](#application-manifest)進行管理，並且會儲存在資源的 [oauth2Permissions 屬性][Graph-Sp-Resource]。 Azure 入口網站也可用來將用戶端應用程式[委派的權限](#permissions)設定為存取某個範圍。
 
-命名慣例的最佳作法是使用「resource.operation.constraint」格式。 如需 Microsoft Graph API 所公開之範圍的詳細討論，請參閱 [圖形 API 許可權範圍][Graph-Perm-Scopes]。 如需 Office 365 服務所公開的範圍，請參閱 [Office 365 API 權限參考][O365-Perm-Ref]。
+命名慣例的最佳作法是使用「resource.operation.constraint」格式。 如需 Microsoft Graph API 所公開之範圍的詳細討論，請參閱 [圖形 API 許可權範圍][Graph-Perm-Scopes]。 針對 Microsoft 365 服務所公開的範圍，請參閱 [MICROSOFT 365 API 許可權參考][O365-Perm-Ref]。
 
 ## <a name="security-token"></a>安全性權杖
 
@@ -202,7 +202,7 @@ Azure AD 目錄的執行個體會稱為 Azure AD 租用戶。 它提供數個功
 * 驗證使用者帳戶和已註冊的應用程式
 * 支援各種通訊協定 (包括 OAuth2 和 SAML) 所需的 REST 端點包括[授權端點](#authorization-endpoint)、[權杖端點](#token-endpoint)以及[多租用戶應用程](#multi-tenant-application)所使用的「通用」端點。
 
-Azure AD 租用戶會在註冊期間建立/與 Azure 和 Office 365 訂用帳戶產生關聯，藉此提供訂用帳戶的「身分識別與存取權管理」功能。 Azure 訂用帳戶管理員也可以透過 Azure 入口網站，建立其他 Azure AD 租用戶。 如需各種可存取租用戶之方式的詳細資訊，請參閱[如何取得 Azure Active Directory 租用戶][AAD-How-To-Tenant]。 如需訂用帳戶與 Azure AD 租使用者之間關聯性的詳細資訊，請參閱 [將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租使用者][AAD-How-Subscriptions-Assoc] ，以及如何將訂用帳戶關聯或新增至 Azure AD 租使用者的指示。
+Azure AD 租使用者會在註冊期間建立/與 Azure 和 Microsoft 365 訂用帳戶建立關聯，以提供訂用帳戶的身分識別 & 存取管理功能。 Azure 訂用帳戶管理員也可以透過 Azure 入口網站，建立其他 Azure AD 租用戶。 如需各種可存取租用戶之方式的詳細資訊，請參閱[如何取得 Azure Active Directory 租用戶][AAD-How-To-Tenant]。 如需訂用帳戶與 Azure AD 租使用者之間關聯性的詳細資訊，請參閱 [將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租使用者][AAD-How-Subscriptions-Assoc] ，以及如何將訂用帳戶關聯或新增至 Azure AD 租使用者的指示。
 
 ## <a name="token-endpoint"></a>權杖端點
 

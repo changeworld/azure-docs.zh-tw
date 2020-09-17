@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a80dafda39c0b37b1a7477b93d7f649fa1beeade
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 0126c5348a2acaebea0400a94ca0a1d14a1bf6ff
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783632"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707538"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中建立新的存取套件
 
@@ -83,7 +83,7 @@ ms.locfileid: "88783632"
 
     您正在建立的存取套件和其中包含的任何資源，將會新增至新的目錄。 您也可以稍後再加入其他目錄擁有者。
 
-1. 按 [下一步] 。
+1. 按一下 [下一步]。
 
 ## <a name="resource-roles"></a>資源角色
 
@@ -99,13 +99,13 @@ ms.locfileid: "88783632"
 
     如果您要在現有的目錄中建立存取套件，您可以選取已在目錄中的任何資源，而不會擁有該資源。
 
-    如果您是全域管理員、使用者系統管理員或目錄擁有者，您可以選擇其他選項來選取您所擁有但尚未存在於目錄中的資源。 如果您選取目前不在所選目錄中的資源，則也會將這些資源新增至目錄，供其他目錄管理員用來建立存取套件。 如果您只想要選取目前在所選目錄中的資源，請核取 [選取] 窗格頂端的 [ **查看** ] 核取方塊。
+    如果您是全域管理員、使用者系統管理員或目錄擁有者，您可以選擇其他選項來選取您所擁有但尚未存在於目錄中的資源。 如果您選取目前不在所選目錄中的資源，則也會將這些資源新增至目錄，供其他目錄管理員用來建立存取套件。 若要查看所有可新增至目錄的資源，請勾選 [選取] 窗格頂端的 [ **全部查看** ] 核取方塊。 如果您只想要選取目前在所選目錄中的資源，請將核取方塊 **顯示** 為 [所有未核取的 (預設狀態]) 。
 
 1. 當您選取資源之後，請在 [ **角色** ] 清單中選取您想要為資源指派給使用者的角色。
 
     ![存取套件-資源角色選取](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
-1. 按 [下一步] 。
+1. 按一下 [下一步]。
 
 ## <a name="requests"></a>Requests
 
@@ -135,11 +135,11 @@ ms.locfileid: "88783632"
 
 您也可以使用 Microsoft Graph 建立存取套件。  具有具有委派許可權之應用程式的適當角色中的使用者 `EntitlementManagement.ReadWrite.All` 可以呼叫 API 來
 
-1. [列出目錄中的 accessPackageResources](/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) ，並針對尚未存在於目錄中的任何資源 [建立 accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) 。
-1. [列出](/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) accessPackageCatalog 中每個 AccessPackageResource 的 accessPackageResourceRoles。 接著，在建立 accessPackageResourceRoleScope 時，會使用此角色清單來選取角色。
-1. [建立 accessPackage](/graph/api/accesspackage-post?view=graph-rest-beta)。
-1. [建立 accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta)。
-1. 針對存取套件中所需的每個資源角色[建立 accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) 。
+1. [列出目錄中的 accessPackageResources](https://docs.microsoft.com/graph/api/accesspackagecatalog-list?view=graph-rest-beta&tabs=http) ，並針對尚未存在於目錄中的任何資源 [建立 accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta&tabs=http) 。
+1. [列出](https://docs.microsoft.com/graph/api/accesspackage-list-accesspackageresourcerolescopes?view=graph-rest-beta&tabs=http) accessPackageCatalog 中每個 AccessPackageResource 的 accessPackageResourceRoles。 接著，在建立 accessPackageResourceRoleScope 時，會使用此角色清單來選取角色。
+1. [建立 accessPackage](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta)。
+1. [建立 accessPackageAssignmentPolicy](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta&tabs=http)。
+1. 針對存取套件中所需的每個資源角色[建立 accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta&tabs=http) 。
 
 ## <a name="next-steps"></a>後續步驟
 

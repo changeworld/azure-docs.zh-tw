@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 662bda03fc2d389ed316bd2c7141d5e6a30cef1a
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 40d299049a0a1bbff81c412a5beb84f28e64ff46
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814591"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706297"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>在 Azure Active Directory 應用程式庫中列出您的應用程式
 
@@ -35,7 +35,7 @@ ms.locfileid: "88814591"
 - 共同客戶可取得逐步設定教學課程。
 - 使用系統進行跨網域身分識別管理的客戶 ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) 可以針對相同的應用程式使用布建。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 針對同盟應用程式 (開啟識別碼和 SAML/WS-饋送) ，應用程式必須支援軟體即服務 (SaaS) 模型，才能列在 Azure AD 應用程式庫中。 企業資源庫應用程式必須支援多個客戶設定，而不是任何特定客戶。
 - 針對 Open ID Connect，必須 multitenanted 應用程式，而且必須為應用程式正確地執行 [Azure AD 同意架構](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) 。 使用者可以將登入要求傳送至一般端點，讓任何客戶都能為應用程式提供同意。 您可以根據租用戶識別碼和在權杖中收到的使用者 UPN 來控制使用者存取權。
@@ -124,7 +124,7 @@ ms.locfileid: "88814591"
 
 ## <a name="update-or-remove-an-existing-listing"></a>更新或移除現有清單
 
-若要在 Azure AD 應用程式資源庫中更新或移除現有的應用程式，您必須先在 [應用程式網路入口網站](https://microsoft.sharepoint.com/teams/apponboarding/Apps)中提交要求。 如果您有 Office 365 帳戶，請使用該帳戶登入此入口網站。 如果沒有，請使用您的 Microsoft 帳戶（例如 Outlook 或 Hotmail）登入。
+若要在 Azure AD 應用程式資源庫中更新或移除現有的應用程式，您必須先在 [應用程式網路入口網站](https://microsoft.sharepoint.com/teams/apponboarding/Apps)中提交要求。 如果您有公司或學校帳戶，請使用該帳戶登入此入口網站。 如果沒有，請使用您的 Microsoft 帳戶（例如 Outlook 或 Hotmail）登入。
 
 - 選取適當的選項，如下圖所示。
 

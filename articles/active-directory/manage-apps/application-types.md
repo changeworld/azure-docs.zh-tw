@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 955efe45be27fa2f4e738066bb3b69b3604be33a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5229b123986149903d562bc0b3d6902c0136f647
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400716"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707878"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>使用您的 Azure AD 租使用者來查看身分識別管理的應用程式
 [應用程式管理的快速入門系列](view-applications-portal.md)將帶領您瞭解基本概念。 在其中，您將瞭解如何使用您的 Azure AD 租使用者來查看身分識別管理的所有應用程式。 本文將更深入地探討您將找到的應用程式類型。
@@ -27,7 +27,7 @@ ms.locfileid: "89400716"
    - **Azure AD-應用程式註冊** –使用 Azure AD 入口網站上的 **應用程式註冊** 選項，將應用程式新增至您的租使用者。 通常會使用 Open ID Connect 和 OAuth 標準來自訂開發的應用程式。
    - **應用程式 Proxy 應用程式** – 執行於您的內部部署環境中，而您想要讓使用者能夠安全地從外部對其進行單一登入的應用程式
 - 註冊或登入時，與 Azure Active Directory 整合的協力廠商應用程式。 其中一個範例是 [Smartsheet](https://app.smartsheet.com/b/home) 或 [DocuSign](https://www.docusign.net/member/MemberLogin.aspx)。
-- Microsoft 應用程式，例如 Microsoft 365 或 Office 365。
+- Microsoft 應用程式（例如 Microsoft 365）。
 - 當您使用[應用程式登錄](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)建立自訂開發的應用程式來新增應用程式註冊時
 - 當您使用 [V2.0 應用程式註冊入口網站](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)建立自訂開發的應用程式來新增應用程式註冊時
 - 當您新增應用程式時，您正在使用 Visual Studio 的 [ASP.NET Authentication 方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) 進行開發，或 [已連線的服務](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/)
@@ -38,5 +38,5 @@ ms.locfileid: "89400716"
 
 深入瞭解如何將應用程式新增至您的目錄，以及如何 [將應用程式新增至 Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [使用 Azure Active Directory 來管理應用程式](what-is-application-management.md)

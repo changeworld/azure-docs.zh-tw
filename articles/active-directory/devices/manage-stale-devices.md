@@ -1,6 +1,6 @@
 ---
 title: 如何在 Azure AD 中管理過時的裝置 | Microsoft Docs
-description: 瞭解如何在 Azure Active Directory 中，從已註冊裝置的資料庫中移除過時裝置。
+description: 瞭解如何在 Azure Active Directory 中移除已註冊裝置的資料庫中的過時裝置。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc8f599860b6095e1bab90e8e29818d8079e89a9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9b327e388366fe3129695a5c1780600e5903508a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184936"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705532"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：管理 Azure AD 中的過時裝置
 
@@ -30,7 +30,7 @@ ms.locfileid: "88184936"
 過時裝置是已向 Azure AD 註冊，但在特定時間範圍內未存取任何雲端應用程式的裝置。 過時裝置會影響您管理和支援租用戶中裝置和使用者的能力，因為： 
 
 - 重複的裝置會讓技術服務人員難以識別目前正在使用的裝置。
-- 增加的裝置數目會造成不必要的裝置回寫增加 Azure AD 連接同步處理的時間。
+- 增加的裝置數目會產生不必要的裝置回寫，Azure AD 連接同步處理的時間增加。
 - 為了具備一般防護並遵循合規性，您的裝置應處於乾淨的狀態。 
 
 Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生命週期原則。
@@ -43,11 +43,11 @@ Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生�
 
 活動時間戳記的評估會在裝置有驗證嘗試時觸發。 Azure AD 會在以下時機評估活動時間戳記：
 
-- 已觸發需要[受管理裝置](../conditional-access/require-managed-devices.md)或[已核准用戶端應用程式](../conditional-access/app-based-conditional-access.md)的條件式存取原則。
+- 已觸發要求 [受管理裝置](../conditional-access/require-managed-devices.md) 或 [已核准用戶端應用程式](../conditional-access/app-based-conditional-access.md) 的條件式存取原則。
 - 已加入 Azure AD 或已加入混合式 Azure AD 的 Windows 10 裝置正在網路上運作。 
 - Intune 受控裝置已簽入至服務。
 
-如果啟用時間戳的現有值與目前的值之間的差異超過14天 (+/-5 天的變異數) ，則會將現有的值取代為新的值。
+如果啟用時間戳的現有值與目前值之間的差異超過14天 (+/-5 天的變異數) ，則會將現有的值取代為新值。
 
 ## <a name="how-do-i-get-the-activity-timestamp"></a>如何取得活動時間戳記？
 
@@ -57,7 +57,7 @@ Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生�
 
     ![活動時間戳記](./media/manage-stale-devices/01.png)
 
-- [Get-azureaddevice](/powershell/module/azuread/Get-AzureADDevice) Cmdlet
+- [Get-azureaddevice](/powershell/module/azuread/Get-AzureADDevice)指令 Cmdlet
 
     ![活動時間戳記](./media/manage-stale-devices/02.png)
 
@@ -77,7 +77,7 @@ Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生�
 
 ### <a name="timeframe"></a>時間範圍
 
-定義時間範圍，這會是過時裝置的指標。 定義您的時間範圍時，請將已記下的視窗納入考慮，將啟用時間戳更新為您的值。 例如，您不應該考慮小於21天的時間戳記 (包含變異數) 做為過時裝置的指標。 有些狀況會使得沒有過時的裝置看起來已過時。 例如，受影響裝置的擁有者可能在度假或請病假。  而這超過您過時裝置的時間範圍。
+定義時間範圍，這會是過時裝置的指標。 定義您的時間範圍時，請考慮將啟用時間戳更新至您的值時所記下的視窗。 例如，您不應該考慮超過21天的時間戳記， (包含變異數) 作為過時裝置的指標。 有些狀況會使得沒有過時的裝置看起來已過時。 例如，受影響裝置的擁有者可能在度假或請病假。  而這超過您過時裝置的時間範圍。
 
 ### <a name="disable-devices"></a>停用裝置
 
@@ -89,22 +89,22 @@ Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生�
 
 ### <a name="system-managed-devices"></a>由系統管理的裝置
 
-請勿刪除由系統管理的裝置。 這些通常是 Autopilot 之類的裝置。 一旦刪除，就無法重新布建這些裝置。 新的 `Get-AzureADDevice` Cmdlet 會根據預設排除由系統管理的裝置。 
+請勿刪除由系統管理的裝置。 這些通常是裝置，例如 Autopilot。 一旦刪除後，就無法重新布建這些裝置。 新的 `Get-AzureADDevice` Cmdlet 會根據預設排除由系統管理的裝置。 
 
-### <a name="hybrid-azure-ad-joined-devices"></a>混合式 Azure AD 已加入裝置
+### <a name="hybrid-azure-ad-joined-devices"></a>混合式 Azure AD 加入裝置
 
 已加入混合式 Azure AD 的裝置應遵循原則來管理內部部署的過時裝置。 
 
 若要清除 Azure AD：
 
 - **Windows 10 裝置** - 在內部部署 AD 中停用或刪除 Windows 10 裝置，並讓 Azure AD Connect 將變更的裝置狀態同步至 Azure AD。
-- **Windows 7/8** -先停用或刪除內部部署 AD 中的 Windows 7/8 裝置。 您無法使用 Azure AD Connect 來停用或刪除 Azure AD 中的 Windows 7/8 裝置。 相反地，當您在內部部署中進行變更時，您必須在 Azure AD 中停用/刪除。
+- **Windows 7/8** -先停用或刪除內部部署 AD 中的 windows 7/8 裝置。 您無法使用 Azure AD Connect 來停用或刪除 Azure AD 中的 Windows 7/8 裝置。 相反地，當您在內部部署中進行變更時，您必須在 Azure AD 中停用/刪除。
 
 > [!NOTE]
->* 刪除內部部署 AD 或 Azure AD 中的裝置並不會移除用戶端上的註冊。 它只會防止使用裝置做為身分識別來存取資源 (例如條件式存取) 。 閱讀有關如何[移除用戶端註冊](faq.md#hybrid-azure-ad-join-faq)的其他資訊。
->* 只有在 Azure AD 中刪除 Windows 10 裝置，才會使用 Azure AD connect，但以「擱置」狀態的新物件，從內部部署重新同步處理裝置。 裝置上需要重新註冊。
->* 從 Windows 10/伺服器2016裝置的同步範圍移除裝置，將會刪除 Azure AD 裝置。 將其重新加入同步範圍，會將新的物件置於「擱置」狀態。 需要重新註冊裝置。
->* 如果您不使用 Windows 10 裝置的 Azure AD Connect 來同步處理 (例如，只使用 AD FS 進行註冊) ，您必須管理與 Windows 7/8 裝置類似的生命週期。
+>* 刪除內部部署 AD 或 Azure AD 中的裝置並不會移除用戶端上的註冊。 它只會防止使用裝置作為身分識別來存取資源 (例如，條件式存取) 。 閱讀有關如何在 [用戶端上移除註冊](faq.md#hybrid-azure-ad-join-faq)的其他資訊。
+>* 只有在 Azure AD 中刪除 Windows 10 裝置，將會使用 Azure AD connect，而非處於「擱置」狀態的新物件，從內部部署重新同步處理裝置。 需要重新註冊裝置。
+>* 從 Windows 10/伺服器2016裝置的同步範圍移除裝置，將會刪除 Azure AD 裝置。 將其新增回同步範圍將會將新物件置於「擱置」狀態。 需要重新註冊裝置。
+>* 如果您未使用 Windows 10 裝置的 Azure AD Connect 來同步處理 (例如，只使用 AD FS 進行註冊) ，您必須管理與 Windows 7/8 裝置類似的生命週期。
 
 
 ### <a name="azure-ad-joined-devices"></a>Azure AD 加入裝置
@@ -112,28 +112,28 @@ Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生�
 在 Azure AD 中停用或刪除加入 Azure AD 的裝置。
 
 > [!NOTE]
->* 刪除 Azure AD 裝置並不會移除用戶端上的註冊。 它只會防止使用裝置做為身分識別來存取資源， (例如條件式存取) 。 
->* 閱讀更多有關[如何在 Azure AD 上](faq.md#azure-ad-join-faq)退出的資訊 
+>* 刪除 Azure AD 裝置並不會移除用戶端上的註冊。 它只會防止使用裝置作為身分識別來存取資源， (例如條件式存取) 。 
+>* 深入瞭解 [如何退出 Azure AD](faq.md#azure-ad-join-faq) 
 
 ### <a name="azure-ad-registered-devices"></a>Azure AD 註冊裝置
 
 在 Azure AD 中停用或刪除 Azure AD 註冊裝置。
 
 > [!NOTE]
->* 在 Azure AD 中刪除 Azure AD 註冊的裝置並不會移除用戶端上的註冊。 它只會防止使用裝置做為身分識別來存取資源 (例如條件式存取) 。
->* 進一步瞭解[如何移除用戶端上的註冊](faq.md#azure-ad-register-faq)
+>* 在 Azure AD 中刪除 Azure AD 註冊的裝置並不會移除用戶端上的註冊。 它只會防止使用裝置作為身分識別來存取資源 (例如，條件式存取) 。
+>* 深入瞭解 [如何移除用戶端上的註冊](faq.md#azure-ad-register-faq)
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>在 Azure 入口網站中清除過時裝置  
 
-雖然您可以在 Azure 入口網站中清除過時裝置，但使用 PowerShell 指令碼來處理此程序會更有效率。 使用最新的 PowerShell V1 模組來使用時間戳篩選器，並篩選掉系統管理的裝置，例如 Autopilot。 目前尚不建議使用 PowerShell V2。
+雖然您可以在 Azure 入口網站中清除過時裝置，但使用 PowerShell 指令碼來處理此程序會更有效率。 使用最新的 PowerShell V1 模組來使用時間戳篩選器，並篩選出系統管理的裝置（例如 Autopilot）。 目前尚不建議使用 PowerShell V2。
 
 典型的執行階段包含下列步驟：
 
-1. 使用[AzureAD](/powershell/module/azuread/connect-azuread) Cmdlet 連接到 Azure Active Directory
+1. 使用 [AzureAD](/powershell/module/azuread/connect-azuread) Cmdlet 連接到 Azure Active Directory
 1. 取得裝置清單
-1. 使用[get-azureaddevice](/powershell/module/azuread/Set-AzureADDevice)指令程式停用裝置 (停用-AccountEnabled 選項) 。 
+1. 使用 [get-azureaddevice](/powershell/module/azuread/Set-AzureADDevice) 指令程式停用裝置 (停用-AccountEnabled 選項) 。 
 1. 須等到您選擇的寬限期 (無論多久) 結束，才能刪除裝置。
-1. 使用[get-azureaddevice](/powershell/module/azuread/Remove-AzureADDevice) Cmdlet 來移除裝置。
+1. 使用 [get-azureaddevice](/powershell/module/azuread/Remove-AzureADDevice) Cmdlet 移除裝置。
 
 ### <a name="get-the-list-of-devices"></a>取得裝置清單
 
@@ -162,10 +162,10 @@ Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-ob
 
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>為什麼我應該擔心 Windows Autopilot 裝置？
 
-當您刪除與 Windows Autopilot 物件相關聯的 Azure AD 裝置時，如果未來將會重新決定裝置的用途，就會發生下列三種情況：
-- 透過 Windows Autopilot 使用者驅動的部署，而不使用白色手套，將會建立新的 Azure AD 裝置，但不會將它標記為 ZTDID。
-- 使用 Windows Autopilot 自我部署模式部署時，它們將會失敗，因為找不到關聯 Azure AD 裝置。   (這是一種安全性機制，可確保沒有任何「假冒」的裝置嘗試加入沒有認證的 Azure AD。 ) 失敗會指出 ZTDID 不相符。
-- 使用 Windows Autopilot 白手套部署時，它們將會失敗，因為找不到相關聯的 Azure AD 裝置。  (幕後，白色手套部署會使用相同的自我部署模式進程，因此會強制執行相同的安全性機制。 ) 
+當您刪除與 Windows Autopilot 物件相關聯的 Azure AD 裝置時，如果未來將會重新規劃裝置，則可能會發生下列三種情況：
+- 使用 Windows Autopilot 使用者導向的部署，而不使用白色手套，將會建立新的 Azure AD 裝置，但不會以 ZTDID 標記。
+- 使用 Windows Autopilot 自我部署模式部署時，將會失敗，因為找不到關聯 Azure AD 裝置。   (這種安全性機制，可確保沒有任何「冒名頂替」的裝置嘗試加入沒有認證的 Azure AD。 ) 失敗將表示 ZTDID 不相符。
+- 在 Windows Autopilot 的白色手套部署中，因為找不到相關聯的 Azure AD 裝置，所以會失敗。  (幕後的白色手套部署會使用相同的自我部署模式進程，因此會強制執行相同的安全性機制。 ) 
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>如何得知已加入的所有裝置類型？
 
@@ -175,9 +175,9 @@ Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-ob
 
 任何使用裝置對 Azure AD 進行驗證的驗證都會遭到拒絕。 常見範例包括：
 
-- **混合式 Azure AD 加入的裝置**-使用者可能可以使用裝置來登入其內部部署網域。 不過，他們無法存取 Azure AD 資源，例如 Office 365。
+- **混合式 Azure AD 加入的裝置** -使用者可能可以使用裝置來登入其內部部署網域。 不過，他們無法存取 Azure AD 資源，例如 Microsoft 365。
 - **加入 Azure AD 的裝置** - 使用者不能使用裝置來登入。 
-- **行動裝置** - 使用者無法存取 Azure AD 資源，例如 Office 365。 
+- 行動**裝置**-使用者無法存取 Azure AD 資源，例如 Microsoft 365。 
 
 ## <a name="next-steps"></a>後續步驟
 

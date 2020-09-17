@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bccdb830fba4d55266dc9eff8f06c5ac4e3f2a34
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115759"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706178"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>將應用程式加入至 Azure AD 的方式和原因
 
@@ -59,7 +59,7 @@ ms.locfileid: "88115759"
 * 本機使用者和群組應用程式角色指派的記錄
 * 針對已授與應用程式的本機使用者和系統管理員權限所做的記錄
   * 例如：應用程式用來存取特定使用者電子郵件的權限
-* 本機原則的記錄，包括條件式存取原則
+* 包含條件式存取原則的本機原則記錄
 * 應用程式替代本機設定的記錄
   * 宣告轉換規則
   * 屬性對應 (使用者佈建)
@@ -70,19 +70,19 @@ ms.locfileid: "88115759"
 
 * 當使用者登入與 Azure AD 整合的第三方應用程式時
   * 登入期間，系統會要求使用者為應用程式提供可用來存取其設定檔的權限以及其他權限。 第一個同意的人就會將代表應用程式的服務主體新增至目錄。
-* 當使用者登入 Microsoft 線上服務時，例如 [Office 365](https://products.office.com/)
-  * 訂閱或開始試用 Office 365 時，目錄中會建立一或多個服務主體，代表用來傳遞所有 Office 365 相關功能的各種服務。
-  * 某些 Office 365 服務(如 SharePoint) 會持續建立服務主體，以允許元件之間的安全通訊，包括工作流程。
+* 當使用者登入 Microsoft 線上服務例如 [Microsoft 365](https://products.office.com/)
+  * 當您訂閱 Microsoft 365 或開始試用時，會在目錄中建立一或多個服務主體，代表用來傳遞所有與 Microsoft 365 相關聯之功能的各種服務。
+  * 某些 Microsoft 365 服務（例如 SharePoint）會持續建立服務主體，以允許元件之間的安全通訊，包括工作流程。
 * 當系統管理員從應用程式庫新增應用程式時 (這也會建立基礎應用程式物件)
 * 新增應用程式來使用 [Azure AD 應用程式 Proxy](../manage-apps/application-proxy.md)
 * 連接應用程式以便啟用 SAML 單一登入或密碼單一登入 (SSO)
-* 以程式設計方式透過 Microsoft Graph API 或 PowerShell
+* 透過 Microsoft Graph API 或 PowerShell 以程式設計方式
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>應用程式物件和服務主體彼此之間如何建立關聯性？
 
 應用程式在其主目錄中有一個應用程式物件，可供其運作所在每個目錄 (包括應用程式的主目錄) 中的一或多個服務主體來參考。
 
-![顯示應用程式物件和服務主體之間的關聯性][apps_service_principals_directory]
+![顯示應用程式物件與服務主體之間的關聯性][apps_service_principals_directory]
 
 在上圖中，Microsoft 會在內部維護兩個用來發佈應用程式的目錄 (顯示在左)：
 
@@ -99,7 +99,7 @@ ms.locfileid: "88115759"
 
 ### <a name="notes-and-exceptions"></a>附註及例外狀況
 
-* 並非所有服務主體都會往回指向應用程式物件。 原先建置 Azure AD 時提供給應用程式的服務會有更多限制，而且服務主體就足以建立應用程式識別碼。 原先服務主體的功能狀況接近 Windows Server Active Directory 服務帳戶。 基於這個原因，您還是可以透過不同路徑來建立服務主體 (例如使用 Azure AD PowerShell)，而無需先建立應用程式物件。 Microsoft Graph API 需要應用程式物件，才能建立服務主體。
+* 並非所有服務主體都會往回指向應用程式物件。 原先建置 Azure AD 時提供給應用程式的服務會有更多限制，而且服務主體就足以建立應用程式識別碼。 原先服務主體的功能狀況接近 Windows Server Active Directory 服務帳戶。 基於這個原因，您還是可以透過不同路徑來建立服務主體 (例如使用 Azure AD PowerShell)，而無需先建立應用程式物件。 Microsoft Graph API 需要應用程式物件才能建立服務主體。
 * 並非所有上述資訊目前都處於以程式設計方式公開的狀態。 以下功能僅適用於 UI：
   * 宣告轉換規則
   * 屬性對應 (使用者佈建)
@@ -116,7 +116,7 @@ ms.locfileid: "88115759"
 * 使用同盟或密碼的 SSO
 * 使用者佈建與同步處理
 * 角色型存取控制 - 使用目錄來定義應用程式角色，才能在應用程式中執行角色型授權檢查
-* OAuth 授權服務 - Office 365 和其他 Microsoft 應用程式會用它來授與對 API/資源的存取權限
+* OAuth 授權服務-由 Microsoft 365 和其他 Microsoft 應用程式使用，以授權存取 Api/資源
 * 應用程式發佈與 Proxy - 將應用程式從私人網路發佈到網際網路
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>誰有權將應用程式加入我的 Azure AD 執行個體？

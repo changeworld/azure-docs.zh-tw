@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd98cab50c3239d3202e6feabe18f45a4240293
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: cccabaf069a3027e615892e36e218f865a6c983a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641172"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706662"
 ---
 # <a name="compare-remote-access-solutions"></a>比較遠端存取解決方案
 
@@ -59,7 +59,7 @@ Azure Active Directory 應用程式 Proxy 是 Microsoft 提供的兩個遠端存
    - 條件式存取和 Multi-Factor Authentication 等功能很容易啟用
 - 周邊網路中沒有任何元件
 - 沒有所需的輸入連線
-- 您的使用者可以針對所有應用程式移至其中一個我的應用程式頁面，包括 O365、Azure AD 整合的 SaaS 應用程式，以及您的內部部署 web 應用程式。 
+- 您的使用者可以針對所有應用程式移至其中一個我的應用程式頁面，包括 Microsoft 365、Azure AD 整合的 SaaS 應用程式，以及您的內部部署 web 應用程式。 
 
 
 ## <a name="next-steps"></a>後續步驟

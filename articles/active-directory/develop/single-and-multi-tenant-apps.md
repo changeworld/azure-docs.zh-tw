@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: ec59383f9ca2b71ec9f4b6df3ab2e24c6b52473b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfb9cb80bdcd2854a3ddd5b273806fbcdda916b0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881360"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705634"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory 中的租用戶
 
@@ -35,14 +35,14 @@ Azure Active Directory (Azure AD) 會將例如使用者和應用程式的物件�
 | 對象 | 單一/多租用戶 | 誰可以登入 | 
 |----------|--------| ---------|
 | 只有這個目錄中的帳戶 | 單一租用戶 | 您目錄中的所有使用者和來賓帳戶都可以使用您的應用程式或 API。<br>若您的目標對象是組織內部的人員，請使用此選項。** |
-| 任何 Azure AD 目錄中的帳戶 | 多租用戶 | 所有使用者及來賓只要具備 Microsoft 提供的公司或學校帳戶，都能使用您的應用程式或 API。 這包括使用 Office 365 的學校及公司。<br>若您的目標對象是商務界或教育界的客戶，請使用此選項。** |
-| 任何 Azure AD 目錄中的帳戶和個人 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com) | 多租用戶 | 任何使用者只要具有公司、學校或個人的 Microsoft 帳戶，都能使用您的應用程式或 API。 這也包括了使用 Office 365 的學校和公司，以及用來登入例如 Xbox 和 Skype 服務的個人帳戶。<br>使用此選項將目標設為 Microsoft 帳戶的最廣泛集合。** | 
+| 任何 Azure AD 目錄中的帳戶 | 多租用戶 | 所有使用者及來賓只要具備 Microsoft 提供的公司或學校帳戶，都能使用您的應用程式或 API。 這包括使用 Microsoft 365 的學校和企業。<br>若您的目標對象是商務界或教育界的客戶，請使用此選項。** |
+| 任何 Azure AD 目錄中的帳戶和個人 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com) | 多租用戶 | 任何使用者只要具有公司、學校或個人的 Microsoft 帳戶，都能使用您的應用程式或 API。 它包括使用 Microsoft 365 的學校和企業，以及用來登入 Xbox 和 Skype 等服務的個人帳戶。<br>使用此選項將目標設為 Microsoft 帳戶的最廣泛集合。** | 
 
 ## <a name="best-practices-for-multi-tenant-apps"></a>多租用戶應用程式的最佳做法
 
 建置絕佳的多租用戶應用程式是一項挑戰，因為 IT 系統管理員在其租用戶中可以設定許多不同的原則。 如果您選擇建置多租用戶應用程式，請遵循這些最佳做法：
 
-* 在已設定[條件式存取原則](../azuread-dev/conditional-access-dev-guide.md)的租使用者中測試您的應用程式。
+* 在已設定 [條件式存取原則](../azuread-dev/conditional-access-dev-guide.md)的租使用者中測試您的應用程式。
 * 請遵循最低使用者存取權的原則，以確保您的應用程式只會要求實際需要的權限。 請避免要求需要系統管理員同意的權限，因為這樣可能會在某些組織中完全阻止使用者取得您的應用程式。 
 * 請為您公開為應用程式一部分的任何權限，提供適當的名稱和描述。 這有助於使用者和系統管理員在他們嘗試使用您應用程式的 API 時，知道他們同意了什麼。 如需詳細資訊，請參閱[權限指南](v2-permissions-and-consent.md)中的最佳做法一節。
 

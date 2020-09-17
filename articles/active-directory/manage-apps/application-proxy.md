@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 82e984b629c8d838ba179b25a78262eccf078a04
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 65e1b1b5e84c3344a082b73b7768935d788a3394
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377857"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707402"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>透過 Azure AD 應用程式 Proxy 遠端存取內部部署應用程式
 
@@ -24,7 +24,7 @@ Azure Active Directory 應用程式 Proxy 為內部部署 Web 應用程式提供
 
 Azure AD 應用程式 Proxy 具有下列特性：
 
-- **用法簡單**。 使用者可以使用和 O365 以及其他與 Azure AD 整合之 SaaS 應用程式相同的存取方式，來存取內部部署應用程式。 您不需要變更或更新應用程式，即可使用應用程式 Proxy。
+- **用法簡單**。 使用者可以存取您的內部部署應用程式，就像存取 Microsoft 365 的方式和其他與 Azure AD 整合的 SaaS 應用程式一樣。 您不需要變更或更新應用程式，即可使用應用程式 Proxy。
 
 - **安全**。 內部部署應用程式可以使用 Azure 的授權控制項和安全性分析。 例如，內部部署應用程式可以使用條件式存取和雙步驟驗證。 應用程式 Proxy 不需要您穿過防火牆開啟輸入連線。
 
@@ -72,6 +72,6 @@ Azure AD 應用程式 Proxy 具有下列特性：
 | Active Directory (AD) | Active Directory 在內部部署執行以對網域帳戶執行驗證。 設定單一登入之後，連接器將與 AD 通訊以執行所需的任何額外的驗證。
 | 內部部署應用程式 | 最後，使用者就能夠存取內部部署應用程式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 若要開始使用應用程式 Proxy，請參閱 [教學課程：新增內部部署應用程式，以透過應用程式 proxy 進行遠端存取](application-proxy-add-on-premises-application.md)。
 
