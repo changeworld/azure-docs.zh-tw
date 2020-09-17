@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: fab6422300dd3db7dd0d02055721bd57354668bf
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 32aad7bc350c2ee8ca55d340623c3c3e44820d43
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322274"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527134"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
@@ -106,7 +106,7 @@ ms.locfileid: "89322274"
 
 如果您想要接收電子郵件，請將 azure-noreply@microsoft.com 新增至核准的寄件者清單，讓電子郵件不會進入您的垃圾郵件資料夾。 如需有關通知的詳細資訊，請參閱[使用成本警示](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)。
 
-在下列範例中，達到預算的 90% 時，就會產生電子郵件警示。 如果您使用預算 API 建立預算，您也可以將角色指派給其他人以接收警示。 目前不支援在 Azure 入口網站將角色指派給人員。 如需 Azure 預算 API 的詳細資訊，請參閱[預算 API](/rest/api/consumption/budgets)。
+在下列範例中，達到預算的 90% 時，就會產生電子郵件警示。 如果您使用預算 API 建立預算，您也可以將角色指派給其他人以接收警示。 目前不支援在 Azure 入口網站將角色指派給人員。 如需 Azure 預算 API 的詳細資訊，請參閱[預算 API](/rest/api/consumption/budgets)。 如果您想要以不同的語言傳送電子郵件警示，請參閱[預算警示電子郵件支援的地區設定](manage-automation.md#supported-locales-for-budget-alert-emails)。
 
 警示限制支援的範圍為您已提供的 0.01 到 1000% 預算限額。
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 7818754ca335f503c5afdc47d410cfe1d1029ab4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 66335548381a6f7e3ebf93c97eb212255639644c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434761"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604082"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立您的第一個靜態 Web 應用程式
 
@@ -65,7 +65,7 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
     # <a name="no-framework"></a>[無架構](#tab/vanilla-javascript)
 
     1. 從組建預設下拉式清單中選取 [自訂]
-    1. 清除 [應用程式位置] 方塊中的預設值
+    1. 保留應用程式位置方塊中的預設值
     1. 清除 [API 位置] 方塊中的預設值
     1. 將 [應用程式成品位置] 方塊保留為空白
 

@@ -3,15 +3,15 @@ title: 什麼是 Windows 虛擬桌面？ - Azure
 description: Windows 虛擬桌面的概觀。
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/20/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 08455d3033040d14c85e4c4170ae34a6d05cfac1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661107"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527168"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什麼是 Windows 虛擬桌面？
 
@@ -110,12 +110,10 @@ Windows 虛擬桌面包含您交付給使用者的 Windows 桌面與應用程式
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android](connect-android.md)
+* Microsoft Store 用戶端
 
 > [!IMPORTANT]
 > Windows 虛擬桌面不支援 RemoteApp 和桌面連線 (RADC) 用戶端或遠端桌面連線 (MSTSC) 用戶端。
-
-> [!IMPORTANT]
-> Windows 虛擬桌面目前不支援來自 Windows Store 的遠端桌面用戶端。 未來版本將增加此用戶端的支援。
 
 若要深入了解您必須解除封鎖以使用用戶端的 URL，請參閱[安全 URL 清單](safe-url-list.md)。
 

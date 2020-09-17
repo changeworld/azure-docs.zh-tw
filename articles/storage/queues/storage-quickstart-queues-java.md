@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 佇列 Java v12 程式庫來建立佇列�
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 12/4/2019
+ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 753c245631d2fbdc8122f955c1db6562a1554031
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b9f68737ca714c0661ffb008347149235886c68
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319366"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015019"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>快速入門：適用於 Java 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -30,17 +30,17 @@ ms.locfileid: "87319366"
 
 其他資源：
 
-* [API 參考文件](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html)
+* [API 參考文件](/java/api/overview/azure/storage-queue-readme)
 * [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
 * [套件 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) \(英文\)
-* [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [範例](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>必要條件
 
-* [Java 開發套件 (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) 8 版或更新版本
+* [Java 開發套件 (JDK)](/java/azure/jdk/) 8 版或更新版本
 * [Apache Maven](https://maven.apache.org/download.cgi)
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
-* Azure 儲存體帳戶 - [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure 儲存體帳戶 - [建立儲存體帳戶](/azure/storage/common/storage-quickstart-create-account)
 
 ## <a name="setting-up"></a>設定
 
@@ -161,10 +161,10 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 
 使用下列 Java 類別與這些資源互動：
 
-* [QueueClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClientBuilder.html)：`QueueClientBuilder` 類別會設定並具現化 `QueueClient` 物件。
-* [QueueServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueServiceClient.html)：`QueueServiceClient` 可讓您管理儲存體帳戶中的所有佇列。
-* [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html)：`QueueClient` 類別可讓您管理和操作個別佇列及其訊息。
-* [QueueMessageItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/QueueMessageItem.html)：`QueueMessageItem` 類別代表在佇列上呼叫 [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-) 時所傳回的個別物件。
+* [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder)：`QueueClientBuilder` 類別會設定並具現化 `QueueClient` 物件。
+* [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient)：`QueueServiceClient` 可讓您管理儲存體帳戶中的所有佇列。
+* [QueueClient](/java/api/com.azure.storage.queue.queueclient)：`QueueClient` 類別可讓您管理和操作個別佇列及其訊息。
+* [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem)：`QueueMessageItem` 類別代表在佇列上呼叫 [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) 時所傳回的個別物件。
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -204,7 +204,7 @@ String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 > 佇列名稱只能包含小寫字母、數字和連字號，且必須以字母或數字開頭。 每個連字號前後都必須緊接非連字號的字元。 名稱長度也必須為 3 到 63 個字元。 如需為佇列命名的詳細資訊，請參閱[為佇列和中繼資料命名](/rest/api/storageservices/naming-queues-and-metadata)。
 
 
-建立 [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html) 類別的執行個體。 然後，呼叫 [create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#create--) 方法，以在您的儲存體帳戶中建立佇列。
+建立 [QueueClient](/java/api/com.azure.storage.queue.queueclient) 類別的執行個體。 然後，呼叫 [create](/java/api/com.azure.storage.queue.queueclient.create) 方法，以在您的儲存體帳戶中建立佇列。
 
 將此程式碼加入到 `main` 方法的結尾處：
 
@@ -227,7 +227,7 @@ queueClient.create();
 
 ### <a name="add-messages-to-a-queue"></a>將訊息新增至佇列
 
-下列程式碼片段會藉由呼叫 [sendMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#sendMessage-java.lang.String-) 方法，將訊息新增至佇列。 其也會儲存 `sendMessage` 呼叫所傳回的 [SendMessageResult](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/SendMessageResult.html)。 結果用於在稍後的程式中更新訊息。
+下列程式碼片段會藉由呼叫 [sendMessage](/java/api/com.azure.storage.queue.queueclient.sendmessage) 方法，將訊息新增至佇列。 其也會儲存 `sendMessage` 呼叫所傳回的 [SendMessageResult](/java/api/com.azure.storage.queue.models.sendmessageresult)。 結果用於在稍後的程式中更新訊息。
 
 將此程式碼加入到 `main` 方法的結尾處：
 
@@ -244,7 +244,7 @@ SendMessageResult result = queueClient.sendMessage("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>窺視佇列中的訊息
 
-藉由呼叫 [peekMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#peekMessages-java.lang.Integer-java.time.Duration-com.azure.core.util.Context-) 方法來窺視佇列中的訊息。 `peelkMessages` 方法會從佇列前面擷取一或多則訊息，但不會更改訊息的可見性。
+藉由呼叫 [peekMessages](/java/api/com.azure.storage.queue.queueclient.peekmessages) 方法來窺視佇列中的訊息。 `peelkMessages` 方法會從佇列前面擷取一或多則訊息，但不會更改訊息的可見性。
 
 將此程式碼加入到 `main` 方法的結尾處：
 
@@ -258,7 +258,7 @@ queueClient.peekMessages(10, null, null).forEach(
 
 ### <a name="update-a-message-in-a-queue"></a>更新佇列中的訊息
 
-藉由呼叫 [updateMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#updateMessage-java.lang.String-java.lang.String-java.lang.String-java.time.Duration-) 方法來更新訊息的內容。 `updateMessage` 方法可以變更訊息的可見度逾時和內容。 訊息內容必須是大小上限為 64 KB 的 UTF-8 編碼字串。 連同訊息的新內容，使用先前在程式碼中儲存的 `SendMessageResult`，傳入訊息識別碼和 pop 回條。 訊息識別碼和 pop 回條可識別要更新的訊息。
+藉由呼叫 [updateMessage](/java/api/com.azure.storage.queue.queueclient.updatemessage) 方法來更新訊息的內容。 `updateMessage` 方法可以變更訊息的可見度逾時和內容。 訊息內容必須是大小上限為 64 KB 的 UTF-8 編碼字串。 連同訊息的新內容，使用先前在程式碼中儲存的 `SendMessageResult`，傳入訊息識別碼和 pop 回條。 訊息識別碼和 pop 回條可識別要更新的訊息。
 
 ```java
 System.out.println("\nUpdating the third message in the queue...");
@@ -273,7 +273,7 @@ queueClient.updateMessage(result.getMessageId(),
 
 ### <a name="receive-and-delete-messages-from-a-queue"></a>接收和刪除佇列中的訊息
 
-藉由呼叫 [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-java.time.Duration-java.time.Duration-com.azure.core.util.Context-) 方法來下載先前新增的訊息。 範例程式碼也會在接收和處理訊息後，從佇列中刪除訊息。 在此情況下，處理只會在主控台上顯示訊息。
+藉由呼叫 [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) 方法來下載先前新增的訊息。 範例程式碼也會在接收和處理訊息後，從佇列中刪除訊息。 在此情況下，處理只會在主控台上顯示訊息。
 
 應用程式會在接收和刪除訊息之前呼叫 `System.console().readLine();`，藉以暫停使用者輸入。 在 [Azure 入口網站](https://portal.azure.com)中確認已正確建立資源，然後才予以刪除。 任何未明確刪除的訊息最後都會再次顯示在佇列中，以提供另一次進行處理的機會。
 
@@ -298,7 +298,7 @@ queueClient.receiveMessages(10).forEach(
 
 ### <a name="delete-a-queue"></a>刪除佇列
 
-下列程式碼會使用 [delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#delete--) 方法刪除佇列，以清除應用程式所建立的資源。
+下列程式碼會使用 [delete](/java/api/com.azure.storage.queue.queueclient.delete) 方法刪除佇列，以清除應用程式所建立的資源。
 
 將此程式碼加入到 `main` 方法的結尾處：
 
@@ -372,6 +372,6 @@ Done
 如需教學課程、範例、快速入門及其他文件，請瀏覽：
 
 > [!div class="nextstepaction"]
-> [適用於 Java 雲端開發人員的 Azure](https://docs.microsoft.com/azure/developer/java/)
+> [適用於 Java 雲端開發人員的 Azure](/azure/developer/java/)
 
 * 若要查看更多 Azure 佇列儲存體範例應用程式，請繼續 [Azure 佇列儲存體 SDK v12 Java 用戶端程式庫範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)。

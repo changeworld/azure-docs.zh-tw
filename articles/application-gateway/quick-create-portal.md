@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4929836b7fb617884008fafea50a10e0212fbd58
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7c144ddac255087ae48ff2f1c5406ad66d670562
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961953"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601345"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入門：使用 Azure 應用程式閘道引導網路流量 - Azure 入口網站
 
@@ -25,8 +25,6 @@ ms.locfileid: "88961953"
 您也可以使用 [Azure PowerShell](quick-create-powershell.md) 或 [Azure CLI](quick-create-cli.md) 完成本快速入門。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -171,7 +169,7 @@ ms.locfileid: "88961953"
 
 2. 執行下列命令以在虛擬機器上安裝 IIS。 必要時，請變更 Location 參數： 
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
@@ -196,7 +194,6 @@ ms.locfileid: "88961953"
 4. 在 [後端目標] 下，針對 [目標類型]，從下拉式清單中選取 [虛擬機器]。
 
 5. 在 [目標] 底下，從下拉式清單中選取 **myVM** 和 **myVM2** 虛擬機器及其相關聯的網路介面。
-
 
    > [!div class="mx-imgBorder"]
    > ![新增後端伺服器](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)

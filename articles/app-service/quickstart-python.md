@@ -4,18 +4,18 @@ description: 藉由將您的第一個 Python 應用程式部署至 App Service �
 ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
-ms.openlocfilehash: 77aafb53c1346c6723d055a8ae1c96297fdfbd52
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: c64971303a2fefb25a73f0a8e8900c14ef05486c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568909"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603606"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入門：在 Linux 上的 Azure App Service 中建立 Python 應用程式
 
 在本快速入門中，您會將 Python 應用程式部署到 [Linux 上的 App Service](overview.md#app-service-on-linux)，這是 Azure 可高度擴充、自我修復的 Web 裝載服務。 您會在 Mac、Linux 或 Windows 電腦上使用本機 [Azure 命令列介面 (CLI)](/cli/azure/install-azure-cli)。 您設定的 Web 應用程式會使用免費的 App Service 層，因此在本文過程中不會產生任何費用。
 
-> [!NOTE]
+> [!TIP]
 > 如果您想要透過 IDE 部署應用程式，請參閱 **[從 Visual Studio Code 將 Python 應用程式部署至 App Service](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** 。
 
 ## <a name="set-up-your-initial-environment"></a>設定初始環境

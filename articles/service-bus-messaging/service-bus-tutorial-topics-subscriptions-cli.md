@@ -5,12 +5,12 @@ ms.date: 06/23/2020
 ms.topic: quickstart
 author: spelluru
 ms.author: spelluru
-ms.openlocfilehash: 3a6535a13ab00c4e22ac4cd8c2de5a5bbb02d0a8
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 080b089efa276779420f6d9bc8e76272f1e65788
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189794"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069691"
 ---
 # <a name="use-azure-cli-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>使用 Azure CLI 建立服務匯流排主題和主題的訂用帳戶
 在本快速入門中，您會使用 Azure CLI 來建立服務匯流排主題，然後建立該主題的訂用帳戶。 
@@ -80,7 +80,7 @@ ms.locfileid: "88189794"
 9. 使用自訂屬性，透過篩選條件在第三個訂用帳戶上建立篩選 (`StoreId` 不在 `Store1`、`Store2`、`Store3` 或 `Store4` 中)。
 
     ```azurecli-interactive
-    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S3 --name MyThirdFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3', 'Store4')"     
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S3 --name MyThirdFilter --filter-sql-expression "StoreId NOT IN ('Store1','Store2','Store3', 'Store4')"     
     ```
 10. 執行下列命令，以取得命名空間的主要連接字串。 您可以使用此連接字串連線到佇列，並傳送和接收訊息。 
 

@@ -3,17 +3,17 @@ title: 使用自動化管理 Azure 成本
 description: 此文章說明如何使用自動化來管理 Azure 成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/19/2020
+ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: adwise
-ms.openlocfilehash: a5ab84794884cc0c87bd766be7a0fa2fe4c52aa9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.reviewer: matrive
+ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684400"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526641"
 ---
 # <a name="manage-costs-with-automation"></a>使用自動化管理成本
 
@@ -161,6 +161,70 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 ### <a name="automate-budget-creation"></a>自動建立預算
 
 您可以使用[預算 API](/rest/api/consumption/budgets)，將預算的建立作業自動化。 您也可以使用[預算範本](quick-create-budget-template.md)來建立預算。 範本可讓您輕鬆地將 Azure 部署標準化，同時確保會正確設定和強制執行成本控制。
+
+#### <a name="supported-locales-for-budget-alert-emails"></a>預算警示電子郵件支援的地區設定
+
+有了預算，當成本超過設定的閾值時會收到警示。 每個預算對多可以設定五個電子郵件收件者。 收件者會在超過預算閾值的 24 小時內收到電子郵件警示。 不過，您的收件者可能需要收到不同語言的電子郵件。 您可以搭配預算 API 使用下列語言文化特性代碼。 使用與下列範例類似的 `locale` 參數來設定文化特性代碼。
+
+```json
+{
+  "eTag": "\"1d681a8fc67f77a\"",
+  "properties": {
+    "timePeriod": {
+      "startDate": "2020-07-24T00:00:00Z",
+      "endDate": "2022-07-23T00:00:00Z"
+    },
+    "timeGrain": "BillingMonth",
+    "amount": 1,
+    "currentSpend": {
+      "amount": 0,
+      "unit": "USD"
+    },
+    "category": "Cost",
+    "notifications": {
+      "actual_GreaterThan_10_Percent": {
+        "enabled": true,
+        "operator": "GreaterThan",
+        "threshold": 20,
+        "locale": "en-us",
+        "contactEmails": [
+          "user@contoso.com"
+        ],
+        "contactRoles": [],
+        "contactGroups": [],
+        "thresholdType": "Actual"
+      }
+    }
+  }
+}
+
+```
+
+文化特性代碼支援的語言：
+
+| 文化特性代碼| 語言 |
+| --- | --- |
+| zh-tw | 英文 (美國) |
+| ja-jp | 日文 (日本) |
+| zh-cn | 中文 (簡體，中國) |
+| de-de | 德文 (德國) |
+| es-es | 西班牙文 (西班牙，國際) |
+| fr-fr | 法文 (法國) |
+| it-it | 義大利文 (義大利) |
+| ko-kr | 韓文 (韓國) |
+| pt-br | 葡萄牙文 (巴西) |
+| ru-ru | 俄文 (俄羅斯) |
+| zh-tw | 中文 (繁體，台灣) |
+| cs-cz | 捷克文 (捷克共和國) |
+| pl-pl | 波蘭文 (波蘭) |
+| tr-tr | 土耳其文 (土耳其) |
+| da-dk | 丹麥文 (丹麥) |
+| dn-gb | 英文 (英國) |
+| hu-hu | 匈牙利文 (匈牙利) |
+| nb-bo | 挪威文 (巴克摩) (挪威) |
+| nl-nl | 荷蘭文 (荷蘭) |
+| pt-pt | 葡萄牙文 (葡萄牙) |
+| sv-se | 瑞典文 (瑞典) |
 
 #### <a name="common-budgets-api-configurations"></a>一般的預算 API 設定
 

@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 98814060fb9ae669fc4e9a90fcda6319bbfaeacf
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: ede55196793e7eb19a5f64e539ee870ff0fada9d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182539"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031411"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 Ruby 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 
@@ -43,7 +43,7 @@ ms.locfileid: "88182539"
 ## <a name="connect-and-create-a-table"></a>連線及建立資料表
 使用下列程式碼搭配 **CREATE TABLE** SQL 陳述式 (後面接著 **INSERT INTO** SQL 陳述式) 來連線和建立資料表，進而將資料列新增至資料表中。
 
-程式碼會使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 物件搭配建構函式 [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize)，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 方法來執行 DROP、CREATE TABLE 和 INSERT INTO 命令。 程式碼會使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 類別檢查錯誤。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) 方法，在終止前關閉連線。
+程式碼會使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 物件搭配建構函式 [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method)，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 方法來執行 DROP、CREATE TABLE 和 INSERT INTO 命令。 程式碼會使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 類別檢查錯誤。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) 方法，在終止前關閉連線。
 
 以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。 
 
@@ -87,7 +87,7 @@ end
 ## <a name="read-data"></a>讀取資料
 使用下列程式碼搭配 **SELECT** SQL 陳述式來連線和讀取資料。 
 
-程式碼會使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 物件搭配建構函式 [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize)，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 方法來執行 SELECT 命令，並將結果保留在結果集中。 結果集的集合會使用 `resultSet.each do` 迴圈反覆運算，並將目前的資料列值保留在 `row` 變數中。 程式碼會使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 類別檢查錯誤。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) 方法，在終止前關閉連線。
+程式碼會使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 物件搭配建構函式 [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method)，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 方法來執行 SELECT 命令，並將結果保留在結果集中。 結果集的集合會使用 `resultSet.each do` 迴圈反覆運算，並將目前的資料列值保留在 `row` 變數中。 程式碼會使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 類別檢查錯誤。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) 方法，在終止前關閉連線。
 
 以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。 
 
@@ -121,7 +121,7 @@ end
 ## <a name="update-data"></a>更新資料
 使用下列程式碼搭配 **UPDATE** SQL 陳述式來連線和更新資料。
 
-程式碼會使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 物件搭配建構函式 [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize)，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 方法來執行 UPDATE 命令。 程式碼會使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 類別檢查錯誤。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) 方法，在終止前關閉連線。
+程式碼會使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 物件搭配建構函式 [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method)，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 方法來執行 UPDATE 命令。 程式碼會使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 類別檢查錯誤。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) 方法，在終止前關閉連線。
 
 以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。 
 
@@ -155,7 +155,7 @@ end
 ## <a name="delete-data"></a>刪除資料
 使用下列程式碼搭配 **DELETE** SQL 陳述式來連線和讀取資料。 
 
-程式碼會使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 物件搭配建構函式 [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize)，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 方法來執行 UPDATE 命令。 程式碼會使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 類別檢查錯誤。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) 方法，在終止前關閉連線。
+程式碼會使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 物件搭配建構函式 [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method)，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 方法來執行 UPDATE 命令。 程式碼會使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 類別檢查錯誤。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) 方法，在終止前關閉連線。
 
 以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。 
 
