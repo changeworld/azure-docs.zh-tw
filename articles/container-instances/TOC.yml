@@ -17,7 +17,7 @@
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
     - name: 部署容器執行個體 - Docker CLI
-      href: container-instances-quickstart-docker-cli.md
+      href: quickstart-docker-cli.md
 - name: 教學課程
   items:
     - name: 建立和部署容器映像
@@ -34,6 +34,8 @@
           href: container-instances-multi-container-yaml.md
         - name: 部署容器群組 - Resource Manager
           href: container-instances-multi-container-group.md
+        - name: 部署容器群組 - Docker Compose
+          href: tutorial-docker-compose.md
     - name: 與 Azure 服務整合
       items:
         - name: 透過 Azure Functions 觸發

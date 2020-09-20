@@ -1,5 +1,5 @@
 ---
-title: 教學課程：使用者布建的時差-Azure AD
+title: 教學課程：Slack 的使用者佈建 - Azure AD
 description: 了解如何設定 Azure Active Directory 來自動佈建並取消佈建使用者帳戶至 Slack。
 services: active-directory
 author: ArvindHarinder1
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 368d75ecffda49f688a7a5ce11b60693650014c6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
-ms.translationtype: MT
+ms.openlocfilehash: 6caaba06dcc2fdeaeb672b5381b240cb3f676ca9
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527820"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563024"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教學課程︰設定 Slack 來自動佈建使用者
 
@@ -24,40 +24,40 @@ ms.locfileid: "88527820"
 
 ## <a name="capabilities-supported"></a>支援的功能
 > [!div class="checklist"]
-> * 在時差中建立使用者
-> * 當使用者不再需要存取權時，請將其移除
-> * 讓使用者屬性在 Azure AD 和時差之間保持同步
-> * 在時差中布建群組和群組成員資格
-> * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-tutorial) 至時差 (建議的) 
+> * 在 Slack 中建立使用者
+> * 當使用者不再需要存取權時，將其從 Slack 中移除
+> * 讓 Azure AD 與 Slack 之間的使用者屬性保持同步
+> * 在 Slack 中佈建群組和群組成員資格
+> * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-tutorial)至 Slack (建議)
 
 
 ## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
-* [Azure AD 的租](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)使用者。
+* [Azure AD 租用戶](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)。
 * Azure AD 中具有設定佈建[權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
-* 已啟用 [Plus 方案](https://aadsyncfabric.slack.com/pricing) 或更佳的可寬比租使用者。
-* 具有小組系統管理員許可權的使用者帳戶。
+* 已啟用具有 [Plus 方案](https://aadsyncfabric.slack.com/pricing)或更高方案的 Slack。
+* 具有小組系統管理員權限的 Slack 使用者帳戶。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃佈建部署
 1. 了解[佈建服務的運作方式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) \(部分機器翻譯\)。
 2. 判斷誰會在[佈建範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
-3. 判斷要 [在 Azure AD 和時差之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的資料。 
+3. 判斷哪些資料要[在 Azure AD 與 Slack 之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。 
 
-## <a name="step-2-add-slack-from-the-azure-ad-application-gallery"></a>步驟 2： 從 Azure AD 應用程式資源庫新增時差
+## <a name="step-2-add-slack-from-the-azure-ad-application-gallery"></a>步驟 2： 從 Azure AD 應用程式庫新增 Slack
 
-新增 Azure AD 應用程式資源庫中的時差，以開始管理可布建的時差。 如果您先前已設定 SSO 的時差，則可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
+從 Azure AD 應用程式庫新增 Slack，以開始管理對 Slack 的佈建。 如果您先前已針對 SSO 設定 Slack，則可使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
 
 ## <a name="step-3-define-who-will-be-in-scope-for-provisioning"></a>步驟 3： 定義將在佈建範圍內的人員 
 
 Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的範圍篩選條件。 
 
-* 將使用者和群組指派至可供使用的時間時，您必須選取 **預設存取**以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) \(部分機器翻譯\) 以新增其他角色。 
+* 將使用者和群組指派給 Slack 時，您必須選取 [預設存取] 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) \(部分機器翻譯\) 以新增其他角色。 
 
 * 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。
 
-## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>步驟 4： 設定自動使用者布建至時差 
+## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>步驟 4： 設定使用者自動佈建至 Slack 
 
 本節會引導您將 Azure AD 連接至 Slack 的使用者帳戶佈建 API，以及根據 Azure AD 中的使用者和群組指派，設定佈建服務以在 Slack 中建立、更新和停用指派的使用者帳戶。
 
@@ -81,7 +81,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 5. 在 [系統管理員認證]**** 區段下，按一下 [授權]****。 這會在新的瀏覽器視窗中開啟 Slack 授權對話方塊。
 
-    ![授權](media/slack-provisioning-tutorial/authorization.png)
+    ![螢幕擷取畫面，顯示 [授權管理員認證] 按鈕。](media/slack-provisioning-tutorial/authorization.png)
 
 
 6. 在新視窗中，使用您的小組系統管理帳戶登入 Slack。 在產生的授權對話方塊中，選取您想要啟用佈建的 Slack 小組，然後選取 [授權]****。 一旦完成後，回到 Azure 入口網站以完成佈建組態。
@@ -110,29 +110,29 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |title|String|
    |emails[type eq "work"].value|String|
    |userName|String|
-   |昵稱|String|
-   |位址 [type eq "不具類型"]. streetAddress|String|
-   |位址 [type eq "不具類型"]。位置|String|
-   |位址 [type eq "不具類型"]. region|String|
-   |位址 [type eq "不具類型"]. 郵遞區號|String|
-   |位址 [type eq "不具類型"]。國家/地區|String|
+   |nickName|String|
+   |addresses[type eq "untyped"].streetAddress|String|
+   |addresses[type eq "untyped"].locality|String|
+   |addresses[type eq "untyped"].region|String|
+   |addresses[type eq "untyped"].postalCode|String|
+   |addresses[type eq "untyped"].country|String|
    |phoneNumbers[type eq "mobile"].value|String|
    |phoneNumbers[type eq "work"].value|String|
-   |role [primary eq "True"]。值|String|
+   |roles[primary eq "True"].value|String|
    |地區設定|String|
-   |名稱. honorificPrefix|String|
-   |相片 [type eq "photo"]. 值|String|
+   |name.honorificPrefix|String|
+   |photos[type eq "photo"].value|String|
    |profileUrl|String|
    |timezone|String|
    |userType|String|
-   |urn： scim：架構：延伸： enterprise： 1.0. 部門|String|
-   |urn： scim：架構： extension： enterprise： 1.0. 管理員|參考|
-   |urn： scim：架構： extension： enterprise： 1.0. employeeNumber|String|
-   |urn： scim：架構： extension： enterprise： 1.0. costCenter|String|
-   |urn： scim：架構：延伸： enterprise： 1.0. 組織|String|
-   |urn： scim：架構： extension： enterprise： 1.0. 除法|String|
+   |urn:scim:schemas:extension:enterprise:1.0.department|String|
+   |urn:scim:schemas:extension:enterprise:1.0.manager|參考|
+   |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|String|
+   |urn:scim:schemas:extension:enterprise:1.0.costCenter|String|
+   |urn:scim:schemas:extension:enterprise:1.0.organization|String|
+   |urn:scim:schemas:extension:enterprise:1.0.division|String|
 
-12. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組為 [時差**]。
+12. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 群組至 Slack]。
 
 13. 在 [屬性對應]**** 區段中，檢閱將從 Azure AD 同步至 Slack 的群組屬性。 請注意，選取為 [比對]**** 屬性的屬性會用來比對 Slack 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
 
@@ -147,7 +147,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-16. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建至空隙的使用者和/或群組。
+16. 透過在 [設定] 區段的 [範圍] 中選擇需要的值，可定義要佈建到 Slack 的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 
@@ -174,19 +174,19 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
   
   * 允許的標點符號包括句號、底線、連字號、所有格號、括弧 (例如 **( [ { } ] )**) 和分隔符號 (例如 **, / ;**)。
   
-  * displayName 屬性不能有 ' @ ' 字元。 如果包含 ' @ '，您可能會在布建記錄檔中找到略過的事件，並提供描述 "AttributeValidationFailed"。
+  * displayName 屬性不能含有 '@' 字元。 如果包含 '@'，您可能會在佈建記錄中找到具有 "AttributeValidationFailed" 說明的已略過事件。
 
   * 只有在 Slack 的工作場所/組織中設定了下列這兩個設定時才會更新：**已啟用設定檔同步處理**及**使用者無法變更其顯示名稱**。
 
 * Slack 的 **userName** 屬性必須少於 21 個字元且具備唯一值。
 
-* 時差只允許與屬性使用者 **名稱** 和 **電子郵件**相符。  
+* Slack 只能與 **userName** 和 **email** 屬性相符。  
   
-* 一般的 erorr 碼記載于官方的可寬延時間檔中- https://api.slack.com/scim#errors
+* 常見的錯誤碼記載於官方的 Slack 文件中 - https://api.slack.com/scim#errors
 
 ## <a name="change-log"></a>變更記錄
 
-* 06/16/2020-修改了 DisplayName 屬性，只會在新使用者建立期間更新。
+* 2020/06/16 - 已將 DisplayName 屬性修改為只會在新使用者建立期間進行更新。
 
 ## <a name="additional-resources"></a>其他資源
 

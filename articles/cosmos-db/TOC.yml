@@ -1072,6 +1072,8 @@
               href: troubleshoot-not-found.md
             - name: 針對未經授權進行疑難排解
               href: troubleshoot-unauthorized.md
+            - name: SDK 在多區域環境中的可用性
+              href: troubleshoot-sdk-availability.md
         - name: .NET
           items:
             - name: 針對一般 .NET SDK 進行疑難排解
