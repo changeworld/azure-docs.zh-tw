@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
-ms.openlocfilehash: 35d5b101f4ad5fe4498c0566227c5f0a9d102b60
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d369614357bd62dc13073f650fbe5ce358d6dc6e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032538"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884323"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>管理適用於 PostgreSQL Azure 資料庫的防火牆規則 - 超大規模 (Citus)
 伺服器層級防火牆規則可從所有指定 IP 位址或 IP 位址範圍來管理對超大規模 (Citus) 協調器節點的存取。
@@ -24,23 +24,24 @@ ms.locfileid: "90032538"
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 入口網站中建立伺服器層級的防火牆規則
 
 > [!NOTE]
-> 在建立適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus) 伺服器群組期間，也可以存取這些設定。 在 [ **網路** 功能] 索引標籤下，按一下 [ **公用存取**]。
-> ![Azure 入口網站 - [網路] 索引標籤](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
+> 在建立適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus) 伺服器群組期間，也可以存取這些設定。 在 [網路] 索引標籤下，按一下 [公用端點]。
+
+> :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png" alt-text="Azure 入口網站 - [網路] 索引標籤":::
 
 1. 在 [PostgreSQ 伺服器群組] 頁面的 [安全性] 標題底下，按一下 [網路] 以開啟防火牆規則。
 
-   ![Azure 入口網站 - 按一下 [網路]](./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png)
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure 入口網站 - 按一下 [網路]":::
 
 2. 按一下 [ **新增目前的用戶端 IP 位址** ]，以您的電腦公用 IP 位址建立防火牆規則，如同 Azure 系統所見。
 
-   ![Azure 入口網站 - 按一下 [新增用戶端 IP]](./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png)
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure 入口網站 - 按一下 [新增用戶端 IP]":::
 
 或者，按一下 [+新增 0.0.0.0 - 255.255.255.255] (選項 B 右側)，除了 IP 之外，也會允許整個網際網路存取協調器節點的連接埠 5432。 在此情況下，用戶端仍然必須使用正確的使用者名稱和密碼登入，才能使用叢集。 不過，我們建議只在短時間內且只對非生產資料庫允許全球存取。
 
 3. 儲存設定之前，請確認您的 IP 位址。 在某些情況下，Azure 入口網站觀察到的 IP 位址，不同於用來存取網際網路和 Azure 伺服器的 IP 位址。 因此，您可能需要變更起始 IP 和結束 IP，規則才會正常運作。
    使用搜尋引擎或其他線上工具，檢查您自己的 IP 位址。 例如，搜尋「我的 IP 是什麼」。
 
-   ![使用 Bing 搜尋「我的 IP 是什麼」](./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png)
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="使用 Bing 搜尋「我的 IP 是什麼」":::
 
 4. 新增其他位址範圍。 在防火牆規則中，您可指定單一 IP 位址或位址範圍。 如果您想要將規則限制到單一 IP 位址，請在 [起始 IP] 和 [結束 IP] 欄位中輸入相同位址。 開啟防火牆可讓系統管理員、使用者和應用程式存取連接埠 5432 上的協調器節點。
 

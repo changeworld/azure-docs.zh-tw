@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3f032ca973a188bf294155c73de3ca84f6ee30f
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: c098dc6b1d3b41a41246857f8a353dd4f5dfcef1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024395"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884176"
 ---
 # <a name="hierarchical-state-override"></a>階層式狀態覆寫
 
@@ -45,6 +45,10 @@ ms.locfileid: "90024395"
   ![用來反白顯示所選元件的大綱選項](./media/selection-outline.png)
 
 * **`DisableCollision`**：幾何豁免于 [空間查詢](spatial-queries.md)。 **`Hidden`** 旗標不會影響衝突狀態旗標，因此這兩個旗標通常會一起設定。
+
+* **`UseCutPlaneFilterMask`**：使用個別的篩選位遮罩來控制剪下的平面選取範圍。 此旗標會決定是否應該使用個別篩選遮罩，或從其父系繼承。 篩選位遮罩本身是透過 `CutPlaneFilterMask` 屬性設定。 如需篩選運作方式的詳細資訊，請參閱「 [選擇性剪下平面」段落](cut-planes.md#selective-cut-planes)。
+![選擇性剪下平面](./media/selective-cut-planes.png)
+
 
 > [!TIP]
 > 除了關閉完整子圖表的可見度和空間查詢以外， `enabled` 還可以切換遊戲物件的狀態。 如果已停用階層，這就會優先使用任何 `HierarchicalStateOverrideComponent` 。
