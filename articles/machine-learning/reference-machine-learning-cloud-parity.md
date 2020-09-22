@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 886e45e92fb3a882de167b5c59a9b5ee09a9c430
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657569"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892974"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning 主權雲端同位
 
@@ -49,9 +49,9 @@ ms.locfileid: "89657569"
 | 使用 Azure ML SDK 建立管線端點                           | GA                   | YES                | YES         |
 | 使用 Azure ML SDK 建立、編輯和刪除管線的排程執行 | GA                   | 好               | 好        |
 | 在 studio 中查看管線執行詳細資料                                        | GA                   | YES                | YES         |
-| 在 Azure ML 設計工具中建立、執行、視覺化及發佈管線          | 公開預覽       | YES                | YES         |
+| 在 Azure ML 設計工具中建立、執行、視覺化及發佈管線          | GA      | YES                | YES         |
 | Azure Databricks 與 ML 管線整合                             | GA                   | 否                 | 否          |
-| 在 Azure ML 設計工具中建立管線端點                             | 公開預覽       | YES                | YES         |
+| 在 Azure ML 設計工具中建立管線端點                             | GA      | YES                | YES         |
 | **整合式筆記本** |   |  | | 
 | 工作區筆記本和檔案共用                                        | GA                   | YES                | YES         |
 | R 和 Python 支援                                                       | GA                   | YES                | YES         |
@@ -112,7 +112,7 @@ ms.locfileid: "89657569"
 
 ### <a name="azure-government-scenarios"></a>Azure Government 案例
 
-| 案例                                                    | 美國-弗吉尼亞州 | 美國-亞利桑那州| 限制  |
+| 狀況                                                    | 美國-弗吉尼亞州 | 美國-亞利桑那州| 限制  |
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|-------------|
 | **一般安全性設定** |   | | |
 | 服務之間的私人網路通訊                                     | 否 | 否 | 目前沒有 Private Link | 
@@ -162,9 +162,9 @@ ms.locfileid: "89657569"
 | 使用 Azure ML SDK 建立管線端點                           | GA               | YES       | N/A        |
 | 使用 Azure ML SDK 建立、編輯和刪除管線的排程執行 | GA               | YES       | N/A        |
 | 在 studio 中查看管線執行詳細資料                                        | GA               | YES       | N/A        |
-| 在 Azure ML 設計工具中建立、執行、視覺化及發佈管線          | 公開預覽   | YES       | N/A        |
+| 在 Azure ML 設計工具中建立、執行、視覺化及發佈管線          | GA  | YES       | N/A        |
 | Azure Databricks 與 ML 管線整合                             | GA               | 否        | N/A        |
-| 在 Azure ML 設計工具中建立管線端點                             | 公開預覽   | YES       | N/A        |
+| 在 Azure ML 設計工具中建立管線端點                             | GA   | YES       | N/A        |
 | **整合式筆記本** |   | | |
 | 工作區筆記本和檔案共用                                        | GA               | YES       | N/A        |
 | R 和 Python 支援                                                       | GA               | YES       | N/A        |
@@ -239,6 +239,6 @@ ms.locfileid: "89657569"
 * IP 位址範圍： [VNet 強制通道](how-to-secure-training-vnet.md#forced-tunneling) 指示中使用的 CLI 命令不會傳回 IP 範圍。 請改用 [AZURE IP 範圍和服務標籤來進行 Azure 中國](https://www.microsoft.com//download/details.aspx?id=57062) 。
 * 目前已啟用 Private Link 的工作區不支援 Azure Machine Learning 計算實例預覽，但在下一次部署中，將會支援 CI，以便將服務擴充至所有 AML 區域。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解 Azure Machine learning 的可用區域，請參閱 [依區域](https://azure.microsoft.com/global-infrastructure/services/)提供的產品。

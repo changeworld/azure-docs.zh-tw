@@ -1,0 +1,103 @@
+### YamlMime:Landing
+title: 彈性伺服器文件
+summary: 適用於 MySQL 的 Azure 資料庫 - 彈性伺服器是完全受控的 MySQL 資料庫即服務供應項目，能透過可預測的效能及動態可擴縮性來處理任務關鍵性工作負載。 您可以使用開放原始碼工具，以及您選擇的平台，透過適用於 MySQL 的 Azure 資料庫來開發應用程式。 了解如何透過我們的快速入門、教學課程和範例使用適用於 MySQL 的 Azure 資料庫。
+metadata:
+  description: 適用於 MySQL 的 Azure 資料庫 - 彈性伺服器是 Microsoft 雲端中針對開發人員所建置、並以 MySQL Community Edition 為基礎的關聯式資料庫服務。
+  author: mksuni
+  ms.author: sumuth
+  ms.date: 09/21/2020
+  ms.service: mysql
+  ms.topic: landing-page
+  ms.openlocfilehash: 09086af6cee517f9e30657802934d0f7fb1b14a9
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928683"
+landingContent:
+- title: 關於彈性伺服器 (預覽)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是彈性伺服器？
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: 建立彈性伺服器
+      url: quickstart-create-server-portal.md
+  - linkListType: tutorial
+    links:
+    - text: 建立具有彈性伺服器的 PHP 應用程式
+      url: tutorial-php-database-app.md
+  - linkListType: whats-new
+    links:
+    - text: 請查看我們的部落格
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+- title: 管理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 計算和儲存體選項
+      url: concepts-compute-storage.md
+    - text: MySQL 版本
+      url: concepts-supported-versions.md
+    - text: 網路功能
+      url: concepts-networking.md
+    - text: 監視
+      url: concepts-monitoring.md
+    - text: 稽核記錄
+      url: concepts-audit-logs.md
+  - linkListType: how-to-guide
+    links:
+    - text: 管理伺服器
+      url: how-to-manage-server-portal.md
+    - text: 停止/啟動伺服器
+      url: how-to-stop-start-server-portal.md
+    - text: 設定和存取記錄
+      url: how-to-configure-slow-query-logs-portal.md
+    - text: 排程維護
+      url: how-to-maintenance-portal.md
+- title: 業務持續性
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 商務持續性概觀
+      url: concepts-business-continuity.md
+    - text: 高可用性
+      url: concepts-high-availability.md
+    - text: 備份與還原
+      url: concepts-backup-restore.md
+  - linkListType: how-to-guide
+    links:
+    - text: 還原伺服器
+      url: how-to-restore-server-portal.md
+- title: 連線
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 PHP 連線
+      url: connect-php.md
+    - text: 使用 MySQL Workbench 連線
+      url: connect-workbench.md
+    - text: 使用 Python 連線
+      url: connect-python.md
+  - linkListType: tutorial
+    links:
+    - text: 在虛擬網路中連線至 Web 應用程式
+      url: tutorial-webapp-server-vnet.md
+- title: 遷移
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 線上遷移
+      url: ../howto-migrate-online.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI 開發人員參考
+      url: /cli/azure/mysql
+    - text: REST API 開發人員參考
+      url: /rest/api/mysql/
+    - text: Azure 資源管理員範本
+      url: /azure/templates/microsoft.dbformysql/allversions

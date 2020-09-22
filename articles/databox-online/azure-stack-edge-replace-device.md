@@ -1,6 +1,6 @@
 ---
-title: 取代您的 Azure Stack Edge 裝置 |Microsoft Docs
-description: 說明如何取得 Azure Stack Edge 裝置的更換。
+title: 更換您的 Azure Stack Edge Pro 裝置 |Microsoft Docs
+description: 說明如何取得更換 Azure Stack Edge Pro 裝置。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 5d5e8cc3a959c7800019107d2c682e144449b46c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec16a2b42b818e96399b8fdbad4a0951f84ef825
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096409"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893892"
 ---
-# <a name="replace-your-azure-stack-edge-device"></a>取代您的 Azure Stack Edge 裝置
+# <a name="replace-your-azure-stack-edge-pro-device"></a>更換您的 Azure Stack Edge Pro 裝置
 
-本文說明如何取得 Azure Stack Edge 裝置的更換。 當現有裝置發生硬體故障或需要升級時，就需要替換裝置。 
+本文說明如何取得更換 Azure Stack Edge Pro 裝置。 當現有裝置發生硬體故障或需要升級時，就需要替換裝置。 
 
 
 在本文中，您將學會如何：
@@ -26,14 +26,14 @@ ms.locfileid: "87096409"
 >
 > * 開啟硬體問題的支援票證
 > * 在 Azure 入口網站中建立替代裝置的新資源
-> * 安裝、啟用更換裝置
+> * 安裝、啟動更換裝置
 > * 傳回原始裝置
 
 ## <a name="open-a-support-ticket"></a>開啟支援票證
 
-如果您現有的裝置發生硬體故障，請開啟支援票證。 Microsoft 支援服務將判斷現場替換單元 (FRU) 不適用於此執行個體，或裝置需要硬體升級。 不論是哪種情況，支援服務都會訂購替換裝置。
+如果您現有的裝置有硬體故障，請開啟支援票證。 Microsoft 支援服務將判斷現場替換單元 (FRU) 不適用於此執行個體，或裝置需要硬體升級。 不論是哪種情況，支援服務都會訂購替換裝置。
 
-1. 向 Microsoft 支援服務開啟支援票證，表示您想要退回裝置。 針對問題類型選取 [Azure Stack Edge 硬體]。
+1. 向 Microsoft 支援服務開啟支援票證，表示您想要退回裝置。 選取問題類型為 **Azure Stack Edge Pro 硬體**]。
 
     ![開啟支援票證](media/azure-stack-edge-replace-device/open-support-ticket-1.png)  
 
@@ -45,11 +45,11 @@ ms.locfileid: "87096409"
 
 請遵循下列步驟來建立資源。
 
-1. 請遵循[建立新資源](azure-stack-edge-deploy-prep.md#create-a-new-resource)中的步驟，建立替代裝置的資源。 
+1. 請依照 [建立新資源](azure-stack-edge-deploy-prep.md#create-a-new-resource) 中的步驟來建立替代裝置的資源。 
 
-2. 請務必針對 [我有 Azure Stack Edge 裝置]，選取此核取方塊。 
+2. 請務必選取 [ **我有 Azure Stack Edge Pro 裝置**] 的核取方塊。 
 
-    ![取代裝置的資源](media/azure-stack-edge-replace-device/replace-resource-1.png)  
+    ![更換裝置的資源](media/azure-stack-edge-replace-device/replace-resource-1.png)  
 
 ## <a name="install-and-activate-the-replacement-device"></a>安裝並啟用更換裝置
 
@@ -71,4 +71,4 @@ ms.locfileid: "87096409"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何傳回[Azure Stack Edge 裝置](azure-stack-edge-return-device.md)。
+- 瞭解如何 [退回 Azure Stack Edge Pro 裝置](azure-stack-edge-return-device.md)。

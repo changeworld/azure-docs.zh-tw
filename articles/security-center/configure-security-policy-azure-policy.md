@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a81b3016f86c6fd7de646ccbdbf533685471ac3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77430936"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894798"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>使用 REST API 在 Azure 原則中設定安全性原則
 
@@ -21,15 +21,15 @@ Azure 資訊安全中心與 Azure 原則的原生整合可讓您充分利用 Azu
 
 Azure 原則中的重要概念： 
 
-- **原則定義**是一種規則 
+- **原則定義**是一項規則 
 
-- **方案**是原則定義的集合（規則） 
+- **方案**是 (規則的原則定義集合)  
 
-- **指派**是將方案或原則應用至特定範圍（管理群組、訂用帳戶等） 
+- **指派**是在特定範圍 (管理群組、訂用帳戶等的方案或原則的應用程式 )  
 
-資訊安全中心有內建的方案，其中包含所有其安全性原則。 若要評估 Azure 資源上資訊安全中心的原則，您應該在管理群組或您想要評估的訂用帳戶上建立指派。
+資訊安全中心有內建的方案，其中包含所有其安全性原則。 若要評估 Azure 資源上的資訊安全中心原則，您應該在您要評估的管理群組或訂用帳戶上建立指派。
 
-內建的方案都有預設啟用的所有資訊安全中心原則。 您可以選擇停用內建方案中的特定原則。 例如，若要套用「 **web 應用程式防火牆**」以外的所有資訊安全中心原則，請將原則的效果參數值變更為「**已停用**」。 
+內建的方案都有預設啟用的所有資訊安全中心原則。 您可以選擇停用內建方案中的特定原則。 例如，若要套用 **web 應用程式防火牆**以外的所有安全中心原則，請將原則的效果參數值變更為 **Disabled**。 
 
 ## <a name="api-examples"></a>API 範例
 
@@ -123,7 +123,7 @@ Azure 原則中的重要概念：
 |SQL 稽核 |在 Azure 資訊安全中心中監視未稽核的 SQL 資料庫 |sqlAuditingMonitoringEffect|
 |系統更新 |在 Azure 資訊安全中心中監視缺少的系統更新 |systemUpdatesMonitoringEffect|
 |儲存體加密 |稽核 Blob 未加密的儲存體帳戶 |storageEncryptionMonitoringEffect|
-|JIT 網路存取 |在 Azure 資訊安全中心中監視可能的網路即時（JIT）存取 |jitNetworkAccessMonitoringEffect |
+|JIT 網路存取 |監視 Azure 資訊安全中心中的可能即時網路 (JIT) 存取 |jitNetworkAccessMonitoringEffect |
 |自適性應用程式控制 |在 Azure 資訊安全中心中監視可能的應用程式允許清單 |adaptiveApplicationControlsMonitoringEffect|
 |網路安全性群組 |在 Azure 資訊安全中心中監視寬鬆的網路存取 |networkSecurityGroupsMonitoringEffect| 
 |安全性設定 |在 Azure 資訊安全中心中監視 OS 弱點 |systemConfigurationsMonitoringEffect| 
@@ -134,7 +134,7 @@ Azure 原則中的重要概念：
 |新一代防火牆 |在 Azure 資訊安全中心中監視未保護的網路端點| |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需其他相關資料，請參閱下列文章： 
 

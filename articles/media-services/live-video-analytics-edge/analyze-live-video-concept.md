@@ -3,12 +3,12 @@ title: 分析即時影片而不錄製任何記錄-Azure
 description: Media graph 可以用來從即時影片串流中取出分析，而不需要將它記錄在邊緣或雲端中。 本文討論此概念。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: d59e2e9e309f0ed6a65e001557dcd9dd8af90da2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5dda18b68cb19d29623f2120fe07d7cc617f0c2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566722"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893032"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>分析即時影片而不錄製任何節目
 
@@ -40,8 +40,8 @@ ms.locfileid: "89566722"
 此範例的增強功能是在畫面播放速率篩選處理器節點之前使用動作偵測器處理器。 這會減少推斷服務的負載，因為只有在影片中有動作活動時，才會使用它。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video/custom-model.png" alt-text="以動作為基礎的即時影片分析，透過外部推斷模組偵測到畫面":::
+> :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="以動作為基礎的即時影片分析，透過外部推斷模組偵測到畫面":::
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
-[連續影片錄製](continuous-video-recording-concept.md)
+[錄製連續影片](continuous-video-recording-concept.md)

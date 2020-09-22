@@ -10,15 +10,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: fc8e8de817c1b311e3252c7399a09ed1c9eb7031
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 982c7a41f1e05c34ddf0fbae9f944df4a4d08fa5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651516"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893375"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>將時間序列預測模型自動定型
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將瞭解如何在 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)中使用自動化機器學習服務（AutoML）來設定和定型時間序列預測回歸模型。 
 
@@ -38,7 +38,7 @@ ms.locfileid: "89651516"
 
 * Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
-* 本文假設基本上已熟悉如何設定自動化機器學習實驗。 請遵循[教學課程](tutorial-auto-train-models.md)或[操作說明](how-to-configure-auto-train.md)，以查看基本的自動化機器學習實驗設計模式。
+* 本文假設您已熟悉如何設定自動化機器學習實驗。 遵循 [教學](tutorial-auto-train-models.md) 課程或操作 [說明](how-to-configure-auto-train.md) ，查看主要的自動化機器學習實驗設計模式。
 
 ## <a name="preparing-data"></a>準備資料
 

@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 5f29e616c0643914ca28921eee481105a5feb0c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d89782b836db0daaf75c0337ad3b7f475824177
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047096"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882882"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>教學課程：使用影片索引器與邏輯應用程式和 Power Automate
 
@@ -21,12 +21,15 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 
 為了讓整合變得更容易，我們支援與 API 相容的  [Logic Apps](https://azure.microsoft.com/services/logic-apps/)  和  [Power Autmate](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)  連接器。 您可以使用連接器來設定自訂工作流程，以有效地從大量的影片和音訊檔案編制索引並擷取深入解析，而不需要撰寫任何一行程式碼。 此外，使用連接器進行整合，可更清楚地了解工作流程的健康情況，並輕鬆地進行偵錯。  
 
-為了協助您快速開始使用影片索引器連接器，我們將逐步解說範例邏輯應用程式和 Power Automate 解決方案，您可以跟著設定。 
+為了協助您快速開始使用影片索引器連接器，我們將逐步解說範例邏輯應用程式和 Power Automate 解決方案，您可以跟著設定。 本教學課程說明如何使用 Logic Apps 設定流程。
 
-在本教學課程中，您會了解如何：
+本教學課程涵蓋的「自動上傳和編製影片索引」案例，是由共同運作的兩個不同流程所組成。 
+* 在 Azure 儲存體帳戶中新增或修改 Blob 時，會觸發第一個流程。 其會將新檔案上傳至具有回撥 URL 的影片索引器，以在索引作業完成後傳送通知。 
+* 第二個流程會根據回撥 URL 來觸發，並將已擷取的深入解析儲存回 Azure 儲存體中的 JSON 檔案。 這兩種流程方法是用來支援非同步上傳和有效率地為較大的檔案編製索引。 
+
+本教學課程使用邏輯應用程式來示範如何：
 
 > [!div class="checklist"]
-> * 上傳影片及自動編製索引
 > * 設定檔案上傳流程
 > * 設定 JSON 擷取流程
 
@@ -34,19 +37,13 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 
 ## <a name="prerequisites"></a>Prerequisites
 
-一開始，您會需要影片索引器帳戶，並透過 API 金鑰存取 API。 
+* 一開始，您需要影片索引器帳戶，並[透過 API 金鑰存取 API](video-indexer-use-apis.md)。 
+* 您還需要一個 Azure 儲存體帳戶。 請記下儲存體帳戶使用的存取金鑰。 建立兩個容器 - 一個用來儲存影片，另一個用來儲存影片索引器所產生的深入解析。  
+* 接下來，您必須在 Logic Apps 或 Power Automate 上開啟兩個不同的流程 (視您使用哪種方式)。 
 
-您還需要一個 Azure 儲存體帳戶。 請記下儲存體帳戶使用的存取金鑰。 建立兩個容器 - 一個用來儲存影片，另一個用來儲存影片索引器所產生的深入解析。  
+## <a name="set-up-the-first-flow---file-upload"></a>設定第一個流程 - 檔案上傳   
 
-接下來，您必須在 Logic Apps 或 Power Automate 上開啟兩個不同的流程 (視您使用哪種方式)。  
-
-## <a name="upload-and-index-your-video-automatically"></a>上傳影片及自動編製索引 
-
-此案例同時使用兩個不同的流程。 在 Azure 儲存體帳戶中新增或修改 Blob 時，會觸發第一個流程。 其會將新檔案上傳至具有回撥 URL 的影片索引器，以在索引作業完成後傳送通知。 第二個流程會根據回撥 URL 來觸發，並將已擷取的深入解析儲存回 Azure 儲存體中的 JSON 檔案。 這兩種流程方法是用來支援非同步上傳和有效率地為較大的檔案編製索引。 
-
-### <a name="set-up-the-file-upload-flow"></a>設定檔案上傳流程 
-
-每當在 Azure 儲存體容器中新增 Blob 時，就會觸發第一個流程。 一旦觸發，就會建立 SAS URI，您可以用來上傳影片索引器中的影片並為其編制索引。 一開始請先建立下列流程。 
+每當在 Azure 儲存體容器中新增 Blob 時，就會觸發第一個流程。 一旦觸發，就會建立 SAS URI，您可以用來上傳影片索引器中的影片並為其編制索引。 在本節中，您會建立下列流程。 
 
 ![檔案上傳流程](./media/logic-apps-connector-tutorial/file-upload-flow.png)
 
@@ -56,15 +53,17 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 
 ![連線名稱和 API 金鑰](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
-一旦可以連線到您的 Azure 儲存體和影片索引器帳戶，請移至「新增或修改 Blob 時」觸發，並選取您要放置影片檔案的容器。 
+一旦可以連線到您的 Azure 儲存體和影片索引器帳戶，請在 **Logic Apps 設計工具**中尋找並選擇「當新增或修改 Blob 時」觸發程序。 選取您將放置影片檔案的容器。 
 
-![容器](./media/logic-apps-connector-tutorial/container.png)
+![螢幕擷取畫面顯示「當新增或修改 Blob 時」對話方塊，您可以在其中選取容器。](./media/logic-apps-connector-tutorial/container.png)
 
-接下來，移至 [依路徑建立 SAS URI] 動作，然後從動態內容選項中選取檔案路徑清單。  
+接下來，尋找並選取 [依路徑建立 SAS URI] 動作。 在動作對話方塊中，從動態內容選項中選取檔案路徑清單。  
+
+此外，請新增新的「共用存取通訊協定」參數。 選擇 HttpsOnly 作為參數值。
 
 ![依路徑的 SAS URI](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
-填寫[您的帳戶位置和識別碼](./video-indexer-use-apis.md#account-id) ，以取得影片索引器帳戶權杖。
+填寫[您的帳戶位置](regions.md)和[帳戶識別碼](./video-indexer-use-apis.md#account-id) ，以取得影片索引器帳戶權杖。
 
 ![取得帳戶存取權杖](./media/logic-apps-connector-tutorial/account-access-token.png)
 
@@ -78,7 +77,7 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 
 按一下「儲存」，讓我們繼續設定第二個流程，以便在上傳和編製索引完成後，擷取深入解析。 
 
-## <a name="set-up-the-json-extraction-flow"></a>設定 JSON 擷取流程 
+## <a name="set-up-the-second-flow---json-extraction"></a>設定第二個流程 - JSON 擷取  
 
 完成從第一個流程上傳和編製索引的作業，將會傳送具有正確回撥 URL 的 HTTP 要求，以觸發第二個流程。 然後，流程會取出影片索引器所產生的深入解析。 在此範例中，其會將編製索引工作的輸出儲存在您的 Azure 儲存體中。  不過，您可以使用輸出來完成此工作。  
 
@@ -90,7 +89,7 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 
 針對觸發程式，您會看到 HTTP POST URL 欄位。 在儲存流程後才會產生 URL。不過，您最後會需要此 URL。 我們稍後會再回到這裡。 
 
-填寫[您的帳戶位置和識別碼](./video-indexer-use-apis.md#account-id) ，以取得影片索引器帳戶權杖。  
+填寫[您的帳戶位置](regions.md)和[帳戶識別碼](./video-indexer-use-apis.md#account-id) ，以取得影片索引器帳戶權杖。  
 
 移至「取得影片索引」動作，並填寫必要的參數。 針對影片識別碼，置入下列運算式：triggerOutputs()['queries']['id'] 
 
@@ -104,7 +103,7 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 
 此運算式會從這個流程取得「取得影片索引」動作的輸出。 
 
-按一下「儲存流程」。 
+按一下 [儲存流程]。 
 
 儲存流程後，就會在觸發程式中建立 HTTP POST URL。 複製觸發程式中的 URL。 
 

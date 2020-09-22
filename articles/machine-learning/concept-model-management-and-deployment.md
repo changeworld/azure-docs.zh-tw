@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 680fd298f3d772ecb9a4787342d22bf44e74ec78
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 394d048ce5978c2789e47b984abebaf30dec5f93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651087"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893565"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure Machine Learning 的模型管理、部署及監視
 
@@ -184,7 +184,7 @@ Azure ML 會將重要事件發佈至 Azure EventGrid，可用來通知和自動�
 - 將新模型的輸出與舊模型的輸出做比較
 - 使用預先定義的準則來選擇是否要取代舊的模型 
 
-上述步驟的主題是您的重新定型應該會自動執行，而不是臨機操作。 [Azure Machine Learning 管線](concept-ml-pipelines.md) 是建立與資料準備、定型、驗證和部署相關之工作流程的好答案。 [使用 Azure Machine Learning 設計工具 (預覽) ](how-to-retrain-designer.md)閱讀重新定型模型，以查看管線和 Azure Machine Learning 設計工具如何融入重新定型案例中。 
+上述步驟的主題是您的重新定型應該會自動執行，而不是臨機操作。 [Azure Machine Learning 管線](concept-ml-pipelines.md) 是建立與資料準備、定型、驗證和部署相關之工作流程的好答案。 [使用 Azure Machine Learning 設計](how-to-retrain-designer.md)工具讀取重新定型模型，以查看管線和 Azure Machine Learning 設計工具如何融入重新定型案例中。 
 
 ## <a name="automate-the-ml-lifecycle"></a>自動化 ML 生命週期 
 
@@ -203,7 +203,7 @@ Azure ML 會將重要事件發佈至 Azure EventGrid，可用來通知和自動�
 
 您也可以使用 Azure Data Factory 來建立資料內嵌管線，以準備用於定型的資料。 如需詳細資訊，請參閱 [資料內嵌管線](how-to-cicd-data-ingestion.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解，請閱讀及探索下列資源：
 

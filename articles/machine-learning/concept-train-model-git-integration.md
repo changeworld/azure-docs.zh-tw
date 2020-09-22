@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 6d9d9f2d7363217ef4e9b13b44d3665af33cb8ef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: bd77af133b88e1ba93054dbb7e0f896d8d418f89
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661796"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893551"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning 的 Git 整合
 
@@ -70,12 +70,10 @@ Git 資訊會儲存在定型回合的屬性中。 您可以使用 Azure 入口�
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-1. 從 [Azure 入口網站](https://portal.azure.com)選取您的工作區。
+1. 從 [studio 入口網站](https://ml.azure.com)中，選取您的工作區。
 1. 選取 [ __實驗__]，然後選取您的其中一個實驗。
 1. 從 [ __執行編號__ ] 資料行中選取其中一個執行。
-1. 選取 [ __記錄__]，然後展開 [ __記錄__ 檔] 和 [ __azureml__ ] 專案。 選取以__ ### \_ azure__開頭的連結。
-
-    ![入口網站中的 # # #_azure 專案](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
+1. 選取 [ __輸出 + 記錄__]，然後展開 __記錄__ 和 __azureml__ 專案。 選取以__ ### \_ azure__開頭的連結。
 
 記錄的資訊包含類似下列 JSON 的文字：
 
@@ -114,6 +112,6 @@ az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup
 
 如需詳細資訊，請參閱 [az ml 執行](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest) 參考檔。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * [使用計算目標來將模型定型](how-to-set-up-training-targets.md)

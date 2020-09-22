@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 57746b833e238bbd0cc99ba103f710a9239ee5ba
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 36d3d84949e44719474656d07da9c7b7c46a4e98
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664081"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893174"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虛擬網路隔離和隱私權總覽
 
@@ -43,7 +43,7 @@ ms.locfileid: "89664081"
 
 下表比較服務如何存取 Azure Machine Learning 網路的不同部分，以及 VNet 和沒有 VNet。
 
-| 案例 | 工作區 | 相關聯的資源 | 訓練計算環境 | 推斷計算環境 |
+| 狀況 | 工作區 | 相關聯的資源 | 訓練計算環境 | 推斷計算環境 |
 |-|-|-|-|-|-|
 |**沒有虛擬網路**| 公用 IP | 公用 IP | 公用 IP | 公用 IP |
 |**保護虛擬網路中的資源**| 私人 IP (私人端點)  | 公用 IP (服務端點)  <br> **等於** <br> 私人 IP (私人端點)  | 私人 IP | 私人 IP  | 
@@ -63,22 +63,6 @@ ms.locfileid: "89664081"
 1. 保護 [**推斷環境**](#secure-the-inferencing-environment)。
 1. 選擇性： [**啟用 studio 功能**](#optional-enable-studio-functionality)。
 1. 設定 [**防火牆設定**](#configure-firewall-settings)
-
-> [!TIP]
->  虛擬網路和 Azure 服務的部分組合需要企業版工作區。 請使用下表來了解需要 Enterprise Edition 的狀況：
->
-> | 狀況 | Enterprise</br>edition | 基本</br>edition |
-> | ----- |:-----:|:-----:| 
-> | 沒有虛擬網路或 Private Link | ✔ | ✔ |
-> | 沒有 Private Link 的工作區。 虛擬網路中的其他資源 (Azure Container Registry 除外) | ✔ | ✔ |
-> | 沒有 Private Link 的工作區。 具有 Private Link 的其他資源 | ✔ | |
-> | 具有 Private Link 的工作區。 虛擬網路中的其他資源 (Azure Container Registry 除外) | ✔ | ✔ |
-> | 具有 Private Link 的工作區和任何其他資源 | ✔ | |
-> | 具有 Private Link 的工作區。 沒有 Private Link 或虛擬網路的其他資源 | ✔ | ✔ |
-> | 虛擬網路中的 Azure Container Registry | ✔ | |
-> | 工作區的客戶管理金鑰 | ✔ | |
->
-
 
 ## <a name="secure-the-workspace-and-associated-resources"></a>保護工作區和相關聯的資源
 
@@ -177,7 +161,7 @@ ms.locfileid: "89664081"
 
 如需防火牆設定的詳細資訊，請參閱在 [防火牆後方使用工作區](how-to-access-azureml-behind-firewall.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 本文是四部分虛擬網路系列的第一篇。 請參閱文章的其餘部分，以瞭解如何保護虛擬網路：
 

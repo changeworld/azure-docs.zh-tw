@@ -11,15 +11,15 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: eb3e7346e8b5a63111a0889ab5f69bbf6513b6c5
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 4b801552534bcb69afe426cce4aa109bf942000b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648253"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893144"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 大規模定型 Pytorch 深度學習模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將瞭解如何使用 Azure Machine Learning 的[PyTorch 估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true)類別，以企業規模執行您的[PyTorch](https://pytorch.org/)訓練腳本。  
 
@@ -231,7 +231,7 @@ import horovod
 
 若要將 [ONNX 運行](concept-onnx.md)時間的推斷優化，請將您定型的 PyTorch 模型轉換成 ONNX 格式。 推斷或模型計分是部署的模型用於預測的階段，最常見的是生產資料。 如需範例，請參閱 [教學](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) 課程。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已使用 PyTorch 在 Azure Machine Learning 上定型和註冊深度學習和類神經網路。 若要瞭解如何部署模型，請繼續進行我們的模型部署文章。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
-ms.openlocfilehash: 313f10c77da499f4c405134028b975900d2d2a9e
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 042780c313c444062fd512ab0d9f38aaeb6cf170
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590229"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894563"
 ---
 # <a name="monitor-identity-and-access"></a>監視身分識別和存取
 
@@ -66,6 +66,4 @@ ms.locfileid: "88590229"
 ## <a name="next-steps"></a>後續步驟
 若要深入了解適用於其他 Azure 資源類型的建議，請參閱下列文章︰
 
-- [保護 Azure 資訊安全中心內的機器和應用程式](security-center-virtual-machine-protection.md)
 - [保護 Azure 資訊安全中心內的網路](security-center-network-recommendations.md)
-- [保護 Azure 資訊安全中心內的 Azure SQL 服務和資料](security-center-sql-service-recommendations.md)

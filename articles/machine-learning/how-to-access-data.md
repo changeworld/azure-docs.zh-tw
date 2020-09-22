@@ -11,15 +11,14 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 08685a6ebfcbfced91c3685635c40ff48030fe38
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 769b4d364412d3409ef95c4222197fe6f7ce222c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669565"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893478"
 ---
 # <a name="connect-to-azure-storage-services"></a>連線至 Azure 儲存體服務
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本文中，您將瞭解如何透過 **Azure Machine Learning 資料存放區連線到 Azure 儲存體服務**。 資料存放區會安全地連線到您的 Azure 儲存體服務，而不會將您的驗證認證與原始資料來源的完整性保持在風險之下。 他們會將連接資訊（例如您的訂用帳戶識別碼和權杖授權）儲存在與工作區相關聯的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中，以便您可以安全地存取儲存體，而不需要在腳本中進行硬程式碼撰寫。 您可以使用 [Azure Machine Learning PYTHON SDK](#python) 或 [Azure Machine Learning studio](#studio) 來建立和註冊資料存放區。
 
@@ -54,7 +53,7 @@ ms.locfileid: "89669565"
     當您建立工作區時，Azure blob 容器和 Azure 檔案共用會自動註冊為工作區的資料存放區。 這兩者分別會命名為 `workspaceblobstore` 和 `workspacefilestore`。 `workspaceblobstore`會用來儲存工作區成品和您的機器學習實驗記錄。 它也會設定為 **預設資料** 存放區，而且無法從工作區刪除。 `workspacefilestore`是用來儲存透過[計算實例](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)授權的筆記本和 R 腳本。
     
     > [!NOTE]
-    > 當您在設計工具首頁中開啟範例時，Azure Machine Learning 設計工具 (預覽) 會自動建立名為 **azureml_globaldatasets** 的資料存放區。 此資料存放區僅包含範例資料集。 請**不要**將此資料存放區用於任何機密資料存取。
+    > 當您在設計工具首頁中開啟範例時，Azure Machine Learning 設計工具將會自動建立名為 **azureml_globaldatasets** 的資料存放區。 此資料存放區僅包含範例資料集。 請**不要**將此資料存放區用於任何機密資料存取。
 
 <a name="matrix"></a>
 

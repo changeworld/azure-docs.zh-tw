@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: bbabceeea2fd009efe1098e37a0b1c9dcb8a48aa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276757"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894705"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用適應性應用程式控制來減少電腦的攻擊面
 
@@ -50,11 +50,11 @@ ms.locfileid: "89276757"
 
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|正式運作|
-|定價：|標準層|
+|釋放狀態：|正式上市 (GA)|
+|定價：|需要 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md)|
 |支援的電腦：|![是 ](./media/icons/yes-icon.png) azure 和不是執行 Windows 和 Linux 的非 azure 機器<br>![是 ](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) 電腦|
 |必要的角色和許可權：|**安全性讀取** 者和 **讀取** 者角色可以同時查看群組和已知安全的應用程式清單<br>**參與者** 和 **安全性系統管理員** 角色可以編輯群組和已知安全的應用程式清單|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![Yes](./media/icons/yes-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
 |||
 
 
@@ -65,7 +65,9 @@ ms.locfileid: "89276757"
 
 選取建議，或開啟 [自動調整應用程式控制] 頁面，以查看建議的已知安全應用程式和電腦群組的清單。
 
-1. 從 [安全性中心] 的功能表中，選取 [ **自我調整應用**程式控制]。
+1. 開啟 Azure Defender 儀表板，並從 [advanced protection] 區域選取 [自動調整 **應用**程式控制]。
+
+    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="從 Azure 儀表板開啟自我調整應用程式控制" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
     [自動調整 **應用** 程式控制] 頁面隨即開啟，並將您的 vm 分組為下列索引標籤：
 
@@ -86,7 +88,7 @@ ms.locfileid: "89276757"
       - 它是具有已由 GPO 或本機安全性原則啟用之既存 [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) 原則的 Windows 電腦
 
       > [!TIP]
-      > 安全性中心需要至少兩周的資料，以定義每個電腦群組的唯一建議。 最近建立的電腦，或屬於最近使用標準層啟用之訂用帳戶的電腦，將會出現在 [ **沒有建議** ] 索引標籤底下。
+      > 安全性中心需要至少兩周的資料，以定義每個電腦群組的唯一建議。 最近建立的機器，或屬於最近使用 Azure Defender 啟用之訂用帳戶的電腦，將會出現在 [ **沒有建議** ] 索引標籤底下。
 
 
 1. 開啟 [ **建議** ] 索引標籤。具有建議允許清單的電腦群組隨即出現。
@@ -121,7 +123,7 @@ ms.locfileid: "89276757"
 
 若要編輯一組電腦的規則：
 
-1. 從 [安全性中心] 的功能表中，選取 [ **自我調整應用**程式控制]。
+1. 開啟 Azure Defender 儀表板，並從 [advanced protection] 區域選取 [自動調整 **應用**程式控制]。
 
 1. 在 [ **已設定** ] 索引標籤中，選取包含您要編輯之規則的群組。
 
@@ -169,7 +171,7 @@ ms.locfileid: "89276757"
 
 ## <a name="audit-alerts-and-violations"></a>審核警示和違規
 
-1. 從 [安全性中心] 的功能表中，選取 [ **自我調整應用**程式控制]。
+1. 開啟 Azure Defender 儀表板，並從 [advanced protection] 區域選取 [自動調整 **應用**程式控制]。
 
 1. 若要查看具有最新警示的電腦群組，請檢查 [ **已設定** ] 索引標籤中列出的群組。
 
@@ -184,6 +186,8 @@ ms.locfileid: "89276757"
 ## <a name="move-a-machine-from-one-group-to-another"></a>將機器從一個群組移至另一個群組
 
 當您將機器從某個群組移至另一個群組時，套用至它的應用程式控制原則會變更至您移至的群組設定。 您也可以將電腦從已設定的群組移至未設定的群組，這樣做會移除套用至電腦的任何應用程式控制規則。
+
+1. 開啟 Azure Defender 儀表板，並從 [advanced protection] 區域選取 [自動調整 **應用**程式控制]。
 
 1. 從 [ **自我調整應用** 程式控制] 頁面的 [ **已設定** ] 索引標籤中，選取包含要移動之電腦的群組。
 
@@ -221,7 +225,7 @@ REST API 中提供的部分函數：
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 在本檔中，您已瞭解如何在 Azure 資訊安全中心中使用自動調整應用程式控制，以定義在 Azure 和非 Azure 電腦上執行之應用程式的允許清單。 若要深入瞭解資訊安全中心的其他雲端工作負載保護功能，請參閱：
 
 * [瞭解 (JIT) VM 存取的即時](just-in-time-explained.md)
