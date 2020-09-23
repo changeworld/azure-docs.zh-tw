@@ -1,6 +1,6 @@
 ---
 title: 使用 ONNX 部署和進行預測
-description: 瞭解如何將模型定型、將其轉換為 ONNX、將它部署至 Azure SQL Edge (preview) 或 Azure SQL 受控執行個體 (preview) ，然後使用上傳的 ONNX 模型來執行原生預測資料。
+description: 瞭解如何將模型定型、將其轉換為 ONNX、將它部署至 Azure SQL Edge 或 Azure SQL 受控執行個體 (preview) ，然後使用上傳的 ONNX 模型，對資料執行原生預測。
 keywords: 部署 SQL Edge
 ms.prod: sql
 ms.technology: machine-learning
@@ -8,22 +8,22 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 07/14/2020
-ms.openlocfilehash: eeb50f682c8b3b225c6574b5276722b79465a511
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1e70b48e4c28cdc74c5079e492b0266ea60900ad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718776"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886825"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model"></a>使用 ONNX 模型部署及進行預測
 
-在本快速入門中，您將瞭解如何將模型定型、將其轉換為 ONNX、將它部署至 [AZURE Sql Edge (preview) ](onnx-overview.md) 或 [azure sql 受控執行個體 (preview) ](../azure-sql/managed-instance/machine-learning-services-overview.md)，然後使用上傳的 ONNX 模型來執行原生預測資料。
+在本快速入門中，您將瞭解如何將模型定型、將其轉換為 ONNX、將它部署至 [AZURE Sql Edge](onnx-overview.md) 或 [azure sql 受控執行個體 (preview) ](../azure-sql/managed-instance/machine-learning-services-overview.md)，然後使用上傳的 ONNX 模型來執行原生預測資料。
 
 本快速入門以 **scikit-learn** 為基礎，並使用 [Boston Housing 資料集](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)。
 
 ## <a name="before-you-begin"></a>開始之前
 
-* 如果您使用的是 Azure SQL Edge，且您尚未部署 Azure SQL Edge 模組，請遵循 [使用 Azure 入口網站部署 SQL Edge (Preview) ](deploy-portal.md)的步驟。
+* 如果您使用的是 Azure SQL Edge，且您尚未部署 Azure SQL Edge 模組，請遵循 [使用 Azure 入口網站部署 SQL Edge](deploy-portal.md)的步驟。
 
 * 安裝 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download)。
 

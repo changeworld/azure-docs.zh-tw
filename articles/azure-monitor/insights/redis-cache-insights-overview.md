@@ -1,20 +1,20 @@
 ---
-title: 適用於 Azure Cache for Redis 的 Azure 監視器 (預覽) | Microsoft Docs
+title: 適用于 Azure Cache for Redis 的 Azure 監視器 |Microsoft Docs
 description: 此文章描述適用於 Azure Redis Cache 的 Azure 監視器功能，其可讓快取擁有者快速了解效能和使用率問題。
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/21/2020
-ms.openlocfilehash: 70bf39011761bcf59c8270ecdcc0542e326aef42
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/10/2020
+ms.openlocfilehash: e7b8a8e131cf7e0aae051f42043abf0640c927e4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045852"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887018"
 ---
-# <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>探索適用於 Azure Cache for Redis 的 Azure 監視器 (預覽)
+# <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>探索 Azure Cache for Redis 的 Azure 監視器
 
-適用於 Azure Cache for Redis 的 Azure 監視器 (預覽) 可針對您所有的 Azure Cache for Redis 資源，提供下列統一的互動式檢視：
+針對所有的 Azure Cache for Redis 資源，適用于 Azure Cache for Redis 的 Azure 監視器會提供統一的互動觀點：
 
 - 整體效能
 - 失敗
@@ -50,7 +50,7 @@ ms.locfileid: "87045852"
 
     ![包含「監視器」一詞的搜尋方塊，以及顯示「監視器」和速度表符號的服務搜尋結果](./media/cosmosdb-insights-overview/search-monitor.png)
 
-1. 選取 [Azure Cache for Redis (預覽)]。 如果此選項不存在，請選取 [更多] > [Azure Cache for Redis]。
+1. 選取 **Azure Cache for Redis**。 如果此選項不存在，請選取 [更多] > [Azure Cache for Redis]。
 
 ### <a name="overview"></a>概觀
 
@@ -128,9 +128,9 @@ ms.locfileid: "87045852"
 
 1. 在 Azure 入口網站中，選取 [Azure Cache for Redis]。
 
-2. 從清單中，選擇個別的 Azure Cache for Redis 資源。 在 [監視] 區段中，選擇 [Insights (預覽)]。
+2. 從清單中，選擇個別的 Azure Cache for Redis 資源。 在 [監視] 區段中，選擇 [見解]。
 
-    ![以紅色方塊醒目提示 [Insights (預覽)] 字樣的功能表選項螢幕擷取畫面](./media/redis-cache-insights-overview/insights.png)
+    ![以紅色方塊醒目提示「深入解析」文字的功能表選項螢幕擷取畫面](./media/redis-cache-insights-overview/insights.png)
 
 您也可以從 Azure 監視器層級活頁簿中選取 Azure Cache for Redis 的資源名稱，以存取這些檢視。
 
@@ -168,7 +168,7 @@ ms.locfileid: "87045852"
 
 ![醒目提示的展開活頁簿符號](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cache-for-redis-preview"></a>自訂適用於 Azure Cache for Redis 的 Azure 監視器 (預覽)
+## <a name="customize-azure-monitor-for-azure-cache-for-redis"></a>自訂 Azure Cache for Redis 的 Azure 監視器
 
 此體驗建立在 Azure 監視器活頁簿範本的基礎之上，因此您可以選取 [自訂] > [編輯] > [儲存]，將修改過的版本複本儲存到自訂活頁簿中。
 
@@ -182,7 +182,7 @@ ms.locfileid: "87045852"
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如需疑難排解指引，請參閱專用的活頁簿型深入解析[疑難排解文章](troubleshoot-workbooks.md)。
+如需疑難排解指引，請參閱專用的以活頁簿為基礎的深入解析 [疑難排解文章](troubleshoot-workbooks.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

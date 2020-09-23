@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 80f42fd1f2291acfcdd7814f1b9811bd85d26746
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c176caf4bd2bac68b1994b5eef51ebc2f7e7be4b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012172"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903865"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 .NET (C#) 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 
@@ -36,7 +36,7 @@ ms.locfileid: "89012172"
 2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
 3. 按一下伺服器名稱。
 4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
- ![適用於 PostgreSQL 的 Azure 資料庫伺服器名稱](./media/connect-csharp/1-connection-string.png)
+ :::image type="content" source="./media/connect-csharp/1-connection-string.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫伺服器名稱":::
 
 ## <a name="connect-create-table-and-insert-data"></a>連線、建立資料表及插入資料
 使用下列程式碼搭配 **CREATE TABLE** 和 **INSERT INTO** SQL 陳述式來連線和載入資料。 此程式碼使用 NpgsqlCommand 類別搭配 [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) 方法來對 PostgreSQL 資料庫建立連線。 然後，程式碼會使用 [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) 方法，設定 CommandText 屬性，並呼叫 [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) 方法來執行資料庫命令。 

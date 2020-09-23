@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/30/2020
+ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: 1a46cba6e3b74a2f8d4b63ab631830569c521291
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 6f1c016efb300dea2cdef91c84bb901cffd09fa0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246232"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91024961"
 ---
 開始使用適用於 .NET 的 Anomaly Detector 用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 Anomaly Detector 服務可藉由自動對時間序列資料使用最適合的模型，而讓您找出其中的異常狀況，不論是什麼產業、情境或資料量都沒問題。
 
@@ -21,8 +21,9 @@ ms.locfileid: "88246232"
 
 * 以批次要求方式偵測整個時間序列資料集的異常狀況
 * 偵測您的時間序列中最新資料點的異常狀態
+* 偵測您資料集內的趨勢變更點。
 
-[程式庫參考文件](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | [在 GitHub 上尋找程式碼](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
+[程式庫參考文件](https://aka.ms/anomaly-detector-dotnet-ref) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.2) | [在 GitHub 上尋找程式碼](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -65,7 +66,7 @@ Build succeeded.
 在應用程式目錄中，使用下列命令安裝適用於 .NET 的 Anomaly Detector 用戶端程式庫：
 
 ```dotnetcli
-dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0.8.0-preview
+dotnet add package Azure.AI.AnomalyDetector --version 3.0.0-preview.2
 ```
 
 從專案目錄中中開啟 program.cs  檔案，並使用 `directives` 新增下列內容：
@@ -78,11 +79,11 @@ dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0
 
 ## <a name="object-model"></a>物件模型
 
-Anomaly Detector 用戶端是一種 [AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient) 物件，會使用含有金鑰的 [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials) 向 Azure 進行驗證。 此用戶端會提供兩種異常偵測方法：使用 [EntireDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync) 在整個資料集上進行，以及使用 [LastDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync) 在最新的資料點上進行。
+Anomaly Detector 用戶端是一種 [AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient) 物件，會使用含有金鑰的 [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials) 向 Azure 進行驗證。 用戶端可以使用 [EntireDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync) 在整個資料集上執行異常偵測，或使用 [LastDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync) 在最新資料點上執行異常偵測。 [ChangePointDetectAsync](https://aka.ms/anomaly-detector-dotnet-ref) 方法會偵測標記趨勢變更的點。
 
 時間序列資料會透過 [Request](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request) 物件以 [Point](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.series?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_Series) 序列的形式來傳送。 `Request` 物件包含用來說明資料的屬性 (例如，[細微性](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.granularity))，以及供異常偵測使用的參數。
 
-Anomaly Detector 回應會是 [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse) 或 [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse) 物件 (端視所使用的方法而定)。
+Anomaly Detector 回應是 [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse)、[LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse) 或 [changePointDetectResponse](https://aka.ms/anomaly-detector-dotnet-ref) 物件 (端視所使用的方法而定)。
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -92,6 +93,7 @@ Anomaly Detector 回應會是 [EntireDetectResponse](https://docs.microsoft.com/
 * [從檔案載入時間序列資料集](#load-time-series-data-from-a-file)
 * [偵測整個資料集內的異常](#detect-anomalies-in-the-entire-data-set)
 * [偵測最新資料點的異常狀態](#detect-the-anomaly-status-of-the-latest-data-point)
+* [偵測資料集內的變更點](#detect-change-points-in-the-data-set)
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
@@ -125,6 +127,12 @@ Anomaly Detector 回應會是 [EntireDetectResponse](https://docs.microsoft.com/
 使用 `Request` 物件建立方法來呼叫用戶端的 [LastDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_LastDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_) 方法，並等候 [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-dotnet-preview) 物件形式的回應。 檢查回應的 [IsAnomaly](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse.isanomaly?view=azure-dotnet-preview) 屬性來判斷所傳送的最新資料點是否異常。
 
 [!code-csharp[LastDetectSampleAsync() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=latestPointExample)]
+
+## <a name="detect-change-points-in-the-data-set"></a>偵測資料集內的變更點
+
+使用 `Request` 物件建立方法來呼叫用戶端的 [DetectChangePointAsync](https://aka.ms/anomaly-detector-dotnet-ref) 方法，並等候 [ChangePointDetectResponse](https://aka.ms/anomaly-detector-dotnet-ref) 物件形式的回應。 檢查回應的 IsChangePoint 值，並列印屬於 `true` 的任何資料。 如果有找到這些值，則這些值會對應到趨勢變更點。
+
+[!code-csharp[DetectChangePoint() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=changePointExample)]
 
 ## <a name="run-the-application"></a>執行應用程式
 

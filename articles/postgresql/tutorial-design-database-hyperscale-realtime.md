@@ -1,6 +1,6 @@
 ---
 title: 教學課程：設計即時儀表板 - 超大規模 (Citus) - 適用於 PostgreSQL 的 Azure 資料庫
-description: 本教學課程示範如何在適用於 PostgreSQL 的 Azure 資料庫 – 超大規模 (Citus) 上建立、填入及查詢分散式資料表。
+description: 本教學課程說明如何使用適用於 PostgreSQL 的超大規模 Azure 資料庫 (Citus) 將即時儀表板查詢平行化。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: db3cd95c5a833b299ee85c1e68b15644ae0e0226
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 41ac1cb856011d9730f7b49bbf85350f4dbccdbd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387569"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895237"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教學課程：使用適用於 PostgreSQL 的 Azure 資料庫 – Hyperscale (Citus) 設計即時分析儀表板
 
@@ -226,6 +226,5 @@ DELETE FROM http_request_1min WHERE ingest_time < now() - interval '1 month';
 
 在本教學課程中，您已了解如何佈建 Hyperscale (Citus) 伺服器群組。 您已使用 psql 連線到該群組、建立結構描述，並散發資料。 您已了解如何查詢未經處理格式的資料、定期彙總該資料、查詢彙總的資料表，以及使舊資料過期。
 
-接下來，請了解超大規模的概念。
-> [!div class="nextstepaction"]
-> [Hyperscale 節點類型](https://aka.ms/hyperscale-concepts)
+- 了解伺服器群組[節點類型](https://aka.ms/hyperscale-concepts)
+- 判斷伺服器群組的最佳[初始大小](howto-hyperscale-scaling.md#picking-initial-size)

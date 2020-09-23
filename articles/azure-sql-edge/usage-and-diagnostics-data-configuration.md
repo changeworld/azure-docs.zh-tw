@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: af4353e5b0991f7ce2f6fe8ff940e916717b0579
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 130e23c290ce493d3fb92f6dd0be4cd7c61a86fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650488"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888048"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Azure SQL Edge 使用量和診斷資料設定
 
@@ -61,6 +61,9 @@ group by data_source_type
 
 您可以使用下列其中一種方法來停用 Azure SQL Edge 上的使用方式和診斷資料收集。
 
+> [!NOTE]
+> 開發人員版本無法停用使用方式和診斷資料。
+
 ### <a name="disable-usage-and-diagnostics-using-environment-variables"></a>使用環境變數停用使用方式和診斷
 
 若要在 Azure SQL Edge 上停用使用量和診斷資料收集，請新增下列環境變數，並將其值設定為 `*False*` 。 如需使用環境變數來設定 Azure SQL Edge 的詳細資訊，請參閱 [使用環境變數進行設定](configure.md#configure-by-using-environment-variables)。
@@ -68,7 +71,7 @@ group by data_source_type
 `MSSQL_TELEMETRY_ENABLED = TRUE | FALSE`
 
 - TRUE-啟用收集使用方式和診斷資料。 這是預設組態。
-- FALSE-停用收集使用方式和診斷資料
+- FALSE-停用收集使用方式和診斷資料。
 
 ### <a name="disable-usage-and-diagnostics-using-mssqlconf-file"></a>使用 mssql 檔案停用使用方式和診斷
 
@@ -105,7 +108,7 @@ Azure SQL Edge 使用量和診斷資料收集的本機 Audit 元件可以將服�
        userrequestedlocalauditdirectory  = <host mount path>/audit
        ```  
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - [連線到 Azure SQL Edge](connect.md)
 - [使用 SQL Edge 建立端對端 IoT 解決方案](tutorial-deploy-azure-resources.md)

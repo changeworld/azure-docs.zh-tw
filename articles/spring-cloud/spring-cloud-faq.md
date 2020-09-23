@@ -4,15 +4,16 @@ description: 本文將回答有關 Azure 春季 Cloud 的常見問題。
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ad008ff3ef4f29ee358b075802deba7eef919bd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322036"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888715"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季雲端常見問題
 
@@ -61,9 +62,11 @@ Azure 春季雲端具有下列已知限制：
 
 若要開始使用 Azure 春季 Cloud 的最快速方式，請遵循 [快速入門：使用 Azure 入口網站啟動 Azure 春季 cloud 應用程式](spring-cloud-quickstart.md)中的指示。
 
+::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure Spring Cloud 支援的 Java 執行階段為何？
 
 Azure Spring Cloud 支援 Java 8 和 11。 請參閱 [JAVA 執行時間和作業系統版本](#java-runtime-and-os-versions)
+::: zone-end
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>我可以在哪裡查看我的春季雲端應用程式記錄和計量？
 
@@ -75,12 +78,14 @@ Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azur
 
 可以。 如需詳細資訊，請參閱 [教學課程：搭配使用分散式追蹤與 Azure 春季雲端](spring-cloud-tutorial-distributed-tracing.md)。
 
+::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>服務繫結支援的資源類型為何？
 
 目前支援三個服務：
 * Azure Cosmos DB
 * 適用於 MySQL 的 Azure 資料庫
 * Azure Redis 快取。
+::: zone-end
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>我可以從我的應用程式內查看、新增或移動永久性磁片區嗎？
 
@@ -96,6 +101,7 @@ Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azur
  az monitor diagnostic-settings delete --name $diagnosticSettingName --resource $azureSpringCloudResourceId
 ```
 
+::: zone pivot="programming-language-java"
 ## <a name="java-runtime-and-os-versions"></a>JAVA 執行時間和作業系統版本
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Azure 春季雲端支援哪些版本的 JAVA 執行時間？
@@ -136,10 +142,11 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 
 使用最新的 Ubuntu LTS 版本，目前的 [ubuntu 20.04 LTS (焦距 Fossa) ](https://releases.ubuntu.com/focal/) 是預設作業系統。
 
-### <a name="how-often-will-os-security-patches-be-applied"></a>OS 安全性修補程式的套用頻率為何？
+### <a name="how-often-are-os-security-patches-applied"></a>OS 安全性修補程式的套用頻率為何？
 
-適用于 Azure 春季雲端的安全性修補程式將會以每月的頻率推出至生產環境。
-重大安全性修補程式 (CVE 分數 >= 9) 適用于 Azure 春季雲端的會儘快推出。
+適用于 Azure 春季雲端的安全性修補程式會每月推出至生產環境。
+重大安全性修補程式 (CVE 分數 >= 9 適用于 Azure 春季雲端的) 會儘快推出。
+::: zone-end
 
 ## <a name="deployment"></a>部署
 
@@ -148,7 +155,7 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>我是否可以存取 Kubernetes 來操作我的應用程式容器？
 
-不會。  Azure Spring Cloud 將基礎架構對開發人員抽象化，讓您能夠專注於應用程式程式碼和商務邏輯。
+不可以。  Azure Spring Cloud 將基礎架構對開發人員抽象化，讓您能夠專注於應用程式程式碼和商務邏輯。
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支援從來源建立容器？
 
@@ -156,8 +163,9 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud 是否支援應用程式執行個體自動調整？
 
-不會。
+不可以。
 
+::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>將現有的春季 Cloud 微服務遷移到 Azure 春季雲端的最佳作法為何？
 
 當您將現有的春季 Cloud 微服務遷移到 Azure 春季雲端時，最好先觀察以下最佳作法：
@@ -168,8 +176,22 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 * 我們建議您使用正式、穩定的 Pivotal 春季程式庫。 非官方、搶鮮版或分支版的 Pivotal 春季程式庫沒有服務等級協定 (SLA) 支援。
 
 在遷移之後，監視您的 CPU/RAM 計量和網路流量，以確保適當地調整應用程式實例。
+::: zone-end
 
-## <a name="trouble-shooting"></a>疑難排解問題
+::: zone pivot="programming-language-csharp"
+## <a name="net-core-versions"></a>.NET Core 版本
+
+### <a name="which-net-core-versions-are-supported"></a>支援哪些 .NET Core 版本？
+
+.NET Core 3.1 和更新版本。
+
+### <a name="how-long-will-net-core-31-be-supported"></a>支援 .NET Core 3.1 多久的時間？
+
+到2022年12月3日為止。 請參閱 [.Net Core 支援原則](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
+::: zone-end
+
+
+## <a name="troubleshooting"></a>疑難排解
 
 ### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>服務登錄的影響很少無法使用？
 
@@ -184,6 +206,6 @@ RetryableEurekaHttpClient: Request execution failure with status code 401; retry
 我們將在不久的將來增強這個部分，並避免使用者的應用程式發生此錯誤。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 如果您有其他問題，請參閱《 [Azure 春季雲端疑難排解指南》](spring-cloud-troubleshoot.md)。

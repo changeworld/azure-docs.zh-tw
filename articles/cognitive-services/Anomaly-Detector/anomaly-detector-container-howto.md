@@ -8,22 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0ae3b66d8093c0498011d9f93cd8d869b85f9003
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530704"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903556"
 ---
-# <a name="install-and-run-anomaly-detector-containers-preview"></a> (預覽) 安裝並執行異常偵測器容器
+# <a name="install-and-run-anomaly-detector-containers"></a>安裝和執行異常偵測器容器 
+
+[!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
 異常偵測器具有下列容器特徵功能：
 
-| 函式 | 特性 |
+| 功能 | 功能 |
 |--|--|
-| 異常偵測器 | <li> 偵測即時發生的異常狀況。 <li> 以批次方式偵測整個資料集的異常狀況。 <li> 推斷資料的預期標準範圍。 <li> 支援異常偵測敏感度調整，使其更符合您的資料。 |
+| 異常偵測器 | <li> 偵測即時發生的異常狀況。 <li> 以批次方式偵測整個資料集的異常狀況。 <li> 以批次方式偵測資料集中的趨勢變更點。<li> 推斷資料的預期標準範圍。 <li> 支援異常偵測敏感度調整，使其更符合您的資料。 |
 
 如需 Api 的詳細資訊，請參閱：
 * [深入瞭解異常偵測器 API 服務](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -34,7 +36,7 @@ ms.locfileid: "90530704"
 
 使用異常偵測器容器之前，您必須符合下列必要條件：
 
-|必要|目的|
+|必要|用途|
 |--|--|
 |Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
 |熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。|
@@ -67,7 +69,7 @@ ms.locfileid: "90530704"
 
 | 容器 | Repository |
 |-----------|------------|
-| 認知服務-異常偵測器 | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest` |
+| 認知服務-異常偵測器 | `mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
@@ -95,7 +97,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest \
+mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -177,7 +179,7 @@ ApiKey={API_KEY}
 在本文中，您已瞭解下載、安裝及執行異常偵測器容器的概念和工作流程。 摘要說明：
 
 * 異常偵測器提供一個適用于 Docker 的 Linux 容器、使用 batch 與串流封裝異常偵測、預期的範圍推斷，以及敏感度調整。
-* 容器映射是從專用於容器預覽的專用 Azure Container Registry 下載。
+* 容器映射是從專用於容器的專用 Azure Container Registry 下載。
 * 容器映像是在 Docker 中執行。
 * 您可以使用 REST API 或 SDK，藉由指定容器的主機 URI 來呼叫異常偵測器容器中的作業。
 * 將容器具現化時，您必須指定帳單資訊。
@@ -185,7 +187,7 @@ ApiKey={API_KEY}
 > [!IMPORTANT]
 > 認知服務容器在未連線至 Azure 以進行計量的情況下，將無法被授權以執行。 客戶必須啟用容器以持續與計量服務進行帳單資訊的通訊。 認知服務容器不會將客戶資料 (例如，正在分析) 的時間序列資料傳送給 Microsoft。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 檢閱[設定容器](anomaly-detector-container-configuration.md)以了解組態設定
 * [將異常偵測器容器部署至 Azure 容器實例](how-to/deploy-anomaly-detection-on-container-instances.md)

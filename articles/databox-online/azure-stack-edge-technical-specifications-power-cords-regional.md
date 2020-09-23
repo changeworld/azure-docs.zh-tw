@@ -1,6 +1,6 @@
 ---
-title: 依據位置的 Microsoft Azure Stack Edge 電源線技術規格 | Microsoft Docs
-description: 了解您 Azure Stack Edge 電源線的技術規格。
+title: 以位置為基礎的 Microsoft Azure Stack Edge Pro 電源線技術規格 |Microsoft Docs
+description: 瞭解 Azure Stack Edge Pro 電源線的技術規格。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 34f5b578581c5a11b3dbfba76f68819c2ed706d0
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 76d8c84fd1dd403c88e8261cf49e3620f3a6ec14
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055923"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903620"
 ---
-# <a name="azure-stack-edge-power-cord-specifications"></a>Azure Stack Edge 電源線規格
+# <a name="azure-stack-edge-pro-power-cord-specifications"></a>Azure Stack Edge Pro 電源線規格
 
-您的 Azure Stack Edge 裝置需要電源線，視您的 Azure 區域而定。
+您的 Azure Stack Edge Pro 裝置將需要電源線，這會根據您的 Azure 區域而有所不同。
 
 ## <a name="supported-power-cords"></a>支援的電源線
 
@@ -158,4 +158,4 @@ ms.locfileid: "90055923"
 
 ## <a name="next-steps"></a>後續步驟
 
-[Azure Stack Edge 技術規格](data-box-edge-technical-specifications-compliance.md)
+[Azure Stack Edge Pro 技術規格](data-box-edge-technical-specifications-compliance.md)

@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 45f892064d0910029db37c56f731a072a6c7514e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: eaf99f5e92cbb9277f2d4143e14070f1900cdbef
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299604"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888482"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>即時串流 Azure Spring Cloud 應用程式記錄
+
+本文**適用于：** ✔️ JAVA ✔️ C#
+
 Azure 春季 Cloud 可在 Azure CLI 中進行記錄串流，以取得即時應用程式主控台記錄以進行疑難排解。 您也可以 [使用診斷設定來分析記錄和計量](./diagnostic-services.md)。
 
 ## <a name="prerequisites"></a>必要條件
@@ -86,7 +89,7 @@ az spring-cloud app logs -n auth-service -f
 az spring-cloud app logs -h 
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 * [快速入門：使用記錄、計量和追蹤來監視 Azure Spring Cloud 應用程式](spring-cloud-quickstart-logs-metrics-tracing.md)
 * [使用診斷設定來分析記錄和計量](./diagnostic-services.md)
 

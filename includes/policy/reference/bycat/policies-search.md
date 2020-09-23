@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/04/2020
+ms.date: 09/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 42479f8aca92fdfa119c27e643d91d342b6931b6
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 123cbb17862d62217f821db7c956f0c6c4c2e731
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487643"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90021878"
 ---
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
