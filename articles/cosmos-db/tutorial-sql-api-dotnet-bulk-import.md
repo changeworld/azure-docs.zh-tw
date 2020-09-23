@@ -1,19 +1,19 @@
 ---
-title: 使用 .Net SDK 將資料大量匯入至 Azure Cosmos DB SQL API 帳戶
+title: 使用 .NET SDK 將資料大量匯入至 Azure Cosmos DB SQL API 帳戶
 description: 了解如何藉由建置會將匯入資料所需的佈建輸送量 (RU/秒) 最佳化的 .NET 主控台應用程式，來將資料匯入或擷取至 Azure Cosmos DB
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b16402f809da18588b26995e7129d2f27575b48d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cfab8ba88c7da84efb3f6aed6f95bb100507f8da
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019244"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981909"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>使用 .NET SDK 將資料大量匯入至 Azure Cosmos DB SQL API 帳戶
 
@@ -86,7 +86,7 @@ ms.locfileid: "89019244"
 1.  瀏覽至 Azure Cosmos 帳戶。
 1.  開啟 [金鑰]  窗格，然後複製您帳戶的 **URI** 與**主索引鍵**。
 
-如果您使用的是 Azure Cosmos DB 模擬器，請[從此發行項中取得模擬器認證](local-emulator.md#authenticating-requests)。
+如果您使用的是 Azure Cosmos DB 模擬器，請[從此發行項中取得模擬器認證](local-emulator.md#authenticate-requests)。
 
 ## <a name="step-5-initialize-the-cosmosclient-object-with-bulk-execution-support"></a>步驟 5：初始化支援大量執行的 CosmosClient 物件
 

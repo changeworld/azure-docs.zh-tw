@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: fd58adf9e845e296725131da96c3319a72895cb8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b77d48fa8af8be05123ee17f218ddb4ae5e8af98
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645703"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886230"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 瞭解如何將您的機器學習模型部署為 Azure 雲端中的 web 服務，或 Azure IoT Edge 裝置。
 
@@ -134,7 +134,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    `model_path`參數會參考模型的雲端位置。 在此範例中，會使用單一檔案的路徑。 若要在模型註冊中包含多個檔案，請將設定 `model_path` 為包含檔案的資料夾路徑。 如需詳細資訊，請參閱 [執行. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) 檔。
+    `model_path`參數會參考模型的雲端位置。 在此範例中，會使用單一檔案的路徑。 若要在模型註冊中包含多個檔案，請將設定 `model_path` 為包含檔案的資料夾路徑。 如需詳細資訊，請參閱 [Run.register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) 檔。
 
   + 從物件註冊模型 `azureml.train.automl.run.AutoMLRun` ：
 
@@ -148,7 +148,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
     在此範例中， `metric` `iteration` 不會指定和參數，因此將會註冊具有最佳主要度量的反復專案。 `model_id`會使用從執行傳回的值，而不是模型名稱。
 
-    如需詳細資訊，請參閱 [AutoMLRun。 register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) 檔。
+    如需詳細資訊，請參閱 [AutoMLRun.register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) 檔。
 
 
 ### <a name="register-a-model-from-a-local-file"></a>從本機檔案註冊模型
@@ -350,11 +350,11 @@ print(service.state)
 
 | Webservice 狀態 | 描述 | 最終狀態？
 | ----- | ----- | ----- |
-| 過渡 | 服務正在進行部署。 | 否 |
-| Unhealthy | 服務已部署，但目前無法連線。  | 否 |
-| 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | 否 |
-| Failed | 因為發生錯誤或損毀，所以服務無法部署。 | 是 |
-| Healthy | 服務狀況良好，且端點可供使用。 | 是 |
+| 過渡 | 服務正在進行部署。 | No |
+| Unhealthy | 服務已部署，但目前無法連線。  | No |
+| 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | No |
+| Failed | 因為發生錯誤或損毀，所以服務無法部署。 | Yes |
+| Healthy | 服務狀況良好，且端點可供使用。 | Yes |
 
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> 批次推斷
@@ -385,7 +385,7 @@ Azure Machine Learning 計算目標是由 Azure Machine Learning 所建立和管
 ---
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * [針對失敗的部署進行疑難排解](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)

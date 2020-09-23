@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: eef8abebde2578ac549b2facfc1317a90ecc7fb5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 83281a9dde0b29a9f8bfc2bd90114227bf9e769f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658567"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886390"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什麼是自動化機器學習 (AutoML)？
 
@@ -78,8 +78,6 @@ ms.locfileid: "89658567"
 
    * 針對有限或無程式碼體驗，請嘗試 Azure Machine Learning Studio Web 體驗，網址為：[https://ml.azure.com](https://ml.azure.com/)  
    * 針對 Python 開發人員，請參閱 [Azure Machine Learning Python SDK](how-to-configure-auto-train.md) 
-
-    [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
     
 1. **指定標記定型資料的來源和格式**：Numpy 陣列或 Pandas 資料框架
 
@@ -172,25 +170,25 @@ ms.locfileid: "89658567"
 
 ### <a name="feature-availability"></a>功能可用性 
 
- 下表中顯示了使用遠端計算時可用的更多功能。 其中一些功能僅適用於 Enterprise 工作區。
+ 下表中顯示了使用遠端計算時可用的更多功能。 
 
-| 功能                                                    | 遠端 | 本機 | 需要 <br>Enterprise 工作區 |
-|------------------------------------------------------------|--------|-------|-------------------------------|
-| 資料串流 (大型資料支援，最多 100 GB)          | ✓      |       | ✓                             |
-| 以 DNN-BERT 為基礎的文字特徵化和定型             | ✓      |       | ✓                             |
-| 現成的 GPU 支援 (定型和推斷)        | ✓      |       | ✓                             |
-| 影像分類和標記的支援                  | ✓      |       | ✓                             |
-| 適用於預測的 Auto-ARIMA、Prophet 和 ForecastTCN 模型 | ✓      |       | ✓                             |
-| 以平行方式執行多個回合/反覆項目                       | ✓      |       | ✓                             |
-| 在 AutoML Studio Web 體驗 UI 中建立具有可解釋性的模型      | ✓      |       | ✓                             |
-| Studio Web 體驗 UI 中的特徵工程自訂                        | ✓      |       | ✓                              |
-| Azure ML 超參數調整                             | ✓      |       |                               |
-| Azure ML 管線工作流程支援                         | ✓      |       |                               |
-| 繼續回合                                             | ✓      |       |                               |
-| 預測                                                | ✓      | ✓     | ✓                             |
-| 在筆記本中建立及執行實驗                    | ✓      | ✓     |                               |
-| 在 UI 中註冊實驗的資訊和計量並加以視覺化 | ✓      | ✓     |                               |
-| 資料護欄                                            | ✓      | ✓     |                               |
+| 功能                                                    | 遠端 | 本機 | 
+|------------------------------------------------------------|--------|-------|
+| 資料串流 (大型資料支援，最多 100 GB)          | ✓      |       | 
+| 以 DNN-BERT 為基礎的文字特徵化和定型             | ✓      |       |
+| 現成的 GPU 支援 (定型和推斷)        | ✓      |       |
+| 影像分類和標記的支援                  | ✓      |       |
+| 適用於預測的 Auto-ARIMA、Prophet 和 ForecastTCN 模型 | ✓      |       | 
+| 以平行方式執行多個回合/反覆項目                       | ✓      |       |
+| 在 AutoML Studio Web 體驗 UI 中建立具有可解釋性的模型      | ✓      |       |
+| Studio Web 體驗 UI 中的特徵工程自訂| ✓      |       |
+| Azure ML 超參數調整                             | ✓      |       |
+| Azure ML 管線工作流程支援                         | ✓      |       |
+| 繼續回合                                             | ✓      |       |
+| 預測                                                | ✓      | ✓     |
+| 在筆記本中建立及執行實驗                    | ✓      | ✓     |
+| 在 UI 中註冊實驗的資訊和計量並加以視覺化 | ✓      | ✓     |
+| 資料護欄                                            | ✓      | ✓     |
 
 ## <a name="many-models"></a>許多模型 
 
@@ -277,7 +275,7 @@ ONNX 執行階段也支援 C#，因此您可以使用在 C# 應用程式中自�
 
  + **如需低或無程式碼的體驗**，請參閱 [教學課程：使用 Azure Machine Learning STUDIO 建立自動化 ML 分類模型](tutorial-first-experiment-automated-ml.md)。
 
-How to 文章提供 AutoML 所提供之功能的其他詳細資料。 例如， 
+How to 文章提供 AutoML 所提供之功能的其他詳細資料。 例如，套用至物件的 
 
 + 設定自動定型實驗的設定
     + 在 Azure Machine Learning Studio 中，[使用這些步驟](how-to-use-automated-ml-for-ml-models.md)。 

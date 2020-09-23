@@ -8,21 +8,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/08/2020
-ms.openlocfilehash: e765422ebfce1a4328bac9a17edb8b581f87e6f7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.date: 09/22/2020
+ms.openlocfilehash: 7185adf559f429feb0ada60fef65e1edb106da66
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661711"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907634"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什麼是 Azure Machine Learning 工作區？
 
 工作區是 Azure Machine Learning 的最上層資源，可提供集中的位置來處理您使用 Azure Machine Learning 時所建立的所有成品。  工作區會保留所有定型執行的歷程記錄，包括記錄、計量、輸出，以及腳本的快照。 您可以使用此資訊來判斷哪一個定型回合會產生最佳模型。  
 
 當您有想要的模型之後，您可以向工作區註冊該模型。 然後，您可以使用已註冊的模型和評分腳本來部署至 Azure 容器實例、Azure Kubernetes Service，或部署至可現場程式化閘道陣列， (FPGA) 作為 REST 型 HTTP 端點。 您也可以將模型部署到 Azure IoT Edge 裝置作為模組。
-
-可用的定價和功能取決於是否已為工作區選取 [ [基本] 或 [企業版](overview-what-is-azure-ml.md#sku) ]。 當您 [建立工作區](#create-workspace)時，請選取版本。  您也可以從 Basic [升級](#upgrade) 為 Enterprise edition。
 
 ## <a name="taxonomy"></a>分類法 
 
@@ -53,7 +51,7 @@ ms.locfileid: "89661711"
 
 + 在網站上：
     + [Azure Machine Learning studio ](https://ml.azure.com) 
-    + [Azure Machine Learning 設計工具 (預覽) ](concept-designer.md) -僅適用于 [Enterprise edition](overview-what-is-azure-ml.md#sku) 工作區。
+    + [Azure Machine Learning 設計工具](concept-designer.md) 
 + 在任何具有 [適用于 python 之 AZURE MACHINE LEARNING SDK 的](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)Python 環境中。
 + 在任何具有 [適用于 r 的 AZURE MACHINE LEARNING SDK (preview) ](https://azure.github.io/azureml-sdk-for-r/reference/index.html)的 r 環境中。
 + 在命令列上使用 Azure Machine Learning [CLI 擴充](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)功能
@@ -80,7 +78,6 @@ ms.locfileid: "89661711"
 |---------------------------|---------|---------|------------|------------|------------|
 | 建立工作區        | **&check;**     | | **&check;** | **&check;** | **&check;** |
 | 管理工作區存取    | **&check;**   || |  **&check;**    ||
-| 升級至 Enterprise edition    | **&check;** | **&check;**  | |     ||
 | 建立及管理計算資源    | **&check;**   | **&check;** | **&check;** |  **&check;**   ||
 | 建立筆記本 VM |   | **&check;** | |     ||
 
@@ -88,8 +85,6 @@ ms.locfileid: "89661711"
 > 不支援將 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新租用戶。 這麼做可能會導致錯誤。
 
 ## <a name="create-a-workspace"></a><a name='create-workspace'></a> 建立工作區
-
-當您建立工作區時，您會決定是否要使用 [Basic 或 Enterprise edition](overview-what-is-azure-ml.md#sku)來建立工作區。 版本會決定工作區中可用的功能。 Enterprise edition 除了其他功能之外，還可讓您存取 [Azure Machine Learning 設計](concept-designer.md) 工具，以及建立 [自動化機器學習實驗](tutorial-first-experiment-automated-ml.md)的 studio 版本。  如需詳細資訊和定價資訊，請參閱 [Azure Machine Learning 定價](https://azure.microsoft.com/pricing/details/machine-learning/)。
 
 有多種方式可建立工作區：  
 
@@ -101,32 +96,35 @@ ms.locfileid: "89661711"
 > [!NOTE]
 > 工作區名稱不區分大小寫。
 
-## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a> 升級至 Enterprise edition
-
-您可以使用 Azure 入口網站，將 [工作區從基本升級至 Enterprise edition](how-to-manage-workspace.md#upgrade) 。 您無法將企業版工作區降級至基本版工作區。 
-
 ## <a name="associated-resources"></a><a name="resources"></a> 相關聯的資源
 
 建立新的工作區時，會自動建立工作區使用的幾個 Azure 資源：
 
++ [Azure 儲存體帳戶](https://azure.microsoft.com/services/storage/)：作為工作區的預設資料存放區使用。  Jupyter 與 Azure Machine Learning 計算實例搭配使用的筆記本也會儲存在這裡。 
+  
+  > [!IMPORTANT]
+  > 根據預設，儲存體帳戶是一般用途 v1 帳戶。 建立工作區之後，您可以 [將此升級為一般用途 v2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) 。 升級至一般用途 v2 之後，請勿在儲存體帳戶上啟用階層式命名空間。
+
+  若要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶 (Premium_LRS 和 Premium_GRS) 。 它也不能有階層命名空間 (用於 Azure Data Lake Storage Gen2) 。 工作區的 _預設_ 儲存體帳戶不支援 premium 儲存體或階層命名空間。 您可以搭配使用 premium 儲存體或階層命名空間與 _非預設_ 儲存體帳戶。
+  
 + [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)：註冊您在定型期間以及在部署模型時使用的 docker 容器。 為了將成本降至最低，ACR 會 **延遲載入** ，直到建立部署映射為止。
-+ [Azure 儲存體帳戶](https://azure.microsoft.com/services/storage/)：作為工作區的預設資料存放區使用。  Jupyter 與 Azure Machine Learning 計算實例搭配使用的筆記本也會儲存在這裡。
+
 + [Azure 應用程式見解](https://azure.microsoft.com/services/application-insights/)：儲存有關模型的監視資訊。
+
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)：儲存計算目標所使用的秘密，以及工作區所需的其他機密資訊。
 
 > [!NOTE]
 > 除了建立新的版本之外，您也可以使用現有的 Azure 服務。
 
-### <a name="azure-storage-account"></a>Azure 儲存體帳戶
+<a name="wheres-enterprise"></a>
 
-預設使用工作區建立的 Azure 儲存體帳戶是一般用途 v1 帳戶。 您可以遵循 [升級至一般用途 v2 儲存體帳戶一](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) 文中的步驟，在建立工作區之後，將此升級為一般用途 v2。
+## <a name="what-happened-to-enterprise-edition"></a>Enterprise edition 發生什麼事
 
-> [!IMPORTANT]
-> 升級至一般用途 v2 之後，請勿在儲存體帳戶上啟用階層式命名空間。
+從2020年9月開始，企業版工作區中提供的所有功能現在也可在基本版的工作區中使用。 無法再建立新的企業工作區。  使用參數的任何 SDK、CLI 或 Azure Resource Manager 呼叫 `sku` 都將繼續運作，但將會布建基本工作區。
 
-如果您想要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶 (Premium_LRS 和 Premium_GRS) 。 它也不能有階層命名空間 (用於 Azure Data Lake Storage Gen2) 。 工作區的 _預設_ 儲存體帳戶不支援 premium 儲存體或階層命名空間。 您可以搭配使用 premium 儲存體或階層命名空間與 _非預設_ 儲存體帳戶。
+自12月21日起，所有企業版工作區將會自動設定為基本版，其具有相同的功能。 在此過程中不會發生停機。 在2021年1月1日，企業版將正式淘汰。 
 
-
+在這兩個版本中，客戶須負責使用 Azure 資源的費用，而且不需要支付任何額外的 Azure Machine Learning 費用。 如需詳細資訊，請參閱 [Azure Machine Learning 定價頁面](https://azure.microsoft.com/pricing/details/machine-learning/) 。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -137,5 +135,5 @@ ms.locfileid: "89661711"
 + [管理工作區](how-to-manage-workspace.md)
 + [教學課程：使用 Python SDK 開始建立您的第一個 ML 實驗](tutorial-1st-experiment-sdk-setup.md)
 + [教學課程：開始使用 R SDK 的 Azure Machine Learning](tutorial-1st-r-experiment.md)
-+ [教學課程：使用自動化機器學習建立第一個分類模型](tutorial-first-experiment-automated-ml.md) (僅適用于 [Enterprise edition](overview-what-is-azure-ml.md#sku) 工作區) 
-+ [教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md) (僅適用于 [企業版](overview-what-is-azure-ml.md#sku) 工作區) 
++ [教學課程：使用自動化機器學習建立第一個分類模型](tutorial-first-experiment-automated-ml.md) 
++ [教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)

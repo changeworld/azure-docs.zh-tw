@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: charwen
-ms.openlocfilehash: 5974ebe7960eec1ca3bb8610f66061395fea64d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: beb4f8fc5b9e22bc3e2bdd4732c8321dfcd70780
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744097"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980732"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>適用於 Azure Bastion 的工作階段監視和管理
 
@@ -22,13 +22,13 @@ ms.locfileid: "84744097"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的 Azure Bastion 資源，然後從 Azure Bastion 頁面中選取 [工作階段]。
 
-   ![工作階段](./media/session-monitoring/sessions.png)
+   ![螢幕擷取畫面顯示已選取會話的 Azure 入口網站功能表設定。](./media/session-monitoring/sessions.png)
 2. 在 [工作階段] 頁面上，您可以在右側看到進行中的遠端工作階段。
 
    ![檢視工作階段](./media/session-monitoring/view-session.png)
 3. 選取 [重新整理] 以查看遠端工作階段的更新清單。 當您選取 [重新整理] 時，Azure Bastion 將擷取最新的監視資訊，並在入口網站中重新整理。
 
-   ![refresh](./media/session-monitoring/refresh.png)
+   ![螢幕擷取畫面顯示使用 Azure 防禦的會話，並反白顯示重新整理選項。](./media/session-monitoring/refresh.png)
 
 
 ## <a name="delete-or-force-disconnect-an-ongoing-remote-session"></a><a name="view"></a>刪除或強制中斷連線進行中的遠端工作階段
@@ -37,16 +37,16 @@ ms.locfileid: "84744097"
 
 1. 瀏覽至您的 Azure Bastion 資源，然後從 Azure Bastion 頁面中選取 [工作階段]。
 
-   ![瀏覽](./media/session-monitoring/navigate.png)
+   ![螢幕擷取畫面顯示在 [設定] 下選取會話的 Azure 入口網站。](./media/session-monitoring/navigate.png)
 2. 選取 [工作階段] 之後，您會看到遠端工作階段的清單。
 
    ![列出工作階段](./media/session-monitoring/list.png)
 3. 選取特定的遠端工作階段，接著選取工作階段資料列最右側的三個省略號，然後選取 [刪除]。
 
-   ![delete](./media/session-monitoring/delete.png)
+   ![螢幕擷取畫面顯示已選取 [刪除] 圖示的 Azure 入口網站顯示會話。](./media/session-monitoring/delete.png)
 4. 當您選取 [刪除] 時，遠端工作階段將會中斷連線，而使用者將在遠端工作階段中顯示「您已經斷線」的訊息。
 
-   ![中斷連線](./media/session-monitoring/disconnect.png)
+   ![螢幕擷取畫面顯示驗證您已中斷連線的訊息。](./media/session-monitoring/disconnect.png)
 
 ## <a name="next-steps"></a>後續步驟
 

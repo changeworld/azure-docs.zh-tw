@@ -5,12 +5,12 @@ ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: c4c20579f2306b61741f3c6ab1549285271435a3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d722d420597bb459d3e7b6d2ca33fdc49bfe6f09
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123170"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981569"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>建立 Azure 佇列儲存體所觸發的函式
 
@@ -89,7 +89,7 @@ ms.locfileid: "83123170"
 
 1. 選取 [新增訊息]，然後 在 [訊息文字] 中輸入 "Hello World!"。 選取 [確定]。
 
-    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue-test.png" alt-text="在 Azure 入口網站中移至您的 myqueue-items 佇列。" border="true":::
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue-test.png" alt-text="螢幕擷取畫面顯示已選取 [加入訊息] 按鈕，並醒目提示 [郵件內文] 欄位。" border="true":::
 
 1. 等候幾秒鐘，然後回到您的函式記錄，並確認系統已從佇列中讀取新訊息。
 

@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 09/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bed0f6cc32c25563d322da77193c5a3b6072902
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052274"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970669"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 的資料落地與客戶資料
 
@@ -24,13 +24,12 @@ ms.locfileid: "90052274"
 
 雲端式 Azure Multi-Factor Authentication 與 Azure Multi-Factor Authentication Server 會處理及儲存一些個人資料與組織資料。 本文概述儲存的資料內容與位置。
 
-若未特別註明，下列 Multi-Factor Authentication 活動目前皆源自於美國資料中心：
+Azure Multi-Factor Authentication 服務在美國、歐洲和亞太地區都有資料中心。 下列活動源自區域資料中心，但有注明：
 
-* 使用通話或 SMS 的雙因素驗證通常源自於美國資料中心，並透過全域提供者路由。
-    * 來自歐洲或澳大利亞等其他地區的一般用途使用者驗證要求，目前由該地區的資料中心負責處理。 其他事件，例如自助式密碼重設、Azure B2C 事件，或使用 NPS 延伸模組或 AD FS 配接器的混合式案例，目前全由美國資料中心處理。
-* 使用 Microsoft Authenticator 應用程式的推播通知源自美國資料中心。 此外，不同的地區也可能出現裝置廠商特定服務。
-* 美國目前常以 OATH 程式碼驗證。
-    * 再次重申，來自歐洲或澳大利亞等其他地區的一般用途使用者驗證事件，由該地區的資料中心負責處理。 其他事件目前則由美國資料中心處理。
+* 使用電話的多重要素驗證是來自美國資料中心，由全域提供者路由傳送。
+* 來自其他地區（例如歐洲或澳大利亞）的一般用途使用者驗證要求，目前是根據使用者的位置進行處理。
+* 使用 Microsoft Authenticator 應用程式的推播通知，會根據使用者的位置來發出區域資料中心。
+    * 裝置廠商專屬的服務，例如 Apple Push 通知，可能在使用者的位置之外。
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 儲存的個人資料
 

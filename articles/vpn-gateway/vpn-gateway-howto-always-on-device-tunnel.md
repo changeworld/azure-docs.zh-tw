@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: ab951375fdf9c5317e2c3a2f67271666d0987142
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 7688e42175b2b4e35b63979f5df25702f3bb869d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435842"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986591"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>設定 Always On VPN 裝置通道
 
@@ -31,8 +31,8 @@ ms.locfileid: "89435842"
 
 若要移除設定檔，請執行下列命令：
 
-![清理](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
+![螢幕擷取畫面顯示執行 VpnConnection-Name MachineCertTest 命令的 PowerShell 視窗。](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需疑難排解，請參閱 [Azure 點對站連線問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)

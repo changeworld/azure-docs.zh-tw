@@ -1,5 +1,5 @@
 ---
-title: 使用設計工具中的協助工具功能 (預覽)
+title: 使用設計工具中的協助工具功能
 titleSuffix: Azure Machine Learning
 description: 了解設計工具中提供的鍵盤快速鍵和螢幕助讀程式協助工具功能。
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
 ms.custom: designer
-ms.openlocfilehash: 5d91dc212eb2f856f0252261f2ddfc8a5a4d70ee
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 86cb5260a59f864658fbb7ac1c1da2d943c6253e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210362"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893429"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>使用鍵盤以使用 Azure Machine Learning 設計工具 (預覽)
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>使用鍵盤來使用 Azure Machine Learning 設計工具
 
 了解如何使用鍵盤和螢幕助讀程式以使用 Azure Machine Learning 設計工具。 如需在 Azure 入口網站中隨處可用的鍵盤快速鍵清單，請參閱[Azure 入口網站的鍵盤快速鍵](../azure-portal/azure-portal-keyboard-shortcuts.md)
 

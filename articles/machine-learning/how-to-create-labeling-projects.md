@@ -8,16 +8,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a86a7ee600d7443e5ba8cb4f30db0c48c8170327
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e74d22d3d45079a6568f6fca35dc5d84e2d7469f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612172"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897953"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>建立資料標記專案和匯出標籤 
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 為機器學習專案中的大量資料加上標籤，常是一項麻煩的工作。 具有電腦視覺元件 (例如影像分類或物體偵測) 的專案，通常需要數千個影像的標籤。
  
@@ -144,13 +144,7 @@ ms.locfileid: "89612172"
 >[!NOTE]
 > 請務必註明標籤者可以使用數字鍵 1 到 9 來選取前 9 個標籤。
 
-## <a name="use-ml-assisted-labeling-preview"></a>使用 ML 輔助標記 (預覽)
-
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
-
-> [!IMPORTANT]
-> ML 輔助標記目前處於公開預覽狀態。
-> 此預覽版本會在沒有服務等級協定的情況下提供，不建議用於實際執行工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+## <a name="use-ml-assisted-labeling"></a>使用 ML 輔助標記
 
 [ML 輔助標記] 頁面可讓您觸發自動機器學習模型，以加速標記工作。 在標記專案開始時，影像會隨機轉換成隨機順序，以減少可能的偏差。 不過，資料集內出現的任何偏差都會反映在定型的模型中。 例如，如果影像的 80% 屬於單一類別，則用來定型模型的資料有大約 80% 將會屬於該類別。 這種訓練並不包括主動式學習。
 
@@ -175,9 +169,6 @@ ms.locfileid: "89612172"
 提交夠多的影像標籤之後，即會使用分類模型來預測影像標籤。 或者，使用物件偵測模型來預測週框方塊。 標籤者現在會看到包含每個影像上已有預測標籤的頁面。 進行物件偵測時，也會顯示預測的方塊。 然後，此工作會在提交頁面之前先檢閱這些預測，並更正任何錯誤標記的影像。  
 
 一旦機器學習模型已針對您手動標記的資料定型，就會在手動標記影像的測試組上評估模型，以判斷其在各種不同信賴閾值的準確度。 此評估流程是用來判斷上述的信賴閾值，表示模型的精確度是否足以顯示預先標記。 然後系統會針對未標記的資料評估模型。 具有更符合此閾值之預測的影像會使用預先標記。
-
-> [!NOTE]
-> ML 輔助標記**僅**適用於 Enterprise 版工作區中。
 
 ## <a name="initialize-the-labeling-project"></a>初始化加上標籤專案
 

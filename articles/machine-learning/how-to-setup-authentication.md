@@ -11,24 +11,24 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 9d73492110703e64df5f948ad8a2a1ed8d2c63b9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 878b3d4a522fd2b7567ed6005283d041064d9fe5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904533"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885986"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>設定 Azure Machine Learning 資源和工作流程的驗證
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 瞭解如何驗證您的 Azure Machine Learning 工作區，以及部署為 web 服務的模型。
 
-一般來說，您可以搭配 Azure Machine Learning 使用兩種類型的驗證：
+一般而言，您可以搭配 Azure Machine Learning 使用兩種驗證類型：
 
-* __互動式__：您可以在 Azure Active Directory 中使用您的帳戶直接進行驗證，或取得用於驗證的權杖。 在實驗和反復開發期間，會使用互動式驗證。 或是您想要控制資源存取的位置 (例如 web 服務) 以每個使用者為基礎。
-* __服務主體__：您會在 Azure Active Directory 中建立服務主體帳戶，並使用它來驗證或取得權杖。 當您需要自動化程式來向服務進行驗證，而不需要使用者互動時，會使用服務主體。 例如，持續整合和部署腳本，會在每次定型程式碼變更時，訓練並測試模型。 如果您不想要要求服務的終端使用者進行驗證，您也可以使用服務主體來抓取權杖，以驗證 web 服務。 或者，不會使用 Azure Active Directory 直接執行使用者驗證。
+* __互動式__：您在 Azure Active Directory 中使用您的帳戶來直接驗證，或取得用於驗證的權杖。 互動式驗證會在實驗和反復開發期間使用。 或者，您想要控制對資源的存取 (例如，以每個使用者為基礎的 web 服務) 。
+* __服務主體__：您會在 Azure Active Directory 中建立服務主體帳戶，並使用它來驗證或取得權杖。 當您需要自動化程式來向服務驗證，而不需要使用者互動時，就會使用服務主體。 例如，每次定型程式碼變更時，會訓練並測試模型的持續整合和部署腳本。 如果您不想要要求服務的終端使用者進行驗證，您也可以使用服務主體來取得權杖，以驗證 web 服務。 或不使用 Azure Active Directory 直接執行使用者驗證。
 
-不論使用何種驗證類型， (RBAC) 的角色型存取控制，都是用來限定資源允許的存取層級。 例如，用來取得已部署模型之存取權杖的帳戶，只需要工作區的讀取權限。 如需 RBAC 的詳細資訊，請參閱[管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
+無論使用哪種驗證類型， (RBAC) 的角色型存取控制都是用來限定資源允許的存取層級。 例如，用來取得已部署模型之存取權杖的帳戶只需要工作區的讀取權限。 如需 RBAC 的詳細資訊，請參閱 [管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -38,9 +38,9 @@ ms.locfileid: "87904533"
 ## <a name="interactive-authentication"></a>互動式驗證
 
 > [!IMPORTANT]
-> 互動式驗證會使用您的瀏覽器，而且需要 cookie (包括協力廠商 cookie) 。 如果您已停用 cookie，可能會收到錯誤，例如「我們無法將您登入。」 如果您已啟用[Azure 多重要素驗證](/azure/active-directory/authentication/concept-mfa-howitworks)，也可能會發生此錯誤。
+> 互動式驗證會使用您的瀏覽器，而且需要 cookie (包括) 協力廠商 cookie。 如果您已停用 cookie，可能會收到「我們無法將您登入」之類的錯誤。 如果您已啟用 [Azure 多重要素驗證](/azure/active-directory/authentication/concept-mfa-howitworks)，也可能會發生此錯誤。
 
-檔和範例中的大部分範例都會使用互動式驗證。 例如，使用 SDK 時，會有兩個函式呼叫，會自動提示您使用以 UI 為基礎的驗證流程：
+檔和範例中的大部分範例都會使用互動式驗證。 例如，使用 SDK 時，有兩個函式呼叫會自動提示您使用以 UI 為基礎的驗證流程：
 
 * 呼叫 `from_config()` 函式會發出提示。
 
@@ -51,7 +51,7 @@ ms.locfileid: "87904533"
 
     `from_config()` 函式會尋找 JSON 檔案，其中包含工作區連線資訊。
 
-* 使用此函式 `Workspace` 來提供訂用帳戶、資源群組和工作區資訊，也會提示您進行互動式驗證。
+* 使用此函式 `Workspace` 來提供訂用帳戶、資源群組和工作區資訊，也會提示進行互動式驗證。
 
     ```python
     ws = Workspace(subscription_id="your-sub-id",
@@ -70,17 +70,17 @@ ms.locfileid: "87904533"
 
 ## <a name="service-principal-authentication"></a>服務主體驗證
 
-若要使用服務主體 (SP) 驗證，您必須先建立 SP 並授與它對您工作區的存取權。 如先前所述，azure RBAC)  (的 Azure 角色型存取控制可用來控制存取，因此您也必須決定要授與 SP 的存取權。
+若要 (SP) 驗證中使用服務主體，您必須先建立 SP，並授與它對您工作區的存取權。 如先前所述，Azure RBAC)  (的 Azure 角色型存取控制可用來控制存取，因此您也必須決定授與 SP 的存取權。
 
 > [!IMPORTANT]
-> 使用服務主體時，請授與它用於__的工作所需的最小存取權__。 例如，如果用來讀取 web 部署的存取權杖，您就不會授與服務主體擁有者或參與者存取權。
+> 使用服務主體時，請將它所用的 __工作所需的最小存取權__ 授與給它。 例如，您不會將服務主體擁有者或參與者存取權授與服務主體擁有者或參與者存取權，因為它是用來讀取 web 部署的存取權杖。
 >
-> 授與最小存取權的原因是，服務主體會使用密碼來進行驗證，而且密碼可能會儲存為自動化腳本的一部分。 如果密碼洩漏，則擁有特定工作所需的最小存取權，可將 SP 的惡意使用降至最低。
+> 授與最小存取權的原因是，服務主體會使用密碼進行驗證，而且密碼可能會儲存為自動化腳本的一部分。 如果密碼洩漏，則擁有特定工作所需的最低存取權可將 SP 的惡意使用降至最低。
 
-建立 SP 並將存取權授與您的工作區，最簡單的方式是使用[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要建立服務主體並將存取權授與您的工作區，請使用下列步驟：
+建立 SP 並授與存取權給工作區的最簡單方式是使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要建立服務主體，並授與它對您工作區的存取權，請使用下列步驟：
 
 > [!NOTE]
-> 您必須是訂用帳戶的系統管理員，才能執行所有這些步驟。
+> 您必須是訂用帳戶的系統管理員，才能執行上述所有步驟。
 
 1. 向您的 Azure 訂用帳戶進行驗證：
 
@@ -94,13 +94,13 @@ ms.locfileid: "87904533"
 
     如需其他驗證方法，請參閱[使用 Azure CLI 登入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
-1. 安裝 Azure Machine Learning 延伸模組：
+1. 安裝 Azure Machine Learning 擴充功能：
 
     ```azurecli-interactive
     az extension add -n azure-cli-ml
     ```
 
-1. 建立服務主體。 在下列範例中，會建立名為**ml-auth**的 SP：
+1. 建立服務主體。 下列範例會建立名為 **ml-auth** 的 SP：
 
     ```azurecli-interactive
     az ad sp create-for-rbac --sdk-auth --name ml-auth
@@ -123,13 +123,13 @@ ms.locfileid: "87904533"
     }
     ```
 
-1. 使用上一個步驟中所傳回的值，抓取服務主體的詳細資料 `clientId` ：
+1. 使用上一個步驟中所傳回的值，取出服務主體的詳細資料 `clientId` ：
 
     ```azurecli-interactive
     az ad sp show --id your-client-id
     ```
 
-    下列 JSON 是命令輸出的簡單範例。 記下 `objectId` 欄位，因為您需要此欄位的值才能進行下一個步驟。
+    下列 JSON 是命令輸出的簡化範例。 記下 `objectId` 欄位，因為您需要此欄位的值才能進行下一個步驟。
 
     ```json
     {
@@ -144,10 +144,10 @@ ms.locfileid: "87904533"
     }
     ```
 
-1. 允許 SP 存取您的 Azure Machine Learning 工作區。 您需要工作區名稱，以及其個別 `-w` 和 `-g` 參數的資源群組名稱。 針對 `--user` 參數，請使用上一個步驟中的 `objectId` 值。 `--role`參數可讓您設定服務主體的存取角色。 在下列範例中，SP 會指派給**擁有**者角色。 
+1. 允許 SP 存取您的 Azure Machine Learning 工作區。 您需要工作區名稱，以及其個別 `-w` 和 `-g` 參數的資源群組名稱。 針對 `--user` 參數，請使用上一個步驟中的 `objectId` 值。 `--role`參數可讓您設定服務主體的存取角色。 在下列範例中，會將 SP 指派給 **擁有** 者角色。 
 
     > [!IMPORTANT]
-    > 擁有者存取權允許服務主體在您的工作區中執行幾乎任何作業。 本檔中使用它來示範如何授與存取權;在生產環境中，Microsoft 建議授與服務主體執行您想要的角色所需的最小存取權。 如需詳細資訊，請參閱[管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
+    > 擁有者存取權可讓服務主體在您的工作區中進行幾乎任何作業。 本檔中使用它來示範如何授與存取權;在生產環境中，Microsoft 建議授與服務主體執行您想要的角色所需的最少存取權。 如需詳細資訊，請參閱 [管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
 
     ```azurecli-interactive
     az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
@@ -155,9 +155,9 @@ ms.locfileid: "87904533"
 
     此呼叫不會在成功時產生任何輸出。
 
-### <a name="use-a-service-principal-from-the-sdk"></a>使用 SDK 中的服務主體
+### <a name="use-a-service-principal-from-the-sdk"></a>從 SDK 使用服務主體
 
-若要使用服務主體從 SDK 向您的工作區進行驗證，請使用類別的函式 `ServicePrincipalAuthentication` 。 使用您在建立服務提供者作為參數時所獲得的值。 `tenant_id` 參數會對應到上述的 `tenantId`、`service_principal_id` 對應至 `clientId`、`service_principal_password` 對應至 `clientSecret`。
+若要使用服務主體從 SDK 向您的工作區進行驗證，請使用類別的函式 `ServicePrincipalAuthentication` 。 當您建立服務提供者作為參數時，請使用您取得的值。 `tenant_id` 參數會對應到上述的 `tenantId`、`service_principal_id` 對應至 `clientId`、`service_principal_password` 對應至 `clientSecret`。
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -167,7 +167,7 @@ sp = ServicePrincipalAuthentication(tenant_id="your-tenant-id", # tenantID
                                     service_principal_password="your-client-secret") # clientSecret
 ```
 
-`sp` 變數現在會保留在 SDK 中直接使用的驗證物件。 一般而言，將上述使用的識別碼/祕密儲存在環境變數中是個好主意，如下列程式碼所示。 將儲存在環境變數中，可防止意外將資訊簽入 GitHub 存放庫中。
+`sp` 變數現在會保留在 SDK 中直接使用的驗證物件。 一般而言，將上述使用的識別碼/祕密儲存在環境變數中是個好主意，如下列程式碼所示。 儲存在環境變數中，可防止資訊不慎簽入 GitHub 存放庫。
 
 ```python
 import os
@@ -188,11 +188,11 @@ ws = Workspace.get(name="ml-example",
 ws.get_details()
 ```
 
-### <a name="use-a-service-principal-from-the-azure-cli"></a>使用 Azure CLI 中的服務主體
+### <a name="use-a-service-principal-from-the-azure-cli"></a>從 Azure CLI 使用服務主體
 
-您可以使用服務主體來執行 Azure CLI 命令。 如需詳細資訊，請參閱[使用服務主體登入](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#sign-in-using-a-service-principal)。
+您可以使用服務主體來 Azure CLI 命令。 如需詳細資訊，請參閱 [使用服務主體登入](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#sign-in-using-a-service-principal)。
 
-### <a name="use-a-service-principal-with-the-rest-api-preview"></a>使用 REST API (preview 的服務主體) 
+### <a name="use-a-service-principal-with-the-rest-api-preview"></a>使用具有 REST API (預覽的服務主體) 
 
 服務主體也可以用來向 Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/) (preview) 進行驗證。 您可使用 Azure Active Directory [用戶端認證授與流程](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)，其允許在自動工作流程中進行無周邊驗證的服務對服務呼叫。 這些範例是使用 Python 和 Node.js 中的 [ADAL 程式庫](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)所實作，但您也可以使用任何支援 OpenID Connect 1.0 的開放原始碼程式庫。
 
@@ -285,15 +285,15 @@ print(token_response)
 
 Azure Machine Learning 所建立的模型部署提供兩種驗證方法：
 
-* 以索引**鍵為基礎**：使用靜態金鑰來驗證 web 服務。
-* **權杖型**：必須從工作區取得暫時權杖，並用來對 web 服務進行驗證。 此權杖會在一段時間後過期，而且必須重新整理，才能繼續使用 web 服務。
+* 以索引**鍵為基礎**：靜態金鑰是用來對 web 服務進行驗證。
+* **權杖型**：必須從工作區取得暫存權杖，並用來對 web 服務進行驗證。 此權杖會在一段時間後到期，而且必須重新整理，才能繼續使用 web 服務。
 
     > [!NOTE]
-    > 只有在部署至 Azure Kubernetes Service 時，才可以使用權杖型驗證。
+    > 只有在部署至 Azure Kubernetes Service 時，才可使用以權杖為基礎的驗證。
 
 ### <a name="key-based-web-service-authentication"></a>以金鑰為基礎的 web 服務驗證
 
-Azure Kubernetes Service (AKS) 上部署的 Web 服務，預設會*啟用*以金鑰為基礎的驗證。 Azure 容器實例 (ACI) 部署的服務預設會*停用*金鑰型驗證，但是您可以藉由 `auth_enabled=True` 在建立 ACI web 服務時加以啟用。 下列程式碼範例會建立以金鑰為基礎的驗證所啟用的 ACI 部署設定。
+Azure Kubernetes Service (AKS) 上部署的 Web 服務，預設會 *啟用* 以金鑰為基礎的驗證。 Azure 容器實例 (ACI) 部署的服務預設會 *停用* 金鑰型驗證，但是您可以在 `auth_enabled=True` 建立 ACI web 服務時設定來啟用它。 下列程式碼範例示範如何在啟用金鑰型驗證的情況下建立 ACI 部署設定。
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -327,7 +327,7 @@ aci_service.regen_key("Primary")
 aci_service.regen_key("Secondary")
 ```
 
-如需驗證已部署模型的詳細資訊，請參閱針對[部署為 web 服務的模型建立用戶端](how-to-consume-web-service.md)。
+如需有關驗證已部署模型的詳細資訊，請參閱為 [部署為 web 服務的模型建立用戶端](how-to-consume-web-service.md)。
 
 ### <a name="token-based-web-service-authentication"></a>權杖型 Web 服務驗證
 
@@ -335,9 +335,9 @@ aci_service.regen_key("Secondary")
 
 * 在部署至 Azure Kubernetes Service 時，**依預設會停用**權杖驗證。
 * 部署至 Azure 容器執行個體時，**不支援**權杖驗證。
-* 權杖驗證**無法和金鑰型驗證同時使用**。
+* 權杖驗證 **無法與金鑰型驗證同時使用**。
 
-若要控制權杖驗證，請在 `token_auth_enabled` 建立或更新部署時使用參數：
+若要控制權杖驗證，請 `token_auth_enabled` 在建立或更新部署時使用參數：
 
 ```python
 from azureml.core.webservice import AksWebservice
@@ -365,7 +365,7 @@ aks_service.wait_for_deployment(show_output = True)
 如果已啟用權杖驗證，即可使用 `get_token` 方法來擷取 JSON Web 權杖 (JWT)，以及該權杖的到期時間：
 
 > [!TIP]
-> 如果您使用服務主體來取得權杖，而且想要讓它擁有取得權杖所需的最低存取權，請將它指派給工作區的**讀者**角色。
+> 如果您使用服務主體來取得權杖，並希望它具有取得權杖的最低必要存取權，請將它指派給工作區的 **讀取** 者角色。
 
 ```python
 token, refresh_by = aks_service.get_token()
@@ -383,6 +383,6 @@ print(token)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [如何在定型中使用秘密](how-to-use-secrets-in-runs.md)。
+* [如何在訓練中使用秘密](how-to-use-secrets-in-runs.md)。
 * [定型及部署映像分類模型](tutorial-train-models-with-aml.md)。
 * [使用部署為 Web 服務的 Azure Machine Learning 模型](how-to-consume-web-service.md)。

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 6b40130fb1d965abf76ba9ed1f6ebd45d94c8e01
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b0a0420b470ee6bf0c7fbb9885e496eaabaf7ef4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651010"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893538"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -32,7 +32,7 @@ Azure Machine Learning 提供數種方式供您將模型定型，從使用 SDK �
 
 + [適用于 r 的 AZURE MACHINE LEARNING sdk](#r-sdk)：適用于 r 的 sdk 會使用 reticulate 套件系結至 Azure Machine Learning 的 Python SDK。 這可讓您從任何 R 環境存取在 Python SDK 中實作的核心物件和方法。
 
-+ **設計工具**：Azure Machine Learning 設計工具 (預覽) 可讓您輕鬆地進入機器學習領域來建置概念證明，或讓幾乎沒有程式碼撰寫經驗的使用者進入機器學習領域。 其可讓您使用拖放式的 Web 型 UI 來將模型定型。 您可以將 Python 程式碼作為設計的一部分，或在不撰寫任何程式碼的情況下將模型定型。
++ **設計**工具： Azure Machine Learning 設計工具可讓您輕鬆進入機器學習的進入點，以建立概念的證明，或幾乎沒有程式碼撰寫經驗的使用者。 其可讓您使用拖放式的 Web 型 UI 來將模型定型。 您可以將 Python 程式碼作為設計的一部分，或在不撰寫任何程式碼的情況下將模型定型。
 
 + **CLI**：機器學習 CLI 會提供常見 Azure Machine Learning 工作的命令，而且通常會用於**指令碼編寫和自動化工作**上。 例如，當您建立定型指令碼或管線之後，便可使用 CLI 來按照排程啟動定型回合，或在用於定型的資料檔案有所更新時啟動。 針對將模型定型，其會提供可提交定型作業的命令。 其可使用回合組態或管線來提交作業。
 
@@ -158,6 +158,6 @@ R SDK 可讓您搭配使用 R 語言與 Azure Machine Learning。 SDK 會使用�
 
 您可以使用 VS Code 擴充功能來執行和管理定型作業。 若要深入瞭解，請參閱 [VS Code 資源管理操作指南](how-to-manage-resources-vscode.md#experiments) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 瞭解如何 [使用計算目標進行模型定型](how-to-set-up-training-targets.md)。

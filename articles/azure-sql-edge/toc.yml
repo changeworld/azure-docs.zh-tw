@@ -15,10 +15,15 @@
   items:
     - name: 部署 SQL Edge
       href: deploy-portal.md
+    - name: 使用 Docker 進行部署
+      href: disconnected-deployment.md
     - name: 在 SQL Edge 上部署 ONNX 模型
       href: deploy-onnx.md
 - name: 教學課程
+  expanded: true
   items:
+    - name: 在 Kubernetes 中部署
+      href: deploy-kubernetes.md
     - name: 使用 Azure Data Factory 來同步資料
       href: tutorial-sync-data-factory.md
     - name: 使用 SQL 資料同步來同步資料
@@ -31,36 +36,42 @@
           href: tutorial-set-up-iot-edge-modules.md
         - name: 將模型部署到 SQL Edge
           href: tutorial-run-ml-model-on-sql-edge.md
-- name: 如何
-  items:
-    - name: 部署串流分析作業
-      href: stream-analytics.md
-    - name: 設定複寫
-      href: configure-replication.md
-    - name: 追蹤資料變更
-      href: track-data-changes.md
-    - name: 管理 T-SQL 串流作業
-      href: create-stream-analytics-job.md
-    - name: 連線到 SQL Edge
-      href: connect.md
-    - name: 設定 SQL Edge
-      href: configure.md
-    - name: 部署 DAC 封裝
-      href: deploy-dacpac.md
 - name: 概念
   items:
-    - name: 採用 ONNX 的機器學習和 AI
-      href: onnx-overview.md
-    - name: 備份與還原
-      href: backup-restore.md
-    - name: SQL Edge 中的資料串流
+    - name: 部署
+      items:
+        - name: 使用 Azure 入口網站部署
+          href: deploy-portal.md
+        - name: 使用 Docker 進行部署
+          href: disconnected-deployment.md
+        - name: 在 Kubernetes 中部署
+          href: deploy-kubernetes.md
+        - name: SQL 工具
+          href: 'https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools?toc=/azure/azure-sql-edge/toc.json'
+    - name: 機器學習服務
+      items:
+        - name: 採用 ONNX 的機器學習和 AI
+          href: onnx-overview.md
+        - name: 部署 ONNX 模型
+          href: deploy-onnx.md
+    - name: 效能
+      items:
+        - name: 效能指導方針
+          href: performance-best-practices.md
+    - name: 設定商務持續性
+      items:
+        - name: 備份與還原
+          href: backup-restore.md
+        - name: 容器的高可用性
+          href: high-availability-sql-edge-containers.md
+    - name: 資料串流
       items:
         - name: 串流資料
           href: stream-data.md
+        - name: 建立和管理串流作業
+          href: create-stream-analytics-job.md
         - name: 建立外部串流 (Transact-SQL)
           href: create-external-stream-transact-sql.md
-        - name: 變更外部串流 (Transact-SQL)
-          href: alter-external-stream-transact-sql.md
         - name: 置放外部串流 (Transact-SQL)
           href: drop-external-stream-transact-sql.md
         - name: 串流檢視和 DMV
@@ -69,15 +80,21 @@
               href: streaming-catalog-views.md
             - name: sys.external_job_streams (Transact-SQL)
               href: sys-external-job-streams.md
-            - name: sys.external-streaming_jobs (Transact-SQL)
+            - name: sys.external_streaming_jobs (Transact-SQL)
               href: sys-external-streaming-jobs.md
             - name: sys.external_streams (Transact-SQL)
               href: sys-external-streams.md
     - name: 處理時間序列資料
       items:
-        - name: Date_Bucket (Transact-SQL)
+        - name: 時間間隔和遺漏值
+          href: imputing-missing-values.md
+        - name: DATE_BUCKET (Transact-SQL)
           href: date-bucket-tsql.md
-        - name: 日期保留和清除
+        - name: FIRST_VALUE (Transact-SQL)
+          href: 'https://docs.microsoft.com/sql/t-sql/functions/first-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
+        - name: LAST_VALUE (Transact-SQL)
+          href: 'https://docs.microsoft.com/sql/t-sql/functions/last-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
+        - name: 資料保留和清除
           items:
             - name: 資料保留概觀
               href: data-retention-overview.md
@@ -85,3 +102,43 @@
               href: data-retention-enable-disable.md
             - name: 資料保留清除
               href: data-retention-cleanup.md
+            - name: sys.sp_cleanup_data_retention (Transact-SQL)
+              href: sys-sp-cleanup-data-retention.md
+    - name: 安全性
+      items:
+        - name: 安全性概觀
+          href: security-overview.md
+        - name: 安全性功能
+          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-security-get-started?toc=/azure/azure-sql-edge/toc.json'
+        - name: 為連線加密
+          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-encrypted-connections?toc=/azure/azure-sql-edge/toc.json'
+        - name: 適用於 IoT 的 Azure 資訊安全中心
+          href: 'https://docs.microsoft.com/azure/asc-for-iot/overview?toc=/azure/azure-sql-edge/toc.json&bc=/azure/azure-sql-edge/breadcrumb/toc.json'
+- name: 如何
+  items:
+    - name: 設定 SQL Edge
+      items:
+        - name: 使用環境變數進行設定
+          href: configure.md#configure-by-using-environment-variables
+        - name: 使用 mssql.conf 檔案進行設定
+          href: configure.md#configure-by-using-an-mssqlconf-file
+        - name: 以非根使用者身分執行
+          href: configure.md#run-azure-sql-edge-as-non-root-user
+        - name: 保存資料
+          href: configure.md#persist-your-data
+        - name: 設定複寫
+          href: configure-replication.md
+    - name: 連線到 SQL Edge
+      href: connect.md
+    - name: 部署 DAC 封裝
+      href: deploy-dacpac.md
+    - name: 追蹤資料變更
+      href: track-data-changes.md
+    - name: 管理 T-SQL 串流作業
+      href: create-stream-analytics-job.md
+    - name: 為部署問題進行疑難排解
+      href: troubleshoot.md
+- name: 參考
+  items:
+    - name: Transact-SQL (T-SQL) 參考
+      href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
