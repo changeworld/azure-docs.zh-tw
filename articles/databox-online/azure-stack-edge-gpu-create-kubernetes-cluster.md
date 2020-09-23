@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack Edge GPU 裝置上建立和管理 Kubernetes 叢集 |Microsoft Docs
-description: 說明如何透過 Windows PowerShell 介面，在 Azure Stack Edge GPU 裝置上建立和管理 Kubernetes 叢集。
+title: 在 Azure Stack Edge Pro GPU 裝置上建立和管理 Kubernetes 叢集 |Microsoft Docs
+description: 說明如何透過 Windows PowerShell 介面，在 Azure Stack Edge Pro GPU 裝置上建立和管理 Kubernetes 叢集。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 95663553bc68d34eebd90be0d4032ee53900479b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267953"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903214"
 ---
-# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>透過您 Azure Stack Edge GPU 裝置上的 kubectl 來連線及管理 Kubernetes 叢集
+# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>透過您 Azure Stack Edge Pro GPU 裝置上的 kubectl 來連線及管理 Kubernetes 叢集
 
-在您的 Azure Stack Edge 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 建立 Kubernetes 叢集之後，您就可以從用戶端電腦在本機連線到叢集，並透過 *kubectl*之類的原生工具來管理叢集。
+在您的 Azure Stack Edge Pro 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 建立 Kubernetes 叢集之後，您就可以從用戶端電腦在本機連線到叢集，並透過 *kubectl*之類的原生工具來管理叢集。
 
-本文說明如何連線到 Azure Stack Edge 裝置上的 Kubernetes 叢集，然後使用 *kubectl*進行管理。 
+本文說明如何連線到 Azure Stack Edge Pro 裝置上的 Kubernetes 叢集，然後使用 *kubectl*進行管理。 
 
 
 ## <a name="prerequisites"></a>必要條件
 
 在您開始前，請確定：
 
-1. 您可以存取 Azure Stack Edge 裝置。
+1. 您可以存取 Azure Stack Edge Pro 裝置。
 
-2. 您已啟用 Azure Stack Edge 裝置，如 [啟動 Azure Stack Edge](azure-stack-edge-gpu-deploy-activate.md)所述。
+2. 您已依照[啟動 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md) 中的說明來啟動 Azure Stack Edge Pro 裝置。
 
-3. 您已在裝置上啟用計算角色。 當您根據在 [Azure Stack Edge 裝置上設定計算](azure-stack-edge-gpu-deploy-configure-compute.md)的指示，在裝置上設定計算時，也會在裝置上建立 Kubernetes 叢集。
+3. 您已在裝置上啟用計算角色。 當您在裝置上設定計算時，也會根據在 [您 Azure Stack Edge Pro 裝置上設定計算](azure-stack-edge-gpu-deploy-configure-compute.md)的指示，在裝置上建立 Kubernetes 叢集。
 
 4. 您可以存取執行 PowerShell 5.0 或更新版本的 Windows 用戶端系統來存取裝置。 您也可以讓任何其他用戶端使用 [支援的作業系統](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 。 
 
@@ -48,7 +48,7 @@ ms.locfileid: "89267953"
 
 建立 Kubernetes 叢集之後，您可以透過 cmdline 使用 *kubectl* 來存取叢集。 
 
-在此方法中，您會建立命名空間和使用者。 然後，將使用者與命名空間建立關聯。 您也需要取得 *配置* 檔，讓您可以使用 Kubernetes 用戶端直接與您建立的 Kubernetes 叢集交談，而不需要連線到 Azure Stack Edge 裝置的 PowerShell 介面。
+在此方法中，您會建立命名空間和使用者。 然後，將使用者與命名空間建立關聯。 您也需要取得 *配置* 檔，讓您可以使用 Kubernetes 用戶端直接與您建立的 Kubernetes 叢集交談，而不需要連接到 Azure Stack Edge Pro 裝置的 PowerShell 介面。
 
 1. 建立命名空間。 輸入：
 
@@ -66,7 +66,7 @@ ms.locfileid: "89267953"
     `New-HcsKubernetesUser -UserName <string>`
 
     > [!NOTE]
-    > 您無法使用 *aseuser* 作為使用者名稱，因為它會保留給與 Azure Stack Edge 的 IoT 命名空間相關聯的預設使用者。
+    > 您無法使用 *aseuser* 做為使用者名稱，因為它是保留給 Azure Stack Edge Pro 的 IoT 命名空間相關聯的預設使用者。
 
     以下是設定檔的範例輸出：
    
@@ -113,7 +113,7 @@ ms.locfileid: "89267953"
 
     `[10.100.10.10]: PS>Grant-HcsKubernetesNamespaceAccess -Namespace "myasetest1" -UserName "aseuser1"`
 
-    一旦有了設定檔，您就不需要叢集的實體存取。 如果您的用戶端可以 ping Azure Stack Edge 的裝置 IP，您應該能夠使用 *kubectl* 命令來導向叢集。
+    一旦有了設定檔，您就不需要叢集的實體存取。 如果您的用戶端可以 ping Azure Stack Edge Pro 裝置 IP，您應該能夠使用 *kubectl* 命令來指示叢集。
 
 6. 在您的用戶端上啟動新的 PowerShell 會話。 您不需要連線到裝置介面。 您現在可以 `kubectl` 使用下列命令在用戶端上安裝：
 
@@ -125,7 +125,7 @@ ms.locfileid: "89267953"
     例如，如果 Kubernetes 主要節點正在執行 v 1.15.2，請在用戶端上安裝 v 1.15.2。
 
     > [!IMPORTANT]
-    > 下載用戶端，而該用戶端不會從主伺服器進行超過一個次要版本的扭曲。 用戶端版本，但可能會導致主伺服器最多一個次要版本。 例如，v1.0 主機應該適用于 v1.1、v1.0 和 v1.0 節點，而且應該適用于 v1.0、1.3 和1.4 版用戶端。 如需 Kubernetes 用戶端版本的詳細資訊，請參閱 [Kubernetes 版本和版本扭曲支援原則](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)。 如需 Azure Stack Edge 上 Kubernetes server 版本的詳細資訊，請移至取得 Kubernetes 伺服器版本。<!-- insert link-->
+    > 下載用戶端，而該用戶端不會從主伺服器進行超過一個次要版本的扭曲。 用戶端版本，但可能會導致主伺服器最多一個次要版本。 例如，v1.0 主機應該適用于 v1.1、v1.0 和 v1.0 節點，而且應該適用于 v1.0、1.3 和1.4 版用戶端。 如需 Kubernetes 用戶端版本的詳細資訊，請參閱 [Kubernetes 版本和版本扭曲支援原則](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)。 如需 Azure Stack Edge Pro 上 Kubernetes server 版本的詳細資訊，請移至取得 Kubernetes 伺服器版本。<!-- insert link-->
     > 有時候， `kubectl` 如果您正在執行適用於 Windows 的 Docker 或其他工具，則會預先安裝在您的系統上。 請務必下載的特定版本，如本節 `kubectl` 所示，以使用此 kubernetes 叢集。 
 
     安裝需要幾分鐘的時間。
@@ -170,6 +170,6 @@ ms.locfileid: "89267953"
 如需詳細指示，請移至 [移除計算](azure-stack-edge-j-series-manage-compute.md#remove-compute-configuration)設定。
    
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-- [在您的 Azure Stack Edge 上部署無狀態應用程式](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。
+- [在您的 Azure Stack Edge Pro 上部署無狀態應用程式](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。

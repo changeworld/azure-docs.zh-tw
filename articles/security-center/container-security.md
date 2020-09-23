@@ -12,76 +12,92 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: c01ed6dbbd6e1f7febfb99df11d2ee67cb1e5465
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd4487d3d0664699a32eec2ab47297839eaf8a8a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800593"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894898"
 ---
-# <a name="container-security-in-security-center"></a>資訊安全中心中的容器安全性
+# <a name="container-security-in-security-center"></a>安全性中心的容器安全性
 
-Azure 資訊安全中心是用來保護您的容器的 Azure 原生解決方案。 資訊安全中心可以保護下列容器資源類型：
+Azure 資訊安全中心是 Azure 原生解決方案，用來保護您的容器。
 
+安全性中心可以保護下列容器資源類型：
 
+| 資源類型 | 安全中心提供的保護 |
+|:--------------------:|-----------|
+| ![Kubernetes 服務](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)<br>**Azure Kubernetes Service (AKS) 叢集** | -持續評估您的 AKS 叢集設定，以提供錯誤設定的可見度，以及協助您解決任何已發現問題的指導方針。<br>[深入瞭解透過安全性建議進行的環境強化](#environment-hardening)。<br><br>-AKS 叢集和 Linux 節點的威脅防護。 可疑活動的警示是由選用的  [Azure Defender For Kubernetes](defender-for-kubernetes-introduction.md)所提供。<br>[深入瞭解 AKS 節點和叢集的執行時間保護](#run-time-protection-for-aks-nodes-and-clusters)。|
+| ![容器主機](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)<br>**容器主機**<br>執行 Docker)  (Vm | -持續評量您的 Docker 設定，以提供錯誤設定的可見度，以及協助您解決選用的  [Azure Defender for server](defender-for-servers-introduction.md)所發現的任何問題的指導方針。<br>[深入瞭解透過安全性建議進行的環境強化](#environment-hardening)。|
+| ![Container registry](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)<br>**Azure Container Registry (ACR) 登錄** | -使用 [適用于容器](defender-for-container-registries-introduction.md)登錄的選擇性 Azure Defender，以 AZURE RESOURCE MANAGER 型 ACR 登錄中映射的弱點評定和管理工具。<br>[深入瞭解如何掃描容器映射是否有弱點](#vulnerability-management---scanning-container-images)。 |
+|||
 
-|資源 |Name  |詳細資料  |
-|:---------:|---------|---------|
-|![容器主機](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)|容器主機（執行 Docker 的虛擬機器）|資訊安全中心會掃描您的 Docker 組態，並透過提供一份所有經評估為失敗規則的清單，讓您能夠看見錯誤的組態。 資訊安全中心提供指導方針協助您快速解決這些問題，並節省時間。 資訊安全中心會持續評估 Docker 設定，並提供給您其最新狀態。|
-|![Kubernetes 服務](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)|Azure Kubernetes Service （AKS）叢集|針對標準層使用者，利用[資訊安全中心的選擇性 AKS](azure-kubernetes-service-integration.md)配套，取得 AKS 節點、雲端流量和安全性控制的更深入可見度。|
-|![容器登錄](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)|Azure Container Registry （ACR）登錄|針對標準層使用者，使用[資訊安全中心的選擇性 acr](azure-kubernetes-service-integration.md)配套，深入瞭解以 ARM 為基礎的 acr 登錄中的映射弱點。|
-||||
+本文說明如何使用「安全性中心」以及適用于 container registry、「處理」和「Kubernetes」的選擇性 Azure Defender 方案，來改善、監視及維護容器及其應用程式的安全性。
 
-
-本文說明如何使用這些配套來改善、監視和維護容器及其應用程式的安全性。 您將瞭解資訊安全中心如何協助下列容器安全性的核心層面：
+您將瞭解安全性中心如何協助這些容器安全性的核心層面：
 
 - [弱點管理-掃描容器映射](#vulnerability-management---scanning-container-images)
-- [強化環境-持續監視 Docker 設定和 Kubernetes 叢集](#environment-hardening)
-- [執行時間保護-即時威脅偵測](#run-time-protection---real-time-threat-detection)
+- [環境強化](#environment-hardening)
+- [AKS 節點和叢集的執行時間保護](#run-time-protection-for-aks-nodes-and-clusters)
 
-[![Azure 資訊安全中心的 [容器安全性] 索引標籤](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
+下列螢幕擷取畫面顯示資產清查頁面，以及由安全中心保護的各種容器資源類型。
 
-如需有關如何使用這些功能的指示，請參閱[監視容器的安全性](monitor-container-security.md)。
+:::image type="content" source="./media/container-security/container-security-tab.png" alt-text="安全性中心的資產清查頁面中的容器相關資源" lightbox="./media/container-security/container-security-tab.png":::
 
 ## <a name="vulnerability-management---scanning-container-images"></a>弱點管理-掃描容器映射
-若要監視 ARM 型 Azure Container Registry，請確定您是在資訊安全中心的標準層（請參閱[定價](/azure/security-center/security-center-pricing)）。 然後，啟用選擇性的容器登錄套件組合。 推送新的映射時，資訊安全中心會使用領先業界的弱點掃描廠商 Qualys 掃描映射。
 
-找到問題時（依 Qualys 或資訊安全中心），您會在資訊安全中心儀表板中收到通知。 針對每個弱點，資訊安全中心提供可採取動作的建議，以及嚴重性分類，以及如何修復問題的指引。 如需資訊安全中心的容器建議詳細資料，請參閱[建議的參考清單](recommendations-reference.md#recs-containers)。
+若要監視以 Azure Resource Manager 為基礎的 Azure container registry 中的映射，請 [為容器登錄啟用 Azure Defender](defender-for-container-registries-introduction.md)。 「安全性中心」會掃描在過去30天內提取、推送至您的登錄或匯入的任何映射。 整合式掃描器是由領先業界的弱點掃描廠商（Qualys）所提供。
 
-資訊安全中心篩選並分類掃描器的發現結果。 當影像狀況良好時，資訊安全中心將其標示為。 資訊安全中心只會針對具有要解決之問題的映射產生安全性建議。 藉由只在發生問題時發出通知，資訊安全中心降低不必要資訊警示的可能性。
+當您發現問題時（透過 Qualys 或安全性中心），您將會在 [Azure Defender 儀表板](azure-defender-dashboard.md)中收到通知。 針對每個弱點，「安全性中心」提供可操作的建議，以及嚴重性分類，以及如何修復問題的指引。 如需資訊安全中心的容器建議詳細資訊，請參閱 [建議的參考清單](recommendations-reference.md#recs-containers)。
 
-## <a name="environment-hardening"></a>強化環境
+安全性中心會篩選並分類掃描器的結果。 當映射狀況良好時，「安全性中心」會將它標示為如此。 安全性中心只會針對有問題要解決的映射產生安全性建議。 藉由只在發生問題時通知，資訊安全中心會降低不必要資訊警示的可能性。
 
-### <a name="continuous-monitoring-of-your-docker-configuration"></a>持續監視 Docker 設定
-Azure 資訊安全中心可識別 IaaS Linux Vm 上裝載的非受控容器，或其他執行 Docker 容器的 Linux 電腦。 資訊安全中心會持續評估這些容器的設定。 然後將它們與「[網際網路安全性」（CIS） Docker 基準的中心](https://www.cisecurity.org/benchmark/docker/)進行比較。
+## <a name="environment-hardening"></a>環境強化
 
-資訊安全中心包含 CIS Docker 基準測試的整個規則集，並在您的容器無法滿足任何控制項時發出警示。 當它找到錯誤的錯誤時，資訊安全中心會產生安全性建議。 使用 [**建議] 頁面**來查看建議並補救問題。 您也會在 [**容器**] 索引標籤上看到建議，其中會顯示使用 Docker 部署的所有虛擬機器。 
+### <a name="continuous-monitoring-of-your-docker-configuration"></a>持續監視您的 Docker 設定
 
-如需有關這項功能可能會出現之相關資訊安全中心建議的詳細資訊，請參閱建議參考資料表的[容器一節](recommendations-reference.md#recs-containers)。
+Azure 資訊安全中心識別裝載于 IaaS Linux Vm 上的非受控容器，或執行 Docker 容器的其他 Linux 機器。 安全性中心會持續評估這些容器的設定。 然後，它會將它們與 [網際網路安全性 (CIS) Docker 基準測試的中心](https://www.cisecurity.org/benchmark/docker/)進行比較。
 
-當您探索 VM 的安全性問題時，資訊安全中心提供有關機器上容器的其他資訊。 這類資訊包括 Docker 版本，以及在主機上執行的映射數目。 
+如果您的容器無法滿足任何控制項，則 [安全性中心] 會包含 CIS Docker 基準測試的完整規則集，併發出警示。 當它找到錯誤配置時，安全性中心會產生安全性建議。 您可以使用 [ **建議] 頁面** 來查看建議和補救問題。 您也會在 [ **容器** ] 索引標籤上看到建議，顯示使用 Docker 部署的所有虛擬機器。 CIS 基準測試檢查不會在 AKS 管理的實例或 Databricks 管理的 Vm 上執行。
 
->[!NOTE]
-> 這些 CIS 基準測試不會在 AKS 管理的實例或 Databricks 管理的 Vm 上執行。
+如需此功能可能出現之相關資訊安全中心建議的詳細資訊，請參閱建議參考表的 [容器一節](recommendations-reference.md#recs-containers) 。
 
-### <a name="continuous-monitoring-of-your-kubernetes-clusters"></a>連續監視您的 Kubernetes 叢集
-資訊安全中心與 Azure Kubernetes Service （AKS）搭配運作，這是 Microsoft 管理的容器協調流程服務，可用於開發、部署和管理容器化應用程式。
+當您探索 VM 的安全性問題時，資訊安全中心會提供電腦上容器的其他相關資訊。 這類資訊包括 Docker 版本以及在主機上執行的映射數目。 
 
-AKS 提供安全性控制和叢集安全性狀態的可見度。 資訊安全中心使用下列功能來執行下列動作：
+若要監視裝載在 IaaS Linux Vm 上的非受控容器，請啟用選用的 [Azure Defender for servers](defender-for-servers-introduction.md)。
+
+
+### <a name="continuous-monitoring-of-your-kubernetes-clusters"></a>持續監視您的 Kubernetes 叢集
+「安全性中心」搭配 Azure Kubernetes Service (AKS) ，也就是 Microsoft 管理的容器協調流程服務，可用於開發、部署和管理容器化應用程式。
+
+AKS 可提供安全性控制和您叢集安全性狀態的可見度。 [安全性中心] 會使用下列功能：
 * 持續監視 AKS 叢集的設定
-* 產生與業界標準一致的安全性建議
+* 產生與產業標準一致的安全性建議
 
-如需有關這項功能可能會出現之相關資訊安全中心建議的詳細資訊，請參閱建議參考資料表的[容器一節](recommendations-reference.md#recs-containers)。
+如需此功能可能出現之相關資訊安全中心建議的詳細資訊，請參閱建議參考表的 [容器一節](recommendations-reference.md#recs-containers) 。
 
-## <a name="run-time-protection---real-time-threat-detection"></a>執行時間保護-即時威脅偵測
+###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>使用 Kubernetes 許可控制的工作負載保護最佳做法
+
+安裝  **適用于 Kubernetes 的 Azure 原則附加** 元件，以取得保護 Kubernetes 容器工作負載的建議套件組合。
+
+如同[此 Azure 原則 For Kubernetes 頁面](../governance/policy/concepts/policy-for-kubernetes.md)中所述，附加元件會針對開啟的原則代理程式擴充開放原始碼[閘道管理員](https://github.com/open-policy-agent/gatekeeper)的   許可控制器 webhook。 [ ](https://www.openpolicyagent.org/) Kubernetes 的許可控制器是外掛程式，可強制使用您的叢集。 附加元件會註冊為 Kubernetes 許可控制的 webhook，並可讓您以集中、一致的方式在叢集上套用大規模大規模地規範和保護。 
+
+當您已在 AKS 叢集上安裝附加元件時，對 Kubernetes API 伺服器的每個要求都會針對預先定義的最佳作法集進行監視，然後再保存到叢集。 然後，您可以設定以 **強制執行** 最佳作法，並針對未來的工作負載進行強制執行。 
+
+例如，您可以強制不應建立特殊許可權的容器，而任何未來的要求將會遭到封鎖。
+
+深入瞭解如何 [保護您的 Kubernetes 工作負載](kubernetes-workload-protections.md)。
+
+
+## <a name="run-time-protection-for-aks-nodes-and-clusters"></a>AKS 節點和叢集的執行時間保護
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
 
 
+## <a name="next-steps"></a>下一步
 
-## <a name="next-steps"></a>後續步驟
+在此總覽中，您已瞭解 Azure 資訊安全中心中容器安全性的核心元素。 如需相關內容，請參閱：
 
-在此總覽中，您已瞭解 Azure 資訊安全中心中容器安全性的核心元素。 繼續[瞭解如何監視容器的安全性](monitor-container-security.md)。
-> [!div class="nextstepaction"]
-> [監視容器的安全性](monitor-container-security.md)
+- [Azure Defender for Kubernetes 簡介](defender-for-kubernetes-introduction.md)
+- [適用于容器登錄的 Azure Defender 簡介](defender-for-container-registries-introduction.md)

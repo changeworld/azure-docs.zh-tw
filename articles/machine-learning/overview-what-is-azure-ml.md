@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 233eb06714dc8ac614cceef157f87d175c3f455b
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: f8be403a9aa095a24ec4802aad0364b535ed7c5a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462457"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902902"
 ---
 # <a name="what-is-azure-machine-learning"></a>什麼是 Azure Machine Learning？
 
@@ -41,7 +41,7 @@ Azure Machine Learning 可用於任何一種機器學習，從傳統 ML 到深�
 ## <a name="machine-learning-tools-to-fit-each-task"></a>適用於每個工作的機器學習工具 
 
 Azure Machine Learning 為開發人員和資料科學家提供其機器學習工作流程需要的所有工具，包括：
-+ [Azure Machine Learning 設計工具](tutorial-designer-automobile-price-train-score.md) (預覽)：拖放模組可讓您建立實驗，然後部署管線。
++ [Azure Machine Learning 設計工具](tutorial-designer-automobile-price-train-score.md)：拖放模組可讓您建立實驗，然後部署管線。
 
 + Jupyter 筆記本：使用我們的[範例筆記本](https://github.com/Azure/MachineLearningNotebooks)或建立您自己的筆記本，將<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">適用於 Python 的 SDK</a> 範例用於機器學習。 
 
@@ -71,7 +71,7 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 
 [Azure Machine Learning Studio](https://studio.azureml.net) 是 Azure Machine Learning 中的 Web 入口網站，適用於可供模型定型、部署和資產管理的低程式碼和無程式碼選項。 Studio 會與 Azure Machine Learning SDK 整合，以提供順暢的體驗。 如需詳細資訊，請參閱[什麼是 Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md)。
 
-+ **Azure Machine Learning 設計工具 (預覽)**
++ **Azure Machine Learning 設計工具**
 
   使用[設計工具](concept-designer.md)來定型和部署機器學習模型，而不需撰寫任何程式碼。 請嘗試[設計工具教學課程](tutorial-designer-automobile-price-train-score.md)以開始使用。 
 
@@ -92,7 +92,7 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps：部署和生命週期管理
 當您有正確的模型時，您可以在 Web 服務中、在 IoT 裝置上或從 Power BI 輕鬆使用它。 如需詳細資訊，請參閱有關[如何部署和部署位置](how-to-deploy-and-where.md)的文章。
 
-接著，您可以使用[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py)、[Azure Machine Learning Studio](https://ml.azure.com) 或[機器學習 CLI](reference-azure-machine-learning-cli.md) 來管理所部署的模型。
+接著，您可以使用[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)、[Azure Machine Learning Studio](https://ml.azure.com) 或[機器學習 CLI](reference-azure-machine-learning-cli.md) 來管理所部署的模型。
 
 這些模型可被取用並[即時](how-to-consume-web-service.md)或[非同步](how-to-use-parallel-run-step.md)地傳回大量資料的相關預測。
 
@@ -115,7 +115,7 @@ Azure Machine Learning 可與 Azure 平台上的其他服務搭配運作，也�
 + __Azure 事件方格__。 如需詳細資訊，請參閱[取用 Azure Machine Learning 事件](concept-event-grid-integration.md)。
 + __Azure 監視器__。 如需詳細資訊，請參閱[監視 Azure Machine Learning](monitor-azure-machine-learning.md)。
 + 資料存放區，例如 __Azure 儲存體帳戶__、__Azure Data Lake Storage__、__Azure SQL Database__、__適用於 PostgreSQL 的 Azure 資料庫__和 __Azure 開放資料集__。 如需詳細資訊，請參閱[存取 Azure 儲存體服務中的資料](how-to-access-data.md)和[使用 Azure 開放資料集來建立資料集](how-to-create-register-datasets.md)。
-+ __Azure 虛擬網路__。 如需詳細資訊，請參閱[虛擬網路中的安全實驗和推斷](how-to-enable-virtual-network.md)。
++ __Azure 虛擬網路__。 如需詳細資訊，請參閱[虛擬網路隔離和隱私權概觀](how-to-network-security-overview.md)。
 + __Azure Pipelines__。 如需詳細資訊，請參閱[定型和部署機器學習服務模型](/azure/devops/pipelines/targets/azure-machine-learning)。
 + __Git 存放庫記錄__。 如需詳細資訊，請參閱 [Git 整合](concept-train-model-git-integration.md)。
 + __MLflow__。 如需詳細資訊，請參閱[使用 MLflow 追蹤計量和部署模型](how-to-use-mlflow.md) 
@@ -123,16 +123,7 @@ Azure Machine Learning 可與 Azure 平台上的其他服務搭配運作，也�
 
 ### <a name="secure-communications"></a>安全通訊
 
-您的 Azure 儲存體帳戶、計算目標和其他資源可以在虛擬網路內安全地使用，以定型模型及執行推斷。 如需詳細資訊，請參閱[虛擬網路中的安全實驗和推斷](how-to-enable-virtual-network.md)。
-
-## <a name="basic--enterprise-editions"></a><a name="sku"></a>基本版和 Enterprise 版
-
-Azure Machine Learning 提供兩個針對您的機器學習需求量身打造的版本：
-+ **基本**：適用於透過程式碼優先體驗的雲端規模開放原始碼開發。
-
-+ **企業**：所有基本功能和 Web 介面 (Studio)，以及安全、完整且適用於所有技能等級的 ML 生命週期管理。
-
-若要深入了解這些版本及其解除鎖定的功能，請閱讀 [「Azure Machine Learning 版本」一文](concept-editions.md)。
+您的 Azure 儲存體帳戶、計算目標和其他資源可以在虛擬網路內安全地使用，以定型模型及執行推斷。 如需詳細資訊，請參閱[虛擬網路隔離和隱私權概觀](how-to-network-security-overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

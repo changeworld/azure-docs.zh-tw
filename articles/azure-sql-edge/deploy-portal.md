@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 入口網站部署 Azure SQL Edge (預覽)
-description: 了解如何使用 Azure 入口網站部署 Azure SQL Edge (預覽)
+title: 使用 Azure 入口網站部署 Azure SQL Edge
+description: 瞭解如何使用 Azure 入口網站部署 Azure SQL Edge
 keywords: 部署 SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -8,17 +8,17 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 7af4264860f8d9950515cd5302f03822e7cbac39
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/22/2020
+ms.openlocfilehash: ffd967797a4e586387a0385169672220727f78a7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816859"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886773"
 ---
-# <a name="deploy-azure-sql-edge-preview"></a>部署 Azure SQL Edge (預覽) 
+# <a name="deploy-azure-sql-edge"></a>部署 Azure SQL Edge 
 
-Azure SQL Edge (預覽) 是專為 IoT 和 Azure IoT Edge 部署而最佳化的關聯式資料庫引擎。 其功能可為 IoT 應用程式和解決方案建立高效能的資料儲存和處理層。 本快速入門說明如何使用 Azure 入口網站，透過 Azure IoT Edge 開始建立 Azure SQL Edge 模組。
+Azure SQL Edge 是針對 IoT 和 Azure IoT Edge 部署優化的關係資料庫引擎。 其功能可為 IoT 應用程式和解決方案建立高效能的資料儲存和處理層。 本快速入門說明如何使用 Azure 入口網站，透過 Azure IoT Edge 開始建立 Azure SQL Edge 模組。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -28,7 +28,7 @@ Azure SQL Edge (預覽) 是專為 IoT 和 Azure IoT Edge 部署而最佳化的�
 * [從 Azure 入口網站註冊 IoT Edge 裝置](../iot-edge/how-to-register-device-portal.md)。
 * 準備 IoT Edge 裝置，以[從 Azure 入口網站部署 IoT Edge 模組](../iot-edge/how-to-deploy-modules-portal.md)。
 
-> [!NOTE]
+> [!NOTE]   
 > 若要將 Azure Linux VM 部署為 IoT Edge 裝置，請參閱此[快速入門手冊](../iot-edge/quickstart-linux.md)。
 
 ## <a name="deploy-sql-edge-module-from-azure-marketplace"></a>從 Azure Marketplace 部署 SQL Edge 模組
@@ -51,75 +51,73 @@ Azure Marketplace 是集合了應用程式和服務的線上市集，您可以�
    |IoT 中樞   |  選取註冊 IoT Edge 裝置的 IoT 中樞名稱，然後選取 [部署至裝置] 選項|
    |IoT Edge 裝置名稱  |  要部署 SQL Edge 的 IoT Edge 裝置名稱 |
 
-4. 在 [設定模組] 頁面上，瀏覽至部署模組的區段，然後針對 SQL Edge 模組按一下 [設定]。 
+4. 在 [ **在裝置上設定模組：** ] 頁面上，按一下 [ **IoT Edge 模組**] 下的 Azure SQL Edge 模組。 預設的模組名稱會設定為 *AzureSQLEdge*。 
 
-5. 在 [IoT Edge 自訂模組] 窗格中，指定環境變數所需的值，並 (或) 自訂模組的建立選項和所需屬性。 如需支援的環境變數完整清單，請參閱 [SQL Server 容器環境變數](/sql/linux/sql-server-linux-configure-environment-variables/)。
+5. 在 [**更新 IoT Edge 模組**] 分頁的 [*模組設定*] 區段中，指定所需的*IoT Edge 模組名稱*、*重新開機原則*及*所需狀態*的值。 
+
+   > [!IMPORTANT]    
+   > 請勿變更或更新模組上的 **映射 URI** 設定。
+
+6. 在 [**更新 IoT Edge 模組**] 分頁的 [*環境變數*] 區段中，為環境變數指定所需的值。 如需 Azure SQL Edge 環境變數的完整清單，請參閱 [使用環境變數進行設定](configure.md#configure-by-using-environment-variables)。 針對模組定義了下列預設環境變數。 
 
    |**參數**  |**說明**|
    |---------|---------|
    | 名稱 | 模組的名稱。 |
-   |SA_PASSWORD  | 為 SQL Edge 管理帳戶指定強式密碼。 |
-   |MSSQL_LCID   | 為 SQL Server 設定要使用的語言識別碼。 例如，1036 是法文。 |
-   |MSSQL_COLLATION | 設定 SQL Server 的預設定序。 此設定會覆寫語言識別碼 (LCID) 與定序的預設對應。 |
+   | MSSQL_SA_PASSWORD  | 變更預設值，以指定 SQL Edge 系統管理員帳戶的強式密碼。 |
+   | MSSQL_LCID   | 變更預設值，以設定要用於 SQL Edge 的所需語言識別項。 例如，1036 是法文。 |
+   | MSSQL_COLLATION | 變更預設值，以設定 SQL Edge 的預設定序。 此設定會覆寫語言識別碼 (LCID) 與定序的預設對應。 |
 
-   > [!NOTE]
-   > 請勿變更或更新模組上的 [映像 URI] 或 [ACCEPT_EULA] 設定。
+   > [!IMPORTANT]    
+   > 請勿變更或更新模組的 **ACCEPT_EULA** 環境變數。
 
-6. 在 [IoT Edge 自訂模組] 窗格上，為 [主機連接埠] 更新容器建立選項所需的值。 如果您需要部署多個 SQL DB Edge 模組，請務必更新掛接選項，為永續性磁碟區建立新的來源/目標配對。 如需掛接和磁碟區的詳細資訊，請參閱 Docker 文件上的[使用磁碟區](https://docs.docker.com/storage/volumes/)。 
-
-   ```json
-       {
-         "HostConfig": {
-           "Binds": [
-             "sqlvolume:/sqlvolume"
-           ],
-           "PortBindings": {
-             "1433/tcp": [
-               {
-                 "HostPort": "1433"
-               }
-             ]
-           },
-           "Mounts": [
-             {
-               "Type": "volume",
-               "Source": "sqlvolume",
-               "Target": "/var/opt/mssql"
-             }
-           ]
-         },
-         "Env": [
-           "MSSQL_AGENT_ENABLED=TRUE",
-           "MSSQL_PID=Developer"
-         ]
-       }
-   ```
-
-7. 在 [IoT Edge 自訂模組] 窗格上，更新 [設定模組對應項所需的屬性]，以包含 SQL 套件的位置和串流分析作業資訊。 這兩個欄位是選擇性的，如果您想要以資料庫和串流作業來部署 SQL Edge 模組，則應使用。
+7. 在 [**更新 IoT Edge 模組**] 分頁的 [*容器建立選項*] 區段上，依據需求更新下列選項。 
+   - **主機埠：** 將指定的主機埠對應至容器中的埠 1433 (預設 SQL 埠) 。
+   - 系**結和****裝載：** 如果您需要部署一個以上的 SQL Edge 模組，請確定您已更新裝載選項，以針對永久性磁片區建立新的來源 & 目標群組。 如需掛接和磁碟區的詳細資訊，請參閱 Docker 文件上的[使用磁碟區](https://docs.docker.com/storage/volumes/)。 
 
    ```json
-       {
-         "properties.desired":
-         {
-           "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-           "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-         }
-       }
+   {
+    "HostConfig": {
+        "CapAdd": [
+            "SYS_PTRACE"
+        ],
+        "Binds": [
+            "sqlvolume:/sqlvolume"
+        ],
+        "PortBindings": {
+            "1433/tcp": [
+                {
+                    "HostPort": "1433"
+                }
+            ]
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Source": "sqlvolume",
+                "Target": "/var/opt/mssql"
+            }
+        ]
+    },
+    "Env": [
+        "MSSQL_AGENT_ENABLED=TRUE",
+        "ClientTransportType=AMQP_TCP_Only",
+        "PlanId=asde-developer-on-iot-edge"
+    ]
+   }
    ```
-
-8. 在 [IoT Edge 自訂模組] 窗格上，將 [重新啟動原則] 設定為「一律」，並將 [需要的狀態] 設為「執行中」。
-9. 在 [IoT Edge 自訂模組] 窗格上，按一下 [儲存]。
-10. 在 [設定模組] 頁面上按 [下一步]。
-11. 在 [設定模組] 頁面的 [指定路由 (選擇性)] 上，指定模組對模組或模組對 IoT Edge 中樞通訊的路由；相關資訊請參閱[在 IoT Edge中部署模組和建立路由](../iot-edge/module-composition.md)。
-12. 按 [下一步] 。
-13. 按一下 [提交] 。
+   > [!IMPORTANT]    
+   > 請勿變更 `PlanId` 建立配置設定中定義的環境變數。 如果變更此值，Azure SQL Edge 容器將無法啟動。 
+   
+8. 在 [ **更新 IoT Edge 模組** ] 窗格中，按一下 [ **更新**]。
+9. 在 [ **設定裝置上的模組** ] 頁面上，按 **[下一步：路由 >] ** （如果您需要定義部署的路由）。 否則，請按一下 [ **審核 + 建立**]。 如需設定路由的詳細資訊，請參閱 [在 IoT Edge 中部署模組及建立路由](../iot-edge/module-composition.md)。
+11. 在 [ **更新 IoT Edge 模組** ] 窗格中，按一下 [ **建立**]。
 
 ## <a name="connect-to-azure-sql-edge"></a>連線到 Azure SQL Edge
 
-下列步驟會使用容器內的 Azure SQL Edge 命令列工具（ **sqlcmd**）來連線到 Azure sql edge。
+下列步驟會在容器中使用 Azure SQL Edge 命令列工具 **sqlcmd** 以連線至 Azure SQL Edge。
 
-> [!NOTE]
-> sqlcmd 工具無法在 ARM64 版本的 SQL Edge 容器內使用。
+> [!NOTE]      
+> ARM64 版的 Azure SQL Edge 容器內無法使用 SQL 命令列工具 (sqlcmd) 。
 
 1. 使用 `docker exec -it` 命令在您執行的容器中啟動互動式 Bash 殼層。 在下列範例中， `azuresqledge` 是由 IoT Edge 模組的參數所指定的名稱 `Name` 。
 
@@ -133,14 +131,14 @@ Azure Marketplace 是集合了應用程式和服務的線上市集，您可以�
    /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
    ```
 
-   > [!TIP]
+   > [!TIP]    
    > 您可以在命令列中省略密碼，不要在提示時輸入密碼。
 
 3. 如果成功，您應該會收到 **sqlcmd** 命令提示字元：`1>`。
 
 ## <a name="create-and-query-data"></a>建立及查詢資料
 
-下列各節將逐步引導您使用 **sqlcmd** 和 Transact-SQL，來建立新的資料庫、新增資料及執行簡單的查詢。
+下列各節將逐步引導使用 **sqlcmd** 和 Transact-SQL 來建立新資料庫、新增資料及執行查詢。
 
 ### <a name="create-a-new-database"></a>建立新資料庫
 
@@ -216,12 +214,13 @@ Azure Marketplace 是集合了應用程式和服務的線上市集，您可以�
 
 ## <a name="connect-from-outside-the-container"></a> 從容器外部連線
 
-您可以從支援 SQL 連線的任何外部 Linux、Windows 或 macOS 工具，連接到您的 Azure SQL Edge 實例，並執行 SQL 查詢。 如需從外部連接至 SQL Edge 容器的詳細資訊，請參閱 [Connect 和查詢 AZURE SQL edge](https://docs.microsoft.com/azure/azure-sql-edge/connect)。
+您可以從支援 SQL 連線的任何外部 Linux、Windows 或 macOS 工具，連接到您的 Azure SQL Edge 實例，並執行 SQL 查詢。 如需從外部連線到 SQL Edge 容器的詳細資訊，請參閱[連線及查詢 Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/connect)。
 
 在本快速入門中，您已在 IoT Edge 裝置上部署 SQL Edge 模組。 
 
 ## <a name="next-steps"></a>後續步驟
 
-- [SQL Edge 中採用 ONNX 的機器學習與人工智慧](onnx-overview.md)。
-- [使用 SQL Edge 和 IoT Edge 建置端對端 IoT 解決方案](tutorial-deploy-azure-resources.md)。
+- [在 SQL Edge 中使用 ONNX 的 Machine Learning 和人工智慧](onnx-overview.md)
+- [使用 IoT Edge 以 SQL Edge 建立端對端 IoT 解決方案](tutorial-deploy-azure-resources.md)
 - [Azure SQL Edge 中的資料串流](stream-data.md)
+- [針對部署錯誤進行疑難排解](troubleshoot.md)

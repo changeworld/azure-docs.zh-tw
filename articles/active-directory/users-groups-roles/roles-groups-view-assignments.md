@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Active Directory 中查看指派給群組的角色 |Microsoft Docs
-description: 預覽用來委派身分識別管理的自訂 Azure AD 角色。 在 Azure 入口網站、PowerShell 或圖形 API 中管理 Azure 角色。
+description: 瞭解如何使用 Azure AD 系統管理中心來查看指派給群組的角色。 查看群組和指派的角色是預設的使用者權限。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,22 +13,22 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b7613fb70299a70e4389b97c2647a26cb7c3374
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 0c0a34b3861c82b3d2ef54a36108f9ea522d716d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475979"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983109"
 ---
 # <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>在 Azure Active Directory 中查看指派給群組的角色
 
-本節說明如何使用 Azure AD 系統管理中心來查看指派給群組的角色。 [群組] 和 [已指派角色] 是預設的使用者許可權。
+本節說明如何使用 Azure AD 系統管理中心來查看指派給群組的角色。 查看群組和指派的角色是預設的使用者權限。
 
-1. 使用任何非系統管理員或系統管理員認證登入[Azure AD 系統管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
+1. 使用任何非系統管理員或系統管理員認證登入 [Azure AD admin center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
 
 1. 選取您感興趣的群組。
 
-1. 選取 [**指派的角色**]。 您現在可以看到所有指派給這個群組的 Azure AD 角色。
+1. 選取 [ **指派的角色**]。 您現在可以看到指派給此群組的所有 Azure AD 角色。
 
    ![查看指派給所選群組的所有角色](./media/roles-groups-view-assignments/view-assignments.png)
 
@@ -60,7 +60,7 @@ GET https://graph.microsoft.com/beta/groups?$filter displayName eq ‘Contoso_He
 GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$filter=principalId eq
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [使用雲端群組來管理角色指派](roles-groups-concept.md)
-- [針對指派給雲端群組的角色進行疑難排解](roles-groups-faq-troubleshooting.md)
+- [對指派給雲端群組的角色進行疑難排解](roles-groups-faq-troubleshooting.md)

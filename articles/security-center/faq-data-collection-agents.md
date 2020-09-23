@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0bcf81e0c762dd2a8e63ae242fec77d30f5b2c3d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 78668eaadca872d7c25ab909fad5b9838bbc01d3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011849"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894822"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常見問題集 - 資料收集、代理程式和工作區的相關問題
 
@@ -29,9 +29,9 @@ ms.locfileid: "89011849"
 
 否。 資訊安全中心建立的工作區雖然設定為以每個節點的 Azure 監視器記錄計費，但並不會產生 Azure 監視器記錄費用。 資訊安全中心的計費一律根據您的資訊安全中心的安全性原則，以及工作區安裝的解決方案：
 
-- **免費層** – 資訊安全中心在預設工作區啟用 'SecurityCenterFree' 解決方案。 免費層不需付費。
+- **Azure Defender 關閉** –資訊安全中心會在預設工作區啟用 ' SecurityCenterFree ' 解決方案。 如果 Azure Defender 處於關閉狀態，則不會向您收費。
 
-- **標準層** – 資訊安全中心在預設工作區啟用 'Security' 解決方案。
+- **Azure Defender on** –資訊安全中心會在預設工作區上啟用「安全性」解決方案。
 
 如需詳細資訊，請參閱[資訊安全中心價格](https://azure.microsoft.com/pricing/details/security-center/)。
 
@@ -164,7 +164,7 @@ ms.locfileid: "89011849"
 
 您可以在安全性原則中關閉訂用帳戶的自動佈建，但不建議您這麼做。 關閉自動佈建會限制資訊安全中心的建議和警示。 若要停用自動佈建：
 
-1. 如果您的訂用帳戶設定為標準層，請開啟該訂用帳戶的安全性原則，並選取 **免費** 層。
+1. 如果您的訂用帳戶已啟用 Azure Defender，請開啟該訂用帳戶的安全性原則，並選取 [ **關閉 Azure defender**]。
 
    ![定價層][1]
 

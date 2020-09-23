@@ -2,22 +2,40 @@
 title: 驗證、要求和回應
 description: 瞭解 Azure Key Vault 如何使用 JSON 格式的要求和回應，以及使用金鑰保存庫所需的驗證。
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: amitbapat
+manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 2b4c8ad666efa32d98e78a0bc2544d0f8851be5e
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 09/15/2020
+ms.author: ambapat
+ms.openlocfilehash: 2100572c0bcf5bf65fe5a70ab9e552c2d7f72934
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191789"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983265"
 ---
 # <a name="authentication-requests-and-responses"></a>驗證、要求和回應
+
+Azure Key Vault 提供兩種類型的容器來儲存及管理雲端應用程式的秘密：
+
+|容器類型|支援的物件類型|資料平面端點|
+|--|--|--|
+| **保存庫**|<ul><li>受軟體保護的金鑰</li><li>使用 Premium SKU (的 HSM 保護金鑰) </li><li>憑證</li><li>儲存體帳戶金鑰</li></ul> | HTTPs：//{vault-名稱}。
+|**受控 HSM** |<ul><li>受 HSM 保護的金鑰</li></ul> | HTTPs：//{hsm 名稱}. managedhsm
+
+以下是用來存取每個物件類型的 URL 尾碼
+
+|物件類型|URL 尾碼|
+|--|--|
+|受軟體保護的金鑰| /keys |
+|受 HSM 保護的金鑰| /keys |
+|密碼|/secrets|
+|憑證| /certificates|
+|儲存體帳戶金鑰|/storageaccounts
+||
 
 Azure Key Vault 支援 JSON 格式化要求和回應。 搭配使用 HTTPS 與一些 URL 參數以及 JSON 編碼要求和回應本文，以將對 Azure Key Vault 的要求導向至有效的 Azure Key Vault URL。
 
@@ -36,7 +54,9 @@ Azure Key Vault 支援 JSON 格式化要求和回應。 搭配使用 HTTPS 與�
 
 - 若要使用 Key Vault 中稱為 TESTKEY 的金鑰來 SIGN (簽署) 摘要，請使用：`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  對 Key Vault 之要求的授權單位一律如下：`https://{keyvault-name}.vault.azure.net/`  
+- 對 Key Vault 之要求的授權單位一律如下：
+  - 針對保存庫： `https://{keyvault-name}.vault.azure.net/`
+  - 針對受控 Hsm： `https://{HSM-name}.managedhsm.azure.net/`
 
   金鑰一律儲存在 /keys 路徑下方，祕密則一律儲存在 /secrets 路徑下方。  
 

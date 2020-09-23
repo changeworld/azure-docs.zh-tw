@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 158b66d63292a1ffb503f3f87eddfd33a2b09b71
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b428ffc0122f13ef15f870ce734b54fe6707f582
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554476"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983964"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>教學課程︰設定 Netsuite 來自動佈建使用者
 
@@ -62,7 +62,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 1. 將 [佈建模式] 設定為 [自動]。 
 
-    ![佈建](./media/netsuite-provisioning-tutorial/provisioning.png)
+    ![螢幕擷取畫面顯示 [Netsuite 布建] 頁面，其中布建模式設定為 [自動] 和其他您可以設定的值。](./media/netsuite-provisioning-tutorial/provisioning.png)
 
 1. 在 [管理員認證]**** 區段下，提供下列組態設定：
    

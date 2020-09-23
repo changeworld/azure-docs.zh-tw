@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c9f74f5a9950a299b34e22c1e86dd91f8c82364
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325520"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983592"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>將來自 Azure 監視器的資料視覺化
 本文會概要介紹用以將儲存在 Azure 監視器中的記錄和計量資料視覺化的可用方法。
@@ -21,7 +21,7 @@ ms.locfileid: "87325520"
 ## <a name="workbooks"></a>活頁簿
 [活頁簿](./platform/workbooks-overview.md)是互動式的文件，可以提供對團隊內部的資料、調查和共同作業的深入解析。 顯見活頁簿實用性的具體範例，在於疑難排解指南和事件事後分析。
 
-![活頁簿](media/visualizations/workbook.png)
+![圖表會顯示活頁簿中數個頁面的螢幕擷取畫面，包括分析網頁檢視、使用方式，以及花費在頁面上的時間。](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>優點
 - 支援計量和記錄。
@@ -39,7 +39,7 @@ ms.locfileid: "87325520"
 ## <a name="azure-dashboards"></a>Azure 儀表板
 [Azure 儀表板](../azure-portal/azure-portal-dashboards.md)是 Azure 的主要儀表板設計技術。 儀表板特別適合用來提供 Azure 基礎結構和服務的單一管理平台，以利使用者迅速找出重要問題所在。
 
-![儀表板](media/visualizations/dashboard.png)
+![螢幕擷取畫面顯示 Azure 儀表板的範例，其中包含可自訂的資訊。](media/visualizations/dashboard.png)
 
 以下是建立儀表板的影片逐步解說。
 
@@ -88,7 +88,7 @@ ms.locfileid: "87325520"
 ## <a name="grafana"></a>Grafana
 [Grafana](https://grafana.com/) 在操作儀表板中，是表現相當出色的開放平台。 特別適用於偵測、隔離、分級事件。 您可以將 [Grafana Azure 監視器資料來源外掛程式](platform/grafana-plugin.md)新增至您的 Azure 訂用帳戶，以使其可視覺化 Azure 計量資料。
 
-![Grafana](media/visualizations/grafana.png)
+![顯示 Grafana 視覺效果的螢幕擷取畫面。](media/visualizations/grafana.png)
 
 ### <a name="advantages"></a>優點
 - 豐富的視覺效果。
@@ -120,7 +120,7 @@ ms.locfileid: "87325520"
 [Azure 監視器中的檢視](platform/view-designer.md)可讓您使用記錄資料建立自訂視覺效果。 [監視解決方案](insights/solutions.md)會使用這些視覺效果呈現收集到的資料。
 
 
-![檢視](media/visualizations/view.png)
+![螢幕擷取畫面顯示 [容器監視解決方案] 磚，以及當您選取時開啟的詳細 Azure 監視器視圖。](media/visualizations/view.png)
 
 ### <a name="advantages"></a>優點
 - 豐富的記錄資料視覺效果。

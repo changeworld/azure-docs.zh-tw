@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 4f6252ffbb880e347a89594cb267fb99d576dc7a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 40a4fbd956b12d469247cb178007d0259cbeac75
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89039282"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902926"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什麼是 Azure Machine Learning Studio？
 
@@ -34,13 +34,13 @@ ms.locfileid: "89039282"
 
   在直接整合到 Studio 中的受控 [Jupyter Notebook 伺服器](how-to-run-jupyter-notebooks.md)中，撰寫並執行您自己的程式碼。 
 
-+ **Azure Machine Learning 設計工具 (預覽)**
++ **Azure Machine Learning 設計工具**
 
   使用設計工具來定型和部署機器學習模型，而不需撰寫任何程式碼。 拖放資料集和模組以建立 ML 管線。 試用[設計工具教學課程](tutorial-designer-automobile-price-train-score.md)。
 
     ![Azure Machine Learning 設計工具範例](media/concept-designer/designer-drag-and-drop.gif)
 
-+ **自動化機器學習 UI (預覽)**
++ **自動化機器學習 UI**
 
   了解如何使用易於使用的介面建立[自動化 ML 實驗](tutorial-first-experiment-automated-ml.md)。 
 
@@ -82,7 +82,7 @@ ms.locfileid: "89039282"
 
 | 功能 | ML Studio (傳統) | Azure Machine Learning |
 |---| --- | --- |
-| 拖放介面 | 傳統體驗 | 更新體驗 - [Azure Machine Learning 設計工具 (預覽)](concept-designer.md) <br/>(需要企業工作區) | 
+| 拖放介面 | 傳統體驗 | 更新體驗 - [Azure Machine Learning 設計工具](concept-designer.md)| 
 | 程式碼 SDK | 不支援 | 與 [Azure Machine Learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/) 和 [R](tutorial-1st-r-experiment.md) SDK 完全整合 |
 | 實驗 | 可調整規模 (有 10 GB 的定型資料限制) | 使用計算目標進行調整 |
 | 定型計算目標 | 專屬計算目標，僅限 CPU 支援 | 各種可自訂的[訓練計算目標](concept-compute-target.md#train)。 包括 GPU 和 CPU 支援 | 

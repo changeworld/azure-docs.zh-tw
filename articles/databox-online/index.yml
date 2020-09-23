@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Stack Edge 和 Azure 資料箱閘道文件 - 線上傳輸
-summary: 使用 Azure 資料箱閘道和 Azure Stack Edge 裝置，透過網路進行高效能資料傳輸。 選擇 Data Box Gateway 來傳送資料，以便雲端封存、災害復原，或以雲端規模處理資料。 在您的資料移至 Azure 之前，使用 Azure Stack Edge 來篩選、分析及轉換資料。 Azure Data Box Edge 最近更名為 Azure Stack Edge。
+summary: 使用 Azure Stack Edge 和 Azure 資料箱閘道裝置，透過網路進行高效能資料傳輸。 使用配備了計算加速硬體的 Azure Stack Edge Pro 裝置來篩選、分析和轉換您的資料，然後再移至 Azure。 選擇 Data Box Gateway 來傳送資料，以便雲端封存、災害復原，或以雲端規模處理資料。
 metadata:
   title: Azure Stack Edge 和 Azure 資料箱閘道文件 - 線上傳輸
-  description: 透過網路將資料高效傳輸至 Azure 的相關資料箱閘道、Azure Stack Edge (之前為 Data Box Edge) 文件。
+  description: 透過網路將資料高效傳輸至 Azure 的資料箱閘道、Azure Stack Edge 文件。
   services: databox
   ms.service: databox
   ms.subservice: edge
@@ -11,22 +11,28 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 11/04/2019
-  ms.openlocfilehash: bf4f5d7589bdf9ae9b456f7dbe24c8d5fc02afaf
-  ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+  ms.date: 09/08/2020
+  ms.openlocfilehash: 2995a94f1b56144afd191bc3e8eb97c2da4593ef
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "82562350"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90902994"
 landingContent:
 - title: 關於 Azure Stack Edge 與資料箱閘道
   linkLists:
   - linkListType: overview
     links:
+    - text: Azure Stack Edge Pro GPU 是什麼？
+      url: azure-stack-edge-gpu-overview.md
+    - text: Azure Stack Edge Pro FPGA 是什麼？
+      url: azure-stack-edge-overview.md
+    - text: Azure Stack Edge R 是什麼？
+      url: azure-stack-edge-j-series-overview.md
+    - text: Azure Stack Edge Mini 是什麼？
+      url: azure-stack-edge-k-series-overview.md
     - text: 什麼是資料箱閘道？
       url: data-box-gateway-overview.md
-    - text: 什麼是 Azure Stack Edge？
-      url: azure-stack-edge-overview.md
   - linkListType: architecture
     links:
     - text: 選擇 Azure 資料轉送選項
@@ -35,28 +41,36 @@ landingContent:
       url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
   - linkListType: whats-new
     links:
-    - text: 1905 版本資訊
-      url: data-box-gateway-1905-release-notes.md
+    - text: 2009 版本資訊
+      url: azure-stack-edge-gpu-2008-release-notes.md
 - title: 需求和限制
   linkLists:
   - linkListType: concept
     links:
+    - text: Azure Stack Edge Pro GPU 需求
+      url: azure-stack-edge-gpu-system-requirements.md
+    - text: Azure Stack Edge Pro FPGA 需求
+      url: azure-stack-edge-gpu-system-requirements.md
     - text: 資料箱閘道需求
       url: data-box-gateway-system-requirements.md
-    - text: Azure Stack Edge 需求
-      url: azure-stack-edge-system-requirements.md
+    - text: Azure Stack Edge Pro 限制
+      url: azure-stack-edge-limits.md
     - text: 資料箱閘道限制
       url: data-box-gateway-limits.md
-    - text: Azure Stack Edge 限制
-      url: azure-stack-edge-limits.md
 - title: 部署
   linkLists:
   - linkListType: tutorial
     links:
+    - text: 檢視預先部署檢查清單
+      url: azure-stack-edge-gpu-deploy-checklist.md
+    - text: Azure Stack Edge Pro GPU
+      url: azure-stack-edge-gpu-deploy-prep.md
     - text: 資料箱閘道
       url: data-box-gateway-deploy-prep.md
-    - text: Azure Stack Edge
-      url: azure-stack-edge-deploy-prep.md
+    - text: 透過 Marketplace 取得 GPU 模組
+      url: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+    - text: 透過 IoT Edge 的 Kubernetes 工作負載
+      url: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
 - title: 開發
   linkLists:
   - linkListType: how-to-guide
@@ -65,31 +79,31 @@ landingContent:
       url: azure-stack-edge-create-iot-edge-module.md
   - linkListType: download
     links:
-    - text: 範例 - 適用於 Azure Stack Edge 的 C#
+    - text: 範例 - 適用於 Azure Stack Edge Pro GPU 的 C#
       url: https://docs.microsoft.com/samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
 - title: 管理
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Azure Stack Edge Pro 共用
+      url: azure-stack-edge-manage-shares.md
     - text: 資料箱閘道共用
       url: data-box-gateway-manage-shares.md
-    - text: Azure Stack Edge 共用
-      url: azure-stack-edge-manage-shares.md
     - text: Edge 計算
       url: azure-stack-edge-manage-compute.md
-    - text: Edge 計算網路
-      url: azure-stack-edge-extend-compute-access-modules.md
+    - text: Edge 儲存體帳戶
+      url: azure-stack-edge-j-series-manage-storage-accounts.md
 - title: 疑難排解
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Azure Stack Edge GPU
+      url: azure-stack-edge-gpu-troubleshoot.md
     - text: 資料箱閘道
       url: data-box-gateway-troubleshoot.md
-    - text: Azure Stack Edge
-      url: azure-stack-edge-troubleshoot.md
     - text: Edge 計算模組
-      url: azure-stack-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
-    - text: 傳回或取代 Azure Stack Edge
+      url: azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge
+    - text: 寄回 Azure Stack Edge GPU
       url: azure-stack-edge-return-device.md
     - text: 開啟支援票證
       url: azure-stack-edge-contact-microsoft-support.md

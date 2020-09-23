@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault 客戶資料功能 - Azure Key Vault | Microsoft Docs
-description: 瞭解客戶資料，Azure Key Vault 在建立或更新保存庫、金鑰、秘密、憑證及受控儲存體帳戶期間接收。
+description: 瞭解客戶資料，Azure Key Vault 在建立或更新保存庫、金鑰、秘密、憑證及受控儲存體帳戶期間收到。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -9,16 +9,16 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7cfc707aa4bccdcd72e45efa3693ebd8f88a211
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9b320c765b258473acd6fa553831b4f075cca9ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189925"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983245"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault 客戶資料功能
 
-Azure Key Vault 會在建立或更新保存庫、金鑰、祕密、憑證及受控儲存體帳戶期間，接收客戶資料。 使用者可以直接在 Azure 入口網站，或透過 REST API 看見這些客戶資料。 客戶資料可以透過更新或刪除包含資料的物件，進行編輯或刪除。
+Azure Key Vault 在建立或更新保存庫、受管理的 HSM 集區、金鑰、秘密、憑證及受控儲存體帳戶期間，接收客戶資料。 使用者可以直接在 Azure 入口網站，或透過 REST API 看見這些客戶資料。 客戶資料可以透過更新或刪除包含資料的物件，進行編輯或刪除。
 
 使用者或應用程式存取 Key Vault 時會產生系統存取記錄。 詳細存取記錄可以使用 Azure Insights 提供給客戶。
 
@@ -40,7 +40,7 @@ Azure Key Vault 會在建立或更新保存庫、金鑰、祕密、憑證及受�
 
 用來建立保存庫、金鑰、祕密、憑證及受控儲存體帳戶的相同 REST API、入口網站體驗和 SDK，也可以用來更新和刪除這些物件。
 
-虛刪除可讓您在刪除後的90天復原已刪除的資料。 使用虛刪除時，可以藉由執行清除作業，在90天的保留期限到期之前永久刪除資料。 如果已將保存庫或訂用帳戶設定為封鎖清除作業，那麼在已排程的保留期間結束之前，無法永久刪除資料。
+虛刪除可讓您在刪除之後復原已刪除的資料90天。 使用虛刪除時，資料可能會在90天的保留期限到期之前，藉由執行清除作業來永久刪除。 如果已將保存庫或訂用帳戶設定為封鎖清除作業，那麼在已排程的保留期間結束之前，無法永久刪除資料。
 
 ## <a name="exporting-customer-data"></a>匯出客戶資料
 
@@ -50,9 +50,9 @@ Azure Key Vault 存取記錄是選擇性的功能，您可以針對每個 REST A
 
 包含個人資料的 Azure Key Vault 診斷記錄，可以藉由在使用者隱私權入口網站中進行匯出要求來擷取。 這項要求必須由租用戶管理員提出。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-- [Azure Key Vault 記錄](logging.md)) 
+- [Azure 金鑰保存庫記錄](logging.md)
 
 - [Azure Key Vault 虛刪除概觀](soft-delete-cli.md)
 

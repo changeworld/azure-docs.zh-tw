@@ -1,6 +1,6 @@
 ---
 title: 教學課程：設計多租用戶資料庫 - 超大規模 (Citus) - 適用於 PostgreSQL 的 Azure 資料庫
-description: 本教學課程示範如何在適用於 PostgreSQL 的 Azure 資料庫 – 超大規模 (Citus) 上建立、填入及查詢分散式資料表。
+description: 本教學課程說明如何使用適用於 PostgreSQL 的超大規模 Azure 資料庫 (Citus) 提供可調整多租用戶應用程式更強大的功能。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: bc7891e157bbffa386396a352fd1d48e4559ecdc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: ef0f542a27f378b6132d8ef19b55f386d4102d53
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386382"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895256"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教學課程：使用適用於 PostgreSQL 的 Azure 資料庫 – 超大規模 (Citus) 設計多租用戶資料庫
 
@@ -275,6 +275,5 @@ SELECT id
 
 在本教學課程中，您已了解如何佈建 Hyperscale (Citus) 伺服器群組。 您已使用 psql 連線到該群組、建立結構描述，並散發資料。 您已了解如何在租用戶內部和之間查詢資料，以及如何自訂每個租用戶的結構描述。
 
-接下來，請了解超大規模的概念。
-> [!div class="nextstepaction"]
-> [Hyperscale 節點類型](https://aka.ms/hyperscale-concepts)
+- 了解伺服器群組[節點類型](https://aka.ms/hyperscale-concepts)
+- 判斷伺服器群組的最佳[初始大小](howto-hyperscale-scaling.md#picking-initial-size)
