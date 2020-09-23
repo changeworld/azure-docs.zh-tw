@@ -3,14 +3,14 @@ title: 在 Azure Application Insights 中監視 Docker 應用程式 | Microsoft 
 description: Docker 效能計數器、事件和例外狀況可以與來自容器化應用程式的遙測一起顯示在 Application Insights 上。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 272b4e8af7b1ed3d01d8af0979b56954585f795d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324415"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977584"
 ---
-# <a name="monitor-docker-applications-in-application-insights-deprecated"></a>監視 Application Insights 中的 Docker 應用程式（已淘汰）
+# <a name="monitor-docker-applications-in-application-insights-deprecated"></a>在 Application Insights (中監視 Docker 應用程式已淘汰) 
 
 > [!NOTE]
 > 此解決方案已被取代。 若要深入了解我們目前對於容器監視所做的投資，建議查看[適用於容器的 Azure 監視器](../insights/container-insights-overview.md)。
@@ -27,7 +27,7 @@ ms.locfileid: "87324415"
 
 ## <a name="set-up-your-application-insights-resource"></a>設定您的 Application Insights 資源
 
-1. 登入[Microsoft Azure 入口網站](https://azure.com)並開啟應用程式的 Application Insights 資源;或[建立一個新的](./create-new-resource.md)。 
+1. 登入 [Microsoft Azure 入口網站](https://azure.com) 並開啟您應用程式的 Application Insights 資源;或 [建立一個新的](./create-new-resource.md)。 
    
     *我應該使用哪種資源？* 如果您在主機上執行的應用程式是由其他人所開發，則您需要[建立新的 Application Insights 資源](./create-new-resource.md)。 這是您檢視及分析遙測的位置 (針對應用程式類型選取 [一般])。
    
@@ -61,7 +61,7 @@ ms.locfileid: "87324415"
     <Add type="com.microsoft.applicationinsights.extensibility.initializer.docker.DockerContextInitializer"/> 
 ```
 
-這會將容器和主機 ID 等 Docker 資訊，加入從您的應用程式送出的每個遙測項目中。
+這會將 Docker 資訊（例如容器和主機識別碼）新增至從您的應用程式傳送的每個遙測專案。
 
 ## <a name="view-your-telemetry"></a>檢視遙測
 返回 Azure 入口網站中的 Application Insights 資源。
@@ -71,12 +71,12 @@ ms.locfileid: "87324415"
 您很快就會看到來自 Docker 應用程式的資料抵達，尤其是如果您在 Docker 引擎上有其他容器執行。
 
 ### <a name="docker-container-events"></a>Docker 容器事件
-![範例](./media/docker/13.png)
+![螢幕擷取畫面顯示選取 [搜尋]、[診斷搜尋結果] 視窗，其中有箭號指向自訂事件的視窗和自訂資料。](./media/docker/13.png)
 
 若要調查個別事件，請按一下 [搜尋](./diagnostic-search.md)。 搜尋和篩選以尋找您想要的事件。 按一下任何事件以查看詳細資料。
 
 ### <a name="exceptions-by-container-name"></a>依據容器名稱的例外狀況
-![範例](./media/docker/14.png)
+![螢幕擷取畫面顯示已選取圖表的計量瀏覽器頁面，並在右側開啟 [圖表詳細資料] 視窗。](./media/docker/14.png)
 
 ### <a name="docker-context-added-to-app-telemetry"></a>已加入應用程式遙測中的 Docker 內容
 從使用 AI SDK 檢測之應用程式送出的要求遙測，會以 Docker 內容資訊進行擴充。

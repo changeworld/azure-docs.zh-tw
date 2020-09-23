@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 6db2d8fa6e957a63a4410f17b09a9f106bfba6e6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4e54f5254d38bca9c8ff30d5b7cefbe3fde69576
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923470"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904374"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>教學課程：使用 Azure Data Box Gateway 轉送資料
 
@@ -57,7 +57,7 @@ ms.locfileid: "87923470"
 
     3. 提供共用所在的儲存體帳戶。 如果容器尚不存在，則會使用新建共用名稱在儲存體帳戶中建立容器。 如果容器已存在，則會使用該容器。
        > [!IMPORTANT]
-       > 如果您將 Azure 儲存體帳戶與 Azure Stack Edge 或資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+       > 如果您將 Azure 儲存體帳戶與 Azure Stack Edge Pro 或資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
     
     4. 從區塊 Blob、分頁 Blob 或檔案中選擇 [儲存體服務]  。 所選擇的服務類型取決於您想要資料以哪一種格式存在 Azure 中。 例如，在本例中，我們想要資料以區塊 Blob 存在 Azure 中，因此，我們選取 [區塊 Blob]。 如果選擇 [分頁 Blob]，您必須確定資料對齊 512 個位元組。 例如，VHDX 一律是 512 位元組規格。
    
@@ -115,7 +115,7 @@ ms.locfileid: "87923470"
 
 ### <a name="connect-to-an-nfs-share"></a>連線到 NFS 共用
 
-在連線到 Azure Stack Edge 裝置的 Linux 用戶端上，執行下列程序：
+在連線到 Azure Stack Edge Pro 裝置的 Linux 用戶端上，執行下列程序：
 
 1. 確定用戶端已安裝 NFSv4 用戶端。 若要安裝 NFS 用戶端，請使用下列命令：
 

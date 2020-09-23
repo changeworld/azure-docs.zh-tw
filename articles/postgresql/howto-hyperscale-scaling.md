@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
-ms.openlocfilehash: 10d253b3e470ea009944d4ccd756d4bbbe3766e7
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5b1a5da688b162c85d2be8580e29dc6ee9db6d40
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029812"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906472"
 ---
 # <a name="server-group-size"></a>伺服器群組大小
 
@@ -42,7 +42,7 @@ ms.locfileid: "90029812"
 
 若要新增節點，請移至超大規模 (Citus) 伺服器群組中的 [ **計算 + 儲存體** ] 索引標籤。  拖曳背景 **工作節點計數** 的滑杆會變更該值。
 
-![資源滑杆](./media/howto-hyperscale-scaling/01-sliders-workers.png)
+:::image type="content" source="./media/howto-hyperscale-scaling/01-sliders-workers.png" alt-text="資源滑杆":::
 
 按一下 [ **儲存** ] 按鈕，讓變更的值生效。
 
@@ -68,6 +68,6 @@ SELECT rebalance_table_shards('distributed_table_name');
 
 若要變更所有背景工作節點的虛擬核心，請調整 [**每個背景工作節點**的設定 (]) 的 [**虛擬核心**] 滑杆。 協調器節點的虛擬核心可以獨立調整。 調整 [ **Configuration (協調器] 節點) **下的 [**虛擬核心**] 滑杆。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解伺服器群組 [效能選項](concepts-hyperscale-configuration-options.md)。

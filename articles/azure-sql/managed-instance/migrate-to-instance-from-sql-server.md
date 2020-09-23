@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: douglas, carlrab
+ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: a54cf2ed228a166ea3d87c14515f41d5b0e7aed9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a33ff6b927045389c3692201fa70839c6a466ede
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090222"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887649"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server 實例遷移至 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -70,7 +70,7 @@ SQL 受控執行個體可保證99.99% 的可用性（即使在重大情況下）
 
 - [監視 SQL Server 實例上的 cpu 使用量](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) ，並記錄平均和尖峰 cpu 使用量。
 - [監視 SQL Server 實例上的記憶體使用量](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) ，並判斷不同元件所使用的記憶體數量，例如緩衝集區、計畫快取、資料行存放區集區、 [記憶體內部 OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017)等等。此外，您應該會找到 Page Life memory 效能計數器的平均值和尖峰值。
-- 使用 [sys. dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) view 或 [效能計數器](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage)，監視來源 SQL Server 實例上的磁片 IO 使用量。
+- 使用 [sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) view 或 [效能計數器](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage)，監視來源 SQL Server 實例上的磁片 IO 使用量。
 - 藉由檢查動態管理檢視或查詢存放區（如果您要從 SQL Server 2016 + 版本進行遷移），來監視工作負載和查詢效能或 SQL Server 實例。 識別您工作負載中最重要查詢的平均持續時間和 CPU 使用量，以將其與在受控實例上執行的查詢進行比較。
 
 > [!Note]
@@ -198,11 +198,11 @@ SQL 受控執行個體提供許多用於監視和疑難排解的 advanced tools�
 
 例如，您不需要在受控實例上建立備份-服務會自動為您執行備份。 您無法再擔心如何排程、使用及管理備份。 SQL 受控執行個體可讓您使用 [時間點復原 (PITR) ](../database/recovery-using-backups.md#point-in-time-restore)來還原到此保留期間內的任何時間點。 此外，您不需要擔心如何設定高可用性，因為內建 [高可用性](../database/high-availability-sla.md) 。
 
-若要加強安全性，請考慮使用 [Azure Active Directory 驗證](../database/security-overview.md)、 [審核](auditing-configure.md)、 [威脅偵測](../database/advanced-data-security.md)、資料 [列層級安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)和 [動態資料遮罩](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)。
+若要加強安全性，請考慮使用 [Azure Active Directory 驗證](../database/security-overview.md)、 [審核](auditing-configure.md)、 [威脅偵測](../database/azure-defender-for-sql.md)、資料 [列層級安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)和 [動態資料遮罩](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)。
 
 除了先進的管理和安全性功能之外，受控實例還提供一組可協助您 [監視和調整工作負載](../database/monitor-tune-overview.md)的 advanced tools。 [Azure SQL 分析](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) 可讓您監視大量的受控實例，並集中監視大量的實例和資料庫。 受控實例中的[自動調整](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)會持續監視 SQL 計畫執行統計資料的效能，並自動修正已識別的效能問題。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如需 Azure SQL 受控執行個體的詳細資訊，請參閱 [什麼是 AZURE sql 受控執行個體？](sql-managed-instance-paas-overview.md)。
 - 如需包含從備份進行還原的教學課程，請參閱 [建立受控實例](instance-create-quickstart.md)。

@@ -86,12 +86,18 @@
     - name: 了解效果
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: 影響範圍
+      displayName: 'location, notScope, exemption, waiver, save'
+      href: ./concepts/scope.md
     - name: 計畫結構
       displayName: 'parameters, groups, domains, policies'
       href: ./concepts/initiative-definition-structure.md
     - name: 指派結構
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
+    - name: 豁免結構
+      displayName: 'waiver, mitigated, compliance'
+      href: ./concepts/exemption-structure.md
     - name: 評估新原則的影響
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md

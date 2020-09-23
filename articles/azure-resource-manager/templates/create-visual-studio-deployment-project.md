@@ -3,12 +3,12 @@ title: 建立及部署 Visual Studio 資源群組專案
 description: 使用 Visual Studio 建立 Azure 資源群組專案，並將資源部署至 Azure。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eacab3e1919b68661dd24eb78e3b0eca51cf4972
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76152726"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985246"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>透過 Visual Studio 建立與部署 Azure 資源群組
 
@@ -20,10 +20,10 @@ ms.locfileid: "76152726"
 
 在這一節中，您會利用 **Web 應用程式**範本建立 Azure 資源群組專案。
 
-1. 在 Visual Studio 中，**選擇 [** 檔案] [新增] [ > **New** > **專案**]。
+1. 在 Visual Studio 中，**選擇 [** 檔案 > **新增** > **專案**]。
 1. 選取 [Azure 資源群組]**** 專案範本，然後選取 [下一步]****。
 
-    ![建立專案](./media/create-visual-studio-deployment-project/create-project.png)
+    ![螢幕擷取畫面顯示 [建立新專案] 視窗和 [Azure 資源群組]，並醒目提示 [下一步] 按鈕。](./media/create-visual-studio-deployment-project/create-project.png)
 
 1. 為專案命名。 其他的預設設定應該沒問題，但還是請檢查一下以確認適合在您的環境使用。 完成後，請選取 [建立]****。
 
@@ -65,7 +65,7 @@ ms.locfileid: "76152726"
 
 1. 您可以選取 [JSON 大綱] 視窗頂端的 [加入資源]**** 按鈕，或以滑鼠右鍵按一下 [資源]**** 然後選取 [加入新資源]****，藉以加入新資源。
 
-   ![新增資源](./media/create-visual-studio-deployment-project/add-resource.png)
+   ![螢幕擷取畫面顯示 [JSON 大綱] 視窗，其中反白顯示 [新增資源] 選項。](./media/create-visual-studio-deployment-project/add-resource.png)
 
 1. 選取 [儲存體帳戶]****，並為它命名。 提供的名稱不能超過 11 個字元，而且只包含數字和小寫字母。
 
@@ -139,7 +139,7 @@ ms.locfileid: "76152726"
 
 對於 AzureRM 模組指令碼，請使用 Visual Studio：
 
-1. 在部署專案節點的快捷方式功能表上，選擇 [**部署**] [  >  **新增**]。
+1. 在部署專案節點的快捷方式功能表上，選擇 [**部署**  >  **新**專案]。
 
     ![新的部署功能表項目](./media/create-visual-studio-deployment-project/deploy.png)
 
@@ -189,7 +189,7 @@ ms.locfileid: "76152726"
 
 1. 現在，您必須確定資源群組專案已察覺新的專案。 回到您的資源群組專案 (ExampleAppDeploy)。 以滑鼠右鍵按一下 [參考]****，然後選取 [新增參考]****。
 
-    ![新增參考](./media/create-visual-studio-deployment-project/add-new-reference.png)
+    ![螢幕擷取畫面顯示 [ExampleAppDeploy] 功能表，其中已反白顯示 [新增參考] 選項。](./media/create-visual-studio-deployment-project/add-new-reference.png)
 
 1. 選取您所建立的 Web 應用程式專案。
 
@@ -364,7 +364,7 @@ ms.locfileid: "76152726"
 
 1. 部署完成後，請在入口網站中檢視您的儀表板。 選取 [儀表板]**** 並選擇您部署的那一個。
 
-   ![自訂儀表板](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
+   ![螢幕擷取畫面顯示 [儀表板] 頁面，其中已醒目提示範例自訂儀表板。](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
 
 1. 您就看到自訂的儀表板。
 
@@ -380,11 +380,11 @@ ms.locfileid: "76152726"
 
 1. 選取資源群組名稱。
 
-1. 從頂端功能表中選取 [刪除資源群組]。
+1. 從頂端功能表中選取 [刪除資源群組]  。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已瞭解如何使用 Visual Studio 來建立及部署範本。 若要深入了解範本開發，請參閱我們的新初學者教學課程系列：
+在本文中，您已瞭解如何使用 Visual Studio 來建立和部署範本。 若要深入了解範本開發，請參閱我們的新初學者教學課程系列：
 
 > [!div class="nextstepaction"]
 > [初學者教學課程](./template-tutorial-create-first-template.md)

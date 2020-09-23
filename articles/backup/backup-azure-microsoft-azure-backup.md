@@ -3,12 +3,12 @@ title: 使用 Azure 備份伺服器備份工作負載
 description: 在本文中，了解如何準備環境，以使用 Microsoft Azure 備份伺服器 (MABS) 來保護及備份工作負載。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 79abf55fdbaae80a84618f6944870131dcd82c89
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6fe03260cc1759929e7ff9886b1b232a37056866
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181692"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975510"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安裝及升級 Azure 備份伺服器
 
@@ -59,7 +59,7 @@ Azure 備份伺服器承襲了 Data Protection Manager (DPM) 的大部分工作�
 | Windows Server 2019 |64 位元 |Standard、Datacenter、Essentials |
 | Windows Server 2016 和最新的 SP |64 位元 |Standard、Datacenter、Essentials  |
 
-您可以使用 Windows Server Deduplication 為 DPM 儲存體刪除重複資料。 深入了解在 Hyper-V VM 中部署時， [DPM 和重複資料刪除](/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019) 如何搭配運作。
+您可以使用 Windows Server Deduplication 為 DPM 儲存體刪除重複資料。 深入了解在 Hyper-V VM 中部署時， [DPM 和重複資料刪除](/system-center/dpm/deduplicate-dpm-storage) 如何搭配運作。
 
 > [!NOTE]
 > Azure 備份伺服器的設計目的是在專用、單一用途的伺服器上執行。 您無法在下列上安裝 Azure 備份伺服器：
@@ -80,7 +80,7 @@ Azure 備份伺服器一律加入網域。 如果您打算將伺服器移到不�
 
 ### <a name="set-storage-replication"></a>設定儲存體複寫
 
-儲存體複寫選項有異地備援儲存體和本地備援儲存體可供您選擇。 根據預設，復原服務保存庫會使用異地備援儲存體。 如果這個保存庫是您的主要保存庫，儲存體選項請保持設定為異地備援儲存體。 如果您想要更便宜但不持久的選項，請選擇本地備援儲存體。 在 [Azure 儲存體複寫概觀](../storage/common/storage-redundancy.md)中，深入了解[異地備援](../storage/common/storage-redundancy.md)和[本地備援](../storage/common/storage-redundancy.md)儲存體選項。
+儲存體複寫選項有異地備援儲存體和本地備援儲存體可供您選擇。 根據預設，復原服務保存庫會使用異地備援儲存體。 如果這個保存庫是您的主要保存庫，儲存體選項請保持設定為異地備援儲存體。 如果您想要更便宜但不持久的選項，請選擇本地備援儲存體。 在[Azure 儲存體複寫總覽](../storage/common/storage-redundancy.md)中，深入瞭解[地理區域冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)、[本機冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)和[區域冗余的](../storage/common/storage-redundancy.md#zone-redundant-storage)儲存體選項。
 
 若要編輯儲存體複寫設定︰
 
@@ -89,7 +89,7 @@ Azure 備份伺服器一律加入網域。 如果您打算將伺服器移到不�
 
 3. 選取儲存體複寫類型，然後選取 [**儲存]。**
 
-     ![為新保存庫設定儲存體組態](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+     ![為新保存庫設定儲存體組態](./media/backup-create-rs-vault/recovery-services-vault-backup-configuration.png)
 
 ## <a name="software-package"></a>軟體封裝
 
@@ -199,7 +199,7 @@ Azure 備份伺服器一律加入網域。 如果您打算將伺服器移到不�
 
     ![提供安裝檔案的位置](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    備份至 Azure 需要暫存位置。 請確保暫存位置至少為打算備份至雲端的資料的 5%。 在磁碟保護方面，安裝完成之後必須設定獨立的磁碟。 如需有關儲存集區的詳細資訊，請參閱 [準備資料存放區](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019)。
+    備份至 Azure 需要暫存位置。 請確保暫存位置至少為打算備份至雲端的資料的 5%。 在磁碟保護方面，安裝完成之後必須設定獨立的磁碟。 如需有關儲存集區的詳細資訊，請參閱 [準備資料存放區](/system-center/dpm/plan-long-and-short-term-data-storage)。
 5. 為受限的本機使用者帳戶提供強式密碼，然後選取 **[下一步]**。
 
     ![提供強式密碼](./media/backup-azure-microsoft-azure-backup/security-screen.png)
@@ -362,7 +362,7 @@ Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運�
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以在這裡取得有關 [準備 DPM 環境](/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-2019)的詳細資訊。 其中也包含可據以部署和使用 Azure 備份伺服器之支援組態的相關資訊。 您可以使用一系列的 [PowerShell Cmdlet](/powershell/module/dataprotectionmanager/) 來執行各種作業。
+您可以在這裡取得有關 [準備 DPM 環境](/system-center/dpm/prepare-environment-for-dpm)的詳細資訊。 其中也包含可據以部署和使用 Azure 備份伺服器之支援組態的相關資訊。 您可以使用一系列的 [PowerShell Cmdlet](/powershell/module/dataprotectionmanager/) 來執行各種作業。
 
 請參閱這些文章，以深入了解使用 Microsoft Azure 備份伺服器來保護工作負載。
 

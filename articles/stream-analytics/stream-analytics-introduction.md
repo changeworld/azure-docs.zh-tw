@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 07/6/2020
-ms.openlocfilehash: d62fd0a23a5f5553f27c7a399eb17d06d427a6f3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c6c878aa0e4a9d5caa22f7cd94c438f22a81d2ab
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108782"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881874"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure 串流分析是什麼？
 
@@ -57,7 +57,7 @@ Azure 串流分析的設計訴求是方便使用、具靈活性、可靠，以�
 
 ## <a name="programmer-productivity"></a>程式設計人員生產力
 
-Azure 串流分析使用已擴增的簡單 SQL 架構查詢語言，搭配強大的時態性限制式即可分析移動中的資料。 若要定義作業轉換，您可以使用簡單的敘述性[串流分析查詢語言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)，來撰寫使用簡單 SQL 建構的複雜時態性查詢和分析。 因為串流分析查詢語言與 SQL 語言一致，只要熟悉 SQL 便可開始建立作業。 使用 Azure PowerShell、[串流分析 Visual Studio 工具](stream-analytics-tools-for-visual-studio-install.md)、[串流分析 Visual Studio Code 擴充功能](quick-create-vs-code.md)，或 Azure Resource Manager 範本等開發人員工具，也可以建立作業。 使用開發人員工具可讓您離線開發轉換查詢，並使用 [CI/CD 管線](stream-analytics-tools-for-visual-studio-cicd.md)將作業提交至 Azure。
+Azure 串流分析使用已擴增的簡單 SQL 架構查詢語言，搭配強大的時態性限制式即可分析移動中的資料。 若要定義作業轉換，您可以使用簡單的敘述性[串流分析查詢語言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)，來撰寫使用簡單 SQL 建構的複雜時態性查詢和分析。 因為串流分析查詢語言與 SQL 語言一致，只要熟悉 SQL 便可開始建立作業。 使用 Azure PowerShell、[串流分析 Visual Studio 工具](stream-analytics-tools-for-visual-studio-install.md)、[串流分析 Visual Studio Code 擴充功能](quick-create-visual-studio-code.md)，或 Azure Resource Manager 範本等開發人員工具，也可以建立作業。 使用開發人員工具可讓您離線開發轉換查詢，並使用 [CI/CD 管線](stream-analytics-tools-for-visual-studio-cicd.md)將作業提交至 Azure。
 
 串流分析查詢語言提供了各式各樣的函式，以供分析和處理串流資料。 此查詢語言支援簡單資料操作、彙總和分析函式、[地理空間函式](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-geospatial-functions)、[模式比對](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics)及[異常偵測](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-machine-learning-anomaly-detection)。 您可以在入口網站中編輯查詢，然後使用從即時資料流所擷取出的範例資料來測試查詢。
 
@@ -106,4 +106,4 @@ Azure 串流分析會遵循如 [Azure 合規性概觀](https://gallery.technet.m
 * [使用 Azure 入口網站建立串流分析作業](stream-analytics-quick-create-portal.md)。
 * [使用 Azure PowerShell 建立串流分析作業](stream-analytics-quick-create-powershell.md)。
 * [使用 Visual Studio 建立串流分析作業](stream-analytics-quick-create-vs.md)。
-* [使用 Visual Studio Code 建立串流分析作業](quick-create-vs-code.md)。
+* [使用 Visual Studio Code 建立串流分析作業](quick-create-visual-studio-code.md)。

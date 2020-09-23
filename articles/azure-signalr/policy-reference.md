@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure SignalR 的內建原則定義
 description: 列出適用於 Azure SignalR 的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 author: sffamily
 ms.author: zhshang
 ms.service: signalr
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0acefa4bbfdd1fd7c44ff4c65153113092b7c787
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 00e09247789a6675c971c99ff74a3d14d9c7ddb6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005765"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976529"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-signalr"></a>適用於 Azure SignalR 的 Azure 原則內建定義
 

@@ -1,5 +1,5 @@
 ---
-title: 使用封包捕獲，利用警示進行主動式網路監視-Azure Functions
+title: 使用封包捕獲透過警示進行主動式網路監視-Azure Functions
 titleSuffix: Azure Network Watcher
 description: 本文說明如何使用 Azure 網路監看員建立警示觸發的封包擷取
 services: network-watcher
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eefd67d4d150c0c8d152002a174c62d31fcb8b5f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738051"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975066"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>使用封包擷取搭配警示和 Azure Functions 進行主動式網路監視
 
@@ -30,7 +30,7 @@ ms.locfileid: "84738051"
 
 藉由使用 Azure 生態系統內的網路監看員、警示及函式，您可以使用資料和工具主動回應以解決網路中的問題。
 
-![狀況][scenario]
+![圖表會顯示虛擬機器上的網路監看員延伸模組，該虛擬機器流向傳送至 T C P 區段的 T C P 區段 > 100 錯誤 Azure Functions （流向網路監看員，會流向網路監看員延伸模組）。][scenario]
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -70,7 +70,7 @@ ms.locfileid: "84738051"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源]**** > [計算]**** > [函數應用程式]****。
 
-    ![建立函數應用程式][1-1]
+    ![建立函式應用程式][1-1]
 
 2. 在 [函數應用程式]**** 刀鋒視窗上，輸入下列值，然後選取 [確定]**** 以建立應用程式︰
 
@@ -91,7 +91,7 @@ ms.locfileid: "84738051"
     |---|---|---|
     |**案例**|實驗|案例類型|
     |**函式命名**|AlertPacketCapturePowerShell|函式的名稱|
-    |**授權層級**|函式|函式的授權層級|
+    |**授權等級**|功能|函式的授權層級|
 
 ![函式範例][functions1]
 
@@ -120,7 +120,7 @@ ms.locfileid: "84738051"
 
      ![PowerShell 資料夾][functions5]
 
-1. 選取 [函數] [**應用程式設定**] [  >  **移至 App Service 編輯器**]。
+1. 選取 [**函數應用程式設定**]  >  **，移至 App Service 編輯器**。
 
     ![函數應用程式設定][functions2]
 
@@ -138,9 +138,9 @@ ms.locfileid: "84738051"
 
 1. 以滑鼠右鍵按一下 [ **Az. Network** ] 子資料夾，然後選取 **[上傳**檔案]。 
 
-6. 前往 Azure 模組。 在 [本機**Az. Network** ] 資料夾中，選取資料夾中的所有檔案。 然後選取 [確定]。 
+6. 前往 Azure 模組。 在 [本機 **Az. Network** ] 資料夾中，選取資料夾中的所有檔案。 然後選取 [確定]。 
 
-7. 針對**Az. Accounts**和**az .resources**重複這些步驟。
+7. 針對 **Az. Accounts** 和 **az. 資源**重複這些步驟。
 
     ![上傳檔案][functions6]
 
@@ -246,7 +246,7 @@ $Encryptedpassword
 
 ### <a name="store-the-environment-variables"></a>儲存環境變數
 
-1. 返回函數應用程式。 然後選取 [**函數應用程式設定**] [設定  >  **應用程式設定**]。
+1. 返回函數應用程式。 然後選取 [**函數應用程式設定**] 來設定  >  **應用程式設定**。
 
     ![進行應用程式設定][functions11]
 
@@ -344,10 +344,10 @@ $Encryptedpassword
 
   |**設定** | **值** | **詳細資料** |
   |---|---|---|
-  |**名稱**|TCP_Segments_Sent_Exceeded|警示規則的名稱。|
-  |**描述**|傳送的 TCP 區段超出閾值|警示規則的描述。|
+  |**Name**|TCP_Segments_Sent_Exceeded|警示規則的名稱。|
+  |**說明**|傳送的 TCP 區段超出閾值|警示規則的描述。|
   |**計量**|傳送的 TCP 區段| 用以觸發警示的計量。 |
-  |**條件**|大於| 評估計量所用的條件。|
+  |**Condition**|大於| 評估計量所用的條件。|
   |**閾值**|100| 觸發警示的計量值。 此值應該設為您環境的有效值。|
   |**期間**|過去五分鐘| 決定尋找計量閾值的期間。|
   |**Webhook**|[函數應用程式中的 Webhook URL]| 先前步驟中所建立函數應用程式中的 Webhook URL。|
@@ -370,7 +370,7 @@ $Encryptedpassword
 - [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
 - [WireShark](https://www.wireshark.org/)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瀏覽[使用 Wireshark 的封包擷取分析](network-watcher-deep-packet-inspection.md)，了解如何檢視封包擷取。
 

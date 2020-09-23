@@ -3,12 +3,12 @@ title: 使用適用于容器的 Azure 監視器設定 Azure Arc 啟用的 Kubern
 description: 本文說明如何針對已啟用 Azure Arc 的 Kubernetes 叢集上的容器，使用 Azure 監視器設定監視。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 54a8fea6ddb46dc00fff29ad83a2a348d9218380
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 44512acbd09df449dbba2177bb10f22f480b82d6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090613"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977531"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>啟用 Azure Arc 啟用的 Kubernetes 叢集監視
 
@@ -63,7 +63,7 @@ ms.locfileid: "90090613"
     >[!IMPORTANT]
     >支援啟用 Arc 的 Kubernetes 叢集的最低代理程式版本為 ciprod04162020 或更新版本。
 
-- 如果您使用 PowerShell 腳本方法來啟用監視，則需要[PowerShell Core](/powershell/scripting/install/installing-powershell?view=powershell-6) 。
+- 如果您使用 PowerShell 腳本方法來啟用監視，則需要[PowerShell Core](/powershell/scripting/install/installing-powershell?view=powershell-6&preserve-view=true) 。
 
 - 如果您使用 Bash 腳本方法來啟用監視，則需要[bash 第4版](https://www.gnu.org/software/bash/)。
 
@@ -137,6 +137,33 @@ ms.locfileid: "90090613"
 
 啟用監視之後，可能需要約 15 分鐘的時間才能檢視叢集的健康情況計量。
 
+### <a name="using-service-principal"></a>使用服務主體
+腳本 *enable-monitoring.ps1* 使用互動式裝置登入。 如果您偏好非互動式登入，則可以使用現有的服務主體，或建立具有必要許可權的新帳戶，如 [必要條件](#prerequisites)中所述。 若要使用服務主體，您必須傳遞 $servicePrincipalClientId、$servicePrincipalClientSecret 和 $tenantId 參數，以及您想要用來 *enable-monitoring.ps1* 腳本的服務主體值。
+
+```powershell
+$subscriptionId = "<subscription Id of the Azure Arc connected cluster resource>"
+$servicePrincipal = New-AzADServicePrincipal -Role Contributor -Scope "/subscriptions/$subscriptionId"
+```
+
+只有當您在不同的 Azure 訂用帳戶中使用現有的 Log Analytics 工作區，而不是與 Arc K8s 連線的叢集資源時，才適用下列角色指派。
+
+```powershell
+$logAnalyticsWorkspaceResourceId = "<Azure Resource Id of the Log Analytics Workspace>" # format of the Azure Log Analytics workspace should be /subscriptions/<subId>/resourcegroups/<rgName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>
+New-AzRoleAssignment -RoleDefinitionName 'Log Analytics Contributor'  -ObjectId $servicePrincipal.Id -Scope  $logAnalyticsWorkspaceResourceId
+
+$servicePrincipalClientId =  $servicePrincipal.ApplicationId.ToString()
+$servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $servicePrincipal.Secret).Password
+$tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
+```
+
+例如：
+
+```powershell
+.\enable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId -kubeContext $kubeContext -workspaceResourceId $logAnalyticsWorkspaceResourceId -proxyEndpoint $proxyEndpoint
+```
+
+
+
 ## <a name="enable-using-bash-script"></a>使用 bash 腳本啟用
 
 執行下列步驟，以使用提供的 bash 腳本來啟用監視。
@@ -162,7 +189,7 @@ ms.locfileid: "90090613"
 4. 如果您想要使用現有的 Azure 監視器 Log Analytics 工作區，請 `logAnalyticsWorkspaceResourceId` 使用代表工作區資源識別碼的對應值來設定變數。 否則，請將變數設定為， `""` 而腳本會在叢集訂用帳戶的預設資源群組中建立預設工作區（如果區域中還沒有該工作區存在的話）。 建立的預設工作區類似于*DefaultWorkspace \<SubscriptionID> - \<Region> *的格式。
 
     ```bash
-    export logAnalyticsWorkspaceResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
+    export logAnalyticsWorkspaceResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
     ```
 
 5. 如果啟用 Arc 的 Kubernetes 叢集透過 proxy 伺服器進行通訊，請 `proxyEndpoint` 使用 proxy 伺服器的 URL 來設定變數。 如果叢集未透過 proxy 伺服器進行通訊，則您可以將值設定為 `""` 。 如需詳細資訊，請參閱本文稍後的 [設定 proxy 端點](#configure-proxy-endpoint) 。
@@ -195,6 +222,31 @@ ms.locfileid: "90090613"
 
 啟用監視之後，可能需要約 15 分鐘的時間才能檢視叢集的健康情況計量。
 
+### <a name="using-service-principal"></a>使用服務主體
+Bash 腳本 *enable-monitoring.sh* 會使用互動式裝置登入。 如果您偏好非互動式登入，則可以使用現有的服務主體，或建立具有必要許可權的新帳戶，如 [必要條件](#prerequisites)中所述。 若要使用服務主體，您必須將您要用來 *enable-monitoring.sh* bash 腳本的服務主體的用戶端識別碼、--用戶端密碼和--租使用者識別碼值傳遞給您。
+
+```bash
+subscriptionId="<subscription Id of the Azure Arc connected cluster resource>"
+servicePrincipal=$(az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${subscriptionId}")
+servicePrincipalClientId=$(echo $servicePrincipal | jq -r '.appId')
+```
+
+只有當您在不同的 Azure 訂用帳戶中使用現有的 Log Analytics 工作區，而不是與 Arc K8s 連線的叢集資源時，才適用下列角色指派。
+
+```bash
+logAnalyticsWorkspaceResourceId="<Azure Resource Id of the Log Analytics Workspace>" # format of the Azure Log Analytics workspace should be /subscriptions/<subId>/resourcegroups/<rgName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>
+az role assignment create --role 'Log Analytics Contributor' --assignee $servicePrincipalClientId --scope $logAnalyticsWorkspaceResourceId
+
+servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
+tenantId=$(echo $servicePrincipal | jq -r '.tenant')
+```
+
+例如：
+
+```bash
+bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId --kube-context $kubeContext  --workspace-id $logAnalyticsWorkspaceResourceId --proxy $proxyEndpoint
+```
+
 ## <a name="configure-proxy-endpoint"></a>設定 proxy 端點
 
 使用容器的容器化代理 Azure 監視器程式，您可以設定 proxy 端點，讓它能夠透過 proxy 伺服器進行通訊。 容器化代理程式和 Azure 監視器之間的通訊可以是 HTTP 或 HTTPS proxy 伺服器，而且也支援匿名驗證和基本驗證 (使用者名稱/密碼) 。
@@ -212,7 +264,7 @@ Proxy 設定值具有下列語法： `[protocol://][user:password@]proxyhost[:po
 |proxyhost | Proxy 伺服器的位址或 FQDN |
 |連接埠 | Proxy 伺服器的選擇性埠號碼 |
 
-例如：`http://user01:password@proxy01.contoso.com:3128`
+例如： `http://user01:password@proxy01.contoso.com:3128`
 
 如果您將通訊協定指定為 **HTTP**，則會使用 SSL/TLS 安全連線來建立 HTTP 要求。 您的 proxy 伺服器必須支援 SSL/TLS 通訊協定。
 

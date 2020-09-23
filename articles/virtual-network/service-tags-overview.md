@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: ce4c44ef17f456a776fde3addc5ec4ed29c8ebbd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fd6894ea90dc6cb3cc721438ba73a94b43c36a5b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434447"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983705"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
@@ -67,7 +67,7 @@ ms.locfileid: "89434447"
 | **AzureInformationProtection** | Azure 資訊保護。<br/><br/>*注意：* 此標籤相依於 **AzureActiveDirectory**、**AzureFrontDoor.Frontend** 和 **AzureFrontDoor.FirstParty** 標籤。 | 輸出 | 否 | 否 |
 | **AzureIoTHub** | Azure IoT 中樞。 | 輸出 | 否 | 否 |
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注意：* 此標籤相依於 **AzureActiveDirectory** 標籤。 | 輸出 | 是 | 是 |
-| **AzureLoadBalancer** | Azure 基礎結構負載平衡器。 此標籤會轉譯成作為 Azure 健康情況探查來源的[主機虛擬 IP 位址](security-overview.md#azure-platform-considerations) (168.63.129.16)。 這不包含 Azure Load Balancer 資源的流量。 如果您未使用 Azure Load Balancer，則可以覆寫此規則。 | 兩者 | 否 | 否 |
+| **AzureLoadBalancer** | Azure 基礎結構負載平衡器。 此標籤會轉譯成作為 Azure 健康情況探查來源的[主機虛擬 IP 位址](security-overview.md#azure-platform-considerations) (168.63.129.16)。 這只包括探查流量，而不是對您後端資源的實際流量。 如果您未使用 Azure Load Balancer，則可以覆寫此規則。 | 兩者 | 否 | 否 |
 | **AzureMachineLearning** | Azure Machine Learning | 兩者 | 否 | 是 |
 | **AzureMonitor** | Log Analytics、Application Insights、AzMon 和自訂計量 (GiG 端點)。<br/><br/>*注意：* 針對 Log Analytics，此標籤相依於 **Storage** 標籤。 | 輸出 | 否 | 是 |
 | **AzureOpenDatasets** | Azure 開放資料集。<br/><br/>*注意：* 此標籤相依於 **AzureFrontDoor.Frontend** 和 **Storage** 標籤。 | 輸出 | 否 | 否 |

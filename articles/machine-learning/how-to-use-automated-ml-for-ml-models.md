@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 10c0200aae5ffa432c2da037d58d455fc28e8acd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3214ce260fa4981b8ac970bdf3520ecd7de59e18
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904971"
+ms.locfileid: "90985574"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 建立、檢閱和部署自動化機器學習模型
 
@@ -86,7 +86,7 @@ ms.locfileid: "90904971"
             
         選取 [下一步]。
 
-    1. [確認詳細資料] 表單上會顯示先前在 [基本資訊] 和 [設定與預覽] 表單中填入的資訊摘要。 您也可以選擇使用啟用分析的計算，為資料集建立資料設定檔。 深入了解[資料分析](#profile)。
+    1. [確認詳細資料] 表單上會顯示先前在 [基本資訊] 和 [設定與預覽] 表單中填入的資訊摘要。 您也可以選擇使用啟用分析的計算，為資料集建立資料設定檔。 深入了解[資料分析](how-to-connect-data-ui.md#profile)。
 
         選取 [下一步] 。
 1. 在新建立的資料集出現後選取該資料集。 您也可以檢視資料集的預覽和範例統計資料。 
@@ -111,7 +111,7 @@ ms.locfileid: "90904971"
     選取 [建立]。 建立新的計算可能會需要數分鐘。
 
     >[!NOTE]
-    > 計算名稱會指出所選/建立的計算是否已「啟用分析」。 (如需詳細資料，請參閱[資料分析](#profile))。
+    > 計算名稱會指出所選/建立的計算是否已「啟用分析」。 (如需詳細資料，請參閱[資料分析](how-to-connect-data-ui.md#profile))。
 
     選取 [下一步] 。
 
@@ -144,32 +144,6 @@ ms.locfileid: "90904971"
 1.  (選擇性的) View 特徵化設定：如果您選擇在 [**其他設定**] 表單中啟用**自動特徵化**，則會套用預設的特徵化技術。 在 **View 特徵化設定** 中，您可以變更這些預設值，並據以進行自訂。 瞭解如何 [自訂 featurizations](#customize-featurization)。 
 
     ![Azure Machine Learning studio 工作類型表單](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
-
-<a name="profile"></a>
-
-## <a name="data-profiling--summary-stats"></a>資料分析與摘要統計資料
-
-您可在資料集中取得各式各樣的摘要統計資料來驗證資料集是否已針對 ML 準備就緒。 針對非數值資料行，其僅會包含如最小值、最大值和錯誤計數等基本統計資料。 針對數值資料行，您也可以檢閱其統計時間和估計分位數。 具體而言，資料設定檔包含：
-
->[!NOTE]
-> 針對無關類型特徵顯示的空白項目。
-
-統計資料|描述
-------|------
-功能| 要進行摘要的資料行名稱。
-設定檔| 以推斷類型為基礎的內嵌視覺效果。 例如，字串、布林值和日期會具備值的計數，小數 (數值) 則會包含近似長條圖。 這可供快速了解資料的分佈。
-類型分佈| 資料行中類型的內嵌值計數。 Null 為其自身的類型，因此此視覺效果在偵測奇數或遺漏值時相當實用。
-類型|資料行的推斷類型。 可能的值包括：字串、布林值、日期和小數。
-最小值| 資料行的最小值。 如果特徵的類型沒有固有排序 (例如布林值)，則會顯示空白項目。
-最大值| 資料行的最小值。 
-Count| 資料行中遺漏和未遺漏項目的總數。
-未遺漏計數| 資料行中未遺漏的項目數。 空字串和錯誤都會視為值，因此不會計入「未遺漏計數」中。
-分位數| 每個分位數的近似值可供了解資料其分佈。
-平均值| 資料行的算術平均數或平均。
-標準差| 此資料行資料的離散或變異量量值。
-Variance| 此資料行資料從其平均值分散程度的量值。 
-偏度| 此資料行資料與常態分佈相異程度的量值。
-峰度| 相較於常態分佈，此資料行資料集中於尾端程度的量值。
 
 ## <a name="customize-featurization"></a>自訂特徵化
 

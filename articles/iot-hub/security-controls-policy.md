@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure IoT 中樞的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure IoT 中樞的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 09/04/2020
+ms.date: 09/10/2020
 ms.topic: sample
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: ef86f3c929acd83815500b732c99ce9ca7ffd0ec
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 8776a66fbf76b9bcd2ce26fcda9d9b34d594ffbe
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485598"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019187"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-iot-hub"></a>適用於 Azure IoT 中樞的 Azure 原則法規合規性控制項
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 監視器活頁簿概觀
-description: 使用預先建立及使用自訂參數之活頁簿來簡化複雜的報告
+description: 瞭解活頁簿如何提供彈性的畫布來分析資料，以及如何在 Azure 入口網站中建立豐富的視覺效果報表。
 author: mrbullwinkle
 manager: carmonm
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 18e757ccac56d2165a1b46bb73a698ac754177b7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d6ac552640b4a557c51b674624e6a4493241e0ed
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657947"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977557"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure 監視器活頁簿
 
@@ -49,7 +49,7 @@ ms.locfileid: "89657947"
 * [磚](workbooks-tile-visualizations.md)
 * [樹木](workbooks-tree-visualizations.md)
 * [Graphs](workbooks-graph-visualizations.md)
-* [複合橫條圖](workbooks-composite-bar.md)
+* [複合列](workbooks-composite-bar.md)
 
 ![範例活頁簿視覺效果](./media/workbooks-overview/visualizations.png)
 

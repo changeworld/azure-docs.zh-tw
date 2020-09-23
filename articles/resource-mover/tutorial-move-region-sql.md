@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0718151039d88ffb76a07ce082c08fb011dab88b
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e3e2c9aa42ff3189e90f57d7c6e92b2a71f46639
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652280"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061594"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>教學課程：將 Azure SQL Database 資源移到另一個區域
 
@@ -77,7 +77,6 @@ ms.locfileid: "89652280"
 
 3. 在**移動資源** > **來源 + 目的地**中，選取來源訂用帳戶和區域。
 4. 在**目的地**中，選取要將資源移至哪一個區域。 然後按一下 [下一步]  。
-5. 在**中繼資料區域**中，選取您要在其中儲存所要移動之資源的相關中繼資料。 系統會特別針對此用途建立資源群組。 然後按一下 [下一步]  。
 
     ![選取來源和目標區域的頁面](./media/tutorial-move-region-sql/source-target.png)
 

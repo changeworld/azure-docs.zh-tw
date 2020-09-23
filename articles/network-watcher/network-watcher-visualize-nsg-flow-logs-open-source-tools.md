@@ -1,5 +1,5 @@
 ---
-title: 視覺化 NSG 流量記錄-彈性堆疊
+title: 將 NSG 流程記錄視覺化-彈性堆疊
 titleSuffix: Azure Network Watcher
 description: 使用網路監看員和彈性堆疊在 Azure 中管理和分析網路安全性群組流量記錄。
 services: network-watcher
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6d2b2fb55a9c23643bbb778ced047e75871ba7f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0896df301718c74e63a9e18c74615130fa80c952
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807675"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986250"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用開放原始碼工具將 Azure 網路監看員 NSG 流量記錄視覺化
 
@@ -29,12 +29,12 @@ ms.locfileid: "84807675"
 
 在本文中，我們將設定一個解決方案，讓您使用「彈性堆疊」將網路安全性群組流量記錄視覺化。  Logstash 輸入外掛程式會直接從為了容納流量記錄而設定的儲存體 Blob 取得流量記錄。 然後，使用「彈性堆疊」，替流量記錄編製索引並用來建立 Kibana 儀表板，以將資訊視覺化。
 
-![案例][scenario]
+![下圖顯示的案例可讓您使用彈性堆疊來視覺化網路安全性群組流量記錄。][scenario]
 
 ## <a name="steps"></a>步驟
 
 ### <a name="enable-network-security-group-flow-logging"></a>啟用網路安全性群組流量記錄
-在此案例中，您必須在您的帳戶中至少一個網路安全性群組上啟用「網路安全性群組流量記錄」。 如需有關啟用網路安全性流程記錄的指示，請參閱下列文章：[網路安全性群組的流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。
+在此案例中，您必須在您的帳戶中至少一個網路安全性群組上啟用「網路安全性群組流量記錄」。 如需有關啟用網路安全性流程記錄的指示，請參閱下列文章： [網路安全性群組的流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。
 
 ### <a name="set-up-the-elastic-stack"></a>設定彈性堆疊
 藉由連線 NSG 流量記錄與彈性堆疊，我們可以建立 Kibana 儀表板，以便從記錄搜尋、繪圖、分析和洞察。
@@ -159,7 +159,7 @@ ms.locfileid: "84807675"
    }  
    ```
 
-如需安裝 Logstash 的進一步指示，請參閱[官方檔](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)。
+如需安裝 Logstash 的進一步指示，請參閱 [官方檔](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)。
 
 ### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>安裝 Azure blob 儲存體的 Logstash 輸入外掛程式
 
@@ -215,27 +215,27 @@ sudo /etc/init.d/logstash start
 
 1. 一段時間各決策/方向的流量 - 顯示一段期間內流量數目的時間序列圖。 您可以編輯這些視覺效果的時間單位和範圍。 「各決策的流量」顯示允許或拒絕所做決策的比例，而「各方向的流量」則顯示輸入和輸出流量的比例。 使用這些視覺效果，您可以檢查一段時間的流量趨勢，並尋找任何突增狀況或不尋常的模式。
 
-   ![圖 2][2]
+   ![螢幕擷取畫面顯示範例儀表板，其中包含依決策的流程以及一段時間的方向。][2]
 
 2. 各目的地/來源連接埠的流量 – 圓形圖，可顯示個別連接埠的流量分解。 在此檢視中，您可以查看最常使用的連接埠。 如果您按一下圓形圖內的特定連接埠，則儀表板的其餘部分會進一步篩選至該連接埠的流量。
 
-   ![圖 3][3]
+   ![螢幕擷取畫面顯示一個範例儀表板，其中包含依目的地和來源埠的流程。][3]
 
 3. 流量數目和最早記錄時間 – 顯示已記錄流量數目和最舊記錄擷取日期之計量。
 
-   ![圖 4][4]
+   ![螢幕擷取畫面顯示包含流程數目和最早記錄時間的儀表板範例。][4]
 
 4. 各 NSG 和規則的流量 – 長條圖，可顯示每個 NSG 內的流量分布，以及每個 NSG 內的規則。 您可以在這裡查看哪些 NSG 和規則產生最多流量。
 
-   ![圖 5][5]
+   ![螢幕擷取畫面顯示範例儀表板，其中的流程是由 N S G 和規則。][5]
 
 5. 前 10 個來源/目的地 IP – 長條圖，可顯示前 10 個來源和目的地 IP。 您可以調整這些圖表以顯示更多或更少的 IP 排名。 您可以在這裡查看最常出現的 IP，以及針對每個 IP 進行的流量決策 (允許或拒絕)。
 
-   ![圖 6][6]
+   ![螢幕擷取畫面顯示範例儀表板，其中的流程排名前10個來源和目的地 I P 位址。][6]
 
 6. 流量 Tuple – 下表顯示每個流量 Tuple 內含的資訊，以及其對應的 NGS 和規則。
 
-   ![圖 7][7]
+   ![螢幕擷取畫面顯示資料表中的流程元組。][7]
 
 使用儀表板頂端的查詢列，您可以根據任何流量參數 (例如訂用帳戶識別碼、資源群組、規則或任何其他感興趣的變數)，進一步篩選儀表板。 如需 Kibana 查詢與篩選器的詳細資訊，請參閱[正式文件](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html)
 
@@ -243,7 +243,7 @@ sudo /etc/init.d/logstash start
 
 結合網路安全性群組流量記錄與彈性堆疊，我們提供功能強大且可自訂的方式來將網路流量視覺化。 這些儀表板可讓您快速取得和分享您的網路流量深入解析，以及進一步篩選和調查任何潛在的異常狀況。 您可以使用 Kibana 量身製作這些儀表板並建立特定視覺效果，以符合任何安全性、稽核和合規性需求。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要了解如何利用 Power BI 將 NSG 流量記錄視覺化，請瀏覽[利用 Power BI 將 NSG 流量記錄視覺](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 

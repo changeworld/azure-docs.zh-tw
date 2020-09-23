@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 5b298767f9814f76dd606bab29bd0b245dad6937
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 84a262cae17a4e26724ab06da397e699e09468db
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260181"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969197"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>如何停止使用虛擬機器受控識別擴充功能，並開始使用 Azure Instance Metadata Service
 
@@ -37,8 +37,8 @@ ms.locfileid: "89260181"
 
 當您將虛擬機器或虛擬機器擴展集設定為具有受控識別時，您可以選擇使用 >remove-azvmextension 指令程式上的參數來布建 Azure 資源受控識別 VM 擴充 `-Type` [功能](/powershell/module/az.compute/set-azvmextension) 。 您可以傳遞 `ManagedIdentityExtensionForWindows` 或 `ManagedIdentityExtensionForLinux` （視虛擬機器的類型而定），並使用 `-Name` 參數命名。 `-Settings` 參數會指定 OAuth 權杖端點所使用的連接埠，以用來取得權杖：
 
-```powershell
-   $settings = @{ "port" = 50342 }
+```azurepowershell-interactive
+$settings = @{ "port" = 50342 }
    Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
 ```
 
@@ -68,7 +68,7 @@ ms.locfileid: "89260181"
     
 如果您使用的是虛擬機器擴展集，也可以使用 [>add-azvmssextension 指令程式](/powershell/module/az.compute/add-azvmssextension) 來布建 Azure 資源受控識別虛擬機器擴展集擴充功能。 您可以傳遞 `ManagedIdentityExtensionForWindows` 或 `ManagedIdentityExtensionForLinux` ，視虛擬機器擴展集的類型而定，然後使用參數將它命名為 `-Name` 。 `-Settings` 參數會指定 OAuth 權杖端點所使用的連接埠，以用來取得權杖：
 
-   ```powershell
+   ```azurepowershell-interactive
    $setting = @{ "port" = 50342 }
    $vmss = Get-AzVmss
    Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
@@ -96,7 +96,7 @@ ms.locfileid: "89260181"
 布建虛擬機器擴充功能可能會因為 DNS 查閱失敗而失敗。 如果發生這種情況，請重新開機虛擬機器，然後再試一次。 
 
 ### <a name="remove-the-extension"></a>移除擴充功能 
-若要移除擴充功能，請使用 `-n ManagedIdentityExtensionForWindows` 或 `-n ManagedIdentityExtensionForLinux` 切換 (，視使用 [az vm extension delete](/cli/azure/vm/)的虛擬機器) 類型，或使用 Azure CLI 或適用于 Powershell 的虛擬機器擴展集的 [az vmss 延伸模組刪除](/cli/azure/vmss) 而定 `Remove-AzVMExtension` ：
+若要移除擴充功能，請使用 `-n ManagedIdentityExtensionForWindows` 或 `-n ManagedIdentityExtensionForLinux` 切換 (，視使用 [az vm extension delete](/cli/azure/vm/)的虛擬機器) 類型，或使用 Azure CLI 或適用于 PowerShell 的虛擬機器擴展集的 [az vmss 延伸模組刪除](/cli/azure/vmss) 而定 `Remove-AzVMExtension` ：
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -106,7 +106,7 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
 az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
 ```
 
-```powershell
+```azurepowershell-interactive
 Remove-AzVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
 ```
 
@@ -162,7 +162,7 @@ Content-Type: application/json
 
 在特定版本的 Windows 和 Linux 上，擴充功能停止時，可手動用下列 Cmdlet 來重新啟動：
 
-```powershell
+```azurepowershell-interactive
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 

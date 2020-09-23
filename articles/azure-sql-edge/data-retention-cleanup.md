@@ -1,6 +1,6 @@
 ---
-title: '使用保留原則管理歷程記錄資料-Azure SQL Edge (Preview) '
-description: '瞭解如何使用 Azure SQL Edge (預覽版中的保留原則來管理歷程記錄資料) '
+title: 使用保留原則管理歷程記錄資料-Azure SQL Edge
+description: 瞭解如何使用 Azure SQL Edge 中的保留原則來管理歷程記錄資料
 keywords: SQL Edge，資料保留
 services: sql-edge
 ms.service: sql-edge
@@ -9,22 +9,21 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 9acec467819f159623176edf2f3f763a55019eb4
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 45ce874ffb626f63b2239c66afdefd091114cbd2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550644"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888126"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>使用保留原則管理歷程記錄資料
 
 您可以在資料庫和任何基礎資料表上個別啟用資料保留，讓使用者為其資料表和資料庫建立彈性的過時原則。 套用資料保留很簡單：只需要在資料表建立期間設定一個參數或做為 alter table 作業的一部分。 
 
-針對資料庫和基礎資料表定義之資料保留原則之後，會執行背景時間計時器工作來移除資料表中任何已過時的記錄，以供資料保留之用。 在排程並由系統執行的背景工作中，會以透明的方式，識別相符的資料列，並從資料表中移除它們。 資料表資料列的年齡條件會根據在資料表定義中做為的資料行來檢查 `filter_column` 。 例如，如果保留期限設定為一周，符合清除資格的資料表資料列符合下列條件： 
+針對資料庫和基礎資料表定義之資料保留原則之後，會執行背景時間計時器工作來移除資料表中任何已過時的記錄，以供資料保留之用。 在排程並由系統執行的背景工作中，會以透明的方式，識別相符的資料列，並從資料表中移除它們。 資料表資料列的年齡條件會根據在資料表定義中做為的資料行來檢查 `filter_column` 。 例如，如果保留期限設定為一周，則符合清除資格的資料表資料列符合下列其中一個條件： 
 
-```sql
-filter_column < DATEADD(WEEK, -1, SYSUTCDATETIME())
-```
+- 如果篩選資料行使用 DATETIMEOFFSET 資料類型，則條件為 `filter_column < DATEADD(WEEK, -1, SYSUTCDATETIME())`
+- 否則，條件為 `filter_column < DATEADD(WEEK, -1, SYSDATETIME())`
 
 ## <a name="data-retention-cleanup-phases"></a>資料保留清除階段
 
@@ -37,7 +36,7 @@ filter_column < DATEADD(WEEK, -1, SYSUTCDATETIME())
 
 ## <a name="manual-cleanup"></a>手動清除
 
-根據資料表的資料保留設定和資料庫上的工作負載本質而定，自動清除執行緒可能不會在其執行期間完全移除所有過時的資料列。 為了協助您進行這項操作，並允許使用者手動移除過時的資料列， `sys.sp_cleanup_data_retention` AZURE SQL Edge (Preview) 中引進了預存程式。 
+根據資料表的資料保留設定和資料庫上的工作負載本質而定，自動清除執行緒可能不會在其執行期間完全移除所有過時的資料列。 為了協助您進行這項操作，並允許使用者手動移除過時的資料列，已 `sys.sp_cleanup_data_retention` 在 AZURE SQL Edge 中引進預存程式。 
 
 這個預存程式會採用三個參數。 
     - 架構名稱-資料表之擁有架構的名稱。 這是必要參數。 
@@ -67,7 +66,7 @@ select @rowcnt
 
 ## <a name="monitoring-data-retention-cleanup"></a>監視資料保留清除
 
-您可以使用 Azure SQL Edge (Preview) 中 (XEvents) 的擴充事件來監視資料保留原則清除作業。 如需擴充事件的詳細資訊，請參閱 [XEvents 總覽](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)。
+您可以使用 Azure SQL Edge 中 (XEvents) 的擴充事件來監視資料保留原則清除作業。 如需擴充事件的詳細資訊，請參閱 [XEvents 總覽](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)。 
 
 下列六個擴充的事件有助於追蹤清除作業的狀態。 
 
@@ -78,7 +77,9 @@ select @rowcnt
 | data_retention_task_exception  | 在資料表的特定保留清除進程以外的保留原則清除的背景工作失敗時，就會發生這種情況。 |
 | data_retention_cleanup_started  | 當資料表的清除程式開始時發生。 |
 | data_retention_cleanup_exception  | 具有保留原則的資料表清除處理失敗。 |
-| data_retention_cleanup_completed  | 在具有資料保留原則的資料表清除處理常式結束時發生。 |
+| data_retention_cleanup_completed  | 在具有資料保留原則的資料表清除處理常式結束時發生。 |  
+
+此外，已將名為的新信號緩衝區類型新增 `RING_BUFFER_DATA_RETENTION_CLEANUP` 至 sys.dm_os_ring_buffers 動態管理檢視中。 此視圖可以用來監視資料保留清除作業。 
 
 
 ## <a name="next-steps"></a>後續步驟

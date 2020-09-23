@@ -11,20 +11,20 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: c981bed2b30f47223a1fd562d4a5d0fff96e3adf
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b6b4be2eb2cd490d525046541f68a45d87a8e638
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646969"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906684"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教學課程：建置 Azure Machine Learning 管線進行批次評分
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在此進階教學課程中，您將了解如何在 Azure Machine Learning 中建置管線以執行批次評分作業。 機器學習管線會以速度、可攜性和重複使用性來將工作流程最佳化，讓您能夠專注於機器學習，而不是基礎結構和自動化。 在建置和發佈管線之後，您可以設定可讓您從任何平台上的任何 HTTP 程式庫觸發管線的 REST 端點。 
 
-此範例會使用預先定型的 [Inception-V3](https://arxiv.org/abs/1512.00567) 迴旋神經網路模型 (在 Tensorflow 中實作)，來分類未標記的影像。 [深入了解機器學習管線](concept-ml-pipelines.md)。
+在此進階教學課程中，您將了解如何建置 [Azure Machine Learning 管線](concept-ml-pipelines.md) 以執行批次評分作業。 機器學習管線會以速度、可攜性和重複使用性來將工作流程最佳化，讓您能夠專注於機器學習，而不是基礎結構和自動化。 在建置和發佈管線之後，您可以設定可讓您從任何平台上的任何 HTTP 程式庫觸發管線的 REST 端點。 
+
+此範例會使用預先定型的 [Inception-V3](https://arxiv.org/abs/1512.00567) 迴旋神經網路模型 (在 Tensorflow 中實作)，來分類未標記的影像。 
 
 在本教學課程中，您會完成下列工作：
 

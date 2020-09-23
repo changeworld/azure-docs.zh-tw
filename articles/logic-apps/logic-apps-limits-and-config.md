@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 08/03/2020
-ms.openlocfilehash: 46f7c7185de559fb6b6545eb8f1b2113aa0ec4b2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d5db970d4ed3c3988c96a2c0c33775bcbfb00d92
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085003"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986011"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps 的限制和設定資訊
 
@@ -31,12 +31,13 @@ ms.locfileid: "90085003"
 | 每個工作流程的觸發程序數目 | 10 | 在程式碼檢視中運作時，而非在設計工具中工作 |
 | 參數範圍案例限制 | 25 | |
 | 每個工作流程的變數數目 | 250 | |
-| 每個運算式的字元數 | 8,192 | |
-| `trackedProperties` 的大小上限 | 16,000 個字元 |
 | `action` 或 `trigger` 的名稱 | 80 個字元 | |
+| 每個運算式的字元數 | 8,192 | |
 | `description` 的長度 | 256 個字元 | |
-| `parameters` 數目上限 | 50 | |
-| `outputs` 數目上限 | 10 | |
+| 最大數目 `parameters` | 50 | |
+| 最大數目 `outputs` | 10 | |
+| `trackedProperties` 的大小上限 | 16,000 個字元 |
+| 內嵌程式碼動作-最大程式碼字元數 | 1024個字元 <p>若為100000個字元的限制，請使用 Visual Studio Code 和 [預覽 **Azure Logic Apps** 擴充](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)功能來建立邏輯應用程式。 |
 
 <a name="run-duration-retention-limits"></a>
 

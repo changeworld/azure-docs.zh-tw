@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: a68622a921bb58513c7bb2154ccee81162a59c53
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 870b412a1fa5d362ac7b5be1df6c92d95c2936ca
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934414"
+ms.locfileid: "90977784"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>How to：使用攔截設定警示和取得通知
 
@@ -23,12 +23,12 @@ ms.locfileid: "90934414"
 
 ## <a name="create-a-hook"></a>建立掛勾
 
-計量審查程式支援三種不同類型的勾點：電子郵件攔截、webhook 和 Azure DevOps。 您可以選擇適用于特定案例的應用程式。 
+計量審查程式支援三種不同類型的勾點：電子郵件攔截、webhook 和 Azure DevOps。 您可以選擇適用于特定案例的應用程式。       
 
 ### <a name="email-hook"></a>電子郵件攔截
 
 > [!Note]
-> 計量建議程式資源管理員必須先設定 **電子郵件設定**，並將 SMTP 相關資訊輸入至計量審查程式，才能傳送異常警示。
+> 計量建議程式資源管理員必須先設定電子郵件設定，並將 SMTP 相關資訊輸入至計量審查程式，才能傳送異常警示。 資源群組系統管理員或訂用帳戶管理員必須在計量建議程式資源的 [存取控制] 索引標籤中，指派至少一個「 *認知服務計量顧問」系統管理員* 角色。 
 
 若要建立電子郵件勾點，可使用下列參數： 
 

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: tutorial
 ms.date: 3/20/2020
 ms.custom: mvc
-ms.openlocfilehash: c0d0e9f0994f7d4d75a67911a5191d6e4ffecaa8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: d34be152a0d104e688abd6e53c97353b69012670
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382795"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906541"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站來設計「適用於 MySQL 的 Azure 資料庫」資料庫
 
@@ -43,11 +43,11 @@ ms.locfileid: "80382795"
 
 2. 選取 [資料庫]   > [Azure Database for MySQL]  。 如果您在 [資料庫]  類別底下找不到「MySQL 伺服器」，請按一下 [查看全部]  以顯示所有可用的資料庫服務。 您也可以在搜尋方塊中輸入 [Azure Database for MySQL]  以快速找到此服務。
    
-   ![瀏覽至 MySQL](./media/tutorial-design-database-using-portal/1-Navigate-to-MySQL.png)
+   :::image type="content" source="./media/tutorial-design-database-using-portal/1-Navigate-to-MySQL.png" alt-text="瀏覽至 MySQL":::
 
 3. 按一下 [適用於 MySQL 的 Azure 資料庫]  圖格。 填寫適用於 MySQL 的 Azure 資料庫表單。
    
-   ![建立表單](./media/tutorial-design-database-using-portal/2-create-form.png)
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-create-form.png" alt-text="建立表單":::
 
     **設定** | **建議的值** | **欄位描述**
     ---|---|---
@@ -56,13 +56,13 @@ ms.locfileid: "80382795"
     資源群組 | *myresourcegroup* | 提供新的或現有的資源群組名稱。
     選取來源 | 空白  | 選取 [空白]  ，從頭開始建立新的伺服器。 (如果您要從現有「適用於 MySQL 的 Azure 資料庫」伺服器的異地備份建立伺服器，請選取 [備份]  )。
     伺服器管理員登入 | myadmin | 當您連線至伺服器時所要使用的登入帳戶。 系統管理員登入名稱不能是 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。
-    密碼 | 您的選擇  | 為伺服器管理帳戶提供新密碼。 此密碼必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字 (0-9) 及非英數字元 (!、$、#、% 等等)。
-    確認密碼 | 您的選擇 | 確認管理帳戶密碼。
+    密碼 | 您的選擇 | 為伺服器管理帳戶提供新密碼。 此密碼必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字 (0-9) 及非英數字元 (!、$、#、% 等等)。
+    確認密碼 | 您的選擇| 確認管理帳戶密碼。
     Location | *最接近使用者的區域*| 選擇最靠近您的使用者或其他 Azure 應用程式的位置。
     版本 | *最新版本*| 最新版本 (除非您有需要另一個版本的特定需求)。
     定價層 | **一般用途**、**Gen 5**、**2 個虛擬核心**、**5 GB**、**7 天**、**異地備援** | 新伺服器的計算、儲存體和備份組態。 選取 [定價層]  。 接下來，選取 [一般用途]  索引標籤。Gen 5  、2 個虛擬核心  、5 GB  和 7 天  是**計算世代**、**虛擬核心**、**儲存體**和**備份保留期限**的預設值。 您可以讓這些滑桿保留原狀。 若要啟用異地備援儲存體中的伺服器備份，請從 [備份備援選項]  中選取 [異地備援]  。 若要儲存此定價層選取項目，請選取 [確定]  。 下方螢幕擷取畫面會擷取這些選取項目。
 
-   ![定價層](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
+   :::image type="content" source="./media/tutorial-design-database-using-portal/3-pricing-tier.png" alt-text="定價層":::
 
    > [!TIP]
    > 啟用**自動成長**後，您的伺服器會在接近配置的限制時增加儲存體，而不會影響您的工作負載。
@@ -75,7 +75,7 @@ ms.locfileid: "80382795"
 
 1. 按一下您新建立的伺服器，然後按一下 [連線安全性]  。
 
-   ![連接安全性](./media/tutorial-design-database-using-portal/1-Connection-security.png)
+   :::image type="content" source="./media/tutorial-design-database-using-portal/1-Connection-security.png" alt-text="連接安全性":::
 2. 您可以在這裡 [新增我的 IP]  ，或設定防火牆規則。 請記得在建立規則後按一下 [儲存]  。
 您現在可以使用 mysql 命令列工具或 MySQL Workbench GUI 工具來連線到伺服器。
 
@@ -89,7 +89,7 @@ ms.locfileid: "80382795"
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下左側功能表中的 [所有資源]  ，輸入名稱，然後搜尋您的 Azure Database for MySQL 伺服器。 選取伺服器名稱以檢視詳細資料。
 
 2. 記下 [概觀]  頁面中的 [伺服器名稱]  和 [伺服器管理員登入名稱]  。 您可以按一下每個欄位旁邊的 [複製] 按鈕，以複製到剪貼簿。
-   ![4-2 伺服器屬性](./media/tutorial-design-database-using-portal/2-server-properties.png)
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-server-properties.png" alt-text="4-2 伺服器屬性":::
 
 在此範例中，伺服器名稱為 *mydemoserver.mysql.database.azure.com*，而伺服器管理員登入為 *myadmin\@mydemoserver*。
 
@@ -168,11 +168,11 @@ SELECT * FROM inventory;
 
 1. 在 Azure 入口網站中，找出您的 Azure Database for MySQL。 在 [概觀]  頁面上，按一下工具列上的 [還原]  。 [還原] 頁面隨即開啟。
 
-   ![10-1 還原資料庫](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
+   :::image type="content" source="./media/tutorial-design-database-using-portal/1-restore-a-db.png" alt-text="10-1 還原資料庫":::
 
 2. 在 [還原]  表單中填入必要資訊。
 
-   ![10-2 還原表單](./media/tutorial-design-database-using-portal/2-restore-form.png)
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-restore-form.png" alt-text="10-2 還原表單":::
 
    - **還原點**：從所列的時間範圍中，選取您想要還原的時間點。 務必將您的當地時區轉換成 UTC。
    - **還原到新的伺服器**：提供要作為還原目的地的新伺服器名稱。

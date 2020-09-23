@@ -3,16 +3,16 @@ title: Azure Defender 和可用方案的總覽
 description: 瞭解 Azure Defender 的方案、保護和警示。 然後繼續在您的訂用帳戶上啟用 Azure Defender。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 627fc52043054557ca6f6baf9827da22d2af5139
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bb1c1e6443b5087b48aad7c3171bef557707adb1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934069"
+ms.locfileid: "90977294"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 簡介
 
@@ -21,7 +21,7 @@ Azure 資訊安全中心的功能涵蓋兩個雲端安全性的主要要素：
 - **雲端安全性狀態管理 (CSPM) **
 - **雲端工作負載保護 (CWP) **
 
-安全性中心的 CSPM 功能，例如安全分數、偵測 Windows 和 Linux Azure 電腦中的安全性錯誤配置，全都是所有 Azure 使用者都能使用的免費安全性中心體驗的一部分。 使用這些 CSPM 功能來加強您的狀態，確保法規遵循 
+安全性中心的 CSPM 功能，例如安全分數、偵測 Windows 和 Linux Azure 電腦中的安全性錯誤配置，全都是所有 Azure 使用者都能使用的免費安全性中心體驗的一部分。 使用這些 CSPM 功能來增強您的狀態，並確保法規遵循。
 
 **Azure Defender** 是雲端工作負載保護平臺 (CWPP) 整合在安全中心內，以進行 Azure 和混合式工作負載的先進、智慧型、保護。
 
