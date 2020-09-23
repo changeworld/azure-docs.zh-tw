@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 5095931e28438beebf3250155ede1a8af0bb5c64
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d8ae03d52691a6c30f78439a579e7e7c136dda76
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796964"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975279"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>使用使用者定義的路由自訂叢集輸出
 
@@ -51,7 +51,7 @@ AKS 會進行下列設定。
 
 以下是預設部署於 AKS 叢集中的網路拓撲，其會使用 `loadBalancer` 的 `outboundType`。
 
-![outboundtype-lb](media/egress-outboundtype/outboundtype-lb.png)
+![圖表會顯示輸入 I P 和輸出 I p，其中輸入 I P 會將流量導向至負載平衡器，以將流量導向至內部叢集，並將流量導向至輸出 I P，以將流量導向至網際網路、M C R、Azure 所需的服務，以及 A K S 控制平面。](media/egress-outboundtype/outboundtype-lb.png)
 
 ### <a name="outbound-type-of-userdefinedrouting"></a>UserDefinedRouting 的連出類型
 

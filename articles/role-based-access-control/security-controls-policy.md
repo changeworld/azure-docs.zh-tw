@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure RBAC 的 Azure 原則法規合規性控制項
 description: 列出可供 Azure 角色型存取控制 (Azure RBAC) 使用的 Azure 原則法規合規性控制。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 09/04/2020
+ms.date: 09/10/2020
 ms.topic: sample
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 598ee8b1dc3b882f366452ca4dc5c545e370de36
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e11f28a21902f7d945018bc8545388f064a79b18
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482281"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019476"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-rbac"></a>適用於 Azure RBAC 的 Azure 原則法規合規性控制項
 

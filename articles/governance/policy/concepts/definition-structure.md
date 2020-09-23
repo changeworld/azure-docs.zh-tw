@@ -1,14 +1,14 @@
 ---
 title: 原則定義結構的詳細資料
 description: 描述如何使用原則定義來建立組織中 Azure 資源的慣例。
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81e08e07236d445a4ca351a7d93e7851cad69ace
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a049134a32fd6026cc1e0c4044a7b9d08fb9bd8f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648719"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895382"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -206,8 +206,10 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 
 如果定義位置為：
 
-- **訂用帳戶** - 只能將原則指派給該訂用帳戶內的資源。
-- **管理群組** - 只能將原則指派給子管理群組與子訂用帳戶內的資源。 如果您打算將原則定義套用至多個訂用帳戶，此位置必須是包含訂用帳戶的管理群組。
+- 該訂用帳戶內的僅限**訂**用帳戶資源可指派原則定義給該訂用帳戶。
+- 只有**管理群組**-子管理群組和子訂用帳戶內的資源可以指派原則定義。 如果您打算將原則定義套用至多個訂用帳戶，則該位置必須是包含每個訂用帳戶的管理群組。
+
+如需詳細資訊，請參閱 [瞭解 Azure 原則中的範圍](./scope.md#definition-location)。
 
 ## <a name="policy-rule"></a>原則規則
 
@@ -576,16 +578,16 @@ Azure 原則支援下列類型的效果：
 下列函式可在原則規則中使用，但不同于在 Azure Resource Manager 範本中使用 (ARM 範本) ：
 
 - `utcNow()` 與 ARM 範本不同的是，此屬性可以在 _defaultValue_之外使用。
-  - 以通用 ISO 8601 日期時間格式 'yyyy-MM-ddTHH:mm:ss.fffffffZ' 傳回設定為目前日期和時間的字串
+  - 傳回字串，這個字串會設定為目前的日期和時間（採用通用 ISO 8601 日期時間格式） `yyyy-MM-ddTHH:mm:ss.fffffffZ` 。
 
 下列函式僅適用於原則規則：
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **dateTime**：[必要] 字串 - 通用 ISO 8601 日期時間 'yyyy-MM-ddTHH:mm:ss.fffffffZ' 中的字串
-  - **numberOfDaysToAdd**：[必要] 整數 - 要新增的天數
+  - **datetime**： [必要] 字串-採用通用 ISO 8601 dateTime 格式的字串 `yyyy-MM-ddTHH:mm:ss.fffffffZ` 。
+  - **numberOfDaysToAdd**： [必要] 整數-要加入的天數。
 - `field(fieldName)`
   - **fieldName**：[必要] 字串 - 要擷取的 [field](#fields) 名稱
-  - 從 If 條件所評估的資源中傳回該欄位的值
+  - 從要由 If 條件評估的資源傳回該欄位的值。
   - `field` 主要是與 **AuditIfNotExists** 和 **DeployIfNotExists** 搭配使用，以參考所評估資源上的欄位。 如需此用法的範例，請參閱 [DeployIfNotExists 範例](effects.md#deployifnotexists-example)。
 - `requestContext().apiVersion`
   - 傳回已觸發原則評估的要求 API 版本 (範例：`2019-09-01`)。
@@ -711,7 +713,7 @@ Azure 原則支援下列類型的效果：
 
 如需詳細資訊，請參閱[評估 [\*] 別名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - 請參閱 [計畫定義結構](./initiative-definition-structure.md)
 - 在 [Azure 原則範例](../samples/index.md)檢閱範例。

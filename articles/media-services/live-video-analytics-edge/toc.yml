@@ -51,6 +51,10 @@
         - name: 使用透過 HTTP 擴充功能的 OVMS
           displayName: 'intel, OpenVINO'
           href: use-intel-openvino-tutorial.md
+        - name: 使用自訂視覺
+          href: custom-vision-tutorial.md
+        - name: 使用空間分析
+          href: spatial-analysis-tutorial.md
 - name: 範例
   items:
     - name: C# 直接方法範例
@@ -89,6 +93,8 @@
       href: manage-recording-policy-how-to.md
     - name: 使用入口網站叫用直接方法
       href: use-azure-portal-to-invoke-direct-methods.md
+    - name: 在 Azure Stack Edge 上部署
+      href: deploy-azure-stack-edge-how-to.md
     - name: 疑難排解
       href: troubleshoot-how-to.md
 - name: 參考

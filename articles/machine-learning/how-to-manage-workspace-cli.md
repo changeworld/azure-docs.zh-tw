@@ -10,15 +10,15 @@ author: Blackmist
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cd9b891212010d7e61c4a4eb64d8bf0660bbd69a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cd9af35e5b616f3f4d72405078782e1e88414c98
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661645"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897349"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 建立 Azure Machine Learning 的工作區
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將了解如何使用 Azure CLI 建立 Azure Machine Learning 工作區。 Azure CLI 提供用來管理 Azure 資源的命令。 CLI 的這個機器學習延伸模組會提供命令，以便使用 Azure Machine Learning 資源。
 
@@ -35,7 +35,7 @@ ms.locfileid: "89661645"
 > [!IMPORTANT]
 > 如果您是使用 Azure Cloud Shell，則可以跳過本節。 Cloud Shell 會使用您登入 Azure 訂閱的帳戶，自動驗證您的身分。
 
-有數種方式可讓您從 CLI 向您的 Azure 訂閱進行驗證。 最基本的方式是使用瀏覽器，以互動方式進行驗證。 若要以互動方式進行驗證，請開啟命令列或終端機，並使用下列命令：
+有數種方式可讓您從 CLI 向您的 Azure 訂閱進行驗證。 最簡單的方式是使用瀏覽器，以互動方式進行驗證。 若要以互動方式進行驗證，請開啟命令列或終端機，並使用下列命令：
 
 ```azurecli-interactive
 az login
@@ -109,9 +109,6 @@ az group create --name <resource-group-name> --location <location>
 
 若要建立會在其中__自動建立服務__的新工作區，請使用下列命令：
 
-> [!TIP]
-> 本節中的命令會建立基本版工作區。 若要建立企業工作區，請將 `--sku enterprise` 參數與 `az ml workspace create` 命令搭配使用。 如需 Azure Machine Learning 版本的詳細資訊，請參閱[什麼是 Azure Machine Learning](overview-what-is-azure-ml.md#sku)。
-
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
 ```
@@ -161,7 +158,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 
 根據預設，工作區的計量和中繼資料會儲存在 Microsoft 所維護的 Azure Cosmos DB 實例中。 這項資料會使用 Microsoft 管理的金鑰進行加密。 
 
-如果您要建立 Azure Machine Learning 的 __企業__ 版，您可以使用 [提供您自己的金鑰]。 這麼做會建立 Azure Cosmos DB 實例，以在您的 Azure 訂用帳戶中儲存計量和中繼資料。 使用 `--cmk-keyvault` 參數來指定包含金鑰的 Azure Key Vault，並 `--resource-cmk-uri` 指定保存庫中金鑰的 URL。
+您可以使用 [提供您自己的金鑰]，而不是使用 Microsoft 管理的金鑰。 這麼做會建立 Azure Cosmos DB 實例，以在您的 Azure 訂用帳戶中儲存計量和中繼資料。 使用 `--cmk-keyvault` 參數來指定包含金鑰的 Azure Key Vault，並 `--resource-cmk-uri` 指定保存庫中金鑰的 URL。
 
 > [!IMPORTANT]
 > 使用 `--cmk-keyvault` 和參數之前 `--resource-cmk-uri` ，您必須先執行下列動作：

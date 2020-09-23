@@ -4,15 +4,16 @@ description: Azure Spring Cloud 的疑難排解指南
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: troubleshooting
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b34bd51e9d84629682565592c733b23a320597aa
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: d3094a8cca317e53dd3b8bc8e9b32b956c89a376
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669760"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904197"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>針對常見的 Azure 春季雲端問題進行疑難排解
 
@@ -20,6 +21,7 @@ ms.locfileid: "89669760"
 
 ## <a name="availability-performance-and-application-issues"></a>可用性、效能和應用程式問題
 
+::: zone pivot="programming-language-java"
 ### <a name="my-application-cant-start-for-example-the-endpoint-cant-be-connected-or-it-returns-a-502-after-a-few-retries"></a>我的應用程式無法啟動 (例如，端點無法連線，或在幾次重試之後傳回 502) 
 
 將記錄匯出至 Azure Log Analytics。 春季應用程式記錄的資料表名為 *AppPlatformLogsforSpring*。 若要深入瞭解，請參閱 [使用診斷設定來分析記錄和計量](diagnostic-services.md)。
@@ -67,6 +69,7 @@ ms.locfileid: "89669760"
 
 
 若要深入瞭解 Azure Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。
+::: zone-end
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>我的應用程式遇到高 CPU 使用量或高記憶體使用量
 
@@ -90,6 +93,7 @@ ms.locfileid: "89669760"
 
 若要深入瞭解 Azure Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。 使用 [Kusto 查詢語言](https://docs.microsoft.com/azure/kusto/query/)來查詢記錄。
 
+::: zone pivot="programming-language-java"
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>將您的春季應用程式部署到 Azure 春季雲端的檢查清單
 
 在您將應用程式上架之前，請確定它符合下列準則：
@@ -101,6 +105,7 @@ ms.locfileid: "89669760"
 * JVM 參數具有預期的值。
 * 建議您停用或移除應用程式封裝中的內嵌設定 _伺服器_ 和 _春季 Service Registry_ 服務。
 * 如果要透過_服務繫結_來繫結任何 Azure 資源，請確定目標資源已啟動且正在執行中。
+::: zone-end
 
 ## <a name="configuration-and-management"></a>設定和管理
 
@@ -119,6 +124,17 @@ ms.locfileid: "89669760"
 
 Azure 春季雲端服務實例的名稱將會用來在下要求子功能變數名稱稱 `azureapps.io` ，因此如果此名稱與現有的名稱衝突，則安裝程式將會失敗。 您可能會在活動記錄中找到更多詳細資料。
 
+::: zone pivot="programming-language-java"
+### <a name="i-cant-deploy-a-net-core-app"></a>我無法部署 .NET Core 應用程式
+
+您無法使用 Azure 入口網站或 Resource Manager 範本，為 .NET Core Steeltoe 應用程式上傳 *.zip 檔案。*
+
+當您使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)部署應用程式封裝時，Azure CLI 會定期輪詢部署進度，最後會顯示部署結果。
+
+確定您的應用程式是以正確的 *.zip* 檔案格式封裝。 如果未正確封裝，進程將會停止回應，否則您會收到錯誤訊息。
+::: zone-end
+
+::: zone pivot="programming-language-java"
 ### <a name="i-cant-deploy-a-jar-package"></a>我無法部署 JAR 套件
 
 您無法使用 Azure 入口網站或 Resource Manager 範本，將 JAVA 封存檔案 (JAR) /source 封裝上傳。
@@ -164,7 +180,7 @@ Azure 春季雲端服務實例的名稱將會用來在下要求子功能變數�
 > [!WARNING]
 > 此程式會使用您的測試端點來公開您的環境變數。  如果您的測試端點可公開存取，或您已將網域名稱指派給您的應用程式，則請勿繼續執行該作業。
 
-1. 移至 `https://<your application test endpoint>/actuator/health`。  
+1. 前往 `https://<your application test endpoint>/actuator/health`。  
     - 類似於 `{"status":"UP"}` 的回應會指出端點已啟用。
     - 如果回應是負面的，請在您的 *POM.xml* 檔案中包含下列相依性：
 
@@ -216,3 +232,8 @@ Azure 春季雲端服務實例的名稱將會用來在下要求子功能變數�
 ```
 
 如果您的應用程式記錄可以封存到儲存體帳戶，但不會傳送至 Azure Log Analytics，請查看您是否 [正確設定工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。 如果您是使用 Azure Log Analytics 的免費層，請注意， [免費層不提供服務等級協定 (SLA) ](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)。
+::: zone-end
+
+## <a name="next-steps"></a>下一步
+
+* [如何在 Azure 春季雲端中自行診斷和解決問題](spring-cloud-howto-self-diagnose-solve.md)

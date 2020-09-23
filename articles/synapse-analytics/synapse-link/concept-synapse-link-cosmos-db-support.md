@@ -6,15 +6,15 @@ author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: synapse-link
-ms.date: 04/21/2020
+ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7fbc7b1cb8119a6ee9403bf0139380aa5dcd0613
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: HT
+ms.openlocfilehash: 336409b8b6f804b224b87d5fb11fded0654b8619
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089119"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895525"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽) 支援的功能
 
@@ -24,30 +24,30 @@ ms.locfileid: "87089119"
 
 Azure Cosmos DB 中有兩種類型的容器：
 * HTAP 容器 - 已啟用 Synapse Link 的容器。 此容器同時具有交易存放區和分析存放區。 
-* OLTP 容器 - 僅具有交易存放區的容器；未啟用 Synapse Link。 
+* OLTP 容器-未啟用 Synaspe 連結的容器。 此容器只有交易式存放區，沒有分析存放區。
 
 > [!IMPORTANT]
-> 適用於 Azure Cosmos DB 的 Azure Synapse Link 現在支援未啟用受控虛擬網路的工作區。 
+> 在未啟用受控虛擬網路的 Synapse 工作區中，目前支援 Azure Cosmos DB 的 Azure Synapse 連結。 
 
-您可以在未啟用 Synapse Link 的情況下連線至 Azure Cosmos DB 的容器，此時，您只能讀取/寫入交易存放區。 接下來是適用於 Azure Cosmos DB 的 Synapse Link 中目前支援的功能清單。 
+您可以在未啟用 Synapse Link 的情況下連線至 Azure Cosmos DB 的容器，此時，您只能讀取/寫入交易存放區。 接下來是 Azure Cosmos DB Synapse 連結內目前支援的功能清單。 
 
 | 類別              | 描述 |[Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [SQL 無伺服器](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
-| -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| **執行階段支援** |支援 Azure Synapse 執行階段的讀取或寫入| ✓ | [與我們連絡](mailto:AskSynapse@microsoft.com?subject=[Enable%20Preview%20Feature]%20SQL%20serverless%20for%20Cosmos%20DB)|
-| **Azure Cosmos DB API 支援** |Synapse Link 形式的 API 支援| SQL/MongoDB | SQL/MongoDB |
-| **Object**  |可建立的物件 (如資料表)，直接指向 Azure Cosmos DB 容器| 檢視、資料表 | 檢視 |
-| **讀取**    |從 Azure Cosmos DB 容器讀取資料| OLTP/HTAP | HTAP  |
-| **寫入**   |將資料從執行階段寫入 Azure Cosmos DB 容器中| OLTP | n/a |
+| -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
+| **執行階段支援** |支援存取 Azure Cosmos DB 的 Azure Synapse 執行時間| ✓ | [與我們連絡](mailto:cosmosdbsynapselink@microsoft.com?subject=[Enable%20Preview%20Feature]%20SQL%20serverless%20for%20Cosmos%20DB) |
+| **Azure Cosmos DB API 支援** | 支援的 Azure Cosmos DB API 種類 | SQL/MongoDB | SQL/MongoDB |
+| **Object**  |可建立的物件 (如資料表)，直接指向 Azure Cosmos DB 容器| 資料框架、View、Table | 檢視 |
+| **讀取**    | 可讀取的 Azure Cosmos DB 容器類型 | OLTP/HTAP | HTAP  |
+| **寫入**   | Azure Synapse 執行時間可以用來將資料寫入 Azure Cosmos DB 容器 | 是 | 否 |
 
-* 如果您將資料從 Spark 寫入 Azure Cosmos DB 容器中，此程序將會透過 Azure Cosmos DB 的交易存放區來進行，且會因為使用要求單位而影響到 Azure Cosmos DB 的交易效能。
-* 目前不支援透過外部資料表的 SQL 集區整合。
+* 如果您將資料從 Spark 寫入 Azure Cosmos DB 容器中，這會透過 Azure Cosmos DB 的交易式存放區進行，並且會影響 Azure Cosmos DB 上的交易式工作負載效能，並耗用要求單位。
+* 目前不支援透過外部資料表進行 Synapse SQL 集區整合。
 
 ## <a name="supported-code-generated-actions-for-spark"></a>Spark 支援的程式碼產生動作
 
 | 手勢              | 描述 |OLTP |HTAP  |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
-| **載入至 DataFrame** |將資料載入和讀取至 Spark DataFrame |X| ✓ |
-| **建立 Spark 資料表** |建立指向 Azure Cosmos DB 容器的資料表|X| ✓ |
+| **載入至 DataFrame** |將資料載入和讀取至 Spark DataFrame |✓| ✓ |
+| **建立 Spark 資料表** |建立指向 Azure Cosmos DB 容器的資料表|✓| ✓ |
 | **將 DataFrame 寫入容器** |將資料寫入容器中|✓| ✓ |
 | **從容器載入串流 DataFrame** |使用 Azure Cosmos DB 變更摘要進行資料串流|✓| ✓ |
 | **將串流 DataFrame 寫入容器** |使用 Azure Cosmos DB 變更摘要進行資料串流|✓| ✓ |
@@ -58,8 +58,9 @@ Azure Cosmos DB 中有兩種類型的容器：
 
 | 手勢              | 描述 |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
-| **選取前 100 個** |預覽容器中的前 100 個項目|X| ✓ |
-| **建立檢視** |建立可透過 Synapse SQL 在容器中直接擁有 BI 存取權的檢視|X| ✓ |
+| **探索資料** |使用熟悉的 T-sql 語法和自動架構推斷，探索容器中的資料|X| ✓ |
+| **建立 views 和組建 BI 報表** |建立 SQL view，以透過 Synapse SQL 無伺服器直接存取 BI 的容器 |X| ✓ |
+| **聯結不同的資料來源以及 Cosmos DB 資料** | 使用 CETAS 將查詢的結果儲存在 Cosmos DB 容器中，以及使用 Azure Blob 儲存體或 Azure Data Lake Storage 中的資料來讀取資料 |X| ✓ |
 
 ## <a name="next-steps"></a>後續步驟
 

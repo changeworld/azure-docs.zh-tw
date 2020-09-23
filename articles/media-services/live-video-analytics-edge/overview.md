@@ -3,12 +3,12 @@ title: 何謂 IoT Edge 上的 Live Video Analytics - Azure
 description: 本主題提供 IoT Edge 上 Live Video Analytics 的概觀。 此平台提供的功能，可讓您用於增強 IoT 解決方案。 例如，擷取、錄製、分析即時影片，並將結果 (影片及 (或) 影片分析) 發佈至 Azure 服務。
 ms.topic: overview
 ms.date: 05/27/2020
-ms.openlocfilehash: 81a67322d0a5e524d75b9bf3e481be7157e09e63
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: b9b8726c5e8ad6850e05aeee48fccabee703080e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266792"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904351"
 ---
 # <a name="what-is-live-video-analytics-on-iot-edge-preview"></a>何謂 IoT Edge 上的 Live Video Analytics？ (預覽)
 
@@ -26,7 +26,10 @@ IoT Edge 上的 Live Video Analytics 設計成可延伸的平台，讓您可以�
 
 ## <a name="supported-environments"></a>支援的環境
 
-支援 Linux AMD64 與 X64 環境。
+支援 Linux x86-64 和 ARM64 環境。
+> [!NOTE]
+> `1.0.4` 和更新版本的組建中都有提供 ARM64 裝置的支援。
+> 在 ARM64 裝置上執行 Azure IoT Edge 執行階段的支援處於[公開預覽](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)狀態。
 
 ## <a name="get-started"></a>開始使用
 

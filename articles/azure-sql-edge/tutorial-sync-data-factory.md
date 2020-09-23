@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Data Factory 從 Azure SQL Edge (預覽) 同步資料
-description: 了解如何在 Azure SQL Edge (預覽) 與 Azure Blob 儲存體之間同步資料
+title: 使用 Azure Data Factory 從 Azure SQL Edge 同步資料
+description: 了解如何在 Azure SQL Edge 與 Azure Blob 儲存體之間同步資料
 keywords: SQL Edge, 從 SQL Edge 同步資料, SQL Edge 資料處理站
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 672c9f0d5403ae27a26d58617dca44f0f1121411
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255427"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904171"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>教學課程：使用 Azure Data Factory 將 SQL Edge 中的資料同步至 Azure Blob 儲存體
 

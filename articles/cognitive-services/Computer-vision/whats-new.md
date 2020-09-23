@@ -8,22 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 06/29/2020
+ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 0b432a224aa32edf762f6610990027451abe9acc
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: f007ddf2625bf9e8b9d4365902ac1511ea95fa81
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759201"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904091"
 ---
 # <a name="whats-new-in-computer-vision"></a>電腦視覺的新功能
 
 了解該服務的新功能。 這些項目可能是版本資訊、影片、部落格文章與其他類型的資訊。 將此頁面加入書籤，以掌握服務的最新狀態。
 
+## <a name="september-2020"></a>2020 年 9 月
+
+### <a name="spatial-analysis-container-preview"></a>Spatial 分析容器預覽
+
+[空間分析容器](spatial-analysis-container.md)目前為預覽狀態。 電腦視覺的空間分析功能可讓您分析即時串流影片，透過實體環境了解人員之間的空間關聯性，以及移動情況。 Spatial 分析是一種 Docker 容器，可供您用來執行內部部署。 
+
+### <a name="read-api-v31-public-preview-adds-ocr-for-japanese"></a>Read API v3.1 公開預覽版新增日文的 OCR
+電腦視覺的 Read API v3.1 公開預覽版新增了這些功能：
+* 日文 OCR
+* 指出每行文字的外觀是手寫或列印樣式，以及信賴分數 (僅限拉丁語言)。
+* 若文件包含多個頁面，則只會擷取選取的頁面或頁面範圍文字。
+
+* 此預覽版本的 Read API 支援英文、荷蘭文、法文、德文、義大利文、日文、葡萄牙文、簡體中文和西班牙文語言。
+
+若要深入了解，請參閱 [Read API 概觀](concept-recognizing-text.md)。
+
+> [!div class="nextstepaction"]
+> [深入了解 Read API v3.1 公開預覽 2](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)
+
 ## <a name="july-2020"></a>2020 年 7 月
 
-### <a name="read-api-v31-public-preview-adds-simplified-chinese-support"></a>Read API 3.1 公開預覽新增了簡體中文支援
+### <a name="read-api-v31-public-preview-with-ocr-for-simplified-chinese"></a>Read API 3.1 公開預覽版新增了簡體中文 OCR
 電腦視覺的 Read API v3.1 公開預覽新增了簡體中文的支援。
 
 * 此預覽版本的 Read API 支援英文、荷蘭文、法文、德文、義大利文、葡萄牙文、簡體中文和西班牙文語言。
@@ -31,7 +50,7 @@ ms.locfileid: "87759201"
 若要深入了解，請參閱 [Read API 概觀](concept-recognizing-text.md)。
 
 > [!div class="nextstepaction"]
-> [深入了解 Read API v3.1 公開預覽](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
+> [深入了解 Read API v3.1 公開預覽 1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>2020 年 5 月
 電腦視覺 API v3.0 已公開上市，並包含[讀取 API](concept-recognizing-text.md) 的更新：

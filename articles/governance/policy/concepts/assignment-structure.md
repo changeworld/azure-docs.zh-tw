@@ -1,14 +1,14 @@
 ---
 title: 原則指派結構的詳細資料
 description: 描述 Azure 原則用來將原則定義和參數關聯至資源以進行評估的原則指派定義。
-ms.date: 08/17/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 969274d72724c8d0a8f10f86f614fe2c50d066f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e930e9ddcc04846a35c8db7784a349007c71580b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520708"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904082"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure 原則指派結構
 
@@ -61,7 +61,7 @@ Azure 原則使用原則指派來定義哪些資源會指派給哪些原則或�
 
 這個屬性具有下列值：
 
-|[模式] |JSON 值 |類型 |手動補救 |活動記錄專案 |描述 |
+|模式 |JSON 值 |類型 |手動補救 |活動記錄專案 |描述 |
 |-|-|-|-|-|-|
 |啟用 |預設 |字串 |是 |是 |原則效果會在建立或更新資源期間強制執行。 |
 |已停用 |DoNotEnforce |字串 |是 |否 | 在建立或更新資源期間，不會強制執行原則效果。 |
@@ -70,7 +70,10 @@ Azure 原則使用原則指派來定義哪些資源會指派給哪些原則或�
 
 ## <a name="excluded-scopes"></a>排除的範圍
 
-指派的 **範圍** 包括所有子資源容器和子資源。 如果子資源容器或子資源不應套用定義，則可以藉由設定 **notScopes**將每個資源排除在評估之外。 這個屬性是一種陣列，可讓您從評估中排除一或多個資源容器或資源。 建立初始指派之後，可以新增或更新**notScopes** 。
+指派的 **範圍** 包括所有子資源容器和子資源。 如果子資源容器或子資源不應套用定義，則可以藉由設定**notScopes**將每個資源_排除_在評估之外。 這個屬性是一種陣列，可讓您從評估中排除一或多個資源容器或資源。 建立初始指派之後，可以新增或更新**notScopes** 。
+
+> [!NOTE]
+> _排除_的資源與_豁免_的資源不同。 如需詳細資訊，請參閱 [瞭解 Azure 原則中的範圍](./scope.md)。
 
 ## <a name="policy-definition-id"></a>原則定義識別碼
 

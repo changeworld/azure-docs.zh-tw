@@ -1,6 +1,6 @@
 ---
-title: '使用 SQL Database DACPAC 和 BACPAC 套件-Azure SQL Edge (Preview) '
-description: '瞭解如何在 Azure SQL Edge (預覽版中使用 dacpac 和 bacpac) '
+title: 使用 SQL Database DACPAC 和 BACPAC 套件-Azure SQL Edge
+description: 瞭解如何在 Azure SQL Edge 中使用 dacpac 和 bacpac
 keywords: SQL Edge, sqlpackage
 services: sql-edge
 ms.service: sql-edge
@@ -9,37 +9,29 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 52c8e9586d8ee53cdaac28cb1c48d2927d82c2ed
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6c8be6e67b1d7b919d6ea221c473c8975e559658
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462753"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887486"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>在 SQL Edge 中 SQL Database DACPAC 和 BACPAC 套件
 
-Azure SQL Edge (預覽) 是專為 IoT 和邊緣部署而準備的最佳化關聯式資料庫引擎。 這以最新版本的 Microsoft SQL Server 資料庫引擎為基礎所建置的，提供領先業界的效能、安全性和查詢處理功能。 除了 SQL Server 領先業界的關聯式資料庫管理功能，Azure SQL Edge 還提供內建的串流功能，以進行即時分析和複雜的事件處理。
+Azure SQL Edge 是專為 IoT 和邊緣部署而準備的最佳化關聯式資料庫引擎。 它是以最新版本的 Microsoft SQL Database 引擎為基礎，提供領先業界的效能、安全性和查詢處理功能。 除了 SQL Server 領先業界的關聯式資料庫管理功能，Azure SQL Edge 還提供內建的串流功能，以進行即時分析和複雜的事件處理。
 
-Azure SQL Edge 也提供 SqlPackage.exe 的原生執行，可讓您在部署 SQL Edge 期間部署 [SQL DATABASE DACPAC 和 BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) 套件。 您可以使用透過 SQL Edge 模組的 `module twin's desired properties` 選項公開的 SqlPackage 參數，將 SQL Database DACPAC 部署至 SQL Edge：
+Azure SQL Edge 也提供 SqlPackage.exe 的原生執行，可讓您在部署 SQL Edge 期間部署 [SQL DATABASE DACPAC 和 BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) 套件。 
 
-```json
-{
-    "properties.desired":
-    {
-        "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-        "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-    }
-}
-```
-
-|欄位 | 描述 |
-|------|-------------|
-| SqlPackage | 包含 SQL Database DAC 或 BACPAC 封裝的 *.zip* 檔案的 Azure BLOB 儲存體 URI。 Zip 檔案可以包含多個 dac 封裝或 bacpac 檔案。
-| ASAJobInfo | ASA Edge 作業的 Azure Blob 儲存體 URI。
+您可以使用環境變數，將 SQL Database dacpac 和 bacpac 封裝部署到 SQL Edge `MSSQL_PACKAGE` 。 您可以使用下列任何一項設定環境變數。  
+- SQL 容器內包含 dacpac 和 bacpac 檔案的本機資料夾位置。 您可以使用掛接點或資料磁片區容器，將此資料夾對應至主機磁片區。 
+- SQL 容器中指向 dacpac 或 bacpac 檔案的本機檔案路徑。 您可以使用掛接點或資料磁片區容器，將此檔案路徑對應到主機磁片區。 
+- SQL 容器內的本機檔案路徑，會對應至包含 dacpac 或 bacpac 檔案的 zip 檔案。 您可以使用掛接點或資料磁片區容器，將此檔案路徑對應到主機磁片區。 
+- 包含 dacpac 和 bacpac 檔案之 zip 檔案的 Azure Blob SAS URL。
+- Dacpac 或 bacpac 檔案的 Azure Blob SAS URL。 
 
 ## <a name="use-a-sql-database-dac-package-with-sql-edge"></a>搭配使用 SQL Database DAC 套件與 SQL Edge
 
-若要使用 SQL Database DAC 封裝 `(*.dacpac)` 或 BACPAC 檔案搭配 `(*.bacpac)` SQL Edge，請遵循下列步驟：
+若要 `(*.dacpac)` 使用 Azure Blob 儲存體和 zip 檔案部署 (或匯入) SQL DATABASE DAC 封裝或 BACPAC 檔案 `(*.bacpac)` ，請依照下列步驟執行。 
 
 1. 使用下面所述的機制建立/解壓縮 DAC 封裝或匯出 Bacpac 檔案。 
     - 建立或擷取 SQL Database DAC 套件。 如需如何為現有的 SQL Server 資料庫產生 DAC 套件的詳細資訊，請參閱[從資料庫擷取 DAC](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/)。
@@ -59,34 +51,22 @@ Azure SQL Edge 也提供 SqlPackage.exe 的原生執行，可讓您在部署 SQL
 
     4. 在 [IoT Edge 裝置]裝置頁面上，選取 [設定模組]。
 
-    5. 在 [設定模組] 頁面上，針對 SQL Edge 模組選取 [設定]。
+    5. 在 [ **設定模組** ] 頁面上，按一下 [Azure SQL Edge 模組]。
 
-    6. 在 [IoT Edge 自訂模組] 窗格中，選取 [設定模組對應項的所需屬性]。 更新所需的屬性，以包含 `SQLPackage` 選項的 URI，如下列範例所示。
+    6. 在 [ **更新 IoT Edge 模組** ] 窗格中，選取 [ **環境變數**]。 新增 `MSSQL_PACKAGE` 環境變數，並指定在上述步驟3中產生的 SAS URL 作為環境變數的值。 
 
-        > [!NOTE]
-        > 下列 JSON 中的 SAS URI 只是參考範例。 請以您部署中的實際 URI 取代 URI。
+    7. 選取 [更新]。
 
-        ```json
-            {
-                "properties.desired":
-                {
-                    "SqlPackage": "<<<SAS URL for the *.zip file containing the dacpac and/or the bacpac files",
-                }
-            }
-        ```
+    8. 在 [ **設定模組** ] 頁面上，選取 [ **審核 + 建立**]。
 
-    7. 選取 [儲存]。
+    9. 在 [ **設定模組** ] 頁面上，選取 [ **建立**]。
 
-    8. 在 [設定模組] 頁面上，選取 [下一步]。
+5. 模組更新之後，會下載、解壓縮套件檔案，並針對 SQL Edge 實例進行部署。
 
-    9. 在 [設定模組] 頁面上，選取 [下一步]，接著選取 [提交]。
-
-5. 模組更新之後，會針對 SQL Edge 實例下載、解壓縮和部署封裝檔案。
-
-每次重新開機 Azure SQL Edge 容器 `*.dacpac` 時，會下載並評估檔案套件的變更。 如果發現新版本的 dacpac 檔案，則會將變更部署到 SQL Edge 中的資料庫。 Bacpac 檔案 
+在每次重新開機 Azure SQL Edge 容器時，SQL Edge 都會嘗試下載 zip 壓縮檔案套件，並評估是否有變更。 如果發現新版本的 dacpac 檔案，則會將變更部署到 SQL Edge 中的資料庫。
 
 ## <a name="next-steps"></a>後續步驟
 
 - [透過 Azure 入口網站部署 SQL Edge](deploy-portal.md)。
 - [串流資料](stream-data.md)
-- [SQL Edge (預覽) 中採用 ONNX 的機器學習和 AI](onnx-overview.md)
+- [SQL Edge 中採用 ONNX 格式的機器學習和 AI](onnx-overview.md)

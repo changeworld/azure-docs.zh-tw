@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 7a4aa4cc545d6941f144ce0657ede7199d4f8f57
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 62f4a06ec729d896dc11a290bc7a5ccc7c321683
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497109"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984061"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>使用網路監看員和 Graylog 在 Azure 中管理和分析網路安全性群組流量記錄
 
@@ -30,7 +30,7 @@ ms.locfileid: "86497109"
 > [!Warning]
 > 下列步驟適用於流量記錄第 1 版。 如需詳細資訊，請參閱[網路安全性群組流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。 下列指示若未經修改，則不適用於第 2 版的記錄檔。
 
-## <a name="scenario"></a>情節
+## <a name="scenario"></a>狀況
 
 網路安全性群組流量記錄可使用網路監看員來啟用。 流量記錄會流入 Azure Blob 儲存體。 Logstash 外掛程式可用來從 Blob 儲存體連線和處理流量記錄，並將記錄傳送到 Graylog。 流量記錄儲存在 Graylog 後，就可供進行分析並於自訂儀表板中視覺化呈現。
 
@@ -186,11 +186,11 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
    請務必將輸入繫結至 Graylog 伺服器設定所在的 IP。 IP 位址應符合 Logstash 設定檔 UDP 輸出的 [主機]**** 欄位。 預設連接埠應為 12201**。 請確保連接埠符合 Logstash 設定檔所指定之 UDP 輸出中的 [連接埠]**** 欄位。
 
-   ![輸入](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
+   ![螢幕擷取畫面顯示 Graylog 輸入，以及啟動和尋找輸入的選項。](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
    在啟動輸入後，您應該就會看到它出現在 [本機輸入]**** 區段底下，如下圖所示：
 
-   ![顯示本機輸入區段的螢幕擷取畫面，其中包含您啟動的輸入。](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
+   ![顯示 [本機輸入] 區段的螢幕擷取畫面，其中包含您所啟動的輸入。](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
    若要深入了解 Graylog 訊息輸入，請參閱[文件](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs)。
 
@@ -200,11 +200,11 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 在給予 Graylog 伺服器一些時間來收集訊息之後，您就可以搜尋所有訊息。 若要檢查傳送給 Graylog 伺服器的訊息，請從 [輸入]**** 設定頁面中按一下您所建立之 GELF UDP 輸入的 [顯示所收到的訊息]**** 按鈕。 系統會將您導向至類似下圖的畫面： 
 
-![長條圖](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
+![螢幕擷取畫面顯示顯示搜尋結果、長條圖和訊息的 Graylog 伺服器。](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
 按一下藍色的 “%{Message}” 連結便可展開每個訊息，以顯示每個流量 Tuple 的參數，如下圖所示：
 
-![訊息](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
+![螢幕擷取畫面會顯示來自 Graylog 伺服器的訊息詳細資料。](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
 
 依預設，如果您沒有選取要搜尋特定的訊息欄位，則系統會在搜尋中包含所有訊息欄位。 如果您想要搜尋特定訊息 (亦即 來自特定來源 IP 的流量 Tuple)，則可以如[記載](https://docs.graylog.org/en/2.2/pages/queries.html)內容所述使用 Graylog 搜尋查詢語言
 
@@ -218,7 +218,7 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 2. 從該處按一下綠色的 [建立儀表板]**** 按鈕，然後在簡短的表單中填寫儀表板的標題和說明。 按 [儲存]**** 按鈕以建立新的儀表板。 您會看到類似下圖的儀表板：
 
-    ![儀表板](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
+    ![螢幕擷取畫面顯示 Graylog 伺服器儀表板，以及建立和編輯儀表板的選項。](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
 ### <a name="add-widgets"></a>新增小工具
 
@@ -244,6 +244,6 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 藉由整合網路監看員與 Graylog，您現在可以方便且集中地管理網路安全性群組流量記錄並加以視覺化。 Graylog 還有許多功能強大的功能 (例如資料流和警示)，可供您用來進一步管理流量記錄並深入了解您的網路流量。 您已經設定好 Graylog 並將其連線到 Azure，接下來請放心地繼續瀏覽它所提供的其他功能。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要了解如何利用 Power BI 將網路安全性群組流量記錄視覺化，請瀏覽 [利用 Power BI 將網路安全性群組流量記錄視覺化](network-watcher-visualize-nsg-flow-logs-power-bi.md)。

@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 6aa550a9c3f58fc7101e632bcd56800b27efc84e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 8119cbbb6619b923068723a6c855c04a8de48876
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185973"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904026"
 ---
 # <a name="quickstart-use-connectorc-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 Connector/C++ 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
 
@@ -57,7 +57,7 @@ ms.locfileid: "88185973"
 2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
 3. 按一下伺服器名稱。
 4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
- ![Azure Database for MySQL 伺服器名稱](./media/connect-cpp/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-cpp/1_server-overview-name-login.png" alt-text="Azure Database for MySQL 伺服器名稱":::
 
 ## <a name="connect-create-table-and-insert-data"></a>連線、建立資料表及插入資料
 使用下列程式碼搭配 **CREATE TABLE** 和 **INSERT INTO** SQL 陳述式來連線和載入資料。 此程式碼使用 sql::Driver 類別搭配 connect() 方法來建立 MySQL 連線。 然後，程式碼會使用 createStatement() 和 execute() 方法來執行資料庫命令。 

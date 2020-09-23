@@ -11,28 +11,28 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: a9ae3d2789758d03405fb5be82181c799d1ea692
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: c86397b20a95f045ac5edfeb2cfa4833982df990
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141120"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897414"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>管理及增加 Azure Machine Learning 資源的配額
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將瞭解適用于您的[Azure Machine Learning](overview-what-is-azure-ml.md)訂用帳戶的 Azure 資源預先設定的限制，以及您可以管理的配額。 設置這些限制可防止因詐欺而導致的預算超支，並遵循 Azure 的容量條件約束。 
+
+在本文中，您將瞭解針對 [Azure Machine Learning](overview-what-is-azure-ml.md) 訂用帳戶預先設定的 Azure 資源限制，以及您可以管理的配額。 設置這些限制可防止因詐欺而導致的預算超支，並遵循 Azure 的容量條件約束。 
 
 如同使用其他 Azure 服務，對於與 Azure Machine Learning 相關聯的特定資源有一些限制。 這些限制的範圍，包括[工作區](concept-workspace.md)數目上限，到用於模型訓練或推斷/評分的實際基礎計算上的限制。 
 
 當您為生產工作負載設計和調整 Azure Machine Learning 資源時，請考慮這些限制。 例如，如果您的叢集未達到目標節點數目，表示您可能已達到訂用帳戶的 Azure Machine Learning Compute 核心限制。 如果您想要將限制或配額提升到預設限制以上，您可以免費提出線上客戶支援要求。 由於 Azure 容量有其條件約束，您無法將限制提升至高於下表所示的「上限」值。 如果沒有上限欄，資源即沒有可調整的限制。
 
 
-除了管理配額，您也可以瞭解如何[規劃 & 管理 Azure Machine Learning 的成本](concept-plan-manage-cost.md)。
+除了管理配額，您也可以瞭解如何 [規劃 & 管理 Azure Machine Learning 的成本](concept-plan-manage-cost.md)。
 
 ## <a name="special-considerations"></a>特殊考量
 
-+ 配額是一種信用限制，不是容量保證。 如果您有大規模的容量需求，請連絡 Azure 支援。 您也可以[增加您的配額](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)。
++ 配額是一種信用限制，不是容量保證。 如果您有大規模的容量需求，請連絡 Azure 支援。 您也可以 [增加配額](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)。
 
 + 您的配額會由訂用帳戶中的所有服務所共用，包括 Azure Machine Learning。 唯一的例外是 Azure Machine Learning Compute，它具有核心計算配額以外的個別配額。 當評估您的容量需求時，請務必計算所有服務的配額使用量。
 
@@ -46,7 +46,7 @@ ms.locfileid: "88141120"
 > 限制日後有可能會變更。 最新的限制隨時可在適用於全 Azure 的服務層級配額[文件](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/)中找到。
 
 ### <a name="virtual-machines"></a>虛擬機器
-針對每個 Azure 訂用帳戶，您的服務或獨立的虛擬機器數目會受到限制。 虛擬機器核心具有個別強制執行的區域總數限制，以及區域的每個大小系列 (Dv2、F 等等) 限制。 例如，請考慮美國東部訂用帳戶的總計 VM 核心限制為 30、A 系列核心限制為 30，和 D 系列核心限制為 30。 此訂用帳戶會允許部署 30 個 A1 VM、30 個 D1 VM，或是兩個的組合，總計不超過 30 個核心 (例如 10 個 A1 VM 和 20 個 D1 VM)。
+針對每個 Azure 訂用帳戶，您的服務或獨立的虛擬機器數目會有所限制。 虛擬機器核心具有個別強制執行的區域總數限制，以及區域的每個大小系列 (Dv2、F 等等) 限制。 例如，請考慮美國東部訂用帳戶的總計 VM 核心限制為 30、A 系列核心限制為 30，和 D 系列核心限制為 30。 此訂用帳戶會允許部署 30 個 A1 VM、30 個 D1 VM，或是兩個的組合，總計不超過 30 個核心 (例如 10 個 A1 VM 和 20 個 D1 VM)。
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
@@ -83,7 +83,7 @@ ms.locfileid: "88141120"
 ### <a name="container-instances"></a>容器執行個體
 
 針對您在指定期間 (以每小時為範圍) 或整個訂用帳戶中可以啟動的容器執行個體數目也有限制。
-如需限制，請參閱[容器實例限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)。
+如需相關限制，請參閱 [容器實例限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)。
 
 ### <a name="storage"></a>儲存體
 針對每個區域以及指定的訂用帳戶中的儲存體帳戶數目有限制。 預設限制為 250 個，包括標準與進階儲存體帳戶兩者。 如果您在指定區域需要超過 250 個儲存體帳戶，請透過 [Azure 支援](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)提出要求。 Azure 儲存體小組將會檢閱您的商務案例，而且可以針對指定區域核准多達 250 個儲存體帳戶。
@@ -99,8 +99,6 @@ ms.locfileid: "88141120"
 
 
 > [!NOTE]
-> 這只是企業版功能。 如果您的訂用帳戶中同時有[基本版和企業版](overview-what-is-azure-ml.md#sku)工作區，您只能使用此功能來設定企業版工作區的配額。 您的基本版工作區會繼續擁有訂用帳戶層級配額，這是預設行為。
->
 > 您需要訂用帳戶層級的權限，才能在工作區層級上設定配額。 這是強制執行的設定，如此一來，個別的工作區擁有者就不會編輯或增加其配額，也不會開始侵占為另一個工作區保留的資源。 因此，訂用帳戶管理員最適合在各工作區之間配置和散發這些配額。
 
 
@@ -126,7 +124,7 @@ ms.locfileid: "88141120"
 
 2. 從訂用帳戶清單中，選取您要尋找其配額的訂用帳戶。
 
-3. 選取 [**使用量 + 配額**] 以查看目前的配額限制和使用量。 使用篩選器來選取提供者和位置。 
+3. 選取 [ **使用量 + 配額** ] 以查看目前的配額限制和使用量。 使用篩選器來選取提供者和位置。 
 
 ## <a name="request-quota-increases"></a>要求增加配額
 

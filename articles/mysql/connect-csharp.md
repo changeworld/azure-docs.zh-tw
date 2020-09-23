@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: b5e024536cdd0829435b9676501b21bc99fff49a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6c1cc658708a8429e635d23a058a784f6fc4ef05
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020043"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904014"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 .NET (C#) 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
 
@@ -49,7 +49,7 @@ dotnet add package MySqlConnector
 2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
 3. 按一下伺服器名稱。
 4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
- ![Azure Database for MySQL 伺服器名稱](./media/connect-csharp/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-csharp/1_server-overview-name-login.png" alt-text="Azure Database for MySQL 伺服器名稱":::
 
 ## <a name="connect-create-table-and-insert-data"></a>連線、建立資料表及插入資料
 使用下列程式碼搭配 `CREATE TABLE` 和 `INSERT INTO` SQL 陳述式來連線及載入資料。 此程式碼使用 `MySqlConnection` 類別搭配 [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) 方法來建立 MySQL 連線。 然後，程式碼會使用 [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) 方法，設定 CommandText 屬性，並呼叫 [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) 方法來執行資料庫命令。 

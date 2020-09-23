@@ -11,15 +11,15 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: d30fe5f8adccba81baf8bfe1070f95a890d1dc7a
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 757646a1630443f297d4b7c538721e9facdc130c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649443"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897430"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning (預覽中的模型可解譯性) 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 ## <a name="overview-of-model-interpretability"></a>模型可解譯性總覽
 
@@ -117,7 +117,7 @@ ms.locfileid: "89649443"
 您可以從遠端執行 Azure Machine Learning 計算的說明，並將說明資訊記錄到 Azure Machine Learning 的執行歷程記錄服務中。 記錄這項資訊之後，就可以在 Azure Machine Learning studio 進行使用者分析，立即取得說明中的報表和視覺效果。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - 請參閱 [如何](how-to-machine-learning-interpretability-aml.md) 在本機和 Azure Machine Learning 遠端計算資源上啟用模型定型的可解譯性。 
 - 如需其他案例，請參閱 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) 。 

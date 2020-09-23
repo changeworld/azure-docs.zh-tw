@@ -11,16 +11,16 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d60a6f9032a39ab4889ce0db154739c5cb3b540b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 726be3f0f8402404d0154336aaf7d5f09fefec10
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070491"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967464"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>建立支援資料表和佇列之客戶管理金鑰的帳戶
 
-Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設，佇列儲存體和資料表儲存體會使用範圍為服務且由 Microsoft 管理的金鑰。 您也可以選擇使用客戶管理的金鑰來加密佇列或資料表資料。 若要將客戶管理的金鑰與佇列和資料表搭配使用，您必須先建立儲存體帳戶，以使用範圍為該帳戶的加密金鑰，而不是服務。 建立使用佇列和資料表資料帳戶加密金鑰的帳戶之後，您可以使用該儲存體帳戶的 Azure Key Vault 來設定客戶管理的金鑰。
+Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設，佇列儲存體和資料表儲存體會使用範圍為服務且由 Microsoft 管理的金鑰。 您也可以選擇使用客戶管理的金鑰來加密佇列或資料表資料。 若要將客戶管理的金鑰與佇列和資料表搭配使用，您必須先建立儲存體帳戶，以使用範圍為該帳戶的加密金鑰，而不是服務。 建立使用佇列和資料表資料帳戶加密金鑰的帳戶之後，您可以為該儲存體帳戶設定客戶管理的金鑰。
 
 本文說明如何建立相依于帳戶範圍之金鑰的儲存體帳戶。 第一次建立帳戶時，Microsoft 會使用帳戶金鑰來加密帳戶中的資料，而 Microsoft 會管理金鑰。 接著，您可以為帳戶設定客戶管理的金鑰，以利用這些權益，包括提供您自己的金鑰、更新金鑰版本、輪替金鑰，以及撤銷存取控制的能力。
 
@@ -215,11 +215,7 @@ az storage account create \
 
 ---
 
-建立依賴帳戶加密金鑰的帳戶之後，請參閱下列其中一篇文章，以 Azure Key Vault 設定客戶管理的金鑰：
-
-- [在 Azure 入口網站中使用 Azure Key Vault 設定客戶自控金鑰](storage-encryption-keys-portal.md)
-- [使用 PowerShell 以 Azure Key Vault 設定客戶管理的金鑰](storage-encryption-keys-powershell.md)
-- [使用 Azure CLI 以 Azure Key Vault 設定客戶管理的金鑰](storage-encryption-keys-cli.md)
+建立依賴帳戶加密金鑰的帳戶之後，您可以設定客戶管理的金鑰，這些金鑰會儲存在 Azure Key Vault 或 Key Vault 受控硬體安全性模型 (HSM)  (preview) 中。 若要瞭解如何將客戶管理的金鑰儲存在金鑰保存庫中，請參閱 [使用儲存在 Azure Key Vault 中的客戶管理金鑰來設定加密](customer-managed-keys-configure-key-vault.md)。 若要瞭解如何將客戶管理的金鑰儲存在受控 HSM 中，請參閱 [使用儲存在 Azure Key Vault 受控 hsm (preview) 中的客戶管理金鑰來設定加密 ](customer-managed-keys-configure-key-vault-hsm.md)。
 
 ## <a name="verify-the-account-encryption-key"></a>確認帳戶加密金鑰
 
@@ -254,5 +250,6 @@ N/A
 
 ## <a name="next-steps"></a>後續步驟
 
-- [待用資料的 Azure 儲存體加密](storage-service-encryption.md) 
+- [待用資料的 Azure 儲存體加密](storage-service-encryption.md)
+- [Azure 儲存體加密的客戶管理金鑰](customer-managed-keys-overview.md)
 - [什麼是 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)？

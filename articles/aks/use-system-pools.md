@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b8d985587dc436d55e17c69e25295b5a58cb15b0
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 2cb6ed265d3e94c2c162381dfb80ba0c5427a71f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647491"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888955"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>管理 Azure Kubernetes Service (AKS) 中的系統節點集區
 
-在 Azure Kubernetes Service (AKS) 中，相同設定的節點會一起分組到 *節點*集區中。 節點集區包含執行應用程式的基礎 Vm。 系統節點集區和使用者節點集區是 AKS 叢集的兩個不同節點集區模式。 系統節點集區提供裝載重要系統 pod （例如 CoreDNS 和 tunnelfront）的主要用途。 使用者節點集區提供裝載應用程式 pod 的主要用途。 但是，如果您想要在 AKS 叢集中只有一個集區，則可以在系統節點集區上排程應用程式 pod。 每個 AKS 叢集至少必須包含一個具有至少一個節點的系統節點集區。
+在 Azure Kubernetes Service (AKS) 中，相同設定的節點會一起分組到 *節點*集區中。 節點集區包含執行應用程式的基礎 Vm。 系統節點集區和使用者節點集區是 AKS 叢集的兩個不同節點集區模式。 系統節點集區提供裝載重要系統 pod （例如和）的主要用途 `CoreDNS` `metrics-server` 。 使用者節點集區提供裝載應用程式 pod 的主要用途。 但是，如果您想要在 AKS 叢集中只有一個集區，則可以在系統節點集區上排程應用程式 pod。 每個 AKS 叢集至少必須包含一個具有至少一個節點的系統節點集區。
 
 > [!Important]
 > 如果您在生產環境中為您的 AKS 叢集執行單一系統節點集區，建議您針對節點集區使用至少三個節點。
@@ -164,7 +164,7 @@ az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 > [!Note]
 > 若要在 API 2020-03-02 版之前使用 AKS 叢集上的系統節點集區，請新增系統節點集區，然後刪除原始的預設節點集區。
 
-先前您無法刪除系統節點集區，這是 AKS 叢集中的初始預設節點集區。 您現在可以彈性地從您的叢集刪除任何節點集區。 因為 AKS 叢集需要至少一個系統節點集區，所以您的 AKS 叢集上必須至少有兩個系統節點集區，才能刪除其中一個。
+您必須在 AKS 叢集上至少有兩個系統節點集區，才能刪除其中一個。
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
@@ -180,7 +180,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已瞭解如何建立和管理 AKS 叢集中的系統節點集區。 如需有關如何使用多個節點集區的詳細資訊，請參閱 [使用多個節點][use-multiple-node-pools]集區。
 
