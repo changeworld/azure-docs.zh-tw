@@ -4,15 +4,15 @@ description: 瞭解啟用新的 Azure 監視器 Application Insights 以工作�
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783836"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894534"
 ---
-# <a name="workspace-based-application-insights-resources-preview"></a>工作區型 Application Insights 資源 (預覽)
+# <a name="workspace-based-application-insights-resources"></a>工作區型 Application Insights 資源
 
 工作區型的資源支援 Application Insights 與 Log Analytics 之間的完整整合。 您現在可以選擇將您的 Application Insights 遙測傳送到通用 Log Analytics 工作區，讓您能夠完整存取 Log Analytics 的所有功能，同時將應用程式、基礎結構、平台記錄保留在合併的單一位置。
 
@@ -21,7 +21,19 @@ ms.locfileid: "88783836"
 > [!NOTE]
 > 工作區型 Application Insights 資源的資料內嵌和保留會透過資料所在的 Log Analytics 工作區來計費。 [深入瞭解]( ./pricing.md#workspace-based-application-insights)工作區型 Application Insights 資源的計費。
 
-若要測試新的體驗，請登入 [Azure 入口網站](https://portal.azure.com)，並建立 Application Insights 資源：
+## <a name="new-capabilities"></a>新功能
+
+以工作區為基礎的 Application Insights 可讓您充分利用 Azure 監視器和 Log Analytics 的最新功能，包括：
+
+* [客戶管理的金鑰 (CMK) ](../platform/customer-managed-keys.md) 使用只有您可以存取的加密金鑰，為您的資料提供靜態加密。
+* [Azure 私人連結](../platform/private-link-security.md)可讓您使用私人端點，將 Azure PaaS 服務安全地連結至您的虛擬網路。
+* 使用[您自己的儲存體 (分析工具的 BYOS) ，快照偵錯工具](./profiler-bring-your-own-storage.md)可讓您完整掌控靜態加密原則、存留期管理原則，以及與 Application Insights Profiler 和快照偵錯工具相關聯之所有資料的網路存取。 
+* 相較于隨用隨付價格，[容量保留層](../platform/manage-cost-storage.md#pricing-model)可讓您節省最多25% 的費用。 
+* 透過 Log Analytics 串流內嵌加快資料內嵌的速度。
+
+## <a name="create-workspace-based-resource"></a>建立以工作區為基礎的資源
+
+登入 [Azure 入口網站](https://portal.azure.com)，並建立 Application Insights 資源：
 
 ![工作區型 Application Insights 資源](./media/create-workspace-resource/create-workspace-based.png)
 
@@ -36,7 +48,7 @@ ms.locfileid: "88783836"
 按一下藍色連結文字會帶您前往相關聯的 Log Analytics 工作區，您可以在其中利用新的整合工作區查詢環境。
 
 > [!NOTE]
-> 我們仍然會針對 Application Insights 體驗中的 Application Insights 傳統資源查詢、活頁簿、記錄型警示，提供完整的回溯相容性。 若要針對[新的工作區型資料表結構/結構描述](apm-tables.md)進行查詢/檢視，您必須先瀏覽至您的 Log Analytics 工作區。 在預覽期間，從 Application Insights 窗格中選取 [記錄]，可讓您存取傳統 Application Insights 查詢體驗。
+> 我們仍然會針對 Application Insights 體驗中的 Application Insights 傳統資源查詢、活頁簿、記錄型警示，提供完整的回溯相容性。 若要針對[新的工作區型資料表結構/結構描述](apm-tables.md)進行查詢/檢視，您必須先瀏覽至您的 Log Analytics 工作區。 從 Application Insights 窗格中選取 **記錄 (分析) ** 可讓您存取傳統 Application Insights 查詢體驗。
 
 ## <a name="copy-the-connection-string"></a>複製連接字串
 
@@ -185,14 +197,6 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 ```
 
-## <a name="new-capabilities"></a>新功能
-
-以工作區為基礎的 Application Insights 可讓您充分利用 Azure 監視器的所有最新功能，包括：
-
-* [客戶管理的金鑰 (CMK) ](../platform/customer-managed-keys.md) 使用只有您可以存取的加密金鑰，為您的資料提供靜態加密。
-* [Azure 私人連結](../platform/private-link-security.md)可讓您使用私人端點，將 Azure PaaS 服務安全地連結至您的虛擬網路。
-* 使用[您自己的儲存體 (分析工具的 BYOS) ，快照偵錯工具](./profiler-bring-your-own-storage.md)可讓您完整掌控靜態加密原則、存留期管理原則，以及與 Application Insights Profiler 和快照偵錯工具相關聯之所有資料的網路存取。 
-
 ## <a name="modifying-the-associated-workspace"></a>修改相關聯的工作區
 
 一旦建立了工作區型 Application Insights 資源，您就可以修改相關聯的 Log Analytics 工作區。
@@ -207,8 +211,3 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 * [探索度量](../platform/metrics-charts.md)
 * [撰寫分析查詢](../log-query/log-query-overview.md)
-
-[api]: ./api-custom-events-metrics.md
-[diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
-[start]: ./app-insights-overview.md

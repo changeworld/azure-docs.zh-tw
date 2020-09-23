@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014586"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982977"
 ---
 # <a name="troubleshoot"></a>疑難排解
 
@@ -37,7 +37,7 @@ ms.locfileid: "89014586"
 
 ## <a name="retrieve-sessionconversion-status-fails"></a>取得會話/轉換狀態失敗
 
-傳送 REST API 命令太頻繁，最後會導致伺服器節流並傳回失敗。 節流案例中的 HTTP 狀態碼為 429 ( 「太多要求」 ) 。 根據經驗法則， **後續呼叫之間**應該會有5-10 秒的延遲。
+傳送 REST API 命令太頻繁，最後會導致伺服器節流並傳回失敗。 節流案例中的 HTTP 狀態碼為 429 ( 「太多要求」 ) 。 根據經驗法則，**後續的呼叫之間應該會有 5-10 秒**的延遲。
 
 請注意，這項限制不只會影響直接呼叫的 REST API 呼叫，同時也會影響其 c #/C + + 對應專案，例如 `Session.GetPropertiesAsync` 、 `Session.RenewAsync` 或 `Frontend.GetAssetConversionStatusAsync` 。
 
@@ -156,7 +156,8 @@ Azure 遠端轉譯會在 Unity 轉譯管線中執行勾點，組合影片的畫�
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>在模型載入之後轉譯棋盤模式
 
-如果呈現的影像看起來像這樣：棋盤之後，轉譯器就會叫用 ![ ](../reference/media/checkerboard.png) [標準設定大小的多邊形限制](../reference/vm-sizes.md)。 若要減輕問題，請切換至 **premium** 設定大小或減少可見的多邊形數目。
+如果呈現的影像看起來像這樣： ![ 螢幕擷取畫面顯示具有 [工具] 功能表的黑色和白色方塊方格。](../reference/media/checkerboard.png)
+然後，轉譯器會達到 [標準設定大小的多邊形限制](../reference/vm-sizes.md)。 若要減輕問題，請切換至 **premium** 設定大小或減少可見的多邊形數目。
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Unity 中轉譯的影像是倒置的
 
@@ -216,7 +217,7 @@ Azure 遠端轉譯會在 Unity 轉譯管線中執行勾點，組合影片的畫�
 
 ARR 有一項功能，可用來判斷表面是否可以進行 z 打擊：棋盤反白 [顯示](../overview/features/z-fighting-mitigation.md)。 您也可以在視覺上判斷造成 z 向的原因。 下列第一個動畫顯示距離的深度精確度遺失範例，而第二個動畫顯示近接面表面的範例：
 
-![深度-精確度-z-對抗](./media/depth-precision-z-fighting.gif)  ![共迭-z-對抗](./media/coplanar-z-fighting.gif)
+![動畫顯示距離的深度精確度遺失範例。](./media/depth-precision-z-fighting.gif)  ![動畫顯示將近共面表面的範例。](./media/coplanar-z-fighting.gif)
 
 將這些範例與您的 z 進行比較，以判斷原因，或選擇性地遵循這個逐步工作流程：
 

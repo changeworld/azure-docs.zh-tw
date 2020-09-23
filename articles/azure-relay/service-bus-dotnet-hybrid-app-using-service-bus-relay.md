@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 轉送將內部部署 WCF 服務公開至�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: d6299899ee45bbad8b5e5fdbca01805604794d62
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922543"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983890"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>使用 Azure 轉送將內部部署 WCF 服務公開至雲端中的 Web 應用程式
 
@@ -51,7 +51,7 @@ ms.locfileid: "88922543"
 
 在本教學課程中，您將建立 ASP.NET 網站，讓您可在產品庫存頁面上看到產品清單。
 
-![案例][0]
+![狀況][0]
 
 此教學課程假設您有現有內部部署系統中的產品資訊，並使用 Azure 轉送來連接該系統。 在簡單的主控台應用程式中執行的 web 服務會模擬這種情況。 它包含一組記憶體中的產品。 您可以在自己的電腦上執行此主控台應用程式，並將 web 角色部署至 Azure。 如此一來，您將會看到在 Azure 資料中心內執行的 web 角色如何呼叫您的電腦。 即使您的電腦幾乎絕對是在一個防火牆後方，以及 (NAT) 層的網路位址轉譯，還是會發生此呼叫。
 
@@ -344,7 +344,7 @@ ms.locfileid: "88922543"
 
 您的應用程式應該就會出現在瀏覽器中並正在執行。
 
-![Web 應用程式][21]
+![螢幕擷取畫面顯示在瀏覽器中以反白顯示 URL 執行的應用程式範例。][21]
 
 ## <a name="put-the-pieces-together"></a>組合在一起
 

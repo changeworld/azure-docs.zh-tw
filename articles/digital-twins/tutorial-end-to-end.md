@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: b22505d5152b005a054d36fafb965006d04b201e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0b7e277518337072659bf5ccddd3436c05ff5201
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401770"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563789"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教學課程：建置端對端解決方案
 
@@ -162,13 +162,13 @@ Query
 
 在 Azure Cloud Shell 中，使用下列命令，設定函式應用程式將用以參考 Azure Digital Twins 執行個體的應用程式設定。
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 使用下列命令建立系統管理的身分識別。 記下輸出中的 *principalId* 欄位。
 
-```azurecli-interactive
+```azurecli
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
@@ -203,7 +203,7 @@ Azure Digital Twins 的設計指在搭配 [IoT 中樞](../iot-hub/about-iot-hub.
 
 在 Azure Cloud Shell 中，使用此命令建立新的 IoT 中樞：
 
-```azurecli-interactive
+```azurecli
 az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku S1
 ```
 
@@ -242,7 +242,7 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 
 在 Azure Cloud Shell 中，使用下列命令在 IoT 中樞中建立裝置：
 
-```azurecli-interactive
+```azurecli
 az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-hub-name> -g <your-resource-group>
 ```
 
@@ -330,7 +330,7 @@ ObserveProperties thermostat67 Temperature
 
 在 Azure Cloud Shell 中執行下列命令，以建立事件方格主題：
 
-```azurecli-interactive
+```azurecli
 az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-grid-topic> -l <region>
 ```
 
@@ -441,7 +441,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 > [!IMPORTANT]
 > 刪除資源群組是無法回復的動作。 資源群組和其中包含的所有資源都將永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 
 
-```azurecli-interactive
+```azurecli
 az group delete --name <your-resource-group>
 ```
 

@@ -10,20 +10,17 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: d11df9bae954dc654e22157639b74e5ca2363494
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f68867a7b24e9c5d8dafa0da65209e14eeae5210
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047863"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896464"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教學課程：在 Azure Machine Learning 中使用自動化 ML 建立分類模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-在本教學課程中，您會了解如何使用 Azure Machine Learning Studio 中的自動化機器學習，建立基本的分類模型，而不需要撰寫任何一行程式碼。 此分類模型會建立分類模型來預測客戶是否會向金融機構申請定期存款。
 
->[!IMPORTANT]
-> Azure Machine Learning 工作室中的自動化機器學習體驗目前處於預覽狀態。 可能不支援特定功能，或功能受到限制。
+在本教學課程中，您會了解如何使用 Azure Machine Learning Studio 中的自動化機器學習，建立簡單的分類模型，而不需要撰寫任何一行程式碼。 此分類模型會建立分類模型來預測客戶是否會向金融機構申請定期存款。
 
 透過自動化機器學習，您可以將耗費大量時間的工作自動化。 自動化機器學習會快速地逐一嘗試多種演算法和超參數的組合，協助您根據所選擇的成功計量找到最佳模型。
 
@@ -47,9 +44,9 @@ ms.locfileid: "87047863"
 
 Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機器學習模型的基礎資源。 工作區可將您的 Azure 訂用帳戶和資源群組與服務中容易使用的物件結合。 
 
-透過 Azure 入口網站建立 **Enterprise Edition** 工作區 (管理 Azure 資源的 Web 型主控台)。
+透過 Azure 入口網站建立工作區 (管理 Azure 資源的 Web 型主控台)。
 
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
+[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
 > 記下您的**工作區**和**訂用帳戶**。 您會需要這些項目，以確保您在正確位置建立實驗。 
@@ -104,7 +101,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
         資料行標題| 指出資料集標題 (如果有的話) 的處理方式。| All files have same headers (所有檔案都有相同的標頭)
         Skip rows (略過資料列) | 指出資料集內略過多少資料列 (如果有的話)。| None
 
-    1. [Schema] \(結構描述\) 表單可讓您進一步設定此實驗的資料。 針對此範例，請選取 [day_of_week] 特徵的切換開關，如此一來，就不會將它包含在此實驗中。 選取 [下一步]  。
+    1. [Schema] \(結構描述\) 表單可讓您進一步設定此實驗的資料。 針對此範例，請選取 [day_of_week] 特徵的切換開關，如此一來，就不會將它包含在此實驗中。 選取 [下一步] 。
 
         ![預覽索引標籤的設定](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
 

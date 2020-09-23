@@ -1,5 +1,5 @@
 ---
-title: 教學課程：使用設計工具預測汽車價格 (預覽)
+title: 教學課程：使用設計工具預測汽車價格
 titleSuffix: Azure Machine Learning
 description: 了解如何使用拖放介面進行機器學習模型的定型、評分和部署。 本教學課程是使用線性迴歸預測汽車價格相關系列的第一部分 (共兩個部分)。
 author: peterclu
@@ -10,15 +10,15 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 55d950435522a18eafda69d152619426fe54d87f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812978"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896708"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教學課程：使用設計工具預測汽車價格 (預覽)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>教學課程：使用設計工具預測汽車價格
+
 
 在這個分成兩部分的教學課程中，您將了解如何使用 Azure Machine Learning 設計工具來訓練及部署預測可預測任何汽車價格的機器學習模型。 設計工具是一項拖放工具，可讓您建立機器學習模型，而且不需要任何一行程式碼。
 
@@ -49,10 +49,6 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 ### <a name="create-a-new-workspace"></a>建立新的工作區
 
 若要使用設計工具，您首先需要 Azure Machine Learning 工作區。 工作區是 Azure Machine Learning 的最上層資源，其提供一個集中位置來處理您在 Azure Machine Learning 中建立的所有成品。
-
-如果您有企業版 Azure Machine Learning 工作區，請[跳至下一節](#create-the-pipeline)。
-
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>建立管線
 
@@ -94,7 +90,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 設計工具中包含數個範例資料集，可供您在實驗時使用。 在本教學課程中，使用**汽車價格資料 (未經處理)** 。 
 
-1. 管線畫布左側是資料集和模組的選擇區。 選取 [資料集]，然後選取 [範例] 區段以檢視可用的範例資料集。
+1. 管線畫布左側是資料集和模組的選擇區。 選取 [範例資料集] 以查看可用的範例資料集。
 
 1. 選取資料集**汽車價格資料 (原始)** ，並將其拖曳到畫布上。
 
