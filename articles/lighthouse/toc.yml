@@ -101,6 +101,8 @@
     - name: Azure 原則內建
       displayName: 'samples, policies, definitions'
       href: ./samples/policy-reference.md
+    - name: Terraform
+      href: 'https://www.terraform.io/docs/providers/azurerm/r/lighthouse_assignment.html'
 - name: 資源
   items:
     - name: 適用於 Azure Lighthouse 的 Microsoft 問答集

@@ -11,15 +11,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: cac14d5995042847bc98e47e50ea2d188382fd2a
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 034fbf991c97ba7b9f51b5508c35df1889280562
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564333"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897898"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>建立並附加 Azure Kubernetes Service 叢集
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning 可以將定型的機器學習模型部署到 Azure Kubernetes Service。 不過，您必須先從 Azure ML 工作區 __建立__ AZURE KUBERNETES SERVICE (AKS) 叢集，或 __附加__ 現有的 AKS 叢集。 本文提供建立和附加叢集的相關資訊。
 
@@ -185,9 +184,9 @@ aks_target.wait_for_completion(show_output = True)
 如需此範例中所使用之類別、方法和參數的詳細資訊，請參閱下列參考檔：
 
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
-* [AksCompute。 provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
 * [ComputeTarget 建立](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget。 wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#wait-for-completion-show-output-false-)
+* [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#wait-for-completion-show-output-false-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -248,7 +247,7 @@ aks_target.wait_for_completion(show_output = True)
 
 如需此範例中所使用之類別、方法和參數的詳細資訊，請參閱下列參考檔：
 
-* [AksCompute ( # B1 attach_configuration ](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [AksCompute.attach_configuration ( # B1 ](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
 * [AksCompute 附加](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#attach-workspace--name--attach-configuration-)
 
@@ -280,7 +279,7 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [部署模型的方式和位置](how-to-deploy-and-where.md)
 * [將模型部署到 Azure Kubernetes Service 叢集](how-to-deploy-azure-kubernetes-service.md)

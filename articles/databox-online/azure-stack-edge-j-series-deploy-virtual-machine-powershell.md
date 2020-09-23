@@ -1,6 +1,6 @@
 ---
-title: 透過 Azure PowerShell 將 Vm 部署到您的 Azure Stack Edge GPU 裝置
-description: 說明如何使用 Azure PowerShell，在 Azure Stack Edge GPU 裝置上建立及管理虛擬機器 (Vm) 。
+title: 透過 Azure PowerShell 將 Vm 部署到您的 Azure Stack Edge Pro GPU 裝置
+description: 說明如何使用 Azure PowerShell，在 Azure Stack Edge Pro GPU 裝置上建立和管理 (Vm) 的虛擬機器。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: aa35111a2fa26b3e4fd5e80a8227b7c244f30e9f
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: aa492acdedc2d131d28c894031de2181e87a2f3e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461709"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890708"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell"></a>透過 Azure PowerShell 將 Vm 部署到您的 Azure Stack Edge GPU 裝置
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>透過 Azure PowerShell 將 Vm 部署到您的 Azure Stack Edge Pro GPU 裝置
 
 <!--[!INCLUDE [azure-stack-edge-gateway-deploy-vm-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]-->
 
-本教學課程說明如何使用 Azure PowerShell 在您的 Azure Stack Edge 裝置上建立和管理 VM。
+本教學課程說明如何使用 Azure PowerShell 在 Azure Stack Edge Pro 裝置上建立和管理 VM。
 
 ## <a name="vm-deployment-workflow"></a>VM 部署工作流程
 
@@ -128,7 +128,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> 只有本機儲存體帳戶（例如本機存放區的儲存體 (Standard_LRS 或 Premium_LRS) 可透過 Azure Resource Manager 建立。 若要建立階層式儲存體帳戶，請參閱「新增」中的步驟 [，連接到您 Azure Stack Edge 上的儲存體帳戶](azure-stack-edge-j-series-deploy-add-storage-accounts.md)。
+> 只有本機儲存體帳戶（例如本機存放區的儲存體 (Standard_LRS 或 Premium_LRS) 可透過 Azure Resource Manager 建立。 若要建立階層式儲存體帳戶，請參閱 [新增的步驟，連接到您 Azure Stack Edge Pro 上的儲存體帳戶](azure-stack-edge-j-series-deploy-add-storage-accounts.md)。
 
 下方顯示一項範例輸出。
 
@@ -193,7 +193,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 複製您在先前步驟中建立之本機儲存體帳戶中的分頁 blob 所使用的任何磁片映射。 您可以使用 [AzCopy](../storage/common/storage-use-azcopy-v10.md) 之類的工具，將 VHD 上傳至您在先前步驟中建立的儲存體帳戶。 
 
-使用 AzCopy 之前，請確定已 [正確設定 AzCopy](#configure-azcopy) ，以便與您用來搭配 Azure Stack Edge 裝置的 blob 儲存體 REST API 版本搭配使用。
+使用 AzCopy 之前，請確定已 [正確地設定 AzCopy](#configure-azcopy) ，以搭配您搭配 Azure Stack Edge Pro 裝置使用的 blob 儲存體 REST API 版本使用。
 
 ```powershell
 AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Y /S /V /NC:32  /BlobType:page /destType:blob 
@@ -445,11 +445,11 @@ The public IP in this case will be the same as the private IP that you passed du
 
 ## <a name="manage-vm"></a>管理 VM
 
-下一節說明您將在 Azure Stack Edge 裝置上建立之 VM 的一些一般作業。
+下一節將說明您將在 Azure Stack Edge Pro 裝置上建立之 VM 的一些一般作業。
 
 ### <a name="list-vms-running-on-the-device"></a>列出在裝置上執行的 Vm
 
-若要傳回 Azure Stack Edge 裝置上執行的所有 Vm 清單，請執行下列命令。
+若要傳回 Azure Stack Edge Pro 裝置上執行的所有 Vm 清單，請執行下列命令。
 
 
 `Get-AzureRmVM -ResourceGroupName <String> -Name <String>`
@@ -502,7 +502,7 @@ Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 
 VM 大小會決定可供 VM 使用的計算資源 (例如 CPU、GPU 和記憶體) 數量。 虛擬機器必須適用於工作負載的 VM 大小來建立。 即使所有電腦都在相同的硬體上執行，電腦大小還是會有不同的磁片存取限制，這可協助您管理整個 Vm 的整體磁片存取。 如果工作負載增加，可以調整現有虛擬機器的大小。
 
-以下是支援在 Azure Stack Edge 裝置上建立的標準 Dv2 系列 Vm。
+支援在 Azure Stack Edge Pro 裝置上建立下列標準 Dv2 系列 Vm。
 
 ### <a name="dv2-series"></a>Dv2 系列
 |大小     |vCPU     |記憶體 (GiB) | 暫存儲存體 (GiB)  | 最大 OS 磁碟輸送量 (IOPS) | 最大暫存儲存體輸送量 (IOPS) | 最大資料磁碟/輸送量 (IOPS) | 最大 NIC |
@@ -547,9 +547,9 @@ VM 大小會決定可供 VM 使用的計算資源 (例如 CPU、GPU 和記憶體
 
 ## <a name="configure-azcopy"></a>設定 AzCopy
 
-當您安裝最新版的 AzCopy 時，您將需要設定 AzCopy，以確保它符合 Azure Stack Edge 裝置 REST API 版本的 blob 儲存體。
+當您安裝最新版的 AzCopy 時，您將需要設定 AzCopy，以確保它符合 Azure Stack Edge Pro 裝置 REST API 版本的 blob 儲存體。
 
-在用來存取 Azure Stack Edge 裝置的用戶端上，設定全域變數以符合 blob 儲存體 REST API 版本。
+在用來存取 Azure Stack Edge Pro 裝置的用戶端上，設定全域變數以符合 blob 儲存體 REST API 版本。
 
 ### <a name="on-windows-client"></a>在 Windows 用戶端上 
 
@@ -565,6 +565,6 @@ VM 大小會決定可供 VM 使用的計算資源 (例如 CPU、GPU 和記憶體
 2. 尋找 `AZCOPY_DEFAULT_SERVICE_API_VERSION` 參數。 這應該會有您在先前步驟中設定的值。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 [Azure Resource Manager Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.resources/?view=azurermps-6.13.0)

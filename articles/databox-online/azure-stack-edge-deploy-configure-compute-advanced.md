@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Stack Edge 上的計算功能來篩選、分析資料以進行進階部署的教學課程 | Microsoft Docs
-description: 了解如何設定 Azure Stack Edge 上的計算角色，並在資料傳送至 Azure 之前用它來轉換資料以進行進階部署流程。
+title: 使用 Azure Stack Edge Pro 上的計算功能來篩選、分析資料以進行進階部署的教學課程 | Microsoft Docs
+description: 了解如何設定 Azure Stack Edge Pro 上的計算角色，並在資料傳送至 Azure 之前用它來轉換資料以進行進階部署流程。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 59983530d93885f28dfb1625ca6d58fe572609b8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
+ms.openlocfilehash: f62eec29aebdcc98569134e0c3b75457467bc014
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080365"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903680"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-for-advanced-deployment-flow"></a>教學課程：使用 Azure Stack Edge 轉換資料以進行進階部署
+# <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>教學課程：使用 Azure Stack Edge Pro 轉換資料以進行進階部署
 
-本教學課程說明如何在 Azure Stack Edge 裝置上設定計算角色，以進行進階部署流程。 當您設定計算角色之後，Azure Stack Edge 就能先轉換資料，然後再將資料傳送至 Azure。
+本教學課程說明如何在 Azure Stack Edge Pro 裝置上設定計算角色，以進行進階部署流程。 當您設定計算角色之後，Azure Stack Edge Pro 就能先轉換資料，然後再將資料傳送至 Azure。
 
 您可以為裝置上的簡單或進階部署流程設定計算功能。
 
@@ -43,14 +43,14 @@ ms.locfileid: "86080365"
  
 ## <a name="prerequisites"></a>必要條件
 
-在 Azure Stack Edge 裝置上設定計算角色之前，請確定：
+在 Azure Stack Edge Pro 裝置上設定計算角色之前，請確定：
 
-- 您已依照[連線、設定及啟用 Azure Stack Edge](azure-stack-edge-deploy-connect-setup-activate.md) 中的說明來啟動 Azure Stack Edge 裝置。
+- 您已依照[連線、設定及啟用 Azure Stack Edge Pro](azure-stack-edge-deploy-connect-setup-activate.md) 中的說明來啟動 Azure Stack Edge Pro 裝置。
 
 
 ## <a name="configure-compute"></a>設定計算
 
-若要設定 Azure Stack Edge 上的計算，您將建立 IoT 中樞資源。
+若要設定 Azure Stack Edge Pro 上的計算，您將建立 IoT 中樞資源。
 
 1. 在 Azure Stack Edge 資源的 Azure 入口網站中，移至 [概觀]。 在右窗格的 [計算] 圖格上，選取 [開始使用]。
 
@@ -150,9 +150,9 @@ ms.locfileid: "86080365"
 
 ## <a name="add-a-module"></a>新增模組
 
-此 Edge 裝置上並沒有自訂模組。 您可以新增自訂或預先建置的模組。 若要了解如何建立自訂模組，請移至[為您的 Azure Stack Edge 裝置開發 C# 模組](azure-stack-edge-create-iot-edge-module.md)。
+此 Edge 裝置上並沒有自訂模組。 您可以新增自訂或預先建置的模組。 若要了解如何建立自訂模組，請移至[為您的 Azure Stack Edge Pro 裝置開發 C# 模組](azure-stack-edge-create-iot-edge-module.md)。
 
-在本節中，您會將自訂模組新增至您在[為您的 Azure Stack Edge 開發 C# 模組](azure-stack-edge-create-iot-edge-module.md)中建立的 IoT Edge 裝置。 此自訂模組會從 Edge 裝置上的 Edge 本機共用中取用檔案，並將其移至裝置上的 Edge (雲端) 共用。 接著，雲端共用會將檔案推送至與該雲端共用相關聯的 Azure 儲存體帳戶。
+在本節中，您會將自訂模組新增至您在[為您的 Azure Stack Edge Pro 開發 C# 模組](azure-stack-edge-create-iot-edge-module.md)中建立的 IoT Edge 裝置。 此自訂模組會從 Edge 裝置上的 Edge 本機共用中取用檔案，並將其移至裝置上的 Edge (雲端) 共用。 接著，雲端共用會將檔案推送至與該雲端共用相關聯的 Azure 儲存體帳戶。
 
 1. 移至 [Edge 計算] > [開始使用]。 在 [新增模組] 圖格上，選取 [進階] 案例類型。 選取 [移至 IoT 中樞]。
 
@@ -175,7 +175,7 @@ ms.locfileid: "86080365"
 4. 在 [新增模組] 下方，執行下列步驟：
 
     1. 針對自訂模組的容器登錄設定，輸入名稱、位址、使用者名稱和密碼。
-    名稱、位址和列出的認證會用來擷取具有相符 URL 的模組。 若要部署此模組，請在 [部署模組] 下方選取 [IoT Edge 模組]。 此 IoT Edge 模組是一個 Docker 容器，可供您部署至與您 Azure Stack Edge 裝置相關聯的 IoT Edge 裝置。
+    名稱、位址和列出的認證會用來擷取具有相符 URL 的模組。 若要部署此模組，請在 [部署模組] 下方選取 [IoT Edge 模組]。 此 IoT Edge 模組是一個 Docker 容器，可供您部署至與您 Azure Stack Edge Pro 裝置相關聯的 IoT Edge 裝置。
 
         ![[設定模組] 頁面](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-4.png) 
  
@@ -183,7 +183,7 @@ ms.locfileid: "86080365"
      
         |欄位  |值  |
         |---------|---------|
-        |名稱     | 模組的唯一名稱。 此模組是一個 Docker 容器，可供您部署至與您 Azure Stack Edge 裝置相關聯的 IoT Edge。        |
+        |名稱     | 模組的唯一名稱。 此模組是一個 Docker 容器，可供您部署至與您 Azure Stack Edge Pro 裝置相關聯的 IoT Edge。        |
         |映像 URI     | 模組的對應容器映像的映像 URI。        |
         |需要認證     | 若已核取，使用者名稱和密碼會用來擷取具有相符 URL 的模組。        |
     
@@ -270,7 +270,7 @@ ms.locfileid: "86080365"
 > * 新增計算模組
 > * 確認資料轉換和傳輸
 
-若要了解如何管理您的 Azure Stack Edge 裝置，請參閱：
+若要了解如何管理您的 Azure Stack Edge Pro 裝置，請參閱：
 
 > [!div class="nextstepaction"]
-> [使用本機 Web UI 來管理 Azure Stack Edge](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [使用本機 Web UI 來管理 Azure Stack Edge Pro](azure-stack-edge-manage-access-power-connectivity-mode.md)

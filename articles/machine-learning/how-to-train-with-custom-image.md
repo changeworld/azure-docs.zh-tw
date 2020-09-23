@@ -10,21 +10,20 @@ author: saachigopal
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2289a761d4e266c305c2868e9f234871624ae528
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d90b56366cb22e80162983c982e861de608e4e9e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661319"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893119"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>使用自訂 Docker 映射將模型定型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本文中，您將瞭解如何在使用 Azure Machine Learning 來定型模型時使用自訂 Docker 映射。 
 
 本文中的範例腳本會藉由建立卷積類神經網路，用來分類寵物影像。 
 
-當 Azure Machine Learning 提供預設的 Docker 基底映射時，您也可以使用 Azure Machine Learning 環境來指定特定的基底映射，例如其中一組維護的 [AZURE ML 基底](https://github.com/Azure/AzureML-Containers) 映射或您自己的 [自訂映射](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)。 自訂基底映射可讓您密切地管理相依性，並在執行定型作業時維持對元件版本的更緊密控制權。 
+當 Azure Machine Learning 提供預設的 Docker 基底映射時，您也可以使用 Azure Machine Learning 環境來指定特定的基底映射，例如其中一組維護的 [AZURE ML 基底](https://github.com/Azure/AzureML-Containers) 映射或您自己的 [自訂映射](how-to-deploy-custom-docker-image.md#create-a-custom-base-image)。 自訂基底映射可讓您密切地管理相依性，並在執行定型作業時維持對元件版本的更緊密控制權。 
 
 ## <a name="prerequisites"></a>必要條件 
 在下列任一環境中執行此程式碼：
@@ -101,11 +100,11 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 ```
 
 ### <a name="create-or-attach-existing-amlcompute"></a>建立或附加現有的 AmlCompute
-您將需要建立用來定型模型的 [計算目標](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#compute-target) 。 在本教學課程中，您會將 AmlCompute 建立為定型計算資源。
+您將需要建立用來定型模型的 [計算目標](concept-azure-machine-learning-architecture.md#compute-targets) 。 在本教學課程中，您會將 AmlCompute 建立為定型計算資源。
 
 建立 AmlCompute 需要大約5分鐘的時間。 如果您的工作區中已有該名稱的 AmlCompute，此程式碼將會略過建立程式。
 
-如同其他 Azure 服務，某些資源有一些限制 (例如與 Azure Machine Learning 服務相關聯的 AmlCompute) 。 請閱讀 [本文以瞭解預設](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas) 限制，以及如何要求更多配額。 
+如同其他 Azure 服務，某些資源有一些限制 (例如與 Azure Machine Learning 服務相關聯的 AmlCompute) 。 請閱讀 [本文以瞭解預設](how-to-manage-quotas.md) 限制，以及如何要求更多配額。 
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -132,7 +131,7 @@ print(compute_target.get_status().serialize())
 ```
 
 ### <a name="create-a-scriptrunconfig"></a>建立 ScriptRunConfig
-此 ScriptRunConfig 會設定您的作業，以在所需的 [計算目標](https://docs.microsoft.com/azure/machine-learning/how-to-set-up-training-targets#compute-targets-for-training)上執行。
+此 ScriptRunConfig 會設定您的作業，以在所需的 [計算目標](how-to-set-up-training-targets.md)上執行。
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -157,7 +156,7 @@ run.wait_for_completion(show_output=True)
 
 如需自訂 Python 環境的詳細資訊，請參閱 [建立 & 使用軟體環境](how-to-use-environments.md)。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 在本文中，您已使用自訂 Docker 映射來定型模型。 若要深入瞭解 Azure Machine Learning，請參閱這些其他文章。
 * 訓練期間[追蹤執行計量](how-to-track-experiments.md)
-* 使用自訂 Docker 映射[部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)。
+* 使用自訂 Docker 映射[部署模型](how-to-deploy-custom-docker-image.md)。

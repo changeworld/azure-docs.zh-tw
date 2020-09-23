@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge 的憑證需求和疑難排解 |Microsoft Docs
-description: 描述憑證需求，以及針對 Azure Stack Edge 裝置的憑證錯誤進行疑難排解。
+title: Azure Stack Edge Pro 的憑證需求和疑難排解 |Microsoft Docs
+description: 描述憑證需求，以及針對 Azure Stack Edge Pro 裝置的憑證錯誤進行疑難排解。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: b24b745a53b632ce32cda37058363bf974d400b3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268257"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891387"
 ---
 # <a name="certificate-requirements"></a>憑證需求
 
-本文說明必須符合的憑證需求，才能將憑證安裝在 Azure Stack Edge 裝置上。 這些需求與 PFX 憑證、發行授權單位、憑證主體名稱和主體別名，以及支援的憑證演算法有關。
+本文說明必須符合的憑證需求，才能將憑證安裝在 Azure Stack Edge Pro 裝置上。 這些需求與 PFX 憑證、發行授權單位、憑證主體名稱和主體別名，以及支援的憑證演算法有關。
 
 ## <a name="certificate-issuing-authority"></a>憑證發行授權單位
 
@@ -64,13 +64,13 @@ ms.locfileid: "89268257"
     
 ## <a name="pfx-certificate"></a>PFX 憑證
 
-安裝在 Azure Stack Edge 裝置上的 PFX 憑證應符合下列需求：
+Azure Stack Edge Pro 裝置上安裝的 PFX 憑證應符合下列需求：
 
 * 當您從 SSL 授權單位取得憑證時，請確定您取得憑證的完整簽署鏈。
 
 * 當您匯出 PFX 憑證時，請確定您已選取 [ **包含鏈中的所有憑證（如果可能）** ] 選項。
 
-* 使用適用于端點、本機 UI、節點、VPN 和 Wi-fi 的 PFX 憑證，因為 Azure Stack Edge 需要公開金鑰和私密金鑰。 私密金鑰必須有本機電腦金鑰屬性集。
+* 使用適用于端點、本機 UI、節點、VPN 和 Wi-fi 的 PFX 憑證，因為 Azure Stack Edge Pro 都需要公開金鑰和私密金鑰。 私密金鑰必須有本機電腦金鑰屬性集。
 
 * 憑證的 PFX 加密應該是 3DES。 這是從 Windows 10 用戶端或 Windows Server 2016 憑證存放區匯出時使用的預設加密。 如需與3DES 相關的詳細資訊，請參閱 [三重 DES](https://en.wikipedia.org/wiki/Triple_DES)。
 
@@ -78,17 +78,17 @@ ms.locfileid: "89268257"
 
 * 憑證 PFX 檔案的 [*增強金鑰使用*方法] 欄位中必須有 [*伺服器驗證 (1.3.6.1.5.5.7.3.1) *和*用戶端驗證 (1.3.6.1.5.5.7.3.2) *的值。
 
-* 如果您使用 Azure Stack 準備就緒檢查工具，則在部署時，所有憑證 PFX 檔案的密碼都必須相同。 如需詳細資訊，請參閱 [使用 Azure Stack Hub 就緒檢查工具來建立 Azure Stack Edge 的憑證](azure-stack-edge-j-series-create-certificates-tool.md)。
+* 如果您使用 Azure Stack 準備就緒檢查工具，則在部署時，所有憑證 PFX 檔案的密碼都必須相同。 如需詳細資訊，請參閱 [使用 Azure Stack Hub 就緒檢查工具來建立 Azure Stack Edge Pro 的憑證](azure-stack-edge-j-series-create-certificates-tool.md)。
 
 * 憑證 PFX 的密碼必須是複雜密碼。 請記下此密碼，因為它是用來作為部署參數。
 
 如需詳細資訊，請參閱 [匯出具有私密金鑰的 PFX 憑證](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-[使用憑證搭配 Azure Stack Edge](azure-stack-edge-j-series-manage-certificates.md)
+[使用 Azure Stack Edge Pro 的憑證](azure-stack-edge-j-series-manage-certificates.md)
 
-[使用 Azure Stack Hub 的就緒檢查程式工具建立 Azure Stack Edge 的憑證](azure-stack-edge-j-series-create-certificates-tool.md)
+[使用 Azure Stack Hub 的就緒檢查程式工具建立 Azure Stack Edge Pro 的憑證](azure-stack-edge-j-series-create-certificates-tool.md)
 
 [使用私密金鑰匯出 PFX 憑證](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)
 

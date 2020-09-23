@@ -1,6 +1,6 @@
 ---
-title: 使用 kubectl 在 Azure Stack Edge GPU 裝置上部署 Kubernetes 無狀態應用程式 |Microsoft Docs
-description: 說明如何在 Microsoft Azure Stack Edge 裝置上，使用 kubectl 建立及管理 Kubernetes 無狀態應用程式部署。
+title: 使用 kubectl 在 Azure Stack Edge Pro GPU 裝置上部署 Kubernetes 無狀態應用程式 |Microsoft Docs
+description: 說明如何在 Microsoft Azure Stack Edge Pro 裝置上，使用 kubectl 建立及管理 Kubernetes 無狀態應用程式部署。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,28 +8,28 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 27502c58481444a9dc14120bf447d4614d051ccc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268854"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890727"
 ---
-# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>在 Azure Stack Edge GPU 裝置上透過 kubectl 部署 Kubernetes 無狀態應用程式
+# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上透過 kubectl 部署 Kubernetes 無狀態應用程式
 
 本文說明如何在現有的 Kubernetes 叢集上使用 kubectl 命令部署無狀態應用程式。 本文也會逐步引導您完成在無狀態應用程式中建立及設定 pod 的流程。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 您必須先確定下列事項，才能建立 Kubernetes 叢集並使用 `kubectl` 命令列工具：
 
-- 您有1個節點 Azure Stack Edge 裝置的登入認證。
+- 您有1個節點 Azure Stack Edge Pro 裝置的登入認證。
 
-- Windows PowerShell 5.0 或更新版本已安裝在 Windows 用戶端系統上，以存取 Azure Stack Edge 裝置。 您也可以讓任何其他用戶端使用支援的作業系統。 本文說明使用 Windows 用戶端的程式。 若要下載 Windows PowerShell 的最新版本，請移至 [安裝 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
+- Windows PowerShell 5.0 或更新版本已安裝在 Windows 用戶端系統上，以存取 Azure Stack Edge Pro 裝置。 您也可以讓任何其他用戶端使用支援的作業系統。 本文說明使用 Windows 用戶端的程式。 若要下載 Windows PowerShell 的最新版本，請移至 [安裝 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
 
-- Azure Stack Edge 裝置上會啟用計算。 若要啟用計算，請移至裝置本機 UI 中的 [ **計算** ] 頁面。 然後選取您想要為計算啟用的網路介面。 選取 [啟用]。 在該網路介面上的裝置上建立虛擬交換器時，啟用計算結果。 如需詳細資訊，請參閱在 [您的 Azure Stack Edge 上啟用計算網路](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)。
+- Azure Stack Edge Pro 裝置上會啟用計算。 若要啟用計算，請移至裝置本機 UI 中的 [ **計算** ] 頁面。 然後選取您想要為計算啟用的網路介面。 選取 [啟用]。 在該網路介面上的裝置上建立虛擬交換器時，啟用計算結果。 如需詳細資訊，請參閱在 [您的 Azure Stack Edge Pro 上啟用計算網路](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)。
 
-- 您的 Azure Stack Edge 裝置有一台執行的 Kubernetes 叢集伺服器，其版本為1.9 或更新版本。 如需詳細資訊，請參閱 [在 Microsoft Azure Stack Edge 裝置上建立和管理 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集。
+- 您的 Azure Stack Edge Pro 裝置有一個執行的 Kubernetes 叢集伺服器，其版本為1.9 版或更新版本。 如需詳細資訊，請參閱 [在 Microsoft Azure Stack Edge Pro 裝置上建立和管理 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集。
 
 - 您已安裝 `kubectl` 。
 
@@ -43,7 +43,7 @@ ms.locfileid: "89268854"
 4. 將使用者設定儲存至 `C:\Users\<username>\.kube` 。
 5. 已安裝 `kubectl` 。
 
-現在您可以開始在 Azure Stack Edge 裝置上執行及管理無狀態應用程式部署。 在您開始使用之前 `kubectl` ，您必須先確認您有正確的版本 `kubectl` 。
+現在您可以開始在 Azure Stack Edge Pro 裝置上執行及管理無狀態應用程式部署。 在您開始使用之前 `kubectl` ，您必須先確認您有正確的版本 `kubectl` 。
 
 ### <a name="verify-you-have-the-correct-version-of-kubectl-and-set-up-configuration"></a>確認您擁有正確的 kubectl 版本並設定設定
 
@@ -109,7 +109,7 @@ Pod 是 Kubernetes 應用程式的基本執行單位，這是您建立或部署�
 
 您建立的無狀態應用程式類型是 nginx web 伺服器部署。
 
-您用來建立及管理無狀態應用程式部署的所有 kubectl 命令都必須指定與設定相關聯的命名空間。 當您在 [Microsoft Azure Stack Edge 裝置上的 [建立和管理 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md) 叢集] 教學課程中，連線到 Azure Stack Edge 裝置上的叢集時，您已建立命名空間 `New-HcsKubernetesNamespace` 。
+您用來建立及管理無狀態應用程式部署的所有 kubectl 命令都必須指定與設定相關聯的命名空間。 當您在 [Microsoft Azure Stack Edge Pro 裝置上的 [建立和管理 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md) 叢集] 教學課程中，連線到 Azure Stack Edge Pro 裝置上的叢集時，您已建立命名空間 `New-HcsKubernetesNamespace` 。
 
 若要在 kubectl 命令中指定命名空間，請使用 `kubectl <command> -n <namespace-string>` 。
 
@@ -361,6 +361,6 @@ PS C:\Users\user> kubectl delete deployment nginx-deployment -n "test1"
 deployment.extensions "nginx-deployment" deleted
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [Kubernetes 總覽](azure-stack-edge-gpu-kubernetes-overview.md)

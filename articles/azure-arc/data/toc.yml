@@ -1,0 +1,214 @@
+- name: 已啟用 Azure Arc 的資料服務文件
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 什麼是已啟用 Azure Arc 的資料服務
+      href: overview.md
+    - name: 版本資訊
+      href: release-notes.md
+- name: 快速入門
+  items:
+    - name: 建立資料控制器
+      href: create-data-controller.md
+- name: 概念
+  items:
+    - name: 連線模式和需求
+      href: connectivity.md
+    - name: 儲存體組態
+      href: storage-configuration.md
+- name: 操作指南
+  items:
+    - name: 安裝工具
+      items:
+        - name: 安裝用戶端工具
+          href: install-client-tools.md
+        - name: azdata
+          items:
+            - name: 安裝
+              href: /sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: macOS
+              href: /sql/azdata/install/deploy-install-azdata-macos?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Windows
+              href: /sql/azdata/install/deploy-install-azdata-installer?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Linux 搭配 APT
+              href: /sql/azdata/install/deploy-install-azdata-linux-package?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Linux 搭配 YUM
+              href: /sql/azdata/install/deploy-install-azdata-yum?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Linux 搭配 Zypper
+              href: /sql/azdata/install/deploy-install-azdata-zypper?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Linux 搭配 pip
+              href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+    - name: 建立資料控制器
+      items:
+        - name: 建立資料控制器 (Azure Data Studio)
+          href: create-data-controller-azure-data-studio.md
+        - name: 建立資料控制器資源 (入口網站)
+          href: create-data-controller-resource-in-azure-portal.md
+        - name: 建立資料控制器 (azdata)
+          href: create-data-controller-using-azdata.md
+        - name: 使用 Kubernetes 建立資料控制器
+          href: create-data-controller-using-k8s-native-tools.md
+    - name: 已啟用 Azure Arc 的資料服務常見體驗
+      items:
+        - name: 使用儀表板來監視 (Azure Data Studio)
+          href: azure-data-studio-dashboards.md
+        - name: 檢視帳單資料 (Azure)
+          href: view-billing-data-in-azure.md
+        - name: 檢視資料控制器 (入口網站)
+          href: view-data-controller-in-azure-portal.md
+        - name: 刪除資源
+          href: delete-azure-resources.md
+        - name: 解除安裝 Azure Arc 資料控制器
+          href: uninstall-azure-arc-data-controller.md
+    - name: 管理
+      items:
+        - name: 使用 Grafana 和 Kibana 來監視
+          href: monitor-grafana-kibana.md
+        - name: 上傳計量和記錄
+          href: upload-metrics-and-logs-to-azure-monitor.md
+        - name: 詳細目錄資料庫執行個體
+          href: view-arc-data-services-inventory-in-azure-portal.md
+        - name: 取得資料控制器的使用者名稱和密碼
+          href: retrieve-the-username-password-for-data-controller.md
+    - name: 疑難排解
+      items:
+        - name: 指南
+          href: troubleshoot-guide.md
+        - name: 取得記錄
+          href: troubleshooting-get-logs.md
+- name: 已啟用 Azure Arc 的 PostgreSQL 超大規模資料庫 (預覽)
+  items:
+    - name: 概觀
+      items:
+        - name: 什麼是已啟用 Azure Arc 的 PostgreSQL 超大規模資料庫
+          href: what-is-azure-arc-enabled-postgres-hyperscale.md
+    - name: 快速入門
+      items:
+        - name: 支援的版本
+          href: supported-versions-postgres-hyperscale.md
+        - name: 建立 Postgres 超大規模資料庫伺服器群組 (CLI)
+          href: create-postgresql-hyperscale-server-group.md
+        - name: 建立 Postgres 超大規模資料庫伺服器群組 (Azure Data Studio)
+          href: create-postgresql-hyperscale-server-group-azure-data-studio.md
+        - name: 連線
+          href: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - name: 概念
+      items:
+        - name: 散發資料
+          href: concepts-distributed-postgres-hyperscale.md
+        - name: 伺服器群組放置
+          href: postgresql-hyperscale-server-group-placement-on-kubernetes-cluster-nodes.md
+    - name: 使用方法
+      items:
+        - name: 管理
+          items:
+            - name: 備份與還原
+              href: backup-restore-postgresql-hyperscale.md
+            - name: 設定和調整
+              items:
+                - name: 顯示設定
+                  href: show-configuration-postgresql-hyperscale-server-group.md
+                - name: 擴增 - 新增背景工作節點
+                  href: scale-out-postgresql-hyperscale-server-group.md
+                - name: 擴大|縮小記憶體和虛擬核心
+                  href: scale-up-down-postgresql-hyperscale-server-group-using-cli.md
+                - name: 設定伺服器參數
+                  href: configure-server-parameters-postgresql-hyperscale.md
+            - name: 刪除
+              href: delete-postgresql-hyperscale-server-group.md
+            - name: 列出伺服器群組
+              href: list-server-groups-postgres-hyperscale.md
+            - name: 監視、記錄分析、計費資訊、Azure 入口網站
+              href: monitoring-log-analytics-azure-portal-postgresql.md
+            - name: 安全
+              href: configure-security-postgres-hyperscale.md
+            - name: 管理伺服器群組 (Azure Data Studio)
+              href: manage-postgresql-hyperscale-server-group-with-azure-data-studio.md
+            - name: 使用 Postgres 擴充功能
+              href: using-extensions-in-postgresql-hyperscale-server-group.md
+        - name: 遷移
+          items:
+            - name: 將 PostgreSQL 資料遷移至 Postgres 超大規模資料庫伺服器群組
+              href: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+            - name: 還原範例資料庫 AdventureWorks
+              href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+        - name: 疑難排解
+          href: troubleshoot-postgresql-hyperscale-server-group.md
+- name: 已啟用 Azure Arc 的 SQL 受控執行個體 (預覽)
+  items:
+    - name: 概觀
+      items:
+        - name: 什麼是已啟用 Azure Arc 的 SQL 受控執行個體
+          href: managed-instance-overview.md
+        - name: 特性
+          href: managed-instance-features.md
+    - name: 快速入門
+      items:
+        - name: 建立 SQL 受控執行個體
+          href: create-sql-managed-instance.md
+        - name: 建立 SQL 受控執行個體 (Azure Data Studio)
+          href: create-sql-managed-instance-azure-data-studio.md
+        - name: 連線
+          href: connect-managed-instance.md
+    - name: 使用方法
+      items:
+        - name: 管理
+          items:
+            - name: 設定
+              href: configure-managed-instance.md
+            - name: 監視、記錄分析、計費資訊、Azure 入口網站
+              href: monitoring-log-analytics-azure-portal-managed-instance.md
+            - name: 刪除
+              href: delete-managed-instance.md
+        - name: 遷移
+          items:
+            - name: 遷移至 SQL 受控執行個體 (Azure Arc)
+              href: migrate-to-managed-instance.md
+            - name: 還原 AdventureWorks
+              href: restore-adventureworks-sample-db.md
+- name: 參考
+  items:
+    - name: azdata
+      items:
+        - name: azdata
+          href: /sql/azdata/reference/reference-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: notebook
+          href: /sql/azdata/reference/reference-azdata-notebook?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: postgres
+          href: /sql/azdata/reference/reference-azdata-postgres?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: sql
+          href: /sql/azdata/reference/reference-azdata-sql?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: azdata-arc
+          href: /sql/azdata/reference/reference-azdata-arc?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc
+          href: /sql/azdata/reference/reference-azdata-arc-dc?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-config
+          href: /sql/azdata/reference/reference-azdata-arc-dc-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-debug
+          href: /sql/azdata/reference/reference-azdata-arc-dc-debug?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-endpoint
+          href: /sql/azdata/reference/reference-azdata-arc-dc-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-dc-status
+          href: /sql/azdata/reference/reference-azdata-arc-dc-status?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres
+          href: /sql/azdata/reference/reference-azdata-arc-postgres?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-backup
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-backup?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-endpoint
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-server
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-server?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-server-backup
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-server-backup?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-postgres-server-config
+          href: /sql/azdata/reference/reference-azdata-arc-postgres-server-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-resource
+          href: /sql/azdata/reference/reference-azdata-arc-resource?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-resource-kind
+          href: /sql/azdata/reference/reference-azdata-arc-resource-kind?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-sql
+          href: /sql/azdata/reference/reference-azdata-arc-sql?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-sql-mi
+          href: /sql/azdata/reference/reference-azdata-arc-sql-mi?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-sql-mi-config
+          href: /sql/azdata/reference/reference-azdata-arc-sql-mi-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json

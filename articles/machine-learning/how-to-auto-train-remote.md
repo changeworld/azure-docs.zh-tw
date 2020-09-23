@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 58fedfe794f86a4a453614b09fcce6e803eb887f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 57108bed97b59513309213d55a0654f4405d509c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651523"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893310"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>使用雲端中的自動化機器學習來將模型定型
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在 Azure Machine Learning 中，您可以在所管理的不同類型計算資源上將模型定型。 計算目標可以是本機電腦或雲端中的資源。
 
@@ -228,7 +228,7 @@ remote_run.get_portal_url()
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * 了解[如何設定自動訓練的設定](how-to-configure-auto-train.md)。
 * 請參閱自動化 ML 實驗中啟用模型可解譯性功能的操作 [說明](how-to-machine-learning-interpretability-automl.md) 。

@@ -1,34 +1,34 @@
 ---
 title: Connected Machine Windows 代理程式概觀
-description: 本文提供已啟用 Azure Arc 的伺服器 (preview) 代理程式的詳細總覽，其支援監視在混合式環境中託管的虛擬機器。
-ms.date: 08/06/2020
+description: 本文提供 Azure Arc 啟用的伺服器代理程式的詳細總覽，可支援監視混合式環境中裝載的虛擬機器。
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: d922652537034bef258c5bcde78fb178b092ed16
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 990b5999a8483c6417049ac5ab965843c2b13659
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212986"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908183"
 ---
-# <a name="overview-of-azure-arc-enabled-servers-preview-agent"></a>概述已啟用 Azure Arc 的伺服器 (預覽) 代理程式
+# <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的總覽
 
-已啟用 Azure Arc 的伺服器 (預覽) 已連線的機器代理程式可讓您管理在公司網路或其他雲端提供者上裝載于 Azure 外部的 Windows 和 Linux 電腦。 本文將詳細說明代理程式的概觀、系統和網路需求以及不同的部署方法。
+啟用 Azure Arc 的伺服器連線的機器代理程式，可讓您在公司網路或其他雲端提供者上，管理裝載于 Azure 外部的 Windows 和 Linux 機器。 本文將詳細說明代理程式的概觀、系統和網路需求以及不同的部署方法。
 
 ## <a name="agent-component-details"></a>代理程式元件詳細資料
 
-Azure 連線的機器代理程式套件包含數個結合在一起的邏輯元件。
+Azure Connected Machine 代理程式套件包含數個邏輯元件，這些元件會一起配套在一起。
 
-* 混合式實例中繼資料服務 (HIMDS) 管理與 Azure 的連線，以及連接的電腦的 Azure 身分識別。
+* 混合式實例中繼資料服務 (HIMDS) 管理與 Azure 的連線，以及連線電腦的 Azure 身分識別。
 
-* 「來賓設定代理程式」提供來賓內原則和來賓設定功能，例如評估電腦是否符合必要的原則。
+* 來賓設定代理程式提供來賓原則和來賓設定功能，例如評定電腦是否符合必要的原則。
 
-    請注意，已中斷連線電腦的 Azure 原則 [來賓](../../governance/policy/concepts/guest-configuration.md) 設定的下列行為：
+    請注意下列與已中斷連線電腦的 Azure 原則 [來賓](../../governance/policy/concepts/guest-configuration.md) 設定的行為：
 
-    * 以中斷連線的電腦為目標的來賓設定原則指派不受影響。
-    * 來賓指派會儲存在本機14天。 在14天的期間內，如果連線的機器代理程式重新連接到服務，則會重新套用原則指派。
-    * 指派會在14天后刪除，而且不會在14天的期間內重新指派給電腦。
+    * 以已中斷連線的電腦為目標的來賓設定原則指派不會受到影響。
+    * 來賓指派會儲存在本機14天。 在14天的期間內，如果連接的機器代理程式重新連接到服務，則會重新套用原則指派。
+    * 指派會在14天后刪除，在14天的期間內不會重新指派給電腦。
 
-* 延伸模組代理程式會管理 VM 擴充功能，包括安裝、卸載和升級。 延伸模組會從 Azure 下載，並複製到 `%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads` Windows 上的資料夾，而在 Linux 上則會複製到 `/opt/GC_Ext/downloads` 。 在 Windows 上，延伸模組會安裝到下列路徑 `%SystemDrive%\Packages\Plugins\<extension>` ，而在 Linux 上安裝延伸模組 `/var/lib/waagent/<extension>` 。
+* 擴充代理程式會管理 VM 擴充功能，包括安裝、卸載和升級。 系統會從 Azure 下載擴充功能，並將其複製到 `%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads` Windows 上的資料夾，以及從 Linux 複製到 `/opt/GC_Ext/downloads` 。 在 Windows 上，延伸模組會安裝到下列路徑 `%SystemDrive%\Packages\Plugins\<extension>` ，而在 Linux 上則是安裝擴充功能 `/var/lib/waagent/<extension>` 。
 
 ## <a name="download-agents"></a>下載代理程式
 
@@ -47,25 +47,21 @@ Azure 連線的機器代理程式套件包含數個結合在一起的邏輯元�
 Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作業系統版本： 
 
 - Windows Server 2012 R2 和更新版本 (包括 Windows Server Core)
-- Ubuntu 16.04 和 18.04 (x64) 
+- Ubuntu 16.04 和 18.04 LTS (x64) 
 - CentOS Linux 7 (x64) 
 - SUSE Linux Enterprise Server (SLES) 15 (x64) 
 - Red Hat Enterprise Linux (RHEL) 7 (x64) 
 - Amazon Linux 2 (x64) 
 
->[!NOTE]
->此適用於 Windows 的 Connected Machine 代理程式預覽版本僅支援設定為使用英文語言的 Windows Server。
->
-
 ### <a name="required-permissions"></a>所需的權限
 
 * 若要使電腦上線，您必須是 **Azure Connected Machine 上線**角色的成員。
 
-* 若要讀取、修改、重新上架和刪除機器，您是 **Azure 已連線機器資源管理員** 角色的成員。 
+* 若要讀取、修改、重新上架和刪除電腦，您是 **Azure Connected Machine 資源管理員** 角色的成員。 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure 訂用帳戶與服務限制
 
-使用已啟用 Azure Arc 的伺服器設定電腦 (預覽) ，請參閱 Azure Resource Manager [訂](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) 用帳戶限制和 [資源群組限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) ，以規劃要連線的電腦數目。
+在使用已啟用 Azure Arc 的伺服器設定電腦之前，請先參閱 Azure Resource Manager 訂用帳戶 [限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) 和 [資源群組限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) ，以規劃要連線的機器數目。
 
 ### <a name="transport-layer-security-12-protocol"></a>傳輸層安全性1.2 通訊協定
 
@@ -105,7 +101,7 @@ URL：
 
 ### <a name="register-azure-resource-providers"></a>註冊 Azure 資源提供者
 
-已啟用 Azure Arc 的伺服器 (預覽) 取決於您訂用帳戶中的下列 Azure 資源提供者，才能使用此服務：
+Azure Arc 啟用的伺服器相依于您訂用帳戶中的下列 Azure 資源提供者，才能使用此服務：
 
 * **Microsoft.HybridCompute**
 * **Microsoft.GuestConfiguration**
@@ -169,8 +165,8 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
     |服務名稱 |顯示名稱 |程序名稱 |描述 |
     |-------------|-------------|-------------|------------|
-    |himds |Azure 混合式 Instance Metadata Service |himds.exe |此服務會執行 Azure 實例中繼資料服務 (IMDS) ，以管理與 Azure 的連線，以及連接的電腦的 Azure 身分識別。|
-    |DscService |來賓設定服務 |dsc_service.exe |Desired State Configuration (DSC v2) 程式碼基底，以在 Azure 內用來執行來賓內原則。|
+    |himds |Azure 混合式 Instance Metadata Service |himds.exe |此服務會將 Azure Instance Metadata service (IMDS) ，以管理與 Azure 的連線，以及連線電腦的 Azure 身分識別。|
+    |DscService |來賓設定服務 |dsc_service.exe |Desired State Configuration (DSC v2) 程式碼基底，可在 Azure 內部用來執行來賓原則。|
 
 * 下列環境變數是在代理程式安裝期間所建立。
 
@@ -179,16 +175,16 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
-* 有數個記錄檔可供疑難排解。 如下表中所述。
+* 有數個記錄檔可供進行疑難排解。 如下表中所述。
 
     |Log |描述 |
     |----|------------|
-    |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |記錄代理程式 (HIMDS) 服務的詳細資料，以及與 Azure 的互動。|
+    |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |記錄代理程式 (HIMDS) 服務和與 Azure 互動的詳細資料。|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |使用 verbose (-v) 引數時，包含 azcmagent 工具命令的輸出。|
-    |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |記錄 DSC 服務活動的詳細資料，<br> 特別是 HIMDS 服務和 Azure 原則之間的連接。|
+    |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |記錄 DSC 服務活動的詳細資料，<br> 尤其是 HIMDS 服務與 Azure 原則之間的連線能力。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |記錄有關 DSC 服務遙測和詳細資訊記錄的詳細資料。|
     |%SystemDrive%\ProgramData\GuestConfig\ ext_mgr_logs|記錄有關延伸模組代理程式元件的詳細資料。|
-    |%SystemDrive%\ProgramData\GuestConfig\ extension_logs\<Extension>|記錄來自已安裝擴充功能的詳細資料。|
+    |%SystemDrive%\ProgramData\GuestConfig\ extension_logs\<Extension>|記錄已安裝之延伸模組的詳細資料。|
 
 * 會建立**混合式代理程式延伸模組應用程式**的本機安全性群組。
 
@@ -220,19 +216,19 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
     |服務名稱 |顯示名稱 |程序名稱 |描述 |
     |-------------|-------------|-------------|------------|
-    |himdsd.service |Azure 混合式 Instance Metadata Service |/opt/azcmagent/bin/himds |此服務會執行 Azure 實例中繼資料服務 (IMDS) ，以管理與 Azure 的連線，以及連接的電腦的 Azure 身分識別。|
+    |himdsd.service |Azure 混合式 Instance Metadata Service |/opt/azcmagent/bin/himds |此服務會將 Azure Instance Metadata service (IMDS) ，以管理與 Azure 的連線，以及連線電腦的 Azure 身分識別。|
     |dscd.service |來賓設定服務 |/opt/DSC/dsc_linux_service |這是在 Azure 內部用來實作客體內原則的 Desired State Configuration (DSC v2) 程式碼基底。|
 
-* 有數個記錄檔可供疑難排解。 如下表中所述。
+* 有數個記錄檔可供進行疑難排解。 如下表中所述。
 
     |Log |描述 |
     |----|------------|
-    |/var/opt/azcmagent/log/himds.log |記錄代理程式 (HIMDS) 服務的詳細資料，以及與 Azure 的互動。|
+    |/var/opt/azcmagent/log/himds.log |記錄代理程式 (HIMDS) 服務和與 Azure 互動的詳細資料。|
     |/var/opt/azcmagent/log/azcmagent.log |使用 verbose (-v) 引數時，包含 azcmagent 工具命令的輸出。|
     |/opt/logs/dsc.log |記錄 DSC 服務活動的詳細資料，<br> 特別是 himds 服務和 Azure 原則之間的連線能。|
     |/opt/logs/dsc.telemetry.txt |記錄有關 DSC 服務遙測和詳細資訊記錄的詳細資料。|
     |/var/lib/GuestConfig/ext_mgr_logs |記錄有關延伸模組代理程式元件的詳細資料。|
-    |/var/log/GuestConfig/extension_logs|記錄來自已安裝擴充功能的詳細資料。|
+    |/var/log/GuestConfig/extension_logs|記錄已安裝之延伸模組的詳細資料。|
 
 * 下列環境變數是在代理程式安裝期間所建立。 這些變數是在 `/lib/systemd/system.conf.d/azcmagent.conf` 中進行設定。
 
@@ -246,6 +242,6 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     * /var/opt/azcmagent
     * /opt/logs
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-若要開始評估已啟用 Azure Arc 的伺服器 (預覽) ，請遵循 [從 Azure 入口網站將混合式機器連線至 Azure](onboard-portal.md)一文。
+若要開始評估已啟用 Azure Arc 的伺服器，請遵循 [從 Azure 入口網站將混合式機器連線到 Azure](onboard-portal.md)的文章。
