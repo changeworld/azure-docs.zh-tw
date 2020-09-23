@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
-ms.date: 04/08/2019
-ms.openlocfilehash: 9ee4070562e44d4f560230fa2fd069eb1fd57932
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.reviewer: ''
+ms.date: 09/21/2020
+ms.openlocfilehash: 38f52178ec9c736f3ee51839678401753365d48d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612080"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907055"
 ---
 # <a name="what-is-azure-sql-database"></a>什麼是 Azure SQL Database？
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,7 +114,7 @@ Azure 可用性區域會嘗試防止單一區域內的單一資料中心建立�
 
 事實上，服務等級協定 (Azure 的 [ SLA) ](https://azure.microsoft.com/support/legal/sla/) ，由受 Microsoft 管理之資料中心的全球網路所支援，可協助讓您的應用程式執行24/7。 Azure 平臺可完全管理每個資料庫，並保證不會遺失任何資料，而且會有大量的資料可用性。 Azure 會自動處理修補、備份、複寫、失敗偵測，基礎潛在硬體、軟體或網路失敗、部署錯誤修正、容錯移轉、資料庫升級和其他維護工作。 隔離計算和儲存圖層可達成標準可用性。 高階可用性的達成方式是將計算和儲存體整合到單一節點上以達到效能，然後執行類似 Always On 可用性群組的技術。 如需 Azure SQL Database 高可用性功能的完整討論，請參閱 [SQL Database 可用性](high-availability-sla.md)。 
 
-此外，SQL Database 還提供內建的 [商務持續性和全球](business-continuity-high-availability-disaster-recover-hadr-overview.md) 的擴充功能。 它們包括：
+此外，SQL Database 還提供內建的 [商務持續性和全球](business-continuity-high-availability-disaster-recover-hadr-overview.md) 的擴充功能。 其中包括：
 
 - [自動備份](automated-backups-overview.md)：
 
@@ -165,11 +165,8 @@ SQL Database 提供各種內 [建的安全性與合規性功能](../../active-di
 
 ### <a name="advance-threat-protection"></a>預先威脅防護
 
-進階資料安全性是進階 SQL 安全性功能的整合套件。 它包含探索和分類敏感性資料、管理資料庫弱點，以及偵測可能表示對資料庫有威脅之異常活動的功能。 此套件可讓您從單一點位置啟用及管理前述功能。
+適用于 SQL 的 Azure Defender 是 advanced SQL 安全性功能的整合套件。 它包含管理資料庫弱點的功能，以及偵測可能表示對資料庫有威脅的異常活動。 此套件可讓您從單一點位置啟用及管理前述功能。
 
-- [資料探索與分類](data-discovery-and-classification-overview.md)：
-
-  這項功能提供內 Azure SQL Database 建的功能，可用於探索、分類、標記和保護資料庫中的敏感性資料。 它會提供資料庫分類狀態的可見度，並追蹤資料庫中敏感性資料的存取權，以及其框線以外的存取權。
 - [弱點評定](sql-vulnerability-assessment.md)：
 
   這個服務可以探索、追蹤並協助您修復潛在的資料庫弱點。 可讓您檢視安全性狀態，且包含解決安全性問題和增強資料庫防護性的可行步驟。
@@ -185,6 +182,10 @@ SQL Database 提供各種內 [建的安全性與合規性功能](../../active-di
 
 SQL Database 透過提供加密來協助保護您的資料。 針對移動中的資料，它會使用 [傳輸層安全性](https://support.microsoft.com/kb/3135244)。 針對待用資料，它會使用 [透明資料加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。 針對使用中的資料，它會使用 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)。
 
+### <a name="data-discovery-and-classification"></a>資料探索與分類
+
+[資料探索和分類](data-discovery-and-classification-overview.md) 提供內建于 Azure SQL Database 的功能，可用於探索、分類、標記和保護資料庫中的敏感性資料。 它會提供資料庫分類狀態的可見度，並追蹤資料庫中敏感性資料的存取權，以及其框線以外的存取權。
+
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory 整合和多重要素驗證
 
 SQL Database 可讓您透過 [Azure Active Directory 整合](authentication-aad-overview.md)，集中管理資料庫使用者和其他 Microsoft 服務的身分識別。 這項功能簡化了權限管理並增強安全性。 Azure Active Directory 支援 [多重要素驗證](authentication-mfa-ssms-overview.md) ，以增加資料和應用程式安全性，同時支援單一登入精靈。
@@ -196,7 +197,7 @@ SQL Database 讓應用程式的建置及維護更簡易也更有生產力。 SQL
 |工具|描述|
 |:---|:---|
 |[Azure 入口網站](https://portal.azure.com/)|用於管理所有 Azure 服務的 web 應用程式。|
-|[Azure Data Studio](/sql/azure-data-studio/)|在 Windows、MacOS 和 Linux 上執行的跨平臺資料庫工具。|
+|[Azure Data Studio](/sql/azure-data-studio/)|在 Windows、macOS 和 Linux 上執行的跨平臺資料庫工具。|
 |[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|免費的可下載用戶端應用程式，可用於管理任何 SQL 基礎結構，從 SQL Server 到 SQL Database。|
 |[Visual Studio 中的 SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|可下載的免費用戶端應用程式，可用於開發 SQL Server 關係資料庫、Azure SQL Database 中的資料庫、Integration Services 封裝、Analysis Services 資料模型，以及 Reporting Services 報表。|
 |[Visual Studio Code](https://code.visualstudio.com/docs)|適用于 Windows、macOS 和 Linux 的免費、可下載、開放原始碼的程式碼編輯器。 它支援擴充功能，包括用來查詢 Microsoft SQL Server、Azure SQL Database 和 Azure Azure Synapse Analytics (先前的 SQL 資料倉儲) 的 [mssql 擴充](https://aka.ms/mssql-marketplace) 功能。|
@@ -209,7 +210,7 @@ SQL Database 支援在 macOS、Linux 和 Windows 上使用 Python、JAVA、Node.
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>我可以控制何時發生修補停機？
 
-不會。 如果您在應用程式中[採用重試邏輯](develop-overview.md#resiliency)，修補的影響通常不明顯。 如需詳細資訊，請參閱 [Azure SQL Database 中的規劃 Azure 維護事件](planned-maintenance.md)。
+不可以。 如果您在應用程式中[採用重試邏輯](develop-overview.md#resiliency)，修補的影響通常不明顯。 如需詳細資訊，請參閱 [Azure SQL Database 中的規劃 Azure 維護事件](planned-maintenance.md)。
 
 
 
@@ -221,7 +222,7 @@ SQL Database 支援在 macOS、Linux 和 Windows 上使用 Python、JAVA、Node.
 - [意見](https://aka.ms/sqlfeedback)反應：報告錯誤和要求功能。
 - [Reddit](https://www.reddit.com/r/SQLServer/)：討論 SQL Server。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - 如需有關單一資料庫和彈性集區的成本比較和計算機，請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/sql-database/) 。
 - 請參閱下列快速入門以開始使用：

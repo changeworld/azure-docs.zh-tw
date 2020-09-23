@@ -11,16 +11,16 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 968685b64b1412751ca990842d95e9d2ffb251a6
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 15e1af35def6a3cb6ffaf5df2db53326fba60bc0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650561"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883045"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure Machine Learning SDK 來建立及執行機器學習管線
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將瞭解如何使用[AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)來建立及執行[機器學習管線](concept-ml-pipelines.md)。 使用 **ML 管線** 來建立可將各種 ML 階段將在一起的工作流程。 然後發佈該管線以供稍後存取，或與其他人共用。 追蹤 ML 管線以查看您的模型在真實世界中的執行方式，以及偵測資料漂移。 ML 管線適用于批次評分案例，使用各種計算，重複使用步驟而不是重新執行步驟，以及與其他人共用 ML 工作流程。
 
@@ -269,7 +269,7 @@ dataset_consuming_step = PythonScriptStep(
 )
 ```
 
-然後，您可以使用 [執行 input_datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueinput-datasets) 字典，在管線中取出資料集。
+然後，您可以使用 [Run.input_datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueinput-datasets) 字典來取得管線中的資料集。
 
 ```python
 # iris_train.py
@@ -355,7 +355,7 @@ pipeline_run1.wait_for_completion()
 
 當您啟動來源目錄是本機 Git 存放庫的定型回合時，該存放庫的相關資訊會儲存在回合歷程記錄中。 如需詳細資訊，請參閱 [Azure Machine Learning 的 Git 整合](concept-train-model-git-integration.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - 若要與同事或客戶共用您的管線，請參閱 [發佈機器學習管線](how-to-deploy-pipelines.md)
 - [在 GitHub 上使用這些 Jupyter 筆記本](https://aka.ms/aml-pipeline-readme)進一步探索機器學習管線

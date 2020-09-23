@@ -1,5 +1,5 @@
 ---
-title: 容器支援
+title: Azure 認知服務容器
 titleSuffix: Azure Cognitive Services
 description: 了解 Docker 容器如何使認知服務更接近您的資料。
 services: cognitive-services
@@ -8,19 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 9/01/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 141b82467f2b437cfd4a8125d86618b85e48a6ef
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: bda6fae31e3f5ef63d2c917937d80b2c1ea4fc48
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89424631"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906997"
 ---
-# <a name="container-support-in-azure-cognitive-services"></a>Azure 認知服務中的容器支援
+# <a name="azure-cognitive-services-containers"></a>Azure 認知服務容器
 
 > [!WARNING]
-> Microsoft 於 2020 年 6 月 11 日宣佈，除非已制訂立基於人權的健全監管法規，否則不會將臉部辨識技術銷銷售給美國的警察部門。 因此，客戶可能不會使用臉部辨識功能或 Azure 服務中包含的功能（例如臉部或影片索引子），如果客戶是或允許對美國的員警部門使用這類服務。
+> Microsoft 於 2020 年 6 月 11 日宣佈，除非已制訂立基於人權的健全監管法規，否則不會將臉部辨識技術銷銷售給美國的警察部門。 因此，如果客戶隸屬於美國警察部門，或允許美國警察部門使用此類服務，則客戶可能無法使用臉部識別功能或 Azure 服務中納入的功能 (例如「臉部索引器」或「影片索引器」)。
 
 Azure 認知服務中的容器支援可讓開發人員使用 Azure 中可用的相同豐富 Api，並可讓您彈性地部署和裝載 [Docker 容器](https://www.docker.com/what-container)隨附的服務。 容器支援目前適用于 Azure 認知服務的一部分，包括下列各項：
 
@@ -54,20 +54,21 @@ Azure 認知服務容器能提供下列 Docker 容器集合，每個容器都包
 
 | 服務 | 支援的定價層 | 容器 | Description |
 |--|--|--|--|
-| [異常偵測器][ad-containers] | F0，S0 | **異常偵測器** | Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列資料中的異常狀況。<br>[要求存取][request-access] |
+| [異常偵測器][ad-containers] | F0，S0 | **異常** 偵測器 ([映射](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))   | Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列資料中的異常狀況。<br>[要求存取][request-access] |
 | [電腦視覺][cv-containers] | F0，S1 | **讀取** | 從具不同表面和背景之各種物件 (例如收據、海報和名片) 的影像擷取印刷文字。 讀取容器也會偵測影像中的 *手寫文字* ，並提供 PDF/TIFF/多重頁面支援。<br/><br/>**重要事項：** 讀取容器目前只適用于英文。 |
 | [臉部][fa-containers] | F0，S0 | **臉部** | 能偵測影像中的人臉並識別其特性，包括臉部特徵點 (例如鼻子和眼睛)、性別、年齡及其他機器預測的臉部容貌。 除了偵測以外，臉部也可以使用信賴分數檢查相同或不同影像中的兩張臉是否相同，或將臉部向資料庫進行比對，看看是否有樣貌相似或相同的臉部。 它也能夠使用共同視覺特徵，將相似臉部分組。<br>[要求存取][request-access] |
 | [表單辨識器][fr-containers] | F0，S0 | **表單辨識器** | 表單理解會套用機器學習技術來識別和解壓縮表單中的索引鍵/值組和資料表。<br>[要求存取][request-access] |
 | [LUIS][lu-containers] | F0，S0 | **LUIS** ([影像](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | 將已定型或發佈的 Language Understanding 模型 (也稱為 LUIS 應用程式) 載入 Docker 容器中，並提供從容器的 API 端點存取查詢預測的權限。 您可以從容器收集查詢記錄，並將這些記錄重新上傳至 [LUIS 入口網站](https://www.luis.ai)，以改善應用程式的預測精確度。 |
-| [語音服務 API][sp-containers-stt] | F0，S0 | **語音轉文字** | 連續的即時語音謄寫成文字。 |
-| [語音服務 API][sp-containers-cstt] | F0，S0 | **自訂語音轉換文字** | 使用自訂模型，將即時語音轉譯為文字。 |
-| [語音服務 API][sp-containers-tts] | F0，S0 | **文字轉換語音** | 將文字轉換成自然發音語音。 |
-| [語音服務 API][sp-containers-ctts] | F0，S0 | **自訂文字轉換語音** | 使用自訂模型將文字轉換成自然發音語音。 |
-| [語音服務 API][sp-containers-ntts] | F0，S0 | **神經文字轉換語音** | 使用深度類神經網路技術將文字轉換成自然發音語音，以允許更自然合成的語音。 |
+| [語音服務 API][sp-containers-stt] | F0，S0 | **語音轉換文字** ([映射](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text))  | 連續的即時語音謄寫成文字。 |
+| [語音服務 API][sp-containers-cstt] | F0，S0 | **自訂語音轉換文字** ([映射](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text))  | 使用自訂模型，將即時語音轉譯為文字。 |
+| [語音服務 API][sp-containers-tts] | F0，S0 | **文字轉換語音** ([映射](https://hub.docker.com/_/azure-cognitive-services-speechservices-text-to-speech))  | 將文字轉換成自然發音語音。 |
+| [語音服務 API][sp-containers-ctts] | F0，S0 | **自訂文字轉換語音** ([映射](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-text-to-speech))  | 使用自訂模型將文字轉換成自然發音語音。 |
+| [語音服務 API][sp-containers-ntts] | F0，S0 | **神經文字轉換語音** ([影像](https://hub.docker.com/_/azure-cognitive-services-speechservices-neural-text-to-speech))  | 使用深度類神經網路技術將文字轉換成自然發音語音，以允許更自然合成的語音。 |
 | [文字分析][ta-containers-keyphrase] | F0、S | **關鍵片語擷取** ([影像](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | 擷取關鍵片語來識別重點。 例如，若輸入文字為 "The food was delicious and there were wonderful staff"，API 即會傳回主要討論要點："food" 和 "wonderful staff"。 |
 | [文字分析][ta-containers-language] | F0、S | **語言偵測** ([影像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | 偵測輸入文字是以何種語言撰寫的，並針對要求所提交的每份文件回報單一語言代碼，最多可達 120 種語言。 語言代碼各配有一個分數，表示分數的強度。 |
 | [文字分析][ta-containers-sentiment] | F0、S | **情感分析 v3** ([映射](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409))  | 分析原始文字以尋找正面或負面情感的線索。 此版本的情感分析會傳回情感標籤 (例如，在其中每個檔和句子的 *正面* 或 *負面*) 。 |
 | [文字分析][ta-containers-health] | F0、S | **健全狀況的文字分析** | 從非結構化臨床文字中將醫療資訊解壓縮並加上標籤。 |
+| [空間分析][spa-containers] | S0 | **空間分析** | 從非結構化臨床文字中將醫療資訊解壓縮並加上標籤。 |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -104,7 +105,7 @@ Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至
 
 [!INCLUDE [Discoverability of more container information](../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解您可以搭配認知服務使用的 [容器配方](containers/container-reuse-recipe.md) 。
 
@@ -127,6 +128,7 @@ Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至
 [fr-containers]: form-recognizer/form-recognizer-container-howto.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
+[spa-containers]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container
 [sp-containers-stt]: speech-service/speech-container-howto.md?tabs=stt
 [sp-containers-cstt]: speech-service/speech-container-howto.md?tabs=cstt
 [sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts

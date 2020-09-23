@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 71a41a3a8d137fdf9d4f41c975e7be6c148078e1
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: ef5802d0c5e35b9c12db1f40782ba5f190ad1883
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875627"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907191"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Azure 串流分析的服務匯流排主題輸出
 
@@ -49,7 +49,7 @@ ms.locfileid: "88875627"
 
 ## <a name="system-properties"></a>系統屬性
 
-您可以將查詢資料行當做[系統屬性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties)附加至外寄服務匯流排佇列或主題訊息。 這些資料行不會進入承載，而是以查詢資料行值填入的對應 BrokeredMessage [系統屬性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties)。
+您可以將查詢資料行當做[系統屬性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)附加至外寄服務匯流排佇列或主題訊息。 這些資料行不會進入承載，而是以查詢資料行值填入的對應 BrokeredMessage [系統屬性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)。
 支援這些系統屬性 - `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`。
 
 這些資料行的字串值會剖析為對應的系統屬性值類型，而任何剖析失敗都會被視為資料錯誤。
@@ -76,4 +76,4 @@ ms.locfileid: "88875627"
 * [快速入門：使用 ARM 範本建立 Azure 串流分析作業](quick-create-azure-resource-manager.md)
 * [快速入門：使用 Azure PowerShell 建立串流分析作業](stream-analytics-quick-create-powershell.md)
 * [快速入門：使用 Visual Studio 建立 Azure 串流分析作業](stream-analytics-quick-create-vs.md)
-* [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-vs-code.md)
+* [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-visual-studio-code.md)

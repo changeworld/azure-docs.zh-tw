@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1c403398f7320cefa16a4a570645a6d7d750acc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8cda46a011ae92f26a15a4e9a918559801ce299c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297496"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906871"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>適用於 Spring 微服務應用程式的 Java 和基底 OS
+
+本文**適用于：** ✔️ JAVA
+
 以下是針對春季微服務應用程式維護狀況良好的 JAVA 和基本作業系統的原則。
 ## <a name="principles-for-healthy-java-and-base-os"></a>狀況良好的 JAVA 和基底 OS 原則
 * 必須是跨層的相同基底作業系統-基本 |標準 |溢價。
@@ -51,6 +54,7 @@ Azul 系統將會持續掃描基本作業系統的變更，並讓最後一個預
 
 > ![預設部署](media/spring-cloud-principles/spring-cloud-default-deployment.png)
  
-## <a name="next-steps"></a>接下來的步驟
-* [快速入門：使用 Azure 入口網站來啟動現有的 Azure Spring Cloud 應用程式](spring-cloud-quickstart.md)
+## <a name="next-steps"></a>下一步
+
+* [快速入門：部署您的第一個 Azure Spring Cloud 應用程式](spring-cloud-quickstart.md)
 * [適用于 Azure 和 Azure Stack 的 JAVA 長期支援](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)

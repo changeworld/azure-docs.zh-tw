@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge 技術規格和合規性 | Microsoft Docs
-description: 了解您 Azure Stack Edge 的技術規格和合規性
+title: Microsoft Azure Stack Edge Pro 技術規格和合規性 |Microsoft Docs
+description: 瞭解 Azure Stack Edge Pro 的技術規格和合規性
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652046"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883433"
 ---
-# <a name="azure-stack-edge-technical-specifications"></a>Azure Stack Edge 技術規格
+# <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro 技術規格
 
-Microsoft Azure Stack Edge 裝置的硬體元件會遵循本文中概述的技術規格與法規標準。 技術規格說明電源供應器裝置 (PSU)、儲存體容量、機箱和環境標準。
+Microsoft Azure Stack Edge Pro 裝置的硬體元件符合本文所述的技術規格和法規標準。 技術規格說明電源供應器裝置 (PSU)、儲存體容量、機箱和環境標準。
 
 ## <a name="compute-memory-specifications"></a>計算、記憶體規格
 
-Azure Stack Edge 裝置的計算和記憶體規格如下：
+Azure Stack Edge Pro 裝置具有下列計算和記憶體的規格：
 
 | 規格           | 值                  |
 |-------------------------|----------------------------|
@@ -30,7 +30,7 @@ Azure Stack Edge 裝置的計算和記憶體規格如下：
 
 ## <a name="fpga-specifications"></a>FPGA 規格
 
-可現場程式化閘道陣列 (FPGA) 包含在每個 Azure Stack Edge 裝置上，可以啟用 Machine Learning (ML) 案例。
+可 (FPGA) 的可現場程式化閘道陣列會包含在每個 Azure Stack Edge Pro 裝置上，以 Machine Learning (ML) 案例。
 
 | 規格           | 值                  |
 |-------------------------|----------------------------|
@@ -38,7 +38,7 @@ Azure Stack Edge 裝置的計算和記憶體規格如下：
 
 ## <a name="power-supply-unit-specifications"></a>電源供應器裝置規格
 
-Azure Stack Edge 裝置有兩個具有高效能風扇的 100-240 V 電源供應器裝置 (PSU)。 這兩個 PSU 提供了備援電源設定。 如果 PSU 故障，裝置會繼續在其他 PSU 上正常運作，直到更換故障的模組為止。 下表列出 PSU 的技術規格。
+Azure Stack Edge Pro 裝置有兩個 100-240 V 電源供應器單位 (Psu) 具有高效能風扇。 這兩個 PSU 提供了備援電源設定。 如果 PSU 故障，裝置會繼續在其他 PSU 上正常運作，直到更換故障的模組為止。 下表列出 PSU 的技術規格。
 
 | 規格           | 750 W PSU                  |
 |-------------------------|----------------------------|
@@ -47,18 +47,18 @@ Azure Stack Edge 裝置有兩個具有高效能風扇的 100-240 V 電源供應�
 | 選取電壓範圍 | 自動設定範圍：100-240 V AC |
 | 隨插即用           | 是                        |
 
-### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>依區域的 Azure Stack Edge 電源線規格
+### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>依區域 Azure Stack Edge Pro 電源線規格
 
-您的 Azure Stack Edge 裝置需要電源線，視您的 Azure 區域而定。
-如需所有支援電源線的技術規格，請參閱[依區域的 Azure Stack Edge 電源線規格](azure-stack-edge-technical-specifications-power-cords-regional.md)。
+您的 Azure Stack Edge Pro 裝置需要電源線，視您的 Azure 區域而異。
+如需所有支援電源線的技術規格，請參閱 [依區域 Azure Stack Edge Pro 電源線規格](azure-stack-edge-technical-specifications-power-cords-regional.md)。
 
 <!--## Power consumption statistics
 
-The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge device.-->
+The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge Pro device.-->
 
 ## <a name="network-interface-specifications"></a>網路介面規格
 
-您的 Azure Stack Edge 裝置有 6 個網路介面，PORT1 至 PORT6。
+您 Azure Stack Edge Pro 裝置有6個網路介面 PORT1-PORT6。
 
 | 規格           | 描述                 |
 |-------------------------|----------------------------|
@@ -66,7 +66,7 @@ The following table lists the typical power consumption data (actual values may 
 
 ## <a name="storage-specifications"></a>儲存體規格
 
-Azure Stack Edge 裝置有 9 X 2.5" NVMe SSD，每個都具有 1.6 TB 的容量。 在這些 SSD 中，1 個是作業系統磁碟，另外 8 個則是資料磁碟。 裝置的可用容量總計約為 12.5 TB。 下表包含裝置儲存體容量的詳細資料。
+Azure Stack Edge Pro 裝置有 9 X 2.5 的 NVMe Ssd，每個裝置都有 1.6 TB 的容量。 在這些 SSD 中，1 個是作業系統磁碟，另外 8 個則是資料磁碟。 裝置的可用容量總計約為 12.5 TB。 下表包含裝置儲存體容量的詳細資料。
 
 |     規格                          |     值             |
 |--------------------------------------------|-----------------------|
@@ -146,4 +146,4 @@ Azure Stack Edge 裝置有 9 X 2.5" NVMe SSD，每個都具有 1.6 TB 的容量�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [部署您的 Azure Stack Edge](azure-stack-edge-deploy-prep.md)
+- [部署 Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md)

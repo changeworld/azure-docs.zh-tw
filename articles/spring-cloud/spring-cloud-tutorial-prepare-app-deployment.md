@@ -1,28 +1,97 @@
 ---
-title: 如何在 Azure 春季雲端中準備 JAVA 春季應用程式以進行部署
-description: 瞭解如何準備 JAVA 春季應用程式以部署到 Azure 春季雲端。
+title: 如何準備應用程式以在 Azure 春季雲端中進行部署
+description: 瞭解如何準備應用程式以部署到 Azure 春季雲端。
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 59318cca33ba1607498546161764aa3aaaaea13e
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90014933"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906831"
 ---
-# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>準備 Java Spring 應用程式以部署到 Azure Spring Cloud
+# <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>準備要在 Azure 中部署的應用程式（春季雲端）
 
+::: zone pivot="programming-language-csharp"
+Azure 春季 Cloud 提供健全的服務來裝載、監視、調整及更新 Steeltoe 應用程式。 本文說明如何準備現有的 Steeltoe 應用程式，以部署至 Azure 春季雲端。 
+
+本文說明在 Azure 春季雲端中執行 .NET Core Steeltoe 應用程式所需的相依性、設定和程式碼。 如需如何將應用程式部署到 Azure 春季雲端的詳細資訊，請參閱 [部署您的第一個 Azure 春季 cloud 應用程式](spring-cloud-quickstart.md)。
+
+>[!Note]
+> Azure 春季雲端的 Steeltoe 支援目前以公開預覽形式提供。 公開預覽版供應項目可讓客戶在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。  如需有關預覽期間支援的詳細資訊，請參閱 [常見問題](https://azure.microsoft.com/support/faq/) 或 [支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)的檔。
+
+##  <a name="supported-versions"></a>支援的版本
+
+Azure 春季雲端支援：
+
+* .NET Core 3.1
+* Steeltoe 2。4
+
+## <a name="dependencies"></a>相依性
+
+安裝 [SpringCloud 用戶端](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) 套件。
+
+## <a name="update-programcs"></a>更新 Program.cs
+
+在 `Program.Main` 方法中，呼叫 `UseAzureSpringCloudService` 方法：
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        })
+        .UseAzureSpringCloudService();
+```
+
+## <a name="enable-eureka-server-service-discovery"></a>啟用 Eureka 伺服器服務探索
+
+當應用程式在 Azure 春季雲端中執行時所使用的設定來源，會設定 `spring.application.name` 為與要部署專案之 Azure 春季雲端應用程式相同的名稱。
+
+例如，如果您將名為的 .NET 專案部署 `EurekaDataProvider` 至名為的 Azure 春季雲端應用程式，則該應用程式的 `planet-weather-provider` *appSettings.js* 應包含下列 JSON：
+
+```json
+"spring": {
+  "application": {
+    "name": "planet-weather-provider"
+  }
+}
+```
+
+## <a name="use-service-discovery"></a>使用服務探索
+
+若要使用 Eureka Server 服務探索呼叫服務，請將 HTTP 要求設定為 `http://<app_name>` `app_name` `spring.application.name` 目標應用程式的值。 例如，下列程式碼會呼叫 `planet-weather-provider` 服務：
+
+```csharp
+using (var client = new HttpClient(discoveryHandler, false))
+{
+    var responses = await Task.WhenAll(
+        client.GetAsync("http://planet-weather-provider/weatherforecast/mercury"),
+        client.GetAsync("http://planet-weather-provider/weatherforecast/saturn"));
+    var weathers = await Task.WhenAll(from res in responses select res.Content.ReadAsStringAsync());
+    return new[]
+    {
+        new KeyValuePair<string, string>("Mercury", weathers[0]),
+        new KeyValuePair<string, string>("Saturn", weathers[1]),
+    };
+}
+```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 本主題會示範如何準備現有的 Java Spring 應用程式以部署到 Azure Spring Cloud。 若能夠正確設定，Azure Spring Cloud 將能提供豐富的服務以監視、調整及更新您的 Java Spring Cloud 應用程式。
 
 執行此範例之前，您可以嘗試[基本快速入門](spring-cloud-quickstart.md)。
 
 其他範例說明在已設定 POM 檔案時，如何將應用程式部署至 Azure Spring Cloud。 
 * [啟動您的第一個應用程式](spring-cloud-quickstart.md)
-* [建立並執行微服務](spring-cloud-quickstart-sample-app-introduction.md)
+* [建置和執行微服務](spring-cloud-quickstart-sample-app-introduction.md)
 
 本文說明必要的相依性，以及如何將其新增至 POM 檔案。
 
@@ -244,3 +313,4 @@ public class GatewayApplication {
 在此主題中，您已了解如何設定 Java Spring 應用程式以部署至 Azure Spring Cloud。 若要瞭解如何設定 Config Server 實例，請參閱 [設定設定伺服器實例](spring-cloud-tutorial-config-server.md)。
 
 GitHub 上可用的其他範例：[Azure Spring Cloud 範例](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)。
+::: zone-end

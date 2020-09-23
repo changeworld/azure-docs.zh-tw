@@ -1,14 +1,9 @@
 - name: 沈浸式閱讀程式文件
   href: index.yml
-- name: 概觀
-  items:
-    - name: 什麼是沈浸式閱讀程式？
-      href: Overview.md
+- name: 什麼是沈浸式閱讀程式？
+  href: Overview.md
 - name: 快速入門
-  expanded: true
-  items:
-    - name: 使用用戶端程式庫
-      href: ./quickstarts/client-libraries.md
+  href: ./quickstarts/client-libraries.md
 - name: 教學課程
   items:
     - name: 啟動沈浸式閱讀程式 (Android)

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 971554443e5b420cf759f86013445a6ff9069dea
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 4599346cd4538151f6c758253f1f1bf29bafdcbf
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706860"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985782"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>瞭解適用於 MySQL 的 Azure 資料庫的根 CA 變更變更
 
@@ -108,7 +108,7 @@ ms.locfileid: "90706860"
 針對使用自我裝載 Integration Runtime 的連接器，您可以在連接字串中明確包含 SSL 憑證檔案的路徑，您必須下載 [新的憑證](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) ，並更新連接字串以使用它。
 
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. 我是否需要為此變更規劃資料庫伺服器維護停機時間？
-否。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以資料庫伺服器不需要維護停機時間來進行這項變更。
+不可以。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以資料庫伺服器不需要維護停機時間來進行這項變更。
 
 ### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8. 如果我無法在2020年10月26日之前取得此變更的排程停機時間， (10/26/2020) ？
 由於用來連接到伺服器的用戶端必須更新憑證資訊，如 [此處](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)的修正一節所述，在此情況下，伺服器不需要停機。
@@ -122,8 +122,28 @@ ms.locfileid: "90706860"
 ### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-the-read-replicas"></a>11. 如果我使用讀取複本，我只需要在主伺服器或讀取複本上執行此更新嗎？
 由於這項更新是用戶端的變更，如果用戶端用來從複本伺服器讀取資料，您也必須套用這些用戶端的變更。
 
-### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. 我們是否有伺服器端查詢，以確認是否正在使用 SSL？
+### <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. 如果我使用資料輸入複寫，是否需要執行任何動作？
+如果您使用 [資料傳入](concepts-data-in-replication.md) 複寫來連接適用於 MySQL 的 Azure 資料庫，則需要考慮兩件事：
+*   如果資料複寫是來自 (內部內部部署或 Azure 虛擬機器) 到適用於 MySQL 的 Azure 資料庫的虛擬機器，則您必須檢查是否使用 SSL 來建立複本。 執行 **顯示從屬狀態** 並檢查下列設定。  
+
+    ```azurecli-interactive
+    Master_SSL_Allowed            : Yes
+    Master_SSL_CA_File            : ~\azure_mysqlservice.pem
+    Master_SSL_CA_Path            :
+    Master_SSL_Cert               : ~\azure_mysqlclient_cert.pem
+    Master_SSL_Cipher             :
+    Master_SSL_Key                : ~\azure_mysqlclient_key.pem
+    ```
+
+    如果您看到憑證是針對 CA_file 所提供，SSL_Cert 和 SSL_Key，則必須新增 [新憑證](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)來更新檔案。
+
+*   如果資料複寫在兩個適用於 MySQL 的 Azure 資料庫之間，則您必須執行 **呼叫 mysql.az_replication_change_master** 來重設複本，並將新的雙重根憑證提供為最後一個參數 [master_ssl_ca](howto-data-in-replication.md#link-master-and-replica-servers-to-start-data-in-replication)
+
+### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13. 我們是否有伺服器端查詢，以確認是否正在使用 SSL？
 若要確認您是否使用 SSL 連線來連線到伺服器，請參閱 [ssl 驗證](howto-configure-ssl.md#step-4-verify-the-ssl-connection)。
 
-### <a name="13-what-if-i-have-further-questions"></a>13. 如果我有其他問題，該怎麼辦？
-如果您有任何疑問，請從 [Microsoft Q&中的](mailto:AzureDatabaseforMySQL@service.microsoft.com)「社區專家」獲得解答。 如果您有支援方案，且需要技術協助，請  [與我們聯絡](mailto:AzureDatabaseforMySQL@service.microsoft.com)
+### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. 如果我的憑證檔案中已經有 DigiCertGlobalRootG2，是否需要採取動作？
+不可以。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2**，就不需要採取任何動作。
+
+### <a name="15-what-if-i-have-further-questions"></a>15. 如果我有其他問題，該怎麼辦？
+如果您有任何疑問，請從 [Microsoft Q&中的](mailto:AzureDatabaseforMySQL@service.microsoft.com)「社區專家」獲得解答。 如果您有支援方案，且需要技術協助，請 [與我們聯絡](mailto:AzureDatabaseforMySQL@service.microsoft.com)。

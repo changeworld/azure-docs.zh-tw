@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU 管理頻寬排程 |Microsoft Docs
-description: 說明如何使用 Azure 入口網站管理 Azure Stack Edge GPU 上的頻寬排程。
+title: Azure Stack Edge Pro GPU 管理頻寬排程 |Microsoft Docs
+description: 說明如何使用 Azure 入口網站管理 Azure Stack Edge Pro GPU 上的頻寬排程。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 92b9edb4f694a5ff7d15b06be41cc20db3b64b97
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: faf78e9f7efb83c5f28538e18ed081378d120848
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265689"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890659"
 ---
-# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-gpu"></a>使用 Azure 入口網站管理 Azure Stack Edge GPU 上的頻寬排程 
+# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>使用 Azure 入口網站管理 Azure Stack Edge Pro GPU 上的頻寬排程 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文說明如何管理 Azure Stack Edge 上的頻寬排程。 頻寬排程可讓您設定多個日期時間排程的網路頻寬使用量。 這些排程可以套用至從您的裝置上傳和下載作業到雲端。
+本文說明如何管理 Azure Stack Edge Pro 上的頻寬排程。 頻寬排程可讓您設定多個日期時間排程的網路頻寬使用量。 這些排程可以套用至從您的裝置上傳和下載作業到雲端。
 
-您可以透過 Azure 入口網站來新增、修改或刪除 Azure Stack Edge 的頻寬排程。
+您可以透過 Azure 入口網站來新增、修改或刪除 Azure Stack Edge Pro 的頻寬排程。
 
 在本文中，您將學會如何：
 
@@ -42,9 +42,9 @@ ms.locfileid: "89265689"
 
 3. 在 [新增排程]**** 中： 
 
-   1. 提供排程的 [開始日期]****、[結束日期]****、[開始時間]**** 及[結束時間]****。
-   2. 如果此排程應該整天執行，請勾選 [全天]****。
-   3. [頻寬速率]**** 是以 MB / 秒 (Mbps) 為單位的頻寬，由您的裝置使用於涉及雲端的作業 (上傳與下載)。 請為此欄位提供20到2147483647之間的數位。
+   1. 提供排程的 **開始日期**、 **結束日期**、 **開始時間**和 **結束時間** 。
+   2. 如果此排程應全天執行，請勾選 [ **全天** ] 選項。
+   3. **頻寬速率** 是您的裝置在牽涉到雲端 (上傳和下載) 時，每秒 Mb (Mbps) 的頻寬。 請為此欄位提供20到2147483647之間的數位。
    4. 如果您不想節流處理上傳和下載日期，請勾選 [無限制]**** 頻寬。
    5. 選取 [新增]  。
 
@@ -73,7 +73,7 @@ ms.locfileid: "89265689"
 
 ## <a name="delete-a-schedule"></a>刪除排程
 
-請執行下列步驟，以刪除與您的 Azure Stack Edge 裝置相關聯的頻寬排程。
+請執行下列步驟，以刪除與您的 Azure Stack Edge Pro 裝置相關聯的頻寬排程。
 
 1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **頻寬**]。  
 
@@ -84,6 +84,6 @@ ms.locfileid: "89265689"
 3. 刪除排程之後，排程清單就會更新。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 了解如何[管理共用](azure-stack-edge-j-series-manage-shares.md)。

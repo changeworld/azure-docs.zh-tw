@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 4bd5b2d3715376aaca689c4589c3aab41a78f514
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d25c8908b46608ac64bcf135404a070740413fe0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120903"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907373"
 ---
-# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>重新開機適用於 PostgreSQL 的 Azure 資料庫-使用 Azure 入口網站的單一伺服器
+# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>使用 Azure 入口網站重新開機適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 本主題說明如何重新啟動適用於 PostgreSQL 的 Azure 資料庫伺服器。 您可能會為了進行維護而需要重新啟動伺服器，進而在伺服器執行作業時導致短暫中斷。
 
 如果服務忙碌中，系統會阻止伺服器重新啟動。 例如，該服務可能正在處理先前要求的作業，例如調整虛擬核心。
@@ -32,20 +32,20 @@ ms.locfileid: "86120903"
 
 2. 在伺服器 [概觀]**** 頁面的工具列中，按一下 [重新啟動]****。
 
-   ![適用於 PostgreSQL 的 Azure 資料庫 - 概觀 - 重新啟動按鈕](./media/howto-restart-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restart-server-portal/2-server.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫 - 概觀 - 重新啟動按鈕":::
 
 3. 按一下 [是]**** 以確認要重新啟動伺服器。
 
-   ![適用於 PostgreSQL 的 Azure 資料庫 -重新啟動確認](./media/howto-restart-server-portal/3-restart-confirm.png)
+   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫 -重新啟動確認":::
 
 4. 您會發現伺服器的狀態變更為「正在重新啟動」。
 
-   ![適用於 PostgreSQL 的 Azure 資料庫 -重新啟動狀態](./media/howto-restart-server-portal/4-restarting-status.png)
+   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫 -重新啟動狀態":::
 
 5. 確認伺服器重新啟動已成功。
 
-   ![適用於 PostgreSQL 的 Azure 資料庫 -重新啟動成功](./media/howto-restart-server-portal/5-restart-success.png)
+   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫 -重新啟動成功":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-瞭解[如何在適用於 PostgreSQL 的 Azure 資料庫中設定參數](howto-configure-server-parameters-using-portal.md)
+瞭解 [如何在適用於 PostgreSQL 的 Azure 資料庫中設定參數](howto-configure-server-parameters-using-portal.md)

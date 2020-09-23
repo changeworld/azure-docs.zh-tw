@@ -3,12 +3,12 @@ title: 指導方針和最佳做法
 description: 探索將雲端和內部部署工作負載備份至雲端的最佳做法和指導方針
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000357"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985527"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>將雲端和內部部署工作負載備份到雲端
 
@@ -48,7 +48,7 @@ Azure 備份可在內部部署和雲端)  (各種工作負載的資料保護。 
 
 ### <a name="management-plane"></a>管理平面
 
-* **存取控制** –復原服務保存庫會提供管理功能，而且可透過 AZURE 入口網站、SDK、CLI 和 REST api 來存取。 它也是 RBAC 界限，可讓您選擇只將備份的存取許可權制為已授權的備份管理員。
+* **存取控制** -保存庫 (復原服務和備份保存庫) 提供管理功能，並可透過 Azure 入口網站、備份中心、保存庫儀表板、SDK、CLI 和 REST api 來存取。 它也是 RBAC 界限，可讓您選擇只將備份的存取許可權制為已授權的備份管理員。
 
 * **原則管理** –每個保存庫內的 Azure 備份原則會定義何時應該觸發備份，以及需要保留多久的時間。 您也可以管理這些原則，並將其套用到多個專案。
 
@@ -58,7 +58,7 @@ Azure 備份可在內部部署和雲端)  (各種工作負載的資料保護。 
 
 ## <a name="vault-considerations"></a>保存庫考慮
 
-Azure 備份會使用復原服務保存庫來協調和管理備份。 其也會使用保存庫儲存已備份的資料。 有效的保存庫設計可協助組織建立結構來組織及管理 Azure 中的備份資產，以支援您的業務優先順序。 建立保存庫時，請考慮下列指導方針：  
+Azure 備份使用保存庫 (復原服務和備份保存庫) 來協調及管理備份。 其也會使用保存庫儲存已備份的資料。 有效的保存庫設計可協助組織建立結構來組織及管理 Azure 中的備份資產，以支援您的業務優先順序。 建立保存庫時，請考慮下列指導方針：  
 
 ### <a name="align-to-subscription-design-strategy"></a>配合訂用帳戶設計策略
 
@@ -71,7 +71,8 @@ Azure 備份會使用復原服務保存庫來協調和管理備份。 其也會�
 * 如果您的工作負載全都由單一訂用帳戶和單一資源管理，則您可以使用單一保存庫來監視和管理您的備份資產。
 
 * 如果您的工作負載分散到多個訂用帳戶，您可以建立多個保存庫，每個訂用帳戶一或多個。
-  * 若要簡化跨所有保存庫、訂用帳戶和租使用者的操作活動監視，您可以使用 Backup Explorer 和報表。 若要[深入瞭解](monitor-azure-backup-with-backup-explorer.md)，請參閱這裡以取得匯總的觀點。
+  * 備份中心可讓您擁有單一窗格，以管理與備份相關的所有工作。 若要[深入瞭解]()，請參閱。
+  * 您可以使用活頁簿範本自訂您的觀點。 Backup Explorer 是 Azure Vm 的其中一個範本。 若要[深入瞭解](monitor-azure-backup-with-backup-explorer.md)，請參閱。
   * 如果您需要跨保存庫的一致原則，您可以使用 Azure 原則將備份原則傳播到多個保存庫。 您可以撰寫自訂的 [Azure 原則定義](../governance/policy/concepts/definition-structure.md) ，以使用 [' deployifnotexists '](../governance/policy/concepts/effects.md#deployifnotexists) 效果將備份原則傳播到多個保存庫。 您可以指派 [此 Azure 原則](../governance/policy/assign-policy-portal.md) 定義至 (訂用帳戶或 RG) 的特定範圍，以便將「備份原則」資源部署到 Azure 原則指派範圍內的所有復原服務保存庫。 備份原則的設定 (例如備份頻率、保留等等) 應該由使用者指定為 Azure 原則指派中的參數。
 
 * 當您的組織使用量增加時，您可能會想要在訂用帳戶之間移動工作負載，原因如下：依備份原則、合併保存庫、在較低的冗余上取捨，以節省成本 (從 GRS 移至 LRS) 。  Azure 備份支援跨 Azure 訂用帳戶或相同訂用帳戶內的另一個資源群組移動復原服務保存庫。 若要[深入瞭解](backup-azure-move-recovery-services-vault.md)，請參閱。
@@ -135,7 +136,7 @@ Azure 備份原則有兩個元件： *排程* (何時進行備份) 和 *保留* 
 
 為了協助保護您的備份資料並符合企業的安全性需求，Azure 備份提供機密性、完整性和可用性保證，以防止刻意攻擊和您的寶貴資料和系統濫用。 針對您的 Azure 備份解決方案，請考慮下列安全性指導方針：
 
-### <a name="authentication-and-authorization"></a>驗證和授權
+### <a name="authentication-and-authorization"></a>驗證與授權
 
 * Azure 角色型存取控制 (Azure RBAC) 可讓您更細緻的存取管理、小組內的職責隔離，以及僅授與執行其工作所需的使用者存取權。 若要[深入瞭解](backup-rbac-rs-vault.md)，請參閱。
 
@@ -255,7 +256,7 @@ Azure 備份服務的功能可讓您彈性地管理成本，並仍能滿足您�
 
 * 您也可以透過內建的復原服務保存庫 **活動記錄**來取得通知。 不過，它支援有限的案例，並不適用于排程備份之類的作業，這會比使用活動記錄更適合資源記錄檔。 若要深入瞭解這些限制，以及您可以如何使用 Log Analytics 工作區來大規模監視和警示，以針對受 Azure 備份保護的所有工作負載，請參閱這 [篇文章](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 建議您閱讀下列文章，以瞭解使用 Azure 備份的起點：
 

@@ -4,18 +4,21 @@ description: 在本教學課程中，您將使用 Intel 提供的 AI 模型伺�
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 95dbf555cc6b8f8edb1bc9dca2e10d3ef72eb9db
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: e620da1a4f0b7f782d478314fb0e2e83ab9a124a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567569"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906609"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>教學課程：使用 Intel 提供的 AI 擴充功能 OpenVINO™ Model Server 來分析即時影片 - Intel 提供的 AI 擴充功能 
 
-本教學課程說明如何使用 Intel 提供的 AI 擴充功能 OpenVINO™ Model Server，從 (模擬) IP 相機分析即時影片摘要。 您會看到此推斷伺服器如何讓您存取用來偵測物件的模型 (人員、車輛或自行車)，以及用來分類車輛的模型。 系統會將即時影片摘要中的框架子集傳送至此推斷伺服器務，並將結果傳送至 IoT Edge 中樞。 
+本教學課程說明如何使用 Intel 提供的 AI 擴充功能 OpenVINO™ Model Server，從 (模擬) IP 相機分析即時影片摘要。 您會看到此推斷伺服器如何讓您存取用來偵測物件的模型 (人員、車輛或自行車)，以及用來分類車輛的模型。 系統會將即時影片摘要中的框架子集傳送至此推斷伺服器務，並將結果傳送至 IoT Edge 中樞。
 
-本教學課程會使用 Azure VM 作為 IoT Edge 裝置，以及使用模擬的即時影片串流。 其根據的是以 C# 撰寫的範例程式碼，並且會在[偵測動作並發出事件](detect-motion-emit-events-quickstart.md)快速入門的基礎上來建置。 
+本教學課程會使用 Azure VM 作為 IoT Edge 裝置，以及使用模擬的即時影片串流。 其根據的是以 C# 撰寫的範例程式碼，並且會在[偵測動作並發出事件](detect-motion-emit-events-quickstart.md)快速入門的基礎上來建置。
+
+> [!NOTE]
+> 本教學課程需要使用 x86-64 電腦作為 Edge 裝置。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -40,7 +43,7 @@ ms.locfileid: "89567569"
 ## <a name="overview"></a>概觀
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/use-intel-openvino-tutorial/topology.png" alt-text="概觀":::
+> :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="概觀":::
 
 上圖顯示本快速入門中的信號流動方式。 [邊緣模組](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)會模擬裝載了即時串流通訊協定 (RTSP) 伺服器的 IP 攝影機。 [RTSP 來源](media-graph-concept.md#rtsp-source)節點會從這部伺服器提取影片摘要，並將影片畫面傳送到[畫面播放速率篩選處理器](media-graph-concept.md#frame-rate-filter-processor)節點。 此處理器會限制影片串流到達 [HTTP 延伸模組處理器](media-graph-concept.md#http-extension-processor)節點的畫面播放速率。 
 
@@ -53,6 +56,7 @@ HTTP 延伸模組節點扮演 Proxy 的角色。 其會將影片畫面轉換成�
 1. 清除資源。
 
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>關於 Intel 提供的 AI 擴充功能 OpenVINO™ Model Server
+
 Intel® 發佈的 [OpenVINO™ 工具組](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) (開放式視覺化推斷和類神經網路最佳化) 是免費的軟體套件，可協助開發人員和資料科學家加速電腦視覺工作負載、簡化深度學習推斷和部署，並跨 Intel® 平台輕鬆地從邊緣到雲端執行。 其中包含使用模型最佳化程式和推斷引擎的 Intel® Deep Learning Deployment Toolkit，以及 [Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo) 存放庫，其中包含超過 40 個已最佳化的預先定型模型。
 
 為了建立複雜、高效能的即時影片分析解決方案，IoT Edge 模組上的即時影片分析應該與可利用邊緣規模的強大的推斷引擎配對。 在本教學課程中，推斷要求會傳送至 [Intel 提供的 AI 擴充功能 OpenVINO™ Model Server](https://aka.ms/lva-intel-ovms)，這是一個 Edge 模組，其設計訴求是在 IoT Edge 上使用即時影片分析。 此推斷伺服器模組包含 OpenVINO™ Model Server (OVMS)，這是由 OpenVINO™ 工具組所提供的推斷伺服器，已針對電腦視覺工作負載進行高度最佳化，並針對 Intel® 架構進行開發。 擴充功能已新增至 OVMS，可讓您輕鬆地交換影格，以及推斷伺服器與 IoT Edge 模組上即時影片分析之間的推斷結果，並可讓您執行任何支援 OpenVINO™ 工具組的模型 (您可以藉由修改[程式碼](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)來自訂推斷伺服器模組)。 您可以進一步從 Intel® 硬體提供的各種加速機制中選擇。 包括 CPU (Atom、Core、Xeon)、FPGA、VPU。
