@@ -1,6 +1,6 @@
 ---
-title: 在存取 Azure Stack Edge GPU 裝置的 Windows 用戶端上設定 TLS 1。2
-description: 說明如何在存取 Azure Stack Edge GPU 裝置的 Windows 用戶端上設定 TLS 1.2。
+title: 在存取 Azure Stack Edge Pro GPU 裝置的 Windows 用戶端上設定 TLS 1。2
+description: 說明如何在存取 Azure Stack Edge Pro GPU 裝置的 Windows 用戶端上設定 TLS 1.2。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf6b591ef3158a5944b1ebeb37dd0ef5935f7215
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9a6b0910fcfd2a632f2520a2fe683b15592017cf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268497"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891174"
 ---
-# <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-device"></a>在存取 Azure Stack Edge 裝置的 Windows 用戶端上設定 TLS 1。2
+# <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-pro-device"></a>在存取 Azure Stack Edge Pro 裝置的 Windows 用戶端上設定 TLS 1。2
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-如果您使用 Windows 用戶端來存取 Azure Stack Edge 裝置，您必須在用戶端上設定 TLS 1.2。 本文提供在 Windows 用戶端上設定 TLS 1.2 的資源和指導方針。 
+如果您使用 Windows 用戶端來存取 Azure Stack Edge Pro 裝置，您必須在用戶端上設定 TLS 1.2。 本文提供在 Windows 用戶端上設定 TLS 1.2 的資源和指導方針。 
 
 此處提供的指導方針是以執行 Windows Server 2016 之用戶端上執行的測試為基礎。
 
@@ -72,6 +72,6 @@ ms.locfileid: "89268497"
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-[連接到 Azure Resource Manager](azure-stack-edge-j-series-connect-resource-manager.md)
+[連線到 Azure Resource Manager](azure-stack-edge-j-series-connect-resource-manager.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 1af99f6317ac5888478c7df08fcc31478ef1ccef
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 40b96cac4c9ad638373fbb75f736dc7eded42b43
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180842"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883936"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 資訊安全中心整合安全性解決方案
 這份文件可協助您管理已連線到 Azure 資訊安全中心的安全性解決方案，並且新增新的項目。
@@ -35,11 +35,11 @@ ms.locfileid: "89180842"
 > [!NOTE]
 > 資訊安全中心不會在夥伴虛擬裝置上安裝 Log Analytics 代理程式，因為大部分的安全性廠商會禁止在其應用裝置上執行的外部代理程式。
 
-若要深入瞭解 Qualys 的弱點掃描工具整合，包括適用于標準層客戶的內建掃描器，請參閱 [Azure 虛擬機器的弱點評定](deploy-vulnerability-assessment-vm.md)。
+若要深入瞭解 Qualys 的弱點掃描工具整合，包括 Azure Defender 客戶可用的內建掃描器，請參閱 [Azure 虛擬機器的弱點評定](deploy-vulnerability-assessment-vm.md)。
 
 資訊安全中心也會為您提供弱點分析：
 
-* SQL 資料庫 - 請參閱[探索弱點評量儀表板中的弱點評量報告](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports)
+* SQL 資料庫 - 請參閱[探索弱點評量儀表板中的弱點評量報告](defender-for-sql-usage.md#explore-vulnerability-assessment-reports)
 * Azure Container Registry 映射-請參閱 [Azure Container Registry 與 Security Center 整合 (Preview) ](azure-container-registry-integration.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>安全性解決方案如何整合
@@ -78,7 +78,7 @@ ms.locfileid: "89180842"
    - **解決方案主控台** -開啟此解決方案的管理體驗。
    - **連結 VM** -開啟 [連結應用程式] 頁面。 您可以在這裡將資源連接到合作夥伴解決方案。
    - **刪除解決方案**
-   - **設定 [報告]**
+   - **設定**
 
    ![合作夥伴解決方案詳細資料](./media/security-center-partner-integration/partner-solutions-detail.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "89180842"
 「安全性中心」會自動探索在 Azure 中執行但未連線至「安全性中心」的安全性解決方案，並在 [ **探索的解決方案** ] 區段中顯示解決方案。 這些解決方案包括 Azure 解決方案，例如 [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)和合作夥伴解決方案。
 
 > [!NOTE]
-> 針對探索到的解決方案功能，訂用帳戶層級需要安全性中心的標準層。 若要深入瞭解定價層，請參閱 [定價](security-center-pricing.md) 層。
+> 針對探索到的解決方案功能，在訂用帳戶層級啟用 **Azure Defender** 。 若要深入瞭解定價層，請參閱 [定價](security-center-pricing.md) 層。
 >
 
 選取解決方案底下的 **[連線]** ，以與「安全性中心」整合並收到安全性警示的通知。
@@ -101,7 +101,7 @@ ms.locfileid: "89180842"
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已了解如何在資訊安全中心中整合夥伴解決方案。 如需相關資訊，請參閱下列文章：
 

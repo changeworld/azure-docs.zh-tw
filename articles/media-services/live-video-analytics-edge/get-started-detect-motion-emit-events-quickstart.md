@@ -3,12 +3,12 @@ title: 開始使用 IoT Edge 上的 Live Video Analytics - Azure
 description: 本快速入門說明如何在 IoT Edge 上開始使用 Live Video Analytics。 了解如何偵測即時影片串流中的動作。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: c7e5efa19c27c3f56f9653ed933c7ad290d18408
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0d1aaf34ad38b50403a3cbefbc953f9140f2fe82
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568042"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884945"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入門：開始使用 - IoT Edge 上的 Live Video Analytics
 
@@ -84,6 +84,9 @@ RTSP 模擬器模組會在您執行 [Live Video Analytics 資源設定指令碼]
 如果連線成功，便會出現邊緣裝置清單。 您應該至少會看到一個名為 **lva-sample-device** 的裝置。 您現在可以透過捷徑功能表來管理 IoT Edge 裝置，並與 Azure IoT 中樞互動。 若要檢視邊緣裝置上所部署的模組，請在 [lva-sample-device] 底下展開 [模組] 節點。
 
 ![lva-sample-device 節點](./media/quickstarts/lva-sample-device-node.png)
+
+> [!TIP]
+> 如果您已自行在邊緣裝置 (例如 ARM64 裝置) 上[手動將即時影片分析部署到 IoT Edge](deploy-iot-edge-device.md)，則會看到此模組顯示在 Azure IoT 中樞下的該裝置底下。 您可以選取該模組，並遵循下列其餘步驟。
 
 ## <a name="use-direct-method-calls"></a>使用直接方法呼叫
 

@@ -7,15 +7,15 @@ ms.subservice: security
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: carlrab
-ms.date: 09/03/2019
+ms.reviewer: ''
+ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 12c3a35e12e3f432345ea788893d0d0ae6e6433f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bec60875561a9d821642d850c27e47d4f906aba3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496911"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885405"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>教學課程：保護 Azure SQL Database 中的資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "87496911"
 > - 建立伺服器層級和資料庫層級防火牆規則
 > - 設定 Azure Active Directory (Azure AD) 管理員
 > - 使用 SQL 驗證、Azure AD 驗證和安全的連接字串來管理使用者存取
-> - 啟用安全性功能，例如進階資料安全性、稽核、資料遮罩和加密
+> - 啟用安全性功能，例如適用於 SQL 的 Azure Defender、稽核、資料遮罩和加密
 
 Azure SQL Database 可讓您以下列方式保護資料：
 
@@ -62,7 +62,7 @@ Azure SQL Database 可讓您以下列方式保護資料：
 
 Azure 中 SQL Database 中的資料庫是由防火牆保護。 依預設，伺服器與資料庫的所有連線皆會遭拒。 若要深入了解，請參閱[伺服器層級和資料庫層級防火牆規則](firewall-configure.md)。
 
-最安全的設定是將 [允許存取 Azure 服務] 設為 [關閉]。 接著，針對需要連線的資源 (例如 Azure VM 或雲端服務)，建立[保留的 IP (傳統部署)](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip)，而且只允許透過防火牆的 IP 位址存取。 如果您使用[資源管理員](/azure/virtual-network/virtual-network-ip-addresses-overview-arm)部署模型，則每個資源都需要專用的公用 IP 位址。
+最安全的設定是將 [允許存取 Azure 服務] 設為 [關閉]。 接著，針對需要連線的資源 (例如 Azure VM 或雲端服務)，建立[保留的 IP (傳統部署)](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip)，而且只允許透過防火牆的 IP 位址存取。 如果您使用 [Resource Manager](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) 部署模型，則每個資源都需要專用的公用 IP 位址。
 
 > [!NOTE]
 > SQL Database 會透過連接埠 1433 通訊。 如果您嘗試從公司網路連線，您網路的防火牆可能不允許透過連接埠 1433 的連出流量。 若情況如此，除非系統管理員開啟連接埠 1433，否則您無法連線至伺服器。
@@ -233,30 +233,30 @@ Azure Active Directory 驗證要求將資料庫使用者建立為自主資料庫
 
 ## <a name="enable-security-features"></a>啟用安全性功能
 
-Azure SQL Database 會提供可使用 Azure 入口網站存取的安全性功能。 除了僅適用於資料庫的資料遮罩以外，這些功能均可供資料庫和伺服器使用。 若要深入了解，請參閱[進階資料安全性](advanced-data-security.md)、[稽核](../../azure-sql/database/auditing-overview.md)、[動態資料遮罩](dynamic-data-masking-overview.md)，以及[透明資料加密](transparent-data-encryption-tde-overview.md)。
+Azure SQL Database 會提供可使用 Azure 入口網站存取的安全性功能。 除了僅適用於資料庫的資料遮罩以外，這些功能均可供資料庫和伺服器使用。 若要深入了解，請參閱[適用於 SQL 的 Azure Defender](azure-defender-for-sql.md)、[稽核](../../azure-sql/database/auditing-overview.md)、[動態資料遮罩](dynamic-data-masking-overview.md)，以及[透明資料加密](transparent-data-encryption-tde-overview.md)。
 
-### <a name="advanced-data-security"></a>進階資料安全性
+### <a name="azure-defender-for-sql"></a>適用於 SQL 的 Azure Defender
 
-進階資料安全性功能可讓您偵測潛在威脅，並且對異常活動提供安全性警示。 使用者可以使用稽核功能探索可疑的事件，並判斷事件的原因是否為有人嘗試存取、破壞或利用資料庫中的資料。 使用者也會提供包含弱點評量及資料探索和分類工具的安全性概觀。
+適用於 SQL 的 Azure Defender 功能可讓您偵測潛在威脅，並且對異常活動提供安全性警示。 使用者可以使用稽核功能探索可疑的事件，並判斷事件的原因是否為有人嘗試存取、破壞或利用資料庫中的資料。 使用者也會提供包含弱點評量及資料探索和分類工具的安全性概觀。
 
 > [!NOTE]
 > 範例威脅為 SQL 插入，這是攻擊者將惡意 SQL 插入應用程式輸入的程序。 然後應用程式會在不知情的情況下執行惡意 SQL，並允許攻擊者存取、破壞或修改資料庫中的資料。
 
-若要啟用進階資料安全性：
+若要啟用適用於 SQL 的 Azure Defender：
 
 1. 在 Azure 入口網站中，從左側功能表中選取 [SQL 資料庫]，然後在 [SQL 資料庫] 頁面上選取您的資料庫。
 
 1. 在 [概觀] 頁面上，選取 [伺服器名稱] 連結。 將會開啟伺服器頁面。
 
-1. 在 [SQL 伺服器] 頁面上，尋找 [安全性] 區段並選取 [進階資料安全性]。
+1. 在 [SQL 伺服器] 頁面上，尋找 [安全性] 區段並選取 [資訊安全中心]。
 
-   1. 選取 [進階資料安全性] 下的 [開啟] 來啟用此功能。 選擇儲存弱點評定結果的儲存體帳戶。 然後選取 [儲存]。
+   1. 選取 [適用於 SQL 的 Azure Defender] 底下的 [開啟]，以啟用此功能。 選擇儲存弱點評定結果的儲存體帳戶。 然後選取 [儲存]。
 
       ![瀏覽窗格](./media/secure-database-tutorial/threat-settings.png)
 
       您也可以設定電子郵件來接收安全性警示、儲存體詳細資料及威脅偵測類型。
 
-1. 返回資料庫的 [SQL 資料庫] 頁面，然後選取 [安全性] 區段下的 [進階資料安全性]。 您可以在這裡找到資料庫可用的各種安全性指標。
+1. 返回資料庫的 [SQL 資料庫] 頁面，然後選取 [安全性] 區段下的 [資訊安全中心]。 您可以在這裡找到資料庫可用的各種安全性指標。
 
     ![威脅狀態](./media/secure-database-tutorial/threat-status.png)
 
@@ -347,7 +347,7 @@ Azure SQL Database 會提供可使用 Azure 入口網站存取的安全性功能
 > - 建立伺服器層級和資料庫層級防火牆規則
 > - 設定 Azure Active Directory (AD) 管理員
 > - 使用 SQL 驗證、Azure AD 驗證和安全的連接字串來管理使用者存取
-> - 啟用安全性功能，例如進階資料安全性、稽核、資料遮罩和加密
+> - 啟用安全性功能，例如適用於 SQL 的 Azure Defender、稽核、資料遮罩和加密
 
 前進至下一個教學課程，以了解如何實作地理分散。
 

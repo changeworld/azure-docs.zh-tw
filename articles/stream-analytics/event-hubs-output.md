@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d18d4aa4bf9306bcdd667faa53f0d888c090e2fd
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 50d2d974815e0921d99154bce67f604b7314970d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875652"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892029"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Azure 串流分析的事件中樞輸出
 
@@ -38,7 +38,7 @@ ms.locfileid: "88875652"
 
 ## <a name="partitioning"></a>資料分割
 
-資料分割會根據資料分割的對齊方式而有所不同。 當事件中樞輸出中的分割區索引鍵與上游 (先前的) 查詢步驟同等對齊時，寫入器的數目將會和事件中樞輸出中的分割區數目相同。 每個寫入器都會使用 [EventHubSender 類別](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)來將事件傳送至特定的分割區。 當事件中樞輸出中的分割區索引鍵沒有與上游 (先前的) 查詢步驟同等對齊時，寫入器的數目將會和先前步驟中的分割區數目相同。 每個寫入器會使用 **EventHubClient** 中的 [SendBatchAsync 類別](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)，將事件傳送至所有輸出分割區。 
+資料分割會根據資料分割的對齊方式而有所不同。 當事件中樞輸出中的分割區索引鍵與上游 (先前的) 查詢步驟同等對齊時，寫入器的數目將會和事件中樞輸出中的分割區數目相同。 每個寫入器都會使用 [EventHubSender 類別](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet&preserve-view=true)來將事件傳送至特定的分割區。 當事件中樞輸出中的分割區索引鍵沒有與上游 (先前的) 查詢步驟同等對齊時，寫入器的數目將會和先前步驟中的分割區數目相同。 每個寫入器會使用 **EventHubClient** 中的 [SendBatchAsync 類別](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet&preserve-view=true)，將事件傳送至所有輸出分割區。 
 
 ## <a name="output-batch-size"></a>輸出批次大小
 
@@ -55,4 +55,4 @@ ms.locfileid: "88875652"
 * [快速入門：使用 ARM 範本建立 Azure 串流分析作業](quick-create-azure-resource-manager.md)
 * [快速入門：使用 Azure PowerShell 建立串流分析作業](stream-analytics-quick-create-powershell.md)
 * [快速入門：使用 Visual Studio 建立 Azure 串流分析作業](stream-analytics-quick-create-vs.md)
-* [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-vs-code.md)
+* [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-visual-studio-code.md)

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Stack Edge GPU 的憑證 |Microsoft Docs
-description: 說明如何使用 Azure Stack Edge GPU 裝置的憑證，包括使用原因、哪些類型，以及如何將憑證上傳至您的裝置。
+title: 使用憑證搭配 Azure Stack Edge Pro GPU |Microsoft Docs
+description: 說明如何使用 Azure Stack Edge Pro GPU 裝置的憑證，包括使用原因、哪些類型，以及如何在您的裝置上傳憑證。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,28 +8,28 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf7f9236c8f0835d0041b4b0c454a492330ef878
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268871"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890757"
 ---
-# <a name="use-certificates-with-azure-stack-edge-gpu-device"></a>使用 Azure Stack Edge GPU 裝置的憑證
+# <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>使用憑證搭配 Azure Stack Edge Pro GPU 裝置
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文說明可安裝在 Azure Stack Edge 裝置上的憑證類型。 本文也包含每個憑證類型的詳細資料，以及安裝和識別到期日的程式。 
+本文說明可安裝在 Azure Stack Edge Pro 裝置上的憑證類型。 本文也包含每個憑證類型的詳細資料，以及安裝和識別到期日的程式。 
 
 ## <a name="about-certificates"></a>關於憑證
 
 憑證會提供**公開金鑰**和實體 (之間的連結，例如已簽署 (由受信任的協力廠商 (（如**憑證授權單位**單位) ）) **簽署**的功能變數名稱) 。  憑證提供便利的方式來散發受信任的公用加密金鑰。 憑證可確保您的通訊是受信任的，且您要將加密資訊傳送到正確的伺服器。 
 
-初次設定 Azure Stack Edge 裝置時，會自動產生自我簽署憑證。 （選擇性）您可以攜帶自己的憑證。 如果您打算攜帶您自己的憑證，您必須遵循下列指導方針。
+最初設定 Azure Stack Edge Pro 裝置時，會自動產生自我簽署憑證。 （選擇性）您可以攜帶自己的憑證。 如果您打算攜帶您自己的憑證，您必須遵循下列指導方針。
 
 ## <a name="types-of-certificates"></a>憑證的類型
 
-您 Azure Stack Edge 裝置上使用的各種憑證類型如下所示： 
+您 Azure Stack Edge Pro 裝置上使用的各種憑證類型如下所示： 
 - 簽署憑證
     - 根 CA
     - 中級
@@ -68,7 +68,7 @@ ms.locfileid: "89268871"
 
 ## <a name="node-certificates"></a>節點憑證
 
-<!--Your Azure Stack Edge device could be a 1-node device or a 4-node device.--> 裝置中的所有節點會不斷地彼此通訊，因此需要有信任關係。 節點憑證提供建立該信任的方式。 當您使用透過 HTTPs 的遠端 PowerShell 會話連線到裝置節點時，節點憑證也會開始播放。
+<!--Your Azure Stack Edge Pro device could be a 1-node device or a 4-node device.--> 裝置中的所有節點會不斷地彼此通訊，因此需要有信任關係。 節點憑證提供建立該信任的方式。 當您使用透過 HTTPs 的遠端 PowerShell 會話連線到裝置節點時，節點憑證也會開始播放。
 
 ### <a name="caveats"></a>警示
 
@@ -121,9 +121,9 @@ ms.locfileid: "89268871"
 
 ## <a name="iot-edge-device-certificates"></a>IoT Edge 裝置憑證
 
-您的 Azure Stack Edge 裝置也是一種 IoT 裝置，其具有與其連線的 IoT Edge 裝置所啟用的計算。 針對此 IoT Edge 裝置與可能連接的下游裝置之間的任何安全通訊，您也可以上傳 IoT Edge 憑證。 
+您的 Azure Stack Edge Pro 裝置也是 IoT 裝置，其中的計算是由與其連接的 IoT Edge 裝置所啟用。 針對此 IoT Edge 裝置與可能連接的下游裝置之間的任何安全通訊，您也可以上傳 IoT Edge 憑證。 
 
-如果您只想要在裝置上使用計算案例，則裝置具有自我簽署憑證可供使用。 但是，如果 Azure Stack Edge 的裝置已連線到下游裝置，您就必須攜帶自己的憑證。
+如果您只想要在裝置上使用計算案例，則裝置具有自我簽署憑證可供使用。 但是，如果 Azure Stack Edge Pro 裝置已連線到下游裝置，您就必須攜帶自己的憑證。
 
 您需要安裝三個 IoT Edge 憑證，才能啟用此信任關係：
 
@@ -140,7 +140,7 @@ ms.locfileid: "89268871"
 
 ## <a name="support-session-certificates"></a>支援會話憑證
 
-如果您的 Azure Stack Edge 裝置遇到任何問題，若要針對這些問題進行疑難排解，可能會在裝置上開啟遠端 PowerShell 支援會話。 若要在此支援會話上啟用安全且加密的通訊，您可以上傳憑證。
+如果您的 Azure Stack Edge Pro 裝置遇到任何問題，若要針對這些問題進行疑難排解，可能會在裝置上開啟遠端 PowerShell 支援會話。 若要在此支援會話上啟用安全且加密的通訊，您可以上傳憑證。
 
 ### <a name="caveats"></a>警示
 
@@ -155,7 +155,7 @@ ms.locfileid: "89268871"
 
 <!--## VPN certificates
 
-If VPN is configured on your Azure Stack Edge device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
+If VPN is configured on your Azure Stack Edge Pro device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
 
 ### Caveats
 
@@ -262,7 +262,7 @@ $DeviceSerial = "HWDC1T2"
 New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSerial.$domain","management.$AppName.$domain","login.$AppName.$domain","*.blob.$AppName.$domain" -Subject "CN=$AppName.$domain" -KeyExportPolicy Exportable  -HashAlgorithm sha256 -KeyLength 2048  -CertStoreLocation "Cert:\LocalMachine\My" -Signer $cert -KeySpec KeyExchange -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.1")
 ```
 
-建立憑證後，下一個步驟是將憑證上傳到您的 Azure Stack Edge 裝置
+建立憑證後，下一個步驟是將憑證上傳到您的 Azure Stack Edge Pro 裝置上
 
 
 ## <a name="upload-certificates"></a>上傳憑證 
@@ -370,7 +370,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     ![匯出憑證8](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-8.png)
 
-9. 您會收到已成功匯出的訊息。 選取 [確定]  。
+9. 您會收到已成功匯出的訊息。 選取 [確定]。
 
     ![匯出憑證9](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-9.png)
 
@@ -401,7 +401,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
 ## <a name="supported-certificate-algorithms"></a>支援的憑證演算法
 
- Azure Stack Edge 裝置只支援 Rivest – Shamir – Adleman (RSA) 憑證。 如果使用橢圓曲線數位簽章演算法 (ECDSA) 憑證，則裝置行為不確定。
+ Azure Stack Edge Pro 裝置只支援 Rivest – Shamir – Adleman (RSA) 憑證。 如果使用橢圓曲線數位簽章演算法 (ECDSA) 憑證，則裝置行為不確定。
 
  包含 RSA 公開金鑰的憑證稱為 RSA 憑證。 包含橢圓曲線密碼編譯 (ECC) 公開金鑰的憑證，稱為 ECDSA (橢圓曲線數位簽章演算法) 憑證。 
 
@@ -416,6 +416,6 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
 在裝置本機 web UI 的 [ **憑證** ] 頁面上，查看憑證到期日。 憑證到期後，請根據 [建立和上傳憑證](azure-stack-edge-j-series-manage-certificates.md)中的詳細指示來建立和上傳新的憑證。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-[部署 Azure Stack Edge 裝置](azure-stack-edge-gpu-deploy-prep.md)
+[部署 Azure Stack Edge Pro 裝置](azure-stack-edge-gpu-deploy-prep.md)

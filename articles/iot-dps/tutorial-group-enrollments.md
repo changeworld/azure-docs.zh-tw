@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 43ae9bd0e844a23adabf52e7fbb4b8cd077d23bd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 80efd92560bc7fb5c8bf16b524752e7dbfcdc74b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326710"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526658"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>教學課程：使用適用於 IoT 中樞裝置佈建服務的 Java 裝置和服務 SDK 以及註冊群組來建立及佈建模擬 X.509 裝置
 
@@ -260,4 +260,4 @@ ms.locfileid: "87326710"
 在此教學課程中，您已在 Windows 機器上建立模擬 X.509 裝置，並使用 Azure IoT 中樞裝置佈建服務和註冊群組，將其佈建到 IoT 中樞。 若要深入了解您的 X.509 裝置，請繼續前往裝置概念。 
 
 > [!div class="nextstepaction"]
-> [IoT 中樞裝置佈建服務的裝置概念](concepts-device.md)
+> [IoT 中樞裝置佈建服務服務概念](concepts-service.md)
