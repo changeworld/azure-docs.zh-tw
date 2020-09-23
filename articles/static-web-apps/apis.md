@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 09daffa74ccd279c8187391ba3b86063aed7d204
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6724d8eb8df29ccfb033f5951ec56b7770e3c413
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607033"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903569"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>Azure 靜態 Web Apps 預覽版搭配 Azure Functions 時的 API 支援
 
@@ -20,19 +20,19 @@ Azure 靜態 Web Apps 可透過 [Azure Functions](../azure-functions/functions-o
 
 - **整合式安全性**，可直接存取使用者[驗證和角色型授權](user-information.md)資料。
 - **順暢的路由**，可讓 _api_ 路由安全地供 Web 應用程式使用，而不需要自訂 CORS 規則。
-- **Azure Functions** v3，與 Node.js 12 相容。
-- **HTTP 觸發程序**和輸出繫結。
+- **Azure Functions** v3 相容于 Node.js 12、.net Core 3.1 和 Python 3.8。
+- **HTTP 觸發** 程式和輸入/輸出系結。
 
 ## <a name="configuration"></a>組態
 
-API 端點可透過 _api_ 路由供 Web 應用程式使用。 雖然此路由是固定的，但您可以控制相關聯的 Azure Functions 應用程式所在的資料夾。 您可以編輯在存放庫中位於 _.github/workflows_ 資料夾內的[工作流程 YAML 檔案](github-actions-workflow.md#build-and-deploy)，以變更此位置。
+API 端點可透過 _api_ 路由供 Web 應用程式使用。 雖然此路由是固定的，但您可以控制找到相關聯 Azure Functions 應用程式的資料夾和專案。 您可以編輯在存放庫中位於 _.github/workflows_ 資料夾內的[工作流程 YAML 檔案](github-actions-workflow.md#build-and-deploy)，以變更此位置。
 
 ## <a name="constraints"></a>條件約束
 
 Azure 靜態 Web Apps 可透過 Azure Functions 提供 API。 Azure Functions 的功能著重於一組特定的功能，可讓您建立 Web 應用程式的 API，並且讓 Web 應用程式能安全地連線至 API。 這些功能附帶一些條件約束，包括：
 
 - API 路由前置詞必須是 _api_。
-- API 函數應用程式必須是 JavaScript。
+- API 必須是 JavaScript、c # 或 Python Azure Functions 應用程式。
 - API 函式的路由規則只支援使用角色重新 [導向](routes.md#redirects) 和 [保護路由](routes.md#securing-routes-with-roles)。
 - 觸發程式限制為 [HTTP](../azure-functions/functions-bindings-http-webhook.md)。
   - 支援輸入和 [輸出系](../azure-functions/functions-triggers-bindings.md#supported-bindings) 結。

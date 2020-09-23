@@ -10,15 +10,15 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 60dd9631df0b997ce39134002bdb6ed9f69336ed
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9e24a652bb4e577ff9b604b6b4f5284883723ee5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319264"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906717"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>教學課程：建立多類別影像分類的標記專案 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本教學課程說明如何管理標記 (labeling/tagging) 影像的程序，而這些影像將作為建立機器學習模型的資料。 Azure Machine Learning 中的資料標記處於公開預覽狀態。
 
@@ -130,9 +130,9 @@ Azure Machine Learning 資料存放區用來儲存連線資訊，例如您的訂
 
 1. 選取 [下一步] 。
 
-1. 如果您使用 Enterprise 工作區，則會看到 **ML 輔助標籤** 區段。  將核取方塊保持不核取狀態。 ML 輔助標記所需的資料比您在本教學課程中使用的還要多。
+1. 在 [ML 輔助標記] 區段中，將核取方塊保留為未核取狀態。 ML 輔助標記所需的資料比您在本教學課程中使用的還要多。
 
-1. 選取 [建立專案]。
+1. 選取 [建立專案]  。
 
 此頁面不會自動重新整理。 在暫停之後，手動重新整理頁面，直到專案的狀態並更為 [已建立]。
 

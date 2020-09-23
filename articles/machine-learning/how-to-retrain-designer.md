@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure Machine Learning 設計工具 (預覽) 重新定型模型
+title: 使用 Azure Machine Learning 設計工具重新定型模型
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure Machine Learning 設計工具 (預覽) 中已發佈的管線重新定型模型。
+description: 瞭解如何在 Azure Machine Learning 表設計工具中，使用已發佈的管線重新定型模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,15 +10,15 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 11e04d0aa313a005cfd13bca134c75bb712fd234
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d43bea855d9ac3dc34b8e72adcd9577e5933e52c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661603"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905675"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure Machine Learning 設計工具 (預覽) 重新定型模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer"></a>使用 Azure Machine Learning 設計工具重新定型模型
+
 
 在此操作說明文章中，您將了解如何使用 Azure Machine Learning 設計工具來重新定型機器學習模型。 您將會使用已發佈的管線將工作流程自動化，並設定以新資料定型模型的參數。 
 
@@ -32,12 +32,12 @@ ms.locfileid: "89661603"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 具備 Enterprise SKU 的 Azure Machine Learning 工作區。
-* 完成本操作說明系列的第 1 部分：[在設計工具中轉換資料](how-to-designer-transform-data.md)。
+* Azure Machine Learning 工作區
+* 完成此操作說明系列的第1部分， [在設計工具中轉換資料](how-to-designer-transform-data.md)
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
-本文也假設您已具備在設計工具中建置管線的基本知識。 如需導引簡介，請完成[教學課程](tutorial-designer-automobile-price-train-score.md)。 
+本文也假設您已瞭解如何在設計工具中建立管線。 如需導引簡介，請完成[教學課程](tutorial-designer-automobile-price-train-score.md)。 
 
 ### <a name="sample-pipeline"></a>範例管線
 

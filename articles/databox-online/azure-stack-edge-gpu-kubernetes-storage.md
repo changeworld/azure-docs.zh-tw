@@ -1,6 +1,6 @@
 ---
-title: 瞭解 Azure Stack Edge 裝置上的 Kubernetes 儲存體管理 |Microsoft Docs
-description: 說明如何在 Azure Stack Edge 裝置上進行 Kubernetes 存放裝置管理。
+title: 瞭解 Azure Stack Edge Pro 裝置上的 Kubernetes 儲存體管理 |Microsoft Docs
+description: 說明如何在 Azure Stack Edge Pro 裝置上進行 Kubernetes 存放裝置管理。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 57574b66ddb20e592a5979a4b827347f7c8e09af
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ff2a473ca008e9b283d03ebb05f35122473d778a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268086"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899268"
 ---
-# <a name="kubernetes-storage-management-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU 裝置上的 Kubernetes 儲存體管理
+# <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 裝置上的 Kubernetes 儲存體管理
 
-在您的 Azure Stack Edge 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 建立 Kubernetes 叢集之後，就可以將容器化應用程式部署到 pod 中的 Kubernetes 叢集。 有不同的方式可提供儲存體給 Kubernetes 叢集中的 pod。 
+在您的 Azure Stack Edge Pro 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 建立 Kubernetes 叢集之後，就可以將容器化應用程式部署到 pod 中的 Kubernetes 叢集。 有不同的方式可提供儲存體給 Kubernetes 叢集中的 pod。 
 
-本文說明一般（尤其是在 Azure Stack Edge 裝置的內容中）布建儲存在 Kubernetes 叢集的方法。 
+本文說明一般（尤其是在 Azure Stack Edge Pro 裝置的內容中）布建儲存在 Kubernetes 叢集的方法。 
 
 ## <a name="storage-requirements-for-kubernetes-pods"></a>Kubernetes pod 的儲存體需求
 
@@ -75,9 +75,9 @@ Kubernetes cluster admins 可以靜態布建儲存體。 若要這樣做，他�
 1. 將**Pvc 掛接到容器**：當 PVC 系結至 PV 之後，您可以使用與靜態布建和讀取或寫入共用的相同方式，將 pvc 掛接到容器上的路徑。
 
 
-## <a name="storage-provisioning-on-azure-stack-edge"></a>Azure Stack Edge 上的儲存體布建
+## <a name="storage-provisioning-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro 上的儲存體布建
 
-在 Azure Stack Edge 裝置上， `PersistentVolumes` 會使用裝置的儲存體功能來建立靜態布建。 當您布建共用，並啟用 **[使用 Edge 計算的共用** ] 選項時，此動作會在 Kubernetes 叢集中自動建立 PV 資源。
+在 Azure Stack Edge Pro 裝置上， `PersistentVolumes` 會使用裝置的儲存體功能來建立靜態布建。 當您布建共用，並啟用 **[使用 Edge 計算的共用** ] 選項時，此動作會在 Kubernetes 叢集中自動建立 PV 資源。
 
 ![在 Azure 入口網站中建立本機共用以進行靜態布建](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
@@ -85,7 +85,7 @@ Kubernetes cluster admins 可以靜態布建儲存體。 若要這樣做，他�
 
 ![在 Azure 入口網站中建立雲端共用以進行靜態布建](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
-您可以建立 SMB 和 NFS 共用，以在 Azure Stack Edge 裝置上以靜態方式布建 PVs。 布建 PV 之後，您會提交 PVC 來宣告此儲存體。 以下是用來 `yaml` 宣告儲存體並使用您所布建之共用的 PVC 部署範例。
+您可以建立 SMB 和 NFS 共用，以在 Azure Stack Edge Pro 裝置上以靜態方式布建 PVs。 布建 PV 之後，您會提交 PVC 來宣告此儲存體。 以下是用來 `yaml` 宣告儲存體並使用您所布建之共用的 PVC 部署範例。
 
 
 ```yml
@@ -103,13 +103,13 @@ spec:
   storageClassName: ""
 ```
 
-如需詳細資訊，請參閱透過 [kubectl 在您的 Azure Stack Edge 上透過靜態布建部署具狀態應用程式](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)。
+如需詳細資訊，請參閱透過 [kubectl 在您的 Azure Stack Edge Pro 上透過靜態布建部署具狀態應用程式](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)。
 
-Azure Stack Edge 也有一個名為的內建 `StorageClass` `ase-node-local` ，其使用連接至 Kubernetes 節點的資料磁片儲存體。 這 `StorageClass` 支援動態布建。 您可以 `StorageClass` 在 pod 應用程式中進行參考，並自動為您建立一個 PV。 如需詳細資訊，請參閱 [Kubernetes 儀表板](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) 以查詢 `ase-node-local StorageClass` 。
+Azure Stack Edge Pro 也有一個名為的內建 `StorageClass` `ase-node-local` ，其使用連接至 Kubernetes 節點的資料磁片儲存體。 這 `StorageClass` 支援動態布建。 您可以 `StorageClass` 在 pod 應用程式中進行參考，並自動為您建立一個 PV。 如需詳細資訊，請參閱 [Kubernetes 儀表板](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) 以查詢 `ase-node-local StorageClass` 。
 
 ![Kubernetes 儀表板中的內建儲存類別](./media/azure-stack-edge-gpu-kubernetes-storage/dynamic-provisioning-builtin-storage-class-1.png)
 
-如需詳細資訊，請參閱透過 [kuebctl 透過動態布建在您的 Azure Stack Edge 上部署具狀態應用程式](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)。
+如需詳細資訊，請參閱透過 [kuebctl 在您的 Azure Stack Edge Pro 上透過動態布建來部署具狀態應用程式](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)。
 
 ## <a name="choose-storage-type"></a>選擇儲存體類型
 
@@ -123,12 +123,12 @@ Azure Stack Edge 也有一個名為的內建 `StorageClass` `ase-node-local` ，
 如需存取模式的詳細資訊，請參閱 [Kubernetes 磁片區存取模式](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要瞭解您可以如何靜態布建 `PersistentVolume` ，請參閱：
 
-- 透過[kubectl 在您的 Azure Stack Edge 上透過靜態布建來部署具狀態應用程式](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)。
+- 透過[kubectl 在您的 Azure Stack Edge Pro 上透過靜態布建來部署具狀態應用程式](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)。
 
 若要瞭解如何以動態方式布建 `StorageClass` ，請參閱：
 
-- 透過[kuebctl 在您的 Azure Stack Edge 上透過動態布建來部署具狀態應用程式](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)。
+- 透過[kuebctl 在您的 Azure Stack Edge Pro 上透過動態布建來部署具狀態應用程式](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)。

@@ -1,6 +1,6 @@
 ---
-title: 瞭解 Azure Stack Edge 裝置上的 Kubernetes 網路功能 |Microsoft Docs
-description: 描述 Kubernetes 網路功能如何在 Azure Stack Edge 裝置上運作。
+title: 瞭解 Azure Stack Edge Pro 裝置上的 Kubernetes 網路功能 |Microsoft Docs
+description: 說明 Kubernetes 網路功能如何在 Azure Stack Edge Pro 裝置上運作。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 4eab89710e031ead0a3758afd2367e60d26f395b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 001304ad6eda27db2285aaa9ad8b28929e2a04f8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268120"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899327"
 ---
-# <a name="kubernetes-networking-in-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU 裝置中的 Kubernetes 網路
+# <a name="kubernetes-networking-in-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 裝置中的 Kubernetes 網路
 
-在您的 Azure Stack Edge 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 建立 Kubernetes 叢集之後，就可以將容器化應用程式部署到 pod 中的 Kubernetes 叢集。 有不同的方式可將網路功能用於 Kubernetes 叢集中的 pod。 
+在您的 Azure Stack Edge Pro 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 建立 Kubernetes 叢集之後，就可以將容器化應用程式部署到 pod 中的 Kubernetes 叢集。 有不同的方式可將網路功能用於 Kubernetes 叢集中的 pod。 
 
-本文通常會說明 Kubernetes 叢集中的網路功能，尤其是在 Azure Stack Edge 裝置的內容中。 
+本文通常會說明 Kubernetes 叢集中的網路功能，尤其是在您 Azure Stack Edge Pro 裝置的內容中。 
 
 ## <a name="networking-requirements"></a>網路需求
 
@@ -59,9 +59,9 @@ For discovery of applications within the cluster, Kubernetes cluster has a
 When an application or the end user would first use the IP address associated with the service of type load balancer to discover the service. Then it would use the label select `app = WS` to discover the pods associated with the application. The `kube-proxy` component would then distribute the traffic and ensure that it hits one of the web server application pods. If the web server app wanted to talk to the database app, then it would simply use the name of the service and using the name and the DNS server pod, resolve the name to an IP address. Again using labels and label selector, it would discover the pods associated with the database application. The `kube-proxy` would then distribute the traffic across each of the database app nodes.-->
 
 
-## <a name="kubernetes-networking-on-azure-stack-edge"></a>Azure Stack Edge 上的 Kubernetes 網路
+## <a name="kubernetes-networking-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro 上的 Kubernetes 網路
 
-Calico、Metallb 和 Core DNS 都是針對 Azure Stack Edge 上的網路功能安裝的元件。 
+Calico、Metallb 和 Core DNS 都是針對 Azure Stack Edge Pro 上的網路功能安裝的元件。 
 
 - **Calico** 會從私人 ip 範圍將 ip 位址指派給每個 pod，並為這些 pod 設定網路功能，讓某個節點上的 pod 可以與另一個節點上的 pod 進行通訊。 
 - **Metallb** 會在叢集中的 pod 上執行，並將 IP 位址指派給類型為「負載平衡器」的服務。 負載平衡器 IP 位址是從透過本機 UI 提供的服務 Ip 範圍中選擇。 
@@ -78,10 +78,10 @@ IP 指派適用于：
 - **Kubernetes 外部服務 ip**：此 IP 範圍適用于外部服務 (也稱為在 Kubernetes 叢集外部公開的 Load Balancer 服務) 。  
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-若要在您的 Azure Stack Edge 上設定 Kubernetes 網路，請參閱：
+若要在 Azure Stack Edge Pro 上設定 Kubernetes 網路，請參閱：
 
-- 透過[IoT Edge 在您的 Azure Stack Edge 外部公開無狀態應用程式](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md)。
+- 透過[IoT Edge 在您的 Azure Stack Edge Pro 外部公開無狀態應用程式](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md)。
 
-- 透過[kuebctl 在您的 Azure Stack Edge 外部公開無狀態應用程式](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。
+- 透過[kuebctl 在您的 Azure Stack Edge Pro 外部公開無狀態應用程式](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。

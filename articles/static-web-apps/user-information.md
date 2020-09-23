@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7e1f56fc4601b271bf4a0718a944741016509ce4
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: f966492dd8a231db92f607438bb9ba2d3be71389
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430522"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906770"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps-preview"></a>存取 Azure Static Web Apps 預覽版本中的使用者資訊
 
@@ -64,6 +64,10 @@ console.log(getUserInfo());
 
 ## <a name="api-functions"></a>API 函式
 
+靜態 Web Apps 中透過 Azure Functions 後端提供的 API 函數，可存取與用戶端應用程式相同的使用者資訊。 雖然 API 會接收使用者標識資訊，但如果使用者經過驗證或符合所需的角色，則不會執行自己的檢查。 存取控制規則是在檔案中定義 [`routes.json`](routes.md) 。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
 用戶端主體資料會傳遞至 `x-ms-client-principal` 要求標頭中的 API 函式。 用戶端主體資料會以 [Base64](https://www.wikipedia.org/wiki/Base64) 編碼字串的形式傳送，其中包含已序列化的 JSON 物件。
 
 下列範例函式顯示如何讀取和傳回使用者資訊。
@@ -92,12 +96,53 @@ async function getUser() {
   return clientPrincipal;
 }
 
-console.log(getUser());
+console.log(await getUser());
 ```
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+在 c # 函式中，可以從可還原序列化 `x-ms-client-principal` 為 `ClaimsPrincipal` 物件或您自己的自訂類型的標頭中取得使用者資訊。 下列程式碼示範如何將標頭解除封裝成中繼型別， `ClientPrincipal` 然後將其轉換成 `ClaimsPrincipal` 實例。
+
+```csharp
+  public static class StaticWebAppsAuth
+  {
+    private class ClientPrincipal
+    {
+        public string IdentityProvider { get; set; }
+        public string UserId { get; set; }
+        public string UserDetails { get; set; }
+        public IEnumerable<string> UserRoles { get; set; }
+    }
+
+    public static ClaimsPrincipal Parse(HttpRequest req)
+    {
+        var header = req.Headers["x-ms-client-principal"];
+        var data = header.Value[0];
+        var decoded = System.Convert.FromBase64String(data);
+        var json = System.Text.ASCIIEncoding.ASCII.GetString(decoded);
+        var principal = JsonSerializer.Deserialize<ClientPrincipal>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+  
+        principal.UserRoles = principal.UserRoles.Except(new string[] { "anonymous" }, StringComparer.CurrentCultureIgnoreCase);
+  
+        if (!principal.UserRoles.Any())
+        {
+            return new ClaimsPrincipal();
+        }
+  
+        var identity = new ClaimsIdentity(principal.IdentityProvider);
+        identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, principal.UserId));
+        identity.AddClaim(new Claim(ClaimTypes.Name, principal.UserDetails));
+        identity.AddClaims(principal.UserRoles.Select(r => new Claim(ClaimTypes.Role, r)));
+        return new ClaimsPrincipal(identity);
+    }
+  }
+```
+
+---
 
 <sup>1</sup> Internet Explorer 不支援 [fetch](https://caniuse.com/#feat=fetch) API 和 [await](https://caniuse.com/#feat=mdn-javascript_operators_await) 運算子。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [進行應用程式設定](application-settings.md)
+> [設定應用程式設定](application-settings.md)

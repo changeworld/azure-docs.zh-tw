@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 08/06/2020
-ms.openlocfilehash: 08859eb87431b59e8be68369ce8f3876aa7d9f21
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 3c2934c92be668d4b4c05f97a98395e2e219b7dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530296"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907622"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 的互動式調試
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 瞭解如何使用 Visual Studio Code (VS Code) 和 [depugpy](https://github.com/microsoft/debugpy/)，以互動方式來偵測 Azure Machine Learning 管線和部署。
 
@@ -109,7 +109,7 @@ ms.locfileid: "90530296"
         print(f'Debugger attached = {debugpy.is_client_connected()}')
     ```
 
-下列 Python 範例顯示 `train.py` 啟用偵錯工具的基本檔案：
+下列 Python 範例顯示 `train.py` 啟用偵錯工具的簡單檔案：
 
 ```python
 # Copyright (c) Microsoft. All rights reserved.

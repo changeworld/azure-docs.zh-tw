@@ -11,15 +11,15 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: fe56427e93650fbaca397bbbb27d32f730b1f7f3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 21969f52223a4e0c7de6ee26c0a6f9e2f96366b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651765"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902337"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>實驗中的版本和追蹤資料集
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將瞭解如何針對重現性版本和追蹤 Azure Machine Learning 資料集。 資料集版本控制是將資料的狀態設為書簽的一種方式，讓您可以套用特定版本的資料集，以供未來實驗之用。
 
@@ -189,7 +189,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
 
 ![輸入資料集模型](./media/how-to-version-track-datasets/dataset-models.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * [使用資料集定型](how-to-train-with-datasets.md)
 * [更多範例資料集筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)

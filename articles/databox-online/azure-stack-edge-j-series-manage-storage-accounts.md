@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU 儲存體帳戶管理 |Microsoft Docs
-description: 說明如何使用 Azure 入口網站來管理 Azure Stack Edge 上的儲存體帳戶。
+title: Azure Stack Edge Pro GPU 儲存體帳戶管理 |Microsoft Docs
+description: 說明如何使用 Azure 入口網站管理 Azure Stack Edge Pro 上的儲存體帳戶。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 3b190a108651f4b127c2f009c383613922a59018
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a239b36a539cf7be3e880512b753d45ae4050bad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254285"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904530"
 ---
-# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge"></a>使用 Azure 入口網站來管理您 Azure Stack Edge 上的 Edge 儲存體帳戶
+# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>使用 Azure 入口網站來管理 Azure Stack Edge Pro 上的 Edge 儲存體帳戶
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文說明如何在您的 Azure Stack Edge 上管理 Edge 儲存體帳戶。 您可以透過 Azure 入口網站或透過本機 web UI 來管理 Azure Stack Edge。 使用 Azure 入口網站，在您的裝置上新增或刪除 Edge 儲存體帳戶。
+本文說明如何在您的 Azure Stack Edge Pro 上管理 Edge 儲存體帳戶。 您可以透過 Azure 入口網站或透過本機 web UI 來管理 Azure Stack Edge Pro。 使用 Azure 入口網站，在您的裝置上新增或刪除 Edge 儲存體帳戶。
 
 ## <a name="about-edge-storage-accounts"></a>關於 Edge 儲存體帳戶
 
-您可以透過 SMB、NFS 或 REST 通訊協定，從 Azure Stack Edge 裝置傳輸資料。 若要使用 REST Api 將資料傳輸至 Blob 儲存體，您需要在 Azure Stack Edge 上建立 Edge 儲存體帳戶。 
+您可以透過 SMB、NFS 或 REST 通訊協定，從 Azure Stack Edge Pro 裝置傳輸資料。 若要使用 REST Api 將資料傳輸至 Blob 儲存體，您需要在 Azure Stack Edge Pro 上建立 Edge 儲存體帳戶。 
 
-您在 Azure Stack Edge 裝置上新增的 Edge 儲存體帳戶會對應至 Azure 儲存體帳戶。 寫入邊緣儲存體帳戶的任何資料都會自動推送至雲端。
+您在 Azure Stack Edge Pro 裝置上新增的 Edge 儲存體帳戶會對應至 Azure 儲存體帳戶。 寫入邊緣儲存體帳戶的任何資料都會自動推送至雲端。
 
 詳細說明這兩種類型的帳戶，以及資料如何從這些帳戶流至 Azure 的圖表如下所示：
 
@@ -40,7 +40,7 @@ ms.locfileid: "89254285"
 
 ## <a name="add-an-edge-storage-account"></a>新增 Edge 儲存體帳戶
 
-若要建立 Edge 儲存體帳戶，請執行下列程式：
+若要建立 Edge 儲存體帳戶，請執行下列程序：
 
 [!INCLUDE [Add an Edge storage account](../../includes/azure-stack-edge-gateway-add-storage-account.md)]
 
@@ -95,6 +95,6 @@ ms.locfileid: "89254285"
 
     ![選取同步儲存體金鑰](media/azure-stack-edge-j-series-manage-storage-accounts/sync-storage-key-2.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 了解如何[透過 Azure 入口網站管理使用者](azure-stack-edge-j-series-manage-users.md)。

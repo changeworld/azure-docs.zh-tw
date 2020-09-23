@@ -6,14 +6,14 @@ manager: nitinme
 description: 兩個數據表，代表所有認知服務供應專案的容器登錄、存放庫和映射名稱。
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/24/2020
+ms.date: 09/03/2020
 ms.author: aahi
-ms.openlocfilehash: ff039d6d5879e036aecc63b46359d84673f84a0e
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: d514460f3cd80b5b85604251743abbbbcd1adc8c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89424630"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906993"
 ---
 ### <a name="container-repositories-and-images"></a>容器儲存機制和映射
 
@@ -23,55 +23,75 @@ ms.locfileid: "89424630"
 
 Microsoft Container Registry (MCR) syndicates 所有正式推出的認知服務容器。 您也可以直接從 [Docker hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)使用容器。
 
-#### <a name="luis"></a>[LUIS](#tab/luis)
+**LUIS**
 
-| LUIS 容器 | Container Registry/存放庫/映射名稱 |
+| 容器 | Container Registry/存放庫/映射名稱 |
 |--|--|
-| LUIS | `mcr.microsoft.com/azure-cognitive-services/luis` |
+| LUIS | `mcr.microsoft.com/azure-cognitive-services/language/luis` |
 
 如需詳細資訊，請參閱 [如何執行和安裝 LUIS 容器](../../LUIS/luis-container-howto.md) 。
 
-#### <a name="text-analytics"></a>[文字分析](#tab/text-analytics)
+**文字分析**
 
-| 文字分析容器 | Container Registry/存放庫/映射名稱 |
+| 容器 | Container Registry/存放庫/映射名稱 |
 |--|--|
-| 情感分析 v3 (英文)  | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-en` |
-| 情感分析 v3 (西班牙文)  | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-es` |
-| 情感分析 v3 (法文)  | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-fr` |
-| 情感分析 v3 (義大利文)  | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-it` |
-| 情感分析 v3 (德文)  | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-de` |
-| 情感分析 v3 (簡體中文)  | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-zh` |
-| 情感分析 v3 (繁體中文)  | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-zht` |
-| 情感分析 v3 (日文)  | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-ja` |
-| 情感分析 v3 (葡萄牙文)  | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-pt` |
-| 情感分析 v3 (荷蘭)  | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-nl` |
+| 情感分析 v3 (英文)  | `mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:3.0-en` |
+| 情感分析 v3 (西班牙文)  | `mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:3.0-es` |
+| 情感分析 v3 (法文)  | `mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:3.0-fr` |
+| 情感分析 v3 (義大利文)  | `mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:3.0-it` |
+| 情感分析 v3 (德文)  | `mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:3.0-de` |
+| 情感分析 v3 (簡體中文)  | `mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:3.0-zh` |
+| 情感分析 v3 (繁體中文)  | `mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:3.0-zht` |
+| 情感分析 v3 (日文)  | `mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:3.0-ja` |
+| 情感分析 v3 (葡萄牙文)  | `mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:3.0-pt` |
+| 情感分析 v3 (荷蘭)  | `mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:3.0-nl` |
 
 如需詳細資訊，請參閱 [如何執行和安裝文字分析容器](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) 。
 
----
+**異常偵測器** 
 
-#### <a name="public-ungated-preview-container-registry-mcrmicrosoftcom"></a>公用 "Ungated" 預覽版 (container registry： `mcr.microsoft.com`) 
+| 容器 | Container Registry/存放庫/映射名稱 |
+|--|--|
+| 異常偵測器 | `mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector` |
+
+如需詳細資訊，請參閱 [如何執行和安裝異常](../../anomaly-detector/anomaly-detector-container-howto.md) 偵測器容器。
+
+**語音服務**
+
+> [!NOTE]
+> 若要使用語音容器，您將需要完成 [線上要求表單](https://aka.ms/csgate)。
+
+| 容器 | Container Registry/存放庫/映射名稱 |
+|--|--|
+| [語音轉換文字](../../speech-service/speech-container-howto.md?tab=stt) | `mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text` |
+| [自訂語音轉換文字](../../speech-service/speech-container-howto.md?tab=cstt) | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text` |
+| [文字轉換語音](../../speech-service/speech-container-howto.md?tab=tts) | `mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech` |
+
+#### <a name="ungated-preview"></a>"Ungated" 預覽 
 
 以下是公開提供的預覽容器。 Microsoft Container Registry (MCR) syndicates 認知服務的所有公開可用 ungated 容器。 您也可以直接從 [Docker hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)使用容器。
 
 | 服務 | 容器 | Container Registry/存放庫/映射名稱 |
 |--|--|--|
-| [文字分析](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | 關鍵片語擷取 | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
-| [文字分析](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | 語言偵測 | `mcr.microsoft.com/azure-cognitive-services/language` |
-| [異常偵測器](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomaly Detector | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` |
+| [文字分析](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | 關鍵片語擷取 | `mcr.microsoft.com/azure-cognitive-services/textanalytics/keyphrase` |
+| [文字分析](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | 語言偵測 | `mcr.microsoft.com/azure-cognitive-services/textanalytics/language` |
 
-#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>公用「閘道」預覽版 (container registry： `containerpreview.azurecr.io`) 
 
-下列閘道預覽容器會裝載在容器預覽版登錄上，而且需要應用程式才能存取。 如需詳細資訊，請參閱下列容器文章。
+#### <a name="gated-preview"></a>「閘道」預覽
+
+先前，閘道預覽容器裝載于存放 `containerpreview.azurecr.io` 庫。 自2020年9月22日起，這些容器 (除了健康情況) 的文字分析之外，還裝載于 Microsoft Container Registry (MCR) ，且不需要使用 docker login 命令就能下載。 若要使用容器，您將需要：
+
+1. 使用您的 Azure 訂用帳戶識別碼和使用者案例完成 [要求表單](https://aka.ms/csgate) 。 
+2. 核准時，從 MCR 下載容器。 
+3. 使用來自適當 Azure 資源的金鑰和端點來驗證執行時間的容器。 
 
 | 服務 | 容器 | Container Registry/存放庫/映射名稱 |
 |--|--|--|
-| [電腦視覺](../../Computer-vision/computer-vision-how-to-install-containers.md) | 讀取 | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
-| [臉部](../../face/face-how-to-install-containers.md) | 臉部 | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
-| [表單辨識器](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | 表單辨識器 | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
-| [語音服務 API](../../speech-service/speech-container-howto.md?tab=stt) | 語音轉文字 | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |
-| [語音服務 API](../../speech-service/speech-container-howto.md?tab=cstt) | 自訂語音轉換文字 | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |
-| [語音服務 API](../../speech-service/speech-container-howto.md?tab=tts) | 文字轉換語音 | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` |
-| [語音服務 API](../../speech-service/speech-container-howto.md?tab=ctts) | 自訂文字轉換語音 | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` |
-| [語音服務 API](../../speech-service/speech-container-howto.md?tab=ntts) | 神經文字轉換語音 | `containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech` |
+| [電腦視覺](../../Computer-vision/computer-vision-how-to-install-containers.md) | 讀取 v3。0 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
+| [電腦視覺](../../Computer-vision/computer-vision-how-to-install-containers.md) | 讀取3.1 版 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
+| [電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container) | 空間分析 | `mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis` |
+| [語音服務 API](../../speech-service/speech-container-howto.md?tab=ctts) | 自訂文字轉換語音 | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech` |
+| [語音服務 API](../../speech-service/speech-container-howto.md?tab=lid) | 語言偵測 | `mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection` |
+| [語音服務 API](../../speech-service/speech-container-howto.md?tab=ntts) | 神經文字轉換語音 | `mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech` |
 | [健全狀況的文字分析](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health) | 健康情況的文字分析 | `containerpreview.azurecr.io/microsoft/cognitive-services-healthcare` |
+

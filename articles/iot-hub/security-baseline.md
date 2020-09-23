@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 314004d2b62d5616c1d7925b82fd9f050d0a1fd0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 31a3bfbc174ca9c4c46005a26cde65db1ff74b65
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441794"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906918"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>適用于 Azure IoT 中樞的 Azure 安全性基準
 
@@ -71,7 +71,7 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [IoT 中樞 IP 篩選器](iot-hub-ip-filtering.md)
 
-- [適用於 IoT 的 Azure 資訊安全中心可疑 IP 位址通訊](../asc-for-iot/concept-security-alerts.md)
+- [適用於 IoT 的 Azure 資訊安全中心可疑 IP 位址通訊](../defender-for-iot/concept-security-alerts.md)
 
 - [管理 Azure DDoS 保護基本](../virtual-network/ddos-protection-overview.md)
 
@@ -234,7 +234,7 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [監視 Azure IoT 中樞健康情況](iot-hub-monitor-resource-health.md)
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
-- [適用於 IoT 的 Azure 資訊安全中心警示](../asc-for-iot/concept-security-alerts.md)
+- [適用於 IoT 的 Azure 資訊安全中心警示](../defender-for-iot/concept-security-alerts.md)
 
 - [如何對 log analytics 記錄資料發出警示](../azure-monitor/learn/tutorial-response.md)
 
