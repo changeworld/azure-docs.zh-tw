@@ -11,16 +11,16 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 72706a67e1798662ea0f40fa7843c32d8267e0d0
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 195fc6100229fca2a05198ffa80108057ad8ad65
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646074"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897586"
 ---
 # <a name="collect-data-from-models-in-production"></a>從生產環境中的模型收集資料
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本文說明如何從部署在 Azure Kubernetes Service (AKS) 叢集的 Azure Machine Learning 模型中收集資料。 然後收集到的資料會儲存在 Azure Blob 儲存體中。
 
@@ -199,7 +199,7 @@ Blob 中輸出資料的路徑遵循此語法：
 
     [![建立 Databricks 資料表](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
-1. 更新資料的位置。 請看以下範例：
+1. 更新資料的位置。 範例如下：
 
     ```
     file_location = "wasbs://mycontainer@storageaccountname.blob.core.windows.net/modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/*/*/data.csv" 
@@ -210,6 +210,6 @@ Blob 中輸出資料的路徑遵循此語法：
 
 1. 遵循範本上的步驟來查看和分析您的資料。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 偵測您所收集資料的[資料漂移](how-to-monitor-datasets.md)。

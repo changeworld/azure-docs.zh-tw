@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: f68867a7b24e9c5d8dafa0da65209e14eeae5210
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ebc3899c98a09b64443b129dde52cb597fac9eff
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896464"
+ms.locfileid: "90976644"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教學課程：在 Azure Machine Learning 中使用自動化 ML 建立分類模型
 
@@ -242,7 +242,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 + 深入了解[自動化機器學習](concept-automated-ml.md)。
 + 如需分類計量與圖表的詳細資訊，請參閱[了解自動化機器學習結果](how-to-understand-automated-ml.md#classification)一文。
 + 深入了解[特徵化](how-to-configure-auto-features.md#featurization)。
-+ 深入了解[資料分析](how-to-use-automated-ml-for-ml-models.md#profile)。
++ 深入了解[資料分析](how-to-connect-data-ui.md#profile)。
 
 
 >[!NOTE]

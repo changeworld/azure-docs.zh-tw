@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack Edge GPU 裝置上安裝更新 |Microsoft Docs
-description: 說明如何使用適用于 Azure Stack Edge GPU 裝置的 Azure 入口網站和本機 web UI，以及裝置上的 Kubernetes 叢集來套用更新
+title: 在 Azure Stack Edge Pro GPU 裝置上安裝更新 |Microsoft Docs
+description: 說明如何使用適用于 Azure Stack Edge Pro GPU 裝置的 Azure 入口網站和本機 web UI，以及裝置上的 Kubernetes 叢集來套用更新
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 6bafeeeda686dafadc3f5104240f8d018de83aeb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 107485277e28a44841b0d71fef686f0bcbf52216
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268239"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899506"
 ---
-# <a name="update-your-azure-stack-edge-with-gpu"></a>使用 GPU 更新您的 Azure Stack Edge 
+# <a name="update-your-azure-stack-edge-pro-with-gpu"></a>使用 GPU 更新 Azure Stack Edge Pro 
 
-本文說明透過本機 web UI 和透過 Azure 入口網站在您的 Azure Stack Edge 上安裝更新時所需的步驟。 您可以套用軟體更新或修補程式，以將裝置上的 Azure Stack Edge 裝置和相關聯的 Kubernetes cluaster 保持在最新狀態。 
+本文說明透過本機 web UI 和透過 Azure 入口網站在 Azure Stack Edge Pro 上安裝更新時所需的步驟。 您可以套用軟體更新或修補程式，以將裝置上的 Azure Stack Edge Pro 裝置和相關聯的 Kubernetes cluaster 保持在最新狀態。 
 
 > [!IMPORTANT]
 > - 更新 **2008** 對應于裝置上的 **2.1.1328.1904** 軟體版本。 如需此更新的詳細資訊，請參閱 [版本](azure-stack-edge-gpu-2008-release-notes.md)資訊。
 >
-> - 請記住，安裝更新或 Hotfix 會重新啟動您的裝置。 此更新需要您依序套用兩個更新。 首先，套用裝置軟體更新，然後 Kubernetes 更新。 假設 Azure Stack Edge 是單一節點裝置，任何進行中的 i/o 都會中斷，而您的裝置會在裝置軟體更新時遇到最多30分鐘的停機時間。
+> - 請記住，安裝更新或 Hotfix 會重新啟動您的裝置。 此更新需要您依序套用兩個更新。 首先，套用裝置軟體更新，然後 Kubernetes 更新。 假設 Azure Stack Edge Pro 是單一節點裝置，任何進行中的 i/o 都會中斷，而您的裝置會在裝置軟體更新時遇到最多30分鐘的停機時間。
 
 若要在裝置上安裝更新，您必須先設定補救伺服器的位置。 設定補救伺服器之後，您可以透過 Azure 入口網站 UI 或本機 web UI 來套用更新。
 
@@ -57,7 +57,7 @@ ms.locfileid: "89268239"
 
 2. 在 [ **裝置更新** ] 分頁中，確認您已在版本資訊中檢查與新功能相關聯的授權條款。
 
-    您可以選擇 **下載並安裝更新，** 或只 **下載** 更新。 然後，您可以選擇稍後再安裝這些更新。
+    您可以選擇 **下載並安裝更新，** 或只 **下載** 更新。 然後可以選擇稍後再安裝這些更新。
 
     ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-2a.png)    
 
@@ -159,9 +159,9 @@ ms.locfileid: "89268239"
 
     ![搜尋目錄](./media/azure-stack-edge-gpu-install-update/download-update-1.png)
 
-2. 在 [Microsoft Update 目錄] 的 [搜尋] 方塊中，輸入知識庫 (KB) 您要下載之更新的修正程式號碼或條款。 例如，輸入 **Azure Stack Edge**，然後按一下 [ **搜尋**]。
+2. 在 [Microsoft Update 目錄] 的 [搜尋] 方塊中，輸入知識庫 (KB) 您要下載之更新的修正程式號碼或條款。 例如，輸入 **Azure Stack Edge Pro**]，然後按一下 [ **搜尋**]。
    
-    更新清單會顯示為 **Azure Stack Edge 2006**。
+    更新清單會顯示為 **Azure Stack Edge Pro 2006**。
    
     ![搜尋目錄](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)
 
@@ -213,6 +213,6 @@ ms.locfileid: "89268239"
 10. 成功安裝 Kubernetes 更新之後，在 [**維護**  >  **軟體更新**] 中不會變更顯示的軟體。 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-深入瞭解如何 [管理您的 Azure Stack Edge](azure-stack-edge-manage-access-power-connectivity-mode.md)。
+深入瞭解如何 [管理您的 Azure Stack Edge 專業人員](azure-stack-edge-manage-access-power-connectivity-mode.md)。

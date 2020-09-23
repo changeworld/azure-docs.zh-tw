@@ -1,6 +1,6 @@
 ---
-title: 透過 IoT Edge 模組在 Azure Stack Edge GPU 上部署 Kubernetes 無狀態應用程式 |Microsoft Docs
-description: 說明如何使用透過外部 IP 存取的 IoT Edge 模組，在 Azure Stack Edge GPU 裝置上部署 Kubernetes 無狀態應用程式。
+title: 透過 IoT Edge 模組在 Azure Stack Edge Pro GPU 上部署 Kubernetes 無狀態應用程式 |Microsoft Docs
+description: 說明如何使用透過外部 IP 存取的 IoT Edge 模組，在 Azure Stack Edge Pro GPU 裝置上部署 Kubernetes 無狀態應用程式。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,42 +8,42 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 15316cbdd44053bfaf7403815ba42d92e2264b7b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4bc598080b96886e6734ac3709761465a1a28d49
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254163"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899522"
 ---
-# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-gpu-device"></a>使用 IoT Edge 模組在 Azure Stack Edge GPU 裝置上執行 Kubernetes 無狀態應用程式
+# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>使用 IoT Edge 模組在 Azure Stack Edge Pro GPU 裝置上執行 Kubernetes 無狀態應用程式
 
-本文說明如何使用 IoT Edge 模組，在 Azure Stack Edge 裝置上部署無狀態應用程式。
+本文說明如何使用 IoT Edge 模組，在 Azure Stack Edge Pro 裝置上部署無狀態應用程式。
 
 若要部署無狀態應用程式，請執行下列步驟：
 
 - 部署 IoT Edge 模組之前，請先確定已完成必要條件。
-- 新增 IoT Edge 模組，以存取您 Azure Stack Edge 上的計算網路。
+- 新增 IoT Edge 模組，以存取您 Azure Stack Edge Pro 上的計算網路。
 - 確認模組可以存取已啟用的網路介面。
 
 在此操作說明文章中，您將使用 web 伺服器應用程式模組來示範此案例。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前，您需要：
 
-- Azure Stack Edge 裝置。 請確認：
+- Azure Stack Edge Pro 裝置。 請確認：
 
     - 系統會在裝置上設定計算網路設定。
     - 根據 [教學課程：啟用您的裝置](azure-stack-edge-gpu-deploy-activate.md)中的步驟來啟用裝置。
-- 您已根據教學課程完成 **設定計算** 步驟：在裝置上的 [Azure Stack Edge 裝置上設定計算](azure-stack-edge-gpu-deploy-configure-compute.md) 。 您的裝置應該有相關聯的 IoT 中樞資源、IoT 裝置和 IoT Edge 裝置。
+- 您已根據教學課程完成 **設定計算** 步驟：在裝置上的 [Azure Stack Edge Pro 裝置上設定計算](azure-stack-edge-gpu-deploy-configure-compute.md) 。 您的裝置應該有相關聯的 IoT 中樞資源、IoT 裝置和 IoT Edge 裝置。
 
 
 ## <a name="add-webserver-app-module"></a>新增 web 伺服器應用程式模組
 
-請採取下列步驟，在您的 Azure Stack Edge 裝置上新增 web 伺服器應用程式模組。
+請採取下列步驟，在您的 Azure Stack Edge Pro 裝置上新增 web 伺服器應用程式模組。
 
 1. 在與您的裝置相關聯的 IoT 中樞資源中，移至 [ **自動裝置管理 > IoT Edge**。
-1. 選取並按一下與您 Azure Stack Edge 裝置相關聯的 IoT Edge 裝置。 
+1. 選取並按一下與您 Azure Stack Edge Pro 裝置相關聯的 IoT Edge 裝置。 
 
     ![選取 IoT Edge 裝置](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/select-iot-edge-device-1.png)  
 
@@ -97,6 +97,6 @@ ms.locfileid: "89254163"
 
     ![確認透過指定的埠連接到模組](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/verify-webserver-app-1.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解如何透過 IoT Edge 模組公開具狀態應用程式<!--insert link-->.

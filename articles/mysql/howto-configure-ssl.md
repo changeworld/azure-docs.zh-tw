@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: dd01b8e85be52de898e6b22fb4da810e9184482d
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 1bedeb752a18d7a0212ede2b34526efb8ea09287
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055821"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905834"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>在您的應用程式中設定 SSL 連線能力，以安全地連線至適用於 MySQL 的 Azure 資料庫
 
@@ -42,7 +42,7 @@ ms.locfileid: "90055821"
 
 1. 在 [SSL CA 檔案:]**** 欄位中輸入 **BaltimoreCyberTrustRoot.crt.pem** 的檔案位置。
 
-   ![儲存 SSL 設定](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+   :::image type="content" source="./media/howto-configure-ssl/mysql-workbench-ssl.png" alt-text="儲存 SSL 設定":::
 
 針對現有的連接，您可以用滑鼠右鍵按一下連接圖示，然後選擇 [編輯]，以系結 SSL。 然後瀏覽至 [SSL]**** 索引標籤上，並繫結憑證檔案。
 
@@ -63,7 +63,7 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 
 使用 Azure 入口網站，瀏覽適用於 MySQL 的 Azure 資料庫伺服器，然後按一下 [連線安全性]****。 使用切換按鈕來啟用或停用 [強制使用 SSL 連線]**** 設定，然後按一下 [儲存]****。 Microsoft 建議一律啟用 [強制使用 SSL 連線]**** 設定，以增強安全性。
 
-![在適用於 MySQL 的 Azure 資料庫中強制執行 SSL 連線 Azure 入口網站的螢幕擷取畫面](./media/howto-configure-ssl/enable-ssl.png)
+:::image type="content" source="./media/howto-configure-ssl/enable-ssl.png" alt-text="在適用於 MySQL 的 Azure 資料庫中強制執行 SSL 連線 Azure 入口網站的螢幕擷取畫面":::
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
@@ -252,6 +252,6 @@ using (var connection = new MySqlConnection(builder.ConnectionString))
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 檢閱[「適用於 MySQL 的 Azure 資料庫」的連線庫](concepts-connection-libraries.md)後面的各種應用程式連線能力選項

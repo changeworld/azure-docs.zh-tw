@@ -1,7 +1,7 @@
 ---
-title: 教學課程：在 Jupyter 筆記本中進行實驗 (Python)
-titleSuffix: Machine Learning - Azure
-description: 在本教學課程中，您會開始使用在 Jupyter 筆記本中執行的 Azure Machine Learning Python SDK。  在第一部分中，您會建立一個可在其中管理實驗和 ML 模型的工作區。
+title: 教學課程：從 Jupyter Notebook 開始 (Python)
+titleSuffix: Azure Machine Learning
+description: Jupyter Notebook 教學課程的設定。  建立 Azure Machine Learning 工作區、將 Jupyter Notebook 複製到工作區，然後建立用來執行筆記本的計算執行個體。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,44 +10,42 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ff23a42d9b96b8411d8b2f82ab8303e2a8a69953
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: de52013628f5d02bedcf72a99e0fad25cabe5d8f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852713"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896908"
 ---
-# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教學課程：使用 Python SDK 開始建立您的第一個 ML 實驗
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>教學課程：在 Jupyter Notebook 中開始使用 Azure Machine Learning
 
-在本教學課程中，您會遵循端對端步驟來開始使用在 Jupyter 筆記本中執行的 Azure Machine Learning Python SDK。 本教學課程是**教學課程系列的第一部分 (共兩部分)** ，其中包含 Python 環境的安裝和設定，以及如何建立工作區來管理您的實驗和機器學習模型。 [**第二部分**](tutorial-1st-experiment-sdk-train.md)會以此為基礎來定型多個機器學習模型，並使用 Azure Machine Learning Studio 和 SDK 來引進模型管理程序。
+在本教學課程中，您會在[受控雲端式工作站 (計算執行個體)](concept-compute-instance.md) 上，完成透過 Jupyter Notebook 開始使用 Azure Machine Learning 的步驟。 本教學課程是所有其他 Jupyter Notebook 教學課程的先驅。
 
 在本教學課程中，您：
 
 > [!div class="checklist"]
-> * 建立要在下一個教學課程中使用的 [Azure Machine Learning 工作區](concept-workspace.md)。
+> * 建立 [Azure Machine Learning 工作區](concept-workspace.md)，以在其他 Jupyter Notebook 教學課程中使用。
 > * 將教學課程 Notebook 複製到工作區中的資料夾。
 > * 建立已安裝並預先設定 Azure Machine Learning Python SDK 的雲端式計算執行個體。
-
 
 如果您沒有 Azure 訂用帳戶，請在開始前先建立一個免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
 ## <a name="create-a-workspace"></a>建立工作區
 
-Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機器學習模型的基礎資源。 工作區可將您的 Azure 訂用帳戶和資源群組與服務中容易使用的物件結合。 
+Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機器學習模型的基礎資源。 工作區可將您的 Azure 訂用帳戶和資源群組與服務中容易使用的物件結合。
 
-您透過 Azure 入口網站建立工作區 (管理 Azure 資源的 Web 型主控台)。 
+您透過 Azure 入口網站建立工作區 (管理 Azure 資源的 Web 型主控台)。
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
->[!IMPORTANT] 
+>[!IMPORTANT]
 > 記下您的**工作區**和**訂用帳戶**。 您會需要這些項目，以確保您在正確位置建立實驗。 
 
 ## <a name="run-notebook-in-your-workspace"></a><a name="azure"></a>在您的工作區中執行 Notebook
 
-本教學課程會在您的工作區中使用雲端 Notebook 伺服器，讓您擁有免安裝和預先設定的體驗。 如果您想要控制您的環境、套件和相依性，[請使用您自己的環境](how-to-configure-environment.md#local)。
+Azure Machine Learning 會在您的工作區中包含雲端 Notebook 伺服器，讓您擁有免安裝和預先設定的體驗。 如果您想要控制您的環境、套件和相依性，[請使用您自己的環境](tutorial-1st-experiment-sdk-setup-local.md)。
 
- 請依照這段影片的說明，或使用下列詳細步驟，從您的工作區複製並執行教學課程。 
+ 請依照這段影片的說明，或使用下列詳細步驟，從您的工作區複製並執行教學課程 Notebook。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
@@ -80,12 +78,11 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
     > [!IMPORTANT]
     > 您可以查看 **samples** 資料夾中的 Notebook，但無法從該處執行 Notebook。  若要執行 Notebook，請務必在 [使用者檔案] 區段中開啟複製的 Notebook 版本。
     
-1. 在 tutorials/create-first-ml-experiment 資料夾中選取 tutorial-1st-experiment-sdk-train.ipynb 檔案。
+1. 在您的 **tutorials/image-classification-mnist-data** 資料夾中選取 **tutorial-1st-experiment-sdk-train.ipynb** 檔案。
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="開啟教學課程資料夾":::
 
-
-1. 在頂端列上，選取要用來執行筆記本的計算執行個體。 這些 VM 已預先設定[執行 Azure Machine Learning 所需的一切](concept-compute-instance.md#contents)。 
+1. 在頂端列上，選取要用來執行筆記本的計算執行個體。 這些 VM 已預先設定[執行 Azure Machine Learning 所需的一切](concept-compute-instance.md#contents)。
 
 1. 如果找不到任何 VM，請選取 [+ 新增] 以建立計算執行個體 VM。 
 
@@ -107,17 +104,11 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已完成下列工作：
-
-* 建立 Azure Machine Learning 工作區。
-* 建立及設定您工作區中的雲端 Notebook 伺服器。
-
-在本教學課程的**第二部分**中，您會在 `tutorial-1st-experiment-sdk-train.ipynb` 中執行程式碼以定型機器學習模型。 
+現在您已設定了開發環境，接著請繼續在 Jupyter Notebook 中訓練模型：
 
 > [!div class="nextstepaction"]
-> [教學課程：定型您的第一個模型](tutorial-1st-experiment-sdk-train.md)
+> [教學課程：使用 MNIST 資料和 scikit-learn 將影像分類模型定型](tutorial-train-models-with-aml.md)
 
-> [!IMPORTANT]
-> 如果您不打算遵循本教學課程的第 2 部分或任何其他教學課程，請在未使用時[停止雲端 Notebook 伺服器 VM](tutorial-1st-experiment-sdk-train.md#clean-up-resources) 來降低成本。
+<a name="stop-compute-instance"></a>如果您不打算現在進行其他教學課程，請在未使用時停止雲端 Notebook 伺服器 VM 來降低成本：
 
-
+[!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]

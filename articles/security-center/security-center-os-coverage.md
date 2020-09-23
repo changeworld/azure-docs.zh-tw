@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: f02e45804234fc8f8aa2b966db7ddce5efc9cfd1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2092a1aa3d5157db0392397e86553c5cc9da9de2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998827"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883794"
 ---
 # <a name="supported-platforms"></a>支援的平台 
 
@@ -55,9 +55,9 @@ Azure 資訊安全中心在不同類型的混合式環境中支援虛擬機器�
 
 也支援在雲端服務中執行的虛擬機器。 只監視在生產位置中執行的雲端服務 Web 角色和背景工作角色。 若要深入了解雲端服務，請參閱 [Azure 雲端服務概觀](../cloud-services/cloud-services-choose-me.md)。
 
-也支援 Azure Stack 中的 Vm 保護。 如需資訊安全中心與 Azure Stack 整合的詳細資訊，請參閱將 [您的 Azure stack 虛擬機器上線至資訊安全中心](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)。
+也支援 Azure Stack 中的 Vm 保護。 如需資訊安全中心與 Azure Stack 整合的詳細資訊，請參閱將 [您的 Azure stack 虛擬機器上線至資訊安全中心](quickstart-onboard-machines.md)。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解 [安全性中心如何使用 Log Analytics 代理程式來收集資料](security-center-enable-data-collection.md)。
 - 瞭解 [安全性中心如何管理和保護資料](security-center-data-security.md)。

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: d2b26016ec67f0eecd785e3bfb951fe5fd607545
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 785fcbbcde0c4efe3c2d1cd84bf19bd03371ab06
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079137"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883535"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 入口網站來管理 Azure 資料箱閘道上的共用 
 
@@ -43,14 +43,14 @@ ms.locfileid: "86079137"
 
     共用名稱只能包含數字、小寫字母和連字號。 共用名稱的長度必須介於 3 到 63 個字元之間，且開頭為字母或數字。 每個連字號前後都必須緊接非連字號的字元。
 
-3. 選取共用的 [類型]****。 類型可以是 **SMB** 或 **NFS**，並以 SMB 為預設值。 SMB 是 Windows 用戶端的標準，NFS 則用於 Linux 用戶端。 視您選擇 SMB 或 NFS 共用而定，所顯示的選項會有些許不同。
+3. 選取共用的 [類型]  。 類型可以是 **SMB** 或 **NFS**，並以 SMB 為預設值。 SMB 是 Windows 用戶端的標準，NFS 則用於 Linux 用戶端。 視您選擇 SMB 或 NFS 共用而定，所顯示的選項會有些許不同。
 
 4. 提供共用所在的 [儲存體帳戶]****。 如果容器已不存在，則會使用共用名稱在儲存體帳戶中建立容器。 如果容器已存在，則會使用現有的容器。  
 
-5. 從區塊 Blob、分頁 Blob 或檔案中選擇 [儲存體服務]****。 所選擇的服務類型取決於您想要資料以哪一種格式存在 Azure 中。 例如，在本例中，我們想要資料以區塊 Blob 的方式存在 Azure 中，因此，我們選取 [區塊 Blob]****。 如果選擇 [分頁 Blob]****，您必須確定資料對齊 512 個位元組。 例如，VHDX 一律是 512 位元組規格。
+5. 從區塊 Blob、分頁 Blob 或檔案中選擇 [儲存體服務]  。 所選擇的服務類型取決於您想要資料以哪一種格式存在 Azure 中。 例如，在此例中，我們想要資料以 blob 區塊的形式存在於 Azure 中，因此我們選取 [ **區塊 blob**]。 如果選擇 [分頁 Blob]****，您必須確定資料對齊 512 個位元組。 例如，VHDX 一律是 512 位元組規格。
 
    > [!IMPORTANT]
-   > 如果您使用的是 Azure Stack Edge 或資料箱閘道裝置，請確定您使用的 Azure 儲存體帳戶未在其上設定永久性原則。 如需詳細資訊，請參閱[設定和管理 blob 儲存體的不可變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+   > 如果您將 Azure 儲存體帳戶與 Azure Stack Edge Pro 或資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
 
 6. 此步驟取決於您要建立 SMB 還是 NFS 共用。
     - **如果建立 SMB 共用** - 在 [完整權限本機使用者]**** 欄位中，從 [新建]**** 或 [使用現有的]**** 中擇一。 如果建立新的本機使用者，請提供 [使用者名稱]****、[密碼]****，然後確認密碼。 這會將使用權限指派給本機使用者。 當您在此指派權限之後，就可以使用 [檔案總管] 來修改這些權限。
@@ -122,7 +122,7 @@ ms.locfileid: "86079137"
 在 Azure 入口網站中執行下列步驟，以同步儲存體存取金鑰。
 
 1. 移至您資源的 [概觀]****。 
-2. 從共用清單中，選擇並按一下與您需要同步的儲存體帳戶相關聯的共用。按一下 [**同步儲存體金鑰**]。 
+2. 從共用清單中，選擇並按一下與您需要同步處理的儲存體帳戶相關聯的共用。按一下 [ **同步處理儲存體金鑰**]。 
 
      ![同步儲存體金鑰 1](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 

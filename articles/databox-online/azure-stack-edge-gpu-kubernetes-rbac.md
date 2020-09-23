@@ -1,6 +1,6 @@
 ---
-title: 瞭解 Azure Stack Edge 裝置上的角色型存取控制 Kubernetes |Microsoft Docs
-description: 描述 Kubernetes 角色型存取控制如何在 Azure Stack Edge 裝置上進行。
+title: 瞭解 Azure Stack Edge Pro 裝置上的角色型存取控制 Kubernetes |Microsoft Docs
+description: 描述 Kubernetes 角色型存取控制如何在 Azure Stack Edge Pro 裝置上進行。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 285a41230175392dafb69a99ca08be1f72339439
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 1f194424a4030a2b829af6c8f5b97a3c200bd2e6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318959"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899282"
 ---
-# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>在 Azure Stack Edge GPU 裝置上 Kubernetes 角色型存取控制
+# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上 Kubernetes 以角色為基礎的存取控制
 
 
-在您的 Azure Stack Edge 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 您可以使用 Kubernetes 角色型存取控制 (RBAC) 來限制對您裝置上叢集資源的存取。
+在您的 Azure Stack Edge Pro 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 您可以使用 Kubernetes 角色型存取控制 (RBAC) 來限制對您裝置上叢集資源的存取。
 
-本文概述 Kubernetes 提供的 RBAC 系統，以及如何在您的 Azure Stack Edge 裝置上執行 Kubernetes RBAC。 
+本文概述 Kubernetes 提供的 RBAC 系統，以及如何在您的 Azure Stack Edge Pro 裝置上執行 Kubernetes RBAC。 
 
 ## <a name="rbac-for-kubernetes"></a>適用于 Kubernetes 的 RBAC
 
@@ -34,7 +34,7 @@ Kubernetes 資源（例如 pod 和部署）會以邏輯方式分組到命名空�
 
 命名空間適用于有許多使用者散佈在多個小組或專案的環境中。 如需詳細資訊，請參閱 [Kubernetes 命名空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)。
 
-您的 Azure Stack Edge 裝置具有下列命名空間：
+您的 Azure Stack Edge Pro 裝置具有下列命名空間：
 
 - **系統命名空間** -此命名空間是核心資源所在的位置，例如 DNS 和 proxy 等網路功能，或 Kubernetes 儀表板。 您通常不會將自己的應用程式部署到此命名空間中。 使用此命名空間來偵測任何 Kubernetes 叢集問題。 
 
@@ -73,9 +73,9 @@ Kubernetes 具有角色和角色系結的概念，可讓您將許可權授與命
 
 這種方法可讓您以邏輯方式區隔單一 Kubernetes 叢集，讓使用者只能存取其指派命名空間中的應用程式資源。 
 
-## <a name="rbac-on-azure-stack-edge"></a>Azure Stack Edge 上的 RBAC
+## <a name="rbac-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro 上的 RBAC
 
-在目前的 RBAC 實施中，Azure Stack Edge 可讓您從受限制的 PowerShell 執行時間採取下列動作：
+在目前的 RBAC 實施中，Azure Stack Edge Pro 可讓您從受限制的 PowerShell 執行時間採取下列動作：
 
 - 建立命名空間。  
 - 建立其他使用者。
@@ -83,11 +83,11 @@ Kubernetes 具有角色和角色系結的概念，可讓您將許可權授與命
 - 取得 `kubeconfig` 具有存取 Kubernetes 叢集資訊的檔案。
 
 
-Azure Stack Edge 裝置具有多個系統命名空間，而且您可以使用檔案來建立使用者命名空間， `kubeconfig` 以存取這些命名空間。 使用者可以完全掌控這些命名空間，也可以建立或修改使用者，或授與使用者存取權。 只有叢集系統管理員具有系統命名空間和整個叢集資源的完整存取權。 `aseuser`具有系統命名空間的唯讀存取權。
+Azure Stack Edge Pro 裝置具有多個系統命名空間，而且您可以使用檔案來建立使用者命名空間， `kubeconfig` 以存取這些命名空間。 使用者可以完全掌控這些命名空間，也可以建立或修改使用者，或授與使用者存取權。 只有叢集系統管理員具有系統命名空間和整個叢集資源的完整存取權。 `aseuser`具有系統命名空間的唯讀存取權。
 
-以下圖表描述 Azure Stack Edge 裝置上的 RBAC 的執行。
+以下圖表描述 Azure Stack Edge Pro 裝置上的 RBAC 的執行。
 
-![Azure Stack Edge 裝置上的 RBAC](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
+![Azure Stack Edge Pro 裝置上的 RBAC](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
 
 在此圖中，Alice、Bob 和 Chuck 只能存取指派的使用者命名空間，在此案例中為 `ns1` 、 `ns2` 和 `ns3` 分別為。 在這些命名空間中，它們具有系統管理員存取權。 另一方面，叢集系統管理員可以存取系統命名空間和整個叢集的資源。
 
@@ -109,10 +109,10 @@ Azure Stack Edge 裝置具有多個系統命名空間，而且您可以使用檔
 
 5. 安裝 `kubectl` 並開始將應用程式部署至 `kubectl` 。 
 
-如需詳細的逐步指示，請移至 [Azure Stack Edge 上的透過 Kuebctl 存取 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集。
+如需詳細的逐步指示，請移至 [Azure Stack Edge Pro 上的透過 Kuebctl 存取 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集。
 
 
-使用 Azure Stack Edge 裝置上的命名空間和使用者時，適用下列注意事項：
+使用 Azure Stack Edge Pro 裝置上的命名空間和使用者時，適用下列注意事項：
 
 - 您不允許對任何系統命名空間執行任何作業，例如建立使用者、授與或撤銷使用者的命名空間存取權。 系統命名空間的範例包括、、、、 `kube-system` `metallb-system` `kubernetes-dashboard` `default` `kube-node-lease` 、 `kube-public` 。 系統命名空間也包含為部署類型保留的命名空間，例如 `iotedge` (IoT Edge 命名空間) 以及 `azure-arc` (Azure Arc 命名空間) 。
 - 您可以建立使用者命名空間，並在這些命名空間內建立額外的使用者，並授與或撤銷這些使用者的命名空間存取權。
@@ -121,7 +121,7 @@ Azure Stack Edge 裝置具有多個系統命名空間，而且您可以使用檔
 - 您不能建立已保留名稱的使用者。 例如， `aseuser` 是保留的使用者，無法使用。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要瞭解如何建立使用者、建立命名空間，以及授與使用者命名空間的存取權，請參閱透過 [Kubectl 存取 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集。
 

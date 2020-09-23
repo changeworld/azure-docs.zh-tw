@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Azure 與 Azure Data Box Gateway 的記錄支援票證 |Microsoft Docs
-description: 瞭解如何記錄 Azure Stack Edge 或 Data Box Gateway 訂單相關問題的支援要求。
+title: Azure Stack Edge Pro，Azure 資料箱 Gateway 的記錄支援票證 |Microsoft Docs
+description: 瞭解如何記錄 Azure Stack Edge Pro 或資料箱閘道訂單相關問題的支援要求。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 4d513471e288c1aadbf70b24ef367965a0b69a80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9df729277934e074e1e8cc92126e777336708586
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339904"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904513"
 ---
-# <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>開啟 Azure Stack Edge 和 Azure Data Box Gateway 的支援票證
+# <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>開啟 Azure Stack Edge Pro 和 Azure 資料箱閘道的支援票證
 
-本文適用於 Azure Stack Edge / Azure Data Box Gateway 服務管理的 Azure Stack Edge 和 Azure Data Box Gateway。 如果您的服務遇到任何問題，您可以建立技術支援的服務要求。 本文將引導您：
+本文適用于 Azure Stack Edge Pro 和 Azure 資料箱閘道，這兩個閘道都是由 Azure Stack Edge Pro/Azure 資料箱閘道服務所管理。 如果您的服務遇到任何問題，您可以建立技術支援的服務要求。 本文將引導您：
 
 * 如何建立支援要求。
 * 如何在入口網站上管理支援要求的生命週期。
@@ -26,13 +26,13 @@ ms.locfileid: "84339904"
 
 執行下列步驟來建立支援要求：
 
-1. 移至您的 Azure Stack Edge 或 Data Box Gateway 訂單。 瀏覽至 [支援 + 疑難排解] 區段，然後按一下 [新增支援要求]。
+1. 移至您的 Azure Stack Edge Pro 或資料箱閘道訂單。 瀏覽至 [支援 + 疑難排解] 區段，然後按一下 [新增支援要求]。
 
 2. 在 [新增支援要求]的 [基本] 索引標籤上，執行下列步驟：
 
     1. 從 [問題類型] 下拉式清單中，選取 [技術]。
     2. 選擇您的**訂用帳戶**。
-    3. 在 [服務] 底下，勾選 [我的服務]。 從下拉式清單中，選取 [Azure Stack Edge 和 Data Box Gateway]。
+    3. 在 [服務] 底下，勾選 [我的服務]。 從下拉式清單中，選取 [ **Azure Stack Edge Pro 和資料箱閘道**]。
     4. 選取您的**資源**。 這會對應至訂單的名稱。
     5. 對於您遇到的問題提供簡短**摘要**。 
     6. 選取您的**問題類型**。
@@ -98,5 +98,5 @@ ms.locfileid: "84339904"
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何[針對 Azure Stack Edge 的相關問題進行疑難排解](azure-stack-edge-troubleshoot.md)。
+瞭解如何針對 [Azure Stack Edge Pro 的相關問題進行疑難排解](azure-stack-edge-troubleshoot.md)。
 瞭解[如何針對 Data Box Gateway 的相關問題進行疑難排解](data-box-gateway-troubleshoot.md)。
