@@ -1,6 +1,6 @@
 ---
-title: 在 Microsoft Azure Stack Edge GPU 裝置上執行 GPU 模組 |Microsoft Docs
-description: 說明如何透過 Azure 入口網站在 Azure Stack Edge 裝置上的 GPU 上設定和執行模組。
+title: 在 Microsoft Azure Stack Edge Pro GPU 裝置上執行 GPU 模組 |Microsoft Docs
+description: 說明如何透過 Azure 入口網站，在 Azure Stack Edge Pro 裝置的 GPU 上設定和執行模組。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 419b8beb866711e80b4366df4398eb248256021b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8b9f1180639f638e72fdea2f87958628a2e9e86b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266947"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891467"
 ---
-# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-device"></a>在 Azure Stack Edge 裝置上的 GPU 上設定和執行模組
+# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>在 Azure Stack Edge Pro 裝置上的 GPU 上設定和執行模組
 
-您的 Azure Stack Edge 裝置包含一或多個圖形處理單位 (GPU) 。 Gpu 是 AI 計算的常用選擇，因為它們提供平行處理功能，而影像轉譯的速度比中央處理單位 (Cpu) 更快。 如需 Azure Stack Edge 裝置所含 GPU 的詳細資訊，請移至 [Azure Stack Edge 裝置技術規格](azure-stack-edge-gpu-technical-specifications-compliance.md)。
+您 Azure Stack Edge Pro 裝置包含一或多個圖形處理單位 (GPU) 。 Gpu 是 AI 計算的常用選擇，因為它們提供平行處理功能，而影像轉譯的速度比中央處理單位 (Cpu) 更快。 如需 Azure Stack Edge Pro 裝置所含 GPU 的詳細資訊，請移至 [Azure Stack Edge Pro 裝置技術規格](azure-stack-edge-gpu-technical-specifications-compliance.md)。
 
-本文說明如何在 Azure Stack Edge 裝置上的 GPU 上設定和執行模組。 在本文中，您將使用針對 Nvidia T4 Gpu 撰寫的公開可用容器模組 **數位** 。 此程式可以用來設定 Nvidia 針對這些 Gpu 所發佈的任何其他模組。
+本文說明如何在 Azure Stack Edge Pro 裝置上的 GPU 上設定和執行模組。 在本文中，您將使用針對 Nvidia T4 Gpu 撰寫的公開可用容器模組 **數位** 。 此程式可以用來設定 Nvidia 針對這些 Gpu 所發佈的任何其他模組。
 
 
 ## <a name="prerequisites"></a>必要條件
 
 在您開始前，請確定：
 
-1. 您可以存取已啟用 GPU 的1個節點 Azure Stack Edge 裝置。 此裝置會使用 Azure 中的資源來啟用。  
+1. 您可以存取已啟用 GPU 的1個節點 Azure Stack Edge Pro 裝置。 此裝置會使用 Azure 中的資源來啟用。  
 
 ## <a name="configure-module-to-use-gpu"></a>設定模組以使用 GPU
 
-若要將模組設定為使用 Azure Stack Edge 裝置上的 GPU 來執行模組，請遵循下列步驟。
+若要將模組設定為使用 Azure Stack Edge Pro 裝置上的 GPU 來執行模組，請遵循下列步驟。
 
 1. 在 Azure 入口網站中，移至與您的裝置相關聯的資源。 
 
@@ -54,7 +54,7 @@ ms.locfileid: "89266947"
 
     ![將模組設定為使用 GPU 6](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-2.png)
 
-    在右窗格中，您會看到與您 Azure Stack Edge 裝置相關聯的 IoT Edge 裝置。 這會對應到您在上一個步驟中建立 IoT 中樞資源時所建立的 IoT Edge 裝置。 
+    在右窗格中，您會看到與您 Azure Stack Edge Pro 裝置相關聯的 IoT Edge 裝置。 這會對應到您在上一個步驟中建立 IoT 中樞資源時所建立的 IoT Edge 裝置。 
     
 6. 選取此 IoT Edge 裝置。
 
@@ -112,6 +112,6 @@ ms.locfileid: "89266947"
     ![將模組設定為使用 GPU 16](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-12.png)
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解 [您可以搭配 NVIDIA GPU 使用的環境變數](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec)。

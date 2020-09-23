@@ -12,15 +12,15 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6d0d626fe0720500b436aea73d6df7c8bb08e004
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: fc9dee3d4ace5f70c4238cdce5c57696b131bfa9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649387"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897319"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中啟動、監視及取消定型回合
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 適用于 Python、 [MACHINE LEARNING CLI](reference-azure-machine-learning-cli.md)和[Azure Machine Learning STUDIO](https://ml.azure.com)的[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)提供各種方法來監視、組織及管理您的回合以進行定型和實驗。
 
@@ -110,7 +110,7 @@ notebook_run.log(name="message", value="Hello from run!")
 
 ### <a name="using-azure-machine-learning-studio"></a>使用 Azure Machine Learning studio
 
-若要在設計工具中啟動提交管線執行 (preview) ，請使用下列步驟：
+若要在設計工具中開始提交管線執行，請使用下列步驟：
 
 1. 為您的管線設定預設計算目標。
 
@@ -384,7 +384,7 @@ list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"
 
 #### <a name="using-the-cli"></a>使用 CLI
 
-Azure CLI 支援 [JMESPath](http://jmespath.org) 查詢，可用來根據屬性和標記篩選執行。 若要使用 JMESPath 查詢搭配 Azure CLI，請使用參數來指定 `--query` 。 下列範例顯示使用屬性和標記的基本查詢：
+Azure CLI 支援 [JMESPath](http://jmespath.org) 查詢，可用來根據屬性和標記篩選執行。 若要使用 JMESPath 查詢搭配 Azure CLI，請使用參數來指定 `--query` 。 下列範例顯示使用屬性和標記的一些查詢：
 
 ```azurecli-interactive
 # list runs where the author property = 'azureml-user'
@@ -411,7 +411,7 @@ az ml run list --experiment-name experiment [?properties.author=='azureml-user' 
 
 * 如需使用 Azure Machine Learning SDK 來管理執行的詳細資訊，請參閱 [管理執行筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/manage-runs/manage-runs.ipynb)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * 若要瞭解如何記錄您的實驗的計量，請參閱 [定型回合期間的記錄計量](how-to-track-experiments.md)。
 * 若要瞭解如何監視 Azure Machine Learning 的資源和記錄，請參閱 [監視 Azure Machine Learning](monitor-azure-machine-learning.md)。

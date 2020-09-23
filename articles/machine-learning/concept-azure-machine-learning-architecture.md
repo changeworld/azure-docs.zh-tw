@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c24e9f58154b1523496a82761a8c48ba06dea46c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7f10454eff7958f59cf16b19e98918062b2a61a3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651248"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886324"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning 的運作方式：架構和概念
 
@@ -193,7 +193,7 @@ Azure Machine Learning 與架構無關。 在建立模型時，您可以使用�
 
 #### <a name="real-time-endpoints"></a>即時端點
 
-當您在設計工具中部署定型的模型 (preview) ，您可以將 [模型部署為即時端點](tutorial-designer-automobile-price-deploy.md)。 即時端點通常會透過 REST 端點接收單一要求，並即時傳回預測。 這與批次處理不同，它會一次處理多個值，並在完成後將結果儲存至資料存放區。
+當您在設計工具中部署定型的模型時，您可以將 [模型部署為即時端點](tutorial-designer-automobile-price-deploy.md)。 即時端點通常會透過 REST 端點接收單一要求，並即時傳回預測。 這與批次處理不同，它會一次處理多個值，並在完成後將結果儲存至資料存放區。
 
 #### <a name="pipeline-endpoints"></a>管線端點
 
@@ -229,7 +229,7 @@ Azure IoT Edge 會確保模組正在執行，並監視裝載模組的裝置。
 
 Studio 也可讓您存取屬於 Azure Machine Learning 一部分的互動式工具：
 
-+ [Azure Machine Learning 設計工具 (預覽) ](concept-designer.md) 在不撰寫程式碼的情況下執行工作流程步驟
++ [Azure Machine Learning 設計](concept-designer.md) 工具來執行工作流程步驟，而不需要撰寫程式碼
 + [自動化機器學習](concept-automated-ml.md)的 Web 體驗
 + [Azure Machine Learning 筆記本](how-to-run-jupyter-notebooks.md) 在整合式 Jupyter 筆記本伺服器中撰寫和執行您自己的程式碼。
 + [資料標記專案](how-to-create-labeling-projects.md) ，以建立、管理及監視專案以標示您的資料
@@ -242,6 +242,7 @@ Studio 也可讓您存取屬於 Azure Machine Learning 一部分的互動式工�
 
 +  使用[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)，與任何 Python 環境中的服務互動。
 + 使用 [適用于 r](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (preview) 的 Azure Machine Learning SDK，在任何 R 環境中與服務互動。
++ 使用 [Azure Machine Learning 設計](concept-designer.md) 工具來執行工作流程步驟，而不需要撰寫程式碼。 
 + 使用 [AZURE MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) 進行自動化。
 + [Many Models Solution Accelerator](https://aka.ms/many-models) (預覽) 建置在 Azure Machine Learning 中，可讓您定型、操作及管理上百個或甚至數千個機器學習模型。
 

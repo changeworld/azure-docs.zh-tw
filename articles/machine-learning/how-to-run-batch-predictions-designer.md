@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Machine Learning 設計工具執行批次預測 (預覽)
+title: 使用 Azure Machine Learning 設計工具執行批次預測
 titleSuffix: Azure Machine Learning
 description: 了解如何使用設計工具來定型模型和設定批次預測管線。 將管線部署為可從任何 HTTP 程式庫觸發的參數化 Web 服務。
 services: machine-learning
@@ -10,15 +10,15 @@ author: likebupt
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: e4ca191e50f4ca8aa5a11a36ec44e737cc2ef6bc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 21dad66670da7a538039ae795d6be87cc4dbce96
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661461"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883082"
 ---
-# <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>使用 Azure Machine Learning 設計工具執行批次預測 (預覽)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>使用 Azure Machine Learning 設計工具執行批次預測
+
 
 在本文中，您將了解如何使用設計工具來建立批次預測管線。 批次預測可讓您依據需求，使用可從任何 HTTP 程式庫觸發的 Web 服務來持續對大型資料集進行評分。
 

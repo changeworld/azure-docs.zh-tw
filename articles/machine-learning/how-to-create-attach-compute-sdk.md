@@ -11,16 +11,14 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: af912838e99e7b36cb29695758108f0a9efeb8ea
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: ac440db4c1dbddd317743e2d681a62251624d9bd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561630"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898130"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>使用 Python SDK 建立模型定型和部署的計算目標
-
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本文中，請使用 Azure Machine Learning Python SDK 來建立和管理計算目標。 您也可以使用下列方式來建立和管理計算目標：
 * [Azure Machine Learning studio](how-to-create-attach-compute-studio.md)、 
@@ -28,7 +26,7 @@ ms.locfileid: "90561630"
 * Azure Machine Learning 的 [VS Code 延伸](how-to-manage-resources-vscode.md#compute-clusters) 模組。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)
 * [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
@@ -83,7 +81,7 @@ Azure Machine Learning 在不同計算目標上提供不同的支援。 一般�
 
 當您使用本機電腦進行 **訓練**時，不需要建立計算目標。  只需從您的本機電腦 [提交定型](how-to-set-up-training-targets.md) 回合。
 
-當您使用本機電腦進行 **推斷**時，必須安裝 Docker。 若要執行部署，請使用 [Deploy_configuration LocalWebservice ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) 來定義 web 服務將使用的埠。 然後使用一般部署程式，如使用 [Azure Machine Learning 部署模型](how-to-deploy-and-where.md)中所述。
+當您使用本機電腦進行 **推斷**時，必須安裝 Docker。 若要執行部署，請使用 [LocalWebservice.deploy_configuration ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) 來定義 web 服務將使用的埠。 然後使用一般部署程式，如使用 [Azure Machine Learning 部署模型](how-to-deploy-and-where.md)中所述。
 
 ## <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure Machine Learning 計算叢集
 

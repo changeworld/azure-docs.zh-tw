@@ -6,70 +6,70 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: bd2f7798ca02f4d6eab6d6d78d158a48bcccc010
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 668243f66deff67a923097c116c4b150d0256992
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206079"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882549"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的高可用性
-適用於 MySQL 的 Azure 資料庫服務會在[99.99%](https://azure.microsoft.com/support/legal/sla/mysql)的執行時間中，提供具有財務支援的服務等級協定 (SLA) 的保證高可用性等級。 適用於 MySQL 的 Azure 資料庫在規劃的事件（例如，使用者初始化的規模計算作業）期間提供高可用性，同時也會在發生基礎硬體、軟體或網路失敗之類的非計畫事件時進行。 適用於 MySQL 的 Azure 資料庫可以快速地從最重要的情況中復原，確保在使用此服務時，幾乎不會有任何應用程式停機時間。
+適用於 MySQL 的 Azure 資料庫服務提供保證的高可用性，且具有 [99.99%](https://azure.microsoft.com/support/legal/sla/mysql) 執行時間的財務支援服務等級協定 (SLA) 。 適用於 MySQL 的 Azure 資料庫在規劃的事件（例如，使用者初始化規模計算作業）期間提供高可用性，而且也會在發生非計畫的事件（例如基礎硬體、軟體或網路失敗）時提供高可用性。 適用於 MySQL 的 Azure 資料庫可以從最重要的情況快速復原，以確保在使用此服務時幾乎不會有任何應用程式停機時間。
 
-適用於 MySQL 的 Azure 資料庫適用于執行需要很長執行時間的要徑任務資料庫。 此服務以 Azure 架構為基礎，具有固有的高可用性、冗余和復原功能，可減少規劃和未計畫的中斷資料庫停機時間，而不需要設定任何其他元件。 
+適用於 MySQL 的 Azure 資料庫適用于執行需要高執行時間的任務關鍵性資料庫。 以 Azure 架構為基礎，此服務具有固有的高可用性、冗余和復原功能，可從規劃和未計畫的中斷中減少資料庫停機時間，而不需要設定任何其他元件。 
 
 ## <a name="components-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的元件
 
 | **元件** | **說明**|
 | ------------ | ----------- |
-| <b>MySQL 資料庫伺服器 | 適用於 MySQL 的 Azure 資料庫為資料庫伺服器提供安全性、隔離、資源保護和快速重新開機功能。 這些功能可協助在中斷發生後的作業（以秒為單位）進行調整和資料庫伺服器復原操作。 <br/> 資料庫伺服器中的資料修改通常會發生在資料庫交易的內容中。 所有資料庫變更都會以「寫入記錄」的形式以同步方式記錄， (ib_log 在 Azure 儲存體上的) （連接到資料庫伺服器）。 在資料庫[檢查點](https://dev.mysql.com/doc/refman/5.7/en/innodb-checkpoints.html)處理過程中，資料庫伺服器記憶體中的資料頁也會排清至儲存體。 |
-| <b>遠端儲存體 | 所有 MySQL 實體資料檔和記錄檔都儲存在 Azure 儲存體，此架構會在區域內儲存三份資料複本，以確保資料的冗余、可用性和可靠性。 儲存層也與資料庫伺服器無關。 它可以從失敗的資料庫伺服器卸離，並在幾秒鐘內重新附加到新的資料庫伺服器。 此外，Azure 儲存體會持續監視是否有任何儲存體錯誤。 如果偵測到區塊損毀，則會藉由具現化新的存放複本來自動修正。 |
-| <b>閘道 | 閘道會做為資料庫 proxy，將所有用戶端連接路由傳送到資料庫伺服器。 |
+| <b>MySQL 資料庫伺服器 | 適用於 MySQL 的 Azure 資料庫為資料庫伺服器提供安全性、隔離、資源保護和快速重新開機功能。 這些功能可在發生中斷之後（以秒為單位），協助進行調整和資料庫伺服器復原等作業。 <br/> 資料庫伺服器中的資料修改通常會發生在資料庫交易的內容中。 所有資料庫變更都會以預先寫入記錄的形式以同步方式記錄 (ib_log) 在 Azure 儲存體上，其會附加至資料庫伺服器。 在資料庫 [檢查點](https://dev.mysql.com/doc/refman/5.7/en/innodb-checkpoints.html) 處理過程中，資料庫伺服器記憶體中的資料頁也會排清到儲存體。 |
+| <b>遠端儲存體 | 所有 MySQL 實體資料檔案和記錄檔都會儲存在 Azure 儲存體上，其架構為在區域內儲存三份資料複本，以確保資料的冗余、可用性和可靠性。 儲存層也與資料庫伺服器無關。 您可以從失敗的資料庫伺服器卸離，並在幾秒內重新附加至新的資料庫伺服器。 此外，Azure 儲存體持續監視任何儲存體錯誤。 如果偵測到區塊損毀，則會藉由具現化新的儲存複本來自動修正。 |
+| <b>閘道 | 閘道會作為資料庫 proxy，將所有用戶端連線路由傳送至資料庫伺服器。 |
 
 ## <a name="planned-downtime-mitigation"></a>規劃的停機時間緩和
-適用於 MySQL 的 Azure 資料庫的架構是為了在規劃的停機作業期間提供高可用性。 
+適用於 MySQL 的 Azure 資料庫的架構可在規劃的停機作業期間提供高可用性。 
 
-![Azure MySQL 中彈性調整的觀點](./media/concepts-high-availability/elastic-scaling-mysql-server.png)
+:::image type="content" source="./media/concepts-high-availability/elastic-scaling-mysql-server.png" alt-text="在 Azure MySQL 中查看彈性調整":::
 
-以下是一些預定進行的維護案例：
+以下是一些規劃的維護案例：
 
-| **案例** | **描述**|
+| **案例** | **說明**|
 | ------------ | ----------- |
-| <b>計算相應增加/減少 | 當使用者執行計算相應增加/減少作業時，會使用調整的計算設定來布建新的資料庫伺服器。 在舊的資料庫伺服器中，可以完成作用中的檢查點，用戶端連接已耗盡，任何未認可的交易都會取消，然後關閉。 然後會從舊的資料庫伺服器卸離存放裝置，並將其附加至新的資料庫伺服器。 當用戶端應用程式重試連接，或嘗試建立新的連線時，閘道會將連接要求導向至新的資料庫伺服器。|
-| <b>相應增加儲存體 | 相應增加存放裝置是一種線上操作，不會中斷資料庫伺服器。|
-| <b>Azure)  (的新軟體部署 | 新功能首度發行或 bug 修正會在服務預定進行的維護過程中自動發生。 如需詳細資訊，請參閱[檔](concepts-monitoring.md#planned-maintenance-notification)，並檢查您的[入口網站](https://aka.ms/servicehealthpm)。|
-| <b>次要版本升級 | 適用於 MySQL 的 Azure 資料庫會自動將資料庫伺服器修補到 Azure 所決定的次要版本。 它會在服務的預定維護過程中發生。 這會導致短暫停機時間（以秒為單位），而資料庫伺服器會自動以新的次要版本重新開機。 如需詳細資訊，請參閱[檔](concepts-monitoring.md#planned-maintenance-notification)，並檢查您的[入口網站](https://aka.ms/servicehealthpm)。|
+| <b>計算擴大/縮小 | 當使用者執行計算擴大/減少作業時，會使用調整的計算設定來布建新的資料庫伺服器。 在舊的資料庫伺服器中，允許使用中的檢查點完成，用戶端連接已清空，任何未認可的交易都會取消，然後關閉。 然後，存放裝置會從舊的資料庫伺服器卸離，並附加至新的資料庫伺服器。 當用戶端應用程式重試連線，或嘗試建立新的連線時，閘道會將連接要求導向至新的資料庫伺服器。|
+| <b>擴充儲存體 | 相應增加儲存體是一項線上作業，不會中斷資料庫伺服器。|
+| <b> (Azure) 的新軟體部署 | 新推出的功能或 bug 修正會在服務的規劃維護期間自動發生。 如需詳細資訊，請參閱 [檔](concepts-monitoring.md#planned-maintenance-notification)集，也請檢查您的 [入口網站](https://aka.ms/servicehealthpm)。|
+| <b>次要版本升級 | 適用於 MySQL 的 Azure 資料庫會自動將資料庫伺服器修補為 Azure 所決定的次要版本。 它會在服務的已規劃維護過程中發生。 這會導致短暫的停機時間（以秒為單位），而且資料庫伺服器會自動以新的次要版本重新開機。 如需詳細資訊，請參閱 [檔](concepts-monitoring.md#planned-maintenance-notification)集，也請檢查您的 [入口網站](https://aka.ms/servicehealthpm)。|
 
 
-##  <a name="unplanned-downtime-mitigation"></a>未計畫的停機緩和
+##  <a name="unplanned-downtime-mitigation"></a>非計畫的停機風險降低
 
-未預期的停機可能會因為無法預見的失敗而發生，包括基礎硬體錯誤、網路問題和軟體錯誤。 如果資料庫伺服器意外關閉，則會自動布建新的資料庫伺服器（以秒為單位）。 遠端存放會自動附加至新的資料庫伺服器。 MySQL 引擎會使用 WAL 和資料庫檔案來執行復原作業，並開啟資料庫伺服器以允許用戶端連接。 未認可的交易會遺失，且必須由應用程式重試。 雖然無法避免非計畫的停機時間，適用於 MySQL 的 Azure 資料庫會在資料庫伺服器和儲存層自動執行復原作業，而不需要人為介入，藉此減少停機時間。 
+非預期的停機時間可能會因為未預期的失敗而發生，包括基礎硬體錯誤、網路問題和軟體錯誤。 如果資料庫伺服器意外關閉，則會自動布建新的資料庫伺服器（以秒為單位）。 遠端存放會自動附加至新的資料庫伺服器。 MySQL 引擎會使用 WAL 和資料庫檔案來執行復原作業，並開啟資料庫伺服器以允許用戶端連接。 未認可的交易會遺失，而且必須由應用程式重試。 雖然無法避免非計畫的停機時間，適用於 MySQL 的 Azure 資料庫可在資料庫伺服器和儲存層自動執行復原作業，而不需要人為介入，藉此減少停機時間。 
 
 
-![Azure MySQL 中高可用性的觀點](./media/concepts-high-availability/availability-for-mysql-server.png)
+:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="Azure MySQL 中的高可用性查看":::
 
-### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>非計畫的停機時間：失敗案例和服務復原
+### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>未計畫的停機時間：失敗案例和服務復原
 以下是一些失敗案例，以及適用於 MySQL 的 Azure 資料庫如何自動復原：
 
 | **案例** | **自動復原** |
 | ---------- | ---------- |
-| <B>資料庫伺服器失敗 | 如果資料庫伺服器因為某些基礎硬體錯誤而關閉，則會卸載作用中的連接，並中止任何傳遞的交易。 系統會自動部署新的資料庫伺服器，並將遠端資料儲存區附加至新的資料庫伺服器。 完成資料庫復原之後，用戶端就可以透過閘道連接到新的資料庫伺服器。 <br /> <br /> 使用 MySQL 資料庫的應用程式必須以其偵測和重試中斷連接和失敗交易的方式建立。  當應用程式重試時，閘道會以透明方式將連接重新導向至新建立的資料庫伺服器。 |
-| <B>儲存體失敗 | 應用程式不會看到任何與儲存體相關的問題（例如磁片故障或實體區塊損毀）都會有任何影響。 當資料儲存在3個複本中時，資料的複本會由存活的儲存空間提供服務。 會自動校正封鎖損毀。 如果遺失資料的複本，就會自動建立新的資料複本。 |
+| <B>資料庫伺服器失敗 | 如果資料庫伺服器因為某些基礎硬體錯誤而關閉，則會中斷使用中的連接，而且會中止任何傳遞交易。 系統會自動部署新的資料庫伺服器，並將遠端資料存放區附加至新的資料庫伺服器。 完成資料庫復原之後，用戶端可以透過閘道連接到新的資料庫伺服器。 <br /> <br /> 使用 MySQL 資料庫的應用程式必須以其偵測和重試中斷的連接和失敗交易的方式來建立。  當應用程式重試時，閘道會以透明方式將連接重新導向至新建立的資料庫伺服器。 |
+| <B>儲存體失敗 | 應用程式不會看到任何儲存體相關問題的影響，例如磁片故障或實體區塊損毀。 當資料儲存在3個複本中時，資料複本會由存活的儲存區提供服務。 封鎖損毀會自動校正。 如果遺失資料複本，則會自動建立新的資料複本。 |
 
-以下是一些需要使用者動作才能復原的失敗案例：
+以下是一些需要使用者動作來復原的失敗案例：
 
 | **案例** | **復原方案** |
 | ---------- | ---------- |
-| <b>區域失敗 | 區域的失敗是罕見的事件。 不過，如果您需要防止區域失敗，您可以設定其他區域中的一或多個讀取複本，以進行嚴重損壞修復 (DR) 。  (參閱[這篇](howto-read-replicas-portal.md)關於建立和管理讀取複本的文章，以取得詳細資料) 。 在區域層級失敗的情況下，您可以手動將另一個區域上設定的讀取複本升級為實際執行的資料庫伺服器。 |
-| <b>邏輯/使用者錯誤 | 從使用者錯誤復原（例如不小心卸載的資料表或不正確更新的資料），會在發生錯誤之前的時間之前，藉由還原和復原資料來執行) 的[時間點恢復](concepts-backup.md) (PITR。<br> <br>  如果您只想還原資料庫或特定資料表的子集，而不是資料庫伺服器中的所有資料庫，您可以在新的實例中還原資料庫伺服器、透過[mysqldump](concepts-migrate-dump-restore.md)將資料表匯出 (s) ，然後使用[restore](concepts-migrate-dump-restore.md#restore-your-mysql-database-using-command-line-or-mysql-workbench)將這些資料表還原至您的資料庫。 |
+| <b> 區域失敗 | 區域失敗是罕見的事件。 但是，如果您需要防止區域失敗，則可以在其他區域中設定一或多個讀取複本，以進行嚴重損壞修復 (DR) 。  (請參閱 [這篇文章](howto-read-replicas-portal.md) ，瞭解如何建立及管理讀取複本，以取得詳細資料) 。 發生區域層級失敗時，您可以手動將另一個區域上設定的讀取複本升級為生產資料庫伺服器。 |
+| <b> 邏輯/使用者錯誤 | 從使用者錯誤（例如不小心卸載的資料表或不正確的資料）復原，牽涉到在發生錯誤之前的時間之前，藉由還原和復原資料，來執行 [時間點恢復](concepts-backup.md) (PITR) 。<br> <br>  如果您只想要還原一部分的資料庫或特定的資料表，而不是資料庫伺服器中的所有資料庫，您可以在新的實例中還原資料庫伺服器、透過 [mysqldump](concepts-migrate-dump-restore.md)將資料表匯出 (s) ，然後使用 [restore](concepts-migrate-dump-restore.md#restore-your-mysql-database-using-command-line-or-mysql-workbench) 將這些資料表還原至您的資料庫。 |
 
 
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
-適用於 MySQL 的 Azure 資料庫提供資料庫伺服器的快速重新開機功能、多餘的儲存空間，以及從閘道有效率地路由傳送。 如需其他資料保護，您可以將備份設定為異地複寫，並在其他區域中部署一或多個讀取複本。 利用固有的高可用性功能，適用於 MySQL 的 Azure 資料庫保護您的資料庫免于發生最常見的中斷，並提供領先業界、財務支援[99.99% 的執行時間 SLA](https://azure.microsoft.com/support/legal/sla/mysql)。 這些可用性和可靠性功能都能讓 Azure 成為執行任務關鍵性應用程式的理想平臺。
+適用於 MySQL 的 Azure 資料庫可提供資料庫伺服器的快速重新開機功能、重複的儲存空間，以及從閘道有效率的路由。 針對額外的資料保護，您可以將備份設定為異地複寫，也可以在其他區域中部署一或多個讀取複本。 利用固有的高可用性功能，適用於 MySQL 的 Azure 資料庫保護您的資料庫不受最常見的中斷影響，並提供領先業界的財務支援 [99.99% 的執行時間 SLA](https://azure.microsoft.com/support/legal/sla/mysql)。 所有的可用性和可靠性功能都能讓 Azure 成為執行任務關鍵性應用程式的理想平臺。
 
-## <a name="next-steps"></a>後續步驟
-- 瞭解[Azure 區域](../availability-zones/az-overview.md)
+## <a name="next-steps"></a>下一步
+- 深入瞭解 [Azure 區域](../availability-zones/az-overview.md)
 - 了解如何[處理暫時性連線錯誤](concepts-connectivity.md)
 - 了解如何[使用讀取複本來複寫資料](howto-read-replicas-portal.md)

@@ -1,11 +1,11 @@
-- name: Azure Stack Edge 與資料箱閘道文件
+- name: Azure Stack Edge Pro 與資料箱閘道文件
   href: /azure/databox-online/
   expanded: true
-- name: Azure Stack Edge with GPU (預覽)
+- name: Azure Stack Edge Pro - GPU
   items:
     - name: 概觀
       items:
-        - name: Azure Stack Edge with GPU 是什麼？
+        - name: Azure Stack Edge Pro with GPU 是什麼？
           href: azure-stack-edge-gpu-overview.md
     - name: 教學課程
       items:
@@ -45,7 +45,7 @@
               href: azure-stack-edge-gpu-technical-specifications-compliance.md
             - name: 電源線規格
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
-        - name: 了解 Kubernetes
+        - name: 了解 Kubernetes (預覽)
           items:
             - name: 什麼是 Kubernetes？
               href: azure-stack-edge-gpu-kubernetes-overview.md
@@ -67,7 +67,7 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: 透過 Marketplace 取得 GPU 模組
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-        - name: 部署 Kubernetes 工作負載
+        - name: 部署 Kubernetes 工作負載 (預覽)
           items:
             - name: 透過 kubectl
               items:
@@ -83,13 +83,13 @@
               items:
                 - name: 無狀態應用程式
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
-            - name: 透過 Azure Arc
+            - name: 透過 Azure Arc (預覽)
               items:
                 - name: 在 Kubernetes 叢集上啟用 Arc
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: 透過 GitOps 部署無狀態應用程式
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
-        - name: 設定 Azure Resource Manager
+        - name: 設定 Azure Resource Manager (預覽)
           items:
             - name: 透過 Azure PowerShell 連線
               href: azure-stack-edge-j-series-connect-resource-manager.md
@@ -97,7 +97,7 @@
               href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
             - name: 設定用戶端 TLS 設定
               href: azure-stack-edge-j-series-configure-tls-settings.md
-        - name: 部署 VM
+        - name: 部署 VM (預覽)
           items:
             - name: 部署 VM - 範本
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
@@ -136,7 +136,7 @@
         - name: 管理裝置
           items:
             - name: 功能、存取、連線能力
-              href: azure-stack-edge-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-gpu-manage-access-power-connectivity-mode.md
             - name: 透過 PowerShell
               href: azure-stack-edge-gpu-connect-powershell-interface.md
             - name: 套用更新
@@ -161,7 +161,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: 版本資訊
       items:
-        - name: 2008 - 版本資訊
+        - name: 2009 - 正式發行
+          href: azure-stack-edge-gpu-2009-release-notes.md
+        - name: 2008 - 預覽
           href: azure-stack-edge-gpu-2008-release-notes.md
     - name: 參考
       items:
@@ -171,11 +173,11 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
-- name: Azure Stack Edge with FPGA
+- name: Azure Stack Edge Pro - FPGA
   items:
     - name: 概觀
       items:
-        - name: Azure Stack Edge with FPGA 是什麼？
+        - name: Azure Stack Edge Pro with FPGA 是什麼？
           href: azure-stack-edge-overview.md
     - name: 教學課程
       items:
@@ -259,6 +261,18 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Azure Stack Edge Pro R
+  items:
+    - name: 概觀
+      items:
+        - name: Azure Stack Edge Pro R 是什麼？
+          href: azure-stack-edge-j-series-overview.md
+- name: Azure Stack Edge Mini R
+  items:
+    - name: 概觀
+      items:
+        - name: Azure Stack Edge Mini R 是什麼？
+          href: azure-stack-edge-k-series-overview.md
 - name: 資料箱閘道
   items:
     - name: 概觀
@@ -323,9 +337,9 @@
           href: data-box-gateway-release-notes.md
 - name: 資源
   items:
-    - name: Azure Stack Edge C# 模組範例 (.NET)
+    - name: Azure Stack Edge Pro C# 模組範例 (.NET)
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: Azure Stack Edge/資料箱閘道產品
+    - name: Azure Stack Edge Pro/資料箱閘道產品
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

@@ -11,15 +11,14 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 235135cbbcc7c622f4dd23c2e4f29cc3636dc1ea
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d36c0ab78f9f96a051e6cb0a53b756c7409ca142
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661927"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893404"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理對 Azure Machine Learning 工作區的存取
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本文中，您將瞭解如何管理 Azure Machine Learning 工作區的存取權。 Azure[角色型存取控制 (AZURE RBAC) ](/azure/role-based-access-control/overview)用來管理對 azure 資源的存取。 您 Azure Active Directory 中的使用者會被指派特定角色，以授與資源的存取權。 Azure 提供內建角色和建立自訂角色的能力。
 
@@ -135,7 +134,6 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 | 活動 | 訂用帳戶層級範圍 | 資源群組層級範圍 | 工作區層級範圍 |
 | ----- | ----- | ----- | ----- |
 | 建立新的工作區 | 不需要 | 擁有者或參與者 | N/A (成為擁有者，或在建立後繼承較高範圍的角色)  |
-| 更新工作區的版本 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `/workspaces/write` |
 | 要求訂用帳戶層級 Amlcompute 配額或設定工作區層級配額 | 擁有者、參與者或自訂角色 </br>允許 `/locations/updateQuotas/action`</br> 在訂用帳戶範圍 | 未授權 | 未授權 |
 | 建立新的計算叢集 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `/workspaces/computes/write` |
 | 建立新的計算實例 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `/workspaces/computes/write` |
@@ -301,7 +299,6 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
     * 新增新的工作區
     * 指派訂用帳戶或工作區層級配額
-    * 升級工作區的版本
 
     工作區管理員也無法建立新的角色。 它只能指派工作區範圍內的現有內建或自訂角色：
 
@@ -415,18 +412,14 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 > [!NOTE]
 > 角色更新可能需要15分鐘到一小時的時間，才能套用到該範圍內的所有角色指派。
-### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>Q. 我可以定義防止更新工作區版本的角色嗎？ 
 
-是的，您可以定義防止更新工作區版本的角色。 因為工作區更新是工作區物件的 PATCH 呼叫，您可以在 JSON 定義中的陣列中放入下列動作來執行此作業 `"NotActions"` ： 
-
-`"Microsoft.MachineLearningServices/workspaces/write"`
 
 ### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>Q. 在工作區中執行配額作業需要哪些許可權？ 
 
 您需要訂用帳戶層級許可權，才能在工作區中執行任何與配額相關的作業。 這表示只有在訂用帳戶範圍有寫入權限時，才會針對您的受控計算資源設定訂用帳戶層級配額或工作區層級配額。 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - [企業安全性概觀](concept-enterprise-security.md)
 - [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)

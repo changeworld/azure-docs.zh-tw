@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: b2e666419a702832243c69bdb059f4447b02d756
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 953dae3c264e76b1e40f0dc07ccea0c00a7464c8
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079450"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024412"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>使用私人端點將資料從 Azure Blob 儲存體安全地複製到 SQL 資料庫
 
@@ -57,7 +57,7 @@ ms.locfileid: "89079450"
 
 #### <a name="create-a-sink-sql-table"></a>建立接收 SQL 資料表
 
-1. 使用下列 SQL 指令碼，在您的 SQL 資料庫中建立 **dbo.emp** 資料表：
+使用下列 SQL 指令碼，在您的 SQL 資料庫中建立 **dbo.emp** 資料表：
 
     ```sql
     CREATE TABLE dbo.emp
@@ -70,8 +70,6 @@ ms.locfileid: "89079450"
 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
-
-1. 允許 Azure 服務存取 SQL Server。 確定 SQL 伺服器的 [允許存取 Azure 服務] 已**開啟**，讓 Data Factory 能夠將資料寫入至您的 SQL 伺服器。 若要確認並開啟此設定，請移至 **Azure SQL Server** > **概觀** > **設定伺服器防火牆**。 將 [允許存取 Azure 服務] 選項設為 [開啟]。
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 在此步驟中，您可以建立資料處理站，並啟動 Data Factory 使用者介面，在資料處理站中建立管線。

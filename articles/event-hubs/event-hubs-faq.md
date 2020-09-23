@@ -2,13 +2,13 @@
 title: 常見問題集 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供 Azure 事件中樞的常見問題集 (FAQ) 清單及其答案。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 9995588e618679ae38a11aff26485d1ba0b60688
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/16/2020
+ms.openlocfilehash: b852af961327fbecb773c0608dfb823093e17267
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89288962"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883396"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中樞常見問題集
 
@@ -55,6 +55,9 @@ Azure 事件中樞的標準層提供比基本層更多的功能。 標準層包�
 ### <a name="how-do-i-monitor-my-event-hubs"></a>如何監視事件中樞？
 事件中樞會發出詳盡的計量，以便將您的資源狀態提供給 [Azure 監視器](../azure-monitor/overview.md)。 它們也可以讓您存取事件中樞服務的整體健康情況 (不僅是在命名空間層級，還包括在實體層級)。 了解針對 [Azure 事件中樞](event-hubs-metrics-azure-monitor.md)所提供的監視功能。
 
+### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Azure 事件中樞儲存客戶資料的位置為何？
+Azure 事件中樞儲存客戶資料。 事件中樞會自動將此資料儲存在單一區域中，因此這項服務會自動滿足區域資料落地需求（包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)內指定的需求）。
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火牆上開啟哪些連接埠？ 
 您可以使用下列通訊協定搭配 Azure 服務匯流排來傳送和接收訊息：
 
@@ -78,9 +81,9 @@ Azure 事件中樞的標準層提供比基本層更多的功能。 標準層包�
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. 記下 `Non-authoritative answer` 中傳回的 IP 位址。 只有當您將命名空間還原到不同的叢集時，才會變更該 IP 位址。
+2. 記下 `Non-authoritative answer` 中傳回的 IP 位址。 
 
-如果您將區域備援用於命名空間，則需要執行一些額外的步驟： 
+如果您的命名空間使用 **區域冗余** ，您需要執行一些額外的步驟： 
 
 1. 首先，在命名空間上執行 nslookup。
 
@@ -94,9 +97,12 @@ Azure 事件中樞的標準層提供比基本層更多的功能。 標準層包�
     <name>-s2.cloudapp.net
     <name>-s3.cloudapp.net
     ```
+
+    > [!NOTE]
+    > 命令傳回的 IP 位址 `nslookup` 不是靜態 ip 位址。 不過，它會保持不變，直到基礎部署被刪除或移至不同的叢集為止。
 3. 針對尾碼為 s1、s2 和 s3 的每個名稱執行 nslookup，以取得三個執行個體全都在三個可用性區域執行的 IP 位址。 
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>哪裡可以找到用戶端 IP 傳送或接收到命名空間的消息？
+### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>哪裡可以找到用戶端 IP 傳送或接收到命名空間的訊息？
 首先，在命名空間上啟用 [IP 篩選](event-hubs-ip-filtering.md) 。 
 
 然後，遵循「[啟用診斷記錄](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)」中的指示，啟用[事件中樞虛擬網路線上活動](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)的診斷記錄。 您會看到連線遭到拒絕的 IP 位址。

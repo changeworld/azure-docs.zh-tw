@@ -11,21 +11,21 @@ ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
-ms.date: 02/05/2020
+ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 07a39edcb7a5605759ae70a014549863a038de1c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 0f0dde0da69ad225e39292681fc079aba4b81203
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437049"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885148"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Azure SQL Database、SQL 受控執行個體和 Azure Synapse Analytics 的 Advanced 威脅防護
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 適用于 [Azure SQL Database](sql-database-paas-overview.md)、 [Azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md) 和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 的 Advanced 威脅防護會偵測異常活動，指出有不尋常且可能有害的嘗試存取或惡意探索資料庫。
 
-先進的威脅防護是 [advanced data security](advanced-data-security.md) 供應專案的一部分，這是 advanced SQL 安全性功能的整合套件。 進階威脅防護可以透過中央 SQL ADS 入口網站存取及管理。
+Advanced 威脅防護是 [Azure Defender FOR SQL](azure-defender-for-sql.md) 供應專案的一部分，這是適用于 advanced sql 安全性功能的整合套件。 您可以透過中央 Azure Defender for SQL 入口網站來存取和管理 Advanced 威脅防護。
 
 ## <a name="overview"></a>概觀
 
@@ -55,19 +55,15 @@ ms.locfileid: "89437049"
 
 ## <a name="explore-alerts-in-the-azure-portal"></a>探索 Azure 入口網站中的警示
 
-Advanced 威脅防護會將其警示與 [Azure 安全性中心](https://azure.microsoft.com/services/security-center/)整合。 資料庫中的即時 SQL Advanced 威脅防護圖格和 Azure 入口網站中的 SQL ADS blade 會追蹤作用中威脅的狀態。
+Advanced 威脅防護會將其警示與 [Azure 安全性中心](https://azure.microsoft.com/services/security-center/)整合。 資料庫中的即時 SQL Advanced 威脅防護圖格和 Azure 入口網站中的 SQL Azure Defender blade 會追蹤作用中威脅的狀態。
 
 按一下 [ **Advanced 威脅防護警示** ] 以啟動 [Azure 資訊安全中心警示] 頁面，並概要說明在資料庫上偵測到的作用中 SQL 威脅。
 
-   ![Advanced 威脅防護警示](./media/threat-detection-overview/threat_detection_alert.png)
-
-   ![Advanced 威脅防護警示2](./media/threat-detection-overview/threat_detection_alert_atp.png)
-
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解 [Azure SQL Database & Azure Synapse 中的「先進威脅防護](threat-detection-configure.md)」。
 - 深入瞭解 [AZURE SQL 受控執行個體中的「先進威脅防護](../managed-instance/threat-detection-configure.md)」。
-- 深入瞭解 [先進的資料安全性](advanced-data-security.md)。
+- 深入瞭解 [Azure Defender FOR SQL](azure-defender-for-sql.md)。
 - 深入了解 [Azure SQL Database 稽核](../../azure-sql/database/auditing-overview.md)
 - 深入瞭解 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
 - 如需定價的詳細資訊，請參閱 [Azure SQL Database 定價頁面](https://azure.microsoft.com/pricing/details/sql-database/)  

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 入口網站對 GPU 進行 Azure Stack Edge 的疑難排解 |Microsoft Docs
-description: 說明如何針對 Azure Stack Edge GPU 問題進行疑難排解。
+title: 使用 Azure 入口網站對使用 GPU 的 Azure Stack Edge Pro 進行疑難排解 |Microsoft Docs
+description: 說明如何針對 Azure Stack Edge Pro GPU 問題進行疑難排解。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 92b82631ca78826dd927c6773c47072038eb4ab1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9deb10336d959a3f706cfc0ba970c3b83d5cd0a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290118"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891550"
 ---
-# <a name="troubleshoot-issues-on-your-azure-stack-edge-gpu-device"></a>針對 Azure Stack Edge GPU 裝置上的問題進行疑難排解 
+# <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>針對 Azure Stack Edge Pro GPU 裝置上的問題進行疑難排解 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文說明如何針對 Azure Stack Edge GPU 裝置上的問題進行疑難排解。 
+本文說明如何針對 Azure Stack Edge Pro GPU 裝置上的問題進行疑難排解。 
 
 
 ## <a name="run-diagnostics"></a>執行診斷
@@ -55,7 +55,7 @@ ms.locfileid: "89290118"
 
 ## <a name="gather-advanced-security-logs"></a>收集 advanced security 記錄
 
-Advanced security 記錄可以是 Azure Stack Edge 裝置的軟體或硬體入侵記錄。
+Advanced security 記錄可以是 Azure Stack Edge Pro 裝置的軟體或硬體入侵記錄。
 
 ### <a name="software-intrusion-logs"></a>軟體入侵記錄
 
@@ -67,7 +67,7 @@ Advanced security 記錄可以是 Azure Stack Edge 裝置的軟體或硬體入�
 
 - 如果未提供特定的 include 選項，就會在支援套件中包含防火牆記錄檔作為預設值。
 
-- 在支援封裝中，防火牆記錄檔是，位於 `pfirewall.log` 根資料夾中。 以下是 Azure Stack Edge 裝置的軟體入侵記錄範例。 
+- 在支援封裝中，防火牆記錄檔是，位於 `pfirewall.log` 根資料夾中。 以下是 Azure Stack Edge Pro 裝置的軟體入侵記錄範例。 
 
     ```
     #Version: 1.5
@@ -101,7 +101,7 @@ Advanced security 記錄可以是 Azure Stack Edge 裝置的軟體或硬體入�
 
 - 如果未提供特定的 include 選項，就會在支援套件中包含硬體入侵記錄檔作為預設值。
 
-- 在支援套件中，硬體入侵記錄檔是，位於 `HWIntrusion.txt` 根資料夾中。 以下是 Azure Stack Edge 裝置的硬體入侵記錄範例。 
+- 在支援套件中，硬體入侵記錄檔是，位於 `HWIntrusion.txt` 根資料夾中。 以下是 Azure Stack Edge Pro 裝置的硬體入侵記錄範例。 
 
     ```
     09/04/2019 15:51:23 system Critical The chassis is open while the power is off.
@@ -143,7 +143,7 @@ Advanced security 記錄可以是 Azure Stack Edge 裝置的軟體或硬體入�
 | **問題/錯誤** |  **解決方法** | 
 |------------|-----------------|
 |一般問題|<li>[確認已正確設定 Edge 裝置](#verify-the-device-is-configured-properly)。<li> [確認用戶端已正確設定](#verify-the-client-is-configured-properly)|
-|Add-azurermenvironment：傳送要求時發生錯誤。<br>At line： 1 char：1<br>+ 新增-Add-azurermenvironment-Name Az3-ARMEndpoint " https://management.dbe .。。|此錯誤表示您的 Azure Stack Edge 裝置無法連線或未正確設定。 確認已正確設定 Edge 裝置和用戶端。 如需指引，請參閱此表格中的 **一般問題** 資料列。|
+|Add-azurermenvironment：傳送要求時發生錯誤。<br>At line： 1 char：1<br>+ 新增-Add-azurermenvironment-Name Az3-ARMEndpoint " https://management.dbe .。。|此錯誤表示您的 Azure Stack Edge Pro 裝置無法連線或未正確設定。 確認已正確設定 Edge 裝置和用戶端。 如需指引，請參閱此表格中的 **一般問題** 資料列。|
 |服務傳回錯誤。 查看 InnerException 以取得更多詳細資料：基礎連接已關閉：無法為 SSL/TLS 安全通道建立信任關係。 |   此錯誤可能是因為一或多個「攜帶您自己的憑證」步驟未正確執行。 您可以在 [這裡](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-connect-resource-manager#step-2-create-and-install-certificates)找到指引。 |
 |作業傳回不正確狀態碼 ' ServiceUnavailable ' <br> 回應狀態碼未指出成功： 503 (服務無法使用) 。 | 這項錯誤可能是任何一項條件的結果。<li>ArmStsPool 處於已停止狀態。</li><li>其中一個 Azure Resource Manager/安全性權杖服務網站已關閉。</li><li>Azure Resource Manager 叢集資源已關閉。</li><br><strong>注意：</strong> 重新開機設備可能會修正此問題，但您應該收集支援封裝，讓您可以進一步進行重新調試。|
 |AADSTS50126：不正確使用者名稱或密碼。<br>追蹤識別碼：29317da9-52fc-4ba0-9778-446ae5625e5a<br>相互關聯識別碼： 1b9752c4-8cbf-4304-a714-8a16527410f4<br>時間戳記： 2019-11-15 09：21：57Z：遠端伺服器傳回錯誤： (400) 不正確的要求。<br>At line： 1 char：1 |這項錯誤可能是任何一項條件的結果。<li>如果使用者名稱和密碼無效，請遵循 [此處](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-set-azure-resource-manager-password) 的步驟，然後使用正確的密碼，驗證客戶已變更 Azure 入口網站的密碼。<li>針對不正確租使用者識別碼，租使用者識別碼是固定的 GUID，應設定為 `c0257de7-538f-415c-993a-1b87a031879d`</li>|
@@ -182,7 +182,7 @@ Advanced security 記錄可以是 Azure Stack Edge 裝置的軟體或硬體入�
 
 ## <a name="blob-storage-on-device"></a>裝置上的 Blob 儲存體 
 
-以下是與 Azure Stack Edge/資料箱閘道裝置上的 blob 儲存體相關的錯誤。
+以下是與 Azure Stack Edge Pro/Data Box Gateway 裝置上的 blob 儲存體相關的錯誤。
 
 | **問題/錯誤** |  **解決方法** | 
 |--------------------|-----------------|
@@ -197,9 +197,9 @@ Advanced security 記錄可以是 Azure Stack Edge 裝置的軟體或硬體入�
 |AzCopy 命令似乎停止回應20分鐘，再顯示此錯誤： `Error parsing source location… The SSL connection could not be established` 。|將裝置的 SSL 憑證匯入系統的憑證存放區中。 如需詳細資訊，請參閱 [下載憑證](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。|
 |其中一個 HTTP 標頭之值的格式不正確。|資料箱不支援已安裝的 Python Microsoft Azure 儲存體程式庫版本。 如需支援的版本，請參閱 Azure 資料箱 Blob 儲存體需求。|
 |… [SSL： CERTIFICATE_VERIFY_FAILED] .。。| 執行 Python 之前，請將 REQUESTS_CA_BUNDLE 環境變數設定為 Base64 編碼的 SSL 憑證檔案的路徑 (查看如何 [下載憑證](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。 例如：<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>或者，將憑證新增至系統的憑證存放區，然後將此環境變數設定為該存放區的路徑。 例如，在 Ubuntu 上︰ <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
-|連接逾時。|登入 Azure Stack Edge，然後檢查它是否已解除鎖定。 裝置重新開機時，會一直鎖定，直到有人登入為止。|
+|連接逾時。|登入 Azure Stack Edge Pro，然後檢查它是否已解除鎖定。 裝置重新開機時，會一直鎖定，直到有人登入為止。|
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - 深入了解[此版本中的已知問題](azure-stack-edge-gpu-2008-release-notes.md)。

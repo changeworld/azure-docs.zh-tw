@@ -11,15 +11,14 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 37253ccfb249eb8b510af5e314c3167ddd979a87
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5345fd81e41bbb354e11e1be23329c3130d4d0c2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661969"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898073"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>在 Azure Machine Learning studio 中建立模型定型和部署的計算目標
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本文中，您將瞭解如何在 Azure Machine studio 中建立和管理計算目標。  您也可以使用下列方式來建立和管理計算目標：
 
@@ -130,7 +129,7 @@ ms.locfileid: "89661969"
 |---------|---------|
 |計算名稱     |  <li>需要名稱。 名稱的長度必須介於2到16個字元之間。 </li><li>有效字元是大寫和小寫字母、數位及  **-** 字元。</li><li>名稱必須以字母開頭</li><li>名稱在 Azure 區域內的所有現有計算中都必須是唯一的。 如果您選擇的名稱不是唯一的，您會看到警示</li><li>如果 **-**  使用字元，則在名稱後面必須接著至少一個字母</li>     |
 |Kubernetes Service | 選取 [ **建立新** 的]，填寫表單的其餘部分。  或選取 [ **使用現有** 的]，然後從您的訂用帳戶中選取現有的 AKS 叢集。
-|Region |  選取將在其中建立叢集的區域 |
+|區域 |  選取將在其中建立叢集的區域 |
 |虛擬機器大小     |  受支援的虛擬機器大小可能會在您的區域中受到限制。 檢查 [可用性清單](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |叢集用途  | 選取 **生產** 或 **開發/測試** |
 |節點數目 | 節點數目乘以虛擬機器的核心數目 (個 vcpu) 必須大於或等於12。 |
@@ -161,7 +160,7 @@ ms.locfileid: "89661969"
 1. 選取 [附加]。 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 建立目標並將其連結至您的工作區之後，您可以在 [執行](how-to-set-up-training-targets.md) 設定中搭配 `ComputeTarget` 物件使用它：
 

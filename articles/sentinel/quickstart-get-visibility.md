@@ -8,14 +8,14 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
-ms.date: 09/23/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 83f83922b3bed19e98566002cbf9ad084ba66cb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fe2a632901b32993d46e723ab73fce045bfa9f84
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496208"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889131"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>快速入門：開始使用 Azure Sentinel
 
@@ -34,7 +34,7 @@ ms.locfileid: "86496208"
 
 - 位於頂端的工具列會告知您在所選的這段期間內取得的事件數目，並將其與前 24 小時比較。 此工具列會告知您從這些事件所觸發的警示 (小數字代表過去 24 小時內的變更)，然後告知您這些事件有多少已開啟、進行中和已關閉的警示。 請查看事件數目是否大幅提高或下降。 如果下降，則可能是連線停止向 Azure Sentinel 回報。 如果增加，則可能發生可疑的情況。 查看您是否有新的警示。
 
-   ![Azure Sentinel 漏斗圖](./media/qs-get-visibility/funnel.png)
+   ![Azure Sentinel 計數器](./media/qs-get-visibility/funnel.png)
 
 [概觀] 頁面的主體讓您能夠快速概覽工作區的安全性狀態：
 
@@ -42,14 +42,13 @@ ms.locfileid: "86496208"
 
 - **潛在惡意事件**：從已知為惡意的來源偵測到流量時，Azure Sentinel 會在地圖上對您提出警示。 如果看到橘色，就是輸入流量：有人正從已知的惡意 IP 位址嘗試存取貴組織。 如果看到輸出 (紅色) 活動，則表示您網路中的資料正從貴組織串流到已知的惡意 IP 位址。
 
-   ![Azure Sentinel 地圖](./media/qs-get-visibility/map.png)
+   ![惡意流量地圖](./media/qs-get-visibility/map.png)
 
-
-- **最近的事件**：可檢視近期事件、其嚴重性和事件相關警示的數目。 如果您看到特定警示類型突然出現尖峰，這可能表示目前有作用中的攻擊正在進行。 比方說，如果突然出現 20 個來自 Azure ATP 的雜湊傳遞事件，則可能是有人目前正試圖攻擊您。
+- **最近的事件**：可檢視近期事件、其嚴重性和事件相關警示的數目。 如果您看到特定警示類型突然出現尖峰，這可能表示目前有作用中的攻擊正在進行。 比方說，如果突然出現 20 個來自 Microsoft Defender for Identity (前稱 Azure ATP) 的雜湊傳遞事件，則可能是有人目前正試圖攻擊您。
 
 - **資料來源異常**：Microsoft 的資料分析師建立了一些模型，這些模型會不斷地在您資料來源的資料中搜尋異常情況。 如果沒有任何異常狀況，則不會顯示任何內容。 如果偵測到異常，您應該深入探討這些異常以查看發生什麼情況。 例如，按一下 Azure 活動中的尖峰。 您可以按一下 [圖表] 來查看何時發生尖峰，然後篩選在那段期間發生的活動，以了解造成尖峰的原因。
 
-   ![Azure Sentinel 地圖](./media/qs-get-visibility/anomolies.png)
+   ![異常資料來源](./media/qs-get-visibility/anomolies.png)
 
 ## <a name="use-built-in-workbooks"></a>使用內建活頁簿<a name="dashboards"></a>
 
@@ -64,10 +63,10 @@ ms.locfileid: "86496208"
 
    - 為您的防火牆新增活頁簿。 例如，新增 Palo Alto 活頁簿。 此活頁簿可分析防火牆流量，提供防火牆資料與威脅事件之間的相互關聯，以及醒目提示各實體的可疑事件。 活頁簿會提供您的流量趨勢相關資訊，並且讓您向下切入及篩選結果。 
 
-      ![Pal Alto 儀表板](./media/qs-get-visibility/palo-alto-week-query.png)
+      ![Palo Alto 儀表板](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-您可藉由編輯主要查詢![按鈕](./media/qs-get-visibility/edit-query-button.png)來自訂活頁簿。 您可以按一下按鈕![按鈕](./media/qs-get-visibility/go-to-la-button.png)前往 [Log Analytics 來編輯查詢](../azure-monitor/log-query/get-started-portal.md)，而且可以選取省略符號 (...) 並選取 [自訂圖格資料]，這可讓您編輯主要時間篩選器，或從活頁簿中移除特定圖格。
+您可藉由編輯主要查詢![查詢編輯按鈕](./media/qs-get-visibility/edit-query-button.png)來自訂活頁簿。 您可以按一下按鈕 ![Log Analytics 按鈕](./media/qs-get-visibility/go-to-la-button.png)前往 [Log Analytics 來編輯查詢](../azure-monitor/log-query/get-started-portal.md)，而且可以選取省略符號 (...) 並選取 [自訂圖格資料]，這可讓您編輯主要時間篩選器，或從活頁簿中移除特定圖格。
 
 如需使用查詢的詳細資訊，請參閱[教學課程︰Log Analytics 中的視覺化資料](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

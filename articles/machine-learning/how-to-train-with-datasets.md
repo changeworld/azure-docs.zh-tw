@@ -12,15 +12,15 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1db62b77f3b9b1bcfc524a68b52c4aef5c16d851
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7a3f839a676723942af2e669839457ed3246aabd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648175"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885881"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure Machine Learning 中的資料集定型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將瞭解如何在訓練實驗中使用 [Azure Machine Learning 資料集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true) 。  您可以使用本機或遠端計算目標中的資料集，而不需要擔心連接字串或資料路徑。
 
@@ -256,7 +256,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 [資料集筆記本](https://aka.ms/dataset-tutorial)會根據本文的概念進行示範和擴充。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * 使用 TabularDatasets[自動將機器學習模型定型](how-to-auto-train-remote.md)。
 

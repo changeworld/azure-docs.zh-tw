@@ -1,7 +1,7 @@
 ---
 title: 常見問題集 (FAQ)
 titleSuffix: Azure SQL Managed Instance
-description: 'Azure SQL 受控執行個體常見問題 (的常見問題) '
+description: Azure SQL 受控執行個體常見問題集 (FAQ)
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab
-ms.date: 03/17/2020
-ms.openlocfilehash: fe779ebf8bb041fb90b8eb38a9469a783127ffd3
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.reviewer: sstein
+ms.date: 09/21/2020
+ms.openlocfilehash: 2e3bf8251cfb5da20cade65831ef34dbc6709b1b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661413"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887387"
 ---
-# <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 受控執行個體常見問題 (的常見問題) 
+# <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 受控執行個體常見問題集 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 本文包含有關 [AZURE SQL 受控執行個體](sql-managed-instance-paas-overview.md)的最常見問題。
@@ -192,7 +192,7 @@ ms.locfileid: "88661413"
 
 **我可以在 SQL 受控執行個體上建立計量警示嗎？**
 
-是。 如需相關指示，請參閱 [建立 SQL 受控執行個體的警示](alerts-create.md)。
+可以。 如需相關指示，請參閱 [建立 SQL 受控執行個體的警示](alerts-create.md)。
 
 **是否可以在受控實例中的資料庫上建立計量警示？**
 
@@ -254,15 +254,15 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **我可以取得用於輸入管理流量的來源 IP 範圍嗎？**
 
-是。 您可以藉由設定網路監看員 [流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group)，來分析通過網路安全性群組的流量。
+可以。 您可以藉由設定網路監看員 [流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group)，來分析通過網路安全性群組的流量。
 
 **我可以設定 NSG 來控制對資料端點的存取 (埠 1433) 嗎？**
 
-是。 布建受控執行個體之後，您可以設定 NSG 來控制埠1433的輸入存取。 建議您盡可能將 IP 範圍縮小。
+可以。 布建受控執行個體之後，您可以設定 NSG 來控制埠1433的輸入存取。 建議您盡可能將 IP 範圍縮小。
 
 **是否可以設定 NVA 或內部部署防火牆，以根據 Fqdn 篩選輸出管理流量？**
 
-否。 這種情況不受支援，原因如下：
+不可以。 這種情況不受支援，原因如下：
 -   代表回應輸入管理要求的路由傳送流量是非對稱的，且無法運作。
 -   路由傳送至儲存體的流量會受到輸送量限制和延遲的影響，如此一來，我們就無法提供預期的服務品質和可用性。
 -   根據經驗，這些設定容易出錯，也不支援。
@@ -281,7 +281,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **需要空白的子網才能建立受控執行個體嗎？**
 
-否。 您可以使用空的子網或已包含受控執行個體 (s) 的子網。 
+不可以。 您可以使用空的子網或已包含受控執行個體 (s) 的子網。 
 
 **我可以變更子網位址範圍嗎？**
 
@@ -289,7 +289,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **我可以將受控實例移至另一個子網嗎？**
 
-否。 這是目前的受控執行個體設計限制。 不過，您可以在另一個子網中布建新的實例，並在舊的和新的實例之間手動備份和還原資料，或執行跨實例的 [時間點還原](point-in-time-restore.md?tabs=azure-powershell)。
+不可以。 這是目前的受控執行個體設計限制。 不過，您可以在另一個子網中布建新的實例，並在舊的和新的實例之間手動備份和還原資料，或執行跨實例的 [時間點還原](point-in-time-restore.md?tabs=azure-powershell)。
 
 **是否需要空的虛擬網路來建立受控執行個體？**
 
@@ -297,7 +297,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **我可以使用子網中的其他服務來放置受控執行個體嗎？**
 
-否。 我們目前不支援將受控執行個體放在已包含其他資源類型的子網中。
+不可以。 我們目前不支援將受控執行個體放在已包含其他資源類型的子網中。
 
 ## <a name="connectivity"></a>連線能力 
 
@@ -316,7 +316,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **受控執行個體是否有公用端點？**
 
-是。 受控執行個體具有僅用於服務管理的公用端點，但客戶也可將其啟用以進行資料存取。 如需詳細資訊，請參閱搭配 [使用 SQL 受控執行個體與公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely)。 若要設定公用端點，請移至 [在 SQL 受控執行個體中設定公用端點](public-endpoint-configure.md)。
+可以。 受控執行個體具有僅用於服務管理的公用端點，但客戶也可將其啟用以進行資料存取。 如需詳細資訊，請參閱搭配 [使用 SQL 受控執行個體與公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely)。 若要設定公用端點，請移至 [在 SQL 受控執行個體中設定公用端點](public-endpoint-configure.md)。
 
 **受控執行個體如何控制對公用端點的存取？**
 
@@ -326,7 +326,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **我可以使用公用端點來存取受控執行個體資料庫中的資料嗎？**
 
-是。 客戶必須啟用[Azure 入口網站](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM 的公用端點資料存取，並將 NSG 設定為鎖定資料埠的存取， (埠號碼 3342) 。 如需詳細資訊，請參閱 [在 AZURE sql 受控執行個體中設定公用端點](public-endpoint-configure.md) ，並 [使用公用端點安全地使用 Azure sql 受控執行個體](public-endpoint-overview.md)。 
+可以。 客戶必須啟用[Azure 入口網站](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM 的公用端點資料存取，並將 NSG 設定為鎖定資料埠的存取， (埠號碼 3342) 。 如需詳細資訊，請參閱 [在 AZURE sql 受控執行個體中設定公用端點](public-endpoint-configure.md) ，並 [使用公用端點安全地使用 Azure sql 受控執行個體](public-endpoint-overview.md)。 
 
 **我可以為 SQL 資料端點 () 指定自訂埠嗎？**
 
@@ -350,13 +350,13 @@ Express Route 線路對等互連是最好的做法。 這不會與跨區域的�
 - 使用低許可權 DBA 帳戶存取實例。
 - 設定系統管理員（sysadmin）帳戶的 JIT jumpbox 存取權。
 - 開啟 [SQL 審核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)，並將其與警示機制整合。
-- 從[advanced data security (ADS) ](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) Suite 開啟[威脅偵測](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)。
+- 從[Azure Defender FOR SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) Suite 開啟[威脅偵測](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)。
 
 ## <a name="dns"></a>DNS
 
 **我可以為 SQL 受控執行個體設定自訂 DNS 嗎？**
 
-是。 請參閱 [如何設定 AZURE SQL 受控執行個體的自訂 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
+可以。 請參閱 [如何設定 AZURE SQL 受控執行個體的自訂 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
 
 **我可以進行 DNS 重新整理嗎？**
 
@@ -487,7 +487,7 @@ Sql 登入的 SQL 受控執行個體密碼原則會繼承 Azure 平臺原則，�
 | 密碼最長使用期限 | 42天 |
 | 密碼最短使用期限 | 1 日 |
 | 密碼長度下限 | 10個字元 |
-| 密碼必須符合複雜性需求 | 已啟用 |
+| 密碼必須符合複雜性需求 | 啟用 |
 
 **是否可以在登入層級上停用 SQL 受控執行個體中的密碼複雜性和到期日？**
 

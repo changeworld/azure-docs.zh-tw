@@ -11,15 +11,15 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: eb28ee0adb3c23a44936cbc940ee9bcddfd11141
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6b239ab14437083b74f4501eabb588e929152431
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647415"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897243"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 中的 Azure Machine Learning 管線中使用自動化 ML
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning 的自動化 ML 功能可協助您找出高效能的模型，而不需要重新實作不免每種可能的方法。 結合 Azure Machine Learning 管線，您可以建立可部署的工作流程，以快速探索最適合您資料的演算法。 本文將說明如何有效率地將資料準備步驟加入自動化 ML 步驟。 自動化 ML 可以快速探索最適合您資料的演算法，同時讓您 MLOps 和模型生命週期運算化與管線。
 
@@ -29,7 +29,7 @@ Azure Machine Learning 的自動化 ML 功能可協助您找出高效能的模�
 
 * Azure Machine Learning 工作區。 請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。  
 
-* 對 Azure 的 [自動化機器學習](concept-automated-ml.md) 和 [機器學習管線](concept-ml-pipelines.md) 設備和 SDK 有基本的熟悉度。
+* 熟悉 Azure 的 [自動化機器學習](concept-automated-ml.md) 和 [機器學習管線](concept-ml-pipelines.md) 設備和 SDK。
 
 ## <a name="review-automated-mls-central-classes"></a>複習自動化 ML 的核心類別
 
@@ -368,7 +368,7 @@ train_step = AutoMLStep(name='AutoML_Classification',
 
 ## <a name="register-the-model-generated-by-automated-ml"></a>註冊自動化 ML 產生的模型 
 
-基本 ML 管線中的最後一個步驟是註冊建立的模型。 藉由將模型新增至工作區的模型登錄，它將可在入口網站中使用，並可進行版本設定。 若要註冊模型，請撰寫另一個 `PythonScriptStep` 接受的 `model_data` 輸出 `AutoMLStep` 。
+簡單 ML 管線中的最後一個步驟是註冊建立的模型。 藉由將模型新增至工作區的模型登錄，它將可在入口網站中使用，並可進行版本設定。 若要註冊模型，請撰寫另一個 `PythonScriptStep` 接受的 `model_data` 輸出 `AutoMLStep` 。
 
 ### <a name="write-the-code-to-register-the-model"></a>撰寫程式碼以註冊模型
 

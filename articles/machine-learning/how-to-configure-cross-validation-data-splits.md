@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 7a7b603efe376250607b4a48ff3ef2833f40a2bd
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3e2711243d7c093d3ab8aa5f0e7ebac0a5ec95f9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650737"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886187"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>在自動化機器學習中設定資料分割和交叉驗證
 
@@ -37,7 +37,7 @@ AutoML 實驗會自動執行模型驗證。 下列各節說明如何使用 [Azur
 
 * Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
-* 熟悉如何使用 Azure Machine Learning SDK 來設定自動化機器學習實驗。 請遵循[教學課程](tutorial-auto-train-models.md)或[操作說明](how-to-configure-auto-train.md)，以查看基本的自動化機器學習實驗設計模式。
+* 熟悉如何使用 Azure Machine Learning SDK 來設定自動化機器學習實驗。 遵循 [教學](tutorial-auto-train-models.md) 課程或操作 [說明](how-to-configure-auto-train.md) ，查看基本的自動化機器學習實驗設計模式。
 
 * 瞭解交叉驗證和定型/驗證資料分割作為 ML 概念。 如需概要說明，
 
@@ -156,7 +156,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 > [!NOTE]
 > 若要搭配使用 `cv_split_column_names` 與 `training_data` `label_column_name` ，請升級您的 Azure Machine Learning Python SDK 1.6.0 版或更新版本。 針對先前的 SDK 版本，請參閱使用 `cv_splits_indices` ，但請注意，它只會搭配 `X` 和 `y` 資料集輸入使用。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * [防止不平衡資料和過度學習](concept-manage-ml-pitfalls.md)。
 * [教學課程：使用自動化機器學習來預測出租車車資分割資料區段](tutorial-auto-train-models.md#split-the-data-into-train-and-test-sets)。

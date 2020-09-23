@@ -4,15 +4,16 @@ description: 瞭解如何在 Azure 春季雲端中檢查計量
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 4a12658eada3d2660cde86b3eb80e332416ea7a3
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: e488f2ddc44f1339d648cd6fe6b1aae18b748679
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046845"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892649"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>瞭解 Azure 春季雲端的計量
 
@@ -89,13 +90,13 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 
 ### <a name="error"></a>錯誤
 >[!div class="mx-tdCol2BreakAll"]
->| 名稱 | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
+>| Name | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
 >|----|----|----|------------|
 >| tomcat。錯誤 | tomcat。錯誤 | Count | 已處理的要求中發生的錯誤數目 |
 
 ### <a name="performance"></a>效能
 >[!div class="mx-tdCol2BreakAll"]
->| 名稱 | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
+>| Name | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
 >|----|----|----|------------|
 >| 系統。使用量 | 系統。使用量 | 百分比 | 整個系統的最近 CPU 使用率。 此值是 [0.0，1.0] 間隔中的雙精度浮點數。 值為0.0 時，表示所有 Cpu 在觀察到的最近一段時間都處於閒置狀態，而1.0 的值表示所有 Cpu 在觀察到最近一段期間內，會主動執行100% 的時間。|
 >| 處理常式。 cpu。使用量 | 應用程式 CPU 使用率百分比 | 百分比 | JAVA 虛擬機器進程的最近 CPU 使用率。 此值是 [0.0，1.0] 間隔中的雙精度浮點數。 值為0.0 時，表示在觀察到最近一段期間內，沒有任何 Cpu 正在執行來自 JVM 進程的執行緒，而1.0 的值表示所有 Cpu 都在觀察到最近一段時間內，在 JVM 的 JVM 100% 內主動執行執行緒。 JVM 中的執行緒包括應用程式執行緒和 JVM 內部執行緒。|
@@ -109,18 +110,60 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 >| jvm. pause. total. count | jvm. gc. pause (total-count)  | Count | 此 JMV 開始之後的 GC 總數總計，包括年輕和舊 GC。 |
 >| jvm. gc. pause. total. time | jvm. gc. pause (total time)  | 毫秒 | 此 JMV 開始後所耗用的 GC 時間總計，包括年輕和舊的 GC。 |
 
+::: zone pivot="programming-language-csharp"
+### <a name="performance-net"></a>效能 ( .NET) 
+
+>[!div class="mx-tdCol2BreakAll"]
+>| Name | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
+>|------|-----------------------------|------|---------|
+>| CPU 使用量       | cpu-使用量      | 毫秒 | 進程使用 CPU 的時間量。 |
+>| 工作集     | 工作集    | MB    | 進程使用的工作集量。 |
+>| GC 堆積大小    | gc-堆積-大小   | MB    | 垃圾收集行程所報告的總堆積大小。 |
+>| Gen 0 GC 計數  | gen-0-gc-計數 | Count        | 每秒層代0垃圾收集數目。 |
+>| Gen 1 GC 計數  | gen-1-gc-計數 | Count        | 每秒層代1垃圾收集數目。 |
+>| Gen 2 GC 計數  | gen-2-gc-計數 | Count        | 每秒層代2垃圾收集數目。 |
+>| Gen 0 堆積大小 | gen-0-大小     | 位元組        | 層代0堆積大小。 |
+>| 層代 1 堆積大小 | gen-1-大小     | 位元組        | 第1代堆積大小。 |
+>| 層代 2 堆積大小 | gen-2-大小     | 位元組        | 層代2堆積大小。 |
+>| LOH 堆積大小   | loh-大小       | 位元組        | 大型物件堆積堆積大小。 |
+>| 配置速率 | 分配速率     | 位元組        | 每秒配置的位元組數目。 |
+>| 元件計數  | 元件計數 | Count        | 載入的元件數目。 |
+>| 例外狀況計數 | 例外狀況-計數 | Count       | 每秒的例外狀況數目。 |
+>| 執行緒集區執行緒計數      | threadpool-執行緒計數              | Count | 執行緒集區執行緒的數目。 |
+>| 監視鎖定爭用計數 | 監視-鎖定-爭用計數        | Count | 嘗試取得監視器鎖定時，每秒發生爭用的次數。 |
+>| 執行緒集區佇列長度      | threadpool-佇列-長度              | Count | 執行緒集區工作專案佇列長度。 |
+>| 執行緒集區已完成的專案計數 | threadpool-已完成-專案-計數 | Count | 執行緒集區已完成工作專案計數。 |
+>| 作用中計時器計數               | 主動-計時器-計數               | Count | 目前作用中的計時器數目。 作用中的計時器是在未來某個時間點已註冊要進行滴答的活動計時器，但尚未取消。 |
+
+如需詳細資訊，請參閱 [dotnet 計數器](/dotnet/core/diagnostics/dotnet-counters)。
+::: zone-end
+
 ### <a name="request"></a>要求
 >[!div class="mx-tdCol2BreakAll"]
->| 名稱 | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
+>| Name | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
 >|----|----|----|------------|
 >| tomcat. global. 已傳送 | tomcat. global. 已傳送 | 位元組 | 已傳送的資料 Tomcat web 伺服器數量 |
 >| tomcat. global. received | tomcat. global. received | 位元組 | 已接收的資料 Tomcat web 伺服器數量 |
 >| tomcat. total. count | tomcat. 要求 (總數)  | Count | Tomcat web 伺服器處理的要求總數 |
 >| tomcat. 要求數上限 | tomcat. 要求數上限 | 毫秒 | Tomcat web 伺服器處理要求的最長時間 |
 
+::: zone pivot="programming-language-csharp"
+### <a name="request-net"></a>要求 ( .NET) 
+
+>[!div class="mx-tdCol2BreakAll"]
+>| Name | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
+>|------|-----------------------------|------|---------|
+>| 每秒要求 | 每秒要求數 | Count | 要求速率。 |
+>| 要求總數 | 要求總數 | Count | 要求數總計。 |
+>| 目前的要求 | 目前要求 | Count | 目前要求的數目。 |
+>| 失敗的要求 | 失敗-要求 | Count | 失敗的要求數目。 |
+
+如需詳細資訊，請參閱 [dotnet 計數器](/dotnet/core/diagnostics/dotnet-counters)。
+::: zone-end
+
 ### <a name="session"></a>工作階段
 >[!div class="mx-tdCol2BreakAll"]
->| 名稱 | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
+>| Name | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
 >|----|----|----|------------|
 >| tomcat。作用中。最大值 | tomcat。作用中。最大值 | Count | 同時處於作用中狀態的會話數上限 |
 >| tomcat。最大值 | tomcat。最大值 | 毫秒 | 過期的會話處於作用中的最長時間 (秒)  |
@@ -130,14 +173,15 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 >| tomcat。現行 | tomcat。現行 | Count | Tomcat 會話使用中計數 |
 
 ## <a name="see-also"></a>另請參閱
-* [快速入門：使用記錄、計量和追蹤來監視 Azure 春季雲端應用程式](spring-cloud-quickstart-logs-metrics-tracing.md)
+
+* [快速入門：使用記錄、計量和追蹤來監視 Azure Spring Cloud 應用程式](spring-cloud-quickstart-logs-metrics-tracing.md)
 
 * [開始使用 Azure 計量瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
 
 * [使用診斷設定來分析記錄和計量](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
+
 * [教學課程：使用警示和動作群組監視春季雲端資源](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
 
 * [Azure 春季雲端的配額和服務方案](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quotas)
-

@@ -9,12 +9,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 08/17/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2232aa46b0586ca62e80c8b9002271a67e4021c1
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b0217766c92ddcd1907eca2c6702d91b02e06c03
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651115"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893648"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什麼是 Azure Machine Learning 管線？
 
@@ -36,7 +36,7 @@ ms.locfileid: "89651115"
 
 Azure 雲端提供數個其他管線，各有不同的用途。 下表列出不同的管線，以及它們的用途：
 
-| 案例 | 主要角色 | Azure 供應專案 | OSS 供應專案 | 標準管道 | 優勢 | 
+| 狀況 | 主要角色 | Azure 供應專案 | OSS 供應專案 | 標準管道 | 優勢 | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
 |  (Machine learning) 的模型協調流程 | 資料科學家 | Azure Machine Learning 管線 | Kubeflow 管線 | 資料 > 模型 | 散發、快取、程式碼優先、重複使用 | 
 | 資料協調 (資料準備)  | 資料工程師 | [Azure Data Factory 管線](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache Airflow | 資料 > 資料 | 強型別移動、以資料為中心的活動 |
@@ -95,7 +95,7 @@ Azure ML 管線與 Azure Machine Learning 工作區相關聯，而管線步驟�
 
 ### <a name="a-simple-python-pipeline"></a>簡單的 Python 管線
 
-此程式碼片段會顯示建立並執行基本工作所需的物件和呼叫 `Pipeline` ：
+此程式碼片段會顯示建立和執行所需的物件和呼叫 `Pipeline` ：
 
 ```python
 ws = Workspace.from_config() 
@@ -150,9 +150,9 @@ pipeline_run.wait_for_completion()
 | **模組 化** | 區隔考慮和隔離變更可讓軟體以較高的品質以較快的速度演進。 | 
 |**共同作業**|管線可讓資料科學家跨機器學習設計程式的所有區域共同作業，同時能夠同時處理管線步驟。|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
-Azure ML 管線是一項功能強大的工具，可在早期開發階段開始提供價值。 當小組和專案成長時，此值會增加。 本文說明如何使用 Azure Machine Learning Python SDK 來指定管線，並在 Azure 上進行協調。 您已瞭解一些基本的原始程式碼，並引進一些 `PipelineStep` 可用的類別。 您應瞭解何時使用 Azure ML 管線，以及 Azure 如何執行它們。 
+Azure ML 管線是一項功能強大的工具，可在早期開發階段開始提供價值。 當小組和專案成長時，此值會增加。 本文說明如何使用 Azure Machine Learning Python SDK 來指定管線，並在 Azure 上進行協調。 您已看過一些簡單的原始程式碼，並引進一些 `PipelineStep` 可用的類別。 您應瞭解何時使用 Azure ML 管線，以及 Azure 如何執行它們。 
 
 
 + 瞭解如何 [建立您的第一個管線](how-to-create-your-first-pipeline.md)。

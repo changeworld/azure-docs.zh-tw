@@ -11,15 +11,15 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 2888e46d26a58e8451f38accbb9073d657f8ea1b
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: d511520e274af9c6dea3f443693249ede368fd99
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651452"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893272"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新產生儲存體帳戶存取金鑰
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 瞭解如何變更 Azure Machine Learning 所使用 Azure 儲存體帳戶的存取金鑰。 Azure Machine Learning 可以使用儲存體帳戶來儲存資料或定型的模型。
 
@@ -139,6 +139,6 @@ for name, ds in datastores.items():
         
             如果您要更新 **預設資料**存放區的認證，請完成此步驟，並重複步驟2b 以重新同步處理新的金鑰與工作區的預設資料存放區。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 如需註冊資料存放區的詳細資訊，請參閱 [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py&preserve-view=true) 類別參考。

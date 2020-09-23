@@ -1,6 +1,6 @@
 ---
-title: Azure 資訊安全中心支援的 Azure PaaS 資源功能。
-description: 此頁面會顯示支援的 Azure PaaS 資源的 Azure 資訊安全中心功能可用性。
+title: 支援的 Azure PaaS 資源 Azure 資訊安全中心功能。
+description: 此頁面會顯示支援的 Azure PaaS 資源 Azure 資訊安全中心功能的可用性。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 539b663366cd2820eec62a18d1fc2989c6b3c9b0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 77bf0f4cd60ba6e85763334a4d864975945ec2c3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042351"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894780"
 ---
-# <a name="feature-coverage-for-azure-paas-services"></a>Azure PaaS 服務的功能涵蓋範圍<a name="paas-services"></a>
+# <a name="feature-coverage-for-azure-paas-services"></a>Azure PaaS 服務的功能涵蓋範圍 <a name="paas-services"></a>
 
-下表顯示支援的 Azure PaaS 資源的 Azure 資訊安全中心功能可用性。
+下表顯示支援的 Azure PaaS 資源 Azure 資訊安全中心功能的可用性。
 
-|服務|建議（免費）|安全性警示（標準）|弱點評估（標準）|
+|服務| (免費) 的建議| (Azure Defender) 的安全性警示| (Azure Defender) 的弱點評定|
 |:----|:----:|:----:|:----:|
 |Azure App Service|✔|✔|-|
 |Azure 自動化帳戶|✔|-|-|
@@ -41,7 +41,7 @@ ms.locfileid: "86042351"
 |適用於 PostgreSQL 的 Azure 資料庫 *|✔|✔|-|
 |Azure 事件中樞命名空間|✔|-|-|
 |Azure Functions 應用程式|✔|-|-|
-|Azure 金鑰保存庫|✔|✔ *|-|
+|Azure 金鑰保存庫|✔|✔|-|
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
@@ -51,9 +51,9 @@ ms.locfileid: "86042351"
 |Azure Service Fabric 帳戶|✔|-|-|
 |Azure 儲存體帳戶|✔|-|-|
 |Azure 串流分析|✔|-|-|
-|Azure 訂閱|✔ **|✔|-|
-|Azure 虛擬網路</br> （包括子網、Nic 和網路安全性群組）|✔|-|-|
+|Azure 訂用帳戶|✔ **|✔|-|
+|Azure 虛擬網路</br>  (包括子網、Nic 和網路安全性群組) |✔|-|-|
 
-\*預覽版目前支援這些功能。
+\* 預覽版目前支援這些功能。
 
-\*\*Azure Active Directory （Azure AD）建議僅適用于標準訂閱。
+\*\* Azure Active Directory (Azure AD) 建議僅適用于已啟用 Azure Defender 的訂用帳戶。
