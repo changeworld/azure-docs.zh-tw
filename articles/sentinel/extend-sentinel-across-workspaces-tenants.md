@@ -1,6 +1,6 @@
 ---
 title: 跨工作區和租使用者延伸 Azure Sentinel |Microsoft Docs
-description: 如何跨工作區和租使用者延伸 Azure Sentinel 的分析功能。
+description: 如何使用 Azure Sentinel 來查詢及分析跨工作區和租使用者的資料。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 9e0fe46e0a7382c0adcfa1f1f781f282e9e77942
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: b899069a03b39d068f2b4059cf26d3baf1f3beae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019320"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905414"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>跨工作區和租用戶擴充 Azure Sentinel
 
@@ -135,7 +135,7 @@ Azure Sentinel 提供預先載入的查詢範例，以協助您開始使用，�
 
 使用 Azure Lighthouse 時，建議您為每個 Azure Sentinel 角色建立群組，並將每個租使用者的許可權委派給這些群組。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 在本檔中，您已瞭解如何在多個工作區和租使用者之間擴充 Azure Sentinel 的功能。 如需有關實施 Azure Sentinel 的跨工作區架構的實用指導方針，請參閱下列文章：
 
 - 瞭解如何使用 Azure Lighthouse 在 Azure Sentinel 中使用 [多個](./multiple-tenants-service-providers.md) 租使用者。

@@ -1,6 +1,6 @@
 ---
-title: 使用 SQL 資料同步從 Azure SQL Edge (預覽) 同步資料
-description: 了解如何使用 Azure SQL 資料同步從 Azure SQL Edge (預覽) 同步資料
+title: 使用 SQL 資料同步從 Azure SQL Edge 同步資料
+description: 了解如何使用 Azure SQL 資料同步從 Azure SQL Edge 同步資料
 keywords: SQL Edge, 從 SQL Edge 同步資料, SQL Edge 資料同步
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6c0518e12a2c654b8f971db3a6733b0e64f80a1f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 5830cedfdce54c4cd91eb60a5cd2145309e965b0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254045"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904120"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>教學課程：使用 SQL 資料同步將 SQL Edge 中的資料同步至 Azure SQL Database
 

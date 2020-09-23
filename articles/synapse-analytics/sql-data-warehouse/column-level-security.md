@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: a4da74c01f732f3a62d29847d5f61934dede9778
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1364da4849a07100ac28644a51409837012f93cc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208088"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986225"
 ---
 # <a name="column-level-security"></a>資料行層級安全性
 
@@ -28,9 +28,9 @@ ms.locfileid: "85208088"
 
 資料行層級安全性可簡化應用程式安全性的設計和編碼，並供限制資料行存取以保護機密資料。 例如，確保特定使用者只能存取其部門相關資料表的特定資料行。 存取限制邏輯是位於資料庫層，而不是離開這些資料，到另一個應用程式層。 資料庫會在每次嘗試從任何層級存取該資料時套用存取限制。 此限制可藉由縮小整個安全性系統的介面區，讓安全性更加可靠和健全。 此外，資料行層級安全性也不需引進檢視以篩選出可用來將存取限制加諸於使用者的資料行。
 
-您可使用 [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 陳述式來實作資料行層級安全性。 透過這個機制，即可支援 SQL 和 Azure Active Directory (AAD) 驗證。
+您可使用 [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 陳述式來實作資料行層級安全性。 使用此機制時，支援 SQL 和 Azure Active Directory (Azure AD) 驗證。
 
-![cls](./media/column-level-security/cls.png)
+![圖所顯示的示意性資料表中，第一個資料行是由封閉的掛鎖和其資料格的橙色色彩，而其他資料行則是白色儲存格。](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>語法
 

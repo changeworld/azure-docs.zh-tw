@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: d7ddb286285de9be089c0a5176e33b7108021c77
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7e98c34198c0821dac59f849267a920a87c48a54
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75459945"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905638"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站設計適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 
@@ -38,15 +38,15 @@ ms.locfileid: "75459945"
 請依照下列步驟來建立「適用於 PostgreSQL 的 Azure 資料庫」伺服器：
 1. 按一下 Azure 入口網站左上角的 [建立資源]  。
 2. 從 [新增]  頁面中選取 [資料庫]  ，然後從 [資料庫]  頁面中選取 [適用於 PostgreSQL 的 Azure 資料庫]  。
-   ![適用於 PostgreSQL 的 Azure 資料庫 - 建立資料庫](./media/tutorial-design-database-using-azure-portal/1-create-database.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/1-create-database.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫 - 建立資料庫":::
 
 3. 選取 [單一伺服器]  部署選項。
 
-   ![選取 [適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器] 部署選項](./media/tutorial-design-database-using-azure-portal/select-deployment-option.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/select-deployment-option.png" alt-text="選取 [適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器] 部署選項":::
 
 4. 在 [基本資料]  表單中填寫下列資訊：
 
-    ![建立伺服器](./media/tutorial-design-database-using-azure-portal/create-basics.png)
+    :::image type="content" source="./media/tutorial-design-database-using-azure-portal/create-basics.png" alt-text="建立伺服器":::
 
     設定|建議的值|描述
     ---|---|---
@@ -64,7 +64,7 @@ ms.locfileid: "75459945"
    > 如果您的工作負載只需要輕量計算和 I/O，請考慮使用基本定價層。 請注意，在基本定價層中建立的伺服器後續無法調整為「一般用途」或「記憶體最佳化」。 如需詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/postgresql/)。
    > 
 
-    ![[定價層] 窗格](./media/quickstart-create-database-portal/2-pricing-tier.png)
+    :::image type="content" source="./media/quickstart-create-database-portal/2-pricing-tier.png" alt-text="定價層窗格":::
 
     > [!TIP]
     > 啟用**自動成長**後，您的伺服器會在接近配置的限制時增加儲存體，而不會影響您的工作負載。
@@ -73,7 +73,7 @@ ms.locfileid: "75459945"
 
 6. 在工具列上，選取 [通知]  圖示 (鈴鐺) 以監視部署程序。 完成部署後，您可以選取 [釘選到儀表板]  ，在 Azure 入口網站儀表板上建立此伺服器的圖格，以作為伺服器 [概觀]  頁面的捷徑。 選取 [移至資源]  會開啟伺服器的 [概觀]  頁面。
 
-    ![[通知] 窗格](./media/quickstart-create-database-portal/3-notifications.png)
+    :::image type="content" source="./media/quickstart-create-database-portal/3-notifications.png" alt-text="通知窗格":::
    
    根據預設，**postgres** 資料庫會建立在您的伺服器底下。 [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) 資料庫是要供使用者、公用程式及第三方應用程式使用的預設資料庫。 (其他預設資料庫是 **azure_maintenance**。 其功能是分隔受控服務處理程序和使用者動作。 您無法存取此資料庫。)
 
@@ -84,13 +84,13 @@ ms.locfileid: "75459945"
 
 1. 完成部署之後，從左側功能表中按一下 [所有資源]  ，然後輸入名稱 **mydemoserver** 來搜尋新建立的伺服器。 按一下搜尋結果中列出的伺服器名稱。 伺服器的 [概觀]  頁面隨即開啟，並提供可進行進一步設定的選項。
 
-   ![適用於 PostgreSQL 的 Azure 資料庫 - 搜尋伺服器](./media/tutorial-design-database-using-azure-portal/4-locate.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫 - 搜尋伺服器":::
 
 2. 在伺服器頁面中，選取 [連線安全性]  。 
 
 3. 在 [規則名稱]  底下的文字方塊中按一下，然後新增新的防火牆規則，以指定 IP 範圍來獲得連線能力。 輸入您的 IP 範圍。 按一下 [檔案]  。
 
-   ![適用於 PostgreSQL 的 Azure 資料庫 - 建立防火牆規則](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/5-firewall-2.png" alt-text="Azure Database for PostgreSQL - 建立防火牆規則":::
 
 4. 按一下 [儲存]  ，然後按一下 [X]  ，以關閉 [連線安全性]  頁面。
 
@@ -104,13 +104,13 @@ ms.locfileid: "75459945"
 
 1. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]  ，然後搜尋您剛建立的伺服器。
 
-   ![適用於 PostgreSQL 的 Azure 資料庫 - 搜尋伺服器](./media/tutorial-design-database-using-azure-portal/4-locate.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫 - 搜尋伺服器":::
 
 2. 按一下伺服器名稱 **mydemoserver**。
 
 3. 選取伺服器的 [概觀]  頁面。 記下 [伺服器名稱]  和 [伺服器管理員登入名稱]  。
 
-   ![適用於 PostgreSQL 的 Azure 資料庫 - 伺服器管理員登入](./media/tutorial-design-database-using-azure-portal/6-server-name.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/6-server-name.png" alt-text="Azure Database for PostgreSQL - 伺服器管理員登入":::
 
 
 ## <a name="connect-to-postgresql-database-using-psql"></a>使用 psql 連線到 PostgreSQL 資料庫
@@ -190,11 +190,11 @@ SELECT * FROM inventory;
 
 1. 在您伺服器之「適用於 PostgreSQL 的 Azure 資料庫」的 [概觀]  頁面上，按一下工具列上的 [還原]  。 [還原]  頁面隨即開啟。
 
-   ![Azure 入口網站 - 還原表單選項](./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png" alt-text="Azure 入口網站 - 還原表單選項":::
 
 2. 在 [還原]  表單中填入必要資訊︰
 
-   ![Azure 入口網站 - 還原表單選項](./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png" alt-text="Azure 入口網站 - 還原表單選項":::
 
    - **還原點**：選取在伺服器發生變更前的時間點
    - **目標伺服器**：提供要作為還原目的地的新伺服器名稱

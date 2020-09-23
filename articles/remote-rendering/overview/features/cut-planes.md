@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d5de8374f58eaf8dc83f54f05557b0a125191c34
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 468d21abc861e905472d1d15405b1c8ba9e5be74
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613719"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904879"
 ---
 # <a name="cut-planes"></a>切割平面
 
@@ -19,16 +19,6 @@ ms.locfileid: "89613719"
 下圖示範效果。 左邊顯示的是原始網格，在右邊可以查看網格內部：
 
 ![切割平面](./media/cutplane-1.png)
-
-## <a name="limitations"></a>限制
-
-* 從現在起，Azure 遠端轉譯支援**最多八個使用中的切割平面**。 您可以建立更多切割平面元件，但是如果您嘗試同時啟用更多，則會忽略啟用。 如果您想要切換哪個元件應該影響場景，請先停用其他平面。
-* 每個切割平面都會影響所有遠端轉譯物件。 目前沒有任何方法可以排除特定物件或網格部分。
-* 切割平面純粹是一項視覺效果功能，不會影響[空間查詢](spatial-queries.md)的結果。 如果您想要將光線轉換成切開的網格，可以將光線的起點調整為在切割平面上。 如此一來，光線就只能接觸可見的部分。
-
-## <a name="performance-considerations"></a>效能考量
-
-每個使用中的切割平面在轉譯期間都會產生小額成本。 在不需要時停用或刪除切割平面。
 
 ## <a name="cutplanecomponent"></a>CutPlaneComponent
 
@@ -67,6 +57,40 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 * `FadeColor` 和 `FadeLength`：
 
   如果 FadeColor 的 Alpha 值為非零，接近切割平面的像素會淡入 FadeColor 的 RGB 部分。 Alpha 色板的強度會決定是否要完全淡入淡出色彩或僅部分。 *FadeLength* 會定義此淡入發生的距離。
+
+* `ObjectFilterMask`：篩選位遮罩，用來決定剪下的平面會影響哪些幾何。 如需詳細資訊，請參閱下一段。
+
+### <a name="selective-cut-planes"></a>選擇性剪下平面
+
+您可以設定個別的剪下平面，使其只影響特定幾何。 下圖說明此設定如何實務：
+
+![選擇性剪下平面](./media/selective-cut-planes.png)
+
+篩選是在剪下平面端的位元遮罩與幾何上設定的第二個位遮罩之間的 **邏輯位遮罩比較** 運作。 如果 `AND` 遮罩之間邏輯運算的結果不是零，剪下的平面將會影響幾何。
+
+* 剪下平面元件上的位元遮罩是透過其屬性來設定。 `ObjectFilterMask`
+* 幾何子階層上的位元遮罩是透過[HierarchicalStateOverrideComponent](override-hierarchical-state.md#features)設定。
+
+範例：
+
+| 剪下平面篩選遮罩 | 幾何篩選遮罩  | 邏輯的結果 `AND` | 剪下平面會影響幾何嗎？  |
+|--------------------|-------------------|-------------------|:----------------------------:|
+|  (0000 0001) = = 1   |  (0000 0001) = = 1  |  (0000 0001) = = 1  | Yes |
+|  (1111 0000) = = 240 |  (0001 0001) = = 17 |  (0001 0000) = = 16 | Yes |
+|  (0000 0001) = = 1   |  (0000 0010) = = 2  |  (0000 0000) = = 0  | No |
+|  (0000 0011) = = 3   |  (0000 1000) = = 8  |  (0000 0000) = = 0  | No |
+
+>[!TIP]
+> 將剪下的平面設定 `ObjectFilterMask` 為0，表示它不會影響任何幾何，因為邏輯的結果 `AND` 絕對不能是 null。 轉譯系統不會在一開始就考慮這些平面，因此這是停用個別剪下平面的輕量方法。 這些剪下的平面也不會計入8個使用中平面的限制。
+
+## <a name="limitations"></a>限制
+
+* Azure 遠端轉譯 **最多可支援八個作用中的剪下平面**。 您可以建立更多切割平面元件，但是如果您嘗試同時啟用更多，則會忽略啟用。 如果您想要切換哪些元件應該影響場景，請先停用其他平面。
+* 剪下的平面是純粹的視覺特徵，它們不會影響 [空間查詢](spatial-queries.md)的結果。 如果您想要將光線轉換成切開的網格，可以將光線的起點調整為在切割平面上。 如此一來，光線就只能接觸可見的部分。
+
+## <a name="performance-considerations"></a>效能考量
+
+每個使用中的切割平面在轉譯期間都會產生小額成本。 在不需要時停用或刪除切割平面。
 
 ## <a name="api-documentation"></a>API 文件
 

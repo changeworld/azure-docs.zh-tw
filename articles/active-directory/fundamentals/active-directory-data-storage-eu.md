@@ -9,26 +9,30 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 874df2cc17e291cb6811ca07d01237f01b523860
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 8dc229b366a7816c861da665c73d6421e67545c6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565033"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985911"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中歐洲客戶的身分識別資料儲存體
 在訂閱 Microsoft 線上服務（例如 Microsoft 365 和 Azure）時，會根據組織提供的位址，在地理位置 Azure AD 儲存身分識別資料。 如需識別資料儲存位置的資訊，您可以使用 Microsoft 信任中心的 [ [資料的所在位置？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) ] 區段。
 
 針對在歐洲提供位址的客戶，Azure AD 在歐洲資料中心內保存大部分的身分識別資料。 本檔提供 Azure AD services 儲存在歐洲以外的任何資料的相關資訊。
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure MFA) 的多重要素驗證 (
-    
-- 所有使用電話或 SMS 的雙因素驗證都是來自美國資料中心，也是由全域提供者路由傳送。
-- 使用 Microsoft Authenticator 應用程式的推播通知源自美國資料中心。 此外，裝置廠商的特定服務也可能會在歐洲以外的地方推出。
-- OATH 代碼一律會在美國進行驗證。 
+## <a name="microsoft-azure-multi-factor-authentication"></a>Microsoft Azure Multi-Factor Authentication
+
+針對雲端式 Azure Multi-Factor Authentication，會在最接近使用者的資料中心內完成驗證。 適用于 Azure Multi-Factor Authentication 的資料中心存在於北美洲、歐洲和亞太地區。
+
+* 使用電話的多重要素驗證是來自美國資料中心，由全域提供者路由傳送。
+* 使用 SMS 的多重要素驗證是由全域提供者所路由傳送。
+* 使用來自 EU 資料中心的 Microsoft Authenticator 應用程式推播通知的多重要素驗證要求，會在歐盟資料中心處理。
+    * 裝置廠商專屬的服務，例如 Apple Push 通知，可能在歐洲以外。
+* 使用來自 EU 資料中心之 OATH 代碼的多重要素驗證要求，會在歐盟進行驗證。
 
 如需 Azure Multi-Factor Authentication Server (MFA Server) 和雲端式 Azure MFA 收集哪些使用者資訊的詳細資訊，請參閱 [azure Multi-Factor Authentication 使用者資料收集](../authentication/howto-mfa-reporting-datacollection.md)。
 
@@ -59,7 +63,7 @@ Azure AD DS 會將使用者資料儲存在與客戶選取的 Azure 虛擬網路�
 
 若想進一步了解 Microsoft 服務的資料存放處，請參閱 Microsoft 信任中心的 [您的資料所在位置](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) 區段。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 如需前述任何特性和功能的詳細資訊，請參閱下列文章：
 - [何謂 Multi-Factor Authentication？](../authentication/concept-mfa-howitworks.md)
 

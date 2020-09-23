@@ -2,19 +2,19 @@
 title: 快速入門：匯出 Microsoft Azure 資料箱的資料
 description: 了解如何在 Azure 入口網站中快速匯出您的 Azure 資料箱資料
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
 ms.date: 07/17/2020
-ms.author: twooley
+ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 55366096a9eef7380ad8df855931c4d675973631
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 01fdaa95dd396e5545b65bada2a9d6410169230b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783054"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052455"
 ---
 # <a name="quickstart-get-started-with-azure-data-box-to-export-data-from-azure"></a>快速入門：開始使用 Azure 資料箱從 Azure 匯出資料
 

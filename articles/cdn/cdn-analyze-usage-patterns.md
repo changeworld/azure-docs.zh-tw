@@ -1,6 +1,6 @@
 ---
 title: 來自 Verizon 的核心報告 | Microsoft Docs
-description: 您可以使用下列報告檢視 CDN 的使用模式：頻寬、傳輸的資料、點擊、快取狀態、快取點擊率、已傳輸的 IPV4/IPV6 資料。
+description: 瞭解如何透過 Verizon 設定檔的管理入口網站存取和查看 Verizon 核心報表。
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888443"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985530"
 ---
 # <a name="core-reports-from-verizon"></a>來自 Verizon 的核心報告
 

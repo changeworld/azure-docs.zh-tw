@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307194"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897568"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>標記標籤專案中的影像 
 
@@ -111,7 +111,7 @@ ms.locfileid: "87307194"
 1. 選取**矩形方塊**工具 ![矩形方塊工具](./media/how-to-label-images/rectangular-box-tool.png)，或選取 "R"。
 3. 在您的目標上按住滑鼠並往對角拖曳，以建立粗略的週框方塊。 若要調整週框方塊，請拖曳邊緣或角落。
 
-![顯示建立基本週框方塊動作的螢幕擷取畫面。](./media/how-to-label-images/bounding-box-sequence.png)
+![周框方塊建立](./media/how-to-label-images/bounding-box-sequence.png)
 
 若要刪除週框方塊，請在建立之後，按一下出現在週框方塊旁的 X 形目標。
 

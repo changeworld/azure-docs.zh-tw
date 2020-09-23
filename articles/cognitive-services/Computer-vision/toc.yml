@@ -109,6 +109,22 @@
       href: concept-recognizing-text.md
     - name: 成人內容偵測
       href: concept-detecting-adult-content.md
+- name: 負責任的 AI
+  items:
+    - name: 透明度注意事項
+      items:
+        - name: 空間分析簡介
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview'
+        - name: 特性和限制
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations'
+    - name: 合規性、隱私權和安全性
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2'
+    - name: 在 AI 部署中負責任地使用
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment'
+    - name: 公開設計指引
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design'
+    - name: 研究深入解析
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights'
 - name: 容器
   items:
     - name: 讀取 API 容器
@@ -125,6 +141,20 @@
         - name: 使用容器執行個體
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
+    - name: 空間分析容器
+      items:
+        - name: 設定主機電腦並執行容器
+          href: spatial-analysis-container.md
+        - name: 設定作業
+          href: spatial-analysis-operations.md
+        - name: 部署人數計算 Web 應用程式
+          href: Spatial-analysis-web-app.md
+        - name: 記錄和疑難排解
+          href: spatial-analysis-logging.md
+        - name: 區域和行的位置
+          href: spatial-analysis-zone-line-placement.md
+        - name: 相機位置
+          href: spatial-analysis-camera-placement.md
 - name: 操作指南
   items:
     - name: 呼叫電腦視覺 API

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/06/2020
 ms.author: duau
-ms.openlocfilehash: 09d3723224f9c678e41a6cbc86b5f8f9655173c8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 52aba71ba289a1b5479a6a9eaef7e07418b563fd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401464"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986370"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>使用 Azure 入口網站建立 ExpressRoute Direct
 
@@ -97,7 +97,7 @@ ExpressRoute Direct 可讓您在策略性分散于世界各地的對等互連位
 
 1. 在 [ExpressRoute Direct **設定** ] 區段中，選取 [ **線路**]，然後選取 [ **+ 新增**]。 
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="加入" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="螢幕擷取畫面顯示已選取線路的 ExpressRoute 設定，並醒目提示 [新增]。" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
 
 1. 設定 [設定 **] 頁面中的設定** 。
 
@@ -109,6 +109,6 @@ ExpressRoute Direct 可讓您在策略性分散于世界各地的對等互連位
 
 1. 選取 [建立]。 您會看到一則訊息，讓您知道您的部署正在進行中。 當建立資源時，狀態將會顯示在此頁面上。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 如需 ExpressRoute Direct 的詳細資訊，請參閱 [總覽](expressroute-erdirect-about.md)。

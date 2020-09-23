@@ -11,16 +11,16 @@ ms.author: laobri
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 4aa0cecb380f75080abe471a4c414029436c57d6
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b27675f152132a015a6dc6f5aea35aff036e1a63
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645951"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897543"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>匯出或刪除您的 Machine Learning services 工作區資料
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在 Azure Machine Learning 中，您可以使用入口網站的圖形化介面或 Python SDK 來匯出或刪除工作區資料。 本文說明這兩個選項。
 

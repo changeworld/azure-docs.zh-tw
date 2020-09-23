@@ -4,8 +4,8 @@
   items:
     - name: 什麼是串流分析？
       href: stream-analytics-introduction.md
-    - name: 端對端解決方案模式
-      href: stream-analytics-solution-patterns.md
+    - name: 串流分析叢集
+      href: cluster-overview.md
 - name: 快速入門
   expanded: true
   items:
@@ -23,7 +23,11 @@
         - name: Visual Studio
           href: stream-analytics-quick-create-vs.md
         - name: Visual Studio Code
-          href: quick-create-vs-code.md
+          href: quick-create-visual-studio-code.md
+    - name: 建立叢集
+      items:
+        - name: Azure 入口網站
+          href: create-cluster.md
 - name: 教學課程
   items:
     - name: 1 - 建立/管理作業
@@ -42,6 +46,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: 概念
   items:
+    - name: 端對端解決方案模式
+      href: stream-analytics-solution-patterns.md
     - name: 選擇串流分析技術
       href: streaming-technologies.md
     - name: 選擇作業的開發工具
@@ -145,6 +151,14 @@
   items:
     - name: 管理
       items:
+        - name: 叢集
+          items:
+            - name: 建立和刪除私人端點
+              href: private-endpoints.md
+            - name: 新增和移除作業
+              href: manage-jobs-cluster.md
+            - name: 調整叢集大小
+              href: scale-cluster.md
         - name: 自動調整作業
           href: stream-analytics-autoscale.md
         - name: 更新認證
@@ -234,6 +248,14 @@
           href: stream-analytics-cicd-api.md
         - name: 使用 Azure Resource Manager 進行匯出並部署
           href: resource-manager-export.md
+    - name: 持續整合與部署
+      items:
+        - name: CI/CD 概觀
+          href: cicd-overview.md
+        - name: 使用 PowerShell 建置、測試及部署
+          href: cicd-tools.md
+        - name: 使用 Azure DevOps 設定管線
+          href: set-up-cicd-pipeline.md
     - name: Visual Studio
       items:
         - name: 安裝工具
@@ -260,8 +282,6 @@
           href: visual-studio-code-local-run-live-input.md
         - name: 使用作業圖表偵錯查詢
           href: debug-locally-using-job-diagram-vs-code.md
-        - name: 設定 CI/CD 管線
-          href: setup-cicd-vs-code.md
         - name: 探索作業
           href: visual-studio-code-explore-jobs.md
         - name: JobConfig.json 欄位

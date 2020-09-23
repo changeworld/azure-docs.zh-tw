@@ -1,6 +1,6 @@
 ---
 title: 混合式身分識別設計 - 管理工作 - Azure | Microsoft Docs
-description: 使用條件式存取控制，Azure Active Directory 會在驗證使用者時以及允許存取應用程式之前，檢查您挑選的特定條件。 一旦符合這些條件，就會驗證使用者並允許存取應用程式。
+description: Azure AD 會在驗證使用者時，以及允許使用條件式存取控制存取應用程式之前，檢查您挑選的特定條件。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c416bf19acb1736eeed679c16dbd87de1cc98537
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109375"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986532"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>規劃混合式身分識別生命週期
 身分識別是企業行動力和應用程式存取策略的基礎之一。 無論您登入行動裝置還是 SaaS 應用程式，您的身分識別都是您能否進行存取的關鍵。 在其最高層級上，身分識別管理解決方案牽涉到存放庫的統合和同步，而其中又包含佈建資源程序的自動化和集中化。 身分識別解決方案應為跨內部部署與雲端的集中式身分識別功能，且應使用某種形式的身分識別同盟，以維護集中式驗證，並且安全地與外部使用者和企業進行共用和共同作業。 資源的範圍涵蓋作業系統和應用程式，乃至於組織中或隸屬於組織的人員。 組織結構可以改變，以因應佈建原則和程序。
@@ -61,12 +61,12 @@ ms.locfileid: "67109375"
 ## <a name="synchronization-management"></a>同步處理管理
 身分識別管理員的目標之一，是要能夠啟用所有身分識別提供者，並保持其同步處理狀態。 您可以根據授權的主要身分識別提供者，保持資料的同步處理狀態。 在混合式身分識別案例中，您可以透過同步處理的管理模型，在內部部署伺服器中管理所有的使用者和裝置身分識別，並將帳戶同步處理至雲端 (和選擇性地同步處理密碼)。 使用者在內部部署中輸入的密碼與雲端相同，且在登入時，身分識別解決方案會驗證密碼。 此模型會使用目錄同步處理工具。
 
-![目錄同步處理 ](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) 若要適當設計混合式身分識別解決方案的同步處理，請確定已回答下列問題：
+![目錄同步 ](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) 到適當設計混合式身分識別解決方案的同步處理，可確保回答下列問題：
 *    適用于混合式身分識別解決方案的同步處理解決方案有哪些？
 *    有哪些可用的單一登入功能？
-*    B2B 和 B2C 之間的身分識別同盟選項有哪些？
+*    B2B 和 B2C 之間的身分識別同盟有哪些選項？
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 [判斷混合式身分識別管理採用策略](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
 
 ## <a name="see-also"></a>另請參閱

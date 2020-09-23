@@ -1,5 +1,5 @@
 ---
-title: 如何使用 WhiteNoise 套件來保留資料隱私權（預覽）
+title: '如何使用 WhiteNoise 套件將資料隱私權保留 (預覽版) '
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 WhiteNoise 套件，將差異隱私權最佳做法套用至 Azure Machine Learning 模型。
 services: machine-learning
@@ -11,23 +11,23 @@ ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 07/09/2020
-ms.openlocfilehash: 2182c9bc7588947ece5a309018359a8bcfa3ff41
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 355d96fe5a617effab89fbd038f7f1785215f88f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320199"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897688"
 ---
-# <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure Machine Learning 中使用差異隱私權（預覽）
+# <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Azure Machine Learning (preview 中使用差異隱私權) 
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 了解如何使用 WhiteNoise Python 套件，將差異隱私權最佳做法套用至 Azure Machine Learning 模型。
 
 差異隱私權是隱私權的金級標準定義。 遵守這項隱私權定義的系統可針對廣範圍的資料重建和重新識別攻擊提供強大的保證，包括擁有輔助資訊的敵人攻擊。 深入了解[差異隱私權如何運作](./concept-differential-privacy.md)。
 
 > [!NOTE]
-> 請注意，我們會重新命名此工具組，並會在接下來的幾周內引進新的名稱。 
+> 請注意，我們會重新命名此工具組，並將在未來幾周推出新的名稱。 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -156,7 +156,7 @@ Privacy usage: approximate {
 | Sum           |            | 插補 |
 | 變異數/共變數 |      | 轉換  |
 
-如需詳細資訊，請參閱[基本資料分析筆記本](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb)。
+如需詳細資料，請參閱 [資料分析筆記本](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) 。
 
 ## <a name="approximate-utility-of-differentially-private-releases"></a>差異隱私版本的大約公用程式
 

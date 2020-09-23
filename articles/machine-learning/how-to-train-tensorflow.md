@@ -10,15 +10,15 @@ author: maxluk
 ms.date: 08/20/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: c25464444abe8b4bc274f71618c62a751143d594
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 840ccec1da6df0df1ccd710d83634b850d7370fa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648277"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904916"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 大規模建立 TensorFlow 深度學習模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本文說明如何使用 Azure Machine Learning 的[TensorFlow 估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true)類別，大規模地執行您的[TensorFlow](https://www.tensorflow.org/overview)訓練腳本。 此範例會定型並註冊 TensorFlow 模型，使用深度類神經網路將手寫數位分類 (DNN) 。
 
@@ -326,7 +326,7 @@ service = Model.deploy(ws, "tensorflow-web-service", [model])
 
 [完整的作法涵蓋了 Azure Machine Learning](how-to-deploy-and-where.md)更深入的部署。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已訓練並註冊 TensorFlow 模型，並瞭解部署的選項。 若要深入瞭解 Azure Machine Learning，請參閱這些其他文章。
 

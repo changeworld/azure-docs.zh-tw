@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python
-ms.openlocfilehash: ff327372a0ec22ca6291615ca64f01a4aa5807be
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 239fc9de991066ec0603247abafae36a618d534f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646217"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889865"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>將機器學習模型部署至 Azure Functions (preview) 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 瞭解如何將模型從 Azure Machine Learning 部署為 Azure Functions 中的函數應用程式。
 
@@ -45,7 +45,7 @@ ms.locfileid: "89646217"
 
 ## <a name="prepare-for-deployment"></a>準備開始部署
 
-在部署之前，您必須定義以 web 服務的形式執行模型所需的內容。 下列清單描述部署所需的基本專案：
+在部署之前，您必須定義以 web 服務的形式執行模型所需的內容。 下列清單描述部署所需的核心專案：
 
 * __輸入腳本__。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
 
@@ -295,7 +295,7 @@ print(blob.location)
 
 如需使用 blob 觸發程式的詳細資訊，請參閱 [建立 Azure blob 儲存體所觸發](/azure/azure-functions/functions-create-storage-blob-triggered-function) 的函式一文。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解如何在 [函數](/azure/azure-functions/functions-create-function-linux-custom-image) 檔中設定函數應用程式。
 * 深入瞭解 Blob 儲存體如何觸發 [Azure blob 儲存體](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)系結。

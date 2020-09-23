@@ -4,40 +4,40 @@ description: 在 Application Insights 中設定 Web 測試。 如果網站無法
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a5bee2da5059213e85e03d5a0e4df0ef88c26b03
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310271"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986028"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>監視任何網站的可用性
 
-在您部署 web 應用程式/網站之後，您可以設定週期性測試來監視可用性和回應性。 [Azure Application Insights](./app-insights-overview.md) 會將來自全球各地的 Web 要求定期傳送給您的應用程式。 如果您的應用程式沒有回應，或回應太慢，它會發出警示。
+部署 web 應用程式/網站之後，您可以設定週期性測試來監視可用性和回應性。 [Azure Application Insights](./app-insights-overview.md) 會將來自全球各地的 Web 要求定期傳送給您的應用程式。 如果您的應用程式沒有回應，或者回應速度太慢，它就會發出警示。
 
-您可以為公用網際網路可存取的任何 HTTP 或 HTTPS 端點設定可用性測試。 您不需要對正在測試的網站進行任何變更。 事實上，它甚至不需要是您擁有的網站。 您可以測試服務所依存之 REST API 的可用性。
+您可以為公用網際網路可存取的任何 HTTP 或 HTTPS 端點設定可用性測試。 您不需要對正在測試的網站進行任何變更。 事實上，它甚至不是您擁有的網站。 您可以測試服務所依賴之 REST API 的可用性。
 
 ### <a name="types-of-availability-tests"></a>可用性測試的類型：
 
-可用性測試有三種類型：
+有三種類型的可用性測試：
 
 * [URL Ping 測試](#create-a-url-ping-test)：您可以在 Azure 入口網站中建立的簡單測試。
-* [多步驟 web 測試](availability-multistep.md)：一系列 web 要求的記錄，可以回頭播放以測試更複雜的案例。 多步驟 web 測試會在 Visual Studio Enterprise 中建立，並上傳至入口網站進行執行。
-* [自訂追蹤可用性測試](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet)：如果您決定要建立自訂應用程式來執行可用性測試，則 `TrackAvailability()` 可以使用方法，將結果傳送至 Application Insights。
+* [多步驟 web 測試](availability-multistep.md)：記錄一系列的 web 要求，可播放這些要求以測試更複雜的案例。 在 Visual Studio Enterprise 中建立多步驟 web 測試，並上傳至入口網站以供執行。
+* [自訂追蹤可用性測試](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet)：如果您決定要建立自訂應用程式來執行可用性測試，您 `TrackAvailability()` 可以使用方法將結果傳送至 Application Insights。
 
-**您最多可以為每個 Application Insights 資源建立100可用性測試。**
+**您可以針對每個 Application Insights 資源建立最多100個可用性測試。**
 
 ## <a name="create-an-application-insights-resource"></a>建立 Application Insights 資源
 
-為了建立可用性測試，您必須先建立 Application Insights 資源。 如果您已經建立資源，請繼續進行下一節，以[建立 URL Ping 測試](#create-a-url-ping-test)。
+為了建立可用性測試，您必須先建立 Application Insights 資源。 如果您已經建立資源，請繼續下一節來 [建立 URL Ping 測試](#create-a-url-ping-test)。
 
-從 [Azure 入口網站中，選取 [**建立資源**] [  >  **開發人員工具**] [  >  **Application Insights** ]，然後[建立 Application Insights 資源](create-new-resource.md)。
+從 Azure 入口網站中，選取 [**建立資源**  >  **開發人員工具**]  >  **Application Insights**並[建立 Application Insights 資源](create-new-resource.md)。
 
 ## <a name="create-a-url-ping-test"></a>建立 URL Ping 測試
 
-「URL ping 測試」這個名稱有點 misnomer。 為了清楚說明，這項測試不會使用 ICMP （網際網路控制訊息通訊協定）來檢查網站的可用性。 相反地，它會使用更先進的 HTTP 要求功能來驗證端點是否有回應。 它也會測量與該回應相關聯的效能，並加入設定自訂成功準則的功能，以及更多的高階功能，例如剖析相依要求，並允許重試。
+「URL ping 測試」名稱有點 misnomer。 顯然，這項測試不會使用 ICMP (網際網路控制訊息通訊協定) 檢查您網站的可用性。 相反地，它會使用更先進的 HTTP 要求功能來驗證端點是否回應。 此外，它也會測量與該回應相關聯的效能，並新增設定自訂成功準則的能力，結合更先進的功能，例如剖析相依的要求，並允許重試。
 
-若要建立您的第一個可用性要求，請開啟 [可用性] 窗格，然後選取 [**建立測試**]。
+若要建立您的第一個可用性要求，請開啟 [可用性] 窗格，然後選取 [ **建立測試**]。
 
 ![Fill at least the URL of your website](./media/monitor-web-app-availability/availability-create-test-001.png)
 
@@ -46,15 +46,15 @@ ms.locfileid: "87310271"
 |設定| 說明
 |----|----|----|
 |**URL** |  URL 可以是您想要測試的任何網頁，但必須可從公用網際網路看見它。 URL 可以包含查詢字串。 例如，您可以訓練一下您的資料庫。 如果 URL 解析為重新導向，我們會跟隨它，最多 10 個重新導向。|
-|**剖析相依要求**| 測試要求的影像、腳本、樣式檔案以及其他屬於受測網頁的檔案。 記錄的回應時間包含取得這些檔案所需的時間。 如果無法在整個測試的超時時間內成功下載任何這些資源，測試就會失敗。 如果未核取這個選項，測試只會要求您指定之 URL 中的檔案。 啟用此選項會產生更嚴格的檢查。 案例的測試可能會失敗，這在手動流覽網站時可能不明顯。
-|**啟用重試**|當測試失敗時，就會在短時間後重試。 只有在連續三次重試失敗後，才會回報失敗。 後續測試則會以一般測試頻率執行。 重試會暫時停止，直到下次成功為止。 此規則可個別套用在每個測試位置。 **我們建議您選擇此選項**。 平均來說，大約 80% 失敗會在重試後消失。|
+|**剖析相依要求**| 測試要求影像、腳本、樣式檔案以及其他屬於受測試網頁的檔案。 記錄的回應時間包含取得這些檔案所需的時間。 如果無法在整個測試的超時時間內成功下載任何這些資源，測試就會失敗。 如果未核取這個選項，測試只會要求您指定之 URL 中的檔案。 啟用此選項會產生更嚴格的檢查。 測試可能會因案例而失敗，這在手動流覽網站時可能不會很明顯。
+|**啟用重試**|當測試失敗時，會在短時間間隔後重試。 只有在連續三次重試失敗後，才會回報失敗。 後續測試則會以一般測試頻率執行。 重試會暫時停止，直到下次成功為止。 此規則可個別套用在每個測試位置。 **我們建議採用此選項**。 平均來說，大約 80% 失敗會在重試後消失。|
 |**測試頻率**| 設定從每個測試位置執行測試的頻率。 預設頻率為 5 分鐘且有五個測試位置，則您的網站平均每一分鐘會執行測試。|
 |**測試位置**| 是我們的伺服器將 Web 要求傳送至您的 URL 的位置。 **建議的測試位置數目下限為五個**，以確保您可以區分網站問題與網路問題。 您最多可以選取 16 個位置。
 
-**如果您的 URL 在公用網際網路中看不到，您可以選擇選擇性地開啟防火牆，只允許透過的測試交易**。 若要深入瞭解可用性測試代理程式的防火牆例外狀況，請參閱[IP 位址指南](./ip-addresses.md#availability-tests)。
+**如果公用網際網路看不到您的 URL，您可以選擇選擇性地開啟您的防火牆，只允許通過測試交易**。 若要深入瞭解可用性測試代理程式的防火牆例外狀況，請參閱 [IP 位址指南](./ip-addresses.md#availability-tests)。
 
 > [!NOTE]
-> 我們強烈建議您從**最少五個位置**的多個位置進行測試。 這樣做可避免因特定位置發生暫時性問題，而造成誤判。 此外，我們也發現最佳設定是讓**測試位置的數目等於警示位置閾值 + 2**。
+> 強烈建議您從 **最少五**個位置的多個位置進行測試。 這樣做可避免因特定位置發生暫時性問題，而造成誤判。 此外，我們發現最佳設定是讓 **測試位置數目等於警示位置閾值 + 2**。
 
 ### <a name="success-criteria"></a>成功準則
 
@@ -78,9 +78,9 @@ ms.locfileid: "87310271"
 
 幾分鐘後 **，按一下 [** 重新整理] 以查看您的測試結果。
 
-![程式行檢視](./media/monitor-web-app-availability/availability-refresh-002.png)
+![螢幕擷取畫面會顯示 [可用性] 頁面，其中 [重新整理] 按鈕反白顯示。](./media/monitor-web-app-availability/availability-refresh-002.png)
 
-散佈圖視圖會顯示測試結果的樣本，其中包含診斷測試步驟的詳細資料。 測試引擎會儲存失敗測試的診斷詳細資料。 對於成功的測試，系統會儲存執行子集的診斷詳細資料。 將滑鼠停留在任何綠色/紅色點上，以查看測試、測試名稱和位置。
+[散佈圖] 視圖會顯示測試結果的範例，其中包含診斷測試步驟的詳細資料。 測試引擎會儲存失敗測試的診斷詳細資料。 對於成功的測試，系統會儲存執行子集的診斷詳細資料。 將滑鼠停留在任何綠色/紅點上方以查看測試、測試名稱和位置。
 
 ![程式行檢視](./media/monitor-web-app-availability/availability-scatter-plot-003.png)
 
@@ -88,9 +88,9 @@ ms.locfileid: "87310271"
 
 ## <a name="inspect-and-edit-tests"></a> 檢查和編輯測試
 
-若要編輯、暫時停用或刪除測試，請按一下測試名稱旁的省略號。 設定變更可能需要20分鐘的時間，才能在進行變更之後傳播到所有測試代理程式。
+若要編輯、暫時停用或刪除測試，請按一下測試名稱旁邊的省略號。 設定變更最多可能需要20分鐘的時間，才會在變更之後傳播至所有測試代理程式。
 
-![查看測試詳細資料。 編輯和停用 web 測試](./media/monitor-web-app-availability/edit.png)
+![視圖測試詳細資料。 編輯和停用 web 測試](./media/monitor-web-app-availability/edit.png)
 
 當您對服務執行維護時，您可能會想要停用可用性測試或與其相關聯的警示規則。
 
@@ -113,7 +113,7 @@ ms.locfileid: "87310271"
 
 ![伺服器端診斷](./media/monitor-web-app-availability/open-instance-4.png)
 
-除了原始的結果，您也可以在[計量瀏覽器](../platform/metrics-getting-started.md)中查看兩個主要可用性計量：
+除了未經處理的結果，您也可以在 [計量瀏覽器](../platform/metrics-getting-started.md)中查看兩個重要的可用性度量：
 
 1. 可用性︰所有測試執行中測試成功的百分比。
 2. 測試持續期間︰所有測試執行中的平均測試持續期間。

@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure 靜態 Web 應用程式文件
-summary: Azure 靜態 Web 應用程式可讓您建立 JavaScript Web 應用程式，以在 GitHub 中進行變更實自動發佈。
+summary: Azure 靜態 Web 應用程式可讓您建置新式 Web 應用程式，以在 GitHub 中進行變更時自動發佈。
 metadata:
   title: Azure 靜態 Web 應用程式文件
-  description: Azure 靜態 Web 應用程式可讓您建立 JavaScript Web 應用程式，以在 GitHub 中進行變更時自動發佈。
+  description: Azure 靜態 Web 應用程式可讓您建置新式 Web 應用程式，以在 GitHub 中進行變更時自動發佈。
   ms.topic: landing-page
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 04/09/2020
-  ms.openlocfilehash: f70a746c948038b5bd67f4645e8dbd3df71b8b8a
-  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  ms.openlocfilehash: a72c9ab1dfcaf6fd95ac706bc0f0a7b8adb17c0f
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 07/20/2020
-  ms.locfileid: "86528650"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90905352"
 landingContent:
 - title: 關於靜態 Web 應用程式
   linkLists:
@@ -54,6 +54,8 @@ landingContent:
       url: publish-vuepress.md
     - text: 從 Jekyll 發佈
       url: publish-jekyll.md
+    - text: 從 Blazor 部署
+      url: deploy-blazor.md
     - text: 從 Next.js 部署
       url: deploy-nextjs.md
     - text: 從 Nuxt.js 部署

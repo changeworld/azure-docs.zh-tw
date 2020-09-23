@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 09/03/2020
-ms.openlocfilehash: 06fc929e0149c48aa75aa87a12e3747ef1df1bf2
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: abdd04f59ee820585d58817297d161f68bd952f0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440113"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897390"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>使用 VS Code 擴充功能 (預覽版來管理 Azure Machine Learning 資源) 
 
@@ -44,7 +44,6 @@ ms.locfileid: "89440113"
     1. 選擇 Azure 訂用帳戶
     1. 選擇或建立新的資源群組以在其中布建工作區
     1. 選取要布建工作區的位置。
-    1. 選擇 [ *基本* ] 和 [ *企業* 版]。 深入瞭解不同的 [Azure Machine Learning 版本](concept-editions.md)。
 
 建立工作區的替代方法包括：
 
@@ -424,6 +423,6 @@ VS Code 擴充功能支援下列部署目標：
         - 您部署的設定檔會出現在編輯器中。 如果您對設定感到滿意，請選取 [ **儲存並繼續** ]，或開啟 VS Code 的命令選擇區 (**View > 命令** 選擇區) 並輸入 **Azure ML：儲存並繼續**。
     - 若要查看部署設定，請選取 [ **view service properties**]。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 使用 VS Code 擴充功能將[影像分類模型定型](tutorial-train-deploy-image-classification-model-vscode.md)。

@@ -10,20 +10,17 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: a244372168cb34f190bd584634bf108f2b5215a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd6f2021a20ff488402bb9d1367feb57c34f582
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092272"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896672"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>教學課程：使用自動化機器學習來預測需求
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 在本教學課程中，您會在 Azure Machine Learning Studio 中使用自動化機器學習 (簡稱自動化 ML) 來建立時間序列預測模型，以預測自行車共享服務的租賃需求。
-
->[!IMPORTANT]
-> Azure Machine Learning Studio 中的自動化 ML 體驗目前處於預覽狀態。 可能不支援特定功能，或功能受到限制。
 
 如需分類模型範例，請參閱[教學課程：在 Azure Machine Learning 中使用自動化 ML 建立分類模型](tutorial-first-experiment-automated-ml.md)。
 
@@ -38,8 +35,8 @@ ms.locfileid: "87092272"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Enterprise 版 Azure Machine Learning 工作區。 如果您沒有工作區，請[建立 Enterprise 版工作區](how-to-manage-workspace.md)。 
-    * Azure Machine Learning Studio 中的自動化機器學習僅適用於 Enterprise 版工作區。 
+* Azure Machine Learning 工作區。 請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。 
+
 * 下載 [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) 資料檔案
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>在 Azure Machine Learning Studio 中開始使用
