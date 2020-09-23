@@ -1,14 +1,14 @@
 ---
 title: DoD 影響等級 5 藍圖範例
 description: DoD 影響等級 5 藍圖範例的部署步驟，其中包括藍圖成品參數的詳細資料。
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: 9267ed0de35107b8f6582d852ab925b4dbbbdba4
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: deb6ffa0f886cc6a4a9bea10a38d7cd82e7df8f1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85804399"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978220"
 ---
 # <a name="deploy-the-dod-impact-level-5-blueprint-sample"></a>部署 DoD 影響等級 5 藍圖範例
 

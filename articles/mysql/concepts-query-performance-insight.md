@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 51b478e5184c79e11d95ff004a652b2e5298558f
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 7aefa6cd048c41feb1535f2ae7fa5c87bf628b2d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402604"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884901"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>「適用於 MySQL 的 Azure 資料庫」中的查詢效能深入解析
 
@@ -51,7 +51,7 @@ Azure 入口網站中的[查詢效能深入解析](concepts-query-performance-in
 
 您可以在圖表中按一下並拖曳來縮小到特定時間範圍。 或者，使用放大和縮小圖示，分別檢視一段較短或較長的時間。
 
-![查詢效能深入解析長時間執行的查詢](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png) 
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-landing-page.png" alt-text="查詢效能深入解析長時間執行的查詢"::: 
 
 ### <a name="wait-statistics"></a>等候統計資料
 
@@ -64,7 +64,7 @@ Azure 入口網站中的[查詢效能深入解析](concepts-query-performance-in
 
 [等候統計資料] 檢視中顯示的查詢會根據指定時間間隔內呈現最大等候資料的查詢來分組。
 
-![查詢效能深入解析等候統計資料](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="查詢效能深入解析等候統計資料":::
 
 ## <a name="next-steps"></a>後續步驟
 

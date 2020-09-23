@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0fc4e9a794429e7f1c1609fac287e67dabb3c878
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: d398cfe063dbbb2bc87a3debf1669afa6a16b43e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875653"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891991"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure 串流分析的 Power BI 輸出
 
@@ -20,7 +20,7 @@ ms.locfileid: "88875653"
 
 Azure China 21Vianet 和 Azure 德國 (T-Systems International) 區域目前無法從串流分析產生 Power BI 輸出。
 
-## <a name="ouput-configuration"></a>輸出設定
+## <a name="output-configuration"></a>輸出設定
 
 下表列出設定 Power BI 輸出的屬性名稱及其描述。
 
@@ -82,4 +82,4 @@ Datetime | String | String |  Datetime | String
 * [快速入門：使用 ARM 範本建立 Azure 串流分析作業](quick-create-azure-resource-manager.md)
 * [快速入門：使用 Azure PowerShell 建立串流分析作業](stream-analytics-quick-create-powershell.md)
 * [快速入門：使用 Visual Studio 建立 Azure 串流分析作業](stream-analytics-quick-create-vs.md)
-* [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-vs-code.md)
+* [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-visual-studio-code.md)

@@ -1,81 +1,75 @@
 ---
 title: 匯出 Azure Cosmos DB 模擬器憑證
-description: 以不使用 Windows 憑證存放區的語言和執行時間進行開發時，您必須匯出和管理 TLS/SSL 憑證。 這篇文章提供逐步指示。
+description: 瞭解如何匯出 Azure Cosmos DB 模擬器憑證，以搭配 JAVA、Python 和 Node.js 應用程式使用。 憑證應該匯出並用於不使用 Windows 憑證存放區的語言和執行時間環境。
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java
-ms.openlocfilehash: e1321c0d5b1f83ffcfd3f46384dfb3af792c9b8b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8f2714c7c49aa5e02747ce726da29a98485b5fbd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373091"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988232"
 ---
-# <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>匯出 Azure Cosmos DB 模擬器憑證以與 Java、Python 和 Node.js 搭配使用
+# <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>匯出 Azure Cosmos DB 模擬器憑證以與 JAVA、Python 和 Node.js 應用程式搭配使用
 
-[**下載模擬器**](https://aka.ms/cosmosdb-emulator)
+Azure Cosmos DB 模擬器提供了一個模擬 Azure Cosmos DB 服務的本機環境，以供開發之用。 Azure Cosmos 模擬器僅支援透過 TLS 連接的安全通訊。
 
-Azure Cosmos DB 模擬器會提供一個模擬 Azure Cosmos DB 服務的本機環境，以供開發之用，包括其 TLS 連接的使用。 這篇文章示範如何匯出 TLS/SSL 憑證，以用於未與 Windows 憑證存放區整合的語言和執行時間，例如使用自己的[憑證存放區](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)的 JAVA、使用[通訊端包裝](https://docs.python.org/2/library/ssl.html)函式的 Python，以及使用[tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)的 Node.js。 您可以閱讀[使用 Azure Cosmos DB 模擬器進行開發和測試](./local-emulator.md)，了解更多有關模擬器的資訊。
+當您第一次執行模擬器時，會產生 Azure Cosmos DB 本機模擬器中的憑證。 會產生兩個憑證； 其中一個用來連接到本機模擬器，另一個用來管理模擬器內模擬器資料的預設加密。 您要匯出的憑證是有 "DocumentDBEmulatorCertificate" 易記名稱的連線憑證。
 
-本教學課程涵蓋下列工作：
+當您使用模擬器以不同的語言（例如 JAVA、Python 或 Node.js）開發應用程式時，您需要匯出模擬器憑證，並將它匯入至所需的憑證存放區。
 
-> [!div class="checklist"]
-> * 輪替憑證
-> * 正在匯出 TLS/SSL 憑證
-> * 了解如何使用 Java、Python 和 Node.js 中的憑證
+當應用程式在 Windows OS 主機上執行時，.NET 語言和執行時間會使用 Windows 憑證存放區來安全地連線至 Azure Cosmos DB 本機模擬器。 其他語言則有自己管理和使用憑證的方法。 例如，JAVA 使用自己的 [憑證存放區](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)、Python 使用 [通訊端包裝](https://docs.python.org/2/library/ssl.html)函式，Node.js 使用 [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)。
 
-## <a name="certification-rotation"></a>憑證旋轉
+本文示範如何匯出 TLS/SSL 憑證，以用於不與 Windows 憑證存放區整合的不同語言與執行時間環境。 您可以閱讀[使用 Azure Cosmos DB 模擬器進行開發和測試](./local-emulator.md)，了解更多有關模擬器的資訊。
 
-Azure Cosmos DB 本機模擬器中的憑證會在模擬器第一次執行時產生。 會產生兩個憑證； 一個用來連線到本機模擬器，一個用來管理模擬器中的機密資料。 您要匯出的憑證是有 "DocumentDBEmulatorCertificate" 易記名稱的連線憑證。
+## <a name="export-the-azure-cosmos-db-tlsssl-certificate"></a><a id="export-emulator-certificate"></a>匯出 Azure Cosmos DB TLS/SSL 憑證
 
-您可以從 Windows 系統匣中執行的 Azure Cosmos DB 模擬器按一下 [重設資料]**** 來重新產生這兩個憑證，如下所示。 如果您重新產生憑證並將這些憑證安裝到 Java 憑證存放區或在其他地方使用它們，則必須更新這些憑證，否則您的應用程式將無法再連線到本機模擬器。
-
-:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB 本機模擬器的重設資料":::
-
-## <a name="how-to-export-the-azure-cosmos-db-tlsssl-certificate"></a>如何匯出 Azure Cosmos DB 的 TLS/SSL 憑證
+您需要匯出模擬器憑證，才能成功地從未與 Windows 憑證存放區整合的語言和執行時間環境中使用模擬器端點。 您可以使用 Windows 憑證管理員來匯出憑證。 使用下列逐步指示，將 "有 documentdbemulatorcertificate" 憑證匯出為 BASE-64 編碼的 x.509 ( .cer) 檔：
 
 1. 執行 certlm.msc 啟動 Windows 憑證管理員，瀏覽至 [個人 -> 憑證] 資料夾並開啟有 **DocumentDbEmulatorCertificate** 易記名稱的憑證。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
-2. 按一下 [詳細資料]****，然後按一下 [確定]****。
+1. 按一下 [詳細資料]****，然後按一下 [確定]****。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 2":::
 
-3. 按一下 [複製到檔案...]****。
+1. 按一下 [複製到檔案...]****。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 3":::
 
-4. 按 [下一步]  。
+1. 按 [下一步]  。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 4":::
 
-5. 按一下 [否，不要匯出私密金鑰 ]****，然後按 [下一步]****。
+1. 按一下 [否，不要匯出私密金鑰 ]****，然後按 [下一步]****。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 5":::
 
-6. 按一下 [Base-64 編碼的 X.509 (.CER)]****，然後按 [下一步]****。
+1. 按一下 [Base-64 編碼的 X.509 (.CER)]****，然後按 [下一步]****。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 6":::
 
-7. 指定憑證的名稱。 此案例中為 **documentdbemulatorcert**，然後按 [下一步]****。
+1. 指定憑證的名稱。 此案例中為 **documentdbemulatorcert**，然後按 [下一步]****。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 7":::
 
-8. 按一下 [完成] 。
+1. 按一下 [完成] 。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 8":::
 
-## <a name="how-to-use-the-certificate-in-java"></a>如何在 Java 中使用憑證
+## <a name="use-the-certificate-with-java-apps"></a>搭配使用憑證與 JAVA 應用程式
 
-執行 Java 應用程式或執行使用 Java 用戶端的 MongoDB 應用程式時，將憑證安裝到 Java 預設憑證存放區比傳遞 `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` 旗標更簡單。 例如，包含的 JAVA 示範應用程式（ `https://localhost:8081/_explorer/index.html` ）取決於預設憑證存放區。
+執行 JAVA 應用程式或使用以 JAVA 為基礎的用戶端應用程式時，將憑證安裝到 JAVA 預設憑證存放區比傳遞 `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` 旗標更容易。 例如，包含的 JAVA 示範應用程式 (`https://localhost:8081/_explorer/index.html`) 取決於預設的憑證存放區。
 
-遵循[新增憑證至 Java CA 憑證存放區](https://docs.microsoft.com/azure/java-add-certificate-ca-store)中的指示，將 X.509 憑證匯入預設的 Java 憑證存放區。 請記住，執行 keytool 時您會在 %JAVA_HOME% 目錄中工作。
+遵循將 [憑證新增至 JAVA 憑證存放區](https://docs.microsoft.com/azure/java-add-certificate-ca-store) 中的指示，將 x.509 憑證匯入至預設的 java 憑證存放區。 請記住，當您執行 keytool 時，將會在 *% JAVA_HOME%* 目錄中工作。 將憑證匯入憑證存放區之後，適用于 MongoDB 的 SQL 和 Azure Cosmos DB 的 API 用戶端將能夠連線至 Azure Cosmos 模擬器。
 
-或者，您可以建立並執行「bash」腳本來自動執行此動作：
+或者，您可以執行下列 bash 腳本來匯入憑證：
+
 ```bash
 #!/bin/bash
 
@@ -90,26 +84,26 @@ sudo $JAVA_HOME/bin/keytool -cacerts -delete -alias cosmos_emulator
 sudo $JAVA_HOME/bin/keytool -cacerts -importcert -alias cosmos_emulator -file $EMULATOR_CERT_PATH
 ```
 
-安裝 "CosmosDBEmulatorCertificate" TLS/SSL 憑證後，您的應用程式應該能夠連接並使用本機 Azure Cosmos DB 模擬器。 如果您仍然遇到問題，您可能會想要遵循[調試 SSL/TLS](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html)連線一文。 很有可能是未將憑證安裝至 %JAVA_HOME%/jre/lib/security/cacerts 存放區。 例如，如果您安裝多個 Java 版本，您的應用程式使用的 cacerts 存放區可能與您更新的不同。
+安裝 "CosmosDBEmulatorCertificate" TLS/SSL 憑證之後，您的應用程式應該能夠連接並使用本機 Azure Cosmos DB 模擬器。 如果您有任何問題，您可以遵循「偵測 [SSL/TLS 連接](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html) 」一文。 在大部分情況下，憑證可能不會安裝到 *% JAVA_HOME%/jre/lib/security/cacerts* 存放區中。 例如，如果您有多個已安裝的 JAVA 版本，您的應用程式可能會使用與您所更新的不同 cacerts 存放區。
 
-## <a name="how-to-use-the-certificate-in-python"></a>如何在 Python 中使用憑證
+## <a name="use-the-certificate-with-python-apps"></a>使用 Python 應用程式的憑證
 
-根據預設，在連接到本機模擬器時，SQL API 的[PYTHON SDK （版本2.0.0 或更新版本）](sql-api-sdk-python.md)不會嘗試和使用 TLS/SSL 憑證。 不過，如果您想要使用 TLS 驗證，可以遵循[Python 通訊端包裝](https://docs.python.org/2/library/ssl.html)函式檔中的範例。
+從 Python 應用程式連線至模擬器時，TLS 驗證已停用。 根據預設，在連線到本機模擬器時， [PYTHON SDK (version 2.0.0 或更高版本 ](sql-api-sdk-python.md) 的 SQL API) 不會嘗試使用 TLS/SSL 憑證。 但是，如果您想要使用 TLS 驗證，可以遵循 [Python 通訊端包裝](https://docs.python.org/2/library/ssl.html) 檔中的範例。
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>如何在 Node.js 中使用憑證
 
-根據預設，在連接到本機模擬器時，SQL API 的[Node.js SDK （版本1.10.1 版或更新版本）](sql-api-sdk-node.md)不會嘗試和使用 TLS/SSL 憑證。 不過，如果您想要使用 TLS 驗證，可以遵循[Node.js 檔](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)中的範例。
+從 Node.js Sdk 連接到模擬器時，會停用 TLS 驗證。 根據預設，SQL API 的 [Node.js SDK (1.10.1 版或更高版本) ](sql-api-sdk-node.md) 不會在連線到本機模擬器時嘗試使用 TLS/SSL 憑證。 但是，如果您想要使用 TLS 驗證，可以遵循 [Node.js 檔](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)中的範例。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="rotate-emulator-certificates"></a>輪替模擬器憑證
 
-在本教學課程中，您已完成下列操作：
+您可以從 Windows 系統匣中執行的 Azure Cosmos DB 模擬器中選取 [ **重設資料** ]，以強制重新產生模擬器憑證。 請注意，此動作也會清除模擬器儲存在本機的所有資料。
 
-> [!div class="checklist"]
-> * 輪替憑證
-> * 已匯出 TLS/SSL 憑證
-> * 了解如何使用 Java、Python 和 Node.js 中的憑證
+:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB 本機模擬器的重設資料":::
 
-您現在可以繼續進行＜概念＞一節，了解有關 Azure Cosmos DB 的詳細資訊。 
+如果您已將憑證安裝到 JAVA 憑證存放區或在其他位置使用，則需要使用目前的憑證重新匯入。 在您更新憑證之前，您的應用程式無法連接到本機模擬器。
 
-> [!div class="nextstepaction"]
->[Azure Cosmos DB 中的 Tunable 資料一致性層級](../cosmos-db/consistency-levels.md)
+## <a name="next-steps"></a>下一步
+
+* [使用命令列參數和 PowerShell 命令來控制模擬器](emulator-command-line-parameters.md)
+* [模擬器的偵錯工具問題](troubleshoot-local-emulator.md)
+

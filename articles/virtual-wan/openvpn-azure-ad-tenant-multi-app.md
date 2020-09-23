@@ -1,27 +1,27 @@
 ---
-title: 虛擬 WAN：不同使用者群組的 Azure AD 租使用者： Azure AD 驗證
-description: 您可以使用 P2S VPN，使用 Azure AD authentication 來連線到您的 VNet
+title: 虛擬 WAN：適用于不同使用者群組的 Azure AD 租使用者： Azure AD 驗證
+description: 設定用於 P2S OpenVPN authentication 的 Azure AD 租使用者，並在 Azure AD 中建立並註冊多個應用程式，以允許不同的使用者和群組進行不同的存取。
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 5ca57ccc40669a607cd0541dc738e3a3eacf3e88
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 57fd36366eef284e2975633fbb34549f4316cde6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507687"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988270"
 ---
-# <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>建立 P2S OpenVPN 通訊協定連接的 Azure Active Directory （AD）租使用者
+# <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>為 P2S OpenVPN 通訊協定連線建立 Azure Active Directory (AD) 租使用者
 
-連線到您的 VNet 時，您可以使用以憑證為基礎的驗證或 RADIUS 驗證。 不過，當您使用 Open VPN 通訊協定時，您也可以使用 Azure Active Directory 驗證。 如果您想要讓不同的使用者集合能夠連線到不同的閘道，您可以在 AD 中註冊多個應用程式，並將它們連結至不同的閘道。
+連接到您的 VNet 時，您可以使用以憑證為基礎的驗證或 RADIUS 驗證。 不過，當您使用開放式 VPN 通訊協定時，也可以使用 Azure Active Directory authentication。 如果您想要讓不同的使用者集合能夠連線到不同的閘道，您可以在 AD 中註冊多個應用程式，並將其連結至不同的閘道。
 
 本文可協助您設定 P2S OpenVPN authentication 的 Azure AD 租使用者，並在 Azure AD 中建立並註冊多個應用程式，以允許不同的使用者和群組進行不同的存取。
 
 > [!NOTE]
-> 只有 OpenVPN 通訊協定連線支援 Azure AD 驗證 &reg; 。
+> 只有 OpenVPN &reg; 通訊協定連接支援 Azure AD authentication。
 >
 
 [!INCLUDE [create](../../includes/openvpn-azure-ad-tenant-multi-app.md)]
@@ -45,11 +45,11 @@ P2S 設定會定義用於連線遠端用戶端的參數。
    ```
 
    > [!NOTE]
-   > 在上述命令中，請勿使用 Azure VPN 用戶端的應用程式識別碼：它會將閘道的存取權授與所有使用者。 使用您所註冊之應用程式的識別碼。
+   > 請勿在上述命令中使用 Azure VPN 用戶端的應用程式識別碼：它會將閘道的存取權授與所有使用者。 使用您註冊 () 應用程式的識別碼。
 
 ## <a name="7-edit-hub-assignment"></a><a name="hub"></a>7. 編輯中樞指派
 
-1. 流覽至虛擬 WAN 底下的 [**中樞**] 分頁。
+1. 流覽至虛擬 WAN 底下的 [ **中樞** ] 分頁。
 
 2. 選取要與 VPN 伺服器設定產生關聯的中樞，然後按一下省略符號 (...)。
 
@@ -83,14 +83,14 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
 6. 流覽至解壓縮的 "AzureVPN" 資料夾。
 
-7. 記下「azurevpnconfig.xml」檔案的位置。 azurevpnconfig.xml 包含 VPN 連線的設定，而且可以直接匯入至 Azure VPN 用戶端應用程式。 您也可以將此檔案散發給所有需要透過電子郵件或其他方式連接的使用者。 使用者需要有效的 Azure AD 認證，才能成功連接。
+7. 記下 "azurevpnconfig.xml" 檔案的位置。 azurevpnconfig.xml 包含 VPN 連接的設定，而且可以直接匯入 Azure VPN Client 應用程式中。 您也可以將這個檔案散發給所有需要透過電子郵件或其他方式連接的使用者。 使用者將需要有效的 Azure AD 認證才能成功連線。
 
 ## <a name="9-configure-user-vpn-clients"></a>9. 設定使用者 VPN 用戶端
 
 若要連線，您必須下載 Azure VPN Client，並匯入在先前的步驟中在要連線至 VNet 的每一部電腦上下載的 VPN 用戶端設定檔。
 
 > [!NOTE]
-> 只有 OpenVPN 通訊協定連線支援 Azure AD 驗證 &reg; 。
+> 只有 OpenVPN &reg; 通訊協定連接支援 Azure AD authentication。
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>下載 Azure VPN Client
@@ -129,7 +129,7 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
     ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
-#### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>若要診斷連接問題
+#### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>診斷連接問題
 
 1. 若要診斷連線問題，您可以使用**診斷**工具。 選取要診斷的 VPN 連線旁的省略符號 (...)，以顯示功能表。 然後，選取 [診斷]****。
 
@@ -147,7 +147,7 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
     ![diagnose](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose4.jpg)
 
-## <a name="10-view-your-virtual-wan"></a><a name="viewwan"></a>10. 觀看您的虛擬 WAN
+## <a name="10-view-your-virtual-wan"></a><a name="viewwan"></a>10. 查看您的虛擬 WAN
 
 1. 瀏覽至虛擬 WAN。
 

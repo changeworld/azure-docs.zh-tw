@@ -3,12 +3,12 @@ title: Azure Application Insights 概觀儀表板 | Microsoft Docs
 description: 使用 Azure Application Insights 和概觀儀表板的功能監控應用程式。
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 8c8aa4460a545f032eaa60560de00efff27ae1ef
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 714488d88b269f252dfd6677f847db315969a270
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322528"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970619"
 ---
 # <a name="application-insights-overview-dashboard"></a>Azure Application Insights 概觀儀表板
 
@@ -36,7 +36,7 @@ Application Insights 一直以來都在提供摘要概覽窗格，以便一眼�
 
 若要使用預設儀表板，請選取左上角的 [應用程式儀表板]__。
 
-![儀表板檢視](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
+![螢幕擷取畫面：顯示反白顯示應用程式儀表板按鈕。](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
 如果這是您第一次使用儀表板，便會啟動預設檢視：
 
@@ -53,9 +53,9 @@ Application Insights 一直以來都在提供摘要概覽窗格，以便一眼�
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您選取 [設定**磚設定**]，並將自訂的時間範圍設為超過31天，則您的儀表板不會顯示超過31天的資料，即使預設資料保留期為90天。 這種行為目前沒有任何因應措施。
+如果您選取 [設定 **磚設定** ]，並設定超過31天的自訂時間範圍，您的儀表板不會顯示超過31天的資料，即使預設資料保留期為90天。 此行為目前沒有任何因應措施。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [漏斗圖](./usage-funnels.md)
 - [保留](./usage-retention.md)

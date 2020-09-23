@@ -4,15 +4,15 @@ description: 適用于 Azure SQL Database 和 Azure SQL 受控執行個體的 az
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 09/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 846d66a1cf1bb1d97f7ab9d7dfd7bbcf43d3f8d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ce297b436ce79a4a0a14d0f6e9ad900de61a8dc9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231022"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885201"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>適用于 Azure SQL Database & SQL 受控執行個體的 Azure 安全性基準
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -285,15 +285,15 @@ https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-porta
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：啟用異常活動的警示
 
-**指導**方針：使用 Azure 資訊安全中心 Advanced 威脅防護進行 Azure SQL Database 進行監視，並在異常活動時發出警示。 為您的 SQL 資料庫啟用先進的資料安全性。 Advanced Data Security 包含探索和分類敏感性資料、呈現和減緩潛在資料庫弱點，以及偵測可能表示對資料庫有威脅之異常活動的功能。
+**指導**方針：使用 Azure 資訊安全中心 Advanced 威脅防護進行 Azure SQL Database 進行監視，並在異常活動時發出警示。 為您的 SQL 資料庫啟用 Azure Defender for SQL。 適用于 SQL 的 Azure Defender 包含用來呈現和減緩潛在資料庫弱點的功能，以及偵測可能表示對資料庫有威脅的異常活動。
 
 瞭解 Azure SQL Database 的 Advanced 威脅防護和警示：
 
 https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
-如何啟用 Azure SQL Database 的 Advanced Data Security：
+如何啟用適用于 SQL 的 Azure Defender 以進行 Azure SQL Database：
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 如何在 Azure 資訊安全中心中管理警示：
 
@@ -333,7 +333,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指導**方針： AZURE ACTIVE DIRECTORY (AAD) 擁有必須明確指派且可供查詢的內建角色。 使用 AAD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
+**指導**方針： Azure Active Directory (Azure AD) 有必須明確指派且可查詢的內建角色。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
 如何使用 PowerShell 在 Azure AD 中取得目錄角色：
 
@@ -381,7 +381,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
-**指導**方針：啟用 AZURE ACTIVE DIRECTORY (AAD) MULTI-FACTOR AUTHENTICATION (MFA) ，並遵循 Azure 資訊安全中心身分識別和存取管理建議。
+**指導**方針：啟用 Azure Active Directory (Azure AD) MULTI-FACTOR AUTHENTICATION (MFA) ，並遵循 Azure 資訊安全中心身分識別和存取管理建議。
 
 如何在 Azure 中啟用 MFA： 
 
@@ -445,13 +445,13 @@ https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-over
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導**方針：為您的伺服器建立 AZURE ACTIVE DIRECTORY (AAD) 系統管理員。
+**指導**方針：為您的伺服器建立 Azure Active Directory (Azure AD) 系統管理員。
 
 如何使用 Azure SQL 設定及管理 Azure Active Directory authentication：
 
 https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
-如何建立和設定 AAD 實例：
+如何建立和設定 Azure AD 實例：
 
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
@@ -461,7 +461,7 @@ https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-creat
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
-**指導**方針： AZURE ACTIVE DIRECTORY (AAD) 提供記錄以協助探索過時的帳戶。 此外，使用 Azure 身分識別存取審核來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期審核使用者的存取權，以確保只有適當的使用者可以繼續存取。
+**指導**方針： Azure Active Directory (Azure AD) 提供記錄以協助探索過時的帳戶。 此外，使用 Azure 身分識別存取審核來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期審核使用者的存取權，以確保只有適當的使用者可以繼續存取。
 
 如何使用 Azure 身分識別存取權檢閱： 
 
@@ -473,7 +473,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：監視對已停用帳戶的存取嘗試
 
-**指導**方針：使用 Azure SQL 設定 AZURE ACTIVE DIRECTORY (AAD) 驗證，並為 Azure Active Directory 使用者帳戶建立診斷設定，並將審核記錄和登入記錄傳送至 Log Analytics 工作區。 在 Log Analytics 工作區中設定所需的警示。
+**指導**方針：設定 Azure Active Directory (Azure AD) 使用 Azure SQL 進行驗證，並建立 Azure Active Directory 使用者帳戶的診斷設定，將審核記錄和登入記錄傳送至 Log Analytics 工作區。 在 Log Analytics 工作區中設定所需的警示。
 
 如何使用 Azure SQL 設定及管理 Azure Active Directory authentication：
 
@@ -489,7 +489,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integ
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差警示
 
-**指導**方針：使用 AZURE ACTIVE DIRECTORY (AAD) Identity Protection 和風險偵測，以針對偵測到與使用者身分識別相關的可疑動作，設定自動回應。 此外，您可以將資料內嵌到 Azure Sentinel 以進行進一步的調查。
+**指導**方針：使用 Azure Active Directory (Azure AD) Identity Protection 和風險偵測，以針對偵測到與使用者身分識別相關的可疑動作，設定自動回應。 此外，您可以將資料內嵌到 Azure Sentinel 以進行進一步的調查。
 
 如何查看 Azure AD 的風險登入：
 
@@ -599,7 +599,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-cl
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指導**方針：使用 AZURE ACTIVE DIRECTORY (AAD) 來驗證和控制 Azure SQL Database 實例的存取權。
+**指導**方針：使用 Azure Active Directory (Azure AD) 來驗證和控制 Azure SQL Database 實例的存取權。
 
 如何整合 Azure SQL Database 與 Azure Active Directory 以進行驗證：
 
@@ -655,15 +655,15 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
-**指導**方針：啟用 Azure SQL Database 的 Advanced Data Security，並遵循在您的伺服器上執行弱點評定 Azure 資訊安全中心的建議。
+**指導**方針：啟用適用于 SQL 的 Azure Defender 進行 Azure SQL Database，並遵循在您的伺服器上執行弱點評定 Azure 資訊安全中心的建議。
 
 如何在 Azure SQL Database 上執行弱點評定：
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 
-如何啟用 Advanced Data Security：
+如何啟用適用于 SQL 的 Azure Defender：
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 如何實行 Azure 資訊安全中心弱點評定建議：
 
@@ -993,7 +993,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azur
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
-**指導**方針：使用受控識別，在 AZURE ACTIVE DIRECTORY (AAD) 中為 Azure 服務提供自動管理的身分識別。 受控識別可讓您向任何支援 AAD 驗證的服務進行驗證，包括 Azure Key Vault，而不需要在您的程式碼中提供任何認證。
+**指導**方針：使用受控識別，在 Azure Active Directory (Azure AD) 中為 Azure 服務提供自動管理的身分識別。 受控識別可讓您向任何支援 Azure AD 驗證的服務進行驗證，包括 Azure Key Vault，而不需要在您的程式碼中提供任何認證。
 
 教學課程：使用 Windows VM 系統指派的受控識別來存取 Azure SQL：
 

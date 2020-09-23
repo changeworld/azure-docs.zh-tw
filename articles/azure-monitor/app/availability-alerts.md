@@ -1,21 +1,21 @@
 ---
-title: 使用 Azure 應用程式 Insights 來設定可用性警示 |Microsoft Docs
-description: 在 Application Insights 中設定 Web 測試。 如果網站無法使用或回應緩慢，將收到警示。
+title: 使用 Azure 應用程式 Insights 設定可用性警示 |Microsoft Docs
+description: 瞭解如何在 Application Insights 中設定 web 測試。 如果網站無法使用或回應緩慢，將收到警示。
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: c53b43d811e5e2b9cd8d70e3c8e05af444895154
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 300c4bcdb948665b2cdf4ce0eb429499208660b1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320641"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970753"
 ---
 # <a name="availability-alerts"></a>可用性警示
 
-[Azure Application Insights](./app-insights-overview.md) 會將來自全球各地的 Web 要求定期傳送給您的應用程式。 如果您的應用程式沒有回應，或回應太慢，它會發出警示。
+[Azure Application Insights](./app-insights-overview.md) 會將來自全球各地的 Web 要求定期傳送給您的應用程式。 如果您的應用程式沒有回應，或者回應速度太慢，它就會發出警示。
 
 ## <a name="enable-alerts"></a>啟用警示
 
@@ -24,7 +24,7 @@ ms.locfileid: "87320641"
 ![建立體驗](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  使用[新的整合警示](../platform/alerts-overview.md)時，**必須**在警示體驗中設定[動作群組](../platform/action-groups.md)的警示規則嚴重性和通知喜好設定。 若不進行下列步驟，您只會收到入口網站內部通知。
+>  利用[新的整合警示](../platform/alerts-overview.md)，警示規則的嚴重性和通知喜好設定[action groups](../platform/action-groups.md) **必須**在警示體驗中設定。 若不進行下列步驟，您只會收到入口網站內部通知。
 
 1. 儲存可用性測試之後，在 [詳細資料] 索引標籤上，按一下您剛剛建立之測試旁的省略符號。 按一下 [編輯警示]。
 
@@ -35,7 +35,7 @@ ms.locfileid: "87320641"
    ![儲存後編輯](./media/availability-alerts/set-action-group.png)
 
 > [!NOTE]
-> 透過這種體驗所建立的可用性警示是以狀態為基礎。 這表示當符合警示準則時，會在網站偵測為無法使用時產生單一警示。 如果網站在下一次評估警示準則時仍處於關閉狀態，則不會產生新警示。 因此，如果您的網站已關閉一小時，而您已設定電子郵件警示，則當網站關閉時，您只會收到一封電子郵件，而當網站的備份時，就會出現後續的電子郵件。 您不會收到連續警示，提醒您該網站仍然無法使用。
+> 透過此體驗建立的可用性警示是以狀態為基礎。 這表示當符合警示準則時，當網站偵測為無法使用時，就會產生單一警示。 如果網站在下一次評估警示準則時仍處於關閉狀態，則不會產生新的警示。 如果您的網站已關閉一小時，而您已設定電子郵件警示，則在網站關機時，您只會收到一封電子郵件，而在網站備份時，則會收到後續的電子郵件。 您不會收到持續警示，提醒您網站仍無法使用。
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>對於 Y 個位置之中有 X 個回報失敗所發出的警示
 
@@ -57,15 +57,15 @@ ms.locfileid: "87320641"
 
 ### <a name="alert-on-custom-analytics-queries"></a>自訂分析查詢的警示
 
-使用[新的整合警示](../platform/alerts-overview.md)時，您可以設定[自訂記錄檔查詢](../platform/alerts-unified-log.md)的警示。 使用自訂查詢，您可以設定任何任意條件的警示，協助您取得可用性問題的最可靠訊號。 如果您使用 TrackAvailability SDK 傳送自訂的可用性結果，這也適用。
+使用[新的整合警示](../platform/alerts-overview.md)時，您可以設定[自訂記錄檔查詢](../platform/alerts-unified-log.md)的警示。 使用自訂查詢，您可以設定任何任意條件的警示，協助您取得可用性問題的最可靠訊號。 如果您要使用 TrackAvailability SDK 傳送自訂的可用性結果，這也適用。
 
 > [!Tip]
 > 可用性資料的計量包括呼叫我們 TrackAvailability SDK 時您可能會提交的任何自訂可用性結果。 您可以使用計量支援的警示，設定自訂可用性結果的警示。
 >
 
-## <a name="automate-alerts"></a>自動化警示
+## <a name="automate-alerts"></a>自動警示
 
-若要使用 Azure Resource Manager 範本將此程式自動化，請參閱[使用 Resource Manager 範本建立度量警示](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)檔。
+若要使用 Azure Resource Manager 範本將此程式自動化，請參閱 [使用 Resource Manager 範本建立計量警示](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert) 檔。
 
 ## <a name="troubleshooting"></a>疑難排解
 

@@ -11,31 +11,31 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 72f0d361f69232894df3a9131d173411614a2055
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 035b13140ee1fb7a48d0cea9a3611eac145d9f8c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921209"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970675"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>尋找和套用效能建議
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-您可以使用 Azure 入口網站來尋找可在 Azure SQL Database 中優化資料庫效能的效能建議，或是更正工作負載中所識別的某些問題。 [Azure 入口網站中的 [**效能建議**] 頁面可讓您根據潛在的影響來尋找最佳建議。
+您可以使用 Azure 入口網站來尋找效能建議，讓您可以在 Azure SQL Database 中優化資料庫的效能，或更正工作負載中所識別的某些問題。 Azure 入口網站中的 [ **效能建議** ] 頁面可讓您根據潛在的影響來尋找最佳建議。
 
 ## <a name="viewing-recommendations"></a>檢視建議
 
-若要查看並套用效能建議，您需要 azure 中的正確[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)許可權。 需要**讀取者**、**SQL DB 參與者**權限，才能檢視建議，以及需要**擁有者**、**SQL DB 參與者**權限，才能執行任何動作；建立或卸除索引並取消建立索引。
+若要查看並套用效能建議，您需要在 Azure 中 [ (AZURE RBAC) 許可權的正確 azure 角色型存取控制 ](../../role-based-access-control/overview.md) 。 需要**讀取者**、**SQL DB 參與者**權限，才能檢視建議，以及需要**擁有者**、**SQL DB 參與者**權限，才能執行任何動作；建立或卸除索引並取消建立索引。
 
-請使用下列步驟來尋找 Azure 入口網站的效能建議：
+使用下列步驟，在 Azure 入口網站上尋找效能建議：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 移至 [**所有服務**]  >  **[SQL 資料庫**]，然後選取您的資料庫。
+2. 移至 [**所有服務**  >  **SQL 資料庫**]，然後選取您的資料庫。
 3. 瀏覽至 [效能建議]**** 來檢視適用於所選資料庫的可用建議。
 
 資料表中顯示的效能建議類似於下圖：
 
-![建議](./media/database-advisor-find-recommendations-portal/recommendations.png)
+![螢幕擷取畫面顯示資料表中具有動作和建議描述的效能建議。](./media/database-advisor-find-recommendations-portal/recommendations.png)
 
 依照可能帶來的效能影響排序，建議分成下列類別：
 
@@ -50,7 +50,7 @@ ms.locfileid: "87921209"
 
 您也可以檢視歷程記錄作業的狀態。 選取建議或狀態以查看詳細資訊。
 
-以下是 Azure 入口網站中的「建立索引」建議範例。
+以下是 Azure 入口網站中的「建立索引」建議的範例。
 
 ![建立索引](./media/database-advisor-find-recommendations-portal/sql-database-performance-recommendation.png)
 
@@ -71,11 +71,11 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 您可以一次檢閱並接受一個建議。
 
 1. 選取 [建議]**** 頁面上的某個建議。
-2. 在 [**詳細資料**] 頁面上 **，按一下**[套用] 按鈕。
+2. 在 [**詳細資料**] 頁面上，按一下 [套用 **] 按鈕。**
 
    ![套用建議](./media/database-advisor-find-recommendations-portal/apply.png)
 
-選取的建議適用于資料庫。
+針對資料庫套用選取的建議。
 
 ### <a name="removing-recommendations-from-the-list"></a>從清單中移除建議
 
@@ -114,7 +114,7 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 
 選取任何建議，然後按一下 [檢視指令碼] ****。 對資料庫執行這個指令碼，以手動套用建議。
 
-** ，因此建議您在建立這些索引之後監視索引，以確認它們能夠提高效能，且於必要時調整或刪除它們。 如需有關建立索引的詳細資訊，請參閱 [CREATE INDEX (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql)。 此外，手動套用的建議將維持作用中狀態，並顯示在建議的24-48 小時清單中。 系統自動將其收回之前。 如果您想要更快移除建議，可以手動將它捨棄。
+** ，因此建議您在建立這些索引之後監視索引，以確認它們能夠提高效能，且於必要時調整或刪除它們。 如需有關建立索引的詳細資訊，請參閱 [CREATE INDEX (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql)。 此外，手動套用的建議將維持使用中狀態，並顯示于24-48 小時的建議清單中。 系統自動將它們收回之前。 如果您想要更快移除建議，可以手動將它捨棄。
 
 ### <a name="canceling-recommendations"></a>取消建議
 
@@ -132,7 +132,7 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 | Pending |已收到套用建議命令，且已排程執行。 |
 | 執行中 |正在套用建議。 |
 | Validating |成功套用建議，而服務正在衡量益處。 |
-| Success |已成功套用建議，並證實有益處。 |
+| 成功 |已成功套用建議，並證實有益處。 |
 | 錯誤 |套用建議程序期間發生錯誤。 這可能是暫時性問題，也可能是資料表的結構描述變更，造成指令碼不再有效。 |
 | 還原 |已套用建立但被認為無助於效能，正在自動還原。 |
 | 已還原 |已還原建議。 |
@@ -156,11 +156,11 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 
 ![監視效能影響](./media/database-advisor-find-recommendations-portal/query-insights.png)
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 Azure SQL Database 提供改善資料庫效能的建議。 藉由提供 T-SQL 指令碼，您會獲得最佳化資料庫的協助，並最終改善查詢效能。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 監視建議，並繼續套用建議以改善效能。 資料庫工作負載會動態地持續變更。 Azure SQL Database 會繼續監視並提供可能改善資料庫效能的建議。
 
@@ -172,4 +172,4 @@ Azure SQL Database 提供改善資料庫效能的建議。 藉由提供 T-SQL �
 
 * [查詢存放區](https://msdn.microsoft.com/library/dn817826.aspx)
 * [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Azure 角色型存取控制 (Azure RBAC) ](../../role-based-access-control/overview.md)
+* [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md)

@@ -1,27 +1,27 @@
 ---
-title: Synapse SQL 中的 CETAS
-description: 搭配 Synapse SQL 使用 CETAS
+title: Synapse SQL 中的 CREATE EXTERNAL TABLE AS SELECT (CETAS)
+description: 透過 Synapse SQL 使用 CREATE EXTERNAL TABLE AS SELECT (CETAS)
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 18f472da30b34fcacd70bba9ea7371b56f1a7abf
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d33403f49429398d9bc006187c23bb8091d9b4a1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032906"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885351"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS 搭配 Synapse SQL
 
-在 SQL 集區或 SQL 隨選 (預覽) 中，您可以使用 CREATE EXTERNAL TABLE AS SELECT (CETAS) 來完成下列工作：  
+您可以在 SQL 集區或 SQL 隨選 (預覽) 中使用 CREATE EXTERNAL TABLE AS SELECT (CETAS) 完成下列工作：  
 
 - 建立外部資料表
-- 將 Transact-SQL SELECT 陳述式的結果以平行方式匯出至
+- 將 Transact-SQL SELECT 陳述式的結果以平行方式匯出至：
 
   - Hadoop
   - Azure 儲存體 Blob
@@ -29,11 +29,12 @@ ms.locfileid: "90032906"
 
 ## <a name="cetas-in-sql-pool"></a>SQL 集區中的 CETAS
 
-如需 SQL 集區的 CETAS 用法和語法，請查看 [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 一文。 此外，如需使用 SQL 集區進行 CTAS 的指引，請參閱 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 一文。
+如需 SQL 集區的 CETAS 用法和語法，請參閱 [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。 此外，如需使用 SQL 集區進行 CTAS 的指引，請參閱 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。
+如需 SQL 集區的 CETAS 用法和語法，請參閱 [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。 此外，如需使用 SQL 集區進行 CTAS 的指引，請參閱 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。
 
 ## <a name="cetas-in-sql-on-demand"></a>SQL 隨選中的 CETAS
 
-使用 SQL 隨選資源時，CETAS 會用來建立外部資料表，並將查詢結果匯出至 Azure 儲存體 Blob 或 Azure Data Lake Storage Gen2。
+使用 隨選 SQL 時，CETAS 會用來建立外部資料表，並將查詢結果匯出至 Azure 儲存體 Blob 或 Azure Data Lake Storage Gen2。
 
 ## <a name="syntax"></a>語法
 
@@ -68,18 +69,18 @@ DATA_SOURCE = *external_data_source_name*
 
 FILE_FORMAT = *external_file_format_name*
 
-指定包含外部資料檔案格式之外部檔案格式物件的名稱。 若要建立外部檔案格式，請使用 [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format)。 目前只支援格式 FORMAT='PARQUET' 的外部檔案格式。
+指定包含外部資料檔案格式之外部檔案格式物件的名稱。 若要建立外部檔案格式，請使用 [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format)。 目前只支援 FORMAT_TYPE=PARQUET and FORMAT_TYPE=DELIMITEDTEXT 的外部檔案格式。
 
 WITH *<common_table_expression>*
 
-指定稱為通用資料表運算式 (CTE) 的暫存具名結果集。 如需詳細資訊，請參閱 [WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+指定稱為通用資料表運算式 (CTE) 的暫存具名結果集。 如需詳細資訊，請參閱 [WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 SELECT <select_criteria>
 
-將 SELECT 陳述式產生的結果填入新資料表。 *select_criteria* 是 SELECT 陳述式的主體，可決定要複製到新資料表的資料。 如需 SELECT 陳述式的相關資訊，請參閱 [SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+將 SELECT 陳述式產生的結果填入新資料表。 *select_criteria* 是 SELECT 陳述式的主體，可決定要複製到新資料表的資料。 如需 SELECT 陳述式的相關資訊，請參閱 [SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 > [!NOTE]
-> 在 CETAS 的 SELECT 部分中不支援 ORDER BY 子句。
+> CETAS 不支援 SELECT 中的 ORDER BY 子句。
 
 ## <a name="permissions"></a>權限
 
@@ -112,7 +113,7 @@ FROM
 GROUP BY decennialTime, stateName
 GO
 
--- you can query created external table
+-- you can query the newly created external table
 SELECT * FROM population_by_year_state
 ```
 
@@ -132,7 +133,7 @@ FROM census_external_table
 GROUP BY decennialTime, stateName
 GO
 
--- you can query created external table
+-- you can query the newly created external table
 SELECT * FROM population_by_year_state
 ```
 
@@ -173,4 +174,4 @@ CETAS 可以用來儲存屬於下列 SQL 資料類型的結果集：
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以試著查詢 [Apache Spark for Azure Synapse 外部資料表](develop-storage-files-spark-tables.md)。
+試著查詢 [Apache Spark for Azure Synapse 外部資料表](develop-storage-files-spark-tables.md)。
