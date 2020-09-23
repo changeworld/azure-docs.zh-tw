@@ -17,12 +17,12 @@ ms.date: 08/06/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4bcd36a1ce38d4d9eb6a0faec470f7427852894b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 0d8c835cdc501061607dc05d0b40ebf95deb36a8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260215"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969142"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 資源適用受控識別的常見問題集與已知問題
 
@@ -33,19 +33,17 @@ ms.locfileid: "89260215"
 > [!NOTE]
 > 先前稱為「受控服務識別」(MSI) 的服務，其新名稱為「Azure 資源適用受控識別」。
 
-
 ### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>如何尋找具有受控識別的資源？
 
 您可以使用下列 Azure CLI 命令，找出具有系統指派受控識別的資源清單： 
 
-`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
-
-
-
+```azurecli-interactive
+az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table
+```
 
 ### <a name="do-managed-identities-have-a-backing-app-object"></a>受控識別是否有支援的應用程式物件？
 
-否。 受控識別和 Azure AD App 註冊與目錄中的內容不同。 
+不可以。 受控識別和 Azure AD App 註冊與目錄中的內容不同。 
 
 應用程式註冊有兩個元件：應用程式物件 + 服務主體物件。 適用于 Azure 資源的受控識別只有其中一個元件：服務主體物件。 
 
@@ -72,8 +70,6 @@ ms.locfileid: "89260215"
 - 如果未啟用系統指派的受控識別，且只有一個使用者指派的受控識別，IMDS 將會預設為該單一使用者指派的受控識別。 
 - 如果未啟用系統指派的受控識別，且有多個使用者指派的受控識別，則必須在要求中指定受控識別。
 
-
-
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>如果我將訂用帳戶移到另一個目錄，系統是否會自動重新建立受控識別？
 
 否。 如果您將訂用帳戶移至另一個目錄，則必須手動重新建立訂用帳戶，並再次授與 Azure 角色指派。
@@ -88,7 +84,6 @@ ms.locfileid: "89260215"
 
 - 系統指派的受控識別：您需要資源的寫入權限。 例如，針對虛擬機器，您需要 Microsoft.Compute/virtualMachines/write。 此動作包含在資源特定的內建角色中，例如[虛擬機器參與者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
 - 使用者指派的受控識別：您需要資源的寫入權限。 例如，針對虛擬機器，您需要 Microsoft.Compute/virtualMachines/write。 加上透過受控識別的[受控識別操作員](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色指派。
-
 
 
 ## <a name="known-issues"></a>已知問題
@@ -112,7 +107,7 @@ Azure 資源適用受控識別 VM 擴充功能 (預計在 2019 年 1 月淘汰) 
 觸發虛擬機器上的更新，如此一來就可以為 Azure 資源適用受控識別取得正確的值。 您可以變更虛擬機器屬性，以更新 Azure 資源適用受控識別身分識別的參照。 例如，您可以使用下列命令在 VM 上設定新的標記值：
 
 ```azurecli-interactive
- az  vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
+az vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
 ```
  
 此命令會在 VM 上設定值為 1 的新標記 "fixVM"。 
@@ -124,8 +119,6 @@ Azure 資源適用受控識別 VM 擴充功能 (預計在 2019 年 1 月淘汰) 
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
-
-
 
 ### <a name="transferring-a-subscription-between-azure-ad-directories"></a>在 Azure AD 目錄之間轉移訂用帳戶
 

@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure Resource Manager 的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure Resource Manager 的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 09/04/2020
+ms.date: 09/16/2020
 ms.topic: sample
 author: tfitzmac
 ms.author: tomfitz
 ms.service: azure-resource-manager
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 1921760467ed3494814fb7342a57b5a6278e5600
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 0c55a92d6d59c9882dbbc6708a9acd2ad0c2507e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485085"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970334"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-resource-manager"></a>適用於 Azure Resource Manager 的 Azure 原則法規合規性控制項
 

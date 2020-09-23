@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 13b626945743c17bad8df58fba77e1c960e90ef3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1a7502a77f8dca526c95e92302f0ca0a06a1dd32
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77016557"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970444"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>使用 IoT Central 建置能源解決方案 
 
@@ -62,7 +62,6 @@ ms.locfileid: "77016557"
 
 > [!div class="mx-imgBorder"]
 > ![太陽能板應用程式儀表板](media/overview-iot-central-energy/solar-panel-app-dashboard.png)
-
 
 ## <a name="next-steps"></a>後續步驟
 開始建置能源解決方案：

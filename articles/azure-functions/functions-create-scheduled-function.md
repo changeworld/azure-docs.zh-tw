@@ -5,12 +5,12 @@ ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: be539efdb66b0a9bda583960484f40fae1e18235
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 9e542c493c02174364072f91d092f05ad9ec69cf
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123379"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973087"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>在 Azure 中建立由計時器觸發的函式
 
@@ -44,7 +44,7 @@ ms.locfileid: "83123379"
 
 1. 使用影像下方表格中指定的設定來設定新觸發程序，然後選取 [建立函式]。
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="在 Azure 入口網站中選取計時器觸發程序。" border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="螢幕擷取畫面顯示已選取計時器觸發程式範本的 [新增函數] 頁面。" border="true":::
     
     | 設定 | 建議的值 | 描述 |
     |---|---|---|

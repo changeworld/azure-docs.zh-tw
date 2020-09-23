@@ -10,23 +10,29 @@ metadata:
   author: MGoedtel
   ms.author: magoedte
   ms.date: 08/21/2020
-  ms.openlocfilehash: 6dec6bb451e7a330138c9a2a65f2a7dec7202a6a
-  ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+  ms.openlocfilehash: a2bf337f5bcd5d4fb5810025b6d2aaa8da15201c
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/28/2020
-  ms.locfileid: "89051316"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90908243"
 highlightedContent:
   items:
+  - title: 關於 Azure Arc
+    itemType: overview
+    url: overview.md
   - title: 已啟用 Azure Arc 的伺服器 (預覽)
     itemType: overview
     url: ./servers/overview.md
   - title: 已啟用 Azure Arc 的 Kubernetes (預覽)
     itemType: overview
     url: ./kubernetes/overview.md
-  - title: 關於 Azure Arc
+  - title: 已啟用 Azure Arc 的資料服務 (預覽)
     itemType: overview
-    url: overview.md
+    url: ./data/overview.md
+  - title: 已啟用 Azure Arc 的 SQL Server (預覽)
+    itemType: overview
+    url: https://docs.microsoft.com/en-us/sql/sql-server/
 productDirectory:
   title: 已啟用 Azure Arc 的服務
   summary: 了解如何在任何地方執行服務。
@@ -43,13 +49,31 @@ productDirectory:
     - url: ./servers/index.yml
       text: 查看更多...
   - title: 已啟用 Azure Arc 的 Kubernetes
-    imageSrc: ./media/containers-101-kubernetes-services.svg
+    imageSrc: ./media/01088-icon-arc-kubernetes-menu.svg
     links:
     - url: ./kubernetes/connect-cluster.md
       text: 連線叢集
     - url: ./kubernetes/use-gitops-connected-cluster.md
       text: 使用 GitOps 部署設定
     - url: ./kubernetes/index.yml
+      text: 查看更多...
+  - title: 已啟用 Azure Arc 的資料服務 (預覽)
+    imageSrc: ./media/manage-756-azure-arc.svg
+    links:
+    - url: ./data/install-client-tools.md
+      text: 安裝工具
+    - url: ./data/create-sql-managed-instance.md
+      text: 建立 SQL 受控執行個體
+    - url: ./data/create-postgresql-hyperscale-server-group.md
+      text: 建立 PostgreSQL 超大規模資料庫
+    - url: ./data/index.yml
+      text: 查看更多...
+  - title: 已啟用 Azure Arc 的 SQL Server (預覽)
+    imageSrc: ./media/01850-icon-arc-sql-server-menu.svg
+    links:
+    - url: https://docs.microsoft.com/sql/sql-server/azure-arc/assess
+      text: 評估您的 SQL 執行個體
+    - url: https://docs.microsoft.com/sql/sql-server/azure-arc/overview
       text: 查看更多...
 conceptualContent:
   title: 開始使用

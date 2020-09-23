@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 11e08427067efa5e7bd33b8d08d84443444a190b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 17be7cb8e3330a9bd0391e0750f5e37ac64b0484
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078260"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971004"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>判斷哪些 Azure 儲存體加密金鑰模型正在用於儲存體帳戶
 
@@ -76,7 +76,7 @@ key_source=$(az storage account show \
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [待用資料的 Azure 儲存體加密](storage-service-encryption.md)
-- [搭配 Azure Key Vault 使用客戶管理的金鑰來管理 Azure 儲存體加密](encryption-customer-managed-keys.md)
+- [Azure 儲存體加密的客戶管理金鑰](customer-managed-keys-overview.md)

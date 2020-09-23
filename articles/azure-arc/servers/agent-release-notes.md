@@ -1,18 +1,18 @@
 ---
-title: Azure Arc 啟用的伺服器 (preview) 代理程式的新功能
-description: 本文提供 Azure Arc 啟用的伺服器 (preview) 代理程式的版本資訊。 針對許多摘要問題，有其他詳細資料的連結。
+title: Azure Arc 已啟用伺服器代理程式的新功能
+description: 本文提供 Azure Arc 啟用的伺服器代理程式的版本資訊。 針對許多摘要問題，有其他詳細資料的連結。
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: 3b739401603f6dc18b9f48fb3cb6e28023a051ab
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/16/2020
+ms.openlocfilehash: 1918d03b5bbfaaa64b7d74c18fad4eb9a86800a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532166"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908156"
 ---
-# <a name="whats-new-with-azure-arc-enabled-servers-preview-agent"></a>Azure Arc 啟用的伺服器 (preview) 代理程式的新功能
+# <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的新功能
 
-Azure Arc 啟用的伺服器 (預覽版) 連線的機器代理程式會持續獲得改進。 為了讓您隨時掌握最新的開發訊息，本文提供下列相關資訊：
+已連線的 Azure Arc 伺服器已連線的機器代理程式會持續獲得改進。 為了讓您隨時掌握最新的開發訊息，本文提供下列相關資訊：
 
 - 最新版本
 - 已知問題
@@ -60,4 +60,4 @@ Azure Arc 啟用的伺服器 (預覽版) 連線的機器代理程式會持續獲
 
 ## <a name="next-steps"></a>後續步驟
 
-在為多部混合式電腦評估或啟用已啟用 Arc 的伺服器 (預覽) 之前，請參閱[連線的電腦代理程式概觀](agent-overview.md)來了解需求、代理程式的相關技術詳細資料，以及部署方法。
+在為多部混合式電腦評估或啟用已啟用 Arc 的伺服器之前，請參閱[連線的電腦代理程式概觀](agent-overview.md)來了解需求、代理程式的相關技術詳細資料，以及部署方法。

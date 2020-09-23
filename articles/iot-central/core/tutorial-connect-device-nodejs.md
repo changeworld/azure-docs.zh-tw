@@ -7,13 +7,16 @@ ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.custom: mqtt, devx-track-javascript
-ms.openlocfilehash: 92b28b89d181de368ef1e39eb695be2e1fad6c37
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom:
+- mqtt
+- device-developer
+- devx-track-javascript
+ms.openlocfilehash: 7eba6adffcdd3dab3263e82faf51ac90bae79b89
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423517"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968172"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>教學課程：建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式 (Node.js)
 
@@ -335,12 +338,12 @@ node environmentalSensor.js
 
 ## <a name="next-steps"></a>後續步驟
 
-身為裝置開發人員，您現在已了解如何使用 Node.js 建立裝置的基本概念，以下是一些建議的後續步驟：
-
-* 閱讀[什麼是裝置範本？](./concepts-device-templates.md)，以深入了解在您實作裝置程式碼時裝置範本的角色。
-* 如需深入了解如何向 IoT Central 註冊裝置，以及 IoT Central 如何保護裝置連線，請參閱[連線至 Azure IoT Central](./concepts-get-connected.md)。
-
 如果您想要繼續進行這套 IoT Central 教學課程並深入了解如何建置 IoT Central 解決方案，請參閱：
 
 > [!div class="nextstepaction"]
 > [建立閘道裝置範本](./tutorial-define-gateway-device-type.md)
+
+身為裝置開發人員，您現在已了解如何使用 Node.js 建立裝置的基本概念，以下是一些建議的後續步驟：
+
+* 閱讀[什麼是裝置範本？](./concepts-device-templates.md)，以深入了解在您實作裝置程式碼時裝置範本的角色。
+* 如需深入了解如何向 IoT Central 註冊裝置，以及 IoT Central 如何保護裝置連線，請參閱[連線至 Azure IoT Central](./concepts-get-connected.md)。

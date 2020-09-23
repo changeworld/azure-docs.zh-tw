@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure AD 中的 Privileged Identity Management，將角色指派給群組 |Microsoft Docs
-description: 預覽用來委派身分識別管理的自訂 Azure AD 角色。 在 Azure 入口網站、PowerShell 或圖形 API 中管理 Azure 角色。
+title: 使用 Azure AD 中的 Privileged Identity Management 將角色指派給群組 |Microsoft Docs
+description: 瞭解如何使用 Azure AD Privileged Identity Management (PIM) ，將 Azure Active Directory (Azure AD) 角色指派給群組。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,31 +13,31 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343da87048cf43c04a137376e9a7f24270ce729a
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b297ee3d03d61b654e2b7fffa17141a1fd5268f3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476018"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971179"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>使用 Privileged Identity Management 將角色指派給群組
 
-本文說明如何使用 Azure AD Privileged Identity Management （PIM）將 Azure Active Directory （Azure AD）角色指派給群組。
+本文說明如何使用 Azure AD Privileged Identity Management (PIM) ，將 Azure Active Directory (Azure AD) 角色指派給群組。
 
 > [!NOTE]
-> 您必須使用 Privileged Identity Management 的更新版本，才能使用 PIM 將群組指派給 Azure AD 角色。 如果您的 Azure AD 組織會利用 Privileged Identity Management API，您可能會在較舊版本的 PIM 上。 若是如此，請聯繫別名 pim_preview@microsoft.com 以移動您的組織並更新您的 API。 若要深入瞭解，請[AZURE AD PIM 中的角色和功能](../privileged-identity-management/azure-ad-roles-features.md)。
+> 您必須使用更新版的 Privileged Identity Management，才能使用 PIM 將群組指派給 Azure AD 角色。 如果您的 Azure AD 組織利用 Privileged Identity Management API，您可能會在較舊版本的 PIM 上。 如果是，請與別名聯繫， pim_preview@microsoft.com 以移動您的組織並更新您的 API。 若要深入瞭解，請參閱 [PIM 中 Azure AD 角色和功能](../privileged-identity-management/azure-ad-roles-features.md)。
 
 ## <a name="using-azure-ad-admin-center"></a>使用 Azure AD 系統管理中心
 
-1. 以特殊權限角色管理員或您組織中的全域管理員登入[Azure AD Privileged Identity Management](https://ms.portal.azure.com/?Microsoft_AAD_IAM_GroupRoles=true&Microsoft_AAD_IAM_userRolesV2=true&Microsoft_AAD_IAM_enablePimIntegration=true#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) 。
+1. 以您組織中的特殊權限角色管理員或全域系統管理員身分登入 [Azure AD Privileged Identity Management](https://ms.portal.azure.com/?Microsoft_AAD_IAM_GroupRoles=true&Microsoft_AAD_IAM_userRolesV2=true&Microsoft_AAD_IAM_enablePimIntegration=true#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) 。
 
 1. 選取**Privileged Identity Management**  >  **Azure AD 角色**  >  **角色**  >  **新增指派**
 
-1. 選取角色，然後選取群組。 只會顯示符合角色指派（角色可指派群組）資格的群組，而不是所有群組。
+1. 選取角色，然後選取群組。 只會顯示符合角色指派資格 (角色可指派群組) 的群組，而不會顯示所有群組。
 
     ![選取您要為其指派角色的使用者](./media/roles-groups-pim-eligible/select-member.png)
 
-1. 選取所需的成員資格設定。 針對需要啟用的角色，選擇 [**符合資格**]。 根據預設，使用者會永久符合資格，但您也可以設定使用者資格的開始和結束時間。 完成後，請按 [儲存] 並新增來完成角色指派。
+1. 選取所需的成員資格設定。 若為需要啟用的角色，請選擇 [ **符合資格**]。 依預設，使用者會永久符合資格，但您也可以設定使用者資格的開始和結束時間。 完成之後，請按 [儲存並加入] 以完成角色指派。
 
     ![選取您要為其指派角色的使用者](./media/roles-groups-pim-eligible/set-assignment-settings.png)
 
@@ -52,7 +52,7 @@ install-module azureadpreview
 import-module azureadpreview
 ```
 
-若要確認模組已準備好可供使用，請使用下列 Cmdlet：
+若要確認模組可供使用，請使用下列 Cmdlet：
 
 ```powershell
 get-module azureadpreview
@@ -101,9 +101,9 @@ https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequest
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [使用雲端群組來管理角色指派](roles-groups-concept.md)
-- [針對指派給雲端群組的角色進行疑難排解](roles-groups-faq-troubleshooting.md)
-- [在 Privileged Identity Management 中設定 Azure AD 系統管理員角色設定](../privileged-identity-management/pim-how-to-change-default-settings.md)
+- [對指派給雲端群組的角色進行疑難排解](roles-groups-faq-troubleshooting.md)
+- [在 Privileged Identity Management 中設定 Azure AD 管理員角色設定](../privileged-identity-management/pim-how-to-change-default-settings.md)
 - [在 Privileged Identity Management 中指派 Azure 資源角色](../privileged-identity-management/pim-resource-roles-assign-roles.md)

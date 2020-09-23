@@ -9,18 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: db6dfb36c579f57f9cef66fa00a07b0d1dc2bc03
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9402b1d38457c979f00d05f56b8ed45d2d37dfca
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929664"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971691"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用索引子為 Cosmos DB 資料編製索引 
 
 > [!IMPORTANT] 
 > SQL API 已正式推出。
-> MongoDB API、Gremlin API 和 Cassandra API 支援目前處於公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 您可以填寫 [此表單](https://aka.ms/azure-cognitive-search/indexer-preview)來要求存取預覽版。 [REST API 2020-06-30-preview 版](search-api-preview.md)提供預覽功能。 目前的入口網站支援有限，而且沒有 .NET SDK 支援。
+> MongoDB API、Gremlin API 和 Cassandra API 支援目前處於公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 您可以填寫 [此表單](https://aka.ms/azure-cognitive-search/indexer-preview)來要求存取預覽版。 
+> [REST API 預覽版本](search-api-preview.md) 可提供這些功能。 目前的入口網站支援有限，而且沒有 .NET SDK 支援。
 
 > [!WARNING]
 > Azure 認知搜尋只支援將 [索引編制原則](/azure/cosmos-db/index-policy) 設定為 [一致](/azure/cosmos-db/index-policy#indexing-mode) Cosmos DB 集合。 不建議使用延遲編制索引原則來編制索引集合的索引，而且可能會導致資料遺失。 不支援已停用索引的集合。
@@ -31,7 +32,7 @@ ms.locfileid: "88929664"
 
 Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定存取的 [Azure Cosmos DB 專案](../cosmos-db/databases-containers-items.md#azure-cosmos-items) 。 
 
-+ 針對正式推出的 [SQL API](../cosmos-db/sql-query-getting-started.md)，您可以使用 [入口網站](#cosmos-indexer-portal)、 [REST API](/rest/api/searchservice/indexer-operations)或 [.net SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) 來建立資料來源和索引子。
++ 針對正式推出的 [SQL API](../cosmos-db/sql-query-getting-started.md)，您可以使用 [入口網站](#cosmos-indexer-portal)、 [REST API](/rest/api/searchservice/indexer-operations)或 [.net SDK](/dotnet/api/microsoft.azure.search.models.indexer) 來建立資料來源和索引子。
 
 + 針對 [MONGODB API (預覽版) ](../cosmos-db/mongodb-introduction.md)，您可以使用 [入口網站](#cosmos-indexer-portal) 或 [REST API 版本 2020-06-30-preview](search-api-preview.md) 來建立資料來源和索引子。
 
@@ -304,10 +305,10 @@ SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @High
 
 正式推出的 .NET SDK 與正式運作的 REST API 有完全相同的同位。 建議您檢閱先前的 REST API 章節，以了解其概念、工作流程和需求。 然後，您可以參閱下列 .NET API 參考文件，以在受控程式碼中實作 JSON 索引子。
 
-+ [microsoft.azure.search.models.datasource](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [microsoft.azure.search.models.datasource](/dotnet/api/microsoft.azure.search.models.datasource)
++ [microsoft.azure.search.models.datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype)
++ [microsoft.azure.search.models.index](/dotnet/api/microsoft.azure.search.models.index)
++ [microsoft.azure.search.models.indexer](/dotnet/api/microsoft.azure.search.models.indexer)
 
 <a name="DataChangeDetectionPolicy"></a>
 
