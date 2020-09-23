@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge 計算管理 |Microsoft Docs
-description: 說明如何管理邊緣計算設定，例如觸發程式、模組、view compute configuration、透過 Azure Stack Edge 上的 Azure 入口網站移除設定。
+title: Azure Stack Edge Pro 計算管理 |Microsoft Docs
+description: 說明如何管理 Edge 計算設定，例如觸發程式、模組、查看計算設定、透過 Azure Stack Edge Pro 上的 Azure 入口網站移除設定。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 9d34bd1750b798407b493dcde01b04118d66a2d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00e5f8dc067d91e6ea6fed688d72b357d1d50678
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339819"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904433"
 ---
-# <a name="manage-compute-on-your-azure-stack-edge"></a>管理 Azure Stack 邊緣上的計算
+# <a name="manage-compute-on-your-azure-stack-edge-pro"></a>管理 Azure Stack Edge Pro 上的計算
 
-本文說明如何在您的 Azure Stack Edge 上管理計算。 您可以透過 Azure 入口網站或本機 Web UI 來管理計算。 使用 Azure 入口網站來管理模組、觸發程序及計算設定，以及使用本機 Web UI 來管理計算設定。
+本文說明如何管理 Azure Stack Edge Pro 上的計算。 您可以透過 Azure 入口網站或本機 Web UI 來管理計算。 使用 Azure 入口網站來管理模組、觸發程序及計算設定，以及使用本機 Web UI 來管理計算設定。
 
 在本文中，您將學會如何：
 
@@ -28,17 +28,17 @@ ms.locfileid: "84339819"
 
 ## <a name="manage-triggers"></a>管理觸發程序
 
-事件就是在雲端環境內所發生，或您想在裝置上對其採取動作之事。 例如，在共用中建立檔案時，即為事件。 觸發程序會引發事件。 針對您的 Azure Stack 邊緣，觸發程式可以回應檔案事件或排程。
+事件就是在雲端環境內所發生，或您想在裝置上對其採取動作之事。 例如，在共用中建立檔案時，即為事件。 觸發程序會引發事件。 針對您的 Azure Stack Edge Pro，觸發程式可以回應檔案事件或排程。
 
-- 檔案 **：這些**觸發程式是為了回應檔案事件（例如，檔案的建立、檔案的修改）。
-- 已**排程**：這些觸發程式會回應您可以使用開始日期、開始時間和重複間隔來定義的排程。
+- **File**：這些觸發程式是為了回應檔案事件，例如檔案的建立、修改檔案。
+- 已**排程**：這些觸發程式會回應您可以使用開始日期、開始時間和重複間隔定義的排程。
 
 
 ### <a name="add-a-trigger"></a>新增觸發程序
 
 請在 Azure 入口網站中執行下列步驟，以建立觸發程序。
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **Edge 計算] [> 觸發**程式]。 選取命令列上的 [+ 新增觸發程序]****。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **Edge 計算] > 觸發**程式。 選取命令列上的 [+ 新增觸發程序]****。
 
     ![選取新增觸發程序](media/azure-stack-edge-manage-compute/add-trigger-1.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "84339819"
 
     ![選取觸發程序](media/azure-stack-edge-manage-compute/add-trigger-1.png)
 
-2. 按一下滑鼠右鍵，然後選取 [刪除]****。
+2. **以滑鼠右鍵按一下**它，然後選取 [刪除]。
 
     ![選取 [刪除]](media/azure-stack-edge-manage-compute/add-trigger-1.png)
 
@@ -82,13 +82,13 @@ ms.locfileid: "84339819"
 
 ## <a name="manage-compute-configuration"></a>管理計算設定
 
-使用 [Azure 入口網站] 來查看計算設定、移除現有的計算設定，或重新整理計算設定以同步處理 IoT 裝置的存取金鑰，以及為您的 Azure Stack Edge IoT Edge 裝置。
+使用 Azure 入口網站來查看計算設定、移除現有的計算設定，或重新整理計算設定，以同步處理 IoT 裝置的存取金鑰和 Azure Stack Edge Pro 的 IoT Edge 裝置。
 
 ### <a name="view-compute-configuration"></a>檢視計算設定
 
 請在 Azure 入口網站中執行下列步驟，以檢視您裝置的計算設定。
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **Edge 計算] [> 模組**]。 選取命令列上的 [檢視計算]****。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **Edge 計算 > 模組**]。 選取命令列上的 [檢視計算]****。
 
     ![選取 [檢視計算]](media/azure-stack-edge-manage-compute/view-compute-1.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "84339819"
 
 請在 Azure 入口網站中執行下列步驟，以移除您裝置現有的 Edge 計算設定。
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **Edge 計算] [> 開始**使用]。 選取命令列上的 [移除計算]****。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **Edge 計算] > 開始**使用。 選取命令列上的 [移除計算]****。
 
     ![選取 [移除計算]](media/azure-stack-edge-manage-compute/remove-compute-1.png)
 
@@ -111,15 +111,15 @@ ms.locfileid: "84339819"
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>同步 IoT 裝置和 IoT Edge 裝置的存取金鑰
 
-當您在 Azure Stack 邊緣上設定計算時，會建立 IoT 裝置和 IoT Edge 裝置。 對稱存取金鑰會自動指派給這些裝置。 基於安全性最佳做法的考量，這些金鑰會透過 IoT 中樞服務定期輪替。
+當您在 Azure Stack Edge Pro 上設定計算時，會建立 IoT 裝置和 IoT Edge 裝置。 對稱存取金鑰會自動指派給這些裝置。 基於安全性最佳做法的考量，這些金鑰會透過 IoT 中樞服務定期輪替。
 
 若要輪替這些金鑰，您可以移至所建立的 IoT 中樞服務，然後選取 IoT 裝置或 IoT Edge 裝置。 每個裝置都有主要存取金鑰和次要存取金鑰。 請將主要存取金鑰指派給次要存取金鑰，然後重新產生主要存取金鑰。
 
-如果您的 IoT 裝置和 IoT Edge 裝置金鑰已輪替，則您需要重新整理 Azure Stack Edge 上的設定，才能取得最新的存取金鑰。 同步處理可協助裝置取得 IoT 裝置和 IoT Edge 裝置的最新金鑰。 Azure Stack Edge 只會使用主要存取金鑰。
+如果您的 IoT 裝置和 IoT Edge 裝置金鑰已輪替，您需要重新整理 Azure Stack Edge Pro 上的設定，以取得最新的存取金鑰。 同步處理可協助裝置取得 IoT 裝置和 IoT Edge 裝置的最新金鑰。 Azure Stack Edge Pro 只會使用主要存取金鑰。
 
 請在 Azure 入口網站中執行下列步驟，以同步您裝置的存取金鑰。
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **Edge 計算] [> 開始**使用]。 選取命令列上的 [重新整理設定]****。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **Edge 計算] > 開始**使用。 選取命令列上的 [重新整理設定]****。
 
     ![選取 [重新整理設定]](media/azure-stack-edge-manage-compute/refresh-configuration-1.png)
 
@@ -129,6 +129,6 @@ ms.locfileid: "84339819"
 
 3. 在同步完成後結束對話方塊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-- 瞭解如何透過[Azure 入口網站來管理 Edge 計算網路](azure-stack-edge-extend-compute-access-modules.md)。
+- 瞭解如何透過 [Azure 入口網站管理 Edge 計算網路](azure-stack-edge-extend-compute-access-modules.md)。

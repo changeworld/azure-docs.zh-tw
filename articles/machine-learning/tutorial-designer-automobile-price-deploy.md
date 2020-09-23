@@ -1,7 +1,7 @@
 ---
-title: 教學課程：使用設計工具部署 ML 模型 (預覽)
+title: 教學課程：使用設計工具部署 ML 模型
 titleSuffix: Azure Machine Learning
-description: 本教學課程說明如何在 Azure Machine Learning 設計工具中建置預測性分析解決方案 (預覽)。 使用拖放模組進行機器學習模型的定型、評分和部署。
+description: 本教學課程說明如何在 Azure Machine Learning 設計工具中建置預測性分析解決方案。 使用拖放模組進行機器學習模型的定型、評分和部署。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -10,15 +10,15 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 453971d776a0953a344d147bca387a81f65ac73c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a4923e48c890a50d642d937f014e466e998171cf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287984"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896633"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>教學課程：透過設計工具部署機器學習模型 (預覽)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>教學課程：透過設計工具部署機器學習模型
+
 
 您可以部署在[教學課程第一部分](tutorial-designer-automobile-price-train-score.md)中開發的預測模型，讓其他人有機會加以使用。 在第一部分中，您已將模型定型。 現在，是時候根據使用者輸入來產生新預測了。 在教學課程的這個部分中，您會：
 

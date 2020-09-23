@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 5110f5fd09e360d1435e26312dd2ee2db6891cbb
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a80e0f1b62257fdbce6598c9cc4088701cc2ae9c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087179"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983621"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>透過範例了解 Data Factory 定價
 
@@ -38,7 +38,7 @@ ms.locfileid: "90087179"
 
 3. 每小時執行管線的排程觸發程序。
 
-   ![案例 1](media/pricing-concepts/scenario1.png)
+   ![圖表顯示具有排程觸發程式的管線。 在管線中，將活動流程複製到輸入資料集，此資料集會流向 A W S S3 連結服務，而複製活動也會流向輸出資料集，以流向 Azure 儲存體的連結服務。](media/pricing-concepts/scenario1.png)
 
 | **作業** | **類型與單位** |
 | --- | --- |
@@ -69,7 +69,7 @@ ms.locfileid: "90087179"
 2. 一個用於資料轉換的 Azure Databricks 活動。
 3. 一個每小時執行管線的排程觸發程序。
 
-![案例 2](media/pricing-concepts/scenario2.png)
+![圖表顯示具有排程觸發程式的管線。 在管線中，複製活動會流向輸入資料集、輸出資料集，以及在 Azure Databricks 上執行的 DataBricks 活動。 輸入資料集會流向 A W S S3 已連結的服務。 輸出資料集會流向 Azure 儲存體的連結服務。](media/pricing-concepts/scenario2.png)
 
 | **作業** | **類型與單位** |
 | --- | --- |
@@ -103,7 +103,7 @@ ms.locfileid: "90087179"
 3. 一個用於資料轉換的 Azure Databricks 活動。
 4. 一個每小時執行管線的排程觸發程序。
 
-![案例 3](media/pricing-concepts/scenario3.png)
+![圖表顯示具有排程觸發程式的管線。 在管線中，複製活動會流向輸入資料集、輸出資料集，以及流向 DataBricks 活動的查閱活動（此活動會在 Azure Databricks 上執行）。 輸入資料集會流向 A W S S3 已連結的服務。 輸出資料集會流向 Azure 儲存體的連結服務。](media/pricing-concepts/scenario3.png)
 
 | **作業** | **類型與單位** |
 | --- | --- |
@@ -211,7 +211,7 @@ ms.locfileid: "90087179"
 
 答：將允許最大的50並行管線活動。  51th 管線活動將會排入佇列，直到開啟「可用位置」為止。 適用于外部活動。 將允許最大800並行外部活動。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 既然您了解 Azure Data Factory 的定價，您可以立即開始！
 

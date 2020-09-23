@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: 瞭解如何使用自訂連接器將 Logic Apps 連線到 Azure 數位 Twins
 author: baanders
 ms.author: baanders
-ms.date: 8/14/2020
+ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 20959709854f8366cc067437fe86c245fcbc3ef0
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 09181a28edf21f0a4da11a244d3c094469446ab5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401056"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983444"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>使用自訂連接器與 Logic Apps 整合
 
@@ -26,8 +26,12 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 ## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂閱，請在開始前**建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** 。
+使用此帳戶登入 [Azure 入口網站](https://portal.azure.com) 。 
 
-使用此帳戶登入 [Azure 入口網站](https://portal.azure.com) 。
+本節的其餘部分將逐步引導您完成下列步驟：
+- 設定 Azure Digital Twins 執行個體
+- 取得應用程式註冊用戶端密碼
+- 新增數位對應項
 
 ### <a name="set-up-azure-digital-twins-instance"></a>設定 Azure Digital Twins 執行個體
 
@@ -49,7 +53,12 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 :::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 輸入您想要用於描述和到期的任何值，然後按 [ *新增*]。
-系統會將秘密新增至 [ *憑證與秘密* ] 頁面上的用戶端密碼清單。 請記下其值以供稍後使用 (您也可以使用複製圖示) 將它複製到剪貼簿。
+
+:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="新增用戶端密碼":::
+
+現在，請在 [ _憑證 & 秘密_ ] 頁面上確認用戶端密碼顯示為 [ _到期_ ] 和 [ _值_ ] 欄位。 記下其 _值_ 以供稍後使用 (您也可以使用複製圖示將它複製到剪貼簿) 
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="複製用戶端秘密值":::
 
 ### <a name="add-a-digital-twin"></a>新增數位對應項
 
@@ -67,9 +76,13 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 :::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="Azure 入口網站中的 [Logic Apps 自訂連接器] 頁面。在 [新增] 按鈕周圍反白顯示":::
 
-在接下來的 [ *建立 Logic Apps 自訂連接器* ] 頁面中，選取您的訂用帳戶和資源群組，以及新連接器的名稱和部署位置。 點擊 *檢查 + 建立*。 這會將您帶到 [ *審核 + 建立* ] 索引標籤，您可以在底部點擊 [ *建立* ] 以建立您的資源。
+在接下來的 [ *建立 Logic Apps 自訂連接器* ] 頁面中，選取您的訂用帳戶和資源群組，以及新連接器的名稱和部署位置。 點擊 *檢查 + 建立*。 
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Azure 入口網站中 [建立 Logic Apps 自訂連接器] 頁面的 [審核 + 建立] 索引標籤。在 [建立] 按鈕周圍反白顯示":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Azure 入口網站中的 [建立 Logic Apps 自訂連接器] 頁面。":::
+
+這會將您帶到 [ *審核 + 建立* ] 索引標籤，您可以在底部點擊 [ *建立* ] 以建立您的資源。
+
+:::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="Azure 入口網站中 [審核 Logic Apps 自訂連接器] 頁面的 [審核 + 建立] 索引標籤。在 [建立] 按鈕周圍反白顯示":::
 
 您將會進入連接器的 [部署] 頁面。 完成部署後，請按 [ *移至資源* ] 按鈕，以在入口網站中查看連接器的詳細資料。
 
@@ -89,7 +102,9 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
     - 匯入模式： OpenAPI 檔案 (保留預設) 
     - 檔案：這會是您稍早下載的自訂 Swagger 檔案。 點擊 [匯 *入*]，在您的電腦上找出 (*Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.js) 上* 的檔案，然後按 [ *開啟*]。
 * **一般資訊**
-    - 圖示、圖示背景色彩、描述：填妥您想要的任何值。
+    - 圖示：上傳您喜歡的圖示
+    - 圖示背景色彩：輸入格式為 ' #xxxxxx ' 的十六進位代碼，以供您的色彩。
+    - 描述：填寫任何您想要的值。
     - 配置： HTTPS (保留預設值) 
     - Host： Azure 數位 Twins 實例的 *主機名稱* 。
     - 基底 URL：/ (保留預設值) 
@@ -145,11 +160,15 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 接下來，您將建立邏輯應用程式，以使用新的連接器來自動化 Azure 數位 Twins 更新。
 
-流覽至 Azure 入口網站中的 [ [Logic Apps](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) ] 頁面 (您可以使用此連結，或是在入口網站的搜尋列) 中尋找它。 點擊 *建立邏輯應用程式*。
+流覽至 Azure 入口網站中的 [ [邏輯應用程式 (耗用量) ](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) ] 頁面 (您可以使用此連結，或在入口網站的搜尋列) 中尋找。 按 [ *新增* ] 按鈕以建立邏輯應用程式。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure 入口網站中的 [Logic Apps] 頁面。在 [建立邏輯應用程式] 按鈕周圍醒目提示":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure 入口網站中的「Logic Apps (耗用量) 」頁面。點擊 [新增] 按鈕":::
 
-在接下來的 *邏輯應用程式* 頁面中，選取您的訂用帳戶和資源群組，以及新邏輯應用程式的名稱和部署位置。 點擊 *檢查 + 建立*。 這會將您帶到 [ *審核 + 建立* ] 索引標籤，您可以在底部點擊 [ *建立* ] 以建立您的資源。
+在接下來的 [ *邏輯應用程式 (耗用量) * ] 頁面中，輸入您的訂用帳戶、資源群組。 此外，選擇邏輯應用程式的名稱，並選取位置。
+
+選取 [ _審核 + 建立_ ] 按鈕。
+
+這會將您帶到 [審核] 和 [ *建立* ] 索引標籤，您可以在此查看詳細資料，並在底部點擊 [ *建立* ] 以建立您的資源。
 
 您將會進入邏輯應用程式的部署頁面。 完成部署後，請按 [ *移至資源* ] 按鈕繼續進行 *Logic Apps 設計*工具，您將在其中填入工作流程的邏輯。
 
@@ -172,11 +191,13 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 系統可能會要求您使用您的 Azure 認證登入，以連線到連接器。 如果您取得 [ *要求的許可權* ] 對話方塊，請依照提示來授與您應用程式的同意並接受。
 
 在 [新增 *DigitalTwinsAdd* ] 方塊中，填寫欄位，如下所示：
-* 識別碼：在您想要邏輯應用程式更新的實例中，填入數位對應項的對應項 *識別碼* 。
-* 專案-1：您可以在此欄位中輸入所選 API 要求所需的主體。 針對 *DigitalTwinsUpdate*，此主體是 JSON 修補程式碼的形式。 如需有關結構化 JSON 修補程式以更新對應項的詳細資訊，請參閱 how *to：管理數位 twins*的[更新數位](how-to-manage-twin.md#update-a-digital-twin)對應項一節。
-* api 版本：在目前的公開預覽版中，此值為 *2020-05-31-preview*
+* _識別碼_：在您想要邏輯應用程式更新的實例中，填入數位對應項的對應項 *識別碼* 。
+* 對應_項：此_欄位可讓您輸入所選 API 要求所需的主體。 針對 *DigitalTwinsUpdate*，此主體是 JSON 修補程式碼的形式。 如需有關結構化 JSON 修補程式以更新對應項的詳細資訊，請參閱 how *to：管理數位 twins*的[更新數位](how-to-manage-twin.md#update-a-digital-twin)對應項一節。
+* _api 版本_：在目前的公開預覽版中，此值為 *2020-05-31-preview*
 
 點擊 Logic Apps 設計工具中的 [ *儲存* ]。
+
+您可以在同一個視窗中選取 [ _+ 新增步驟_ ] 來選擇其他作業。
 
 :::image type="content" source="media/how-to-integrate-logic-apps/save-logic-app.png" alt-text="已完成邏輯應用程式連接器中的應用程式視圖。[DigitalTwinsAdd] 方塊會填入上面所述的值，包括範例 JSON 修補程式主體。視窗的 [儲存] 按鈕會反白顯示。":::
 
@@ -188,7 +209,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 如需查詢 Azure 數位 Twins 實例的詳細資訊，請參閱 how [*to：查詢對應項圖形*](how-to-query-graph.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已建立邏輯應用程式，以使用您提供的修補程式定期更新 Azure 數位 Twins 實例中的對應項。 您可以嘗試在自訂連接器中選取其他 Api，以針對實例上的各種動作建立 Logic Apps。
 

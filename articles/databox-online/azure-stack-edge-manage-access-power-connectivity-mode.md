@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge 裝置存取、電源和連線模式 |Microsoft Docs
-description: 說明如何管理 Azure Stack Edge 裝置的存取、電源和連線模式，以協助將資料傳輸至 Azure
+title: Azure Stack Edge Pro 裝置存取、電源和連線模式 |Microsoft Docs
+description: 說明如何管理 Azure Stack Edge Pro 裝置的存取、電源和連線模式，以協助將資料傳輸至 Azure
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 75e7a43d545bea63d553ad01836ed5c6ebc2dcc9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e0e2ac43ce0157b4917e9c45f6a02ace63432137
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079790"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904419"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>管理 Azure Stack Edge 的存取、電源和連線模式
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>管理 Azure Stack Edge Pro 的存取、電源和連線模式
 
-本文說明如何管理 Azure Stack Edge 的存取、電源和連線模式。 這些作業都是透過本機 Web UI 或 Azure 入口網站執行。
+本文說明如何管理 Azure Stack Edge Pro 的存取、電源和連線模式。 這些作業都是透過本機 Web UI 或 Azure 入口網站執行。
 
 在本文中，您將學會如何：
 
@@ -29,7 +29,7 @@ ms.locfileid: "89079790"
 
 ## <a name="manage-device-access"></a>管理裝置存取
 
-您 Azure Stack Edge 裝置的存取權是透過使用裝置密碼來控制。 您可以透過本機 web UI 來變更密碼。 您也可以在 Azure 入口網站中重設裝置密碼。
+您 Azure Stack Edge Pro 裝置的存取權是透過使用裝置密碼來控制。 您可以透過本機 web UI 來變更密碼。 您也可以在 Azure 入口網站中重設裝置密碼。
 
 ### <a name="change-device-password"></a>變更裝置密碼
 
@@ -61,12 +61,12 @@ ms.locfileid: "89079790"
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>管理 Microsoft Graph API 許可權
 
-產生 Azure Stack Edge 裝置的啟用金鑰，或執行任何需要認證的作業時，您需要 Azure Active Directory 圖形 API 的許可權。 需要認證的作業可以是：
+產生 Azure Stack Edge Pro 裝置的啟用金鑰，或執行任何需要認證的作業時，您需要 Azure Active Directory 圖形 API 的許可權。 需要認證的作業可以是：
 
 -  使用相關聯的儲存體帳戶來建立共用。
 -  建立可存取裝置上共用的使用者。
 
-您應該可以視 `User` 需要存取 Active Directory 租使用者 `Read all directory objects` 。 您不能是來賓使用者，因為他們沒有許可權 `Read all directory objects` 。 如果您是來賓，則產生啟用金鑰、在 Azure Stack Edge 裝置上建立共用、建立使用者、設定 Edge 計算角色、重設裝置密碼等作業都會失敗。
+您應該可以視 `User` 需要存取 Active Directory 租使用者 `Read all directory objects` 。 您不能是來賓使用者，因為他們沒有許可權 `Read all directory objects` 。 如果您是來賓，則作業（例如產生啟用金鑰、在 Azure Stack Edge Pro 裝置上建立共用、建立使用者、設定 Edge 計算角色、重設裝置密碼）都會失敗。
 
 如需如何提供存取權給使用者 Microsoft Graph API 的詳細資訊，請參閱 [Microsoft Graph 許可權參考](https://docs.microsoft.com/graph/permissions-reference)。
 
@@ -89,7 +89,7 @@ ms.locfileid: "89079790"
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-針對 Azure Stack Edge 裝置， `Microsoft.DataBoxEdge` 應該註冊。 若要註冊 `Microsoft.DataBoxEdge` ，訂用帳戶管理員應該執行下列命令：
+針對 Azure Stack Edge Pro 裝置， `Microsoft.DataBoxEdge` 應該註冊。 若要註冊 `Microsoft.DataBoxEdge` ，訂用帳戶管理員應該執行下列命令：
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
@@ -132,6 +132,6 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 > [!NOTE]
 > 如果您關閉實體裝置，您必須按下裝置上的電源按鈕以將它開啟。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 了解如何[管理共用](azure-stack-edge-manage-shares.md)。

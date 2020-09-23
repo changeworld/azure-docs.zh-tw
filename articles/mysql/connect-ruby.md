@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 15bbce208475a85e7be6efbadebcb4e43c2d8d17
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 8bedb7177c93eecd13f64d151c56baf5a394e0c2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029098"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896268"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 Ruby 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
 
@@ -25,11 +25,11 @@ ms.locfileid: "90029098"
 - [使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > 確保您用於連線的 IP 位址已使用 [Azure 入口網站](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 新增伺服器的防火牆規則
 
 ## <a name="install-ruby"></a>安裝 Ruby
-在自己的電腦上安裝 Ruby、Gem 和 MySQL2 程式庫。 
+在自己的電腦上安裝 Ruby、Gem 和 MySQL2 程式庫。
 
 ### <a name="windows"></a>Windows
 1. 下載並安裝 2.3 版的 [Ruby](https://rubyinstaller.org/downloads/)。
@@ -61,9 +61,9 @@ ms.locfileid: "90029098"
 2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
 3. 按一下伺服器名稱。
 4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
- ![Azure Database for MySQL 伺服器名稱](./media/connect-ruby/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-ruby/1_server-overview-name-login.png" alt-text="Azure Database for MySQL 伺服器名稱":::
 
-## <a name="run-ruby-code"></a>執行 Ruby 程式碼 
+## <a name="run-ruby-code"></a>執行 Ruby 程式碼
 1. 將 Ruby 程式碼從下列區段貼到文字檔中，然後使用副檔名 .rb 來將檔案儲存到專案資料夾 (例如 `C:\rubymysql\createtable.rb` 或 `/home/username/rubymysql/createtable.rb`)。
 2. 若要執行程式碼，請啟動命令提示字元或 Bash 殼層。 將目錄切換到專案資料夾 `cd rubymysql`
 3. 然後，輸入後面接著檔案名稱的 Ruby 命令 (例如 `ruby createtable.rb`) 以執行應用程式。
@@ -72,9 +72,9 @@ ms.locfileid: "90029098"
 ## <a name="connect-and-create-a-table"></a>連線及建立資料表
 使用下列程式碼搭配 **CREATE TABLE** SQL 陳述式 (後面接著 **INSERT INTO** SQL 陳述式) 來連線和建立資料表，進而在資料表中新增資料列。
 
-程式碼會使用 [mysql2::client](https://www.rubydoc.info/gems/mysql2) 類別 .new() 來連線到 Azure Database for MySQL。 然後它會呼叫 [query()](https://www.rubydoc.info/gems/mysql2#Usage) 方法數次來執行 DROP、CREATE TABLE 和 INSERT INTO 命令。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) 方法，在終止前關閉連線。
+程式碼會使用[mysql2::client](https://www.rubydoc.info/gems/mysql2) 類別連線到 MySQL 伺服器。 然後它會呼叫 ```query()``` 方法來執行 DROP、CREATE TABLE 和 INSERT INTO 命令。 最後會呼叫 ```close()```，在終止前關閉連線。
 
-以您自己的值取代 `host`、`database`、`username` 和 `password` 字串。 
+以您自己的值取代 `host`、`database`、`username` 和 `password` 字串。
 ```ruby
 require 'mysql2'
 
@@ -115,11 +115,11 @@ end
 ```
 
 ## <a name="read-data"></a>讀取資料
-使用下列程式碼搭配 **SELECT** SQL 陳述式來連線和讀取資料。 
+使用下列程式碼搭配 **SELECT** SQL 陳述式來連線和讀取資料。
 
-程式碼會使用 [mysql2::client](https://www.rubydoc.info/gems/mysql2) 類別 .new() 來連線到適用於 MySQL 的 Azure 資料庫。 然後它會呼叫 [query()](https://www.rubydoc.info/gems/mysql2#Usage) 方法來執行 SELECT 命令。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) 方法，在終止前關閉連線。
+程式碼會使用 [mysql2::client](https://www.rubydoc.info/gems/mysql2) 類別，透過 ```new()``` 方法連線到適用於 MySQL 的 Azure 資料庫。 然後它會呼叫 ```query()``` 方法來執行 SELECT 命令。 然後它會呼叫 ```close()``` 方法，在終止前關閉連線。
 
-以您自己的值取代 `host`、`database`、`username` 和 `password` 字串。 
+以您自己的值取代 `host`、`database`、`username` 和 `password` 字串。
 
 ```ruby
 require 'mysql2'
@@ -156,9 +156,9 @@ end
 ## <a name="update-data"></a>更新資料
 使用下列程式碼搭配 **UPDATE** SQL 陳述式來連線和更新資料。
 
-程式碼會使用 [mysql2::client](https://www.rubydoc.info/gems/mysql2) 類別 .new() 來連線到 Azure Database for MySQL。 然後它會呼叫 [query()](https://www.rubydoc.info/gems/mysql2#Usage) 方法來執行 UPDATE 命令。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) 方法，在終止前關閉連線。
+程式碼會使用 [mysql2::client](https://www.rubydoc.info/gems/mysql2) 類別 .new() 來連線到 Azure Database for MySQL。 然後會呼叫 ```query()``` 方法來執行 UPDATE 命令。 然後它會呼叫 ```close()``` 方法，在終止前關閉連線。
 
-以您自己的值取代 `host`、`database`、`username` 和 `password` 字串。 
+以您自己的值取代 `host`、`database`、`username` 和 `password` 字串。
 
 ```ruby
 require 'mysql2'
@@ -191,11 +191,11 @@ end
 
 
 ## <a name="delete-data"></a>刪除資料
-使用下列程式碼搭配 **DELETE** SQL 陳述式來連線和讀取資料。 
+使用下列程式碼搭配 **DELETE** SQL 陳述式來連線和讀取資料。
 
-程式碼會使用 [mysql2::client](https://www.rubydoc.info/gems/mysql2) 類別 .new() 來連線到 Azure Database for MySQL。 然後它會呼叫 [query()](https://www.rubydoc.info/gems/mysql2#Usage) 方法來執行 DELETE 命令。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) 方法，在終止前關閉連線。
+程式碼會使用 [mysql2::client](https://rubygems.org/gems/mysql2/) 類別連線到 MySQL 伺服器、執行 DELETE 命令，然後關閉與伺服器的連線。
 
-以您自己的值取代 `host`、`database`、`username` 和 `password` 字串。 
+以您自己的值取代 `host`、`database`、`username` 和 `password` 字串。
 
 ```ruby
 require 'mysql2'
@@ -228,4 +228,8 @@ end
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]
-> [使用匯出和匯入來移轉資料庫](./concepts-migrate-import-export.md)
+> [使用匯出和匯入來移轉資料庫](./concepts-migrate-import-export.md) <br/>
+
+> [!div class="nextstepaction"]
+> [深入了解 MySQL2 用戶端](https://www.rubydoc.info/gems/mysql2) <br/>
+

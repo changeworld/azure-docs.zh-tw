@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒體服務 v3 設定離線 PlayReady 串流
-description: 本文說明如何設定 Azure 媒體服務帳戶，以離線串流適用於 Windows 10 的 PlayReady。
+description: 本文說明如何設定 Azure 媒體服務 v3 帳戶，以供 Windows 10 離線的串流 PlayReady。
 services: media-services
 keywords: DASH, DRM, Widevine Offline Mode, ExoPlayer, Android, Widevine 離線模式
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9e0c4daeae9884bdb5feaceccc23046866f0d59c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 19c930915de20d7f3a8938570e074458b32a8efb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266675"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975674"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>使用媒體服務 v3 進行 Windows 10 的離線 PlayReady 串流
 
@@ -125,6 +125,6 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 * PlayReady 授權傳遞服務可以從 Azure 媒體服務或其他位置提供；
 * 所準備的 Smooth Streaming 內容仍可用來透過 DASH 進行線上串流，或使用 PlayReady 以 DRM 內容的方式進行串流。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [設計具有存取控制的多重 DRM 內容保護系統](design-multi-drm-system-with-access-control.md)

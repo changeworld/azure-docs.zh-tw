@@ -1,6 +1,6 @@
 ---
 title: 使用具體化視圖進行效能調整
-description: 使用具體化檢視改善查詢效能時須知的建議和考量事項。
+description: 瞭解當您使用具體化視圖來改善查詢效能時，應該知道的建議和考慮。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: ddab106e11340dd040b99d1e8abf9d93e9338ab7
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441199"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984105"
 ---
 # <a name="performance-tune-with-materialized-views"></a>使用具體化視圖進行效能調整
 

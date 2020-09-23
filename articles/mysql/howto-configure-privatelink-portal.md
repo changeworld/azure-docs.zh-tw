@@ -1,47 +1,47 @@
 ---
-title: 私用連結-Azure 入口網站-適用於 MySQL 的 Azure 資料庫
-description: 瞭解如何從 Azure 入口網站設定適用於 MySQL 的 Azure 資料庫的私人連結
+title: Private Link-Azure 入口網站-適用於 MySQL 的 Azure 資料庫
+description: 瞭解如何從 Azure 入口網站設定適用於 MySQL 的 Azure 資料庫的 private link
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 37c5a0fb1addf9f84c8a237b4d185d140553535e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1a99a91152f8308af122677ad3b8df3fb5005dbb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825968"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896171"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>使用入口網站建立和管理適用於 MySQL 的 Azure 資料庫的私用連結
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>使用入口網站建立和管理適用於 MySQL 的 Azure 資料庫的 Private Link
 
-私人端點是 Azure 中私人連結的基本要素。 其可讓 Azure 資源 (例如虛擬機器 (VM)) 與私人連結資源進行私密通訊。 在本文中，您將瞭解如何使用 Azure 入口網站來建立 Azure 虛擬網路中的 VM，以及具有 Azure 私用端點的適用於 MySQL 的 Azure 資料庫伺服器。
+私人端點是 Azure 中私人連結的基本要素。 其可讓 Azure 資源 (例如虛擬機器 (VM)) 與私人連結資源進行私密通訊。 在本文中，您將瞭解如何使用 Azure 入口網站來建立 Azure 虛擬網路中的 VM，以及具有 Azure 私人端點的適用於 MySQL 的 Azure 資料庫伺服器。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立一個[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 私人連結功能僅適用于一般用途或記憶體優化定價層中的適用於 MySQL 的 Azure 資料庫伺服器。 請確定資料庫伺服器屬於其中一種定價層。
+> 私人連結功能僅適用于一般用途或記憶體優化定價層中的適用於 MySQL 的 Azure 資料庫伺服器。 確定資料庫伺服器是在其中一個定價層。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 登入 [Azure 入口網站](https://portal.azure.com)。
 
 ## <a name="create-an-azure-vm"></a>建立 Azure VM
 
-在本節中，您將建立虛擬網路和子網，以裝載用來存取私人連結資源的 VM， (Azure) 中的 MySQL 伺服器。
+在本節中，您將建立虛擬網路和子網，以裝載用來在 Azure) 中 (MySQL 伺服器存取 Private Link 資源的 VM。
 
 ### <a name="create-the-virtual-network"></a>建立虛擬網路
 在本節中，您將建立虛擬網路和子網路，以裝載用來存取 Private Link 資源的 VM。
 
-1. 在畫面的左上方，選取 [**建立資源**] [網路] [  >  **Networking**  >  **虛擬網路**]。
+1. 在畫面的左上方，選取 [**建立資源**  >  **網路**  >  **虛擬網路**]。
 2. 在 [建立虛擬網路] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
-    | 名稱 | 輸入*MyVirtualNetwork*。 |
+    | 名稱 | 輸入 *MyVirtualNetwork*。 |
     | 位址空間 | 輸入 *10.1.0.0/16*。 |
     | 訂用帳戶 | 選取您的訂用帳戶。|
     | 資源群組 | 選取 [新建]，輸入 *myResourceGroup*，然後選取 [確定]。 |
-    | Location | 選取 [西歐]。|
+    | Location | 選取 [西歐]  。|
     | 子網路 - 名稱 | 輸入 mySubnet**。 |
     | 子網路 - 位址範圍 | 輸入 *10.1.0.0/24*。 |
     |||
@@ -60,7 +60,7 @@ ms.locfileid: "87825968"
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。  |
     | **執行個體詳細資料** |  |
     | 虛擬機器名稱 | 輸入 myVm。 |
-    | 區域 | 選取 [西歐]。 |
+    | 區域 | 選取 [西歐]  。 |
     | 可用性選項 | 保留預設值 [不需要基礎結構備援]。 |
     | 映像 | 選取 [Windows Server 2019 Datacenter]。 |
     | 大小 | 保留預設值 [標準 DS1 v2]。 |
@@ -74,7 +74,7 @@ ms.locfileid: "87825968"
     | 已經有 Windows 授權？ | 保留預設值 [否]。 |
     |||
 
-1. 完成時，選取 [下一步:磁碟]。
+1. 完成時，選取 [下一步:  磁碟]。
 
 1. 在 [建立虛擬機器 - 磁碟]，保留預設值並選取 [下一步：網路功能]。
 
@@ -99,9 +99,9 @@ ms.locfileid: "87825968"
 
 在本節中，您將在 Azure 中建立適用於 MySQL 的 Azure 資料庫伺服器。 
 
-1. 在 [Azure 入口網站] 畫面的左上方，選取 [**建立資源**] [資料庫] [  >  **Databases**  >  **適用於 MySQL 的 Azure 資料庫**]。
+1. 在 Azure 入口網站畫面的左上方，選取 [**建立資源**  >  **資料庫**]  >  **適用於 MySQL 的 Azure 資料庫**。
 
-1. 在**適用於 MySQL 的 Azure 資料庫**提供下列資訊：
+1. 在 **適用於 MySQL 的 Azure 資料庫** 提供下列資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
@@ -109,34 +109,34 @@ ms.locfileid: "87825968"
     | 訂用帳戶 | 選取您的訂用帳戶。 |
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
     | **伺服器詳細資料** |  |
-    |伺服器名稱  | 輸入*myServer*。 如果此名稱已被使用，請建立唯一名稱。|
+    |伺服器名稱  | 輸入 *myServer*。 如果此名稱已被使用，請建立唯一名稱。|
     | 系統管理員使用者名稱| 輸入您所選擇的系統管理員名稱。 |
     | 密碼 | 輸入您選擇的密碼。 密碼長度至少必須有 8 個字元，而且符合定義的需求。 |
     | Location | 選取您想要的 MySQL 伺服器所在的 Azure 區域。 |
-    |版本  | 選取需要的 MySQL 伺服器的資料庫版本。|
+    |版本  | 選取所需的 MySQL 伺服器資料庫版本。|
     | 計算 + 儲存體| 根據工作負載選取伺服器所需的定價層。 |
     |||
  
-7. 選取 [確定]  。 
+7. 選取 [確定]。 
 8. 選取 [檢閱 + 建立]。 您會移至 [檢閱 + 建立] 頁面，其中 Azure 會驗證您的設定。 
-9. 當您看到 [通過驗證] 訊息時，請選取 [**建立**]。 
+9. 當您看到 [通過驗證] 訊息時，請選取 [ **建立**]。 
 10. 當您看到 [驗證成功] 訊息時，請選取 [建立]。 
 
 > [!NOTE]
 > 在某些案例中，適用於 MySQL 的 Azure 資料庫和 VNet 子網路是位於不同的訂用帳戶。 在這些情況下，您必須確保下列設定：
-> - 請確定這兩個訂用帳戶都已註冊**microsoft.dbformysql**資源提供者。 如需詳細資訊，請參閱 [resource-manager-registration][resource-manager-portal]
+> - 請確定這兩個訂用帳戶都已註冊 **microsoft.dbformysql** 資源提供者。 如需詳細資訊，請參閱 [resource-manager-registration][resource-manager-portal]
 
 ## <a name="create-a-private-endpoint"></a>建立私人端點
 
 在本節中，您將建立 MySQL 伺服器，並在其中新增私人端點。 
 
-1. 在 [Azure 入口網站] 畫面的左上方，選取 [**建立資源**] [網路] [  >  **Networking**  >  **私人連結**]。
+1. 在 Azure 入口網站畫面的左上方，選取 [**建立資源**  >  **網路**]  >  **Private Link**。
 
 2. 在 [私人連結中心 - 概觀] 中，選取 [與服務建立私人連線] 選項上的 [開始]。
 
-    ![私用連結總覽](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="Private Link 總覽":::
 
-1. 在 [**建立私人端點-基本**] 中，輸入或選取這項資訊：
+1. 在 [ **建立私人端點-基本**] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
@@ -145,7 +145,7 @@ ms.locfileid: "87825968"
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
     | **實例詳細資料** |  |
     | 名稱 | 輸入 myPrivateEndpoint。 如果此名稱已被使用，請建立唯一名稱。 |
-    |區域|選取 [西歐]。|
+    |區域|選取 [西歐]  。|
     |||
 
 5. 完成時，選取 [下一步:資源]。
@@ -155,9 +155,9 @@ ms.locfileid: "87825968"
     | ------- | ----- |
     |連線方法  | 選取 [連線到我目錄中的 Azure 資源]。|
     | 訂用帳戶| 選取您的訂用帳戶。 |
-    | 資源類型 | 選取 [ **microsoft.dbformysql/伺服器**]。 |
+    | 資源類型 | 選取 [ **microsoft.dbformysql]/[伺服器**]。 |
     | 資源 |選取 [myServer]|
-    |目標子資源 |選取*mysqlServer*|
+    |目標子資源 |選取 *mysqlServer*|
     |||
 7. 完成時，選取 [下一步:組態]。
 8. 在 [建立私人端點 - 設定] 中，輸入或選取這項資訊：
@@ -168,20 +168,20 @@ ms.locfileid: "87825968"
     | 虛擬網路| 選取 [MyVirtualNetwork]。 |
     | 子網路 | 選取 [mySubnet]。 |
     |**私人 DNS 整合**||
-    |與私人 DNS 區域整合 |選取 [是]。 |
-    |私人 DNS 區域 |選取* (新增) privatelink.mysql.database.azure.com* |
+    |與私人 DNS 區域整合 |選取 [是]  。 |
+    |私人 DNS 區域 |選取 * (新增) privatelink.mysql.database.azure.com* |
     |||
 
     > [!Note] 
-    > 針對您的服務使用預先定義的私人 DNS 區域，或提供您慣用的 DNS 區功能變數名稱稱。 如需詳細資訊，請參閱[Azure 服務 DNS 區域](../private-link/private-endpoint-dns.md)設定。
+    > 針對您的服務使用預先定義的私人 DNS 區域，或提供慣用的 DNS 區功能變數名稱稱。 如需詳細資訊，請參閱 [Azure 服務 DNS 區域](../private-link/private-endpoint-dns.md) 設定。
 
 1. 選取 [檢閱 + 建立]。 您會移至 [檢閱 + 建立] 頁面，其中 Azure 會驗證您的設定。 
 2. 當您看到 [驗證成功] 訊息時，請選取 [建立]。 
 
-    ![已建立私人連結](media/concepts-data-access-and-security-private-link/show-mysql-private-link.png)
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="Private Link 建立":::
 
     > [!NOTE] 
-    > 客戶 DNS 設定中的 FQDN 不會解析為設定的私人 IP。 您將必須為設定的 FQDN 設定 DNS 區域[，如下所示。](../dns/dns-operations-recordsets-portal.md)
+    > 客戶 DNS 設定中的 FQDN 無法解析為已設定的私人 IP。 您將必須為設定的 FQDN 設定 DNS 區域[，如下所示。](../dns/dns-operations-recordsets-portal.md)
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>使用遠端桌面 (RDP) 連線到 VM
 
@@ -203,7 +203,7 @@ ms.locfileid: "87825968"
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
@@ -224,17 +224,17 @@ ms.locfileid: "87825968"
     Address:  10.1.3.4
     ```
 
-3. 使用任何可用的用戶端來測試 MySQL 伺服器的私人連結連線。 在下列範例中，我使用了[MySQL 工作臺](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html)來執行操作。
+3. 使用任何可用的用戶端來測試 MySQL 伺服器的私人連結連線。 在下列範例中，我使用了 [MySQL 工作臺](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) 來進行操作。
 
-4. 在 [**新增連接**] 中，輸入或選取這項資訊：
+4. 在 [ **新增連接**] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
     | 伺服器類型| 選取 [ **MySQL**]。|
-    | 伺服器名稱| 選取*myServer.privatelink.mysql.database.azure.com* |
+    | 伺服器名稱| 選取 *myServer.privatelink.mysql.database.azure.com* |
     | 使用者名稱 | 輸入 username@servername 在建立 MySQL 伺服器期間所提供的使用者名稱。 |
-    |密碼 |輸入建立 MySQL 伺服器期間所提供的密碼。 |
-    |SSL|選取 [**必要**]。|
+    |密碼 |輸入在建立 MySQL 伺服器期間所提供的密碼。 |
+    |SSL|選取 [ **必要**]。|
     ||
 
 5. 選取 [連線]。
@@ -243,18 +243,18 @@ ms.locfileid: "87825968"
 
 7.  (選擇性地) 從 MySQL 伺服器建立或查詢資訊。
 
-8. 關閉對 myVm 的遠端桌面連線。
+8. 關閉 myVm 的遠端桌面連線。
 
 ## <a name="clean-up-resources"></a>清除資源
-當您使用私用端點、MySQL 伺服器和 VM 完成時，請刪除資源群組及其包含的所有資源：
+當您完成使用私人端點、MySQL 伺服器和 VM 時，請刪除資源群組及其包含的所有資源：
 
 1. 在入口網站頂端的 [搜尋] 方塊中輸入 *myResourceGroup*，然後從搜尋結果中選取 [myResourceGroup]。
 2. 選取 [刪除資源群組]。
-3. 針對 [輸入**資源組名**] 輸入 myResourceGroup，然後選取 [**刪除**]。
+3. 輸入 **資源組名類型的** myResourceGroup，然後選取 [ **刪除**]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-在此操作說明中，您已在虛擬網路上建立 VM、適用於 MySQL 的 Azure 資料庫和私人端點來進行私用存取。 您已從網際網路連線至其中一個 VM，並使用私人連結安全地向 MySQL 伺服器通訊。 若要深入瞭解私人端點，請參閱[什麼是 Azure 私用端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)。
+在此操作說明中，您已在虛擬網路、適用於 MySQL 的 Azure 資料庫和私人端點上建立 VM 以進行私人存取。 您已從網際網路連線到其中一個 VM，並使用 Private Link 安全地與 MySQL 伺服器通訊。 若要深入瞭解私人端點，請參閱 [什麼是 Azure 私人端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)。
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

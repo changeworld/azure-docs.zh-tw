@@ -4,18 +4,18 @@ description: 瞭解 Azure Kubernetes Service (AKS) 中的持續性軟體工程�
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: bc2240b3cb8508109f6dd25c4c80ff31ba197cfd
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083584"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984975"
 ---
-# <a name="sustainable-software-engineering-principals-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS 中的持續性軟體工程主體) 
+# <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的持續性軟體工程準則
 
-持續性軟體工程主體是一組專長認證，可協助您定義、建立及執行持續性的應用程式。 整體目標是要降低應用程式各個層面的碳足跡。 這些 [原則。環保專案][principals-green] 概述持續性軟體工程的主體。
+持續性軟體工程原則是一組專長認證，可協助您定義、建立及執行持續性的應用程式。 整體目標是要降低應用程式各個層面的碳足跡。 這些 [原則。環保專案][principles-green] 概述持續性軟體工程的原則。
 
-瞭解持續性軟體工程的一個重要概念是，它是優先順序和焦點的轉移。 在許多情況下，軟體是以專注于快速效能和低延遲的方式來設計和執行。 持續性軟體工程著重于盡可能減少碳排放量。 在某些情況下，套用持續性軟體工程主體可提供更快速的效能或較低的延遲，例如降低總網路移動量。 在其他情況下，減少碳排放可能會導致效能變慢或增加延遲，例如延遲低優先順序工作負載。 在考慮將持續性軟體工程主體套用至您的應用程式之前，請先檢查應用程式的優先順序、需求和取捨。
+瞭解持續性軟體工程的一個重要概念是，它是優先順序和焦點的轉移。 在許多情況下，軟體是以專注于快速效能和低延遲的方式來設計和執行。 持續性軟體工程著重于盡可能減少碳排放量。 在某些情況下，套用持續性軟體工程準則可提供更快速的效能或較低的延遲，例如降低總網路移動量。 在其他情況下，減少碳排放可能會導致效能變慢或增加延遲，例如延遲低優先順序工作負載。 在考慮將持續性軟體工程原則套用至您的應用程式之前，請先檢查應用程式的優先順序、需求和取捨。
 
 ## <a name="measure-and-optimize"></a>測量和優化
 
@@ -45,7 +45,7 @@ ms.locfileid: "89083584"
 
 可能的話，請考慮將叢集資源的需求轉移至您可以使用超過容量的時間或區域。 例如，請考慮將批次作業的時間或區域變更為執行或使用 [點][spot-pools]集區。 也請考慮重構應用程式，以使用佇列來順延強制不需要立即處理的工作負載。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解本文中所述的 AKS 功能：
 
@@ -74,4 +74,4 @@ ms.locfileid: "89083584"
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principals-green]: https://principles.green/
+[principles-green]: https://principles.green/

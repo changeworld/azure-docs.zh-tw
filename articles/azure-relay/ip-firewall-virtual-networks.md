@@ -3,12 +3,12 @@ title: 設定 Azure 轉送命名空間的 IP 防火牆
 description: 本文說明如何使用防火牆規則，允許從特定 IP 位址連線至 Azure 轉送命名空間。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e47c5071a5fc7207d4eabc162fcb24ab6ad57d28
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 250158aff2ceb89e2823b711717f1d3a1cad438c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141851"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976010"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>為 Azure 轉送命名空間設定 IP 防火牆
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取轉送命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
@@ -29,7 +29,7 @@ IP 防火牆規則會在命名空間層級套用。 因此，規則會套用至�
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽到您的**轉送命名空間**。
 2. 在左側功能表上，選取 [網路] 選項。 如果您在 [允許從此存取] 區段中選取 [所有網路] 選項，「轉送」命名空間會接受來自任何 IP 位址的連線。 此設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
 
-    ![已選取 [防火牆 - 所有網路] 選項](./media/ip-firewall/all-networks-selected.png)
+    ![螢幕擷取畫面顯示已選取 [所有網路] 選項的 [網路] 頁面。](./media/ip-firewall/all-networks-selected.png)
 1. 若要將存取限制為特定網路和 IP 位址，請選取 [選取的網路] 選項。 在 [防火牆] 區段中，依照下列步驟：
     1. 選取 [新增您的用戶端 IP 位址] 選項，來將命名空間的存取權授與您目前的用戶端 IP。 
     2. 針對 [位址範圍]，輸入特定的 IPv4 位址，或是以 CIDR 標記法輸入 IPv4 位址的範圍。 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: a636acab42d14925f507568e8a9fff4693c8f71c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7f235f9255df49c096e224e1754ad2bbdf664423
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519638"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895817"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教學課程：改善法規合規性
 ---
@@ -35,8 +35,7 @@ Azure 資訊安全中心會利用**法規合規性儀表板**，協助您簡化�
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要逐步執行本教學課程中涵蓋的功能，您必須有資訊安全中心的標準定價層。 您可以免費試用資訊安全中心標準層。
-若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。 [將 Azure 訂用帳戶上架到資訊安全中心標準定價層](https://docs.microsoft.com/azure/security-center/security-center-get-started)快速入門會為您逐步解說如何升級至「標準」定價層。
+若要逐步執行本教學課程中涵蓋的功能，您必須啟用 [Azure Defender](azure-defender.md)。 您可以免費試用 Azure Defender 30 天。
 
 ##  <a name="assess-your-regulatory-compliance"></a>評估法規合規性
 
@@ -72,13 +71,13 @@ Azure 資訊安全中心會利用**法規合規性儀表板**，協助您簡化�
 
 1.  您可以選取特定資源以檢視更多詳細資料，並處理該資源的建議。 <br>例如，在 [Azure CIS 標準]  索引標籤上，您可以按一下建議：**需要安全傳輸至儲存體帳戶**。
 
-    ![合規性建議](./media/security-center-compliance-dashboard/compliance-recommendation.png)
+    ![選取**需要對儲存體帳戶進行安全傳輸**的建議](./media/security-center-compliance-dashboard/compliance-recommendation.png)
 
 1. 當您按一下建議資訊並選取狀況不良的資源後，系統會直接將您引導至 Azure 入口網站中啟用**安全儲存體傳輸**的體驗。
 
     如需有關如何套用建議的詳細資訊，請參閱[實作 Azure 資訊安全中心的安全性建議](security-center-recommendations.md)。
 
-    ![合規性建議](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
+    ![儲存體帳戶組態](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
 1.  在您採取行動來處理建議之後，您會看到合規性儀表板報告中產生了影響，因為合規性分數已改善。
 

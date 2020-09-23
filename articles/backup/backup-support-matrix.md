@@ -4,12 +4,12 @@ description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9b0698b16d3432c1bfefd3cf909cdfdf5529200e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 94a795ad91be1d648ad025287f5c5bc6f1d8d07e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892179"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985016"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -149,9 +149,9 @@ Azure 備份已新增跨區域還原功能來加強資料可用性和復原功�
 
 | 備份管理類型 | 支援                                                    | 支援的區域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 是。   支援加密 VM 和磁碟小於 4 TB 的 VM | 所有 Azure 公用區域。  |
-| MARS 代理程式/內部部署 | 否                                                           | N/A               |
-| SQL/SAP HANA          | 否                                                           | N/A               |
+| Azure VM               | 是。   支援加密 VM 和磁碟小於 4 TB 的 VM | 所有 Azure 公用區域和主權雲端。  |
+| SQL/SAP HANA | Yes                                                          | 所有 Azure 公用區域和主權雲端。             |
+| MARS 代理程式/內部部署  | 否                                                           | N/A               |
 | AFS                    | 否                                                           | N/A               |
 
 ## <a name="next-steps"></a>後續步驟

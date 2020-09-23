@@ -3,12 +3,12 @@ title: 準備 DPM 服務器來備份工作負載
 description: 在本文中，您將瞭解如何使用 Azure 備份服務來準備 System Center Data Protection Manager (DPM) 備份至 Azure。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 4534b75018fb91cedda00b8c1167012858c5e562
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021029"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975456"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>準備使用 System Center DPM 將工作負載備份到 Azure
 
@@ -42,7 +42,7 @@ Azure VM 上的 DPM | System Center 2012 R2 (含 DPM 2012 R2 更新彙總套件 
 實體伺服器上的 DPM | System Center 2012 SP1 或更新版本；System Center 2012 R2。
 Hyper-V VM 上的 DPM | System Center 2012 SP1 或更新版本；System Center 2012 R2。
 VMware VM 上的 DPM | System Center 2012 R2 (含更新彙總套件 5 或更新版本)。
-元件 | DPM 服務器應安裝 Windows PowerShell 和 .NET Framework 4.5。
+單元 | DPM 服務器應安裝 Windows PowerShell 和 .NET Framework 4.5。
 支援的應用程式 | [了解](/system-center/dpm/dpm-protection-matrix) DPM 可備份的項目。
 支援的檔案類型 | 以下是可使用 Azure 備份來備份的檔案類型：<br> <li>加密 (只) 完整備份<li> 支援的壓縮 (增量備份)  <li> 支援的稀疏 (增量備份) <li> 壓縮和稀疏 (視為稀疏) 
 不支援的檔案類型 | <li>區分大小寫的檔案系統上的伺服器<li> 永久連結 (略過) <li>  (跳過的重新分析點) <li> 已略過加密和壓縮 () <li> 已略過加密和稀疏 () <li> 壓縮資料流<li> 剖析資料流程
@@ -61,7 +61,7 @@ Azure 備份代理程式 | 如果 DPM 執行於 System Center 2012 SP1 上，請
 
 - 根據預設，保存庫具有異地備援儲存體。
 - 如果保存庫是主要備份，請讓選項繼續設定為異地備援儲存體。 如果您想要更便宜但不持久的選項，請使用下列程序來設定本地備援儲存體。
-- 了解 [Azure 儲存體](../storage/common/storage-redundancy.md)以及[異地備援](../storage/common/storage-redundancy.md)和[本地備援](../storage/common/storage-redundancy.md)儲存體選項。
+- 深入瞭解 [Azure 儲存體](../storage/common/storage-redundancy.md)，以及 [異地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)、 [本機冗余](../storage/common/storage-redundancy.md#locally-redundant-storage) 和 [區域冗余](../storage/common/storage-redundancy.md#zone-redundant-storage) 的儲存體選項。
 - 在初次備份之前應先修改儲存體設定。 如果您已備份某項目，請先修改儲存體設定，再將該項目備份到保存庫。
 
 若要編輯儲存體複寫設定︰
@@ -165,7 +165,7 @@ Azure 備份所備份的每部電腦都必須安裝備份代理程式，也就�
 
 7. 選取 [ **註冊** ] 以向保存庫註冊 DPM 服務器。
 
-將伺服器成功註冊至保存庫之後，您就可以開始備份至 Microsoft Azure。 您必須在 DPM 主控台中設定保護群組，以將工作負載備份至 Azure。 [瞭解如何](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) 部署保護群組。
+將伺服器成功註冊至保存庫之後，您就可以開始備份至 Microsoft Azure。 您必須在 DPM 主控台中設定保護群組，以將工作負載備份至 Azure。 [瞭解如何](/system-center/dpm/create-dpm-protection-groups) 部署保護群組。
 
 ## <a name="troubleshoot-vault-credentials"></a>對保存庫認證進行疑難排解
 

@@ -7,14 +7,14 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 5d281bf33542354e2904805deed2f1deaf2725a2
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 04c315f593b90204faaeaec562c18e9e4be301d8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875648"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881901"
 ---
-# <a name="azure-synapse-analytics-output-from-azure-stream-analytics-preview"></a>Azure Synapse Analytics Azure 串流分析 (Preview 的輸出) 
+# <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Azure 串流分析的 Azure Synapse Analytics 輸出
 
 [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) (先前為 SQL 資料倉儲) 是一種無限制的分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 
 
@@ -44,4 +44,4 @@ SQL 集區資料表必須先存在，您才能將其當做輸出新增至您的�
 * [快速入門：使用 ARM 範本建立 Azure 串流分析作業](quick-create-azure-resource-manager.md)
 * [快速入門：使用 Azure PowerShell 建立串流分析作業](stream-analytics-quick-create-powershell.md)
 * [快速入門：使用 Visual Studio 建立 Azure 串流分析作業](stream-analytics-quick-create-vs.md)
-* [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-vs-code.md)
+* [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-visual-studio-code.md)

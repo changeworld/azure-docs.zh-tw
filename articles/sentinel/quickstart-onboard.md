@@ -9,18 +9,18 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 3efd0303b447242c0229bc71720e55c8aa3a2f2d
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: e9d7c99a123bd92bf55a33c8d1faaf7da55d3e36
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566245"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889026"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>快速入門：使 Azure Sentinel 上線
 
 在本快速入門中，您將了解如何使 Azure Sentinel 上線。 
 
-若要讓 Azure Sentinel 上線，必須先啟用 Azure Sentinel，然後連線到您的資料來源。 Azure Sentinel 隨附多種適用於 Microsoft 解決方案的連接器，現成可用且提供即時整合，包括 Microsoft 威脅防護解決方案、Microsoft 365 來源 (包括 Office 365)、Azure AD、Azure ATP、Microsoft Cloud App Security 等等。 此外，還有適用於非 Microsoft 解決方案的內建連接器，用於連線至更廣泛的安全性生態系統。 您也可以使用常見事件格式 (CEF) (Syslog 或 REST API) 來連線資料來源與 Azure Sentinel。  
+若要讓 Azure Sentinel 上線，必須先啟用 Azure Sentinel，然後連線到您的資料來源。 Azure Sentinel 隨附多種適用於 Microsoft 解決方案的連接器，現成可用且提供即時整合，包括 Microsoft 365 Defender (前稱 Microsoft 威脅防護) 解決方案、Microsoft 365 來源 (包括 Office 365)、Azure AD、Microsoft Defender for Identity (前稱 Azure ATP)、Microsoft Cloud App Security 以及來自 Azure 資訊安全中心的 Azure Defender 警示等等。 此外，還有適用於非 Microsoft 解決方案的內建連接器，用於連線至更廣泛的安全性生態系統。 您也可以使用常見事件格式 (CEF) (Syslog 或 REST API) 來連線資料來源與 Azure Sentinel。 
 
 連線您的資料來源之後，請從建立的活頁簿 (以您的資料為基礎進行深入解析) 資源庫中選擇。 這些活頁簿可以根據您的需求輕鬆地進行自訂。
 
@@ -45,13 +45,13 @@ ms.locfileid: "88566245"
 
 1. 搜尋並選取 [Azure Sentinel]。
 
-   ![搜尋](./media/quickstart-onboard/search-product.png)
+   ![服務搜尋](./media/quickstart-onboard/search-product.png)
 
 1. 選取 [新增]。
 
 1. 選取您想要使用的工作區，或建立一個新的工作區。 您可以在一個以上的工作區上執行 Azure Sentinel，但資料會隔離到單一工作區。
 
-   ![搜尋](./media/quickstart-onboard/choose-workspace.png)
+   ![選擇工作區](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
    > - Azure 資訊安全中心所建立的預設工作區不會出現在清單中；您無法在其上安裝 Azure Sentinel。
@@ -64,7 +64,6 @@ ms.locfileid: "88566245"
    >   如果您已移動工作區，請停用 **Analytics** 下的所有作用中規則，然後在五分鐘後重新啟用。 不過在大部分的情況下，這種做法應該是有效的，但請注意此方法不受支援，而且您需自行承擔風險。
 
 1. 選取 [新增 Azure Sentinel]。
-  
 
 ## <a name="connect-data-sources"></a>連線資料來源
 

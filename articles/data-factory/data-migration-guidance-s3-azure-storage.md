@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 3f40ad7346219b48a38ade38b2a75ddf71940875
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5de1ef97050f37bb44d87ebae1d95df365952ace
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416425"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984893"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>使用 Azure Data Factory 將資料從 Amazon S3 遷移到 Azure 儲存體 
 
@@ -37,7 +37,7 @@ ADF 提供無伺服器的架構，其可供以不同層級進行平行處理，�
 
 客戶已成功將由數以百萬計檔案組成的數 PB 資料從 Amazon S3 移動到 Azure Blob 儲存體，且將輸送量維持在 2 GBps 以上。 
 
-![效能](media/data-migration-guidance-s3-to-azure-storage/performance.png)
+![圖表顯示 A W S S3 存放區中的數個檔案分割區，其中有相關聯的複製動作來 Azure Blob 儲存體 D L S Gen2。](media/data-migration-guidance-s3-to-azure-storage/performance.png)
 
 上圖說明如何透過不同層級的平行處理以達到絕佳資料移動速度：
  
@@ -61,7 +61,7 @@ ADF 提供無伺服器的架構，其可供以不同層級進行平行處理，�
 
 透過公用網際網路遷移資料：
 
-![solution-architecture-public-network](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
+![圖顯示透過網際網路從 A W S S3 市集中的 Azure Integration Runtime，透過 D F Azure 中的從網際網路遷移至 Azure 儲存體。 執行時間有 Data Factory 的控制通道。](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
 
 - 在此架構中，資料會透過公用網際網路，使用 HTTPS 安全地進行傳輸。 
 - 來源 Amazon S3 和目的地 Azure Blob 儲存體或 Azure Data Lake Storage Gen2 會設為允許來自所有網路 IP 位址的流量。  請參閱以下第二個架構來了解如何將網路存取限制在特定 IP 範圍。 
@@ -70,7 +70,7 @@ ADF 提供無伺服器的架構，其可供以不同層級進行平行處理，�
 
 透過私人連結遷移資料： 
 
-![solution-architecture-private-network](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
+![圖表顯示透過私人對等互連連線，透過 Azure 虛擬機器上的自我裝載整合執行時間，透過 Azure 虛擬機器上的自我裝載整合執行時間，將其遷移至 Azure 儲存體。 執行時間有 Data Factory 的控制通道。](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
 
 - 在此架構中，資料移轉是透過 AWS Direct Connect 和 Azure Express Route 之間的私人對等互連連結來執行，因此資料永遠都不會在公用網際網路上周遊。  其需要使用 AWS VPC 和 Azure 虛擬網路。 
 - 您需要在 Azure 虛擬網路內的 Windows VM 上安裝 ADF 自我裝載整合執行階段，才能達成此架構。  您可手動擴大自我裝載 IR VM，或擴增至多部 VM (最多 4 個節點) 來完整利用網路和儲存體 IOPS/頻寬。 
@@ -122,7 +122,7 @@ ADF 提供無伺服器的架構，其可供以不同層級進行平行處理，�
 
 考慮下列為將資料從 S3 遷移至 Azure Blob 儲存體所建構的管線： 
 
-![pricing-pipeline](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
+![下圖顯示用來遷移資料的管線，其中包含手動觸發程式流向查詢、流入 ForEach、流向包含複製到預存程式之每個資料分割的子管線。 在管線外部，預存程式會流向 Azure SQL D B，以流向查閱，以及要複製的 W S S3 流程，以流向 Blob 儲存體。](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
 
 讓我們假設下列情況： 
 
@@ -135,7 +135,7 @@ ADF 提供無伺服器的架構，其可供以不同層級進行平行處理，�
 
 以下是根據上述假設所估計的價格： 
 
-![pricing-table](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
+![資料表的螢幕擷取畫面會顯示預估價格。](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
 ### <a name="additional-references"></a>其他參考 
 - [Amazon Simple Storage Service 連接器](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)

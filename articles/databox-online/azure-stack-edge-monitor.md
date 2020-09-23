@@ -1,6 +1,6 @@
 ---
-title: 監視您的 Azure Stack Edge 裝置 | Microsoft Docs
-description: 描述如何使用 Azure 入口網站和本機 Web UI 來監視您的 Azure Stack Edge。
+title: 監視您的 Azure Stack Edge Pro 裝置 |Microsoft Docs
+description: 說明如何使用 Azure 入口網站和本機 web UI 來監視您的 Azure Stack Edge Pro。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 9e4050a4a75432e8bcc840a2406660dce268c5a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd75eb0f7de602979f2233a873c01ef742471e37
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339547"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904401"
 ---
-# <a name="monitor-your-azure-stack-edge"></a>監視您的 Azure Stack Edge
+# <a name="monitor-your-azure-stack-edge-pro"></a>監視您的 Azure Stack Edge Pro
 
-本文說明如何監視您的 Azure Stack Edge。 若要監視您的裝置，您可以使用 Azure 入口網站或本機 Web UI。 使用 Azure 入口網站來檢視裝置事件、設定及管理警示和檢視計量。 在您的實體裝置上使用本機 Web UI，來檢視各種裝置元件的硬體狀態。
+本文說明如何監視您的 Azure Stack Edge Pro。 若要監視您的裝置，您可以使用 Azure 入口網站或本機 Web UI。 使用 Azure 入口網站來檢視裝置事件、設定及管理警示和檢視計量。 在您的實體裝置上使用本機 Web UI，來檢視各種裝置元件的硬體狀態。
 
 在本文中，您將學會如何：
 
