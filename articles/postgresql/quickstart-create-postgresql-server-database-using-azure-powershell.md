@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 76c5bac600f05094f2e2a354cd5cf5895d9d45d2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 082adc0753cb8e41bc61f5703445e6b8507202b5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496605"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902686"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>快速入門：使用 PowerShell 建立適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 
@@ -165,11 +165,11 @@ pgAdmin 是搭配 PostgreSQL 使用的開放原始碼工具。 您可以從 [pgA
 
 1. 在 [建立 - 伺服器]**** 對話方塊的 [一般]**** 索引標籤上，輸入伺服器的唯一易記名稱，例如 **mydemoserver**。
 
-   ![[一般] 索引標籤](./media/quickstart-create-postgresql-server-database-using-azure-powershell/9-pgadmin-create-server.png)
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/9-pgadmin-create-server.png" alt-text="一般索引標籤":::
 
 1. 在 [建立 - 伺服器]**** 對話方塊的 [連線]**** 索引標籤上，填寫設定資料表。
 
-   ![[連線] 索引標籤](./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png)
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png" alt-text="連線索引標籤":::
 
     pgAdmin 參數 |值|描述
     ---|---|---
@@ -193,7 +193,7 @@ pgAdmin 是搭配 PostgreSQL 使用的開放原始碼工具。 您可以從 [pgA
 
 1. 從清單方塊中選取資料庫的 [擁有者]****。 選擇您的伺服器管理員登入名稱，例如範例中的 **my admin**。
 
-   ![在 pgAdmin 中建立資料庫](./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png)
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png" alt-text="在 pgAdmin 中建立資料庫":::
 
 1. 選取 [儲存]**** 以建立新的空白資料庫。
 

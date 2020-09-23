@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Stack Edge GPU 上計算功能來篩選、分析資料的教學課程 | Microsoft Docs
-description: 了解如何設定 Azure Stack Edge GPU 上的計算角色，並使用它在資料傳送至 Azure 之前先轉換資料。
+title: 使用 Azure Stack Edge Pro GPU 上計算功能來篩選、分析資料的教學課程 | Microsoft Docs
+description: 了解如何設定 Azure Stack Edge Pro GPU 上的計算角色，並使用它在資料傳送至 Azure 之前先轉換資料。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: f4a8786c8d86f43d3433dd51fe7696fd523025a9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
+ms.openlocfilehash: 95c59cff1f47fe720e2dbc65c5b0a69a09be2f2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293539"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903176"
 ---
-# <a name="tutorial-configure-compute-on-azure-stack-edge-gpu-device"></a>教學課程：在 Azure Stack Edge GPU 裝置上設定計算
+# <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>教學課程：在 Azure Stack Edge Pro GPU 裝置上設定計算
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本教學課程說明如何在 Azure Stack Edge 裝置上設定計算角色並建立 Kubernetes 叢集。 
+本教學課程說明如何在 Azure Stack Edge Pro 裝置上設定計算角色並建立 Kubernetes 叢集。 
 
 此程序大約需要 20 至 30 分鐘才能完成。
 
@@ -34,16 +34,16 @@ ms.locfileid: "89293539"
  
 ## <a name="prerequisites"></a>必要條件
 
-在 Azure Stack Edge 裝置上設定計算角色之前，請確定：
+在 Azure Stack Edge Pro 裝置上設定計算角色之前，請確定：
 
-- 您已依照[啟動 Azure Stack Edge](azure-stack-edge-gpu-deploy-activate.md) 中的說明來啟動 Azure Stack Edge 裝置。
+- 您已依照[啟動 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md) 中的說明來啟動 Azure Stack Edge Pro 裝置。
 - 請確定您已遵循[啟用計算網路](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md#enable-compute-network)中的指示，以及：
     - 已啟用網路介面進行計算。
     - 指派的 Kubernetes 節點 IP 和 Kubernetes 外部服務 IP。
 
 ## <a name="configure-compute"></a>設定計算
 
-若要設定 Azure Stack Edge 上的計算，您會透過 Azure 入口網站建立 IoT 中樞資源。
+若要設定 Azure Stack Edge Pro 上的計算，您會透過 Azure 入口網站建立 IoT 中樞資源。
 
 1. 在 Azure Stack Edge 資源的 Azure 入口網站中，移至 [概觀]。 在右窗格的 [計算] 圖格上，選取 [開始使用]。
 
@@ -72,17 +72,17 @@ ms.locfileid: "89293539"
     ![開始使用計算](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
     > [!NOTE]
-    > 如果在 [設定計算] 對話方塊關閉後，IoT 中樞才與 Azure Stack Edge 裝置相關聯，則會建立 IoT 中樞，但不會顯示在計算設定中。 
+    > 如果在 [設定計算] 對話方塊關閉後，IoT 中樞才與 Azure Stack Edge Pro 裝置相關聯，則會建立 IoT 中樞，但不會顯示在計算設定中。 
     
 在 Edge 裝置上設定 Edge 計算角色時，其會建立兩個裝置：一個 IoT 裝置和一個 IoT Edge 裝置。 這兩個裝置都可以在 IoT 中樞資源中檢視。 IoT Edge 執行階段也是在此 IoT Edge 裝置上執行。 目前只有 Linux 平台適用於您的 IoT Edge 裝置。
 
 設定計算可能需要 20-30 分鐘的時間，因為系統會在幕後作業並建立虛擬機器和 Kubernetes 叢集。 
 
-在 Azure 入口網站中成功設定計算之後，就會存在與 IoT 命名空間 (由 Azure Stack Edge 控制的系統命名空間) 相關聯的 Kubernetes 叢集和預設使用者。 
+在 Azure 入口網站中成功設定計算之後，就會存在與 IoT 命名空間 (由 Azure Stack Edge Pro 控制的系統命名空間) 相關聯的 Kubernetes 叢集和預設使用者。 
 
 ## <a name="get-kubernetes-endpoints"></a>取得 Kubernetes 端點
 
-若要設定用戶端來存取 Kubernetes 叢集，您需要 Kubernetes 端點。 請遵循下列步驟，從 Azure Stack Edge 裝置的本機 UI 取得 Kubernetes API 端點。
+若要設定用戶端來存取 Kubernetes 叢集，您需要 Kubernetes 端點。 請遵循下列步驟，從 Azure Stack Edge Pro 裝置的本機 UI 取得 Kubernetes API 端點。
 
 1. 在裝置的本機 Web UI 中，移至**裝置**頁面。
 2. 在**裝置端點**下，複製 **Kubernetes API 服務**端點。 此端點的字串為下列格式：`https://compute.<device-name>.<DNS-domain>[Kubernetes-cluster-IP-address]`。 
@@ -117,7 +117,7 @@ ms.locfileid: "89293539"
 > * 取得 Kubernetes 端點
 
 
-若要了解如何管理您的 Azure Stack Edge 裝置，請參閱：
+若要了解如何管理您的 Azure Stack Edge Pro 裝置，請參閱：
 
 > [!div class="nextstepaction"]
-> [使用本機 Web UI 來管理 Azure Stack Edge](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [使用本機 Web UI 來管理 Azure Stack Edge Pro](azure-stack-edge-manage-access-power-connectivity-mode.md)

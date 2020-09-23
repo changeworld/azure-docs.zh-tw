@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 0a025ad7857594b3117b1703a0e19ae47407d0fd
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 87085d4a4911801933993720ae0ab23aeb19956d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018096"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974371"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教學課程：設定 Workday 來自動佈建使用者
 
@@ -39,7 +39,7 @@ ms.locfileid: "90018096"
 
 * **員工重新雇用** -在 Workday 中 workday 重新雇用員工時，根據您的喜好設定) Active Directory、Azure Active Directory，以及 [其他 Microsoft 365 支援的 SaaS 應用程式](../app-provisioning/user-provisioning.md)，可以自動重新開機或重新布建舊帳戶 (。
 
-### <a name="whats-new"></a>新功能
+### <a name="whats-new"></a>最新消息
 本節將捕獲最近的 Workday 整合增強功能。 如需完整更新、已規劃的變更和封存清單，請流覽 [Azure Active Directory 的新功能頁面。](../fundamentals/whats-new.md) 
 
 * **5 月 2020-將電話號碼回寫至 Workday 的能力：** 除了電子郵件和使用者名稱之外，您現在也可以將公司電話號碼和行動電話號碼從 Azure AD 回寫至 Workday。 如需詳細資訊，請參閱 [回寫應用程式教學](workday-writeback-tutorial.md)課程。
@@ -258,7 +258,7 @@ ms.locfileid: "90018096"
 > 如果您想要將布建代理程式限制為只基於測試目的而從特定 OU 建立和讀取使用者，建議您在測試執行期間，于適當的 OU 層級委派控制項。
 
 4. 按一下 [歡迎使用] 畫面上的 **[下一步]** 。 
-5. 在 [ **選取使用者或群組** ] 畫面上，新增您在步驟2中建立的網域使用者。 按 [下一步] 。
+5. 在 [ **選取使用者或群組** ] 畫面上，新增您在步驟2中建立的網域使用者。 按 [下一步]  。
    >[!div class="mx-imgBorder"]
    >![新增畫面](./media/workday-inbound-tutorial/delegation-wizard-01.png "新增畫面")
 
@@ -373,7 +373,7 @@ ms.locfileid: "90018096"
 1. 開啟 [服務] 嵌入式管理單元，並尋找名為 "Microsoft Azure AD Connect Provisioning Agent" 的服務，以確認代理程式已安裝且在執行中
 
    >[!div class="mx-imgBorder"]
-   >![在服務中執行的 Microsoft Azure AD Connect 布建代理程式的螢幕擷取畫面](./media/workday-inbound-tutorial/services.png)
+   >![在服務中執行的 Microsoft Azure AD Connect 布建代理程式的螢幕擷取畫面。](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>第 3 部分：在佈建應用程式中，設定 Workday 和 Active Directory 的連線能力
 在此步驟中，我們將在 Azure 入口網站中建立 Workday 和 Active Directory 的連線能力。 
@@ -390,9 +390,9 @@ ms.locfileid: "90018096"
    
      | URL 格式 | 使用的 WWS API 版本 | 需要 XPATH 變更 |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21。1 | 否 |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21。1 | 否 |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #。# | 是 |
+     | https://####.workday.com/ccx/service/tenantName | v 21。1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21。1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #。# | Yes |
 
       > [!NOTE]
      > 如果未在 URL 中指定任何版本資訊，應用程式會使用 Workday Web 服務 (WWS) v 21.1，而且應用程式隨附的預設 XPATH API 運算式不需要進行任何變更。 若要使用特定的 WWS API 版本，請在 URL 中指定版本號碼 <br>

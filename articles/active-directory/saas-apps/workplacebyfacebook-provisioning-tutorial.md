@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 4b4953cbca4d08e911fd043413387a1602bd8e08
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: ae13e062f50e1e8eefeaa886c67c636cf6230c18
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006069"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973876"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教學課程：設定 Workplace by Facebook 來自動佈建使用者
 
@@ -89,7 +89,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 5. 在 [ **管理員認證** ] 區段下，按一下 [ **授權**]。 系統會將您重新導向至 Workplace by Facebook 的授權頁面。 輸入您的 Workplace by Facebook 使用者名稱，然後按一下 [ **繼續** ] 按鈕。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Workplace by Facebook。 如果連接失敗，請確定您的 Workplace by Facebook 帳戶具有系統管理員許可權，然後再試一次。
 
-    ![佈建](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
+    ![螢幕擷取畫面：顯示具有授權選項的 [管理認證] 對話方塊。](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
     ![授權](./media/workplacebyfacebook-provisioning-tutorial/workplacelogin.png)
 
@@ -125,14 +125,14 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |phoneNumbers[type eq "fax"].value|String|
    |externalId|String|
    |preferredLanguage|String|
-   |urn： scim：架構： extension： enterprise： 1.0. 管理員|String|
-   |urn： scim：架構：延伸： enterprise： 1.0. 部門|String|
-   |urn： scim：架構： extension： enterprise： 1.0. 除法|String|
-   |urn： scim：架構：延伸： enterprise： 1.0. 組織|String|
-   |urn： scim：架構： extension： enterprise： 1.0. costCenter|String|
-   |urn： scim：架構： extension： enterprise： 1.0. employeeNumber|String|
+   |urn:scim:schemas:extension:enterprise:1.0.manager|String|
+   |urn:scim:schemas:extension:enterprise:1.0.department|String|
+   |urn:scim:schemas:extension:enterprise:1.0.division|String|
+   |urn:scim:schemas:extension:enterprise:1.0.organization|String|
+   |urn:scim:schemas:extension:enterprise:1.0.costCenter|String|
+   |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|String|
    |urn： scim：架構： extension： facebook： auth_method：1.0： auth_method|String|
-   |urn： scim：架構： extension： facebook： frontline： 1.0. is_frontline|布林值|
+   |urn： scim：架構： extension： facebook： frontline：1.0.is_frontline|布林值|
    |urn： scim：架構： extension： facebook： starttermdates： 1.0. 開始日期|整數|
 
 
@@ -157,7 +157,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入了解隔離狀態。
 
 ## <a name="troubleshooting-tips"></a>疑難排解提示
 *  如果您看到使用者未成功建立，且有代碼為 "1789003" 的 audit log 事件，表示該使用者來自未驗證的網域。

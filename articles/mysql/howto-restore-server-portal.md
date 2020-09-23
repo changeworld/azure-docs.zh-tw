@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: c6a35d9ba2d2f1c762f44b3792792401565c4804
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 7c9e7cda862fe1112cce7ed8cff270843f0a8475
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421079"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902787"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 入口網站在適用於 MySQL 的 Azure 資料庫中備份和還原伺服器
 
@@ -32,7 +32,7 @@ ms.locfileid: "89421079"
 
 透過 Azure 入口網站建立伺服器時，您可以在 [定價層]**** 視窗中為伺服器選取 [本地備援]**** 或 [異地備援]**** 備份。 您也可以在此視窗中選取 [備份保留期限]**** - 您要儲存伺服器備份的時間長度 (以天數計算)。
 
-   ![定價層 - 選擇備份備援](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="定價層 - 選擇備份備援":::
 
 如需在建立期間設定這些值的詳細資訊，請參閱[適用於 MySQL 的 Azure 資料庫伺服器快速入門](quickstart-create-mysql-server-database-using-azure-portal.md)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "89421079"
 2. 選取適用於 MySQL 的 Azure 資料庫伺服器。 這個動作會開啟 [概觀] 頁面。
 3. 在 [設定]**** 下方的功能表中選取 [定價層]****。 您可以使用滑桿將 [備份保留期限]**** 變更為想要的天數 (7 到 35 天)。
 下列螢幕擷取畫面中的期限已增加到 34 天。
-![已增加的備份保留期限](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="已增加的備份保留期限":::
 
 4. 按一下 [確認]**** 以確認變更。
 
@@ -57,11 +57,11 @@ ms.locfileid: "89421079"
 
 2. 在伺服器 [概觀]**** 頁面的工具列中，選取 [還原]****。
 
-   ![適用於 MySQL 的 Azure 資料庫 - 概觀 - 還原按鈕](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 概觀 - 還原按鈕":::
 
 3. 在 [還原] 表單中填入必要資訊︰
 
-   ![適用於 MySQL 的 Azure 資料庫 - 還原資訊](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 還原資訊":::
    - **還原點**：選取您想要還原到那時候的時間點。
    - **目標伺服器**：提供新伺服器的名稱。
    - **位置**：您無法選取區域。 它預設與來源伺服器相同。
@@ -106,7 +106,7 @@ ms.locfileid: "89421079"
    
    :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="選取 [備份]。":::
 
-6. 伺服器會預設為 **虛擬核心**數目、 **備份保留期限**、 **備份冗余選項**、 **引擎版本**和系統 **管理員認證**的值。 選取 [繼續]  。 
+6. 伺服器會預設為 **虛擬核心**數目、 **備份保留期限**、 **備份冗余選項**、 **引擎版本**和系統 **管理員認證**的值。 選取 [繼續]。 
    
    :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="繼續進行備份。":::
 
@@ -116,7 +116,7 @@ ms.locfileid: "89421079"
 
    :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="填滿表單。"::: 
 
-8. 選取 [檢閱 + 建立] 以檢閱您的選項。 
+8. 選取 [檢閱 + 建立]  以檢閱您的選項。 
 
 9. 選取 [建立] 以佈建伺服器。 這項作業可能需要幾分鐘的時間。
 

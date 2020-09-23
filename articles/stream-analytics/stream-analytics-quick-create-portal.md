@@ -7,12 +7,12 @@ ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 4abf5078a005f9d928397d9666e7f2bc55d65f19
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5ad261064adf34945a600983296cb3e0ceaa5247
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75431557"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901078"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立串流分析作業
 
@@ -36,14 +36,14 @@ ms.locfileid: "75431557"
    
    |**設定**  |**建議的值**  |**說明**  |
    |---------|---------|---------|
-   |訂用帳戶  | \<您的訂用帳戶\> |  選取您要使用的 Azure 訂用帳戶。 |
+   |訂用帳戶  | \<Your subscription\> |  選取您要使用的 Azure 訂用帳戶。 |
    |資源群組   |   asaquickstart-resourcegroup  |   選取 [新建]  ，然後為您的帳戶輸入新的資源群組名稱。 |
-   |區域  |  \<選取最接近使用者的區域\> | 選取您可以在其中裝載 IoT 中樞的地理位置。 使用最靠近您的使用者的位置。 |
+   |區域  |  \<Select the region that is closest to your users\> | 選取您可以在其中裝載 IoT 中樞的地理位置。 使用最靠近您的使用者的位置。 |
    |IoT 中樞名稱  | MyASAIoTHub  |   選取您的 IoT 中樞名稱。   |
 
    ![建立 IoT 中樞](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
 
-4. 選取 [下一步: 設定大小與級別]  。
+4. 完成時，選取 [下一步:  設定大小與級別]。
 
 5. 選擇您的**定價與級別層**。 在本快速入門中，選取 [F1-免費]  層 (如果仍可用於您的訂用帳戶)。 如需詳細資訊，請參閱 [IoT 中樞定價](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
@@ -51,7 +51,7 @@ ms.locfileid: "75431557"
 
 6. 選取 [檢閱 + 建立]  。 檢閱您的 IoT 中樞資訊，然後按一下 [建立]  。 建立 IoT 中樞可能需要數分鐘。 您可以在 [通知]  窗格中監視進度。
 
-7. 在您的 IoT 中樞導覽功能表中，按一下 [IoT 裝置] 之下的 [新增]。 新增 [裝置識別碼]  ，然後按一下 [儲存]  。
+7. 在您的 IoT 中樞導覽功能表中，按一下 [IoT 裝置]  之下的 [新增]  。 新增 [裝置識別碼]  ，然後按一下 [儲存]  。
 
    ![將裝置新增至 IoT 中樞](./media/stream-analytics-quick-create-portal/add-device-iot-hub.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "75431557"
 
    ![建立儲存體帳戶](./media/stream-analytics-quick-create-portal/create-storage-account.png)
 
-3. 建立儲存體帳戶後，選取 [概觀] 窗格上的 [Blob] 圖格。
+3. 建立儲存體帳戶後，選取 [概觀]  窗格上的 [Blob]  圖格。
 
    ![儲存體帳戶概觀](./media/stream-analytics-quick-create-portal/blob-storage.png)
 
@@ -81,24 +81,24 @@ ms.locfileid: "75431557"
 
 2. 選取 Azure 入口網站左上角的 [建立資源]  。  
 
-3. 從結果清單中選取 [分析]   > [串流分析作業]  。  
+3. 從結果清單中選取 [分析] > [串流分析作業]。  
 
 4. 填寫串流分析作業頁面，並提供下列資訊：
 
    |**設定**  |**建議的值**  |**說明**  |
    |---------|---------|---------|
    |作業名稱   |  MyASAJob   |   輸入用來識別您串流分析作業的名稱。 串流分析作業名稱只可包含英數字元、連字號與底線，且其長度必須介於 3 到 63 個字元之間。 |
-   |訂用帳戶  | \<您的訂用帳戶\> |  選取您要用於此作業的 Azure 訂用帳戶。 |
+   |訂用帳戶  | \<Your subscription\> |  選取您要用於此作業的 Azure 訂用帳戶。 |
    |資源群組   |   asaquickstart-resourcegroup  |   選取與您的 IoT 中樞相同的資源群組。 |
-   |Location  |  \<選取最接近使用者的區域\> | 選取您可以在其中裝載串流分析作業的地理位置。 使用最接近使用者的區域以提升效能並減少資料轉送成本。 |
+   |位置  |  \<Select the region that is closest to your users\> | 選取您可以在其中裝載串流分析作業的地理位置。 使用最接近使用者的區域以提升效能並減少資料轉送成本。 |
    |串流單位  | 1  |   串流單位代表執行作業所需的計算資源。 根據預設，此值設定為 1。 若要深入了解如何調整串流單位，請參閱[了解與調整串流單位](stream-analytics-streaming-unit-consumption.md)一文。   |
    |裝載環境  |  Cloud  |   串流分析作業可以部署到雲端或邊緣裝置。 雲端部分可讓您部署到 Azure 雲端，邊緣裝置部分可讓您部署到 IoT Edge 裝置。 |
 
    ![建立作業](./media/stream-analytics-quick-create-portal/create-asa-job.png)
 
-5. 核取 [釘選至儀表板]  方塊，以將作業放在您的儀表板上，然後選取 [建立]  。  
+5. 核取 [釘選至儀表板]**** 方塊，以將作業放在您的儀表板上，然後選取 [建立]****。  
 
-6. 您應會看到「部署進行中...」  通知顯示在瀏覽器視窗的右上方。 
+6. 您應會看到「部署進行中...」** 通知顯示在瀏覽器視窗的右上方。 
 
 ## <a name="configure-job-input"></a>設定作業輸入
 
@@ -106,14 +106,14 @@ ms.locfileid: "75431557"
 
 1. 瀏覽至您的串流分析作業。  
 
-2. 選取 [輸入]   > [新增串流輸入]   > [IoT 中樞]  。  
+2. 選取 [輸入] > [新增串流輸入] > [IoT 中樞]。  
 
-3. 使用下列值填寫 [IoT 中樞]  頁面：
+3. 使用下列值填寫 [IoT 中樞]**** 頁面：
 
    |**設定**  |**建議的值**  |**說明**  |
    |---------|---------|---------|
    |輸入別名  |  IoTHubInput   |  輸入名稱以識別作業的輸入。   |
-   |訂用帳戶   |  \<您的訂用帳戶\> |  選取您在其中建立儲存體帳戶的 Azure 訂用帳戶。 儲存體帳戶可以位在相同或不同的訂用帳戶中。 此範例假設您已在相同的訂用帳戶中建立儲存體帳戶。 |
+   |訂用帳戶   |  \<Your subscription\> |  選取您在其中建立儲存體帳戶的 Azure 訂用帳戶。 儲存體帳戶可以位在相同或不同的訂用帳戶中。 此範例假設您已在相同的訂用帳戶中建立儲存體帳戶。 |
    |IoT 中樞  |  MyASAIoTHub |  輸入在上一節中建立的 IoT 中樞名稱。 |
 
 4. 其他選項保留為預設值，然後選取 [儲存]  以儲存設定。  
@@ -124,14 +124,14 @@ ms.locfileid: "75431557"
 
 1. 瀏覽至您先前建立的串流分析作業。  
 
-2. 選取 [輸出]   > [新增]   > [Blob 儲存體]  。  
+2. 選取 [輸出] > [新增] > [Blob 儲存體]。  
 
-3. 使用下列值填寫 [Blob 儲存體]  頁面：
+3. 使用下列值填寫 [Blob 儲存體]**** 頁面：
 
    |**設定**  |**建議的值**  |**說明**  |
    |---------|---------|---------|
    |輸出別名 |   BlobOutput   |   輸入名稱以識別作業的輸出。 |
-   |訂用帳戶  |  \<您的訂用帳戶\>  |  選取您在其中建立儲存體帳戶的 Azure 訂用帳戶。 儲存體帳戶可以位在相同或不同的訂用帳戶中。 此範例假設您已在相同的訂用帳戶中建立儲存體帳戶。 |
+   |訂用帳戶  |  \<Your subscription\>  |  選取您在其中建立儲存體帳戶的 Azure 訂用帳戶。 儲存體帳戶可以位在相同或不同的訂用帳戶中。 此範例假設您已在相同的訂用帳戶中建立儲存體帳戶。 |
    |儲存體帳戶 |  asaquickstartstorage |   選擇或輸入儲存體帳戶的名稱。 系統會自動偵測建立在相同訂用帳戶中的儲存體帳戶名稱。       |
    |容器 |   container1  |  選取您在儲存體帳戶中建立的現有容器。   |
 
@@ -143,7 +143,7 @@ ms.locfileid: "75431557"
 
 1. 瀏覽至您先前建立的串流分析作業。  
 
-2. 選取 [查詢]  並更新查詢，如下所示：  
+2. 選取 [查詢]**** 並更新查詢，如下所示：  
 
    ```sql
    SELECT *
@@ -152,7 +152,7 @@ ms.locfileid: "75431557"
    HAVING Temperature > 27
    ```
 
-3. 在此範例中，查詢會從 IoT 中樞讀取資料，並將資料複製到 Blob 中的新檔案。 選取 [儲存]  。  
+3. 在此範例中，查詢會從 IoT 中樞讀取資料，並將資料複製到 Blob 中的新檔案。 選取 [儲存]。  
 
    ![設定工作轉換](./media/stream-analytics-quick-create-portal/add-asa-query.png)
 
@@ -168,9 +168,9 @@ ms.locfileid: "75431557"
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>啟動串流分析工作並查看輸出
 
-1. 回到作業概觀頁面，然後選取 [啟動]  。
+1. 回到作業概觀頁面，然後選取 [啟動]****。
 
-2. 在 [啟動作業] 之下，針對 [作業輸出開始時間]  欄位，選取 [現在]。 然後，選取 [啟動]  以啟動作業。
+2. 在 [啟動作業]**** 之下，針對 [作業輸出開始時間] **** 欄位，選取 [現在]****。 然後，選取 [啟動]**** 以啟動作業。
 
 3. 幾分鐘後，在入口網站中尋找您設定為作業輸出的儲存體帳戶和容器。 您現在可以在容器中看到輸出檔。 第一次啟動作業需要幾分鐘的時間，作業一旦啟動後，即會在資料送達時繼續執行。  
 
@@ -186,7 +186,7 @@ ms.locfileid: "75431557"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已使用 Azure 入口網站部署了簡單的串流分析作業。 您也可以使用 [PowerShell](stream-analytics-quick-create-powershell.md)、[Visual Studio](stream-analytics-quick-create-vs.md) 和 [Visual Studio Code](quick-create-vs-code.md) 部署串流分析作業。
+在本快速入門中，您已使用 Azure 入口網站部署了簡單的串流分析作業。 您也可以使用 [PowerShell](stream-analytics-quick-create-powershell.md)、[Visual Studio](stream-analytics-quick-create-vs.md) 和 [Visual Studio Code](quick-create-visual-studio-code.md) 部署串流分析作業。
 
 若要了解如何設定其他輸入來源及執行即時偵測，請前往下列文章：
 

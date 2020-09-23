@@ -9,17 +9,42 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 09/04/2020
-ms.openlocfilehash: a2d27f892e79d99f515032b72e1ec090ab1f6a31
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.date: 09/22/2020
+ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500346"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900586"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 版本資訊 
 
 本文說明新功能，以及 Azure SQL Edge 每個新組建的變更內容。
+
+## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge-1.0.0 (RTM) 
+
+### <a name="sql-engine-build-number---15020001549"></a>SQL 引擎組建編號-15.0.2000.1549
+
+### <a name="whats-new"></a>新功能
+1. 以 Ubuntu 18.04 為基礎的容器映射。 
+2. 和函數的支援 `IGNORE NULL` 和 `RESPECT NULL` 語法 `LAST_VALUE()` `FIRST_VALUE()` 。 
+3. 使用 ONNX 進行預測的可靠性改進。
+4. 支援以資料保留原則為基礎的清除。      
+   - 支援叢集資料行存放區索引的優化清除。
+5. 新功能支援 
+   - 快速復原
+   - 自動調整查詢
+
+### <a name="fixes"></a>修正
+1. 疑難排解 TSQL 串流作業的其他錯誤訊息和詳細資料。 
+2. 以閒置模式保持電池壽命的增強功能。 
+3. TSQL 串流引擎修正： 
+   - 清除已停止的串流作業 
+   - 修正當地語系化和 unicode 處理的改進
+4. 以資料保留原則為基礎的清除
+   - 針對保留原則建立和清除案例的修正。
+5. 修正背景計時器工作，以改善低電源模式的電源節約。
+
 
 ## <a name="ctp-23"></a>CTP 2.3
 ### <a name="sql-engine-build-number---15020001549"></a>SQL 引擎組建編號-15.0.2000.1549
@@ -33,7 +58,7 @@ ms.locfileid: "89500346"
 
 ### <a name="fixes"></a>修正
 1. 疑難排解 TSQL 串流作業的其他錯誤訊息和詳細資料。 
-2. 改進功能可保持電池壽命處於閒置模式。 
+2. 以閒置模式保持電池壽命的增強功能。 
 3. TSQL 串流引擎修正： 
    - 修正 substreamed 跳動視窗的停滯水位線問題 
    - 修正架構例外狀況處理，以確保它會被收集為使用者可採取動作的錯誤

@@ -51,8 +51,8 @@
               href: database/security-baseline.md
             - name: 安全性屬性
               href: database/security-controls.md
-            - name: 進階資料安全性
-              href: database/advanced-data-security.md
+            - name: 適用於 SQL 的 Azure Defender
+              href: database/azure-defender-for-sql.md
             - name: 進階威脅防護
               href: database/threat-detection-overview.md
             - name: 資料探索與分類
@@ -712,6 +712,10 @@
           items:
             - name: 概觀
               href: managed-instance/management-operations-overview.md
+            - name: 監視作業
+              href: managed-instance/management-operations-monitor.md
+            - name: 取消作業
+              href: managed-instance/management-operations-cancel.md
             - name: API 參考資料
               href: managed-instance/api-references-create-manage-instance.md
         - name: 機器學習服務
@@ -1030,7 +1034,7 @@
                       href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
                     - name: 手動設定
                       items:
-                        - name: Prerequisites
+                        - name: 必要條件
                           href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
                         - name: 教學課程
                           href: virtual-machines/windows/availability-group-manually-configure-tutorial.md

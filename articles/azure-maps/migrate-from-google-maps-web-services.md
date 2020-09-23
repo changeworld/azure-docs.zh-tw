@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 934a7546464cf552c355ee6b4e278b79a0f9ff90
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8cc16e611002748dad2716a1c8dc914f297da9f1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747491"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090545"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>從 Google Maps 遷移 Web 服務
 
@@ -495,6 +495,9 @@ Azure 地圖服務針對下列程式設計語言提供了用戶端程式庫：
 
 > [!div class="nextstepaction"]
 > [如何使用服務模組 (Web SDK)](how-to-use-best-practices-for-routing.md)
+
+> [!div class="nextstepaction"]
+> [Azure 地圖服務 REST 服務 API 參考文件](https://docs.microsoft.com/rest/api/maps/)
 
 > [!div class="nextstepaction"]
 > [程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
