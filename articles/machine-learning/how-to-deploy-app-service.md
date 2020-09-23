@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 73769a5f8a677f5e08610560db1e5d90dd5b7c3a
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7c98bfe4adb9cbbcc1009c530ba875511ea9ec01
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645604"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905115"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>將機器學習模型部署至 Azure App Service (preview) 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 瞭解如何在 Azure App Service 將模型從 Azure Machine Learning 部署為 web 應用程式。
 
@@ -54,7 +54,7 @@ ms.locfileid: "89645604"
 
 ## <a name="prepare-for-deployment"></a>準備開始部署
 
-在部署之前，您必須定義以 web 服務的形式執行模型所需的內容。 下列清單描述部署所需的基本專案：
+在部署之前，您必須定義以 web 服務的形式執行模型所需的內容。 下列清單描述部署所需的主要專案：
 
 * __輸入腳本__。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
 
@@ -268,7 +268,7 @@ print(response.elapsed)
 print(response.json())
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解如何在 [Linux 上的 App Service](/azure/app-service/containers/) 檔中設定您的 Web 應用程式。
 * 深入瞭解如何 [在 Azure 中開始使用自動](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)調整規模。

@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 642186ef4af43127ba0d6eb6950f09e069eb79ca
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6f557ac8476224cdb8414b2a45952d8f7d34513d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649287"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904997"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>監視和查看 ML 執行記錄和計量
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將瞭解如何監視 Azure Machine Learning 執行和查看其記錄。 在您可以查看記錄之前，您必須先加以啟用。 如需詳細資訊，請參閱 [在 AZURE ML 定型回合中啟用記錄](how-to-track-experiments.md)。
 
@@ -125,11 +125,11 @@ RunDetails(run).show()
 |使用 2 個數字資料行記錄資料表|`run.log_table(name='Sine Wave', value=sines)`|兩個變數的折線圖|
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 請嘗試下列後續步驟，以瞭解如何使用 Azure Machine Learning：
 
-* 瞭解如何 [在 Azure Machine Learning 設計工具 (preview) 中追蹤實驗和啟用記錄 ](how-to-track-designer-experiments.md)。
+* 瞭解如何 [在 Azure Machine Learning 設計工具中追蹤實驗和啟用記錄](how-to-track-designer-experiments.md)。
 
 * 關於如何註冊最佳模型，並在教學課程中加以部署的範例，請參閱[使用 Azure Machine Learning 定型映像分類模型](tutorial-train-models-with-aml.md)。
 

@@ -1,14 +1,14 @@
 ---
 title: Azure 原則的概觀
 description: Azure 原則是 Azure 中的一個服務，您可以在 Azure 環境中用來建立、指派和管理原則定義。
-ms.date: 06/17/2020
+ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 662a7510013e2008d8c16cf21376b11c247e0bc0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044187"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905971"
 ---
 # <a name="what-is-azure-policy"></a>什麼是 Azure 原則？
 
@@ -18,8 +18,7 @@ Azure 原則的常見使用案例包括針對資源一致性、法規合規性�
 
 ## <a name="overview"></a>概觀
 
-Azure 原則會將這些資源屬性與商務規則做比較，藉此評估 Azure 中的資源。 這些以 [JSON 格式](./concepts/definition-structure.md)描述的商務規則稱為[原則定義](#policy-definition)。 為了簡化管理，您可以將數個商務規則結合在群組中，以形成[原則計畫](#initiative-definition) (有時稱為 policySet)。 當您的商務規則形成之後，原則定義或計畫就會[指派](#assignments)到 Azure 支援的任何資源範圍，例如[管理群組](../management-groups/overview.md)、訂用帳戶、[資源群組](../../azure-resource-manager/management/overview.md#resource-groups)或個別資源。 指派會套用至該指派[範圍](../../azure-resource-manager/management/overview.md#understand-scope)內的所有資源。
-如有必要，您可以排除子範圍。
+Azure 原則會將這些資源屬性與商務規則做比較，藉此評估 Azure 中的資源。 這些以 [JSON 格式](./concepts/definition-structure.md)描述的商務規則稱為[原則定義](#policy-definition)。 為了簡化管理，您可以將數個商務規則結合在群組中，以形成[原則計畫](#initiative-definition) (有時稱為 policySet)。 當您的商務規則形成之後，原則定義或計畫就會[指派](#assignments)到 Azure 支援的任何資源範圍，例如[管理群組](../management-groups/overview.md)、訂用帳戶、[資源群組](../../azure-resource-manager/management/overview.md#resource-groups)或個別資源。 指派會套用至該指派 [Resource Manager 範圍](../../azure-resource-manager/management/overview.md#understand-scope)內的所有資源。 如有必要，您可以排除子範圍。 如需詳細資訊，請參閱 [Azure 原則中的範圍](./concepts/scope.md)。
 
 Azure 原則會使用 [JSON 格式](./concepts/definition-structure.md)來形成評估作業用來判斷資源是否符合規範的邏輯。 定義包括中繼資料和原則規則。 定義的規則可使用函式、參數、邏輯運算子、條件和屬性[別名](./concepts/definition-structure.md#aliases)，來確切符合您想要的情況。 原則規則會決定指派範圍中的哪些資源要受到評估。
 

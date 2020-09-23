@@ -10,18 +10,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: bd52cb9ba10cbbc7823cf631cea146cdccdad4e1
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278134"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905472"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 資訊安全中心的安全性警示
 
 在 Azure 資訊安全中心中，提供了許多不同資源類型的各種警示。 資訊安全中心會針對部署在 Azure 上的資源產生警示，也會針對內部部署和部署於混合式雲端環境的資源產生警示。
 
-安全性警示是由 advanced 偵測所觸發，且僅適用于 Azure 資訊安全中心的標準層。 有免費試用版可用。 您可以從 [ **定價 & 設定** ] 頁面進行升級。 深入瞭解資訊 [安全中心的定價](https://azure.microsoft.com/pricing/details/security-center/)。
+安全性警示是由 advanced 偵測所觸發，且僅適用于 Azure Defender。 有免費試用版可用。 您可以從 [ **定價 & 設定** ] 頁面進行升級。 深入瞭解資訊 [安全中心的定價](https://azure.microsoft.com/pricing/details/security-center/)。
 
 ## <a name="respond-to-todays-threats"></a>回應現今的威脅<a name="respond-threats"> </a>
 
@@ -45,7 +45,7 @@ ms.locfileid: "89278134"
 
 ## <a name="how-does-security-center-detect-threats"></a>資訊安全中心如何偵測威脅？ <a name="detect-threats"> </a>
 
-Microsoft 資訊安全研究人員會持續監視威脅。 由於 Microsoft 的雲端與內部部署遍布全球，因此能存取到大量的遙測資料集。 這些資料集內容包羅萬象，可供找出其內部部署消費性和企業產品及其線上服務中的新攻擊模式和趨勢。 因此，資訊安全中心可以在攻擊者發行新的和日益複雜的攻擊時，快速地更新其偵測演算法。 這種方法可協助您跟上瞬息萬變的威脅環境。
+Microsoft 資訊安全研究人員會持續監視威脅。 由於我們在雲端和內部部署中有全球存在，我們可以存取一組廣泛的遙測。 廣泛且多樣化的資料集集合可讓我們在內部部署消費者和企業產品，以及我們的線上服務之間，探索新的攻擊模式和趨勢。 因此，資訊安全中心可以在攻擊者發行新的和日益複雜的攻擊時，快速地更新其偵測演算法。 這種方法可協助您跟上瞬息萬變的威脅環境。
 
 為偵測出真正的威脅並降低誤判為真的狀況，資訊安全中心會自動收集、分析及整合來自 Azure 資源與網路的記錄資料。 此外也會使用連線的合作夥伴解決方案，例如防火牆和端點保護解決方案。 資訊安全中心會分析這些資訊 (通常是來自多個來源的相互關聯資訊) 以識別威脅。
 
@@ -90,6 +90,5 @@ Azure 資訊安全中心的優勢在於 Microsoft 上上下下都設有資訊安
 
 在本文中，您了解到資訊安全中心中不同類型的警示。 如需詳細資訊，請參閱
 
-* [Azure 資訊安全中心內的威脅防護](threat-protection.md)：可取得 Azure 資訊安全中心所顯示的安全性警示來源簡短描述 
-* **Azure 活動記錄中的安全性警示**：Azure 入口網站有提供安全性警示，也可透過程式設計方式取得，此外安全性警示和事件還會在 [Azure 活動記錄](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)中以事件的形式接受稽核。 如需事件結構描述的詳細資訊，請參閱 [Azure 活動記錄中的安全性警示](https://go.microsoft.com/fwlink/?linkid=2114113) (英文)
+- **Azure 活動記錄中的安全性警示**：Azure 入口網站有提供安全性警示，也可透過程式設計方式取得，此外安全性警示和事件還會在 [Azure 活動記錄](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)中以事件的形式接受稽核。 如需事件結構描述的詳細資訊，請參閱 [Azure 活動記錄中的安全性警示](https://go.microsoft.com/fwlink/?linkid=2114113) (英文)
 

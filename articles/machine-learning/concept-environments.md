@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: 773a05b911bc8e785957b5cf93700a361dc621ef
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a37a09d971ee80d05f9e028ece1adc7962c0c1a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651129"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905718"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>什麼是 Azure Machine Learning 環境？
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning 環境是您機器學習訓練發生所在環境的封裝。 他們會指定您訓練和評分腳本周圍的 Python 套件、環境變數和軟體設定。 它們也會指定執行時間 (Python、Spark 或 Docker) 。 環境是您 Machine Learning 工作區中的受控和版本化實體，可在各種計算目標上啟用可重現、可供審核及可移植的機器學習工作流程。
 
@@ -85,7 +85,7 @@ Azure Machine Learning 服務會在 Docker 映射和 conda 環境中建立環境
 
 如果您針對另一次執行使用相同的環境定義，Azure Machine Learning 服務會從工作區 ACR 重複使用快取的影像。 
 
-若要查看快取影像的詳細資料，請使用 [ [環境] get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) 方法。
+若要查看快取影像的詳細資料，請使用 [Environment.get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) 方法。
 
 為了判斷要重複使用快取的映射或建立新的映射，此服務會從環境定義中計算 [雜湊值](https://en.wikipedia.org/wiki/Hash_table) ，並將其與現有環境的雜湊進行比對。 雜湊的依據：
  
@@ -110,7 +110,7 @@ Azure Machine Learning 服務會在 Docker 映射和 conda 環境中建立環境
 > [!WARNING]
 >  此 [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) 會重建快取的映射，並有可能的副作用會更新取消固定的封裝，並中斷與該快取映射對應之所有環境定義的重現性。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解如何在 Azure Machine Learning 中 [建立和使用環境](how-to-use-environments.md) 。
 * 請參閱 [環境類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true)的 Python SDK 參考檔。

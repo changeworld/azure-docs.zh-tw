@@ -11,22 +11,19 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 429471c2a24b90f14241bf54197c4baecb27e5c0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 10c0200aae5ffa432c2da037d58d455fc28e8acd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660431"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904971"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 建立、檢閱和部署自動化機器學習模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 在本文中，您將瞭解如何在 Azure Machine Learning studio 中不需要一行程式碼，即可建立、探索及部署自動化機器學習模型。
 
->[!IMPORTANT]
-> Azure Machine Learning Studio 中的自動化 ML 體驗目前處於預覽狀態。 可能不支援特定功能，或功能受到限制。
-
- 自動化機器學習是針對特定資料來選取最佳機器學習服務演算法的流程。 此流程可讓您快速產生機器學習模型。 [深入了解自動化機器學習](concept-automated-ml.md)。
+自動化機器學習是針對特定資料來選取最佳機器學習服務演算法的流程。 此流程可讓您快速產生機器學習模型。 [深入了解自動化機器學習](concept-automated-ml.md)。
  
 如需端對端範例，請嘗試[使用 Azure Machine Learning 自動化 ML 介面建立分類模型的教學課程](tutorial-first-experiment-automated-ml.md)。 
 
@@ -36,7 +33,7 @@ ms.locfileid: "89660431"
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
-* **Enterprise 版**的 Azure Machine Learning 工作區。 請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。  若要將現有的工作區升級到 Enterprise 版，請參閱[升級至 Enterprise 版](how-to-manage-workspace.md#upgrade)。
+* Azure Machine Learning 工作區。 請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。 
 
 ## <a name="get-started"></a>開始使用
 
@@ -186,7 +183,7 @@ Variance| 此資料行資料從其平均值分散程度的量值。
 功能類型| 變更所選資料行的數值型別。
 插補| 選取要在您的資料中插補遺漏值的值。
 
-![Azure Machine Learning studio 工作類型表單](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
+![Azure Machine Learning studio 自訂特徵化](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
 
 ## <a name="run-experiment-and-view-results"></a>執行實驗並檢視結果
 

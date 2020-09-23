@@ -1,6 +1,6 @@
 ---
 title: 混合式身分識別設計 - 多重要素驗證需求 Azure | Microsoft Docs
-description: 使用條件式存取控制，Azure Active Directory 會在驗證使用者時以及允許存取應用程式之前，檢查您挑選的特定條件。 一旦符合這些條件，就會驗證使用者並允許存取應用程式。
+description: 使用條件式存取控制時，Azure AD 會在驗證使用者時以及允許存取應用程式之前，驗證您挑選的特定條件。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d8ddf372e234bab242e4b28ba53dce7dd68cc89
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109301"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976049"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>判斷混合式身分識別解決方案的多重要素驗證需求
 在這個具備行動力的世界中，使用者可在雲端中或從任何裝置存取資料和應用程式，因此，保護此資訊就成為最重要的項目。  每天都會出現關於安全性漏洞的新標題。  雖然不會針對這類漏洞提供保證，但多重要素驗證還是可以提供額外的安全性層級來協助防止這些漏洞。
@@ -55,7 +55,7 @@ ms.locfileid: "67109301"
 * 貴公司需要針對這些應用程式的合格使用者，或只針對系統管理員啟用 MFA？
 * 您需要一律啟用 MFA，或者只有在使用者於公司網路外部登入時啟用？
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 [定義混合式身分識別採用策略](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
 ## <a name="see-also"></a>另請參閱

@@ -11,15 +11,15 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 1917ded59275c7a456e8d2fd25412afc91a1327c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7c049b56bd72a0b59862e655da3b79f63c264fbf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650646"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882795"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>使用 Azure Machine Learning 定型和註冊 Keras 分類模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本文說明如何使用 Azure Machine Learning 來定型和註冊以 TensorFlow 建立的 Keras 分類模型。 它使用熱門的[MNIST 資料集](http://yann.lecun.com/exdb/mnist/)，使用深度類神經網路來分類手寫數位 (DNN) 使用在[TensorFlow](https://www.tensorflow.org/overview)之上執行的[Keras Python 程式庫](https://keras.io)來建立。
 
@@ -208,7 +208,7 @@ for f in run.get_file_names():
         run.download_file(name=f, output_file_path=output_file_path)
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已在 Azure Machine Learning 上訓練並註冊 Keras 模型。 若要瞭解如何部署模型，請繼續進行我們的模型部署文章。
 

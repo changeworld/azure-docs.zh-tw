@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: aac6f833985a708c7ed65542e314b65fa1039ef7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 347c539abbe90119a74394eeb748af12d30d0b15
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569045"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904666"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 資訊安全中心建議增強安全性
 
@@ -29,7 +29,7 @@ ms.locfileid: "89569045"
 - 作業系統安全性設定建議會在48小時內更新
 - Endpoint Protection 問題的建議會在8小時內更新
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 此案例示範如何使用資訊安全中心，透過監控資訊安全中心建議並採取動作，以協助降低發生安全性事件的機會。 此案例使用虛構公司 Contoso，以及資訊安全中心[規劃與操作指南](security-center-planning-and-operations-guide.md#security-roles-and-access-controls)中出現的角色。 在此案例中，我們著重於下列人物的角色：
 
 ![案例角色](./media/security-center-using-recommendations/scenario-roles.png)
@@ -41,7 +41,7 @@ Contoso 最近將一些內部部署資源移轉至 Azure。 Contoso 想要保護
 
 資訊安全中心會自動分析 Contoso Azure 資源的安全性狀態並套用預設安全性原則。 當資訊安全中心發現潛在的安全性弱點時，它會根據安全性原則中設定的控制項來建立 **建議** 。 
 
-David 在所有訂用帳戶中執行 Azure 安全性標準層，以取得完整的建議和安全性功能套件。 Jeff 也會將上線所有尚未遷移至雲端的現有內部部署伺服器，以便在其 [Windows](quick-onboard-windows-computer.md) 和 [Linux](quick-onboard-linux-computer.md) 伺服器上利用資訊安全中心的混合式支援。
+David 在所有訂用帳戶的所有訂用帳戶中執行了 Azure 安全性，以取得完整的建議和安全性功能套件。 Jeff 也會將上線所有尚未遷移至雲端的現有內部部署伺服器，以便在其 [Windows 和 Linux 伺服器](quickstart-onboard-machines.md)上利用資訊安全中心的混合式支援。
 
 Jeff 是雲端工作負載擁有者。 Jeff 負責根據 Contoso 的安全性原則，套用安全性控制項。 
 
@@ -60,9 +60,9 @@ Jeff 會執行下列工作：
 
 3. Jeff 必須決定要先處理哪些建議。 所以 Jeff 按一下安全分數，開始根據其 [安全分數](secure-score-security-controls.md)的改進來處理建議。
 
-4. Jeff 有大量已連線的 VM 和伺服器，因此決定著重於 [計算和應用程式]****。
+4. 由於 Jeff 有許多連線的 Vm，Jeff 決定將焦點放在 [資產清查](asset-inventory.md)中的電腦上。
 
-5. 當 Jeff 按一下 [ **計算和應用程式**] 時，他們會看到建議清單，並根據安全分數的影響來處理它們。
+5. 當 Jeff 開啟資產清查時，建議清單隨即出現。 Jeff 會根據安全分數的影響來處理它們。
 
 6. Jeff 有許多網際網路面向的 Vm，因為它們的埠是公開的，所以他們擔心攻擊者可以掌控伺服器。 因此 Jeff 選擇使用即時 [**VM 存取**](security-center-just-in-time.md)。
 
@@ -77,7 +77,7 @@ Jeff 繼續瀏覽高優先權和中優先順序的建議，然後進行實作決
 監控資訊安全中心的建議有助於在發生攻擊之前消除安全性弱點。 當您補救建議時，您的安全分數和工作負載的安全性狀態會改進。 資訊安全中心會自動探索您所部署的新資源、根據您的安全性原則進行評估，並提供新的建議來保護它們。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 請確定您已備妥監視程序，您會在監視過程中定期檢查資訊安全中心的建議，以確保資源在一段時間內保持安全無虞。
 
 本案例示範如何使用資訊安全中心的安全性原則和建議，以協助減少安全性攻擊。

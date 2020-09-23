@@ -1,6 +1,6 @@
 ---
-title: 升級至標準層 - Azure 資訊安全中心
-description: 本快速入門示範如何升級至資訊安全中心的標準定價層，以獲得額外的安全性。
+title: 升級至 Azure Defender - Azure 資訊安全中心
+description: 本快速入門示範如何升級至資訊安全中心的 Azure Defender，以獲得額外的安全性。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,104 +14,91 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 550c9ff57b9c558f2f175165c7f06ead45991be9
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: e51d0bfb79eab4db9bb571cc0f4ee70ada352d92
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226002"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895755"
 ---
-# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>快速入門：將 Azure 訂用帳戶上架到資訊安全中心的標準層
-Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和威脅防護。 免費層只為 Azure 資源提供有限的安全性，而標準層會將這些功能延伸至內部部署與其他雲端。 資訊安全中心的標準層可協助您尋找和修正安全性弱點、套用存取和應用程式控制項以封鎖惡意活動、使用分析和情報來偵測威脅，以及在遭受攻擊時迅速回應。 您可以免費試用資訊安全中心標準層。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+# <a name="quickstart-setting-up-azure-security-center"></a>快速入門：設定 Azure 資訊安全中心
 
-在本文中，您可升級到標準層以取得額外的安全性，並且在您的虛擬機器上安裝 Log Analytics 代理程式以監視安全性弱點和威脅。
+Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和威脅防護。 免費功能只為 Azure 資源提供有限的安全性，而啟用 Azure Defender 會將這些功能延伸至內部部署與其他雲端。 Azure Defender 可協助您尋找和修正安全性弱點、套用存取和應用程式控制項以封鎖惡意活動、使用分析和情報來偵測威脅，以及在遭受攻擊時迅速回應。 您可以免費試用 Azure Defender。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+
+在本文中，您可升級到 Azure Defender 以取得額外的安全性，並且在您的電腦上安裝 Log Analytics 代理程式以監視安全性弱點和威脅。
 
 ## <a name="prerequisites"></a>Prerequisites
 若要開始使用資訊安全中心，您必須有 Microsoft Azure 訂用帳戶。 如果您沒有訂用帳戶，可以註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
-若要將訂用帳戶升級到標準層，您必須取得「訂用帳戶擁有者」、「訂用帳戶參與者」或「安全性管理員」角色。
+若要啟用訂用帳戶的 Azure Defender，您必須取得「訂用帳戶擁有者」、「訂用帳戶參與者」或「安全性管理員」角色。
 
-## <a name="enable-your-azure-subscription"></a>啟用您的 Azure 訂用帳戶
+
+## <a name="open-security-center-for-the-first-time"></a>首次開啟資訊安全中心
 
 1. 登入 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)。
 
-1. 在 [Microsoft Azure]  功能表中，選取 [資訊安全中心]  。 [資訊安全中心 - 概觀]  隨即開啟。
+1. 從入口網站的功能表中，選取 [資訊安全中心]。 
 
-   ![資訊安全中心概觀][2]
+    資訊安全中心的概觀頁面隨即開啟。
 
-[資訊安全中心 - 概觀]  可讓您統一檢視混合式雲端工作負載的安全性狀態、探索並評定工作負載的安全性，以及識別和降低風險。 資訊安全中心會自動啟用先前並未由您或另一個訂用帳戶使用者上架到免費層的任何 Azure 訂用帳戶。
+    :::image type="content" source="./media/security-center-get-started/overview.png" alt-text="資訊安全中心的概觀儀表板" lightbox="./media/security-center-get-started/overview.png":::
 
-按一下 [訂用帳戶]  功能表項目，即可檢視和篩選訂用帳戶清單。 資訊安全中心會立即開始評估這些訂用帳戶的安全性，以識別安全性弱點。 若要自訂評定的類型，您可以修改安全性原則。 安全性原則會定義工作負載的所需設定，並且協助確保符合公司或法規安全性需求。
+[資訊安全中心 - 概觀]  可讓您統一檢視混合式雲端工作負載的安全性狀態、探索並評定工作負載的安全性，以及識別和降低風險。 資訊安全中心會免費自動啟用先前並未由您或另一個訂用帳戶使用者上線的任何 Azure 訂用帳戶。
+
+選取 [訂用帳戶] 功能表項目，即可檢視和篩選訂用帳戶清單。 資訊安全中心會調整顯示內容，以反映所選訂用帳戶的安全性狀態。 
 
 在第一次啟動資訊安全中心的數分鐘內，您可能看到：
 
-- 改善 Azure 訂用帳戶安全性的 [建議]  。 按一下 [建議]  圖格會啟動已設定優先順序的清單。
-- 資訊安全中心正在評估的 [計算和應用程式]  、[網路]  、[資料安全性]  和 [身分識別與存取權]  資源的詳細目錄，以及每項資源的安全性狀態。
+- 改善連線資源安全性的**數種建議方法**。
+- 資訊安全中心正在評估您的資源庫存，以及每項資源的安全性狀態。
 
-若要充分利用資訊安全中心，您需要完成下列步驟，才能升級到標準層並安裝 Log Analytics 代理程式。
+若要充分利用資訊安全中心，您需要完成下列步驟，才能啟用 Azure Defender 並安裝 Log Analytics 代理程式。
 
 
-## <a name="upgrade-to-the-standard-tier"></a>升級至標準層
+## <a name="enable-azure-defender"></a>啟用 Azure Defender
 
-基於資訊安全中心快速入門和教學課程的目的，您必須升級至標準層。 資訊安全中心標準層有免費試用。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。 
+基於資訊安全中心快速入門和教學課程的目的，您必須啟用 Azure Defender。 提供 30 天的免費試用。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。 
 
 1. 從資訊安全中心的側邊欄中，選取 [開始使用]。
- 
-   ![開始使用](./media/security-center-get-started/get-started-upgrade-tab.png)
+
+    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="開始使用頁面的升級索引標籤"::: 
 
     **升級**索引標籤會列出符合上線資格的訂用帳戶和工作區。
 
-1. 從**選取工作區以啟用標準層**清單中，選取要升級的工作區。
+1. 從**選取工作區以啟用 Azure Defender** 清單中，選取要升級的工作區。
+   - 如果您選取的訂用帳戶和工作區不符合試用資格，下一個步驟將會執行升級，並開始收費。
+   - 如果您選取符合免費試用的工作區，下一步就會開始試用。
+1. 選取 [升級] 以啟用 Azure Defender。
 
+## <a name="enable-automatic-data-collection"></a>啟用自動資料收集
+資訊安全中心會從您的電腦收集資料，以監視是否有安全性弱點及威脅。 資料是使用 Log Analytics 代理程式收集而得，收集的方式是讀取機器的各種安全性相關組態和事件記錄，並將資料複製到工作區進行分析。 根據預設，資訊安全中心會為您建立新的工作區。
 
-    > [!TIP]
-    > 如果您選取符合免費試用的工作區，下一步就會開始試用。 如果工作區不符合試用資格，將會進行升級，並開始收費。
-
-1. 選取 [升級]，將選取的工作區升級為標準層。
-
-
-## <a name="automate-data-collection"></a>自動收集資料
-資訊安全中心會從您的 Azure 虛擬機器和非 Azure 電腦收集資料，以監視安全性漏洞與威脅。 資料是使用 Log Analytics 代理程式收集而得，收集的方式是讀取機器的各種安全性相關組態和事件記錄，並將資料複製到工作區進行分析。 根據預設，資訊安全中心會為您建立新的工作區。
-
-啟用自動佈建時，資訊安全中心會在所有支援的 Azure 虛擬機器和任何新建立的虛擬機器上安裝 Log Analytics 代理程式。 強烈建議使用自動佈建。
+啟用自動佈建時，資訊安全中心會在所有支援的電腦和任何新建立的虛擬機器上安裝 Log Analytics 代理程式。 強烈建議使用自動佈建。
 
 啟用 Log Analytics 代理程式的自動佈建：
 
-1. 在 [資訊安全中心] 主功能表下，選取 [定價和設定]  。
-1. 在訂用帳戶的資料列上，按一下您想要變更設定的訂用帳戶。
-1. 在 [資料收集]  索引標籤中，將 [自動佈建]  設定為 [開啟]  。
-1. 選取 [儲存]  。
----
-  ![啟用自動佈建][6]
+1. 在資訊安全中心功能表中，選取 [定價和設定]。
+1. 選取相關的訂用帳戶。
+1. 在**資料收集**頁面中，將 [自動佈建] 設定為 [開啟]。
+1. 選取 [儲存]。
 
-利用 Azure 虛擬機器的這項深入解析，資訊安全中心可提供與系統更新狀態、作業系統安全性組態、端點防護相關的額外建議，以及產生額外的安全性警示。
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="啟用 Log Analytics 代理程式的自動佈建功能":::
 
-  ![建議][8]
+>[!TIP]
+> 如果需要佈建工作區，代理程式安裝最多可能需要 25 分鐘的時間。
 
-## <a name="clean-up-resources"></a>清除資源
-此集合中的其他快速入門和教學課程會以本快速入門為基礎。 如果您打算繼續處理後續的快速入門和教學課程，請繼續執行標準層，並保持將自動佈建維持為啟用狀態。 如果您不打算繼續，或是要返回免費層：
-
-1. 返回 [資訊安全中心] 主功能表，並選取 [定價和設定]  。
-2. 按一下您要變更為免費層的訂用帳戶。
-3. 選取 [定價層] 和 [免費] 以將訂用帳戶從標準層變更為免費層。
-5. 選取 [儲存]  。
-
-如果您需要停用自動佈建：
-
-1. 返回 [資訊安全中心] 主功能表，並選取 [定價和設定]  。
-2. 清除您想要停用自動佈建的訂用帳戶。
-3. 在 [資料收集]  索引標籤中，將 [自動佈建]  設定為 [關閉]  。
-4. 選取 [儲存]  。
+資訊安全中心會利用部署到電腦上的代理程式，提供與系統更新狀態、作業系統安全性組態、端點防護相關的額外建議，以及產生額外的安全性警示。
 
 >[!NOTE]
-> 停用自動佈建不會從已佈建代理程式的 Azure VM 移除 Log Analytics 代理程式。 停用自動佈建會限制對資源的安全性監視。
->
+> 將自動佈建設為**關閉**不會從已佈建代理程式的 Azure VM 中移除 Log Analytics 代理程式。 停用自動佈建會限制對資源的安全性監視。
+
+
 
 ## <a name="next-steps"></a>後續步驟
-在本快速入門中，您已升級到標準層並且佈建 Log Analytics 代理程式，可取得各項混合式雲端工作負載的整合式安全性管理和威脅防護。 若要深入了解如何使用資訊安全中心，請繼續進行將內部部署和其他雲端中的 Windows 電腦上架的快速入門。
+在本快速入門中，您已啟用 Azure Defender 並佈建 Log Analytics 代理程式，可取得各項混合式雲端工作負載的整合式安全性管理和威脅防護。 若要深入了解如何使用資訊安全中心，請繼續進行將內部部署和其他雲端中的 Windows 電腦上架的快速入門。
 
 > [!div class="nextstepaction"]
-> [快速入門：將 Windows 電腦上架到 Azure 資訊安全中心](quick-onboard-windows-computer.md)
+> [快速入門：讓非 Azure 電腦上線](quickstart-onboard-machines.md)
 
 想要最佳化並節省您的雲端費用嗎？
 

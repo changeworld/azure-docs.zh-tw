@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) 的常見問題集
 description: 尋找一些關於 Azure Kubernetes Service (AKS) 的常見問題解答。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 7a56756855319ee72bd5b3dc60ad1ae440afd7fe
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4150f850263aed7b8aa4317028386dc285f06ade
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927142"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905343"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的常見問題集
 
@@ -79,9 +79,9 @@ AKS 會根據一些 Azure 基礎結構資源來建置，包括虛擬機器擴展
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>我可以修改節點資源群組中 AKS 資源的標記和其他屬性嗎？
 
-如果您修改或刪除節點資源群組中 Azure 所建立的標記和其他資源屬性，可能就會得到非預期的結果，例如，調整和升級錯誤。 AKS 可讓您建立和修改使用者所建立的自訂標記，而且您可以在[建立節點集](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)區時新增這些標記。 例如，您可以建立或修改自訂標記，以指派業務單位或成本中心。 這也可以透過在受控資源群組上建立具有範圍的 Azure 原則來達成。
+如果您修改或刪除節點資源群組中 Azure 所建立的標記和其他資源屬性，可能就會得到非預期的結果，例如，調整和升級錯誤。 AKS 可讓您建立和修改使用者所建立的自訂標籤，而且您可以在 [建立節點集](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)區時新增這些標記。 例如，您可以建立或修改自訂標記，以指派業務單位或成本中心。 這也可以透過在受控資源群組上建立具有範圍的 Azure 原則來達成。
 
-不過，在 AKS 叢集中，針對節點資源群組下的資源修改任何**Azure 建立的標記**是不支援的動作，這會中斷服務層級目標 (SLO) 。 如需詳細資訊，請參閱 [AKS 是否提供服務等級協定？](#does-aks-offer-a-service-level-agreement)
+不過，在 AKS 叢集中的節點資源群組下，修改資源上任何 **Azure 建立** 的標籤，都是不受支援的動作，它會中斷服務等級目標 (SLO) 。 如需詳細資訊，請參閱 [AKS 是否提供服務等級協定？](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS 支援哪些 Kubernetes 許可控制器？ 是否可以新增或移除許可控制器？
 
@@ -137,7 +137,7 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此，如果您
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>我可以在 Azure 租用戶之間移動/移轉叢集嗎？
 
-目前不支援在租使用者之間移動 AKS 叢集。
+目前不支援在租使用者之間移動您的 AKS 叢集。
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>我可以在訂用帳戶之間移動/移轉叢集嗎？
 
@@ -147,9 +147,9 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此，如果您
 
 不支援在 Azure 訂用帳戶之間移動您的 AKS 叢集及其相關聯的資源。
 
-## <a name="can-i-move-my-aks-cluster-or-aks-infrastructure-resources-to-other-resource-groups-or-rename-them"></a>我可以將 AKS 叢集或 AKS 基礎結構資源移至其他資源群組，或將它們重新命名嗎？
+## <a name="can-i-move-my-aks-cluster-or-aks-infrastructure-resources-to-other-resource-groups-or-rename-them"></a>我可以將 AKS 叢集或 AKS 基礎結構資源移至其他資源群組或重新命名嗎？
 
-不支援移動或重新命名您的 AKS 叢集及其相關聯的資源。
+不支援移動或重新命名您的 AKS 叢集與其相關聯的資源。
 
 ## <a name="why-is-my-cluster-delete-taking-so-long"></a>為何叢集刪除如此耗時？ 
 
@@ -175,6 +175,10 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此，如果您
 
 請確認您的服務主體並未過期。  請參閱：[AKS 服務主體](./kubernetes-service-principal.md) \(部分機器翻譯\) 和 [AKS 更新認證](./update-credentials.md) \(部分機器翻譯\)。
 
+## <a name="can-i-scale-my-aks-cluster-to-zero"></a>我可以將 AKS 叢集調整為零嗎？
+您可以完全 [停止執行中的 AKS](start-stop-cluster.md)叢集，並節省各自的計算成本。 此外，您也可以選擇將 [所有或特定 `User` 節點集區調整或自動調整](scale-cluster.md#scale-user-node-pools-to-0) 為0，只維護必要的叢集設定。
+您無法直接將 [系統節點](use-system-pools.md) 集區調整為0。
+
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>我可以使用虛擬機器擴展集 API 進行手動調整嗎？
 
 否，不支援使用虛擬機器擴展集 API 進行調整作業。 請使用 AKS API (`az aks scale`)。
@@ -191,9 +195,9 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此，如果您
 
 AKS 不是受控服務，且不支援操作 IaaS 資源。 若要安裝自訂元件等， 請利用 Kubernetes API 和機制。 例如，利用 DaemonSet 來安裝必要元件。
 
-## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS 是否將任何客戶資料儲存在叢集的區域之外？
+## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS 是否會將任何客戶資料儲存在叢集區域以外？
 
-在單一區域中啟用儲存客戶資料的功能目前僅適用于東南亞地區， (新加坡) 的亞太地區地區。 針對所有其他區域，客戶資料會儲存在異地。
+啟用在單一區域中儲存客戶資料的功能目前僅適用于東南亞區域 (新加坡) 的亞太地區地區。 至於其他所有區域，客戶資料會儲存在地區中。
 
 <!-- LINKS - internal -->
 

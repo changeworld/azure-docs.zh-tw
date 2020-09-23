@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge 管理使用者 |Microsoft Docs
-description: 說明如何使用 Azure 入口網站來管理您 Azure Stack Edge 上的使用者。
+title: Azure Stack Edge Pro 管理使用者 |Microsoft Docs
+description: 說明如何使用 Azure 入口網站管理 Azure Stack Edge Pro 上的使用者。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 1012ce417fb4952878dada29a9080c70954ed21f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fb82e95d9d7dcfdf59bd05f91beff8e1184955e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339632"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904382"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge"></a>使用 Azure 入口網站來管理 Azure Azure Stack Edge 上的使用者
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge-pro"></a>使用 Azure 入口網站來管理 Azure Azure Stack Edge Pro 上的使用者
 
-本文說明如何在您的 Azure Stack Edge 上管理使用者。 您可以透過 Azure 入口網站或透過本機 web UI 來管理 Azure Stack 邊緣。 使用 Azure 入口網站來新增、修改或刪除使用者。
+本文說明如何管理 Azure Stack Edge Pro 上的使用者。 您可以透過 Azure 入口網站或透過本機 web UI 來管理 Azure Stack Edge Pro。 使用 Azure 入口網站來新增、修改或刪除使用者。
 
 在本文中，您將學會如何：
 
@@ -33,13 +33,13 @@ ms.locfileid: "84339632"
  - **完整權限的使用者** - 具有完整存取權的本機使用者。
  - **唯讀使用者** - 具有唯讀存取權的本機使用者。 這些使用者會與允許唯讀作業的共用相關聯。
 
-在共用建立期間建立使用者時，首先會定義使用者權限。 目前不支援修改共用層級許可權。
+在共用建立期間建立使用者時，首先會定義使用者權限。 目前不支援修改共用層級權限。
 
 ## <a name="add-a-user"></a>新增使用者
 
 在 Azure 入口網站中執行下列步驟，以新增使用者。
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **[總覽] [> 使用者**]。 選取命令列上的 [+ 新增使用者]****。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **[總覽 > 使用者**]。 選取命令列上的 [ **+ 新增使用者** ]。
 
     ![選取新增使用者](media/azure-stack-edge-manage-users/add-user-1.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "84339632"
 在 Azure 入口網站中執行下列步驟，以刪除使用者。
 
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **[總覽] [> 使用者**]。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **[總覽 > 使用者**]。
 
     ![選取要刪除的使用者](media/azure-stack-edge-manage-users/delete-user-1.png)
 

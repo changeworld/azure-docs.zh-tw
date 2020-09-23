@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: c4f3ccce03f91b0567980d55b59bfb15d6985bb7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: db0c5890add303d85bdec76e00b8377567226a38
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299740"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904715"
 ---
 # <a name="feature-coverage-for-machines"></a>機器的功能涵蓋範圍
 
@@ -28,23 +28,23 @@ ms.locfileid: "89299740"
 
 ### <a name="windows-machines"></a>[**Windows 機器**](#tab/features-windows)
 
-|**功能**|**Azure 虛擬機器**|**Azure 虛擬機器擴展集**|**非 Azure 機器**|**定價**
+|**功能**|**Azure 虛擬機器**|**Azure 虛擬機器擴展集**|**非 Azure 機器**|**需要 Azure Defender**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP 整合](security-center-wdatp.md)|✔</br> (支援的版本) |✔</br> (支援的版本) |✔|標準|
-|[虛擬機器行為分析 (和安全性警示) ](threat-protection.md)|✔|✔|✔|標準|
-|[無檔案安全性警示](alerts-reference.md#alerts-windows)|✔|✔|✔|標準|
-|[以網路為基礎的安全性警示](threat-protection.md#network-layer)|✔|✔|-|標準|
-|[Just-In-Time 虛擬機器存取](security-center-just-in-time.md)|✔|-|-|標準|
-|[原生弱點評定](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|標準|
-|[檔案完整性監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|標準|
-|[自適性應用程式控制](security-center-adaptive-application.md)|✔|-|✔|標準|
-|[網路地圖](security-center-network-recommendations.md#network-map)|✔|✔|-|標準|
-|[自適性網路強化](security-center-adaptive-network-hardening.md)|✔|-|-|標準|
-|[法規合規性儀表板 & 報表](security-center-compliance-dashboard.md)|✔|✔|✔|標準|
-|Docker 託管 IaaS 容器上的建議和威脅防護|-|-|-|標準|
-|遺漏 OS 修補程式評估|✔|✔|✔|Azure：免費<br><br>非 Azure：標準|
-|安全性錯誤配置評估|✔|✔|✔|Azure：免費<br><br>非 Azure：標準|
-|[Endpoint protection 評定](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure：免費<br><br>非 Azure：標準|
+|[Microsoft Defender ATP 整合](security-center-wdatp.md)|✔</br> (支援的版本) |✔</br> (支援的版本) |✔|Yes|
+|[虛擬機器行為分析 (和安全性警示) ](alerts-reference.md)|✔|✔|✔|Yes|
+|[無檔案安全性警示](alerts-reference.md#alerts-windows)|✔|✔|✔|Yes|
+|[以網路為基礎的安全性警示](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
+|[Just-In-Time 虛擬機器存取](security-center-just-in-time.md)|✔|-|-|Yes|
+|[原生弱點評定](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Yes|
+|[檔案完整性監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
+|[自適性應用程式控制](security-center-adaptive-application.md)|✔|-|✔|Yes|
+|[網路地圖](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
+|[自適性網路強化](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
+|[法規合規性儀表板 & 報表](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
+|Docker 託管 IaaS 容器上的建議和威脅防護|-|-|-|Yes|
+|遺漏 OS 修補程式評估|✔|✔|✔|Azure：免費<br><br>非 Azure：是|
+|安全性錯誤配置評估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
+|[Endpoint protection 評定](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure：否<br><br>非 Azure：是|
 |磁片加密評估|✔|✔|-|免費|
 |協力廠商弱點評定|✔|-|-|免費|
 |[網路安全性評定](security-center-network-recommendations.md)|✔|✔|-|免費|
@@ -52,22 +52,22 @@ ms.locfileid: "89299740"
 
 ### <a name="linux-machines"></a>[**Linux 機器**](#tab/features-linux)
 
-|**功能**|**Azure 虛擬機器**|**Azure 虛擬機器擴展集**|**非 Azure 機器**|**定價**
+|**功能**|**Azure 虛擬機器**|**Azure 虛擬機器擴展集**|**非 Azure 機器**|**需要 Azure Defender**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP 整合](security-center-wdatp.md)|-|-|-|標準|
-|[虛擬機器行為分析 (和安全性警示) ](security-center-alerts-iaas.md)|✔</br> (支援的版本) |✔</br> (支援的版本) |✔|標準|
-|[無檔案安全性警示](alerts-reference.md#alerts-windows)|-|-|-|標準|
-|[以網路為基礎的安全性警示](threat-protection.md#network-layer)|✔|✔|-|標準|
-|[Just-In-Time 虛擬機器存取](security-center-just-in-time.md)|✔|-|-|標準|
-|[原生弱點評定](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|標準|
-|[檔案完整性監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|標準|
-|[自適性應用程式控制](security-center-adaptive-application.md)|✔|-|✔|標準|
-|[網路地圖](security-center-network-recommendations.md#network-map)|✔|✔|-|標準|
-|[自適性網路強化](security-center-adaptive-network-hardening.md)|✔|-|-|標準|
-|[法規合規性儀表板 & 報表](security-center-compliance-dashboard.md)|✔|✔|✔|標準|
-|Docker 託管 IaaS 容器上的建議和威脅防護|✔|✔|✔|標準|
-|遺漏 OS 修補程式評估|✔|✔|✔|Azure：免費<br><br>非 Azure：標準|
-|安全性錯誤配置評估|✔|✔|✔|Azure：免費<br><br>非 Azure：標準|
+|[Microsoft Defender ATP 整合](security-center-wdatp.md)|-|-|-|Yes|
+|[虛擬機器行為分析 (和安全性警示) ](security-center-alerts-iaas.md)|✔</br> (支援的版本) |✔</br> (支援的版本) |✔|Yes|
+|[無檔案安全性警示](alerts-reference.md#alerts-windows)|-|-|-|Yes|
+|[以網路為基礎的安全性警示](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
+|[Just-In-Time 虛擬機器存取](security-center-just-in-time.md)|✔|-|-|Yes|
+|[原生弱點評定](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Yes|
+|[檔案完整性監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
+|[自適性應用程式控制](security-center-adaptive-application.md)|✔|-|✔|Yes|
+|[網路地圖](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
+|[自適性網路強化](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
+|[法規合規性儀表板 & 報表](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
+|Docker 託管 IaaS 容器上的建議和威脅防護|✔|✔|✔|Yes|
+|遺漏 OS 修補程式評估|✔|✔|✔|Azure：免費<br><br>非 Azure：是|
+|安全性錯誤配置評估|✔|✔|✔|Azure：免費<br><br>非 Azure：是|
 |[Endpoint protection 評定](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|免費|
 |磁片加密評估|✔|✔|-|免費|
 |協力廠商弱點評定|✔|-|-|免費|
@@ -77,7 +77,7 @@ ms.locfileid: "89299740"
 
 
 > [!TIP]
->若要試驗僅適用于標準定價層的功能，免費層使用者可在30天的試用版中註冊。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+>若要試驗僅適用于 Azure Defender 的功能，您可以註冊30天的試用版。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
 
 ## <a name="supported-endpoint-protection-solutions"></a>支援的 endpoint protection 解決方案 <a name="endpoint-supported"></a>
@@ -91,13 +91,13 @@ ms.locfileid: "89299740"
 
 | Endpoint Protection| 平台 | 資訊安全中心安裝 | 資訊安全中心探索 |
 |------|------|-----|-----|
-| Microsoft Defender 防毒軟體| Windows Server 2016 或更新版本| 否，內建於 OS| 是 |
-| System Center Endpoint Protection (Microsoft 反惡意程式碼軟體) | Windows Server 2012 R2、2012、2008 R2 (請參閱下列附註) | 透過延伸模組 | 是 |
+| Microsoft Defender 防毒軟體| Windows Server 2016 或更新版本| 否，內建於 OS| Yes |
+| System Center Endpoint Protection (Microsoft 反惡意程式碼軟體) | Windows Server 2012 R2、2012、2008 R2 (請參閱下列附註) | 透過延伸模組 | Yes |
 | 趨勢微-深層安全性 | Windows Server 系列  | 否 | 是 |
 | Symantec v12.1.1100+| Windows Server 系列  | 否 | 是 |
 | McAfee v10+ | Windows Server 系列  | 否 | 是 |
-| McAfee v10+ | Linux 伺服器系列  | 否 | 是的 **\*** |
-| Sophos V9 +| Linux 伺服器系列  | 否 | 是的  **\***  |
+| McAfee v10+ | Linux 伺服器系列  | No | 是的 **\*** |
+| Sophos V9 +| Linux 伺服器系列  | No | 是的  **\***  |
 
  **\*** 涵蓋範圍狀態和支援資料目前僅適用于與您受保護的訂閱相關聯的 Log Analytics 工作區。 它不會反映在 Azure 資訊安全中心入口網站中。
 
@@ -105,7 +105,7 @@ ms.locfileid: "89299740"
 > 在 Windows Server 2008 R2 虛擬機器上偵測 System Center Endpoint Protection (SCEP) 需要在 PowerShell (v3.0 或更新版本) 之後安裝 SCEP。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解 [安全性中心如何收集資料和 Log Analytics 代理程式](security-center-enable-data-collection.md)。
 - 瞭解 [安全性中心如何管理和保護資料](security-center-data-security.md)。

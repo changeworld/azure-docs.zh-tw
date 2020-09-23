@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 6be2805cab1bcaadb7878be69399e14ffe59d7b0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5c67f517ffd3704644fbe8041f3ac1e7b0d1f09c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659726"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904562"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>從 Microsoft Cloud App Security 連接資料 
 
@@ -48,7 +48,7 @@ ms.locfileid: "89659726"
 
 1. 按一下 [套用變更]****。
 
-1. 您可以選取是否要讓 Azure Defender (的警示先前 Azure 資訊安全中心) 自動產生 Azure Sentinel 中的事件。 在 [ **建立事件**] 底下，選取 [ **已啟用** ] 以開啟自動從警示建立事件的預設分析規則。 然後，您可以在 [作用中**規則**] 索引標籤的 [**分析**] 下編輯此規則。
+1. 您可以選取是否要讓 Azure Defender 警示 Azure 資訊安全中心在 Azure Sentinel 中自動產生事件。 在 [ **建立事件**] 底下，選取 [ **已啟用** ] 以開啟自動從警示建立事件的預設分析規則。 然後，您可以在 [作用中**規則**] 索引標籤的 [**分析**] 下編輯此規則。
 
 1. 若要在 Log Analytics 中使用相關的架構來 Cloud App Security 警示，請 `SecurityAlert` 在 [查詢] 視窗中輸入。 針對 Cloud Discovery 記錄架構，請輸入 `McasShadowItReporting` 。
 
@@ -57,7 +57,7 @@ ms.locfileid: "89659726"
 >
 > 由於 Cloud Discovery 資料是以每天為基礎進行匯總，因此請注意，最多可達24小時的最新資料，並不會反映在 Azure Sentinel 中。 如果低層級調查需要更多的即時資料，則應該直接在原始資料所在的來源設備或服務中進行。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 在本檔中，您已瞭解如何將 Microsoft Cloud App Security 連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 使用 [內建](tutorial-detect-threats.md) 或 [自訂](tutorial-detect-threats-custom.md) 規則開始偵測 Azure Sentinel 的威脅。

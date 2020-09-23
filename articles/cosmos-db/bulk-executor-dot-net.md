@@ -10,12 +10,12 @@ ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 829ddc0b63031722cdcb572a2833926a7837d05d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b2fb3e2031d5656668b9971fdf357f66824179fc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004114"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975889"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用大量執行程式 .NET 程式庫，在 Azure Cosmos DB 中執行大量作業
 
@@ -28,13 +28,13 @@ ms.locfileid: "89004114"
 
 目前，只有 Azure Cosmos DB SQL API 和 Gremlin API 帳戶支援大量執行程式程式庫。 本文說明如何搭配 SQL API 帳戶使用大量執行程式 .NET 程式庫。 若要瞭解如何搭配 Gremlin API 帳戶使用大量執行程式 .NET 程式庫，請參閱 [在 Azure Cosmos DB GREMLIN api 中執行大量作業](bulk-executor-graph-dotnet.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 如果您還沒有安裝 Visual Studio 2019，可以下載並使用 [Visual Studio 2019 社區版](https://www.visualstudio.com/downloads/)。 請確定您在 Visual Studio 設定期間啟用「Azure 開發」。
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* 您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，無須 Azure 訂用帳戶，也無須任何費用和約定付款。 或者，您可以使用 [Azure Cosmos DB 模擬器](https://docs.microsoft.com/azure/cosmos-db/local-emulator) 搭配 `https://localhost:8081` 端點。 [驗證要求](local-emulator.md#authenticating-requests)中會提供主索引鍵。
+* 您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，無須 Azure 訂用帳戶，也無須任何費用和約定付款。 或者，您可以使用 [Azure Cosmos DB 模擬器](/azure/cosmos-db/local-emulator) 搭配 `https://localhost:8081` 端點。 [驗證要求](local-emulator.md#authenticate-requests)中會提供主索引鍵。
 
 * 使用 .NET 快速入門文章中＜[建立資料庫帳戶](create-sql-api-dotnet.md#create-account)＞一節所述的步驟，建立 Azure Cosmos DB SQL API 帳戶。
 
@@ -93,7 +93,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    client.ConnectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 0;
    ```
 
-5. 應用程式會叫用 BulkImportAsync API。 .NET 程式庫提供大量匯入 API 的兩個多載-一個接受已序列化 JSON 檔的清單，另一個則接受已還原序列化的 POCO 檔案清單。 若要深入瞭解每個多載方法的定義，請參閱 [API 檔](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet)。
+5. 應用程式會叫用 BulkImportAsync API。 .NET 程式庫提供大量匯入 API 的兩個多載-一個接受已序列化 JSON 檔的清單，另一個則接受已還原序列化的 POCO 檔案清單。 若要深入瞭解每個多載方法的定義，請參閱 [API 檔](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet&preserve-view=true)。
 
    ```csharp
    BulkImportResponse bulkImportResponse = await bulkExecutor.BulkImportAsync(
@@ -125,11 +125,11 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
 
 ## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>大量更新 Azure Cosmos 帳戶中的資料
 
-您可以使用 BulkUpdateAsync API 來更新現有的文件。 在此範例中，您會將 `Name` 欄位設定為新的值，並 `Description` 從現有的檔中移除欄位。 如需完整的支援更新作業集，請參閱 [API 檔](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)。
+您可以使用 BulkUpdateAsync API 來更新現有的文件。 在此範例中，您會將 `Name` 欄位設定為新的值，並 `Description` 從現有的檔中移除欄位。 如需完整的支援更新作業集，請參閱 [API 檔](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet&preserve-view=true)。
 
 1. 瀏覽至 "BulkUpdateSample" 資料夾，然後開啟 "BulkUpdateSample.sln" 檔案。  
 
-2. 定義更新專案以及對應的欄位更新作業。 在此範例中，您將使用 `SetUpdateOperation` 更新 `Name` 欄位，並 `UnsetUpdateOperation` `Description` 從所有檔中移除欄位。 您也可以執行其他作業，例如透過指定值來遞增文件欄位、將特定值推送至陣列欄位中，或是從陣列欄位中移除特定值。 若要了解大量更新 API 提供的不同方法，請參閱 [API 文件](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)。
+2. 定義更新專案以及對應的欄位更新作業。 在此範例中，您將使用 `SetUpdateOperation` 更新 `Name` 欄位，並 `UnsetUpdateOperation` `Description` 從所有檔中移除欄位。 您也可以執行其他作業，例如透過指定值來遞增文件欄位、將特定值推送至陣列欄位中，或是從陣列欄位中移除特定值。 若要了解大量更新 API 提供的不同方法，請參閱 [API 文件](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet&preserve-view=true)。
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
@@ -146,7 +146,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    }
    ```
 
-3. 應用程式會叫用 BulkUpdateAsync API。 若要瞭解 BulkUpdateAsync 方法的定義，請參閱 [API 檔](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet)。  
+3. 應用程式會叫用 BulkUpdateAsync API。 若要瞭解 BulkUpdateAsync 方法的定義，請參閱 [API 檔](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet&preserve-view=true)。  
 
    ```csharp
    BulkUpdateResponse bulkUpdateResponse = await bulkExecutor.BulkUpdateAsync(
@@ -202,6 +202,6 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
   </system.diagnostics>
   ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 若要瞭解 NuGet 套件詳細資料和版本資訊，請參閱 [大量執行程式 SDK 詳細資料](sql-api-sdk-bulk-executor-dot-net.md)。

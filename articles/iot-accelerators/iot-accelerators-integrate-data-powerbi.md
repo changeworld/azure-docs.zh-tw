@@ -1,6 +1,6 @@
 ---
 title: 使用 Power BI 將遠端監視資料視覺化 - Azure | Microsoft Docs
-description: 本教學課程使用 Power BI Desktop 和 Cosmos DB，將遠端監視解決方案中的資料整合到自訂的視覺效果中。 如此能讓使用者建置自己的自訂儀表板，並與不在解決方案上的使用者共用它們。
+description: 本教學課程使用 Power BI Desktop 和 Cosmos DB 將遠端監視解決方案中的資料整合至自訂的視覺效果。 如此能讓使用者建置自己的自訂儀表板，並與不在解決方案上的使用者共用它們。
 author: dominicbetts
 manager: hegate
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74184247"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976002"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>使用 Power BI 將遠端監視資料視覺化
 
@@ -22,13 +22,13 @@ ms.locfileid: "74184247"
 ## <a name="prerequisites"></a>必要條件
 
 - 您必須具有正在執行中的遠端監視解決方案
-- 您必須能夠存取執行 IoT 中樞和解決方案的[Azure 入口網站](https://portal.azure.com)和訂用帳戶
+- 您必須能夠存取 [Azure 入口網站](https://portal.azure.com) 以及 IoT 中樞和解決方案執行所在的訂用帳戶
 - 您必須已安裝 [Power BI Desktop](https://powerbi.microsoft.com) (任何版本均可)
 
 
 ## <a name="information-needed-from-azure-portal"></a>Azure 入口網站所需的資訊
 
-1. 流覽至[Azure 入口網站](https://portal.azure.com)並視需要登入
+1. 流覽至 [Azure 入口網站](https://portal.azure.com) 並視需要登入
 
 2. 在左側面板上，按一下 [資源群組]
 
@@ -45,7 +45,7 @@ ms.locfileid: "74184247"
    - URI
    - 主索引鍵
 
-     ![金鑰](./media/iot-accelerators-integrate-data-powerbi/keys.png)
+     ![螢幕擷取畫面顯示已選取金鑰專案的 Azure Cosmos D B 帳戶。](./media/iot-accelerators-integrate-data-powerbi/keys.png)
 
 ## <a name="setting-up-the-stream-in-power-bi"></a>在 Power BI 中設定資料流
   
@@ -98,7 +98,7 @@ ms.locfileid: "74184247"
 
 您也會想要在發行的儀表板上[重新整理資料](https://docs.microsoft.com/power-bi/refresh-data)，以確定您具有最新的資料集。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已了解如何使用 Power BI 來將遠端監視資料視覺化
 

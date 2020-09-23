@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: ec4b4d705e6cc8b9cfc26952083292b74b3d4abf
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9b05149515f2d40ad8043cd65c2ec5589440713e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185871"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882518"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 PHP 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
 本快速入門示範如何使用 [PHP](https://secure.php.net/manual/intro-whatis.php) 應用程式來連線到 Azure Database for MySQL。 它會顯示如何使用 SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。 本主題假設您已熟悉使用 PHP 進行開發，但不熟悉適用於 MySQL 的 Azure 資料庫。
@@ -47,7 +47,7 @@ ms.locfileid: "88185871"
 2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
 3. 按一下伺服器名稱。
 4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
- ![Azure Database for MySQL 伺服器名稱](./media/connect-php/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Azure Database for MySQL 伺服器名稱":::
 
 ## <a name="connect-and-create-a-table"></a>連線及建立資料表
 使用下列程式碼搭配 **CREATE TABLE** SQL 陳述式來連線和建立資料表。 

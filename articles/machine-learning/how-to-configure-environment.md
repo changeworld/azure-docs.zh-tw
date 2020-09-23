@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8ad22abdf17c68c93a6189db839fe357e7acc91e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 4ccf89a4dcb2c91cfdd96b20d74b7f31596b6249
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650834"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898272"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>設定 Azure Machine Learning 的開發環境
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將瞭解如何設定開發環境以搭配 Azure Machine Learning 運作。 Azure Machine Learning 與平臺無關。 開發環境的唯一硬性需求是 Python 3。 此外，也建議 Anaconda 或 Virtualenv 等隔離的環境。
 
@@ -61,7 +61,7 @@ Azure Machine Learning [計算實例](concept-compute-instance.md) 是安全的�
 
 若要深入瞭解計算實例（包括如何安裝封裝），請參閱 [計算實例](concept-compute-instance.md)。
 
-若要停止產生計算費用，請 [停止計算實例](tutorial-1st-experiment-sdk-train.md#clean-up-resources)。
+若要停止產生計算費用，請 [停止計算實例](tutorial-1st-experiment-bring-data.md#clean-up-resources)。
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>資料科學虛擬機器
 
@@ -361,7 +361,7 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 
 您可以透過三種方式建立組態檔：
 
-* **使用  [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)**：寫入檔案的 *config.js* 。 此檔案包含您工作區的組態資訊。 您可以將此 *config.json* 下載或複製到其他開發環境。
+* **使用  [ws.write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)**：寫入檔案的 *config.js* 。 此檔案包含您工作區的組態資訊。 您可以將此 *config.json* 下載或複製到其他開發環境。
 
 * **下載檔案**：在[Azure 入口網站](https://ms.portal.azure.com)中，從工作區的 [**總覽**] 區段中選取 [**下載 config.js** 。
 
@@ -386,7 +386,7 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 
     此程式碼會將設定檔寫入檔案的 *azureml/config.js* 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - 使用 MNIST 資料集在 Azure Machine Learning 上[定型模型](tutorial-train-models-with-aml.md)
 - 檢視[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) \(英文\) 參考

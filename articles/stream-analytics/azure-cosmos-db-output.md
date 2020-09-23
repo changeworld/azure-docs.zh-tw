@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 7832c53cfa9e0c5c3d0903c52bae8033402a2c0d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: e322135cfdb7aaff331367e84c603e8344436528
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875631"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906260"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure 串流分析的 Azure Cosmos DB 輸出
 
@@ -52,4 +52,4 @@ Azure China 21Vianet 和 Azure 德國 (T-Systems International) 區域目前無�
 * [快速入門：使用 ARM 範本建立 Azure 串流分析作業](quick-create-azure-resource-manager.md)
 * [快速入門：使用 Azure PowerShell 建立串流分析作業](stream-analytics-quick-create-powershell.md)
 * [快速入門：使用 Visual Studio 建立 Azure 串流分析作業](stream-analytics-quick-create-vs.md)
-* [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-vs-code.md)
+* [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-visual-studio-code.md)

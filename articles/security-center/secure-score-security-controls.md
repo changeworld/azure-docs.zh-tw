@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/15/2020
+ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 91935e8c052a9130d0a40ed292ca466bc1ab5427
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: b7cbba051dd0833a039d378cd73a59314c0221c8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567619"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905581"
 ---
-# <a name="enhanced-secure-score-in-azure-security-center"></a>Azure 資訊安全中心中增強的安全分數
+# <a name="secure-score-in-azure-security-center"></a>Azure 資訊安全中心的安全分數
 
 ## <a name="introduction-to-secure-score"></a>安全分數簡介
 
@@ -95,12 +95,11 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 
 只有內建建議會影響安全分數。
 
-此外，標示為 **預覽** 的建議不會包含在您的安全分數的計算中。 您應該盡可能補救它們，如此一來，當預覽期間結束時，他們就會參與您的分數。
+標示為 **預覽** 的建議不包含在您的安全分數的計算中。 您應該盡可能補救它們，如此一來，當預覽期間結束時，他們就會參與您的分數。
 
 預覽建議的範例：
 
 :::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="使用預覽旗標的建議":::
-
 
 ## <a name="improve-your-secure-score"></a>改善您的安全分數
 
@@ -137,7 +136,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">補救弱點 (最高分數 6)</p></strong>弱點是威脅執行者可以利用的切入點，藉以危害資源的機密性、可用性或完整性。 <a href="https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt">管理弱點</a>可減少組織暴露、強化端點介面區、增加組織的復原能力，並減少資源的受攻擊面。 威脅與弱點管理可讓您看到軟體和安全性的錯誤設定，並提供降低風險的建議。</td>
-    <td class="tg-lboi"; width=55%>- 應該在 SQL Database 上啟用 Advanced data security<br>- 應補救 Azure Container Registry 映像中的弱點<br>- 應補救 SQL 資料庫的弱點<br>- 弱點評估解決方案應修復弱點<br>- SQL 受控執行個體應啟用弱點評定<br>- SQL 伺服器上應啟用弱點評估<br>- 虛擬機器上應安裝弱點評估解決方案</td>
+    <td class="tg-lboi"; width=55%>- 應該在 SQL Database 上啟用 Advanced data security<br>- 應補救 Azure Container Registry 映像中的弱點<br>- 應補救 SQL 資料庫的弱點<br>- 弱點評估解決方案應修復弱點<br>- SQL 受控執行個體應啟用弱點評定<br>- SQL 伺服器上應啟用弱點評估<br>- 虛擬機器上應安裝弱點評估解決方案<br>- 容器映射只能從受信任的登錄部署 (預覽版) <br>- 您應在您的叢集上安裝並啟用 Kubernetes Azure 原則附加元件 (preview) </td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">啟用待用加密 (最高分數 4)</p></strong><a href="https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest">待用加密</a>可為儲存的資料提供資料保護。 對待用資料的攻擊包括嘗試取得儲存資料之硬體的實體存取權。 Azure 使用對稱式加密來加密和解密大量待用資料。 對稱式加密金鑰可用來在寫入儲存體時將資料加密。 當資料準備好在記憶體中待使用時，該加密金鑰也可用來將資料解密。 金鑰必須儲存在具備以身分識別為基礎的存取控制和稽核原則的安全位置。 其中一個安全位置是 Azure Key Vault。 如果攻擊者取得加密的資料，而不是加密金鑰，攻擊者就無法在不破壞加密的情況下存取資料。</td>
@@ -149,15 +148,15 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">管理存取權與權限 (最高分數 4)</p></strong>安全性計畫的核心部分，是要確保您的使用者擁有執行其作業所需的存取權，但不能超過：<a href="https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">最低權限存取模型</a>。<br>使用<a href="https://docs.microsoft.com/azure/role-based-access-control/overview">角色型存取控制 (RBAC)</a> 建立角色指派，藉此控制對資源的存取。 角色指派是由三個元素組成：<br>- <strong>安全性主體</strong>：使用者要求存取的物件<br>- <strong>角色定義</strong>：其許可權<br>- <strong>範圍</strong>：套用權限的一組資源</td>
-    <td class="tg-lboi"; width=55%>- 應從您的訂用帳戶中移除已淘汰的帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備擁有者權限的已淘汰帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備擁有者權限的外部帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備寫入權限的外部帳戶 (預覽)<br>- 應指派一個以上的擁有者給您的訂用帳戶<br>- Kubernetes Service 上應使用角色型存取控制 (RBAC) (預覽)<br>- Service Fabric 叢集應只能使用 Azure Active Directory 進行用戶端驗證<br>- 應使用服務主體來保護您的訂用帳戶，而不是管理憑證</td>
+    <td class="tg-lboi"; width=55%>- 應從您的訂用帳戶中移除已淘汰的帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備擁有者權限的已淘汰帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備擁有者權限的外部帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備寫入權限的外部帳戶 (預覽)<br>- 應指派一個以上的擁有者給您的訂用帳戶<br>- Kubernetes Service 上應使用角色型存取控制 (RBAC) (預覽)<br>- Service Fabric 叢集應只能使用 Azure Active Directory 進行用戶端驗證<br>- 應使用服務主體來保護您的訂用帳戶，而不是管理憑證<br>- (預覽的容器應強制執行最低許可權 Linux 功能) <br>- 不可變的 (唯讀) 根目錄檔案系統應針對容器強制執行 (預覽) <br>- 應避免 (預覽版的容器具有許可權擴大) <br>- 以根使用者的形式執行容器應避免 (預覽) <br>- 共用機密主機命名空間的容器應避免 (預覽) <br>- Pod HostPath 磁片區掛接的使用應限制為已知清單 (預覽) <br>- 應避免 (預覽的特殊許可權容器) <br>- 您應在您的叢集上安裝並啟用 Kubernetes Azure 原則附加元件 (preview) </td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">補救安全性設定 (最高分數 4)</p></strong>設定錯誤的 IT 資產被攻擊的風險較高。 在期限壓力下部署資產時，常會忘記基本的強化動作。 安全性設定錯誤可能發生在基礎結構的任何層級：從作業系統、網路設備到雲端資源。<br>Azure 資訊安全中心會持續比較您的資源設定與業界標準、法規和效能評定的需求。 當您設定好組織重視的相關「合規性套件」(標準和基準) 後，任何差距都會引發安全性建議，包含 CCEID 和潛在安全性影響的說明。<br>常用的套件是 <a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure 安全性基準測試</a>和 <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure 基礎基準測試版本1.1.0</a>。</td>
-    <td class="tg-lboi"; width=55%>- 應補救容器安全性設定中的弱點<br>- 應補救機器上安全性設定的弱點<br>- 應補救虛擬機器擴展集上安全性設定的弱點<br>- 應在虛擬機器上安裝監視代理程式<br>- 應於機器上安裝監視代理程式<br>- Log Analytics 代理程式應該安裝在以 Windows 為基礎的 Azure Arc 電腦上 (Preview) <br>- Log Analytics 代理程式應該安裝在以 Linux 為基礎的 Azure Arc 電腦上 (Preview) <br>- 應於虛擬機器擴展集上安裝監視代理程式<br>- 應解決機器上的監視代理程式健康情況問題</td>
+    <td class="tg-lboi"; width=55%>- 應補救容器安全性設定中的弱點<br>- 應補救機器上安全性設定的弱點<br>- 應補救虛擬機器擴展集上安全性設定的弱點<br>- 應在虛擬機器上安裝監視代理程式<br>- 應於機器上安裝監視代理程式<br>- Log Analytics 代理程式應該安裝在以 Windows 為基礎的 Azure Arc 電腦上 (Preview) <br>- Log Analytics 代理程式應該安裝在以 Linux 為基礎的 Azure Arc 電腦上 (Preview) <br>- 應於虛擬機器擴展集上安裝監視代理程式<br>- 應解決機器上的監視代理程式健康情況問題<br>- 覆寫或停用容器 AppArmor 設定檔應受限於 (預覽) <br>- 您應在您的叢集上安裝並啟用 Kubernetes Azure 原則附加元件 (preview) </td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">限制未經授權的網路存取 (最高分數 4)</p></strong>組織內的端點可讓您從虛擬網路直接連線到支援的 Azure 服務。 子網路中的所有虛擬機器可以與所有資源通訊。 若要限制與子網內資源之間的通訊，請建立網路安全性群組，並將其與子網建立關聯。 組織可以藉由建立輸入和輸出規則來限制及防範未經授權的流量。</td>
-    <td class="tg-lboi"; width=55%>- 應停用虛擬機器上的 IP 轉送<br>- Kubernetes Service 上應定義授權 IP 範圍 (預覽)<br>- (已淘汰) 應限制對 App Service 的存取 (預覽)<br>- (已淘汰) 應強化 IaaS NSG 上 Web 應用程式的規則<br>-虛擬機器應與網路安全性群組建立關聯<br>- CORS 不應允許每項資源存取您的 API 應用程式<br>- CORS 不應允許每項資源存取您的函式應用程式<br>- CORS 不應允許每項資源存取您的 Web 應用程式<br>- 應關閉 API 應用程式的遠端偵錯<br>- 應關閉函式應用程式的遠端偵錯<br>- 應關閉 Web 應用程式的遠端偵錯<br>- 應限制具有網際網路對應 VM 之寬鬆網路安全性群組的存取<br>- 應強化網際網路對應虛擬機器的網路安全性群組規則</td>
+    <td class="tg-lboi"; width=55%>- 應停用虛擬機器上的 IP 轉送<br>- Kubernetes Service 上應定義授權 IP 範圍 (預覽)<br>- (已淘汰) 應限制對 App Service 的存取 (預覽)<br>- (已淘汰) 應強化 IaaS NSG 上 Web 應用程式的規則<br>-虛擬機器應與網路安全性群組建立關聯<br>- CORS 不應允許每項資源存取您的 API 應用程式<br>- CORS 不應允許每項資源存取您的函式應用程式<br>- CORS 不應允許每項資源存取您的 Web 應用程式<br>- 應關閉 API 應用程式的遠端偵錯<br>- 應關閉函式應用程式的遠端偵錯<br>- 應關閉 Web 應用程式的遠端偵錯<br>- 應限制具有網際網路對應 VM 之寬鬆網路安全性群組的存取<br>- 應強化網際網路對應虛擬機器的網路安全性群組規則<br>- 您應在您的叢集上安裝並啟用 Kubernetes Azure 原則附加元件 (preview) <br>- 容器應該只在允許的埠上接聽 (預覽) <br>- 服務應該只在允許的埠上接聽 (預覽) <br>- 使用主機網路和埠應受限於 (預覽版) </td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">套用自適性應用程式控制 (最高分數 3)</p></strong>自適性應用程式控制 (AAC) 是一種智慧型、自動化的端對端解決方案，可讓您控制哪些應用程式可以在您的 Azure 和非 Azure 機器上執行。 它也有助於強化機器，防範惡意程式碼的攻擊。<br>「安全性中心」會使用機器學習來建立一組機器的已知安全應用程式清單。<br>這套經過核准的應用程式清單可提供安全性優點，而不需要管理複雜性。<br>AAC 特別適合需要執行一組特定應用程式的特殊用途伺服器。</td>
@@ -169,7 +168,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">保護應用程式防範 DDoS 攻擊 (最高分數 2)</p></strong>分散式阻斷服務 (DDoS) 攻擊會使資源無法招架，導致應用程式無法使用。 使用 <a href="https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview">Azure DDoS 保護標準</a>來保護您的組織，防範三種主要的 DDoS 攻擊：<br>- <strong>巨流量攻擊</strong>以合法的流量淹沒網路。 「DDoS 保護標準」會自動吸收或清除這些攻擊，以減輕這些攻擊。<br>- <strong>通訊協定攻擊</strong>透過利用第 3 層和第 4 層通訊協定堆疊中的弱點，讓目標無法供存取。 「DDoS 保護標準」會封鎖惡意流量，以減輕這些攻擊。<br>- <strong>資源 (應用程式) 層攻擊</strong>以 Web 應用程式封包為目標。 使用 Web 應用程式防火牆和 DDoS 保護標準來防禦此類型攻擊。</td>
-    <td class="tg-lboi"; width=55%>- 應啟用 Azure DDoS 保護標準</td>
+    <td class="tg-lboi"; width=55%>- 應啟用 Azure DDoS 保護標準<br>- 應 (預覽版來強制執行容器 CPU 和記憶體限制) <br>- 您應在您的叢集上安裝並啟用 Kubernetes Azure 原則附加元件 (preview) </td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">啟用端點保護 (最高分數 2)</p></strong>為了確保您的端點能防禦惡意程式碼，行為感應器會從端點的作業系統收集資料並加以處理，然後將資料傳送至私人雲端進行分析。 安全性分析會運用大數據、機器學習和其他來源，建議對威脅的回應。 例如，<a href="https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection">Microsoft Defender ATP</a> 會使用威脅情報來識別攻擊方法並產生安全性警示。<br>資訊安全中心支援下列端點保護問題：Windows Defender、System Center Endpoint Protection、Trend Micro、Symantec v12.1.1.1100、McAfee v10 for Windows、McAfee v10 for Linux、Sophos v9 for Linux。 如果資訊安全中心偵測到上述任何解決方案，就不會再顯示安裝端點保護的建議。</td>
@@ -205,7 +204,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 否。 在您補救單一資源的所有建議之前，分數不會變更。 若要取得控制項的最高分數，您必須補救所有資源的所有建議。
 
 ### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>是否仍可看到先前的安全分數使用體驗？ 
-不會。 在一段時間執行，以簡化轉換。 先前的模型現在已被取代。 
+不可以。 在一段時間執行，以簡化轉換。 先前的模型現在已被取代。 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>如果建議不適用於我，而我在原則中停用建議，我的安全性控制項是否會完成，而且我的安全分數也會更新？
 是。 建議您在建議不適合您的環境時予以停用。 如需有關如何停用特定建議的指示，請參閱[停用安全性原則](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)。

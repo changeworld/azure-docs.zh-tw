@@ -11,12 +11,12 @@ ms.custom:
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 32603514db76ceba4f1d9f8873c99b2e8a97eddf
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: aad160f8a4ec96a1e0e627684c598062079b57e0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185905"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896313"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 Python 連線和查詢適用於 MySQL 的 Azure 資料庫中的資料
 
@@ -63,11 +63,11 @@ ms.locfileid: "88185905"
    
 1. 在入口網站的搜尋列中，搜尋並選取您所建立的「適用於 MySQL 的 Azure 資料庫」伺服器，例如 **mydemoserver**。
    
-   ![Azure Database for MySQL 伺服器名稱](./media/connect-python/1_server-overview-name-login.png)
+   :::image type="content" source="./media/connect-python/1_server-overview-name-login.png" alt-text="Azure Database for MySQL 伺服器名稱":::
    
 1. 在伺服器的 [概觀] 頁面上，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此頁面重設密碼。
    
-   ![Azure Database for MySQL 伺服器名稱](./media/connect-python/azure-database-for-mysql-server-overview-name-login.png)
+   :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="Azure Database for MySQL 伺服器名稱":::
 
 ## <a name="run-the-python-examples"></a>執行 Python 範例
 

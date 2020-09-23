@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 006aab66eb220c3bb74794ba78bf1495583b653e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 0dcede7e6c15fbc0bae39370431d14696cb4026e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648313"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905666"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署現有的模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將瞭解如何註冊及部署您在 Azure Machine Learning 之外定型的機器學習模型。 您可以部署為 web 服務或 IoT Edge 裝置。  一旦部署之後，您就可以在 Azure Machine Learning 中監視模型並偵測資料漂移。 
 
@@ -220,7 +220,7 @@ def predict(text, include_neutral=True):
 
 ## <a name="define-deployment"></a>定義部署
 
-[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py&preserve-view=true)套件包含用於部署的類別。 您使用的類別會決定模型的部署位置。 例如，若要在 Azure Kubernetes Service 上部署為 web 服務，請使用 [>akswebservice deploy_configuration ( # B1 ](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) 來建立部署設定。
+[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py&preserve-view=true)套件包含用於部署的類別。 您使用的類別會決定模型的部署位置。 例如，若要在 Azure Kubernetes Service 上部署為 web 服務，請使用 [AksWebService.deploy_configuration ( # B1 ](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) 來建立部署設定。
 
 下列 Python 程式碼會定義本機部署的部署設定。 此設定會將模型作為 web 服務部署到您的本機電腦。
 
@@ -233,7 +233,7 @@ from azureml.core.webservice import LocalWebservice
 deployment_config = LocalWebservice.deploy_configuration()
 ```
 
-如需詳細資訊，請參閱 [LocalWebservice。 deploy_configuration ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.localwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-port-none-) 參考。
+如需詳細資訊，請參閱 [LocalWebservice.deploy_configuration ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.localwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-port-none-) 參考。
 
 CLI 會從 YAML 檔案載入部署設定：
 
@@ -274,7 +274,7 @@ az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc de
 
 ## <a name="request-response-consumption"></a>要求-回應耗用量
 
-部署之後，就會顯示計分 URI。 用戶端可以使用此 URI 將要求提交給服務。 下列範例是將資料提交至服務並顯示回應的基本 Python 用戶端：
+部署之後，就會顯示計分 URI。 用戶端可以使用此 URI 將要求提交給服務。 下列範例是一個簡單的 Python 用戶端，可將資料提交至服務並顯示回應：
 
 ```python
 import requests
@@ -293,7 +293,7 @@ print(response.json())
 
 如需如何使用已部署之服務的詳細資訊，請參閱 [建立用戶端](how-to-consume-web-service.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * [使用 Application Insights 監視您的 Azure Machine Learning 模型](how-to-enable-app-insights.md)
 * [在生產環境中收集模型資料](how-to-enable-data-collection.md)

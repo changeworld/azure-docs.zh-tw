@@ -872,6 +872,8 @@
               href: attach-disk-ps.md
             - name: Azure 入口網站
               href: attach-managed-disk-portal.md
+        - name: 變更磁碟階層
+          href: ../disks-performance-tiers.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 中斷連結磁碟
           href: detach-disk.md
         - name: 透過 ARM 範本部署磁碟

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 45d3ec8dc5d819464046e40bab22491a4bccde63
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e5d483af44116274019851f049d6222adfd8dbcd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461318"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904836"
 ---
 # <a name="planning-and-operations-guide"></a>規劃與操作指南
 本指南適用于資訊技術 (IT) 專業人員、IT 架構設計人員、資訊安全性分析師，以及規劃使用 Azure 資訊安全中心的雲端系統管理員。
@@ -120,7 +120,7 @@ ms.locfileid: "89461318"
 - [資料收集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)：代理程式佈建和資料收集設定。
 - [安全性原則](https://docs.microsoft.com/azure/security-center/security-center-policies)：一種 [Azure 原則](../governance/policy/overview.md) ，可判斷哪些控制項由安全性中心監視及建議，或使用 Azure 原則來建立新的定義、定義額外的原則，以及跨管理群組指派原則。
 - [電子郵件通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)：安全性連絡人和通知設定。
-- [定價層](https://docs.microsoft.com/azure/security-center/security-center-pricing)：免費或標準定價選項，用來決定哪個資訊安全中心功能可用於範圍中的資源 (可以針對訂用帳戶、資源群組和工作區指定)。
+- [定價層](https://docs.microsoft.com/azure/security-center/security-center-pricing)：不論是否有 Azure Defender，都可以針對訂用帳戶、資源群組和工作區) 指定可供範圍 (中的資源使用的安全中心功能。
 
 > [!NOTE]
 > 指定安全性連絡人可確保如果發生安全性事件，Azure 可以觸達您組織中適當的人員。 如需如何啟用這項建議的詳細資訊，請閱讀 [在 Azure 資訊安全中心提供安全性連絡人詳細資料](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) 。
@@ -158,12 +158,12 @@ Azure 資訊安全中心使用 Log Analytics 代理程式–這是 Azure 監視�
 若為 Azure 資訊安全中心所建立的工作區，資料會保留 30 天。 若為現有工作區，保留是以工作區定價層為基礎。 如果您想要的話，也可以使用現有的工作區。
 
 > [!NOTE]
-> Microsoft 鄭重保證會保護此資料的隱私和安全。 Microsoft 從撰寫程式碼到運作服務均遵守嚴格的規範與安全性指導方針。 如需資料處理和隱私權的詳細資訊，請閱讀 [Azure 資訊安全中心資料安全性](security-center-data-security.md)。
+> Microsoft 對保護此資料的隱私權和安全性做出強烈承諾。 Microsoft 從撰寫程式碼到運作服務均遵守嚴格的規範與安全性指導方針。 如需資料處理和隱私權的詳細資訊，請閱讀 [Azure 資訊安全中心資料安全性](security-center-data-security.md)。
 >
 
 ## <a name="onboarding-non-azure-resources"></a>上架非 Azure 資源
 
-資訊安全中心可以監視非 Azure 電腦的安全性狀態，但您需要先上架這些資源。 請參閱[上架到 Azure 資訊安全中心標準版以增強安全性](https://docs.microsoft.com/azure/security-center/security-center-onboarding#onboard-non-azure-computers)，以取得如何上架非 Azure 資源的詳細資訊。
+資訊安全中心可以監視非 Azure 電腦的安全性狀態，但您需要先上架這些資源。 如需有關如何上架非 Azure 資源的詳細資訊，請參閱上 [架非 azure 電腦](quickstart-onboard-machines.md) 。
 
 ## <a name="ongoing-security-monitoring"></a>持續安全性監視
 初始設定和套用資訊安全中心建議之後，下一步是考量資訊安全中心操作程序。
@@ -199,7 +199,7 @@ Azure 資訊安全中心使用 Log Analytics 代理程式–這是 Azure 監視�
 
 雖然本文沒有協助您建立自己的事件回應計畫的意圖，但我們將在雲端生命週期中使用 Microsoft Azure 的安全性回應，作為事件回應階段的基礎。 這些階段如下圖所示：
 
-![可疑的活動](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
+![雲端生命週期中事件回應的階段](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
 > [!NOTE]
 > 您可以使用美國國家標準技術局 (NIST) 的 [Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) 做為參考來協助您建置自己的計劃。
@@ -230,7 +230,7 @@ Azure 資訊安全中心使用 Log Analytics 代理程式–這是 Azure 監視�
 >
 >
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 在本文件中，您已了解如何規劃資訊安全中心的採用。 如要深入了解資訊安全中心，請參閱下列主題：
 
 * [在 Azure 資訊安全中心中管理及回應安全性警示](security-center-managing-and-responding-alerts.md)

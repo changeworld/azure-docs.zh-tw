@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 9e53881d5b28b61cd220b14e02c411db53d19d36
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8767444e7ea839b1bb89cbb52833283fa01f7b5a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550991"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055549"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Freshservice 整合
 
@@ -81,12 +81,14 @@ ms.locfileid: "88550991"
 
 1. 在 [基本 SAML 組態] 區段上，輸入下列欄位的值：
 
-    a. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<democompany>.freshservice.com`
+    a. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<company-name>.freshservice.com`
 
-    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<democompany>.freshservice.com`
+    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<company-name>.freshservice.com`
 
+    c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<company-name>.freshservice.com/login/saml`
+    
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Freshservice 用戶端支援小組](https://support.freshservice.com/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」、「識別碼」和「回覆 URL」來更新這些值。 請連絡 [Freshservice 用戶端支援小組](https://support.freshservice.com/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -104,7 +106,7 @@ ms.locfileid: "88550991"
 1. 在畫面頂端選取 [新增使用者]。
 1. 在 [使用者] 屬性中，執行下列步驟：
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
    1. 按一下 [建立]。
 
