@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 設定 ASP.NET 的 Web 應用程式分�
 description: 針對裝載在內部部署環境或 Azure 的 ASP.NET 網站，設定效能、可用性及使用者行為分析工具。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: acfba63cba520631831888a1480929be3b1897f0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: c07e7c8e7bd710cb591719fe8d53a3bad6ca2ee0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475527"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973783"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>設定 ASP.NET 網站的 Application Insights
 
@@ -42,7 +42,7 @@ Application Insights 設定畫面：
 
 選取 **[馬上開始]** 。
 
-![[向 Application Insights 註冊您的應用程式] 頁面的螢幕擷取畫面](./media/asp-net/00004-start-free.png)
+![螢幕擷取畫面顯示 [Application Insights] 頁面和 [開始] 按鈕。](./media/asp-net/00004-start-free.png)
 
 如果您想要設定資源群組，或資料的儲存位置，請按一下 [進行設定]。 資源群組用來控制資料的存取。 例如，如果您有數個應用程式組成相同系統時，您可能會將其 Application Insights 資料放在相同的資源群組中。
 
@@ -115,7 +115,7 @@ Application Insights 設定畫面：
 
 * [版本資訊](./release-notes.md)
 
-若要升級至新版的 SDK，請開啟**NuGet 套件管理員**，並篩選出已安裝的套件。 選取 **Microsoft.ApplicationInsights.Web**，然後選擇 [升級]。
+若要升級至新版本的 SDK，請開啟 **NuGet 套件管理員**，並篩選已安裝的套件。 選取 **Microsoft.ApplicationInsights.Web**，然後選擇 [升級]。
 
 如果您已對 ApplicationInsights.config 進行任何的自訂，請在升級前儲存複本。 然後，將您的變更合併至新版本中。
 

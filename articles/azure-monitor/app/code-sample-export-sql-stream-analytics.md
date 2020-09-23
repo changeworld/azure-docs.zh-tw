@@ -3,15 +3,15 @@ title: 從 Azure Application Insights 匯出至 SQL | Microsoft Docs
 description: 使用 Stream Analytics 持續將 Application Insights 資料匯出至 SQL。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 90aab1794a9b412de2498edcc4d221f4bcc86968
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311223"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979448"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>逐步解說：使用串流分析從 Application Insights 匯出至 SQL
-本文說明如何使用[連續匯出][export]和[Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)，將您的遙測資料從[Azure 應用程式深入][start]解析移至 Azure SQL Database。 
+本文說明如何使用「[連續匯出][export]」和「 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)」，將遙測資料從[Azure 應用程式見解][start]移至 Azure SQL Database。 
 
 連續匯出會以 JSON 格式將遙測資料移入 Azure 儲存體。 我們將使用 Azure 串流分析來剖析 JSON 物件，並在資料庫資料表中建立資料列。
 
@@ -70,7 +70,7 @@ ms.locfileid: "87311223"
    
     記下衍生自應用程式名稱和檢測金鑰之路徑名稱的共同部分。 
 
-事件會以 JSON 格式寫入至 Blob 檔案。 每個檔案可能會包含一或多個事件。 因此我們想要讀取事件資料，並篩選出需要的欄位。 我們可以對資料執行各種動作，但我們今天的計畫是使用串流分析將資料移至 SQL Database。 這麼做可讓您輕鬆執行許多有趣的查詢工作。
+事件會以 JSON 格式寫入至 Blob 檔案。 每個檔案可能會包含一或多個事件。 因此我們想要讀取事件資料，並篩選出需要的欄位。 我們可以對資料進行各種動作，但我們目前的計畫是使用串流分析將資料移至 SQL Database。 這麼做可讓您輕鬆執行許多有趣的查詢工作。
 
 ## <a name="create-an-azure-sql-database"></a>建立 Azure SQL Database
 同樣地，請從您在 [Azure 入口網站][portal]中的訂用帳戶開始，建立您將寫入資料的資料庫 (和一部新伺服器，除非您已經有新伺服器)。
@@ -133,21 +133,21 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 ## <a name="create-an-azure-stream-analytics-instance"></a>建立 Azure 串流分析執行個體
 在 [Azure 入口網站](https://portal.azure.com/)中，選取 Azure 串流分析服務，然後建立新的串流分析工作：
 
-![串流分析設定](./media/code-sample-export-sql-stream-analytics/SA001.png)
+![螢幕擷取畫面顯示 [串流分析作業] 頁面，其中已醒目提示 [建立] 按鈕。](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
-![新增串流分析作業](./media/code-sample-export-sql-stream-analytics/SA002.png)
+![新的串流分析作業](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 建立新的工作之後，選取 [前往資源]。
 
-![串流分析設定](./media/code-sample-export-sql-stream-analytics/SA003.png)
+![螢幕擷取畫面顯示 [部署成功] 訊息和 [移至資源] 按鈕。](./media/code-sample-export-sql-stream-analytics/SA003.png)
 
 #### <a name="add-a-new-input"></a>加入新的輸入
 
-![串流分析設定](./media/code-sample-export-sql-stream-analytics/SA004.png)
+![螢幕擷取畫面會顯示 [輸入] 頁面，其中已選取 [新增] 按鈕。](./media/code-sample-export-sql-stream-analytics/SA004.png)
 
 將此設定為從您的連續匯出 Blob 接收輸入：
 
-![串流分析設定](./media/code-sample-export-sql-stream-analytics/SA0005.png)
+![螢幕擷取畫面顯示已選取 [輸入別名]、[來源] 和 [儲存體帳戶] 下拉式功能表選項的 [新增輸入] 視窗。](./media/code-sample-export-sql-stream-analytics/SA0005.png)
 
 現在您需要儲存體帳戶的主要存取金鑰 (您已在稍早記下此金鑰)。 請將此金鑰設為儲存體帳戶金鑰。
 

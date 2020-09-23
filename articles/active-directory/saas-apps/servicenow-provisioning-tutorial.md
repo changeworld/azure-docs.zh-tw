@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 218a3ad04d4f7366604784e06c558a9c568ad77e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b4ee17ba6587c38efb6da15117a5c55dc5abb873
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528058"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979731"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教學課程：設定 ServiceNow 來自動佈建使用者
 
@@ -101,7 +101,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 5. 在 [管理員認證] 區段下，輸入您的 ServiceNow 管理員認證和使用者名稱。 按一下 [測試連線]，以確保 Azure AD 可以連線至 ServiceNow。 如果連線失敗，請確定您的 ServiceNow 帳戶具有管理員權限，然後再試一次。
 
-    ![佈建](./media/servicenow-provisioning-tutorial/provisioning.png)
+    ![螢幕擷取畫面顯示服務布建頁面，您可以在其中輸入系統管理員認證。](./media/servicenow-provisioning-tutorial/provisioning.png)
 
 6. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 

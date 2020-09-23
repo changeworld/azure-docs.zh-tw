@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: f20ed76a72eecce59a7b8795a42b033230a2f7e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 577340e485550e84941a33d82b58aa6ff1c933d3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753678"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983668"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>在虛擬 WAN 中樞中設定 Azure 防火牆
 
@@ -32,20 +32,20 @@ ms.locfileid: "84753678"
 
 您虛擬 WAN 的 [概觀] 頁面會顯示虛擬中樞與安全中樞的清單。 下圖顯示沒有安全中樞的虛擬 WAN。
 
-[ ![概觀](./media/howto-firewall/overview.png)](./media/howto-firewall/overview.png#lightbox)
+[![螢幕擷取畫面顯示虛擬 WAN 的 [總覽] 頁面，其中包含虛擬中樞的清單。](./media/howto-firewall/overview.png)](./media/howto-firewall/overview.png#lightbox)
 
 ## <a name="convert-to-secured-hub"></a>轉換成安全中樞
 
 1. 在虛擬 WAN 的 [概觀] 頁面上，選取您想要轉換成安全中樞的中樞。 在虛擬中樞頁面上，您會看到有兩個選項可將 Azure 防火牆部署到此中樞上。 請選取其中一個選項。
 
-   [ ![安全性](./media/howto-firewall/security.png)](./media/howto-firewall/security.png#lightbox)
+   [![螢幕擷取畫面顯示您虛擬 WAN 的 [總覽] 頁面，您可以在其中選取 [轉換成安全中樞] 或 [Azure 防火牆]。](./media/howto-firewall/security.png)](./media/howto-firewall/security.png#lightbox)
 
 1. 在您選取其中一個選項之後，您會看到 [轉換成安全中樞] 頁面。 選取要轉換的中樞，然後選取位於頁面底部的 [下一步:Azure 防火牆]。
 
    [ ![選取中樞](./media/howto-firewall/select-hub.png)](./media/howto-firewall/select-hub.png#lightbox)
 1. 完成工作流程之後，請選取 [確認]。
 
-   [ ![確認](./media/howto-firewall/confirm.png)](./media/howto-firewall/confirm.png#lightbox)
+   [![螢幕擷取畫面顯示 [轉換成安全中樞] 窗格，並已選取 [確認]。](./media/howto-firewall/confirm.png)](./media/howto-firewall/confirm.png#lightbox)
 
 1. 將中樞轉換成安全中樞之後，您便可以在虛擬 WAN [概觀] 頁面上加以檢視。
 

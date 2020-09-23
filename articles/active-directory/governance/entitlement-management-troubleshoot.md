@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e230d3a4029d97a328280f581c126c7ec2d0bdb3
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 296aabdd79e1cd5c37248a0a44d57ebf17a4ea44
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460791"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979410"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>針對 Azure AD 權利管理進行疑難排解
 
@@ -75,7 +75,7 @@ ms.locfileid: "89460791"
 
 ### <a name="view-a-requests-delivery-errors"></a>查看要求的傳遞錯誤
 
-**必要角色：** 全域管理員、使用者系統管理員、目錄擁有者或存取套件管理員
+**先決條件角色：** 全域管理員、使用者管理員、目錄擁有者、存取套件管理員或存取套件指派管理員
 
 1. 在 Azure 入口網站中按一下 [Azure Active Directory]  ，然後按一下 [身分識別治理]  。
 
@@ -103,7 +103,7 @@ ms.locfileid: "89460791"
 
 - 如果在試用期間未修正錯誤，則要求狀態可能是 [ **傳遞失敗** ] 或 [ **部分傳遞**]。 然後，您可以使用 **[重新** 處理] 按鈕。 您將會有七天的時間重新處理要求。
 
-**必要角色：** 全域管理員、使用者系統管理員、目錄擁有者或存取套件管理員
+**先決條件角色：** 全域管理員、使用者管理員、目錄擁有者、存取套件管理員或存取套件指派管理員
 
 1. 在 Azure 入口網站中按一下 [Azure Active Directory]  ，然後按一下 [身分識別治理]  。
 
@@ -121,7 +121,7 @@ ms.locfileid: "89460791"
 
 您只能取消尚未傳遞或其傳遞失敗的擱置要求。否則，[ **取消** ] 按鈕會呈現灰色。
 
-**必要角色：** 全域管理員、使用者系統管理員、目錄擁有者或存取套件管理員
+**先決條件角色：** 全域管理員、使用者管理員、目錄擁有者、存取套件管理員或存取套件指派管理員
 
 1. 在 Azure 入口網站中按一下 [Azure Active Directory]  ，然後按一下 [身分識別治理]  。
 
@@ -150,7 +150,7 @@ ms.locfileid: "89460791"
     
     如果有任何原則的優先順序較高，則會忽略較低優先順序的類別。 如需對要求者顯示多個具有相同優先順序之原則的範例，請參閱 [選取原則](entitlement-management-request-access.md#select-a-policy)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - [管控外部使用者的存取](entitlement-management-external-users.md)
 - [查看使用者在權利管理中如何獲得存取權的報告](entitlement-management-reports.md)

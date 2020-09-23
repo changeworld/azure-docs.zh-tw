@@ -3,12 +3,12 @@ title: 將 Windows 系統狀態備份至 Azure
 description: 瞭解如何將 Windows Server 電腦的系統狀態備份至 Azure。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 10d37bbafab6aa96986a5d7af88a509d4c8eac25
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: ebe527ef7ddb32d46c2f39970f74b64c2594bf60
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376485"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975483"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>將 Windows 系統狀態備份至 Azure
 
@@ -40,7 +40,7 @@ ms.locfileid: "89376485"
 
     ![儲存體設定選項](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    根據預設，保存庫具有異地備援儲存體。 如果您使用 Azure 做為主要的備份儲存體端點，請繼續使用 [異地備援]****。 如果您未使用 Azure 做為主要的備份儲存體端點，則選擇 [本地備援]****，以減少 Azure 儲存體成本。 在此[儲存體備援概觀](../storage/common/storage-redundancy.md)中，深入了解[異地備援](../storage/common/storage-redundancy.md)和[本地備援](../storage/common/storage-redundancy.md)儲存體選項。
+    根據預設，保存庫具有異地備援儲存體。 如果您使用 Azure 做為主要的備份儲存體端點，請繼續使用 [異地備援]****。 如果您未使用 Azure 做為主要的備份儲存體端點，則選擇 [本地備援]****，以減少 Azure 儲存體成本。 在此[儲存體冗余總覽](../storage/common/storage-redundancy.md)中，深入瞭解[地理區域冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)、[本機冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)和[區域多餘的](../storage/common/storage-redundancy.md#zone-redundant-storage)儲存體選項。
 
 您已建立了保存庫，接著請設定它來備份 Windows 系統狀態。
 
@@ -152,7 +152,7 @@ ms.locfileid: "89376485"
 
 5. 選取 [ **系統狀態** ]，然後選取 **[確定]**。
 
-6. 選取 [下一步] 。
+6. 選取 [下一步]  。
 
 7. 在後續頁面中針對系統狀態備份選取所需的備份頻率和保留原則。
 
@@ -185,7 +185,7 @@ ms.locfileid: "89376485"
 
 如果您有任何問題，請 [傳送意見](https://feedback.azure.com/forums/258995-azure-backup)反應給我們。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * 詳細了解如何 [備份 Windows 電腦](backup-windows-with-mars-agent.md)。
 * 現在您已備份好 Windows Server 系統狀態，接下來您可以[管理您的保存庫和伺服器](backup-azure-manage-windows-server.md)。

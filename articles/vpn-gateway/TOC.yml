@@ -184,6 +184,8 @@
       items:
         - name: 設定適用於 VPN 閘道的 BGP
           items:
+            - name: Azure 入口網站
+              href: bgp-howto.md
             - name: Azure PowerShell
               href: vpn-gateway-bgp-resource-manager-ps.md
             - name: Azure CLI
@@ -228,6 +230,8 @@
           href: create-zone-redundant-vnet-gateway.md
     - name: 在連線上設定 IPsec/IKE 原則
       items:
+        - name: Azure 入口網站
+          href: ipsec-ike-policy-howto.md
         - name: PowerShell
           href: vpn-gateway-ipsecikepolicy-rm-powershell.md
     - name: 設定主動-主動連線

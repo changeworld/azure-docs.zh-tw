@@ -1,29 +1,29 @@
 ---
-title: 從 Azure IoT Central (preview) 匯出資料 |Microsoft Docs
+title: 從 Azure IoT Central 匯出資料 |Microsoft Docs
 description: 如何使用新的資料匯出，將您的 IoT 資料匯出至 Azure 和自訂雲端目的地。
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 09/02/2020
+ms.date: 09/15/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperfq1
-ms.openlocfilehash: 0a07d7e57ced5e2cd9457dc51ebcd355306fc48e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 9738b7d3fb435888e7ffc248b7b2ac6c0ef42471
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461930"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974409"
 ---
-# <a name="export-iot-data-to-cloud-destinations-using-data-export-preview"></a>使用資料匯出 (預覽) 將 IoT 資料匯出至雲端目的地
+# <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用資料匯出將 IoT 資料匯出至雲端目的地
 
 > [!Note]
-> 本文說明 IoT Central 中的預覽資料匯出功能。
+> 本文說明 IoT Central 中的資料匯出功能。
 >
 > - 如需舊版資料匯出功能的相關資訊，請參閱 [使用資料匯出 (舊版) 將 IoT 資料匯出至雲端目的地 ](./howto-export-data-legacy.md)。
-> - 若要瞭解預覽資料匯出與舊版資料匯出功能之間的差異，請參閱下 [表中的比較表](#comparison-of-legacy-data-export-and-preview-data-export) 。
+> - 若要瞭解資料匯出與舊版資料匯出功能之間的差異，請參閱下 [表中的比較表](#comparison-of-legacy-data-export-and-data-export) 。
 
-本文說明如何使用 Azure IoT Central 中的新資料匯出預覽功能。 使用此功能可從您的 IoT Central 應用程式持續匯出已篩選和擴充的 IoT 資料。 資料匯出會以近乎即時的方式將變更推送至雲端解決方案的其他部分，以取得暖路徑見解、分析和儲存體。
+本文說明如何使用 Azure IoT Central 中的新資料匯出功能。 使用此功能可從您的 IoT Central 應用程式持續匯出已篩選和擴充的 IoT 資料。 資料匯出會以近乎即時的方式將變更推送至雲端解決方案的其他部分，以取得暖路徑見解、分析和儲存體。
 
 例如，您可以：
 
@@ -37,7 +37,7 @@ ms.locfileid: "89461930"
 
 ## <a name="prerequisites"></a>必要條件
 
-若要使用預覽資料匯出功能，您必須有 [V3 應用程式](howto-get-app-info.md)，而且必須擁有 [資料匯出](howto-manage-users-roles.md) 許可權。
+若要使用資料匯出功能，您必須有 [V3 應用程式](howto-get-app-info.md)，而且必須擁有 [資料匯出](howto-manage-users-roles.md) 許可權。
 
 ## <a name="set-up-export-destination"></a>設定匯出目的地
 
@@ -63,7 +63,12 @@ ms.locfileid: "89461930"
     - 選取 [ **設定] > 共用存取原則**。
     - 建立新的金鑰，或選擇具有 **傳送** 許可權的現有金鑰。
     - 複製主要連接字串或次要連接字串。 您可以使用此連接字串，在 IoT Central 中設定新的目的地。
-
+    - 或者，您可以為整個事件中樞命名空間產生連接字串：
+        1. 移至 Azure 入口網站中的事件中樞命名空間。
+        2. 在 [**設定**] 底下，選取 [**共用存取原則**]
+        3. 建立新的金鑰，或選擇具有 **傳送** 許可權的現有金鑰。
+        4. 複製主要連接字串或次要連接字串
+        
 ### <a name="create-a-service-bus-queue-or-topic-destination"></a>建立服務匯流排佇列或主題目的地
 
 如果您沒有要匯出的現有服務匯流排命名空間，請遵循下列步驟：
@@ -78,6 +83,11 @@ ms.locfileid: "89461930"
     - 選取 [ **設定]/[共用存取原則**]。
     - 建立新的金鑰，或選擇具有 **傳送** 許可權的現有金鑰。
     - 複製主要連接字串或次要連接字串。 您可以使用此連接字串，在 IoT Central 中設定新的目的地。
+    - 或者，您可以為整個服務匯流排命名空間產生連接字串：
+        1. 在 Azure 入口網站中，移至您的服務匯流排命名空間。
+        2. 在 [**設定**] 底下，選取 [**共用存取原則**]
+        3. 建立新的金鑰，或選擇具有 **傳送** 許可權的現有金鑰。
+        4. 複製主要連接字串或次要連接字串
 
 ### <a name="create-an-azure-blob-storage-destination"></a>建立 Azure Blob 儲存體目的地
 
@@ -109,10 +119,10 @@ ms.locfileid: "89461930"
 
 1. 登入您的 IoT Central 應用程式。
 
-1. 在左窗格中，選取 [ **資料匯出 (預覽]) **。
+1. 在左窗格中，選取 [ **資料匯出**]。
 
     > [!Tip]
-    > 如果您在左窗格中看不到 [ **資料匯出 (預覽]) ** ，則表示您沒有在應用程式中設定資料匯出的許可權。 請連絡系統管理員來設定資料匯出。
+    > 如果您在左窗格中看不到 [ **資料匯出** ]，則表示您沒有在應用程式中設定資料匯出的許可權。 請連絡系統管理員來設定資料匯出。
 
 1. 選取 [ **+ 新增匯出**]。
 
@@ -127,9 +137,10 @@ ms.locfileid: "89461930"
 
 1. （選擇性）新增篩選器來減少匯出的資料量。 有不同類型的篩選適用于每種資料匯出類型：
 
-    若要篩選遙測，請使用：
+    若要篩選遙測，您可以：
 
-    - **功能篩選**：如果您在 [ **名稱** ] 下拉式清單中選擇遙測專案，則匯出的資料流程只會包含符合篩選準則的遙測。 如果您在 [ **名稱** ] 下拉式清單中選擇 [裝置] 或 [雲端] 屬性專案，則匯出的資料流程只會包含具有符合篩選準則之屬性之裝置的遙測。
+    - **篩選** 匯出的資料流程，使其只包含符合裝置名稱、裝置識別碼和裝置範本篩選準則之裝置的遙測。
+    - **篩選** 功能：如果您在 [ **名稱** ] 下拉式清單中選擇遙測專案，則匯出的資料流程只會包含符合篩選準則的遙測。 如果您在 [ **名稱** ] 下拉式清單中選擇 [裝置] 或 [雲端] 屬性專案，則匯出的資料流程只會包含具有符合篩選準則之屬性之裝置的遙測。
     - **訊息屬性篩選**：使用裝置 sdk 的裝置可以在每個遙測訊息上傳送 *訊息屬性* 或 *應用程式屬性* 。 這些屬性是一組索引鍵/值組，會以自訂識別碼標記訊息。 若要建立訊息屬性篩選，請輸入您要尋找的訊息屬性索引鍵，然後指定條件。 只會匯出具有符合指定篩選準則之屬性的遙測訊息。 以下是支援的字串比較運算子： equals、不等於、contains、不包含、exists、不存在。 [深入瞭解 IoT 中樞檔中的應用程式屬性](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
     若要篩選屬性變更，請使用 **功能篩選**。 選擇下拉式清單中的屬性專案。 匯出的資料流程只包含符合篩選準則之選定屬性的變更。
@@ -143,8 +154,8 @@ ms.locfileid: "89461930"
 
     - **目的地名稱**： IoT Central 中目的地的顯示名稱。
     - **目的地類型**：選擇目的地的類型。 如果尚未設定目的地，請參閱 [設定匯出目的地](#set-up-export-destination)。
-    - 針對 Azure 事件中樞，Azure 服務匯流排佇列或主題，貼上資源的連接字串。
-    - 針對 Azure Blob 儲存體，貼上資源的連接字串，然後輸入區分大小寫的容器名稱。
+    - 針對 Azure 事件中樞、Azure 服務匯流排佇列或主題，貼上資源的連接字串，並視需要輸入區分大小寫的事件中樞、佇列或主題名稱。
+    - 針對 Azure Blob 儲存體，貼上資源的連接字串，並視需要輸入區分大小寫的容器名稱。
     - 針對 Webhook，貼上 webhook 端點的回呼 URL。
     - 選取 [建立]。
 
@@ -185,7 +196,7 @@ ms.locfileid: "89461930"
 - `enrichments`：在匯出時設定的任何擴充。
 - `messageProperties`：裝置隨訊息傳送的其他屬性。 這些屬性有時稱為 *應用程式屬性*。 [深入瞭解 IoT 中樞](../../iot-hub/iot-hub-devguide-messages-construct.md)檔。
 
-針對事件中樞和服務匯流排，IoT Central 會在收到來自裝置的訊息之後，快速匯出新訊息。
+針對事件中樞和服務匯流排，IoT Central 會在收到來自裝置的訊息之後，快速匯出新訊息。 在 [使用者屬性] (也稱為每個訊息) 的應用程式屬性， `iotcentral-device-id` `iotcentral-application-id` `iotcentral-message-source` 會自動包含、和。
 
 針對 Blob 儲存體，每分鐘會批次處理和匯出訊息一次。
 
@@ -197,7 +208,7 @@ ms.locfileid: "89461930"
     "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
     "messageSource": "telemetry",
     "deviceId": "1vzb5ghlsg1",
-    "schema": "default@preview",
+    "schema": "default@v1",
     "templateId": "urn:qugj6vbw5:___qbj_27r",
     "enqueuedTime": "2020-08-05T22:26:55.455Z",
     "telemetry": {
@@ -232,7 +243,7 @@ ms.locfileid: "89461930"
 - `templateId`：與裝置相關聯之裝置範本的識別碼。
 - `enrichments`：在匯出時設定的任何擴充。
 
-針對事件中樞和服務匯流排，IoT Central 會以近乎即時的方式將新的訊息資料匯出至事件中樞或服務匯流排佇列或主題。
+針對事件中樞和服務匯流排，IoT Central 會以近乎即時的方式將新的訊息資料匯出至事件中樞或服務匯流排佇列或主題。 在 [使用者屬性] (也稱為每個訊息) 的應用程式屬性， `iotcentral-device-id` `iotcentral-application-id` `iotcentral-message-source` `iotcentral-message-type` 會自動包含、、和。
 
 針對 Blob 儲存體，每分鐘會批次處理和匯出訊息一次。
 
@@ -244,11 +255,11 @@ ms.locfileid: "89461930"
     "messageSource": "properties",
     "messageType": "cloudPropertyChange",
     "deviceId": "18a985g1fta",
-    "schema": "default@preview",
+    "schema": "default@v1",
     "templateId": "urn:qugj6vbw5:___qbj_27r",
     "enqueuedTime": "2020-08-05T22:37:32.942Z",
     "properties": [{
-        "fieldName": "MachineSerialNumber",
+        "name": "MachineSerialNumber",
         "value": "abc"
     }],
     "enrichments": {
@@ -257,19 +268,19 @@ ms.locfileid: "89461930"
 }
 ```
 
-## <a name="comparison-of-legacy-data-export-and-preview-data-export"></a>舊版資料匯出和預覽資料匯出的比較
+## <a name="comparison-of-legacy-data-export-and-data-export"></a>舊版資料匯出和資料匯出的比較
 
-下表顯示 [舊版資料匯出](howto-export-data-legacy.md) 和預覽資料匯出功能之間的差異：
+下表顯示 [舊版資料匯出](howto-export-data-legacy.md) 與新的資料匯出功能之間的差異：
 
 | 功能  | 舊版資料匯出 | 新增資料匯出 |
 | :------------- | :---------- | :----------- |
 | 可用的資料類型 | 遙測、裝置、裝置範本 | 遙測，屬性變更 |
-| 篩選 | None | 取決於匯出的資料類型。 針對遙測，依遙測篩選、訊息屬性、屬性值 |
-| 擴充 | None | 使用裝置上的自訂字串或屬性值進行擴充 |
+| 篩選 | 無 | 取決於匯出的資料類型。 針對遙測，依遙測篩選、訊息屬性、屬性值 |
+| 擴充 | 無 | 使用裝置上的自訂字串或屬性值進行擴充 |
 | Destinations | Azure 事件中樞、Azure 服務匯流排佇列和主題，Azure Blob 儲存體 | 與舊版資料匯出和 webhook 相同|
 | 支援的應用程式版本 | V2、V3 | 僅限第 3 版 |
 | 值得注意的限制 | 每個應用程式5個匯出，每個匯出1個目的地 | 10個匯出-每個應用程式的目的地連線數 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 現在您已瞭解如何使用新的資料匯出，建議的下一個步驟是瞭解 [如何在 IoT Central 中流量分析](./howto-create-analytics.md)

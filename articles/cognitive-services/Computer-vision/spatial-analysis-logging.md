@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: b7ca679be0edb4177a883abfac361f9554f0d555
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2d19c061ad1e5cf033d2801df64a0ae37736c418
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934426"
+ms.locfileid: "90983014"
 ---
 # <a name="telemetry-and-troubleshooting"></a>遙測和疑難排解
 
@@ -74,7 +74,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 "telegraf": { 
   "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/spatial-analysis/telegraf:1.0",
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
   "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
 },
 "type": "docker",
@@ -136,7 +136,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 ```json
 "diagnostics": {  
   "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/spatial-analysis/diagnostics:1.0",
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
   "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
   }
 ```    
@@ -306,6 +306,15 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 檢查 fetch 記錄行、時間和大小（如果這些設定看起來很不錯，請將 ***DoPost*** 取代為， `true` 並將具有相同篩選的記錄推送至目的地）。 
 
 針對問題進行疑難排解時，您可以從 Azure Blob 儲存體匯出記錄。 
+
+## <a name="common-issues"></a>常見問題
+
+如果您在模組記錄檔中看到下列訊息，可能表示您的 Azure 訂用帳戶需要核准： 
+
+「容器不是處於有效的狀態。 訂用帳戶驗證失敗，狀態為「不相符」。 Api 金鑰並非適用于指定的容器類型。」
+
+如需詳細資訊，請參閱 [要求核准以執行容器](spatial-analysis-container.md#request-approval-to-run-the-container)。 
+
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>針對 Azure Stack Edge 裝置進行疑難排解
 

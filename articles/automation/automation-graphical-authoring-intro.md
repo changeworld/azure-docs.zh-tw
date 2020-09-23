@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: c5d611ddffedc2f69cfc4f2b5600a158b0be9680
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186328"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987333"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>在 Azure 自動化中製作圖形化 Runbook
 
@@ -61,7 +61,7 @@ Azure 自動化中的所有 Runbook 都是 Windows PowerShell 工作流程。 �
 
 參數集會定義接受特定 Cmdlet 值的強制參數和選用參數。 所有的 Cmdlet 至少有一個參數集，而某些則有數個參數集。 如果 Cmdlet 有多個參數集，您必須先選取要使用的參數集，才能設定參數。 您可以變更活動使用的參數集，方法是選取 [參數集]，然後選擇其他參數集。 在此情況下，您已設定的任何參數值都會遺失。
 
-在下列範例中，[Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) Cmdlet 有三個參數集。 範例中使用**ListVirtualMachineInResourceGroupParamSet** 參數集，搭配單一選用參數，來傳回資源群組中的所有虛擬機器。 範例也會使用 **GetVirtualMachineInResourceGroupParamSet** 參數集來指定要傳回的虛擬機器。 這個參數集有兩個必要參數和一個選用參數。
+在下列範例中，[Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) Cmdlet 有三個參數集。 範例中使用**ListVirtualMachineInResourceGroupParamSet** 參數集，搭配單一選用參數，來傳回資源群組中的所有虛擬機器。 範例也會使用 **GetVirtualMachineInResourceGroupParamSet** 參數集來指定要傳回的虛擬機器。 這個參數集有兩個必要參數和一個選用參數。
 
 ![參數集](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -91,11 +91,11 @@ Azure 自動化中的所有 Runbook 都是 Windows PowerShell 工作流程。 �
 
 當您對活動啟用重試時，您可以設定延遲和條件。 延遲是 Runbook 再次執行活動之前所等待的時間 (以秒或分鐘計算)。 如果您未指定延遲，活動會在完成後立即再度執行。
 
-![活動重試延遲](media/automation-graphical-authoring-intro/retry-delay.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-delay.png" alt-text="啟用重試功能設定的螢幕擷取畫面。":::
 
 重試條件是 PowerShell 運算式，在每次活動執行之後評估。 如果運算式解析為 True，活動就會再次執行。 如果運算式解析為 False，活動不會再次執行，且 Runbook 會移至下一個活動。
 
-![活動重試延遲](media/automation-graphical-authoring-intro/retry-condition.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="顯示 [重試] 的螢幕擷取畫面，直到此條件為 true 欄位，以及可在重試條件中使用的 PowerShell 運算式範例。":::
 
 重試條件可以使用名為 `RetryData` 的變數來提供活動重試相關資訊的存取權。 此變數具有下表中的屬性：
 
@@ -435,4 +435,4 @@ Azure 自動化中的每個圖形化 Runbook 都有草稿版本和已發行版�
 * 若要開始使用圖形化 Runbook，請參閱[教學課程：建立圖形化 Runbook](learn/automation-tutorial-runbook-graphical.md)。
 * 若要深入了解 Runbook 類型及其優點和限制，請參閱 [Azure 自動化 Runbook 類型](automation-runbook-types.md)。
 * 若要了解如何使用自動化執行身分帳戶進行驗證，請參閱[執行身分帳戶](automation-security-overview.md#run-as-account)。
-* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation)。

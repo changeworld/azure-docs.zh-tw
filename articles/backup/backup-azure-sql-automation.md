@@ -4,12 +4,12 @@ description: 使用 Azure 備份和 PowerShell 來備份和還原 Azure Vm 中�
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: b355aaa465132e86c636c68552f3d650b51b08f1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 37e2336b262311ea00e833ad91fe5e8c5c1ddf1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004981"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975177"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>使用 PowerShell 備份及還原 Azure Vm 中的 SQL 資料庫
 
@@ -26,7 +26,7 @@ ms.locfileid: "89004981"
 > * 還原已備份的 SQL DB。
 > * 監視備份和還原作業。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 * [深入瞭解](backup-azure-recovery-services-vault-overview.md) 復原服務保存庫。
 * 瞭解在 [Azure vm 中備份 SQL db](backup-azure-sql-database.md#before-you-start)的功能功能。
@@ -102,7 +102,7 @@ ms.locfileid: "89004981"
 
 3. 指定要用於保存庫儲存體的冗余類型。
 
-    * 您可以使用[本機備援儲存體](../storage/common/storage-redundancy.md)或[異地備援儲存體](../storage/common/storage-redundancy.md)。
+    * 您可以使用 [本機多餘的儲存體](../storage/common/storage-redundancy.md#locally-redundant-storage)、 [異地多餘的](../storage/common/storage-redundancy.md#geo-redundant-storage) 儲存體或 [區域多餘的儲存體](../storage/common/storage-redundancy.md#zone-redundant-storage) 。
     * 下列範例會針對**testvault**設定為**異地備援**的[AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd 設定 **-BackupStorageRedundancy**選項。
 
     ```powershell

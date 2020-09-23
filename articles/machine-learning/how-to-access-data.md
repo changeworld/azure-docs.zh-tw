@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 769b4d364412d3409ef95c4222197fe6f7ce222c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7a785aebc282a871d150f0c9b4cca59d7d03558e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893478"
+ms.locfileid: "90976780"
 ---
 # <a name="connect-to-azure-storage-services"></a>連線至 Azure 儲存體服務
 
-在本文中，您將瞭解如何透過 **Azure Machine Learning 資料存放區連線到 Azure 儲存體服務**。 資料存放區會安全地連線到您的 Azure 儲存體服務，而不會將您的驗證認證與原始資料來源的完整性保持在風險之下。 他們會將連接資訊（例如您的訂用帳戶識別碼和權杖授權）儲存在與工作區相關聯的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中，以便您可以安全地存取儲存體，而不需要在腳本中進行硬程式碼撰寫。 您可以使用 [Azure Machine Learning PYTHON SDK](#python) 或 [Azure Machine Learning studio](#studio) 來建立和註冊資料存放區。
+在本文中，您將瞭解如何透過 **Azure Machine Learning 資料存放區連線到 Azure 儲存體服務**。 資料存放區會安全地連線到您的 Azure 儲存體服務，而不會將您的驗證認證與原始資料來源的完整性保持在風險之下。 他們會將連接資訊（例如您的訂用帳戶識別碼和權杖授權）儲存在與工作區相關聯的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中，以便您可以安全地存取儲存體，而不需要在腳本中進行硬程式碼撰寫。 您可以使用 [Azure Machine Learning PYTHON SDK](#python) 或 [Azure Machine Learning studio](how-to-connect-data-ui.md) 來建立和註冊資料存放區。
 
 如果您想要使用 Azure Machine Learning VS Code 擴充功能來建立和管理資料存放區;如需深入瞭解，請造訪 [VS Code 資源管理操作指南](how-to-manage-resources-vscode.md#datastores) 。
 
@@ -117,7 +117,7 @@ ms.locfileid: "90893478"
 
 <a name="python"></a>
 
-## <a name="create-and-register-datastores-via-the-sdk"></a>透過 SDK 建立和註冊資料存放區
+## <a name="create-and-register-datastores"></a>建立和註冊資料存放區
 
 當您將 Azure 儲存體解決方案註冊為資料存放區時，將會自動建立該資料存放區，並將其註冊至特定工作區。 請參閱 [儲存體存取 & 許可權](#storage-access-and-permissions) 一節，以取得虛擬網路案例的指引，以及尋找所需驗證認證的位置。 
 
@@ -129,7 +129,7 @@ ms.locfileid: "90893478"
 
  若要為其他支援的儲存體服務建立資料存放區，請參閱 [適用 `register_azure_*` 方法的參考檔](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#&preserve-view=truemethods)。
 
-如果您偏好低程式碼體驗，請參閱 [在 Azure Machine Learning studio 中建立資料存放區](#studio)。
+如果您偏好低程式碼體驗，請參閱 [使用 Azure Machine Learning Studio 連接到資料](how-to-connect-data-ui.md)。
 
 > [!NOTE]
 > 資料存放區名稱只可包含小寫字母、數位和底線。 
@@ -199,25 +199,6 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                              client_id=client_id, # client id of service principal
                                                              client_secret=client_secret) # the secret of service principal
 ```
-
-<a name="studio"></a>
-
-
-## <a name="create-datastores-in-the-studio"></a>在 studio 中建立資料存放區 
-
-在 Azure Machine Learning studio 的幾個步驟中建立新的資料存放區。
-
-> [!IMPORTANT]
-> 如果您的資料儲存體帳戶位於虛擬網路中，則需要額外的設定步驟，以確保 studio 具有您資料的存取權。 請參閱 [在 Azure 虛擬網路中使用 Azure Machine Learning studio](how-to-enable-studio-virtual-network.md) ，以確保套用適當的設定步驟。 
-
-1. 登入 [Azure Machine Learning Studio](https://ml.azure.com/)。
-1. 在左窗格中，選取 [管理] 底下的 [資料存放區]。
-1. 選取 [+ 新增資料存放區]。
-1. 完成新資料存放區的表單。 此表單會根據您選取的 Azure 儲存體類型和驗證類型，以智慧方式自行更新。 請參閱「 [儲存體存取和許可權」一節](#access-validation) ，以瞭解在哪裡可以找到您需要的驗證認證才能填入此表單。
-
-下列範例示範當您建立 **Azure blob 資料**存放區時，表單看起來的樣子： 
-    
-![新資料存放區的表單](media/how-to-access-data/new-datastore-form.png)
 
 <a name="train"></a>
 ## <a name="use-data-in-your-datastores"></a>使用資料存放區中的資料

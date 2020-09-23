@@ -16,18 +16,18 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 355f0127829b709d82127fb340381830793c93ff
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 18bc7ca9e108a35fd27f7b3155f186221a8caae3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783547"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980071"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中查看、新增及移除存取套件的指派
 
 在 Azure AD 權利管理中，您可以看到誰已獲指派存取套件、其原則和狀態。 如果存取套件具有適當的原則，您也可以直接將使用者指派給存取套件。 本文說明如何查看、新增及移除存取套件的指派。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要使用 Azure AD 權利管理並指派使用者來存取套件，您必須具備下列其中一個授權：
 
@@ -36,7 +36,7 @@ ms.locfileid: "88783547"
 
 ## <a name="view-who-has-an-assignment"></a>查看誰有指派
 
-**必要角色：** 全域管理員、使用者系統管理員、目錄擁有者或存取套件管理員
+**先決條件角色：** 全域管理員、使用者管理員、目錄擁有者、存取套件管理員或存取套件指派管理員
 
 1. 在 Azure 入口網站中按一下 [Azure Active Directory]  ，然後按一下 [身分識別治理]  。
 
@@ -64,7 +64,7 @@ ms.locfileid: "88783547"
 
 在某些情況下，您可能會想要將特定使用者直接指派給存取套件，讓使用者不需要經歷要求存取套件的程式。 若要直接指派使用者，存取套件必須有允許系統管理員直接指派的原則。
 
-**必要角色：** 全域管理員、使用者系統管理員、目錄擁有者或存取套件管理員
+**先決條件角色：** 全域管理員、使用者管理員、目錄擁有者、存取套件管理員或存取套件指派管理員
 
 1. 在 Azure 入口網站中按一下 [Azure Active Directory]  ，然後按一下 [身分識別治理]  。
 
@@ -94,7 +94,7 @@ ms.locfileid: "88783547"
 
 ## <a name="remove-an-assignment"></a>移除指派
 
-**必要角色：** 全域管理員、使用者系統管理員、目錄擁有者或存取套件管理員
+**先決條件角色：** 全域管理員、使用者管理員、目錄擁有者、存取套件管理員或存取套件指派管理員
 
 1. 在 Azure 入口網站中按一下 [Azure Active Directory]  ，然後按一下 [身分識別治理]  。
 
@@ -110,7 +110,7 @@ ms.locfileid: "88783547"
 
     將會出現通知，告知您已移除指派。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [變更存取套件的要求和設定](entitlement-management-access-package-request-policy.md)
 - [檢視報告和記錄](entitlement-management-reports.md)

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: d4067b23c4ff365857c37d7dfdce6dc42e129989
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 642a382f2ec5da7821c9d709bd27d592ced31c8d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936600"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974029"
 ---
 # <a name="application-map-triage-distributed-applications"></a>應用程式對應：對分散式應用程式進行分級
 
@@ -34,7 +34,7 @@ ms.locfileid: "88936600"
 
 如果所有元件都是單一 Application Insights 資源內的角色，則不需要進行此探索步驟。 這類應用程式一開始會載入所有元件。
 
-![應用程式對應螢幕擷取畫面](media/app-map/app-map-001.png)
+![螢幕擷取畫面顯示應用程式對應的範例。](media/app-map/app-map-001.png)
 
 這項新體驗的重要目標之一，是要能夠以視覺化方式顯示含有數百個元件的複雜拓撲。
 
@@ -293,7 +293,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ![MapLink-1 影像](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 若要深入瞭解相互關聯的 Application Insights 運作方式，請參閱 [遙測相互關聯文章](correlation.md)。
 * [端對端交易診斷體驗](transaction-diagnostics.md)會將所有 Application Insights 受監視元件的伺服器端遙測相互關聯到單一視圖中。

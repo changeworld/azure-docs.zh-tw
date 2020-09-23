@@ -1,47 +1,47 @@
 ---
-title: 移除 Visual Studio Azure 監視器中的 Application Insights
-description: 如何在 Visual Studio 中移除適用于 ASP.NET 和 ASP.NET Core 的 Application Insights SDK。
+title: 移除 Visual Studio 中的 Application Insights-Azure 監視器
+description: 如何在 Visual Studio 中移除 Application Insights SDK for ASP.NET 和 ASP.NET Core。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 08a6d29e9170dde4bf3cc12015d126874006a778
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bfa6ee21cc1a55f653c0e79807a14ac34082e73
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049760"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981468"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>如何移除 Visual Studio 中的 Application Insights
 
 本文將說明如何在 Visual Studio 中移除 ASP.NET 和 ASP.NET Core Application Insights SDK。
 
-若要移除 Application Insights，您必須從應用程式中的 API 移除 NuGet 套件和參考。 您可以使用 [套件管理主控台] 或 Visual Studio 中的 [管理 NuGet 解決方案] 來卸載 NuGet 套件。 下列各節將示範兩種移除 NuGet 套件的方法，以及在專案中自動新增的功能。 請務必確認已加入的檔案，以及您自己的程式碼中，已移除您對 API 進行呼叫的區域。
+若要移除 Application Insights，您必須從應用程式中的 API 移除 NuGet 套件和參考。 您可以在 Visual Studio 中使用套件管理主控台或管理 NuGet 解決方案來卸載 NuGet 套件。 下列各節將示範兩種移除 NuGet 套件的方式，以及在專案中自動新增的功能。 請務必確認已新增的檔案，以及在您對 API 進行呼叫的程式碼中，已移除的區域。
 
 ## <a name="uninstall-using-the-package-management-console"></a>使用套件管理主控台卸載
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. 若要開啟套件管理主控台，請在頂端功能表中選取 [工具] [> NuGet 套件管理員] > [套件管理員主控台]。
+1. 若要開啟套件管理主控台，請在頂端功能表中選取 [工具] > [NuGet 封裝管理員] > 封裝管理員主控台。
      
-    ![在頂端功能表中，按一下 [工具] > NuGet 套件管理員 > 套件管理員主控台](./media/remove-application-insights/package-manager.png)
+    ![在頂端功能表中，按一下 [工具] > NuGet 封裝管理員 > 封裝管理員主控台](./media/remove-application-insights/package-manager.png)
 
     > [!NOTE]
-    > 如果已啟用追蹤集合，您必須先卸載 ApplicationInsights。 TraceListener。 輸入， `Uninstall-package Microsoft.ApplicationInsights.TraceListener` 然後遵循下列步驟來移除 ApplicationInsights。
+    > 如果已啟用追蹤集合，您必須先卸載 ApplicationInsights. TraceListener。 輸入， `Uninstall-package Microsoft.ApplicationInsights.TraceListener` 然後遵循下列步驟來移除 ApplicationInsights。
 
 1. 輸入下列命令： `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
 
-    輸入命令之後，將會從專案中卸載 Application Insights 套件及其所有相依性。
+    輸入命令之後，就會從專案卸載 Application Insights 套件及其所有相依性。
     
     ![在主控台中輸入命令](./media/remove-application-insights/package-management-console.png)
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. 若要開啟套件管理主控台，請在頂端功能表中選取 [工具] [> NuGet 套件管理員] > [套件管理員主控台]。
+1. 若要開啟套件管理主控台，請在頂端功能表中選取 [工具] > [NuGet 封裝管理員] > 封裝管理員主控台。
 
-    ![在頂端功能表中，按一下 [工具] > NuGet 套件管理員 > 套件管理員主控台](./media/remove-application-insights/package-manager.png)
+    ![在頂端功能表中，按一下 [工具] > NuGet 封裝管理員 > 封裝管理員主控台](./media/remove-application-insights/package-manager.png)
 
 1. 輸入下列命令： ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
 
-    輸入命令之後，將會從專案中卸載 Application Insights 套件及其所有相依性。
+    輸入命令之後，就會從專案卸載 Application Insights 套件及其所有相依性。
 
 ---
 
@@ -49,40 +49,40 @@ ms.locfileid: "87049760"
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. 在右側的 [ *方案總管*中   ，以滑鼠右鍵按一下 [ **方案**]，   然後選取 [ **管理方案的 NuGet 套件**]。
+1. 在右側的 *方案總管*中   ，以滑鼠右鍵按一下 [ **方案**]，   然後選取 [ **管理方案的 NuGet 套件**]。
 
-    然後您會看到一個畫面，讓您編輯屬於專案一部分的所有 NuGet 套件。
+    接著，您會看到一個畫面，讓您編輯專案中的所有 NuGet 套件。
     
-     ![在 [方案總管中，以滑鼠右鍵按一下 [方案]，然後選取 [管理方案的 NuGet 套件]](./media/remove-application-insights/manage-nuget-framework.png)
+     ![以滑鼠右鍵按一下 [方案]，在 [方案總管] 中，選取 [管理解決方案的 NuGet 套件]](./media/remove-application-insights/manage-nuget-framework.png)
 
     > [!NOTE]
-    > 如果已啟用追蹤集合，您必須先卸載 ApplicationInsights，而不選取 [移除相依性]，然後遵循下列步驟來卸載已選取 [移除相依性] 的 ApplicationInsights。
+    > 如果已啟用追蹤集合，您必須先卸載 ApplicationInsights，而不選取 [移除相依性]，然後依照下列步驟來卸載已選取 [移除相依性] 的 ApplicationInsights。
     
-1. 按一下 [ApplicationInsights] 套件。核取右側的 [ *專案*] 旁的核取方塊，   以選取所有專案。
+1. 按一下 [ApplicationInsights] 套件。選取右側的 [ *專案*] 旁的核取方塊，   選取 [所有專案]。
     
-1. 若要在卸載時移除所有相依性 **Options**，請選取   您選取專案之區段下方的 [選項] 下拉式按鈕。
+1. 若要在卸載時移除所有相依性 **Options**，請在   您選取專案的區段底下選取 [選項] 下拉式清單按鈕。
 
     在 [ *卸載選項*] 底下，選取 [ *移除*相依性] 旁的核取方塊。
 
 1. 選取 [解除安裝]。
     
-    ![勾選 [移除相依性]，然後卸載](./media/remove-application-insights/uninstall-framework.png)
+    ![螢幕擷取畫面顯示已核取 [移除相依性] 的 [ApplicationInsights] 視窗，並醒目提示 [卸載]。](./media/remove-application-insights/uninstall-framework.png)
 
-    隨即顯示一個對話方塊，顯示要從應用程式移除的所有相依性。選取 **[確定]**   以卸載。
+    畫面上將會顯示一個對話方塊，顯示要從應用程式移除的所有相依性。選取 **[確定]**   以卸載。
     
-    ![勾選 [移除相依性]，然後卸載](./media/remove-application-insights/preview-uninstall-framework.png)
+    ![螢幕擷取畫面會顯示一個對話方塊，其中包含要移除的相依性。](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  卸載所有專案之後，您仍然可以在 *方案總管*中看到「ApplicationInsights.config」和「AiHandleErrorAttribute.cs」。您可以手動刪除這兩個檔案。
+1.  卸載所有專案之後，您仍然可能會在 *方案總管*中看到「ApplicationInsights.config」和「AiHandleErrorAttribute.cs」。您可以手動刪除這兩個檔案。
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. 在右側的 [ *方案總管*中   ，以滑鼠右鍵按一下 [ **方案**]，   然後選取 [ **管理方案的 NuGet 套件**]。
+1. 在右側的 *方案總管*中   ，以滑鼠右鍵按一下 [ **方案**]，   然後選取 [ **管理方案的 NuGet 套件**]。
 
-    然後您會看到一個畫面，讓您編輯屬於專案一部分的所有 NuGet 套件。
+    接著，您會看到一個畫面，讓您編輯專案中的所有 NuGet 套件。
 
-    ![在 [方案總管中，以滑鼠右鍵按一下 [方案]，然後選取 [管理方案的 NuGet 套件]](./media/remove-application-insights/manage-nuget-core.png)
+    ![以滑鼠右鍵按一下 [方案]，在 [方案總管] 中，選取 [管理解決方案的 NuGet 套件]](./media/remove-application-insights/manage-nuget-core.png)
 
-1. 按一下 [ApplicationInsights AspNetCore] 套件。 核取右側的 [*專案*] 旁的核取方塊，選取 [所有專案]，然後選取 [**卸載**]。
+1. 按一下 [ApplicationInsights. AspNetCore] 套件。 選取右側的 [ *專案* ] 旁的核取方塊，選取 [所有專案]，然後選取 [ **卸載**]。
 
     ![勾選 [移除相依性]，然後卸載](./media/remove-application-insights/uninstall-core.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "87049760"
 
 ## <a name="what-is-created-when-you-add-application-insights"></a>當您新增 Application Insights 時所建立的內容
 
-當您將 Application Insights 新增至專案時，它會建立檔案，並將程式碼新增至您的某些檔案。 僅卸載 NuGet 套件不一定會捨棄檔案和程式碼。 若要完全移除 Application Insights，您應該檢查並手動刪除新增的程式碼或檔案，以及您在專案中新增的任何 API 呼叫。
+當您將 Application Insights 新增至專案時，它會建立檔案，並將程式碼新增至您的某些檔案。 單獨卸載 NuGet 封裝不一定會捨棄檔案和程式碼。 若要完全移除 Application Insights，您應該檢查並手動刪除新增的程式碼或檔案，以及您在專案中新增的任何 API 呼叫。
 
 # <a name="net"></a>[.NET](#tab/net)
 
@@ -99,7 +99,7 @@ ms.locfileid: "87049760"
 - ApplicationInsights.config
 - AiHandleErrorAttribute.cs
 
-新增下列程式碼段：
+新增下列程式碼：
 
 - [您的專案名稱] .csproj
 
@@ -132,9 +132,9 @@ ms.locfileid: "87049760"
     </packages>
     ```
 
-- 版面配置. cshtml
+- Layout
 
-    如果您的專案具有配置. cshtml 檔案，則會新增下列程式碼。
+    如果您的專案具有配置 cshtml 檔案，則會加入下列程式碼。
     
     ```html
     <head>

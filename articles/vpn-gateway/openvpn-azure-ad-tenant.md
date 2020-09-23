@@ -1,18 +1,18 @@
 ---
 title: VPN 閘道：適用于 P2S VPN 連線的 Azure AD 租使用者： Azure AD 驗證
-description: 您可以使用 P2S VPN，使用 Azure AD authentication 連接到您的 VNet
+description: 瞭解如何為 P2S Open VPN 驗證設定 Azure AD 的租使用者。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 01fe9331d4063ae45a5d30aa3546d6338d30822d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 74df878baa6ed4e2ba902a73a7830c0b075c58ce
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89499955"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981521"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>建立 Azure Active Directory 租用戶以進行 P2S OpenVPN 通訊協定連線
 
@@ -85,7 +85,7 @@ ms.locfileid: "89499955"
 
 6. 出現提示時選取 [接受]。
 
-    ![Accept](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![螢幕擷取畫面顯示針對您的組織要求接受的訊息許可權，並提供詳細資料和接受的選項。](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 7. 在您的 Azure AD 下，您會在 **企業應用程式**中看到列出的 **Azure VPN** 。
 
@@ -112,6 +112,6 @@ ms.locfileid: "89499955"
 
 13. 記下 "azurevpnconfig.xml" 檔案的位置。 azurevpnconfig.xml 包含 VPN 連接的設定，而且可以直接匯入 Azure VPN Client 應用程式中。 您也可以將這個檔案散發給所有需要透過電子郵件或其他方式連接的使用者。 使用者將需要有效的 Azure AD 認證才能成功連線。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 若要連接到您的虛擬網路，您必須建立並設定 VPN 用戶端設定檔。 請參閱 [設定 vpn 用戶端以進行 P2S vpn](openvpn-azure-ad-client.md)連線。
