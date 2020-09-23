@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0b8e107fb377a30b35f0941b89c490e11fc458c
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: cf6e02ebad2ac5150be4775ad0ff6069fe3db89f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783530"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980052"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中建立和管理資原始目錄
 
@@ -101,6 +101,7 @@ ms.locfileid: "88783530"
 
 1. 按一下 [ **移除** ] (或按一下省略號 (**...**) 然後按一下 [ **移除資源** ]) 。
 
+
 ## <a name="add-additional-catalog-owners"></a>新增其他目錄擁有者
 
 建立目錄的使用者會成為第一個目錄擁有者。 若要委派目錄的管理，您可以將使用者新增至目錄擁有者角色。 這有助於共用目錄管理責任。 
@@ -137,7 +138,7 @@ ms.locfileid: "88783530"
 
     ![編輯類別目錄設定](./media/entitlement-management-shared/catalog-edit.png)
 
-1. 按一下 [檔案] 。
+1. 按一下 [檔案]  。
 
 ## <a name="delete-a-catalog"></a>刪除目錄
 
@@ -157,6 +158,6 @@ ms.locfileid: "88783530"
 
 您也可以使用 Microsoft Graph 來刪除目錄。  具有具有委派許可權之應用程式的適當角色中的使用者 `EntitlementManagement.ReadWrite.All` 可以呼叫 API 來 [刪除 accessPackageCatalog](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [委派存取治理以存取套件管理員](entitlement-management-delegate-managers.md)

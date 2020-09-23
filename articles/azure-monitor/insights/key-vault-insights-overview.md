@@ -1,23 +1,23 @@
 ---
-title: 使用適 Key Vault 的 Azure 監視器 (預覽) 來監視 Key Vault | Microsoft Docs
+title: 使用 Key Vault 的 Azure 監視器監視 Key Vault |Microsoft Docs
 description: 本文說明 Key Vault 的 Azure 監視器。
 services: azure-monitor
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/13/2019
-ms.openlocfilehash: 7b799c462cc683d8d05edc3f10885c458185a843
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.date: 09/10/2020
+ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069793"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894500"
 ---
-# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>使用 Key Vault 的 Azure 監視器 (預覽) 來監視您的金鑰保存庫服務
-Key Vault 的 Azure 監視器 (預覽) 可針對您的 Key Vault 要求、效能、失敗和延遲提供統合檢視，讓您能夠全面監視金鑰保存庫。
-本文將協助您了解如何進行 Key Vault 的 Azure 監視器 (預覽) 體驗的上線和自訂。
+# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>使用 Key Vault 的 Azure 監視器監視您的金鑰保存庫服務
+適用于 Key Vault 的 Azure 監視器可提供您 Key Vault 要求、效能、失敗和延遲的統一觀點，藉以全面監視您的金鑰保存庫。
+本文將協助您瞭解如何上架和自訂 Key Vault 的 Azure 監視器體驗。
 
-## <a name="introduction-to-azure-monitor-for-key-vault-preview"></a>Key Vault 的 Azure 監視器 (預覽) 簡介
+## <a name="introduction-to-azure-monitor-for-key-vault"></a>Key Vault 的 Azure 監視器簡介
 
 開始處理體驗之前，您應先了解其呈現和視覺化資訊的方式。
 -    **整體觀點**會根據要求、失敗的細節，以及作業和延遲的概觀，顯示效能的快照集檢視。
@@ -49,7 +49,7 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)
 
-2. 在 Azure 入口網站的左側窗格中選取 [監視器]，然後在 [Insights] 區段下，選取 [金鑰保存庫 (預覽)]。
+2. 從 Azure 入口網站的左側窗格中選取 [ **監視** ]，然後在 [見解] 區段下選取 [ **金鑰保存庫**]。
 
 ![概觀體驗的螢幕擷取畫面，其中包含多個圖表](./media/key-vaults-insights-overview/overview.png)
 
@@ -83,7 +83,7 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 
 1. 在 Azure 入口網站中，選取 [金鑰保存庫]。
 
-2. 從清單中選擇金鑰保存庫。 在 [監視] 區段中，選擇 [Insights (預覽) ]。
+2. 從清單中選擇金鑰保存庫。 在 [監視] 區段中，選擇 [見解]。
 
 您也可以從 [Azure 監視器層級] 活頁簿中選取金鑰保存庫的資源名稱，藉以存取這些檢視。
 
@@ -140,7 +140,7 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 
 您可以執行下列步驟，將多重訂用帳戶和金鑰保存庫概觀或失敗活頁簿的範圍設定為每次執行時的特定訂用帳戶或金鑰保存庫：
 
-1. 在入口網站中選取 [監視器]，然後在左側窗格中選取 [金鑰保存庫 (預覽)]。
+1. 從入口網站中選取 [ **監視** ]，然後從左側窗格選取 [ **金鑰保存庫** ]。
 2. 在 [概觀] 活頁簿上，從命令列中選取 [編輯]。
 3. 從 [訂用帳戶] 下拉式清單中選取要作為預設值的一或多個訂用帳戶。 請記住，活頁簿最多支援選取 10 個訂用帳戶。
 4. 從 [金鑰保存庫] 下拉式清單中選取要作為預設值的一或多個帳戶。 請記住，活頁簿最多支援選取 200 個儲存體帳戶。
@@ -150,11 +150,11 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 
 如需一般疑難排解指引，請參閱專用的以活頁簿為基礎的深入解析 [疑難排解文章](troubleshoot-workbooks.md)。
 
-本節將協助您診斷在使用 Key Vault 的 Azure 監視器 (預覽) 時可能遇到的一些常見問題，並進行疑難排解。 請使用下列清單，找到與您的特定問題相關的資訊。
+本節將協助您進行診斷，並針對使用 Key Vault Azure 監視器時可能遇到的一些常見問題進行疑難排解。 請使用下列清單，找到與您的特定問題相關的資訊。
 
 ### <a name="resolving-performance-issues-or-failures"></a>解決效能問題或失敗
 
-若要排解您在使用 Key Vault 的 Azure 監視器 (預覽) 時發現的任何金鑰保存庫相關問題，請參閱 [Azure Key Vault 文件](../../key-vault/index.yml)。
+若要協助您針對 Key Vault 使用 Azure 監視器識別的任何金鑰保存庫相關問題進行疑難排解，請參閱 [Azure Key Vault 檔](../../key-vault/index.yml)。
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>為什麼我只能看到200金鑰保存庫
 

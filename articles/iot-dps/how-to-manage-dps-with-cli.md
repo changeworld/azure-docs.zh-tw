@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI & IoT 擴充功能來管理 IoT 中樞裝置佈建服務
-description: 瞭解如何使用 Azure CLI 和 IoT 擴充功能來管理 IoT 中樞裝置佈建服務（DPS）
+title: 使用 Azure CLI & IoT 擴充功能來管理 IoT 中樞裝置布建服務
+description: '瞭解如何使用 Azure CLI 和 IoT 擴充功能來管理 IoT 中樞裝置布建服務 (DPS) '
 author: chrissie926
 ms.author: menchi
 ms.date: 01/17/2018
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: devx-track-azurecli
 services: iot-dps
-ms.openlocfilehash: 72978636b878aac9120b356e7be5fe5c978d1738
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 237ca1f0041283bb86b24ad456ab781dc13eeb86
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499784"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980520"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>如何使用 Azure CLI 和 IoT 擴充功能來管理 IoT 中樞裝置佈建服務
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 是一個開放原始碼跨平台命令列工具，用來管理 Azure 資源 (例如 IoT Edge)。 Azure CLI 適用於 Windows、Linux 和 MacOS。 Azure CLI 可讓您管理 Azure IoT 中樞資源、裝置佈建服務執行個體，以及現成的連結中樞。
+[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 是一個開放原始碼跨平台命令列工具，用來管理 Azure 資源 (例如 IoT Edge)。 Azure CLI 可在 Windows、Linux 和 macOS 上取得。 Azure CLI 可讓您管理 Azure IoT 中樞資源、裝置佈建服務執行個體，以及現成的連結中樞。
 
 IoT 擴充功能以裝置管理和完整 IoT Edge 功能來擴充 Azure CLI 的功能。
 
@@ -53,9 +53,9 @@ IoT 擴充功能以裝置管理和完整 IoT Edge 功能來擴充 Azure CLI 的�
 az login
 ```
 
-![login](./media/how-to-manage-dps-with-cli/login.jpg)
+![螢幕擷取畫面顯示執行命令 az login 的命令提示字元視窗。](./media/how-to-manage-dps-with-cli/login.jpg)
 
-### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2. 在 eastus 中建立資源群組 Eastus iothubblogdemo
+### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2. 在 eastus 中建立資源群組 IoTHubBlogDemo
 
 ```azurecli
 az group create -l eastus -n IoTHubBlogDemo
@@ -76,7 +76,7 @@ az iot dps create --resource-group IoTHubBlogDemo --name demodps
 az iot dps create --resource-group IoTHubBlogDemo --name demodps2
 ```
 
-### <a name="4-list-all-the-existing-device-provisioning-services-under-this-resource-group"></a>4. 列出此資源群組下所有現有的裝置布建服務
+### <a name="4-list-all-the-existing-device-provisioning-services-under-this-resource-group"></a>4. 列出此資源群組之下的所有現有裝置布建服務
 
 ```azurecli
 az iot dps list --resource-group IoTHubBlogDemo
@@ -93,7 +93,7 @@ az iot hub create --name blogDemoHub --resource-group IoTHubBlogDemo
 
 ![建立 IoT 中樞](./media/how-to-manage-dps-with-cli/create-hub.jpg)
 
-### <a name="6-link-one-existing-iot-hub-to-a-device-provisioning-service"></a>6. 將一個現有的 IoT 中樞連結到裝置布建服務
+### <a name="6-link-one-existing-iot-hub-to-a-device-provisioning-service"></a>6. 將一個現有的 IoT 中樞連結至裝置布建服務
 
 ```azurecli
 az iot dps linked-hub create --resource-group IoTHubBlogDemo --dps-name demodps --connection-string <connection string> -l westus

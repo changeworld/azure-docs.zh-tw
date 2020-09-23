@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/29/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 0d918de4669e1b4bac6c1775a813eb1d224f39cf
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: f9c400b55b0da47495db4f1ff4ceb86aa39fe2cc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662008"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885845"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>從您的工作區移除 Azure Sentinel
 
@@ -48,13 +48,13 @@ ms.locfileid: "89662008"
 
 -   AWS
 
--   Microsoft 服務安全性警示：適用于身分識別 (的 Microsoft Defender *先前 Azure ATP*) ，Microsoft Cloud App Security 包括 CLOUD DISCOVERY 影子 IT 報告、Azure AD Identity Protection、microsoft Defender for Endpoint (*先前為 microsoft defender ATP*) 、Azure Defender (*先前* Azure 資訊安全中心) 
+-   Microsoft 服務安全性警示：適用于身分識別 (的 Microsoft Defender *先前 Azure ATP*) ，Microsoft Cloud App Security 包括 CLOUD DISCOVERY 影子 IT 報告、Azure AD Identity Protection、microsoft Defender for Endpoint (*先前為 microsoft defender ATP*) 、Azure Defender 警示（來自 Azure 資訊安全中心）
 
 -   威脅情報
 
--   常見的安全性記錄 (包括以 CEF 為基礎的記錄、Barracuda 和 Syslog)  (如果您有 Azure Defender，則會繼續收集這些記錄。 ) 
+-   常見的安全性記錄 (包括以 CEF 為基礎的記錄、Barracuda 和 Syslog)  (如果您從 Azure 資訊安全中心取得 Azure Defender 警示，將會繼續收集這些記錄。 ) 
 
--   Windows 安全性事件 (如果您有 Azure Defender，將會繼續收集這些記錄。 ) 
+-   Windows 安全性事件 (如果您從 Azure 資訊安全中心取得 Azure Defender 警示，將會繼續收集這些記錄。 ) 
 
 在前48小時內，Azure Sentinel 中將無法再存取或查詢資料和分析規則 (包括即時自動化設定) 。
 
@@ -76,6 +76,6 @@ ms.locfileid: "89662008"
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 在本檔中，您已瞭解如何移除 Azure Sentinel 服務。 如果您改變主意，並且想要再次安裝它：
 - 開始 [Azure Sentinel](quickstart-onboard.md)。

@@ -5,23 +5,31 @@ description: Azure 認知服務是可搭配 REST API 和用戶端程式庫 SDK �
 services: cognitive-services
 author: nitinme
 manager: nitinme
-keywords: 認知服務, 認知智慧, 認知服務, ai 即服務, 認知解決方案, 認知人工智慧, 認知軟體, ai 服務, 認知 ai, 認知理解
+keywords: 認知服務, 認知智慧, 認知解決方案, ai 服務, 認知理解, 認知功能
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
 ms.date: 08/28/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3d7f5926991239786d9b37dffecc05cd8983bf3f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: bcb3fdbe12a2704e585a9b13484c2528c9cdc559
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89381283"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894432"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure 認知服務是什麼？
 
-Azure 認知服務是可搭配 REST API 和用戶端程式庫 SDK 的雲端服務，可協助開發人員建置認知智慧應用程式，且無須直接人工智慧 (AI) 或資料科學技術或知識。 Azure 認知服務可讓開發人員輕鬆地將認知功能新增到其應用程式中。 Azure 認知服務的目標是協助開發人員建立可以看、聽、說、理解甚至推論的應用程式。 Azure 認知服務中的服務目錄可以分成五個主要支柱：視覺、語音、語言、Web 搜尋和決策。
+Azure 認知服務是可搭配 REST API 和用戶端程式庫 SDK 的雲端式服務，可協助開發人員建置認知智慧應用程式，且無須直接人工智慧 (AI) 或資料科學技術或知識。 Azure 認知服務可讓開發人員使用認知解決方案，輕鬆地將認知功能新增至其應用程式，以查看、聆聽、說出、了解，甚至是開始的原因。
+
+AI 服務的目錄可提供認知理解，分為五個主要要素：
+
+* 視覺
+* 語音
+* 語言
+* Web 搜尋
+* 決策
 
 目前的新文件清單可在[認知服務新功能文件](whats-new-docs.md)中取得。
 
@@ -80,7 +88,17 @@ Azure 認知服務是可搭配 REST API 和用戶端程式庫 SDK 的雲端服�
 |:-----------|:------------------|
 |[異常偵測器](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "異常偵測器") \(預覽\)|異常偵測器可讓您監視和偵測時間序列資料中的異常狀況。|
 |[內容仲裁](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "內容仲裁")|內容仲裁可監視潛在的冒犯、惡意或具風險之內容。|
+|[Metrics Advisor](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor) (預覽) | Metrics Advisor 可讓您在多變數的時間序列資料上提供可自訂的異常偵測，以及功能完整且可協助您使用服務的 Web 入口網站。
 |[個人化工具](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "個人化工具")|個人化工具可讓您選擇最佳體驗來對使用者展現，進而從其即時行為中學習。|
+
+## <a name="learn-with-the-quickstarts"></a>使用快速入門來了解
+
+深入了解如何使用下列方式，透過實際操作快速入門建立認知服務資源：
+
+* [Azure 入口網站](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure 入口網站")
+* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
+* [Azure SDK 用戶端程式庫](cognitive-services-apis-create-account-cli.md?tabs=windows "cognitive-services-apis-create-account-client-library?pivots=programming-language-csharp")
+* [Azure Resource Manager (ARM) 範本](resource-manager-template.md?tabs=portal "Azure Resource Manager (ARM) 範本")
 
 ## <a name="subscription-management"></a>訂用帳戶管理
 
@@ -119,6 +137,9 @@ Azure 認知服務提供多層式安全性模型，包括透過 Azure Active Dir
 ## <a name="support"></a>支援
 
 認知服務提供數個[支援選項](cognitive-services-support-options.md "支援選項")。
+
+
+
 
 ## <a name="next-steps"></a>後續步驟
 

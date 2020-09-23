@@ -1,6 +1,6 @@
 ---
 title: 使用者入門 - Microsoft 威脅模型化工具 - Azure | Microsoft Docs
-description: 瞭解如何開始使用 Threat Modeling Tool。 建立圖表、識別威脅、減輕威脅，以及驗證每個緩和措施。
+description: 瞭解如何開始使用 Threat Modeling Tool。 建立圖表、識別威脅、降低威脅，以及驗證每個緩和措施。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 6ddb2ecef3a70ed6a56b404e64cef5b78b7abd13
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539895"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980477"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>威脅模型化工具使用者入門
 
@@ -97,7 +97,7 @@ Ricardo 從選取清單上的第一個項目開始。 排程狀況如下：
 
 首先，兩個樣板之間的互動已增強
 
-![互動](./media/threat-modeling-tool-getting-started/interaction.png)
+![螢幕擷取畫面顯示兩個樣板，而曲線箭號會以較粗的線條粗細來連接它們。](./media/threat-modeling-tool-getting-started/interaction.png)
 
 第二，威脅的其他資訊已顯示在威脅屬性視窗中
 

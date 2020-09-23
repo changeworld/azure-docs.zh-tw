@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 62716d5061d7c5e6ed8c64a0ce00a780f35c10be
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: e305795f4f45a0ea858eb8d74880aedca8ec538d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017994"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979841"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>教學課程：設定 SAP SuccessFactors 來 Active Directory 使用者布建 
 本教學課程的目的是要說明您需要執行的步驟，以將使用者從 SuccessFactors 員工中心布建至 Active Directory (AD) 和 Azure AD，並選擇性地將電子郵件地址回寫至 SuccessFactors。 
@@ -234,7 +234,7 @@ Azure AD 使用者布建服務所支援的 SuccessFactors 使用者布建工作�
    
 1. 開啟 [服務] 嵌入式管理單元，並尋找名為 "Microsoft Azure AD Connect Provisioning Agent" 的服務，以確認代理程式已安裝且在執行中
   
-   ![在服務中執行的 Microsoft Azure AD Connect 布建代理程式的螢幕擷取畫面](./media/workday-inbound-tutorial/services.png)
+   ![在服務中執行的 Microsoft Azure AD Connect 布建代理程式的螢幕擷取畫面。](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>第3部分：在布建應用程式中，設定 SuccessFactors 和 Active Directory 的連線能力
 在此步驟中，我們會建立與 SuccessFactors 的連線，並在 Azure 入口網站中 Active Directory。 
@@ -353,7 +353,7 @@ SuccessFactors 布建應用程式設定完成之後，您就可以在 Azure 入�
    > [!div class="mx-imgBorder"]
    > ![布建進度列](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * [深入瞭解輸入布建的支援 SuccessFactors 屬性](../app-provisioning/sap-successfactors-attribute-reference.md)
 * [瞭解如何設定電子郵件回寫至 SuccessFactors](sap-successfactors-writeback-tutorial.md)

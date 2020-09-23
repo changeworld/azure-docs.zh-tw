@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 66bba0d4825300a6cead2453a67518af631234b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: db94c868daecdd82bcf7749f17fc6fde86fac963
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543499"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979782"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教學課程︰設定 Salesforce 來進行自動佈建使用者
 
@@ -67,7 +67,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建](./media/salesforce-provisioning-tutorial/provisioning.png)
+    ![螢幕擷取畫面顯示 [Salesforce 布建] 頁面，其中布建模式設定為 [自動] 和其他您可以設定的值。](./media/salesforce-provisioning-tutorial/provisioning.png)
 
 5. 在 [管理員認證]**** 區段下，提供下列組態設定：
 

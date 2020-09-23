@@ -1,18 +1,18 @@
 ---
 title: Microsoft Threat Modeling Tool 功能總覽-Azure
-description: 深入瞭解 Threat Modeling Tool 中可用的所有功能，例如分析視圖和報表。
+description: 瞭解 Threat Modeling Tool 中可用的所有功能，例如分析視圖和報表。
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
-ms.openlocfilehash: e405ea35dcaa33ac7c8227385e4aaff86d9244cb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539997"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980679"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>威脅模型化工具功能概觀
 
@@ -81,7 +81,7 @@ ms.locfileid: "87539997"
 
 | 樣板名稱                               | 詳細資料      |
 | --------------------------------------- | ------------ |
-| **處理程序** | 應用程式、瀏覽器外掛程式、執行緒、虛擬機器 |
+| **處理** | 應用程式、瀏覽器外掛程式、執行緒、虛擬機器 |
 | **外部互動者** | 驗證提供者、瀏覽器、使用者、Web 應用程式 |
 | **資料存放區** | 快取、儲存體、設定檔、資料庫、登錄 |
 | **** | 二進位、ALPC、HTTP、HTTPS/TLS/SSL、IOCTL、IPSec、具名管道、DCOM、SMB、UDP |
@@ -101,7 +101,7 @@ ms.locfileid: "87539997"
 | 元素屬性                               | 詳細資料      |
 | --------------------------------------- | ------------ |
 | **名稱** | 用來為您的處理序、存放區、互動者及流程命名，以利辨識。 |
-| **超出範圍** | 如果選取，元素會從威脅產生矩陣中移除 (不建議)。 |
+| **涵蓋範圍外** | 如果選取，元素會從威脅產生矩陣中移除 (不建議)。 |
 | **超出範圍原因** | 理由欄位，讓使用者知道為什麼選取超出範圍。 |
 
 每個元素類別下的屬性都會變更。 請選取每個元素來檢查可用選項。 您也可以開啟範本來取得更多資訊。 我們來看看有什麼功能。
@@ -122,7 +122,7 @@ ms.locfileid: "87539997"
 
 當您選取 [意見反應、建議和問題]**** 時，會前往 SDL 工具的 MSDN 論壇。 您可以閱讀其他人對工具有什麼看法 (包括因應措施和新的想法)。
 
-![意見反應](./media/threat-modeling-tool-feature-overview/feedback.png)
+![螢幕擷取畫面顯示具有文字意見反應、建議和問題的按鈕。](./media/threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>設計檢視
 
@@ -158,9 +158,9 @@ ms.locfileid: "87539997"
 
 如果您建立威脅模型，但是忘記將資料流程連接到元素，您會收到通知。 您可以忽略訊息，或遵循指示修正問題。 
 
-![訊息](./media/threat-modeling-tool-feature-overview/messages.png)
+![螢幕擷取畫面顯示未連接到元素的威脅模型連接器，並顯示此問題所造成的訊息。](./media/threat-modeling-tool-feature-overview/messages.png)
 
-### <a name="notes"></a>注意
+### <a name="notes"></a>備註
 
 若要在圖表中加入附註，請從 [訊息]**** 索引標籤切換到 [附註]****。
 
@@ -192,13 +192,13 @@ ms.locfileid: "87539997"
 
 ![威脅屬性](./media/threat-modeling-tool-feature-overview/threatproperties.png)
 
-## <a name="reports"></a>報表
+## <a name="reports"></a>報告
 
-完成優先順序的變更及更新每個產生之威脅的狀態後，您可以儲存檔案和/或列印報告。 移至 [**報表**] [  >  **建立完整報表**]。 為報告命名，接著您應該會看到類似下圖的內容：
+完成優先順序的變更及更新每個產生之威脅的狀態後，您可以儲存檔案和/或列印報告。 移至 [**報表**  >  **建立完整報告**]。 為報告命名，接著您應該會看到類似下圖的內容：
 
-![報告](./media/threat-modeling-tool-feature-overview/report.png)
+![螢幕擷取畫面顯示範例威脅模型報表，其中包含摘要、圖表和其他資訊。](./media/threat-modeling-tool-feature-overview/report.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 將您的問題、註解和考量傳送到 tmtextsupport@microsoft.com。 **[下載](https://aka.ms/threatmodelingtool)** 威脅模型化工具來開始。
 - 若要為社群貢獻範本，請移至我們的 [GitHub](https://github.com/Microsoft/threat-modeling-templates) 頁面。

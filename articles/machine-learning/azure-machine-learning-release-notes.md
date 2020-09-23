@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 245b977e0aeda3df933b6ab4b27735264444c4df
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 022040f4fa7f70dd5fc7677ce969ee9acbe7bcbb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659165"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886408"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
@@ -22,6 +22,54 @@ ms.locfileid: "89659165"
 
 若要了解已知的 Bug 和因應措施，請參閱[已知問題的清單](resource-known-issues.md)。
 
+## <a name="2020-09-21"></a>2020-09-21
+
+### <a name="azure-machine-learning-sdk-for-python-v1140"></a>Azure Machine Learning SDK for Python v 1.14。0
++ **Bug 修正和改善**
+  + **azure-cli-ml**
+    + 格線分析已從 SDK 中移除，且不再受到支援。
+  + **azureml-accel-models**
+    + azureml-accel-模型套件現在支援 Tensorflow 2。x
+  + **azureml-automl-core**
+    + 針對 pandas/sklearn 本機版本不符合定型期間使用的情況，在 get_output 中新增錯誤處理
+  + **azureml-automl-runtime**
+    + 修正了 AutoArima 反復專案會失敗並出現 PredictionException 和訊息：「預測期間發生無訊息失敗」的 bug。
+  + **azureml-cli-通用**
+    + 格線分析已從 SDK 中移除，且不再受到支援。
+  + **azureml-contrib-伺服器**
+    + 更新 pypi 的封裝描述頁面的描述。
+  + **azureml-core**
+    + 已從 SDK 移除格線分析，且已不再支援。
+    + 減少工作區抓取失敗時的錯誤訊息數目。
+    + 提取中繼資料失敗時不要顯示警告
+    + 新的 Kusto 步驟和 Kusto 計算目標。
+    + 更新 sku 參數的檔。 在 CLI 和 SDK 的工作區更新功能中移除 sku。
+    + 更新 pypi 的封裝描述頁面的描述。
+    + AzureML 環境的更新檔。
+    + 公開 SDK 中 AML 工作區的服務受控資源設定。
+  + **azureml-dataprep**
+    + 啟用資料集裝載之檔案的 execute 許可權。
+  + **azureml-mlflow**
+    + 已更新 AzureML MLflow 檔和筆記本範例 
+    + 使用 AzureML 後端 MLflow 專案的新支援
+    + MLflow 模型登錄支援
+    + 已新增 AzureML MLflow 作業的 RBAC 支援 
+    
+  + **azureml-pipeline-core**
+    + 改良 PipelineOutputFileDataset.parse_ * 方法的檔。
+    + 新的 Kusto 步驟和 Kusto 計算目標。
+    + 透過該使用者提供的管線端點實體的 Swaggerurl 屬性，可以看到已發佈管線端點的架構定義。
+  + **azureml-pipeline-steps**
+    + 新的 Kusto 步驟和 Kusto 計算目標。
+  + **azureml-telemetry**
+    + 更新 pypi 的封裝描述頁面的描述。
+  + **azureml-定型**
+    + 更新 pypi 的封裝描述頁面的描述。
+  + **azureml-train-automl-client**
+    + 針對 pandas/sklearn 本機版本不符合定型期間使用的情況，在 get_output 中新增錯誤處理
+  + **azureml-train-core**
+    + 更新 pypi 的封裝描述頁面的描述。
+    
 ## <a name="2020-08-31"></a>2020-08-31
 
 ### <a name="azure-machine-learning-sdk-for-python-v1130"></a>Azure Machine Learning SDK for Python v 1.13。0
@@ -51,7 +99,7 @@ ms.locfileid: "89659165"
     + 新增模型清單的 page_count 預設/檔 ( # A1。
     + 修改 CLI&SDK 以採用 adbworkspace 參數，並新增工作區 adb lin/取消連結執行器。
     + 修正資料集中的錯誤（bug），這會更新導致最新資料集版本更新的更新，而不是呼叫資料集更新的版本。 
-    + 修正資料集中的 bug。 get_by_name 會顯示最新資料集版本的標記，即使已抓取特定的舊版本。
+    + 修正 Dataset.get_by_name 中的 bug，以顯示最新資料集版本的標記，即使已抓取特定的舊版本。
   + **azureml-解讀**
     + 已將機率輸出新增至 azureml 中的 shap 計分 explainers-根據來自原始說明的 shap_values_output 參數來解讀。
   + **azureml-pipeline-core**
@@ -142,8 +190,8 @@ ms.locfileid: "89659165"
     + AutoML 中未處理的例外狀況現在會指向已知問題的 HTTP 頁面，而您可以在其中找到錯誤的詳細資訊。
   + **azureml-core**
     + 模型名稱長度可以是255個字元。
-    + 環境。 get_image_details ( # A1 傳回物件類型已變更。 `DockerImageDetails` 已取代類別 `dict` ，可從新的類別屬性取得影像詳細資料。 變更與舊版相容。
-    + 修正環境的 bug。 from_pip_requirements ( # A1 以保留相依性結構
+    + Environment.get_image_details ( # A1 傳回物件類型已變更。 `DockerImageDetails` 已取代類別 `dict` ，可從新的類別屬性取得影像詳細資料。 變更與舊版相容。
+    + 修正 Environment.from_pip_requirements ( # A1 的 bug 以保留相依性結構
     + 修正當相同清單中包含了 int 和 double 時，log_list 會失敗的 bug。
     + 在現有的工作區上啟用 private link 時，請注意，如果有與工作區相關聯的計算目標，如果它們不在與工作區私人端點相同的虛擬網路後方，這些目標將無法運作。
     + 在 `as_named_input` 實驗中使用資料集，並將和加入至時，會成為選擇性的 `as_mount` `as_download` `FileDataset` 。 如果 `as_mount` 呼叫或，就會自動產生輸入名稱 `as_download` 。
@@ -218,16 +266,16 @@ ms.locfileid: "89659165"
     + 在 ManagedInferencing 中新增了啟用-app insights 旗標的支援
   + **azureml-core**
     + 當無法從目前的計算存取資料來源時，允許略過驗證，以驗證這些 Api 的參數。
-      + TabularDataset，time_before (end_time，include_boundary = True，validate = True) 
-      + TabularDataset，time_after (start_time，include_boundary = True，validate = True) 
-      + TabularDataset，time_recent (time_delta，include_boundary = True，validate = True) 
-      + TabularDataset，time_between (start_time，end_time，include_boundary = True，validate = True) 
+      + TabularDataset.time_before (end_time，include_boundary = True，validate = True) 
+      + TabularDataset.time_after (start_time，include_boundary = True，validate = True) 
+      + TabularDataset.time_recent (time_delta，include_boundary = True，validate = True) 
+      + TabularDataset.time_between (start_time、end_time、include_boundary = True、validate = True) 
     + 已新增模型清單的架構篩選支援，並在筆記本中新增 NCD AutoML 範例
-    + 針對資料存放區. register_azure_blob_container 和資料存放區。 register_azure_file_share 只 (支援 SAS 權杖) 的選項，我們已更新欄位的檔字串， `sas_token` 以包含一般讀取和寫入案例的最低許可權需求。
-    + Ws. get_mlflow_tracking_uri 中的淘汰 _with_auth param ( # A1
+    + 針對 Datastore.register_azure_blob_container 和 Datastore.register_azure_file_share (只有支援 SAS 權杖) 的選項，我們已更新欄位的 doc 字串， `sas_token` 以包含一般讀取和寫入案例的最低許可權需求。
+    + Ws.get_mlflow_tracking_uri 中的淘汰 _with_auth param ( # A1
   + **azureml-mlflow**
     + 新增使用 AzureML 部署本機 file://模型的支援-MLflow
-    + Ws. get_mlflow_tracking_uri 中的淘汰 _with_auth param ( # A1
+    + Ws.get_mlflow_tracking_uri 中的淘汰 _with_auth param ( # A1
   + **azureml-opendatasets**
     + 最近發佈的 Covid-19-19 追蹤資料集現在可透過 SDK 使用
   + **azureml-pipeline-core**
@@ -355,7 +403,7 @@ ms.locfileid: "89659165"
     + 改良的 register_azure_blob_container 和 register_azure_file_share 檔
   + **azureml-datadrift**
     + 改善停用和啟用資料集漂移監視器的執行
-  + **azureml-解讀**
+  + **azureml-interpret**
     + 在 [說明用戶端] 中，從成品上傳後，移除 json 序列化之前的 Nan 或 Inf
     + 更新為最新版本的解讀-社區，以改善具有許多功能和類別的全域說明的記憶體不足錯誤
     + 新增 true_ys 選擇性參數來說明上傳，以啟用 studio UI 中的其他功能
@@ -549,7 +597,7 @@ ms.locfileid: "89659165"
     + 改善寫入受限制 python 環境的處理，以確保資料傳遞所需的 .NET 相依性。
     + 已修正具有前置空白記錄之檔案的資料流程建立。
     + 已新增類似的錯誤處理選項 `to_partition_iterator` `to_pandas_dataframe` 。
-  + **azureml-解讀**
+  + **azureml-interpret**
     + 減少說明路徑長度限制，以降低超越 Windows 限制的可能性
     + 錯誤修正使用線性代理模型，利用模仿說明建立的稀疏說明。
   + **azureml-opendatasets**
@@ -592,9 +640,9 @@ ms.locfileid: "89659165"
 
 從 studio 存取下列以網頁為基礎的編寫工具：
     
-| 以 Web 為基礎的工具  |     描述  | 版本 | 
-|---|---|---|
-| Azure ML Studio 筆記本   |     第一次針對筆記本檔案進行類別撰寫，並支援 Azure ML Python SDK 中所有可用的作業。 | 基本 & Enterprise  |   
+| 以 Web 為基礎的工具  |     描述  |
+|---|---|
+| Azure ML Studio 筆記本   |     第一次針對筆記本檔案進行類別撰寫，並支援 Azure ML Python SDK 中所有可用的作業。 | 
 
 ## <a name="2020-04-27"></a>2020-04-27
 
@@ -644,7 +692,7 @@ ms.locfileid: "89659165"
     + 接受要傳遞給 ParallelRunConfig 的字串計算名稱
   + **azureml-core**
     +  已新增環境。複製 (new_name) API 以建立環境物件的複本
-    +  Environment.docker。 base_dockerfile 接受 filepath。 如果能夠解析檔案，內容將會讀入 base_dockerfile 環境屬性中
+    +  Environment.docker.base_dockerfile 接受 filepath。 如果能夠解析檔案，內容將會讀入 base_dockerfile 環境屬性中
     + 當使用者在 Environment.docker 中手動設定值時，會自動重設 base_image 和 base_dockerfile 的互斥值
     + 已在 RSection 中新增 user_managed 旗標，指出環境是否由使用者或 AzureML 管理。
     + 資料集：如果資料路徑包含 unicode 字元，則修正資料集下載失敗。
@@ -851,7 +899,7 @@ ms.locfileid: "89659165"
     + 已修正單一實例分析以產生建議，並可在 core sdk 中取得。
     + 修正了 aks.py _deploy 的問題
     + 驗證所上傳模型的完整性，以避免無訊息儲存失敗。
-  + **azureml-解讀**
+  + **azureml-interpret**
     + 已將 azureml 樣式的例外狀況新增至 azureml-解讀
     + 已修正 keras 模型的 DeepScoringExplainer 序列化
   + **azureml-pipeline-core**
@@ -913,7 +961,7 @@ ms.locfileid: "89659165"
     + 移除 explainers 自 azureml 的文字-contrib-解讀為文字說明已移至即將發行的解讀文字存放庫。
   + **azureml-core**
     + 資料集：檔案資料集的使用量不再相依于要安裝在 python env 中的 numpy 和 pandas。
-    + 已變更 LocalWebservice。 wait_for_deployment ( # A1 來檢查本機 Docker 容器的狀態，然後再嘗試 ping 其健康情況端點，大幅減少回報失敗部署所需的時間量。
+    + 已變更 LocalWebservice.wait_for_deployment ( # A1 以檢查本機 Docker 容器的狀態，然後再嘗試 ping 其健康情況端點，大幅減少回報失敗部署所需的時間量。
     + 修正了 LocalWebservice 中使用的內部屬性初始化。當使用 LocalWebservice ( # A3 函式從現有的部署建立服務物件時，就會重載 ( # A1。
     + 已編輯錯誤訊息以供澄清。
     + 將名為 get_access_token ( # A1 的新方法新增至 >akswebservice，此方法會傳回 AksServiceAccessToken 物件，其中包含存取權杖、時間戳記之後的重新整理、時間戳記的到期日和權杖類型。 
@@ -944,7 +992,7 @@ ms.locfileid: "89659165"
     + 已新增所有映射類別程式碼路徑的取代訊息
     + 已修正 Azure 中國世紀地區的模型管理 URL 結構。
     + 已修正使用 source_dir 的模型無法封裝 Azure Functions 的問題。    
-    + 已將選項新增至 [環境。 build_local ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) 將映射推送至 AzureML 工作區 container registry
+    + 已新增選項，可 [Environment.build_local ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) 將映射推送至 AzureML 工作區 container registry
     + 已更新 SDK，以便在 Azure synapse 上以回溯相容的方式使用新的權杖程式庫。
   + **azureml-解讀**
     + 修正未提供任何說明可供下載時，未傳回任何的 bug。 現在會引發例外狀況，並在其他地方比對行為。
@@ -965,7 +1013,7 @@ ms.locfileid: "89659165"
     + 將 shap 相依性延遲至 azureml 的解讀-解讀
   + **azureml-core**
     + 您現在可以將計算目標指定為對應部署設定物件的參數。 這是要部署的計算目標名稱，而不是 SDK 物件。
-    + 將 CreatedBy 資訊新增至模型和服務物件。 可透過存取。 created_by
+    + 將 CreatedBy 資訊新增至模型和服務物件。 可以存取 through.created_by
     + 已修正 Save-containerimage，請執行未正確設定 Docker 容器的 HTTP 埠 ( # A1。
     + `azureml-dataprep`針對 CLI 命令設為選用 `az ml dataset register`
     + 修正 `TabularDataset.to_pandas_dataframe` 不正確切換回替代讀取器並列印警告的 bug。
@@ -1028,7 +1076,7 @@ ms.locfileid: "89659165"
     + 新增了利用使用者名稱和密碼驗證註冊 Azure SQL Database 資料存放區的功能
     + 從相對路徑載入 RunConfigurations 的修正。
     + 當呼叫 `keep_columns` 或 `drop_columns` 導致卸載時間序列資料行時，也會針對資料集卸載對應的功能。
-  + **azureml-解讀**
+  + **azureml-interpret**
     + 將解讀-社區更新為0.2.0 的版本
   + **azureml-pipeline-steps**
     + `runconfig_pipeline_params`針對 Azure machine learning 管線步驟所記載的支援值。
@@ -1073,7 +1121,7 @@ ms.locfileid: "89659165"
   + **azureml-core**
     + 修正導致 Azure Functions 部署模型的 bug，以產生500s。
     + 修正了 amlignore 檔案未套用在快照集上的問題。
-    + 已加入新的 API amlcompute，此 get_active_runs 會傳回在給定 amlcompute 上執行和已排入佇列之執行的產生器。
+    + 已加入新的 API amlcompute.get_active_runs，其會傳回在指定的 amlcompute 上執行和已排入佇列的產生器。
     + 已將 Load Balancer 類型新增至 AKS 類型的 LIP.MLC。
     + 已將 append_prefix bool 參數新增至 artifacts_client 中的 run.py 和 download_artifacts_from_prefix download_files。 此旗標是用來選擇性地壓平合併原始檔案路徑，因此只會將檔案或資料夾名稱新增至 output_directory
     + 修正 `run_config.yml` 資料集使用方式的還原序列化問題。
@@ -1098,17 +1146,17 @@ ms.locfileid: "89659165"
 
 ### <a name="web-experience"></a>Web 體驗
 
-中的共同作業工作區登陸頁面已 [https://ml.azure.com](https://ml.azure.com) 增強，並更名為 Azure Machine Learning studio (preview) 。
+中的共同作業工作區登陸頁面已 [https://ml.azure.com](https://ml.azure.com) 增強，並更名為 Azure Machine Learning studio。
 
 您可以從 studio 訓練、測試、部署和管理 Azure Machine Learning 的資產，例如資料集、管線、模型、端點等等。
 
 從 studio 存取下列以網頁為基礎的編寫工具：
 
-| 以 Web 為基礎的工具 | 描述 | 版本 |
+| 以 Web 為基礎的工具 | 描述 | 
 |-|-|-|
-| 筆記本 VM (預覽)  | 完全受控的雲端式工作站 | 基本 & Enterprise |
-| [自動化機器學習](tutorial-first-experiment-automated-ml.md) (預覽)  | 自動化機器學習模型開發的程式碼體驗 | Enterprise |
-| [設計](concept-designer.md) 工具 (預覽)  | 拖放機器學習模型工具先前稱為設計工具 | Enterprise |
+| 筆記本 VM (預覽)  | 完全受控的雲端式工作站 | 
+| [自動化機器學習](tutorial-first-experiment-automated-ml.md) (預覽)  | 自動化機器學習模型開發的程式碼體驗 | 
+| [設計工具](concept-designer.md) | 拖放機器學習模型工具先前稱為視覺化介面 | 
 
 
 ### <a name="azure-machine-learning-designer-enhancements"></a>Azure Machine Learning 設計工具增強功能
@@ -1270,8 +1318,8 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
     + 能夠使用 [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset) 和 [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset) 做為 Azure Machine Learning 管線中 [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep)、 [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep)和 [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyperdrivestep) 的輸入。
     + FileDataset 的效能。已針對具有大量檔案的資料夾改善[掛接 ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset#mount-mount-point-none----kwargs-)
     + 在 [執行詳細資料] 中，將 URL 新增至已知的錯誤建議。
-    + 修正了 run 中的 bug。如果執行的子系太多，要求將會失敗 get_metrics
-    + 修正了 run 中的 bug。如果執行的子系太多，要求將會失敗[get_metrics](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run#get-metrics-name-none--recursive-false--run-type-none--populate-false-)
+    + 修正 run.get_metrics 中，如果執行的子系太多，要求會失敗的錯誤（bug）
+    + 修正 [run.get_metrics](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run#get-metrics-name-none--recursive-false--run-type-none--populate-false-) 中，如果執行的子系太多，要求會失敗的錯誤（bug）
     + 在 Arcadia 叢集上新增了驗證支援。
     + 建立實驗物件會取得或建立 Azure Machine Learning 工作區中的實驗，以進行執行歷程記錄追蹤。 實驗識別碼和封存時間會在建立時填入實驗物件中。 範例：實驗 = 實驗 (工作區，[新實驗] ) experiment_id = experiment.id 封存 ( # A3 和重新開機 ( # A5 是可在實驗上呼叫的函式，以隱藏和還原實驗，使其不會顯示在 UX 中，或根據預設在清單實驗的呼叫中傳回。 如果使用與封存實驗相同的名稱建立新的實驗，您可以藉由傳遞新名稱重新啟用封存的實驗。 只能有一個使用中的實驗具有指定的名稱。 範例： experiment1 = 實驗 (工作區，"Active 實驗" ) experiment1. archive ( # A3 # 使用與封存的相同名稱建立新的作用中實驗。 experiment2. = 實驗 (工作區、「使用中實驗」 ) experiment1。重新開機 (new_name = 「先前使用中的實驗」 ) 靜態方法清單 ( # A5 on 實驗可採用名稱篩選和 ViewType 篩選。 ViewType 值為 "ACTIVE_ONLY"、"ARCHIVED_ONLY" 和 "ALL" 範例： archived_experiments = 實驗。清單 (工作區，view_type = "ARCHIVED_ONLY" ) all_first_experiments = 實驗。清單 (工作區，名稱 = "第一個實驗"，view_type = "全部" ) 
     + 支援使用環境進行模型部署和服務更新
@@ -1383,7 +1431,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
     + 修正了遠端執行的預測工作中，重複索引的相關錯誤訊息。
     + 已新增 guardrail 來檢查資料集是否為不平衡。 如果是，則會將 guardrail 訊息寫入主控台。
   + **azureml-core**
-    + 已新增可透過模型物件，在儲存體中將 SAS URL 取出至模型的功能。 例如： model. get_sas_url ( # A1
+    + 已新增可透過模型物件，在儲存體中將 SAS URL 取出至模型的功能。 例如： model.get_sas_url ( # A1
     + 引進 `run.get_details()['datasets']` 以取得與已提交執行相關聯的資料集
     + 新增 API `Dataset.Tabular.from_json_lines_files` ，以從 JSON 行檔案建立 TabularDataset。 若要瞭解 TabularDataset 上的 JSON 行檔案中的表格式資料，請造訪 [這篇文章](how-to-create-register-datasets.md) 以取得檔。
     + 已將額外的 VM 大小欄位新增 (OS 磁片、supported_vmsizes ( # A3 函式) 的 Gpu 數目
@@ -1515,7 +1563,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
     + AutoML 模型現在會傳回 AutoMLExceptions
     + 此版本可改善自動化機器學習本機執行的執行效能。
   + **azureml-core**
-    + 引進資料集。 get_all (工作區) ，它會傳回 `TabularDataset` 以 `FileDataset` 其註冊名稱做為索引鍵的和物件的字典。
+    + 引進 Dataset.get_all (工作區) ，它會傳回以 `TabularDataset` 其註冊名稱做為索引鍵的和物件的字典 `FileDataset` 。
 
     ```py
     workspace = Workspace.from_config()
@@ -1582,23 +1630,23 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
     + 修正了 blob_cache_timeout 參數順序的問題。
     + 已將外部大小和轉換例外狀況類型新增至系統錯誤。
     + 新增遠端執行 Key Vault 秘密的支援。 新增 keyvault Keyvault 類別，以新增、取得及列出與您工作區相關聯之 keyvault 的秘密。 支援的作業為：
-      + azureml......... get_default_keyvault ( # A1
-      + keyvault. Keyvault. set_secret (name，value) 
-      + keyvault. Keyvault. set_secrets (secrets_dict) 
-      + keyvault. Keyvault. get_secret (名稱) 
-      + keyvault. Keyvault. get_secrets (secrets_list) 
-      + keyvault. Keyvault. list_secrets ( # A1
+      + azureml.core.workspace.Workspace.get_default_keyvault ( # A1
+      + azureml.core.keyvault.Keyvault.set_secret (名稱、值) 
+      + azureml.core.keyvault.Keyvault.set_secrets (secrets_dict) 
+      + azureml.core.keyvault.Keyvault.get_secret (名稱) 
+      + azureml.core.keyvault.Keyvault.get_secrets (secrets_list) 
+      + azureml.core.keyvault.Keyvault.list_secrets ( # A1
     + 在遠端執行期間取得預設 keyvault 和取得秘密的其他方法：
-      + azureml......... get_default_keyvault ( # A1
-      + azureml.......... get_secret (名稱) 
-      + azureml. get_secrets (secrets_list) 
+      + azureml.core.workspace.Workspace.get_default_keyvault ( # A1
+      + azureml.core.run.Run.get_secret (名稱) 
+      + azureml.core.run.Run.get_secrets (secrets_list) 
     + 已將其他覆寫參數新增至 submit hyperdrive CLI 命令。
     + 提高 API 呼叫的可靠性，將重試擴充至常見的要求程式庫例外狀況。
     + 新增從提交的執行提交執行的支援。
     + 已修正 FileWatcher 中即將到期的 SAS 權杖問題，這會導致檔案在初始權杖到期後停止上傳。
     + 支援匯入資料集 python SDK 中的 HTTP csv/tsv 檔案。
     + 已淘汰工作區。安裝程式 ( # A1 方法。 向使用者顯示的警告訊息會建議您改為使用 create ( # A1 或 get ( # A3/from_config ( # A5。
-    + 已新增環境。 add_private_pip_wheel ( # A1，可讓您將私人自訂 python 套件上傳 `whl` 到工作區，並安全地使用它們來建立/具體化環境。
+    + 已新增 Environment.add_private_pip_wheel ( # A1，可讓您將私人自訂 python 套件上傳 `whl` 到工作區，並安全地使用它們來建立/具體化環境。
     + 您現在可以針對 Microsoft 所產生和客戶憑證的 AKS 叢集上部署的評分端點，更新 TLS/SSL 憑證。
   + **azureml-說明-模型**
     + 已新增參數，將模型識別碼新增至上傳的說明。
@@ -1659,8 +1707,8 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
     + 已新增模型。封裝 ( # A1 方法，以建立可封裝模型及其相依性的 Docker 映射和 Dockerfile。
     + 已更新本機 webservices，以接受包含環境物件的 InferenceConfigs。
     + 已修正模型。當目前目錄) 的 '. ' (作為 model_path 參數傳遞時，請註冊 ( # A1 產生不正確模型。
-    + 新增 Run. submit_child，功能會鏡像實驗。將執行指定為已提交子執行的父系時，請提交。
-    + 從模型支援設定選項。在 Run. register_model 中註冊。
+    + 新增 Run.submit_child，這項功能會鏡像實驗。將執行指定為已提交子執行的父系時，請提交。
+    + 從模型支援設定選項。在 Run.register_model 中註冊。
     + 在現有的叢集上執行 JAR 作業的能力。
     + 現在支援 instance_pool_id 和 cluster_log_dbfs_path 參數。
     + 已新增在將模型部署至 Webservice 時使用環境物件的支援。 現在可以提供環境物件做為 InferenceConfig 物件的一部分。
@@ -1669,13 +1717,13 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
     + 已將 blob_cache_timeout 參數加入至 `Datastore.register_azure_blob_container` 。
     + 已將 save_to_directory 和 load_from_directory 方法新增至 azureml.. a. 環境。
     + 已將 "az ml 環境下載" 和 "az ml 環境 register" 命令新增至 CLI。
-    + 已新增環境。 add_private_pip_wheel 方法。
+    + 已新增 Environment.add_private_pip_wheel 方法。
   + **azureml-說明-模型**
     + 將資料集追蹤新增至使用資料集服務 (預覽) 的說明。
     + 從1到100串流全域說明時，已減少預設批次大小。
     + 已將 model_task 旗標新增至 explainers，以允許使用者覆寫模型類型的預設自動推斷邏輯。
   + **azureml-mlflow**
-    + 已修正 build_image mlflow 中的錯誤（bug），其中會忽略嵌套的目錄。
+    + 已修正 mlflow.azureml.build_image 中會忽略嵌套目錄的 bug。
   + **azureml-pipeline-steps**
     + 已新增在現有 Azure Databricks 叢集上執行 JAR 作業的功能。
     + 已新增 DatabricksStep 步驟的支援 instance_pool_id 和 cluster_log_dbfs_path 參數。
@@ -1758,11 +1806,11 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
     + 針對模型可解釋性程式庫，已修正黑箱 explainers，其中需要 pandas 資料框架輸入以進行預測
     + 修正了 `explanation.expected_values` 有時會傳回浮點數的錯誤，而不是其中包含 float 的清單。
   + **azureml-mlflow**
-    + 改善 mlflow 的效能 set_experiment (experiment_name) 
+    + 改善 mlflow.set_experiment (experiment_name 的效能) 
     + 修正使用 InteractiveLoginAuthentication 進行 mlflow tracking_uri 的 bug
     + 使用 azureml mlflow 來改善遠端執行的資源使用率。
     + 改善 azureml mlflow 套件的檔
-    + Patch bug，其中 log_artifacts mlflow ( "my_dir" ) 會將成品儲存在 "my_dir/<成品-路徑>" 下，而不是 "<成品-路徑>"
+    + 修補 bug，其中 mlflow.log_artifacts ( "my_dir" ) 會將成品儲存在 "my_dir/<成品-路徑>" 下，而不是 "<成品-路徑>"
   + **azureml-opendatasets**
     + `pyarrow` `opendatasets` 由於新引進的記憶體問題， ( # B0 0.14.0) 的釘選到舊版本。
     + 將 azureml-contrib-opendatasets 移至 azureml-opendatasets。
@@ -1836,7 +1884,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
   + **azureml-mlflow**
     + 改善使用 azureml. mlflow 的遠端執行的資源使用率。
     + 已改進 azureml mlflow 套件的檔。
-    + 修正了 log_artifacts mlflow ( "my_dir" ) 會將成品儲存在 "my_dir/artifact-paths" （而不是「成品路徑」）下的問題。
+    + 修正 mlflow.log_artifacts ( "my_dir" ) 會將成品儲存在 "my_dir/artifact-paths" 下，而不是「成品路徑」的問題。
   + **azureml-pipeline-core**
     + 所有管線步驟的參數 hash_paths 已被取代，未來將會移除。 根據預設，source_directory 的內容會雜湊 (除了 `.amlignore` 或) 中列出的檔案之外 `.gitignore`
     + 持續改善模組和 ModuleStep，以支援計算類型專屬的模組，以準備進行 RunConfiguration 整合和其他變更，以在管線中解除鎖定計算類型特定的模組使用。
@@ -1930,7 +1978,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
 ### <a name="azure-machine-learning-sdk-for-python-v1021"></a>Azure Machine Learning SDK for Python v 1.0.21
 
 + **新功能**
-  + *Create_children*方法可讓您透過單一呼叫，以低延遲的方式建立多個子執行。
+  + *Azureml.core.Run.create_children*方法可讓您透過單一呼叫，以低延遲的方式建立多個子執行。
 
 ## <a name="2019-03-11"></a>2019-03-11
 
@@ -1975,6 +2023,6 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
   + 新記錄檔檢視器
   + [活動] 索引標籤中的實驗執行、計算、模型、映射和部署的連結
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 閱讀 [Azure Machine Learning](overview-what-is-azure-ml.md) 概觀。
