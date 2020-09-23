@@ -1,14 +1,14 @@
 ---
 title: 復原服務保存庫概觀
-description: 復原服務保存庫和 Azure 備份保存庫之間的概觀與比較。
+description: 復原服務保存庫的總覽。
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 6b6550bc8c5221547d55ad1e81a985b8ecd303e0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: cc09c1ffa84bc66e8fe2c48c80b8aea0977762ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889612"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975154"
 ---
 # <a name="recovery-services-vaults-overview"></a>復原服務保存庫概觀
 
@@ -30,7 +30,7 @@ ms.locfileid: "88889612"
 
 - Azure 備份會自動處理保存庫的儲存體。 查看 [儲存設定的變更](./backup-create-rs-vault.md#set-storage-redundancy)方式。
 
-- 若要深入瞭解儲存體冗余，請參閱這些有關 [地理](../storage/common/storage-redundancy.md) 位置和 [本機](../storage/common/storage-redundancy.md) 冗余的文章。
+- 若要深入瞭解儲存體冗余，請參閱這些有關[地理](../storage/common/storage-redundancy.md#geo-zone-redundant-storage)位置、區域[和](../storage/common/storage-redundancy.md#zone-redundant-storage)[區域](../storage/common/storage-redundancy.md#locally-redundant-storage)冗余的文章。
 
 ## <a name="encryption-settings-in-the-recovery-services-vault"></a>復原服務保存庫中的加密設定
 
@@ -59,7 +59,7 @@ Azure Advisor 針對未備份的 Vm 提供每小時 [建議](../advisor/advisor-
 - [保存庫支援和不支援的案例](backup-support-matrix.md#vault-support)
 - [保存庫的常見問題](backup-azure-backup-faq.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 使用下列文章進行：
 

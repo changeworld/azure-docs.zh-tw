@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: b733ef771444e080eb794b300e75d4396c3ef674
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a30f2b2fcefcc944db35271bd75b6467f7590a2c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079168"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902884"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>讀取「適用於 MySQL 的 Azure 資料庫」中的複本
 
@@ -22,9 +22,9 @@ ms.locfileid: "86079168"
 若要深入了解 MySQL 複寫功能與問題，請參閱 [MySQL 複寫文件](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) \(英文\)。
 
 > [!NOTE]
-> 偏差-免費通訊
+> 無偏差通訊
 >
-> Microsoft 支援多樣化和 inclusionary 的環境。 本文包含對_一詞的_參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)可辨識此為 exclusionary 單字。 本文中會使用這個字來進行一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新為對齊。
+> Microsoft 支援多樣化且 inclusionary 的環境。 本文包含單字 _從屬_的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將此視為排他性行為單字。 本文中會使用這個字來保持一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除該字時，將會更新本文以進行調整。
 >
 
 ## <a name="when-to-use-a-read-replica"></a>何時應該使用讀取複本
@@ -42,12 +42,12 @@ ms.locfileid: "86079168"
 
 您可以在任何[適用於 MySQL 的 Azure 資料庫區域](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)中擁有主要伺服器。  主要伺服器可以在其配對區域或全球複本區域中擁有複本。 下圖顯示根據您的主要區域而可供使用的複本區域。
 
-[ ![讀取複本區域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[:::image type="content" source="media/concepts-read-replica/read-replica-regions.png" alt-text="讀取複本區域":::](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>全球的複本區域
 無論您的主要伺服器位於何處，您都可以在下列任何區域中建立讀取複本。 支援的全球複本區域包括：
 
-澳大利亞東部、澳大利亞東南部、美國中部、東亞、美國東部、美國東部2、日本東部、日本西部、韓國中部、南韓南部、美國中北部、北歐、美國中南部、東南亞、英國南部、英國西部、西歐、美國西部、美國西部2、美國中西部。
+澳大利亞東部、澳大利亞東南部、美國中部、東亞、美國東部、美國東部2、日本東部、日本西部、韓國中部、南韓南部、美國中北部、歐洲北部、美國中南部、東南亞、英國南部、英國西部、西歐、美國西部、美國西部2、美國中西部。
 
 ### <a name="paired-regions"></a>配對的區域
 除了全球複本區域外，您還可以在主要伺服器的 Azure 配對區域中建立讀取複本。 如果您不知道所在區域的配對，則可以從 [Azure 配對區域](../best-practices-availability-paired-regions.md)一文深入了解。
@@ -56,7 +56,7 @@ ms.locfileid: "86079168"
 
 不過，其中有一些限制需要考慮： 
 
-* 區域可用性：適用於 MySQL 的 Azure 資料庫適用于法國中部、阿拉伯聯合大公國北部和德國中部。 不過，卻沒有提供其配對區域。
+* 區域可用性：法國中部、阿拉伯聯合大公國北部和德國中部都有提供適用於 MySQL 的 Azure 資料庫。 不過，卻沒有提供其配對區域。
     
 * 單向配對：某些 Azure 區域只會單向配對。 這些區域包括印度西部、巴西南部和 US Gov 維吉尼亞州。 
    這表示位於印度西部的主要伺服器可以在印度南部建立複本。 但位於印度南部的主要伺服器無法在印度西部建立複本。 其原因是印度西部的次要區域是印度南部，但印度南部的次要區域卻不是印度西部。
@@ -110,22 +110,22 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 ## <a name="failover"></a>容錯移轉
 
-主要和複本伺服器之間沒有自動容錯移轉。 
+在主伺服器與複本伺服器之間沒有自動容錯移轉。 
 
-由於複寫是非同步，因此主要和複本之間會有延遲。 延遲量可能會受到一些因素的影響，例如，在主伺服器上執行的工作負載有多長，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘的時間。 您可以使用每個複本可用的計量*複本延遲*來追蹤實際的複寫延遲。 此度量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察複本延遲，以識別您的平均延遲。 您可以針對複本延遲設定警示，如此一來，如果它超出預期的範圍，您就可以採取動作。
+由於複寫是非同步，因此主伺服器和複本之間會有延遲。 延遲數量可能會受到一些因素所影響，例如在主伺服器上執行工作負載的繁重程度，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘。 您可以使用計量 *複本延遲*（可用於每個複本）來追蹤實際的複寫延遲。 此計量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察您的複本延遲，以找出您的平均延遲。 您可以設定複本延遲的警示，如此一來，如果超出預期的範圍，您可以採取動作。
 
 > [!Tip]
-> 如果您容錯移轉至複本，從主伺服器取消複本時的延遲將會指出遺失的資料量。
+> 如果您容錯移轉至複本，當您從主伺服器取消複本時的延遲將會指出遺失的資料量。
 
-一旦決定要容錯移轉至複本之後， 
+一旦您決定要容錯移轉至複本， 
 
 1. 停止複寫至複本<br/>
-   若要讓複本伺服器能夠接受寫入，必須執行此步驟。 做為此程式的一部分，複本伺服器將會從主機 delinked。 一旦您起始停止複寫，後端進程通常需要大約2分鐘的時間才能完成。 請參閱本文的[停止](#stop-replication)複寫一節，以瞭解此動作的含意。
+   您必須執行此步驟，讓複本伺服器能夠接受寫入。 作為此程式的一部分，複本伺服器將會從主伺服器 delinked。 當您起始停止複寫後，後端進程通常需要大約2分鐘才能完成。 請參閱本文的「 [停止](#stop-replication) 複寫」一節，以瞭解此動作的含意。
     
-2. 將您的應用程式指向（先前的）複本<br/>
-   每部伺服器都有唯一的連接字串。 更新您的應用程式，使其指向（先前）複本，而不是 master。
+2. 將您的應用程式指向 (之前的) 複本<br/>
+   每一部伺服器都有唯一的連接字串。 更新您的應用程式，使其指向 (之前的) 複本，而不是主要複本。
     
-一旦您的應用程式成功處理讀取和寫入，您就已完成容錯移轉。 您的應用程式體驗所需的停機時間將取決於您偵測到問題，並完成上述步驟1和2。
+一旦您的應用程式成功處理讀取和寫入，您就已完成容錯移轉。 當您偵測到問題並完成上述步驟1和2時，您的應用程式所經歷的停機時間將會取決於您的情況。
 
 ## <a name="considerations-and-limitations"></a>考量與限制
 
@@ -134,7 +134,7 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 目前只有「一般用途」與「記憶體最佳化」定價層提供讀取複本。
 
 > [!NOTE]
-> 執行複本伺服器的成本取決於執行複本伺服器的區域。
+> 執行複本伺服器的成本是以複本伺服器執行所在的區域為基礎。
 
 ### <a name="master-server-restart"></a>主要伺服器重新啟動
 

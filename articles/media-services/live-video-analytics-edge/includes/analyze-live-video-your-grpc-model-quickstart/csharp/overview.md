@@ -1,13 +1,13 @@
 ---
-ms.openlocfilehash: 97c21ca300ee070b2cebaa01a585c1618899b1eb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: fa0c2f5bb00122b40fb4f4ea06b7cf55c0248904
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687168"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025340"
 ---
 
-![概觀](../../../media/quickstarts/overview-grpc.png)
+![概觀](../../../media/quickstarts/gRPC-extension.svg)
 
 上圖顯示本快速入門中的信號流動方式。 [邊緣模組](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)會模擬裝載了即時串流通訊協定 (RTSP) 伺服器的 IP 攝影機。 [RTSP 來源](../../../media-graph-concept.md#rtsp-source)節點會從這部伺服器提取影片摘要，然後將影片畫面傳送至[動作偵測處理器](../../../media-graph-concept.md#motion-detection-processor)節點。 此處理器會偵測動作，並在偵測時將影片畫面推送至 [gRPC 擴充處理器](../../../media-graph-concept.md#grpc-extension-processor)節點。
 

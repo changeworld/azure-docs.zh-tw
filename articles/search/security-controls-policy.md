@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 09/04/2020
+ms.date: 09/16/2020
 ms.topic: sample
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 8f35c09d0d27136b0244055f074f22c260f323e4
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e16cbd9bca8a6e62d5ff403a687ace45e495900b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482196"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982957"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-search"></a>適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項
 

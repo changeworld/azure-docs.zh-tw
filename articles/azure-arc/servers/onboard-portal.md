@@ -1,19 +1,19 @@
 ---
 title: 從 Azure 入口網站將混合式機器連線至 Azure
-description: 在本文中，您將瞭解如何使用 Azure 入口網站的已啟用 Azure Arc 的伺服器來安裝代理程式，並將電腦連線至 Azure (preview) 。
-ms.date: 08/07/2020
+description: 在本文中，您將瞭解如何使用 Azure 入口網站 Azure Arc 啟用的伺服器，安裝代理程式並將機器連線到 Azure。
+ms.date: 09/02/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 23415bc648ae31b9073adb71d6f066a28c144c9d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7435256dda68b2689aeb19b237f499d50b418055
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213499"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887622"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>從 Azure 入口網站將混合式機器連線至 Azure
 
-您可以手動執行一組步驟，為您環境中的一或少數 Windows 或 Linux 電腦，啟用已啟用 Azure Arc 的伺服器 (預覽) 。 或者，您也可以藉由執行我們所提供的範本指令碼來使用自動化方法。 此指令碼會自動下載並安裝這兩個代理程式。
+您可以藉由手動執行一組步驟，為環境中的一或少數 Windows 或 Linux 電腦啟用 Azure Arc 啟用的伺服器。 或者，您也可以藉由執行我們所提供的範本指令碼來使用自動化方法。 此指令碼會自動下載並安裝這兩個代理程式。
 
 若要使用這種方法，您必須擁有機器上的系統管理員權限，才能安裝和設定代理程式。 在 Linux 上請使用根帳號，在 Windows 上則必須是本機系統管理員群組的成員。
 
@@ -27,14 +27,14 @@ ms.locfileid: "88213499"
 
 1. 在瀏覽器中，移至 [Azure 入口網站](https://aka.ms/hybridmachineportal)。
 
-1. 在 [機器 - Azure Arc] 頁面上，選取左上角的 [新增]，或選取中間窗格底部的 [建立機器 - Azure Arc] 選項。
+1. 在 [ **伺服器-Azure Arc** ] 頁面上，選取左上方的 [ **新增** ]。
 
-1. 在 [選取方法] 頁面上，選取 [使用互動式指令碼新增機器] 圖格，然後選取 [產生指令碼]。
+1. 在 [ **選取方法** ] 頁面上，選取 [ **使用互動式腳本新增伺服器** ] 磚，然後選取 [ **產生腳本**]。
 
 1. 在 [產生指令碼] 頁面上，選取您要在 Azure 中用來管理機器的訂用帳戶和資源群組。 選取要用來儲存機器中繼資料的 Azure 位置。
 
     >[!NOTE]
-    >已啟用 Azure Arc 的伺服器 (預覽) 僅支援下欄區域：
+    >Azure Arc 啟用的伺服器僅支援下欄區域：
     >- EastUS
     >- WestUS2
     >- WestEurope
@@ -42,15 +42,21 @@ ms.locfileid: "88213499"
     >
     >在[這裡](overview.md#supported-regions)選取區域時，請檢閱「概觀」文章中的其他考量。
 
-1. 在 [產生指令碼] 頁面的 [作業系統] 下拉式清單中，選取要作為指令碼執行平台的作業系統。
+1. 在 [ **必要條件** ] 頁面上，檢查資訊，然後選取 **[下一步：資源詳細資料]**。
 
-1. 如果機器透過 Proxy 伺服器進行通訊以連線到網際網路，請選取 [下一步：Proxy 伺服器]。
+1. 在 [ **資源詳細資料** ] 頁面上，提供下列各項：
 
-1. 在 [Proxy 伺服器] 索引標籤上，指定要供機器用來與 Proxy 伺服器通訊的 Proxy 伺服器 IP 位址或名稱與連接埠號碼。 請以 `http://<proxyURL>:<proxyport>` 格式輸入值。
+    1. 在 [ **資源群組** ] 下拉式清單中，選取要用來管理機器的資源群組。
+    1. 在 [ **區域** ] 下拉式清單中，選取要儲存伺服器中繼資料的 Azure 區域。
+    1. 在 [ **作業系統** ] 下拉式清單中，選取要在其中設定腳本執行所在的作業系統。
+    1. 如果電腦透過 proxy 伺服器進行通訊，以連線到網際網路，請指定 proxy 伺服器的 IP 位址，或電腦將用來與 proxy 伺服器通訊的名稱和埠號碼。 請以 `http://<proxyURL>:<proxyport>` 格式輸入值。
+    1. 完成時，選取 [下一步:標籤]。
 
-1. 選取 [檢閱 + 產生]。
+1. **在 [卷**標] 頁面上，查看建議的預設**實體位置**標籤並輸入值，或指定一或多個**自訂**標籤以支援您的標準。
 
-1. 在 [檢閱 + 產生] 索引標籤上檢閱摘要資訊，然後選取 [下載]。 如果您還需要變更，請選取 [上一步]。
+1. 選取 **[下一步]：下載並執行腳本**。
+
+1. 在 [ **下載並執行腳本** ] 頁面上，檢查摘要資訊，然後選取 [ **下載**]。 如果您還需要變更，請選取 [上一步]。
 
 ## <a name="install-and-validate-the-agent-on-windows"></a>在 Windows 上安裝和驗證代理程式
 
@@ -62,7 +68,7 @@ ms.locfileid: "88213499"
 >* 若要安裝或解除安裝此代理程式，您必須具有「系統管理員」權限。
 >* 您必須先下載安裝程式套件，並將其複製到目標伺服器上的資料夾，或從共用的網路資料夾執行此動作。 如果您在執行此安裝程式套件時未使用任何選項，則會啟動以互動方式安裝代理程式的安裝精靈。
 
-如果電腦需要透過 proxy 伺服器與服務通訊，則在安裝代理程式之後，您需要執行下列步驟中所述的命令。 此命令會設定 proxy 伺服器系統內容變數 `https_proxy` 。
+如果電腦需要透過 proxy 伺服器與服務通訊，則在安裝代理程式之後，您必須執行下列步驟中所述的命令。 此命令會設定 proxy 伺服器系統內容變數 `https_proxy` 。
 
 如果您不熟悉 Windows Installer 套件的命令列選項，請參閱 [Msiexec 標準命令列選項](/windows/win32/msi/standard-installer-command-line-options)和 [Msiexec 命令列選項](/windows/win32/msi/command-line-options)。
 
@@ -106,7 +112,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
 1. 開啟已提高權限的 PowerShell 命令提示字元。
 
     >[!NOTE]
-    >此腳本只支援從64位版本的 Windows PowerShell 執行。
+    >腳本僅支援從64位版本的 Windows PowerShell 執行。
     >
 
 1. 變更至作為指令碼複製目的地的資料夾或共用，然後在伺服器上執行 `./OnboardingScript.ps1` 指令碼來執行此工作。
@@ -119,7 +125,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
 
 - 設定主機電腦使其從 packages.microsoft.com 下載代理程式套件。
 - 安裝混合式資源提供者套件。
-- 向 Azure Arc 註冊機器
+- 使用 Azure Arc 註冊電腦
 
 (選擇性) 您可以納入 `--proxy "{proxy-url}:{proxy-port}"` 參數，以使用 Proxy 資訊來設定代理程式。
 
@@ -147,7 +153,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ## <a name="verify-the-connection-with-azure-arc"></a>驗證與 Azure Arc 的連線
 
-在您安裝代理程式並將其設定為連線至已啟用 Azure Arc 的伺服器後 (預覽) ]，請移至 Azure 入口網站，確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
+當您安裝代理程式並將它設定為連接到已啟用 Azure Arc 的伺服器之後，請移至 Azure 入口網站以確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
 
 ![成功的伺服器連線](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
@@ -155,4 +161,4 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 - 了解如何使用 [Azure 原則](../../governance/policy/overview.md)，針對例如 VM [來賓設定](../../governance/policy/concepts/guest-configuration.md)、確認機器回報至預期的 Log Analytics 工作區、使用 [Azure 監視器與 VM](../../azure-monitor/insights/vminsights-enable-policy.md) 啟用監視等等項目，管理您的機器。
 
-- 深入了解 [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md))。
+- 深入瞭解 [[Log Analytics 代理程式]](../../azure-monitor/platform/log-analytics-agent.md)。 當您想要收集作業系統和工作負載監視資料、使用自動化 runbook 或功能（例如更新管理）進行管理時，或使用其他 Azure 服務（例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md)）時，需要適用于 Windows 和 Linux 的 Log Analytics 代理程式。

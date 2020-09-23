@@ -3,16 +3,16 @@ title: 商業 marketplace 原則和條款，Azure Marketplace
 description: Microsoft 商業 marketplace 原則和條款適用于 Azure Marketplace 中的所有發行者和供應專案。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: reference
+ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/09/2020
-ms.openlocfilehash: cd936307eaacc7b2a46bac23c8fcfc9e2769135c
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4ddf37d5f2e7f569e5447dfe321574e3f9ccc778
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006715"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974844"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>商業市集原則和條款
 
@@ -25,12 +25,11 @@ ms.locfileid: "90006715"
 
 ## <a name="policies-and-terms"></a>原則和條款
 
-* [商業市集認證原則](https://docs.microsoft.com/legal/marketplace/certification-policies)
-
-* [原則評等和檢閱](https://docs.microsoft.com/legal/marketplace/rating-review-policies)
-
-* [Azure Marketplace 條款](https://docs.microsoft.com/legal/marketplace/terms)
+- [商業市集認證原則](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)
+- [Microsoft AppSource 和 Azure Marketplace 稽核原則](/legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context)
+- [Azure Marketplace 參與原則](/legal/marketplace/participation-policy?context=/azure/marketplace/context/context)
+- [Azure Marketplace 條款](/legal/marketplace/terms?context=/azure/marketplace/context/context)
 
 ## <a name="next-step"></a>後續步驟
 
-造訪「 [商業 marketplace 發佈指南](./marketplace-publishers-guide.md) 」頁面。
+造訪「 [商業 marketplace 發佈指南](marketplace-publishers-guide.md) 」頁面。

@@ -2,28 +2,32 @@
 title: 在 IoT Edge 裝置上部署即時影片分析-Azure
 description: 本文列出可協助您在 IoT Edge 裝置上部署即時影片分析的步驟。 例如，如果您有本機 Linux 電腦的存取權，以及（或）先前已建立 Azure 媒體服務帳戶，您就可以這麼做。
 ms.topic: how-to
-ms.date: 04/27/2020
-ms.openlocfilehash: 30a3bda4069bb8c07d7c9be3fd8a3a2b1171eba2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/09/2020
+ms.openlocfilehash: 211dd0d61bbca39c4f4ec2f388d950c4615bb023
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526318"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887224"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 裝置上部署即時影片分析
 
 本文列出可協助您在 IoT Edge 裝置上部署即時影片分析的步驟。 例如，如果您有本機 Linux 電腦的存取權，以及（或）先前已建立 Azure 媒體服務帳戶，您就可以這麼做。
 
+> [!NOTE]
+> ARM64 裝置的支援可在 IoT Edge 組建和更新版本的即時影片分析中取得 `1.0.4` 。
+> 在 ARM64 裝置上執行 Azure IoT Edge 執行階段的支援處於[公開預覽](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)狀態。
+
 ## <a name="prerequisites"></a>必要條件
 
-* 符合即時影片分析之 HW/SW 限制的 Linux 機器
+* 執行其中一種[支援的 Linux 作業系統](https://docs.microsoft.com/azure/iot-edge/support#operating-systems)的 x86-64 或 ARM64 裝置
 * 您具有擁有者[許可權](../../role-based-access-control/built-in-roles.md#owner)的 Azure 訂用帳戶
 * [建立並設定 IoT 中樞](../../iot-hub/iot-hub-create-through-portal.md)
 * [註冊 IoT Edge 裝置](../../iot-edge/how-to-register-device.md)
 * [在以 Debian 為基礎的 Linux 系統上安裝 Azure IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [建立 Azure 媒體服務帳戶](../latest/create-account-howto.md)
 
-    * 使用下列其中一種區域：美國東部2、美國中部、美國中北部、日本東部、美國西部2、美國中西部、加拿大東部、英國南部、法國中部、法國南部、瑞士北部、瑞士西部和日本西部。
+    * 使用下列其中一種區域：美國東部2、美國東部、美國中部、美國中北部、日本東部、美國西部、美國西部2、美國中西部、加拿大東部、英國南部、法國中部、法國南部、瑞士北部、瑞士西部和日本西部。
     * 建議您使用一般用途 v2 (GPv2) 儲存體帳戶
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>設定 Azure 資源以使用即時影片分析
@@ -81,7 +85,6 @@ sudo chown -R edgeuser /var/media
 
 ## <a name="deploy-live-video-analytics-edge-module"></a>部署即時影片分析 Edge 模組
 
-<!-- (To JuliaKo: this is similar to https://docs.microsoft.com/azure/iot-edge/how-to-deploy-blob)-->
 IoT Edge 上的即時影片分析會公開模組對應項設定 [架構](module-twin-configuration-schema.md)中記載的模組對應項屬性。 
 
 ### <a name="deploy-using-the-azure-portal"></a>使用 Azure 入口網站部署
@@ -247,9 +250,9 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
 
     ![狀態200訊息](./media/deploy-iot-edge-device/connection-timeout.png) 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 試用 [快速入門：開始使用 IoT Edge 的即時影片分析](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
 > [!TIP]
-> 在命令中，您將會執行下一步，使用您的 `device-id` 取代預設值 `lva-sample-device` 。
+> 如果您繼續進行上述快速入門，使用 Visual Studio Code 叫用直接方法時，您將使用透過本文新增至 IoT 中樞的裝置，而不是預設值 `lva-sample-device` 。

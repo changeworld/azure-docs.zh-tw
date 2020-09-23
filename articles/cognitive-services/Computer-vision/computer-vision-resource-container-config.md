@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 765001ae7380ff2e99e6b390930b94302ce506bf
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 56a03d6f1e4684da797b733d6041309acdac65c3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433682"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888154"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>設定電腦視覺 Docker 容器
 
@@ -31,12 +31,12 @@ ms.locfileid: "89433682"
 
 容器也有下列容器特定的設定設定：
 
-|必要|設定|目的|
+|必要|設定|用途|
 |--|--|--|
-|否|ReadEngineConfig:ResultExpirationPeriod|結果到期期間（以小時為單位）。 預設值為 48 小時。 設定會指定系統應該清除辨識結果的時間。 例如，如果為 `resultExpirationPeriod=1` ，則系統會在處理常式之後清除辨識結果1小時。 如果為 `resultExpirationPeriod=0` ，則系統會在取出結果之後清除辨識結果。|
-|否|Cache： Redis|啟用 Redis 儲存體以儲存結果。 如果有多個讀取容器放在負載平衡器後方，就 *需要* 快取。|
-|否|佇列： RabbitMQ|啟用 RabbitMQ 來分派工作。 當有多個讀取容器放在負載平衡器後方時，此設定會很有用。|
-|否|儲存體：:D ocumentStore：： MongoDB|啟用 MongoDB 以永久儲存結果。|
+|No|ReadEngineConfig:ResultExpirationPeriod|結果到期期間（以小時為單位）。 預設值為 48 小時。 設定會指定系統應該清除辨識結果的時間。 例如，如果為 `resultExpirationPeriod=1` ，則系統會在處理常式之後清除辨識結果1小時。 如果為 `resultExpirationPeriod=0` ，則系統會在取出結果之後清除辨識結果。|
+|No|Cache： Redis|啟用 Redis 儲存體以儲存結果。 如果有多個讀取容器放在負載平衡器後方，就 *需要* 快取。|
+|No|佇列： RabbitMQ|啟用 RabbitMQ 來分派工作。 當有多個讀取容器放在負載平衡器後方時，此設定會很有用。|
+|No|儲存體：:D ocumentStore：： MongoDB|啟用 MongoDB 以永久儲存結果。|
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 組態設定
 
@@ -88,7 +88,7 @@ ms.locfileid: "89433682"
 
 主機裝載位置的正確語法會隨著主機作業系統而有所不同。 此外，[主機電腦](computer-vision-how-to-install-containers.md#the-host-computer)的裝載位置可能會因為 Docker 服務帳戶所使用的權限與主機裝載位置的權限互相衝突，而無法存取。 
 
-|選用| Name | 資料類型 | 描述 |
+|選擇性| Name | 資料類型 | 描述 |
 |-------|------|-----------|-------------|
 |不允許| `Input` | String | 電腦視覺容器不會使用此項目。|
 |選用| `Output` | String | 輸出裝載的目標。 預設值是 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -117,27 +117,56 @@ ms.locfileid: "89433682"
 
 下列 Docker 範例適用于讀取容器。
 
+
+# <a name="version-30"></a>[3.0 版](#tab/version-3)
+
 ### <a name="basic-example"></a>基本範例
 
-  ```docker
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-read \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} 
-  ```
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
 
 ### <a name="logging-example"></a>記錄範例 
 
-  ```docker
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-read \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} \
-  Logging:Console:LogLevel:Default=Information
-  ```
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
 
-## <a name="next-steps"></a>接下來的步驟
+# <a name="version-31"></a>[3.1 版](#tab/version-3-1)
+
+### <a name="basic-example"></a>基本範例
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+
+```
+
+### <a name="logging-example"></a>記錄範例 
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
+
+---
+
+## <a name="next-steps"></a>下一步
 
 * 請參閱 [如何安裝及執行容器](computer-vision-how-to-install-containers.md)。

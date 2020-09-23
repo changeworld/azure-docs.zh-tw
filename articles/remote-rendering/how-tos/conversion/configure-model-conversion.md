@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067166"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967219"
 ---
 # <a name="configure-the-model-conversion"></a>設定模型轉換
 
@@ -18,7 +18,7 @@ ms.locfileid: "88067166"
 
 ## <a name="settings-file"></a>設定檔案
 
-如果在輸入 `<modelName>.ConversionSettings.json` 模型旁邊的輸入容器中找到名為的檔案 `<modelName>.<ext>` ，則會使用它來提供模型轉換程式的其他設定。
+如果在 `<modelName>.ConversionSettings.json` 輸入模型旁邊的輸入容器中找到名為的檔案 `<modelName>.<ext>` ，則會使用它來提供模型轉換程式的其他設定。
 例如， `box.ConversionSettings.json` 會在轉換時使用 `box.gltf` 。
 
 檔案的內容應該符合下列 json 結構描述：
@@ -74,14 +74,14 @@ ms.locfileid: "88067166"
 ### <a name="geometry-parameters"></a>Geometry 參數
 
 * `scaling` - 這個參數會一致地調整模型。 縮放比例可以用來放大或縮小模型，例如在資料表頂端顯示建築物模型。
-當模型定義為計量以外的單位時，調整也很重要，因為轉譯引擎會預期計量。
+如果模型是以計量以外的單位來定義，則調整也很重要，因為轉譯引擎預期會有計量。
 例如，如果模型是以公分定義，則套用 0.01 的縮放比例應該會以正確的大小來轉譯模型。
 某些來源資料格式 (例如 .fbx) 會提供單位縮放比例提示，在這種情況下，轉換會隱含地將模型縮放為公尺單位。 來源格式所提供的隱含縮放比例會套用在縮放參數的頂端。
 最終的縮放比例因數會套用至幾何頂點和場景圖表節點的本機轉換。 根實體轉換的縮放比例會保持未修改。
 
 * `recenterToOrigin` - 指出應該轉換模型，使其周框方塊在原點置中。
-如果來源模型從原點中被取代，則浮點精確度的問題可能會導致轉譯成品。
-在這種情況下，模型的置中會有説明。
+如果來源模型從原點的位置被取代，浮點精確度問題可能會導致轉譯構件。
+在此情況下，模型的集中可能會有説明。
 
 * `opaqueMaterialDefaultSidedness` - 轉譯引擎會假設不透明材質為雙面。
 如果特定模型的假設不成立，則此參數應設為 "SingleSided"。 如需詳細資訊， [ :::no-loc text="single sided"::: 請參閱轉譯](../../overview/features/single-sided-rendering.md)。
@@ -94,13 +94,19 @@ ms.locfileid: "88067166"
 
 * `deduplicateMaterials` - 這個參數會啟用或停用共用相同屬性和紋理的自動材質重複資料刪除。 在處理材質覆寫之後，會進行重複資料刪除。 此選項預設為啟用狀態。
 
+* 即使在重復資料刪除之後，模型有65535以上的材質，服務仍會嘗試合併具有類似屬性的材質。 最後，任何超出限制的資料都會以紅色的錯誤材質取代。
+
+![影像會顯示兩個68921彩色三角形的 cube。](media/mat-dedup.png?raw=true)
+
+68921彩色三角形的兩個 cube。 左方：在重復資料刪除前使用68921色材質。 Right：重復資料刪除後使用64000色材質。 此限制為65535的材質。  (查看 [限制](../../reference/limits.md)。 ) 
+
 ### <a name="color-space-parameters"></a>色彩空間參數
 
 轉譯引擎會預期色彩值為線性空間。
 如果模型是使用色差補正空間來定義，則這些選項應該設定為 True。
 
 * `gammaToLinearMaterial` - 將材質色彩從色差補正空間轉換成線性空間
-* `gammaToLinearVertex`-將 :::no-loc text="vertex"::: 色彩從 gamma 空間轉換成線性空間
+* `gammaToLinearVertex` -將 :::no-loc text="vertex"::: 色彩從 gamma 空間轉換成線性空間
 
 > [!NOTE]
 > 若為 FBX 檔案，這些設定預設會設定為 `true`。 若為所有其他檔案類型，預設值為 `false`。
@@ -112,7 +118,7 @@ ms.locfileid: "88067166"
   * `static`：所有物件都會在 API 中公開，但無法獨立轉換。
   * `none`:場景圖表會摺疊成一個物件。
 
-每種模式都有不同的執行階段效能。 在 `dynamic` 模式中，效能成本會隨著圖表中的[實體](../../concepts/entities.md)數目呈線性縮放比例，即使未移動任何部分也一樣。 `dynamic`只有在需要個別移動元件時才使用模式，例如「爆炸視圖」動畫。
+每種模式都有不同的執行階段效能。 在 `dynamic` 模式中，效能成本會隨著圖表中的[實體](../../concepts/entities.md)數目呈線性縮放比例，即使未移動任何部分也一樣。 `dynamic`只有在需要個別移動元件時（例如針對「爆炸視圖」動畫）才使用模式。
 
 `static` 模式會匯出完整的場景圖表，但此圖表內的組件具有相對於其根部分的常數轉換。 不過，物件的根節點仍然可以移動、旋轉或縮放比例，而不會有顯著的效能成本。 此外，[空間查詢](../../overview/features/spatial-queries.md)會傳回個別的組件，且每個組件分都可以透過[狀態覆寫](../../overview/features/override-hierarchical-state.md)來進行修改。 使用此模式時，每個物件的執行階段額外負荷都是可忽略的。 這很適合您在其中仍需要每個物件檢查，但不需要每個物件轉換變更的大型場景。
 
@@ -137,18 +143,18 @@ ms.locfileid: "88067166"
 
 * `axis` - 覆寫座標系統單位向量。 預設值為 `["+x", "+y", "+z"]`。 理論上，FBX 格式有一個標頭，其中定義了這些向量，且轉換會使用該資訊來轉換場景。 GlTF 格式也會定義固定座標系統。 在實務上，某些資產的標頭中有不正確的資訊，或是以不同的座標系統慣例儲存。 此選項可讓您覆寫要補償的座標系統。 例如：`"axis" : ["+x", "+z", "-y"]` 將會藉由反轉 Y 軸方向來交換 Z 軸和 Y 軸，並保持座標系統慣用手。
 
-### <a name="node-meta-data"></a>節點中繼資料
+### <a name="node-meta-data"></a>Node 中繼資料
 
-* `metadataKeys`-可讓您指定您想要保留在轉換結果中的節點中繼資料屬性索引鍵。 您可以指定確切的索引鍵或萬用字元。 萬用字元的格式為 "ABC *"，且符合任何以 "ABC" 開頭的索引鍵。 支援的中繼資料數值型別為 `bool` 、 `int` 、 `float` 和 `string` 。
+* `metadataKeys` -可讓您指定要保留在轉換結果中的節點中繼資料屬性索引鍵。 您可以指定確切的索引鍵或萬用字元。 萬用字元的格式為 "ABC *"，且符合以 "ABC" 開頭的任何金鑰。 支援的中繼資料數值型別為 `bool` 、 `int` 、 `float` 和 `string` 。
 
-    針對 GLTF 檔，此資料來自[節點上的額外專案物件](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras)。 對於 FBX 檔案，此資料來自的 `Properties70` 資料 `Model nodes` 。 如需進一步的詳細資料，請參閱3D 資產工具的檔。
+    針對 GLTF 檔案，此資料來自 [節點上的額外專案物件](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras)。 針對 FBX 檔案，這是來自 `Properties70` 資料的資料 `Model nodes` 。 如需進一步的詳細資料，請參閱3D 資產工具的檔。
 
-### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::編排
+### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex"::: 格式
 
 您可以調整 :::no-loc text="vertex"::: 網格的格式，以節省記憶體的交易精確度。 較低的磁碟使用量可讓您載入較大的模型，或達到更佳的效能。 不過，視您的資料而定，錯誤的格式可能會大幅影響轉譯品質。
 
 > [!CAUTION]
-> :::no-loc text="vertex":::當模型不再符合記憶體，或優化以獲得最佳效能時，變更格式應該是最後的手段。 變更可以輕鬆引進轉譯成品，其中包括明顯和細微的成品。 除非您知道要查看的內容，否則不應變更預設值。
+> :::no-loc text="vertex":::當模型不再放入記憶體中，或優化以獲得最佳效能時，變更格式應該是最後的手段。 變更可以輕鬆引進轉譯成品，其中包括明顯和細微的成品。 除非您知道要查看的內容，否則不應變更預設值。
 
 可能的調整如下：
 
@@ -194,7 +200,7 @@ ms.locfileid: "88067166"
 
 格式的磁碟使用量如下所示：
 
-| [格式] | 描述 | 位元組/:::no-loc text="vertex"::: |
+| [格式] | 描述 | 每個位元組 :::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|雙元件完整浮點數精確度|8
 |16_16_FLOAT|雙元件半浮點數精確度|4
@@ -213,56 +219,56 @@ ms.locfileid: "88067166"
 
 #### <a name="example"></a>範例
 
-假設您有一個攝影測量模型，其光源會內建到紋理。 呈現模型所需的全部都是 :::no-loc text="vertex"::: 位置和材質座標。
+假設您有一個攝影測量模型，其光源會內建到紋理。 轉譯模型所需的一切都是 :::no-loc text="vertex"::: 位置和材質座標。
 
-根據預設，轉換器必須假設您可能有時想要在模型上使用 PBR 的資料，以便為您產生 `normal`、`tangent` 和 `binormal` 資料。 因此，每個頂點的記憶體使用量是 `position` (12 個位元組) + `texcoord0` (8 個位元組) + `normal` (4 個位元組) + `tangent` (4 個位元組) + `binormal` (4 個位元組) = 32 個位元組。 這種類型的較大型模型可以輕鬆地產生許多數百萬個 :::no-loc text="vertices"::: 模型，而可能佔用多 gb 的記憶體。 這類大量資料會影響效能，且您甚至可能會用盡記憶體。
+根據預設，轉換器必須假設您可能有時想要在模型上使用 PBR 的資料，以便為您產生 `normal`、`tangent` 和 `binormal` 資料。 因此，每個頂點的記憶體使用量是 `position` (12 個位元組) + `texcoord0` (8 個位元組) + `normal` (4 個位元組) + `tangent` (4 個位元組) + `binormal` (4 個位元組) = 32 個位元組。 此類型較大型的模型很容易就會產生數百萬個 :::no-loc text="vertices"::: 模型，而這些模型可能佔用多 gb 的記憶體。 這類大量資料會影響效能，且您甚至可能會用盡記憶體。
 
-知道您在模型上永遠不需要動態光源，而且知道所有材質座標都在 `[0; 1]` 範圍內，您可以將 `normal` 、和設定 `tangent` `binormal` 為 `NONE` `texcoord0` 半精確度 (`16_16_FLOAT`) ，因此每個只會產生16個位元組 :::no-loc text="vertex"::: 。 將網格資料減半可讓您載入較大的模型，且可能會改善效能。
+知道您在模型上永遠不需要動態光源，並知道所有材質座標都在 `[0; 1]` 範圍內，您可以將 `normal` 、 `tangent` 和設定 `binormal` 為 `NONE` `texcoord0` 半精確度 (`16_16_FLOAT`) ，因此每個字元只會有16個位元組 :::no-loc text="vertex"::: 。 將網格資料減半可讓您載入較大的模型，且可能會改善效能。
 
 ## <a name="memory-optimizations"></a>記憶體優化
 
-載入內容的記憶體耗用量可能會成為轉譯系統上的瓶頸。 如果記憶體承載變得太大，可能會危害轉譯效能，或導致模型不會全部載入。 這段影片將討論減少記憶體使用量的一些重要策略。
+載入內容的記憶體耗用量可能會在轉譯系統上成為瓶頸。 如果記憶體承載變得太大，可能會危及轉譯效能，或導致模型無法全部載入。 本段落討論一些可減少記憶體使用量的重要策略。
 
 ### <a name="instancing"></a>實例
 
-實例是一種概念，其中網格會針對具有不同空間轉換的部分重複使用，而不是每個參考自己唯一幾何的元件。 實例對記憶體使用量有顯著的影響。
-實例的使用案例範例是引擎模型中的螺絲或架構模型中的椅子。
+實例是一種概念，其中會針對具有相異空間轉換的元件重複使用網格，而不是每個參考其專屬唯一幾何的部分。 實例對記憶體使用量有很大的影響。
+實例的範例使用案例為架構模型中引擎模型或椅子的螺絲。
 
 > [!NOTE]
-> 實例可以改善記憶體耗用量 (，因此載入時間) 明顯，但是轉譯效能端的改善並不重要。
+> 實例可以改善 (的記憶體耗用量，因此) 明顯地載入時間，不過對於轉譯效能端的改善卻沒有意義。
 
-轉換服務會在原始檔中標示元件時，遵循實例。 不過，轉換不會對網格資料執行額外的深入分析，以識別可重複使用的元件。 因此，「內容建立工具」和其「匯出管線」是適當實例設定的決定性準則。
+如果原始檔中的元件會適當地標示，則轉換服務會遵循實例。 不過，轉換並不會對網格資料執行額外的深入分析，以識別可重複使用的元件。 因此，內容建立工具和其匯出管線是適當實例設定的決定性準則。
 
-測試在轉換期間是否保留實例資訊的簡單方式，就是查看[輸出統計資料](get-information.md#example-info-file)，尤其是 `numMeshPartsInstanced` 成員。 如果的值大於 `numMeshPartsInstanced` 零，則表示網格會在實例之間共用。
+測試實例資訊是否會在轉換期間保留的簡單方式，就是查看 [輸出統計資料](get-information.md#example-info-file)（尤其是成員） `numMeshPartsInstanced` 。 如果的值大於 `numMeshPartsInstanced` 零，則表示網格會在實例之間共用。
 
-#### <a name="example-instancing-setup-in-3ds-max"></a>範例：3ds 中的實例設定 Max
+#### <a name="example-instancing-setup-in-3ds-max"></a>範例： 3ds Max 中的實例設定
 
-[Autodesk 3Ds Max](https://www.autodesk.de/products/3ds-max)具有不同的物件複製模式 **`Copy`** ，稱為、和，其 **`Instance`** **`Reference`** 行為與匯出檔案中的實例不同 `.fbx` 。
+[Autodesk 3Ds Max](https://www.autodesk.de/products/3ds-max) 具有不同的物件複製模式 **`Copy`** （稱為、 **`Instance`** 和），其 **`Reference`** 行為與匯出檔案中的實例不同 `.fbx` 。
 
-![以 3ds Max 複製](./media/3dsmax-clone-object.png)
+![在 3ds Max 中複製](./media/3dsmax-clone-object.png)
 
-* **`Copy`**：在此模式中，會複製網格，因此不會使用任何實例 (`numMeshPartsInstanced` = 0) 。
-* **`Instance`**：這兩個物件會共用相同的網格，因此會使用實例 (`numMeshPartsInstanced` = 1) 。
-* **`Reference`**：不同的修飾詞可以套用至幾何，因此，匯出工具會選擇保守的方法，而且不會使用實例 (`numMeshPartsInstanced` = 0) 。
+* **`Copy`** ：在此模式中，會複製網格，因此不會使用任何實例 (`numMeshPartsInstanced` = 0) 。
+* **`Instance`** ：兩個物件共用相同的網格，因此會使用實例 (`numMeshPartsInstanced` = 1) 。
+* **`Reference`** ：相異修飾詞可以套用至幾何，因此，匯出工具會選擇保守方法，而不會使用實例 (`numMeshPartsInstanced` = 0) 。
 
 
-### <a name="depth-based-composition-mode"></a>深度式組合模式
+### <a name="depth-based-composition-mode"></a>深度型組合模式
 
-如果記憶體有問題，請使用[深度式組合模式](../../concepts/rendering-modes.md#depthbasedcomposition-mode)來設定轉譯器。 在此模式中，GPU 承載會分散到多個 Gpu。
+如果記憶體有問題，請使用 [深度型組合模式](../../concepts/rendering-modes.md#depthbasedcomposition-mode)來設定轉譯器。 在此模式中，GPU 承載會分散到多個 Gpu。
 
 ### <a name="decrease-vertex-size"></a>減少頂點大小
 
-如[元件格式變更的最佳做法](configure-model-conversion.md#best-practices-for-component-format-changes)一節中所述，調整頂點格式可能會減少記憶體使用量。 不過，此選項應該是最後的手段。
+如「 [元件格式的最佳作法變更](configure-model-conversion.md#best-practices-for-component-format-changes) 」一節中所述，調整頂點格式可能會減少記憶體使用量。 不過，這個選項應該是最後的手段。
 
 ### <a name="texture-sizes"></a>材質大小
 
-視案例的類型而定，材質資料的數量可能會超過用於網格資料的記憶體。 攝影測量模型是候選項目。
-轉換設定不會提供自動相應減少材質的方式。 如有必要，材質調整必須以用戶端前置處理步驟來完成。 不過，轉換步驟會挑選適當的[材質壓縮格式](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)：
+視案例的類型而定，材質資料量可能會超過用於網格資料的記憶體。 攝影測量模型是候選項目。
+轉換設定不會提供自動縮小紋理的方式。 如有必要，紋理調整必須以用戶端前置處理步驟來完成。 不過，轉換步驟會挑選適當的 [材質壓縮格式](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)：
 
-* `BC1`針對不透明色彩材質
-* `BC7`針對具有 Alpha 色板的來源色彩材質
+* `BC1` 針對不透明色彩紋理
+* `BC7` 適用于具有 Alpha 色板的來源色彩紋理
 
-`BC7`相較于，格式具有兩倍的記憶體使用量 `BC1` ，因此請務必確定輸入材質不會不必要地提供 Alpha 色板。
+由於格式 `BC7` 有兩倍的記憶體使用量（相較于 `BC1` ），因此請務必確定輸入材質不會不必要地提供 Alpha 通道。
 
 ## <a name="typical-use-cases"></a>一般使用案例
 
@@ -295,10 +301,10 @@ ms.locfileid: "88067166"
 * 光線投射通常是應用程式的整數部分，因此必須產生衝突網格。
 * 在啟用 `opaqueMaterialDefaultSidedness` 旗標的情況下，切割平面外觀較佳。
 
-## <a name="deprecated-features"></a>已淘汰的功能
+## <a name="deprecated-features"></a>即將淘汰的功能
 
-仍然支援使用非模型特定檔案名提供設定 `conversionSettings.json` ，但已被取代。
-請改用模型特定的檔案名 `<modelName>.ConversionSettings.json` 。
+仍支援使用非模型專屬的檔案名提供設定 `conversionSettings.json` ，但已淘汰。
+請改用特定模型的檔案名 `<modelName>.ConversionSettings.json` 。
 
 ## <a name="next-steps"></a>後續步驟
 

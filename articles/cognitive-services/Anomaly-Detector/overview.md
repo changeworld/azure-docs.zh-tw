@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 12/18/2019
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 9237e670dd8d43c4036f996c477948944718e3aa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ba094709d78d92b678e3aa5ad9995923888caf00
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80053704"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887502"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什麼是異常偵測器 API？
 
@@ -35,6 +35,7 @@ Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列�
 |---------|---------|
 |即時偵測發生的異常狀況。 | 使用先前看到的資料點，偵測串流資料中的異常，以判斷您最新的資料點是否異常。 此業會使用您傳送的資料點來生模型，以判斷目標點是否異常。 透過您所產生的每個新資料點呼叫 API，即可在資料建立時加以監視。 |
 |以批次方式偵測整個資料集的異常狀況。 | 使用時間序列來偵測您的資料中可能存在的任何異常狀況。 此作業會使用您的整個時間序列資料產生一個模型，以相同的模型分析每個資料點。         |
+|以批次方式偵測整個資料集的變更點。 | 使用您的時間序列來偵測任何存在於資料中的趨勢變更點。 此作業會使用您的整個時間序列資料產生一個模型，以相同的模型分析每個資料點。    |
 | 取得有關您資料的其他資訊。 | 取得您資料和任何觀察到異常狀況的詳細資料，包括預期的值、異常界限和位置。 |
 | 調整異常偵測界限。 | Anomaly Detector API 會自動建立異常偵測的界限。 調整這些界限，以提高或降低 API 對於資料異常的敏感性，更能符合您的資料。 |
 
@@ -45,7 +46,7 @@ Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列�
 
 ## <a name="notebook"></a>Notebook
 
-若要了解如何呼叫異常偵測器 API，請嘗試參考[此 Azure Notebook](https://aka.ms/adNotebook)。 此 Web 裝載的 Jupyter Notebook 會說明如何傳送 API 要求並將結果視覺化。
+若要了解如何呼叫異常偵測器 API，請嘗試參考此 [Notebook](https://aka.ms/adNotebook)。 此 Jupyter Notebook 會說明如何傳送 API 要求並將結果視覺化。
 
 若要執行 Notebook，請完成下列步驟：
 
@@ -92,4 +93,4 @@ Anomaly Detector API 是一種 RESTful Web 服務，因此可輕易地從任何�
 
 * [快速入門：使用 Anomaly Detector REST API 偵測時間序列資料中的異常狀況](quickstarts/detect-data-anomalies-csharp.md)
 * Anomaly Detector API [線上示範](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
-* Anomaly Detector [REST API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)
+* Anomaly Detector [REST API 參考](https://aka.ms/anomaly-detector-rest-api-ref)

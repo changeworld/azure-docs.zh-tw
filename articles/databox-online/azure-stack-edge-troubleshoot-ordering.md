@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 入口網站來針對 Azure Stack Edge 排序問題進行疑難排解 |Microsoft Docs
-description: 說明如何針對 Azure Stack Edge 訂購問題進行疑難排解。
+title: 使用 Azure 入口網站針對 Azure Stack Edge Pro 訂購問題進行疑難排解 |Microsoft Docs
+description: 說明如何針對 Azure Stack Edge Pro 訂購問題進行疑難排解。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 8c42ee867bdd20de64fa1c603de47b5f1e7bdb39
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3087c209b844d691173edbbd8a993c1d0aae319b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055940"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903644"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>針對您的 Azure Stack Edge 訂購問題進行疑難排解
+# <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>針對您的 Azure Stack Edge Pro 訂購問題進行疑難排解
 
-本文說明如何針對 Azure Stack Edge 訂購問題進行疑難排解。
+本文說明如何針對 Azure Stack Edge Pro 訂購問題進行疑難排解。
 
 在本教學課程中，您會了解如何：
 
@@ -59,7 +59,7 @@ ms.locfileid: "90055940"
 
 ## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>未註冊訂用帳戶的 Microsoft Microsoft.databoxedge
 
-**錯誤：** 在 Azure 入口網站中，您可以選取要用於 Azure Stack Edge 或資料箱閘道的訂用帳戶，並取得下列錯誤：
+**錯誤：** 在 Azure 入口網站中，您可以選取要用於 Azure Stack Edge Pro 或資料箱閘道的訂用帳戶，並取得下列錯誤：
 
 *資源提供者 (s) ： microsoft.databoxedge 未註冊訂用帳戶的 &lt; 名稱 &gt; ，而且您沒有註冊訂用帳戶訂用帳戶 &lt; 名稱 &gt; 資源提供者的許可權*。
 
@@ -73,6 +73,6 @@ ms.locfileid: "90055940"
 
 **建議的解決方案：** 發生此錯誤的原因是現有的 Azure 原則封鎖了資源建立。 Azure 原則是由組織的系統管理員所設定，以確保在使用或建立 Azure 資源時的合規性。 如果有任何這類原則封鎖 Azure Stack Edge 建立資源，請洽詢您的系統管理員以編輯您的 Azure 原則。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
-* 深入瞭解如何針對 [您的 Azure Stack Edge 問題進行疑難排解](azure-stack-edge-troubleshoot.md)。
+* 深入瞭解如何針對 [您的 Azure Stack Edge Pro 問題進行疑難排解](azure-stack-edge-troubleshoot.md)。

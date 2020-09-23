@@ -1,23 +1,23 @@
 ---
-title: 透過 Windows PowerShell 介面，連接到 Microsoft Azure Stack Edge 裝置並加以管理 |Microsoft Docs
-description: 說明如何透過 Windows PowerShell 介面連接到 Azure Stack Edge，然後再加以管理。
+title: 透過 Windows PowerShell 介面，連接到 Microsoft Azure Stack Edge Pro 裝置並加以管理 |Microsoft Docs
+description: 說明如何透過 Windows PowerShell 介面連接到 Azure Stack Edge Pro，然後加以管理。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: b58c38dd0257a65bad6021b6152c14a37f905e0a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: b0c2b547391efd37fc667b84548d99f1e7385cfb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461828"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903515"
 ---
-# <a name="manage-an-azure-stack-edge-gpu-device-via-windows-powershell"></a>透過 Windows PowerShell 管理 Azure Stack Edge GPU 裝置
+# <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>透過 Windows PowerShell 管理 Azure Stack Edge Pro GPU 裝置
 
-Azure Stack Edge 解決方案可讓您處理資料，並透過網路將資料傳送至 Azure。 本文說明 Azure Stack Edge 裝置的一些設定和管理工作。 您可以使用 Azure 入口網站、本機 web UI 或 Windows PowerShell 介面來管理您的裝置。
+Azure Stack Edge Pro 解決方案可讓您處理資料，並透過網路傳送至 Azure。 本文說明 Azure Stack Edge Pro 裝置的一些設定和管理工作。 您可以使用 Azure 入口網站、本機 web UI 或 Windows PowerShell 介面來管理您的裝置。
 
 本文著重于如何連接至裝置的 PowerShell 介面，以及您可以使用此介面進行的工作。 
 
@@ -84,11 +84,11 @@ For more information on certificates, go to [Azure IoT Edge certificates](https:
 
 ## <a name="enable-multi-process-service-mps"></a>啟用多進程服務 (MP) 
 
-Nvidia Gpu 上的多進程服務 (MP) 提供一種機制，可讓多個作業共用 Gpu，其中每個作業都會配置一些 GPU 資源的百分比。 若要在您的 Azure Stack Edge 裝置上啟用 MP，請遵循下列步驟：
+Nvidia Gpu 上的多進程服務 (MP) 提供一種機制，可讓多個作業共用 Gpu，其中每個作業都會配置一些 GPU 資源的百分比。 MP 是您 Azure Stack Edge Pro GPU 裝置上的預覽功能。 若要在您的裝置上啟用 MP，請遵循下列步驟：
 
 1. 開始之前，請確定： 
 
-    1. 您已使用 Azure 中的 Azure Stack Edge/資料箱閘道資源設定並 [啟用您的 Azure Stack Edge 裝置](azure-stack-edge-gpu-deploy-activate.md) 。
+    1. 您已使用 Azure 中的 Azure Stack Edge Pro/Data Box Gateway 資源設定並 [啟用您的 Azure Stack Edge pro 裝置](azure-stack-edge-gpu-deploy-activate.md) 。
     1. 您已 [在 Azure 入口網站中設定此裝置上的計算](azure-stack-edge-deploy-configure-compute.md#configure-compute)。
     
 1. [連接到 PowerShell 介面](#connect-to-the-powershell-interface)。
@@ -187,7 +187,7 @@ users:
 ```
 -->
 
-在已設定計算角色的 Azure Stack Edge 裝置上，您可以使用兩組不同的命令對裝置進行疑難排解或監視。
+在已設定計算角色的 Azure Stack Edge Pro 裝置上，您可以使用兩組不同的命令針對裝置進行疑難排解或監視。
 
 - 使用 `iotedge` 命令。 這些命令適用于您裝置的基本作業。
 - 使用 `kubectl` 命令。 這些命令適用于您裝置的一組大量作業。
@@ -241,7 +241,7 @@ webserverapp           Running Up 10 days  nginx:stable                         
 
 ### <a name="use-kubectl-commands"></a>使用 kubectl 命令
 
-在已設定計算角色的 Azure Stack Edge 裝置上，所有 `kubectl` 命令都可以用來監視或疑難排解模組。 若要查看可用的命令清單，請 `kubectl --help` 從命令視窗執行。
+在已設定計算角色的 Azure Stack Edge Pro 裝置上，所有 `kubectl` 命令都可以用來監視或疑難排解模組。 若要查看可用的命令清單，請 `kubectl --help` 從命令視窗執行。
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
@@ -431,6 +431,6 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 
 若要結束遠端 PowerShell 會話，請關閉 PowerShell 視窗。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
-- 在 Azure 入口網站中部署 [Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md)。
+- 在 Azure 入口網站中部署 [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md)。

@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站、Azure Resource Manager 範本和 Azure 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: b202e3d47b98c5e395b3a8b525b9b8c0a04c0f76
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7914f3ee57d014de2f34fca301b587c6297bebe3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322409"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983093"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure 監視器中建立、檢視及管理活動記錄警示  
 
@@ -28,7 +28,7 @@ ms.locfileid: "87322409"
 - 設定警示必須以層級、狀態、呼叫端、資源群組、資源識別碼，或資源類型事件類別目錄為準則。
 - 在警示設定 JSON 中，沒有「anyOf」條件或巢狀條件。 基本上，只允許一個「allOf」條件，不允許有進一步的「allOf」或「anyOf」條件。
 - 當類別為「系統管理」時，您必須在警示中指定至少一個上述準則。 您不能建立會在每次活動記錄中建立事件時即啟動的警示。
-- 無法針對活動記錄警示類別中的事件建立警示。
+- 無法為活動記錄警示類別中的事件建立警示。
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
@@ -111,7 +111,7 @@ ms.locfileid: "87322409"
 
 1. 在 Azure 入口網站中，選取 [監視] > [警示]。 在視窗的左上角，選取 [管理警示規則]。
 
-    ![管理警示規則](media/alerts-activity-log/manage-alert-rules.png)
+    ![螢幕擷取畫面顯示已反白顯示搜尋方塊的活動記錄。](media/alerts-activity-log/manage-alert-rules.png)
 
     可用規則清單隨即出現。
 
@@ -204,8 +204,8 @@ ms.locfileid: "87322409"
 
   > [!NOTE]
   > 
-  > 請注意，最高層級的活動記錄警示可以定義為 [訂用帳戶]。
-  > 這表示沒有任何選項可以在幾個訂用帳戶上定義警示，因此定義應該是每個訂閱的警示。
+  > 請注意，最高層級活動記錄警示可以定義為訂用帳戶。
+  > 這表示沒有任何選項可定義幾個訂用帳戶的警示，因此定義應為每個訂用帳戶發出警示。
 
 以下欄位是您可在條件欄位的 Azure Resource Manager 範本中使用的選項：請注意，「資源健康狀態」、「Advisor」和「服務健康狀態」具有其特殊欄位適用的額外屬性欄位。 
 1. resourceId：在應產生警示的活動記錄事件中受影響資源的資源識別碼。
