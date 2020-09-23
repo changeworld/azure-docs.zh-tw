@@ -10,12 +10,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: bbd6f2021a20ff488402bb9d1367feb57c34f582
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6ad3e0f3077e6f65642496d4da097fa713bddd53
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896672"
+ms.locfileid: "90979070"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>教學課程：使用自動化機器學習來預測需求
 
@@ -236,7 +236,7 @@ Azure Machine Learning Studio 中的自動化機器學習可讓您透過幾個�
 + 深入了解[自動化機器學習](concept-automated-ml.md)。
 + 如需分類計量與圖表的詳細資訊，請參閱[了解自動化機器學習結果](how-to-understand-automated-ml.md#classification)一文。
 + 深入了解[特徵化](how-to-configure-auto-features.md#featurization)。
-+ 深入了解[資料分析](how-to-use-automated-ml-for-ml-models.md#profile)。
++ 深入了解[資料分析](how-to-connect-data-ui.md#profile)。
 
 >[!NOTE]
 > 此自行車共享資料集已因應本教學課程而做了修改。 此資料集當初是從 [Kaggle 競賽](https://www.kaggle.com/c/bike-sharing-demand/data)中取得的，原本則可透過 [Capital Bikeshare](https://www.capitalbikeshare.com/system-data) 來取得。 您也可以在 [UCI Machine Learning 資料庫](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset)中找到此資料集。<br><br>

@@ -9,17 +9,18 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: c432b89574949b31612aeba862ece7687c12dde4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a1b317b651b0e17c07eb17dbdb8a7c6657d39564
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922832"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971622"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中設定累加式擴充的快取
 
 > [!IMPORTANT] 
-> 增量擴充目前處於公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-preview 和 2020-06-30-preview](search-api-preview.md)提供這項功能。 目前沒有入口網站或 .NET SDK 支援。
+> 增量擴充目前處於公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
+> [REST API 預覽版本](search-api-preview.md) 提供此功能。 目前沒有入口網站或 .NET SDK 支援。
 
 本文說明如何將快取新增至擴充管線，讓您可以在不需要每次重建的情況下，以累加方式修改步驟。 根據預設，技能集是無狀態的，而且變更其任何組合的任何部分，都需要完整重新執行索引子。 利用累加式擴充，索引子可以根據在技能集或索引子定義中偵測到的變更，判斷要重新整理檔樹狀結構的哪些部分。 現有已處理的輸出會盡可能保留並重複使用。 
 
@@ -178,7 +179,7 @@ api-key: [YOUR-ADMIN-KEY]
 
 如需控制快取會發生什麼事的詳細資訊，請參閱快取 [管理](cognitive-search-incremental-indexing-conceptual.md#cache-management)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 增量擴充適用于包含技能集的索引子。 在下一個步驟中，請造訪技能集檔以瞭解概念和組合。 
 

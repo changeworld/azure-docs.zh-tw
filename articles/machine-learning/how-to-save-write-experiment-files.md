@@ -12,15 +12,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: df254e0766a755754aabcfb8c98a8c140b43cb20
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 548113a5f775595caf3a798d7b35eddfbc80674e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650843"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886096"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>在哪裡儲存和寫入 Azure Machine Learning 實驗的檔案
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將瞭解儲存輸入檔案的位置，以及從您的實驗寫入輸出檔案的位置，以防止儲存空間限制錯誤和實驗延遲。
 
@@ -75,7 +75,7 @@ Jupyter 筆記本| 建立檔案 `.amlignore` 或將筆記本移至新的空白�
 
 * **若要在執行歷程記錄中將寫入的檔案儲存為記錄檔，請** 將檔案寫入 `./logs` 資料夾。 記錄會即時上傳，因此這個方法適用于從遠端執行串流處理即時更新。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * 深入瞭解如何 [從您的資料存放區存取資料](how-to-access-data.md)。
 

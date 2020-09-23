@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 62b60afb7dc4adb70a0963984ee7848ab056e823
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 023864e23c0cd23df0de603e76acac651bd2458e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447821"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987587"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>管理 Azure 自動化中的 Runbook
 
@@ -192,7 +192,7 @@ If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Stat
 
 ## <a name="work-with-multiple-subscriptions"></a>使用多個訂用帳戶
 
-您的 Runbook 必須能夠搭配[訂用帳戶](automation-runbook-execution.md#subscriptions)運作。 例如，若要處理多個訂用帳戶，Runbook 會使用 [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) \(英文\) Cmdlet。 此 Cmdlet 可確保系統不會從在相同沙箱中執行的另一個 Runbook 擷取驗證內容。 Runbook 也會使用 `Get-AzContext` Cmdlet 來取出目前會話的內容，並將它指派給變數 `$AzureContext` 。
+您的 Runbook 必須能夠搭配[訂用帳戶](automation-runbook-execution.md#subscriptions)運作。 例如，若要處理多個訂用帳戶，Runbook 會使用 [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) \(英文\) Cmdlet。 此 Cmdlet 可確保系統不會從在相同沙箱中執行的另一個 Runbook 擷取驗證內容。 Runbook 也 `Get-AzContext` 會使用 Cmdlet 來取得目前會話的內容，並將它指派給變數 `$AzureContext` 。
 
 ```powershell
 # Ensures that you do not inherit an AzContext in your runbook
@@ -293,7 +293,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 
 按一下圖格，即會顯示 [作業] 頁面，其中包含所有已執行作業的摘要清單。 此頁面會顯示每個作業的狀態、Runbook 名稱、開始時間和完成時間。
 
-![自動化帳戶的 [作業] 頁面](./media/manage-runbooks/automation-account-jobs-status-blade.png)
+:::image type="content" source="./media/manage-runbooks/automation-account-jobs-status-blade.png" alt-text="[作業] 頁面的螢幕擷取畫面。":::
 
 您可以藉由選取 [篩選作業] 來篩選作業清單。 篩選特定的 Runbook、作業狀態，或從下拉式清單中選擇，並提供搜尋的時間範圍。
 
@@ -301,7 +301,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 
 或者，您可以檢視特定 Runbook 的作業摘要詳細資料，方法是在您的自動化帳戶中，從 [Runbook] 頁面中選取該 Runbook，然後選取 [作業]。 此動作會顯示 [作業] 頁面。 您可以從此處按一下作業記錄，以檢視其詳細資料和輸出。
 
-![自動化帳戶的 [作業] 頁面](./media/manage-runbooks/automation-runbook-job-summary-blade.png)
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="[工作] 頁面的螢幕擷取畫面，其中反白顯示 [錯誤] 按鈕。":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>使用 PowerShell 擷取作業狀態
 

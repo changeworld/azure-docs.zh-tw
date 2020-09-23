@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b66511720966ff978c8460b9ac69ad133b7501
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 7f8a8f76ce7d46c0a44dd86ef1490c1c74a7992a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707215"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979503"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD 權利管理的常見案例
 
@@ -119,24 +119,24 @@ ms.locfileid: "90707215"
 1. [觀賞影片：日常管理：專案已變更](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
 1. 開啟存取套件
 1. [開啟生命週期設定](entitlement-management-access-package-lifecycle-policy.md#open-lifecycle-settings)
-1. [更新到期設定](entitlement-management-access-package-lifecycle-policy.md#lifecycle)
+1. [更新到期設定](entitlement-management-access-package-lifecycle-policy.md#lifecycle) 
 
 ### <a name="access-package-manager-update-how-access-is-approved-for-a-project"></a>存取套件管理員：更新如何核准專案的存取權
 
 1. [觀賞影片：日常管理：專案已變更](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
-1. [開啟現有的要求和核准設定原則](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
-1. [更新核准設定](entitlement-management-access-package-request-policy.md#approval)
+1. [開啟現有的要求設定原則](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
+1. [更新核准設定](entitlement-management-access-package-approval-policy.md#change-approval-settings-of-an-existing-access-package)
 
 ### <a name="access-package-manager-update-the-people-for-a-project"></a>存取套件管理員：更新專案的人員
 
 1. [觀賞影片：日常管理：專案已變更](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
 1. [移除不再需要存取的使用者](entitlement-management-access-package-assignments.md)
-1. [開啟現有的要求和核准設定原則](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [開啟現有的要求設定原則](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
 1. [新增需要存取權的使用者](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)
 
 ### <a name="access-package-manager-directly-assign-specific-users-to-an-access-package"></a>存取套件管理員：直接將特定使用者指派給存取套件
 
-1. [如果使用者需要不同的生命週期設定，請將新的原則新增至存取套件](entitlement-management-access-package-request-policy.md#add-a-new-policy-of-request-and-approval-settings)
+1. [如果使用者需要不同的生命週期設定，請將新的原則新增至存取套件](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
 1. [直接將特定使用者指派給存取套件](entitlement-management-access-package-assignments.md#directly-assign-a-user)
 
 ## <a name="assignments-and-reports"></a>指派和報表
@@ -156,7 +156,7 @@ ms.locfileid: "90707215"
 
 您也可以使用 Microsoft Graph 來管理存取套件、類別目錄、原則、要求和指派。  具有具有委派許可權之應用程式的適當角色中的使用者 `EntitlementManagement.ReadWrite.All` 可以呼叫 [權利管理 API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta )。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [委派與角色](entitlement-management-delegate.md)
 - [要求進程和電子郵件通知](entitlement-management-process.md)

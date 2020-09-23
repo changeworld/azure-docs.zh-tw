@@ -1,25 +1,22 @@
 ---
-title: 使用受控識別來設定與儲存體帳戶的連線 (預覽)
+title: 使用受控識別設定儲存體帳戶的連接
 titleSuffix: Azure Cognitive Search
-description: 了解如何使用受控識別來設定與 Azure 儲存體帳戶的索引子連線 (預覽)
+description: 瞭解如何使用受控識別來設定 Azure 儲存體帳戶的索引子連接
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 30305607ea291587f7751b7e8048924f995251e9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: c1168602ccb527d8ffb3b64d5437a26490b44a21
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917970"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971513"
 ---
-# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>使用受控識別來設定與 Azure 儲存體帳戶的連線 (預覽)
-
-> [!IMPORTANT] 
-> 支援使用受控識別來設定與資料來源的連接，目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
+# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>使用受控識別設定與 Azure 儲存體帳戶的連接
 
 此頁面描述如何使用受控識別來設定 Azure 儲存體帳戶的索引子連線，而不是在資料來源物件連接字串中提供認證。
 
@@ -68,7 +65,7 @@ ms.locfileid: "88917970"
 
 ### <a name="3---create-the-data-source"></a>3 - 建立資料來源
 
-[REST API](/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](/rest/api/searchservice/create-data-source) 和受控識別連接字串，從儲存體帳戶編制資料的索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
+[REST API](/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](/rest/api/searchservice/create-data-source) 和受控識別連接字串，從儲存體帳戶編制資料的索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
 
 從儲存體帳戶編製索引時，資料來源必須具有下列必要屬性︰
 
@@ -150,6 +147,7 @@ Blob 索引子的索引子定義範例：
 ## <a name="see-also"></a>另請參閱
 
 深入了解 Azure 儲存體索引子：
+
 * [Azure Blob 索引子](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2 索引子](search-howto-index-azure-data-lake-storage.md)
 * [Azure 資料表索引子](search-howto-indexing-azure-tables.md)

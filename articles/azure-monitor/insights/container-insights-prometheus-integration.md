@@ -3,12 +3,12 @@ title: 設定 Prometheus 整合的容器 Azure 監視器 |Microsoft Docs
 description: 本文說明如何設定容器代理程式的 Azure 監視器，以從 Prometheus 與 Kubernetes 叢集抓取計量。
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 8c83d962a31150b31f5883150a2f7bd8d4b49183
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: f5a9b364bc3e51307bd44d8338485f482bda6e1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069419"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971360"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>使用適用於容器的 Azure 監視器設定 Prometheus 計量抓取
 
@@ -36,7 +36,7 @@ Prometheus 計量的抓取支援的 Kubernetes 叢集位於：
 * 整個叢集中的 HTTP URL，並探索來自服務所列端點的目標。 例如，k8s 服務，例如 kube-dns 和 kube 狀態計量，以及應用程式專屬的 pod 附注。 在此內容中收集的計量將會定義于 ConfigMap 區段 *[Prometheus data_collection_settings. cluster]* 中。
 * 整個節點的 HTTP URL，並探索來自服務所列端點的目標。 在此內容中收集的計量將會定義于 ConfigMap 區段 *[Prometheus_data_collection_settings. node]* 中。
 
-| 端點 | 範圍 | 範例 |
+| 端點 | 影響範圍 | 範例 |
 |----------|-------|---------|
 | Pod 注釋 | 全叢集 | 注釋： <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000"` <br>`prometheus.io/scheme: "http"` |
 | Kubernetes 服務 | 全叢集 | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
@@ -44,7 +44,7 @@ Prometheus 計量的抓取支援的 Kubernetes 叢集位於：
 
 當指定 URL 時，容器的 Azure 監視器只會搜刮端點。 指定 Kubernetes 服務時，會使用叢集 DNS 伺服器來解析服務名稱，以取得 IP 位址，然後將解析的服務剪輯。
 
-|範圍 | 機碼 | 資料類型 | 值 | 描述 |
+|影響範圍 | 答案 | 資料類型 | 值 | 描述 |
 |------|-----|-----------|-------|-------------|
 | 全叢集 | | | | 指定下列三種方法之一來抓取計量的端點。 |
 | | `urls` | String | 逗點分隔陣列 | HTTP 端點 (指定) 的 IP 位址或有效 URL 路徑。 例如： `urls=[$NODE_IP/metrics]` 。  ($NODE _IP 是容器參數的特定 Azure 監視器，而且可以用來取代節點 IP 位址。 必須全部大寫。 )  |
@@ -347,7 +347,7 @@ InsightsMetrics
 
 輸出會顯示如下所示的結果：
 
-![資料內嵌磁片區的記錄查詢結果](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
+![螢幕擷取畫面：顯示資料內嵌磁片區的記錄查詢結果](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
 
 若要預估每個計量的大小（GB），以瞭解在工作區中所收到的資料內嵌量是否很高，會提供下列查詢。
 
@@ -366,6 +366,6 @@ InsightsMetrics
 
 有關如何監視資料使用量和分析成本的詳細資訊，可透過 [Azure 監視器記錄來管理使用量和成本](../platform/manage-cost-storage.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 從 [此處](container-insights-agent-config.md)的容器工作負載，深入瞭解如何設定 stdout、stderr 和環境變數的代理程式組件合設定。 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: d3937eaa5017ed66641d886ecd45e812f7070b83
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 91094879de1e1762f95d35e22c1ea441e211b99e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566279"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979694"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>將 Log Analytics 工作區移至不同的訂用帳戶或資源群組
 
@@ -40,9 +40,9 @@ ms.locfileid: "88566279"
 
 >[!IMPORTANT]
 > **Azure Sentinel 客戶：**
-> - 在工作區上部署之後，Azure Sentinel **目前不支援** 將該工作區移至其他資源群組或訂用帳戶。 
+> - 在工作區部署之後，Azure Sentinel **目前即不支援**將該工作區移至其他資源群組或訂用帳戶。 
 >
->   如果您已經移動工作區，請停用 [ **分析** ] 下的所有作用中規則，然後在五分鐘後再重新啟用。 但在大部分情況下，這應該會很有效，不過，這種情況不受支援，而且會自行承擔風險。
+>   如果您已移動工作區，請停用 **Analytics** 下的所有作用中規則，然後在五分鐘後重新啟用。 不過在大部分的情況下，這種做法應該是有效的，但請注意此方法不受支援，而且您需自行承擔風險。
 
 ### <a name="delete-solutions-in-azure-portal"></a>在 Azure 入口網站中刪除解決方案
 使用下列程式，利用 Azure 入口網站移除解決方案：
@@ -96,7 +96,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 4. 選取目的地 **訂** 用帳戶和 **資源群組**。 如果您要將工作區移到相同訂用帳戶中的另一個資源群組，您將不會看到 **訂** 用帳戶選項。
 5. 按一下 **[確定]** 以移動工作區和選取的資源。
 
-    ![入口網站](media/move-workspace/portal.png)
+    ![螢幕擷取畫面會顯示 Log Analytics 工作區中的 [總覽] 窗格，其中包含變更資源群組和訂用帳戶名稱的選項。](media/move-workspace/portal.png)
 
 ### <a name="powershell"></a>PowerShell
 若要使用 PowerShell 移動您的工作區，請使用 [get-azresource](/powershell/module/AzureRM.Resources/Move-AzureRmResource) ，如下列範例所示：
@@ -109,5 +109,5 @@ Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000
 > 移動作業之後，您應該重新設定移除的解決方案和自動化帳戶連結，讓工作區回到先前的狀態。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 如需支援移動的資源清單，請參閱 [移動資源的作業支援](../../azure-resource-manager/management/move-support-resources.md)。

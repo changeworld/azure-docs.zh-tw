@@ -1,5 +1,5 @@
 ---
-title: '設計工具中的記錄計量 (預覽) '
+title: 設計工具中的記錄計量
 titleSuffix: Azure Machine Learning
 description: 監視您的 Azure ML 設計工具實驗。 使用 [執行 Python 腳本] 模組啟用記錄，並在 studio 中查看記錄的結果。
 services: machine-learning
@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 20845a6f1238095b40c9b05b5f5d8d85217b6db5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: bffbf32cf5faa936a00444f1f39facaf226b8ef2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950403"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885973"
 ---
-# <a name="enable-logging-in-azure-machine-learning-designer-preview-pipelines"></a>在 Azure Machine Learning 設計工具中啟用記錄 (預覽) 管線
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>啟用 Azure Machine Learning 設計工具管線中的記錄
+
 
 在本文中，您將瞭解如何將記錄程式碼新增至設計工具管線。 您也會瞭解如何使用 Azure Machine Learning studio 入口網站來查看這些記錄。
 
@@ -59,7 +59,7 @@ ms.locfileid: "88950403"
         return dataframe1,
     ```
     
-此程式碼會使用 Azure Machine Learning Python SDK 來記錄值。 它使用 Run. get_coNtext ( # A1 來取得目前執行的內容。 接著，它會使用 ( # A1 方法，將值記錄到該內容。 它會使用 `parent` 將值記錄至父管線執行，而不是執行模組。
+此程式碼會使用 Azure Machine Learning Python SDK 來記錄值。 它使用 Run.get_coNtext ( # A1 來取得目前執行的內容。 接著，它會使用 ( # A1 方法，將值記錄到該內容。 它會使用 `parent` 將值記錄至父管線執行，而不是執行模組。
 
 如需如何使用 Python SDK 記錄值的詳細資訊，請參閱 [在 AZURE ML 定型回合中啟用記錄](how-to-track-experiments.md)。
 
@@ -74,9 +74,10 @@ ms.locfileid: "88950403"
 
     ![在 studio 中查看執行計量](./media/how-to-track-experiments/experiment-page-metrics-across-runs.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已瞭解如何在設計工具中使用記錄。 如需後續步驟，請參閱下列相關文章：
 
-* 瞭解如何針對設計工具管線進行疑難排解，請參閱 [Debug & 針對 ML 管線進行疑難排解](how-to-debug-pipelines.md#logging-in-azure-machine-learning-designer-preview)。
+
+* 瞭解如何針對設計工具管線進行疑難排解，請參閱 [Debug & 針對 ML 管線進行疑難排解](how-to-debug-pipelines.md#azure-machine-learning-designer)。
 * 瞭解如何使用 Python SDK 來記錄 SDK 撰寫體驗中的計量，請參閱 [在 AZURE ML 定型回合中啟用記錄](how-to-track-experiments.md)。

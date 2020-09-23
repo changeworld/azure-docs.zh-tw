@@ -8,16 +8,16 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: bb821d00a168e3b8f0636b93696376dc8b5d492e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 519b5b669cfc8140b837743d694184a5cb859f20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772893"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987994"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure 機密運算的常見問題集
 
-本文提供關於[在 Azure 上執行機密運算工作負載](overview.md)的一些最常見問題解答。
+本文 [針對在 Azure 虛擬機器上執行機密運算工作負載](overview.md)的一些最常見問題提供解答。
 
 若本文中未提及您的 Azure 問題，請前往 [MSDN 及 Stack Overflow 上的 Azure 論壇](https://azure.microsoft.com/support/forums/)。 您可以在這些論壇中張貼您的問題，或將問題貼到 [Twitter 上的 @AzureSupport](https://twitter.com/AzureSupport)。 您也可以提交 Azure 支援要求。 若要提交支援要求，請在 [Azure 支援頁面](https://azure.microsoft.com/support/options/)上，選取 [取得支援]。
 

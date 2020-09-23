@@ -11,21 +11,21 @@ ms.subservice: core
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5c7568b0914b5e60d1a47971424f1f04f41745da
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e984c0c43dcc47c3e11a36f3d5c32bf2ddb9973a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646957"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902325"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>在 Azure Machine Learning 定型執行中使用驗證認證秘密
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將瞭解如何安全地在定型執行中使用秘密。 驗證資訊（例如您的使用者名稱和密碼）是秘密。 例如，如果您連接到外部資料庫以查詢定型資料，您就必須將使用者名稱和密碼傳遞給遠端執行內容。 以純文字將這類值編碼為定型腳本並不安全，因為它會公開秘密。 
 
 相反地，您的 Azure Machine Learning 工作區有一個相關聯的資源，稱為 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。 使用此 Key Vault 透過 Azure Machine Learning Python SDK 中的一組 Api，安全地將秘密傳遞給遠端執行。
 
-使用秘密的基本流程如下：
+使用秘密的標準流程為：
  1. 在 [本機電腦] 上，登入 Azure 並聯機至您的工作區。
  2. 在 [本機電腦] 的 [工作區] Key Vault 中設定秘密。
  3. 提交遠端執行。
@@ -69,7 +69,7 @@ secret_value = run.get_secret(name="mysecret")
 
 另外還有一個批次版本， [get_secrets ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueget-secrets-secrets-) 可同時存取多個秘密。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
  * [查看範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/manage-azureml-service/authentication-in-azureml/authentication-in-azureml.ipynb)
  * [瞭解 Azure Machine Learning 的企業安全性](concept-enterprise-security.md)

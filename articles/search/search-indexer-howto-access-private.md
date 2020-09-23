@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: bdf3863ae4683c6ef0e8dd3dd67a952bebf62d52
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e9944e95dd452cd00e63280ad8002141591f521e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89463467"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971429"
 ---
 # <a name="accessing-secure-resources-via-private-endpoints"></a>透過私人端點存取安全資源
 
@@ -38,7 +38,7 @@ Azure 認知搜尋透過搜尋管理 API 提供的功能，也就是 [建立或�
 | Azure SQL Database | `sqlServer`|
 | 適用於 MySQL 的 Azure 資料庫 (preview)  | `mysqlServer`|
 | Azure 金鑰保存庫 | `vault` |
-| Azure 函式 (預覽版)  | `sites` |
+| Azure Functions (preview)  | `sites` |
 
 支援輸出私人端點連線的 Azure 資源清單，也可以透過 [清單支援的 API](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/listsupported)進行查詢。
 
@@ -164,7 +164,7 @@ Azure 認知搜尋透過搜尋管理 API 提供的功能，也就是 [建立或�
 - 如果在未設定的情況下建立索引子， `executionEnvironment` 而且會成功執行，則表示 Azure 認知搜尋已決定其執行環境為搜尋服務特定的「私用」環境。 不過，這可能會根據各種不同的因素而變更， (索引子所取用的資源、搜尋服務上的負載，) 以及稍後可能會失敗的情況，我們強烈建議您將設定 `executionEnvironment` 為 `"Private"` ，以確保未來將不會失敗。
 - [配額和限制](search-limits-quotas-capacity.md) 會決定可建立多少共用的私人連結資源，以及相依于搜尋服務的 SKU。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解私人端點：
 

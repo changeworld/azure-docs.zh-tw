@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 入口網站中連線、設定及啟用 Azure Stack Edge 裝置的教學課程 | Microsoft Docs
-description: 部署 Azure Stack Edge 的教學課程將說明如何連線、設定和啟動實體裝置。
+title: 在 Azure 入口網站中連線、設定及啟用 Azure Stack Edge Pro 裝置的教學課程 | Microsoft Docs
+description: 部署 Azure Stack Edge Pro 的教學課程將說明如何連線、設定和啟動實體裝置。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e0a0d9415cc55c24bb4dc0690c73d9f79fc0ce0e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 5a89125edf6082bbbcbaf139a648c9edc2debf81
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608429"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894246"
 ---
-# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge"></a>教學課程：連線、設定及啟動 Azure Stack Edge 
+# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>教學課程：連線、設定及啟動 Azure Stack Edge Pro 
 
-本教學課程說明如何使用本機 Web UI 來連線、設定及啟用 Azure Stack Edge 裝置。
+本教學課程說明如何使用本機 Web UI 來連線、設定及啟用 Azure Stack Edge Pro 裝置。
 
 設定和啟用程序可能需要約 20 分鐘才能完成。
 
@@ -31,14 +31,14 @@ ms.locfileid: "84608429"
 
 ## <a name="prerequisites"></a>必要條件
 
-在您設定及安裝 Azure Stack Edge 裝置之前，請先確定：
+在您設定及安裝 Azure Stack Edge Pro 裝置之前，請先確定：
 
-* 您已依照[安裝 Azure Stack Edge](azure-stack-edge-deploy-install.md) 中的詳細說明安裝實體裝置。
-* 您具有先前建立用以管理 Azure Stack Edge 裝置的 Azure Stack Edge 服務適用的啟用金鑰。 如需詳細資訊，請移至[準備部署 Azure Stack Edge](azure-stack-edge-deploy-prep.md)。
+* 您已依照[安裝 Azure Stack Edge Pro](azure-stack-edge-deploy-install.md) 中的詳細說明安裝實體裝置。
+* 您具有先前建立用以管理 Azure Stack Edge Pro 裝置的 Azure Stack Edge 服務適用的啟用金鑰。 如需詳細資訊，請移至[準備部署 Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md)。
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>連線至本機 Web UI 設定
 
-1. 使用靜態 IP 位址 192.168.100.5 和子網路 255.255.255.0，在電腦上設定要連線到 Azure Stack Edge 裝置的乙太網路介面卡。
+1. 使用靜態 IP 位址 192.168.100.5 和子網路 255.255.255.0，在電腦上設定要連線到 Azure Stack Edge Pro 裝置的乙太網路介面卡。
 
 2. 將電腦連線到裝置上的連接埠 1。 請使用下圖來識別您裝置上的連接埠 1。
 
@@ -56,7 +56,7 @@ ms.locfileid: "84608429"
 
 5. 登入裝置的 Web UI。 預設密碼為 *Password1*。 
    
-    ![Azure Stack Edge 裝置的登入頁面](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
+    ![Azure Stack Edge Pro 裝置的登入頁面](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. 出現提示時，變更裝置系統管理員密碼。  
     新密碼必須包含 8 到 16 個字元。 此密碼必須包含下列其中 3 種字元：大寫、小寫、數字及特殊字元。
@@ -96,7 +96,7 @@ ms.locfileid: "84608429"
    
    a. 在 [Web proxy URL] 方塊中，以下列格式輸入 URL：`http://host-IP address or FQDN:Port number`。 此處不支援 HTTPS URL。
 
-   b. 在 [驗證] 底下，選取 [無] 或 [NTLM]。 若您允許在 Azure Stack Edge 裝置上計算及使用 IoT Edge 模組，建議將 Web Proxy 驗證設定為 [無]。 不支援 **NTLM**。
+   b. 在 [驗證] 底下，選取 [無] 或 [NTLM]。 若您允許在 Azure Stack Edge Pro 裝置上計算及使用 IoT Edge 模組，建議將 Web Proxy 驗證設定為 [無]。 不支援 **NTLM**。
 
    c. 如果您使用驗證，請輸入使用者名稱和密碼。
 
@@ -105,7 +105,7 @@ ms.locfileid: "84608429"
    > [!NOTE]
    > 不支援 Proxy 自動設定 (PAC) 檔案。 PAC 檔案會定義網頁瀏覽器和其他使用者代理程式如何自動選擇適當的 Proxy 伺服器 (存取方法) 來擷取指定的 URL。
    > 嘗試攔截和讀取所有流量 (然後以自己的憑證重新簽署所有內容) 的 Proxy 不受系統相容，因為 Proxy 的憑證不受信任。
-   > 通常透明的 Proxy 與 Azure Stack Edge 搭配較能運作良好。
+   > 通常透明的 Proxy 與 Azure Stack Edge Pro 搭配較能運作良好。
 
 4. (選擇性) 在左側窗格中，選取 [時間設定]，然後設定您裝置的時區，以及主要和次要 NTP 伺服器。  
     NTP 伺服器是必要的，因為您的裝置必須讓時間同步，才能與您的雲端服務提供者進行驗證。
@@ -133,7 +133,7 @@ ms.locfileid: "84608429"
 
 6. 在左側窗格中，選取 [雲端設定]，然後向 Azure 入口網站中的 Azure Stack Edge 服務啟用您的裝置。
     
-    1. 在 [啟用金鑰] 方塊中，輸入您在[取得啟用金鑰](azure-stack-edge-deploy-prep.md#get-the-activation-key)中為 Azure Stack Edge 取得的啟用金鑰。
+    1. 在 [啟用金鑰] 方塊中，輸入您在[取得啟用金鑰](azure-stack-edge-deploy-prep.md#get-the-activation-key)中為 Azure Stack Edge Pro 取得的啟用金鑰。
     2. 選取 [套用]。
        
         ![本機 Web UI 的 [雲端設定] 頁面](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-6.png)
@@ -158,7 +158,7 @@ ms.locfileid: "84608429"
 > * 連線至實體裝置
 > * 設定並啟動實體裝置
 
-若要了解如何使用 Azure Stack Edge 裝置來傳輸資料，請參閱：
+若要了解如何使用 Azure Stack Edge Pro 裝置來傳輸資料，請參閱：
 
 > [!div class="nextstepaction"]
-> [使用 Azure Stack Edge 傳輸資料](./azure-stack-edge-deploy-add-shares.md)。
+> [使用 Azure Stack Edge Pro 傳輸資料](./azure-stack-edge-deploy-add-shares.md)。

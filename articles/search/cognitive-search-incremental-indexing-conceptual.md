@@ -8,17 +8,18 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 5596a2db32a0fe5b6b5eddf3ae20501e6edb0b99
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9fb76c5c96795b8092c86e22acbab4ea5963b42e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935376"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971638"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 認知搜尋中的增量擴充和快取
 
 > [!IMPORTANT] 
-> 增量擴充目前處於公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-preview 和 2020-06-30-preview](search-api-preview.md)提供這項功能。 目前沒有入口網站或 .NET SDK 支援。
+> 增量擴充目前處於公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
+> [REST API 預覽版本](search-api-preview.md) 提供此功能。 目前沒有入口網站或 .NET SDK 支援。
 
 *增量擴充* 是以 [技能集](cognitive-search-working-with-skillsets.md)為目標的功能。 它會利用 Azure 儲存體來儲存擴充管線發出的處理輸出，以在未來的索引子執行中重複使用。 在可能的情況下，索引子會重複使用任何仍然有效的快取輸出。 
 
@@ -164,9 +165,9 @@ REST API 版本會 `2020-06-30-Preview` 透過索引子上的其他屬性提供�
 
   請謹慎使用 **ignoreResetRequirement** ，因為它可能會導致您的資料中發生非預期的不一致，而不容易偵測到。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-增量擴充是一項功能強大的功能，可將變更追蹤延伸至技能集和 AI 擴充。 AIncremental 擴充可讓您在反復查看技能集設計時重複使用現有的已處理內容。
+增量擴充是一項功能強大的功能，可將變更追蹤延伸至技能集和 AI 擴充。 當您反復查看技能集設計時，累加擴充可讓您重複使用現有的已處理內容。
 
 在下一個步驟中，請在現有的索引子上啟用快取，或在定義新的索引子時新增快取。
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: b9478d3b171189decb4e2cca7fc93ba2fa75e32e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 904355b28af93d4a277f2158b1548517118a67ba
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482777"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529412"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>針對使用兩組驗證認證的資源，將秘密的輪替自動化
 
@@ -80,7 +80,7 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 
 1. 選取 Azure 範本部署連結： 
 
-   [![顯示標示為「部署至 Azure」的按鈕影像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
+   [![顯示標示為「部署至 Azure」的按鈕影像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
 
 1. 在 [資源群組] 清單中，選取 [akvrotation]。
 1. 在 [儲存體帳戶名稱] 中，輸入具有所要輪替存取金鑰的儲存體帳戶名稱
@@ -204,7 +204,7 @@ az storage account keys list -n akvrotationstorage
 - [Redis 快取](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
 ## <a name="learn-more"></a>深入了解
-- 概觀：[使用 Azure 事件方格監視 Key Vault (預覽)](../general/event-grid-overview.md)
+- 概觀：[使用 Azure 事件方格監視 Key Vault](../general/event-grid-overview.md)
 - 如何：[在 Azure 入口網站中建立您的第一個函式](../../azure-functions/functions-create-first-azure-function.md)
 - 如何：[在金鑰保存庫祕密變更時收到電子郵件](../general/event-grid-logicapps.md)
-- [Azure Key Vault 的 Azure 事件方格事件結構描述 (預覽)](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault 的 Azure 事件方格事件結構描述](../../event-grid/event-schema-key-vault.md)
