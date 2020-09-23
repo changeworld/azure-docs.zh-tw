@@ -1,18 +1,18 @@
 ---
 title: VPN 閘道： P2S OpenVPN 通訊協定連接的 VPN 用戶端： Azure AD authentication
-description: 您可以使用 P2S VPN，使用 Azure AD authentication 連接到您的 VNet
+description: 瞭解如何設定 VPN 用戶端使用點對站 VPN 連線到虛擬網路，以及 Azure Active Directory 驗證。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 781d3aeea6a5568aec065ec4b1cbcfacb74836a6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: a1e2804b45efe95ee1f67c3aadbefccd805d1aa2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434668"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981879"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory authentication：為 P2S OpenVPN 通訊協定連線設定 VPN 用戶端
 
@@ -235,7 +235,7 @@ ms.locfileid: "89434668"
 
 ### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>我可以從命令列提示字元匯入設定檔嗎？
 
-您可以從命令提示字元匯入設定檔，方法是將下載的 **azurevpnconfig.xml** 檔案放在 **%userprofile%\appdata\local\packages\microsoft. AzureVpn_8wekyb3d8bbwe \localstate** 資料夾中，然後執行下列命令：
+您可以從命令提示字元匯入設定檔，方法是將下載的 **azurevpnconfig.xml** 檔案放在 **%userprofile%\appdata\local\packages\ Microsoft.AzureVpn_8wekyb3d8bbwe \localstate** 資料夾中，然後執行下列命令：
 
 ```
 azurevpn -i azurevpnconfig.xml 
@@ -243,6 +243,6 @@ azurevpn -i azurevpnconfig.xml
 若要強制匯入，也請使用 **-f** 參數
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 如需詳細資訊，請參閱 [為使用 Azure AD 驗證的 P2S 開放式 VPN 連線建立 Azure Active Directory 的租](openvpn-azure-ad-tenant.md)使用者。

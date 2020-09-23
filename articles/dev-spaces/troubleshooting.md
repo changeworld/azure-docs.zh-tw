@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解在啟用和使用 Azure Dev Spaces 時，如何針對常見問題進行疑難排解並加以解決
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: e26f066294cb0a6a48c5a3299213206fe4226ad0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d697a11f3087c31a49d9b88e99b18bab686a2b59
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210829"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981067"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑難排解
 
@@ -27,14 +27,6 @@ ms.locfileid: "88210829"
 在命令執行期間，您可以在 CLI 中使用 `--verbose` 參數輸出更多資訊。 您也可以在 `%TEMP%\Azure Dev Spaces` 中瀏覽更多詳細的記錄。 在 Mac 上，可以在終端視窗執行 `echo $TMPDIR` 來找出 *TEMP* 目錄。 在 Linux 電腦上，*TEMP* 目錄通常是 `/tmp`。 此外，請確認已在 [Azure CLI 設定檔](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)中啟用記錄。
 
 Azure Dev Spaces 在針對單一執行個體 (或 Pod) 進行偵錯時也能達到最佳效果。 `azds.yaml` 檔案包含一個 *replicaCount* 設定，此設定會指出 Kubernetes 將為服務執行的 Pod 數目。 如果您變更 *replicaCount* 以將應用程式設定成針對指定的服務執行多個 Pod，偵錯工具將會連結至第一個 Pod (依字母順序列出時)。 偵錯工具會在該原始 Pod 回收時連結至不同的 Pod，而可能導致非預期的行為。
-
-## <a name="common-issues-when-using-local-process-with-kubernetes"></a>使用本機進程搭配 Kubernetes 時的常見問題
-
-### <a name="fail-to-restore-original-configuration-of-deployment-on-cluster"></a>無法還原叢集中部署的原始設定
-
-搭配使用本機進程與 Kubernetes 時，如果 Kubernetes 用戶端的本機進程損毀或突然終止，則使用 Kubernetes 之本機進程的服務會重新導向，而不會在與 Kubernetes 連接的本機進程之前，還原為其原始狀態。
-
-若要修正此問題，請將服務重新部署至您的叢集。
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>啟用 Azure Dev Spaces 的常見問題
 
@@ -265,7 +257,7 @@ Service cannot be started.
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>連線到您的開發機器時，網路流量不會轉送到您的 AKS 叢集
 
-使用 [Azure Dev Spaces 將 AKS 叢集連線到您的開發機器](https://code.visualstudio.com/docs/containers/local-process-kubernetes)時，可能會遇到無法在您的開發機器和 AKS 叢集之間轉送網路流量的問題。
+使用 [Azure Dev Spaces 將 AKS 叢集連線到您的開發機器](https://code.visualstudio.com/docs/containers/bridge-to-kubernetes)時，可能會遇到無法在您的開發機器和 AKS 叢集之間轉送網路流量的問題。
 
 將您的開發機器連接到 AKS 叢集時，Azure Dev Spaces 藉由修改開發機器的 `hosts` 檔案，來轉送 AKS 叢集與開發機器之間的網路流量。 Azure Dev Spaces 會在 `hosts` 中建立一個項目，其中包含您要取代為主機名稱的 Kubernetes 服務位址。 此項目會與埠轉送搭配使用，以引導您的開發機器與 AKS 叢集之間的網路流量。 如果開發機器上的服務與您要取代的 Kubernetes 服務連接埠發生衝突，Azure Dev Spaces 無法轉送 Kubernetes 服務的網路流量。 例如，*Windows BranchCache* 服務通常會繫結至 *0.0.0.0:80*，而衝突會導致所有本機 IP 上的連接埠 80 發生衝突。
 

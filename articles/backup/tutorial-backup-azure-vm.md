@@ -4,12 +4,12 @@ description: 本教學課程會詳細說明如何使用 Azure PowerShell 將多�
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 33090a0156d147fee5ab362b284ec503039617c4
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 53a5df430a3ea57201ecb19bac68ef9f073beb14
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181726"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980965"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>使用 PowerShell 來備份 Azure VM
 
@@ -48,7 +48,7 @@ ms.locfileid: "89181726"
 [復原服務保存庫](backup-azure-recovery-services-vault-overview.md)是一個邏輯容器，可儲存受保護資源 (例如 Azure VM) 的備份資料。 當備份作業執行時，它會在復原服務保存庫內建立復原點。 然後您可以使用其中一個復原點，將資料還原到指定的時間點。
 
 * 在本教學課程中，您需在與所要備份之 VM 相同的資源群組和位置中建立保存庫。
-* 「Azure 備份」會自動處理用於備份資料的儲存體。 保存庫預設會使用[異地備援儲存體 (GRS)](../storage/common/storage-redundancy.md)。 異地備援可確保會將備份的資料複寫到與主要區域相距數百英哩的次要 Azure 區域。
+* 「Azure 備份」會自動處理用於備份資料的儲存體。 保存庫預設會使用[異地備援儲存體 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)。 異地備援可確保會將備份的資料複寫到與主要區域相距數百英哩的次要 Azure 區域。
 
 請依照下列方式建立保存庫：
 

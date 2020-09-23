@@ -5,12 +5,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的處理常式
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器
-ms.openlocfilehash: 48bde5f3cc6f397d51a31f80f41ab299ba8866ee
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212532"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981263"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces 如何運作
 
@@ -22,9 +22,9 @@ Azure Dev Spaces 可讓您透過多種方式快速地逐一查看和 Kubernetes 
 
 Azure Dev Spaces 可減少在 AKS 叢集的環境中開發、測試和反覆運算 Kubernetes 應用程式的工作。 這項縮減可讓開發人員專注于其應用程式的商務邏輯，而不會將其服務設定為在 Kubernetes 中執行。
 
-### <a name="local-process-with-kubernetes"></a>Local Process with Kubernetes
+### <a name="bridge-to-kubernetes"></a>橋接器至 Kubernetes
 
-透過 Kubernetes 的本機進程，您可以將開發電腦連接到 Kubernetes 叢集，讓您在開發電腦上執行和偵測程式碼，就像在叢集上執行一樣。 Azure Dev Spaces 在您的叢集上執行 pod 來重新導向連線叢集之間的流量，以作為遠端代理程式來重新導向開發電腦與叢集之間的流量。 此流量重新導向可讓您開發電腦上的程式碼和在叢集中執行的服務進行通訊，就像是在相同的叢集中一樣。 如需將您的開發電腦連接到 Kubernetes 叢集的詳細資訊，請參閱 [使用 Kubernetes 的本機程式如何運作][how-it-works-local-process-kubernetes]。
+使用 Bridge 到 Kubernetes，您可以將開發電腦連接到您的 Kubernetes 叢集，讓您在開發電腦上執行和偵錯工具代碼，就像是在叢集上執行一樣。 橋接器至 Kubernetes 會在您的叢集上執行 pod，以重新導向連線叢集之間的流量，以作為遠端代理程式來重新導向開發電腦與叢集之間的流量。 此流量重新導向可讓您開發電腦上的程式碼和在叢集中執行的服務進行通訊，就像是在相同的叢集中一樣。 如需將您的開發電腦連接到 Kubernetes 叢集的詳細資訊，請參閱 [Kubernetes 的橋樑如何運作][how-it-works-bridge-to-kubernetes]。
 
 ### <a name="run-your-code-in-aks"></a>在 AKS 中執行您的程式碼
 
@@ -42,13 +42,13 @@ Azure Dev Spaces 可協助小組在相同的 AKS 叢集上有效率地處理其�
 
 您也可以使用 GitHub Actions 搭配 Azure Dev Spaces，直接在您的叢集中的提取要求中測試應用程式的變更，然後再進行合併。 Azure Dev Spaces 可以將應用程式的審核版本自動部署到您的叢集，讓作者和其他小組成員可以檢查整個應用程式內容中的變更。 使用 Azure Dev Spaces 的路由功能，此應用程式的審核版本也會部署到您的叢集，而不會影響到其他開發人員空間。 所有這些功能都可讓您安心地核准和合併提取要求。 若要查看 GitHub Actions 和 Azure Dev Spaces 的範例，請參閱 [GitHub Actions & Azure Kubernetes Service][pr-flow]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要開始將您的本機開發電腦連線到 AKS 叢集，請參閱 [將您的開發電腦連線至 AKS][connect]叢集。
 
 
-[connect]: https://code.visualstudio.com/docs/containers/local-process-kubernetes
-[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
+[connect]: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+[how-it-works-bridge-to-kubernetes]: /visualstudio/containers/overview-bridge-to-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

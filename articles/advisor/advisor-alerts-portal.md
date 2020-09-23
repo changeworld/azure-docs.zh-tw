@@ -1,28 +1,28 @@
 ---
-title: 使用 Azure 入口網站為新的建議建立 Azure Advisor 警示
-description: 建立新建議的 Azure Advisor 警示
+title: 使用 Azure 入口網站建立新建議的 Azure Advisor 警示
+description: 針對新的建議建立 Azure Advisor 警示
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 0b3984b82cd5265f4940cd88597ccb29d51e1118
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507211"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973655"
 ---
-# <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>使用 Azure 入口網站在新的建議上建立 Azure Advisor 警示 
+# <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>使用 Azure 入口網站建立新建議的 Azure Advisor 警示 
 
-本文說明如何使用 Azure 入口網站從 Azure Advisor 設定新建議的警示。 
+本文說明如何使用 Azure 入口網站為 Azure Advisor 設定新建議的警示。 
 
-每當 Azure Advisor 偵測到其中一個資源的新建議時，事件就會儲存在[Azure 活動記錄](../azure-monitor/platform/platform-logs-overview.md)中。 您可以使用建議特定的警示建立體驗，從 Azure Advisor 設定這些事件的警示。 您可以選取訂用帳戶和資源群組（選擇性），以指定您想要接收警示的資源。 
+每當 Azure Advisor 偵測到您的某個資源有新的建議時，就會在 [Azure 活動記錄](../azure-monitor/platform/platform-logs-overview.md)中儲存一個事件。 您可以從 Azure Advisor 使用建議特定的警示建立體驗來設定這些事件的警示。 您可以選取訂用帳戶和選擇性的資源群組，以指定您想要收到警示的資源。 
 
 您也可以使用下列屬性來判斷建議的類型：
 
 * 類別
-* 影響層級
+* 影響等級
 * 建議類型
 
-您也可以設定觸發警示時所進行的動作：  
+您也可以透過下列方式，設定警示觸發時所要進行的動作：  
 
 * 選取現有的動作群組
 * 建立新的動作群組
@@ -30,53 +30,52 @@ ms.locfileid: "86507211"
 若要深入了解動作群組，請參閱[建立及管理動作群組](../azure-monitor/platform/action-groups.md)。
 
 > [!NOTE] 
-> Advisor 警示目前僅適用于高可用性、效能和成本建議。 不支援安全性建議。 
+> Advisor 警示目前僅適用於高可用性建議、效能建議和成本建議。 不支援安全性建議。 
 
 ## <a name="create-alert-rule"></a>建立警示規則
-1. 在**入口網站**中，選取 [ **Azure Advisor**]。
+1. 在 **入口網站**中，選取 [ **Azure Advisor**]。
 
-    ![在入口網站中 Azure Advisor](./media/advisor-alerts/create1.png)
+    ![入口網站中的 Azure Advisor](./media/advisor-alerts/create1.png)
 
-2. 在左側功能表的 [**監視**] 區段中，選取 [**警示**]。 
+2. 在左側功能表的 [ **監視** ] 區段中，選取 [ **警示**]。 
 
     ![Advisor 中的警示](./media/advisor-alerts/create2.png)
 
-3. 選取 [**新增 Advisor 警示**]。
+3. 選取 [ **新增 Advisor 警示**]。
 
     ![新增 Advisor 警示](./media/advisor-alerts/create3.png)
 
-4. 在 [**範圍**] 區段中，選取訂用帳戶和您想要收到警示的資源群組（選擇性）。 
+4. 在 [ **範圍** ] 區段中，選取訂用帳戶，並選擇性地選取您想要收到警示的資源群組。 
 
     ![Advisor 警示範圍](./media/advisor-alerts/create4.png)
 
-5. 在 [**條件**] 區段中，選取您想要用來設定警示的方法。 如果您想要針對特定分類和/或影響層級的所有建議發出警示，請選取 [**類別和影響層級**]。 如果您想要針對特定類型的所有建議發出警示，請選取 [**建議類型**]。
+5. 在 [ **條件** ] 區段中，選取您要用來設定警示的方法。 如果您想要針對特定類別及/或影響等級的所有建議發出警示，請選取 [ **類別和影響等級**]。 如果您想要針對特定類型的所有建議發出警示，請選取 [ **建議類型**]。
 
     ![Azure Advisor 警示條件](./media/advisor-alerts/create5.png)
 
-6. 視您選取的 [設定依據] 選項而定，您將能夠指定準則。 如果您想要所有的建議，請將其餘的欄位保留空白。 
+6. 視您選取的 [設定依據] 選項而定，您將能夠指定準則。 如果您想要所有建議，請將其餘欄位保留空白。 
 
     ![Advisor 警示動作群組](./media/advisor-alerts/create6.png)
 
-7. 在 [**動作群組**] 區段中，選取 [**新增現有**的] 以使用您已建立的動作群組，或選取 **[新建] 來設定**新的[動作群組](../azure-monitor/platform/action-groups.md)。 
+7. 在 [ **動作群組** ] 區段中，選取 [ **新增現有** 的] 以使用您已建立的動作群組，或選取 [ **建立新** 的] 來設定新的 [動作群組](../azure-monitor/platform/action-groups.md)。 
 
     ![Advisor 警示加入現有的](./media/advisor-alerts/create7.png)
 
-8. 在 [警示詳細資料] 區段中，為您的警示提供名稱和簡短描述。 如果您想要啟用警示，請保留 [**在建立時啟用規則**] 選項設為 **[是]**。 然後選取要用來儲存警示的資源群組。 這不會影響建議的目標範圍。 
+8. 在 [警示詳細資料] 區段中，為您的警示提供名稱和簡短描述。 如果您想要啟用警示，請將 [ **建立時啟用規則** ] 選項設為 **[是]**。 然後選取要儲存警示的資源群組。 這不會影響建議的目標範圍。 
 
-    ![Azure Advisor 橫幅](./media/advisor-alerts/create8.png)
-
+    :::image type="content" source="./media/advisor-alerts/create8.png" alt-text="[警示詳細資料] 區段的螢幕擷取畫面。":::
 
 
 ## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>設定建議警示以使用 webhook
 本節說明如何設定 Azure Advisor 警示，以透過 webhook 將建議資料傳送至您現有的系統。 
 
-您可以設定警示，以在您的其中一個資源上有新的 Advisor 建議時收到通知。 這些警示可以透過電子郵件或文字訊息來通知您，但它們也可以用來透過 webhook 與您現有的系統整合。 
+您可以設定警示，以便在您的其中一個資源有新的 Advisor 建議時收到通知。 這些警示可以透過電子郵件或文字訊息通知您，但它們也可以用來透過 webhook 與您現有的系統整合。 
 
 
-### <a name="using-the-advisor-recommendation-alert-payload"></a>使用 Advisor 建議警示承載
+### <a name="using-the-advisor-recommendation-alert-payload"></a>使用 Advisor 建議的警示承載
 如果您想要使用 webhook 將 Advisor 警示整合到您自己的系統，您必須剖析從通知傳送的 JSON 承載。 
 
-當您為此警示設定動作群組時，您會選取是否要使用一般警示架構。 如果您選取一般警示架構，您的承載看起來會像這樣： 
+當您設定此警示的動作群組時，您可以選取是否要使用常見的警示架構。 如果您選取一般警示架構，您的承載看起來會像這樣： 
 
 ```json
 {  
@@ -125,7 +124,7 @@ ms.locfileid: "86507211"
 }
   ```
 
-如果您未使用一般架構，您的承載看起來會像下面這樣： 
+如果您未使用一般架構，您的承載看起來如下所示： 
 
 ```json
 {  
@@ -170,11 +169,11 @@ ms.locfileid: "86507211"
 }
 ```
 
-在任一架構中，您都可以藉由尋找**eventSource**是 `Recommendation` ，而**operationName**是，來識別 Advisor 的建議事件 `Microsoft.Advisor/recommendations/available/action` 。
+在任一架構中，您都可以藉由尋找 **eventSource** 來識別 Advisor 建議事件， `Recommendation` 而 **operationName**  為 `Microsoft.Advisor/recommendations/available/action` 。
 
-您可能會想要使用的一些其他重要欄位如下： 
+您可能會想要使用的一些其他重要欄位包括： 
 
-* *alertTargetIDs* （在通用架構中）或*resourceId* （舊版架構）
+* 一般架構中的*alertTargetIDs* () 或*resourceId* (舊版架構) 
 * *recommendationType*
 * *recommendationName*
 * *recommendationCategory*
@@ -184,17 +183,17 @@ ms.locfileid: "86507211"
 
 ## <a name="manage-your-alerts"></a>管理警示 
 
-從 Azure Advisor，您可以編輯、刪除或停用和啟用您的建議警示。 
+您可以從 Azure Advisor 編輯、刪除或停用並啟用建議警示。 
 
-1. 在**入口網站**中，選取 [ **Azure Advisor**]。
+1. 在 **入口網站**中，選取 [ **Azure Advisor**]。
 
-    ![Azure Advisor 橫幅](./media/advisor-alerts/create1.png)
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Azure 入口網站功能表的螢幕擷取畫面，其中顯示已選取 Azure Advisor。":::
 
-2. 在左側功能表的 [**監視**] 區段中，選取 [**警示**]。
+2. 在左側功能表的 [ **監視** ] 區段中，選取 [ **警示**]。
 
-    ![Azure Advisor 橫幅](./media/advisor-alerts/create2.png)
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Azure 入口網站功能表的螢幕擷取畫面，其中顯示已選取的警示。":::
 
-3. 若要編輯警示，請按一下警示名稱以開啟警示，並編輯您想要編輯的欄位。
+3. 若要編輯警示，請按一下警示名稱以開啟警示，並編輯您要編輯的欄位。
 
 4. 若要刪除、啟用或停用警示，請按一下資料列結尾的省略號，然後選取您想要採取的動作。
  

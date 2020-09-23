@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ac087a7ba241534c08c4e5737973861727ab01ca
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 46234f3b4bfd467db9b5754b5590603ff3d42915
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069573"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974545"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>安裝和設定 Windows Azure 診斷擴充功能 (WAD)
 [Azure 診斷擴充功能](diagnostics-extension-overview.md)是 Azure 監視器中的代理程式，可收集來自客體作業系統的監視資料，以及 Azure 虛擬機器和其他計算資源的工作負載。 本文提供有關安裝和設定 Windows 診斷擴充功能的詳細資訊，以及說明如何在 Azure 儲存體帳戶中儲存資料。
@@ -51,7 +51,7 @@ ms.locfileid: "89069573"
 
 6. 在 [記錄] 索引標籤中，選取要從虛擬機器收集的記錄。 記錄可以傳送至儲存體或事件中樞，但不能傳送至 Azure 監視器。 使用 [Log Analytics 代理程式](log-analytics-agent.md)，將來賓記錄收集至 Azure 監視器。
 
-   ![記錄](media/diagnostics-extension-windows-install/logs.png)
+   ![螢幕擷取畫面顯示已為虛擬機器選取不同記錄的 [記錄] 索引標籤。](media/diagnostics-extension-windows-install/logs.png)
 
 7. 在 [損毀傾印] 索引標籤中，指定在損毀後用於收集記憶體傾印的程序。 資料將會寫入至儲存體帳戶以進行診斷設定，而且您可選擇性地指定 Blob 容器。
 
@@ -59,7 +59,7 @@ ms.locfileid: "89069573"
 
 8. 在 [接收器] 索引標籤中，指定是否要將資料傳送至 Azure 儲存體以外的位置。 如果您選取 [Azure 監視器]，系統會將來賓效能資料傳送至 Azure 監視器計量。 您無法使用 Azure 入口網站來設定事件中樞接收器。
 
-   ![接收器](media/diagnostics-extension-windows-install/sinks.png)
+   ![螢幕擷取畫面顯示已啟用 [將診斷資料傳送至 Azure 監視器] 選項的 [接收] 索引標籤。](media/diagnostics-extension-windows-install/sinks.png)
    
    如果您尚未針對虛擬機器啟用系統指派的身分識別，當您使用 Azure 監視器接收器儲存設定時，可能會看到以下警告。 按一下橫幅可啟用系統指派的身分識別。
    
@@ -67,7 +67,7 @@ ms.locfileid: "89069573"
 
 9. 在 [代理程式]中，您可以變更儲存體帳戶、設定磁碟配額，以及指定是否要收集診斷基礎結構記錄。  
 
-   ![代理程式](media/diagnostics-extension-windows-install/agent.png)
+   ![螢幕擷取畫面顯示 [代理程式] 索引標籤，其中包含設定儲存體帳戶的選項。](media/diagnostics-extension-windows-install/agent.png)
 
 10. 按一下 **[儲存]** 儲存組態。 
 
