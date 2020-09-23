@@ -8,15 +8,14 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 0725a97aecab5d03c2f5e3937c181a95a7b97c2a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: c90d11ba630dbb1e37054715855ae5547a8a034b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461505"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902721"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>從 Azure 開放資料集建立 Azure Machine Learning 資料集
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本文中，您將瞭解如何使用 [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) 資料集和 [Azure 開放資料集](https://docs.microsoft.com/azure/open-datasets/)，將策劃擴充資料帶入本機或遠端機器學習實驗。 
 
@@ -126,7 +125,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 如需開啟資料集功能的範例和示範，請參閱這些 [範例筆記本](samples.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * [定型您的第一個 ML 模型](../machine-learning/tutorial-1st-experiment-sdk-train.md)。
 

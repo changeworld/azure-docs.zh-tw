@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 47b41e807c4d7b9a9fce6591da6655db74f483f3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228880"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971252"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>資料內嵌管線的 DevOps
 
@@ -168,11 +168,11 @@ labels = np.array(data['target'])
 
 針對 ***開發***、 ***QA***、 ***UAT***和 ***生產*** 環境，此名稱是不同的。 在具有多個活動的複雜管線中，可以有數個自訂屬性。 最好是在一個位置收集所有這些值，並將它們定義為管線 ***變數***：
 
-![adf-變數](media/how-to-cicd-data-ingestion/adf-variables.png)
+![螢幕擷取畫面會顯示名為 PrepareData 和 M L 執行管線的筆記本，其頂端有選取 [變數] 索引標籤，其中包含 [變數] 索引標籤，並使用 [名稱]、[類型] 和 [預設值] 選項來加入新的變數。](media/how-to-cicd-data-ingestion/adf-variables.png)
 
 管線活動可能會在實際使用時參考管線變數：
 
-![adf-筆記本-參數](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
+![螢幕擷取畫面顯示名為 PrepareData 和 M L 執行管線的筆記本，其頂端的 [設定] 索引標籤位於下方選取的 [設定] 索引標籤。](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
 Azure Data Factory 工作區預設 ***不會*** 將管線變數公開為 Azure Resource Manager 範本參數。 工作區會使用 [預設的參數化範本](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) ，以聽寫哪些管線屬性應該公開為 Azure Resource Manager 範本參數。 若要將管線變數加入至清單，請 `"Microsoft.DataFactory/factories/pipelines"` 使用下列程式碼片段更新 [預設參數化範本](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) 的區段，並將結果 json 檔案放在源資料夾的根目錄中：
 
@@ -478,7 +478,7 @@ stages:
 
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [Azure Data Factory 中的原始檔控制](https://docs.microsoft.com/azure/data-factory/source-control)
 * [Azure Data Factory 中的持續整合和傳遞](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)

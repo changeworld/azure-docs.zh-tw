@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: e11d5b14bdf6b134fefea79a1f709ec73499bd20
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 0020efea69fc684ff6ebebf286718aa2a720910e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815703"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900799"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 串流分析預覽功能
 
@@ -25,10 +25,6 @@ ms.locfileid: "88815703"
 ### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>使用受控識別向 SQL Database 輸出進行驗證
 
 Azure 串流分析支援 Azure SQL Database 輸出接收的[受控識別驗證](../active-directory/managed-identities-azure-resources/overview.md)。 受控識別消除了以使用者為基礎的驗證方法限制，例如因密碼變更而需要重新驗證。 
-
-### <a name="output-to-azure-synapse-analytics"></a>輸出至 Azure Synapse Analytics
-
-Azure 串流分析作業可以輸出至 [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) 中的 SQL 集區資料表，而且可以處理高達 200 MB/秒的輸送量速率。這可針對報告和儀表板管理等工作負載，支援最嚴苛的即時分析和忙碌路徑資料處理需求。  
 
 ### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>使用由 Azure Machine Learning 管理的自訂 ML 模型進行即時高效能評分
 
@@ -52,7 +48,7 @@ Azure 串流分析的 Visual Studio 工具加強了本機測試功能，讓您�
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>適用於 Azure 串流分析的 Visual Studio Code
 
-Azure 串流分析作業可以在 Visual Studio Code 中撰寫。 請參閱 [VS Code 入門教學課程](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code)。
+Azure 串流分析作業可以在 Visual Studio Code 中撰寫。 請參閱 [VS Code 入門教學課程](https://docs.microsoft.com/azure/stream-analytics/quick-create-visual-studio-code)。
 
 ### <a name="local-testing-with-live-data-in-visual-studio-code"></a>使用 Visual Studio Code 中即時資料的本機測試
 

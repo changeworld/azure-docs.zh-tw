@@ -323,11 +323,12 @@
           items:
             - name: 工作預設
               href: indexer-task-preset.md
+    - name: 分析內容
+      items:
         - name: 利用 Face Redactor 處理
           href: media-services-face-redaction.md
-          items:
-            - name: Face Redactor 逐步解說
-              href: media-services-redactor-walkthrough.md
+        - name: Face Redactor 逐步解說
+          href: media-services-redactor-walkthrough.md
     - name: 設定遙測
       href: media-services-telemetry-overview.md
       items:

@@ -6,17 +6,17 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa9b186e74ed3b8fe5496afd5b21c54f50537d5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9acd322c454002613e21e8591c3e83aeec2d51e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049783"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979384"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>針對啟用或檢視 Application Insights Profiler 的問題進行疑難排解
 
 > [!CAUTION]
-> Azure App Service 上執行 ASP.NET Core 應用程式的 profiler 時發生錯誤。 我們有修正程式，但需要幾周的時間來部署全球。 您可以使用[這裡](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)的指示，將 Application Insights SDK 新增至您的應用程式，以解決 bug。
+> 在 Azure App Service 上執行 ASP.NET Core 應用程式的 profiler 時發生錯誤。 我們有一個修正程式，但需要幾周的時間來部署 world wide。 您可以使用 [此處](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)的指示，將 Application Insights SDK 新增至應用程式，以解決此錯誤。
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>一般疑難排解
 
@@ -48,7 +48,7 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
 * 如果 Web 應用程式是 ASP.NET Core 應用程式，則必須至少執行 ASP.NET Core 2.0。
 * 如果您嘗試檢視的資料已存在好幾週，請試著限縮時間篩選條件，然後再試一次。 追蹤會在七天後刪除。
 * 確定 Proxy 或防火牆未封鎖對 https://gateway.azureserviceprofiler.net 的存取。
-* 免費或共用的 app service 方案不支援 Profiler。 如果您使用其中一個方案，請嘗試相應增加至其中一個基本方案，而 Profiler 應該會開始運作。
+* 免費或共用的 app service 方案不支援 Profiler。 如果您使用的是其中一個方案，請嘗試相應增加至其中一個基本方案，分析工具應該會開始運作。
 
 ### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>平行執行緒重複計算
 
@@ -79,25 +79,25 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
    1. 在 [工具]**** 功能表中，選取 [WebJob 儀表板]****。  
       [WebJob]**** 窗格隨即開啟。 
    
-      ![profiler-webjob]   
+      ![螢幕擷取畫面顯示 [Webjob] 窗格，其中顯示工作的名稱、狀態和上次執行時間。][profiler-webjob]   
    
-   1. 若要查看 webjob 的詳細資料（包括記錄），請選取 [ **ApplicationInsightsProfiler3** ] 連結。  
+   1. 若要查看 webjob 的詳細資料，包括記錄檔，請選取 [ **ApplicationInsightsProfiler3** ] 連結。  
      [連續 WebJob 詳細資料]**** 窗格隨即開啟。
 
-      ![profiler-webjob-log]
+      ![螢幕擷取畫面：顯示 [連續 WebJob 詳細資料] 窗格。][profiler-webjob-log]
 
-如果您無法找出 Profiler 無法運作的原因，您可以下載記錄檔，並將它傳送給我們的小組以取得協助 serviceprofilerhelp@microsoft.com 。 
+如果您無法找出分析工具無法正常運作的原因，您可以下載記錄，並將它傳送給我們的小組以取得協助 serviceprofilerhelp@microsoft.com 。 
     
 ### <a name="manual-installation"></a>手動安裝
 
 當您設定 Profiler 時，系統會對 Web 應用程式的設定進行更新。 您可以視環境需要手動套用這些更新。 可能的範例為您的應用程式在 PowerApps 的 Web Apps 環境中執行。 若要手動套用更新：
 
-1. 在 [ **Web 應用程式控制**] 窗格中，開啟 [**設定**]。
+1. 在 [ **Web 應用** 程式控制] 窗格中，開啟 [ **設定**]。
 
-1. 將 [ **.NET Framework 版本**] 設定為 [ **4.6**]。
+1. 將 **.NET Framework 版本** 設定為 **4.6**。
 
 1. 將 [一律開啟]**** 設定為 [開啟]****。
-1. 建立下列應用程式設定：
+1. 建立這些應用程式設定：
 
     |應用程式設定    | 值    |
     |---------------|----------|
@@ -113,7 +113,7 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
 
 如果您要將 Web 應用程式重新部署到已啟用 Profiler 的 Web Apps 資源，您可能會看到下列訊息：
 
-*目錄不是空的 ' d： \\ home \\ site \\ wwwroot \\ App_Data \\ 作業 '*
+*目錄不是空的：主要 \\ \\ 網站 \\ wwwroot \\ App_Data \\ 作業」*
 
 如果您從指令碼或從 Azure DevOps 部署管線執行 Web Deploy，就會發生此錯誤。 解決方法是將下列額外的部署參數新增至 Web Deploy 工作：
 
@@ -125,11 +125,11 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
 
 ### <a name="how-do-i-determine-whether-application-insights-profiler-is-running"></a>如何判斷 Application Insights Profiler 是否有在執行？
 
-Profiler 會在 Web 應用程式中以連續 WebJob 的形式執行。 您可以在[Azure 入口網站](https://portal.azure.com)中開啟 web 應用程式資源。 在 [WebJobs]**** 窗格中，檢查 **ApplicationInsightsProfiler** 的狀態。 如果它並沒有在執行，請開啟 [記錄]**** 以取得詳細資訊。
+Profiler 會在 Web 應用程式中以連續 WebJob 的形式執行。 您可以在 [Azure 入口網站](https://portal.azure.com)中開啟 web 應用程式資源。 在 [WebJobs]**** 窗格中，檢查 **ApplicationInsightsProfiler** 的狀態。 如果它並沒有在執行，請開啟 [記錄]**** 以取得詳細資訊。
 
 ## <a name="troubleshoot-vms-and-cloud-services"></a>針對 Vm 和雲端服務進行疑難排解
 
->**已修正 WAD 中隨附于雲端服務的 profiler 中的 bug。** 適用于雲端服務的最新版本 WAD （1.12.2.0）適用于所有最新版本的 App Insights SDK。 雲端服務主機會自動升級 WAD，但不會立即進行。 若要強制升級，您可以重新部署您的服務，或重新開機節點。
+>**已修正在 WAD for 雲端服務中隨附的程式碼剖析工具中的 bug。** 適用于雲端服務的最新版 WAD (1.12.2.0) 適用于所有最近的 App Insights SDK 版本。 雲端服務主機會自動升級 WAD，但不會立即升級。 若要強制進行升級，您可以重新部署服務或重新開機節點。
 
 若要查看 Azure 診斷是否已正確設定 Profiler，請執行下列三項作業： 
 1. 首先，請確認部署的 Azure 診斷組態內容是否符合您的預期。 
@@ -140,7 +140,7 @@ Profiler 會在 Web 應用程式中以連續 WebJob 的形式執行。 您可以
 
 若要檢查用來設定 Azure 診斷的設定：
 
-1. 登入虛擬機器（VM），然後在此位置開啟記錄檔。 您的電腦上的外掛程式版本可能較新。
+1. 登入 (VM) 的虛擬機器，然後在此位置開啟記錄檔。 您電腦上的外掛程式版本可能較新。
     
     針對 Vm：
     ```
@@ -154,7 +154,7 @@ Profiler 會在 Web 應用程式中以連續 WebJob 的形式執行。 您可以
 
 1. 在該檔案中，您可以搜尋 **WadCfg** 字串，以找出傳至 VM 用以設定 Azure 診斷的設定。 您可以確認 Profiler 接收所使用的 iKey 是否正確。
 
-1. 檢查用來啟動 Profiler 的命令列。 用來啟動 Profiler 的引數位於下列檔案中。 （磁片磁碟機可以是 c：或 d：，而且目錄可能會隱藏起來）。
+1. 檢查用來啟動 Profiler 的命令列。 用來啟動 Profiler 的引數位於下列檔案中。  (磁片磁碟機可能是 c：或 d：而且可能隱藏目錄。 ) 
 
     針對 Vm：
     ```
@@ -168,9 +168,9 @@ Profiler 會在 Web 應用程式中以連續 WebJob 的形式執行。 您可以
 
 1. 確定 Profiler 命令列上的 iKey 正確無誤。 
 
-1. 使用上述*config.js*檔案中找到的路徑，檢查 Profiler 記錄檔，稱為**BootstrapN**。 其中會顯示偵錯資訊，指出 Profiler 所使用的設定。 此外也會顯示來自 Profiler 的狀態和錯誤訊息。  
+1. 使用上述 *config.js* 檔案中找到的路徑，檢查分析工具記錄檔，稱為 **BootstrapN .log**。 其中會顯示偵錯資訊，指出 Profiler 所使用的設定。 此外也會顯示來自 Profiler 的狀態和錯誤訊息。  
 
-    針對 Vm，檔案通常位於此處：
+    針對 Vm，檔案通常位於：
     ```
     C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
     ```
@@ -180,9 +180,9 @@ Profiler 會在 Web 應用程式中以連續 WebJob 的形式執行。 您可以
     C:\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
     ```
 
-    如果 Profiler 是在您的應用程式接收要求時執行，則會顯示下列訊息：*從 iKey 偵測到活動*。 
+    如果在您的應用程式接收要求時，Profiler 正在執行，則會顯示下列訊息： *從 iKey 偵測到活動*。 
 
-    上傳追蹤時，會顯示下列訊息：*開始上傳追蹤*。 
+    上傳追蹤時，會顯示下列訊息： *開始上傳追蹤*。 
 
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>編輯網路 Proxy 或防火牆規則

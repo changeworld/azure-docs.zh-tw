@@ -1,27 +1,29 @@
 ---
-title: '區塊 blob 的時間點還原 (預覽) '
+title: 區塊 blob 的時間點還原
 titleSuffix: Azure Storage
 description: 區塊 blob 的時間點還原可讓您將儲存體帳戶還原至特定時間點的先前狀態，以提供防止意外刪除或損毀的保護。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 09/18/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 1187b01fa623264055edecf21ea5c9d35d59a152
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 7fbebf21b79d2a533de0a872dfe6a10bc8f8e7e5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068297"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987042"
 ---
-# <a name="point-in-time-restore-for-block-blobs-preview"></a>區塊 blob 的時間點還原 (預覽) 
+# <a name="point-in-time-restore-for-block-blobs"></a>區塊 blob 的時間點還原
 
 時間點還原可讓您將區塊 blob 資料還原至先前的狀態，以提供防止意外刪除或損毀的保護。 時間點還原適用于使用者或應用程式不小心刪除資料或應用程式錯誤損毀資料的案例。 時間點還原也可讓測試案例必須將資料集還原為已知狀態，再執行進一步的測試。
 
-若要瞭解如何啟用儲存體帳戶的時間點還原，請參閱 [啟用和管理區塊 blob 的時間點還原 (預覽) ](point-in-time-restore-manage.md)。
+僅限一般用途 v2 儲存體帳戶支援還原時間點。 只有經常性存取和非經常性存取層中的資料可以使用時間點還原來還原。
+
+若要瞭解如何啟用儲存體帳戶的時間點還原，請參閱 [在區塊 blob 資料上執行時間點還原](point-in-time-restore-manage.md)。
 
 ## <a name="how-point-in-time-restore-works"></a>時間點還原的運作方式
 
@@ -48,17 +50,15 @@ Azure 儲存體會分析在要求的還原點（以 UTC 時間指定）和目前
 > 如果儲存體帳戶是異地複寫的，則在還原作業期間，次要位置的讀取作業可能會繼續進行。
 
 > [!CAUTION]
-> 時間點還原只支援在區塊 blob 上還原作業。 無法還原容器上的作業。 如果您在時間點還原預覽版期間呼叫「 [刪除容器](/rest/api/storageservices/delete-container) 」作業來刪除儲存體帳戶中的容器，則無法使用還原作業來還原該容器。 在預覽期間，如果您想要還原，請刪除個別的 blob，而不是刪除容器。
+> 時間點還原只支援在區塊 blob 上還原作業。 無法還原容器上的作業。 如果您藉由呼叫「 [刪除容器](/rest/api/storageservices/delete-container) 」作業來刪除儲存體帳戶中的容器，則無法使用還原作業來還原該容器。 如果您想要還原，請刪除個別的 blob，而不是刪除容器。
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>時間點還原的必要條件
 
-還原時間點需要啟用下列 Azure 儲存體功能：
+還原時間點需要先啟用下列 Azure 儲存體功能，才能啟用時間點還原：
 
 - [虛刪除](soft-delete-overview.md)
-- [變更摘要 (預覽) ](storage-blob-change-feed.md)
+- [變更摘要](storage-blob-change-feed.md)
 - [Blob 版本設定](versioning-overview.md)
-
-啟用還原時間點之前，請先為儲存體帳戶啟用這些功能。 請務必先註冊變更摘要和 Blob 版本設定預覽，然後才能加以啟用。
 
 ### <a name="retention-period-for-point-in-time-restore"></a>時間點還原的保留期間
 
@@ -72,83 +72,17 @@ Azure 儲存體會分析在要求的還原點（以 UTC 時間指定）和目前
 
 若要起始還原作業，用戶端必須具有儲存體帳戶中所有容器的寫入權限。 若要使用 Azure Active Directory (Azure AD) 授與授權還原作業的許可權，請將 **儲存體帳戶參與者** 角色指派給儲存體帳戶、資源群組或訂用帳戶層級的安全性主體。
 
-## <a name="about-the-preview"></a>關於預覽
+## <a name="limitations-and-known-issues"></a>限制與已知問題
 
-僅限一般用途 v2 儲存體帳戶支援還原時間點。 只有經常性存取和非經常性存取層中的資料可以使用時間點還原來還原。
+區塊 blob 的時間點還原具有下列限制和已知問題：
 
-下欄區域支援預覽版中的時間點還原：
-
-- 加拿大中部
-- 加拿大東部
-- 法國中部
-
-預覽版包含下列限制：
-
-- 不支援還原 premium 區塊 blob。
-- 不支援還原封存層中的 Blob。 例如，如果經常性存取層的 Blob 在兩天前已移至封存層，且還原作業還原至三天前的某個時間點，則 Blob 不會還原至經常性存取層。
+- 只有標準一般用途 v2 儲存體帳戶中的區塊 blob 可以還原為時間點還原作業的一部分。 附加 blob、分頁 blob 和 premium 區塊 blob 不會還原。 如果您已在保留期限內刪除容器，則該容器將不會隨著時間點還原作業還原。 若要瞭解如何刪除容器的保護，請參閱容器的虛 [刪除 (預覽) ](soft-delete-container-overview.md)。
+- 只有經常性存取層或非經常性存取層中的區塊 blob，才能在時間點還原作業中還原。 不支援還原封存層中的區塊 blob。 例如，如果經常性存取層的 Blob 在兩天前已移至封存層，且還原作業還原至三天前的某個時間點，則 Blob 不會還原至經常性存取層。 若要還原封存的 blob，請先將它移出封存層。
+- 如果要還原之範圍中的區塊 blob 有作用中的租用，則時間點還原作業將會失敗。 在起始還原作業之前，請先中斷任何使用中的租用。
 - 不支援還原 Azure Data Lake Storage Gen2 的平面和階層命名空間。
-- 不支援使用客戶提供的金鑰來還原儲存體帳戶。
 
 > [!IMPORTANT]
-> 時間點還原預覽僅供非生產環境使用。 生產環境的服務等級協定 (SLA) 目前無法使用。
-
-### <a name="register-for-the-preview"></a>註冊預覽
-
-若要註冊預覽，請執行下列命令：
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-```powershell
-# Register for the point-in-time restore preview
-Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Microsoft.Storage
-
-# Register for change feed (preview)
-Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
-
-# Register for Blob versioning
-Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.Storage
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name RestoreBlobRanges
-az feature register --namespace Microsoft.Storage --name Changefeed
-az feature register --namespace Microsoft.Storage --name Versioning
-az provider register --namespace 'Microsoft.Storage'
-```
-
----
-
-### <a name="check-registration-status"></a>檢查註冊狀態
-
-時間點還原的註冊會自動進行，且應不到10分鐘。 若要檢查您的註冊狀態，請執行下列命令：
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName RestoreBlobRanges
-
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Changefeed
-
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/RestoreBlobRanges')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Changefeed')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning')].{Name:name,State:properties.state}"
-```
-
----
+> 如果您將區塊 blob 還原到早于2020年9月22日的某個時間點，則時間點還原的預覽限制將會生效。 Microsoft 建議您選擇等於或晚于2020年9月22日的還原點，以利用正式推出的時間點還原功能。
 
 ## <a name="pricing-and-billing"></a>價格和計費
 
@@ -158,13 +92,9 @@ az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning
 
 如需時間點還原價格的詳細資訊，請參閱 [區塊 blob 定價](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="ask-questions-or-provide-feedback"></a>提出問題或提供意見反應
+## <a name="next-steps"></a>下一步
 
-若要詢問有關時間點還原預覽的問題，或是要提供意見反應，請洽詢 Microsoft pitrdiscussion@microsoft.com 。
-
-## <a name="next-steps"></a>後續步驟
-
-- [啟用和管理區塊 blob 的時間點還原 (預覽) ](point-in-time-restore-manage.md)
-- [Azure Blob 儲存體中的變更摘要支援 (預覽)](storage-blob-change-feed.md)
+- [在區塊 blob 資料上執行時間點還原](point-in-time-restore-manage.md)
+- [Azure Blob 儲存體中的變更摘要支援](storage-blob-change-feed.md)
 - [啟用 Blob 的虛刪除](soft-delete-enable.md)
 - [啟用和管理 Blob 版本設定](versioning-enable.md)

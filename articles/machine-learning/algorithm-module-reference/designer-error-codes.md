@@ -1,7 +1,7 @@
 ---
-title: 針對設計工具 (預覽) 模組錯誤進行疑難排解
+title: 針對設計工具模組錯誤進行疑難排解
 titleSuffix: Azure Machine Learning
-description: '針對 Azure Machine Learning 設計工具中的模組錯誤碼進行疑難排解 (預覽) '
+description: 針對 Azure Machine Learning 設計工具中的模組錯誤碼進行疑難排解
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 023a28c6f1d89d0975ff8ecac2466c51c05fa9da
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876915"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908091"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>設計工具 (預覽) 的例外狀況和錯誤碼
+# <a name="exceptions-and-error-codes-for-the-designer"></a>設計工具的例外狀況和錯誤碼
 
-本文說明 Azure Machine Learning 設計工具 (預覽) 中的錯誤訊息和例外狀況代碼，以協助您對機器學習管線進行疑難排解。
+本文說明 Azure Machine Learning 設計工具中的錯誤訊息和例外狀況代碼，可協助您針對機器學習管線進行疑難排解。
 
 您可以依照下列步驟，在設計工具中尋找錯誤訊息：  
 
@@ -1107,7 +1107,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
  如果模組例外狀況回報了 SQL 產生的訊息，請根據回報的錯誤採取動作。 例如，錯誤訊息有時會對可能的錯誤提供特定指引：
 + *沒有這類資料行或遺失的資料庫*，表示您可能輸入了不正確的資料行名稱。 如果您確定資料行名稱正確無誤，請嘗試使用方括弧或引號括住資料行識別碼。
-+ *接近 \<SQL keyword\> SQL 邏輯錯誤*，表示您在指定的關鍵字之前可能有語法錯誤
++ *SQL 邏輯錯誤附近 \<SQL keyword\> *，表示在指定的關鍵字之前可能會有語法錯誤
 
   
 |例外狀況訊息|
@@ -1516,7 +1516,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 提供此錯誤的用意，是為了擷取其他未處理的內部引擎錯誤。 因此，此錯誤的成因可能隨著產生錯誤的模組而有所不同。  
 
-若要取得更多協助，建議您將伴隨錯誤的詳細訊息張貼至[Azure Machine Learning 論壇](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)，連同案例的描述，包括當做輸入使用的資料。 這樣的意見反應可協助我們設定錯誤的優先順序，並找出最重要的問題以進一步處理。  
+若要取得更多協助，建議您將伴隨錯誤的詳細訊息張貼至 [Azure Machine Learning 論壇](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)，以及案例的描述，包括當做輸入使用的資料。 這樣的意見反應可協助我們設定錯誤的優先順序，並找出最重要的問題以進一步處理。  
 
 |例外狀況訊息|
 |------------------------|

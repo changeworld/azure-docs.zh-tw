@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4dc3c46b65bab48b8923af985f0c2c29fcddc53b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f9ab340e73ce8d58da63a0089073ac4770bf2d52
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934047"
+ms.locfileid: "90973388"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>將來自不同資料來源的資料摘要新增至計量 Advisor
 
@@ -27,10 +27,10 @@ ms.locfileid: "90934047"
 | ---------------------|-------------|
 |**基本** | 您必須能夠提供基本參數來存取資料來源。 例如，連接字串或索引鍵。 資料摘要管理員可以查看這些認證。 |
 | **AzureManagedIdentity** | 適用于 Azure 資源的[受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別是 Azure Active Directory 的功能。 它會在 Azure AD 中為 Azure 服務提供自動管理的身分識別。 您可以使用此身分識別來向任何支援 Azure AD authentication 的服務進行驗證。|
-| **AzureSQLConnectionString**| 將 AzureSQL 連接字串儲存為計量建議程式中的 **驗證實體** ，並在上架度量資料時，直接使用它。 只有驗證實體的系統管理員能夠查看這些認證，但是可讓授權的檢視器建立資料摘要，而不需要知道認證的詳細資料。 |
-| **DataLakeGen2SharedKey**| 將您的 data lake 帳戶金鑰儲存為計量建議程式中的 **驗證實體** ，並在上架度量資料時，每次都使用它。 只有驗證實體的系統管理員能夠查看這些認證，但是可讓授權的檢視器建立資料摘要，而不需要知道認證詳細資料。|
-| **ServicePrincipal**| 將您的服務主體儲存為計量建議程式中的 **驗證實體** ，並在上架度量資料時，每次都使用它。 只有驗證實體的管理員能夠查看認證，但是可讓授權的檢視器建立資料摘要，而不需要知道認證詳細資料。|
-| **ServicePrincipalInKeyVault**|將您的服務主體儲存在 KeyVault 中作為「計量建議程式」中的「 **驗證」實體** ，並在上架度量資料時，直接使用它。 只有 **驗證實體** 的管理員能夠查看認證，但也讓檢視器能夠建立資料摘要，而不需要知道詳細的認證。 |
+| **AzureSQLConnectionString**| 將 AzureSQL 連接字串儲存為計量建議程式中的 **認證實體** ，並在上架度量資料時，直接使用它。 只有認證實體的系統管理員能夠查看這些認證，但是可讓授權的檢視器建立資料摘要，而不需要知道認證的詳細資料。 |
+| **DataLakeGen2SharedKey**| 將您的 data lake 帳戶金鑰儲存為計量建議程式中的 **認證實體** ，並在上架度量資料時，直接使用它。 只有認證實體的系統管理員能夠查看這些認證，但是可讓授權的檢視器建立資料摘要，而不需要知道認證詳細資料。|
+| **服務主體**| 將您的服務主體儲存為計量建議程式中的 **認證實體** ，並在上架度量資料時，直接使用它。 只有認證實體的管理員能夠查看認證，但可讓授權的檢視器建立資料摘要，而不需要知道認證詳細資料。|
+| **Key vault 中的服務主體**|將您的服務主體儲存在金鑰保存庫中做為計量建議程式中的 **認證實體** ，並在上架度量資料時，直接使用它。 只有 **認證實體** 的系統管理員能夠查看認證，但也讓檢視器能夠建立資料摘要，而不需要知道詳細的認證。 |
 
 ## <a name="data-sources-supported-and-corresponding-authentication-types"></a>支援的資料來源和對應的驗證類型
 
@@ -41,8 +41,8 @@ ms.locfileid: "90934047"
 |[**Azure Blob 儲存體 (JSON) **](#blob) | 基本<br>ManagedIdentity|
 |[**Azure Cosmos DB (SQL) **](#cosmosdb) | 基本 |
 |[**Azure 資料總管 (Kusto) **](#kusto) | 基本<br>ManagedIdentity|
-|[**Azure Data Lake Storage Gen2**](#adl) | 基本<br>DataLakeGen2SharedKey<br>ServicePrincipal<br>ServicePrincipalInKeyVault<br> |
-|[**Azure SQL Database/SQL Server**](#sql) | 基本<br>ManagedIdentity<br>ServicePrincipal<br>ServicePrincipalInKeyVault<br>AzureSQLConnectionString
+|[**Azure Data Lake Storage Gen2**](#adl) | 基本<br>DataLakeGen2SharedKey<br>服務主體<br>Key vault 中的服務主體<br> |
+|[**Azure SQL Database/SQL Server**](#sql) | 基本<br>ManagedIdentity<br>服務主體<br>Key vault 中的服務主體<br>AzureSQLConnectionString
 |[**Azure 表格儲存體**](#table) | 基本 | 
 |[**ElasticSearch**](#es) | 基本 |
 |[**Http 要求**](#http) | 基本 | 
@@ -51,7 +51,7 @@ ms.locfileid: "90934047"
 |[**MySQL**](#mysql) | 基本 |
 |[**PostgreSQL**](#pgsql)| 基本|
 
-建立 **驗證實體** ，並用它來驗證您的資料來源。 下列各節會指定 *基本* 身份驗證所需的參數。 
+建立 **認證實體** ，並用它來驗證您的資料來源。 下列各節會指定 *基本* 身份驗證所需的參數。 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
 

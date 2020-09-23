@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1211245786bbb734e0338be1b79030f5f9552793
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8649c9faf3905e69232cdc15bbba6607abe3e9c4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266369"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969509"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>使用 Azure PowerShell 建立、列出或刪除使用者指派的受控識別
 
@@ -36,12 +36,35 @@ ms.locfileid: "89266369"
 
 - 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
-- 如果您尚未安裝[最新版的 Azure PowerShell](/powershell/azure/install-az-ps)，請先安裝。
-- 如果您在本機執行 PowerShell，您也需要： 
-    - 執行 `Connect-AzAccount` 來建立與 Azure 的連線。
-    - 安裝[最新版的 PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)。
-    - 執行 `Install-Module -Name PowerShellGet -AllowPrerelease` 以取得 `PowerShellGet` 模組的搶鮮版 (執行此命令以安裝 `Az.ManagedServiceIdentity` 模組後，您可能需要以 `Exit` 退出目前的 PowerShell 工作階段)。
-    - 執行 `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` 安裝 `Az.ManagedServiceIdentity` 模組的搶鮮版，以執行本文中由使用者指派的受控識別作業。
+- 若要執行範例腳本，您有兩個選項：
+    - 使用您可以使用程式碼區塊右上角的 [**試試看**] 按鈕開啟的[Azure Cloud Shell](../../cloud-shell/overview.md)。
+    - 使用 Azure PowerShell 在本機執行腳本，如下一節所述。
+
+### <a name="configure-azure-powershell-locally"></a>在本機設定 Azure PowerShell
+
+若要在本文的本機使用 Azure PowerShell (而非使用 Cloud Shell) ，請完成下列步驟：
+
+1. 如果您尚未安裝[最新版的 Azure PowerShell](/powershell/azure/install-az-ps)，請先安裝。
+
+1. 登入 Azure：
+
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+1. 安裝[最新版的 PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)。
+
+    ```azurepowershell
+    Install-Module -Name PowerShellGet -AllowPrerelease
+    ```
+
+    在 `Exit` 下一個步驟中執行此命令之後，您可能需要退出目前的 PowerShell 會話。
+
+1. 安裝模組的搶鮮版， `Az.ManagedServiceIdentity` 以執行本文中使用者指派的受控識別作業：
+
+    ```azurepowershell
+    Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease
+    ```
 
 ## <a name="create-a-user-assigned-managed-identity"></a>建立使用者指派的受控識別
 
@@ -79,6 +102,6 @@ Remove-AzUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP> -Name <USER AS
 > [!NOTE]
 > 將使用者指派的受控識別從受指派的任何資源中刪除，並不會移除參考。 必須個別移除身分識別指派。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需 Azure PowerShell Azure 資源受控識別命令的完整清單和更多詳細資料，請參閱 [Az.ManagedServiceIdentity](/powershell/module/az.managedserviceidentity#managed_service_identity)。

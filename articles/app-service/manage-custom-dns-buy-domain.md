@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: ae2d91233df25885bdfd765481f4bb6a1a36da37
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 0111da00962f267387e66978952e8a7c9f5d7308
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958723"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970050"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>針對 Azure App Service 購買自訂網域名稱
 
@@ -18,7 +18,7 @@ App Service 網域是直接在 Azure 中管理的最上層網域。 它們可以
 
 若為 Azure VM 或 Azure 儲存體，請參閱[將 App Service 網域指派給 Azure VM 或 Azure 儲存體](https://azure.github.io/AppService/2017/07/31/Assign-App-Service-domain-to-Azure-VM-or-Azure-Storage)。 若為雲端服務，請參閱[設定 Azure 雲端服務的自訂網域名稱](../cloud-services/cloud-services-custom-domain-name-portal.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程：
 
@@ -51,7 +51,7 @@ App Service 網域是直接在 Azure 中管理的最上層網域。 它們可以
 
 會以藍色框線醒目顯示應用程式目前的層。 請檢查以確定您的應用程式不是位於 **F1** 層。 **F1** 層不支援自訂 DNS。 
 
-![檢查定價層](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png" alt-text="選取 [擴大] (App Service 方案) 的 [應用程式] 頁面左側導覽功能表的螢幕擷取畫面。":::
 
 如果 App Service 方案不是位於 **F1** 層，請關閉 [相應增加]**** 頁面，然後跳至 [[購買網域]](#buy-the-domain)。
 
@@ -61,7 +61,7 @@ App Service 網域是直接在 Azure 中管理的最上層網域。 它們可以
 
 按一下 [套用]。
 
-![檢查定價層](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="[生產] 類別目錄中自訂網域定價層的螢幕擷取畫面，其中已醒目提示 [執行] 索引標籤、B1 方案和 [套用] 按鈕。":::
 
 當您看見下列通知時，表示擴充作業已完成。
 

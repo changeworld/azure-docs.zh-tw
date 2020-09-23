@@ -1,6 +1,6 @@
 ---
-title: 在您的 Azure Stack Edge GPU 裝置上部署 GPU 模組 |Microsoft Docs
-description: 說明如何啟用計算，並透過本機 UI 讓您的 Azure Stack Edge 裝置計算就緒。
+title: 在 Azure Stack Edge Pro GPU 裝置上部署 GPU 模組 |Microsoft Docs
+description: 說明如何啟用計算，並透過本機 UI 讓您的 Azure Stack Edge Pro 裝置計算就緒。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 5af86001d46bf194c9b61f325052a4cde0d86d5e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1f16ef0ede25f17acb915a7812ae5b15b45f78a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254554"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899725"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-gpu-device"></a>在 Azure Stack Edge GPU 裝置上部署已啟用 GPU 的 IoT 模組
+# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上部署已啟用 GPU 的 IoT 模組
 
-本文說明如何在 Azure Stack Edge GPU 裝置上部署已啟用的 GPU IoT Edge 模組。 
+本文說明如何在 Azure Stack Edge Pro GPU 裝置上部署已啟用的 GPU IoT Edge 模組。 
 
 在本文中，您將學會如何：
-  - 準備 Azure Stack Edge 以執行 GPU 模組。
+  - 準備 Azure Stack Edge Pro 來執行 GPU 模組。
   - 從 Git 存放庫下載並安裝範例程式碼。
   - 建立解決方案並產生部署資訊清單。
-  - 將解決方案部署到 Azure Stack Edge 裝置。
+  - 將解決方案部署到 Azure Stack Edge Pro 裝置。
   - 監視模組輸出。
 
 
@@ -31,12 +31,12 @@ ms.locfileid: "89254554"
 
 本文中的 GPU 範例模組包含適用于 GPU 之 CPU 的 PyTorch 和 TensorFlow 基準範例程式碼。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您擁有：
 
-- 您可以存取已啟用 GPU 的1個節點 Azure Stack Edge 裝置。 此裝置會使用 Azure 中的資源來啟用。 請參閱 [啟用裝置](azure-stack-edge-gpu-deploy-activate.md)。
-- 您已在此裝置上設定計算。 遵循 [教學課程：設定 Azure Stack Edge 裝置上的計算](azure-stack-edge-gpu-deploy-configure-compute.md)中的步驟。
+- 您可以存取已啟用 GPU 的1個節點 Azure Stack Edge Pro 裝置。 此裝置會使用 Azure 中的資源來啟用。 請參閱 [啟用裝置](azure-stack-edge-gpu-deploy-activate.md)。
+- 您已在此裝置上設定計算。 遵循 [教學課程：設定 Azure Stack Edge Pro 裝置上的計算](azure-stack-edge-gpu-deploy-configure-compute.md)中的步驟。
 - Azure Container Registry (ACR) 。 移至 [ **存取金鑰** ] 分頁，並記下 [ACR 登入伺服器]、[使用者名稱] 和 [密碼]。 如需詳細資訊，請參閱 [快速入門：使用 Azure 入口網站建立私用容器](../container-registry/container-registry-get-started-portal.md#create-a-container-registry)登錄。
 - Windows 用戶端上的下列開發資源：
     - [Azure CLI 2.0 或更新版本](https://aka.ms/installazurecliwindows)
@@ -89,7 +89,7 @@ ms.locfileid: "89254554"
               }
             },
     ```
-3. 建立新的檔案。 填寫您 container registry 參數的值， (使用先前步驟中所識別的值) 如下所示： 
+3. 建立新檔案。 填寫您 container registry 參數的值， (使用先前步驟中所識別的值) 如下所示： 
 
     ```json
     CONTAINER_REGISTRY_NAME=<YourContainerRegistryName>
@@ -144,9 +144,9 @@ ms.locfileid: "89254554"
 
 1. 在 VS Code 命令選擇區中，執行 [Azure IoT 中樞：選取 IoT 中樞]****。
 
-2. 選擇您要設定的 IoT Edge 裝置所屬的訂用帳戶和 IoT 中樞。 在此情況下，請選取用來部署 Azure Stack Edge 裝置的訂用帳戶，然後選取為 Azure Stack Edge 裝置所建立的 IoT Edge 裝置。 當您在先前的步驟中透過 Azure 入口網站設定計算時，就會發生這種情況。
+2. 選擇您要設定的 IoT Edge 裝置所屬的訂用帳戶和 IoT 中樞。 在此情況下，請選取用來部署 Azure Stack Edge Pro 裝置的訂用帳戶，然後選取為 Azure Stack Edge Pro 裝置所建立的 IoT Edge 裝置。 當您在先前的步驟中透過 Azure 入口網站設定計算時，就會發生這種情況。
 
-3. 在 VS Code explorer 中，展開 [Azure IoT 中樞] 區段。 在 [ **裝置**] 下，您應該會看到對應至 Azure Stack Edge 裝置的 IoT Edge 裝置。 
+3. 在 VS Code explorer 中，展開 [Azure IoT 中樞] 區段。 在 [ **裝置**] 下，您應該會看到對應至 Azure Stack Edge Pro 裝置的 IoT Edge 裝置。 
 
     1. 選取該裝置，按一下滑鼠右鍵，然後選取 [ **開始監視內建事件端點**]。
   
@@ -156,7 +156,7 @@ ms.locfileid: "89254554"
 
         ![IoT 中樞內的模組](media/azure-stack-edge-gpu-deploy-sample-module/module-iot-hub-1.png)  
 
-    3. VS Code 終端機也應顯示 IoT 中樞事件，作為 Azure Stack Edge 裝置的監視輸出。
+    3. VS Code 終端機也應顯示 IoT 中樞事件，作為 Azure Stack Edge Pro 裝置的監視輸出。
 
         ![監視輸出](media/azure-stack-edge-gpu-deploy-sample-module/monitor-events-output-1.png) 
 
