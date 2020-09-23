@@ -1,18 +1,18 @@
 ---
 title: 大規模將混合式機器連線至 Azure
-description: 在本文中，您將瞭解如何使用已啟用 Azure Arc 的伺服器，將機器連線至 Azure (預覽) 使用服務主體。
-ms.date: 07/23/2020
+description: 在本文中，您將瞭解如何使用已啟用 Azure Arc 的伺服器，使用服務主體將機器連線到 Azure。
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 07266ce7fb9579e1d4fb1b65394e0b7fdf7aa13d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 545d8abd6dd17e1e413852735c096ddc9261b972
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211406"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908333"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>大規模將混合式機器連線至 Azure
 
-您可以根據您的需求，為您環境中的多部 Windows 或 Linux 電腦啟用已啟用 Azure Arc 的伺服器 (預覽) 。 使用我們提供的範本指令碼，您可以讓安裝的每個步驟自動化，包括建立與 Azure Arc 的連線。不過，您必須與目標機器和 Azure 中具有提升權限的帳戶，以互動方式執行此指令碼。 若要將電腦連線到已啟用 Azure Arc 的伺服器 (preview) ，您可以使用 Azure Active Directory [服務主體](../../active-directory/develop/app-objects-and-service-principals.md) ，而不是使用您的特殊許可權身分識別，以 [互動方式](onboard-portal.md)連線到電腦。 服務主體是特殊的有限管理身分識別，僅可獲得使用 `azcmagent` 命令將機器連線至 Azure 所需的最小權限。 這是比使用較高權限帳戶 (例如租用戶系統管理員) 更安全的做法，並且遵循我們的存取控制安全性最佳做法。 服務主體只會在上線期間使用，不會用於任何其他用途。  
+您可以根據您的需求，為環境中的多個 Windows 或 Linux 電腦啟用 Azure Arc 啟用的伺服器，並提供數個彈性的選項。 使用我們提供的範本指令碼，您可以讓安裝的每個步驟自動化，包括建立與 Azure Arc 的連線。不過，您必須與目標機器和 Azure 中具有提升權限的帳戶，以互動方式執行此指令碼。 若要將電腦連線到已啟用 Azure Arc 的伺服器，您可以使用 Azure Active Directory [服務主體](../../active-directory/develop/app-objects-and-service-principals.md) ，而不是使用特殊許可權身分識別，以 [互動方式連接電腦](onboard-portal.md)。 服務主體是特殊的有限管理身分識別，僅可獲得使用 `azcmagent` 命令將機器連線至 Azure 所需的最小權限。 這是比使用較高權限帳戶 (例如租用戶系統管理員) 更安全的做法，並且遵循我們的存取控制安全性最佳做法。 服務主體只會在上線期間使用，不會用於任何其他用途。  
 
 用來安裝和設定 Connected Machine 代理程式的安裝方法，需要您使用的自動化方法具有機器的系統管理員權限。 在 Linux 上請使用根帳戶，在 Windows 上則必須是本機系統管理員群組的成員。
 
@@ -20,7 +20,7 @@ ms.locfileid: "88211406"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-在此程式結束時，您已成功將混合式機器連線到已啟用 Azure Arc 的伺服器 (預覽) 。
+在此程式結束時，您已成功將混合式機器連線到 Azure Arc 啟用的伺服器。
 
 ## <a name="create-a-service-principal-for-onboarding-at-scale"></a>建立服務主體以進行大規模上線
 
@@ -106,7 +106,7 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
 ```
 
 >[!NOTE]
->此腳本只支援從64位版本的 Windows PowerShell 執行。
+>腳本僅支援從64位版本的 Windows PowerShell 執行。
 >
 
 ### <a name="linux-installation-script"></a>Linux 安裝指令碼
@@ -131,9 +131,9 @@ azcmagent connect \
 ```
 
 >[!NOTE]
->您必須具備 Linux 電腦的 *根* 存取權限，才能執行 **azcmagent**。
+>您必須具有 Linux 電腦的 *根* 存取權限，才能執行 **azcmagent**。
 
-在您安裝代理程式並將其設定為連線至已啟用 Azure Arc 的伺服器後 (預覽) ]，請移至 Azure 入口網站，確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
+當您安裝代理程式並將它設定為連接到已啟用 Azure Arc 的伺服器之後，請移至 Azure 入口網站以確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
 
 ![成功的伺服器連線](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
@@ -141,4 +141,4 @@ azcmagent connect \
 
 - 了解如何使用 [Azure 原則](../../governance/policy/overview.md)，針對例如 VM [來賓設定](../../governance/policy/concepts/guest-configuration.md)、確認機器回報至預期的 Log Analytics 工作區、使用 [Azure 監視器與 VM](../../azure-monitor/insights/vminsights-enable-policy.md) 啟用監視等等項目，管理您的機器。
 
-- 深入了解 [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md))。
+- 深入瞭解 [[Log Analytics 代理程式]](../../azure-monitor/platform/log-analytics-agent.md)。 當您想要收集作業系統和工作負載監視資料、使用自動化 runbook 或功能（例如更新管理）進行管理時，或使用其他 Azure 服務（例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md)）時，需要適用于 Windows 和 Linux 的 Log Analytics 代理程式。

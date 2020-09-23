@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 17dd83ba7df469e12e0569e670d71b9068bb2a9f
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 479daa9a94247ada30c54a9c5df3471035765087
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297513"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908271"
 ---
 # <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>啟動、停止及刪除您的 Azure 春季 Cloud 應用程式
+
+本文**適用于：** ✔️ JAVA ✔️ C#
 
 本指南說明如何使用 Azure 入口網站或 Azure CLI，在 Azure 春季雲端中變更應用程式的狀態。
 
@@ -30,7 +32,7 @@ ms.locfileid: "89297513"
 ## <a name="using-the-azure-cli"></a>使用 Azure CLI
 
 > [!NOTE]
-> 您可以搭配 Azure CLI 來使用選擇性參數及設定預設值。 閱讀 [我們的參考檔](/cli/azure/ext/spring-cloud/spring-cloud?view=azure-cli-latest)，以深入瞭解 Azure CLI。  
+> 您可以搭配 Azure CLI 來使用選擇性參數及設定預設值。 閱讀 [我們的參考檔](/cli/azure/ext/spring-cloud/spring-cloud?view=azure-cli-latest&preserve-view=true)，以深入瞭解 Azure CLI。  
 
 首先，安裝適用于 Azure CLI 的 Azure 春季雲端擴充功能，如下所示：
 

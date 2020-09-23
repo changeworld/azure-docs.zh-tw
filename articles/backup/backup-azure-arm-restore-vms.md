@@ -1,15 +1,15 @@
 ---
 title: 使用 Azure 入口網站來還原 Vm
-description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器
+description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器，包括跨區域還原功能。
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 582ec3e5409e5ada6f98a0c2db77c0bb73eaed18
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: d2b5c00df9f9b5b41877fe21181f11ea7fe76084
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050415"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986542"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -43,7 +43,7 @@ Azure 備份提供數種方式來還原 VM。
   - 還原非 premium Vm 時，不支援 premium 儲存體帳戶。
   - 還原受管理的 Vm 時，不支援以網路規則設定的 premium 儲存體帳戶。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 若要 (建立新的 VM) 來還原 VM，請確定您有正確的 Azure 角色型存取控制 (Azure RBAC) 還原 VM 操作的 [許可權](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) 。
 
@@ -138,18 +138,21 @@ Azure 備份提供數種方式來還原 VM。
 
 若要在預覽期間登入功能，請閱讀 [ [開始之前] 區段](./backup-create-rs-vault.md#set-cross-region-restore)。
 
-若要查看是否已啟用 CRR，請依照[設定跨區域還原](backup-create-rs-vault.md#configure-cross-region-restore)中的指示進行。
+若要查看是否已啟用 CRR，請依照「 [設定跨區域還原](backup-create-rs-vault.md#configure-cross-region-restore)」中的指示進行。
 
 ### <a name="view-backup-items-in-secondary-region"></a>查看次要區域中的備份專案
 
 如果已啟用 CRR，您可以在次要區域中查看備份專案。
 
-1. 從入口網站移至復原**服務保存庫**  >  **備份專案**
+1. 從入口網站移至 [復原**服務保存庫**  >  **備份專案**]。
 1. 選取 **次要區域** 以查看次要區域中的專案。
 
-    ![次要區域中的虛擬機器](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+>[!NOTE]
+>清單中只會顯示支援 CRR 功能的備份管理類型。 目前，僅支援將次要區域資料還原至次要區域。
 
-    ![選取次要區域](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
+![次要區域中的虛擬機器](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+
+![選取次要區域](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
 
 ### <a name="restore-in-secondary-region"></a>在次要區域中還原
 
@@ -260,7 +263,7 @@ Azure 備份提供數種方式來還原 VM。
 - 如果您將 VM 還原至相同的資源群組，並使用與原始備份 VM 相同的名稱，則會在還原後於 VM 上繼續進行備份。
 - 如果您將 VM 還原到不同的資源群組，或為還原的 VM 指定了不同的名稱，則您必須為還原的 VM 設定備份。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如果您在還原過程中遇到困難，[請檢閱](backup-azure-vms-troubleshoot.md#restore)常見問題和錯誤。
 - 還原 VM 之後，深入了解[管理虛擬機器](backup-azure-manage-vms.md)

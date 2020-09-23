@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 1af549feb551eca02bb1ef8df6481eceb959f6d1
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 4ad1bcabc2e30e9e636883219d42f96335e32e78
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042712"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987360"
 ---
 # <a name="what-is-azure-iot-central"></a>何謂 Azure IoT 中心？
 
@@ -152,9 +152,8 @@ IoT Central 應用程式完全由 Microsoft 裝載，可降低管理您的應用
 既然您已大致了解 IoT Central，以下是一些建議的後續步驟：
 
 - 了解可用於[建立 IoT 解決方案的 Azure 技術和服務](../../iot-fundamentals/iot-services-and-technologies.md)。
+- 如果您是裝置開發人員，而且想要深入了解一些程式碼，建議的下一個步驟是[建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式](./tutorial-connect-device-nodejs.md)。
 - 熟悉 [Azure IoT 中心 UI](overview-iot-central-tour.md)。
 - 從[建立 Azure IoT 中心應用程式](quick-deploy-iot-central.md)著手。
 - 了解如何[讓 Azure IoT Edge 裝置連線](./tutorial-add-edge-as-leaf-device.md)。
 - 深入了解 [Azure IoT 技術和服務](../../iot-fundamentals/iot-services-and-technologies.md)。
-
-如果您是裝置開發人員，而且想要深入了解一些程式碼，建議的下一個步驟是[建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式](./tutorial-connect-device-nodejs.md)。

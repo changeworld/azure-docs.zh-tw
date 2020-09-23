@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 中的串流分析匯出 | Microsoft Do
 description: 串流分析可以持續轉換、篩選和路由傳送您從 Application Insights 匯出的資料。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: d90b965ca65af0acf7032067c77591a2ac4d4b02
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e90daf2516b00f7a27ac47e34cfc4ace03fee6e2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324347"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979172"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用串流分析來處理從 Application Insights 匯出的資料
 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)是處理[從 Application Insights 匯出](export-telemetry.md)之資料的理想工具。 串流分析可以從各種來源提取資料。 它可以轉換和篩選資料，然後將它路由傳送至各種接收。
@@ -60,7 +60,7 @@ ms.locfileid: "87324347"
     此外，資料會匯出至您的儲存體。 
 2. 檢查匯出的資料。 在 Visual Studio 中，依序選擇 [檢視] 和 [Cloud Explorer]，然後依序開啟 [Azure] 和 [儲存體]。 (如果您沒有此功能表選項，您需要安裝 Azure SDK：開啟 [新增專案] 對話方塊，然後開啟 [Visual C#] / [Cloud] / [取得 Microsoft Azure SDK for .NET]。)
    
-    ![螢幕擷取畫面：顯示如何設定您想要查看的事件種類。](./media/export-stream-analytics/04-data.png)
+    ![螢幕擷取畫面，顯示如何設定您想要查看的事件種類。](./media/export-stream-analytics/04-data.png)
    
     記下衍生自應用程式名稱和檢測金鑰之路徑名稱的共同部分。 
 
@@ -69,13 +69,13 @@ ms.locfileid: "87324347"
 ## <a name="create-an-azure-stream-analytics-instance"></a>建立 Azure 串流分析執行個體
 在 [Azure 入口網站](https://portal.azure.com/)中，選取 Azure 串流分析服務，然後建立新的串流分析工作：
 
-![螢幕擷取畫面：顯示在 Azure 入口網站中建立串流分析作業的主頁面。](./media/export-stream-analytics/SA001.png)
+![顯示在 Azure 入口網站中建立串流分析工作之主頁面的螢幕擷取畫面。](./media/export-stream-analytics/SA001.png)
 
 ![顯示建立新的串流分析作業時所需詳細資料的螢幕擷取畫面。](./media/export-stream-analytics/SA002.png)
 
 建立新的工作之後，選取 [前往資源]。
 
-![螢幕擷取畫面：顯示新的串流分析作業部署成功時所收到的訊息。](./media/export-stream-analytics/SA003.png)
+![顯示新的串流分析作業部署成功時所收到訊息的螢幕擷取畫面。](./media/export-stream-analytics/SA003.png)
 
 ### <a name="add-a-new-input"></a>加入新的輸入
 
@@ -83,7 +83,7 @@ ms.locfileid: "87324347"
 
 將此設定為從您的連續匯出 Blob 接收輸入：
 
-![螢幕擷取畫面：顯示如何設定串流分析作業，以接受連續匯出 blob 的輸入。](./media/export-stream-analytics/SA0005.png)
+![顯示設定串流分析作業以從連續匯出 blob 取得輸入的螢幕擷取畫面。](./media/export-stream-analytics/SA0005.png)
 
 現在您需要儲存體帳戶的主要存取金鑰 (您已在稍早記下此金鑰)。 請將此金鑰設為儲存體帳戶金鑰。
 
@@ -109,7 +109,7 @@ ms.locfileid: "87324347"
 ## <a name="add-new-output"></a>新增輸出
 現在請依序選取您的工作 > [輸出] > [新增]。
 
-![顯示選取您的串流分析作業以新增新輸出的螢幕擷取畫面。](./media/export-stream-analytics/SA006.png)
+![顯示選取您的串流分析作業以新增輸出的螢幕擷取畫面。](./media/export-stream-analytics/SA006.png)
 
 
 ![選取新的通道，依序按一下 [輸出]、[新增]、[Power BI]](./media/export-stream-analytics/SA010.png)
@@ -196,7 +196,7 @@ FROM flat
 
 現在您可以使用報告中的此資料集和 [Power BI](https://powerbi.microsoft.com)中的儀表板。
 
-![在 Power BI 中，選取您的資料集和欄位。](./media/export-stream-analytics/210.png)
+![螢幕擷取畫面顯示從 Power BI 中的資料集所建立的報表範例。](./media/export-stream-analytics/210.png)
 
 ## <a name="no-data"></a>沒有資料？
 * 請檢查是否正確 [設定日期格式](#set-path-prefix-pattern) ：YYYY-MM-DD (含連接號)。

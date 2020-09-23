@@ -3,12 +3,12 @@ title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制以及最大值的資訊。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: b9b2b7217b854153f03d61713d8b4a1bcf5bfd9d
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: fcbca4a1e3152dfa36d71031c2f69e8a40125380
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89470165"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971037"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
@@ -239,10 +239,6 @@ ms.locfileid: "89470165"
 
 [!INCLUDE [azure-servicebus-limits](../../../includes/event-hubs-limits.md)]
 
-## <a name="identity-manager-limits"></a>Identity Manager 限制
-
-[!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
-
 ## <a name="iot-central-limits"></a>IoT Central 限制
 [!INCLUDE [iot-central-limits](../../../includes/iot-central-limits.md)]
 
@@ -257,6 +253,11 @@ ms.locfileid: "89470165"
 ## <a name="key-vault-limits"></a>金鑰保存庫限制
 
 [!INCLUDE [key-vault-limits](../../../includes/key-vault-limits.md)]
+
+## <a name="managed-identity-limits"></a>受控識別限制
+
+[!INCLUDE [Managed-Identity-Limits](../../../includes/managed-identity-limits.md)]
+
 
 ## <a name="media-services-limits"></a>媒體服務限制
 

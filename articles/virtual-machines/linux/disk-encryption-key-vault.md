@@ -1,18 +1,18 @@
 ---
 title: 建立及設定適用於 Azure 磁碟加密的金鑰保存庫
-description: 本文提供建立及設定金鑰保存庫，以與 Azure 磁碟加密搭配使用的步驟
+description: 本文提供的步驟可讓您建立及設定金鑰保存庫，以搭配 Linux VM 上的 Azure 磁碟加密使用。
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ecbc44a3fe376d41b245c88ab11c5937f57155a9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 0de1f1c1012315d2b9e6dd0297443f2633440869
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372683"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970975"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>建立及設定適用於 Azure 磁碟加密的金鑰保存庫
 
@@ -45,7 +45,7 @@ Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金�
 
 ### <a name="connect-to-your-azure-account"></a>連線至您的 Azure 帳戶
 
-在使用 Azure CLI 或 Azure PowerShell 之前，必須先連線到您的 Azure 訂閱。 若要這麼做，請[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)、[使用 Azure PowerShell 登入](/powershell/azure/authenticate-azureps?view=azps-2.5.0)，或在出現提示時將您的登入資訊提供給 Azure 入口網站。
+在使用 Azure CLI 或 Azure PowerShell 之前，必須先連線到您的 Azure 訂用帳戶。 若要這麼做，請[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)、[使用 Azure PowerShell 登入](/powershell/azure/authenticate-azureps?view=azps-2.5.0)，或在出現提示時將您的登入資訊提供給 Azure 入口網站。
 
 ```azurecli-interactive
 az login

@@ -7,14 +7,16 @@ ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 0287bc8a11c359acce5fbf12d3a51e99a9f5420e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 5ca8f2b003b7f2142da329a07f929ecf31fee627
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297139"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908268"
 ---
 # <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>將適用於 MySQL 的 Azure 資料庫執行個體繫結至您的 Azure Spring Cloud 應用程式 
+
+本文**適用于：** ✔️ JAVA
 
 透過 Azure Spring Cloud，您可以將特定的 Azure 服務自動繫結至應用程式，而無須手動設定 Spring Boot 應用程式。 本文說明如何將應用程式繫結至適用於 MySQL 的 Azure 資料庫執行個體。
 

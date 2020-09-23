@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/27/2020
-ms.openlocfilehash: 9b3e1916301d6346defd6ebeab2f3784882f2d5f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0c390c64db8c5833f5bc5bf2be3367cb63127a0f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798851"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902655"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立適用於 PostgreSQL 的 Azure 資料庫伺服器
 
@@ -34,17 +34,17 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 2. 選取 [資料庫]   > [Azure Database for PostgreSQL]  。
 
    > [!div class="mx-imgBorder"]
-   > ![顯示功能表上「適用於 PostgreSQL 的 Azure 資料庫」的螢幕擷取畫面。](./media/quickstart-create-database-portal/1-create-database.png)
+   > :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="顯示功能表上「適用於 PostgreSQL 的 Azure 資料庫」的螢幕擷取畫面。":::
 
 3. 選取 [單一伺服器]  部署選項。
 
    > [!div class="mx-imgBorder"]
-   > ![螢幕擷取畫面：針對適用於 PostgreSQL 的 Azure 資料庫選取單一伺服器部署選項。](./media/quickstart-create-database-portal/select-deployment-option.png)
+   > :::image type="content" source="./media/quickstart-create-database-portal/select-deployment-option.png" alt-text="螢幕擷取畫面：針對適用於 PostgreSQL 的 Azure 資料庫選取單一伺服器部署選項。":::
 
 4. 在 [基本資料] 表單中填寫下列資訊。
 
    > [!div class="mx-imgBorder"]
-   > ![螢幕擷取畫面：顯示用於建立單一伺服器的 [基本資料] 索引標籤。](./media/quickstart-create-database-portal/create-basics.png)
+   > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="螢幕擷取畫面：顯示用於建立單一伺服器的 [基本資料] 索引標籤。":::
 
    設定|建議的值|描述
    ---|---|---
@@ -71,7 +71,7 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 根據預設，您建立的伺服器不是可公開存取的。 您必須向 IP 位址授與權限。 請移至 Azure 入口網站中的伺服器資源，然後從伺服器資源的左側功能表選取 [連線安全性]。 如果您不確定如何尋找您的資源，請參閱[開啟資源](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources)。
 
 > [!div class="mx-imgBorder"]
-> ![顯示連線安全性防火牆規則的螢幕擷取畫面。](./media/quickstart-create-database-portal/add-current-ip-firewall.png)
+> :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="顯示連線安全性防火牆規則的螢幕擷取畫面。":::
   
 選取 [新增目前的用戶端 IP 位址]，然後選取 [儲存]。 您可以新增更多 IP 位址或提供 IP 範圍，以便從這些 IP 位址連線到您的伺服器。 如需詳細資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫中的防火牆規則](./concepts-firewall-rules.md)。
    
@@ -90,7 +90,7 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
    > 如果您是第一次啟動 Cloud Shell，則會看到要您建立資源群組和儲存體帳戶的提示。 這是一次性的步驟，而且會針對所有工作階段自動連接。 
 
    > [!div class="mx-imgBorder"]
-   > ![螢幕擷取畫面：顯示用於開啟 Azure Cloud Shell 的伺服器資訊和圖示。](media/quickstart-create-database-portal/use-in-cloud-shell.png)
+   > :::image type="content" source="media/quickstart-create-database-portal/use-in-cloud-shell.png" alt-text="螢幕擷取畫面：顯示用於開啟 Azure Cloud Shell 的伺服器資訊和圖示。":::
 
 3. 在 Azure Cloud Shell 終端機內執行下列命令。 將值取代為實際的伺服器名稱和管理員使用者登入名稱。 以下列格式使用空白資料庫 **postgres** 和管理使用者：`<admin-username>@<servername>`。
 
@@ -143,7 +143,7 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 若要刪除伺服器，請在伺服器的 [概觀] 頁面上，選取 [刪除] 按鈕：
 
 > [!div class="mx-imgBorder"]
-> ![螢幕擷取畫面：顯示用於刪除伺服器的按鈕。](media/quickstart-create-database-portal/12-delete.png)
+> :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="螢幕擷取畫面：顯示用於刪除伺服器的按鈕。":::
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]

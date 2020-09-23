@@ -4,12 +4,12 @@ description: Azure 應用程式服務的應用程式效能監視。 圖表載入
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript, devx-track-dotnet
-ms.openlocfilehash: 1e06aacaa12a428b42090ecb8e8ae89ae1e5ad76
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 952cd9669ecc3fb5ff1326d15aef25e1a1524ca5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933778"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979430"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 
@@ -55,7 +55,7 @@ ms.locfileid: "88933778"
 
 2. 在指定要使用的資源之後，您可以選擇要如何讓 Application Insights 收集每個應用程式平台的資料。 ASP.NET 應用程式監視預設會使用兩個不同的集合層級來開啟。
 
-    ![選擇每個平台的選項](./media/azure-web-apps/choose-options-new.png)
+    ![螢幕擷取畫面顯示已選取 [建立新資源] Application Insights [網站擴充功能] 頁面。](./media/azure-web-apps/choose-options-new.png)
  
  以下是針對每個路由收集的資料摘要：
         
@@ -65,7 +65,7 @@ ms.locfileid: "88933778"
 | 收集使用趨勢，並啟用從可用性結果到交易的相互關聯 | 是 |是 |
 | 收集主機程序未處理的例外狀況 | 是 |是 |
 | 在使用取樣時，改善 APM 計量在負載下的精確度 | 是 |是 |
-| 將不同要求/相依性界限間的微服務相互關聯 | 無 (單一實例 APM 功能)  |是 |
+| 將不同要求/相依性界限間的微服務相互關聯 | 無 (單一實例 APM 功能)  |Yes |
 
 3. 若要進行設定（例如取樣）（您先前可以透過 applicationinsights.config 檔案來控制），您現在可以透過具有對應前置詞的應用程式設定，與這些相同的設定互動。 
 
@@ -340,7 +340,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 * [透過 PowerShell 進行升級](#enabling-through-powershell)：
 
-    1. 設定應用程式設定，以啟用預先安裝的網站延伸模組 ApplicationInsightsAgent。 請參閱 [透過 Powershell 啟用](#enabling-through-powershell)。
+    1. 設定應用程式設定，以啟用預先安裝的網站延伸模組 ApplicationInsightsAgent。 請參閱 [透過 PowerShell 啟用](#enabling-through-powershell)。
     2. 手動移除名為 Azure App Service Application Insights 擴充功能的私用網站延伸模組。
 
 如果是從2.5.1 之前的版本進行升級，請檢查是否已從應用程式 bin 資料夾中移除 ApplicationInsigths dll， [請參閱疑難排解步驟](#troubleshooting)。
@@ -407,7 +407,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 使用無程式碼監視時，只需要連接字串。 不過，我們仍然建議您在執行手動檢測時，設定檢測金鑰，以保持與舊版 SDK 的回溯相容性。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * [在即時應用程式上執行分析工具](./profiler.md)。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - 使用 Application Insights 監視 Azure Functions
 * [能夠讓 Azure 診斷](../platform/diagnostics-extension-to-application-insights.md) 傳送至 Application Insights。
