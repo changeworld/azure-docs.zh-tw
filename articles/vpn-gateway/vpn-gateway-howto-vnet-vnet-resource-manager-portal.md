@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: b14f3c241fd21d3d4f9c4e17ae95d8048139cec1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 12ab54e51b26c4b3d77f5518d4e4f44efe34affd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442866"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983315"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 入口網站設定 VNet 對 VNet 的 VPN 閘道連線
 
@@ -178,7 +178,7 @@ ms.locfileid: "89442866"
    ![驗證連接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png "驗證連接")
 3. 在 [ **名稱** ] 資料行底下，選取其中一個連接以查看詳細資訊。 當資料開始流動時，您會看到 [資料輸入]**** 和 [資料輸出]**** 的值。
 
-   ![狀態](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png "狀態")
+   ![螢幕擷取畫面顯示具有資料和資料輸出值的資源群組。](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png "狀態")
 
 ## <a name="add-additional-connections"></a>新增其他連線
 
@@ -189,7 +189,7 @@ ms.locfileid: "89442866"
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 如需如何在虛擬網路中限制資源網路流量的資訊，請參閱[網路安全性](../virtual-network/security-overview.md)。
 

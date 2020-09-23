@@ -3,12 +3,12 @@ title: 原則豁免結構的詳細資料
 description: 描述 Azure 原則用來免除評估計畫或定義之資源的原則豁免定義。
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3e6a6c9bc7993161697187b6131994c1973b49d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1fd14d31824dc86dcd3788607030f28f978f5801
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934124"
+ms.locfileid: "90968038"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure 原則豁免結構
 
@@ -99,11 +99,12 @@ Azure 原則豁免 (preview) 功能是用來 _豁免_ 資源階層或個別資�
 
 如果 `policyAssignmentId` 是方案指派的， `policyDefinitionReferenceIds` 屬性可用來指定在主體資源有豁免的方案中， (s) 的原則定義。 因為可能會從一或多個包含的原則定義中豁免資源，所以這個屬性是 _陣列_。 這些值必須符合欄位中計畫定義中的值 `policyDefinitions.policyDefinitionReferenceId` 。
 
-## <a name="required-permissions"></a>所需的權限
+## <a name="exemption-category"></a>豁免分類
 
-管理原則豁免物件所需的 Azure RBAC 許可權位於作業 `Microsoft.Authorization/policyExemptions` 群組中。 內建角色的 [資源原則參與者](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor) 和 [安全性系統管理員](../../../role-based-access-control/built-in-roles.md#security-admin) 都具有 `read` 和 `write` 許可權，而 [原則見解資料寫入器外掛程式 (預覽) ](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) 具有 `read` 許可權。
+有兩個豁免類別存在，用來分組豁免：
 
-豁免有額外的安全性措施，因為授與豁免的影響。 除了要求 `Microsoft.Authorization/policyExemptions/write` 資源階層或個別資源上的作業之外，豁免的建立者必須在 `exempt/Action` 目標指派上擁有動詞。
+- 緩和 **：已**授與豁免，因為原則意圖是透過另一個方法達成。
+- **棄權**：因為暫時接受資源的非合規性狀態，所以會授與豁免。 使用此類別目錄的另一個原因，是針對應從計畫中的一或多個定義排除的資源或資源階層，但不應該從整個計畫中排除。
 
 ## <a name="expiration"></a>到期
 
@@ -111,6 +112,12 @@ Azure 原則豁免 (preview) 功能是用來 _豁免_ 資源階層或個別資�
 
 > [!NOTE]
 > 到達日期時，不會刪除原則豁免 `expiresOn` 。 保留物件以進行記錄保留，但不再接受豁免。
+
+## <a name="required-permissions"></a>所需的權限
+
+管理原則豁免物件所需的 Azure RBAC 許可權位於作業 `Microsoft.Authorization/policyExemptions` 群組中。 內建角色的 [資源原則參與者](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor) 和 [安全性系統管理員](../../../role-based-access-control/built-in-roles.md#security-admin) 都具有 `read` 和 `write` 許可權，而 [原則見解資料寫入器外掛程式 (預覽) ](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) 具有 `read` 許可權。
+
+豁免有額外的安全性措施，因為授與豁免的影響。 除了要求 `Microsoft.Authorization/policyExemptions/write` 資源階層或個別資源上的作業之外，豁免的建立者必須在 `exempt/Action` 目標指派上擁有動詞。
 
 ## <a name="next-steps"></a>後續步驟
 

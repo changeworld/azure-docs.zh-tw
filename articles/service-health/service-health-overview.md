@@ -1,14 +1,14 @@
 ---
 title: 服務健康狀態概觀 | Microsoft Docs
-description: 目前和未來的 Azure 服務問題和維修如何影響 Azure 應用程式的個人化資訊。
+description: 瞭解服務健康狀態如何為您提供可自訂的儀表板，以在您使用這些服務的區域中追蹤 Azure 服務的健康情況。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 2f2f0c8bf2cf4fe5beae7d48b198a23edba4e9ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8246b0ab93b95c13858e4ff96d0f24b255d05e55
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089595"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967792"
 ---
 # <a name="service-health-overview"></a>服務健康狀態總覽
 
@@ -16,15 +16,15 @@ ms.locfileid: "87089595"
 
 ## <a name="service-health-events"></a>服務健康情況事件
 
-服務健康狀態會追蹤可能會影響您資源的四種健康情況事件：
+服務健康狀態會追蹤四種類型的健康情況事件，這些事件可能會影響您的資源：
 
 1. **服務的問題** - 立即影響 Azure 服務的問題。 
 2. **規劃的維護** - 未來可能影響服務可用性的後續維修。  
-3. **健康情況摘要報告** - 需要注意的 Azure 服務變更。 範例包括取代 Azure 功能或升級需求（例如升級為支援的 PHP 架構）。
-4. **安全性**摘要報告-可能會影響 Azure 服務可用性的安全性相關通知或違規。
+3. **健康情況摘要報告** - 需要注意的 Azure 服務變更。 範例包括取代 Azure 功能或升級需求 (例如升級至支援的 PHP 架構) 。
+4. **安全性** 摘要報告：安全性相關的通知或違規，可能會影響您的 Azure 服務可用性。
 
 > [!NOTE]
-> 若要查看服務健康狀態事件，使用者必須被[授與](../role-based-access-control/role-assignments-portal.md)訂用帳戶的「讀者」角色。
+> 若要查看服務健康狀態事件，使用者必須被 [授與](../role-based-access-control/role-assignments-portal.md) 訂用帳戶的「讀取者」角色。
 
 ## <a name="get-started-with-service-health"></a>開始使用服務健康情況
 
@@ -42,15 +42,15 @@ ms.locfileid: "87089595"
 
 [![管理服務問題 - 影響](./media/service-health-overview/azure-service-health-overview-4.png)](./media/service-health-overview/azure-service-health-overview-4.png#lightbox)
 
-## <a name="see-emerging-issues-which-may-impact-your-services"></a>查看可能會對您的服務造成影響的新興問題
+## <a name="see-emerging-issues-which-may-impact-your-services"></a>查看可能影響您的服務的新興問題
 
-在某些情況下，可能會將廣泛的服務問題張貼到[Azure 狀態頁面](https://status.azure.com)，才能將目標通訊傳送給受影響的客戶。 為了確保 Azure 服務健康狀態提供可能會影響您的問題的全面觀點，會將作用中的 Azure 狀態頁面問題呈現在服務健康狀態中，成為*新的問題*。 當活動在 [Azure 狀態] 頁面上作用時，服務健康狀態中會出現新興問題橫幅。 按一下橫幅以查看問題的完整詳細資料。
+在某些情況下，可能會有廣泛的服務問題張貼到 [Azure 狀態頁面](https://status.azure.com) ，然後才能將目標通訊傳送給受影響的客戶。 為了確保 Azure 服務健康狀態能全面瞭解可能影響您的問題，使用中的 Azure 狀態頁面問題會在服務健康狀態中顯示為 *新的問題*。 當事件在 Azure 狀態頁面上處於作用中狀態時，會在服務健康狀態中出現新興的問題橫幅。 按一下橫幅以查看問題的完整詳細資料。
 
 ![新興服務問題](./media/service-health-overview/azure-service-health-emerging-issue.png)
 
 ## <a name="get-links-and-downloadable-explanations"></a>取得連結和可下載的說明 
 
-您可以取得問題的連結，以便在您的問題管理系統中使用。 您可以下載 PDF 和有時 CSV 檔案，與沒有 Azure 入口網站存取權的人員共用。   
+您可以取得問題的連結，以便在您的問題管理系統中使用。 您可以下載 PDF，有時也可以下載 CSV 檔案，以與沒有 Azure 入口網站存取權的人員共用。   
 
 [![管理服務問題 - 問題管理](./media/service-health-overview/azure-service-health-overview-3.png)](./media/service-health-overview/azure-service-health-overview-3.png#lightbox)
 
@@ -68,10 +68,10 @@ ms.locfileid: "87089595"
 
 ## <a name="configure-service-health-alerts"></a>設定服務健康狀態警示
 
-服務健康狀態已整合 Azure 監視器，當您的業務關鍵資源受到影響時，就會透過電子郵件、簡訊和 Webhook 通知向您發出警示。 設定適當服務健康狀態事件的活動記錄警示。 使用動作群組，將該警示傳送給組織中的適當人員。 如需詳細資訊，請參閱[設定服務健康狀態的警示](./alerts-activity-log-service-notifications-portal.md)
+服務健康狀態已整合 Azure 監視器，當您的業務關鍵資源受到影響時，就會透過電子郵件、簡訊和 Webhook 通知向您發出警示。 設定適當服務健康狀態事件的活動記錄警示。 使用動作群組，將該警示傳送給組織中的適當人員。 如需詳細資訊，請參閱 [設定服務健康狀態的警示](./alerts-activity-log-service-notifications-portal.md)
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-設定警示，如此就能收到健康情況問題的通知。 如需詳細資訊，請參閱[設定 Azure 服務健康狀態警示的最佳做法](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s)。 
+設定警示，如此就能收到健康情況問題的通知。 如需詳細資訊，請參閱 [設定 Azure 服務健康狀態警示的最佳做法](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s)。 

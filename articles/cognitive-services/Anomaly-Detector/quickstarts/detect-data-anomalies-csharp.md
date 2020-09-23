@@ -8,28 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a364588d77fb24e96c831ce541c5bb4e63d93e98
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a5a3757a33beebb6e688dbea13259723da9280cc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922339"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904564"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>快速入門：使用 Anomaly Detector REST API 與 C# 偵測時間序列資料中的異常狀況
 
-使用本快速入門以開始使用 Anomaly Detector API 的兩個偵測模式，來偵測時間序列資料中的異常狀況。 此 C# 應用程式會傳送包含 JSON 格式時間序列資料的兩個 API 要求，並取得回應。
+使用本快速入門，開始使用 Anomaly Detector API 來偵測時間序列資料中的異常狀況。 此 C# 應用程式會傳送包含 JSON 格式時間序列資料的 API 要求，並取得回應。
 
 | API 要求                                        | 應用程式輸出                                                                                                                                         |
 |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 以批次方式偵測異常狀況                        | JSON 回應包含時間序列資料中每個資料點的異常狀態 (和其他資料)，以及偵測到的任何異常狀況的位置。 |
-| 偵測最新資料點的異常狀態 | JSON 回應包含時間序列資料中最新資料點的異常狀態 (和其他資料)。                                        |
+| 偵測最新資料點的異常狀態 | JSON 回應包含時間序列資料中最新資料點的異常狀態 (和其他資料)。 |
+| 偵測標示新資料趨勢的變更點 | JSON 回應包含時間序列資料中偵測到的變更點。 |
 
- 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs) 上找到此快速入門的原始程式碼。
+雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs) 上找到此快速入門的原始程式碼。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 - 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="建立異常偵測器資源"  target="_blank">建立異常偵測器資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 部署完成後，按一下 [移至資源] 按鈕。
@@ -61,6 +62,7 @@ ms.locfileid: "88922339"
     |------------------------------------|--------------------------------------------------|
     | 批次偵測                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
     | 最新資料點上的偵測 | `/anomalydetector/v1.0/timeseries/last/detect`   |
+    | 變更點偵測 | `/anomalydetector/v1.0/timeseries/changepoint/detect`   |
 
     [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
@@ -95,6 +97,18 @@ ms.locfileid: "88922339"
 
     [!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
 
+## <a name="detect-change-points-in-the-data"></a>偵測資料中的變更點
+
+1. 建立名為 `detectChangePoints()` 的新函式。 使用您的端點、批次異常偵測 URL、訂用帳戶金鑰以及時間序列資料呼叫 `Request()` 函式，進而建構要求並加以傳送。
+
+2. 將 JSON 物件還原序列化，並將它寫入到主控台。
+
+3. 如果回應包含 `code` 欄位，則列印錯誤碼和錯誤訊息。
+
+4. 否則，在資料集中尋找變更點的位置。 回應的 `isChangePoint` 欄位包含布林值陣列，其中每個值都會指出系統是否將資料點識別為變更點。 使用回應物件的 `ToObject<bool[]>()` 函式，將其轉換成字串陣列。 逐一查看陣列，並列印任何 `true` 值的索引。 如果有找到這些值，則會對應到趨勢變更點的索引。
+
+    [!code-csharp[Detect change points](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectChangePoints)]
+
 ## <a name="load-your-time-series-data-and-send-the-request"></a>載入時間序列資料，並傳送要求
 
 1. 在您應用程式的主要方法中，使用 `File.ReadAllText()` 載入 JSON 時間序列資料。
@@ -108,5 +122,6 @@ ms.locfileid: "88922339"
 成功的回應會以 JSON 格式傳回。 按一下以下連結，在 GitHub 上檢視 JSON 回應：
 * [批次偵測回應範例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [最新資料點偵測回應範例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+* [變更資料點偵測回應範例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/change-point-sample.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

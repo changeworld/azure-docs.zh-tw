@@ -1,5 +1,5 @@
 ---
-title: 什麼是 Azure Sentinel？| Microsoft Docs
+title: 什麼是 Azure Sentinel？ | Microsoft Docs
 description: 深入了解 Azure Sentinel，這是一個可調整的雲端原生安全性資訊事件管理 (SIEM) 和安全性協調流程自動化回應 (SOAR) 解決方案。
 services: sentinel
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: ebc9756afc43648f2b44ca317abe3373807f4efa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 68ccd21af585d853592ab8cce24f251d810a4160
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564628"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889204"
 ---
 # <a name="what-is-azure-sentinel"></a>什麼是 Azure Sentinel？
 
@@ -43,7 +43,7 @@ Azure Sentinel 以完方位的現有 Azure 服務為基礎，原生併入經過�
 
 ## <a name="connect-to-all-your-data"></a>連線到您所有的資料
 
-若要將 Azure Sentinel 上架，必須先[連線到安全性來源](connect-data-sources.md)。 Azure Sentinel 隨附多種適用於 Microsoft 解決方案的連接器，現成可用且提供即時整合，包括 Microsoft 威脅防護解決方案與 Microsoft 365 來源，例如 Office 365、Azure AD、Azure ATP 和 Microsoft Cloud App Security 等等。 此外，還有適用於非 Microsoft 解決方案的內建連接器，用於連線至更廣泛的安全性生態系統。 您也可以使用常見事件格式 (Syslog 或 REST API) 來連線資料來源與 Azure Sentinel。  
+若要將 Azure Sentinel 上架，必須先[連線到安全性來源](connect-data-sources.md)。 Azure Sentinel 隨附多種適用於 Microsoft 解決方案的連接器，現成可用且提供即時整合，包括 Microsoft 365 Defender (前稱 Microsoft 威脅防護) 解決方案和 Microsoft 365 來源，包括 Office 365、Azure AD、Microsoft Defender for Identity (前稱 Azure ATP) 以及 Microsoft Cloud App Security 等等。 此外，還有適用於非 Microsoft 解決方案的內建連接器，用於連線至更廣泛的安全性生態系統。 您也可以使用常見事件格式 (Syslog 或 REST API) 來連線資料來源與 Azure Sentinel。 
 
 ![資料收集器](./media/collect-data/collect-data-page.png)
 
@@ -82,13 +82,13 @@ Azure Sentinel [深入調查](tutorial-investigate-cases.md)工具目前處於�
 
 使用 Azure Sentinel 的[強大搜捕搜尋查詢工具](hunting.md) ( MITRE 架構為基礎)，可讓您在警示觸發之前，主動搜捕貴組織各資料來源的安全性威脅。 在您發現哪個搜捕查詢可提供可能攻擊的寶貴見解之後，您也可以根據您的查詢建立自訂偵測規則，以及將這些見解當作警示向您的安全性事件回應程式呈現。 進行搜捕時，您可以為感興趣的事件建立書籤，以便稍後返回、與他人分享，以及與其他相互關聯事件構成群組，以建立令人注目的調查事件。
 
-![搜捕](./media/overview/hunting.png)
+![搜捕功能概觀](./media/overview/hunting.png)
 
 ## <a name="community"></a>社群
 
 Azure Sentinel 是威脅偵測和自動化的強大資源。 我們的 Microsoft 安全性分析師會不斷地建立和新增活頁簿、劇本、搜捕查詢和更多項目，並將這些項目張貼到社群，以便您在自己的環境中使用。 您可以從私人社群 GitHub [存放庫](https://aka.ms/asicommunity)下載範例內容，以便為 Azure Sentinel 建立自訂活頁簿、搜捕查詢、筆記本和劇本。 
 
-![社群](./media/overview/community.png)
+![探索使用者社群](./media/overview/community.png)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4a62520a9807cd99b5c353c32bb13058fc471a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a3dd1c0df32e7d6a67e63c9e148327d30f0082c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771354"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904733"
 ---
-# <a name="azure-security-center-readiness-roadmap"></a>Azure 資訊安全中心整備藍圖
+# <a name="azure-security-center-readiness-roadmap"></a>Azure 資訊安全中心就緒藍圖
 本文件提供的整備藍圖將協助您開始使用 Azure 資訊安全中心。
 
 ## <a name="understanding-security-center"></a>了解資訊安全中心
@@ -29,12 +29,12 @@ Azure 資訊安全中心提供統一的安全性管理和進階的威脅防護�
 使用下列資源來開始使用資訊安全中心。
 
 發行項
-* [Azure 資訊安全中心簡介](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* [Azure 資訊安全中心快速入門指南](https://docs.microsoft.com/azure/security-center/security-center-get-started)
+- [Azure 資訊安全中心簡介](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- [Azure 資訊安全中心快速入門指南](https://docs.microsoft.com/azure/security-center/security-center-get-started)
 
 影片
-* [快速簡介影片](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
-* [資訊安全中心的防護、偵測及回應功能概觀](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
+- [快速簡介影片](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
+- [資訊安全中心的防護、偵測及回應功能概觀](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
 
 ## <a name="planning-and-operations"></a>規劃與作業
 
@@ -42,20 +42,16 @@ Azure 資訊安全中心提供統一的安全性管理和進階的威脅防護�
 
 使用下列資源可協助您進行規劃和操作程序。
 
-發行項
-* [Azure 資訊安全中心規劃和操作指南](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Azure 資訊安全中心規劃和操作指南](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>將電腦上架到資訊安全中心
-資訊安全中心會自動偵測未向資訊安全中心標準版啟用的任何 Azure 訂用帳戶或工作區。 這包括使用未啟用安全性解決方案之資訊安全中心免費版和工作區的 Azure 訂用帳戶。
+「安全性中心」會自動偵測任何未受 Azure Defender 保護的 Azure 訂用帳戶或工作區。 這包括使用未啟用安全性解決方案的安全中心免費和工作區的 Azure 訂用帳戶。
 
 使用下列資源可協助您進行上架程序。
 
-發行項
-* [上架到 Azure 資訊安全中心標準版以增強安全性](https://docs.microsoft.com/azure/security-center/security-center-onboarding)
-
-影片
-* [Azure 資訊安全中心混合式資源 - 概觀](https://youtu.be/NMa4L_M597k)
+- [上架非 Azure 電腦](quickstart-onboard-machines.md)
+- [Azure 資訊安全中心混合式資源 - 概觀](https://youtu.be/NMa4L_M597k)
 
 ## <a name="mitigating-security-issues-using-security-center"></a>使用資訊安全中心緩和安全性問題
 資訊安全中心會自動收集、分析及整合您 Azure 資源、網路和已連線的合作夥伴解決方案 (例如防火牆和端點保護解決方案) 的記錄檔資料，來偵測真正的威脅並減少誤判情形。
@@ -63,14 +59,13 @@ Azure 資訊安全中心提供統一的安全性管理和進階的威脅防護�
 使用下列資源可協助您管理安全性警示及保護您的資源。
 
 發行項    
-* [Azure 資訊安全中心的安全性健康情況監視](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [保護 Azure 資訊安全中心內的機器和應用程式](security-center-virtual-machine-protection.md)
-* [保護 Azure 資訊安全中心內的網路](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-* [保護 Azure 資訊安全中心內的 Azure SQL 服務和資料](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
+- [Azure 資訊安全中心的安全性健康情況監視](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
+- [保護 Azure 資訊安全中心內的網路](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [保護 Azure 資訊安全中心內的 Azure SQL 服務和資料](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
 
 影片    
-* [使用 Azure 資訊安全中心緩和安全性問題](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
+- [使用 Azure 資訊安全中心緩和安全性問題](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
 
 ### <a name="security-center-for-incident-response"></a>可供進行事件回應的資訊安全中心
 為了降低成本和損害，一定要在攻擊發生前備妥事件回應計劃。 您可以在不同階段的事件回應使用 Azure 資訊安全中心。
@@ -119,6 +114,4 @@ Azure VM 可以利用資訊安全中心的進階雲端防禦功能。 這些功�
 ## <a name="community-resources"></a>社群資源
 
 * [資訊安全中心 UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
-* [Microsoft 的資訊安全中心問與答頁面](https://docs.microsoft.com/answers/topics/azure-security-center.html)
-
-
+* [問&安全性中心的頁面](https://docs.microsoft.com/answers/topics/azure-security-center.html)

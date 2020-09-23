@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: f4b43129db5288275434253545861f3eae218e82
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 1ba383b99b8265e01cf757bfb1589a86a934e0e3
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89503783"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053866"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教學課程：建立 Azure Red Hat OpenShift 4 叢集
 
@@ -104,20 +104,22 @@ Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容
    CLUSTER=cluster                 # the name of your cluster
    ```
 
-1. **建立資源群組。**
+2. **建立資源群組。**
 
-    Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 建立資源群組時，系統會要求您指定位置。 此位置是儲存資源群組中繼資料的位置，如果您未在資源建立期間指定另一個區域，此位置也會是您在 Azure 中執行資源的位置。 使用 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令來建立資源群組。
+Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 建立資源群組時，系統會要求您指定位置。 此位置是儲存資源群組中繼資料的位置，如果您未在資源建立期間指定另一個區域，此位置也會是您在 Azure 中執行資源的位置。 使用 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令來建立資源群組。
     
-> [!NOTE]
+> [!NOTE] 
 > Azure Red Hat OpenShift 無法在可建立 Azure 資源群組的所有區域中使用。 如需支援 Azure Red Hat OpenShift 區域的相關資訊，請參閱[可用區域](https://docs.openshift.com/aro/4/welcome/index.html#available-regions)。
 
-    ```azurecli-interactive
-    az group create --name $RESOURCEGROUP --location $LOCATION
-    ```
+```azurecli-interactive
+az group create \
+  --name $RESOURCEGROUP \
+  --location $LOCATION
+```
 
-    The following example output shows the resource group created successfully:
+下列範例輸出顯示已成功建立的資源群組：
 
-    ```json
+```json
     {
     "id": "/subscriptions/<guid>/resourceGroups/aro-rg",
     "location": "eastus",
@@ -128,24 +130,24 @@ Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容
     },
     "tags": null
     }
-    ```
+```
 
-2. **建立虛擬網路。**
+3. **建立虛擬網路。**
 
-    執行 OpenShift 4 的 Azure Red Hat OpenShift 叢集需要具有兩個空白子網路的虛擬網路，分別用於主要節點和背景工作角色節點。
+執行 OpenShift 4 的 Azure Red Hat OpenShift 叢集需要具有兩個空白子網路的虛擬網路，分別用於主要節點和背景工作角色節點。
 
-    在您稍早建立的相同資源群組中建立新的虛擬網路：
+在您稍早建立的相同資源群組中建立新的虛擬網路：
 
-    ```azurecli-interactive
-    az network vnet create \
-    --resource-group $RESOURCEGROUP \
-    --name aro-vnet \
-    --address-prefixes 10.0.0.0/22
-    ```
+```azurecli-interactive
+az network vnet create \
+   --resource-group $RESOURCEGROUP \
+   --name aro-vnet \
+   --address-prefixes 10.0.0.0/22
+```
 
-    下列範例輸出顯示已成功建立的虛擬網路：
+下列範例輸出顯示已成功建立的虛擬網路：
 
-    ```json
+```json
     {
     "newVNet": {
         "addressSpace": {
@@ -161,9 +163,9 @@ Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容
         "type": "Microsoft.Network/virtualNetworks"
     }
     }
-    ```
+```
 
-3. **為主要節點新增空白子網路。**
+4. **為主要節點新增空白子網路。**
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -174,7 +176,7 @@ Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-4. **為背景工作節點新增空白子網路。**
+5. **為背景工作節點新增空白子網路。**
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -185,7 +187,7 @@ Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **[停用主要子網上的子網路私人端點原則](../private-link/disable-private-link-service-network-policy.md)。** 這是能夠連線和管理叢集的必要條件。
+6. **[停用主要子網上的子網路私人端點原則](../private-link/disable-private-link-service-network-policy.md)。** 這是能夠連線和管理叢集的必要條件。
 
     ```azurecli-interactive
     az network vnet subnet update \

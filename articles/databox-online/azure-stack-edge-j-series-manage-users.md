@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU 管理使用者 |Microsoft Docs
-description: 說明如何使用 Azure 入口網站來管理 Azure Stack Edge GPU 上的使用者。
+title: Azure Stack Edge Pro GPU 管理使用者 |Microsoft Docs
+description: 說明如何使用 Azure 入口網站管理 Azure Stack Edge Pro GPU 上的使用者。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 8400f134c7a2b9da32c04e15e42a54f697b9cea6
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5f7e8c09a09084b28278667cdeaf94f7e38908cd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254180"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904511"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge"></a>使用 Azure 入口網站來管理您 Azure Stack Edge 上的使用者
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>使用 Azure 入口網站管理 Azure Stack Edge Pro 上的使用者
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文說明如何管理 Azure Stack Edge 上的使用者。 您可以透過 Azure 入口網站或透過本機 web UI 來管理 Azure Stack Edge。 使用 Azure 入口網站來新增、修改或刪除使用者。
+本文說明如何管理 Azure Stack Edge Pro 上的使用者。 您可以透過 Azure 入口網站或透過本機 web UI 來管理 Azure Stack Edge Pro。 使用 Azure 入口網站來新增、修改或刪除使用者。
 
 在本文中，您將學會如何：
 
@@ -42,7 +42,7 @@ ms.locfileid: "89254180"
 
 在 Azure 入口網站中執行下列步驟，以新增使用者。
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **[總覽 > 使用者**]。 選取命令列上的 [+ 新增使用者]****。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **[總覽 > 使用者**]。 選取命令列上的 [ **+ 新增使用者** ]。
 
     ![選取新增使用者](media/azure-stack-edge-j-series-manage-users/add-user-1.png)
 

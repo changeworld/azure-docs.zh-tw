@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: cc9cb06c2154202f319d57aa77700a356ffe19c1
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 18367ec163511fac2e90cc5dd0dd0ad6b091afc9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419566"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976214"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>關於 VPN 閘道組態設定
 
@@ -27,8 +27,6 @@ VPN 閘道連線依賴多個資源的設定，每一個都包含可設定的設�
 * 如需了解區域備援閘道，請參閱[關於區域備援閘道](about-zone-redundant-vnet-gateways.md)。
 
 * 如需了解虛擬 WAN，請參閱[關於虛擬 WAN](../virtual-wan/virtual-wan-about.md)。
-
-
 
 ## <a name="gateway-types"></a><a name="gwtype"></a>閘道類型
 
@@ -152,9 +150,9 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ## <a name="local-network-gateways"></a><a name="lng"></a>區域網路閘道
 
- 區域網路閘道與虛擬網路閘道並不相同。 建立 VPN 閘道設定時，區域網路閘道通常代表您的內部部署位置。 在傳統部署模型中，區域網路閘道被稱為本機站台。
+區域網路閘道與虛擬網路閘道並不相同。 建立 VPN 閘道設定時，局域網路閘道通常代表您的內部部署網路和對應的 VPN 裝置。 在傳統部署模型中，區域網路閘道被稱為本機站台。
 
-您需指定區域網路閘道的名稱 (即內部部署 VPN 裝置的公用 IP 位址)，並指定位於內部部署位置的位址首碼。 Azure 會查看網路流量的目的地位址首碼、查閱您為區域網路閘道指定的組態，然後根據這些來路由傳送封包。 您也可以針對使用 VPN 閘道連線的 VNet 對 VNet 組態指定區域網路閘道。
+您可以為局域網路閘道指定內部部署 VPN 裝置的名稱、公用 IP 位址或完整功能變數名稱 (FQDN) ，並指定位於內部部署位置的位址首碼。 Azure 會查看網路流量的目的地位址首碼、查閱您為區域網路閘道指定的組態，然後根據這些來路由傳送封包。 如果您在 VPN 裝置上使用邊界閘道協定 (BGP) ，您將會提供 VPN 裝置的 BGP 對等 IP 位址，以及內部部署網路 (ASN) 的自發系統編號。 您也可以針對使用 VPN 閘道連線的 VNet 對 VNet 組態指定區域網路閘道。
 
 下列 PowerShell 範例會建立新的區域網路閘道︰
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU 共用管理 |Microsoft Docs
-description: 說明如何使用 Azure 入口網站來管理 Azure Stack Edge GPU 上的共用。
+title: Azure Stack Edge Pro GPU 共用管理 |Microsoft Docs
+description: 說明如何使用 Azure 入口網站來管理 Azure Stack Edge Pro GPU 上的共用。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,25 +8,25 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 6448ac002482751052310532989278e3b88b5915
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 44f22f365699ddc345849df78d6e27c2703d785b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268837"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904687"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>使用 Azure 入口網站來管理您 Azure Stack Edge 上的共用
+# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>使用 Azure 入口網站來管理 Azure Stack Edge Pro 上的共用
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文說明如何管理 Azure Stack Edge 上的共用。 您可以透過 Azure 入口網站或透過本機 web UI 來管理 Azure Stack Edge。 使用 Azure 入口網站來新增、刪除、重新整理共用，或針對與共用相關聯的儲存體帳戶同步儲存體金鑰。
+本文說明如何管理 Azure Stack Edge Pro 上的共用。 您可以透過 Azure 入口網站或透過本機 web UI 來管理 Azure Stack Edge Pro。 使用 Azure 入口網站來新增、刪除、重新整理共用，或針對與共用相關聯的儲存體帳戶同步儲存體金鑰。
 
 ## <a name="about-shares"></a>關於共用
 
-若要將資料傳輸至 Azure，您必須在 Azure Stack Edge 上建立共用。 您在 Azure Stack Edge 裝置上新增的共用可以是本機共用，也可以是將資料推送至雲端的共用。
+若要將資料傳輸至 Azure，您必須在 Azure Stack Edge Pro 上建立共用。 您在 Azure Stack Edge Pro 裝置上新增的共用可以是本機共用，也可以是將資料推送至雲端的共用。
 
  - **本機共用**：當您想要在本機裝置上處理資料時，請使用這些共用。
- - **共用**：當您希望裝置資料自動推送到雲端中的儲存體帳戶時，請使用這些共用。 **重新整理**和**同步儲存體金鑰**等所有雲端功能都會套用到這些共用。
+ - **共用**：當您希望裝置資料自動推送到雲端中的儲存體帳戶時，請使用這些共用。 所有雲端 **功能，例如** 重新整理和 **同步儲存體金鑰** 都適用于共用。
 
 
 ## <a name="add-a-share"></a>新增共用
@@ -45,7 +45,7 @@ ms.locfileid: "89268837"
 
 4. 提供共用所在的 [儲存體帳戶]****。 如果容器已不存在，則會使用共用名稱在儲存體帳戶中建立容器。 如果容器已存在，則會使用現有的容器。
 
-5. 從 [儲存體服務]**** 下拉式清單中，選擇區塊 Blob、分頁 Blob 或檔案。 所選擇的服務類型取決於您想要資料以哪一種格式存在 Azure 中。 例如，在本例中，我們想要資料以區塊 Blob 的方式存在 Azure 中，因此，我們選取 [區塊 Blob]****。 如果選擇 [ **分頁 Blob**]，您必須確定資料的大小為512個位元組。 針對已對齊 512 個位元組的 VHD 或 VHDX，請使用 [分頁 Blob]****。
+5. 從下拉式清單中，選擇區塊 blob、分頁 blob 或檔案中的 **儲存體服務** 。 所選擇的服務類型取決於您想要資料以哪一種格式存在 Azure 中。 例如，在此例中，我們想要資料以區塊 blob 的形式存在於 Azure 中，因此我們選取 [ **區塊 Blob**]。 如果選擇 [ **分頁 Blob**]，您必須確定資料的大小為512個位元組。 針對一律為512位元組對齊的 Vhd 或 VHDX 使用 **分頁 blob** 。
 
 6. 此步驟取決於您要建立 SMB 還是 NFS 共用。
     - **如果建立 SMB 共用** - 在 [完整權限本機使用者]**** 欄位中，從 [新建]**** 或 [使用現有的]**** 中擇一。 如果建立新的本機使用者，請提供 [使用者名稱]****、[密碼]****，然後確認密碼。 這會將使用權限指派給本機使用者。 當您在此指派權限之後，就可以使用 [檔案總管] 來修改這些權限。
@@ -74,7 +74,7 @@ ms.locfileid: "89268837"
 3. 選取共用的 [類型]  。 類型可以是 **SMB** 或 **NFS**，並以 SMB 為預設值。 SMB 是 Windows 用戶端的標準，NFS 則用於 Linux 用戶端。 視您選擇 SMB 或 NFS 共用而定，所顯示的選項會有些許不同。
 
    > [!IMPORTANT]
-   > 如果您將 Azure 儲存體帳戶與 Azure Stack Edge 或資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+   > 如果您將 Azure 儲存體帳戶與 Azure Stack Edge Pro 或資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
 
 4. 若要從 Edge 計算模組輕鬆存取共用，請使用本機掛接點。 選取 [使用 Edge 計算的共用]****，如此 Edge 模組可使用本機掛接點的計算。
 
@@ -82,7 +82,7 @@ ms.locfileid: "89268837"
 
 6. 在 [完整權限本機使用者]**** 欄位中，從 [新建]**** 或 [使用現有的]**** 中擇一。
 
-7. 選取 [建立]  。 
+7. 選取 [建立]。 
 
     ![建立本機共用](media/azure-stack-edge-j-series-manage-shares/add-local-share-2.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "89268837"
 
 ## <a name="mount-a-share"></a>掛接共用
 
-如果您在 Azure Stack Edge 裝置上設定計算之前已建立共用，您將需要掛接共用。 請採取下列步驟來掛接共用。
+如果您在 Azure Stack Edge Pro 裝置上設定計算之前已建立共用，您將需要掛接共用。 請採取下列步驟來掛接共用。
 
 
 1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 從共用清單中，選取您想要掛接的共用。 [用於計算]**** 資料行會將所選共用的狀態顯示為 [已停用]****。
@@ -239,6 +239,6 @@ ms.locfileid: "89268837"
 > 您只需要針對指定的儲存體帳戶執行此作業一次。 不需要針對與相同儲存體帳戶相關聯的所有共用，重複此動作。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 了解如何[透過 Azure 入口網站管理使用者](azure-stack-edge-j-series-manage-users.md)。

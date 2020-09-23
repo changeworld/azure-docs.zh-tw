@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 97ba976c841e192646ebb484fe4d004556e34c54
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640832"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968405"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>設定 Azure 監視器代理程式 (預覽的資料收集) 
 資料收集規則 (DCR) 定義進入 Azure 監視器的資料，並指定應該傳送的位置。 本文說明如何使用 Azure 監視器代理程式建立資料收集規則，以收集虛擬機器的資料。
@@ -26,7 +26,7 @@ ms.locfileid: "88640832"
 
 例如，假設有一組虛擬機器的環境，執行企業營運應用程式和其他執行 SQL Server 的虛擬機器。 您可能會有一個預設的資料集合規則適用于所有虛擬機器，以及個別的資料收集規則，這些規則會特別針對企業營運應用程式和 SQL Server 收集資料。 虛擬機器與資料集合規則的關聯看起來會如下圖所示。
 
-![關聯](media/data-collection-rule-azure-monitor-agent/associations.png)
+![下圖顯示裝載企業營運應用程式和 SQL Server 的虛擬機器，這些虛擬機器會與名為 central 的資料集合規則相關聯（例如，適用于企業營運應用程式的預設和 lob 應用程式），以及用於 SQL Server 的中央-i t 預設和 s q l。](media/data-collection-rule-azure-monitor-agent/associations.png)
 
 ## <a name="create-using-the-azure-portal"></a>使用 Azure 入口網站建立
 您可以使用 Azure 入口網站來建立資料集合規則，並將您訂用帳戶中的虛擬機器與該規則建立關聯。 系統會自動安裝 Azure 監視器代理程式，並針對尚未安裝它的任何虛擬機器建立受控識別。
@@ -54,7 +54,7 @@ ms.locfileid: "88640832"
 
 在 [ **目的地** ] 索引標籤上，新增資料來源的一或多個目的地。 Windows 事件和 Syslog 資料來源只能傳送至 Azure 監視器記錄。 效能計數器可以同時傳送至 Azure 監視器計量和 Azure 監視器記錄。
 
-[![目的地](media/azure-monitor-agent/data-collection-rule-destination.png)](media/azure-monitor-agent/data-collection-rule-destination.png#lightbox)
+[![Destination](media/azure-monitor-agent/data-collection-rule-destination.png)](media/azure-monitor-agent/data-collection-rule-destination.png#lightbox)
 
 按一下 [ **新增資料來源** ]，然後 **查看 [+ 建立** ]，以檢查資料收集規則的詳細資料，並與一組 vm 建立關聯。 按一下 [ **建立** ] 來建立它。
 
@@ -67,7 +67,7 @@ ms.locfileid: "88640832"
 2.使用 [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create#examples)建立規則。
 3.使用 [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionruleassociations/create#examples)為每個虛擬機器建立資料集合規則的關聯。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解 [Azure 監視器代理程式](azure-monitor-agent-overview.md)。
 - 深入瞭解 [資料收集規則](data-collection-rule-overview.md)。

@@ -95,6 +95,10 @@
       items:
         - name: 什麼是邊緣區域？
           href: ../networking/edge-zones-overview.md
+    - name: Azure Orbital 文件
+      items:
+        - name: 什麼是 Azure Orbital？
+          href: ../networking/azure-orbital-overview.md
 - name: 災害復原
   items:
     - name: 使用 Azure Site Recovery

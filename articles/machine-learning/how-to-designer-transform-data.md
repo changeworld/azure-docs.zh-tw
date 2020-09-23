@@ -1,7 +1,7 @@
 ---
-title: 在設計工具中轉換資料（預覽）
+title: 在設計工具中轉換資料
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure Machine Learning 設計工具（預覽）中轉換資料，以建立您自己的資料集。
+description: 了解如何在 Azure Machine Learning 設計工具中轉換資料來建立自己的資料集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,15 +10,15 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 05a21ce10db2822c963f1b375842e9a7233e0816
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 9124bbfc7300f3a5116c572d569b41e15356ab8f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87457816"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983837"
 ---
-# <a name="transform-data-in-azure-machine-learning-designer-preview"></a>在 Azure Machine Learning 設計工具中轉換資料 (預覽)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="transform-data-in-azure-machine-learning-designer"></a>在 Azure Machine Learning 表設計工具中轉換資料
+
 
 在本文中，您將會了解如何在 Azure Machine Learning 設計工具中轉換和儲存資料集，如此即可為機器學習服務準備資料。
 
@@ -112,7 +112,7 @@ ms.locfileid: "87457816"
     **檔案格式**：csv
 
     > [!NOTE]
-    > 本文假設您可存取向目前 Azure Machine Learning 工作區註冊的資料存放區。 如需如何設定資料存放區的指示，請參閱[連線到 Azure 儲存體服務](how-to-access-data.md#studio)。
+    > 本文假設您可存取向目前 Azure Machine Learning 工作區註冊的資料存放區。 如需如何設定資料存放區的指示，請參閱[連線到 Azure 儲存體服務](how-to-connect-data-ui.md#create-datastores)。
 
     如果您沒有資料存放區，則可在此建立一個。 基於範例目的，本文會將資料集儲存到與工作區建立關聯的預設 Blob 儲存體帳戶。 其會將資料集儲存到稱為 `data` 新資料夾中的 `azureml` 容器。
 

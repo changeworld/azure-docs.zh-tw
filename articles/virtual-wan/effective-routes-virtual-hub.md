@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6592b1a934e732888ef949071d95075d0af61bf6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708065"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983646"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>檢視虛擬中樞的有效路由
 
@@ -53,7 +53,7 @@ ms.locfileid: "90708065"
 
 * 只有當虛擬中樞至少有一種連線 (VPN/ER/VNET) 與其連線時，才會填入虛擬中樞路由表的有效路由。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)。
 * 如需虛擬中樞路由的詳細資訊，請參閱 [關於虛擬中樞路由](about-virtual-hub-routing.md)。

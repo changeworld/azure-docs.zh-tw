@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: dda61b81ee2c357ddac29701832fe4780ea06859
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9fbd63e1b46b837350be720fadf68777927f9bff
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88516294"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904761"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>設定安全性警示的電子郵件通知 
 
@@ -39,8 +39,8 @@ ms.locfileid: "88516294"
 
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|正式推出|
-|定價：|免費層|
+|釋放狀態：|正式上市 (GA)|
+|定價：|免費|
 |必要的角色和許可權：|**安全性系統管理員**<br>**訂用帳戶擁有者** |
 |雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![Yes](./media/icons/yes-icon.png) US Gov (部分) <br>![No](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
 |||
@@ -60,7 +60,7 @@ ms.locfileid: "88516294"
 1. 若要將安全性連絡人資訊套用至您的訂用帳戶，請選取 [ **儲存**]。
 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 若要深入瞭解安全性警示，請參閱下列各項：
 
 * [安全性警示-參考指南](alerts-reference.md) --瞭解您可能會在 Azure 資訊安全中心的威脅防護課程模組中看到的安全性警示

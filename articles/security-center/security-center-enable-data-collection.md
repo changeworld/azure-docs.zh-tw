@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: c6a779deef3ed1dc0a4d5e83c38f483776adf6fe
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 132e21c861f50caca37fb6fc5df660ff413d07a5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387365"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905489"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 資訊安全中心的資料收集
 資訊安全中心會從您的 Azure 虛擬機器 (VM)、虛擬機器擴展集、IaaS 容器和非 Azure (包括內部部署機器) 電腦收集資料，以監視是否有安全性弱點和威脅。 資料是使用 Log Analytics 代理程式收集而得，收集的方式是讀取機器的各種安全性相關組態和事件記錄，並將資料複製到工作區進行分析。 這類資料的範例包括︰作業系統類型和版本、作業系統記錄 (Windows 事件記錄)、執行中程序、電腦名稱、IP 位址和已登入的使用者。
@@ -34,20 +34,23 @@ ms.locfileid: "87387365"
 自動佈建開啟時，資訊安全中心會在所有支援的 Azure 虛擬機器和任何新建立的虛擬機器上部署 Log Analytics 代理程式。 建議使用自動布建，但如有必要，您可以手動安裝代理程式 (請參閱 [手動安裝 Log Analytics 代理程式](#manual-agent))。
 
 
+
 啟用 Log Analytics 代理程式的自動佈建：
-1. 從入口網站中資訊安全中心的功能表中，選取 [定價和設定]。
-2. 選取相關的訂用帳戶。
 
-   ![選取訂閱][7]
+1. 在資訊安全中心功能表中，選取 [定價和設定]。
+1. 選取相關的訂用帳戶。
+1. 在**資料收集**頁面中，將 [自動佈建] 設定為 [開啟]。
+1. 選取 [儲存]。
 
-3. 選取 [資料收集]。
-4. 在 [自動佈建] 下，選取 [開啟] 啟用自動佈建。
-5. 選取 [儲存]。 代理程式會在 15 分鐘內部署在所有 VM 上。 
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="啟用 Log Analytics 代理程式的自動佈建功能":::
 
 >[!TIP]
 > 如果需要佈建工作區，代理程式安裝最多可能需要 25 分鐘的時間。
 
-   ![啟用自動佈建][1]
+資訊安全中心會利用部署到電腦上的代理程式，提供與系統更新狀態、作業系統安全性組態、端點防護相關的額外建議，以及產生額外的安全性警示。
+
+>[!NOTE]
+> 將自動佈建設為**關閉**不會從已佈建代理程式的 Azure VM 中移除 Log Analytics 代理程式。 停用自動佈建會限制對資源的安全性監視。
 
 >[!NOTE]
 > - 如需佈建預先存在的安裝的相關指示，請參閱[在預先存在的代理程式安裝情況下自動佈建](#preexisting)。
@@ -78,7 +81,7 @@ ms.locfileid: "87387365"
 1. 資訊安全中心會依據為訂用帳戶設定的定價層，在工作區上自動啟用資訊安全中心解決方案。 
 
 > [!NOTE]
-> 資訊安全中心所建立工作區的 Log Analytics 定價層不會影響資訊安全中心的收費。 資訊安全中心的計費一律根據您的資訊安全中心的安全性原則，以及工作區安裝的解決方案。 針對免費層，資訊安全中心在預設工作區啟用 SecurityCenterFree 解決方案。 針對標準層，資訊安全中心會在預設工作區上啟用*安全性*解決方案。
+> 資訊安全中心所建立工作區的 Log Analytics 定價層不會影響資訊安全中心的收費。 資訊安全中心的計費一律根據您的資訊安全中心的安全性原則，以及工作區安裝的解決方案。 針對沒有 Azure Defender 的訂用帳戶，資訊安全中心會在預設工作區上啟用 *SecurityCenterFree* 解決方案。 針對使用 Azure Defender 的訂用帳戶，資訊安全中心會在預設工作區啟用 *安全性* 解決方案。
 > 將資料儲存在 Log Analytics 中，可能會產生額外的資料儲存費用。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
 如需現有 Log Analytics 帳戶的詳細資訊，請參閱[現有的 Log Analytics 客戶](./faq-azure-monitor-logs.md)。
@@ -97,7 +100,7 @@ ms.locfileid: "87387365"
 
 1. 在 [預設工作區組態] 下，選取 [使用其他工作區]。
 
-   ![選取現有工作區][2]
+   ![使用其他工作區][2]
 
 2. 從下拉式功能表中，選取要儲存收集資料的工作區。
 
@@ -117,23 +120,28 @@ ms.locfileid: "87387365"
    >
    >
 
-   - 選取 [取消] 以取消作業。
+   - 若要取消作業，請選取 [取消]。
 
-     ![選取現有工作區][3]
+     ![查看重新設定受監視 Vm 的選項][3]
 
-5. 針對您要設定 Log Analytics 代理程式所需的工作區，選取定價層。 <br>若要使用現有的工作區，請設定工作區的定價層。 這會在工作區上安裝資訊安全中心解決方案 (如果不存在)。
+5. 選取工作區是否會啟用 Azure Defender。
 
-    a.  在 [資訊安全中心] 主功能表中，選取 [定價和設定]。
+    若要使用現有的工作區，請設定工作區的定價層。 這會在工作區上安裝資訊安全中心解決方案 (如果不存在)。
+
+    1. 在 [資訊安全中心] 主功能表中，選取 [定價和設定]。
      
-    b.  選取您要連線代理程式所需的工作區。
-        ![選取工作區][7] c. 設定定價層。
-        ![選取定價層][9]
+    1. 選取您要將代理程式連接到的工作區。
+
+    1. 選取 **Azure defender on** 或 **azure defender off**。
+
    
    >[!NOTE]
    >如果工作區已經啟用 **Security** 或 **SecurityCenterFree** 解決方案，將會自動設定定價。 
 
+
 ## <a name="cross-subscription-workspace-selection"></a>跨訂用帳戶工作區選取
 當您選取用來儲存資料的工作區時，所有訂用帳戶的所有工作區均可供使用。 跨訂用帳戶工作區選取可讓您從執行於不同訂用帳戶的虛擬機器收集資料，並將它儲存在您選擇的工作區中。 如果您在組織中使用集中式工作區，而且想要將它用於安全性資料收集，此選項會很有用。 如需有關如何管理工作區的詳細資訊，請參閱[管理工作區存取](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)。
+
 
 
 ## <a name="data-collection-tier"></a>資料收集層
@@ -150,7 +158,7 @@ ms.locfileid: "87387365"
 
 
 > [!NOTE]
-> 這些安全性事件集僅適用于資訊安全中心的標準層。 若要深入了解資訊安全中心的定價層，請參閱[價格](security-center-pricing.md)。
+> 這些安全性事件集僅適用于 Azure Defender。 若要深入了解資訊安全中心的定價層，請參閱[價格](security-center-pricing.md)。
 這些集合都是設計用來處理一般情況。 實作之前，請務必評估哪一個適合您的需求。
 >
 >
@@ -199,7 +207,7 @@ ms.locfileid: "87387365"
 <br>
 對於 Linux 機器尚不支援代理程式多路連接 - 因此，如果偵測到現有的代理程式安裝，將不會進行自動佈建，且不會改變機器的設定。
 <br>
-針對訂用帳戶上上架到2019年3月17日之前資訊安全中心的現有機器，當偵測到現有的代理程式時，將不會安裝 Log Analytics 代理程式延伸模組，且電腦不會受到影響。 針對這類機器，請參閱「請解決機器上的 Monitoring Agent 健康情況問題」的建議，以解決這些機器上的代理程式安裝問題。
+針對在2019年3月17日之前上線至資訊安全中心的訂用帳戶上的現有機器，當偵測到現有的代理程式時，將不會安裝 Log Analytics 代理程式延伸模組，而且不會影響電腦。 針對這類機器，請參閱「請解決機器上的 Monitoring Agent 健康情況問題」的建議，以解決這些機器上的代理程式安裝問題。
 
   
 - System Center Operations Manager 代理程式安裝在機器上<br>
@@ -211,7 +219,7 @@ ms.locfileid: "87387365"
     - 如果您環境中的用戶端工作站上已安裝 Log Analytics 代理程式，並會向現有的 Log Analytics 工作區報告，請檢閱 [Azure 資訊安全中心支援的作業系統](security-center-os-coverage.md)清單，確保您的作業系統受支援。 如需詳細資訊，請參閱[現有的 Log Analytics 客戶](./faq-azure-monitor-logs.md)。
  
 ### <a name="turn-off-automatic-provisioning"></a>關閉自動佈建 <a name="offprovisioning"></a>
-若要關閉 Log Analytics 代理程式的自動布建：
+若要關閉自動布建 Log Analytics 代理程式：
 
 1. 從入口網站中資訊安全中心的功能表中，選取 [定價和設定]。
 2. 選取相關的訂用帳戶。
@@ -219,7 +227,7 @@ ms.locfileid: "87387365"
    ![選取訂閱][7]
 
 3. 選取 [資料收集]。
-4. 在 [**自動**布建] 下，選取 [**關閉**] 以停用自動布建。
+4. 在 [ **自動**布建] 下，選取 [ **關閉** ] 以停用自動布建。
 5. 選取 [儲存]。 
 
 
@@ -244,19 +252,16 @@ ms.locfileid: "87387365"
 
 1. （選擇性）建立工作區。
 
-1. 將您要安裝 Log Analytics 代理程式的工作區設定為標準定價層：
+1. 在您要安裝 Log Analytics 代理程式的工作區上啟用 Azure Defender：
 
-    1. 從資訊安全中心的功能表中，選取 [**定價] & 設定**]。
+    1. 在資訊安全中心功能表中，選取 [定價和設定]。
 
-    1. 設定您要安裝代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
+    1. 設定您要在其上安裝代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
 
-    1. 設定標準定價層，然後選取 [**儲存**]。
-
-        ![將工作區設定為標準定價層](.\media\security-center-enable-data-collection\workspace-to-standard-tier.gif)
+    1. 將 Azure Defender 設定為開啟，然後選取 [ **儲存**]。
 
        >[!NOTE]
        >如果工作區已經啟用 **Security** 或 **SecurityCenterFree** 解決方案，將會自動設定定價。 
-   > 
 
 1. 如果您想要使用 Resource Manager 範本在新的 Vm 上部署代理程式，請安裝 Log Analytics 代理程式：
 
@@ -274,7 +279,7 @@ ms.locfileid: "87387365"
 
     - [Windows 電腦](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
 
-    - [Linux 電腦](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
+    - [Linux 機器](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
 
 
 
@@ -308,7 +313,6 @@ ms.locfileid: "87387365"
 [2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
 [5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
-[6]: ./media/security-center-enable-data-collection/disable-data-collection.png
 [7]: ./media/security-center-enable-data-collection/select-subscription.png
 [8]: ./media/security-center-enable-data-collection/manual-provision.png
 [9]: ./media/security-center-enable-data-collection/pricing-tier.png
