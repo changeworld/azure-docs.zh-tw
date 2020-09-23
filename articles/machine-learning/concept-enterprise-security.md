@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a89115d69943ff63d403edff942677b134e7f2a8
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: a3cd250e53fb30e07795b184b5c949505e3b20ae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024378"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905737"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
 
@@ -63,7 +63,6 @@ Azure Machine Learning 支援兩種形式的 Web 服務驗證：金鑰和權杖�
 | ---- |:----:|:----:|:----:|
 | 建立工作區 | ✓ | ✓ | |
 | 共用工作區 | ✓ | |  |
-| 將工作區升級至企業版 | ✓ | |
 | 建立計算目標 | ✓ | ✓ | |
 | 連結計算目標 | ✓ | ✓ | |
 | 連結資料存放區 | ✓ | ✓ | |
@@ -105,7 +104,7 @@ Azure Machine Learning 會針對每個工作區區域，在您的訂用帳戶中
 
 Azure Machine Learning 仰賴其他 Azure 服務來處理計算資源。 計算資源 (計算目標) 用於定型和部署模型。 您可以在虛擬網路中建立這些計算目標。 例如，您可以使用 Azure 資料科學虛擬機器來定型模型，然後將模型部署到 AKS。  
 
-如需詳細資訊，請參閱 [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)。
+如需詳細資訊，請參閱[虛擬網路隔離和隱私權概觀](how-to-network-security-overview.md)。
 
 您也可以為您的工作區啟用 Azure Private Link。 Private Link 可讓您限制從 Azure 虛擬網路到工作區的通訊。 如需詳細資訊，請參閱[如何設定 Private Link](how-to-configure-private-link.md)。
 

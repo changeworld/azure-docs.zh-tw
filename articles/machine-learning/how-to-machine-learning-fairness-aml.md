@@ -11,16 +11,16 @@ ms.reviewer: luquinta
 ms.date: 09/01/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 459189c699b9c48f090d55df98f4618d9e515aaa
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 0332400ce6808e92ba09e3bee3277495f6b6d1a9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279970"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897487"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>使用 Azure Machine Learning 搭配 Fairlearn 開放原始碼套件，以評估 ML 模型 (預覽的公平) 
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本操作指南中，您將瞭解如何使用 [Fairlearn](https://fairlearn.github.io/) 的開放原始碼 Python 套件搭配 Azure Machine Learning 來執行下列工作：
 
@@ -321,7 +321,7 @@ pip install fairlearn==0.4.6
 [![模型比較 Fairlearn 儀表板](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png)](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png#lightbox)
     
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 [深入瞭解模型公平](concept-fairness-ml.md)
 

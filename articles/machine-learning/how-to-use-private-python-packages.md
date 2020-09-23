@@ -10,15 +10,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 2af6749565a7fefd2892b82bcd5dff203eccdedc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 0f6f5d0ca757b10a16b31864124f1bcf1190674a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661209"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896925"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>搭配 Azure Machine Learning 使用私人 Python 套件
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將瞭解如何在 Azure Machine Learning 中安全地使用私人 Python 套件。 私人 Python 套件的使用案例包括：
 
@@ -58,7 +58,7 @@ Azure Machine Learning 服務會在內部將 URL 取代為安全的 SAS URL，�
 
  1. 為您的 Azure DevOps 實例[建立 (PAT) 的個人存取權杖](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page#create-a-pat)。 設定要 __封裝 > 讀取__的權杖範圍。 
 
- 2. 使用 [工作區 set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#&preserve-view=trueset-connection-name--category--target--authtype--value-) 方法，新增 Azure DevOps URL 和 PAT 作為工作區屬性。
+ 2. 使用 [Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#&preserve-view=trueset-connection-name--category--target--authtype--value-) 方法，新增 Azure DevOps URL 和 PAT 作為工作區屬性。
 
      ```python
     from azureml.core import Workspace
@@ -98,6 +98,6 @@ Azure Machine Learning 服務會在內部將 URL 取代為安全的 SAS URL，�
 
 完成這些設定之後，您可以透過 Azure blob 儲存體中的完整 URL，參考 Azure Machine Learning 環境定義中的套件。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
  * 深入瞭解 [Azure Machine Learning 中的企業安全性](concept-enterprise-security.md)

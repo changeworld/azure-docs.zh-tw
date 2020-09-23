@@ -10,12 +10,12 @@ ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 5adc15eb7beab4d54156456ee447a7e6039b6c6d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: a9501df45d598c85f8c694c5d07db4f959615c00
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892604"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968178"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>在 Azure Cosmos DB 資料上使用大量執行程式 Java 程式庫執行大量作業
 
@@ -23,13 +23,13 @@ ms.locfileid: "88892604"
 
 目前，只有 Azure Cosmos DB SQL API 和 Gremlin API 帳戶支援大量執行程式程式庫。 本文說明如何搭配 SQL API 帳戶使用大量執行程式 JAVA 程式庫。 若要了解如何搭配 Gremlin API 使用大量執行程式 .Net 程式庫，請參閱[在 Azure Cosmos DB Gremlin API 中執行大量作業](bulk-executor-graph-dotnet.md)。 此處所述的大量執行程式程式庫僅適用于 [Azure Cosmos DB java SYNC SDK v2](sql-api-sdk-java.md) ，而且是目前建議用於 java 大量支援的解決方案。 這項功能目前不適用於3.x、4.x 或其他更高版本的 SDK。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。  
 
-* 您可以免費 [試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) ，無須 Azure 訂用帳戶，也無須任何費用和承諾用量。 或者，您也可以搭配使用 [Azure Cosmos DB 模擬器](https://docs.microsoft.com/azure/cosmos-db/local-emulator)與 `https://localhost:8081` 端點。 [驗證要求](local-emulator.md#authenticating-requests)中會提供主索引鍵。  
+* 您可以免費 [試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) ，無須 Azure 訂用帳戶，也無須任何費用和承諾用量。 或者，您也可以搭配使用 [Azure Cosmos DB 模擬器](/azure/cosmos-db/local-emulator)與 `https://localhost:8081` 端點。 [驗證要求](local-emulator.md#authenticate-requests)中會提供主索引鍵。  
 
-* [JAVA 開發工具組 (JDK) 1.7 +](/java/azure/jdk/?view=azure-java-stable)  
+* [JAVA 開發工具組 (JDK) 1.7 +](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)  
   - 在 Ubuntu 上，執行 `apt-get install default-jdk` 來安裝 JDK。  
 
   - 務必設定 JAVA_HOME 環境變數，以指向 JDK 安裝所在的資料夾。
@@ -94,7 +94,7 @@ ms.locfileid: "88892604"
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
    ```
-   大量匯入 API 會接受 JSON 序列化的文件集合，並且具有下列語法。如需詳細資訊，請參閱 [API 文件](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)：
+   大量匯入 API 會接受 JSON 序列化的文件集合，並且具有下列語法。如需詳細資訊，請參閱 [API 文件](/java/api/com.microsoft.azure.documentdb.bulkexecutor)：
 
    ```java
    public BulkImportResponse importAll(
@@ -131,16 +131,16 @@ ms.locfileid: "88892604"
 6. 產生的目標相依性之後，您可以使用下列命令來叫用大量匯入工具應用程式：  
 
    ```bash
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's primary key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
    大量匯入工具會使用資料庫名稱、集合名稱和 App.config 檔案中指定的輸送量值來建立新的資料庫與集合。 
 
 ## <a name="bulk-update-data-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中大量更新資料
 
-您可以使用 BulkUpdateAsync API 來更新現有的文件。 在此範例中，您會將 [名稱] 欄位設為新的值，並移除現有文件中的 [描述] 欄位。 如需完整的支援欄位更新作業集，請參閱 [API 文件](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)。 
+您可以使用 BulkUpdateAsync API 來更新現有的文件。 在此範例中，您會將 [名稱] 欄位設為新的值，並移除現有文件中的 [描述] 欄位。 如需完整的支援欄位更新作業集，請參閱 [API 文件](/java/api/com.microsoft.azure.documentdb.bulkexecutor)。 
 
-1. 與相對應的欄位更新作業一起定義及更新項目。 在此範例中，您將使用 SetUpdateOperation 更新 [名稱] 欄位，以及使用 UnsetUpdateOperation 從所有文件中移除 [描述] 欄位。 您也可以執行其他作業，例如透過指定值來遞增文件欄位、將特定值推送至陣列欄位中，或是從陣列欄位中移除特定值。 若要了解大量更新 API 提供的不同方法，請參閱 [API 文件](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)。  
+1. 與相對應的欄位更新作業一起定義及更新項目。 在此範例中，您將使用 SetUpdateOperation 更新 [名稱] 欄位，以及使用 UnsetUpdateOperation 從所有文件中移除 [描述] 欄位。 您也可以執行其他作業，例如透過指定值來遞增文件欄位、將特定值推送至陣列欄位中，或是從陣列欄位中移除特定值。 若要了解大量更新 API 提供的不同方法，請參閱 [API 文件](/java/api/com.microsoft.azure.documentdb.bulkexecutor)。  
 
    ```java
    SetUpdateOperation<String> nameUpdate = new SetUpdateOperation<>("Name","UpdatedDocValue");
@@ -162,7 +162,7 @@ ms.locfileid: "88892604"
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
    ```
 
-   大量更新 API 會接受要更新的項目集合。 每個更新項目會指定要在文件上執行的欄位更新作業清單，而文件會由識別碼和分割區索引鍵定義。 如需詳細資料，請參閱 [API 文件](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)：
+   大量更新 API 會接受要更新的項目集合。 每個更新項目會指定要在文件上執行的欄位更新作業清單，而文件會由識別碼和分割區索引鍵定義。 如需詳細資料，請參閱 [API 文件](/java/api/com.microsoft.azure.documentdb.bulkexecutor)：
 
    ```java
    public BulkUpdateResponse updateAll(
@@ -195,7 +195,7 @@ ms.locfileid: "88892604"
 4. 產生的目標相依性之後，您可以使用下列命令來叫用大量更新應用程式：
 
    ```bash
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's primary key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
 ## <a name="performance-tips"></a>效能秘訣 
@@ -213,7 +213,7 @@ ms.locfileid: "88892604"
 * 單一大量作業 API 執行會取用大量用戶端機器的 CPU 和網路 IO。 這是因為由內部繁衍出多個工作，因此請避免在每次執行大量作業 API 呼叫時，您的應用程式處理程序內繁衍出多個並行工作。 如果在單一虛擬機器上執行的單一大量作業 API 呼叫無法取用整個容器的輸送量 (如果容器的輸送量 > 1 百萬 RU/s)，建議您建立個別虛擬機器來並行執行大量作業 API 呼叫。
 
     
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 若要深入了解 maven 套件及大量執行程式 Java 程式庫的版本資訊，請參閱[大量執行程式 SDK 詳細資料](sql-api-sdk-bulk-executor-java.md)。
 
 

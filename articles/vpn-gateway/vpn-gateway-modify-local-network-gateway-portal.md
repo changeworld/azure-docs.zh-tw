@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 09/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 57288d49fdfa193e9ebebe5f2ce4d24327997980
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: af3513c4a4f3b3187e85c65de51ad2e6e2d7279c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392471"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983153"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>使用 Azure 入口網站修改區域網路閘道設定
 
@@ -27,19 +27,64 @@ ms.locfileid: "89392471"
 >
 >
 
+## <a name="local-network-gateway-configuration"></a><a name="configure-lng"></a>局域網路閘道設定
+
+下列螢幕擷取畫面顯示使用公用 IP 位址端點之局域網路閘道資源的**設定頁面：**
+
+:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/ip-address.png" alt-text="設定局域網路閘道-IP 位址":::
+
+這是具有 FQDN 端點的相同設定頁面：
+
+:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/fqdn.png" alt-text="設定局域網路閘道-FQDN":::
+
+## <a name="modify-the-gateway-ip-address"></a><a name="ip"></a>修改閘道 IP 位址
+
+如果您想要連線的 VPN 裝置已變更其公用 IP 位址，您需要修改區域網路閘道，以反映該變更。
+
+1. 在 [區域網路閘道] 資源的 [設定]**** 區段中，按一下 [組態]****。
+2. 在 [IP 位址]**** 方塊中，修改 IP 位址。
+3. 按一下 [儲存] **** 來儲存這些設定。
+
+## <a name="modify-the-gateway-fqdn"></a><a name="fqdn"></a>修改閘道 FQDN
+
+如果您要連線的 VPN 裝置已變更其 FQDN (完整功能變數名稱) ，您需要修改局域網路閘道以反映該變更。
+
+1. 在 [區域網路閘道] 資源的 [設定]**** 區段中，按一下 [組態]****。
+2. 在 [ **FQDN** ] 方塊中，修改功能變數名稱。
+3. 按一下 [儲存] **** 來儲存這些設定。
+
+> !記您無法變更 FQDN 端點和 IP 位址端點之間的局域網路閘道。 您必須刪除與此局域網路閘道相關聯的所有連線，並使用新的端點 (IP 位址或 FQDN) 建立新的連線，然後重新建立連線。
 
 ## <a name="modify-ip-address-prefixes"></a><a name="ipaddprefix"></a>修改 IP 位址首碼
 
-當您修改 IP 位址首碼時，使用的步驟會依您的區域網路閘道是否有連線而不同。
+### <a name="to-add-additional-address-prefixes"></a>若要新增其他位址首碼：
 
-[!INCLUDE [modify prefix](../../includes/vpn-gateway-modify-ip-prefix-portal-include.md)]
+1. 在 [區域網路閘道] 資源的 [設定]**** 區段中，按一下 [組態]****。
+2. 在 [新增其他位址範圍]** 方塊中新增 IP 位址空間。
+3. 按一下 [Save] **** 儲存您的設定。
 
-## <a name="modify-the-gateway-ip-address"></a><a name="gwip"></a>修改閘道 IP 位址
+### <a name="to-remove-address-prefixes"></a>若要移除位址首碼：
 
-如果您想要連線的 VPN 裝置已變更其公用 IP 位址，您需要修改區域網路閘道，以反映該變更。 當您變更公用 IP 位址時，使用的步驟會依您的區域網路閘道是否有連線而不同。
+1. 在 [區域網路閘道] 資源的 [設定]**** 區段中，按一下 [組態]****。
+2. 按一下包含您要移除之首碼的那一行上的 [...]****。
+3. 按一下 **[移除]** 。
+4. 按一下 [Save] **** 儲存您的設定。
 
-[!INCLUDE [modify gateway IP](../../includes/vpn-gateway-modify-lng-gateway-ip-portal-include.md)]
+## <a name="modify-bgp-settings"></a><a name="bgp"></a>修改 BGP 設定
 
-## <a name="next-steps"></a>接下來的步驟
+### <a name="to-add-or-update-bgp-settings"></a>若要新增或更新 BGP 設定：
+
+1. 在 [區域網路閘道] 資源的 [設定]**** 區段中，按一下 [組態]****。
+2. 選取 **[設定 BGP 設定]** 以顯示或更新此局域網路閘道的 BGP 設定
+3. 在對應的欄位中新增或更新自發系統編號或 BGP 對等 IP 位址
+4. 按一下 [Save] **** 儲存您的設定。
+
+### <a name="to-remove-bgp-settings"></a>移除 BGP 設定：
+
+1. 在 [區域網路閘道] 資源的 [設定]**** 區段中，按一下 [組態]****。
+2. 取消選取 [ **設定 BGP 設定]** 以移除現有的 BGP ASN 和 BGP 對等 IP 位址
+3. 按一下 [Save] **** 儲存您的設定。
+
+## <a name="next-steps"></a>下一步
 
 您可以驗證閘道連線。 請參閱 [驗證閘道連線](vpn-gateway-verify-connection-resource-manager.md)。

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20e6d26808964c8e697c694bd796af2851e7ca48
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 61339a22fc3823325ff5356112c2df8a800010a0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449998"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985197"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>搭配更新管理使用動態群組
 
@@ -19,7 +19,7 @@ ms.locfileid: "87449998"
 > [!NOTE]
 > 動態群組無法搭配傳統 VM 使用。
 
-您可以從 Azure 入口網站中的 [更新管理]，定義 Azure 或非 Azure 機器的動態群組。 請參閱[管理 vm 的更新](update-mgmt-manage-updates-for-vm.md)。
+您可以從 Azure 入口網站中的 [更新管理]，定義 Azure 或非 Azure 機器的動態群組。 請參閱 [管理 vm 的更新](update-mgmt-manage-updates-for-vm.md)。
 
 動態群組是由 Azure 自動化在部署階段評估的查詢所定義。 即使動態群組查詢擷取大量的機器，Azure 自動化一次最多只能處理 1000 部機器。 請參閱 [Azure 訂用帳戶和服務限制、配額與限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#update-management)。
 
@@ -45,8 +45,8 @@ ms.locfileid: "87449998"
 
 非 Azure 機器的動態群組會使用已儲存的搜尋，也稱為「電腦群組」。 若要了解如何建立已儲存的搜尋，請參閱[建立電腦群組](../../azure-monitor/platform/computer-groups.md#creating-a-computer-group)。 建立已儲存的搜尋之後，您可從 Azure 入口網站中 [更新管理] 的已儲存搜尋清單中加以選取。 按一下 [預覽] 以預覽已儲存搜尋中的電腦。
 
-![選取群組](./media/update-mgmt-groups/select-groups-2.png)
+![螢幕擷取畫面顯示非 Azure (預覽) 的 [選取群組] 頁面，以及右邊的預覽窗格。](./media/update-mgmt-groups/select-groups-2.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-您可以[查詢 Azure 監視器記錄](update-mgmt-query-logs.md)來分析更新評估、部署和其他相關的管理工作。 其中包含預先定義的查詢，可協助您開始著手。
+您可以 [查詢 Azure 監視器記錄](update-mgmt-query-logs.md) ，以分析更新評估、部署和其他相關的管理工作。 其中包含預先定義的查詢，可協助您開始使用。

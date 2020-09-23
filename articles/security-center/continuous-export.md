@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 4d5cff416c1ac54e54d06e8def121db65bb7d191
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cf8fdd8d91c035d374277c4752fb761c0c4e72c7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433922"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905626"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>匯出安全性警訊和建議
 
@@ -33,10 +33,10 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|正式推出|
-|定價：|免費層|
+|釋放狀態：|正式上市 (GA)|
+|定價：|免費|
 |必要的角色和許可權：|資源群組 (或**擁有**者) 的**安全性系統管理員角色**<br>也必須具有目標資源的寫入權限|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![是](./media/icons/yes-icon.png) 中國 Gov (事件中樞) ，其他 Gov|
+|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) 中國 Gov (事件中樞) ，其他 Gov|
 |||
 
 
@@ -123,13 +123,13 @@ Azure 事件中樞是以程式設計方式使用任何串流資料的絕佳解�
 
 ## <a name="continuous-export-to-a-log-analytics-workspace"></a>連續匯出至 Log Analytics 工作區
 
-如果您想要分析 Log Analytics 工作區中的 Azure 資訊安全中心資料，或將 Azure 警示與「安全性中心」搭配使用，請將「連續匯出」設定至 Log Analytics 工作區。
+如果您想要分析 Log Analytics 工作區中的 Azure 資訊安全中心資料，或將 Azure 警示與「安全性中心」搭配使用，請設定 Log Analytics 工作區的連續匯出。
 
-若要匯出至 Log Analytics 工作區，您必須在您的工作區上啟用資訊安全中心的 Log Analytics 解決方案。 如果您使用 Azure 入口網站，當您啟用「連續匯出」時，會自動啟用安全中心的「免費層」解決方案。 不過，如果您要以程式設計方式設定連續匯出設定，則必須從 **定價 & 設定**中手動選取所需工作區的免費或標準定價層。  
+若要匯出至 Log Analytics 工作區，您必須在您的工作區上啟用資訊安全中心的 Log Analytics 解決方案。 如果您是使用 Azure 入口網站，當您啟用「連續匯出」時，會自動啟用「安全中心」的免費解決方案。 不過，如果您要以程式設計方式設定連續匯出設定，則必須從 [ **定價 & 設定** ] 頁面中，手動開啟或關閉 Azure Defender。
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics 資料表和架構
 
-安全性警示和建議分別儲存在 *SecurityAlert* 和 *SecurityRecommendations* 資料表中。 包含這些資料表的 Log Analytics 解決方案名稱，取決於您是否位於免費或標準層 (查看 [定價](security-center-pricing.md)) ：安全性 ( ' 安全性與稽核 ' ) 或 SecurityCenterFree。
+安全性警示和建議分別儲存在 *SecurityAlert* 和 *SecurityRecommendations* 資料表中。 包含這些資料表的 Log Analytics 解決方案名稱，取決於您是否已啟用 Azure Defender：安全性 ( 「安全性與稽核」 ) 或 SecurityCenterFree。
 
 ![Log Analytics 中的 * SecurityAlert * 資料表](./media/continuous-export/log-analytics-securityalert-solution.png)
 
@@ -180,7 +180,7 @@ Azure 監視器針對各種不同的 Azure 警示（包括診斷記錄、計量�
 深入瞭解 [Azure 事件中樞定價](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已瞭解如何設定建議和警示的連續匯出。 您也已瞭解如何以 CSV 檔案的形式下載您的警示資料。 
 

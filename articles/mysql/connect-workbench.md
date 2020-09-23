@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 1b1249fe7159e2a3a8d2a74d22f274a9766e7922
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5ec6aab8aaa63b848131d44f78867100f154d251
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185820"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896330"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 MySQL Workbench 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
 
@@ -40,7 +40,7 @@ ms.locfileid: "88185820"
 3. 按一下伺服器名稱。
 
 4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
- ![Azure Database for MySQL 伺服器名稱](./media/connect-php/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Azure Database for MySQL 伺服器名稱":::
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>使用 MySQL Workbench 來連線到伺服器 
 若要使用 GUI 工具 MySQL Workbench 連線到 Azure MySQL 伺服器：
@@ -49,7 +49,7 @@ ms.locfileid: "88185820"
 
 2.    在 [設定新連線] 對話方塊的 [參數] 索引標籤上輸入下列資訊︰
 
-![設定新連線](./media/connect-workbench/2-setup-new-connection.png)
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="設定新連線":::
 
 | **設定** | **建議的值** | **欄位描述** |
 |---|---|---|
@@ -103,7 +103,7 @@ ms.locfileid: "88185820"
 
     執行完畢後，螢幕擷取畫面會在 SQL Workbench 中顯示 SQL 程式碼的範例和輸出。
     
-    ![執行範例 SQL 程式碼的 MySQL Workbench SQL 索引標籤](media/connect-workbench/3-workbench-sql-tab.png)
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="執行範例 SQL 程式碼的 MySQL Workbench SQL 索引標籤":::
 
 2. 若要執行範例 SQL 程式碼，請在 [SQL 檔案] 索引標籤的工具列中按一下閃電圖示。
 3. 請注意頁面中間的 [結果方格] 區段中的三個索引標籤式結果。 

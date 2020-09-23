@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747536"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967506"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -339,7 +339,7 @@ New-AzStorageAccount `
  - 了解哪一個子網路與哪一個應用程式閘道或負載平衡器正在交談中。 如果您注意到非預期的交談，便可以更正設定。
  - 如果有 Rogue 網路與子網路交談，您可以設定 NSG 規則來封鎖 Rogue 網路，將其予以更正。 
 
-    ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![螢幕擷取畫面顯示有流量散發至應用程式閘道子網（與流程相關）的子網拓撲。](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>檢視接收來自網際網路之流量的連接埠和虛擬機器
 

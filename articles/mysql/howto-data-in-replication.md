@@ -1,31 +1,31 @@
 ---
-title: 設定資料傳入複寫-適用於 MySQL 的 Azure 資料庫
+title: 設定資料-in replication-適用於 MySQL 的 Azure 資料庫
 description: 本文將說明如何為適用於 MySQL 的 Azure 資料庫設定複寫中的資料。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 8/7/2020
-ms.openlocfilehash: f8dbdf87eef193540fd5c1bf9d9e7f3794ae46ce
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 8ebb524a5297380fca575ce6849fe4c5f15507cb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168213"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903993"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何為適用於 MySQL 的 Azure 資料庫設定複寫中的資料
 
-本文說明如何藉由設定主要和複本伺服器，在適用於 MySQL 的 Azure 資料庫中設定 [資料傳入](concepts-data-in-replication.md) 複寫。 本文假設您先前已有使用 MySQL 伺服器和資料庫的經驗。
+本文描述如何藉由設定主伺服器和複本伺服器，在適用於 MySQL 的 Azure 資料庫中設定 [資料輸入複寫](concepts-data-in-replication.md) 。 本文假設您先前已有 MySQL 伺服器和資料庫的經驗。
 
 > [!NOTE]
 > 無偏差通訊
 >
-> Microsoft 支援多樣化和 inclusionary 的環境。 本文包含對 _一詞的_參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)可辨識此為 exclusionary 單字。 本文中會使用這個字來進行一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新為對齊。
+> Microsoft 支援多樣化且 inclusionary 的環境。 本文包含單字 _從屬_的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將此視為排他性行為單字。 本文中會使用這個字來保持一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除該字時，將會更新本文以進行調整。
 >
 
-若要在適用於 MySQL 的 Azure 資料庫服務中建立複本， [資料傳入](concepts-data-in-replication.md)  複寫會同步處理內部部署的主要 MySQL 伺服器、虛擬機器 (vm) 或雲端資料庫服務中的資料。 資料帶入複寫是建立在以二進位記錄 (binlog) 檔案位置為基礎的 MySQL 原生複寫之上。 若要深入了解 binlog 複寫，請參閱 [MySQL binlog 複寫概觀](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) \(英文\)。
+若要在適用於 MySQL 的 Azure 資料庫服務中建立複本， [資料輸入複寫](concepts-data-in-replication.md)  從內部部署的主要 MySQL 伺服器、 (vm) 或雲端資料庫服務中的虛擬機器，同步處理資料。 資料帶入複寫是建立在以二進位記錄 (binlog) 檔案位置為基礎的 MySQL 原生複寫之上。 若要深入了解 binlog 複寫，請參閱 [MySQL binlog 複寫概觀](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) \(英文\)。
 
-執行本文中的步驟之前，請先參閱複寫資料的 [限制和需求](concepts-data-in-replication.md#limitations-and-considerations) 。
+在執行本文中的步驟之前，請先參閱資料入複寫的 [限制和需求](concepts-data-in-replication.md#limitations-and-considerations) 。
 
 ## <a name="create-a-mysql-server-to-be-used-as-replica"></a>建立 MySQL 伺服器做為複本
 
@@ -49,11 +49,11 @@ ms.locfileid: "88168213"
 下列步驟會針對裝載在內部部署的 MySQL 伺服器、虛擬機器中的 MySQL 伺服器或由其他雲端提供者所代管的資料庫服務，準備及設定資料帶入複寫。 此伺服器是「資料輸入複寫」中的「主要」伺服器。
 
 
-1. 請先檢查 [主伺服器需求](concepts-data-in-replication.md#requirements) ，再繼續進行。 
+1. 繼續之前，請先檢查 [主伺服器需求](concepts-data-in-replication.md#requirements) 。 
 
    例如，請確定主伺服器允許埠3306上的輸入和輸出流量，且主伺服器具有 **公用 IP 位址**、可公開存取 DNS，或具有 (FQDN) 的完整功能變數名稱。 
    
-   嘗試從另一部電腦上裝載的 MySQL 命令列之類的工具連線，或從 Azure 入口網站中提供的 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ，來測試主伺服器的連線能力。
+   藉由嘗試從另一部電腦上裝載的 MySQL 命令列或 Azure 入口網站中可用的 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ，來測試主伺服器的連線能力。
 
 1. 開啟二進位記錄
 
@@ -63,9 +63,9 @@ ms.locfileid: "88168213"
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   如果 [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) 傳回值為 "ON" 的變數，則會在您的伺服器上啟用二進位記錄。 
+   如果傳回的變數 [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) 值為 "ON"，則會在您的伺服器上啟用二進位記錄。 
 
-   如果 `log_bin` 傳回的值為 "OFF"，請藉由編輯 my.cnf 檔案來開啟二進位記錄，讓您的 `log_bin=ON` 伺服器重新開機，使變更生效。
+   如果 `log_bin` 傳回值為 "OFF" 的，請藉由編輯 my.cnf 檔案來開啟二進位記錄， `log_bin=ON` 然後重新開機伺服器，變更才會生效。
 
 1. 主要伺服器設定
 
@@ -105,15 +105,15 @@ ms.locfileid: "88168213"
 
    若要在 MySQL Workbench 中建立複寫角色，請從 [管理]**** 面板開啟 [使用者和權限]**** 面板。 接著，按一下 [新增帳戶]****。 
  
-   ![使用者和權限](./media/howto-data-in-replication/users_privileges.png)
+   :::image type="content" source="./media/howto-data-in-replication/users_privileges.png" alt-text="使用者和權限":::
 
    在 [登入名稱]**** 欄位中輸入使用者名稱。 
 
-   ![同步處理使用者](./media/howto-data-in-replication/syncuser.png)
+   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="同步處理使用者":::
  
    按一下 [管理角色]**** 面板，然後從 [全域權限]**** 清單選取 [複寫從屬]****。 然後按一下 [套用]**** 以建立複寫角色。
 
-   ![複寫從屬](./media/howto-data-in-replication/replicationslave.png)
+   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="複寫從屬":::
 
 1. 將主要伺服器設為唯讀模式
 
@@ -126,18 +126,18 @@ ms.locfileid: "88168213"
 
 1. 取得二進位記錄檔的檔案名稱和位移
 
-   執行 [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) 命令來判斷目前的二進位記錄檔名稱和位移。
+   執行 [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) 命令以判斷目前的二進位記錄檔名稱和位移。
     
    ```sql
    show master status;
    ```
    結果應類似以下所示。 請務必記下二進位檔案的名稱，後續步驟會用到此名稱。
 
-   ![主要狀態結果](./media/howto-data-in-replication/masterstatus.png)
+   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="主要狀態結果":::
  
 ## <a name="dump-and-restore-master-server"></a>傾印並還原主要伺服器
 
-1. 判斷您想要複寫到適用於 MySQL 的 Azure 資料庫的資料庫和資料表，並從主伺服器執行傾印。
+1. 判斷您想要複寫至適用於 MySQL 的 Azure 資料庫的資料庫和資料表，並從主伺服器執行傾印。
  
     您可使用 mysqldump 從主要伺服器傾印資料庫。 如需詳細資料，請參閱[傾印和還原](concepts-migrate-dump-restore.md)。 您不需要傾印 MySQL 程式庫和測試程式庫。
 
@@ -189,14 +189,14 @@ ms.locfileid: "88168213"
       -----END CERTIFICATE-----'
       ```
    
-   使用 SSL 的複寫是在裝載于網域 "companya.com" 的主伺服器與適用於 MySQL 的 Azure 資料庫中主控的複本伺服器之間設定。 此已儲存的程序可在複本伺服器上執行。 
+   使用 SSL 的複寫是在裝載于網域 "companya.com" 的主伺服器和適用於 MySQL 的 Azure 資料庫中裝載的複本伺服器之間設定。 此已儲存的程序可在複本伺服器上執行。 
    
       ```sql
       CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
       ```
    *不使用 SSL 的複寫*
    
-   不使用 SSL 的複寫是在裝載于網域 "companya.com" 的主伺服器與適用於 MySQL 的 Azure 資料庫中託管的複本伺服器之間設定。 此已儲存的程序可在複本伺服器上執行。
+   在託管于網域 "companya.com" 的主伺服器和適用於 MySQL 的 Azure 資料庫中裝載的複本伺服器之間，會設定不含 SSL 的複寫。 此已儲存的程序可在複本伺服器上執行。
    
       ```sql
       CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
@@ -204,7 +204,7 @@ ms.locfileid: "88168213"
 
 1. 篩選 
  
-   如果您想要略過從主要複本複寫某些資料表，請更新 `replicate_wild_ignore_table` 複本伺服器上的 server 參數。 您可以使用逗號分隔清單提供多個資料表模式。
+   如果您想要略過從主目錄複寫部分資料表，請更新 `replicate_wild_ignore_table` 複本伺服器上的伺服器參數。 您可以使用以逗號分隔的清單來提供多個資料表模式。
 
    請檢閱 [MySQL 文件](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) \(英文\)，以深入了解此參數。 
     
@@ -220,13 +220,13 @@ ms.locfileid: "88168213"
 
 1. 檢查複寫狀態
 
-   呼叫 [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) 複本伺服器上的命令，以查看複寫狀態。
+   在 [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) 複本伺服器上呼叫命令以查看複寫狀態。
     
    ```sql
    show slave status;
    ```
 
-   如果和的狀態 `Slave_IO_Running` 為 `Slave_SQL_Running` "yes"，且的值 `Seconds_Behind_Master` 為 "0"，則複寫運作良好。 `Seconds_Behind_Master` 可指定複本的延遲時間。 如果值不是 “0”，代表複本正在處理更新。 
+   如果的狀態為「是」， `Slave_IO_Running` `Slave_SQL_Running` 而的值 `Seconds_Behind_Master` 為 "0"，則複寫運作良好。 `Seconds_Behind_Master` 可指定複本的延遲時間。 如果值不是 “0”，代表複本正在處理更新。 
 
 ## <a name="other-stored-procedures"></a>其他已儲存的程序
 
@@ -254,5 +254,5 @@ CALL mysql.az_replication_remove_master;
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 深入了解「適用於 MySQL 的 Azure 資料庫」的[資料帶入複寫](concepts-data-in-replication.md)。 

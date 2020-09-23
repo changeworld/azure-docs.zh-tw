@@ -1,30 +1,30 @@
 ---
-title: 設計工具的範例管線和資料集 (預覽)
+title: 設計工具的範例管線和資料集
 titleSuffix: Azure Machine Learning
 description: 在 Azure Machine Learning 設計工具中使用範例，以快速了解您的機器學習管線。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: sample
-author: peterclu
-ms.author: peterlu
-ms.date: 03/29/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.custom: designer
-ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812932"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889746"
 ---
-# <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning 設計工具的範例管線和資料集 (預覽)
+# <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning 設計工具的範例管線和資料集
 
 使用 Azure Machine Learning 設計工具中的內建範例，快速開始建置您自己的機器學習管線。 Azure Machine Learning 設計工具 [GitHub 存放庫](https://github.com/Azure/MachineLearningDesigner)包含詳細的文件，可協助您了解一些常見的機器學習案例。
 
 ## <a name="prerequisites"></a>必要條件
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://aka.ms/AMLFree)。
-* 具備 Enterprise SKU 的 Azure Machine Learning 工作區。
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://aka.ms/AMLFree)
+* Azure Machine Learning 工作區 
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
@@ -67,8 +67,8 @@ ms.locfileid: "88812932"
 
 | 範例標題 | 描述 | 
 | --- | --- |
-| [範例 1：迴歸 - 汽車價格預測 (基本)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | 使用線性回歸來預測汽車價格。 |
-| [範例 2：迴歸 - 汽車價格預測 (進階)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | 使用決策樹系和推進式決策樹迴歸輸入變數來預測汽車價格。 比較這兩個模型找出最佳的演算法。
+| [迴歸 - 汽車價格預測 (基本)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | 使用線性回歸來預測汽車價格。 |
+| [迴歸 - 汽車價格預測 (進階)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | 使用決策樹系和推進式決策樹迴歸輸入變數來預測汽車價格。 比較這兩個模型找出最佳的演算法。
 
 ## <a name="classification"></a>分類
 
@@ -76,11 +76,19 @@ ms.locfileid: "88812932"
 
 | 範例標題 | 描述 | 
 | --- | --- |
-| [範例 3：具有特徵選取的二元分類 - 收入預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | 使用二元推進式決策樹來預測收入的高或低。 使用皮爾森相關來選取功能。
-| [範例 4：具有自訂 Python 指令碼的二元分類 - 信用風險預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | 將信用應用程式分類為高或低風險。 使用執行 Python 指令碼模組來為資料加權。
-| [範例 5：二元分類 - 客戶關係預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | 使用二元推進式決策樹來預測客戶流失。 使用 SMOTE 來取樣偏差資料。
-| [範例 7：文字分類 - 維基百科 SP 500 資料集](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | 使用多元羅吉斯迴歸將維基百科文章的公司類型分類。 |
-| 範例 12：多元分類 - 字母辨識 | 建立完善的二元分類器將寫好的字母分類。 |
+| [具有特徵選取的二元分類 - 收入預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | 使用二元推進式決策樹來預測收入的高或低。 使用皮爾森相關來選取功能。
+| [具有自訂 Python 指令碼的二元分類 - 信用風險預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | 將信用應用程式分類為高或低風險。 使用執行 Python 指令碼模組來為資料加權。
+| [二元分類 - 客戶關係預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | 使用二元推進式決策樹來預測客戶流失。 使用 SMOTE 來取樣偏差資料。
+| [文字分類 - 維基百科 SP 500 資料集](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | 使用多元羅吉斯迴歸將維基百科文章的公司類型分類。 |
+| 多元分類 - 字母辨識 | 建立完善的二元分類器將寫好的字母分類。 |
+
+## <a name="computer-vision"></a>電腦視覺
+
+探索這些內建的電腦視覺範例。 您可以開啟範例並改為檢視模組註解，以深入了解沒有文件連結的範例。
+
+| 範例標題 | 描述 | 
+| --- | --- |
+| 以 Wide & Deep 為基礎的建議 - 餐廳評等預測 | 從餐廳/使用者特徵和評等建立餐廳推薦程式引擎。|
 
 ## <a name="recommender"></a>推薦程式
 
@@ -88,7 +96,7 @@ ms.locfileid: "88812932"
 
 | 範例標題 | 描述 | 
 | --- | --- |
-| 範例 10：建議 - 電影分級推文 | 根據電影標題和分級建置電影推薦引擎。 |
+| 使用 DenseNet 進行影像分類 | 使用電腦視覺模組來建立以 PyTorch DenseNet 為基礎的影像分類模型。| 
 
 ## <a name="utility"></a>公用程式
 
@@ -96,10 +104,11 @@ ms.locfileid: "88812932"
 
 | 範例標題 | 描述 | 
 | --- | --- |
-| [範例 6：使用自訂 R 指令碼 - 航班延遲預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) |
-| 範例 8：二元分類的交叉驗證 - 成人收入預測 | 使用交叉驗證為成人收入建立二元分類器。
-| 範例 9：排列功能重要性 | 使用排列功能重要性來計算測試資料集的重要性分數。 
-| 範例 11：二元分類的參數調整 - 成人收入預測 | 使用調整模型超參數來尋找最佳的超參數，以建置二元分類器。 |
+| 使用 Vowpal Wabbit 模型的二元分類 - 成人收入預測 | Vowpal Wabbit 是一個機器學習系統，其會使用像是線上、雜湊，allreduce、簡化、learning2search、主動和互動式學習的技術，來擴展機器學習的應用。 此範例會示範如何使用 Vowpal Wabbit 模型來建立二元分類模型。 
+| [使用自訂 R 指令碼 - 航班延遲預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | 使用自訂的 R 指令碼來預測排定的客機是否會誤點超過 15 分鐘。
+| 二元分類的交叉驗證 - 成人收入預測 | 使用交叉驗證為成人收入建立二元分類器。
+| 排列功能重要性 | 使用排列功能重要性來計算測試資料集的重要性分數。 
+| 二元分類的參數調整 - 成人收入預測 | 使用調整模型超參數來尋找最佳的超參數，以建置二元分類器。 |
 
 ## <a name="datasets"></a>資料集
 
@@ -129,5 +138,5 @@ ms.locfileid: "88812932"
 
 ## <a name="next-steps"></a>後續步驟
 
-透過以下教學課程，了解預測性分析和機器學習的基本概念：[教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)來試用設計工具
+透過以下教學課程，了解預測性分析和機器學習的基礎概念：[教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)來試用設計工具
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/12/2020
+ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: f3aeccd30a9c89c2a43dfb85d4a57274037ec05f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: e4a0dfb658bb9388aa43b568fe0d28576026d1e9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569249"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905592"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -33,7 +33,16 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 ## <a name="september-2020"></a>2020 年 9 月
 
 9月更新包括：
-
+- [安全性中心會取得新的外觀！](#security-center-gets-a-new-look)
+- [Azure Defender 已發行](#azure-defender-released)
+- [適用于 Key Vault 的 Azure Defender 已正式運作](#azure-defender-for-key-vault-is-generally-available)
+- [適用于檔案和 ADLS Gen2 的儲存體保護的 Azure Defender 已正式運作](#azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available)
+- [資產清查工具現已正式推出](#asset-inventory-tools-are-now-generally-available)
+- [停用尋找容器登錄和虛擬機器掃描的特定弱點](#disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines)
+- [讓資源豁免建議](#exempt-a-resource-from-a-recommendation)
+- [AWS 和 GCP 連接器在安全性中心內帶來多雲端體驗](#aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience)
+- [Kubernetes 工作負載保護建議套件組合](#kubernetes-workload-protection-recommendation-bundle)
+- [適用于 IoT 的 Azure Defender 中的 IoT 威脅防護增強功能](#iot-threat-protection-enhancements-in-azure-defender-for-iot)
 - [弱點評定結果現在可用於連續匯出](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
 - [藉由在建立新資源時強制建議來避免安全性錯誤](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
 - [已改善網路安全性群組建議](#network-security-group-recommendations-improved)
@@ -41,6 +50,127 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 - [Azure 資訊安全中心改良的電子郵件通知](#email-notifications-from-azure-security-center-improved)
 - [安全分數不包含預覽建議](#secure-score-doesnt-include-preview-recommendations)
 - [建議現在包含嚴重性指標和有效期間間隔](#recommendations-now-include-a-severity-indicator-and-the-freshness-interval)
+
+
+### <a name="security-center-gets-a-new-look"></a>安全性中心會取得新的外觀！
+
+我們已針對安全性中心的入口網站頁面發行重新整理過的 UI。 新的頁面包含新的總覽頁面，以及適用于安全分數、資產清查和 Azure Defender 的儀表板。
+
+重新設計的總覽頁面現在具有存取安全分數、資產清查和 Azure Defender 儀表板的磚。 它也有連結到法規合規性儀表板的磚。
+
+深入瞭解 [ [總覽] 頁面](overview-page.md)。
+
+
+### <a name="azure-defender-released"></a>Azure Defender 已發行
+
+**Azure Defender** 是雲端工作負載保護平臺 (CWPP) 整合在安全中心內，以進行 Azure 和混合式工作負載的先進、智慧型、保護。 它取代了安全中心的標準定價層選項。 
+
+當您從 Azure 資訊安全中心的 [ **定價和設定** ] 區域啟用 Azure defender 時，會同時啟用下列 Defender 方案，並為您環境的計算、資料和服務層提供完整的防禦措施：
+
+- [適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)
+- [適用於 App Service 的 Azure Defender](defender-for-app-service-introduction.md)
+- [適用於儲存體的 Azure Defender](defender-for-storage-introduction.md)
+- [適用於 SQL 的 Azure Defender](defender-for-sql-introduction.md)
+- [適用於 IoT 的 Azure Defender](defender-for-iot-introduction.md)
+- [適用於 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)
+- [適用於 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)
+- [適用於容器登錄的 Azure Defender](defender-for-container-registries-introduction.md)
+
+這些方案中的每一個都會分別在「安全性中心」檔中說明。
+
+透過其專用的儀表板，Azure Defender 可為虛擬機器、SQL 資料庫、容器、web 應用程式、網路等提供安全性警示和先進的威脅防護。
+
+[深入瞭解 Azure Defender](azure-defender.md)
+
+### <a name="azure-defender-for-key-vault-is-generally-available"></a>適用于 Key Vault 的 Azure Defender 已正式運作
+
+Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字串和密碼) 的雲端服務。 
+
+**適用于 Key Vault 的 Azure Defender** 提供適用于 Azure Key Vault 的 azure 原生、先進的威脅防護，提供額外一層的安全情報。 根據擴充功能，適用于 Key Vault 的 Azure Defender 會因此保護許多依存于您 Key Vault 帳戶的資源。
+
+選用方案現已正式推出。 這項功能處於預覽狀態，是「Azure Key Vault 的 advanced 威脅防護」。
+
+此外，Azure 入口網站中的 Key Vault 頁面現在包含適用于**安全性中心**建議和警示的專用**安全性**頁面。
+
+深入瞭解 [Azure Defender 的 Key Vault](defender-for-key-vault-introduction.md)。
+
+
+### <a name="azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available"></a>適用于檔案和 ADLS Gen2 的儲存體保護的 Azure Defender 已正式運作 
+
+**適用于儲存體的 Azure Defender** 會偵測您的 Azure 儲存體帳戶可能有害的活動。 無論您的資料是儲存為 blob 容器、檔案共用或資料 lake，都可以受到保護。
+
+[Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)和[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)的支援現已正式推出。
+
+從2020年10月1日開始，我們將開始收取這些服務的資源保護費用。
+
+深入瞭解 [Azure Defender 的儲存體](defender-for-storage-introduction.md)。
+
+
+### <a name="asset-inventory-tools-are-now-generally-available"></a>資產清查工具現已正式推出
+
+Azure 資訊安全中心的 [資產清查] 頁面提供單一頁面，可供您用來查看您已連線至「安全性中心」之資源的安全性狀態。
+
+安全中心會定期分析 Azure 資源的安全性狀態，以找出潛在的安全性弱點。 接著，它會提供有關如何補救這些弱點的建議。
+
+當任何資源有未處理的建議時，它們會出現在清查中。
+
+深入瞭解如何 [使用資產清查和管理工具來探索及管理您的資源](asset-inventory.md)。
+
+
+
+### <a name="disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines"></a>停用尋找容器登錄和虛擬機器掃描的特定弱點
+
+Azure Defender 包含弱點掃描程式，可在您的 Azure Container Registry 和您的虛擬機器中掃描映射。
+
+如果您的組織需要忽略尋找，而不是補救它，您可以選擇性地停用它。 停用的結果不會影響您的安全分數或產生不必要的雜訊。
+
+當尋找符合您在停用規則中定義的準則時，不會出現在結果清單中。
+
+您可以從的 [建議詳細資料] 頁面取得此選項：
+
+- **應補救 Azure Container Registry 映像中的弱點**
+- **應補救您虛擬機器中的弱點**
+
+深入瞭解如何 [停用容器映射的特定結果](defender-for-container-registries-usage.md#disable-specific-findings-preview) ，以及 [停用虛擬機器的特定結果](remediate-vulnerability-findings-vm.md#disable-specific-findings-preview)。
+
+
+### <a name="exempt-a-resource-from-a-recommendation"></a>讓資源豁免建議
+
+有時候，資源將會針對特定的 (建議而列為狀況不良，因此會降低您的安全分數) 即使您覺得不應如此。 它可能已由安全性中心未追蹤的進程補救。 或者，您的組織已決定接受該特定資源的風險。 
+
+在這種情況下，您可以建立豁免規則，並確定未來不會在狀況不良的資源之間列出資源。 這些規則可以包含記載的理由，如下所述。
+
+深入瞭解如何 [豁免資源的建議和安全分數](exempt-resource.md)。
+
+
+### <a name="aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience"></a>AWS 和 GCP 連接器在安全性中心內帶來多雲端體驗
+
+雲端工作負載通常會跨越多個雲端平臺，因此，雲端安全性服務必須相同。
+
+Azure 資訊安全中心現在可保護 Azure 中的工作負載、Amazon Web Services (AWS) 和 Google Cloud Platform (GCP) 。
+
+將您的 AWS 和 GCP 帳戶上架到安全中心、整合 AWS 安全性中樞、GCP 安全性命令和 Azure 資訊安全中心。 
+
+深入瞭解 [如何將您的 AWS 帳戶連線到 Azure 資訊安全中心](quickstart-onboard-aws.md) ，並 [將您的 GCP 帳戶連接到 Azure 資訊安全中心](quickstart-onboard-gcp.md)。
+
+
+### <a name="kubernetes-workload-protection-recommendation-bundle"></a>Kubernetes 工作負載保護建議套件組合
+
+為了確保 Kubernetes 的工作負載預設是安全的，「安全性中心」會新增 Kubernetes 層級強化建議，包括 Kubernetes 許可控制的強制選項。
+
+當您在 AKS 叢集上安裝 Kubernetes 的 Azure 原則附加元件時，將會針對 Kubernetes API 伺服器的每個要求，針對預先定義的最佳作法集進行監視，然後再保存到叢集。 然後，您可以設定以強制執行最佳作法，並針對未來的工作負載進行強制執行。
+
+例如，您可以強制不應建立特殊許可權的容器，而任何未來的要求將會遭到封鎖。
+
+深入瞭解 [使用 Kubernetes 許可控制的工作負載保護最佳做法](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)。
+
+
+### <a name="iot-threat-protection-enhancements-in-azure-defender-for-iot"></a>適用于 IoT 的 Azure Defender 中的 IoT 威脅防護增強功能
+
+適用于 IoT 的 Azure Defender 帶來更多的威脅防護功能，因為包含 CyberX 無代理程式技術。 這為在營運技術中使用的非受控棕色地帶裝置帶來了安全性保護， () 環境，例如製造、建立管理系統 (BMS) 、生命科學、能源和水公用事業、石油 & 天然氣及物流。
+
+深入瞭解 [適用于 IoT 的 Azure Defender 簡介](defender-for-iot-introduction.md)。
+
 
 ### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>弱點評定結果現在可用於連續匯出
 
@@ -55,7 +185,7 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 相關頁面：
 
 - [適用于 Azure 虛擬機器的安全性中心整合式弱點評估解決方案](deploy-vulnerability-assessment-vm.md)
-- [Azure Container Registry 映射的安全中心整合式弱點評估解決方案](monitor-container-security.md)
+- [Azure Container Registry 映射的安全中心整合式弱點評估解決方案](defender-for-container-registries-usage.md)
 - [連續匯出](continuous-export.md)
 
 ### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>藉由在建立新資源時強制建議來避免安全性錯誤
@@ -182,7 +312,7 @@ Pod 安全性原則 (預覽版) 淘汰之後，您必須使用已被取代的功
 
 |整合建議|變更描述|
 |----|:----|
-|**應在您的虛擬機器上啟用弱點評定解決方案**|取代下列兩個建議：<br> **•** 在 Qualys 支援的虛擬機器上啟用內建弱點評定解決方案 ( (現在已被取代，)  (包含在標準層中) <br> **•** 弱點評定解決方案應該安裝在您的虛擬機器上 (現在已淘汰)  (標準和免費層) |
+|**虛擬機器上應啟用弱點評估解決方案**|取代下列兩個建議：<br> **•** 在 Qualys 支援的虛擬機器上啟用內建弱點評定解決方案 ( (現在已被取代，)  (包含在標準層中) <br> **•** 弱點評定解決方案應該安裝在您的虛擬機器上 (現在已淘汰)  (標準和免費層) |
 |**應補救您虛擬機器中的弱點**|取代下列兩個建議：<br>**•** 補救在虛擬機器上找到的弱點 (由 Qualys) 支援 (現在已淘汰) <br>**•** 弱點評估解決方案應補救 (現在已淘汰的弱點) |
 |||
 
@@ -216,7 +346,7 @@ Pod 安全性原則 (預覽版) 淘汰之後，您必須使用已被取代的功
 
 |建議|影響範圍|
 |----|:----|
-|**應在您的虛擬機器上啟用弱點評定解決方案**<br>機碼： ffff0522-1e88-47fc-8382-2a80ba848f5d|內建 + BYOL|
+|**虛擬機器上應啟用弱點評估解決方案**<br>機碼： ffff0522-1e88-47fc-8382-2a80ba848f5d|內建 + BYOL|
 |**應補救您虛擬機器中的弱點**<br>機碼：1195afff-c881-495e-9bc5-1486211ae03f|內建 + BYOL|
 ||||
 
@@ -257,9 +387,9 @@ Pod 安全性原則 (預覽版) 淘汰之後，您必須使用已被取代的功
 
 在此更新中，已移除檢查，您現在可以將弱點評定工具部署至「自訂」 Windows 和 Linux 機器。 自訂映射是您從 marketplace 預設值修改的映射。
 
-雖然您現在可以在更多部電腦上部署 Qualys) 所提供的整合式弱點評定延伸模組 (，但只有在您使用將整合式[弱點掃描器部署至標準層 vm 的](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-standard-tier-vms)作業系統時，才可使用支援
+雖然您現在可以在更多部電腦上部署 Qualys) 所提供的整合式弱點評定延伸模組 (，但只有在您使用將整合式[弱點掃描器部署至標準層 vm 的](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-your-vms)作業系統時，才可使用支援
 
-深入瞭解 [僅)  (標準層的虛擬機器整合式弱點掃描器 ](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)。
+若要深入瞭解 [虛擬機器的整合式弱點掃描器 (需要 Azure Defender) ](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)。
 
 深入瞭解如何在 [部署夥伴弱點掃描解決方案](deploy-vulnerability-assessment-vm.md)的 Qualys 或 Rapid7 中，使用您自己的私用授權弱點評估解決方案。
 
@@ -268,9 +398,7 @@ Pod 安全性原則 (預覽版) 淘汰之後，您必須使用已被取代的功
 
 Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶可能有害的活動。 當安全性中心偵測到嘗試存取或惡意探索您的儲存體帳戶時，會顯示警示。 
 
-無論您的資料是儲存為 blob 容器、檔案共用或資料 lake，都可以受到保護。 
-
-深入瞭解 [Azure 儲存體的威脅防護](threat-protection.md#threat-protection-for-azure-storage-)。
+無論您的資料是儲存為 blob 容器、檔案共用或資料 lake，都可以受到保護。
 
 
 
@@ -386,13 +514,13 @@ Azure 資訊安全中心的 SQL 機器 advanced data Security 現在可保護裝
 
 Advanced data security 為您的 SQL 電腦提供了弱點評定和先進的威脅防護，不論它們位於何處。
 
-安裝套裝程式含兩個步驟：
+設定包含兩個步驟：
 
 1. 將 Log Analytics 代理程式部署至您 SQL Server 的主機電腦，以提供 Azure 帳戶的連線。
 
 1. 在 [安全性中心的定價和設定] 頁面中啟用選用套件組合。
 
-深入瞭解 [SQL 電腦的 advanced data security](security-center-iaas-advanced-data.md)。
+深入瞭解 [SQL 電腦的 advanced data security](defender-for-sql-usage.md)。
 
 
 
@@ -551,7 +679,7 @@ Advanced data security 為您的 SQL 電腦提供了弱點評定和先進的威�
 
 深入瞭解[在 Azure 資訊安全中心之內的增強型安全分數 (預覽)](secure-score-security-controls.md) 中出現的安全性控制項。
 
-![建議的 [依控制項分組] 開關](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="建議的分組依據控制項切換":::
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>擴充的安全性控制「實作安全性最佳做法」 
 

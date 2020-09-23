@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: f20abffa429add8edcbffba16529c467cb9506fe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 21153d3c914864966106bf66edccb3c549398bc7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651097"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898232"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>規劃和管理 Azure Machine Learning 的成本
 
@@ -49,7 +49,7 @@ ms.locfileid: "89651097"
 
 當您將新的資源新增至您的工作區時，請返回此計算機並在此新增相同的資源，以更新您的成本預估。
 
-雖然 Enterprise edition 處於預覽狀態，但不會有 ML 額外費用。 當 Enterprise edition 正式推出時，將會有訓練和推斷) 的額外費用 (。  如需詳細資訊，請參閱 [Azure Machine Learning 定價](https://azure.microsoft.com/pricing/details/machine-learning/)。
+如需詳細資訊，請參閱 [Azure Machine Learning 定價](https://azure.microsoft.com/pricing/details/machine-learning/)。
 
 ## <a name="get-cost-alerts"></a>取得成本警示
 

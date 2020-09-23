@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: ede55196793e7eb19a5f64e539ee870ff0fada9d
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: e33e80a7363ac27bd7e0983a1ff3b65ee85b86b2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031411"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882380"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 Ruby 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 
@@ -26,7 +26,7 @@ ms.locfileid: "90031411"
 
 您也必須已安裝：
 - [Ruby](https://www.ruby-lang.org/en/downloads/)
-- Ruby pg，適用於 Ruby 的 PostgreSQL 模組
+- [Ruby pg](https://rubygems.org/gems/pg/)，適用於 Ruby 的 PostgreSQL 模組
 
 ## <a name="get-connection-information"></a>取得連線資訊
 取得連線到 Azure Database for PostgreSQL 所需的連線資訊。 您需要完整的伺服器名稱和登入認證。
@@ -35,17 +35,17 @@ ms.locfileid: "90031411"
 2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
 3. 按一下伺服器名稱。
 4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
- ![適用於 PostgreSQL 的 Azure 資料庫伺服器名稱](./media/connect-ruby/1-connection-string.png)
+ :::image type="content" source="./media/connect-ruby/1-connection-string.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫伺服器名稱":::
 
 > [!NOTE]
-> Azure Postgres 使用者名稱中的 `@` 符號已在所有連線字串中以 URL 編碼為 `%40`。 
+> Azure Postgres 使用者名稱中的 `@` 符號已在所有連線字串中以 URL 編碼為 `%40`。
 
 ## <a name="connect-and-create-a-table"></a>連線及建立資料表
 使用下列程式碼搭配 **CREATE TABLE** SQL 陳述式 (後面接著 **INSERT INTO** SQL 陳述式) 來連線和建立資料表，進而將資料列新增至資料表中。
 
-程式碼會使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 物件搭配建構函式 [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method)，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 方法來執行 DROP、CREATE TABLE 和 INSERT INTO 命令。 程式碼會使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 類別檢查錯誤。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) 方法，在終止前關閉連線。
+程式碼會使用 ```PG::Connection``` 物件搭配建構函式 ```new```，以連線至適用於 PostgreSQL 的 Azure 資料庫。 然後它會呼叫 ```exec()``` 方法來執行 DROP、CREATE TABLE 和 INSERT INTO 命令。 程式碼會使用 ```PG::Error``` 類別檢查錯誤。 然後它會呼叫 ```close()``` 方法，在終止前關閉連線。 如需這些類別和方法的詳細資訊，請參閱 [Ruby Pg 參考文件](https://www.rubydoc.info/gems/pg/PG)。
 
-以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。 
+以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。
 
 
 ```ruby
@@ -77,19 +77,19 @@ begin
     puts 'Inserted 3 rows of data.'
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
 ```
 
 ## <a name="read-data"></a>讀取資料
-使用下列程式碼搭配 **SELECT** SQL 陳述式來連線和讀取資料。 
+使用下列程式碼搭配 **SELECT** SQL 陳述式來連線和讀取資料。
 
-程式碼會使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 物件搭配建構函式 [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method)，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 方法來執行 SELECT 命令，並將結果保留在結果集中。 結果集的集合會使用 `resultSet.each do` 迴圈反覆運算，並將目前的資料列值保留在 `row` 變數中。 程式碼會使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 類別檢查錯誤。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) 方法，在終止前關閉連線。
+程式碼會使用 ```PG::Connection``` 物件搭配建構函式 ```new```，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 ```exec()``` 方法來執行 SELECT 命令，並將結果保留在結果集中。 結果集的集合會使用 `resultSet.each do` 迴圈反覆運算，並將目前的資料列值保留在 `row` 變數中。 程式碼會使用 ```PG::Error``` 類別檢查錯誤。 然後它會呼叫 ```close()``` 方法，在終止前關閉連線。 如需這些類別和方法的詳細資訊，請參閱 [Ruby Pg 參考文件](https://www.rubydoc.info/gems/pg/PG)。
 
-以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。 
+以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。
 
 ```ruby
 require 'pg'
@@ -111,8 +111,8 @@ begin
     end
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
@@ -121,9 +121,9 @@ end
 ## <a name="update-data"></a>更新資料
 使用下列程式碼搭配 **UPDATE** SQL 陳述式來連線和更新資料。
 
-程式碼會使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 物件搭配建構函式 [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method)，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 方法來執行 UPDATE 命令。 程式碼會使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 類別檢查錯誤。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) 方法，在終止前關閉連線。
+程式碼會使用 ```PG::Connection``` 物件搭配建構函式 ```new```，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 ```exec()``` 方法來執行 UPDATE 命令。 程式碼會使用 ```PG::Error``` 類別檢查錯誤。 然後它會呼叫 ```close()``` 方法，在終止前關閉連線。 如需這些類別和方法的詳細資訊，請參閱 [Ruby Pg 參考文件](https://www.rubydoc.info/gems/pg/PG)。
 
-以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。 
+以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。
 
 ```ruby
 require 'pg'
@@ -144,8 +144,8 @@ begin
     puts 'Updated 1 row of data.'
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
@@ -153,11 +153,11 @@ end
 
 
 ## <a name="delete-data"></a>刪除資料
-使用下列程式碼搭配 **DELETE** SQL 陳述式來連線和讀取資料。 
+使用下列程式碼搭配 **DELETE** SQL 陳述式來連線和讀取資料。
 
-程式碼會使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 物件搭配建構函式 [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method)，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 方法來執行 UPDATE 命令。 程式碼會使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 類別檢查錯誤。 然後它會呼叫 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) 方法，在終止前關閉連線。
+程式碼會使用 ```PG::Connection``` 物件搭配建構函式 ```new```，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 ```exec()``` 方法來執行 UPDATE 命令。 程式碼會使用 ```PG::Error``` 類別檢查錯誤。 然後它會呼叫 ```close()``` 方法，在終止前關閉連線。
 
-以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。 
+以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。
 
 ```ruby
 require 'pg'
@@ -178,13 +178,16 @@ begin
     puts 'Deleted 1 row of data.'
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
 ```
 
 ## <a name="next-steps"></a>後續步驟
+
 > [!div class="nextstepaction"]
-> [使用匯出和匯入來移轉資料庫](./howto-migrate-using-export-and-import.md)
+> [使用匯出和匯入來移轉資料庫](./howto-migrate-using-export-and-import.md) <br/>
+> [!div class="nextstepaction"]
+> [Ruby Pg 參考文件](https://www.rubydoc.info/gems/pg/PG)
