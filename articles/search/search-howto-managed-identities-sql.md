@@ -1,25 +1,22 @@
 ---
-title: '使用受控識別 (預覽，設定與 Azure SQL Database 的連接) '
+title: 使用受控識別設定與 Azure SQL Database 的連接
 titleSuffix: Azure Cognitive Search
-description: '瞭解如何使用受控識別 (預覽，設定 Azure SQL Database 的索引子連接) '
+description: 瞭解如何使用受控識別來設定 Azure SQL Database 的索引子連接
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 8dabf69af8628bb0b168bfea94af5333df341423
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: 9f90125edeee453dc9e8b8b80f8eb09d9fc6e84c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924124"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971529"
 ---
-# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>使用受控識別 (預覽，設定與 Azure SQL Database 的索引子連接) 
-
-> [!IMPORTANT] 
-> 支援使用受控識別來設定與資料來源的連接，目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
+# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>使用受控識別設定 Azure SQL Database 的索引子連接
 
 此頁面描述如何使用受控識別來設定 Azure SQL Database 的索引子連接，而不是在資料來源物件連接字串中提供認證。
 
@@ -97,7 +94,7 @@ ms.locfileid: "88924124"
 
 ### <a name="5---create-the-data-source"></a>5 - 建立資料來源
 
-[REST API](/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](/rest/api/searchservice/create-data-source) 和受控識別連接字串來編制 Azure SQL Database 的資料索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
+[REST API](/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](/rest/api/searchservice/create-data-source) 和受控識別連接字串來編制 Azure SQL Database 的資料索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
 
 使用 [REST API](/rest/api/searchservice/create-data-source)建立資料來源時，資料來源必須具有下列必要屬性：
 

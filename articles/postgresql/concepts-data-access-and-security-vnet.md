@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 56b2fd7d78d95978b2e822f2d18160013d17eb15
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d7ad1116f7c0168181dbf5b43f8f1595ce250949
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433614"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903922"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>針對適用於 PostgreSQL 的 Azure 資料庫單一伺服器使用虛擬網路服務端點和規則
 
@@ -19,7 +19,7 @@ ms.locfileid: "89433614"
 
 若要建立虛擬網路規則，必須先有[虛擬網路][vm-virtual-network-overview] (VNet) 和[虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]可供規則參考。 下圖說明虛擬網路服務端點如何與適用於 PostgreSQL 的 Azure 資料庫搭配運作：
 
-![VNet 服務端點的運作方式範例](media/concepts-data-access-and-security-vnet/vnet-concept.png)
+:::image type="content" source="media/concepts-data-access-and-security-vnet/vnet-concept.png" alt-text="VNet 服務端點的運作方式範例":::
 
 > [!NOTE]
 > 如果適用於 PostgreSQL 的 Azure 資料庫是針對「一般用途」和「記憶體最佳化」伺服器來部署的，則此功能可在所有 Azure 公用雲端區域中使用。
@@ -132,7 +132,7 @@ RBAC 替代方案：**
 - [Azure 虛擬網路][vm-virtual-network-overview]
 - [Azure 虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 如需建立 VNet 規則的文章，請參閱：
 - [使用 Azure 入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫 VNet 規則](howto-manage-vnet-using-portal.md)
 - [使用 Azure CLI 建立和管理適用於 PostgreSQL 的 Azure 資料庫 VNet 規則](howto-manage-vnet-using-cli.md)

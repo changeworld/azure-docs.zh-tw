@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 7df783f15280d9f5ba3330afaf504f3259aeccf3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 9b2d003ef4938681229317b625aae4526787ac15
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646262"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898709"
 ---
 # <a name="convert-to-dataset"></a>轉換為資料集
 
-本文描述如何使用 Azure Machine Learning 設計工具中的 [轉換成資料集] 模組 (preview) 將管線的任何資料轉換為設計工具的內部格式。
+本文描述如何使用 Azure Machine Learning 設計工具中的 [轉換成資料集] 模組，將管線的任何資料轉換為設計工具的內部格式。
   
 在大部分的情況下，不需要轉換。 當對資料執行任何作業時，Azure Machine Learning 會隱含地將資料轉換成其原生資料集格式。 
 

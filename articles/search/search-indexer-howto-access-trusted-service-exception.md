@@ -7,20 +7,17 @@ author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: f901833caf0623de643e0372c53658fa7da8c8be
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.date: 09/22/2020
+ms.openlocfilehash: 1400f3c3d15698a5f1a145e8e0750ad7c4e9cec8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89463462"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971417"
 ---
 # <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>透過信任的服務例外狀況安全地存取儲存體帳戶中的資料
 
 存取儲存體帳戶中資料的索引子可以利用 [受信任的服務例外](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) 狀況功能來安全地存取資料。 這項機制提供的客戶無法透過 [IP 防火牆規則來授與索引子存取](search-indexer-howto-access-ip-restricted.md) 存取儲存體帳戶中資料的簡單、安全且免費的替代方案。
-
-> [!NOTE]
-> 透過系統指派的搜尋服務身分識別存取儲存體帳戶仍處於預覽狀態。 這項預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
 
 ## <a name="step-1-configure-connection-to-the-storage-account-via-identity"></a>步驟1：透過身分識別設定儲存體帳戶的連接
 
@@ -34,7 +31,7 @@ ms.locfileid: "89463462"
 
 索引子現在可以存取儲存體帳戶中的資料，即使是透過 IP 防火牆規則來保護帳戶。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 深入了解 Azure 儲存體索引子：
 

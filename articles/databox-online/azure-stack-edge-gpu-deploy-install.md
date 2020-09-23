@@ -1,6 +1,6 @@
 ---
-title: 打開包裝、裝設機架、連接 Azure Stack Edge GPU 實體裝置纜線的安裝教學課程 | Microsoft Docs
-description: 關於安裝 Azure Stack Edge GPU 的第二個教學課程將說明如何打開包裝，然後接上實體裝置的機架和纜線。
+title: 打開包裝、裝設機架、連接 Azure Stack Edge Pro GPU 實體裝置纜線的安裝教學課程 | Microsoft Docs
+description: 關於安裝 Azure Stack Edge Pro GPU 的第二個教學課程將說明如何打開包裝，然後接上實體裝置的機架和纜線。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 25bdf2fba67b3a2b42a24416a9de692cf3e992dd
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
+ms.openlocfilehash: b9f3b564e36939197acd532a37f9a6098fbc870f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421368"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900008"
 ---
-# <a name="tutorial-install-azure-stack-edge-with-gpu"></a>教學課程：安裝搭配 GPU 的 Azure Stack Edge
+# <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>教學課程：安裝搭配 GPU 的 Azure Stack Edge Pro
 
-本教學課程說明如何安裝搭配 GPU 的 Azure Stack Edge 實體裝置。 安裝程序包括打開包裝、以機架掛接裝置，並為裝置接上纜線。 
+本教學課程說明如何安裝搭配 GPU 的 Azure Stack Edge Pro 實體裝置。 安裝程序包括打開包裝、以機架掛接裝置，並為裝置接上纜線。 
 
 安裝大約需要兩小時才能完成。
 
@@ -37,12 +37,12 @@ ms.locfileid: "89421368"
 
 在您開始前，請確定：
 
-* 您已完成[準備部署搭配 GPU 的 Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md) 中的所有步驟。
+* 您已完成[準備部署搭配 GPU 的 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) 中的所有步驟。
     * 您已建立 Azure Stack Edge 資源以部署裝置。
     * 您已產生啟用金鑰，以啟用具有 Azure Stack Edge 資源的裝置。
 
  
-### <a name="for-the-azure-stack-edge-physical-device"></a>針對 Azure Stack Edge 實體裝置
+### <a name="for-the-azure-stack-edge-pro-physical-device"></a>針對 Azure Stack Edge Pro 實體裝置
 
 在部署裝置之前：
 
@@ -58,7 +58,7 @@ ms.locfileid: "89421368"
 
 開始之前：
 
-- 檢閱部署 Azure Stack Edge 的網路需求，並根據每個需求設定資料中心網路。 如需詳細資訊，請參閱 [Azure Stack Edge 網路需求](azure-stack-edge-system-requirements.md#networking-port-requirements)。
+- 檢閱部署 Azure Stack Edge Pro 的網路需求，並根據每個需求設定資料中心網路。 如需詳細資訊，請參閱 [Azure Stack Edge Pro 網路需求](azure-stack-edge-system-requirements.md#networking-port-requirements)。
 
 - 確定網際網路頻寬至少有 20 Mbps，以便讓裝置能夠發揮最大功能。
 
@@ -70,7 +70,7 @@ ms.locfileid: "89421368"
 1. 將箱子放置在平坦的表面上。
 2. 檢查箱子及包裝發泡材料有無損毀、割痕、浸水，或任何其他明顯損傷。 如果箱子或包裝嚴重損毀，請不要打開它。 請連絡 Microsoft 支援服務，以協助您評估裝置是否正常運作。
 3. 打開箱子。 打開箱子包裝之後，請確定您有：
-    - 一個單一機殼的 Azure Stack Edge 裝置
+    - 一個單一機殼的 Azure Stack Edge Pro 裝置
     - 兩條電源線
     - 一個滑軌套件組件
     - 安全、環境和法規資訊手冊
@@ -83,7 +83,7 @@ ms.locfileid: "89421368"
 裝置必須安裝在標準的 19 吋機架上。 使用下列程序，在標準 19 吋機架上裝載您的裝置。
 
 > [!IMPORTANT]
-> Azure Stack Edge 裝置需要機架掛接才能正常運作。
+> Azure Stack Edge Pro 裝置需要機架掛接才能正常運作。
 
 
 ### <a name="prerequisites"></a>必要條件
@@ -157,11 +157,11 @@ ms.locfileid: "89421368"
 
 ## <a name="cable-the-device"></a>接上裝置纜線
 
-配置纜線，然後將裝置接上纜線。 下列程序說明如何為 Azure Stack Edge 裝置接上電源線和網路線。
+配置纜線，然後將裝置接上纜線。 下列程序說明如何為 Azure Stack Edge Pro 裝置接上電源線和網路線。
 
 開始為裝置接上纜線之前，您需要下列項目：
 
-- 已打開包裝並掛接機架的 Azure Stack Edge 實體裝置。
+- 已打開包裝並掛接機架的 Azure Stack Edge Pro 實體裝置。
 - 兩條電源線。
 - 至少一條連接到管理介面的 1-GbE RJ-45 網路線。 裝置上有兩個 1-GbE 網路介面：一個管理介面和一個資料介面。
 - 每個要設定的資料網路介面各一條 25-GbE SFP + 銅纜線。 至少一個來自連接埠 2、連接埠 3、連接埠 4、連接埠 5 或連接埠 6 的資料網路介面必須連接到網際網路 (使用與 Azure 的連線)。  
@@ -171,9 +171,9 @@ ms.locfileid: "89421368"
 > [!NOTE]
 > - 如果您只連接一個資料網路介面，建議您使用 25/10-GbE 網路介面 (例如連接埠 3、連接埠 4、連接埠 5 或連接埠 6) 將資料傳送至 Azure。 
 > - 為了達到最佳效能以及處理大量資料，請考慮連接所有資料連接埠。
-> - Azure Stack Edge 裝置應連接到資料中心網路，以便擷取來自資料來源伺服器的資料。
+> - Azure Stack Edge Pro 裝置應連接到資料中心網路，以便擷取來自資料來源伺服器的資料。
 
-在 Azure Stack Edge 裝置上：
+在 Azure Stack Edge Pro 裝置上：
 
 - 前端面板有磁碟機和電源按鈕。
 
@@ -232,7 +232,7 @@ ms.locfileid: "89421368"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解 Azure Stack Edge 的相關主題，像是如何：
+在本教學課程中，您已了解 Azure Stack Edge Pro 的相關主題，像是如何：
 
 > [!div class="checklist"]
 > * 打開裝置包裝
@@ -242,4 +242,4 @@ ms.locfileid: "89421368"
 前進至下一個教學課程，以了解如何連線至您的裝置。
 
 > [!div class="nextstepaction"]
-> [連接 Azure Stack Edge](./azure-stack-edge-gpu-deploy-connect.md)
+> [連線 Azure Stack Edge Pro](./azure-stack-edge-gpu-deploy-connect.md)

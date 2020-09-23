@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: dc19d74953db48ccf51d4731e2b9feccb2294041
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c508591fe9909578dcc04b0922c0b76691898743
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076390"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901079"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>教學課程：回應安全性事件
 資訊安全中心會使用進階的分析和威脅情報，持續分析混合式雲端工作負載，提醒您發生惡意活動。 此外，您可以將警示從其他的安全性產品和服務整合到資訊安全中心，並以您自己的指標或情報來源作為基礎建立自訂警示。 一旦有警示產生，您便需要迅速採取行動來進行調查並加以修復。 在本教學課程中，您將學會如何：
@@ -32,7 +32,7 @@ ms.locfileid: "87076390"
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
-若要逐步執行本教學課程中涵蓋的功能，您必須是在資訊安全中心的標準定價層。 您可以免費試用資訊安全中心標準層。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。 [將 Azure 訂用帳戶上架到資訊安全中心標準定價層](security-center-get-started.md)快速入門會為您逐步解說如何升級至「標準」定價層。
+若要逐步執行本教學課程中涵蓋的功能，您必須啟用 Azure Defender。 您可以免費試用 Azure Defender。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。 [開始使用資訊安全中心](security-center-get-started.md)的快速入門會逐步引導您了解如何升級。
 
 ## <a name="scenario"></a>狀況
 Contoso 最近將一些內部部署資源移轉至 Azure，包括一些以虛擬機器為基礎的商務營運工作負載和 SQL Database。 Contoso 的核心電腦安全性事件回應小組 (CSIRT) 目前因為尚未整合與其目前事件回應工具的安全性情報，而無法順利調查安全性問題。 缺乏此種整合會在偵測階段帶來問題 (太多誤判)，也會在評估和診斷階段造成問題。 在此移轉過程中，他們決定選擇加入資訊安全中心，以協助他們解決這個問題。
@@ -68,13 +68,13 @@ Sam 是安全性分析師，他們的職責包括︰
 
    ![安全性警示](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
-2. 在警示清單中對某個安全性事件 (此為警示集合) 按一下，以深入了解此事件。 [偵測到安全性事件]  隨即開啟。
+2. 在警示清單中選取某個安全性事件 (也就是警示集合)，以深入了解此事件。 [偵測到安全性事件]  隨即開啟。
 
-   ![安全性事件](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+   ![偵測到安全性事件](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
 
 3. 在這個畫面上，您會在上方看到安全性事件描述，以及屬於此事件的警示清單。 按一下您要進一步調查的警示，以取得詳細資訊。
 
-   ![安全性事件](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+   ![事件的警示詳細資料](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
    警示類型可能會有所不同，如需警示類型的詳細資訊及可能的補救步驟，請閱讀[了解 Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 對於可安全關閉的警示，您可以滑鼠右鍵按一下警示，並選取 [關閉]  選項：
 
@@ -99,13 +99,12 @@ Sam 是安全性分析師，他們的職責包括︰
 
 ## <a name="clean-up-resources"></a>清除資源
 
-此集合中的其他快速入門和教學課程會以本快速入門為基礎。 如果您打算繼續處理後續的快速入門和教學課程，請繼續執行標準層，並保持將自動佈建維持為啟用狀態。 如果您不打算繼續，或是要返回免費層：
+此集合中的其他快速入門和教學課程會以本快速入門為基礎。 如果您打算繼續處理後續的快速入門和教學課程，請將自動佈建和 Azure Defender 維持為啟用狀態。 如果不打算繼續，或是要停用 Azure Defender：
 
-1. 返回 [資訊安全中心] 主功能表，並選取 [安全性原則]  。
-2. 選取您需要返回免費層的訂用帳戶或原則。 [安全性原則]  隨即開啟。
-3. 在 [原則元件]  下，選取 [定價層]  。
-4. 選取 [免費] 以將訂用帳戶從標準層變更為免費層。
-5. 選取 [儲存]  。
+1. 返回資訊安全中心主功能表，並選取 [定價和設定]。
+1. 選取要降級的訂用帳戶。
+1. 將 **Azure Defender** 設定為關閉。
+1. 選取 [儲存]  。
 
 如果您需要停用自動佈建：
 
